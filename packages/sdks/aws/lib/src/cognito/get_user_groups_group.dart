@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetUserGroupsGroup {
   /// Description of the user group.
   final pulumi.Input<String> description;
-
   /// Name of the user group.
   final pulumi.Input<String> groupName;
-
   /// Precedence of the user group.
   final pulumi.Input<int> precedence;
-
   /// ARN of the IAM role to be associated with the user group.
   final pulumi.Input<String> roleArn;
 
@@ -45,3 +42,4 @@ class GetUserGroupsGroup {
     );
   }
 }
+

@@ -75,81 +75,22 @@ class IPConfigDetailsResponse {
 
   factory IPConfigDetailsResponse.fromMap(Map<String, dynamic> map) {
     return IPConfigDetailsResponse(
-      ipAddressType: (() {
-        final guardedValue = map['ipAddressType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      isPrimary: (() {
-        final guardedValue = map['isPrimary'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      isSeletedForFailover: (() {
-        final guardedValue = map['isSeletedForFailover'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      recoveryIPAddressType: (() {
-        final guardedValue = map['recoveryIPAddressType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      recoveryLBBackendAddressPoolIds: (() {
-        final guardedValue = map['recoveryLBBackendAddressPoolIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      recoveryPublicIPAddressId: (() {
-        final guardedValue = map['recoveryPublicIPAddressId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      recoveryStaticIPAddress: (() {
-        final guardedValue = map['recoveryStaticIPAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      recoverySubnetName: (() {
-        final guardedValue = map['recoverySubnetName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      staticIPAddress: (() {
-        final guardedValue = map['staticIPAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subnetName: (() {
-        final guardedValue = map['subnetName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tfoLBBackendAddressPoolIds: (() {
-        final guardedValue = map['tfoLBBackendAddressPoolIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      tfoPublicIPAddressId: (() {
-        final guardedValue = map['tfoPublicIPAddressId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tfoStaticIPAddress: (() {
-        final guardedValue = map['tfoStaticIPAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tfoSubnetName: (() {
-        final guardedValue = map['tfoSubnetName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ipAddressType: (() { final guardedValue = map['ipAddressType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      isPrimary: (() { final guardedValue = map['isPrimary']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      isSeletedForFailover: (() { final guardedValue = map['isSeletedForFailover']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      recoveryIPAddressType: (() { final guardedValue = map['recoveryIPAddressType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      recoveryLBBackendAddressPoolIds: (() { final guardedValue = map['recoveryLBBackendAddressPoolIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      recoveryPublicIPAddressId: (() { final guardedValue = map['recoveryPublicIPAddressId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      recoveryStaticIPAddress: (() { final guardedValue = map['recoveryStaticIPAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      recoverySubnetName: (() { final guardedValue = map['recoverySubnetName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      staticIPAddress: (() { final guardedValue = map['staticIPAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subnetName: (() { final guardedValue = map['subnetName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tfoLBBackendAddressPoolIds: (() { final guardedValue = map['tfoLBBackendAddressPoolIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      tfoPublicIPAddressId: (() { final guardedValue = map['tfoPublicIPAddressId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tfoStaticIPAddress: (() { final guardedValue = map['tfoStaticIPAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tfoSubnetName: (() { final guardedValue = map['tfoSubnetName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

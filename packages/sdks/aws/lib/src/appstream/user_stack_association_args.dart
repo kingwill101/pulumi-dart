@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserStackAssociationArgs {
   /// Authentication type for the user.
   final pulumi.Input<String> authenticationType;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Whether a welcome email is sent to a user after the user is created in the user pool.
   final pulumi.Input<bool>? sendEmailNotification;
-
   /// Name of the stack that is associated with the user.
   final pulumi.Input<String> stackName;
-
   /// Email address of the user who is associated with the stack.
   ///
   /// The following arguments are optional:
@@ -50,21 +46,12 @@ class UserStackAssociationArgs {
 
   factory UserStackAssociationArgs.fromMap(Map<String, dynamic> map) {
     return UserStackAssociationArgs(
-      authenticationType: pulumi.Input.fromValue(
-        map['authenticationType'] as String,
-      ),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sendEmailNotification: (() {
-        final guardedValue = map['sendEmailNotification'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      authenticationType: pulumi.Input.fromValue(map['authenticationType'] as String),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sendEmailNotification: (() { final guardedValue = map['sendEmailNotification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       stackName: pulumi.Input.fromValue(map['stackName'] as String),
       userName: pulumi.Input.fromValue(map['userName'] as String),
     );
   }
 }
+

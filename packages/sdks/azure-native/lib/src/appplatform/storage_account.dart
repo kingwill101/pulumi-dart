@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StorageAccount {
   /// The account key of the Azure Storage Account.
   final pulumi.Input<String> accountKey;
-
   /// The account name of the Azure Storage Account.
   final pulumi.Input<String> accountName;
-
   /// The type of the storage.
   /// Expected value is 'StorageAccount'.
   final pulumi.Input<String> storageType;
@@ -40,3 +38,4 @@ class StorageAccount {
     );
   }
 }
+

@@ -43,11 +43,8 @@ class GetConversationArgs {
       conversationId: pulumi.Input.fromValue(map['conversationId'] as String),
       dataStoreId: pulumi.Input.fromValue(map['dataStoreId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

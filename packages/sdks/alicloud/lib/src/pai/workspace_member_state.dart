@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkspaceMemberState {
   /// The time when the workspace is created, in UTC. The time follows the ISO 8601 standard.
   final pulumi.Input<String>? createTime;
-
   /// The member ID.
   final pulumi.Input<String>? memberId;
-
   /// The list of roles. see [how to use it](https://www.alibabacloud.com/help/en/pai/developer-reference/api-aiworkspace-2021-02-04-createmember).
   final pulumi.Input<List<String>>? roles;
-
   /// The ID of the User.
   final pulumi.Input<String>? userId;
-
   /// The ID of the Workspace.
   final pulumi.Input<String>? workspaceId;
 
@@ -45,31 +41,12 @@ class WorkspaceMemberState {
 
   factory WorkspaceMemberState.fromMap(Map<String, dynamic> map) {
     return WorkspaceMemberState(
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      memberId: (() {
-        final guardedValue = map['memberId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      roles: (() {
-        final guardedValue = map['roles'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      userId: (() {
-        final guardedValue = map['userId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      workspaceId: (() {
-        final guardedValue = map['workspaceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      memberId: (() { final guardedValue = map['memberId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      roles: (() { final guardedValue = map['roles']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      userId: (() { final guardedValue = map['userId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      workspaceId: (() { final guardedValue = map['workspaceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

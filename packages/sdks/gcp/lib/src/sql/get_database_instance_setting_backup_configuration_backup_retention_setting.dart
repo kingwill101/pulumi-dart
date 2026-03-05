@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting {
   /// Number of backups to retain.
   final pulumi.Input<int> retainedBackups;
-
   /// The unit that 'retainedBackups' represents. Defaults to COUNT
   final pulumi.Input<String> retentionUnit;
 
@@ -24,12 +23,11 @@ class GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting {
     };
   }
 
-  factory GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting.fromMap(Map<String, dynamic> map) {
     return GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting(
       retainedBackups: pulumi.Input.fromValue(map['retainedBackups'] as int),
       retentionUnit: pulumi.Input.fromValue(map['retentionUnit'] as String),
     );
   }
 }
+

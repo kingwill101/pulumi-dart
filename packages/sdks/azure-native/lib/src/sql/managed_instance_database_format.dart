@@ -15,3 +15,4 @@ enum ManagedInstanceDatabaseFormat {
     throw ArgumentError('Unknown ManagedInstanceDatabaseFormat value: $value');
   }
 }
+

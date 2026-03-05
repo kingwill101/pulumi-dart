@@ -7,10 +7,8 @@ import 'get_web_lock_configs_config.dart';
 class GetWebLockConfigsResult {
   /// A list of Web Lock Config Entries. Each element contains the following attributes:
   final List<GetWebLockConfigsConfig> configs;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of Web Lock Config IDs.
   final List<String> ids;
   final String? lang;
@@ -47,11 +45,7 @@ class GetWebLockConfigsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configs':
-          pulumi.Input.encodeList<
-            GetWebLockConfigsConfig,
-            Map<String, dynamic>
-          >(configs, (value) => value.toMap()),
+      'configs': pulumi.Input.encodeList<GetWebLockConfigsConfig, Map<String, dynamic>>(configs, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'lang': ?lang,
@@ -66,49 +60,17 @@ class GetWebLockConfigsResult {
 
   factory GetWebLockConfigsResult.fromMap(Map<String, dynamic> map) {
     return GetWebLockConfigsResult(
-      configs: pulumi.Input.decodeList<GetWebLockConfigsConfig>(
-        map['configs']!,
-        (value) => GetWebLockConfigsConfig.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      configs: pulumi.Input.decodeList<GetWebLockConfigsConfig>(map['configs']!, (value) => GetWebLockConfigsConfig.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      lang: (() {
-        final guardedValue = map['lang'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      pageNumber: (() {
-        final guardedValue = map['pageNumber'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      pageSize: (() {
-        final guardedValue = map['pageSize'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      remark: (() {
-        final guardedValue = map['remark'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      sourceIp: (() {
-        final guardedValue = map['sourceIp'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      lang: (() { final guardedValue = map['lang']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      pageNumber: (() { final guardedValue = map['pageNumber']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      pageSize: (() { final guardedValue = map['pageSize']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      remark: (() { final guardedValue = map['remark']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sourceIp: (() { final guardedValue = map['sourceIp']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

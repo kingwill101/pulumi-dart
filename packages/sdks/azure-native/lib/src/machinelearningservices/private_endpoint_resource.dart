@@ -9,19 +9,20 @@ class PrivateEndpointResource {
 
   /// Creates a new [PrivateEndpointResource].
   /// [subnetArmId] The subnetId that the private endpoint is connected to.
-  PrivateEndpointResource({this.subnetArmId});
+  PrivateEndpointResource({
+    this.subnetArmId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'subnetArmId': ?subnetArmId};
+    return <String, dynamic>{
+      'subnetArmId': ?subnetArmId,
+    };
   }
 
   factory PrivateEndpointResource.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointResource(
-      subnetArmId: (() {
-        final guardedValue = map['subnetArmId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      subnetArmId: (() { final guardedValue = map['subnetArmId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

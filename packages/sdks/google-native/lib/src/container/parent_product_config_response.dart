@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ParentProductConfigResponse {
   /// Labels contain the configuration of the parent product.
   final pulumi.Input<Map<String, String>> labels;
-
   /// Name of the parent product associated with the cluster.
   final pulumi.Input<String> productName;
 
@@ -19,15 +18,17 @@ class ParentProductConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'labels': labels, 'productName': productName};
+    return <String, dynamic>{
+      'labels': labels,
+      'productName': productName,
+    };
   }
 
   factory ParentProductConfigResponse.fromMap(Map<String, dynamic> map) {
     return ParentProductConfigResponse(
-      labels: pulumi.Input.fromValue(
-        (map['labels'] as Map).cast<String, String>(),
-      ),
+      labels: pulumi.Input.fromValue((map['labels'] as Map).cast<String, String>()),
       productName: pulumi.Input.fromValue(map['productName'] as String),
     );
   }
 }
+

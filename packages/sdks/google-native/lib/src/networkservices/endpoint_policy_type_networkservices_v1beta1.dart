@@ -13,8 +13,7 @@ enum EndpointPolicyTypeNetworkservicesV1beta1 {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown EndpointPolicyTypeNetworkservicesV1beta1 value: $value',
-    );
+    throw ArgumentError('Unknown EndpointPolicyTypeNetworkservicesV1beta1 value: $value');
   }
 }
+

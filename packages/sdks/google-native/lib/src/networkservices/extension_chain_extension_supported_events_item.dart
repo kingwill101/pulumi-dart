@@ -14,8 +14,7 @@ enum ExtensionChainExtensionSupportedEventsItem {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ExtensionChainExtensionSupportedEventsItem value: $value',
-    );
+    throw ArgumentError('Unknown ExtensionChainExtensionSupportedEventsItem value: $value');
   }
 }
+

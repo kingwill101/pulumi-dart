@@ -146,16 +146,12 @@ import 'sql_pool_transparent_data_encryption_args.dart';
 class SqlPoolTransparentDataEncryption extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Resource location.
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The status of the database transparent data encryption.
   late final pulumi.Output<String?> status;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -168,11 +164,11 @@ class SqlPoolTransparentDataEncryption extends pulumi.CustomResource {
     SqlPoolTransparentDataEncryptionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:synapse:SqlPoolTransparentDataEncryption',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:synapse:SqlPoolTransparentDataEncryption',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

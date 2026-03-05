@@ -38,11 +38,8 @@ class GetGlossaryEntryArgs {
       glossaryEntryId: pulumi.Input.fromValue(map['glossaryEntryId'] as String),
       glossaryId: pulumi.Input.fromValue(map['glossaryId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -9,7 +9,9 @@ class DevCenterProjectCatalogSettings {
 
   /// Creates a new [DevCenterProjectCatalogSettings].
   /// [catalogItemSyncEnableStatus] Whether project catalogs associated with projects in this dev center can be configured to sync catalog items.
-  DevCenterProjectCatalogSettings({this.catalogItemSyncEnableStatus});
+  DevCenterProjectCatalogSettings({
+    this.catalogItemSyncEnableStatus,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,11 +21,8 @@ class DevCenterProjectCatalogSettings {
 
   factory DevCenterProjectCatalogSettings.fromMap(Map<String, dynamic> map) {
     return DevCenterProjectCatalogSettings(
-      catalogItemSyncEnableStatus: (() {
-        final guardedValue = map['catalogItemSyncEnableStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      catalogItemSyncEnableStatus: (() { final guardedValue = map['catalogItemSyncEnableStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

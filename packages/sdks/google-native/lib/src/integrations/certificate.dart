@@ -7,34 +7,23 @@ import 'google_cloud_integrations_v1alpha_client_certificate_response.dart';
 class Certificate extends pulumi.CustomResource {
   /// Status of the certificate
   late final pulumi.Output<String> certificateStatus;
-
   /// Immutable. Credential id that will be used to register with trawler INTERNAL_ONLY
   late final pulumi.Output<String> credentialId;
-
   /// Description of the certificate
   late final pulumi.Output<String> description;
-
   /// Name of the certificate
   late final pulumi.Output<String> displayName;
   late final pulumi.Output<String> location;
-
   /// Auto generated primary key
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> productId;
   late final pulumi.Output<String> project;
-
   /// Input only. Raw client certificate which would be registered with trawler
-  late final pulumi.Output<
-    GoogleCloudIntegrationsV1alphaClientCertificateResponse
-  >
-  rawCertificate;
-
+  late final pulumi.Output<GoogleCloudIntegrationsV1alphaClientCertificateResponse> rawCertificate;
   /// Immutable. Requestor ID to be used to register certificate with trawler
   late final pulumi.Output<String> requestorId;
-
   /// The timestamp after which certificate will expire
   late final pulumi.Output<String> validEndTime;
-
   /// The timestamp after which certificate will be valid
   late final pulumi.Output<String> validStartTime;
 
@@ -47,11 +36,11 @@ class Certificate extends pulumi.CustomResource {
     CertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'google-native:integrations/v1alpha:Certificate',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'google-native:integrations/v1alpha:Certificate',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     certificateStatus = registerOutput<String>('certificateStatus');
     credentialId = registerOutput<String>('credentialId');
     description = registerOutput<String>('description');
@@ -60,17 +49,7 @@ class Certificate extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     productId = registerOutput<String>('productId');
     project = registerOutput<String>('project');
-    rawCertificate =
-        registerOutput<GoogleCloudIntegrationsV1alphaClientCertificateResponse>(
-          'rawCertificate',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return GoogleCloudIntegrationsV1alphaClientCertificateResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    rawCertificate = registerOutput<GoogleCloudIntegrationsV1alphaClientCertificateResponse>('rawCertificate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudIntegrationsV1alphaClientCertificateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     requestorId = registerOutput<String>('requestorId');
     validEndTime = registerOutput<String>('validEndTime');
     validStartTime = registerOutput<String>('validStartTime');

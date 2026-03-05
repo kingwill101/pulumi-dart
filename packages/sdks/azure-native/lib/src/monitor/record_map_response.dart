@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RecordMapResponse {
   /// Record Map Key.
   final pulumi.Input<String> from;
-
   /// Record Map Value.
   final pulumi.Input<String> to;
 
   /// Creates a new [RecordMapResponse].
   /// [from] Record Map Key.
   /// [to] Record Map Value.
-  RecordMapResponse({required this.from, required this.to});
+  RecordMapResponse({
+    required this.from,
+    required this.to,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'from': from, 'to': to};
+    return <String, dynamic>{
+      'from': from,
+      'to': to,
+    };
   }
 
   factory RecordMapResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class RecordMapResponse {
     );
   }
 }
+

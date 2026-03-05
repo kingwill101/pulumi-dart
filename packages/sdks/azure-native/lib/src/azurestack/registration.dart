@@ -140,28 +140,20 @@ import 'registration_args.dart';
 class Registration extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Specifies the billing mode for the Azure Stack registration.
   late final pulumi.Output<String?> billingModel;
-
   /// The identifier of the registered Azure Stack.
   late final pulumi.Output<String?> cloudId;
-
   /// The entity tag used for optimistic concurrency when modifying the resource.
   late final pulumi.Output<String?> etag;
-
   /// Location of the resource.
   late final pulumi.Output<String> location;
-
   /// Name of the resource.
   late final pulumi.Output<String> name;
-
   /// The object identifier associated with the Azure Stack connecting to Azure.
   late final pulumi.Output<String?> objectId;
-
   /// Custom tags for the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Type of Resource.
   late final pulumi.Output<String> type;
 
@@ -174,11 +166,11 @@ class Registration extends pulumi.CustomResource {
     RegistrationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:azurestack:Registration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:azurestack:Registration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     billingModel = registerOutput<String?>('billingModel');
     cloudId = registerOutput<String?>('cloudId');

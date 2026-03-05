@@ -11,24 +11,18 @@ class SharedAccessPolicyArgs {
   ///
   /// &gt; **Note:** At least one of `registry_read`, `registry_write`, `service_connect`, `device_connect` permissions must be set to `true`.
   final pulumi.Input<bool>? deviceConnect;
-
   /// The name of the IoTHub to which this Shared Access Policy belongs. Changing this forces a new resource to be created.
   final pulumi.Input<String> iothubName;
-
   /// Specifies the name of the IotHub Shared Access Policy resource. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// Adds `RegistryRead` permission to this Shared Access Account. It allows read access to the identity registry.
   final pulumi.Input<bool>? registryRead;
-
   /// Adds `RegistryWrite` permission to this Shared Access Account. It allows write access to the identity registry.
   ///
   /// &gt; **Note:** When `registry_write` is set to `true`, `registry_read` must also be set to true. This is a limitation of the Azure REST API
   final pulumi.Input<bool>? registryWrite;
-
   /// The name of the resource group under which the IotHub Shared Access Policy resource has to be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
-
   /// Adds `ServiceConnect` permission to this Shared Access Account. It allows sending and receiving on the cloud-side endpoints.
   final pulumi.Input<bool>? serviceConnect;
 
@@ -64,35 +58,14 @@ class SharedAccessPolicyArgs {
 
   factory SharedAccessPolicyArgs.fromMap(Map<String, dynamic> map) {
     return SharedAccessPolicyArgs(
-      deviceConnect: (() {
-        final guardedValue = map['deviceConnect'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      deviceConnect: (() { final guardedValue = map['deviceConnect']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       iothubName: pulumi.Input.fromValue(map['iothubName'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      registryRead: (() {
-        final guardedValue = map['registryRead'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      registryWrite: (() {
-        final guardedValue = map['registryWrite'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      serviceConnect: (() {
-        final guardedValue = map['serviceConnect'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      registryRead: (() { final guardedValue = map['registryRead']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      registryWrite: (() { final guardedValue = map['registryWrite']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      serviceConnect: (() { final guardedValue = map['serviceConnect']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

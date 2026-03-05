@@ -196,19 +196,14 @@ import 'droplet_snapshot_state.dart';
 class DropletSnapshot extends pulumi.CustomResource {
   /// The date and time the Droplet snapshot was created.
   late final pulumi.Output<String> createdAt;
-
   /// The ID of the Droplet from which the snapshot will be taken.
   late final pulumi.Output<String> dropletId;
-
   /// The minimum size in gigabytes required for a Droplet to be created based on this snapshot.
   late final pulumi.Output<int> minDiskSize;
-
   /// A name for the Droplet snapshot.
   late final pulumi.Output<String> name;
-
   /// A list of DigitalOcean region "slugs" indicating where the droplet snapshot is available.
   late final pulumi.Output<List<String>> regions;
-
   /// The billable size of the Droplet snapshot in gigabytes.
   late final pulumi.Output<double> size;
 
@@ -221,11 +216,11 @@ class DropletSnapshot extends pulumi.CustomResource {
     DropletSnapshotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/dropletSnapshot:DropletSnapshot',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/dropletSnapshot:DropletSnapshot',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createdAt = registerOutput<String>('createdAt');
     dropletId = registerOutput<String>('dropletId');
     minDiskSize = registerOutput<int>('minDiskSize');
@@ -252,11 +247,11 @@ class DropletSnapshot extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/dropletSnapshot:DropletSnapshot',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/dropletSnapshot:DropletSnapshot',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createdAt = registerOutput<String>('createdAt');
     dropletId = registerOutput<String>('dropletId');
     minDiskSize = registerOutput<int>('minDiskSize');

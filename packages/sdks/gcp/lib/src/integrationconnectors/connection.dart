@@ -1755,104 +1755,76 @@ class Connection extends pulumi.CustomResource {
   /// authConfig for the connection.
   /// Structure is documented below.
   late final pulumi.Output<ConnectionAuthConfig?> authConfig;
-
   /// Config Variables for the connection.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> configVariables;
-
   /// Connection revision. This field is only updated when the connection is created or updated by User.
   late final pulumi.Output<String> connectionRevision;
-
   /// connectorVersion of the Connector.
   late final pulumi.Output<String> connectorVersion;
-
   /// This configuration provides infra configs like rate limit threshold which need to be configurable for every connector version.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>>
-  connectorVersionInfraConfigs;
-
+  late final pulumi.Output<List<Map<String, dynamic>>> connectorVersionInfraConfigs;
   /// Flag to mark the version indicating the launch stage.
   late final pulumi.Output<String> connectorVersionLaunchStage;
-
   /// Time the Namespace was created in UTC.
   late final pulumi.Output<String> createTime;
-
   /// An arbitrary description for the Connection.
   late final pulumi.Output<String?> description;
-
   /// Define the Connectors target endpoint.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> destinationConfigs;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Eventing Configuration of a connection
   /// Structure is documented below.
   late final pulumi.Output<ConnectionEventingConfig?> eventingConfig;
-
   /// Eventing enablement type. Will be nil if eventing is not enabled.
   /// Possible values are: `EVENTING_AND_CONNECTION`, `ONLY_EVENTING`.
   late final pulumi.Output<String?> eventingEnablementType;
-
   /// Eventing Runtime Data.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> eventingRuntimeDatas;
-
   /// Resource labels to represent user provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// Location in which Connection needs to be created.
   late final pulumi.Output<String> location;
-
   /// Determines whether or no a connection is locked. If locked, a reason must be specified.
   /// Structure is documented below.
   late final pulumi.Output<ConnectionLockConfig?> lockConfig;
-
   /// Log configuration for the connection.
   /// Structure is documented below.
   late final pulumi.Output<ConnectionLogConfig?> logConfig;
-
   /// Name of Connection needs to be created.
   late final pulumi.Output<String> name;
-
   /// Node configuration for the connection.
   /// Structure is documented below.
   late final pulumi.Output<ConnectionNodeConfig> nodeConfig;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// Service account needed for runtime plane to access Google Cloud resources.
   late final pulumi.Output<String> serviceAccount;
-
   /// The name of the Service Directory service name. Used for Private Harpoon to resolve the ILB address.
   /// e.g. "projects/cloud-connectors-e2e-testing/locations/us-central1/namespaces/istio-system/services/istio-ingressgateway-connectors"
   late final pulumi.Output<String> serviceDirectory;
-
   /// SSL Configuration of a connection
   /// Structure is documented below.
   late final pulumi.Output<ConnectionSslConfig?> sslConfig;
-
   /// (Output)
   /// Current status of eventing.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> statuses;
-
   /// This subscription type enum states the subscription type of the project.
   late final pulumi.Output<String> subscriptionType;
-
   /// Suspended indicates if a user has suspended a connection or not.
   late final pulumi.Output<bool?> suspended;
-
   /// Time the Namespace was updated in UTC.
   late final pulumi.Output<String> updateTime;
 
@@ -1865,99 +1837,35 @@ class Connection extends pulumi.CustomResource {
     ConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:integrationconnectors/connection:Connection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    authConfig = registerOutput<ConnectionAuthConfig?>(
-      'authConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectionAuthConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    configVariables = registerOutput<List<Map<String, dynamic>>?>(
-      'configVariables',
-    );
+          'gcp:integrationconnectors/connection:Connection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    authConfig = registerOutput<ConnectionAuthConfig?>('authConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionAuthConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    configVariables = registerOutput<List<Map<String, dynamic>>?>('configVariables');
     connectionRevision = registerOutput<String>('connectionRevision');
     connectorVersion = registerOutput<String>('connectorVersion');
-    connectorVersionInfraConfigs = registerOutput<List<Map<String, dynamic>>>(
-      'connectorVersionInfraConfigs',
-    );
-    connectorVersionLaunchStage = registerOutput<String>(
-      'connectorVersionLaunchStage',
-    );
+    connectorVersionInfraConfigs = registerOutput<List<Map<String, dynamic>>>('connectorVersionInfraConfigs');
+    connectorVersionLaunchStage = registerOutput<String>('connectorVersionLaunchStage');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
-    destinationConfigs = registerOutput<List<Map<String, dynamic>>?>(
-      'destinationConfigs',
-    );
+    destinationConfigs = registerOutput<List<Map<String, dynamic>>?>('destinationConfigs');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    eventingConfig = registerOutput<ConnectionEventingConfig?>(
-      'eventingConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectionEventingConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    eventingConfig = registerOutput<ConnectionEventingConfig?>('eventingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionEventingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     eventingEnablementType = registerOutput<String?>('eventingEnablementType');
-    eventingRuntimeDatas = registerOutput<List<Map<String, dynamic>>>(
-      'eventingRuntimeDatas',
-    );
+    eventingRuntimeDatas = registerOutput<List<Map<String, dynamic>>>('eventingRuntimeDatas');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
-    lockConfig = registerOutput<ConnectionLockConfig?>(
-      'lockConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectionLockConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    logConfig = registerOutput<ConnectionLogConfig?>(
-      'logConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectionLogConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    lockConfig = registerOutput<ConnectionLockConfig?>('lockConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionLockConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    logConfig = registerOutput<ConnectionLogConfig?>('logConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionLogConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    nodeConfig = registerOutput<ConnectionNodeConfig>(
-      'nodeConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectionNodeConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    nodeConfig = registerOutput<ConnectionNodeConfig>('nodeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionNodeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     serviceAccount = registerOutput<String>('serviceAccount');
     serviceDirectory = registerOutput<String>('serviceDirectory');
-    sslConfig = registerOutput<ConnectionSslConfig?>(
-      'sslConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectionSslConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sslConfig = registerOutput<ConnectionSslConfig?>('sslConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionSslConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
     subscriptionType = registerOutput<String>('subscriptionType');
     suspended = registerOutput<bool?>('suspended');
@@ -1982,99 +1890,35 @@ class Connection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:integrationconnectors/connection:Connection',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    authConfig = registerOutput<ConnectionAuthConfig?>(
-      'authConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectionAuthConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    configVariables = registerOutput<List<Map<String, dynamic>>?>(
-      'configVariables',
-    );
+          'gcp:integrationconnectors/connection:Connection',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    authConfig = registerOutput<ConnectionAuthConfig?>('authConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionAuthConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    configVariables = registerOutput<List<Map<String, dynamic>>?>('configVariables');
     connectionRevision = registerOutput<String>('connectionRevision');
     connectorVersion = registerOutput<String>('connectorVersion');
-    connectorVersionInfraConfigs = registerOutput<List<Map<String, dynamic>>>(
-      'connectorVersionInfraConfigs',
-    );
-    connectorVersionLaunchStage = registerOutput<String>(
-      'connectorVersionLaunchStage',
-    );
+    connectorVersionInfraConfigs = registerOutput<List<Map<String, dynamic>>>('connectorVersionInfraConfigs');
+    connectorVersionLaunchStage = registerOutput<String>('connectorVersionLaunchStage');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
-    destinationConfigs = registerOutput<List<Map<String, dynamic>>?>(
-      'destinationConfigs',
-    );
+    destinationConfigs = registerOutput<List<Map<String, dynamic>>?>('destinationConfigs');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    eventingConfig = registerOutput<ConnectionEventingConfig?>(
-      'eventingConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectionEventingConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    eventingConfig = registerOutput<ConnectionEventingConfig?>('eventingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionEventingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     eventingEnablementType = registerOutput<String?>('eventingEnablementType');
-    eventingRuntimeDatas = registerOutput<List<Map<String, dynamic>>>(
-      'eventingRuntimeDatas',
-    );
+    eventingRuntimeDatas = registerOutput<List<Map<String, dynamic>>>('eventingRuntimeDatas');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
-    lockConfig = registerOutput<ConnectionLockConfig?>(
-      'lockConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectionLockConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    logConfig = registerOutput<ConnectionLogConfig?>(
-      'logConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectionLogConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    lockConfig = registerOutput<ConnectionLockConfig?>('lockConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionLockConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    logConfig = registerOutput<ConnectionLogConfig?>('logConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionLogConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    nodeConfig = registerOutput<ConnectionNodeConfig>(
-      'nodeConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectionNodeConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    nodeConfig = registerOutput<ConnectionNodeConfig>('nodeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionNodeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     serviceAccount = registerOutput<String>('serviceAccount');
     serviceDirectory = registerOutput<String>('serviceDirectory');
-    sslConfig = registerOutput<ConnectionSslConfig?>(
-      'sslConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectionSslConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sslConfig = registerOutput<ConnectionSslConfig?>('sslConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionSslConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
     subscriptionType = registerOutput<String>('subscriptionType');
     suspended = registerOutput<bool?>('suspended');

@@ -7,38 +7,28 @@ import 'azure_workload_container_extended_info.dart';
 class AzureWorkloadContainer {
   /// Type of backup management for the container.
   final pulumi.Input<String>? backupManagementType;
-
   /// Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
   /// Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
   /// Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
   /// Backup is VMAppContainer
   /// Expected value is 'AzureWorkloadContainer'.
   final pulumi.Input<String> containerType;
-
   /// Additional details of a workload container.
   final pulumi.Input<AzureWorkloadContainerExtendedInfo>? extendedInfo;
-
   /// Friendly name of the container.
   final pulumi.Input<String>? friendlyName;
-
   /// Status of health of the container.
   final pulumi.Input<String>? healthStatus;
-
   /// Time stamp when this container was updated.
   final pulumi.Input<String>? lastUpdatedTime;
-
   /// Re-Do Operation
   final pulumi.Input<String>? operationType;
-
   /// Type of the protectable object associated with this container
   final pulumi.Input<String>? protectableObjectType;
-
   /// Status of registration of the container with the Recovery Services Vault.
   final pulumi.Input<String>? registrationStatus;
-
   /// ARM ID of the virtual machine represented by this Azure Workload Container
   final pulumi.Input<String>? sourceResourceId;
-
   /// Workload type for which registration was sent.
   final pulumi.Input<String>? workloadType;
 
@@ -72,11 +62,7 @@ class AzureWorkloadContainer {
     return <String, dynamic>{
       'backupManagementType': ?backupManagementType,
       'containerType': containerType,
-      'extendedInfo':
-          ?pulumi.Input.mapOptionalInputValue<
-            AzureWorkloadContainerExtendedInfo,
-            Map<String, dynamic>
-          >(extendedInfo, (value) => value.toMap()),
+      'extendedInfo': ?pulumi.Input.mapOptionalInputValue<AzureWorkloadContainerExtendedInfo, Map<String, dynamic>>(extendedInfo, (value) => value.toMap()),
       'friendlyName': ?friendlyName,
       'healthStatus': ?healthStatus,
       'lastUpdatedTime': ?lastUpdatedTime,
@@ -90,61 +76,18 @@ class AzureWorkloadContainer {
 
   factory AzureWorkloadContainer.fromMap(Map<String, dynamic> map) {
     return AzureWorkloadContainer(
-      backupManagementType: (() {
-        final guardedValue = map['backupManagementType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      backupManagementType: (() { final guardedValue = map['backupManagementType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       containerType: pulumi.Input.fromValue(map['containerType'] as String),
-      extendedInfo: (() {
-        final guardedValue = map['extendedInfo'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AzureWorkloadContainerExtendedInfo.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      friendlyName: (() {
-        final guardedValue = map['friendlyName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      healthStatus: (() {
-        final guardedValue = map['healthStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      lastUpdatedTime: (() {
-        final guardedValue = map['lastUpdatedTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      operationType: (() {
-        final guardedValue = map['operationType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      protectableObjectType: (() {
-        final guardedValue = map['protectableObjectType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      registrationStatus: (() {
-        final guardedValue = map['registrationStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sourceResourceId: (() {
-        final guardedValue = map['sourceResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      workloadType: (() {
-        final guardedValue = map['workloadType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      extendedInfo: (() { final guardedValue = map['extendedInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureWorkloadContainerExtendedInfo.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      friendlyName: (() { final guardedValue = map['friendlyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      healthStatus: (() { final guardedValue = map['healthStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      lastUpdatedTime: (() { final guardedValue = map['lastUpdatedTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      operationType: (() { final guardedValue = map['operationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      protectableObjectType: (() { final guardedValue = map['protectableObjectType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      registrationStatus: (() { final guardedValue = map['registrationStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourceResourceId: (() { final guardedValue = map['sourceResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      workloadType: (() { final guardedValue = map['workloadType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

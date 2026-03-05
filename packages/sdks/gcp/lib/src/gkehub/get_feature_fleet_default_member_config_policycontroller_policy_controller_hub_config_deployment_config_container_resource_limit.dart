@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimit {
   /// CPU requirement expressed in Kubernetes resource units.
   final pulumi.Input<String> cpu;
-
   /// Memory requirement expressed in Kubernetes resource units.
   final pulumi.Input<String> memory;
 
@@ -18,15 +17,17 @@ class GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfi
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'cpu': cpu, 'memory': memory};
+    return <String, dynamic>{
+      'cpu': cpu,
+      'memory': memory,
+    };
   }
 
-  factory GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimit.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimit.fromMap(Map<String, dynamic> map) {
     return GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimit(
       cpu: pulumi.Input.fromValue(map['cpu'] as String),
       memory: pulumi.Input.fromValue(map['memory'] as String),
     );
   }
 }
+

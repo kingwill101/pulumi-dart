@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class QuicksetupConfigurationManagerStatusSummary {
   /// Current status.
   final pulumi.Input<String> status;
-
   /// When applicable, returns an informational message relevant to the current status and status type of the status summary object.
   final pulumi.Input<String> statusMessage;
-
   /// Type of a status summary.
   final pulumi.Input<String> statusType;
 
@@ -30,9 +28,7 @@ class QuicksetupConfigurationManagerStatusSummary {
     };
   }
 
-  factory QuicksetupConfigurationManagerStatusSummary.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory QuicksetupConfigurationManagerStatusSummary.fromMap(Map<String, dynamic> map) {
     return QuicksetupConfigurationManagerStatusSummary(
       status: pulumi.Input.fromValue(map['status'] as String),
       statusMessage: pulumi.Input.fromValue(map['statusMessage'] as String),
@@ -40,3 +36,4 @@ class QuicksetupConfigurationManagerStatusSummary {
     );
   }
 }
+

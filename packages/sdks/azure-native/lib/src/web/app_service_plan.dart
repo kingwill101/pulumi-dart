@@ -187,97 +187,65 @@ import 'sku_description_response.dart';
 class AppServicePlan extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// ServerFarm supports ElasticScale. Apps in this plan will scale as if the ServerFarm was ElasticPremium sku
   late final pulumi.Output<bool?> elasticScaleEnabled;
-
   /// Extended Location.
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
-
   /// The time when the server farm free offer expires.
   late final pulumi.Output<String?> freeOfferExpirationTime;
-
   /// Geographical location for the App Service plan.
   late final pulumi.Output<String> geoRegion;
-
   /// Specification for the App Service Environment to use for the App Service plan.
-  late final pulumi.Output<HostingEnvironmentProfileResponse?>
-  hostingEnvironmentProfile;
-
+  late final pulumi.Output<HostingEnvironmentProfileResponse?> hostingEnvironmentProfile;
   /// If Hyper-V container app service plan &lt;code&gt;true&lt;/code&gt;, &lt;code&gt;false&lt;/code&gt; otherwise.
   late final pulumi.Output<bool?> hyperV;
-
   /// If &lt;code&gt;true&lt;/code&gt;, this App Service Plan owns spot instances.
   late final pulumi.Output<bool?> isSpot;
-
   /// Obsolete: If Hyper-V container app service plan &lt;code&gt;true&lt;/code&gt;, &lt;code&gt;false&lt;/code&gt; otherwise.
   late final pulumi.Output<bool?> isXenon;
-
   /// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
   late final pulumi.Output<String?> kind;
-
   /// Specification for the Kubernetes Environment to use for the App Service plan.
-  late final pulumi.Output<KubeEnvironmentProfileResponse?>
-  kubeEnvironmentProfile;
-
+  late final pulumi.Output<KubeEnvironmentProfileResponse?> kubeEnvironmentProfile;
   /// Resource Location.
   late final pulumi.Output<String> location;
-
   /// Maximum number of total workers allowed for this ElasticScaleEnabled App Service Plan
   late final pulumi.Output<int?> maximumElasticWorkerCount;
-
   /// Maximum number of instances that can be assigned to this App Service plan.
   late final pulumi.Output<int> maximumNumberOfWorkers;
-
   /// Resource Name.
   late final pulumi.Output<String> name;
-
   /// Number of apps assigned to this App Service plan.
   late final pulumi.Output<int> numberOfSites;
-
   /// The number of instances that are assigned to this App Service plan.
   late final pulumi.Output<int> numberOfWorkers;
-
   /// If &lt;code&gt;true&lt;/code&gt;, apps assigned to this App Service plan can be scaled independently.
   /// If &lt;code&gt;false&lt;/code&gt;, apps assigned to this App Service plan will scale to all instances of the plan.
   late final pulumi.Output<bool?> perSiteScaling;
-
   /// Provisioning state of the App Service Plan.
   late final pulumi.Output<String> provisioningState;
-
   /// If Linux app service plan &lt;code&gt;true&lt;/code&gt;, &lt;code&gt;false&lt;/code&gt; otherwise.
   late final pulumi.Output<bool?> reserved;
-
   /// Resource group of the App Service plan.
   late final pulumi.Output<String> resourceGroup;
-
   /// Description of a SKU for a scalable resource.
   late final pulumi.Output<SkuDescriptionResponse?> sku;
-
   /// The time when the server farm expires. Valid only if it is a spot server farm.
   late final pulumi.Output<String?> spotExpirationTime;
-
   /// App Service plan status.
   late final pulumi.Output<String> status;
-
   /// App Service plan subscription.
   late final pulumi.Output<String> subscription;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Scaling worker count.
   late final pulumi.Output<int?> targetWorkerCount;
-
   /// Scaling worker size ID.
   late final pulumi.Output<int?> targetWorkerSizeId;
-
   /// Resource type.
   late final pulumi.Output<String> type;
-
   /// Target worker tier assigned to the App Service plan.
   late final pulumi.Output<String?> workerTierName;
-
   /// If &lt;code&gt;true&lt;/code&gt;, this App Service Plan will perform availability zone balancing.
   /// If &lt;code&gt;false&lt;/code&gt;, this App Service Plan will not perform availability zone balancing.
   late final pulumi.Output<bool?> zoneRedundant;
@@ -291,56 +259,24 @@ class AppServicePlan extends pulumi.CustomResource {
     AppServicePlanArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:web:AppServicePlan',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:web:AppServicePlan',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     elasticScaleEnabled = registerOutput<bool?>('elasticScaleEnabled');
-    extendedLocation = registerOutput<ExtendedLocationResponse?>(
-      'extendedLocation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExtendedLocationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    freeOfferExpirationTime = registerOutput<String?>(
-      'freeOfferExpirationTime',
-    );
+    extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    freeOfferExpirationTime = registerOutput<String?>('freeOfferExpirationTime');
     geoRegion = registerOutput<String>('geoRegion');
-    hostingEnvironmentProfile =
-        registerOutput<HostingEnvironmentProfileResponse?>(
-          'hostingEnvironmentProfile',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return HostingEnvironmentProfileResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    hostingEnvironmentProfile = registerOutput<HostingEnvironmentProfileResponse?>('hostingEnvironmentProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HostingEnvironmentProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     hyperV = registerOutput<bool?>('hyperV');
     isSpot = registerOutput<bool?>('isSpot');
     isXenon = registerOutput<bool?>('isXenon');
     kind = registerOutput<String?>('kind');
-    kubeEnvironmentProfile = registerOutput<KubeEnvironmentProfileResponse?>(
-      'kubeEnvironmentProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return KubeEnvironmentProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    kubeEnvironmentProfile = registerOutput<KubeEnvironmentProfileResponse?>('kubeEnvironmentProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubeEnvironmentProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
-    maximumElasticWorkerCount = registerOutput<int?>(
-      'maximumElasticWorkerCount',
-    );
+    maximumElasticWorkerCount = registerOutput<int?>('maximumElasticWorkerCount');
     maximumNumberOfWorkers = registerOutput<int>('maximumNumberOfWorkers');
     this.name = registerOutput<String>('name');
     numberOfSites = registerOutput<int>('numberOfSites');
@@ -349,16 +285,7 @@ class AppServicePlan extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     reserved = registerOutput<bool?>('reserved');
     resourceGroup = registerOutput<String>('resourceGroup');
-    sku = registerOutput<SkuDescriptionResponse?>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SkuDescriptionResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sku = registerOutput<SkuDescriptionResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuDescriptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     spotExpirationTime = registerOutput<String?>('spotExpirationTime');
     status = registerOutput<String>('status');
     subscription = registerOutput<String>('subscription');

@@ -8,13 +8,20 @@ class NetworkMetadata {
 
   /// Creates a new [NetworkMetadata].
   /// [xml] Configures XML-based metadata for the network.
-  NetworkMetadata({required this.xml});
+  NetworkMetadata({
+    required this.xml,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'xml': xml};
+    return <String, dynamic>{
+      'xml': xml,
+    };
   }
 
   factory NetworkMetadata.fromMap(Map<String, dynamic> map) {
-    return NetworkMetadata(xml: pulumi.Input.fromValue(map['xml'] as String));
+    return NetworkMetadata(
+      xml: pulumi.Input.fromValue(map['xml'] as String),
+    );
   }
 }
+

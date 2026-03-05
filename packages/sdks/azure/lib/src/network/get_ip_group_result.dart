@@ -1,18 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getIpGroup.
 class GetIpGroupResult {
   /// A list of CIDRs or IP addresses.
   final List<String> cidrs;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The supported Azure location where the resource exists.
   final String location;
   final String name;
   final String resourceGroupName;
-
   /// A mapping of tags assigned to the resource.
   final Map<String, String> tags;
 
@@ -54,3 +52,4 @@ class GetIpGroupResult {
     );
   }
 }
+

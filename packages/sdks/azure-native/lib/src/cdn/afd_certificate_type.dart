@@ -16,3 +16,4 @@ enum AfdCertificateType {
     throw ArgumentError('Unknown AfdCertificateType value: $value');
   }
 }
+

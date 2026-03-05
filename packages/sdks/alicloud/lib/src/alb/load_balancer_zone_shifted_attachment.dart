@@ -551,13 +551,10 @@ import 'load_balancer_zone_shifted_attachment_state.dart';
 class LoadBalancerZoneShiftedAttachment extends pulumi.CustomResource {
   /// The ID of the load balancing instance.
   late final pulumi.Output<String> loadBalancerId;
-
   /// Availability zone status. Value:
   late final pulumi.Output<String> status;
-
   /// The VSwitch corresponding to the zone. By default, each zone uses one VSwitch and one subnet.
   late final pulumi.Output<String> vswitchId;
-
   /// The ID of the zone.
   late final pulumi.Output<String> zoneId;
 
@@ -570,11 +567,11 @@ class LoadBalancerZoneShiftedAttachment extends pulumi.CustomResource {
     LoadBalancerZoneShiftedAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:alb/loadBalancerZoneShiftedAttachment:LoadBalancerZoneShiftedAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:alb/loadBalancerZoneShiftedAttachment:LoadBalancerZoneShiftedAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     loadBalancerId = registerOutput<String>('loadBalancerId');
     status = registerOutput<String>('status');
     vswitchId = registerOutput<String>('vswitchId');
@@ -599,11 +596,11 @@ class LoadBalancerZoneShiftedAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:alb/loadBalancerZoneShiftedAttachment:LoadBalancerZoneShiftedAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:alb/loadBalancerZoneShiftedAttachment:LoadBalancerZoneShiftedAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     loadBalancerId = registerOutput<String>('loadBalancerId');
     status = registerOutput<String>('status');
     vswitchId = registerOutput<String>('vswitchId');

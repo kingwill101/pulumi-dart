@@ -413,7 +413,6 @@ class AccessLevels extends pulumi.CustomResource {
   /// The desired Access Levels that should replace all existing Access Levels in the Access Policy.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> accessLevels;
-
   /// The AccessPolicy this AccessLevel lives in.
   /// Format: accessPolicies/{policy_id}
   late final pulumi.Output<String> parent;
@@ -427,11 +426,11 @@ class AccessLevels extends pulumi.CustomResource {
     AccessLevelsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:accesscontextmanager/accessLevels:AccessLevels',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:accesscontextmanager/accessLevels:AccessLevels',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessLevels = registerOutput<List<Map<String, dynamic>>?>('accessLevels');
     parent = registerOutput<String>('parent');
   }
@@ -454,11 +453,11 @@ class AccessLevels extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:accesscontextmanager/accessLevels:AccessLevels',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:accesscontextmanager/accessLevels:AccessLevels',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessLevels = registerOutput<List<Map<String, dynamic>>?>('accessLevels');
     parent = registerOutput<String>('parent');
   }

@@ -6,16 +6,12 @@ import 'get_custom_properties_property_property_value.dart';
 class GetCustomPropertiesProperty {
   /// The first ID of the resource.
   final pulumi.Input<String> customPropertyId;
-
   /// The ID of the Custom Property.
   final pulumi.Input<String> id;
-
   /// The Custom attribute key.
   final pulumi.Input<String> propertyKey;
-
   /// Custom attribute sets the value of.
-  final pulumi.Input<List<GetCustomPropertiesPropertyPropertyValue>>
-  propertyValues;
+  final pulumi.Input<List<GetCustomPropertiesPropertyPropertyValue>> propertyValues;
 
   /// Creates a new [GetCustomPropertiesProperty].
   /// [customPropertyId] The first ID of the resource.
@@ -34,36 +30,17 @@ class GetCustomPropertiesProperty {
       'customPropertyId': customPropertyId,
       'id': id,
       'propertyKey': propertyKey,
-      'propertyValues':
-          pulumi.Input.mapInputValue<
-            List<GetCustomPropertiesPropertyPropertyValue>,
-            List<Map<String, dynamic>>
-          >(
-            propertyValues,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetCustomPropertiesPropertyPropertyValue,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'propertyValues': pulumi.Input.mapInputValue<List<GetCustomPropertiesPropertyPropertyValue>, List<Map<String, dynamic>>>(propertyValues, (value) => pulumi.Input.encodeList<GetCustomPropertiesPropertyPropertyValue, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetCustomPropertiesProperty.fromMap(Map<String, dynamic> map) {
     return GetCustomPropertiesProperty(
-      customPropertyId: pulumi.Input.fromValue(
-        map['customPropertyId'] as String,
-      ),
+      customPropertyId: pulumi.Input.fromValue(map['customPropertyId'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
       propertyKey: pulumi.Input.fromValue(map['propertyKey'] as String),
-      propertyValues: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetCustomPropertiesPropertyPropertyValue>(
-          map['propertyValues']!,
-          (value) => GetCustomPropertiesPropertyPropertyValue.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      propertyValues: pulumi.Input.fromValue(pulumi.Input.decodeList<GetCustomPropertiesPropertyPropertyValue>(map['propertyValues']!, (value) => GetCustomPropertiesPropertyPropertyValue.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

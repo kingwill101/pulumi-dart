@@ -105,10 +105,8 @@ import 'vpn_gateway_route_propagation_state.dart';
 class VpnGatewayRoutePropagation extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The id of the `aws.ec2.RouteTable` to propagate routes into.
   late final pulumi.Output<String> routeTableId;
-
   /// The id of the `aws.ec2.VpnGateway` to propagate routes from.
   late final pulumi.Output<String> vpnGatewayId;
 
@@ -121,11 +119,11 @@ class VpnGatewayRoutePropagation extends pulumi.CustomResource {
     VpnGatewayRoutePropagationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/vpnGatewayRoutePropagation:VpnGatewayRoutePropagation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/vpnGatewayRoutePropagation:VpnGatewayRoutePropagation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     region = registerOutput<String>('region');
     routeTableId = registerOutput<String>('routeTableId');
     vpnGatewayId = registerOutput<String>('vpnGatewayId');
@@ -149,11 +147,11 @@ class VpnGatewayRoutePropagation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/vpnGatewayRoutePropagation:VpnGatewayRoutePropagation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/vpnGatewayRoutePropagation:VpnGatewayRoutePropagation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     region = registerOutput<String>('region');
     routeTableId = registerOutput<String>('routeTableId');
     vpnGatewayId = registerOutput<String>('vpnGatewayId');

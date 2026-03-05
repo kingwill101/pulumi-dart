@@ -7,9 +7,7 @@ import 'leaf_certificate_configuration.dart';
 /// The certificate configuration.
 class CertificateConfiguration {
   /// The configuration to set up an ICA.
-  final pulumi.Input<CertificateAuthorityConfiguration>
-  certificateAuthorityConfiguration;
-
+  final pulumi.Input<CertificateAuthorityConfiguration> certificateAuthorityConfiguration;
   /// The leaf certificate configuration.
   final pulumi.Input<LeafCertificateConfiguration> leafCertificateConfiguration;
 
@@ -23,32 +21,16 @@ class CertificateConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certificateAuthorityConfiguration':
-          pulumi.Input.mapInputValue<
-            CertificateAuthorityConfiguration,
-            Map<String, dynamic>
-          >(certificateAuthorityConfiguration, (value) => value.toMap()),
-      'leafCertificateConfiguration':
-          pulumi.Input.mapInputValue<
-            LeafCertificateConfiguration,
-            Map<String, dynamic>
-          >(leafCertificateConfiguration, (value) => value.toMap()),
+      'certificateAuthorityConfiguration': pulumi.Input.mapInputValue<CertificateAuthorityConfiguration, Map<String, dynamic>>(certificateAuthorityConfiguration, (value) => value.toMap()),
+      'leafCertificateConfiguration': pulumi.Input.mapInputValue<LeafCertificateConfiguration, Map<String, dynamic>>(leafCertificateConfiguration, (value) => value.toMap()),
     };
   }
 
   factory CertificateConfiguration.fromMap(Map<String, dynamic> map) {
     return CertificateConfiguration(
-      certificateAuthorityConfiguration: pulumi.Input.fromValue(
-        CertificateAuthorityConfiguration.fromMap(
-          (map['certificateAuthorityConfiguration']! as Map)
-              .cast<String, dynamic>(),
-        ),
-      ),
-      leafCertificateConfiguration: pulumi.Input.fromValue(
-        LeafCertificateConfiguration.fromMap(
-          (map['leafCertificateConfiguration']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      certificateAuthorityConfiguration: pulumi.Input.fromValue(CertificateAuthorityConfiguration.fromMap((map['certificateAuthorityConfiguration']! as Map).cast<String, dynamic>())),
+      leafCertificateConfiguration: pulumi.Input.fromValue(LeafCertificateConfiguration.fromMap((map['leafCertificateConfiguration']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

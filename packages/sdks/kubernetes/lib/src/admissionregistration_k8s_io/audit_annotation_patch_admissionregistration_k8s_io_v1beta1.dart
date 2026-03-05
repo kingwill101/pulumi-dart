@@ -12,7 +12,6 @@ class AuditAnnotationPatchAdmissionregistrationK8sIoV1beta1 {
   ///
   /// Required.
   final pulumi.Input<String>? key;
-
   /// valueExpression represents the expression which is evaluated by CEL to produce an audit annotation value. The expression must evaluate to either a string or null value. If the expression evaluates to a string, the audit annotation is included with the string value. If the expression evaluates to null or empty string the audit annotation will be omitted. The valueExpression may be no longer than 5kb in length. If the result of the valueExpression is more than 10kb in length, it will be truncated to 10kb.
   ///
   /// If multiple ValidatingAdmissionPolicyBinding resources match an API request, then the valueExpression will be evaluated for each binding. All unique values produced by the valueExpressions will be joined together in a comma-separated list.
@@ -29,23 +28,17 @@ class AuditAnnotationPatchAdmissionregistrationK8sIoV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': ?key, 'valueExpression': ?valueExpression};
+    return <String, dynamic>{
+      'key': ?key,
+      'valueExpression': ?valueExpression,
+    };
   }
 
-  factory AuditAnnotationPatchAdmissionregistrationK8sIoV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AuditAnnotationPatchAdmissionregistrationK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return AuditAnnotationPatchAdmissionregistrationK8sIoV1beta1(
-      key: (() {
-        final guardedValue = map['key'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      valueExpression: (() {
-        final guardedValue = map['valueExpression'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      valueExpression: (() { final guardedValue = map['valueExpression']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

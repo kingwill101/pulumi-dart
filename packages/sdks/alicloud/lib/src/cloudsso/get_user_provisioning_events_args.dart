@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetUserProvisioningEventsArgs {
   /// Directory ID
   final pulumi.Input<String> directoryId;
-
   /// A list of User Provisioning Event IDs. The value is formulated as `&lt;directory_id&gt;:&lt;event_id&gt;`.
   final pulumi.Input<List<String>>? ids;
-
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
-
   /// The ID of the User Provisioning.
   final pulumi.Input<String>? userProvisioningId;
 
@@ -43,21 +40,10 @@ class GetUserProvisioningEventsArgs {
   factory GetUserProvisioningEventsArgs.fromMap(Map<String, dynamic> map) {
     return GetUserProvisioningEventsArgs(
       directoryId: pulumi.Input.fromValue(map['directoryId'] as String),
-      ids: (() {
-        final guardedValue = map['ids'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      userProvisioningId: (() {
-        final guardedValue = map['userProvisioningId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ids: (() { final guardedValue = map['ids']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      userProvisioningId: (() { final guardedValue = map['userProvisioningId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

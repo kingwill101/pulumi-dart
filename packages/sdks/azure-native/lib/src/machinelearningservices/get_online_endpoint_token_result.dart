@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getOnlineEndpointToken.
 class GetOnlineEndpointTokenResult {
   /// Access token for endpoint authentication.
   final String? accessToken;
-
   /// Access token expiry time (UTC).
   final double? expiryTimeUtc;
-
   /// Refresh access token after time (UTC).
   final double? refreshAfterTimeUtc;
-
   /// Access token type.
   final String? tokenType;
 
@@ -37,26 +35,11 @@ class GetOnlineEndpointTokenResult {
 
   factory GetOnlineEndpointTokenResult.fromMap(Map<String, dynamic> map) {
     return GetOnlineEndpointTokenResult(
-      accessToken: (() {
-        final guardedValue = map['accessToken'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      expiryTimeUtc: (() {
-        final guardedValue = map['expiryTimeUtc'];
-        if (guardedValue == null) return null;
-        return guardedValue as double;
-      })(),
-      refreshAfterTimeUtc: (() {
-        final guardedValue = map['refreshAfterTimeUtc'];
-        if (guardedValue == null) return null;
-        return guardedValue as double;
-      })(),
-      tokenType: (() {
-        final guardedValue = map['tokenType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      accessToken: (() { final guardedValue = map['accessToken']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      expiryTimeUtc: (() { final guardedValue = map['expiryTimeUtc']; if (guardedValue == null) return null; return guardedValue as double; })(),
+      refreshAfterTimeUtc: (() { final guardedValue = map['refreshAfterTimeUtc']; if (guardedValue == null) return null; return guardedValue as double; })(),
+      tokenType: (() { final guardedValue = map['tokenType']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

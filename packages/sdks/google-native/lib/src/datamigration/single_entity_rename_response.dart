@@ -9,10 +9,14 @@ class SingleEntityRenameResponse {
 
   /// Creates a new [SingleEntityRenameResponse].
   /// [newName] The new name of the destination entity
-  SingleEntityRenameResponse({required this.newName});
+  SingleEntityRenameResponse({
+    required this.newName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'newName': newName};
+    return <String, dynamic>{
+      'newName': newName,
+    };
   }
 
   factory SingleEntityRenameResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class SingleEntityRenameResponse {
     );
   }
 }
+

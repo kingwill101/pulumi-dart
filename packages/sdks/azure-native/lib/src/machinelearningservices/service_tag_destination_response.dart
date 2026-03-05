@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceTagDestinationResponse {
   /// The action enum for networking rule.
   final pulumi.Input<String>? action;
-
   /// Optional, if provided, the ServiceTag property will be ignored.
   final pulumi.Input<List<String>> addressPrefixes;
   final pulumi.Input<String>? portRanges;
@@ -39,29 +38,12 @@ class ServiceTagDestinationResponse {
 
   factory ServiceTagDestinationResponse.fromMap(Map<String, dynamic> map) {
     return ServiceTagDestinationResponse(
-      action: (() {
-        final guardedValue = map['action'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      addressPrefixes: pulumi.Input.fromValue(
-        (map['addressPrefixes'] as List).cast<String>(),
-      ),
-      portRanges: (() {
-        final guardedValue = map['portRanges'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      protocol: (() {
-        final guardedValue = map['protocol'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serviceTag: (() {
-        final guardedValue = map['serviceTag'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      addressPrefixes: pulumi.Input.fromValue((map['addressPrefixes'] as List).cast<String>()),
+      portRanges: (() { final guardedValue = map['portRanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serviceTag: (() { final guardedValue = map['serviceTag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

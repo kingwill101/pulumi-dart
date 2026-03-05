@@ -7,13 +7,10 @@ class AccountIdentity {
   ///
   /// &gt; **NOTE:** This is required when `type` is set to `UserAssigned`.
   final pulumi.Input<List<String>>? identityIds;
-
   /// The Principal ID associated with this Managed Service Identity.
   final pulumi.Input<String>? principalId;
-
   /// The Tenant ID associated with this Managed Service Identity.
   final pulumi.Input<String>? tenantId;
-
   /// Specifies the type of Managed Service Identity that should be configured on this Batch Account. Possible values are `SystemAssigned` or `UserAssigned`.
   final pulumi.Input<String> type;
 
@@ -40,22 +37,11 @@ class AccountIdentity {
 
   factory AccountIdentity.fromMap(Map<String, dynamic> map) {
     return AccountIdentity(
-      identityIds: (() {
-        final guardedValue = map['identityIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      principalId: (() {
-        final guardedValue = map['principalId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tenantId: (() {
-        final guardedValue = map['tenantId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      identityIds: (() { final guardedValue = map['identityIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      principalId: (() { final guardedValue = map['principalId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

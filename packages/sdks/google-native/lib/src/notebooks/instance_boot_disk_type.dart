@@ -18,3 +18,4 @@ enum InstanceBootDiskType {
     throw ArgumentError('Unknown InstanceBootDiskType value: $value');
   }
 }
+

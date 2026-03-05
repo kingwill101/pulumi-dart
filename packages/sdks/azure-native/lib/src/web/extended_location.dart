@@ -9,19 +9,20 @@ class ExtendedLocation {
 
   /// Creates a new [ExtendedLocation].
   /// [name] Name of extended location.
-  ExtendedLocation({this.name});
+  ExtendedLocation({
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name};
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
   factory ExtendedLocation.fromMap(Map<String, dynamic> map) {
     return ExtendedLocation(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

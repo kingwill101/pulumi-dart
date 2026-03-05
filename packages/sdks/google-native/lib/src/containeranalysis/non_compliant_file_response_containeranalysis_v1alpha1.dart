@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NonCompliantFileResponseContaineranalysisV1alpha1 {
   /// Command to display the non-compliant files.
   final pulumi.Input<String> displayCommand;
-
   /// display_command is a single command that can be used to display a list of non compliant files. When there is no such command, we can also iterate a list of non compliant file using 'path'. Empty if `display_command` is set.
   final pulumi.Input<String> path;
-
   /// Explains why a file is non compliant for a CIS check.
   final pulumi.Input<String> reason;
 
@@ -31,9 +29,7 @@ class NonCompliantFileResponseContaineranalysisV1alpha1 {
     };
   }
 
-  factory NonCompliantFileResponseContaineranalysisV1alpha1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NonCompliantFileResponseContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return NonCompliantFileResponseContaineranalysisV1alpha1(
       displayCommand: pulumi.Input.fromValue(map['displayCommand'] as String),
       path: pulumi.Input.fromValue(map['path'] as String),
@@ -41,3 +37,4 @@ class NonCompliantFileResponseContaineranalysisV1alpha1 {
     );
   }
 }
+

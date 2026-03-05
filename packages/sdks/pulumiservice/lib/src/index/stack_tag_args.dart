@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StackTagArgs {
   /// Name of the tag. The 'key' part of the key=value pair
   final pulumi.Input<String> name;
-
   /// Organization name.
   final pulumi.Input<String> organization;
-
   /// Project name.
   final pulumi.Input<String> project;
-
   /// Stack name.
   final pulumi.Input<String> stack;
-
   /// Value of the tag. The 'value' part of the key=value pair
   final pulumi.Input<String> value;
 
@@ -56,3 +52,4 @@ class StackTagArgs {
     );
   }
 }
+

@@ -9,10 +9,14 @@ class GroupByVariable {
 
   /// Creates a new [GroupByVariable].
   /// [variableName] Describes the supported variable for group by
-  GroupByVariable({required this.variableName});
+  GroupByVariable({
+    required this.variableName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'variableName': variableName};
+    return <String, dynamic>{
+      'variableName': variableName,
+    };
   }
 
   factory GroupByVariable.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class GroupByVariable {
     );
   }
 }
+

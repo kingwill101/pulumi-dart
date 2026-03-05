@@ -15,17 +15,13 @@ enum GoogleCloudDialogflowV2beta1IntentMessagePlatform {
   const GoogleCloudDialogflowV2beta1IntentMessagePlatform(this.wireValue);
   final String wireValue;
 
-  static GoogleCloudDialogflowV2beta1IntentMessagePlatform fromValue(
-    String value,
-  ) {
-    for (final item
-        in GoogleCloudDialogflowV2beta1IntentMessagePlatform.values) {
+  static GoogleCloudDialogflowV2beta1IntentMessagePlatform fromValue(String value) {
+    for (final item in GoogleCloudDialogflowV2beta1IntentMessagePlatform.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GoogleCloudDialogflowV2beta1IntentMessagePlatform value: $value',
-    );
+    throw ArgumentError('Unknown GoogleCloudDialogflowV2beta1IntentMessagePlatform value: $value');
   }
 }
+

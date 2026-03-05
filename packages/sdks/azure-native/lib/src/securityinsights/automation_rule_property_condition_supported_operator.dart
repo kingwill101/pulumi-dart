@@ -11,17 +11,13 @@ enum AutomationRulePropertyConditionSupportedOperator {
   const AutomationRulePropertyConditionSupportedOperator(this.wireValue);
   final String wireValue;
 
-  static AutomationRulePropertyConditionSupportedOperator fromValue(
-    String value,
-  ) {
-    for (final item
-        in AutomationRulePropertyConditionSupportedOperator.values) {
+  static AutomationRulePropertyConditionSupportedOperator fromValue(String value) {
+    for (final item in AutomationRulePropertyConditionSupportedOperator.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown AutomationRulePropertyConditionSupportedOperator value: $value',
-    );
+    throw ArgumentError('Unknown AutomationRulePropertyConditionSupportedOperator value: $value');
   }
 }
+

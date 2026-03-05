@@ -17,3 +17,4 @@ enum StochasticOptimizer {
     throw ArgumentError('Unknown StochasticOptimizer value: $value');
   }
 }
+

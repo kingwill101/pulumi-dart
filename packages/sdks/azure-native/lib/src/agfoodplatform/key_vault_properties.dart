@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KeyVaultProperties {
   /// Name of Key Vault key.
   final pulumi.Input<String> keyName;
-
   /// Uri of the key vault.
   final pulumi.Input<String> keyVaultUri;
-
   /// Version of Key Vault key.
   final pulumi.Input<String> keyVersion;
 
@@ -39,3 +37,4 @@ class KeyVaultProperties {
     );
   }
 }
+

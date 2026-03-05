@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetArcAddonArgs {
   /// The addon name.
   final pulumi.Input<String> addonName;
-
   /// The device name.
   final pulumi.Input<String> deviceName;
-
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
-
   /// The role name.
   final pulumi.Input<String> roleName;
 
@@ -44,10 +41,9 @@ class GetArcAddonArgs {
     return GetArcAddonArgs(
       addonName: pulumi.Input.fromValue(map['addonName'] as String),
       deviceName: pulumi.Input.fromValue(map['deviceName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       roleName: pulumi.Input.fromValue(map['roleName'] as String),
     );
   }
 }
+

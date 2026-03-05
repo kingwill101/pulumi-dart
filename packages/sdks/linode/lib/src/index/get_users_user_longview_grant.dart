@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetUsersUserLongviewGrant {
   /// The ID of entity this grant applies to.
   final pulumi.Input<int> id;
-
   /// The current label of the entity this grant applies to, for display purposes.
   final pulumi.Input<String> label;
-
   /// The level of access this User has to this entity. If null, this User has no access.
   final pulumi.Input<String> permissions;
 
@@ -38,3 +36,4 @@ class GetUsersUserLongviewGrant {
     );
   }
 }
+

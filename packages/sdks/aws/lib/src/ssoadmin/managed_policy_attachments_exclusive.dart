@@ -301,15 +301,12 @@ import 'managed_policy_attachments_exclusive_timeouts.dart';
 class ManagedPolicyAttachmentsExclusive extends pulumi.CustomResource {
   /// ARN of the SSO Instance.
   late final pulumi.Output<String> instanceArn;
-
   /// Set of ARNs of IAM managed policies to attach to the Permission Set.
   late final pulumi.Output<List<String>> managedPolicyArns;
-
   /// ARN of the Permission Set.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> permissionSetArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   late final pulumi.Output<ManagedPolicyAttachmentsExclusiveTimeouts?> timeouts;
@@ -323,25 +320,16 @@ class ManagedPolicyAttachmentsExclusive extends pulumi.CustomResource {
     ManagedPolicyAttachmentsExclusiveArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ssoadmin/managedPolicyAttachmentsExclusive:ManagedPolicyAttachmentsExclusive',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ssoadmin/managedPolicyAttachmentsExclusive:ManagedPolicyAttachmentsExclusive',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     instanceArn = registerOutput<String>('instanceArn');
     managedPolicyArns = registerOutput<List<String>>('managedPolicyArns');
     permissionSetArn = registerOutput<String>('permissionSetArn');
     region = registerOutput<String>('region');
-    timeouts = registerOutput<ManagedPolicyAttachmentsExclusiveTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ManagedPolicyAttachmentsExclusiveTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<ManagedPolicyAttachmentsExclusiveTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedPolicyAttachmentsExclusiveTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [ManagedPolicyAttachmentsExclusive] resource's state with the given [name] and [id].
@@ -362,24 +350,15 @@ class ManagedPolicyAttachmentsExclusive extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ssoadmin/managedPolicyAttachmentsExclusive:ManagedPolicyAttachmentsExclusive',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ssoadmin/managedPolicyAttachmentsExclusive:ManagedPolicyAttachmentsExclusive',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     instanceArn = registerOutput<String>('instanceArn');
     managedPolicyArns = registerOutput<List<String>>('managedPolicyArns');
     permissionSetArn = registerOutput<String>('permissionSetArn');
     region = registerOutput<String>('region');
-    timeouts = registerOutput<ManagedPolicyAttachmentsExclusiveTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ManagedPolicyAttachmentsExclusiveTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<ManagedPolicyAttachmentsExclusiveTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedPolicyAttachmentsExclusiveTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

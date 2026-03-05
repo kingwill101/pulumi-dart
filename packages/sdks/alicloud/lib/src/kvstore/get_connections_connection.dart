@@ -5,30 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConnectionsConnection {
   /// The connection string of the instance.
   final pulumi.Input<String> connectionString;
-
   /// The network type of the instance.
   final pulumi.Input<String> dbInstanceNetType;
-
   /// The expiration time of the classic network address.
   final pulumi.Input<String> expiredTime;
   final pulumi.Input<String> id;
   final pulumi.Input<String> instanceId;
-
   /// The IP address of the instance.
   final pulumi.Input<String> ipAddress;
-
   /// The port number of the instance.
   final pulumi.Input<String> port;
-
   /// The remaining validity period of the endpoint of the classic network.
   final pulumi.Input<String> upgradeable;
-
   /// The ID of the VPC where the instance is deployed.
   final pulumi.Input<String> vpcId;
-
   /// The ID of the instance. It is returned only when the value of the DBInstanceNetType parameter is 2 (indicating VPC).
   final pulumi.Input<String> vpcInstanceId;
-
   /// The ID of the vSwitch.
   final pulumi.Input<String> vswitchId;
 
@@ -76,12 +68,8 @@ class GetConnectionsConnection {
 
   factory GetConnectionsConnection.fromMap(Map<String, dynamic> map) {
     return GetConnectionsConnection(
-      connectionString: pulumi.Input.fromValue(
-        map['connectionString'] as String,
-      ),
-      dbInstanceNetType: pulumi.Input.fromValue(
-        map['dbInstanceNetType'] as String,
-      ),
+      connectionString: pulumi.Input.fromValue(map['connectionString'] as String),
+      dbInstanceNetType: pulumi.Input.fromValue(map['dbInstanceNetType'] as String),
       expiredTime: pulumi.Input.fromValue(map['expiredTime'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
@@ -94,3 +82,4 @@ class GetConnectionsConnection {
     );
   }
 }
+

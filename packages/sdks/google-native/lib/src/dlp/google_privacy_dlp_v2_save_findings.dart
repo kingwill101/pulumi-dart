@@ -10,29 +10,20 @@ class GooglePrivacyDlpV2SaveFindings {
 
   /// Creates a new [GooglePrivacyDlpV2SaveFindings].
   /// [outputConfig] Location to store findings outside of DLP.
-  GooglePrivacyDlpV2SaveFindings({this.outputConfig});
+  GooglePrivacyDlpV2SaveFindings({
+    this.outputConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'outputConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            GooglePrivacyDlpV2OutputStorageConfig,
-            Map<String, dynamic>
-          >(outputConfig, (value) => value.toMap()),
+      'outputConfig': ?pulumi.Input.mapOptionalInputValue<GooglePrivacyDlpV2OutputStorageConfig, Map<String, dynamic>>(outputConfig, (value) => value.toMap()),
     };
   }
 
   factory GooglePrivacyDlpV2SaveFindings.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2SaveFindings(
-      outputConfig: (() {
-        final guardedValue = map['outputConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GooglePrivacyDlpV2OutputStorageConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      outputConfig: (() { final guardedValue = map['outputConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GooglePrivacyDlpV2OutputStorageConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

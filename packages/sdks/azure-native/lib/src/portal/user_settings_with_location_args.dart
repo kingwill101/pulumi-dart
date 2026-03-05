@@ -10,10 +10,8 @@ import 'user_properties.dart';
 class UserSettingsWithLocationArgs {
   /// The provider location
   final pulumi.Input<String> location;
-
   /// The cloud shell user settings properties.
   final pulumi.Input<UserProperties> properties;
-
   /// The name of the user settings
   final pulumi.Input<String>? userSettingsName;
 
@@ -30,11 +28,7 @@ class UserSettingsWithLocationArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'location': location,
-      'properties':
-          pulumi.Input.mapInputValue<UserProperties, Map<String, dynamic>>(
-            properties,
-            (value) => value.toMap(),
-          ),
+      'properties': pulumi.Input.mapInputValue<UserProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'userSettingsName': ?userSettingsName,
     };
   }
@@ -42,16 +36,9 @@ class UserSettingsWithLocationArgs {
   factory UserSettingsWithLocationArgs.fromMap(Map<String, dynamic> map) {
     return UserSettingsWithLocationArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
-      properties: pulumi.Input.fromValue(
-        UserProperties.fromMap(
-          (map['properties']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      userSettingsName: (() {
-        final guardedValue = map['userSettingsName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      properties: pulumi.Input.fromValue(UserProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())),
+      userSettingsName: (() { final guardedValue = map['userSettingsName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

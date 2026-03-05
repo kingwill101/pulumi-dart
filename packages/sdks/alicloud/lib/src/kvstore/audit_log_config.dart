@@ -390,22 +390,18 @@ import 'audit_log_config_state.dart';
 class AuditLogConfig extends pulumi.CustomResource {
   /// Instance Creation Time.
   late final pulumi.Output<String> createTime;
-
   /// Indicates Whether to Enable the Audit Log.  Valid value:
   /// * true: Default Value, Open.
   /// * false: Closed.
   ///
   /// Note: When the Instance for the Cluster Architecture Or Read/Write Split Architecture, at the Same Time to Open Or Close the Data Node and the Proxy Node of the Audit Log Doesn't Support Separate Open.
   late final pulumi.Output<bool?> dbAudit;
-
   /// Instance ID, Call the Describeinstances Get.
   late final pulumi.Output<String> instanceId;
-
   /// Audit Log Retention Period Value: 1~365.
   ///
   /// &gt; **NOTE:** When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All a Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance for a Data Entry into Force.
   late final pulumi.Output<int?> retention;
-
   /// The status of the resource.
   late final pulumi.Output<String> status;
 
@@ -418,11 +414,11 @@ class AuditLogConfig extends pulumi.CustomResource {
     AuditLogConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:kvstore/auditLogConfig:AuditLogConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:kvstore/auditLogConfig:AuditLogConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     dbAudit = registerOutput<bool?>('dbAudit');
     instanceId = registerOutput<String>('instanceId');
@@ -448,11 +444,11 @@ class AuditLogConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:kvstore/auditLogConfig:AuditLogConfig',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:kvstore/auditLogConfig:AuditLogConfig',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     dbAudit = registerOutput<bool?>('dbAudit');
     instanceId = registerOutput<String>('instanceId');

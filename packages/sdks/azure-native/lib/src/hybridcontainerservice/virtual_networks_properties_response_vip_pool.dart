@@ -5,33 +5,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualNetworksPropertiesResponseVipPool {
   /// Ending IP address for the IP Pool
   final pulumi.Input<String>? endIP;
-
   /// Starting IP address for the IP Pool
   final pulumi.Input<String>? startIP;
 
   /// Creates a new [VirtualNetworksPropertiesResponseVipPool].
   /// [endIP] Ending IP address for the IP Pool
   /// [startIP] Starting IP address for the IP Pool
-  VirtualNetworksPropertiesResponseVipPool({this.endIP, this.startIP});
+  VirtualNetworksPropertiesResponseVipPool({
+    this.endIP,
+    this.startIP,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'endIP': ?endIP, 'startIP': ?startIP};
+    return <String, dynamic>{
+      'endIP': ?endIP,
+      'startIP': ?startIP,
+    };
   }
 
-  factory VirtualNetworksPropertiesResponseVipPool.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VirtualNetworksPropertiesResponseVipPool.fromMap(Map<String, dynamic> map) {
     return VirtualNetworksPropertiesResponseVipPool(
-      endIP: (() {
-        final guardedValue = map['endIP'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      startIP: (() {
-        final guardedValue = map['startIP'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      endIP: (() { final guardedValue = map['endIP']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      startIP: (() { final guardedValue = map['startIP']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

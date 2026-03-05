@@ -298,58 +298,40 @@ import 'trail_state.dart';
 class Trail extends pulumi.CustomResource {
   /// (Available since v1.256.0) The time when the trail was created.
   late final pulumi.Output<String> createTime;
-
   /// The regions where the trail tracks data events. The value is a comma-separated list of region IDs.
   late final pulumi.Output<String?> dataEventTrailRegion;
-
   /// The read/write type of the events to be delivered. Default value: `All`. Valid values: `Read`, `Write`, `All`.
   late final pulumi.Output<String> eventRw;
-
   /// The configuration of the data event selector. This parameter is a JSON array that can contain a maximum of 20 elements.
   late final pulumi.Output<String?> eventSelectors;
-
   /// Specifies whether to create a multi-account trail. Default value: `false`. Valid values:
   late final pulumi.Output<bool?> isOrganizationTrail;
-
   /// The ARN of the MaxCompute project to which you want to deliver events.
   late final pulumi.Output<String?> maxComputeProjectArn;
-
   /// The ARN of the role that is assumed by ActionTrail to deliver events to the MaxCompute project.
   late final pulumi.Output<String> maxComputeWriteRoleArn;
-
   /// Field `mns_topic_arn` has been deprecated from provider version 1.118.0.
   late final pulumi.Output<String?> mnsTopicArn;
-
   /// Field `name` has been deprecated from provider version 1.95.0. New field `trail_name` instead.
   late final pulumi.Output<String> name;
-
   /// The OSS bucket to which the trail delivers logs.
   late final pulumi.Output<String?> ossBucketName;
-
   /// The prefix of the file name in the OSS bucket to which the trail delivers logs.
   late final pulumi.Output<String?> ossKeyPrefix;
-
   /// The name of the RAM role that the user allows ActionTrail to access OSS service.
   late final pulumi.Output<String?> ossWriteRoleArn;
-
   /// (Available since v1.256.0) The home region of the trail.
   late final pulumi.Output<String> regionId;
-
   /// Field `role_name` has been deprecated from provider version 1.118.0.
   late final pulumi.Output<String?> roleName;
-
   /// The ARN of the Simple Log Service project to which the trail delivers logs.
   late final pulumi.Output<String?> slsProjectArn;
-
   /// The ARN of the role that ActionTrail assumes to deliver operation events to the Simple Log Service project.
   late final pulumi.Output<String> slsWriteRoleArn;
-
   /// The status of the trail. Default value: `Enable`. Valid values: `Enable`, `Disable`.
   late final pulumi.Output<String> status;
-
   /// The name of the trail to be created.
   late final pulumi.Output<String> trailName;
-
   /// The region of the trail.
   late final pulumi.Output<String> trailRegion;
 
@@ -357,13 +339,16 @@ class Trail extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Trail]. {@macro pulumi_actiontrail_trail_trail_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Trail(String name, {TrailArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:actiontrail/trail:Trail',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Trail(
+    String name, {
+    TrailArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:actiontrail/trail:Trail',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     dataEventTrailRegion = registerOutput<String?>('dataEventTrailRegion');
     eventRw = registerOutput<String>('eventRw');
@@ -386,7 +371,11 @@ class Trail extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Trail] resource's state with the given [name] and [id].
-  static Trail get(String name, pulumi.Input<String> id, {TrailState? state}) {
+  static Trail get(
+    String name,
+    pulumi.Input<String> id, {
+    TrailState? state,
+  }) {
     return Trail._get(
       name,
       state: state?.toMap(),
@@ -399,11 +388,11 @@ class Trail extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:actiontrail/trail:Trail',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:actiontrail/trail:Trail',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     dataEventTrailRegion = registerOutput<String?>('dataEventTrailRegion');
     eventRw = registerOutput<String>('eventRw');

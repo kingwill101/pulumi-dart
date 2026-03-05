@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EventConnectionAuthParametersInvocationHttpParametersHeader {
   /// Specified whether the value is secret.
   final pulumi.Input<bool>? isValueSecret;
-
   /// The key for the parameter.
   final pulumi.Input<String>? key;
-
   /// The value associated with the key. Created and stored in AWS Secrets Manager if is secret.
   final pulumi.Input<String>? value;
 
@@ -30,25 +28,12 @@ class EventConnectionAuthParametersInvocationHttpParametersHeader {
     };
   }
 
-  factory EventConnectionAuthParametersInvocationHttpParametersHeader.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EventConnectionAuthParametersInvocationHttpParametersHeader.fromMap(Map<String, dynamic> map) {
     return EventConnectionAuthParametersInvocationHttpParametersHeader(
-      isValueSecret: (() {
-        final guardedValue = map['isValueSecret'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      key: (() {
-        final guardedValue = map['key'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      isValueSecret: (() { final guardedValue = map['isValueSecret']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

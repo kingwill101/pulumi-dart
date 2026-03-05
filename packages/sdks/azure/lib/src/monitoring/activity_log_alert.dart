@@ -367,28 +367,20 @@ import 'activity_log_alert_state.dart';
 class ActivityLogAlert extends pulumi.CustomResource {
   /// One or more `action` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> actions;
-
   /// A `criteria` block as defined below.
   late final pulumi.Output<ActivityLogAlertCriteria> criteria;
-
   /// The description of this activity log alert.
   late final pulumi.Output<String?> description;
-
   /// Should this Activity Log Alert be enabled? Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
-
   /// The Azure Region where the activity log alert rule should exist. Possible values are `global`, `westeurope`, `northeurope`, and `eastus2euap`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The name of the activity log alert. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the resource group in which to create the activity log alert instance. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The Scope at which the Activity Log should be applied. A list of strings which could be a resource group , or a subscription, or a resource ID (such as a Storage Account).
   late final pulumi.Output<List<String>> scopes;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -401,22 +393,13 @@ class ActivityLogAlert extends pulumi.CustomResource {
     ActivityLogAlertArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:monitoring/activityLogAlert:ActivityLogAlert',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:monitoring/activityLogAlert:ActivityLogAlert',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     actions = registerOutput<List<Map<String, dynamic>>?>('actions');
-    criteria = registerOutput<ActivityLogAlertCriteria>(
-      'criteria',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ActivityLogAlertCriteria.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    criteria = registerOutput<ActivityLogAlertCriteria>('criteria', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ActivityLogAlertCriteria.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool?>('enabled');
     location = registerOutput<String>('location');
@@ -444,22 +427,13 @@ class ActivityLogAlert extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:monitoring/activityLogAlert:ActivityLogAlert',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:monitoring/activityLogAlert:ActivityLogAlert',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     actions = registerOutput<List<Map<String, dynamic>>?>('actions');
-    criteria = registerOutput<ActivityLogAlertCriteria>(
-      'criteria',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ActivityLogAlertCriteria.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    criteria = registerOutput<ActivityLogAlertCriteria>('criteria', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ActivityLogAlertCriteria.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool?>('enabled');
     location = registerOutput<String>('location');

@@ -9,19 +9,20 @@ class DiagnosticsLogsResponse {
 
   /// Creates a new [DiagnosticsLogsResponse].
   /// [level] The log level. Examples - 'debug', 'info', 'warn', 'error', 'trace'.
-  DiagnosticsLogsResponse({this.level});
+  DiagnosticsLogsResponse({
+    this.level,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'level': ?level};
+    return <String, dynamic>{
+      'level': ?level,
+    };
   }
 
   factory DiagnosticsLogsResponse.fromMap(Map<String, dynamic> map) {
     return DiagnosticsLogsResponse(
-      level: (() {
-        final guardedValue = map['level'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      level: (() { final guardedValue = map['level']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

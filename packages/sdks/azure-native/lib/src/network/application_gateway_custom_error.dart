@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationGatewayCustomError {
   /// Error page URL of the application gateway custom error.
   final pulumi.Input<String>? customErrorPageUrl;
-
   /// Status code of the application gateway custom error.
   final pulumi.Input<String>? statusCode;
 
   /// Creates a new [ApplicationGatewayCustomError].
   /// [customErrorPageUrl] Error page URL of the application gateway custom error.
   /// [statusCode] Status code of the application gateway custom error.
-  ApplicationGatewayCustomError({this.customErrorPageUrl, this.statusCode});
+  ApplicationGatewayCustomError({
+    this.customErrorPageUrl,
+    this.statusCode,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class ApplicationGatewayCustomError {
 
   factory ApplicationGatewayCustomError.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayCustomError(
-      customErrorPageUrl: (() {
-        final guardedValue = map['customErrorPageUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      statusCode: (() {
-        final guardedValue = map['statusCode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      customErrorPageUrl: (() { final guardedValue = map['customErrorPageUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      statusCode: (() { final guardedValue = map['statusCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

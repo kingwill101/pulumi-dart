@@ -37,13 +37,18 @@ import 'stack.dart';
 /// The deployment orchestrates resource registration, invokes/calls, transform
 /// registration, and final stack output publication for a single program run.
 ///
-/// Most programs only use [run] or [runOrThrow].
+/// Most programs only use [run] or [runOrThrow]. Lower-level members on this
+/// type are primarily for the runtime itself, advanced framework code, and
+/// tests that need direct control over monitors or engines.
 /// {@endtemplate}
 ///
 abstract class Deployment {
   static Deployment get instance => DeploymentImpl.instance;
 
   /// Runs a Pulumi program callback and returns the process exit code.
+  ///
+  /// Prefer this when the caller wants explicit control over non-zero exit
+  /// handling instead of throwing.
   ///
   /// ## Example
   /// ```dart
@@ -70,6 +75,8 @@ abstract class Deployment {
   }
 
   /// Runs a Pulumi program callback and throws on non-zero exit.
+  ///
+  /// This is the recommended entrypoint for most end-user Pulumi programs.
   static Future<void> runOrThrow(
     Function() func, {
     String? organizationName,
@@ -223,13 +230,13 @@ class DeploymentImpl extends Deployment
     return _instance!;
   }
 
-  // For testing purposes only
+  /// Overrides the active deployment instance for tests.
   @visibleForTesting
   static void setInstance(Deployment deployment) {
     _instance = deployment;
   }
 
-  // For testing purposes only
+  /// Clears the active deployment instance for tests.
   @visibleForTesting
   static void clearInstance() {
     _instance = null;

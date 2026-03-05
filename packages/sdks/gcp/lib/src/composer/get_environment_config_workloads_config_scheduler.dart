@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEnvironmentConfigWorkloadsConfigScheduler {
   /// The number of schedulers.
   final pulumi.Input<int> count;
-
   /// CPU request and limit for a single Airflow scheduler replica
   final pulumi.Input<double> cpu;
-
   /// Memory (GB) request and limit for a single Airflow scheduler replica.
   final pulumi.Input<double> memoryGb;
-
   /// Storage (GB) request and limit for a single Airflow scheduler replica.
   final pulumi.Input<double> storageGb;
 
@@ -36,9 +33,7 @@ class GetEnvironmentConfigWorkloadsConfigScheduler {
     };
   }
 
-  factory GetEnvironmentConfigWorkloadsConfigScheduler.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetEnvironmentConfigWorkloadsConfigScheduler.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentConfigWorkloadsConfigScheduler(
       count: pulumi.Input.fromValue(map['count'] as int),
       cpu: pulumi.Input.fromValue(map['cpu'] as double),
@@ -47,3 +42,4 @@ class GetEnvironmentConfigWorkloadsConfigScheduler {
     );
   }
 }
+

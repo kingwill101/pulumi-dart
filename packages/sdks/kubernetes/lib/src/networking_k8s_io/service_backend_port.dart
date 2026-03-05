@@ -6,31 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceBackendPort {
   /// name is the name of the port on the Service. This is a mutually exclusive setting with "Number".
   final pulumi.Input<String>? name;
-
   /// number is the numerical port number (e.g. 80) on the Service. This is a mutually exclusive setting with "Name".
   final pulumi.Input<int>? number;
 
   /// Creates a new [ServiceBackendPort].
   /// [name] name is the name of the port on the Service. This is a mutually exclusive setting with "Number".
   /// [number] number is the numerical port number (e.g. 80) on the Service. This is a mutually exclusive setting with "Name".
-  ServiceBackendPort({this.name, this.number});
+  ServiceBackendPort({
+    this.name,
+    this.number,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name, 'number': ?number};
+    return <String, dynamic>{
+      'name': ?name,
+      'number': ?number,
+    };
   }
 
   factory ServiceBackendPort.fromMap(Map<String, dynamic> map) {
     return ServiceBackendPort(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      number: (() {
-        final guardedValue = map['number'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      number: (() { final guardedValue = map['number']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

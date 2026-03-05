@@ -7,44 +7,29 @@ import 'metric_target_patch_autoscaling_v2beta2.dart';
 class ResourceMetricSourcePatchAutoscalingV2beta2 {
   /// name is the name of the resource in question.
   final pulumi.Input<String>? name;
-
   /// target specifies the target value for the given metric
   final pulumi.Input<MetricTargetPatchAutoscalingV2beta2>? target;
 
   /// Creates a new [ResourceMetricSourcePatchAutoscalingV2beta2].
   /// [name] name is the name of the resource in question.
   /// [target] target specifies the target value for the given metric
-  ResourceMetricSourcePatchAutoscalingV2beta2({this.name, this.target});
+  ResourceMetricSourcePatchAutoscalingV2beta2({
+    this.name,
+    this.target,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': ?name,
-      'target':
-          ?pulumi.Input.mapOptionalInputValue<
-            MetricTargetPatchAutoscalingV2beta2,
-            Map<String, dynamic>
-          >(target, (value) => value.toMap()),
+      'target': ?pulumi.Input.mapOptionalInputValue<MetricTargetPatchAutoscalingV2beta2, Map<String, dynamic>>(target, (value) => value.toMap()),
     };
   }
 
-  factory ResourceMetricSourcePatchAutoscalingV2beta2.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResourceMetricSourcePatchAutoscalingV2beta2.fromMap(Map<String, dynamic> map) {
     return ResourceMetricSourcePatchAutoscalingV2beta2(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      target: (() {
-        final guardedValue = map['target'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          MetricTargetPatchAutoscalingV2beta2.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      target: (() { final guardedValue = map['target']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MetricTargetPatchAutoscalingV2beta2.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

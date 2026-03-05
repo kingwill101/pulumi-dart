@@ -16,3 +16,4 @@ enum CommitmentGrain {
     throw ArgumentError('Unknown CommitmentGrain value: $value');
   }
 }
+

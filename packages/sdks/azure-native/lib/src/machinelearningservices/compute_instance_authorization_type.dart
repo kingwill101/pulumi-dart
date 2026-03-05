@@ -11,8 +11,7 @@ enum ComputeInstanceAuthorizationType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ComputeInstanceAuthorizationType value: $value',
-    );
+    throw ArgumentError('Unknown ComputeInstanceAuthorizationType value: $value');
   }
 }
+

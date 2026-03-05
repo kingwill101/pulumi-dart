@@ -10,35 +10,20 @@ class MachinePreferencesResponse {
 
   /// Creates a new [MachinePreferencesResponse].
   /// [allowedMachineSeries] Compute Engine machine series to consider for insights and recommendations. If empty, no restriction is applied on the machine series.
-  MachinePreferencesResponse({required this.allowedMachineSeries});
+  MachinePreferencesResponse({
+    required this.allowedMachineSeries,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allowedMachineSeries':
-          pulumi.Input.mapInputValue<
-            List<MachineSeriesResponse>,
-            List<Map<String, dynamic>>
-          >(
-            allowedMachineSeries,
-            (value) =>
-                pulumi.Input.encodeList<
-                  MachineSeriesResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'allowedMachineSeries': pulumi.Input.mapInputValue<List<MachineSeriesResponse>, List<Map<String, dynamic>>>(allowedMachineSeries, (value) => pulumi.Input.encodeList<MachineSeriesResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory MachinePreferencesResponse.fromMap(Map<String, dynamic> map) {
     return MachinePreferencesResponse(
-      allowedMachineSeries: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<MachineSeriesResponse>(
-          map['allowedMachineSeries']!,
-          (value) => MachineSeriesResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      allowedMachineSeries: pulumi.Input.fromValue(pulumi.Input.decodeList<MachineSeriesResponse>(map['allowedMachineSeries']!, (value) => MachineSeriesResponse.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

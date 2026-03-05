@@ -8,19 +8,20 @@ class AppSpecIngressRuleMatchAuthority {
 
   /// Creates a new [AppSpecIngressRuleMatchAuthority].
   /// [exact] Exact match.
-  AppSpecIngressRuleMatchAuthority({this.exact});
+  AppSpecIngressRuleMatchAuthority({
+    this.exact,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'exact': ?exact};
+    return <String, dynamic>{
+      'exact': ?exact,
+    };
   }
 
   factory AppSpecIngressRuleMatchAuthority.fromMap(Map<String, dynamic> map) {
     return AppSpecIngressRuleMatchAuthority(
-      exact: (() {
-        final guardedValue = map['exact'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      exact: (() { final guardedValue = map['exact']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

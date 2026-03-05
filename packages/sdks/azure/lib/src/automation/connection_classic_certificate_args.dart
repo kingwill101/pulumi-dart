@@ -9,22 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectionClassicCertificateArgs {
   /// The name of the automation account in which the Connection is created. Changing this forces a new resource to be created.
   final pulumi.Input<String> automationAccountName;
-
   /// The name of the certificate asset.
   final pulumi.Input<String> certificateAssetName;
-
   /// A description for this Connection.
   final pulumi.Input<String>? description;
-
   /// Specifies the name of the Connection. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// The name of the resource group in which the Connection is created. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
-
   /// The id of subscription.
   final pulumi.Input<String> subscriptionId;
-
   /// The name of subscription.
   final pulumi.Input<String> subscriptionName;
 
@@ -60,29 +54,14 @@ class ConnectionClassicCertificateArgs {
 
   factory ConnectionClassicCertificateArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionClassicCertificateArgs(
-      automationAccountName: pulumi.Input.fromValue(
-        map['automationAccountName'] as String,
-      ),
-      certificateAssetName: pulumi.Input.fromValue(
-        map['certificateAssetName'] as String,
-      ),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      automationAccountName: pulumi.Input.fromValue(map['automationAccountName'] as String),
+      certificateAssetName: pulumi.Input.fromValue(map['certificateAssetName'] as String),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       subscriptionId: pulumi.Input.fromValue(map['subscriptionId'] as String),
-      subscriptionName: pulumi.Input.fromValue(
-        map['subscriptionName'] as String,
-      ),
+      subscriptionName: pulumi.Input.fromValue(map['subscriptionName'] as String),
     );
   }
 }
+

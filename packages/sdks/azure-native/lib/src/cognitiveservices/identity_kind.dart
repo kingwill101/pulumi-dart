@@ -18,3 +18,4 @@ enum IdentityKind {
     throw ArgumentError('Unknown IdentityKind value: $value');
   }
 }
+

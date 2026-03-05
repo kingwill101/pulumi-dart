@@ -7,10 +7,8 @@ import 'time_span_response.dart';
 class BuiltImageResponse {
   /// Docker Registry 2.0 digest.
   final pulumi.Input<String> digest;
-
   /// Name used to push the container image to Google Container Registry, as presented to `docker push`.
   final pulumi.Input<String> name;
-
   /// Stores timing information for pushing the specified image.
   final pulumi.Input<TimeSpanResponse> pushTiming;
 
@@ -28,11 +26,7 @@ class BuiltImageResponse {
     return <String, dynamic>{
       'digest': digest,
       'name': name,
-      'pushTiming':
-          pulumi.Input.mapInputValue<TimeSpanResponse, Map<String, dynamic>>(
-            pushTiming,
-            (value) => value.toMap(),
-          ),
+      'pushTiming': pulumi.Input.mapInputValue<TimeSpanResponse, Map<String, dynamic>>(pushTiming, (value) => value.toMap()),
     };
   }
 
@@ -40,11 +34,8 @@ class BuiltImageResponse {
     return BuiltImageResponse(
       digest: pulumi.Input.fromValue(map['digest'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      pushTiming: pulumi.Input.fromValue(
-        TimeSpanResponse.fromMap(
-          (map['pushTiming']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      pushTiming: pulumi.Input.fromValue(TimeSpanResponse.fromMap((map['pushTiming']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

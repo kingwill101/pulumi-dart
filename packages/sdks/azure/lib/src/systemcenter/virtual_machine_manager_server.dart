@@ -185,28 +185,20 @@ import 'virtual_machine_manager_server_state.dart';
 class VirtualMachineManagerServer extends pulumi.CustomResource {
   /// The ID of the Custom Location for the System Center Virtual Machine Manager Server. Changing this forces a new resource to be created.
   late final pulumi.Output<String> customLocationId;
-
   /// The FQDN of the System Center Virtual Machine Manager Server. Changing this forces a new resource to be created.
   late final pulumi.Output<String> fqdn;
-
   /// The Azure Region where the System Center Virtual Machine Manager Server should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The name of the System Center Virtual Machine Manager Server. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The password that is used to connect to the System Center Virtual Machine Manager Server. Changing this forces a new resource to be created.
   late final pulumi.Output<String> password;
-
   /// The port on which the System Center Virtual Machine Manager Server is listening. Possible values are between `1` and `65535`. Changing this forces a new resource to be created.
   late final pulumi.Output<int?> port;
-
   /// The name of the Resource Group where the System Center Virtual Machine Manager should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags which should be assigned to the System Center Virtual Machine Manager Server.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The username that is used to connect to the System Center Virtual Machine Manager Server. Changing this forces a new resource to be created.
   late final pulumi.Output<String> username;
 
@@ -219,11 +211,11 @@ class VirtualMachineManagerServer extends pulumi.CustomResource {
     VirtualMachineManagerServerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:systemcenter/virtualMachineManagerServer:VirtualMachineManagerServer',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:systemcenter/virtualMachineManagerServer:VirtualMachineManagerServer',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     customLocationId = registerOutput<String>('customLocationId');
     fqdn = registerOutput<String>('fqdn');
     location = registerOutput<String>('location');
@@ -253,11 +245,11 @@ class VirtualMachineManagerServer extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:systemcenter/virtualMachineManagerServer:VirtualMachineManagerServer',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:systemcenter/virtualMachineManagerServer:VirtualMachineManagerServer',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     customLocationId = registerOutput<String>('customLocationId');
     fqdn = registerOutput<String>('fqdn');
     location = registerOutput<String>('location');

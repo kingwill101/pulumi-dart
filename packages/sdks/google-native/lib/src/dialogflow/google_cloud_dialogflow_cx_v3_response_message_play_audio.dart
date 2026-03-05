@@ -9,17 +9,20 @@ class GoogleCloudDialogflowCxV3ResponseMessagePlayAudio {
 
   /// Creates a new [GoogleCloudDialogflowCxV3ResponseMessagePlayAudio].
   /// [audioUri] URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
-  GoogleCloudDialogflowCxV3ResponseMessagePlayAudio({required this.audioUri});
+  GoogleCloudDialogflowCxV3ResponseMessagePlayAudio({
+    required this.audioUri,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'audioUri': audioUri};
+    return <String, dynamic>{
+      'audioUri': audioUri,
+    };
   }
 
-  factory GoogleCloudDialogflowCxV3ResponseMessagePlayAudio.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDialogflowCxV3ResponseMessagePlayAudio.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3ResponseMessagePlayAudio(
       audioUri: pulumi.Input.fromValue(map['audioUri'] as String),
     );
   }
 }
+

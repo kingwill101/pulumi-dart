@@ -14,8 +14,7 @@ enum GPUDriverInstallationConfigGpuDriverVersion {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GPUDriverInstallationConfigGpuDriverVersion value: $value',
-    );
+    throw ArgumentError('Unknown GPUDriverInstallationConfigGpuDriverVersion value: $value');
   }
 }
+

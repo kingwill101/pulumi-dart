@@ -9,17 +9,20 @@ class SecurityPolicyCloudArmorConfigResponse {
 
   /// Creates a new [SecurityPolicyCloudArmorConfigResponse].
   /// [enableMl] If set to true, enables Cloud Armor Machine Learning.
-  SecurityPolicyCloudArmorConfigResponse({required this.enableMl});
+  SecurityPolicyCloudArmorConfigResponse({
+    required this.enableMl,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enableMl': enableMl};
+    return <String, dynamic>{
+      'enableMl': enableMl,
+    };
   }
 
-  factory SecurityPolicyCloudArmorConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SecurityPolicyCloudArmorConfigResponse.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyCloudArmorConfigResponse(
       enableMl: pulumi.Input.fromValue(map['enableMl'] as bool),
     );
   }
 }
+

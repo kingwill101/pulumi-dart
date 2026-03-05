@@ -1,19 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getQueue.
 class GetQueueResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A mapping of MetaData for this Queue.
   final Map<String, String> metadata;
   final String name;
-
   /// The Resource Manager ID of this Storage Queue.
   final String resourceManagerId;
   final String? storageAccountId;
   final String? storageAccountName;
-
   /// The data plane URL of the Storage Queue in the format of `&lt;storage queue endpoint&gt;/&lt;queue name&gt;`. E.g. `https://example.queue.core.windows.net/queue1`.
   final String url;
 
@@ -53,17 +51,10 @@ class GetQueueResult {
       metadata: (map['metadata'] as Map).cast<String, String>(),
       name: map['name'] as String,
       resourceManagerId: map['resourceManagerId'] as String,
-      storageAccountId: (() {
-        final guardedValue = map['storageAccountId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      storageAccountName: (() {
-        final guardedValue = map['storageAccountName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      storageAccountId: (() { final guardedValue = map['storageAccountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      storageAccountName: (() { final guardedValue = map['storageAccountName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       url: map['url'] as String,
     );
   }
 }
+

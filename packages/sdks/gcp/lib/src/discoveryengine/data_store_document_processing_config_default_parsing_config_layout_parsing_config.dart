@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig {
   /// If true, the LLM based annotation is added to the image during parsing.
   final pulumi.Input<bool>? enableImageAnnotation;
-
   /// If true, the LLM based annotation is added to the table during parsing.
   final pulumi.Input<bool>? enableTableAnnotation;
-
   /// List of HTML classes to exclude from the parsed content.
   final pulumi.Input<List<String>>? excludeHtmlClasses;
-
   /// List of HTML elements to exclude from the parsed content.
   final pulumi.Input<List<String>>? excludeHtmlElements;
-
   /// List of HTML ids to exclude from the parsed content.
   final pulumi.Input<List<String>>? excludeHtmlIds;
-
   /// Contains the required structure types to extract from the document. Supported values: `shareholder-structure`.
   final pulumi.Input<List<String>>? structuredContentTypes;
 
@@ -48,40 +43,15 @@ class DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig {
     };
   }
 
-  factory DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig.fromMap(Map<String, dynamic> map) {
     return DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig(
-      enableImageAnnotation: (() {
-        final guardedValue = map['enableImageAnnotation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      enableTableAnnotation: (() {
-        final guardedValue = map['enableTableAnnotation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      excludeHtmlClasses: (() {
-        final guardedValue = map['excludeHtmlClasses'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      excludeHtmlElements: (() {
-        final guardedValue = map['excludeHtmlElements'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      excludeHtmlIds: (() {
-        final guardedValue = map['excludeHtmlIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      structuredContentTypes: (() {
-        final guardedValue = map['structuredContentTypes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      enableImageAnnotation: (() { final guardedValue = map['enableImageAnnotation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enableTableAnnotation: (() { final guardedValue = map['enableTableAnnotation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      excludeHtmlClasses: (() { final guardedValue = map['excludeHtmlClasses']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      excludeHtmlElements: (() { final guardedValue = map['excludeHtmlElements']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      excludeHtmlIds: (() { final guardedValue = map['excludeHtmlIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      structuredContentTypes: (() { final guardedValue = map['structuredContentTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

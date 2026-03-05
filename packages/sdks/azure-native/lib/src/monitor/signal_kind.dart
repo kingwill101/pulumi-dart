@@ -16,3 +16,4 @@ enum SignalKind {
     throw ArgumentError('Unknown SignalKind value: $value');
   }
 }
+

@@ -7,10 +7,8 @@ import '../meta/label_selector_patch.dart';
 class PodsMetricStatusPatchAutoscalingV2beta1 {
   /// currentAverageValue is the current value of the average of the metric across all relevant pods (as a quantity)
   final pulumi.Input<String>? currentAverageValue;
-
   /// metricName is the name of the metric in question
   final pulumi.Input<String>? metricName;
-
   /// selector is the string-encoded form of a standard kubernetes label selector for the given metric When set in the PodsMetricSource, it is passed as an additional parameter to the metrics server for more specific metrics scoping. When unset, just the metricName will be used to gather metrics.
   final pulumi.Input<LabelSelectorPatch>? selector;
 
@@ -28,37 +26,16 @@ class PodsMetricStatusPatchAutoscalingV2beta1 {
     return <String, dynamic>{
       'currentAverageValue': ?currentAverageValue,
       'metricName': ?metricName,
-      'selector':
-          ?pulumi.Input.mapOptionalInputValue<
-            LabelSelectorPatch,
-            Map<String, dynamic>
-          >(selector, (value) => value.toMap()),
+      'selector': ?pulumi.Input.mapOptionalInputValue<LabelSelectorPatch, Map<String, dynamic>>(selector, (value) => value.toMap()),
     };
   }
 
-  factory PodsMetricStatusPatchAutoscalingV2beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PodsMetricStatusPatchAutoscalingV2beta1.fromMap(Map<String, dynamic> map) {
     return PodsMetricStatusPatchAutoscalingV2beta1(
-      currentAverageValue: (() {
-        final guardedValue = map['currentAverageValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      metricName: (() {
-        final guardedValue = map['metricName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      selector: (() {
-        final guardedValue = map['selector'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          LabelSelectorPatch.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      currentAverageValue: (() { final guardedValue = map['currentAverageValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      metricName: (() { final guardedValue = map['metricName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      selector: (() { final guardedValue = map['selector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LabelSelectorPatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

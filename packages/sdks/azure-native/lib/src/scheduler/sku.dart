@@ -9,26 +9,20 @@ class Sku {
 
   /// Creates a new [Sku].
   /// [name] Gets or set the SKU.
-  Sku({this.name});
+  Sku({
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'name': ?pulumi.Input.mapOptionalInputValue<SkuDefinition, String>(
-        name,
-        (value) => value.wireValue,
-      ),
+      'name': ?pulumi.Input.mapOptionalInputValue<SkuDefinition, String>(name, (value) => value.wireValue),
     };
   }
 
   factory Sku.fromMap(Map<String, dynamic> map) {
     return Sku(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SkuDefinition.fromValue(guardedValue as String),
-        );
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SkuDefinition.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

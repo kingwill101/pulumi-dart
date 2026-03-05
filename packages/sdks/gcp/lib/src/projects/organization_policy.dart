@@ -547,21 +547,16 @@ import 'organization_policy_state.dart';
 class OrganizationPolicy extends pulumi.CustomResource {
   /// A boolean policy is a constraint that is either enforced or not. Structure is documented below.
   late final pulumi.Output<OrganizationPolicyBooleanPolicy?> booleanPolicy;
-
   /// The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
   ///
   /// - - -
   late final pulumi.Output<String> constraint;
-
   /// (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
   late final pulumi.Output<String> etag;
-
   /// A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
   late final pulumi.Output<OrganizationPolicyListPolicy?> listPolicy;
-
   /// The project id of the project to set the policy for.
   late final pulumi.Output<String> project;
-
   /// A restore policy is a constraint to restore the default policy. Structure is documented below.
   ///
   /// &gt; **Note:** If none of [`boolean_policy`, `list_policy`, `restore_policy`] are defined the policy for a given constraint will
@@ -569,10 +564,8 @@ class OrganizationPolicy extends pulumi.CustomResource {
   ///
   /// - - -
   late final pulumi.Output<OrganizationPolicyRestorePolicy?> restorePolicy;
-
   /// (Computed) The timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds, representing when the variable was last updated. Example: "2016-10-09T12:33:37.578138407Z".
   late final pulumi.Output<String> updateTime;
-
   /// Version of the Policy. Default version is 0.
   late final pulumi.Output<int> version;
 
@@ -585,44 +578,17 @@ class OrganizationPolicy extends pulumi.CustomResource {
     OrganizationPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:projects/organizationPolicy:OrganizationPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    booleanPolicy = registerOutput<OrganizationPolicyBooleanPolicy?>(
-      'booleanPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return OrganizationPolicyBooleanPolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:projects/organizationPolicy:OrganizationPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    booleanPolicy = registerOutput<OrganizationPolicyBooleanPolicy?>('booleanPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationPolicyBooleanPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     constraint = registerOutput<String>('constraint');
     etag = registerOutput<String>('etag');
-    listPolicy = registerOutput<OrganizationPolicyListPolicy?>(
-      'listPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return OrganizationPolicyListPolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    listPolicy = registerOutput<OrganizationPolicyListPolicy?>('listPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationPolicyListPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    restorePolicy = registerOutput<OrganizationPolicyRestorePolicy?>(
-      'restorePolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return OrganizationPolicyRestorePolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    restorePolicy = registerOutput<OrganizationPolicyRestorePolicy?>('restorePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationPolicyRestorePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updateTime = registerOutput<String>('updateTime');
     version = registerOutput<int>('version');
   }
@@ -645,44 +611,17 @@ class OrganizationPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:projects/organizationPolicy:OrganizationPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    booleanPolicy = registerOutput<OrganizationPolicyBooleanPolicy?>(
-      'booleanPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return OrganizationPolicyBooleanPolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:projects/organizationPolicy:OrganizationPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    booleanPolicy = registerOutput<OrganizationPolicyBooleanPolicy?>('booleanPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationPolicyBooleanPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     constraint = registerOutput<String>('constraint');
     etag = registerOutput<String>('etag');
-    listPolicy = registerOutput<OrganizationPolicyListPolicy?>(
-      'listPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return OrganizationPolicyListPolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    listPolicy = registerOutput<OrganizationPolicyListPolicy?>('listPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationPolicyListPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    restorePolicy = registerOutput<OrganizationPolicyRestorePolicy?>(
-      'restorePolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return OrganizationPolicyRestorePolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    restorePolicy = registerOutput<OrganizationPolicyRestorePolicy?>('restorePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationPolicyRestorePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updateTime = registerOutput<String>('updateTime');
     version = registerOutput<int>('version');
   }

@@ -238,122 +238,82 @@ import 'system_data_response.dart';
 class Machine extends pulumi.CustomResource {
   /// Specifies the AD fully qualified display name.
   late final pulumi.Output<String> adFqdn;
-
   /// Configurable properties that the user can set locally via the azcmagent config command, or remotely via ARM.
   late final pulumi.Output<AgentConfigurationResponse> agentConfiguration;
-
   /// The info of the machine w.r.t Agent Upgrade
   late final pulumi.Output<AgentUpgradeResponse?> agentUpgrade;
-
   /// The hybrid machine agent full version.
   late final pulumi.Output<String> agentVersion;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Public Key that the client provides to be used during initial resource onboarding
   late final pulumi.Output<String?> clientPublicKey;
-
   /// The metadata of the cloud environment (Azure/GCP/AWS/OCI...).
   late final pulumi.Output<CloudMetadataResponse?> cloudMetadata;
-
   /// Detected properties from the machine.
   late final pulumi.Output<Map<String, String>> detectedProperties;
-
   /// Specifies the hybrid machine display name.
   late final pulumi.Output<String> displayName;
-
   /// Specifies the DNS fully qualified display name.
   late final pulumi.Output<String> dnsFqdn;
-
   /// Specifies the Windows domain name.
   late final pulumi.Output<String> domainName;
-
   /// Details about the error state.
   late final pulumi.Output<List<Map<String, dynamic>>> errorDetails;
-
   /// Machine Extensions information (deprecated field)
   late final pulumi.Output<List<Map<String, dynamic>>?> extensions;
-
   /// Identity for the resource.
   late final pulumi.Output<IdentityResponse?> identity;
-
   /// Indicates which kind of Arc machine placement on-premises, such as HCI, SCVMM or VMware etc.
   late final pulumi.Output<String?> kind;
-
   /// The time of the last status change.
   late final pulumi.Output<String> lastStatusChange;
-
   /// Specifies the License related properties for a machine.
-  late final pulumi.Output<LicenseProfileMachineInstanceViewResponse?>
-  licenseProfile;
-
+  late final pulumi.Output<LicenseProfileMachineInstanceViewResponse?> licenseProfile;
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// Metadata pertaining to the geographic location of the resource.
   late final pulumi.Output<LocationDataResponse?> locationData;
-
   /// Specifies the hybrid machine FQDN.
   late final pulumi.Output<String> machineFqdn;
-
   /// Specifies whether any MS SQL instance is discovered on the machine.
   late final pulumi.Output<String?> mssqlDiscovered;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Information about the network the machine is on.
   late final pulumi.Output<NetworkProfileResponse> networkProfile;
-
   /// The edition of the Operating System.
   late final pulumi.Output<String> osEdition;
-
   /// The Operating System running on the hybrid machine.
   late final pulumi.Output<String> osName;
-
   /// Specifies the operating system settings for the hybrid machine.
   late final pulumi.Output<OSProfileResponse?> osProfile;
-
   /// Specifies the Operating System product SKU.
   late final pulumi.Output<String> osSku;
-
   /// The type of Operating System (windows/linux).
   late final pulumi.Output<String?> osType;
-
   /// The version of Operating System running on the hybrid machine.
   late final pulumi.Output<String> osVersion;
-
   /// The resource id of the parent cluster (Azure HCI) this machine is assigned to, if any.
   late final pulumi.Output<String?> parentClusterResourceId;
-
   /// The resource id of the private link scope this machine is assigned to, if any.
   late final pulumi.Output<String?> privateLinkScopeResourceId;
-
   /// The provisioning state, which only appears in the response.
   late final pulumi.Output<String> provisioningState;
-
   /// The list of extensions affiliated to the machine
   late final pulumi.Output<List<Map<String, dynamic>>> resources;
-
   /// Statuses of dependent services that are reported back to ARM.
   late final pulumi.Output<ServiceStatusesResponse?> serviceStatuses;
-
   /// The status of the hybrid machine agent.
   late final pulumi.Output<String> status;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Specifies the hybrid machine unique ID.
   late final pulumi.Output<String?> vmId;
-
   /// Specifies the Arc Machine's unique SMBIOS ID
   late final pulumi.Output<String> vmUuid;
 
@@ -366,143 +326,47 @@ class Machine extends pulumi.CustomResource {
     MachineArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:hybridcompute:Machine',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:hybridcompute:Machine',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     adFqdn = registerOutput<String>('adFqdn');
-    agentConfiguration = registerOutput<AgentConfigurationResponse>(
-      'agentConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AgentConfigurationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    agentUpgrade = registerOutput<AgentUpgradeResponse?>(
-      'agentUpgrade',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AgentUpgradeResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    agentConfiguration = registerOutput<AgentConfigurationResponse>('agentConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    agentUpgrade = registerOutput<AgentUpgradeResponse?>('agentUpgrade', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentUpgradeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     agentVersion = registerOutput<String>('agentVersion');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     clientPublicKey = registerOutput<String?>('clientPublicKey');
-    cloudMetadata = registerOutput<CloudMetadataResponse?>(
-      'cloudMetadata',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CloudMetadataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    detectedProperties = registerOutput<Map<String, String>>(
-      'detectedProperties',
-    );
+    cloudMetadata = registerOutput<CloudMetadataResponse?>('cloudMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CloudMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    detectedProperties = registerOutput<Map<String, String>>('detectedProperties');
     displayName = registerOutput<String>('displayName');
     dnsFqdn = registerOutput<String>('dnsFqdn');
     domainName = registerOutput<String>('domainName');
     errorDetails = registerOutput<List<Map<String, dynamic>>>('errorDetails');
     extensions = registerOutput<List<Map<String, dynamic>>?>('extensions');
-    identity = registerOutput<IdentityResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<IdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kind = registerOutput<String?>('kind');
     lastStatusChange = registerOutput<String>('lastStatusChange');
-    licenseProfile = registerOutput<LicenseProfileMachineInstanceViewResponse?>(
-      'licenseProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LicenseProfileMachineInstanceViewResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    licenseProfile = registerOutput<LicenseProfileMachineInstanceViewResponse?>('licenseProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LicenseProfileMachineInstanceViewResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
-    locationData = registerOutput<LocationDataResponse?>(
-      'locationData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LocationDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    locationData = registerOutput<LocationDataResponse?>('locationData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LocationDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     machineFqdn = registerOutput<String>('machineFqdn');
     mssqlDiscovered = registerOutput<String?>('mssqlDiscovered');
     this.name = registerOutput<String>('name');
-    networkProfile = registerOutput<NetworkProfileResponse>(
-      'networkProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NetworkProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    networkProfile = registerOutput<NetworkProfileResponse>('networkProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     osEdition = registerOutput<String>('osEdition');
     osName = registerOutput<String>('osName');
-    osProfile = registerOutput<OSProfileResponse?>(
-      'osProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return OSProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    osProfile = registerOutput<OSProfileResponse?>('osProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OSProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     osSku = registerOutput<String>('osSku');
     osType = registerOutput<String?>('osType');
     osVersion = registerOutput<String>('osVersion');
-    parentClusterResourceId = registerOutput<String?>(
-      'parentClusterResourceId',
-    );
-    privateLinkScopeResourceId = registerOutput<String?>(
-      'privateLinkScopeResourceId',
-    );
+    parentClusterResourceId = registerOutput<String?>('parentClusterResourceId');
+    privateLinkScopeResourceId = registerOutput<String?>('privateLinkScopeResourceId');
     provisioningState = registerOutput<String>('provisioningState');
     resources = registerOutput<List<Map<String, dynamic>>>('resources');
-    serviceStatuses = registerOutput<ServiceStatusesResponse?>(
-      'serviceStatuses',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceStatusesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    serviceStatuses = registerOutput<ServiceStatusesResponse?>('serviceStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceStatusesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     vmId = registerOutput<String?>('vmId');

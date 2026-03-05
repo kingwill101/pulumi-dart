@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketIamConfigurationUniformBucketLevelAccess {
   /// If set, access is controlled only by bucket-level or above IAM policies.
   final pulumi.Input<bool>? enabled;
-
   /// The deadline for changing iamConfiguration.uniformBucketLevelAccess.enabled from true to false in RFC 3339  format. iamConfiguration.uniformBucketLevelAccess.enabled may be changed from true to false until the locked time, after which the field is immutable.
   final pulumi.Input<String>? lockedTime;
 
@@ -19,23 +18,17 @@ class BucketIamConfigurationUniformBucketLevelAccess {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': ?enabled, 'lockedTime': ?lockedTime};
+    return <String, dynamic>{
+      'enabled': ?enabled,
+      'lockedTime': ?lockedTime,
+    };
   }
 
-  factory BucketIamConfigurationUniformBucketLevelAccess.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BucketIamConfigurationUniformBucketLevelAccess.fromMap(Map<String, dynamic> map) {
     return BucketIamConfigurationUniformBucketLevelAccess(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      lockedTime: (() {
-        final guardedValue = map['lockedTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      lockedTime: (() { final guardedValue = map['lockedTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

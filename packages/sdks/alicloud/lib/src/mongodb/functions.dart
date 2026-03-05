@@ -894,8 +894,7 @@ Future<GetServerlessInstancesResult> getServerlessInstances(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_mongodb_get_sharding_network_private_addresses_get_sharding_network_private_addresses_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetShardingNetworkPrivateAddressesResult>
-getShardingNetworkPrivateAddresses(
+Future<GetShardingNetworkPrivateAddressesResult> getShardingNetworkPrivateAddresses(
   GetShardingNetworkPrivateAddressesArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1026,8 +1025,7 @@ getShardingNetworkPrivateAddresses(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_mongodb_get_sharding_network_public_addresses_get_sharding_network_public_addresses_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetShardingNetworkPublicAddressesResult>
-getShardingNetworkPublicAddresses(
+Future<GetShardingNetworkPublicAddressesResult> getShardingNetworkPublicAddresses(
   GetShardingNetworkPublicAddressesArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

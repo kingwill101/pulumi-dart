@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFunctionAppSiteCredential {
   /// The password associated with the username, which can be used to publish to this App Service.
   final pulumi.Input<String> password;
-
   /// The username which can be used to publish to this App Service
   final pulumi.Input<String> username;
 
@@ -18,7 +17,10 @@ class GetFunctionAppSiteCredential {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'password': password, 'username': username};
+    return <String, dynamic>{
+      'password': password,
+      'username': username,
+    };
   }
 
   factory GetFunctionAppSiteCredential.fromMap(Map<String, dynamic> map) {
@@ -28,3 +30,4 @@ class GetFunctionAppSiteCredential {
     );
   }
 }
+

@@ -169,16 +169,12 @@ import 'ecs_dedicated_host_cluster_state.dart';
 class EcsDedicatedHostCluster extends pulumi.CustomResource {
   /// The name of the dedicated host cluster. The name must be `2` to `128` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. It cannot contain `http://` or `https://`.
   late final pulumi.Output<String?> dedicatedHostClusterName;
-
   /// The description of the dedicated host cluster. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
   late final pulumi.Output<String?> description;
-
   /// The dry run.
   late final pulumi.Output<bool?> dryRun;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The ID of the zone in which to create the dedicated host cluster.
   late final pulumi.Output<String> zoneId;
 
@@ -191,14 +187,12 @@ class EcsDedicatedHostCluster extends pulumi.CustomResource {
     EcsDedicatedHostClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ecs/ecsDedicatedHostCluster:EcsDedicatedHostCluster',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    dedicatedHostClusterName = registerOutput<String?>(
-      'dedicatedHostClusterName',
-    );
+          'alicloud:ecs/ecsDedicatedHostCluster:EcsDedicatedHostCluster',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    dedicatedHostClusterName = registerOutput<String?>('dedicatedHostClusterName');
     description = registerOutput<String?>('description');
     dryRun = registerOutput<bool?>('dryRun');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -223,14 +217,12 @@ class EcsDedicatedHostCluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ecs/ecsDedicatedHostCluster:EcsDedicatedHostCluster',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    dedicatedHostClusterName = registerOutput<String?>(
-      'dedicatedHostClusterName',
-    );
+          'alicloud:ecs/ecsDedicatedHostCluster:EcsDedicatedHostCluster',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    dedicatedHostClusterName = registerOutput<String?>('dedicatedHostClusterName');
     description = registerOutput<String?>('description');
     dryRun = registerOutput<bool?>('dryRun');
     tags = registerOutput<Map<String, String>?>('tags');

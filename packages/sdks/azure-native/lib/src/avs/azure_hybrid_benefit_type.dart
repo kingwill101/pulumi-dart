@@ -15,3 +15,4 @@ enum AzureHybridBenefitType {
     throw ArgumentError('Unknown AzureHybridBenefitType value: $value');
   }
 }
+

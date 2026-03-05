@@ -6,7 +6,6 @@ class BackupPlanBackupRuleStandardScheduleWeekDayOfMonth {
   /// Specifies the day of the week.
   /// Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
   final pulumi.Input<String> dayOfWeek;
-
   /// WeekOfMonth enumerates possible weeks in the month, e.g. the first, third, or last week of the month.
   /// Possible values are: `WEEK_OF_MONTH_UNSPECIFIED`, `FIRST`, `SECOND`, `THIRD`, `FOURTH`, `LAST`.
   final pulumi.Input<String> weekOfMonth;
@@ -26,12 +25,11 @@ class BackupPlanBackupRuleStandardScheduleWeekDayOfMonth {
     };
   }
 
-  factory BackupPlanBackupRuleStandardScheduleWeekDayOfMonth.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BackupPlanBackupRuleStandardScheduleWeekDayOfMonth.fromMap(Map<String, dynamic> map) {
     return BackupPlanBackupRuleStandardScheduleWeekDayOfMonth(
       dayOfWeek: pulumi.Input.fromValue(map['dayOfWeek'] as String),
       weekOfMonth: pulumi.Input.fromValue(map['weekOfMonth'] as String),
     );
   }
 }
+

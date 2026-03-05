@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetHubArgs {
   /// Specifies the Name of the Notification Hub.
   final pulumi.Input<String> name;
-
   /// Specifies the Name of the Notification Hub Namespace which contains the Notification Hub.
   final pulumi.Input<String> namespaceName;
-
   /// Specifies the Name of the Resource Group within which the Notification Hub exists.
   final pulumi.Input<String> resourceGroupName;
 
@@ -38,9 +36,8 @@ class GetHubArgs {
     return GetHubArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
       namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

@@ -7,38 +7,24 @@ class ClusterUserCreatedConnectionsClusterEndpointConnection {
   /// Detailed information of a PSC connection that is created by the customer
   /// who owns the cluster.
   /// Structure is documented below.
-  final pulumi.Input<
-    ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnection
-  >?
-  pscConnection;
+  final pulumi.Input<ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnection>? pscConnection;
 
   /// Creates a new [ClusterUserCreatedConnectionsClusterEndpointConnection].
   /// [pscConnection] Detailed information of a PSC connection that is created by the customer
-  ClusterUserCreatedConnectionsClusterEndpointConnection({this.pscConnection});
+  ClusterUserCreatedConnectionsClusterEndpointConnection({
+    this.pscConnection,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'pscConnection':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnection,
-            Map<String, dynamic>
-          >(pscConnection, (value) => value.toMap()),
+      'pscConnection': ?pulumi.Input.mapOptionalInputValue<ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnection, Map<String, dynamic>>(pscConnection, (value) => value.toMap()),
     };
   }
 
-  factory ClusterUserCreatedConnectionsClusterEndpointConnection.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterUserCreatedConnectionsClusterEndpointConnection.fromMap(Map<String, dynamic> map) {
     return ClusterUserCreatedConnectionsClusterEndpointConnection(
-      pscConnection: (() {
-        final guardedValue = map['pscConnection'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnection.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      pscConnection: (() { final guardedValue = map['pscConnection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnection.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

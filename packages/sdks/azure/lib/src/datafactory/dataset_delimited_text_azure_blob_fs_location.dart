@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatasetDelimitedTextAzureBlobFsLocation {
   /// Is the `file_system` using dynamic expression, function or system variables? Defaults to `false`.
   final pulumi.Input<bool>? dynamicFileSystemEnabled;
-
   /// Is the `filename` using dynamic expression, function or system variables? Defaults to `false`.
   final pulumi.Input<bool>? dynamicFilenameEnabled;
-
   /// Is the `path` using dynamic expression, function or system variables? Defaults to `false`.
   final pulumi.Input<bool>? dynamicPathEnabled;
-
   /// The storage data lake gen2 file system on the Azure Blob Storage Account hosting the file.
   final pulumi.Input<String>? fileSystem;
-
   /// The filename of the file.
   final pulumi.Input<String>? filename;
-
   /// The folder path to the file.
   final pulumi.Input<String>? path;
 
@@ -48,40 +43,15 @@ class DatasetDelimitedTextAzureBlobFsLocation {
     };
   }
 
-  factory DatasetDelimitedTextAzureBlobFsLocation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DatasetDelimitedTextAzureBlobFsLocation.fromMap(Map<String, dynamic> map) {
     return DatasetDelimitedTextAzureBlobFsLocation(
-      dynamicFileSystemEnabled: (() {
-        final guardedValue = map['dynamicFileSystemEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      dynamicFilenameEnabled: (() {
-        final guardedValue = map['dynamicFilenameEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      dynamicPathEnabled: (() {
-        final guardedValue = map['dynamicPathEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      fileSystem: (() {
-        final guardedValue = map['fileSystem'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      filename: (() {
-        final guardedValue = map['filename'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      path: (() {
-        final guardedValue = map['path'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dynamicFileSystemEnabled: (() { final guardedValue = map['dynamicFileSystemEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      dynamicFilenameEnabled: (() { final guardedValue = map['dynamicFilenameEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      dynamicPathEnabled: (() { final guardedValue = map['dynamicPathEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      fileSystem: (() { final guardedValue = map['fileSystem']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      filename: (() { final guardedValue = map['filename']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

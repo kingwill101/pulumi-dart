@@ -8,10 +8,14 @@ class GetVpcsVpcIpv6 {
 
   /// Creates a new [GetVpcsVpcIpv6].
   /// [range] The IPv6 range assigned to this VPC.
-  GetVpcsVpcIpv6({required this.range});
+  GetVpcsVpcIpv6({
+    required this.range,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'range': range};
+    return <String, dynamic>{
+      'range': range,
+    };
   }
 
   factory GetVpcsVpcIpv6.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class GetVpcsVpcIpv6 {
     );
   }
 }
+

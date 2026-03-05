@@ -8,18 +8,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_logging_v2_folder_bucket_view_args_doc}
 class FolderBucketViewArgs {
   final pulumi.Input<String> bucketId;
-
   /// Describes this view.
   final pulumi.Input<String>? description;
-
   /// Filter that restricts which log entries in a bucket are visible in this view.Filters are restricted to be a logical AND of ==/!= of any of the following: originating project/folder/organization/billing account. resource type log idFor example:SOURCE("projects/myproject") AND resource.type = "gce_instance" AND LOG_ID("stdout")
   final pulumi.Input<String>? filter;
   final pulumi.Input<String> folderId;
   final pulumi.Input<String>? location;
-
   /// The resource name of the view.For example:projects/my-project/locations/global/buckets/my-bucket/views/my-view
   final pulumi.Input<String>? name;
-
   /// Required. A client-assigned identifier such as "my-view". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
   final pulumi.Input<String> viewId;
 
@@ -56,28 +52,13 @@ class FolderBucketViewArgs {
   factory FolderBucketViewArgs.fromMap(Map<String, dynamic> map) {
     return FolderBucketViewArgs(
       bucketId: pulumi.Input.fromValue(map['bucketId'] as String),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      filter: (() {
-        final guardedValue = map['filter'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       folderId: pulumi.Input.fromValue(map['folderId'] as String),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       viewId: pulumi.Input.fromValue(map['viewId'] as String),
     );
   }
 }
+

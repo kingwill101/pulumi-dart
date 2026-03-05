@@ -5,25 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBackupPlansPlan {
   /// Specifies whether to activate the backup plan.
   final pulumi.Input<bool> active;
-
   /// The backup cycle. Valid values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, and Sunday.
   final pulumi.Input<String> backupPeriod;
-
   /// The start time of the backup task each day. The time is displayed in UTC and denoted by Z.
   final pulumi.Input<String> backupTime;
-
   /// The ID of the cluster for the backup.
   final pulumi.Input<String> clusterId;
-
   /// The time when the backup plan was created.
   final pulumi.Input<String> createTime;
-
   /// The ID of the data center for the backup in the cluster.
   final pulumi.Input<String> dataCenterId;
-
   /// The ID of the Backup Plan.
   final pulumi.Input<String> id;
-
   /// The duration for which you want to retain the backup. Valid values: 1 to 30. Unit: days.
   final pulumi.Input<int> retentionPeriod;
 
@@ -73,3 +66,4 @@ class GetBackupPlansPlan {
     );
   }
 }
+

@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getResourceTags.
 class GetResourceTagsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String resourceId;
-
   /// Map of key=value pairs for each tag set on the resource.
   final Map<String, String> tags;
 
@@ -20,7 +20,11 @@ class GetResourceTagsResult {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id, 'resourceId': resourceId, 'tags': tags};
+    return <String, dynamic>{
+      'id': id,
+      'resourceId': resourceId,
+      'tags': tags,
+    };
   }
 
   factory GetResourceTagsResult.fromMap(Map<String, dynamic> map) {
@@ -31,3 +35,4 @@ class GetResourceTagsResult {
     );
   }
 }
+

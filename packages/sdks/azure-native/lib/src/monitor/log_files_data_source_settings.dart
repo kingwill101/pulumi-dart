@@ -10,29 +10,20 @@ class LogFilesDataSourceSettings {
 
   /// Creates a new [LogFilesDataSourceSettings].
   /// [text] Text settings
-  LogFilesDataSourceSettings({this.text});
+  LogFilesDataSourceSettings({
+    this.text,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'text':
-          ?pulumi.Input.mapOptionalInputValue<
-            LogFileSettingsText,
-            Map<String, dynamic>
-          >(text, (value) => value.toMap()),
+      'text': ?pulumi.Input.mapOptionalInputValue<LogFileSettingsText, Map<String, dynamic>>(text, (value) => value.toMap()),
     };
   }
 
   factory LogFilesDataSourceSettings.fromMap(Map<String, dynamic> map) {
     return LogFilesDataSourceSettings(
-      text: (() {
-        final guardedValue = map['text'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          LogFileSettingsText.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      text: (() { final guardedValue = map['text']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LogFileSettingsText.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

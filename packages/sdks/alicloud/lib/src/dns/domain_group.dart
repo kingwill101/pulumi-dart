@@ -106,10 +106,8 @@ import 'domain_group_state.dart';
 class DomainGroup extends pulumi.CustomResource {
   /// The Name of the domain group. The `domain_group_name` is required when the value of the `group_name`  is Empty.
   late final pulumi.Output<String> domainGroupName;
-
   /// The Name of the domain group. The `group_name` has been deprecated from provider version 1.97.0. Please use `domain_group_name` instead.
   late final pulumi.Output<String> groupName;
-
   /// User language.
   late final pulumi.Output<String?> lang;
 
@@ -122,11 +120,11 @@ class DomainGroup extends pulumi.CustomResource {
     DomainGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dns/domainGroup:DomainGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dns/domainGroup:DomainGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     domainGroupName = registerOutput<String>('domainGroupName');
     groupName = registerOutput<String>('groupName');
     lang = registerOutput<String?>('lang');
@@ -150,11 +148,11 @@ class DomainGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dns/domainGroup:DomainGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dns/domainGroup:DomainGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     domainGroupName = registerOutput<String>('domainGroupName');
     groupName = registerOutput<String>('groupName');
     lang = registerOutput<String?>('lang');

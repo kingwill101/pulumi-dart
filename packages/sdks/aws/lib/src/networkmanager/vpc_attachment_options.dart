@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpcAttachmentOptions {
   /// Whether to enable appliance mode support. If enabled, traffic flow between a source and destination use the same Availability Zone for the VPC attachment for the lifetime of that flow. If the VPC attachment is pending acceptance, changing this value will recreate the resource.
   final pulumi.Input<bool>? applianceModeSupport;
-
   /// Whether to enable DNS support. If the VPC attachment is pending acceptance, changing this value will recreate the resource.
   final pulumi.Input<bool>? dnsSupport;
-
   /// Whether to enable IPv6 support. If the VPC attachment is pending acceptance, changing this value will recreate the resource.
   final pulumi.Input<bool>? ipv6Support;
-
   /// Whether to enable security group referencing support for this VPC attachment. The default is `true`. However, at the core network policy-level the default is set to `false`. If the VPC attachment is pending acceptance, changing this value will recreate the resource.
   final pulumi.Input<bool>? securityGroupReferencingSupport;
 
@@ -38,26 +35,11 @@ class VpcAttachmentOptions {
 
   factory VpcAttachmentOptions.fromMap(Map<String, dynamic> map) {
     return VpcAttachmentOptions(
-      applianceModeSupport: (() {
-        final guardedValue = map['applianceModeSupport'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      dnsSupport: (() {
-        final guardedValue = map['dnsSupport'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      ipv6Support: (() {
-        final guardedValue = map['ipv6Support'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      securityGroupReferencingSupport: (() {
-        final guardedValue = map['securityGroupReferencingSupport'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      applianceModeSupport: (() { final guardedValue = map['applianceModeSupport']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      dnsSupport: (() { final guardedValue = map['dnsSupport']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      ipv6Support: (() { final guardedValue = map['ipv6Support']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      securityGroupReferencingSupport: (() { final guardedValue = map['securityGroupReferencingSupport']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

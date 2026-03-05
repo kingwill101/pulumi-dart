@@ -14,7 +14,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServicePlacementRequireDomainDistributionPolicy {
   /// The name of the domain that should used for placement as per this policy.
   final pulumi.Input<String> domainName;
-
   /// The type of placement policy for a service fabric service. Following are the possible values.
   /// Expected value is 'RequiredDomainDistribution'.
   final pulumi.Input<String> type;
@@ -28,15 +27,17 @@ class ServicePlacementRequireDomainDistributionPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'domainName': domainName, 'type': type};
+    return <String, dynamic>{
+      'domainName': domainName,
+      'type': type,
+    };
   }
 
-  factory ServicePlacementRequireDomainDistributionPolicy.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ServicePlacementRequireDomainDistributionPolicy.fromMap(Map<String, dynamic> map) {
     return ServicePlacementRequireDomainDistributionPolicy(
       domainName: pulumi.Input.fromValue(map['domainName'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

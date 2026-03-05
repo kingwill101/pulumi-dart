@@ -352,10 +352,8 @@ import 'instance_attachment_state.dart';
 class InstanceAttachment extends pulumi.CustomResource {
   /// The ID of the ECS instance.
   late final pulumi.Output<String> ecsId;
-
   /// The ID of the Database File System.
   late final pulumi.Output<String> instanceId;
-
   /// The status of Instance Attachment.
   late final pulumi.Output<String> status;
 
@@ -368,11 +366,11 @@ class InstanceAttachment extends pulumi.CustomResource {
     InstanceAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:databasefilesystem/instanceAttachment:InstanceAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:databasefilesystem/instanceAttachment:InstanceAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     ecsId = registerOutput<String>('ecsId');
     instanceId = registerOutput<String>('instanceId');
     status = registerOutput<String>('status');
@@ -396,11 +394,11 @@ class InstanceAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:databasefilesystem/instanceAttachment:InstanceAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:databasefilesystem/instanceAttachment:InstanceAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     ecsId = registerOutput<String>('ecsId');
     instanceId = registerOutput<String>('instanceId');
     status = registerOutput<String>('status');

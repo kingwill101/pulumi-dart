@@ -13,10 +13,14 @@ class EdgeCacheKeysetValidationSharedKey {
 
   /// Creates a new [EdgeCacheKeysetValidationSharedKey].
   /// [secretVersion] The name of the secret version in Secret Manager.
-  EdgeCacheKeysetValidationSharedKey({required this.secretVersion});
+  EdgeCacheKeysetValidationSharedKey({
+    required this.secretVersion,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'secretVersion': secretVersion};
+    return <String, dynamic>{
+      'secretVersion': secretVersion,
+    };
   }
 
   factory EdgeCacheKeysetValidationSharedKey.fromMap(Map<String, dynamic> map) {
@@ -25,3 +29,4 @@ class EdgeCacheKeysetValidationSharedKey {
     );
   }
 }
+

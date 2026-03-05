@@ -9,10 +9,14 @@ class NamedResourcesStringSlice {
 
   /// Creates a new [NamedResourcesStringSlice].
   /// [strings] Strings is the slice of strings.
-  NamedResourcesStringSlice({required this.strings});
+  NamedResourcesStringSlice({
+    required this.strings,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'strings': strings};
+    return <String, dynamic>{
+      'strings': strings,
+    };
   }
 
   factory NamedResourcesStringSlice.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class NamedResourcesStringSlice {
     );
   }
 }
+

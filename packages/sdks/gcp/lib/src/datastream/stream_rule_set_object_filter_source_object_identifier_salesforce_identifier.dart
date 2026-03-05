@@ -13,14 +13,15 @@ class StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'objectName': objectName};
+    return <String, dynamic>{
+      'objectName': objectName,
+    };
   }
 
-  factory StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier.fromMap(Map<String, dynamic> map) {
     return StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier(
       objectName: pulumi.Input.fromValue(map['objectName'] as String),
     );
   }
 }
+

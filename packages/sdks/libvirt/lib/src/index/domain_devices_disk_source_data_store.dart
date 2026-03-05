@@ -9,29 +9,20 @@ class DomainDevicesDiskSourceDataStore {
 
   /// Creates a new [DomainDevicesDiskSourceDataStore].
   /// [format] Defines the format of the data store used in the backing store source configuration.
-  DomainDevicesDiskSourceDataStore({this.format});
+  DomainDevicesDiskSourceDataStore({
+    this.format,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'format':
-          ?pulumi.Input.mapOptionalInputValue<
-            DomainDevicesDiskSourceDataStoreFormat,
-            Map<String, dynamic>
-          >(format, (value) => value.toMap()),
+      'format': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskSourceDataStoreFormat, Map<String, dynamic>>(format, (value) => value.toMap()),
     };
   }
 
   factory DomainDevicesDiskSourceDataStore.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskSourceDataStore(
-      format: (() {
-        final guardedValue = map['format'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DomainDevicesDiskSourceDataStoreFormat.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      format: (() { final guardedValue = map['format']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesDiskSourceDataStoreFormat.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

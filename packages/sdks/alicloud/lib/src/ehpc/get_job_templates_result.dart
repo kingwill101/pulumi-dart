@@ -9,7 +9,6 @@ class GetJobTemplatesResult {
   final String id;
   final List<String> ids;
   final String? outputFile;
-
   /// A list of Ehpc Job Templates. Each element contains the following attributes:
   final List<GetJobTemplatesTemplate> templates;
 
@@ -30,11 +29,7 @@ class GetJobTemplatesResult {
       'id': id,
       'ids': ids,
       'outputFile': ?outputFile,
-      'templates':
-          pulumi.Input.encodeList<
-            GetJobTemplatesTemplate,
-            Map<String, dynamic>
-          >(templates, (value) => value.toMap()),
+      'templates': pulumi.Input.encodeList<GetJobTemplatesTemplate, Map<String, dynamic>>(templates, (value) => value.toMap()),
     };
   }
 
@@ -42,17 +37,9 @@ class GetJobTemplatesResult {
     return GetJobTemplatesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      templates: pulumi.Input.decodeList<GetJobTemplatesTemplate>(
-        map['templates']!,
-        (value) => GetJobTemplatesTemplate.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      templates: pulumi.Input.decodeList<GetJobTemplatesTemplate>(map['templates']!, (value) => GetJobTemplatesTemplate.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -10,41 +10,20 @@ class GoogleCloudContentwarehouseV1TimestampArray {
 
   /// Creates a new [GoogleCloudContentwarehouseV1TimestampArray].
   /// [values] List of timestamp values.
-  GoogleCloudContentwarehouseV1TimestampArray({this.values});
+  GoogleCloudContentwarehouseV1TimestampArray({
+    this.values,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'values':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GoogleCloudContentwarehouseV1TimestampValue>,
-            List<Map<String, dynamic>>
-          >(
-            values,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GoogleCloudContentwarehouseV1TimestampValue,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'values': ?pulumi.Input.mapOptionalInputValue<List<GoogleCloudContentwarehouseV1TimestampValue>, List<Map<String, dynamic>>>(values, (value) => pulumi.Input.encodeList<GoogleCloudContentwarehouseV1TimestampValue, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory GoogleCloudContentwarehouseV1TimestampArray.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudContentwarehouseV1TimestampArray.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1TimestampArray(
-      values: (() {
-        final guardedValue = map['values'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GoogleCloudContentwarehouseV1TimestampValue>(
-            guardedValue,
-            (value) => GoogleCloudContentwarehouseV1TimestampValue.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      values: (() { final guardedValue = map['values']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudContentwarehouseV1TimestampValue>(guardedValue, (value) => GoogleCloudContentwarehouseV1TimestampValue.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

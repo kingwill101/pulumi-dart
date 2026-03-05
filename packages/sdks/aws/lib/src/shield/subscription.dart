@@ -107,7 +107,6 @@ import 'subscription_state.dart';
 class Subscription extends pulumi.CustomResource {
   /// Toggle for automated renewal of the subscription. Valid values are `ENABLED` or `DISABLED`. Default is `ENABLED`.
   late final pulumi.Output<String> autoRenew;
-
   /// Skip attempting to disable automated renewal upon destruction. If set to `true`, the `auto_renew` value will be left as-is and the resource will simply be removed from state.
   late final pulumi.Output<bool?> skipDestroy;
 
@@ -120,11 +119,11 @@ class Subscription extends pulumi.CustomResource {
     SubscriptionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:shield/subscription:Subscription',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:shield/subscription:Subscription',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoRenew = registerOutput<String>('autoRenew');
     skipDestroy = registerOutput<bool?>('skipDestroy');
   }
@@ -147,11 +146,11 @@ class Subscription extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:shield/subscription:Subscription',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:shield/subscription:Subscription',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoRenew = registerOutput<String>('autoRenew');
     skipDestroy = registerOutput<bool?>('skipDestroy');
   }

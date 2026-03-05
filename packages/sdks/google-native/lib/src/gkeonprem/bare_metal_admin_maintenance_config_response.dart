@@ -19,13 +19,10 @@ class BareMetalAdminMaintenanceConfigResponse {
     };
   }
 
-  factory BareMetalAdminMaintenanceConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BareMetalAdminMaintenanceConfigResponse.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminMaintenanceConfigResponse(
-      maintenanceAddressCidrBlocks: pulumi.Input.fromValue(
-        (map['maintenanceAddressCidrBlocks'] as List).cast<String>(),
-      ),
+      maintenanceAddressCidrBlocks: pulumi.Input.fromValue((map['maintenanceAddressCidrBlocks'] as List).cast<String>()),
     );
   }
 }
+

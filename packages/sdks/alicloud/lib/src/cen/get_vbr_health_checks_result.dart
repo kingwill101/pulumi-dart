@@ -7,21 +7,16 @@ import 'get_vbr_health_checks_check.dart';
 class GetVbrHealthChecksResult {
   /// The ID of the Cloud Enterprise Network (CEN) instance.
   final String? cenId;
-
   /// A list of CEN VBR Heath Checks. Each element contains the following attributes:
   final List<GetVbrHealthChecksCheck> checks;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of the CEN VBR Heath Check IDs.
   final List<String> ids;
   final String? outputFile;
-
   /// The ID of the VBR instance.
   final String? vbrInstanceId;
   final int? vbrInstanceOwnerId;
-
   /// The ID of the region where the VBR instance is deployed.
   final String vbrInstanceRegionId;
 
@@ -48,11 +43,7 @@ class GetVbrHealthChecksResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'cenId': ?cenId,
-      'checks':
-          pulumi.Input.encodeList<
-            GetVbrHealthChecksCheck,
-            Map<String, dynamic>
-          >(checks, (value) => value.toMap()),
+      'checks': pulumi.Input.encodeList<GetVbrHealthChecksCheck, Map<String, dynamic>>(checks, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'outputFile': ?outputFile,
@@ -64,35 +55,15 @@ class GetVbrHealthChecksResult {
 
   factory GetVbrHealthChecksResult.fromMap(Map<String, dynamic> map) {
     return GetVbrHealthChecksResult(
-      cenId: (() {
-        final guardedValue = map['cenId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      checks: pulumi.Input.decodeList<GetVbrHealthChecksCheck>(
-        map['checks']!,
-        (value) => GetVbrHealthChecksCheck.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      cenId: (() { final guardedValue = map['cenId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      checks: pulumi.Input.decodeList<GetVbrHealthChecksCheck>(map['checks']!, (value) => GetVbrHealthChecksCheck.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      vbrInstanceId: (() {
-        final guardedValue = map['vbrInstanceId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      vbrInstanceOwnerId: (() {
-        final guardedValue = map['vbrInstanceOwnerId'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      vbrInstanceId: (() { final guardedValue = map['vbrInstanceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      vbrInstanceOwnerId: (() { final guardedValue = map['vbrInstanceOwnerId']; if (guardedValue == null) return null; return guardedValue as int; })(),
       vbrInstanceRegionId: map['vbrInstanceRegionId'] as String,
     );
   }
 }
+

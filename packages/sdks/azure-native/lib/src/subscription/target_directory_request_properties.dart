@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TargetDirectoryRequestProperties {
   /// The destination OwnerId, can be object id or email address
   final pulumi.Input<String>? destinationOwnerId;
-
   /// The destination Tenant id where subscription needs to be accepted
   final pulumi.Input<String>? destinationTenantId;
 
@@ -27,16 +26,9 @@ class TargetDirectoryRequestProperties {
 
   factory TargetDirectoryRequestProperties.fromMap(Map<String, dynamic> map) {
     return TargetDirectoryRequestProperties(
-      destinationOwnerId: (() {
-        final guardedValue = map['destinationOwnerId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      destinationTenantId: (() {
-        final guardedValue = map['destinationTenantId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      destinationOwnerId: (() { final guardedValue = map['destinationOwnerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      destinationTenantId: (() { final guardedValue = map['destinationTenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

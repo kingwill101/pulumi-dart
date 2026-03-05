@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserInfo {
   /// Email of the user used by Datadog for contacting them if needed
   final pulumi.Input<String>? emailAddress;
-
   /// Name of the user
   final pulumi.Input<String>? name;
-
   /// Phone number of the user used by Datadog for contacting them if needed
   final pulumi.Input<String>? phoneNumber;
 
@@ -17,7 +15,11 @@ class UserInfo {
   /// [emailAddress] Email of the user used by Datadog for contacting them if needed
   /// [name] Name of the user
   /// [phoneNumber] Phone number of the user used by Datadog for contacting them if needed
-  UserInfo({this.emailAddress, this.name, this.phoneNumber});
+  UserInfo({
+    this.emailAddress,
+    this.name,
+    this.phoneNumber,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class UserInfo {
 
   factory UserInfo.fromMap(Map<String, dynamic> map) {
     return UserInfo(
-      emailAddress: (() {
-        final guardedValue = map['emailAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      phoneNumber: (() {
-        final guardedValue = map['phoneNumber'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      emailAddress: (() { final guardedValue = map['emailAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      phoneNumber: (() { final guardedValue = map['phoneNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

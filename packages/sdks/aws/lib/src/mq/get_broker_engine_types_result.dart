@@ -7,10 +7,8 @@ import 'get_broker_engine_types_broker_engine_type.dart';
 class GetBrokerEngineTypesResult {
   /// List of available engine types and versions. See Engine Types.
   final List<GetBrokerEngineTypesBrokerEngineType> brokerEngineTypes;
-
   /// Broker's engine type.
   final String? engineType;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
@@ -29,11 +27,7 @@ class GetBrokerEngineTypesResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'brokerEngineTypes':
-          pulumi.Input.encodeList<
-            GetBrokerEngineTypesBrokerEngineType,
-            Map<String, dynamic>
-          >(brokerEngineTypes, (value) => value.toMap()),
+      'brokerEngineTypes': pulumi.Input.encodeList<GetBrokerEngineTypesBrokerEngineType, Map<String, dynamic>>(brokerEngineTypes, (value) => value.toMap()),
       'engineType': ?engineType,
       'id': id,
       'region': region,
@@ -42,20 +36,11 @@ class GetBrokerEngineTypesResult {
 
   factory GetBrokerEngineTypesResult.fromMap(Map<String, dynamic> map) {
     return GetBrokerEngineTypesResult(
-      brokerEngineTypes:
-          pulumi.Input.decodeList<GetBrokerEngineTypesBrokerEngineType>(
-            map['brokerEngineTypes']!,
-            (value) => GetBrokerEngineTypesBrokerEngineType.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-      engineType: (() {
-        final guardedValue = map['engineType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      brokerEngineTypes: pulumi.Input.decodeList<GetBrokerEngineTypesBrokerEngineType>(map['brokerEngineTypes']!, (value) => GetBrokerEngineTypesBrokerEngineType.fromMap((value as Map).cast<String, dynamic>())),
+      engineType: (() { final guardedValue = map['engineType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       region: map['region'] as String,
     );
   }
 }
+

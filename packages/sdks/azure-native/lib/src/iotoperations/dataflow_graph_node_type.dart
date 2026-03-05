@@ -16,3 +16,4 @@ enum DataflowGraphNodeType {
     throw ArgumentError('Unknown DataflowGraphNodeType value: $value');
   }
 }
+

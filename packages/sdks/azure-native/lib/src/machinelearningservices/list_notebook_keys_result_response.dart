@@ -23,12 +23,9 @@ class ListNotebookKeysResultResponse {
 
   factory ListNotebookKeysResultResponse.fromMap(Map<String, dynamic> map) {
     return ListNotebookKeysResultResponse(
-      primaryAccessKey: pulumi.Input.fromValue(
-        map['primaryAccessKey'] as String,
-      ),
-      secondaryAccessKey: pulumi.Input.fromValue(
-        map['secondaryAccessKey'] as String,
-      ),
+      primaryAccessKey: pulumi.Input.fromValue(map['primaryAccessKey'] as String),
+      secondaryAccessKey: pulumi.Input.fromValue(map['secondaryAccessKey'] as String),
     );
   }
 }
+

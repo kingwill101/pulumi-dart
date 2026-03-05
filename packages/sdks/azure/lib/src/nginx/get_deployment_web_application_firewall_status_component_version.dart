@@ -21,14 +21,11 @@ class GetDeploymentWebApplicationFirewallStatusComponentVersion {
     };
   }
 
-  factory GetDeploymentWebApplicationFirewallStatusComponentVersion.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDeploymentWebApplicationFirewallStatusComponentVersion.fromMap(Map<String, dynamic> map) {
     return GetDeploymentWebApplicationFirewallStatusComponentVersion(
-      wafEngineVersion: pulumi.Input.fromValue(
-        map['wafEngineVersion'] as String,
-      ),
+      wafEngineVersion: pulumi.Input.fromValue(map['wafEngineVersion'] as String),
       wafNginxVersion: pulumi.Input.fromValue(map['wafNginxVersion'] as String),
     );
   }
 }
+

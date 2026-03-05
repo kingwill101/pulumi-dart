@@ -5,10 +5,7 @@ import 'allocation_aggregate_reservation_reserved_resource_info_accelerator_resp
 
 class AllocationAggregateReservationReservedResourceInfoResponseComputeBeta {
   /// Properties of accelerator resources in this reservation.
-  final pulumi.Input<
-    AllocationAggregateReservationReservedResourceInfoAcceleratorResponseComputeBeta
-  >
-  accelerator;
+  final pulumi.Input<AllocationAggregateReservationReservedResourceInfoAcceleratorResponseComputeBeta> accelerator;
 
   /// Creates a new [AllocationAggregateReservationReservedResourceInfoResponseComputeBeta].
   /// [accelerator] Properties of accelerator resources in this reservation.
@@ -18,23 +15,14 @@ class AllocationAggregateReservationReservedResourceInfoResponseComputeBeta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accelerator':
-          pulumi.Input.mapInputValue<
-            AllocationAggregateReservationReservedResourceInfoAcceleratorResponseComputeBeta,
-            Map<String, dynamic>
-          >(accelerator, (value) => value.toMap()),
+      'accelerator': pulumi.Input.mapInputValue<AllocationAggregateReservationReservedResourceInfoAcceleratorResponseComputeBeta, Map<String, dynamic>>(accelerator, (value) => value.toMap()),
     };
   }
 
-  factory AllocationAggregateReservationReservedResourceInfoResponseComputeBeta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AllocationAggregateReservationReservedResourceInfoResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return AllocationAggregateReservationReservedResourceInfoResponseComputeBeta(
-      accelerator: pulumi.Input.fromValue(
-        AllocationAggregateReservationReservedResourceInfoAcceleratorResponseComputeBeta.fromMap(
-          (map['accelerator']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      accelerator: pulumi.Input.fromValue(AllocationAggregateReservationReservedResourceInfoAcceleratorResponseComputeBeta.fromMap((map['accelerator']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

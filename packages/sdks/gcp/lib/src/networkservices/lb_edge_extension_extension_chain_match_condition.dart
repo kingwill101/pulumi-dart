@@ -8,17 +8,20 @@ class LbEdgeExtensionExtensionChainMatchCondition {
 
   /// Creates a new [LbEdgeExtensionExtensionChainMatchCondition].
   /// [celExpression] A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed.
-  LbEdgeExtensionExtensionChainMatchCondition({required this.celExpression});
+  LbEdgeExtensionExtensionChainMatchCondition({
+    required this.celExpression,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'celExpression': celExpression};
+    return <String, dynamic>{
+      'celExpression': celExpression,
+    };
   }
 
-  factory LbEdgeExtensionExtensionChainMatchCondition.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LbEdgeExtensionExtensionChainMatchCondition.fromMap(Map<String, dynamic> map) {
     return LbEdgeExtensionExtensionChainMatchCondition(
       celExpression: pulumi.Input.fromValue(map['celExpression'] as String),
     );
   }
 }
+

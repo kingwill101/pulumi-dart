@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OAuth2AuthenticationSettingsContract {
   /// OAuth authorization server identifier.
   final pulumi.Input<String>? authorizationServerId;
-
   /// operations scope.
   final pulumi.Input<String>? scope;
 
@@ -25,20 +24,11 @@ class OAuth2AuthenticationSettingsContract {
     };
   }
 
-  factory OAuth2AuthenticationSettingsContract.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OAuth2AuthenticationSettingsContract.fromMap(Map<String, dynamic> map) {
     return OAuth2AuthenticationSettingsContract(
-      authorizationServerId: (() {
-        final guardedValue = map['authorizationServerId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      scope: (() {
-        final guardedValue = map['scope'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      authorizationServerId: (() { final guardedValue = map['authorizationServerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

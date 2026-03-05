@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by listDatabaseKeys.
 class ListDatabaseKeysResult {
   /// The current primary key that clients can use to authenticate
   final String primaryKey;
-
   /// The current secondary key that clients can use to authenticate
   final String secondaryKey;
 
@@ -30,3 +30,4 @@ class ListDatabaseKeysResult {
     );
   }
 }
+

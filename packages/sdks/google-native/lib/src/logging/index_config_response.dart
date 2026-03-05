@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IndexConfigResponse {
   /// The timestamp when the index was last modified.This is used to return the timestamp, and will be ignored if supplied during update.
   final pulumi.Input<String> createTime;
-
   /// The LogEntry field path to index.Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation( https://cloud.google.com/logging/docs/view/advanced-queries#indexed-fields) for details.For example: jsonPayload.request.status
   final pulumi.Input<String> fieldPath;
-
   /// The type of data in this index.
   final pulumi.Input<String> type;
 
@@ -39,3 +37,4 @@ class IndexConfigResponse {
     );
   }
 }
+

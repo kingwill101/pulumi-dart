@@ -15,3 +15,4 @@ enum DatabaseReadScale {
     throw ArgumentError('Unknown DatabaseReadScale value: $value');
   }
 }
+

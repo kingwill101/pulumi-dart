@@ -8,19 +8,20 @@ class DomainFeaturesCapabilitiesSysNice {
 
   /// Creates a new [DomainFeaturesCapabilitiesSysNice].
   /// [state] Sets the state of the capability to wake from an alarm.
-  DomainFeaturesCapabilitiesSysNice({this.state});
+  DomainFeaturesCapabilitiesSysNice({
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'state': ?state};
+    return <String, dynamic>{
+      'state': ?state,
+    };
   }
 
   factory DomainFeaturesCapabilitiesSysNice.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesCapabilitiesSysNice(
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -12,10 +12,14 @@ class GetFloatingIpArgs {
 
   /// Creates a new [GetFloatingIpArgs].
   /// [ipAddress] The allocated IP address of the specific floating IP to retrieve.
-  GetFloatingIpArgs({required this.ipAddress});
+  GetFloatingIpArgs({
+    required this.ipAddress,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'ipAddress': ipAddress};
+    return <String, dynamic>{
+      'ipAddress': ipAddress,
+    };
   }
 
   factory GetFloatingIpArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetFloatingIpArgs {
     );
   }
 }
+

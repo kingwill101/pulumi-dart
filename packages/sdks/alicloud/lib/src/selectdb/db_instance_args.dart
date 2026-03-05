@@ -10,49 +10,34 @@ import 'db_instance_desired_security_ip_list.dart';
 class DbInstanceArgs {
   /// The password for DBInstance using admin account.
   final pulumi.Input<String>? adminPass;
-
   /// The cache size in DBInstance on creating default cluster. The number should be divided by 100.
   final pulumi.Input<int> cacheSize;
-
   /// The class for default cluster in DBInstance. db_cluster_class has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
   final pulumi.Input<String> dbInstanceClass;
-
   /// The DBInstance description.
   final pulumi.Input<String> dbInstanceDescription;
-
   /// The modified IP address whitelists. See `desired_security_ip_lists` below.
-  final pulumi.Input<List<DbInstanceDesiredSecurityIpList>>?
-  desiredSecurityIpLists;
-
+  final pulumi.Input<List<DbInstanceDesiredSecurityIpList>>? desiredSecurityIpLists;
   /// If DBInstance need to open public network, set it to `true`.
   final pulumi.Input<bool>? enablePublicNetwork;
-
   /// The DBInstance minor version. Valid values: `3.0.12`,`4.0.4`.
   final pulumi.Input<String>? engineMinorVersion;
-
   /// The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
   final pulumi.Input<String> paymentType;
-
   /// It is valid when payment_type is `Subscription`. Valid values are `Year`, `Month`.
   final pulumi.Input<String>? period;
-
   /// The duration that you will buy DBInstance. It is valid when payment_type is `Subscription`. Valid values: [1~9], 12, 24, 36.
   final pulumi.Input<int>? periodTime;
-
   /// A mapping of tags to assign to the resource.
   /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
   /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// Field `upgraded_engine_minor_version` has been deprecated from provider version 1.248.0. New field `engine_minor_version` instead.
   final pulumi.Input<String>? upgradedEngineMinorVersion;
-
   /// The ID of the VPC for DBInstance.
   final pulumi.Input<String> vpcId;
-
   /// The ID of vswitch for DBInstance.
   final pulumi.Input<String> vswitchId;
-
   /// The ID of zone for DBInstance.
   final pulumi.Input<String> zoneId;
 
@@ -96,18 +81,7 @@ class DbInstanceArgs {
       'cacheSize': cacheSize,
       'dbInstanceClass': dbInstanceClass,
       'dbInstanceDescription': dbInstanceDescription,
-      'desiredSecurityIpLists':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<DbInstanceDesiredSecurityIpList>,
-            List<Map<String, dynamic>>
-          >(
-            desiredSecurityIpLists,
-            (value) =>
-                pulumi.Input.encodeList<
-                  DbInstanceDesiredSecurityIpList,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'desiredSecurityIpLists': ?pulumi.Input.mapOptionalInputValue<List<DbInstanceDesiredSecurityIpList>, List<Map<String, dynamic>>>(desiredSecurityIpLists, (value) => pulumi.Input.encodeList<DbInstanceDesiredSecurityIpList, Map<String, dynamic>>(value, (value) => value.toMap())),
       'enablePublicNetwork': ?enablePublicNetwork,
       'engineMinorVersion': ?engineMinorVersion,
       'paymentType': paymentType,
@@ -123,64 +97,22 @@ class DbInstanceArgs {
 
   factory DbInstanceArgs.fromMap(Map<String, dynamic> map) {
     return DbInstanceArgs(
-      adminPass: (() {
-        final guardedValue = map['adminPass'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      adminPass: (() { final guardedValue = map['adminPass']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       cacheSize: pulumi.Input.fromValue(map['cacheSize'] as int),
       dbInstanceClass: pulumi.Input.fromValue(map['dbInstanceClass'] as String),
-      dbInstanceDescription: pulumi.Input.fromValue(
-        map['dbInstanceDescription'] as String,
-      ),
-      desiredSecurityIpLists: (() {
-        final guardedValue = map['desiredSecurityIpLists'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<DbInstanceDesiredSecurityIpList>(
-            guardedValue,
-            (value) => DbInstanceDesiredSecurityIpList.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      enablePublicNetwork: (() {
-        final guardedValue = map['enablePublicNetwork'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      engineMinorVersion: (() {
-        final guardedValue = map['engineMinorVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dbInstanceDescription: pulumi.Input.fromValue(map['dbInstanceDescription'] as String),
+      desiredSecurityIpLists: (() { final guardedValue = map['desiredSecurityIpLists']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DbInstanceDesiredSecurityIpList>(guardedValue, (value) => DbInstanceDesiredSecurityIpList.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      enablePublicNetwork: (() { final guardedValue = map['enablePublicNetwork']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      engineMinorVersion: (() { final guardedValue = map['engineMinorVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       paymentType: pulumi.Input.fromValue(map['paymentType'] as String),
-      period: (() {
-        final guardedValue = map['period'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      periodTime: (() {
-        final guardedValue = map['periodTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      upgradedEngineMinorVersion: (() {
-        final guardedValue = map['upgradedEngineMinorVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      period: (() { final guardedValue = map['period']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      periodTime: (() { final guardedValue = map['periodTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      upgradedEngineMinorVersion: (() { final guardedValue = map['upgradedEngineMinorVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
       vswitchId: pulumi.Input.fromValue(map['vswitchId'] as String),
       zoneId: pulumi.Input.fromValue(map['zoneId'] as String),
     );
   }
 }
+

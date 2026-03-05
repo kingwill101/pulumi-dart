@@ -14,3 +14,4 @@ enum ScalingHostPoolType {
     throw ArgumentError('Unknown ScalingHostPoolType value: $value');
   }
 }
+

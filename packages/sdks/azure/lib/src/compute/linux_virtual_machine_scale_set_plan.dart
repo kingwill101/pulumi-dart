@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LinuxVirtualMachineScaleSetPlan {
   /// Specifies the name of the image from the marketplace. Changing this forces a new resource to be created.
   final pulumi.Input<String> name;
-
   /// Specifies the product of the image from the marketplace. Changing this forces a new resource to be created.
   final pulumi.Input<String> product;
-
   /// Specifies the publisher of the image. Changing this forces a new resource to be created.
   final pulumi.Input<String> publisher;
 
@@ -38,3 +36,4 @@ class LinuxVirtualMachineScaleSetPlan {
     );
   }
 }
+

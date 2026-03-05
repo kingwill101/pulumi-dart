@@ -1,19 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getTopic.
 class GetTopicResult {
   /// The Endpoint associated with the EventGrid Topic.
   final String endpoint;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String location;
   final String name;
-
   /// The Primary Shared Access Key associated with the EventGrid Topic.
   final String primaryAccessKey;
   final String resourceGroupName;
-
   /// The Secondary Shared Access Key associated with the EventGrid Topic.
   final String secondaryAccessKey;
   final Map<String, String> tags;
@@ -64,3 +62,4 @@ class GetTopicResult {
     );
   }
 }
+

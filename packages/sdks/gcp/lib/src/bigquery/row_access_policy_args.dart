@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RowAccessPolicyArgs {
   /// The ID of the dataset containing this row access policy.
   final pulumi.Input<String> datasetId;
-
   /// A SQL boolean expression that represents the rows defined by this row
   /// access policy, similar to the boolean expression in a WHERE clause of a
   /// SELECT query on a table.
@@ -20,7 +19,6 @@ class RowAccessPolicyArgs {
   /// nullable_field is not NULL
   /// numeric_field BETWEEN 1.0 AND 5.0
   final pulumi.Input<String> filterPredicate;
-
   /// Input only. The optional list of iam_member users or groups that specifies the initial
   /// members that the row-level access policy should be created with.
   /// grantees types:
@@ -43,16 +41,13 @@ class RowAccessPolicyArgs {
   /// BigQuery requires authentication before a user can access the service,
   /// allUsers includes only authenticated users.
   final pulumi.Input<List<String>>? grantees;
-
   /// The ID of the row access policy. The ID must contain only
   /// letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum
   /// length is 256 characters.
   final pulumi.Input<String> policyId;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The ID of the table containing this row access policy.
   final pulumi.Input<String> tableId;
 
@@ -87,18 +82,11 @@ class RowAccessPolicyArgs {
     return RowAccessPolicyArgs(
       datasetId: pulumi.Input.fromValue(map['datasetId'] as String),
       filterPredicate: pulumi.Input.fromValue(map['filterPredicate'] as String),
-      grantees: (() {
-        final guardedValue = map['grantees'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      grantees: (() { final guardedValue = map['grantees']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       policyId: pulumi.Input.fromValue(map['policyId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tableId: pulumi.Input.fromValue(map['tableId'] as String),
     );
   }
 }
+

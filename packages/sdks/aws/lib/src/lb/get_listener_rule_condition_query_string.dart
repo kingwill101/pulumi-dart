@@ -9,41 +9,20 @@ class GetListenerRuleConditionQueryString {
 
   /// Creates a new [GetListenerRuleConditionQueryString].
   /// [values] Set of `key`-`value` pairs indicating the query string parameters to match.
-  GetListenerRuleConditionQueryString({this.values});
+  GetListenerRuleConditionQueryString({
+    this.values,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'values':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GetListenerRuleConditionQueryStringValue>,
-            List<Map<String, dynamic>>
-          >(
-            values,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetListenerRuleConditionQueryStringValue,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'values': ?pulumi.Input.mapOptionalInputValue<List<GetListenerRuleConditionQueryStringValue>, List<Map<String, dynamic>>>(values, (value) => pulumi.Input.encodeList<GetListenerRuleConditionQueryStringValue, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory GetListenerRuleConditionQueryString.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetListenerRuleConditionQueryString.fromMap(Map<String, dynamic> map) {
     return GetListenerRuleConditionQueryString(
-      values: (() {
-        final guardedValue = map['values'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GetListenerRuleConditionQueryStringValue>(
-            guardedValue,
-            (value) => GetListenerRuleConditionQueryStringValue.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      values: (() { final guardedValue = map['values']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetListenerRuleConditionQueryStringValue>(guardedValue, (value) => GetListenerRuleConditionQueryStringValue.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

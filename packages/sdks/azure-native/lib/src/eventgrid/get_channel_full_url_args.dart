@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetChannelFullUrlArgs {
   /// Name of the Channel.
   final pulumi.Input<String> channelName;
-
   /// Name of the partner namespace.
   final pulumi.Input<String> partnerNamespaceName;
-
   /// The name of the resource group within the partners subscription.
   final pulumi.Input<String> resourceGroupName;
 
@@ -37,12 +35,9 @@ class GetChannelFullUrlArgs {
   factory GetChannelFullUrlArgs.fromMap(Map<String, dynamic> map) {
     return GetChannelFullUrlArgs(
       channelName: pulumi.Input.fromValue(map['channelName'] as String),
-      partnerNamespaceName: pulumi.Input.fromValue(
-        map['partnerNamespaceName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      partnerNamespaceName: pulumi.Input.fromValue(map['partnerNamespaceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

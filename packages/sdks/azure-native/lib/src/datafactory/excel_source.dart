@@ -7,22 +7,16 @@ import 'amazon_s3_compatible_read_settings.dart';
 class ExcelSource {
   /// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
   final pulumi.Input<dynamic>? additionalColumns;
-
   /// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? disableMetricsCollection;
-
   /// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
   final pulumi.Input<dynamic>? maxConcurrentConnections;
-
   /// Source retry count. Type: integer (or Expression with resultType integer).
   final pulumi.Input<dynamic>? sourceRetryCount;
-
   /// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
   final pulumi.Input<dynamic>? sourceRetryWait;
-
   /// Excel store settings.
   final pulumi.Input<AmazonS3CompatibleReadSettings>? storeSettings;
-
   /// Copy source type.
   /// Expected value is 'ExcelSource'.
   final pulumi.Input<String> type;
@@ -52,52 +46,21 @@ class ExcelSource {
       'maxConcurrentConnections': ?maxConcurrentConnections,
       'sourceRetryCount': ?sourceRetryCount,
       'sourceRetryWait': ?sourceRetryWait,
-      'storeSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            AmazonS3CompatibleReadSettings,
-            Map<String, dynamic>
-          >(storeSettings, (value) => value.toMap()),
+      'storeSettings': ?pulumi.Input.mapOptionalInputValue<AmazonS3CompatibleReadSettings, Map<String, dynamic>>(storeSettings, (value) => value.toMap()),
       'type': type,
     };
   }
 
   factory ExcelSource.fromMap(Map<String, dynamic> map) {
     return ExcelSource(
-      additionalColumns: (() {
-        final guardedValue = map['additionalColumns'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      disableMetricsCollection: (() {
-        final guardedValue = map['disableMetricsCollection'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      maxConcurrentConnections: (() {
-        final guardedValue = map['maxConcurrentConnections'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      sourceRetryCount: (() {
-        final guardedValue = map['sourceRetryCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      sourceRetryWait: (() {
-        final guardedValue = map['sourceRetryWait'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      storeSettings: (() {
-        final guardedValue = map['storeSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AmazonS3CompatibleReadSettings.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      additionalColumns: (() { final guardedValue = map['additionalColumns']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      disableMetricsCollection: (() { final guardedValue = map['disableMetricsCollection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      maxConcurrentConnections: (() { final guardedValue = map['maxConcurrentConnections']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      sourceRetryCount: (() { final guardedValue = map['sourceRetryCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      sourceRetryWait: (() { final guardedValue = map['sourceRetryWait']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      storeSettings: (() { final guardedValue = map['storeSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AmazonS3CompatibleReadSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

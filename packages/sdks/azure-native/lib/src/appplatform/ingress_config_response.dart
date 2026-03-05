@@ -9,19 +9,20 @@ class IngressConfigResponse {
 
   /// Creates a new [IngressConfigResponse].
   /// [readTimeoutInSeconds] Ingress read time out in seconds.
-  IngressConfigResponse({this.readTimeoutInSeconds});
+  IngressConfigResponse({
+    this.readTimeoutInSeconds,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'readTimeoutInSeconds': ?readTimeoutInSeconds};
+    return <String, dynamic>{
+      'readTimeoutInSeconds': ?readTimeoutInSeconds,
+    };
   }
 
   factory IngressConfigResponse.fromMap(Map<String, dynamic> map) {
     return IngressConfigResponse(
-      readTimeoutInSeconds: (() {
-        final guardedValue = map['readTimeoutInSeconds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      readTimeoutInSeconds: (() { final guardedValue = map['readTimeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

@@ -9,10 +9,14 @@ class DisplayDeviceResponse {
 
   /// Creates a new [DisplayDeviceResponse].
   /// [enableDisplay] Defines whether the instance has Display enabled.
-  DisplayDeviceResponse({required this.enableDisplay});
+  DisplayDeviceResponse({
+    required this.enableDisplay,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enableDisplay': enableDisplay};
+    return <String, dynamic>{
+      'enableDisplay': enableDisplay,
+    };
   }
 
   factory DisplayDeviceResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class DisplayDeviceResponse {
     );
   }
 }
+

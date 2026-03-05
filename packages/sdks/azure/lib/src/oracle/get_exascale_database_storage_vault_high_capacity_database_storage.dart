@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetExascaleDatabaseStorageVaultHighCapacityDatabaseStorage {
   /// Available capacity in gigabytes.
   final pulumi.Input<int> availableSizeInGb;
-
   /// Total capacity in gigabytes.
   final pulumi.Input<int> totalSizeInGb;
 
@@ -24,14 +23,11 @@ class GetExascaleDatabaseStorageVaultHighCapacityDatabaseStorage {
     };
   }
 
-  factory GetExascaleDatabaseStorageVaultHighCapacityDatabaseStorage.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetExascaleDatabaseStorageVaultHighCapacityDatabaseStorage.fromMap(Map<String, dynamic> map) {
     return GetExascaleDatabaseStorageVaultHighCapacityDatabaseStorage(
-      availableSizeInGb: pulumi.Input.fromValue(
-        map['availableSizeInGb'] as int,
-      ),
+      availableSizeInGb: pulumi.Input.fromValue(map['availableSizeInGb'] as int),
       totalSizeInGb: pulumi.Input.fromValue(map['totalSizeInGb'] as int),
     );
   }
 }
+

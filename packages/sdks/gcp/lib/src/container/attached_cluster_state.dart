@@ -24,61 +24,46 @@ class AttachedClusterState {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
-
   /// Configuration related to the cluster RBAC settings.
   /// Structure is documented below.
   final pulumi.Input<AttachedClusterAuthorization>? authorization;
-
   /// Binary Authorization configuration.
   /// Structure is documented below.
   final pulumi.Input<AttachedClusterBinaryAuthorization>? binaryAuthorization;
-
   /// Output only. The region where this cluster runs.
   /// For EKS clusters, this is an AWS region. For AKS clusters,
   /// this is an Azure region.
   final pulumi.Input<String>? clusterRegion;
-
   /// Output only. The time at which this cluster was created.
   final pulumi.Input<String>? createTime;
-
   /// Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
   final pulumi.Input<String>? deletionPolicy;
-
   /// A human readable description of this attached cluster. Cannot be longer
   /// than 255 UTF-8 encoded bytes.
   final pulumi.Input<String>? description;
-
   /// The Kubernetes distribution of the underlying attached cluster. Supported values:
   /// "eks", "aks", "generic". The generic distribution provides the ability to register
   /// or migrate any CNCF conformant cluster.
   final pulumi.Input<String>? distribution;
   final pulumi.Input<Map<String, String>>? effectiveAnnotations;
-
   /// A set of errors found in the cluster.
   /// Structure is documented below.
   final pulumi.Input<List<AttachedClusterError>>? errors;
-
   /// Fleet configuration.
   /// Structure is documented below.
   final pulumi.Input<AttachedClusterFleet>? fleet;
-
   /// The Kubernetes version of the cluster.
   final pulumi.Input<String>? kubernetesVersion;
-
   /// The location for the resource
   final pulumi.Input<String>? location;
-
   /// Logging configuration.
   /// Structure is documented below.
   final pulumi.Input<AttachedClusterLoggingConfig>? loggingConfig;
-
   /// Monitoring configuration.
   /// Structure is documented below.
   final pulumi.Input<AttachedClusterMonitoringConfig>? monitoringConfig;
-
   /// The name of this resource.
   final pulumi.Input<String>? name;
-
   /// OIDC discovery information of the target cluster.
   /// Kubernetes Service Account (KSA) tokens are JWT tokens signed by the cluster
   /// API server. This fields indicates how GCP services
@@ -90,44 +75,33 @@ class AttachedClusterState {
   /// `issuer_url` and `jwks`.
   /// Structure is documented below.
   final pulumi.Input<AttachedClusterOidcConfig>? oidcConfig;
-
   /// The platform version for the cluster (e.g. `1.23.0-gke.1`).
   final pulumi.Input<String>? platformVersion;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// Support for proxy configuration.
   /// Structure is documented below.
   final pulumi.Input<AttachedClusterProxyConfig>? proxyConfig;
-
   /// If set, there are currently changes in flight to the cluster.
   final pulumi.Input<bool>? reconciling;
-
   /// (Optional, Deprecated)
   /// Enable/Disable Security Posture API features for the cluster.
   /// Structure is documented below.
   ///
   /// &gt; **Warning:** `security_posture_config` is deprecated and will be removed in a future major release.
-  final pulumi.Input<AttachedClusterSecurityPostureConfig>?
-  securityPostureConfig;
-
+  final pulumi.Input<AttachedClusterSecurityPostureConfig>? securityPostureConfig;
   /// The current state of the cluster. Possible values:
   /// STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR,
   /// DEGRADED
   final pulumi.Input<String>? state;
-
   /// A globally unique identifier for the cluster.
   final pulumi.Input<String>? uid;
-
   /// The time at which this cluster was last updated.
   final pulumi.Input<String>? updateTime;
-
   /// Workload Identity settings.
   /// Structure is documented below.
-  final pulumi.Input<List<AttachedClusterWorkloadIdentityConfig>>?
-  workloadIdentityConfigs;
+  final pulumi.Input<List<AttachedClusterWorkloadIdentityConfig>>? workloadIdentityConfigs;
 
   /// Creates a new [AttachedClusterState].
   /// [annotations] Optional. Annotations on the cluster. This field has the same
@@ -188,270 +162,63 @@ class AttachedClusterState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'annotations': ?annotations,
-      'authorization':
-          ?pulumi.Input.mapOptionalInputValue<
-            AttachedClusterAuthorization,
-            Map<String, dynamic>
-          >(authorization, (value) => value.toMap()),
-      'binaryAuthorization':
-          ?pulumi.Input.mapOptionalInputValue<
-            AttachedClusterBinaryAuthorization,
-            Map<String, dynamic>
-          >(binaryAuthorization, (value) => value.toMap()),
+      'authorization': ?pulumi.Input.mapOptionalInputValue<AttachedClusterAuthorization, Map<String, dynamic>>(authorization, (value) => value.toMap()),
+      'binaryAuthorization': ?pulumi.Input.mapOptionalInputValue<AttachedClusterBinaryAuthorization, Map<String, dynamic>>(binaryAuthorization, (value) => value.toMap()),
       'clusterRegion': ?clusterRegion,
       'createTime': ?createTime,
       'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'distribution': ?distribution,
       'effectiveAnnotations': ?effectiveAnnotations,
-      'errors':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<AttachedClusterError>,
-            List<Map<String, dynamic>>
-          >(
-            errors,
-            (value) =>
-                pulumi.Input.encodeList<
-                  AttachedClusterError,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'fleet':
-          ?pulumi.Input.mapOptionalInputValue<
-            AttachedClusterFleet,
-            Map<String, dynamic>
-          >(fleet, (value) => value.toMap()),
+      'errors': ?pulumi.Input.mapOptionalInputValue<List<AttachedClusterError>, List<Map<String, dynamic>>>(errors, (value) => pulumi.Input.encodeList<AttachedClusterError, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'fleet': ?pulumi.Input.mapOptionalInputValue<AttachedClusterFleet, Map<String, dynamic>>(fleet, (value) => value.toMap()),
       'kubernetesVersion': ?kubernetesVersion,
       'location': ?location,
-      'loggingConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            AttachedClusterLoggingConfig,
-            Map<String, dynamic>
-          >(loggingConfig, (value) => value.toMap()),
-      'monitoringConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            AttachedClusterMonitoringConfig,
-            Map<String, dynamic>
-          >(monitoringConfig, (value) => value.toMap()),
+      'loggingConfig': ?pulumi.Input.mapOptionalInputValue<AttachedClusterLoggingConfig, Map<String, dynamic>>(loggingConfig, (value) => value.toMap()),
+      'monitoringConfig': ?pulumi.Input.mapOptionalInputValue<AttachedClusterMonitoringConfig, Map<String, dynamic>>(monitoringConfig, (value) => value.toMap()),
       'name': ?name,
-      'oidcConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            AttachedClusterOidcConfig,
-            Map<String, dynamic>
-          >(oidcConfig, (value) => value.toMap()),
+      'oidcConfig': ?pulumi.Input.mapOptionalInputValue<AttachedClusterOidcConfig, Map<String, dynamic>>(oidcConfig, (value) => value.toMap()),
       'platformVersion': ?platformVersion,
       'project': ?project,
-      'proxyConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            AttachedClusterProxyConfig,
-            Map<String, dynamic>
-          >(proxyConfig, (value) => value.toMap()),
+      'proxyConfig': ?pulumi.Input.mapOptionalInputValue<AttachedClusterProxyConfig, Map<String, dynamic>>(proxyConfig, (value) => value.toMap()),
       'reconciling': ?reconciling,
-      'securityPostureConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            AttachedClusterSecurityPostureConfig,
-            Map<String, dynamic>
-          >(securityPostureConfig, (value) => value.toMap()),
+      'securityPostureConfig': ?pulumi.Input.mapOptionalInputValue<AttachedClusterSecurityPostureConfig, Map<String, dynamic>>(securityPostureConfig, (value) => value.toMap()),
       'state': ?state,
       'uid': ?uid,
       'updateTime': ?updateTime,
-      'workloadIdentityConfigs':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<AttachedClusterWorkloadIdentityConfig>,
-            List<Map<String, dynamic>>
-          >(
-            workloadIdentityConfigs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  AttachedClusterWorkloadIdentityConfig,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'workloadIdentityConfigs': ?pulumi.Input.mapOptionalInputValue<List<AttachedClusterWorkloadIdentityConfig>, List<Map<String, dynamic>>>(workloadIdentityConfigs, (value) => pulumi.Input.encodeList<AttachedClusterWorkloadIdentityConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AttachedClusterState.fromMap(Map<String, dynamic> map) {
     return AttachedClusterState(
-      annotations: (() {
-        final guardedValue = map['annotations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      authorization: (() {
-        final guardedValue = map['authorization'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AttachedClusterAuthorization.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      binaryAuthorization: (() {
-        final guardedValue = map['binaryAuthorization'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AttachedClusterBinaryAuthorization.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      clusterRegion: (() {
-        final guardedValue = map['clusterRegion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      deletionPolicy: (() {
-        final guardedValue = map['deletionPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      distribution: (() {
-        final guardedValue = map['distribution'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      effectiveAnnotations: (() {
-        final guardedValue = map['effectiveAnnotations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      errors: (() {
-        final guardedValue = map['errors'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<AttachedClusterError>(
-            guardedValue,
-            (value) => AttachedClusterError.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      fleet: (() {
-        final guardedValue = map['fleet'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AttachedClusterFleet.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      kubernetesVersion: (() {
-        final guardedValue = map['kubernetesVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      loggingConfig: (() {
-        final guardedValue = map['loggingConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AttachedClusterLoggingConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      monitoringConfig: (() {
-        final guardedValue = map['monitoringConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AttachedClusterMonitoringConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      oidcConfig: (() {
-        final guardedValue = map['oidcConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AttachedClusterOidcConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      platformVersion: (() {
-        final guardedValue = map['platformVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      proxyConfig: (() {
-        final guardedValue = map['proxyConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AttachedClusterProxyConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      reconciling: (() {
-        final guardedValue = map['reconciling'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      securityPostureConfig: (() {
-        final guardedValue = map['securityPostureConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AttachedClusterSecurityPostureConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      uid: (() {
-        final guardedValue = map['uid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      updateTime: (() {
-        final guardedValue = map['updateTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      workloadIdentityConfigs: (() {
-        final guardedValue = map['workloadIdentityConfigs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<AttachedClusterWorkloadIdentityConfig>(
-            guardedValue,
-            (value) => AttachedClusterWorkloadIdentityConfig.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      authorization: (() { final guardedValue = map['authorization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AttachedClusterAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      binaryAuthorization: (() { final guardedValue = map['binaryAuthorization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AttachedClusterBinaryAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      clusterRegion: (() { final guardedValue = map['clusterRegion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      distribution: (() { final guardedValue = map['distribution']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      effectiveAnnotations: (() { final guardedValue = map['effectiveAnnotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      errors: (() { final guardedValue = map['errors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AttachedClusterError>(guardedValue, (value) => AttachedClusterError.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      fleet: (() { final guardedValue = map['fleet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AttachedClusterFleet.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      kubernetesVersion: (() { final guardedValue = map['kubernetesVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      loggingConfig: (() { final guardedValue = map['loggingConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AttachedClusterLoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      monitoringConfig: (() { final guardedValue = map['monitoringConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AttachedClusterMonitoringConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      oidcConfig: (() { final guardedValue = map['oidcConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AttachedClusterOidcConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      platformVersion: (() { final guardedValue = map['platformVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      proxyConfig: (() { final guardedValue = map['proxyConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AttachedClusterProxyConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      reconciling: (() { final guardedValue = map['reconciling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      securityPostureConfig: (() { final guardedValue = map['securityPostureConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AttachedClusterSecurityPostureConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      uid: (() { final guardedValue = map['uid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      workloadIdentityConfigs: (() { final guardedValue = map['workloadIdentityConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AttachedClusterWorkloadIdentityConfig>(guardedValue, (value) => AttachedClusterWorkloadIdentityConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

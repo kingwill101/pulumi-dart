@@ -202,43 +202,30 @@ import 'security_group_ingress_rule_state.dart';
 class SecurityGroupIngressRule extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the security group rule.
   late final pulumi.Output<String> arn;
-
   /// The source IPv4 CIDR range.
   late final pulumi.Output<String?> cidrIpv4;
-
   /// The source IPv6 CIDR range.
   late final pulumi.Output<String?> cidrIpv6;
-
   /// The security group rule description.
   late final pulumi.Output<String?> description;
-
   /// The start of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 type.
   late final pulumi.Output<int?> fromPort;
-
   /// The IP protocol name or number. Use `-1` to specify all protocols. Note that if `ip_protocol` is set to `-1`, it translates to all protocols, all port ranges, and `from_port` and `to_port` values should not be defined.
   late final pulumi.Output<String> ipProtocol;
-
   /// The ID of the source prefix list.
   late final pulumi.Output<String?> prefixListId;
-
   /// The source security group that is referenced in the rule.
   late final pulumi.Output<String?> referencedSecurityGroupId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The ID of the security group.
   late final pulumi.Output<String> securityGroupId;
-
   /// The ID of the security group rule.
   late final pulumi.Output<String> securityGroupRuleId;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// The end of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 code.
   ///
   /// &gt; **Note** Although `cidr_ipv4`, `cidr_ipv6`, `prefix_list_id`, and `referenced_security_group_id` are all marked as optional, you *must* provide one of them in order to configure the destination of the traffic. The `from_port` and `to_port` arguments are required unless `ip_protocol` is set to `-1` or `icmpv6`.
@@ -253,11 +240,11 @@ class SecurityGroupIngressRule extends pulumi.CustomResource {
     SecurityGroupIngressRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:vpc/securityGroupIngressRule:SecurityGroupIngressRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:vpc/securityGroupIngressRule:SecurityGroupIngressRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     cidrIpv4 = registerOutput<String?>('cidrIpv4');
     cidrIpv6 = registerOutput<String?>('cidrIpv6');
@@ -265,9 +252,7 @@ class SecurityGroupIngressRule extends pulumi.CustomResource {
     fromPort = registerOutput<int?>('fromPort');
     ipProtocol = registerOutput<String>('ipProtocol');
     prefixListId = registerOutput<String?>('prefixListId');
-    referencedSecurityGroupId = registerOutput<String?>(
-      'referencedSecurityGroupId',
-    );
+    referencedSecurityGroupId = registerOutput<String?>('referencedSecurityGroupId');
     region = registerOutput<String>('region');
     securityGroupId = registerOutput<String>('securityGroupId');
     securityGroupRuleId = registerOutput<String>('securityGroupRuleId');
@@ -294,11 +279,11 @@ class SecurityGroupIngressRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:vpc/securityGroupIngressRule:SecurityGroupIngressRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:vpc/securityGroupIngressRule:SecurityGroupIngressRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     cidrIpv4 = registerOutput<String?>('cidrIpv4');
     cidrIpv6 = registerOutput<String?>('cidrIpv6');
@@ -306,9 +291,7 @@ class SecurityGroupIngressRule extends pulumi.CustomResource {
     fromPort = registerOutput<int?>('fromPort');
     ipProtocol = registerOutput<String>('ipProtocol');
     prefixListId = registerOutput<String?>('prefixListId');
-    referencedSecurityGroupId = registerOutput<String?>(
-      'referencedSecurityGroupId',
-    );
+    referencedSecurityGroupId = registerOutput<String?>('referencedSecurityGroupId');
     region = registerOutput<String>('region');
     securityGroupId = registerOutput<String>('securityGroupId');
     securityGroupRuleId = registerOutput<String>('securityGroupRuleId');

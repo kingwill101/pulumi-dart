@@ -10,29 +10,20 @@ class LoadBalancerProfile {
 
   /// Creates a new [LoadBalancerProfile].
   /// [managedOutboundIps] The desired managed outbound IPs for the cluster public load balancer.
-  LoadBalancerProfile({this.managedOutboundIps});
+  LoadBalancerProfile({
+    this.managedOutboundIps,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'managedOutboundIps':
-          ?pulumi.Input.mapOptionalInputValue<
-            ManagedOutboundIPs,
-            Map<String, dynamic>
-          >(managedOutboundIps, (value) => value.toMap()),
+      'managedOutboundIps': ?pulumi.Input.mapOptionalInputValue<ManagedOutboundIPs, Map<String, dynamic>>(managedOutboundIps, (value) => value.toMap()),
     };
   }
 
   factory LoadBalancerProfile.fromMap(Map<String, dynamic> map) {
     return LoadBalancerProfile(
-      managedOutboundIps: (() {
-        final guardedValue = map['managedOutboundIps'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ManagedOutboundIPs.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      managedOutboundIps: (() { final guardedValue = map['managedOutboundIps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedOutboundIPs.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

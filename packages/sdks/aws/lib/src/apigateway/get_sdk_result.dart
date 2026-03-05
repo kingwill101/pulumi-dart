@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getSdk.
 class GetSdkResult {
   /// SDK as a string.
   final String body;
-
   /// Content-disposition header value in the HTTP response.
   final String contentDisposition;
-
   /// Content-type header value in the HTTP response.
   final String contentType;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final Map<String, String>? parameters;
@@ -61,11 +59,7 @@ class GetSdkResult {
       contentDisposition: map['contentDisposition'] as String,
       contentType: map['contentType'] as String,
       id: map['id'] as String,
-      parameters: (() {
-        final guardedValue = map['parameters'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       region: map['region'] as String,
       restApiId: map['restApiId'] as String,
       sdkType: map['sdkType'] as String,
@@ -73,3 +67,4 @@ class GetSdkResult {
     );
   }
 }
+

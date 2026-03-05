@@ -16,27 +16,14 @@ class ProvisionedClustersCommonPropertiesResponseFeaturesStatus {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arcAgentStatus':
-          ?pulumi.Input.mapOptionalInputValue<
-            ArcAgentStatusResponse,
-            Map<String, dynamic>
-          >(arcAgentStatus, (value) => value.toMap()),
+      'arcAgentStatus': ?pulumi.Input.mapOptionalInputValue<ArcAgentStatusResponse, Map<String, dynamic>>(arcAgentStatus, (value) => value.toMap()),
     };
   }
 
-  factory ProvisionedClustersCommonPropertiesResponseFeaturesStatus.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ProvisionedClustersCommonPropertiesResponseFeaturesStatus.fromMap(Map<String, dynamic> map) {
     return ProvisionedClustersCommonPropertiesResponseFeaturesStatus(
-      arcAgentStatus: (() {
-        final guardedValue = map['arcAgentStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ArcAgentStatusResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      arcAgentStatus: (() { final guardedValue = map['arcAgentStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ArcAgentStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

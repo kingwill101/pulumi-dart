@@ -7,7 +7,6 @@ class GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCrede
   /// remote repository. Must be in the format of
   /// 'projects/{project}/secrets/{secret}/versions/{version}'.
   final pulumi.Input<String> passwordSecretVersion;
-
   /// The username to access the remote repository.
   final pulumi.Input<String> username;
 
@@ -26,14 +25,11 @@ class GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCrede
     };
   }
 
-  factory GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredential.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredential.fromMap(Map<String, dynamic> map) {
     return GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredential(
-      passwordSecretVersion: pulumi.Input.fromValue(
-        map['passwordSecretVersion'] as String,
-      ),
+      passwordSecretVersion: pulumi.Input.fromValue(map['passwordSecretVersion'] as String),
       username: pulumi.Input.fromValue(map['username'] as String),
     );
   }
 }
+

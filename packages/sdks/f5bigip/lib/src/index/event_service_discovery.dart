@@ -208,7 +208,6 @@ class EventServiceDiscovery extends pulumi.CustomResource {
   ///
   /// Once the declaration has been sent to the BIG-IP, we can use taskid/id ( ~Sample_event_sd~My_app~My_pool" ) and node list for the resource to dynamically update the node list.
   late final pulumi.Output<List<Map<String, dynamic>>?> nodes;
-
   /// servicediscovery endpoint ( Below example shows how to create endpoing using AS3 )
   late final pulumi.Output<String> taskid;
 
@@ -221,11 +220,11 @@ class EventServiceDiscovery extends pulumi.CustomResource {
     EventServiceDiscoveryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:index/eventServiceDiscovery:EventServiceDiscovery',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:index/eventServiceDiscovery:EventServiceDiscovery',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     nodes = registerOutput<List<Map<String, dynamic>>?>('nodes');
     taskid = registerOutput<String>('taskid');
   }
@@ -248,11 +247,11 @@ class EventServiceDiscovery extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:index/eventServiceDiscovery:EventServiceDiscovery',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:index/eventServiceDiscovery:EventServiceDiscovery',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     nodes = registerOutput<List<Map<String, dynamic>>?>('nodes');
     taskid = registerOutput<String>('taskid');
   }

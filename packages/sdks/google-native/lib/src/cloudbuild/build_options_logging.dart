@@ -19,3 +19,4 @@ enum BuildOptionsLogging {
     throw ArgumentError('Unknown BuildOptionsLogging value: $value');
   }
 }
+

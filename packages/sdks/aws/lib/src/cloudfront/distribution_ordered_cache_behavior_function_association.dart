@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DistributionOrderedCacheBehaviorFunctionAssociation {
   /// Specific event to trigger this function. Valid values: `viewer-request` or `viewer-response`.
   final pulumi.Input<String> eventType;
-
   /// ARN of the CloudFront function.
   final pulumi.Input<String> functionArn;
 
@@ -24,12 +23,11 @@ class DistributionOrderedCacheBehaviorFunctionAssociation {
     };
   }
 
-  factory DistributionOrderedCacheBehaviorFunctionAssociation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DistributionOrderedCacheBehaviorFunctionAssociation.fromMap(Map<String, dynamic> map) {
     return DistributionOrderedCacheBehaviorFunctionAssociation(
       eventType: pulumi.Input.fromValue(map['eventType'] as String),
       functionArn: pulumi.Input.fromValue(map['functionArn'] as String),
     );
   }
 }
+

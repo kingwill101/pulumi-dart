@@ -182,40 +182,29 @@ import 'public_ip_address_pool_state.dart';
 class PublicIpAddressPool extends pulumi.CustomResource {
   /// The name of the VPC Public IP address pool.
   late final pulumi.Output<String> bizType;
-
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
-
   /// Description.
   late final pulumi.Output<String?> description;
-
   /// Whether there is a free IP address.
   late final pulumi.Output<bool> ipAddressRemaining;
-
   /// The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
   late final pulumi.Output<String> isp;
   late final pulumi.Output<String> publicIpAddressPoolId;
-
   /// The name of the VPC Public IP address pool.
   late final pulumi.Output<String?> publicIpAddressPoolName;
-
   /// The resource group ID of the VPC Public IP address pool.
   late final pulumi.Output<String> resourceGroupId;
-
   /// Security protection level.
   /// - If the configuration is empty, the default value is DDoS protection (Basic edition).
   /// - `AntiDDoS_Enhanced` indicates DDoS protection (enhanced version).
   late final pulumi.Output<List<String>?> securityProtectionTypes;
-
   /// The status of the VPC Public IP address pool.
   late final pulumi.Output<String> status;
-
   /// The tags of PrefixList.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The total number of public IP address pools.
   late final pulumi.Output<int> totalIpNum;
-
   /// The number of used IP addresses in the public IP address pool.
   late final pulumi.Output<int> usedIpNum;
 
@@ -228,24 +217,20 @@ class PublicIpAddressPool extends pulumi.CustomResource {
     PublicIpAddressPoolArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/publicIpAddressPool:PublicIpAddressPool',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpc/publicIpAddressPool:PublicIpAddressPool',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bizType = registerOutput<String>('bizType');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     ipAddressRemaining = registerOutput<bool>('ipAddressRemaining');
     isp = registerOutput<String>('isp');
     publicIpAddressPoolId = registerOutput<String>('publicIpAddressPoolId');
-    publicIpAddressPoolName = registerOutput<String?>(
-      'publicIpAddressPoolName',
-    );
+    publicIpAddressPoolName = registerOutput<String?>('publicIpAddressPoolName');
     resourceGroupId = registerOutput<String>('resourceGroupId');
-    securityProtectionTypes = registerOutput<List<String>?>(
-      'securityProtectionTypes',
-    );
+    securityProtectionTypes = registerOutput<List<String>?>('securityProtectionTypes');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     totalIpNum = registerOutput<int>('totalIpNum');
@@ -270,24 +255,20 @@ class PublicIpAddressPool extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/publicIpAddressPool:PublicIpAddressPool',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpc/publicIpAddressPool:PublicIpAddressPool',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bizType = registerOutput<String>('bizType');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     ipAddressRemaining = registerOutput<bool>('ipAddressRemaining');
     isp = registerOutput<String>('isp');
     publicIpAddressPoolId = registerOutput<String>('publicIpAddressPoolId');
-    publicIpAddressPoolName = registerOutput<String?>(
-      'publicIpAddressPoolName',
-    );
+    publicIpAddressPoolName = registerOutput<String?>('publicIpAddressPoolName');
     resourceGroupId = registerOutput<String>('resourceGroupId');
-    securityProtectionTypes = registerOutput<List<String>?>(
-      'securityProtectionTypes',
-    );
+    securityProtectionTypes = registerOutput<List<String>?>('securityProtectionTypes');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     totalIpNum = registerOutput<int>('totalIpNum');

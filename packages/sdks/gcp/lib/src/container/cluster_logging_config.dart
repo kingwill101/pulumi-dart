@@ -9,17 +9,20 @@ class ClusterLoggingConfig {
 
   /// Creates a new [ClusterLoggingConfig].
   /// [enableComponents] The GKE components exposing logs. Supported values include:
-  ClusterLoggingConfig({required this.enableComponents});
+  ClusterLoggingConfig({
+    required this.enableComponents,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enableComponents': enableComponents};
+    return <String, dynamic>{
+      'enableComponents': enableComponents,
+    };
   }
 
   factory ClusterLoggingConfig.fromMap(Map<String, dynamic> map) {
     return ClusterLoggingConfig(
-      enableComponents: pulumi.Input.fromValue(
-        (map['enableComponents'] as List).cast<String>(),
-      ),
+      enableComponents: pulumi.Input.fromValue((map['enableComponents'] as List).cast<String>()),
     );
   }
 }
+

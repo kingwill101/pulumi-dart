@@ -11,23 +11,15 @@ import 'defender_cspm_gcp_offering_vm_scanners.dart';
 class DefenderCspmGcpOffering {
   /// GCP Defenders CSPM Permissions Management OIDC (Open ID connect) connection configurations
   final pulumi.Input<DefenderCspmGcpOfferingCiemDiscovery>? ciemDiscovery;
-
   /// The Microsoft Defender Data Sensitivity discovery configuration
-  final pulumi.Input<DefenderCspmGcpOfferingDataSensitivityDiscovery>?
-  dataSensitivityDiscovery;
-
+  final pulumi.Input<DefenderCspmGcpOfferingDataSensitivityDiscovery>? dataSensitivityDiscovery;
   /// The Microsoft Defender Container agentless discovery configuration
-  final pulumi.Input<DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8s>?
-  mdcContainersAgentlessDiscoveryK8s;
-
+  final pulumi.Input<DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8s>? mdcContainersAgentlessDiscoveryK8s;
   /// The Microsoft Defender Container image assessment configuration
-  final pulumi.Input<DefenderCspmGcpOfferingMdcContainersImageAssessment>?
-  mdcContainersImageAssessment;
-
+  final pulumi.Input<DefenderCspmGcpOfferingMdcContainersImageAssessment>? mdcContainersImageAssessment;
   /// The type of the security offering.
   /// Expected value is 'DefenderCspmGcp'.
   final pulumi.Input<String> offeringType;
-
   /// The Microsoft Defender for CSPM VM scanning configuration
   final pulumi.Input<DefenderCspmGcpOfferingVmScanners>? vmScanners;
 
@@ -49,83 +41,24 @@ class DefenderCspmGcpOffering {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ciemDiscovery':
-          ?pulumi.Input.mapOptionalInputValue<
-            DefenderCspmGcpOfferingCiemDiscovery,
-            Map<String, dynamic>
-          >(ciemDiscovery, (value) => value.toMap()),
-      'dataSensitivityDiscovery':
-          ?pulumi.Input.mapOptionalInputValue<
-            DefenderCspmGcpOfferingDataSensitivityDiscovery,
-            Map<String, dynamic>
-          >(dataSensitivityDiscovery, (value) => value.toMap()),
-      'mdcContainersAgentlessDiscoveryK8s':
-          ?pulumi.Input.mapOptionalInputValue<
-            DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8s,
-            Map<String, dynamic>
-          >(mdcContainersAgentlessDiscoveryK8s, (value) => value.toMap()),
-      'mdcContainersImageAssessment':
-          ?pulumi.Input.mapOptionalInputValue<
-            DefenderCspmGcpOfferingMdcContainersImageAssessment,
-            Map<String, dynamic>
-          >(mdcContainersImageAssessment, (value) => value.toMap()),
+      'ciemDiscovery': ?pulumi.Input.mapOptionalInputValue<DefenderCspmGcpOfferingCiemDiscovery, Map<String, dynamic>>(ciemDiscovery, (value) => value.toMap()),
+      'dataSensitivityDiscovery': ?pulumi.Input.mapOptionalInputValue<DefenderCspmGcpOfferingDataSensitivityDiscovery, Map<String, dynamic>>(dataSensitivityDiscovery, (value) => value.toMap()),
+      'mdcContainersAgentlessDiscoveryK8s': ?pulumi.Input.mapOptionalInputValue<DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8s, Map<String, dynamic>>(mdcContainersAgentlessDiscoveryK8s, (value) => value.toMap()),
+      'mdcContainersImageAssessment': ?pulumi.Input.mapOptionalInputValue<DefenderCspmGcpOfferingMdcContainersImageAssessment, Map<String, dynamic>>(mdcContainersImageAssessment, (value) => value.toMap()),
       'offeringType': offeringType,
-      'vmScanners':
-          ?pulumi.Input.mapOptionalInputValue<
-            DefenderCspmGcpOfferingVmScanners,
-            Map<String, dynamic>
-          >(vmScanners, (value) => value.toMap()),
+      'vmScanners': ?pulumi.Input.mapOptionalInputValue<DefenderCspmGcpOfferingVmScanners, Map<String, dynamic>>(vmScanners, (value) => value.toMap()),
     };
   }
 
   factory DefenderCspmGcpOffering.fromMap(Map<String, dynamic> map) {
     return DefenderCspmGcpOffering(
-      ciemDiscovery: (() {
-        final guardedValue = map['ciemDiscovery'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DefenderCspmGcpOfferingCiemDiscovery.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      dataSensitivityDiscovery: (() {
-        final guardedValue = map['dataSensitivityDiscovery'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DefenderCspmGcpOfferingDataSensitivityDiscovery.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      mdcContainersAgentlessDiscoveryK8s: (() {
-        final guardedValue = map['mdcContainersAgentlessDiscoveryK8s'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8s.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      mdcContainersImageAssessment: (() {
-        final guardedValue = map['mdcContainersImageAssessment'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DefenderCspmGcpOfferingMdcContainersImageAssessment.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      ciemDiscovery: (() { final guardedValue = map['ciemDiscovery']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DefenderCspmGcpOfferingCiemDiscovery.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      dataSensitivityDiscovery: (() { final guardedValue = map['dataSensitivityDiscovery']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DefenderCspmGcpOfferingDataSensitivityDiscovery.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      mdcContainersAgentlessDiscoveryK8s: (() { final guardedValue = map['mdcContainersAgentlessDiscoveryK8s']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8s.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      mdcContainersImageAssessment: (() { final guardedValue = map['mdcContainersImageAssessment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DefenderCspmGcpOfferingMdcContainersImageAssessment.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       offeringType: pulumi.Input.fromValue(map['offeringType'] as String),
-      vmScanners: (() {
-        final guardedValue = map['vmScanners'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DefenderCspmGcpOfferingVmScanners.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      vmScanners: (() { final guardedValue = map['vmScanners']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DefenderCspmGcpOfferingVmScanners.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

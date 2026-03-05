@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SolutionInstanceParameter {
   /// Create parameter Key.
   final pulumi.Input<String> parameterKey;
-
   /// Create parameter Value.
   final pulumi.Input<String> parameterValue;
 
@@ -31,3 +30,4 @@ class SolutionInstanceParameter {
     );
   }
 }
+

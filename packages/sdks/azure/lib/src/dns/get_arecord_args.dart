@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetARecordArgs {
   /// The name of the DNS A Record.
   final pulumi.Input<String> name;
-
   /// Specifies the resource group where the DNS Zone (parent resource) exists.
   final pulumi.Input<String> resourceGroupName;
-
   /// Specifies the DNS Zone where the resource exists.
   final pulumi.Input<String> zoneName;
 
@@ -37,10 +35,9 @@ class GetARecordArgs {
   factory GetARecordArgs.fromMap(Map<String, dynamic> map) {
     return GetARecordArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       zoneName: pulumi.Input.fromValue(map['zoneName'] as String),
     );
   }
 }
+

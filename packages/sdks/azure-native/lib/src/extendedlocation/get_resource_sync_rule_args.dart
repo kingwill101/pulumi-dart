@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetResourceSyncRuleArgs {
   /// Resource Sync Rule name.
   final pulumi.Input<String> childResourceName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Custom Locations name.
   final pulumi.Input<String> resourceName;
 
@@ -36,13 +34,10 @@ class GetResourceSyncRuleArgs {
 
   factory GetResourceSyncRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetResourceSyncRuleArgs(
-      childResourceName: pulumi.Input.fromValue(
-        map['childResourceName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      childResourceName: pulumi.Input.fromValue(map['childResourceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
+

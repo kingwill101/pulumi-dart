@@ -459,37 +459,26 @@ import 'gallery_application_version_state.dart';
 class GalleryApplicationVersion extends pulumi.CustomResource {
   /// Specifies the name of the config file on the VM. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> configFile;
-
   /// Should the Gallery Application reports health. Defaults to `false`.
   late final pulumi.Output<bool?> enableHealthCheck;
-
   /// The end of life date in RFC3339 format of the Gallery Application Version.
   late final pulumi.Output<String?> endOfLifeDate;
-
   /// Should the Gallery Application Version be excluded from the `latest` filter? If set to `true` this Gallery Application Version won't be returned for the `latest` version. Defaults to `false`.
   late final pulumi.Output<bool?> excludeFromLatest;
-
   /// The ID of the Gallery Application. Changing this forces a new resource to be created.
   late final pulumi.Output<String> galleryApplicationId;
-
   /// The Azure Region where the Gallery Application Version exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// A `manage_action` block as defined below.
   late final pulumi.Output<GalleryApplicationVersionManageAction> manageAction;
-
   /// The version name of the Gallery Application Version, such as `1.0.0`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies the name of the package file on the VM. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> packageFile;
-
   /// A `source` block as defined below.
   late final pulumi.Output<GalleryApplicationVersionSource> source;
-
   /// A mapping of tags to assign to the Gallery Application Version.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// One or more `target_region` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> targetRegions;
 
@@ -502,39 +491,21 @@ class GalleryApplicationVersion extends pulumi.CustomResource {
     GalleryApplicationVersionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:compute/galleryApplicationVersion:GalleryApplicationVersion',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:compute/galleryApplicationVersion:GalleryApplicationVersion',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     configFile = registerOutput<String?>('configFile');
     enableHealthCheck = registerOutput<bool?>('enableHealthCheck');
     endOfLifeDate = registerOutput<String?>('endOfLifeDate');
     excludeFromLatest = registerOutput<bool?>('excludeFromLatest');
     galleryApplicationId = registerOutput<String>('galleryApplicationId');
     location = registerOutput<String>('location');
-    manageAction = registerOutput<GalleryApplicationVersionManageAction>(
-      'manageAction',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GalleryApplicationVersionManageAction.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    manageAction = registerOutput<GalleryApplicationVersionManageAction>('manageAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GalleryApplicationVersionManageAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     packageFile = registerOutput<String?>('packageFile');
-    source = registerOutput<GalleryApplicationVersionSource>(
-      'source',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GalleryApplicationVersionSource.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    source = registerOutput<GalleryApplicationVersionSource>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GalleryApplicationVersionSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     targetRegions = registerOutput<List<Map<String, dynamic>>>('targetRegions');
   }
@@ -557,39 +528,21 @@ class GalleryApplicationVersion extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:compute/galleryApplicationVersion:GalleryApplicationVersion',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:compute/galleryApplicationVersion:GalleryApplicationVersion',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     configFile = registerOutput<String?>('configFile');
     enableHealthCheck = registerOutput<bool?>('enableHealthCheck');
     endOfLifeDate = registerOutput<String?>('endOfLifeDate');
     excludeFromLatest = registerOutput<bool?>('excludeFromLatest');
     galleryApplicationId = registerOutput<String>('galleryApplicationId');
     location = registerOutput<String>('location');
-    manageAction = registerOutput<GalleryApplicationVersionManageAction>(
-      'manageAction',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GalleryApplicationVersionManageAction.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    manageAction = registerOutput<GalleryApplicationVersionManageAction>('manageAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GalleryApplicationVersionManageAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     packageFile = registerOutput<String?>('packageFile');
-    source = registerOutput<GalleryApplicationVersionSource>(
-      'source',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GalleryApplicationVersionSource.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    source = registerOutput<GalleryApplicationVersionSource>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GalleryApplicationVersionSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     targetRegions = registerOutput<List<Map<String, dynamic>>>('targetRegions');
   }

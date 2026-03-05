@@ -11,13 +11,10 @@ class BucketACLArgs {
   ///
   /// - - -
   final pulumi.Input<String> bucket;
-
   /// Configure this ACL to be the default ACL.
   final pulumi.Input<String>? defaultAcl;
-
   /// The [canned GCS ACL](https://cloud.google.com/storage/docs/access-control/lists#predefined-acl) to apply. Must be set if `role_entity` is not.
   final pulumi.Input<String>? predefinedAcl;
-
   /// List of role/entity pairs in the form `ROLE:entity`. See [GCS Bucket ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)  for more details. Must be set if `predefined_acl` is not.
   final pulumi.Input<List<String>>? roleEntities;
 
@@ -45,21 +42,10 @@ class BucketACLArgs {
   factory BucketACLArgs.fromMap(Map<String, dynamic> map) {
     return BucketACLArgs(
       bucket: pulumi.Input.fromValue(map['bucket'] as String),
-      defaultAcl: (() {
-        final guardedValue = map['defaultAcl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      predefinedAcl: (() {
-        final guardedValue = map['predefinedAcl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      roleEntities: (() {
-        final guardedValue = map['roleEntities'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      defaultAcl: (() { final guardedValue = map['defaultAcl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      predefinedAcl: (() { final guardedValue = map['predefinedAcl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      roleEntities: (() { final guardedValue = map['roleEntities']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

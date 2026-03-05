@@ -233,22 +233,16 @@ import 'watchlist_state.dart';
 class Watchlist extends pulumi.CustomResource {
   /// The default duration in ISO8601 duration form of this Sentinel Watchlist. Changing this forces a new Sentinel Watchlist to be created.
   late final pulumi.Output<String?> defaultDuration;
-
   /// The description of this Sentinel Watchlist. Changing this forces a new Sentinel Watchlist to be created.
   late final pulumi.Output<String?> description;
-
   /// The display name of this Sentinel Watchlist. Changing this forces a new Sentinel Watchlist to be created.
   late final pulumi.Output<String> displayName;
-
   /// The key used to optimize query performance when using Watchlist for joins with other data. Changing this forces a new Sentinel Watchlist to be created.
   late final pulumi.Output<String> itemSearchKey;
-
   /// Specifies a list of labels related to this Sentinel Watchlist. Changing this forces a new Sentinel Watchlist to be created.
   late final pulumi.Output<List<String>?> labels;
-
   /// The ID of the Log Analytics Workspace where this Sentinel Watchlist resides in. Changing this forces a new Sentinel Watchlist to be created.
   late final pulumi.Output<String> logAnalyticsWorkspaceId;
-
   /// The name which should be used for this Sentinel Watchlist. Changing this forces a new Sentinel Watchlist to be created.
   late final pulumi.Output<String> name;
 
@@ -261,11 +255,11 @@ class Watchlist extends pulumi.CustomResource {
     WatchlistArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:sentinel/watchlist:Watchlist',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:sentinel/watchlist:Watchlist',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     defaultDuration = registerOutput<String?>('defaultDuration');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
@@ -293,11 +287,11 @@ class Watchlist extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:sentinel/watchlist:Watchlist',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:sentinel/watchlist:Watchlist',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     defaultDuration = registerOutput<String?>('defaultDuration');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');

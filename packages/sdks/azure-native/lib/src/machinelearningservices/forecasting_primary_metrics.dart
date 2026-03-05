@@ -17,3 +17,4 @@ enum ForecastingPrimaryMetrics {
     throw ArgumentError('Unknown ForecastingPrimaryMetrics value: $value');
   }
 }
+

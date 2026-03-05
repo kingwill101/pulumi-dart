@@ -326,37 +326,26 @@ class WorkspaceModel extends pulumi.CustomResource {
   /// - `PRIVATE`: In this workspace, it is only visible to you and the administrator.
   /// - `PUBLIC`: In this workspace, it is visible to everyone.
   late final pulumi.Output<String> accessibility;
-
   /// The domain of the model. Describe the domain in which the model solves the problem. For example: nlp (natural language processing), cv (computer vision), etc.
   late final pulumi.Output<String?> domain;
-
   /// Other information about the model.
   late final pulumi.Output<Map<String, String>?> extraInfo;
-
   /// A list of tags. See `labels` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> labels;
-
   /// The model description, used to distinguish different models.
   late final pulumi.Output<String?> modelDescription;
-
   /// The documentation of the model.
   late final pulumi.Output<String?> modelDoc;
-
   /// The name of the model. The name must be 1 to 127 characters in length.
   late final pulumi.Output<String> modelName;
-
   /// The model type. Example: Checkpoint or LoRA.
   late final pulumi.Output<String?> modelType;
-
   /// The sequence number of the model. Can be used for custom sorting.
   late final pulumi.Output<int?> orderNumber;
-
   /// The source of the model. The community or organization to which the source model belongs, such as ModelScope or HuggingFace.
   late final pulumi.Output<String?> origin;
-
   /// The task of the model. Describes the specific problem that the model solves. Example: text-classification.
   late final pulumi.Output<String?> task;
-
   /// The ID of the workspace.
   late final pulumi.Output<String> workspaceId;
 
@@ -369,11 +358,11 @@ class WorkspaceModel extends pulumi.CustomResource {
     WorkspaceModelArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:pai/workspaceModel:WorkspaceModel',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:pai/workspaceModel:WorkspaceModel',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessibility = registerOutput<String>('accessibility');
     domain = registerOutput<String?>('domain');
     extraInfo = registerOutput<Map<String, String>?>('extraInfo');
@@ -406,11 +395,11 @@ class WorkspaceModel extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:pai/workspaceModel:WorkspaceModel',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:pai/workspaceModel:WorkspaceModel',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessibility = registerOutput<String>('accessibility');
     domain = registerOutput<String?>('domain');
     extraInfo = registerOutput<Map<String, String>?>('extraInfo');

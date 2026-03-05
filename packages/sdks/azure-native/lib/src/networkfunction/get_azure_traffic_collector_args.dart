@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAzureTrafficCollectorArgs {
   /// Azure Traffic Collector name
   final pulumi.Input<String> azureTrafficCollectorName;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetAzureTrafficCollectorArgs {
 
   factory GetAzureTrafficCollectorArgs.fromMap(Map<String, dynamic> map) {
     return GetAzureTrafficCollectorArgs(
-      azureTrafficCollectorName: pulumi.Input.fromValue(
-        map['azureTrafficCollectorName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      azureTrafficCollectorName: pulumi.Input.fromValue(map['azureTrafficCollectorName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

@@ -6,47 +6,33 @@ import 'system_data_response.dart';
 class GetFusionAlertRuleResult {
   /// The Name of the alert rule template used to create this rule.
   final String alertRuleTemplateName;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The description of the alert rule.
   final String description;
-
   /// The display name for alerts created by this alert rule.
   final String displayName;
-
   /// Determines whether this alert rule is enabled or disabled.
   final bool enabled;
-
   /// Etag of the azure resource
   final String? etag;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// The kind of the alert rule
   /// Expected value is 'Fusion'.
   final String kind;
-
   /// The last time that this alert has been modified.
   final String lastModifiedUtc;
-
   /// The name of the resource
   final String name;
-
   /// The severity for alerts created by this alert rule.
   final String severity;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The tactics of the alert rule
   final List<String> tactics;
-
   /// The techniques of the alert rule
   final List<String> techniques;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -111,22 +97,17 @@ class GetFusionAlertRuleResult {
       description: map['description'] as String,
       displayName: map['displayName'] as String,
       enabled: map['enabled'] as bool,
-      etag: (() {
-        final guardedValue = map['etag'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       kind: map['kind'] as String,
       lastModifiedUtc: map['lastModifiedUtc'] as String,
       name: map['name'] as String,
       severity: map['severity'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       tactics: (map['tactics'] as List).cast<String>(),
       techniques: (map['techniques'] as List).cast<String>(),
       type: map['type'] as String,
     );
   }
 }
+

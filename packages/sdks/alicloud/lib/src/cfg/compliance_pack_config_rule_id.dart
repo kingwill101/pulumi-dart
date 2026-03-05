@@ -8,19 +8,20 @@ class CompliancePackConfigRuleId {
 
   /// Creates a new [CompliancePackConfigRuleId].
   /// [configRuleId] The rule ID of Config Rule.
-  CompliancePackConfigRuleId({this.configRuleId});
+  CompliancePackConfigRuleId({
+    this.configRuleId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'configRuleId': ?configRuleId};
+    return <String, dynamic>{
+      'configRuleId': ?configRuleId,
+    };
   }
 
   factory CompliancePackConfigRuleId.fromMap(Map<String, dynamic> map) {
     return CompliancePackConfigRuleId(
-      configRuleId: (() {
-        final guardedValue = map['configRuleId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      configRuleId: (() { final guardedValue = map['configRuleId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

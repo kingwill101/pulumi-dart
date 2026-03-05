@@ -9,10 +9,16 @@ class InsightFiltersRecordState {
   /// Creates a new [InsightFiltersRecordState].
   /// [comparison] Required.
   /// [value] Required.
-  InsightFiltersRecordState({required this.comparison, required this.value});
+  InsightFiltersRecordState({
+    required this.comparison,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'comparison': comparison, 'value': value};
+    return <String, dynamic>{
+      'comparison': comparison,
+      'value': value,
+    };
   }
 
   factory InsightFiltersRecordState.fromMap(Map<String, dynamic> map) {
@@ -22,3 +28,4 @@ class InsightFiltersRecordState {
     );
   }
 }
+

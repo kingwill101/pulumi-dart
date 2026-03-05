@@ -15,3 +15,4 @@ enum RenewalEligibility {
     throw ArgumentError('Unknown RenewalEligibility value: $value');
   }
 }
+

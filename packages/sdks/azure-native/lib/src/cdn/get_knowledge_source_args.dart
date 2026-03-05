@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetKnowledgeSourceArgs {
   /// The name of the knowledge source.
   final pulumi.Input<String> knowledgeSourceName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the web agent.
   final pulumi.Input<String> webAgentName;
 
@@ -36,13 +34,10 @@ class GetKnowledgeSourceArgs {
 
   factory GetKnowledgeSourceArgs.fromMap(Map<String, dynamic> map) {
     return GetKnowledgeSourceArgs(
-      knowledgeSourceName: pulumi.Input.fromValue(
-        map['knowledgeSourceName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      knowledgeSourceName: pulumi.Input.fromValue(map['knowledgeSourceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       webAgentName: pulumi.Input.fromValue(map['webAgentName'] as String),
     );
   }
 }
+

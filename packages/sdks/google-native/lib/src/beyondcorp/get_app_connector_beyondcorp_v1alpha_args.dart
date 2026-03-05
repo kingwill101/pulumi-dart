@@ -29,17 +29,12 @@ class GetAppConnectorBeyondcorpV1alphaArgs {
     };
   }
 
-  factory GetAppConnectorBeyondcorpV1alphaArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetAppConnectorBeyondcorpV1alphaArgs.fromMap(Map<String, dynamic> map) {
     return GetAppConnectorBeyondcorpV1alphaArgs(
       appConnectorId: pulumi.Input.fromValue(map['appConnectorId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

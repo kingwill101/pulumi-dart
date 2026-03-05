@@ -10,39 +10,20 @@ class PriorityLevelConfigurationStatus {
 
   /// Creates a new [PriorityLevelConfigurationStatus].
   /// [conditions] `conditions` is the current state of "request-priority".
-  PriorityLevelConfigurationStatus({this.conditions});
+  PriorityLevelConfigurationStatus({
+    this.conditions,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'conditions':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<PriorityLevelConfigurationCondition>,
-            List<Map<String, dynamic>>
-          >(
-            conditions,
-            (value) =>
-                pulumi.Input.encodeList<
-                  PriorityLevelConfigurationCondition,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'conditions': ?pulumi.Input.mapOptionalInputValue<List<PriorityLevelConfigurationCondition>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<PriorityLevelConfigurationCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory PriorityLevelConfigurationStatus.fromMap(Map<String, dynamic> map) {
     return PriorityLevelConfigurationStatus(
-      conditions: (() {
-        final guardedValue = map['conditions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<PriorityLevelConfigurationCondition>(
-            guardedValue,
-            (value) => PriorityLevelConfigurationCondition.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PriorityLevelConfigurationCondition>(guardedValue, (value) => PriorityLevelConfigurationCondition.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

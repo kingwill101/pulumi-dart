@@ -13,42 +13,30 @@ import 'json_input_schema_mapping.dart';
 class TopicArgs {
   /// Data Residency Boundary of the resource.
   final pulumi.Input<String>? dataResidencyBoundary;
-
   /// This boolean is used to enable or disable local auth. Default value is false. When the property is set to true, only AAD token will be used to authenticate if user is allowed to publish to the topic.
   final pulumi.Input<bool>? disableLocalAuth;
-
   /// Event Type Information for the user topic. This information is provided by the publisher and can be used by the
   /// subscriber to view different types of events that are published.
   final pulumi.Input<EventTypeInfo>? eventTypeInfo;
-
   /// Identity information for the resource.
   final pulumi.Input<IdentityInfo>? identity;
-
   /// This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled.
   final pulumi.Input<List<InboundIpRule>>? inboundIpRules;
-
   /// This determines the format that Event Grid should expect for incoming events published to the topic.
   final pulumi.Input<String>? inputSchema;
-
   /// This enables publishing using custom event schemas. An InputSchemaMapping can be specified to map various properties of a source schema to various required properties of the EventGridEvent schema.
   final pulumi.Input<JsonInputSchemaMapping>? inputSchemaMapping;
-
   /// Location of the resource.
   final pulumi.Input<String>? location;
-
   /// Minimum TLS version of the publisher allowed to publish to this topic
   final pulumi.Input<String>? minimumTlsVersionAllowed;
-
   /// This determines if traffic is allowed over public network. By default it is enabled.
   /// You can further restrict to specific IPs by configuring &lt;seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.TopicProperties.InboundIpRules" /&gt;
   final pulumi.Input<String>? publicNetworkAccess;
-
   /// The name of the resource group within the user's subscription.
   final pulumi.Input<String> resourceGroupName;
-
   /// Tags of the resource.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// Name of the topic.
   final pulumi.Input<String>? topicName;
 
@@ -86,34 +74,11 @@ class TopicArgs {
     return <String, dynamic>{
       'dataResidencyBoundary': ?dataResidencyBoundary,
       'disableLocalAuth': ?disableLocalAuth,
-      'eventTypeInfo':
-          ?pulumi.Input.mapOptionalInputValue<
-            EventTypeInfo,
-            Map<String, dynamic>
-          >(eventTypeInfo, (value) => value.toMap()),
-      'identity':
-          ?pulumi.Input.mapOptionalInputValue<
-            IdentityInfo,
-            Map<String, dynamic>
-          >(identity, (value) => value.toMap()),
-      'inboundIpRules':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<InboundIpRule>,
-            List<Map<String, dynamic>>
-          >(
-            inboundIpRules,
-            (value) =>
-                pulumi.Input.encodeList<InboundIpRule, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'eventTypeInfo': ?pulumi.Input.mapOptionalInputValue<EventTypeInfo, Map<String, dynamic>>(eventTypeInfo, (value) => value.toMap()),
+      'identity': ?pulumi.Input.mapOptionalInputValue<IdentityInfo, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'inboundIpRules': ?pulumi.Input.mapOptionalInputValue<List<InboundIpRule>, List<Map<String, dynamic>>>(inboundIpRules, (value) => pulumi.Input.encodeList<InboundIpRule, Map<String, dynamic>>(value, (value) => value.toMap())),
       'inputSchema': ?inputSchema,
-      'inputSchemaMapping':
-          ?pulumi.Input.mapOptionalInputValue<
-            JsonInputSchemaMapping,
-            Map<String, dynamic>
-          >(inputSchemaMapping, (value) => value.toMap()),
+      'inputSchemaMapping': ?pulumi.Input.mapOptionalInputValue<JsonInputSchemaMapping, Map<String, dynamic>>(inputSchemaMapping, (value) => value.toMap()),
       'location': ?location,
       'minimumTlsVersionAllowed': ?minimumTlsVersionAllowed,
       'publicNetworkAccess': ?publicNetworkAccess,
@@ -125,85 +90,20 @@ class TopicArgs {
 
   factory TopicArgs.fromMap(Map<String, dynamic> map) {
     return TopicArgs(
-      dataResidencyBoundary: (() {
-        final guardedValue = map['dataResidencyBoundary'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      disableLocalAuth: (() {
-        final guardedValue = map['disableLocalAuth'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      eventTypeInfo: (() {
-        final guardedValue = map['eventTypeInfo'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          EventTypeInfo.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          IdentityInfo.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      inboundIpRules: (() {
-        final guardedValue = map['inboundIpRules'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<InboundIpRule>(
-            guardedValue,
-            (value) =>
-                InboundIpRule.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      inputSchema: (() {
-        final guardedValue = map['inputSchema'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      inputSchemaMapping: (() {
-        final guardedValue = map['inputSchemaMapping'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          JsonInputSchemaMapping.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      minimumTlsVersionAllowed: (() {
-        final guardedValue = map['minimumTlsVersionAllowed'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      publicNetworkAccess: (() {
-        final guardedValue = map['publicNetworkAccess'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      topicName: (() {
-        final guardedValue = map['topicName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dataResidencyBoundary: (() { final guardedValue = map['dataResidencyBoundary']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      disableLocalAuth: (() { final guardedValue = map['disableLocalAuth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      eventTypeInfo: (() { final guardedValue = map['eventTypeInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EventTypeInfo.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IdentityInfo.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      inboundIpRules: (() { final guardedValue = map['inboundIpRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InboundIpRule>(guardedValue, (value) => InboundIpRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      inputSchema: (() { final guardedValue = map['inputSchema']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      inputSchemaMapping: (() { final guardedValue = map['inputSchemaMapping']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JsonInputSchemaMapping.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      minimumTlsVersionAllowed: (() { final guardedValue = map['minimumTlsVersionAllowed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      topicName: (() { final guardedValue = map['topicName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

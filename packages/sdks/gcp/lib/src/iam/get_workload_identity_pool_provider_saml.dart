@@ -8,17 +8,20 @@ class GetWorkloadIdentityPoolProviderSaml {
 
   /// Creates a new [GetWorkloadIdentityPoolProviderSaml].
   /// [idpMetadataXml] SAML Identity provider configuration metadata xml doc.
-  GetWorkloadIdentityPoolProviderSaml({required this.idpMetadataXml});
+  GetWorkloadIdentityPoolProviderSaml({
+    required this.idpMetadataXml,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'idpMetadataXml': idpMetadataXml};
+    return <String, dynamic>{
+      'idpMetadataXml': idpMetadataXml,
+    };
   }
 
-  factory GetWorkloadIdentityPoolProviderSaml.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetWorkloadIdentityPoolProviderSaml.fromMap(Map<String, dynamic> map) {
     return GetWorkloadIdentityPoolProviderSaml(
       idpMetadataXml: pulumi.Input.fromValue(map['idpMetadataXml'] as String),
     );
   }
 }
+

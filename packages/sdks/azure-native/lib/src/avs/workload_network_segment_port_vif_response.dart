@@ -9,21 +9,20 @@ class WorkloadNetworkSegmentPortVifResponse {
 
   /// Creates a new [WorkloadNetworkSegmentPortVifResponse].
   /// [portName] Name of port or VIF attached to segment.
-  WorkloadNetworkSegmentPortVifResponse({this.portName});
+  WorkloadNetworkSegmentPortVifResponse({
+    this.portName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'portName': ?portName};
+    return <String, dynamic>{
+      'portName': ?portName,
+    };
   }
 
-  factory WorkloadNetworkSegmentPortVifResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WorkloadNetworkSegmentPortVifResponse.fromMap(Map<String, dynamic> map) {
     return WorkloadNetworkSegmentPortVifResponse(
-      portName: (() {
-        final guardedValue = map['portName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      portName: (() { final guardedValue = map['portName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

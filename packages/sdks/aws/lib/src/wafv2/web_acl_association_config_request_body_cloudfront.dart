@@ -18,13 +18,10 @@ class WebAclAssociationConfigRequestBodyCloudfront {
     };
   }
 
-  factory WebAclAssociationConfigRequestBodyCloudfront.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WebAclAssociationConfigRequestBodyCloudfront.fromMap(Map<String, dynamic> map) {
     return WebAclAssociationConfigRequestBodyCloudfront(
-      defaultSizeInspectionLimit: pulumi.Input.fromValue(
-        map['defaultSizeInspectionLimit'] as String,
-      ),
+      defaultSizeInspectionLimit: pulumi.Input.fromValue(map['defaultSizeInspectionLimit'] as String),
     );
   }
 }
+

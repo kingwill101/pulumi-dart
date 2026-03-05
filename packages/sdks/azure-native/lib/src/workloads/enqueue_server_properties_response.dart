@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnqueueServerPropertiesResponse {
   /// Defines the health of SAP Instances.
   final pulumi.Input<String> health;
-
   /// Enqueue Server SAP Hostname.
   final pulumi.Input<String> hostname;
-
   /// Enqueue Server SAP IP Address.
   final pulumi.Input<String> ipAddress;
-
   /// Enqueue Server Port.
   final pulumi.Input<double> port;
 
@@ -46,3 +43,4 @@ class EnqueueServerPropertiesResponse {
     );
   }
 }
+

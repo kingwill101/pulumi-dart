@@ -14,16 +14,15 @@ class MonitoringComponentConfigResponseContainerV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enableComponents': enableComponents};
+    return <String, dynamic>{
+      'enableComponents': enableComponents,
+    };
   }
 
-  factory MonitoringComponentConfigResponseContainerV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MonitoringComponentConfigResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return MonitoringComponentConfigResponseContainerV1beta1(
-      enableComponents: pulumi.Input.fromValue(
-        (map['enableComponents'] as List).cast<String>(),
-      ),
+      enableComponents: pulumi.Input.fromValue((map['enableComponents'] as List).cast<String>()),
     );
   }
 }
+

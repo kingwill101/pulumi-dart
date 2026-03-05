@@ -6,29 +6,21 @@ import 'managed_zone_args.dart';
 class ManagedZone extends pulumi.CustomResource {
   /// Created time.
   late final pulumi.Output<String> createTime;
-
   /// Optional. Description of the resource.
   late final pulumi.Output<String> description;
-
   /// DNS Name of the resource
   late final pulumi.Output<String> dns;
-
   /// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
   late final pulumi.Output<Map<String, String>> labels;
-
   /// Required. Identifier to assign to the ManagedZone. Must be unique within scope of the parent resource.
   late final pulumi.Output<String> managedZoneId;
-
   /// Resource name of the Managed Zone. Format: projects/{project}/locations/global/managedZones/{managed_zone}
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
-
   /// The name of the Target Project
   late final pulumi.Output<String> targetProject;
-
   /// The name of the Target Project VPC Network
   late final pulumi.Output<String> targetVpc;
-
   /// Updated time.
   late final pulumi.Output<String> updateTime;
 
@@ -41,11 +33,11 @@ class ManagedZone extends pulumi.CustomResource {
     ManagedZoneArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'google-native:connectors/v1:ManagedZone',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'google-native:connectors/v1:ManagedZone',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     dns = registerOutput<String>('dns');

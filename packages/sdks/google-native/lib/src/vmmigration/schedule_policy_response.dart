@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SchedulePolicyResponse {
   /// The idle duration between replication stages.
   final pulumi.Input<String> idleDuration;
-
   /// A flag to indicate whether to skip OS adaptation during the replication sync. OS adaptation is a process where the VM's operating system undergoes changes and adaptations to fully function on Compute Engine.
   final pulumi.Input<bool> skipOsAdaptation;
 
@@ -32,3 +31,4 @@ class SchedulePolicyResponse {
     );
   }
 }
+

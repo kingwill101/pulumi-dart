@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworkDeviceArgs {
   /// Name of the Network Device.
   final pulumi.Input<String> networkDeviceName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetNetworkDeviceArgs {
 
   factory GetNetworkDeviceArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkDeviceArgs(
-      networkDeviceName: pulumi.Input.fromValue(
-        map['networkDeviceName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      networkDeviceName: pulumi.Input.fromValue(map['networkDeviceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

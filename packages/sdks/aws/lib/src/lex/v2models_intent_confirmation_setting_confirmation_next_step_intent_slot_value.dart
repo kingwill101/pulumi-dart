@@ -13,18 +13,15 @@ class V2modelsIntentConfirmationSettingConfirmationNextStepIntentSlotValue {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'interpretedValue': ?interpretedValue};
+    return <String, dynamic>{
+      'interpretedValue': ?interpretedValue,
+    };
   }
 
-  factory V2modelsIntentConfirmationSettingConfirmationNextStepIntentSlotValue.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2modelsIntentConfirmationSettingConfirmationNextStepIntentSlotValue.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingConfirmationNextStepIntentSlotValue(
-      interpretedValue: (() {
-        final guardedValue = map['interpretedValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      interpretedValue: (() { final guardedValue = map['interpretedValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

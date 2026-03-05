@@ -7,37 +7,26 @@ import 'global_cluster_global_cluster_member.dart';
 class GlobalClusterState {
   /// Global Cluster Amazon Resource Name (ARN)
   final pulumi.Input<String>? arn;
-
   /// Name for an automatically created database on cluster creation.
   final pulumi.Input<String>? databaseName;
-
   /// If the Global Cluster should have deletion protection enabled. The database can't be deleted when this value is set to `true`. The default is `false`.
   final pulumi.Input<bool>? deletionProtection;
-
   /// Name of the database engine to be used for this DB cluster. The provider will only perform drift detection if a configuration value is provided. Current Valid values: `docdb`. Defaults to `docdb`. Conflicts with `source_db_cluster_identifier`.
   final pulumi.Input<String>? engine;
-
   /// Engine version of the global database. Upgrading the engine version will result in all cluster members being immediately updated and will.
   /// * **NOTE:** Upgrading major versions is not supported.
   final pulumi.Input<String>? engineVersion;
-
   /// The global cluster identifier.
   final pulumi.Input<String>? globalClusterIdentifier;
-
   /// Set of objects containing Global Cluster members.
-  final pulumi.Input<List<GlobalClusterGlobalClusterMember>>?
-  globalClusterMembers;
-
+  final pulumi.Input<List<GlobalClusterGlobalClusterMember>>? globalClusterMembers;
   /// AWS Region-unique, immutable identifier for the global database cluster. This identifier is found in AWS CloudTrail log entries whenever the AWS KMS key for the DB cluster is accessed.
   final pulumi.Input<String>? globalClusterResourceId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Amazon Resource Name (ARN) to use as the primary DB Cluster of the Global Cluster on creation. The provider cannot perform drift detection of this value.
   final pulumi.Input<String>? sourceDbClusterIdentifier;
   final pulumi.Input<String>? status;
-
   /// Specifies whether the DB cluster is encrypted. The default is `false` unless `source_db_cluster_identifier` is specified and encrypted. The provider will only perform drift detection if a configuration value is provided.
   final pulumi.Input<bool>? storageEncrypted;
 
@@ -77,18 +66,7 @@ class GlobalClusterState {
       'engine': ?engine,
       'engineVersion': ?engineVersion,
       'globalClusterIdentifier': ?globalClusterIdentifier,
-      'globalClusterMembers':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GlobalClusterGlobalClusterMember>,
-            List<Map<String, dynamic>>
-          >(
-            globalClusterMembers,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GlobalClusterGlobalClusterMember,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'globalClusterMembers': ?pulumi.Input.mapOptionalInputValue<List<GlobalClusterGlobalClusterMember>, List<Map<String, dynamic>>>(globalClusterMembers, (value) => pulumi.Input.encodeList<GlobalClusterGlobalClusterMember, Map<String, dynamic>>(value, (value) => value.toMap())),
       'globalClusterResourceId': ?globalClusterResourceId,
       'region': ?region,
       'sourceDbClusterIdentifier': ?sourceDbClusterIdentifier,
@@ -99,73 +77,19 @@ class GlobalClusterState {
 
   factory GlobalClusterState.fromMap(Map<String, dynamic> map) {
     return GlobalClusterState(
-      arn: (() {
-        final guardedValue = map['arn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      databaseName: (() {
-        final guardedValue = map['databaseName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      deletionProtection: (() {
-        final guardedValue = map['deletionProtection'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      engine: (() {
-        final guardedValue = map['engine'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      engineVersion: (() {
-        final guardedValue = map['engineVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      globalClusterIdentifier: (() {
-        final guardedValue = map['globalClusterIdentifier'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      globalClusterMembers: (() {
-        final guardedValue = map['globalClusterMembers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GlobalClusterGlobalClusterMember>(
-            guardedValue,
-            (value) => GlobalClusterGlobalClusterMember.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      globalClusterResourceId: (() {
-        final guardedValue = map['globalClusterResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sourceDbClusterIdentifier: (() {
-        final guardedValue = map['sourceDbClusterIdentifier'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      storageEncrypted: (() {
-        final guardedValue = map['storageEncrypted'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      databaseName: (() { final guardedValue = map['databaseName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionProtection: (() { final guardedValue = map['deletionProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      engine: (() { final guardedValue = map['engine']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      engineVersion: (() { final guardedValue = map['engineVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      globalClusterIdentifier: (() { final guardedValue = map['globalClusterIdentifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      globalClusterMembers: (() { final guardedValue = map['globalClusterMembers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GlobalClusterGlobalClusterMember>(guardedValue, (value) => GlobalClusterGlobalClusterMember.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      globalClusterResourceId: (() { final guardedValue = map['globalClusterResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourceDbClusterIdentifier: (() { final guardedValue = map['sourceDbClusterIdentifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageEncrypted: (() { final guardedValue = map['storageEncrypted']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

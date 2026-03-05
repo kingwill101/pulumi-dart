@@ -15,3 +15,4 @@ enum StorageLocationType {
     throw ArgumentError('Unknown StorageLocationType value: $value');
   }
 }
+

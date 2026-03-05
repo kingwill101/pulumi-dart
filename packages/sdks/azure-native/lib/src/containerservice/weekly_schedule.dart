@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WeeklySchedule {
   /// Specifies on which day of the week the maintenance occurs.
   final pulumi.Input<String> dayOfWeek;
-
   /// Specifies the number of weeks between each set of occurrences.
   final pulumi.Input<int> intervalWeeks;
 
   /// Creates a new [WeeklySchedule].
   /// [dayOfWeek] Specifies on which day of the week the maintenance occurs.
   /// [intervalWeeks] Specifies the number of weeks between each set of occurrences.
-  WeeklySchedule({required this.dayOfWeek, required this.intervalWeeks});
+  WeeklySchedule({
+    required this.dayOfWeek,
+    required this.intervalWeeks,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,3 +31,4 @@ class WeeklySchedule {
     );
   }
 }
+

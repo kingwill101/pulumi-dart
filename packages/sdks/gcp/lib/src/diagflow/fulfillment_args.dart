@@ -11,18 +11,14 @@ import 'fulfillment_generic_web_service.dart';
 class FulfillmentArgs {
   /// The human-readable name of the fulfillment, unique within the agent.
   final pulumi.Input<String> displayName;
-
   /// Whether fulfillment is enabled.
   final pulumi.Input<bool>? enabled;
-
   /// The field defines whether the fulfillment is enabled for certain features.
   /// Structure is documented below.
   final pulumi.Input<List<FulfillmentFeature>>? features;
-
   /// Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers.
   /// Structure is documented below.
   final pulumi.Input<FulfillmentGenericWebService>? genericWebService;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -45,23 +41,8 @@ class FulfillmentArgs {
     return <String, dynamic>{
       'displayName': displayName,
       'enabled': ?enabled,
-      'features':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<FulfillmentFeature>,
-            List<Map<String, dynamic>>
-          >(
-            features,
-            (value) =>
-                pulumi.Input.encodeList<
-                  FulfillmentFeature,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'genericWebService':
-          ?pulumi.Input.mapOptionalInputValue<
-            FulfillmentGenericWebService,
-            Map<String, dynamic>
-          >(genericWebService, (value) => value.toMap()),
+      'features': ?pulumi.Input.mapOptionalInputValue<List<FulfillmentFeature>, List<Map<String, dynamic>>>(features, (value) => pulumi.Input.encodeList<FulfillmentFeature, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'genericWebService': ?pulumi.Input.mapOptionalInputValue<FulfillmentGenericWebService, Map<String, dynamic>>(genericWebService, (value) => value.toMap()),
       'project': ?project,
     };
   }
@@ -69,37 +50,11 @@ class FulfillmentArgs {
   factory FulfillmentArgs.fromMap(Map<String, dynamic> map) {
     return FulfillmentArgs(
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      features: (() {
-        final guardedValue = map['features'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<FulfillmentFeature>(
-            guardedValue,
-            (value) => FulfillmentFeature.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      genericWebService: (() {
-        final guardedValue = map['genericWebService'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FulfillmentGenericWebService.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      features: (() { final guardedValue = map['features']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<FulfillmentFeature>(guardedValue, (value) => FulfillmentFeature.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      genericWebService: (() { final guardedValue = map['genericWebService']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FulfillmentGenericWebService.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

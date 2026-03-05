@@ -9,19 +9,20 @@ class ApiEndpointHandler {
 
   /// Creates a new [ApiEndpointHandler].
   /// [scriptPath] Path to the script from the application root directory.
-  ApiEndpointHandler({this.scriptPath});
+  ApiEndpointHandler({
+    this.scriptPath,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'scriptPath': ?scriptPath};
+    return <String, dynamic>{
+      'scriptPath': ?scriptPath,
+    };
   }
 
   factory ApiEndpointHandler.fromMap(Map<String, dynamic> map) {
     return ApiEndpointHandler(
-      scriptPath: (() {
-        final guardedValue = map['scriptPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      scriptPath: (() { final guardedValue = map['scriptPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

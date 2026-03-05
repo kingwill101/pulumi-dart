@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSequencesSequence {
   /// The sequence's data type as defined in ``information_schema.sequences``.
   final pulumi.Input<String> dataType;
-
   /// The sequence name.
   final pulumi.Input<String> objectName;
-
   /// The parent schema.
   final pulumi.Input<String> schemaName;
 
@@ -38,3 +36,4 @@ class GetSequencesSequence {
     );
   }
 }
+

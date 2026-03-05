@@ -14,3 +14,4 @@ enum InventoryRuleType {
     throw ArgumentError('Unknown InventoryRuleType value: $value');
   }
 }
+

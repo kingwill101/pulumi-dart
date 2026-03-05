@@ -15,3 +15,4 @@ enum PublicNetworkAccessFlag {
     throw ArgumentError('Unknown PublicNetworkAccessFlag value: $value');
   }
 }
+

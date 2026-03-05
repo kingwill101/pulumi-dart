@@ -6,13 +6,10 @@ import 'get_linux_web_app_backup_schedule.dart';
 class GetLinuxWebAppBackup {
   /// Is the Backup enabled?
   final pulumi.Input<bool> enabled;
-
   /// The name of this Linux Web App.
   final pulumi.Input<String> name;
-
   /// A `schedule` block as defined below.
   final pulumi.Input<List<GetLinuxWebAppBackupSchedule>> schedules;
-
   /// The SAS URL to the container.
   final pulumi.Input<String> storageAccountUrl;
 
@@ -32,18 +29,7 @@ class GetLinuxWebAppBackup {
     return <String, dynamic>{
       'enabled': enabled,
       'name': name,
-      'schedules':
-          pulumi.Input.mapInputValue<
-            List<GetLinuxWebAppBackupSchedule>,
-            List<Map<String, dynamic>>
-          >(
-            schedules,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetLinuxWebAppBackupSchedule,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'schedules': pulumi.Input.mapInputValue<List<GetLinuxWebAppBackupSchedule>, List<Map<String, dynamic>>>(schedules, (value) => pulumi.Input.encodeList<GetLinuxWebAppBackupSchedule, Map<String, dynamic>>(value, (value) => value.toMap())),
       'storageAccountUrl': storageAccountUrl,
     };
   }
@@ -52,17 +38,9 @@ class GetLinuxWebAppBackup {
     return GetLinuxWebAppBackup(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
       name: pulumi.Input.fromValue(map['name'] as String),
-      schedules: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetLinuxWebAppBackupSchedule>(
-          map['schedules']!,
-          (value) => GetLinuxWebAppBackupSchedule.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      storageAccountUrl: pulumi.Input.fromValue(
-        map['storageAccountUrl'] as String,
-      ),
+      schedules: pulumi.Input.fromValue(pulumi.Input.decodeList<GetLinuxWebAppBackupSchedule>(map['schedules']!, (value) => GetLinuxWebAppBackupSchedule.fromMap((value as Map).cast<String, dynamic>()))),
+      storageAccountUrl: pulumi.Input.fromValue(map['storageAccountUrl'] as String),
     );
   }
 }
+

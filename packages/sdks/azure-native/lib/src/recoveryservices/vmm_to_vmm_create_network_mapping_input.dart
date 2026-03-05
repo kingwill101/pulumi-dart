@@ -10,10 +10,14 @@ class VmmToVmmCreateNetworkMappingInput {
 
   /// Creates a new [VmmToVmmCreateNetworkMappingInput].
   /// [instanceType] The instance type.
-  VmmToVmmCreateNetworkMappingInput({required this.instanceType});
+  VmmToVmmCreateNetworkMappingInput({
+    required this.instanceType,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'instanceType': instanceType};
+    return <String, dynamic>{
+      'instanceType': instanceType,
+    };
   }
 
   factory VmmToVmmCreateNetworkMappingInput.fromMap(Map<String, dynamic> map) {
@@ -22,3 +26,4 @@ class VmmToVmmCreateNetworkMappingInput {
     );
   }
 }
+

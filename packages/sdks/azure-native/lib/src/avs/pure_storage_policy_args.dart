@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PureStoragePolicyArgs {
   /// Name of the private cloud
   final pulumi.Input<String> privateCloudName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Definition of a Pure Storage Policy Based Management policy
   final pulumi.Input<String> storagePolicyDefinition;
-
   /// Name of the storage policy.
   final pulumi.Input<String>? storagePolicyName;
-
   /// Azure resource ID of the Pure Storage Pool associated with the storage policy
   final pulumi.Input<String> storagePoolId;
 
@@ -48,21 +44,12 @@ class PureStoragePolicyArgs {
 
   factory PureStoragePolicyArgs.fromMap(Map<String, dynamic> map) {
     return PureStoragePolicyArgs(
-      privateCloudName: pulumi.Input.fromValue(
-        map['privateCloudName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      storagePolicyDefinition: pulumi.Input.fromValue(
-        map['storagePolicyDefinition'] as String,
-      ),
-      storagePolicyName: (() {
-        final guardedValue = map['storagePolicyName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      privateCloudName: pulumi.Input.fromValue(map['privateCloudName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      storagePolicyDefinition: pulumi.Input.fromValue(map['storagePolicyDefinition'] as String),
+      storagePolicyName: (() { final guardedValue = map['storagePolicyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       storagePoolId: pulumi.Input.fromValue(map['storagePoolId'] as String),
     );
   }
 }
+

@@ -1192,83 +1192,56 @@ import 'app_state.dart';
 class App extends pulumi.CustomResource {
   /// Personal access token for a third-party source control system for an Amplify app. This token must have write access to the relevant repo to create a webhook and a read-only deploy key for the Amplify project. The token is not stored, so after applying this attribute can be removed and the setup token deleted.
   late final pulumi.Output<String?> accessToken;
-
   /// ARN of the Amplify app.
   late final pulumi.Output<String> arn;
-
   /// Automated branch creation configuration for an Amplify app. See `auto_branch_creation_config` Block for details.
-  late final pulumi.Output<AppAutoBranchCreationConfig>
-  autoBranchCreationConfig;
-
+  late final pulumi.Output<AppAutoBranchCreationConfig> autoBranchCreationConfig;
   /// Automated branch creation glob patterns for an Amplify app.
   late final pulumi.Output<List<String>?> autoBranchCreationPatterns;
-
   /// Credentials for basic authorization for an Amplify app.
   late final pulumi.Output<String?> basicAuthCredentials;
-
   /// The [build specification](https://docs.aws.amazon.com/amplify/latest/userguide/build-settings.html) (build spec) for an Amplify app.
   late final pulumi.Output<String> buildSpec;
-
   /// Cache configuration for the Amplify app. See `cache_config` Block for details.
   late final pulumi.Output<AppCacheConfig> cacheConfig;
-
   /// AWS Identity and Access Management (IAM) SSR compute role for an Amplify app.
   late final pulumi.Output<String?> computeRoleArn;
-
   /// The [custom HTTP headers](https://docs.aws.amazon.com/amplify/latest/userguide/custom-headers.html) for an Amplify app.
   late final pulumi.Output<String> customHeaders;
-
   /// Custom rewrite and redirect rules for an Amplify app. See `custom_rule` Block for details.
   late final pulumi.Output<List<Map<String, dynamic>>?> customRules;
-
   /// Default domain for the Amplify app.
   late final pulumi.Output<String> defaultDomain;
-
   /// Description for an Amplify app.
   late final pulumi.Output<String?> description;
-
   /// Enables automated branch creation for an Amplify app.
   late final pulumi.Output<bool?> enableAutoBranchCreation;
-
   /// Enables basic authorization for an Amplify app. This will apply to all branches that are part of this app.
   late final pulumi.Output<bool?> enableBasicAuth;
-
   /// Enables auto-building of branches for the Amplify App.
   late final pulumi.Output<bool?> enableBranchAutoBuild;
-
   /// Automatically disconnects a branch in the Amplify Console when you delete a branch from your Git repository.
   late final pulumi.Output<bool?> enableBranchAutoDeletion;
-
   /// Environment variables map for an Amplify app.
   late final pulumi.Output<Map<String, String>?> environmentVariables;
-
   /// AWS Identity and Access Management (IAM) service role for an Amplify app.
   late final pulumi.Output<String?> iamServiceRoleArn;
-
   /// Used to configure the [Amplify Application build instance compute type](https://docs.aws.amazon.com/amplify/latest/APIReference/API_JobConfig.html#amplify-Type-JobConfig-buildComputeType). See `job_config` Block for details.
   late final pulumi.Output<AppJobConfig> jobConfig;
-
   /// Name for an Amplify app.
   late final pulumi.Output<String> name;
-
   /// OAuth token for a third-party source control system for an Amplify app. The OAuth token is used to create a webhook and a read-only deploy key. The OAuth token is not stored.
   late final pulumi.Output<String?> oauthToken;
-
   /// Platform or framework for an Amplify app. Valid values: `WEB`, `WEB_COMPUTE`. Default value: `WEB`.
   late final pulumi.Output<String?> platform;
-
   /// Describes the information about a production branch for an Amplify app. A `production_branch` block is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> productionBranches;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Repository for an Amplify app.
   late final pulumi.Output<String?> repository;
-
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -1276,73 +1249,39 @@ class App extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [App]. {@macro pulumi_amplify_app_app_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  App(String name, {AppArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:amplify/app:App',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  App(
+    String name, {
+    AppArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:amplify/app:App',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessToken = registerOutput<String?>('accessToken');
     arn = registerOutput<String>('arn');
-    autoBranchCreationConfig = registerOutput<AppAutoBranchCreationConfig>(
-      'autoBranchCreationConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AppAutoBranchCreationConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    autoBranchCreationPatterns = registerOutput<List<String>?>(
-      'autoBranchCreationPatterns',
-    );
+    autoBranchCreationConfig = registerOutput<AppAutoBranchCreationConfig>('autoBranchCreationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppAutoBranchCreationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    autoBranchCreationPatterns = registerOutput<List<String>?>('autoBranchCreationPatterns');
     basicAuthCredentials = registerOutput<String?>('basicAuthCredentials');
     buildSpec = registerOutput<String>('buildSpec');
-    cacheConfig = registerOutput<AppCacheConfig>(
-      'cacheConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AppCacheConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    cacheConfig = registerOutput<AppCacheConfig>('cacheConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppCacheConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     computeRoleArn = registerOutput<String?>('computeRoleArn');
     customHeaders = registerOutput<String>('customHeaders');
     customRules = registerOutput<List<Map<String, dynamic>>?>('customRules');
     defaultDomain = registerOutput<String>('defaultDomain');
     description = registerOutput<String?>('description');
-    enableAutoBranchCreation = registerOutput<bool?>(
-      'enableAutoBranchCreation',
-    );
+    enableAutoBranchCreation = registerOutput<bool?>('enableAutoBranchCreation');
     enableBasicAuth = registerOutput<bool?>('enableBasicAuth');
     enableBranchAutoBuild = registerOutput<bool?>('enableBranchAutoBuild');
-    enableBranchAutoDeletion = registerOutput<bool?>(
-      'enableBranchAutoDeletion',
-    );
-    environmentVariables = registerOutput<Map<String, String>?>(
-      'environmentVariables',
-    );
+    enableBranchAutoDeletion = registerOutput<bool?>('enableBranchAutoDeletion');
+    environmentVariables = registerOutput<Map<String, String>?>('environmentVariables');
     iamServiceRoleArn = registerOutput<String?>('iamServiceRoleArn');
-    jobConfig = registerOutput<AppJobConfig>(
-      'jobConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AppJobConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    jobConfig = registerOutput<AppJobConfig>('jobConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppJobConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     oauthToken = registerOutput<String?>('oauthToken');
     platform = registerOutput<String?>('platform');
-    productionBranches = registerOutput<List<Map<String, dynamic>>>(
-      'productionBranches',
-    );
+    productionBranches = registerOutput<List<Map<String, dynamic>>>('productionBranches');
     region = registerOutput<String>('region');
     repository = registerOutput<String?>('repository');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -1350,7 +1289,11 @@ class App extends pulumi.CustomResource {
   }
 
   /// Gets an existing [App] resource's state with the given [name] and [id].
-  static App get(String name, pulumi.Input<String> id, {AppState? state}) {
+  static App get(
+    String name,
+    pulumi.Input<String> id, {
+    AppState? state,
+  }) {
     return App._get(
       name,
       state: state?.toMap(),
@@ -1363,71 +1306,34 @@ class App extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:amplify/app:App',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:amplify/app:App',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessToken = registerOutput<String?>('accessToken');
     arn = registerOutput<String>('arn');
-    autoBranchCreationConfig = registerOutput<AppAutoBranchCreationConfig>(
-      'autoBranchCreationConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AppAutoBranchCreationConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    autoBranchCreationPatterns = registerOutput<List<String>?>(
-      'autoBranchCreationPatterns',
-    );
+    autoBranchCreationConfig = registerOutput<AppAutoBranchCreationConfig>('autoBranchCreationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppAutoBranchCreationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    autoBranchCreationPatterns = registerOutput<List<String>?>('autoBranchCreationPatterns');
     basicAuthCredentials = registerOutput<String?>('basicAuthCredentials');
     buildSpec = registerOutput<String>('buildSpec');
-    cacheConfig = registerOutput<AppCacheConfig>(
-      'cacheConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AppCacheConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    cacheConfig = registerOutput<AppCacheConfig>('cacheConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppCacheConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     computeRoleArn = registerOutput<String?>('computeRoleArn');
     customHeaders = registerOutput<String>('customHeaders');
     customRules = registerOutput<List<Map<String, dynamic>>?>('customRules');
     defaultDomain = registerOutput<String>('defaultDomain');
     description = registerOutput<String?>('description');
-    enableAutoBranchCreation = registerOutput<bool?>(
-      'enableAutoBranchCreation',
-    );
+    enableAutoBranchCreation = registerOutput<bool?>('enableAutoBranchCreation');
     enableBasicAuth = registerOutput<bool?>('enableBasicAuth');
     enableBranchAutoBuild = registerOutput<bool?>('enableBranchAutoBuild');
-    enableBranchAutoDeletion = registerOutput<bool?>(
-      'enableBranchAutoDeletion',
-    );
-    environmentVariables = registerOutput<Map<String, String>?>(
-      'environmentVariables',
-    );
+    enableBranchAutoDeletion = registerOutput<bool?>('enableBranchAutoDeletion');
+    environmentVariables = registerOutput<Map<String, String>?>('environmentVariables');
     iamServiceRoleArn = registerOutput<String?>('iamServiceRoleArn');
-    jobConfig = registerOutput<AppJobConfig>(
-      'jobConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AppJobConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    jobConfig = registerOutput<AppJobConfig>('jobConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppJobConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     oauthToken = registerOutput<String?>('oauthToken');
     platform = registerOutput<String?>('platform');
-    productionBranches = registerOutput<List<Map<String, dynamic>>>(
-      'productionBranches',
-    );
+    productionBranches = registerOutput<List<Map<String, dynamic>>>('productionBranches');
     region = registerOutput<String>('region');
     repository = registerOutput<String?>('repository');
     tags = registerOutput<Map<String, String>?>('tags');

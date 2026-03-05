@@ -12,7 +12,6 @@ class PerfSampleSeries extends pulumi.CustomResource {
   late final pulumi.Output<String> executionId;
   late final pulumi.Output<String> historyId;
   late final pulumi.Output<String> project;
-
   /// A sample series id
   late final pulumi.Output<String> sampleSeriesId;
   late final pulumi.Output<String> stepId;
@@ -26,21 +25,12 @@ class PerfSampleSeries extends pulumi.CustomResource {
     PerfSampleSeriesArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'google-native:toolresults/v1beta3:PerfSampleSeries',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    basicPerfSampleSeries = registerOutput<BasicPerfSampleSeriesResponse>(
-      'basicPerfSampleSeries',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BasicPerfSampleSeriesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'google-native:toolresults/v1beta3:PerfSampleSeries',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    basicPerfSampleSeries = registerOutput<BasicPerfSampleSeriesResponse>('basicPerfSampleSeries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BasicPerfSampleSeriesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     executionId = registerOutput<String>('executionId');
     historyId = registerOutput<String>('historyId');
     project = registerOutput<String>('project');

@@ -175,34 +175,24 @@ import 'persistence_profile_dst_addr_state.dart';
 /// ```
 class PersistenceProfileDstAddr extends pulumi.CustomResource {
   late final pulumi.Output<String> appService;
-
   /// Inherit defaults from parent profile
   late final pulumi.Output<String> defaultsFrom;
-
   /// Specify the hash algorithm
   late final pulumi.Output<String> hashAlgorithm;
-
   /// Identify a range of source IP addresses to manage together as a single source address affinity persistent connection when connecting to the pool. Must be a valid IPv4 or IPv6 mask.
   late final pulumi.Output<String> mask;
-
   /// To enable _ disable match across pools with given persistence record
   late final pulumi.Output<String> matchAcrossPools;
-
   /// To enable _ disable match across services with given persistence record
   late final pulumi.Output<String> matchAcrossServices;
-
   /// To enable _ disable match across services with given persistence record
   late final pulumi.Output<String> matchAcrossVirtuals;
-
   /// To enable _ disable
   late final pulumi.Output<String> mirror;
-
   /// Name of the persistence profile
   late final pulumi.Output<String> name;
-
   /// To enable _ disable that pool member connection limits are overridden for persisted clients. Per-virtual connection limits remain hard limits and are not overridden.
   late final pulumi.Output<String> overrideConnLimit;
-
   /// Timeout for persistence of the session
   late final pulumi.Output<int> timeout;
 
@@ -215,11 +205,11 @@ class PersistenceProfileDstAddr extends pulumi.CustomResource {
     PersistenceProfileDstAddrArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:ltm/persistenceProfileDstAddr:PersistenceProfileDstAddr',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:ltm/persistenceProfileDstAddr:PersistenceProfileDstAddr',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appService = registerOutput<String>('appService');
     defaultsFrom = registerOutput<String>('defaultsFrom');
     hashAlgorithm = registerOutput<String>('hashAlgorithm');
@@ -251,11 +241,11 @@ class PersistenceProfileDstAddr extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:ltm/persistenceProfileDstAddr:PersistenceProfileDstAddr',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:ltm/persistenceProfileDstAddr:PersistenceProfileDstAddr',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appService = registerOutput<String>('appService');
     defaultsFrom = registerOutput<String>('defaultsFrom');
     hashAlgorithm = registerOutput<String>('hashAlgorithm');

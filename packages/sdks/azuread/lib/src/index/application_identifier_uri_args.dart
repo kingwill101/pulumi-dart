@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationIdentifierUriArgs {
   /// The resource ID of the application registration. Changing this forces a new resource to be created.
   final pulumi.Input<String> applicationId;
-
   /// The user-defined URI that uniquely identifies an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant. Changing this forces a new resource to be created.
   final pulumi.Input<String> identifierUri;
 
@@ -35,3 +34,4 @@ class ApplicationIdentifierUriArgs {
     );
   }
 }
+

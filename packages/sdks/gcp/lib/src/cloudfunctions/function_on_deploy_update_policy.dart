@@ -8,19 +8,20 @@ class FunctionOnDeployUpdatePolicy {
 
   /// Creates a new [FunctionOnDeployUpdatePolicy].
   /// [runtimeVersion] The runtime version which was used during latest function deployment.
-  FunctionOnDeployUpdatePolicy({this.runtimeVersion});
+  FunctionOnDeployUpdatePolicy({
+    this.runtimeVersion,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'runtimeVersion': ?runtimeVersion};
+    return <String, dynamic>{
+      'runtimeVersion': ?runtimeVersion,
+    };
   }
 
   factory FunctionOnDeployUpdatePolicy.fromMap(Map<String, dynamic> map) {
     return FunctionOnDeployUpdatePolicy(
-      runtimeVersion: (() {
-        final guardedValue = map['runtimeVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      runtimeVersion: (() { final guardedValue = map['runtimeVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

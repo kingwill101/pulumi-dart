@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PlanTriggerCondition {
   /// Name of the associated alarm.
   final pulumi.Input<String> associatedAlarmName;
-
   /// Condition to check. Valid values: `red`, `green`.
   final pulumi.Input<String> condition;
 
@@ -26,10 +25,9 @@ class PlanTriggerCondition {
 
   factory PlanTriggerCondition.fromMap(Map<String, dynamic> map) {
     return PlanTriggerCondition(
-      associatedAlarmName: pulumi.Input.fromValue(
-        map['associatedAlarmName'] as String,
-      ),
+      associatedAlarmName: pulumi.Input.fromValue(map['associatedAlarmName'] as String),
       condition: pulumi.Input.fromValue(map['condition'] as String),
     );
   }
 }
+

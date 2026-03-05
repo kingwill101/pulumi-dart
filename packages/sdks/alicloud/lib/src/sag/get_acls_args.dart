@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAclsArgs {
   /// A list of Sag Acl IDs.
   final pulumi.Input<List<String>>? ids;
-
   /// A regex string to filter Sag Acl instances by name.
   final pulumi.Input<String>? nameRegex;
   final pulumi.Input<String>? outputFile;
@@ -18,7 +17,11 @@ class GetAclsArgs {
   /// [ids] A list of Sag Acl IDs.
   /// [nameRegex] A regex string to filter Sag Acl instances by name.
   /// [outputFile] Optional.
-  GetAclsArgs({this.ids, this.nameRegex, this.outputFile});
+  GetAclsArgs({
+    this.ids,
+    this.nameRegex,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -30,21 +33,10 @@ class GetAclsArgs {
 
   factory GetAclsArgs.fromMap(Map<String, dynamic> map) {
     return GetAclsArgs(
-      ids: (() {
-        final guardedValue = map['ids'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ids: (() { final guardedValue = map['ids']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

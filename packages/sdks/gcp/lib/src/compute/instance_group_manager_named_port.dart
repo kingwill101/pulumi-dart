@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceGroupManagerNamedPort {
   /// The name of the port.
   final pulumi.Input<String> name;
-
   /// The port number.
   /// - - -
   final pulumi.Input<int> port;
@@ -13,10 +12,16 @@ class InstanceGroupManagerNamedPort {
   /// Creates a new [InstanceGroupManagerNamedPort].
   /// [name] The name of the port.
   /// [port] The port number.
-  InstanceGroupManagerNamedPort({required this.name, required this.port});
+  InstanceGroupManagerNamedPort({
+    required this.name,
+    required this.port,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'port': port};
+    return <String, dynamic>{
+      'name': name,
+      'port': port,
+    };
   }
 
   factory InstanceGroupManagerNamedPort.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class InstanceGroupManagerNamedPort {
     );
   }
 }
+

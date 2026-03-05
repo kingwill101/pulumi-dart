@@ -9,43 +9,30 @@ import 'system_data_response.dart';
 class GetDigitalTwinResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Time when DigitalTwinsInstance was created.
   final String createdTime;
-
   /// Api endpoint to work with DigitalTwinsInstance.
   final String hostName;
-
   /// The resource identifier.
   final String id;
-
   /// The managed identity for the DigitalTwinsInstance.
   final DigitalTwinsIdentityResponse? identity;
-
   /// Time when DigitalTwinsInstance was updated.
   final String lastUpdatedTime;
-
   /// The resource location.
   final String location;
-
   /// The resource name.
   final String name;
-
   /// The private endpoint connections.
   final List<PrivateEndpointConnectionResponse>? privateEndpointConnections;
-
   /// The provisioning state.
   final String provisioningState;
-
   /// Public network access for the DigitalTwinsInstance.
   final String? publicNetworkAccess;
-
   /// Metadata pertaining to creation and last modification of the DigitalTwinsInstance.
   final SystemDataResponse systemData;
-
   /// The resource tags.
   final Map<String, String>? tags;
-
   /// The resource type.
   final String type;
 
@@ -91,14 +78,7 @@ class GetDigitalTwinResult {
       'lastUpdatedTime': lastUpdatedTime,
       'location': location,
       'name': name,
-      'privateEndpointConnections': ?(() {
-        final guardedValue = privateEndpointConnections;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          PrivateEndpointConnectionResponse,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'privateEndpointConnections': ?(() { final guardedValue = privateEndpointConnections; if (guardedValue == null) return null; return pulumi.Input.encodeList<PrivateEndpointConnectionResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'provisioningState': provisioningState,
       'publicNetworkAccess': ?publicNetworkAccess,
       'systemData': systemData.toMap(),
@@ -113,41 +93,17 @@ class GetDigitalTwinResult {
       createdTime: map['createdTime'] as String,
       hostName: map['hostName'] as String,
       id: map['id'] as String,
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return DigitalTwinsIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return DigitalTwinsIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       lastUpdatedTime: map['lastUpdatedTime'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      privateEndpointConnections: (() {
-        final guardedValue = map['privateEndpointConnections'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(
-          guardedValue,
-          (value) => PrivateEndpointConnectionResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      privateEndpointConnections: (() { final guardedValue = map['privateEndpointConnections']; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(guardedValue, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       provisioningState: map['provisioningState'] as String,
-      publicNetworkAccess: (() {
-        final guardedValue = map['publicNetworkAccess'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

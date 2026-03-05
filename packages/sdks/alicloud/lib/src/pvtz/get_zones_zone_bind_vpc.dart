@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetZonesZoneBindVpc {
   /// The region ID of the VPC.
   final pulumi.Input<String> regionId;
-
   /// The name of the region where the VPC resides.
   final pulumi.Input<String> regionName;
-
   /// The ID of the VPC.
   final pulumi.Input<String> vpcId;
-
   /// The Name of the VPC.
   final pulumi.Input<String> vpcName;
 
@@ -45,3 +42,4 @@ class GetZonesZoneBindVpc {
     );
   }
 }
+

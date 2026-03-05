@@ -10,27 +10,20 @@ class MavenRepository {
 
   /// Creates a new [MavenRepository].
   /// [publicRepository] One of the publicly available Maven repositories supported by Artifact Registry.
-  MavenRepository({this.publicRepository});
+  MavenRepository({
+    this.publicRepository,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'publicRepository':
-          ?pulumi.Input.mapOptionalInputValue<
-            MavenRepositoryPublicRepository,
-            String
-          >(publicRepository, (value) => value.wireValue),
+      'publicRepository': ?pulumi.Input.mapOptionalInputValue<MavenRepositoryPublicRepository, String>(publicRepository, (value) => value.wireValue),
     };
   }
 
   factory MavenRepository.fromMap(Map<String, dynamic> map) {
     return MavenRepository(
-      publicRepository: (() {
-        final guardedValue = map['publicRepository'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          MavenRepositoryPublicRepository.fromValue(guardedValue as String),
-        );
-      })(),
+      publicRepository: (() { final guardedValue = map['publicRepository']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MavenRepositoryPublicRepository.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

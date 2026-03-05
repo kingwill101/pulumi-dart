@@ -7,16 +7,12 @@ import 'company_info.dart';
 class UserInfo {
   /// Company information of the user to be passed to partners.
   final pulumi.Input<CompanyInfo>? companyInfo;
-
   /// Company name of the user
   final pulumi.Input<String>? companyName;
-
   /// Email of the user used by Elastic for contacting them if needed
   final pulumi.Input<String>? emailAddress;
-
   /// First name of the user
   final pulumi.Input<String>? firstName;
-
   /// Last name of the user
   final pulumi.Input<String>? lastName;
 
@@ -36,11 +32,7 @@ class UserInfo {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'companyInfo':
-          ?pulumi.Input.mapOptionalInputValue<
-            CompanyInfo,
-            Map<String, dynamic>
-          >(companyInfo, (value) => value.toMap()),
+      'companyInfo': ?pulumi.Input.mapOptionalInputValue<CompanyInfo, Map<String, dynamic>>(companyInfo, (value) => value.toMap()),
       'companyName': ?companyName,
       'emailAddress': ?emailAddress,
       'firstName': ?firstName,
@@ -50,33 +42,12 @@ class UserInfo {
 
   factory UserInfo.fromMap(Map<String, dynamic> map) {
     return UserInfo(
-      companyInfo: (() {
-        final guardedValue = map['companyInfo'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CompanyInfo.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      companyName: (() {
-        final guardedValue = map['companyName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      emailAddress: (() {
-        final guardedValue = map['emailAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      firstName: (() {
-        final guardedValue = map['firstName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      lastName: (() {
-        final guardedValue = map['lastName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      companyInfo: (() { final guardedValue = map['companyInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CompanyInfo.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      companyName: (() { final guardedValue = map['companyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      emailAddress: (() { final guardedValue = map['emailAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      firstName: (() { final guardedValue = map['firstName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      lastName: (() { final guardedValue = map['lastName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

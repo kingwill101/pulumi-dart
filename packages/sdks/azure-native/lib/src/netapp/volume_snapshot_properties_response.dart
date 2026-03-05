@@ -9,19 +9,20 @@ class VolumeSnapshotPropertiesResponse {
 
   /// Creates a new [VolumeSnapshotPropertiesResponse].
   /// [snapshotPolicyId] Snapshot Policy ResourceId
-  VolumeSnapshotPropertiesResponse({this.snapshotPolicyId});
+  VolumeSnapshotPropertiesResponse({
+    this.snapshotPolicyId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'snapshotPolicyId': ?snapshotPolicyId};
+    return <String, dynamic>{
+      'snapshotPolicyId': ?snapshotPolicyId,
+    };
   }
 
   factory VolumeSnapshotPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return VolumeSnapshotPropertiesResponse(
-      snapshotPolicyId: (() {
-        final guardedValue = map['snapshotPolicyId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      snapshotPolicyId: (() { final guardedValue = map['snapshotPolicyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -6,16 +6,12 @@ class RegistryAuth {
   /// Address of the registry
   final pulumi.Input<String> address;
   final pulumi.Input<bool>? authDisabled;
-
   /// Path to docker json file for registry auth. Defaults to `~/.docker/config.json`. If `DOCKER_CONFIG` is set, the value of `DOCKER_CONFIG` is used as the path. `config_file` has predencen over all other options.
   final pulumi.Input<String>? configFile;
-
   /// Plain content of the docker json file for registry auth. `config_file_content` has precedence over username/password.
   final pulumi.Input<String>? configFileContent;
-
   /// Password for the registry. Defaults to `DOCKER_REGISTRY_PASS` env variable if set.
   final pulumi.Input<String>? password;
-
   /// Username for the registry. Defaults to `DOCKER_REGISTRY_USER` env variable if set.
   final pulumi.Input<String>? username;
 
@@ -49,31 +45,12 @@ class RegistryAuth {
   factory RegistryAuth.fromMap(Map<String, dynamic> map) {
     return RegistryAuth(
       address: pulumi.Input.fromValue(map['address'] as String),
-      authDisabled: (() {
-        final guardedValue = map['authDisabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      configFile: (() {
-        final guardedValue = map['configFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      configFileContent: (() {
-        final guardedValue = map['configFileContent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      password: (() {
-        final guardedValue = map['password'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      username: (() {
-        final guardedValue = map['username'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      authDisabled: (() { final guardedValue = map['authDisabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      configFile: (() { final guardedValue = map['configFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      configFileContent: (() { final guardedValue = map['configFileContent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      username: (() { final guardedValue = map['username']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

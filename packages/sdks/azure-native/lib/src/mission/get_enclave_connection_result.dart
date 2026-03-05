@@ -6,43 +6,30 @@ import 'system_data_response.dart';
 class GetEnclaveConnectionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Community Resource Id.
   final String communityResourceId;
-
   /// Destination Endpoint Resource Id.
   final String destinationEndpointId;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// The geo-location where the resource lives
   final String location;
-
   /// The name of the resource
   final String name;
-
   /// Provisioning State.
   final String provisioningState;
-
   /// List of resource ids modified by enclave Connections.
   final List<String> resourceCollection;
-
   /// Source CIDR.
   final String? sourceCidr;
-
   /// Source Resource Id.
   final String sourceResourceId;
-
   /// The state of the enclaveConnection.
   final String state;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -107,22 +94,13 @@ class GetEnclaveConnectionResult {
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       resourceCollection: (map['resourceCollection'] as List).cast<String>(),
-      sourceCidr: (() {
-        final guardedValue = map['sourceCidr'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      sourceCidr: (() { final guardedValue = map['sourceCidr']; if (guardedValue == null) return null; return guardedValue as String; })(),
       sourceResourceId: map['sourceResourceId'] as String,
       state: map['state'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

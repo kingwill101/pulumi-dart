@@ -6,16 +6,12 @@ class ClusterUpdateStrategyResponse {
   /// The maximum number of worker nodes that can be offline within the increment of update, e.g., rack-by-rack.
   /// Limited by the maximum number of machines in the increment. Defaults to the whole increment size.
   final pulumi.Input<double>? maxUnavailable;
-
   /// The mode of operation for runtime protection.
   final pulumi.Input<String> strategyType;
-
   /// Selection of how the threshold should be evaluated.
   final pulumi.Input<String> thresholdType;
-
   /// The numeric threshold value.
   final pulumi.Input<double> thresholdValue;
-
   /// The time to wait between the increments of update defined by the strategy.
   final pulumi.Input<double>? waitTimeMinutes;
 
@@ -45,19 +41,12 @@ class ClusterUpdateStrategyResponse {
 
   factory ClusterUpdateStrategyResponse.fromMap(Map<String, dynamic> map) {
     return ClusterUpdateStrategyResponse(
-      maxUnavailable: (() {
-        final guardedValue = map['maxUnavailable'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      maxUnavailable: (() { final guardedValue = map['maxUnavailable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
       strategyType: pulumi.Input.fromValue(map['strategyType'] as String),
       thresholdType: pulumi.Input.fromValue(map['thresholdType'] as String),
       thresholdValue: pulumi.Input.fromValue(map['thresholdValue'] as double),
-      waitTimeMinutes: (() {
-        final guardedValue = map['waitTimeMinutes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      waitTimeMinutes: (() { final guardedValue = map['waitTimeMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

@@ -7,43 +7,30 @@ import 'event_response.dart';
 class GetNotificationChannelResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The creation date of the notification channel.
   final String createdDate;
-
   /// Description of notification.
   final String? description;
-
   /// The email recipient to send notifications to (can be a list of semi-colon separated email addresses).
   final String? emailRecipient;
-
   /// The list of event for which this notification is enabled.
   final List<EventResponse>? events;
-
   /// The identifier of the resource.
   final String id;
-
   /// The location of the resource.
   final String? location;
-
   /// The name of the resource.
   final String name;
-
   /// The locale to use when sending a notification (fallback for unsupported languages is EN).
   final String? notificationLocale;
-
   /// The provisioning status of the resource.
   final String provisioningState;
-
   /// The tags of the resource.
   final Map<String, String>? tags;
-
   /// The type of the resource.
   final String type;
-
   /// The unique immutable identifier of a resource (Guid).
   final String uniqueIdentifier;
-
   /// The webhook URL to send notifications to.
   final String? webHookUrl;
 
@@ -85,14 +72,7 @@ class GetNotificationChannelResult {
       'createdDate': createdDate,
       'description': ?description,
       'emailRecipient': ?emailRecipient,
-      'events': ?(() {
-        final guardedValue = events;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<EventResponse, Map<String, dynamic>>(
-          guardedValue,
-          (value) => value.toMap(),
-        );
-      })(),
+      'events': ?(() { final guardedValue = events; if (guardedValue == null) return null; return pulumi.Input.encodeList<EventResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'id': id,
       'location': ?location,
       'name': name,
@@ -109,50 +89,19 @@ class GetNotificationChannelResult {
     return GetNotificationChannelResult(
       azureApiVersion: map['azureApiVersion'] as String,
       createdDate: map['createdDate'] as String,
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      emailRecipient: (() {
-        final guardedValue = map['emailRecipient'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      events: (() {
-        final guardedValue = map['events'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<EventResponse>(
-          guardedValue,
-          (value) =>
-              EventResponse.fromMap((value as Map).cast<String, dynamic>()),
-        );
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      emailRecipient: (() { final guardedValue = map['emailRecipient']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      events: (() { final guardedValue = map['events']; if (guardedValue == null) return null; return pulumi.Input.decodeList<EventResponse>(guardedValue, (value) => EventResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       id: map['id'] as String,
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
-      notificationLocale: (() {
-        final guardedValue = map['notificationLocale'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      notificationLocale: (() { final guardedValue = map['notificationLocale']; if (guardedValue == null) return null; return guardedValue as String; })(),
       provisioningState: map['provisioningState'] as String,
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
       uniqueIdentifier: map['uniqueIdentifier'] as String,
-      webHookUrl: (() {
-        final guardedValue = map['webHookUrl'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      webHookUrl: (() { final guardedValue = map['webHookUrl']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

@@ -33,8 +33,7 @@ Future<GetApplianceResult> getAppliance(
 /// Uses Azure REST API version 2022-04-15-preview.
 /// [args] Arguments passed to this invoke. {@macro pulumi_resourceconnector_list_appliance_cluster_customer_user_credential_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListApplianceClusterCustomerUserCredentialResult>
-listApplianceClusterCustomerUserCredential(
+Future<ListApplianceClusterCustomerUserCredentialResult> listApplianceClusterCustomerUserCredential(
   ListApplianceClusterCustomerUserCredentialArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -54,8 +53,7 @@ listApplianceClusterCustomerUserCredential(
 /// Other available API versions: 2022-04-15-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native resourceconnector [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_resourceconnector_list_appliance_cluster_user_credential_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListApplianceClusterUserCredentialResult>
-listApplianceClusterUserCredential(
+Future<ListApplianceClusterUserCredentialResult> listApplianceClusterUserCredential(
   ListApplianceClusterUserCredentialArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

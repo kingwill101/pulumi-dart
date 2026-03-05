@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAutoUpgradeProfileArgs {
   /// The name of the AutoUpgradeProfile resource.
   final pulumi.Input<String> autoUpgradeProfileName;
-
   /// The name of the Fleet resource.
   final pulumi.Input<String> fleetName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,13 +34,10 @@ class GetAutoUpgradeProfileArgs {
 
   factory GetAutoUpgradeProfileArgs.fromMap(Map<String, dynamic> map) {
     return GetAutoUpgradeProfileArgs(
-      autoUpgradeProfileName: pulumi.Input.fromValue(
-        map['autoUpgradeProfileName'] as String,
-      ),
+      autoUpgradeProfileName: pulumi.Input.fromValue(map['autoUpgradeProfileName'] as String),
       fleetName: pulumi.Input.fromValue(map['fleetName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

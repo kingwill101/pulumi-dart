@@ -696,40 +696,28 @@ import 'system_data_response.dart';
 class DaprComponent extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Component type
   late final pulumi.Output<String?> componentType;
-
   /// Boolean describing if the component errors are ignores
   late final pulumi.Output<bool?> ignoreErrors;
-
   /// Initialization timeout
   late final pulumi.Output<String?> initTimeout;
-
   /// Component metadata
   late final pulumi.Output<List<Map<String, dynamic>>?> metadata;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Names of container apps that can use this Dapr component
   late final pulumi.Output<List<String>?> scopes;
-
   /// Name of a Dapr component to retrieve component secrets from
   late final pulumi.Output<String?> secretStoreComponent;
-
   /// Collection of secrets used by a Dapr component
   late final pulumi.Output<List<Map<String, dynamic>>?> secrets;
-
   /// List of container app services that are bound to the Dapr component
   late final pulumi.Output<List<Map<String, dynamic>>?> serviceComponentBind;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Component version
   late final pulumi.Output<String?> version;
 
@@ -742,11 +730,11 @@ class DaprComponent extends pulumi.CustomResource {
     DaprComponentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:app:DaprComponent',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:app:DaprComponent',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     componentType = registerOutput<String?>('componentType');
     ignoreErrors = registerOutput<bool?>('ignoreErrors');
@@ -756,19 +744,8 @@ class DaprComponent extends pulumi.CustomResource {
     scopes = registerOutput<List<String>?>('scopes');
     secretStoreComponent = registerOutput<String?>('secretStoreComponent');
     secrets = registerOutput<List<Map<String, dynamic>>?>('secrets');
-    serviceComponentBind = registerOutput<List<Map<String, dynamic>>?>(
-      'serviceComponentBind',
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    serviceComponentBind = registerOutput<List<Map<String, dynamic>>?>('serviceComponentBind');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     version = registerOutput<String?>('version');
   }

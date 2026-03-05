@@ -6,17 +6,13 @@ enum DeploymentStacksResourcesWithoutDeleteSupportEnum {
   const DeploymentStacksResourcesWithoutDeleteSupportEnum(this.wireValue);
   final String wireValue;
 
-  static DeploymentStacksResourcesWithoutDeleteSupportEnum fromValue(
-    String value,
-  ) {
-    for (final item
-        in DeploymentStacksResourcesWithoutDeleteSupportEnum.values) {
+  static DeploymentStacksResourcesWithoutDeleteSupportEnum fromValue(String value) {
+    for (final item in DeploymentStacksResourcesWithoutDeleteSupportEnum.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown DeploymentStacksResourcesWithoutDeleteSupportEnum value: $value',
-    );
+    throw ArgumentError('Unknown DeploymentStacksResourcesWithoutDeleteSupportEnum value: $value');
   }
 }
+

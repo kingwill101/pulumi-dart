@@ -10,10 +10,8 @@ import 'replication_set_region.dart';
 class ReplicationSetArgs {
   /// The replication set's Regions. Use `regions` instead.
   final pulumi.Input<List<ReplicationSetRegion>>? region;
-
   /// The replication set's Regions.
   final pulumi.Input<List<ReplicationSetRegion>>? regions;
-
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
   /// For information about the maximum allowed number of Regions and tag value constraints, see [CreateReplicationSet in the *AWS Systems Manager Incident Manager API Reference*](https://docs.aws.amazon.com/incident-manager/latest/APIReference/API_CreateReplicationSet.html).
@@ -33,71 +31,26 @@ class ReplicationSetArgs {
   /// [region] The replication set's Regions. Use `regions` instead.
   /// [regions] The replication set's Regions.
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  ReplicationSetArgs({this.region, this.regions, this.tags});
+  ReplicationSetArgs({
+    this.region,
+    this.regions,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'region':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ReplicationSetRegion>,
-            List<Map<String, dynamic>>
-          >(
-            region,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ReplicationSetRegion,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'regions':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ReplicationSetRegion>,
-            List<Map<String, dynamic>>
-          >(
-            regions,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ReplicationSetRegion,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'region': ?pulumi.Input.mapOptionalInputValue<List<ReplicationSetRegion>, List<Map<String, dynamic>>>(region, (value) => pulumi.Input.encodeList<ReplicationSetRegion, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'regions': ?pulumi.Input.mapOptionalInputValue<List<ReplicationSetRegion>, List<Map<String, dynamic>>>(regions, (value) => pulumi.Input.encodeList<ReplicationSetRegion, Map<String, dynamic>>(value, (value) => value.toMap())),
       'tags': ?tags,
     };
   }
 
   factory ReplicationSetArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationSetArgs(
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ReplicationSetRegion>(
-            guardedValue,
-            (value) => ReplicationSetRegion.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      regions: (() {
-        final guardedValue = map['regions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ReplicationSetRegion>(
-            guardedValue,
-            (value) => ReplicationSetRegion.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ReplicationSetRegion>(guardedValue, (value) => ReplicationSetRegion.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      regions: (() { final guardedValue = map['regions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ReplicationSetRegion>(guardedValue, (value) => ReplicationSetRegion.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

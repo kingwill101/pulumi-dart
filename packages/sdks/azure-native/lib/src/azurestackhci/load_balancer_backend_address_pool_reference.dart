@@ -9,17 +9,20 @@ class LoadBalancerBackendAddressPoolReference {
 
   /// Creates a new [LoadBalancerBackendAddressPoolReference].
   /// [name] name of the backend address pool
-  LoadBalancerBackendAddressPoolReference({required this.name});
+  LoadBalancerBackendAddressPoolReference({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
-  factory LoadBalancerBackendAddressPoolReference.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LoadBalancerBackendAddressPoolReference.fromMap(Map<String, dynamic> map) {
     return LoadBalancerBackendAddressPoolReference(
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

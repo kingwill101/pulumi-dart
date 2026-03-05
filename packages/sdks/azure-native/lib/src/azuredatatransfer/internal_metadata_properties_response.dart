@@ -7,7 +7,6 @@ import 'operation_status_properties_response.dart';
 class InternalMetadataPropertiesResponse {
   /// Operation status associated with the last patch request
   final pulumi.Input<OperationStatusPropertiesResponse>? operationStatus;
-
   /// User that last set the approved status for this connection
   final pulumi.Input<String> statusSetBy;
 
@@ -21,27 +20,16 @@ class InternalMetadataPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'operationStatus':
-          ?pulumi.Input.mapOptionalInputValue<
-            OperationStatusPropertiesResponse,
-            Map<String, dynamic>
-          >(operationStatus, (value) => value.toMap()),
+      'operationStatus': ?pulumi.Input.mapOptionalInputValue<OperationStatusPropertiesResponse, Map<String, dynamic>>(operationStatus, (value) => value.toMap()),
       'statusSetBy': statusSetBy,
     };
   }
 
   factory InternalMetadataPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return InternalMetadataPropertiesResponse(
-      operationStatus: (() {
-        final guardedValue = map['operationStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          OperationStatusPropertiesResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      operationStatus: (() { final guardedValue = map['operationStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OperationStatusPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       statusSetBy: pulumi.Input.fromValue(map['statusSetBy'] as String),
     );
   }
 }
+

@@ -8,17 +8,20 @@ class GuestPoliciesRecipeUpdateStepRpmInstallation {
 
   /// Creates a new [GuestPoliciesRecipeUpdateStepRpmInstallation].
   /// [artifactId] The id of the relevant artifact in the recipe.
-  GuestPoliciesRecipeUpdateStepRpmInstallation({required this.artifactId});
+  GuestPoliciesRecipeUpdateStepRpmInstallation({
+    required this.artifactId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'artifactId': artifactId};
+    return <String, dynamic>{
+      'artifactId': artifactId,
+    };
   }
 
-  factory GuestPoliciesRecipeUpdateStepRpmInstallation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GuestPoliciesRecipeUpdateStepRpmInstallation.fromMap(Map<String, dynamic> map) {
     return GuestPoliciesRecipeUpdateStepRpmInstallation(
       artifactId: pulumi.Input.fromValue(map['artifactId'] as String),
     );
   }
 }
+

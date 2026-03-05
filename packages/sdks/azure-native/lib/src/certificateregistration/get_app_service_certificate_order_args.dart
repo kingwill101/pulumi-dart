@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAppServiceCertificateOrderArgs {
   /// Name of the certificate order..
   final pulumi.Input<String> certificateOrderName;
-
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetAppServiceCertificateOrderArgs {
 
   factory GetAppServiceCertificateOrderArgs.fromMap(Map<String, dynamic> map) {
     return GetAppServiceCertificateOrderArgs(
-      certificateOrderName: pulumi.Input.fromValue(
-        map['certificateOrderName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      certificateOrderName: pulumi.Input.fromValue(map['certificateOrderName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

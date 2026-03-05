@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TagArgs {
   /// Tag name.
   final pulumi.Input<String> key;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Amazon Resource Name (ARN) of the DynamoDB resource to tag.
   final pulumi.Input<String> resourceArn;
-
   /// Tag value.
   final pulumi.Input<String> value;
 
@@ -43,13 +40,10 @@ class TagArgs {
   factory TagArgs.fromMap(Map<String, dynamic> map) {
     return TagArgs(
       key: pulumi.Input.fromValue(map['key'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceArn: pulumi.Input.fromValue(map['resourceArn'] as String),
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
+

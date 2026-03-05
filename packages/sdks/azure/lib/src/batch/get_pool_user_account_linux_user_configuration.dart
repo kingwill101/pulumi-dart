@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPoolUserAccountLinuxUserConfiguration {
   /// The user ID of the user account.
   final pulumi.Input<int> gid;
-
   /// The SSH private key for the user account.
   final pulumi.Input<String> sshPrivateKey;
-
   /// The group ID for the user account.
   final pulumi.Input<int> uid;
 
@@ -30,9 +28,7 @@ class GetPoolUserAccountLinuxUserConfiguration {
     };
   }
 
-  factory GetPoolUserAccountLinuxUserConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetPoolUserAccountLinuxUserConfiguration.fromMap(Map<String, dynamic> map) {
     return GetPoolUserAccountLinuxUserConfiguration(
       gid: pulumi.Input.fromValue(map['gid'] as int),
       sshPrivateKey: pulumi.Input.fromValue(map['sshPrivateKey'] as String),
@@ -40,3 +36,4 @@ class GetPoolUserAccountLinuxUserConfiguration {
     );
   }
 }
+

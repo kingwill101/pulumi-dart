@@ -10,29 +10,20 @@ class RestoreWorkloadTargetResource {
 
   /// Creates a new [RestoreWorkloadTargetResource].
   /// [gcpResource] Output only. Details of the native Google Cloud resource created as part of restore.
-  RestoreWorkloadTargetResource({this.gcpResource});
+  RestoreWorkloadTargetResource({
+    this.gcpResource,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'gcpResource':
-          ?pulumi.Input.mapOptionalInputValue<
-            RestoreWorkloadTargetResourceGcpResource,
-            Map<String, dynamic>
-          >(gcpResource, (value) => value.toMap()),
+      'gcpResource': ?pulumi.Input.mapOptionalInputValue<RestoreWorkloadTargetResourceGcpResource, Map<String, dynamic>>(gcpResource, (value) => value.toMap()),
     };
   }
 
   factory RestoreWorkloadTargetResource.fromMap(Map<String, dynamic> map) {
     return RestoreWorkloadTargetResource(
-      gcpResource: (() {
-        final guardedValue = map['gcpResource'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RestoreWorkloadTargetResourceGcpResource.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      gcpResource: (() { final guardedValue = map['gcpResource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RestoreWorkloadTargetResourceGcpResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

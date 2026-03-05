@@ -6,11 +6,7 @@ import 'google_cloud_integrations_v1alpha_cloud_logging_details_cloud_logging_se
 /// Cloud Logging details for execution info
 class GoogleCloudIntegrationsV1alphaCloudLoggingDetails {
   /// Optional. Severity selected by the customer for the logs to be sent to Cloud Logging, for the integration version getting executed.
-  final pulumi.Input<
-    GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity
-  >?
-  cloudLoggingSeverity;
-
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity>? cloudLoggingSeverity;
   /// Optional. Status of whether Cloud Logging is enabled or not for the integration version getting executed.
   final pulumi.Input<bool>? enableCloudLogging;
 
@@ -24,33 +20,16 @@ class GoogleCloudIntegrationsV1alphaCloudLoggingDetails {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cloudLoggingSeverity':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity,
-            String
-          >(cloudLoggingSeverity, (value) => value.wireValue),
+      'cloudLoggingSeverity': ?pulumi.Input.mapOptionalInputValue<GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity, String>(cloudLoggingSeverity, (value) => value.wireValue),
       'enableCloudLogging': ?enableCloudLogging,
     };
   }
 
-  factory GoogleCloudIntegrationsV1alphaCloudLoggingDetails.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudIntegrationsV1alphaCloudLoggingDetails.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaCloudLoggingDetails(
-      cloudLoggingSeverity: (() {
-        final guardedValue = map['cloudLoggingSeverity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity.fromValue(
-            guardedValue as String,
-          ),
-        );
-      })(),
-      enableCloudLogging: (() {
-        final guardedValue = map['enableCloudLogging'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      cloudLoggingSeverity: (() { final guardedValue = map['cloudLoggingSeverity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity.fromValue(guardedValue as String)); })(),
+      enableCloudLogging: (() { final guardedValue = map['enableCloudLogging']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

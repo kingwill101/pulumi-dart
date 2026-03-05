@@ -14,14 +14,15 @@ class GetClusterAutomatedBackupPolicyTimeBasedRetention {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'retentionPeriod': retentionPeriod};
+    return <String, dynamic>{
+      'retentionPeriod': retentionPeriod,
+    };
   }
 
-  factory GetClusterAutomatedBackupPolicyTimeBasedRetention.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetClusterAutomatedBackupPolicyTimeBasedRetention.fromMap(Map<String, dynamic> map) {
     return GetClusterAutomatedBackupPolicyTimeBasedRetention(
       retentionPeriod: pulumi.Input.fromValue(map['retentionPeriod'] as String),
     );
   }
 }
+

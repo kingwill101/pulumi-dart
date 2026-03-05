@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRaiBlocklistItemArgs {
   /// The name of Cognitive Services account.
   final pulumi.Input<String> accountName;
-
   /// The name of the RaiBlocklist Item associated with the custom blocklist
   final pulumi.Input<String> raiBlocklistItemName;
-
   /// The name of the RaiBlocklist associated with the Cognitive Services Account
   final pulumi.Input<String> raiBlocklistName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -43,15 +40,10 @@ class GetRaiBlocklistItemArgs {
   factory GetRaiBlocklistItemArgs.fromMap(Map<String, dynamic> map) {
     return GetRaiBlocklistItemArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
-      raiBlocklistItemName: pulumi.Input.fromValue(
-        map['raiBlocklistItemName'] as String,
-      ),
-      raiBlocklistName: pulumi.Input.fromValue(
-        map['raiBlocklistName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      raiBlocklistItemName: pulumi.Input.fromValue(map['raiBlocklistItemName'] as String),
+      raiBlocklistName: pulumi.Input.fromValue(map['raiBlocklistName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

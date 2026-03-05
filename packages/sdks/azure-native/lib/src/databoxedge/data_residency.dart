@@ -9,19 +9,20 @@ class DataResidency {
 
   /// Creates a new [DataResidency].
   /// [type] DataResidencyType enum
-  DataResidency({this.type});
+  DataResidency({
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': ?type};
+    return <String, dynamic>{
+      'type': ?type,
+    };
   }
 
   factory DataResidency.fromMap(Map<String, dynamic> map) {
     return DataResidency(
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

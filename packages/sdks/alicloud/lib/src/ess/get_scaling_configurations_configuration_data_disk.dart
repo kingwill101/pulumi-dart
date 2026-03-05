@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetScalingConfigurationsConfigurationDataDisk {
   /// Category of data disk.
   final pulumi.Input<String> category;
-
   /// Delete_with_instance attribute of data disk.
   final pulumi.Input<bool> deleteWithInstance;
-
   /// Device attribute of data disk.
   final pulumi.Input<String> device;
-
   /// The performance level of the ESSD used as data disk.
   final pulumi.Input<String> performanceLevel;
-
   /// Size of data disk.
   final pulumi.Input<int> size;
-
   /// Size of data disk.
   final pulumi.Input<String> snapshotId;
 
@@ -48,20 +43,15 @@ class GetScalingConfigurationsConfigurationDataDisk {
     };
   }
 
-  factory GetScalingConfigurationsConfigurationDataDisk.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetScalingConfigurationsConfigurationDataDisk.fromMap(Map<String, dynamic> map) {
     return GetScalingConfigurationsConfigurationDataDisk(
       category: pulumi.Input.fromValue(map['category'] as String),
-      deleteWithInstance: pulumi.Input.fromValue(
-        map['deleteWithInstance'] as bool,
-      ),
+      deleteWithInstance: pulumi.Input.fromValue(map['deleteWithInstance'] as bool),
       device: pulumi.Input.fromValue(map['device'] as String),
-      performanceLevel: pulumi.Input.fromValue(
-        map['performanceLevel'] as String,
-      ),
+      performanceLevel: pulumi.Input.fromValue(map['performanceLevel'] as String),
       size: pulumi.Input.fromValue(map['size'] as int),
       snapshotId: pulumi.Input.fromValue(map['snapshotId'] as String),
     );
   }
 }
+

@@ -7,22 +7,17 @@ import 'get_nest_service_instances_service_instance.dart';
 /// Result data returned by getNestServiceInstances.
 class GetNestServiceInstancesResult {
   final List<GetNestServiceInstancesFilter>? filters;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
   final String? nameRegex;
-
   /// A list of Service Instance names.
   final List<String> names;
   final String? outputFile;
-
   /// A list of Service Instances. Each element contains the following attributes:
   final List<GetNestServiceInstancesServiceInstance> serviceInstances;
-
   /// The status of the Service Instance.
   final String? status;
-
   /// The tag of the Service Instance.
   final Map<String, String>? tags;
 
@@ -50,24 +45,13 @@ class GetNestServiceInstancesResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?(() {
-        final guardedValue = filters;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          GetNestServiceInstancesFilter,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'filters': ?(() { final guardedValue = filters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetNestServiceInstancesFilter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'id': id,
       'ids': ids,
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'serviceInstances':
-          pulumi.Input.encodeList<
-            GetNestServiceInstancesServiceInstance,
-            Map<String, dynamic>
-          >(serviceInstances, (value) => value.toMap()),
+      'serviceInstances': pulumi.Input.encodeList<GetNestServiceInstancesServiceInstance, Map<String, dynamic>>(serviceInstances, (value) => value.toMap()),
       'status': ?status,
       'tags': ?tags,
     };
@@ -75,46 +59,16 @@ class GetNestServiceInstancesResult {
 
   factory GetNestServiceInstancesResult.fromMap(Map<String, dynamic> map) {
     return GetNestServiceInstancesResult(
-      filters: (() {
-        final guardedValue = map['filters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<GetNestServiceInstancesFilter>(
-          guardedValue,
-          (value) => GetNestServiceInstancesFilter.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetNestServiceInstancesFilter>(guardedValue, (value) => GetNestServiceInstancesFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      serviceInstances:
-          pulumi.Input.decodeList<GetNestServiceInstancesServiceInstance>(
-            map['serviceInstances']!,
-            (value) => GetNestServiceInstancesServiceInstance.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      serviceInstances: pulumi.Input.decodeList<GetNestServiceInstancesServiceInstance>(map['serviceInstances']!, (value) => GetNestServiceInstancesServiceInstance.fromMap((value as Map).cast<String, dynamic>())),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }
 }
+

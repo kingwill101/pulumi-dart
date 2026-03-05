@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LogAnalyticsWorkspaceConfig {
   /// Primary key of the workspace
   final pulumi.Input<String>? primaryKey;
-
   /// Azure Log Analytics workspace ID
   final pulumi.Input<String>? workspaceId;
 
   /// Creates a new [LogAnalyticsWorkspaceConfig].
   /// [primaryKey] Primary key of the workspace
   /// [workspaceId] Azure Log Analytics workspace ID
-  LogAnalyticsWorkspaceConfig({this.primaryKey, this.workspaceId});
+  LogAnalyticsWorkspaceConfig({
+    this.primaryKey,
+    this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class LogAnalyticsWorkspaceConfig {
 
   factory LogAnalyticsWorkspaceConfig.fromMap(Map<String, dynamic> map) {
     return LogAnalyticsWorkspaceConfig(
-      primaryKey: (() {
-        final guardedValue = map['primaryKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      workspaceId: (() {
-        final guardedValue = map['workspaceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      primaryKey: (() { final guardedValue = map['primaryKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      workspaceId: (() { final guardedValue = map['workspaceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

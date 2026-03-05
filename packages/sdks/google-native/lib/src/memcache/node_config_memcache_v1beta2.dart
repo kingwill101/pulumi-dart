@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NodeConfigMemcacheV1beta2 {
   /// Number of cpus per Memcached node.
   final pulumi.Input<int> cpuCount;
-
   /// Memory size in MiB for each Memcached node.
   final pulumi.Input<int> memorySizeMb;
 
@@ -32,3 +31,4 @@ class NodeConfigMemcacheV1beta2 {
     );
   }
 }
+

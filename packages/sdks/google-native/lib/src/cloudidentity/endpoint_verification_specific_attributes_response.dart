@@ -16,33 +16,14 @@ class EndpointVerificationSpecificAttributesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certificateAttributes':
-          pulumi.Input.mapInputValue<
-            List<CertificateAttributesResponse>,
-            List<Map<String, dynamic>>
-          >(
-            certificateAttributes,
-            (value) =>
-                pulumi.Input.encodeList<
-                  CertificateAttributesResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'certificateAttributes': pulumi.Input.mapInputValue<List<CertificateAttributesResponse>, List<Map<String, dynamic>>>(certificateAttributes, (value) => pulumi.Input.encodeList<CertificateAttributesResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory EndpointVerificationSpecificAttributesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EndpointVerificationSpecificAttributesResponse.fromMap(Map<String, dynamic> map) {
     return EndpointVerificationSpecificAttributesResponse(
-      certificateAttributes: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<CertificateAttributesResponse>(
-          map['certificateAttributes']!,
-          (value) => CertificateAttributesResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      certificateAttributes: pulumi.Input.fromValue(pulumi.Input.decodeList<CertificateAttributesResponse>(map['certificateAttributes']!, (value) => CertificateAttributesResponse.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

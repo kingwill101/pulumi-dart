@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AttachmentArgs {
   /// The backend servers of the load balancer.
   final pulumi.Input<String>? backendServers;
-
   /// Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
   final pulumi.Input<bool>? deleteProtectionValidation;
-
   /// A list of instance ids to added backend server in the SLB.
   final pulumi.Input<List<String>> instanceIds;
-
   /// ID of the load balancer.
   final pulumi.Input<String> loadBalancerId;
-
   /// Type of the instances. Valid value ecs, eni. Default to ecs.
   final pulumi.Input<String>? serverType;
-
   /// Weight of the instances. Valid value range: [0-100]. Default to 100.
   final pulumi.Input<int>? weight;
 
@@ -54,30 +49,13 @@ class AttachmentArgs {
 
   factory AttachmentArgs.fromMap(Map<String, dynamic> map) {
     return AttachmentArgs(
-      backendServers: (() {
-        final guardedValue = map['backendServers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      deleteProtectionValidation: (() {
-        final guardedValue = map['deleteProtectionValidation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      instanceIds: pulumi.Input.fromValue(
-        (map['instanceIds'] as List).cast<String>(),
-      ),
+      backendServers: (() { final guardedValue = map['backendServers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deleteProtectionValidation: (() { final guardedValue = map['deleteProtectionValidation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      instanceIds: pulumi.Input.fromValue((map['instanceIds'] as List).cast<String>()),
       loadBalancerId: pulumi.Input.fromValue(map['loadBalancerId'] as String),
-      serverType: (() {
-        final guardedValue = map['serverType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      weight: (() {
-        final guardedValue = map['weight'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      serverType: (() { final guardedValue = map['serverType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      weight: (() { final guardedValue = map['weight']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

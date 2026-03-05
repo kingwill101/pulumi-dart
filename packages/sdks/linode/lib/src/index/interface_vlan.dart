@@ -5,14 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InterfaceVlan {
   /// The VLAN interface's private IPv4 address in CIDR notation.
   final pulumi.Input<String>? ipamAddress;
-
   /// The VLAN's unique label. Must be between 1 and 64 characters.
   final pulumi.Input<String> vlanLabel;
 
   /// Creates a new [InterfaceVlan].
   /// [ipamAddress] The VLAN interface's private IPv4 address in CIDR notation.
   /// [vlanLabel] The VLAN's unique label. Must be between 1 and 64 characters.
-  InterfaceVlan({this.ipamAddress, required this.vlanLabel});
+  InterfaceVlan({
+    this.ipamAddress,
+    required this.vlanLabel,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -23,12 +25,9 @@ class InterfaceVlan {
 
   factory InterfaceVlan.fromMap(Map<String, dynamic> map) {
     return InterfaceVlan(
-      ipamAddress: (() {
-        final guardedValue = map['ipamAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ipamAddress: (() { final guardedValue = map['ipamAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vlanLabel: pulumi.Input.fromValue(map['vlanLabel'] as String),
     );
   }
 }
+

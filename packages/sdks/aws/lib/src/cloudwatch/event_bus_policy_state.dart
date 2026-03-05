@@ -7,10 +7,8 @@ class EventBusPolicyState {
   /// The name of the event bus to set the permissions on.
   /// If you omit this, the permissions are set on the `default` event bus.
   final pulumi.Input<String>? eventBusName;
-
   /// The text of the policy.
   final pulumi.Input<String>? policy;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -18,7 +16,11 @@ class EventBusPolicyState {
   /// [eventBusName] The name of the event bus to set the permissions on.
   /// [policy] The text of the policy.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  EventBusPolicyState({this.eventBusName, this.policy, this.region});
+  EventBusPolicyState({
+    this.eventBusName,
+    this.policy,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -30,21 +32,10 @@ class EventBusPolicyState {
 
   factory EventBusPolicyState.fromMap(Map<String, dynamic> map) {
     return EventBusPolicyState(
-      eventBusName: (() {
-        final guardedValue = map['eventBusName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      policy: (() {
-        final guardedValue = map['policy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      eventBusName: (() { final guardedValue = map['eventBusName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      policy: (() { final guardedValue = map['policy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

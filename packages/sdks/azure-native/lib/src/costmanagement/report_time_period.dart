@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReportTimePeriod {
   /// The start date to pull data from.
   final pulumi.Input<String> from;
-
   /// The end date to pull data to.
   final pulumi.Input<String> to;
 
   /// Creates a new [ReportTimePeriod].
   /// [from] The start date to pull data from.
   /// [to] The end date to pull data to.
-  ReportTimePeriod({required this.from, required this.to});
+  ReportTimePeriod({
+    required this.from,
+    required this.to,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'from': from, 'to': to};
+    return <String, dynamic>{
+      'from': from,
+      'to': to,
+    };
   }
 
   factory ReportTimePeriod.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class ReportTimePeriod {
     );
   }
 }
+

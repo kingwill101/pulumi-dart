@@ -10,25 +10,20 @@ class Details {
 
   /// Creates a new [Details].
   /// [attestation] Attestation for the resource.
-  Details({required this.attestation});
+  Details({
+    required this.attestation,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attestation':
-          pulumi.Input.mapInputValue<
-            AttestationContaineranalysisV1beta1,
-            Map<String, dynamic>
-          >(attestation, (value) => value.toMap()),
+      'attestation': pulumi.Input.mapInputValue<AttestationContaineranalysisV1beta1, Map<String, dynamic>>(attestation, (value) => value.toMap()),
     };
   }
 
   factory Details.fromMap(Map<String, dynamic> map) {
     return Details(
-      attestation: pulumi.Input.fromValue(
-        AttestationContaineranalysisV1beta1.fromMap(
-          (map['attestation']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      attestation: pulumi.Input.fromValue(AttestationContaineranalysisV1beta1.fromMap((map['attestation']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

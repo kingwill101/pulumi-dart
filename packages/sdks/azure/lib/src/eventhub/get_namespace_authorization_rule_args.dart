@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNamespaceAuthorizationRuleArgs {
   /// The name of the EventHub Authorization Rule resource.
   final pulumi.Input<String> name;
-
   /// Specifies the name of the EventHub Namespace.
   final pulumi.Input<String> namespaceName;
-
   /// The name of the resource group in which the EventHub Namespace exists.
   final pulumi.Input<String> resourceGroupName;
 
@@ -38,9 +36,8 @@ class GetNamespaceAuthorizationRuleArgs {
     return GetNamespaceAuthorizationRuleArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
       namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

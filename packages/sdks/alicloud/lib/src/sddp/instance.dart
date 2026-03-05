@@ -157,64 +157,44 @@ import 'instance_state.dart';
 class Instance extends pulumi.CustomResource {
   /// Whether the required RAM authorization is configured.
   late final pulumi.Output<bool> authed;
-
   /// The dataphin. Valid values: `yes`,`no`.
   late final pulumi.Output<String?> dataphin;
-
   /// The dataphin count. Valid values: 1 to 20.
   late final pulumi.Output<String?> dataphinCount;
-
   /// The number of instances.
   late final pulumi.Output<String> instanceNum;
-
   /// The logistics.
   late final pulumi.Output<String?> logistics;
-
   /// The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute a update operation.
   late final pulumi.Output<String?> modifyType;
-
   /// Whether the authorized MaxCompute (ODPS) assets.
   late final pulumi.Output<bool> odpsSet;
-
   /// Whether the authorized oss assets.
   late final pulumi.Output<bool> ossBucketSet;
-
   /// The OSS storage capacity.
   late final pulumi.Output<String> ossSize;
-
   /// The payment type of the resource. Valid values: `Subscription`.
   late final pulumi.Output<String> paymentType;
-
   /// The Prepaid period. Valid values: `1`, `2`, `3`, `6`,`12`,`24`.
   late final pulumi.Output<int> period;
-
   /// Whether the authorized rds assets.
   late final pulumi.Output<bool> rdsSet;
-
   /// The remaining days of the protection period of the assets in the current login account.
   late final pulumi.Output<String> remainDays;
-
   /// Automatic renewal period. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`,
   late final pulumi.Output<int?> renewPeriod;
-
   /// Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`. Default Value: `ManualRenewal`.
   late final pulumi.Output<String> renewalStatus;
-
   /// Whether to use the database. Valid values:`yes`,`no`.
   late final pulumi.Output<String> sdCbool;
-
   /// The number of instances.
   late final pulumi.Output<String> sdc;
-
   /// The sddp version. Valid values: `version_audit`,`version_company`,`version_dlp`.
   late final pulumi.Output<String> sddpVersion;
-
   /// The status of the resource.
   late final pulumi.Output<String> status;
-
   /// Whether to use OSS. Valid values: `yes`,`no`.
   late final pulumi.Output<String> udCbool;
-
   /// OSS Size.
   late final pulumi.Output<String> udc;
 
@@ -227,11 +207,11 @@ class Instance extends pulumi.CustomResource {
     InstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:sddp/instance:Instance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:sddp/instance:Instance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     authed = registerOutput<bool>('authed');
     dataphin = registerOutput<String?>('dataphin');
     dataphinCount = registerOutput<String?>('dataphinCount');
@@ -273,11 +253,11 @@ class Instance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:sddp/instance:Instance',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:sddp/instance:Instance',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     authed = registerOutput<bool>('authed');
     dataphin = registerOutput<String?>('dataphin');
     dataphinCount = registerOutput<String?>('dataphinCount');

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NotificationChannelStrategy {
   /// The full REST resource name for the notification channels that these settings apply to. Each of these correspond to the name field in one of the NotificationChannel objects referenced in the notification_channels field of this AlertPolicy. The format is: projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID]
   final pulumi.Input<List<String>>? notificationChannelNames;
-
   /// The frequency at which to send reminder notifications for open incidents.
   final pulumi.Input<String>? renotifyInterval;
 
@@ -27,16 +26,9 @@ class NotificationChannelStrategy {
 
   factory NotificationChannelStrategy.fromMap(Map<String, dynamic> map) {
     return NotificationChannelStrategy(
-      notificationChannelNames: (() {
-        final guardedValue = map['notificationChannelNames'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      renotifyInterval: (() {
-        final guardedValue = map['renotifyInterval'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      notificationChannelNames: (() { final guardedValue = map['notificationChannelNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      renotifyInterval: (() { final guardedValue = map['renotifyInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

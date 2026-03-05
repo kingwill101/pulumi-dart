@@ -4,7 +4,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DiJobJobSettingsDdlHandlingSetting {
   final pulumi.Input<String>? action;
-
   /// DDL type, optional enumeration value:
   ///
   /// RenameColumn (rename column)
@@ -21,24 +20,23 @@ class DiJobJobSettingsDdlHandlingSetting {
   /// Creates a new [DiJobJobSettingsDdlHandlingSetting].
   /// [action] Optional.
   /// [type] DDL type, optional enumeration value:
-  DiJobJobSettingsDdlHandlingSetting({this.action, this.type});
+  DiJobJobSettingsDdlHandlingSetting({
+    this.action,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'action': ?action, 'type': ?type};
+    return <String, dynamic>{
+      'action': ?action,
+      'type': ?type,
+    };
   }
 
   factory DiJobJobSettingsDdlHandlingSetting.fromMap(Map<String, dynamic> map) {
     return DiJobJobSettingsDdlHandlingSetting(
-      action: (() {
-        final guardedValue = map['action'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

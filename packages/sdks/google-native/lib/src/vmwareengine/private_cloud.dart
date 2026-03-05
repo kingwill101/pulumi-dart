@@ -11,51 +11,36 @@ import 'vcenter_response.dart';
 class PrivateCloud extends pulumi.CustomResource {
   /// Creation time of this resource.
   late final pulumi.Output<String> createTime;
-
   /// Time when the resource was scheduled for deletion.
   late final pulumi.Output<String> deleteTime;
-
   /// User-provided description for this private cloud.
   late final pulumi.Output<String> description;
-
   /// Time when the resource will be irreversibly deleted.
   late final pulumi.Output<String> expireTime;
-
   /// HCX appliance.
   late final pulumi.Output<HcxResponse> hcx;
   late final pulumi.Output<String> location;
-
   /// Input only. The management cluster for this private cloud. This field is required during creation of the private cloud to provide details for the default cluster. The following fields can't be changed after private cloud creation: `ManagementCluster.clusterId`, `ManagementCluster.nodeTypeId`.
   late final pulumi.Output<ManagementClusterResponse> managementCluster;
-
   /// The resource name of this private cloud. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud`
   late final pulumi.Output<String> name;
-
   /// Network configuration of the private cloud.
   late final pulumi.Output<NetworkConfigResponse> networkConfig;
-
   /// NSX appliance.
   late final pulumi.Output<NsxResponse> nsx;
-
   /// Required. The user-provided identifier of the private cloud to be created. This identifier must be unique among each `PrivateCloud` within the parent and becomes the final token in the name URI. The identifier must meet the following requirements: * Only contains 1-63 alphanumeric characters and hyphens * Begins with an alphabetical character * Ends with a non-hyphen character * Not formatted as a UUID * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
   late final pulumi.Output<String> privateCloudId;
   late final pulumi.Output<String> project;
-
   /// Optional. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
   late final pulumi.Output<String?> requestId;
-
   /// State of the resource. New values may be added to this enum when appropriate.
   late final pulumi.Output<String> state;
-
   /// Optional. Type of the private cloud. Defaults to STANDARD.
   late final pulumi.Output<String> type;
-
   /// System-generated unique identifier for the resource.
   late final pulumi.Output<String> uid;
-
   /// Last update time of this resource.
   late final pulumi.Output<String> updateTime;
-
   /// Vcenter appliance.
   late final pulumi.Output<VcenterResponse> vcenter;
 
@@ -68,57 +53,21 @@ class PrivateCloud extends pulumi.CustomResource {
     PrivateCloudArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'google-native:vmwareengine/v1:PrivateCloud',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'google-native:vmwareengine/v1:PrivateCloud',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
     description = registerOutput<String>('description');
     expireTime = registerOutput<String>('expireTime');
-    hcx = registerOutput<HcxResponse>(
-      'hcx',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HcxResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    hcx = registerOutput<HcxResponse>('hcx', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HcxResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
-    managementCluster = registerOutput<ManagementClusterResponse>(
-      'managementCluster',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ManagementClusterResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    managementCluster = registerOutput<ManagementClusterResponse>('managementCluster', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagementClusterResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    networkConfig = registerOutput<NetworkConfigResponse>(
-      'networkConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NetworkConfigResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    nsx = registerOutput<NsxResponse>(
-      'nsx',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NsxResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    networkConfig = registerOutput<NetworkConfigResponse>('networkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    nsx = registerOutput<NsxResponse>('nsx', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NsxResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     privateCloudId = registerOutput<String>('privateCloudId');
     project = registerOutput<String>('project');
     requestId = registerOutput<String?>('requestId');
@@ -126,15 +75,6 @@ class PrivateCloud extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
-    vcenter = registerOutput<VcenterResponse>(
-      'vcenter',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VcenterResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    vcenter = registerOutput<VcenterResponse>('vcenter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VcenterResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

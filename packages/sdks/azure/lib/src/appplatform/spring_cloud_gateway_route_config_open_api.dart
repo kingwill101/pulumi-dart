@@ -8,21 +8,20 @@ class SpringCloudGatewayRouteConfigOpenApi {
 
   /// Creates a new [SpringCloudGatewayRouteConfigOpenApi].
   /// [uri] The URI of OpenAPI specification.
-  SpringCloudGatewayRouteConfigOpenApi({this.uri});
+  SpringCloudGatewayRouteConfigOpenApi({
+    this.uri,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'uri': ?uri};
+    return <String, dynamic>{
+      'uri': ?uri,
+    };
   }
 
-  factory SpringCloudGatewayRouteConfigOpenApi.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SpringCloudGatewayRouteConfigOpenApi.fromMap(Map<String, dynamic> map) {
     return SpringCloudGatewayRouteConfigOpenApi(
-      uri: (() {
-        final guardedValue = map['uri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      uri: (() { final guardedValue = map['uri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -8,22 +8,16 @@ import 'container_http_get_response.dart';
 class ContainerProbeResponse {
   /// The execution command to probe
   final pulumi.Input<ContainerExecResponse>? exec;
-
   /// The failure threshold.
   final pulumi.Input<int>? failureThreshold;
-
   /// The Http Get settings to probe
   final pulumi.Input<ContainerHttpGetResponse>? httpGet;
-
   /// The initial delay seconds.
   final pulumi.Input<int>? initialDelaySeconds;
-
   /// The period seconds.
   final pulumi.Input<int>? periodSeconds;
-
   /// The success threshold.
   final pulumi.Input<int>? successThreshold;
-
   /// The timeout seconds.
   final pulumi.Input<int>? timeoutSeconds;
 
@@ -47,17 +41,9 @@ class ContainerProbeResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'exec':
-          ?pulumi.Input.mapOptionalInputValue<
-            ContainerExecResponse,
-            Map<String, dynamic>
-          >(exec, (value) => value.toMap()),
+      'exec': ?pulumi.Input.mapOptionalInputValue<ContainerExecResponse, Map<String, dynamic>>(exec, (value) => value.toMap()),
       'failureThreshold': ?failureThreshold,
-      'httpGet':
-          ?pulumi.Input.mapOptionalInputValue<
-            ContainerHttpGetResponse,
-            Map<String, dynamic>
-          >(httpGet, (value) => value.toMap()),
+      'httpGet': ?pulumi.Input.mapOptionalInputValue<ContainerHttpGetResponse, Map<String, dynamic>>(httpGet, (value) => value.toMap()),
       'initialDelaySeconds': ?initialDelaySeconds,
       'periodSeconds': ?periodSeconds,
       'successThreshold': ?successThreshold,
@@ -67,49 +53,14 @@ class ContainerProbeResponse {
 
   factory ContainerProbeResponse.fromMap(Map<String, dynamic> map) {
     return ContainerProbeResponse(
-      exec: (() {
-        final guardedValue = map['exec'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ContainerExecResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      failureThreshold: (() {
-        final guardedValue = map['failureThreshold'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      httpGet: (() {
-        final guardedValue = map['httpGet'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ContainerHttpGetResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      initialDelaySeconds: (() {
-        final guardedValue = map['initialDelaySeconds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      periodSeconds: (() {
-        final guardedValue = map['periodSeconds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      successThreshold: (() {
-        final guardedValue = map['successThreshold'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      timeoutSeconds: (() {
-        final guardedValue = map['timeoutSeconds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      exec: (() { final guardedValue = map['exec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ContainerExecResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      failureThreshold: (() { final guardedValue = map['failureThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      httpGet: (() { final guardedValue = map['httpGet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ContainerHttpGetResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      initialDelaySeconds: (() { final guardedValue = map['initialDelaySeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      periodSeconds: (() { final guardedValue = map['periodSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      successThreshold: (() { final guardedValue = map['successThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      timeoutSeconds: (() { final guardedValue = map['timeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

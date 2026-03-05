@@ -16,3 +16,4 @@ enum KafkaConfigurationIdentityType {
     throw ArgumentError('Unknown KafkaConfigurationIdentityType value: $value');
   }
 }
+

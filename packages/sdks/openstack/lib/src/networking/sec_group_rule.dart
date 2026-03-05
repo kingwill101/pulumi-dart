@@ -179,25 +179,20 @@ import 'sec_group_rule_state.dart';
 class SecGroupRule extends pulumi.CustomResource {
   /// A description of the rule. Changing this creates a new security group rule.
   late final pulumi.Output<String?> description;
-
   /// The direction of the rule, valid values are __ingress__
   /// or __egress__. Changing this creates a new security group rule.
   late final pulumi.Output<String> direction;
-
   /// The layer 3 protocol type, valid values are __IPv4__
   /// or __IPv6__. Changing this creates a new security group rule.
   late final pulumi.Output<String> ethertype;
-
   /// The higher part of the allowed port range, valid
   /// integer value needs to be between 1 and 65535. Changing this creates a new
   /// security group rule.
   late final pulumi.Output<int?> portRangeMax;
-
   /// The lower part of the allowed port range, valid
   /// integer value needs to be between 1 and 65535. Changing this creates a new
   /// security group rule.
   late final pulumi.Output<int?> portRangeMin;
-
   /// The layer 4 protocol type, valid values are
   /// following. Changing this creates a new security group rule. This is required
   /// if you want to specify a port range.
@@ -226,33 +221,27 @@ class SecGroupRule extends pulumi.CustomResource {
   /// * __vrrp__
   /// * __ipip__
   late final pulumi.Output<String?> protocol;
-
   /// The region in which to obtain the V2 networking client.
   /// A networking client is needed to create a port. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
   /// security group rule.
   late final pulumi.Output<String> region;
-
   /// The remote address group id, the value
   /// needs to be an OpenStack ID of an address group in the same tenant. Changing
   /// this creates a new security group rule. This argument is mutually exclusive
   /// with `remote_ip_prefix` and `remote_group_id`.
   late final pulumi.Output<String> remoteAddressGroupId;
-
   /// The remote group id, the value needs to be an
   /// Openstack ID of a security group in the same tenant. Changing this creates
   /// a new security group rule.
   late final pulumi.Output<String> remoteGroupId;
-
   /// The remote CIDR, the value needs to be a valid
   /// CIDR (i.e. 192.168.0.0/16). Changing this creates a new security group rule.
   late final pulumi.Output<String> remoteIpPrefix;
-
   /// The security group id the rule should belong
   /// to, the value needs to be an Openstack ID of a security group in the same
   /// tenant. Changing this creates a new security group rule.
   late final pulumi.Output<String> securityGroupId;
-
   /// The owner of the security group. Required if admin
   /// wants to create a port for another tenant. Changing this creates a new
   /// security group rule.
@@ -267,11 +256,11 @@ class SecGroupRule extends pulumi.CustomResource {
     SecGroupRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:networking/secGroupRule:SecGroupRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:networking/secGroupRule:SecGroupRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     direction = registerOutput<String>('direction');
     ethertype = registerOutput<String>('ethertype');
@@ -304,11 +293,11 @@ class SecGroupRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:networking/secGroupRule:SecGroupRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:networking/secGroupRule:SecGroupRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     direction = registerOutput<String>('direction');
     ethertype = registerOutput<String>('ethertype');

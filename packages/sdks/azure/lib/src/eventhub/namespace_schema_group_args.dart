@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NamespaceSchemaGroupArgs {
   /// Specifies the name of this schema group. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// Specifies the ID of the EventHub Namespace. Changing this forces a new resource to be created.
   final pulumi.Input<String> namespaceId;
-
   /// Specifies the compatibility of this schema group. Possible values are `None`, `Backward`, `Forward`. Changing this forces a new resource to be created.
   final pulumi.Input<String> schemaCompatibility;
-
   /// Specifies the Type of this schema group. Possible values are `Avro`, `Unknown` and `Json`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** When `schema_type` is specified as `Json`, `schema_compatibility` must be set to `None`.
@@ -44,16 +41,11 @@ class NamespaceSchemaGroupArgs {
 
   factory NamespaceSchemaGroupArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceSchemaGroupArgs(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       namespaceId: pulumi.Input.fromValue(map['namespaceId'] as String),
-      schemaCompatibility: pulumi.Input.fromValue(
-        map['schemaCompatibility'] as String,
-      ),
+      schemaCompatibility: pulumi.Input.fromValue(map['schemaCompatibility'] as String),
       schemaType: pulumi.Input.fromValue(map['schemaType'] as String),
     );
   }
 }
+

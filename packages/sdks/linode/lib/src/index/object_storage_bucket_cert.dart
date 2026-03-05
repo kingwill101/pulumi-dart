@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ObjectStorageBucketCert {
   /// The Base64 encoded and PEM formatted SSL certificate.
   final pulumi.Input<String> certificate;
-
   /// The private key associated with the TLS/SSL certificate.
   final pulumi.Input<String> privateKey;
 
@@ -31,3 +30,4 @@ class ObjectStorageBucketCert {
     );
   }
 }
+

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KeyspaceReplicationSpecification {
   /// Replication regions. If `replication_strategy` is `MULTI_REGION`, `region_list` requires the current Region and at least one additional AWS Region where the keyspace is going to be replicated in.
   final pulumi.Input<List<String>>? regionLists;
-
   /// Replication strategy. Valid values: `SINGLE_REGION` and `MULTI_REGION`.
   final pulumi.Input<String>? replicationStrategy;
 
@@ -26,16 +25,9 @@ class KeyspaceReplicationSpecification {
 
   factory KeyspaceReplicationSpecification.fromMap(Map<String, dynamic> map) {
     return KeyspaceReplicationSpecification(
-      regionLists: (() {
-        final guardedValue = map['regionLists'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      replicationStrategy: (() {
-        final guardedValue = map['replicationStrategy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      regionLists: (() { final guardedValue = map['regionLists']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      replicationStrategy: (() { final guardedValue = map['replicationStrategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

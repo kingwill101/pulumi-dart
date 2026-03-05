@@ -26,50 +26,20 @@ class InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItemResp
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'errorInfo':
-          pulumi.Input.mapInputValue<ErrorInfoResponse, Map<String, dynamic>>(
-            errorInfo,
-            (value) => value.toMap(),
-          ),
-      'help': pulumi.Input.mapInputValue<HelpResponse, Map<String, dynamic>>(
-        help,
-        (value) => value.toMap(),
-      ),
-      'localizedMessage':
-          pulumi.Input.mapInputValue<
-            LocalizedMessageResponse,
-            Map<String, dynamic>
-          >(localizedMessage, (value) => value.toMap()),
-      'quotaInfo':
-          pulumi.Input.mapInputValue<
-            QuotaExceededInfoResponse,
-            Map<String, dynamic>
-          >(quotaInfo, (value) => value.toMap()),
+      'errorInfo': pulumi.Input.mapInputValue<ErrorInfoResponse, Map<String, dynamic>>(errorInfo, (value) => value.toMap()),
+      'help': pulumi.Input.mapInputValue<HelpResponse, Map<String, dynamic>>(help, (value) => value.toMap()),
+      'localizedMessage': pulumi.Input.mapInputValue<LocalizedMessageResponse, Map<String, dynamic>>(localizedMessage, (value) => value.toMap()),
+      'quotaInfo': pulumi.Input.mapInputValue<QuotaExceededInfoResponse, Map<String, dynamic>>(quotaInfo, (value) => value.toMap()),
     };
   }
 
-  factory InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItemResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItemResponse.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItemResponse(
-      errorInfo: pulumi.Input.fromValue(
-        ErrorInfoResponse.fromMap(
-          (map['errorInfo']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      help: pulumi.Input.fromValue(
-        HelpResponse.fromMap((map['help']! as Map).cast<String, dynamic>()),
-      ),
-      localizedMessage: pulumi.Input.fromValue(
-        LocalizedMessageResponse.fromMap(
-          (map['localizedMessage']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      quotaInfo: pulumi.Input.fromValue(
-        QuotaExceededInfoResponse.fromMap(
-          (map['quotaInfo']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      errorInfo: pulumi.Input.fromValue(ErrorInfoResponse.fromMap((map['errorInfo']! as Map).cast<String, dynamic>())),
+      help: pulumi.Input.fromValue(HelpResponse.fromMap((map['help']! as Map).cast<String, dynamic>())),
+      localizedMessage: pulumi.Input.fromValue(LocalizedMessageResponse.fromMap((map['localizedMessage']! as Map).cast<String, dynamic>())),
+      quotaInfo: pulumi.Input.fromValue(QuotaExceededInfoResponse.fromMap((map['quotaInfo']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

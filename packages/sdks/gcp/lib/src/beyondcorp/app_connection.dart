@@ -592,42 +592,31 @@ import 'app_connection_state.dart';
 class AppConnection extends pulumi.CustomResource {
   /// Address of the remote application endpoint for the BeyondCorp AppConnection.
   /// Structure is documented below.
-  late final pulumi.Output<AppConnectionApplicationEndpoint>
-  applicationEndpoint;
-
+  late final pulumi.Output<AppConnectionApplicationEndpoint> applicationEndpoint;
   /// List of AppConnectors that are authorised to be associated with this AppConnection
   late final pulumi.Output<List<String>?> connectors;
-
   /// An arbitrary user-provided name for the AppConnection.
   late final pulumi.Output<String?> displayName;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Gateway used by the AppConnection.
   /// Structure is documented below.
   late final pulumi.Output<AppConnectionGateway> gateway;
-
   /// Resource labels to represent user provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// ID of the AppConnection.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// The region of the AppConnection.
   late final pulumi.Output<String?> region;
-
   /// The type of network connectivity used by the AppConnection. Refer
   /// to https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
   /// for a list of possible values.
@@ -642,34 +631,16 @@ class AppConnection extends pulumi.CustomResource {
     AppConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:beyondcorp/appConnection:AppConnection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    applicationEndpoint = registerOutput<AppConnectionApplicationEndpoint>(
-      'applicationEndpoint',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AppConnectionApplicationEndpoint.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:beyondcorp/appConnection:AppConnection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    applicationEndpoint = registerOutput<AppConnectionApplicationEndpoint>('applicationEndpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppConnectionApplicationEndpoint.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     connectors = registerOutput<List<String>?>('connectors');
     displayName = registerOutput<String?>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    gateway = registerOutput<AppConnectionGateway>(
-      'gateway',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AppConnectionGateway.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    gateway = registerOutput<AppConnectionGateway>('gateway', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppConnectionGateway.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -696,34 +667,16 @@ class AppConnection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:beyondcorp/appConnection:AppConnection',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    applicationEndpoint = registerOutput<AppConnectionApplicationEndpoint>(
-      'applicationEndpoint',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AppConnectionApplicationEndpoint.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:beyondcorp/appConnection:AppConnection',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    applicationEndpoint = registerOutput<AppConnectionApplicationEndpoint>('applicationEndpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppConnectionApplicationEndpoint.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     connectors = registerOutput<List<String>?>('connectors');
     displayName = registerOutput<String?>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    gateway = registerOutput<AppConnectionGateway>(
-      'gateway',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AppConnectionGateway.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    gateway = registerOutput<AppConnectionGateway>('gateway', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppConnectionGateway.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

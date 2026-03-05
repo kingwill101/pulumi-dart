@@ -168,15 +168,12 @@ class AclConfig extends pulumi.CustomResource {
   /// Identity provider config.
   /// Structure is documented below.
   late final pulumi.Output<AclConfigIdpConfig?> idpConfig;
-
   /// The geographic location where the data store should reside. The value can
   /// only be one of "global", "us" and "eu".
   late final pulumi.Output<String> location;
-
   /// The unique full resource name of the aclConfig. Values are of the format
   /// `projects/{project}/locations/{location}/aclConfig`.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -190,21 +187,12 @@ class AclConfig extends pulumi.CustomResource {
     AclConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:discoveryengine/aclConfig:AclConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    idpConfig = registerOutput<AclConfigIdpConfig?>(
-      'idpConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AclConfigIdpConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:discoveryengine/aclConfig:AclConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    idpConfig = registerOutput<AclConfigIdpConfig?>('idpConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AclConfigIdpConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -228,21 +216,12 @@ class AclConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:discoveryengine/aclConfig:AclConfig',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    idpConfig = registerOutput<AclConfigIdpConfig?>(
-      'idpConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AclConfigIdpConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:discoveryengine/aclConfig:AclConfig',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    idpConfig = registerOutput<AclConfigIdpConfig?>('idpConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AclConfigIdpConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

@@ -1,17 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getGroups.
 class GetGroupsResult {
   final String displayNamePrefix;
-
   /// The display names of the groups.
   final List<String> displayNames;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final bool? ignoreMissing;
   final bool mailEnabled;
-
   /// The object IDs of the groups.
   final List<String> objectIds;
   final bool? returnAll;
@@ -55,19 +53,12 @@ class GetGroupsResult {
       displayNamePrefix: map['displayNamePrefix'] as String,
       displayNames: (map['displayNames'] as List).cast<String>(),
       id: map['id'] as String,
-      ignoreMissing: (() {
-        final guardedValue = map['ignoreMissing'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      ignoreMissing: (() { final guardedValue = map['ignoreMissing']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       mailEnabled: map['mailEnabled'] as bool,
       objectIds: (map['objectIds'] as List).cast<String>(),
-      returnAll: (() {
-        final guardedValue = map['returnAll'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      returnAll: (() { final guardedValue = map['returnAll']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       securityEnabled: map['securityEnabled'] as bool,
     );
   }
 }
+

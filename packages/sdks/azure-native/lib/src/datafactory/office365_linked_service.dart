@@ -9,46 +9,31 @@ import 'parameter_specification.dart';
 class Office365LinkedService {
   /// List of tags that can be used for describing the linked service.
   final pulumi.Input<List<dynamic>>? annotations;
-
   /// The integration runtime reference.
   final pulumi.Input<IntegrationRuntimeReference>? connectVia;
-
   /// Linked service description.
   final pulumi.Input<String>? description;
-
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
   final pulumi.Input<String>? encryptedCredential;
-
   /// Azure tenant ID to which the Office 365 account belongs. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> office365TenantId;
-
   /// Parameters for linked service.
   final pulumi.Input<Map<String, ParameterSpecification>>? parameters;
-
   /// The service principal credential type for authentication.'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. If not specified, 'ServicePrincipalKey' is in use. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? servicePrincipalCredentialType;
-
   /// Specify the base64 encoded certificate of your application registered in Azure Active Directory. Type: string (or Expression with resultType string).
-  final pulumi.Input<AzureKeyVaultSecretReference>?
-  servicePrincipalEmbeddedCert;
-
+  final pulumi.Input<AzureKeyVaultSecretReference>? servicePrincipalEmbeddedCert;
   /// Specify the password of your certificate if your certificate has a password and you are using AadServicePrincipal authentication. Type: string (or Expression with resultType string).
-  final pulumi.Input<AzureKeyVaultSecretReference>?
-  servicePrincipalEmbeddedCertPassword;
-
+  final pulumi.Input<AzureKeyVaultSecretReference>? servicePrincipalEmbeddedCertPassword;
   /// Specify the application's client ID. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> servicePrincipalId;
-
   /// Specify the application's key.
   final pulumi.Input<AzureKeyVaultSecretReference> servicePrincipalKey;
-
   /// Specify the tenant information under which your Azure AD web application resides. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> servicePrincipalTenantId;
-
   /// Type of linked service.
   /// Expected value is 'Office365'.
   final pulumi.Input<String> type;
-
   /// Version of the linked service.
   final pulumi.Input<String>? version;
 
@@ -87,43 +72,16 @@ class Office365LinkedService {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'annotations': ?annotations,
-      'connectVia':
-          ?pulumi.Input.mapOptionalInputValue<
-            IntegrationRuntimeReference,
-            Map<String, dynamic>
-          >(connectVia, (value) => value.toMap()),
+      'connectVia': ?pulumi.Input.mapOptionalInputValue<IntegrationRuntimeReference, Map<String, dynamic>>(connectVia, (value) => value.toMap()),
       'description': ?description,
       'encryptedCredential': ?encryptedCredential,
       'office365TenantId': office365TenantId,
-      'parameters':
-          ?pulumi.Input.mapOptionalInputValue<
-            Map<String, ParameterSpecification>,
-            Map<String, Map<String, dynamic>>
-          >(
-            parameters,
-            (value) =>
-                pulumi.Input.encodeMapValues<
-                  ParameterSpecification,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecification>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(value, (value) => value.toMap())),
       'servicePrincipalCredentialType': ?servicePrincipalCredentialType,
-      'servicePrincipalEmbeddedCert':
-          ?pulumi.Input.mapOptionalInputValue<
-            AzureKeyVaultSecretReference,
-            Map<String, dynamic>
-          >(servicePrincipalEmbeddedCert, (value) => value.toMap()),
-      'servicePrincipalEmbeddedCertPassword':
-          ?pulumi.Input.mapOptionalInputValue<
-            AzureKeyVaultSecretReference,
-            Map<String, dynamic>
-          >(servicePrincipalEmbeddedCertPassword, (value) => value.toMap()),
+      'servicePrincipalEmbeddedCert': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(servicePrincipalEmbeddedCert, (value) => value.toMap()),
+      'servicePrincipalEmbeddedCertPassword': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(servicePrincipalEmbeddedCertPassword, (value) => value.toMap()),
       'servicePrincipalId': servicePrincipalId,
-      'servicePrincipalKey':
-          pulumi.Input.mapInputValue<
-            AzureKeyVaultSecretReference,
-            Map<String, dynamic>
-          >(servicePrincipalKey, (value) => value.toMap()),
+      'servicePrincipalKey': pulumi.Input.mapInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(servicePrincipalKey, (value) => value.toMap()),
       'servicePrincipalTenantId': servicePrincipalTenantId,
       'type': type,
       'version': ?version,
@@ -132,81 +90,21 @@ class Office365LinkedService {
 
   factory Office365LinkedService.fromMap(Map<String, dynamic> map) {
     return Office365LinkedService(
-      annotations: (() {
-        final guardedValue = map['annotations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>());
-      })(),
-      connectVia: (() {
-        final guardedValue = map['connectVia'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          IntegrationRuntimeReference.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      encryptedCredential: (() {
-        final guardedValue = map['encryptedCredential'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
+      connectVia: (() { final guardedValue = map['connectVia']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IntegrationRuntimeReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      encryptedCredential: (() { final guardedValue = map['encryptedCredential']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       office365TenantId: pulumi.Input.fromValue(map['office365TenantId']),
-      parameters: (() {
-        final guardedValue = map['parameters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeMapValues<ParameterSpecification>(
-            guardedValue,
-            (value) => ParameterSpecification.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      servicePrincipalCredentialType: (() {
-        final guardedValue = map['servicePrincipalCredentialType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      servicePrincipalEmbeddedCert: (() {
-        final guardedValue = map['servicePrincipalEmbeddedCert'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AzureKeyVaultSecretReference.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      servicePrincipalEmbeddedCertPassword: (() {
-        final guardedValue = map['servicePrincipalEmbeddedCertPassword'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AzureKeyVaultSecretReference.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<ParameterSpecification>(guardedValue, (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      servicePrincipalCredentialType: (() { final guardedValue = map['servicePrincipalCredentialType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      servicePrincipalEmbeddedCert: (() { final guardedValue = map['servicePrincipalEmbeddedCert']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureKeyVaultSecretReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      servicePrincipalEmbeddedCertPassword: (() { final guardedValue = map['servicePrincipalEmbeddedCertPassword']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureKeyVaultSecretReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       servicePrincipalId: pulumi.Input.fromValue(map['servicePrincipalId']),
-      servicePrincipalKey: pulumi.Input.fromValue(
-        AzureKeyVaultSecretReference.fromMap(
-          (map['servicePrincipalKey']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      servicePrincipalTenantId: pulumi.Input.fromValue(
-        map['servicePrincipalTenantId'],
-      ),
+      servicePrincipalKey: pulumi.Input.fromValue(AzureKeyVaultSecretReference.fromMap((map['servicePrincipalKey']! as Map).cast<String, dynamic>())),
+      servicePrincipalTenantId: pulumi.Input.fromValue(map['servicePrincipalTenantId']),
       type: pulumi.Input.fromValue(map['type'] as String),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -1,41 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getServiceBusNamespace.
 class GetServiceBusNamespaceResult {
   /// The capacity of the ServiceBus Namespace.
   final int capacity;
-
   /// The primary connection string for the authorization
   /// rule `RootManageSharedAccessKey`.
   final String defaultPrimaryConnectionString;
-
   /// The primary access key for the authorization rule `RootManageSharedAccessKey`.
   final String defaultPrimaryKey;
-
   /// The secondary connection string for the
   /// authorization rule `RootManageSharedAccessKey`.
   final String defaultSecondaryConnectionString;
-
   /// The secondary access key for the authorization rule `RootManageSharedAccessKey`.
   final String defaultSecondaryKey;
-
   /// The URL to access the ServiceBus Namespace.
   final String endpoint;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The location of the Resource Group in which the ServiceBus Namespace exists.
   final String location;
   final String name;
-
   /// The messaging partitions of the ServiceBus Namespace.
   final int premiumMessagingPartitions;
   final String resourceGroupName;
-
   /// The Tier used for the ServiceBus Namespace.
   final String sku;
-
   /// A mapping of tags assigned to the resource.
   final Map<String, String> tags;
 
@@ -90,11 +81,9 @@ class GetServiceBusNamespaceResult {
   factory GetServiceBusNamespaceResult.fromMap(Map<String, dynamic> map) {
     return GetServiceBusNamespaceResult(
       capacity: map['capacity'] as int,
-      defaultPrimaryConnectionString:
-          map['defaultPrimaryConnectionString'] as String,
+      defaultPrimaryConnectionString: map['defaultPrimaryConnectionString'] as String,
       defaultPrimaryKey: map['defaultPrimaryKey'] as String,
-      defaultSecondaryConnectionString:
-          map['defaultSecondaryConnectionString'] as String,
+      defaultSecondaryConnectionString: map['defaultSecondaryConnectionString'] as String,
       defaultSecondaryKey: map['defaultSecondaryKey'] as String,
       endpoint: map['endpoint'] as String,
       id: map['id'] as String,
@@ -107,3 +96,4 @@ class GetServiceBusNamespaceResult {
     );
   }
 }
+

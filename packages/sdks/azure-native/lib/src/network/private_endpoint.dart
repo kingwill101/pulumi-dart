@@ -664,53 +664,35 @@ import 'subnet_response.dart';
 /// ```
 class PrivateEndpoint extends pulumi.CustomResource {
   /// Application security groups in which the private endpoint IP configuration is included.
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  applicationSecurityGroups;
-
+  late final pulumi.Output<List<Map<String, dynamic>>?> applicationSecurityGroups;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// An array of custom dns configurations.
   late final pulumi.Output<List<Map<String, dynamic>>?> customDnsConfigs;
-
   /// The custom name of the network interface attached to the private endpoint.
   late final pulumi.Output<String?> customNetworkInterfaceName;
-
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
-
   /// The extended location of the load balancer.
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
-
   /// A list of IP configurations of the private endpoint. This will be used to map to the First Party Service's endpoints.
   late final pulumi.Output<List<Map<String, dynamic>>?> ipConfigurations;
-
   /// Resource location.
   late final pulumi.Output<String?> location;
-
   /// A grouping of information about the connection to the remote resource. Used when the network admin does not have access to approve connections to the remote resource.
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  manualPrivateLinkServiceConnections;
-
+  late final pulumi.Output<List<Map<String, dynamic>>?> manualPrivateLinkServiceConnections;
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// An array of references to the network interfaces created for this private endpoint.
   late final pulumi.Output<List<Map<String, dynamic>>> networkInterfaces;
-
   /// A grouping of information about the connection to the remote resource.
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  privateLinkServiceConnections;
-
+  late final pulumi.Output<List<Map<String, dynamic>>?> privateLinkServiceConnections;
   /// The provisioning state of the private endpoint resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The ID of the subnet from which the private IP will be allocated.
   late final pulumi.Output<SubnetResponse?> subnet;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -723,58 +705,25 @@ class PrivateEndpoint extends pulumi.CustomResource {
     PrivateEndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:network:PrivateEndpoint',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    applicationSecurityGroups = registerOutput<List<Map<String, dynamic>>?>(
-      'applicationSecurityGroups',
-    );
+          'azure-native:network:PrivateEndpoint',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    applicationSecurityGroups = registerOutput<List<Map<String, dynamic>>?>('applicationSecurityGroups');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    customDnsConfigs = registerOutput<List<Map<String, dynamic>>?>(
-      'customDnsConfigs',
-    );
-    customNetworkInterfaceName = registerOutput<String?>(
-      'customNetworkInterfaceName',
-    );
+    customDnsConfigs = registerOutput<List<Map<String, dynamic>>?>('customDnsConfigs');
+    customNetworkInterfaceName = registerOutput<String?>('customNetworkInterfaceName');
     etag = registerOutput<String>('etag');
-    extendedLocation = registerOutput<ExtendedLocationResponse?>(
-      'extendedLocation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExtendedLocationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    ipConfigurations = registerOutput<List<Map<String, dynamic>>?>(
-      'ipConfigurations',
-    );
+    extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ipConfigurations = registerOutput<List<Map<String, dynamic>>?>('ipConfigurations');
     location = registerOutput<String?>('location');
-    manualPrivateLinkServiceConnections =
-        registerOutput<List<Map<String, dynamic>>?>(
-          'manualPrivateLinkServiceConnections',
-        );
+    manualPrivateLinkServiceConnections = registerOutput<List<Map<String, dynamic>>?>('manualPrivateLinkServiceConnections');
     this.name = registerOutput<String>('name');
-    networkInterfaces = registerOutput<List<Map<String, dynamic>>>(
-      'networkInterfaces',
-    );
-    privateLinkServiceConnections = registerOutput<List<Map<String, dynamic>>?>(
-      'privateLinkServiceConnections',
-    );
+    networkInterfaces = registerOutput<List<Map<String, dynamic>>>('networkInterfaces');
+    privateLinkServiceConnections = registerOutput<List<Map<String, dynamic>>?>('privateLinkServiceConnections');
     provisioningState = registerOutput<String>('provisioningState');
-    subnet = registerOutput<SubnetResponse?>(
-      'subnet',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SubnetResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    subnet = registerOutput<SubnetResponse?>('subnet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubnetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

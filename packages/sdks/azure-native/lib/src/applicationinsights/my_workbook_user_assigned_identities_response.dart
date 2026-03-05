@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MyWorkbookUserAssignedIdentitiesResponse {
   /// The principal ID of resource identity.
   final pulumi.Input<String> principalId;
-
   /// The tenant ID of resource.
   final pulumi.Input<String> tenantId;
 
@@ -19,15 +18,17 @@ class MyWorkbookUserAssignedIdentitiesResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'principalId': principalId, 'tenantId': tenantId};
+    return <String, dynamic>{
+      'principalId': principalId,
+      'tenantId': tenantId,
+    };
   }
 
-  factory MyWorkbookUserAssignedIdentitiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MyWorkbookUserAssignedIdentitiesResponse.fromMap(Map<String, dynamic> map) {
     return MyWorkbookUserAssignedIdentitiesResponse(
       principalId: pulumi.Input.fromValue(map['principalId'] as String),
       tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
     );
   }
 }
+

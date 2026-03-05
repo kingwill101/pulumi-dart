@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNamespaceDeviceArgs {
   /// The name of the device.
   final pulumi.Input<String> deviceName;
-
   /// The name of the namespace.
   final pulumi.Input<String> namespaceName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -38,9 +36,8 @@ class GetNamespaceDeviceArgs {
     return GetNamespaceDeviceArgs(
       deviceName: pulumi.Input.fromValue(map['deviceName'] as String),
       namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

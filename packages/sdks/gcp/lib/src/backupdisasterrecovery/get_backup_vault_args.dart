@@ -11,10 +11,8 @@ class GetBackupVaultArgs {
   ///
   /// - - -
   final pulumi.Input<String> backupVaultId;
-
   /// The location in which the Backup Vault resource belongs.
   final pulumi.Input<String> location;
-
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -41,11 +39,8 @@ class GetBackupVaultArgs {
     return GetBackupVaultArgs(
       backupVaultId: pulumi.Input.fromValue(map['backupVaultId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

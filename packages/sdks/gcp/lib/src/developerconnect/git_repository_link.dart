@@ -419,60 +419,45 @@ class GitRepositoryLink extends pulumi.CustomResource {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
-
   /// Required. Git Clone URI.
   late final pulumi.Output<String> cloneUri;
-
   /// Output only. [Output only] Create timestamp
   late final pulumi.Output<String> createTime;
-
   /// Output only. [Output only] Delete timestamp
   late final pulumi.Output<String> deleteTime;
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Optional. This checksum is computed by the server based on the value of other
   /// fields, and may be sent on update and delete requests to ensure the
   /// client has an up-to-date value before proceeding.
   late final pulumi.Output<String?> etag;
-
   /// Required. The ID to use for the repository, which will become the final component of
   /// the repository's resource name. This ID should be unique in the connection.
   /// Allows alphanumeric characters and any of -._~%!$&'()*+,;=@.
   late final pulumi.Output<String> gitRepositoryLinkId;
-
   /// Optional. Labels as key value pairs
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
   late final pulumi.Output<String> location;
-
   /// Identifier. Resource name of the repository, in the format
   /// `projects/*/locations/*/connections/*/gitRepositoryLinks/*`.
   late final pulumi.Output<String> name;
-
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
   late final pulumi.Output<String> parentConnection;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// Output only. Set to true when the connection is being set up or updated in the
   /// background.
   late final pulumi.Output<bool> reconciling;
-
   /// Output only. A system-assigned unique identifier for a the GitRepositoryLink.
   late final pulumi.Output<String> uid;
-
   /// Output only. [Output only] Update timestamp
   late final pulumi.Output<String> updateTime;
 
@@ -485,18 +470,16 @@ class GitRepositoryLink extends pulumi.CustomResource {
     GitRepositoryLinkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:developerconnect/gitRepositoryLink:GitRepositoryLink',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:developerconnect/gitRepositoryLink:GitRepositoryLink',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     annotations = registerOutput<Map<String, String>?>('annotations');
     cloneUri = registerOutput<String>('cloneUri');
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
-    effectiveAnnotations = registerOutput<Map<String, String>>(
-      'effectiveAnnotations',
-    );
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     etag = registerOutput<String?>('etag');
     gitRepositoryLinkId = registerOutput<String>('gitRepositoryLinkId');
@@ -529,18 +512,16 @@ class GitRepositoryLink extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:developerconnect/gitRepositoryLink:GitRepositoryLink',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:developerconnect/gitRepositoryLink:GitRepositoryLink',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     annotations = registerOutput<Map<String, String>?>('annotations');
     cloneUri = registerOutput<String>('cloneUri');
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
-    effectiveAnnotations = registerOutput<Map<String, String>>(
-      'effectiveAnnotations',
-    );
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     etag = registerOutput<String?>('etag');
     gitRepositoryLinkId = registerOutput<String>('gitRepositoryLinkId');

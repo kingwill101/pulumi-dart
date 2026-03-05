@@ -9,19 +9,20 @@ class NatGatewayArmReference {
 
   /// Creates a new [NatGatewayArmReference].
   /// [resourceId] The ARM ID for a Network Security Group.
-  NatGatewayArmReference({this.resourceId});
+  NatGatewayArmReference({
+    this.resourceId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'resourceId': ?resourceId};
+    return <String, dynamic>{
+      'resourceId': ?resourceId,
+    };
   }
 
   factory NatGatewayArmReference.fromMap(Map<String, dynamic> map) {
     return NatGatewayArmReference(
-      resourceId: (() {
-        final guardedValue = map['resourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

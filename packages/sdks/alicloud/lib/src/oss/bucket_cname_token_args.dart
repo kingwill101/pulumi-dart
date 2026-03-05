@@ -9,17 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketCnameTokenArgs {
   /// The name of the bucket
   final pulumi.Input<String> bucket;
-
   /// The custom domain
   final pulumi.Input<String> domain;
 
   /// Creates a new [BucketCnameTokenArgs].
   /// [bucket] The name of the bucket
   /// [domain] The custom domain
-  BucketCnameTokenArgs({required this.bucket, required this.domain});
+  BucketCnameTokenArgs({
+    required this.bucket,
+    required this.domain,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'bucket': bucket, 'domain': domain};
+    return <String, dynamic>{
+      'bucket': bucket,
+      'domain': domain,
+    };
   }
 
   factory BucketCnameTokenArgs.fromMap(Map<String, dynamic> map) {
@@ -29,3 +34,4 @@ class BucketCnameTokenArgs {
     );
   }
 }
+

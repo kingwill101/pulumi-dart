@@ -13,14 +13,15 @@ class GetV3FunctionsFunctionCustomContainerConfigAccelerationInfo {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'status': status};
+    return <String, dynamic>{
+      'status': status,
+    };
   }
 
-  factory GetV3FunctionsFunctionCustomContainerConfigAccelerationInfo.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetV3FunctionsFunctionCustomContainerConfigAccelerationInfo.fromMap(Map<String, dynamic> map) {
     return GetV3FunctionsFunctionCustomContainerConfigAccelerationInfo(
       status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
+

@@ -168,10 +168,8 @@ import 'application_access_point_state.dart';
 class ApplicationAccessPoint extends pulumi.CustomResource {
   /// Application Access Point Name.
   late final pulumi.Output<String> applicationAccessPointName;
-
   /// Description .
   late final pulumi.Output<String?> description;
-
   /// The policies that have bound to the Application Access Point (AAP).
   late final pulumi.Output<List<String>> policies;
 
@@ -184,14 +182,12 @@ class ApplicationAccessPoint extends pulumi.CustomResource {
     ApplicationAccessPointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:kms/applicationAccessPoint:ApplicationAccessPoint',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    applicationAccessPointName = registerOutput<String>(
-      'applicationAccessPointName',
-    );
+          'alicloud:kms/applicationAccessPoint:ApplicationAccessPoint',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    applicationAccessPointName = registerOutput<String>('applicationAccessPointName');
     description = registerOutput<String?>('description');
     policies = registerOutput<List<String>>('policies');
   }
@@ -214,14 +210,12 @@ class ApplicationAccessPoint extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:kms/applicationAccessPoint:ApplicationAccessPoint',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    applicationAccessPointName = registerOutput<String>(
-      'applicationAccessPointName',
-    );
+          'alicloud:kms/applicationAccessPoint:ApplicationAccessPoint',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    applicationAccessPointName = registerOutput<String>('applicationAccessPointName');
     description = registerOutput<String?>('description');
     policies = registerOutput<List<String>>('policies');
   }

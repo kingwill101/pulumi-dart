@@ -7,11 +7,9 @@ import 'get_api_keys_item.dart';
 class GetApiKeysResult {
   /// Amazon Web Services Marketplace customer identifier, when integrating with the Amazon Web Services SaaS Marketplace.
   final String? customerId;
-
   /// ID of the API Key.
   final String id;
   final bool? includeValues;
-
   /// List of objects containing API Key information. See below.
   final List<GetApiKeysItem> items;
   final String region;
@@ -35,33 +33,19 @@ class GetApiKeysResult {
       'customerId': ?customerId,
       'id': id,
       'includeValues': ?includeValues,
-      'items': pulumi.Input.encodeList<GetApiKeysItem, Map<String, dynamic>>(
-        items,
-        (value) => value.toMap(),
-      ),
+      'items': pulumi.Input.encodeList<GetApiKeysItem, Map<String, dynamic>>(items, (value) => value.toMap()),
       'region': region,
     };
   }
 
   factory GetApiKeysResult.fromMap(Map<String, dynamic> map) {
     return GetApiKeysResult(
-      customerId: (() {
-        final guardedValue = map['customerId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      customerId: (() { final guardedValue = map['customerId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
-      includeValues: (() {
-        final guardedValue = map['includeValues'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      items: pulumi.Input.decodeList<GetApiKeysItem>(
-        map['items']!,
-        (value) =>
-            GetApiKeysItem.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      includeValues: (() { final guardedValue = map['includeValues']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      items: pulumi.Input.decodeList<GetApiKeysItem>(map['items']!, (value) => GetApiKeysItem.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
     );
   }
 }
+

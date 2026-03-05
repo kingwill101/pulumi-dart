@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketMetadataConfigurationMetadataConfigurationInventoryTableConfigurationEncryptionConfiguration {
   /// KMS key ARN when `sse_algorithm` is `aws:kms`.
   final pulumi.Input<String>? kmsKeyArn;
-
   /// Encryption type for the metadata table. Valid values: `aws:kms`, `AES256`.
   final pulumi.Input<String> sseAlgorithm;
 
@@ -24,16 +23,11 @@ class BucketMetadataConfigurationMetadataConfigurationInventoryTableConfiguratio
     };
   }
 
-  factory BucketMetadataConfigurationMetadataConfigurationInventoryTableConfigurationEncryptionConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BucketMetadataConfigurationMetadataConfigurationInventoryTableConfigurationEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return BucketMetadataConfigurationMetadataConfigurationInventoryTableConfigurationEncryptionConfiguration(
-      kmsKeyArn: (() {
-        final guardedValue = map['kmsKeyArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      kmsKeyArn: (() { final guardedValue = map['kmsKeyArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sseAlgorithm: pulumi.Input.fromValue(map['sseAlgorithm'] as String),
     );
   }
 }
+

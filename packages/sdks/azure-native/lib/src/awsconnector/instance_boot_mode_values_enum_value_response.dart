@@ -9,21 +9,20 @@ class InstanceBootModeValuesEnumValueResponse {
 
   /// Creates a new [InstanceBootModeValuesEnumValueResponse].
   /// [value] Property value
-  InstanceBootModeValuesEnumValueResponse({this.value});
+  InstanceBootModeValuesEnumValueResponse({
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': ?value};
+    return <String, dynamic>{
+      'value': ?value,
+    };
   }
 
-  factory InstanceBootModeValuesEnumValueResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InstanceBootModeValuesEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return InstanceBootModeValuesEnumValueResponse(
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

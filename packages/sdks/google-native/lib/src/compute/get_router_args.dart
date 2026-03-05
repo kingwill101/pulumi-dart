@@ -15,7 +15,11 @@ class GetRouterArgs {
   /// [project] Optional.
   /// [region] Required.
   /// [router] Required.
-  GetRouterArgs({this.project, required this.region, required this.router});
+  GetRouterArgs({
+    this.project,
+    required this.region,
+    required this.router,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,13 +31,10 @@ class GetRouterArgs {
 
   factory GetRouterArgs.fromMap(Map<String, dynamic> map) {
     return GetRouterArgs(
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: pulumi.Input.fromValue(map['region'] as String),
       router: pulumi.Input.fromValue(map['router'] as String),
     );
   }
 }
+

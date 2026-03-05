@@ -8,10 +8,14 @@ class MarketplaceSubscription {
 
   /// Creates a new [MarketplaceSubscription].
   /// [modelId] [Required] Target Marketplace Model ID to create a Marketplace Subscription for.
-  MarketplaceSubscription({required this.modelId});
+  MarketplaceSubscription({
+    required this.modelId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'modelId': modelId};
+    return <String, dynamic>{
+      'modelId': modelId,
+    };
   }
 
   factory MarketplaceSubscription.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class MarketplaceSubscription {
     );
   }
 }
+

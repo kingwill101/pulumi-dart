@@ -337,43 +337,30 @@ import 'oci_link_account_state.dart';
 class OciLinkAccount extends pulumi.CustomResource {
   /// New Relic account to operate on. Overrides the provider-level `account_id`. If omitted, use the provider default or `NEW_RELIC_ACCOUNT_ID`.
   late final pulumi.Output<String> accountId;
-
   /// OCI compartment OCID representing (or containing) the monitored resources/newrelic compartment.
   late final pulumi.Output<String> compartmentOcid;
-
   /// Vault secret OCID containing an ingest secret.
   late final pulumi.Output<String?> ingestVaultOcid;
-
   /// Specifies the type of integration, such as metrics, logs, or a combination of logs and metrics (e.g., `METRICS`, `LOGS`, `METRICS,LOGS`).
   late final pulumi.Output<String?> instrumentationType;
-
   /// The Logging stack identifier for the OCI account.
   late final pulumi.Output<String?> loggingStackOcid;
-
   /// Metric stack OCID (ignored on create, applied on update).
   late final pulumi.Output<String?> metricStackOcid;
-
   /// Display name for the linked account.
   late final pulumi.Output<String> name;
-
   /// OCI Identity Domain (IDCS) OAuth2 client ID used for workload identity federation.
   late final pulumi.Output<String> ociClientId;
-
   /// OAuth2 client secret. Not displayed in plans or state outputs.
   late final pulumi.Output<String> ociClientSecret;
-
   /// Base URL of the OCI Identity Domain (e.g. `https://idcs-&lt;hash&gt;.identity.oraclecloud.com`).
   late final pulumi.Output<String> ociDomainUrl;
-
   /// Home region of the tenancy (e.g. `us-ashburn-1`).
   late final pulumi.Output<String> ociHomeRegion;
-
   /// OCI region for the linkage (ignored on create, applied on update).
   late final pulumi.Output<String?> ociRegion;
-
   /// OCI tenancy OCID (root tenancy). Changing forces a new linked account.
   late final pulumi.Output<String> tenantId;
-
   /// Vault secret OCID containing a user or auxiliary secret.
   late final pulumi.Output<String?> userVaultOcid;
 
@@ -386,11 +373,11 @@ class OciLinkAccount extends pulumi.CustomResource {
     OciLinkAccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:cloud/ociLinkAccount:OciLinkAccount',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:cloud/ociLinkAccount:OciLinkAccount',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     compartmentOcid = registerOutput<String>('compartmentOcid');
     ingestVaultOcid = registerOutput<String?>('ingestVaultOcid');
@@ -425,11 +412,11 @@ class OciLinkAccount extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:cloud/ociLinkAccount:OciLinkAccount',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:cloud/ociLinkAccount:OciLinkAccount',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     compartmentOcid = registerOutput<String>('compartmentOcid');
     ingestVaultOcid = registerOutput<String?>('ingestVaultOcid');

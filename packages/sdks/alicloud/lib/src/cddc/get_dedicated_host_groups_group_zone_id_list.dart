@@ -8,19 +8,20 @@ class GetDedicatedHostGroupsGroupZoneIdList {
 
   /// Creates a new [GetDedicatedHostGroupsGroupZoneIdList].
   /// [zoneIdLists] The ZoneIDList of the Dedicated Host Group.
-  GetDedicatedHostGroupsGroupZoneIdList({required this.zoneIdLists});
+  GetDedicatedHostGroupsGroupZoneIdList({
+    required this.zoneIdLists,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'zoneIdLists': zoneIdLists};
+    return <String, dynamic>{
+      'zoneIdLists': zoneIdLists,
+    };
   }
 
-  factory GetDedicatedHostGroupsGroupZoneIdList.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDedicatedHostGroupsGroupZoneIdList.fromMap(Map<String, dynamic> map) {
     return GetDedicatedHostGroupsGroupZoneIdList(
-      zoneIdLists: pulumi.Input.fromValue(
-        (map['zoneIdLists'] as List).cast<String>(),
-      ),
+      zoneIdLists: pulumi.Input.fromValue((map['zoneIdLists'] as List).cast<String>()),
     );
   }
 }
+

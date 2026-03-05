@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Device {
   /// The path inside the container at which to expose the host device.
   final pulumi.Input<String>? containerPath;
-
   /// The path for the device on the host container instance.
   final pulumi.Input<String>? hostPath;
-
   /// The explicit permissions to provide to the container for the device. By default, the container has permissions for ``read``, ``write``, and ``mknod`` for the device.
   final pulumi.Input<List<String>>? permissions;
 
@@ -17,7 +15,11 @@ class Device {
   /// [containerPath] The path inside the container at which to expose the host device.
   /// [hostPath] The path for the device on the host container instance.
   /// [permissions] The explicit permissions to provide to the container for the device. By default, the container has permissions for ``read``, ``write``, and ``mknod`` for the device.
-  Device({this.containerPath, this.hostPath, this.permissions});
+  Device({
+    this.containerPath,
+    this.hostPath,
+    this.permissions,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class Device {
 
   factory Device.fromMap(Map<String, dynamic> map) {
     return Device(
-      containerPath: (() {
-        final guardedValue = map['containerPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      hostPath: (() {
-        final guardedValue = map['hostPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      permissions: (() {
-        final guardedValue = map['permissions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      containerPath: (() { final guardedValue = map['containerPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      hostPath: (() { final guardedValue = map['hostPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      permissions: (() { final guardedValue = map['permissions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

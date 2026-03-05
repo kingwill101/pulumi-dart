@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MqttDestinationConfiguration {
   /// The MQTT QoS setting. Defaults to QoS 1.
   final pulumi.Input<String>? qos;
-
   /// When set to 'Keep', messages published to an MQTT broker will have the retain flag set. Default: 'Never'.
   final pulumi.Input<String>? retain;
-
   /// The MQTT topic.
   final pulumi.Input<String> topic;
-
   /// The MQTT TTL setting.
   final pulumi.Input<double>? ttl;
 
@@ -39,22 +36,11 @@ class MqttDestinationConfiguration {
 
   factory MqttDestinationConfiguration.fromMap(Map<String, dynamic> map) {
     return MqttDestinationConfiguration(
-      qos: (() {
-        final guardedValue = map['qos'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      retain: (() {
-        final guardedValue = map['retain'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      qos: (() { final guardedValue = map['qos']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      retain: (() { final guardedValue = map['retain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       topic: pulumi.Input.fromValue(map['topic'] as String),
-      ttl: (() {
-        final guardedValue = map['ttl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

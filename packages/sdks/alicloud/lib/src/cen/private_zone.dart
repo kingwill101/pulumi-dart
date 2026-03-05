@@ -292,18 +292,14 @@ import 'private_zone_state.dart';
 class PrivateZone extends pulumi.CustomResource {
   /// The ID of the region where PrivateZone is accessed. This region refers to the region in which PrivateZone is accessed by clients.
   late final pulumi.Output<String> accessRegionId;
-
   /// The ID of the CEN instance.
   late final pulumi.Output<String> cenId;
-
   /// The ID of the region where PrivateZone is deployed.
   ///
   /// -&gt;**NOTE:** The resource `alicloud.cen.PrivateZone` depends on the resource `alicloud.cen.InstanceAttachment`.
   late final pulumi.Output<String> hostRegionId;
-
   /// The ID of the VPC that is associated with PrivateZone.
   late final pulumi.Output<String> hostVpcId;
-
   /// The status of the Private Zone.
   late final pulumi.Output<String> status;
 
@@ -316,11 +312,11 @@ class PrivateZone extends pulumi.CustomResource {
     PrivateZoneArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cen/privateZone:PrivateZone',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cen/privateZone:PrivateZone',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessRegionId = registerOutput<String>('accessRegionId');
     cenId = registerOutput<String>('cenId');
     hostRegionId = registerOutput<String>('hostRegionId');
@@ -346,11 +342,11 @@ class PrivateZone extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cen/privateZone:PrivateZone',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cen/privateZone:PrivateZone',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessRegionId = registerOutput<String>('accessRegionId');
     cenId = registerOutput<String>('cenId');
     hostRegionId = registerOutput<String>('hostRegionId');

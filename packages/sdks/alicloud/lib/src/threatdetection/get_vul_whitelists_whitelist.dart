@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVulWhitelistsWhitelist {
   /// The ID of the Vul Whitelist.
   final pulumi.Input<String> id;
-
   /// Reason for adding whitelist.
   final pulumi.Input<String> reason;
-
   /// Set the effective range of the whitelist.
   final pulumi.Input<String> targetInfo;
-
   /// The ID of the Vul Whitelist.
   final pulumi.Input<String> vulWhitelistId;
-
   /// Information about the vulnerability to be added to the whitelist.
   final pulumi.Input<String> whitelist;
 
@@ -52,3 +48,4 @@ class GetVulWhitelistsWhitelist {
     );
   }
 }
+

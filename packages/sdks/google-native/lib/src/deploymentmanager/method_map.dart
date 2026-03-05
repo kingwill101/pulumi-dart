@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MethodMap {
   /// The action identifier for the create method to be used for this collection
   final pulumi.Input<String>? create;
-
   /// The action identifier for the delete method to be used for this collection
   final pulumi.Input<String>? delete;
-
   /// The action identifier for the get method to be used for this collection
   final pulumi.Input<String>? get;
-
   /// The action identifier for the setIamPolicy method to be used for this collection
   final pulumi.Input<String>? setIamPolicy;
-
   /// The action identifier for the update method to be used for this collection
   final pulumi.Input<String>? update;
 
@@ -45,31 +41,12 @@ class MethodMap {
 
   factory MethodMap.fromMap(Map<String, dynamic> map) {
     return MethodMap(
-      create: (() {
-        final guardedValue = map['create'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      delete: (() {
-        final guardedValue = map['delete'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      get: (() {
-        final guardedValue = map['get'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      setIamPolicy: (() {
-        final guardedValue = map['setIamPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      update: (() {
-        final guardedValue = map['update'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      create: (() { final guardedValue = map['create']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      delete: (() { final guardedValue = map['delete']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      get: (() { final guardedValue = map['get']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      setIamPolicy: (() { final guardedValue = map['setIamPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      update: (() { final guardedValue = map['update']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -990,31 +990,22 @@ import 'flowlet_data_flow_state.dart';
 class FlowletDataFlow extends pulumi.CustomResource {
   /// List of tags that can be used for describing the Data Factory Flowlet Data Flow.
   late final pulumi.Output<List<String>?> annotations;
-
   /// The ID of Data Factory in which to associate the Data Flow with. Changing this forces a new resource.
   late final pulumi.Output<String> dataFactoryId;
-
   /// The description for the Data Factory Flowlet Data Flow.
   late final pulumi.Output<String?> description;
-
   /// The folder that this Data Flow is in. If not specified, the Data Flow will appear at the root level.
   late final pulumi.Output<String?> folder;
-
   /// Specifies the name of the Data Factory Flowlet Data Flow. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The script for the Data Factory Flowlet Data Flow.
   late final pulumi.Output<String?> script;
-
   /// The script lines for the Data Factory Flowlet Data Flow.
   late final pulumi.Output<List<String>?> scriptLines;
-
   /// One or more `sink` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> sinks;
-
   /// One or more `source` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> sources;
-
   /// One or more `transformation` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> transformations_;
 
@@ -1027,11 +1018,11 @@ class FlowletDataFlow extends pulumi.CustomResource {
     FlowletDataFlowArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:datafactory/flowletDataFlow:FlowletDataFlow',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:datafactory/flowletDataFlow:FlowletDataFlow',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     annotations = registerOutput<List<String>?>('annotations');
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
@@ -1041,9 +1032,7 @@ class FlowletDataFlow extends pulumi.CustomResource {
     scriptLines = registerOutput<List<String>?>('scriptLines');
     sinks = registerOutput<List<Map<String, dynamic>>?>('sinks');
     sources = registerOutput<List<Map<String, dynamic>>?>('sources');
-    transformations_ = registerOutput<List<Map<String, dynamic>>?>(
-      'transformations',
-    );
+    transformations_ = registerOutput<List<Map<String, dynamic>>?>('transformations');
   }
 
   /// Gets an existing [FlowletDataFlow] resource's state with the given [name] and [id].
@@ -1064,11 +1053,11 @@ class FlowletDataFlow extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:datafactory/flowletDataFlow:FlowletDataFlow',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:datafactory/flowletDataFlow:FlowletDataFlow',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     annotations = registerOutput<List<String>?>('annotations');
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
@@ -1078,8 +1067,6 @@ class FlowletDataFlow extends pulumi.CustomResource {
     scriptLines = registerOutput<List<String>?>('scriptLines');
     sinks = registerOutput<List<Map<String, dynamic>>?>('sinks');
     sources = registerOutput<List<Map<String, dynamic>>?>('sources');
-    transformations_ = registerOutput<List<Map<String, dynamic>>?>(
-      'transformations',
-    );
+    transformations_ = registerOutput<List<Map<String, dynamic>>?>('transformations');
   }
 }

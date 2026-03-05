@@ -13,27 +13,20 @@ class ConsentArgs {
   final pulumi.Input<String> consentArtifact;
   final pulumi.Input<String> consentStoreId;
   final pulumi.Input<String> datasetId;
-
   /// Timestamp in UTC of when this Consent is considered expired.
   final pulumi.Input<String>? expireTime;
   final pulumi.Input<String>? location;
-
   /// Optional. User-supplied key-value pairs used to organize Consent resources. Metadata keys must: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - begin with a letter - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes Metadata values must be: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes No more than 64 metadata entries can be associated with a given consent.
   final pulumi.Input<Map<String, String>>? metadata;
-
   /// Resource name of the Consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`. Cannot be changed after creation.
   final pulumi.Input<String>? name;
-
   /// Optional. Represents a user's consent in terms of the resources that can be accessed and under what conditions.
   final pulumi.Input<List<GoogleCloudHealthcareV1ConsentPolicy>>? policies;
   final pulumi.Input<String>? project;
-
   /// Indicates the current state of this Consent.
   final pulumi.Input<ConsentState> state;
-
   /// Input only. The time to live for this Consent from when it is created.
   final pulumi.Input<String>? ttl;
-
   /// User's UUID provided by the client.
   final pulumi.Input<String> userId;
 
@@ -74,23 +67,9 @@ class ConsentArgs {
       'location': ?location,
       'metadata': ?metadata,
       'name': ?name,
-      'policies':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GoogleCloudHealthcareV1ConsentPolicy>,
-            List<Map<String, dynamic>>
-          >(
-            policies,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GoogleCloudHealthcareV1ConsentPolicy,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'policies': ?pulumi.Input.mapOptionalInputValue<List<GoogleCloudHealthcareV1ConsentPolicy>, List<Map<String, dynamic>>>(policies, (value) => pulumi.Input.encodeList<GoogleCloudHealthcareV1ConsentPolicy, Map<String, dynamic>>(value, (value) => value.toMap())),
       'project': ?project,
-      'state': pulumi.Input.mapInputValue<ConsentState, String>(
-        state,
-        (value) => value.wireValue,
-      ),
+      'state': pulumi.Input.mapInputValue<ConsentState, String>(state, (value) => value.wireValue),
       'ttl': ?ttl,
       'userId': userId,
     };
@@ -101,54 +80,16 @@ class ConsentArgs {
       consentArtifact: pulumi.Input.fromValue(map['consentArtifact'] as String),
       consentStoreId: pulumi.Input.fromValue(map['consentStoreId'] as String),
       datasetId: pulumi.Input.fromValue(map['datasetId'] as String),
-      expireTime: (() {
-        final guardedValue = map['expireTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      metadata: (() {
-        final guardedValue = map['metadata'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      policies: (() {
-        final guardedValue = map['policies'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GoogleCloudHealthcareV1ConsentPolicy>(
-            guardedValue,
-            (value) => GoogleCloudHealthcareV1ConsentPolicy.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      state: pulumi.Input.fromValue(
-        ConsentState.fromValue(map['state']! as String),
-      ),
-      ttl: (() {
-        final guardedValue = map['ttl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      expireTime: (() { final guardedValue = map['expireTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      policies: (() { final guardedValue = map['policies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudHealthcareV1ConsentPolicy>(guardedValue, (value) => GoogleCloudHealthcareV1ConsentPolicy.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: pulumi.Input.fromValue(ConsentState.fromValue(map['state']! as String)),
+      ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       userId: pulumi.Input.fromValue(map['userId'] as String),
     );
   }
 }
+

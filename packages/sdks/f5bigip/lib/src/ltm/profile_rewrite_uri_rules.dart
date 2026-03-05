@@ -323,16 +323,12 @@ import 'profile_rewrite_uri_rules_state.dart';
 class ProfileRewriteUriRules extends pulumi.CustomResource {
   /// Block type. Each request is block type with following arguments.
   late final pulumi.Output<List<Map<String, dynamic>>> clients;
-
   /// Name of the rewrite profile. ( policy name should be in full path which is combination of partition and policy name )
   late final pulumi.Output<String> profileName;
-
   /// Specifies the name of the uri rule.
   late final pulumi.Output<String> ruleName;
-
   /// Specifies the type of the uri rule. Valid choices are: `request, response, both`. Default value is: `both`
   late final pulumi.Output<String?> ruleType;
-
   /// Block type. Each request is block type with following arguments.
   late final pulumi.Output<List<Map<String, dynamic>>> servers;
 
@@ -345,11 +341,11 @@ class ProfileRewriteUriRules extends pulumi.CustomResource {
     ProfileRewriteUriRulesArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:ltm/profileRewriteUriRules:ProfileRewriteUriRules',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:ltm/profileRewriteUriRules:ProfileRewriteUriRules',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clients = registerOutput<List<Map<String, dynamic>>>('clients');
     profileName = registerOutput<String>('profileName');
     ruleName = registerOutput<String>('ruleName');
@@ -375,11 +371,11 @@ class ProfileRewriteUriRules extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:ltm/profileRewriteUriRules:ProfileRewriteUriRules',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:ltm/profileRewriteUriRules:ProfileRewriteUriRules',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clients = registerOutput<List<Map<String, dynamic>>>('clients');
     profileName = registerOutput<String>('profileName');
     ruleName = registerOutput<String>('ruleName');

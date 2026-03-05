@@ -652,19 +652,14 @@ import 'rules_engine_state.dart';
 class RulesEngine extends pulumi.CustomResource {
   /// Whether this Rules engine configuration is enabled? Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
-
   /// The name of the Front Door instance. Changing this forces a new resource to be created.
   late final pulumi.Output<String> frontdoorName;
-
   /// The location in which the Front Door Rules Engine exists.
   late final pulumi.Output<String> location;
-
   /// The name of the Rules engine configuration. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the resource group. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A `rule` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> rules;
 
@@ -677,11 +672,11 @@ class RulesEngine extends pulumi.CustomResource {
     RulesEngineArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:frontdoor/rulesEngine:RulesEngine',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:frontdoor/rulesEngine:RulesEngine',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     enabled = registerOutput<bool?>('enabled');
     frontdoorName = registerOutput<String>('frontdoorName');
     location = registerOutput<String>('location');
@@ -708,11 +703,11 @@ class RulesEngine extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:frontdoor/rulesEngine:RulesEngine',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:frontdoor/rulesEngine:RulesEngine',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     enabled = registerOutput<bool?>('enabled');
     frontdoorName = registerOutput<String>('frontdoorName');
     location = registerOutput<String>('location');

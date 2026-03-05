@@ -9,31 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceArgs {
   /// Specifies whether to enable auto-renewal. Unit: months. Valid values: `true` and `false`.
   final pulumi.Input<bool>? autoRenew;
-
   /// The auto renew period. Valid values: `1`,`3`, `6`, `12`, `24`, `36`. **NOTE:** The attribute `auto_renew` is valid when the attribute is `true`.
   final pulumi.Input<int>? autoRenewPeriod;
-
   /// The size of the data disk. Unit: GB. Valid values: `0` to `16380`.
   final pulumi.Input<int>? dataDiskSize;
-
   /// The ID of the image.  You can use the `alicloud.simpleapplicationserver.getImages` to query the available images in the specified region. The value must be an integral multiple of 20.
   final pulumi.Input<String> imageId;
-
   /// The name of the simple application server.
   final pulumi.Input<String>? instanceName;
-
   /// The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ ! @ # $ % ^ & * - + = | { } [ ] : ; &lt; &gt; , . ? /`.
   final pulumi.Input<String>? password;
-
   /// The paymen type of the resource. Valid values: `Subscription`.
   final pulumi.Input<String>? paymentType;
-
   /// The period. Unit: months. Valid values: `1`,`3`, `6`, `12`, `24`, `36`.
   final pulumi.Input<int> period;
-
   /// The ID of the plan. You can use the `alicloud.simpleapplicationserver.getServerPlans`  to query all the plans provided by Simple Application Server in the specified region.
   final pulumi.Input<String> planId;
-
   /// The status of the simple application server. Valid values: `Resetting`, `Running`, `Stopped`.
   final pulumi.Input<String>? status;
 
@@ -78,44 +69,17 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      autoRenew: (() {
-        final guardedValue = map['autoRenew'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      autoRenewPeriod: (() {
-        final guardedValue = map['autoRenewPeriod'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      dataDiskSize: (() {
-        final guardedValue = map['dataDiskSize'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      autoRenew: (() { final guardedValue = map['autoRenew']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      autoRenewPeriod: (() { final guardedValue = map['autoRenewPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      dataDiskSize: (() { final guardedValue = map['dataDiskSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       imageId: pulumi.Input.fromValue(map['imageId'] as String),
-      instanceName: (() {
-        final guardedValue = map['instanceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      password: (() {
-        final guardedValue = map['password'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      paymentType: (() {
-        final guardedValue = map['paymentType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      instanceName: (() { final guardedValue = map['instanceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      paymentType: (() { final guardedValue = map['paymentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       period: pulumi.Input.fromValue(map['period'] as int),
       planId: pulumi.Input.fromValue(map['planId'] as String),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

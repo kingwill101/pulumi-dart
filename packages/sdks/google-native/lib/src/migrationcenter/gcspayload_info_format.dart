@@ -20,3 +20,4 @@ enum GCSPayloadInfoFormat {
     throw ArgumentError('Unknown GCSPayloadInfoFormat value: $value');
   }
 }
+

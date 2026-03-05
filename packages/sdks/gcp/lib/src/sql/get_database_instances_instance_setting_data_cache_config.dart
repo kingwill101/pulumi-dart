@@ -13,14 +13,15 @@ class GetDatabaseInstancesInstanceSettingDataCacheConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'dataCacheEnabled': dataCacheEnabled};
+    return <String, dynamic>{
+      'dataCacheEnabled': dataCacheEnabled,
+    };
   }
 
-  factory GetDatabaseInstancesInstanceSettingDataCacheConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDatabaseInstancesInstanceSettingDataCacheConfig.fromMap(Map<String, dynamic> map) {
     return GetDatabaseInstancesInstanceSettingDataCacheConfig(
       dataCacheEnabled: pulumi.Input.fromValue(map['dataCacheEnabled'] as bool),
     );
   }
 }
+

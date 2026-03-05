@@ -9,21 +9,20 @@ class RestorePointCollectionSourceProperties {
 
   /// Creates a new [RestorePointCollectionSourceProperties].
   /// [id] Resource Id of the source resource used to create this restore point collection
-  RestorePointCollectionSourceProperties({this.id});
+  RestorePointCollectionSourceProperties({
+    this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': ?id};
+    return <String, dynamic>{
+      'id': ?id,
+    };
   }
 
-  factory RestorePointCollectionSourceProperties.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RestorePointCollectionSourceProperties.fromMap(Map<String, dynamic> map) {
     return RestorePointCollectionSourceProperties(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

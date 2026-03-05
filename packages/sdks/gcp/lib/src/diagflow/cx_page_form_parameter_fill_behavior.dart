@@ -7,9 +7,7 @@ import 'cx_page_form_parameter_fill_behavior_reprompt_event_handler.dart';
 class CxPageFormParameterFillBehavior {
   /// The fulfillment to provide the initial prompt that the agent can present to the user in order to fill the parameter.
   /// Structure is documented below.
-  final pulumi.Input<CxPageFormParameterFillBehaviorInitialPromptFulfillment>?
-  initialPromptFulfillment;
-
+  final pulumi.Input<CxPageFormParameterFillBehaviorInitialPromptFulfillment>? initialPromptFulfillment;
   /// The handlers for parameter-level events, used to provide reprompt for the parameter or transition to a different page/flow. The supported events are:
   /// * sys.no-match-&lt;N&gt;, where N can be from 1 to 6
   /// * sys.no-match-default
@@ -22,8 +20,7 @@ class CxPageFormParameterFillBehavior {
   /// A sys.invalid-parameter handler can be defined to handle the case where the parameter values have been invalidated by webhook. For example, if the user's response fill the parameter, however the parameter was invalidated by webhook, the fulfillment associated with the sys.invalid-parameter handler (if defined) will be called to provide a prompt.
   /// If the event handler for the corresponding event can't be found on the parameter, initialPromptFulfillment will be re-prompted.
   /// Structure is documented below.
-  final pulumi.Input<List<CxPageFormParameterFillBehaviorRepromptEventHandler>>?
-  repromptEventHandlers;
+  final pulumi.Input<List<CxPageFormParameterFillBehaviorRepromptEventHandler>>? repromptEventHandlers;
 
   /// Creates a new [CxPageFormParameterFillBehavior].
   /// [initialPromptFulfillment] The fulfillment to provide the initial prompt that the agent can present to the user in order to fill the parameter.
@@ -35,52 +32,16 @@ class CxPageFormParameterFillBehavior {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'initialPromptFulfillment':
-          ?pulumi.Input.mapOptionalInputValue<
-            CxPageFormParameterFillBehaviorInitialPromptFulfillment,
-            Map<String, dynamic>
-          >(initialPromptFulfillment, (value) => value.toMap()),
-      'repromptEventHandlers':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<CxPageFormParameterFillBehaviorRepromptEventHandler>,
-            List<Map<String, dynamic>>
-          >(
-            repromptEventHandlers,
-            (value) =>
-                pulumi.Input.encodeList<
-                  CxPageFormParameterFillBehaviorRepromptEventHandler,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'initialPromptFulfillment': ?pulumi.Input.mapOptionalInputValue<CxPageFormParameterFillBehaviorInitialPromptFulfillment, Map<String, dynamic>>(initialPromptFulfillment, (value) => value.toMap()),
+      'repromptEventHandlers': ?pulumi.Input.mapOptionalInputValue<List<CxPageFormParameterFillBehaviorRepromptEventHandler>, List<Map<String, dynamic>>>(repromptEventHandlers, (value) => pulumi.Input.encodeList<CxPageFormParameterFillBehaviorRepromptEventHandler, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory CxPageFormParameterFillBehavior.fromMap(Map<String, dynamic> map) {
     return CxPageFormParameterFillBehavior(
-      initialPromptFulfillment: (() {
-        final guardedValue = map['initialPromptFulfillment'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CxPageFormParameterFillBehaviorInitialPromptFulfillment.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      repromptEventHandlers: (() {
-        final guardedValue = map['repromptEventHandlers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            CxPageFormParameterFillBehaviorRepromptEventHandler
-          >(
-            guardedValue,
-            (value) =>
-                CxPageFormParameterFillBehaviorRepromptEventHandler.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
+      initialPromptFulfillment: (() { final guardedValue = map['initialPromptFulfillment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CxPageFormParameterFillBehaviorInitialPromptFulfillment.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      repromptEventHandlers: (() { final guardedValue = map['repromptEventHandlers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CxPageFormParameterFillBehaviorRepromptEventHandler>(guardedValue, (value) => CxPageFormParameterFillBehaviorRepromptEventHandler.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

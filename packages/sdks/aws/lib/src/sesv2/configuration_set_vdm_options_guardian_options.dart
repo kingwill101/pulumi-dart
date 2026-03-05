@@ -8,7 +8,9 @@ class ConfigurationSetVdmOptionsGuardianOptions {
 
   /// Creates a new [ConfigurationSetVdmOptionsGuardianOptions].
   /// [optimizedSharedDelivery] Specifies the status of your VDM optimized shared delivery. Valid values: `ENABLED`, `DISABLED`.
-  ConfigurationSetVdmOptionsGuardianOptions({this.optimizedSharedDelivery});
+  ConfigurationSetVdmOptionsGuardianOptions({
+    this.optimizedSharedDelivery,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -16,15 +18,10 @@ class ConfigurationSetVdmOptionsGuardianOptions {
     };
   }
 
-  factory ConfigurationSetVdmOptionsGuardianOptions.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConfigurationSetVdmOptionsGuardianOptions.fromMap(Map<String, dynamic> map) {
     return ConfigurationSetVdmOptionsGuardianOptions(
-      optimizedSharedDelivery: (() {
-        final guardedValue = map['optimizedSharedDelivery'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      optimizedSharedDelivery: (() { final guardedValue = map['optimizedSharedDelivery']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

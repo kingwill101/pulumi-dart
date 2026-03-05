@@ -10,37 +10,20 @@ class ContainerServiceSshConfigurationResponse {
 
   /// Creates a new [ContainerServiceSshConfigurationResponse].
   /// [publicKeys] The list of SSH public keys used to authenticate with Linux-based VMs. A maximum of 1 key may be specified.
-  ContainerServiceSshConfigurationResponse({required this.publicKeys});
+  ContainerServiceSshConfigurationResponse({
+    required this.publicKeys,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'publicKeys':
-          pulumi.Input.mapInputValue<
-            List<ContainerServiceSshPublicKeyResponse>,
-            List<Map<String, dynamic>>
-          >(
-            publicKeys,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ContainerServiceSshPublicKeyResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'publicKeys': pulumi.Input.mapInputValue<List<ContainerServiceSshPublicKeyResponse>, List<Map<String, dynamic>>>(publicKeys, (value) => pulumi.Input.encodeList<ContainerServiceSshPublicKeyResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory ContainerServiceSshConfigurationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ContainerServiceSshConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ContainerServiceSshConfigurationResponse(
-      publicKeys: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<ContainerServiceSshPublicKeyResponse>(
-          map['publicKeys']!,
-          (value) => ContainerServiceSshPublicKeyResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      publicKeys: pulumi.Input.fromValue(pulumi.Input.decodeList<ContainerServiceSshPublicKeyResponse>(map['publicKeys']!, (value) => ContainerServiceSshPublicKeyResponse.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

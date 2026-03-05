@@ -8,10 +8,14 @@ class FrameworkControlSetControl {
 
   /// Creates a new [FrameworkControlSetControl].
   /// [id] Unique identifier of the control.
-  FrameworkControlSetControl({required this.id});
+  FrameworkControlSetControl({
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id};
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
   factory FrameworkControlSetControl.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class FrameworkControlSetControl {
     );
   }
 }
+

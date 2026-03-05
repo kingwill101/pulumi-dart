@@ -8,21 +8,20 @@ class ClusterBrokerNodeGroupInfoConnectivityInfoPublicAccess {
 
   /// Creates a new [ClusterBrokerNodeGroupInfoConnectivityInfoPublicAccess].
   /// [type] Public access type. Valid values: `DISABLED`, `SERVICE_PROVIDED_EIPS`.
-  ClusterBrokerNodeGroupInfoConnectivityInfoPublicAccess({this.type});
+  ClusterBrokerNodeGroupInfoConnectivityInfoPublicAccess({
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': ?type};
+    return <String, dynamic>{
+      'type': ?type,
+    };
   }
 
-  factory ClusterBrokerNodeGroupInfoConnectivityInfoPublicAccess.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterBrokerNodeGroupInfoConnectivityInfoPublicAccess.fromMap(Map<String, dynamic> map) {
     return ClusterBrokerNodeGroupInfoConnectivityInfoPublicAccess(
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

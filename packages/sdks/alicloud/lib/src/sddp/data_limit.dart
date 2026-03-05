@@ -678,31 +678,22 @@ import 'data_limit_state.dart';
 class DataLimit extends pulumi.CustomResource {
   /// Whether to enable the log auditing feature. Valid values: `0`, `1`.
   late final pulumi.Output<int> auditStatus;
-
   /// The type of the database. Valid values: `MySQL`, `SQLServer`.
   late final pulumi.Output<String?> engineType;
-
   /// The lang.
   late final pulumi.Output<String?> lang;
-
   /// The retention period of raw logs after you enable the log auditing feature. Unit: day. Valid values: `180`, `30`, `365`, `90`. **NOTE:** The`log_store_day` is valid when the `audit_status` is `1`.
   late final pulumi.Output<int?> logStoreDay;
-
   /// The ID of the data asset.
   late final pulumi.Output<String?> parentId;
-
   /// The password that is used to connect to the database.
   late final pulumi.Output<String?> password;
-
   /// The port that is used to connect to the database.
   late final pulumi.Output<int?> port;
-
   /// The type of the service to which the data asset belongs. Valid values: `MaxCompute`, `OSS`, `RDS`.
   late final pulumi.Output<String> resourceType;
-
   /// The region ID of the data asset.
   late final pulumi.Output<String?> serviceRegionId;
-
   /// The name of the service to which the data asset belongs.
   late final pulumi.Output<String?> userName;
 
@@ -715,11 +706,11 @@ class DataLimit extends pulumi.CustomResource {
     DataLimitArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:sddp/dataLimit:DataLimit',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:sddp/dataLimit:DataLimit',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     auditStatus = registerOutput<int>('auditStatus');
     engineType = registerOutput<String?>('engineType');
     lang = registerOutput<String?>('lang');
@@ -750,11 +741,11 @@ class DataLimit extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:sddp/dataLimit:DataLimit',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:sddp/dataLimit:DataLimit',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     auditStatus = registerOutput<int>('auditStatus');
     engineType = registerOutput<String?>('engineType');
     lang = registerOutput<String?>('lang');

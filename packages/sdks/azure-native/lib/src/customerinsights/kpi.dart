@@ -274,68 +274,46 @@ import 'kpi_thresholds_response.dart';
 class Kpi extends pulumi.CustomResource {
   /// The aliases.
   late final pulumi.Output<List<Map<String, dynamic>>?> aliases;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The calculation window.
   late final pulumi.Output<String> calculationWindow;
-
   /// Name of calculation window field.
   late final pulumi.Output<String?> calculationWindowFieldName;
-
   /// Localized description for the KPI.
   late final pulumi.Output<Map<String, String>?> description;
-
   /// Localized display name for the KPI.
   late final pulumi.Output<Map<String, String>?> displayName;
-
   /// The mapping entity type.
   late final pulumi.Output<String> entityType;
-
   /// The mapping entity name.
   late final pulumi.Output<String> entityTypeName;
-
   /// The computation expression for the KPI.
   late final pulumi.Output<String> expression;
-
   /// The KPI extracts.
   late final pulumi.Output<List<Map<String, dynamic>>?> extracts;
-
   /// The filter expression for the KPI.
   late final pulumi.Output<String?> filter;
-
   /// The computation function for the KPI.
   late final pulumi.Output<String> function;
-
   /// the group by properties for the KPI.
   late final pulumi.Output<List<String>?> groupBy;
-
   /// The KPI GroupByMetadata.
   late final pulumi.Output<List<Map<String, dynamic>>> groupByMetadata;
-
   /// The KPI name.
   late final pulumi.Output<String> kpiName;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// The participant profiles.
-  late final pulumi.Output<List<Map<String, dynamic>>>
-  participantProfilesMetadata;
-
+  late final pulumi.Output<List<Map<String, dynamic>>> participantProfilesMetadata;
   /// Provisioning state.
   late final pulumi.Output<String> provisioningState;
-
   /// The hub name.
   late final pulumi.Output<String> tenantId;
-
   /// The KPI thresholds.
   late final pulumi.Output<KpiThresholdsResponse?> thresHolds;
-
   /// Resource type.
   late final pulumi.Output<String> type;
-
   /// The unit of measurement for the KPI.
   late final pulumi.Output<String?> unit;
 
@@ -343,19 +321,20 @@ class Kpi extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Kpi]. {@macro pulumi_customerinsights_kpi_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Kpi(String name, {KpiArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:customerinsights:Kpi',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Kpi(
+    String name, {
+    KpiArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:customerinsights:Kpi',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aliases = registerOutput<List<Map<String, dynamic>>?>('aliases');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     calculationWindow = registerOutput<String>('calculationWindow');
-    calculationWindowFieldName = registerOutput<String?>(
-      'calculationWindowFieldName',
-    );
+    calculationWindowFieldName = registerOutput<String?>('calculationWindowFieldName');
     description = registerOutput<Map<String, String>?>('description');
     displayName = registerOutput<Map<String, String>?>('displayName');
     entityType = registerOutput<String>('entityType');
@@ -365,26 +344,13 @@ class Kpi extends pulumi.CustomResource {
     filter = registerOutput<String?>('filter');
     function = registerOutput<String>('function');
     groupBy = registerOutput<List<String>?>('groupBy');
-    groupByMetadata = registerOutput<List<Map<String, dynamic>>>(
-      'groupByMetadata',
-    );
+    groupByMetadata = registerOutput<List<Map<String, dynamic>>>('groupByMetadata');
     kpiName = registerOutput<String>('kpiName');
     this.name = registerOutput<String>('name');
-    participantProfilesMetadata = registerOutput<List<Map<String, dynamic>>>(
-      'participantProfilesMetadata',
-    );
+    participantProfilesMetadata = registerOutput<List<Map<String, dynamic>>>('participantProfilesMetadata');
     provisioningState = registerOutput<String>('provisioningState');
     tenantId = registerOutput<String>('tenantId');
-    thresHolds = registerOutput<KpiThresholdsResponse?>(
-      'thresHolds',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return KpiThresholdsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    thresHolds = registerOutput<KpiThresholdsResponse?>('thresHolds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KpiThresholdsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     unit = registerOutput<String?>('unit');
   }

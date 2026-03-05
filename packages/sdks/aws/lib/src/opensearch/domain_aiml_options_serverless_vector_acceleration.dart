@@ -8,21 +8,20 @@ class DomainAimlOptionsServerlessVectorAcceleration {
 
   /// Creates a new [DomainAimlOptionsServerlessVectorAcceleration].
   /// [enabled] Enables GPU-accelerated vector search for improved performance on vector workloads.
-  DomainAimlOptionsServerlessVectorAcceleration({this.enabled});
+  DomainAimlOptionsServerlessVectorAcceleration({
+    this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': ?enabled};
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
-  factory DomainAimlOptionsServerlessVectorAcceleration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainAimlOptionsServerlessVectorAcceleration.fromMap(Map<String, dynamic> map) {
     return DomainAimlOptionsServerlessVectorAcceleration(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

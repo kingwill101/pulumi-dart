@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRouteEntriesEntryConflict {
   /// The destination CIDR block of the route entry to query.
   final pulumi.Input<String> cidrBlock;
-
   /// ID of the CEN instance.
   final pulumi.Input<String> instanceId;
-
   /// The type of the CEN child instance.
   final pulumi.Input<String> instanceType;
-
   /// ID of the region where the conflicted route entry is located.
   final pulumi.Input<String> regionId;
-
   /// Reasons of exceptions.
   final pulumi.Input<String> status;
 
@@ -52,3 +48,4 @@ class GetRouteEntriesEntryConflict {
     );
   }
 }
+

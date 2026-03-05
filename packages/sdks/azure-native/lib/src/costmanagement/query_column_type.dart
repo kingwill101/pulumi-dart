@@ -15,3 +15,4 @@ enum QueryColumnType {
     throw ArgumentError('Unknown QueryColumnType value: $value');
   }
 }
+

@@ -965,42 +965,30 @@ import 'virtual_network_peering_state.dart';
 class VirtualNetworkPeering extends pulumi.CustomResource {
   /// Controls if forwarded traffic from VMs in the remote virtual network is allowed. Defaults to `false`.
   late final pulumi.Output<bool?> allowForwardedTraffic;
-
   /// Controls gatewayLinks can be used in the remote virtual network’s link to the local virtual network. Defaults to `false`.
   late final pulumi.Output<bool?> allowGatewayTransit;
-
   /// Controls if the traffic from the local virtual network can reach the remote virtual network. Defaults to `true`.
   late final pulumi.Output<bool?> allowVirtualNetworkAccess;
-
   /// A list of local Subnet names that are Subnet peered with remote Virtual Network.
   late final pulumi.Output<List<String>?> localSubnetNames;
-
   /// The name of the virtual network peering. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies whether only IPv6 address space is peered for Subnet peering. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> onlyIpv6PeeringEnabled;
-
   /// Specifies whether complete Virtual Network address space is peered. Defaults to `true`. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> peerCompleteVirtualNetworksEnabled;
-
   /// A list of remote Subnet names from remote Virtual Network that are Subnet peered.
   late final pulumi.Output<List<String>?> remoteSubnetNames;
-
   /// The full Azure resource ID of the remote virtual network. Changing this forces a new resource to be created.
   late final pulumi.Output<String> remoteVirtualNetworkId;
-
   /// The name of the resource group in which to create the virtual network peering. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of key values pairs that can be used to sync network routes from the remote virtual network to the local virtual network. See the trigger example for an example on how to set it up.
   late final pulumi.Output<Map<String, String>?> triggers;
-
   /// Controls if remote gateways can be used on the local virtual network. If the flag is set to `true`, and `allow_gateway_transit` on the remote peering is also `true`, virtual network will use gateways of remote virtual network for transit. Only one peering can have this flag set to `true`. This flag cannot be set if virtual network already has a gateway. Defaults to `false`.
   ///
   /// &gt; **Note:** `use_remote_gateways` must be set to `false` if using Global Virtual Network Peerings.
   late final pulumi.Output<bool?> useRemoteGateways;
-
   /// The name of the virtual network. Changing this forces a new resource to be created.
   late final pulumi.Output<String> virtualNetworkName;
 
@@ -1013,22 +1001,18 @@ class VirtualNetworkPeering extends pulumi.CustomResource {
     VirtualNetworkPeeringArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/virtualNetworkPeering:VirtualNetworkPeering',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/virtualNetworkPeering:VirtualNetworkPeering',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allowForwardedTraffic = registerOutput<bool?>('allowForwardedTraffic');
     allowGatewayTransit = registerOutput<bool?>('allowGatewayTransit');
-    allowVirtualNetworkAccess = registerOutput<bool?>(
-      'allowVirtualNetworkAccess',
-    );
+    allowVirtualNetworkAccess = registerOutput<bool?>('allowVirtualNetworkAccess');
     localSubnetNames = registerOutput<List<String>?>('localSubnetNames');
     this.name = registerOutput<String>('name');
     onlyIpv6PeeringEnabled = registerOutput<bool?>('onlyIpv6PeeringEnabled');
-    peerCompleteVirtualNetworksEnabled = registerOutput<bool?>(
-      'peerCompleteVirtualNetworksEnabled',
-    );
+    peerCompleteVirtualNetworksEnabled = registerOutput<bool?>('peerCompleteVirtualNetworksEnabled');
     remoteSubnetNames = registerOutput<List<String>?>('remoteSubnetNames');
     remoteVirtualNetworkId = registerOutput<String>('remoteVirtualNetworkId');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -1055,22 +1039,18 @@ class VirtualNetworkPeering extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/virtualNetworkPeering:VirtualNetworkPeering',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/virtualNetworkPeering:VirtualNetworkPeering',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allowForwardedTraffic = registerOutput<bool?>('allowForwardedTraffic');
     allowGatewayTransit = registerOutput<bool?>('allowGatewayTransit');
-    allowVirtualNetworkAccess = registerOutput<bool?>(
-      'allowVirtualNetworkAccess',
-    );
+    allowVirtualNetworkAccess = registerOutput<bool?>('allowVirtualNetworkAccess');
     localSubnetNames = registerOutput<List<String>?>('localSubnetNames');
     this.name = registerOutput<String>('name');
     onlyIpv6PeeringEnabled = registerOutput<bool?>('onlyIpv6PeeringEnabled');
-    peerCompleteVirtualNetworksEnabled = registerOutput<bool?>(
-      'peerCompleteVirtualNetworksEnabled',
-    );
+    peerCompleteVirtualNetworksEnabled = registerOutput<bool?>('peerCompleteVirtualNetworksEnabled');
     remoteSubnetNames = registerOutput<List<String>?>('remoteSubnetNames');
     remoteVirtualNetworkId = registerOutput<String>('remoteVirtualNetworkId');
     resourceGroupName = registerOutput<String>('resourceGroupName');

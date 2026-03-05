@@ -7,28 +7,20 @@ import 'scan_schedule.dart';
 class InsightsAccountState {
   /// Name of the insights account.
   final pulumi.Input<String> accountName;
-
   /// The ESC environment used for provider credentials. Format: 'project/environment' with optional '@version' suffix (e.g., 'my-project/prod-env' or 'my-project/prod-env@v1.0').
   final pulumi.Input<String> environment;
-
   /// The insights account identifier.
   final pulumi.Input<String> insightsAccountId;
-
   /// The organization's name.
   final pulumi.Input<String> organizationName;
-
   /// The cloud provider for scanning.
   final pulumi.Input<CloudProvider> provider;
-
   /// Provider-specific configuration as a JSON object. For AWS, specify regions to scan: {"regions": ["us-west-1", "us-west-2"]}.
   final pulumi.Input<Map<String, dynamic>>? providerConfig;
-
   /// Schedule for automated scanning. Use 'daily' to enable daily scans, or 'none' to disable scheduled scanning. Defaults to 'none'.
   final pulumi.Input<ScanSchedule> scanSchedule;
-
   /// Whether scheduled scanning is enabled.
   final pulumi.Input<bool> scheduledScanEnabled;
-
   /// Key-value tags to associate with the insights account.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -60,15 +52,9 @@ class InsightsAccountState {
       'environment': environment,
       'insightsAccountId': insightsAccountId,
       'organizationName': organizationName,
-      'provider': pulumi.Input.mapInputValue<CloudProvider, String>(
-        provider,
-        (value) => value.wireValue,
-      ),
+      'provider': pulumi.Input.mapInputValue<CloudProvider, String>(provider, (value) => value.wireValue),
       'providerConfig': ?providerConfig,
-      'scanSchedule': pulumi.Input.mapInputValue<ScanSchedule, String>(
-        scanSchedule,
-        (value) => value.wireValue,
-      ),
+      'scanSchedule': pulumi.Input.mapInputValue<ScanSchedule, String>(scanSchedule, (value) => value.wireValue),
       'scheduledScanEnabled': scheduledScanEnabled,
       'tags': ?tags,
     };
@@ -78,35 +64,14 @@ class InsightsAccountState {
     return InsightsAccountState(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
       environment: pulumi.Input.fromValue(map['environment'] as String),
-      insightsAccountId: pulumi.Input.fromValue(
-        map['insightsAccountId'] as String,
-      ),
-      organizationName: pulumi.Input.fromValue(
-        map['organizationName'] as String,
-      ),
-      provider: pulumi.Input.fromValue(
-        CloudProvider.fromValue(map['provider']! as String),
-      ),
-      providerConfig: (() {
-        final guardedValue = map['providerConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      scanSchedule: pulumi.Input.fromValue(
-        ScanSchedule.fromValue(map['scanSchedule']! as String),
-      ),
-      scheduledScanEnabled: pulumi.Input.fromValue(
-        map['scheduledScanEnabled'] as bool,
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      insightsAccountId: pulumi.Input.fromValue(map['insightsAccountId'] as String),
+      organizationName: pulumi.Input.fromValue(map['organizationName'] as String),
+      provider: pulumi.Input.fromValue(CloudProvider.fromValue(map['provider']! as String)),
+      providerConfig: (() { final guardedValue = map['providerConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
+      scanSchedule: pulumi.Input.fromValue(ScanSchedule.fromValue(map['scanSchedule']! as String)),
+      scheduledScanEnabled: pulumi.Input.fromValue(map['scheduledScanEnabled'] as bool),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

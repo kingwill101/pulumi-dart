@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTrafficControllerInterfaceArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// traffic controller name for path
   final pulumi.Input<String> trafficControllerName;
 
@@ -30,12 +29,9 @@ class GetTrafficControllerInterfaceArgs {
 
   factory GetTrafficControllerInterfaceArgs.fromMap(Map<String, dynamic> map) {
     return GetTrafficControllerInterfaceArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      trafficControllerName: pulumi.Input.fromValue(
-        map['trafficControllerName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      trafficControllerName: pulumi.Input.fromValue(map['trafficControllerName'] as String),
     );
   }
 }
+

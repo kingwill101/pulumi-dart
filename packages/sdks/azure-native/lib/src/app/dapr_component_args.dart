@@ -12,37 +12,26 @@ import 'secret.dart';
 class DaprComponentArgs {
   /// Name of the Dapr Component.
   final pulumi.Input<String>? componentName;
-
   /// Component type
   final pulumi.Input<String>? componentType;
-
   /// Name of the Managed Environment.
   final pulumi.Input<String> environmentName;
-
   /// Boolean describing if the component errors are ignores
   final pulumi.Input<bool>? ignoreErrors;
-
   /// Initialization timeout
   final pulumi.Input<String>? initTimeout;
-
   /// Component metadata
   final pulumi.Input<List<DaprMetadata>>? metadata;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Names of container apps that can use this Dapr component
   final pulumi.Input<List<String>>? scopes;
-
   /// Name of a Dapr component to retrieve component secrets from
   final pulumi.Input<String>? secretStoreComponent;
-
   /// Collection of secrets used by a Dapr component
   final pulumi.Input<List<Secret>>? secrets;
-
   /// List of container app services that are bound to the Dapr component
   final pulumi.Input<List<DaprComponentServiceBinding>>? serviceComponentBind;
-
   /// Component version
   final pulumi.Input<String>? version;
 
@@ -81,122 +70,31 @@ class DaprComponentArgs {
       'environmentName': environmentName,
       'ignoreErrors': ?ignoreErrors,
       'initTimeout': ?initTimeout,
-      'metadata':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<DaprMetadata>,
-            List<Map<String, dynamic>>
-          >(
-            metadata,
-            (value) =>
-                pulumi.Input.encodeList<DaprMetadata, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'metadata': ?pulumi.Input.mapOptionalInputValue<List<DaprMetadata>, List<Map<String, dynamic>>>(metadata, (value) => pulumi.Input.encodeList<DaprMetadata, Map<String, dynamic>>(value, (value) => value.toMap())),
       'resourceGroupName': resourceGroupName,
       'scopes': ?scopes,
       'secretStoreComponent': ?secretStoreComponent,
-      'secrets':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<Secret>,
-            List<Map<String, dynamic>>
-          >(
-            secrets,
-            (value) => pulumi.Input.encodeList<Secret, Map<String, dynamic>>(
-              value,
-              (value) => value.toMap(),
-            ),
-          ),
-      'serviceComponentBind':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<DaprComponentServiceBinding>,
-            List<Map<String, dynamic>>
-          >(
-            serviceComponentBind,
-            (value) =>
-                pulumi.Input.encodeList<
-                  DaprComponentServiceBinding,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'secrets': ?pulumi.Input.mapOptionalInputValue<List<Secret>, List<Map<String, dynamic>>>(secrets, (value) => pulumi.Input.encodeList<Secret, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'serviceComponentBind': ?pulumi.Input.mapOptionalInputValue<List<DaprComponentServiceBinding>, List<Map<String, dynamic>>>(serviceComponentBind, (value) => pulumi.Input.encodeList<DaprComponentServiceBinding, Map<String, dynamic>>(value, (value) => value.toMap())),
       'version': ?version,
     };
   }
 
   factory DaprComponentArgs.fromMap(Map<String, dynamic> map) {
     return DaprComponentArgs(
-      componentName: (() {
-        final guardedValue = map['componentName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      componentType: (() {
-        final guardedValue = map['componentType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      componentName: (() { final guardedValue = map['componentName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      componentType: (() { final guardedValue = map['componentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       environmentName: pulumi.Input.fromValue(map['environmentName'] as String),
-      ignoreErrors: (() {
-        final guardedValue = map['ignoreErrors'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      initTimeout: (() {
-        final guardedValue = map['initTimeout'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      metadata: (() {
-        final guardedValue = map['metadata'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<DaprMetadata>(
-            guardedValue,
-            (value) =>
-                DaprMetadata.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      scopes: (() {
-        final guardedValue = map['scopes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      secretStoreComponent: (() {
-        final guardedValue = map['secretStoreComponent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      secrets: (() {
-        final guardedValue = map['secrets'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<Secret>(
-            guardedValue,
-            (value) => Secret.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      serviceComponentBind: (() {
-        final guardedValue = map['serviceComponentBind'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<DaprComponentServiceBinding>(
-            guardedValue,
-            (value) => DaprComponentServiceBinding.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ignoreErrors: (() { final guardedValue = map['ignoreErrors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      initTimeout: (() { final guardedValue = map['initTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DaprMetadata>(guardedValue, (value) => DaprMetadata.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      scopes: (() { final guardedValue = map['scopes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      secretStoreComponent: (() { final guardedValue = map['secretStoreComponent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      secrets: (() { final guardedValue = map['secrets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Secret>(guardedValue, (value) => Secret.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      serviceComponentBind: (() { final guardedValue = map['serviceComponentBind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DaprComponentServiceBinding>(guardedValue, (value) => DaprComponentServiceBinding.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

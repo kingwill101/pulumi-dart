@@ -13,8 +13,7 @@ enum ClusterAutoscalingAutoscalingProfile {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ClusterAutoscalingAutoscalingProfile value: $value',
-    );
+    throw ArgumentError('Unknown ClusterAutoscalingAutoscalingProfile value: $value');
   }
 }
+

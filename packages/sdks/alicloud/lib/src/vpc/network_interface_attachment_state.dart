@@ -7,7 +7,6 @@ class NetworkInterfaceAttachmentState {
   /// The instance ID to attach.
   final pulumi.Input<String>? instanceId;
   final pulumi.Input<int>? networkCardIndex;
-
   /// The ENI ID to attach.
   final pulumi.Input<String>? networkInterfaceId;
   final pulumi.Input<String>? trunkNetworkInstanceId;
@@ -39,31 +38,12 @@ class NetworkInterfaceAttachmentState {
 
   factory NetworkInterfaceAttachmentState.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceAttachmentState(
-      instanceId: (() {
-        final guardedValue = map['instanceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      networkCardIndex: (() {
-        final guardedValue = map['networkCardIndex'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      networkInterfaceId: (() {
-        final guardedValue = map['networkInterfaceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      trunkNetworkInstanceId: (() {
-        final guardedValue = map['trunkNetworkInstanceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      waitForNetworkConfigurationReady: (() {
-        final guardedValue = map['waitForNetworkConfigurationReady'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      instanceId: (() { final guardedValue = map['instanceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      networkCardIndex: (() { final guardedValue = map['networkCardIndex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      networkInterfaceId: (() { final guardedValue = map['networkInterfaceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      trunkNetworkInstanceId: (() { final guardedValue = map['trunkNetworkInstanceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      waitForNetworkConfigurationReady: (() { final guardedValue = map['waitForNetworkConfigurationReady']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

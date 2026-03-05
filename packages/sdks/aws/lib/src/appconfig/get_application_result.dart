@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getApplication.
 class GetApplicationResult {
   /// ARN of the Application.
   final String arn;
-
   /// Description of the Application.
   final String description;
   final String id;
@@ -45,3 +45,4 @@ class GetApplicationResult {
     );
   }
 }
+

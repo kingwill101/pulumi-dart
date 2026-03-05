@@ -9,17 +9,20 @@ class FilterResponse {
 
   /// Creates a new [FilterResponse].
   /// [eventType] Event types to allowlist.
-  FilterResponse({required this.eventType});
+  FilterResponse({
+    required this.eventType,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'eventType': eventType};
+    return <String, dynamic>{
+      'eventType': eventType,
+    };
   }
 
   factory FilterResponse.fromMap(Map<String, dynamic> map) {
     return FilterResponse(
-      eventType: pulumi.Input.fromValue(
-        (map['eventType'] as List).cast<String>(),
-      ),
+      eventType: pulumi.Input.fromValue((map['eventType'] as List).cast<String>()),
     );
   }
 }
+

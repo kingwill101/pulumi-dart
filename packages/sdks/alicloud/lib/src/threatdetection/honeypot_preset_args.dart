@@ -10,13 +10,10 @@ import 'honeypot_preset_meta.dart';
 class HoneypotPresetArgs {
   /// Honeypot mirror name
   final pulumi.Input<String> honeypotImageName;
-
   /// Honeypot template custom parameters. See `meta` below.
   final pulumi.Input<HoneypotPresetMeta> meta;
-
   /// Unique id of management node
   final pulumi.Input<String> nodeId;
-
   /// Honeypot template custom name
   final pulumi.Input<String> presetName;
 
@@ -35,11 +32,7 @@ class HoneypotPresetArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'honeypotImageName': honeypotImageName,
-      'meta':
-          pulumi.Input.mapInputValue<HoneypotPresetMeta, Map<String, dynamic>>(
-            meta,
-            (value) => value.toMap(),
-          ),
+      'meta': pulumi.Input.mapInputValue<HoneypotPresetMeta, Map<String, dynamic>>(meta, (value) => value.toMap()),
       'nodeId': nodeId,
       'presetName': presetName,
     };
@@ -47,16 +40,11 @@ class HoneypotPresetArgs {
 
   factory HoneypotPresetArgs.fromMap(Map<String, dynamic> map) {
     return HoneypotPresetArgs(
-      honeypotImageName: pulumi.Input.fromValue(
-        map['honeypotImageName'] as String,
-      ),
-      meta: pulumi.Input.fromValue(
-        HoneypotPresetMeta.fromMap(
-          (map['meta']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      honeypotImageName: pulumi.Input.fromValue(map['honeypotImageName'] as String),
+      meta: pulumi.Input.fromValue(HoneypotPresetMeta.fromMap((map['meta']! as Map).cast<String, dynamic>())),
       nodeId: pulumi.Input.fromValue(map['nodeId'] as String),
       presetName: pulumi.Input.fromValue(map['presetName'] as String),
     );
   }
 }
+

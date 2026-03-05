@@ -94,16 +94,12 @@ import 'control_tower_control_state.dart';
 class ControlTowerControl extends pulumi.CustomResource {
   /// The ARN of the EnabledControl resource.
   late final pulumi.Output<String> arn;
-
   /// The ARN of the control. Only Strongly recommended and Elective controls are permitted, with the exception of the Region deny guardrail.
   late final pulumi.Output<String> controlIdentifier;
-
   /// Parameter values which are specified to configure the control when you enable it. See Parameters for more details.
   late final pulumi.Output<List<Map<String, dynamic>>?> parameters;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The ARN of the organizational unit.
   ///
   /// The following arguments are optional:
@@ -118,11 +114,11 @@ class ControlTowerControl extends pulumi.CustomResource {
     ControlTowerControlArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:controltower/controlTowerControl:ControlTowerControl',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:controltower/controlTowerControl:ControlTowerControl',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     controlIdentifier = registerOutput<String>('controlIdentifier');
     parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');
@@ -148,11 +144,11 @@ class ControlTowerControl extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:controltower/controlTowerControl:ControlTowerControl',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:controltower/controlTowerControl:ControlTowerControl',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     controlIdentifier = registerOutput<String>('controlIdentifier');
     parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');

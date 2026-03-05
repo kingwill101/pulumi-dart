@@ -8,21 +8,20 @@ class GetCoreNetworkPolicyDocumentSegmentActionWhenSentTo {
 
   /// Creates a new [GetCoreNetworkPolicyDocumentSegmentActionWhenSentTo].
   /// [segments] A list of strings. The list of segments that the `send-via` `action` uses.
-  GetCoreNetworkPolicyDocumentSegmentActionWhenSentTo({this.segments});
+  GetCoreNetworkPolicyDocumentSegmentActionWhenSentTo({
+    this.segments,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'segments': ?segments};
+    return <String, dynamic>{
+      'segments': ?segments,
+    };
   }
 
-  factory GetCoreNetworkPolicyDocumentSegmentActionWhenSentTo.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetCoreNetworkPolicyDocumentSegmentActionWhenSentTo.fromMap(Map<String, dynamic> map) {
     return GetCoreNetworkPolicyDocumentSegmentActionWhenSentTo(
-      segments: (() {
-        final guardedValue = map['segments'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      segments: (() { final guardedValue = map['segments']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

@@ -10,28 +10,20 @@ import 'db_instance_plan_plan_config.dart';
 class DbInstancePlanArgs {
   /// The ID of the GPDB instance.
   final pulumi.Input<String> dbInstanceId;
-
   /// The name of the Plan.
   final pulumi.Input<String> dbInstancePlanName;
-
   /// The execution information of the plan. See `plan_config` below.
   final pulumi.Input<List<DbInstancePlanPlanConfig>> planConfigs;
-
   /// The description of the Plan.
   final pulumi.Input<String>? planDesc;
-
   /// The end time of the Plan.
   final pulumi.Input<String>? planEndDate;
-
   /// The execution mode of the plan. Valid values: `Postpone`, `Regular`.
   final pulumi.Input<String> planScheduleType;
-
   /// The start time of the Plan.
   final pulumi.Input<String>? planStartDate;
-
   /// The type of the Plan. Valid values: `PauseResume`, `Resize`.
   final pulumi.Input<String> planType;
-
   /// The Status of the Plan. Valid values: `active`, `cancel`.
   final pulumi.Input<String>? status;
 
@@ -61,18 +53,7 @@ class DbInstancePlanArgs {
     return <String, dynamic>{
       'dbInstanceId': dbInstanceId,
       'dbInstancePlanName': dbInstancePlanName,
-      'planConfigs':
-          pulumi.Input.mapInputValue<
-            List<DbInstancePlanPlanConfig>,
-            List<Map<String, dynamic>>
-          >(
-            planConfigs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  DbInstancePlanPlanConfig,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'planConfigs': pulumi.Input.mapInputValue<List<DbInstancePlanPlanConfig>, List<Map<String, dynamic>>>(planConfigs, (value) => pulumi.Input.encodeList<DbInstancePlanPlanConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'planDesc': ?planDesc,
       'planEndDate': ?planEndDate,
       'planScheduleType': planScheduleType,
@@ -85,41 +66,15 @@ class DbInstancePlanArgs {
   factory DbInstancePlanArgs.fromMap(Map<String, dynamic> map) {
     return DbInstancePlanArgs(
       dbInstanceId: pulumi.Input.fromValue(map['dbInstanceId'] as String),
-      dbInstancePlanName: pulumi.Input.fromValue(
-        map['dbInstancePlanName'] as String,
-      ),
-      planConfigs: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<DbInstancePlanPlanConfig>(
-          map['planConfigs']!,
-          (value) => DbInstancePlanPlanConfig.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      planDesc: (() {
-        final guardedValue = map['planDesc'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      planEndDate: (() {
-        final guardedValue = map['planEndDate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      planScheduleType: pulumi.Input.fromValue(
-        map['planScheduleType'] as String,
-      ),
-      planStartDate: (() {
-        final guardedValue = map['planStartDate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dbInstancePlanName: pulumi.Input.fromValue(map['dbInstancePlanName'] as String),
+      planConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<DbInstancePlanPlanConfig>(map['planConfigs']!, (value) => DbInstancePlanPlanConfig.fromMap((value as Map).cast<String, dynamic>()))),
+      planDesc: (() { final guardedValue = map['planDesc']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      planEndDate: (() { final guardedValue = map['planEndDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      planScheduleType: pulumi.Input.fromValue(map['planScheduleType'] as String),
+      planStartDate: (() { final guardedValue = map['planStartDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       planType: pulumi.Input.fromValue(map['planType'] as String),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

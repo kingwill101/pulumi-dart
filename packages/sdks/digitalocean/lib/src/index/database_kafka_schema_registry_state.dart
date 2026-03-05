@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatabaseKafkaSchemaRegistryState {
   /// The ID of the target Kafka cluster.
   final pulumi.Input<String>? clusterId;
-
   /// The schema definition as a string.
   final pulumi.Input<String>? schema;
-
   /// The schema type. Available values are: avro, json, or protobuf.
   final pulumi.Input<String>? schemaType;
-
   /// The name of the schema subject.
   final pulumi.Input<String>? subjectName;
 
@@ -39,26 +36,11 @@ class DatabaseKafkaSchemaRegistryState {
 
   factory DatabaseKafkaSchemaRegistryState.fromMap(Map<String, dynamic> map) {
     return DatabaseKafkaSchemaRegistryState(
-      clusterId: (() {
-        final guardedValue = map['clusterId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      schema: (() {
-        final guardedValue = map['schema'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      schemaType: (() {
-        final guardedValue = map['schemaType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subjectName: (() {
-        final guardedValue = map['subjectName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      clusterId: (() { final guardedValue = map['clusterId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      schema: (() { final guardedValue = map['schema']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      schemaType: (() { final guardedValue = map['schemaType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subjectName: (() { final guardedValue = map['subjectName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

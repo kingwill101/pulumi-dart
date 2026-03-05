@@ -273,22 +273,16 @@ import 'storage_insights_state.dart';
 class StorageInsights extends pulumi.CustomResource {
   /// The names of the blob containers that the workspace should read.
   late final pulumi.Output<List<String>?> blobContainerNames;
-
   /// The name which should be used for this Log Analytics Storage Insights. Changing this forces a new Log Analytics Storage Insights to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the Resource Group where the Log Analytics Storage Insights should exist. Changing this forces a new Log Analytics Storage Insights to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The ID of the Storage Account used by this Log Analytics Storage Insights.
   late final pulumi.Output<String> storageAccountId;
-
   /// The storage access key to be used to connect to the storage account.
   late final pulumi.Output<String> storageAccountKey;
-
   /// The names of the Azure tables that the workspace should read.
   late final pulumi.Output<List<String>?> tableNames;
-
   /// The ID of the Log Analytics Workspace within which the Storage Insights should exist. Changing this forces a new Log Analytics Storage Insights to be created.
   late final pulumi.Output<String> workspaceId;
 
@@ -301,11 +295,11 @@ class StorageInsights extends pulumi.CustomResource {
     StorageInsightsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:loganalytics/storageInsights:StorageInsights',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:loganalytics/storageInsights:StorageInsights',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     blobContainerNames = registerOutput<List<String>?>('blobContainerNames');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -333,11 +327,11 @@ class StorageInsights extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:loganalytics/storageInsights:StorageInsights',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:loganalytics/storageInsights:StorageInsights',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     blobContainerNames = registerOutput<List<String>?>('blobContainerNames');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');

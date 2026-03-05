@@ -6,10 +6,8 @@ import 'jit_network_access_port_rule_response.dart';
 class JitNetworkAccessPolicyVirtualMachineResponse {
   /// Resource ID of the virtual machine that is linked to this policy
   final pulumi.Input<String> id;
-
   /// Port configurations for the virtual machine
   final pulumi.Input<List<JitNetworkAccessPortRuleResponse>> ports;
-
   /// Public IP address of the Azure Firewall that is linked to this policy, if applicable
   final pulumi.Input<String>? publicIpAddress;
 
@@ -26,40 +24,17 @@ class JitNetworkAccessPolicyVirtualMachineResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'ports':
-          pulumi.Input.mapInputValue<
-            List<JitNetworkAccessPortRuleResponse>,
-            List<Map<String, dynamic>>
-          >(
-            ports,
-            (value) =>
-                pulumi.Input.encodeList<
-                  JitNetworkAccessPortRuleResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'ports': pulumi.Input.mapInputValue<List<JitNetworkAccessPortRuleResponse>, List<Map<String, dynamic>>>(ports, (value) => pulumi.Input.encodeList<JitNetworkAccessPortRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'publicIpAddress': ?publicIpAddress,
     };
   }
 
-  factory JitNetworkAccessPolicyVirtualMachineResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory JitNetworkAccessPolicyVirtualMachineResponse.fromMap(Map<String, dynamic> map) {
     return JitNetworkAccessPolicyVirtualMachineResponse(
       id: pulumi.Input.fromValue(map['id'] as String),
-      ports: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<JitNetworkAccessPortRuleResponse>(
-          map['ports']!,
-          (value) => JitNetworkAccessPortRuleResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      publicIpAddress: (() {
-        final guardedValue = map['publicIpAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ports: pulumi.Input.fromValue(pulumi.Input.decodeList<JitNetworkAccessPortRuleResponse>(map['ports']!, (value) => JitNetworkAccessPortRuleResponse.fromMap((value as Map).cast<String, dynamic>()))),
+      publicIpAddress: (() { final guardedValue = map['publicIpAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

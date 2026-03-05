@@ -9,21 +9,20 @@ class DefenderCspmAwsOfferingResponseCiemDiscovery {
 
   /// Creates a new [DefenderCspmAwsOfferingResponseCiemDiscovery].
   /// [cloudRoleArn] The cloud role ARN in AWS for Permissions Management discovery
-  DefenderCspmAwsOfferingResponseCiemDiscovery({this.cloudRoleArn});
+  DefenderCspmAwsOfferingResponseCiemDiscovery({
+    this.cloudRoleArn,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'cloudRoleArn': ?cloudRoleArn};
+    return <String, dynamic>{
+      'cloudRoleArn': ?cloudRoleArn,
+    };
   }
 
-  factory DefenderCspmAwsOfferingResponseCiemDiscovery.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DefenderCspmAwsOfferingResponseCiemDiscovery.fromMap(Map<String, dynamic> map) {
     return DefenderCspmAwsOfferingResponseCiemDiscovery(
-      cloudRoleArn: (() {
-        final guardedValue = map['cloudRoleArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      cloudRoleArn: (() { final guardedValue = map['cloudRoleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

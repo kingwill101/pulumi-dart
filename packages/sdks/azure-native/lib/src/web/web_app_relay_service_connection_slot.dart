@@ -20,16 +20,13 @@ class WebAppRelayServiceConnectionSlot extends pulumi.CustomResource {
   late final pulumi.Output<String?> entityConnectionString;
   late final pulumi.Output<String?> entityName;
   late final pulumi.Output<String?> hostname;
-
   /// Kind of resource.
   late final pulumi.Output<String?> kind;
-
   /// Resource Name.
   late final pulumi.Output<String> name;
   late final pulumi.Output<int?> port;
   late final pulumi.Output<String?> resourceConnectionString;
   late final pulumi.Output<String?> resourceType;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -42,11 +39,11 @@ class WebAppRelayServiceConnectionSlot extends pulumi.CustomResource {
     WebAppRelayServiceConnectionSlotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:web:WebAppRelayServiceConnectionSlot',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:web:WebAppRelayServiceConnectionSlot',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     biztalkUri = registerOutput<String?>('biztalkUri');
     entityConnectionString = registerOutput<String?>('entityConnectionString');
@@ -55,9 +52,7 @@ class WebAppRelayServiceConnectionSlot extends pulumi.CustomResource {
     kind = registerOutput<String?>('kind');
     this.name = registerOutput<String>('name');
     port = registerOutput<int?>('port');
-    resourceConnectionString = registerOutput<String?>(
-      'resourceConnectionString',
-    );
+    resourceConnectionString = registerOutput<String?>('resourceConnectionString');
     resourceType = registerOutput<String?>('resourceType');
     type = registerOutput<String>('type');
   }

@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketCorsRule {
   /// Specifies which headers are allowed.
   final pulumi.Input<List<String>>? allowedHeaders;
-
   /// Specifies which methods are allowed. Can be GET, PUT, POST, DELETE or HEAD.
   final pulumi.Input<List<String>> allowedMethods;
-
   /// Specifies which origins are allowed.
   final pulumi.Input<List<String>> allowedOrigins;
-
   /// Specifies expose header in the response.
   final pulumi.Input<List<String>>? exposeHeaders;
-
   /// Specifies time in seconds that browser can cache the response for a preflight request.
   final pulumi.Input<int>? maxAgeSeconds;
 
@@ -44,27 +40,12 @@ class BucketCorsRule {
 
   factory BucketCorsRule.fromMap(Map<String, dynamic> map) {
     return BucketCorsRule(
-      allowedHeaders: (() {
-        final guardedValue = map['allowedHeaders'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      allowedMethods: pulumi.Input.fromValue(
-        (map['allowedMethods'] as List).cast<String>(),
-      ),
-      allowedOrigins: pulumi.Input.fromValue(
-        (map['allowedOrigins'] as List).cast<String>(),
-      ),
-      exposeHeaders: (() {
-        final guardedValue = map['exposeHeaders'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      maxAgeSeconds: (() {
-        final guardedValue = map['maxAgeSeconds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      allowedHeaders: (() { final guardedValue = map['allowedHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      allowedMethods: pulumi.Input.fromValue((map['allowedMethods'] as List).cast<String>()),
+      allowedOrigins: pulumi.Input.fromValue((map['allowedOrigins'] as List).cast<String>()),
+      exposeHeaders: (() { final guardedValue = map['exposeHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      maxAgeSeconds: (() { final guardedValue = map['maxAgeSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

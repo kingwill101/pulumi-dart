@@ -8,19 +8,20 @@ class VirtualServiceSpecProviderVirtualRouter {
 
   /// Creates a new [VirtualServiceSpecProviderVirtualRouter].
   /// [virtualRouterName] Name of the virtual router that is acting as a service provider. Must be between 1 and 255 characters in length.
-  VirtualServiceSpecProviderVirtualRouter({required this.virtualRouterName});
+  VirtualServiceSpecProviderVirtualRouter({
+    required this.virtualRouterName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'virtualRouterName': virtualRouterName};
+    return <String, dynamic>{
+      'virtualRouterName': virtualRouterName,
+    };
   }
 
-  factory VirtualServiceSpecProviderVirtualRouter.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VirtualServiceSpecProviderVirtualRouter.fromMap(Map<String, dynamic> map) {
     return VirtualServiceSpecProviderVirtualRouter(
-      virtualRouterName: pulumi.Input.fromValue(
-        map['virtualRouterName'] as String,
-      ),
+      virtualRouterName: pulumi.Input.fromValue(map['virtualRouterName'] as String),
     );
   }
 }
+

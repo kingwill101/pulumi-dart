@@ -9,10 +9,14 @@ class FileIODetailsResponse {
 
   /// Creates a new [FileIODetailsResponse].
   /// [filePattern] File Pattern used to access files by the connector.
-  FileIODetailsResponse({required this.filePattern});
+  FileIODetailsResponse({
+    required this.filePattern,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'filePattern': filePattern};
+    return <String, dynamic>{
+      'filePattern': filePattern,
+    };
   }
 
   factory FileIODetailsResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class FileIODetailsResponse {
     );
   }
 }
+

@@ -9,19 +9,20 @@ class FormulaPropertiesFromVmResponse {
 
   /// Creates a new [FormulaPropertiesFromVmResponse].
   /// [labVmId] The identifier of the VM from which a formula is to be created.
-  FormulaPropertiesFromVmResponse({this.labVmId});
+  FormulaPropertiesFromVmResponse({
+    this.labVmId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'labVmId': ?labVmId};
+    return <String, dynamic>{
+      'labVmId': ?labVmId,
+    };
   }
 
   factory FormulaPropertiesFromVmResponse.fromMap(Map<String, dynamic> map) {
     return FormulaPropertiesFromVmResponse(
-      labVmId: (() {
-        final guardedValue = map['labVmId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      labVmId: (() { final guardedValue = map['labVmId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

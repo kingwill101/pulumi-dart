@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FirehoseDeliveryStreamIcebergConfigurationCloudwatchLoggingOptions {
   /// Enables or disables the logging. Defaults to `false`.
   final pulumi.Input<bool>? enabled;
-
   /// The CloudWatch group name for logging. This value is required if `enabled` is true.
   final pulumi.Input<String>? logGroupName;
-
   /// The CloudWatch log stream name for logging. This value is required if `enabled` is true.
   final pulumi.Input<String>? logStreamName;
 
@@ -30,25 +28,12 @@ class FirehoseDeliveryStreamIcebergConfigurationCloudwatchLoggingOptions {
     };
   }
 
-  factory FirehoseDeliveryStreamIcebergConfigurationCloudwatchLoggingOptions.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FirehoseDeliveryStreamIcebergConfigurationCloudwatchLoggingOptions.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamIcebergConfigurationCloudwatchLoggingOptions(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      logGroupName: (() {
-        final guardedValue = map['logGroupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      logStreamName: (() {
-        final guardedValue = map['logStreamName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      logGroupName: (() { final guardedValue = map['logGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      logStreamName: (() { final guardedValue = map['logStreamName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

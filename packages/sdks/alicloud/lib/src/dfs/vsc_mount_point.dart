@@ -245,16 +245,12 @@ import 'vsc_mount_point_state.dart';
 class VscMountPoint extends pulumi.CustomResource {
   /// Mount point alias prefix, which is used as the prefix for generating VSC mount point aliases.
   late final pulumi.Output<String?> aliasPrefix;
-
   /// The description of the Mount point.  The length is 0 to 100 characters.
   late final pulumi.Output<String?> description;
-
   /// The ID of the HDFS file system resource associated with the VSC mount point.
   late final pulumi.Output<String> fileSystemId;
-
   /// The collection of ECS instances on which the HDFS file system is mounted. **The current property is not available**.
   late final pulumi.Output<List<Map<String, dynamic>>> instances;
-
   /// VSC mount point ID, which is the unique identifier of the vsc mount point and is used to access the associated HDFS file system.
   late final pulumi.Output<String> mountPointId;
 
@@ -267,11 +263,11 @@ class VscMountPoint extends pulumi.CustomResource {
     VscMountPointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dfs/vscMountPoint:VscMountPoint',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dfs/vscMountPoint:VscMountPoint',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aliasPrefix = registerOutput<String?>('aliasPrefix');
     description = registerOutput<String?>('description');
     fileSystemId = registerOutput<String>('fileSystemId');
@@ -297,11 +293,11 @@ class VscMountPoint extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dfs/vscMountPoint:VscMountPoint',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dfs/vscMountPoint:VscMountPoint',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aliasPrefix = registerOutput<String?>('aliasPrefix');
     description = registerOutput<String?>('description');
     fileSystemId = registerOutput<String>('fileSystemId');

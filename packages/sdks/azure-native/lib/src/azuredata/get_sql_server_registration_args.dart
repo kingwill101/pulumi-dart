@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSqlServerRegistrationArgs {
   /// Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
-
   /// Name of the SQL Server registration.
   final pulumi.Input<String> sqlServerRegistrationName;
 
@@ -30,12 +29,9 @@ class GetSqlServerRegistrationArgs {
 
   factory GetSqlServerRegistrationArgs.fromMap(Map<String, dynamic> map) {
     return GetSqlServerRegistrationArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      sqlServerRegistrationName: pulumi.Input.fromValue(
-        map['sqlServerRegistrationName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      sqlServerRegistrationName: pulumi.Input.fromValue(map['sqlServerRegistrationName'] as String),
     );
   }
 }
+

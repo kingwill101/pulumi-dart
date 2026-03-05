@@ -11,10 +11,14 @@ class GetTagKeyIamPolicyArgs {
 
   /// Creates a new [GetTagKeyIamPolicyArgs].
   /// [tagKeyId] Required.
-  GetTagKeyIamPolicyArgs({required this.tagKeyId});
+  GetTagKeyIamPolicyArgs({
+    required this.tagKeyId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'tagKeyId': tagKeyId};
+    return <String, dynamic>{
+      'tagKeyId': tagKeyId,
+    };
   }
 
   factory GetTagKeyIamPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -23,3 +27,4 @@ class GetTagKeyIamPolicyArgs {
     );
   }
 }
+

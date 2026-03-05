@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KeyVaultPrivateEndpointResponse {
   /// Identifier of the private endpoint to reach the Azure Key Vault
   final pulumi.Input<String>? privateEndpointId;
-
   /// Identifier for the virtual network id
   final pulumi.Input<String>? virtualNetworkId;
 
@@ -27,16 +26,9 @@ class KeyVaultPrivateEndpointResponse {
 
   factory KeyVaultPrivateEndpointResponse.fromMap(Map<String, dynamic> map) {
     return KeyVaultPrivateEndpointResponse(
-      privateEndpointId: (() {
-        final guardedValue = map['privateEndpointId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      virtualNetworkId: (() {
-        final guardedValue = map['virtualNetworkId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      privateEndpointId: (() { final guardedValue = map['privateEndpointId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      virtualNetworkId: (() { final guardedValue = map['virtualNetworkId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

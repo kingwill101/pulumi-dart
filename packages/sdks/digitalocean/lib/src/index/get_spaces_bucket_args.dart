@@ -9,17 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSpacesBucketArgs {
   /// The name of the Spaces bucket.
   final pulumi.Input<String> name;
-
   /// The slug of the region where the bucket is stored.
   final pulumi.Input<String> region;
 
   /// Creates a new [GetSpacesBucketArgs].
   /// [name] The name of the Spaces bucket.
   /// [region] The slug of the region where the bucket is stored.
-  GetSpacesBucketArgs({required this.name, required this.region});
+  GetSpacesBucketArgs({
+    required this.name,
+    required this.region,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'region': region};
+    return <String, dynamic>{
+      'name': name,
+      'region': region,
+    };
   }
 
   factory GetSpacesBucketArgs.fromMap(Map<String, dynamic> map) {
@@ -29,3 +34,4 @@ class GetSpacesBucketArgs {
     );
   }
 }
+

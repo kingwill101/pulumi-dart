@@ -9,10 +9,14 @@ class CloudRunLocationResponse {
 
   /// Creates a new [CloudRunLocationResponse].
   /// [location] The location for the Cloud Run Service. Format must be `projects/{project}/locations/{location}`.
-  CloudRunLocationResponse({required this.location});
+  CloudRunLocationResponse({
+    required this.location,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'location': location};
+    return <String, dynamic>{
+      'location': location,
+    };
   }
 
   factory CloudRunLocationResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class CloudRunLocationResponse {
     );
   }
 }
+

@@ -15,3 +15,4 @@ enum FavoriteType {
     throw ArgumentError('Unknown FavoriteType value: $value');
   }
 }
+

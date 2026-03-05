@@ -10,20 +10,15 @@ import 'alerts_data_type_of_data_connector.dart';
 class ASCDataConnectorArgs {
   /// Connector ID
   final pulumi.Input<String>? dataConnectorId;
-
   /// The available data types for the connector.
   final pulumi.Input<AlertsDataTypeOfDataConnector>? dataTypes;
-
   /// The kind of the data connector
   /// Expected value is 'AzureSecurityCenter'.
   final pulumi.Input<String> kind;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The subscription id to connect to, and get the data from.
   final pulumi.Input<String>? subscriptionId;
-
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -46,11 +41,7 @@ class ASCDataConnectorArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'dataConnectorId': ?dataConnectorId,
-      'dataTypes':
-          ?pulumi.Input.mapOptionalInputValue<
-            AlertsDataTypeOfDataConnector,
-            Map<String, dynamic>
-          >(dataTypes, (value) => value.toMap()),
+      'dataTypes': ?pulumi.Input.mapOptionalInputValue<AlertsDataTypeOfDataConnector, Map<String, dynamic>>(dataTypes, (value) => value.toMap()),
       'kind': kind,
       'resourceGroupName': resourceGroupName,
       'subscriptionId': ?subscriptionId,
@@ -60,30 +51,13 @@ class ASCDataConnectorArgs {
 
   factory ASCDataConnectorArgs.fromMap(Map<String, dynamic> map) {
     return ASCDataConnectorArgs(
-      dataConnectorId: (() {
-        final guardedValue = map['dataConnectorId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dataTypes: (() {
-        final guardedValue = map['dataTypes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AlertsDataTypeOfDataConnector.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      dataConnectorId: (() { final guardedValue = map['dataConnectorId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dataTypes: (() { final guardedValue = map['dataTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AlertsDataTypeOfDataConnector.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       kind: pulumi.Input.fromValue(map['kind'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      subscriptionId: (() {
-        final guardedValue = map['subscriptionId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      subscriptionId: (() { final guardedValue = map['subscriptionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
+

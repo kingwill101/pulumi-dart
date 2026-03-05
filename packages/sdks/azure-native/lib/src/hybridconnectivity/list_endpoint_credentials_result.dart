@@ -1,22 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by listEndpointCredentials.
 class ListEndpointCredentialsResult {
   /// Access key for hybrid connection.
   final String accessKey;
-
   /// The expiration of access key in unix time.
   final double? expiresOn;
-
   /// Azure Relay hybrid connection name for the resource.
   final String hybridConnectionName;
-
   /// The namespace name.
   final String namespaceName;
-
   /// The suffix domain name of relay namespace.
   final String namespaceNameSuffix;
-
   /// The token to access the enabled service.
   final String? serviceConfigurationToken;
 
@@ -50,19 +46,12 @@ class ListEndpointCredentialsResult {
   factory ListEndpointCredentialsResult.fromMap(Map<String, dynamic> map) {
     return ListEndpointCredentialsResult(
       accessKey: map['accessKey'] as String,
-      expiresOn: (() {
-        final guardedValue = map['expiresOn'];
-        if (guardedValue == null) return null;
-        return guardedValue as double;
-      })(),
+      expiresOn: (() { final guardedValue = map['expiresOn']; if (guardedValue == null) return null; return guardedValue as double; })(),
       hybridConnectionName: map['hybridConnectionName'] as String,
       namespaceName: map['namespaceName'] as String,
       namespaceNameSuffix: map['namespaceNameSuffix'] as String,
-      serviceConfigurationToken: (() {
-        final guardedValue = map['serviceConfigurationToken'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      serviceConfigurationToken: (() { final guardedValue = map['serviceConfigurationToken']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

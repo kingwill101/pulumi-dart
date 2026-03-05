@@ -7,34 +7,24 @@ import 'api_error_response.dart';
 class LastPatchInstallationSummaryResponse {
   /// The errors that were encountered during execution of the operation. The details array contains the list of them.
   final pulumi.Input<ApiErrorResponse> error;
-
   /// The number of all available patches but excluded explicitly by a customer-specified exclusion list match.
   final pulumi.Input<int> excludedPatchCount;
-
   /// The count of patches that failed installation.
   final pulumi.Input<int> failedPatchCount;
-
   /// The activity ID of the operation that produced this result. It is used to correlate across CRP and extension logs.
   final pulumi.Input<String> installationActivityId;
-
   /// The count of patches that successfully installed.
   final pulumi.Input<int> installedPatchCount;
-
   /// The UTC timestamp when the operation began.
   final pulumi.Input<String> lastModifiedTime;
-
   /// Describes whether the operation ran out of time before it completed all its intended actions
   final pulumi.Input<bool> maintenanceWindowExceeded;
-
   /// The number of all available patches but not going to be installed because it didn't match a classification or inclusion list entry.
   final pulumi.Input<int> notSelectedPatchCount;
-
   /// The number of all available patches expected to be installed over the course of the patch installation operation.
   final pulumi.Input<int> pendingPatchCount;
-
   /// The UTC timestamp when the operation began.
   final pulumi.Input<String> startTime;
-
   /// The overall success or failure status of the operation. It remains "InProgress" until the operation completes. At that point it will become "Unknown", "Failed", "Succeeded", or "CompletedWithWarnings."
   final pulumi.Input<String> status;
 
@@ -66,11 +56,7 @@ class LastPatchInstallationSummaryResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'error':
-          pulumi.Input.mapInputValue<ApiErrorResponse, Map<String, dynamic>>(
-            error,
-            (value) => value.toMap(),
-          ),
+      'error': pulumi.Input.mapInputValue<ApiErrorResponse, Map<String, dynamic>>(error, (value) => value.toMap()),
       'excludedPatchCount': excludedPatchCount,
       'failedPatchCount': failedPatchCount,
       'installationActivityId': installationActivityId,
@@ -84,39 +70,20 @@ class LastPatchInstallationSummaryResponse {
     };
   }
 
-  factory LastPatchInstallationSummaryResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LastPatchInstallationSummaryResponse.fromMap(Map<String, dynamic> map) {
     return LastPatchInstallationSummaryResponse(
-      error: pulumi.Input.fromValue(
-        ApiErrorResponse.fromMap(
-          (map['error']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      excludedPatchCount: pulumi.Input.fromValue(
-        map['excludedPatchCount'] as int,
-      ),
+      error: pulumi.Input.fromValue(ApiErrorResponse.fromMap((map['error']! as Map).cast<String, dynamic>())),
+      excludedPatchCount: pulumi.Input.fromValue(map['excludedPatchCount'] as int),
       failedPatchCount: pulumi.Input.fromValue(map['failedPatchCount'] as int),
-      installationActivityId: pulumi.Input.fromValue(
-        map['installationActivityId'] as String,
-      ),
-      installedPatchCount: pulumi.Input.fromValue(
-        map['installedPatchCount'] as int,
-      ),
-      lastModifiedTime: pulumi.Input.fromValue(
-        map['lastModifiedTime'] as String,
-      ),
-      maintenanceWindowExceeded: pulumi.Input.fromValue(
-        map['maintenanceWindowExceeded'] as bool,
-      ),
-      notSelectedPatchCount: pulumi.Input.fromValue(
-        map['notSelectedPatchCount'] as int,
-      ),
-      pendingPatchCount: pulumi.Input.fromValue(
-        map['pendingPatchCount'] as int,
-      ),
+      installationActivityId: pulumi.Input.fromValue(map['installationActivityId'] as String),
+      installedPatchCount: pulumi.Input.fromValue(map['installedPatchCount'] as int),
+      lastModifiedTime: pulumi.Input.fromValue(map['lastModifiedTime'] as String),
+      maintenanceWindowExceeded: pulumi.Input.fromValue(map['maintenanceWindowExceeded'] as bool),
+      notSelectedPatchCount: pulumi.Input.fromValue(map['notSelectedPatchCount'] as int),
+      pendingPatchCount: pulumi.Input.fromValue(map['pendingPatchCount'] as int),
       startTime: pulumi.Input.fromValue(map['startTime'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
+

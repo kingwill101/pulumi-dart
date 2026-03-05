@@ -32,12 +32,9 @@ class GetTableIamPolicyArgs {
   factory GetTableIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetTableIamPolicyArgs(
       datasetId: pulumi.Input.fromValue(map['datasetId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tableId: pulumi.Input.fromValue(map['tableId'] as String),
     );
   }
 }
+

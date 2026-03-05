@@ -9,15 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegionDiskResourcePolicyAttachmentArgs {
   /// The name of the regional disk in which the resource policies are attached to.
   final pulumi.Input<String> disk;
-
   /// The resource policy to be attached to the disk for scheduling snapshot
   /// creation. Do not specify the self link.
   final pulumi.Input<String>? name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// A reference to the region where the disk resides.
   final pulumi.Input<String>? region;
 
@@ -42,26 +39,13 @@ class RegionDiskResourcePolicyAttachmentArgs {
     };
   }
 
-  factory RegionDiskResourcePolicyAttachmentArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RegionDiskResourcePolicyAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return RegionDiskResourcePolicyAttachmentArgs(
       disk: pulumi.Input.fromValue(map['disk'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

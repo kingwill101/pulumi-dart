@@ -9,21 +9,14 @@ import 'google_cloud_dataplex_v1_storage_format_json_options_response.dart';
 class GoogleCloudDataplexV1StorageFormatResponse {
   /// Optional. The compression type associated with the stored data. If unspecified, the data is uncompressed.
   final pulumi.Input<String> compressionFormat;
-
   /// Optional. Additional information about CSV formatted data.
   final pulumi.Input<GoogleCloudDataplexV1StorageFormatCsvOptionsResponse> csv;
-
   /// The data format associated with the stored data, which represents content type values. The value is inferred from mime type.
   final pulumi.Input<String> format;
-
   /// Optional. Additional information about iceberg tables.
-  final pulumi.Input<GoogleCloudDataplexV1StorageFormatIcebergOptionsResponse>
-  iceberg;
-
+  final pulumi.Input<GoogleCloudDataplexV1StorageFormatIcebergOptionsResponse> iceberg;
   /// Optional. Additional information about CSV formatted data.
-  final pulumi.Input<GoogleCloudDataplexV1StorageFormatJsonOptionsResponse>
-  json;
-
+  final pulumi.Input<GoogleCloudDataplexV1StorageFormatJsonOptionsResponse> json;
   /// The mime type descriptor for the data. Must match the pattern {type}/{subtype}. Supported values: application/x-parquet application/x-avro application/x-orc application/x-tfrecord application/x-parquet+iceberg application/x-avro+iceberg application/x-orc+iceberg application/json application/{subtypes} text/csv text/ image/{image subtype} video/{video subtype} audio/{audio subtype}
   final pulumi.Input<String> mimeType;
 
@@ -46,50 +39,23 @@ class GoogleCloudDataplexV1StorageFormatResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'compressionFormat': compressionFormat,
-      'csv':
-          pulumi.Input.mapInputValue<
-            GoogleCloudDataplexV1StorageFormatCsvOptionsResponse,
-            Map<String, dynamic>
-          >(csv, (value) => value.toMap()),
+      'csv': pulumi.Input.mapInputValue<GoogleCloudDataplexV1StorageFormatCsvOptionsResponse, Map<String, dynamic>>(csv, (value) => value.toMap()),
       'format': format,
-      'iceberg':
-          pulumi.Input.mapInputValue<
-            GoogleCloudDataplexV1StorageFormatIcebergOptionsResponse,
-            Map<String, dynamic>
-          >(iceberg, (value) => value.toMap()),
-      'json':
-          pulumi.Input.mapInputValue<
-            GoogleCloudDataplexV1StorageFormatJsonOptionsResponse,
-            Map<String, dynamic>
-          >(json, (value) => value.toMap()),
+      'iceberg': pulumi.Input.mapInputValue<GoogleCloudDataplexV1StorageFormatIcebergOptionsResponse, Map<String, dynamic>>(iceberg, (value) => value.toMap()),
+      'json': pulumi.Input.mapInputValue<GoogleCloudDataplexV1StorageFormatJsonOptionsResponse, Map<String, dynamic>>(json, (value) => value.toMap()),
       'mimeType': mimeType,
     };
   }
 
-  factory GoogleCloudDataplexV1StorageFormatResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDataplexV1StorageFormatResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1StorageFormatResponse(
-      compressionFormat: pulumi.Input.fromValue(
-        map['compressionFormat'] as String,
-      ),
-      csv: pulumi.Input.fromValue(
-        GoogleCloudDataplexV1StorageFormatCsvOptionsResponse.fromMap(
-          (map['csv']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      compressionFormat: pulumi.Input.fromValue(map['compressionFormat'] as String),
+      csv: pulumi.Input.fromValue(GoogleCloudDataplexV1StorageFormatCsvOptionsResponse.fromMap((map['csv']! as Map).cast<String, dynamic>())),
       format: pulumi.Input.fromValue(map['format'] as String),
-      iceberg: pulumi.Input.fromValue(
-        GoogleCloudDataplexV1StorageFormatIcebergOptionsResponse.fromMap(
-          (map['iceberg']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      json: pulumi.Input.fromValue(
-        GoogleCloudDataplexV1StorageFormatJsonOptionsResponse.fromMap(
-          (map['json']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      iceberg: pulumi.Input.fromValue(GoogleCloudDataplexV1StorageFormatIcebergOptionsResponse.fromMap((map['iceberg']! as Map).cast<String, dynamic>())),
+      json: pulumi.Input.fromValue(GoogleCloudDataplexV1StorageFormatJsonOptionsResponse.fromMap((map['json']! as Map).cast<String, dynamic>())),
       mimeType: pulumi.Input.fromValue(map['mimeType'] as String),
     );
   }
 }
+

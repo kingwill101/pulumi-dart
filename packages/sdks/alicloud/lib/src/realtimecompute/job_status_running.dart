@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JobStatusRunning {
   /// Number of job restarts
   final pulumi.Input<int>? observedFlinkJobRestarts;
-
   /// Flink job status
   final pulumi.Input<String>? observedFlinkJobStatus;
 
@@ -26,16 +25,9 @@ class JobStatusRunning {
 
   factory JobStatusRunning.fromMap(Map<String, dynamic> map) {
     return JobStatusRunning(
-      observedFlinkJobRestarts: (() {
-        final guardedValue = map['observedFlinkJobRestarts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      observedFlinkJobStatus: (() {
-        final guardedValue = map['observedFlinkJobStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      observedFlinkJobRestarts: (() { final guardedValue = map['observedFlinkJobRestarts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      observedFlinkJobStatus: (() { final guardedValue = map['observedFlinkJobStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

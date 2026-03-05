@@ -172,34 +172,24 @@ import 'system_topic_args.dart';
 class SystemTopic extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Identity information for the resource.
   late final pulumi.Output<IdentityInfoResponse?> identity;
-
   /// Location of the resource.
   late final pulumi.Output<String> location;
-
   /// Metric resource id for the system topic.
   late final pulumi.Output<String> metricResourceId;
-
   /// Name of the resource.
   late final pulumi.Output<String> name;
-
   /// Provisioning state of the system topic.
   late final pulumi.Output<String> provisioningState;
-
   /// Source for the system topic.
   late final pulumi.Output<String?> source;
-
   /// The system metadata relating to the Event Grid resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Tags of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// TopicType for the system topic.
   late final pulumi.Output<String?> topicType;
-
   /// Type of the resource.
   late final pulumi.Output<String> type;
 
@@ -212,37 +202,19 @@ class SystemTopic extends pulumi.CustomResource {
     SystemTopicArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:eventgrid:SystemTopic',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:eventgrid:SystemTopic',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    identity = registerOutput<IdentityInfoResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IdentityInfoResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<IdentityInfoResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     metricResourceId = registerOutput<String>('metricResourceId');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     source = registerOutput<String?>('source');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     topicType = registerOutput<String?>('topicType');
     type = registerOutput<String>('type');

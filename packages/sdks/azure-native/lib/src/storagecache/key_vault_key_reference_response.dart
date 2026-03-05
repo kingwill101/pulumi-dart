@@ -7,7 +7,6 @@ import 'key_vault_key_reference_response_source_vault.dart';
 class KeyVaultKeyReferenceResponse {
   /// The URL referencing a key encryption key in key vault.
   final pulumi.Input<String> keyUrl;
-
   /// Describes a resource Id to source key vault.
   final pulumi.Input<KeyVaultKeyReferenceResponseSourceVault> sourceVault;
 
@@ -22,22 +21,15 @@ class KeyVaultKeyReferenceResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'keyUrl': keyUrl,
-      'sourceVault':
-          pulumi.Input.mapInputValue<
-            KeyVaultKeyReferenceResponseSourceVault,
-            Map<String, dynamic>
-          >(sourceVault, (value) => value.toMap()),
+      'sourceVault': pulumi.Input.mapInputValue<KeyVaultKeyReferenceResponseSourceVault, Map<String, dynamic>>(sourceVault, (value) => value.toMap()),
     };
   }
 
   factory KeyVaultKeyReferenceResponse.fromMap(Map<String, dynamic> map) {
     return KeyVaultKeyReferenceResponse(
       keyUrl: pulumi.Input.fromValue(map['keyUrl'] as String),
-      sourceVault: pulumi.Input.fromValue(
-        KeyVaultKeyReferenceResponseSourceVault.fromMap(
-          (map['sourceVault']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      sourceVault: pulumi.Input.fromValue(KeyVaultKeyReferenceResponseSourceVault.fromMap((map['sourceVault']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

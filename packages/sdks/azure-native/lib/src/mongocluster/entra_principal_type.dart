@@ -15,3 +15,4 @@ enum EntraPrincipalType {
     throw ArgumentError('Unknown EntraPrincipalType value: $value');
   }
 }
+

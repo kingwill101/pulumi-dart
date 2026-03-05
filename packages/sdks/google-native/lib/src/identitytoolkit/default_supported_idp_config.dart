@@ -5,23 +5,15 @@ import 'google_cloud_identitytoolkit_admin_v2_apple_sign_in_config_response.dart
 /// Create a default supported Idp configuration for an Identity Toolkit project.
 class DefaultSupportedIdpConfig extends pulumi.CustomResource {
   /// Additional config for Apple-based projects.
-  late final pulumi.Output<
-    GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigResponse
-  >
-  appleSignInConfig;
-
+  late final pulumi.Output<GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigResponse> appleSignInConfig;
   /// OAuth client ID.
   late final pulumi.Output<String> clientId;
-
   /// OAuth client secret.
   late final pulumi.Output<String> clientSecret;
-
   /// True if allows the user to sign in with the provider.
   late final pulumi.Output<bool> enabled;
-
   /// The id of the Idp to create a config for. Call ListDefaultSupportedIdps for list of all default supported Idps.
   late final pulumi.Output<String?> idpId;
-
   /// The name of the DefaultSupportedIdpConfig resource, for example: "projects/my-awesome-project/defaultSupportedIdpConfigs/google.com"
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
@@ -36,24 +28,12 @@ class DefaultSupportedIdpConfig extends pulumi.CustomResource {
     DefaultSupportedIdpConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'google-native:identitytoolkit/v2:DefaultSupportedIdpConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    appleSignInConfig =
-        registerOutput<
-          GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigResponse
-        >(
-          'appleSignInConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'google-native:identitytoolkit/v2:DefaultSupportedIdpConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    appleSignInConfig = registerOutput<GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigResponse>('appleSignInConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clientId = registerOutput<String>('clientId');
     clientSecret = registerOutput<String>('clientSecret');
     enabled = registerOutput<bool>('enabled');

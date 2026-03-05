@@ -26,9 +26,7 @@ class ModelDefinitionModelOptionsResponse {
     };
   }
 
-  factory ModelDefinitionModelOptionsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ModelDefinitionModelOptionsResponse.fromMap(Map<String, dynamic> map) {
     return ModelDefinitionModelOptionsResponse(
       labels: pulumi.Input.fromValue((map['labels'] as List).cast<String>()),
       lossType: pulumi.Input.fromValue(map['lossType'] as String),
@@ -36,3 +34,4 @@ class ModelDefinitionModelOptionsResponse {
     );
   }
 }
+

@@ -14,8 +14,7 @@ enum BasicPerfSampleSeriesPerfMetricType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown BasicPerfSampleSeriesPerfMetricType value: $value',
-    );
+    throw ArgumentError('Unknown BasicPerfSampleSeriesPerfMetricType value: $value');
   }
 }
+

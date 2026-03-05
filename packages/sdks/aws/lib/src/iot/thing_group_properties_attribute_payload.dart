@@ -8,23 +8,20 @@ class ThingGroupPropertiesAttributePayload {
 
   /// Creates a new [ThingGroupPropertiesAttributePayload].
   /// [attributes] Key-value map.
-  ThingGroupPropertiesAttributePayload({this.attributes});
+  ThingGroupPropertiesAttributePayload({
+    this.attributes,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'attributes': ?attributes};
+    return <String, dynamic>{
+      'attributes': ?attributes,
+    };
   }
 
-  factory ThingGroupPropertiesAttributePayload.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ThingGroupPropertiesAttributePayload.fromMap(Map<String, dynamic> map) {
     return ThingGroupPropertiesAttributePayload(
-      attributes: (() {
-        final guardedValue = map['attributes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      attributes: (() { final guardedValue = map['attributes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

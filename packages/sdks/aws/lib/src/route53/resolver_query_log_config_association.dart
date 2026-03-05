@@ -110,10 +110,8 @@ import 'resolver_query_log_config_association_state.dart';
 class ResolverQueryLogConfigAssociation extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The ID of the Route 53 Resolver query logging configuration that you want to associate a VPC with.
   late final pulumi.Output<String> resolverQueryLogConfigId;
-
   /// The ID of a VPC that you want this query logging configuration to log queries for.
   late final pulumi.Output<String> resourceId;
 
@@ -126,15 +124,13 @@ class ResolverQueryLogConfigAssociation extends pulumi.CustomResource {
     ResolverQueryLogConfigAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:route53/resolverQueryLogConfigAssociation:ResolverQueryLogConfigAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:route53/resolverQueryLogConfigAssociation:ResolverQueryLogConfigAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     region = registerOutput<String>('region');
-    resolverQueryLogConfigId = registerOutput<String>(
-      'resolverQueryLogConfigId',
-    );
+    resolverQueryLogConfigId = registerOutput<String>('resolverQueryLogConfigId');
     resourceId = registerOutput<String>('resourceId');
   }
 
@@ -156,15 +152,13 @@ class ResolverQueryLogConfigAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:route53/resolverQueryLogConfigAssociation:ResolverQueryLogConfigAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:route53/resolverQueryLogConfigAssociation:ResolverQueryLogConfigAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     region = registerOutput<String>('region');
-    resolverQueryLogConfigId = registerOutput<String>(
-      'resolverQueryLogConfigId',
-    );
+    resolverQueryLogConfigId = registerOutput<String>('resolverQueryLogConfigId');
     resourceId = registerOutput<String>('resourceId');
   }
 }

@@ -9,16 +9,13 @@ enum GoogleCloudSecuritycenterV1CustomConfigSeverity {
   const GoogleCloudSecuritycenterV1CustomConfigSeverity(this.wireValue);
   final String wireValue;
 
-  static GoogleCloudSecuritycenterV1CustomConfigSeverity fromValue(
-    String value,
-  ) {
+  static GoogleCloudSecuritycenterV1CustomConfigSeverity fromValue(String value) {
     for (final item in GoogleCloudSecuritycenterV1CustomConfigSeverity.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GoogleCloudSecuritycenterV1CustomConfigSeverity value: $value',
-    );
+    throw ArgumentError('Unknown GoogleCloudSecuritycenterV1CustomConfigSeverity value: $value');
   }
 }
+

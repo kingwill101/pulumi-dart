@@ -7,9 +7,7 @@ import 'restore_response_metastore_v1beta.dart';
 /// The metadata management activities of the metastore service.
 class MetadataManagementActivityResponseMetastoreV1beta {
   /// The latest metadata exports of the metastore service.
-  final pulumi.Input<List<MetadataExportResponseMetastoreV1beta>>
-  metadataExports;
-
+  final pulumi.Input<List<MetadataExportResponseMetastoreV1beta>> metadataExports;
   /// The latest restores of the metastore service.
   final pulumi.Input<List<RestoreResponseMetastoreV1beta>> restores;
 
@@ -23,53 +21,16 @@ class MetadataManagementActivityResponseMetastoreV1beta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'metadataExports':
-          pulumi.Input.mapInputValue<
-            List<MetadataExportResponseMetastoreV1beta>,
-            List<Map<String, dynamic>>
-          >(
-            metadataExports,
-            (value) =>
-                pulumi.Input.encodeList<
-                  MetadataExportResponseMetastoreV1beta,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'restores':
-          pulumi.Input.mapInputValue<
-            List<RestoreResponseMetastoreV1beta>,
-            List<Map<String, dynamic>>
-          >(
-            restores,
-            (value) =>
-                pulumi.Input.encodeList<
-                  RestoreResponseMetastoreV1beta,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'metadataExports': pulumi.Input.mapInputValue<List<MetadataExportResponseMetastoreV1beta>, List<Map<String, dynamic>>>(metadataExports, (value) => pulumi.Input.encodeList<MetadataExportResponseMetastoreV1beta, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'restores': pulumi.Input.mapInputValue<List<RestoreResponseMetastoreV1beta>, List<Map<String, dynamic>>>(restores, (value) => pulumi.Input.encodeList<RestoreResponseMetastoreV1beta, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory MetadataManagementActivityResponseMetastoreV1beta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MetadataManagementActivityResponseMetastoreV1beta.fromMap(Map<String, dynamic> map) {
     return MetadataManagementActivityResponseMetastoreV1beta(
-      metadataExports: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<MetadataExportResponseMetastoreV1beta>(
-          map['metadataExports']!,
-          (value) => MetadataExportResponseMetastoreV1beta.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      restores: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<RestoreResponseMetastoreV1beta>(
-          map['restores']!,
-          (value) => RestoreResponseMetastoreV1beta.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      metadataExports: pulumi.Input.fromValue(pulumi.Input.decodeList<MetadataExportResponseMetastoreV1beta>(map['metadataExports']!, (value) => MetadataExportResponseMetastoreV1beta.fromMap((value as Map).cast<String, dynamic>()))),
+      restores: pulumi.Input.fromValue(pulumi.Input.decodeList<RestoreResponseMetastoreV1beta>(map['restores']!, (value) => RestoreResponseMetastoreV1beta.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

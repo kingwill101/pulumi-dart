@@ -8,14 +8,11 @@ import 'ssh_key_pair_response.dart';
 class LinuxConfigurationResponse {
   /// Specifies whether password authentication should be disabled.
   final pulumi.Input<bool>? disablePasswordAuthentication;
-
   /// The OS Type
   /// Expected value is 'Linux'.
   final pulumi.Input<String> osType;
-
   /// Specifies the ssh key configuration for a Linux OS. (This property is deprecated, please use 'sshKeyPair' instead)
   final pulumi.Input<SshConfigurationResponse>? ssh;
-
   /// The SSH Key-pair used to authenticate with the VM's.
   final pulumi.Input<SshKeyPairResponse>? sshKeyPair;
 
@@ -35,45 +32,18 @@ class LinuxConfigurationResponse {
     return <String, dynamic>{
       'disablePasswordAuthentication': ?disablePasswordAuthentication,
       'osType': osType,
-      'ssh':
-          ?pulumi.Input.mapOptionalInputValue<
-            SshConfigurationResponse,
-            Map<String, dynamic>
-          >(ssh, (value) => value.toMap()),
-      'sshKeyPair':
-          ?pulumi.Input.mapOptionalInputValue<
-            SshKeyPairResponse,
-            Map<String, dynamic>
-          >(sshKeyPair, (value) => value.toMap()),
+      'ssh': ?pulumi.Input.mapOptionalInputValue<SshConfigurationResponse, Map<String, dynamic>>(ssh, (value) => value.toMap()),
+      'sshKeyPair': ?pulumi.Input.mapOptionalInputValue<SshKeyPairResponse, Map<String, dynamic>>(sshKeyPair, (value) => value.toMap()),
     };
   }
 
   factory LinuxConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return LinuxConfigurationResponse(
-      disablePasswordAuthentication: (() {
-        final guardedValue = map['disablePasswordAuthentication'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      disablePasswordAuthentication: (() { final guardedValue = map['disablePasswordAuthentication']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       osType: pulumi.Input.fromValue(map['osType'] as String),
-      ssh: (() {
-        final guardedValue = map['ssh'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SshConfigurationResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      sshKeyPair: (() {
-        final guardedValue = map['sshKeyPair'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SshKeyPairResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      ssh: (() { final guardedValue = map['ssh']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SshConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      sshKeyPair: (() { final guardedValue = map['sshKeyPair']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SshKeyPairResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

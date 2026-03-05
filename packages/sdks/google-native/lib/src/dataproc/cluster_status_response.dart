@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterStatusResponse {
   /// Optional. Output only. Details of cluster's state.
   final pulumi.Input<String> detail;
-
   /// The cluster's state.
   final pulumi.Input<String> state;
-
   /// Time when this state was entered (see JSON representation of Timestamp (https://developers.google.com/protocol-buffers/docs/proto3#json)).
   final pulumi.Input<String> stateStartTime;
-
   /// Additional state information that includes status reported by the agent.
   final pulumi.Input<String> substate;
 
@@ -46,3 +43,4 @@ class ClusterStatusResponse {
     );
   }
 }
+

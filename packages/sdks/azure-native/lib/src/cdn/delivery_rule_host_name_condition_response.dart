@@ -8,7 +8,6 @@ class DeliveryRuleHostNameConditionResponse {
   /// Request variable to compare with.
   /// Expected value is 'HostName'.
   final pulumi.Input<String> name;
-
   /// Defines the parameters for the condition.
   final pulumi.Input<HostNameMatchConditionParametersResponse> parameters;
 
@@ -23,24 +22,15 @@ class DeliveryRuleHostNameConditionResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'parameters':
-          pulumi.Input.mapInputValue<
-            HostNameMatchConditionParametersResponse,
-            Map<String, dynamic>
-          >(parameters, (value) => value.toMap()),
+      'parameters': pulumi.Input.mapInputValue<HostNameMatchConditionParametersResponse, Map<String, dynamic>>(parameters, (value) => value.toMap()),
     };
   }
 
-  factory DeliveryRuleHostNameConditionResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DeliveryRuleHostNameConditionResponse.fromMap(Map<String, dynamic> map) {
     return DeliveryRuleHostNameConditionResponse(
       name: pulumi.Input.fromValue(map['name'] as String),
-      parameters: pulumi.Input.fromValue(
-        HostNameMatchConditionParametersResponse.fromMap(
-          (map['parameters']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      parameters: pulumi.Input.fromValue(HostNameMatchConditionParametersResponse.fromMap((map['parameters']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

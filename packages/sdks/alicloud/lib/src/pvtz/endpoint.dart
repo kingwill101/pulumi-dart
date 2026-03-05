@@ -382,19 +382,14 @@ import 'endpoint_state.dart';
 class Endpoint extends pulumi.CustomResource {
   /// The name of the resource.
   late final pulumi.Output<String> endpointName;
-
   /// The Ip Configs. See `ip_configs` below. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
   late final pulumi.Output<List<Map<String, dynamic>>> ipConfigs;
-
   /// The ID of the Security Group.
   late final pulumi.Output<String> securityGroupId;
-
   /// The status of the resource. Valid values: `CHANGE_FAILED`, `CHANGE_INIT`, `EXCEPTION`, `FAILED`, `INIT`, `SUCCESS`.
   late final pulumi.Output<String> status;
-
   /// The VPC ID.
   late final pulumi.Output<String> vpcId;
-
   /// The Region of the VPC.
   late final pulumi.Output<String> vpcRegionId;
 
@@ -407,11 +402,11 @@ class Endpoint extends pulumi.CustomResource {
     EndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:pvtz/endpoint:Endpoint',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:pvtz/endpoint:Endpoint',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     endpointName = registerOutput<String>('endpointName');
     ipConfigs = registerOutput<List<Map<String, dynamic>>>('ipConfigs');
     securityGroupId = registerOutput<String>('securityGroupId');
@@ -438,11 +433,11 @@ class Endpoint extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:pvtz/endpoint:Endpoint',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:pvtz/endpoint:Endpoint',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     endpointName = registerOutput<String>('endpointName');
     ipConfigs = registerOutput<List<Map<String, dynamic>>>('ipConfigs');
     securityGroupId = registerOutput<String>('securityGroupId');

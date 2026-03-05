@@ -417,7 +417,6 @@ class ServicePerimeters extends pulumi.CustomResource {
   /// The AccessPolicy this ServicePerimeter lives in.
   /// Format: accessPolicies/{policy_id}
   late final pulumi.Output<String> parent;
-
   /// The desired Service Perimeters that should replace all existing Service Perimeters in the Access Policy.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> servicePerimeters;
@@ -431,15 +430,13 @@ class ServicePerimeters extends pulumi.CustomResource {
     ServicePerimetersArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:accesscontextmanager/servicePerimeters:ServicePerimeters',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:accesscontextmanager/servicePerimeters:ServicePerimeters',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     parent = registerOutput<String>('parent');
-    servicePerimeters = registerOutput<List<Map<String, dynamic>>?>(
-      'servicePerimeters',
-    );
+    servicePerimeters = registerOutput<List<Map<String, dynamic>>?>('servicePerimeters');
   }
 
   /// Gets an existing [ServicePerimeters] resource's state with the given [name] and [id].
@@ -460,14 +457,12 @@ class ServicePerimeters extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:accesscontextmanager/servicePerimeters:ServicePerimeters',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:accesscontextmanager/servicePerimeters:ServicePerimeters',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     parent = registerOutput<String>('parent');
-    servicePerimeters = registerOutput<List<Map<String, dynamic>>?>(
-      'servicePerimeters',
-    );
+    servicePerimeters = registerOutput<List<Map<String, dynamic>>?>('servicePerimeters');
   }
 }

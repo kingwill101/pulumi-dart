@@ -9,18 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WaitingRoomRuleArgs {
   /// The content of the rule, the implemented policy or conditional expression.
   final pulumi.Input<String> rule;
-
   /// Rule name, optional, used to query by waiting room bypass rule name.
   final pulumi.Input<String> ruleName;
-
   /// The site ID, which can be obtained by calling the ListSites API.
   final pulumi.Input<String> siteId;
-
   /// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
   /// - on: open.
   /// - off: close.
   final pulumi.Input<String> status;
-
   /// Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
   final pulumi.Input<String> waitingRoomId;
 
@@ -58,3 +54,4 @@ class WaitingRoomRuleArgs {
     );
   }
 }
+

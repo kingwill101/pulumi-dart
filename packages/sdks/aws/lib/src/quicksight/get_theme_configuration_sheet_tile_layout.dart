@@ -7,7 +7,6 @@ import 'get_theme_configuration_sheet_tile_layout_margin.dart';
 class GetThemeConfigurationSheetTileLayout {
   /// The gutter settings that apply between tiles. See gutter.
   final pulumi.Input<List<GetThemeConfigurationSheetTileLayoutGutter>> gutters;
-
   /// The margin settings that apply around the outside edge of sheets. See margin.
   final pulumi.Input<List<GetThemeConfigurationSheetTileLayoutMargin>> margins;
 
@@ -21,53 +20,16 @@ class GetThemeConfigurationSheetTileLayout {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'gutters':
-          pulumi.Input.mapInputValue<
-            List<GetThemeConfigurationSheetTileLayoutGutter>,
-            List<Map<String, dynamic>>
-          >(
-            gutters,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetThemeConfigurationSheetTileLayoutGutter,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'margins':
-          pulumi.Input.mapInputValue<
-            List<GetThemeConfigurationSheetTileLayoutMargin>,
-            List<Map<String, dynamic>>
-          >(
-            margins,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetThemeConfigurationSheetTileLayoutMargin,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'gutters': pulumi.Input.mapInputValue<List<GetThemeConfigurationSheetTileLayoutGutter>, List<Map<String, dynamic>>>(gutters, (value) => pulumi.Input.encodeList<GetThemeConfigurationSheetTileLayoutGutter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'margins': pulumi.Input.mapInputValue<List<GetThemeConfigurationSheetTileLayoutMargin>, List<Map<String, dynamic>>>(margins, (value) => pulumi.Input.encodeList<GetThemeConfigurationSheetTileLayoutMargin, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory GetThemeConfigurationSheetTileLayout.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetThemeConfigurationSheetTileLayout.fromMap(Map<String, dynamic> map) {
     return GetThemeConfigurationSheetTileLayout(
-      gutters: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetThemeConfigurationSheetTileLayoutGutter>(
-          map['gutters']!,
-          (value) => GetThemeConfigurationSheetTileLayoutGutter.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      margins: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetThemeConfigurationSheetTileLayoutMargin>(
-          map['margins']!,
-          (value) => GetThemeConfigurationSheetTileLayoutMargin.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      gutters: pulumi.Input.fromValue(pulumi.Input.decodeList<GetThemeConfigurationSheetTileLayoutGutter>(map['gutters']!, (value) => GetThemeConfigurationSheetTileLayoutGutter.fromMap((value as Map).cast<String, dynamic>()))),
+      margins: pulumi.Input.fromValue(pulumi.Input.decodeList<GetThemeConfigurationSheetTileLayoutMargin>(map['margins']!, (value) => GetThemeConfigurationSheetTileLayoutMargin.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

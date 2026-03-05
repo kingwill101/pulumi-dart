@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetListenerDefaultActionRedirect {
   final pulumi.Input<String> host;
   final pulumi.Input<String> path;
-
   /// Port of the listener. Required if `arn` is not set.
   final pulumi.Input<String> port;
   final pulumi.Input<String> protocol;
@@ -50,3 +49,4 @@ class GetListenerDefaultActionRedirect {
     );
   }
 }
+

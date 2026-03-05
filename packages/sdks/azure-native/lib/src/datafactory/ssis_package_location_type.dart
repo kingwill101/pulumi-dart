@@ -17,3 +17,4 @@ enum SsisPackageLocationType {
     throw ArgumentError('Unknown SsisPackageLocationType value: $value');
   }
 }
+

@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceOperationErrorResponse {
   /// The operation action that failed
   final pulumi.Input<String>? action;
-
   /// The code that corresponds to the type of operation failure
   final pulumi.Input<String>? code;
-
   /// The operation failure message
   final pulumi.Input<String>? message;
-
   /// The datetime of when the error occured
   final pulumi.Input<String>? timestamp;
 
@@ -39,26 +36,11 @@ class ResourceOperationErrorResponse {
 
   factory ResourceOperationErrorResponse.fromMap(Map<String, dynamic> map) {
     return ResourceOperationErrorResponse(
-      action: (() {
-        final guardedValue = map['action'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      code: (() {
-        final guardedValue = map['code'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      message: (() {
-        final guardedValue = map['message'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      timestamp: (() {
-        final guardedValue = map['timestamp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      code: (() { final guardedValue = map['code']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      message: (() { final guardedValue = map['message']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      timestamp: (() { final guardedValue = map['timestamp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

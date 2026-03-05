@@ -10,11 +10,9 @@ class GetBillingHubServiceUsageArgs {
   final pulumi.Input<String> endTimeStamp;
   final pulumi.Input<int>? pageIndex;
   final pulumi.Input<int>? pageSize;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   final pulumi.Input<String> startTimeStamp;
-
   /// The resource name of the Test Base Account.
   final pulumi.Input<String> testBaseAccountName;
 
@@ -48,23 +46,12 @@ class GetBillingHubServiceUsageArgs {
   factory GetBillingHubServiceUsageArgs.fromMap(Map<String, dynamic> map) {
     return GetBillingHubServiceUsageArgs(
       endTimeStamp: pulumi.Input.fromValue(map['endTimeStamp'] as String),
-      pageIndex: (() {
-        final guardedValue = map['pageIndex'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      pageSize: (() {
-        final guardedValue = map['pageSize'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      pageIndex: (() { final guardedValue = map['pageIndex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      pageSize: (() { final guardedValue = map['pageSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       startTimeStamp: pulumi.Input.fromValue(map['startTimeStamp'] as String),
-      testBaseAccountName: pulumi.Input.fromValue(
-        map['testBaseAccountName'] as String,
-      ),
+      testBaseAccountName: pulumi.Input.fromValue(map['testBaseAccountName'] as String),
     );
   }
 }
+

@@ -15,15 +15,17 @@ class InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseCompu
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'max': max, 'min': min};
+    return <String, dynamic>{
+      'max': max,
+      'min': min,
+    };
   }
 
-  factory InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseComputeV1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseComputeV1(
       max: pulumi.Input.fromValue(map['max'] as int),
       min: pulumi.Input.fromValue(map['min'] as int),
     );
   }
 }
+

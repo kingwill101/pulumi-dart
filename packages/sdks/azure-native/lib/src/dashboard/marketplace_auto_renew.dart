@@ -15,3 +15,4 @@ enum MarketplaceAutoRenew {
     throw ArgumentError('Unknown MarketplaceAutoRenew value: $value');
   }
 }
+

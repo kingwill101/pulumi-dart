@@ -6,19 +6,14 @@ import 'repository_git_remote_settings_ssh_authentication_config.dart';
 class RepositoryGitRemoteSettings {
   /// The name of the Secret Manager secret version to use as an authentication token for Git operations. This secret is for assigning with HTTPS only(for SSH use `ssh_authentication_config`). Must be in the format projects/*/secrets/*/versions/*.
   final pulumi.Input<String>? authenticationTokenSecretVersion;
-
   /// The Git remote's default branch name.
   final pulumi.Input<String> defaultBranch;
-
   /// Authentication fields for remote uris using SSH protocol.
   /// Structure is documented below.
-  final pulumi.Input<RepositoryGitRemoteSettingsSshAuthenticationConfig>?
-  sshAuthenticationConfig;
-
+  final pulumi.Input<RepositoryGitRemoteSettingsSshAuthenticationConfig>? sshAuthenticationConfig;
   /// (Output)
   /// Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus
   final pulumi.Input<String>? tokenStatus;
-
   /// The Git remote's URL.
   final pulumi.Input<String> url;
 
@@ -40,11 +35,7 @@ class RepositoryGitRemoteSettings {
     return <String, dynamic>{
       'authenticationTokenSecretVersion': ?authenticationTokenSecretVersion,
       'defaultBranch': defaultBranch,
-      'sshAuthenticationConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            RepositoryGitRemoteSettingsSshAuthenticationConfig,
-            Map<String, dynamic>
-          >(sshAuthenticationConfig, (value) => value.toMap()),
+      'sshAuthenticationConfig': ?pulumi.Input.mapOptionalInputValue<RepositoryGitRemoteSettingsSshAuthenticationConfig, Map<String, dynamic>>(sshAuthenticationConfig, (value) => value.toMap()),
       'tokenStatus': ?tokenStatus,
       'url': url,
     };
@@ -52,27 +43,12 @@ class RepositoryGitRemoteSettings {
 
   factory RepositoryGitRemoteSettings.fromMap(Map<String, dynamic> map) {
     return RepositoryGitRemoteSettings(
-      authenticationTokenSecretVersion: (() {
-        final guardedValue = map['authenticationTokenSecretVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      authenticationTokenSecretVersion: (() { final guardedValue = map['authenticationTokenSecretVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       defaultBranch: pulumi.Input.fromValue(map['defaultBranch'] as String),
-      sshAuthenticationConfig: (() {
-        final guardedValue = map['sshAuthenticationConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RepositoryGitRemoteSettingsSshAuthenticationConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      tokenStatus: (() {
-        final guardedValue = map['tokenStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      sshAuthenticationConfig: (() { final guardedValue = map['sshAuthenticationConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RepositoryGitRemoteSettingsSshAuthenticationConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      tokenStatus: (() { final guardedValue = map['tokenStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       url: pulumi.Input.fromValue(map['url'] as String),
     );
   }
 }
+

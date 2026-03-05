@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkInsightsPathFilterAtDestinationSourcePortRange {
   /// The first port in the range.
   final pulumi.Input<int>? fromPort;
-
   /// The last port in the range.
   final pulumi.Input<int>? toPort;
 
@@ -18,23 +17,17 @@ class NetworkInsightsPathFilterAtDestinationSourcePortRange {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'fromPort': ?fromPort, 'toPort': ?toPort};
+    return <String, dynamic>{
+      'fromPort': ?fromPort,
+      'toPort': ?toPort,
+    };
   }
 
-  factory NetworkInsightsPathFilterAtDestinationSourcePortRange.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NetworkInsightsPathFilterAtDestinationSourcePortRange.fromMap(Map<String, dynamic> map) {
     return NetworkInsightsPathFilterAtDestinationSourcePortRange(
-      fromPort: (() {
-        final guardedValue = map['fromPort'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      toPort: (() {
-        final guardedValue = map['toPort'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      fromPort: (() { final guardedValue = map['fromPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      toPort: (() { final guardedValue = map['toPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

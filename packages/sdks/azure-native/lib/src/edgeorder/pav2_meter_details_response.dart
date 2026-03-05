@@ -7,13 +7,10 @@ class Pav2MeterDetailsResponse {
   /// Represents billing type.
   /// Expected value is 'Pav2'.
   final pulumi.Input<String> billingType;
-
   /// Charging type.
   final pulumi.Input<String> chargingType;
-
   /// Validation status of requested data center and transport.
   final pulumi.Input<String> meterGuid;
-
   /// Billing unit applicable for Pav2 billing.
   final pulumi.Input<double> multiplier;
 
@@ -47,3 +44,4 @@ class Pav2MeterDetailsResponse {
     );
   }
 }
+

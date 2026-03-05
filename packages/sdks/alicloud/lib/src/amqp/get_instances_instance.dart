@@ -5,43 +5,30 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstancesInstance {
   /// The timestamp that indicates when the order was created.
   final pulumi.Input<String> createTime;
-
   /// The timestamp that indicates when the instance expires.
   final pulumi.Input<String> expireTime;
-
   /// The ID of the Instance.
   final pulumi.Input<String> id;
-
   /// THe instance Id.
   final pulumi.Input<String> instanceId;
-
   /// THe instance name.
   final pulumi.Input<String> instanceName;
-
   /// The instance type.
   final pulumi.Input<String> instanceType;
-
   /// The billing method of the instance. **Note:** `payment_type` takes effect only if `enable_details` is set to `true`.
   final pulumi.Input<String> paymentType;
-
   /// The virtual private cloud (VPC) endpoint of the instance.
   final pulumi.Input<String> privateEndPoint;
-
   /// The public endpoint of the instance.
   final pulumi.Input<String> publicEndpoint;
-
   /// Auto renewal period of an instance. **Note:** `renewal_duration` takes effect only if `enable_details` is set to `true`.
   final pulumi.Input<int> renewalDuration;
-
   /// Automatic renewal period unit. **Note:** `renewal_duration_unit` takes effect only if `enable_details` is set to `true`.
   final pulumi.Input<String> renewalDurationUnit;
-
   /// Whether to renew an instance automatically or not. **Note:** `renewal_status` takes effect only if `enable_details` is set to `true`.
   final pulumi.Input<String> renewalStatus;
-
   /// The status of the resource. Valid values: `DEPLOYING`, `SERVING`, `EXPIRED`, `RELEASED`.
   final pulumi.Input<String> status;
-
   /// Indicates whether the instance supports elastic IP addresses (EIPs).
   final pulumi.Input<bool> supportEip;
 
@@ -108,12 +95,11 @@ class GetInstancesInstance {
       privateEndPoint: pulumi.Input.fromValue(map['privateEndPoint'] as String),
       publicEndpoint: pulumi.Input.fromValue(map['publicEndpoint'] as String),
       renewalDuration: pulumi.Input.fromValue(map['renewalDuration'] as int),
-      renewalDurationUnit: pulumi.Input.fromValue(
-        map['renewalDurationUnit'] as String,
-      ),
+      renewalDurationUnit: pulumi.Input.fromValue(map['renewalDurationUnit'] as String),
       renewalStatus: pulumi.Input.fromValue(map['renewalStatus'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
       supportEip: pulumi.Input.fromValue(map['supportEip'] as bool),
     );
   }
 }
+

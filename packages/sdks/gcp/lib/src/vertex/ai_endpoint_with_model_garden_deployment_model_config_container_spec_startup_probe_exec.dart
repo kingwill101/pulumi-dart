@@ -18,18 +18,15 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExe
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'commands': ?commands};
+    return <String, dynamic>{
+      'commands': ?commands,
+    };
   }
 
-  factory AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExec.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExec.fromMap(Map<String, dynamic> map) {
     return AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExec(
-      commands: (() {
-        final guardedValue = map['commands'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      commands: (() { final guardedValue = map['commands']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

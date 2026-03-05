@@ -15,3 +15,4 @@ enum LocalCacheMode {
     throw ArgumentError('Unknown LocalCacheMode value: $value');
   }
 }
+

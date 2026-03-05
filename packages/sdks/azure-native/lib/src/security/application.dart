@@ -138,19 +138,14 @@ import 'application_args.dart';
 class Application extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// description of the application
   late final pulumi.Output<String?> description;
-
   /// display name of the application
   late final pulumi.Output<String?> displayName;
-
   /// Resource name
   late final pulumi.Output<String> name;
-
   /// The application source, what it affects, e.g. Assessments
   late final pulumi.Output<String> sourceResourceType;
-
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -163,11 +158,11 @@ class Application extends pulumi.CustomResource {
     ApplicationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:security:Application',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:security:Application',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');

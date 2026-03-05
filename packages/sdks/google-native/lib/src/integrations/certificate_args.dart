@@ -11,23 +11,17 @@ import 'google_cloud_integrations_v1alpha_client_certificate.dart';
 class CertificateArgs {
   /// Status of the certificate
   final pulumi.Input<CertificateCertificateStatus>? certificateStatus;
-
   /// Immutable. Credential id that will be used to register with trawler INTERNAL_ONLY
   final pulumi.Input<String>? credentialId;
-
   /// Description of the certificate
   final pulumi.Input<String>? description;
-
   /// Name of the certificate
   final pulumi.Input<String> displayName;
   final pulumi.Input<String>? location;
   final pulumi.Input<String> productId;
   final pulumi.Input<String>? project;
-
   /// Input only. Raw client certificate which would be registered with trawler
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaClientCertificate>?
-  rawCertificate;
-
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaClientCertificate>? rawCertificate;
   /// Immutable. Requestor ID to be used to register certificate with trawler
   final pulumi.Input<String>? requestorId;
 
@@ -55,71 +49,30 @@ class CertificateArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certificateStatus':
-          ?pulumi.Input.mapOptionalInputValue<
-            CertificateCertificateStatus,
-            String
-          >(certificateStatus, (value) => value.wireValue),
+      'certificateStatus': ?pulumi.Input.mapOptionalInputValue<CertificateCertificateStatus, String>(certificateStatus, (value) => value.wireValue),
       'credentialId': ?credentialId,
       'description': ?description,
       'displayName': displayName,
       'location': ?location,
       'productId': productId,
       'project': ?project,
-      'rawCertificate':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudIntegrationsV1alphaClientCertificate,
-            Map<String, dynamic>
-          >(rawCertificate, (value) => value.toMap()),
+      'rawCertificate': ?pulumi.Input.mapOptionalInputValue<GoogleCloudIntegrationsV1alphaClientCertificate, Map<String, dynamic>>(rawCertificate, (value) => value.toMap()),
       'requestorId': ?requestorId,
     };
   }
 
   factory CertificateArgs.fromMap(Map<String, dynamic> map) {
     return CertificateArgs(
-      certificateStatus: (() {
-        final guardedValue = map['certificateStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CertificateCertificateStatus.fromValue(guardedValue as String),
-        );
-      })(),
-      credentialId: (() {
-        final guardedValue = map['credentialId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      certificateStatus: (() { final guardedValue = map['certificateStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CertificateCertificateStatus.fromValue(guardedValue as String)); })(),
+      credentialId: (() { final guardedValue = map['credentialId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       productId: pulumi.Input.fromValue(map['productId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      rawCertificate: (() {
-        final guardedValue = map['rawCertificate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudIntegrationsV1alphaClientCertificate.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      requestorId: (() {
-        final guardedValue = map['requestorId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      rawCertificate: (() { final guardedValue = map['rawCertificate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudIntegrationsV1alphaClientCertificate.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      requestorId: (() { final guardedValue = map['requestorId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

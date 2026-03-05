@@ -15,27 +15,21 @@ class RuleArgs {
   /// deployment associated with this rule will also be deleted.
   /// Possible values: DEFAULT, FORCE
   final pulumi.Input<String>? deletionPolicy;
-
   /// The etag for this rule.
   /// If this is provided on update, the request will succeed if and only if it
   /// matches the server-computed value, and will fail with an ABORTED error
   /// otherwise.
   /// Populated in BASIC view and FULL view.
   final pulumi.Input<String>? etag;
-
   /// The unique identifier for the Chronicle instance, which is the same as the customer ID.
   final pulumi.Input<String> instance;
-
   /// The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
   final pulumi.Input<String> location;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// Rule Id is the ID of the Rule.
   final pulumi.Input<String>? ruleId;
-
   /// Resource name of the DataAccessScope bound to this rule.
   /// Populated in BASIC view and FULL view.
   /// If reference lists are used in the rule, validations will be performed
@@ -44,7 +38,6 @@ class RuleArgs {
   /// The scope should be in the format:
   /// "projects/{project}/locations/{location}/instances/{instance}/dataAccessScopes/{scope}".
   final pulumi.Input<String>? scope;
-
   /// The YARA-L content of the rule.
   /// Populated in FULL view.
   final pulumi.Input<String>? text;
@@ -84,38 +77,15 @@ class RuleArgs {
 
   factory RuleArgs.fromMap(Map<String, dynamic> map) {
     return RuleArgs(
-      deletionPolicy: (() {
-        final guardedValue = map['deletionPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      etag: (() {
-        final guardedValue = map['etag'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instance: pulumi.Input.fromValue(map['instance'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ruleId: (() {
-        final guardedValue = map['ruleId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      scope: (() {
-        final guardedValue = map['scope'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      text: (() {
-        final guardedValue = map['text'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ruleId: (() { final guardedValue = map['ruleId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      text: (() { final guardedValue = map['text']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccessPolicyAssignmentState {
   /// The ID of the Managed Redis instance. Changing this forces a new Access Policy Assignment to be created.
   final pulumi.Input<String>? managedRedisId;
-
   /// The object ID of the Azure Active Directory user, group, service principal, or managed identity to assign the access policy to. Changing this forces a new Access Policy Assignment to be created.
   ///
   /// &gt; **Note:** Access Policy Assignments are created on the `default` database of the Managed Redis instance.
@@ -15,7 +14,10 @@ class AccessPolicyAssignmentState {
   /// Creates a new [AccessPolicyAssignmentState].
   /// [managedRedisId] The ID of the Managed Redis instance. Changing this forces a new Access Policy Assignment to be created.
   /// [objectId] The object ID of the Azure Active Directory user, group, service principal, or managed identity to assign the access policy to. Changing this forces a new Access Policy Assignment to be created.
-  AccessPolicyAssignmentState({this.managedRedisId, this.objectId});
+  AccessPolicyAssignmentState({
+    this.managedRedisId,
+    this.objectId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,16 +28,9 @@ class AccessPolicyAssignmentState {
 
   factory AccessPolicyAssignmentState.fromMap(Map<String, dynamic> map) {
     return AccessPolicyAssignmentState(
-      managedRedisId: (() {
-        final guardedValue = map['managedRedisId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      objectId: (() {
-        final guardedValue = map['objectId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      managedRedisId: (() { final guardedValue = map['managedRedisId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      objectId: (() { final guardedValue = map['objectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

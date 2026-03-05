@@ -806,10 +806,8 @@ import 'v2_organization_source_iam_binding_state.dart';
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class V2OrganizationSourceIamBinding extends pulumi.CustomResource {
   late final pulumi.Output<V2OrganizationSourceIamBindingCondition?> condition;
-
   /// (Computed) The etag of the IAM policy.
   late final pulumi.Output<String> etag;
-
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -824,12 +822,10 @@ class V2OrganizationSourceIamBinding extends pulumi.CustomResource {
   /// * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
   late final pulumi.Output<List<String>> members;
   late final pulumi.Output<String> organization;
-
   /// The role that should be applied. Only one
   /// `gcp.securitycenter.V2OrganizationSourceIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
   late final pulumi.Output<String> role;
-
   /// Used to find the parent resource to bind the IAM policy to
   late final pulumi.Output<String> source;
 
@@ -842,21 +838,12 @@ class V2OrganizationSourceIamBinding extends pulumi.CustomResource {
     V2OrganizationSourceIamBindingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:securitycenter/v2OrganizationSourceIamBinding:V2OrganizationSourceIamBinding',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    condition = registerOutput<V2OrganizationSourceIamBindingCondition?>(
-      'condition',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return V2OrganizationSourceIamBindingCondition.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:securitycenter/v2OrganizationSourceIamBinding:V2OrganizationSourceIamBinding',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    condition = registerOutput<V2OrganizationSourceIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2OrganizationSourceIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     members = registerOutput<List<String>>('members');
     organization = registerOutput<String>('organization');
@@ -882,21 +869,12 @@ class V2OrganizationSourceIamBinding extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:securitycenter/v2OrganizationSourceIamBinding:V2OrganizationSourceIamBinding',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    condition = registerOutput<V2OrganizationSourceIamBindingCondition?>(
-      'condition',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return V2OrganizationSourceIamBindingCondition.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:securitycenter/v2OrganizationSourceIamBinding:V2OrganizationSourceIamBinding',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    condition = registerOutput<V2OrganizationSourceIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2OrganizationSourceIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     members = registerOutput<List<String>>('members');
     organization = registerOutput<String>('organization');

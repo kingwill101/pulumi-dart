@@ -13,18 +13,15 @@ class AiEndpointPredictRequestResponseLoggingConfigBigqueryDestination {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'outputUri': ?outputUri};
+    return <String, dynamic>{
+      'outputUri': ?outputUri,
+    };
   }
 
-  factory AiEndpointPredictRequestResponseLoggingConfigBigqueryDestination.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AiEndpointPredictRequestResponseLoggingConfigBigqueryDestination.fromMap(Map<String, dynamic> map) {
     return AiEndpointPredictRequestResponseLoggingConfigBigqueryDestination(
-      outputUri: (() {
-        final guardedValue = map['outputUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      outputUri: (() { final guardedValue = map['outputUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

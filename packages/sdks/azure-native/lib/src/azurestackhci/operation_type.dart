@@ -15,3 +15,4 @@ enum OperationType {
     throw ArgumentError('Unknown OperationType value: $value');
   }
 }
+

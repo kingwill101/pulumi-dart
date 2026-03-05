@@ -7,7 +7,6 @@ import 'disk_encryption_configuration_response_auth.dart';
 class DiskEncryptionConfigurationResponseKeyVaultConfiguration {
   /// Configuration properties for the authentication to the Key Vault
   final pulumi.Input<DiskEncryptionConfigurationResponseAuth>? auth;
-
   /// Key URL pointing to a key in KeyVault. Version segment of the Url is required.
   final pulumi.Input<String>? keyUrl;
 
@@ -21,33 +20,16 @@ class DiskEncryptionConfigurationResponseKeyVaultConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'auth':
-          ?pulumi.Input.mapOptionalInputValue<
-            DiskEncryptionConfigurationResponseAuth,
-            Map<String, dynamic>
-          >(auth, (value) => value.toMap()),
+      'auth': ?pulumi.Input.mapOptionalInputValue<DiskEncryptionConfigurationResponseAuth, Map<String, dynamic>>(auth, (value) => value.toMap()),
       'keyUrl': ?keyUrl,
     };
   }
 
-  factory DiskEncryptionConfigurationResponseKeyVaultConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DiskEncryptionConfigurationResponseKeyVaultConfiguration.fromMap(Map<String, dynamic> map) {
     return DiskEncryptionConfigurationResponseKeyVaultConfiguration(
-      auth: (() {
-        final guardedValue = map['auth'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DiskEncryptionConfigurationResponseAuth.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      keyUrl: (() {
-        final guardedValue = map['keyUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      auth: (() { final guardedValue = map['auth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DiskEncryptionConfigurationResponseAuth.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      keyUrl: (() { final guardedValue = map['keyUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

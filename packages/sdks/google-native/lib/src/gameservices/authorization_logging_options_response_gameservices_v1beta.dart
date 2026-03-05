@@ -14,14 +14,15 @@ class AuthorizationLoggingOptionsResponseGameservicesV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'permissionType': permissionType};
+    return <String, dynamic>{
+      'permissionType': permissionType,
+    };
   }
 
-  factory AuthorizationLoggingOptionsResponseGameservicesV1beta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AuthorizationLoggingOptionsResponseGameservicesV1beta.fromMap(Map<String, dynamic> map) {
     return AuthorizationLoggingOptionsResponseGameservicesV1beta(
       permissionType: pulumi.Input.fromValue(map['permissionType'] as String),
     );
   }
 }
+

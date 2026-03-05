@@ -8,21 +8,20 @@ class CustomRoutingEndpointGroupEndpointConfiguration {
 
   /// Creates a new [CustomRoutingEndpointGroupEndpointConfiguration].
   /// [endpointId] An ID for the endpoint. For custom routing accelerators, this is the virtual private cloud (VPC) subnet ID.
-  CustomRoutingEndpointGroupEndpointConfiguration({this.endpointId});
+  CustomRoutingEndpointGroupEndpointConfiguration({
+    this.endpointId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'endpointId': ?endpointId};
+    return <String, dynamic>{
+      'endpointId': ?endpointId,
+    };
   }
 
-  factory CustomRoutingEndpointGroupEndpointConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CustomRoutingEndpointGroupEndpointConfiguration.fromMap(Map<String, dynamic> map) {
     return CustomRoutingEndpointGroupEndpointConfiguration(
-      endpointId: (() {
-        final guardedValue = map['endpointId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      endpointId: (() { final guardedValue = map['endpointId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

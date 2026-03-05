@@ -9,19 +9,20 @@ class ARecord {
 
   /// Creates a new [ARecord].
   /// [ipv4Address] The IPv4 address of this A record.
-  ARecord({this.ipv4Address});
+  ARecord({
+    this.ipv4Address,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'ipv4Address': ?ipv4Address};
+    return <String, dynamic>{
+      'ipv4Address': ?ipv4Address,
+    };
   }
 
   factory ARecord.fromMap(Map<String, dynamic> map) {
     return ARecord(
-      ipv4Address: (() {
-        final guardedValue = map['ipv4Address'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ipv4Address: (() { final guardedValue = map['ipv4Address']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

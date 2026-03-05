@@ -6,17 +6,13 @@ enum ClusterNetworkPerformanceConfigTotalEgressBandwidthTier {
   const ClusterNetworkPerformanceConfigTotalEgressBandwidthTier(this.wireValue);
   final String wireValue;
 
-  static ClusterNetworkPerformanceConfigTotalEgressBandwidthTier fromValue(
-    String value,
-  ) {
-    for (final item
-        in ClusterNetworkPerformanceConfigTotalEgressBandwidthTier.values) {
+  static ClusterNetworkPerformanceConfigTotalEgressBandwidthTier fromValue(String value) {
+    for (final item in ClusterNetworkPerformanceConfigTotalEgressBandwidthTier.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ClusterNetworkPerformanceConfigTotalEgressBandwidthTier value: $value',
-    );
+    throw ArgumentError('Unknown ClusterNetworkPerformanceConfigTotalEgressBandwidthTier value: $value');
   }
 }
+

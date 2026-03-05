@@ -17,3 +17,4 @@ enum WebActivityMethod {
     throw ArgumentError('Unknown WebActivityMethod value: $value');
   }
 }
+

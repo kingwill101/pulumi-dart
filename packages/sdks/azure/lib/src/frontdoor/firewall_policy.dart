@@ -750,37 +750,26 @@ import 'firewall_policy_state.dart';
 class FirewallPolicy extends pulumi.CustomResource {
   /// If a `custom_rule` block's action type is `block`, this is the response body. The body must be specified in base64 encoding.
   late final pulumi.Output<String?> customBlockResponseBody;
-
   /// If a `custom_rule` block's action type is `block`, this is the response status code. Possible values are `200`, `403`, `405`, `406`, or `429`.
   late final pulumi.Output<int?> customBlockResponseStatusCode;
-
   /// One or more `custom_rule` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> customRules;
-
   /// Is the policy a enabled state or disabled state. Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
-
   /// The Frontend Endpoints associated with this Front Door Web Application Firewall policy.
   late final pulumi.Output<List<String>> frontendEndpointIds;
-
   /// The Azure Region where this Front Door Firewall Policy exists.
   late final pulumi.Output<String> location;
-
   /// One or more `managed_rule` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> managedRules;
-
   /// The firewall policy mode. Possible values are `Detection`, `Prevention`. Defaults to `Prevention`.
   late final pulumi.Output<String?> mode;
-
   /// The name of the policy. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// If action type is redirect, this field represents redirect URL for the client.
   late final pulumi.Output<String?> redirectUrl;
-
   /// The name of the resource group. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags to assign to the Web Application Firewall Policy.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -793,17 +782,13 @@ class FirewallPolicy extends pulumi.CustomResource {
     FirewallPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:frontdoor/firewallPolicy:FirewallPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    customBlockResponseBody = registerOutput<String?>(
-      'customBlockResponseBody',
-    );
-    customBlockResponseStatusCode = registerOutput<int?>(
-      'customBlockResponseStatusCode',
-    );
+          'azure:frontdoor/firewallPolicy:FirewallPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    customBlockResponseBody = registerOutput<String?>('customBlockResponseBody');
+    customBlockResponseStatusCode = registerOutput<int?>('customBlockResponseStatusCode');
     customRules = registerOutput<List<Map<String, dynamic>>?>('customRules');
     enabled = registerOutput<bool?>('enabled');
     frontendEndpointIds = registerOutput<List<String>>('frontendEndpointIds');
@@ -834,17 +819,13 @@ class FirewallPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:frontdoor/firewallPolicy:FirewallPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    customBlockResponseBody = registerOutput<String?>(
-      'customBlockResponseBody',
-    );
-    customBlockResponseStatusCode = registerOutput<int?>(
-      'customBlockResponseStatusCode',
-    );
+          'azure:frontdoor/firewallPolicy:FirewallPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    customBlockResponseBody = registerOutput<String?>('customBlockResponseBody');
+    customBlockResponseStatusCode = registerOutput<int?>('customBlockResponseStatusCode');
     customRules = registerOutput<List<Map<String, dynamic>>?>('customRules');
     enabled = registerOutput<bool?>('enabled');
     frontendEndpointIds = registerOutput<List<String>>('frontendEndpointIds');

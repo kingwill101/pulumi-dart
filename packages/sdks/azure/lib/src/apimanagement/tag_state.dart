@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TagState {
   /// The ID of the API Management. Changing this forces a new API Management Tag to be created.
   final pulumi.Input<String>? apiManagementId;
-
   /// The display name of the API Management Tag. Defaults to the `name`.
   final pulumi.Input<String>? displayName;
-
   /// The name which should be used for this API Management Tag. Changing this forces a new API Management Tag to be created. The name must be unique in the API Management Service.
   final pulumi.Input<String>? name;
 
@@ -17,7 +15,11 @@ class TagState {
   /// [apiManagementId] The ID of the API Management. Changing this forces a new API Management Tag to be created.
   /// [displayName] The display name of the API Management Tag. Defaults to the `name`.
   /// [name] The name which should be used for this API Management Tag. Changing this forces a new API Management Tag to be created. The name must be unique in the API Management Service.
-  TagState({this.apiManagementId, this.displayName, this.name});
+  TagState({
+    this.apiManagementId,
+    this.displayName,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class TagState {
 
   factory TagState.fromMap(Map<String, dynamic> map) {
     return TagState(
-      apiManagementId: (() {
-        final guardedValue = map['apiManagementId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      apiManagementId: (() { final guardedValue = map['apiManagementId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -13,8 +13,7 @@ enum ResponseBasedDetectedErrorTypes {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ResponseBasedDetectedErrorTypes value: $value',
-    );
+    throw ArgumentError('Unknown ResponseBasedDetectedErrorTypes value: $value');
   }
 }
+

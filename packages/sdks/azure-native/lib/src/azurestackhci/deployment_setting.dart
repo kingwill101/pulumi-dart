@@ -1085,32 +1085,22 @@ import 'system_data_response.dart';
 class DeploymentSetting extends pulumi.CustomResource {
   /// Azure resource ids of Arc machines to be part of cluster.
   late final pulumi.Output<List<String>> arcNodeResourceIds;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Scale units will contains list of deployment data
-  late final pulumi.Output<DeploymentConfigurationResponse>
-  deploymentConfiguration;
-
+  late final pulumi.Output<DeploymentConfigurationResponse> deploymentConfiguration;
   /// The deployment mode for cluster deployment.
   late final pulumi.Output<String> deploymentMode;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The intended operation for a cluster.
   late final pulumi.Output<String?> operationType;
-
   /// DeploymentSetting provisioning state
   late final pulumi.Output<String> provisioningState;
-
   /// Deployment Status reported from cluster.
   late final pulumi.Output<EceReportedPropertiesResponse> reportedProperties;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -1123,47 +1113,20 @@ class DeploymentSetting extends pulumi.CustomResource {
     DeploymentSettingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:azurestackhci:DeploymentSetting',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:azurestackhci:DeploymentSetting',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arcNodeResourceIds = registerOutput<List<String>>('arcNodeResourceIds');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    deploymentConfiguration = registerOutput<DeploymentConfigurationResponse>(
-      'deploymentConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DeploymentConfigurationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    deploymentConfiguration = registerOutput<DeploymentConfigurationResponse>('deploymentConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deploymentMode = registerOutput<String>('deploymentMode');
     this.name = registerOutput<String>('name');
     operationType = registerOutput<String?>('operationType');
     provisioningState = registerOutput<String>('provisioningState');
-    reportedProperties = registerOutput<EceReportedPropertiesResponse>(
-      'reportedProperties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EceReportedPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    reportedProperties = registerOutput<EceReportedPropertiesResponse>('reportedProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EceReportedPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

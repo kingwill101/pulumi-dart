@@ -9,18 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetResourceArgs {
   /// Identifier of the CloudFormation resource type. For example, `vpc-12345678`.
   final pulumi.Input<String> identifier;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// ARN of the IAM Role to assume for operations.
   final pulumi.Input<String>? roleArn;
-
   /// CloudFormation resource type name. For example, `AWS::EC2::VPC`.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> typeName;
-
   /// Identifier of the CloudFormation resource type version.
   final pulumi.Input<String>? typeVersionId;
 
@@ -51,22 +47,11 @@ class GetResourceArgs {
   factory GetResourceArgs.fromMap(Map<String, dynamic> map) {
     return GetResourceArgs(
       identifier: pulumi.Input.fromValue(map['identifier'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      roleArn: (() {
-        final guardedValue = map['roleArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      roleArn: (() { final guardedValue = map['roleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       typeName: pulumi.Input.fromValue(map['typeName'] as String),
-      typeVersionId: (() {
-        final guardedValue = map['typeVersionId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      typeVersionId: (() { final guardedValue = map['typeVersionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

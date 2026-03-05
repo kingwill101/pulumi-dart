@@ -5,22 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPortfoliosPortfolio {
   /// The creation time of the portfolio
   final pulumi.Input<String> createTime;
-
   /// The description of the portfolio
   final pulumi.Input<String> description;
-
   /// The ID of the portfolio
   final pulumi.Input<String> id;
-
   /// The ARN of the portfolio
   final pulumi.Input<String> portfolioArn;
-
   /// The ID of the portfolio
   final pulumi.Input<String> portfolioId;
-
   /// The name of the portfolio
   final pulumi.Input<String> portfolioName;
-
   /// The provider name of the portfolio
   final pulumi.Input<String> providerName;
 
@@ -66,3 +60,4 @@ class GetPortfoliosPortfolio {
     );
   }
 }
+

@@ -12,46 +12,32 @@ import 'validations_profile_response.dart';
 class GetGalleryImageVersionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// The geo-location where the resource lives
   final String location;
-
   /// The name of the resource
   final String name;
-
   /// The provisioning state, which only appears in the response.
   final String provisioningState;
-
   /// The publishing profile of a gallery image Version.
   final GalleryImageVersionPublishingProfileResponse? publishingProfile;
-
   /// This is the replication status of the gallery image version.
   final ReplicationStatusResponse replicationStatus;
-
   /// Indicates if this is a soft-delete resource restoration request.
   final bool? restore;
-
   /// This is the safety profile of the Gallery Image Version.
   final GalleryImageVersionSafetyProfileResponse? safetyProfile;
-
   /// The security profile of a gallery image version
   final ImageVersionSecurityProfileResponse? securityProfile;
-
   /// This is the storage profile of a Gallery Image Version.
   final GalleryImageVersionStorageProfileResponse storageProfile;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
-
   /// This is the validations profile of a Gallery Image Version.
   final ValidationsProfileResponse validationsProfile;
 
@@ -116,50 +102,17 @@ class GetGalleryImageVersionResult {
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      publishingProfile: (() {
-        final guardedValue = map['publishingProfile'];
-        if (guardedValue == null) return null;
-        return GalleryImageVersionPublishingProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      replicationStatus: ReplicationStatusResponse.fromMap(
-        (map['replicationStatus']! as Map).cast<String, dynamic>(),
-      ),
-      restore: (() {
-        final guardedValue = map['restore'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      safetyProfile: (() {
-        final guardedValue = map['safetyProfile'];
-        if (guardedValue == null) return null;
-        return GalleryImageVersionSafetyProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      securityProfile: (() {
-        final guardedValue = map['securityProfile'];
-        if (guardedValue == null) return null;
-        return ImageVersionSecurityProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      storageProfile: GalleryImageVersionStorageProfileResponse.fromMap(
-        (map['storageProfile']! as Map).cast<String, dynamic>(),
-      ),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      publishingProfile: (() { final guardedValue = map['publishingProfile']; if (guardedValue == null) return null; return GalleryImageVersionPublishingProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      replicationStatus: ReplicationStatusResponse.fromMap((map['replicationStatus']! as Map).cast<String, dynamic>()),
+      restore: (() { final guardedValue = map['restore']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      safetyProfile: (() { final guardedValue = map['safetyProfile']; if (guardedValue == null) return null; return GalleryImageVersionSafetyProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      securityProfile: (() { final guardedValue = map['securityProfile']; if (guardedValue == null) return null; return ImageVersionSecurityProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      storageProfile: GalleryImageVersionStorageProfileResponse.fromMap((map['storageProfile']! as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
-      validationsProfile: ValidationsProfileResponse.fromMap(
-        (map['validationsProfile']! as Map).cast<String, dynamic>(),
-      ),
+      validationsProfile: ValidationsProfileResponse.fromMap((map['validationsProfile']! as Map).cast<String, dynamic>()),
     );
   }
 }
+

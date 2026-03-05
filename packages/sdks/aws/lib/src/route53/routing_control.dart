@@ -210,18 +210,14 @@ import 'routing_control_state.dart';
 class RoutingControl extends pulumi.CustomResource {
   /// ARN of the routing control.
   late final pulumi.Output<String> arn;
-
   /// ARN of the cluster in which this routing control will reside.
   late final pulumi.Output<String> clusterArn;
-
   /// ARN of the control panel in which this routing control will reside.
   late final pulumi.Output<String> controlPanelArn;
-
   /// The name describing the routing control.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
-
   /// Status of routing control. `PENDING` when it is being created/updated, `PENDING_DELETION` when it is being deleted, and `DEPLOYED` otherwise.
   late final pulumi.Output<String> status;
 
@@ -234,11 +230,11 @@ class RoutingControl extends pulumi.CustomResource {
     RoutingControlArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:route53recoverycontrol/routingControl:RoutingControl',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:route53recoverycontrol/routingControl:RoutingControl',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     clusterArn = registerOutput<String>('clusterArn');
     controlPanelArn = registerOutput<String>('controlPanelArn');
@@ -264,11 +260,11 @@ class RoutingControl extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:route53recoverycontrol/routingControl:RoutingControl',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:route53recoverycontrol/routingControl:RoutingControl',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     clusterArn = registerOutput<String>('clusterArn');
     controlPanelArn = registerOutput<String>('controlPanelArn');

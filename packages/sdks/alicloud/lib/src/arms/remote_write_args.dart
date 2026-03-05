@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RemoteWriteArgs {
   /// The ID of the Prometheus instance.
   final pulumi.Input<String> clusterId;
-
   /// The details of the Remote Write configuration item. Specify the value in the YAML format.
   final pulumi.Input<String> remoteWriteYaml;
 
   /// Creates a new [RemoteWriteArgs].
   /// [clusterId] The ID of the Prometheus instance.
   /// [remoteWriteYaml] The details of the Remote Write configuration item. Specify the value in the YAML format.
-  RemoteWriteArgs({required this.clusterId, required this.remoteWriteYaml});
+  RemoteWriteArgs({
+    required this.clusterId,
+    required this.remoteWriteYaml,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,3 +34,4 @@ class RemoteWriteArgs {
     );
   }
 }
+

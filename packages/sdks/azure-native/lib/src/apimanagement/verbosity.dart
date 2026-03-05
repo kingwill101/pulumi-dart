@@ -16,3 +16,4 @@ enum Verbosity {
     throw ArgumentError('Unknown Verbosity value: $value');
   }
 }
+

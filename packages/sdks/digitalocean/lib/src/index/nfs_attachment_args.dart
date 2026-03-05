@@ -8,10 +8,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_nfs_attachment_nfs_attachment_args_doc}
 class NfsAttachmentArgs {
   final pulumi.Input<String> region;
-
   /// The ID of the NFS share to attach.
   final pulumi.Input<String> shareId;
-
   /// The ID of the vpc to attach the NFS share to.
   final pulumi.Input<String> vpcId;
 
@@ -41,3 +39,4 @@ class NfsAttachmentArgs {
     );
   }
 }
+

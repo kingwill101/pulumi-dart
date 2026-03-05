@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetActionGroupArgs {
   /// Specifies the name of the Action Group.
   final pulumi.Input<String> name;
-
   /// Specifies the name of the resource group the Action Group is located in.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetActionGroupArgs].
   /// [name] Specifies the name of the Action Group.
   /// [resourceGroupName] Specifies the name of the resource group the Action Group is located in.
-  GetActionGroupArgs({required this.name, required this.resourceGroupName});
+  GetActionGroupArgs({
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,9 +30,8 @@ class GetActionGroupArgs {
   factory GetActionGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetActionGroupArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

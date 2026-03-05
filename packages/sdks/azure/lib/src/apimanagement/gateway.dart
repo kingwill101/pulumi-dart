@@ -252,13 +252,10 @@ import 'gateway_state.dart';
 class Gateway extends pulumi.CustomResource {
   /// The ID of the API Management Resource in which the gateway will be created. Changing this forces a new API Management Gateway resource to be created.
   late final pulumi.Output<String> apiManagementId;
-
   /// The description of the API Management Gateway.
   late final pulumi.Output<String?> description;
-
   /// A `location_data` block as documented below.
   late final pulumi.Output<GatewayLocationData> locationData;
-
   /// The name which should be used for the API Management Gateway. Changing this forces a new API Management Gateway to be created.
   late final pulumi.Output<String> name;
 
@@ -271,23 +268,14 @@ class Gateway extends pulumi.CustomResource {
     GatewayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/gateway:Gateway',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:apimanagement/gateway:Gateway',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiManagementId = registerOutput<String>('apiManagementId');
     description = registerOutput<String?>('description');
-    locationData = registerOutput<GatewayLocationData>(
-      'locationData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GatewayLocationData.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    locationData = registerOutput<GatewayLocationData>('locationData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GatewayLocationData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
   }
 
@@ -309,23 +297,14 @@ class Gateway extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/gateway:Gateway',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:apimanagement/gateway:Gateway',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiManagementId = registerOutput<String>('apiManagementId');
     description = registerOutput<String?>('description');
-    locationData = registerOutput<GatewayLocationData>(
-      'locationData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GatewayLocationData.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    locationData = registerOutput<GatewayLocationData>('locationData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GatewayLocationData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
   }
 }

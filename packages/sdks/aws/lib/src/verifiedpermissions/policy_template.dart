@@ -112,19 +112,14 @@ import 'policy_template_state.dart';
 class PolicyTemplate extends pulumi.CustomResource {
   /// The date the Policy Store was created.
   late final pulumi.Output<String> createdDate;
-
   /// Provides a description for the policy template.
   late final pulumi.Output<String?> description;
-
   /// The ID of the Policy Store.
   late final pulumi.Output<String> policyStoreId;
-
   /// The ID of the Policy Store.
   late final pulumi.Output<String> policyTemplateId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Defines the content of the statement, written in Cedar policy language.
   ///
   /// The following arguments are optional:
@@ -139,11 +134,11 @@ class PolicyTemplate extends pulumi.CustomResource {
     PolicyTemplateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:verifiedpermissions/policyTemplate:PolicyTemplate',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:verifiedpermissions/policyTemplate:PolicyTemplate',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createdDate = registerOutput<String>('createdDate');
     description = registerOutput<String?>('description');
     policyStoreId = registerOutput<String>('policyStoreId');
@@ -170,11 +165,11 @@ class PolicyTemplate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:verifiedpermissions/policyTemplate:PolicyTemplate',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:verifiedpermissions/policyTemplate:PolicyTemplate',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createdDate = registerOutput<String>('createdDate');
     description = registerOutput<String?>('description');
     policyStoreId = registerOutput<String>('policyStoreId');

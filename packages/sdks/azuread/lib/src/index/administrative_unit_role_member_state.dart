@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AdministrativeUnitRoleMemberState {
   /// The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
   final pulumi.Input<String>? administrativeUnitObjectId;
-
   /// The object ID of the user, group or service principal you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
   final pulumi.Input<String>? memberObjectId;
-
   /// The object ID of the directory role you want to assign. Changing this forces a new resource to be created.
   final pulumi.Input<String>? roleObjectId;
 
@@ -33,21 +31,10 @@ class AdministrativeUnitRoleMemberState {
 
   factory AdministrativeUnitRoleMemberState.fromMap(Map<String, dynamic> map) {
     return AdministrativeUnitRoleMemberState(
-      administrativeUnitObjectId: (() {
-        final guardedValue = map['administrativeUnitObjectId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      memberObjectId: (() {
-        final guardedValue = map['memberObjectId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      roleObjectId: (() {
-        final guardedValue = map['roleObjectId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      administrativeUnitObjectId: (() { final guardedValue = map['administrativeUnitObjectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      memberObjectId: (() { final guardedValue = map['memberObjectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      roleObjectId: (() { final guardedValue = map['roleObjectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

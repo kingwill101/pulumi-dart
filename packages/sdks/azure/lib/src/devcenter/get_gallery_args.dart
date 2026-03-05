@@ -9,17 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGalleryArgs {
   /// The ID of the Dev Center which contains the Dev Center Gallery.
   final pulumi.Input<String> devCenterId;
-
   /// The name of this Dev Center Gallery.
   final pulumi.Input<String> name;
 
   /// Creates a new [GetGalleryArgs].
   /// [devCenterId] The ID of the Dev Center which contains the Dev Center Gallery.
   /// [name] The name of this Dev Center Gallery.
-  GetGalleryArgs({required this.devCenterId, required this.name});
+  GetGalleryArgs({
+    required this.devCenterId,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'devCenterId': devCenterId, 'name': name};
+    return <String, dynamic>{
+      'devCenterId': devCenterId,
+      'name': name,
+    };
   }
 
   factory GetGalleryArgs.fromMap(Map<String, dynamic> map) {
@@ -29,3 +34,4 @@ class GetGalleryArgs {
     );
   }
 }
+

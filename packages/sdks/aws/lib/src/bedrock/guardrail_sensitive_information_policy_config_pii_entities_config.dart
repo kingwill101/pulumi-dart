@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GuardrailSensitiveInformationPolicyConfigPiiEntitiesConfig {
   /// Options for sensitive information action. Valid values: `BLOCK`, `ANONYMIZE`, `NONE`.
   final pulumi.Input<String> action;
-
   /// Action to take when harmful content is detected in the input. Valid values: `BLOCK`, `ANONYMIZE`, `NONE`.
   final pulumi.Input<String>? inputAction;
-
   /// Whether to enable guardrail evaluation on the input. When disabled, you aren't charged for the evaluation.
   final pulumi.Input<bool>? inputEnabled;
-
   /// Action to take when harmful content is detected in the output. Valid values: `BLOCK`, `ANONYMIZE`, `NONE`.
   final pulumi.Input<String>? outputAction;
-
   /// Whether to enable guardrail evaluation on the output. When disabled, you aren't charged for the evaluation.
   final pulumi.Input<bool>? outputEnabled;
-
   /// The currently supported PII entities.
   final pulumi.Input<String> type;
 
@@ -48,32 +43,15 @@ class GuardrailSensitiveInformationPolicyConfigPiiEntitiesConfig {
     };
   }
 
-  factory GuardrailSensitiveInformationPolicyConfigPiiEntitiesConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GuardrailSensitiveInformationPolicyConfigPiiEntitiesConfig.fromMap(Map<String, dynamic> map) {
     return GuardrailSensitiveInformationPolicyConfigPiiEntitiesConfig(
       action: pulumi.Input.fromValue(map['action'] as String),
-      inputAction: (() {
-        final guardedValue = map['inputAction'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      inputEnabled: (() {
-        final guardedValue = map['inputEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      outputAction: (() {
-        final guardedValue = map['outputAction'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      outputEnabled: (() {
-        final guardedValue = map['outputEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      inputAction: (() { final guardedValue = map['inputAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      inputEnabled: (() { final guardedValue = map['inputEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      outputAction: (() { final guardedValue = map['outputAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      outputEnabled: (() { final guardedValue = map['outputEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

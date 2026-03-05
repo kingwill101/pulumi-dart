@@ -9,17 +9,20 @@ class Hint {
 
   /// Creates a new [Hint].
   /// [humanReadableName] The human readable name of this attestation authority, for example "qa".
-  Hint({required this.humanReadableName});
+  Hint({
+    required this.humanReadableName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'humanReadableName': humanReadableName};
+    return <String, dynamic>{
+      'humanReadableName': humanReadableName,
+    };
   }
 
   factory Hint.fromMap(Map<String, dynamic> map) {
     return Hint(
-      humanReadableName: pulumi.Input.fromValue(
-        map['humanReadableName'] as String,
-      ),
+      humanReadableName: pulumi.Input.fromValue(map['humanReadableName'] as String),
     );
   }
 }
+

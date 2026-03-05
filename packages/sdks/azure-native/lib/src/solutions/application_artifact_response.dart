@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationArtifactResponse {
   /// The managed application artifact name.
   final pulumi.Input<String> name;
-
   /// The managed application artifact type.
   final pulumi.Input<String> type;
-
   /// The managed application artifact blob uri.
   final pulumi.Input<String> uri;
 
@@ -24,7 +22,11 @@ class ApplicationArtifactResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'type': type, 'uri': uri};
+    return <String, dynamic>{
+      'name': name,
+      'type': type,
+      'uri': uri,
+    };
   }
 
   factory ApplicationArtifactResponse.fromMap(Map<String, dynamic> map) {
@@ -35,3 +37,4 @@ class ApplicationArtifactResponse {
     );
   }
 }
+

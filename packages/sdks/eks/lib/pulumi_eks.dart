@@ -23,15 +23,11 @@ class _IndexModuleNamespace {
   final ClusterArgs = module_index.ClusterArgs.new;
   final ClusterComputeConfig = module_index.ClusterComputeConfig.new;
   final ClusterComputeConfigArgs = module_index.ClusterComputeConfig.new;
-  final ClusterCreationRoleProvider =
-      module_index.ClusterCreationRoleProvider.new;
-  final ClusterCreationRoleProviderArgs =
-      module_index.ClusterCreationRoleProviderArgs.new;
+  final ClusterCreationRoleProvider = module_index.ClusterCreationRoleProvider.new;
+  final ClusterCreationRoleProviderArgs = module_index.ClusterCreationRoleProviderArgs.new;
   final ClusterGetKubeconfigArgs = module_index.ClusterGetKubeconfigArgs.new;
-  final ClusterGetKubeconfigResult =
-      module_index.ClusterGetKubeconfigResult.new;
-  final ClusterGetKubeconfigResultArgs =
-      module_index.ClusterGetKubeconfigResult.new;
+  final ClusterGetKubeconfigResult = module_index.ClusterGetKubeconfigResult.new;
+  final ClusterGetKubeconfigResultArgs = module_index.ClusterGetKubeconfigResult.new;
   final ClusterNodeGroupOptions = module_index.ClusterNodeGroupOptions.new;
   final ClusterNodeGroupOptionsArgs = module_index.ClusterNodeGroupOptions.new;
   final ClusterNodePools = module_index.ClusterNodePools.values;
@@ -57,8 +53,7 @@ class _IndexModuleNamespace {
   final NodeGroupData = module_index.NodeGroupData.new;
   final NodeGroupDataArgs = module_index.NodeGroupData.new;
   final NodeGroupSecurityGroup = module_index.NodeGroupSecurityGroup.new;
-  final NodeGroupSecurityGroupArgs =
-      module_index.NodeGroupSecurityGroupArgs.new;
+  final NodeGroupSecurityGroupArgs = module_index.NodeGroupSecurityGroupArgs.new;
   final NodeGroupV2 = module_index.NodeGroupV2.new;
   final NodeGroupV2Args = module_index.NodeGroupV2Args.new;
   final NodeadmOptions = module_index.NodeadmOptions.new;

@@ -180,29 +180,20 @@ import 'system_data_response.dart';
 class ManagedClusterSnapshot extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// CreationData to be used to specify the source resource ID to create this snapshot.
   late final pulumi.Output<CreationDataResponse?> creationData;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// What the properties will be showed when getting managed cluster snapshot. Those properties are read-only.
-  late final pulumi.Output<ManagedClusterPropertiesForSnapshotResponse>
-  managedClusterPropertiesReadOnly;
-
+  late final pulumi.Output<ManagedClusterPropertiesForSnapshotResponse> managedClusterPropertiesReadOnly;
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The type of a snapshot. The default is NodePool.
   late final pulumi.Output<String?> snapshotType;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -215,46 +206,18 @@ class ManagedClusterSnapshot extends pulumi.CustomResource {
     ManagedClusterSnapshotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:containerservice:ManagedClusterSnapshot',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:containerservice:ManagedClusterSnapshot',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    creationData = registerOutput<CreationDataResponse?>(
-      'creationData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CreationDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    creationData = registerOutput<CreationDataResponse?>('creationData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CreationDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
-    managedClusterPropertiesReadOnly =
-        registerOutput<ManagedClusterPropertiesForSnapshotResponse>(
-          'managedClusterPropertiesReadOnly',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ManagedClusterPropertiesForSnapshotResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    managedClusterPropertiesReadOnly = registerOutput<ManagedClusterPropertiesForSnapshotResponse>('managedClusterPropertiesReadOnly', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedClusterPropertiesForSnapshotResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     snapshotType = registerOutput<String?>('snapshotType');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

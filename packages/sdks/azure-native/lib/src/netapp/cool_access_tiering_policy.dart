@@ -15,3 +15,4 @@ enum CoolAccessTieringPolicy {
     throw ArgumentError('Unknown CoolAccessTieringPolicy value: $value');
   }
 }
+

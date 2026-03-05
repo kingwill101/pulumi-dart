@@ -7,15 +7,12 @@ class GetHealthCheckHttpsHealthCheck {
   /// If left empty (default value), the public IP on behalf of which this health
   /// check is performed will be used.
   final pulumi.Input<String> host;
-
   /// The TCP port number for the HTTPS health check request.
   /// The default value is 443.
   final pulumi.Input<int> port;
-
   /// Port name as defined in InstanceGroup#NamedPort#name. If both port and
   /// port_name are defined, port takes precedence.
   final pulumi.Input<String> portName;
-
   /// Specifies how port is selected for health checking, can be one of the
   /// following values:
   ///
@@ -31,15 +28,12 @@ class GetHealthCheckHttpsHealthCheck {
   /// If not specified, HTTPS health check follows behavior specified in 'port' and
   /// 'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
   final pulumi.Input<String> portSpecification;
-
   /// Specifies the type of proxy header to append before sending data to the
   /// backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"]
   final pulumi.Input<String> proxyHeader;
-
   /// The request path of the HTTPS health check request.
   /// The default value is /.
   final pulumi.Input<String> requestPath;
-
   /// The bytes to match against the beginning of the response data. If left empty
   /// (the default value), any response will indicate health. The response data
   /// can only be ASCII.
@@ -80,12 +74,11 @@ class GetHealthCheckHttpsHealthCheck {
       host: pulumi.Input.fromValue(map['host'] as String),
       port: pulumi.Input.fromValue(map['port'] as int),
       portName: pulumi.Input.fromValue(map['portName'] as String),
-      portSpecification: pulumi.Input.fromValue(
-        map['portSpecification'] as String,
-      ),
+      portSpecification: pulumi.Input.fromValue(map['portSpecification'] as String),
       proxyHeader: pulumi.Input.fromValue(map['proxyHeader'] as String),
       requestPath: pulumi.Input.fromValue(map['requestPath'] as String),
       response: pulumi.Input.fromValue(map['response'] as String),
     );
   }
 }
+

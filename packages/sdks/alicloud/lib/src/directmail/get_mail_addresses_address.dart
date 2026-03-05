@@ -5,40 +5,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMailAddressesAddress {
   /// The sender address.
   final pulumi.Input<String> accountName;
-
   /// The creation of the record time.
   final pulumi.Input<String> createTime;
-
   /// On the quota limit.
   final pulumi.Input<String> dailyCount;
-
   /// On the quota.
   final pulumi.Input<String> dailyReqCount;
-
   /// Domain name status. Valid values: `0`, `1`.
   final pulumi.Input<String> domainStatus;
-
   /// The ID of the Mail Address.
   final pulumi.Input<String> id;
-
   /// The sender address ID.
   final pulumi.Input<String> mailAddressId;
-
   /// Monthly quota limit.
   final pulumi.Input<String> monthCount;
-
   /// Months amount.
   final pulumi.Input<String> monthReqCount;
-
   /// Return address.
   final pulumi.Input<String> replyAddress;
-
   /// If using STMP address status.
   final pulumi.Input<String> replyStatus;
-
   /// Account type.
   final pulumi.Input<String> sendtype;
-
   /// Account Status. Valid values: `0`, `1`. Freeze: 1, normal: 0.
   final pulumi.Input<String> status;
 
@@ -108,3 +96,4 @@ class GetMailAddressesAddress {
     );
   }
 }
+

@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetKubernetesClusterArgs {
   /// The name of the Kubernetes cluster.
   final pulumi.Input<String> kubernetesClusterName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetKubernetesClusterArgs {
 
   factory GetKubernetesClusterArgs.fromMap(Map<String, dynamic> map) {
     return GetKubernetesClusterArgs(
-      kubernetesClusterName: pulumi.Input.fromValue(
-        map['kubernetesClusterName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      kubernetesClusterName: pulumi.Input.fromValue(map['kubernetesClusterName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

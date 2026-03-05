@@ -652,19 +652,14 @@ class ServerGroupAttachment extends pulumi.CustomResource {
   /// If instances of scaling group are attached/removed from backend server when
   /// server group from scaling group. Default to false.
   late final pulumi.Output<bool?> forceAttach;
-
   /// The port will be used for Server Group backend server.
   late final pulumi.Output<int> port;
-
   /// ID of the scaling group.
   late final pulumi.Output<String> scalingGroupId;
-
   /// ID of Server Group.
   late final pulumi.Output<String> serverGroupId;
-
   /// The type of server group N. Valid values: ALB, NLB.
   late final pulumi.Output<String> type;
-
   /// The weight of an ECS instance attached to the Server Group.
   late final pulumi.Output<int> weight;
 
@@ -677,11 +672,11 @@ class ServerGroupAttachment extends pulumi.CustomResource {
     ServerGroupAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ess/serverGroupAttachment:ServerGroupAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ess/serverGroupAttachment:ServerGroupAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     forceAttach = registerOutput<bool?>('forceAttach');
     port = registerOutput<int>('port');
     scalingGroupId = registerOutput<String>('scalingGroupId');
@@ -708,11 +703,11 @@ class ServerGroupAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ess/serverGroupAttachment:ServerGroupAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ess/serverGroupAttachment:ServerGroupAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     forceAttach = registerOutput<bool?>('forceAttach');
     port = registerOutput<int>('port');
     scalingGroupId = registerOutput<String>('scalingGroupId');

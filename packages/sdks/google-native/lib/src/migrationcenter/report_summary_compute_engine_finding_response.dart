@@ -7,16 +7,12 @@ import 'report_summary_machine_series_allocation_response.dart';
 class ReportSummaryComputeEngineFindingResponse {
   /// Count of assets which were allocated.
   final pulumi.Input<String> allocatedAssetCount;
-
   /// Set of disk types allocated to assets.
   final pulumi.Input<List<String>> allocatedDiskTypes;
-
   /// Set of regions in which the assets were allocated.
   final pulumi.Input<List<String>> allocatedRegions;
-
   /// Distribution of assets based on the Machine Series.
-  final pulumi.Input<List<ReportSummaryMachineSeriesAllocationResponse>>
-  machineSeriesAllocations;
+  final pulumi.Input<List<ReportSummaryMachineSeriesAllocationResponse>> machineSeriesAllocations;
 
   /// Creates a new [ReportSummaryComputeEngineFindingResponse].
   /// [allocatedAssetCount] Count of assets which were allocated.
@@ -35,42 +31,17 @@ class ReportSummaryComputeEngineFindingResponse {
       'allocatedAssetCount': allocatedAssetCount,
       'allocatedDiskTypes': allocatedDiskTypes,
       'allocatedRegions': allocatedRegions,
-      'machineSeriesAllocations':
-          pulumi.Input.mapInputValue<
-            List<ReportSummaryMachineSeriesAllocationResponse>,
-            List<Map<String, dynamic>>
-          >(
-            machineSeriesAllocations,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ReportSummaryMachineSeriesAllocationResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'machineSeriesAllocations': pulumi.Input.mapInputValue<List<ReportSummaryMachineSeriesAllocationResponse>, List<Map<String, dynamic>>>(machineSeriesAllocations, (value) => pulumi.Input.encodeList<ReportSummaryMachineSeriesAllocationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory ReportSummaryComputeEngineFindingResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ReportSummaryComputeEngineFindingResponse.fromMap(Map<String, dynamic> map) {
     return ReportSummaryComputeEngineFindingResponse(
-      allocatedAssetCount: pulumi.Input.fromValue(
-        map['allocatedAssetCount'] as String,
-      ),
-      allocatedDiskTypes: pulumi.Input.fromValue(
-        (map['allocatedDiskTypes'] as List).cast<String>(),
-      ),
-      allocatedRegions: pulumi.Input.fromValue(
-        (map['allocatedRegions'] as List).cast<String>(),
-      ),
-      machineSeriesAllocations: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<ReportSummaryMachineSeriesAllocationResponse>(
-          map['machineSeriesAllocations']!,
-          (value) => ReportSummaryMachineSeriesAllocationResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      allocatedAssetCount: pulumi.Input.fromValue(map['allocatedAssetCount'] as String),
+      allocatedDiskTypes: pulumi.Input.fromValue((map['allocatedDiskTypes'] as List).cast<String>()),
+      allocatedRegions: pulumi.Input.fromValue((map['allocatedRegions'] as List).cast<String>()),
+      machineSeriesAllocations: pulumi.Input.fromValue(pulumi.Input.decodeList<ReportSummaryMachineSeriesAllocationResponse>(map['machineSeriesAllocations']!, (value) => ReportSummaryMachineSeriesAllocationResponse.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

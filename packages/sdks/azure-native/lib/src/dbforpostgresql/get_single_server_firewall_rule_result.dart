@@ -1,22 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getSingleServerFirewallRule.
 class GetSingleServerFirewallRuleResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The end IP address of the server firewall rule. Must be IPv4 format.
   final String endIpAddress;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// The name of the resource
   final String name;
-
   /// The start IP address of the server firewall rule. Must be IPv4 format.
   final String startIpAddress;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -58,3 +54,4 @@ class GetSingleServerFirewallRuleResult {
     );
   }
 }
+

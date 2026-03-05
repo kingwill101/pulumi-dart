@@ -8,10 +8,8 @@ class LoggingConfigurationLoggingConfigurationLogDestinationConfig {
   /// * For a CloudWatch log group, specify the key `logGroup` with the name of the CloudWatch log group.
   /// * For a Kinesis Data Firehose delivery stream, specify the key `deliveryStream` with the name of the delivery stream.
   final pulumi.Input<Map<String, String>> logDestination;
-
   /// The location to send logs to. Valid values: `S3`, `CloudWatchLogs`, `KinesisDataFirehose`.
   final pulumi.Input<String> logDestinationType;
-
   /// The type of log to send. Valid values: `ALERT` or `FLOW` or `TLS`. Alert logs report traffic that matches a `StatefulRule` with an action setting that sends a log message. Flow logs are standard network traffic flow logs.
   final pulumi.Input<String> logType;
 
@@ -33,17 +31,12 @@ class LoggingConfigurationLoggingConfigurationLogDestinationConfig {
     };
   }
 
-  factory LoggingConfigurationLoggingConfigurationLogDestinationConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LoggingConfigurationLoggingConfigurationLogDestinationConfig.fromMap(Map<String, dynamic> map) {
     return LoggingConfigurationLoggingConfigurationLogDestinationConfig(
-      logDestination: pulumi.Input.fromValue(
-        (map['logDestination'] as Map).cast<String, String>(),
-      ),
-      logDestinationType: pulumi.Input.fromValue(
-        map['logDestinationType'] as String,
-      ),
+      logDestination: pulumi.Input.fromValue((map['logDestination'] as Map).cast<String, String>()),
+      logDestinationType: pulumi.Input.fromValue(map['logDestinationType'] as String),
       logType: pulumi.Input.fromValue(map['logType'] as String),
     );
   }
 }
+

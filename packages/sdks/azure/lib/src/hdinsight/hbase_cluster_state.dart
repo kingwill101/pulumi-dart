@@ -19,68 +19,46 @@ import 'hbase_cluster_storage_account_gen2.dart';
 class HBaseClusterState {
   /// Specifies the Version of HDInsights which should be used for this Cluster. Changing this forces a new resource to be created.
   final pulumi.Input<String>? clusterVersion;
-
   /// A `component_version` block as defined below.
   final pulumi.Input<HBaseClusterComponentVersion>? componentVersion;
-
   /// A `compute_isolation` block as defined below.
   final pulumi.Input<HBaseClusterComputeIsolation>? computeIsolation;
-
   /// One or more `disk_encryption` block as defined below.
   final pulumi.Input<List<HBaseClusterDiskEncryption>>? diskEncryptions;
-
   /// An `extension` block as defined below.
   final pulumi.Input<HBaseClusterExtension>? extension;
-
   /// A `gateway` block as defined below.
   final pulumi.Input<HBaseClusterGateway>? gateway;
-
   /// The HTTPS Connectivity Endpoint for this HDInsight HBase Cluster.
   final pulumi.Input<String>? httpsEndpoint;
-
   /// Specifies the Azure Region which this HDInsight HBase Cluster should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
-
   /// A `metastores` block as defined below.
   final pulumi.Input<HBaseClusterMetastores>? metastores;
-
   /// A `monitor` block as defined below.
   final pulumi.Input<HBaseClusterMonitor>? monitor;
-
   /// Specifies the name for this HDInsight HBase Cluster. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// A `network` block as defined below.
   final pulumi.Input<HBaseClusterNetwork>? network;
-
   /// A `private_link_configuration` block as defined below.
-  final pulumi.Input<HBaseClusterPrivateLinkConfiguration>?
-  privateLinkConfiguration;
-
+  final pulumi.Input<HBaseClusterPrivateLinkConfiguration>? privateLinkConfiguration;
   /// Specifies the name of the Resource Group in which this HDInsight HBase Cluster should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
-
   /// A `roles` block as defined below.
   final pulumi.Input<HBaseClusterRoles>? roles;
-
   /// A `security_profile` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<HBaseClusterSecurityProfile>? securityProfile;
-
   /// The SSH Connectivity Endpoint for this HDInsight HBase Cluster.
   final pulumi.Input<String>? sshEndpoint;
-
   /// A `storage_account_gen2` block as defined below.
   final pulumi.Input<HBaseClusterStorageAccountGen2>? storageAccountGen2;
-
   /// One or more `storage_account` block as defined below.
   final pulumi.Input<List<HBaseClusterStorageAccount>>? storageAccounts;
-
   /// A map of Tags which should be assigned to this HDInsight HBase Cluster.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// Specifies the Tier which should be used for this HDInsight HBase Cluster. Possible values are `Standard` or `Premium`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? tier;
-
   /// The minimal supported TLS version. Possible values are 1.0, 1.1 or 1.2. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Starting on June 30, 2020, Azure HDInsight will enforce TLS 1.2 or later versions for all HTTPS connections. For more information, see [Azure HDInsight TLS 1.2 Enforcement](https://azure.microsoft.com/en-us/updates/azure-hdinsight-tls-12-enforcement/).
@@ -137,90 +115,24 @@ class HBaseClusterState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'clusterVersion': ?clusterVersion,
-      'componentVersion':
-          ?pulumi.Input.mapOptionalInputValue<
-            HBaseClusterComponentVersion,
-            Map<String, dynamic>
-          >(componentVersion, (value) => value.toMap()),
-      'computeIsolation':
-          ?pulumi.Input.mapOptionalInputValue<
-            HBaseClusterComputeIsolation,
-            Map<String, dynamic>
-          >(computeIsolation, (value) => value.toMap()),
-      'diskEncryptions':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<HBaseClusterDiskEncryption>,
-            List<Map<String, dynamic>>
-          >(
-            diskEncryptions,
-            (value) =>
-                pulumi.Input.encodeList<
-                  HBaseClusterDiskEncryption,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'extension':
-          ?pulumi.Input.mapOptionalInputValue<
-            HBaseClusterExtension,
-            Map<String, dynamic>
-          >(extension, (value) => value.toMap()),
-      'gateway':
-          ?pulumi.Input.mapOptionalInputValue<
-            HBaseClusterGateway,
-            Map<String, dynamic>
-          >(gateway, (value) => value.toMap()),
+      'componentVersion': ?pulumi.Input.mapOptionalInputValue<HBaseClusterComponentVersion, Map<String, dynamic>>(componentVersion, (value) => value.toMap()),
+      'computeIsolation': ?pulumi.Input.mapOptionalInputValue<HBaseClusterComputeIsolation, Map<String, dynamic>>(computeIsolation, (value) => value.toMap()),
+      'diskEncryptions': ?pulumi.Input.mapOptionalInputValue<List<HBaseClusterDiskEncryption>, List<Map<String, dynamic>>>(diskEncryptions, (value) => pulumi.Input.encodeList<HBaseClusterDiskEncryption, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'extension': ?pulumi.Input.mapOptionalInputValue<HBaseClusterExtension, Map<String, dynamic>>(extension, (value) => value.toMap()),
+      'gateway': ?pulumi.Input.mapOptionalInputValue<HBaseClusterGateway, Map<String, dynamic>>(gateway, (value) => value.toMap()),
       'httpsEndpoint': ?httpsEndpoint,
       'location': ?location,
-      'metastores':
-          ?pulumi.Input.mapOptionalInputValue<
-            HBaseClusterMetastores,
-            Map<String, dynamic>
-          >(metastores, (value) => value.toMap()),
-      'monitor':
-          ?pulumi.Input.mapOptionalInputValue<
-            HBaseClusterMonitor,
-            Map<String, dynamic>
-          >(monitor, (value) => value.toMap()),
+      'metastores': ?pulumi.Input.mapOptionalInputValue<HBaseClusterMetastores, Map<String, dynamic>>(metastores, (value) => value.toMap()),
+      'monitor': ?pulumi.Input.mapOptionalInputValue<HBaseClusterMonitor, Map<String, dynamic>>(monitor, (value) => value.toMap()),
       'name': ?name,
-      'network':
-          ?pulumi.Input.mapOptionalInputValue<
-            HBaseClusterNetwork,
-            Map<String, dynamic>
-          >(network, (value) => value.toMap()),
-      'privateLinkConfiguration':
-          ?pulumi.Input.mapOptionalInputValue<
-            HBaseClusterPrivateLinkConfiguration,
-            Map<String, dynamic>
-          >(privateLinkConfiguration, (value) => value.toMap()),
+      'network': ?pulumi.Input.mapOptionalInputValue<HBaseClusterNetwork, Map<String, dynamic>>(network, (value) => value.toMap()),
+      'privateLinkConfiguration': ?pulumi.Input.mapOptionalInputValue<HBaseClusterPrivateLinkConfiguration, Map<String, dynamic>>(privateLinkConfiguration, (value) => value.toMap()),
       'resourceGroupName': ?resourceGroupName,
-      'roles':
-          ?pulumi.Input.mapOptionalInputValue<
-            HBaseClusterRoles,
-            Map<String, dynamic>
-          >(roles, (value) => value.toMap()),
-      'securityProfile':
-          ?pulumi.Input.mapOptionalInputValue<
-            HBaseClusterSecurityProfile,
-            Map<String, dynamic>
-          >(securityProfile, (value) => value.toMap()),
+      'roles': ?pulumi.Input.mapOptionalInputValue<HBaseClusterRoles, Map<String, dynamic>>(roles, (value) => value.toMap()),
+      'securityProfile': ?pulumi.Input.mapOptionalInputValue<HBaseClusterSecurityProfile, Map<String, dynamic>>(securityProfile, (value) => value.toMap()),
       'sshEndpoint': ?sshEndpoint,
-      'storageAccountGen2':
-          ?pulumi.Input.mapOptionalInputValue<
-            HBaseClusterStorageAccountGen2,
-            Map<String, dynamic>
-          >(storageAccountGen2, (value) => value.toMap()),
-      'storageAccounts':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<HBaseClusterStorageAccount>,
-            List<Map<String, dynamic>>
-          >(
-            storageAccounts,
-            (value) =>
-                pulumi.Input.encodeList<
-                  HBaseClusterStorageAccount,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'storageAccountGen2': ?pulumi.Input.mapOptionalInputValue<HBaseClusterStorageAccountGen2, Map<String, dynamic>>(storageAccountGen2, (value) => value.toMap()),
+      'storageAccounts': ?pulumi.Input.mapOptionalInputValue<List<HBaseClusterStorageAccount>, List<Map<String, dynamic>>>(storageAccounts, (value) => pulumi.Input.encodeList<HBaseClusterStorageAccount, Map<String, dynamic>>(value, (value) => value.toMap())),
       'tags': ?tags,
       'tier': ?tier,
       'tlsMinVersion': ?tlsMinVersion,
@@ -229,176 +141,29 @@ class HBaseClusterState {
 
   factory HBaseClusterState.fromMap(Map<String, dynamic> map) {
     return HBaseClusterState(
-      clusterVersion: (() {
-        final guardedValue = map['clusterVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      componentVersion: (() {
-        final guardedValue = map['componentVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          HBaseClusterComponentVersion.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      computeIsolation: (() {
-        final guardedValue = map['computeIsolation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          HBaseClusterComputeIsolation.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      diskEncryptions: (() {
-        final guardedValue = map['diskEncryptions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<HBaseClusterDiskEncryption>(
-            guardedValue,
-            (value) => HBaseClusterDiskEncryption.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      extension: (() {
-        final guardedValue = map['extension'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          HBaseClusterExtension.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      gateway: (() {
-        final guardedValue = map['gateway'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          HBaseClusterGateway.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      httpsEndpoint: (() {
-        final guardedValue = map['httpsEndpoint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      metastores: (() {
-        final guardedValue = map['metastores'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          HBaseClusterMetastores.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      monitor: (() {
-        final guardedValue = map['monitor'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          HBaseClusterMonitor.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      network: (() {
-        final guardedValue = map['network'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          HBaseClusterNetwork.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      privateLinkConfiguration: (() {
-        final guardedValue = map['privateLinkConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          HBaseClusterPrivateLinkConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      resourceGroupName: (() {
-        final guardedValue = map['resourceGroupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      roles: (() {
-        final guardedValue = map['roles'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          HBaseClusterRoles.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      securityProfile: (() {
-        final guardedValue = map['securityProfile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          HBaseClusterSecurityProfile.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      sshEndpoint: (() {
-        final guardedValue = map['sshEndpoint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      storageAccountGen2: (() {
-        final guardedValue = map['storageAccountGen2'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          HBaseClusterStorageAccountGen2.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      storageAccounts: (() {
-        final guardedValue = map['storageAccounts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<HBaseClusterStorageAccount>(
-            guardedValue,
-            (value) => HBaseClusterStorageAccount.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      tier: (() {
-        final guardedValue = map['tier'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tlsMinVersion: (() {
-        final guardedValue = map['tlsMinVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      clusterVersion: (() { final guardedValue = map['clusterVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      componentVersion: (() { final guardedValue = map['componentVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HBaseClusterComponentVersion.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      computeIsolation: (() { final guardedValue = map['computeIsolation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HBaseClusterComputeIsolation.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      diskEncryptions: (() { final guardedValue = map['diskEncryptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<HBaseClusterDiskEncryption>(guardedValue, (value) => HBaseClusterDiskEncryption.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      extension: (() { final guardedValue = map['extension']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HBaseClusterExtension.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      gateway: (() { final guardedValue = map['gateway']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HBaseClusterGateway.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      httpsEndpoint: (() { final guardedValue = map['httpsEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      metastores: (() { final guardedValue = map['metastores']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HBaseClusterMetastores.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      monitor: (() { final guardedValue = map['monitor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HBaseClusterMonitor.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HBaseClusterNetwork.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      privateLinkConfiguration: (() { final guardedValue = map['privateLinkConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HBaseClusterPrivateLinkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      roles: (() { final guardedValue = map['roles']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HBaseClusterRoles.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      securityProfile: (() { final guardedValue = map['securityProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HBaseClusterSecurityProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      sshEndpoint: (() { final guardedValue = map['sshEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageAccountGen2: (() { final guardedValue = map['storageAccountGen2']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HBaseClusterStorageAccountGen2.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      storageAccounts: (() { final guardedValue = map['storageAccounts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<HBaseClusterStorageAccount>(guardedValue, (value) => HBaseClusterStorageAccount.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      tier: (() { final guardedValue = map['tier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tlsMinVersion: (() { final guardedValue = map['tlsMinVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -10,25 +10,20 @@ class ApiConfigOpenapiDocument {
 
   /// Creates a new [ApiConfigOpenapiDocument].
   /// [document] The OpenAPI Specification document file.
-  ApiConfigOpenapiDocument({required this.document});
+  ApiConfigOpenapiDocument({
+    required this.document,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'document':
-          pulumi.Input.mapInputValue<
-            ApiConfigOpenapiDocumentDocument,
-            Map<String, dynamic>
-          >(document, (value) => value.toMap()),
+      'document': pulumi.Input.mapInputValue<ApiConfigOpenapiDocumentDocument, Map<String, dynamic>>(document, (value) => value.toMap()),
     };
   }
 
   factory ApiConfigOpenapiDocument.fromMap(Map<String, dynamic> map) {
     return ApiConfigOpenapiDocument(
-      document: pulumi.Input.fromValue(
-        ApiConfigOpenapiDocumentDocument.fromMap(
-          (map['document']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      document: pulumi.Input.fromValue(ApiConfigOpenapiDocumentDocument.fromMap((map['document']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

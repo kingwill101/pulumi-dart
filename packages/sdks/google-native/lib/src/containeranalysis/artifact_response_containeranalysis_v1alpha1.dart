@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ArtifactResponseContaineranalysisV1alpha1 {
   /// Hash or checksum value of a binary, or Docker Registry 2.0 digest of a container.
   final pulumi.Input<String> checksum;
-
   /// Name of the artifact. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. This field is deprecated in favor of the plural `names` field; it continues to exist here to allow existing BuildProvenance serialized to json in google.devtools.containeranalysis.v1alpha1.BuildDetails.provenance_bytes to deserialize back into proto.
   final pulumi.Input<String> name;
-
   /// Related artifact names. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. Note that a single Artifact ID can have multiple names, for example if two tags are applied to one image.
   final pulumi.Input<List<String>> names;
 
@@ -31,9 +29,7 @@ class ArtifactResponseContaineranalysisV1alpha1 {
     };
   }
 
-  factory ArtifactResponseContaineranalysisV1alpha1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ArtifactResponseContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return ArtifactResponseContaineranalysisV1alpha1(
       checksum: pulumi.Input.fromValue(map['checksum'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
@@ -41,3 +37,4 @@ class ArtifactResponseContaineranalysisV1alpha1 {
     );
   }
 }
+

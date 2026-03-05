@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PrefixListId {
   /// &lt;p&gt;A description for the security group rule that references this prefix list ID.&lt;/p&gt; &lt;p&gt;Constraints: Up to 255 characters in length. Allowed characters are a-z, A-Z, 0-9, spaces, and ._-:/()#,@[]+=;{}!$*&lt;/p&gt;
   final pulumi.Input<String>? description;
-
   /// &lt;p&gt;The ID of the prefix.&lt;/p&gt;
   final pulumi.Input<String>? prefixListId;
 
   /// Creates a new [PrefixListId].
   /// [description] &lt;p&gt;A description for the security group rule that references this prefix list ID.&lt;/p&gt; &lt;p&gt;Constraints: Up to 255 characters in length. Allowed characters are a-z, A-Z, 0-9, spaces, and ._-:/()#,@[]+=;{}!$*&lt;/p&gt;
   /// [prefixListId] &lt;p&gt;The ID of the prefix.&lt;/p&gt;
-  PrefixListId({this.description, this.prefixListId});
+  PrefixListId({
+    this.description,
+    this.prefixListId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class PrefixListId {
 
   factory PrefixListId.fromMap(Map<String, dynamic> map) {
     return PrefixListId(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      prefixListId: (() {
-        final guardedValue = map['prefixListId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      prefixListId: (() { final guardedValue = map['prefixListId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -9,17 +9,20 @@ class L2ConnectionsPropertiesResponseEdgeSite {
 
   /// Creates a new [L2ConnectionsPropertiesResponseEdgeSite].
   /// [id] Resource ID.
-  L2ConnectionsPropertiesResponseEdgeSite({required this.id});
+  L2ConnectionsPropertiesResponseEdgeSite({
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id};
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
-  factory L2ConnectionsPropertiesResponseEdgeSite.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory L2ConnectionsPropertiesResponseEdgeSite.fromMap(Map<String, dynamic> map) {
     return L2ConnectionsPropertiesResponseEdgeSite(
       id: pulumi.Input.fromValue(map['id'] as String),
     );
   }
 }
+

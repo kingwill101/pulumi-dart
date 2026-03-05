@@ -5,25 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAlidnsInstancesInstance {
   /// DNS security level.
   final pulumi.Input<String> dnsSecurity;
-
   /// (Available in 1.124.1+) The domain name.
   final pulumi.Input<String> domain;
-
   /// Number of domain names bound.
   final pulumi.Input<String> domainNumbers;
-
   /// Id of the instance.
   final pulumi.Input<String> id;
-
   /// Id of the instance resource.
   final pulumi.Input<String> instanceId;
-
   /// (Available in 1.124.1+) The payment type of alidns instance.
   final pulumi.Input<String> paymentType;
-
   /// Paid package version.
   final pulumi.Input<String> versionCode;
-
   /// Paid package version name.
   final pulumi.Input<String> versionName;
 
@@ -73,3 +66,4 @@ class GetAlidnsInstancesInstance {
     );
   }
 }
+

@@ -8,25 +8,13 @@ import 'google_cloud_aiplatform_v1_nas_job_spec_multi_trial_algorithm_spec_train
 /// The spec of multi-trial Neural Architecture Search (NAS).
 class GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecResponse {
   /// Metric specs for the NAS job. Validation for this field is done at `multi_trial_algorithm_spec` field.
-  final pulumi.Input<
-    GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMetricSpecResponse
-  >
-  metric;
-
+  final pulumi.Input<GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMetricSpecResponse> metric;
   /// The multi-trial Neural Architecture Search (NAS) algorithm type. Defaults to `REINFORCEMENT_LEARNING`.
   final pulumi.Input<String> multiTrialAlgorithm;
-
   /// Spec for search trials.
-  final pulumi.Input<
-    GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpecResponse
-  >
-  searchTrialSpec;
-
+  final pulumi.Input<GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpecResponse> searchTrialSpec;
   /// Spec for train trials. Top N [TrainTrialSpec.max_parallel_trial_count] search trials will be trained for every M [TrainTrialSpec.frequency] trials searched.
-  final pulumi.Input<
-    GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpecResponse
-  >
-  trainTrialSpec;
+  final pulumi.Input<GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpecResponse> trainTrialSpec;
 
   /// Creates a new [GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecResponse].
   /// [metric] Metric specs for the NAS job. Validation for this field is done at `multi_trial_algorithm_spec` field.
@@ -42,47 +30,20 @@ class GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'metric':
-          pulumi.Input.mapInputValue<
-            GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMetricSpecResponse,
-            Map<String, dynamic>
-          >(metric, (value) => value.toMap()),
+      'metric': pulumi.Input.mapInputValue<GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMetricSpecResponse, Map<String, dynamic>>(metric, (value) => value.toMap()),
       'multiTrialAlgorithm': multiTrialAlgorithm,
-      'searchTrialSpec':
-          pulumi.Input.mapInputValue<
-            GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpecResponse,
-            Map<String, dynamic>
-          >(searchTrialSpec, (value) => value.toMap()),
-      'trainTrialSpec':
-          pulumi.Input.mapInputValue<
-            GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpecResponse,
-            Map<String, dynamic>
-          >(trainTrialSpec, (value) => value.toMap()),
+      'searchTrialSpec': pulumi.Input.mapInputValue<GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpecResponse, Map<String, dynamic>>(searchTrialSpec, (value) => value.toMap()),
+      'trainTrialSpec': pulumi.Input.mapInputValue<GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpecResponse, Map<String, dynamic>>(trainTrialSpec, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecResponse(
-      metric: pulumi.Input.fromValue(
-        GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMetricSpecResponse.fromMap(
-          (map['metric']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      multiTrialAlgorithm: pulumi.Input.fromValue(
-        map['multiTrialAlgorithm'] as String,
-      ),
-      searchTrialSpec: pulumi.Input.fromValue(
-        GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpecResponse.fromMap(
-          (map['searchTrialSpec']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      trainTrialSpec: pulumi.Input.fromValue(
-        GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpecResponse.fromMap(
-          (map['trainTrialSpec']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      metric: pulumi.Input.fromValue(GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMetricSpecResponse.fromMap((map['metric']! as Map).cast<String, dynamic>())),
+      multiTrialAlgorithm: pulumi.Input.fromValue(map['multiTrialAlgorithm'] as String),
+      searchTrialSpec: pulumi.Input.fromValue(GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpecResponse.fromMap((map['searchTrialSpec']! as Map).cast<String, dynamic>())),
+      trainTrialSpec: pulumi.Input.fromValue(GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpecResponse.fromMap((map['trainTrialSpec']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -672,75 +672,52 @@ import 'job_time_config.dart';
 class Job extends pulumi.CustomResource {
   /// Error retry interval, unit s, default value 30.
   late final pulumi.Output<int?> attemptInterval;
-
   /// Full path of the task interface class.
   ///
   /// This field is available only when your task is of the Java task type.
   late final pulumi.Output<String?> className;
-
   /// The script code of the python, shell, and go task types.
   late final pulumi.Output<String?> content;
-
   /// Task description.
   late final pulumi.Output<String?> description;
-
   /// Task execution mode, the possible results are as follows:
   late final pulumi.Output<String> executeMode;
-
   /// Number of consecutive failed alarms
   late final pulumi.Output<int?> failTimes;
-
   /// The application ID, which is obtained from the **application management** page of the console.
   late final pulumi.Output<String> groupId;
-
   /// JobId
   late final pulumi.Output<int> jobId;
-
   /// Task monitoring information See `job_monitor_info` below.
   late final pulumi.Output<JobJobMonitorInfo?> jobMonitorInfo;
-
   /// JobName
   late final pulumi.Output<String> jobName;
-
   /// Job Type
   late final pulumi.Output<String> jobType;
-
   /// Advanced configuration, limited to parallel computing, memory grid, and grid computing. See `map_task_xattrs` below.
   late final pulumi.Output<JobMapTaskXattrs?> mapTaskXattrs;
-
   /// The maximum number of error retries, which is set based on business requirements. The default value is 0.
   late final pulumi.Output<int?> maxAttempt;
-
   /// The maximum number of instances running at the same time. The default value is 1, that is, the last trigger is not completed, and the next trigger will not be performed even at the running time.
   late final pulumi.Output<String?> maxConcurrency;
-
   /// Namespace, which is obtained on the `Namespace` page of the console.
   late final pulumi.Output<String> namespace;
-
   /// Special third parties are required.
   late final pulumi.Output<String?> namespaceSource;
-
   /// User-defined parameters, which can be obtained at runtime.
   late final pulumi.Output<String?> parameters;
-
   /// Task status. The values are as follows:
   late final pulumi.Output<String> status;
-
   /// Success Notification Switch
   late final pulumi.Output<bool?> successNoticeEnable;
-
   /// Advanced configuration of parallel grid tasks, push model or pull model
   late final pulumi.Output<String?> taskDispatchMode;
-
   /// K8s task type custom task template
   late final pulumi.Output<String?> template;
-
   /// Time configuration information See `time_config` below.
   late final pulumi.Output<JobTimeConfig> timeConfig;
-
   /// Time Zone
   late final pulumi.Output<String?> timezone;
-
   /// Task Extension Field
   late final pulumi.Output<String> xAttrs;
 
@@ -748,13 +725,16 @@ class Job extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Job]. {@macro pulumi_schedulerx_job_job_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Job(String name, {JobArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:schedulerx/job:Job',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Job(
+    String name, {
+    JobArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:schedulerx/job:Job',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     attemptInterval = registerOutput<int?>('attemptInterval');
     className = registerOutput<String?>('className');
     content = registerOutput<String?>('content');
@@ -763,28 +743,10 @@ class Job extends pulumi.CustomResource {
     failTimes = registerOutput<int?>('failTimes');
     groupId = registerOutput<String>('groupId');
     jobId = registerOutput<int>('jobId');
-    jobMonitorInfo = registerOutput<JobJobMonitorInfo?>(
-      'jobMonitorInfo',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return JobJobMonitorInfo.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    jobMonitorInfo = registerOutput<JobJobMonitorInfo?>('jobMonitorInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobJobMonitorInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     jobName = registerOutput<String>('jobName');
     jobType = registerOutput<String>('jobType');
-    mapTaskXattrs = registerOutput<JobMapTaskXattrs?>(
-      'mapTaskXattrs',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return JobMapTaskXattrs.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    mapTaskXattrs = registerOutput<JobMapTaskXattrs?>('mapTaskXattrs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobMapTaskXattrs.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     maxAttempt = registerOutput<int?>('maxAttempt');
     maxConcurrency = registerOutput<String?>('maxConcurrency');
     namespace = registerOutput<String>('namespace');
@@ -794,22 +756,17 @@ class Job extends pulumi.CustomResource {
     successNoticeEnable = registerOutput<bool?>('successNoticeEnable');
     taskDispatchMode = registerOutput<String?>('taskDispatchMode');
     template = registerOutput<String?>('template');
-    timeConfig = registerOutput<JobTimeConfig>(
-      'timeConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return JobTimeConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeConfig = registerOutput<JobTimeConfig>('timeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobTimeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     timezone = registerOutput<String?>('timezone');
     xAttrs = registerOutput<String>('xAttrs');
   }
 
   /// Gets an existing [Job] resource's state with the given [name] and [id].
-  static Job get(String name, pulumi.Input<String> id, {JobState? state}) {
+  static Job get(
+    String name,
+    pulumi.Input<String> id, {
+    JobState? state,
+  }) {
     return Job._get(
       name,
       state: state?.toMap(),
@@ -822,11 +779,11 @@ class Job extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:schedulerx/job:Job',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:schedulerx/job:Job',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     attemptInterval = registerOutput<int?>('attemptInterval');
     className = registerOutput<String?>('className');
     content = registerOutput<String?>('content');
@@ -835,28 +792,10 @@ class Job extends pulumi.CustomResource {
     failTimes = registerOutput<int?>('failTimes');
     groupId = registerOutput<String>('groupId');
     jobId = registerOutput<int>('jobId');
-    jobMonitorInfo = registerOutput<JobJobMonitorInfo?>(
-      'jobMonitorInfo',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return JobJobMonitorInfo.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    jobMonitorInfo = registerOutput<JobJobMonitorInfo?>('jobMonitorInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobJobMonitorInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     jobName = registerOutput<String>('jobName');
     jobType = registerOutput<String>('jobType');
-    mapTaskXattrs = registerOutput<JobMapTaskXattrs?>(
-      'mapTaskXattrs',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return JobMapTaskXattrs.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    mapTaskXattrs = registerOutput<JobMapTaskXattrs?>('mapTaskXattrs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobMapTaskXattrs.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     maxAttempt = registerOutput<int?>('maxAttempt');
     maxConcurrency = registerOutput<String?>('maxConcurrency');
     namespace = registerOutput<String>('namespace');
@@ -866,16 +805,7 @@ class Job extends pulumi.CustomResource {
     successNoticeEnable = registerOutput<bool?>('successNoticeEnable');
     taskDispatchMode = registerOutput<String?>('taskDispatchMode');
     template = registerOutput<String?>('template');
-    timeConfig = registerOutput<JobTimeConfig>(
-      'timeConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return JobTimeConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeConfig = registerOutput<JobTimeConfig>('timeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobTimeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     timezone = registerOutput<String?>('timezone');
     xAttrs = registerOutput<String>('xAttrs');
   }

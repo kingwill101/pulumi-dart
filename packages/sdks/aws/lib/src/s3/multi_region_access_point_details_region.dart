@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MultiRegionAccessPointDetailsRegion {
   final pulumi.Input<String> bucket;
   final pulumi.Input<String>? bucketAccountId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -27,21 +26,12 @@ class MultiRegionAccessPointDetailsRegion {
     };
   }
 
-  factory MultiRegionAccessPointDetailsRegion.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MultiRegionAccessPointDetailsRegion.fromMap(Map<String, dynamic> map) {
     return MultiRegionAccessPointDetailsRegion(
       bucket: pulumi.Input.fromValue(map['bucket'] as String),
-      bucketAccountId: (() {
-        final guardedValue = map['bucketAccountId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      bucketAccountId: (() { final guardedValue = map['bucketAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

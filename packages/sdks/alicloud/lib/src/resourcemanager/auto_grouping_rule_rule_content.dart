@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AutoGroupingRuleRuleContent {
   /// The condition for the range of resources to be automatically transferred.
   final pulumi.Input<String>? autoGroupingScopeCondition;
-
   /// The condition for the destination resource group.
   final pulumi.Input<String> targetResourceGroupCondition;
 
@@ -26,14 +25,9 @@ class AutoGroupingRuleRuleContent {
 
   factory AutoGroupingRuleRuleContent.fromMap(Map<String, dynamic> map) {
     return AutoGroupingRuleRuleContent(
-      autoGroupingScopeCondition: (() {
-        final guardedValue = map['autoGroupingScopeCondition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      targetResourceGroupCondition: pulumi.Input.fromValue(
-        map['targetResourceGroupCondition'] as String,
-      ),
+      autoGroupingScopeCondition: (() { final guardedValue = map['autoGroupingScopeCondition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      targetResourceGroupCondition: pulumi.Input.fromValue(map['targetResourceGroupCondition'] as String),
     );
   }
 }
+

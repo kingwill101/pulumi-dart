@@ -193,25 +193,18 @@ import 'client_file_protect_state.dart';
 class ClientFileProtect extends pulumi.CustomResource {
   /// 0 no alert 1 info 2 suspicious 3 critical.
   late final pulumi.Output<int?> alertLevel;
-
   /// file operation.
   late final pulumi.Output<List<String>> fileOps;
-
   /// file path.
   late final pulumi.Output<List<String>> filePaths;
-
   /// process path.
   late final pulumi.Output<List<String>> procPaths;
-
   /// rule action, pass or alert.
   late final pulumi.Output<String> ruleAction;
-
   /// ruleName.
   late final pulumi.Output<String> ruleName;
-
   /// rule status 0 is disable 1 is enable.
   late final pulumi.Output<int> status;
-
   /// switch id.
   late final pulumi.Output<String?> switchId;
 
@@ -224,11 +217,11 @@ class ClientFileProtect extends pulumi.CustomResource {
     ClientFileProtectArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:threatdetection/clientFileProtect:ClientFileProtect',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:threatdetection/clientFileProtect:ClientFileProtect',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alertLevel = registerOutput<int?>('alertLevel');
     fileOps = registerOutput<List<String>>('fileOps');
     filePaths = registerOutput<List<String>>('filePaths');
@@ -257,11 +250,11 @@ class ClientFileProtect extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:threatdetection/clientFileProtect:ClientFileProtect',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:threatdetection/clientFileProtect:ClientFileProtect',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alertLevel = registerOutput<int?>('alertLevel');
     fileOps = registerOutput<List<String>>('fileOps');
     filePaths = registerOutput<List<String>>('filePaths');

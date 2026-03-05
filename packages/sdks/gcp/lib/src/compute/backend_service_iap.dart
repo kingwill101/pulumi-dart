@@ -5,14 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackendServiceIap {
   /// Whether the serving infrastructure will authenticate and authorize all incoming requests.
   final pulumi.Input<bool> enabled;
-
   /// OAuth2 Client ID for IAP
   final pulumi.Input<String>? oauth2ClientId;
-
   /// OAuth2 Client Secret for IAP
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   final pulumi.Input<String>? oauth2ClientSecret;
-
   /// (Output)
   /// OAuth2 Client Secret SHA-256 for IAP
   /// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -42,21 +39,10 @@ class BackendServiceIap {
   factory BackendServiceIap.fromMap(Map<String, dynamic> map) {
     return BackendServiceIap(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
-      oauth2ClientId: (() {
-        final guardedValue = map['oauth2ClientId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      oauth2ClientSecret: (() {
-        final guardedValue = map['oauth2ClientSecret'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      oauth2ClientSecretSha256: (() {
-        final guardedValue = map['oauth2ClientSecretSha256'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      oauth2ClientId: (() { final guardedValue = map['oauth2ClientId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      oauth2ClientSecret: (() { final guardedValue = map['oauth2ClientSecret']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      oauth2ClientSecretSha256: (() { final guardedValue = map['oauth2ClientSecretSha256']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

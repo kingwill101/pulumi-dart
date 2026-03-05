@@ -277,33 +277,23 @@ import 'system_data_response.dart';
 /// ```
 class SecurityAdminConfiguration extends pulumi.CustomResource {
   /// Enum list of network intent policy based services.
-  late final pulumi.Output<List<String>?>
-  applyOnNetworkIntentPolicyBasedServices;
-
+  late final pulumi.Output<List<String>?> applyOnNetworkIntentPolicyBasedServices;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// A description of the security configuration.
   late final pulumi.Output<String?> description;
-
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// Determine update behavior for changes to network groups referenced within the rules in this configuration.
   late final pulumi.Output<String?> networkGroupAddressSpaceAggregationOption;
-
   /// The provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// Unique identifier for this resource.
   late final pulumi.Output<String> resourceGuid;
-
   /// The system metadata related to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -316,33 +306,20 @@ class SecurityAdminConfiguration extends pulumi.CustomResource {
     SecurityAdminConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:network:SecurityAdminConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    applyOnNetworkIntentPolicyBasedServices = registerOutput<List<String>?>(
-      'applyOnNetworkIntentPolicyBasedServices',
-    );
+          'azure-native:network:SecurityAdminConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    applyOnNetworkIntentPolicyBasedServices = registerOutput<List<String>?>('applyOnNetworkIntentPolicyBasedServices');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     description = registerOutput<String?>('description');
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
-    networkGroupAddressSpaceAggregationOption = registerOutput<String?>(
-      'networkGroupAddressSpaceAggregationOption',
-    );
+    networkGroupAddressSpaceAggregationOption = registerOutput<String?>('networkGroupAddressSpaceAggregationOption');
     provisioningState = registerOutput<String>('provisioningState');
     resourceGuid = registerOutput<String>('resourceGuid');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

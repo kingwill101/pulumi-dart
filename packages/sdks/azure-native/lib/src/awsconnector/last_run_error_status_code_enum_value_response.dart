@@ -9,21 +9,20 @@ class LastRunErrorStatusCodeEnumValueResponse {
 
   /// Creates a new [LastRunErrorStatusCodeEnumValueResponse].
   /// [value] Property value
-  LastRunErrorStatusCodeEnumValueResponse({this.value});
+  LastRunErrorStatusCodeEnumValueResponse({
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': ?value};
+    return <String, dynamic>{
+      'value': ?value,
+    };
   }
 
-  factory LastRunErrorStatusCodeEnumValueResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LastRunErrorStatusCodeEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return LastRunErrorStatusCodeEnumValueResponse(
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

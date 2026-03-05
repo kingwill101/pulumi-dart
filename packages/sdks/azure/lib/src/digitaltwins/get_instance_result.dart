@@ -1,18 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getInstance.
 class GetInstanceResult {
   /// The API endpoint to work with this Digital Twins instance.
   final String hostName;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The Azure Region where the Digital Twins instance exists.
   final String location;
   final String name;
   final String resourceGroupName;
-
   /// A mapping of tags assigned to the Digital Twins instance.
   final Map<String, String> tags;
 
@@ -54,3 +52,4 @@ class GetInstanceResult {
     );
   }
 }
+

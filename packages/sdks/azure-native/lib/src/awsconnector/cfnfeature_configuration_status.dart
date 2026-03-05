@@ -15,3 +15,4 @@ enum CFNFeatureConfigurationStatus {
     throw ArgumentError('Unknown CFNFeatureConfigurationStatus value: $value');
   }
 }
+

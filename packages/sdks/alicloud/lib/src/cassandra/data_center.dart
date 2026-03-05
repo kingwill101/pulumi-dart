@@ -272,44 +272,34 @@ import 'data_center_state.dart';
 class DataCenter extends pulumi.CustomResource {
   /// Auto renew of dataCenter-2,`true` or `false`. System default to `false`, valid when pay_type = Subscription.
   late final pulumi.Output<bool?> autoRenew;
-
   /// Period of dataCenter-2 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when pay_type = Subscription. Unit: month.
   late final pulumi.Output<int?> autoRenewPeriod;
-
   /// Cassandra cluster id of dataCenter-2 belongs to.
   late final pulumi.Output<String> clusterId;
   late final pulumi.Output<String> dataCenterId;
-
   /// Cassandra dataCenter-2 name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted.
   late final pulumi.Output<String?> dataCenterName;
-
   /// User-defined Cassandra dataCenter one core node's storage space.Unit: GB. Value range:
   /// - Custom storage space; value range: [160, 2000].
   /// - 80-GB increments.
   late final pulumi.Output<int?> diskSize;
-
   /// The disk type of Cassandra dataCenter-2. Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`, local_disk size is fixed.
   late final pulumi.Output<String?> diskType;
   late final pulumi.Output<bool?> enablePublic;
-
   /// Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/157445.html). Or you can call describeInstanceType api.
   late final pulumi.Output<String> instanceType;
-
   /// The node count of Cassandra dataCenter-2, default to 2.
   late final pulumi.Output<int> nodeCount;
-
   /// The pay type of Cassandra dataCenter-2. Valid values are `Subscription`, `PayAsYouGo`. System default to `PayAsYouGo`.
   late final pulumi.Output<String> payType;
   late final pulumi.Output<int?> period;
   late final pulumi.Output<String?> periodUnit;
   late final pulumi.Output<List<String>> publicPoints;
   late final pulumi.Output<String> status;
-
   /// The vswitch_id of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
   ///
   /// &gt; **NOTE:** Now data_center_name,instance_type,node_count,disk_type,disk_size can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
   late final pulumi.Output<String> vswitchId;
-
   /// The Zone to launch the Cassandra dataCenter-2. If vswitch_id is not empty, this zone_id can be "" or consistent.
   late final pulumi.Output<String> zoneId;
 
@@ -322,11 +312,11 @@ class DataCenter extends pulumi.CustomResource {
     DataCenterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cassandra/dataCenter:DataCenter',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cassandra/dataCenter:DataCenter',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoRenew = registerOutput<bool?>('autoRenew');
     autoRenewPeriod = registerOutput<int?>('autoRenewPeriod');
     clusterId = registerOutput<String>('clusterId');
@@ -364,11 +354,11 @@ class DataCenter extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cassandra/dataCenter:DataCenter',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cassandra/dataCenter:DataCenter',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoRenew = registerOutput<bool?>('autoRenew');
     autoRenewPeriod = registerOutput<int?>('autoRenewPeriod');
     clusterId = registerOutput<String>('clusterId');

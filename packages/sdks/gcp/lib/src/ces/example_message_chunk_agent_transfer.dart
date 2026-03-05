@@ -6,7 +6,6 @@ class ExampleMessageChunkAgentTransfer {
   /// (Output)
   /// Display name of the agent.
   final pulumi.Input<String>? displayName;
-
   /// The agent to which the conversation is being transferred. The agent will
   /// handle the conversation from this point forward.
   /// Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
@@ -29,12 +28,9 @@ class ExampleMessageChunkAgentTransfer {
 
   factory ExampleMessageChunkAgentTransfer.fromMap(Map<String, dynamic> map) {
     return ExampleMessageChunkAgentTransfer(
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       targetAgent: pulumi.Input.fromValue(map['targetAgent'] as String),
     );
   }
 }
+

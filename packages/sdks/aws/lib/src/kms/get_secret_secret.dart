@@ -31,20 +31,11 @@ class GetSecretSecret {
 
   factory GetSecretSecret.fromMap(Map<String, dynamic> map) {
     return GetSecretSecret(
-      context: (() {
-        final guardedValue = map['context'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      grantTokens: (() {
-        final guardedValue = map['grantTokens'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      context: (() { final guardedValue = map['context']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      grantTokens: (() { final guardedValue = map['grantTokens']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       payload: pulumi.Input.fromValue(map['payload'] as String),
     );
   }
 }
+

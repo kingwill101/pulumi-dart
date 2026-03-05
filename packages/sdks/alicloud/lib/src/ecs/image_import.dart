@@ -327,25 +327,18 @@ import 'image_import_state.dart';
 class ImageImport extends pulumi.CustomResource {
   /// The architecture of the image. Default value: `x86_64`. Valid values: `x86_64`, `i386`.
   late final pulumi.Output<String?> architecture;
-
   /// The boot mode of the image. Valid values: `BIOS`, `UEFI`.
   late final pulumi.Output<String> bootMode;
-
   /// The description of the image. The `description` must be 2 to 256 characters in length and cannot start with http:// or https://.
   late final pulumi.Output<String?> description;
-
   /// The information about the custom image. See `disk_device_mapping` below.
   late final pulumi.Output<List<Map<String, dynamic>>> diskDeviceMappings;
-
   /// The name of the image. The `image_name` must be `2` to `128` characters in length. The `image_name` must start with a letter and cannot start with acs: or aliyun. The `image_name` cannot contain http:// or https://. The `image_name` can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
   late final pulumi.Output<String> imageName;
-
   /// The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`, `Aliyun`, `BYOL`.
   late final pulumi.Output<String?> licenseType;
-
   /// The type of the operating system. Default value: `linux`. Valid values: `windows`, `linux`.
   late final pulumi.Output<String?> osType;
-
   /// The operating system platform. More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
   /// &gt; **NOTE:** Before provider version 1.197.0, the default value of `platform` is `Ubuntu`.
   late final pulumi.Output<String> platform;
@@ -359,17 +352,15 @@ class ImageImport extends pulumi.CustomResource {
     ImageImportArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ecs/imageImport:ImageImport',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ecs/imageImport:ImageImport',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     architecture = registerOutput<String?>('architecture');
     bootMode = registerOutput<String>('bootMode');
     description = registerOutput<String?>('description');
-    diskDeviceMappings = registerOutput<List<Map<String, dynamic>>>(
-      'diskDeviceMappings',
-    );
+    diskDeviceMappings = registerOutput<List<Map<String, dynamic>>>('diskDeviceMappings');
     imageName = registerOutput<String>('imageName');
     licenseType = registerOutput<String?>('licenseType');
     osType = registerOutput<String?>('osType');
@@ -394,17 +385,15 @@ class ImageImport extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ecs/imageImport:ImageImport',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ecs/imageImport:ImageImport',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     architecture = registerOutput<String?>('architecture');
     bootMode = registerOutput<String>('bootMode');
     description = registerOutput<String?>('description');
-    diskDeviceMappings = registerOutput<List<Map<String, dynamic>>>(
-      'diskDeviceMappings',
-    );
+    diskDeviceMappings = registerOutput<List<Map<String, dynamic>>>('diskDeviceMappings');
     imageName = registerOutput<String>('imageName');
     licenseType = registerOutput<String?>('licenseType');
     osType = registerOutput<String?>('osType');

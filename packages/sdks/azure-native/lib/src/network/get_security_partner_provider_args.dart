@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSecurityPartnerProviderArgs {
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the Security Partner Provider.
   final pulumi.Input<String> securityPartnerProviderName;
 
@@ -30,12 +29,9 @@ class GetSecurityPartnerProviderArgs {
 
   factory GetSecurityPartnerProviderArgs.fromMap(Map<String, dynamic> map) {
     return GetSecurityPartnerProviderArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      securityPartnerProviderName: pulumi.Input.fromValue(
-        map['securityPartnerProviderName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      securityPartnerProviderName: pulumi.Input.fromValue(map['securityPartnerProviderName'] as String),
     );
   }
 }
+

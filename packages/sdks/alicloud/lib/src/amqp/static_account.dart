@@ -227,22 +227,16 @@ import 'static_account_state.dart';
 class StaticAccount extends pulumi.CustomResource {
   /// Access key.
   late final pulumi.Output<String> accessKey;
-
   /// The timestamp that indicates when the pair of static username and password was created.
   late final pulumi.Output<int> createTime;
-
   /// Amqp instance ID.
   late final pulumi.Output<String> instanceId;
-
   /// The ID of the user's primary account.
   late final pulumi.Output<String> masterUid;
-
   /// The static password.
   late final pulumi.Output<String> password;
-
   /// Secret key.
   late final pulumi.Output<String> secretKey;
-
   /// The static username.
   late final pulumi.Output<String> userName;
 
@@ -255,11 +249,11 @@ class StaticAccount extends pulumi.CustomResource {
     StaticAccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:amqp/staticAccount:StaticAccount',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:amqp/staticAccount:StaticAccount',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessKey = registerOutput<String>('accessKey');
     createTime = registerOutput<int>('createTime');
     instanceId = registerOutput<String>('instanceId');
@@ -287,11 +281,11 @@ class StaticAccount extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:amqp/staticAccount:StaticAccount',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:amqp/staticAccount:StaticAccount',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessKey = registerOutput<String>('accessKey');
     createTime = registerOutput<int>('createTime');
     instanceId = registerOutput<String>('instanceId');

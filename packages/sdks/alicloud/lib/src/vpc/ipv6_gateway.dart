@@ -248,37 +248,26 @@ import 'ipv6_gateway_state.dart';
 class Ipv6Gateway extends pulumi.CustomResource {
   /// The status of the IPv6 gateway.
   late final pulumi.Output<String> businessStatus;
-
   /// The creation time of the resource.
   late final pulumi.Output<String> createTime;
-
   /// The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
   late final pulumi.Output<String?> description;
-
   /// The expiration time of IPv6 gateway.
   late final pulumi.Output<String> expiredTime;
-
   /// The charge type of IPv6 gateway.
   late final pulumi.Output<String> instanceChargeType;
-
   /// Resource primary key attribute field.
   late final pulumi.Output<String> ipv6GatewayId;
-
   /// The name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
   late final pulumi.Output<String?> ipv6GatewayName;
-
   /// The ID of the resource group to which the instance belongs.
   late final pulumi.Output<String> resourceGroupId;
-
   /// IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
   late final pulumi.Output<String> spec;
-
   /// The status of the resource. Valid values: Available, Pending and Deleting.
   late final pulumi.Output<String> status;
-
   /// The tags for the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The ID of the virtual private cloud (VPC) for which you want to create the IPv6 gateway.
   late final pulumi.Output<String> vpcId;
 
@@ -291,11 +280,11 @@ class Ipv6Gateway extends pulumi.CustomResource {
     Ipv6GatewayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/ipv6Gateway:Ipv6Gateway',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpc/ipv6Gateway:Ipv6Gateway',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     businessStatus = registerOutput<String>('businessStatus');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
@@ -328,11 +317,11 @@ class Ipv6Gateway extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/ipv6Gateway:Ipv6Gateway',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpc/ipv6Gateway:Ipv6Gateway',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     businessStatus = registerOutput<String>('businessStatus');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');

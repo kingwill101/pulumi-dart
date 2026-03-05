@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainNumaTuneMemNode {
   /// Sets the cell ID for the NUMA nodes, identifying the specific physical memory locality.
   final pulumi.Input<double> cellId;
-
   /// Defines the allocation mode for memory on NUMA nodes, which can optimize performance based on architecture.
   final pulumi.Input<String> mode;
-
   /// Specifies the nodeset for memory allocation within the NUMA architecture, impacting memory distribution.
   final pulumi.Input<String> nodeset;
 
@@ -38,3 +36,4 @@ class DomainNumaTuneMemNode {
     );
   }
 }
+

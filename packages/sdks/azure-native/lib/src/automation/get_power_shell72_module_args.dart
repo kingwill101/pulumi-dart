@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPowerShell72ModuleArgs {
   /// The name of the automation account.
   final pulumi.Input<String> automationAccountName;
-
   /// The name of module.
   final pulumi.Input<String> moduleName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,13 +34,10 @@ class GetPowerShell72ModuleArgs {
 
   factory GetPowerShell72ModuleArgs.fromMap(Map<String, dynamic> map) {
     return GetPowerShell72ModuleArgs(
-      automationAccountName: pulumi.Input.fromValue(
-        map['automationAccountName'] as String,
-      ),
+      automationAccountName: pulumi.Input.fromValue(map['automationAccountName'] as String),
       moduleName: pulumi.Input.fromValue(map['moduleName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

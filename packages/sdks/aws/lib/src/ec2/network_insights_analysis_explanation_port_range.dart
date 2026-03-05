@@ -9,26 +9,23 @@ class NetworkInsightsAnalysisExplanationPortRange {
   /// Creates a new [NetworkInsightsAnalysisExplanationPortRange].
   /// [from] Optional.
   /// [to] Optional.
-  NetworkInsightsAnalysisExplanationPortRange({this.from, this.to});
+  NetworkInsightsAnalysisExplanationPortRange({
+    this.from,
+    this.to,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'from': ?from, 'to': ?to};
+    return <String, dynamic>{
+      'from': ?from,
+      'to': ?to,
+    };
   }
 
-  factory NetworkInsightsAnalysisExplanationPortRange.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NetworkInsightsAnalysisExplanationPortRange.fromMap(Map<String, dynamic> map) {
     return NetworkInsightsAnalysisExplanationPortRange(
-      from: (() {
-        final guardedValue = map['from'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      to: (() {
-        final guardedValue = map['to'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      from: (() { final guardedValue = map['from']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      to: (() { final guardedValue = map['to']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

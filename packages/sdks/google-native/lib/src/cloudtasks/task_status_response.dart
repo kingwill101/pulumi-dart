@@ -7,13 +7,10 @@ import 'attempt_status_response.dart';
 class TaskStatusResponse {
   /// The number of attempts dispatched. This count includes attempts which have been dispatched but haven't received a response.
   final pulumi.Input<int> attemptDispatchCount;
-
   /// The number of attempts which have received a response. This field is not calculated for pull tasks.
   final pulumi.Input<int> attemptResponseCount;
-
   /// The status of the task's first attempt. Only dispatch_time will be set. The other AttemptStatus information is not retained by Cloud Tasks. This field is not calculated for pull tasks.
   final pulumi.Input<AttemptStatusResponse> firstAttemptStatus;
-
   /// The status of the task's last attempt. This field is not calculated for pull tasks.
   final pulumi.Input<AttemptStatusResponse> lastAttemptStatus;
 
@@ -33,37 +30,18 @@ class TaskStatusResponse {
     return <String, dynamic>{
       'attemptDispatchCount': attemptDispatchCount,
       'attemptResponseCount': attemptResponseCount,
-      'firstAttemptStatus':
-          pulumi.Input.mapInputValue<
-            AttemptStatusResponse,
-            Map<String, dynamic>
-          >(firstAttemptStatus, (value) => value.toMap()),
-      'lastAttemptStatus':
-          pulumi.Input.mapInputValue<
-            AttemptStatusResponse,
-            Map<String, dynamic>
-          >(lastAttemptStatus, (value) => value.toMap()),
+      'firstAttemptStatus': pulumi.Input.mapInputValue<AttemptStatusResponse, Map<String, dynamic>>(firstAttemptStatus, (value) => value.toMap()),
+      'lastAttemptStatus': pulumi.Input.mapInputValue<AttemptStatusResponse, Map<String, dynamic>>(lastAttemptStatus, (value) => value.toMap()),
     };
   }
 
   factory TaskStatusResponse.fromMap(Map<String, dynamic> map) {
     return TaskStatusResponse(
-      attemptDispatchCount: pulumi.Input.fromValue(
-        map['attemptDispatchCount'] as int,
-      ),
-      attemptResponseCount: pulumi.Input.fromValue(
-        map['attemptResponseCount'] as int,
-      ),
-      firstAttemptStatus: pulumi.Input.fromValue(
-        AttemptStatusResponse.fromMap(
-          (map['firstAttemptStatus']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      lastAttemptStatus: pulumi.Input.fromValue(
-        AttemptStatusResponse.fromMap(
-          (map['lastAttemptStatus']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      attemptDispatchCount: pulumi.Input.fromValue(map['attemptDispatchCount'] as int),
+      attemptResponseCount: pulumi.Input.fromValue(map['attemptResponseCount'] as int),
+      firstAttemptStatus: pulumi.Input.fromValue(AttemptStatusResponse.fromMap((map['firstAttemptStatus']! as Map).cast<String, dynamic>())),
+      lastAttemptStatus: pulumi.Input.fromValue(AttemptStatusResponse.fromMap((map['lastAttemptStatus']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

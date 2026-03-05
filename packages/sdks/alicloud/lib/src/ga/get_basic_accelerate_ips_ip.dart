@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBasicAccelerateIpsIp {
   /// The address of the Basic Accelerate IP.
   final pulumi.Input<String> accelerateIpAddress;
-
   /// The id of the Basic Accelerate IP.
   final pulumi.Input<String> accelerateIpId;
-
   /// The id of the Global Accelerator Basic Accelerator instance.
   final pulumi.Input<String> acceleratorId;
-
   /// The id of the Basic Accelerate IP.
   final pulumi.Input<String> id;
-
   /// The ID of the Basic Ip Set.
   final pulumi.Input<String> ipSetId;
-
   /// The status of the Global Accelerator Basic Accelerate IP instance. Valid Value: `active`, `binding`, `bound`, `unbinding`, `deleting`.
   final pulumi.Input<String> status;
 
@@ -50,9 +45,7 @@ class GetBasicAccelerateIpsIp {
 
   factory GetBasicAccelerateIpsIp.fromMap(Map<String, dynamic> map) {
     return GetBasicAccelerateIpsIp(
-      accelerateIpAddress: pulumi.Input.fromValue(
-        map['accelerateIpAddress'] as String,
-      ),
+      accelerateIpAddress: pulumi.Input.fromValue(map['accelerateIpAddress'] as String),
       accelerateIpId: pulumi.Input.fromValue(map['accelerateIpId'] as String),
       acceleratorId: pulumi.Input.fromValue(map['acceleratorId'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
@@ -61,3 +54,4 @@ class GetBasicAccelerateIpsIp {
     );
   }
 }
+

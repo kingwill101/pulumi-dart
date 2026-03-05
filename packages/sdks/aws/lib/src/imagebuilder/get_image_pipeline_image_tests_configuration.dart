@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetImagePipelineImageTestsConfiguration {
   /// Whether image tests are enabled.
   final pulumi.Input<bool> imageTestsEnabled;
-
   /// Number of minutes before image tests time out.
   final pulumi.Input<int> timeoutMinutes;
 
@@ -24,14 +23,11 @@ class GetImagePipelineImageTestsConfiguration {
     };
   }
 
-  factory GetImagePipelineImageTestsConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetImagePipelineImageTestsConfiguration.fromMap(Map<String, dynamic> map) {
     return GetImagePipelineImageTestsConfiguration(
-      imageTestsEnabled: pulumi.Input.fromValue(
-        map['imageTestsEnabled'] as bool,
-      ),
+      imageTestsEnabled: pulumi.Input.fromValue(map['imageTestsEnabled'] as bool),
       timeoutMinutes: pulumi.Input.fromValue(map['timeoutMinutes'] as int),
     );
   }
 }
+

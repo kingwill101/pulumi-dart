@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTable {
   /// The ID of the dataset containing this table.
   final pulumi.Input<String> datasetId;
-
   /// The ID of the project containing this table.
   final pulumi.Input<String> projectId;
-
   /// The ID of the table. The ID must contain only letters (a-z,
   /// A-Z), numbers (0-9), or underscores (_). The maximum length
   /// is 1,024 characters.
@@ -32,17 +30,12 @@ class PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorage
     };
   }
 
-  factory PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTable.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTable.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTable(
       datasetId: pulumi.Input.fromValue(map['datasetId'] as String),
       projectId: pulumi.Input.fromValue(map['projectId'] as String),
-      tableId: (() {
-        final guardedValue = map['tableId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      tableId: (() { final guardedValue = map['tableId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

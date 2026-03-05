@@ -13,8 +13,7 @@ enum RegionTargetHttpsProxyQuicOverride {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown RegionTargetHttpsProxyQuicOverride value: $value',
-    );
+    throw ArgumentError('Unknown RegionTargetHttpsProxyQuicOverride value: $value');
   }
 }
+

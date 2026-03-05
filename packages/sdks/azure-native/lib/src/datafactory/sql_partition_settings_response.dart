@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SqlPartitionSettingsResponse {
   /// The name of the column in integer or datetime type that will be used for proceeding partitioning. If not specified, the primary key of the table is auto-detected and used as the partition column. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? partitionColumnName;
-
   /// The minimum value of the partition column for partition range splitting. This value is used to decide the partition stride, not for filtering the rows in table. All rows in the table or query result will be partitioned and copied. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? partitionLowerBound;
-
   /// The maximum value of the partition column for partition range splitting. This value is used to decide the partition stride, not for filtering the rows in table. All rows in the table or query result will be partitioned and copied. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? partitionUpperBound;
 
@@ -33,21 +31,10 @@ class SqlPartitionSettingsResponse {
 
   factory SqlPartitionSettingsResponse.fromMap(Map<String, dynamic> map) {
     return SqlPartitionSettingsResponse(
-      partitionColumnName: (() {
-        final guardedValue = map['partitionColumnName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      partitionLowerBound: (() {
-        final guardedValue = map['partitionLowerBound'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      partitionUpperBound: (() {
-        final guardedValue = map['partitionUpperBound'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
+      partitionColumnName: (() { final guardedValue = map['partitionColumnName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      partitionLowerBound: (() { final guardedValue = map['partitionLowerBound']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      partitionUpperBound: (() { final guardedValue = map['partitionUpperBound']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }
+

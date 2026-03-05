@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StaticStringRoutingEnrichmentResponse {
   /// Static routing enrichment key.
   final pulumi.Input<String>? key;
-
   /// String type routing enrichment value.
   final pulumi.Input<String>? value;
-
   /// Static routing enrichment value type. For e.g. this property value can be 'String'.
   /// Expected value is 'String'.
   final pulumi.Input<String> valueType;
@@ -31,21 +29,12 @@ class StaticStringRoutingEnrichmentResponse {
     };
   }
 
-  factory StaticStringRoutingEnrichmentResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory StaticStringRoutingEnrichmentResponse.fromMap(Map<String, dynamic> map) {
     return StaticStringRoutingEnrichmentResponse(
-      key: (() {
-        final guardedValue = map['key'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       valueType: pulumi.Input.fromValue(map['valueType'] as String),
     );
   }
 }
+

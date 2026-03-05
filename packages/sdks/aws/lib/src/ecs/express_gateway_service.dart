@@ -145,56 +145,40 @@ import 'express_gateway_service_timeouts.dart';
 class ExpressGatewayService extends pulumi.CustomResource {
   /// Name or ARN of the ECS cluster. Defaults to `default`.
   late final pulumi.Output<String> cluster;
-
   /// Number of CPU units used by the task. Valid values are powers of 2 between 256 and 4096.
   late final pulumi.Output<String> cpu;
-
   /// ARN of the current deployment.
   late final pulumi.Output<String> currentDeployment;
-
   /// ARN of the IAM role that allows ECS to pull container images and publish container logs to Amazon CloudWatch.
   late final pulumi.Output<String> executionRoleArn;
-
   /// Path for health check requests. Defaults to `/ping`.
   late final pulumi.Output<String> healthCheckPath;
-
   /// ARN of the IAM role that allows ECS to manage AWS infrastructure on your behalf. **Important:** The infrastructure role cannot be modified after the service is created. Changing this forces a new resource to be created.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> infrastructureRoleArn;
-
   /// List of ingress paths with access type and endpoint information.
   late final pulumi.Output<List<Map<String, dynamic>>> ingressPaths;
-
   /// Amount of memory (in MiB) used by the task. Valid values are between 512 and 8192.
   late final pulumi.Output<String> memory;
   late final pulumi.Output<List<Map<String, dynamic>>> networkConfigurations;
-  late final pulumi.Output<ExpressGatewayServicePrimaryContainer>
-  primaryContainer;
-
+  late final pulumi.Output<ExpressGatewayServicePrimaryContainer> primaryContainer;
   /// AWS region where the service will be created. If not specified, the region configured in the provider will be used.
   late final pulumi.Output<String> region;
   late final pulumi.Output<List<Map<String, dynamic>>> scalingTargets;
-
   /// ARN of the Express Gateway Service.
   late final pulumi.Output<String> serviceArn;
-
   /// Name of the service. If not specified, a name will be generated. Changing this forces a new resource to be created.
   late final pulumi.Output<String> serviceName;
-
   /// ARN of the service revision.
   late final pulumi.Output<String> serviceRevisionArn;
-
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// ARN of the IAM role that allows your Amazon ECS container task to make calls to other AWS services.
   late final pulumi.Output<String?> taskRoleArn;
   late final pulumi.Output<ExpressGatewayServiceTimeouts?> timeouts;
-
   /// Whether to wait for the service to reach a steady state before considering the operation complete. Defaults to `false`.
   late final pulumi.Output<bool> waitForSteadyState;
 
@@ -207,11 +191,11 @@ class ExpressGatewayService extends pulumi.CustomResource {
     ExpressGatewayServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ecs/expressGatewayService:ExpressGatewayService',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ecs/expressGatewayService:ExpressGatewayService',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cluster = registerOutput<String>('cluster');
     cpu = registerOutput<String>('cpu');
     currentDeployment = registerOutput<String>('currentDeployment');
@@ -220,39 +204,17 @@ class ExpressGatewayService extends pulumi.CustomResource {
     infrastructureRoleArn = registerOutput<String>('infrastructureRoleArn');
     ingressPaths = registerOutput<List<Map<String, dynamic>>>('ingressPaths');
     memory = registerOutput<String>('memory');
-    networkConfigurations = registerOutput<List<Map<String, dynamic>>>(
-      'networkConfigurations',
-    );
-    primaryContainer = registerOutput<ExpressGatewayServicePrimaryContainer>(
-      'primaryContainer',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExpressGatewayServicePrimaryContainer.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    networkConfigurations = registerOutput<List<Map<String, dynamic>>>('networkConfigurations');
+    primaryContainer = registerOutput<ExpressGatewayServicePrimaryContainer>('primaryContainer', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExpressGatewayServicePrimaryContainer.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    scalingTargets = registerOutput<List<Map<String, dynamic>>>(
-      'scalingTargets',
-    );
+    scalingTargets = registerOutput<List<Map<String, dynamic>>>('scalingTargets');
     serviceArn = registerOutput<String>('serviceArn');
     serviceName = registerOutput<String>('serviceName');
     serviceRevisionArn = registerOutput<String>('serviceRevisionArn');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     taskRoleArn = registerOutput<String?>('taskRoleArn');
-    timeouts = registerOutput<ExpressGatewayServiceTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExpressGatewayServiceTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<ExpressGatewayServiceTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExpressGatewayServiceTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     waitForSteadyState = registerOutput<bool>('waitForSteadyState');
   }
 
@@ -274,11 +236,11 @@ class ExpressGatewayService extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ecs/expressGatewayService:ExpressGatewayService',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ecs/expressGatewayService:ExpressGatewayService',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cluster = registerOutput<String>('cluster');
     cpu = registerOutput<String>('cpu');
     currentDeployment = registerOutput<String>('currentDeployment');
@@ -287,39 +249,17 @@ class ExpressGatewayService extends pulumi.CustomResource {
     infrastructureRoleArn = registerOutput<String>('infrastructureRoleArn');
     ingressPaths = registerOutput<List<Map<String, dynamic>>>('ingressPaths');
     memory = registerOutput<String>('memory');
-    networkConfigurations = registerOutput<List<Map<String, dynamic>>>(
-      'networkConfigurations',
-    );
-    primaryContainer = registerOutput<ExpressGatewayServicePrimaryContainer>(
-      'primaryContainer',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExpressGatewayServicePrimaryContainer.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    networkConfigurations = registerOutput<List<Map<String, dynamic>>>('networkConfigurations');
+    primaryContainer = registerOutput<ExpressGatewayServicePrimaryContainer>('primaryContainer', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExpressGatewayServicePrimaryContainer.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    scalingTargets = registerOutput<List<Map<String, dynamic>>>(
-      'scalingTargets',
-    );
+    scalingTargets = registerOutput<List<Map<String, dynamic>>>('scalingTargets');
     serviceArn = registerOutput<String>('serviceArn');
     serviceName = registerOutput<String>('serviceName');
     serviceRevisionArn = registerOutput<String>('serviceRevisionArn');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     taskRoleArn = registerOutput<String?>('taskRoleArn');
-    timeouts = registerOutput<ExpressGatewayServiceTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExpressGatewayServiceTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<ExpressGatewayServiceTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExpressGatewayServiceTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     waitForSteadyState = registerOutput<bool>('waitForSteadyState');
   }
 }

@@ -6,13 +6,9 @@ import 'cloud_control_parameter_spec_default_value_oneof_value_parameter_value.d
 class CloudControlParameterSpecDefaultValueOneofValue {
   /// The name of the parameter.
   final pulumi.Input<String>? name;
-
   /// The value of the parameter.
   /// Structure is documented below.
-  final pulumi.Input<
-    CloudControlParameterSpecDefaultValueOneofValueParameterValue
-  >?
-  parameterValue;
+  final pulumi.Input<CloudControlParameterSpecDefaultValueOneofValueParameterValue>? parameterValue;
 
   /// Creates a new [CloudControlParameterSpecDefaultValueOneofValue].
   /// [name] The name of the parameter.
@@ -25,32 +21,15 @@ class CloudControlParameterSpecDefaultValueOneofValue {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': ?name,
-      'parameterValue':
-          ?pulumi.Input.mapOptionalInputValue<
-            CloudControlParameterSpecDefaultValueOneofValueParameterValue,
-            Map<String, dynamic>
-          >(parameterValue, (value) => value.toMap()),
+      'parameterValue': ?pulumi.Input.mapOptionalInputValue<CloudControlParameterSpecDefaultValueOneofValueParameterValue, Map<String, dynamic>>(parameterValue, (value) => value.toMap()),
     };
   }
 
-  factory CloudControlParameterSpecDefaultValueOneofValue.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CloudControlParameterSpecDefaultValueOneofValue.fromMap(Map<String, dynamic> map) {
     return CloudControlParameterSpecDefaultValueOneofValue(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      parameterValue: (() {
-        final guardedValue = map['parameterValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CloudControlParameterSpecDefaultValueOneofValueParameterValue.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      parameterValue: (() { final guardedValue = map['parameterValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CloudControlParameterSpecDefaultValueOneofValueParameterValue.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

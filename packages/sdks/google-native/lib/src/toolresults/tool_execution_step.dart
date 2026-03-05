@@ -10,27 +10,20 @@ class ToolExecutionStep {
 
   /// Creates a new [ToolExecutionStep].
   /// [toolExecution] A Tool execution. - In response: present if set by create/update request - In create/update request: optional
-  ToolExecutionStep({this.toolExecution});
+  ToolExecutionStep({
+    this.toolExecution,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'toolExecution':
-          ?pulumi.Input.mapOptionalInputValue<
-            ToolExecution,
-            Map<String, dynamic>
-          >(toolExecution, (value) => value.toMap()),
+      'toolExecution': ?pulumi.Input.mapOptionalInputValue<ToolExecution, Map<String, dynamic>>(toolExecution, (value) => value.toMap()),
     };
   }
 
   factory ToolExecutionStep.fromMap(Map<String, dynamic> map) {
     return ToolExecutionStep(
-      toolExecution: (() {
-        final guardedValue = map['toolExecution'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ToolExecution.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
+      toolExecution: (() { final guardedValue = map['toolExecution']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ToolExecution.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

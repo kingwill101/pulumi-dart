@@ -10,25 +10,20 @@ class EndConditionResponse {
 
   /// Creates a new [EndConditionResponse].
   /// [cardinality] The cardinality of the `EndCondition`.
-  EndConditionResponse({required this.cardinality});
+  EndConditionResponse({
+    required this.cardinality,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cardinality':
-          pulumi.Input.mapInputValue<CardinalityResponse, Map<String, dynamic>>(
-            cardinality,
-            (value) => value.toMap(),
-          ),
+      'cardinality': pulumi.Input.mapInputValue<CardinalityResponse, Map<String, dynamic>>(cardinality, (value) => value.toMap()),
     };
   }
 
   factory EndConditionResponse.fromMap(Map<String, dynamic> map) {
     return EndConditionResponse(
-      cardinality: pulumi.Input.fromValue(
-        CardinalityResponse.fromMap(
-          (map['cardinality']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      cardinality: pulumi.Input.fromValue(CardinalityResponse.fromMap((map['cardinality']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

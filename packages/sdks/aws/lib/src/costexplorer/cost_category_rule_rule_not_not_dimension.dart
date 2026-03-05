@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CostCategoryRuleRuleNotNotDimension {
   /// Unique name of the Cost Category.
   final pulumi.Input<String>? key;
-
   /// Match options that you can use to filter your results. MatchOptions is only applicable for actions related to cost category. The default values for MatchOptions is `EQUALS` and `CASE_SENSITIVE`. Valid values are: `EQUALS`,  `ABSENT`, `STARTS_WITH`, `ENDS_WITH`, `CONTAINS`, `CASE_SENSITIVE`, `CASE_INSENSITIVE`.
   final pulumi.Input<List<String>>? matchOptions;
-
   /// Specific value of the Cost Category.
   final pulumi.Input<List<String>>? values;
 
@@ -30,25 +28,12 @@ class CostCategoryRuleRuleNotNotDimension {
     };
   }
 
-  factory CostCategoryRuleRuleNotNotDimension.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CostCategoryRuleRuleNotNotDimension.fromMap(Map<String, dynamic> map) {
     return CostCategoryRuleRuleNotNotDimension(
-      key: (() {
-        final guardedValue = map['key'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      matchOptions: (() {
-        final guardedValue = map['matchOptions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      values: (() {
-        final guardedValue = map['values'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      matchOptions: (() { final guardedValue = map['matchOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      values: (() { final guardedValue = map['values']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

@@ -433,22 +433,17 @@ class WorkloadIdentityPoolManagedIdentity extends pulumi.CustomResource {
   /// 50 AttestationRules can be set.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> attestationRules;
-
   /// A description of the managed identity. Cannot exceed 256 characters.
   late final pulumi.Output<String?> description;
-
   /// Whether the managed identity is disabled. If disabled, credentials may no longer be issued for
   /// the identity, however existing credentials will still be accepted until they expire.
   late final pulumi.Output<bool?> disabled;
-
   /// The resource name of the managed identity as
   /// `projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/namespaces/{workload_identity_pool_namespace_id}/managedIdentities/{workload_identity_pool_managed_identity_id}`.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The current state of the managed identity.
   /// * `ACTIVE`: The managed identity is active.
   /// * `DELETED`: The managed identity is soft-deleted. Soft-deleted managed identities are
@@ -456,12 +451,10 @@ class WorkloadIdentityPoolManagedIdentity extends pulumi.CustomResource {
   /// identity using UndeleteWorkloadIdentityPoolManagedIdentity. You cannot reuse the ID of a
   /// soft-deleted managed identity until it is permanently deleted.
   late final pulumi.Output<String> state;
-
   /// The ID to use for the pool, which becomes the final component of the resource name. This
   /// value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
   /// `gcp-` is reserved for use by Google, and may not be specified.
   late final pulumi.Output<String> workloadIdentityPoolId;
-
   /// The ID to use for the managed identity. This value must:
   /// * contain at most 63 characters
   /// * contain only lowercase alphanumeric characters or `-`
@@ -470,7 +463,6 @@ class WorkloadIdentityPoolManagedIdentity extends pulumi.CustomResource {
   ///
   /// The prefix `gcp-` will be reserved for future uses.
   late final pulumi.Output<String> workloadIdentityPoolManagedIdentityId;
-
   /// The ID to use for the namespace. This value must:
   /// * contain at most 63 characters
   /// * contain only lowercase alphanumeric characters or `-`
@@ -489,26 +481,20 @@ class WorkloadIdentityPoolManagedIdentity extends pulumi.CustomResource {
     WorkloadIdentityPoolManagedIdentityArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:iam/workloadIdentityPoolManagedIdentity:WorkloadIdentityPoolManagedIdentity',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    attestationRules = registerOutput<List<Map<String, dynamic>>?>(
-      'attestationRules',
-    );
+          'gcp:iam/workloadIdentityPoolManagedIdentity:WorkloadIdentityPoolManagedIdentity',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    attestationRules = registerOutput<List<Map<String, dynamic>>?>('attestationRules');
     description = registerOutput<String?>('description');
     disabled = registerOutput<bool?>('disabled');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     state = registerOutput<String>('state');
     workloadIdentityPoolId = registerOutput<String>('workloadIdentityPoolId');
-    workloadIdentityPoolManagedIdentityId = registerOutput<String>(
-      'workloadIdentityPoolManagedIdentityId',
-    );
-    workloadIdentityPoolNamespaceId = registerOutput<String>(
-      'workloadIdentityPoolNamespaceId',
-    );
+    workloadIdentityPoolManagedIdentityId = registerOutput<String>('workloadIdentityPoolManagedIdentityId');
+    workloadIdentityPoolNamespaceId = registerOutput<String>('workloadIdentityPoolNamespaceId');
   }
 
   /// Gets an existing [WorkloadIdentityPoolManagedIdentity] resource's state with the given [name] and [id].
@@ -529,25 +515,19 @@ class WorkloadIdentityPoolManagedIdentity extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:iam/workloadIdentityPoolManagedIdentity:WorkloadIdentityPoolManagedIdentity',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    attestationRules = registerOutput<List<Map<String, dynamic>>?>(
-      'attestationRules',
-    );
+          'gcp:iam/workloadIdentityPoolManagedIdentity:WorkloadIdentityPoolManagedIdentity',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    attestationRules = registerOutput<List<Map<String, dynamic>>?>('attestationRules');
     description = registerOutput<String?>('description');
     disabled = registerOutput<bool?>('disabled');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     this.state = registerOutput<String>('state');
     workloadIdentityPoolId = registerOutput<String>('workloadIdentityPoolId');
-    workloadIdentityPoolManagedIdentityId = registerOutput<String>(
-      'workloadIdentityPoolManagedIdentityId',
-    );
-    workloadIdentityPoolNamespaceId = registerOutput<String>(
-      'workloadIdentityPoolNamespaceId',
-    );
+    workloadIdentityPoolManagedIdentityId = registerOutput<String>('workloadIdentityPoolManagedIdentityId');
+    workloadIdentityPoolNamespaceId = registerOutput<String>('workloadIdentityPoolNamespaceId');
   }
 }

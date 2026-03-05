@@ -12,8 +12,7 @@ enum NodeProvisioningDefaultNodePools {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown NodeProvisioningDefaultNodePools value: $value',
-    );
+    throw ArgumentError('Unknown NodeProvisioningDefaultNodePools value: $value');
   }
 }
+

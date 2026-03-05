@@ -8,17 +8,20 @@ class GetDomainClusterConfigColdStorageOption {
 
   /// Creates a new [GetDomainClusterConfigColdStorageOption].
   /// [enabled] Whether node to node encryption is enabled.
-  GetDomainClusterConfigColdStorageOption({required this.enabled});
+  GetDomainClusterConfigColdStorageOption({
+    required this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled};
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
-  factory GetDomainClusterConfigColdStorageOption.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDomainClusterConfigColdStorageOption.fromMap(Map<String, dynamic> map) {
     return GetDomainClusterConfigColdStorageOption(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
+

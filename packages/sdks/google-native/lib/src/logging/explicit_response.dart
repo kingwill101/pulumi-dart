@@ -9,10 +9,14 @@ class ExplicitResponse {
 
   /// Creates a new [ExplicitResponse].
   /// [bounds] The values must be monotonically increasing.
-  ExplicitResponse({required this.bounds});
+  ExplicitResponse({
+    required this.bounds,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'bounds': bounds};
+    return <String, dynamic>{
+      'bounds': bounds,
+    };
   }
 
   factory ExplicitResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class ExplicitResponse {
     );
   }
 }
+

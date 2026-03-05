@@ -6,16 +6,9 @@ import 'virtual_node_spec_backend_defaults_client_policy_tls_certificate_sds.dar
 
 class VirtualNodeSpecBackendDefaultsClientPolicyTlsCertificate {
   /// Local file certificate.
-  final pulumi.Input<
-    VirtualNodeSpecBackendDefaultsClientPolicyTlsCertificateFile
-  >?
-  file;
-
+  final pulumi.Input<VirtualNodeSpecBackendDefaultsClientPolicyTlsCertificateFile>? file;
   /// A [Secret Discovery Service](https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#secret-discovery-service-sds) certificate.
-  final pulumi.Input<
-    VirtualNodeSpecBackendDefaultsClientPolicyTlsCertificateSds
-  >?
-  sds;
+  final pulumi.Input<VirtualNodeSpecBackendDefaultsClientPolicyTlsCertificateSds>? sds;
 
   /// Creates a new [VirtualNodeSpecBackendDefaultsClientPolicyTlsCertificate].
   /// [file] Local file certificate.
@@ -27,41 +20,16 @@ class VirtualNodeSpecBackendDefaultsClientPolicyTlsCertificate {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'file':
-          ?pulumi.Input.mapOptionalInputValue<
-            VirtualNodeSpecBackendDefaultsClientPolicyTlsCertificateFile,
-            Map<String, dynamic>
-          >(file, (value) => value.toMap()),
-      'sds':
-          ?pulumi.Input.mapOptionalInputValue<
-            VirtualNodeSpecBackendDefaultsClientPolicyTlsCertificateSds,
-            Map<String, dynamic>
-          >(sds, (value) => value.toMap()),
+      'file': ?pulumi.Input.mapOptionalInputValue<VirtualNodeSpecBackendDefaultsClientPolicyTlsCertificateFile, Map<String, dynamic>>(file, (value) => value.toMap()),
+      'sds': ?pulumi.Input.mapOptionalInputValue<VirtualNodeSpecBackendDefaultsClientPolicyTlsCertificateSds, Map<String, dynamic>>(sds, (value) => value.toMap()),
     };
   }
 
-  factory VirtualNodeSpecBackendDefaultsClientPolicyTlsCertificate.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VirtualNodeSpecBackendDefaultsClientPolicyTlsCertificate.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecBackendDefaultsClientPolicyTlsCertificate(
-      file: (() {
-        final guardedValue = map['file'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          VirtualNodeSpecBackendDefaultsClientPolicyTlsCertificateFile.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      sds: (() {
-        final guardedValue = map['sds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          VirtualNodeSpecBackendDefaultsClientPolicyTlsCertificateSds.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      file: (() { final guardedValue = map['file']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualNodeSpecBackendDefaultsClientPolicyTlsCertificateFile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      sds: (() { final guardedValue = map['sds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualNodeSpecBackendDefaultsClientPolicyTlsCertificateSds.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

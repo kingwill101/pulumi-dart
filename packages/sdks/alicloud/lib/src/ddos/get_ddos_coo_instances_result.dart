@@ -8,11 +8,9 @@ class GetDdosCooInstancesResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
-
   /// A list of apis. Each element contains the following attributes:
   final List<GetDdosCooInstancesInstance> instances;
   final String? nameRegex;
-
   /// A list of instance names.
   final List<String> names;
   final String? outputFile;
@@ -37,11 +35,7 @@ class GetDdosCooInstancesResult {
     return <String, dynamic>{
       'id': id,
       'ids': ids,
-      'instances':
-          pulumi.Input.encodeList<
-            GetDdosCooInstancesInstance,
-            Map<String, dynamic>
-          >(instances, (value) => value.toMap()),
+      'instances': pulumi.Input.encodeList<GetDdosCooInstancesInstance, Map<String, dynamic>>(instances, (value) => value.toMap()),
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
@@ -52,23 +46,11 @@ class GetDdosCooInstancesResult {
     return GetDdosCooInstancesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      instances: pulumi.Input.decodeList<GetDdosCooInstancesInstance>(
-        map['instances']!,
-        (value) => GetDdosCooInstancesInstance.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      instances: pulumi.Input.decodeList<GetDdosCooInstancesInstance>(map['instances']!, (value) => GetDdosCooInstancesInstance.fromMap((value as Map).cast<String, dynamic>())),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

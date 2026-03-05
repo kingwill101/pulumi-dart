@@ -6,25 +6,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BgpPeerStatusResponse {
   /// The autonomous system number of the remote BGP peer.
   final pulumi.Input<double> asn;
-
   /// For how long the peering has been up.
   final pulumi.Input<String> connectedDuration;
-
   /// The virtual network gateway's local address.
   final pulumi.Input<String> localAddress;
-
   /// The number of BGP messages received.
   final pulumi.Input<double> messagesReceived;
-
   /// The number of BGP messages sent.
   final pulumi.Input<double> messagesSent;
-
   /// The remote BGP peer.
   final pulumi.Input<String> neighbor;
-
   /// The number of routes learned from this peer.
   final pulumi.Input<double> routesReceived;
-
   /// The BGP peer state.
   final pulumi.Input<String> state;
 
@@ -64,13 +57,9 @@ class BgpPeerStatusResponse {
   factory BgpPeerStatusResponse.fromMap(Map<String, dynamic> map) {
     return BgpPeerStatusResponse(
       asn: pulumi.Input.fromValue(map['asn'] as double),
-      connectedDuration: pulumi.Input.fromValue(
-        map['connectedDuration'] as String,
-      ),
+      connectedDuration: pulumi.Input.fromValue(map['connectedDuration'] as String),
       localAddress: pulumi.Input.fromValue(map['localAddress'] as String),
-      messagesReceived: pulumi.Input.fromValue(
-        map['messagesReceived'] as double,
-      ),
+      messagesReceived: pulumi.Input.fromValue(map['messagesReceived'] as double),
       messagesSent: pulumi.Input.fromValue(map['messagesSent'] as double),
       neighbor: pulumi.Input.fromValue(map['neighbor'] as String),
       routesReceived: pulumi.Input.fromValue(map['routesReceived'] as double),
@@ -78,3 +67,4 @@ class BgpPeerStatusResponse {
     );
   }
 }
+

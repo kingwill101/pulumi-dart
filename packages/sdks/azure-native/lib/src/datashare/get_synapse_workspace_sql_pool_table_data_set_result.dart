@@ -6,26 +6,19 @@ import 'system_data_response.dart';
 class GetSynapseWorkspaceSqlPoolTableDataSetResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Unique id for identifying a data set resource
   final String dataSetId;
-
   /// The resource id of the azure resource
   final String id;
-
   /// Kind of data set.
   /// Expected value is 'SynapseWorkspaceSqlPoolTable'.
   final String kind;
-
   /// Name of the azure resource
   final String name;
-
   /// Resource id of the Synapse Workspace SQL Pool Table
   final String synapseWorkspaceSqlPoolTableResourceId;
-
   /// System Data of the Azure resource.
   final SystemDataResponse systemData;
-
   /// Type of the azure resource
   final String type;
 
@@ -56,28 +49,23 @@ class GetSynapseWorkspaceSqlPoolTableDataSetResult {
       'id': id,
       'kind': kind,
       'name': name,
-      'synapseWorkspaceSqlPoolTableResourceId':
-          synapseWorkspaceSqlPoolTableResourceId,
+      'synapseWorkspaceSqlPoolTableResourceId': synapseWorkspaceSqlPoolTableResourceId,
       'systemData': systemData.toMap(),
       'type': type,
     };
   }
 
-  factory GetSynapseWorkspaceSqlPoolTableDataSetResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetSynapseWorkspaceSqlPoolTableDataSetResult.fromMap(Map<String, dynamic> map) {
     return GetSynapseWorkspaceSqlPoolTableDataSetResult(
       azureApiVersion: map['azureApiVersion'] as String,
       dataSetId: map['dataSetId'] as String,
       id: map['id'] as String,
       kind: map['kind'] as String,
       name: map['name'] as String,
-      synapseWorkspaceSqlPoolTableResourceId:
-          map['synapseWorkspaceSqlPoolTableResourceId'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      synapseWorkspaceSqlPoolTableResourceId: map['synapseWorkspaceSqlPoolTableResourceId'] as String,
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

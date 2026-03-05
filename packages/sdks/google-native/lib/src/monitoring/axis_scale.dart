@@ -16,3 +16,4 @@ enum AxisScale {
     throw ArgumentError('Unknown AxisScale value: $value');
   }
 }
+

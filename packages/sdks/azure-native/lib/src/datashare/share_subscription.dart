@@ -151,58 +151,40 @@ import 'system_data_response.dart';
 class ShareSubscription extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Time at which the share subscription was created.
   late final pulumi.Output<String> createdAt;
-
   /// The expiration date of the share subscription.
   late final pulumi.Output<String?> expirationDate;
-
   /// The invitation id.
   late final pulumi.Output<String> invitationId;
-
   /// Name of the azure resource
   late final pulumi.Output<String> name;
-
   /// Email of the provider who created the resource
   late final pulumi.Output<String> providerEmail;
-
   /// Name of the provider who created the resource
   late final pulumi.Output<String> providerName;
-
   /// Tenant name of the provider who created the resource
   late final pulumi.Output<String> providerTenantName;
-
   /// Provisioning state of the share subscription
   late final pulumi.Output<String> provisioningState;
-
   /// Description of share
   late final pulumi.Output<String> shareDescription;
-
   /// Kind of share
   late final pulumi.Output<String> shareKind;
-
   /// Name of the share
   late final pulumi.Output<String> shareName;
-
   /// Gets the current status of share subscription.
   late final pulumi.Output<String> shareSubscriptionStatus;
-
   /// Terms of a share
   late final pulumi.Output<String> shareTerms;
-
   /// Source share location.
   late final pulumi.Output<String> sourceShareLocation;
-
   /// System Data of the Azure resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Type of the azure resource
   late final pulumi.Output<String> type;
-
   /// Email of the user who created the resource
   late final pulumi.Output<String> userEmail;
-
   /// Name of the user who created the resource
   late final pulumi.Output<String> userName;
 
@@ -215,11 +197,11 @@ class ShareSubscription extends pulumi.CustomResource {
     ShareSubscriptionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:datashare:ShareSubscription',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:datashare:ShareSubscription',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createdAt = registerOutput<String>('createdAt');
     expirationDate = registerOutput<String?>('expirationDate');
@@ -235,16 +217,7 @@ class ShareSubscription extends pulumi.CustomResource {
     shareSubscriptionStatus = registerOutput<String>('shareSubscriptionStatus');
     shareTerms = registerOutput<String>('shareTerms');
     sourceShareLocation = registerOutput<String>('sourceShareLocation');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     userEmail = registerOutput<String>('userEmail');
     userName = registerOutput<String>('userName');

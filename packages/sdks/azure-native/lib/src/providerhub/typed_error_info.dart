@@ -9,13 +9,20 @@ class TypedErrorInfo {
 
   /// Creates a new [TypedErrorInfo].
   /// [type] The type of the error.
-  TypedErrorInfo({required this.type});
+  TypedErrorInfo({
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': type};
+    return <String, dynamic>{
+      'type': type,
+    };
   }
 
   factory TypedErrorInfo.fromMap(Map<String, dynamic> map) {
-    return TypedErrorInfo(type: pulumi.Input.fromValue(map['type'] as String));
+    return TypedErrorInfo(
+      type: pulumi.Input.fromValue(map['type'] as String),
+    );
   }
 }
+

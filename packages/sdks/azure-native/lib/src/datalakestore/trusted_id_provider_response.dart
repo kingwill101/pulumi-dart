@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TrustedIdProviderResponse {
   /// The resource identifier.
   final pulumi.Input<String> id;
-
   /// The URL of this trusted identity provider.
   final pulumi.Input<String> idProvider;
-
   /// The resource name.
   final pulumi.Input<String> name;
-
   /// The resource type.
   final pulumi.Input<String> type;
 
@@ -46,3 +43,4 @@ class TrustedIdProviderResponse {
     );
   }
 }
+

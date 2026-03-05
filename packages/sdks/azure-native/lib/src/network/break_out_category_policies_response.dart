@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BreakOutCategoryPoliciesResponse {
   /// Flag to control breakout of o365 allow category.
   final pulumi.Input<bool>? allow;
-
   /// Flag to control breakout of o365 default category.
   final pulumi.Input<bool>? default_;
-
   /// Flag to control breakout of o365 optimize category.
   final pulumi.Input<bool>? optimize;
 
@@ -17,7 +15,11 @@ class BreakOutCategoryPoliciesResponse {
   /// [allow] Flag to control breakout of o365 allow category.
   /// [default_] Flag to control breakout of o365 default category.
   /// [optimize] Flag to control breakout of o365 optimize category.
-  BreakOutCategoryPoliciesResponse({this.allow, this.default_, this.optimize});
+  BreakOutCategoryPoliciesResponse({
+    this.allow,
+    this.default_,
+    this.optimize,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class BreakOutCategoryPoliciesResponse {
 
   factory BreakOutCategoryPoliciesResponse.fromMap(Map<String, dynamic> map) {
     return BreakOutCategoryPoliciesResponse(
-      allow: (() {
-        final guardedValue = map['allow'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      default_: (() {
-        final guardedValue = map['default'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      optimize: (() {
-        final guardedValue = map['optimize'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      allow: (() { final guardedValue = map['allow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      default_: (() { final guardedValue = map['default']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      optimize: (() { final guardedValue = map['optimize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

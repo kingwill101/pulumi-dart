@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplianceNetworkConfigurationResponse {
   /// Mac Address.
   final pulumi.Input<String> macAddress;
-
   /// Name of the network.
   final pulumi.Input<String> name;
 
@@ -19,15 +18,17 @@ class ApplianceNetworkConfigurationResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'macAddress': macAddress, 'name': name};
+    return <String, dynamic>{
+      'macAddress': macAddress,
+      'name': name,
+    };
   }
 
-  factory ApplianceNetworkConfigurationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApplianceNetworkConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ApplianceNetworkConfigurationResponse(
       macAddress: pulumi.Input.fromValue(map['macAddress'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

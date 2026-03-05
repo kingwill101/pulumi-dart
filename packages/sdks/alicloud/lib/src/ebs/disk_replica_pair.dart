@@ -475,71 +475,52 @@ class DiskReplicaPair extends pulumi.CustomResource {
   /// Default value: 10240.
   /// This parameter cannot be specified when the ChargeType value is PayAsYouGo The system value is 0, which indicates that the disk is dynamically allocated according to data write changes during asynchronous replication.
   late final pulumi.Output<int?> bandwidth;
-
   /// The creation time of the resource
   late final pulumi.Output<int> createTime;
-
   /// The description of the asynchronous replication relationship. 2 to 256 English or Chinese characters in length and cannot start with' http:// 'or' https.
   late final pulumi.Output<String?> description;
-
   /// The ID of the standby disk.
   late final pulumi.Output<String> destinationDiskId;
-
   /// The ID of the region to which the disaster recovery site belongs.
   late final pulumi.Output<String> destinationRegionId;
-
   /// The ID of the zone to which the disaster recovery site belongs.
   late final pulumi.Output<String> destinationZoneId;
-
   /// The ID of the primary disk.
   late final pulumi.Output<String> diskId;
-
   /// The name of the asynchronous replication relationship. The length must be 2 to 128 characters in length and must start with a letter or Chinese name. It cannot start with http:// or https. It can contain Chinese, English, numbers, half-width colons (:), underscores (_), half-width periods (.), or dashes (-).
   late final pulumi.Output<String> diskReplicaPairName;
-
   /// Whether to synchronize immediately. Value range:
   /// - true: Start data synchronization immediately.
   /// - false: Data Synchronization starts after the RPO time period.
   ///
   /// Default value: false.
   late final pulumi.Output<bool?> oneShot;
-
   /// . Field 'pair_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_pair_name' instead.
   late final pulumi.Output<String> pairName;
-
   /// The payment type of the resource
   late final pulumi.Output<String> paymentType;
-
   /// The purchase duration of the asynchronous replication relationship. This parameter is required when 'ChargeType = PrePay. The duration unit is specified by'periodunit', and the value range is:
   /// - When 'PeriodUnit = Week', the value range of this parameter is 1, 2, 3, and 4.
   /// - When 'PeriodUnit = Month', the value range of this parameter is 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, 60.
   late final pulumi.Output<int?> period;
-
   /// The unit of the purchase time of the asynchronous replication relationship. Value range:
   /// - Week: Week.
   /// - Month: Month.
   ///
   /// Default value: Month.
   late final pulumi.Output<String?> periodUnit;
-
   /// The region ID  of the resource
   late final pulumi.Output<String> regionId;
-
   /// The ID of the resource group
   late final pulumi.Output<String> resourceGroupId;
-
   /// Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
   late final pulumi.Output<bool?> reverseReplicate;
-
   /// The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
   late final pulumi.Output<int> rpo;
-
   /// The ID of the zone to which the production site belongs.
   late final pulumi.Output<String> sourceZoneId;
-
   /// The status of the resource
   late final pulumi.Output<String> status;
-
   /// The tag of the resource
   ///
   /// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -554,11 +535,11 @@ class DiskReplicaPair extends pulumi.CustomResource {
     DiskReplicaPairArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ebs/diskReplicaPair:DiskReplicaPair',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ebs/diskReplicaPair:DiskReplicaPair',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bandwidth = registerOutput<int?>('bandwidth');
     createTime = registerOutput<int>('createTime');
     description = registerOutput<String?>('description');
@@ -599,11 +580,11 @@ class DiskReplicaPair extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ebs/diskReplicaPair:DiskReplicaPair',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ebs/diskReplicaPair:DiskReplicaPair',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bandwidth = registerOutput<int?>('bandwidth');
     createTime = registerOutput<int>('createTime');
     description = registerOutput<String?>('description');

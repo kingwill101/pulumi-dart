@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FlexibleServerMaintenanceWindow {
   /// The day of week for maintenance window. Defaults to `0`.
   final pulumi.Input<int>? dayOfWeek;
-
   /// The start hour for maintenance window. Defaults to `0`.
   final pulumi.Input<int>? startHour;
-
   /// The start minute for maintenance window. Defaults to `0`.
   final pulumi.Input<int>? startMinute;
 
@@ -32,21 +30,10 @@ class FlexibleServerMaintenanceWindow {
 
   factory FlexibleServerMaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return FlexibleServerMaintenanceWindow(
-      dayOfWeek: (() {
-        final guardedValue = map['dayOfWeek'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      startHour: (() {
-        final guardedValue = map['startHour'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      startMinute: (() {
-        final guardedValue = map['startMinute'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      dayOfWeek: (() { final guardedValue = map['dayOfWeek']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      startHour: (() { final guardedValue = map['startHour']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      startMinute: (() { final guardedValue = map['startMinute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

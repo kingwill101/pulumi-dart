@@ -5,40 +5,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWindowsWebAppSiteConfigApplicationStack {
   /// The Current Stack value of the Windows Web App.
   final pulumi.Input<String> currentStack;
-
   /// The docker image, including tag, used by this Windows Web App.
   final pulumi.Input<String> dockerImageName;
-
   /// The User Name to use for authentication against the registry to pull the image.
   final pulumi.Input<String> dockerRegistryPassword;
-
   /// The URL of the container registry where the `docker_image_name` is located.
   final pulumi.Input<String> dockerRegistryUrl;
-
   /// The User Name to use for authentication against the registry to pull the image.
   final pulumi.Input<String> dockerRegistryUsername;
   final pulumi.Input<String> dotnetCoreVersion;
-
   /// The version of .NET in use.
   final pulumi.Input<String> dotnetVersion;
-
   /// The Java Container in use.
   final pulumi.Input<String> javaContainer;
-
   /// The Version of the Java Container in use.
   final pulumi.Input<String> javaContainerVersion;
   final pulumi.Input<bool> javaEmbeddedServerEnabled;
-
   /// The Version of Java in use.
   final pulumi.Input<String> javaVersion;
-
   /// The Version of Node in use.
   final pulumi.Input<String> nodeVersion;
-
   /// The Version of the PHP in use.
   final pulumi.Input<String> phpVersion;
   final pulumi.Input<bool> python;
-
   /// The Version of Python in use.
   final pulumi.Input<String> pythonVersion;
   final pulumi.Input<String> tomcatVersion;
@@ -100,32 +89,18 @@ class GetWindowsWebAppSiteConfigApplicationStack {
     };
   }
 
-  factory GetWindowsWebAppSiteConfigApplicationStack.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetWindowsWebAppSiteConfigApplicationStack.fromMap(Map<String, dynamic> map) {
     return GetWindowsWebAppSiteConfigApplicationStack(
       currentStack: pulumi.Input.fromValue(map['currentStack'] as String),
       dockerImageName: pulumi.Input.fromValue(map['dockerImageName'] as String),
-      dockerRegistryPassword: pulumi.Input.fromValue(
-        map['dockerRegistryPassword'] as String,
-      ),
-      dockerRegistryUrl: pulumi.Input.fromValue(
-        map['dockerRegistryUrl'] as String,
-      ),
-      dockerRegistryUsername: pulumi.Input.fromValue(
-        map['dockerRegistryUsername'] as String,
-      ),
-      dotnetCoreVersion: pulumi.Input.fromValue(
-        map['dotnetCoreVersion'] as String,
-      ),
+      dockerRegistryPassword: pulumi.Input.fromValue(map['dockerRegistryPassword'] as String),
+      dockerRegistryUrl: pulumi.Input.fromValue(map['dockerRegistryUrl'] as String),
+      dockerRegistryUsername: pulumi.Input.fromValue(map['dockerRegistryUsername'] as String),
+      dotnetCoreVersion: pulumi.Input.fromValue(map['dotnetCoreVersion'] as String),
       dotnetVersion: pulumi.Input.fromValue(map['dotnetVersion'] as String),
       javaContainer: pulumi.Input.fromValue(map['javaContainer'] as String),
-      javaContainerVersion: pulumi.Input.fromValue(
-        map['javaContainerVersion'] as String,
-      ),
-      javaEmbeddedServerEnabled: pulumi.Input.fromValue(
-        map['javaEmbeddedServerEnabled'] as bool,
-      ),
+      javaContainerVersion: pulumi.Input.fromValue(map['javaContainerVersion'] as String),
+      javaEmbeddedServerEnabled: pulumi.Input.fromValue(map['javaEmbeddedServerEnabled'] as bool),
       javaVersion: pulumi.Input.fromValue(map['javaVersion'] as String),
       nodeVersion: pulumi.Input.fromValue(map['nodeVersion'] as String),
       phpVersion: pulumi.Input.fromValue(map['phpVersion'] as String),
@@ -135,3 +110,4 @@ class GetWindowsWebAppSiteConfigApplicationStack {
     );
   }
 }
+

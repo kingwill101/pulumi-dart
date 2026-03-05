@@ -8,21 +8,20 @@ class DomainDevicesControllerDriverIoThreadsIoThreadQueue {
 
   /// Creates a new [DomainDevicesControllerDriverIoThreadsIoThreadQueue].
   /// [id] Assigns a unique identifier to the queue associated with the specific I/O thread of the controller driver.
-  DomainDevicesControllerDriverIoThreadsIoThreadQueue({this.id});
+  DomainDevicesControllerDriverIoThreadsIoThreadQueue({
+    this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': ?id};
+    return <String, dynamic>{
+      'id': ?id,
+    };
   }
 
-  factory DomainDevicesControllerDriverIoThreadsIoThreadQueue.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDevicesControllerDriverIoThreadsIoThreadQueue.fromMap(Map<String, dynamic> map) {
     return DomainDevicesControllerDriverIoThreadsIoThreadQueue(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

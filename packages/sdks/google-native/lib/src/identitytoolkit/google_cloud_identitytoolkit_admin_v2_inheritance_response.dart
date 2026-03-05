@@ -14,16 +14,15 @@ class GoogleCloudIdentitytoolkitAdminV2InheritanceResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'emailSendingConfig': emailSendingConfig};
+    return <String, dynamic>{
+      'emailSendingConfig': emailSendingConfig,
+    };
   }
 
-  factory GoogleCloudIdentitytoolkitAdminV2InheritanceResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudIdentitytoolkitAdminV2InheritanceResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIdentitytoolkitAdminV2InheritanceResponse(
-      emailSendingConfig: pulumi.Input.fromValue(
-        map['emailSendingConfig'] as bool,
-      ),
+      emailSendingConfig: pulumi.Input.fromValue(map['emailSendingConfig'] as bool),
     );
   }
 }
+

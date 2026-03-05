@@ -9,19 +9,20 @@ class RoutingVPC {
 
   /// Creates a new [RoutingVPC].
   /// [uri] The URI of the VPC network.
-  RoutingVPC({this.uri});
+  RoutingVPC({
+    this.uri,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'uri': ?uri};
+    return <String, dynamic>{
+      'uri': ?uri,
+    };
   }
 
   factory RoutingVPC.fromMap(Map<String, dynamic> map) {
     return RoutingVPC(
-      uri: (() {
-        final guardedValue = map['uri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      uri: (() { final guardedValue = map['uri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

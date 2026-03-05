@@ -13,18 +13,15 @@ class DashboardDashboardPublishOptionsSheetLayoutElementMaximizationOption {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'availabilityStatus': ?availabilityStatus};
+    return <String, dynamic>{
+      'availabilityStatus': ?availabilityStatus,
+    };
   }
 
-  factory DashboardDashboardPublishOptionsSheetLayoutElementMaximizationOption.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DashboardDashboardPublishOptionsSheetLayoutElementMaximizationOption.fromMap(Map<String, dynamic> map) {
     return DashboardDashboardPublishOptionsSheetLayoutElementMaximizationOption(
-      availabilityStatus: (() {
-        final guardedValue = map['availabilityStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      availabilityStatus: (() { final guardedValue = map['availabilityStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

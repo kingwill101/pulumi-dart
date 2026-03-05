@@ -1,25 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getLoadBalancerType.
 class GetLoadBalancerTypeResult {
   /// Description of the Load Balancer Type.
   final String description;
-
   /// ID of the Load Balancer Type.
   final int id;
-
   /// Maximum number of certificates that can be assigned for the Load Balancer of this type.
   final int maxAssignedCertificates;
-
   /// Maximum number of simultaneous open connections for the Load Balancer of this type.
   final int maxConnections;
-
   /// Maximum number of services for the Load Balancer of this type.
   final int maxServices;
-
   /// Maximum number of targets for the Load Balancer of this type.
   final int maxTargets;
-
   /// Name of the Load Balancer Type.
   final String name;
 
@@ -65,3 +60,4 @@ class GetLoadBalancerTypeResult {
     );
   }
 }
+

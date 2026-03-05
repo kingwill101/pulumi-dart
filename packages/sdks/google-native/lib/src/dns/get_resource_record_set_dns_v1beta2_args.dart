@@ -39,19 +39,12 @@ class GetResourceRecordSetDnsV1beta2Args {
 
   factory GetResourceRecordSetDnsV1beta2Args.fromMap(Map<String, dynamic> map) {
     return GetResourceRecordSetDnsV1beta2Args(
-      clientOperationId: (() {
-        final guardedValue = map['clientOperationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      clientOperationId: (() { final guardedValue = map['clientOperationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       managedZone: pulumi.Input.fromValue(map['managedZone'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

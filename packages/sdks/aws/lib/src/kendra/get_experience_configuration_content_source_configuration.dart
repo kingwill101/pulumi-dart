@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetExperienceConfigurationContentSourceConfiguration {
   /// Identifiers of the data sources you want to use for your Amazon Kendra Experience.
   final pulumi.Input<List<String>> dataSourceIds;
-
   /// Whether to use documents you indexed directly using the `BatchPutDocument API`.
   final pulumi.Input<bool> directPutContent;
-
   /// Identifier of the FAQs that you want to use for your Amazon Kendra Experience.
   final pulumi.Input<List<String>> faqIds;
 
@@ -30,15 +28,12 @@ class GetExperienceConfigurationContentSourceConfiguration {
     };
   }
 
-  factory GetExperienceConfigurationContentSourceConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetExperienceConfigurationContentSourceConfiguration.fromMap(Map<String, dynamic> map) {
     return GetExperienceConfigurationContentSourceConfiguration(
-      dataSourceIds: pulumi.Input.fromValue(
-        (map['dataSourceIds'] as List).cast<String>(),
-      ),
+      dataSourceIds: pulumi.Input.fromValue((map['dataSourceIds'] as List).cast<String>()),
       directPutContent: pulumi.Input.fromValue(map['directPutContent'] as bool),
       faqIds: pulumi.Input.fromValue((map['faqIds'] as List).cast<String>()),
     );
   }
 }
+

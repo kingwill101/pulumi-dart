@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListAccessRoleBindingsArgs {
   /// Organization resource name
   final pulumi.Input<String> organizationName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Search filters for the request
   final pulumi.Input<Map<String, String>>? searchFilters;
 
@@ -36,19 +34,10 @@ class ListAccessRoleBindingsArgs {
 
   factory ListAccessRoleBindingsArgs.fromMap(Map<String, dynamic> map) {
     return ListAccessRoleBindingsArgs(
-      organizationName: pulumi.Input.fromValue(
-        map['organizationName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      searchFilters: (() {
-        final guardedValue = map['searchFilters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      organizationName: pulumi.Input.fromValue(map['organizationName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      searchFilters: (() { final guardedValue = map['searchFilters']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

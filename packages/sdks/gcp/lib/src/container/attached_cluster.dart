@@ -939,62 +939,46 @@ class AttachedCluster extends pulumi.CustomResource {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
-
   /// Configuration related to the cluster RBAC settings.
   /// Structure is documented below.
   late final pulumi.Output<AttachedClusterAuthorization?> authorization;
-
   /// Binary Authorization configuration.
   /// Structure is documented below.
-  late final pulumi.Output<AttachedClusterBinaryAuthorization>
-  binaryAuthorization;
-
+  late final pulumi.Output<AttachedClusterBinaryAuthorization> binaryAuthorization;
   /// Output only. The region where this cluster runs.
   /// For EKS clusters, this is an AWS region. For AKS clusters,
   /// this is an Azure region.
   late final pulumi.Output<String> clusterRegion;
-
   /// Output only. The time at which this cluster was created.
   late final pulumi.Output<String> createTime;
-
   /// Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
   late final pulumi.Output<String?> deletionPolicy;
-
   /// A human readable description of this attached cluster. Cannot be longer
   /// than 255 UTF-8 encoded bytes.
   late final pulumi.Output<String?> description;
-
   /// The Kubernetes distribution of the underlying attached cluster. Supported values:
   /// "eks", "aks", "generic". The generic distribution provides the ability to register
   /// or migrate any CNCF conformant cluster.
   late final pulumi.Output<String> distribution;
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
-
   /// A set of errors found in the cluster.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> errors;
-
   /// Fleet configuration.
   /// Structure is documented below.
   late final pulumi.Output<AttachedClusterFleet> fleet;
-
   /// The Kubernetes version of the cluster.
   late final pulumi.Output<String> kubernetesVersion;
-
   /// The location for the resource
   late final pulumi.Output<String> location;
-
   /// Logging configuration.
   /// Structure is documented below.
   late final pulumi.Output<AttachedClusterLoggingConfig?> loggingConfig;
-
   /// Monitoring configuration.
   /// Structure is documented below.
   late final pulumi.Output<AttachedClusterMonitoringConfig> monitoringConfig;
-
   /// The name of this resource.
   late final pulumi.Output<String> name;
-
   /// OIDC discovery information of the target cluster.
   /// Kubernetes Service Account (KSA) tokens are JWT tokens signed by the cluster
   /// API server. This fields indicates how GCP services
@@ -1006,40 +990,30 @@ class AttachedCluster extends pulumi.CustomResource {
   /// `issuer_url` and `jwks`.
   /// Structure is documented below.
   late final pulumi.Output<AttachedClusterOidcConfig> oidcConfig;
-
   /// The platform version for the cluster (e.g. `1.23.0-gke.1`).
   late final pulumi.Output<String> platformVersion;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Support for proxy configuration.
   /// Structure is documented below.
   late final pulumi.Output<AttachedClusterProxyConfig?> proxyConfig;
-
   /// If set, there are currently changes in flight to the cluster.
   late final pulumi.Output<bool> reconciling;
-
   /// (Optional, Deprecated)
   /// Enable/Disable Security Posture API features for the cluster.
   /// Structure is documented below.
   ///
   /// &gt; **Warning:** `security_posture_config` is deprecated and will be removed in a future major release.
-  late final pulumi.Output<AttachedClusterSecurityPostureConfig>
-  securityPostureConfig;
-
+  late final pulumi.Output<AttachedClusterSecurityPostureConfig> securityPostureConfig;
   /// The current state of the cluster. Possible values:
   /// STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR,
   /// DEGRADED
   late final pulumi.Output<String> state;
-
   /// A globally unique identifier for the cluster.
   late final pulumi.Output<String> uid;
-
   /// The time at which this cluster was last updated.
   late final pulumi.Output<String> updateTime;
-
   /// Workload Identity settings.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> workloadIdentityConfigs;
@@ -1053,114 +1027,37 @@ class AttachedCluster extends pulumi.CustomResource {
     AttachedClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:container/attachedCluster:AttachedCluster',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:container/attachedCluster:AttachedCluster',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     annotations = registerOutput<Map<String, String>?>('annotations');
-    authorization = registerOutput<AttachedClusterAuthorization?>(
-      'authorization',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AttachedClusterAuthorization.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    binaryAuthorization = registerOutput<AttachedClusterBinaryAuthorization>(
-      'binaryAuthorization',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AttachedClusterBinaryAuthorization.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    authorization = registerOutput<AttachedClusterAuthorization?>('authorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AttachedClusterAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    binaryAuthorization = registerOutput<AttachedClusterBinaryAuthorization>('binaryAuthorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AttachedClusterBinaryAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clusterRegion = registerOutput<String>('clusterRegion');
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String?>('deletionPolicy');
     description = registerOutput<String?>('description');
     distribution = registerOutput<String>('distribution');
-    effectiveAnnotations = registerOutput<Map<String, String>>(
-      'effectiveAnnotations',
-    );
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     errors = registerOutput<List<Map<String, dynamic>>>('errors');
-    fleet = registerOutput<AttachedClusterFleet>(
-      'fleet',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AttachedClusterFleet.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    fleet = registerOutput<AttachedClusterFleet>('fleet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AttachedClusterFleet.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kubernetesVersion = registerOutput<String>('kubernetesVersion');
     location = registerOutput<String>('location');
-    loggingConfig = registerOutput<AttachedClusterLoggingConfig?>(
-      'loggingConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AttachedClusterLoggingConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    monitoringConfig = registerOutput<AttachedClusterMonitoringConfig>(
-      'monitoringConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AttachedClusterMonitoringConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    loggingConfig = registerOutput<AttachedClusterLoggingConfig?>('loggingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AttachedClusterLoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    monitoringConfig = registerOutput<AttachedClusterMonitoringConfig>('monitoringConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AttachedClusterMonitoringConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    oidcConfig = registerOutput<AttachedClusterOidcConfig>(
-      'oidcConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AttachedClusterOidcConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    oidcConfig = registerOutput<AttachedClusterOidcConfig>('oidcConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AttachedClusterOidcConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     platformVersion = registerOutput<String>('platformVersion');
     project = registerOutput<String>('project');
-    proxyConfig = registerOutput<AttachedClusterProxyConfig?>(
-      'proxyConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AttachedClusterProxyConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    proxyConfig = registerOutput<AttachedClusterProxyConfig?>('proxyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AttachedClusterProxyConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     reconciling = registerOutput<bool>('reconciling');
-    securityPostureConfig =
-        registerOutput<AttachedClusterSecurityPostureConfig>(
-          'securityPostureConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AttachedClusterSecurityPostureConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    securityPostureConfig = registerOutput<AttachedClusterSecurityPostureConfig>('securityPostureConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AttachedClusterSecurityPostureConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     state = registerOutput<String>('state');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
-    workloadIdentityConfigs = registerOutput<List<Map<String, dynamic>>>(
-      'workloadIdentityConfigs',
-    );
+    workloadIdentityConfigs = registerOutput<List<Map<String, dynamic>>>('workloadIdentityConfigs');
   }
 
   /// Gets an existing [AttachedCluster] resource's state with the given [name] and [id].
@@ -1181,113 +1078,36 @@ class AttachedCluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:container/attachedCluster:AttachedCluster',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:container/attachedCluster:AttachedCluster',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     annotations = registerOutput<Map<String, String>?>('annotations');
-    authorization = registerOutput<AttachedClusterAuthorization?>(
-      'authorization',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AttachedClusterAuthorization.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    binaryAuthorization = registerOutput<AttachedClusterBinaryAuthorization>(
-      'binaryAuthorization',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AttachedClusterBinaryAuthorization.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    authorization = registerOutput<AttachedClusterAuthorization?>('authorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AttachedClusterAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    binaryAuthorization = registerOutput<AttachedClusterBinaryAuthorization>('binaryAuthorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AttachedClusterBinaryAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clusterRegion = registerOutput<String>('clusterRegion');
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String?>('deletionPolicy');
     description = registerOutput<String?>('description');
     distribution = registerOutput<String>('distribution');
-    effectiveAnnotations = registerOutput<Map<String, String>>(
-      'effectiveAnnotations',
-    );
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     errors = registerOutput<List<Map<String, dynamic>>>('errors');
-    fleet = registerOutput<AttachedClusterFleet>(
-      'fleet',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AttachedClusterFleet.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    fleet = registerOutput<AttachedClusterFleet>('fleet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AttachedClusterFleet.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kubernetesVersion = registerOutput<String>('kubernetesVersion');
     location = registerOutput<String>('location');
-    loggingConfig = registerOutput<AttachedClusterLoggingConfig?>(
-      'loggingConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AttachedClusterLoggingConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    monitoringConfig = registerOutput<AttachedClusterMonitoringConfig>(
-      'monitoringConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AttachedClusterMonitoringConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    loggingConfig = registerOutput<AttachedClusterLoggingConfig?>('loggingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AttachedClusterLoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    monitoringConfig = registerOutput<AttachedClusterMonitoringConfig>('monitoringConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AttachedClusterMonitoringConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    oidcConfig = registerOutput<AttachedClusterOidcConfig>(
-      'oidcConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AttachedClusterOidcConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    oidcConfig = registerOutput<AttachedClusterOidcConfig>('oidcConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AttachedClusterOidcConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     platformVersion = registerOutput<String>('platformVersion');
     project = registerOutput<String>('project');
-    proxyConfig = registerOutput<AttachedClusterProxyConfig?>(
-      'proxyConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AttachedClusterProxyConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    proxyConfig = registerOutput<AttachedClusterProxyConfig?>('proxyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AttachedClusterProxyConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     reconciling = registerOutput<bool>('reconciling');
-    securityPostureConfig =
-        registerOutput<AttachedClusterSecurityPostureConfig>(
-          'securityPostureConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AttachedClusterSecurityPostureConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    securityPostureConfig = registerOutput<AttachedClusterSecurityPostureConfig>('securityPostureConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AttachedClusterSecurityPostureConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.state = registerOutput<String>('state');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
-    workloadIdentityConfigs = registerOutput<List<Map<String, dynamic>>>(
-      'workloadIdentityConfigs',
-    );
+    workloadIdentityConfigs = registerOutput<List<Map<String, dynamic>>>('workloadIdentityConfigs');
   }
 }

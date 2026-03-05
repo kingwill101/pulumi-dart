@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnterpriseProxyAccessArgs {
   /// Database account.
   final pulumi.Input<String>? indepAccount;
-
   /// Database password.
   final pulumi.Input<String>? indepPassword;
-
   /// Security Protection authorization ID. After the target user is authorized by the security protection agent, the system automatically generates a security protection authorization ID, which is globally unique.
   final pulumi.Input<String>? proxyAccessId;
-
   /// The ID of the security agent.
   final pulumi.Input<String> proxyId;
-
   /// The user ID.
   final pulumi.Input<String> userId;
 
@@ -48,23 +44,12 @@ class EnterpriseProxyAccessArgs {
 
   factory EnterpriseProxyAccessArgs.fromMap(Map<String, dynamic> map) {
     return EnterpriseProxyAccessArgs(
-      indepAccount: (() {
-        final guardedValue = map['indepAccount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      indepPassword: (() {
-        final guardedValue = map['indepPassword'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      proxyAccessId: (() {
-        final guardedValue = map['proxyAccessId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      indepAccount: (() { final guardedValue = map['indepAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      indepPassword: (() { final guardedValue = map['indepPassword']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      proxyAccessId: (() { final guardedValue = map['proxyAccessId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       proxyId: pulumi.Input.fromValue(map['proxyId'] as String),
       userId: pulumi.Input.fromValue(map['userId'] as String),
     );
   }
 }
+

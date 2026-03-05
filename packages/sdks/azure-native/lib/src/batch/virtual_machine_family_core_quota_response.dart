@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualMachineFamilyCoreQuotaResponse {
   /// The core quota for the VM family for the Batch account.
   final pulumi.Input<int> coreQuota;
-
   /// The Virtual Machine family name.
   final pulumi.Input<String> name;
 
@@ -19,15 +18,17 @@ class VirtualMachineFamilyCoreQuotaResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'coreQuota': coreQuota, 'name': name};
+    return <String, dynamic>{
+      'coreQuota': coreQuota,
+      'name': name,
+    };
   }
 
-  factory VirtualMachineFamilyCoreQuotaResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VirtualMachineFamilyCoreQuotaResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachineFamilyCoreQuotaResponse(
       coreQuota: pulumi.Input.fromValue(map['coreQuota'] as int),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

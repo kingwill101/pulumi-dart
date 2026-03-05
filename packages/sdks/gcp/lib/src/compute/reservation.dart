@@ -1120,34 +1120,25 @@ import 'reservation_state.dart';
 class Reservation extends pulumi.CustomResource {
   /// List of all reservation block names in the parent reservation.
   late final pulumi.Output<List<String>> blockNames;
-
   /// Full or partial URL to a parent commitment. This field displays for
   /// reservations that are tied to a commitment.
   late final pulumi.Output<String> commitment;
-
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
-
   /// Duration after which the reservation will be auto-deleted by Compute Engine. Cannot be used with delete_at_time.
   /// Structure is documented below.
   late final pulumi.Output<ReservationDeleteAfterDuration?> deleteAfterDuration;
-
   /// Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
   /// Cannot be used with delete_after_duration.
   late final pulumi.Output<String> deleteAtTime;
-
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
-
   /// Indicates if this group of VMs have emergent maintenance enabled.
   late final pulumi.Output<bool?> enableEmergentMaintenance;
-
   /// Type of the resource. Always compute#reservations for reservations.
   late final pulumi.Output<String> kind;
-
   /// Full or partial URL to parent commitments. This field displays for reservations that are tied to multiple commitments.
   late final pulumi.Output<List<String>> linkedCommitments;
-
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
   /// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -1156,46 +1147,34 @@ class Reservation extends pulumi.CustomResource {
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// (Output)
   /// The number of reservation blocks associated with this reservation.
   late final pulumi.Output<int> reservationBlockCount;
-
   /// Sharing policy for reservations with Google Cloud managed services.
   /// Structure is documented below.
-  late final pulumi.Output<ReservationReservationSharingPolicy>
-  reservationSharingPolicy;
-
+  late final pulumi.Output<ReservationReservationSharingPolicy> reservationSharingPolicy;
   /// Status information for Reservation resource.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> resourceStatuses;
-
   /// Reserved for future use.
   late final pulumi.Output<bool> satisfiesPzs;
-
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
-
   /// The share setting for reservations.
   /// Structure is documented below.
   late final pulumi.Output<ReservationShareSettings> shareSettings;
-
   /// Reservation for instances with specific machine shapes.
   /// Structure is documented below.
   late final pulumi.Output<ReservationSpecificReservation> specificReservation;
-
   /// When set to true, only VMs that target this reservation by name can
   /// consume this reservation. Otherwise, it can be consumed by VMs with
   /// affinity for any reservation. Defaults to false.
   late final pulumi.Output<bool?> specificReservationRequired;
-
   /// The status of the reservation.
   late final pulumi.Output<String> status;
-
   /// The zone where the reservation is made.
   late final pulumi.Output<String> zone;
 
@@ -1208,73 +1187,30 @@ class Reservation extends pulumi.CustomResource {
     ReservationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:compute/reservation:Reservation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:compute/reservation:Reservation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     blockNames = registerOutput<List<String>>('blockNames');
     commitment = registerOutput<String>('commitment');
     creationTimestamp = registerOutput<String>('creationTimestamp');
-    deleteAfterDuration = registerOutput<ReservationDeleteAfterDuration?>(
-      'deleteAfterDuration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ReservationDeleteAfterDuration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    deleteAfterDuration = registerOutput<ReservationDeleteAfterDuration?>('deleteAfterDuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReservationDeleteAfterDuration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deleteAtTime = registerOutput<String>('deleteAtTime');
     description = registerOutput<String?>('description');
-    enableEmergentMaintenance = registerOutput<bool?>(
-      'enableEmergentMaintenance',
-    );
+    enableEmergentMaintenance = registerOutput<bool?>('enableEmergentMaintenance');
     kind = registerOutput<String>('kind');
     linkedCommitments = registerOutput<List<String>>('linkedCommitments');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     reservationBlockCount = registerOutput<int>('reservationBlockCount');
-    reservationSharingPolicy =
-        registerOutput<ReservationReservationSharingPolicy>(
-          'reservationSharingPolicy',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ReservationReservationSharingPolicy.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    resourceStatuses = registerOutput<List<Map<String, dynamic>>>(
-      'resourceStatuses',
-    );
+    reservationSharingPolicy = registerOutput<ReservationReservationSharingPolicy>('reservationSharingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReservationReservationSharingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resourceStatuses = registerOutput<List<Map<String, dynamic>>>('resourceStatuses');
     satisfiesPzs = registerOutput<bool>('satisfiesPzs');
     selfLink = registerOutput<String>('selfLink');
-    shareSettings = registerOutput<ReservationShareSettings>(
-      'shareSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ReservationShareSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    specificReservation = registerOutput<ReservationSpecificReservation>(
-      'specificReservation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ReservationSpecificReservation.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    specificReservationRequired = registerOutput<bool?>(
-      'specificReservationRequired',
-    );
+    shareSettings = registerOutput<ReservationShareSettings>('shareSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReservationShareSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    specificReservation = registerOutput<ReservationSpecificReservation>('specificReservation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReservationSpecificReservation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    specificReservationRequired = registerOutput<bool?>('specificReservationRequired');
     status = registerOutput<String>('status');
     zone = registerOutput<String>('zone');
   }
@@ -1297,73 +1233,30 @@ class Reservation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:compute/reservation:Reservation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:compute/reservation:Reservation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     blockNames = registerOutput<List<String>>('blockNames');
     commitment = registerOutput<String>('commitment');
     creationTimestamp = registerOutput<String>('creationTimestamp');
-    deleteAfterDuration = registerOutput<ReservationDeleteAfterDuration?>(
-      'deleteAfterDuration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ReservationDeleteAfterDuration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    deleteAfterDuration = registerOutput<ReservationDeleteAfterDuration?>('deleteAfterDuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReservationDeleteAfterDuration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deleteAtTime = registerOutput<String>('deleteAtTime');
     description = registerOutput<String?>('description');
-    enableEmergentMaintenance = registerOutput<bool?>(
-      'enableEmergentMaintenance',
-    );
+    enableEmergentMaintenance = registerOutput<bool?>('enableEmergentMaintenance');
     kind = registerOutput<String>('kind');
     linkedCommitments = registerOutput<List<String>>('linkedCommitments');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     reservationBlockCount = registerOutput<int>('reservationBlockCount');
-    reservationSharingPolicy =
-        registerOutput<ReservationReservationSharingPolicy>(
-          'reservationSharingPolicy',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ReservationReservationSharingPolicy.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    resourceStatuses = registerOutput<List<Map<String, dynamic>>>(
-      'resourceStatuses',
-    );
+    reservationSharingPolicy = registerOutput<ReservationReservationSharingPolicy>('reservationSharingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReservationReservationSharingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resourceStatuses = registerOutput<List<Map<String, dynamic>>>('resourceStatuses');
     satisfiesPzs = registerOutput<bool>('satisfiesPzs');
     selfLink = registerOutput<String>('selfLink');
-    shareSettings = registerOutput<ReservationShareSettings>(
-      'shareSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ReservationShareSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    specificReservation = registerOutput<ReservationSpecificReservation>(
-      'specificReservation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ReservationSpecificReservation.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    specificReservationRequired = registerOutput<bool?>(
-      'specificReservationRequired',
-    );
+    shareSettings = registerOutput<ReservationShareSettings>('shareSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReservationShareSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    specificReservation = registerOutput<ReservationSpecificReservation>('specificReservation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReservationSpecificReservation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    specificReservationRequired = registerOutput<bool?>('specificReservationRequired');
     status = registerOutput<String>('status');
     zone = registerOutput<String>('zone');
   }

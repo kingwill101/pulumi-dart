@@ -9,15 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProjectSccBigQueryExportArgs {
   /// This must be unique within the organization.
   final pulumi.Input<String> bigQueryExportId;
-
   /// The dataset to write findings' updates to.
   /// Its format is "projects/[projectId]/datasets/[bigquery_dataset_id]".
   /// BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
   final pulumi.Input<String>? dataset;
-
   /// The description of the notification config (max of 1024 characters).
   final pulumi.Input<String>? description;
-
   /// Expression that defines the filter to apply across create/update
   /// events of findings. The
   /// expression is a list of zero or more restrictions combined via
@@ -38,7 +35,6 @@ class ProjectSccBigQueryExportArgs {
   /// [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
   /// for information on how to write a filter.
   final pulumi.Input<String>? filter;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -69,29 +65,12 @@ class ProjectSccBigQueryExportArgs {
 
   factory ProjectSccBigQueryExportArgs.fromMap(Map<String, dynamic> map) {
     return ProjectSccBigQueryExportArgs(
-      bigQueryExportId: pulumi.Input.fromValue(
-        map['bigQueryExportId'] as String,
-      ),
-      dataset: (() {
-        final guardedValue = map['dataset'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      filter: (() {
-        final guardedValue = map['filter'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      bigQueryExportId: pulumi.Input.fromValue(map['bigQueryExportId'] as String),
+      dataset: (() { final guardedValue = map['dataset']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

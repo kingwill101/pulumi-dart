@@ -9,35 +9,20 @@ class WorkflowEnrichments {
 
   /// Creates a new [WorkflowEnrichments].
   /// [nrqls] (Required) Nrql type Enrichments.
-  WorkflowEnrichments({required this.nrqls});
+  WorkflowEnrichments({
+    required this.nrqls,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'nrqls':
-          pulumi.Input.mapInputValue<
-            List<WorkflowEnrichmentsNrql>,
-            List<Map<String, dynamic>>
-          >(
-            nrqls,
-            (value) =>
-                pulumi.Input.encodeList<
-                  WorkflowEnrichmentsNrql,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'nrqls': pulumi.Input.mapInputValue<List<WorkflowEnrichmentsNrql>, List<Map<String, dynamic>>>(nrqls, (value) => pulumi.Input.encodeList<WorkflowEnrichmentsNrql, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory WorkflowEnrichments.fromMap(Map<String, dynamic> map) {
     return WorkflowEnrichments(
-      nrqls: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<WorkflowEnrichmentsNrql>(
-          map['nrqls']!,
-          (value) => WorkflowEnrichmentsNrql.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      nrqls: pulumi.Input.fromValue(pulumi.Input.decodeList<WorkflowEnrichmentsNrql>(map['nrqls']!, (value) => WorkflowEnrichmentsNrql.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

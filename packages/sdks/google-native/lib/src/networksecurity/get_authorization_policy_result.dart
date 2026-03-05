@@ -7,22 +7,16 @@ import 'rule_response.dart';
 class GetAuthorizationPolicyResult {
   /// The action to take when a rule match is found. Possible values are "ALLOW" or "DENY".
   final String action;
-
   /// The timestamp when the resource was created.
   final String createTime;
-
   /// Optional. Free-text description of the resource.
   final String description;
-
   /// Optional. Set of label tags associated with the AuthorizationPolicy resource.
   final Map<String, String> labels;
-
   /// Name of the AuthorizationPolicy resource. It matches pattern `projects/{project}/locations/{location}/authorizationPolicies/`.
   final String name;
-
   /// Optional. List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken. A rule is a match if there is a matching source and destination. If left blank, the action specified in the `action` field will be applied on every request.
   final List<RuleResponse> rules;
-
   /// The timestamp when the resource was updated.
   final String updateTime;
 
@@ -51,10 +45,7 @@ class GetAuthorizationPolicyResult {
       'description': description,
       'labels': labels,
       'name': name,
-      'rules': pulumi.Input.encodeList<RuleResponse, Map<String, dynamic>>(
-        rules,
-        (value) => value.toMap(),
-      ),
+      'rules': pulumi.Input.encodeList<RuleResponse, Map<String, dynamic>>(rules, (value) => value.toMap()),
       'updateTime': updateTime,
     };
   }
@@ -66,11 +57,9 @@ class GetAuthorizationPolicyResult {
       description: map['description'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
-      rules: pulumi.Input.decodeList<RuleResponse>(
-        map['rules']!,
-        (value) => RuleResponse.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      rules: pulumi.Input.decodeList<RuleResponse>(map['rules']!, (value) => RuleResponse.fromMap((value as Map).cast<String, dynamic>())),
       updateTime: map['updateTime'] as String,
     );
   }
 }
+

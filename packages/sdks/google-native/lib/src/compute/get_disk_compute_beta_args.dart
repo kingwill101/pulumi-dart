@@ -22,18 +22,19 @@ class GetDiskComputeBetaArgs {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'disk': disk, 'project': ?project, 'zone': zone};
+    return <String, dynamic>{
+      'disk': disk,
+      'project': ?project,
+      'zone': zone,
+    };
   }
 
   factory GetDiskComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetDiskComputeBetaArgs(
       disk: pulumi.Input.fromValue(map['disk'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       zone: pulumi.Input.fromValue(map['zone'] as String),
     );
   }
 }
+

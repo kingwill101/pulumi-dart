@@ -7944,34 +7944,24 @@ import 'mapper_policy_response.dart';
 class ChangeDataCapture extends pulumi.CustomResource {
   /// A boolean to determine if the vnet configuration needs to be overwritten.
   late final pulumi.Output<bool?> allowVNetOverride;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The description of the change data capture.
   late final pulumi.Output<String?> description;
-
   /// Etag identifies change in the resource.
   late final pulumi.Output<String> etag;
-
   /// The folder that this CDC is in. If not specified, CDC will appear at the root level.
   late final pulumi.Output<ChangeDataCaptureResponseFolder?> folder;
-
   /// The resource name.
   late final pulumi.Output<String> name;
-
   /// CDC policy
   late final pulumi.Output<MapperPolicyResponse> policy;
-
   /// List of sources connections that can be used as sources in the CDC.
   late final pulumi.Output<List<Map<String, dynamic>>> sourceConnectionsInfo;
-
   /// Status of the CDC as to if it is running or stopped.
   late final pulumi.Output<String?> status;
-
   /// List of target connections that can be used as sources in the CDC.
   late final pulumi.Output<List<Map<String, dynamic>>> targetConnectionsInfo;
-
   /// The resource type.
   late final pulumi.Output<String> type;
 
@@ -7984,43 +7974,21 @@ class ChangeDataCapture extends pulumi.CustomResource {
     ChangeDataCaptureArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:datafactory:ChangeDataCapture',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:datafactory:ChangeDataCapture',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allowVNetOverride = registerOutput<bool?>('allowVNetOverride');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     description = registerOutput<String?>('description');
     etag = registerOutput<String>('etag');
-    folder = registerOutput<ChangeDataCaptureResponseFolder?>(
-      'folder',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ChangeDataCaptureResponseFolder.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    folder = registerOutput<ChangeDataCaptureResponseFolder?>('folder', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ChangeDataCaptureResponseFolder.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    policy = registerOutput<MapperPolicyResponse>(
-      'policy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MapperPolicyResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    sourceConnectionsInfo = registerOutput<List<Map<String, dynamic>>>(
-      'sourceConnectionsInfo',
-    );
+    policy = registerOutput<MapperPolicyResponse>('policy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MapperPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sourceConnectionsInfo = registerOutput<List<Map<String, dynamic>>>('sourceConnectionsInfo');
     status = registerOutput<String?>('status');
-    targetConnectionsInfo = registerOutput<List<Map<String, dynamic>>>(
-      'targetConnectionsInfo',
-    );
+    targetConnectionsInfo = registerOutput<List<Map<String, dynamic>>>('targetConnectionsInfo');
     type = registerOutput<String>('type');
   }
 }

@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DimensionResponse {
   /// Name of the dimension
   final pulumi.Input<String> name;
-
   /// Operator for dimension values
   final pulumi.Input<String> operator;
-
   /// List of dimension values
   final pulumi.Input<List<String>> values;
 
@@ -39,3 +37,4 @@ class DimensionResponse {
     );
   }
 }
+

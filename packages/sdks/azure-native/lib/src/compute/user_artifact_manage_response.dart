@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserArtifactManageResponse {
   /// Required. The path and arguments to install the gallery application. This is limited to 4096 characters.
   final pulumi.Input<String> install;
-
   /// Required. The path and arguments to remove the gallery application. This is limited to 4096 characters.
   final pulumi.Input<String> remove;
-
   /// Optional. The path and arguments to update the gallery application. If not present, then update operation will invoke remove command on the previous version and install command on the current version of the gallery application. This is limited to 4096 characters.
   final pulumi.Input<String>? update;
 
@@ -34,11 +32,8 @@ class UserArtifactManageResponse {
     return UserArtifactManageResponse(
       install: pulumi.Input.fromValue(map['install'] as String),
       remove: pulumi.Input.fromValue(map['remove'] as String),
-      update: (() {
-        final guardedValue = map['update'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      update: (() { final guardedValue = map['update']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

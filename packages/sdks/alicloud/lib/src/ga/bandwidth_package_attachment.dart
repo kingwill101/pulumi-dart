@@ -215,13 +215,10 @@ import 'bandwidth_package_attachment_state.dart';
 class BandwidthPackageAttachment extends pulumi.CustomResource {
   /// The ID of the Global Accelerator instance.
   late final pulumi.Output<String> acceleratorId;
-
   /// Accelerators bound with current Bandwidth Package.
   late final pulumi.Output<List<String>> accelerators;
-
   /// The ID of the Bandwidth Package. **NOTE:** From version 1.192.0, `bandwidth_package_id` can be modified.
   late final pulumi.Output<String> bandwidthPackageId;
-
   /// State of Bandwidth Package.
   late final pulumi.Output<String> status;
 
@@ -234,11 +231,11 @@ class BandwidthPackageAttachment extends pulumi.CustomResource {
     BandwidthPackageAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ga/bandwidthPackageAttachment:BandwidthPackageAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ga/bandwidthPackageAttachment:BandwidthPackageAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     acceleratorId = registerOutput<String>('acceleratorId');
     accelerators = registerOutput<List<String>>('accelerators');
     bandwidthPackageId = registerOutput<String>('bandwidthPackageId');
@@ -263,11 +260,11 @@ class BandwidthPackageAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ga/bandwidthPackageAttachment:BandwidthPackageAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ga/bandwidthPackageAttachment:BandwidthPackageAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     acceleratorId = registerOutput<String>('acceleratorId');
     accelerators = registerOutput<List<String>>('accelerators');
     bandwidthPackageId = registerOutput<String>('bandwidthPackageId');

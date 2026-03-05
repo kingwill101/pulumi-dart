@@ -284,7 +284,6 @@ import 'enterprise_snapshot_policy_attachment_state.dart';
 class EnterpriseSnapshotPolicyAttachment extends pulumi.CustomResource {
   /// Cloud Disk ID.
   late final pulumi.Output<String> diskId;
-
   /// the enterprise snapshot policy id.
   late final pulumi.Output<String> policyId;
 
@@ -297,11 +296,11 @@ class EnterpriseSnapshotPolicyAttachment extends pulumi.CustomResource {
     EnterpriseSnapshotPolicyAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ebs/enterpriseSnapshotPolicyAttachment:EnterpriseSnapshotPolicyAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ebs/enterpriseSnapshotPolicyAttachment:EnterpriseSnapshotPolicyAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     diskId = registerOutput<String>('diskId');
     policyId = registerOutput<String>('policyId');
   }
@@ -324,11 +323,11 @@ class EnterpriseSnapshotPolicyAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ebs/enterpriseSnapshotPolicyAttachment:EnterpriseSnapshotPolicyAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ebs/enterpriseSnapshotPolicyAttachment:EnterpriseSnapshotPolicyAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     diskId = registerOutput<String>('diskId');
     policyId = registerOutput<String>('policyId');
   }

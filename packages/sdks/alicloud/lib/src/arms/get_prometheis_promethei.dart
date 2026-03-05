@@ -5,61 +5,42 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPrometheisPromethei {
   /// The token used to access the data source.
   final pulumi.Input<String> authToken;
-
   /// The ID of the cluster.
   final pulumi.Input<String> clusterId;
-
   /// The name of the cluster.
   final pulumi.Input<String> clusterName;
-
   /// The type of the cluster.
   final pulumi.Input<String> clusterType;
-
   /// The ID of the Grafana workspace.
   final pulumi.Input<String> grafanaInstanceId;
-
   /// Http api public network address.
   final pulumi.Input<String> httpApiInterUrl;
-
   /// Http api intranet address.
   final pulumi.Input<String> httpApiIntraUrl;
-
   /// The ID of the Prometheus.
   final pulumi.Input<String> id;
-
   /// PushGateway public network Url.
   final pulumi.Input<String> pushGateWayInterUrl;
-
   /// PushGateway intranet Url.
   final pulumi.Input<String> pushGateWayIntraUrl;
-
   /// Public Url of remoteRead.
   final pulumi.Input<String> remoteReadInterUrl;
-
   /// RemoteRead intranet Url.
   final pulumi.Input<String> remoteReadIntraUrl;
-
   /// RemoteWrite public Url.
   final pulumi.Input<String> remoteWriteInterUrl;
-
   /// RemoteWrite Intranet Url.
   final pulumi.Input<String> remoteWriteIntraUrl;
-
   /// The ID of the resource group.
   final pulumi.Input<String> resourceGroupId;
-
   /// The ID of the security group.
   final pulumi.Input<String> securityGroupId;
-
   /// The child instance json string of the globalView instance.
   final pulumi.Input<String> subClustersJson;
-
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>> tags;
-
   /// The ID of the VPC.
   final pulumi.Input<String> vpcId;
-
   /// The ID of the vSwitch.
   final pulumi.Input<String> vswitchId;
 
@@ -138,30 +119,16 @@ class GetPrometheisPromethei {
       clusterId: pulumi.Input.fromValue(map['clusterId'] as String),
       clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
       clusterType: pulumi.Input.fromValue(map['clusterType'] as String),
-      grafanaInstanceId: pulumi.Input.fromValue(
-        map['grafanaInstanceId'] as String,
-      ),
+      grafanaInstanceId: pulumi.Input.fromValue(map['grafanaInstanceId'] as String),
       httpApiInterUrl: pulumi.Input.fromValue(map['httpApiInterUrl'] as String),
       httpApiIntraUrl: pulumi.Input.fromValue(map['httpApiIntraUrl'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
-      pushGateWayInterUrl: pulumi.Input.fromValue(
-        map['pushGateWayInterUrl'] as String,
-      ),
-      pushGateWayIntraUrl: pulumi.Input.fromValue(
-        map['pushGateWayIntraUrl'] as String,
-      ),
-      remoteReadInterUrl: pulumi.Input.fromValue(
-        map['remoteReadInterUrl'] as String,
-      ),
-      remoteReadIntraUrl: pulumi.Input.fromValue(
-        map['remoteReadIntraUrl'] as String,
-      ),
-      remoteWriteInterUrl: pulumi.Input.fromValue(
-        map['remoteWriteInterUrl'] as String,
-      ),
-      remoteWriteIntraUrl: pulumi.Input.fromValue(
-        map['remoteWriteIntraUrl'] as String,
-      ),
+      pushGateWayInterUrl: pulumi.Input.fromValue(map['pushGateWayInterUrl'] as String),
+      pushGateWayIntraUrl: pulumi.Input.fromValue(map['pushGateWayIntraUrl'] as String),
+      remoteReadInterUrl: pulumi.Input.fromValue(map['remoteReadInterUrl'] as String),
+      remoteReadIntraUrl: pulumi.Input.fromValue(map['remoteReadIntraUrl'] as String),
+      remoteWriteInterUrl: pulumi.Input.fromValue(map['remoteWriteInterUrl'] as String),
+      remoteWriteIntraUrl: pulumi.Input.fromValue(map['remoteWriteIntraUrl'] as String),
       resourceGroupId: pulumi.Input.fromValue(map['resourceGroupId'] as String),
       securityGroupId: pulumi.Input.fromValue(map['securityGroupId'] as String),
       subClustersJson: pulumi.Input.fromValue(map['subClustersJson'] as String),
@@ -171,3 +138,4 @@ class GetPrometheisPromethei {
     );
   }
 }
+

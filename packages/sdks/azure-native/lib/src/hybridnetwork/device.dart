@@ -139,31 +139,22 @@ import 'system_data_response.dart';
 class Device extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The type of the device.
   late final pulumi.Output<String> deviceType;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The list of network functions deployed on the device.
   late final pulumi.Output<List<Map<String, dynamic>>> networkFunctions;
-
   /// The provisioning state of the device resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The current device status.
   late final pulumi.Output<String> status;
-
   /// The system meta data relating to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -171,32 +162,24 @@ class Device extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Device]. {@macro pulumi_hybridnetwork_device_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Device(String name, {DeviceArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:hybridnetwork:Device',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Device(
+    String name, {
+    DeviceArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:hybridnetwork:Device',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     deviceType = registerOutput<String>('deviceType');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    networkFunctions = registerOutput<List<Map<String, dynamic>>>(
-      'networkFunctions',
-    );
+    networkFunctions = registerOutput<List<Map<String, dynamic>>>('networkFunctions');
     provisioningState = registerOutput<String>('provisioningState');
     status = registerOutput<String>('status');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

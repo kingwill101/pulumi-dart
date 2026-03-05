@@ -16,52 +16,36 @@ import 'web_app_instance_function_slot_args.dart';
 class WebAppInstanceFunctionSlot extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Config information.
   late final pulumi.Output<dynamic> config;
-
   /// Config URI.
   late final pulumi.Output<String?> configHref;
-
   /// File list.
   late final pulumi.Output<Map<String, String>?> files;
-
   /// Function App ID.
   late final pulumi.Output<String?> functionAppId;
-
   /// Function URI.
   late final pulumi.Output<String?> href;
-
   /// The invocation URL
   late final pulumi.Output<String?> invokeUrlTemplate;
-
   /// Gets or sets a value indicating whether the function is disabled
   late final pulumi.Output<bool?> isDisabled;
-
   /// Kind of resource.
   late final pulumi.Output<String?> kind;
-
   /// The function language
   late final pulumi.Output<String?> language;
-
   /// Resource Name.
   late final pulumi.Output<String> name;
-
   /// Script URI.
   late final pulumi.Output<String?> scriptHref;
-
   /// Script root path URI.
   late final pulumi.Output<String?> scriptRootPathHref;
-
   /// Secrets file URI.
   late final pulumi.Output<String?> secretsFileHref;
-
   /// Test data used when testing via the Azure Portal.
   late final pulumi.Output<String?> testData;
-
   /// Test data URI.
   late final pulumi.Output<String?> testDataHref;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -74,11 +58,11 @@ class WebAppInstanceFunctionSlot extends pulumi.CustomResource {
     WebAppInstanceFunctionSlotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:web:WebAppInstanceFunctionSlot',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:web:WebAppInstanceFunctionSlot',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     config = registerOutput<dynamic>('config');
     configHref = registerOutput<String?>('configHref');

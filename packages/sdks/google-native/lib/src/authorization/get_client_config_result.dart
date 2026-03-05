@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getClientConfig.
 class GetClientConfigResult {
   /// Project of the current user.
   final String project;
-
   /// Google Cloud region
   final String region;
-
   /// Google Cloud zone
   final String? zone;
 
@@ -33,11 +32,8 @@ class GetClientConfigResult {
     return GetClientConfigResult(
       project: map['project'] as String,
       region: map['region'] as String,
-      zone: (() {
-        final guardedValue = map['zone'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      zone: (() { final guardedValue = map['zone']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

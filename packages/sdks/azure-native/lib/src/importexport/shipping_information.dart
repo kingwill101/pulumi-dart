@@ -6,25 +6,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ShippingInformation {
   /// The city name to use when returning the drives.
   final pulumi.Input<String>? city;
-
   /// The country or region to use when returning the drives.
   final pulumi.Input<String>? countryOrRegion;
-
   /// Phone number of the recipient of the returned drives.
   final pulumi.Input<String>? phone;
-
   /// The postal code to use when returning the drives.
   final pulumi.Input<String>? postalCode;
-
   /// The name of the recipient who will receive the hard drives when they are returned.
   final pulumi.Input<String>? recipientName;
-
   /// The state or province to use when returning the drives.
   final pulumi.Input<String>? stateOrProvince;
-
   /// The first line of the street address to use when returning the drives.
   final pulumi.Input<String>? streetAddress1;
-
   /// The second line of the street address to use when returning the drives.
   final pulumi.Input<String>? streetAddress2;
 
@@ -63,46 +56,15 @@ class ShippingInformation {
 
   factory ShippingInformation.fromMap(Map<String, dynamic> map) {
     return ShippingInformation(
-      city: (() {
-        final guardedValue = map['city'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      countryOrRegion: (() {
-        final guardedValue = map['countryOrRegion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      phone: (() {
-        final guardedValue = map['phone'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      postalCode: (() {
-        final guardedValue = map['postalCode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      recipientName: (() {
-        final guardedValue = map['recipientName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      stateOrProvince: (() {
-        final guardedValue = map['stateOrProvince'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      streetAddress1: (() {
-        final guardedValue = map['streetAddress1'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      streetAddress2: (() {
-        final guardedValue = map['streetAddress2'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      city: (() { final guardedValue = map['city']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      countryOrRegion: (() { final guardedValue = map['countryOrRegion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      phone: (() { final guardedValue = map['phone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      postalCode: (() { final guardedValue = map['postalCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      recipientName: (() { final guardedValue = map['recipientName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      stateOrProvince: (() { final guardedValue = map['stateOrProvince']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      streetAddress1: (() { final guardedValue = map['streetAddress1']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      streetAddress2: (() { final guardedValue = map['streetAddress2']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

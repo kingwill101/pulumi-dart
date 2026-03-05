@@ -9,25 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CapacityPoolBackupArgs {
   /// The name of the NetApp account
   final pulumi.Input<String> accountName;
-
   /// The name of the backup
   final pulumi.Input<String>? backupName;
-
   /// Label for backup
   final pulumi.Input<String>? label;
-
   /// Resource location
   final pulumi.Input<String>? location;
-
   /// The name of the capacity pool
   final pulumi.Input<String> poolName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Manual backup an already existing snapshot. This will always be false for scheduled backups and true/false for manual backups
   final pulumi.Input<bool>? useExistingSnapshot;
-
   /// The name of the volume
   final pulumi.Input<String> volumeName;
 
@@ -67,31 +60,14 @@ class CapacityPoolBackupArgs {
   factory CapacityPoolBackupArgs.fromMap(Map<String, dynamic> map) {
     return CapacityPoolBackupArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
-      backupName: (() {
-        final guardedValue = map['backupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      label: (() {
-        final guardedValue = map['label'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      backupName: (() { final guardedValue = map['backupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      label: (() { final guardedValue = map['label']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       poolName: pulumi.Input.fromValue(map['poolName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      useExistingSnapshot: (() {
-        final guardedValue = map['useExistingSnapshot'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      useExistingSnapshot: (() { final guardedValue = map['useExistingSnapshot']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       volumeName: pulumi.Input.fromValue(map['volumeName'] as String),
     );
   }
 }
+

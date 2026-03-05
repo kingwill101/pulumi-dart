@@ -8,7 +8,6 @@ import 'oracle_rdbms_datastream_v1alpha1.dart';
 class BackfillAllStrategyDatastreamV1alpha1 {
   /// MySQL data source objects to avoid backfilling.
   final pulumi.Input<MysqlRdbmsDatastreamV1alpha1>? mysqlExcludedObjects;
-
   /// Oracle data source objects to avoid backfilling.
   final pulumi.Input<OracleRdbmsDatastreamV1alpha1>? oracleExcludedObjects;
 
@@ -22,41 +21,16 @@ class BackfillAllStrategyDatastreamV1alpha1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'mysqlExcludedObjects':
-          ?pulumi.Input.mapOptionalInputValue<
-            MysqlRdbmsDatastreamV1alpha1,
-            Map<String, dynamic>
-          >(mysqlExcludedObjects, (value) => value.toMap()),
-      'oracleExcludedObjects':
-          ?pulumi.Input.mapOptionalInputValue<
-            OracleRdbmsDatastreamV1alpha1,
-            Map<String, dynamic>
-          >(oracleExcludedObjects, (value) => value.toMap()),
+      'mysqlExcludedObjects': ?pulumi.Input.mapOptionalInputValue<MysqlRdbmsDatastreamV1alpha1, Map<String, dynamic>>(mysqlExcludedObjects, (value) => value.toMap()),
+      'oracleExcludedObjects': ?pulumi.Input.mapOptionalInputValue<OracleRdbmsDatastreamV1alpha1, Map<String, dynamic>>(oracleExcludedObjects, (value) => value.toMap()),
     };
   }
 
-  factory BackfillAllStrategyDatastreamV1alpha1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BackfillAllStrategyDatastreamV1alpha1.fromMap(Map<String, dynamic> map) {
     return BackfillAllStrategyDatastreamV1alpha1(
-      mysqlExcludedObjects: (() {
-        final guardedValue = map['mysqlExcludedObjects'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          MysqlRdbmsDatastreamV1alpha1.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      oracleExcludedObjects: (() {
-        final guardedValue = map['oracleExcludedObjects'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          OracleRdbmsDatastreamV1alpha1.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      mysqlExcludedObjects: (() { final guardedValue = map['mysqlExcludedObjects']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MysqlRdbmsDatastreamV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      oracleExcludedObjects: (() { final guardedValue = map['oracleExcludedObjects']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OracleRdbmsDatastreamV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

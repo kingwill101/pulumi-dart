@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VoiceReceiver {
   /// The country code of the voice receiver.
   final pulumi.Input<String> countryCode;
-
   /// The name of the voice receiver. Names must be unique across all receivers within a tenant action group.
   final pulumi.Input<String> name;
-
   /// The phone number of the voice receiver.
   final pulumi.Input<String> phoneNumber;
 
@@ -39,3 +37,4 @@ class VoiceReceiver {
     );
   }
 }
+

@@ -6,20 +6,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SmbStorageClassTypePropertiesResponse {
   /// Server domain
   final pulumi.Input<String>? domain;
-
   /// Server password
   final pulumi.Input<String>? password;
-
   /// SMB Source
   final pulumi.Input<String> source;
-
   /// Sub directory under share. If the sub directory doesn't exist, driver will create it
   final pulumi.Input<String>? subDir;
-
   /// Type of a storage class
   /// Expected value is 'SMB'.
   final pulumi.Input<String> type;
-
   /// Server username
   final pulumi.Input<String>? username;
 
@@ -50,32 +45,15 @@ class SmbStorageClassTypePropertiesResponse {
     };
   }
 
-  factory SmbStorageClassTypePropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SmbStorageClassTypePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SmbStorageClassTypePropertiesResponse(
-      domain: (() {
-        final guardedValue = map['domain'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      password: (() {
-        final guardedValue = map['password'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      domain: (() { final guardedValue = map['domain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       source: pulumi.Input.fromValue(map['source'] as String),
-      subDir: (() {
-        final guardedValue = map['subDir'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      subDir: (() { final guardedValue = map['subDir']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
-      username: (() {
-        final guardedValue = map['username'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      username: (() { final guardedValue = map['username']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

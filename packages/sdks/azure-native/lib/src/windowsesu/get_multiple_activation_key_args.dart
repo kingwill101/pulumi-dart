@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMultipleActivationKeyArgs {
   /// The name of the MAK key.
   final pulumi.Input<String> multipleActivationKeyName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetMultipleActivationKeyArgs {
 
   factory GetMultipleActivationKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetMultipleActivationKeyArgs(
-      multipleActivationKeyName: pulumi.Input.fromValue(
-        map['multipleActivationKeyName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      multipleActivationKeyName: pulumi.Input.fromValue(map['multipleActivationKeyName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

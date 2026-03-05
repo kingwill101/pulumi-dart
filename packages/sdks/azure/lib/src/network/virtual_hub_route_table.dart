@@ -520,13 +520,10 @@ import 'virtual_hub_route_table_state.dart';
 class VirtualHubRouteTable extends pulumi.CustomResource {
   /// List of labels associated with this route table.
   late final pulumi.Output<List<String>?> labels;
-
   /// The name which should be used for Virtual Hub Route Table. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// One or more `route` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> routes;
-
   /// The ID of the Virtual Hub within which this route table should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> virtualHubId;
 
@@ -539,11 +536,11 @@ class VirtualHubRouteTable extends pulumi.CustomResource {
     VirtualHubRouteTableArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/virtualHubRouteTable:VirtualHubRouteTable',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/virtualHubRouteTable:VirtualHubRouteTable',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     labels = registerOutput<List<String>?>('labels');
     this.name = registerOutput<String>('name');
     routes = registerOutput<List<Map<String, dynamic>>>('routes');
@@ -568,11 +565,11 @@ class VirtualHubRouteTable extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/virtualHubRouteTable:VirtualHubRouteTable',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/virtualHubRouteTable:VirtualHubRouteTable',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     labels = registerOutput<List<String>?>('labels');
     this.name = registerOutput<String>('name');
     routes = registerOutput<List<Map<String, dynamic>>>('routes');

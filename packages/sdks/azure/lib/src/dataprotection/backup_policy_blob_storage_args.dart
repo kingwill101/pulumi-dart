@@ -10,27 +10,20 @@ import 'backup_policy_blob_storage_retention_rule.dart';
 class BackupPolicyBlobStorageArgs {
   /// Specifies a list of repeating time interval. It should follow `ISO 8601` repeating time interval. Changing this forces a new Backup Policy Blob Storage to be created.
   final pulumi.Input<List<String>>? backupRepeatingTimeIntervals;
-
   /// The name which should be used for this Backup Policy Blob Storage. Changing this forces a new Backup Policy Blob Storage to be created.
   final pulumi.Input<String>? name;
-
   /// The duration of operational default retention rule. It should follow `ISO 8601` duration format. Changing this forces a new Backup Policy Blob Storage to be created.
   final pulumi.Input<String>? operationalDefaultRetentionDuration;
-
   /// One or more `retention_rule` blocks as defined below. Changing this forces a new Backup Policy Blob Storage to be created.
   ///
   /// &gt; **Note:** Setting `retention_rule` also requires setting `vault_default_retention_duration`.
-  final pulumi.Input<List<BackupPolicyBlobStorageRetentionRule>>?
-  retentionRules;
-
+  final pulumi.Input<List<BackupPolicyBlobStorageRetentionRule>>? retentionRules;
   /// Specifies the Time Zone which should be used by the backup schedule. Changing this forces a new Backup Policy Blob Storage to be created.
   final pulumi.Input<String>? timeZone;
-
   /// The duration of vault default retention rule. It should follow `ISO 8601` duration format. Changing this forces a new Backup Policy Blob Storage to be created.
   ///
   /// &gt; **Note:** Setting `vault_default_retention_duration` also requires setting `backup_repeating_time_intervals`. At least one of `operational_default_retention_duration` or `vault_default_retention_duration` must be specified.
   final pulumi.Input<String>? vaultDefaultRetentionDuration;
-
   /// The ID of the Backup Vault within which the Backup Policy Blob Storage should exist. Changing this forces a new Backup Policy Blob Storage to be created.
   final pulumi.Input<String> vaultId;
 
@@ -56,20 +49,8 @@ class BackupPolicyBlobStorageArgs {
     return <String, dynamic>{
       'backupRepeatingTimeIntervals': ?backupRepeatingTimeIntervals,
       'name': ?name,
-      'operationalDefaultRetentionDuration':
-          ?operationalDefaultRetentionDuration,
-      'retentionRules':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<BackupPolicyBlobStorageRetentionRule>,
-            List<Map<String, dynamic>>
-          >(
-            retentionRules,
-            (value) =>
-                pulumi.Input.encodeList<
-                  BackupPolicyBlobStorageRetentionRule,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'operationalDefaultRetentionDuration': ?operationalDefaultRetentionDuration,
+      'retentionRules': ?pulumi.Input.mapOptionalInputValue<List<BackupPolicyBlobStorageRetentionRule>, List<Map<String, dynamic>>>(retentionRules, (value) => pulumi.Input.encodeList<BackupPolicyBlobStorageRetentionRule, Map<String, dynamic>>(value, (value) => value.toMap())),
       'timeZone': ?timeZone,
       'vaultDefaultRetentionDuration': ?vaultDefaultRetentionDuration,
       'vaultId': vaultId,
@@ -78,44 +59,14 @@ class BackupPolicyBlobStorageArgs {
 
   factory BackupPolicyBlobStorageArgs.fromMap(Map<String, dynamic> map) {
     return BackupPolicyBlobStorageArgs(
-      backupRepeatingTimeIntervals: (() {
-        final guardedValue = map['backupRepeatingTimeIntervals'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      operationalDefaultRetentionDuration: (() {
-        final guardedValue = map['operationalDefaultRetentionDuration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      retentionRules: (() {
-        final guardedValue = map['retentionRules'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<BackupPolicyBlobStorageRetentionRule>(
-            guardedValue,
-            (value) => BackupPolicyBlobStorageRetentionRule.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      timeZone: (() {
-        final guardedValue = map['timeZone'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      vaultDefaultRetentionDuration: (() {
-        final guardedValue = map['vaultDefaultRetentionDuration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      backupRepeatingTimeIntervals: (() { final guardedValue = map['backupRepeatingTimeIntervals']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      operationalDefaultRetentionDuration: (() { final guardedValue = map['operationalDefaultRetentionDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      retentionRules: (() { final guardedValue = map['retentionRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<BackupPolicyBlobStorageRetentionRule>(guardedValue, (value) => BackupPolicyBlobStorageRetentionRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      timeZone: (() { final guardedValue = map['timeZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      vaultDefaultRetentionDuration: (() { final guardedValue = map['vaultDefaultRetentionDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vaultId: pulumi.Input.fromValue(map['vaultId'] as String),
     );
   }
 }
+

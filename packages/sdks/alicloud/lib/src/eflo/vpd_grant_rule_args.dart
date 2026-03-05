@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpdGrantRuleArgs {
   /// The ID of the ER instance under the cross-account tenant.
   final pulumi.Input<String> erId;
-
   /// Cross-account authorized tenant ID.
   final pulumi.Input<String> grantTenantId;
-
   /// Instance ID of VPD.
   final pulumi.Input<String> instanceId;
 
@@ -42,3 +40,4 @@ class VpdGrantRuleArgs {
     );
   }
 }
+

@@ -9,19 +9,20 @@ class SubnetPropertiesResponse {
 
   /// Creates a new [SubnetPropertiesResponse].
   /// [name] Subnet name.
-  SubnetPropertiesResponse({this.name});
+  SubnetPropertiesResponse({
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name};
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
   factory SubnetPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SubnetPropertiesResponse(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -7,13 +7,10 @@ class NetworkManagerConnectivityConfigurationAppliesToGroup {
   ///
   /// &gt; **Note:** A group can be global only if the `group_connectivity` is `DirectlyConnected`.
   final pulumi.Input<bool>? globalMeshEnabled;
-
   /// Specifies the group connectivity type. Possible values are `None` and `DirectlyConnected`.
   final pulumi.Input<String> groupConnectivity;
-
   /// Specifies the resource ID of Network Group which the configuration applies to.
   final pulumi.Input<String> networkGroupId;
-
   /// Indicates whether the hub gateway is used. Possible values are `true` and `false`.
   final pulumi.Input<bool>? useHubGateway;
 
@@ -38,24 +35,13 @@ class NetworkManagerConnectivityConfigurationAppliesToGroup {
     };
   }
 
-  factory NetworkManagerConnectivityConfigurationAppliesToGroup.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NetworkManagerConnectivityConfigurationAppliesToGroup.fromMap(Map<String, dynamic> map) {
     return NetworkManagerConnectivityConfigurationAppliesToGroup(
-      globalMeshEnabled: (() {
-        final guardedValue = map['globalMeshEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      groupConnectivity: pulumi.Input.fromValue(
-        map['groupConnectivity'] as String,
-      ),
+      globalMeshEnabled: (() { final guardedValue = map['globalMeshEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      groupConnectivity: pulumi.Input.fromValue(map['groupConnectivity'] as String),
       networkGroupId: pulumi.Input.fromValue(map['networkGroupId'] as String),
-      useHubGateway: (() {
-        final guardedValue = map['useHubGateway'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      useHubGateway: (() { final guardedValue = map['useHubGateway']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

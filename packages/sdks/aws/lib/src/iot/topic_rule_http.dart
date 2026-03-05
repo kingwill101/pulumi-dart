@@ -6,10 +6,8 @@ import 'topic_rule_http_http_header.dart';
 class TopicRuleHttp {
   /// The HTTPS URL used to verify ownership of `url`.
   final pulumi.Input<String>? confirmationUrl;
-
   /// Custom HTTP header IoT Core should send. It is possible to define more than one custom header.
   final pulumi.Input<List<TopicRuleHttpHttpHeader>>? httpHeaders;
-
   /// The HTTPS URL.
   final pulumi.Input<String> url;
 
@@ -17,47 +15,26 @@ class TopicRuleHttp {
   /// [confirmationUrl] The HTTPS URL used to verify ownership of `url`.
   /// [httpHeaders] Custom HTTP header IoT Core should send. It is possible to define more than one custom header.
   /// [url] The HTTPS URL.
-  TopicRuleHttp({this.confirmationUrl, this.httpHeaders, required this.url});
+  TopicRuleHttp({
+    this.confirmationUrl,
+    this.httpHeaders,
+    required this.url,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'confirmationUrl': ?confirmationUrl,
-      'httpHeaders':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<TopicRuleHttpHttpHeader>,
-            List<Map<String, dynamic>>
-          >(
-            httpHeaders,
-            (value) =>
-                pulumi.Input.encodeList<
-                  TopicRuleHttpHttpHeader,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'httpHeaders': ?pulumi.Input.mapOptionalInputValue<List<TopicRuleHttpHttpHeader>, List<Map<String, dynamic>>>(httpHeaders, (value) => pulumi.Input.encodeList<TopicRuleHttpHttpHeader, Map<String, dynamic>>(value, (value) => value.toMap())),
       'url': url,
     };
   }
 
   factory TopicRuleHttp.fromMap(Map<String, dynamic> map) {
     return TopicRuleHttp(
-      confirmationUrl: (() {
-        final guardedValue = map['confirmationUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      httpHeaders: (() {
-        final guardedValue = map['httpHeaders'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<TopicRuleHttpHttpHeader>(
-            guardedValue,
-            (value) => TopicRuleHttpHttpHeader.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      confirmationUrl: (() { final guardedValue = map['confirmationUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      httpHeaders: (() { final guardedValue = map['httpHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TopicRuleHttpHttpHeader>(guardedValue, (value) => TopicRuleHttpHttpHeader.fromMap((value as Map).cast<String, dynamic>()))); })(),
       url: pulumi.Input.fromValue(map['url'] as String),
     );
   }
 }
+

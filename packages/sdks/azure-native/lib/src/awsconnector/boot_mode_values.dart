@@ -16,3 +16,4 @@ enum BootModeValues {
     throw ArgumentError('Unknown BootModeValues value: $value');
   }
 }
+

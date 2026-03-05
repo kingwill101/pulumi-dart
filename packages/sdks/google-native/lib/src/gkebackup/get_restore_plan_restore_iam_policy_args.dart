@@ -40,18 +40,11 @@ class GetRestorePlanRestoreIamPolicyArgs {
   factory GetRestorePlanRestoreIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetRestorePlanRestoreIamPolicyArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
-      optionsRequestedPolicyVersion: (() {
-        final guardedValue = map['optionsRequestedPolicyVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       restoreId: pulumi.Input.fromValue(map['restoreId'] as String),
       restorePlanId: pulumi.Input.fromValue(map['restorePlanId'] as String),
     );
   }
 }
+

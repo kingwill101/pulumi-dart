@@ -8,16 +8,13 @@ class CryptoKeyIAMBindingState {
   /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
   /// Structure is documented below.
   final pulumi.Input<CryptoKeyIAMBindingCondition>? condition;
-
   /// The crypto key ID, in the form
   /// `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
   /// `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
   /// the provider's project setting will be used as a fallback.
   final pulumi.Input<String>? cryptoKeyId;
-
   /// (Computed) The etag of the project's IAM policy.
   final pulumi.Input<String>? etag;
-
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -27,7 +24,6 @@ class CryptoKeyIAMBindingState {
   /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
   final pulumi.Input<List<String>>? members;
-
   /// The role that should be applied. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
   final pulumi.Input<String>? role;
@@ -48,11 +44,7 @@ class CryptoKeyIAMBindingState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'condition':
-          ?pulumi.Input.mapOptionalInputValue<
-            CryptoKeyIAMBindingCondition,
-            Map<String, dynamic>
-          >(condition, (value) => value.toMap()),
+      'condition': ?pulumi.Input.mapOptionalInputValue<CryptoKeyIAMBindingCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
       'cryptoKeyId': ?cryptoKeyId,
       'etag': ?etag,
       'members': ?members,
@@ -62,35 +54,12 @@ class CryptoKeyIAMBindingState {
 
   factory CryptoKeyIAMBindingState.fromMap(Map<String, dynamic> map) {
     return CryptoKeyIAMBindingState(
-      condition: (() {
-        final guardedValue = map['condition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CryptoKeyIAMBindingCondition.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      cryptoKeyId: (() {
-        final guardedValue = map['cryptoKeyId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      etag: (() {
-        final guardedValue = map['etag'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      members: (() {
-        final guardedValue = map['members'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      role: (() {
-        final guardedValue = map['role'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      condition: (() { final guardedValue = map['condition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CryptoKeyIAMBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      cryptoKeyId: (() { final guardedValue = map['cryptoKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      members: (() { final guardedValue = map['members']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      role: (() { final guardedValue = map['role']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

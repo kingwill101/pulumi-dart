@@ -6,31 +6,22 @@ import 'system_data_response.dart';
 class GetPrefixListLocalRulestackResult {
   /// comment for this object
   final String? auditComment;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// prefix description
   final String? description;
-
   /// etag info
   final String? etag;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// The name of the resource
   final String name;
-
   /// prefix list
   final List<String> prefixList;
-
   /// Provisioning state of the resource.
   final String provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -75,30 +66,17 @@ class GetPrefixListLocalRulestackResult {
 
   factory GetPrefixListLocalRulestackResult.fromMap(Map<String, dynamic> map) {
     return GetPrefixListLocalRulestackResult(
-      auditComment: (() {
-        final guardedValue = map['auditComment'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      auditComment: (() { final guardedValue = map['auditComment']; if (guardedValue == null) return null; return guardedValue as String; })(),
       azureApiVersion: map['azureApiVersion'] as String,
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      etag: (() {
-        final guardedValue = map['etag'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       name: map['name'] as String,
       prefixList: (map['prefixList'] as List).cast<String>(),
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

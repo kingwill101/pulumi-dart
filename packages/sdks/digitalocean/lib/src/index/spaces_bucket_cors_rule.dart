@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SpacesBucketCorsRule {
   /// A list of headers that will be included in the CORS preflight request's `Access-Control-Request-Headers`. A header may contain one wildcard (e.g. `x-amz-*`).
   final pulumi.Input<List<String>>? allowedHeaders;
-
   /// A list of HTTP methods (e.g. `GET`) which are allowed from the specified origin.
   final pulumi.Input<List<String>> allowedMethods;
-
   /// A list of hosts from which requests using the specified methods are allowed. A host may contain one wildcard (e.g. http://*.example.com).
   final pulumi.Input<List<String>> allowedOrigins;
-
   /// The time in seconds that browser can cache the response for a preflight request.
   final pulumi.Input<int>? maxAgeSeconds;
 
@@ -38,22 +35,11 @@ class SpacesBucketCorsRule {
 
   factory SpacesBucketCorsRule.fromMap(Map<String, dynamic> map) {
     return SpacesBucketCorsRule(
-      allowedHeaders: (() {
-        final guardedValue = map['allowedHeaders'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      allowedMethods: pulumi.Input.fromValue(
-        (map['allowedMethods'] as List).cast<String>(),
-      ),
-      allowedOrigins: pulumi.Input.fromValue(
-        (map['allowedOrigins'] as List).cast<String>(),
-      ),
-      maxAgeSeconds: (() {
-        final guardedValue = map['maxAgeSeconds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      allowedHeaders: (() { final guardedValue = map['allowedHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      allowedMethods: pulumi.Input.fromValue((map['allowedMethods'] as List).cast<String>()),
+      allowedOrigins: pulumi.Input.fromValue((map['allowedOrigins'] as List).cast<String>()),
+      maxAgeSeconds: (() { final guardedValue = map['maxAgeSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

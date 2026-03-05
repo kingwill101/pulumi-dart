@@ -16,3 +16,4 @@ enum CategoricalDataDriftMetric {
     throw ArgumentError('Unknown CategoricalDataDriftMetric value: $value');
   }
 }
+

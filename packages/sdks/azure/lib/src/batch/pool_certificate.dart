@@ -34,16 +34,9 @@ class PoolCertificate {
     return PoolCertificate(
       id: pulumi.Input.fromValue(map['id'] as String),
       storeLocation: pulumi.Input.fromValue(map['storeLocation'] as String),
-      storeName: (() {
-        final guardedValue = map['storeName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      visibilities: (() {
-        final guardedValue = map['visibilities'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      storeName: (() { final guardedValue = map['storeName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      visibilities: (() { final guardedValue = map['visibilities']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

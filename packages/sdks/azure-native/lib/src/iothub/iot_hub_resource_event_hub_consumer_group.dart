@@ -159,16 +159,12 @@ import 'iot_hub_resource_event_hub_consumer_group_args.dart';
 class IotHubResourceEventHubConsumerGroup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The etag.
   late final pulumi.Output<String> etag;
-
   /// The Event Hub-compatible consumer group name.
   late final pulumi.Output<String> name;
-
   /// The tags.
   late final pulumi.Output<dynamic> properties;
-
   /// the resource type.
   late final pulumi.Output<String> type;
 
@@ -181,11 +177,11 @@ class IotHubResourceEventHubConsumerGroup extends pulumi.CustomResource {
     IotHubResourceEventHubConsumerGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:iothub:IotHubResourceEventHubConsumerGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:iothub:IotHubResourceEventHubConsumerGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');

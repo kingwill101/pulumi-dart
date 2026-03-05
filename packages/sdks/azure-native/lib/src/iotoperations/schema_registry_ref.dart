@@ -9,10 +9,14 @@ class SchemaRegistryRef {
 
   /// Creates a new [SchemaRegistryRef].
   /// [resourceId] The resource ID of the Schema Registry.
-  SchemaRegistryRef({required this.resourceId});
+  SchemaRegistryRef({
+    required this.resourceId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'resourceId': resourceId};
+    return <String, dynamic>{
+      'resourceId': resourceId,
+    };
   }
 
   factory SchemaRegistryRef.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class SchemaRegistryRef {
     );
   }
 }
+

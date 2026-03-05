@@ -9,10 +9,14 @@ class ManagedPrometheusConfigResponse {
 
   /// Creates a new [ManagedPrometheusConfigResponse].
   /// [enabled] Enable Managed Collection.
-  ManagedPrometheusConfigResponse({required this.enabled});
+  ManagedPrometheusConfigResponse({
+    required this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled};
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
   factory ManagedPrometheusConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class ManagedPrometheusConfigResponse {
     );
   }
 }
+

@@ -183,29 +183,21 @@ import 'profiles_association_timeouts.dart';
 /// ```
 class ProfilesAssociation extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
-
   /// Name of the Profile Association. Must match a regex of `(?!^[0-9]+$)([a-zA-Z0-9\\-_' ']+)`.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> ownerId;
-
   /// ID of the profile associated with the VPC.
   late final pulumi.Output<String> profileId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Resource ID of the VPC the profile to be associated with.
   late final pulumi.Output<String> resourceId;
-
   /// Status of the Profile Association.
   late final pulumi.Output<String> status;
-
   /// Status message of the Profile Association.
   late final pulumi.Output<String> statusMessage;
-
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<ProfilesAssociationTimeouts?> timeouts;
@@ -219,11 +211,11 @@ class ProfilesAssociation extends pulumi.CustomResource {
     ProfilesAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:route53/profilesAssociation:ProfilesAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:route53/profilesAssociation:ProfilesAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
     ownerId = registerOutput<String>('ownerId');
@@ -234,16 +226,7 @@ class ProfilesAssociation extends pulumi.CustomResource {
     statusMessage = registerOutput<String>('statusMessage');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ProfilesAssociationTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ProfilesAssociationTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<ProfilesAssociationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProfilesAssociationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [ProfilesAssociation] resource's state with the given [name] and [id].
@@ -264,11 +247,11 @@ class ProfilesAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:route53/profilesAssociation:ProfilesAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:route53/profilesAssociation:ProfilesAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
     ownerId = registerOutput<String>('ownerId');
@@ -279,15 +262,6 @@ class ProfilesAssociation extends pulumi.CustomResource {
     statusMessage = registerOutput<String>('statusMessage');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ProfilesAssociationTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ProfilesAssociationTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<ProfilesAssociationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProfilesAssociationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

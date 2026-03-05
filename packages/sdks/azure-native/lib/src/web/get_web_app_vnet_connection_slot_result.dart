@@ -7,38 +7,27 @@ import 'vnet_route_response.dart';
 class GetWebAppVnetConnectionSlotResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// A certificate file (.cer) blob containing the public key of the private key used to authenticate a
   /// Point-To-Site VPN connection.
   final String? certBlob;
-
   /// The client certificate thumbprint.
   final String certThumbprint;
-
   /// DNS servers to be used by this Virtual Network. This should be a comma-separated list of IP addresses.
   final String? dnsServers;
-
   /// Resource Id.
   final String id;
-
   /// Flag that is used to denote if this is VNET injection
   final bool? isSwift;
-
   /// Kind of resource.
   final String? kind;
-
   /// Resource Name.
   final String name;
-
   /// &lt;code&gt;true&lt;/code&gt; if a resync is required; otherwise, &lt;code&gt;false&lt;/code&gt;.
   final bool resyncRequired;
-
   /// The routes that this Virtual Network connection uses.
   final List<VnetRouteResponse> routes;
-
   /// Resource type.
   final String type;
-
   /// The Virtual Network's resource ID.
   final String? vnetResourceId;
 
@@ -81,11 +70,7 @@ class GetWebAppVnetConnectionSlotResult {
       'kind': ?kind,
       'name': name,
       'resyncRequired': resyncRequired,
-      'routes':
-          pulumi.Input.encodeList<VnetRouteResponse, Map<String, dynamic>>(
-            routes,
-            (value) => value.toMap(),
-          ),
+      'routes': pulumi.Input.encodeList<VnetRouteResponse, Map<String, dynamic>>(routes, (value) => value.toMap()),
       'type': type,
       'vnetResourceId': ?vnetResourceId,
     };
@@ -94,41 +79,18 @@ class GetWebAppVnetConnectionSlotResult {
   factory GetWebAppVnetConnectionSlotResult.fromMap(Map<String, dynamic> map) {
     return GetWebAppVnetConnectionSlotResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      certBlob: (() {
-        final guardedValue = map['certBlob'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      certBlob: (() { final guardedValue = map['certBlob']; if (guardedValue == null) return null; return guardedValue as String; })(),
       certThumbprint: map['certThumbprint'] as String,
-      dnsServers: (() {
-        final guardedValue = map['dnsServers'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      dnsServers: (() { final guardedValue = map['dnsServers']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
-      isSwift: (() {
-        final guardedValue = map['isSwift'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      isSwift: (() { final guardedValue = map['isSwift']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
       resyncRequired: map['resyncRequired'] as bool,
-      routes: pulumi.Input.decodeList<VnetRouteResponse>(
-        map['routes']!,
-        (value) =>
-            VnetRouteResponse.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      routes: pulumi.Input.decodeList<VnetRouteResponse>(map['routes']!, (value) => VnetRouteResponse.fromMap((value as Map).cast<String, dynamic>())),
       type: map['type'] as String,
-      vnetResourceId: (() {
-        final guardedValue = map['vnetResourceId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      vnetResourceId: (() { final guardedValue = map['vnetResourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

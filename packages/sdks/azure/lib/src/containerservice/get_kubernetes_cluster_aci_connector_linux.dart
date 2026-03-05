@@ -8,17 +8,20 @@ class GetKubernetesClusterAciConnectorLinux {
 
   /// Creates a new [GetKubernetesClusterAciConnectorLinux].
   /// [subnetName] The subnet name for the virtual nodes to run.
-  GetKubernetesClusterAciConnectorLinux({required this.subnetName});
+  GetKubernetesClusterAciConnectorLinux({
+    required this.subnetName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'subnetName': subnetName};
+    return <String, dynamic>{
+      'subnetName': subnetName,
+    };
   }
 
-  factory GetKubernetesClusterAciConnectorLinux.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetKubernetesClusterAciConnectorLinux.fromMap(Map<String, dynamic> map) {
     return GetKubernetesClusterAciConnectorLinux(
       subnetName: pulumi.Input.fromValue(map['subnetName'] as String),
     );
   }
 }
+

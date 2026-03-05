@@ -10,37 +10,20 @@ class GooglePrivacyDlpV2BucketingConfigResponse {
 
   /// Creates a new [GooglePrivacyDlpV2BucketingConfigResponse].
   /// [buckets] Set of buckets. Ranges must be non-overlapping.
-  GooglePrivacyDlpV2BucketingConfigResponse({required this.buckets});
+  GooglePrivacyDlpV2BucketingConfigResponse({
+    required this.buckets,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'buckets':
-          pulumi.Input.mapInputValue<
-            List<GooglePrivacyDlpV2BucketResponse>,
-            List<Map<String, dynamic>>
-          >(
-            buckets,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GooglePrivacyDlpV2BucketResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'buckets': pulumi.Input.mapInputValue<List<GooglePrivacyDlpV2BucketResponse>, List<Map<String, dynamic>>>(buckets, (value) => pulumi.Input.encodeList<GooglePrivacyDlpV2BucketResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory GooglePrivacyDlpV2BucketingConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GooglePrivacyDlpV2BucketingConfigResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2BucketingConfigResponse(
-      buckets: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GooglePrivacyDlpV2BucketResponse>(
-          map['buckets']!,
-          (value) => GooglePrivacyDlpV2BucketResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      buckets: pulumi.Input.fromValue(pulumi.Input.decodeList<GooglePrivacyDlpV2BucketResponse>(map['buckets']!, (value) => GooglePrivacyDlpV2BucketResponse.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

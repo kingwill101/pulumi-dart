@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClusterArgs {
   /// The name of the cluster.
   final pulumi.Input<String> name;
-
   /// The region in which to obtain the V1 Container Infra
   /// client.
   /// If omitted, the `region` argument of the provider is used.
@@ -18,20 +17,23 @@ class GetClusterArgs {
   /// Creates a new [GetClusterArgs].
   /// [name] The name of the cluster.
   /// [region] The region in which to obtain the V1 Container Infra
-  GetClusterArgs({required this.name, this.region});
+  GetClusterArgs({
+    required this.name,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'region': ?region};
+    return <String, dynamic>{
+      'name': name,
+      'region': ?region,
+    };
   }
 
   factory GetClusterArgs.fromMap(Map<String, dynamic> map) {
     return GetClusterArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

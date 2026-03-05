@@ -161,26 +161,18 @@ import 'system_data_response.dart';
 class PowerBIResource extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Specifies the location of the resource.
   late final pulumi.Output<String?> location;
-
   /// Specifies the name of the resource.
   late final pulumi.Output<String> name;
-
   /// Specifies the private endpoint connections of the resource.
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  privateEndpointConnections;
-
+  late final pulumi.Output<List<Map<String, dynamic>>?> privateEndpointConnections;
   /// The system metadata relating to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Specifies the tags of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Specifies the tenant id of the resource.
   late final pulumi.Output<String?> tenantId;
-
   /// Specifies the type of the resource.
   late final pulumi.Output<String> type;
 
@@ -193,27 +185,16 @@ class PowerBIResource extends pulumi.CustomResource {
     PowerBIResourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:powerbi:PowerBIResource',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:powerbi:PowerBIResource',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>?>(
-      'privateEndpointConnections',
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>?>('privateEndpointConnections');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tenantId = registerOutput<String?>('tenantId');
     type = registerOutput<String>('type');

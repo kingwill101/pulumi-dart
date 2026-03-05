@@ -7,7 +7,6 @@ import 'resource_reference_response.dart';
 class OriginGroupOverrideActionParametersResponse {
   /// defines the OriginGroup that would override the DefaultOriginGroup.
   final pulumi.Input<ResourceReferenceResponse> originGroup;
-
   /// Expected value is 'DeliveryRuleOriginGroupOverrideActionParameters'.
   final pulumi.Input<String> typeName;
 
@@ -21,25 +20,16 @@ class OriginGroupOverrideActionParametersResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'originGroup':
-          pulumi.Input.mapInputValue<
-            ResourceReferenceResponse,
-            Map<String, dynamic>
-          >(originGroup, (value) => value.toMap()),
+      'originGroup': pulumi.Input.mapInputValue<ResourceReferenceResponse, Map<String, dynamic>>(originGroup, (value) => value.toMap()),
       'typeName': typeName,
     };
   }
 
-  factory OriginGroupOverrideActionParametersResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OriginGroupOverrideActionParametersResponse.fromMap(Map<String, dynamic> map) {
     return OriginGroupOverrideActionParametersResponse(
-      originGroup: pulumi.Input.fromValue(
-        ResourceReferenceResponse.fromMap(
-          (map['originGroup']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      originGroup: pulumi.Input.fromValue(ResourceReferenceResponse.fromMap((map['originGroup']! as Map).cast<String, dynamic>())),
       typeName: pulumi.Input.fromValue(map['typeName'] as String),
     );
   }
 }
+

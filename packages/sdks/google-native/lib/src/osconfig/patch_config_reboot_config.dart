@@ -17,3 +17,4 @@ enum PatchConfigRebootConfig {
     throw ArgumentError('Unknown PatchConfigRebootConfig value: $value');
   }
 }
+

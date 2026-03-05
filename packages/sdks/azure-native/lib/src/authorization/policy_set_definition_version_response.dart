@@ -10,39 +10,26 @@ import 'system_data_response.dart';
 class PolicySetDefinitionVersionResponse {
   /// The policy set definition description.
   final pulumi.Input<String>? description;
-
   /// The display name of the policy set definition.
   final pulumi.Input<String>? displayName;
-
   /// The ID of the policy set definition version.
   final pulumi.Input<String> id;
-
   /// The policy set definition metadata.  Metadata is an open ended object and is typically a collection of key value pairs.
   final pulumi.Input<dynamic>? metadata;
-
   /// The name of the policy set definition version.
   final pulumi.Input<String> name;
-
   /// The policy set definition parameters that can be used in policy definition references.
-  final pulumi.Input<Map<String, ParameterDefinitionsValueResponse>>?
-  parameters;
-
+  final pulumi.Input<Map<String, ParameterDefinitionsValueResponse>>? parameters;
   /// The metadata describing groups of policy definition references within the policy set definition.
-  final pulumi.Input<List<PolicyDefinitionGroupResponse>>?
-  policyDefinitionGroups;
-
+  final pulumi.Input<List<PolicyDefinitionGroupResponse>>? policyDefinitionGroups;
   /// An array of policy definition references.
   final pulumi.Input<List<PolicyDefinitionReferenceResponse>> policyDefinitions;
-
   /// The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
   final pulumi.Input<String>? policyType;
-
   /// The system metadata relating to this resource.
   final pulumi.Input<SystemDataResponse> systemData;
-
   /// The type of the resource (Microsoft.Authorization/policySetDefinitions/versions).
   final pulumi.Input<String> type;
-
   /// The policy set definition version in #.#.# format.
   final pulumi.Input<String>? version;
 
@@ -81,48 +68,11 @@ class PolicySetDefinitionVersionResponse {
       'id': id,
       'metadata': ?metadata,
       'name': name,
-      'parameters':
-          ?pulumi.Input.mapOptionalInputValue<
-            Map<String, ParameterDefinitionsValueResponse>,
-            Map<String, Map<String, dynamic>>
-          >(
-            parameters,
-            (value) =>
-                pulumi.Input.encodeMapValues<
-                  ParameterDefinitionsValueResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'policyDefinitionGroups':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<PolicyDefinitionGroupResponse>,
-            List<Map<String, dynamic>>
-          >(
-            policyDefinitionGroups,
-            (value) =>
-                pulumi.Input.encodeList<
-                  PolicyDefinitionGroupResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'policyDefinitions':
-          pulumi.Input.mapInputValue<
-            List<PolicyDefinitionReferenceResponse>,
-            List<Map<String, dynamic>>
-          >(
-            policyDefinitions,
-            (value) =>
-                pulumi.Input.encodeList<
-                  PolicyDefinitionReferenceResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterDefinitionsValueResponse>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterDefinitionsValueResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'policyDefinitionGroups': ?pulumi.Input.mapOptionalInputValue<List<PolicyDefinitionGroupResponse>, List<Map<String, dynamic>>>(policyDefinitionGroups, (value) => pulumi.Input.encodeList<PolicyDefinitionGroupResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'policyDefinitions': pulumi.Input.mapInputValue<List<PolicyDefinitionReferenceResponse>, List<Map<String, dynamic>>>(policyDefinitions, (value) => pulumi.Input.encodeList<PolicyDefinitionReferenceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'policyType': ?policyType,
-      'systemData':
-          pulumi.Input.mapInputValue<SystemDataResponse, Map<String, dynamic>>(
-            systemData,
-            (value) => value.toMap(),
-          ),
+      'systemData': pulumi.Input.mapInputValue<SystemDataResponse, Map<String, dynamic>>(systemData, (value) => value.toMap()),
       'type': type,
       'version': ?version,
     };
@@ -130,71 +80,19 @@ class PolicySetDefinitionVersionResponse {
 
   factory PolicySetDefinitionVersionResponse.fromMap(Map<String, dynamic> map) {
     return PolicySetDefinitionVersionResponse(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       id: pulumi.Input.fromValue(map['id'] as String),
-      metadata: (() {
-        final guardedValue = map['metadata'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
+      metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      parameters: (() {
-        final guardedValue = map['parameters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeMapValues<ParameterDefinitionsValueResponse>(
-            guardedValue,
-            (value) => ParameterDefinitionsValueResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      policyDefinitionGroups: (() {
-        final guardedValue = map['policyDefinitionGroups'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<PolicyDefinitionGroupResponse>(
-            guardedValue,
-            (value) => PolicyDefinitionGroupResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      policyDefinitions: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<PolicyDefinitionReferenceResponse>(
-          map['policyDefinitions']!,
-          (value) => PolicyDefinitionReferenceResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      policyType: (() {
-        final guardedValue = map['policyType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      systemData: pulumi.Input.fromValue(
-        SystemDataResponse.fromMap(
-          (map['systemData']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<ParameterDefinitionsValueResponse>(guardedValue, (value) => ParameterDefinitionsValueResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      policyDefinitionGroups: (() { final guardedValue = map['policyDefinitionGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PolicyDefinitionGroupResponse>(guardedValue, (value) => PolicyDefinitionGroupResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      policyDefinitions: pulumi.Input.fromValue(pulumi.Input.decodeList<PolicyDefinitionReferenceResponse>(map['policyDefinitions']!, (value) => PolicyDefinitionReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))),
+      policyType: (() { final guardedValue = map['policyType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      systemData: pulumi.Input.fromValue(SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>())),
       type: pulumi.Input.fromValue(map['type'] as String),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

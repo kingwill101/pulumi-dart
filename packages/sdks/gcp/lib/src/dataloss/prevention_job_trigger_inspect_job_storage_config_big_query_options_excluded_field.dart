@@ -13,14 +13,15 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedField {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
-  factory PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedField.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedField.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedField(
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

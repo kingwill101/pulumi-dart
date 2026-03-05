@@ -427,61 +427,42 @@ import 'runbook_parameter_response.dart';
 class Runbook extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Gets or sets the creation time.
   late final pulumi.Output<String?> creationTime;
-
   /// Gets or sets the description.
   late final pulumi.Output<String?> description;
-
   /// Gets or sets the draft runbook properties.
   late final pulumi.Output<RunbookDraftResponse?> draft;
-
   /// Gets or sets the etag of the resource.
   late final pulumi.Output<String?> etag;
-
   /// Gets or sets the job count of the runbook.
   late final pulumi.Output<int?> jobCount;
-
   /// Gets or sets the last modified by.
   late final pulumi.Output<String?> lastModifiedBy;
-
   /// Gets or sets the last modified time.
   late final pulumi.Output<String?> lastModifiedTime;
-
   /// The Azure Region where the resource lives
   late final pulumi.Output<String?> location;
-
   /// Gets or sets the option to log activity trace of the runbook.
   late final pulumi.Output<int?> logActivityTrace;
-
   /// Gets or sets progress log option.
   late final pulumi.Output<bool?> logProgress;
-
   /// Gets or sets verbose log option.
   late final pulumi.Output<bool?> logVerbose;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Gets or sets the runbook output types.
   late final pulumi.Output<List<String>?> outputTypes;
-
   /// Gets or sets the runbook parameters.
   late final pulumi.Output<Map<String, RunbookParameterResponse>?> parameters;
-
   /// Gets or sets the provisioning state of the runbook.
   late final pulumi.Output<String?> provisioningState;
-
   /// Gets or sets the type of the runbook.
   late final pulumi.Output<String?> runbookType;
-
   /// Gets or sets the state of the runbook.
   late final pulumi.Output<String?> state;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource.
   late final pulumi.Output<String> type;
 
@@ -494,24 +475,15 @@ class Runbook extends pulumi.CustomResource {
     RunbookArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:automation:Runbook',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:automation:Runbook',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     creationTime = registerOutput<String?>('creationTime');
     description = registerOutput<String?>('description');
-    draft = registerOutput<RunbookDraftResponse?>(
-      'draft',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RunbookDraftResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    draft = registerOutput<RunbookDraftResponse?>('draft', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RunbookDraftResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String?>('etag');
     jobCount = registerOutput<int?>('jobCount');
     lastModifiedBy = registerOutput<String?>('lastModifiedBy');
@@ -522,19 +494,7 @@ class Runbook extends pulumi.CustomResource {
     logVerbose = registerOutput<bool?>('logVerbose');
     this.name = registerOutput<String>('name');
     outputTypes = registerOutput<List<String>?>('outputTypes');
-    parameters = registerOutput<Map<String, RunbookParameterResponse>?>(
-      'parameters',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeMapValues<RunbookParameterResponse>(
-          guardedValue,
-          (value) => RunbookParameterResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      },
-    );
+    parameters = registerOutput<Map<String, RunbookParameterResponse>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<RunbookParameterResponse>(guardedValue, (value) => RunbookParameterResponse.fromMap((value as Map).cast<String, dynamic>())); });
     provisioningState = registerOutput<String?>('provisioningState');
     runbookType = registerOutput<String?>('runbookType');
     state = registerOutput<String?>('state');

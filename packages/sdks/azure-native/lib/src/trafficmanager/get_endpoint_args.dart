@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEndpointArgs {
   /// The name of the Traffic Manager endpoint.
   final pulumi.Input<String> endpointName;
-
   /// The type of the Traffic Manager endpoint.
   final pulumi.Input<String> endpointType;
-
   /// The name of the Traffic Manager profile.
   final pulumi.Input<String> profileName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -45,9 +42,8 @@ class GetEndpointArgs {
       endpointName: pulumi.Input.fromValue(map['endpointName'] as String),
       endpointType: pulumi.Input.fromValue(map['endpointType'] as String),
       profileName: pulumi.Input.fromValue(map['profileName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

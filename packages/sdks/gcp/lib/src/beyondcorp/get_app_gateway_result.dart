@@ -9,7 +9,6 @@ class GetAppGatewayResult {
   final String displayName;
   final Map<String, String> effectiveLabels;
   final String hostType;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final Map<String, String> labels;
@@ -53,11 +52,7 @@ class GetAppGatewayResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allocatedConnections':
-          pulumi.Input.encodeList<
-            GetAppGatewayAllocatedConnection,
-            Map<String, dynamic>
-          >(allocatedConnections, (value) => value.toMap()),
+      'allocatedConnections': pulumi.Input.encodeList<GetAppGatewayAllocatedConnection, Map<String, dynamic>>(allocatedConnections, (value) => value.toMap()),
       'displayName': displayName,
       'effectiveLabels': effectiveLabels,
       'hostType': hostType,
@@ -75,33 +70,20 @@ class GetAppGatewayResult {
 
   factory GetAppGatewayResult.fromMap(Map<String, dynamic> map) {
     return GetAppGatewayResult(
-      allocatedConnections:
-          pulumi.Input.decodeList<GetAppGatewayAllocatedConnection>(
-            map['allocatedConnections']!,
-            (value) => GetAppGatewayAllocatedConnection.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      allocatedConnections: pulumi.Input.decodeList<GetAppGatewayAllocatedConnection>(map['allocatedConnections']!, (value) => GetAppGatewayAllocatedConnection.fromMap((value as Map).cast<String, dynamic>())),
       displayName: map['displayName'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       hostType: map['hostType'] as String,
       id: map['id'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
       state: map['state'] as String,
       type: map['type'] as String,
       uri: map['uri'] as String,
     );
   }
 }
+

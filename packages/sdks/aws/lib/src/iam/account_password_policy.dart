@@ -138,31 +138,22 @@ import 'account_password_policy_state.dart';
 class AccountPasswordPolicy extends pulumi.CustomResource {
   /// Whether to allow users to change their own password
   late final pulumi.Output<bool?> allowUsersToChangePassword;
-
   /// Indicates whether passwords in the account expire. Returns `true` if `max_password_age` contains a value greater than `0`. Returns `false` if it is `0` or _not present_.
   late final pulumi.Output<bool> expirePasswords;
-
   /// Whether users are prevented from setting a new password after their password has expired (i.e., require administrator reset)
   late final pulumi.Output<bool> hardExpiry;
-
   /// The number of days that an user password is valid.
   late final pulumi.Output<int> maxPasswordAge;
-
   /// Minimum length to require for user passwords.
   late final pulumi.Output<int?> minimumPasswordLength;
-
   /// The number of previous passwords that users are prevented from reusing.
   late final pulumi.Output<int> passwordReusePrevention;
-
   /// Whether to require lowercase characters for user passwords.
   late final pulumi.Output<bool> requireLowercaseCharacters;
-
   /// Whether to require numbers for user passwords.
   late final pulumi.Output<bool> requireNumbers;
-
   /// Whether to require symbols for user passwords.
   late final pulumi.Output<bool> requireSymbols;
-
   /// Whether to require uppercase characters for user passwords.
   late final pulumi.Output<bool> requireUppercaseCharacters;
 
@@ -175,27 +166,21 @@ class AccountPasswordPolicy extends pulumi.CustomResource {
     AccountPasswordPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:iam/accountPasswordPolicy:AccountPasswordPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    allowUsersToChangePassword = registerOutput<bool?>(
-      'allowUsersToChangePassword',
-    );
+          'aws:iam/accountPasswordPolicy:AccountPasswordPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    allowUsersToChangePassword = registerOutput<bool?>('allowUsersToChangePassword');
     expirePasswords = registerOutput<bool>('expirePasswords');
     hardExpiry = registerOutput<bool>('hardExpiry');
     maxPasswordAge = registerOutput<int>('maxPasswordAge');
     minimumPasswordLength = registerOutput<int?>('minimumPasswordLength');
     passwordReusePrevention = registerOutput<int>('passwordReusePrevention');
-    requireLowercaseCharacters = registerOutput<bool>(
-      'requireLowercaseCharacters',
-    );
+    requireLowercaseCharacters = registerOutput<bool>('requireLowercaseCharacters');
     requireNumbers = registerOutput<bool>('requireNumbers');
     requireSymbols = registerOutput<bool>('requireSymbols');
-    requireUppercaseCharacters = registerOutput<bool>(
-      'requireUppercaseCharacters',
-    );
+    requireUppercaseCharacters = registerOutput<bool>('requireUppercaseCharacters');
   }
 
   /// Gets an existing [AccountPasswordPolicy] resource's state with the given [name] and [id].
@@ -216,26 +201,20 @@ class AccountPasswordPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:iam/accountPasswordPolicy:AccountPasswordPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    allowUsersToChangePassword = registerOutput<bool?>(
-      'allowUsersToChangePassword',
-    );
+          'aws:iam/accountPasswordPolicy:AccountPasswordPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    allowUsersToChangePassword = registerOutput<bool?>('allowUsersToChangePassword');
     expirePasswords = registerOutput<bool>('expirePasswords');
     hardExpiry = registerOutput<bool>('hardExpiry');
     maxPasswordAge = registerOutput<int>('maxPasswordAge');
     minimumPasswordLength = registerOutput<int?>('minimumPasswordLength');
     passwordReusePrevention = registerOutput<int>('passwordReusePrevention');
-    requireLowercaseCharacters = registerOutput<bool>(
-      'requireLowercaseCharacters',
-    );
+    requireLowercaseCharacters = registerOutput<bool>('requireLowercaseCharacters');
     requireNumbers = registerOutput<bool>('requireNumbers');
     requireSymbols = registerOutput<bool>('requireSymbols');
-    requireUppercaseCharacters = registerOutput<bool>(
-      'requireUppercaseCharacters',
-    );
+    requireUppercaseCharacters = registerOutput<bool>('requireUppercaseCharacters');
   }
 }

@@ -9,19 +9,20 @@ class IpAddress {
 
   /// Creates a new [IpAddress].
   /// [ipAddress] Specifies the IP address of the network interface.
-  IpAddress({this.ipAddress});
+  IpAddress({
+    this.ipAddress,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'ipAddress': ?ipAddress};
+    return <String, dynamic>{
+      'ipAddress': ?ipAddress,
+    };
   }
 
   factory IpAddress.fromMap(Map<String, dynamic> map) {
     return IpAddress(
-      ipAddress: (() {
-        final guardedValue = map['ipAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

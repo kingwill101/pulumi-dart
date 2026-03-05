@@ -89,16 +89,8 @@ class GetStoragePoolResult {
       'poolProvisionedThroughput': poolProvisionedThroughput,
       'project': ?project,
       'pulumiLabels': pulumiLabels,
-      'resourceStatuses':
-          pulumi.Input.encodeList<
-            GetStoragePoolResourceStatus,
-            Map<String, dynamic>
-          >(resourceStatuses, (value) => value.toMap()),
-      'statuses':
-          pulumi.Input.encodeList<GetStoragePoolStatus, Map<String, dynamic>>(
-            statuses,
-            (value) => value.toMap(),
-          ),
+      'resourceStatuses': pulumi.Input.encodeList<GetStoragePoolResourceStatus, Map<String, dynamic>>(resourceStatuses, (value) => value.toMap()),
+      'statuses': pulumi.Input.encodeList<GetStoragePoolStatus, Map<String, dynamic>>(statuses, (value) => value.toMap()),
       'storagePoolType': storagePoolType,
       'zone': zone,
     };
@@ -120,26 +112,13 @@ class GetStoragePoolResult {
       poolProvisionedCapacityGb: map['poolProvisionedCapacityGb'] as String,
       poolProvisionedIops: map['poolProvisionedIops'] as String,
       poolProvisionedThroughput: map['poolProvisionedThroughput'] as String,
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
-      resourceStatuses: pulumi.Input.decodeList<GetStoragePoolResourceStatus>(
-        map['resourceStatuses']!,
-        (value) => GetStoragePoolResourceStatus.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      statuses: pulumi.Input.decodeList<GetStoragePoolStatus>(
-        map['statuses']!,
-        (value) => GetStoragePoolStatus.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      resourceStatuses: pulumi.Input.decodeList<GetStoragePoolResourceStatus>(map['resourceStatuses']!, (value) => GetStoragePoolResourceStatus.fromMap((value as Map).cast<String, dynamic>())),
+      statuses: pulumi.Input.decodeList<GetStoragePoolStatus>(map['statuses']!, (value) => GetStoragePoolStatus.fromMap((value as Map).cast<String, dynamic>())),
       storagePoolType: map['storagePoolType'] as String,
       zone: map['zone'] as String,
     );
   }
 }
+

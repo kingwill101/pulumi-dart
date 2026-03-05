@@ -8,10 +8,8 @@ import 'options_response.dart';
 class CollectionOverrideResponse {
   /// The collection that identifies this resource within its service.
   final pulumi.Input<String> collection;
-
   /// Custom verb method mappings to support unordered list API mappings.
   final pulumi.Input<MethodMapResponse> methodMap;
-
   /// The options to apply to this resource-level override
   final pulumi.Input<OptionsResponse> options;
 
@@ -28,32 +26,17 @@ class CollectionOverrideResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'collection': collection,
-      'methodMap':
-          pulumi.Input.mapInputValue<MethodMapResponse, Map<String, dynamic>>(
-            methodMap,
-            (value) => value.toMap(),
-          ),
-      'options':
-          pulumi.Input.mapInputValue<OptionsResponse, Map<String, dynamic>>(
-            options,
-            (value) => value.toMap(),
-          ),
+      'methodMap': pulumi.Input.mapInputValue<MethodMapResponse, Map<String, dynamic>>(methodMap, (value) => value.toMap()),
+      'options': pulumi.Input.mapInputValue<OptionsResponse, Map<String, dynamic>>(options, (value) => value.toMap()),
     };
   }
 
   factory CollectionOverrideResponse.fromMap(Map<String, dynamic> map) {
     return CollectionOverrideResponse(
       collection: pulumi.Input.fromValue(map['collection'] as String),
-      methodMap: pulumi.Input.fromValue(
-        MethodMapResponse.fromMap(
-          (map['methodMap']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      options: pulumi.Input.fromValue(
-        OptionsResponse.fromMap(
-          (map['options']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      methodMap: pulumi.Input.fromValue(MethodMapResponse.fromMap((map['methodMap']! as Map).cast<String, dynamic>())),
+      options: pulumi.Input.fromValue(OptionsResponse.fromMap((map['options']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

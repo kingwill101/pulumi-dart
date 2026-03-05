@@ -1,22 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getSharedAccessPolicy.
 class GetSharedAccessPolicyResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String iothubName;
   final String name;
-
   /// The primary connection string of the Shared Access Policy.
   final String primaryConnectionString;
-
   /// The primary key used to create the authentication token.
   final String primaryKey;
   final String resourceGroupName;
-
   /// The secondary connection string of the Shared Access Policy.
   final String secondaryConnectionString;
-
   /// The secondary key used to create the authentication token.
   final String secondaryKey;
 
@@ -66,3 +63,4 @@ class GetSharedAccessPolicyResult {
     );
   }
 }
+

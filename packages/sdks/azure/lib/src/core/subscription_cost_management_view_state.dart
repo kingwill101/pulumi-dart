@@ -9,31 +9,22 @@ import 'subscription_cost_management_view_pivot.dart';
 class SubscriptionCostManagementViewState {
   /// Whether the costs data in the Cost Management View are accumulated over time. Changing this forces a new Cost Management View for a Subscription to be created.
   final pulumi.Input<bool>? accumulated;
-
   /// Chart type of the main view in Cost Analysis. Possible values are `Area`, `GroupedColumn`, `Line`, `StackedColumn` and `Table`.
   final pulumi.Input<String>? chartType;
-
   /// A `dataset` block as defined below.
   final pulumi.Input<SubscriptionCostManagementViewDataset>? dataset;
-
   /// User visible input name of the Cost Management View.
   final pulumi.Input<String>? displayName;
-
   /// One or more `kpi` blocks as defined below, to show in Cost Analysis UI.
   final pulumi.Input<List<SubscriptionCostManagementViewKpi>>? kpis;
-
   /// The name which should be used for this Cost Management View for a Subscription. Changing this forces a new Cost Management View for a Subscription to be created.
   final pulumi.Input<String>? name;
-
   /// One or more `pivot` blocks as defined below, containing the configuration of 3 sub-views in the Cost Analysis UI. Non table views should have three pivots.
   final pulumi.Input<List<SubscriptionCostManagementViewPivot>>? pivots;
-
   /// The type of the report. The only possible value is `Usage`.
   final pulumi.Input<String>? reportType;
-
   /// The ID of the Subscription this View is scoped to. Changing this forces a new Cost Management View for a Subscription to be created.
   final pulumi.Input<String>? subscriptionId;
-
   /// The time frame for pulling data for the report. Possible values are `Custom`, `MonthToDate`, `WeekToDate` and `YearToDate`.
   final pulumi.Input<String>? timeframe;
 
@@ -65,115 +56,30 @@ class SubscriptionCostManagementViewState {
     return <String, dynamic>{
       'accumulated': ?accumulated,
       'chartType': ?chartType,
-      'dataset':
-          ?pulumi.Input.mapOptionalInputValue<
-            SubscriptionCostManagementViewDataset,
-            Map<String, dynamic>
-          >(dataset, (value) => value.toMap()),
+      'dataset': ?pulumi.Input.mapOptionalInputValue<SubscriptionCostManagementViewDataset, Map<String, dynamic>>(dataset, (value) => value.toMap()),
       'displayName': ?displayName,
-      'kpis':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<SubscriptionCostManagementViewKpi>,
-            List<Map<String, dynamic>>
-          >(
-            kpis,
-            (value) =>
-                pulumi.Input.encodeList<
-                  SubscriptionCostManagementViewKpi,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'kpis': ?pulumi.Input.mapOptionalInputValue<List<SubscriptionCostManagementViewKpi>, List<Map<String, dynamic>>>(kpis, (value) => pulumi.Input.encodeList<SubscriptionCostManagementViewKpi, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': ?name,
-      'pivots':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<SubscriptionCostManagementViewPivot>,
-            List<Map<String, dynamic>>
-          >(
-            pivots,
-            (value) =>
-                pulumi.Input.encodeList<
-                  SubscriptionCostManagementViewPivot,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'pivots': ?pulumi.Input.mapOptionalInputValue<List<SubscriptionCostManagementViewPivot>, List<Map<String, dynamic>>>(pivots, (value) => pulumi.Input.encodeList<SubscriptionCostManagementViewPivot, Map<String, dynamic>>(value, (value) => value.toMap())),
       'reportType': ?reportType,
       'subscriptionId': ?subscriptionId,
       'timeframe': ?timeframe,
     };
   }
 
-  factory SubscriptionCostManagementViewState.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SubscriptionCostManagementViewState.fromMap(Map<String, dynamic> map) {
     return SubscriptionCostManagementViewState(
-      accumulated: (() {
-        final guardedValue = map['accumulated'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      chartType: (() {
-        final guardedValue = map['chartType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dataset: (() {
-        final guardedValue = map['dataset'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SubscriptionCostManagementViewDataset.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kpis: (() {
-        final guardedValue = map['kpis'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<SubscriptionCostManagementViewKpi>(
-            guardedValue,
-            (value) => SubscriptionCostManagementViewKpi.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pivots: (() {
-        final guardedValue = map['pivots'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<SubscriptionCostManagementViewPivot>(
-            guardedValue,
-            (value) => SubscriptionCostManagementViewPivot.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      reportType: (() {
-        final guardedValue = map['reportType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subscriptionId: (() {
-        final guardedValue = map['subscriptionId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      timeframe: (() {
-        final guardedValue = map['timeframe'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accumulated: (() { final guardedValue = map['accumulated']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      chartType: (() { final guardedValue = map['chartType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dataset: (() { final guardedValue = map['dataset']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubscriptionCostManagementViewDataset.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kpis: (() { final guardedValue = map['kpis']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SubscriptionCostManagementViewKpi>(guardedValue, (value) => SubscriptionCostManagementViewKpi.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pivots: (() { final guardedValue = map['pivots']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SubscriptionCostManagementViewPivot>(guardedValue, (value) => SubscriptionCostManagementViewPivot.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      reportType: (() { final guardedValue = map['reportType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subscriptionId: (() { final guardedValue = map['subscriptionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      timeframe: (() { final guardedValue = map['timeframe']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

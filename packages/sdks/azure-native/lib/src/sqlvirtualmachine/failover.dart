@@ -15,3 +15,4 @@ enum Failover {
     throw ArgumentError('Unknown Failover value: $value');
   }
 }
+

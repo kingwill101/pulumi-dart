@@ -124,23 +124,18 @@ import 'administrative_unit_state.dart';
 class AdministrativeUnit extends pulumi.CustomResource {
   /// The description of the administrative unit.
   late final pulumi.Output<String?> description;
-
   /// The display name of the administrative unit.
   late final pulumi.Output<String> displayName;
-
   /// Whether the administrative unit and its members are hidden or publicly viewable in the directory.
   late final pulumi.Output<bool?> hiddenMembershipEnabled;
-
   /// A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
   ///
   /// &gt; **Caution** When using the `members` property of the azuread.AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.
   ///
   /// !&gt; **Warning** Do not use the `members` property at the same time as the azuread.AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
   late final pulumi.Output<List<String>> members;
-
   /// The object ID of the administrative unit.
   late final pulumi.Output<String> objectId;
-
   /// If `true`, will return an error if an existing administrative unit is found with the same name
   late final pulumi.Output<bool?> preventDuplicateNames;
 
@@ -153,11 +148,11 @@ class AdministrativeUnit extends pulumi.CustomResource {
     AdministrativeUnitArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/administrativeUnit:AdministrativeUnit',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azuread:index/administrativeUnit:AdministrativeUnit',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     hiddenMembershipEnabled = registerOutput<bool?>('hiddenMembershipEnabled');
@@ -184,11 +179,11 @@ class AdministrativeUnit extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/administrativeUnit:AdministrativeUnit',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azuread:index/administrativeUnit:AdministrativeUnit',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     hiddenMembershipEnabled = registerOutput<bool?>('hiddenMembershipEnabled');

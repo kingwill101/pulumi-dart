@@ -12,7 +12,6 @@ class GetInstanceResult {
   final String edition;
   final Map<String, String> effectiveLabels;
   final bool forceDestroy;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String instanceType;
@@ -62,11 +61,7 @@ class GetInstanceResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoscalingConfigs':
-          pulumi.Input.encodeList<
-            GetInstanceAutoscalingConfig,
-            Map<String, dynamic>
-          >(autoscalingConfigs, (value) => value.toMap()),
+      'autoscalingConfigs': pulumi.Input.encodeList<GetInstanceAutoscalingConfig, Map<String, dynamic>>(autoscalingConfigs, (value) => value.toMap()),
       'config': ?config,
       'defaultBackupScheduleType': defaultBackupScheduleType,
       'displayName': ?displayName,
@@ -87,23 +82,10 @@ class GetInstanceResult {
 
   factory GetInstanceResult.fromMap(Map<String, dynamic> map) {
     return GetInstanceResult(
-      autoscalingConfigs: pulumi.Input.decodeList<GetInstanceAutoscalingConfig>(
-        map['autoscalingConfigs']!,
-        (value) => GetInstanceAutoscalingConfig.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      config: (() {
-        final guardedValue = map['config'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      autoscalingConfigs: pulumi.Input.decodeList<GetInstanceAutoscalingConfig>(map['autoscalingConfigs']!, (value) => GetInstanceAutoscalingConfig.fromMap((value as Map).cast<String, dynamic>())),
+      config: (() { final guardedValue = map['config']; if (guardedValue == null) return null; return guardedValue as String; })(),
       defaultBackupScheduleType: map['defaultBackupScheduleType'] as String,
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       edition: map['edition'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       forceDestroy: map['forceDestroy'] as bool,
@@ -113,13 +95,10 @@ class GetInstanceResult {
       name: map['name'] as String,
       numNodes: map['numNodes'] as int,
       processingUnits: map['processingUnits'] as int,
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       state: map['state'] as String,
     );
   }
 }
+

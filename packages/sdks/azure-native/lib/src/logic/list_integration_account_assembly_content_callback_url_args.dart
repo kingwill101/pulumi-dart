@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListIntegrationAccountAssemblyContentCallbackUrlArgs {
   /// The assembly artifact name.
   final pulumi.Input<String> assemblyArtifactName;
-
   /// The integration account name.
   final pulumi.Input<String> integrationAccountName;
-
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,19 +32,12 @@ class ListIntegrationAccountAssemblyContentCallbackUrlArgs {
     };
   }
 
-  factory ListIntegrationAccountAssemblyContentCallbackUrlArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListIntegrationAccountAssemblyContentCallbackUrlArgs.fromMap(Map<String, dynamic> map) {
     return ListIntegrationAccountAssemblyContentCallbackUrlArgs(
-      assemblyArtifactName: pulumi.Input.fromValue(
-        map['assemblyArtifactName'] as String,
-      ),
-      integrationAccountName: pulumi.Input.fromValue(
-        map['integrationAccountName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      assemblyArtifactName: pulumi.Input.fromValue(map['assemblyArtifactName'] as String),
+      integrationAccountName: pulumi.Input.fromValue(map['integrationAccountName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

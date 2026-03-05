@@ -31,26 +31,11 @@ class OperatingSystemDetailsResponse {
 
   factory OperatingSystemDetailsResponse.fromMap(Map<String, dynamic> map) {
     return OperatingSystemDetailsResponse(
-      os: (() {
-        final guardedValue = map['os'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      osArchitecture: (() {
-        final guardedValue = map['osArchitecture'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      osName: (() {
-        final guardedValue = map['osName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      osVersion: (() {
-        final guardedValue = map['osVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      os: (() { final guardedValue = map['os']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      osArchitecture: (() { final guardedValue = map['osArchitecture']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      osName: (() { final guardedValue = map['osName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      osVersion: (() { final guardedValue = map['osVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

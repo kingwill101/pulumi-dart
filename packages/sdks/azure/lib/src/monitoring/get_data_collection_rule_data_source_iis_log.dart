@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDataCollectionRuleDataSourceIisLog {
   /// Specifies a list of absolute paths where the log files are located.
   final pulumi.Input<List<String>> logDirectories;
-
   /// Specifies the name of the Data Collection Rule.
   final pulumi.Input<String> name;
-
   /// Specifies a list of streams that this data source will be sent to. A stream indicates what schema will be used for this data and usually what table in Log Analytics the data will be sent to.
   final pulumi.Input<List<String>> streams;
 
@@ -30,15 +28,12 @@ class GetDataCollectionRuleDataSourceIisLog {
     };
   }
 
-  factory GetDataCollectionRuleDataSourceIisLog.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDataCollectionRuleDataSourceIisLog.fromMap(Map<String, dynamic> map) {
     return GetDataCollectionRuleDataSourceIisLog(
-      logDirectories: pulumi.Input.fromValue(
-        (map['logDirectories'] as List).cast<String>(),
-      ),
+      logDirectories: pulumi.Input.fromValue((map['logDirectories'] as List).cast<String>()),
       name: pulumi.Input.fromValue(map['name'] as String),
       streams: pulumi.Input.fromValue((map['streams'] as List).cast<String>()),
     );
   }
 }
+

@@ -18,13 +18,10 @@ class MonitoringSubscriptionMonitoringSubscriptionRealtimeMetricsSubscriptionCon
     };
   }
 
-  factory MonitoringSubscriptionMonitoringSubscriptionRealtimeMetricsSubscriptionConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MonitoringSubscriptionMonitoringSubscriptionRealtimeMetricsSubscriptionConfig.fromMap(Map<String, dynamic> map) {
     return MonitoringSubscriptionMonitoringSubscriptionRealtimeMetricsSubscriptionConfig(
-      realtimeMetricsSubscriptionStatus: pulumi.Input.fromValue(
-        map['realtimeMetricsSubscriptionStatus'] as String,
-      ),
+      realtimeMetricsSubscriptionStatus: pulumi.Input.fromValue(map['realtimeMetricsSubscriptionStatus'] as String),
     );
   }
 }
+

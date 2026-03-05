@@ -7,10 +7,8 @@ import 'tag_response.dart';
 class AwsEc2RouteTablePropertiesResponse {
   /// Property routeTableId
   final pulumi.Input<String>? routeTableId;
-
   /// Any tags assigned to the route table.
   final pulumi.Input<List<TagResponse>>? tags;
-
   /// The ID of the VPC.
   final pulumi.Input<String>? vpcId;
 
@@ -27,45 +25,17 @@ class AwsEc2RouteTablePropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'routeTableId': ?routeTableId,
-      'tags':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<TagResponse>,
-            List<Map<String, dynamic>>
-          >(
-            tags,
-            (value) =>
-                pulumi.Input.encodeList<TagResponse, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'tags': ?pulumi.Input.mapOptionalInputValue<List<TagResponse>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<TagResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'vpcId': ?vpcId,
     };
   }
 
   factory AwsEc2RouteTablePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsEc2RouteTablePropertiesResponse(
-      routeTableId: (() {
-        final guardedValue = map['routeTableId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<TagResponse>(
-            guardedValue,
-            (value) =>
-                TagResponse.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      vpcId: (() {
-        final guardedValue = map['vpcId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      routeTableId: (() { final guardedValue = map['routeTableId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TagResponse>(guardedValue, (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      vpcId: (() { final guardedValue = map['vpcId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

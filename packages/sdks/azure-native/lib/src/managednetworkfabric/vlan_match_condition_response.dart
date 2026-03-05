@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VlanMatchConditionResponse {
   /// List of inner vlans that need to be matched.
   final pulumi.Input<List<String>>? innerVlans;
-
   /// List of vlan group names that need to be matched.
   final pulumi.Input<List<String>>? vlanGroupNames;
-
   /// List of vlans that need to be matched.
   final pulumi.Input<List<String>>? vlans;
 
@@ -33,21 +31,10 @@ class VlanMatchConditionResponse {
 
   factory VlanMatchConditionResponse.fromMap(Map<String, dynamic> map) {
     return VlanMatchConditionResponse(
-      innerVlans: (() {
-        final guardedValue = map['innerVlans'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      vlanGroupNames: (() {
-        final guardedValue = map['vlanGroupNames'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      vlans: (() {
-        final guardedValue = map['vlans'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      innerVlans: (() { final guardedValue = map['innerVlans']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      vlanGroupNames: (() { final guardedValue = map['vlanGroupNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      vlans: (() { final guardedValue = map['vlans']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

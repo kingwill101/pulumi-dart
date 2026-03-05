@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetReplicationFabricArgs {
   /// Fabric name.
   final pulumi.Input<String> fabricName;
-
   /// OData filter options.
   final pulumi.Input<String>? filter;
-
   /// The name of the resource group where the recovery services vault is present.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the recovery services vault.
   final pulumi.Input<String> resourceName;
 
@@ -43,15 +40,10 @@ class GetReplicationFabricArgs {
   factory GetReplicationFabricArgs.fromMap(Map<String, dynamic> map) {
     return GetReplicationFabricArgs(
       fabricName: pulumi.Input.fromValue(map['fabricName'] as String),
-      filter: (() {
-        final guardedValue = map['filter'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
+

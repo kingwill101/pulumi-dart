@@ -5,11 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeader {
   /// This rule can only be matched if the request contains the Header specified by Key and the value ends with this value.
   final pulumi.Input<String>? endsWith;
-
   /// This rule can only be matched if the request contains the Header specified by Key and the value is the specified value.
   final pulumi.Input<String>? equals;
   final pulumi.Input<String>? key;
-
   /// This rule can only be matched if the request contains the Header specified by Key and the value starts with this value.
   final pulumi.Input<String>? startsWith;
 
@@ -34,30 +32,13 @@ class BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeader {
     };
   }
 
-  factory BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeader.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeader.fromMap(Map<String, dynamic> map) {
     return BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeader(
-      endsWith: (() {
-        final guardedValue = map['endsWith'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      equals: (() {
-        final guardedValue = map['equals'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      key: (() {
-        final guardedValue = map['key'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      startsWith: (() {
-        final guardedValue = map['startsWith'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      endsWith: (() { final guardedValue = map['endsWith']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      equals: (() { final guardedValue = map['equals']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      startsWith: (() { final guardedValue = map['startsWith']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EmailServiceDomainSenderUsernameArgs {
   /// The display name for the Email Communication Service Domain Sender Username resource.
   final pulumi.Input<String>? displayName;
-
   /// The ID of the Email Communication Service Domain resource. Changing this forces a new resource to be created.
   final pulumi.Input<String> emailServiceDomainId;
-
   /// The name of the Email Communication Service Domain Sender Username resource. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
 
@@ -34,23 +32,12 @@ class EmailServiceDomainSenderUsernameArgs {
     };
   }
 
-  factory EmailServiceDomainSenderUsernameArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EmailServiceDomainSenderUsernameArgs.fromMap(Map<String, dynamic> map) {
     return EmailServiceDomainSenderUsernameArgs(
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      emailServiceDomainId: pulumi.Input.fromValue(
-        map['emailServiceDomainId'] as String,
-      ),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      emailServiceDomainId: pulumi.Input.fromValue(map['emailServiceDomainId'] as String),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

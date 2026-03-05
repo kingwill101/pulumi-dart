@@ -6,22 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BgpPeerState {
   /// The BFD hop count. Valid values: `1` to `255`. **NOTE:** The attribute is valid when the attribute `enable_bfd` is `true`. The parameter specifies the maximum number of network devices that a packet can traverse from the source to the destination. You can set a proper value based on the factors that affect the physical connection.
   final pulumi.Input<int>? bfdMultiHop;
-
   /// The ID of the BGP group.
   final pulumi.Input<String>? bgpGroupId;
-
   /// The name of the BGP neighbor.
   final pulumi.Input<String>? bgpPeerName;
-
   /// Specifies whether to enable the Bidirectional Forwarding Detection (BFD) feature.
   final pulumi.Input<bool>? enableBfd;
-
   /// The IP version.
   final pulumi.Input<String>? ipVersion;
-
   /// The IP address of the BGP peer.
   final pulumi.Input<String>? peerIpAddress;
-
   /// Status of BGP neighbors.
   final pulumi.Input<String>? status;
 
@@ -57,41 +51,14 @@ class BgpPeerState {
 
   factory BgpPeerState.fromMap(Map<String, dynamic> map) {
     return BgpPeerState(
-      bfdMultiHop: (() {
-        final guardedValue = map['bfdMultiHop'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      bgpGroupId: (() {
-        final guardedValue = map['bgpGroupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      bgpPeerName: (() {
-        final guardedValue = map['bgpPeerName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      enableBfd: (() {
-        final guardedValue = map['enableBfd'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      ipVersion: (() {
-        final guardedValue = map['ipVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      peerIpAddress: (() {
-        final guardedValue = map['peerIpAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      bfdMultiHop: (() { final guardedValue = map['bfdMultiHop']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      bgpGroupId: (() { final guardedValue = map['bgpGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      bgpPeerName: (() { final guardedValue = map['bgpPeerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      enableBfd: (() { final guardedValue = map['enableBfd']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      ipVersion: (() { final guardedValue = map['ipVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      peerIpAddress: (() { final guardedValue = map['peerIpAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

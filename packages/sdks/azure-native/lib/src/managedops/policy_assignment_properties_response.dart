@@ -21,9 +21,8 @@ class PolicyAssignmentPropertiesResponse {
 
   factory PolicyAssignmentPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return PolicyAssignmentPropertiesResponse(
-      policyInitiativeAssignmentId: pulumi.Input.fromValue(
-        map['policyInitiativeAssignmentId'] as String,
-      ),
+      policyInitiativeAssignmentId: pulumi.Input.fromValue(map['policyInitiativeAssignmentId'] as String),
     );
   }
 }
+

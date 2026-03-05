@@ -12,83 +12,62 @@ class GroupArgs {
   ///
   /// &gt; **Caution** When using the azuread.AdministrativeUnitMember resource, or the `members` property of the azuread.AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.
   final pulumi.Input<List<String>>? administrativeUnitIds;
-
   /// Indicates whether this group can be assigned to an Azure Active Directory role. Defaults to `false`. Can only be set to `true` for security-enabled groups. Changing this forces a new resource to be created.
   final pulumi.Input<bool>? assignableToRole;
-
   /// Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
   ///
   /// &gt; **Known Permissions Issue** The `auto_subscribe_new_members` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
   final pulumi.Input<bool>? autoSubscribeNewMembers;
-
   /// A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SkipExchangeInstantOn`, `SubscribeMembersToCalendarEventsDisabled`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
   final pulumi.Input<List<String>>? behaviors;
-
   /// The description for the group.
   final pulumi.Input<String>? description;
-
   /// The display name for the group.
   final pulumi.Input<String> displayName;
-
   /// A `dynamic_membership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
   final pulumi.Input<GroupDynamicMembership>? dynamicMembership;
-
   /// Indicates whether people external to the organization can send messages to the group. Can only be set for Unified groups.
   ///
   /// &gt; **Known Permissions Issue** The `external_senders_allowed` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
   final pulumi.Input<bool>? externalSendersAllowed;
-
   /// Indicates whether the group is displayed in certain parts of the Outlook user interface: in the Address Book, in address lists for selecting message recipients, and in the Browse Groups dialog for searching groups. Can only be set for Unified groups.
   ///
   /// &gt; **Known Permissions Issue** The `hide_from_address_lists` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
   final pulumi.Input<bool>? hideFromAddressLists;
-
   /// Indicates whether the group is displayed in Outlook clients, such as Outlook for Windows and Outlook on the web. Can only be set for Unified groups.
   ///
   /// &gt; **Known Permissions Issue** The `hide_from_outlook_clients` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
   final pulumi.Input<bool>? hideFromOutlookClients;
-
   /// Whether the group is a mail enabled, with a shared group mailbox. At least one of `mail_enabled` or `security_enabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).
   final pulumi.Input<bool>? mailEnabled;
-
   /// The mail alias for the group, unique in the organisation. Required for mail-enabled groups. Changing this forces a new resource to be created.
   final pulumi.Input<String>? mailNickname;
-
   /// A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamic_membership` block.
   ///
   /// !&gt; **Warning** Do not use the `members` property at the same time as the azuread.GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
   final pulumi.Input<List<String>>? members;
-
   /// The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
   final pulumi.Input<String>? onpremisesGroupType;
-
   /// A set of object IDs of principals that will be granted ownership of the group. Supported object types are users or service principals. By default, the principal being used to execute Terraform is assigned as the sole owner. Groups cannot be created with no owners or have all their owners removed.
   ///
   /// &gt; **Group Ownership**  It's recommended to always specify one or more group owners, including the principal being used to execute Terraform, such as in the example above. When removing group owners, if a user principal has been assigned ownership, the last user cannot be removed as an owner. Microsoft 365 groups are required to always have at least one owner which _must be a user_ (i.e. not a service principal).
   final pulumi.Input<List<String>>? owners;
-
   /// If `true`, will return an error if an existing group is found with the same name. Defaults to `false`.
   final pulumi.Input<bool>? preventDuplicateNames;
-
   /// A set of provisioning options for a Microsoft 365 group. The only supported value is `Team`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for details. Changing this forces a new resource to be created.
   final pulumi.Input<List<String>>? provisioningOptions;
-
   /// Whether the group is a security group for controlling access to in-app resources. At least one of `security_enabled` or `mail_enabled` must be specified. A Microsoft 365 group can be security enabled _and_ mail enabled (see the `types` property).
   final pulumi.Input<bool>? securityEnabled;
-
   /// The colour theme for a Microsoft 365 group. Possible values are `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Red` or `Teal`. By default, no theme is set.
   final pulumi.Input<String>? theme;
-
   /// A set of group types to configure for the group. Supported values are `DynamicMembership`, which denotes a group with dynamic membership, and `Unified`, which specifies a Microsoft 365 group. Required when `mail_enabled` is true. Changing this forces a new resource to be created.
   ///
   /// &gt; **Supported Group Types** At present, only security groups and Microsoft 365 groups can be created or managed with this resource. Distribution groups and mail-enabled security groups are not supported. Microsoft 365 groups can be security-enabled.
   final pulumi.Input<List<String>>? types;
-
   /// The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility and this value must be set when the group is created. By default, security groups will receive `Private` visibility and Microsoft 365 groups will receive `Public` visibility.
   ///
   /// &gt; **Group Name Uniqueness** Group names are not unique within Azure Active Directory. Use the `prevent_duplicate_names` argument to check for existing groups if you want to avoid name collisions.
   final pulumi.Input<String>? visibility;
-
   /// Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.
   final pulumi.Input<bool>? writebackEnabled;
 
@@ -148,11 +127,7 @@ class GroupArgs {
       'behaviors': ?behaviors,
       'description': ?description,
       'displayName': displayName,
-      'dynamicMembership':
-          ?pulumi.Input.mapOptionalInputValue<
-            GroupDynamicMembership,
-            Map<String, dynamic>
-          >(dynamicMembership, (value) => value.toMap()),
+      'dynamicMembership': ?pulumi.Input.mapOptionalInputValue<GroupDynamicMembership, Map<String, dynamic>>(dynamicMembership, (value) => value.toMap()),
       'externalSendersAllowed': ?externalSendersAllowed,
       'hideFromAddressLists': ?hideFromAddressLists,
       'hideFromOutlookClients': ?hideFromOutlookClients,
@@ -173,116 +148,29 @@ class GroupArgs {
 
   factory GroupArgs.fromMap(Map<String, dynamic> map) {
     return GroupArgs(
-      administrativeUnitIds: (() {
-        final guardedValue = map['administrativeUnitIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      assignableToRole: (() {
-        final guardedValue = map['assignableToRole'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      autoSubscribeNewMembers: (() {
-        final guardedValue = map['autoSubscribeNewMembers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      behaviors: (() {
-        final guardedValue = map['behaviors'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      administrativeUnitIds: (() { final guardedValue = map['administrativeUnitIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      assignableToRole: (() { final guardedValue = map['assignableToRole']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      autoSubscribeNewMembers: (() { final guardedValue = map['autoSubscribeNewMembers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      behaviors: (() { final guardedValue = map['behaviors']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
-      dynamicMembership: (() {
-        final guardedValue = map['dynamicMembership'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GroupDynamicMembership.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      externalSendersAllowed: (() {
-        final guardedValue = map['externalSendersAllowed'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      hideFromAddressLists: (() {
-        final guardedValue = map['hideFromAddressLists'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      hideFromOutlookClients: (() {
-        final guardedValue = map['hideFromOutlookClients'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      mailEnabled: (() {
-        final guardedValue = map['mailEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      mailNickname: (() {
-        final guardedValue = map['mailNickname'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      members: (() {
-        final guardedValue = map['members'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      onpremisesGroupType: (() {
-        final guardedValue = map['onpremisesGroupType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      owners: (() {
-        final guardedValue = map['owners'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      preventDuplicateNames: (() {
-        final guardedValue = map['preventDuplicateNames'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      provisioningOptions: (() {
-        final guardedValue = map['provisioningOptions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      securityEnabled: (() {
-        final guardedValue = map['securityEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      theme: (() {
-        final guardedValue = map['theme'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      types: (() {
-        final guardedValue = map['types'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      visibility: (() {
-        final guardedValue = map['visibility'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      writebackEnabled: (() {
-        final guardedValue = map['writebackEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      dynamicMembership: (() { final guardedValue = map['dynamicMembership']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GroupDynamicMembership.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      externalSendersAllowed: (() { final guardedValue = map['externalSendersAllowed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      hideFromAddressLists: (() { final guardedValue = map['hideFromAddressLists']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      hideFromOutlookClients: (() { final guardedValue = map['hideFromOutlookClients']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      mailEnabled: (() { final guardedValue = map['mailEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      mailNickname: (() { final guardedValue = map['mailNickname']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      members: (() { final guardedValue = map['members']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      onpremisesGroupType: (() { final guardedValue = map['onpremisesGroupType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      owners: (() { final guardedValue = map['owners']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      preventDuplicateNames: (() { final guardedValue = map['preventDuplicateNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      provisioningOptions: (() { final guardedValue = map['provisioningOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      securityEnabled: (() { final guardedValue = map['securityEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      theme: (() { final guardedValue = map['theme']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      types: (() { final guardedValue = map['types']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      visibility: (() { final guardedValue = map['visibility']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      writebackEnabled: (() { final guardedValue = map['writebackEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

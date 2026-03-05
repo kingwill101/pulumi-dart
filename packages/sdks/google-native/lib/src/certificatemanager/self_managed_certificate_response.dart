@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SelfManagedCertificateResponse {
   /// Input only. The PEM-encoded certificate chain. Leaf certificate comes first, followed by intermediate ones if any.
   final pulumi.Input<String> pemCertificate;
-
   /// Input only. The PEM-encoded private key of the leaf certificate.
   final pulumi.Input<String> pemPrivateKey;
 
@@ -32,3 +31,4 @@ class SelfManagedCertificateResponse {
     );
   }
 }
+

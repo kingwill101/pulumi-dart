@@ -5,13 +5,7 @@ import 'conditional_access_policy_conditions_users_excluded_guests_or_external_u
 
 class ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser {
   /// An `external_tenants` block as documented below, which specifies external tenants in a policy scope.
-  final pulumi.Input<
-    List<
-      ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant
-    >
-  >?
-  externalTenants;
-
+  final pulumi.Input<List<ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant>>? externalTenants;
   /// A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
   final pulumi.Input<List<String>> guestOrExternalUserTypes;
 
@@ -25,46 +19,16 @@ class ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'externalTenants':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<
-              ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant
-            >,
-            List<Map<String, dynamic>>
-          >(
-            externalTenants,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'externalTenants': ?pulumi.Input.mapOptionalInputValue<List<ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant>, List<Map<String, dynamic>>>(externalTenants, (value) => pulumi.Input.encodeList<ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant, Map<String, dynamic>>(value, (value) => value.toMap())),
       'guestOrExternalUserTypes': guestOrExternalUserTypes,
     };
   }
 
-  factory ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser.fromMap(Map<String, dynamic> map) {
     return ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser(
-      externalTenants: (() {
-        final guardedValue = map['externalTenants'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant
-          >(
-            guardedValue,
-            (value) =>
-                ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
-      guestOrExternalUserTypes: pulumi.Input.fromValue(
-        (map['guestOrExternalUserTypes'] as List).cast<String>(),
-      ),
+      externalTenants: (() { final guardedValue = map['externalTenants']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant>(guardedValue, (value) => ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      guestOrExternalUserTypes: pulumi.Input.fromValue((map['guestOrExternalUserTypes'] as List).cast<String>()),
     );
   }
 }
+

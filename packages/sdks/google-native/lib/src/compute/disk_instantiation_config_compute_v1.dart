@@ -7,16 +7,12 @@ import 'disk_instantiation_config_instantiate_from_compute_v1.dart';
 class DiskInstantiationConfigComputeV1 {
   /// Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance).
   final pulumi.Input<bool>? autoDelete;
-
   /// The custom source image to be used to restore this disk when instantiating this instance template.
   final pulumi.Input<String>? customImage;
-
   /// Specifies the device name of the disk to which the configurations apply to.
   final pulumi.Input<String>? deviceName;
-
   /// Specifies whether to include the disk and what image to use. Possible values are: - source-image: to use the same image that was used to create the source instance's corresponding disk. Applicable to the boot disk and additional read-write disks. - source-image-family: to use the same image family that was used to create the source instance's corresponding disk. Applicable to the boot disk and additional read-write disks. - custom-image: to use a user-provided image url for disk creation. Applicable to the boot disk and additional read-write disks. - attach-read-only: to attach a read-only disk. Applicable to read-only disks. - do-not-include: to exclude a disk from the template. Applicable to additional read-write disks, local SSDs, and read-only disks.
-  final pulumi.Input<DiskInstantiationConfigInstantiateFromComputeV1>?
-  instantiateFrom;
+  final pulumi.Input<DiskInstantiationConfigInstantiateFromComputeV1>? instantiateFrom;
 
   /// Creates a new [DiskInstantiationConfigComputeV1].
   /// [autoDelete] Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance).
@@ -35,40 +31,17 @@ class DiskInstantiationConfigComputeV1 {
       'autoDelete': ?autoDelete,
       'customImage': ?customImage,
       'deviceName': ?deviceName,
-      'instantiateFrom':
-          ?pulumi.Input.mapOptionalInputValue<
-            DiskInstantiationConfigInstantiateFromComputeV1,
-            String
-          >(instantiateFrom, (value) => value.wireValue),
+      'instantiateFrom': ?pulumi.Input.mapOptionalInputValue<DiskInstantiationConfigInstantiateFromComputeV1, String>(instantiateFrom, (value) => value.wireValue),
     };
   }
 
   factory DiskInstantiationConfigComputeV1.fromMap(Map<String, dynamic> map) {
     return DiskInstantiationConfigComputeV1(
-      autoDelete: (() {
-        final guardedValue = map['autoDelete'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      customImage: (() {
-        final guardedValue = map['customImage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      deviceName: (() {
-        final guardedValue = map['deviceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      instantiateFrom: (() {
-        final guardedValue = map['instantiateFrom'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DiskInstantiationConfigInstantiateFromComputeV1.fromValue(
-            guardedValue as String,
-          ),
-        );
-      })(),
+      autoDelete: (() { final guardedValue = map['autoDelete']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      customImage: (() { final guardedValue = map['customImage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deviceName: (() { final guardedValue = map['deviceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      instantiateFrom: (() { final guardedValue = map['instantiateFrom']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DiskInstantiationConfigInstantiateFromComputeV1.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

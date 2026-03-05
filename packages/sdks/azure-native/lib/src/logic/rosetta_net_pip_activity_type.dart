@@ -20,3 +20,4 @@ enum RosettaNetPipActivityType {
     throw ArgumentError('Unknown RosettaNetPipActivityType value: $value');
   }
 }
+

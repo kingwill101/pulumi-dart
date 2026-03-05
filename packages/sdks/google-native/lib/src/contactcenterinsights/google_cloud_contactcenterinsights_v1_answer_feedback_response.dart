@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudContactcenterinsightsV1AnswerFeedbackResponse {
   /// Indicates whether an answer or item was clicked by the human agent.
   final pulumi.Input<bool> clicked;
-
   /// The correctness level of an answer.
   final pulumi.Input<String> correctnessLevel;
-
   /// Indicates whether an answer or item was displayed to the human agent in the agent desktop UI.
   final pulumi.Input<bool> displayed;
 
@@ -31,15 +29,12 @@ class GoogleCloudContactcenterinsightsV1AnswerFeedbackResponse {
     };
   }
 
-  factory GoogleCloudContactcenterinsightsV1AnswerFeedbackResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudContactcenterinsightsV1AnswerFeedbackResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContactcenterinsightsV1AnswerFeedbackResponse(
       clicked: pulumi.Input.fromValue(map['clicked'] as bool),
-      correctnessLevel: pulumi.Input.fromValue(
-        map['correctnessLevel'] as String,
-      ),
+      correctnessLevel: pulumi.Input.fromValue(map['correctnessLevel'] as String),
       displayed: pulumi.Input.fromValue(map['displayed'] as bool),
     );
   }
 }
+

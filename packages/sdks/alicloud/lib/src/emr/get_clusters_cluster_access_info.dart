@@ -9,35 +9,20 @@ class GetClustersClusterAccessInfo {
 
   /// Creates a new [GetClustersClusterAccessInfo].
   /// [zkLinks] Link address information list of ZooKeeper.
-  GetClustersClusterAccessInfo({required this.zkLinks});
+  GetClustersClusterAccessInfo({
+    required this.zkLinks,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'zkLinks':
-          pulumi.Input.mapInputValue<
-            List<GetClustersClusterAccessInfoZkLink>,
-            List<Map<String, dynamic>>
-          >(
-            zkLinks,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetClustersClusterAccessInfoZkLink,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'zkLinks': pulumi.Input.mapInputValue<List<GetClustersClusterAccessInfoZkLink>, List<Map<String, dynamic>>>(zkLinks, (value) => pulumi.Input.encodeList<GetClustersClusterAccessInfoZkLink, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetClustersClusterAccessInfo.fromMap(Map<String, dynamic> map) {
     return GetClustersClusterAccessInfo(
-      zkLinks: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetClustersClusterAccessInfoZkLink>(
-          map['zkLinks']!,
-          (value) => GetClustersClusterAccessInfoZkLink.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      zkLinks: pulumi.Input.fromValue(pulumi.Input.decodeList<GetClustersClusterAccessInfoZkLink>(map['zkLinks']!, (value) => GetClustersClusterAccessInfoZkLink.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

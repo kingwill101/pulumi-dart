@@ -208,22 +208,16 @@ import 'ec_failover_test_job_state.dart';
 class EcFailoverTestJob extends pulumi.CustomResource {
   /// Job description.
   late final pulumi.Output<String?> description;
-
   /// Job name.
   late final pulumi.Output<String?> ecFailoverTestJobName;
-
   /// Job duration.
   late final pulumi.Output<int> jobDuration;
-
   /// Job type.
   late final pulumi.Output<String> jobType;
-
   /// Resource id list.
   late final pulumi.Output<List<String>> resourceIds;
-
   /// Resource type.
   late final pulumi.Output<String> resourceType;
-
   /// The status of the resource.
   late final pulumi.Output<String> status;
 
@@ -236,11 +230,11 @@ class EcFailoverTestJob extends pulumi.CustomResource {
     EcFailoverTestJobArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:expressconnect/ecFailoverTestJob:EcFailoverTestJob',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:expressconnect/ecFailoverTestJob:EcFailoverTestJob',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     ecFailoverTestJobName = registerOutput<String?>('ecFailoverTestJobName');
     jobDuration = registerOutput<int>('jobDuration');
@@ -268,11 +262,11 @@ class EcFailoverTestJob extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:expressconnect/ecFailoverTestJob:EcFailoverTestJob',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:expressconnect/ecFailoverTestJob:EcFailoverTestJob',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     ecFailoverTestJobName = registerOutput<String?>('ecFailoverTestJobName');
     jobDuration = registerOutput<int>('jobDuration');

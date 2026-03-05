@@ -6,18 +6,12 @@ import 'get_fleet_scaling_configuration_target_tracking_scaling_config.dart';
 class GetFleetScalingConfiguration {
   /// The desired number of instances in the ﬂeet when auto-scaling.
   final pulumi.Input<int> desiredCapacity;
-
   /// The maximum number of instances in the ﬂeet when auto-scaling.
   final pulumi.Input<int> maxCapacity;
-
   /// The scaling type for a compute fleet.
   final pulumi.Input<String> scalingType;
-
   /// Nested attribute containing information about thresholds when new instance is auto-scaled into the compute fleet.
-  final pulumi.Input<
-    List<GetFleetScalingConfigurationTargetTrackingScalingConfig>
-  >
-  targetTrackingScalingConfigs;
+  final pulumi.Input<List<GetFleetScalingConfigurationTargetTrackingScalingConfig>> targetTrackingScalingConfigs;
 
   /// Creates a new [GetFleetScalingConfiguration].
   /// [desiredCapacity] The desired number of instances in the ﬂeet when auto-scaling.
@@ -36,18 +30,7 @@ class GetFleetScalingConfiguration {
       'desiredCapacity': desiredCapacity,
       'maxCapacity': maxCapacity,
       'scalingType': scalingType,
-      'targetTrackingScalingConfigs':
-          pulumi.Input.mapInputValue<
-            List<GetFleetScalingConfigurationTargetTrackingScalingConfig>,
-            List<Map<String, dynamic>>
-          >(
-            targetTrackingScalingConfigs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetFleetScalingConfigurationTargetTrackingScalingConfig,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'targetTrackingScalingConfigs': pulumi.Input.mapInputValue<List<GetFleetScalingConfigurationTargetTrackingScalingConfig>, List<Map<String, dynamic>>>(targetTrackingScalingConfigs, (value) => pulumi.Input.encodeList<GetFleetScalingConfigurationTargetTrackingScalingConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
@@ -56,17 +39,8 @@ class GetFleetScalingConfiguration {
       desiredCapacity: pulumi.Input.fromValue(map['desiredCapacity'] as int),
       maxCapacity: pulumi.Input.fromValue(map['maxCapacity'] as int),
       scalingType: pulumi.Input.fromValue(map['scalingType'] as String),
-      targetTrackingScalingConfigs: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GetFleetScalingConfigurationTargetTrackingScalingConfig
-        >(
-          map['targetTrackingScalingConfigs']!,
-          (value) =>
-              GetFleetScalingConfigurationTargetTrackingScalingConfig.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
+      targetTrackingScalingConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetFleetScalingConfigurationTargetTrackingScalingConfig>(map['targetTrackingScalingConfigs']!, (value) => GetFleetScalingConfigurationTargetTrackingScalingConfig.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

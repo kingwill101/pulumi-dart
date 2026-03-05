@@ -571,7 +571,6 @@ import 'rule_attachment_state.dart';
 class RuleAttachment extends pulumi.CustomResource {
   /// The ID of the rule.
   late final pulumi.Output<String> ruleId;
-
   /// The List of the VPC. See `vpcs` below.
   late final pulumi.Output<List<Map<String, dynamic>>> vpcs;
 
@@ -584,11 +583,11 @@ class RuleAttachment extends pulumi.CustomResource {
     RuleAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:pvtz/ruleAttachment:RuleAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:pvtz/ruleAttachment:RuleAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     ruleId = registerOutput<String>('ruleId');
     vpcs = registerOutput<List<Map<String, dynamic>>>('vpcs');
   }
@@ -611,11 +610,11 @@ class RuleAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:pvtz/ruleAttachment:RuleAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:pvtz/ruleAttachment:RuleAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     ruleId = registerOutput<String>('ruleId');
     vpcs = registerOutput<List<Map<String, dynamic>>>('vpcs');
   }

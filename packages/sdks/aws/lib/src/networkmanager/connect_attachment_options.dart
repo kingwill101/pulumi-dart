@@ -8,19 +8,20 @@ class ConnectAttachmentOptions {
 
   /// Creates a new [ConnectAttachmentOptions].
   /// [protocol] Protocol used for the attachment connection. Valid values: `GRE`, `NO_ENCAP`.
-  ConnectAttachmentOptions({this.protocol});
+  ConnectAttachmentOptions({
+    this.protocol,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'protocol': ?protocol};
+    return <String, dynamic>{
+      'protocol': ?protocol,
+    };
   }
 
   factory ConnectAttachmentOptions.fromMap(Map<String, dynamic> map) {
     return ConnectAttachmentOptions(
-      protocol: (() {
-        final guardedValue = map['protocol'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

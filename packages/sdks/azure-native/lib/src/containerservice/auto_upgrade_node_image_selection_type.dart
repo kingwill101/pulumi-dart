@@ -12,8 +12,7 @@ enum AutoUpgradeNodeImageSelectionType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown AutoUpgradeNodeImageSelectionType value: $value',
-    );
+    throw ArgumentError('Unknown AutoUpgradeNodeImageSelectionType value: $value');
   }
 }
+

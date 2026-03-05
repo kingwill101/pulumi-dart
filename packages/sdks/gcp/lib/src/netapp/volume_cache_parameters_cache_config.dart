@@ -8,7 +8,9 @@ class VolumeCacheParametersCacheConfig {
 
   /// Creates a new [VolumeCacheParametersCacheConfig].
   /// [cifsChangeNotifyEnabled] Optional. Flag indicating whether a CIFS change notification is enabled for the FlexCache volume.
-  VolumeCacheParametersCacheConfig({this.cifsChangeNotifyEnabled});
+  VolumeCacheParametersCacheConfig({
+    this.cifsChangeNotifyEnabled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -18,11 +20,8 @@ class VolumeCacheParametersCacheConfig {
 
   factory VolumeCacheParametersCacheConfig.fromMap(Map<String, dynamic> map) {
     return VolumeCacheParametersCacheConfig(
-      cifsChangeNotifyEnabled: (() {
-        final guardedValue = map['cifsChangeNotifyEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      cifsChangeNotifyEnabled: (() { final guardedValue = map['cifsChangeNotifyEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

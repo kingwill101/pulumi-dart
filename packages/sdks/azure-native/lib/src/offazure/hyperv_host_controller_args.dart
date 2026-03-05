@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HypervHostControllerArgs {
   /// Gets or sets the FQDN/IPAddress of the Hyper-V host.
   final pulumi.Input<String>? fqdn;
-
   /// Host name
   final pulumi.Input<String>? hostName;
-
   /// The status of the last operation.
   final pulumi.Input<String>? provisioningState;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Gets or sets the run as account ID of the Hyper-V host.
   final pulumi.Input<String>? runAsAccountId;
-
   /// Site name
   final pulumi.Input<String> siteName;
 
@@ -54,30 +49,13 @@ class HypervHostControllerArgs {
 
   factory HypervHostControllerArgs.fromMap(Map<String, dynamic> map) {
     return HypervHostControllerArgs(
-      fqdn: (() {
-        final guardedValue = map['fqdn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      hostName: (() {
-        final guardedValue = map['hostName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      provisioningState: (() {
-        final guardedValue = map['provisioningState'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      runAsAccountId: (() {
-        final guardedValue = map['runAsAccountId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      fqdn: (() { final guardedValue = map['fqdn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      hostName: (() { final guardedValue = map['hostName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      runAsAccountId: (() { final guardedValue = map['runAsAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       siteName: pulumi.Input.fromValue(map['siteName'] as String),
     );
   }
 }
+

@@ -5,10 +5,7 @@ import 'object_lambda_access_point_configuration_transformation_configuration_co
 
 class ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformation {
   /// Configuration for an AWS Lambda function. See AWS Lambda below for more details.
-  final pulumi.Input<
-    ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformationAwsLambda
-  >
-  awsLambda;
+  final pulumi.Input<ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformationAwsLambda> awsLambda;
 
   /// Creates a new [ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformation].
   /// [awsLambda] Configuration for an AWS Lambda function. See AWS Lambda below for more details.
@@ -18,23 +15,14 @@ class ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTran
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'awsLambda':
-          pulumi.Input.mapInputValue<
-            ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformationAwsLambda,
-            Map<String, dynamic>
-          >(awsLambda, (value) => value.toMap()),
+      'awsLambda': pulumi.Input.mapInputValue<ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformationAwsLambda, Map<String, dynamic>>(awsLambda, (value) => value.toMap()),
     };
   }
 
-  factory ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformation.fromMap(Map<String, dynamic> map) {
     return ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformation(
-      awsLambda: pulumi.Input.fromValue(
-        ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformationAwsLambda.fromMap(
-          (map['awsLambda']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      awsLambda: pulumi.Input.fromValue(ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformationAwsLambda.fromMap((map['awsLambda']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

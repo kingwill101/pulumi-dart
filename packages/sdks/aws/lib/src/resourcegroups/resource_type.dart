@@ -182,13 +182,10 @@ import 'resource_state.dart';
 class ResourceType extends pulumi.CustomResource {
   /// Name or ARN of the resource group to add resources to.
   late final pulumi.Output<String> groupArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// ARN of the resource to be added to the group.
   late final pulumi.Output<String> resourceArn;
-
   /// The resource type of a resource, such as `AWS::EC2::Instance`.
   late final pulumi.Output<String> resourceType;
 
@@ -201,11 +198,11 @@ class ResourceType extends pulumi.CustomResource {
     ResourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:resourcegroups/resource:Resource',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:resourcegroups/resource:Resource',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     groupArn = registerOutput<String>('groupArn');
     region = registerOutput<String>('region');
     resourceArn = registerOutput<String>('resourceArn');
@@ -230,11 +227,11 @@ class ResourceType extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:resourcegroups/resource:Resource',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:resourcegroups/resource:Resource',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     groupArn = registerOutput<String>('groupArn');
     region = registerOutput<String>('region');
     resourceArn = registerOutput<String>('resourceArn');

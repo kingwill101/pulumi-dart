@@ -460,28 +460,20 @@ import 'system_data_response.dart';
 class Rule extends pulumi.CustomResource {
   /// Represents the filter actions which are allowed for the transformation of a message that have been matched by a filter expression.
   late final pulumi.Output<ActionResponse?> action;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Properties of correlationFilter
   late final pulumi.Output<CorrelationFilterResponse?> correlationFilter;
-
   /// Filter type that is evaluated against a BrokeredMessage.
   late final pulumi.Output<String?> filterType;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Properties of sqlFilter
   late final pulumi.Output<SqlFilterResponse?> sqlFilter;
-
   /// The system meta data relating to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
   late final pulumi.Output<String> type;
 
@@ -489,57 +481,24 @@ class Rule extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Rule]. {@macro pulumi_servicebus_rule_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Rule(String name, {RuleArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:servicebus:Rule',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
-    action = registerOutput<ActionResponse?>(
-      'action',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ActionResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+  Rule(
+    String name, {
+    RuleArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:servicebus:Rule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    action = registerOutput<ActionResponse?>('action', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ActionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    correlationFilter = registerOutput<CorrelationFilterResponse?>(
-      'correlationFilter',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CorrelationFilterResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    correlationFilter = registerOutput<CorrelationFilterResponse?>('correlationFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CorrelationFilterResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     filterType = registerOutput<String?>('filterType');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    sqlFilter = registerOutput<SqlFilterResponse?>(
-      'sqlFilter',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SqlFilterResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sqlFilter = registerOutput<SqlFilterResponse?>('sqlFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SqlFilterResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

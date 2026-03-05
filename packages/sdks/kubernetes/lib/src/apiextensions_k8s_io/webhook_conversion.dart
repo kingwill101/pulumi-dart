@@ -7,7 +7,6 @@ import 'webhook_client_config.dart';
 class WebhookConversion {
   /// clientConfig is the instructions for how to call the webhook if strategy is `Webhook`.
   final pulumi.Input<WebhookClientConfig>? clientConfig;
-
   /// conversionReviewVersions is an ordered list of preferred `ConversionReview` versions the Webhook expects. The API server will use the first version in the list which it supports. If none of the versions specified in this list are supported by API server, conversion will fail for the custom resource. If a persisted Webhook configuration specifies allowed versions and does not include any versions known to the API Server, calls to the webhook will fail.
   final pulumi.Input<List<String>> conversionReviewVersions;
 
@@ -21,29 +20,16 @@ class WebhookConversion {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'clientConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            WebhookClientConfig,
-            Map<String, dynamic>
-          >(clientConfig, (value) => value.toMap()),
+      'clientConfig': ?pulumi.Input.mapOptionalInputValue<WebhookClientConfig, Map<String, dynamic>>(clientConfig, (value) => value.toMap()),
       'conversionReviewVersions': conversionReviewVersions,
     };
   }
 
   factory WebhookConversion.fromMap(Map<String, dynamic> map) {
     return WebhookConversion(
-      clientConfig: (() {
-        final guardedValue = map['clientConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          WebhookClientConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      conversionReviewVersions: pulumi.Input.fromValue(
-        (map['conversionReviewVersions'] as List).cast<String>(),
-      ),
+      clientConfig: (() { final guardedValue = map['clientConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WebhookClientConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      conversionReviewVersions: pulumi.Input.fromValue((map['conversionReviewVersions'] as List).cast<String>()),
     );
   }
 }
+

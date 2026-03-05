@@ -12,35 +12,23 @@ class FilterResponse {
   /// Creates a new [FilterResponse].
   /// [compositeFilter] Required.
   /// [valueFilter] Required.
-  FilterResponse({required this.compositeFilter, required this.valueFilter});
+  FilterResponse({
+    required this.compositeFilter,
+    required this.valueFilter,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'compositeFilter':
-          pulumi.Input.mapInputValue<
-            CompositeFilterResponse,
-            Map<String, dynamic>
-          >(compositeFilter, (value) => value.toMap()),
-      'valueFilter':
-          pulumi.Input.mapInputValue<ValueFilterResponse, Map<String, dynamic>>(
-            valueFilter,
-            (value) => value.toMap(),
-          ),
+      'compositeFilter': pulumi.Input.mapInputValue<CompositeFilterResponse, Map<String, dynamic>>(compositeFilter, (value) => value.toMap()),
+      'valueFilter': pulumi.Input.mapInputValue<ValueFilterResponse, Map<String, dynamic>>(valueFilter, (value) => value.toMap()),
     };
   }
 
   factory FilterResponse.fromMap(Map<String, dynamic> map) {
     return FilterResponse(
-      compositeFilter: pulumi.Input.fromValue(
-        CompositeFilterResponse.fromMap(
-          (map['compositeFilter']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      valueFilter: pulumi.Input.fromValue(
-        ValueFilterResponse.fromMap(
-          (map['valueFilter']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      compositeFilter: pulumi.Input.fromValue(CompositeFilterResponse.fromMap((map['compositeFilter']! as Map).cast<String, dynamic>())),
+      valueFilter: pulumi.Input.fromValue(ValueFilterResponse.fromMap((map['valueFilter']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

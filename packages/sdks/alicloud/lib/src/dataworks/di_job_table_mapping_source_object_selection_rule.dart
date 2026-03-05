@@ -4,13 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DiJobTableMappingSourceObjectSelectionRule {
   final pulumi.Input<String>? action;
-
   /// Expression, such as mysql_table_1
   final pulumi.Input<String>? expression;
-
   /// Expression type, value range: Exact/Regex
   final pulumi.Input<String>? expressionType;
-
   /// Object type, optional enumeration value:
   ///
   /// Table (Table)
@@ -39,30 +36,13 @@ class DiJobTableMappingSourceObjectSelectionRule {
     };
   }
 
-  factory DiJobTableMappingSourceObjectSelectionRule.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DiJobTableMappingSourceObjectSelectionRule.fromMap(Map<String, dynamic> map) {
     return DiJobTableMappingSourceObjectSelectionRule(
-      action: (() {
-        final guardedValue = map['action'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      expression: (() {
-        final guardedValue = map['expression'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      expressionType: (() {
-        final guardedValue = map['expressionType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      objectType: (() {
-        final guardedValue = map['objectType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      expression: (() { final guardedValue = map['expression']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      expressionType: (() { final guardedValue = map['expressionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      objectType: (() { final guardedValue = map['objectType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

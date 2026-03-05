@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JobEventTriggerConfigScaleRuleAuthentication {
   /// Name of the secret from which to pull the auth params.
   final pulumi.Input<String> secretName;
-
   /// Trigger Parameter that uses the secret.
   final pulumi.Input<String> triggerParameter;
 
@@ -24,14 +23,11 @@ class JobEventTriggerConfigScaleRuleAuthentication {
     };
   }
 
-  factory JobEventTriggerConfigScaleRuleAuthentication.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory JobEventTriggerConfigScaleRuleAuthentication.fromMap(Map<String, dynamic> map) {
     return JobEventTriggerConfigScaleRuleAuthentication(
       secretName: pulumi.Input.fromValue(map['secretName'] as String),
-      triggerParameter: pulumi.Input.fromValue(
-        map['triggerParameter'] as String,
-      ),
+      triggerParameter: pulumi.Input.fromValue(map['triggerParameter'] as String),
     );
   }
 }
+

@@ -13,7 +13,10 @@ class GetAppAppengineV1betaArgs {
   /// Creates a new [GetAppAppengineV1betaArgs].
   /// [appId] Required.
   /// [includeExtraData] Optional.
-  GetAppAppengineV1betaArgs({required this.appId, this.includeExtraData});
+  GetAppAppengineV1betaArgs({
+    required this.appId,
+    this.includeExtraData,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,11 +28,8 @@ class GetAppAppengineV1betaArgs {
   factory GetAppAppengineV1betaArgs.fromMap(Map<String, dynamic> map) {
     return GetAppAppengineV1betaArgs(
       appId: pulumi.Input.fromValue(map['appId'] as String),
-      includeExtraData: (() {
-        final guardedValue = map['includeExtraData'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      includeExtraData: (() { final guardedValue = map['includeExtraData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

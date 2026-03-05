@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SkuResponse {
   /// The SKU name. Required for account creation; optional for update. Note that in older versions, SKU name was called accountType.
   final pulumi.Input<String> name;
-
   /// The SKU tier. This is based on the SKU name.
   final pulumi.Input<String> tier;
 
   /// Creates a new [SkuResponse].
   /// [name] The SKU name. Required for account creation; optional for update. Note that in older versions, SKU name was called accountType.
   /// [tier] The SKU tier. This is based on the SKU name.
-  SkuResponse({required this.name, required this.tier});
+  SkuResponse({
+    required this.name,
+    required this.tier,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'tier': tier};
+    return <String, dynamic>{
+      'name': name,
+      'tier': tier,
+    };
   }
 
   factory SkuResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class SkuResponse {
     );
   }
 }
+

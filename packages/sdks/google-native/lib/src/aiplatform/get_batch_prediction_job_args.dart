@@ -31,15 +31,10 @@ class GetBatchPredictionJobArgs {
 
   factory GetBatchPredictionJobArgs.fromMap(Map<String, dynamic> map) {
     return GetBatchPredictionJobArgs(
-      batchPredictionJobId: pulumi.Input.fromValue(
-        map['batchPredictionJobId'] as String,
-      ),
+      batchPredictionJobId: pulumi.Input.fromValue(map['batchPredictionJobId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

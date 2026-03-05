@@ -141,37 +141,26 @@ import 'system_data_response.dart';
 class NetworkInterface extends pulumi.CustomResource {
   /// Administrative state of the resource.
   late final pulumi.Output<String> administrativeState;
-
   /// Switch configuration description.
   late final pulumi.Output<String?> annotation;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The ARM resource id of the interface or compute server its connected to.
   late final pulumi.Output<String> connectedTo;
-
   /// The Interface Type. Example: Management/Data
   late final pulumi.Output<String> interfaceType;
-
   /// IPv4Address of the interface.
   late final pulumi.Output<String> ipv4Address;
-
   /// IPv6Address of the interface.
   late final pulumi.Output<String> ipv6Address;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Physical Identifier of the network interface.
   late final pulumi.Output<String> physicalIdentifier;
-
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -184,11 +173,11 @@ class NetworkInterface extends pulumi.CustomResource {
     NetworkInterfaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:managednetworkfabric:NetworkInterface',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:managednetworkfabric:NetworkInterface',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     administrativeState = registerOutput<String>('administrativeState');
     annotation = registerOutput<String?>('annotation');
     azureApiVersion = registerOutput<String>('azureApiVersion');
@@ -199,16 +188,7 @@ class NetworkInterface extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     physicalIdentifier = registerOutput<String>('physicalIdentifier');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

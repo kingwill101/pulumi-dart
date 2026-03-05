@@ -7,30 +7,22 @@ import 'function_url_cors.dart';
 class FunctionUrlState {
   /// Type of authentication that the function URL uses. Valid values are `AWS_IAM` and `NONE`.
   final pulumi.Input<String>? authorizationType;
-
   /// Cross-origin resource sharing (CORS) settings for the function URL. See below.
   final pulumi.Input<FunctionUrlCors>? cors;
-
   /// ARN of the Lambda function.
   final pulumi.Input<String>? functionArn;
-
   /// Name or ARN of the Lambda function.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? functionName;
-
   /// HTTP URL endpoint for the function in the format `https://&lt;url_id&gt;.lambda-url.&lt;region&gt;.on.aws/`.
   final pulumi.Input<String>? functionUrl;
-
   /// How the Lambda function responds to an invocation. Valid values are `BUFFERED` (default) and `RESPONSE_STREAM`.
   final pulumi.Input<String>? invokeMode;
-
   /// Alias name or `$LATEST`.
   final pulumi.Input<String>? qualifier;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Generated ID for the endpoint.
   final pulumi.Input<String>? urlId;
 
@@ -59,11 +51,7 @@ class FunctionUrlState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'authorizationType': ?authorizationType,
-      'cors':
-          ?pulumi.Input.mapOptionalInputValue<
-            FunctionUrlCors,
-            Map<String, dynamic>
-          >(cors, (value) => value.toMap()),
+      'cors': ?pulumi.Input.mapOptionalInputValue<FunctionUrlCors, Map<String, dynamic>>(cors, (value) => value.toMap()),
       'functionArn': ?functionArn,
       'functionName': ?functionName,
       'functionUrl': ?functionUrl,
@@ -76,55 +64,16 @@ class FunctionUrlState {
 
   factory FunctionUrlState.fromMap(Map<String, dynamic> map) {
     return FunctionUrlState(
-      authorizationType: (() {
-        final guardedValue = map['authorizationType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      cors: (() {
-        final guardedValue = map['cors'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FunctionUrlCors.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      functionArn: (() {
-        final guardedValue = map['functionArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      functionName: (() {
-        final guardedValue = map['functionName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      functionUrl: (() {
-        final guardedValue = map['functionUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      invokeMode: (() {
-        final guardedValue = map['invokeMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      qualifier: (() {
-        final guardedValue = map['qualifier'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      urlId: (() {
-        final guardedValue = map['urlId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      authorizationType: (() { final guardedValue = map['authorizationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      cors: (() { final guardedValue = map['cors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FunctionUrlCors.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      functionArn: (() { final guardedValue = map['functionArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      functionName: (() { final guardedValue = map['functionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      functionUrl: (() { final guardedValue = map['functionUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      invokeMode: (() { final guardedValue = map['invokeMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      qualifier: (() { final guardedValue = map['qualifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      urlId: (() { final guardedValue = map['urlId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

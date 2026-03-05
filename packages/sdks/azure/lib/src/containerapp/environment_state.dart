@@ -8,74 +8,54 @@ import 'environment_workload_profile.dart';
 class EnvironmentState {
   /// The ID of the Custom Domain Verification for this Container App Environment.
   final pulumi.Input<String>? customDomainVerificationId;
-
   /// Application Insights connection string used by Dapr to export Service to Service communication telemetry. Changing this forces a new resource to be created.
   final pulumi.Input<String>? daprApplicationInsightsConnectionString;
-
   /// The default, publicly resolvable, name of this Container App Environment.
   final pulumi.Input<String>? defaultDomain;
-
   /// The network addressing in which the Container Apps in this Container App Environment will reside in CIDR notation.
   final pulumi.Input<String>? dockerBridgeCidr;
-
   /// An `identity` block as defined below.
   final pulumi.Input<EnvironmentIdentity>? identity;
-
   /// Name of the platform-managed resource group created for the Managed Environment to host infrastructure resources. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Only valid if a `workload_profile` is specified. If `infrastructure_subnet_id` is specified, this resource group will be created in the same subscription as `infrastructure_subnet_id`.
   final pulumi.Input<String>? infrastructureResourceGroupName;
-
   /// The existing Subnet to use for the Container Apps Control Plane. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** The Subnet must have a `/21` or larger address space.
   final pulumi.Input<String>? infrastructureSubnetId;
-
   /// Should the Container Environment operate in Internal Load Balancing Mode? Defaults to `false`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** can only be set to `true` if `infrastructure_subnet_id` is specified.
   final pulumi.Input<bool>? internalLoadBalancerEnabled;
-
   /// Specifies the supported Azure location where the Container App Environment is to exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
-
   /// The ID for the Log Analytics Workspace to link this Container Apps Managed Environment to.
   ///
   /// &gt; **Note:** required if `logs_destination` is set to `log-analytics`. Cannot be set if `logs_destination` is set to `azure-monitor`.
   final pulumi.Input<String>? logAnalyticsWorkspaceId;
-
   /// Where the application logs will be saved for this Container Apps Managed Environment. Possible values include `log-analytics` and `azure-monitor`. Omitting this value will result in logs being streamed only.
   final pulumi.Input<String>? logsDestination;
-
   /// Should mutual transport layer security (mTLS) be enabled? Defaults to `false`.
   ///
   /// &gt; **Note:** This feature is in public preview. Enabling mTLS for your applications may increase response latency and reduce maximum throughput in high-load scenarios.
   final pulumi.Input<bool>? mutualTlsEnabled;
-
   /// The name of the Container Apps Managed Environment. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// The IP range, in CIDR notation, that is reserved for environment infrastructure IP addresses.
   final pulumi.Input<String>? platformReservedCidr;
-
   /// The IP address from the IP range defined by `platform_reserved_cidr` that is reserved for the internal DNS server.
   final pulumi.Input<String>? platformReservedDnsIpAddress;
-
   /// The public network access setting for the Container App Environment. Possible values are `Enabled` and `Disabled`.
   final pulumi.Input<String>? publicNetworkAccess;
-
   /// The name of the resource group in which the Container App Environment is to be created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
-
   /// The Static IP address of the Environment.
   final pulumi.Input<String>? staticIpAddress;
-
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// One or more `workload_profile` blocks as defined below.
   final pulumi.Input<List<EnvironmentWorkloadProfile>>? workloadProfiles;
-
   /// Should the Container App Environment be created with Zone Redundancy enabled? Defaults to `false`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** can only be set to `true` if `infrastructure_subnet_id` is specified.
@@ -130,15 +110,10 @@ class EnvironmentState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'customDomainVerificationId': ?customDomainVerificationId,
-      'daprApplicationInsightsConnectionString':
-          ?daprApplicationInsightsConnectionString,
+      'daprApplicationInsightsConnectionString': ?daprApplicationInsightsConnectionString,
       'defaultDomain': ?defaultDomain,
       'dockerBridgeCidr': ?dockerBridgeCidr,
-      'identity':
-          ?pulumi.Input.mapOptionalInputValue<
-            EnvironmentIdentity,
-            Map<String, dynamic>
-          >(identity, (value) => value.toMap()),
+      'identity': ?pulumi.Input.mapOptionalInputValue<EnvironmentIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
       'infrastructureResourceGroupName': ?infrastructureResourceGroupName,
       'infrastructureSubnetId': ?infrastructureSubnetId,
       'internalLoadBalancerEnabled': ?internalLoadBalancerEnabled,
@@ -153,142 +128,35 @@ class EnvironmentState {
       'resourceGroupName': ?resourceGroupName,
       'staticIpAddress': ?staticIpAddress,
       'tags': ?tags,
-      'workloadProfiles':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<EnvironmentWorkloadProfile>,
-            List<Map<String, dynamic>>
-          >(
-            workloadProfiles,
-            (value) =>
-                pulumi.Input.encodeList<
-                  EnvironmentWorkloadProfile,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'workloadProfiles': ?pulumi.Input.mapOptionalInputValue<List<EnvironmentWorkloadProfile>, List<Map<String, dynamic>>>(workloadProfiles, (value) => pulumi.Input.encodeList<EnvironmentWorkloadProfile, Map<String, dynamic>>(value, (value) => value.toMap())),
       'zoneRedundancyEnabled': ?zoneRedundancyEnabled,
     };
   }
 
   factory EnvironmentState.fromMap(Map<String, dynamic> map) {
     return EnvironmentState(
-      customDomainVerificationId: (() {
-        final guardedValue = map['customDomainVerificationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      daprApplicationInsightsConnectionString: (() {
-        final guardedValue = map['daprApplicationInsightsConnectionString'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      defaultDomain: (() {
-        final guardedValue = map['defaultDomain'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dockerBridgeCidr: (() {
-        final guardedValue = map['dockerBridgeCidr'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          EnvironmentIdentity.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      infrastructureResourceGroupName: (() {
-        final guardedValue = map['infrastructureResourceGroupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      infrastructureSubnetId: (() {
-        final guardedValue = map['infrastructureSubnetId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      internalLoadBalancerEnabled: (() {
-        final guardedValue = map['internalLoadBalancerEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      logAnalyticsWorkspaceId: (() {
-        final guardedValue = map['logAnalyticsWorkspaceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      logsDestination: (() {
-        final guardedValue = map['logsDestination'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      mutualTlsEnabled: (() {
-        final guardedValue = map['mutualTlsEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      platformReservedCidr: (() {
-        final guardedValue = map['platformReservedCidr'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      platformReservedDnsIpAddress: (() {
-        final guardedValue = map['platformReservedDnsIpAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      publicNetworkAccess: (() {
-        final guardedValue = map['publicNetworkAccess'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: (() {
-        final guardedValue = map['resourceGroupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      staticIpAddress: (() {
-        final guardedValue = map['staticIpAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      workloadProfiles: (() {
-        final guardedValue = map['workloadProfiles'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<EnvironmentWorkloadProfile>(
-            guardedValue,
-            (value) => EnvironmentWorkloadProfile.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      zoneRedundancyEnabled: (() {
-        final guardedValue = map['zoneRedundancyEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      customDomainVerificationId: (() { final guardedValue = map['customDomainVerificationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      daprApplicationInsightsConnectionString: (() { final guardedValue = map['daprApplicationInsightsConnectionString']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      defaultDomain: (() { final guardedValue = map['defaultDomain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dockerBridgeCidr: (() { final guardedValue = map['dockerBridgeCidr']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EnvironmentIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      infrastructureResourceGroupName: (() { final guardedValue = map['infrastructureResourceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      infrastructureSubnetId: (() { final guardedValue = map['infrastructureSubnetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      internalLoadBalancerEnabled: (() { final guardedValue = map['internalLoadBalancerEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      logAnalyticsWorkspaceId: (() { final guardedValue = map['logAnalyticsWorkspaceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      logsDestination: (() { final guardedValue = map['logsDestination']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      mutualTlsEnabled: (() { final guardedValue = map['mutualTlsEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      platformReservedCidr: (() { final guardedValue = map['platformReservedCidr']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      platformReservedDnsIpAddress: (() { final guardedValue = map['platformReservedDnsIpAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      staticIpAddress: (() { final guardedValue = map['staticIpAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      workloadProfiles: (() { final guardedValue = map['workloadProfiles']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EnvironmentWorkloadProfile>(guardedValue, (value) => EnvironmentWorkloadProfile.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      zoneRedundancyEnabled: (() { final guardedValue = map['zoneRedundancyEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

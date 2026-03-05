@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ZypperRepositoryResponse {
   /// The location of the repository directory.
   final pulumi.Input<String> baseUrl;
-
   /// The display name of the repository.
   final pulumi.Input<String> displayName;
-
   /// URIs of GPG keys.
   final pulumi.Input<List<String>> gpgKeys;
 
@@ -39,3 +37,4 @@ class ZypperRepositoryResponse {
     );
   }
 }
+

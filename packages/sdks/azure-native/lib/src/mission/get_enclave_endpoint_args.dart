@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEnclaveEndpointArgs {
   /// The name of the Enclave Endpoint Resource
   final pulumi.Input<String> enclaveEndpointName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the enclaveResource Resource
   final pulumi.Input<String> virtualEnclaveName;
 
@@ -36,15 +34,10 @@ class GetEnclaveEndpointArgs {
 
   factory GetEnclaveEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GetEnclaveEndpointArgs(
-      enclaveEndpointName: pulumi.Input.fromValue(
-        map['enclaveEndpointName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      virtualEnclaveName: pulumi.Input.fromValue(
-        map['virtualEnclaveName'] as String,
-      ),
+      enclaveEndpointName: pulumi.Input.fromValue(map['enclaveEndpointName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      virtualEnclaveName: pulumi.Input.fromValue(map['virtualEnclaveName'] as String),
     );
   }
 }
+

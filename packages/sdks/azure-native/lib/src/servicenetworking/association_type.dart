@@ -14,3 +14,4 @@ enum AssociationType {
     throw ArgumentError('Unknown AssociationType value: $value');
   }
 }
+

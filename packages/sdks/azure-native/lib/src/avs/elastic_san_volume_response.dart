@@ -9,10 +9,14 @@ class ElasticSanVolumeResponse {
 
   /// Creates a new [ElasticSanVolumeResponse].
   /// [targetId] Azure resource ID of the Elastic SAN Volume
-  ElasticSanVolumeResponse({required this.targetId});
+  ElasticSanVolumeResponse({
+    required this.targetId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'targetId': targetId};
+    return <String, dynamic>{
+      'targetId': targetId,
+    };
   }
 
   factory ElasticSanVolumeResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class ElasticSanVolumeResponse {
     );
   }
 }
+

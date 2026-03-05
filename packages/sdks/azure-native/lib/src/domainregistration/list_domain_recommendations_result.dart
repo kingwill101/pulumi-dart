@@ -7,7 +7,6 @@ import 'name_identifier_response.dart';
 class ListDomainRecommendationsResult {
   /// Link to next page of resources.
   final String nextLink;
-
   /// Collection of resources.
   final List<NameIdentifierResponse> value;
 
@@ -22,23 +21,15 @@ class ListDomainRecommendationsResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nextLink': nextLink,
-      'value':
-          pulumi.Input.encodeList<NameIdentifierResponse, Map<String, dynamic>>(
-            value,
-            (value) => value.toMap(),
-          ),
+      'value': pulumi.Input.encodeList<NameIdentifierResponse, Map<String, dynamic>>(value, (value) => value.toMap()),
     };
   }
 
   factory ListDomainRecommendationsResult.fromMap(Map<String, dynamic> map) {
     return ListDomainRecommendationsResult(
       nextLink: map['nextLink'] as String,
-      value: pulumi.Input.decodeList<NameIdentifierResponse>(
-        map['value']!,
-        (value) => NameIdentifierResponse.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      value: pulumi.Input.decodeList<NameIdentifierResponse>(map['value']!, (value) => NameIdentifierResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

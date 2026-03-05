@@ -29,21 +29,12 @@ class GetHubIamPolicyNetworkconnectivityV1alpha1Args {
     };
   }
 
-  factory GetHubIamPolicyNetworkconnectivityV1alpha1Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetHubIamPolicyNetworkconnectivityV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return GetHubIamPolicyNetworkconnectivityV1alpha1Args(
       hubId: pulumi.Input.fromValue(map['hubId'] as String),
-      optionsRequestedPolicyVersion: (() {
-        final guardedValue = map['optionsRequestedPolicyVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

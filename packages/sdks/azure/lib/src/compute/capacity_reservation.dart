@@ -216,16 +216,12 @@ import 'capacity_reservation_state.dart';
 class CapacityReservation extends pulumi.CustomResource {
   /// The ID of the Capacity Reservation Group where the Capacity Reservation exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> capacityReservationGroupId;
-
   /// Specifies the name of this Capacity Reservation. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// A `sku` block as defined below.
   late final pulumi.Output<CapacityReservationSku> sku;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Specifies the Availability Zone for this Capacity Reservation. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> zone;
 
@@ -238,25 +234,14 @@ class CapacityReservation extends pulumi.CustomResource {
     CapacityReservationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:compute/capacityReservation:CapacityReservation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    capacityReservationGroupId = registerOutput<String>(
-      'capacityReservationGroupId',
-    );
+          'azure:compute/capacityReservation:CapacityReservation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    capacityReservationGroupId = registerOutput<String>('capacityReservationGroupId');
     this.name = registerOutput<String>('name');
-    sku = registerOutput<CapacityReservationSku>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CapacityReservationSku.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sku = registerOutput<CapacityReservationSku>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CapacityReservationSku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     zone = registerOutput<String?>('zone');
   }
@@ -279,25 +264,14 @@ class CapacityReservation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:compute/capacityReservation:CapacityReservation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    capacityReservationGroupId = registerOutput<String>(
-      'capacityReservationGroupId',
-    );
+          'azure:compute/capacityReservation:CapacityReservation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    capacityReservationGroupId = registerOutput<String>('capacityReservationGroupId');
     this.name = registerOutput<String>('name');
-    sku = registerOutput<CapacityReservationSku>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CapacityReservationSku.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sku = registerOutput<CapacityReservationSku>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CapacityReservationSku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     zone = registerOutput<String?>('zone');
   }

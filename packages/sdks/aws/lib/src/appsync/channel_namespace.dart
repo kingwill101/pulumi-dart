@@ -113,33 +113,24 @@ import 'channel_namespace_state.dart';
 class ChannelNamespace extends pulumi.CustomResource {
   /// Event API ID.
   late final pulumi.Output<String> apiId;
-
   /// ARN of the channel namespace.
   late final pulumi.Output<String> channelNamespaceArn;
-
   /// Event handler functions that run custom business logic to process published events and subscribe requests.
   late final pulumi.Output<String?> codeHandlers;
-
   /// Configuration for the `on_publish` and `on_subscribe` handlers. See Handler Configs below.
   late final pulumi.Output<ChannelNamespaceHandlerConfigs?> handlerConfigs;
-
   /// Name of the channel namespace.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
-
   /// Authorization modes to use for publishing messages on the channel namespace. This configuration overrides the default API authorization configuration. See Auth Modes below.
   late final pulumi.Output<List<Map<String, dynamic>>?> publishAuthModes;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Authorization modes to use for subscribing to messages on the channel namespace. This configuration overrides the default API authorization configuration. See Auth Modes below.
   late final pulumi.Output<List<Map<String, dynamic>>?> subscribeAuthModes;
-
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -152,32 +143,19 @@ class ChannelNamespace extends pulumi.CustomResource {
     ChannelNamespaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:appsync/channelNamespace:ChannelNamespace',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:appsync/channelNamespace:ChannelNamespace',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiId = registerOutput<String>('apiId');
     channelNamespaceArn = registerOutput<String>('channelNamespaceArn');
     codeHandlers = registerOutput<String?>('codeHandlers');
-    handlerConfigs = registerOutput<ChannelNamespaceHandlerConfigs?>(
-      'handlerConfigs',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ChannelNamespaceHandlerConfigs.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    handlerConfigs = registerOutput<ChannelNamespaceHandlerConfigs?>('handlerConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ChannelNamespaceHandlerConfigs.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    publishAuthModes = registerOutput<List<Map<String, dynamic>>?>(
-      'publishAuthModes',
-    );
+    publishAuthModes = registerOutput<List<Map<String, dynamic>>?>('publishAuthModes');
     region = registerOutput<String>('region');
-    subscribeAuthModes = registerOutput<List<Map<String, dynamic>>?>(
-      'subscribeAuthModes',
-    );
+    subscribeAuthModes = registerOutput<List<Map<String, dynamic>>?>('subscribeAuthModes');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
@@ -200,32 +178,19 @@ class ChannelNamespace extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:appsync/channelNamespace:ChannelNamespace',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:appsync/channelNamespace:ChannelNamespace',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiId = registerOutput<String>('apiId');
     channelNamespaceArn = registerOutput<String>('channelNamespaceArn');
     codeHandlers = registerOutput<String?>('codeHandlers');
-    handlerConfigs = registerOutput<ChannelNamespaceHandlerConfigs?>(
-      'handlerConfigs',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ChannelNamespaceHandlerConfigs.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    handlerConfigs = registerOutput<ChannelNamespaceHandlerConfigs?>('handlerConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ChannelNamespaceHandlerConfigs.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    publishAuthModes = registerOutput<List<Map<String, dynamic>>?>(
-      'publishAuthModes',
-    );
+    publishAuthModes = registerOutput<List<Map<String, dynamic>>?>('publishAuthModes');
     region = registerOutput<String>('region');
-    subscribeAuthModes = registerOutput<List<Map<String, dynamic>>?>(
-      'subscribeAuthModes',
-    );
+    subscribeAuthModes = registerOutput<List<Map<String, dynamic>>?>('subscribeAuthModes');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }

@@ -9,10 +9,14 @@ class GetInstanceGcsSource {
 
   /// Creates a new [GetInstanceGcsSource].
   /// [uris] URIs of the GCS objects to import.
-  GetInstanceGcsSource({required this.uris});
+  GetInstanceGcsSource({
+    required this.uris,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'uris': uris};
+    return <String, dynamic>{
+      'uris': uris,
+    };
   }
 
   factory GetInstanceGcsSource.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class GetInstanceGcsSource {
     );
   }
 }
+

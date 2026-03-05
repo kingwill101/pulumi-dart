@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AlertRuleThreatIntelligenceArgs {
   /// The GUID of the alert rule template which is used for this Sentinel Threat Intelligence Alert Rule. Changing this forces a new Sentinel Threat Intelligence Alert Rule to be created.
   final pulumi.Input<String> alertRuleTemplateGuid;
-
   /// Whether the Threat Intelligence Alert rule enabled? Defaults to `true`.
   final pulumi.Input<bool>? enabled;
-
   /// The ID of the Log Analytics Workspace this Sentinel Threat Intelligence Alert Rule belongs to. Changing this forces a new Sentinel Threat Intelligence Alert Rule to be created.
   final pulumi.Input<String> logAnalyticsWorkspaceId;
-
   /// The name which should be used for this Sentinel Threat Intelligence Alert Rule. Changing this forces a new Sentinel Threat Intelligence Alert Rule to be created.
   final pulumi.Input<String>? name;
 
@@ -42,22 +39,11 @@ class AlertRuleThreatIntelligenceArgs {
 
   factory AlertRuleThreatIntelligenceArgs.fromMap(Map<String, dynamic> map) {
     return AlertRuleThreatIntelligenceArgs(
-      alertRuleTemplateGuid: pulumi.Input.fromValue(
-        map['alertRuleTemplateGuid'] as String,
-      ),
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      logAnalyticsWorkspaceId: pulumi.Input.fromValue(
-        map['logAnalyticsWorkspaceId'] as String,
-      ),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      alertRuleTemplateGuid: pulumi.Input.fromValue(map['alertRuleTemplateGuid'] as String),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      logAnalyticsWorkspaceId: pulumi.Input.fromValue(map['logAnalyticsWorkspaceId'] as String),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

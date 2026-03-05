@@ -7,25 +7,18 @@ import 'secret.dart';
 class Oauth2AuthCodeFlow {
   /// Authorization code to be exchanged for access and refresh tokens.
   final pulumi.Input<String>? authCode;
-
   /// Auth URL for Authorization Code Flow
   final pulumi.Input<String>? authUri;
-
   /// Client ID for user-provided OAuth app.
   final pulumi.Input<String>? clientId;
-
   /// Client secret for user-provided OAuth app.
   final pulumi.Input<Secret>? clientSecret;
-
   /// Whether to enable PKCE when the user performs the auth code flow.
   final pulumi.Input<bool>? enablePkce;
-
   /// PKCE verifier to be used during the auth code exchange.
   final pulumi.Input<String>? pkceVerifier;
-
   /// Redirect URI to be provided during the auth code exchange.
   final pulumi.Input<String>? redirectUri;
-
   /// Scopes the connection will request when the user performs the auth code flow.
   final pulumi.Input<List<String>>? scopes;
 
@@ -54,11 +47,7 @@ class Oauth2AuthCodeFlow {
       'authCode': ?authCode,
       'authUri': ?authUri,
       'clientId': ?clientId,
-      'clientSecret':
-          ?pulumi.Input.mapOptionalInputValue<Secret, Map<String, dynamic>>(
-            clientSecret,
-            (value) => value.toMap(),
-          ),
+      'clientSecret': ?pulumi.Input.mapOptionalInputValue<Secret, Map<String, dynamic>>(clientSecret, (value) => value.toMap()),
       'enablePkce': ?enablePkce,
       'pkceVerifier': ?pkceVerifier,
       'redirectUri': ?redirectUri,
@@ -68,48 +57,15 @@ class Oauth2AuthCodeFlow {
 
   factory Oauth2AuthCodeFlow.fromMap(Map<String, dynamic> map) {
     return Oauth2AuthCodeFlow(
-      authCode: (() {
-        final guardedValue = map['authCode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      authUri: (() {
-        final guardedValue = map['authUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      clientId: (() {
-        final guardedValue = map['clientId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      clientSecret: (() {
-        final guardedValue = map['clientSecret'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          Secret.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      enablePkce: (() {
-        final guardedValue = map['enablePkce'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      pkceVerifier: (() {
-        final guardedValue = map['pkceVerifier'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      redirectUri: (() {
-        final guardedValue = map['redirectUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      scopes: (() {
-        final guardedValue = map['scopes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      authCode: (() { final guardedValue = map['authCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      authUri: (() { final guardedValue = map['authUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      clientId: (() { final guardedValue = map['clientId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      clientSecret: (() { final guardedValue = map['clientSecret']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Secret.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      enablePkce: (() { final guardedValue = map['enablePkce']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      pkceVerifier: (() { final guardedValue = map['pkceVerifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      redirectUri: (() { final guardedValue = map['redirectUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      scopes: (() { final guardedValue = map['scopes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

@@ -355,16 +355,12 @@ import 'subnet_service_endpoint_storage_policy_state.dart';
 class SubnetServiceEndpointStoragePolicy extends pulumi.CustomResource {
   /// A `definition` block as defined below
   late final pulumi.Output<List<Map<String, dynamic>>?> definitions;
-
   /// The Azure Region where the Subnet Service Endpoint Storage Policy should exist. Changing this forces a new Subnet Service Endpoint Storage Policy to be created.
   late final pulumi.Output<String> location;
-
   /// The name which should be used for this Subnet Service Endpoint Storage Policy. Changing this forces a new Subnet Service Endpoint Storage Policy to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the Resource Group where the Subnet Service Endpoint Storage Policy should exist. Changing this forces a new Subnet Service Endpoint Storage Policy to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags which should be assigned to the Subnet Service Endpoint Storage Policy.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -377,11 +373,11 @@ class SubnetServiceEndpointStoragePolicy extends pulumi.CustomResource {
     SubnetServiceEndpointStoragePolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/subnetServiceEndpointStoragePolicy:SubnetServiceEndpointStoragePolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/subnetServiceEndpointStoragePolicy:SubnetServiceEndpointStoragePolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     definitions = registerOutput<List<Map<String, dynamic>>?>('definitions');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -407,11 +403,11 @@ class SubnetServiceEndpointStoragePolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/subnetServiceEndpointStoragePolicy:SubnetServiceEndpointStoragePolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/subnetServiceEndpointStoragePolicy:SubnetServiceEndpointStoragePolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     definitions = registerOutput<List<Map<String, dynamic>>?>('definitions');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

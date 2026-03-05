@@ -469,56 +469,38 @@ import 'system_data_response.dart';
 class ConfigurationStore extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The creation date of configuration store.
   late final pulumi.Output<String> creationDate;
-
   /// Property specifying the configuration of data plane proxy for Azure Resource Manager (ARM).
   late final pulumi.Output<DataPlaneProxyPropertiesResponse?> dataPlaneProxy;
-
   /// Disables all authentication methods other than AAD authentication.
   late final pulumi.Output<bool?> disableLocalAuth;
-
   /// Property specifying whether protection against purge is enabled for this configuration store.
   late final pulumi.Output<bool?> enablePurgeProtection;
-
   /// The encryption settings of the configuration store.
   late final pulumi.Output<EncryptionPropertiesResponse?> encryption;
-
   /// The DNS endpoint where the configuration store API will be available.
   late final pulumi.Output<String> endpoint;
-
   /// The managed identity information, if configured.
   late final pulumi.Output<ResourceIdentityResponse?> identity;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The list of private endpoint connections that are set up for this resource.
-  late final pulumi.Output<List<Map<String, dynamic>>>
-  privateEndpointConnections;
-
+  late final pulumi.Output<List<Map<String, dynamic>>> privateEndpointConnections;
   /// The provisioning state of the configuration store.
   late final pulumi.Output<String> provisioningState;
-
   /// Control permission for data plane traffic coming from public networks while private endpoint is enabled.
   late final pulumi.Output<String?> publicNetworkAccess;
-
   /// The sku of the configuration store.
   late final pulumi.Output<SkuResponse> sku;
-
   /// The amount of time in days that the configuration store will be retained when it is soft deleted.
   late final pulumi.Output<int?> softDeleteRetentionInDays;
-
   /// Resource system metadata.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -531,76 +513,27 @@ class ConfigurationStore extends pulumi.CustomResource {
     ConfigurationStoreArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:appconfiguration:ConfigurationStore',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:appconfiguration:ConfigurationStore',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     creationDate = registerOutput<String>('creationDate');
-    dataPlaneProxy = registerOutput<DataPlaneProxyPropertiesResponse?>(
-      'dataPlaneProxy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DataPlaneProxyPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    dataPlaneProxy = registerOutput<DataPlaneProxyPropertiesResponse?>('dataPlaneProxy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataPlaneProxyPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     disableLocalAuth = registerOutput<bool?>('disableLocalAuth');
     enablePurgeProtection = registerOutput<bool?>('enablePurgeProtection');
-    encryption = registerOutput<EncryptionPropertiesResponse?>(
-      'encryption',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EncryptionPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    encryption = registerOutput<EncryptionPropertiesResponse?>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     endpoint = registerOutput<String>('endpoint');
-    identity = registerOutput<ResourceIdentityResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResourceIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<ResourceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
-      'privateEndpointConnections',
-    );
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>('privateEndpointConnections');
     provisioningState = registerOutput<String>('provisioningState');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    sku = registerOutput<SkuResponse>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    softDeleteRetentionInDays = registerOutput<int?>(
-      'softDeleteRetentionInDays',
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sku = registerOutput<SkuResponse>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    softDeleteRetentionInDays = registerOutput<int?>('softDeleteRetentionInDays');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

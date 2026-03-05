@@ -8,7 +8,6 @@ import 'managed_disk_encryption_response.dart';
 class EncryptionEntitiesDefinitionResponse {
   /// Encryption properties for the databricks managed disks.
   final pulumi.Input<ManagedDiskEncryptionResponse>? managedDisk;
-
   /// Encryption properties for the databricks managed services.
   final pulumi.Input<EncryptionV2Response>? managedServices;
 
@@ -22,41 +21,16 @@ class EncryptionEntitiesDefinitionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'managedDisk':
-          ?pulumi.Input.mapOptionalInputValue<
-            ManagedDiskEncryptionResponse,
-            Map<String, dynamic>
-          >(managedDisk, (value) => value.toMap()),
-      'managedServices':
-          ?pulumi.Input.mapOptionalInputValue<
-            EncryptionV2Response,
-            Map<String, dynamic>
-          >(managedServices, (value) => value.toMap()),
+      'managedDisk': ?pulumi.Input.mapOptionalInputValue<ManagedDiskEncryptionResponse, Map<String, dynamic>>(managedDisk, (value) => value.toMap()),
+      'managedServices': ?pulumi.Input.mapOptionalInputValue<EncryptionV2Response, Map<String, dynamic>>(managedServices, (value) => value.toMap()),
     };
   }
 
-  factory EncryptionEntitiesDefinitionResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EncryptionEntitiesDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionEntitiesDefinitionResponse(
-      managedDisk: (() {
-        final guardedValue = map['managedDisk'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ManagedDiskEncryptionResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      managedServices: (() {
-        final guardedValue = map['managedServices'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          EncryptionV2Response.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      managedDisk: (() { final guardedValue = map['managedDisk']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedDiskEncryptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      managedServices: (() { final guardedValue = map['managedServices']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EncryptionV2Response.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

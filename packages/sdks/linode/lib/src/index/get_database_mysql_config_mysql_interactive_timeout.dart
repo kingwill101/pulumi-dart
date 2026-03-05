@@ -37,9 +37,7 @@ class GetDatabaseMysqlConfigMysqlInteractiveTimeout {
     };
   }
 
-  factory GetDatabaseMysqlConfigMysqlInteractiveTimeout.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDatabaseMysqlConfigMysqlInteractiveTimeout.fromMap(Map<String, dynamic> map) {
     return GetDatabaseMysqlConfigMysqlInteractiveTimeout(
       description: pulumi.Input.fromValue(map['description'] as String),
       example: pulumi.Input.fromValue(map['example'] as int),
@@ -50,3 +48,4 @@ class GetDatabaseMysqlConfigMysqlInteractiveTimeout {
     );
   }
 }
+

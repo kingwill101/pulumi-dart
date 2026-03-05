@@ -17,37 +17,23 @@ class IngressRulePatchNetworkingK8sIoV1beta1 {
   /// Creates a new [IngressRulePatchNetworkingK8sIoV1beta1].
   /// [host] Host is the fully qualified domain name of a network host, as defined by RFC 3986. Note the following deviations from the "host" part of the URI as defined in the RFC: 1. IPs are not allowed. Currently an IngressRuleValue can only apply to the
   /// [http] Optional.
-  IngressRulePatchNetworkingK8sIoV1beta1({this.host, this.http});
+  IngressRulePatchNetworkingK8sIoV1beta1({
+    this.host,
+    this.http,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'host': ?host,
-      'http':
-          ?pulumi.Input.mapOptionalInputValue<
-            HTTPIngressRuleValuePatchNetworkingK8sIoV1beta1,
-            Map<String, dynamic>
-          >(http, (value) => value.toMap()),
+      'http': ?pulumi.Input.mapOptionalInputValue<HTTPIngressRuleValuePatchNetworkingK8sIoV1beta1, Map<String, dynamic>>(http, (value) => value.toMap()),
     };
   }
 
-  factory IngressRulePatchNetworkingK8sIoV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory IngressRulePatchNetworkingK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return IngressRulePatchNetworkingK8sIoV1beta1(
-      host: (() {
-        final guardedValue = map['host'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      http: (() {
-        final guardedValue = map['http'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          HTTPIngressRuleValuePatchNetworkingK8sIoV1beta1.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      host: (() { final guardedValue = map['host']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      http: (() { final guardedValue = map['http']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HTTPIngressRuleValuePatchNetworkingK8sIoV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

@@ -9,52 +9,36 @@ import 'server_administrators_response.dart';
 class GetServerDetailsResult {
   /// A collection of AS server administrators
   final ServerAdministratorsResponse? asAdministrators;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The SAS container URI to the backup container.
   final String? backupBlobContainerUri;
-
   /// The gateway details configured for the AS server.
   final GatewayDetailsResponse? gatewayDetails;
-
   /// An identifier that represents the Analysis Services resource.
   final String id;
-
   /// The firewall settings for the AS server.
   final IPv4FirewallSettingsResponse? ipV4FirewallSettings;
-
   /// Location of the Analysis Services resource.
   final String location;
-
   /// The managed mode of the server (0 = not managed, 1 = managed).
   final int? managedMode;
-
   /// The name of the Analysis Services resource.
   final String name;
-
   /// The current deployment state of Analysis Services resource. The provisioningState is to indicate states for resource provisioning.
   final String provisioningState;
-
   /// How the read-write server's participation in the query pool is controlled.&lt;br/&gt;It can have the following values: &lt;ul&gt;&lt;li&gt;readOnly - indicates that the read-write server is intended not to participate in query operations&lt;/li&gt;&lt;li&gt;all - indicates that the read-write server can participate in query operations&lt;/li&gt;&lt;/ul&gt;Specifying readOnly when capacity is 1 results in error.
   final String? querypoolConnectionMode;
-
   /// The full name of the Analysis Services resource.
   final String serverFullName;
-
   /// The server monitor mode for AS server
   final int? serverMonitorMode;
-
   /// The SKU of the Analysis Services resource.
   final ResourceSkuResponse sku;
-
   /// The current state of Analysis Services resource. The state is to indicate more states outside of resource provisioning.
   final String state;
-
   /// Key-value pairs of additional resource provisioning properties.
   final Map<String, String>? tags;
-
   /// The type of the Analysis Services resource.
   final String type;
 
@@ -120,63 +104,24 @@ class GetServerDetailsResult {
 
   factory GetServerDetailsResult.fromMap(Map<String, dynamic> map) {
     return GetServerDetailsResult(
-      asAdministrators: (() {
-        final guardedValue = map['asAdministrators'];
-        if (guardedValue == null) return null;
-        return ServerAdministratorsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      asAdministrators: (() { final guardedValue = map['asAdministrators']; if (guardedValue == null) return null; return ServerAdministratorsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       azureApiVersion: map['azureApiVersion'] as String,
-      backupBlobContainerUri: (() {
-        final guardedValue = map['backupBlobContainerUri'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      gatewayDetails: (() {
-        final guardedValue = map['gatewayDetails'];
-        if (guardedValue == null) return null;
-        return GatewayDetailsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      backupBlobContainerUri: (() { final guardedValue = map['backupBlobContainerUri']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      gatewayDetails: (() { final guardedValue = map['gatewayDetails']; if (guardedValue == null) return null; return GatewayDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: map['id'] as String,
-      ipV4FirewallSettings: (() {
-        final guardedValue = map['ipV4FirewallSettings'];
-        if (guardedValue == null) return null;
-        return IPv4FirewallSettingsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      ipV4FirewallSettings: (() { final guardedValue = map['ipV4FirewallSettings']; if (guardedValue == null) return null; return IPv4FirewallSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       location: map['location'] as String,
-      managedMode: (() {
-        final guardedValue = map['managedMode'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
+      managedMode: (() { final guardedValue = map['managedMode']; if (guardedValue == null) return null; return guardedValue as int; })(),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      querypoolConnectionMode: (() {
-        final guardedValue = map['querypoolConnectionMode'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      querypoolConnectionMode: (() { final guardedValue = map['querypoolConnectionMode']; if (guardedValue == null) return null; return guardedValue as String; })(),
       serverFullName: map['serverFullName'] as String,
-      serverMonitorMode: (() {
-        final guardedValue = map['serverMonitorMode'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      sku: ResourceSkuResponse.fromMap(
-        (map['sku']! as Map).cast<String, dynamic>(),
-      ),
+      serverMonitorMode: (() { final guardedValue = map['serverMonitorMode']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      sku: ResourceSkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
       state: map['state'] as String,
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

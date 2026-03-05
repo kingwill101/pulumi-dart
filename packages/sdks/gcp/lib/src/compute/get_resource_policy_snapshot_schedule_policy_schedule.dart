@@ -7,22 +7,11 @@ import 'get_resource_policy_snapshot_schedule_policy_schedule_weekly_schedule.da
 
 class GetResourcePolicySnapshotSchedulePolicySchedule {
   /// The policy will execute every nth day at the specified time.
-  final pulumi.Input<
-    List<GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule>
-  >
-  dailySchedules;
-
+  final pulumi.Input<List<GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule>> dailySchedules;
   /// The policy will execute every nth hour starting at the specified time.
-  final pulumi.Input<
-    List<GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule>
-  >
-  hourlySchedules;
-
+  final pulumi.Input<List<GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule>> hourlySchedules;
   /// Allows specifying a snapshot time for each day of the week.
-  final pulumi.Input<
-    List<GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule>
-  >
-  weeklySchedules;
+  final pulumi.Input<List<GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule>> weeklySchedules;
 
   /// Creates a new [GetResourcePolicySnapshotSchedulePolicySchedule].
   /// [dailySchedules] The policy will execute every nth day at the specified time.
@@ -36,82 +25,18 @@ class GetResourcePolicySnapshotSchedulePolicySchedule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dailySchedules':
-          pulumi.Input.mapInputValue<
-            List<GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule>,
-            List<Map<String, dynamic>>
-          >(
-            dailySchedules,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'hourlySchedules':
-          pulumi.Input.mapInputValue<
-            List<GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule>,
-            List<Map<String, dynamic>>
-          >(
-            hourlySchedules,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'weeklySchedules':
-          pulumi.Input.mapInputValue<
-            List<GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule>,
-            List<Map<String, dynamic>>
-          >(
-            weeklySchedules,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'dailySchedules': pulumi.Input.mapInputValue<List<GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule>, List<Map<String, dynamic>>>(dailySchedules, (value) => pulumi.Input.encodeList<GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'hourlySchedules': pulumi.Input.mapInputValue<List<GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule>, List<Map<String, dynamic>>>(hourlySchedules, (value) => pulumi.Input.encodeList<GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'weeklySchedules': pulumi.Input.mapInputValue<List<GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule>, List<Map<String, dynamic>>>(weeklySchedules, (value) => pulumi.Input.encodeList<GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory GetResourcePolicySnapshotSchedulePolicySchedule.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetResourcePolicySnapshotSchedulePolicySchedule.fromMap(Map<String, dynamic> map) {
     return GetResourcePolicySnapshotSchedulePolicySchedule(
-      dailySchedules: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule
-        >(
-          map['dailySchedules']!,
-          (value) =>
-              GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
-      hourlySchedules: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule
-        >(
-          map['hourlySchedules']!,
-          (value) =>
-              GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
-      weeklySchedules: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule
-        >(
-          map['weeklySchedules']!,
-          (value) =>
-              GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
+      dailySchedules: pulumi.Input.fromValue(pulumi.Input.decodeList<GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule>(map['dailySchedules']!, (value) => GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule.fromMap((value as Map).cast<String, dynamic>()))),
+      hourlySchedules: pulumi.Input.fromValue(pulumi.Input.decodeList<GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule>(map['hourlySchedules']!, (value) => GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule.fromMap((value as Map).cast<String, dynamic>()))),
+      weeklySchedules: pulumi.Input.fromValue(pulumi.Input.decodeList<GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule>(map['weeklySchedules']!, (value) => GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

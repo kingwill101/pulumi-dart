@@ -9,21 +9,20 @@ class ListEndpointKeysResult {
 
   /// Creates a new [ListEndpointKeysResult].
   /// [keys] Dictionary of Keys for the endpoint.
-  ListEndpointKeysResult({this.keys});
+  ListEndpointKeysResult({
+    this.keys,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'keys': ?keys?.toMap()};
+    return <String, dynamic>{
+      'keys': ?keys?.toMap(),
+    };
   }
 
   factory ListEndpointKeysResult.fromMap(Map<String, dynamic> map) {
     return ListEndpointKeysResult(
-      keys: (() {
-        final guardedValue = map['keys'];
-        if (guardedValue == null) return null;
-        return AccountApiKeysResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      keys: (() { final guardedValue = map['keys']; if (guardedValue == null) return null; return AccountApiKeysResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }
 }
+

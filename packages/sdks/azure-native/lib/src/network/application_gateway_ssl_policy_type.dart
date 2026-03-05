@@ -13,8 +13,7 @@ enum ApplicationGatewaySslPolicyType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ApplicationGatewaySslPolicyType value: $value',
-    );
+    throw ArgumentError('Unknown ApplicationGatewaySslPolicyType value: $value');
   }
 }
+

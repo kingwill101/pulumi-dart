@@ -9,42 +9,30 @@ import 'get_reservation_sub_block_reservation_sub_block_maintenance.dart';
 class GetReservationSubBlockResult {
   /// Creation timestamp in RFC3339 text format.
   final String creationTimestamp;
-
   /// Health information for the reservation sub-block. Structure is documented below.
   final List<GetReservationSubBlockHealthInfo> healthInfos;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The number of instances that are currently in use on this reservation sub-block.
   final int inUseCount;
-
   /// Type of the resource. Always `compute#reservationSubBlock` for reservation sub-blocks.
   final String kind;
   final String name;
-
   /// The physical topology of the reservation sub-block. Structure is documented below.
   final List<GetReservationSubBlockPhysicalTopology> physicalTopologies;
   final String project;
   final String reservation;
   final String reservationBlock;
-
   /// Maintenance information for this reservation sub-block. Structure is documented below.
-  final List<GetReservationSubBlockReservationSubBlockMaintenance>
-  reservationSubBlockMaintenances;
-
+  final List<GetReservationSubBlockReservationSubBlockMaintenance> reservationSubBlockMaintenances;
   /// The unique identifier for the resource.
   final String resourceId;
-
   /// Server-defined fully-qualified URL for this resource.
   final String selfLink;
-
   /// Server-defined URL for this resource with the resource id.
   final String selfLinkWithId;
-
   /// Status of the reservation sub-block.
   final String status;
-
   /// The number of hosts that are allocated in this reservation sub-block.
   final int subBlockCount;
   final String? zone;
@@ -90,28 +78,16 @@ class GetReservationSubBlockResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'creationTimestamp': creationTimestamp,
-      'healthInfos':
-          pulumi.Input.encodeList<
-            GetReservationSubBlockHealthInfo,
-            Map<String, dynamic>
-          >(healthInfos, (value) => value.toMap()),
+      'healthInfos': pulumi.Input.encodeList<GetReservationSubBlockHealthInfo, Map<String, dynamic>>(healthInfos, (value) => value.toMap()),
       'id': id,
       'inUseCount': inUseCount,
       'kind': kind,
       'name': name,
-      'physicalTopologies':
-          pulumi.Input.encodeList<
-            GetReservationSubBlockPhysicalTopology,
-            Map<String, dynamic>
-          >(physicalTopologies, (value) => value.toMap()),
+      'physicalTopologies': pulumi.Input.encodeList<GetReservationSubBlockPhysicalTopology, Map<String, dynamic>>(physicalTopologies, (value) => value.toMap()),
       'project': project,
       'reservation': reservation,
       'reservationBlock': reservationBlock,
-      'reservationSubBlockMaintenances':
-          pulumi.Input.encodeList<
-            GetReservationSubBlockReservationSubBlockMaintenance,
-            Map<String, dynamic>
-          >(reservationSubBlockMaintenances, (value) => value.toMap()),
+      'reservationSubBlockMaintenances': pulumi.Input.encodeList<GetReservationSubBlockReservationSubBlockMaintenance, Map<String, dynamic>>(reservationSubBlockMaintenances, (value) => value.toMap()),
       'resourceId': resourceId,
       'selfLink': selfLink,
       'selfLinkWithId': selfLinkWithId,
@@ -124,46 +100,23 @@ class GetReservationSubBlockResult {
   factory GetReservationSubBlockResult.fromMap(Map<String, dynamic> map) {
     return GetReservationSubBlockResult(
       creationTimestamp: map['creationTimestamp'] as String,
-      healthInfos: pulumi.Input.decodeList<GetReservationSubBlockHealthInfo>(
-        map['healthInfos']!,
-        (value) => GetReservationSubBlockHealthInfo.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      healthInfos: pulumi.Input.decodeList<GetReservationSubBlockHealthInfo>(map['healthInfos']!, (value) => GetReservationSubBlockHealthInfo.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       inUseCount: map['inUseCount'] as int,
       kind: map['kind'] as String,
       name: map['name'] as String,
-      physicalTopologies:
-          pulumi.Input.decodeList<GetReservationSubBlockPhysicalTopology>(
-            map['physicalTopologies']!,
-            (value) => GetReservationSubBlockPhysicalTopology.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      physicalTopologies: pulumi.Input.decodeList<GetReservationSubBlockPhysicalTopology>(map['physicalTopologies']!, (value) => GetReservationSubBlockPhysicalTopology.fromMap((value as Map).cast<String, dynamic>())),
       project: map['project'] as String,
       reservation: map['reservation'] as String,
       reservationBlock: map['reservationBlock'] as String,
-      reservationSubBlockMaintenances:
-          pulumi.Input.decodeList<
-            GetReservationSubBlockReservationSubBlockMaintenance
-          >(
-            map['reservationSubBlockMaintenances']!,
-            (value) =>
-                GetReservationSubBlockReservationSubBlockMaintenance.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      reservationSubBlockMaintenances: pulumi.Input.decodeList<GetReservationSubBlockReservationSubBlockMaintenance>(map['reservationSubBlockMaintenances']!, (value) => GetReservationSubBlockReservationSubBlockMaintenance.fromMap((value as Map).cast<String, dynamic>())),
       resourceId: map['resourceId'] as String,
       selfLink: map['selfLink'] as String,
       selfLinkWithId: map['selfLinkWithId'] as String,
       status: map['status'] as String,
       subBlockCount: map['subBlockCount'] as int,
-      zone: (() {
-        final guardedValue = map['zone'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      zone: (() { final guardedValue = map['zone']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

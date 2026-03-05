@@ -144,19 +144,14 @@ import 'virtual_network_rule_args.dart';
 class VirtualNetworkRule extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Create firewall rule before the virtual network has vnet service endpoint enabled.
   late final pulumi.Output<bool?> ignoreMissingVnetServiceEndpoint;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Virtual Network Rule State
   late final pulumi.Output<String> state;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// The ARM resource id of the virtual network subnet.
   late final pulumi.Output<String> virtualNetworkSubnetId;
 
@@ -169,15 +164,13 @@ class VirtualNetworkRule extends pulumi.CustomResource {
     VirtualNetworkRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:dbformariadb:VirtualNetworkRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:dbformariadb:VirtualNetworkRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    ignoreMissingVnetServiceEndpoint = registerOutput<bool?>(
-      'ignoreMissingVnetServiceEndpoint',
-    );
+    ignoreMissingVnetServiceEndpoint = registerOutput<bool?>('ignoreMissingVnetServiceEndpoint');
     this.name = registerOutput<String>('name');
     state = registerOutput<String>('state');
     type = registerOutput<String>('type');

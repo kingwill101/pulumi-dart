@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegistryTaskTimerTrigger {
   /// Should the trigger be enabled? Defaults to `true`.
   final pulumi.Input<bool>? enabled;
-
   /// The name which should be used for this trigger.
   final pulumi.Input<String> name;
-
   /// The CRON expression for the task schedule.
   final pulumi.Input<String> schedule;
 
@@ -32,13 +30,10 @@ class RegistryTaskTimerTrigger {
 
   factory RegistryTaskTimerTrigger.fromMap(Map<String, dynamic> map) {
     return RegistryTaskTimerTrigger(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       schedule: pulumi.Input.fromValue(map['schedule'] as String),
     );
   }
 }
+

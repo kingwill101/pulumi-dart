@@ -31,11 +31,7 @@ class GetNetworkPackagesResult {
       'id': id,
       'ids': ids,
       'outputFile': ?outputFile,
-      'packages':
-          pulumi.Input.encodeList<
-            GetNetworkPackagesPackage,
-            Map<String, dynamic>
-          >(packages, (value) => value.toMap()),
+      'packages': pulumi.Input.encodeList<GetNetworkPackagesPackage, Map<String, dynamic>>(packages, (value) => value.toMap()),
       'status': ?status,
     };
   }
@@ -44,22 +40,10 @@ class GetNetworkPackagesResult {
     return GetNetworkPackagesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      packages: pulumi.Input.decodeList<GetNetworkPackagesPackage>(
-        map['packages']!,
-        (value) => GetNetworkPackagesPackage.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      packages: pulumi.Input.decodeList<GetNetworkPackagesPackage>(map['packages']!, (value) => GetNetworkPackagesPackage.fromMap((value as Map).cast<String, dynamic>())),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

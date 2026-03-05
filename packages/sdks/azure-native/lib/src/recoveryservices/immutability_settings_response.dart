@@ -8,19 +8,20 @@ class ImmutabilitySettingsResponse {
 
   /// Creates a new [ImmutabilitySettingsResponse].
   /// [state] Optional.
-  ImmutabilitySettingsResponse({this.state});
+  ImmutabilitySettingsResponse({
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'state': ?state};
+    return <String, dynamic>{
+      'state': ?state,
+    };
   }
 
   factory ImmutabilitySettingsResponse.fromMap(Map<String, dynamic> map) {
     return ImmutabilitySettingsResponse(
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

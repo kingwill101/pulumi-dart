@@ -9,10 +9,14 @@ class ConnectorProperties {
 
   /// Creates a new [ConnectorProperties].
   /// [connectorType] connector type
-  ConnectorProperties({required this.connectorType});
+  ConnectorProperties({
+    required this.connectorType,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'connectorType': connectorType};
+    return <String, dynamic>{
+      'connectorType': connectorType,
+    };
   }
 
   factory ConnectorProperties.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class ConnectorProperties {
     );
   }
 }
+

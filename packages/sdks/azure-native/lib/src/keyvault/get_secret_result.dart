@@ -6,22 +6,16 @@ import 'secret_properties_response.dart';
 class GetSecretResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Fully qualified identifier of the key vault resource.
   final String id;
-
   /// Azure location of the key vault resource.
   final String location;
-
   /// Name of the key vault resource.
   final String name;
-
   /// Properties of the secret
   final SecretPropertiesResponse properties;
-
   /// Tags assigned to the key vault resource.
   final Map<String, String> tags;
-
   /// Resource type of the key vault resource.
   final String type;
 
@@ -61,11 +55,10 @@ class GetSecretResult {
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      properties: SecretPropertiesResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
+      properties: SecretPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
       tags: (map['tags'] as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }
 }
+

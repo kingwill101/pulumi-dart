@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpnServerConfigurationRadiusServer {
   /// The Address of the Radius Server.
   final pulumi.Input<String> address;
-
   /// The Score of the Radius Server determines the priority of the server. Ranges from 1 to 30.
   final pulumi.Input<int> score;
-
   /// The Secret used to communicate with the Radius Server.
   final pulumi.Input<String> secret;
 
@@ -38,3 +36,4 @@ class VpnServerConfigurationRadiusServer {
     );
   }
 }
+

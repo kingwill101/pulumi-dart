@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketObjectRetentionResponse {
   /// The bucket's object retention mode, can only be Unlocked or Locked.
   final pulumi.Input<String> mode;
-
   /// A time in RFC 3339 format until which object retention protects this object.
   final pulumi.Input<String> retainUntilTime;
 
@@ -19,7 +18,10 @@ class BucketObjectRetentionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'mode': mode, 'retainUntilTime': retainUntilTime};
+    return <String, dynamic>{
+      'mode': mode,
+      'retainUntilTime': retainUntilTime,
+    };
   }
 
   factory BucketObjectRetentionResponse.fromMap(Map<String, dynamic> map) {
@@ -29,3 +31,4 @@ class BucketObjectRetentionResponse {
     );
   }
 }
+

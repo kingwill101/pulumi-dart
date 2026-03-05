@@ -414,25 +414,18 @@ import 'sandbox_custom_image_args.dart';
 class SandboxCustomImage extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The base image name on which the custom image is built on top of. It can be one of the LanguageExtensionImageName (e.g.: 'Python3_10_8', 'Python3_10_8_DL') or the name of an existing custom image. Either this property or languageVersion should be specified.
   late final pulumi.Output<String?> baseImageName;
-
   /// The language name, for example Python.
   late final pulumi.Output<String> language;
-
   /// The version of the language. Either this property or baseImageName should be specified.
   late final pulumi.Output<String?> languageVersion;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The provisioned state of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The requirements file content.
   late final pulumi.Output<String?> requirementsFileContent;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -445,20 +438,18 @@ class SandboxCustomImage extends pulumi.CustomResource {
     SandboxCustomImageArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:kusto:SandboxCustomImage',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:kusto:SandboxCustomImage',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     baseImageName = registerOutput<String?>('baseImageName');
     language = registerOutput<String>('language');
     languageVersion = registerOutput<String?>('languageVersion');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    requirementsFileContent = registerOutput<String?>(
-      'requirementsFileContent',
-    );
+    requirementsFileContent = registerOutput<String?>('requirementsFileContent');
     type = registerOutput<String>('type');
   }
 }

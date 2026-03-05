@@ -217,13 +217,10 @@ import 'service_hybrid_double_write_state.dart';
 class ServiceHybridDoubleWrite extends pulumi.CustomResource {
   /// Target Namespace.
   late final pulumi.Output<String> namespace;
-
   /// Source Namespace.
   late final pulumi.Output<String> sourceNamespace;
-
   /// Source UserId.
   late final pulumi.Output<String> sourceUserId;
-
   /// Target UserId.
   late final pulumi.Output<String> userId;
 
@@ -236,11 +233,11 @@ class ServiceHybridDoubleWrite extends pulumi.CustomResource {
     ServiceHybridDoubleWriteArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudmonitor/serviceHybridDoubleWrite:ServiceHybridDoubleWrite',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudmonitor/serviceHybridDoubleWrite:ServiceHybridDoubleWrite',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     namespace = registerOutput<String>('namespace');
     sourceNamespace = registerOutput<String>('sourceNamespace');
     sourceUserId = registerOutput<String>('sourceUserId');
@@ -265,11 +262,11 @@ class ServiceHybridDoubleWrite extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudmonitor/serviceHybridDoubleWrite:ServiceHybridDoubleWrite',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudmonitor/serviceHybridDoubleWrite:ServiceHybridDoubleWrite',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     namespace = registerOutput<String>('namespace');
     sourceNamespace = registerOutput<String>('sourceNamespace');
     sourceUserId = registerOutput<String>('sourceUserId');

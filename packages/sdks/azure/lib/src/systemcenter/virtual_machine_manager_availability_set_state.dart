@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualMachineManagerAvailabilitySetState {
   /// The ID of the Custom Location for the System Center Virtual Machine Manager Availability Set. Changing this forces a new resource to be created.
   final pulumi.Input<String>? customLocationId;
-
   /// The Azure Region where the System Center Virtual Machine Manager Availability Set should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
-
   /// The name of the System Center Virtual Machine Manager Availability Set. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// The name of the Resource Group where the System Center Virtual Machine Availability Set should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
-
   /// The ID of the System Center Virtual Machine Manager Server. Changing this forces a new resource to be created.
   final pulumi.Input<String>? systemCenterVirtualMachineManagerServerId;
-
   /// A mapping of tags which should be assigned to the System Center Virtual Machine Manager Availability Set.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -44,48 +39,20 @@ class VirtualMachineManagerAvailabilitySetState {
       'location': ?location,
       'name': ?name,
       'resourceGroupName': ?resourceGroupName,
-      'systemCenterVirtualMachineManagerServerId':
-          ?systemCenterVirtualMachineManagerServerId,
+      'systemCenterVirtualMachineManagerServerId': ?systemCenterVirtualMachineManagerServerId,
       'tags': ?tags,
     };
   }
 
-  factory VirtualMachineManagerAvailabilitySetState.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VirtualMachineManagerAvailabilitySetState.fromMap(Map<String, dynamic> map) {
     return VirtualMachineManagerAvailabilitySetState(
-      customLocationId: (() {
-        final guardedValue = map['customLocationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: (() {
-        final guardedValue = map['resourceGroupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      systemCenterVirtualMachineManagerServerId: (() {
-        final guardedValue = map['systemCenterVirtualMachineManagerServerId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      customLocationId: (() { final guardedValue = map['customLocationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      systemCenterVirtualMachineManagerServerId: (() { final guardedValue = map['systemCenterVirtualMachineManagerServerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

@@ -37,9 +37,7 @@ class GetDatabaseMysqlConfigMysqlSortBufferSize {
     };
   }
 
-  factory GetDatabaseMysqlConfigMysqlSortBufferSize.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDatabaseMysqlConfigMysqlSortBufferSize.fromMap(Map<String, dynamic> map) {
     return GetDatabaseMysqlConfigMysqlSortBufferSize(
       description: pulumi.Input.fromValue(map['description'] as String),
       example: pulumi.Input.fromValue(map['example'] as int),
@@ -50,3 +48,4 @@ class GetDatabaseMysqlConfigMysqlSortBufferSize {
     );
   }
 }
+

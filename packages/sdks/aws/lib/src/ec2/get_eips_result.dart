@@ -8,10 +8,8 @@ class GetEipsResult {
   /// List of all the allocation IDs for address for use with EC2-VPC.
   final List<String> allocationIds;
   final List<GetEipsFilter>? filters;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// List of all the Elastic IP addresses.
   final List<String> publicIps;
   final String region;
@@ -36,14 +34,7 @@ class GetEipsResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allocationIds': allocationIds,
-      'filters': ?(() {
-        final guardedValue = filters;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<GetEipsFilter, Map<String, dynamic>>(
-          guardedValue,
-          (value) => value.toMap(),
-        );
-      })(),
+      'filters': ?(() { final guardedValue = filters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetEipsFilter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'id': id,
       'publicIps': publicIps,
       'region': region,
@@ -54,23 +45,12 @@ class GetEipsResult {
   factory GetEipsResult.fromMap(Map<String, dynamic> map) {
     return GetEipsResult(
       allocationIds: (map['allocationIds'] as List).cast<String>(),
-      filters: (() {
-        final guardedValue = map['filters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<GetEipsFilter>(
-          guardedValue,
-          (value) =>
-              GetEipsFilter.fromMap((value as Map).cast<String, dynamic>()),
-        );
-      })(),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetEipsFilter>(guardedValue, (value) => GetEipsFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
       id: map['id'] as String,
       publicIps: (map['publicIps'] as List).cast<String>(),
       region: map['region'] as String,
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }
 }
+

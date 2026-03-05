@@ -10,29 +10,20 @@ class Office365PolicyProperties {
 
   /// Creates a new [Office365PolicyProperties].
   /// [breakOutCategories] Office 365 breakout categories.
-  Office365PolicyProperties({this.breakOutCategories});
+  Office365PolicyProperties({
+    this.breakOutCategories,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'breakOutCategories':
-          ?pulumi.Input.mapOptionalInputValue<
-            BreakOutCategoryPolicies,
-            Map<String, dynamic>
-          >(breakOutCategories, (value) => value.toMap()),
+      'breakOutCategories': ?pulumi.Input.mapOptionalInputValue<BreakOutCategoryPolicies, Map<String, dynamic>>(breakOutCategories, (value) => value.toMap()),
     };
   }
 
   factory Office365PolicyProperties.fromMap(Map<String, dynamic> map) {
     return Office365PolicyProperties(
-      breakOutCategories: (() {
-        final guardedValue = map['breakOutCategories'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BreakOutCategoryPolicies.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      breakOutCategories: (() { final guardedValue = map['breakOutCategories']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BreakOutCategoryPolicies.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

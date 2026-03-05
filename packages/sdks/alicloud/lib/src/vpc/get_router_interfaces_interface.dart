@@ -5,56 +5,39 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRouterInterfacesInterface {
   /// ID of the access point used by the VBR.
   final pulumi.Input<String> accessPointId;
-
   /// Router interface creation time.
   final pulumi.Input<String> creationTime;
-
   /// Router interface description.
   final pulumi.Input<String> description;
-
   /// Source IP address used to perform health check on the physical connection.
   final pulumi.Input<String> healthCheckSourceIp;
-
   /// Destination IP address used to perform health check on the physical connection.
   final pulumi.Input<String> healthCheckTargetIp;
-
   /// Router interface ID.
   final pulumi.Input<String> id;
-
   /// Router interface name.
   final pulumi.Input<String> name;
-
   /// ID of the peer router interface.
   final pulumi.Input<String> oppositeInterfaceId;
-
   /// Account ID of the owner of the peer router interface.
   final pulumi.Input<String> oppositeInterfaceOwnerId;
-
   /// Peer router region ID.
   final pulumi.Input<String> oppositeRegionId;
-
   /// Peer router ID.
   final pulumi.Input<String> oppositeRouterId;
-
   /// Router type in the peer region. Possible values: `VRouter` and `VBR`.
   final pulumi.Input<String> oppositeRouterType;
-
   /// Role of the router interface. Valid values are `InitiatingSide` (connection initiator) and
   /// `AcceptingSide` (connection receiver). The value of this parameter must be `InitiatingSide` if the `router_type` is set to `VBR`.
   final pulumi.Input<String> role;
-
   /// ID of the VRouter located in the local region.
   final pulumi.Input<String> routerId;
-
   /// Router type in the local region. Valid values are `VRouter` and `VBR` (physical connection).
   final pulumi.Input<String> routerType;
-
   /// Specification of the link, such as `Small.1` (10Mb), `Middle.1` (100Mb), `Large.2` (2Gb), ...etc.
   final pulumi.Input<String> specification;
-
   /// Expected status. Valid values are `Active`, `Inactive` and `Idle`.
   final pulumi.Input<String> status;
-
   /// ID of the VPC that owns the router in the local region.
   final pulumi.Input<String> vpcId;
 
@@ -126,29 +109,15 @@ class GetRouterInterfacesInterface {
       accessPointId: pulumi.Input.fromValue(map['accessPointId'] as String),
       creationTime: pulumi.Input.fromValue(map['creationTime'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
-      healthCheckSourceIp: pulumi.Input.fromValue(
-        map['healthCheckSourceIp'] as String,
-      ),
-      healthCheckTargetIp: pulumi.Input.fromValue(
-        map['healthCheckTargetIp'] as String,
-      ),
+      healthCheckSourceIp: pulumi.Input.fromValue(map['healthCheckSourceIp'] as String),
+      healthCheckTargetIp: pulumi.Input.fromValue(map['healthCheckTargetIp'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      oppositeInterfaceId: pulumi.Input.fromValue(
-        map['oppositeInterfaceId'] as String,
-      ),
-      oppositeInterfaceOwnerId: pulumi.Input.fromValue(
-        map['oppositeInterfaceOwnerId'] as String,
-      ),
-      oppositeRegionId: pulumi.Input.fromValue(
-        map['oppositeRegionId'] as String,
-      ),
-      oppositeRouterId: pulumi.Input.fromValue(
-        map['oppositeRouterId'] as String,
-      ),
-      oppositeRouterType: pulumi.Input.fromValue(
-        map['oppositeRouterType'] as String,
-      ),
+      oppositeInterfaceId: pulumi.Input.fromValue(map['oppositeInterfaceId'] as String),
+      oppositeInterfaceOwnerId: pulumi.Input.fromValue(map['oppositeInterfaceOwnerId'] as String),
+      oppositeRegionId: pulumi.Input.fromValue(map['oppositeRegionId'] as String),
+      oppositeRouterId: pulumi.Input.fromValue(map['oppositeRouterId'] as String),
+      oppositeRouterType: pulumi.Input.fromValue(map['oppositeRouterType'] as String),
       role: pulumi.Input.fromValue(map['role'] as String),
       routerId: pulumi.Input.fromValue(map['routerId'] as String),
       routerType: pulumi.Input.fromValue(map['routerType'] as String),
@@ -158,3 +127,4 @@ class GetRouterInterfacesInterface {
     );
   }
 }
+

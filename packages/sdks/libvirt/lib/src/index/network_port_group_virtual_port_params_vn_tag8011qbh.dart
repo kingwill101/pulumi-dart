@@ -8,21 +8,20 @@ class NetworkPortGroupVirtualPortParamsVnTag8011qbh {
 
   /// Creates a new [NetworkPortGroupVirtualPortParamsVnTag8011qbh].
   /// [profileId] Specifies the profile ID for VNTag 8011QBH virtual port parameters.
-  NetworkPortGroupVirtualPortParamsVnTag8011qbh({this.profileId});
+  NetworkPortGroupVirtualPortParamsVnTag8011qbh({
+    this.profileId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'profileId': ?profileId};
+    return <String, dynamic>{
+      'profileId': ?profileId,
+    };
   }
 
-  factory NetworkPortGroupVirtualPortParamsVnTag8011qbh.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NetworkPortGroupVirtualPortParamsVnTag8011qbh.fromMap(Map<String, dynamic> map) {
     return NetworkPortGroupVirtualPortParamsVnTag8011qbh(
-      profileId: (() {
-        final guardedValue = map['profileId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      profileId: (() { final guardedValue = map['profileId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

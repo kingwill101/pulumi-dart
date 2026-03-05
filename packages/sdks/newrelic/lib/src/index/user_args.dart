@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserArgs {
   /// The ID of the authentication domain to which the user to be created would belong.
   final pulumi.Input<String> authenticationDomainId;
-
   /// The email ID of the user to be created.
   final pulumi.Input<String> emailId;
-
   /// The name of the user to be created.
   final pulumi.Input<String>? name;
-
   /// The tier to which the user to be created would belong. Accepted values for this argument are `BASIC_USER_TIER`, `CORE_USER_TIER`, or `FULL_USER_TIER`. If not specified in the configuration, the argument would default to `BASIC_USER_TIER`.
   ///
   /// &gt; **NOTE** The ID of an authentication domain can be retrieved using its name, via the data source `newrelic.getAuthenticationDomain`, as shown in the example above. Head over to the documentation of this data source for more details and examples.
@@ -46,20 +43,11 @@ class UserArgs {
 
   factory UserArgs.fromMap(Map<String, dynamic> map) {
     return UserArgs(
-      authenticationDomainId: pulumi.Input.fromValue(
-        map['authenticationDomainId'] as String,
-      ),
+      authenticationDomainId: pulumi.Input.fromValue(map['authenticationDomainId'] as String),
       emailId: pulumi.Input.fromValue(map['emailId'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      userType: (() {
-        final guardedValue = map['userType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      userType: (() { final guardedValue = map['userType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

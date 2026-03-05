@@ -164,25 +164,20 @@ import 'transfer_request_state.dart';
 class TransferRequest extends pulumi.CustomResource {
   /// A description of the zone tranfer request.
   late final pulumi.Output<String?> description;
-
   /// Disable wait for zone to reach ACTIVE
   /// status. The check is enabled by default. If this argument is true, zone
   /// will be considered as created/updated if OpenStack request returned success.
   late final pulumi.Output<bool?> disableStatusCheck;
   late final pulumi.Output<String> key;
-
   /// The region in which to obtain the V2 DNS client.
   /// If omitted, the `region` argument of the provider is used.
   /// Changing this creates a new DNS zone zone transfer accept.
   late final pulumi.Output<String> region;
-
   /// The target Project ID to transfer to.
   late final pulumi.Output<String> targetProjectId;
-
   /// Map of additional options. Changing this creates a
   /// new transfer request.
   late final pulumi.Output<Map<String, String>?> valueSpecs;
-
   /// The ID of the zone for which to create the transfer
   /// request.
   late final pulumi.Output<String> zoneId;
@@ -196,11 +191,11 @@ class TransferRequest extends pulumi.CustomResource {
     TransferRequestArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:dns/transferRequest:TransferRequest',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:dns/transferRequest:TransferRequest',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     disableStatusCheck = registerOutput<bool?>('disableStatusCheck');
     key = registerOutput<String>('key');
@@ -228,11 +223,11 @@ class TransferRequest extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:dns/transferRequest:TransferRequest',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:dns/transferRequest:TransferRequest',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     disableStatusCheck = registerOutput<bool?>('disableStatusCheck');
     key = registerOutput<String>('key');

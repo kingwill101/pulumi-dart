@@ -4532,53 +4532,36 @@ import 'load_balancer_sku_response.dart';
 class LoadBalancer extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Collection of backend address pools used by a load balancer.
   late final pulumi.Output<List<Map<String, dynamic>>?> backendAddressPools;
-
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
-
   /// The extended location of the load balancer.
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
-
   /// Object representing the frontend IPs to be used for the load balancer.
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  frontendIPConfigurations;
-
+  late final pulumi.Output<List<Map<String, dynamic>>?> frontendIPConfigurations;
   /// Defines an external port range for inbound NAT to a single backend port on NICs associated with a load balancer. Inbound NAT rules are created automatically for each NIC associated with the Load Balancer using an external port from this range. Defining an Inbound NAT pool on your Load Balancer is mutually exclusive with defining inbound NAT rules. Inbound NAT pools are referenced from virtual machine scale sets. NICs that are associated with individual virtual machines cannot reference an inbound NAT pool. They have to reference individual inbound NAT rules.
   late final pulumi.Output<List<Map<String, dynamic>>?> inboundNatPools;
-
   /// Collection of inbound NAT Rules used by a load balancer. Defining inbound NAT rules on your load balancer is mutually exclusive with defining an inbound NAT pool. Inbound NAT pools are referenced from virtual machine scale sets. NICs that are associated with individual virtual machines cannot reference an Inbound NAT pool. They have to reference individual inbound NAT rules.
   late final pulumi.Output<List<Map<String, dynamic>>?> inboundNatRules;
-
   /// Object collection representing the load balancing rules Gets the provisioning.
   late final pulumi.Output<List<Map<String, dynamic>>?> loadBalancingRules;
-
   /// Resource location.
   late final pulumi.Output<String?> location;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// The outbound rules.
   late final pulumi.Output<List<Map<String, dynamic>>?> outboundRules;
-
   /// Collection of probe objects used in the load balancer.
   late final pulumi.Output<List<Map<String, dynamic>>?> probes;
-
   /// The provisioning state of the load balancer resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The resource GUID property of the load balancer resource.
   late final pulumi.Output<String> resourceGuid;
-
   /// The load balancer SKU.
   late final pulumi.Output<LoadBalancerSkuResponse?> sku;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -4591,56 +4574,26 @@ class LoadBalancer extends pulumi.CustomResource {
     LoadBalancerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:network:LoadBalancer',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:network:LoadBalancer',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    backendAddressPools = registerOutput<List<Map<String, dynamic>>?>(
-      'backendAddressPools',
-    );
+    backendAddressPools = registerOutput<List<Map<String, dynamic>>?>('backendAddressPools');
     etag = registerOutput<String>('etag');
-    extendedLocation = registerOutput<ExtendedLocationResponse?>(
-      'extendedLocation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExtendedLocationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    frontendIPConfigurations = registerOutput<List<Map<String, dynamic>>?>(
-      'frontendIPConfigurations',
-    );
-    inboundNatPools = registerOutput<List<Map<String, dynamic>>?>(
-      'inboundNatPools',
-    );
-    inboundNatRules = registerOutput<List<Map<String, dynamic>>?>(
-      'inboundNatRules',
-    );
-    loadBalancingRules = registerOutput<List<Map<String, dynamic>>?>(
-      'loadBalancingRules',
-    );
+    extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    frontendIPConfigurations = registerOutput<List<Map<String, dynamic>>?>('frontendIPConfigurations');
+    inboundNatPools = registerOutput<List<Map<String, dynamic>>?>('inboundNatPools');
+    inboundNatRules = registerOutput<List<Map<String, dynamic>>?>('inboundNatRules');
+    loadBalancingRules = registerOutput<List<Map<String, dynamic>>?>('loadBalancingRules');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    outboundRules = registerOutput<List<Map<String, dynamic>>?>(
-      'outboundRules',
-    );
+    outboundRules = registerOutput<List<Map<String, dynamic>>?>('outboundRules');
     probes = registerOutput<List<Map<String, dynamic>>?>('probes');
     provisioningState = registerOutput<String>('provisioningState');
     resourceGuid = registerOutput<String>('resourceGuid');
-    sku = registerOutput<LoadBalancerSkuResponse?>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LoadBalancerSkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sku = registerOutput<LoadBalancerSkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

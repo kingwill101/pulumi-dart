@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApplicationsApplicationOssMountDetail {
   /// The name of the bucket.
   final pulumi.Input<String> bucketName;
-
   /// The path of the bucket.
   final pulumi.Input<String> bucketPath;
-
   /// The Container mount path.
   final pulumi.Input<String> mountPath;
-
   /// Whether the container path has readable permission to mount directory resources.
   final pulumi.Input<bool> readOnly;
 
@@ -36,9 +33,7 @@ class GetApplicationsApplicationOssMountDetail {
     };
   }
 
-  factory GetApplicationsApplicationOssMountDetail.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetApplicationsApplicationOssMountDetail.fromMap(Map<String, dynamic> map) {
     return GetApplicationsApplicationOssMountDetail(
       bucketName: pulumi.Input.fromValue(map['bucketName'] as String),
       bucketPath: pulumi.Input.fromValue(map['bucketPath'] as String),
@@ -47,3 +42,4 @@ class GetApplicationsApplicationOssMountDetail {
     );
   }
 }
+

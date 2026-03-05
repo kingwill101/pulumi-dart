@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegistryScopeMapArgs {
   /// A list of actions to attach to the scope map (e.g. `repo/content/read`, `repo2/content/delete`).
   final pulumi.Input<List<String>> actions;
-
   /// The name of the Container Registry. Changing this forces a new resource to be created.
   final pulumi.Input<String> containerRegistryName;
-
   /// The description of the Container Registry.
   final pulumi.Input<String>? description;
-
   /// Specifies the name of the scope map. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// The name of the resource group in which to create the Container Registry token. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
 
@@ -49,22 +45,11 @@ class RegistryScopeMapArgs {
   factory RegistryScopeMapArgs.fromMap(Map<String, dynamic> map) {
     return RegistryScopeMapArgs(
       actions: pulumi.Input.fromValue((map['actions'] as List).cast<String>()),
-      containerRegistryName: pulumi.Input.fromValue(
-        map['containerRegistryName'] as String,
-      ),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      containerRegistryName: pulumi.Input.fromValue(map['containerRegistryName'] as String),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

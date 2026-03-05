@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VersionResponseContaineranalysisV1alpha1 {
   /// Used to correct mistakes in the version numbering scheme.
   final pulumi.Input<int> epoch;
-
   /// Whether this version is vulnerable, when defining the version bounds. For example, if the minimum version is 2.0, inclusive=true would say 2.0 is vulnerable, while inclusive=false would say it's not
   final pulumi.Input<bool> inclusive;
-
   /// Distinguish between sentinel MIN/MAX versions and normal versions. If kind is not NORMAL, then the other fields are ignored.
   final pulumi.Input<String> kind;
-
   /// The main part of the version name.
   final pulumi.Input<String> name;
-
   /// The iteration of the package build from the above version.
   final pulumi.Input<String> revision;
 
@@ -43,9 +39,7 @@ class VersionResponseContaineranalysisV1alpha1 {
     };
   }
 
-  factory VersionResponseContaineranalysisV1alpha1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VersionResponseContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return VersionResponseContaineranalysisV1alpha1(
       epoch: pulumi.Input.fromValue(map['epoch'] as int),
       inclusive: pulumi.Input.fromValue(map['inclusive'] as bool),
@@ -55,3 +49,4 @@ class VersionResponseContaineranalysisV1alpha1 {
     );
   }
 }
+

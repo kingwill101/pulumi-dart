@@ -9,17 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPrivateLinkAssociationArgs {
   /// The management group ID.
   final pulumi.Input<String> groupId;
-
   /// The ID of the PLA
   final pulumi.Input<String> plaId;
 
   /// Creates a new [GetPrivateLinkAssociationArgs].
   /// [groupId] The management group ID.
   /// [plaId] The ID of the PLA
-  GetPrivateLinkAssociationArgs({required this.groupId, required this.plaId});
+  GetPrivateLinkAssociationArgs({
+    required this.groupId,
+    required this.plaId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'groupId': groupId, 'plaId': plaId};
+    return <String, dynamic>{
+      'groupId': groupId,
+      'plaId': plaId,
+    };
   }
 
   factory GetPrivateLinkAssociationArgs.fromMap(Map<String, dynamic> map) {
@@ -29,3 +34,4 @@ class GetPrivateLinkAssociationArgs {
     );
   }
 }
+

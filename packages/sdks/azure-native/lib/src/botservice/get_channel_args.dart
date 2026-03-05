@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetChannelArgs {
   /// The name of the Bot resource.
   final pulumi.Input<String> channelName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the Bot resource.
   final pulumi.Input<String> resourceName;
 
@@ -37,10 +35,9 @@ class GetChannelArgs {
   factory GetChannelArgs.fromMap(Map<String, dynamic> map) {
     return GetChannelArgs(
       channelName: pulumi.Input.fromValue(map['channelName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
+

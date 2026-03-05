@@ -12,8 +12,7 @@ enum EncryptionConfigurationEncryptionType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown EncryptionConfigurationEncryptionType value: $value',
-    );
+    throw ArgumentError('Unknown EncryptionConfigurationEncryptionType value: $value');
   }
 }
+

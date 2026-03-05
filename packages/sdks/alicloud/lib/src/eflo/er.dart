@@ -167,25 +167,18 @@ import 'er_state.dart';
 class Er extends pulumi.CustomResource {
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
-
   /// Description.
   late final pulumi.Output<String?> description;
-
   /// Lingjun HUB name
   late final pulumi.Output<String> erName;
-
   /// Primary zone
   late final pulumi.Output<String> masterZoneId;
-
   /// region information
   late final pulumi.Output<String> regionId;
-
   /// The ID of the resource group instance.
   late final pulumi.Output<String> resourceGroupId;
-
   /// Status
   late final pulumi.Output<String> status;
-
   /// Label List
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -193,13 +186,16 @@ class Er extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Er]. {@macro pulumi_eflo_er_er_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Er(String name, {ErArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:eflo/er:Er',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Er(
+    String name, {
+    ErArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:eflo/er:Er',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     erName = registerOutput<String>('erName');
@@ -211,7 +207,11 @@ class Er extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Er] resource's state with the given [name] and [id].
-  static Er get(String name, pulumi.Input<String> id, {ErState? state}) {
+  static Er get(
+    String name,
+    pulumi.Input<String> id, {
+    ErState? state,
+  }) {
     return Er._get(
       name,
       state: state?.toMap(),
@@ -224,11 +224,11 @@ class Er extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:eflo/er:Er',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:eflo/er:Er',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     erName = registerOutput<String>('erName');

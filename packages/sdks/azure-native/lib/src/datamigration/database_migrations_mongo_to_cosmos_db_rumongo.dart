@@ -584,54 +584,36 @@ import 'system_data_response.dart';
 class DatabaseMigrationsMongoToCosmosDbRUMongo extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// List of Mongo Collections to be migrated.
   late final pulumi.Output<List<Map<String, dynamic>>?> collectionList;
-
   /// Database migration end time.
   late final pulumi.Output<String> endedOn;
-
   /// Expected value is 'MongoToCosmosDbMongo'.
   late final pulumi.Output<String> kind;
-
   /// Error details in case of migration failure.
   late final pulumi.Output<ErrorInfoResponse> migrationFailureError;
-
   /// ID for current migration operation.
   late final pulumi.Output<String?> migrationOperationId;
-
   /// Resource Id of the Migration Service.
   late final pulumi.Output<String?> migrationService;
-
   /// Migration status.
   late final pulumi.Output<String> migrationStatus;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Error message for migration provisioning failure, if any.
   late final pulumi.Output<String?> provisioningError;
-
   /// Provisioning State of migration. ProvisioningState as Succeeded implies that validations have been performed and migration has started.
   late final pulumi.Output<String> provisioningState;
-
   /// Resource Id of the target resource.
   late final pulumi.Output<String?> scope;
-
   /// Source Mongo connection details.
-  late final pulumi.Output<MongoConnectionInformationResponse?>
-  sourceMongoConnection;
-
+  late final pulumi.Output<MongoConnectionInformationResponse?> sourceMongoConnection;
   /// Database migration start time.
   late final pulumi.Output<String> startedOn;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Target Cosmos DB Mongo connection details.
-  late final pulumi.Output<MongoConnectionInformationResponse?>
-  targetMongoConnection;
-
+  late final pulumi.Output<MongoConnectionInformationResponse?> targetMongoConnection;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -644,27 +626,16 @@ class DatabaseMigrationsMongoToCosmosDbRUMongo extends pulumi.CustomResource {
     DatabaseMigrationsMongoToCosmosDbRUMongoArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:datamigration:DatabaseMigrationsMongoToCosmosDbRUMongo',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:datamigration:DatabaseMigrationsMongoToCosmosDbRUMongo',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    collectionList = registerOutput<List<Map<String, dynamic>>?>(
-      'collectionList',
-    );
+    collectionList = registerOutput<List<Map<String, dynamic>>?>('collectionList');
     endedOn = registerOutput<String>('endedOn');
     kind = registerOutput<String>('kind');
-    migrationFailureError = registerOutput<ErrorInfoResponse>(
-      'migrationFailureError',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ErrorInfoResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    migrationFailureError = registerOutput<ErrorInfoResponse>('migrationFailureError', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ErrorInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     migrationOperationId = registerOutput<String?>('migrationOperationId');
     migrationService = registerOutput<String?>('migrationService');
     migrationStatus = registerOutput<String>('migrationStatus');
@@ -672,37 +643,10 @@ class DatabaseMigrationsMongoToCosmosDbRUMongo extends pulumi.CustomResource {
     provisioningError = registerOutput<String?>('provisioningError');
     provisioningState = registerOutput<String>('provisioningState');
     scope = registerOutput<String?>('scope');
-    sourceMongoConnection = registerOutput<MongoConnectionInformationResponse?>(
-      'sourceMongoConnection',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MongoConnectionInformationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sourceMongoConnection = registerOutput<MongoConnectionInformationResponse?>('sourceMongoConnection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MongoConnectionInformationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     startedOn = registerOutput<String>('startedOn');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    targetMongoConnection = registerOutput<MongoConnectionInformationResponse?>(
-      'targetMongoConnection',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MongoConnectionInformationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    targetMongoConnection = registerOutput<MongoConnectionInformationResponse?>('targetMongoConnection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MongoConnectionInformationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

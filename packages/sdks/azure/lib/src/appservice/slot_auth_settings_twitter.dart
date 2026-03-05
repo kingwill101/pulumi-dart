@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SlotAuthSettingsTwitter {
   /// The consumer key of the Twitter app used for login
   final pulumi.Input<String> consumerKey;
-
   /// The consumer secret of the Twitter app used for login.
   final pulumi.Input<String> consumerSecret;
 
@@ -31,3 +30,4 @@ class SlotAuthSettingsTwitter {
     );
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BgpNetworkArgs {
   /// The CIDR block of the virtual private cloud (VPC) or vSwitch that you want to connect to a data center.
   final pulumi.Input<String> dstCidrBlock;
-
   /// The region ID of the virtual border router (VBR) group.
   final pulumi.Input<String> routerId;
-
   /// The ID of the VPC.
   final pulumi.Input<String>? vpcId;
 
@@ -38,11 +36,8 @@ class BgpNetworkArgs {
     return BgpNetworkArgs(
       dstCidrBlock: pulumi.Input.fromValue(map['dstCidrBlock'] as String),
       routerId: pulumi.Input.fromValue(map['routerId'] as String),
-      vpcId: (() {
-        final guardedValue = map['vpcId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      vpcId: (() { final guardedValue = map['vpcId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -168,37 +168,27 @@ import 'enterprise_proxy_access_state.dart';
 class EnterpriseProxyAccess extends pulumi.CustomResource {
   /// The authorized account of the security agent.
   late final pulumi.Output<String> accessId;
-
   /// Secure access agent authorization password.
   late final pulumi.Output<String> accessSecret;
   late final pulumi.Output<String> createTime;
-
   /// Database account.
   late final pulumi.Output<String?> indepAccount;
-
   /// Database password.
   late final pulumi.Output<String?> indepPassword;
-
   /// The ID of the instance.
   late final pulumi.Output<String> instanceId;
-
   /// The source information of the security access agent permission is enabled, and the return value is as follows:
   /// * **Owner Authorization**: The UID of the owner in parentheses.
   /// * **Work Order Authorization**: The ticket number in parentheses is the number of the user to apply for permission.
   late final pulumi.Output<String> originInfo;
-
   /// Security Protection authorization ID. After the target user is authorized by the security protection agent, the system automatically generates a security protection authorization ID, which is globally unique.
   late final pulumi.Output<String> proxyAccessId;
-
   /// The ID of the security agent.
   late final pulumi.Output<String> proxyId;
-
   /// The user ID.
   late final pulumi.Output<String> userId;
-
   /// User nickname.
   late final pulumi.Output<String> userName;
-
   /// User UID.
   late final pulumi.Output<String> userUid;
 
@@ -211,11 +201,11 @@ class EnterpriseProxyAccess extends pulumi.CustomResource {
     EnterpriseProxyAccessArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dms/enterpriseProxyAccess:EnterpriseProxyAccess',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dms/enterpriseProxyAccess:EnterpriseProxyAccess',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessId = registerOutput<String>('accessId');
     accessSecret = registerOutput<String>('accessSecret');
     createTime = registerOutput<String>('createTime');
@@ -248,11 +238,11 @@ class EnterpriseProxyAccess extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dms/enterpriseProxyAccess:EnterpriseProxyAccess',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dms/enterpriseProxyAccess:EnterpriseProxyAccess',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessId = registerOutput<String>('accessId');
     accessSecret = registerOutput<String>('accessSecret');
     createTime = registerOutput<String>('createTime');

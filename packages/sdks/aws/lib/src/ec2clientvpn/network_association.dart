@@ -111,16 +111,12 @@ import 'network_association_state.dart';
 class NetworkAssociation extends pulumi.CustomResource {
   /// The unique ID of the target network association.
   late final pulumi.Output<String> associationId;
-
   /// The ID of the Client VPN endpoint.
   late final pulumi.Output<String> clientVpnEndpointId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The ID of the subnet to associate with the Client VPN endpoint.
   late final pulumi.Output<String> subnetId;
-
   /// The ID of the VPC in which the target subnet is located.
   late final pulumi.Output<String> vpcId;
 
@@ -133,11 +129,11 @@ class NetworkAssociation extends pulumi.CustomResource {
     NetworkAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2clientvpn/networkAssociation:NetworkAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2clientvpn/networkAssociation:NetworkAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     associationId = registerOutput<String>('associationId');
     clientVpnEndpointId = registerOutput<String>('clientVpnEndpointId');
     region = registerOutput<String>('region');
@@ -163,11 +159,11 @@ class NetworkAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2clientvpn/networkAssociation:NetworkAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2clientvpn/networkAssociation:NetworkAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     associationId = registerOutput<String>('associationId');
     clientVpnEndpointId = registerOutput<String>('clientVpnEndpointId');
     region = registerOutput<String>('region');

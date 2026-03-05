@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMarkupRuleArgs {
   /// BillingAccount ID
   final pulumi.Input<String> billingAccountId;
-
   /// BillingProfile ID
   final pulumi.Input<String> billingProfileId;
-
   /// Markup rule name.
   final pulumi.Input<String> name;
 
@@ -36,13 +34,10 @@ class GetMarkupRuleArgs {
 
   factory GetMarkupRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetMarkupRuleArgs(
-      billingAccountId: pulumi.Input.fromValue(
-        map['billingAccountId'] as String,
-      ),
-      billingProfileId: pulumi.Input.fromValue(
-        map['billingProfileId'] as String,
-      ),
+      billingAccountId: pulumi.Input.fromValue(map['billingAccountId'] as String),
+      billingProfileId: pulumi.Input.fromValue(map['billingProfileId'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

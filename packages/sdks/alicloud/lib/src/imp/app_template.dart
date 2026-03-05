@@ -148,21 +148,16 @@ import 'app_template_state.dart';
 class AppTemplate extends pulumi.CustomResource {
   /// The name of the resource.
   late final pulumi.Output<String> appTemplateName;
-
   /// List of components. Its element valid values: ["component.live","component.liveRecord","component.liveBeauty","component.rtc","component.rtcRecord","component.im","component.whiteboard","component.liveSecurity","component.chatSecurity"].
   late final pulumi.Output<List<String>> componentLists;
-
   /// Configuration list. It have several default configs after the resource is created. See the following `Block config_list`.
   late final pulumi.Output<List<Map<String, dynamic>>> configLists;
-
   /// Integration mode. Valid values:
   /// * paasSDK: Integrated SDK.
   /// * standardRoom: Model Room.
   late final pulumi.Output<String?> integrationMode;
-
   /// Application Template scenario. Valid values: ["business", "classroom"].
   late final pulumi.Output<String?> scene;
-
   /// Application template usage status.
   late final pulumi.Output<String> status;
 
@@ -175,11 +170,11 @@ class AppTemplate extends pulumi.CustomResource {
     AppTemplateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:imp/appTemplate:AppTemplate',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:imp/appTemplate:AppTemplate',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appTemplateName = registerOutput<String>('appTemplateName');
     componentLists = registerOutput<List<String>>('componentLists');
     configLists = registerOutput<List<Map<String, dynamic>>>('configLists');
@@ -206,11 +201,11 @@ class AppTemplate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:imp/appTemplate:AppTemplate',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:imp/appTemplate:AppTemplate',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appTemplateName = registerOutput<String>('appTemplateName');
     componentLists = registerOutput<List<String>>('componentLists');
     configLists = registerOutput<List<Map<String, dynamic>>>('configLists');

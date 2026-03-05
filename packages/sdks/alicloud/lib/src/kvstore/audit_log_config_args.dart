@@ -13,10 +13,8 @@ class AuditLogConfigArgs {
   ///
   /// Note: When the Instance for the Cluster Architecture Or Read/Write Split Architecture, at the Same Time to Open Or Close the Data Node and the Proxy Node of the Audit Log Doesn't Support Separate Open.
   final pulumi.Input<bool>? dbAudit;
-
   /// Instance ID, Call the Describeinstances Get.
   final pulumi.Input<String> instanceId;
-
   /// Audit Log Retention Period Value: 1~365.
   ///
   /// &gt; **NOTE:** When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All a Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance for a Data Entry into Force.
@@ -26,7 +24,11 @@ class AuditLogConfigArgs {
   /// [dbAudit] Indicates Whether to Enable the Audit Log.  Valid value:
   /// [instanceId] Instance ID, Call the Describeinstances Get.
   /// [retention] Audit Log Retention Period Value: 1~365.
-  AuditLogConfigArgs({this.dbAudit, required this.instanceId, this.retention});
+  AuditLogConfigArgs({
+    this.dbAudit,
+    required this.instanceId,
+    this.retention,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,17 +40,10 @@ class AuditLogConfigArgs {
 
   factory AuditLogConfigArgs.fromMap(Map<String, dynamic> map) {
     return AuditLogConfigArgs(
-      dbAudit: (() {
-        final guardedValue = map['dbAudit'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      dbAudit: (() { final guardedValue = map['dbAudit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
-      retention: (() {
-        final guardedValue = map['retention'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      retention: (() { final guardedValue = map['retention']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

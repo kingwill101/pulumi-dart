@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceTenantAccess {
   /// Should the access to the management API be enabled?
   final pulumi.Input<bool> enabled;
-
   /// Primary access key for the tenant access information contract.
   final pulumi.Input<String>? primaryKey;
-
   /// Secondary access key for the tenant access information contract.
   final pulumi.Input<String>? secondaryKey;
-
   /// The identifier for the tenant access information contract.
   final pulumi.Input<String>? tenantId;
 
@@ -39,21 +36,10 @@ class ServiceTenantAccess {
   factory ServiceTenantAccess.fromMap(Map<String, dynamic> map) {
     return ServiceTenantAccess(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
-      primaryKey: (() {
-        final guardedValue = map['primaryKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      secondaryKey: (() {
-        final guardedValue = map['secondaryKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tenantId: (() {
-        final guardedValue = map['tenantId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      primaryKey: (() { final guardedValue = map['primaryKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      secondaryKey: (() { final guardedValue = map['secondaryKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

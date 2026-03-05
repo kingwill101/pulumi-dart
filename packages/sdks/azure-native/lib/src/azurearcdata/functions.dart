@@ -153,8 +153,7 @@ Future<GetSqlServerAvailabilityGroupResult> getSqlServerAvailabilityGroup(
 /// Other available API versions: 2024-01-01, 2024-05-01-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_azurearcdata_get_sql_server_availability_group_detail_view_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetSqlServerAvailabilityGroupDetailViewResult>
-getSqlServerAvailabilityGroupDetailView(
+Future<GetSqlServerAvailabilityGroupDetailViewResult> getSqlServerAvailabilityGroupDetailView(
   GetSqlServerAvailabilityGroupDetailViewArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

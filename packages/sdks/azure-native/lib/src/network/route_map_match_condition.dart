@@ -18,3 +18,4 @@ enum RouteMapMatchCondition {
     throw ArgumentError('Unknown RouteMapMatchCondition value: $value');
   }
 }
+

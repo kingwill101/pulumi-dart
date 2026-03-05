@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DelegatedResource {
   /// The source resource location - internal use only.
   final pulumi.Input<String>? location;
-
   /// The delegation id of the referral delegation (optional) - internal use only.
   final pulumi.Input<String>? referralResource;
-
   /// The ARM resource id of the delegated resource - internal use only.
   final pulumi.Input<String>? resourceId;
-
   /// The tenant id of the delegated resource - internal use only.
   final pulumi.Input<String>? tenantId;
 
@@ -39,26 +36,11 @@ class DelegatedResource {
 
   factory DelegatedResource.fromMap(Map<String, dynamic> map) {
     return DelegatedResource(
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      referralResource: (() {
-        final guardedValue = map['referralResource'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceId: (() {
-        final guardedValue = map['resourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tenantId: (() {
-        final guardedValue = map['tenantId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      referralResource: (() { final guardedValue = map['referralResource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEmailIdentityArgs {
   /// The name of the email identity.
   final pulumi.Input<String> emailIdentity;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Key-value mapping of resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -20,7 +18,11 @@ class GetEmailIdentityArgs {
   /// [emailIdentity] The name of the email identity.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value mapping of resource tags.
-  GetEmailIdentityArgs({required this.emailIdentity, this.region, this.tags});
+  GetEmailIdentityArgs({
+    required this.emailIdentity,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,18 +35,9 @@ class GetEmailIdentityArgs {
   factory GetEmailIdentityArgs.fromMap(Map<String, dynamic> map) {
     return GetEmailIdentityArgs(
       emailIdentity: pulumi.Input.fromValue(map['emailIdentity'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

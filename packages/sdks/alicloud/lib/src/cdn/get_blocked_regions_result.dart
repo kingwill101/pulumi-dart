@@ -24,11 +24,7 @@ class GetBlockedRegionsResult {
     return <String, dynamic>{
       'id': id,
       'language': language,
-      'regions':
-          pulumi.Input.encodeList<
-            GetBlockedRegionsRegion,
-            Map<String, dynamic>
-          >(regions, (value) => value.toMap()),
+      'regions': pulumi.Input.encodeList<GetBlockedRegionsRegion, Map<String, dynamic>>(regions, (value) => value.toMap()),
     };
   }
 
@@ -36,12 +32,8 @@ class GetBlockedRegionsResult {
     return GetBlockedRegionsResult(
       id: map['id'] as String,
       language: map['language'] as String,
-      regions: pulumi.Input.decodeList<GetBlockedRegionsRegion>(
-        map['regions']!,
-        (value) => GetBlockedRegionsRegion.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      regions: pulumi.Input.decodeList<GetBlockedRegionsRegion>(map['regions']!, (value) => GetBlockedRegionsRegion.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

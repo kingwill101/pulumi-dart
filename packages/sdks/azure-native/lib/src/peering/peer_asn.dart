@@ -233,25 +233,18 @@ import 'peer_asn_args.dart';
 class PeerAsn extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The error message for the validation state
   late final pulumi.Output<String> errorMessage;
-
   /// The name of the resource.
   late final pulumi.Output<String> name;
-
   /// The Autonomous System Number (ASN) of the peer.
   late final pulumi.Output<int?> peerAsn;
-
   /// The contact details of the peer.
   late final pulumi.Output<List<Map<String, dynamic>>?> peerContactDetail;
-
   /// The name of the peer.
   late final pulumi.Output<String?> peerName;
-
   /// The type of the resource.
   late final pulumi.Output<String> type;
-
   /// The validation state of the ASN associated with the peer.
   late final pulumi.Output<String> validationState;
 
@@ -264,18 +257,16 @@ class PeerAsn extends pulumi.CustomResource {
     PeerAsnArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:peering:PeerAsn',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:peering:PeerAsn',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     errorMessage = registerOutput<String>('errorMessage');
     this.name = registerOutput<String>('name');
     peerAsn = registerOutput<int?>('peerAsn');
-    peerContactDetail = registerOutput<List<Map<String, dynamic>>?>(
-      'peerContactDetail',
-    );
+    peerContactDetail = registerOutput<List<Map<String, dynamic>>?>('peerContactDetail');
     peerName = registerOutput<String?>('peerName');
     type = registerOutput<String>('type');
     validationState = registerOutput<String>('validationState');

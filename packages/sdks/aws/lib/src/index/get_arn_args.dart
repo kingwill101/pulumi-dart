@@ -14,20 +14,23 @@ class GetArnArgs {
   /// Creates a new [GetArnArgs].
   /// [arn] ARN to parse.
   /// [id] Optional.
-  GetArnArgs({required this.arn, this.id});
+  GetArnArgs({
+    required this.arn,
+    this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'arn': arn, 'id': ?id};
+    return <String, dynamic>{
+      'arn': arn,
+      'id': ?id,
+    };
   }
 
   factory GetArnArgs.fromMap(Map<String, dynamic> map) {
     return GetArnArgs(
       arn: pulumi.Input.fromValue(map['arn'] as String),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

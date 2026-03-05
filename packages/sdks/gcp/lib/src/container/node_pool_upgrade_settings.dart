@@ -6,21 +6,17 @@ import 'node_pool_upgrade_settings_blue_green_settings.dart';
 class NodePoolUpgradeSettings {
   /// The settings to adjust [blue green upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies#blue-green-upgrade-strategy).
   /// Structure is documented below
-  final pulumi.Input<NodePoolUpgradeSettingsBlueGreenSettings>?
-  blueGreenSettings;
-
+  final pulumi.Input<NodePoolUpgradeSettingsBlueGreenSettings>? blueGreenSettings;
   /// The number of additional nodes that can be added to the node pool during
   /// an upgrade. Increasing `max_surge` raises the number of nodes that can be upgraded simultaneously.
   /// Can be set to 0 or greater.
   final pulumi.Input<int>? maxSurge;
-
   /// The number of nodes that can be simultaneously unavailable during
   /// an upgrade. Increasing `max_unavailable` raises the number of nodes that can be upgraded in
   /// parallel. Can be set to 0 or greater.
   ///
   /// `max_surge` and `max_unavailable` must not be negative and at least one of them must be greater than zero.
   final pulumi.Input<int>? maxUnavailable;
-
   /// The upgrade strategy to be used for upgrading the nodes.
   final pulumi.Input<String>? strategy;
 
@@ -38,11 +34,7 @@ class NodePoolUpgradeSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'blueGreenSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            NodePoolUpgradeSettingsBlueGreenSettings,
-            Map<String, dynamic>
-          >(blueGreenSettings, (value) => value.toMap()),
+      'blueGreenSettings': ?pulumi.Input.mapOptionalInputValue<NodePoolUpgradeSettingsBlueGreenSettings, Map<String, dynamic>>(blueGreenSettings, (value) => value.toMap()),
       'maxSurge': ?maxSurge,
       'maxUnavailable': ?maxUnavailable,
       'strategy': ?strategy,
@@ -51,30 +43,11 @@ class NodePoolUpgradeSettings {
 
   factory NodePoolUpgradeSettings.fromMap(Map<String, dynamic> map) {
     return NodePoolUpgradeSettings(
-      blueGreenSettings: (() {
-        final guardedValue = map['blueGreenSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          NodePoolUpgradeSettingsBlueGreenSettings.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      maxSurge: (() {
-        final guardedValue = map['maxSurge'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      maxUnavailable: (() {
-        final guardedValue = map['maxUnavailable'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      strategy: (() {
-        final guardedValue = map['strategy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      blueGreenSettings: (() { final guardedValue = map['blueGreenSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodePoolUpgradeSettingsBlueGreenSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      maxSurge: (() { final guardedValue = map['maxSurge']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxUnavailable: (() { final guardedValue = map['maxUnavailable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      strategy: (() { final guardedValue = map['strategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

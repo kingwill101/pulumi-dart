@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEc2SnapshotArgs {
   /// Name of Ec2Snapshot
   final pulumi.Input<String> name;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetEc2SnapshotArgs].
   /// [name] Name of Ec2Snapshot
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetEc2SnapshotArgs({required this.name, required this.resourceGroupName});
+  GetEc2SnapshotArgs({
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,9 +30,8 @@ class GetEc2SnapshotArgs {
   factory GetEc2SnapshotArgs.fromMap(Map<String, dynamic> map) {
     return GetEc2SnapshotArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

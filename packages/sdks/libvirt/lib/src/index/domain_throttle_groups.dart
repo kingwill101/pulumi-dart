@@ -9,39 +9,20 @@ class DomainThrottleGroups {
 
   /// Creates a new [DomainThrottleGroups].
   /// [throttleGroups] Sets individual throttle group configurations.
-  DomainThrottleGroups({this.throttleGroups});
+  DomainThrottleGroups({
+    this.throttleGroups,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'throttleGroups':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<DomainThrottleGroupsThrottleGroup>,
-            List<Map<String, dynamic>>
-          >(
-            throttleGroups,
-            (value) =>
-                pulumi.Input.encodeList<
-                  DomainThrottleGroupsThrottleGroup,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'throttleGroups': ?pulumi.Input.mapOptionalInputValue<List<DomainThrottleGroupsThrottleGroup>, List<Map<String, dynamic>>>(throttleGroups, (value) => pulumi.Input.encodeList<DomainThrottleGroupsThrottleGroup, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DomainThrottleGroups.fromMap(Map<String, dynamic> map) {
     return DomainThrottleGroups(
-      throttleGroups: (() {
-        final guardedValue = map['throttleGroups'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<DomainThrottleGroupsThrottleGroup>(
-            guardedValue,
-            (value) => DomainThrottleGroupsThrottleGroup.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      throttleGroups: (() { final guardedValue = map['throttleGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DomainThrottleGroupsThrottleGroup>(guardedValue, (value) => DomainThrottleGroupsThrottleGroup.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

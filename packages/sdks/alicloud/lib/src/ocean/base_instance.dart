@@ -243,12 +243,10 @@ class BaseInstance extends pulumi.CustomResource {
   /// - true: automatic renewal.
   /// - false (default): no automatic renewal.
   late final pulumi.Output<bool?> autoRenew;
-
   /// The duration of each auto-renewal. When the value of the AutoRenew parameter is True, this parameter is required.
   /// - PeriodUnit is Week, AutoRenewPeriod is {"1", "2", "3"}.
   /// - PeriodUnit is Month, AutoRenewPeriod is {"1", "2", "3", "6", "12"}.
   late final pulumi.Output<int?> autoRenewPeriod;
-
   /// The backup retention policy after the cluster is deleted. The values are as follows:
   /// - receive_all: Keep all backup sets;
   /// - delete_all: delete all backup sets;
@@ -256,19 +254,14 @@ class BaseInstance extends pulumi.CustomResource {
   ///
   /// &gt; **NOTE:**   The default value is delete_all.
   late final pulumi.Output<String?> backupRetainMode;
-
   /// The product code of the OceanBase cluster._oceanbasepre_public_cn: Domestic station cloud database package Year-to-month package._oceanbasepost_public_cn: The domestic station cloud database is paid by the hour._obpre_public_intl: International Station Cloud Database Package Monthly Package.
   late final pulumi.Output<String> commodityCode;
-
   /// The number of CPU cores of the cluster.
   late final pulumi.Output<int> cpu;
-
   /// Cpu architecture, x86, arm. If no, the default value is x86
   late final pulumi.Output<String> cpuArch;
-
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
-
   /// The size of the storage space, in GB.
   ///
   /// The limits of storage space vary according to the cluster specifications, as follows:
@@ -279,14 +272,12 @@ class BaseInstance extends pulumi.CustomResource {
   ///
   /// The default value of each package is its minimum value.
   late final pulumi.Output<int> diskSize;
-
   /// The storage type of the cluster. Effective only in the standard cluster version (cloud disk).
   ///
   /// Two types are currently supported:
   /// - cloud_essd_pl1: cloud disk ESSD pl1.
   /// - cloud_essd_pl0: cloud disk ESSD pl0. The default value is cloud_essd_pl1.
   late final pulumi.Output<String> diskType;
-
   /// Cluster specification information. Note Please enter the shape as xCxxG, not xCxxGB
   ///
   /// The x86 cluster architecture currently supports the following packages:
@@ -313,55 +304,42 @@ class BaseInstance extends pulumi.CustomResource {
   /// - 16C70G:16 core 70GB
   /// - 32C180G:32 core 180GB
   late final pulumi.Output<String> instanceClass;
-
   /// OceanBase cluster name.
   ///
   /// The length is 1 to 20 English or Chinese characters.
   ///
   /// If this parameter is not specified, the default value is the InstanceId of the cluster.
   late final pulumi.Output<String> instanceName;
-
   /// The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3
   late final pulumi.Output<String> nodeNum;
-
   /// The OceanBase Server version number.
   late final pulumi.Output<String> obVersion;
-
   /// The payment method of the instance. Value range:
   /// - Subscription: Package year and month. When you select this type of payment method, you must make sure that your account supports balance payment or credit payment. Otherwise, an InvalidPayMethod error message will be returned.
   /// - PayAsYouGo (default): Pay-as-you-go (default hourly billing).
   late final pulumi.Output<String> paymentType;
-
   /// The duration of the resource purchase. The unit is specified by the PeriodUnit. The parameter InstanceChargeType takes effect only when the value is PrePaid and is required. Once the DedicatedHostId is specified, the value cannot exceed the subscription duration of the dedicated host. When PeriodUnit = Week, Period values: {"1", "2", "3", "4"}. When PeriodUnit = Month, Period values: {"1", "2", "3", "4", "5", "6", "7", "8", "9", "12", "24", "36", "48", "60"}.
   late final pulumi.Output<int?> period;
-
   /// The duration of the purchase of resources.
   ///
   /// Package year and Month value range: Month.
   ///
   /// Default value: Month of the package, which is billed by volume. The default period is Hour.
   late final pulumi.Output<String?> periodUnit;
-
   /// The ID of the primary instance.
   late final pulumi.Output<String?> primaryInstance;
-
   /// The primary instance Region.
   late final pulumi.Output<String?> primaryRegion;
-
   /// The ID of the enterprise resource group to which the instance resides.
   late final pulumi.Output<String> resourceGroupId;
-
   /// Series of OceanBase cluster instances-normal (default): Standard cluster version (cloud disk)-normal_SSD: Standard cluster version (local disk)-history: history Library cluster version.
   late final pulumi.Output<String> series;
-
   /// The status of the resource
   late final pulumi.Output<String> status;
-
   /// Valid values:
   /// - false: migration and configuration change.
   /// - true: in-situ matching
   late final pulumi.Output<bool?> upgradeSpecNative;
-
   /// Information about the zone where the cluster is deployed.
   late final pulumi.Output<List<String>> zones;
 
@@ -374,11 +352,11 @@ class BaseInstance extends pulumi.CustomResource {
     BaseInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ocean/baseInstance:BaseInstance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ocean/baseInstance:BaseInstance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoRenew = registerOutput<bool?>('autoRenew');
     autoRenewPeriod = registerOutput<int?>('autoRenewPeriod');
     backupRetainMode = registerOutput<String?>('backupRetainMode');
@@ -422,11 +400,11 @@ class BaseInstance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ocean/baseInstance:BaseInstance',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ocean/baseInstance:BaseInstance',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoRenew = registerOutput<bool?>('autoRenew');
     autoRenewPeriod = registerOutput<int?>('autoRenewPeriod');
     backupRetainMode = registerOutput<String?>('backupRetainMode');

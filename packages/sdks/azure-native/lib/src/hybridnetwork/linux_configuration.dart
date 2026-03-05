@@ -10,29 +10,20 @@ class LinuxConfiguration {
 
   /// Creates a new [LinuxConfiguration].
   /// [ssh] Specifies the ssh key configuration for a Linux OS.
-  LinuxConfiguration({this.ssh});
+  LinuxConfiguration({
+    this.ssh,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ssh':
-          ?pulumi.Input.mapOptionalInputValue<
-            SshConfiguration,
-            Map<String, dynamic>
-          >(ssh, (value) => value.toMap()),
+      'ssh': ?pulumi.Input.mapOptionalInputValue<SshConfiguration, Map<String, dynamic>>(ssh, (value) => value.toMap()),
     };
   }
 
   factory LinuxConfiguration.fromMap(Map<String, dynamic> map) {
     return LinuxConfiguration(
-      ssh: (() {
-        final guardedValue = map['ssh'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SshConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      ssh: (() { final guardedValue = map['ssh']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SshConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

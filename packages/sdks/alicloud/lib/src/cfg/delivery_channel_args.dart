@@ -9,25 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeliveryChannelArgs {
   /// The Alibaba Cloud Resource Name (ARN) of the role to be assumed by the delivery method.
   final pulumi.Input<String> deliveryChannelAssumeRoleArn;
-
   /// The rule attached to the delivery method. This parameter is applicable only to delivery methods of the MNS type. Please refer to api [PutDeliveryChannel](https://www.alibabacloud.com/help/en/doc-detail/174253.htm) for example format.
   final pulumi.Input<String>? deliveryChannelCondition;
-
   /// The name of the delivery channel.
   final pulumi.Input<String>? deliveryChannelName;
-
   /// The ARN of the delivery destination. This parameter is required when you create a delivery method. The value must be in one of the following formats:
   /// - `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
   /// - `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
   /// - `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
   final pulumi.Input<String> deliveryChannelTargetArn;
-
   /// The type of the delivery method. This parameter is required when you create a delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
   final pulumi.Input<String> deliveryChannelType;
-
   /// The description of the delivery method.
   final pulumi.Input<String>? description;
-
   /// The status of the delivery method. Valid values: `0`: The delivery method is disabled., `1`: The delivery destination is enabled. This is the default value.
   final pulumi.Input<int>? status;
 
@@ -63,35 +57,14 @@ class DeliveryChannelArgs {
 
   factory DeliveryChannelArgs.fromMap(Map<String, dynamic> map) {
     return DeliveryChannelArgs(
-      deliveryChannelAssumeRoleArn: pulumi.Input.fromValue(
-        map['deliveryChannelAssumeRoleArn'] as String,
-      ),
-      deliveryChannelCondition: (() {
-        final guardedValue = map['deliveryChannelCondition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      deliveryChannelName: (() {
-        final guardedValue = map['deliveryChannelName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      deliveryChannelTargetArn: pulumi.Input.fromValue(
-        map['deliveryChannelTargetArn'] as String,
-      ),
-      deliveryChannelType: pulumi.Input.fromValue(
-        map['deliveryChannelType'] as String,
-      ),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      deliveryChannelAssumeRoleArn: pulumi.Input.fromValue(map['deliveryChannelAssumeRoleArn'] as String),
+      deliveryChannelCondition: (() { final guardedValue = map['deliveryChannelCondition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deliveryChannelName: (() { final guardedValue = map['deliveryChannelName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deliveryChannelTargetArn: pulumi.Input.fromValue(map['deliveryChannelTargetArn'] as String),
+      deliveryChannelType: pulumi.Input.fromValue(map['deliveryChannelType'] as String),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

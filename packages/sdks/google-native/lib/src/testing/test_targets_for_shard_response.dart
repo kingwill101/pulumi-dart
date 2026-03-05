@@ -9,17 +9,20 @@ class TestTargetsForShardResponse {
 
   /// Creates a new [TestTargetsForShardResponse].
   /// [testTargets] Group of packages, classes, and/or test methods to be run for each shard. The targets need to be specified in AndroidJUnitRunner argument format. For example, "package com.my.packages" "class com.my.package.MyClass". The number of test_targets must be greater than 0.
-  TestTargetsForShardResponse({required this.testTargets});
+  TestTargetsForShardResponse({
+    required this.testTargets,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'testTargets': testTargets};
+    return <String, dynamic>{
+      'testTargets': testTargets,
+    };
   }
 
   factory TestTargetsForShardResponse.fromMap(Map<String, dynamic> map) {
     return TestTargetsForShardResponse(
-      testTargets: pulumi.Input.fromValue(
-        (map['testTargets'] as List).cast<String>(),
-      ),
+      testTargets: pulumi.Input.fromValue((map['testTargets'] as List).cast<String>()),
     );
   }
 }
+

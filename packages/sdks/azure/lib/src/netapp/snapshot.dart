@@ -515,19 +515,14 @@ import 'snapshot_state.dart';
 class Snapshot extends pulumi.CustomResource {
   /// The name of the NetApp account in which the NetApp Pool should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> accountName;
-
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The name of the NetApp Snapshot. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the NetApp pool in which the NetApp Volume should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> poolName;
-
   /// The name of the resource group where the NetApp Snapshot should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The name of the NetApp volume in which the NetApp Snapshot should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> volumeName;
 
@@ -540,11 +535,11 @@ class Snapshot extends pulumi.CustomResource {
     SnapshotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:netapp/snapshot:Snapshot',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:netapp/snapshot:Snapshot',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountName = registerOutput<String>('accountName');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -571,11 +566,11 @@ class Snapshot extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:netapp/snapshot:Snapshot',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:netapp/snapshot:Snapshot',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountName = registerOutput<String>('accountName');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

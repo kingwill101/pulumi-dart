@@ -1,20 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getGateway.
 class GetGatewayResult {
   /// ASN on the Amazon side of the connection.
   final String amazonSideAsn;
-
   /// ARN of the gateway.
   final String arn;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
-
   /// AWS Account ID of the gateway.
   final String ownerAccountId;
-
   /// A map of tags assigned to the gateway.
   final Map<String, String> tags;
 
@@ -56,3 +53,4 @@ class GetGatewayResult {
     );
   }
 }
+

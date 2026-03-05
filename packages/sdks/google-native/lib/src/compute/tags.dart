@@ -9,19 +9,20 @@ class Tags {
 
   /// Creates a new [Tags].
   /// [items] An array of tags. Each tag must be 1-63 characters long, and comply with RFC1035.
-  Tags({this.items});
+  Tags({
+    this.items,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'items': ?items};
+    return <String, dynamic>{
+      'items': ?items,
+    };
   }
 
   factory Tags.fromMap(Map<String, dynamic> map) {
     return Tags(
-      items: (() {
-        final guardedValue = map['items'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      items: (() { final guardedValue = map['items']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

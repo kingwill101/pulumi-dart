@@ -13,8 +13,7 @@ enum OrganizationSinkOutputVersionFormat {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown OrganizationSinkOutputVersionFormat value: $value',
-    );
+    throw ArgumentError('Unknown OrganizationSinkOutputVersionFormat value: $value');
   }
 }
+

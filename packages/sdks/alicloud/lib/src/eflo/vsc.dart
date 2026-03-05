@@ -147,19 +147,14 @@ import 'vsc_state.dart';
 class Vsc extends pulumi.CustomResource {
   /// The ID of the Node.
   late final pulumi.Output<String> nodeId;
-
   /// The ID of the resource group.
   late final pulumi.Output<String> resourceGroupId;
-
   /// The status of the Vsc.
   late final pulumi.Output<String> status;
-
   /// The tag of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The name of the Vsc.
   late final pulumi.Output<String?> vscName;
-
   /// The type of the Vsc. Default value: `primary`. Valid values: `primary`.
   late final pulumi.Output<String> vscType;
 
@@ -167,13 +162,16 @@ class Vsc extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Vsc]. {@macro pulumi_eflo_vsc_vsc_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Vsc(String name, {VscArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:eflo/vsc:Vsc',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Vsc(
+    String name, {
+    VscArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:eflo/vsc:Vsc',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     nodeId = registerOutput<String>('nodeId');
     resourceGroupId = registerOutput<String>('resourceGroupId');
     status = registerOutput<String>('status');
@@ -183,7 +181,11 @@ class Vsc extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Vsc] resource's state with the given [name] and [id].
-  static Vsc get(String name, pulumi.Input<String> id, {VscState? state}) {
+  static Vsc get(
+    String name,
+    pulumi.Input<String> id, {
+    VscState? state,
+  }) {
     return Vsc._get(
       name,
       state: state?.toMap(),
@@ -196,11 +198,11 @@ class Vsc extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:eflo/vsc:Vsc',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:eflo/vsc:Vsc',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     nodeId = registerOutput<String>('nodeId');
     resourceGroupId = registerOutput<String>('resourceGroupId');
     status = registerOutput<String>('status');

@@ -8,10 +8,14 @@ class GetTemplateScratchesScratchStack {
 
   /// Creates a new [GetTemplateScratchesScratchStack].
   /// [stackId] The ID of the Resource stack.
-  GetTemplateScratchesScratchStack({required this.stackId});
+  GetTemplateScratchesScratchStack({
+    required this.stackId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'stackId': stackId};
+    return <String, dynamic>{
+      'stackId': stackId,
+    };
   }
 
   factory GetTemplateScratchesScratchStack.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class GetTemplateScratchesScratchStack {
     );
   }
 }
+

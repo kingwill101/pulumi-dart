@@ -16,3 +16,4 @@ enum RuleState {
     throw ArgumentError('Unknown RuleState value: $value');
   }
 }
+

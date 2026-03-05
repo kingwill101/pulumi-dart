@@ -10,31 +10,20 @@ class GoogleCloudDatacatalogV1DataplexFilesetSpec {
 
   /// Creates a new [GoogleCloudDatacatalogV1DataplexFilesetSpec].
   /// [dataplexSpec] Common Dataplex fields.
-  GoogleCloudDatacatalogV1DataplexFilesetSpec({this.dataplexSpec});
+  GoogleCloudDatacatalogV1DataplexFilesetSpec({
+    this.dataplexSpec,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataplexSpec':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudDatacatalogV1DataplexSpec,
-            Map<String, dynamic>
-          >(dataplexSpec, (value) => value.toMap()),
+      'dataplexSpec': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDatacatalogV1DataplexSpec, Map<String, dynamic>>(dataplexSpec, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudDatacatalogV1DataplexFilesetSpec.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDatacatalogV1DataplexFilesetSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1DataplexFilesetSpec(
-      dataplexSpec: (() {
-        final guardedValue = map['dataplexSpec'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudDatacatalogV1DataplexSpec.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      dataplexSpec: (() { final guardedValue = map['dataplexSpec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudDatacatalogV1DataplexSpec.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

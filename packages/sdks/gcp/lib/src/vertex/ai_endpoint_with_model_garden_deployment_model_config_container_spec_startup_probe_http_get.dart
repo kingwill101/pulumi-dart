@@ -7,23 +7,14 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHtt
   /// Host name to connect to, defaults to the model serving container's IP.
   /// You probably want to set "Host" in httpHeaders instead.
   final pulumi.Input<String>? host;
-
   /// Custom headers to set in the request. HTTP allows repeated headers.
   /// Structure is documented below.
-  final pulumi.Input<
-    List<
-      AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeader
-    >
-  >?
-  httpHeaders;
-
+  final pulumi.Input<List<AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeader>>? httpHeaders;
   /// Path to access on the HTTP server.
   final pulumi.Input<String>? path;
-
   /// Number of the port to access on the container.
   /// Number must be in the range 1 to 65535.
   final pulumi.Input<int>? port;
-
   /// Scheme to use for connecting to the host.
   /// Defaults to HTTP. Acceptable values are "HTTP" or "HTTPS".
   final pulumi.Input<String>? scheme;
@@ -45,65 +36,21 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHtt
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'host': ?host,
-      'httpHeaders':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<
-              AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeader
-            >,
-            List<Map<String, dynamic>>
-          >(
-            httpHeaders,
-            (value) =>
-                pulumi.Input.encodeList<
-                  AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeader,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'httpHeaders': ?pulumi.Input.mapOptionalInputValue<List<AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeader>, List<Map<String, dynamic>>>(httpHeaders, (value) => pulumi.Input.encodeList<AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeader, Map<String, dynamic>>(value, (value) => value.toMap())),
       'path': ?path,
       'port': ?port,
       'scheme': ?scheme,
     };
   }
 
-  factory AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGet.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGet.fromMap(Map<String, dynamic> map) {
     return AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGet(
-      host: (() {
-        final guardedValue = map['host'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      httpHeaders: (() {
-        final guardedValue = map['httpHeaders'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeader
-          >(
-            guardedValue,
-            (value) =>
-                AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeader.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
-      path: (() {
-        final guardedValue = map['path'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      port: (() {
-        final guardedValue = map['port'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      scheme: (() {
-        final guardedValue = map['scheme'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      host: (() { final guardedValue = map['host']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      httpHeaders: (() { final guardedValue = map['httpHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeader>(guardedValue, (value) => AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeader.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      scheme: (() { final guardedValue = map['scheme']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

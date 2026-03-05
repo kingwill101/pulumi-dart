@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class L3NetworkAttachmentConfigurationResponse {
   /// The indication of whether this network will or will not perform IP address management and allocate IP addresses when attached.
   final pulumi.Input<String>? ipamEnabled;
-
   /// The resource ID of the network that is being configured for attachment.
   final pulumi.Input<String> networkId;
-
   /// The indicator of how this network will be utilized by the Kubernetes cluster.
   final pulumi.Input<String>? pluginType;
 
@@ -30,21 +28,12 @@ class L3NetworkAttachmentConfigurationResponse {
     };
   }
 
-  factory L3NetworkAttachmentConfigurationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory L3NetworkAttachmentConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return L3NetworkAttachmentConfigurationResponse(
-      ipamEnabled: (() {
-        final guardedValue = map['ipamEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ipamEnabled: (() { final guardedValue = map['ipamEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkId: pulumi.Input.fromValue(map['networkId'] as String),
-      pluginType: (() {
-        final guardedValue = map['pluginType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      pluginType: (() { final guardedValue = map['pluginType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

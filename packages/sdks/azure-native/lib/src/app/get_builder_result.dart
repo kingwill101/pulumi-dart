@@ -9,34 +9,24 @@ import 'system_data_response.dart';
 class GetBuilderResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// List of mappings of container registries and the managed identity used to connect to it.
   final List<ContainerRegistryResponse>? containerRegistries;
-
   /// Resource ID of the container apps environment that the builder is associated with.
   final String environmentId;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// The managed service identities assigned to this resource.
   final ManagedServiceIdentityResponse? identity;
-
   /// The geo-location where the resource lives
   final String location;
-
   /// The name of the resource
   final String name;
-
   /// Provisioning state of a builder resource.
   final String provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -69,14 +59,7 @@ class GetBuilderResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
-      'containerRegistries': ?(() {
-        final guardedValue = containerRegistries;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          ContainerRegistryResponse,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'containerRegistries': ?(() { final guardedValue = containerRegistries; if (guardedValue == null) return null; return pulumi.Input.encodeList<ContainerRegistryResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'environmentId': environmentId,
       'id': id,
       'identity': ?identity?.toMap(),
@@ -92,37 +75,17 @@ class GetBuilderResult {
   factory GetBuilderResult.fromMap(Map<String, dynamic> map) {
     return GetBuilderResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      containerRegistries: (() {
-        final guardedValue = map['containerRegistries'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<ContainerRegistryResponse>(
-          guardedValue,
-          (value) => ContainerRegistryResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      containerRegistries: (() { final guardedValue = map['containerRegistries']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerRegistryResponse>(guardedValue, (value) => ContainerRegistryResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       environmentId: map['environmentId'] as String,
       id: map['id'] as String,
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return ManagedServiceIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

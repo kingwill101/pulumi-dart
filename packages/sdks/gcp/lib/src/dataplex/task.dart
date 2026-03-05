@@ -1245,71 +1245,53 @@ import 'task_trigger_spec.dart';
 class Task extends pulumi.CustomResource {
   /// The time when the task was created.
   late final pulumi.Output<String> createTime;
-
   /// User-provided description of the task.
   late final pulumi.Output<String?> description;
-
   /// User friendly display name.
   late final pulumi.Output<String?> displayName;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Configuration for the cluster
   /// Structure is documented below.
   late final pulumi.Output<TaskExecutionSpec> executionSpec;
-
   /// Configuration for the cluster
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> executionStatuses;
-
   /// User-defined labels for the task.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// The lake in which the task will be created in.
   late final pulumi.Output<String?> lake;
-
   /// The location in which the task will be created in.
   late final pulumi.Output<String?> location;
-
   /// (Output)
   /// The relative resource name of the job, of the form: projects/{project_number}/locations/{locationId}/lakes/{lakeId}/tasks/{taskId}/jobs/{jobId}.
   late final pulumi.Output<String> name;
-
   /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
   /// Structure is documented below.
   late final pulumi.Output<TaskNotebook?> notebook;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
   /// Structure is documented below.
   late final pulumi.Output<TaskSpark?> spark;
-
   /// (Output)
   /// Execution state for the job.
   late final pulumi.Output<String> state;
-
   /// The task Id of the task.
   late final pulumi.Output<String?> taskId;
-
   /// Configuration for the cluster
   /// Structure is documented below.
   late final pulumi.Output<TaskTriggerSpec> triggerSpec;
-
   /// (Output)
   /// System generated globally unique ID for the job.
   late final pulumi.Output<String> uid;
-
   /// (Output)
   /// Last update time of the status.
   late final pulumi.Output<String> updateTime;
@@ -1318,72 +1300,43 @@ class Task extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Task]. {@macro pulumi_dataplex_task_task_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Task(String name, {TaskArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'gcp:dataplex/task:Task',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Task(
+    String name, {
+    TaskArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'gcp:dataplex/task:Task',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    executionSpec = registerOutput<TaskExecutionSpec>(
-      'executionSpec',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TaskExecutionSpec.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    executionStatuses = registerOutput<List<Map<String, dynamic>>>(
-      'executionStatuses',
-    );
+    executionSpec = registerOutput<TaskExecutionSpec>('executionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskExecutionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    executionStatuses = registerOutput<List<Map<String, dynamic>>>('executionStatuses');
     labels = registerOutput<Map<String, String>?>('labels');
     lake = registerOutput<String?>('lake');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    notebook = registerOutput<TaskNotebook?>(
-      'notebook',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TaskNotebook.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    notebook = registerOutput<TaskNotebook?>('notebook', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskNotebook.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    spark = registerOutput<TaskSpark?>(
-      'spark',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TaskSpark.fromMap((guardedValue as Map).cast<String, dynamic>());
-      },
-    );
+    spark = registerOutput<TaskSpark?>('spark', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskSpark.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     state = registerOutput<String>('state');
     taskId = registerOutput<String?>('taskId');
-    triggerSpec = registerOutput<TaskTriggerSpec>(
-      'triggerSpec',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TaskTriggerSpec.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    triggerSpec = registerOutput<TaskTriggerSpec>('triggerSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskTriggerSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }
 
   /// Gets an existing [Task] resource's state with the given [name] and [id].
-  static Task get(String name, pulumi.Input<String> id, {TaskState? state}) {
+  static Task get(
+    String name,
+    pulumi.Input<String> id, {
+    TaskState? state,
+  }) {
     return Task._get(
       name,
       state: state?.toMap(),
@@ -1396,64 +1349,28 @@ class Task extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:dataplex/task:Task',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:dataplex/task:Task',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    executionSpec = registerOutput<TaskExecutionSpec>(
-      'executionSpec',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TaskExecutionSpec.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    executionStatuses = registerOutput<List<Map<String, dynamic>>>(
-      'executionStatuses',
-    );
+    executionSpec = registerOutput<TaskExecutionSpec>('executionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskExecutionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    executionStatuses = registerOutput<List<Map<String, dynamic>>>('executionStatuses');
     labels = registerOutput<Map<String, String>?>('labels');
     lake = registerOutput<String?>('lake');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    notebook = registerOutput<TaskNotebook?>(
-      'notebook',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TaskNotebook.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    notebook = registerOutput<TaskNotebook?>('notebook', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskNotebook.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    spark = registerOutput<TaskSpark?>(
-      'spark',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TaskSpark.fromMap((guardedValue as Map).cast<String, dynamic>());
-      },
-    );
+    spark = registerOutput<TaskSpark?>('spark', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskSpark.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.state = registerOutput<String>('state');
     taskId = registerOutput<String?>('taskId');
-    triggerSpec = registerOutput<TaskTriggerSpec>(
-      'triggerSpec',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TaskTriggerSpec.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    triggerSpec = registerOutput<TaskTriggerSpec>('triggerSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskTriggerSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }

@@ -9,19 +9,20 @@ class PlacementProfileResponse {
 
   /// Creates a new [PlacementProfileResponse].
   /// [faultDomainCount] The number of fault domains to be used to spread CGs in the NGroups resource. This can only be specified during NGroup creation and is immutable after that.
-  PlacementProfileResponse({this.faultDomainCount});
+  PlacementProfileResponse({
+    this.faultDomainCount,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'faultDomainCount': ?faultDomainCount};
+    return <String, dynamic>{
+      'faultDomainCount': ?faultDomainCount,
+    };
   }
 
   factory PlacementProfileResponse.fromMap(Map<String, dynamic> map) {
     return PlacementProfileResponse(
-      faultDomainCount: (() {
-        final guardedValue = map['faultDomainCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      faultDomainCount: (() { final guardedValue = map['faultDomainCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

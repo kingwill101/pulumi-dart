@@ -10,10 +10,8 @@ class HandshakeArgs {
   /// The description of the invitation.
   /// The description can be up to 1,024 characters in length.
   final pulumi.Input<String>? note;
-
   /// The ID or logon email address of the account that you want to invite.
   final pulumi.Input<String> targetEntity;
-
   /// The type of the invited account. Valid values:
   ///
   /// - Account: indicates the ID of the account.
@@ -40,13 +38,10 @@ class HandshakeArgs {
 
   factory HandshakeArgs.fromMap(Map<String, dynamic> map) {
     return HandshakeArgs(
-      note: (() {
-        final guardedValue = map['note'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      note: (() { final guardedValue = map['note']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       targetEntity: pulumi.Input.fromValue(map['targetEntity'] as String),
       targetType: pulumi.Input.fromValue(map['targetType'] as String),
     );
   }
 }
+

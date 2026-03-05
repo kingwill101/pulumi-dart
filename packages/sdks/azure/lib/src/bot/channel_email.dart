@@ -238,19 +238,14 @@ import 'channel_email_state.dart';
 class ChannelEmail extends pulumi.CustomResource {
   /// The name of the Bot Resource this channel will be associated with. Changing this forces a new resource to be created.
   late final pulumi.Output<String> botName;
-
   /// The email address that the Bot will authenticate with.
   late final pulumi.Output<String> emailAddress;
-
   /// The email password that the Bot will authenticate with.
   late final pulumi.Output<String?> emailPassword;
-
   /// The supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The magic code used to set up OAUTH authentication.
   late final pulumi.Output<String?> magicCode;
-
   /// The name of the resource group in which to create the Bot Channel. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
 
@@ -263,11 +258,11 @@ class ChannelEmail extends pulumi.CustomResource {
     ChannelEmailArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:bot/channelEmail:ChannelEmail',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:bot/channelEmail:ChannelEmail',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     botName = registerOutput<String>('botName');
     emailAddress = registerOutput<String>('emailAddress');
     emailPassword = registerOutput<String?>('emailPassword');
@@ -294,11 +289,11 @@ class ChannelEmail extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:bot/channelEmail:ChannelEmail',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:bot/channelEmail:ChannelEmail',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     botName = registerOutput<String>('botName');
     emailAddress = registerOutput<String>('emailAddress');
     emailPassword = registerOutput<String?>('emailPassword');

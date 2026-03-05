@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApplicationGatewaySkus {
   /// The Capacity of the SKU in use for this Application Gateway.
   final pulumi.Input<int> capacity;
-
   /// The name of this Application Gateway.
   final pulumi.Input<String> name;
-
   /// The Tier of the SKU in use for this Application Gateway.
   final pulumi.Input<String> tier;
 
@@ -23,7 +21,11 @@ class GetApplicationGatewaySkus {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'capacity': capacity, 'name': name, 'tier': tier};
+    return <String, dynamic>{
+      'capacity': capacity,
+      'name': name,
+      'tier': tier,
+    };
   }
 
   factory GetApplicationGatewaySkus.fromMap(Map<String, dynamic> map) {
@@ -34,3 +36,4 @@ class GetApplicationGatewaySkus {
     );
   }
 }
+

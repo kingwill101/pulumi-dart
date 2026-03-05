@@ -6,14 +6,16 @@ class TargetSiteSiteVerificationInfo {
   /// Site verification state indicating the ownership and validity.
   /// Possible values are: `VERIFIED`, `UNVERIFIED`, `EXEMPTED`.
   final pulumi.Input<String>? siteVerificationState;
-
   /// Latest site verification time.
   final pulumi.Input<String>? verifyTime;
 
   /// Creates a new [TargetSiteSiteVerificationInfo].
   /// [siteVerificationState] Site verification state indicating the ownership and validity.
   /// [verifyTime] Latest site verification time.
-  TargetSiteSiteVerificationInfo({this.siteVerificationState, this.verifyTime});
+  TargetSiteSiteVerificationInfo({
+    this.siteVerificationState,
+    this.verifyTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class TargetSiteSiteVerificationInfo {
 
   factory TargetSiteSiteVerificationInfo.fromMap(Map<String, dynamic> map) {
     return TargetSiteSiteVerificationInfo(
-      siteVerificationState: (() {
-        final guardedValue = map['siteVerificationState'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      verifyTime: (() {
-        final guardedValue = map['verifyTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      siteVerificationState: (() { final guardedValue = map['siteVerificationState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      verifyTime: (() { final guardedValue = map['verifyTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

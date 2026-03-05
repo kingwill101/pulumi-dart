@@ -9,19 +9,20 @@ class HttpSettingsRoutes {
 
   /// Creates a new [HttpSettingsRoutes].
   /// [apiPrefix] The prefix that should precede all the authentication/authorization paths.
-  HttpSettingsRoutes({this.apiPrefix});
+  HttpSettingsRoutes({
+    this.apiPrefix,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'apiPrefix': ?apiPrefix};
+    return <String, dynamic>{
+      'apiPrefix': ?apiPrefix,
+    };
   }
 
   factory HttpSettingsRoutes.fromMap(Map<String, dynamic> map) {
     return HttpSettingsRoutes(
-      apiPrefix: (() {
-        final guardedValue = map['apiPrefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      apiPrefix: (() { final guardedValue = map['apiPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

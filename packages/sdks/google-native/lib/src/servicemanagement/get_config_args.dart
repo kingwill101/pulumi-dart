@@ -15,7 +15,11 @@ class GetConfigArgs {
   /// [configId] Required.
   /// [serviceName] Required.
   /// [view] Optional.
-  GetConfigArgs({required this.configId, required this.serviceName, this.view});
+  GetConfigArgs({
+    required this.configId,
+    required this.serviceName,
+    this.view,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,11 +33,8 @@ class GetConfigArgs {
     return GetConfigArgs(
       configId: pulumi.Input.fromValue(map['configId'] as String),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
-      view: (() {
-        final guardedValue = map['view'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      view: (() { final guardedValue = map['view']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

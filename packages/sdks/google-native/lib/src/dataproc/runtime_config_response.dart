@@ -7,13 +7,10 @@ import 'repository_config_response.dart';
 class RuntimeConfigResponse {
   /// Optional. Optional custom container image for the job runtime environment. If not specified, a default container image will be used.
   final pulumi.Input<String> containerImage;
-
   /// Optional. A mapping of property names to values, which are used to configure workload execution.
   final pulumi.Input<Map<String, String>> properties;
-
   /// Optional. Dependency repository configuration.
   final pulumi.Input<RepositoryConfigResponse> repositoryConfig;
-
   /// Optional. Version of the batch runtime.
   final pulumi.Input<String> version;
 
@@ -33,11 +30,7 @@ class RuntimeConfigResponse {
     return <String, dynamic>{
       'containerImage': containerImage,
       'properties': properties,
-      'repositoryConfig':
-          pulumi.Input.mapInputValue<
-            RepositoryConfigResponse,
-            Map<String, dynamic>
-          >(repositoryConfig, (value) => value.toMap()),
+      'repositoryConfig': pulumi.Input.mapInputValue<RepositoryConfigResponse, Map<String, dynamic>>(repositoryConfig, (value) => value.toMap()),
       'version': version,
     };
   }
@@ -45,15 +38,10 @@ class RuntimeConfigResponse {
   factory RuntimeConfigResponse.fromMap(Map<String, dynamic> map) {
     return RuntimeConfigResponse(
       containerImage: pulumi.Input.fromValue(map['containerImage'] as String),
-      properties: pulumi.Input.fromValue(
-        (map['properties'] as Map).cast<String, String>(),
-      ),
-      repositoryConfig: pulumi.Input.fromValue(
-        RepositoryConfigResponse.fromMap(
-          (map['repositoryConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      properties: pulumi.Input.fromValue((map['properties'] as Map).cast<String, String>()),
+      repositoryConfig: pulumi.Input.fromValue(RepositoryConfigResponse.fromMap((map['repositoryConfig']! as Map).cast<String, dynamic>())),
       version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
+

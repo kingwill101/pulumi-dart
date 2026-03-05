@@ -792,17 +792,12 @@ import 'configuration_policy_state.dart';
 /// ```
 class ConfigurationPolicy extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
-
   /// Defines how Security Hub is configured. See below.
-  late final pulumi.Output<ConfigurationPolicyConfigurationPolicy>
-  configurationPolicy;
-
+  late final pulumi.Output<ConfigurationPolicyConfigurationPolicy> configurationPolicy;
   /// The description of the configuration policy.
   late final pulumi.Output<String?> description;
-
   /// The name of the configuration policy.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -815,23 +810,13 @@ class ConfigurationPolicy extends pulumi.CustomResource {
     ConfigurationPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:securityhub/configurationPolicy:ConfigurationPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:securityhub/configurationPolicy:ConfigurationPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    configurationPolicy =
-        registerOutput<ConfigurationPolicyConfigurationPolicy>(
-          'configurationPolicy',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ConfigurationPolicyConfigurationPolicy.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    configurationPolicy = registerOutput<ConfigurationPolicyConfigurationPolicy>('configurationPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationPolicyConfigurationPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
@@ -855,23 +840,13 @@ class ConfigurationPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:securityhub/configurationPolicy:ConfigurationPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:securityhub/configurationPolicy:ConfigurationPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    configurationPolicy =
-        registerOutput<ConfigurationPolicyConfigurationPolicy>(
-          'configurationPolicy',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ConfigurationPolicyConfigurationPolicy.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    configurationPolicy = registerOutput<ConfigurationPolicyConfigurationPolicy>('configurationPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationPolicyConfigurationPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');

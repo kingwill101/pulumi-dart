@@ -14,3 +14,4 @@ enum LlmMessageLogTypes {
     throw ArgumentError('Unknown LlmMessageLogTypes value: $value');
   }
 }
+

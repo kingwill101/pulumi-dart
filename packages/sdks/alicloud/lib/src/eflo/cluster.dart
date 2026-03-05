@@ -704,43 +704,30 @@ import 'cluster_state.dart';
 class Cluster extends pulumi.CustomResource {
   /// cluster description
   late final pulumi.Output<String?> clusterDescription;
-
   /// ClusterName
   late final pulumi.Output<String?> clusterName;
-
   /// cluster type
   late final pulumi.Output<String?> clusterType;
-
   /// Component (software instance) See `components` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> components;
-
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
-
   /// Cluster Number
   late final pulumi.Output<String?> hpnZone;
-
   /// Whether to allow skipping failed nodes. Default value: False
   late final pulumi.Output<bool?> ignoreFailedNodeTasks;
-
   /// Network Information See `networks` below.
   late final pulumi.Output<ClusterNetworks?> networks;
-
   /// Node virtual switch
   late final pulumi.Output<List<String>?> nimizVswitches;
-
   /// Node Group List See `node_groups` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> nodeGroups;
-
   /// Whether the network interface supports jumbo frames
   late final pulumi.Output<bool?> openEniJumboFrame;
-
   /// The ID of the resource group
   late final pulumi.Output<String> resourceGroupId;
-
   /// The status of the resource
   late final pulumi.Output<String> status;
-
   /// tag
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -753,11 +740,11 @@ class Cluster extends pulumi.CustomResource {
     ClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:eflo/cluster:Cluster',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:eflo/cluster:Cluster',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterDescription = registerOutput<String?>('clusterDescription');
     clusterName = registerOutput<String?>('clusterName');
     clusterType = registerOutput<String?>('clusterType');
@@ -765,16 +752,7 @@ class Cluster extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     hpnZone = registerOutput<String?>('hpnZone');
     ignoreFailedNodeTasks = registerOutput<bool?>('ignoreFailedNodeTasks');
-    networks = registerOutput<ClusterNetworks?>(
-      'networks',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterNetworks.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    networks = registerOutput<ClusterNetworks?>('networks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterNetworks.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     nimizVswitches = registerOutput<List<String>?>('nimizVswitches');
     nodeGroups = registerOutput<List<Map<String, dynamic>>?>('nodeGroups');
     openEniJumboFrame = registerOutput<bool?>('openEniJumboFrame');
@@ -801,11 +779,11 @@ class Cluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:eflo/cluster:Cluster',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:eflo/cluster:Cluster',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterDescription = registerOutput<String?>('clusterDescription');
     clusterName = registerOutput<String?>('clusterName');
     clusterType = registerOutput<String?>('clusterType');
@@ -813,16 +791,7 @@ class Cluster extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     hpnZone = registerOutput<String?>('hpnZone');
     ignoreFailedNodeTasks = registerOutput<bool?>('ignoreFailedNodeTasks');
-    networks = registerOutput<ClusterNetworks?>(
-      'networks',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterNetworks.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    networks = registerOutput<ClusterNetworks?>('networks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterNetworks.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     nimizVswitches = registerOutput<List<String>?>('nimizVswitches');
     nodeGroups = registerOutput<List<Map<String, dynamic>>?>('nodeGroups');
     openEniJumboFrame = registerOutput<bool?>('openEniJumboFrame');

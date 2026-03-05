@@ -7,10 +7,8 @@ import 'application_gateway_backend_health_http_settings_response.dart';
 class GetApplicationGatewayBackendHealthOnDemandResult {
   /// Reference to an ApplicationGatewayBackendAddressPool resource.
   final ApplicationGatewayBackendAddressPoolResponse? backendAddressPool;
-
   /// Application gateway BackendHealthHttp settings.
-  final ApplicationGatewayBackendHealthHttpSettingsResponse?
-  backendHealthHttpSettings;
+  final ApplicationGatewayBackendHealthHttpSettingsResponse? backendHealthHttpSettings;
 
   /// Creates a new [GetApplicationGatewayBackendHealthOnDemandResult].
   /// [backendAddressPool] Reference to an ApplicationGatewayBackendAddressPool resource.
@@ -27,24 +25,11 @@ class GetApplicationGatewayBackendHealthOnDemandResult {
     };
   }
 
-  factory GetApplicationGatewayBackendHealthOnDemandResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetApplicationGatewayBackendHealthOnDemandResult.fromMap(Map<String, dynamic> map) {
     return GetApplicationGatewayBackendHealthOnDemandResult(
-      backendAddressPool: (() {
-        final guardedValue = map['backendAddressPool'];
-        if (guardedValue == null) return null;
-        return ApplicationGatewayBackendAddressPoolResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      backendHealthHttpSettings: (() {
-        final guardedValue = map['backendHealthHttpSettings'];
-        if (guardedValue == null) return null;
-        return ApplicationGatewayBackendHealthHttpSettingsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      backendAddressPool: (() { final guardedValue = map['backendAddressPool']; if (guardedValue == null) return null; return ApplicationGatewayBackendAddressPoolResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      backendHealthHttpSettings: (() { final guardedValue = map['backendHealthHttpSettings']; if (guardedValue == null) return null; return ApplicationGatewayBackendHealthHttpSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }
 }
+

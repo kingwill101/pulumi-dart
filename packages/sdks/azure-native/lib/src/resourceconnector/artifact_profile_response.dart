@@ -9,10 +9,14 @@ class ArtifactProfileResponse {
 
   /// Creates a new [ArtifactProfileResponse].
   /// [endpoint] Endpoint is the URL to upload artifacts to.
-  ArtifactProfileResponse({required this.endpoint});
+  ArtifactProfileResponse({
+    required this.endpoint,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'endpoint': endpoint};
+    return <String, dynamic>{
+      'endpoint': endpoint,
+    };
   }
 
   factory ArtifactProfileResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class ArtifactProfileResponse {
     );
   }
 }
+

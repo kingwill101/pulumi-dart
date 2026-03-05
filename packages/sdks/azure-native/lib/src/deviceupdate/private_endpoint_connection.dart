@@ -7,10 +7,8 @@ import 'private_link_service_connection_state.dart';
 class PrivateEndpointConnection {
   /// Array of group IDs.
   final pulumi.Input<List<String>>? groupIds;
-
   /// A collection of information about the state of the connection between service consumer and provider.
-  final pulumi.Input<PrivateLinkServiceConnectionState>
-  privateLinkServiceConnectionState;
+  final pulumi.Input<PrivateLinkServiceConnectionState> privateLinkServiceConnectionState;
 
   /// Creates a new [PrivateEndpointConnection].
   /// [groupIds] Array of group IDs.
@@ -23,27 +21,15 @@ class PrivateEndpointConnection {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'groupIds': ?groupIds,
-      'privateLinkServiceConnectionState':
-          pulumi.Input.mapInputValue<
-            PrivateLinkServiceConnectionState,
-            Map<String, dynamic>
-          >(privateLinkServiceConnectionState, (value) => value.toMap()),
+      'privateLinkServiceConnectionState': pulumi.Input.mapInputValue<PrivateLinkServiceConnectionState, Map<String, dynamic>>(privateLinkServiceConnectionState, (value) => value.toMap()),
     };
   }
 
   factory PrivateEndpointConnection.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointConnection(
-      groupIds: (() {
-        final guardedValue = map['groupIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      privateLinkServiceConnectionState: pulumi.Input.fromValue(
-        PrivateLinkServiceConnectionState.fromMap(
-          (map['privateLinkServiceConnectionState']! as Map)
-              .cast<String, dynamic>(),
-        ),
-      ),
+      groupIds: (() { final guardedValue = map['groupIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      privateLinkServiceConnectionState: pulumi.Input.fromValue(PrivateLinkServiceConnectionState.fromMap((map['privateLinkServiceConnectionState']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

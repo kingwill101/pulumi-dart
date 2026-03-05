@@ -6,23 +6,17 @@ import 'get_volume_group_sap_hana_volume.dart';
 /// Result data returned by getVolumeGroupSapHana.
 class GetVolumeGroupSapHanaResult {
   final String accountName;
-
   /// The application identifier.
   final String applicationIdentifier;
-
   /// Volume group description.
   final String groupDescription;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The Azure Region where the Application Volume Group exists.
   final String location;
-
   /// The name of this volume.
   final String name;
   final String resourceGroupName;
-
   /// A `volume` block as defined below.
   final List<GetVolumeGroupSapHanaVolume> volumes;
 
@@ -55,11 +49,7 @@ class GetVolumeGroupSapHanaResult {
       'location': location,
       'name': name,
       'resourceGroupName': resourceGroupName,
-      'volumes':
-          pulumi.Input.encodeList<
-            GetVolumeGroupSapHanaVolume,
-            Map<String, dynamic>
-          >(volumes, (value) => value.toMap()),
+      'volumes': pulumi.Input.encodeList<GetVolumeGroupSapHanaVolume, Map<String, dynamic>>(volumes, (value) => value.toMap()),
     };
   }
 
@@ -72,12 +62,8 @@ class GetVolumeGroupSapHanaResult {
       location: map['location'] as String,
       name: map['name'] as String,
       resourceGroupName: map['resourceGroupName'] as String,
-      volumes: pulumi.Input.decodeList<GetVolumeGroupSapHanaVolume>(
-        map['volumes']!,
-        (value) => GetVolumeGroupSapHanaVolume.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      volumes: pulumi.Input.decodeList<GetVolumeGroupSapHanaVolume>(map['volumes']!, (value) => GetVolumeGroupSapHanaVolume.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

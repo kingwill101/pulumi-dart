@@ -1,19 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getClientConfig.
 class GetClientConfigResult {
   /// is set to the Azure Client ID (Application Object ID).
   final String clientId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// is set to the Azure Object ID.
   final String objectId;
-
   /// is set to the Azure Subscription ID.
   final String subscriptionId;
-
   /// is set to the Azure Tenant ID.
   final String tenantId;
 
@@ -51,3 +48,4 @@ class GetClientConfigResult {
     );
   }
 }
+

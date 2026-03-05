@@ -18,38 +18,16 @@ class GetBillingHubServiceFreeHourBalanceResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'incrementEntries': ?(() {
-        final guardedValue = incrementEntries;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          BillingHubFreeHourIncrementEntryResponse,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'incrementEntries': ?(() { final guardedValue = incrementEntries; if (guardedValue == null) return null; return pulumi.Input.encodeList<BillingHubFreeHourIncrementEntryResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'totalRemainingFreeHours': ?totalRemainingFreeHours,
     };
   }
 
-  factory GetBillingHubServiceFreeHourBalanceResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetBillingHubServiceFreeHourBalanceResult.fromMap(Map<String, dynamic> map) {
     return GetBillingHubServiceFreeHourBalanceResult(
-      incrementEntries: (() {
-        final guardedValue = map['incrementEntries'];
-        if (guardedValue == null) return null;
-        return pulumi
-            .Input.decodeList<BillingHubFreeHourIncrementEntryResponse>(
-          guardedValue,
-          (value) => BillingHubFreeHourIncrementEntryResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      totalRemainingFreeHours: (() {
-        final guardedValue = map['totalRemainingFreeHours'];
-        if (guardedValue == null) return null;
-        return guardedValue as double;
-      })(),
+      incrementEntries: (() { final guardedValue = map['incrementEntries']; if (guardedValue == null) return null; return pulumi.Input.decodeList<BillingHubFreeHourIncrementEntryResponse>(guardedValue, (value) => BillingHubFreeHourIncrementEntryResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      totalRemainingFreeHours: (() { final guardedValue = map['totalRemainingFreeHours']; if (guardedValue == null) return null; return guardedValue as double; })(),
     );
   }
 }
+

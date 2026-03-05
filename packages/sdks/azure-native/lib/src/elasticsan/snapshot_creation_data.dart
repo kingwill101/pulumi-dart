@@ -9,10 +9,14 @@ class SnapshotCreationData {
 
   /// Creates a new [SnapshotCreationData].
   /// [sourceId] Fully qualified resource ID of the volume. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/volumes/{volumeName}"
-  SnapshotCreationData({required this.sourceId});
+  SnapshotCreationData({
+    required this.sourceId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'sourceId': sourceId};
+    return <String, dynamic>{
+      'sourceId': sourceId,
+    };
   }
 
   factory SnapshotCreationData.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class SnapshotCreationData {
     );
   }
 }
+

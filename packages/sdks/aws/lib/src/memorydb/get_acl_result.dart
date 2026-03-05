@@ -1,21 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getAcl.
 class GetAclResult {
   /// ARN of the ACL.
   final String arn;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The minimum engine version supported by the ACL.
   final String minimumEngineVersion;
   final String name;
   final String region;
-
   /// Map of tags assigned to the ACL.
   final Map<String, String> tags;
-
   /// Set of MemoryDB user names included in this ACL.
   final List<String> userNames;
 
@@ -61,3 +58,4 @@ class GetAclResult {
     );
   }
 }
+

@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGreyTagRoutesRouteDubboRuleItem {
   /// The comparison operator.
   final pulumi.Input<String> cond;
-
   /// The parameter value gets the expression.
   final pulumi.Input<String> expr;
-
   /// The parameter number.
   final pulumi.Input<int> index;
-
   /// The operator.
   final pulumi.Input<String> operator;
-
   /// The value of the parameter.
   final pulumi.Input<String> value;
 
@@ -52,3 +48,4 @@ class GetGreyTagRoutesRouteDubboRuleItem {
     );
   }
 }
+

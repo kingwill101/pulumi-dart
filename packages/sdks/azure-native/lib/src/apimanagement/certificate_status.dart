@@ -16,3 +16,4 @@ enum CertificateStatus {
     throw ArgumentError('Unknown CertificateStatus value: $value');
   }
 }
+

@@ -8,7 +8,6 @@ class ExemptPriorityLevelConfigurationFlowcontrolApiserverK8sIoV1beta2 {
   ///
   /// LendableCL(i) = round( NominalCL(i) * lendablePercent(i)/100.0 )
   final pulumi.Input<int>? lendablePercent;
-
   /// `nominalConcurrencyShares` (NCS) contributes to the computation of the NominalConcurrencyLimit (NominalCL) of this level. This is the number of execution seats nominally reserved for this priority level. This DOES NOT limit the dispatching from this priority level but affects the other priority levels through the borrowing mechanism. The server's concurrency limit (ServerCL) is divided among all the priority levels in proportion to their NCS values:
   ///
   /// NominalCL(i)  = ceil( ServerCL * NCS(i) / sum_ncs ) sum_ncs = sum[priority level k] NCS(k)
@@ -31,20 +30,11 @@ class ExemptPriorityLevelConfigurationFlowcontrolApiserverK8sIoV1beta2 {
     };
   }
 
-  factory ExemptPriorityLevelConfigurationFlowcontrolApiserverK8sIoV1beta2.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ExemptPriorityLevelConfigurationFlowcontrolApiserverK8sIoV1beta2.fromMap(Map<String, dynamic> map) {
     return ExemptPriorityLevelConfigurationFlowcontrolApiserverK8sIoV1beta2(
-      lendablePercent: (() {
-        final guardedValue = map['lendablePercent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      nominalConcurrencyShares: (() {
-        final guardedValue = map['nominalConcurrencyShares'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      lendablePercent: (() { final guardedValue = map['lendablePercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      nominalConcurrencyShares: (() { final guardedValue = map['nominalConcurrencyShares']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

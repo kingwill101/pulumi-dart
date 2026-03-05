@@ -147,19 +147,14 @@ import 'system_data_response.dart';
 class ArchiveVersion extends pulumi.CustomResource {
   /// The detailed error message for the archive version in the case of failure.
   late final pulumi.Output<String?> archiveVersionErrorMessage;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The name of the resource.
   late final pulumi.Output<String> name;
-
   /// The provisioning state of the archive at the time the operation was called.
   late final pulumi.Output<String> provisioningState;
-
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource.
   late final pulumi.Output<String> type;
 
@@ -172,27 +167,16 @@ class ArchiveVersion extends pulumi.CustomResource {
     ArchiveVersionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:containerregistry:ArchiveVersion',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    archiveVersionErrorMessage = registerOutput<String?>(
-      'archiveVersionErrorMessage',
-    );
+          'azure-native:containerregistry:ArchiveVersion',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    archiveVersionErrorMessage = registerOutput<String?>('archiveVersionErrorMessage');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

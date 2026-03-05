@@ -386,13 +386,10 @@ import 'switch_das_pro_state.dart';
 class SwitchDasPro extends pulumi.CustomResource {
   /// The ID of the database instance.
   late final pulumi.Output<String> instanceId;
-
   /// The storage duration of SQL Explorer data. Valid values: `30`, `180`, `365`, `1095`, `1825`. Unit: days. Default value: `30`.
   late final pulumi.Output<int> sqlRetention;
-
   /// Whether the database instance has DAS professional.
   late final pulumi.Output<bool> status;
-
   /// The ID of the Alibaba Cloud account that is used to create the database instance.
   late final pulumi.Output<String> userId;
 
@@ -405,11 +402,11 @@ class SwitchDasPro extends pulumi.CustomResource {
     SwitchDasProArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:das/switchDasPro:SwitchDasPro',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:das/switchDasPro:SwitchDasPro',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     instanceId = registerOutput<String>('instanceId');
     sqlRetention = registerOutput<int>('sqlRetention');
     status = registerOutput<bool>('status');
@@ -434,11 +431,11 @@ class SwitchDasPro extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:das/switchDasPro:SwitchDasPro',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:das/switchDasPro:SwitchDasPro',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     instanceId = registerOutput<String>('instanceId');
     sqlRetention = registerOutput<int>('sqlRetention');
     status = registerOutput<bool>('status');

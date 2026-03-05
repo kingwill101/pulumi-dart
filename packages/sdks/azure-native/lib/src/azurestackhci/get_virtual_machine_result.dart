@@ -15,55 +15,38 @@ import 'virtual_machine_status_response.dart';
 class GetVirtualMachineResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The extendedLocation of the resource.
   final ExtendedLocationResponse? extendedLocation;
-
   /// Guest agent status properties.
   final GuestAgentProfileResponse? guestAgentProfile;
-
   /// HardwareProfile - Specifies the hardware settings for the virtual machine.
   final VirtualMachinePropertiesResponseHardwareProfile? hardwareProfile;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// Identity for the resource.
   final IdentityResponse? identity;
-
   /// The geo-location where the resource lives
   final String location;
-
   /// The name of the resource
   final String name;
-
   /// NetworkProfile - describes the network configuration the virtual machine
   final VirtualMachinePropertiesResponseNetworkProfile? networkProfile;
-
   /// OsProfile - describes the configuration of the operating system and sets login data
   final VirtualMachinePropertiesResponseOsProfile? osProfile;
-
   /// Provisioning state of the virtual machine.
   final String provisioningState;
-
   /// SecurityProfile - Specifies the security settings for the virtual machine.
   final VirtualMachinePropertiesResponseSecurityProfile? securityProfile;
-
   /// The observed state of virtual machines
   final VirtualMachineStatusResponse status;
-
   /// StorageProfile - contains information about the disks and storage information for the virtual machine
   final VirtualMachinePropertiesResponseStorageProfile? storageProfile;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
-
   /// Unique identifier for the vm resource.
   final String vmId;
 
@@ -133,79 +116,24 @@ class GetVirtualMachineResult {
   factory GetVirtualMachineResult.fromMap(Map<String, dynamic> map) {
     return GetVirtualMachineResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      extendedLocation: (() {
-        final guardedValue = map['extendedLocation'];
-        if (guardedValue == null) return null;
-        return ExtendedLocationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      guestAgentProfile: (() {
-        final guardedValue = map['guestAgentProfile'];
-        if (guardedValue == null) return null;
-        return GuestAgentProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      hardwareProfile: (() {
-        final guardedValue = map['hardwareProfile'];
-        if (guardedValue == null) return null;
-        return VirtualMachinePropertiesResponseHardwareProfile.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      guestAgentProfile: (() { final guardedValue = map['guestAgentProfile']; if (guardedValue == null) return null; return GuestAgentProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      hardwareProfile: (() { final guardedValue = map['hardwareProfile']; if (guardedValue == null) return null; return VirtualMachinePropertiesResponseHardwareProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: map['id'] as String,
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return IdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return IdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       location: map['location'] as String,
       name: map['name'] as String,
-      networkProfile: (() {
-        final guardedValue = map['networkProfile'];
-        if (guardedValue == null) return null;
-        return VirtualMachinePropertiesResponseNetworkProfile.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      osProfile: (() {
-        final guardedValue = map['osProfile'];
-        if (guardedValue == null) return null;
-        return VirtualMachinePropertiesResponseOsProfile.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      networkProfile: (() { final guardedValue = map['networkProfile']; if (guardedValue == null) return null; return VirtualMachinePropertiesResponseNetworkProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      osProfile: (() { final guardedValue = map['osProfile']; if (guardedValue == null) return null; return VirtualMachinePropertiesResponseOsProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       provisioningState: map['provisioningState'] as String,
-      securityProfile: (() {
-        final guardedValue = map['securityProfile'];
-        if (guardedValue == null) return null;
-        return VirtualMachinePropertiesResponseSecurityProfile.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      status: VirtualMachineStatusResponse.fromMap(
-        (map['status']! as Map).cast<String, dynamic>(),
-      ),
-      storageProfile: (() {
-        final guardedValue = map['storageProfile'];
-        if (guardedValue == null) return null;
-        return VirtualMachinePropertiesResponseStorageProfile.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      securityProfile: (() { final guardedValue = map['securityProfile']; if (guardedValue == null) return null; return VirtualMachinePropertiesResponseSecurityProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      status: VirtualMachineStatusResponse.fromMap((map['status']! as Map).cast<String, dynamic>()),
+      storageProfile: (() { final guardedValue = map['storageProfile']; if (guardedValue == null) return null; return VirtualMachinePropertiesResponseStorageProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
       vmId: map['vmId'] as String,
     );
   }
 }
+

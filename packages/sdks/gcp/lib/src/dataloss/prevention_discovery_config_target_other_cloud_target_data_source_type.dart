@@ -13,18 +13,15 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetDataSourceType {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'dataSource': ?dataSource};
+    return <String, dynamic>{
+      'dataSource': ?dataSource,
+    };
   }
 
-  factory PreventionDiscoveryConfigTargetOtherCloudTargetDataSourceType.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionDiscoveryConfigTargetOtherCloudTargetDataSourceType.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetOtherCloudTargetDataSourceType(
-      dataSource: (() {
-        final guardedValue = map['dataSource'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dataSource: (() { final guardedValue = map['dataSource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

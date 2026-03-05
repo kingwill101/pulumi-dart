@@ -510,25 +510,18 @@ import 'virtual_network_gateway_nat_rule_state.dart';
 class VirtualNetworkGatewayNatRule extends pulumi.CustomResource {
   /// One or more `external_mapping` blocks as documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> externalMappings;
-
   /// One or more `internal_mapping` blocks as documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> internalMappings;
-
   /// The ID of the IP Configuration this Virtual Network Gateway Nat Rule applies to.
   late final pulumi.Output<String?> ipConfigurationId;
-
   /// The source Nat direction of the Virtual Network Gateway Nat. Possible values are `EgressSnat` and `IngressSnat`. Defaults to `EgressSnat`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> mode;
-
   /// The name which should be used for this Virtual Network Gateway Nat Rule. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The Name of the Resource Group in which this Virtual Network Gateway Nat Rule should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The type of the Virtual Network Gateway Nat Rule. Possible values are `Dynamic` and `Static`. Defaults to `Static`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> type;
-
   /// The ID of the Virtual Network Gateway that this Virtual Network Gateway Nat Rule belongs to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> virtualNetworkGatewayId;
 
@@ -541,17 +534,13 @@ class VirtualNetworkGatewayNatRule extends pulumi.CustomResource {
     VirtualNetworkGatewayNatRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/virtualNetworkGatewayNatRule:VirtualNetworkGatewayNatRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    externalMappings = registerOutput<List<Map<String, dynamic>>>(
-      'externalMappings',
-    );
-    internalMappings = registerOutput<List<Map<String, dynamic>>>(
-      'internalMappings',
-    );
+          'azure:network/virtualNetworkGatewayNatRule:VirtualNetworkGatewayNatRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    externalMappings = registerOutput<List<Map<String, dynamic>>>('externalMappings');
+    internalMappings = registerOutput<List<Map<String, dynamic>>>('internalMappings');
     ipConfigurationId = registerOutput<String?>('ipConfigurationId');
     mode = registerOutput<String?>('mode');
     this.name = registerOutput<String>('name');
@@ -578,17 +567,13 @@ class VirtualNetworkGatewayNatRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/virtualNetworkGatewayNatRule:VirtualNetworkGatewayNatRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    externalMappings = registerOutput<List<Map<String, dynamic>>>(
-      'externalMappings',
-    );
-    internalMappings = registerOutput<List<Map<String, dynamic>>>(
-      'internalMappings',
-    );
+          'azure:network/virtualNetworkGatewayNatRule:VirtualNetworkGatewayNatRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    externalMappings = registerOutput<List<Map<String, dynamic>>>('externalMappings');
+    internalMappings = registerOutput<List<Map<String, dynamic>>>('internalMappings');
     ipConfigurationId = registerOutput<String?>('ipConfigurationId');
     mode = registerOutput<String?>('mode');
     this.name = registerOutput<String>('name');

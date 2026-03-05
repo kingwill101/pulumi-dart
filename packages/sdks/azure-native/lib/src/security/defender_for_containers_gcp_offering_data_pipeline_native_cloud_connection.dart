@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DefenderForContainersGcpOfferingDataPipelineNativeCloudConnection {
   /// The data collection service account email address in GCP for this offering
   final pulumi.Input<String>? serviceAccountEmailAddress;
-
   /// The data collection GCP workload identity provider id for this offering
   final pulumi.Input<String>? workloadIdentityProviderId;
 
@@ -25,20 +24,11 @@ class DefenderForContainersGcpOfferingDataPipelineNativeCloudConnection {
     };
   }
 
-  factory DefenderForContainersGcpOfferingDataPipelineNativeCloudConnection.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DefenderForContainersGcpOfferingDataPipelineNativeCloudConnection.fromMap(Map<String, dynamic> map) {
     return DefenderForContainersGcpOfferingDataPipelineNativeCloudConnection(
-      serviceAccountEmailAddress: (() {
-        final guardedValue = map['serviceAccountEmailAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      workloadIdentityProviderId: (() {
-        final guardedValue = map['workloadIdentityProviderId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      serviceAccountEmailAddress: (() { final guardedValue = map['serviceAccountEmailAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      workloadIdentityProviderId: (() { final guardedValue = map['workloadIdentityProviderId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

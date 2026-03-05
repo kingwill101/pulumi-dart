@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnterpriseCrmEventbusProtoFailurePolicyResponse {
   /// Required if retry_strategy is FIXED_INTERVAL or LINEAR/EXPONENTIAL_BACKOFF/RESTART_WORKFLOW_WITH_BACKOFF. Defines the initial interval for backoff.
   final pulumi.Input<String> intervalInSeconds;
-
   /// Required if retry_strategy is FIXED_INTERVAL or LINEAR/EXPONENTIAL_BACKOFF/RESTART_WORKFLOW_WITH_BACKOFF. Defines the number of times the task will be retried if failed.
   final pulumi.Input<int> maxNumRetries;
-
   /// Defines what happens to the task upon failure.
   final pulumi.Input<String> retryStrategy;
 
@@ -31,15 +29,12 @@ class EnterpriseCrmEventbusProtoFailurePolicyResponse {
     };
   }
 
-  factory EnterpriseCrmEventbusProtoFailurePolicyResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EnterpriseCrmEventbusProtoFailurePolicyResponse.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoFailurePolicyResponse(
-      intervalInSeconds: pulumi.Input.fromValue(
-        map['intervalInSeconds'] as String,
-      ),
+      intervalInSeconds: pulumi.Input.fromValue(map['intervalInSeconds'] as String),
       maxNumRetries: pulumi.Input.fromValue(map['maxNumRetries'] as int),
       retryStrategy: pulumi.Input.fromValue(map['retryStrategy'] as String),
     );
   }
 }
+

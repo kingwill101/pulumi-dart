@@ -12,26 +12,21 @@ class LaunchTemplateDataDisk {
   ///
   /// Default to `cloud_efficiency`.
   final pulumi.Input<String>? category;
-
   /// Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
   ///
   /// Default to true
   final pulumi.Input<bool>? deleteWithInstance;
-
   /// The description of the data disk.
   final pulumi.Input<String>? description;
   final pulumi.Input<String>? device;
-
   /// Encrypted the data in this disk.
   ///
   /// Default to false
   final pulumi.Input<bool>? encrypted;
   final pulumi.Input<String>? kmsKeyId;
-
   /// The name of the data disk.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? performanceLevel;
-
   /// The size of the data disk.
   /// - cloud：[5, 2000]
   /// - cloud_efficiency：[20, 32768]
@@ -39,7 +34,6 @@ class LaunchTemplateDataDisk {
   /// - cloud_essd：[20, 32768]
   /// - ephemeral_ssd: [5, 800]
   final pulumi.Input<int>? size;
-
   /// The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
   final pulumi.Input<String>? snapshotId;
 
@@ -84,56 +78,17 @@ class LaunchTemplateDataDisk {
 
   factory LaunchTemplateDataDisk.fromMap(Map<String, dynamic> map) {
     return LaunchTemplateDataDisk(
-      category: (() {
-        final guardedValue = map['category'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      deleteWithInstance: (() {
-        final guardedValue = map['deleteWithInstance'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      device: (() {
-        final guardedValue = map['device'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      encrypted: (() {
-        final guardedValue = map['encrypted'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      kmsKeyId: (() {
-        final guardedValue = map['kmsKeyId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      performanceLevel: (() {
-        final guardedValue = map['performanceLevel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      size: (() {
-        final guardedValue = map['size'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      snapshotId: (() {
-        final guardedValue = map['snapshotId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      category: (() { final guardedValue = map['category']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deleteWithInstance: (() { final guardedValue = map['deleteWithInstance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      device: (() { final guardedValue = map['device']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      encrypted: (() { final guardedValue = map['encrypted']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      kmsKeyId: (() { final guardedValue = map['kmsKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      performanceLevel: (() { final guardedValue = map['performanceLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      snapshotId: (() { final guardedValue = map['snapshotId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

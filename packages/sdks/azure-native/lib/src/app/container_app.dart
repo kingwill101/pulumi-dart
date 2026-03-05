@@ -3307,77 +3307,52 @@ import 'template_response.dart';
 class ContainerApp extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Non versioned Container App configuration properties.
   late final pulumi.Output<ConfigurationResponse?> configuration;
-
   /// Id used to verify domain name ownership
   late final pulumi.Output<String> customDomainVerificationId;
-
   /// Any errors that occurred during deployment
   late final pulumi.Output<String> deploymentErrors;
-
   /// Resource ID of environment.
   late final pulumi.Output<String?> environmentId;
-
   /// The endpoint of the eventstream of the container app.
   late final pulumi.Output<String> eventStreamEndpoint;
-
   /// The complex type of the extended location.
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
-
   /// managed identities for the Container App to interact with other Azure services without maintaining any secrets or credentials in code.
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
-
   /// Metadata used to render different experiences for resources of the same type; e.g. WorkflowApp is a kind of Microsoft.App/ContainerApps type. If supported, the resource provider must validate and persist this value.
   late final pulumi.Output<String?> kind;
-
   /// Name of the latest ready revision of the Container App.
   late final pulumi.Output<String> latestReadyRevisionName;
-
   /// Fully Qualified Domain Name of the latest revision of the Container App.
   late final pulumi.Output<String> latestRevisionFqdn;
-
   /// Name of the latest revision of the Container App.
   late final pulumi.Output<String> latestRevisionName;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
   late final pulumi.Output<String?> managedBy;
-
   /// Deprecated. Resource ID of the Container App's environment.
   late final pulumi.Output<String?> managedEnvironmentId;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Outbound IP Addresses for container app.
   late final pulumi.Output<List<String>> outboundIpAddresses;
-
   /// Container App auto patch configuration.
-  late final pulumi.Output<ContainerAppResponsePatchingConfiguration?>
-  patchingConfiguration;
-
+  late final pulumi.Output<ContainerAppResponsePatchingConfiguration?> patchingConfiguration;
   /// Provisioning state of the Container App.
   late final pulumi.Output<String> provisioningState;
-
   /// Running status of the Container App.
   late final pulumi.Output<String> runningStatus;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Container App versioned application definition.
   late final pulumi.Output<TemplateResponse?> template;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Workload profile name to pin for container app execution.
   late final pulumi.Output<String?> workloadProfileName;
 
@@ -3390,48 +3365,19 @@ class ContainerApp extends pulumi.CustomResource {
     ContainerAppArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:app:ContainerApp',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:app:ContainerApp',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    configuration = registerOutput<ConfigurationResponse?>(
-      'configuration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConfigurationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    customDomainVerificationId = registerOutput<String>(
-      'customDomainVerificationId',
-    );
+    configuration = registerOutput<ConfigurationResponse?>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    customDomainVerificationId = registerOutput<String>('customDomainVerificationId');
     deploymentErrors = registerOutput<String>('deploymentErrors');
     environmentId = registerOutput<String?>('environmentId');
     eventStreamEndpoint = registerOutput<String>('eventStreamEndpoint');
-    extendedLocation = registerOutput<ExtendedLocationResponse?>(
-      'extendedLocation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExtendedLocationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    identity = registerOutput<ManagedServiceIdentityResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ManagedServiceIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kind = registerOutput<String?>('kind');
     latestReadyRevisionName = registerOutput<String>('latestReadyRevisionName');
     latestRevisionFqdn = registerOutput<String>('latestRevisionFqdn');
@@ -3441,40 +3387,12 @@ class ContainerApp extends pulumi.CustomResource {
     managedEnvironmentId = registerOutput<String?>('managedEnvironmentId');
     this.name = registerOutput<String>('name');
     outboundIpAddresses = registerOutput<List<String>>('outboundIpAddresses');
-    patchingConfiguration =
-        registerOutput<ContainerAppResponsePatchingConfiguration?>(
-          'patchingConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ContainerAppResponsePatchingConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    patchingConfiguration = registerOutput<ContainerAppResponsePatchingConfiguration?>('patchingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerAppResponsePatchingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningState = registerOutput<String>('provisioningState');
     runningStatus = registerOutput<String>('runningStatus');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
-    template = registerOutput<TemplateResponse?>(
-      'template',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TemplateResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    template = registerOutput<TemplateResponse?>('template', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TemplateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     workloadProfileName = registerOutput<String?>('workloadProfileName');
   }

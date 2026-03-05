@@ -15,3 +15,4 @@ enum EventSourceKind {
     throw ArgumentError('Unknown EventSourceKind value: $value');
   }
 }
+

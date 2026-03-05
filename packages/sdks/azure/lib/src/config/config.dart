@@ -24,16 +24,11 @@ class AzureConfig {
     return raw;
   }
 
-  bool get adoPipelineServiceConnectionIdIsSecret =>
-      _isSecret('adoPipelineServiceConnectionId');
+  bool get adoPipelineServiceConnectionIdIsSecret => _isSecret('adoPipelineServiceConnectionId');
 
   List<String>? get auxiliaryTenantIds {
     final raw = _raw('auxiliaryTenantIds');
-    return (() {
-      final guardedValue = raw;
-      if (guardedValue == null) return null;
-      return (jsonDecode(guardedValue) as List).cast<String>();
-    })();
+    return (() { final guardedValue = raw; if (guardedValue == null) return null; return (jsonDecode(guardedValue) as List).cast<String>(); })();
   }
 
   bool get auxiliaryTenantIdsIsSecret => _isSecret('auxiliaryTenantIds');
@@ -52,8 +47,7 @@ class AzureConfig {
     return raw;
   }
 
-  bool get clientCertificatePasswordIsSecret =>
-      _isSecret('clientCertificatePassword');
+  bool get clientCertificatePasswordIsSecret => _isSecret('clientCertificatePassword');
 
   /// The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service Principal using a Client Certificate.
   String? get clientCertificatePath {
@@ -101,8 +95,7 @@ class AzureConfig {
     return (raw).toBool();
   }
 
-  bool get disableCorrelationRequestIdIsSecret =>
-      _isSecret('disableCorrelationRequestId');
+  bool get disableCorrelationRequestIdIsSecret => _isSecret('disableCorrelationRequestId');
 
   /// This will disable the Terraform Partner ID which is used if a custom `partner_id` isn't specified.
   bool? get disableTerraformPartnerId {
@@ -110,8 +103,7 @@ class AzureConfig {
     return (raw).toBool();
   }
 
-  bool get disableTerraformPartnerIdIsSecret =>
-      _isSecret('disableTerraformPartnerId');
+  bool get disableTerraformPartnerIdIsSecret => _isSecret('disableTerraformPartnerId');
 
   /// The Cloud Environment which should be used. Possible values are public, usgovernment, and china. Defaults to public. Not used and should not be specified when `metadata_host` is specified.
   String? get environment {
@@ -123,13 +115,7 @@ class AzureConfig {
 
   Features? get features {
     final raw = _raw('features');
-    return (() {
-      final guardedValue = raw;
-      if (guardedValue == null) return null;
-      return Features.fromMap(
-        (jsonDecode(guardedValue) as Map).cast<String, dynamic>(),
-      );
-    })();
+    return (() { final guardedValue = raw; if (guardedValue == null) return null; return Features.fromMap((jsonDecode(guardedValue) as Map).cast<String, dynamic>()); })();
   }
 
   bool get featuresIsSecret => _isSecret('features');
@@ -211,21 +197,15 @@ class AzureConfig {
     return raw;
   }
 
-  bool get resourceProviderRegistrationsIsSecret =>
-      _isSecret('resourceProviderRegistrations');
+  bool get resourceProviderRegistrationsIsSecret => _isSecret('resourceProviderRegistrations');
 
   /// A list of Resource Providers to explicitly register for the subscription, in addition to those specified by the `resource_provider_registrations` property.
   List<String>? get resourceProvidersToRegisters {
     final raw = _raw('resourceProvidersToRegisters');
-    return (() {
-      final guardedValue = raw;
-      if (guardedValue == null) return null;
-      return (jsonDecode(guardedValue) as List).cast<String>();
-    })();
+    return (() { final guardedValue = raw; if (guardedValue == null) return null; return (jsonDecode(guardedValue) as List).cast<String>(); })();
   }
 
-  bool get resourceProvidersToRegistersIsSecret =>
-      _isSecret('resourceProvidersToRegisters');
+  bool get resourceProvidersToRegistersIsSecret => _isSecret('resourceProvidersToRegisters');
 
   /// Should the AzureRM Provider skip registering all of the Resource Providers that it supports, if they're not already registered?
   bool? get skipProviderRegistration {
@@ -233,8 +213,7 @@ class AzureConfig {
     return (raw).toBool();
   }
 
-  bool get skipProviderRegistrationIsSecret =>
-      _isSecret('skipProviderRegistration');
+  bool get skipProviderRegistrationIsSecret => _isSecret('skipProviderRegistration');
 
   /// Should the AzureRM Provider use Azure AD Authentication when accessing the Storage Data Plane APIs?
   bool? get storageUseAzuread {
@@ -266,8 +245,7 @@ class AzureConfig {
     return (raw).toBool();
   }
 
-  bool get useAksWorkloadIdentityIsSecret =>
-      _isSecret('useAksWorkloadIdentity');
+  bool get useAksWorkloadIdentityIsSecret => _isSecret('useAksWorkloadIdentity');
 
   /// Allow Azure CLI to be used for Authentication.
   bool? get useCli {
@@ -292,6 +270,8 @@ class AzureConfig {
   }
 
   bool get useOidcIsSecret => _isSecret('useOidc');
+
 }
 
 final config = AzureConfig();
+

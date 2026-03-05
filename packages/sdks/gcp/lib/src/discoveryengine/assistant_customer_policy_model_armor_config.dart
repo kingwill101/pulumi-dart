@@ -6,14 +6,12 @@ class AssistantCustomerPolicyModelArmorConfig {
   /// Defines the failure mode for Model Armor sanitization.
   /// The supported values: 'FAIL_OPEN', 'FAIL_CLOSED'.
   final pulumi.Input<String>? failureMode;
-
   /// The resource name of the Model Armor template for sanitizing assistant
   /// responses. Format:
   /// `projects/{project}/locations/{location}/templates/{template_id}`
   /// If not specified, no sanitization will be applied to the assistant
   /// response.
   final pulumi.Input<String> responseTemplate;
-
   /// The resource name of the Model Armor template for sanitizing user
   /// prompts. Format:
   /// `projects/{project}/locations/{location}/templates/{template_id}`
@@ -38,21 +36,12 @@ class AssistantCustomerPolicyModelArmorConfig {
     };
   }
 
-  factory AssistantCustomerPolicyModelArmorConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AssistantCustomerPolicyModelArmorConfig.fromMap(Map<String, dynamic> map) {
     return AssistantCustomerPolicyModelArmorConfig(
-      failureMode: (() {
-        final guardedValue = map['failureMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      responseTemplate: pulumi.Input.fromValue(
-        map['responseTemplate'] as String,
-      ),
-      userPromptTemplate: pulumi.Input.fromValue(
-        map['userPromptTemplate'] as String,
-      ),
+      failureMode: (() { final guardedValue = map['failureMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      responseTemplate: pulumi.Input.fromValue(map['responseTemplate'] as String),
+      userPromptTemplate: pulumi.Input.fromValue(map['userPromptTemplate'] as String),
     );
   }
 }
+

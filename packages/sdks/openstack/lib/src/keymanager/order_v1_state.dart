@@ -7,40 +7,29 @@ import 'order_v1_meta.dart';
 class OrderV1State {
   /// The container reference / where to find the container.
   final pulumi.Input<String>? containerRef;
-
   /// The date the order was created.
   final pulumi.Input<String>? created;
-
   /// The creator of the order.
   final pulumi.Input<String>? creatorId;
-
   /// Dictionary containing the order metadata used to generate the order. The structure is described below.
   final pulumi.Input<OrderV1Meta>? meta;
-
   /// The order reference / where to find the order.
   final pulumi.Input<String>? orderRef;
-
   /// The region in which to obtain the V1 KeyManager client.
   /// A KeyManager client is needed to create a order. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
   /// V1 order.
   final pulumi.Input<String>? region;
-
   /// The secret reference / where to find the secret.
   final pulumi.Input<String>? secretRef;
-
   /// The status of the order.
   final pulumi.Input<String>? status;
-
   /// The sub status of the order.
   final pulumi.Input<String>? subStatus;
-
   /// The sub status message of the order.
   final pulumi.Input<String>? subStatusMessage;
-
   /// The type of key to be generated. Must be one of `asymmetric`, `key`.
   final pulumi.Input<String>? type;
-
   /// The date the order was last updated.
   final pulumi.Input<String>? updated;
 
@@ -77,11 +66,7 @@ class OrderV1State {
       'containerRef': ?containerRef,
       'created': ?created,
       'creatorId': ?creatorId,
-      'meta':
-          ?pulumi.Input.mapOptionalInputValue<
-            OrderV1Meta,
-            Map<String, dynamic>
-          >(meta, (value) => value.toMap()),
+      'meta': ?pulumi.Input.mapOptionalInputValue<OrderV1Meta, Map<String, dynamic>>(meta, (value) => value.toMap()),
       'orderRef': ?orderRef,
       'region': ?region,
       'secretRef': ?secretRef,
@@ -95,68 +80,19 @@ class OrderV1State {
 
   factory OrderV1State.fromMap(Map<String, dynamic> map) {
     return OrderV1State(
-      containerRef: (() {
-        final guardedValue = map['containerRef'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      created: (() {
-        final guardedValue = map['created'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      creatorId: (() {
-        final guardedValue = map['creatorId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      meta: (() {
-        final guardedValue = map['meta'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          OrderV1Meta.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      orderRef: (() {
-        final guardedValue = map['orderRef'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      secretRef: (() {
-        final guardedValue = map['secretRef'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subStatus: (() {
-        final guardedValue = map['subStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subStatusMessage: (() {
-        final guardedValue = map['subStatusMessage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      updated: (() {
-        final guardedValue = map['updated'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      containerRef: (() { final guardedValue = map['containerRef']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      created: (() { final guardedValue = map['created']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      creatorId: (() { final guardedValue = map['creatorId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      meta: (() { final guardedValue = map['meta']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OrderV1Meta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      orderRef: (() { final guardedValue = map['orderRef']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      secretRef: (() { final guardedValue = map['secretRef']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subStatus: (() { final guardedValue = map['subStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subStatusMessage: (() { final guardedValue = map['subStatusMessage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      updated: (() { final guardedValue = map['updated']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

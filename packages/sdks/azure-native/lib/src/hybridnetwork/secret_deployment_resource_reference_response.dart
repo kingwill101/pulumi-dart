@@ -10,17 +10,20 @@ class SecretDeploymentResourceReferenceResponse {
 
   /// Creates a new [SecretDeploymentResourceReferenceResponse].
   /// [idType] The resource reference arm id type.
-  SecretDeploymentResourceReferenceResponse({required this.idType});
+  SecretDeploymentResourceReferenceResponse({
+    required this.idType,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'idType': idType};
+    return <String, dynamic>{
+      'idType': idType,
+    };
   }
 
-  factory SecretDeploymentResourceReferenceResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SecretDeploymentResourceReferenceResponse.fromMap(Map<String, dynamic> map) {
     return SecretDeploymentResourceReferenceResponse(
       idType: pulumi.Input.fromValue(map['idType'] as String),
     );
   }
 }
+

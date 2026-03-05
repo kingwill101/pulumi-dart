@@ -10,7 +10,6 @@ import 'storage_domain_routing_rule_route.dart';
 class StorageDomainRoutingRuleArgs {
   /// The ID of the Container Registry Instance.
   final pulumi.Input<String> instanceId;
-
   /// Domain name routing entry See `routes` below.
   final pulumi.Input<List<StorageDomainRoutingRuleRoute>> routes;
 
@@ -25,32 +24,15 @@ class StorageDomainRoutingRuleArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'instanceId': instanceId,
-      'routes':
-          pulumi.Input.mapInputValue<
-            List<StorageDomainRoutingRuleRoute>,
-            List<Map<String, dynamic>>
-          >(
-            routes,
-            (value) =>
-                pulumi.Input.encodeList<
-                  StorageDomainRoutingRuleRoute,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'routes': pulumi.Input.mapInputValue<List<StorageDomainRoutingRuleRoute>, List<Map<String, dynamic>>>(routes, (value) => pulumi.Input.encodeList<StorageDomainRoutingRuleRoute, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory StorageDomainRoutingRuleArgs.fromMap(Map<String, dynamic> map) {
     return StorageDomainRoutingRuleArgs(
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
-      routes: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<StorageDomainRoutingRuleRoute>(
-          map['routes']!,
-          (value) => StorageDomainRoutingRuleRoute.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      routes: pulumi.Input.fromValue(pulumi.Input.decodeList<StorageDomainRoutingRuleRoute>(map['routes']!, (value) => StorageDomainRoutingRuleRoute.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

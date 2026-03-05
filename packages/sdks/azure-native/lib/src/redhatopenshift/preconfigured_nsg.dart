@@ -15,3 +15,4 @@ enum PreconfiguredNSG {
     throw ArgumentError('Unknown PreconfiguredNSG value: $value');
   }
 }
+

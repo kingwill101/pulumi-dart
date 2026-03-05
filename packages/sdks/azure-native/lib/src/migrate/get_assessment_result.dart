@@ -6,19 +6,14 @@ import 'assessment_properties_response.dart';
 class GetAssessmentResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// For optimistic concurrency control.
   final String? eTag;
-
   /// Path reference to this assessment. /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/assessment/{assessmentName}
   final String id;
-
   /// Unique name of an assessment.
   final String name;
-
   /// Properties of the assessment.
   final AssessmentPropertiesResponse properties;
-
   /// Type of the object = [Microsoft.Migrate/assessmentProjects/groups/assessments].
   final String type;
 
@@ -52,17 +47,12 @@ class GetAssessmentResult {
   factory GetAssessmentResult.fromMap(Map<String, dynamic> map) {
     return GetAssessmentResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      eTag: (() {
-        final guardedValue = map['eTag'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      eTag: (() { final guardedValue = map['eTag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       name: map['name'] as String,
-      properties: AssessmentPropertiesResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
+      properties: AssessmentPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

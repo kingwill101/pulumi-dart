@@ -16,3 +16,4 @@ enum ScheduleActionType {
     throw ArgumentError('Unknown ScheduleActionType value: $value');
   }
 }
+

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabel {
   /// , The unique key of the label to assign to disks.
   final pulumi.Input<String> key;
-
   /// , The value of the label to assign to disks.
   /// - - -
   final pulumi.Input<String> value;
@@ -19,15 +18,17 @@ class RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLa
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': key, 'value': value};
+    return <String, dynamic>{
+      'key': key,
+      'value': value,
+    };
   }
 
-  factory RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabel.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabel.fromMap(Map<String, dynamic> map) {
     return RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabel(
       key: pulumi.Input.fromValue(map['key'] as String),
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
+

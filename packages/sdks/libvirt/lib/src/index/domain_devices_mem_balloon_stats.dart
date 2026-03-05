@@ -8,10 +8,14 @@ class DomainDevicesMemBalloonStats {
 
   /// Creates a new [DomainDevicesMemBalloonStats].
   /// [period] Specifies the period for gathering statistics from the memory balloon device.
-  DomainDevicesMemBalloonStats({required this.period});
+  DomainDevicesMemBalloonStats({
+    required this.period,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'period': period};
+    return <String, dynamic>{
+      'period': period,
+    };
   }
 
   factory DomainDevicesMemBalloonStats.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class DomainDevicesMemBalloonStats {
     );
   }
 }
+

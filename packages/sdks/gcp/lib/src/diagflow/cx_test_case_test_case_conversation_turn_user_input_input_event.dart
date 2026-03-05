@@ -8,17 +8,20 @@ class CxTestCaseTestCaseConversationTurnUserInputInputEvent {
 
   /// Creates a new [CxTestCaseTestCaseConversationTurnUserInputInputEvent].
   /// [event] Name of the event.
-  CxTestCaseTestCaseConversationTurnUserInputInputEvent({required this.event});
+  CxTestCaseTestCaseConversationTurnUserInputInputEvent({
+    required this.event,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'event': event};
+    return <String, dynamic>{
+      'event': event,
+    };
   }
 
-  factory CxTestCaseTestCaseConversationTurnUserInputInputEvent.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CxTestCaseTestCaseConversationTurnUserInputInputEvent.fromMap(Map<String, dynamic> map) {
     return CxTestCaseTestCaseConversationTurnUserInputInputEvent(
       event: pulumi.Input.fromValue(map['event'] as String),
     );
   }
 }
+

@@ -10,17 +10,20 @@ class LinuxVirtualMachineSecretCertificate {
 
   /// Creates a new [LinuxVirtualMachineSecretCertificate].
   /// [url] The Secret URL of a Key Vault Certificate.
-  LinuxVirtualMachineSecretCertificate({required this.url});
+  LinuxVirtualMachineSecretCertificate({
+    required this.url,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'url': url};
+    return <String, dynamic>{
+      'url': url,
+    };
   }
 
-  factory LinuxVirtualMachineSecretCertificate.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LinuxVirtualMachineSecretCertificate.fromMap(Map<String, dynamic> map) {
     return LinuxVirtualMachineSecretCertificate(
       url: pulumi.Input.fromValue(map['url'] as String),
     );
   }
 }
+

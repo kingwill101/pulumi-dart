@@ -8,17 +8,20 @@ class GetReplicationVaultRegionsRegion {
 
   /// Creates a new [GetReplicationVaultRegionsRegion].
   /// [replicationRegionId] The ID of the replication region.
-  GetReplicationVaultRegionsRegion({required this.replicationRegionId});
+  GetReplicationVaultRegionsRegion({
+    required this.replicationRegionId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'replicationRegionId': replicationRegionId};
+    return <String, dynamic>{
+      'replicationRegionId': replicationRegionId,
+    };
   }
 
   factory GetReplicationVaultRegionsRegion.fromMap(Map<String, dynamic> map) {
     return GetReplicationVaultRegionsRegion(
-      replicationRegionId: pulumi.Input.fromValue(
-        map['replicationRegionId'] as String,
-      ),
+      replicationRegionId: pulumi.Input.fromValue(map['replicationRegionId'] as String),
     );
   }
 }
+

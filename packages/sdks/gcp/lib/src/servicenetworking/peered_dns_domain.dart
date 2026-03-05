@@ -144,19 +144,14 @@ import 'peered_dns_domain_state.dart';
 class PeeredDnsDomain extends pulumi.CustomResource {
   /// The DNS domain suffix of the peered DNS domain. Make sure to suffix with a `.` (dot).
   late final pulumi.Output<String> dnsSuffix;
-
   /// Internal name used for the peered DNS domain.
   late final pulumi.Output<String> name;
-
   /// The network in the consumer project.
   late final pulumi.Output<String> network;
-
   /// an identifier for the resource with format `services/{{service}}/projects/{{project}}/global/networks/{{network}}`
   late final pulumi.Output<String> parent;
-
   /// The producer project number. If not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Private service connection between service and consumer network, defaults to `servicenetworking.googleapis.com`
   late final pulumi.Output<String?> service;
 
@@ -169,11 +164,11 @@ class PeeredDnsDomain extends pulumi.CustomResource {
     PeeredDnsDomainArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:servicenetworking/peeredDnsDomain:PeeredDnsDomain',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:servicenetworking/peeredDnsDomain:PeeredDnsDomain',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dnsSuffix = registerOutput<String>('dnsSuffix');
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
@@ -200,11 +195,11 @@ class PeeredDnsDomain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:servicenetworking/peeredDnsDomain:PeeredDnsDomain',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:servicenetworking/peeredDnsDomain:PeeredDnsDomain',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dnsSuffix = registerOutput<String>('dnsSuffix');
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');

@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BanditPolicyResponse {
   /// Number of intervals by which to delay the first evaluation.
   final pulumi.Input<int>? delayEvaluation;
-
   /// Interval (number of runs) between policy evaluations.
   final pulumi.Input<int>? evaluationInterval;
-
   /// Expected value is 'Bandit'.
   final pulumi.Input<String> policyType;
-
   /// Absolute distance allowed from the best performing run.
   final pulumi.Input<double>? slackAmount;
-
   /// Ratio of the allowed distance from the best performing run.
   final pulumi.Input<double>? slackFactor;
 
@@ -45,27 +41,12 @@ class BanditPolicyResponse {
 
   factory BanditPolicyResponse.fromMap(Map<String, dynamic> map) {
     return BanditPolicyResponse(
-      delayEvaluation: (() {
-        final guardedValue = map['delayEvaluation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      evaluationInterval: (() {
-        final guardedValue = map['evaluationInterval'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      delayEvaluation: (() { final guardedValue = map['delayEvaluation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      evaluationInterval: (() { final guardedValue = map['evaluationInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       policyType: pulumi.Input.fromValue(map['policyType'] as String),
-      slackAmount: (() {
-        final guardedValue = map['slackAmount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      slackFactor: (() {
-        final guardedValue = map['slackFactor'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      slackAmount: (() { final guardedValue = map['slackAmount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      slackFactor: (() { final guardedValue = map['slackFactor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

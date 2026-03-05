@@ -335,11 +335,7 @@ class ProjectKajPolicyConfig extends pulumi.CustomResource {
   /// created in this project. This is only used when a Key Access Justifications
   /// policy is not provided in the CreateCryptoKeyRequest.
   /// Structure is documented below.
-  late final pulumi.Output<
-    ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy?
-  >
-  defaultKeyAccessJustificationPolicy;
-
+  late final pulumi.Output<ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy?> defaultKeyAccessJustificationPolicy;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -353,24 +349,12 @@ class ProjectKajPolicyConfig extends pulumi.CustomResource {
     ProjectKajPolicyConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:kms/projectKajPolicyConfig:ProjectKajPolicyConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    defaultKeyAccessJustificationPolicy =
-        registerOutput<
-          ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy?
-        >(
-          'defaultKeyAccessJustificationPolicy',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'gcp:kms/projectKajPolicyConfig:ProjectKajPolicyConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    defaultKeyAccessJustificationPolicy = registerOutput<ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy?>('defaultKeyAccessJustificationPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
   }
 
@@ -392,24 +376,12 @@ class ProjectKajPolicyConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:kms/projectKajPolicyConfig:ProjectKajPolicyConfig',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    defaultKeyAccessJustificationPolicy =
-        registerOutput<
-          ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy?
-        >(
-          'defaultKeyAccessJustificationPolicy',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'gcp:kms/projectKajPolicyConfig:ProjectKajPolicyConfig',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    defaultKeyAccessJustificationPolicy = registerOutput<ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy?>('defaultKeyAccessJustificationPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
   }
 }

@@ -434,29 +434,19 @@ import 'configuration_aggregator_state.dart';
 /// ```
 class ConfigurationAggregator extends pulumi.CustomResource {
   /// The account(s) to aggregate config data from as documented below.
-  late final pulumi.Output<ConfigurationAggregatorAccountAggregationSource?>
-  accountAggregationSource;
-
+  late final pulumi.Output<ConfigurationAggregatorAccountAggregationSource?> accountAggregationSource;
   /// The ARN of the aggregator
   late final pulumi.Output<String> arn;
-
   /// The name of the configuration aggregator.
   late final pulumi.Output<String> name;
-
   /// The organization to aggregate config data from as documented below.
-  late final pulumi.Output<
-    ConfigurationAggregatorOrganizationAggregationSource?
-  >
-  organizationAggregationSource;
-
+  late final pulumi.Output<ConfigurationAggregatorOrganizationAggregationSource?> organizationAggregationSource;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
   /// Either `account_aggregation_source` or `organization_aggregation_source` must be specified.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -469,35 +459,15 @@ class ConfigurationAggregator extends pulumi.CustomResource {
     ConfigurationAggregatorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cfg/configurationAggregator:ConfigurationAggregator',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    accountAggregationSource =
-        registerOutput<ConfigurationAggregatorAccountAggregationSource?>(
-          'accountAggregationSource',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ConfigurationAggregatorAccountAggregationSource.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'aws:cfg/configurationAggregator:ConfigurationAggregator',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    accountAggregationSource = registerOutput<ConfigurationAggregatorAccountAggregationSource?>('accountAggregationSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationAggregatorAccountAggregationSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
-    organizationAggregationSource =
-        registerOutput<ConfigurationAggregatorOrganizationAggregationSource?>(
-          'organizationAggregationSource',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ConfigurationAggregatorOrganizationAggregationSource.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    organizationAggregationSource = registerOutput<ConfigurationAggregatorOrganizationAggregationSource?>('organizationAggregationSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationAggregatorOrganizationAggregationSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
@@ -521,35 +491,15 @@ class ConfigurationAggregator extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cfg/configurationAggregator:ConfigurationAggregator',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    accountAggregationSource =
-        registerOutput<ConfigurationAggregatorAccountAggregationSource?>(
-          'accountAggregationSource',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ConfigurationAggregatorAccountAggregationSource.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'aws:cfg/configurationAggregator:ConfigurationAggregator',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    accountAggregationSource = registerOutput<ConfigurationAggregatorAccountAggregationSource?>('accountAggregationSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationAggregatorAccountAggregationSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
-    organizationAggregationSource =
-        registerOutput<ConfigurationAggregatorOrganizationAggregationSource?>(
-          'organizationAggregationSource',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ConfigurationAggregatorOrganizationAggregationSource.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    organizationAggregationSource = registerOutput<ConfigurationAggregatorOrganizationAggregationSource?>('organizationAggregationSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationAggregatorOrganizationAggregationSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');

@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceEnginesInstanceEngine {
   /// Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
   final pulumi.Input<String> engine;
-
   /// Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/en/redis/developer-reference/api-r-kvstore-2015-01-01-createinstance-redis) `EngineVersion`. Value of Memcache should be empty.
   final pulumi.Input<String> engineVersion;
-
   /// The Zone to launch the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
   final pulumi.Input<String> zoneId;
 
@@ -38,3 +36,4 @@ class GetInstanceEnginesInstanceEngine {
     );
   }
 }
+

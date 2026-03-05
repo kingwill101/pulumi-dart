@@ -23,16 +23,9 @@ class InstantRPAdditionalDetails {
 
   factory InstantRPAdditionalDetails.fromMap(Map<String, dynamic> map) {
     return InstantRPAdditionalDetails(
-      azureBackupRGNamePrefix: (() {
-        final guardedValue = map['azureBackupRGNamePrefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      azureBackupRGNameSuffix: (() {
-        final guardedValue = map['azureBackupRGNameSuffix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      azureBackupRGNamePrefix: (() { final guardedValue = map['azureBackupRGNamePrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      azureBackupRGNameSuffix: (() { final guardedValue = map['azureBackupRGNameSuffix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

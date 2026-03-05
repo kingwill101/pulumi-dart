@@ -261,54 +261,39 @@ class IpamIpamPool extends pulumi.CustomResource {
   /// The default network mask assigned by the IPAM address pool.
   /// IPv4 network mask value range: **0 to 32** bits.
   late final pulumi.Output<int?> allocationDefaultCidrMask;
-
   /// The maximum network mask assigned by the IPAM address pool.
   /// IPv4 network mask value range: **0 to 32** bits.
   late final pulumi.Output<int> allocationMaxCidrMask;
-
   /// The minimum Network mask assigned by the IPAM address pool.
   /// IPv4 network mask value range: **0 to 32** bits.
   late final pulumi.Output<int?> allocationMinCidrMask;
-
   /// Whether the automatic import function is enabled for the address pool.
   late final pulumi.Output<bool?> autoImport;
-
   /// Whether to clear the default network mask of the IPAM address pool. Value:
   late final pulumi.Output<bool?> clearAllocationDefaultCidrMask;
-
   /// The creation time of the resource.
   late final pulumi.Output<String> createTime;
-
   /// The IP protocol version. Currently, only `IPv4` is supported * *.
   late final pulumi.Output<String> ipVersion;
-
   /// The description of the IPAM address pool.
   /// It must be 2 to 256 characters in length and must start with an English letter or a Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
   late final pulumi.Output<String?> ipamPoolDescription;
-
   /// The name of the resource.
   late final pulumi.Output<String> ipamPoolName;
-
   /// Ipam scope id.
   late final pulumi.Output<String> ipamScopeId;
-
   /// The effective region of the IPAM address pool.
   late final pulumi.Output<String?> poolRegionId;
-
   /// The ID of the IPAM hosting region.
   late final pulumi.Output<String> regionId;
-
   /// The ID of the resource group.
   late final pulumi.Output<String> resourceGroupId;
-
   /// The instance ID of the source IPAM address pool.
   ///
   /// &gt; **NOTE:**  If this parameter is not entered, the created address pool is the parent address pool.
   late final pulumi.Output<String> sourceIpamPoolId;
-
   /// The status of the resource.
   late final pulumi.Output<String> status;
-
   /// The tag of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -321,20 +306,16 @@ class IpamIpamPool extends pulumi.CustomResource {
     IpamIpamPoolArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/ipamIpamPool:IpamIpamPool',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    allocationDefaultCidrMask = registerOutput<int?>(
-      'allocationDefaultCidrMask',
-    );
+          'alicloud:vpc/ipamIpamPool:IpamIpamPool',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    allocationDefaultCidrMask = registerOutput<int?>('allocationDefaultCidrMask');
     allocationMaxCidrMask = registerOutput<int>('allocationMaxCidrMask');
     allocationMinCidrMask = registerOutput<int?>('allocationMinCidrMask');
     autoImport = registerOutput<bool?>('autoImport');
-    clearAllocationDefaultCidrMask = registerOutput<bool?>(
-      'clearAllocationDefaultCidrMask',
-    );
+    clearAllocationDefaultCidrMask = registerOutput<bool?>('clearAllocationDefaultCidrMask');
     createTime = registerOutput<String>('createTime');
     ipVersion = registerOutput<String>('ipVersion');
     ipamPoolDescription = registerOutput<String?>('ipamPoolDescription');
@@ -366,20 +347,16 @@ class IpamIpamPool extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/ipamIpamPool:IpamIpamPool',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    allocationDefaultCidrMask = registerOutput<int?>(
-      'allocationDefaultCidrMask',
-    );
+          'alicloud:vpc/ipamIpamPool:IpamIpamPool',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    allocationDefaultCidrMask = registerOutput<int?>('allocationDefaultCidrMask');
     allocationMaxCidrMask = registerOutput<int>('allocationMaxCidrMask');
     allocationMinCidrMask = registerOutput<int?>('allocationMinCidrMask');
     autoImport = registerOutput<bool?>('autoImport');
-    clearAllocationDefaultCidrMask = registerOutput<bool?>(
-      'clearAllocationDefaultCidrMask',
-    );
+    clearAllocationDefaultCidrMask = registerOutput<bool?>('clearAllocationDefaultCidrMask');
     createTime = registerOutput<String>('createTime');
     ipVersion = registerOutput<String>('ipVersion');
     ipamPoolDescription = registerOutput<String?>('ipamPoolDescription');

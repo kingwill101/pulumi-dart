@@ -219,25 +219,18 @@ import 'schedule_state.dart';
 class Schedule extends pulumi.CustomResource {
   /// The CRON expression of the time-based schedule to be created.
   late final pulumi.Output<String> cronExpression;
-
   /// The description of the time-based schedule to be created.
   late final pulumi.Output<String?> description;
-
   /// Specifies whether to enable the time-based schedule you want to create. Valid values: `false`, `true`.
   late final pulumi.Output<bool?> enable;
-
   /// The name of the flow bound to the time-based schedule you want to create.
   late final pulumi.Output<String> flowName;
-
   /// The time when the time-based schedule was last updated.
   late final pulumi.Output<String> lastModifiedTime;
-
   /// The trigger message of the time-based schedule to be created. It must be in JSON object format.
   late final pulumi.Output<String?> payload;
-
   /// The ID of the time-based schedule.
   late final pulumi.Output<String> scheduleId;
-
   /// The name of the time-based schedule to be created.
   late final pulumi.Output<String> scheduleName;
 
@@ -250,11 +243,11 @@ class Schedule extends pulumi.CustomResource {
     ScheduleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:fnf/schedule:Schedule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:fnf/schedule:Schedule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cronExpression = registerOutput<String>('cronExpression');
     description = registerOutput<String?>('description');
     enable = registerOutput<bool?>('enable');
@@ -283,11 +276,11 @@ class Schedule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:fnf/schedule:Schedule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:fnf/schedule:Schedule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cronExpression = registerOutput<String>('cronExpression');
     description = registerOutput<String?>('description');
     enable = registerOutput<bool?>('enable');

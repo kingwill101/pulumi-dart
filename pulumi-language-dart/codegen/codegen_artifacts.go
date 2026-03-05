@@ -351,6 +351,16 @@ func toPubspecTopics(keywords []string) []string {
 	return topics
 }
 
+func normalizePackageMetadataURL(value string) string {
+	trimmed := strings.TrimSpace(value)
+	switch trimmed {
+	case "https://pulumi.io", "http://pulumi.io", "https://pulumi.com", "http://pulumi.com":
+		return "https://www.pulumi.com"
+	default:
+		return trimmed
+	}
+}
+
 // applyPackageMetadataToPubspec copies optional package metadata from schema to
 // the generated pubspec.
 func applyPackageMetadataToPubspec(pubspec *PubSpec, spec *packageSchema) {
@@ -364,10 +374,10 @@ func applyPackageMetadataToPubspec(pubspec *PubSpec, spec *packageSchema) {
 	if license := strings.TrimSpace(spec.License); license != "" {
 		pubspec.License = license
 	}
-	if homepage := strings.TrimSpace(spec.Homepage); homepage != "" {
+	if homepage := normalizePackageMetadataURL(spec.Homepage); homepage != "" {
 		pubspec.Homepage = homepage
 	}
-	if repository := strings.TrimSpace(spec.Repository); repository != "" {
+	if repository := normalizePackageMetadataURL(spec.Repository); repository != "" {
 		pubspec.Repository = repository
 	}
 

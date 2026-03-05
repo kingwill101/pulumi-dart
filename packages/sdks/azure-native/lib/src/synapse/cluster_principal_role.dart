@@ -15,3 +15,4 @@ enum ClusterPrincipalRole {
     throw ArgumentError('Unknown ClusterPrincipalRole value: $value');
   }
 }
+

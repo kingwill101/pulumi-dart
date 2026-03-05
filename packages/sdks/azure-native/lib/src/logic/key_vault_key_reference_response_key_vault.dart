@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KeyVaultKeyReferenceResponseKeyVault {
   /// The resource id.
   final pulumi.Input<String>? id;
-
   /// The resource name.
   final pulumi.Input<String> name;
-
   /// The resource type.
   final pulumi.Input<String> type;
 
@@ -24,20 +22,19 @@ class KeyVaultKeyReferenceResponseKeyVault {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': ?id, 'name': name, 'type': type};
+    return <String, dynamic>{
+      'id': ?id,
+      'name': name,
+      'type': type,
+    };
   }
 
-  factory KeyVaultKeyReferenceResponseKeyVault.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory KeyVaultKeyReferenceResponseKeyVault.fromMap(Map<String, dynamic> map) {
     return KeyVaultKeyReferenceResponseKeyVault(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

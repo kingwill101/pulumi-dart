@@ -7,7 +7,6 @@ import 'arc_auto_provisioning_configuration.dart';
 class DefenderForServersGcpOfferingArcAutoProvisioning {
   /// Configuration for servers Arc auto provisioning for a given environment
   final pulumi.Input<ArcAutoProvisioningConfiguration>? configuration;
-
   /// Is arc auto provisioning enabled
   final pulumi.Input<bool>? enabled;
 
@@ -21,33 +20,16 @@ class DefenderForServersGcpOfferingArcAutoProvisioning {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configuration':
-          ?pulumi.Input.mapOptionalInputValue<
-            ArcAutoProvisioningConfiguration,
-            Map<String, dynamic>
-          >(configuration, (value) => value.toMap()),
+      'configuration': ?pulumi.Input.mapOptionalInputValue<ArcAutoProvisioningConfiguration, Map<String, dynamic>>(configuration, (value) => value.toMap()),
       'enabled': ?enabled,
     };
   }
 
-  factory DefenderForServersGcpOfferingArcAutoProvisioning.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DefenderForServersGcpOfferingArcAutoProvisioning.fromMap(Map<String, dynamic> map) {
     return DefenderForServersGcpOfferingArcAutoProvisioning(
-      configuration: (() {
-        final guardedValue = map['configuration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ArcAutoProvisioningConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      configuration: (() { final guardedValue = map['configuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ArcAutoProvisioningConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

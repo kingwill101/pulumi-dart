@@ -10,39 +10,20 @@ class PropertiesNetworkInjection {
 
   /// Creates a new [PropertiesNetworkInjection].
   /// [virtualNetworks] Network injection configuration
-  PropertiesNetworkInjection({this.virtualNetworks});
+  PropertiesNetworkInjection({
+    this.virtualNetworks,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'virtualNetworks':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<VirtualNetworkProperties>,
-            List<Map<String, dynamic>>
-          >(
-            virtualNetworks,
-            (value) =>
-                pulumi.Input.encodeList<
-                  VirtualNetworkProperties,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'virtualNetworks': ?pulumi.Input.mapOptionalInputValue<List<VirtualNetworkProperties>, List<Map<String, dynamic>>>(virtualNetworks, (value) => pulumi.Input.encodeList<VirtualNetworkProperties, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory PropertiesNetworkInjection.fromMap(Map<String, dynamic> map) {
     return PropertiesNetworkInjection(
-      virtualNetworks: (() {
-        final guardedValue = map['virtualNetworks'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<VirtualNetworkProperties>(
-            guardedValue,
-            (value) => VirtualNetworkProperties.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      virtualNetworks: (() { final guardedValue = map['virtualNetworks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VirtualNetworkProperties>(guardedValue, (value) => VirtualNetworkProperties.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

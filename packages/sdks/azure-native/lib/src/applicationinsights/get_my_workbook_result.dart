@@ -7,55 +7,38 @@ import 'system_data_response.dart';
 class GetMyWorkbookResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Workbook category, as defined by the user at creation time.
   final String category;
-
   /// The user-defined name of the private workbook.
   final String displayName;
-
   /// Resource etag
   final Map<String, String>? etag;
-
   /// Azure resource Id
   final String? id;
-
   /// Identity used for BYOS
   final MyWorkbookManagedIdentityResponse? identity;
-
   /// The kind of workbook. Choices are user and shared.
   final String? kind;
-
   /// Resource location
   final String? location;
-
   /// Azure resource name
   final String? name;
-
   /// Configuration of this particular private workbook. Configuration data is a string containing valid JSON
   final String serializedData;
-
   /// Optional resourceId for a source resource.
   final String? sourceId;
-
   /// BYOS Storage Account URI
   final String? storageUri;
-
   /// Metadata pertaining to creation and last modification of the resource.
   final SystemDataResponse systemData;
-
   /// Resource tags
   final Map<String, String>? tags;
-
   /// Date and time in UTC of the last modification that was made to this private workbook definition.
   final String timeModified;
-
   /// Azure resource type
   final String? type;
-
   /// Unique user id of the specific user that owns this private workbook.
   final String userId;
-
   /// This instance's version of the data model. This can change as new features are added that can be marked private workbook.
   final String? version;
 
@@ -127,69 +110,22 @@ class GetMyWorkbookResult {
       azureApiVersion: map['azureApiVersion'] as String,
       category: map['category'] as String,
       displayName: map['displayName'] as String,
-      etag: (() {
-        final guardedValue = map['etag'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return MyWorkbookManagedIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return MyWorkbookManagedIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       serializedData: map['serializedData'] as String,
-      sourceId: (() {
-        final guardedValue = map['sourceId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      storageUri: (() {
-        final guardedValue = map['storageUri'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      sourceId: (() { final guardedValue = map['sourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      storageUri: (() { final guardedValue = map['storageUri']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       timeModified: map['timeModified'] as String,
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       userId: map['userId'] as String,
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

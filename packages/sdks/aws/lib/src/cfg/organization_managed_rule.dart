@@ -171,37 +171,26 @@ import 'organization_managed_rule_state.dart';
 class OrganizationManagedRule extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the rule
   late final pulumi.Output<String> arn;
-
   /// Description of the rule
   late final pulumi.Output<String?> description;
-
   /// List of AWS account identifiers to exclude from the rule
   late final pulumi.Output<List<String>?> excludedAccounts;
-
   /// A string in JSON format that is passed to the AWS Config Rule Lambda Function
   late final pulumi.Output<String?> inputParameters;
-
   /// The maximum frequency with which AWS Config runs evaluations for a rule, if the rule is triggered at a periodic frequency. Defaults to `TwentyFour_Hours` for periodic frequency triggered rules. Valid values: `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, or `TwentyFour_Hours`.
   late final pulumi.Output<String?> maximumExecutionFrequency;
-
   /// The name of the rule
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Identifier of the AWS resource to evaluate
   late final pulumi.Output<String?> resourceIdScope;
-
   /// List of types of AWS resources to evaluate
   late final pulumi.Output<List<String>?> resourceTypesScopes;
-
   /// Identifier of an available AWS Config Managed Rule to call. For available values, see the [List of AWS Config Managed Rules](https://docs.aws.amazon.com/config/latest/developerguide/managed-rules-by-aws-config.html) documentation
   late final pulumi.Output<String> ruleIdentifier;
-
   /// Tag key of AWS resources to evaluate
   late final pulumi.Output<String?> tagKeyScope;
-
   /// Tag value of AWS resources to evaluate
   late final pulumi.Output<String?> tagValueScope;
 
@@ -214,18 +203,16 @@ class OrganizationManagedRule extends pulumi.CustomResource {
     OrganizationManagedRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cfg/organizationManagedRule:OrganizationManagedRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cfg/organizationManagedRule:OrganizationManagedRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     excludedAccounts = registerOutput<List<String>?>('excludedAccounts');
     inputParameters = registerOutput<String?>('inputParameters');
-    maximumExecutionFrequency = registerOutput<String?>(
-      'maximumExecutionFrequency',
-    );
+    maximumExecutionFrequency = registerOutput<String?>('maximumExecutionFrequency');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     resourceIdScope = registerOutput<String?>('resourceIdScope');
@@ -253,18 +240,16 @@ class OrganizationManagedRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cfg/organizationManagedRule:OrganizationManagedRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cfg/organizationManagedRule:OrganizationManagedRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     excludedAccounts = registerOutput<List<String>?>('excludedAccounts');
     inputParameters = registerOutput<String?>('inputParameters');
-    maximumExecutionFrequency = registerOutput<String?>(
-      'maximumExecutionFrequency',
-    );
+    maximumExecutionFrequency = registerOutput<String?>('maximumExecutionFrequency');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     resourceIdScope = registerOutput<String?>('resourceIdScope');

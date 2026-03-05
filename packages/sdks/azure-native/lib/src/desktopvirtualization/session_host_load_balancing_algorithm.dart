@@ -12,8 +12,7 @@ enum SessionHostLoadBalancingAlgorithm {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown SessionHostLoadBalancingAlgorithm value: $value',
-    );
+    throw ArgumentError('Unknown SessionHostLoadBalancingAlgorithm value: $value');
   }
 }
+

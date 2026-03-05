@@ -13,14 +13,15 @@ class SecretReplicationUserManagedReplicaCustomerManagedEncryption {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'kmsKeyName': kmsKeyName};
+    return <String, dynamic>{
+      'kmsKeyName': kmsKeyName,
+    };
   }
 
-  factory SecretReplicationUserManagedReplicaCustomerManagedEncryption.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SecretReplicationUserManagedReplicaCustomerManagedEncryption.fromMap(Map<String, dynamic> map) {
     return SecretReplicationUserManagedReplicaCustomerManagedEncryption(
       kmsKeyName: pulumi.Input.fromValue(map['kmsKeyName'] as String),
     );
   }
 }
+

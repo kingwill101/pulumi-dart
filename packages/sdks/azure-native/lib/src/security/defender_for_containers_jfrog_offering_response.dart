@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DefenderForContainersJFrogOfferingResponse {
   /// The offering description.
   final pulumi.Input<String> description;
-
   /// The type of the security offering.
   /// Expected value is 'DefenderForContainersJFrog'.
   final pulumi.Input<String> offeringType;
@@ -26,12 +25,11 @@ class DefenderForContainersJFrogOfferingResponse {
     };
   }
 
-  factory DefenderForContainersJFrogOfferingResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DefenderForContainersJFrogOfferingResponse.fromMap(Map<String, dynamic> map) {
     return DefenderForContainersJFrogOfferingResponse(
       description: pulumi.Input.fromValue(map['description'] as String),
       offeringType: pulumi.Input.fromValue(map['offeringType'] as String),
     );
   }
 }
+

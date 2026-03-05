@@ -7,10 +7,8 @@ import 'ssh_profile_response.dart';
 class LinuxOperatingSystemProfileResponse {
   /// The password.
   final pulumi.Input<String>? password;
-
   /// The SSH profile.
   final pulumi.Input<SshProfileResponse>? sshProfile;
-
   /// The username.
   final pulumi.Input<String>? username;
 
@@ -27,38 +25,17 @@ class LinuxOperatingSystemProfileResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'password': ?password,
-      'sshProfile':
-          ?pulumi.Input.mapOptionalInputValue<
-            SshProfileResponse,
-            Map<String, dynamic>
-          >(sshProfile, (value) => value.toMap()),
+      'sshProfile': ?pulumi.Input.mapOptionalInputValue<SshProfileResponse, Map<String, dynamic>>(sshProfile, (value) => value.toMap()),
       'username': ?username,
     };
   }
 
-  factory LinuxOperatingSystemProfileResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LinuxOperatingSystemProfileResponse.fromMap(Map<String, dynamic> map) {
     return LinuxOperatingSystemProfileResponse(
-      password: (() {
-        final guardedValue = map['password'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sshProfile: (() {
-        final guardedValue = map['sshProfile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SshProfileResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      username: (() {
-        final guardedValue = map['username'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sshProfile: (() { final guardedValue = map['sshProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SshProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      username: (() { final guardedValue = map['username']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

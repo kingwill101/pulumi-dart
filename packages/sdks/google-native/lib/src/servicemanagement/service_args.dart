@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceArgs {
   /// ID of the project that produces and owns this service.
   final pulumi.Input<String>? producerProjectId;
-
   /// The name of the service. See the [overview](https://cloud.google.com/service-infrastructure/docs/overview) for naming requirements.
   final pulumi.Input<String>? serviceName;
 
   /// Creates a new [ServiceArgs].
   /// [producerProjectId] ID of the project that produces and owns this service.
   /// [serviceName] The name of the service. See the [overview](https://cloud.google.com/service-infrastructure/docs/overview) for naming requirements.
-  ServiceArgs({this.producerProjectId, this.serviceName});
+  ServiceArgs({
+    this.producerProjectId,
+    this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,16 +29,9 @@ class ServiceArgs {
 
   factory ServiceArgs.fromMap(Map<String, dynamic> map) {
     return ServiceArgs(
-      producerProjectId: (() {
-        final guardedValue = map['producerProjectId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serviceName: (() {
-        final guardedValue = map['serviceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      producerProjectId: (() { final guardedValue = map['producerProjectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serviceName: (() { final guardedValue = map['serviceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

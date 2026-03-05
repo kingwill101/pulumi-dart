@@ -1,33 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getCertificate.
 class GetCertificateResult {
   /// The path to the certificate file of the certificate.
   final String certificateVirtualPath;
-
   /// The error code of the certificate error, if any.
   final String errorCode;
-
   /// The error message of the certificate error, if any.
   final String errorMessage;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The date/time the certificate was created in Azure Key Vault.
   final String keyVaultSecretCreationDate;
-
   /// The ID of the Key Vault Secret for the certificate.
   final String keyVaultSecretId;
-
   /// The version of the certificate.
   final String keyVaultSecretVersion;
-
   /// The path to the key file of the certificate.
   final String keyVirtualPath;
   final String name;
   final String nginxDeploymentId;
-
   /// The SHA-1 thumbprint of the certificate.
   final String sha1Thumbprint;
 
@@ -89,3 +82,4 @@ class GetCertificateResult {
     );
   }
 }
+

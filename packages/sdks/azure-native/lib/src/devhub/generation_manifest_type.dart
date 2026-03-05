@@ -15,3 +15,4 @@ enum GenerationManifestType {
     throw ArgumentError('Unknown GenerationManifestType value: $value');
   }
 }
+

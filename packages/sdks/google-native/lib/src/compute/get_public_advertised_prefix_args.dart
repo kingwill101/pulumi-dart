@@ -27,14 +27,9 @@ class GetPublicAdvertisedPrefixArgs {
 
   factory GetPublicAdvertisedPrefixArgs.fromMap(Map<String, dynamic> map) {
     return GetPublicAdvertisedPrefixArgs(
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      publicAdvertisedPrefix: pulumi.Input.fromValue(
-        map['publicAdvertisedPrefix'] as String,
-      ),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicAdvertisedPrefix: pulumi.Input.fromValue(map['publicAdvertisedPrefix'] as String),
     );
   }
 }
+

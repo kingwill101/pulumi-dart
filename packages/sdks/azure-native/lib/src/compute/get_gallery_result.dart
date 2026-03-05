@@ -11,43 +11,30 @@ import 'system_data_response.dart';
 class GetGalleryResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The description of this Shared Image Gallery resource. This property is updatable.
   final String? description;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// Describes the gallery unique name.
   final GalleryIdentifierResponse? identifier;
-
   /// The identity of the gallery, if configured.
   final GalleryIdentityResponse? identity;
-
   /// The geo-location where the resource lives
   final String location;
-
   /// The name of the resource
   final String name;
-
   /// The provisioning state, which only appears in the response.
   final String provisioningState;
-
   /// Profile for gallery sharing to subscription or tenant
   final SharingProfileResponse? sharingProfile;
-
   /// Sharing status of current gallery.
   final SharingStatusResponse sharingStatus;
-
   /// Contains information about the soft deletion policy of the gallery.
   final SoftDeletePolicyResponse? softDeletePolicy;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -105,55 +92,20 @@ class GetGalleryResult {
   factory GetGalleryResult.fromMap(Map<String, dynamic> map) {
     return GetGalleryResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
-      identifier: (() {
-        final guardedValue = map['identifier'];
-        if (guardedValue == null) return null;
-        return GalleryIdentifierResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return GalleryIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      identifier: (() { final guardedValue = map['identifier']; if (guardedValue == null) return null; return GalleryIdentifierResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return GalleryIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      sharingProfile: (() {
-        final guardedValue = map['sharingProfile'];
-        if (guardedValue == null) return null;
-        return SharingProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      sharingStatus: SharingStatusResponse.fromMap(
-        (map['sharingStatus']! as Map).cast<String, dynamic>(),
-      ),
-      softDeletePolicy: (() {
-        final guardedValue = map['softDeletePolicy'];
-        if (guardedValue == null) return null;
-        return SoftDeletePolicyResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      sharingProfile: (() { final guardedValue = map['sharingProfile']; if (guardedValue == null) return null; return SharingProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      sharingStatus: SharingStatusResponse.fromMap((map['sharingStatus']! as Map).cast<String, dynamic>()),
+      softDeletePolicy: (() { final guardedValue = map['softDeletePolicy']; if (guardedValue == null) return null; return SoftDeletePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

@@ -10,17 +10,12 @@ import 'azure_resource_manager_common_types_extended_location.dart';
 class DiagnosticArgs {
   /// Name of Diagnostic.
   final pulumi.Input<String>? diagnosticName;
-
   /// The complex type of the extended location.
-  final pulumi.Input<AzureResourceManagerCommonTypesExtendedLocation>?
-  extendedLocation;
-
+  final pulumi.Input<AzureResourceManagerCommonTypesExtendedLocation>? extendedLocation;
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -41,11 +36,7 @@ class DiagnosticArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'diagnosticName': ?diagnosticName,
-      'extendedLocation':
-          ?pulumi.Input.mapOptionalInputValue<
-            AzureResourceManagerCommonTypesExtendedLocation,
-            Map<String, dynamic>
-          >(extendedLocation, (value) => value.toMap()),
+      'extendedLocation': ?pulumi.Input.mapOptionalInputValue<AzureResourceManagerCommonTypesExtendedLocation, Map<String, dynamic>>(extendedLocation, (value) => value.toMap()),
       'location': ?location,
       'resourceGroupName': resourceGroupName,
       'tags': ?tags,
@@ -54,35 +45,12 @@ class DiagnosticArgs {
 
   factory DiagnosticArgs.fromMap(Map<String, dynamic> map) {
     return DiagnosticArgs(
-      diagnosticName: (() {
-        final guardedValue = map['diagnosticName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      extendedLocation: (() {
-        final guardedValue = map['extendedLocation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AzureResourceManagerCommonTypesExtendedLocation.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      diagnosticName: (() { final guardedValue = map['diagnosticName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureResourceManagerCommonTypesExtendedLocation.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

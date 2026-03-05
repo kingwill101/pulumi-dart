@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SigningKey {
   /// key_id is an identifier for the signing key.
   final pulumi.Input<String>? keyId;
-
   /// This field contains the corresponding signature scheme. Eg: "rsassa-pss-sha256".
   final pulumi.Input<String>? keyScheme;
-
   /// This field identifies the specific signing method. Eg: "rsa", "ed25519", and "ecdsa".
   final pulumi.Input<String>? keyType;
-
   /// This field contains the actual public key.
   final pulumi.Input<String>? publicKeyValue;
 
@@ -21,7 +18,12 @@ class SigningKey {
   /// [keyScheme] This field contains the corresponding signature scheme. Eg: "rsassa-pss-sha256".
   /// [keyType] This field identifies the specific signing method. Eg: "rsa", "ed25519", and "ecdsa".
   /// [publicKeyValue] This field contains the actual public key.
-  SigningKey({this.keyId, this.keyScheme, this.keyType, this.publicKeyValue});
+  SigningKey({
+    this.keyId,
+    this.keyScheme,
+    this.keyType,
+    this.publicKeyValue,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,26 +36,11 @@ class SigningKey {
 
   factory SigningKey.fromMap(Map<String, dynamic> map) {
     return SigningKey(
-      keyId: (() {
-        final guardedValue = map['keyId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keyScheme: (() {
-        final guardedValue = map['keyScheme'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keyType: (() {
-        final guardedValue = map['keyType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      publicKeyValue: (() {
-        final guardedValue = map['publicKeyValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      keyId: (() { final guardedValue = map['keyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyScheme: (() { final guardedValue = map['keyScheme']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyType: (() { final guardedValue = map['keyType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicKeyValue: (() { final guardedValue = map['publicKeyValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

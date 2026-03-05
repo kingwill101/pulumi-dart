@@ -8,17 +8,13 @@ enum GoogleCloudDialogflowCxV3InputAudioConfigModelVariant {
   const GoogleCloudDialogflowCxV3InputAudioConfigModelVariant(this.wireValue);
   final String wireValue;
 
-  static GoogleCloudDialogflowCxV3InputAudioConfigModelVariant fromValue(
-    String value,
-  ) {
-    for (final item
-        in GoogleCloudDialogflowCxV3InputAudioConfigModelVariant.values) {
+  static GoogleCloudDialogflowCxV3InputAudioConfigModelVariant fromValue(String value) {
+    for (final item in GoogleCloudDialogflowCxV3InputAudioConfigModelVariant.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GoogleCloudDialogflowCxV3InputAudioConfigModelVariant value: $value',
-    );
+    throw ArgumentError('Unknown GoogleCloudDialogflowCxV3InputAudioConfigModelVariant value: $value');
   }
 }
+

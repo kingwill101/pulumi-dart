@@ -8,12 +8,9 @@ import 'user_object_receiver_value.dart';
 /// A notification event receiver value.
 class NotificationReceiverValue {
   /// The user object receiver value.
-  final pulumi.Input<DistributionGroupListReceiverValue>?
-  distributionGroupListReceiverValue;
-
+  final pulumi.Input<DistributionGroupListReceiverValue>? distributionGroupListReceiverValue;
   /// The user object receiver value.
   final pulumi.Input<SubscriptionReceiverValue>? subscriptionReceiverValue;
-
   /// The user object receiver value.
   final pulumi.Input<UserObjectReceiverValue>? userObjectReceiverValue;
 
@@ -29,53 +26,18 @@ class NotificationReceiverValue {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'distributionGroupListReceiverValue':
-          ?pulumi.Input.mapOptionalInputValue<
-            DistributionGroupListReceiverValue,
-            Map<String, dynamic>
-          >(distributionGroupListReceiverValue, (value) => value.toMap()),
-      'subscriptionReceiverValue':
-          ?pulumi.Input.mapOptionalInputValue<
-            SubscriptionReceiverValue,
-            Map<String, dynamic>
-          >(subscriptionReceiverValue, (value) => value.toMap()),
-      'userObjectReceiverValue':
-          ?pulumi.Input.mapOptionalInputValue<
-            UserObjectReceiverValue,
-            Map<String, dynamic>
-          >(userObjectReceiverValue, (value) => value.toMap()),
+      'distributionGroupListReceiverValue': ?pulumi.Input.mapOptionalInputValue<DistributionGroupListReceiverValue, Map<String, dynamic>>(distributionGroupListReceiverValue, (value) => value.toMap()),
+      'subscriptionReceiverValue': ?pulumi.Input.mapOptionalInputValue<SubscriptionReceiverValue, Map<String, dynamic>>(subscriptionReceiverValue, (value) => value.toMap()),
+      'userObjectReceiverValue': ?pulumi.Input.mapOptionalInputValue<UserObjectReceiverValue, Map<String, dynamic>>(userObjectReceiverValue, (value) => value.toMap()),
     };
   }
 
   factory NotificationReceiverValue.fromMap(Map<String, dynamic> map) {
     return NotificationReceiverValue(
-      distributionGroupListReceiverValue: (() {
-        final guardedValue = map['distributionGroupListReceiverValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DistributionGroupListReceiverValue.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      subscriptionReceiverValue: (() {
-        final guardedValue = map['subscriptionReceiverValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SubscriptionReceiverValue.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      userObjectReceiverValue: (() {
-        final guardedValue = map['userObjectReceiverValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          UserObjectReceiverValue.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      distributionGroupListReceiverValue: (() { final guardedValue = map['distributionGroupListReceiverValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DistributionGroupListReceiverValue.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      subscriptionReceiverValue: (() { final guardedValue = map['subscriptionReceiverValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubscriptionReceiverValue.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      userObjectReceiverValue: (() { final guardedValue = map['userObjectReceiverValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(UserObjectReceiverValue.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

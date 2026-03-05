@@ -121,22 +121,16 @@ class PeeringAttachmentAccepter extends pulumi.CustomResource {
   /// Identifier of the AWS account that owns the EC2 TGW peering.
   late final pulumi.Output<String> peerAccountId;
   late final pulumi.Output<String> peerRegion;
-
   /// Identifier of EC2 Transit Gateway to peer with.
   late final pulumi.Output<String> peerTransitGatewayId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Key-value tags for the EC2 Transit Gateway Peering Attachment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// The ID of the EC2 Transit Gateway Peering Attachment to manage.
   late final pulumi.Output<String> transitGatewayAttachmentId;
-
   /// Identifier of EC2 Transit Gateway.
   late final pulumi.Output<String> transitGatewayId;
 
@@ -149,20 +143,18 @@ class PeeringAttachmentAccepter extends pulumi.CustomResource {
     PeeringAttachmentAccepterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2transitgateway/peeringAttachmentAccepter:PeeringAttachmentAccepter',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2transitgateway/peeringAttachmentAccepter:PeeringAttachmentAccepter',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     peerAccountId = registerOutput<String>('peerAccountId');
     peerRegion = registerOutput<String>('peerRegion');
     peerTransitGatewayId = registerOutput<String>('peerTransitGatewayId');
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    transitGatewayAttachmentId = registerOutput<String>(
-      'transitGatewayAttachmentId',
-    );
+    transitGatewayAttachmentId = registerOutput<String>('transitGatewayAttachmentId');
     transitGatewayId = registerOutput<String>('transitGatewayId');
   }
 
@@ -184,20 +176,18 @@ class PeeringAttachmentAccepter extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2transitgateway/peeringAttachmentAccepter:PeeringAttachmentAccepter',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2transitgateway/peeringAttachmentAccepter:PeeringAttachmentAccepter',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     peerAccountId = registerOutput<String>('peerAccountId');
     peerRegion = registerOutput<String>('peerRegion');
     peerTransitGatewayId = registerOutput<String>('peerTransitGatewayId');
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    transitGatewayAttachmentId = registerOutput<String>(
-      'transitGatewayAttachmentId',
-    );
+    transitGatewayAttachmentId = registerOutput<String>('transitGatewayAttachmentId');
     transitGatewayId = registerOutput<String>('transitGatewayId');
   }
 }

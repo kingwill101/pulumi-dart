@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KubernetesClusterControlPlaneFirewall {
   /// A list of addresses allowed (CIDR notation).
   final pulumi.Input<List<String>> allowedAddresses;
-
   /// Boolean flag whether the firewall should be enabled or not.
   final pulumi.Input<bool> enabled;
 
@@ -24,14 +23,11 @@ class KubernetesClusterControlPlaneFirewall {
     };
   }
 
-  factory KubernetesClusterControlPlaneFirewall.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory KubernetesClusterControlPlaneFirewall.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterControlPlaneFirewall(
-      allowedAddresses: pulumi.Input.fromValue(
-        (map['allowedAddresses'] as List).cast<String>(),
-      ),
+      allowedAddresses: pulumi.Input.fromValue((map['allowedAddresses'] as List).cast<String>()),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
+

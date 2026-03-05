@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AssessmentArgs {
   /// Advisor assessment name.
   final pulumi.Input<String>? assessmentName;
-
   /// Assessment Type Locale.
   final pulumi.Input<String>? locale;
-
   /// Assessment Type Id.
   final pulumi.Input<String>? typeId;
-
   /// Workload Id.
   final pulumi.Input<String>? workloadId;
 
@@ -42,26 +39,11 @@ class AssessmentArgs {
 
   factory AssessmentArgs.fromMap(Map<String, dynamic> map) {
     return AssessmentArgs(
-      assessmentName: (() {
-        final guardedValue = map['assessmentName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      locale: (() {
-        final guardedValue = map['locale'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      typeId: (() {
-        final guardedValue = map['typeId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      workloadId: (() {
-        final guardedValue = map['workloadId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      assessmentName: (() { final guardedValue = map['assessmentName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      locale: (() { final guardedValue = map['locale']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      typeId: (() { final guardedValue = map['typeId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      workloadId: (() { final guardedValue = map['workloadId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

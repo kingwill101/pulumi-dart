@@ -14,3 +14,4 @@ enum AuthPolicyDecision {
     throw ArgumentError('Unknown AuthPolicyDecision value: $value');
   }
 }
+

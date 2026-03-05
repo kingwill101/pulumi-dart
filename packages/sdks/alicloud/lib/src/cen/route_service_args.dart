@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RouteServiceArgs {
   /// The region of the network instances that access the cloud services.
   final pulumi.Input<String> accessRegionId;
-
   /// The ID of the CEN instance.
   final pulumi.Input<String> cenId;
-
   /// The description of the cloud service.
   final pulumi.Input<String>? description;
-
   /// The domain name or IP address of the cloud service.
   final pulumi.Input<String> host;
-
   /// The region of the cloud service.
   final pulumi.Input<String> hostRegionId;
-
   /// The VPC associated with the cloud service.
   ///
   /// &gt; **NOTE:** The values of `host_region_id` and `access_region_id` must be consistent.
@@ -58,14 +53,11 @@ class RouteServiceArgs {
     return RouteServiceArgs(
       accessRegionId: pulumi.Input.fromValue(map['accessRegionId'] as String),
       cenId: pulumi.Input.fromValue(map['cenId'] as String),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       host: pulumi.Input.fromValue(map['host'] as String),
       hostRegionId: pulumi.Input.fromValue(map['hostRegionId'] as String),
       hostVpcId: pulumi.Input.fromValue(map['hostVpcId'] as String),
     );
   }
 }
+

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationMonitoringConfigurationS3MonitoringConfiguration {
   /// The KMS key ARN to encrypt the logs published to the given Amazon S3 destination.
   final pulumi.Input<String>? encryptionKeyArn;
-
   /// The Amazon S3 destination URI for log publishing.
   final pulumi.Input<String>? logUri;
 
@@ -24,20 +23,11 @@ class ApplicationMonitoringConfigurationS3MonitoringConfiguration {
     };
   }
 
-  factory ApplicationMonitoringConfigurationS3MonitoringConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApplicationMonitoringConfigurationS3MonitoringConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationMonitoringConfigurationS3MonitoringConfiguration(
-      encryptionKeyArn: (() {
-        final guardedValue = map['encryptionKeyArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      logUri: (() {
-        final guardedValue = map['logUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      encryptionKeyArn: (() { final guardedValue = map['encryptionKeyArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      logUri: (() { final guardedValue = map['logUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

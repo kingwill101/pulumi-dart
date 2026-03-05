@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureActiveDirectoryResponse {
   /// Azure active directory client application id.
   final pulumi.Input<String>? clientApplication;
-
   /// Azure active directory cluster application id.
   final pulumi.Input<String>? clusterApplication;
-
   /// Azure active directory tenant id.
   final pulumi.Input<String>? tenantId;
 
@@ -33,21 +31,10 @@ class AzureActiveDirectoryResponse {
 
   factory AzureActiveDirectoryResponse.fromMap(Map<String, dynamic> map) {
     return AzureActiveDirectoryResponse(
-      clientApplication: (() {
-        final guardedValue = map['clientApplication'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      clusterApplication: (() {
-        final guardedValue = map['clusterApplication'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tenantId: (() {
-        final guardedValue = map['tenantId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      clientApplication: (() { final guardedValue = map['clientApplication']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      clusterApplication: (() { final guardedValue = map['clusterApplication']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

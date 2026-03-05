@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRegistryScopeMapArgs {
   /// The Name of the Container Registry where the token exists.
   final pulumi.Input<String> containerRegistryName;
-
   /// The name of the Container Registry token.
   final pulumi.Input<String> name;
-
   /// The Name of the Resource Group where this Container Registry token exists.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,13 +34,10 @@ class GetRegistryScopeMapArgs {
 
   factory GetRegistryScopeMapArgs.fromMap(Map<String, dynamic> map) {
     return GetRegistryScopeMapArgs(
-      containerRegistryName: pulumi.Input.fromValue(
-        map['containerRegistryName'] as String,
-      ),
+      containerRegistryName: pulumi.Input.fromValue(map['containerRegistryName'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

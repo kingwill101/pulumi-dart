@@ -16,3 +16,4 @@ enum SupportStatus {
     throw ArgumentError('Unknown SupportStatus value: $value');
   }
 }
+

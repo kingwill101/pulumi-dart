@@ -33,20 +33,13 @@ class GetImportDataFileMigrationcenterV1alpha1Args {
     };
   }
 
-  factory GetImportDataFileMigrationcenterV1alpha1Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetImportDataFileMigrationcenterV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return GetImportDataFileMigrationcenterV1alpha1Args(
-      importDataFileId: pulumi.Input.fromValue(
-        map['importDataFileId'] as String,
-      ),
+      importDataFileId: pulumi.Input.fromValue(map['importDataFileId'] as String),
       importJobId: pulumi.Input.fromValue(map['importJobId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

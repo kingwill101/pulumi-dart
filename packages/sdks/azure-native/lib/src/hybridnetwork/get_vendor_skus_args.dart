@@ -9,17 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVendorSkusArgs {
   /// The name of the sku.
   final pulumi.Input<String> skuName;
-
   /// The name of the vendor.
   final pulumi.Input<String> vendorName;
 
   /// Creates a new [GetVendorSkusArgs].
   /// [skuName] The name of the sku.
   /// [vendorName] The name of the vendor.
-  GetVendorSkusArgs({required this.skuName, required this.vendorName});
+  GetVendorSkusArgs({
+    required this.skuName,
+    required this.vendorName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'skuName': skuName, 'vendorName': vendorName};
+    return <String, dynamic>{
+      'skuName': skuName,
+      'vendorName': vendorName,
+    };
   }
 
   factory GetVendorSkusArgs.fromMap(Map<String, dynamic> map) {
@@ -29,3 +34,4 @@ class GetVendorSkusArgs {
     );
   }
 }
+

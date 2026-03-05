@@ -189,7 +189,6 @@ import 'preferences_state.dart';
 class Preferences extends pulumi.CustomResource {
   /// Customize whether the member accounts can see the "After Discounts" savings estimates. Valid values are `All` and `None`. Default value is `All`.
   late final pulumi.Output<String> memberAccountDiscountVisibility;
-
   /// Customize how estimated monthly savings are calculated. Valid values are `BeforeDiscounts` and `AfterDiscounts`. Default value is `BeforeDiscounts`.
   late final pulumi.Output<String> savingsEstimationMode;
 
@@ -202,14 +201,12 @@ class Preferences extends pulumi.CustomResource {
     PreferencesArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:costoptimizationhub/preferences:Preferences',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    memberAccountDiscountVisibility = registerOutput<String>(
-      'memberAccountDiscountVisibility',
-    );
+          'aws:costoptimizationhub/preferences:Preferences',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    memberAccountDiscountVisibility = registerOutput<String>('memberAccountDiscountVisibility');
     savingsEstimationMode = registerOutput<String>('savingsEstimationMode');
   }
 
@@ -231,14 +228,12 @@ class Preferences extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:costoptimizationhub/preferences:Preferences',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    memberAccountDiscountVisibility = registerOutput<String>(
-      'memberAccountDiscountVisibility',
-    );
+          'aws:costoptimizationhub/preferences:Preferences',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    memberAccountDiscountVisibility = registerOutput<String>('memberAccountDiscountVisibility');
     savingsEstimationMode = registerOutput<String>('savingsEstimationMode');
   }
 }

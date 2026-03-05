@@ -11,15 +11,12 @@ class LoginProfileArgs {
   /// - true: forcefully enables MFA for the RAM user. The RAM user must bind an MFA device upon the next logon.
   /// - false (default): does not forcefully enable MFA for the RAM user.
   final pulumi.Input<bool>? mfaBindRequired;
-
   /// The password must meet the Password strength requirements. For more information about password strength setting requirements, see [GetPasswordPolicy](https://help.aliyun.com/document_detail/2337691.html).
   final pulumi.Input<String> password;
-
   /// Whether the user must reset the password at the next logon. Value:
   /// - true
   /// - false (default)
   final pulumi.Input<bool>? passwordResetRequired;
-
   /// The user name.
   final pulumi.Input<String> userName;
 
@@ -46,18 +43,11 @@ class LoginProfileArgs {
 
   factory LoginProfileArgs.fromMap(Map<String, dynamic> map) {
     return LoginProfileArgs(
-      mfaBindRequired: (() {
-        final guardedValue = map['mfaBindRequired'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      mfaBindRequired: (() { final guardedValue = map['mfaBindRequired']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       password: pulumi.Input.fromValue(map['password'] as String),
-      passwordResetRequired: (() {
-        final guardedValue = map['passwordResetRequired'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      passwordResetRequired: (() { final guardedValue = map['passwordResetRequired']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       userName: pulumi.Input.fromValue(map['userName'] as String),
     );
   }
 }
+

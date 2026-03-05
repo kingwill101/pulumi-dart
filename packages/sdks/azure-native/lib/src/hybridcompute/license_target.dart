@@ -15,3 +15,4 @@ enum LicenseTarget {
     throw ArgumentError('Unknown LicenseTarget value: $value');
   }
 }
+

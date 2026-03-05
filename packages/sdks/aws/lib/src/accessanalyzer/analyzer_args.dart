@@ -12,16 +12,12 @@ class AnalyzerArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> analyzerName;
-
   /// A block that specifies the configuration of the analyzer. See `configuration` Block for details.
   final pulumi.Input<AnalyzerConfiguration>? configuration;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// Type that represents the zone of trust or scope for the analyzer. Valid values are `ACCOUNT`, `ACCOUNT_INTERNAL_ACCESS`, `ACCOUNT_UNUSED_ACCESS`, `ORGANIZATION`, `ORGANIZATION_INTERNAL_ACCESS`, `ORGANIZATION_UNUSED_ACCESS`. Defaults to `ACCOUNT`.
   final pulumi.Input<String>? type;
 
@@ -42,11 +38,7 @@ class AnalyzerArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'analyzerName': analyzerName,
-      'configuration':
-          ?pulumi.Input.mapOptionalInputValue<
-            AnalyzerConfiguration,
-            Map<String, dynamic>
-          >(configuration, (value) => value.toMap()),
+      'configuration': ?pulumi.Input.mapOptionalInputValue<AnalyzerConfiguration, Map<String, dynamic>>(configuration, (value) => value.toMap()),
       'region': ?region,
       'tags': ?tags,
       'type': ?type,
@@ -56,32 +48,11 @@ class AnalyzerArgs {
   factory AnalyzerArgs.fromMap(Map<String, dynamic> map) {
     return AnalyzerArgs(
       analyzerName: pulumi.Input.fromValue(map['analyzerName'] as String),
-      configuration: (() {
-        final guardedValue = map['configuration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AnalyzerConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      configuration: (() { final guardedValue = map['configuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AnalyzerConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

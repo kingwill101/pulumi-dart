@@ -757,8 +757,7 @@ Future<GetAutonomousDatabaseBackupsResult> getAutonomousDatabaseBackups(
 /// * `Oracle.Database` - 2025-09-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_oracle_get_autonomous_database_clone_from_backup_get_autonomous_database_clone_from_backup_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetAutonomousDatabaseCloneFromBackupResult>
-getAutonomousDatabaseCloneFromBackup(
+Future<GetAutonomousDatabaseCloneFromBackupResult> getAutonomousDatabaseCloneFromBackup(
   GetAutonomousDatabaseCloneFromBackupArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -887,8 +886,7 @@ getAutonomousDatabaseCloneFromBackup(
 /// * `Oracle.Database` - 2025-09-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_oracle_get_autonomous_database_clone_from_database_get_autonomous_database_clone_from_database_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetAutonomousDatabaseCloneFromDatabaseResult>
-getAutonomousDatabaseCloneFromDatabase(
+Future<GetAutonomousDatabaseCloneFromDatabaseResult> getAutonomousDatabaseCloneFromDatabase(
   GetAutonomousDatabaseCloneFromDatabaseArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

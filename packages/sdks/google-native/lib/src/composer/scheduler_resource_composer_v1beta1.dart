@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SchedulerResourceComposerV1beta1 {
   /// Optional. The number of schedulers.
   final pulumi.Input<int>? count;
-
   /// Optional. CPU request and limit for a single Airflow scheduler replica.
   final pulumi.Input<double>? cpu;
-
   /// Optional. Memory (GB) request and limit for a single Airflow scheduler replica.
   final pulumi.Input<double>? memoryGb;
-
   /// Optional. Storage (GB) request and limit for a single Airflow scheduler replica.
   final pulumi.Input<double>? storageGb;
 
@@ -39,26 +36,11 @@ class SchedulerResourceComposerV1beta1 {
 
   factory SchedulerResourceComposerV1beta1.fromMap(Map<String, dynamic> map) {
     return SchedulerResourceComposerV1beta1(
-      count: (() {
-        final guardedValue = map['count'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      cpu: (() {
-        final guardedValue = map['cpu'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      memoryGb: (() {
-        final guardedValue = map['memoryGb'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      storageGb: (() {
-        final guardedValue = map['storageGb'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      cpu: (() { final guardedValue = map['cpu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      memoryGb: (() { final guardedValue = map['memoryGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      storageGb: (() { final guardedValue = map['storageGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

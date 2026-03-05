@@ -8,19 +8,20 @@ class AttachedClusterError {
 
   /// Creates a new [AttachedClusterError].
   /// [message] Human-friendly description of the error.
-  AttachedClusterError({this.message});
+  AttachedClusterError({
+    this.message,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'message': ?message};
+    return <String, dynamic>{
+      'message': ?message,
+    };
   }
 
   factory AttachedClusterError.fromMap(Map<String, dynamic> map) {
     return AttachedClusterError(
-      message: (() {
-        final guardedValue = map['message'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      message: (() { final guardedValue = map['message']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

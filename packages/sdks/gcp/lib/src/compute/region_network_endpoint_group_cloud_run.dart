@@ -7,13 +7,11 @@ class RegionNetworkEndpointGroupCloudRun {
   /// The service must be 1-63 characters long, and comply with RFC1035.
   /// Example value: "run-service".
   final pulumi.Input<String>? service;
-
   /// Cloud Run tag represents the "named-revision" to provide
   /// additional fine-grained traffic routing information.
   /// The tag must be 1-63 characters long, and comply with RFC1035.
   /// Example value: "revision-0010".
   final pulumi.Input<String>? tag;
-
   /// A template to parse service and tag fields from a request URL.
   /// URL mask allows for routing to multiple Run services without having
   /// to create multiple network endpoint groups and backend services.
@@ -27,7 +25,11 @@ class RegionNetworkEndpointGroupCloudRun {
   /// [service] Cloud Run service is the main resource of Cloud Run.
   /// [tag] Cloud Run tag represents the "named-revision" to provide
   /// [urlMask] A template to parse service and tag fields from a request URL.
-  RegionNetworkEndpointGroupCloudRun({this.service, this.tag, this.urlMask});
+  RegionNetworkEndpointGroupCloudRun({
+    this.service,
+    this.tag,
+    this.urlMask,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,21 +41,10 @@ class RegionNetworkEndpointGroupCloudRun {
 
   factory RegionNetworkEndpointGroupCloudRun.fromMap(Map<String, dynamic> map) {
     return RegionNetworkEndpointGroupCloudRun(
-      service: (() {
-        final guardedValue = map['service'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tag: (() {
-        final guardedValue = map['tag'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      urlMask: (() {
-        final guardedValue = map['urlMask'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      service: (() { final guardedValue = map['service']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tag: (() { final guardedValue = map['tag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      urlMask: (() { final guardedValue = map['urlMask']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

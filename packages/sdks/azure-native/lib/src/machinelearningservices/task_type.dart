@@ -23,3 +23,4 @@ enum TaskType {
     throw ArgumentError('Unknown TaskType value: $value');
   }
 }
+

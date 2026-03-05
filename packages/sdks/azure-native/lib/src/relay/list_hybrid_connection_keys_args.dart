@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListHybridConnectionKeysArgs {
   /// The authorization rule name.
   final pulumi.Input<String> authorizationRuleName;
-
   /// The hybrid connection name.
   final pulumi.Input<String> hybridConnectionName;
-
   /// The namespace name
   final pulumi.Input<String> namespaceName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -42,16 +39,11 @@ class ListHybridConnectionKeysArgs {
 
   factory ListHybridConnectionKeysArgs.fromMap(Map<String, dynamic> map) {
     return ListHybridConnectionKeysArgs(
-      authorizationRuleName: pulumi.Input.fromValue(
-        map['authorizationRuleName'] as String,
-      ),
-      hybridConnectionName: pulumi.Input.fromValue(
-        map['hybridConnectionName'] as String,
-      ),
+      authorizationRuleName: pulumi.Input.fromValue(map['authorizationRuleName'] as String),
+      hybridConnectionName: pulumi.Input.fromValue(map['hybridConnectionName'] as String),
       namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

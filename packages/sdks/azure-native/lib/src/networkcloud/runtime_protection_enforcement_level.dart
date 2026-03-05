@@ -15,8 +15,7 @@ enum RuntimeProtectionEnforcementLevel {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown RuntimeProtectionEnforcementLevel value: $value',
-    );
+    throw ArgumentError('Unknown RuntimeProtectionEnforcementLevel value: $value');
   }
 }
+

@@ -5,17 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetListenersListenerCertificate {
   /// The ID of the Listener.
   final pulumi.Input<String> id;
-
   /// The type of the certificate.
   final pulumi.Input<String> type;
 
   /// Creates a new [GetListenersListenerCertificate].
   /// [id] The ID of the Listener.
   /// [type] The type of the certificate.
-  GetListenersListenerCertificate({required this.id, required this.type});
+  GetListenersListenerCertificate({
+    required this.id,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id, 'type': type};
+    return <String, dynamic>{
+      'id': id,
+      'type': type,
+    };
   }
 
   factory GetListenersListenerCertificate.fromMap(Map<String, dynamic> map) {
@@ -25,3 +30,4 @@ class GetListenersListenerCertificate {
     );
   }
 }
+

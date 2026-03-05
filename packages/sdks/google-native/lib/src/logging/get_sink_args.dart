@@ -13,20 +13,23 @@ class GetSinkArgs {
   /// Creates a new [GetSinkArgs].
   /// [project] Optional.
   /// [sinkId] Required.
-  GetSinkArgs({this.project, required this.sinkId});
+  GetSinkArgs({
+    this.project,
+    required this.sinkId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'project': ?project, 'sinkId': sinkId};
+    return <String, dynamic>{
+      'project': ?project,
+      'sinkId': sinkId,
+    };
   }
 
   factory GetSinkArgs.fromMap(Map<String, dynamic> map) {
     return GetSinkArgs(
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sinkId: pulumi.Input.fromValue(map['sinkId'] as String),
     );
   }
 }
+

@@ -190,23 +190,17 @@ import 'system_data_response.dart';
 class HyperVSite extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// eTag for concurrency control.
   late final pulumi.Output<String?> eTag;
-
   /// Azure location in which Sites is created.
   late final pulumi.Output<String?> location;
-
   /// Name of the Hyper-V site.
   late final pulumi.Output<String?> name;
-
   /// Nested properties of Hyper-V site.
   late final pulumi.Output<SitePropertiesResponse> properties;
-
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Type of resource. Type = Microsoft.OffAzure/HyperVSites.
   late final pulumi.Output<String> type;
 
@@ -219,35 +213,17 @@ class HyperVSite extends pulumi.CustomResource {
     HyperVSiteArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:offazure:HyperVSite',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:offazure:HyperVSite',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     eTag = registerOutput<String?>('eTag');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String?>('name');
-    properties = registerOutput<SitePropertiesResponse>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SitePropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<SitePropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SitePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

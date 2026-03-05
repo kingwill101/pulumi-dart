@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMachineTypesMachineTypeBundledLocalSsd {
   /// The default disk interface if the interface is not specified.
   final pulumi.Input<String> defaultInterface;
-
   /// The number of partitions.
   final pulumi.Input<int> partitionCount;
 
@@ -24,14 +23,11 @@ class GetMachineTypesMachineTypeBundledLocalSsd {
     };
   }
 
-  factory GetMachineTypesMachineTypeBundledLocalSsd.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetMachineTypesMachineTypeBundledLocalSsd.fromMap(Map<String, dynamic> map) {
     return GetMachineTypesMachineTypeBundledLocalSsd(
-      defaultInterface: pulumi.Input.fromValue(
-        map['defaultInterface'] as String,
-      ),
+      defaultInterface: pulumi.Input.fromValue(map['defaultInterface'] as String),
       partitionCount: pulumi.Input.fromValue(map['partitionCount'] as int),
     );
   }
 }
+

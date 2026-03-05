@@ -7,34 +7,24 @@ import 'system_data_response.dart';
 class GetAutoScaleVCoreResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The maximum capacity of an auto scale v-core resource.
   final int? capacityLimit;
-
   /// The object ID of the capacity resource associated with the auto scale v-core resource.
   final String? capacityObjectId;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// The geo-location where the resource lives
   final String location;
-
   /// The name of the resource
   final String name;
-
   /// The current deployment state of an auto scale v-core resource. The provisioningState is to indicate states for resource provisioning.
   final String provisioningState;
-
   /// The SKU of the auto scale v-core resource.
   final AutoScaleVCoreSkuResponse sku;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -83,32 +73,17 @@ class GetAutoScaleVCoreResult {
   factory GetAutoScaleVCoreResult.fromMap(Map<String, dynamic> map) {
     return GetAutoScaleVCoreResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      capacityLimit: (() {
-        final guardedValue = map['capacityLimit'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      capacityObjectId: (() {
-        final guardedValue = map['capacityObjectId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      capacityLimit: (() { final guardedValue = map['capacityLimit']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      capacityObjectId: (() { final guardedValue = map['capacityObjectId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      sku: AutoScaleVCoreSkuResponse.fromMap(
-        (map['sku']! as Map).cast<String, dynamic>(),
-      ),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      sku: AutoScaleVCoreSkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

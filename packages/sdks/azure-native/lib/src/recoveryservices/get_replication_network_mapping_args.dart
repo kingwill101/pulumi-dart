@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetReplicationNetworkMappingArgs {
   /// Primary fabric name.
   final pulumi.Input<String> fabricName;
-
   /// Network mapping name.
   final pulumi.Input<String> networkMappingName;
-
   /// Primary network name.
   final pulumi.Input<String> networkName;
-
   /// The name of the resource group where the recovery services vault is present.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the recovery services vault.
   final pulumi.Input<String> resourceName;
 
@@ -49,14 +45,11 @@ class GetReplicationNetworkMappingArgs {
   factory GetReplicationNetworkMappingArgs.fromMap(Map<String, dynamic> map) {
     return GetReplicationNetworkMappingArgs(
       fabricName: pulumi.Input.fromValue(map['fabricName'] as String),
-      networkMappingName: pulumi.Input.fromValue(
-        map['networkMappingName'] as String,
-      ),
+      networkMappingName: pulumi.Input.fromValue(map['networkMappingName'] as String),
       networkName: pulumi.Input.fromValue(map['networkName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
+

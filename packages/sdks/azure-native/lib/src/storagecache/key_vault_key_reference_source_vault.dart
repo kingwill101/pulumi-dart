@@ -9,19 +9,20 @@ class KeyVaultKeyReferenceSourceVault {
 
   /// Creates a new [KeyVaultKeyReferenceSourceVault].
   /// [id] Resource Id.
-  KeyVaultKeyReferenceSourceVault({this.id});
+  KeyVaultKeyReferenceSourceVault({
+    this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': ?id};
+    return <String, dynamic>{
+      'id': ?id,
+    };
   }
 
   factory KeyVaultKeyReferenceSourceVault.fromMap(Map<String, dynamic> map) {
     return KeyVaultKeyReferenceSourceVault(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

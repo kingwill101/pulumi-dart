@@ -249,13 +249,10 @@ import 'identity_policy_state.dart';
 class IdentityPolicy extends pulumi.CustomResource {
   /// Name or Amazon Resource Name (ARN) of the SES Identity.
   late final pulumi.Output<String> identity;
-
   /// Name of the policy.
   late final pulumi.Output<String> name;
-
   /// JSON string of the policy.
   late final pulumi.Output<String> policy;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -268,11 +265,11 @@ class IdentityPolicy extends pulumi.CustomResource {
     IdentityPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ses/identityPolicy:IdentityPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ses/identityPolicy:IdentityPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     identity = registerOutput<String>('identity');
     this.name = registerOutput<String>('name');
     policy = registerOutput<String>('policy');
@@ -297,11 +294,11 @@ class IdentityPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ses/identityPolicy:IdentityPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ses/identityPolicy:IdentityPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     identity = registerOutput<String>('identity');
     this.name = registerOutput<String>('name');
     policy = registerOutput<String>('policy');

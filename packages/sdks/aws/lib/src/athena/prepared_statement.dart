@@ -211,16 +211,12 @@ import 'prepared_statement_state.dart';
 class PreparedStatement extends pulumi.CustomResource {
   /// Brief explanation of prepared statement. Maximum length of 1024.
   late final pulumi.Output<String?> description;
-
   /// The name of the prepared statement. Maximum length of 256.
   late final pulumi.Output<String> name;
-
   /// The query string for the prepared statement.
   late final pulumi.Output<String> queryStatement;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The name of the workgroup to which the prepared statement belongs.
   late final pulumi.Output<String> workgroup;
 
@@ -233,11 +229,11 @@ class PreparedStatement extends pulumi.CustomResource {
     PreparedStatementArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:athena/preparedStatement:PreparedStatement',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:athena/preparedStatement:PreparedStatement',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     queryStatement = registerOutput<String>('queryStatement');
@@ -263,11 +259,11 @@ class PreparedStatement extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:athena/preparedStatement:PreparedStatement',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:athena/preparedStatement:PreparedStatement',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     queryStatement = registerOutput<String>('queryStatement');

@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCustomImageArgs {
   /// Specify the $expand query. Example: 'properties($select=vm)'
   final pulumi.Input<String>? expand;
-
   /// The name of the lab.
   final pulumi.Input<String> labName;
-
   /// The name of the CustomImage
   final pulumi.Input<String> name;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -42,16 +39,11 @@ class GetCustomImageArgs {
 
   factory GetCustomImageArgs.fromMap(Map<String, dynamic> map) {
     return GetCustomImageArgs(
-      expand: (() {
-        final guardedValue = map['expand'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      expand: (() { final guardedValue = map['expand']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labName: pulumi.Input.fromValue(map['labName'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

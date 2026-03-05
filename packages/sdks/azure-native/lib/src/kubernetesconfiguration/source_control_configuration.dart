@@ -238,53 +238,36 @@ import 'system_data_response.dart';
 class SourceControlConfiguration extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Compliance Status of the Configuration
   late final pulumi.Output<ComplianceStatusResponse> complianceStatus;
-
   /// Name-value pairs of protected configuration settings for the configuration
   late final pulumi.Output<Map<String, String>?> configurationProtectedSettings;
-
   /// Option to enable Helm Operator for this git configuration.
   late final pulumi.Output<bool?> enableHelmOperator;
-
   /// Properties for Helm operator.
-  late final pulumi.Output<HelmOperatorPropertiesResponse?>
-  helmOperatorProperties;
-
+  late final pulumi.Output<HelmOperatorPropertiesResponse?> helmOperatorProperties;
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Instance name of the operator - identifying the specific configuration.
   late final pulumi.Output<String?> operatorInstanceName;
-
   /// The namespace to which this operator is installed to. Maximum of 253 lower case alphanumeric characters, hyphen and period only.
   late final pulumi.Output<String?> operatorNamespace;
-
   /// Any Parameters for the Operator instance in string format.
   late final pulumi.Output<String?> operatorParams;
-
   /// Scope at which the operator will be installed.
   late final pulumi.Output<String?> operatorScope;
-
   /// Type of the operator
   late final pulumi.Output<String?> operatorType;
-
   /// The provisioning state of the resource provider.
   late final pulumi.Output<String> provisioningState;
-
   /// Public Key associated with this SourceControl configuration (either generated within the cluster or provided by the user).
   late final pulumi.Output<String> repositoryPublicKey;
-
   /// Url of the SourceControl Repository.
   late final pulumi.Output<String?> repositoryUrl;
-
   /// Base64-encoded known_hosts contents containing public SSH keys required to access private Git instances
   late final pulumi.Output<String?> sshKnownHostsContents;
-
   /// Top level metadata https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-contracts.md#system-metadata-for-all-azure-resources
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -297,36 +280,16 @@ class SourceControlConfiguration extends pulumi.CustomResource {
     SourceControlConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:kubernetesconfiguration:SourceControlConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:kubernetesconfiguration:SourceControlConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    complianceStatus = registerOutput<ComplianceStatusResponse>(
-      'complianceStatus',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ComplianceStatusResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    configurationProtectedSettings = registerOutput<Map<String, String>?>(
-      'configurationProtectedSettings',
-    );
+    complianceStatus = registerOutput<ComplianceStatusResponse>('complianceStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ComplianceStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    configurationProtectedSettings = registerOutput<Map<String, String>?>('configurationProtectedSettings');
     enableHelmOperator = registerOutput<bool?>('enableHelmOperator');
-    helmOperatorProperties = registerOutput<HelmOperatorPropertiesResponse?>(
-      'helmOperatorProperties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HelmOperatorPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    helmOperatorProperties = registerOutput<HelmOperatorPropertiesResponse?>('helmOperatorProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HelmOperatorPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     operatorInstanceName = registerOutput<String?>('operatorInstanceName');
     operatorNamespace = registerOutput<String?>('operatorNamespace');
@@ -337,16 +300,7 @@ class SourceControlConfiguration extends pulumi.CustomResource {
     repositoryPublicKey = registerOutput<String>('repositoryPublicKey');
     repositoryUrl = registerOutput<String?>('repositoryUrl');
     sshKnownHostsContents = registerOutput<String?>('sshKnownHostsContents');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

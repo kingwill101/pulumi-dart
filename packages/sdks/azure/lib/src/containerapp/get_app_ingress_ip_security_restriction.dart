@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAppIngressIpSecurityRestriction {
   /// The IP-filter action.
   final pulumi.Input<String> action;
-
   /// Description of the IP restriction rule that is being sent to the container-app.
   final pulumi.Input<String> description;
-
   /// CIDR notation that matches the incoming IP address.
   final pulumi.Input<String> ipAddressRange;
-
   /// The name of the Container App.
   final pulumi.Input<String> name;
 
@@ -45,3 +42,4 @@ class GetAppIngressIpSecurityRestriction {
     );
   }
 }
+

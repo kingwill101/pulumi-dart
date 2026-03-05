@@ -6,17 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkFirewallPolicyAssociationState {
   /// The target that the firewall policy is attached to.
   final pulumi.Input<String>? attachmentTarget;
-
   /// The firewall policy of the resource.
   final pulumi.Input<String>? firewallPolicy;
-
   /// The name for an association.
   final pulumi.Input<String>? name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The short name of the firewall policy of the association.
   final pulumi.Input<String>? shortName;
 
@@ -44,35 +40,14 @@ class NetworkFirewallPolicyAssociationState {
     };
   }
 
-  factory NetworkFirewallPolicyAssociationState.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NetworkFirewallPolicyAssociationState.fromMap(Map<String, dynamic> map) {
     return NetworkFirewallPolicyAssociationState(
-      attachmentTarget: (() {
-        final guardedValue = map['attachmentTarget'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      firewallPolicy: (() {
-        final guardedValue = map['firewallPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      shortName: (() {
-        final guardedValue = map['shortName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      attachmentTarget: (() { final guardedValue = map['attachmentTarget']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      firewallPolicy: (() { final guardedValue = map['firewallPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      shortName: (() { final guardedValue = map['shortName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

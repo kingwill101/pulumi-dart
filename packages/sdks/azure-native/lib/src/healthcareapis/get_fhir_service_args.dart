@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFhirServiceArgs {
   /// The name of FHIR Service resource.
   final pulumi.Input<String> fhirServiceName;
-
   /// The name of the resource group that contains the service instance.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of workspace resource.
   final pulumi.Input<String> workspaceName;
 
@@ -37,10 +35,9 @@ class GetFhirServiceArgs {
   factory GetFhirServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetFhirServiceArgs(
       fhirServiceName: pulumi.Input.fromValue(map['fhirServiceName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
+

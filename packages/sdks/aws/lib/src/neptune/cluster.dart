@@ -152,116 +152,78 @@ import 'cluster_state.dart';
 class Cluster extends pulumi.CustomResource {
   /// Whether upgrades between different major versions are allowed. You must set it to `true` when providing an `engine_version` parameter that uses a different major version than the DB cluster's current version. Default is `false`.
   late final pulumi.Output<bool> allowMajorVersionUpgrade;
-
   /// Whether any cluster modifications are applied immediately, or during the next maintenance window. Default is `false`.
   late final pulumi.Output<bool> applyImmediately;
-
   /// Neptune Cluster ARN
   late final pulumi.Output<String> arn;
-
   /// List of EC2 Availability Zones that instances in the Neptune cluster can be created in.
   late final pulumi.Output<List<String>> availabilityZones;
-
   /// Days to retain backups for. Default `1`
   late final pulumi.Output<int?> backupRetentionPeriod;
-
   /// Cluster identifier. If omitted, Terraform will assign a random, unique identifier.
   late final pulumi.Output<String> clusterIdentifier;
-
   /// Creates a unique cluster identifier beginning with the specified prefix. Conflicts with `cluster_identifier`.
   late final pulumi.Output<String> clusterIdentifierPrefix;
-
   /// List of Neptune Instances that are a part of this cluster
   late final pulumi.Output<List<String>> clusterMembers;
-
   /// Neptune Cluster Resource ID
   late final pulumi.Output<String> clusterResourceId;
-
   /// If set to true, tags are copied to any snapshot of the DB cluster that is created.
   late final pulumi.Output<bool?> copyTagsToSnapshot;
-
   /// Value that indicates whether the DB cluster has deletion protection enabled.The database can't be deleted when deletion protection is enabled. By default, deletion protection is disabled.
   late final pulumi.Output<bool?> deletionProtection;
-
   /// List of the log types this DB cluster is configured to export to Cloudwatch Logs. Currently only supports `audit` and `slowquery`.
   late final pulumi.Output<List<String>?> enableCloudwatchLogsExports;
-
   /// DNS address of the Neptune instance
   late final pulumi.Output<String> endpoint;
-
   /// Name of the database engine to be used for this Neptune cluster. Defaults to `neptune`.
   late final pulumi.Output<String?> engine;
-
   /// Database engine version.
   late final pulumi.Output<String> engineVersion;
-
   /// Name of your final Neptune snapshot when this Neptune cluster is deleted. If omitted, no final snapshot will be made.
   late final pulumi.Output<String?> finalSnapshotIdentifier;
-
   /// Global cluster identifier specified on `aws.neptune.GlobalCluster`.
   late final pulumi.Output<String?> globalClusterIdentifier;
-
   /// Route53 Hosted Zone ID of the endpoint
   late final pulumi.Output<String> hostedZoneId;
-
   /// Whether or not mappings of AWS Identity and Access Management (IAM) accounts to database accounts is enabled.
   late final pulumi.Output<bool?> iamDatabaseAuthenticationEnabled;
-
   /// List of ARNs for the IAM roles to associate to the Neptune Cluster.
   late final pulumi.Output<List<String>?> iamRoles;
-
   /// ARN for the KMS encryption key. When specifying `kms_key_arn`, `storage_encrypted` needs to be set to true.
   late final pulumi.Output<String> kmsKeyArn;
-
   /// Cluster parameter group to associate with the cluster.
   late final pulumi.Output<String> neptuneClusterParameterGroupName;
-
   /// Name of DB parameter group to apply to all instances in the cluster. When upgrading, AWS does not return this value, so do not reference it in other arguments—either leave it unset, configure each instance directly, or ensure it matches the `engine_version`.
   late final pulumi.Output<String?> neptuneInstanceParameterGroupName;
-
   /// Neptune subnet group to associate with this Neptune instance.
   late final pulumi.Output<String> neptuneSubnetGroupName;
-
   /// Port on which the Neptune accepts connections. Default is `8182`.
   late final pulumi.Output<int?> port;
-
   /// Daily time range during which automated backups are created if automated backups are enabled using the BackupRetentionPeriod parameter. Time in UTC. Default: A 30-minute window selected at random from an 8-hour block of time per regionE.g., 04:00-09:00
   late final pulumi.Output<String> preferredBackupWindow;
-
   /// Weekly time range during which system maintenance can occur, in (UTC) e.g., wed:04:00-wed:04:30
   late final pulumi.Output<String> preferredMaintenanceWindow;
-
   /// Read-only endpoint for the Neptune cluster, automatically load-balanced across replicas
   late final pulumi.Output<String> readerEndpoint;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// ARN of a source Neptune cluster or Neptune instance if this Neptune cluster is to be created as a Read Replica.
   late final pulumi.Output<String?> replicationSourceIdentifier;
-
   /// If set, create the Neptune cluster as a serverless one. See Serverless for example block attributes.
-  late final pulumi.Output<ClusterServerlessV2ScalingConfiguration?>
-  serverlessV2ScalingConfiguration;
-
+  late final pulumi.Output<ClusterServerlessV2ScalingConfiguration?> serverlessV2ScalingConfiguration;
   /// Whether a final Neptune snapshot is created before the Neptune cluster is deleted. If true is specified, no Neptune snapshot is created. If false is specified, a Neptune snapshot is created before the Neptune cluster is deleted, using the value from `final_snapshot_identifier`. Default is `false`.
   late final pulumi.Output<bool?> skipFinalSnapshot;
-
   /// Whether or not to create this cluster from a snapshot. You can use either the name or ARN when specifying a Neptune cluster snapshot, or the ARN when specifying a Neptune snapshot. Automated snapshots **should not** be used for this attribute, unless from a different cluster. Automated snapshots are deleted as part of cluster destruction when the resource is replaced.
   late final pulumi.Output<String?> snapshotIdentifier;
-
   /// Whether the Neptune cluster is encrypted. The default is `false` if not specified.
   late final pulumi.Output<bool?> storageEncrypted;
-
   /// Storage type associated with the cluster `standard/iopt1`. Default: `standard`.
   late final pulumi.Output<String> storageType;
-
   /// Map of tags to assign to the Neptune cluster. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// List of VPC security groups to associate with the Cluster
   late final pulumi.Output<List<String>> vpcSecurityGroupIds;
 
@@ -274,11 +236,11 @@ class Cluster extends pulumi.CustomResource {
     ClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:neptune/cluster:Cluster',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:neptune/cluster:Cluster',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allowMajorVersionUpgrade = registerOutput<bool>('allowMajorVersionUpgrade');
     applyImmediately = registerOutput<bool>('applyImmediately');
     arn = registerOutput<String>('arn');
@@ -290,52 +252,26 @@ class Cluster extends pulumi.CustomResource {
     clusterResourceId = registerOutput<String>('clusterResourceId');
     copyTagsToSnapshot = registerOutput<bool?>('copyTagsToSnapshot');
     deletionProtection = registerOutput<bool?>('deletionProtection');
-    enableCloudwatchLogsExports = registerOutput<List<String>?>(
-      'enableCloudwatchLogsExports',
-    );
+    enableCloudwatchLogsExports = registerOutput<List<String>?>('enableCloudwatchLogsExports');
     endpoint = registerOutput<String>('endpoint');
     engine = registerOutput<String?>('engine');
     engineVersion = registerOutput<String>('engineVersion');
-    finalSnapshotIdentifier = registerOutput<String?>(
-      'finalSnapshotIdentifier',
-    );
-    globalClusterIdentifier = registerOutput<String?>(
-      'globalClusterIdentifier',
-    );
+    finalSnapshotIdentifier = registerOutput<String?>('finalSnapshotIdentifier');
+    globalClusterIdentifier = registerOutput<String?>('globalClusterIdentifier');
     hostedZoneId = registerOutput<String>('hostedZoneId');
-    iamDatabaseAuthenticationEnabled = registerOutput<bool?>(
-      'iamDatabaseAuthenticationEnabled',
-    );
+    iamDatabaseAuthenticationEnabled = registerOutput<bool?>('iamDatabaseAuthenticationEnabled');
     iamRoles = registerOutput<List<String>?>('iamRoles');
     kmsKeyArn = registerOutput<String>('kmsKeyArn');
-    neptuneClusterParameterGroupName = registerOutput<String>(
-      'neptuneClusterParameterGroupName',
-    );
-    neptuneInstanceParameterGroupName = registerOutput<String?>(
-      'neptuneInstanceParameterGroupName',
-    );
+    neptuneClusterParameterGroupName = registerOutput<String>('neptuneClusterParameterGroupName');
+    neptuneInstanceParameterGroupName = registerOutput<String?>('neptuneInstanceParameterGroupName');
     neptuneSubnetGroupName = registerOutput<String>('neptuneSubnetGroupName');
     port = registerOutput<int?>('port');
     preferredBackupWindow = registerOutput<String>('preferredBackupWindow');
-    preferredMaintenanceWindow = registerOutput<String>(
-      'preferredMaintenanceWindow',
-    );
+    preferredMaintenanceWindow = registerOutput<String>('preferredMaintenanceWindow');
     readerEndpoint = registerOutput<String>('readerEndpoint');
     region = registerOutput<String>('region');
-    replicationSourceIdentifier = registerOutput<String?>(
-      'replicationSourceIdentifier',
-    );
-    serverlessV2ScalingConfiguration =
-        registerOutput<ClusterServerlessV2ScalingConfiguration?>(
-          'serverlessV2ScalingConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ClusterServerlessV2ScalingConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    replicationSourceIdentifier = registerOutput<String?>('replicationSourceIdentifier');
+    serverlessV2ScalingConfiguration = registerOutput<ClusterServerlessV2ScalingConfiguration?>('serverlessV2ScalingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterServerlessV2ScalingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     skipFinalSnapshot = registerOutput<bool?>('skipFinalSnapshot');
     snapshotIdentifier = registerOutput<String?>('snapshotIdentifier');
     storageEncrypted = registerOutput<bool?>('storageEncrypted');
@@ -363,11 +299,11 @@ class Cluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:neptune/cluster:Cluster',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:neptune/cluster:Cluster',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allowMajorVersionUpgrade = registerOutput<bool>('allowMajorVersionUpgrade');
     applyImmediately = registerOutput<bool>('applyImmediately');
     arn = registerOutput<String>('arn');
@@ -379,52 +315,26 @@ class Cluster extends pulumi.CustomResource {
     clusterResourceId = registerOutput<String>('clusterResourceId');
     copyTagsToSnapshot = registerOutput<bool?>('copyTagsToSnapshot');
     deletionProtection = registerOutput<bool?>('deletionProtection');
-    enableCloudwatchLogsExports = registerOutput<List<String>?>(
-      'enableCloudwatchLogsExports',
-    );
+    enableCloudwatchLogsExports = registerOutput<List<String>?>('enableCloudwatchLogsExports');
     endpoint = registerOutput<String>('endpoint');
     engine = registerOutput<String?>('engine');
     engineVersion = registerOutput<String>('engineVersion');
-    finalSnapshotIdentifier = registerOutput<String?>(
-      'finalSnapshotIdentifier',
-    );
-    globalClusterIdentifier = registerOutput<String?>(
-      'globalClusterIdentifier',
-    );
+    finalSnapshotIdentifier = registerOutput<String?>('finalSnapshotIdentifier');
+    globalClusterIdentifier = registerOutput<String?>('globalClusterIdentifier');
     hostedZoneId = registerOutput<String>('hostedZoneId');
-    iamDatabaseAuthenticationEnabled = registerOutput<bool?>(
-      'iamDatabaseAuthenticationEnabled',
-    );
+    iamDatabaseAuthenticationEnabled = registerOutput<bool?>('iamDatabaseAuthenticationEnabled');
     iamRoles = registerOutput<List<String>?>('iamRoles');
     kmsKeyArn = registerOutput<String>('kmsKeyArn');
-    neptuneClusterParameterGroupName = registerOutput<String>(
-      'neptuneClusterParameterGroupName',
-    );
-    neptuneInstanceParameterGroupName = registerOutput<String?>(
-      'neptuneInstanceParameterGroupName',
-    );
+    neptuneClusterParameterGroupName = registerOutput<String>('neptuneClusterParameterGroupName');
+    neptuneInstanceParameterGroupName = registerOutput<String?>('neptuneInstanceParameterGroupName');
     neptuneSubnetGroupName = registerOutput<String>('neptuneSubnetGroupName');
     port = registerOutput<int?>('port');
     preferredBackupWindow = registerOutput<String>('preferredBackupWindow');
-    preferredMaintenanceWindow = registerOutput<String>(
-      'preferredMaintenanceWindow',
-    );
+    preferredMaintenanceWindow = registerOutput<String>('preferredMaintenanceWindow');
     readerEndpoint = registerOutput<String>('readerEndpoint');
     region = registerOutput<String>('region');
-    replicationSourceIdentifier = registerOutput<String?>(
-      'replicationSourceIdentifier',
-    );
-    serverlessV2ScalingConfiguration =
-        registerOutput<ClusterServerlessV2ScalingConfiguration?>(
-          'serverlessV2ScalingConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ClusterServerlessV2ScalingConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    replicationSourceIdentifier = registerOutput<String?>('replicationSourceIdentifier');
+    serverlessV2ScalingConfiguration = registerOutput<ClusterServerlessV2ScalingConfiguration?>('serverlessV2ScalingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterServerlessV2ScalingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     skipFinalSnapshot = registerOutput<bool?>('skipFinalSnapshot');
     snapshotIdentifier = registerOutput<String?>('snapshotIdentifier');
     storageEncrypted = registerOutput<bool?>('storageEncrypted');

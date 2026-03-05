@@ -16,23 +16,14 @@ class StorageVersionMigrationSpecStoragemigrationK8sIoV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'resource':
-          pulumi.Input.mapInputValue<GroupResource, Map<String, dynamic>>(
-            resource,
-            (value) => value.toMap(),
-          ),
+      'resource': pulumi.Input.mapInputValue<GroupResource, Map<String, dynamic>>(resource, (value) => value.toMap()),
     };
   }
 
-  factory StorageVersionMigrationSpecStoragemigrationK8sIoV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory StorageVersionMigrationSpecStoragemigrationK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return StorageVersionMigrationSpecStoragemigrationK8sIoV1beta1(
-      resource: pulumi.Input.fromValue(
-        GroupResource.fromMap(
-          (map['resource']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      resource: pulumi.Input.fromValue(GroupResource.fromMap((map['resource']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

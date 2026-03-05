@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StaticRoute {
   /// List of all address prefixes.
   final pulumi.Input<List<String>>? addressPrefixes;
-
   /// The name of the StaticRoute that is unique within a VnetRoute.
   final pulumi.Input<String>? name;
-
   /// The ip address of the next hop.
   final pulumi.Input<String>? nextHopIpAddress;
 
@@ -17,7 +15,11 @@ class StaticRoute {
   /// [addressPrefixes] List of all address prefixes.
   /// [name] The name of the StaticRoute that is unique within a VnetRoute.
   /// [nextHopIpAddress] The ip address of the next hop.
-  StaticRoute({this.addressPrefixes, this.name, this.nextHopIpAddress});
+  StaticRoute({
+    this.addressPrefixes,
+    this.name,
+    this.nextHopIpAddress,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class StaticRoute {
 
   factory StaticRoute.fromMap(Map<String, dynamic> map) {
     return StaticRoute(
-      addressPrefixes: (() {
-        final guardedValue = map['addressPrefixes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      nextHopIpAddress: (() {
-        final guardedValue = map['nextHopIpAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      addressPrefixes: (() { final guardedValue = map['addressPrefixes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nextHopIpAddress: (() { final guardedValue = map['nextHopIpAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

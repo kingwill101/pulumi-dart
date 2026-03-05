@@ -28,11 +28,8 @@ class GetDataSourceArgs {
   factory GetDataSourceArgs.fromMap(Map<String, dynamic> map) {
     return GetDataSourceArgs(
       datasourceId: pulumi.Input.fromValue(map['datasourceId'] as String),
-      debugOptionsEnableDebugging: (() {
-        final guardedValue = map['debugOptionsEnableDebugging'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      debugOptionsEnableDebugging: (() { final guardedValue = map['debugOptionsEnableDebugging']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

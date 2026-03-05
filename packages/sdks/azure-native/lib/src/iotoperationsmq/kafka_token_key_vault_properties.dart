@@ -8,10 +8,8 @@ import 'key_vault_secret_object.dart';
 class KafkaTokenKeyVaultProperties {
   /// Username to connect with.
   final pulumi.Input<String>? username;
-
   /// KeyVault properties.
   final pulumi.Input<KeyVaultConnectionProperties> vault;
-
   /// KeyVault secret details.
   final pulumi.Input<KeyVaultSecretObject> vaultSecret;
 
@@ -28,36 +26,17 @@ class KafkaTokenKeyVaultProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'username': ?username,
-      'vault':
-          pulumi.Input.mapInputValue<
-            KeyVaultConnectionProperties,
-            Map<String, dynamic>
-          >(vault, (value) => value.toMap()),
-      'vaultSecret':
-          pulumi.Input.mapInputValue<
-            KeyVaultSecretObject,
-            Map<String, dynamic>
-          >(vaultSecret, (value) => value.toMap()),
+      'vault': pulumi.Input.mapInputValue<KeyVaultConnectionProperties, Map<String, dynamic>>(vault, (value) => value.toMap()),
+      'vaultSecret': pulumi.Input.mapInputValue<KeyVaultSecretObject, Map<String, dynamic>>(vaultSecret, (value) => value.toMap()),
     };
   }
 
   factory KafkaTokenKeyVaultProperties.fromMap(Map<String, dynamic> map) {
     return KafkaTokenKeyVaultProperties(
-      username: (() {
-        final guardedValue = map['username'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      vault: pulumi.Input.fromValue(
-        KeyVaultConnectionProperties.fromMap(
-          (map['vault']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      vaultSecret: pulumi.Input.fromValue(
-        KeyVaultSecretObject.fromMap(
-          (map['vaultSecret']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      username: (() { final guardedValue = map['username']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      vault: pulumi.Input.fromValue(KeyVaultConnectionProperties.fromMap((map['vault']! as Map).cast<String, dynamic>())),
+      vaultSecret: pulumi.Input.fromValue(KeyVaultSecretObject.fromMap((map['vaultSecret']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

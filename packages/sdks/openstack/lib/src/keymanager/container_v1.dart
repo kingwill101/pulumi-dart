@@ -625,39 +625,29 @@ class ContainerV1 extends pulumi.CustomResource {
   /// the `read` operation is supported. If not specified, the container is
   /// accessible project wide. The `read` structure is described below.
   late final pulumi.Output<ContainerV1Acl> acl;
-
   /// The list of the container consumers. The structure is described below.
   late final pulumi.Output<List<Map<String, dynamic>>> consumers;
-
   /// The container reference / where to find the container.
   late final pulumi.Output<String> containerRef;
-
   /// The date the container was created.
   late final pulumi.Output<String> createdAt;
-
   /// The creator of the container.
   late final pulumi.Output<String> creatorId;
-
   /// Human-readable name for the Container. Does not have
   /// to be unique.
   late final pulumi.Output<String> name;
-
   /// The region in which to obtain the V1 KeyManager client.
   /// A KeyManager client is needed to create a container. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
   /// V1 container.
   late final pulumi.Output<String> region;
-
   /// A set of dictionaries containing references to secrets. The structure is described
   /// below.
   late final pulumi.Output<List<Map<String, dynamic>>?> secretRefs;
-
   /// The status of the container.
   late final pulumi.Output<String> status;
-
   /// Used to indicate the type of container. Must be one of `generic`, `rsa` or `certificate`.
   late final pulumi.Output<String> type;
-
   /// The date the container was last updated.
   late final pulumi.Output<String> updatedAt;
 
@@ -670,21 +660,12 @@ class ContainerV1 extends pulumi.CustomResource {
     ContainerV1Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:keymanager/containerV1:ContainerV1',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    acl = registerOutput<ContainerV1Acl>(
-      'acl',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ContainerV1Acl.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'openstack:keymanager/containerV1:ContainerV1',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    acl = registerOutput<ContainerV1Acl>('acl', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerV1Acl.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     consumers = registerOutput<List<Map<String, dynamic>>>('consumers');
     containerRef = registerOutput<String>('containerRef');
     createdAt = registerOutput<String>('createdAt');
@@ -715,21 +696,12 @@ class ContainerV1 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:keymanager/containerV1:ContainerV1',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    acl = registerOutput<ContainerV1Acl>(
-      'acl',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ContainerV1Acl.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'openstack:keymanager/containerV1:ContainerV1',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    acl = registerOutput<ContainerV1Acl>('acl', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerV1Acl.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     consumers = registerOutput<List<Map<String, dynamic>>>('consumers');
     containerRef = registerOutput<String>('containerRef');
     createdAt = registerOutput<String>('createdAt');

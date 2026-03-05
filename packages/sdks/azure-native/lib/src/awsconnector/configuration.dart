@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Configuration {
   /// &lt;p&gt;The classification within a configuration.&lt;/p&gt;
   final pulumi.Input<String>? classification;
-
   /// &lt;p&gt;A list of additional configurations to apply within a configuration object.&lt;/p&gt;
   final pulumi.Input<List<Configuration>>? configurations;
-
   /// &lt;p&gt;A set of properties specified within a configuration classification.&lt;/p&gt;
   final pulumi.Input<Map<String, String>>? properties;
 
@@ -17,52 +15,26 @@ class Configuration {
   /// [classification] &lt;p&gt;The classification within a configuration.&lt;/p&gt;
   /// [configurations] &lt;p&gt;A list of additional configurations to apply within a configuration object.&lt;/p&gt;
   /// [properties] &lt;p&gt;A set of properties specified within a configuration classification.&lt;/p&gt;
-  Configuration({this.classification, this.configurations, this.properties});
+  Configuration({
+    this.classification,
+    this.configurations,
+    this.properties,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'classification': ?classification,
-      'configurations':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<Configuration>,
-            List<Map<String, dynamic>>
-          >(
-            configurations,
-            (value) =>
-                pulumi.Input.encodeList<Configuration, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'configurations': ?pulumi.Input.mapOptionalInputValue<List<Configuration>, List<Map<String, dynamic>>>(configurations, (value) => pulumi.Input.encodeList<Configuration, Map<String, dynamic>>(value, (value) => value.toMap())),
       'properties': ?properties,
     };
   }
 
   factory Configuration.fromMap(Map<String, dynamic> map) {
     return Configuration(
-      classification: (() {
-        final guardedValue = map['classification'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      configurations: (() {
-        final guardedValue = map['configurations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<Configuration>(
-            guardedValue,
-            (value) =>
-                Configuration.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      classification: (() { final guardedValue = map['classification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      configurations: (() { final guardedValue = map['configurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Configuration>(guardedValue, (value) => Configuration.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

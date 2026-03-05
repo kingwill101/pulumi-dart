@@ -6,28 +6,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkspaceRepositoryConfigurationResponse {
   /// Account name
   final pulumi.Input<String>? accountName;
-
   /// Collaboration branch
   final pulumi.Input<String>? collaborationBranch;
-
   /// GitHub Enterprise host name. For example: `https://github.mydomain.com`
   final pulumi.Input<String>? hostName;
-
   /// The last commit ID
   final pulumi.Input<String>? lastCommitId;
-
   /// VSTS project name
   final pulumi.Input<String>? projectName;
-
   /// Repository name
   final pulumi.Input<String>? repositoryName;
-
   /// Root folder to use in the repository
   final pulumi.Input<String>? rootFolder;
-
   /// The VSTS tenant ID
   final pulumi.Input<String>? tenantId;
-
   /// Type of workspace repositoryID configuration. Example WorkspaceVSTSConfiguration, WorkspaceGitHubConfiguration
   final pulumi.Input<String>? type;
 
@@ -67,55 +59,18 @@ class WorkspaceRepositoryConfigurationResponse {
     };
   }
 
-  factory WorkspaceRepositoryConfigurationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WorkspaceRepositoryConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return WorkspaceRepositoryConfigurationResponse(
-      accountName: (() {
-        final guardedValue = map['accountName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      collaborationBranch: (() {
-        final guardedValue = map['collaborationBranch'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      hostName: (() {
-        final guardedValue = map['hostName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      lastCommitId: (() {
-        final guardedValue = map['lastCommitId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      projectName: (() {
-        final guardedValue = map['projectName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      repositoryName: (() {
-        final guardedValue = map['repositoryName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      rootFolder: (() {
-        final guardedValue = map['rootFolder'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tenantId: (() {
-        final guardedValue = map['tenantId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accountName: (() { final guardedValue = map['accountName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      collaborationBranch: (() { final guardedValue = map['collaborationBranch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      hostName: (() { final guardedValue = map['hostName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      lastCommitId: (() { final guardedValue = map['lastCommitId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      projectName: (() { final guardedValue = map['projectName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      repositoryName: (() { final guardedValue = map['repositoryName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      rootFolder: (() { final guardedValue = map['rootFolder']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

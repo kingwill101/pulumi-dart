@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SessionStateEventResponse {
   /// The time that the session_state first encountered that state.
   final pulumi.Input<String> eventTime;
-
   /// The session_state tracked by this event
   final pulumi.Input<String> sessionState;
-
   /// A human-readable message to explain the state.
   final pulumi.Input<String> stateMessage;
 
@@ -39,3 +37,4 @@ class SessionStateEventResponse {
     );
   }
 }
+

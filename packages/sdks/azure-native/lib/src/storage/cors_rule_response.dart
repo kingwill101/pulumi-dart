@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CorsRuleResponse {
   /// Required if CorsRule element is present. A list of headers allowed to be part of the cross-origin request.
   final pulumi.Input<List<String>> allowedHeaders;
-
   /// Required if CorsRule element is present. A list of HTTP methods that are allowed to be executed by the origin.
   final pulumi.Input<List<String>> allowedMethods;
-
   /// Required if CorsRule element is present. A list of origin domains that will be allowed via CORS, or "*" to allow all domains
   final pulumi.Input<List<String>> allowedOrigins;
-
   /// Required if CorsRule element is present. A list of response headers to expose to CORS clients.
   final pulumi.Input<List<String>> exposedHeaders;
-
   /// Required if CorsRule element is present. The number of seconds that the client/browser should cache a preflight response.
   final pulumi.Input<int> maxAgeInSeconds;
 
@@ -45,19 +41,12 @@ class CorsRuleResponse {
 
   factory CorsRuleResponse.fromMap(Map<String, dynamic> map) {
     return CorsRuleResponse(
-      allowedHeaders: pulumi.Input.fromValue(
-        (map['allowedHeaders'] as List).cast<String>(),
-      ),
-      allowedMethods: pulumi.Input.fromValue(
-        (map['allowedMethods'] as List).cast<String>(),
-      ),
-      allowedOrigins: pulumi.Input.fromValue(
-        (map['allowedOrigins'] as List).cast<String>(),
-      ),
-      exposedHeaders: pulumi.Input.fromValue(
-        (map['exposedHeaders'] as List).cast<String>(),
-      ),
+      allowedHeaders: pulumi.Input.fromValue((map['allowedHeaders'] as List).cast<String>()),
+      allowedMethods: pulumi.Input.fromValue((map['allowedMethods'] as List).cast<String>()),
+      allowedOrigins: pulumi.Input.fromValue((map['allowedOrigins'] as List).cast<String>()),
+      exposedHeaders: pulumi.Input.fromValue((map['exposedHeaders'] as List).cast<String>()),
       maxAgeInSeconds: pulumi.Input.fromValue(map['maxAgeInSeconds'] as int),
     );
   }
 }
+

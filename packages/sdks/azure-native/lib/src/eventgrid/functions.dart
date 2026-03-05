@@ -237,8 +237,7 @@ Future<GetDomainEventSubscriptionResult> getDomainEventSubscription(
 /// Other available API versions: 2022-06-15, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview, 2025-07-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_eventgrid_get_domain_event_subscription_delivery_attributes_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDomainEventSubscriptionDeliveryAttributesResult>
-getDomainEventSubscriptionDeliveryAttributes(
+Future<GetDomainEventSubscriptionDeliveryAttributesResult> getDomainEventSubscriptionDeliveryAttributes(
   GetDomainEventSubscriptionDeliveryAttributesArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -258,8 +257,7 @@ getDomainEventSubscriptionDeliveryAttributes(
 /// Other available API versions: 2022-06-15, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview, 2025-07-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_eventgrid_get_domain_event_subscription_full_url_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDomainEventSubscriptionFullUrlResult>
-getDomainEventSubscriptionFullUrl(
+Future<GetDomainEventSubscriptionFullUrlResult> getDomainEventSubscriptionFullUrl(
   GetDomainEventSubscriptionFullUrlArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -319,8 +317,7 @@ Future<GetDomainTopicEventSubscriptionResult> getDomainTopicEventSubscription(
 /// Other available API versions: 2022-06-15, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview, 2025-07-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_eventgrid_get_domain_topic_event_subscription_delivery_attributes_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDomainTopicEventSubscriptionDeliveryAttributesResult>
-getDomainTopicEventSubscriptionDeliveryAttributes(
+Future<GetDomainTopicEventSubscriptionDeliveryAttributesResult> getDomainTopicEventSubscriptionDeliveryAttributes(
   GetDomainTopicEventSubscriptionDeliveryAttributesArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -330,9 +327,7 @@ getDomainTopicEventSubscriptionDeliveryAttributes(
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetDomainTopicEventSubscriptionDeliveryAttributesResult.fromMap(
-    result,
-  );
+  return GetDomainTopicEventSubscriptionDeliveryAttributesResult.fromMap(result);
 }
 
 /// Get the full endpoint URL for a nested event subscription for domain topic.
@@ -342,8 +337,7 @@ getDomainTopicEventSubscriptionDeliveryAttributes(
 /// Other available API versions: 2022-06-15, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview, 2025-07-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_eventgrid_get_domain_topic_event_subscription_full_url_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDomainTopicEventSubscriptionFullUrlResult>
-getDomainTopicEventSubscriptionFullUrl(
+Future<GetDomainTopicEventSubscriptionFullUrlResult> getDomainTopicEventSubscriptionFullUrl(
   GetDomainTopicEventSubscriptionFullUrlArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -383,8 +377,7 @@ Future<GetEventSubscriptionResult> getEventSubscription(
 /// Other available API versions: 2022-06-15, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview, 2025-07-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_eventgrid_get_event_subscription_delivery_attributes_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetEventSubscriptionDeliveryAttributesResult>
-getEventSubscriptionDeliveryAttributes(
+Future<GetEventSubscriptionDeliveryAttributesResult> getEventSubscriptionDeliveryAttributes(
   GetEventSubscriptionDeliveryAttributesArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -464,8 +457,7 @@ Future<GetNamespaceTopicResult> getNamespaceTopic(
 /// Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview, 2025-07-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_eventgrid_get_namespace_topic_event_subscription_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetNamespaceTopicEventSubscriptionResult>
-getNamespaceTopicEventSubscription(
+Future<GetNamespaceTopicEventSubscriptionResult> getNamespaceTopicEventSubscription(
   GetNamespaceTopicEventSubscriptionArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -485,8 +477,7 @@ getNamespaceTopicEventSubscription(
 /// Other available API versions: 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview, 2025-07-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_eventgrid_get_namespace_topic_event_subscription_delivery_attributes_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetNamespaceTopicEventSubscriptionDeliveryAttributesResult>
-getNamespaceTopicEventSubscriptionDeliveryAttributes(
+Future<GetNamespaceTopicEventSubscriptionDeliveryAttributesResult> getNamespaceTopicEventSubscriptionDeliveryAttributes(
   GetNamespaceTopicEventSubscriptionDeliveryAttributesArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -496,9 +487,7 @@ getNamespaceTopicEventSubscriptionDeliveryAttributes(
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetNamespaceTopicEventSubscriptionDeliveryAttributesResult.fromMap(
-    result,
-  );
+  return GetNamespaceTopicEventSubscriptionDeliveryAttributesResult.fromMap(result);
 }
 
 /// Get the full endpoint URL for an event subscription of a namespace topic.
@@ -508,8 +497,7 @@ getNamespaceTopicEventSubscriptionDeliveryAttributes(
 /// Other available API versions: 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview, 2025-07-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_eventgrid_get_namespace_topic_event_subscription_full_url_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetNamespaceTopicEventSubscriptionFullUrlResult>
-getNamespaceTopicEventSubscriptionFullUrl(
+Future<GetNamespaceTopicEventSubscriptionFullUrlResult> getNamespaceTopicEventSubscriptionFullUrl(
   GetNamespaceTopicEventSubscriptionFullUrlArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -649,8 +637,7 @@ Future<GetPartnerTopicEventSubscriptionResult> getPartnerTopicEventSubscription(
 /// Other available API versions: 2022-06-15, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview, 2025-07-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_eventgrid_get_partner_topic_event_subscription_delivery_attributes_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetPartnerTopicEventSubscriptionDeliveryAttributesResult>
-getPartnerTopicEventSubscriptionDeliveryAttributes(
+Future<GetPartnerTopicEventSubscriptionDeliveryAttributesResult> getPartnerTopicEventSubscriptionDeliveryAttributes(
   GetPartnerTopicEventSubscriptionDeliveryAttributesArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -660,9 +647,7 @@ getPartnerTopicEventSubscriptionDeliveryAttributes(
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetPartnerTopicEventSubscriptionDeliveryAttributesResult.fromMap(
-    result,
-  );
+  return GetPartnerTopicEventSubscriptionDeliveryAttributesResult.fromMap(result);
 }
 
 /// Get the full endpoint URL for an event subscription of a partner topic.
@@ -672,8 +657,7 @@ getPartnerTopicEventSubscriptionDeliveryAttributes(
 /// Other available API versions: 2022-06-15, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview, 2025-07-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_eventgrid_get_partner_topic_event_subscription_full_url_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetPartnerTopicEventSubscriptionFullUrlResult>
-getPartnerTopicEventSubscriptionFullUrl(
+Future<GetPartnerTopicEventSubscriptionFullUrlResult> getPartnerTopicEventSubscriptionFullUrl(
   GetPartnerTopicEventSubscriptionFullUrlArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -773,8 +757,7 @@ Future<GetSystemTopicEventSubscriptionResult> getSystemTopicEventSubscription(
 /// Other available API versions: 2022-06-15, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview, 2025-07-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_eventgrid_get_system_topic_event_subscription_delivery_attributes_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetSystemTopicEventSubscriptionDeliveryAttributesResult>
-getSystemTopicEventSubscriptionDeliveryAttributes(
+Future<GetSystemTopicEventSubscriptionDeliveryAttributesResult> getSystemTopicEventSubscriptionDeliveryAttributes(
   GetSystemTopicEventSubscriptionDeliveryAttributesArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -784,9 +767,7 @@ getSystemTopicEventSubscriptionDeliveryAttributes(
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetSystemTopicEventSubscriptionDeliveryAttributesResult.fromMap(
-    result,
-  );
+  return GetSystemTopicEventSubscriptionDeliveryAttributesResult.fromMap(result);
 }
 
 /// Get the full endpoint URL for an event subscription of a system topic.
@@ -796,8 +777,7 @@ getSystemTopicEventSubscriptionDeliveryAttributes(
 /// Other available API versions: 2022-06-15, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview, 2025-07-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_eventgrid_get_system_topic_event_subscription_full_url_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetSystemTopicEventSubscriptionFullUrlResult>
-getSystemTopicEventSubscriptionFullUrl(
+Future<GetSystemTopicEventSubscriptionFullUrlResult> getSystemTopicEventSubscriptionFullUrl(
   GetSystemTopicEventSubscriptionFullUrlArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -857,8 +837,7 @@ Future<GetTopicEventSubscriptionResult> getTopicEventSubscription(
 /// Other available API versions: 2022-06-15, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview, 2025-07-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_eventgrid_get_topic_event_subscription_delivery_attributes_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetTopicEventSubscriptionDeliveryAttributesResult>
-getTopicEventSubscriptionDeliveryAttributes(
+Future<GetTopicEventSubscriptionDeliveryAttributesResult> getTopicEventSubscriptionDeliveryAttributes(
   GetTopicEventSubscriptionDeliveryAttributesArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -958,8 +937,7 @@ Future<ListNamespaceSharedAccessKeysResult> listNamespaceSharedAccessKeys(
 /// Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview, 2025-07-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_eventgrid_list_namespace_topic_shared_access_keys_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListNamespaceTopicSharedAccessKeysResult>
-listNamespaceTopicSharedAccessKeys(
+Future<ListNamespaceTopicSharedAccessKeysResult> listNamespaceTopicSharedAccessKeys(
   ListNamespaceTopicSharedAccessKeysArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -979,8 +957,7 @@ listNamespaceTopicSharedAccessKeys(
 /// Other available API versions: 2022-06-15, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview, 2025-07-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_eventgrid_list_partner_namespace_shared_access_keys_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListPartnerNamespaceSharedAccessKeysResult>
-listPartnerNamespaceSharedAccessKeys(
+Future<ListPartnerNamespaceSharedAccessKeysResult> listPartnerNamespaceSharedAccessKeys(
   ListPartnerNamespaceSharedAccessKeysArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

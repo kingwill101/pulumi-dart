@@ -9,10 +9,14 @@ class SasTokenInformationResponse {
 
   /// Creates a new [SasTokenInformationResponse].
   /// [accessToken] The access token for the associated Azure Storage Container.
-  SasTokenInformationResponse({required this.accessToken});
+  SasTokenInformationResponse({
+    required this.accessToken,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'accessToken': accessToken};
+    return <String, dynamic>{
+      'accessToken': accessToken,
+    };
   }
 
   factory SasTokenInformationResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class SasTokenInformationResponse {
     );
   }
 }
+

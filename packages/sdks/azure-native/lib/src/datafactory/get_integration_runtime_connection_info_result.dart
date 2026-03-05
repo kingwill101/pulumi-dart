@@ -1,22 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getIntegrationRuntimeConnectionInfo.
 class GetIntegrationRuntimeConnectionInfoResult {
   /// The on-premises integration runtime host URL.
   final String hostServiceUri;
-
   /// The integration runtime SSL certificate thumbprint. Click-Once application uses it to do server validation.
   final String identityCertThumbprint;
-
   /// Whether the identity certificate is expired.
   final bool isIdentityCertExprired;
-
   /// The public key for encrypting a credential when transferring the credential to the integration runtime.
   final String publicKey;
-
   /// The token generated in service. Callers use this token to authenticate to integration runtime.
   final String serviceToken;
-
   /// The integration runtime version.
   final String version;
 
@@ -47,9 +43,7 @@ class GetIntegrationRuntimeConnectionInfoResult {
     };
   }
 
-  factory GetIntegrationRuntimeConnectionInfoResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetIntegrationRuntimeConnectionInfoResult.fromMap(Map<String, dynamic> map) {
     return GetIntegrationRuntimeConnectionInfoResult(
       hostServiceUri: map['hostServiceUri'] as String,
       identityCertThumbprint: map['identityCertThumbprint'] as String,
@@ -60,3 +54,4 @@ class GetIntegrationRuntimeConnectionInfoResult {
     );
   }
 }
+

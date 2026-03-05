@@ -171,13 +171,10 @@ import 'random_pet_state.dart';
 class RandomPet extends pulumi.CustomResource {
   /// Arbitrary map of values that, when changed, will trigger recreation of resource. See the main provider documentation for more information.
   late final pulumi.Output<Map<String, String>?> keepers;
-
   /// The length (in words) of the pet name. Defaults to 2
   late final pulumi.Output<int> length;
-
   /// A string to prefix the name with.
   late final pulumi.Output<String?> prefix;
-
   /// The character to separate words in the pet name. Defaults to "-"
   late final pulumi.Output<String> separator;
 
@@ -190,11 +187,11 @@ class RandomPet extends pulumi.CustomResource {
     RandomPetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'random:index/randomPet:RandomPet',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'random:index/randomPet:RandomPet',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     keepers = registerOutput<Map<String, String>?>('keepers');
     length = registerOutput<int>('length');
     prefix = registerOutput<String?>('prefix');
@@ -219,11 +216,11 @@ class RandomPet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'random:index/randomPet:RandomPet',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'random:index/randomPet:RandomPet',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     keepers = registerOutput<Map<String, String>?>('keepers');
     length = registerOutput<int>('length');
     prefix = registerOutput<String?>('prefix');

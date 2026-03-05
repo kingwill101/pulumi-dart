@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LoggingDestinationResponse {
   /// Names of the logs to be sent to this destination. Each name must be defined in the Service.logs section. If the log name is not a domain scoped name, it will be automatically prefixed with the service name followed by "/".
   final pulumi.Input<List<String>> logs;
-
   /// The monitored resource type. The type must be defined in the Service.monitored_resources section.
   final pulumi.Input<String> monitoredResource;
 
@@ -28,9 +27,8 @@ class LoggingDestinationResponse {
   factory LoggingDestinationResponse.fromMap(Map<String, dynamic> map) {
     return LoggingDestinationResponse(
       logs: pulumi.Input.fromValue((map['logs'] as List).cast<String>()),
-      monitoredResource: pulumi.Input.fromValue(
-        map['monitoredResource'] as String,
-      ),
+      monitoredResource: pulumi.Input.fromValue(map['monitoredResource'] as String),
     );
   }
 }
+

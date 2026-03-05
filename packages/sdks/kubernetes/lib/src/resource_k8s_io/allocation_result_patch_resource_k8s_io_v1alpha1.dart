@@ -9,12 +9,10 @@ class AllocationResultPatchResourceK8sIoV1alpha1 {
   ///
   /// Setting this field is optional. If null, the resource is available everywhere.
   final pulumi.Input<NodeSelectorPatch>? availableOnNodes;
-
   /// ResourceHandle contains arbitrary data returned by the driver after a successful allocation. This is opaque for Kubernetes. Driver documentation may explain to users how to interpret this data if needed.
   ///
   /// The maximum size of this field is 16KiB. This may get increased in the future, but not reduced.
   final pulumi.Input<String>? resourceHandle;
-
   /// Shareable determines whether the resource supports more than one consumer at a time.
   final pulumi.Input<bool>? shareable;
 
@@ -30,39 +28,18 @@ class AllocationResultPatchResourceK8sIoV1alpha1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'availableOnNodes':
-          ?pulumi.Input.mapOptionalInputValue<
-            NodeSelectorPatch,
-            Map<String, dynamic>
-          >(availableOnNodes, (value) => value.toMap()),
+      'availableOnNodes': ?pulumi.Input.mapOptionalInputValue<NodeSelectorPatch, Map<String, dynamic>>(availableOnNodes, (value) => value.toMap()),
       'resourceHandle': ?resourceHandle,
       'shareable': ?shareable,
     };
   }
 
-  factory AllocationResultPatchResourceK8sIoV1alpha1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AllocationResultPatchResourceK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
     return AllocationResultPatchResourceK8sIoV1alpha1(
-      availableOnNodes: (() {
-        final guardedValue = map['availableOnNodes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          NodeSelectorPatch.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      resourceHandle: (() {
-        final guardedValue = map['resourceHandle'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      shareable: (() {
-        final guardedValue = map['shareable'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      availableOnNodes: (() { final guardedValue = map['availableOnNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodeSelectorPatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceHandle: (() { final guardedValue = map['resourceHandle']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      shareable: (() { final guardedValue = map['shareable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

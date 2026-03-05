@@ -1856,69 +1856,53 @@ class Guardrail extends pulumi.CustomResource {
   /// Action that is taken when a certain precondition is met.
   /// Structure is documented below.
   late final pulumi.Output<GuardrailAction?> action;
-
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> app;
-
   /// Guardrail that blocks the conversation based on the code callbacks
   /// provided.
   /// Structure is documented below.
   late final pulumi.Output<GuardrailCodeCallback?> codeCallback;
-
   /// Guardrail that bans certain content from being used in the conversation.
   /// Structure is documented below.
   late final pulumi.Output<GuardrailContentFilter?> contentFilter;
-
   /// Timestamp when the guardrail was created.
   late final pulumi.Output<String> createTime;
-
   /// Description of the guardrail.
   late final pulumi.Output<String?> description;
-
   /// Display name of the guardrail.
   late final pulumi.Output<String> displayName;
-
   /// Whether the guardrail is enabled.
   late final pulumi.Output<bool?> enabled;
-
   /// Etag used to ensure the object hasn't changed during a read-modify-write
   /// operation. If the etag is empty, the update will overwrite any concurrent
   /// changes.
   late final pulumi.Output<String> etag;
-
   /// The ID to use for the guardrail, which will become the final component of
   /// the guardrail's resource name. If not provided, a unique ID will be
   /// automatically assigned for the guardrail.
   late final pulumi.Output<String> guardrailId;
-
   /// Guardrail that blocks the conversation if the LLM response is considered
   /// violating the policy based on the LLM classification.
   /// Structure is documented below.
   late final pulumi.Output<GuardrailLlmPolicy?> llmPolicy;
-
   /// Guardrail that blocks the conversation if the input is considered unsafe
   /// based on the LLM classification.
   /// Structure is documented below.
   late final pulumi.Output<GuardrailLlmPromptSecurity?> llmPromptSecurity;
-
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> location;
-
   /// Model safety settings overrides. When this is set, it will override the
   /// default settings and trigger the guardrail if the response is considered
   /// unsafe.
   /// Structure is documented below.
   late final pulumi.Output<GuardrailModelSafety?> modelSafety;
-
   /// Identifier. The unique identifier of the guardrail.
   /// Format:
   /// `projects/{project}/locations/{location}/apps/{app}/guardrails/{guardrail}`
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Timestamp when the guardrail was last updated.
   late final pulumi.Output<String> updateTime;
 
@@ -1931,79 +1915,25 @@ class Guardrail extends pulumi.CustomResource {
     GuardrailArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:ces/guardrail:Guardrail',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    action = registerOutput<GuardrailAction?>(
-      'action',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GuardrailAction.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:ces/guardrail:Guardrail',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    action = registerOutput<GuardrailAction?>('action', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     app = registerOutput<String>('app');
-    codeCallback = registerOutput<GuardrailCodeCallback?>(
-      'codeCallback',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GuardrailCodeCallback.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    contentFilter = registerOutput<GuardrailContentFilter?>(
-      'contentFilter',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GuardrailContentFilter.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    codeCallback = registerOutput<GuardrailCodeCallback?>('codeCallback', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailCodeCallback.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    contentFilter = registerOutput<GuardrailContentFilter?>('contentFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailContentFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     enabled = registerOutput<bool?>('enabled');
     etag = registerOutput<String>('etag');
     guardrailId = registerOutput<String>('guardrailId');
-    llmPolicy = registerOutput<GuardrailLlmPolicy?>(
-      'llmPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GuardrailLlmPolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    llmPromptSecurity = registerOutput<GuardrailLlmPromptSecurity?>(
-      'llmPromptSecurity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GuardrailLlmPromptSecurity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    llmPolicy = registerOutput<GuardrailLlmPolicy?>('llmPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailLlmPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    llmPromptSecurity = registerOutput<GuardrailLlmPromptSecurity?>('llmPromptSecurity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailLlmPromptSecurity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
-    modelSafety = registerOutput<GuardrailModelSafety?>(
-      'modelSafety',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GuardrailModelSafety.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    modelSafety = registerOutput<GuardrailModelSafety?>('modelSafety', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailModelSafety.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     updateTime = registerOutput<String>('updateTime');
@@ -2027,79 +1957,25 @@ class Guardrail extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:ces/guardrail:Guardrail',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    action = registerOutput<GuardrailAction?>(
-      'action',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GuardrailAction.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:ces/guardrail:Guardrail',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    action = registerOutput<GuardrailAction?>('action', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     app = registerOutput<String>('app');
-    codeCallback = registerOutput<GuardrailCodeCallback?>(
-      'codeCallback',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GuardrailCodeCallback.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    contentFilter = registerOutput<GuardrailContentFilter?>(
-      'contentFilter',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GuardrailContentFilter.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    codeCallback = registerOutput<GuardrailCodeCallback?>('codeCallback', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailCodeCallback.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    contentFilter = registerOutput<GuardrailContentFilter?>('contentFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailContentFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     enabled = registerOutput<bool?>('enabled');
     etag = registerOutput<String>('etag');
     guardrailId = registerOutput<String>('guardrailId');
-    llmPolicy = registerOutput<GuardrailLlmPolicy?>(
-      'llmPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GuardrailLlmPolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    llmPromptSecurity = registerOutput<GuardrailLlmPromptSecurity?>(
-      'llmPromptSecurity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GuardrailLlmPromptSecurity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    llmPolicy = registerOutput<GuardrailLlmPolicy?>('llmPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailLlmPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    llmPromptSecurity = registerOutput<GuardrailLlmPromptSecurity?>('llmPromptSecurity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailLlmPromptSecurity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
-    modelSafety = registerOutput<GuardrailModelSafety?>(
-      'modelSafety',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GuardrailModelSafety.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    modelSafety = registerOutput<GuardrailModelSafety?>('modelSafety', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailModelSafety.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     updateTime = registerOutput<String>('updateTime');

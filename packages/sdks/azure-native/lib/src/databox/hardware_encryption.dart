@@ -15,3 +15,4 @@ enum HardwareEncryption {
     throw ArgumentError('Unknown HardwareEncryption value: $value');
   }
 }
+

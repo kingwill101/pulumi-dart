@@ -10,29 +10,20 @@ class ContainerUser {
 
   /// Creates a new [ContainerUser].
   /// [linux] Linux holds user identity information initially attached to the first process of the containers in Linux. Note that the actual running identity can be changed if the process has enough privilege to do so.
-  ContainerUser({this.linux});
+  ContainerUser({
+    this.linux,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'linux':
-          ?pulumi.Input.mapOptionalInputValue<
-            LinuxContainerUser,
-            Map<String, dynamic>
-          >(linux, (value) => value.toMap()),
+      'linux': ?pulumi.Input.mapOptionalInputValue<LinuxContainerUser, Map<String, dynamic>>(linux, (value) => value.toMap()),
     };
   }
 
   factory ContainerUser.fromMap(Map<String, dynamic> map) {
     return ContainerUser(
-      linux: (() {
-        final guardedValue = map['linux'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          LinuxContainerUser.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      linux: (() { final guardedValue = map['linux']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LinuxContainerUser.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

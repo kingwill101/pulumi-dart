@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCapacityPoolVolumeQuotaRuleArgs {
   /// The name of the NetApp account
   final pulumi.Input<String> accountName;
-
   /// The name of the capacity pool
   final pulumi.Input<String> poolName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the volume
   final pulumi.Input<String> volumeName;
-
   /// The name of volume quota rule
   final pulumi.Input<String> volumeQuotaRuleName;
 
@@ -50,13 +46,10 @@ class GetCapacityPoolVolumeQuotaRuleArgs {
     return GetCapacityPoolVolumeQuotaRuleArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
       poolName: pulumi.Input.fromValue(map['poolName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       volumeName: pulumi.Input.fromValue(map['volumeName'] as String),
-      volumeQuotaRuleName: pulumi.Input.fromValue(
-        map['volumeQuotaRuleName'] as String,
-      ),
+      volumeQuotaRuleName: pulumi.Input.fromValue(map['volumeQuotaRuleName'] as String),
     );
   }
 }
+

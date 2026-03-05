@@ -140,28 +140,20 @@ import 'email_template_args.dart';
 class EmailTemplate extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Email Template Body. This should be a valid XDocument
   late final pulumi.Output<String> body;
-
   /// Description of the Email Template.
   late final pulumi.Output<String?> description;
-
   /// Whether the template is the default template provided by API Management or has been edited.
   late final pulumi.Output<bool> isDefault;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Email Template Parameter values.
   late final pulumi.Output<List<Map<String, dynamic>>?> parameters;
-
   /// Subject of the Template.
   late final pulumi.Output<String> subject;
-
   /// Title of the Template.
   late final pulumi.Output<String?> title;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -174,11 +166,11 @@ class EmailTemplate extends pulumi.CustomResource {
     EmailTemplateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:apimanagement:EmailTemplate',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:apimanagement:EmailTemplate',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     body = registerOutput<String>('body');
     description = registerOutput<String?>('description');

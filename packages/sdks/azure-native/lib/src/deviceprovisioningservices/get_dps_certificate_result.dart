@@ -7,22 +7,16 @@ import 'system_data_response.dart';
 class GetDpsCertificateResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The entity tag.
   final String etag;
-
   /// The resource identifier.
   final String id;
-
   /// The name of the certificate.
   final String name;
-
   /// properties of a certificate
   final CertificatePropertiesResponse properties;
-
   /// Metadata pertaining to creation and last modification of the resource.
   final SystemDataResponse systemData;
-
   /// The resource type.
   final String type;
 
@@ -62,13 +56,10 @@ class GetDpsCertificateResult {
       etag: map['etag'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      properties: CertificatePropertiesResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      properties: CertificatePropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

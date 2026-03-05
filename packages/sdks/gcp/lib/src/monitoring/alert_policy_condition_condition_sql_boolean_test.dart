@@ -9,17 +9,20 @@ class AlertPolicyConditionConditionSqlBooleanTest {
 
   /// Creates a new [AlertPolicyConditionConditionSqlBooleanTest].
   /// [column] The name of the column containing the boolean value. If the value in a row is
-  AlertPolicyConditionConditionSqlBooleanTest({required this.column});
+  AlertPolicyConditionConditionSqlBooleanTest({
+    required this.column,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'column': column};
+    return <String, dynamic>{
+      'column': column,
+    };
   }
 
-  factory AlertPolicyConditionConditionSqlBooleanTest.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AlertPolicyConditionConditionSqlBooleanTest.fromMap(Map<String, dynamic> map) {
     return AlertPolicyConditionConditionSqlBooleanTest(
       column: pulumi.Input.fromValue(map['column'] as String),
     );
   }
 }
+

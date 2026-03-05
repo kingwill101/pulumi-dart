@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBase {
   /// Whether the knowledge base is deleted
   final pulumi.Input<bool> isDeleted;
-
   /// Name of the knowledge base
   final pulumi.Input<String> name;
-
   /// Knowledge base UUID
   final pulumi.Input<String> uuid;
 
@@ -30,9 +28,7 @@ class GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBase {
     };
   }
 
-  factory GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBase.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBase.fromMap(Map<String, dynamic> map) {
     return GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBase(
       isDeleted: pulumi.Input.fromValue(map['isDeleted'] as bool),
       name: pulumi.Input.fromValue(map['name'] as String),
@@ -40,3 +36,4 @@ class GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBase {
     );
   }
 }
+

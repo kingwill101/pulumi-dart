@@ -216,13 +216,10 @@ import 'workspace_state.dart';
 class Workspace extends pulumi.CustomResource {
   /// Specifies the ID of the API Management Service in which the API Management Workspace should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> apiManagementId;
-
   /// The description of the API Management Workspace.
   late final pulumi.Output<String?> description;
-
   /// The display name of the API Management Workspace.
   late final pulumi.Output<String> displayName;
-
   /// Specifies the name which should be used for this API Management Workspace. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
 
@@ -235,11 +232,11 @@ class Workspace extends pulumi.CustomResource {
     WorkspaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/workspace:Workspace',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:apimanagement/workspace:Workspace',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiManagementId = registerOutput<String>('apiManagementId');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
@@ -264,11 +261,11 @@ class Workspace extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/workspace:Workspace',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:apimanagement/workspace:Workspace',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiManagementId = registerOutput<String>('apiManagementId');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');

@@ -16,3 +16,4 @@ enum NodeGroupMaintenanceInterval {
     throw ArgumentError('Unknown NodeGroupMaintenanceInterval value: $value');
   }
 }
+

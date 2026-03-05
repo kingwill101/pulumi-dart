@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EventFilterCloudfunctionsV2alpha {
   /// The name of a CloudEvents attribute.
   final pulumi.Input<String> attribute;
-
   /// Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`.
   final pulumi.Input<String>? operator;
-
   /// The value for the attribute.
   final pulumi.Input<String> value;
 
@@ -34,12 +32,9 @@ class EventFilterCloudfunctionsV2alpha {
   factory EventFilterCloudfunctionsV2alpha.fromMap(Map<String, dynamic> map) {
     return EventFilterCloudfunctionsV2alpha(
       attribute: pulumi.Input.fromValue(map['attribute'] as String),
-      operator: (() {
-        final guardedValue = map['operator'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      operator: (() { final guardedValue = map['operator']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
+

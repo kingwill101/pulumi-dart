@@ -10,39 +10,20 @@ class TopologiesPropertiesResponse {
 
   /// Creates a new [TopologiesPropertiesResponse].
   /// [bindings] bindings description.
-  TopologiesPropertiesResponse({this.bindings});
+  TopologiesPropertiesResponse({
+    this.bindings,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bindings':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<BindingPropertiesResponse>,
-            List<Map<String, dynamic>>
-          >(
-            bindings,
-            (value) =>
-                pulumi.Input.encodeList<
-                  BindingPropertiesResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'bindings': ?pulumi.Input.mapOptionalInputValue<List<BindingPropertiesResponse>, List<Map<String, dynamic>>>(bindings, (value) => pulumi.Input.encodeList<BindingPropertiesResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory TopologiesPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return TopologiesPropertiesResponse(
-      bindings: (() {
-        final guardedValue = map['bindings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<BindingPropertiesResponse>(
-            guardedValue,
-            (value) => BindingPropertiesResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      bindings: (() { final guardedValue = map['bindings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<BindingPropertiesResponse>(guardedValue, (value) => BindingPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

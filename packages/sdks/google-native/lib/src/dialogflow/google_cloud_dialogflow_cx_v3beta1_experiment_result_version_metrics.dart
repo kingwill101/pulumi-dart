@@ -6,14 +6,9 @@ import 'google_cloud_dialogflow_cx_v3beta1_experiment_result_metric.dart';
 /// Version variant and associated metrics.
 class GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetrics {
   /// The metrics and corresponding confidence intervals in the inference result.
-  final pulumi.Input<
-    List<GoogleCloudDialogflowCxV3beta1ExperimentResultMetric>
-  >?
-  metrics;
-
+  final pulumi.Input<List<GoogleCloudDialogflowCxV3beta1ExperimentResultMetric>>? metrics;
   /// Number of sessions that were allocated to this version.
   final pulumi.Input<int>? sessionCount;
-
   /// The name of the flow Version. Format: `projects//locations//agents//flows//versions/`.
   final pulumi.Input<String>? version;
 
@@ -29,52 +24,18 @@ class GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetrics {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'metrics':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GoogleCloudDialogflowCxV3beta1ExperimentResultMetric>,
-            List<Map<String, dynamic>>
-          >(
-            metrics,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GoogleCloudDialogflowCxV3beta1ExperimentResultMetric,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'metrics': ?pulumi.Input.mapOptionalInputValue<List<GoogleCloudDialogflowCxV3beta1ExperimentResultMetric>, List<Map<String, dynamic>>>(metrics, (value) => pulumi.Input.encodeList<GoogleCloudDialogflowCxV3beta1ExperimentResultMetric, Map<String, dynamic>>(value, (value) => value.toMap())),
       'sessionCount': ?sessionCount,
       'version': ?version,
     };
   }
 
-  factory GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetrics.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetrics.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetrics(
-      metrics: (() {
-        final guardedValue = map['metrics'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            GoogleCloudDialogflowCxV3beta1ExperimentResultMetric
-          >(
-            guardedValue,
-            (value) =>
-                GoogleCloudDialogflowCxV3beta1ExperimentResultMetric.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
-      sessionCount: (() {
-        final guardedValue = map['sessionCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      metrics: (() { final guardedValue = map['metrics']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1ExperimentResultMetric>(guardedValue, (value) => GoogleCloudDialogflowCxV3beta1ExperimentResultMetric.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      sessionCount: (() { final guardedValue = map['sessionCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

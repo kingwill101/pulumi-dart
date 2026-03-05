@@ -5,28 +5,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainDevicesFilesystemDriver {
   /// Enables or disables Address Translation Services (ATS) for the filesystem driver.
   final pulumi.Input<String>? ats;
-
   /// Sets the format type for the filesystem handled by the driver.
   final pulumi.Input<String>? format;
-
   /// Indicates whether the I/O Memory Management Unit (IOMMU) is enabled for the filesystem driver.
   final pulumi.Input<String>? iommu;
-
   /// Configures the name of the driver for the filesystem.
   final pulumi.Input<String>? name;
-
   /// Determines whether the filesystem driver uses packed operations.
   final pulumi.Input<String>? packed;
-
   /// Enables page per virtqueue settings for the filesystem driver.
   final pulumi.Input<String>? pagePerVq;
-
   /// Configures the queue settings for the filesystem driver.
   final pulumi.Input<double>? queue;
-
   /// Specifies the type of the filesystem driver being used.
   final pulumi.Input<String>? type;
-
   /// Sets the write policy for the filesystem driver.
   final pulumi.Input<String>? wrPolicy;
 
@@ -68,51 +60,16 @@ class DomainDevicesFilesystemDriver {
 
   factory DomainDevicesFilesystemDriver.fromMap(Map<String, dynamic> map) {
     return DomainDevicesFilesystemDriver(
-      ats: (() {
-        final guardedValue = map['ats'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      format: (() {
-        final guardedValue = map['format'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      iommu: (() {
-        final guardedValue = map['iommu'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      packed: (() {
-        final guardedValue = map['packed'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pagePerVq: (() {
-        final guardedValue = map['pagePerVq'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      queue: (() {
-        final guardedValue = map['queue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      wrPolicy: (() {
-        final guardedValue = map['wrPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ats: (() { final guardedValue = map['ats']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      format: (() { final guardedValue = map['format']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      iommu: (() { final guardedValue = map['iommu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      packed: (() { final guardedValue = map['packed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pagePerVq: (() { final guardedValue = map['pagePerVq']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      queue: (() { final guardedValue = map['queue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      wrPolicy: (() { final guardedValue = map['wrPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

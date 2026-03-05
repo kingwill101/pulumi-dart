@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DefenderCspmAwsOfferingResponseMdcContainersImageAssessment {
   /// The cloud role ARN in AWS for this feature
   final pulumi.Input<String>? cloudRoleArn;
-
   /// Is Microsoft Defender container image assessment enabled
   final pulumi.Input<bool>? enabled;
 
@@ -25,20 +24,11 @@ class DefenderCspmAwsOfferingResponseMdcContainersImageAssessment {
     };
   }
 
-  factory DefenderCspmAwsOfferingResponseMdcContainersImageAssessment.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DefenderCspmAwsOfferingResponseMdcContainersImageAssessment.fromMap(Map<String, dynamic> map) {
     return DefenderCspmAwsOfferingResponseMdcContainersImageAssessment(
-      cloudRoleArn: (() {
-        final guardedValue = map['cloudRoleArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      cloudRoleArn: (() { final guardedValue = map['cloudRoleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

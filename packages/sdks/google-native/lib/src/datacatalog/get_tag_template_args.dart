@@ -32,12 +32,9 @@ class GetTagTemplateArgs {
   factory GetTagTemplateArgs.fromMap(Map<String, dynamic> map) {
     return GetTagTemplateArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tagTemplateId: pulumi.Input.fromValue(map['tagTemplateId'] as String),
     );
   }
 }
+

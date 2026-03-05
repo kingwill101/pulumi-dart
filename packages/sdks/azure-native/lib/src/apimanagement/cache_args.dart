@@ -9,22 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CacheArgs {
   /// Identifier of the Cache entity. Cache identifier (should be either 'default' or valid Azure region identifier).
   final pulumi.Input<String>? cacheId;
-
   /// Runtime connection string to cache
   final pulumi.Input<String> connectionString;
-
   /// Cache description
   final pulumi.Input<String>? description;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Original uri of entity in external system cache points to
   final pulumi.Input<String>? resourceId;
-
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
-
   /// Location identifier to use cache from (should be either 'default' or valid Azure region identifier)
   final pulumi.Input<String> useFromLocation;
 
@@ -60,29 +54,14 @@ class CacheArgs {
 
   factory CacheArgs.fromMap(Map<String, dynamic> map) {
     return CacheArgs(
-      cacheId: (() {
-        final guardedValue = map['cacheId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      connectionString: pulumi.Input.fromValue(
-        map['connectionString'] as String,
-      ),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      resourceId: (() {
-        final guardedValue = map['resourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      cacheId: (() { final guardedValue = map['cacheId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      connectionString: pulumi.Input.fromValue(map['connectionString'] as String),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
       useFromLocation: pulumi.Input.fromValue(map['useFromLocation'] as String),
     );
   }
 }
+

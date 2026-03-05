@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by listAccountKeys.
 class ListAccountKeysResult {
   /// The primary key for accessing the Maps REST APIs.
   final String primaryKey;
-
   /// The last updated date and time of the primary key.
   final String primaryKeyLastUpdated;
-
   /// The secondary key for accessing the Maps REST APIs.
   final String secondaryKey;
-
   /// The last updated date and time of the secondary key.
   final String secondaryKeyLastUpdated;
 
@@ -44,3 +42,4 @@ class ListAccountKeysResult {
     );
   }
 }
+

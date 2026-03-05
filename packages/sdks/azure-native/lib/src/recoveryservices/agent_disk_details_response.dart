@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AgentDiskDetailsResponse {
   /// The disk capacity in bytes.
   final pulumi.Input<double> capacityInBytes;
-
   /// The disk Id.
   final pulumi.Input<String> diskId;
-
   /// The disk name.
   final pulumi.Input<String> diskName;
-
   /// A value indicating whether the disk is the OS disk.
   final pulumi.Input<String> isOSDisk;
-
   /// The lun of disk.
   final pulumi.Input<int> lunId;
 
@@ -53,3 +49,4 @@ class AgentDiskDetailsResponse {
     );
   }
 }
+

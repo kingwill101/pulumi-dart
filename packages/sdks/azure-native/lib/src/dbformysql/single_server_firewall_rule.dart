@@ -144,16 +144,12 @@ import 'single_server_firewall_rule_args.dart';
 class SingleServerFirewallRule extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The end IP address of the server firewall rule. Must be IPv4 format.
   late final pulumi.Output<String> endIpAddress;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The start IP address of the server firewall rule. Must be IPv4 format.
   late final pulumi.Output<String> startIpAddress;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -166,11 +162,11 @@ class SingleServerFirewallRule extends pulumi.CustomResource {
     SingleServerFirewallRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:dbformysql:SingleServerFirewallRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:dbformysql:SingleServerFirewallRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     endIpAddress = registerOutput<String>('endIpAddress');
     this.name = registerOutput<String>('name');

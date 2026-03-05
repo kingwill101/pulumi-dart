@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReplicatorKafkaClusterVpcConfig {
   /// The AWS security groups to associate with the ENIs used by the replicator. If a security group is not specified, the default security group associated with the VPC is used.
   final pulumi.Input<List<String>>? securityGroupsIds;
-
   /// The list of subnets to connect to in the virtual private cloud (VPC). AWS creates elastic network interfaces inside these subnets to allow communication between your Kafka Cluster and the replicator.
   final pulumi.Input<List<String>> subnetIds;
 
@@ -26,14 +25,9 @@ class ReplicatorKafkaClusterVpcConfig {
 
   factory ReplicatorKafkaClusterVpcConfig.fromMap(Map<String, dynamic> map) {
     return ReplicatorKafkaClusterVpcConfig(
-      securityGroupsIds: (() {
-        final guardedValue = map['securityGroupsIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      subnetIds: pulumi.Input.fromValue(
-        (map['subnetIds'] as List).cast<String>(),
-      ),
+      securityGroupsIds: (() { final guardedValue = map['securityGroupsIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      subnetIds: pulumi.Input.fromValue((map['subnetIds'] as List).cast<String>()),
     );
   }
 }
+

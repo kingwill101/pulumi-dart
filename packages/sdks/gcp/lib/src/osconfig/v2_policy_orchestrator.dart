@@ -367,42 +367,31 @@ class V2PolicyOrchestrator extends pulumi.CustomResource {
   /// - `UPSERT` - Orchestrator will create or update target resources.
   /// - `DELETE` - Orchestrator will delete target resources, if they exist
   late final pulumi.Output<String> action;
-
   /// Output only. Timestamp when the policy orchestrator resource was created.
   late final pulumi.Output<String> createTime;
-
   /// Optional. Freeform text describing the purpose of the resource.
   late final pulumi.Output<String?> description;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Optional. Labels as key value pairs
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// Immutable. Identifier. In form of
   /// * `organizations/{organization_id}/locations/global/policyOrchestrators/{orchestrator_id}`
   /// * `folders/{folder_id}/locations/global/policyOrchestrators/{orchestrator_id}`
   /// * `projects/{project_id_or_number}/locations/global/policyOrchestrators/{orchestrator_id}`
   late final pulumi.Output<String> name;
-
   /// Represents a resource that is being orchestrated by the policy orchestrator.
   /// Structure is documented below.
-  late final pulumi.Output<V2PolicyOrchestratorOrchestratedResource>
-  orchestratedResource;
-
+  late final pulumi.Output<V2PolicyOrchestratorOrchestratedResource> orchestratedResource;
   /// Defines a set of selectors which drive which resources are in scope of policy
   /// orchestration.
   /// Structure is documented below.
-  late final pulumi.Output<V2PolicyOrchestratorOrchestrationScope?>
-  orchestrationScope;
-
+  late final pulumi.Output<V2PolicyOrchestratorOrchestrationScope?> orchestrationScope;
   /// Describes the state of the orchestration process.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> orchestrationStates;
-
   /// Required. The logical identifier of the policy orchestrator, with the following
   /// restrictions:
   /// * Must contain only lowercase letters, numbers, and hyphens.
@@ -411,19 +400,15 @@ class V2PolicyOrchestrator extends pulumi.CustomResource {
   /// * Must end with a number or a letter.
   /// * Must be unique within the parent.
   late final pulumi.Output<String> policyOrchestratorId;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// Output only. Set to true, if the there are ongoing changes being applied by the
   /// orchestrator.
   late final pulumi.Output<bool> reconciling;
-
   /// Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
   /// Allowed values:
   /// - `ACTIVE` - orchestrator is actively looking for actions to be taken.
@@ -432,7 +417,6 @@ class V2PolicyOrchestrator extends pulumi.CustomResource {
   /// instead of an enum, to avoid the need of propagating new states to all the
   /// client code.
   late final pulumi.Output<String?> state;
-
   /// Output only. Timestamp when the policy orchestrator resource was last modified.
   late final pulumi.Output<String> updateTime;
 
@@ -445,42 +429,20 @@ class V2PolicyOrchestrator extends pulumi.CustomResource {
     V2PolicyOrchestratorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:osconfig/v2PolicyOrchestrator:V2PolicyOrchestrator',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:osconfig/v2PolicyOrchestrator:V2PolicyOrchestrator',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     action = registerOutput<String>('action');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
-    orchestratedResource =
-        registerOutput<V2PolicyOrchestratorOrchestratedResource>(
-          'orchestratedResource',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return V2PolicyOrchestratorOrchestratedResource.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    orchestrationScope =
-        registerOutput<V2PolicyOrchestratorOrchestrationScope?>(
-          'orchestrationScope',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return V2PolicyOrchestratorOrchestrationScope.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    orchestrationStates = registerOutput<List<Map<String, dynamic>>>(
-      'orchestrationStates',
-    );
+    orchestratedResource = registerOutput<V2PolicyOrchestratorOrchestratedResource>('orchestratedResource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2PolicyOrchestratorOrchestratedResource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    orchestrationScope = registerOutput<V2PolicyOrchestratorOrchestrationScope?>('orchestrationScope', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2PolicyOrchestratorOrchestrationScope.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    orchestrationStates = registerOutput<List<Map<String, dynamic>>>('orchestrationStates');
     policyOrchestratorId = registerOutput<String>('policyOrchestratorId');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
@@ -507,42 +469,20 @@ class V2PolicyOrchestrator extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:osconfig/v2PolicyOrchestrator:V2PolicyOrchestrator',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:osconfig/v2PolicyOrchestrator:V2PolicyOrchestrator',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     action = registerOutput<String>('action');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
-    orchestratedResource =
-        registerOutput<V2PolicyOrchestratorOrchestratedResource>(
-          'orchestratedResource',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return V2PolicyOrchestratorOrchestratedResource.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    orchestrationScope =
-        registerOutput<V2PolicyOrchestratorOrchestrationScope?>(
-          'orchestrationScope',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return V2PolicyOrchestratorOrchestrationScope.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    orchestrationStates = registerOutput<List<Map<String, dynamic>>>(
-      'orchestrationStates',
-    );
+    orchestratedResource = registerOutput<V2PolicyOrchestratorOrchestratedResource>('orchestratedResource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2PolicyOrchestratorOrchestratedResource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    orchestrationScope = registerOutput<V2PolicyOrchestratorOrchestrationScope?>('orchestrationScope', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2PolicyOrchestratorOrchestrationScope.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    orchestrationStates = registerOutput<List<Map<String, dynamic>>>('orchestrationStates');
     policyOrchestratorId = registerOutput<String>('policyOrchestratorId');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');

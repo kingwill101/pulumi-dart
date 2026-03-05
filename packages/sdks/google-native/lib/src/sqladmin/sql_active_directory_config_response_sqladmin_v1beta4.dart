@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SqlActiveDirectoryConfigResponseSqladminV1beta4 {
   /// The name of the domain (e.g., mydomain.com).
   final pulumi.Input<String> domain;
-
   /// This is always sql#activeDirectoryConfig.
   final pulumi.Input<String> kind;
 
@@ -19,15 +18,17 @@ class SqlActiveDirectoryConfigResponseSqladminV1beta4 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'domain': domain, 'kind': kind};
+    return <String, dynamic>{
+      'domain': domain,
+      'kind': kind,
+    };
   }
 
-  factory SqlActiveDirectoryConfigResponseSqladminV1beta4.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SqlActiveDirectoryConfigResponseSqladminV1beta4.fromMap(Map<String, dynamic> map) {
     return SqlActiveDirectoryConfigResponseSqladminV1beta4(
       domain: pulumi.Input.fromValue(map['domain'] as String),
       kind: pulumi.Input.fromValue(map['kind'] as String),
     );
   }
 }
+

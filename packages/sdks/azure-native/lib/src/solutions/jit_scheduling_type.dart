@@ -16,3 +16,4 @@ enum JitSchedulingType {
     throw ArgumentError('Unknown JitSchedulingType value: $value');
   }
 }
+

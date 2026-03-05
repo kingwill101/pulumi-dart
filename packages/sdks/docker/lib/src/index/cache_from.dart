@@ -9,19 +9,20 @@ class CacheFrom {
 
   /// Creates a new [CacheFrom].
   /// [images] Specifies cached images
-  CacheFrom({this.images});
+  CacheFrom({
+    this.images,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'images': ?images};
+    return <String, dynamic>{
+      'images': ?images,
+    };
   }
 
   factory CacheFrom.fromMap(Map<String, dynamic> map) {
     return CacheFrom(
-      images: (() {
-        final guardedValue = map['images'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      images: (() { final guardedValue = map['images']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

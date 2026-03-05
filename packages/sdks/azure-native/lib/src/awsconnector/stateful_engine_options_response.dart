@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StatefulEngineOptionsResponse {
   /// Property ruleOrder
   final pulumi.Input<String>? ruleOrder;
-
   /// Property streamExceptionPolicy
   final pulumi.Input<String>? streamExceptionPolicy;
 
   /// Creates a new [StatefulEngineOptionsResponse].
   /// [ruleOrder] Property ruleOrder
   /// [streamExceptionPolicy] Property streamExceptionPolicy
-  StatefulEngineOptionsResponse({this.ruleOrder, this.streamExceptionPolicy});
+  StatefulEngineOptionsResponse({
+    this.ruleOrder,
+    this.streamExceptionPolicy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class StatefulEngineOptionsResponse {
 
   factory StatefulEngineOptionsResponse.fromMap(Map<String, dynamic> map) {
     return StatefulEngineOptionsResponse(
-      ruleOrder: (() {
-        final guardedValue = map['ruleOrder'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      streamExceptionPolicy: (() {
-        final guardedValue = map['streamExceptionPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ruleOrder: (() { final guardedValue = map['ruleOrder']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      streamExceptionPolicy: (() { final guardedValue = map['streamExceptionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

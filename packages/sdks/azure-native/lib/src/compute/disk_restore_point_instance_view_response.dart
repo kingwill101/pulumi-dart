@@ -7,45 +7,29 @@ import 'disk_restore_point_replication_status_response.dart';
 class DiskRestorePointInstanceViewResponse {
   /// Disk restore point Id.
   final pulumi.Input<String>? id;
-
   /// The disk restore point replication status information.
-  final pulumi.Input<DiskRestorePointReplicationStatusResponse>?
-  replicationStatus;
+  final pulumi.Input<DiskRestorePointReplicationStatusResponse>? replicationStatus;
 
   /// Creates a new [DiskRestorePointInstanceViewResponse].
   /// [id] Disk restore point Id.
   /// [replicationStatus] The disk restore point replication status information.
-  DiskRestorePointInstanceViewResponse({this.id, this.replicationStatus});
+  DiskRestorePointInstanceViewResponse({
+    this.id,
+    this.replicationStatus,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': ?id,
-      'replicationStatus':
-          ?pulumi.Input.mapOptionalInputValue<
-            DiskRestorePointReplicationStatusResponse,
-            Map<String, dynamic>
-          >(replicationStatus, (value) => value.toMap()),
+      'replicationStatus': ?pulumi.Input.mapOptionalInputValue<DiskRestorePointReplicationStatusResponse, Map<String, dynamic>>(replicationStatus, (value) => value.toMap()),
     };
   }
 
-  factory DiskRestorePointInstanceViewResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DiskRestorePointInstanceViewResponse.fromMap(Map<String, dynamic> map) {
     return DiskRestorePointInstanceViewResponse(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      replicationStatus: (() {
-        final guardedValue = map['replicationStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DiskRestorePointReplicationStatusResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      replicationStatus: (() { final guardedValue = map['replicationStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DiskRestorePointReplicationStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

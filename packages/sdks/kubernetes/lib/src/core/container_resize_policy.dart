@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContainerResizePolicy {
   /// Name of the resource to which this resource resize policy applies. Supported values: cpu, memory.
   final pulumi.Input<String> resourceName;
-
   /// Restart policy to apply when specified resource is resized. If not specified, it defaults to NotRequired.
   final pulumi.Input<String> restartPolicy;
 
@@ -32,3 +31,4 @@ class ContainerResizePolicy {
     );
   }
 }
+

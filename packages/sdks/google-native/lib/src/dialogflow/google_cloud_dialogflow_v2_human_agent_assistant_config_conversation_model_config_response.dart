@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponse {
   /// Version of current baseline model. It will be ignored if model is set. Valid versions are: Article Suggestion baseline model: - 0.9 - 1.0 (default) Summarization baseline model: - 1.0
   final pulumi.Input<String> baselineModelVersion;
-
   /// Conversation model resource name. Format: `projects//conversationModels/`.
   final pulumi.Input<String> model;
 
@@ -25,14 +24,11 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigRes
     };
   }
 
-  factory GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponse(
-      baselineModelVersion: pulumi.Input.fromValue(
-        map['baselineModelVersion'] as String,
-      ),
+      baselineModelVersion: pulumi.Input.fromValue(map['baselineModelVersion'] as String),
       model: pulumi.Input.fromValue(map['model'] as String),
     );
   }
 }
+

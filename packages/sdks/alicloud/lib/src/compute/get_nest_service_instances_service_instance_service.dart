@@ -6,34 +6,22 @@ import 'get_nest_service_instances_service_instance_service_service_info.dart';
 class GetNestServiceInstancesServiceInstanceService {
   /// The type of the deployment.
   final pulumi.Input<String> deployType;
-
   /// The time of publish.
   final pulumi.Input<String> publishTime;
-
   /// The id of the service.
   final pulumi.Input<String> serviceId;
-
   /// Service information.
-  final pulumi.Input<
-    List<GetNestServiceInstancesServiceInstanceServiceServiceInfo>
-  >
-  serviceInfos;
-
+  final pulumi.Input<List<GetNestServiceInstancesServiceInstanceServiceServiceInfo>> serviceInfos;
   /// The type of the service.
   final pulumi.Input<String> serviceType;
-
   /// The status of the Service Instance. Valid Values: `Created`, `Deploying`, `DeployedFailed`, `Deployed`, `Upgrading`, `Deleting`, `Deleted`, `DeletedFailed`.
   final pulumi.Input<String> status;
-
   /// The name of the supplier.
   final pulumi.Input<String> supplierName;
-
   /// The url of the supplier.
   final pulumi.Input<String> supplierUrl;
-
   /// The version of the service.
   final pulumi.Input<String> version;
-
   /// The version name of the service.
   final pulumi.Input<String> versionName;
 
@@ -66,18 +54,7 @@ class GetNestServiceInstancesServiceInstanceService {
       'deployType': deployType,
       'publishTime': publishTime,
       'serviceId': serviceId,
-      'serviceInfos':
-          pulumi.Input.mapInputValue<
-            List<GetNestServiceInstancesServiceInstanceServiceServiceInfo>,
-            List<Map<String, dynamic>>
-          >(
-            serviceInfos,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetNestServiceInstancesServiceInstanceServiceServiceInfo,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'serviceInfos': pulumi.Input.mapInputValue<List<GetNestServiceInstancesServiceInstanceServiceServiceInfo>, List<Map<String, dynamic>>>(serviceInfos, (value) => pulumi.Input.encodeList<GetNestServiceInstancesServiceInstanceServiceServiceInfo, Map<String, dynamic>>(value, (value) => value.toMap())),
       'serviceType': serviceType,
       'status': status,
       'supplierName': supplierName,
@@ -87,24 +64,12 @@ class GetNestServiceInstancesServiceInstanceService {
     };
   }
 
-  factory GetNestServiceInstancesServiceInstanceService.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetNestServiceInstancesServiceInstanceService.fromMap(Map<String, dynamic> map) {
     return GetNestServiceInstancesServiceInstanceService(
       deployType: pulumi.Input.fromValue(map['deployType'] as String),
       publishTime: pulumi.Input.fromValue(map['publishTime'] as String),
       serviceId: pulumi.Input.fromValue(map['serviceId'] as String),
-      serviceInfos: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GetNestServiceInstancesServiceInstanceServiceServiceInfo
-        >(
-          map['serviceInfos']!,
-          (value) =>
-              GetNestServiceInstancesServiceInstanceServiceServiceInfo.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
+      serviceInfos: pulumi.Input.fromValue(pulumi.Input.decodeList<GetNestServiceInstancesServiceInstanceServiceServiceInfo>(map['serviceInfos']!, (value) => GetNestServiceInstancesServiceInstanceServiceServiceInfo.fromMap((value as Map).cast<String, dynamic>()))),
       serviceType: pulumi.Input.fromValue(map['serviceType'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
       supplierName: pulumi.Input.fromValue(map['supplierName'] as String),
@@ -114,3 +79,4 @@ class GetNestServiceInstancesServiceInstanceService {
     );
   }
 }
+

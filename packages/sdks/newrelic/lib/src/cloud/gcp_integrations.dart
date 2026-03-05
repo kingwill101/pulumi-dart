@@ -669,87 +669,60 @@ import 'gcp_integrations_vpc_access.dart';
 class GcpIntegrations extends pulumi.CustomResource {
   /// The New Relic account ID to operate on.  This allows the user to override the `account_id` attribute set on the provider. Defaults to the environment variable `NEW_RELIC_ACCOUNT_ID`.
   late final pulumi.Output<String> accountId;
-
   /// Alloy DB integration. See Integration blocks below for details.
   late final pulumi.Output<GcpIntegrationsAlloyDb?> alloyDb;
-
   /// App Engine integration. See Integration blocks below for details.
   late final pulumi.Output<GcpIntegrationsAppEngine?> appEngine;
-
   /// Biq Query integration. See Integration blocks below for details.
   late final pulumi.Output<GcpIntegrationsBigQuery?> bigQuery;
-
   /// Big Table. See Integration blocks below for details.
   late final pulumi.Output<GcpIntegrationsBigTable?> bigTable;
-
   /// Composer integration. See Integration blocks below for details.
   late final pulumi.Output<GcpIntegrationsComposer?> composer;
-
   /// Data Flow integration. See Integration blocks below for details.
   late final pulumi.Output<GcpIntegrationsDataFlow?> dataFlow;
-
   /// Data Proc integration. See Integration blocks below for details.
   late final pulumi.Output<GcpIntegrationsDataProc?> dataProc;
-
   /// Data Store integration. See Integration blocks below for details.
   late final pulumi.Output<GcpIntegrationsDataStore?> dataStore;
-
   /// Fire Base Database integration. See Integration blocks below for details.
   late final pulumi.Output<GcpIntegrationsFireBaseDatabase?> fireBaseDatabase;
-
   /// Fire Base Hosting integration. See Integration blocks below for details.
   late final pulumi.Output<GcpIntegrationsFireBaseHosting?> fireBaseHosting;
-
   /// Fire Base Storage integration. See Integration blocks below for details.
   late final pulumi.Output<GcpIntegrationsFireBaseStorage?> fireBaseStorage;
-
   /// Fire Store integration. See Integration blocks below for details.
   late final pulumi.Output<GcpIntegrationsFireStore?> fireStore;
-
   /// Functions integration. See Integration blocks below for details.
   late final pulumi.Output<GcpIntegrationsFunctions?> functions;
-
   /// Interconnect integration. See Integration blocks below for details.
   late final pulumi.Output<GcpIntegrationsInterconnect?> interconnect;
-
   /// Kubernetes integration. See Integration blocks below for details.
   late final pulumi.Output<GcpIntegrationsKubernetes?> kubernetes;
-
   /// The ID of the linked GCP account in New Relic.
   ///
   /// The following arguments/integration blocks are intended to be used with a minimum `metrics_polling_interval` of 300 seconds.
   late final pulumi.Output<String> linkedAccountId;
-
   /// Load Balancing integration. See Integration blocks below for details.
   late final pulumi.Output<GcpIntegrationsLoadBalancing?> loadBalancing;
-
   /// Mem cache integration. See Integration blocks below for details.
   late final pulumi.Output<GcpIntegrationsMemCache?> memCache;
-
   /// Pub/Sub integration. See Integration blocks below for details.
   late final pulumi.Output<GcpIntegrationsPubSub?> pubSub;
-
   /// Redis integration. See Integration blocks below for details.
   late final pulumi.Output<GcpIntegrationsRedis?> redis;
-
   /// Router integration. See Integration blocks below for details.
   late final pulumi.Output<GcpIntegrationsRouter?> router;
-
   /// Run integration. See Integration blocks below for details.
   late final pulumi.Output<GcpIntegrationsRun?> run;
-
   /// Spanner integration. See Integration blocks below for details.
   late final pulumi.Output<GcpIntegrationsSpanner?> spanner;
-
   /// SQL integration. See Integration blocks below for details.
   late final pulumi.Output<GcpIntegrationsSql?> sql;
-
   /// Storage integration. See Integration blocks below for details.
   late final pulumi.Output<GcpIntegrationsStorage?> storage;
-
   /// Virtual machines integration. See Integration blocks below for details.
   late final pulumi.Output<GcpIntegrationsVirtualMachines?> virtualMachines;
-
   /// VPC Access integration. See Integration blocks below for details.
   late final pulumi.Output<GcpIntegrationsVpcAccess?> vpcAccess;
 
@@ -762,273 +735,39 @@ class GcpIntegrations extends pulumi.CustomResource {
     GcpIntegrationsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:cloud/gcpIntegrations:GcpIntegrations',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:cloud/gcpIntegrations:GcpIntegrations',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
-    alloyDb = registerOutput<GcpIntegrationsAlloyDb?>(
-      'alloyDb',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GcpIntegrationsAlloyDb.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    appEngine = registerOutput<GcpIntegrationsAppEngine?>(
-      'appEngine',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GcpIntegrationsAppEngine.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    bigQuery = registerOutput<GcpIntegrationsBigQuery?>(
-      'bigQuery',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GcpIntegrationsBigQuery.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    bigTable = registerOutput<GcpIntegrationsBigTable?>(
-      'bigTable',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GcpIntegrationsBigTable.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    composer = registerOutput<GcpIntegrationsComposer?>(
-      'composer',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GcpIntegrationsComposer.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    dataFlow = registerOutput<GcpIntegrationsDataFlow?>(
-      'dataFlow',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GcpIntegrationsDataFlow.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    dataProc = registerOutput<GcpIntegrationsDataProc?>(
-      'dataProc',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GcpIntegrationsDataProc.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    dataStore = registerOutput<GcpIntegrationsDataStore?>(
-      'dataStore',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GcpIntegrationsDataStore.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    fireBaseDatabase = registerOutput<GcpIntegrationsFireBaseDatabase?>(
-      'fireBaseDatabase',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GcpIntegrationsFireBaseDatabase.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    fireBaseHosting = registerOutput<GcpIntegrationsFireBaseHosting?>(
-      'fireBaseHosting',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GcpIntegrationsFireBaseHosting.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    fireBaseStorage = registerOutput<GcpIntegrationsFireBaseStorage?>(
-      'fireBaseStorage',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GcpIntegrationsFireBaseStorage.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    fireStore = registerOutput<GcpIntegrationsFireStore?>(
-      'fireStore',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GcpIntegrationsFireStore.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    functions = registerOutput<GcpIntegrationsFunctions?>(
-      'functions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GcpIntegrationsFunctions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    interconnect = registerOutput<GcpIntegrationsInterconnect?>(
-      'interconnect',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GcpIntegrationsInterconnect.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    kubernetes = registerOutput<GcpIntegrationsKubernetes?>(
-      'kubernetes',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GcpIntegrationsKubernetes.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    alloyDb = registerOutput<GcpIntegrationsAlloyDb?>('alloyDb', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpIntegrationsAlloyDb.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    appEngine = registerOutput<GcpIntegrationsAppEngine?>('appEngine', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpIntegrationsAppEngine.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    bigQuery = registerOutput<GcpIntegrationsBigQuery?>('bigQuery', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpIntegrationsBigQuery.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    bigTable = registerOutput<GcpIntegrationsBigTable?>('bigTable', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpIntegrationsBigTable.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    composer = registerOutput<GcpIntegrationsComposer?>('composer', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpIntegrationsComposer.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataFlow = registerOutput<GcpIntegrationsDataFlow?>('dataFlow', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpIntegrationsDataFlow.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataProc = registerOutput<GcpIntegrationsDataProc?>('dataProc', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpIntegrationsDataProc.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataStore = registerOutput<GcpIntegrationsDataStore?>('dataStore', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpIntegrationsDataStore.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    fireBaseDatabase = registerOutput<GcpIntegrationsFireBaseDatabase?>('fireBaseDatabase', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpIntegrationsFireBaseDatabase.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    fireBaseHosting = registerOutput<GcpIntegrationsFireBaseHosting?>('fireBaseHosting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpIntegrationsFireBaseHosting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    fireBaseStorage = registerOutput<GcpIntegrationsFireBaseStorage?>('fireBaseStorage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpIntegrationsFireBaseStorage.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    fireStore = registerOutput<GcpIntegrationsFireStore?>('fireStore', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpIntegrationsFireStore.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    functions = registerOutput<GcpIntegrationsFunctions?>('functions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpIntegrationsFunctions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    interconnect = registerOutput<GcpIntegrationsInterconnect?>('interconnect', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpIntegrationsInterconnect.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kubernetes = registerOutput<GcpIntegrationsKubernetes?>('kubernetes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpIntegrationsKubernetes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     linkedAccountId = registerOutput<String>('linkedAccountId');
-    loadBalancing = registerOutput<GcpIntegrationsLoadBalancing?>(
-      'loadBalancing',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GcpIntegrationsLoadBalancing.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    memCache = registerOutput<GcpIntegrationsMemCache?>(
-      'memCache',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GcpIntegrationsMemCache.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    pubSub = registerOutput<GcpIntegrationsPubSub?>(
-      'pubSub',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GcpIntegrationsPubSub.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    redis = registerOutput<GcpIntegrationsRedis?>(
-      'redis',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GcpIntegrationsRedis.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    router = registerOutput<GcpIntegrationsRouter?>(
-      'router',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GcpIntegrationsRouter.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    run = registerOutput<GcpIntegrationsRun?>(
-      'run',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GcpIntegrationsRun.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    spanner = registerOutput<GcpIntegrationsSpanner?>(
-      'spanner',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GcpIntegrationsSpanner.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    sql = registerOutput<GcpIntegrationsSql?>(
-      'sql',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GcpIntegrationsSql.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    storage = registerOutput<GcpIntegrationsStorage?>(
-      'storage',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GcpIntegrationsStorage.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    virtualMachines = registerOutput<GcpIntegrationsVirtualMachines?>(
-      'virtualMachines',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GcpIntegrationsVirtualMachines.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    vpcAccess = registerOutput<GcpIntegrationsVpcAccess?>(
-      'vpcAccess',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GcpIntegrationsVpcAccess.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    loadBalancing = registerOutput<GcpIntegrationsLoadBalancing?>('loadBalancing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpIntegrationsLoadBalancing.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    memCache = registerOutput<GcpIntegrationsMemCache?>('memCache', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpIntegrationsMemCache.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    pubSub = registerOutput<GcpIntegrationsPubSub?>('pubSub', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpIntegrationsPubSub.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    redis = registerOutput<GcpIntegrationsRedis?>('redis', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpIntegrationsRedis.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    router = registerOutput<GcpIntegrationsRouter?>('router', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpIntegrationsRouter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    run = registerOutput<GcpIntegrationsRun?>('run', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpIntegrationsRun.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spanner = registerOutput<GcpIntegrationsSpanner?>('spanner', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpIntegrationsSpanner.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sql = registerOutput<GcpIntegrationsSql?>('sql', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpIntegrationsSql.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    storage = registerOutput<GcpIntegrationsStorage?>('storage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpIntegrationsStorage.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    virtualMachines = registerOutput<GcpIntegrationsVirtualMachines?>('virtualMachines', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpIntegrationsVirtualMachines.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vpcAccess = registerOutput<GcpIntegrationsVpcAccess?>('vpcAccess', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpIntegrationsVpcAccess.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [GcpIntegrations] resource's state with the given [name] and [id].
@@ -1049,272 +788,38 @@ class GcpIntegrations extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:cloud/gcpIntegrations:GcpIntegrations',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:cloud/gcpIntegrations:GcpIntegrations',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
-    alloyDb = registerOutput<GcpIntegrationsAlloyDb?>(
-      'alloyDb',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GcpIntegrationsAlloyDb.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    appEngine = registerOutput<GcpIntegrationsAppEngine?>(
-      'appEngine',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GcpIntegrationsAppEngine.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    bigQuery = registerOutput<GcpIntegrationsBigQuery?>(
-      'bigQuery',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GcpIntegrationsBigQuery.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    bigTable = registerOutput<GcpIntegrationsBigTable?>(
-      'bigTable',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GcpIntegrationsBigTable.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    composer = registerOutput<GcpIntegrationsComposer?>(
-      'composer',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GcpIntegrationsComposer.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    dataFlow = registerOutput<GcpIntegrationsDataFlow?>(
-      'dataFlow',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GcpIntegrationsDataFlow.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    dataProc = registerOutput<GcpIntegrationsDataProc?>(
-      'dataProc',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GcpIntegrationsDataProc.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    dataStore = registerOutput<GcpIntegrationsDataStore?>(
-      'dataStore',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GcpIntegrationsDataStore.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    fireBaseDatabase = registerOutput<GcpIntegrationsFireBaseDatabase?>(
-      'fireBaseDatabase',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GcpIntegrationsFireBaseDatabase.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    fireBaseHosting = registerOutput<GcpIntegrationsFireBaseHosting?>(
-      'fireBaseHosting',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GcpIntegrationsFireBaseHosting.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    fireBaseStorage = registerOutput<GcpIntegrationsFireBaseStorage?>(
-      'fireBaseStorage',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GcpIntegrationsFireBaseStorage.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    fireStore = registerOutput<GcpIntegrationsFireStore?>(
-      'fireStore',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GcpIntegrationsFireStore.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    functions = registerOutput<GcpIntegrationsFunctions?>(
-      'functions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GcpIntegrationsFunctions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    interconnect = registerOutput<GcpIntegrationsInterconnect?>(
-      'interconnect',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GcpIntegrationsInterconnect.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    kubernetes = registerOutput<GcpIntegrationsKubernetes?>(
-      'kubernetes',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GcpIntegrationsKubernetes.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    alloyDb = registerOutput<GcpIntegrationsAlloyDb?>('alloyDb', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpIntegrationsAlloyDb.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    appEngine = registerOutput<GcpIntegrationsAppEngine?>('appEngine', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpIntegrationsAppEngine.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    bigQuery = registerOutput<GcpIntegrationsBigQuery?>('bigQuery', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpIntegrationsBigQuery.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    bigTable = registerOutput<GcpIntegrationsBigTable?>('bigTable', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpIntegrationsBigTable.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    composer = registerOutput<GcpIntegrationsComposer?>('composer', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpIntegrationsComposer.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataFlow = registerOutput<GcpIntegrationsDataFlow?>('dataFlow', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpIntegrationsDataFlow.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataProc = registerOutput<GcpIntegrationsDataProc?>('dataProc', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpIntegrationsDataProc.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataStore = registerOutput<GcpIntegrationsDataStore?>('dataStore', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpIntegrationsDataStore.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    fireBaseDatabase = registerOutput<GcpIntegrationsFireBaseDatabase?>('fireBaseDatabase', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpIntegrationsFireBaseDatabase.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    fireBaseHosting = registerOutput<GcpIntegrationsFireBaseHosting?>('fireBaseHosting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpIntegrationsFireBaseHosting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    fireBaseStorage = registerOutput<GcpIntegrationsFireBaseStorage?>('fireBaseStorage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpIntegrationsFireBaseStorage.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    fireStore = registerOutput<GcpIntegrationsFireStore?>('fireStore', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpIntegrationsFireStore.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    functions = registerOutput<GcpIntegrationsFunctions?>('functions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpIntegrationsFunctions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    interconnect = registerOutput<GcpIntegrationsInterconnect?>('interconnect', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpIntegrationsInterconnect.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kubernetes = registerOutput<GcpIntegrationsKubernetes?>('kubernetes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpIntegrationsKubernetes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     linkedAccountId = registerOutput<String>('linkedAccountId');
-    loadBalancing = registerOutput<GcpIntegrationsLoadBalancing?>(
-      'loadBalancing',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GcpIntegrationsLoadBalancing.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    memCache = registerOutput<GcpIntegrationsMemCache?>(
-      'memCache',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GcpIntegrationsMemCache.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    pubSub = registerOutput<GcpIntegrationsPubSub?>(
-      'pubSub',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GcpIntegrationsPubSub.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    redis = registerOutput<GcpIntegrationsRedis?>(
-      'redis',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GcpIntegrationsRedis.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    router = registerOutput<GcpIntegrationsRouter?>(
-      'router',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GcpIntegrationsRouter.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    run = registerOutput<GcpIntegrationsRun?>(
-      'run',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GcpIntegrationsRun.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    spanner = registerOutput<GcpIntegrationsSpanner?>(
-      'spanner',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GcpIntegrationsSpanner.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    sql = registerOutput<GcpIntegrationsSql?>(
-      'sql',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GcpIntegrationsSql.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    storage = registerOutput<GcpIntegrationsStorage?>(
-      'storage',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GcpIntegrationsStorage.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    virtualMachines = registerOutput<GcpIntegrationsVirtualMachines?>(
-      'virtualMachines',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GcpIntegrationsVirtualMachines.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    vpcAccess = registerOutput<GcpIntegrationsVpcAccess?>(
-      'vpcAccess',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GcpIntegrationsVpcAccess.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    loadBalancing = registerOutput<GcpIntegrationsLoadBalancing?>('loadBalancing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpIntegrationsLoadBalancing.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    memCache = registerOutput<GcpIntegrationsMemCache?>('memCache', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpIntegrationsMemCache.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    pubSub = registerOutput<GcpIntegrationsPubSub?>('pubSub', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpIntegrationsPubSub.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    redis = registerOutput<GcpIntegrationsRedis?>('redis', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpIntegrationsRedis.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    router = registerOutput<GcpIntegrationsRouter?>('router', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpIntegrationsRouter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    run = registerOutput<GcpIntegrationsRun?>('run', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpIntegrationsRun.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spanner = registerOutput<GcpIntegrationsSpanner?>('spanner', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpIntegrationsSpanner.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sql = registerOutput<GcpIntegrationsSql?>('sql', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpIntegrationsSql.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    storage = registerOutput<GcpIntegrationsStorage?>('storage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpIntegrationsStorage.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    virtualMachines = registerOutput<GcpIntegrationsVirtualMachines?>('virtualMachines', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpIntegrationsVirtualMachines.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vpcAccess = registerOutput<GcpIntegrationsVpcAccess?>('vpcAccess', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpIntegrationsVpcAccess.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

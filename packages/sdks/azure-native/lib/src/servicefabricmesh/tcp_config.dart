@@ -7,10 +7,8 @@ import 'gateway_destination.dart';
 class TcpConfig {
   /// Describes destination endpoint for routing traffic.
   final pulumi.Input<GatewayDestination> destination;
-
   /// tcp gateway config name.
   final pulumi.Input<String> name;
-
   /// Specifies the port at which the service endpoint below needs to be exposed.
   final pulumi.Input<int> port;
 
@@ -26,11 +24,7 @@ class TcpConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'destination':
-          pulumi.Input.mapInputValue<GatewayDestination, Map<String, dynamic>>(
-            destination,
-            (value) => value.toMap(),
-          ),
+      'destination': pulumi.Input.mapInputValue<GatewayDestination, Map<String, dynamic>>(destination, (value) => value.toMap()),
       'name': name,
       'port': port,
     };
@@ -38,13 +32,10 @@ class TcpConfig {
 
   factory TcpConfig.fromMap(Map<String, dynamic> map) {
     return TcpConfig(
-      destination: pulumi.Input.fromValue(
-        GatewayDestination.fromMap(
-          (map['destination']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      destination: pulumi.Input.fromValue(GatewayDestination.fromMap((map['destination']! as Map).cast<String, dynamic>())),
       name: pulumi.Input.fromValue(map['name'] as String),
       port: pulumi.Input.fromValue(map['port'] as int),
     );
   }
 }
+

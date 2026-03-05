@@ -613,27 +613,20 @@ import 'target_server_state.dart';
 class TargetServer extends pulumi.CustomResource {
   /// A human-readable description of this TargetServer.
   late final pulumi.Output<String?> description;
-
   /// The Apigee environment group associated with the Apigee environment,
   /// in the format `organizations/{{org_name}}/environments/{{env_name}}`.
   late final pulumi.Output<String> envId;
-
   /// The host name this target connects to. Value must be a valid hostname as described by RFC-1123.
   late final pulumi.Output<String> host;
-
   /// Enabling/disabling a TargetServer is useful when TargetServers are used in load balancing configurations, and one or more TargetServers need to taken out of rotation periodically. Defaults to true.
   late final pulumi.Output<bool?> isEnabled;
-
   /// The resource id of this reference. Values must match the regular expression [\w\s-.]+.
   late final pulumi.Output<String> name;
-
   /// The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
   late final pulumi.Output<int> port;
-
   /// Immutable. The protocol used by this TargetServer.
   /// Possible values are: `HTTP`, `HTTP2`, `GRPC_TARGET`, `GRPC`, `EXTERNAL_CALLOUT`.
   late final pulumi.Output<String> protocol;
-
   /// Specifies TLS configuration info for this TargetServer. The JSON name is sSLInfo for legacy/backwards compatibility reasons -- Edge originally supported SSL, and the name is still used for TLS configuration.
   /// Structure is documented below.
   late final pulumi.Output<TargetServerSSlInfo?> sSlInfo;
@@ -647,11 +640,11 @@ class TargetServer extends pulumi.CustomResource {
     TargetServerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:apigee/targetServer:TargetServer',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:apigee/targetServer:TargetServer',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     envId = registerOutput<String>('envId');
     host = registerOutput<String>('host');
@@ -659,16 +652,7 @@ class TargetServer extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     port = registerOutput<int>('port');
     protocol = registerOutput<String>('protocol');
-    sSlInfo = registerOutput<TargetServerSSlInfo?>(
-      'sSlInfo',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TargetServerSSlInfo.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sSlInfo = registerOutput<TargetServerSSlInfo?>('sSlInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TargetServerSSlInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [TargetServer] resource's state with the given [name] and [id].
@@ -689,11 +673,11 @@ class TargetServer extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:apigee/targetServer:TargetServer',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:apigee/targetServer:TargetServer',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     envId = registerOutput<String>('envId');
     host = registerOutput<String>('host');
@@ -701,15 +685,6 @@ class TargetServer extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     port = registerOutput<int>('port');
     protocol = registerOutput<String>('protocol');
-    sSlInfo = registerOutput<TargetServerSSlInfo?>(
-      'sSlInfo',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TargetServerSSlInfo.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sSlInfo = registerOutput<TargetServerSSlInfo?>('sSlInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TargetServerSSlInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

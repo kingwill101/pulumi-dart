@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRamDirectoriesDirectoryLog {
   /// The level of log.
   final pulumi.Input<String> level;
-
   /// The message of log.
   final pulumi.Input<String> message;
-
   /// The step of log.
   final pulumi.Input<String> step;
-
   /// The time stamp of log.
   final pulumi.Input<String> timeStamp;
 
@@ -45,3 +42,4 @@ class GetRamDirectoriesDirectoryLog {
     );
   }
 }
+

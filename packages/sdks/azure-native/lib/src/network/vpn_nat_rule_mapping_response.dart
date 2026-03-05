@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpnNatRuleMappingResponse {
   /// Address space for Vpn NatRule mapping.
   final pulumi.Input<String>? addressSpace;
-
   /// Port range for Vpn NatRule mapping.
   final pulumi.Input<String>? portRange;
 
   /// Creates a new [VpnNatRuleMappingResponse].
   /// [addressSpace] Address space for Vpn NatRule mapping.
   /// [portRange] Port range for Vpn NatRule mapping.
-  VpnNatRuleMappingResponse({this.addressSpace, this.portRange});
+  VpnNatRuleMappingResponse({
+    this.addressSpace,
+    this.portRange,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class VpnNatRuleMappingResponse {
 
   factory VpnNatRuleMappingResponse.fromMap(Map<String, dynamic> map) {
     return VpnNatRuleMappingResponse(
-      addressSpace: (() {
-        final guardedValue = map['addressSpace'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      portRange: (() {
-        final guardedValue = map['portRange'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      addressSpace: (() { final guardedValue = map['addressSpace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      portRange: (() { final guardedValue = map['portRange']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

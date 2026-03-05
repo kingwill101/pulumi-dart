@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetStorageInsightConfigArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Name of the storageInsightsConfigs resource
   final pulumi.Input<String> storageInsightName;
-
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -36,13 +34,10 @@ class GetStorageInsightConfigArgs {
 
   factory GetStorageInsightConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetStorageInsightConfigArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      storageInsightName: pulumi.Input.fromValue(
-        map['storageInsightName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      storageInsightName: pulumi.Input.fromValue(map['storageInsightName'] as String),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
+

@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualNetworkGatewayPolicyGroupPolicyMember {
   /// The name of the Virtual Network Gateway Policy Group Member.
   final pulumi.Input<String> name;
-
   /// The VPN Policy Member attribute type. Possible values are `AADGroupId`, `CertificateGroupId` and `RadiusAzureGroupId`.
   final pulumi.Input<String> type;
-
   /// The value of attribute that is used for this Virtual Network Gateway Policy Group Member.
   final pulumi.Input<String> value;
 
@@ -23,12 +21,14 @@ class VirtualNetworkGatewayPolicyGroupPolicyMember {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'type': type, 'value': value};
+    return <String, dynamic>{
+      'name': name,
+      'type': type,
+      'value': value,
+    };
   }
 
-  factory VirtualNetworkGatewayPolicyGroupPolicyMember.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VirtualNetworkGatewayPolicyGroupPolicyMember.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkGatewayPolicyGroupPolicyMember(
       name: pulumi.Input.fromValue(map['name'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
@@ -36,3 +36,4 @@ class VirtualNetworkGatewayPolicyGroupPolicyMember {
     );
   }
 }
+

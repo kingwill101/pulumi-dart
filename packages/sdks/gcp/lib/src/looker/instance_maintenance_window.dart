@@ -14,7 +14,6 @@ class InstanceMaintenanceWindow {
   /// - SUNDAY: Sunday
   /// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
   final pulumi.Input<String> dayOfWeek;
-
   /// Required. Start time of the window in UTC time.
   /// Structure is documented below.
   final pulumi.Input<InstanceMaintenanceWindowStartTime> startTime;
@@ -22,27 +21,23 @@ class InstanceMaintenanceWindow {
   /// Creates a new [InstanceMaintenanceWindow].
   /// [dayOfWeek] Required. Day of the week for this MaintenanceWindow (in UTC).
   /// [startTime] Required. Start time of the window in UTC time.
-  InstanceMaintenanceWindow({required this.dayOfWeek, required this.startTime});
+  InstanceMaintenanceWindow({
+    required this.dayOfWeek,
+    required this.startTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'dayOfWeek': dayOfWeek,
-      'startTime':
-          pulumi.Input.mapInputValue<
-            InstanceMaintenanceWindowStartTime,
-            Map<String, dynamic>
-          >(startTime, (value) => value.toMap()),
+      'startTime': pulumi.Input.mapInputValue<InstanceMaintenanceWindowStartTime, Map<String, dynamic>>(startTime, (value) => value.toMap()),
     };
   }
 
   factory InstanceMaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return InstanceMaintenanceWindow(
       dayOfWeek: pulumi.Input.fromValue(map['dayOfWeek'] as String),
-      startTime: pulumi.Input.fromValue(
-        InstanceMaintenanceWindowStartTime.fromMap(
-          (map['startTime']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      startTime: pulumi.Input.fromValue(InstanceMaintenanceWindowStartTime.fromMap((map['startTime']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

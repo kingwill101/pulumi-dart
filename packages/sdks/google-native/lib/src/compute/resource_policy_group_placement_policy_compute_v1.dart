@@ -7,11 +7,8 @@ import 'resource_policy_group_placement_policy_collocation_compute_v1.dart';
 class ResourcePolicyGroupPlacementPolicyComputeV1 {
   /// The number of availability domains to spread instances across. If two instances are in different availability domain, they are not in the same low latency network.
   final pulumi.Input<int>? availabilityDomainCount;
-
   /// Specifies network collocation
-  final pulumi.Input<ResourcePolicyGroupPlacementPolicyCollocationComputeV1>?
-  collocation;
-
+  final pulumi.Input<ResourcePolicyGroupPlacementPolicyCollocationComputeV1>? collocation;
   /// Number of VMs in this placement group. Google does not recommend that you use this field unless you use a compact policy and you want your policy to work only if it contains this exact number of VMs.
   final pulumi.Input<int>? vmCount;
 
@@ -28,38 +25,17 @@ class ResourcePolicyGroupPlacementPolicyComputeV1 {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'availabilityDomainCount': ?availabilityDomainCount,
-      'collocation':
-          ?pulumi.Input.mapOptionalInputValue<
-            ResourcePolicyGroupPlacementPolicyCollocationComputeV1,
-            String
-          >(collocation, (value) => value.wireValue),
+      'collocation': ?pulumi.Input.mapOptionalInputValue<ResourcePolicyGroupPlacementPolicyCollocationComputeV1, String>(collocation, (value) => value.wireValue),
       'vmCount': ?vmCount,
     };
   }
 
-  factory ResourcePolicyGroupPlacementPolicyComputeV1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResourcePolicyGroupPlacementPolicyComputeV1.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyGroupPlacementPolicyComputeV1(
-      availabilityDomainCount: (() {
-        final guardedValue = map['availabilityDomainCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      collocation: (() {
-        final guardedValue = map['collocation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ResourcePolicyGroupPlacementPolicyCollocationComputeV1.fromValue(
-            guardedValue as String,
-          ),
-        );
-      })(),
-      vmCount: (() {
-        final guardedValue = map['vmCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      availabilityDomainCount: (() { final guardedValue = map['availabilityDomainCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      collocation: (() { final guardedValue = map['collocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourcePolicyGroupPlacementPolicyCollocationComputeV1.fromValue(guardedValue as String)); })(),
+      vmCount: (() { final guardedValue = map['vmCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDatacatalogV1RoutineSpecArgumentResponse {
   /// Specifies whether the argument is input or output.
   final pulumi.Input<String> mode;
-
   /// The name of the argument. A return argument of a function might not have a name.
   final pulumi.Input<String> name;
-
   /// Type of the argument. The exact value depends on the source system and the language.
   final pulumi.Input<String> type;
 
@@ -24,12 +22,14 @@ class GoogleCloudDatacatalogV1RoutineSpecArgumentResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'mode': mode, 'name': name, 'type': type};
+    return <String, dynamic>{
+      'mode': mode,
+      'name': name,
+      'type': type,
+    };
   }
 
-  factory GoogleCloudDatacatalogV1RoutineSpecArgumentResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDatacatalogV1RoutineSpecArgumentResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1RoutineSpecArgumentResponse(
       mode: pulumi.Input.fromValue(map['mode'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
@@ -37,3 +37,4 @@ class GoogleCloudDatacatalogV1RoutineSpecArgumentResponse {
     );
   }
 }
+

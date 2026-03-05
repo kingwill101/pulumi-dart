@@ -13,10 +13,16 @@ class GetMembershipArgs {
   /// Creates a new [GetMembershipArgs].
   /// [groupId] Required.
   /// [membershipId] Required.
-  GetMembershipArgs({required this.groupId, required this.membershipId});
+  GetMembershipArgs({
+    required this.groupId,
+    required this.membershipId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'groupId': groupId, 'membershipId': membershipId};
+    return <String, dynamic>{
+      'groupId': groupId,
+      'membershipId': membershipId,
+    };
   }
 
   factory GetMembershipArgs.fromMap(Map<String, dynamic> map) {
@@ -26,3 +32,4 @@ class GetMembershipArgs {
     );
   }
 }
+

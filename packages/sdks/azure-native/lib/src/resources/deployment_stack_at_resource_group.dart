@@ -265,72 +265,48 @@ import 'system_data_response.dart';
 class DeploymentStackAtResourceGroup extends pulumi.CustomResource {
   /// Defines the behavior of resources that are no longer managed after the Deployment stack is updated or deleted.
   late final pulumi.Output<ActionOnUnmanageResponse> actionOnUnmanage;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The correlation id of the last Deployment stack upsert or delete operation. It is in GUID format and is used for tracing.
   late final pulumi.Output<String> correlationId;
-
   /// The debug setting of the deployment.
   late final pulumi.Output<DeploymentStacksDebugSettingResponse?> debugSetting;
-
   /// An array of resources that were deleted during the most recent Deployment stack update. Deleted means that the resource was removed from the template and relevant deletion operations were specified.
   late final pulumi.Output<List<Map<String, dynamic>>> deletedResources;
-
   /// Defines how resources deployed by the stack are locked.
   late final pulumi.Output<DenySettingsResponse> denySettings;
-
   /// The resourceId of the deployment resource created by the deployment stack.
   late final pulumi.Output<String> deploymentId;
-
   /// The scope at which the initial deployment should be created. If a scope is not specified, it will default to the scope of the deployment stack. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroupId}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}').
   late final pulumi.Output<String?> deploymentScope;
-
   /// Deployment stack description. Max length of 4096 characters.
   late final pulumi.Output<String?> description;
-
   /// An array of resources that were detached during the most recent Deployment stack update. Detached means that the resource was removed from the template, but no relevant deletion operations were specified. So, the resource still exists while no longer being associated with the stack.
   late final pulumi.Output<List<Map<String, dynamic>>> detachedResources;
-
   /// The duration of the last successful Deployment stack update.
   late final pulumi.Output<String> duration;
-
   /// The error detail.
   late final pulumi.Output<ErrorDetailResponse?> error;
-
   /// An array of resources that failed to reach goal state during the most recent update. Each resourceId is accompanied by an error message.
   late final pulumi.Output<List<Map<String, dynamic>>> failedResources;
-
   /// The geo-location where the resource lives. Required for subscription and management group scoped stacks. The location is inherited from the resource group for resource group scoped stacks.
   late final pulumi.Output<String?> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The outputs of the deployment resource created by the deployment stack.
   late final pulumi.Output<dynamic> outputs;
-
   /// Name and value pairs that define the deployment parameters for the template. Use this element when providing the parameter values directly in the request, rather than linking to an existing parameter file. Use either the parametersLink property or the parameters property, but not both.
-  late final pulumi.Output<Map<String, DeploymentParameterResponse>?>
-  parameters;
-
+  late final pulumi.Output<Map<String, DeploymentParameterResponse>?> parameters;
   /// The URI of parameters file. Use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both.
-  late final pulumi.Output<DeploymentStacksParametersLinkResponse?>
-  parametersLink;
-
+  late final pulumi.Output<DeploymentStacksParametersLinkResponse?> parametersLink;
   /// State of the deployment stack.
   late final pulumi.Output<String> provisioningState;
-
   /// An array of resources currently managed by the deployment stack.
   late final pulumi.Output<List<Map<String, dynamic>>> resources;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -343,104 +319,32 @@ class DeploymentStackAtResourceGroup extends pulumi.CustomResource {
     DeploymentStackAtResourceGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:resources:DeploymentStackAtResourceGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    actionOnUnmanage = registerOutput<ActionOnUnmanageResponse>(
-      'actionOnUnmanage',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ActionOnUnmanageResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure-native:resources:DeploymentStackAtResourceGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    actionOnUnmanage = registerOutput<ActionOnUnmanageResponse>('actionOnUnmanage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ActionOnUnmanageResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     correlationId = registerOutput<String>('correlationId');
-    debugSetting = registerOutput<DeploymentStacksDebugSettingResponse?>(
-      'debugSetting',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DeploymentStacksDebugSettingResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    deletedResources = registerOutput<List<Map<String, dynamic>>>(
-      'deletedResources',
-    );
-    denySettings = registerOutput<DenySettingsResponse>(
-      'denySettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DenySettingsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    debugSetting = registerOutput<DeploymentStacksDebugSettingResponse?>('debugSetting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentStacksDebugSettingResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletedResources = registerOutput<List<Map<String, dynamic>>>('deletedResources');
+    denySettings = registerOutput<DenySettingsResponse>('denySettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DenySettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deploymentId = registerOutput<String>('deploymentId');
     deploymentScope = registerOutput<String?>('deploymentScope');
     description = registerOutput<String?>('description');
-    detachedResources = registerOutput<List<Map<String, dynamic>>>(
-      'detachedResources',
-    );
+    detachedResources = registerOutput<List<Map<String, dynamic>>>('detachedResources');
     duration = registerOutput<String>('duration');
-    error = registerOutput<ErrorDetailResponse?>(
-      'error',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ErrorDetailResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    failedResources = registerOutput<List<Map<String, dynamic>>>(
-      'failedResources',
-    );
+    error = registerOutput<ErrorDetailResponse?>('error', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ErrorDetailResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    failedResources = registerOutput<List<Map<String, dynamic>>>('failedResources');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     outputs = registerOutput<dynamic>('outputs');
-    parameters = registerOutput<Map<String, DeploymentParameterResponse>?>(
-      'parameters',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeMapValues<DeploymentParameterResponse>(
-          guardedValue,
-          (value) => DeploymentParameterResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      },
-    );
-    parametersLink = registerOutput<DeploymentStacksParametersLinkResponse?>(
-      'parametersLink',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DeploymentStacksParametersLinkResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    parameters = registerOutput<Map<String, DeploymentParameterResponse>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<DeploymentParameterResponse>(guardedValue, (value) => DeploymentParameterResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    parametersLink = registerOutput<DeploymentStacksParametersLinkResponse?>('parametersLink', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentStacksParametersLinkResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningState = registerOutput<String>('provisioningState');
     resources = registerOutput<List<Map<String, dynamic>>>('resources');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

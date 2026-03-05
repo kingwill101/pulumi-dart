@@ -9,19 +9,20 @@ class WikiDocumentationContract {
 
   /// Creates a new [WikiDocumentationContract].
   /// [documentationId] Documentation Identifier
-  WikiDocumentationContract({this.documentationId});
+  WikiDocumentationContract({
+    this.documentationId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'documentationId': ?documentationId};
+    return <String, dynamic>{
+      'documentationId': ?documentationId,
+    };
   }
 
   factory WikiDocumentationContract.fromMap(Map<String, dynamic> map) {
     return WikiDocumentationContract(
-      documentationId: (() {
-        final guardedValue = map['documentationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      documentationId: (() { final guardedValue = map['documentationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

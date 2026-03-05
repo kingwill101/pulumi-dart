@@ -7,26 +7,19 @@ import 'discount_custom_price.dart';
 class EntityTypePrimaryDiscount {
   /// List of applied scopes supported for discounts.
   final pulumi.Input<String>? appliedScopeType;
-
   /// This defines the conditions for a given discount type.
   final pulumi.Input<DiscountCustomPrice>? discountTypeProperties;
-
   /// This defines a user friendly display name for the discount.
   final pulumi.Input<String>? displayName;
-
   /// End date of the discount. No duration will be supported. Allowed value is any date greater than or equal to startDate.
   final pulumi.Input<String> endAt;
-
   /// This defines whether the entity being created is primary or affiliate. Supported values: primary, affiliate. Validation: Required, must match one of the 2 values.
   /// Expected value is 'Primary'.
   final pulumi.Input<String> entityType;
-
   /// This is the catalog UPN for the product.
   final pulumi.Input<String> productCode;
-
   /// Start date of the discount. Value is the date the discount started or will start in the future.
   final pulumi.Input<String> startAt;
-
   /// This is the globally unique identifier of the Discount which will not change for the lifetime of the Discount.
   final pulumi.Input<String>? systemId;
 
@@ -53,11 +46,7 @@ class EntityTypePrimaryDiscount {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'appliedScopeType': ?appliedScopeType,
-      'discountTypeProperties':
-          ?pulumi.Input.mapOptionalInputValue<
-            DiscountCustomPrice,
-            Map<String, dynamic>
-          >(discountTypeProperties, (value) => value.toMap()),
+      'discountTypeProperties': ?pulumi.Input.mapOptionalInputValue<DiscountCustomPrice, Map<String, dynamic>>(discountTypeProperties, (value) => value.toMap()),
       'displayName': ?displayName,
       'endAt': endAt,
       'entityType': entityType,
@@ -69,34 +58,15 @@ class EntityTypePrimaryDiscount {
 
   factory EntityTypePrimaryDiscount.fromMap(Map<String, dynamic> map) {
     return EntityTypePrimaryDiscount(
-      appliedScopeType: (() {
-        final guardedValue = map['appliedScopeType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      discountTypeProperties: (() {
-        final guardedValue = map['discountTypeProperties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DiscountCustomPrice.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      appliedScopeType: (() { final guardedValue = map['appliedScopeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      discountTypeProperties: (() { final guardedValue = map['discountTypeProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DiscountCustomPrice.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       endAt: pulumi.Input.fromValue(map['endAt'] as String),
       entityType: pulumi.Input.fromValue(map['entityType'] as String),
       productCode: pulumi.Input.fromValue(map['productCode'] as String),
       startAt: pulumi.Input.fromValue(map['startAt'] as String),
-      systemId: (() {
-        final guardedValue = map['systemId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      systemId: (() { final guardedValue = map['systemId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

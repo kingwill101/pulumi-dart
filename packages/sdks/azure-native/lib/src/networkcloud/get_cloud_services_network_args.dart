@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCloudServicesNetworkArgs {
   /// The name of the cloud services network.
   final pulumi.Input<String> cloudServicesNetworkName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetCloudServicesNetworkArgs {
 
   factory GetCloudServicesNetworkArgs.fromMap(Map<String, dynamic> map) {
     return GetCloudServicesNetworkArgs(
-      cloudServicesNetworkName: pulumi.Input.fromValue(
-        map['cloudServicesNetworkName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      cloudServicesNetworkName: pulumi.Input.fromValue(map['cloudServicesNetworkName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

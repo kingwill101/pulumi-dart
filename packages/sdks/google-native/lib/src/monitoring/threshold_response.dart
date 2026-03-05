@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ThresholdResponse {
   /// The state color for this threshold. Color is not allowed in a XyChart.
   final pulumi.Input<String> color;
-
   /// The direction for the current threshold. Direction is not allowed in a XyChart.
   final pulumi.Input<String> direction;
-
   /// A label for the threshold.
   final pulumi.Input<String> label;
-
   /// The target axis to use for plotting the threshold. Target axis is not allowed in a Scorecard.
   final pulumi.Input<String> targetAxis;
-
   /// The value of the threshold. The value should be defined in the native scale of the metric.
   final pulumi.Input<double> value;
 
@@ -53,3 +49,4 @@ class ThresholdResponse {
     );
   }
 }
+

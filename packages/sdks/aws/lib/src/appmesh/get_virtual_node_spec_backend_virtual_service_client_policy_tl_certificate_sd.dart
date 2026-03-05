@@ -12,14 +12,15 @@ class GetVirtualNodeSpecBackendVirtualServiceClientPolicyTlCertificateSd {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'secretName': secretName};
+    return <String, dynamic>{
+      'secretName': secretName,
+    };
   }
 
-  factory GetVirtualNodeSpecBackendVirtualServiceClientPolicyTlCertificateSd.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetVirtualNodeSpecBackendVirtualServiceClientPolicyTlCertificateSd.fromMap(Map<String, dynamic> map) {
     return GetVirtualNodeSpecBackendVirtualServiceClientPolicyTlCertificateSd(
       secretName: pulumi.Input.fromValue(map['secretName'] as String),
     );
   }
 }
+

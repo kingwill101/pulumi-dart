@@ -16,3 +16,4 @@ enum StatusLevelTypes {
     throw ArgumentError('Unknown StatusLevelTypes value: $value');
   }
 }
+

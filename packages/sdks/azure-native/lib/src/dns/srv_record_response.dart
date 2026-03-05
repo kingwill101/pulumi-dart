@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SrvRecordResponse {
   /// The port value for this SRV record.
   final pulumi.Input<int>? port;
-
   /// The priority value for this SRV record.
   final pulumi.Input<int>? priority;
-
   /// The target domain name for this SRV record.
   final pulumi.Input<String>? target;
-
   /// The weight value for this SRV record.
   final pulumi.Input<int>? weight;
 
@@ -21,7 +18,12 @@ class SrvRecordResponse {
   /// [priority] The priority value for this SRV record.
   /// [target] The target domain name for this SRV record.
   /// [weight] The weight value for this SRV record.
-  SrvRecordResponse({this.port, this.priority, this.target, this.weight});
+  SrvRecordResponse({
+    this.port,
+    this.priority,
+    this.target,
+    this.weight,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,26 +36,11 @@ class SrvRecordResponse {
 
   factory SrvRecordResponse.fromMap(Map<String, dynamic> map) {
     return SrvRecordResponse(
-      port: (() {
-        final guardedValue = map['port'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      priority: (() {
-        final guardedValue = map['priority'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      target: (() {
-        final guardedValue = map['target'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      weight: (() {
-        final guardedValue = map['weight'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      target: (() { final guardedValue = map['target']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      weight: (() { final guardedValue = map['weight']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

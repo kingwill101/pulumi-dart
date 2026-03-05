@@ -284,10 +284,8 @@ import 'vpc_endpoint_policy_state.dart';
 class VpcEndpointPolicy extends pulumi.CustomResource {
   /// A policy to attach to the endpoint that controls access to the service. Defaults to full access. All `Gateway` and some `Interface` endpoints support policies - see the [relevant AWS documentation](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints-access.html) for more details.
   late final pulumi.Output<String> policy;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The VPC Endpoint ID.
   late final pulumi.Output<String> vpcEndpointId;
 
@@ -300,11 +298,11 @@ class VpcEndpointPolicy extends pulumi.CustomResource {
     VpcEndpointPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/vpcEndpointPolicy:VpcEndpointPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/vpcEndpointPolicy:VpcEndpointPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');
     vpcEndpointId = registerOutput<String>('vpcEndpointId');
@@ -328,11 +326,11 @@ class VpcEndpointPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/vpcEndpointPolicy:VpcEndpointPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/vpcEndpointPolicy:VpcEndpointPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');
     vpcEndpointId = registerOutput<String>('vpcEndpointId');

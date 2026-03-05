@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTableArgs {
   /// The name of the Table.
   final pulumi.Input<String> name;
-
   /// The name of the Storage Account where the Table exists.
   final pulumi.Input<String> storageAccountName;
 
   /// Creates a new [GetTableArgs].
   /// [name] The name of the Table.
   /// [storageAccountName] The name of the Storage Account where the Table exists.
-  GetTableArgs({required this.name, required this.storageAccountName});
+  GetTableArgs({
+    required this.name,
+    required this.storageAccountName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,9 +30,8 @@ class GetTableArgs {
   factory GetTableArgs.fromMap(Map<String, dynamic> map) {
     return GetTableArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      storageAccountName: pulumi.Input.fromValue(
-        map['storageAccountName'] as String,
-      ),
+      storageAccountName: pulumi.Input.fromValue(map['storageAccountName'] as String),
     );
   }
 }
+

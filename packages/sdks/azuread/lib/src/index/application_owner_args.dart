@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationOwnerArgs {
   /// The resource ID of the application registration. Changing this forces a new resource to be created.
   final pulumi.Input<String> applicationId;
-
   /// The object ID of the owner to assign to the application, typically a user or service principal. Changing this forces a new resource to be created.
   final pulumi.Input<String> ownerObjectId;
 
@@ -35,3 +34,4 @@ class ApplicationOwnerArgs {
     );
   }
 }
+

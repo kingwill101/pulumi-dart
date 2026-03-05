@@ -7,7 +7,6 @@ import 'intent_follow_up_prompt_rejection_statement.dart';
 class IntentFollowUpPrompt {
   /// Prompts for information from the user. Attributes are documented under prompt.
   final pulumi.Input<IntentFollowUpPromptPrompt> prompt;
-
   /// If the user answers "no" to the question defined in the prompt field,
   /// Amazon Lex responds with this statement to acknowledge that the intent was canceled. Attributes are
   /// documented below under statement.
@@ -23,31 +22,16 @@ class IntentFollowUpPrompt {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'prompt':
-          pulumi.Input.mapInputValue<
-            IntentFollowUpPromptPrompt,
-            Map<String, dynamic>
-          >(prompt, (value) => value.toMap()),
-      'rejectionStatement':
-          pulumi.Input.mapInputValue<
-            IntentFollowUpPromptRejectionStatement,
-            Map<String, dynamic>
-          >(rejectionStatement, (value) => value.toMap()),
+      'prompt': pulumi.Input.mapInputValue<IntentFollowUpPromptPrompt, Map<String, dynamic>>(prompt, (value) => value.toMap()),
+      'rejectionStatement': pulumi.Input.mapInputValue<IntentFollowUpPromptRejectionStatement, Map<String, dynamic>>(rejectionStatement, (value) => value.toMap()),
     };
   }
 
   factory IntentFollowUpPrompt.fromMap(Map<String, dynamic> map) {
     return IntentFollowUpPrompt(
-      prompt: pulumi.Input.fromValue(
-        IntentFollowUpPromptPrompt.fromMap(
-          (map['prompt']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      rejectionStatement: pulumi.Input.fromValue(
-        IntentFollowUpPromptRejectionStatement.fromMap(
-          (map['rejectionStatement']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      prompt: pulumi.Input.fromValue(IntentFollowUpPromptPrompt.fromMap((map['prompt']! as Map).cast<String, dynamic>())),
+      rejectionStatement: pulumi.Input.fromValue(IntentFollowUpPromptRejectionStatement.fromMap((map['rejectionStatement']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

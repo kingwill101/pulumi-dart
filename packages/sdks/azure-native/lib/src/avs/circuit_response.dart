@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CircuitResponse {
   /// Identifier of the ExpressRoute Circuit (Microsoft Colo only)
   final pulumi.Input<String> expressRouteID;
-
   /// ExpressRoute Circuit private peering identifier
   final pulumi.Input<String> expressRoutePrivatePeeringID;
-
   /// CIDR of primary subnet
   final pulumi.Input<String> primarySubnet;
-
   /// CIDR of secondary subnet
   final pulumi.Input<String> secondarySubnet;
 
@@ -40,11 +37,10 @@ class CircuitResponse {
   factory CircuitResponse.fromMap(Map<String, dynamic> map) {
     return CircuitResponse(
       expressRouteID: pulumi.Input.fromValue(map['expressRouteID'] as String),
-      expressRoutePrivatePeeringID: pulumi.Input.fromValue(
-        map['expressRoutePrivatePeeringID'] as String,
-      ),
+      expressRoutePrivatePeeringID: pulumi.Input.fromValue(map['expressRoutePrivatePeeringID'] as String),
       primarySubnet: pulumi.Input.fromValue(map['primarySubnet'] as String),
       secondarySubnet: pulumi.Input.fromValue(map['secondarySubnet'] as String),
     );
   }
 }
+

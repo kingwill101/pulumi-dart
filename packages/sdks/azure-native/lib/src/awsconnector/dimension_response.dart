@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DimensionResponse {
   /// The name for the CW metric dimension that the metric filter creates. Dimension names must contain only ASCII characters, must include at least one non-whitespace character, and cannot start with a colon (:).
   final pulumi.Input<String>? key;
-
   /// The name of the dimension, from 1–255 characters in length. This dimension name must have been included when the metric was published.
   final pulumi.Input<String>? name;
-
   /// Property value
   final pulumi.Input<String>? value;
 
@@ -17,29 +15,26 @@ class DimensionResponse {
   /// [key] The name for the CW metric dimension that the metric filter creates. Dimension names must contain only ASCII characters, must include at least one non-whitespace character, and cannot start with a colon (:).
   /// [name] The name of the dimension, from 1–255 characters in length. This dimension name must have been included when the metric was published.
   /// [value] Property value
-  DimensionResponse({this.key, this.name, this.value});
+  DimensionResponse({
+    this.key,
+    this.name,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': ?key, 'name': ?name, 'value': ?value};
+    return <String, dynamic>{
+      'key': ?key,
+      'name': ?name,
+      'value': ?value,
+    };
   }
 
   factory DimensionResponse.fromMap(Map<String, dynamic> map) {
     return DimensionResponse(
-      key: (() {
-        final guardedValue = map['key'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

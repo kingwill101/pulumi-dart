@@ -16,3 +16,4 @@ enum SettingsPricingPlan {
     throw ArgumentError('Unknown SettingsPricingPlan value: $value');
   }
 }
+

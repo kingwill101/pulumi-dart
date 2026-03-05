@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMscSubWebhooksArgs {
   /// A list of Webhook IDs.
   final pulumi.Input<List<String>>? ids;
-
   /// A regex string to filter results by Webhook name.
   final pulumi.Input<String>? nameRegex;
-
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
 
@@ -20,7 +18,11 @@ class GetMscSubWebhooksArgs {
   /// [ids] A list of Webhook IDs.
   /// [nameRegex] A regex string to filter results by Webhook name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetMscSubWebhooksArgs({this.ids, this.nameRegex, this.outputFile});
+  GetMscSubWebhooksArgs({
+    this.ids,
+    this.nameRegex,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,21 +34,10 @@ class GetMscSubWebhooksArgs {
 
   factory GetMscSubWebhooksArgs.fromMap(Map<String, dynamic> map) {
     return GetMscSubWebhooksArgs(
-      ids: (() {
-        final guardedValue = map['ids'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ids: (() { final guardedValue = map['ids']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

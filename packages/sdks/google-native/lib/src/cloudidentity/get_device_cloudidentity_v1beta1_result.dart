@@ -7,98 +7,66 @@ import 'endpoint_verification_specific_attributes_response.dart';
 class GetDeviceCloudidentityV1beta1Result {
   /// Attributes specific to Android devices.
   final AndroidAttributesResponse androidSpecificAttributes;
-
   /// Asset tag of the device.
   final String assetTag;
-
   /// Baseband version of the device.
   final String basebandVersion;
-
   /// Device bootloader version. Example: 0.6.7.
   final String bootloaderVersion;
-
   /// Device brand. Example: Samsung.
   final String brand;
-
   /// Build number of the device.
   final String buildNumber;
-
   /// List of the clients the device is reporting to.
   final List<String> clientTypes;
-
   /// Represents whether the Device is compromised.
   final String compromisedState;
-
   /// When the Company-Owned device was imported. This field is empty for BYOD devices.
   final String createTime;
-
   /// Unique identifier for the device.
   final String deviceId;
-
   /// Type of device.
   final String deviceType;
-
   /// Whether developer options is enabled on device.
   final bool enabledDeveloperOptions;
-
   /// Whether USB debugging is enabled on device.
   final bool enabledUsbDebugging;
-
   /// Device encryption state.
   final String encryptionState;
-
   /// Attributes specific to Endpoint Verification devices.
-  final EndpointVerificationSpecificAttributesResponse
-  endpointVerificationSpecificAttributes;
-
+  final EndpointVerificationSpecificAttributesResponse endpointVerificationSpecificAttributes;
   /// Host name of the device.
   final String hostname;
-
   /// IMEI number of device if GSM device; empty otherwise.
   final String imei;
-
   /// Kernel version of the device.
   final String kernelVersion;
-
   /// Most recent time when device synced with this service.
   final String lastSyncTime;
-
   /// Management state of the device
   final String managementState;
-
   /// Device manufacturer. Example: Motorola.
   final String manufacturer;
-
   /// MEID number of device if CDMA device; empty otherwise.
   final String meid;
-
   /// Model name of device. Example: Pixel 3.
   final String model;
-
   /// [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format: `devices/{device_id}`, where device_id is the unique id assigned to the Device.
   final String name;
-
   /// Mobile or network operator of device, if available.
   final String networkOperator;
-
   /// OS version of the device. Example: Android 8.1.0.
   final String osVersion;
-
   /// Domain name for Google accounts on device. Type for other accounts on device. On Android, will only be populated if |ownership_privilege| is |PROFILE_OWNER| or |DEVICE_OWNER|. Does not include the account signed in to the device policy app if that account's domain has only one account. Examples: "com.example", "xyz.com".
   final List<String> otherAccounts;
-
   /// Whether the device is owned by the company or an individual
   final String ownerType;
-
   /// OS release version. Example: 6.0.
   final String releaseVersion;
-
   /// OS security patch update time on device.
   final String securityPatchTime;
-
   /// Serial Number of device. Example: HT82V1A01076.
   final String serialNumber;
-
   /// WiFi MAC addresses of device.
   final List<String> wifiMacAddresses;
 
@@ -186,8 +154,7 @@ class GetDeviceCloudidentityV1beta1Result {
       'enabledDeveloperOptions': enabledDeveloperOptions,
       'enabledUsbDebugging': enabledUsbDebugging,
       'encryptionState': encryptionState,
-      'endpointVerificationSpecificAttributes':
-          endpointVerificationSpecificAttributes.toMap(),
+      'endpointVerificationSpecificAttributes': endpointVerificationSpecificAttributes.toMap(),
       'hostname': hostname,
       'imei': imei,
       'kernelVersion': kernelVersion,
@@ -208,13 +175,9 @@ class GetDeviceCloudidentityV1beta1Result {
     };
   }
 
-  factory GetDeviceCloudidentityV1beta1Result.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDeviceCloudidentityV1beta1Result.fromMap(Map<String, dynamic> map) {
     return GetDeviceCloudidentityV1beta1Result(
-      androidSpecificAttributes: AndroidAttributesResponse.fromMap(
-        (map['androidSpecificAttributes']! as Map).cast<String, dynamic>(),
-      ),
+      androidSpecificAttributes: AndroidAttributesResponse.fromMap((map['androidSpecificAttributes']! as Map).cast<String, dynamic>()),
       assetTag: map['assetTag'] as String,
       basebandVersion: map['basebandVersion'] as String,
       bootloaderVersion: map['bootloaderVersion'] as String,
@@ -228,11 +191,7 @@ class GetDeviceCloudidentityV1beta1Result {
       enabledDeveloperOptions: map['enabledDeveloperOptions'] as bool,
       enabledUsbDebugging: map['enabledUsbDebugging'] as bool,
       encryptionState: map['encryptionState'] as String,
-      endpointVerificationSpecificAttributes:
-          EndpointVerificationSpecificAttributesResponse.fromMap(
-            (map['endpointVerificationSpecificAttributes']! as Map)
-                .cast<String, dynamic>(),
-          ),
+      endpointVerificationSpecificAttributes: EndpointVerificationSpecificAttributesResponse.fromMap((map['endpointVerificationSpecificAttributes']! as Map).cast<String, dynamic>()),
       hostname: map['hostname'] as String,
       imei: map['imei'] as String,
       kernelVersion: map['kernelVersion'] as String,
@@ -253,3 +212,4 @@ class GetDeviceCloudidentityV1beta1Result {
     );
   }
 }
+

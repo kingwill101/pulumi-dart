@@ -128,52 +128,36 @@ import 'ocsp_state.dart';
 class Ocsp extends pulumi.CustomResource {
   /// Specifies the lifetime of an error response in the cache, in seconds. This value must be greater than connection_timeout. The default value is `3600`.
   late final pulumi.Output<int?> cacheErrorTimeout;
-
   /// Specifies the lifetime of the OCSP response in the cache, in seconds. The default value is `indefinite`.
   late final pulumi.Output<String?> cacheTimeout;
-
   /// Specifies the time interval that the BIG-IP system allows for clock skew, in seconds. The default value is `300`.
   late final pulumi.Output<int?> clockSkew;
-
   /// Specifies the maximum number of connections per second allowed for the OCSP certificate validator. The default value is `50`.
   late final pulumi.Output<int?> concurrentConnectionsLimit;
-
   /// Specifies the time interval that the BIG-IP system waits for before ending the connection to the OCSP responder, in seconds. The default value is `8`.
   late final pulumi.Output<int?> connectionTimeout;
-
   /// Specifies the internal DNS resolver the BIG-IP system uses to fetch the OCSP response.
   late final pulumi.Output<String?> dnsResolver;
-
   /// Name of the OCSP Responder. Name should be in pattern `/partition/ocsp_name`.
   late final pulumi.Output<String> name;
-
   /// Specifies a passphrase used to sign an OCSP request.
   late final pulumi.Output<String?> passphrase;
-
   /// Specifies the proxy server pool the BIG-IP system uses to fetch the OCSP response.
   late final pulumi.Output<String?> proxyServerPool;
-
   /// Specifies the URL of the OCSP responder.
   late final pulumi.Output<String?> responderUrl;
-
   /// Specifies the route domain for the OCSP responder.
   late final pulumi.Output<String?> routeDomain;
-
   /// Specifies the hash algorithm used to sign the OCSP request. The default value is `sha256`.
   late final pulumi.Output<String?> signHash;
-
   /// Specifies the certificate used to sign the OCSP request.
   late final pulumi.Output<String?> signerCert;
-
   /// Specifies the key used to sign the OCSP request.
   late final pulumi.Output<String?> signerKey;
-
   /// Specifies the maximum allowed lag time that the BIG-IP system accepts for the 'thisUpdate' time in the OCSP response, in seconds. The default value is `0`.
   late final pulumi.Output<int?> statusAge;
-
   /// Specifies whether the responder's certificate is checked for an OCSP signing extension. The default value is `enabled`.
   late final pulumi.Output<String?> strictRespCertCheck;
-
   /// Specifies the certificates used for validating the OCSP response.
   late final pulumi.Output<String?> trustedResponders;
 
@@ -181,19 +165,20 @@ class Ocsp extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Ocsp]. {@macro pulumi_sys_ocsp_ocsp_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Ocsp(String name, {OcspArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'f5bigip:sys/ocsp:Ocsp',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Ocsp(
+    String name, {
+    OcspArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'f5bigip:sys/ocsp:Ocsp',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cacheErrorTimeout = registerOutput<int?>('cacheErrorTimeout');
     cacheTimeout = registerOutput<String?>('cacheTimeout');
     clockSkew = registerOutput<int?>('clockSkew');
-    concurrentConnectionsLimit = registerOutput<int?>(
-      'concurrentConnectionsLimit',
-    );
+    concurrentConnectionsLimit = registerOutput<int?>('concurrentConnectionsLimit');
     connectionTimeout = registerOutput<int?>('connectionTimeout');
     dnsResolver = registerOutput<String?>('dnsResolver');
     this.name = registerOutput<String>('name');
@@ -210,7 +195,11 @@ class Ocsp extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Ocsp] resource's state with the given [name] and [id].
-  static Ocsp get(String name, pulumi.Input<String> id, {OcspState? state}) {
+  static Ocsp get(
+    String name,
+    pulumi.Input<String> id, {
+    OcspState? state,
+  }) {
     return Ocsp._get(
       name,
       state: state?.toMap(),
@@ -223,17 +212,15 @@ class Ocsp extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:sys/ocsp:Ocsp',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:sys/ocsp:Ocsp',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cacheErrorTimeout = registerOutput<int?>('cacheErrorTimeout');
     cacheTimeout = registerOutput<String?>('cacheTimeout');
     clockSkew = registerOutput<int?>('clockSkew');
-    concurrentConnectionsLimit = registerOutput<int?>(
-      'concurrentConnectionsLimit',
-    );
+    concurrentConnectionsLimit = registerOutput<int?>('concurrentConnectionsLimit');
     connectionTimeout = registerOutput<int?>('connectionTimeout');
     dnsResolver = registerOutput<String?>('dnsResolver');
     this.name = registerOutput<String>('name');

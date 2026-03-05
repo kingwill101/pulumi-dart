@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IdAssetReferenceResponse {
   /// [Required] ARM resource ID of the asset.
   final pulumi.Input<String> assetId;
-
   /// Enum to determine which reference method to use for an asset.
   /// Expected value is 'Id'.
   final pulumi.Input<String> referenceType;
@@ -33,3 +32,4 @@ class IdAssetReferenceResponse {
     );
   }
 }
+

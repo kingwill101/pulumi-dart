@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGroupTag {
   /// Key.
   final pulumi.Input<String> key;
-
   /// Whether the tag is propagated to Amazon EC2 instances launched via this ASG.
   final pulumi.Input<bool> propagateAtLaunch;
-
   /// Value.
   final pulumi.Input<String> value;
 
@@ -33,10 +31,9 @@ class GetGroupTag {
   factory GetGroupTag.fromMap(Map<String, dynamic> map) {
     return GetGroupTag(
       key: pulumi.Input.fromValue(map['key'] as String),
-      propagateAtLaunch: pulumi.Input.fromValue(
-        map['propagateAtLaunch'] as bool,
-      ),
+      propagateAtLaunch: pulumi.Input.fromValue(map['propagateAtLaunch'] as bool),
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
+

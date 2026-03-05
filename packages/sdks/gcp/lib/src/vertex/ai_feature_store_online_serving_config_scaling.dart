@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AiFeatureStoreOnlineServingConfigScaling {
   /// The maximum number of nodes to scale up to. Must be greater than minNodeCount, and less than or equal to 10 times of 'minNodeCount'.
   final pulumi.Input<int> maxNodeCount;
-
   /// The minimum number of nodes to scale down to. Must be greater than or equal to 1.
   final pulumi.Input<int> minNodeCount;
 
@@ -24,12 +23,11 @@ class AiFeatureStoreOnlineServingConfigScaling {
     };
   }
 
-  factory AiFeatureStoreOnlineServingConfigScaling.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AiFeatureStoreOnlineServingConfigScaling.fromMap(Map<String, dynamic> map) {
     return AiFeatureStoreOnlineServingConfigScaling(
       maxNodeCount: pulumi.Input.fromValue(map['maxNodeCount'] as int),
       minNodeCount: pulumi.Input.fromValue(map['minNodeCount'] as int),
     );
   }
 }
+

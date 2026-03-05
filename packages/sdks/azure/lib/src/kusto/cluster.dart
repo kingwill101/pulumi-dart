@@ -202,72 +202,50 @@ import 'cluster_virtual_network_configuration.dart';
 class Cluster extends pulumi.CustomResource {
   /// List of allowed FQDNs (Fully Qualified Domain Name) for egress from Cluster.
   late final pulumi.Output<List<String>?> allowedFqdns;
-
   /// The list of ips in the format of CIDR allowed to connect to the cluster.
   late final pulumi.Output<List<String>?> allowedIpRanges;
-
   /// Specifies if the cluster could be automatically stopped (due to lack of data or no activity for many days). Defaults to `true`.
   late final pulumi.Output<bool?> autoStopEnabled;
-
   /// The Kusto Cluster URI to be used for data ingestion.
   late final pulumi.Output<String> dataIngestionUri;
-
   /// Specifies if the cluster's disks are encrypted. Defaults to `false`.
   late final pulumi.Output<bool?> diskEncryptionEnabled;
-
   /// Is the cluster's double encryption enabled? Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> doubleEncryptionEnabled;
-
   /// An `identity` block as defined below.
   late final pulumi.Output<ClusterIdentity?> identity;
-
   /// A `language_extension` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> languageExtension;
   late final pulumi.Output<List<Map<String, dynamic>>> languageExtensions;
-
   /// The location where the Kusto Cluster should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The name of the Kusto Cluster to create. Only lowercase Alphanumeric characters allowed, starting with a letter. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// An `optimized_auto_scale` block as defined below.
   late final pulumi.Output<ClusterOptimizedAutoScale?> optimizedAutoScale;
-
   /// Whether to restrict outbound network access. Defaults to `false`.
   late final pulumi.Output<bool?> outboundNetworkAccessRestricted;
-
   /// Indicates what public IP type to create - IPv4 (default), or DualStack (both IPv4 and IPv6). Defaults to `IPv4`.
   late final pulumi.Output<String?> publicIpType;
-
   /// Is the public network access enabled? Defaults to `true`.
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
-
   /// Specifies if the purge operations are enabled. Defaults to `false`.
   late final pulumi.Output<bool?> purgeEnabled;
-
   /// Specifies the Resource Group where the Kusto Cluster should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A `sku` block as defined below.
   late final pulumi.Output<ClusterSku> sku;
-
   /// Specifies if the streaming ingest is enabled. Defaults to `false`.
   late final pulumi.Output<bool?> streamingIngestionEnabled;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Specifies a list of tenant IDs that are trusted by the cluster. Default setting trusts all other tenants. Use `trusted_external_tenants = ["*"]` to explicitly allow all other tenants, `trusted_external_tenants = ["MyTenantOnly"]` for only your tenant or `trusted_external_tenants = ["&lt;tenantId1&gt;", "&lt;tenantIdx&gt;"]` to allow specific other tenants.
   ///
   /// &gt; **Note:** In v3.0 of `azurerm` a new or updated Kusto Cluster will only allow your own tenant by default. Explicit configuration of this setting will change from `trusted_external_tenants = ["MyTenantOnly"]` to `trusted_external_tenants = []`.
   late final pulumi.Output<List<String>> trustedExternalTenants;
-
   /// The FQDN of the Azure Kusto Cluster.
   late final pulumi.Output<String> uri;
-  late final pulumi.Output<ClusterVirtualNetworkConfiguration?>
-  virtualNetworkConfiguration;
-
+  late final pulumi.Output<ClusterVirtualNetworkConfiguration?> virtualNetworkConfiguration;
   /// Specifies a list of Availability Zones in which this Kusto Cluster should be located. Changing this forces a new Kusto Cluster to be created.
   late final pulumi.Output<List<String>?> zones;
 
@@ -280,83 +258,34 @@ class Cluster extends pulumi.CustomResource {
     ClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:kusto/cluster:Cluster',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:kusto/cluster:Cluster',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allowedFqdns = registerOutput<List<String>?>('allowedFqdns');
     allowedIpRanges = registerOutput<List<String>?>('allowedIpRanges');
     autoStopEnabled = registerOutput<bool?>('autoStopEnabled');
     dataIngestionUri = registerOutput<String>('dataIngestionUri');
     diskEncryptionEnabled = registerOutput<bool?>('diskEncryptionEnabled');
     doubleEncryptionEnabled = registerOutput<bool?>('doubleEncryptionEnabled');
-    identity = registerOutput<ClusterIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    languageExtension = registerOutput<List<Map<String, dynamic>>>(
-      'languageExtension',
-    );
-    languageExtensions = registerOutput<List<Map<String, dynamic>>>(
-      'languageExtensions',
-    );
+    identity = registerOutput<ClusterIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    languageExtension = registerOutput<List<Map<String, dynamic>>>('languageExtension');
+    languageExtensions = registerOutput<List<Map<String, dynamic>>>('languageExtensions');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    optimizedAutoScale = registerOutput<ClusterOptimizedAutoScale?>(
-      'optimizedAutoScale',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterOptimizedAutoScale.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    outboundNetworkAccessRestricted = registerOutput<bool?>(
-      'outboundNetworkAccessRestricted',
-    );
+    optimizedAutoScale = registerOutput<ClusterOptimizedAutoScale?>('optimizedAutoScale', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterOptimizedAutoScale.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    outboundNetworkAccessRestricted = registerOutput<bool?>('outboundNetworkAccessRestricted');
     publicIpType = registerOutput<String?>('publicIpType');
-    publicNetworkAccessEnabled = registerOutput<bool?>(
-      'publicNetworkAccessEnabled',
-    );
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     purgeEnabled = registerOutput<bool?>('purgeEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    sku = registerOutput<ClusterSku>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterSku.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    streamingIngestionEnabled = registerOutput<bool?>(
-      'streamingIngestionEnabled',
-    );
+    sku = registerOutput<ClusterSku>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterSku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    streamingIngestionEnabled = registerOutput<bool?>('streamingIngestionEnabled');
     tags = registerOutput<Map<String, String>?>('tags');
-    trustedExternalTenants = registerOutput<List<String>>(
-      'trustedExternalTenants',
-    );
+    trustedExternalTenants = registerOutput<List<String>>('trustedExternalTenants');
     uri = registerOutput<String>('uri');
-    virtualNetworkConfiguration =
-        registerOutput<ClusterVirtualNetworkConfiguration?>(
-          'virtualNetworkConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ClusterVirtualNetworkConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    virtualNetworkConfiguration = registerOutput<ClusterVirtualNetworkConfiguration?>('virtualNetworkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterVirtualNetworkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     zones = registerOutput<List<String>?>('zones');
   }
 
@@ -378,83 +307,34 @@ class Cluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:kusto/cluster:Cluster',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:kusto/cluster:Cluster',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allowedFqdns = registerOutput<List<String>?>('allowedFqdns');
     allowedIpRanges = registerOutput<List<String>?>('allowedIpRanges');
     autoStopEnabled = registerOutput<bool?>('autoStopEnabled');
     dataIngestionUri = registerOutput<String>('dataIngestionUri');
     diskEncryptionEnabled = registerOutput<bool?>('diskEncryptionEnabled');
     doubleEncryptionEnabled = registerOutput<bool?>('doubleEncryptionEnabled');
-    identity = registerOutput<ClusterIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    languageExtension = registerOutput<List<Map<String, dynamic>>>(
-      'languageExtension',
-    );
-    languageExtensions = registerOutput<List<Map<String, dynamic>>>(
-      'languageExtensions',
-    );
+    identity = registerOutput<ClusterIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    languageExtension = registerOutput<List<Map<String, dynamic>>>('languageExtension');
+    languageExtensions = registerOutput<List<Map<String, dynamic>>>('languageExtensions');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    optimizedAutoScale = registerOutput<ClusterOptimizedAutoScale?>(
-      'optimizedAutoScale',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterOptimizedAutoScale.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    outboundNetworkAccessRestricted = registerOutput<bool?>(
-      'outboundNetworkAccessRestricted',
-    );
+    optimizedAutoScale = registerOutput<ClusterOptimizedAutoScale?>('optimizedAutoScale', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterOptimizedAutoScale.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    outboundNetworkAccessRestricted = registerOutput<bool?>('outboundNetworkAccessRestricted');
     publicIpType = registerOutput<String?>('publicIpType');
-    publicNetworkAccessEnabled = registerOutput<bool?>(
-      'publicNetworkAccessEnabled',
-    );
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     purgeEnabled = registerOutput<bool?>('purgeEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    sku = registerOutput<ClusterSku>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterSku.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    streamingIngestionEnabled = registerOutput<bool?>(
-      'streamingIngestionEnabled',
-    );
+    sku = registerOutput<ClusterSku>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterSku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    streamingIngestionEnabled = registerOutput<bool?>('streamingIngestionEnabled');
     tags = registerOutput<Map<String, String>?>('tags');
-    trustedExternalTenants = registerOutput<List<String>>(
-      'trustedExternalTenants',
-    );
+    trustedExternalTenants = registerOutput<List<String>>('trustedExternalTenants');
     uri = registerOutput<String>('uri');
-    virtualNetworkConfiguration =
-        registerOutput<ClusterVirtualNetworkConfiguration?>(
-          'virtualNetworkConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ClusterVirtualNetworkConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    virtualNetworkConfiguration = registerOutput<ClusterVirtualNetworkConfiguration?>('virtualNetworkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterVirtualNetworkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     zones = registerOutput<List<String>?>('zones');
   }
 }

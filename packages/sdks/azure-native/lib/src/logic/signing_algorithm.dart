@@ -19,3 +19,4 @@ enum SigningAlgorithm {
     throw ArgumentError('Unknown SigningAlgorithm value: $value');
   }
 }
+

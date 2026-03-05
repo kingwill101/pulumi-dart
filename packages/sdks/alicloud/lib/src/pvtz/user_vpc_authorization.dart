@@ -137,10 +137,8 @@ import 'user_vpc_authorization_state.dart';
 class UserVpcAuthorization extends pulumi.CustomResource {
   /// The auth channel. Valid values: `RESOURCE_DIRECTORY`.
   late final pulumi.Output<String?> authChannel;
-
   /// The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`.
   late final pulumi.Output<String?> authType;
-
   /// The primary account ID of the user who authorizes the resource.
   late final pulumi.Output<String> authorizedUserId;
 
@@ -153,11 +151,11 @@ class UserVpcAuthorization extends pulumi.CustomResource {
     UserVpcAuthorizationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:pvtz/userVpcAuthorization:UserVpcAuthorization',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:pvtz/userVpcAuthorization:UserVpcAuthorization',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     authChannel = registerOutput<String?>('authChannel');
     authType = registerOutput<String?>('authType');
     authorizedUserId = registerOutput<String>('authorizedUserId');
@@ -181,11 +179,11 @@ class UserVpcAuthorization extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:pvtz/userVpcAuthorization:UserVpcAuthorization',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:pvtz/userVpcAuthorization:UserVpcAuthorization',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     authChannel = registerOutput<String?>('authChannel');
     authType = registerOutput<String?>('authType');
     authorizedUserId = registerOutput<String>('authorizedUserId');

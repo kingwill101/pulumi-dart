@@ -155,36 +155,26 @@ import 'system_data_response.dart';
 class Project extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Field that defines the Azure active directory application info, used to connect to the target Azure resource
-  late final pulumi.Output<AzureActiveDirectoryAppResponse?>
-  azureAuthenticationInfo;
-
+  late final pulumi.Output<AzureActiveDirectoryAppResponse?> azureAuthenticationInfo;
   /// UTC Date and time when project was created
   late final pulumi.Output<String> creationTime;
-
   /// List of DatabaseInfo
   late final pulumi.Output<List<Map<String, dynamic>>?> databasesInfo;
-
   /// HTTP strong entity tag value. This is ignored if submitted.
   late final pulumi.Output<String?> etag;
   late final pulumi.Output<String?> location;
   late final pulumi.Output<String> name;
-
   /// The project's provisioning state
   late final pulumi.Output<String> provisioningState;
-
   /// Information for connecting to source
   late final pulumi.Output<MiSqlConnectionInfoResponse?> sourceConnectionInfo;
-
   /// Source platform for the project
   late final pulumi.Output<String> sourcePlatform;
   late final pulumi.Output<SystemDataResponse> systemData;
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Information for connecting to target
   late final pulumi.Output<MiSqlConnectionInfoResponse?> targetConnectionInfo;
-
   /// Target platform for the project
   late final pulumi.Output<String> targetPlatform;
   late final pulumi.Output<String> type;
@@ -198,62 +188,24 @@ class Project extends pulumi.CustomResource {
     ProjectArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:datamigration:Project',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:datamigration:Project',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    azureAuthenticationInfo = registerOutput<AzureActiveDirectoryAppResponse?>(
-      'azureAuthenticationInfo',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureActiveDirectoryAppResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    azureAuthenticationInfo = registerOutput<AzureActiveDirectoryAppResponse?>('azureAuthenticationInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureActiveDirectoryAppResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     creationTime = registerOutput<String>('creationTime');
-    databasesInfo = registerOutput<List<Map<String, dynamic>>?>(
-      'databasesInfo',
-    );
+    databasesInfo = registerOutput<List<Map<String, dynamic>>?>('databasesInfo');
     etag = registerOutput<String?>('etag');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    sourceConnectionInfo = registerOutput<MiSqlConnectionInfoResponse?>(
-      'sourceConnectionInfo',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MiSqlConnectionInfoResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sourceConnectionInfo = registerOutput<MiSqlConnectionInfoResponse?>('sourceConnectionInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MiSqlConnectionInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sourcePlatform = registerOutput<String>('sourcePlatform');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
-    targetConnectionInfo = registerOutput<MiSqlConnectionInfoResponse?>(
-      'targetConnectionInfo',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MiSqlConnectionInfoResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    targetConnectionInfo = registerOutput<MiSqlConnectionInfoResponse?>('targetConnectionInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MiSqlConnectionInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     targetPlatform = registerOutput<String>('targetPlatform');
     type = registerOutput<String>('type');
   }

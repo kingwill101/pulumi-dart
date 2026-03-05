@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudApigeeV1AnalyticsConfigResponse {
   /// Whether the Analytics add-on is enabled.
   final pulumi.Input<bool> enabled;
-
   /// Time at which the Analytics add-on expires in milliseconds since epoch. If unspecified, the add-on will never expire.
   final pulumi.Input<String> expireTimeMillis;
-
   /// The state of the Analytics add-on.
   final pulumi.Input<String> state;
-
   /// The latest update time.
   final pulumi.Input<String> updateTime;
 
@@ -37,16 +34,13 @@ class GoogleCloudApigeeV1AnalyticsConfigResponse {
     };
   }
 
-  factory GoogleCloudApigeeV1AnalyticsConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudApigeeV1AnalyticsConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1AnalyticsConfigResponse(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
-      expireTimeMillis: pulumi.Input.fromValue(
-        map['expireTimeMillis'] as String,
-      ),
+      expireTimeMillis: pulumi.Input.fromValue(map['expireTimeMillis'] as String),
       state: pulumi.Input.fromValue(map['state'] as String),
       updateTime: pulumi.Input.fromValue(map['updateTime'] as String),
     );
   }
 }
+

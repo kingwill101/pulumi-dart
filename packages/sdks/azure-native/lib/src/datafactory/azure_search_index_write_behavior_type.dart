@@ -12,8 +12,7 @@ enum AzureSearchIndexWriteBehaviorType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown AzureSearchIndexWriteBehaviorType value: $value',
-    );
+    throw ArgumentError('Unknown AzureSearchIndexWriteBehaviorType value: $value');
   }
 }
+

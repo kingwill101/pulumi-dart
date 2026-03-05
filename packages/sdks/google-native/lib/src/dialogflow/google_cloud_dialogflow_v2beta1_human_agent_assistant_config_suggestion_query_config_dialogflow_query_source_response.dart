@@ -7,12 +7,8 @@ import 'google_cloud_dialogflow_v2beta1_human_agent_assistant_config_suggestion_
 class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceResponse {
   /// The name of a dialogflow virtual agent used for end user side intent detection and suggestion. Format: `projects//locations//agent`. When multiple agents are allowed in the same Dialogflow project.
   final pulumi.Input<String> agent;
-
   /// The Dialogflow assist configuration for human agent.
-  final pulumi.Input<
-    GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigResponse
-  >
-  humanAgentSideConfig;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigResponse> humanAgentSideConfig;
 
   /// Creates a new [GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceResponse].
   /// [agent] The name of a dialogflow virtual agent used for end user side intent detection and suggestion. Format: `projects//locations//agent`. When multiple agents are allowed in the same Dialogflow project.
@@ -25,24 +21,15 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'agent': agent,
-      'humanAgentSideConfig':
-          pulumi.Input.mapInputValue<
-            GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigResponse,
-            Map<String, dynamic>
-          >(humanAgentSideConfig, (value) => value.toMap()),
+      'humanAgentSideConfig': pulumi.Input.mapInputValue<GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigResponse, Map<String, dynamic>>(humanAgentSideConfig, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceResponse(
       agent: pulumi.Input.fromValue(map['agent'] as String),
-      humanAgentSideConfig: pulumi.Input.fromValue(
-        GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigResponse.fromMap(
-          (map['humanAgentSideConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      humanAgentSideConfig: pulumi.Input.fromValue(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigResponse.fromMap((map['humanAgentSideConfig']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserPoolUICustomizationArgs {
   /// The client ID for the client app. Defaults to `ALL`. If `ALL` is specified, the `css` and/or `image_file` settings will be used for every client that has no UI customization set previously.
   final pulumi.Input<String>? clientId;
-
   /// The CSS values in the UI customization, provided as a String. At least one of `css` or `image_file` is required.
   final pulumi.Input<String>? css;
-
   /// The uploaded logo image for the UI customization, provided as a base64-encoded String. Drift detection is not possible for this argument. At least one of `css` or `image_file` is required.
   final pulumi.Input<String>? imageFile;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The user pool ID for the user pool.
   final pulumi.Input<String> userPoolId;
 
@@ -48,27 +44,12 @@ class UserPoolUICustomizationArgs {
 
   factory UserPoolUICustomizationArgs.fromMap(Map<String, dynamic> map) {
     return UserPoolUICustomizationArgs(
-      clientId: (() {
-        final guardedValue = map['clientId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      css: (() {
-        final guardedValue = map['css'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      imageFile: (() {
-        final guardedValue = map['imageFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      clientId: (() { final guardedValue = map['clientId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      css: (() { final guardedValue = map['css']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      imageFile: (() { final guardedValue = map['imageFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       userPoolId: pulumi.Input.fromValue(map['userPoolId'] as String),
     );
   }
 }
+

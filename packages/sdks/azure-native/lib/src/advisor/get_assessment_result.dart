@@ -6,43 +6,30 @@ import 'system_data_response.dart';
 class GetAssessmentResult {
   /// Assessment Id.
   final String assessmentId;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Assessment Type Description.
   final String description;
-
   /// Assessment Id
   final String id;
-
   /// Assessment Type Locale.
   final String? locale;
-
   /// Assessment Name
   final String name;
-
   /// Assessment Score.
   final int score;
-
   /// Assessment State.
   final String state;
-
   /// Metadata pertaining to creation and last modification of the resource.
   final SystemDataResponse systemData;
-
   /// Resource Type
   final String type;
-
   /// Assessment Type Id.
   final String? typeId;
-
   /// Assessment Type Version.
   final String typeVersion;
-
   /// Workload Id.
   final String? workloadId;
-
   /// Workload Name.
   final String workloadName;
 
@@ -103,30 +90,17 @@ class GetAssessmentResult {
       azureApiVersion: map['azureApiVersion'] as String,
       description: map['description'] as String,
       id: map['id'] as String,
-      locale: (() {
-        final guardedValue = map['locale'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      locale: (() { final guardedValue = map['locale']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
       score: map['score'] as int,
       state: map['state'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
-      typeId: (() {
-        final guardedValue = map['typeId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      typeId: (() { final guardedValue = map['typeId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       typeVersion: map['typeVersion'] as String,
-      workloadId: (() {
-        final guardedValue = map['workloadId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      workloadId: (() { final guardedValue = map['workloadId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       workloadName: map['workloadName'] as String,
     );
   }
 }
+

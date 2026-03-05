@@ -180,40 +180,28 @@ import 'notification_channel_args.dart';
 class NotificationChannel extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The creation date of the notification channel.
   late final pulumi.Output<String> createdDate;
-
   /// Description of notification.
   late final pulumi.Output<String?> description;
-
   /// The email recipient to send notifications to (can be a list of semi-colon separated email addresses).
   late final pulumi.Output<String?> emailRecipient;
-
   /// The list of event for which this notification is enabled.
   late final pulumi.Output<List<Map<String, dynamic>>?> events;
-
   /// The location of the resource.
   late final pulumi.Output<String?> location;
-
   /// The name of the resource.
   late final pulumi.Output<String> name;
-
   /// The locale to use when sending a notification (fallback for unsupported languages is EN).
   late final pulumi.Output<String?> notificationLocale;
-
   /// The provisioning status of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The tags of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource.
   late final pulumi.Output<String> type;
-
   /// The unique immutable identifier of a resource (Guid).
   late final pulumi.Output<String> uniqueIdentifier;
-
   /// The webhook URL to send notifications to.
   late final pulumi.Output<String?> webHookUrl;
 
@@ -226,11 +214,11 @@ class NotificationChannel extends pulumi.CustomResource {
     NotificationChannelArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:devtestlab:NotificationChannel',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:devtestlab:NotificationChannel',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createdDate = registerOutput<String>('createdDate');
     description = registerOutput<String?>('description');

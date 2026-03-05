@@ -117,18 +117,25 @@ class Qos extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Qos]. {@macro pulumi_sag_qos_qos_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Qos(String name, {QosArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:sag/qos:Qos',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Qos(
+    String name, {
+    QosArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:sag/qos:Qos',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
   }
 
   /// Gets an existing [Qos] resource's state with the given [name] and [id].
-  static Qos get(String name, pulumi.Input<String> id, {QosState? state}) {
+  static Qos get(
+    String name,
+    pulumi.Input<String> id, {
+    QosState? state,
+  }) {
     return Qos._get(
       name,
       state: state?.toMap(),
@@ -141,11 +148,11 @@ class Qos extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:sag/qos:Qos',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:sag/qos:Qos',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
   }
 }

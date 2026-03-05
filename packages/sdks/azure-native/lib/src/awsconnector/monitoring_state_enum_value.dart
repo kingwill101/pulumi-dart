@@ -9,19 +9,20 @@ class MonitoringStateEnumValue {
 
   /// Creates a new [MonitoringStateEnumValue].
   /// [value] Property value
-  MonitoringStateEnumValue({this.value});
+  MonitoringStateEnumValue({
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': ?value};
+    return <String, dynamic>{
+      'value': ?value,
+    };
   }
 
   factory MonitoringStateEnumValue.fromMap(Map<String, dynamic> map) {
     return MonitoringStateEnumValue(
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

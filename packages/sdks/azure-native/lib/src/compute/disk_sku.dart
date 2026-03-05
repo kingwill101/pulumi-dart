@@ -9,19 +9,20 @@ class DiskSku {
 
   /// Creates a new [DiskSku].
   /// [name] The sku name.
-  DiskSku({this.name});
+  DiskSku({
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name};
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
   factory DiskSku.fromMap(Map<String, dynamic> map) {
     return DiskSku(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

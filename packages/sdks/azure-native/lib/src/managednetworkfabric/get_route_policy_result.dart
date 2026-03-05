@@ -8,46 +8,32 @@ import 'system_data_response.dart';
 class GetRoutePolicyResult {
   /// AddressFamilyType. This parameter decides whether the given ipv4 or ipv6 route policy.
   final String? addressFamilyType;
-
   /// Administrative state of the resource.
   final String administrativeState;
-
   /// Switch configuration description.
   final String? annotation;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Configuration state of the resource.
   final String configurationState;
-
   /// Default action that needs to be applied when no condition is matched. Example: Permit | Deny.
   final String? defaultAction;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// The geo-location where the resource lives
   final String location;
-
   /// The name of the resource
   final String name;
-
   /// Arm Resource ID of Network Fabric.
   final String networkFabricId;
-
   /// Provisioning state of the resource.
   final String provisioningState;
-
   /// Route Policy statements.
   final List<RoutePolicyStatementPropertiesResponse> statements;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -98,11 +84,7 @@ class GetRoutePolicyResult {
       'name': name,
       'networkFabricId': networkFabricId,
       'provisioningState': provisioningState,
-      'statements':
-          pulumi.Input.encodeList<
-            RoutePolicyStatementPropertiesResponse,
-            Map<String, dynamic>
-          >(statements, (value) => value.toMap()),
+      'statements': pulumi.Input.encodeList<RoutePolicyStatementPropertiesResponse, Map<String, dynamic>>(statements, (value) => value.toMap()),
       'systemData': systemData.toMap(),
       'tags': ?tags,
       'type': type,
@@ -111,45 +93,22 @@ class GetRoutePolicyResult {
 
   factory GetRoutePolicyResult.fromMap(Map<String, dynamic> map) {
     return GetRoutePolicyResult(
-      addressFamilyType: (() {
-        final guardedValue = map['addressFamilyType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      addressFamilyType: (() { final guardedValue = map['addressFamilyType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       administrativeState: map['administrativeState'] as String,
-      annotation: (() {
-        final guardedValue = map['annotation'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      annotation: (() { final guardedValue = map['annotation']; if (guardedValue == null) return null; return guardedValue as String; })(),
       azureApiVersion: map['azureApiVersion'] as String,
       configurationState: map['configurationState'] as String,
-      defaultAction: (() {
-        final guardedValue = map['defaultAction'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      defaultAction: (() { final guardedValue = map['defaultAction']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
       networkFabricId: map['networkFabricId'] as String,
       provisioningState: map['provisioningState'] as String,
-      statements:
-          pulumi.Input.decodeList<RoutePolicyStatementPropertiesResponse>(
-            map['statements']!,
-            (value) => RoutePolicyStatementPropertiesResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      statements: pulumi.Input.decodeList<RoutePolicyStatementPropertiesResponse>(map['statements']!, (value) => RoutePolicyStatementPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

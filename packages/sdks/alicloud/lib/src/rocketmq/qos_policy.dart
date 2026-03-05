@@ -324,34 +324,24 @@ import 'qos_policy_state.dart';
 class QosPolicy extends pulumi.CustomResource {
   /// The description of the QoS policy.
   late final pulumi.Output<String?> description;
-
   /// The destination CIDR block.
   late final pulumi.Output<String> destCidr;
-
   /// The destination port range.
   late final pulumi.Output<String> destPortRange;
-
   /// The expiration time of the quintuple rule.
   late final pulumi.Output<String?> endTime;
-
   /// The transport layer protocol.
   late final pulumi.Output<String> ipProtocol;
-
   /// The name of the QoS policy.
   late final pulumi.Output<String> name;
-
   /// The priority of the quintuple rule. A smaller value indicates a higher priority. If the priorities of two quintuple rules are the same, the rule created earlier is applied first.Value range: 1 to 7.
   late final pulumi.Output<int> priority;
-
   /// The instance ID of the QoS policy to which the quintuple rule is created.
   late final pulumi.Output<String> qosId;
-
   /// The source CIDR block.
   late final pulumi.Output<String> sourceCidr;
-
   /// The source port range of the transport layer.
   late final pulumi.Output<String> sourcePortRange;
-
   /// The time when the quintuple rule takes effect.
   late final pulumi.Output<String?> startTime;
 
@@ -364,11 +354,11 @@ class QosPolicy extends pulumi.CustomResource {
     QosPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:rocketmq/qosPolicy:QosPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:rocketmq/qosPolicy:QosPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     destCidr = registerOutput<String>('destCidr');
     destPortRange = registerOutput<String>('destPortRange');
@@ -400,11 +390,11 @@ class QosPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:rocketmq/qosPolicy:QosPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:rocketmq/qosPolicy:QosPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     destCidr = registerOutput<String>('destCidr');
     destPortRange = registerOutput<String>('destPortRange');

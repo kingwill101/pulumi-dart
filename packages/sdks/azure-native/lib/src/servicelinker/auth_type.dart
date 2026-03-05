@@ -21,3 +21,4 @@ enum AuthType {
     throw ArgumentError('Unknown AuthType value: $value');
   }
 }
+

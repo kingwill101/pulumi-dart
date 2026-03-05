@@ -8,17 +8,20 @@ class GetInstanceGroupManagerParam {
 
   /// Creates a new [GetInstanceGroupManagerParam].
   /// [resourceManagerTags] Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456.
-  GetInstanceGroupManagerParam({required this.resourceManagerTags});
+  GetInstanceGroupManagerParam({
+    required this.resourceManagerTags,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'resourceManagerTags': resourceManagerTags};
+    return <String, dynamic>{
+      'resourceManagerTags': resourceManagerTags,
+    };
   }
 
   factory GetInstanceGroupManagerParam.fromMap(Map<String, dynamic> map) {
     return GetInstanceGroupManagerParam(
-      resourceManagerTags: pulumi.Input.fromValue(
-        (map['resourceManagerTags'] as Map).cast<String, String>(),
-      ),
+      resourceManagerTags: pulumi.Input.fromValue((map['resourceManagerTags'] as Map).cast<String, String>()),
     );
   }
 }
+

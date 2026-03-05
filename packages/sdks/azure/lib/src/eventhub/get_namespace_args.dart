@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNamespaceArgs {
   /// The name of the EventHub Namespace.
   final pulumi.Input<String> name;
-
   /// The Name of the Resource Group where the EventHub Namespace exists.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetNamespaceArgs].
   /// [name] The name of the EventHub Namespace.
   /// [resourceGroupName] The Name of the Resource Group where the EventHub Namespace exists.
-  GetNamespaceArgs({required this.name, required this.resourceGroupName});
+  GetNamespaceArgs({
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,9 +30,8 @@ class GetNamespaceArgs {
   factory GetNamespaceArgs.fromMap(Map<String, dynamic> map) {
     return GetNamespaceArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

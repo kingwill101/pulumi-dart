@@ -17,3 +17,4 @@ enum IndexQueryScope {
     throw ArgumentError('Unknown IndexQueryScope value: $value');
   }
 }
+

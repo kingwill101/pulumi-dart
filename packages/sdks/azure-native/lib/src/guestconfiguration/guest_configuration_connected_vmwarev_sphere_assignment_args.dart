@@ -10,19 +10,14 @@ import 'guest_configuration_assignment_properties.dart';
 class GuestConfigurationConnectedVMwarevSphereAssignmentArgs {
   /// The guest configuration assignment name.
   final pulumi.Input<String>? guestConfigurationAssignmentName;
-
   /// Region where the VM is located.
   final pulumi.Input<String>? location;
-
   /// The guest configuration assignment name.
   final pulumi.Input<String> name;
-
   /// Properties of the Guest configuration assignment.
   final pulumi.Input<GuestConfigurationAssignmentProperties>? properties;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the virtual machine.
   final pulumi.Input<String> vmName;
 
@@ -47,44 +42,21 @@ class GuestConfigurationConnectedVMwarevSphereAssignmentArgs {
       'guestConfigurationAssignmentName': ?guestConfigurationAssignmentName,
       'location': ?location,
       'name': name,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            GuestConfigurationAssignmentProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<GuestConfigurationAssignmentProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'vmName': vmName,
     };
   }
 
-  factory GuestConfigurationConnectedVMwarevSphereAssignmentArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GuestConfigurationConnectedVMwarevSphereAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return GuestConfigurationConnectedVMwarevSphereAssignmentArgs(
-      guestConfigurationAssignmentName: (() {
-        final guardedValue = map['guestConfigurationAssignmentName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      guestConfigurationAssignmentName: (() { final guardedValue = map['guestConfigurationAssignmentName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GuestConfigurationAssignmentProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GuestConfigurationAssignmentProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       vmName: pulumi.Input.fromValue(map['vmName'] as String),
     );
   }
 }
+

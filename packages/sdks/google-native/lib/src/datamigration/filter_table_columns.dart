@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FilterTableColumns {
   /// Optional. List of columns to be excluded for a particular table.
   final pulumi.Input<List<String>>? excludeColumns;
-
   /// Optional. List of columns to be included for a particular table.
   final pulumi.Input<List<String>>? includeColumns;
 
   /// Creates a new [FilterTableColumns].
   /// [excludeColumns] Optional. List of columns to be excluded for a particular table.
   /// [includeColumns] Optional. List of columns to be included for a particular table.
-  FilterTableColumns({this.excludeColumns, this.includeColumns});
+  FilterTableColumns({
+    this.excludeColumns,
+    this.includeColumns,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class FilterTableColumns {
 
   factory FilterTableColumns.fromMap(Map<String, dynamic> map) {
     return FilterTableColumns(
-      excludeColumns: (() {
-        final guardedValue = map['excludeColumns'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      includeColumns: (() {
-        final guardedValue = map['includeColumns'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      excludeColumns: (() { final guardedValue = map['excludeColumns']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      includeColumns: (() { final guardedValue = map['includeColumns']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

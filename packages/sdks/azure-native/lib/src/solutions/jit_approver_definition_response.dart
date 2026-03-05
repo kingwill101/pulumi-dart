@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JitApproverDefinitionResponse {
   /// The approver display name.
   final pulumi.Input<String>? displayName;
-
   /// The approver service principal Id.
   final pulumi.Input<String> id;
-
   /// The approver type.
   final pulumi.Input<String>? type;
 
@@ -33,17 +31,10 @@ class JitApproverDefinitionResponse {
 
   factory JitApproverDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return JitApproverDefinitionResponse(
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       id: pulumi.Input.fromValue(map['id'] as String),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

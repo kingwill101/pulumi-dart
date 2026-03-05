@@ -10,7 +10,6 @@ import '../accesscontextmanager/condition.dart';
 class GatewayIamMemberApigatewayV1betaArgs {
   /// An IAM Condition for a given binding.
   final pulumi.Input<Condition>? condition;
-
   /// Identity that will be granted the privilege in role. The entry can have one of the following values:
   ///
   /// * user:{emailid}: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
@@ -18,10 +17,8 @@ class GatewayIamMemberApigatewayV1betaArgs {
   /// * group:{emailid}: An email address that represents a Google group. For example, admins@example.com.
   /// * domain:{domain}: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
   final pulumi.Input<String> member;
-
   /// The name of the resource to manage IAM policies for.
   final pulumi.Input<String> name;
-
   /// The role that should be applied.
   final pulumi.Input<String> role;
 
@@ -39,31 +36,20 @@ class GatewayIamMemberApigatewayV1betaArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'condition':
-          ?pulumi.Input.mapOptionalInputValue<Condition, Map<String, dynamic>>(
-            condition,
-            (value) => value.toMap(),
-          ),
+      'condition': ?pulumi.Input.mapOptionalInputValue<Condition, Map<String, dynamic>>(condition, (value) => value.toMap()),
       'member': member,
       'name': name,
       'role': role,
     };
   }
 
-  factory GatewayIamMemberApigatewayV1betaArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GatewayIamMemberApigatewayV1betaArgs.fromMap(Map<String, dynamic> map) {
     return GatewayIamMemberApigatewayV1betaArgs(
-      condition: (() {
-        final guardedValue = map['condition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          Condition.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
+      condition: (() { final guardedValue = map['condition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Condition.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       member: pulumi.Input.fromValue(map['member'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       role: pulumi.Input.fromValue(map['role'] as String),
     );
   }
 }
+

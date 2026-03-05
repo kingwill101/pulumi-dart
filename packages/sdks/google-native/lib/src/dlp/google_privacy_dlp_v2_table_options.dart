@@ -10,39 +10,20 @@ class GooglePrivacyDlpV2TableOptions {
 
   /// Creates a new [GooglePrivacyDlpV2TableOptions].
   /// [identifyingFields] The columns that are the primary keys for table objects included in ContentItem. A copy of this cell's value will stored alongside alongside each finding so that the finding can be traced to the specific row it came from. No more than 3 may be provided.
-  GooglePrivacyDlpV2TableOptions({this.identifyingFields});
+  GooglePrivacyDlpV2TableOptions({
+    this.identifyingFields,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'identifyingFields':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GooglePrivacyDlpV2FieldId>,
-            List<Map<String, dynamic>>
-          >(
-            identifyingFields,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GooglePrivacyDlpV2FieldId,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'identifyingFields': ?pulumi.Input.mapOptionalInputValue<List<GooglePrivacyDlpV2FieldId>, List<Map<String, dynamic>>>(identifyingFields, (value) => pulumi.Input.encodeList<GooglePrivacyDlpV2FieldId, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GooglePrivacyDlpV2TableOptions.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2TableOptions(
-      identifyingFields: (() {
-        final guardedValue = map['identifyingFields'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GooglePrivacyDlpV2FieldId>(
-            guardedValue,
-            (value) => GooglePrivacyDlpV2FieldId.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      identifyingFields: (() { final guardedValue = map['identifyingFields']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GooglePrivacyDlpV2FieldId>(guardedValue, (value) => GooglePrivacyDlpV2FieldId.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

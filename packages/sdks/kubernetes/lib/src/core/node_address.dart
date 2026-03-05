@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NodeAddress {
   /// The node address.
   final pulumi.Input<String> address;
-
   /// Node address type, one of Hostname, ExternalIP or InternalIP.
   final pulumi.Input<String> type;
 
   /// Creates a new [NodeAddress].
   /// [address] The node address.
   /// [type] Node address type, one of Hostname, ExternalIP or InternalIP.
-  NodeAddress({required this.address, required this.type});
+  NodeAddress({
+    required this.address,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'address': address, 'type': type};
+    return <String, dynamic>{
+      'address': address,
+      'type': type,
+    };
   }
 
   factory NodeAddress.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class NodeAddress {
     );
   }
 }
+

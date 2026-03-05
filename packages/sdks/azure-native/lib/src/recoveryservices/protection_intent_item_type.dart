@@ -3,13 +3,9 @@ enum ProtectionIntentItemType {
   valueInvalid("Invalid"),
   valueAzureResourceItem("AzureResourceItem"),
   valueRecoveryServiceVaultItem("RecoveryServiceVaultItem"),
-  valueAzureWorkloadContainerAutoProtectionIntent(
-    "AzureWorkloadContainerAutoProtectionIntent",
-  ),
+  valueAzureWorkloadContainerAutoProtectionIntent("AzureWorkloadContainerAutoProtectionIntent"),
   valueAzureWorkloadAutoProtectionIntent("AzureWorkloadAutoProtectionIntent"),
-  valueAzureWorkloadSQLAutoProtectionIntent(
-    "AzureWorkloadSQLAutoProtectionIntent",
-  );
+  valueAzureWorkloadSQLAutoProtectionIntent("AzureWorkloadSQLAutoProtectionIntent");
 
   const ProtectionIntentItemType(this.wireValue);
   final String wireValue;
@@ -23,3 +19,4 @@ enum ProtectionIntentItemType {
     throw ArgumentError('Unknown ProtectionIntentItemType value: $value');
   }
 }
+

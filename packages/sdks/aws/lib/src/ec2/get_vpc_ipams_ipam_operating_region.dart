@@ -7,10 +7,14 @@ class GetVpcIpamsIpamOperatingRegion {
 
   /// Creates a new [GetVpcIpamsIpamOperatingRegion].
   /// [regionName] Required.
-  GetVpcIpamsIpamOperatingRegion({required this.regionName});
+  GetVpcIpamsIpamOperatingRegion({
+    required this.regionName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'regionName': regionName};
+    return <String, dynamic>{
+      'regionName': regionName,
+    };
   }
 
   factory GetVpcIpamsIpamOperatingRegion.fromMap(Map<String, dynamic> map) {
@@ -19,3 +23,4 @@ class GetVpcIpamsIpamOperatingRegion {
     );
   }
 }
+

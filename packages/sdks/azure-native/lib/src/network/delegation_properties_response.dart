@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DelegationPropertiesResponse {
   /// The current provisioning state.
   final pulumi.Input<String> provisioningState;
-
   /// The service name to which the NVA is delegated.
   final pulumi.Input<String>? serviceName;
 
@@ -27,14 +26,9 @@ class DelegationPropertiesResponse {
 
   factory DelegationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DelegationPropertiesResponse(
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
-      serviceName: (() {
-        final guardedValue = map['serviceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
+      serviceName: (() { final guardedValue = map['serviceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -41,13 +41,10 @@ class GetSfdcChannelArgs {
     return GetSfdcChannelArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
       productId: pulumi.Input.fromValue(map['productId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sfdcChannelId: pulumi.Input.fromValue(map['sfdcChannelId'] as String),
       sfdcInstanceId: pulumi.Input.fromValue(map['sfdcInstanceId'] as String),
     );
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContainerStorageAccountArgs {
   /// The name of the vault where the storage account will be registered. Changing this forces a new resource to be created.
   final pulumi.Input<String> recoveryVaultName;
-
   /// Name of the resource group where the vault is located. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
-
   /// The ID of the Storage Account to be registered Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Azure Backup places a Resource Lock on the storage account that will cause deletion to fail until the account is unregistered from Azure Backup
@@ -38,15 +36,10 @@ class ContainerStorageAccountArgs {
 
   factory ContainerStorageAccountArgs.fromMap(Map<String, dynamic> map) {
     return ContainerStorageAccountArgs(
-      recoveryVaultName: pulumi.Input.fromValue(
-        map['recoveryVaultName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      storageAccountId: pulumi.Input.fromValue(
-        map['storageAccountId'] as String,
-      ),
+      recoveryVaultName: pulumi.Input.fromValue(map['recoveryVaultName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      storageAccountId: pulumi.Input.fromValue(map['storageAccountId'] as String),
     );
   }
 }
+

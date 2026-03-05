@@ -7,10 +7,14 @@ class GetLaunchTemplateEnclaveOption {
 
   /// Creates a new [GetLaunchTemplateEnclaveOption].
   /// [enabled] Required.
-  GetLaunchTemplateEnclaveOption({required this.enabled});
+  GetLaunchTemplateEnclaveOption({
+    required this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled};
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
   factory GetLaunchTemplateEnclaveOption.fromMap(Map<String, dynamic> map) {
@@ -19,3 +23,4 @@ class GetLaunchTemplateEnclaveOption {
     );
   }
 }
+

@@ -10,10 +10,8 @@ import 'private_link_association_properties.dart';
 class PrivateLinkAssociationArgs {
   /// The management group ID.
   final pulumi.Input<String> groupId;
-
   /// The ID of the PLA
   final pulumi.Input<String>? plaId;
-
   /// The properties of the PrivateLinkAssociation.
   final pulumi.Input<PrivateLinkAssociationProperties>? properties;
 
@@ -31,31 +29,16 @@ class PrivateLinkAssociationArgs {
     return <String, dynamic>{
       'groupId': groupId,
       'plaId': ?plaId,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            PrivateLinkAssociationProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<PrivateLinkAssociationProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
     };
   }
 
   factory PrivateLinkAssociationArgs.fromMap(Map<String, dynamic> map) {
     return PrivateLinkAssociationArgs(
       groupId: pulumi.Input.fromValue(map['groupId'] as String),
-      plaId: (() {
-        final guardedValue = map['plaId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PrivateLinkAssociationProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      plaId: (() { final guardedValue = map['plaId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PrivateLinkAssociationProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

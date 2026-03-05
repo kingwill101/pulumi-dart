@@ -5,18 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig {
   /// The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
   final pulumi.Input<String> externalIpv6;
-
   /// The prefix length of the external IPv6 range.
   final pulumi.Input<String> externalIpv6PrefixLength;
-
   /// The name of the instance template. One of `name` or `filter` must be provided.
   final pulumi.Input<String> name;
-
   /// The [networking tier][network-tier] used for configuring
   /// this instance template. This field can take the following values: PREMIUM or
   /// STANDARD. If this field is not specified, it is assumed to be PREMIUM.
   final pulumi.Input<String> networkTier;
-
   /// The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
   final pulumi.Input<String> publicPtrDomainName;
 
@@ -44,19 +40,14 @@ class GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig {
     };
   }
 
-  factory GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig.fromMap(Map<String, dynamic> map) {
     return GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig(
       externalIpv6: pulumi.Input.fromValue(map['externalIpv6'] as String),
-      externalIpv6PrefixLength: pulumi.Input.fromValue(
-        map['externalIpv6PrefixLength'] as String,
-      ),
+      externalIpv6PrefixLength: pulumi.Input.fromValue(map['externalIpv6PrefixLength'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       networkTier: pulumi.Input.fromValue(map['networkTier'] as String),
-      publicPtrDomainName: pulumi.Input.fromValue(
-        map['publicPtrDomainName'] as String,
-      ),
+      publicPtrDomainName: pulumi.Input.fromValue(map['publicPtrDomainName'] as String),
     );
   }
 }
+

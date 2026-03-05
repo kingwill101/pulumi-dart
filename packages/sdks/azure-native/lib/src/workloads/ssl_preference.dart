@@ -16,3 +16,4 @@ enum SslPreference {
     throw ArgumentError('Unknown SslPreference value: $value');
   }
 }
+

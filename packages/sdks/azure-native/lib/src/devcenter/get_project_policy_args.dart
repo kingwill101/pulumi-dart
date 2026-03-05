@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetProjectPolicyArgs {
   /// The name of the devcenter.
   final pulumi.Input<String> devCenterName;
-
   /// The name of the project policy.
   final pulumi.Input<String> projectPolicyName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -37,12 +35,9 @@ class GetProjectPolicyArgs {
   factory GetProjectPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetProjectPolicyArgs(
       devCenterName: pulumi.Input.fromValue(map['devCenterName'] as String),
-      projectPolicyName: pulumi.Input.fromValue(
-        map['projectPolicyName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      projectPolicyName: pulumi.Input.fromValue(map['projectPolicyName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

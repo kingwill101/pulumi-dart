@@ -32,12 +32,9 @@ class GetRegistryArgs {
   factory GetRegistryArgs.fromMap(Map<String, dynamic> map) {
     return GetRegistryArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       registryId: pulumi.Input.fromValue(map['registryId'] as String),
     );
   }
 }
+

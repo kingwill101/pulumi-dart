@@ -202,31 +202,22 @@ import 'findings_filter_state.dart';
 class FindingsFilter extends pulumi.CustomResource {
   /// The action to perform on findings that meet the filter criteria (`finding_criteria`). Valid values are: `ARCHIVE`, suppress (automatically archive) the findings; and, `NOOP`, don't perform any action on the findings.
   late final pulumi.Output<String> action;
-
   /// The Amazon Resource Name (ARN) of the Findings Filter.
   late final pulumi.Output<String> arn;
-
   /// A custom description of the filter. The description can contain as many as 512 characters.
   late final pulumi.Output<String?> description;
-
   /// The criteria to use to filter findings.
   late final pulumi.Output<FindingsFilterFindingCriteria> findingCriteria;
-
   /// A custom name for the filter. The name must contain at least 3 characters and can contain as many as 64 characters. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
   late final pulumi.Output<String> name;
-
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   late final pulumi.Output<String> namePrefix;
-
   /// The position of the filter in the list of saved filters on the Amazon Macie console. This value also determines the order in which the filter is applied to findings, relative to other filters that are also applied to the findings.
   late final pulumi.Output<int> position;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -239,24 +230,15 @@ class FindingsFilter extends pulumi.CustomResource {
     FindingsFilterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:macie/findingsFilter:FindingsFilter',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:macie/findingsFilter:FindingsFilter',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     action = registerOutput<String>('action');
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
-    findingCriteria = registerOutput<FindingsFilterFindingCriteria>(
-      'findingCriteria',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FindingsFilterFindingCriteria.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    findingCriteria = registerOutput<FindingsFilterFindingCriteria>('findingCriteria', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FindingsFilterFindingCriteria.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
     position = registerOutput<int>('position');
@@ -283,24 +265,15 @@ class FindingsFilter extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:macie/findingsFilter:FindingsFilter',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:macie/findingsFilter:FindingsFilter',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     action = registerOutput<String>('action');
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
-    findingCriteria = registerOutput<FindingsFilterFindingCriteria>(
-      'findingCriteria',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FindingsFilterFindingCriteria.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    findingCriteria = registerOutput<FindingsFilterFindingCriteria>('findingCriteria', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FindingsFilterFindingCriteria.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
     position = registerOutput<int>('position');

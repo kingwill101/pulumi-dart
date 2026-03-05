@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPrometheusAlertRulesRuleAnnotation {
   /// The value of the annotation.
   final pulumi.Input<String> name;
-
   /// The name of the annotation name.
   final pulumi.Input<String> value;
 
@@ -18,15 +17,17 @@ class GetPrometheusAlertRulesRuleAnnotation {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'value': value};
+    return <String, dynamic>{
+      'name': name,
+      'value': value,
+    };
   }
 
-  factory GetPrometheusAlertRulesRuleAnnotation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetPrometheusAlertRulesRuleAnnotation.fromMap(Map<String, dynamic> map) {
     return GetPrometheusAlertRulesRuleAnnotation(
       name: pulumi.Input.fromValue(map['name'] as String),
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
+

@@ -9,10 +9,8 @@ import 'table_iam_member_condition.dart';
 /// {@macro pulumi_bigtable_table_iam_member_table_iam_member_args_doc}
 class TableIamMemberArgs {
   final pulumi.Input<TableIamMemberCondition>? condition;
-
   /// The name or relative resource id of the instance that owns the table.
   final pulumi.Input<String> instanceName;
-
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -22,18 +20,15 @@ class TableIamMemberArgs {
   /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
   final pulumi.Input<String> member;
-
   /// The project in which the table belongs. If it
   /// is not provided, this provider will use the provider default.
   final pulumi.Input<String>? project;
-
   /// The role that should be applied. Only one
   /// `gcp.bigtable.TableIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
   ///
   /// `gcp.bigtable.TableIamPolicy` only:
   final pulumi.Input<String> role;
-
   /// The name or relative resource id of the table to manage IAM policies for.
   ///
   /// For `gcp.bigtable.TableIamMember` or `gcp.bigtable.TableIamBinding`:
@@ -57,11 +52,7 @@ class TableIamMemberArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'condition':
-          ?pulumi.Input.mapOptionalInputValue<
-            TableIamMemberCondition,
-            Map<String, dynamic>
-          >(condition, (value) => value.toMap()),
+      'condition': ?pulumi.Input.mapOptionalInputValue<TableIamMemberCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
       'instanceName': instanceName,
       'member': member,
       'project': ?project,
@@ -72,24 +63,13 @@ class TableIamMemberArgs {
 
   factory TableIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return TableIamMemberArgs(
-      condition: (() {
-        final guardedValue = map['condition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          TableIamMemberCondition.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      condition: (() { final guardedValue = map['condition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TableIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       instanceName: pulumi.Input.fromValue(map['instanceName'] as String),
       member: pulumi.Input.fromValue(map['member'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       role: pulumi.Input.fromValue(map['role'] as String),
       table: pulumi.Input.fromValue(map['table'] as String),
     );
   }
 }
+

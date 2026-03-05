@@ -6,7 +6,6 @@ import 'get_ecs_image_components_component.dart';
 /// Result data returned by getEcsImageComponents.
 class GetEcsImageComponentsResult {
   final List<GetEcsImageComponentsComponent> components;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -44,11 +43,7 @@ class GetEcsImageComponentsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'components':
-          pulumi.Input.encodeList<
-            GetEcsImageComponentsComponent,
-            Map<String, dynamic>
-          >(components, (value) => value.toMap()),
+      'components': pulumi.Input.encodeList<GetEcsImageComponentsComponent, Map<String, dynamic>>(components, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'imageComponentName': ?imageComponentName,
@@ -63,45 +58,17 @@ class GetEcsImageComponentsResult {
 
   factory GetEcsImageComponentsResult.fromMap(Map<String, dynamic> map) {
     return GetEcsImageComponentsResult(
-      components: pulumi.Input.decodeList<GetEcsImageComponentsComponent>(
-        map['components']!,
-        (value) => GetEcsImageComponentsComponent.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      components: pulumi.Input.decodeList<GetEcsImageComponentsComponent>(map['components']!, (value) => GetEcsImageComponentsComponent.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      imageComponentName: (() {
-        final guardedValue = map['imageComponentName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      imageComponentName: (() { final guardedValue = map['imageComponentName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      owner: (() {
-        final guardedValue = map['owner'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      resourceGroupId: (() {
-        final guardedValue = map['resourceGroupId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      owner: (() { final guardedValue = map['owner']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceGroupId: (() { final guardedValue = map['resourceGroupId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }
 }
+

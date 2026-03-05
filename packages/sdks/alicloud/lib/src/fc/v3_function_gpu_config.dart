@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class V3FunctionGpuConfig {
   /// GPU memory specification, unit: MB, multiple of 1024MB
   final pulumi.Input<int>? gpuMemorySize;
-
   /// GPU card architecture.
   /// - fc.gpu.tesla.1 indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
   /// - fc.gpu.ampere.1 indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
@@ -15,7 +14,10 @@ class V3FunctionGpuConfig {
   /// Creates a new [V3FunctionGpuConfig].
   /// [gpuMemorySize] GPU memory specification, unit: MB, multiple of 1024MB
   /// [gpuType] GPU card architecture.
-  V3FunctionGpuConfig({this.gpuMemorySize, this.gpuType});
+  V3FunctionGpuConfig({
+    this.gpuMemorySize,
+    this.gpuType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,16 +28,9 @@ class V3FunctionGpuConfig {
 
   factory V3FunctionGpuConfig.fromMap(Map<String, dynamic> map) {
     return V3FunctionGpuConfig(
-      gpuMemorySize: (() {
-        final guardedValue = map['gpuMemorySize'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      gpuType: (() {
-        final guardedValue = map['gpuType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      gpuMemorySize: (() { final guardedValue = map['gpuMemorySize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      gpuType: (() { final guardedValue = map['gpuType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -9,7 +9,9 @@ class OAuthCredential {
 
   /// Creates a new [OAuthCredential].
   /// [oauthTokenSecretVersion] A SecretManager resource containing the OAuth token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
-  OAuthCredential({this.oauthTokenSecretVersion});
+  OAuthCredential({
+    this.oauthTokenSecretVersion,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,11 +21,8 @@ class OAuthCredential {
 
   factory OAuthCredential.fromMap(Map<String, dynamic> map) {
     return OAuthCredential(
-      oauthTokenSecretVersion: (() {
-        final guardedValue = map['oauthTokenSecretVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      oauthTokenSecretVersion: (() { final guardedValue = map['oauthTokenSecretVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

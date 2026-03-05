@@ -7,22 +7,11 @@ import 'get_metric_rule_templates_template_alert_template_escalation_warn.dart';
 
 class GetMetricRuleTemplatesTemplateAlertTemplateEscalation {
   /// The condition for triggering critical-level alerts.
-  final pulumi.Input<
-    List<GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical>
-  >
-  criticals;
-
+  final pulumi.Input<List<GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical>> criticals;
   /// The condition for triggering info-level alerts.
-  final pulumi.Input<
-    List<GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo>
-  >
-  infos;
-
+  final pulumi.Input<List<GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo>> infos;
   /// The condition for triggering warn-level alerts.
-  final pulumi.Input<
-    List<GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn>
-  >
-  warns;
+  final pulumi.Input<List<GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn>> warns;
 
   /// Creates a new [GetMetricRuleTemplatesTemplateAlertTemplateEscalation].
   /// [criticals] The condition for triggering critical-level alerts.
@@ -36,82 +25,18 @@ class GetMetricRuleTemplatesTemplateAlertTemplateEscalation {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'criticals':
-          pulumi.Input.mapInputValue<
-            List<GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical>,
-            List<Map<String, dynamic>>
-          >(
-            criticals,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'infos':
-          pulumi.Input.mapInputValue<
-            List<GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo>,
-            List<Map<String, dynamic>>
-          >(
-            infos,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'warns':
-          pulumi.Input.mapInputValue<
-            List<GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn>,
-            List<Map<String, dynamic>>
-          >(
-            warns,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'criticals': pulumi.Input.mapInputValue<List<GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical>, List<Map<String, dynamic>>>(criticals, (value) => pulumi.Input.encodeList<GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'infos': pulumi.Input.mapInputValue<List<GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo>, List<Map<String, dynamic>>>(infos, (value) => pulumi.Input.encodeList<GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'warns': pulumi.Input.mapInputValue<List<GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn>, List<Map<String, dynamic>>>(warns, (value) => pulumi.Input.encodeList<GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory GetMetricRuleTemplatesTemplateAlertTemplateEscalation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetMetricRuleTemplatesTemplateAlertTemplateEscalation.fromMap(Map<String, dynamic> map) {
     return GetMetricRuleTemplatesTemplateAlertTemplateEscalation(
-      criticals: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical
-        >(
-          map['criticals']!,
-          (value) =>
-              GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
-      infos: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo
-        >(
-          map['infos']!,
-          (value) =>
-              GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
-      warns: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn
-        >(
-          map['warns']!,
-          (value) =>
-              GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
+      criticals: pulumi.Input.fromValue(pulumi.Input.decodeList<GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical>(map['criticals']!, (value) => GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical.fromMap((value as Map).cast<String, dynamic>()))),
+      infos: pulumi.Input.fromValue(pulumi.Input.decodeList<GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo>(map['infos']!, (value) => GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo.fromMap((value as Map).cast<String, dynamic>()))),
+      warns: pulumi.Input.fromValue(pulumi.Input.decodeList<GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn>(map['warns']!, (value) => GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

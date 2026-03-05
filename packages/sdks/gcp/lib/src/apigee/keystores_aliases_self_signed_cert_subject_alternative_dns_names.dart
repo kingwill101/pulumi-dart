@@ -13,18 +13,15 @@ class KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'subjectAlternativeName': ?subjectAlternativeName};
+    return <String, dynamic>{
+      'subjectAlternativeName': ?subjectAlternativeName,
+    };
   }
 
-  factory KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames.fromMap(Map<String, dynamic> map) {
     return KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames(
-      subjectAlternativeName: (() {
-        final guardedValue = map['subjectAlternativeName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      subjectAlternativeName: (() { final guardedValue = map['subjectAlternativeName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

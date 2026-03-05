@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackupPolicyMysqlFlexibleServerRetentionRuleLifeCycle {
   /// The type of data store. The only possible value is `VaultStore`. Changing this forces a new resource to be created.
   final pulumi.Input<String> dataStoreType;
-
   /// The retention duration up to which the backups are to be retained in the data stores. It should follow `ISO 8601` duration format. Changing this forces a new resource to be created.
   final pulumi.Input<String> duration;
 
@@ -24,12 +23,11 @@ class BackupPolicyMysqlFlexibleServerRetentionRuleLifeCycle {
     };
   }
 
-  factory BackupPolicyMysqlFlexibleServerRetentionRuleLifeCycle.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BackupPolicyMysqlFlexibleServerRetentionRuleLifeCycle.fromMap(Map<String, dynamic> map) {
     return BackupPolicyMysqlFlexibleServerRetentionRuleLifeCycle(
       dataStoreType: pulumi.Input.fromValue(map['dataStoreType'] as String),
       duration: pulumi.Input.fromValue(map['duration'] as String),
     );
   }
 }
+

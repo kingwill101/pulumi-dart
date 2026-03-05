@@ -18,3 +18,4 @@ enum PerformanceTier {
     throw ArgumentError('Unknown PerformanceTier value: $value');
   }
 }
+

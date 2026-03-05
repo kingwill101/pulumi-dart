@@ -32,12 +32,9 @@ class GetQueueIamPolicyArgs {
   factory GetQueueIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetQueueIamPolicyArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       queueId: pulumi.Input.fromValue(map['queueId'] as String),
     );
   }
 }
+

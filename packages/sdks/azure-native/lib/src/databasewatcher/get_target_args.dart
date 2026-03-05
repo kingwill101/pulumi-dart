@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTargetArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The target resource name.
   final pulumi.Input<String> targetName;
-
   /// The database watcher name.
   final pulumi.Input<String> watcherName;
 
@@ -36,11 +34,10 @@ class GetTargetArgs {
 
   factory GetTargetArgs.fromMap(Map<String, dynamic> map) {
     return GetTargetArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       targetName: pulumi.Input.fromValue(map['targetName'] as String),
       watcherName: pulumi.Input.fromValue(map['watcherName'] as String),
     );
   }
 }
+

@@ -15,3 +15,4 @@ enum ScheduleEnableStatus {
     throw ArgumentError('Unknown ScheduleEnableStatus value: $value');
   }
 }
+

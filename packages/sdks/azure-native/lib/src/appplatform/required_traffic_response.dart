@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RequiredTrafficResponse {
   /// The direction of required traffic
   final pulumi.Input<String> direction;
-
   /// The FQDN list of required traffic
   final pulumi.Input<List<String>> fqdns;
-
   /// The ip list of required traffic
   final pulumi.Input<List<String>> ips;
-
   /// The port of required traffic
   final pulumi.Input<int> port;
-
   /// The protocol of required traffic
   final pulumi.Input<String> protocol;
 
@@ -53,3 +49,4 @@ class RequiredTrafficResponse {
     );
   }
 }
+

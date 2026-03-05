@@ -16,3 +16,4 @@ enum KnowledgeSourceType {
     throw ArgumentError('Unknown KnowledgeSourceType value: $value');
   }
 }
+

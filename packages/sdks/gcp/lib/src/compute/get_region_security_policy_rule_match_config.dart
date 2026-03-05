@@ -8,19 +8,20 @@ class GetRegionSecurityPolicyRuleMatchConfig {
 
   /// Creates a new [GetRegionSecurityPolicyRuleMatchConfig].
   /// [srcIpRanges] CIDR IP address range. Maximum number of srcIpRanges allowed is 10.
-  GetRegionSecurityPolicyRuleMatchConfig({required this.srcIpRanges});
+  GetRegionSecurityPolicyRuleMatchConfig({
+    required this.srcIpRanges,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'srcIpRanges': srcIpRanges};
+    return <String, dynamic>{
+      'srcIpRanges': srcIpRanges,
+    };
   }
 
-  factory GetRegionSecurityPolicyRuleMatchConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetRegionSecurityPolicyRuleMatchConfig.fromMap(Map<String, dynamic> map) {
     return GetRegionSecurityPolicyRuleMatchConfig(
-      srcIpRanges: pulumi.Input.fromValue(
-        (map['srcIpRanges'] as List).cast<String>(),
-      ),
+      srcIpRanges: pulumi.Input.fromValue((map['srcIpRanges'] as List).cast<String>()),
     );
   }
 }
+

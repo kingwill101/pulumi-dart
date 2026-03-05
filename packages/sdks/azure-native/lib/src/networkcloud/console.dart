@@ -221,49 +221,34 @@ import 'system_data_response.dart';
 class Console extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The more detailed status of the console.
   late final pulumi.Output<String> detailedStatus;
-
   /// The descriptive message about the current detailed status.
   late final pulumi.Output<String> detailedStatusMessage;
-
   /// The indicator of whether the console access is enabled.
   late final pulumi.Output<String> enabled;
-
   /// Resource ETag.
   late final pulumi.Output<String> etag;
-
   /// The date and time after which the key will be disallowed access.
   late final pulumi.Output<String?> expiration;
-
   /// The extended location of the cluster manager associated with the cluster this virtual machine is created on.
   late final pulumi.Output<ExtendedLocationResponse> extendedLocation;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The resource ID of the private link service that is used to provide virtual machine console access.
   late final pulumi.Output<String> privateLinkServiceId;
-
   /// The provisioning state of the virtual machine console.
   late final pulumi.Output<String> provisioningState;
-
   /// The SSH public key that will be provisioned for user access. The user is expected to have the corresponding SSH private key for logging in.
   late final pulumi.Output<SshPublicKeyResponse> sshPublicKey;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// The unique identifier for the virtual machine that is used to access the console.
   late final pulumi.Output<String> virtualMachineAccessId;
 
@@ -276,51 +261,24 @@ class Console extends pulumi.CustomResource {
     ConsoleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:networkcloud:Console',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:networkcloud:Console',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     detailedStatus = registerOutput<String>('detailedStatus');
     detailedStatusMessage = registerOutput<String>('detailedStatusMessage');
     enabled = registerOutput<String>('enabled');
     etag = registerOutput<String>('etag');
     expiration = registerOutput<String?>('expiration');
-    extendedLocation = registerOutput<ExtendedLocationResponse>(
-      'extendedLocation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExtendedLocationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    extendedLocation = registerOutput<ExtendedLocationResponse>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     privateLinkServiceId = registerOutput<String>('privateLinkServiceId');
     provisioningState = registerOutput<String>('provisioningState');
-    sshPublicKey = registerOutput<SshPublicKeyResponse>(
-      'sshPublicKey',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SshPublicKeyResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sshPublicKey = registerOutput<SshPublicKeyResponse>('sshPublicKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SshPublicKeyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     virtualMachineAccessId = registerOutput<String>('virtualMachineAccessId');

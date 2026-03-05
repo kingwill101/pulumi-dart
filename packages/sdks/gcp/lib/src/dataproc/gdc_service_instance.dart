@@ -190,42 +190,31 @@ import 'gdc_service_instance_state.dart';
 class GdcServiceInstance extends pulumi.CustomResource {
   /// The timestamp when the resource was created.
   late final pulumi.Output<String> createTime;
-
   /// User-provided human-readable name to be used in user interfaces.
   late final pulumi.Output<String?> displayName;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Effective service account associated with ServiceInstance. This will be the service_account if specified. Otherwise, it will be an automatically created per-resource P4SA that also automatically has Fleet Workload. Identity bindings applied.
   late final pulumi.Output<String> effectiveServiceAccount;
-
   /// Gdce cluster information.
   /// Structure is documented below.
   late final pulumi.Output<GdcServiceInstanceGdceCluster?> gdceCluster;
-
   /// The labels to associate with this service instance. Labels may be used for filtering and billing tracking.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// Location of the resource.
   late final pulumi.Output<String> location;
-
   /// Identifier. The name of the service instance.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// Whether the service instance is currently reconciling. True if the current state of the resource does not match the intended state, and the system is working to reconcile them, whether or not the change was user initiated.
   late final pulumi.Output<bool> reconciling;
-
   /// The intended state to which the service instance is reconciling. Possible values:
   /// * `CREATING`
   /// * `ACTIVE`
@@ -237,16 +226,12 @@ class GdcServiceInstance extends pulumi.CustomResource {
   /// * `UPDATING`
   /// * `FAILED`
   late final pulumi.Output<String> requestedState;
-
   /// Requested service account to associate with ServiceInstance.
   late final pulumi.Output<String?> serviceAccount;
-
   /// Id of the service instance.
   late final pulumi.Output<String> serviceInstanceId;
-
   /// Spark-specific service instance configuration.
   late final pulumi.Output<Map<String, dynamic>?> sparkServiceInstanceConfig;
-
   /// The current state. Possible values:
   /// * `CREATING`
   /// * `ACTIVE`
@@ -258,13 +243,10 @@ class GdcServiceInstance extends pulumi.CustomResource {
   /// * `UPDATING`
   /// * `FAILED`
   late final pulumi.Output<String> state;
-
   /// A message explaining the current state.
   late final pulumi.Output<String> stateMessage;
-
   /// System generated unique identifier for this service instance, formatted as UUID4.
   late final pulumi.Output<String> uid;
-
   /// The timestamp when the resource was most recently updated.
   late final pulumi.Output<String> updateTime;
 
@@ -277,25 +259,16 @@ class GdcServiceInstance extends pulumi.CustomResource {
     GdcServiceInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:dataproc/gdcServiceInstance:GdcServiceInstance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:dataproc/gdcServiceInstance:GdcServiceInstance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String?>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     effectiveServiceAccount = registerOutput<String>('effectiveServiceAccount');
-    gdceCluster = registerOutput<GdcServiceInstanceGdceCluster?>(
-      'gdceCluster',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GdcServiceInstanceGdceCluster.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    gdceCluster = registerOutput<GdcServiceInstanceGdceCluster?>('gdceCluster', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GdcServiceInstanceGdceCluster.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -305,9 +278,7 @@ class GdcServiceInstance extends pulumi.CustomResource {
     requestedState = registerOutput<String>('requestedState');
     serviceAccount = registerOutput<String?>('serviceAccount');
     serviceInstanceId = registerOutput<String>('serviceInstanceId');
-    sparkServiceInstanceConfig = registerOutput<Map<String, dynamic>?>(
-      'sparkServiceInstanceConfig',
-    );
+    sparkServiceInstanceConfig = registerOutput<Map<String, dynamic>?>('sparkServiceInstanceConfig');
     state = registerOutput<String>('state');
     stateMessage = registerOutput<String>('stateMessage');
     uid = registerOutput<String>('uid');
@@ -332,25 +303,16 @@ class GdcServiceInstance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:dataproc/gdcServiceInstance:GdcServiceInstance',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:dataproc/gdcServiceInstance:GdcServiceInstance',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String?>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     effectiveServiceAccount = registerOutput<String>('effectiveServiceAccount');
-    gdceCluster = registerOutput<GdcServiceInstanceGdceCluster?>(
-      'gdceCluster',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GdcServiceInstanceGdceCluster.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    gdceCluster = registerOutput<GdcServiceInstanceGdceCluster?>('gdceCluster', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GdcServiceInstanceGdceCluster.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -360,9 +322,7 @@ class GdcServiceInstance extends pulumi.CustomResource {
     requestedState = registerOutput<String>('requestedState');
     serviceAccount = registerOutput<String?>('serviceAccount');
     serviceInstanceId = registerOutput<String>('serviceInstanceId');
-    sparkServiceInstanceConfig = registerOutput<Map<String, dynamic>?>(
-      'sparkServiceInstanceConfig',
-    );
+    sparkServiceInstanceConfig = registerOutput<Map<String, dynamic>?>('sparkServiceInstanceConfig');
     this.state = registerOutput<String>('state');
     stateMessage = registerOutput<String>('stateMessage');
     uid = registerOutput<String>('uid');

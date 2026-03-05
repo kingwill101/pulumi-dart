@@ -340,16 +340,12 @@ import 'env_custom_job_state.dart';
 class EnvCustomJob extends pulumi.CustomResource {
   /// The locale. The default is Chinese zh | en.
   late final pulumi.Output<String?> aliyunLang;
-
   /// Yaml configuration string.
   late final pulumi.Output<String> configYaml;
-
   /// Custom job name.
   late final pulumi.Output<String> envCustomJobName;
-
   /// Environment id.
   late final pulumi.Output<String> environmentId;
-
   /// Status: run, stop.
   late final pulumi.Output<String> status;
 
@@ -362,11 +358,11 @@ class EnvCustomJob extends pulumi.CustomResource {
     EnvCustomJobArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:arms/envCustomJob:EnvCustomJob',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:arms/envCustomJob:EnvCustomJob',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aliyunLang = registerOutput<String?>('aliyunLang');
     configYaml = registerOutput<String>('configYaml');
     envCustomJobName = registerOutput<String>('envCustomJobName');
@@ -392,11 +388,11 @@ class EnvCustomJob extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:arms/envCustomJob:EnvCustomJob',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:arms/envCustomJob:EnvCustomJob',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aliyunLang = registerOutput<String?>('aliyunLang');
     configYaml = registerOutput<String>('configYaml');
     envCustomJobName = registerOutput<String>('envCustomJobName');

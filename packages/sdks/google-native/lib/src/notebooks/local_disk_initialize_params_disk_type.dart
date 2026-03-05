@@ -15,8 +15,7 @@ enum LocalDiskInitializeParamsDiskType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown LocalDiskInitializeParamsDiskType value: $value',
-    );
+    throw ArgumentError('Unknown LocalDiskInitializeParamsDiskType value: $value');
   }
 }
+

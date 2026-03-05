@@ -5,10 +5,7 @@ import 'lifecycle_policy_policy_details_schedule_archive_rule_archive_retain_rul
 
 class LifecyclePolicyPolicyDetailsScheduleArchiveRule {
   /// Information about the retention period for the snapshot archiving rule. See the `archive_retain_rule` block.
-  final pulumi.Input<
-    LifecyclePolicyPolicyDetailsScheduleArchiveRuleArchiveRetainRule
-  >
-  archiveRetainRule;
+  final pulumi.Input<LifecyclePolicyPolicyDetailsScheduleArchiveRuleArchiveRetainRule> archiveRetainRule;
 
   /// Creates a new [LifecyclePolicyPolicyDetailsScheduleArchiveRule].
   /// [archiveRetainRule] Information about the retention period for the snapshot archiving rule. See the `archive_retain_rule` block.
@@ -18,23 +15,14 @@ class LifecyclePolicyPolicyDetailsScheduleArchiveRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'archiveRetainRule':
-          pulumi.Input.mapInputValue<
-            LifecyclePolicyPolicyDetailsScheduleArchiveRuleArchiveRetainRule,
-            Map<String, dynamic>
-          >(archiveRetainRule, (value) => value.toMap()),
+      'archiveRetainRule': pulumi.Input.mapInputValue<LifecyclePolicyPolicyDetailsScheduleArchiveRuleArchiveRetainRule, Map<String, dynamic>>(archiveRetainRule, (value) => value.toMap()),
     };
   }
 
-  factory LifecyclePolicyPolicyDetailsScheduleArchiveRule.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LifecyclePolicyPolicyDetailsScheduleArchiveRule.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyPolicyDetailsScheduleArchiveRule(
-      archiveRetainRule: pulumi.Input.fromValue(
-        LifecyclePolicyPolicyDetailsScheduleArchiveRuleArchiveRetainRule.fromMap(
-          (map['archiveRetainRule']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      archiveRetainRule: pulumi.Input.fromValue(LifecyclePolicyPolicyDetailsScheduleArchiveRuleArchiveRetainRule.fromMap((map['archiveRetainRule']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

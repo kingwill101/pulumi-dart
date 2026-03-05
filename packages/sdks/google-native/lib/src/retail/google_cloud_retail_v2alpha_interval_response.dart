@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudRetailV2alphaIntervalResponse {
   /// Exclusive upper bound.
   final pulumi.Input<double> exclusiveMaximum;
-
   /// Exclusive lower bound.
   final pulumi.Input<double> exclusiveMinimum;
-
   /// Inclusive upper bound.
   final pulumi.Input<double> maximum;
-
   /// Inclusive lower bound.
   final pulumi.Input<double> minimum;
 
@@ -37,18 +34,13 @@ class GoogleCloudRetailV2alphaIntervalResponse {
     };
   }
 
-  factory GoogleCloudRetailV2alphaIntervalResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudRetailV2alphaIntervalResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2alphaIntervalResponse(
-      exclusiveMaximum: pulumi.Input.fromValue(
-        map['exclusiveMaximum'] as double,
-      ),
-      exclusiveMinimum: pulumi.Input.fromValue(
-        map['exclusiveMinimum'] as double,
-      ),
+      exclusiveMaximum: pulumi.Input.fromValue(map['exclusiveMaximum'] as double),
+      exclusiveMinimum: pulumi.Input.fromValue(map['exclusiveMinimum'] as double),
       maximum: pulumi.Input.fromValue(map['maximum'] as double),
       minimum: pulumi.Input.fromValue(map['minimum'] as double),
     );
   }
 }
+

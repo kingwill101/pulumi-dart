@@ -9,19 +9,20 @@ class SecurityPolicyLinkResponse {
 
   /// Creates a new [SecurityPolicyLinkResponse].
   /// [id] Resource ID.
-  SecurityPolicyLinkResponse({this.id});
+  SecurityPolicyLinkResponse({
+    this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': ?id};
+    return <String, dynamic>{
+      'id': ?id,
+    };
   }
 
   factory SecurityPolicyLinkResponse.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyLinkResponse(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

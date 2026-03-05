@@ -483,34 +483,24 @@ import 'future_reservation_time_window.dart';
 class FutureReservation extends pulumi.CustomResource {
   /// Aggregate reservation details for the future reservation.
   /// Structure is documented below.
-  late final pulumi.Output<FutureReservationAggregateReservation?>
-  aggregateReservation;
-
+  late final pulumi.Output<FutureReservationAggregateReservation?> aggregateReservation;
   /// Future timestamp when the FR auto-created reservations will be deleted by Compute Engine.
   late final pulumi.Output<String?> autoCreatedReservationsDeleteTime;
-
   /// Specifies the duration of auto-created reservations. It represents relative time to future reservation startTime when auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
   /// Structure is documented below.
-  late final pulumi.Output<FutureReservationAutoCreatedReservationsDuration?>
-  autoCreatedReservationsDuration;
-
+  late final pulumi.Output<FutureReservationAutoCreatedReservationsDuration?> autoCreatedReservationsDuration;
   /// Setting for enabling or disabling automatic deletion for auto-created reservation. If set to true, auto-created reservations will be deleted at Future Reservation's end time (default) or at user's defined timestamp if any of the [autoCreatedReservationsDeleteTime, autoCreatedReservationsDuration] values is specified. For keeping auto-created reservation indefinitely, this value should be set to false.
   late final pulumi.Output<bool?> autoDeleteAutoCreatedReservations;
-
   /// If not present, then FR will not deliver a new commitment or update an existing commitment.
   /// Structure is documented below.
   late final pulumi.Output<FutureReservationCommitmentInfo?> commitmentInfo;
-
   /// The creation timestamp for this future reservation in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
-
   /// Type of the deployment requested as part of future reservation.
   /// Possible values are: `DENSE`, `FLEXIBLE`.
   late final pulumi.Output<String?> deploymentType;
-
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
-
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
   /// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -519,55 +509,40 @@ class FutureReservation extends pulumi.CustomResource {
   /// characters must be a dash, lowercase letter, or digit, except the las
   /// character, which cannot be a dash.
   late final pulumi.Output<String> name;
-
   /// Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
   late final pulumi.Output<String?> namePrefix;
-
   /// Planning state before being submitted for evaluation
   /// Possible values are: `DRAFT`, `SUBMITTED`.
   late final pulumi.Output<String> planningStatus;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The reservation mode which determines reservation-termination behavior and expected pricing.
   /// Possible values are: `CALENDAR`, `DEFAULT`.
   late final pulumi.Output<String?> reservationMode;
-
   /// Name of reservations where the capacity is provisioned at the time of delivery of future reservations. If the reservation with the given name does not exist already, it is created automatically at the time of Approval with INACTIVE state till specified start-time. Either provide the reservationName or a namePrefix.
   late final pulumi.Output<String?> reservationName;
-
   /// Maintenance information for this reservation
   /// Possible values are: `GROUPED`, `INDEPENDENT`.
   late final pulumi.Output<String?> schedulingType;
-
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
-
   /// Server-defined URL for this resource with the resource id.
   late final pulumi.Output<String> selfLinkWithId;
-
   /// Settings for sharing the future reservation
   /// Structure is documented below.
   late final pulumi.Output<FutureReservationShareSettings?> shareSettings;
-
   /// Indicates whether the auto-created reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from the delivered reservation.
   late final pulumi.Output<bool?> specificReservationRequired;
-
   /// Future Reservation configuration to indicate instance properties and total count.
   /// Structure is documented below.
-  late final pulumi.Output<FutureReservationSpecificSkuProperties?>
-  specificSkuProperties;
-
+  late final pulumi.Output<FutureReservationSpecificSkuProperties?> specificSkuProperties;
   /// [Output only] Status of the Future Reservation
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> statuses;
-
   /// Time window for this Future Reservation.
   /// Structure is documented below.
   late final pulumi.Output<FutureReservationTimeWindow> timeWindow;
-
   /// URL of the Zone where this future reservation resides.
   late final pulumi.Output<String> zone;
 
@@ -580,49 +555,16 @@ class FutureReservation extends pulumi.CustomResource {
     FutureReservationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:compute/futureReservation:FutureReservation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    aggregateReservation =
-        registerOutput<FutureReservationAggregateReservation?>(
-          'aggregateReservation',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return FutureReservationAggregateReservation.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    autoCreatedReservationsDeleteTime = registerOutput<String?>(
-      'autoCreatedReservationsDeleteTime',
-    );
-    autoCreatedReservationsDuration =
-        registerOutput<FutureReservationAutoCreatedReservationsDuration?>(
-          'autoCreatedReservationsDuration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return FutureReservationAutoCreatedReservationsDuration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    autoDeleteAutoCreatedReservations = registerOutput<bool?>(
-      'autoDeleteAutoCreatedReservations',
-    );
-    commitmentInfo = registerOutput<FutureReservationCommitmentInfo?>(
-      'commitmentInfo',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FutureReservationCommitmentInfo.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:compute/futureReservation:FutureReservation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    aggregateReservation = registerOutput<FutureReservationAggregateReservation?>('aggregateReservation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FutureReservationAggregateReservation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    autoCreatedReservationsDeleteTime = registerOutput<String?>('autoCreatedReservationsDeleteTime');
+    autoCreatedReservationsDuration = registerOutput<FutureReservationAutoCreatedReservationsDuration?>('autoCreatedReservationsDuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FutureReservationAutoCreatedReservationsDuration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    autoDeleteAutoCreatedReservations = registerOutput<bool?>('autoDeleteAutoCreatedReservations');
+    commitmentInfo = registerOutput<FutureReservationCommitmentInfo?>('commitmentInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FutureReservationCommitmentInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deploymentType = registerOutput<String?>('deploymentType');
     description = registerOutput<String?>('description');
@@ -635,41 +577,11 @@ class FutureReservation extends pulumi.CustomResource {
     schedulingType = registerOutput<String?>('schedulingType');
     selfLink = registerOutput<String>('selfLink');
     selfLinkWithId = registerOutput<String>('selfLinkWithId');
-    shareSettings = registerOutput<FutureReservationShareSettings?>(
-      'shareSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FutureReservationShareSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    specificReservationRequired = registerOutput<bool?>(
-      'specificReservationRequired',
-    );
-    specificSkuProperties =
-        registerOutput<FutureReservationSpecificSkuProperties?>(
-          'specificSkuProperties',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return FutureReservationSpecificSkuProperties.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    shareSettings = registerOutput<FutureReservationShareSettings?>('shareSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FutureReservationShareSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    specificReservationRequired = registerOutput<bool?>('specificReservationRequired');
+    specificSkuProperties = registerOutput<FutureReservationSpecificSkuProperties?>('specificSkuProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FutureReservationSpecificSkuProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
-    timeWindow = registerOutput<FutureReservationTimeWindow>(
-      'timeWindow',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FutureReservationTimeWindow.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeWindow = registerOutput<FutureReservationTimeWindow>('timeWindow', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FutureReservationTimeWindow.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     zone = registerOutput<String>('zone');
   }
 
@@ -691,49 +603,16 @@ class FutureReservation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:compute/futureReservation:FutureReservation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    aggregateReservation =
-        registerOutput<FutureReservationAggregateReservation?>(
-          'aggregateReservation',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return FutureReservationAggregateReservation.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    autoCreatedReservationsDeleteTime = registerOutput<String?>(
-      'autoCreatedReservationsDeleteTime',
-    );
-    autoCreatedReservationsDuration =
-        registerOutput<FutureReservationAutoCreatedReservationsDuration?>(
-          'autoCreatedReservationsDuration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return FutureReservationAutoCreatedReservationsDuration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    autoDeleteAutoCreatedReservations = registerOutput<bool?>(
-      'autoDeleteAutoCreatedReservations',
-    );
-    commitmentInfo = registerOutput<FutureReservationCommitmentInfo?>(
-      'commitmentInfo',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FutureReservationCommitmentInfo.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:compute/futureReservation:FutureReservation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    aggregateReservation = registerOutput<FutureReservationAggregateReservation?>('aggregateReservation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FutureReservationAggregateReservation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    autoCreatedReservationsDeleteTime = registerOutput<String?>('autoCreatedReservationsDeleteTime');
+    autoCreatedReservationsDuration = registerOutput<FutureReservationAutoCreatedReservationsDuration?>('autoCreatedReservationsDuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FutureReservationAutoCreatedReservationsDuration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    autoDeleteAutoCreatedReservations = registerOutput<bool?>('autoDeleteAutoCreatedReservations');
+    commitmentInfo = registerOutput<FutureReservationCommitmentInfo?>('commitmentInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FutureReservationCommitmentInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deploymentType = registerOutput<String?>('deploymentType');
     description = registerOutput<String?>('description');
@@ -746,41 +625,11 @@ class FutureReservation extends pulumi.CustomResource {
     schedulingType = registerOutput<String?>('schedulingType');
     selfLink = registerOutput<String>('selfLink');
     selfLinkWithId = registerOutput<String>('selfLinkWithId');
-    shareSettings = registerOutput<FutureReservationShareSettings?>(
-      'shareSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FutureReservationShareSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    specificReservationRequired = registerOutput<bool?>(
-      'specificReservationRequired',
-    );
-    specificSkuProperties =
-        registerOutput<FutureReservationSpecificSkuProperties?>(
-          'specificSkuProperties',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return FutureReservationSpecificSkuProperties.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    shareSettings = registerOutput<FutureReservationShareSettings?>('shareSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FutureReservationShareSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    specificReservationRequired = registerOutput<bool?>('specificReservationRequired');
+    specificSkuProperties = registerOutput<FutureReservationSpecificSkuProperties?>('specificSkuProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FutureReservationSpecificSkuProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
-    timeWindow = registerOutput<FutureReservationTimeWindow>(
-      'timeWindow',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FutureReservationTimeWindow.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeWindow = registerOutput<FutureReservationTimeWindow>('timeWindow', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FutureReservationTimeWindow.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     zone = registerOutput<String>('zone');
   }
 }

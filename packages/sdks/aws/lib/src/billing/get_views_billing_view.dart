@@ -6,13 +6,10 @@ class GetViewsBillingView {
   /// ARN of the billing view.
   final pulumi.Input<String> arn;
   final pulumi.Input<String> billingViewType;
-
   /// Description of the billing view.
   final pulumi.Input<String> description;
-
   /// Name of the billing view.
   final pulumi.Input<String> name;
-
   /// Account ID of the billing view owner.
   final pulumi.Input<String> ownerAccountId;
 
@@ -50,3 +47,4 @@ class GetViewsBillingView {
     );
   }
 }
+

@@ -12,21 +12,20 @@ class ListSiteIdentifiersAssignedToHostNameArgs {
 
   /// Creates a new [ListSiteIdentifiersAssignedToHostNameArgs].
   /// [name] Name of the object.
-  ListSiteIdentifiersAssignedToHostNameArgs({this.name});
+  ListSiteIdentifiersAssignedToHostNameArgs({
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name};
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
-  factory ListSiteIdentifiersAssignedToHostNameArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListSiteIdentifiersAssignedToHostNameArgs.fromMap(Map<String, dynamic> map) {
     return ListSiteIdentifiersAssignedToHostNameArgs(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

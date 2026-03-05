@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InMageRcmProtectionContainerMappingDetailsResponse {
   /// A value indicating whether the flag for enable agent auto upgrade.
   final pulumi.Input<String> enableAgentAutoUpgrade;
-
   /// Gets the class type. Overridden in derived classes.
   /// Expected value is 'InMageRcm'.
   final pulumi.Input<String> instanceType;
@@ -26,14 +25,11 @@ class InMageRcmProtectionContainerMappingDetailsResponse {
     };
   }
 
-  factory InMageRcmProtectionContainerMappingDetailsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InMageRcmProtectionContainerMappingDetailsResponse.fromMap(Map<String, dynamic> map) {
     return InMageRcmProtectionContainerMappingDetailsResponse(
-      enableAgentAutoUpgrade: pulumi.Input.fromValue(
-        map['enableAgentAutoUpgrade'] as String,
-      ),
+      enableAgentAutoUpgrade: pulumi.Input.fromValue(map['enableAgentAutoUpgrade'] as String),
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
     );
   }
 }
+

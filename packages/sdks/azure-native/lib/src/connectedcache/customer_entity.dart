@@ -6,40 +6,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomerEntity {
   /// Customer resource client tenant Id of subscription.
   final pulumi.Input<String>? clientTenantId;
-
   /// Customer resource contact email.
   final pulumi.Input<String>? contactEmail;
-
   /// Customer resource contact full name.
   final pulumi.Input<String>? contactName;
-
   /// Customer resource contact phone.
   final pulumi.Input<String>? contactPhone;
-
   /// Customer resource name.
   final pulumi.Input<String>? customerName;
-
   /// Customer resource Azure fully qualified resource Id.
   final pulumi.Input<String>? fullyQualifiedResourceId;
-
   /// Customer resource flag for enterprise management as boolean.
   final pulumi.Input<bool>? isEnterpriseManaged;
-
   /// Customer resource entitlement flag as boolean.
   final pulumi.Input<bool>? isEntitled;
-
   /// Customer resource Mcc release version.
   final pulumi.Input<int>? releaseVersion;
-
   /// Customer resource flag for resending signup code as boolean.
   final pulumi.Input<bool>? resendSignupCode;
-
   /// Customer resource flag for migration.
   final pulumi.Input<bool>? shouldMigrate;
-
   /// Customer resource flag for requiring verification of signup code as boolean.
   final pulumi.Input<bool>? verifySignupCode;
-
   /// Customer resource phrase for verifying signup.
   final pulumi.Input<String>? verifySignupPhrase;
 
@@ -93,71 +81,20 @@ class CustomerEntity {
 
   factory CustomerEntity.fromMap(Map<String, dynamic> map) {
     return CustomerEntity(
-      clientTenantId: (() {
-        final guardedValue = map['clientTenantId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      contactEmail: (() {
-        final guardedValue = map['contactEmail'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      contactName: (() {
-        final guardedValue = map['contactName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      contactPhone: (() {
-        final guardedValue = map['contactPhone'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      customerName: (() {
-        final guardedValue = map['customerName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      fullyQualifiedResourceId: (() {
-        final guardedValue = map['fullyQualifiedResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      isEnterpriseManaged: (() {
-        final guardedValue = map['isEnterpriseManaged'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      isEntitled: (() {
-        final guardedValue = map['isEntitled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      releaseVersion: (() {
-        final guardedValue = map['releaseVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      resendSignupCode: (() {
-        final guardedValue = map['resendSignupCode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      shouldMigrate: (() {
-        final guardedValue = map['shouldMigrate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      verifySignupCode: (() {
-        final guardedValue = map['verifySignupCode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      verifySignupPhrase: (() {
-        final guardedValue = map['verifySignupPhrase'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      clientTenantId: (() { final guardedValue = map['clientTenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      contactEmail: (() { final guardedValue = map['contactEmail']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      contactName: (() { final guardedValue = map['contactName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      contactPhone: (() { final guardedValue = map['contactPhone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      customerName: (() { final guardedValue = map['customerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      fullyQualifiedResourceId: (() { final guardedValue = map['fullyQualifiedResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      isEnterpriseManaged: (() { final guardedValue = map['isEnterpriseManaged']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      isEntitled: (() { final guardedValue = map['isEntitled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      releaseVersion: (() { final guardedValue = map['releaseVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      resendSignupCode: (() { final guardedValue = map['resendSignupCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      shouldMigrate: (() { final guardedValue = map['shouldMigrate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      verifySignupCode: (() { final guardedValue = map['verifySignupCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      verifySignupPhrase: (() { final guardedValue = map['verifySignupPhrase']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

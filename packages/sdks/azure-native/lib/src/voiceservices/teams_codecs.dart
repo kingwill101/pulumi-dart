@@ -19,3 +19,4 @@ enum TeamsCodecs {
     throw ArgumentError('Unknown TeamsCodecs value: $value');
   }
 }
+

@@ -930,12 +930,10 @@ class Instance extends pulumi.CustomResource {
   /// Possible values are: `ACTIVATION_POLICY_UNSPECIFIED`, `ALWAYS`, `NEVER`.'
   /// Possible values are: `ACTIVATION_POLICY_UNSPECIFIED`, `ALWAYS`, `NEVER`.
   late final pulumi.Output<String> activationPolicy;
-
   /// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
-
   /// 'Availability type of an Instance. Defaults to REGIONAL for both primary and read instances.
   /// Note that primary and read instances can have different availability types.
   /// Primary instances can be either ZONAL or REGIONAL. Read Pool instances can also be either ZONAL or REGIONAL.
@@ -944,98 +942,72 @@ class Instance extends pulumi.CustomResource {
   /// Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.'
   /// Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
   late final pulumi.Output<String> availabilityType;
-
   /// Client connection specific configurations.
   /// Structure is documented below.
-  late final pulumi.Output<InstanceClientConnectionConfig>
-  clientConnectionConfig;
-
+  late final pulumi.Output<InstanceClientConnectionConfig> clientConnectionConfig;
   /// Identifies the alloydb cluster. Must be in the format
   /// 'projects/{project}/locations/{location}/clusters/{cluster_id}'
   late final pulumi.Output<String> cluster;
-
   /// Configuration for Managed Connection Pool.
   /// Structure is documented below.
   late final pulumi.Output<InstanceConnectionPoolConfig?> connectionPoolConfig;
-
   /// Time the Instance was created in UTC.
   late final pulumi.Output<String> createTime;
-
   /// Database flags. Set at instance level. * They are copied from primary instance on read instance creation. * Read instances can set new or override existing flags that are relevant for reads, e.g. for enabling columnar cache on a read instance. Flags set on read instance may or may not be present on primary.
   late final pulumi.Output<Map<String, String>> databaseFlags;
-
   /// User-settable and human-readable display name for the Instance.
   late final pulumi.Output<String?> displayName;
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
   late final pulumi.Output<String?> gceZone;
-
   /// The ID of the alloydb instance.
   late final pulumi.Output<String> instanceId;
   late final pulumi.Output<String> instanceType;
-
   /// The IP address for the Instance. This is the connection endpoint for an end-user application.
   late final pulumi.Output<String> ipAddress;
-
   /// User-defined labels for the alloydb instance.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// Configurations for the machines that host the underlying database engine.
   /// Structure is documented below.
   late final pulumi.Output<InstanceMachineConfig> machineConfig;
-
   /// The name of the instance resource.
   late final pulumi.Output<String> name;
-
   /// Instance level network configuration.
   /// Structure is documented below.
   late final pulumi.Output<InstanceNetworkConfig> networkConfig;
-
   /// Configuration for enhanced query insights.
   /// Structure is documented below.
   late final pulumi.Output<InstanceObservabilityConfig> observabilityConfig;
-
   /// The outbound public IP addresses for the instance. This is available ONLY when
   /// networkConfig.enableOutboundPublicIp is set to true. These IP addresses are used
   /// for outbound connections.
   late final pulumi.Output<List<String>> outboundPublicIpAddresses;
-
   /// Configuration for Private Service Connect (PSC) for the instance.
   /// Structure is documented below.
   late final pulumi.Output<InstancePscInstanceConfig> pscInstanceConfig;
-
   /// The public IP addresses for the Instance. This is available ONLY when
   /// networkConfig.enablePublicIp is set to true. This is the connection
   /// endpoint for an end-user application.
   late final pulumi.Output<String> publicIpAddress;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// Configuration for query insights.
   /// Structure is documented below.
   late final pulumi.Output<InstanceQueryInsightsConfig> queryInsightsConfig;
-
   /// Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
   /// Structure is documented below.
   late final pulumi.Output<InstanceReadPoolConfig?> readPoolConfig;
-
   /// Set to true if the current state of Instance does not match the user's intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance.
   late final pulumi.Output<bool> reconciling;
-
   /// The current state of the alloydb instance.
   late final pulumi.Output<String> state;
-
   /// The system-generated UID of the resource.
   late final pulumi.Output<String> uid;
-
   /// Time the Instance was updated in UTC.
   late final pulumi.Output<String> updateTime;
 
@@ -1048,113 +1020,37 @@ class Instance extends pulumi.CustomResource {
     InstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:alloydb/instance:Instance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:alloydb/instance:Instance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     activationPolicy = registerOutput<String>('activationPolicy');
     annotations = registerOutput<Map<String, String>?>('annotations');
     availabilityType = registerOutput<String>('availabilityType');
-    clientConnectionConfig = registerOutput<InstanceClientConnectionConfig>(
-      'clientConnectionConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceClientConnectionConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    clientConnectionConfig = registerOutput<InstanceClientConnectionConfig>('clientConnectionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceClientConnectionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cluster = registerOutput<String>('cluster');
-    connectionPoolConfig = registerOutput<InstanceConnectionPoolConfig?>(
-      'connectionPoolConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceConnectionPoolConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    connectionPoolConfig = registerOutput<InstanceConnectionPoolConfig?>('connectionPoolConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceConnectionPoolConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     databaseFlags = registerOutput<Map<String, String>>('databaseFlags');
     displayName = registerOutput<String?>('displayName');
-    effectiveAnnotations = registerOutput<Map<String, String>>(
-      'effectiveAnnotations',
-    );
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     gceZone = registerOutput<String?>('gceZone');
     instanceId = registerOutput<String>('instanceId');
     instanceType = registerOutput<String>('instanceType');
     ipAddress = registerOutput<String>('ipAddress');
     labels = registerOutput<Map<String, String>?>('labels');
-    machineConfig = registerOutput<InstanceMachineConfig>(
-      'machineConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceMachineConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    machineConfig = registerOutput<InstanceMachineConfig>('machineConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceMachineConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    networkConfig = registerOutput<InstanceNetworkConfig>(
-      'networkConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceNetworkConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    observabilityConfig = registerOutput<InstanceObservabilityConfig>(
-      'observabilityConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceObservabilityConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    outboundPublicIpAddresses = registerOutput<List<String>>(
-      'outboundPublicIpAddresses',
-    );
-    pscInstanceConfig = registerOutput<InstancePscInstanceConfig>(
-      'pscInstanceConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstancePscInstanceConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    networkConfig = registerOutput<InstanceNetworkConfig>('networkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceNetworkConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    observabilityConfig = registerOutput<InstanceObservabilityConfig>('observabilityConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceObservabilityConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    outboundPublicIpAddresses = registerOutput<List<String>>('outboundPublicIpAddresses');
+    pscInstanceConfig = registerOutput<InstancePscInstanceConfig>('pscInstanceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstancePscInstanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     publicIpAddress = registerOutput<String>('publicIpAddress');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    queryInsightsConfig = registerOutput<InstanceQueryInsightsConfig>(
-      'queryInsightsConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceQueryInsightsConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    readPoolConfig = registerOutput<InstanceReadPoolConfig?>(
-      'readPoolConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceReadPoolConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    queryInsightsConfig = registerOutput<InstanceQueryInsightsConfig>('queryInsightsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceQueryInsightsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    readPoolConfig = registerOutput<InstanceReadPoolConfig?>('readPoolConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceReadPoolConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     reconciling = registerOutput<bool>('reconciling');
     state = registerOutput<String>('state');
     uid = registerOutput<String>('uid');
@@ -1179,113 +1075,37 @@ class Instance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:alloydb/instance:Instance',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:alloydb/instance:Instance',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     activationPolicy = registerOutput<String>('activationPolicy');
     annotations = registerOutput<Map<String, String>?>('annotations');
     availabilityType = registerOutput<String>('availabilityType');
-    clientConnectionConfig = registerOutput<InstanceClientConnectionConfig>(
-      'clientConnectionConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceClientConnectionConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    clientConnectionConfig = registerOutput<InstanceClientConnectionConfig>('clientConnectionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceClientConnectionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cluster = registerOutput<String>('cluster');
-    connectionPoolConfig = registerOutput<InstanceConnectionPoolConfig?>(
-      'connectionPoolConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceConnectionPoolConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    connectionPoolConfig = registerOutput<InstanceConnectionPoolConfig?>('connectionPoolConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceConnectionPoolConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     databaseFlags = registerOutput<Map<String, String>>('databaseFlags');
     displayName = registerOutput<String?>('displayName');
-    effectiveAnnotations = registerOutput<Map<String, String>>(
-      'effectiveAnnotations',
-    );
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     gceZone = registerOutput<String?>('gceZone');
     instanceId = registerOutput<String>('instanceId');
     instanceType = registerOutput<String>('instanceType');
     ipAddress = registerOutput<String>('ipAddress');
     labels = registerOutput<Map<String, String>?>('labels');
-    machineConfig = registerOutput<InstanceMachineConfig>(
-      'machineConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceMachineConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    machineConfig = registerOutput<InstanceMachineConfig>('machineConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceMachineConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    networkConfig = registerOutput<InstanceNetworkConfig>(
-      'networkConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceNetworkConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    observabilityConfig = registerOutput<InstanceObservabilityConfig>(
-      'observabilityConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceObservabilityConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    outboundPublicIpAddresses = registerOutput<List<String>>(
-      'outboundPublicIpAddresses',
-    );
-    pscInstanceConfig = registerOutput<InstancePscInstanceConfig>(
-      'pscInstanceConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstancePscInstanceConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    networkConfig = registerOutput<InstanceNetworkConfig>('networkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceNetworkConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    observabilityConfig = registerOutput<InstanceObservabilityConfig>('observabilityConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceObservabilityConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    outboundPublicIpAddresses = registerOutput<List<String>>('outboundPublicIpAddresses');
+    pscInstanceConfig = registerOutput<InstancePscInstanceConfig>('pscInstanceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstancePscInstanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     publicIpAddress = registerOutput<String>('publicIpAddress');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    queryInsightsConfig = registerOutput<InstanceQueryInsightsConfig>(
-      'queryInsightsConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceQueryInsightsConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    readPoolConfig = registerOutput<InstanceReadPoolConfig?>(
-      'readPoolConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceReadPoolConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    queryInsightsConfig = registerOutput<InstanceQueryInsightsConfig>('queryInsightsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceQueryInsightsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    readPoolConfig = registerOutput<InstanceReadPoolConfig?>('readPoolConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceReadPoolConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     reconciling = registerOutput<bool>('reconciling');
     this.state = registerOutput<String>('state');
     uid = registerOutput<String>('uid');

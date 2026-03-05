@@ -924,18 +924,14 @@ import 'portal_dashboard_state.dart';
 class PortalDashboard extends pulumi.CustomResource {
   /// JSON data representing dashboard body. See above for details on how to obtain this from the Portal.
   late final pulumi.Output<String> dashboardProperties;
-
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// Specifies the name of the Shared Dashboard. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** You can specify a tag with the key `hidden-title` to set a more user-friendly title for this Dashboard.
   late final pulumi.Output<String> name;
-
   /// The name of the resource group in which to create the dashboard. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -948,11 +944,11 @@ class PortalDashboard extends pulumi.CustomResource {
     PortalDashboardArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:portal/portalDashboard:PortalDashboard',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:portal/portalDashboard:PortalDashboard',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dashboardProperties = registerOutput<String>('dashboardProperties');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -978,11 +974,11 @@ class PortalDashboard extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:portal/portalDashboard:PortalDashboard',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:portal/portalDashboard:PortalDashboard',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dashboardProperties = registerOutput<String>('dashboardProperties');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

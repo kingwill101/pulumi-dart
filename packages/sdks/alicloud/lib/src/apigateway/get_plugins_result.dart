@@ -55,11 +55,7 @@ class GetPluginsResult {
       'pageSize': ?pageSize,
       'pluginName': ?pluginName,
       'pluginType': ?pluginType,
-      'plugins':
-          pulumi.Input.encodeList<GetPluginsPlugin, Map<String, dynamic>>(
-            plugins,
-            (value) => value.toMap(),
-          ),
+      'plugins': pulumi.Input.encodeList<GetPluginsPlugin, Map<String, dynamic>>(plugins, (value) => value.toMap()),
       'tags': ?tags,
     };
   }
@@ -68,47 +64,16 @@ class GetPluginsResult {
     return GetPluginsResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      pageNumber: (() {
-        final guardedValue = map['pageNumber'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      pageSize: (() {
-        final guardedValue = map['pageSize'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      pluginName: (() {
-        final guardedValue = map['pluginName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      pluginType: (() {
-        final guardedValue = map['pluginType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      plugins: pulumi.Input.decodeList<GetPluginsPlugin>(
-        map['plugins']!,
-        (value) =>
-            GetPluginsPlugin.fromMap((value as Map).cast<String, dynamic>()),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      pageNumber: (() { final guardedValue = map['pageNumber']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      pageSize: (() { final guardedValue = map['pageSize']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      pluginName: (() { final guardedValue = map['pluginName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      pluginType: (() { final guardedValue = map['pluginType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      plugins: pulumi.Input.decodeList<GetPluginsPlugin>(map['plugins']!, (value) => GetPluginsPlugin.fromMap((value as Map).cast<String, dynamic>())),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }
 }
+

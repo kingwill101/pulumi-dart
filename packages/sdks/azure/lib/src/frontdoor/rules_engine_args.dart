@@ -10,16 +10,12 @@ import 'rules_engine_rule.dart';
 class RulesEngineArgs {
   /// Whether this Rules engine configuration is enabled? Defaults to `true`.
   final pulumi.Input<bool>? enabled;
-
   /// The name of the Front Door instance. Changing this forces a new resource to be created.
   final pulumi.Input<String> frontdoorName;
-
   /// The name of the Rules engine configuration. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// The name of the resource group. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
-
   /// A `rule` block as defined below.
   final pulumi.Input<List<RulesEngineRule>>? rules;
 
@@ -43,48 +39,18 @@ class RulesEngineArgs {
       'frontdoorName': frontdoorName,
       'name': ?name,
       'resourceGroupName': resourceGroupName,
-      'rules':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<RulesEngineRule>,
-            List<Map<String, dynamic>>
-          >(
-            rules,
-            (value) =>
-                pulumi.Input.encodeList<RulesEngineRule, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'rules': ?pulumi.Input.mapOptionalInputValue<List<RulesEngineRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<RulesEngineRule, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory RulesEngineArgs.fromMap(Map<String, dynamic> map) {
     return RulesEngineArgs(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       frontdoorName: pulumi.Input.fromValue(map['frontdoorName'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      rules: (() {
-        final guardedValue = map['rules'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<RulesEngineRule>(
-            guardedValue,
-            (value) =>
-                RulesEngineRule.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RulesEngineRule>(guardedValue, (value) => RulesEngineRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

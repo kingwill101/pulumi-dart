@@ -15,3 +15,4 @@ enum NetezzaSecurityLevelType {
     throw ArgumentError('Unknown NetezzaSecurityLevelType value: $value');
   }
 }
+

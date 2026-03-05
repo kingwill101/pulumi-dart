@@ -9,19 +9,14 @@ import 'linked_service_reference.dart';
 class DataFlowSource {
   /// Dataset reference.
   final pulumi.Input<DatasetReference>? dataset;
-
   /// Transformation description.
   final pulumi.Input<String>? description;
-
   /// Flowlet Reference
   final pulumi.Input<DataFlowReference>? flowlet;
-
   /// Linked service reference.
   final pulumi.Input<LinkedServiceReference>? linkedService;
-
   /// Transformation name.
   final pulumi.Input<String> name;
-
   /// Schema linked service reference.
   final pulumi.Input<LinkedServiceReference>? schemaLinkedService;
 
@@ -43,75 +38,24 @@ class DataFlowSource {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataset':
-          ?pulumi.Input.mapOptionalInputValue<
-            DatasetReference,
-            Map<String, dynamic>
-          >(dataset, (value) => value.toMap()),
+      'dataset': ?pulumi.Input.mapOptionalInputValue<DatasetReference, Map<String, dynamic>>(dataset, (value) => value.toMap()),
       'description': ?description,
-      'flowlet':
-          ?pulumi.Input.mapOptionalInputValue<
-            DataFlowReference,
-            Map<String, dynamic>
-          >(flowlet, (value) => value.toMap()),
-      'linkedService':
-          ?pulumi.Input.mapOptionalInputValue<
-            LinkedServiceReference,
-            Map<String, dynamic>
-          >(linkedService, (value) => value.toMap()),
+      'flowlet': ?pulumi.Input.mapOptionalInputValue<DataFlowReference, Map<String, dynamic>>(flowlet, (value) => value.toMap()),
+      'linkedService': ?pulumi.Input.mapOptionalInputValue<LinkedServiceReference, Map<String, dynamic>>(linkedService, (value) => value.toMap()),
       'name': name,
-      'schemaLinkedService':
-          ?pulumi.Input.mapOptionalInputValue<
-            LinkedServiceReference,
-            Map<String, dynamic>
-          >(schemaLinkedService, (value) => value.toMap()),
+      'schemaLinkedService': ?pulumi.Input.mapOptionalInputValue<LinkedServiceReference, Map<String, dynamic>>(schemaLinkedService, (value) => value.toMap()),
     };
   }
 
   factory DataFlowSource.fromMap(Map<String, dynamic> map) {
     return DataFlowSource(
-      dataset: (() {
-        final guardedValue = map['dataset'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DatasetReference.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      flowlet: (() {
-        final guardedValue = map['flowlet'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DataFlowReference.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      linkedService: (() {
-        final guardedValue = map['linkedService'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          LinkedServiceReference.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      dataset: (() { final guardedValue = map['dataset']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatasetReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      flowlet: (() { final guardedValue = map['flowlet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DataFlowReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      linkedService: (() { final guardedValue = map['linkedService']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LinkedServiceReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      schemaLinkedService: (() {
-        final guardedValue = map['schemaLinkedService'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          LinkedServiceReference.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      schemaLinkedService: (() { final guardedValue = map['schemaLinkedService']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LinkedServiceReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

@@ -8,7 +8,6 @@ class BareMetalNodePoolStatus {
   /// ResourceConditions provide a standard mechanism for higher-level status reporting from user cluster controller.
   /// Structure is documented below.
   final pulumi.Input<List<BareMetalNodePoolStatusCondition>>? conditions;
-
   /// (Output)
   /// Human-friendly representation of the error message from the user cluster
   /// controller. The error message can be temporary as the user cluster
@@ -20,45 +19,23 @@ class BareMetalNodePoolStatus {
   /// Creates a new [BareMetalNodePoolStatus].
   /// [conditions] (Output)
   /// [errorMessage] (Output)
-  BareMetalNodePoolStatus({this.conditions, this.errorMessage});
+  BareMetalNodePoolStatus({
+    this.conditions,
+    this.errorMessage,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'conditions':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<BareMetalNodePoolStatusCondition>,
-            List<Map<String, dynamic>>
-          >(
-            conditions,
-            (value) =>
-                pulumi.Input.encodeList<
-                  BareMetalNodePoolStatusCondition,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'conditions': ?pulumi.Input.mapOptionalInputValue<List<BareMetalNodePoolStatusCondition>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<BareMetalNodePoolStatusCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
       'errorMessage': ?errorMessage,
     };
   }
 
   factory BareMetalNodePoolStatus.fromMap(Map<String, dynamic> map) {
     return BareMetalNodePoolStatus(
-      conditions: (() {
-        final guardedValue = map['conditions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<BareMetalNodePoolStatusCondition>(
-            guardedValue,
-            (value) => BareMetalNodePoolStatusCondition.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      errorMessage: (() {
-        final guardedValue = map['errorMessage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<BareMetalNodePoolStatusCondition>(guardedValue, (value) => BareMetalNodePoolStatusCondition.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      errorMessage: (() { final guardedValue = map['errorMessage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

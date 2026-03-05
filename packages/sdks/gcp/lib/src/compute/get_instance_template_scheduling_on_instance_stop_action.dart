@@ -13,14 +13,15 @@ class GetInstanceTemplateSchedulingOnInstanceStopAction {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'discardLocalSsd': discardLocalSsd};
+    return <String, dynamic>{
+      'discardLocalSsd': discardLocalSsd,
+    };
   }
 
-  factory GetInstanceTemplateSchedulingOnInstanceStopAction.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetInstanceTemplateSchedulingOnInstanceStopAction.fromMap(Map<String, dynamic> map) {
     return GetInstanceTemplateSchedulingOnInstanceStopAction(
       discardLocalSsd: pulumi.Input.fromValue(map['discardLocalSsd'] as bool),
     );
   }
 }
+

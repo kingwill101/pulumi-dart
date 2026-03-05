@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPolicyPolicyQuery {
   /// The group that the policy applies to.
   final pulumi.Input<String> group;
-
   /// The org unit that the policy applies to.
   final pulumi.Input<String> orgUnit;
-
   /// The query that defines which entities the policy applies to.
   final pulumi.Input<String> query;
-
   /// The sort order of the policy.
   final pulumi.Input<double> sortOrder;
 
@@ -45,3 +42,4 @@ class GetPolicyPolicyQuery {
     );
   }
 }
+

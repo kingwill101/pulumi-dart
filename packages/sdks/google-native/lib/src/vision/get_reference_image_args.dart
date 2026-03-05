@@ -37,14 +37,9 @@ class GetReferenceImageArgs {
     return GetReferenceImageArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
       productId: pulumi.Input.fromValue(map['productId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      referenceImageId: pulumi.Input.fromValue(
-        map['referenceImageId'] as String,
-      ),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      referenceImageId: pulumi.Input.fromValue(map['referenceImageId'] as String),
     );
   }
 }
+

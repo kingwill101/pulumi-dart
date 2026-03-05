@@ -366,22 +366,16 @@ import 'cdn_state.dart';
 class Cdn extends pulumi.CustomResource {
   /// **Deprecated** The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
   late final pulumi.Output<String> certificateId;
-
   /// The unique name of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
   late final pulumi.Output<String> certificateName;
-
   /// The date and time when the CDN Endpoint was created.
   late final pulumi.Output<String> createdAt;
-
   /// The fully qualified domain name (FQDN) of the custom subdomain used with the CDN Endpoint.
   late final pulumi.Output<String?> customDomain;
-
   /// The fully qualified domain name (FQDN) from which the CDN-backed content is served.
   late final pulumi.Output<String> endpoint;
-
   /// The fully qualified domain name, (FQDN) for a Space.
   late final pulumi.Output<String> origin;
-
   /// The time to live for the CDN Endpoint, in seconds. Default is 3600 seconds.
   late final pulumi.Output<int> ttl;
 
@@ -389,13 +383,16 @@ class Cdn extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Cdn]. {@macro pulumi_index_cdn_cdn_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Cdn(String name, {CdnArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'digitalocean:index/cdn:Cdn',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Cdn(
+    String name, {
+    CdnArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'digitalocean:index/cdn:Cdn',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     certificateId = registerOutput<String>('certificateId');
     certificateName = registerOutput<String>('certificateName');
     createdAt = registerOutput<String>('createdAt');
@@ -406,7 +403,11 @@ class Cdn extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Cdn] resource's state with the given [name] and [id].
-  static Cdn get(String name, pulumi.Input<String> id, {CdnState? state}) {
+  static Cdn get(
+    String name,
+    pulumi.Input<String> id, {
+    CdnState? state,
+  }) {
     return Cdn._get(
       name,
       state: state?.toMap(),
@@ -419,11 +420,11 @@ class Cdn extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/cdn:Cdn',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/cdn:Cdn',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     certificateId = registerOutput<String>('certificateId');
     certificateName = registerOutput<String>('certificateName');
     createdAt = registerOutput<String>('createdAt');

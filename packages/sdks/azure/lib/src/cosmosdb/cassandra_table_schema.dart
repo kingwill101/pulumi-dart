@@ -8,10 +8,8 @@ import 'cassandra_table_schema_partition_key.dart';
 class CassandraTableSchema {
   /// One or more `cluster_key` blocks as defined below.
   final pulumi.Input<List<CassandraTableSchemaClusterKey>>? clusterKeys;
-
   /// One or more `column` blocks as defined below.
   final pulumi.Input<List<CassandraTableSchemaColumn>> columns;
-
   /// One or more `partition_key` blocks as defined below.
   final pulumi.Input<List<CassandraTableSchemaPartitionKey>> partitionKeys;
 
@@ -27,75 +25,18 @@ class CassandraTableSchema {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'clusterKeys':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<CassandraTableSchemaClusterKey>,
-            List<Map<String, dynamic>>
-          >(
-            clusterKeys,
-            (value) =>
-                pulumi.Input.encodeList<
-                  CassandraTableSchemaClusterKey,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'columns':
-          pulumi.Input.mapInputValue<
-            List<CassandraTableSchemaColumn>,
-            List<Map<String, dynamic>>
-          >(
-            columns,
-            (value) =>
-                pulumi.Input.encodeList<
-                  CassandraTableSchemaColumn,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'partitionKeys':
-          pulumi.Input.mapInputValue<
-            List<CassandraTableSchemaPartitionKey>,
-            List<Map<String, dynamic>>
-          >(
-            partitionKeys,
-            (value) =>
-                pulumi.Input.encodeList<
-                  CassandraTableSchemaPartitionKey,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'clusterKeys': ?pulumi.Input.mapOptionalInputValue<List<CassandraTableSchemaClusterKey>, List<Map<String, dynamic>>>(clusterKeys, (value) => pulumi.Input.encodeList<CassandraTableSchemaClusterKey, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'columns': pulumi.Input.mapInputValue<List<CassandraTableSchemaColumn>, List<Map<String, dynamic>>>(columns, (value) => pulumi.Input.encodeList<CassandraTableSchemaColumn, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'partitionKeys': pulumi.Input.mapInputValue<List<CassandraTableSchemaPartitionKey>, List<Map<String, dynamic>>>(partitionKeys, (value) => pulumi.Input.encodeList<CassandraTableSchemaPartitionKey, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory CassandraTableSchema.fromMap(Map<String, dynamic> map) {
     return CassandraTableSchema(
-      clusterKeys: (() {
-        final guardedValue = map['clusterKeys'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<CassandraTableSchemaClusterKey>(
-            guardedValue,
-            (value) => CassandraTableSchemaClusterKey.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      columns: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<CassandraTableSchemaColumn>(
-          map['columns']!,
-          (value) => CassandraTableSchemaColumn.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      partitionKeys: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<CassandraTableSchemaPartitionKey>(
-          map['partitionKeys']!,
-          (value) => CassandraTableSchemaPartitionKey.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      clusterKeys: (() { final guardedValue = map['clusterKeys']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CassandraTableSchemaClusterKey>(guardedValue, (value) => CassandraTableSchemaClusterKey.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      columns: pulumi.Input.fromValue(pulumi.Input.decodeList<CassandraTableSchemaColumn>(map['columns']!, (value) => CassandraTableSchemaColumn.fromMap((value as Map).cast<String, dynamic>()))),
+      partitionKeys: pulumi.Input.fromValue(pulumi.Input.decodeList<CassandraTableSchemaPartitionKey>(map['partitionKeys']!, (value) => CassandraTableSchemaPartitionKey.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

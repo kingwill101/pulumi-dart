@@ -6,16 +6,11 @@ import 'cluster_virtual_cluster_config_kubernetes_cluster_config_gke_cluster_con
 class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget {
   /// The target GKE node pool.
   final pulumi.Input<String> nodePool;
-
   /// The configuration for the GKE node pool.
   /// If specified, Dataproc attempts to create a node pool with the specified shape.
   /// If one with the same name already exists, it is verified against all specified fields.
   /// If a field differs, the virtual cluster creation will fail.
-  final pulumi.Input<
-    ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig
-  >?
-  nodePoolConfig;
-
+  final pulumi.Input<ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig>? nodePoolConfig;
   /// The roles associated with the GKE node pool.
   /// One of `"DEFAULT"`, `"CONTROLLER"`, `"SPARK_DRIVER"` or `"SPARK_EXECUTOR"`.
   final pulumi.Input<List<String>> roles;
@@ -33,30 +28,17 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nodePool': nodePool,
-      'nodePoolConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig,
-            Map<String, dynamic>
-          >(nodePoolConfig, (value) => value.toMap()),
+      'nodePoolConfig': ?pulumi.Input.mapOptionalInputValue<ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig, Map<String, dynamic>>(nodePoolConfig, (value) => value.toMap()),
       'roles': roles,
     };
   }
 
-  factory ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget.fromMap(Map<String, dynamic> map) {
     return ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget(
       nodePool: pulumi.Input.fromValue(map['nodePool'] as String),
-      nodePoolConfig: (() {
-        final guardedValue = map['nodePoolConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      nodePoolConfig: (() { final guardedValue = map['nodePoolConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       roles: pulumi.Input.fromValue((map['roles'] as List).cast<String>()),
     );
   }
 }
+

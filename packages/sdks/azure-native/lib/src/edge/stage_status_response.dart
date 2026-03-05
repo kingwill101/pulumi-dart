@@ -6,25 +6,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StageStatusResponse {
   /// Error message
   final pulumi.Input<String>? errorMessage;
-
   /// The inputs of the StageHistory, Inputs holds a key-value map of user-defined parameters for the initial stage
   final pulumi.Input<dynamic>? inputs;
-
   /// whether this stage is active or inactive
   final pulumi.Input<String>? isActive;
-
   /// Next stage
   final pulumi.Input<String>? nextstage;
-
   /// The outputs of the StageHistory, it is different as the different input stages.
   final pulumi.Input<dynamic>? outputs;
-
   /// Current stage
   final pulumi.Input<String>? stage;
-
   /// Deployment status
   final pulumi.Input<int>? status;
-
   /// Status message
   final pulumi.Input<String>? statusMessage;
 
@@ -63,46 +56,15 @@ class StageStatusResponse {
 
   factory StageStatusResponse.fromMap(Map<String, dynamic> map) {
     return StageStatusResponse(
-      errorMessage: (() {
-        final guardedValue = map['errorMessage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      inputs: (() {
-        final guardedValue = map['inputs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      isActive: (() {
-        final guardedValue = map['isActive'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      nextstage: (() {
-        final guardedValue = map['nextstage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      outputs: (() {
-        final guardedValue = map['outputs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      stage: (() {
-        final guardedValue = map['stage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      statusMessage: (() {
-        final guardedValue = map['statusMessage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      errorMessage: (() { final guardedValue = map['errorMessage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      inputs: (() { final guardedValue = map['inputs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      isActive: (() { final guardedValue = map['isActive']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nextstage: (() { final guardedValue = map['nextstage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      outputs: (() { final guardedValue = map['outputs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      stage: (() { final guardedValue = map['stage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      statusMessage: (() { final guardedValue = map['statusMessage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

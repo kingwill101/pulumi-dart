@@ -13,14 +13,15 @@ class EndpointConfigurationDataCaptureConfigCaptureOption {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'captureMode': captureMode};
+    return <String, dynamic>{
+      'captureMode': captureMode,
+    };
   }
 
-  factory EndpointConfigurationDataCaptureConfigCaptureOption.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EndpointConfigurationDataCaptureConfigCaptureOption.fromMap(Map<String, dynamic> map) {
     return EndpointConfigurationDataCaptureConfigCaptureOption(
       captureMode: pulumi.Input.fromValue(map['captureMode'] as String),
     );
   }
 }
+

@@ -36,17 +36,10 @@ class AiEndpointIamPolicyArgs {
   factory AiEndpointIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return AiEndpointIamPolicyArgs(
       endpoint: pulumi.Input.fromValue(map['endpoint'] as String),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       policyData: pulumi.Input.fromValue(map['policyData'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

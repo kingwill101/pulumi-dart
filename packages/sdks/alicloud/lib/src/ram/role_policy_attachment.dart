@@ -420,12 +420,10 @@ import 'role_policy_attachment_state.dart';
 class RolePolicyAttachment extends pulumi.CustomResource {
   /// The name of the policy.
   late final pulumi.Output<String> policyName;
-
   /// Policy type.
   /// - Custom: Custom policy.
   /// - System: System policy.
   late final pulumi.Output<String> policyType;
-
   /// The RAM role name.
   late final pulumi.Output<String> roleName;
 
@@ -438,11 +436,11 @@ class RolePolicyAttachment extends pulumi.CustomResource {
     RolePolicyAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ram/rolePolicyAttachment:RolePolicyAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ram/rolePolicyAttachment:RolePolicyAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     policyName = registerOutput<String>('policyName');
     policyType = registerOutput<String>('policyType');
     roleName = registerOutput<String>('roleName');
@@ -466,11 +464,11 @@ class RolePolicyAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ram/rolePolicyAttachment:RolePolicyAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ram/rolePolicyAttachment:RolePolicyAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     policyName = registerOutput<String>('policyName');
     policyType = registerOutput<String>('policyType');
     roleName = registerOutput<String>('roleName');

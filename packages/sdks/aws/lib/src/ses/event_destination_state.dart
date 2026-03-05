@@ -9,29 +9,20 @@ import 'event_destination_sns_destination.dart';
 class EventDestinationState {
   /// The SES event destination ARN.
   final pulumi.Input<String>? arn;
-
   /// CloudWatch destination for the events
-  final pulumi.Input<List<EventDestinationCloudwatchDestination>>?
-  cloudwatchDestinations;
-
+  final pulumi.Input<List<EventDestinationCloudwatchDestination>>? cloudwatchDestinations;
   /// The name of the configuration set
   final pulumi.Input<String>? configurationSetName;
-
   /// If true, the event destination will be enabled
   final pulumi.Input<bool>? enabled;
-
   /// Send the events to a kinesis firehose destination
   final pulumi.Input<EventDestinationKinesisDestination>? kinesisDestination;
-
   /// A list of matching types. May be any of `"send"`, `"reject"`, `"bounce"`, `"complaint"`, `"delivery"`, `"open"`, `"click"`, or `"renderingFailure"`.
   final pulumi.Input<List<String>>? matchingTypes;
-
   /// The name of the event destination
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Send the events to an SNS Topic destination
   ///
   /// &gt; **NOTE:** You can specify `"cloudwatch_destination"` or `"kinesis_destination"` but not both
@@ -62,98 +53,29 @@ class EventDestinationState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'arn': ?arn,
-      'cloudwatchDestinations':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<EventDestinationCloudwatchDestination>,
-            List<Map<String, dynamic>>
-          >(
-            cloudwatchDestinations,
-            (value) =>
-                pulumi.Input.encodeList<
-                  EventDestinationCloudwatchDestination,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'cloudwatchDestinations': ?pulumi.Input.mapOptionalInputValue<List<EventDestinationCloudwatchDestination>, List<Map<String, dynamic>>>(cloudwatchDestinations, (value) => pulumi.Input.encodeList<EventDestinationCloudwatchDestination, Map<String, dynamic>>(value, (value) => value.toMap())),
       'configurationSetName': ?configurationSetName,
       'enabled': ?enabled,
-      'kinesisDestination':
-          ?pulumi.Input.mapOptionalInputValue<
-            EventDestinationKinesisDestination,
-            Map<String, dynamic>
-          >(kinesisDestination, (value) => value.toMap()),
+      'kinesisDestination': ?pulumi.Input.mapOptionalInputValue<EventDestinationKinesisDestination, Map<String, dynamic>>(kinesisDestination, (value) => value.toMap()),
       'matchingTypes': ?matchingTypes,
       'name': ?name,
       'region': ?region,
-      'snsDestination':
-          ?pulumi.Input.mapOptionalInputValue<
-            EventDestinationSnsDestination,
-            Map<String, dynamic>
-          >(snsDestination, (value) => value.toMap()),
+      'snsDestination': ?pulumi.Input.mapOptionalInputValue<EventDestinationSnsDestination, Map<String, dynamic>>(snsDestination, (value) => value.toMap()),
     };
   }
 
   factory EventDestinationState.fromMap(Map<String, dynamic> map) {
     return EventDestinationState(
-      arn: (() {
-        final guardedValue = map['arn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      cloudwatchDestinations: (() {
-        final guardedValue = map['cloudwatchDestinations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<EventDestinationCloudwatchDestination>(
-            guardedValue,
-            (value) => EventDestinationCloudwatchDestination.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      configurationSetName: (() {
-        final guardedValue = map['configurationSetName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      kinesisDestination: (() {
-        final guardedValue = map['kinesisDestination'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          EventDestinationKinesisDestination.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      matchingTypes: (() {
-        final guardedValue = map['matchingTypes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      snsDestination: (() {
-        final guardedValue = map['snsDestination'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          EventDestinationSnsDestination.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      cloudwatchDestinations: (() { final guardedValue = map['cloudwatchDestinations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EventDestinationCloudwatchDestination>(guardedValue, (value) => EventDestinationCloudwatchDestination.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      configurationSetName: (() { final guardedValue = map['configurationSetName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      kinesisDestination: (() { final guardedValue = map['kinesisDestination']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EventDestinationKinesisDestination.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      matchingTypes: (() { final guardedValue = map['matchingTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      snsDestination: (() { final guardedValue = map['snsDestination']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EventDestinationSnsDestination.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

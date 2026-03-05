@@ -9,19 +9,20 @@ class AmdSevSnpSpecificationEnumValue {
 
   /// Creates a new [AmdSevSnpSpecificationEnumValue].
   /// [value] Property value
-  AmdSevSnpSpecificationEnumValue({this.value});
+  AmdSevSnpSpecificationEnumValue({
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': ?value};
+    return <String, dynamic>{
+      'value': ?value,
+    };
   }
 
   factory AmdSevSnpSpecificationEnumValue.fromMap(Map<String, dynamic> map) {
     return AmdSevSnpSpecificationEnumValue(
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -9,10 +9,14 @@ class PolicyVariableColumnResponse {
 
   /// Creates a new [PolicyVariableColumnResponse].
   /// [columnName] The name of this policy variable column.
-  PolicyVariableColumnResponse({required this.columnName});
+  PolicyVariableColumnResponse({
+    required this.columnName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'columnName': columnName};
+    return <String, dynamic>{
+      'columnName': columnName,
+    };
   }
 
   factory PolicyVariableColumnResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class PolicyVariableColumnResponse {
     );
   }
 }
+

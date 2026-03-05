@@ -6,20 +6,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AwAssumeRoleAuthenticationDetailsPropertiesResponse {
   /// The ID of the cloud account
   final pulumi.Input<String> accountId;
-
   /// State of the multi-cloud connector
   final pulumi.Input<String> authenticationProvisioningState;
-
   /// Connect to your cloud account, for AWS use either account credentials or role-based authentication. For GCP use account organization credentials.
   /// Expected value is 'awsAssumeRole'.
   final pulumi.Input<String> authenticationType;
-
   /// Assumed role ID is an identifier that you can use to create temporary security credentials.
   final pulumi.Input<String> awsAssumeRoleArn;
-
   /// A unique identifier that is required when you assume a role in another account.
   final pulumi.Input<String> awsExternalId;
-
   /// The permissions detected in the cloud account.
   final pulumi.Input<List<String>> grantedPermissions;
 
@@ -50,24 +45,15 @@ class AwAssumeRoleAuthenticationDetailsPropertiesResponse {
     };
   }
 
-  factory AwAssumeRoleAuthenticationDetailsPropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AwAssumeRoleAuthenticationDetailsPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwAssumeRoleAuthenticationDetailsPropertiesResponse(
       accountId: pulumi.Input.fromValue(map['accountId'] as String),
-      authenticationProvisioningState: pulumi.Input.fromValue(
-        map['authenticationProvisioningState'] as String,
-      ),
-      authenticationType: pulumi.Input.fromValue(
-        map['authenticationType'] as String,
-      ),
-      awsAssumeRoleArn: pulumi.Input.fromValue(
-        map['awsAssumeRoleArn'] as String,
-      ),
+      authenticationProvisioningState: pulumi.Input.fromValue(map['authenticationProvisioningState'] as String),
+      authenticationType: pulumi.Input.fromValue(map['authenticationType'] as String),
+      awsAssumeRoleArn: pulumi.Input.fromValue(map['awsAssumeRoleArn'] as String),
       awsExternalId: pulumi.Input.fromValue(map['awsExternalId'] as String),
-      grantedPermissions: pulumi.Input.fromValue(
-        (map['grantedPermissions'] as List).cast<String>(),
-      ),
+      grantedPermissions: pulumi.Input.fromValue((map['grantedPermissions'] as List).cast<String>()),
     );
   }
 }
+

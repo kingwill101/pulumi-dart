@@ -398,15 +398,12 @@ import 'backup_state.dart';
 class Backup extends pulumi.CustomResource {
   /// Backup ID.
   late final pulumi.Output<int> backupId;
-
   /// The expiration period for this manual backup ranges from 7 to 730 days. When you pass in -1, it indicates that this manual backup will not expire (during the instance's lifecycle). If you do not pass any value (default case), it means the expiration policy will be consistent with the current automatic backup strategy.
   ///
   /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<int?> backupRetentionPeriod;
-
   /// InstanceId
   late final pulumi.Output<String> instanceId;
-
   /// Backup status.
   late final pulumi.Output<String> status;
 
@@ -414,13 +411,16 @@ class Backup extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Backup]. {@macro pulumi_redis_backup_backup_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Backup(String name, {BackupArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:redis/backup:Backup',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Backup(
+    String name, {
+    BackupArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:redis/backup:Backup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     backupId = registerOutput<int>('backupId');
     backupRetentionPeriod = registerOutput<int?>('backupRetentionPeriod');
     instanceId = registerOutput<String>('instanceId');
@@ -445,11 +445,11 @@ class Backup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:redis/backup:Backup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:redis/backup:Backup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     backupId = registerOutput<int>('backupId');
     backupRetentionPeriod = registerOutput<int?>('backupRetentionPeriod');
     instanceId = registerOutput<String>('instanceId');

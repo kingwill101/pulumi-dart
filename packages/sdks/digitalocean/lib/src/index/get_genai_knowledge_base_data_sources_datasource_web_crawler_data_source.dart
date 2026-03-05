@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource {
   /// The base URL to crawl
   final pulumi.Input<String>? baseUrl;
-
   /// Options for specifying how URLs found on pages should be handled.
   /// - UNKNOWN: Default unknown value
   /// - SCOPED: Only include the base URL.
@@ -13,7 +12,6 @@ class GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource {
   /// - DOMAIN: Crawl the base URL and linked pages within the same domain.
   /// - SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.
   final pulumi.Input<String>? crawlingOption;
-
   /// Whether to embed media content
   final pulumi.Input<bool>? embedMedia;
 
@@ -35,25 +33,12 @@ class GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource {
     };
   }
 
-  factory GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource.fromMap(Map<String, dynamic> map) {
     return GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource(
-      baseUrl: (() {
-        final guardedValue = map['baseUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      crawlingOption: (() {
-        final guardedValue = map['crawlingOption'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      embedMedia: (() {
-        final guardedValue = map['embedMedia'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      baseUrl: (() { final guardedValue = map['baseUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      crawlingOption: (() { final guardedValue = map['crawlingOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      embedMedia: (() { final guardedValue = map['embedMedia']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

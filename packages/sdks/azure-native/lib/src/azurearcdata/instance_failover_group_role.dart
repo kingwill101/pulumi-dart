@@ -17,3 +17,4 @@ enum InstanceFailoverGroupRole {
     throw ArgumentError('Unknown InstanceFailoverGroupRole value: $value');
   }
 }
+

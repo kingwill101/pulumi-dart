@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkspaceManagedDiskIdentity {
   /// The principal UUID for the internal databricks storage account needed to provide access to the workspace for enabling Customer Managed Keys.
   final pulumi.Input<String>? principalId;
-
   /// The UUID of the tenant where the internal databricks storage account was created.
   final pulumi.Input<String>? tenantId;
-
   /// The type of the internal databricks storage account.
   final pulumi.Input<String>? type;
 
@@ -16,7 +14,11 @@ class WorkspaceManagedDiskIdentity {
   /// [principalId] The principal UUID for the internal databricks storage account needed to provide access to the workspace for enabling Customer Managed Keys.
   /// [tenantId] The UUID of the tenant where the internal databricks storage account was created.
   /// [type] The type of the internal databricks storage account.
-  WorkspaceManagedDiskIdentity({this.principalId, this.tenantId, this.type});
+  WorkspaceManagedDiskIdentity({
+    this.principalId,
+    this.tenantId,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,21 +30,10 @@ class WorkspaceManagedDiskIdentity {
 
   factory WorkspaceManagedDiskIdentity.fromMap(Map<String, dynamic> map) {
     return WorkspaceManagedDiskIdentity(
-      principalId: (() {
-        final guardedValue = map['principalId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tenantId: (() {
-        final guardedValue = map['tenantId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      principalId: (() { final guardedValue = map['principalId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

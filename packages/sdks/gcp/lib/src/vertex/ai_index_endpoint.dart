@@ -632,59 +632,43 @@ import 'ai_index_endpoint_state.dart';
 class AiIndexEndpoint extends pulumi.CustomResource {
   /// The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   late final pulumi.Output<String> createTime;
-
   /// The description of the Index.
   late final pulumi.Output<String?> description;
-
   /// The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
   late final pulumi.Output<String> displayName;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Customer-managed encryption key spec for an IndexEndpoint. If set, this IndexEndpoint and all sub-resources of this IndexEndpoint will be secured by this key.
   /// Structure is documented below.
   late final pulumi.Output<AiIndexEndpointEncryptionSpec?> encryptionSpec;
-
   /// Used to perform consistent read-modify-write updates.
   late final pulumi.Output<String> etag;
-
   /// The labels with user-defined metadata to organize your Indexes.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// The resource name of the Index.
   late final pulumi.Output<String> name;
-
   /// The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the index endpoint should be peered.
   /// Private services access must already be configured for the network. If left unspecified, the index endpoint is not peered with any network.
   /// [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`.
   /// Where `{project}` is a project number, as in `12345`, and `{network}` is network name.
   late final pulumi.Output<String?> network;
-
   /// Optional. Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
   /// Structure is documented below.
-  late final pulumi.Output<AiIndexEndpointPrivateServiceConnectConfig>
-  privateServiceConnectConfig;
-
+  late final pulumi.Output<AiIndexEndpointPrivateServiceConnectConfig> privateServiceConnectConfig;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// If publicEndpointEnabled is true, this field will be populated with the domain name to use for this index endpoint.
   late final pulumi.Output<String> publicEndpointDomainName;
-
   /// If true, the deployed index will be accessible through public endpoint.
   late final pulumi.Output<bool?> publicEndpointEnabled;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// The region of the index endpoint. eg us-central1
   late final pulumi.Output<String?> region;
-
   /// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   late final pulumi.Output<String> updateTime;
 
@@ -697,44 +681,23 @@ class AiIndexEndpoint extends pulumi.CustomResource {
     AiIndexEndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:vertex/aiIndexEndpoint:AiIndexEndpoint',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:vertex/aiIndexEndpoint:AiIndexEndpoint',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    encryptionSpec = registerOutput<AiIndexEndpointEncryptionSpec?>(
-      'encryptionSpec',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AiIndexEndpointEncryptionSpec.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    encryptionSpec = registerOutput<AiIndexEndpointEncryptionSpec?>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiIndexEndpointEncryptionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
     network = registerOutput<String?>('network');
-    privateServiceConnectConfig =
-        registerOutput<AiIndexEndpointPrivateServiceConnectConfig>(
-          'privateServiceConnectConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AiIndexEndpointPrivateServiceConnectConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    privateServiceConnectConfig = registerOutput<AiIndexEndpointPrivateServiceConnectConfig>('privateServiceConnectConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiIndexEndpointPrivateServiceConnectConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    publicEndpointDomainName = registerOutput<String>(
-      'publicEndpointDomainName',
-    );
+    publicEndpointDomainName = registerOutput<String>('publicEndpointDomainName');
     publicEndpointEnabled = registerOutput<bool?>('publicEndpointEnabled');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     region = registerOutput<String?>('region');
@@ -759,44 +722,23 @@ class AiIndexEndpoint extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:vertex/aiIndexEndpoint:AiIndexEndpoint',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:vertex/aiIndexEndpoint:AiIndexEndpoint',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    encryptionSpec = registerOutput<AiIndexEndpointEncryptionSpec?>(
-      'encryptionSpec',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AiIndexEndpointEncryptionSpec.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    encryptionSpec = registerOutput<AiIndexEndpointEncryptionSpec?>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiIndexEndpointEncryptionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
     network = registerOutput<String?>('network');
-    privateServiceConnectConfig =
-        registerOutput<AiIndexEndpointPrivateServiceConnectConfig>(
-          'privateServiceConnectConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AiIndexEndpointPrivateServiceConnectConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    privateServiceConnectConfig = registerOutput<AiIndexEndpointPrivateServiceConnectConfig>('privateServiceConnectConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiIndexEndpointPrivateServiceConnectConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    publicEndpointDomainName = registerOutput<String>(
-      'publicEndpointDomainName',
-    );
+    publicEndpointDomainName = registerOutput<String>('publicEndpointDomainName');
     publicEndpointEnabled = registerOutput<bool?>('publicEndpointEnabled');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     region = registerOutput<String?>('region');

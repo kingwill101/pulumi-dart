@@ -11,16 +11,12 @@ import 'registry_endpoint_properties.dart';
 class RegistryEndpointArgs {
   /// Edge location of the resource.
   final pulumi.Input<ExtendedLocation>? extendedLocation;
-
   /// Name of instance.
   final pulumi.Input<String> instanceName;
-
   /// The resource-specific properties for this resource.
   final pulumi.Input<RegistryEndpointProperties>? properties;
-
   /// Name of RegistryEndpoint resource
   final pulumi.Input<String>? registryEndpointName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -40,17 +36,9 @@ class RegistryEndpointArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'extendedLocation':
-          ?pulumi.Input.mapOptionalInputValue<
-            ExtendedLocation,
-            Map<String, dynamic>
-          >(extendedLocation, (value) => value.toMap()),
+      'extendedLocation': ?pulumi.Input.mapOptionalInputValue<ExtendedLocation, Map<String, dynamic>>(extendedLocation, (value) => value.toMap()),
       'instanceName': instanceName,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            RegistryEndpointProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<RegistryEndpointProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'registryEndpointName': ?registryEndpointName,
       'resourceGroupName': resourceGroupName,
     };
@@ -58,33 +46,12 @@ class RegistryEndpointArgs {
 
   factory RegistryEndpointArgs.fromMap(Map<String, dynamic> map) {
     return RegistryEndpointArgs(
-      extendedLocation: (() {
-        final guardedValue = map['extendedLocation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ExtendedLocation.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExtendedLocation.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       instanceName: pulumi.Input.fromValue(map['instanceName'] as String),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RegistryEndpointProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      registryEndpointName: (() {
-        final guardedValue = map['registryEndpointName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegistryEndpointProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      registryEndpointName: (() { final guardedValue = map['registryEndpointName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

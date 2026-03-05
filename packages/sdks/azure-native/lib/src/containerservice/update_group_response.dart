@@ -10,10 +10,14 @@ class UpdateGroupResponse {
 
   /// Creates a new [UpdateGroupResponse].
   /// [name] Name of the group.
-  UpdateGroupResponse({required this.name});
+  UpdateGroupResponse({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory UpdateGroupResponse.fromMap(Map<String, dynamic> map) {
@@ -22,3 +26,4 @@ class UpdateGroupResponse {
     );
   }
 }
+

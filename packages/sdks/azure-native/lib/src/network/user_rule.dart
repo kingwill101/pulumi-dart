@@ -379,44 +379,31 @@ import 'user_rule_args.dart';
 class UserRule extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// A description for this rule.
   late final pulumi.Output<String?> description;
-
   /// The destination port ranges.
   late final pulumi.Output<List<String>?> destinationPortRanges;
-
   /// The destination address prefixes. CIDR or destination IP ranges.
   late final pulumi.Output<List<Map<String, dynamic>>?> destinations;
-
   /// Indicates if the traffic matched against the rule in inbound or outbound.
   late final pulumi.Output<String> direction;
-
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
-
   /// Whether the rule is custom or default.
   /// Expected value is 'Custom'.
   late final pulumi.Output<String> kind;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// Network protocol this rule applies to.
   late final pulumi.Output<String> protocol;
-
   /// The provisioning state of the security configuration user rule resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The source port ranges.
   late final pulumi.Output<List<String>?> sourcePortRanges;
-
   /// The CIDR or source IP ranges.
   late final pulumi.Output<List<Map<String, dynamic>>?> sources;
-
   /// The system metadata related to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -429,16 +416,14 @@ class UserRule extends pulumi.CustomResource {
     UserRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:network:UserRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:network:UserRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     description = registerOutput<String?>('description');
-    destinationPortRanges = registerOutput<List<String>?>(
-      'destinationPortRanges',
-    );
+    destinationPortRanges = registerOutput<List<String>?>('destinationPortRanges');
     destinations = registerOutput<List<Map<String, dynamic>>?>('destinations');
     direction = registerOutput<String>('direction');
     etag = registerOutput<String>('etag');
@@ -448,16 +433,7 @@ class UserRule extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     sourcePortRanges = registerOutput<List<String>?>('sourcePortRanges');
     sources = registerOutput<List<Map<String, dynamic>>?>('sources');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

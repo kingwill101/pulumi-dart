@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SkuDetailsResponse {
   /// The name of the SKU.
   final pulumi.Input<String> name;
-
   /// The cache size in GB.
   final pulumi.Input<double> sizeInGB;
 
   /// Creates a new [SkuDetailsResponse].
   /// [name] The name of the SKU.
   /// [sizeInGB] The cache size in GB.
-  SkuDetailsResponse({required this.name, required this.sizeInGB});
+  SkuDetailsResponse({
+    required this.name,
+    required this.sizeInGB,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'sizeInGB': sizeInGB};
+    return <String, dynamic>{
+      'name': name,
+      'sizeInGB': sizeInGB,
+    };
   }
 
   factory SkuDetailsResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class SkuDetailsResponse {
     );
   }
 }
+

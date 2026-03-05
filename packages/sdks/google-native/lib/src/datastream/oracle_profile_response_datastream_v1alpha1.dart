@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OracleProfileResponseDatastreamV1alpha1 {
   /// Connection string attributes
   final pulumi.Input<Map<String, String>> connectionAttributes;
-
   /// Database for the Oracle connection.
   final pulumi.Input<String> databaseService;
-
   /// Hostname for the Oracle connection.
   final pulumi.Input<String> hostname;
-
   /// Password for the Oracle connection.
   final pulumi.Input<String> password;
-
   /// Port for the Oracle connection, default value is 1521.
   final pulumi.Input<int> port;
-
   /// Username for the Oracle connection.
   final pulumi.Input<String> username;
 
@@ -49,13 +44,9 @@ class OracleProfileResponseDatastreamV1alpha1 {
     };
   }
 
-  factory OracleProfileResponseDatastreamV1alpha1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OracleProfileResponseDatastreamV1alpha1.fromMap(Map<String, dynamic> map) {
     return OracleProfileResponseDatastreamV1alpha1(
-      connectionAttributes: pulumi.Input.fromValue(
-        (map['connectionAttributes'] as Map).cast<String, String>(),
-      ),
+      connectionAttributes: pulumi.Input.fromValue((map['connectionAttributes'] as Map).cast<String, String>()),
       databaseService: pulumi.Input.fromValue(map['databaseService'] as String),
       hostname: pulumi.Input.fromValue(map['hostname'] as String),
       password: pulumi.Input.fromValue(map['password'] as String),
@@ -64,3 +55,4 @@ class OracleProfileResponseDatastreamV1alpha1 {
     );
   }
 }
+

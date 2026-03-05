@@ -17,3 +17,4 @@ enum CpuManufacturer {
     throw ArgumentError('Unknown CpuManufacturer value: $value');
   }
 }
+

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KxEnvironmentCustomDnsConfiguration {
   /// IP address of the DNS server.
   final pulumi.Input<String> customDnsServerIp;
-
   /// Name of the DNS server.
   final pulumi.Input<String> customDnsServerName;
 
@@ -24,16 +23,11 @@ class KxEnvironmentCustomDnsConfiguration {
     };
   }
 
-  factory KxEnvironmentCustomDnsConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory KxEnvironmentCustomDnsConfiguration.fromMap(Map<String, dynamic> map) {
     return KxEnvironmentCustomDnsConfiguration(
-      customDnsServerIp: pulumi.Input.fromValue(
-        map['customDnsServerIp'] as String,
-      ),
-      customDnsServerName: pulumi.Input.fromValue(
-        map['customDnsServerName'] as String,
-      ),
+      customDnsServerIp: pulumi.Input.fromValue(map['customDnsServerIp'] as String),
+      customDnsServerName: pulumi.Input.fromValue(map['customDnsServerName'] as String),
     );
   }
 }
+

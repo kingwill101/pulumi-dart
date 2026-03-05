@@ -1493,48 +1493,36 @@ import 'instance_state.dart';
 class Instance extends pulumi.CustomResource {
   /// Aucillary VPCs used to access this KMS instance See `bind_vpcs` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> bindVpcs;
-
   /// KMS instance certificate chain in PEM format.
   late final pulumi.Output<String> caCertificateChainPem;
-
   /// The creation time of the resource.
   late final pulumi.Output<String> createTime;
-
   /// (Available since v1.233.1) Instance expiration time.
   late final pulumi.Output<String> endDate;
-
   /// Whether to force deletion even without backup.
   ///
   /// &gt; **NOTE:** This parameter only takes effect when deletion is triggered.
   late final pulumi.Output<String?> forceDeleteWithoutBackup;
-
   /// The name of the resource
   late final pulumi.Output<String> instanceName;
-
   /// Maximum number of stored keys. The attribute is valid when the attribute `payment_type` is `Subscription`.
   late final pulumi.Output<int?> keyNum;
-
   /// Instance Audit Log Switch. This attribute was limited to Subscription (prepaid) payment type before v1.264.0. As of v1.264.0, it is also supported for PayAsYouGo (postpaid) instances.
   late final pulumi.Output<String> log;
-
   /// Instance log capacity. This attribute was limited to Subscription (prepaid) payment type before v1.264.0. As of v1.264.0, it is also supported for PayAsYouGo (postpaid) instances.
   late final pulumi.Output<int> logStorage;
-
   /// The billing method. Valid values:
   ///
   /// - Subscription: the subscription billing method.
   /// - PayAsYouGo: the pay-as-you-go billing method.
   late final pulumi.Output<String> paymentType;
   late final pulumi.Output<int?> period;
-
   /// KMS Instance commodity type (software/hardware)
   late final pulumi.Output<String> productVersion;
-
   /// The auto-renewal period. Unit: month.
   ///
   /// &gt; **NOTE:**   This parameter is required if the `RenewalStatus` parameter is set to `AutoRenewal`.
   late final pulumi.Output<int?> renewPeriod;
-
   /// The renewal status of the specified instance. Valid values:
   ///
   /// - AutoRenewal: The instance is automatically renewed.
@@ -1542,28 +1530,20 @@ class Instance extends pulumi.CustomResource {
   /// - NotRenewal: The instance is not renewed.
   late final pulumi.Output<String> renewStatus;
   late final pulumi.Output<String?> renewalPeriodUnit;
-
   /// Maximum number of Secrets. The attribute is valid when the attribute `payment_type` is `Subscription`.
   late final pulumi.Output<int?> secretNum;
-
   /// The computation performance level of the KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
   late final pulumi.Output<int?> spec;
-
   /// Instance status.
   late final pulumi.Output<String> status;
-
   /// The tag of the resource
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The ID of the virtual private cloud (VPC) that is associated with the KMS instance.
   late final pulumi.Output<String> vpcId;
-
   /// The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
   late final pulumi.Output<int?> vpcNum;
-
   /// Instance bind vswitches
   late final pulumi.Output<List<String>> vswitchIds;
-
   /// zone id
   late final pulumi.Output<List<String>> zoneIds;
 
@@ -1576,18 +1556,16 @@ class Instance extends pulumi.CustomResource {
     InstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:kms/instance:Instance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:kms/instance:Instance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bindVpcs = registerOutput<List<Map<String, dynamic>>?>('bindVpcs');
     caCertificateChainPem = registerOutput<String>('caCertificateChainPem');
     createTime = registerOutput<String>('createTime');
     endDate = registerOutput<String>('endDate');
-    forceDeleteWithoutBackup = registerOutput<String?>(
-      'forceDeleteWithoutBackup',
-    );
+    forceDeleteWithoutBackup = registerOutput<String?>('forceDeleteWithoutBackup');
     instanceName = registerOutput<String>('instanceName');
     keyNum = registerOutput<int?>('keyNum');
     log = registerOutput<String>('log');
@@ -1626,18 +1604,16 @@ class Instance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:kms/instance:Instance',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:kms/instance:Instance',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bindVpcs = registerOutput<List<Map<String, dynamic>>?>('bindVpcs');
     caCertificateChainPem = registerOutput<String>('caCertificateChainPem');
     createTime = registerOutput<String>('createTime');
     endDate = registerOutput<String>('endDate');
-    forceDeleteWithoutBackup = registerOutput<String?>(
-      'forceDeleteWithoutBackup',
-    );
+    forceDeleteWithoutBackup = registerOutput<String?>('forceDeleteWithoutBackup');
     instanceName = registerOutput<String>('instanceName');
     keyNum = registerOutput<int?>('keyNum');
     log = registerOutput<String>('log');

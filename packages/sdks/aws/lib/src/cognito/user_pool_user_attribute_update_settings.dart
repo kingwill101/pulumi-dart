@@ -14,19 +14,14 @@ class UserPoolUserAttributeUpdateSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attributesRequireVerificationBeforeUpdates':
-          attributesRequireVerificationBeforeUpdates,
+      'attributesRequireVerificationBeforeUpdates': attributesRequireVerificationBeforeUpdates,
     };
   }
 
-  factory UserPoolUserAttributeUpdateSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory UserPoolUserAttributeUpdateSettings.fromMap(Map<String, dynamic> map) {
     return UserPoolUserAttributeUpdateSettings(
-      attributesRequireVerificationBeforeUpdates: pulumi.Input.fromValue(
-        (map['attributesRequireVerificationBeforeUpdates'] as List)
-            .cast<String>(),
-      ),
+      attributesRequireVerificationBeforeUpdates: pulumi.Input.fromValue((map['attributesRequireVerificationBeforeUpdates'] as List).cast<String>()),
     );
   }
 }
+

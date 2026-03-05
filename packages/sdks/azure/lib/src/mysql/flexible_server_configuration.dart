@@ -224,13 +224,10 @@ import 'flexible_server_configuration_state.dart';
 class FlexibleServerConfiguration extends pulumi.CustomResource {
   /// Specifies the name of the MySQL Flexible Server Configuration, which needs [to be a valid MySQL configuration name](https://dev.mysql.com/doc/refman/5.7/en/server-configuration.html). Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the resource group in which the MySQL Flexible Server exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// Specifies the name of the MySQL Flexible Server. Changing this forces a new resource to be created.
   late final pulumi.Output<String> serverName;
-
   /// Specifies the value of the MySQL Flexible Server Configuration. See the MySQL documentation for valid values.
   late final pulumi.Output<String> value;
 
@@ -243,11 +240,11 @@ class FlexibleServerConfiguration extends pulumi.CustomResource {
     FlexibleServerConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:mysql/flexibleServerConfiguration:FlexibleServerConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:mysql/flexibleServerConfiguration:FlexibleServerConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     serverName = registerOutput<String>('serverName');
@@ -272,11 +269,11 @@ class FlexibleServerConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:mysql/flexibleServerConfiguration:FlexibleServerConfiguration',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:mysql/flexibleServerConfiguration:FlexibleServerConfiguration',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     serverName = registerOutput<String>('serverName');

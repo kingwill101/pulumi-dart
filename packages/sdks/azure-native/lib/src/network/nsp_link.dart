@@ -164,43 +164,30 @@ import 'nsp_link_args.dart';
 class NspLink extends pulumi.CustomResource {
   /// Perimeter ARM Id for the remote NSP with which the link gets created in Auto-approval mode. It should be used when the NSP admin have Microsoft.Network/networkSecurityPerimeters/linkPerimeter/action permission on the remote NSP resource.
   late final pulumi.Output<String?> autoApprovedRemotePerimeterResourceId;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// A message passed to the owner of the remote NSP link resource with this connection request. In case of Auto-approved flow, it is default to 'Auto Approved'. Restricted to 140 chars.
   late final pulumi.Output<String?> description;
-
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
-
   /// Local Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles.
   late final pulumi.Output<List<String>?> localInboundProfiles;
-
   /// Local Outbound profile names from which Outbound is allowed. In current version, it is readonly property and it's value is set to ['*'] to allow outbound from all profiles. In later version, user will be able to modify it.
   late final pulumi.Output<List<String>> localOutboundProfiles;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// The provisioning state of the NSP Link resource.
   late final pulumi.Output<String> provisioningState;
-
   /// Remote Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. This property can only be updated in auto-approval mode.
   late final pulumi.Output<List<String>?> remoteInboundProfiles;
-
   /// Remote Outbound profile names from which Outbound is allowed. In current version, it is readonly property and it's value is set to ['*'] to allow outbound from all profiles. In later version, user will be able to modify it.
   late final pulumi.Output<List<String>> remoteOutboundProfiles;
-
   /// Remote NSP Guid with which the link gets created.
   late final pulumi.Output<String> remotePerimeterGuid;
-
   /// Remote NSP location with which the link gets created.
   late final pulumi.Output<String> remotePerimeterLocation;
-
   /// The NSP link state.
   late final pulumi.Output<String> status;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -213,31 +200,21 @@ class NspLink extends pulumi.CustomResource {
     NspLinkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:network:NspLink',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    autoApprovedRemotePerimeterResourceId = registerOutput<String?>(
-      'autoApprovedRemotePerimeterResourceId',
-    );
+          'azure-native:network:NspLink',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    autoApprovedRemotePerimeterResourceId = registerOutput<String?>('autoApprovedRemotePerimeterResourceId');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     description = registerOutput<String?>('description');
     etag = registerOutput<String>('etag');
-    localInboundProfiles = registerOutput<List<String>?>(
-      'localInboundProfiles',
-    );
-    localOutboundProfiles = registerOutput<List<String>>(
-      'localOutboundProfiles',
-    );
+    localInboundProfiles = registerOutput<List<String>?>('localInboundProfiles');
+    localOutboundProfiles = registerOutput<List<String>>('localOutboundProfiles');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    remoteInboundProfiles = registerOutput<List<String>?>(
-      'remoteInboundProfiles',
-    );
-    remoteOutboundProfiles = registerOutput<List<String>>(
-      'remoteOutboundProfiles',
-    );
+    remoteInboundProfiles = registerOutput<List<String>?>('remoteInboundProfiles');
+    remoteOutboundProfiles = registerOutput<List<String>>('remoteOutboundProfiles');
     remotePerimeterGuid = registerOutput<String>('remotePerimeterGuid');
     remotePerimeterLocation = registerOutput<String>('remotePerimeterLocation');
     status = registerOutput<String>('status');

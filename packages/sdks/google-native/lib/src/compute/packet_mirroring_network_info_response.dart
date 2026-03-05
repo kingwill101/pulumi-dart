@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PacketMirroringNetworkInfoResponse {
   /// Unique identifier for the network; defined by the server.
   final pulumi.Input<String> canonicalUrl;
-
   /// URL of the network resource.
   final pulumi.Input<String> url;
 
@@ -18,7 +17,10 @@ class PacketMirroringNetworkInfoResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'canonicalUrl': canonicalUrl, 'url': url};
+    return <String, dynamic>{
+      'canonicalUrl': canonicalUrl,
+      'url': url,
+    };
   }
 
   factory PacketMirroringNetworkInfoResponse.fromMap(Map<String, dynamic> map) {
@@ -28,3 +30,4 @@ class PacketMirroringNetworkInfoResponse {
     );
   }
 }
+

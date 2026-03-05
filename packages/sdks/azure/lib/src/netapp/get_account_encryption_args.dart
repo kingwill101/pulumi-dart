@@ -12,10 +12,14 @@ class GetAccountEncryptionArgs {
 
   /// Creates a new [GetAccountEncryptionArgs].
   /// [netappAccountId] The ID of the NetApp account where customer managed keys-based encryption is enabled.
-  GetAccountEncryptionArgs({required this.netappAccountId});
+  GetAccountEncryptionArgs({
+    required this.netappAccountId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'netappAccountId': netappAccountId};
+    return <String, dynamic>{
+      'netappAccountId': netappAccountId,
+    };
   }
 
   factory GetAccountEncryptionArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetAccountEncryptionArgs {
     );
   }
 }
+

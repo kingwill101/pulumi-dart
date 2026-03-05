@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IdentifierHelperResponse {
   /// The field that is set in the API proto.
   final pulumi.Input<String> field;
-
   /// Contains a URI which is vendor-specific. Example: The artifact repository URL of an image.
   final pulumi.Input<String> genericUri;
 
   /// Creates a new [IdentifierHelperResponse].
   /// [field] The field that is set in the API proto.
   /// [genericUri] Contains a URI which is vendor-specific. Example: The artifact repository URL of an image.
-  IdentifierHelperResponse({required this.field, required this.genericUri});
+  IdentifierHelperResponse({
+    required this.field,
+    required this.genericUri,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'field': field, 'genericUri': genericUri};
+    return <String, dynamic>{
+      'field': field,
+      'genericUri': genericUri,
+    };
   }
 
   factory IdentifierHelperResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class IdentifierHelperResponse {
     );
   }
 }
+

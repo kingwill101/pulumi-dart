@@ -12,61 +12,42 @@ import 'tag.dart';
 class AwsLightsailInstanceProperties {
   /// An array of objects representing the add-ons to enable for the new instance.
   final pulumi.Input<List<AddOn>>? addOns;
-
   /// The Availability Zone in which to create your instance. Use the following format: us-east-2a (case sensitive). Be sure to add the include Availability Zones parameter to your request.
   final pulumi.Input<String>? availabilityZone;
-
   /// The ID for a virtual private server image (e.g., app_wordpress_4_4 or app_lamp_7_0 ). Use the get blueprints operation to return a list of available images (or blueprints ).
   final pulumi.Input<String>? blueprintId;
-
   /// The bundle of specification information for your virtual private server (or instance ), including the pricing plan (e.g., micro_1_0 ).
   final pulumi.Input<String>? bundleId;
-
   /// Hardware of the Instance.
   final pulumi.Input<Hardware>? hardware;
-
   /// Property instanceArn
   final pulumi.Input<String>? instanceArn;
-
   /// The names to use for your new Lightsail instance.
   final pulumi.Input<String>? instanceName;
-
   /// Is the IP Address of the Instance is the static IP
   final pulumi.Input<bool>? isStaticIp;
-
   /// The name of your key pair.
   final pulumi.Input<String>? keyPairName;
-
   /// Location of a resource.
   final pulumi.Input<Location>? location;
-
   /// Networking of the Instance.
   final pulumi.Input<Networking>? networking;
-
   /// Private IP Address of the Instance
   final pulumi.Input<String>? privateIpAddress;
-
   /// Public IP Address of the Instance
   final pulumi.Input<String>? publicIpAddress;
-
   /// Resource type of Lightsail instance.
   final pulumi.Input<String>? resourceType;
-
   /// SSH Key Name of the  Lightsail instance.
   final pulumi.Input<String>? sshKeyName;
-
   /// Current State of the Instance.
   final pulumi.Input<State>? state;
-
   /// Support code to help identify any issues
   final pulumi.Input<String>? supportCode;
-
   /// An array of key-value pairs to apply to this resource.
   final pulumi.Input<List<Tag>>? tags;
-
   /// A launch script you can create that configures a server with additional user data. For example, you might want to run apt-get -y update.
   final pulumi.Input<String>? userData;
-
   /// Username of the  Lightsail instance.
   final pulumi.Input<String>? userName;
 
@@ -116,59 +97,24 @@ class AwsLightsailInstanceProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'addOns':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<AddOn>,
-            List<Map<String, dynamic>>
-          >(
-            addOns,
-            (value) => pulumi.Input.encodeList<AddOn, Map<String, dynamic>>(
-              value,
-              (value) => value.toMap(),
-            ),
-          ),
+      'addOns': ?pulumi.Input.mapOptionalInputValue<List<AddOn>, List<Map<String, dynamic>>>(addOns, (value) => pulumi.Input.encodeList<AddOn, Map<String, dynamic>>(value, (value) => value.toMap())),
       'availabilityZone': ?availabilityZone,
       'blueprintId': ?blueprintId,
       'bundleId': ?bundleId,
-      'hardware':
-          ?pulumi.Input.mapOptionalInputValue<Hardware, Map<String, dynamic>>(
-            hardware,
-            (value) => value.toMap(),
-          ),
+      'hardware': ?pulumi.Input.mapOptionalInputValue<Hardware, Map<String, dynamic>>(hardware, (value) => value.toMap()),
       'instanceArn': ?instanceArn,
       'instanceName': ?instanceName,
       'isStaticIp': ?isStaticIp,
       'keyPairName': ?keyPairName,
-      'location':
-          ?pulumi.Input.mapOptionalInputValue<Location, Map<String, dynamic>>(
-            location,
-            (value) => value.toMap(),
-          ),
-      'networking':
-          ?pulumi.Input.mapOptionalInputValue<Networking, Map<String, dynamic>>(
-            networking,
-            (value) => value.toMap(),
-          ),
+      'location': ?pulumi.Input.mapOptionalInputValue<Location, Map<String, dynamic>>(location, (value) => value.toMap()),
+      'networking': ?pulumi.Input.mapOptionalInputValue<Networking, Map<String, dynamic>>(networking, (value) => value.toMap()),
       'privateIpAddress': ?privateIpAddress,
       'publicIpAddress': ?publicIpAddress,
       'resourceType': ?resourceType,
       'sshKeyName': ?sshKeyName,
-      'state': ?pulumi.Input.mapOptionalInputValue<State, Map<String, dynamic>>(
-        state,
-        (value) => value.toMap(),
-      ),
+      'state': ?pulumi.Input.mapOptionalInputValue<State, Map<String, dynamic>>(state, (value) => value.toMap()),
       'supportCode': ?supportCode,
-      'tags':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<Tag>,
-            List<Map<String, dynamic>>
-          >(
-            tags,
-            (value) => pulumi.Input.encodeList<Tag, Map<String, dynamic>>(
-              value,
-              (value) => value.toMap(),
-            ),
-          ),
+      'tags': ?pulumi.Input.mapOptionalInputValue<List<Tag>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<Tag, Map<String, dynamic>>(value, (value) => value.toMap())),
       'userData': ?userData,
       'userName': ?userName,
     };
@@ -176,124 +122,27 @@ class AwsLightsailInstanceProperties {
 
   factory AwsLightsailInstanceProperties.fromMap(Map<String, dynamic> map) {
     return AwsLightsailInstanceProperties(
-      addOns: (() {
-        final guardedValue = map['addOns'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<AddOn>(
-            guardedValue,
-            (value) => AddOn.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      availabilityZone: (() {
-        final guardedValue = map['availabilityZone'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      blueprintId: (() {
-        final guardedValue = map['blueprintId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      bundleId: (() {
-        final guardedValue = map['bundleId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      hardware: (() {
-        final guardedValue = map['hardware'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          Hardware.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      instanceArn: (() {
-        final guardedValue = map['instanceArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      instanceName: (() {
-        final guardedValue = map['instanceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      isStaticIp: (() {
-        final guardedValue = map['isStaticIp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      keyPairName: (() {
-        final guardedValue = map['keyPairName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          Location.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      networking: (() {
-        final guardedValue = map['networking'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          Networking.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      privateIpAddress: (() {
-        final guardedValue = map['privateIpAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      publicIpAddress: (() {
-        final guardedValue = map['publicIpAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceType: (() {
-        final guardedValue = map['resourceType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sshKeyName: (() {
-        final guardedValue = map['sshKeyName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          State.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      supportCode: (() {
-        final guardedValue = map['supportCode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<Tag>(
-            guardedValue,
-            (value) => Tag.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      userData: (() {
-        final guardedValue = map['userData'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      userName: (() {
-        final guardedValue = map['userName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      addOns: (() { final guardedValue = map['addOns']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AddOn>(guardedValue, (value) => AddOn.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      availabilityZone: (() { final guardedValue = map['availabilityZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      blueprintId: (() { final guardedValue = map['blueprintId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      bundleId: (() { final guardedValue = map['bundleId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      hardware: (() { final guardedValue = map['hardware']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Hardware.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      instanceArn: (() { final guardedValue = map['instanceArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      instanceName: (() { final guardedValue = map['instanceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      isStaticIp: (() { final guardedValue = map['isStaticIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      keyPairName: (() { final guardedValue = map['keyPairName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Location.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      networking: (() { final guardedValue = map['networking']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Networking.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      privateIpAddress: (() { final guardedValue = map['privateIpAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicIpAddress: (() { final guardedValue = map['publicIpAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceType: (() { final guardedValue = map['resourceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sshKeyName: (() { final guardedValue = map['sshKeyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(State.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      supportCode: (() { final guardedValue = map['supportCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Tag>(guardedValue, (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      userData: (() { final guardedValue = map['userData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      userName: (() { final guardedValue = map['userName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

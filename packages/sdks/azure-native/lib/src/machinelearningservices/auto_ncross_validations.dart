@@ -10,10 +10,14 @@ class AutoNCrossValidations {
 
   /// Creates a new [AutoNCrossValidations].
   /// [mode] Determines how N-Cross validations value is determined.
-  AutoNCrossValidations({required this.mode});
+  AutoNCrossValidations({
+    required this.mode,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'mode': mode};
+    return <String, dynamic>{
+      'mode': mode,
+    };
   }
 
   factory AutoNCrossValidations.fromMap(Map<String, dynamic> map) {
@@ -22,3 +26,4 @@ class AutoNCrossValidations {
     );
   }
 }
+

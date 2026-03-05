@@ -13,20 +13,23 @@ class GetContactArgs {
   /// Creates a new [GetContactArgs].
   /// [contactId] Required.
   /// [project] Optional.
-  GetContactArgs({required this.contactId, this.project});
+  GetContactArgs({
+    required this.contactId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'contactId': contactId, 'project': ?project};
+    return <String, dynamic>{
+      'contactId': contactId,
+      'project': ?project,
+    };
   }
 
   factory GetContactArgs.fromMap(Map<String, dynamic> map) {
     return GetContactArgs(
       contactId: pulumi.Input.fromValue(map['contactId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

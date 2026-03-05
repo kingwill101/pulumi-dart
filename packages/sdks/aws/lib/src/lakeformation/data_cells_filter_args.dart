@@ -11,7 +11,6 @@ import 'data_cells_filter_timeouts.dart';
 class DataCellsFilterArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Information about the data cells filter. See Table Data below for details.
   final pulumi.Input<DataCellsFilterTableData> tableData;
   final pulumi.Input<DataCellsFilterTimeouts>? timeouts;
@@ -20,45 +19,26 @@ class DataCellsFilterArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tableData] Information about the data cells filter. See Table Data below for details.
   /// [timeouts] Optional.
-  DataCellsFilterArgs({this.region, required this.tableData, this.timeouts});
+  DataCellsFilterArgs({
+    this.region,
+    required this.tableData,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'region': ?region,
-      'tableData':
-          pulumi.Input.mapInputValue<
-            DataCellsFilterTableData,
-            Map<String, dynamic>
-          >(tableData, (value) => value.toMap()),
-      'timeouts':
-          ?pulumi.Input.mapOptionalInputValue<
-            DataCellsFilterTimeouts,
-            Map<String, dynamic>
-          >(timeouts, (value) => value.toMap()),
+      'tableData': pulumi.Input.mapInputValue<DataCellsFilterTableData, Map<String, dynamic>>(tableData, (value) => value.toMap()),
+      'timeouts': ?pulumi.Input.mapOptionalInputValue<DataCellsFilterTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
     };
   }
 
   factory DataCellsFilterArgs.fromMap(Map<String, dynamic> map) {
     return DataCellsFilterArgs(
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tableData: pulumi.Input.fromValue(
-        DataCellsFilterTableData.fromMap(
-          (map['tableData']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      timeouts: (() {
-        final guardedValue = map['timeouts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DataCellsFilterTimeouts.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tableData: pulumi.Input.fromValue(DataCellsFilterTableData.fromMap((map['tableData']! as Map).cast<String, dynamic>())),
+      timeouts: (() { final guardedValue = map['timeouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DataCellsFilterTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

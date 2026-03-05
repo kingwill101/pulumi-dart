@@ -7,24 +7,18 @@ class EndpointPrivateServiceConnection {
   ///
   /// &gt; **Note:** If you are trying to connect the Private Endpoint to a remote resource without having the correct RBAC permissions on the remote resource set this value to `true`.
   final pulumi.Input<bool> isManualConnection;
-
   /// Specifies the Name of the Private Service Connection. Changing this forces a new resource to be created.
   final pulumi.Input<String> name;
-
   /// The Service Alias of the Private Link Enabled Remote Resource which this Private Endpoint should be connected to. One of `private_connection_resource_id` or `private_connection_resource_alias` must be specified. Changing this forces a new resource to be created.
   final pulumi.Input<String>? privateConnectionResourceAlias;
-
   /// The ID of the Private Link Enabled Remote Resource which this Private Endpoint should be connected to. One of `private_connection_resource_id` or `private_connection_resource_alias` must be specified. Changing this forces a new resource to be created. For a web app or function app slot, the parent web app should be used in this field instead of a reference to the slot itself.
   final pulumi.Input<String>? privateConnectionResourceId;
-
   /// (Required) The static IP address set by this configuration. It is recommended to use the private IP address exported in the `private_service_connection` block to obtain the address associated with the private endpoint.
   final pulumi.Input<String>? privateIpAddress;
-
   /// A message passed to the owner of the remote resource when the private endpoint attempts to establish the connection to the remote resource. The provider allows a maximum request message length of `140` characters, however the request message maximum length is dependent on the service the private endpoint is connected to. Only valid if `is_manual_connection` is set to `true`.
   ///
   /// &gt; **Note:** When connected to an SQL resource the `request_message` maximum length is `128`.
   final pulumi.Input<String>? requestMessage;
-
   /// A list of subresource names which the Private Endpoint is able to connect to. `subresource_names` corresponds to `group_id`. Possible values are detailed in the product [documentation](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#private-link-resource) in the `Subresources` column. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Some resource types (such as Storage Account) only support 1 subresource per private endpoint.
@@ -64,35 +58,14 @@ class EndpointPrivateServiceConnection {
 
   factory EndpointPrivateServiceConnection.fromMap(Map<String, dynamic> map) {
     return EndpointPrivateServiceConnection(
-      isManualConnection: pulumi.Input.fromValue(
-        map['isManualConnection'] as bool,
-      ),
+      isManualConnection: pulumi.Input.fromValue(map['isManualConnection'] as bool),
       name: pulumi.Input.fromValue(map['name'] as String),
-      privateConnectionResourceAlias: (() {
-        final guardedValue = map['privateConnectionResourceAlias'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      privateConnectionResourceId: (() {
-        final guardedValue = map['privateConnectionResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      privateIpAddress: (() {
-        final guardedValue = map['privateIpAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      requestMessage: (() {
-        final guardedValue = map['requestMessage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subresourceNames: (() {
-        final guardedValue = map['subresourceNames'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      privateConnectionResourceAlias: (() { final guardedValue = map['privateConnectionResourceAlias']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateConnectionResourceId: (() { final guardedValue = map['privateConnectionResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateIpAddress: (() { final guardedValue = map['privateIpAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      requestMessage: (() { final guardedValue = map['requestMessage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subresourceNames: (() { final guardedValue = map['subresourceNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

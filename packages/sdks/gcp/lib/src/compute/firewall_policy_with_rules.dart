@@ -1110,37 +1110,27 @@ import 'firewall_policy_with_rules_state.dart';
 class FirewallPolicyWithRules extends pulumi.CustomResource {
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
-
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
-
   /// Fingerprint of the resource. This field is used internally during updates of this resource.
   late final pulumi.Output<String> fingerprint;
-
   /// The parent of this FirewallPolicy in the Cloud Resource Hierarchy.
   /// Format: organizations/{organization_id} or folders/{folder_id}
   late final pulumi.Output<String> parent;
-
   /// The unique identifier for the resource. This identifier is defined by the server.
   late final pulumi.Output<String> policyId;
-
   /// A list of pre-define firewall policy rules.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> predefinedRules;
-
   /// Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
   late final pulumi.Output<int> ruleTupleCount;
-
   /// A list of firewall policy rules.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> rules;
-
   /// Server-defined URL for the resource.
   late final pulumi.Output<String> selfLink;
-
   /// Server-defined URL for this resource with the resource id.
   late final pulumi.Output<String> selfLinkWithId;
-
   /// A textual name of the security policy.
   late final pulumi.Output<String> shortName;
 
@@ -1153,19 +1143,17 @@ class FirewallPolicyWithRules extends pulumi.CustomResource {
     FirewallPolicyWithRulesArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:compute/firewallPolicyWithRules:FirewallPolicyWithRules',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:compute/firewallPolicyWithRules:FirewallPolicyWithRules',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String?>('description');
     fingerprint = registerOutput<String>('fingerprint');
     parent = registerOutput<String>('parent');
     policyId = registerOutput<String>('policyId');
-    predefinedRules = registerOutput<List<Map<String, dynamic>>>(
-      'predefinedRules',
-    );
+    predefinedRules = registerOutput<List<Map<String, dynamic>>>('predefinedRules');
     ruleTupleCount = registerOutput<int>('ruleTupleCount');
     rules = registerOutput<List<Map<String, dynamic>>>('rules');
     selfLink = registerOutput<String>('selfLink');
@@ -1191,19 +1179,17 @@ class FirewallPolicyWithRules extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:compute/firewallPolicyWithRules:FirewallPolicyWithRules',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:compute/firewallPolicyWithRules:FirewallPolicyWithRules',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String?>('description');
     fingerprint = registerOutput<String>('fingerprint');
     parent = registerOutput<String>('parent');
     policyId = registerOutput<String>('policyId');
-    predefinedRules = registerOutput<List<Map<String, dynamic>>>(
-      'predefinedRules',
-    );
+    predefinedRules = registerOutput<List<Map<String, dynamic>>>('predefinedRules');
     ruleTupleCount = registerOutput<int>('ruleTupleCount');
     rules = registerOutput<List<Map<String, dynamic>>>('rules');
     selfLink = registerOutput<String>('selfLink');

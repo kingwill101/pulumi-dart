@@ -12,39 +12,20 @@ class GetAccountAvailabilitiesArgs {
 
   /// Creates a new [GetAccountAvailabilitiesArgs].
   /// [filters] Optional.
-  GetAccountAvailabilitiesArgs({this.filters});
+  GetAccountAvailabilitiesArgs({
+    this.filters,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GetAccountAvailabilitiesFilter>,
-            List<Map<String, dynamic>>
-          >(
-            filters,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetAccountAvailabilitiesFilter,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetAccountAvailabilitiesFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetAccountAvailabilitiesFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetAccountAvailabilitiesArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountAvailabilitiesArgs(
-      filters: (() {
-        final guardedValue = map['filters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GetAccountAvailabilitiesFilter>(
-            guardedValue,
-            (value) => GetAccountAvailabilitiesFilter.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetAccountAvailabilitiesFilter>(guardedValue, (value) => GetAccountAvailabilitiesFilter.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

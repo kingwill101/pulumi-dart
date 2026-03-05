@@ -1,22 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getNotebookWorkspace.
 class GetNotebookWorkspaceResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The unique resource identifier of the database account.
   final String id;
-
   /// The name of the database account.
   final String name;
-
   /// Specifies the endpoint of Notebook server.
   final String notebookServerEndpoint;
-
   /// Status of the notebook workspace. Possible values are: Creating, Online, Deleting, Failed, Updating.
   final String status;
-
   /// The type of Azure resource.
   final String type;
 
@@ -58,3 +54,4 @@ class GetNotebookWorkspaceResult {
     );
   }
 }
+

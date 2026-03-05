@@ -7,52 +7,29 @@ import '../meta/label_selector_requirement.dart';
 class LabelSelectorAttributes {
   /// rawSelector is the serialization of a field selector that would be included in a query parameter. Webhook implementations are encouraged to ignore rawSelector. The kube-apiserver's *SubjectAccessReview will parse the rawSelector as long as the requirements are not present.
   final pulumi.Input<String>? rawSelector;
-
   /// requirements is the parsed interpretation of a label selector. All requirements must be met for a resource instance to match the selector. Webhook implementations should handle requirements, but how to handle them is up to the webhook. Since requirements can only limit the request, it is safe to authorize as unlimited request if the requirements are not understood.
   final pulumi.Input<List<LabelSelectorRequirement>>? requirements;
 
   /// Creates a new [LabelSelectorAttributes].
   /// [rawSelector] rawSelector is the serialization of a field selector that would be included in a query parameter. Webhook implementations are encouraged to ignore rawSelector. The kube-apiserver's *SubjectAccessReview will parse the rawSelector as long as the requirements are not present.
   /// [requirements] requirements is the parsed interpretation of a label selector. All requirements must be met for a resource instance to match the selector. Webhook implementations should handle requirements, but how to handle them is up to the webhook. Since requirements can only limit the request, it is safe to authorize as unlimited request if the requirements are not understood.
-  LabelSelectorAttributes({this.rawSelector, this.requirements});
+  LabelSelectorAttributes({
+    this.rawSelector,
+    this.requirements,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'rawSelector': ?rawSelector,
-      'requirements':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<LabelSelectorRequirement>,
-            List<Map<String, dynamic>>
-          >(
-            requirements,
-            (value) =>
-                pulumi.Input.encodeList<
-                  LabelSelectorRequirement,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'requirements': ?pulumi.Input.mapOptionalInputValue<List<LabelSelectorRequirement>, List<Map<String, dynamic>>>(requirements, (value) => pulumi.Input.encodeList<LabelSelectorRequirement, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory LabelSelectorAttributes.fromMap(Map<String, dynamic> map) {
     return LabelSelectorAttributes(
-      rawSelector: (() {
-        final guardedValue = map['rawSelector'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      requirements: (() {
-        final guardedValue = map['requirements'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<LabelSelectorRequirement>(
-            guardedValue,
-            (value) => LabelSelectorRequirement.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      rawSelector: (() { final guardedValue = map['rawSelector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      requirements: (() { final guardedValue = map['requirements']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<LabelSelectorRequirement>(guardedValue, (value) => LabelSelectorRequirement.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

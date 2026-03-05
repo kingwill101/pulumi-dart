@@ -31,6 +31,8 @@ class PulumiserviceConfig {
   }
 
   bool get apiUrlIsSecret => _isSecret('apiUrl');
+
 }
 
 final config = PulumiserviceConfig();
+

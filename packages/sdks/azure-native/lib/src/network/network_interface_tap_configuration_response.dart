@@ -7,19 +7,14 @@ import 'virtual_network_tap_response.dart';
 class NetworkInterfaceTapConfigurationResponse {
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
-
   /// Resource ID.
   final pulumi.Input<String>? id;
-
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   final pulumi.Input<String>? name;
-
   /// The provisioning state of the network interface tap configuration resource.
   final pulumi.Input<String> provisioningState;
-
   /// Sub Resource type.
   final pulumi.Input<String> type;
-
   /// The reference to the Virtual Network Tap resource.
   final pulumi.Input<VirtualNetworkTapResponse>? virtualNetworkTap;
 
@@ -46,42 +41,19 @@ class NetworkInterfaceTapConfigurationResponse {
       'name': ?name,
       'provisioningState': provisioningState,
       'type': type,
-      'virtualNetworkTap':
-          ?pulumi.Input.mapOptionalInputValue<
-            VirtualNetworkTapResponse,
-            Map<String, dynamic>
-          >(virtualNetworkTap, (value) => value.toMap()),
+      'virtualNetworkTap': ?pulumi.Input.mapOptionalInputValue<VirtualNetworkTapResponse, Map<String, dynamic>>(virtualNetworkTap, (value) => value.toMap()),
     };
   }
 
-  factory NetworkInterfaceTapConfigurationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NetworkInterfaceTapConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceTapConfigurationResponse(
       etag: pulumi.Input.fromValue(map['etag'] as String),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
-      virtualNetworkTap: (() {
-        final guardedValue = map['virtualNetworkTap'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          VirtualNetworkTapResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      virtualNetworkTap: (() { final guardedValue = map['virtualNetworkTap']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualNetworkTapResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

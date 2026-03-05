@@ -9,10 +9,14 @@ class PodSchedulingGate {
 
   /// Creates a new [PodSchedulingGate].
   /// [name] Name of the scheduling gate. Each scheduling gate must have a unique name field.
-  PodSchedulingGate({required this.name});
+  PodSchedulingGate({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory PodSchedulingGate.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class PodSchedulingGate {
     );
   }
 }
+

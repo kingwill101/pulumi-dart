@@ -8,19 +8,20 @@ class DomainFeaturesHyperVSpinlocks {
 
   /// Creates a new [DomainFeaturesHyperVSpinlocks].
   /// [retries] Configures the number of retries for spinlocks in Hyper-V.
-  DomainFeaturesHyperVSpinlocks({this.retries});
+  DomainFeaturesHyperVSpinlocks({
+    this.retries,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'retries': ?retries};
+    return <String, dynamic>{
+      'retries': ?retries,
+    };
   }
 
   factory DomainFeaturesHyperVSpinlocks.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesHyperVSpinlocks(
-      retries: (() {
-        final guardedValue = map['retries'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      retries: (() { final guardedValue = map['retries']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

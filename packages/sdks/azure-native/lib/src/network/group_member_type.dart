@@ -15,3 +15,4 @@ enum GroupMemberType {
     throw ArgumentError('Unknown GroupMemberType value: $value');
   }
 }
+

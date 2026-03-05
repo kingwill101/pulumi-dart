@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterServicePrincipal {
   /// The Client ID for the Service Principal.
   final pulumi.Input<String> clientId;
-
   /// The Client Secret for the Service Principal.
   ///
   /// &gt; **Note:** Currently a service principal cannot be associated with more than one ARO clusters on the Azure subscription.
@@ -14,7 +13,10 @@ class ClusterServicePrincipal {
   /// Creates a new [ClusterServicePrincipal].
   /// [clientId] The Client ID for the Service Principal.
   /// [clientSecret] The Client Secret for the Service Principal.
-  ClusterServicePrincipal({required this.clientId, required this.clientSecret});
+  ClusterServicePrincipal({
+    required this.clientId,
+    required this.clientSecret,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -30,3 +32,4 @@ class ClusterServicePrincipal {
     );
   }
 }
+

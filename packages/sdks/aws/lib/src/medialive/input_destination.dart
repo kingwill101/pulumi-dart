@@ -8,10 +8,14 @@ class InputDestination {
 
   /// Creates a new [InputDestination].
   /// [streamName] A unique name for the location the RTMP stream is being pushed to.
-  InputDestination({required this.streamName});
+  InputDestination({
+    required this.streamName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'streamName': streamName};
+    return <String, dynamic>{
+      'streamName': streamName,
+    };
   }
 
   factory InputDestination.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class InputDestination {
     );
   }
 }
+

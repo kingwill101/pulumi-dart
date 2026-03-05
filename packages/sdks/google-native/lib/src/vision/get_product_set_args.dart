@@ -33,11 +33,8 @@ class GetProductSetArgs {
     return GetProductSetArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
       productSetId: pulumi.Input.fromValue(map['productSetId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

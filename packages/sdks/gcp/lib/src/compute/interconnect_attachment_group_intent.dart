@@ -9,19 +9,20 @@ class InterconnectAttachmentGroupIntent {
 
   /// Creates a new [InterconnectAttachmentGroupIntent].
   /// [availabilitySla] Which SLA the user intends this group to support.
-  InterconnectAttachmentGroupIntent({this.availabilitySla});
+  InterconnectAttachmentGroupIntent({
+    this.availabilitySla,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'availabilitySla': ?availabilitySla};
+    return <String, dynamic>{
+      'availabilitySla': ?availabilitySla,
+    };
   }
 
   factory InterconnectAttachmentGroupIntent.fromMap(Map<String, dynamic> map) {
     return InterconnectAttachmentGroupIntent(
-      availabilitySla: (() {
-        final guardedValue = map['availabilitySla'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      availabilitySla: (() { final guardedValue = map['availabilitySla']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

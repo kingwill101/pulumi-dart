@@ -9,21 +9,20 @@ class NetworkInterfaceResourceNamesResponse {
 
   /// Creates a new [NetworkInterfaceResourceNamesResponse].
   /// [networkInterfaceName] The full name for network interface. If name is not provided, service uses a default name based on the deployment type. For SingleServer, default name is {SID}-Nic. In case of HA-AvZone systems, default name will be {SID}-{App/ASCS/DB}-Zone{A/B}-Nic with an incrementor at the end in case of more than 1 instance per layer. For distributed and HA-AvSet systems, default name will be {SID}-{App/ASCS/DB}-Nic with an incrementor at the end in case of more than 1 instance per layer.
-  NetworkInterfaceResourceNamesResponse({this.networkInterfaceName});
+  NetworkInterfaceResourceNamesResponse({
+    this.networkInterfaceName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'networkInterfaceName': ?networkInterfaceName};
+    return <String, dynamic>{
+      'networkInterfaceName': ?networkInterfaceName,
+    };
   }
 
-  factory NetworkInterfaceResourceNamesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NetworkInterfaceResourceNamesResponse.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceResourceNamesResponse(
-      networkInterfaceName: (() {
-        final guardedValue = map['networkInterfaceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      networkInterfaceName: (() { final guardedValue = map['networkInterfaceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -188,54 +188,40 @@ import 'certificate_state.dart';
 class Certificate extends pulumi.CustomResource {
   /// The ID of the associated App Service plan. Must be specified when the certificate is used inside an App Service Environment hosted App Service or with Basic and Premium App Service plans. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> appServicePlanId;
-
   /// The expiration date for the certificate.
   late final pulumi.Output<String> expirationDate;
-
   /// The friendly name of the certificate.
   late final pulumi.Output<String> friendlyName;
-
   /// List of host names the certificate applies to.
   late final pulumi.Output<List<String>> hostNames;
-
   /// The ID of the App Service Environment where the certificate is in use.
   late final pulumi.Output<String> hostingEnvironmentProfileId;
-
   /// The issue date for the certificate.
   late final pulumi.Output<String> issueDate;
-
   /// The name of the certificate issuer.
   late final pulumi.Output<String> issuer;
   late final pulumi.Output<String?> keyVaultId;
-
   /// The ID of the Key Vault secret. Changing this forces a new resource to be created.
   ///
   /// &gt; **NOTE:** Exactly one of `key_vault_secret_id` or `pfx_blob` must be specified.
   late final pulumi.Output<String?> keyVaultSecretId;
-
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// Specifies the name of the certificate. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The password to access the certificate's private key. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> password;
-
   /// The base64-encoded contents of the certificate. Changing this forces a new resource to be created.
   ///
   /// &gt; **NOTE:** Exactly one of `key_vault_secret_id` or `pfx_blob` must be specified.
   late final pulumi.Output<String?> pfxBlob;
-
   /// The name of the resource group in which to create the certificate. Changing this forces a new resource to be created.
   ///
   /// &gt; **NOTE:** The resource group must be the same as that which the app service plan is defined in - otherwise the certificate will not show as available for the app services.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The subject name of the certificate.
   late final pulumi.Output<String> subjectName;
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The thumbprint for the certificate.
   late final pulumi.Output<String> thumbprint;
 
@@ -248,18 +234,16 @@ class Certificate extends pulumi.CustomResource {
     CertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appservice/certificate:Certificate',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appservice/certificate:Certificate',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appServicePlanId = registerOutput<String?>('appServicePlanId');
     expirationDate = registerOutput<String>('expirationDate');
     friendlyName = registerOutput<String>('friendlyName');
     hostNames = registerOutput<List<String>>('hostNames');
-    hostingEnvironmentProfileId = registerOutput<String>(
-      'hostingEnvironmentProfileId',
-    );
+    hostingEnvironmentProfileId = registerOutput<String>('hostingEnvironmentProfileId');
     issueDate = registerOutput<String>('issueDate');
     issuer = registerOutput<String>('issuer');
     keyVaultId = registerOutput<String?>('keyVaultId');
@@ -292,18 +276,16 @@ class Certificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appservice/certificate:Certificate',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appservice/certificate:Certificate',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appServicePlanId = registerOutput<String?>('appServicePlanId');
     expirationDate = registerOutput<String>('expirationDate');
     friendlyName = registerOutput<String>('friendlyName');
     hostNames = registerOutput<List<String>>('hostNames');
-    hostingEnvironmentProfileId = registerOutput<String>(
-      'hostingEnvironmentProfileId',
-    );
+    hostingEnvironmentProfileId = registerOutput<String>('hostingEnvironmentProfileId');
     issueDate = registerOutput<String>('issueDate');
     issuer = registerOutput<String>('issuer');
     keyVaultId = registerOutput<String?>('keyVaultId');

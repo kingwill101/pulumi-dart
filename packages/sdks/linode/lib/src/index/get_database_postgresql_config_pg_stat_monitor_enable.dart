@@ -25,9 +25,7 @@ class GetDatabasePostgresqlConfigPgStatMonitorEnable {
     };
   }
 
-  factory GetDatabasePostgresqlConfigPgStatMonitorEnable.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDatabasePostgresqlConfigPgStatMonitorEnable.fromMap(Map<String, dynamic> map) {
     return GetDatabasePostgresqlConfigPgStatMonitorEnable(
       description: pulumi.Input.fromValue(map['description'] as String),
       requiresRestart: pulumi.Input.fromValue(map['requiresRestart'] as bool),
@@ -35,3 +33,4 @@ class GetDatabasePostgresqlConfigPgStatMonitorEnable {
     );
   }
 }
+

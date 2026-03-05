@@ -9,41 +9,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CosmosDbDataConnectionArgs {
   /// The name of the Kusto cluster.
   final pulumi.Input<String> clusterName;
-
   /// The resource ID of the Cosmos DB account used to create the data connection.
   final pulumi.Input<String> cosmosDbAccountResourceId;
-
   /// The name of an existing container in the Cosmos DB database.
   final pulumi.Input<String> cosmosDbContainer;
-
   /// The name of an existing database in the Cosmos DB account.
   final pulumi.Input<String> cosmosDbDatabase;
-
   /// The name of the data connection.
   final pulumi.Input<String>? dataConnectionName;
-
   /// The name of the database in the Kusto cluster.
   final pulumi.Input<String> databaseName;
-
   /// Kind of the endpoint for the data connection
   /// Expected value is 'CosmosDb'.
   final pulumi.Input<String> kind;
-
   /// Resource location.
   final pulumi.Input<String>? location;
-
   /// The resource ID of a managed system or user-assigned identity. The identity is used to authenticate with Cosmos DB.
   final pulumi.Input<String> managedIdentityResourceId;
-
   /// The name of an existing mapping rule to use when ingesting the retrieved data.
   final pulumi.Input<String>? mappingRuleName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Optional. If defined, the data connection retrieves Cosmos DB documents created or updated after the specified retrieval start date.
   final pulumi.Input<String>? retrievalStartDate;
-
   /// The case-sensitive name of the existing target table in your cluster. Retrieved data is ingested into this table.
   final pulumi.Input<String> tableName;
 
@@ -98,44 +86,19 @@ class CosmosDbDataConnectionArgs {
   factory CosmosDbDataConnectionArgs.fromMap(Map<String, dynamic> map) {
     return CosmosDbDataConnectionArgs(
       clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
-      cosmosDbAccountResourceId: pulumi.Input.fromValue(
-        map['cosmosDbAccountResourceId'] as String,
-      ),
-      cosmosDbContainer: pulumi.Input.fromValue(
-        map['cosmosDbContainer'] as String,
-      ),
-      cosmosDbDatabase: pulumi.Input.fromValue(
-        map['cosmosDbDatabase'] as String,
-      ),
-      dataConnectionName: (() {
-        final guardedValue = map['dataConnectionName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      cosmosDbAccountResourceId: pulumi.Input.fromValue(map['cosmosDbAccountResourceId'] as String),
+      cosmosDbContainer: pulumi.Input.fromValue(map['cosmosDbContainer'] as String),
+      cosmosDbDatabase: pulumi.Input.fromValue(map['cosmosDbDatabase'] as String),
+      dataConnectionName: (() { final guardedValue = map['dataConnectionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
       kind: pulumi.Input.fromValue(map['kind'] as String),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      managedIdentityResourceId: pulumi.Input.fromValue(
-        map['managedIdentityResourceId'] as String,
-      ),
-      mappingRuleName: (() {
-        final guardedValue = map['mappingRuleName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      retrievalStartDate: (() {
-        final guardedValue = map['retrievalStartDate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      managedIdentityResourceId: pulumi.Input.fromValue(map['managedIdentityResourceId'] as String),
+      mappingRuleName: (() { final guardedValue = map['mappingRuleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      retrievalStartDate: (() { final guardedValue = map['retrievalStartDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tableName: pulumi.Input.fromValue(map['tableName'] as String),
     );
   }
 }
+

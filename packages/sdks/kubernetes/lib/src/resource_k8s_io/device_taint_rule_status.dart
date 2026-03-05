@@ -19,37 +19,20 @@ class DeviceTaintRuleStatus {
 
   /// Creates a new [DeviceTaintRuleStatus].
   /// [conditions] Conditions provide information about the state of the DeviceTaintRule and the cluster at some point in time, in a machine-readable and human-readable format.
-  DeviceTaintRuleStatus({this.conditions});
+  DeviceTaintRuleStatus({
+    this.conditions,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'conditions':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<Condition>,
-            List<Map<String, dynamic>>
-          >(
-            conditions,
-            (value) => pulumi.Input.encodeList<Condition, Map<String, dynamic>>(
-              value,
-              (value) => value.toMap(),
-            ),
-          ),
+      'conditions': ?pulumi.Input.mapOptionalInputValue<List<Condition>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<Condition, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DeviceTaintRuleStatus.fromMap(Map<String, dynamic> map) {
     return DeviceTaintRuleStatus(
-      conditions: (() {
-        final guardedValue = map['conditions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<Condition>(
-            guardedValue,
-            (value) =>
-                Condition.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
+      conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Condition>(guardedValue, (value) => Condition.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

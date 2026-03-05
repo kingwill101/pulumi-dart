@@ -10,12 +10,10 @@ class QosAssociationV3Args {
   /// ID of the qos to associate. Changing this creates
   /// a new qos association.
   final pulumi.Input<String> qosId;
-
   /// The region in which to create the qos association.
   /// If omitted, the `region` argument of the provider is used. Changing
   /// this creates a new qos association.
   final pulumi.Input<String>? region;
-
   /// ID of the volume_type to associate.
   /// Changing this creates a new qos association.
   final pulumi.Input<String> volumeTypeId;
@@ -41,12 +39,9 @@ class QosAssociationV3Args {
   factory QosAssociationV3Args.fromMap(Map<String, dynamic> map) {
     return QosAssociationV3Args(
       qosId: pulumi.Input.fromValue(map['qosId'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       volumeTypeId: pulumi.Input.fromValue(map['volumeTypeId'] as String),
     );
   }
 }
+

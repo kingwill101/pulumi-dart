@@ -7,7 +7,6 @@ import 'key_vault_secret_properties_response.dart';
 class BrokerAuthenticatorMethodX509AttributesResponse {
   /// Keyvault x509 attributes secret properties.
   final pulumi.Input<KeyVaultSecretPropertiesResponse>? keyVault;
-
   /// Secret where x509 attributes are stored.
   final pulumi.Input<String>? secretName;
 
@@ -21,33 +20,16 @@ class BrokerAuthenticatorMethodX509AttributesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'keyVault':
-          ?pulumi.Input.mapOptionalInputValue<
-            KeyVaultSecretPropertiesResponse,
-            Map<String, dynamic>
-          >(keyVault, (value) => value.toMap()),
+      'keyVault': ?pulumi.Input.mapOptionalInputValue<KeyVaultSecretPropertiesResponse, Map<String, dynamic>>(keyVault, (value) => value.toMap()),
       'secretName': ?secretName,
     };
   }
 
-  factory BrokerAuthenticatorMethodX509AttributesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BrokerAuthenticatorMethodX509AttributesResponse.fromMap(Map<String, dynamic> map) {
     return BrokerAuthenticatorMethodX509AttributesResponse(
-      keyVault: (() {
-        final guardedValue = map['keyVault'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          KeyVaultSecretPropertiesResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      secretName: (() {
-        final guardedValue = map['secretName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      keyVault: (() { final guardedValue = map['keyVault']; if (guardedValue == null) return null; return pulumi.Input.fromValue(KeyVaultSecretPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      secretName: (() { final guardedValue = map['secretName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

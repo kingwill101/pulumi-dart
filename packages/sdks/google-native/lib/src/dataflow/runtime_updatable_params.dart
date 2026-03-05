@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RuntimeUpdatableParams {
   /// The maximum number of workers to cap autoscaling at. This field is currently only supported for Streaming Engine jobs.
   final pulumi.Input<int>? maxNumWorkers;
-
   /// The minimum number of workers to scale down to. This field is currently only supported for Streaming Engine jobs.
   final pulumi.Input<int>? minNumWorkers;
 
   /// Creates a new [RuntimeUpdatableParams].
   /// [maxNumWorkers] The maximum number of workers to cap autoscaling at. This field is currently only supported for Streaming Engine jobs.
   /// [minNumWorkers] The minimum number of workers to scale down to. This field is currently only supported for Streaming Engine jobs.
-  RuntimeUpdatableParams({this.maxNumWorkers, this.minNumWorkers});
+  RuntimeUpdatableParams({
+    this.maxNumWorkers,
+    this.minNumWorkers,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class RuntimeUpdatableParams {
 
   factory RuntimeUpdatableParams.fromMap(Map<String, dynamic> map) {
     return RuntimeUpdatableParams(
-      maxNumWorkers: (() {
-        final guardedValue = map['maxNumWorkers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      minNumWorkers: (() {
-        final guardedValue = map['minNumWorkers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      maxNumWorkers: (() { final guardedValue = map['maxNumWorkers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      minNumWorkers: (() { final guardedValue = map['minNumWorkers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedClusterSecurityProfileImageCleanerResponse {
   /// Whether to enable Image Cleaner on AKS cluster.
   final pulumi.Input<bool>? enabled;
-
   /// Image Cleaner scanning interval in hours.
   final pulumi.Input<int>? intervalHours;
 
@@ -25,20 +24,11 @@ class ManagedClusterSecurityProfileImageCleanerResponse {
     };
   }
 
-  factory ManagedClusterSecurityProfileImageCleanerResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ManagedClusterSecurityProfileImageCleanerResponse.fromMap(Map<String, dynamic> map) {
     return ManagedClusterSecurityProfileImageCleanerResponse(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      intervalHours: (() {
-        final guardedValue = map['intervalHours'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      intervalHours: (() { final guardedValue = map['intervalHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

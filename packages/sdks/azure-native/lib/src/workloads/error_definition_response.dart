@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ErrorDefinitionResponse {
   /// Service specific error code which serves as the substatus for the HTTP error code.
   final pulumi.Input<String> code;
-
   /// Internal error details.
   final pulumi.Input<List<ErrorDefinitionResponse>> details;
-
   /// Description of the error.
   final pulumi.Input<String> message;
-
   /// Description of the recommendation.
   final pulumi.Input<String> recommendation;
 
@@ -31,18 +28,7 @@ class ErrorDefinitionResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'code': code,
-      'details':
-          pulumi.Input.mapInputValue<
-            List<ErrorDefinitionResponse>,
-            List<Map<String, dynamic>>
-          >(
-            details,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ErrorDefinitionResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'details': pulumi.Input.mapInputValue<List<ErrorDefinitionResponse>, List<Map<String, dynamic>>>(details, (value) => pulumi.Input.encodeList<ErrorDefinitionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'message': message,
       'recommendation': recommendation,
     };
@@ -51,16 +37,10 @@ class ErrorDefinitionResponse {
   factory ErrorDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return ErrorDefinitionResponse(
       code: pulumi.Input.fromValue(map['code'] as String),
-      details: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<ErrorDefinitionResponse>(
-          map['details']!,
-          (value) => ErrorDefinitionResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      details: pulumi.Input.fromValue(pulumi.Input.decodeList<ErrorDefinitionResponse>(map['details']!, (value) => ErrorDefinitionResponse.fromMap((value as Map).cast<String, dynamic>()))),
       message: pulumi.Input.fromValue(map['message'] as String),
       recommendation: pulumi.Input.fromValue(map['recommendation'] as String),
     );
   }
 }
+

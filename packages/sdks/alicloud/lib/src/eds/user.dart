@@ -131,16 +131,12 @@ import 'user_state.dart';
 class User extends pulumi.CustomResource {
   /// The email of the user email.
   late final pulumi.Output<String> email;
-
   /// The Username. The custom setting is composed of lowercase letters, numbers and underscores, and the length is 3~24 characters.
   late final pulumi.Output<String> endUserId;
-
   /// The password of the user password.
   late final pulumi.Output<String?> password;
-
   /// The phone of the mobile phone number.
   late final pulumi.Output<String?> phone;
-
   /// The status of the resource. Valid values: `Unlocked`, `Locked`.
   late final pulumi.Output<String> status;
 
@@ -148,13 +144,16 @@ class User extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [User]. {@macro pulumi_eds_user_user_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  User(String name, {UserArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:eds/user:User',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  User(
+    String name, {
+    UserArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:eds/user:User',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     email = registerOutput<String>('email');
     endUserId = registerOutput<String>('endUserId');
     password = registerOutput<String?>('password');
@@ -163,7 +162,11 @@ class User extends pulumi.CustomResource {
   }
 
   /// Gets an existing [User] resource's state with the given [name] and [id].
-  static User get(String name, pulumi.Input<String> id, {UserState? state}) {
+  static User get(
+    String name,
+    pulumi.Input<String> id, {
+    UserState? state,
+  }) {
     return User._get(
       name,
       state: state?.toMap(),
@@ -176,11 +179,11 @@ class User extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:eds/user:User',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:eds/user:User',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     email = registerOutput<String>('email');
     endUserId = registerOutput<String>('endUserId');
     password = registerOutput<String?>('password');

@@ -304,36 +304,26 @@ import 'configuration_state.dart';
 class Configuration extends pulumi.CustomResource {
   /// ARN of the configuration.
   late final pulumi.Output<String> arn;
-
   /// Authentication strategy associated with the configuration. Valid values are `simple` and `ldap`. `ldap` is not supported for RabbitMQ engine type.
   late final pulumi.Output<String> authenticationStrategy;
-
   /// Broker configuration in XML format for ActiveMQ or Cuttlefish format for RabbitMQ. See [AWS documentation](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/amazon-mq-broker-configuration-parameters.html) for supported parameters and format of the XML.
   late final pulumi.Output<String> data;
-
   /// Description of the configuration.
   late final pulumi.Output<String?> description;
-
   /// Type of broker engine. Valid values are `ActiveMQ` and `RabbitMQ`.
   late final pulumi.Output<String> engineType;
-
   /// Version of the broker engine.
   late final pulumi.Output<String> engineVersion;
-
   /// Latest revision of the configuration.
   late final pulumi.Output<int> latestRevision;
-
   /// Name of the configuration.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Key-value map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -346,11 +336,11 @@ class Configuration extends pulumi.CustomResource {
     ConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:mq/configuration:Configuration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:mq/configuration:Configuration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     authenticationStrategy = registerOutput<String>('authenticationStrategy');
     data = registerOutput<String>('data');
@@ -382,11 +372,11 @@ class Configuration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:mq/configuration:Configuration',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:mq/configuration:Configuration',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     authenticationStrategy = registerOutput<String>('authenticationStrategy');
     data = registerOutput<String>('data');

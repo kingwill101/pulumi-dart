@@ -9,18 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVpcEndpointLinkedVpcsArgs {
   /// A list of CR Vpc Endpoint Linked Vpc IDs.
   final pulumi.Input<List<String>>? ids;
-
   /// The ID of the instance.
   final pulumi.Input<String> instanceId;
-
   /// The name of the module that you want to access. Valid Values:
   /// - `Registry`: the image repository.
   /// - `Chart`: a Helm chart.
   final pulumi.Input<String> moduleName;
-
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
-
   /// The status of the Vpc Endpoint Linked Vpc. Valid Values: `CREATING`, `RUNNING`.
   final pulumi.Input<String>? status;
 
@@ -50,23 +46,12 @@ class GetVpcEndpointLinkedVpcsArgs {
 
   factory GetVpcEndpointLinkedVpcsArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcEndpointLinkedVpcsArgs(
-      ids: (() {
-        final guardedValue = map['ids'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      ids: (() { final guardedValue = map['ids']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
       moduleName: pulumi.Input.fromValue(map['moduleName'] as String),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

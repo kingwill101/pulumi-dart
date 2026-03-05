@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RecommendedActionImpactRecordResponse {
   /// Gets the absolute value of this dimension if applicable. e.g., Number of Queries affected
   final pulumi.Input<double> absoluteValue;
-
   /// Gets the absolute change in the value of this dimension. e.g., Absolute Disk space change in Megabytes
   final pulumi.Input<double> changeValueAbsolute;
-
   /// Gets the relative change in the value of this dimension. e.g., Relative Disk space change in Percentage
   final pulumi.Input<double> changeValueRelative;
-
   /// Gets the name of the impact dimension. e.g., CPUChange, DiskSpaceChange, NumberOfQueriesAffected.
   final pulumi.Input<String> dimensionName;
-
   /// Gets the name of the impact dimension. e.g., CPUChange, DiskSpaceChange, NumberOfQueriesAffected.
   final pulumi.Input<String> unit;
 
@@ -43,19 +39,14 @@ class RecommendedActionImpactRecordResponse {
     };
   }
 
-  factory RecommendedActionImpactRecordResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RecommendedActionImpactRecordResponse.fromMap(Map<String, dynamic> map) {
     return RecommendedActionImpactRecordResponse(
       absoluteValue: pulumi.Input.fromValue(map['absoluteValue'] as double),
-      changeValueAbsolute: pulumi.Input.fromValue(
-        map['changeValueAbsolute'] as double,
-      ),
-      changeValueRelative: pulumi.Input.fromValue(
-        map['changeValueRelative'] as double,
-      ),
+      changeValueAbsolute: pulumi.Input.fromValue(map['changeValueAbsolute'] as double),
+      changeValueRelative: pulumi.Input.fromValue(map['changeValueRelative'] as double),
       dimensionName: pulumi.Input.fromValue(map['dimensionName'] as String),
       unit: pulumi.Input.fromValue(map['unit'] as String),
     );
   }
 }
+

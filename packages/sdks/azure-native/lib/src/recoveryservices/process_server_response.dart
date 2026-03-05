@@ -9,110 +9,74 @@ import 'version_details_response.dart';
 class ProcessServerResponse {
   /// Agent expiry date.
   final pulumi.Input<String>? agentExpiryDate;
-
   /// The version of the scout component on the server.
   final pulumi.Input<String>? agentVersion;
-
   /// The agent version details.
   final pulumi.Input<VersionDetailsResponse>? agentVersionDetails;
-
   /// The available memory.
   final pulumi.Input<double>? availableMemoryInBytes;
-
   /// The available space.
   final pulumi.Input<double>? availableSpaceInBytes;
-
   /// The percentage of the CPU load.
   final pulumi.Input<String>? cpuLoad;
-
   /// The CPU load status.
   final pulumi.Input<String>? cpuLoadStatus;
-
   /// The Process Server's friendly name.
   final pulumi.Input<String>? friendlyName;
-
   /// The health of Process Server.
   final pulumi.Input<String> health;
-
   /// Health errors.
   final pulumi.Input<List<HealthErrorResponse>>? healthErrors;
-
   /// The agent generated Id.
   final pulumi.Input<String>? hostId;
-
   /// The Process Server Id.
   final pulumi.Input<String>? id;
-
   /// The IP address of the server.
   final pulumi.Input<String>? ipAddress;
-
   /// The last heartbeat received from the server.
   final pulumi.Input<String>? lastHeartbeat;
-
   /// The servers configured with this PS.
   final pulumi.Input<String>? machineCount;
-
   /// The MARS communication status.
   final pulumi.Input<String> marsCommunicationStatus;
-
   /// The MARS registration status.
   final pulumi.Input<String> marsRegistrationStatus;
-
   /// The memory usage status.
   final pulumi.Input<String>? memoryUsageStatus;
-
   /// The list of the mobility service updates available on the Process Server.
-  final pulumi.Input<List<MobilityServiceUpdateResponse>>?
-  mobilityServiceUpdates;
-
+  final pulumi.Input<List<MobilityServiceUpdateResponse>>? mobilityServiceUpdates;
   /// The OS type of the server.
   final pulumi.Input<String>? osType;
-
   /// OS Version of the process server. Note: This will get populated if user has CS version greater than 9.12.0.0.
   final pulumi.Input<String>? osVersion;
-
   /// The PS service status.
   final pulumi.Input<String>? psServiceStatus;
-
   /// The process server stats refresh time.
   final pulumi.Input<String> psStatsRefreshTime;
-
   /// The number of replication pairs configured in this PS.
   final pulumi.Input<String>? replicationPairCount;
-
   /// The space usage status.
   final pulumi.Input<String>? spaceUsageStatus;
-
   /// The PS SSL cert expiry date.
   final pulumi.Input<String>? sslCertExpiryDate;
-
   /// CS SSL cert expiry date.
   final pulumi.Input<int>? sslCertExpiryRemainingDays;
-
   /// The percentage of the system load.
   final pulumi.Input<String>? systemLoad;
-
   /// The system load status.
   final pulumi.Input<String>? systemLoadStatus;
-
   /// The throughput in bytes.
   final pulumi.Input<double> throughputInBytes;
-
   /// The throughput in MBps.
   final pulumi.Input<double> throughputInMBps;
-
   /// The throughput status.
   final pulumi.Input<String> throughputStatus;
-
   /// The uploading pending data in bytes.
   final pulumi.Input<double> throughputUploadPendingDataInBytes;
-
   /// The total memory.
   final pulumi.Input<double>? totalMemoryInBytes;
-
   /// The total space.
   final pulumi.Input<double>? totalSpaceInBytes;
-
   /// Version status.
   final pulumi.Input<String>? versionStatus;
 
@@ -196,29 +160,14 @@ class ProcessServerResponse {
     return <String, dynamic>{
       'agentExpiryDate': ?agentExpiryDate,
       'agentVersion': ?agentVersion,
-      'agentVersionDetails':
-          ?pulumi.Input.mapOptionalInputValue<
-            VersionDetailsResponse,
-            Map<String, dynamic>
-          >(agentVersionDetails, (value) => value.toMap()),
+      'agentVersionDetails': ?pulumi.Input.mapOptionalInputValue<VersionDetailsResponse, Map<String, dynamic>>(agentVersionDetails, (value) => value.toMap()),
       'availableMemoryInBytes': ?availableMemoryInBytes,
       'availableSpaceInBytes': ?availableSpaceInBytes,
       'cpuLoad': ?cpuLoad,
       'cpuLoadStatus': ?cpuLoadStatus,
       'friendlyName': ?friendlyName,
       'health': health,
-      'healthErrors':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<HealthErrorResponse>,
-            List<Map<String, dynamic>>
-          >(
-            healthErrors,
-            (value) =>
-                pulumi.Input.encodeList<
-                  HealthErrorResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'healthErrors': ?pulumi.Input.mapOptionalInputValue<List<HealthErrorResponse>, List<Map<String, dynamic>>>(healthErrors, (value) => pulumi.Input.encodeList<HealthErrorResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'hostId': ?hostId,
       'id': ?id,
       'ipAddress': ?ipAddress,
@@ -227,18 +176,7 @@ class ProcessServerResponse {
       'marsCommunicationStatus': marsCommunicationStatus,
       'marsRegistrationStatus': marsRegistrationStatus,
       'memoryUsageStatus': ?memoryUsageStatus,
-      'mobilityServiceUpdates':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<MobilityServiceUpdateResponse>,
-            List<Map<String, dynamic>>
-          >(
-            mobilityServiceUpdates,
-            (value) =>
-                pulumi.Input.encodeList<
-                  MobilityServiceUpdateResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'mobilityServiceUpdates': ?pulumi.Input.mapOptionalInputValue<List<MobilityServiceUpdateResponse>, List<Map<String, dynamic>>>(mobilityServiceUpdates, (value) => pulumi.Input.encodeList<MobilityServiceUpdateResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'osType': ?osType,
       'osVersion': ?osVersion,
       'psServiceStatus': ?psServiceStatus,
@@ -261,186 +199,43 @@ class ProcessServerResponse {
 
   factory ProcessServerResponse.fromMap(Map<String, dynamic> map) {
     return ProcessServerResponse(
-      agentExpiryDate: (() {
-        final guardedValue = map['agentExpiryDate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      agentVersion: (() {
-        final guardedValue = map['agentVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      agentVersionDetails: (() {
-        final guardedValue = map['agentVersionDetails'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          VersionDetailsResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      availableMemoryInBytes: (() {
-        final guardedValue = map['availableMemoryInBytes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      availableSpaceInBytes: (() {
-        final guardedValue = map['availableSpaceInBytes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      cpuLoad: (() {
-        final guardedValue = map['cpuLoad'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      cpuLoadStatus: (() {
-        final guardedValue = map['cpuLoadStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      friendlyName: (() {
-        final guardedValue = map['friendlyName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      agentExpiryDate: (() { final guardedValue = map['agentExpiryDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      agentVersion: (() { final guardedValue = map['agentVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      agentVersionDetails: (() { final guardedValue = map['agentVersionDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VersionDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      availableMemoryInBytes: (() { final guardedValue = map['availableMemoryInBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      availableSpaceInBytes: (() { final guardedValue = map['availableSpaceInBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      cpuLoad: (() { final guardedValue = map['cpuLoad']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      cpuLoadStatus: (() { final guardedValue = map['cpuLoadStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      friendlyName: (() { final guardedValue = map['friendlyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       health: pulumi.Input.fromValue(map['health'] as String),
-      healthErrors: (() {
-        final guardedValue = map['healthErrors'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<HealthErrorResponse>(
-            guardedValue,
-            (value) => HealthErrorResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      hostId: (() {
-        final guardedValue = map['hostId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ipAddress: (() {
-        final guardedValue = map['ipAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      lastHeartbeat: (() {
-        final guardedValue = map['lastHeartbeat'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      machineCount: (() {
-        final guardedValue = map['machineCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      marsCommunicationStatus: pulumi.Input.fromValue(
-        map['marsCommunicationStatus'] as String,
-      ),
-      marsRegistrationStatus: pulumi.Input.fromValue(
-        map['marsRegistrationStatus'] as String,
-      ),
-      memoryUsageStatus: (() {
-        final guardedValue = map['memoryUsageStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      mobilityServiceUpdates: (() {
-        final guardedValue = map['mobilityServiceUpdates'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<MobilityServiceUpdateResponse>(
-            guardedValue,
-            (value) => MobilityServiceUpdateResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      osType: (() {
-        final guardedValue = map['osType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      osVersion: (() {
-        final guardedValue = map['osVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      psServiceStatus: (() {
-        final guardedValue = map['psServiceStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      psStatsRefreshTime: pulumi.Input.fromValue(
-        map['psStatsRefreshTime'] as String,
-      ),
-      replicationPairCount: (() {
-        final guardedValue = map['replicationPairCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      spaceUsageStatus: (() {
-        final guardedValue = map['spaceUsageStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sslCertExpiryDate: (() {
-        final guardedValue = map['sslCertExpiryDate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sslCertExpiryRemainingDays: (() {
-        final guardedValue = map['sslCertExpiryRemainingDays'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      systemLoad: (() {
-        final guardedValue = map['systemLoad'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      systemLoadStatus: (() {
-        final guardedValue = map['systemLoadStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      throughputInBytes: pulumi.Input.fromValue(
-        map['throughputInBytes'] as double,
-      ),
-      throughputInMBps: pulumi.Input.fromValue(
-        map['throughputInMBps'] as double,
-      ),
-      throughputStatus: pulumi.Input.fromValue(
-        map['throughputStatus'] as String,
-      ),
-      throughputUploadPendingDataInBytes: pulumi.Input.fromValue(
-        map['throughputUploadPendingDataInBytes'] as double,
-      ),
-      totalMemoryInBytes: (() {
-        final guardedValue = map['totalMemoryInBytes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      totalSpaceInBytes: (() {
-        final guardedValue = map['totalSpaceInBytes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      versionStatus: (() {
-        final guardedValue = map['versionStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      healthErrors: (() { final guardedValue = map['healthErrors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<HealthErrorResponse>(guardedValue, (value) => HealthErrorResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      hostId: (() { final guardedValue = map['hostId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      lastHeartbeat: (() { final guardedValue = map['lastHeartbeat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      machineCount: (() { final guardedValue = map['machineCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      marsCommunicationStatus: pulumi.Input.fromValue(map['marsCommunicationStatus'] as String),
+      marsRegistrationStatus: pulumi.Input.fromValue(map['marsRegistrationStatus'] as String),
+      memoryUsageStatus: (() { final guardedValue = map['memoryUsageStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      mobilityServiceUpdates: (() { final guardedValue = map['mobilityServiceUpdates']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<MobilityServiceUpdateResponse>(guardedValue, (value) => MobilityServiceUpdateResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      osType: (() { final guardedValue = map['osType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      osVersion: (() { final guardedValue = map['osVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      psServiceStatus: (() { final guardedValue = map['psServiceStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      psStatsRefreshTime: pulumi.Input.fromValue(map['psStatsRefreshTime'] as String),
+      replicationPairCount: (() { final guardedValue = map['replicationPairCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      spaceUsageStatus: (() { final guardedValue = map['spaceUsageStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sslCertExpiryDate: (() { final guardedValue = map['sslCertExpiryDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sslCertExpiryRemainingDays: (() { final guardedValue = map['sslCertExpiryRemainingDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      systemLoad: (() { final guardedValue = map['systemLoad']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      systemLoadStatus: (() { final guardedValue = map['systemLoadStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      throughputInBytes: pulumi.Input.fromValue(map['throughputInBytes'] as double),
+      throughputInMBps: pulumi.Input.fromValue(map['throughputInMBps'] as double),
+      throughputStatus: pulumi.Input.fromValue(map['throughputStatus'] as String),
+      throughputUploadPendingDataInBytes: pulumi.Input.fromValue(map['throughputUploadPendingDataInBytes'] as double),
+      totalMemoryInBytes: (() { final guardedValue = map['totalMemoryInBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      totalSpaceInBytes: (() { final guardedValue = map['totalSpaceInBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      versionStatus: (() { final guardedValue = map['versionStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

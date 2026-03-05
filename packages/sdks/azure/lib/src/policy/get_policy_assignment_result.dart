@@ -8,35 +8,25 @@ import 'get_policy_assignment_non_compliance_message.dart';
 class GetPolicyAssignmentResult {
   /// The description of this Policy Assignment.
   final String description;
-
   /// The display name of this Policy Assignment.
   final String displayName;
-
   /// Whether this Policy is enforced or not?
   final bool enforce;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A `identity` block as defined below.
   final List<GetPolicyAssignmentIdentity> identities;
-
   /// The Azure Region where the Policy Assignment exists.
   final String location;
-
   /// A JSON mapping of any Metadata for this Policy.
   final String metadata;
   final String name;
-
   /// A `non_compliance_message` block as defined below.
   final List<GetPolicyAssignmentNonComplianceMessage> nonComplianceMessages;
-
   /// A `not_scopes` block as defined below.
   final List<String> notScopes;
-
   /// A JSON mapping of any Parameters for this Policy.
   final String parameters;
-
   /// The ID of the assigned Policy Definition.
   final String policyDefinitionId;
   final String scopeId;
@@ -77,19 +67,11 @@ class GetPolicyAssignmentResult {
       'displayName': displayName,
       'enforce': enforce,
       'id': id,
-      'identities':
-          pulumi.Input.encodeList<
-            GetPolicyAssignmentIdentity,
-            Map<String, dynamic>
-          >(identities, (value) => value.toMap()),
+      'identities': pulumi.Input.encodeList<GetPolicyAssignmentIdentity, Map<String, dynamic>>(identities, (value) => value.toMap()),
       'location': location,
       'metadata': metadata,
       'name': name,
-      'nonComplianceMessages':
-          pulumi.Input.encodeList<
-            GetPolicyAssignmentNonComplianceMessage,
-            Map<String, dynamic>
-          >(nonComplianceMessages, (value) => value.toMap()),
+      'nonComplianceMessages': pulumi.Input.encodeList<GetPolicyAssignmentNonComplianceMessage, Map<String, dynamic>>(nonComplianceMessages, (value) => value.toMap()),
       'notScopes': notScopes,
       'parameters': parameters,
       'policyDefinitionId': policyDefinitionId,
@@ -103,22 +85,11 @@ class GetPolicyAssignmentResult {
       displayName: map['displayName'] as String,
       enforce: map['enforce'] as bool,
       id: map['id'] as String,
-      identities: pulumi.Input.decodeList<GetPolicyAssignmentIdentity>(
-        map['identities']!,
-        (value) => GetPolicyAssignmentIdentity.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      identities: pulumi.Input.decodeList<GetPolicyAssignmentIdentity>(map['identities']!, (value) => GetPolicyAssignmentIdentity.fromMap((value as Map).cast<String, dynamic>())),
       location: map['location'] as String,
       metadata: map['metadata'] as String,
       name: map['name'] as String,
-      nonComplianceMessages:
-          pulumi.Input.decodeList<GetPolicyAssignmentNonComplianceMessage>(
-            map['nonComplianceMessages']!,
-            (value) => GetPolicyAssignmentNonComplianceMessage.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      nonComplianceMessages: pulumi.Input.decodeList<GetPolicyAssignmentNonComplianceMessage>(map['nonComplianceMessages']!, (value) => GetPolicyAssignmentNonComplianceMessage.fromMap((value as Map).cast<String, dynamic>())),
       notScopes: (map['notScopes'] as List).cast<String>(),
       parameters: map['parameters'] as String,
       policyDefinitionId: map['policyDefinitionId'] as String,
@@ -126,3 +97,4 @@ class GetPolicyAssignmentResult {
     );
   }
 }
+

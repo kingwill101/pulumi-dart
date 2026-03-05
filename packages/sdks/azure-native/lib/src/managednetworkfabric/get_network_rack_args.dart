@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworkRackArgs {
   /// Name of the Network Rack.
   final pulumi.Input<String> networkRackName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -31,9 +30,8 @@ class GetNetworkRackArgs {
   factory GetNetworkRackArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkRackArgs(
       networkRackName: pulumi.Input.fromValue(map['networkRackName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

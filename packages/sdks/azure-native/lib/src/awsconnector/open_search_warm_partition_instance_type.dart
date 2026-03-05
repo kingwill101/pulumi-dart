@@ -13,8 +13,7 @@ enum OpenSearchWarmPartitionInstanceType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown OpenSearchWarmPartitionInstanceType value: $value',
-    );
+    throw ArgumentError('Unknown OpenSearchWarmPartitionInstanceType value: $value');
   }
 }
+

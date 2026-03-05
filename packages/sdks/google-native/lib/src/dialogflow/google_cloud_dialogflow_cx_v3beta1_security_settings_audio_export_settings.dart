@@ -7,16 +7,10 @@ import 'google_cloud_dialogflow_cx_v3beta1_security_settings_audio_export_settin
 class GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettings {
   /// Filename pattern for exported audio.
   final pulumi.Input<String>? audioExportPattern;
-
   /// File format for exported audio file. Currently only in telephony recordings.
-  final pulumi.Input<
-    GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat
-  >?
-  audioFormat;
-
+  final pulumi.Input<GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat>? audioFormat;
   /// Enable audio redaction if it is true.
   final pulumi.Input<bool>? enableAudioRedaction;
-
   /// Cloud Storage bucket to export audio record to. Setting this field would grant the Storage Object Creator role to the Dialogflow Service Agent. API caller that tries to modify this field should have the permission of storage.buckets.setIamPolicy.
   final pulumi.Input<String>? gcsBucket;
 
@@ -35,44 +29,19 @@ class GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettings {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'audioExportPattern': ?audioExportPattern,
-      'audioFormat':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat,
-            String
-          >(audioFormat, (value) => value.wireValue),
+      'audioFormat': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat, String>(audioFormat, (value) => value.wireValue),
       'enableAudioRedaction': ?enableAudioRedaction,
       'gcsBucket': ?gcsBucket,
     };
   }
 
-  factory GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettings.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettings(
-      audioExportPattern: (() {
-        final guardedValue = map['audioExportPattern'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      audioFormat: (() {
-        final guardedValue = map['audioFormat'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat.fromValue(
-            guardedValue as String,
-          ),
-        );
-      })(),
-      enableAudioRedaction: (() {
-        final guardedValue = map['enableAudioRedaction'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      gcsBucket: (() {
-        final guardedValue = map['gcsBucket'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      audioExportPattern: (() { final guardedValue = map['audioExportPattern']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      audioFormat: (() { final guardedValue = map['audioFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat.fromValue(guardedValue as String)); })(),
+      enableAudioRedaction: (() { final guardedValue = map['enableAudioRedaction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      gcsBucket: (() { final guardedValue = map['gcsBucket']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

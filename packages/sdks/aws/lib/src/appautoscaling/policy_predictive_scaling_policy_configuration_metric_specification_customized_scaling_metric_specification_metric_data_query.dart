@@ -6,19 +6,12 @@ import 'policy_predictive_scaling_policy_configuration_metric_specification_cust
 class PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQuery {
   /// Math expression to perform on the returned data, if this object is performing a math expression.
   final pulumi.Input<String>? expression;
-
   /// Short name that identifies the object's results in the response.
   final pulumi.Input<String> id;
-
   /// Human-readable label for this metric or expression.
   final pulumi.Input<String>? label;
-
   /// Information about the metric data to return. See supported fields below.
-  final pulumi.Input<
-    PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueryMetricStat
-  >?
-  metricStat;
-
+  final pulumi.Input<PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueryMetricStat>? metricStat;
   /// Whether to return the timestamps and raw data values of this metric.
   final pulumi.Input<bool>? returnData;
 
@@ -41,44 +34,19 @@ class PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedSca
       'expression': ?expression,
       'id': id,
       'label': ?label,
-      'metricStat':
-          ?pulumi.Input.mapOptionalInputValue<
-            PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueryMetricStat,
-            Map<String, dynamic>
-          >(metricStat, (value) => value.toMap()),
+      'metricStat': ?pulumi.Input.mapOptionalInputValue<PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueryMetricStat, Map<String, dynamic>>(metricStat, (value) => value.toMap()),
       'returnData': ?returnData,
     };
   }
 
-  factory PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQuery.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQuery.fromMap(Map<String, dynamic> map) {
     return PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQuery(
-      expression: (() {
-        final guardedValue = map['expression'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      expression: (() { final guardedValue = map['expression']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       id: pulumi.Input.fromValue(map['id'] as String),
-      label: (() {
-        final guardedValue = map['label'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      metricStat: (() {
-        final guardedValue = map['metricStat'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueryMetricStat.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      returnData: (() {
-        final guardedValue = map['returnData'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      label: (() { final guardedValue = map['label']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      metricStat: (() { final guardedValue = map['metricStat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueryMetricStat.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      returnData: (() { final guardedValue = map['returnData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

@@ -14,20 +14,23 @@ class GetInstanceIamPolicyArgs {
   /// Creates a new [GetInstanceIamPolicyArgs].
   /// [instance] The name or relative resource id of the instance to manage IAM policies for.
   /// [project] Optional.
-  GetInstanceIamPolicyArgs({required this.instance, this.project});
+  GetInstanceIamPolicyArgs({
+    required this.instance,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'instance': instance, 'project': ?project};
+    return <String, dynamic>{
+      'instance': instance,
+      'project': ?project,
+    };
   }
 
   factory GetInstanceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceIamPolicyArgs(
       instance: pulumi.Input.fromValue(map['instance'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

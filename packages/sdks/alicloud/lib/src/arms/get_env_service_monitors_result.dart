@@ -7,15 +7,12 @@ import 'get_env_service_monitors_monitor.dart';
 class GetEnvServiceMonitorsResult {
   /// The environment ID.
   final String environmentId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
-
   /// A list of ARMS Env Service Monitors. Each element contains the following attributes:
   final List<GetEnvServiceMonitorsMonitor> monitors;
   final String? nameRegex;
-
   /// A list of ARMS Env Service Monitor names.
   final List<String> names;
   final String? outputFile;
@@ -43,11 +40,7 @@ class GetEnvServiceMonitorsResult {
       'environmentId': environmentId,
       'id': id,
       'ids': ids,
-      'monitors':
-          pulumi.Input.encodeList<
-            GetEnvServiceMonitorsMonitor,
-            Map<String, dynamic>
-          >(monitors, (value) => value.toMap()),
+      'monitors': pulumi.Input.encodeList<GetEnvServiceMonitorsMonitor, Map<String, dynamic>>(monitors, (value) => value.toMap()),
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
@@ -59,23 +52,11 @@ class GetEnvServiceMonitorsResult {
       environmentId: map['environmentId'] as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      monitors: pulumi.Input.decodeList<GetEnvServiceMonitorsMonitor>(
-        map['monitors']!,
-        (value) => GetEnvServiceMonitorsMonitor.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      monitors: pulumi.Input.decodeList<GetEnvServiceMonitorsMonitor>(map['monitors']!, (value) => GetEnvServiceMonitorsMonitor.fromMap((value as Map).cast<String, dynamic>())),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

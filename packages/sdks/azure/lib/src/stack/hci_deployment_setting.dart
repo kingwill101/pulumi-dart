@@ -18,13 +18,10 @@ import 'hci_deployment_setting_state.dart';
 class HciDeploymentSetting extends pulumi.CustomResource {
   /// Specifies a list of IDs of Azure ARC machine resource to be part of cluster. Changing this forces a new Stack HCI Deployment Setting to be created.
   late final pulumi.Output<List<String>> arcResourceIds;
-
   /// One or more `scale_unit` blocks as defined below. Changing this forces a new Stack HCI Deployment Setting to be created.
   late final pulumi.Output<List<Map<String, dynamic>>> scaleUnits;
-
   /// The ID of the Azure Stack HCI cluster. Changing this forces a new Stack HCI Deployment Setting to be created.
   late final pulumi.Output<String> stackHciClusterId;
-
   /// The deployment template version. The format must be a set of numbers separated by dots such as `10.0.0.0`. Changing this forces a new Stack HCI Deployment Setting to be created.
   late final pulumi.Output<String> version;
 
@@ -37,11 +34,11 @@ class HciDeploymentSetting extends pulumi.CustomResource {
     HciDeploymentSettingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:stack/hciDeploymentSetting:HciDeploymentSetting',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:stack/hciDeploymentSetting:HciDeploymentSetting',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arcResourceIds = registerOutput<List<String>>('arcResourceIds');
     scaleUnits = registerOutput<List<Map<String, dynamic>>>('scaleUnits');
     stackHciClusterId = registerOutput<String>('stackHciClusterId');
@@ -66,11 +63,11 @@ class HciDeploymentSetting extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:stack/hciDeploymentSetting:HciDeploymentSetting',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:stack/hciDeploymentSetting:HciDeploymentSetting',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arcResourceIds = registerOutput<List<String>>('arcResourceIds');
     scaleUnits = registerOutput<List<Map<String, dynamic>>>('scaleUnits');
     stackHciClusterId = registerOutput<String>('stackHciClusterId');

@@ -6,10 +6,7 @@ import 'auth_config_decrypted_credential_oauth2_client_credentials_token_params_
 class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValue {
   /// Passing a literal value
   /// Structure is documented below.
-  final pulumi.Input<
-    AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValue
-  >?
-  literalValue;
+  final pulumi.Input<AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValue>? literalValue;
 
   /// Creates a new [AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValue].
   /// [literalValue] Passing a literal value
@@ -19,27 +16,14 @@ class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValue 
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'literalValue':
-          ?pulumi.Input.mapOptionalInputValue<
-            AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValue,
-            Map<String, dynamic>
-          >(literalValue, (value) => value.toMap()),
+      'literalValue': ?pulumi.Input.mapOptionalInputValue<AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValue, Map<String, dynamic>>(literalValue, (value) => value.toMap()),
     };
   }
 
-  factory AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValue.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValue.fromMap(Map<String, dynamic> map) {
     return AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValue(
-      literalValue: (() {
-        final guardedValue = map['literalValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValue.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      literalValue: (() { final guardedValue = map['literalValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValue.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

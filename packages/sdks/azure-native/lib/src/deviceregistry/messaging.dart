@@ -10,39 +10,20 @@ class Messaging {
 
   /// Creates a new [Messaging].
   /// [endpoints] Dictionary of messaging endpoints.
-  Messaging({this.endpoints});
+  Messaging({
+    this.endpoints,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'endpoints':
-          ?pulumi.Input.mapOptionalInputValue<
-            Map<String, MessagingEndpoint>,
-            Map<String, Map<String, dynamic>>
-          >(
-            endpoints,
-            (value) =>
-                pulumi.Input.encodeMapValues<
-                  MessagingEndpoint,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'endpoints': ?pulumi.Input.mapOptionalInputValue<Map<String, MessagingEndpoint>, Map<String, Map<String, dynamic>>>(endpoints, (value) => pulumi.Input.encodeMapValues<MessagingEndpoint, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory Messaging.fromMap(Map<String, dynamic> map) {
     return Messaging(
-      endpoints: (() {
-        final guardedValue = map['endpoints'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeMapValues<MessagingEndpoint>(
-            guardedValue,
-            (value) => MessagingEndpoint.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      endpoints: (() { final guardedValue = map['endpoints']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<MessagingEndpoint>(guardedValue, (value) => MessagingEndpoint.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

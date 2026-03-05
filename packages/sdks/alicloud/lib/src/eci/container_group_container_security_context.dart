@@ -4,9 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'container_group_container_security_context_capability.dart';
 
 class ContainerGroupContainerSecurityContext {
-  final pulumi.Input<List<ContainerGroupContainerSecurityContextCapability>>?
-  capabilities;
-
+  final pulumi.Input<List<ContainerGroupContainerSecurityContextCapability>>? capabilities;
   /// Specifies whether to give extended privileges to this container. Default value: `false`. Valid values: `true` and `false`.
   final pulumi.Input<bool>? privileged;
   final pulumi.Input<int>? runAsUser;
@@ -23,51 +21,18 @@ class ContainerGroupContainerSecurityContext {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'capabilities':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ContainerGroupContainerSecurityContextCapability>,
-            List<Map<String, dynamic>>
-          >(
-            capabilities,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ContainerGroupContainerSecurityContextCapability,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'capabilities': ?pulumi.Input.mapOptionalInputValue<List<ContainerGroupContainerSecurityContextCapability>, List<Map<String, dynamic>>>(capabilities, (value) => pulumi.Input.encodeList<ContainerGroupContainerSecurityContextCapability, Map<String, dynamic>>(value, (value) => value.toMap())),
       'privileged': ?privileged,
       'runAsUser': ?runAsUser,
     };
   }
 
-  factory ContainerGroupContainerSecurityContext.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ContainerGroupContainerSecurityContext.fromMap(Map<String, dynamic> map) {
     return ContainerGroupContainerSecurityContext(
-      capabilities: (() {
-        final guardedValue = map['capabilities'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            ContainerGroupContainerSecurityContextCapability
-          >(
-            guardedValue,
-            (value) => ContainerGroupContainerSecurityContextCapability.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      privileged: (() {
-        final guardedValue = map['privileged'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      runAsUser: (() {
-        final guardedValue = map['runAsUser'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      capabilities: (() { final guardedValue = map['capabilities']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ContainerGroupContainerSecurityContextCapability>(guardedValue, (value) => ContainerGroupContainerSecurityContextCapability.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      privileged: (() { final guardedValue = map['privileged']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      runAsUser: (() { final guardedValue = map['runAsUser']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

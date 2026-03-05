@@ -7,14 +7,11 @@ import 'secure_string_response.dart';
 class CmdkeySetupResponse {
   /// The password of data source access.
   final pulumi.Input<SecureStringResponse> password;
-
   /// The server name of data source access.
   final pulumi.Input<dynamic> targetName;
-
   /// The type of custom setup.
   /// Expected value is 'CmdkeySetup'.
   final pulumi.Input<String> type;
-
   /// The user name of data source access.
   final pulumi.Input<dynamic> userName;
 
@@ -32,11 +29,7 @@ class CmdkeySetupResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'password':
-          pulumi.Input.mapInputValue<
-            SecureStringResponse,
-            Map<String, dynamic>
-          >(password, (value) => value.toMap()),
+      'password': pulumi.Input.mapInputValue<SecureStringResponse, Map<String, dynamic>>(password, (value) => value.toMap()),
       'targetName': targetName,
       'type': type,
       'userName': userName,
@@ -45,14 +38,11 @@ class CmdkeySetupResponse {
 
   factory CmdkeySetupResponse.fromMap(Map<String, dynamic> map) {
     return CmdkeySetupResponse(
-      password: pulumi.Input.fromValue(
-        SecureStringResponse.fromMap(
-          (map['password']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      password: pulumi.Input.fromValue(SecureStringResponse.fromMap((map['password']! as Map).cast<String, dynamic>())),
       targetName: pulumi.Input.fromValue(map['targetName']),
       type: pulumi.Input.fromValue(map['type'] as String),
       userName: pulumi.Input.fromValue(map['userName']),
     );
   }
 }
+

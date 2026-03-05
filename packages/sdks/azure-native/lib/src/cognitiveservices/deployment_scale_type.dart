@@ -15,3 +15,4 @@ enum DeploymentScaleType {
     throw ArgumentError('Unknown DeploymentScaleType value: $value');
   }
 }
+

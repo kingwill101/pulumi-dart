@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JavaScriptFunctionBindingResponse {
   /// The JavaScript code containing a single function definition. For example: 'function (x, y) { return x + y; }'
   final pulumi.Input<String>? script;
-
   /// Indicates the function binding type.
   /// Expected value is 'Microsoft.StreamAnalytics/JavascriptUdf'.
   final pulumi.Input<String> type;
@@ -14,20 +13,23 @@ class JavaScriptFunctionBindingResponse {
   /// Creates a new [JavaScriptFunctionBindingResponse].
   /// [script] The JavaScript code containing a single function definition. For example: 'function (x, y) { return x + y; }'
   /// [type] Indicates the function binding type.
-  JavaScriptFunctionBindingResponse({this.script, required this.type});
+  JavaScriptFunctionBindingResponse({
+    this.script,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'script': ?script, 'type': type};
+    return <String, dynamic>{
+      'script': ?script,
+      'type': type,
+    };
   }
 
   factory JavaScriptFunctionBindingResponse.fromMap(Map<String, dynamic> map) {
     return JavaScriptFunctionBindingResponse(
-      script: (() {
-        final guardedValue = map['script'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      script: (() { final guardedValue = map['script']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

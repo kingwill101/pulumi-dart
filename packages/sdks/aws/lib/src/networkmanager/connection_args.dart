@@ -9,24 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectionArgs {
   /// ID of the second device in the connection.
   final pulumi.Input<String> connectedDeviceId;
-
   /// ID of the link for the second device.
   final pulumi.Input<String>? connectedLinkId;
-
   /// Description of the connection.
   final pulumi.Input<String>? description;
-
   /// ID of the first device in the connection.
   final pulumi.Input<String> deviceId;
-
   /// ID of the global network.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> globalNetworkId;
-
   /// ID of the link for the first device.
   final pulumi.Input<String>? linkId;
-
   /// Key-value tags for the connection. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -62,33 +56,14 @@ class ConnectionArgs {
 
   factory ConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionArgs(
-      connectedDeviceId: pulumi.Input.fromValue(
-        map['connectedDeviceId'] as String,
-      ),
-      connectedLinkId: (() {
-        final guardedValue = map['connectedLinkId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      connectedDeviceId: pulumi.Input.fromValue(map['connectedDeviceId'] as String),
+      connectedLinkId: (() { final guardedValue = map['connectedLinkId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deviceId: pulumi.Input.fromValue(map['deviceId'] as String),
       globalNetworkId: pulumi.Input.fromValue(map['globalNetworkId'] as String),
-      linkId: (() {
-        final guardedValue = map['linkId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      linkId: (() { final guardedValue = map['linkId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

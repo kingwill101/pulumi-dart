@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnvironmentVariable {
   /// The name of the environment variable.
   final pulumi.Input<String> name;
-
   /// The value of the secure environment variable.
   final pulumi.Input<String>? secureValue;
-
   /// The value of the environment variable.
   final pulumi.Input<String>? value;
 
@@ -17,7 +15,11 @@ class EnvironmentVariable {
   /// [name] The name of the environment variable.
   /// [secureValue] The value of the secure environment variable.
   /// [value] The value of the environment variable.
-  EnvironmentVariable({required this.name, this.secureValue, this.value});
+  EnvironmentVariable({
+    required this.name,
+    this.secureValue,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -30,16 +32,9 @@ class EnvironmentVariable {
   factory EnvironmentVariable.fromMap(Map<String, dynamic> map) {
     return EnvironmentVariable(
       name: pulumi.Input.fromValue(map['name'] as String),
-      secureValue: (() {
-        final guardedValue = map['secureValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      secureValue: (() { final guardedValue = map['secureValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

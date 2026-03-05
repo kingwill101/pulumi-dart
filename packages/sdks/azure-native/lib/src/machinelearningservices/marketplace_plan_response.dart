@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MarketplacePlanResponse {
   /// The identifying name of the Offer of the Marketplace Plan.
   final pulumi.Input<String> offerId;
-
   /// The identifying name of the Plan of the Marketplace Plan.
   final pulumi.Input<String> planId;
-
   /// The identifying name of the Publisher of the Marketplace Plan.
   final pulumi.Input<String> publisherId;
 
@@ -38,3 +36,4 @@ class MarketplacePlanResponse {
     );
   }
 }
+

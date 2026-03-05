@@ -9,31 +9,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GroupArgs {
   /// GroupId.
   final pulumi.Input<String>? groupId;
-
   /// GroupName.
   final pulumi.Input<String>? groupName;
 
   /// Creates a new [GroupArgs].
   /// [groupId] GroupId.
   /// [groupName] GroupName.
-  GroupArgs({this.groupId, this.groupName});
+  GroupArgs({
+    this.groupId,
+    this.groupName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'groupId': ?groupId, 'groupName': ?groupName};
+    return <String, dynamic>{
+      'groupId': ?groupId,
+      'groupName': ?groupName,
+    };
   }
 
   factory GroupArgs.fromMap(Map<String, dynamic> map) {
     return GroupArgs(
-      groupId: (() {
-        final guardedValue = map['groupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      groupName: (() {
-        final guardedValue = map['groupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      groupId: (() { final guardedValue = map['groupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      groupName: (() { final guardedValue = map['groupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

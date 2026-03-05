@@ -13,10 +13,14 @@ class GetAutokeyConfigArgs {
 
   /// Creates a new [GetAutokeyConfigArgs].
   /// [folder] The folder in which the AutokeyConfig is configured. If it
-  GetAutokeyConfigArgs({required this.folder});
+  GetAutokeyConfigArgs({
+    required this.folder,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'folder': folder};
+    return <String, dynamic>{
+      'folder': folder,
+    };
   }
 
   factory GetAutokeyConfigArgs.fromMap(Map<String, dynamic> map) {
@@ -25,3 +29,4 @@ class GetAutokeyConfigArgs {
     );
   }
 }
+

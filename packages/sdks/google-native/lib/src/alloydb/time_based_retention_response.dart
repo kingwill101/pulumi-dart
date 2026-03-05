@@ -9,10 +9,14 @@ class TimeBasedRetentionResponse {
 
   /// Creates a new [TimeBasedRetentionResponse].
   /// [retentionPeriod] The retention period.
-  TimeBasedRetentionResponse({required this.retentionPeriod});
+  TimeBasedRetentionResponse({
+    required this.retentionPeriod,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'retentionPeriod': retentionPeriod};
+    return <String, dynamic>{
+      'retentionPeriod': retentionPeriod,
+    };
   }
 
   factory TimeBasedRetentionResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class TimeBasedRetentionResponse {
     );
   }
 }
+

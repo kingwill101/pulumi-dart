@@ -279,30 +279,22 @@ class RoutineRoute extends pulumi.CustomResource {
   /// - on: Open
   /// - off: off
   late final pulumi.Output<String?> bypass;
-
   /// Config Id
   late final pulumi.Output<int> configId;
-
   /// Spare
   late final pulumi.Output<String> fallback;
-
   /// Routing switch. Value range:
   /// - on: Open
   /// - off: off
   late final pulumi.Output<String?> routeEnable;
-
   /// The route name.
   late final pulumi.Output<String?> routeName;
-
   /// The edge function Routine name.
   late final pulumi.Output<String> routineName;
-
   /// The rule content.
   late final pulumi.Output<String?> rule;
-
   /// Rule execution order.
   late final pulumi.Output<int?> sequence;
-
   /// Site Id
   late final pulumi.Output<String> siteId;
 
@@ -315,11 +307,11 @@ class RoutineRoute extends pulumi.CustomResource {
     RoutineRouteArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/routineRoute:RoutineRoute',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:esa/routineRoute:RoutineRoute',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bypass = registerOutput<String?>('bypass');
     configId = registerOutput<int>('configId');
     fallback = registerOutput<String>('fallback');
@@ -349,11 +341,11 @@ class RoutineRoute extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/routineRoute:RoutineRoute',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:esa/routineRoute:RoutineRoute',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bypass = registerOutput<String?>('bypass');
     configId = registerOutput<int>('configId');
     fallback = registerOutput<String>('fallback');

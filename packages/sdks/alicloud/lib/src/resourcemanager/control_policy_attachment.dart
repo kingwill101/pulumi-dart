@@ -340,7 +340,6 @@ import 'control_policy_attachment_state.dart';
 class ControlPolicyAttachment extends pulumi.CustomResource {
   /// The ID of the access control policy.
   late final pulumi.Output<String> policyId;
-
   /// The ID of the object from which you want to detach the access control policy. Access control policies can be attached to the following objects:
   ///
   /// - Root folder
@@ -357,11 +356,11 @@ class ControlPolicyAttachment extends pulumi.CustomResource {
     ControlPolicyAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:resourcemanager/controlPolicyAttachment:ControlPolicyAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:resourcemanager/controlPolicyAttachment:ControlPolicyAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     policyId = registerOutput<String>('policyId');
     targetId = registerOutput<String>('targetId');
   }
@@ -384,11 +383,11 @@ class ControlPolicyAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:resourcemanager/controlPolicyAttachment:ControlPolicyAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:resourcemanager/controlPolicyAttachment:ControlPolicyAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     policyId = registerOutput<String>('policyId');
     targetId = registerOutput<String>('targetId');
   }

@@ -374,40 +374,28 @@ import 'sampling_settings_response.dart';
 class ApiDiagnostic extends pulumi.CustomResource {
   /// Specifies for what type of messages sampling settings should not apply.
   late final pulumi.Output<String?> alwaysLog;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Diagnostic settings for incoming/outgoing HTTP messages to the Backend
   late final pulumi.Output<PipelineDiagnosticSettingsResponse?> backend;
-
   /// Diagnostic settings for incoming/outgoing HTTP messages to the Gateway.
   late final pulumi.Output<PipelineDiagnosticSettingsResponse?> frontend;
-
   /// Sets correlation protocol to use for Application Insights diagnostics.
   late final pulumi.Output<String?> httpCorrelationProtocol;
-
   /// Log the ClientIP. Default is false.
   late final pulumi.Output<bool?> logClientIp;
-
   /// Resource Id of a target logger.
   late final pulumi.Output<String> loggerId;
-
   /// Emit custom metrics via emit-metric policy. Applicable only to Application Insights diagnostic settings.
   late final pulumi.Output<bool?> metrics;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The format of the Operation Name for Application Insights telemetries. Default is Name.
   late final pulumi.Output<String?> operationNameFormat;
-
   /// Sampling settings for Diagnostic.
   late final pulumi.Output<SamplingSettingsResponse?> sampling;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// The verbosity level applied to traces emitted by trace policies.
   late final pulumi.Output<String?> verbosity;
 
@@ -420,51 +408,22 @@ class ApiDiagnostic extends pulumi.CustomResource {
     ApiDiagnosticArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:apimanagement:ApiDiagnostic',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:apimanagement:ApiDiagnostic',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alwaysLog = registerOutput<String?>('alwaysLog');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    backend = registerOutput<PipelineDiagnosticSettingsResponse?>(
-      'backend',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PipelineDiagnosticSettingsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    frontend = registerOutput<PipelineDiagnosticSettingsResponse?>(
-      'frontend',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PipelineDiagnosticSettingsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    httpCorrelationProtocol = registerOutput<String?>(
-      'httpCorrelationProtocol',
-    );
+    backend = registerOutput<PipelineDiagnosticSettingsResponse?>('backend', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineDiagnosticSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    frontend = registerOutput<PipelineDiagnosticSettingsResponse?>('frontend', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineDiagnosticSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    httpCorrelationProtocol = registerOutput<String?>('httpCorrelationProtocol');
     logClientIp = registerOutput<bool?>('logClientIp');
     loggerId = registerOutput<String>('loggerId');
     metrics = registerOutput<bool?>('metrics');
     this.name = registerOutput<String>('name');
     operationNameFormat = registerOutput<String?>('operationNameFormat');
-    sampling = registerOutput<SamplingSettingsResponse?>(
-      'sampling',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SamplingSettingsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sampling = registerOutput<SamplingSettingsResponse?>('sampling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SamplingSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     verbosity = registerOutput<String?>('verbosity');
   }

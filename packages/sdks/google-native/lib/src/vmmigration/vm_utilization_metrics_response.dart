@@ -6,25 +6,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VmUtilizationMetricsResponse {
   /// Average CPU usage, percent.
   final pulumi.Input<int> cpuAveragePercent;
-
   /// Max CPU usage, percent.
   final pulumi.Input<int> cpuMaxPercent;
-
   /// Average disk IO rate, in kilobytes per second.
   final pulumi.Input<String> diskIoRateAverageKbps;
-
   /// Max disk IO rate, in kilobytes per second.
   final pulumi.Input<String> diskIoRateMaxKbps;
-
   /// Average memory usage, percent.
   final pulumi.Input<int> memoryAveragePercent;
-
   /// Max memory usage, percent.
   final pulumi.Input<int> memoryMaxPercent;
-
   /// Average network throughput (combined transmit-rates and receive-rates), in kilobytes per second.
   final pulumi.Input<String> networkThroughputAverageKbps;
-
   /// Max network throughput (combined transmit-rates and receive-rates), in kilobytes per second.
   final pulumi.Input<String> networkThroughputMaxKbps;
 
@@ -63,26 +56,15 @@ class VmUtilizationMetricsResponse {
 
   factory VmUtilizationMetricsResponse.fromMap(Map<String, dynamic> map) {
     return VmUtilizationMetricsResponse(
-      cpuAveragePercent: pulumi.Input.fromValue(
-        map['cpuAveragePercent'] as int,
-      ),
+      cpuAveragePercent: pulumi.Input.fromValue(map['cpuAveragePercent'] as int),
       cpuMaxPercent: pulumi.Input.fromValue(map['cpuMaxPercent'] as int),
-      diskIoRateAverageKbps: pulumi.Input.fromValue(
-        map['diskIoRateAverageKbps'] as String,
-      ),
-      diskIoRateMaxKbps: pulumi.Input.fromValue(
-        map['diskIoRateMaxKbps'] as String,
-      ),
-      memoryAveragePercent: pulumi.Input.fromValue(
-        map['memoryAveragePercent'] as int,
-      ),
+      diskIoRateAverageKbps: pulumi.Input.fromValue(map['diskIoRateAverageKbps'] as String),
+      diskIoRateMaxKbps: pulumi.Input.fromValue(map['diskIoRateMaxKbps'] as String),
+      memoryAveragePercent: pulumi.Input.fromValue(map['memoryAveragePercent'] as int),
       memoryMaxPercent: pulumi.Input.fromValue(map['memoryMaxPercent'] as int),
-      networkThroughputAverageKbps: pulumi.Input.fromValue(
-        map['networkThroughputAverageKbps'] as String,
-      ),
-      networkThroughputMaxKbps: pulumi.Input.fromValue(
-        map['networkThroughputMaxKbps'] as String,
-      ),
+      networkThroughputAverageKbps: pulumi.Input.fromValue(map['networkThroughputAverageKbps'] as String),
+      networkThroughputMaxKbps: pulumi.Input.fromValue(map['networkThroughputMaxKbps'] as String),
     );
   }
 }
+

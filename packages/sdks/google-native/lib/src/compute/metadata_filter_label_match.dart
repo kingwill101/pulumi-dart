@@ -6,31 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MetadataFilterLabelMatch {
   /// Name of metadata label. The name can have a maximum length of 1024 characters and must be at least 1 character long.
   final pulumi.Input<String>? name;
-
   /// The value of the label must match the specified value. value can have a maximum length of 1024 characters.
   final pulumi.Input<String>? value;
 
   /// Creates a new [MetadataFilterLabelMatch].
   /// [name] Name of metadata label. The name can have a maximum length of 1024 characters and must be at least 1 character long.
   /// [value] The value of the label must match the specified value. value can have a maximum length of 1024 characters.
-  MetadataFilterLabelMatch({this.name, this.value});
+  MetadataFilterLabelMatch({
+    this.name,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name, 'value': ?value};
+    return <String, dynamic>{
+      'name': ?name,
+      'value': ?value,
+    };
   }
 
   factory MetadataFilterLabelMatch.fromMap(Map<String, dynamic> map) {
     return MetadataFilterLabelMatch(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

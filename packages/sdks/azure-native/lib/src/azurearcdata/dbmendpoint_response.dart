@@ -6,28 +6,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DBMEndpointResponse {
   /// Name of the certificate.
   final pulumi.Input<String> certificateName;
-
   /// The type of connection authentication required for connections to this endpoint
   final pulumi.Input<String> connectionAuth;
-
   /// Encryption Algorithm
   final pulumi.Input<String> encryptionAlgorithm;
-
   /// Name of the database mirroring endpoint.
   final pulumi.Input<String> endpointName;
-
   /// Listener IP address.
   final pulumi.Input<String> ipAddress;
-
   /// Is the port number dynamically assigned.
   final pulumi.Input<bool> isDynamicPort;
-
   /// Is Encryption enabled
   final pulumi.Input<bool> isEncryptionEnabled;
-
   /// The port number that the endpoint is listening on.
   final pulumi.Input<int> port;
-
   /// Mirroring Role
   final pulumi.Input<String> role;
 
@@ -71,17 +63,14 @@ class DBMEndpointResponse {
     return DBMEndpointResponse(
       certificateName: pulumi.Input.fromValue(map['certificateName'] as String),
       connectionAuth: pulumi.Input.fromValue(map['connectionAuth'] as String),
-      encryptionAlgorithm: pulumi.Input.fromValue(
-        map['encryptionAlgorithm'] as String,
-      ),
+      encryptionAlgorithm: pulumi.Input.fromValue(map['encryptionAlgorithm'] as String),
       endpointName: pulumi.Input.fromValue(map['endpointName'] as String),
       ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
       isDynamicPort: pulumi.Input.fromValue(map['isDynamicPort'] as bool),
-      isEncryptionEnabled: pulumi.Input.fromValue(
-        map['isEncryptionEnabled'] as bool,
-      ),
+      isEncryptionEnabled: pulumi.Input.fromValue(map['isEncryptionEnabled'] as bool),
       port: pulumi.Input.fromValue(map['port'] as int),
       role: pulumi.Input.fromValue(map['role'] as String),
     );
   }
 }
+

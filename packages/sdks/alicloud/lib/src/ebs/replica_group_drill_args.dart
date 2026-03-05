@@ -12,10 +12,14 @@ class ReplicaGroupDrillArgs {
 
   /// Creates a new [ReplicaGroupDrillArgs].
   /// [groupId] The ID of the replication group. You can use the describediskreplicaggroups interface to query the asynchronous replication group list to obtain the value of the replication group ID input parameter.
-  ReplicaGroupDrillArgs({required this.groupId});
+  ReplicaGroupDrillArgs({
+    required this.groupId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'groupId': groupId};
+    return <String, dynamic>{
+      'groupId': groupId,
+    };
   }
 
   factory ReplicaGroupDrillArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class ReplicaGroupDrillArgs {
     );
   }
 }
+

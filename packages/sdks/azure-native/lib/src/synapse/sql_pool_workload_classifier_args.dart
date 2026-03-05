@@ -9,34 +9,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SqlPoolWorkloadClassifierArgs {
   /// The workload classifier context.
   final pulumi.Input<String>? context;
-
   /// The workload classifier end time for classification.
   final pulumi.Input<String>? endTime;
-
   /// The workload classifier importance.
   final pulumi.Input<String>? importance;
-
   /// The workload classifier label.
   final pulumi.Input<String>? label;
-
   /// The workload classifier member name.
   final pulumi.Input<String> memberName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// SQL pool name
   final pulumi.Input<String> sqlPoolName;
-
   /// The workload classifier start time for classification.
   final pulumi.Input<String>? startTime;
-
   /// The name of the workload classifier.
   final pulumi.Input<String>? workloadClassifierName;
-
   /// The name of the workload group.
   final pulumi.Input<String> workloadGroupName;
-
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -84,45 +74,18 @@ class SqlPoolWorkloadClassifierArgs {
 
   factory SqlPoolWorkloadClassifierArgs.fromMap(Map<String, dynamic> map) {
     return SqlPoolWorkloadClassifierArgs(
-      context: (() {
-        final guardedValue = map['context'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      endTime: (() {
-        final guardedValue = map['endTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      importance: (() {
-        final guardedValue = map['importance'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      label: (() {
-        final guardedValue = map['label'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      context: (() { final guardedValue = map['context']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      endTime: (() { final guardedValue = map['endTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      importance: (() { final guardedValue = map['importance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      label: (() { final guardedValue = map['label']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       memberName: pulumi.Input.fromValue(map['memberName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       sqlPoolName: pulumi.Input.fromValue(map['sqlPoolName'] as String),
-      startTime: (() {
-        final guardedValue = map['startTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      workloadClassifierName: (() {
-        final guardedValue = map['workloadClassifierName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      workloadGroupName: pulumi.Input.fromValue(
-        map['workloadGroupName'] as String,
-      ),
+      startTime: (() { final guardedValue = map['startTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      workloadClassifierName: (() { final guardedValue = map['workloadClassifierName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      workloadGroupName: pulumi.Input.fromValue(map['workloadGroupName'] as String),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
+

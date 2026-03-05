@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContainerExtendedResourceRequestPatch {
   /// The name of the container requesting resources.
   final pulumi.Input<String>? containerName;
-
   /// The name of the request in the special ResourceClaim which corresponds to the extended resource.
   final pulumi.Input<String>? requestName;
-
   /// The name of the extended resource in that container which gets backed by DRA.
   final pulumi.Input<String>? resourceName;
 
@@ -31,25 +29,12 @@ class ContainerExtendedResourceRequestPatch {
     };
   }
 
-  factory ContainerExtendedResourceRequestPatch.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ContainerExtendedResourceRequestPatch.fromMap(Map<String, dynamic> map) {
     return ContainerExtendedResourceRequestPatch(
-      containerName: (() {
-        final guardedValue = map['containerName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      requestName: (() {
-        final guardedValue = map['requestName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceName: (() {
-        final guardedValue = map['resourceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      containerName: (() { final guardedValue = map['containerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      requestName: (() { final guardedValue = map['requestName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceName: (() { final guardedValue = map['resourceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -229,21 +229,15 @@ import 'system_data_response.dart';
 /// ```sh
 /// $ pulumi import azure-native:machinelearningservices:FeaturestoreEntityVersion string /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featurestoreEntities/{name}/versions/{version}
 /// ```
-class FeaturestoreEntityVersionMachinelearningservices
-    extends pulumi.CustomResource {
+class FeaturestoreEntityVersionMachinelearningservices extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// [Required] Additional attributes of the entity.
-  late final pulumi.Output<FeaturestoreEntityVersionResponse>
-  featurestoreEntityVersionProperties;
-
+  late final pulumi.Output<FeaturestoreEntityVersionResponse> featurestoreEntityVersionProperties;
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -256,34 +250,15 @@ class FeaturestoreEntityVersionMachinelearningservices
     FeaturestoreEntityVersionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:machinelearningservices:FeaturestoreEntityVersion',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:machinelearningservices:FeaturestoreEntityVersion',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    featurestoreEntityVersionProperties =
-        registerOutput<FeaturestoreEntityVersionResponse>(
-          'featurestoreEntityVersionProperties',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return FeaturestoreEntityVersionResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    featurestoreEntityVersionProperties = registerOutput<FeaturestoreEntityVersionResponse>('featurestoreEntityVersionProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FeaturestoreEntityVersionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

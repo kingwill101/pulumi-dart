@@ -141,25 +141,18 @@ import 'system_data_response.dart';
 class NetworkManagerRoutingConfiguration extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// A description of the routing configuration.
   late final pulumi.Output<String?> description;
-
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// The provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// Unique identifier for this resource.
   late final pulumi.Output<String> resourceGuid;
-
   /// The system metadata related to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -172,27 +165,18 @@ class NetworkManagerRoutingConfiguration extends pulumi.CustomResource {
     NetworkManagerRoutingConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:network:NetworkManagerRoutingConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:network:NetworkManagerRoutingConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     description = registerOutput<String?>('description');
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     resourceGuid = registerOutput<String>('resourceGuid');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

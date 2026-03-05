@@ -12,8 +12,7 @@ enum GoogleAdWordsAuthenticationType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GoogleAdWordsAuthenticationType value: $value',
-    );
+    throw ArgumentError('Unknown GoogleAdWordsAuthenticationType value: $value');
   }
 }
+

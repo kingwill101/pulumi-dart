@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getGallery.
 class GetGalleryResult {
   final String devCenterId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
-
   /// The ID of the Shared Gallery connected to the Dev Center Gallery.
   final String sharedGalleryId;
 
@@ -41,3 +40,4 @@ class GetGalleryResult {
     );
   }
 }
+

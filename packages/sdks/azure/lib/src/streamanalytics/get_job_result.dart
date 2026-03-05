@@ -7,51 +7,36 @@ import 'get_job_identity.dart';
 class GetJobResult {
   /// The compatibility level for this job.
   final String compatibilityLevel;
-
   /// The Data Locale of the Job.
   final String dataLocale;
-
   /// The maximum tolerable delay in seconds where events arriving late could be included.
   final int eventsLateArrivalMaxDelayInSeconds;
-
   /// The maximum tolerable delay in seconds where out-of-order events can be adjusted to be back in order.
   final int eventsOutOfOrderMaxDelayInSeconds;
-
   /// The policy which should be applied to events which arrive out of order in the input event stream.
   final String eventsOutOfOrderPolicy;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// An `identity` block as defined below.
   final List<GetJobIdentity> identities;
-
   /// The Job ID assigned by the Stream Analytics Job.
   final String jobId;
-
   /// The time at which the Stream Analytics job last produced an output.
   final String lastOutputTime;
-
   /// The Azure location where the Stream Analytics Job exists.
   final String location;
   final String name;
-
   /// The policy which should be applied to events which arrive at the output and cannot be written to the external storage due to being malformed (such as missing column values, column values of wrong type or size).
   final String outputErrorPolicy;
   final String resourceGroupName;
-
   /// The SKU Name to use for the Stream Analytics Job.
   final String skuName;
-
   /// The starting mode set for this Stream Analytics Job.
   final String startMode;
-
   /// The time at which this Stream Analytics Job was scheduled to start.
   final String startTime;
-
   /// The number of streaming units that this Stream Analytics Job uses.
   final int streamingUnits;
-
   /// The query that will be run in this Stream Analytics Job, [written in Stream Analytics Query Language (SAQL)](https://msdn.microsoft.com/library/azure/dn834998).
   final String transformationQuery;
 
@@ -103,11 +88,7 @@ class GetJobResult {
       'eventsOutOfOrderMaxDelayInSeconds': eventsOutOfOrderMaxDelayInSeconds,
       'eventsOutOfOrderPolicy': eventsOutOfOrderPolicy,
       'id': id,
-      'identities':
-          pulumi.Input.encodeList<GetJobIdentity, Map<String, dynamic>>(
-            identities,
-            (value) => value.toMap(),
-          ),
+      'identities': pulumi.Input.encodeList<GetJobIdentity, Map<String, dynamic>>(identities, (value) => value.toMap()),
       'jobId': jobId,
       'lastOutputTime': lastOutputTime,
       'location': location,
@@ -126,17 +107,11 @@ class GetJobResult {
     return GetJobResult(
       compatibilityLevel: map['compatibilityLevel'] as String,
       dataLocale: map['dataLocale'] as String,
-      eventsLateArrivalMaxDelayInSeconds:
-          map['eventsLateArrivalMaxDelayInSeconds'] as int,
-      eventsOutOfOrderMaxDelayInSeconds:
-          map['eventsOutOfOrderMaxDelayInSeconds'] as int,
+      eventsLateArrivalMaxDelayInSeconds: map['eventsLateArrivalMaxDelayInSeconds'] as int,
+      eventsOutOfOrderMaxDelayInSeconds: map['eventsOutOfOrderMaxDelayInSeconds'] as int,
       eventsOutOfOrderPolicy: map['eventsOutOfOrderPolicy'] as String,
       id: map['id'] as String,
-      identities: pulumi.Input.decodeList<GetJobIdentity>(
-        map['identities']!,
-        (value) =>
-            GetJobIdentity.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      identities: pulumi.Input.decodeList<GetJobIdentity>(map['identities']!, (value) => GetJobIdentity.fromMap((value as Map).cast<String, dynamic>())),
       jobId: map['jobId'] as String,
       lastOutputTime: map['lastOutputTime'] as String,
       location: map['location'] as String,
@@ -151,3 +126,4 @@ class GetJobResult {
     );
   }
 }
+

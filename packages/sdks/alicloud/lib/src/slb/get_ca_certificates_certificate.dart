@@ -5,34 +5,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCaCertificatesCertificate {
   /// (Available in v1.123.1+) CA certificate ID.
   final pulumi.Input<String> caCertificateId;
-
   /// (Available in v1.123.1+) CA certificate name.
   final pulumi.Input<String> caCertificateName;
-
   /// CA certificate common name.
   final pulumi.Input<String> commonName;
-
   /// CA certificate created timestamp.
   final pulumi.Input<int> createdTimestamp;
-
   /// CA certificate expired time.
   final pulumi.Input<String> expiredTime;
-
   /// CA certificate expired timestamp.
   final pulumi.Input<int> expiredTimestamp;
-
   /// CA certificate fingerprint.
   final pulumi.Input<String> fingerprint;
-
   /// CA certificate ID.
   final pulumi.Input<String> id;
-
   /// (Deprecated from v1.123.1) Deprecated and replace by `ca_certificate_name`.
   final pulumi.Input<String> name;
-
   /// The Id of resource group which ca certificates belongs.
   final pulumi.Input<String> resourceGroupId;
-
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>> tags;
 
@@ -81,9 +71,7 @@ class GetCaCertificatesCertificate {
   factory GetCaCertificatesCertificate.fromMap(Map<String, dynamic> map) {
     return GetCaCertificatesCertificate(
       caCertificateId: pulumi.Input.fromValue(map['caCertificateId'] as String),
-      caCertificateName: pulumi.Input.fromValue(
-        map['caCertificateName'] as String,
-      ),
+      caCertificateName: pulumi.Input.fromValue(map['caCertificateName'] as String),
       commonName: pulumi.Input.fromValue(map['commonName'] as String),
       createdTimestamp: pulumi.Input.fromValue(map['createdTimestamp'] as int),
       expiredTime: pulumi.Input.fromValue(map['expiredTime'] as String),
@@ -96,3 +84,4 @@ class GetCaCertificatesCertificate {
     );
   }
 }
+

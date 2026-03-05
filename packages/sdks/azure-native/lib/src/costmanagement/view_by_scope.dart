@@ -405,58 +405,40 @@ import 'view_by_scope_args.dart';
 class ViewByScope extends pulumi.CustomResource {
   /// Show costs accumulated over time.
   late final pulumi.Output<String?> accumulated;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Chart type of the main view in Cost Analysis. Required.
   late final pulumi.Output<String?> chart;
-
   /// Date the user created this view.
   late final pulumi.Output<String> createdOn;
-
   /// Currency of the current view.
   late final pulumi.Output<String> currency;
-
   /// Has definition for data in this report config.
   late final pulumi.Output<ReportConfigDatasetResponse?> dataSet;
-
   /// Date range of the current view.
   late final pulumi.Output<String?> dateRange;
-
   /// User input name of the view. Required.
   late final pulumi.Output<String?> displayName;
-
   /// eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
   late final pulumi.Output<String?> eTag;
-
   /// If true, report includes monetary commitment.
   late final pulumi.Output<bool?> includeMonetaryCommitment;
-
   /// List of KPIs to show in Cost Analysis UI.
   late final pulumi.Output<List<Map<String, dynamic>>?> kpis;
-
   /// Metric to use when displaying costs.
   late final pulumi.Output<String?> metric;
-
   /// Date when the user last modified this view.
   late final pulumi.Output<String?> modifiedOn;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// Configuration of 3 sub-views in the Cost Analysis UI.
   late final pulumi.Output<List<Map<String, dynamic>>?> pivots;
-
   /// Cost Management scope to save the view on. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for BillingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for InvoiceSection scope, 'providers/Microsoft.Management/managementGroups/{managementGroupId}' for Management Group scope, '/providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}' for ExternalBillingAccount scope, and '/providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}' for ExternalSubscription scope.
   late final pulumi.Output<String?> scope;
-
   /// Has time period for pulling data for the report.
   late final pulumi.Output<ReportConfigTimePeriodResponse?> timePeriod;
-
   /// The time frame for pulling data for the report. If custom, then a specific time period must be provided.
   late final pulumi.Output<String> timeframe;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -469,48 +451,28 @@ class ViewByScope extends pulumi.CustomResource {
     ViewByScopeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:costmanagement:ViewByScope',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:costmanagement:ViewByScope',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accumulated = registerOutput<String?>('accumulated');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     chart = registerOutput<String?>('chart');
     createdOn = registerOutput<String>('createdOn');
     currency = registerOutput<String>('currency');
-    dataSet = registerOutput<ReportConfigDatasetResponse?>(
-      'dataSet',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ReportConfigDatasetResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    dataSet = registerOutput<ReportConfigDatasetResponse?>('dataSet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReportConfigDatasetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dateRange = registerOutput<String?>('dateRange');
     displayName = registerOutput<String?>('displayName');
     eTag = registerOutput<String?>('eTag');
-    includeMonetaryCommitment = registerOutput<bool?>(
-      'includeMonetaryCommitment',
-    );
+    includeMonetaryCommitment = registerOutput<bool?>('includeMonetaryCommitment');
     kpis = registerOutput<List<Map<String, dynamic>>?>('kpis');
     metric = registerOutput<String?>('metric');
     modifiedOn = registerOutput<String?>('modifiedOn');
     this.name = registerOutput<String>('name');
     pivots = registerOutput<List<Map<String, dynamic>>?>('pivots');
     scope = registerOutput<String?>('scope');
-    timePeriod = registerOutput<ReportConfigTimePeriodResponse?>(
-      'timePeriod',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ReportConfigTimePeriodResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timePeriod = registerOutput<ReportConfigTimePeriodResponse?>('timePeriod', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReportConfigTimePeriodResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     timeframe = registerOutput<String>('timeframe');
     type = registerOutput<String>('type');
   }

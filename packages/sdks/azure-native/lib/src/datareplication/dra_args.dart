@@ -10,13 +10,10 @@ import 'dra_model_properties.dart';
 class DraArgs {
   /// The fabric agent (Dra) name.
   final pulumi.Input<String>? fabricAgentName;
-
   /// The fabric name.
   final pulumi.Input<String> fabricName;
-
   /// Dra model properties.
   final pulumi.Input<DraModelProperties> properties;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,31 +33,18 @@ class DraArgs {
     return <String, dynamic>{
       'fabricAgentName': ?fabricAgentName,
       'fabricName': fabricName,
-      'properties':
-          pulumi.Input.mapInputValue<DraModelProperties, Map<String, dynamic>>(
-            properties,
-            (value) => value.toMap(),
-          ),
+      'properties': pulumi.Input.mapInputValue<DraModelProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
     };
   }
 
   factory DraArgs.fromMap(Map<String, dynamic> map) {
     return DraArgs(
-      fabricAgentName: (() {
-        final guardedValue = map['fabricAgentName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      fabricAgentName: (() { final guardedValue = map['fabricAgentName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       fabricName: pulumi.Input.fromValue(map['fabricName'] as String),
-      properties: pulumi.Input.fromValue(
-        DraModelProperties.fromMap(
-          (map['properties']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      properties: pulumi.Input.fromValue(DraModelProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

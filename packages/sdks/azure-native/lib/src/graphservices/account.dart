@@ -147,22 +147,16 @@ import 'account_resource_response_system_data.dart';
 class Account extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Location of the resource.
   late final pulumi.Output<String?> location;
-
   /// Azure resource name.
   late final pulumi.Output<String> name;
-
   /// Property bag from billing account
   late final pulumi.Output<AccountResourceResponseProperties> properties;
-
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<AccountResourceResponseSystemData> systemData;
-
   /// resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Azure resource type.
   late final pulumi.Output<String> type;
 
@@ -175,34 +169,16 @@ class Account extends pulumi.CustomResource {
     AccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:graphservices:Account',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:graphservices:Account',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<AccountResourceResponseProperties>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccountResourceResponseProperties.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<AccountResourceResponseSystemData>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccountResourceResponseSystemData.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<AccountResourceResponseProperties>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountResourceResponseProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<AccountResourceResponseSystemData>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountResourceResponseSystemData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

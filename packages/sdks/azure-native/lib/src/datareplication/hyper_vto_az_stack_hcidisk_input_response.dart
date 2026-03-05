@@ -6,20 +6,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HyperVToAzStackHCIDiskInputResponse {
   /// Gets or sets the type of the virtual hard disk, vhd or vhdx.
   final pulumi.Input<String> diskFileFormat;
-
   /// Gets or sets the disk Id.
   final pulumi.Input<String> diskId;
-
   /// Gets or sets the disk size in GB.
   final pulumi.Input<double> diskSizeGB;
-
   /// Gets or sets a value indicating whether dynamic sizing is enabled on the virtual hard
   /// disk.
   final pulumi.Input<bool>? isDynamic;
-
   /// Gets or sets a value indicating whether disk is os disk.
   final pulumi.Input<bool> isOsDisk;
-
   /// Gets or sets the target storage account ARM Id.
   final pulumi.Input<String>? storageContainerId;
 
@@ -50,24 +45,15 @@ class HyperVToAzStackHCIDiskInputResponse {
     };
   }
 
-  factory HyperVToAzStackHCIDiskInputResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory HyperVToAzStackHCIDiskInputResponse.fromMap(Map<String, dynamic> map) {
     return HyperVToAzStackHCIDiskInputResponse(
       diskFileFormat: pulumi.Input.fromValue(map['diskFileFormat'] as String),
       diskId: pulumi.Input.fromValue(map['diskId'] as String),
       diskSizeGB: pulumi.Input.fromValue(map['diskSizeGB'] as double),
-      isDynamic: (() {
-        final guardedValue = map['isDynamic'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      isDynamic: (() { final guardedValue = map['isDynamic']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       isOsDisk: pulumi.Input.fromValue(map['isOsDisk'] as bool),
-      storageContainerId: (() {
-        final guardedValue = map['storageContainerId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      storageContainerId: (() { final guardedValue = map['storageContainerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

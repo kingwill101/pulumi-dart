@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ControlPlaneEndpointProfileResponseControlPlaneEndpoint {
   /// Host IP address for API server
   final pulumi.Input<String>? hostIP;
-
   /// Port for the API server
   final pulumi.Input<String>? port;
 
@@ -19,23 +18,17 @@ class ControlPlaneEndpointProfileResponseControlPlaneEndpoint {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'hostIP': ?hostIP, 'port': ?port};
+    return <String, dynamic>{
+      'hostIP': ?hostIP,
+      'port': ?port,
+    };
   }
 
-  factory ControlPlaneEndpointProfileResponseControlPlaneEndpoint.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ControlPlaneEndpointProfileResponseControlPlaneEndpoint.fromMap(Map<String, dynamic> map) {
     return ControlPlaneEndpointProfileResponseControlPlaneEndpoint(
-      hostIP: (() {
-        final guardedValue = map['hostIP'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      port: (() {
-        final guardedValue = map['port'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      hostIP: (() { final guardedValue = map['hostIP']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DaprComponentResiliencyPolicyCircuitBreakerPolicyConfiguration {
   /// The number of consecutive errors before the circuit is opened.
   final pulumi.Input<int>? consecutiveErrors;
-
   /// The optional interval in seconds after which the error count resets to 0. An interval of 0 will never reset. If not specified, the timeoutInSeconds value will be used.
   final pulumi.Input<int>? intervalInSeconds;
-
   /// The interval in seconds until a retry attempt is made after the circuit is opened.
   final pulumi.Input<int>? timeoutInSeconds;
 
@@ -31,25 +29,12 @@ class DaprComponentResiliencyPolicyCircuitBreakerPolicyConfiguration {
     };
   }
 
-  factory DaprComponentResiliencyPolicyCircuitBreakerPolicyConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DaprComponentResiliencyPolicyCircuitBreakerPolicyConfiguration.fromMap(Map<String, dynamic> map) {
     return DaprComponentResiliencyPolicyCircuitBreakerPolicyConfiguration(
-      consecutiveErrors: (() {
-        final guardedValue = map['consecutiveErrors'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      intervalInSeconds: (() {
-        final guardedValue = map['intervalInSeconds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      timeoutInSeconds: (() {
-        final guardedValue = map['timeoutInSeconds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      consecutiveErrors: (() { final guardedValue = map['consecutiveErrors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      intervalInSeconds: (() { final guardedValue = map['intervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      timeoutInSeconds: (() { final guardedValue = map['timeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

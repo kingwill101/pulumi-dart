@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPrivateEndpointConnectionProxyArgs {
   /// The private endpoint connection proxy name.
   final pulumi.Input<String> privateEndpointConnectionProxyName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The vault name.
   final pulumi.Input<String> vaultName;
 
@@ -34,17 +32,12 @@ class GetPrivateEndpointConnectionProxyArgs {
     };
   }
 
-  factory GetPrivateEndpointConnectionProxyArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetPrivateEndpointConnectionProxyArgs.fromMap(Map<String, dynamic> map) {
     return GetPrivateEndpointConnectionProxyArgs(
-      privateEndpointConnectionProxyName: pulumi.Input.fromValue(
-        map['privateEndpointConnectionProxyName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      privateEndpointConnectionProxyName: pulumi.Input.fromValue(map['privateEndpointConnectionProxyName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       vaultName: pulumi.Input.fromValue(map['vaultName'] as String),
     );
   }
 }
+

@@ -7,12 +7,10 @@ class GetSqlMigrationServiceResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
   final String id;
-
   /// Current state of the Integration runtime.
   final String integrationRuntimeState;
   final String? location;
   final String name;
-
   /// Provisioning state to track the async operation status.
   final String provisioningState;
   final SystemDataResponse systemData;
@@ -60,22 +58,13 @@ class GetSqlMigrationServiceResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       integrationRuntimeState: map['integrationRuntimeState'] as String,
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

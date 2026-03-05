@@ -17,3 +17,4 @@ enum JobTriggerStatus {
     throw ArgumentError('Unknown JobTriggerStatus value: $value');
   }
 }
+

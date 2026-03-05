@@ -10,17 +10,20 @@ class BucketReplicationPrefixSet {
 
   /// Creates a new [BucketReplicationPrefixSet].
   /// [prefixes] The list of object key name prefix identifying one or more objects to which the rule applies.
-  BucketReplicationPrefixSet({required this.prefixes});
+  BucketReplicationPrefixSet({
+    required this.prefixes,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'prefixes': prefixes};
+    return <String, dynamic>{
+      'prefixes': prefixes,
+    };
   }
 
   factory BucketReplicationPrefixSet.fromMap(Map<String, dynamic> map) {
     return BucketReplicationPrefixSet(
-      prefixes: pulumi.Input.fromValue(
-        (map['prefixes'] as List).cast<String>(),
-      ),
+      prefixes: pulumi.Input.fromValue((map['prefixes'] as List).cast<String>()),
     );
   }
 }
+

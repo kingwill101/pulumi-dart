@@ -15,3 +15,4 @@ enum MongoDbAuthenticationType {
     throw ArgumentError('Unknown MongoDbAuthenticationType value: $value');
   }
 }
+

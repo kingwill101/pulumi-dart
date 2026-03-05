@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NewRecoveryServicesVaultResponse {
   /// The name of the recovery services vault has to be created.
   final pulumi.Input<String> name;
-
   /// The name of the resource group where the recovery services vault has to be created.
   final pulumi.Input<String> resourceGroup;
-
   /// The vault type, whether it is existing or has to be created.
   /// Expected value is 'New'.
   final pulumi.Input<String> vaultType;
@@ -40,3 +38,4 @@ class NewRecoveryServicesVaultResponse {
     );
   }
 }
+

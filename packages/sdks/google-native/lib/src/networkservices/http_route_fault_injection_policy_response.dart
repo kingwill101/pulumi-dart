@@ -8,7 +8,6 @@ import 'http_route_fault_injection_policy_delay_response.dart';
 class HttpRouteFaultInjectionPolicyResponse {
   /// The specification for aborting to client requests.
   final pulumi.Input<HttpRouteFaultInjectionPolicyAbortResponse> abort;
-
   /// The specification for injecting delay to client requests.
   final pulumi.Input<HttpRouteFaultInjectionPolicyDelayResponse> delay;
 
@@ -22,33 +21,16 @@ class HttpRouteFaultInjectionPolicyResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'abort':
-          pulumi.Input.mapInputValue<
-            HttpRouteFaultInjectionPolicyAbortResponse,
-            Map<String, dynamic>
-          >(abort, (value) => value.toMap()),
-      'delay':
-          pulumi.Input.mapInputValue<
-            HttpRouteFaultInjectionPolicyDelayResponse,
-            Map<String, dynamic>
-          >(delay, (value) => value.toMap()),
+      'abort': pulumi.Input.mapInputValue<HttpRouteFaultInjectionPolicyAbortResponse, Map<String, dynamic>>(abort, (value) => value.toMap()),
+      'delay': pulumi.Input.mapInputValue<HttpRouteFaultInjectionPolicyDelayResponse, Map<String, dynamic>>(delay, (value) => value.toMap()),
     };
   }
 
-  factory HttpRouteFaultInjectionPolicyResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory HttpRouteFaultInjectionPolicyResponse.fromMap(Map<String, dynamic> map) {
     return HttpRouteFaultInjectionPolicyResponse(
-      abort: pulumi.Input.fromValue(
-        HttpRouteFaultInjectionPolicyAbortResponse.fromMap(
-          (map['abort']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      delay: pulumi.Input.fromValue(
-        HttpRouteFaultInjectionPolicyDelayResponse.fromMap(
-          (map['delay']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      abort: pulumi.Input.fromValue(HttpRouteFaultInjectionPolicyAbortResponse.fromMap((map['abort']! as Map).cast<String, dynamic>())),
+      delay: pulumi.Input.fromValue(HttpRouteFaultInjectionPolicyDelayResponse.fromMap((map['delay']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

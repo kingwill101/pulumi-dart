@@ -15,3 +15,4 @@ enum DeliveryAttributeMappingType {
     throw ArgumentError('Unknown DeliveryAttributeMappingType value: $value');
   }
 }
+

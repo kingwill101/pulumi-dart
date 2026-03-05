@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponse {
   /// Number of retrieved smart replies. For example, when `n` is 3, this evaluation contains metrics for when Dialogflow retrieves 3 smart replies with the model.
   final pulumi.Input<int> n;
-
   /// Defined as `number of queries whose top n smart replies have at least one similar (token match similarity above the defined threshold) reply as the real reply` divided by `number of queries with at least one smart reply`. Value ranges from 0.0 to 1.0 inclusive.
   final pulumi.Input<double> recall;
 
@@ -19,15 +18,17 @@ class GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'n': n, 'recall': recall};
+    return <String, dynamic>{
+      'n': n,
+      'recall': recall,
+    };
   }
 
-  factory GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponse(
       n: pulumi.Input.fromValue(map['n'] as int),
       recall: pulumi.Input.fromValue(map['recall'] as double),
     );
   }
 }
+

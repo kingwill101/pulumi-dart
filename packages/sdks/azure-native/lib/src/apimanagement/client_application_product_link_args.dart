@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClientApplicationProductLinkArgs {
   /// Client Application identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String> clientApplicationId;
-
   /// Client Application Product Link identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String>? clientApplicationProductLinkId;
-
   /// The unique resource identifier of the Product.
   final pulumi.Input<String> productId;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
 
@@ -48,19 +44,12 @@ class ClientApplicationProductLinkArgs {
 
   factory ClientApplicationProductLinkArgs.fromMap(Map<String, dynamic> map) {
     return ClientApplicationProductLinkArgs(
-      clientApplicationId: pulumi.Input.fromValue(
-        map['clientApplicationId'] as String,
-      ),
-      clientApplicationProductLinkId: (() {
-        final guardedValue = map['clientApplicationProductLinkId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      clientApplicationId: pulumi.Input.fromValue(map['clientApplicationId'] as String),
+      clientApplicationProductLinkId: (() { final guardedValue = map['clientApplicationProductLinkId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       productId: pulumi.Input.fromValue(map['productId'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
+

@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVpnServerConfigurationArgs {
   /// The resource group name of the VpnServerConfiguration.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the VpnServerConfiguration being retrieved.
   final pulumi.Input<String> vpnServerConfigurationName;
 
@@ -30,12 +29,9 @@ class GetVpnServerConfigurationArgs {
 
   factory GetVpnServerConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return GetVpnServerConfigurationArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      vpnServerConfigurationName: pulumi.Input.fromValue(
-        map['vpnServerConfigurationName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      vpnServerConfigurationName: pulumi.Input.fromValue(map['vpnServerConfigurationName'] as String),
     );
   }
 }
+

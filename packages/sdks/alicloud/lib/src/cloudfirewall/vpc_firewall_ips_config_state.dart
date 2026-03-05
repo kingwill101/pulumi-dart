@@ -6,26 +6,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpcFirewallIpsConfigState {
   /// Base rule switch. Value:
   final pulumi.Input<int>? basicRules;
-
   /// Virtual patch switch. Value:
   final pulumi.Input<int>? enableAllPatch;
-
   /// Language
   ///
   /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   final pulumi.Input<String>? lang;
-
   /// MemberUid
   ///
   /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   final pulumi.Input<String>? memberUid;
-
   /// IPS rule Group
   final pulumi.Input<String>? ruleClass;
-
   /// IPS defense mode. Value:
   final pulumi.Input<int>? runMode;
-
   /// The ID of the VPC firewall instance. Value:
   /// - When VPC firewall protects the network instances (including VPC, VBR, and CCN) and the specified VPC, the instance ID uses the CEN instance ID. You can call the DescribeVpcFirewallCenList operation to query the instance ID of CEN.
   /// - When the VPC firewall protects the traffic between two VPCs connected through the express connection, the instance ID uses the VPC firewall instance ID. You can call the DescribeVpcFirewallList operation to query the instance ID of the VPC firewall.
@@ -63,41 +57,14 @@ class VpcFirewallIpsConfigState {
 
   factory VpcFirewallIpsConfigState.fromMap(Map<String, dynamic> map) {
     return VpcFirewallIpsConfigState(
-      basicRules: (() {
-        final guardedValue = map['basicRules'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      enableAllPatch: (() {
-        final guardedValue = map['enableAllPatch'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      lang: (() {
-        final guardedValue = map['lang'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      memberUid: (() {
-        final guardedValue = map['memberUid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ruleClass: (() {
-        final guardedValue = map['ruleClass'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      runMode: (() {
-        final guardedValue = map['runMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      vpcFirewallId: (() {
-        final guardedValue = map['vpcFirewallId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      basicRules: (() { final guardedValue = map['basicRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      enableAllPatch: (() { final guardedValue = map['enableAllPatch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      lang: (() { final guardedValue = map['lang']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      memberUid: (() { final guardedValue = map['memberUid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ruleClass: (() { final guardedValue = map['ruleClass']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      runMode: (() { final guardedValue = map['runMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      vpcFirewallId: (() { final guardedValue = map['vpcFirewallId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

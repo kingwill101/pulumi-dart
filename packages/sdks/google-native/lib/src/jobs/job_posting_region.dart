@@ -17,3 +17,4 @@ enum JobPostingRegion {
     throw ArgumentError('Unknown JobPostingRegion value: $value');
   }
 }
+

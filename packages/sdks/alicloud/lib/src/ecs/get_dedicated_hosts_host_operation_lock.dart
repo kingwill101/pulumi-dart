@@ -8,10 +8,14 @@ class GetDedicatedHostsHostOperationLock {
 
   /// Creates a new [GetDedicatedHostsHostOperationLock].
   /// [lockReason] The reason why the dedicated host resource is locked.
-  GetDedicatedHostsHostOperationLock({required this.lockReason});
+  GetDedicatedHostsHostOperationLock({
+    required this.lockReason,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'lockReason': lockReason};
+    return <String, dynamic>{
+      'lockReason': lockReason,
+    };
   }
 
   factory GetDedicatedHostsHostOperationLock.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class GetDedicatedHostsHostOperationLock {
     );
   }
 }
+

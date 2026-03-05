@@ -12,10 +12,14 @@ class GetVariableArgs {
 
   /// Creates a new [GetVariableArgs].
   /// [variableName] The name of the variable to operate on.
-  GetVariableArgs({required this.variableName});
+  GetVariableArgs({
+    required this.variableName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'variableName': variableName};
+    return <String, dynamic>{
+      'variableName': variableName,
+    };
   }
 
   factory GetVariableArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetVariableArgs {
     );
   }
 }
+

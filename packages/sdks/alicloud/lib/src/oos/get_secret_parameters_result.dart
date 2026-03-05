@@ -6,27 +6,21 @@ import 'get_secret_parameters_parameter.dart';
 /// Result data returned by getSecretParameters.
 class GetSecretParametersResult {
   final bool? enableDetails;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
   final String? nameRegex;
-
   /// A list of Secret Parameter names.
   final List<String> names;
   final String? outputFile;
-
   /// A list of Oos Secret Parameters. Each element contains the following attributes:
   final List<GetSecretParametersParameter> parameters;
-
   /// The ID of the Resource Group.
   final String? resourceGroupId;
-
   /// The name of the encryption parameter.
   final String? secretParameterName;
   final String? sortField;
   final String? sortOrder;
-
   /// The tags of the parameter.
   final Map<String, String>? tags;
   final bool? withDecryption;
@@ -69,11 +63,7 @@ class GetSecretParametersResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'parameters':
-          pulumi.Input.encodeList<
-            GetSecretParametersParameter,
-            Map<String, dynamic>
-          >(parameters, (value) => value.toMap()),
+      'parameters': pulumi.Input.encodeList<GetSecretParametersParameter, Map<String, dynamic>>(parameters, (value) => value.toMap()),
       'resourceGroupId': ?resourceGroupId,
       'secretParameterName': ?secretParameterName,
       'sortField': ?sortField,
@@ -85,60 +75,20 @@ class GetSecretParametersResult {
 
   factory GetSecretParametersResult.fromMap(Map<String, dynamic> map) {
     return GetSecretParametersResult(
-      enableDetails: (() {
-        final guardedValue = map['enableDetails'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      enableDetails: (() { final guardedValue = map['enableDetails']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      parameters: pulumi.Input.decodeList<GetSecretParametersParameter>(
-        map['parameters']!,
-        (value) => GetSecretParametersParameter.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      resourceGroupId: (() {
-        final guardedValue = map['resourceGroupId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      secretParameterName: (() {
-        final guardedValue = map['secretParameterName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      sortField: (() {
-        final guardedValue = map['sortField'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      sortOrder: (() {
-        final guardedValue = map['sortOrder'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
-      withDecryption: (() {
-        final guardedValue = map['withDecryption'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      parameters: pulumi.Input.decodeList<GetSecretParametersParameter>(map['parameters']!, (value) => GetSecretParametersParameter.fromMap((value as Map).cast<String, dynamic>())),
+      resourceGroupId: (() { final guardedValue = map['resourceGroupId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      secretParameterName: (() { final guardedValue = map['secretParameterName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sortField: (() { final guardedValue = map['sortField']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sortOrder: (() { final guardedValue = map['sortOrder']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      withDecryption: (() { final guardedValue = map['withDecryption']; if (guardedValue == null) return null; return guardedValue as bool; })(),
     );
   }
 }
+

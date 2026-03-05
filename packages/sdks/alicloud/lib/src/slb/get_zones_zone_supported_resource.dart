@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetZonesZoneSupportedResource {
   /// The type of IP address.
   final pulumi.Input<String> addressIpVersion;
-
   /// The type of network.
   final pulumi.Input<String> addressType;
 
@@ -26,10 +25,9 @@ class GetZonesZoneSupportedResource {
 
   factory GetZonesZoneSupportedResource.fromMap(Map<String, dynamic> map) {
     return GetZonesZoneSupportedResource(
-      addressIpVersion: pulumi.Input.fromValue(
-        map['addressIpVersion'] as String,
-      ),
+      addressIpVersion: pulumi.Input.fromValue(map['addressIpVersion'] as String),
       addressType: pulumi.Input.fromValue(map['addressType'] as String),
     );
   }
 }
+

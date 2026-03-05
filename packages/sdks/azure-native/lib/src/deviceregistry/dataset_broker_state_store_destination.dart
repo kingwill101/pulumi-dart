@@ -7,7 +7,6 @@ import 'broker_state_store_destination_configuration.dart';
 class DatasetBrokerStateStoreDestination {
   /// The MQTT broker state store destination configuration.
   final pulumi.Input<BrokerStateStoreDestinationConfiguration> configuration;
-
   /// The set of supported dataset destinations for an asset.
   /// Expected value is 'BrokerStateStore'.
   final pulumi.Input<String> target;
@@ -22,23 +21,16 @@ class DatasetBrokerStateStoreDestination {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configuration':
-          pulumi.Input.mapInputValue<
-            BrokerStateStoreDestinationConfiguration,
-            Map<String, dynamic>
-          >(configuration, (value) => value.toMap()),
+      'configuration': pulumi.Input.mapInputValue<BrokerStateStoreDestinationConfiguration, Map<String, dynamic>>(configuration, (value) => value.toMap()),
       'target': target,
     };
   }
 
   factory DatasetBrokerStateStoreDestination.fromMap(Map<String, dynamic> map) {
     return DatasetBrokerStateStoreDestination(
-      configuration: pulumi.Input.fromValue(
-        BrokerStateStoreDestinationConfiguration.fromMap(
-          (map['configuration']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      configuration: pulumi.Input.fromValue(BrokerStateStoreDestinationConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())),
       target: pulumi.Input.fromValue(map['target'] as String),
     );
   }
 }
+

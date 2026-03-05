@@ -8,10 +8,14 @@ class ConnectionSecretStore {
 
   /// Creates a new [ConnectionSecretStore].
   /// [keyVaultId] The key vault id to store secret.
-  ConnectionSecretStore({required this.keyVaultId});
+  ConnectionSecretStore({
+    required this.keyVaultId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'keyVaultId': keyVaultId};
+    return <String, dynamic>{
+      'keyVaultId': keyVaultId,
+    };
   }
 
   factory ConnectionSecretStore.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class ConnectionSecretStore {
     );
   }
 }
+

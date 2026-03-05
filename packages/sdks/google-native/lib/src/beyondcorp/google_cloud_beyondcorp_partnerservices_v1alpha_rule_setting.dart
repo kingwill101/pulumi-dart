@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSetting {
   /// Immutable. The type of the Setting. .
   final pulumi.Input<String> type;
-
   /// The value of the Setting.
   final pulumi.Input<Map<String, String>> value;
 
@@ -19,17 +18,17 @@ class GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSetting {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': type, 'value': value};
+    return <String, dynamic>{
+      'type': type,
+      'value': value,
+    };
   }
 
-  factory GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSetting.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSetting.fromMap(Map<String, dynamic> map) {
     return GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSetting(
       type: pulumi.Input.fromValue(map['type'] as String),
-      value: pulumi.Input.fromValue(
-        (map['value'] as Map).cast<String, String>(),
-      ),
+      value: pulumi.Input.fromValue((map['value'] as Map).cast<String, String>()),
     );
   }
 }
+

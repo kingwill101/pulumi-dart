@@ -307,85 +307,61 @@ import 'group_state.dart';
 class Group extends pulumi.CustomResource {
   /// The definition of a container that is part of the group as documented in the `container` block below. Changing this forces a new resource to be created.
   late final pulumi.Output<List<Map<String, dynamic>>> containers;
-
   /// A `diagnostics` block as documented below. Changing this forces a new resource to be created.
   late final pulumi.Output<GroupDiagnostics?> diagnostics;
-
   /// A `dns_config` block as documented below. Changing this forces a new resource to be created.
   late final pulumi.Output<GroupDnsConfig?> dnsConfig;
-
   /// The DNS label/name for the container group's IP. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** DNS label/name is not supported when deploying to virtual networks.
   late final pulumi.Output<String?> dnsNameLabel;
-
   /// The value representing the security enum. `Noreuse`, `ResourceGroupReuse`, `SubscriptionReuse`, `TenantReuse` or `Unsecure`. Defaults to `Unsecure`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> dnsNameLabelReusePolicy;
-
   /// Zero or more `exposed_port` blocks as defined below. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** The `exposed_port` can only contain ports that are also exposed on one or more containers in the group.
   late final pulumi.Output<List<Map<String, dynamic>>> exposedPorts;
-
   /// The FQDN of the container group derived from `dns_name_label`.
   late final pulumi.Output<String> fqdn;
-
   /// An `identity` block as defined below.
   late final pulumi.Output<GroupIdentity?> identity;
-
   /// An `image_registry_credential` block as documented below. Changing this forces a new resource to be created.
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  imageRegistryCredentials;
-
+  late final pulumi.Output<List<Map<String, dynamic>>?> imageRegistryCredentials;
   /// The definition of an init container that is part of the group as documented in the `init_container` block below. Changing this forces a new resource to be created.
   late final pulumi.Output<List<Map<String, dynamic>>?> initContainers;
-
   /// The IP address allocated to the container group.
   late final pulumi.Output<String> ipAddress;
-
   /// Specifies the IP address type of the container. `Public`, `Private` or `None`. Changing this forces a new resource to be created. If set to `Private`, `subnet_ids` also needs to be set. Defaults to `Public`.
   ///
   /// &gt; **Note:** `dns_name_label` and `os_type` set to `windows` are not compatible with `Private` `ip_address_type`
   late final pulumi.Output<String?> ipAddressType;
-
   /// The Key Vault key URI for CMK encryption. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> keyVaultKeyId;
-
   /// The user assigned identity that has access to the Key Vault Key. If not specified, the RP principal named "Azure Container Instance Service" will be used instead. Make sure the identity has the proper `key_permissions` set, at least with `Get`, `UnwrapKey`, `WrapKey` and `GetRotationPolicy`.
   late final pulumi.Output<String?> keyVaultUserAssignedIdentityId;
-
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// Specifies the name of the Container Group. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> networkProfileId;
-
   /// The OS for the container group. Allowed values are `Linux` and `Windows`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** if `os_type` is set to `Windows` currently only a single `container` block is supported. Windows containers are not supported in virtual networks.
   late final pulumi.Output<String> osType;
-
   /// The priority of the Container Group. Possible values are `Regular` and `Spot`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** When `priority` is set to `Spot`, the `ip_address_type` has to be `None`.
   late final pulumi.Output<String?> priority;
-
   /// The name of the resource group in which to create the Container Group. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// Restart policy for the container group. Allowed values are `Always`, `Never`, `OnFailure`. Defaults to `Always`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> restartPolicy;
-
   /// Specifies the sku of the Container Group. Possible values are `Confidential`, `Dedicated` and `Standard`. Defaults to `Standard`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> sku;
-
   /// The subnet resource IDs for a container group. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> subnetIds;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A list of Availability Zones in which this Container Group is located. Changing this forces a new resource to be created.
   late final pulumi.Output<List<String>?> zones;
 
@@ -393,62 +369,30 @@ class Group extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Group]. {@macro pulumi_containerservice_group_group_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Group(String name, {GroupArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure:containerservice/group:Group',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Group(
+    String name, {
+    GroupArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure:containerservice/group:Group',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     containers = registerOutput<List<Map<String, dynamic>>>('containers');
-    diagnostics = registerOutput<GroupDiagnostics?>(
-      'diagnostics',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GroupDiagnostics.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    dnsConfig = registerOutput<GroupDnsConfig?>(
-      'dnsConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GroupDnsConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    diagnostics = registerOutput<GroupDiagnostics?>('diagnostics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupDiagnostics.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dnsConfig = registerOutput<GroupDnsConfig?>('dnsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupDnsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dnsNameLabel = registerOutput<String?>('dnsNameLabel');
-    dnsNameLabelReusePolicy = registerOutput<String?>(
-      'dnsNameLabelReusePolicy',
-    );
+    dnsNameLabelReusePolicy = registerOutput<String?>('dnsNameLabelReusePolicy');
     exposedPorts = registerOutput<List<Map<String, dynamic>>>('exposedPorts');
     fqdn = registerOutput<String>('fqdn');
-    identity = registerOutput<GroupIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GroupIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    imageRegistryCredentials = registerOutput<List<Map<String, dynamic>>?>(
-      'imageRegistryCredentials',
-    );
-    initContainers = registerOutput<List<Map<String, dynamic>>?>(
-      'initContainers',
-    );
+    identity = registerOutput<GroupIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    imageRegistryCredentials = registerOutput<List<Map<String, dynamic>>?>('imageRegistryCredentials');
+    initContainers = registerOutput<List<Map<String, dynamic>>?>('initContainers');
     ipAddress = registerOutput<String>('ipAddress');
     ipAddressType = registerOutput<String?>('ipAddressType');
     keyVaultKeyId = registerOutput<String?>('keyVaultKeyId');
-    keyVaultUserAssignedIdentityId = registerOutput<String?>(
-      'keyVaultUserAssignedIdentityId',
-    );
+    keyVaultUserAssignedIdentityId = registerOutput<String?>('keyVaultUserAssignedIdentityId');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     networkProfileId = registerOutput<String>('networkProfileId');
@@ -463,7 +407,11 @@ class Group extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Group] resource's state with the given [name] and [id].
-  static Group get(String name, pulumi.Input<String> id, {GroupState? state}) {
+  static Group get(
+    String name,
+    pulumi.Input<String> id, {
+    GroupState? state,
+  }) {
     return Group._get(
       name,
       state: state?.toMap(),
@@ -476,60 +424,25 @@ class Group extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:containerservice/group:Group',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:containerservice/group:Group',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     containers = registerOutput<List<Map<String, dynamic>>>('containers');
-    diagnostics = registerOutput<GroupDiagnostics?>(
-      'diagnostics',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GroupDiagnostics.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    dnsConfig = registerOutput<GroupDnsConfig?>(
-      'dnsConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GroupDnsConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    diagnostics = registerOutput<GroupDiagnostics?>('diagnostics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupDiagnostics.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dnsConfig = registerOutput<GroupDnsConfig?>('dnsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupDnsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dnsNameLabel = registerOutput<String?>('dnsNameLabel');
-    dnsNameLabelReusePolicy = registerOutput<String?>(
-      'dnsNameLabelReusePolicy',
-    );
+    dnsNameLabelReusePolicy = registerOutput<String?>('dnsNameLabelReusePolicy');
     exposedPorts = registerOutput<List<Map<String, dynamic>>>('exposedPorts');
     fqdn = registerOutput<String>('fqdn');
-    identity = registerOutput<GroupIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GroupIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    imageRegistryCredentials = registerOutput<List<Map<String, dynamic>>?>(
-      'imageRegistryCredentials',
-    );
-    initContainers = registerOutput<List<Map<String, dynamic>>?>(
-      'initContainers',
-    );
+    identity = registerOutput<GroupIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    imageRegistryCredentials = registerOutput<List<Map<String, dynamic>>?>('imageRegistryCredentials');
+    initContainers = registerOutput<List<Map<String, dynamic>>?>('initContainers');
     ipAddress = registerOutput<String>('ipAddress');
     ipAddressType = registerOutput<String?>('ipAddressType');
     keyVaultKeyId = registerOutput<String?>('keyVaultKeyId');
-    keyVaultUserAssignedIdentityId = registerOutput<String?>(
-      'keyVaultUserAssignedIdentityId',
-    );
+    keyVaultUserAssignedIdentityId = registerOutput<String?>('keyVaultUserAssignedIdentityId');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     networkProfileId = registerOutput<String>('networkProfileId');

@@ -15,3 +15,4 @@ enum AuthorizationConfigIAM {
     throw ArgumentError('Unknown AuthorizationConfigIAM value: $value');
   }
 }
+

@@ -7,42 +7,29 @@ import 'rolling_update_stateful_set_strategy.dart';
 class StatefulSetUpdateStrategy {
   /// RollingUpdate is used to communicate parameters when Type is RollingUpdateStatefulSetStrategyType.
   final pulumi.Input<RollingUpdateStatefulSetStrategy>? rollingUpdate;
-
   /// Type indicates the type of the StatefulSetUpdateStrategy. Default is RollingUpdate.
   final pulumi.Input<String>? type;
 
   /// Creates a new [StatefulSetUpdateStrategy].
   /// [rollingUpdate] RollingUpdate is used to communicate parameters when Type is RollingUpdateStatefulSetStrategyType.
   /// [type] Type indicates the type of the StatefulSetUpdateStrategy. Default is RollingUpdate.
-  StatefulSetUpdateStrategy({this.rollingUpdate, this.type});
+  StatefulSetUpdateStrategy({
+    this.rollingUpdate,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'rollingUpdate':
-          ?pulumi.Input.mapOptionalInputValue<
-            RollingUpdateStatefulSetStrategy,
-            Map<String, dynamic>
-          >(rollingUpdate, (value) => value.toMap()),
+      'rollingUpdate': ?pulumi.Input.mapOptionalInputValue<RollingUpdateStatefulSetStrategy, Map<String, dynamic>>(rollingUpdate, (value) => value.toMap()),
       'type': ?type,
     };
   }
 
   factory StatefulSetUpdateStrategy.fromMap(Map<String, dynamic> map) {
     return StatefulSetUpdateStrategy(
-      rollingUpdate: (() {
-        final guardedValue = map['rollingUpdate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RollingUpdateStatefulSetStrategy.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      rollingUpdate: (() { final guardedValue = map['rollingUpdate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RollingUpdateStatefulSetStrategy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

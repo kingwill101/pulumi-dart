@@ -5,22 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainDevicesInterfaceDriverHost {
   /// Enables or disables checksum offloading for the host driver, optimizing how checksums are handled for network traffic on the host.
   final pulumi.Input<String>? csum;
-
   /// Configures Explicit Congestion Notification (ECN) support for the host driver, influencing traffic management strategies at the host level.
   final pulumi.Input<String>? ecn;
-
   /// Enables or disables Generic Segmentation Offloading (GSO) for the host driver, improving performance by offloading packet segmentation.
   final pulumi.Input<String>? gso;
-
   /// Controls the usage of merged receive buffers for the host driver, optimizing how incoming packets are processed.
   final pulumi.Input<String>? mrgRxBuf;
-
   /// Controls TCP Segmentation Offloading (TSO) for IPv4 in the host driver, enhancing network performance by offloading packet segmentation.
   final pulumi.Input<String>? tso4;
-
   /// Controls TCP Segmentation Offloading (TSO) for IPv6 in the host driver, enhancing network performance by offloading packet segmentation.
   final pulumi.Input<String>? tso6;
-
   /// Enables or disables UDP Fragmentation Offloading (UFO) for the host driver, optimizing the handling of UDP packets.
   final pulumi.Input<String>? ufo;
 
@@ -56,41 +50,14 @@ class DomainDevicesInterfaceDriverHost {
 
   factory DomainDevicesInterfaceDriverHost.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceDriverHost(
-      csum: (() {
-        final guardedValue = map['csum'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ecn: (() {
-        final guardedValue = map['ecn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      gso: (() {
-        final guardedValue = map['gso'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      mrgRxBuf: (() {
-        final guardedValue = map['mrgRxBuf'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tso4: (() {
-        final guardedValue = map['tso4'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tso6: (() {
-        final guardedValue = map['tso6'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ufo: (() {
-        final guardedValue = map['ufo'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      csum: (() { final guardedValue = map['csum']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ecn: (() { final guardedValue = map['ecn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      gso: (() { final guardedValue = map['gso']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      mrgRxBuf: (() { final guardedValue = map['mrgRxBuf']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tso4: (() { final guardedValue = map['tso4']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tso6: (() { final guardedValue = map['tso6']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ufo: (() { final guardedValue = map['ufo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -1,34 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getStorageBoxType.
 class GetStorageBoxTypeResult {
   /// Maximum number of snapshots created automatically by a snapshot plan.
   final int automaticSnapshotLimit;
-
   /// Date of the Storage Box Type deprecation announcement.
   final String deprecationAnnounced;
-
   /// Description of the Storage Box Type.
   final String description;
-
   /// ID of the Storage Box Type.
   final int? id;
-
   /// Whether the Storage Box Type is deprecated.
   final bool isDeprecated;
-
   /// Name of the Storage Box Type.
   final String? name;
-
   /// Available storage in bytes.
   final int size;
-
   /// Maximum number of allowed manual snapshots.
   final int snapshotLimit;
-
   /// Maximum number of subaccounts.
   final int subaccountsLimit;
-
   /// Date of the Storage Box Type removal. After this date, the Storage Box Type cannot be used anymore.
   final String unavailableAfter;
 
@@ -76,17 +68,9 @@ class GetStorageBoxTypeResult {
       automaticSnapshotLimit: map['automaticSnapshotLimit'] as int,
       deprecationAnnounced: map['deprecationAnnounced'] as String,
       description: map['description'] as String,
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as int; })(),
       isDeprecated: map['isDeprecated'] as bool,
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       size: map['size'] as int,
       snapshotLimit: map['snapshotLimit'] as int,
       subaccountsLimit: map['subaccountsLimit'] as int,
@@ -94,3 +78,4 @@ class GetStorageBoxTypeResult {
     );
   }
 }
+

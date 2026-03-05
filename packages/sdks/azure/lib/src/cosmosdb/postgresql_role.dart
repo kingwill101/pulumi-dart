@@ -220,10 +220,8 @@ import 'postgresql_role_state.dart';
 class PostgresqlRole extends pulumi.CustomResource {
   /// The resource ID of the Azure Cosmos DB for PostgreSQL Cluster. Changing this forces a new resource to be created.
   late final pulumi.Output<String> clusterId;
-
   /// The name which should be used for this Azure Cosmos DB for PostgreSQL Role. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The password of the Azure Cosmos DB for PostgreSQL Role. Changing this forces a new resource to be created.
   late final pulumi.Output<String> password;
 
@@ -236,11 +234,11 @@ class PostgresqlRole extends pulumi.CustomResource {
     PostgresqlRoleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:cosmosdb/postgresqlRole:PostgresqlRole',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:cosmosdb/postgresqlRole:PostgresqlRole',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterId = registerOutput<String>('clusterId');
     this.name = registerOutput<String>('name');
     password = registerOutput<String>('password');
@@ -264,11 +262,11 @@ class PostgresqlRole extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:cosmosdb/postgresqlRole:PostgresqlRole',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:cosmosdb/postgresqlRole:PostgresqlRole',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterId = registerOutput<String>('clusterId');
     this.name = registerOutput<String>('name');
     password = registerOutput<String>('password');

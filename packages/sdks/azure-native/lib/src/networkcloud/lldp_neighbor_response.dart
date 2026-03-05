@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LldpNeighborResponse {
   /// The descriptive information about the port on the connected device.
   final pulumi.Input<String> portDescription;
-
   /// The system-assigned name of the port on the connected device.
   final pulumi.Input<String> portName;
-
   /// The descriptive information about the connected device.
   final pulumi.Input<String> systemDescription;
-
   /// The system-assigned name of the connected device.
   final pulumi.Input<String> systemName;
 
@@ -40,10 +37,9 @@ class LldpNeighborResponse {
     return LldpNeighborResponse(
       portDescription: pulumi.Input.fromValue(map['portDescription'] as String),
       portName: pulumi.Input.fromValue(map['portName'] as String),
-      systemDescription: pulumi.Input.fromValue(
-        map['systemDescription'] as String,
-      ),
+      systemDescription: pulumi.Input.fromValue(map['systemDescription'] as String),
       systemName: pulumi.Input.fromValue(map['systemName'] as String),
     );
   }
 }
+

@@ -9,21 +9,20 @@ class GoogleCloudIntegrationsV1alphaDoubleParameterArray {
 
   /// Creates a new [GoogleCloudIntegrationsV1alphaDoubleParameterArray].
   /// [doubleValues] Double number array.
-  GoogleCloudIntegrationsV1alphaDoubleParameterArray({this.doubleValues});
+  GoogleCloudIntegrationsV1alphaDoubleParameterArray({
+    this.doubleValues,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'doubleValues': ?doubleValues};
+    return <String, dynamic>{
+      'doubleValues': ?doubleValues,
+    };
   }
 
-  factory GoogleCloudIntegrationsV1alphaDoubleParameterArray.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudIntegrationsV1alphaDoubleParameterArray.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaDoubleParameterArray(
-      doubleValues: (() {
-        final guardedValue = map['doubleValues'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<double>());
-      })(),
+      doubleValues: (() { final guardedValue = map['doubleValues']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<double>()); })(),
     );
   }
 }
+

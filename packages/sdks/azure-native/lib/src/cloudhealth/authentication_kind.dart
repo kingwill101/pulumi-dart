@@ -14,3 +14,4 @@ enum AuthenticationKind {
     throw ArgumentError('Unknown AuthenticationKind value: $value');
   }
 }
+

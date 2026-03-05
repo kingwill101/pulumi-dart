@@ -9,7 +9,9 @@ class InstanceGceSetupConfidentialInstanceConfig {
 
   /// Creates a new [InstanceGceSetupConfidentialInstanceConfig].
   /// [confidentialInstanceType] Defines the type of technology used by the confidential instance.
-  InstanceGceSetupConfidentialInstanceConfig({this.confidentialInstanceType});
+  InstanceGceSetupConfidentialInstanceConfig({
+    this.confidentialInstanceType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -17,15 +19,10 @@ class InstanceGceSetupConfidentialInstanceConfig {
     };
   }
 
-  factory InstanceGceSetupConfidentialInstanceConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InstanceGceSetupConfidentialInstanceConfig.fromMap(Map<String, dynamic> map) {
     return InstanceGceSetupConfidentialInstanceConfig(
-      confidentialInstanceType: (() {
-        final guardedValue = map['confidentialInstanceType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      confidentialInstanceType: (() { final guardedValue = map['confidentialInstanceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

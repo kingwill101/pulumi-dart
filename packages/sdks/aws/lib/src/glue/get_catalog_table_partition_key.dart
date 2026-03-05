@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCatalogTablePartitionKey {
   /// Free-form text comment.
   final pulumi.Input<String> comment;
-
   /// Name of the table.
   final pulumi.Input<String> name;
-
   /// Map of initialization parameters for the SerDe, in key-value form.
   final pulumi.Input<Map<String, String>> parameters;
-
   /// Datatype of data in the Column.
   final pulumi.Input<String> type;
 
@@ -40,10 +37,9 @@ class GetCatalogTablePartitionKey {
     return GetCatalogTablePartitionKey(
       comment: pulumi.Input.fromValue(map['comment'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      parameters: pulumi.Input.fromValue(
-        (map['parameters'] as Map).cast<String, String>(),
-      ),
+      parameters: pulumi.Input.fromValue((map['parameters'] as Map).cast<String, String>()),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

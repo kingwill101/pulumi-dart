@@ -9,22 +9,15 @@ import 'multi_cluster_ingress_feature_spec_gkehub_v1beta.dart';
 /// CommonFeatureSpec contains Hub-wide configuration information
 class CommonFeatureSpecGkehubV1beta {
   /// Anthos Observability spec
-  final pulumi.Input<AnthosObservabilityFeatureSpecGkehubV1beta>?
-  anthosobservability;
-
+  final pulumi.Input<AnthosObservabilityFeatureSpecGkehubV1beta>? anthosobservability;
   /// Appdevexperience specific spec.
   final pulumi.Input<Map<String, dynamic>>? appdevexperience;
-
   /// ClusterUpgrade (fleet-based) feature spec.
   final pulumi.Input<ClusterUpgradeFleetSpecGkehubV1beta>? clusterupgrade;
-
   /// FleetObservability feature spec.
-  final pulumi.Input<FleetObservabilityFeatureSpecGkehubV1beta>?
-  fleetobservability;
-
+  final pulumi.Input<FleetObservabilityFeatureSpecGkehubV1beta>? fleetobservability;
   /// Multicluster Ingress-specific spec.
-  final pulumi.Input<MultiClusterIngressFeatureSpecGkehubV1beta>?
-  multiclusteringress;
+  final pulumi.Input<MultiClusterIngressFeatureSpecGkehubV1beta>? multiclusteringress;
 
   /// Creates a new [CommonFeatureSpecGkehubV1beta].
   /// [anthosobservability] Anthos Observability spec
@@ -42,75 +35,22 @@ class CommonFeatureSpecGkehubV1beta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'anthosobservability':
-          ?pulumi.Input.mapOptionalInputValue<
-            AnthosObservabilityFeatureSpecGkehubV1beta,
-            Map<String, dynamic>
-          >(anthosobservability, (value) => value.toMap()),
+      'anthosobservability': ?pulumi.Input.mapOptionalInputValue<AnthosObservabilityFeatureSpecGkehubV1beta, Map<String, dynamic>>(anthosobservability, (value) => value.toMap()),
       'appdevexperience': ?appdevexperience,
-      'clusterupgrade':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterUpgradeFleetSpecGkehubV1beta,
-            Map<String, dynamic>
-          >(clusterupgrade, (value) => value.toMap()),
-      'fleetobservability':
-          ?pulumi.Input.mapOptionalInputValue<
-            FleetObservabilityFeatureSpecGkehubV1beta,
-            Map<String, dynamic>
-          >(fleetobservability, (value) => value.toMap()),
-      'multiclusteringress':
-          ?pulumi.Input.mapOptionalInputValue<
-            MultiClusterIngressFeatureSpecGkehubV1beta,
-            Map<String, dynamic>
-          >(multiclusteringress, (value) => value.toMap()),
+      'clusterupgrade': ?pulumi.Input.mapOptionalInputValue<ClusterUpgradeFleetSpecGkehubV1beta, Map<String, dynamic>>(clusterupgrade, (value) => value.toMap()),
+      'fleetobservability': ?pulumi.Input.mapOptionalInputValue<FleetObservabilityFeatureSpecGkehubV1beta, Map<String, dynamic>>(fleetobservability, (value) => value.toMap()),
+      'multiclusteringress': ?pulumi.Input.mapOptionalInputValue<MultiClusterIngressFeatureSpecGkehubV1beta, Map<String, dynamic>>(multiclusteringress, (value) => value.toMap()),
     };
   }
 
   factory CommonFeatureSpecGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return CommonFeatureSpecGkehubV1beta(
-      anthosobservability: (() {
-        final guardedValue = map['anthosobservability'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AnthosObservabilityFeatureSpecGkehubV1beta.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      appdevexperience: (() {
-        final guardedValue = map['appdevexperience'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      clusterupgrade: (() {
-        final guardedValue = map['clusterupgrade'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterUpgradeFleetSpecGkehubV1beta.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      fleetobservability: (() {
-        final guardedValue = map['fleetobservability'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FleetObservabilityFeatureSpecGkehubV1beta.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      multiclusteringress: (() {
-        final guardedValue = map['multiclusteringress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          MultiClusterIngressFeatureSpecGkehubV1beta.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      anthosobservability: (() { final guardedValue = map['anthosobservability']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AnthosObservabilityFeatureSpecGkehubV1beta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      appdevexperience: (() { final guardedValue = map['appdevexperience']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
+      clusterupgrade: (() { final guardedValue = map['clusterupgrade']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterUpgradeFleetSpecGkehubV1beta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      fleetobservability: (() { final guardedValue = map['fleetobservability']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FleetObservabilityFeatureSpecGkehubV1beta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      multiclusteringress: (() { final guardedValue = map['multiclusteringress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MultiClusterIngressFeatureSpecGkehubV1beta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

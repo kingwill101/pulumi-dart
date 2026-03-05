@@ -321,46 +321,32 @@ import 'sync_group_schema_response.dart';
 class SyncGroup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Conflict logging retention period.
   late final pulumi.Output<int?> conflictLoggingRetentionInDays;
-
   /// Conflict resolution policy of the sync group.
   late final pulumi.Output<String?> conflictResolutionPolicy;
-
   /// If conflict logging is enabled.
   late final pulumi.Output<bool?> enableConflictLogging;
-
   /// User name for the sync group hub database credential.
   late final pulumi.Output<String?> hubDatabaseUserName;
-
   /// Sync interval of the sync group.
   late final pulumi.Output<int?> interval;
-
   /// Last sync time of the sync group.
   late final pulumi.Output<String> lastSyncTime;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// Private endpoint name of the sync group if use private link connection is enabled.
   late final pulumi.Output<String> privateEndpointName;
-
   /// Sync schema of the sync group.
   late final pulumi.Output<SyncGroupSchemaResponse?> schema;
-
   /// The name and capacity of the SKU.
   late final pulumi.Output<SkuResponse?> sku;
-
   /// ARM resource id of the sync database in the sync group.
   late final pulumi.Output<String?> syncDatabaseId;
-
   /// Sync state of the sync group.
   late final pulumi.Output<String> syncState;
-
   /// Resource type.
   late final pulumi.Output<String> type;
-
   /// If use private link connection is enabled.
   late final pulumi.Output<bool?> usePrivateLinkConnection;
 
@@ -373,49 +359,25 @@ class SyncGroup extends pulumi.CustomResource {
     SyncGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:sql:SyncGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:sql:SyncGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    conflictLoggingRetentionInDays = registerOutput<int?>(
-      'conflictLoggingRetentionInDays',
-    );
-    conflictResolutionPolicy = registerOutput<String?>(
-      'conflictResolutionPolicy',
-    );
+    conflictLoggingRetentionInDays = registerOutput<int?>('conflictLoggingRetentionInDays');
+    conflictResolutionPolicy = registerOutput<String?>('conflictResolutionPolicy');
     enableConflictLogging = registerOutput<bool?>('enableConflictLogging');
     hubDatabaseUserName = registerOutput<String?>('hubDatabaseUserName');
     interval = registerOutput<int?>('interval');
     lastSyncTime = registerOutput<String>('lastSyncTime');
     this.name = registerOutput<String>('name');
     privateEndpointName = registerOutput<String>('privateEndpointName');
-    schema = registerOutput<SyncGroupSchemaResponse?>(
-      'schema',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SyncGroupSchemaResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    sku = registerOutput<SkuResponse?>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    schema = registerOutput<SyncGroupSchemaResponse?>('schema', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SyncGroupSchemaResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     syncDatabaseId = registerOutput<String?>('syncDatabaseId');
     syncState = registerOutput<String>('syncState');
     type = registerOutput<String>('type');
-    usePrivateLinkConnection = registerOutput<bool?>(
-      'usePrivateLinkConnection',
-    );
+    usePrivateLinkConnection = registerOutput<bool?>('usePrivateLinkConnection');
   }
 }

@@ -165,40 +165,28 @@ import 'system_data_response.dart';
 class HypervClusterControllerCluster extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Gets the timestamp marking Hyper-V cluster creation.
   late final pulumi.Output<String> createdTimestamp;
-
   /// Gets the errors.
   late final pulumi.Output<List<Map<String, dynamic>>> errors;
-
   /// Gets or sets the FQDN/IPAddress of the Hyper-V cluster.
   late final pulumi.Output<String?> fqdn;
-
   /// Gets the functional level of the Hyper-V cluster.
   late final pulumi.Output<int> functionalLevel;
-
   /// Gets or sets list of hosts (FQDN) currently being tracked by the cluster.
   late final pulumi.Output<List<String>?> hostFqdnList;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The status of the last operation.
   late final pulumi.Output<String?> provisioningState;
-
   /// Gets or sets Run as account ID of the Hyper-V cluster.
   late final pulumi.Output<String?> runAsAccountId;
-
   /// Gets the status of the Hyper-V cluster.
   late final pulumi.Output<String> status;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Gets the timestamp marking last updated on the Hyper-V cluster.
   late final pulumi.Output<String> updatedTimestamp;
 
@@ -211,11 +199,11 @@ class HypervClusterControllerCluster extends pulumi.CustomResource {
     HypervClusterControllerClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:offazure:HypervClusterControllerCluster',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:offazure:HypervClusterControllerCluster',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createdTimestamp = registerOutput<String>('createdTimestamp');
     errors = registerOutput<List<Map<String, dynamic>>>('errors');
@@ -226,16 +214,7 @@ class HypervClusterControllerCluster extends pulumi.CustomResource {
     provisioningState = registerOutput<String?>('provisioningState');
     runAsAccountId = registerOutput<String?>('runAsAccountId');
     status = registerOutput<String>('status');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     updatedTimestamp = registerOutput<String>('updatedTimestamp');
   }

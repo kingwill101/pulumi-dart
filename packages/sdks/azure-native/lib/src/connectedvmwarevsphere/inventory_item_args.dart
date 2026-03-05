@@ -9,25 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InventoryItemArgs {
   /// Name of the inventoryItem.
   final pulumi.Input<String>? inventoryItemName;
-
   /// They inventory type.
   final pulumi.Input<String> inventoryType;
-
   /// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
   final pulumi.Input<String>? kind;
-
   /// Gets or sets the tracked resource id corresponding to the inventory resource.
   final pulumi.Input<String>? managedResourceId;
-
   /// Gets or sets the vCenter Managed Object name for the inventory item.
   final pulumi.Input<String>? moName;
-
   /// Gets or sets the MoRef (Managed Object Reference) ID for the inventory item.
   final pulumi.Input<String>? moRefId;
-
   /// The Resource Group Name.
   final pulumi.Input<String> resourceGroupName;
-
   /// Name of the vCenter.
   final pulumi.Input<String> vcenterName;
 
@@ -66,36 +59,15 @@ class InventoryItemArgs {
 
   factory InventoryItemArgs.fromMap(Map<String, dynamic> map) {
     return InventoryItemArgs(
-      inventoryItemName: (() {
-        final guardedValue = map['inventoryItemName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      inventoryItemName: (() { final guardedValue = map['inventoryItemName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       inventoryType: pulumi.Input.fromValue(map['inventoryType'] as String),
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      managedResourceId: (() {
-        final guardedValue = map['managedResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      moName: (() {
-        final guardedValue = map['moName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      moRefId: (() {
-        final guardedValue = map['moRefId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      managedResourceId: (() { final guardedValue = map['managedResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      moName: (() { final guardedValue = map['moName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      moRefId: (() { final guardedValue = map['moRefId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       vcenterName: pulumi.Input.fromValue(map['vcenterName'] as String),
     );
   }
 }
+

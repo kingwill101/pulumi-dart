@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWafRulesWafRuleCondition {
   /// The match field.
   final pulumi.Input<String> key;
-
   /// The logical symbol.
   final pulumi.Input<String> opValue;
-
   /// The subfield of the target field.
   final pulumi.Input<String> subKey;
-
   /// The match content. Separate multiple values with commas (,).
   final pulumi.Input<String> values;
 
@@ -45,3 +42,4 @@ class GetWafRulesWafRuleCondition {
     );
   }
 }
+

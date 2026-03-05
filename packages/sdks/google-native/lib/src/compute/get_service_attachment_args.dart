@@ -31,15 +31,10 @@ class GetServiceAttachmentArgs {
 
   factory GetServiceAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceAttachmentArgs(
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: pulumi.Input.fromValue(map['region'] as String),
-      serviceAttachment: pulumi.Input.fromValue(
-        map['serviceAttachment'] as String,
-      ),
+      serviceAttachment: pulumi.Input.fromValue(map['serviceAttachment'] as String),
     );
   }
 }
+

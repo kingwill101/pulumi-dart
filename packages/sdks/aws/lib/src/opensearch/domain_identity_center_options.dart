@@ -31,26 +31,11 @@ class DomainIdentityCenterOptions {
 
   factory DomainIdentityCenterOptions.fromMap(Map<String, dynamic> map) {
     return DomainIdentityCenterOptions(
-      enabledApiAccess: (() {
-        final guardedValue = map['enabledApiAccess'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      identityCenterInstanceArn: (() {
-        final guardedValue = map['identityCenterInstanceArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      rolesKey: (() {
-        final guardedValue = map['rolesKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subjectKey: (() {
-        final guardedValue = map['subjectKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      enabledApiAccess: (() { final guardedValue = map['enabledApiAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      identityCenterInstanceArn: (() { final guardedValue = map['identityCenterInstanceArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      rolesKey: (() { final guardedValue = map['rolesKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subjectKey: (() { final guardedValue = map['subjectKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

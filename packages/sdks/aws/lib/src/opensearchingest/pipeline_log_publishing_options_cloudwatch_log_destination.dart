@@ -13,14 +13,15 @@ class PipelineLogPublishingOptionsCloudwatchLogDestination {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'logGroup': logGroup};
+    return <String, dynamic>{
+      'logGroup': logGroup,
+    };
   }
 
-  factory PipelineLogPublishingOptionsCloudwatchLogDestination.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PipelineLogPublishingOptionsCloudwatchLogDestination.fromMap(Map<String, dynamic> map) {
     return PipelineLogPublishingOptionsCloudwatchLogDestination(
       logGroup: pulumi.Input.fromValue(map['logGroup'] as String),
     );
   }
 }
+

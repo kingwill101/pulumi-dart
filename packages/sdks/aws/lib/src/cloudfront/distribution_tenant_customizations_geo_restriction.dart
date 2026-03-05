@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DistributionTenantCustomizationsGeoRestriction {
   /// Set of ISO 3166-1-alpha-2 country codes for the restriction. Required if `restriction_type` is `whitelist` or `blacklist`.
   final pulumi.Input<List<String>>? locations;
-
   /// Method to restrict distribution by country: `none`, `whitelist`, or `blacklist`.
   final pulumi.Input<String>? restrictionType;
 
@@ -24,20 +23,11 @@ class DistributionTenantCustomizationsGeoRestriction {
     };
   }
 
-  factory DistributionTenantCustomizationsGeoRestriction.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DistributionTenantCustomizationsGeoRestriction.fromMap(Map<String, dynamic> map) {
     return DistributionTenantCustomizationsGeoRestriction(
-      locations: (() {
-        final guardedValue = map['locations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      restrictionType: (() {
-        final guardedValue = map['restrictionType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      locations: (() { final guardedValue = map['locations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      restrictionType: (() { final guardedValue = map['restrictionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

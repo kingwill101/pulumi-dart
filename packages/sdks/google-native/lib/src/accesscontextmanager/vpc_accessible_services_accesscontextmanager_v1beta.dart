@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpcAccessibleServicesAccesscontextmanagerV1beta {
   /// The list of APIs usable within the Service Perimeter. Must be empty unless 'enable_restriction' is True. You can specify a list of individual services, as well as include the 'RESTRICTED-SERVICES' value, which automatically includes all of the services protected by the perimeter.
   final pulumi.Input<List<String>>? allowedServices;
-
   /// Whether to restrict API calls within the Service Perimeter to the list of APIs specified in 'allowed_services'.
   final pulumi.Input<bool>? enableRestriction;
 
@@ -25,20 +24,11 @@ class VpcAccessibleServicesAccesscontextmanagerV1beta {
     };
   }
 
-  factory VpcAccessibleServicesAccesscontextmanagerV1beta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VpcAccessibleServicesAccesscontextmanagerV1beta.fromMap(Map<String, dynamic> map) {
     return VpcAccessibleServicesAccesscontextmanagerV1beta(
-      allowedServices: (() {
-        final guardedValue = map['allowedServices'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      enableRestriction: (() {
-        final guardedValue = map['enableRestriction'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      allowedServices: (() { final guardedValue = map['allowedServices']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      enableRestriction: (() { final guardedValue = map['enableRestriction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

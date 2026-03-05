@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TrafficWeightResponse {
   /// Associates a traffic label with a revision
   final pulumi.Input<String>? label;
-
   /// Indicates that the traffic weight belongs to a latest stable revision
   final pulumi.Input<bool>? latestRevision;
-
   /// Name of a revision
   final pulumi.Input<String>? revisionName;
-
   /// Traffic weight assigned to a revision
   final pulumi.Input<int>? weight;
 
@@ -39,26 +36,11 @@ class TrafficWeightResponse {
 
   factory TrafficWeightResponse.fromMap(Map<String, dynamic> map) {
     return TrafficWeightResponse(
-      label: (() {
-        final guardedValue = map['label'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      latestRevision: (() {
-        final guardedValue = map['latestRevision'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      revisionName: (() {
-        final guardedValue = map['revisionName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      weight: (() {
-        final guardedValue = map['weight'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      label: (() { final guardedValue = map['label']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      latestRevision: (() { final guardedValue = map['latestRevision']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      revisionName: (() { final guardedValue = map['revisionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      weight: (() { final guardedValue = map['weight']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

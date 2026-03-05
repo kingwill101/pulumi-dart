@@ -6,11 +6,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HyperVMigrateFabricModelCustomProperties {
   /// Gets or sets the ARM Id of the HyperV site.
   final pulumi.Input<String> hyperVSiteId;
-
   /// Gets or sets the instance type.
   /// Expected value is 'HyperVMigrate'.
   final pulumi.Input<String> instanceType;
-
   /// Gets or sets the migration solution ARM Id.
   final pulumi.Input<String> migrationSolutionId;
 
@@ -32,15 +30,12 @@ class HyperVMigrateFabricModelCustomProperties {
     };
   }
 
-  factory HyperVMigrateFabricModelCustomProperties.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory HyperVMigrateFabricModelCustomProperties.fromMap(Map<String, dynamic> map) {
     return HyperVMigrateFabricModelCustomProperties(
       hyperVSiteId: pulumi.Input.fromValue(map['hyperVSiteId'] as String),
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
-      migrationSolutionId: pulumi.Input.fromValue(
-        map['migrationSolutionId'] as String,
-      ),
+      migrationSolutionId: pulumi.Input.fromValue(map['migrationSolutionId'] as String),
     );
   }
 }
+

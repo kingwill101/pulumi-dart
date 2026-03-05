@@ -6,7 +6,6 @@ class GetListenerRuleActionForwardTargetGroup {
   /// ARN of the Listener Rule.
   /// Either `arn` or `listener_arn` must be set.
   final pulumi.Input<String> arn;
-
   /// Weight of the target group.
   final pulumi.Input<int> weight;
 
@@ -19,15 +18,17 @@ class GetListenerRuleActionForwardTargetGroup {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'arn': arn, 'weight': weight};
+    return <String, dynamic>{
+      'arn': arn,
+      'weight': weight,
+    };
   }
 
-  factory GetListenerRuleActionForwardTargetGroup.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetListenerRuleActionForwardTargetGroup.fromMap(Map<String, dynamic> map) {
     return GetListenerRuleActionForwardTargetGroup(
       arn: pulumi.Input.fromValue(map['arn'] as String),
       weight: pulumi.Input.fromValue(map['weight'] as int),
     );
   }
 }
+

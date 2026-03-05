@@ -18,3 +18,4 @@ enum KafkaAuthMethod {
     throw ArgumentError('Unknown KafkaAuthMethod value: $value');
   }
 }
+

@@ -153,46 +153,32 @@ import 'system_data_response.dart';
 class Backup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// UUID v4 used to identify the Backup
   late final pulumi.Output<String> backupId;
-
   /// ResourceId used to identify the backup policy
   late final pulumi.Output<String> backupPolicyResourceId;
-
   /// Type of backup Manual or Scheduled
   late final pulumi.Output<String> backupType;
-
   /// The creation date of the backup
   late final pulumi.Output<String> creationDate;
-
   /// Failure reason
   late final pulumi.Output<String> failureReason;
-
   /// Label for backup
   late final pulumi.Output<String?> label;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Azure lifecycle management
   late final pulumi.Output<String> provisioningState;
-
   /// Size of backup in bytes
   late final pulumi.Output<double> size;
-
   /// The name of the snapshot
   late final pulumi.Output<String?> snapshotName;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Manual backup an already existing snapshot. This will always be false for scheduled backups and true/false for manual backups
   late final pulumi.Output<bool?> useExistingSnapshot;
-
   /// ResourceId used to identify the Volume
   late final pulumi.Output<String> volumeResourceId;
 
@@ -200,13 +186,16 @@ class Backup extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Backup]. {@macro pulumi_netapp_backup_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Backup(String name, {BackupArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:netapp:Backup',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Backup(
+    String name, {
+    BackupArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:netapp:Backup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     backupId = registerOutput<String>('backupId');
     backupPolicyResourceId = registerOutput<String>('backupPolicyResourceId');
@@ -218,16 +207,7 @@ class Backup extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     size = registerOutput<double>('size');
     snapshotName = registerOutput<String?>('snapshotName');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     useExistingSnapshot = registerOutput<bool?>('useExistingSnapshot');
     volumeResourceId = registerOutput<String>('volumeResourceId');

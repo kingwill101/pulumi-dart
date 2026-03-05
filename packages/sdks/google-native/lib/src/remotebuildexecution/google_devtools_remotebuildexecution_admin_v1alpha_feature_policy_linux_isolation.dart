@@ -4,22 +4,16 @@ enum GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolation {
   gvisor("GVISOR"),
   off("OFF");
 
-  const GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolation(
-    this.wireValue,
-  );
+  const GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolation(this.wireValue);
   final String wireValue;
 
-  static GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolation
-  fromValue(String value) {
-    for (final item
-        in GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolation
-            .values) {
+  static GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolation fromValue(String value) {
+    for (final item in GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolation.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolation value: $value',
-    );
+    throw ArgumentError('Unknown GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolation value: $value');
   }
 }
+

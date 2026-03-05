@@ -410,19 +410,14 @@ import 'host_share_key_state.dart';
 class HostShareKey extends pulumi.CustomResource {
   /// The first ID of the resource.
   late final pulumi.Output<String> hostShareKeyId;
-
   /// The name of the host shared key to be added. The name can be a maximum of 128 characters in length.
   late final pulumi.Output<String> hostShareKeyName;
-
   /// The ID of the Bastion instance.
   late final pulumi.Output<String> instanceId;
-
   /// The password of the private key. The value is a Base64-encoded string.
   late final pulumi.Output<String?> passPhrase;
-
   /// The private key. The value is a Base64-encoded string.
   late final pulumi.Output<String> privateKey;
-
   /// The fingerprint of the private key.
   late final pulumi.Output<String> privateKeyFingerPrint;
 
@@ -435,11 +430,11 @@ class HostShareKey extends pulumi.CustomResource {
     HostShareKeyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:bastionhost/hostShareKey:HostShareKey',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:bastionhost/hostShareKey:HostShareKey',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     hostShareKeyId = registerOutput<String>('hostShareKeyId');
     hostShareKeyName = registerOutput<String>('hostShareKeyName');
     instanceId = registerOutput<String>('instanceId');
@@ -466,11 +461,11 @@ class HostShareKey extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:bastionhost/hostShareKey:HostShareKey',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:bastionhost/hostShareKey:HostShareKey',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     hostShareKeyId = registerOutput<String>('hostShareKeyId');
     hostShareKeyName = registerOutput<String>('hostShareKeyName');
     instanceId = registerOutput<String>('instanceId');

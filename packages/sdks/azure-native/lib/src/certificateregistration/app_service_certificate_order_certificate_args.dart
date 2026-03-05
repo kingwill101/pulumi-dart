@@ -9,25 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppServiceCertificateOrderCertificateArgs {
   /// Name of the certificate order.
   final pulumi.Input<String> certificateOrderName;
-
   /// Key Vault resource Id.
   final pulumi.Input<String>? keyVaultId;
-
   /// Key Vault secret name.
   final pulumi.Input<String>? keyVaultSecretName;
-
   /// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
   final pulumi.Input<String>? kind;
-
   /// Resource Location.
   final pulumi.Input<String>? location;
-
   /// Name of the certificate.
   final pulumi.Input<String>? name;
-
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
-
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -64,48 +57,17 @@ class AppServiceCertificateOrderCertificateArgs {
     };
   }
 
-  factory AppServiceCertificateOrderCertificateArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppServiceCertificateOrderCertificateArgs.fromMap(Map<String, dynamic> map) {
     return AppServiceCertificateOrderCertificateArgs(
-      certificateOrderName: pulumi.Input.fromValue(
-        map['certificateOrderName'] as String,
-      ),
-      keyVaultId: (() {
-        final guardedValue = map['keyVaultId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keyVaultSecretName: (() {
-        final guardedValue = map['keyVaultSecretName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      certificateOrderName: pulumi.Input.fromValue(map['certificateOrderName'] as String),
+      keyVaultId: (() { final guardedValue = map['keyVaultId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyVaultSecretName: (() { final guardedValue = map['keyVaultSecretName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

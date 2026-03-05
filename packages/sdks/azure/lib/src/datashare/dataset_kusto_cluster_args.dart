@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatasetKustoClusterArgs {
   /// The resource ID of the Kusto Cluster to be shared with the receiver. Changing this forces a new Data Share Kusto Cluster Dataset to be created.
   final pulumi.Input<String> kustoClusterId;
-
   /// The name which should be used for this Data Share Kusto Cluster Dataset. Changing this forces a new Data Share Kusto Cluster Dataset to be created.
   final pulumi.Input<String>? name;
-
   /// The resource ID of the Data Share where this Data Share Kusto Cluster Dataset should be created. Changing this forces a new Data Share Kusto Cluster Dataset to be created.
   final pulumi.Input<String> shareId;
 
@@ -37,12 +35,9 @@ class DatasetKustoClusterArgs {
   factory DatasetKustoClusterArgs.fromMap(Map<String, dynamic> map) {
     return DatasetKustoClusterArgs(
       kustoClusterId: pulumi.Input.fromValue(map['kustoClusterId'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       shareId: pulumi.Input.fromValue(map['shareId'] as String),
     );
   }
 }
+

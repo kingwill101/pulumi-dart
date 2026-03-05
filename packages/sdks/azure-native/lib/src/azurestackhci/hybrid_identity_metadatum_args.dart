@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HybridIdentityMetadatumArgs {
   /// Name of the hybridIdentityMetadata.
   final pulumi.Input<String>? metadataName;
-
   /// The Public Key.
   final pulumi.Input<String>? publicKey;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The unique identifier for the resource.
   final pulumi.Input<String>? resourceUid;
-
   /// Name of the vm.
   final pulumi.Input<String> virtualMachineName;
 
@@ -48,27 +44,12 @@ class HybridIdentityMetadatumArgs {
 
   factory HybridIdentityMetadatumArgs.fromMap(Map<String, dynamic> map) {
     return HybridIdentityMetadatumArgs(
-      metadataName: (() {
-        final guardedValue = map['metadataName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      publicKey: (() {
-        final guardedValue = map['publicKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      resourceUid: (() {
-        final guardedValue = map['resourceUid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      virtualMachineName: pulumi.Input.fromValue(
-        map['virtualMachineName'] as String,
-      ),
+      metadataName: (() { final guardedValue = map['metadataName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicKey: (() { final guardedValue = map['publicKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      resourceUid: (() { final guardedValue = map['resourceUid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      virtualMachineName: pulumi.Input.fromValue(map['virtualMachineName'] as String),
     );
   }
 }
+

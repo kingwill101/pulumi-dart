@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UploadFileInfoResponseMigrationcenterV1alpha1 {
   /// The headers that were used to sign the URL.
   final pulumi.Input<Map<String, String>> headers;
-
   /// Upload URI for the file.
   final pulumi.Input<String> signedUri;
-
   /// Expiration time of the upload URI.
   final pulumi.Input<String> uriExpirationTime;
 
@@ -31,17 +29,12 @@ class UploadFileInfoResponseMigrationcenterV1alpha1 {
     };
   }
 
-  factory UploadFileInfoResponseMigrationcenterV1alpha1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory UploadFileInfoResponseMigrationcenterV1alpha1.fromMap(Map<String, dynamic> map) {
     return UploadFileInfoResponseMigrationcenterV1alpha1(
-      headers: pulumi.Input.fromValue(
-        (map['headers'] as Map).cast<String, String>(),
-      ),
+      headers: pulumi.Input.fromValue((map['headers'] as Map).cast<String, String>()),
       signedUri: pulumi.Input.fromValue(map['signedUri'] as String),
-      uriExpirationTime: pulumi.Input.fromValue(
-        map['uriExpirationTime'] as String,
-      ),
+      uriExpirationTime: pulumi.Input.fromValue(map['uriExpirationTime'] as String),
     );
   }
 }
+

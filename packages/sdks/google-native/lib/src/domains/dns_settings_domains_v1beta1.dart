@@ -9,10 +9,8 @@ import 'google_domains_dns_domains_v1beta1.dart';
 class DnsSettingsDomainsV1beta1 {
   /// An arbitrary DNS provider identified by its name servers.
   final pulumi.Input<CustomDnsDomainsV1beta1>? customDns;
-
   /// The list of glue records for this `Registration`. Commonly empty.
   final pulumi.Input<List<GlueRecordDomainsV1beta1>>? glueRecords;
-
   /// Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The free DNS zone provided by [Google Domains](https://domains.google/).
   final pulumi.Input<GoogleDomainsDnsDomainsV1beta1>? googleDomainsDns;
 
@@ -28,63 +26,18 @@ class DnsSettingsDomainsV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customDns':
-          ?pulumi.Input.mapOptionalInputValue<
-            CustomDnsDomainsV1beta1,
-            Map<String, dynamic>
-          >(customDns, (value) => value.toMap()),
-      'glueRecords':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GlueRecordDomainsV1beta1>,
-            List<Map<String, dynamic>>
-          >(
-            glueRecords,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GlueRecordDomainsV1beta1,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'googleDomainsDns':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleDomainsDnsDomainsV1beta1,
-            Map<String, dynamic>
-          >(googleDomainsDns, (value) => value.toMap()),
+      'customDns': ?pulumi.Input.mapOptionalInputValue<CustomDnsDomainsV1beta1, Map<String, dynamic>>(customDns, (value) => value.toMap()),
+      'glueRecords': ?pulumi.Input.mapOptionalInputValue<List<GlueRecordDomainsV1beta1>, List<Map<String, dynamic>>>(glueRecords, (value) => pulumi.Input.encodeList<GlueRecordDomainsV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'googleDomainsDns': ?pulumi.Input.mapOptionalInputValue<GoogleDomainsDnsDomainsV1beta1, Map<String, dynamic>>(googleDomainsDns, (value) => value.toMap()),
     };
   }
 
   factory DnsSettingsDomainsV1beta1.fromMap(Map<String, dynamic> map) {
     return DnsSettingsDomainsV1beta1(
-      customDns: (() {
-        final guardedValue = map['customDns'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CustomDnsDomainsV1beta1.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      glueRecords: (() {
-        final guardedValue = map['glueRecords'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GlueRecordDomainsV1beta1>(
-            guardedValue,
-            (value) => GlueRecordDomainsV1beta1.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      googleDomainsDns: (() {
-        final guardedValue = map['googleDomainsDns'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleDomainsDnsDomainsV1beta1.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      customDns: (() { final guardedValue = map['customDns']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CustomDnsDomainsV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      glueRecords: (() { final guardedValue = map['glueRecords']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GlueRecordDomainsV1beta1>(guardedValue, (value) => GlueRecordDomainsV1beta1.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      googleDomainsDns: (() { final guardedValue = map['googleDomainsDns']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleDomainsDnsDomainsV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

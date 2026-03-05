@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getSystemTopicEventSubscriptionFullUrl.
 class GetSystemTopicEventSubscriptionFullUrlResult {
   /// The URL that represents the endpoint of the destination of an event subscription.
@@ -7,21 +8,20 @@ class GetSystemTopicEventSubscriptionFullUrlResult {
 
   /// Creates a new [GetSystemTopicEventSubscriptionFullUrlResult].
   /// [endpointUrl] The URL that represents the endpoint of the destination of an event subscription.
-  GetSystemTopicEventSubscriptionFullUrlResult({this.endpointUrl});
+  GetSystemTopicEventSubscriptionFullUrlResult({
+    this.endpointUrl,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'endpointUrl': ?endpointUrl};
+    return <String, dynamic>{
+      'endpointUrl': ?endpointUrl,
+    };
   }
 
-  factory GetSystemTopicEventSubscriptionFullUrlResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetSystemTopicEventSubscriptionFullUrlResult.fromMap(Map<String, dynamic> map) {
     return GetSystemTopicEventSubscriptionFullUrlResult(
-      endpointUrl: (() {
-        final guardedValue = map['endpointUrl'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      endpointUrl: (() { final guardedValue = map['endpointUrl']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

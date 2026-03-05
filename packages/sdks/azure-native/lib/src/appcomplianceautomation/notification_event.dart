@@ -18,3 +18,4 @@ enum NotificationEvent {
     throw ArgumentError('Unknown NotificationEvent value: $value');
   }
 }
+

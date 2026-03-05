@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRegistrationDefinitionArgs {
   /// The GUID of the registration definition.
   final pulumi.Input<String> registrationDefinitionId;
-
   /// The scope of the resource.
   final pulumi.Input<String> scope;
 
@@ -30,10 +29,9 @@ class GetRegistrationDefinitionArgs {
 
   factory GetRegistrationDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return GetRegistrationDefinitionArgs(
-      registrationDefinitionId: pulumi.Input.fromValue(
-        map['registrationDefinitionId'] as String,
-      ),
+      registrationDefinitionId: pulumi.Input.fromValue(map['registrationDefinitionId'] as String),
       scope: pulumi.Input.fromValue(map['scope'] as String),
     );
   }
 }
+

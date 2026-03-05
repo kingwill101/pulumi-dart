@@ -13,14 +13,15 @@ class GetClusterKubernetesNetworkConfigElasticLoadBalancing {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled};
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
-  factory GetClusterKubernetesNetworkConfigElasticLoadBalancing.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetClusterKubernetesNetworkConfigElasticLoadBalancing.fromMap(Map<String, dynamic> map) {
     return GetClusterKubernetesNetworkConfigElasticLoadBalancing(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
+

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomerManagedKeyEncryptionPropertiesResponseKeyEncryptionKeyIdentity {
   /// Values can be SystemAssigned or UserAssigned
   final pulumi.Input<String>? identityType;
-
   /// user assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/&lt;resource group&gt;/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. Mutually exclusive with identityType systemAssignedIdentity.
   final pulumi.Input<String>? userAssignedIdentityResourceId;
 
@@ -25,20 +24,11 @@ class CustomerManagedKeyEncryptionPropertiesResponseKeyEncryptionKeyIdentity {
     };
   }
 
-  factory CustomerManagedKeyEncryptionPropertiesResponseKeyEncryptionKeyIdentity.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CustomerManagedKeyEncryptionPropertiesResponseKeyEncryptionKeyIdentity.fromMap(Map<String, dynamic> map) {
     return CustomerManagedKeyEncryptionPropertiesResponseKeyEncryptionKeyIdentity(
-      identityType: (() {
-        final guardedValue = map['identityType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      userAssignedIdentityResourceId: (() {
-        final guardedValue = map['userAssignedIdentityResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      identityType: (() { final guardedValue = map['identityType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      userAssignedIdentityResourceId: (() { final guardedValue = map['userAssignedIdentityResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

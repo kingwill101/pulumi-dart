@@ -530,26 +530,20 @@ import 'rds_db_proxy_state.dart';
 class RdsDbProxy extends pulumi.CustomResource {
   /// The port number that is associated with the proxy endpoint.
   late final pulumi.Output<int> dbProxyConnectStringPort;
-
   /// The new prefix of the proxy endpoint. Enter a prefix.
   late final pulumi.Output<String> dbProxyConnectionPrefix;
-
   /// Connection instance string.
   late final pulumi.Output<String> dbProxyConnectionString;
-
   /// Remarks of agent terminal.
   late final pulumi.Output<String> dbProxyEndpointAliases;
-
   /// Proxy connection address ID.
   late final pulumi.Output<String> dbProxyEndpointId;
-
   /// The read and write attributes of the proxy terminal. Valid values:
   /// - ReadWrite: The proxy terminal connects to the primary instance and can receive both read and write requests.
   /// - ReadOnly: The proxy terminal does not connect to the primary instance and can receive only read requests. This is the default value.
   ///
   /// &gt; **NOTE:** Note This setting causes your instance to restart. Proceed with caution.
   late final pulumi.Output<String> dbProxyEndpointReadWriteMode;
-
   /// The features that you want to enable for the proxy endpoint. If you specify more than one feature, separate the features with semicolons (;). Format: Feature 1:Status;Feature 2:Status;.... Do not add a semicolon (;) at the end of the last value. Valid feature values:
   /// - ReadWriteSpliting: read/write splitting.
   /// - ConnectionPersist: connection pooling.
@@ -560,24 +554,19 @@ class RdsDbProxy extends pulumi.CustomResource {
   ///
   /// &gt; **NOTE:** Note You must specify this parameter only when the read/write splitting feature is enabled.
   late final pulumi.Output<String> dbProxyFeatures;
-
   /// The number of proxy instances that are enabled. Valid values: 1 to 60.
   late final pulumi.Output<int> dbProxyInstanceNum;
-
   /// The database proxy type. Valid values:
   /// - common: universal proxy.
   /// - exclusive: Exclusive proxy (default).
   late final pulumi.Output<String> dbProxyInstanceType;
-
   /// The SSL configuration setting that you want to apply on the instance. Valid values:
   /// - Close: disables SSL encryption.
   /// - Open: enables SSL encryption or modifies the endpoint that requires SSL encryption.
   /// - Update: updates the validity period of the SSL certificate.
   late final pulumi.Output<String> dbProxySslEnabled;
-
   /// The point in time at which you want to apply the new database proxy settings. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
   late final pulumi.Output<String> effectiveSpecificTime;
-
   /// When modifying the number of proxy instances,The time when you want to apply the new database proxy settings.Valid values:
   /// - Immediate: ApsaraDB RDS immediately applies the new settings.
   /// - MaintainTime: ApsaraDB RDS applies the new settings during the maintenance window that you specified. For more information, see Modify the maintenance window.
@@ -585,49 +574,37 @@ class RdsDbProxy extends pulumi.CustomResource {
   ///
   /// &gt; **NOTE:** Note If you set the EffectiveTime parameter to SpecificTime, you must specify the EffectiveSpecificTime parameter.
   late final pulumi.Output<String> effectiveTime;
-
   /// The Id of instance that can run database.
   late final pulumi.Output<String> instanceId;
-
   /// The network type of the instance. Set the value to VPC.
   late final pulumi.Output<String> instanceNetworkType;
-
   /// Network type of proxy connection address.
   late final pulumi.Output<String> netType;
-
   /// The policy that is used to allocate read weights. Valid values:
   /// - Standard: ApsaraDB RDS automatically allocates read weights to the instance and its read-only instances based on the specifications of the instances.
   /// - Custom: You must manually allocate read weights to the instance and its read-only instances.
   ///
   /// &gt; **NOTE:** Note If you set the ReadOnlyInstanceDistributionType parameter to Custom, you must specify the ReadOnlyInstanceWeight parameter.
   late final pulumi.Output<String> readOnlyInstanceDistributionType;
-
   /// The maximum latency threshold that is allowed for read/write splitting. If the latency on a read-only instance exceeds the threshold that you specified, ApsaraDB RDS no longer forwards read requests to the read-only instance. If you do not specify this parameter, the default value of this parameter is retained. Unit: seconds. Valid values: 0 to 3600.
   ///
   /// &gt; **NOTE:** Note If the instance runs PostgreSQL, you can enable only the read/write splitting feature, which is specified by ReadWriteSpliting.
   late final pulumi.Output<int> readOnlyInstanceMaxDelayTime;
-
   /// A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000. See `read_only_instance_weight` below.
   late final pulumi.Output<List<Map<String, dynamic>>> readOnlyInstanceWeights;
-
   /// The ID of the resource group.
   late final pulumi.Output<String> resourceGroupId;
-
   /// The time when the certificate expires.
   late final pulumi.Output<String> sslExpiredTime;
-
   /// The point in time at which you want to upgrade the database proxy version of the instance. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
   late final pulumi.Output<String?> switchTime;
-
   /// The time when you want to upgrade the database proxy version of the instance. Valid values:
   /// - MaintainTime: ApsaraDB RDS performs the upgrade during the maintenance window that you specified. This is the default value. For more information, see Modify the maintenance window.
   /// - Immediate: ApsaraDB RDS immediately performs the upgrade.
   /// - SpecificTime: ApsaraDB RDS performs the upgrade at a specified point in time.
   late final pulumi.Output<String?> upgradeTime;
-
   /// The ID of the virtual private cloud (VPC) to which the instance belongs.
   late final pulumi.Output<String> vpcId;
-
   /// The ID of the vSwitch that is associated with the specified VPC.
   late final pulumi.Output<String> vswitchId;
 
@@ -640,19 +617,17 @@ class RdsDbProxy extends pulumi.CustomResource {
     RdsDbProxyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:rds/rdsDbProxy:RdsDbProxy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:rds/rdsDbProxy:RdsDbProxy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dbProxyConnectStringPort = registerOutput<int>('dbProxyConnectStringPort');
     dbProxyConnectionPrefix = registerOutput<String>('dbProxyConnectionPrefix');
     dbProxyConnectionString = registerOutput<String>('dbProxyConnectionString');
     dbProxyEndpointAliases = registerOutput<String>('dbProxyEndpointAliases');
     dbProxyEndpointId = registerOutput<String>('dbProxyEndpointId');
-    dbProxyEndpointReadWriteMode = registerOutput<String>(
-      'dbProxyEndpointReadWriteMode',
-    );
+    dbProxyEndpointReadWriteMode = registerOutput<String>('dbProxyEndpointReadWriteMode');
     dbProxyFeatures = registerOutput<String>('dbProxyFeatures');
     dbProxyInstanceNum = registerOutput<int>('dbProxyInstanceNum');
     dbProxyInstanceType = registerOutput<String>('dbProxyInstanceType');
@@ -662,15 +637,9 @@ class RdsDbProxy extends pulumi.CustomResource {
     instanceId = registerOutput<String>('instanceId');
     instanceNetworkType = registerOutput<String>('instanceNetworkType');
     netType = registerOutput<String>('netType');
-    readOnlyInstanceDistributionType = registerOutput<String>(
-      'readOnlyInstanceDistributionType',
-    );
-    readOnlyInstanceMaxDelayTime = registerOutput<int>(
-      'readOnlyInstanceMaxDelayTime',
-    );
-    readOnlyInstanceWeights = registerOutput<List<Map<String, dynamic>>>(
-      'readOnlyInstanceWeights',
-    );
+    readOnlyInstanceDistributionType = registerOutput<String>('readOnlyInstanceDistributionType');
+    readOnlyInstanceMaxDelayTime = registerOutput<int>('readOnlyInstanceMaxDelayTime');
+    readOnlyInstanceWeights = registerOutput<List<Map<String, dynamic>>>('readOnlyInstanceWeights');
     resourceGroupId = registerOutput<String>('resourceGroupId');
     sslExpiredTime = registerOutput<String>('sslExpiredTime');
     switchTime = registerOutput<String?>('switchTime');
@@ -697,19 +666,17 @@ class RdsDbProxy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:rds/rdsDbProxy:RdsDbProxy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:rds/rdsDbProxy:RdsDbProxy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dbProxyConnectStringPort = registerOutput<int>('dbProxyConnectStringPort');
     dbProxyConnectionPrefix = registerOutput<String>('dbProxyConnectionPrefix');
     dbProxyConnectionString = registerOutput<String>('dbProxyConnectionString');
     dbProxyEndpointAliases = registerOutput<String>('dbProxyEndpointAliases');
     dbProxyEndpointId = registerOutput<String>('dbProxyEndpointId');
-    dbProxyEndpointReadWriteMode = registerOutput<String>(
-      'dbProxyEndpointReadWriteMode',
-    );
+    dbProxyEndpointReadWriteMode = registerOutput<String>('dbProxyEndpointReadWriteMode');
     dbProxyFeatures = registerOutput<String>('dbProxyFeatures');
     dbProxyInstanceNum = registerOutput<int>('dbProxyInstanceNum');
     dbProxyInstanceType = registerOutput<String>('dbProxyInstanceType');
@@ -719,15 +686,9 @@ class RdsDbProxy extends pulumi.CustomResource {
     instanceId = registerOutput<String>('instanceId');
     instanceNetworkType = registerOutput<String>('instanceNetworkType');
     netType = registerOutput<String>('netType');
-    readOnlyInstanceDistributionType = registerOutput<String>(
-      'readOnlyInstanceDistributionType',
-    );
-    readOnlyInstanceMaxDelayTime = registerOutput<int>(
-      'readOnlyInstanceMaxDelayTime',
-    );
-    readOnlyInstanceWeights = registerOutput<List<Map<String, dynamic>>>(
-      'readOnlyInstanceWeights',
-    );
+    readOnlyInstanceDistributionType = registerOutput<String>('readOnlyInstanceDistributionType');
+    readOnlyInstanceMaxDelayTime = registerOutput<int>('readOnlyInstanceMaxDelayTime');
+    readOnlyInstanceWeights = registerOutput<List<Map<String, dynamic>>>('readOnlyInstanceWeights');
     resourceGroupId = registerOutput<String>('resourceGroupId');
     sslExpiredTime = registerOutput<String>('sslExpiredTime');
     switchTime = registerOutput<String?>('switchTime');

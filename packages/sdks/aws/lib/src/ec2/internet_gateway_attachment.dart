@@ -148,10 +148,8 @@ import 'internet_gateway_attachment_state.dart';
 class InternetGatewayAttachment extends pulumi.CustomResource {
   /// The ID of the internet gateway.
   late final pulumi.Output<String> internetGatewayId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The ID of the VPC.
   late final pulumi.Output<String> vpcId;
 
@@ -164,11 +162,11 @@ class InternetGatewayAttachment extends pulumi.CustomResource {
     InternetGatewayAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/internetGatewayAttachment:InternetGatewayAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/internetGatewayAttachment:InternetGatewayAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     internetGatewayId = registerOutput<String>('internetGatewayId');
     region = registerOutput<String>('region');
     vpcId = registerOutput<String>('vpcId');
@@ -192,11 +190,11 @@ class InternetGatewayAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/internetGatewayAttachment:InternetGatewayAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/internetGatewayAttachment:InternetGatewayAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     internetGatewayId = registerOutput<String>('internetGatewayId');
     region = registerOutput<String>('region');
     vpcId = registerOutput<String>('vpcId');

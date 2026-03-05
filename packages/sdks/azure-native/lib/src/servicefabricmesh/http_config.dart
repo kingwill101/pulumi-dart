@@ -7,10 +7,8 @@ import 'http_host_config.dart';
 class HttpConfig {
   /// description for routing.
   final pulumi.Input<List<HttpHostConfig>> hosts;
-
   /// http gateway config name.
   final pulumi.Input<String> name;
-
   /// Specifies the port at which the service endpoint below needs to be exposed.
   final pulumi.Input<int> port;
 
@@ -18,22 +16,15 @@ class HttpConfig {
   /// [hosts] description for routing.
   /// [name] http gateway config name.
   /// [port] Specifies the port at which the service endpoint below needs to be exposed.
-  HttpConfig({required this.hosts, required this.name, required this.port});
+  HttpConfig({
+    required this.hosts,
+    required this.name,
+    required this.port,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'hosts':
-          pulumi.Input.mapInputValue<
-            List<HttpHostConfig>,
-            List<Map<String, dynamic>>
-          >(
-            hosts,
-            (value) =>
-                pulumi.Input.encodeList<HttpHostConfig, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'hosts': pulumi.Input.mapInputValue<List<HttpHostConfig>, List<Map<String, dynamic>>>(hosts, (value) => pulumi.Input.encodeList<HttpHostConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
       'port': port,
     };
@@ -41,15 +32,10 @@ class HttpConfig {
 
   factory HttpConfig.fromMap(Map<String, dynamic> map) {
     return HttpConfig(
-      hosts: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<HttpHostConfig>(
-          map['hosts']!,
-          (value) =>
-              HttpHostConfig.fromMap((value as Map).cast<String, dynamic>()),
-        ),
-      ),
+      hosts: pulumi.Input.fromValue(pulumi.Input.decodeList<HttpHostConfig>(map['hosts']!, (value) => HttpHostConfig.fromMap((value as Map).cast<String, dynamic>()))),
       name: pulumi.Input.fromValue(map['name'] as String),
       port: pulumi.Input.fromValue(map['port'] as int),
     );
   }
 }
+

@@ -110,28 +110,20 @@ import 'endpoint_authorization_state.dart';
 class EndpointAuthorization extends pulumi.CustomResource {
   /// The Amazon Web Services account ID to grant access to.
   late final pulumi.Output<String> account;
-
   /// Indicates whether all VPCs in the grantee account are allowed access to the cluster.
   late final pulumi.Output<bool> allowedAllVpcs;
-
   /// The cluster identifier of the cluster to grant access to.
   late final pulumi.Output<String> clusterIdentifier;
-
   /// The number of Redshift-managed VPC endpoints created for the authorization.
   late final pulumi.Output<int> endpointCount;
-
   /// Indicates whether to force the revoke action. If true, the Redshift-managed VPC endpoints associated with the endpoint authorization are also deleted. Default value is `false`.
   late final pulumi.Output<bool?> forceDelete;
-
   /// The Amazon Web Services account ID of the grantee of the cluster.
   late final pulumi.Output<String> grantee;
-
   /// The Amazon Web Services account ID of the cluster owner.
   late final pulumi.Output<String> grantor;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The virtual private cloud (VPC) identifiers to grant access to. If none are specified all VPCs in shared account are allowed.
   late final pulumi.Output<List<String>?> vpcIds;
 
@@ -144,11 +136,11 @@ class EndpointAuthorization extends pulumi.CustomResource {
     EndpointAuthorizationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:redshift/endpointAuthorization:EndpointAuthorization',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:redshift/endpointAuthorization:EndpointAuthorization',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     account = registerOutput<String>('account');
     allowedAllVpcs = registerOutput<bool>('allowedAllVpcs');
     clusterIdentifier = registerOutput<String>('clusterIdentifier');
@@ -178,11 +170,11 @@ class EndpointAuthorization extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:redshift/endpointAuthorization:EndpointAuthorization',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:redshift/endpointAuthorization:EndpointAuthorization',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     account = registerOutput<String>('account');
     allowedAllVpcs = registerOutput<bool>('allowedAllVpcs');
     clusterIdentifier = registerOutput<String>('clusterIdentifier');

@@ -15,3 +15,4 @@ enum TeamStackPermissionScope {
     throw ArgumentError('Unknown TeamStackPermissionScope value: $value');
   }
 }
+

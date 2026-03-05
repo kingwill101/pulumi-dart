@@ -9,35 +9,27 @@ class GetInstancePscAutoConnection {
   /// CONNECTION_TYPE_PRIMARY
   /// CONNECTION_TYPE_READER
   final pulumi.Input<String> connectionType;
-
   /// Output only. The URI of the consumer side forwarding rule.
   /// Format:
   /// projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
   final pulumi.Input<String> forwardingRule;
-
   /// Output only. The IP allocated on the consumer network for the PSC forwarding rule.
   final pulumi.Input<String> ipAddress;
-
   /// Output only. The consumer network where the IP address resides, in the form of
   /// projects/{project_id}/global/networks/{network_id}.
   final pulumi.Input<String> network;
-
   /// Output only. Ports of the exposed endpoint.
   final pulumi.Input<int> port;
-
   /// Output only. The consumer project_id where the forwarding rule is created from.
   final pulumi.Input<String> projectId;
-
   /// Output only. The PSC connection id of the forwarding rule connected to the
   /// service attachment.
   final pulumi.Input<String> pscConnectionId;
-
   /// Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists.
   /// Possible values:
   /// ACTIVE
   /// NOT_FOUND
   final pulumi.Input<String> pscConnectionStatus;
-
   /// Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
   final pulumi.Input<String> serviceAttachment;
 
@@ -86,12 +78,9 @@ class GetInstancePscAutoConnection {
       port: pulumi.Input.fromValue(map['port'] as int),
       projectId: pulumi.Input.fromValue(map['projectId'] as String),
       pscConnectionId: pulumi.Input.fromValue(map['pscConnectionId'] as String),
-      pscConnectionStatus: pulumi.Input.fromValue(
-        map['pscConnectionStatus'] as String,
-      ),
-      serviceAttachment: pulumi.Input.fromValue(
-        map['serviceAttachment'] as String,
-      ),
+      pscConnectionStatus: pulumi.Input.fromValue(map['pscConnectionStatus'] as String),
+      serviceAttachment: pulumi.Input.fromValue(map['serviceAttachment'] as String),
     );
   }
 }
+

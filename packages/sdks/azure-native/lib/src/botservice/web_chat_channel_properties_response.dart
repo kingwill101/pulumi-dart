@@ -7,7 +7,6 @@ import 'web_chat_site_response.dart';
 class WebChatChannelPropertiesResponse {
   /// The list of Web Chat sites
   final pulumi.Input<List<WebChatSiteResponse>>? sites;
-
   /// Web chat control embed code
   final pulumi.Input<String> webChatEmbedCode;
 
@@ -21,39 +20,16 @@ class WebChatChannelPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'sites':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<WebChatSiteResponse>,
-            List<Map<String, dynamic>>
-          >(
-            sites,
-            (value) =>
-                pulumi.Input.encodeList<
-                  WebChatSiteResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'sites': ?pulumi.Input.mapOptionalInputValue<List<WebChatSiteResponse>, List<Map<String, dynamic>>>(sites, (value) => pulumi.Input.encodeList<WebChatSiteResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'webChatEmbedCode': webChatEmbedCode,
     };
   }
 
   factory WebChatChannelPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return WebChatChannelPropertiesResponse(
-      sites: (() {
-        final guardedValue = map['sites'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<WebChatSiteResponse>(
-            guardedValue,
-            (value) => WebChatSiteResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      webChatEmbedCode: pulumi.Input.fromValue(
-        map['webChatEmbedCode'] as String,
-      ),
+      sites: (() { final guardedValue = map['sites']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WebChatSiteResponse>(guardedValue, (value) => WebChatSiteResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      webChatEmbedCode: pulumi.Input.fromValue(map['webChatEmbedCode'] as String),
     );
   }
 }
+

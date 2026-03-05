@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CopyComputeScalePropertiesResponse {
   /// DIU number setting reserved for copy activity execution. Supported values are multiples of 4 in range 4-256.
   final pulumi.Input<int>? dataIntegrationUnit;
-
   /// Time to live (in minutes) setting of integration runtime which will execute copy activity.
   final pulumi.Input<int>? timeToLive;
 
@@ -27,16 +26,9 @@ class CopyComputeScalePropertiesResponse {
 
   factory CopyComputeScalePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return CopyComputeScalePropertiesResponse(
-      dataIntegrationUnit: (() {
-        final guardedValue = map['dataIntegrationUnit'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      timeToLive: (() {
-        final guardedValue = map['timeToLive'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      dataIntegrationUnit: (() { final guardedValue = map['dataIntegrationUnit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      timeToLive: (() { final guardedValue = map['timeToLive']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

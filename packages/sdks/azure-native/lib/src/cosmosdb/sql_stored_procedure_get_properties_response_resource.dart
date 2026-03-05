@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SqlStoredProcedureGetPropertiesResponseResource {
   /// Body of the Stored Procedure
   final pulumi.Input<String>? body;
-
   /// A system generated property representing the resource etag required for optimistic concurrency control.
   final pulumi.Input<String> etag;
-
   /// Name of the Cosmos DB SQL storedProcedure
   final pulumi.Input<String> id;
-
   /// A system generated property. A unique identifier.
   final pulumi.Input<String> rid;
-
   /// A system generated property that denotes the last updated timestamp of the resource.
   final pulumi.Input<double> ts;
 
@@ -42,15 +38,9 @@ class SqlStoredProcedureGetPropertiesResponseResource {
     };
   }
 
-  factory SqlStoredProcedureGetPropertiesResponseResource.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SqlStoredProcedureGetPropertiesResponseResource.fromMap(Map<String, dynamic> map) {
     return SqlStoredProcedureGetPropertiesResponseResource(
-      body: (() {
-        final guardedValue = map['body'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      body: (() { final guardedValue = map['body']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       etag: pulumi.Input.fromValue(map['etag'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
       rid: pulumi.Input.fromValue(map['rid'] as String),
@@ -58,3 +48,4 @@ class SqlStoredProcedureGetPropertiesResponseResource {
     );
   }
 }
+

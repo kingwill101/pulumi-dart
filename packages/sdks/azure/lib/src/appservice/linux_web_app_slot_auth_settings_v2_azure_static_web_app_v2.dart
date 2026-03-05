@@ -8,17 +8,20 @@ class LinuxWebAppSlotAuthSettingsV2AzureStaticWebAppV2 {
 
   /// Creates a new [LinuxWebAppSlotAuthSettingsV2AzureStaticWebAppV2].
   /// [clientId] The ID of the Client to use to authenticate with Azure Static Web App Authentication.
-  LinuxWebAppSlotAuthSettingsV2AzureStaticWebAppV2({required this.clientId});
+  LinuxWebAppSlotAuthSettingsV2AzureStaticWebAppV2({
+    required this.clientId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'clientId': clientId};
+    return <String, dynamic>{
+      'clientId': clientId,
+    };
   }
 
-  factory LinuxWebAppSlotAuthSettingsV2AzureStaticWebAppV2.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LinuxWebAppSlotAuthSettingsV2AzureStaticWebAppV2.fromMap(Map<String, dynamic> map) {
     return LinuxWebAppSlotAuthSettingsV2AzureStaticWebAppV2(
       clientId: pulumi.Input.fromValue(map['clientId'] as String),
     );
   }
 }
+

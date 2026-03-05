@@ -8,10 +8,8 @@ import 'budget_filter_properties_response.dart';
 class BudgetFilterResponse {
   /// The logical "AND" expression. Must have at least 2 items.
   final pulumi.Input<List<BudgetFilterPropertiesResponse>>? and;
-
   /// Has comparison expression for a dimension
   final pulumi.Input<BudgetComparisonExpressionResponse>? dimensions;
-
   /// Has comparison expression for a tag
   final pulumi.Input<BudgetComparisonExpressionResponse>? tags;
 
@@ -19,67 +17,26 @@ class BudgetFilterResponse {
   /// [and] The logical "AND" expression. Must have at least 2 items.
   /// [dimensions] Has comparison expression for a dimension
   /// [tags] Has comparison expression for a tag
-  BudgetFilterResponse({this.and, this.dimensions, this.tags});
+  BudgetFilterResponse({
+    this.and,
+    this.dimensions,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'and':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<BudgetFilterPropertiesResponse>,
-            List<Map<String, dynamic>>
-          >(
-            and,
-            (value) =>
-                pulumi.Input.encodeList<
-                  BudgetFilterPropertiesResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'dimensions':
-          ?pulumi.Input.mapOptionalInputValue<
-            BudgetComparisonExpressionResponse,
-            Map<String, dynamic>
-          >(dimensions, (value) => value.toMap()),
-      'tags':
-          ?pulumi.Input.mapOptionalInputValue<
-            BudgetComparisonExpressionResponse,
-            Map<String, dynamic>
-          >(tags, (value) => value.toMap()),
+      'and': ?pulumi.Input.mapOptionalInputValue<List<BudgetFilterPropertiesResponse>, List<Map<String, dynamic>>>(and, (value) => pulumi.Input.encodeList<BudgetFilterPropertiesResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'dimensions': ?pulumi.Input.mapOptionalInputValue<BudgetComparisonExpressionResponse, Map<String, dynamic>>(dimensions, (value) => value.toMap()),
+      'tags': ?pulumi.Input.mapOptionalInputValue<BudgetComparisonExpressionResponse, Map<String, dynamic>>(tags, (value) => value.toMap()),
     };
   }
 
   factory BudgetFilterResponse.fromMap(Map<String, dynamic> map) {
     return BudgetFilterResponse(
-      and: (() {
-        final guardedValue = map['and'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<BudgetFilterPropertiesResponse>(
-            guardedValue,
-            (value) => BudgetFilterPropertiesResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      dimensions: (() {
-        final guardedValue = map['dimensions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BudgetComparisonExpressionResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BudgetComparisonExpressionResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      and: (() { final guardedValue = map['and']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<BudgetFilterPropertiesResponse>(guardedValue, (value) => BudgetFilterPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      dimensions: (() { final guardedValue = map['dimensions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BudgetComparisonExpressionResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BudgetComparisonExpressionResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

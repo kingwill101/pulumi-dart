@@ -8,10 +8,14 @@ class DomainDevicesInterfaceLink {
 
   /// Creates a new [DomainDevicesInterfaceLink].
   /// [state] Configures the operational state of the network link (up or down).
-  DomainDevicesInterfaceLink({required this.state});
+  DomainDevicesInterfaceLink({
+    required this.state,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'state': state};
+    return <String, dynamic>{
+      'state': state,
+    };
   }
 
   factory DomainDevicesInterfaceLink.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class DomainDevicesInterfaceLink {
     );
   }
 }
+

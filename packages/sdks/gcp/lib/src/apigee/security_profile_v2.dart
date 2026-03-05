@@ -488,25 +488,19 @@ import 'security_profile_v2_state.dart';
 class SecurityProfileV2 extends pulumi.CustomResource {
   /// The timestamp at which this profile was created.
   late final pulumi.Output<String> createTime;
-
   /// Description of the security profile.
   late final pulumi.Output<String?> description;
-
   /// Name of the security profile v2 resource,
   /// in the format `organizations/{{org_name}}/securityProfilesV2/{{profile_id}}`.
   late final pulumi.Output<String> name;
-
   /// The Apigee Organization associated with the Apigee Security Profile V2,
   /// in the format `organizations/{{org_name}}`.
   late final pulumi.Output<String> orgId;
-
   /// A map of the assessment name and the assessment config.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> profileAssessmentConfigs;
-
   /// Resource ID of the security profile.
   late final pulumi.Output<String> profileId;
-
   /// The timestamp at which this profile was most recently updated.
   late final pulumi.Output<String> updateTime;
 
@@ -519,18 +513,16 @@ class SecurityProfileV2 extends pulumi.CustomResource {
     SecurityProfileV2Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:apigee/securityProfileV2:SecurityProfileV2',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:apigee/securityProfileV2:SecurityProfileV2',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     orgId = registerOutput<String>('orgId');
-    profileAssessmentConfigs = registerOutput<List<Map<String, dynamic>>>(
-      'profileAssessmentConfigs',
-    );
+    profileAssessmentConfigs = registerOutput<List<Map<String, dynamic>>>('profileAssessmentConfigs');
     profileId = registerOutput<String>('profileId');
     updateTime = registerOutput<String>('updateTime');
   }
@@ -553,18 +545,16 @@ class SecurityProfileV2 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:apigee/securityProfileV2:SecurityProfileV2',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:apigee/securityProfileV2:SecurityProfileV2',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     orgId = registerOutput<String>('orgId');
-    profileAssessmentConfigs = registerOutput<List<Map<String, dynamic>>>(
-      'profileAssessmentConfigs',
-    );
+    profileAssessmentConfigs = registerOutput<List<Map<String, dynamic>>>('profileAssessmentConfigs');
     profileId = registerOutput<String>('profileId');
     updateTime = registerOutput<String>('updateTime');
   }

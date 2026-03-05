@@ -7,19 +7,14 @@ import 'job_delay_details_response.dart';
 class JobStagesResponse {
   /// Delay information for the job stages.
   final pulumi.Input<List<JobDelayDetailsResponse>> delayInformation;
-
   /// Display name of the job stage.
   final pulumi.Input<String> displayName;
-
   /// Job Stage Details
   final pulumi.Input<dynamic> jobStageDetails;
-
   /// Name of the job stage.
   final pulumi.Input<String> stageName;
-
   /// Status of the job stage.
   final pulumi.Input<String> stageStatus;
-
   /// Time for the job stage in UTC ISO 8601 format.
   final pulumi.Input<String> stageTime;
 
@@ -41,18 +36,7 @@ class JobStagesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'delayInformation':
-          pulumi.Input.mapInputValue<
-            List<JobDelayDetailsResponse>,
-            List<Map<String, dynamic>>
-          >(
-            delayInformation,
-            (value) =>
-                pulumi.Input.encodeList<
-                  JobDelayDetailsResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'delayInformation': pulumi.Input.mapInputValue<List<JobDelayDetailsResponse>, List<Map<String, dynamic>>>(delayInformation, (value) => pulumi.Input.encodeList<JobDelayDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'displayName': displayName,
       'jobStageDetails': jobStageDetails,
       'stageName': stageName,
@@ -63,14 +47,7 @@ class JobStagesResponse {
 
   factory JobStagesResponse.fromMap(Map<String, dynamic> map) {
     return JobStagesResponse(
-      delayInformation: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<JobDelayDetailsResponse>(
-          map['delayInformation']!,
-          (value) => JobDelayDetailsResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      delayInformation: pulumi.Input.fromValue(pulumi.Input.decodeList<JobDelayDetailsResponse>(map['delayInformation']!, (value) => JobDelayDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       jobStageDetails: pulumi.Input.fromValue(map['jobStageDetails']),
       stageName: pulumi.Input.fromValue(map['stageName'] as String),
@@ -79,3 +56,4 @@ class JobStagesResponse {
     );
   }
 }
+

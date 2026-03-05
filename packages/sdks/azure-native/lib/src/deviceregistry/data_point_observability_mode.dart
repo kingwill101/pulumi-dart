@@ -18,3 +18,4 @@ enum DataPointObservabilityMode {
     throw ArgumentError('Unknown DataPointObservabilityMode value: $value');
   }
 }
+

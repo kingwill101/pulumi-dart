@@ -7,10 +7,8 @@ import 'key_vault_credentials_properties.dart';
 class KeyVaultConnectionProperties {
   /// KeyVault credentials.
   final pulumi.Input<KeyVaultCredentialsProperties> credentials;
-
   /// KeyVault directoryId.
   final pulumi.Input<String> directoryId;
-
   /// KeyVault name.
   final pulumi.Input<String> name;
 
@@ -26,11 +24,7 @@ class KeyVaultConnectionProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'credentials':
-          pulumi.Input.mapInputValue<
-            KeyVaultCredentialsProperties,
-            Map<String, dynamic>
-          >(credentials, (value) => value.toMap()),
+      'credentials': pulumi.Input.mapInputValue<KeyVaultCredentialsProperties, Map<String, dynamic>>(credentials, (value) => value.toMap()),
       'directoryId': directoryId,
       'name': name,
     };
@@ -38,13 +32,10 @@ class KeyVaultConnectionProperties {
 
   factory KeyVaultConnectionProperties.fromMap(Map<String, dynamic> map) {
     return KeyVaultConnectionProperties(
-      credentials: pulumi.Input.fromValue(
-        KeyVaultCredentialsProperties.fromMap(
-          (map['credentials']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      credentials: pulumi.Input.fromValue(KeyVaultCredentialsProperties.fromMap((map['credentials']! as Map).cast<String, dynamic>())),
       directoryId: pulumi.Input.fromValue(map['directoryId'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

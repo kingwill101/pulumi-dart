@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterNodeGroupSpotBidPrice {
   /// The spot bid price of a PayAsYouGo instance.
   final pulumi.Input<int> bidPrice;
-
   /// Host Ecs instance type.
   final pulumi.Input<String> instanceType;
 
@@ -31,3 +30,4 @@ class ClusterNodeGroupSpotBidPrice {
     );
   }
 }
+

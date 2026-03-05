@@ -5,25 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceV2EngineListNodeGroup {
   /// Node Type
   final pulumi.Input<String>? category;
-
   /// Number of CPU cores
   final pulumi.Input<int>? cpuCoreCount;
-
   /// Whether to mount  local cloud disks
   final pulumi.Input<bool>? enableAttachLocalDisk;
-
   /// Node memory size
   final pulumi.Input<int>? memorySizeGiB;
-
   /// Number of nodes
   final pulumi.Input<int> nodeCount;
-
   /// Local cloud disk storage capacity
   final pulumi.Input<int>? nodeDiskSize;
-
   /// Node Disk Type
   final pulumi.Input<String>? nodeDiskType;
-
   /// Node Specifications
   /// - Valid values when selecting cloud storage:
   /// - **lindorm.c.2xlarge**, 8 cores 16GB
@@ -61,13 +54,10 @@ class InstanceV2EngineListNodeGroup {
   /// - **lindorm.i2.4xlarge**, 16 cores 128GB(I2)
   /// - **lindorm.i2.8xlarge**, 32 cores 256GB(I2)
   final pulumi.Input<String> nodeSpec;
-
   /// Resource group name
   final pulumi.Input<String> resourceGroupName;
-
   /// Spec Id
   final pulumi.Input<String>? specId;
-
   /// Node Status
   final pulumi.Input<String>? status;
 
@@ -115,51 +105,18 @@ class InstanceV2EngineListNodeGroup {
 
   factory InstanceV2EngineListNodeGroup.fromMap(Map<String, dynamic> map) {
     return InstanceV2EngineListNodeGroup(
-      category: (() {
-        final guardedValue = map['category'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      cpuCoreCount: (() {
-        final guardedValue = map['cpuCoreCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      enableAttachLocalDisk: (() {
-        final guardedValue = map['enableAttachLocalDisk'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      memorySizeGiB: (() {
-        final guardedValue = map['memorySizeGiB'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      category: (() { final guardedValue = map['category']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      cpuCoreCount: (() { final guardedValue = map['cpuCoreCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      enableAttachLocalDisk: (() { final guardedValue = map['enableAttachLocalDisk']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      memorySizeGiB: (() { final guardedValue = map['memorySizeGiB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       nodeCount: pulumi.Input.fromValue(map['nodeCount'] as int),
-      nodeDiskSize: (() {
-        final guardedValue = map['nodeDiskSize'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      nodeDiskType: (() {
-        final guardedValue = map['nodeDiskType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      nodeDiskSize: (() { final guardedValue = map['nodeDiskSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      nodeDiskType: (() { final guardedValue = map['nodeDiskType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       nodeSpec: pulumi.Input.fromValue(map['nodeSpec'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      specId: (() {
-        final guardedValue = map['specId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      specId: (() { final guardedValue = map['specId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

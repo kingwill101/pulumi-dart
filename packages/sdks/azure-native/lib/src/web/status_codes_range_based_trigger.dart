@@ -7,10 +7,8 @@ class StatusCodesRangeBasedTrigger {
   /// Request Count.
   final pulumi.Input<int>? count;
   final pulumi.Input<String>? path;
-
   /// HTTP status code.
   final pulumi.Input<String>? statusCodes;
-
   /// Time interval.
   final pulumi.Input<String>? timeInterval;
 
@@ -37,26 +35,11 @@ class StatusCodesRangeBasedTrigger {
 
   factory StatusCodesRangeBasedTrigger.fromMap(Map<String, dynamic> map) {
     return StatusCodesRangeBasedTrigger(
-      count: (() {
-        final guardedValue = map['count'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      path: (() {
-        final guardedValue = map['path'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      statusCodes: (() {
-        final guardedValue = map['statusCodes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      timeInterval: (() {
-        final guardedValue = map['timeInterval'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      statusCodes: (() { final guardedValue = map['statusCodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      timeInterval: (() { final guardedValue = map['timeInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

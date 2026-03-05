@@ -9,10 +9,14 @@ class ServiceAccessPolicyEntryResponse {
 
   /// Creates a new [ServiceAccessPolicyEntryResponse].
   /// [objectId] An Azure AD object ID (User or Apps) that is allowed access to the FHIR service.
-  ServiceAccessPolicyEntryResponse({required this.objectId});
+  ServiceAccessPolicyEntryResponse({
+    required this.objectId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'objectId': objectId};
+    return <String, dynamic>{
+      'objectId': objectId,
+    };
   }
 
   factory ServiceAccessPolicyEntryResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class ServiceAccessPolicyEntryResponse {
     );
   }
 }
+

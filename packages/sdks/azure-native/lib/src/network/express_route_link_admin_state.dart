@@ -15,3 +15,4 @@ enum ExpressRouteLinkAdminState {
     throw ArgumentError('Unknown ExpressRouteLinkAdminState value: $value');
   }
 }
+

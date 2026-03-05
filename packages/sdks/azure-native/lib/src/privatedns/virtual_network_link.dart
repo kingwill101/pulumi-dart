@@ -183,37 +183,26 @@ import 'virtual_network_link_args.dart';
 class VirtualNetworkLink extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The ETag of the virtual network link.
   late final pulumi.Output<String?> etag;
-
   /// The Azure Region where the resource lives
   late final pulumi.Output<String?> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The provisioning state of the resource. This is a read-only property and any attempt to set this value will be ignored.
   late final pulumi.Output<String> provisioningState;
-
   /// Is auto-registration of virtual machine records in the virtual network in the Private DNS zone enabled?
   late final pulumi.Output<bool?> registrationEnabled;
-
   /// The resolution policy on the virtual network link. Only applicable for virtual network links to privatelink zones, and for A,AAAA,CNAME queries. When set to 'NxDomainRedirect', Azure DNS resolver falls back to public resolution if private dns query resolution results in non-existent domain response.
   late final pulumi.Output<String?> resolutionPolicy;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// The reference of the virtual network.
   late final pulumi.Output<SubResourceResponse?> virtualNetwork;
-
   /// The status of the virtual network link to the Private DNS zone. Possible values are 'InProgress' and 'Done'. This is a read-only property and any attempt to set this value will be ignored.
   late final pulumi.Output<String> virtualNetworkLinkState;
 
@@ -226,11 +215,11 @@ class VirtualNetworkLink extends pulumi.CustomResource {
     VirtualNetworkLinkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:privatedns:VirtualNetworkLink',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:privatedns:VirtualNetworkLink',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     etag = registerOutput<String?>('etag');
     location = registerOutput<String?>('location');
@@ -238,28 +227,10 @@ class VirtualNetworkLink extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     registrationEnabled = registerOutput<bool?>('registrationEnabled');
     resolutionPolicy = registerOutput<String?>('resolutionPolicy');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
-    virtualNetwork = registerOutput<SubResourceResponse?>(
-      'virtualNetwork',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SubResourceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    virtualNetwork = registerOutput<SubResourceResponse?>('virtualNetwork', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     virtualNetworkLinkState = registerOutput<String>('virtualNetworkLinkState');
   }
 }

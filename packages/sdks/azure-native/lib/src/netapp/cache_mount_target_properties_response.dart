@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CacheMountTargetPropertiesResponse {
   /// The mount target's IPv4 address, used to mount the cache.
   final pulumi.Input<String> ipAddress;
-
   /// UUID v4 used to identify the MountTarget
   final pulumi.Input<String> mountTargetId;
-
   /// The SMB server's Fully Qualified Domain Name, FQDN
   final pulumi.Input<String> smbServerFqdn;
 
@@ -39,3 +37,4 @@ class CacheMountTargetPropertiesResponse {
     );
   }
 }
+

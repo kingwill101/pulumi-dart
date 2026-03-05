@@ -41,20 +41,15 @@ class GetDocumentDiscoveryengineV1betaArgs {
     };
   }
 
-  factory GetDocumentDiscoveryengineV1betaArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDocumentDiscoveryengineV1betaArgs.fromMap(Map<String, dynamic> map) {
     return GetDocumentDiscoveryengineV1betaArgs(
       branchId: pulumi.Input.fromValue(map['branchId'] as String),
       collectionId: pulumi.Input.fromValue(map['collectionId'] as String),
       dataStoreId: pulumi.Input.fromValue(map['dataStoreId'] as String),
       documentId: pulumi.Input.fromValue(map['documentId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -8,7 +8,6 @@ import 'version_source_response_healthcare_v1beta1.dart';
 class Hl7TypesConfigResponseHealthcareV1beta1 {
   /// The HL7v2 type definitions.
   final pulumi.Input<List<TypeResponseHealthcareV1beta1>> type;
-
   /// The version selectors that this config applies to. A message must match ALL version sources to apply.
   final pulumi.Input<List<VersionSourceResponseHealthcareV1beta1>> version;
 
@@ -22,53 +21,16 @@ class Hl7TypesConfigResponseHealthcareV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'type':
-          pulumi.Input.mapInputValue<
-            List<TypeResponseHealthcareV1beta1>,
-            List<Map<String, dynamic>>
-          >(
-            type,
-            (value) =>
-                pulumi.Input.encodeList<
-                  TypeResponseHealthcareV1beta1,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'version':
-          pulumi.Input.mapInputValue<
-            List<VersionSourceResponseHealthcareV1beta1>,
-            List<Map<String, dynamic>>
-          >(
-            version,
-            (value) =>
-                pulumi.Input.encodeList<
-                  VersionSourceResponseHealthcareV1beta1,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'type': pulumi.Input.mapInputValue<List<TypeResponseHealthcareV1beta1>, List<Map<String, dynamic>>>(type, (value) => pulumi.Input.encodeList<TypeResponseHealthcareV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'version': pulumi.Input.mapInputValue<List<VersionSourceResponseHealthcareV1beta1>, List<Map<String, dynamic>>>(version, (value) => pulumi.Input.encodeList<VersionSourceResponseHealthcareV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory Hl7TypesConfigResponseHealthcareV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory Hl7TypesConfigResponseHealthcareV1beta1.fromMap(Map<String, dynamic> map) {
     return Hl7TypesConfigResponseHealthcareV1beta1(
-      type: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<TypeResponseHealthcareV1beta1>(
-          map['type']!,
-          (value) => TypeResponseHealthcareV1beta1.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      version: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<VersionSourceResponseHealthcareV1beta1>(
-          map['version']!,
-          (value) => VersionSourceResponseHealthcareV1beta1.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      type: pulumi.Input.fromValue(pulumi.Input.decodeList<TypeResponseHealthcareV1beta1>(map['type']!, (value) => TypeResponseHealthcareV1beta1.fromMap((value as Map).cast<String, dynamic>()))),
+      version: pulumi.Input.fromValue(pulumi.Input.decodeList<VersionSourceResponseHealthcareV1beta1>(map['version']!, (value) => VersionSourceResponseHealthcareV1beta1.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

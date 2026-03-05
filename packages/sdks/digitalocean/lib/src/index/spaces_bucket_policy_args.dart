@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SpacesBucketPolicyArgs {
   /// The name of the bucket to which to apply the policy.
   final pulumi.Input<String> bucket;
-
   /// The text of the policy.
   final pulumi.Input<String> policy;
-
   /// The region where the bucket resides.
   final pulumi.Input<String> region;
 
@@ -42,3 +40,4 @@ class SpacesBucketPolicyArgs {
     );
   }
 }
+

@@ -14,8 +14,7 @@ enum ShareSettingsShareTypeComputeV1 {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ShareSettingsShareTypeComputeV1 value: $value',
-    );
+    throw ArgumentError('Unknown ShareSettingsShareTypeComputeV1 value: $value');
   }
 }
+

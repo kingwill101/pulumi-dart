@@ -9,17 +9,20 @@ class ObjectId {
 
   /// Creates a new [ObjectId].
   /// [objectIdPath] The parts of an OID path. The most significant parts of the path come first.
-  ObjectId({required this.objectIdPath});
+  ObjectId({
+    required this.objectIdPath,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'objectIdPath': objectIdPath};
+    return <String, dynamic>{
+      'objectIdPath': objectIdPath,
+    };
   }
 
   factory ObjectId.fromMap(Map<String, dynamic> map) {
     return ObjectId(
-      objectIdPath: pulumi.Input.fromValue(
-        (map['objectIdPath'] as List).cast<int>(),
-      ),
+      objectIdPath: pulumi.Input.fromValue((map['objectIdPath'] as List).cast<int>()),
     );
   }
 }
+

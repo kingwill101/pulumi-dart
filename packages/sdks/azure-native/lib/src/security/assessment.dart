@@ -170,32 +170,22 @@ import 'security_assessment_partner_data_response.dart';
 class Assessment extends pulumi.CustomResource {
   /// Additional data regarding the assessment
   late final pulumi.Output<Map<String, String>?> additionalData;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// User friendly display name of the assessment
   late final pulumi.Output<String> displayName;
-
   /// Links relevant to the assessment
   late final pulumi.Output<AssessmentLinksResponse> links;
-
   /// Describes properties of an assessment metadata.
-  late final pulumi.Output<SecurityAssessmentMetadataPropertiesResponse?>
-  metadata;
-
+  late final pulumi.Output<SecurityAssessmentMetadataPropertiesResponse?> metadata;
   /// Resource name
   late final pulumi.Output<String> name;
-
   /// Data regarding 3rd party partner integration
   late final pulumi.Output<SecurityAssessmentPartnerDataResponse?> partnersData;
-
   /// Details of the resource that was assessed
   late final pulumi.Output<AzureResourceDetailsResponse> resourceDetails;
-
   /// The result of the assessment
   late final pulumi.Output<AssessmentStatusResponseResponse> status;
-
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -208,65 +198,20 @@ class Assessment extends pulumi.CustomResource {
     AssessmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:security:Assessment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:security:Assessment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     additionalData = registerOutput<Map<String, String>?>('additionalData');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     displayName = registerOutput<String>('displayName');
-    links = registerOutput<AssessmentLinksResponse>(
-      'links',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AssessmentLinksResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    metadata = registerOutput<SecurityAssessmentMetadataPropertiesResponse?>(
-      'metadata',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SecurityAssessmentMetadataPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    links = registerOutput<AssessmentLinksResponse>('links', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssessmentLinksResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    metadata = registerOutput<SecurityAssessmentMetadataPropertiesResponse?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityAssessmentMetadataPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    partnersData = registerOutput<SecurityAssessmentPartnerDataResponse?>(
-      'partnersData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SecurityAssessmentPartnerDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    resourceDetails = registerOutput<AzureResourceDetailsResponse>(
-      'resourceDetails',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureResourceDetailsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    status = registerOutput<AssessmentStatusResponseResponse>(
-      'status',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AssessmentStatusResponseResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    partnersData = registerOutput<SecurityAssessmentPartnerDataResponse?>('partnersData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityAssessmentPartnerDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resourceDetails = registerOutput<AzureResourceDetailsResponse>('resourceDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureResourceDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<AssessmentStatusResponseResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssessmentStatusResponseResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

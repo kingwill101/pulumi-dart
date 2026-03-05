@@ -15,3 +15,4 @@ enum ItemScope {
     throw ArgumentError('Unknown ItemScope value: $value');
   }
 }
+

@@ -8,7 +8,6 @@ class JobStorageAccountState {
   final pulumi.Input<String>? authenticationMode;
   final pulumi.Input<String>? storageAccountKey;
   final pulumi.Input<String>? storageAccountName;
-
   /// The ID of the Stream Analytics Job. Changing this forces a new resource to be created.
   final pulumi.Input<String>? streamAnalyticsJobId;
 
@@ -35,26 +34,11 @@ class JobStorageAccountState {
 
   factory JobStorageAccountState.fromMap(Map<String, dynamic> map) {
     return JobStorageAccountState(
-      authenticationMode: (() {
-        final guardedValue = map['authenticationMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      storageAccountKey: (() {
-        final guardedValue = map['storageAccountKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      storageAccountName: (() {
-        final guardedValue = map['storageAccountName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      streamAnalyticsJobId: (() {
-        final guardedValue = map['streamAnalyticsJobId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      authenticationMode: (() { final guardedValue = map['authenticationMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageAccountKey: (() { final guardedValue = map['storageAccountKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageAccountName: (() { final guardedValue = map['storageAccountName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      streamAnalyticsJobId: (() { final guardedValue = map['streamAnalyticsJobId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

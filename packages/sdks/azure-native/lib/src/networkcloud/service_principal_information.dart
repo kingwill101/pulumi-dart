@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServicePrincipalInformation {
   /// The application ID, also known as client ID, of the service principal.
   final pulumi.Input<String> applicationId;
-
   /// The password of the service principal.
   final pulumi.Input<String> password;
-
   /// The principal ID, also known as the object ID, of the service principal.
   final pulumi.Input<String> principalId;
-
   /// The tenant ID, also known as the directory ID, of the tenant in which the service principal is created.
   final pulumi.Input<String> tenantId;
 
@@ -45,3 +42,4 @@ class ServicePrincipalInformation {
     );
   }
 }
+

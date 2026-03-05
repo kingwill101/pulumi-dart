@@ -360,16 +360,12 @@ import 'access_configuration_provisioning_state.dart';
 class AccessConfigurationProvisioning extends pulumi.CustomResource {
   /// The Access configuration ID.
   late final pulumi.Output<String> accessConfigurationId;
-
   /// The ID of the Directory.
   late final pulumi.Output<String> directoryId;
-
   /// The status of the resource. Valid values: `Provisioned`, `ReprovisionRequired` and `DeprovisionFailed`.
   late final pulumi.Output<String> status;
-
   /// The ID of the target to create the resource range.
   late final pulumi.Output<String> targetId;
-
   /// The type of the resource range target to be accessed. Valid values: `RD-Account`.
   late final pulumi.Output<String> targetType;
 
@@ -382,11 +378,11 @@ class AccessConfigurationProvisioning extends pulumi.CustomResource {
     AccessConfigurationProvisioningArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudsso/accessConfigurationProvisioning:AccessConfigurationProvisioning',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudsso/accessConfigurationProvisioning:AccessConfigurationProvisioning',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessConfigurationId = registerOutput<String>('accessConfigurationId');
     directoryId = registerOutput<String>('directoryId');
     status = registerOutput<String>('status');
@@ -412,11 +408,11 @@ class AccessConfigurationProvisioning extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudsso/accessConfigurationProvisioning:AccessConfigurationProvisioning',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudsso/accessConfigurationProvisioning:AccessConfigurationProvisioning',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessConfigurationId = registerOutput<String>('accessConfigurationId');
     directoryId = registerOutput<String>('directoryId');
     status = registerOutput<String>('status');

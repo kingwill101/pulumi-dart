@@ -5,34 +5,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBrokerLdapServerMetadata {
   /// List of a fully qualified domain name of the LDAP server and an optional failover server.
   final pulumi.Input<List<String>> hosts;
-
   /// Fully qualified name of the directory to search for a user's groups.
   final pulumi.Input<String> roleBase;
-
   /// LDAP attribute that identifies the group name attribute in the object returned from the group membership query.
   final pulumi.Input<String> roleName;
-
   /// Search criteria for groups.
   final pulumi.Input<String> roleSearchMatching;
-
   /// Whether the directory search scope is the entire sub-tree.
   final pulumi.Input<bool> roleSearchSubtree;
-
   /// Service account password.
   final pulumi.Input<String> serviceAccountPassword;
-
   /// Service account username.
   final pulumi.Input<String> serviceAccountUsername;
-
   /// Fully qualified name of the directory where you want to search for users.
   final pulumi.Input<String> userBase;
-
   /// Name of the LDAP attribute for the user group membership.
   final pulumi.Input<String> userRoleName;
-
   /// Search criteria for users.
   final pulumi.Input<String> userSearchMatching;
-
   /// Whether the directory search scope is the entire sub-tree.
   final pulumi.Input<bool> userSearchSubtree;
 
@@ -83,26 +73,15 @@ class GetBrokerLdapServerMetadata {
       hosts: pulumi.Input.fromValue((map['hosts'] as List).cast<String>()),
       roleBase: pulumi.Input.fromValue(map['roleBase'] as String),
       roleName: pulumi.Input.fromValue(map['roleName'] as String),
-      roleSearchMatching: pulumi.Input.fromValue(
-        map['roleSearchMatching'] as String,
-      ),
-      roleSearchSubtree: pulumi.Input.fromValue(
-        map['roleSearchSubtree'] as bool,
-      ),
-      serviceAccountPassword: pulumi.Input.fromValue(
-        map['serviceAccountPassword'] as String,
-      ),
-      serviceAccountUsername: pulumi.Input.fromValue(
-        map['serviceAccountUsername'] as String,
-      ),
+      roleSearchMatching: pulumi.Input.fromValue(map['roleSearchMatching'] as String),
+      roleSearchSubtree: pulumi.Input.fromValue(map['roleSearchSubtree'] as bool),
+      serviceAccountPassword: pulumi.Input.fromValue(map['serviceAccountPassword'] as String),
+      serviceAccountUsername: pulumi.Input.fromValue(map['serviceAccountUsername'] as String),
       userBase: pulumi.Input.fromValue(map['userBase'] as String),
       userRoleName: pulumi.Input.fromValue(map['userRoleName'] as String),
-      userSearchMatching: pulumi.Input.fromValue(
-        map['userSearchMatching'] as String,
-      ),
-      userSearchSubtree: pulumi.Input.fromValue(
-        map['userSearchSubtree'] as bool,
-      ),
+      userSearchMatching: pulumi.Input.fromValue(map['userSearchMatching'] as String),
+      userSearchSubtree: pulumi.Input.fromValue(map['userSearchSubtree'] as bool),
     );
   }
 }
+

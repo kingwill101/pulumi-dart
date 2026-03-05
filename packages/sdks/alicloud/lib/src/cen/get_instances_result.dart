@@ -7,21 +7,16 @@ import 'get_instances_instance.dart';
 class GetInstancesResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of CEN instances IDs.
   final List<String> ids;
-
   /// A list of CEN instances. Each element contains the following attributes:
   final List<GetInstancesInstance> instances;
   final String? nameRegex;
-
   /// A list of CEN instances names.
   final List<String> names;
   final String? outputFile;
-
   /// Status of the CEN instance, including "Creating", "Active" and "Deleting".
   final String? status;
-
   /// A map of tags assigned to the Cen Instance.
   final Map<String, String>? tags;
 
@@ -49,11 +44,7 @@ class GetInstancesResult {
     return <String, dynamic>{
       'id': id,
       'ids': ids,
-      'instances':
-          pulumi.Input.encodeList<GetInstancesInstance, Map<String, dynamic>>(
-            instances,
-            (value) => value.toMap(),
-          ),
+      'instances': pulumi.Input.encodeList<GetInstancesInstance, Map<String, dynamic>>(instances, (value) => value.toMap()),
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
@@ -66,33 +57,13 @@ class GetInstancesResult {
     return GetInstancesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      instances: pulumi.Input.decodeList<GetInstancesInstance>(
-        map['instances']!,
-        (value) => GetInstancesInstance.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      instances: pulumi.Input.decodeList<GetInstancesInstance>(map['instances']!, (value) => GetInstancesInstance.fromMap((value as Map).cast<String, dynamic>())),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }
 }
+

@@ -203,7 +203,6 @@ import 'hyper_vsite_state.dart';
 class HyperVSite extends pulumi.CustomResource {
   /// The name which should be used for this Recovery Service. Changing this forces a new Site to be created.
   late final pulumi.Output<String> name;
-
   /// The ID of the Recovery Services Vault where the Site created. Changing this forces a new Site to be created.
   late final pulumi.Output<String> recoveryVaultId;
 
@@ -216,11 +215,11 @@ class HyperVSite extends pulumi.CustomResource {
     HyperVSiteArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:siterecovery/hyperVSite:HyperVSite',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:siterecovery/hyperVSite:HyperVSite',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     recoveryVaultId = registerOutput<String>('recoveryVaultId');
   }
@@ -243,11 +242,11 @@ class HyperVSite extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:siterecovery/hyperVSite:HyperVSite',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:siterecovery/hyperVSite:HyperVSite',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     recoveryVaultId = registerOutput<String>('recoveryVaultId');
   }

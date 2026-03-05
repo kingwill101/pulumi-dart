@@ -7,10 +7,8 @@ import 'gpu_resource_response.dart';
 class ResourceRequestsResponse {
   /// The CPU request of this container instance.
   final pulumi.Input<double> cpu;
-
   /// The GPU request of this container instance.
   final pulumi.Input<GpuResourceResponse>? gpu;
-
   /// The memory request in GB of this container instance.
   final pulumi.Input<double> memoryInGB;
 
@@ -27,11 +25,7 @@ class ResourceRequestsResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'cpu': cpu,
-      'gpu':
-          ?pulumi.Input.mapOptionalInputValue<
-            GpuResourceResponse,
-            Map<String, dynamic>
-          >(gpu, (value) => value.toMap()),
+      'gpu': ?pulumi.Input.mapOptionalInputValue<GpuResourceResponse, Map<String, dynamic>>(gpu, (value) => value.toMap()),
       'memoryInGB': memoryInGB,
     };
   }
@@ -39,16 +33,9 @@ class ResourceRequestsResponse {
   factory ResourceRequestsResponse.fromMap(Map<String, dynamic> map) {
     return ResourceRequestsResponse(
       cpu: pulumi.Input.fromValue(map['cpu'] as double),
-      gpu: (() {
-        final guardedValue = map['gpu'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GpuResourceResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      gpu: (() { final guardedValue = map['gpu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GpuResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       memoryInGB: pulumi.Input.fromValue(map['memoryInGB'] as double),
     );
   }
 }
+

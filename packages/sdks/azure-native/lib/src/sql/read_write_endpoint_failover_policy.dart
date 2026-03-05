@@ -12,8 +12,7 @@ enum ReadWriteEndpointFailoverPolicy {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ReadWriteEndpointFailoverPolicy value: $value',
-    );
+    throw ArgumentError('Unknown ReadWriteEndpointFailoverPolicy value: $value');
   }
 }
+

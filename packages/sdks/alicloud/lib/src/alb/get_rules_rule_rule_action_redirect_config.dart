@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRulesRuleRuleActionRedirectConfig {
   /// The host name of the destination to which requests are redirected within ALB.
   final pulumi.Input<String> host;
-
   /// The redirect method.
   final pulumi.Input<String> httpCode;
-
   /// The path to which requests are to be redirected within ALB.
   final pulumi.Input<String> path;
-
   /// The port of the destination to which requests are redirected.
   final pulumi.Input<String> port;
-
   /// The protocol of the requests to be redirected.
   final pulumi.Input<String> protocol;
-
   /// The query string of the request to be redirected within ALB.
   final pulumi.Input<String> query;
 
@@ -48,9 +43,7 @@ class GetRulesRuleRuleActionRedirectConfig {
     };
   }
 
-  factory GetRulesRuleRuleActionRedirectConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetRulesRuleRuleActionRedirectConfig.fromMap(Map<String, dynamic> map) {
     return GetRulesRuleRuleActionRedirectConfig(
       host: pulumi.Input.fromValue(map['host'] as String),
       httpCode: pulumi.Input.fromValue(map['httpCode'] as String),
@@ -61,3 +54,4 @@ class GetRulesRuleRuleActionRedirectConfig {
     );
   }
 }
+

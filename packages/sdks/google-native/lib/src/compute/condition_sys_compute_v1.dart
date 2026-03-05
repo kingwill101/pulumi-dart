@@ -18,3 +18,4 @@ enum ConditionSysComputeV1 {
     throw ArgumentError('Unknown ConditionSysComputeV1 value: $value');
   }
 }
+

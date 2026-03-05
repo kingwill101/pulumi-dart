@@ -8,12 +8,8 @@ class RegistryEndpointSystemAssignedIdentityAuthenticationResponse {
   /// The authentication method.
   /// Expected value is 'SystemAssignedManagedIdentity'.
   final pulumi.Input<String> method;
-
   /// System assigned managed identity properties
-  final pulumi.Input<
-    RegistryEndpointSystemAssignedManagedIdentitySettingsResponse
-  >
-  systemAssignedManagedIdentitySettings;
+  final pulumi.Input<RegistryEndpointSystemAssignedManagedIdentitySettingsResponse> systemAssignedManagedIdentitySettings;
 
   /// Creates a new [RegistryEndpointSystemAssignedIdentityAuthenticationResponse].
   /// [method] The authentication method.
@@ -26,25 +22,15 @@ class RegistryEndpointSystemAssignedIdentityAuthenticationResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'method': method,
-      'systemAssignedManagedIdentitySettings':
-          pulumi.Input.mapInputValue<
-            RegistryEndpointSystemAssignedManagedIdentitySettingsResponse,
-            Map<String, dynamic>
-          >(systemAssignedManagedIdentitySettings, (value) => value.toMap()),
+      'systemAssignedManagedIdentitySettings': pulumi.Input.mapInputValue<RegistryEndpointSystemAssignedManagedIdentitySettingsResponse, Map<String, dynamic>>(systemAssignedManagedIdentitySettings, (value) => value.toMap()),
     };
   }
 
-  factory RegistryEndpointSystemAssignedIdentityAuthenticationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RegistryEndpointSystemAssignedIdentityAuthenticationResponse.fromMap(Map<String, dynamic> map) {
     return RegistryEndpointSystemAssignedIdentityAuthenticationResponse(
       method: pulumi.Input.fromValue(map['method'] as String),
-      systemAssignedManagedIdentitySettings: pulumi.Input.fromValue(
-        RegistryEndpointSystemAssignedManagedIdentitySettingsResponse.fromMap(
-          (map['systemAssignedManagedIdentitySettings']! as Map)
-              .cast<String, dynamic>(),
-        ),
-      ),
+      systemAssignedManagedIdentitySettings: pulumi.Input.fromValue(RegistryEndpointSystemAssignedManagedIdentitySettingsResponse.fromMap((map['systemAssignedManagedIdentitySettings']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

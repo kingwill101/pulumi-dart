@@ -11,18 +11,14 @@ import 'flexible_server_storage.dart';
 class FlexibleServerState {
   /// The Administrator login for the MySQL Flexible Server. Required when `create_mode` is `Default`. Changing this forces a new MySQL Flexible Server to be created.
   final pulumi.Input<String>? administratorLogin;
-
   /// The Password associated with the `administrator_login` for the MySQL Flexible Server.
   final pulumi.Input<String>? administratorPassword;
-
   /// An integer value used to trigger an update for `administrator_password_wo`. This property should be incremented when updating `administrator_password_wo`.
   ///
   /// &gt; **Note:** Either `administrator_password` or `administrator_password_wo` is required when `create_mode` is `Default`.
   final pulumi.Input<int>? administratorPasswordWoVersion;
-
   /// The backup retention days for the MySQL Flexible Server. Possible values are between `1` and `35` days. Defaults to `7`.
   final pulumi.Input<int>? backupRetentionDays;
-
   /// The creation mode which can be used to restore or replicate existing servers. Possible values are `Default`, `PointInTimeRestore`, `GeoRestore`, and `Replica`. Changing this forces a new MySQL Flexible Server to be created.
   ///
   /// &gt; **Note:** Creating a `GeoRestore` server requires the source server with `geo_redundant_backup_enabled` enabled.
@@ -31,80 +27,59 @@ class FlexibleServerState {
   ///
   /// &gt; **Note:** When importing a MySQL Flexible Server, `create_mode` is not returned by the api so you will see a diff if `create_mode` is specified in your config. To prevent recreation, use the `ignore_changes` lifecycle meta-argument.
   final pulumi.Input<String>? createMode;
-
   /// A `customer_managed_key` block as defined below.
   ///
   /// &gt; **Note:** `identity` is required when `customer_managed_key` is specified.
   final pulumi.Input<FlexibleServerCustomerManagedKey>? customerManagedKey;
-
   /// The ID of the virtual network subnet to create the MySQL Flexible Server. Changing this forces a new MySQL Flexible Server to be created.
   final pulumi.Input<String>? delegatedSubnetId;
-
   /// The fully qualified domain name of the MySQL Flexible Server.
   final pulumi.Input<String>? fqdn;
-
   /// Should geo redundant backup enabled? Defaults to `false`. Changing this forces a new MySQL Flexible Server to be created.
   final pulumi.Input<bool>? geoRedundantBackupEnabled;
-
   /// A `high_availability` block as defined below.
   final pulumi.Input<FlexibleServerHighAvailability>? highAvailability;
-
   /// An `identity` block as defined below.
   final pulumi.Input<FlexibleServerIdentity>? identity;
-
   /// The Azure Region where the MySQL Flexible Server should exist. Changing this forces a new MySQL Flexible Server to be created.
   final pulumi.Input<String>? location;
-
   /// A `maintenance_window` block as defined below.
   final pulumi.Input<FlexibleServerMaintenanceWindow>? maintenanceWindow;
-
   /// The name which should be used for this MySQL Flexible Server. Changing this forces a new MySQL Flexible Server to be created.
   final pulumi.Input<String>? name;
-
   /// The point in time to restore from `creation_source_server_id` when `create_mode` is `PointInTimeRestore`. Changing this forces a new MySQL Flexible Server to be created.
   final pulumi.Input<String>? pointInTimeRestoreTimeInUtc;
-
   /// The ID of the private DNS zone to create the MySQL Flexible Server. Changing this forces a new MySQL Flexible Server to be created.
   ///
   /// &gt; **Note:** The `private_dns_zone_id` is required when setting a `delegated_subnet_id`. The `azure.privatedns.Zone` should end with suffix `.mysql.database.azure.com`.
   final pulumi.Input<String>? privateDnsZoneId;
-
   /// Whether approved public traffic is allowed through the firewall to this server. Possible values are `Enabled` and `Disabled`.
   ///
   /// &gt; **Note:** `public_network_access` is automatically set to `Disabled` if the server is created with VNet Integration (i.e. values are provided for `delegated_subnet_id` and `private_dns_zone_id`").
   final pulumi.Input<String>? publicNetworkAccess;
   final pulumi.Input<bool>? publicNetworkAccessEnabled;
-
   /// The maximum number of replicas that a primary MySQL Flexible Server can have.
   final pulumi.Input<int>? replicaCapacity;
-
   /// The replication role. Possible value is `None`.
   ///
   /// &gt; **Note:** The `replication_role` cannot be set while creating and only can be updated from `Replica` to `None`.
   final pulumi.Input<String>? replicationRole;
-
   /// The name of the Resource Group where the MySQL Flexible Server should exist. Changing this forces a new MySQL Flexible Server to be created.
   final pulumi.Input<String>? resourceGroupName;
-
   /// The SKU Name for the MySQL Flexible Server.
   ///
   /// &gt; **Note:** `sku_name` should start with SKU tier `B (Burstable)`, `GP (General Purpose)`, `MO (Memory Optimized)` like `B_Standard_B1ms`.
   final pulumi.Input<String>? skuName;
-
   /// The resource ID of the source MySQL Flexible Server to be restored. Required when `create_mode` is `PointInTimeRestore`, `GeoRestore`, and `Replica`. Changing this forces a new MySQL Flexible Server to be created.
   ///
   /// &gt; **Note:** The replica server is always created in the same resource group and subscription as the source server.
   final pulumi.Input<String>? sourceServerId;
-
   /// A `storage` block as defined below.
   final pulumi.Input<FlexibleServerStorage>? storage;
-
   /// A mapping of tags which should be assigned to the MySQL Flexible Server.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// The version of the MySQL Flexible Server to use. Possible values are `5.7`, `8.0.21` and `8.4`.
   final pulumi.Input<String>? version;
-
   /// Specifies the Availability Zone in which this MySQL Flexible Server should be located. Possible values are `1`, `2` and `3`.
   ///
   /// &gt; **Note:** Azure will automatically assign an Availability Zone if one is not specified. If the MySQL Flexible Server fails-over to the Standby Availability Zone, the `zone` will be updated to reflect the current Primary Availability Zone. You can use Terraform's `ignore_changes` functionality to ignore changes to the `zone` and `high_availability[0].standby_availability_zone` fields should you wish for Terraform to not migrate the MySQL Flexible Server back to it's primary Availability Zone after a fail-over.
@@ -177,30 +152,14 @@ class FlexibleServerState {
       'administratorPasswordWoVersion': ?administratorPasswordWoVersion,
       'backupRetentionDays': ?backupRetentionDays,
       'createMode': ?createMode,
-      'customerManagedKey':
-          ?pulumi.Input.mapOptionalInputValue<
-            FlexibleServerCustomerManagedKey,
-            Map<String, dynamic>
-          >(customerManagedKey, (value) => value.toMap()),
+      'customerManagedKey': ?pulumi.Input.mapOptionalInputValue<FlexibleServerCustomerManagedKey, Map<String, dynamic>>(customerManagedKey, (value) => value.toMap()),
       'delegatedSubnetId': ?delegatedSubnetId,
       'fqdn': ?fqdn,
       'geoRedundantBackupEnabled': ?geoRedundantBackupEnabled,
-      'highAvailability':
-          ?pulumi.Input.mapOptionalInputValue<
-            FlexibleServerHighAvailability,
-            Map<String, dynamic>
-          >(highAvailability, (value) => value.toMap()),
-      'identity':
-          ?pulumi.Input.mapOptionalInputValue<
-            FlexibleServerIdentity,
-            Map<String, dynamic>
-          >(identity, (value) => value.toMap()),
+      'highAvailability': ?pulumi.Input.mapOptionalInputValue<FlexibleServerHighAvailability, Map<String, dynamic>>(highAvailability, (value) => value.toMap()),
+      'identity': ?pulumi.Input.mapOptionalInputValue<FlexibleServerIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
       'location': ?location,
-      'maintenanceWindow':
-          ?pulumi.Input.mapOptionalInputValue<
-            FlexibleServerMaintenanceWindow,
-            Map<String, dynamic>
-          >(maintenanceWindow, (value) => value.toMap()),
+      'maintenanceWindow': ?pulumi.Input.mapOptionalInputValue<FlexibleServerMaintenanceWindow, Map<String, dynamic>>(maintenanceWindow, (value) => value.toMap()),
       'name': ?name,
       'pointInTimeRestoreTimeInUtc': ?pointInTimeRestoreTimeInUtc,
       'privateDnsZoneId': ?privateDnsZoneId,
@@ -211,11 +170,7 @@ class FlexibleServerState {
       'resourceGroupName': ?resourceGroupName,
       'skuName': ?skuName,
       'sourceServerId': ?sourceServerId,
-      'storage':
-          ?pulumi.Input.mapOptionalInputValue<
-            FlexibleServerStorage,
-            Map<String, dynamic>
-          >(storage, (value) => value.toMap()),
+      'storage': ?pulumi.Input.mapOptionalInputValue<FlexibleServerStorage, Map<String, dynamic>>(storage, (value) => value.toMap()),
       'tags': ?tags,
       'version': ?version,
       'zone': ?zone,
@@ -224,163 +179,34 @@ class FlexibleServerState {
 
   factory FlexibleServerState.fromMap(Map<String, dynamic> map) {
     return FlexibleServerState(
-      administratorLogin: (() {
-        final guardedValue = map['administratorLogin'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      administratorPassword: (() {
-        final guardedValue = map['administratorPassword'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      administratorPasswordWoVersion: (() {
-        final guardedValue = map['administratorPasswordWoVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      backupRetentionDays: (() {
-        final guardedValue = map['backupRetentionDays'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      createMode: (() {
-        final guardedValue = map['createMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      customerManagedKey: (() {
-        final guardedValue = map['customerManagedKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FlexibleServerCustomerManagedKey.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      delegatedSubnetId: (() {
-        final guardedValue = map['delegatedSubnetId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      fqdn: (() {
-        final guardedValue = map['fqdn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      geoRedundantBackupEnabled: (() {
-        final guardedValue = map['geoRedundantBackupEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      highAvailability: (() {
-        final guardedValue = map['highAvailability'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FlexibleServerHighAvailability.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FlexibleServerIdentity.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      maintenanceWindow: (() {
-        final guardedValue = map['maintenanceWindow'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FlexibleServerMaintenanceWindow.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pointInTimeRestoreTimeInUtc: (() {
-        final guardedValue = map['pointInTimeRestoreTimeInUtc'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      privateDnsZoneId: (() {
-        final guardedValue = map['privateDnsZoneId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      publicNetworkAccess: (() {
-        final guardedValue = map['publicNetworkAccess'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      publicNetworkAccessEnabled: (() {
-        final guardedValue = map['publicNetworkAccessEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      replicaCapacity: (() {
-        final guardedValue = map['replicaCapacity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      replicationRole: (() {
-        final guardedValue = map['replicationRole'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: (() {
-        final guardedValue = map['resourceGroupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      skuName: (() {
-        final guardedValue = map['skuName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sourceServerId: (() {
-        final guardedValue = map['sourceServerId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      storage: (() {
-        final guardedValue = map['storage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FlexibleServerStorage.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      zone: (() {
-        final guardedValue = map['zone'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      administratorLogin: (() { final guardedValue = map['administratorLogin']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      administratorPassword: (() { final guardedValue = map['administratorPassword']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      administratorPasswordWoVersion: (() { final guardedValue = map['administratorPasswordWoVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      backupRetentionDays: (() { final guardedValue = map['backupRetentionDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      createMode: (() { final guardedValue = map['createMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      customerManagedKey: (() { final guardedValue = map['customerManagedKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FlexibleServerCustomerManagedKey.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      delegatedSubnetId: (() { final guardedValue = map['delegatedSubnetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      fqdn: (() { final guardedValue = map['fqdn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      geoRedundantBackupEnabled: (() { final guardedValue = map['geoRedundantBackupEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      highAvailability: (() { final guardedValue = map['highAvailability']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FlexibleServerHighAvailability.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FlexibleServerIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      maintenanceWindow: (() { final guardedValue = map['maintenanceWindow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FlexibleServerMaintenanceWindow.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pointInTimeRestoreTimeInUtc: (() { final guardedValue = map['pointInTimeRestoreTimeInUtc']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateDnsZoneId: (() { final guardedValue = map['privateDnsZoneId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicNetworkAccessEnabled: (() { final guardedValue = map['publicNetworkAccessEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      replicaCapacity: (() { final guardedValue = map['replicaCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      replicationRole: (() { final guardedValue = map['replicationRole']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      skuName: (() { final guardedValue = map['skuName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourceServerId: (() { final guardedValue = map['sourceServerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storage: (() { final guardedValue = map['storage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FlexibleServerStorage.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      zone: (() { final guardedValue = map['zone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

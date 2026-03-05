@@ -9,28 +9,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApiIssueArgs {
   /// A resource identifier for the API the issue was created for.
   final pulumi.Input<String> apiId;
-
   /// Date and time when the issue was created.
   final pulumi.Input<String>? createdDate;
-
   /// Text describing the issue.
   final pulumi.Input<String> description;
-
   /// Issue identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String>? issueId;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
-
   /// Status of the issue.
   final pulumi.Input<String>? state;
-
   /// The issue title.
   final pulumi.Input<String> title;
-
   /// A resource identifier for the user created the issue.
   final pulumi.Input<String> userId;
 
@@ -73,28 +65,15 @@ class ApiIssueArgs {
   factory ApiIssueArgs.fromMap(Map<String, dynamic> map) {
     return ApiIssueArgs(
       apiId: pulumi.Input.fromValue(map['apiId'] as String),
-      createdDate: (() {
-        final guardedValue = map['createdDate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      createdDate: (() { final guardedValue = map['createdDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: pulumi.Input.fromValue(map['description'] as String),
-      issueId: (() {
-        final guardedValue = map['issueId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      issueId: (() { final guardedValue = map['issueId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       title: pulumi.Input.fromValue(map['title'] as String),
       userId: pulumi.Input.fromValue(map['userId'] as String),
     );
   }
 }
+

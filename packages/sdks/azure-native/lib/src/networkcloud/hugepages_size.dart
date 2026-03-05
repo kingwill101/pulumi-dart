@@ -15,3 +15,4 @@ enum HugepagesSize {
     throw ArgumentError('Unknown HugepagesSize value: $value');
   }
 }
+

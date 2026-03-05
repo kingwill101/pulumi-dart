@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SubscriberSourceCustomLogSourceResourceProvider {
   /// The location of the partition in the Amazon S3 bucket for Security Lake.
   final pulumi.Input<String> location;
-
   /// The ARN of the IAM role to be used by the entity putting logs into your custom source partition.
   final pulumi.Input<String> roleArn;
 
@@ -18,15 +17,17 @@ class SubscriberSourceCustomLogSourceResourceProvider {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'location': location, 'roleArn': roleArn};
+    return <String, dynamic>{
+      'location': location,
+      'roleArn': roleArn,
+    };
   }
 
-  factory SubscriberSourceCustomLogSourceResourceProvider.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SubscriberSourceCustomLogSourceResourceProvider.fromMap(Map<String, dynamic> map) {
     return SubscriberSourceCustomLogSourceResourceProvider(
       location: pulumi.Input.fromValue(map['location'] as String),
       roleArn: pulumi.Input.fromValue(map['roleArn'] as String),
     );
   }
 }
+

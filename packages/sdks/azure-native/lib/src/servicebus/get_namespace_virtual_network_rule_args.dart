@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNamespaceVirtualNetworkRuleArgs {
   /// The namespace name
   final pulumi.Input<String> namespaceName;
-
   /// Name of the Resource group within the Azure subscription.
   final pulumi.Input<String> resourceGroupName;
-
   /// The Virtual Network Rule name.
   final pulumi.Input<String> virtualNetworkRuleName;
 
@@ -37,12 +35,9 @@ class GetNamespaceVirtualNetworkRuleArgs {
   factory GetNamespaceVirtualNetworkRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetNamespaceVirtualNetworkRuleArgs(
       namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      virtualNetworkRuleName: pulumi.Input.fromValue(
-        map['virtualNetworkRuleName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      virtualNetworkRuleName: pulumi.Input.fromValue(map['virtualNetworkRuleName'] as String),
     );
   }
 }
+

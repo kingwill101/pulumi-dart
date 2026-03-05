@@ -6,46 +6,30 @@ import 'authz_policy_http_rule_to_not_operation_header_set_header_value.dart';
 class AuthzPolicyHttpRuleToNotOperationHeaderSetHeader {
   /// Specifies the name of the header in the request.
   final pulumi.Input<String>? name;
-
   /// Specifies how the header match will be performed.
   /// Structure is documented below.
-  final pulumi.Input<AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValue>?
-  value;
+  final pulumi.Input<AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValue>? value;
 
   /// Creates a new [AuthzPolicyHttpRuleToNotOperationHeaderSetHeader].
   /// [name] Specifies the name of the header in the request.
   /// [value] Specifies how the header match will be performed.
-  AuthzPolicyHttpRuleToNotOperationHeaderSetHeader({this.name, this.value});
+  AuthzPolicyHttpRuleToNotOperationHeaderSetHeader({
+    this.name,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': ?name,
-      'value':
-          ?pulumi.Input.mapOptionalInputValue<
-            AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValue,
-            Map<String, dynamic>
-          >(value, (value) => value.toMap()),
+      'value': ?pulumi.Input.mapOptionalInputValue<AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValue, Map<String, dynamic>>(value, (value) => value.toMap()),
     };
   }
 
-  factory AuthzPolicyHttpRuleToNotOperationHeaderSetHeader.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AuthzPolicyHttpRuleToNotOperationHeaderSetHeader.fromMap(Map<String, dynamic> map) {
     return AuthzPolicyHttpRuleToNotOperationHeaderSetHeader(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValue.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValue.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

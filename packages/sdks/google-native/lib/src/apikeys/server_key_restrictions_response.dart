@@ -9,17 +9,20 @@ class ServerKeyRestrictionsResponse {
 
   /// Creates a new [ServerKeyRestrictionsResponse].
   /// [allowedIps] A list of the caller IP addresses that are allowed to make API calls with this key.
-  ServerKeyRestrictionsResponse({required this.allowedIps});
+  ServerKeyRestrictionsResponse({
+    required this.allowedIps,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'allowedIps': allowedIps};
+    return <String, dynamic>{
+      'allowedIps': allowedIps,
+    };
   }
 
   factory ServerKeyRestrictionsResponse.fromMap(Map<String, dynamic> map) {
     return ServerKeyRestrictionsResponse(
-      allowedIps: pulumi.Input.fromValue(
-        (map['allowedIps'] as List).cast<String>(),
-      ),
+      allowedIps: pulumi.Input.fromValue((map['allowedIps'] as List).cast<String>()),
     );
   }
 }
+

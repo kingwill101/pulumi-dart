@@ -9,28 +9,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VolumeArgs {
   /// A free-form text field up to a limit of 1024 bytes to describe a block storage volume.
   final pulumi.Input<String>? description;
-
   /// Filesystem type (`xfs` or `ext4`) for the block storage volume.
   final pulumi.Input<String>? filesystemType;
-
   /// Initial filesystem label for the block storage volume.
   final pulumi.Input<String>? initialFilesystemLabel;
-
   /// Initial filesystem type (`xfs` or `ext4`) for the block storage volume.
   final pulumi.Input<String>? initialFilesystemType;
-
   /// A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters. The name must begin with a letter.
   final pulumi.Input<String>? name;
-
   /// The region that the block storage volume will be created in.
   final pulumi.Input<String> region;
-
   /// The size of the block storage volume in GiB. If updated, can only be expanded.
   final pulumi.Input<int> size;
-
   /// The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limited on creation to that of the referenced snapshot
   final pulumi.Input<String>? snapshotId;
-
   /// A list of the tags to be applied to this Volume.
   final pulumi.Input<List<String>>? tags;
 
@@ -72,43 +64,16 @@ class VolumeArgs {
 
   factory VolumeArgs.fromMap(Map<String, dynamic> map) {
     return VolumeArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      filesystemType: (() {
-        final guardedValue = map['filesystemType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      initialFilesystemLabel: (() {
-        final guardedValue = map['initialFilesystemLabel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      initialFilesystemType: (() {
-        final guardedValue = map['initialFilesystemType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      filesystemType: (() { final guardedValue = map['filesystemType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      initialFilesystemLabel: (() { final guardedValue = map['initialFilesystemLabel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      initialFilesystemType: (() { final guardedValue = map['initialFilesystemType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: pulumi.Input.fromValue(map['region'] as String),
       size: pulumi.Input.fromValue(map['size'] as int),
-      snapshotId: (() {
-        final guardedValue = map['snapshotId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      snapshotId: (() { final guardedValue = map['snapshotId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

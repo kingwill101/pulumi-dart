@@ -452,17 +452,14 @@ import 'managed_private_endpoint_state.dart';
 class ManagedPrivateEndpoint extends pulumi.CustomResource {
   /// Specifies the name which should be used for this Managed Private Endpoint. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies the sub resource name which the Synapse Private Endpoint is able to connect to. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Possible values are listed in [documentation](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration).
   late final pulumi.Output<String> subresourceName;
-
   /// The ID of the Synapse Workspace on which to create the Managed Private Endpoint. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** A Synapse firewall rule including local IP is needed for managing current resource.
   late final pulumi.Output<String> synapseWorkspaceId;
-
   /// The ID of the Private Link Enabled Remote Resource which this Synapse Private Endpoint should be connected to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> targetResourceId;
 
@@ -475,11 +472,11 @@ class ManagedPrivateEndpoint extends pulumi.CustomResource {
     ManagedPrivateEndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:synapse/managedPrivateEndpoint:ManagedPrivateEndpoint',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:synapse/managedPrivateEndpoint:ManagedPrivateEndpoint',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     subresourceName = registerOutput<String>('subresourceName');
     synapseWorkspaceId = registerOutput<String>('synapseWorkspaceId');
@@ -504,11 +501,11 @@ class ManagedPrivateEndpoint extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:synapse/managedPrivateEndpoint:ManagedPrivateEndpoint',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:synapse/managedPrivateEndpoint:ManagedPrivateEndpoint',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     subresourceName = registerOutput<String>('subresourceName');
     synapseWorkspaceId = registerOutput<String>('synapseWorkspaceId');

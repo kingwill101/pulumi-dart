@@ -273,39 +273,29 @@ import 'application_settings_state.dart';
 class ApplicationSettings extends pulumi.CustomResource {
   /// The acceptable response time limit (Apdex threshold) for the application.
   late final pulumi.Output<double?> appApdexThreshold;
-
   /// Dummy field to support backward compatibility of previous version.should be removed with next major version.
   late final pulumi.Output<bool?> enableRealUserMonitoring;
-
   /// Enable or disable the collection of slowest database queries in your traces.
   late final pulumi.Output<bool?> enableSlowSql;
-
   /// Enable or disable the collection of thread profiling data.
   late final pulumi.Output<bool?> enableThreadProfiler;
-
   /// Dummy field to support backward compatibility of previous version.should be removed with next major version.
   late final pulumi.Output<double?> endUserApdexThreshold;
-
   /// Configuration block for error collection. Including this block enables the error collector. The following arguments are supported:
   late final pulumi.Output<List<Map<String, dynamic>>?> errorCollectors;
-
   /// The GUID of the application in New Relic APM.
   ///
   /// &gt; **NOTE:** While the attribute `guid` is not mandatory at a schema level, it is recommended to use `guid` over `name`, as support for using `name` with this resource shall eventually be discontinued. Please see the note under `name` for more details.
   late final pulumi.Output<String> guid;
   late final pulumi.Output<bool> isImported;
-
   /// A custom name or alias you can give the application in New Relic APM.
   ///
   /// &gt; **NOTE:** &lt;b style="color:red;"&gt;Please refrain from using the deprecated attribute `name`&lt;/b&gt;with the resource `newrelic.plugins.ApplicationSettings` and use `guid` instead. For more information on the usage of `guid` against `name` and associated implications if the resource is upgraded from an older version of the New Relic Terraform Provider, please see the note in this section below.
   late final pulumi.Output<String> name;
-
   /// Configures the type of tracer used. Valid values are `CROSS_APPLICATION_TRACER`, `DISTRIBUTED_TRACING`, `NONE`, `OPT_OUT`.
   late final pulumi.Output<String?> tracerType;
-
   /// Configuration block for transaction tracer. Providing this block enables transaction tracing. The following arguments are supported:
   late final pulumi.Output<List<Map<String, dynamic>>?> transactionTracers;
-
   /// Enable or disable server side monitoring for the New Relic application.
   late final pulumi.Output<bool?> useServerSideConfig;
 
@@ -318,28 +308,22 @@ class ApplicationSettings extends pulumi.CustomResource {
     ApplicationSettingsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:plugins/applicationSettings:ApplicationSettings',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:plugins/applicationSettings:ApplicationSettings',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appApdexThreshold = registerOutput<double?>('appApdexThreshold');
-    enableRealUserMonitoring = registerOutput<bool?>(
-      'enableRealUserMonitoring',
-    );
+    enableRealUserMonitoring = registerOutput<bool?>('enableRealUserMonitoring');
     enableSlowSql = registerOutput<bool?>('enableSlowSql');
     enableThreadProfiler = registerOutput<bool?>('enableThreadProfiler');
     endUserApdexThreshold = registerOutput<double?>('endUserApdexThreshold');
-    errorCollectors = registerOutput<List<Map<String, dynamic>>?>(
-      'errorCollectors',
-    );
+    errorCollectors = registerOutput<List<Map<String, dynamic>>?>('errorCollectors');
     guid = registerOutput<String>('guid');
     isImported = registerOutput<bool>('isImported');
     this.name = registerOutput<String>('name');
     tracerType = registerOutput<String?>('tracerType');
-    transactionTracers = registerOutput<List<Map<String, dynamic>>?>(
-      'transactionTracers',
-    );
+    transactionTracers = registerOutput<List<Map<String, dynamic>>?>('transactionTracers');
     useServerSideConfig = registerOutput<bool?>('useServerSideConfig');
   }
 
@@ -361,28 +345,22 @@ class ApplicationSettings extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:plugins/applicationSettings:ApplicationSettings',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:plugins/applicationSettings:ApplicationSettings',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appApdexThreshold = registerOutput<double?>('appApdexThreshold');
-    enableRealUserMonitoring = registerOutput<bool?>(
-      'enableRealUserMonitoring',
-    );
+    enableRealUserMonitoring = registerOutput<bool?>('enableRealUserMonitoring');
     enableSlowSql = registerOutput<bool?>('enableSlowSql');
     enableThreadProfiler = registerOutput<bool?>('enableThreadProfiler');
     endUserApdexThreshold = registerOutput<double?>('endUserApdexThreshold');
-    errorCollectors = registerOutput<List<Map<String, dynamic>>?>(
-      'errorCollectors',
-    );
+    errorCollectors = registerOutput<List<Map<String, dynamic>>?>('errorCollectors');
     guid = registerOutput<String>('guid');
     isImported = registerOutput<bool>('isImported');
     this.name = registerOutput<String>('name');
     tracerType = registerOutput<String?>('tracerType');
-    transactionTracers = registerOutput<List<Map<String, dynamic>>?>(
-      'transactionTracers',
-    );
+    transactionTracers = registerOutput<List<Map<String, dynamic>>?>('transactionTracers');
     useServerSideConfig = registerOutput<bool?>('useServerSideConfig');
   }
 }

@@ -43,11 +43,8 @@ class GetEntityArgs {
       entityId: pulumi.Input.fromValue(map['entityId'] as String),
       entityTypeId: pulumi.Input.fromValue(map['entityTypeId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

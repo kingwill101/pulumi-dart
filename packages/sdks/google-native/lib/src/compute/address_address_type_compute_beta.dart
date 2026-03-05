@@ -16,3 +16,4 @@ enum AddressAddressTypeComputeBeta {
     throw ArgumentError('Unknown AddressAddressTypeComputeBeta value: $value');
   }
 }
+

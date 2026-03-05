@@ -8,7 +8,9 @@ class CrossSubscriptionRestoreSettings {
 
   /// Creates a new [CrossSubscriptionRestoreSettings].
   /// [crossSubscriptionRestoreState] Optional.
-  CrossSubscriptionRestoreSettings({this.crossSubscriptionRestoreState});
+  CrossSubscriptionRestoreSettings({
+    this.crossSubscriptionRestoreState,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -18,11 +20,8 @@ class CrossSubscriptionRestoreSettings {
 
   factory CrossSubscriptionRestoreSettings.fromMap(Map<String, dynamic> map) {
     return CrossSubscriptionRestoreSettings(
-      crossSubscriptionRestoreState: (() {
-        final guardedValue = map['crossSubscriptionRestoreState'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      crossSubscriptionRestoreState: (() { final guardedValue = map['crossSubscriptionRestoreState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

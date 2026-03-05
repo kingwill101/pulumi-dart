@@ -14,18 +14,15 @@ class ResourceTypeRegistrationPropertiesRoutingRuleResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'hostResourceType': ?hostResourceType};
+    return <String, dynamic>{
+      'hostResourceType': ?hostResourceType,
+    };
   }
 
-  factory ResourceTypeRegistrationPropertiesRoutingRuleResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResourceTypeRegistrationPropertiesRoutingRuleResponse.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationPropertiesRoutingRuleResponse(
-      hostResourceType: (() {
-        final guardedValue = map['hostResourceType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      hostResourceType: (() { final guardedValue = map['hostResourceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -16,22 +16,16 @@ import 'spring_cloud_certificate_state.dart';
 class SpringCloudCertificate extends pulumi.CustomResource {
   /// The content of uploaded certificate. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> certificateContent;
-
   /// Specifies whether the private key should be excluded from the Key Vault Certificate. Changing this forces a new resource to be created. Defaults to `false`.
   late final pulumi.Output<bool?> excludePrivateKey;
-
   /// Specifies the ID of the Key Vault Certificate resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> keyVaultCertificateId;
-
   /// Specifies the name of the Spring Cloud Certificate. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies the name of the resource group in which to create the Spring Cloud Certificate. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// Specifies the name of the Spring Cloud Service resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> serviceName;
-
   /// The thumbprint of the Spring Cloud certificate.
   late final pulumi.Output<String> thumbprint;
 
@@ -44,11 +38,11 @@ class SpringCloudCertificate extends pulumi.CustomResource {
     SpringCloudCertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appplatform/springCloudCertificate:SpringCloudCertificate',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appplatform/springCloudCertificate:SpringCloudCertificate',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     certificateContent = registerOutput<String?>('certificateContent');
     excludePrivateKey = registerOutput<bool?>('excludePrivateKey');
     keyVaultCertificateId = registerOutput<String?>('keyVaultCertificateId');
@@ -76,11 +70,11 @@ class SpringCloudCertificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appplatform/springCloudCertificate:SpringCloudCertificate',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appplatform/springCloudCertificate:SpringCloudCertificate',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     certificateContent = registerOutput<String?>('certificateContent');
     excludePrivateKey = registerOutput<bool?>('excludePrivateKey');
     keyVaultCertificateId = registerOutput<String?>('keyVaultCertificateId');

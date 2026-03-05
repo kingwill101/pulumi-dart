@@ -357,7 +357,6 @@ class JobStorageAccount extends pulumi.CustomResource {
   late final pulumi.Output<String> authenticationMode;
   late final pulumi.Output<String?> storageAccountKey;
   late final pulumi.Output<String> storageAccountName;
-
   /// The ID of the Stream Analytics Job. Changing this forces a new resource to be created.
   late final pulumi.Output<String> streamAnalyticsJobId;
 
@@ -370,11 +369,11 @@ class JobStorageAccount extends pulumi.CustomResource {
     JobStorageAccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:streamanalytics/jobStorageAccount:JobStorageAccount',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:streamanalytics/jobStorageAccount:JobStorageAccount',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     authenticationMode = registerOutput<String>('authenticationMode');
     storageAccountKey = registerOutput<String?>('storageAccountKey');
     storageAccountName = registerOutput<String>('storageAccountName');
@@ -399,11 +398,11 @@ class JobStorageAccount extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:streamanalytics/jobStorageAccount:JobStorageAccount',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:streamanalytics/jobStorageAccount:JobStorageAccount',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     authenticationMode = registerOutput<String>('authenticationMode');
     storageAccountKey = registerOutput<String?>('storageAccountKey');
     storageAccountName = registerOutput<String>('storageAccountName');

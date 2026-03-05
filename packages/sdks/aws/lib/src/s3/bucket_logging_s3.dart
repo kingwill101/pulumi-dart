@@ -632,23 +632,16 @@ import 'bucket_logging_target_object_key_format.dart';
 class BucketLoggingS3 extends pulumi.CustomResource {
   /// Name of the bucket.
   late final pulumi.Output<String> bucket;
-
   /// Account ID of the expected bucket owner.
   late final pulumi.Output<String?> expectedBucketOwner;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Name of the bucket where you want Amazon S3 to store server access logs.
   late final pulumi.Output<String> targetBucket;
-
   /// Set of configuration blocks with information for granting permissions. See below.
   late final pulumi.Output<List<Map<String, dynamic>>?> targetGrants;
-
   /// Amazon S3 key format for log objects. See below.
-  late final pulumi.Output<BucketLoggingTargetObjectKeyFormat?>
-  targetObjectKeyFormat;
-
+  late final pulumi.Output<BucketLoggingTargetObjectKeyFormat?> targetObjectKeyFormat;
   /// Prefix for all log object keys.
   late final pulumi.Output<String> targetPrefix;
 
@@ -661,26 +654,17 @@ class BucketLoggingS3 extends pulumi.CustomResource {
     BucketLoggingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:s3/bucketLogging:BucketLogging',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:s3/bucketLogging:BucketLogging',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
     expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
     region = registerOutput<String>('region');
     targetBucket = registerOutput<String>('targetBucket');
     targetGrants = registerOutput<List<Map<String, dynamic>>?>('targetGrants');
-    targetObjectKeyFormat = registerOutput<BucketLoggingTargetObjectKeyFormat?>(
-      'targetObjectKeyFormat',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketLoggingTargetObjectKeyFormat.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    targetObjectKeyFormat = registerOutput<BucketLoggingTargetObjectKeyFormat?>('targetObjectKeyFormat', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketLoggingTargetObjectKeyFormat.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     targetPrefix = registerOutput<String>('targetPrefix');
   }
 
@@ -702,26 +686,17 @@ class BucketLoggingS3 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:s3/bucketLogging:BucketLogging',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:s3/bucketLogging:BucketLogging',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
     expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
     region = registerOutput<String>('region');
     targetBucket = registerOutput<String>('targetBucket');
     targetGrants = registerOutput<List<Map<String, dynamic>>?>('targetGrants');
-    targetObjectKeyFormat = registerOutput<BucketLoggingTargetObjectKeyFormat?>(
-      'targetObjectKeyFormat',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketLoggingTargetObjectKeyFormat.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    targetObjectKeyFormat = registerOutput<BucketLoggingTargetObjectKeyFormat?>('targetObjectKeyFormat', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketLoggingTargetObjectKeyFormat.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     targetPrefix = registerOutput<String>('targetPrefix');
   }
 }

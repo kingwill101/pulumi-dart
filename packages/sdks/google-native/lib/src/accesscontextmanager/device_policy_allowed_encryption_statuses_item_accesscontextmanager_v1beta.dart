@@ -4,22 +4,16 @@ enum DevicePolicyAllowedEncryptionStatusesItemAccesscontextmanagerV1beta {
   unencrypted("UNENCRYPTED"),
   encrypted("ENCRYPTED");
 
-  const DevicePolicyAllowedEncryptionStatusesItemAccesscontextmanagerV1beta(
-    this.wireValue,
-  );
+  const DevicePolicyAllowedEncryptionStatusesItemAccesscontextmanagerV1beta(this.wireValue);
   final String wireValue;
 
-  static DevicePolicyAllowedEncryptionStatusesItemAccesscontextmanagerV1beta
-  fromValue(String value) {
-    for (final item
-        in DevicePolicyAllowedEncryptionStatusesItemAccesscontextmanagerV1beta
-            .values) {
+  static DevicePolicyAllowedEncryptionStatusesItemAccesscontextmanagerV1beta fromValue(String value) {
+    for (final item in DevicePolicyAllowedEncryptionStatusesItemAccesscontextmanagerV1beta.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown DevicePolicyAllowedEncryptionStatusesItemAccesscontextmanagerV1beta value: $value',
-    );
+    throw ArgumentError('Unknown DevicePolicyAllowedEncryptionStatusesItemAccesscontextmanagerV1beta value: $value');
   }
 }
+

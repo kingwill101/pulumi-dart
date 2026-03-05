@@ -10,25 +10,20 @@ class ReportDeliveryInfo {
 
   /// Creates a new [ReportDeliveryInfo].
   /// [destination] Has destination for the report being delivered.
-  ReportDeliveryInfo({required this.destination});
+  ReportDeliveryInfo({
+    required this.destination,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'destination':
-          pulumi.Input.mapInputValue<
-            ReportDeliveryDestination,
-            Map<String, dynamic>
-          >(destination, (value) => value.toMap()),
+      'destination': pulumi.Input.mapInputValue<ReportDeliveryDestination, Map<String, dynamic>>(destination, (value) => value.toMap()),
     };
   }
 
   factory ReportDeliveryInfo.fromMap(Map<String, dynamic> map) {
     return ReportDeliveryInfo(
-      destination: pulumi.Input.fromValue(
-        ReportDeliveryDestination.fromMap(
-          (map['destination']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      destination: pulumi.Input.fromValue(ReportDeliveryDestination.fromMap((map['destination']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

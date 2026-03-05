@@ -10,41 +10,20 @@ class WebServerNetworkAccessControlComposerV1beta1 {
 
   /// Creates a new [WebServerNetworkAccessControlComposerV1beta1].
   /// [allowedIpRanges] A collection of allowed IP ranges with descriptions.
-  WebServerNetworkAccessControlComposerV1beta1({this.allowedIpRanges});
+  WebServerNetworkAccessControlComposerV1beta1({
+    this.allowedIpRanges,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allowedIpRanges':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<AllowedIpRangeComposerV1beta1>,
-            List<Map<String, dynamic>>
-          >(
-            allowedIpRanges,
-            (value) =>
-                pulumi.Input.encodeList<
-                  AllowedIpRangeComposerV1beta1,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'allowedIpRanges': ?pulumi.Input.mapOptionalInputValue<List<AllowedIpRangeComposerV1beta1>, List<Map<String, dynamic>>>(allowedIpRanges, (value) => pulumi.Input.encodeList<AllowedIpRangeComposerV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory WebServerNetworkAccessControlComposerV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WebServerNetworkAccessControlComposerV1beta1.fromMap(Map<String, dynamic> map) {
     return WebServerNetworkAccessControlComposerV1beta1(
-      allowedIpRanges: (() {
-        final guardedValue = map['allowedIpRanges'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<AllowedIpRangeComposerV1beta1>(
-            guardedValue,
-            (value) => AllowedIpRangeComposerV1beta1.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      allowedIpRanges: (() { final guardedValue = map['allowedIpRanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AllowedIpRangeComposerV1beta1>(guardedValue, (value) => AllowedIpRangeComposerV1beta1.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

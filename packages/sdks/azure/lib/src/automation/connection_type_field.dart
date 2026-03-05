@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectionTypeField {
   /// Whether to set the isEncrypted flag of the connection field definition.
   final pulumi.Input<bool>? isEncrypted;
-
   /// Whether to set the isOptional flag of the connection field definition.
   final pulumi.Input<bool>? isOptional;
-
   /// The name which should be used for this connection field definition.
   final pulumi.Input<String> name;
-
   /// The type of the connection field definition.
   final pulumi.Input<String> type;
 
@@ -38,18 +35,11 @@ class ConnectionTypeField {
 
   factory ConnectionTypeField.fromMap(Map<String, dynamic> map) {
     return ConnectionTypeField(
-      isEncrypted: (() {
-        final guardedValue = map['isEncrypted'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      isOptional: (() {
-        final guardedValue = map['isOptional'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      isEncrypted: (() { final guardedValue = map['isEncrypted']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      isOptional: (() { final guardedValue = map['isOptional']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

@@ -8,10 +8,14 @@ class GetPlacementGroupMigrationsInbound {
 
   /// Creates a new [GetPlacementGroupMigrationsInbound].
   /// [linodeId] The ID of the Linode.
-  GetPlacementGroupMigrationsInbound({required this.linodeId});
+  GetPlacementGroupMigrationsInbound({
+    required this.linodeId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'linodeId': linodeId};
+    return <String, dynamic>{
+      'linodeId': linodeId,
+    };
   }
 
   factory GetPlacementGroupMigrationsInbound.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class GetPlacementGroupMigrationsInbound {
     );
   }
 }
+

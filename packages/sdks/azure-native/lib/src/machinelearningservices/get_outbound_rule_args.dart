@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetOutboundRuleArgs {
   /// Name of the managedNetwork associated with the workspace. Only 'default' is supported.
   final pulumi.Input<String> managedNetworkName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Name of the workspace managed network outbound rule
   final pulumi.Input<String> ruleName;
-
   /// Azure Machine Learning Workspace Name
   final pulumi.Input<String> workspaceName;
 
@@ -42,14 +39,11 @@ class GetOutboundRuleArgs {
 
   factory GetOutboundRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetOutboundRuleArgs(
-      managedNetworkName: pulumi.Input.fromValue(
-        map['managedNetworkName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      managedNetworkName: pulumi.Input.fromValue(map['managedNetworkName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       ruleName: pulumi.Input.fromValue(map['ruleName'] as String),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
+

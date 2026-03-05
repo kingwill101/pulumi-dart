@@ -260,10 +260,8 @@ import 'voice_connector_termination_credentials_state.dart';
 class VoiceConnectorTerminationCredentials extends pulumi.CustomResource {
   /// List of termination SIP credentials.
   late final pulumi.Output<List<Map<String, dynamic>>> credentials;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Amazon Chime Voice Connector ID.
   late final pulumi.Output<String> voiceConnectorId;
 
@@ -276,11 +274,11 @@ class VoiceConnectorTerminationCredentials extends pulumi.CustomResource {
     VoiceConnectorTerminationCredentialsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:chime/voiceConnectorTerminationCredentials:VoiceConnectorTerminationCredentials',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:chime/voiceConnectorTerminationCredentials:VoiceConnectorTerminationCredentials',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     credentials = registerOutput<List<Map<String, dynamic>>>('credentials');
     region = registerOutput<String>('region');
     voiceConnectorId = registerOutput<String>('voiceConnectorId');
@@ -304,11 +302,11 @@ class VoiceConnectorTerminationCredentials extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:chime/voiceConnectorTerminationCredentials:VoiceConnectorTerminationCredentials',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:chime/voiceConnectorTerminationCredentials:VoiceConnectorTerminationCredentials',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     credentials = registerOutput<List<Map<String, dynamic>>>('credentials');
     region = registerOutput<String>('region');
     voiceConnectorId = registerOutput<String>('voiceConnectorId');

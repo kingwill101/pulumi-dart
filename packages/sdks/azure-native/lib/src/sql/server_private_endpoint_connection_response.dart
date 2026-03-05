@@ -7,7 +7,6 @@ import 'private_endpoint_connection_properties_response.dart';
 class ServerPrivateEndpointConnectionResponse {
   /// Resource ID.
   final pulumi.Input<String> id;
-
   /// Private endpoint connection properties
   final pulumi.Input<PrivateEndpointConnectionPropertiesResponse> properties;
 
@@ -22,24 +21,15 @@ class ServerPrivateEndpointConnectionResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'properties':
-          pulumi.Input.mapInputValue<
-            PrivateEndpointConnectionPropertiesResponse,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': pulumi.Input.mapInputValue<PrivateEndpointConnectionPropertiesResponse, Map<String, dynamic>>(properties, (value) => value.toMap()),
     };
   }
 
-  factory ServerPrivateEndpointConnectionResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ServerPrivateEndpointConnectionResponse.fromMap(Map<String, dynamic> map) {
     return ServerPrivateEndpointConnectionResponse(
       id: pulumi.Input.fromValue(map['id'] as String),
-      properties: pulumi.Input.fromValue(
-        PrivateEndpointConnectionPropertiesResponse.fromMap(
-          (map['properties']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      properties: pulumi.Input.fromValue(PrivateEndpointConnectionPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

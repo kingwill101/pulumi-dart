@@ -450,48 +450,34 @@ import 'ecs_image_pipeline_state.dart';
 class EcsImagePipeline extends pulumi.CustomResource {
   /// The ID of Alibaba Cloud account to which to share the created image.
   late final pulumi.Output<List<String>?> addAccounts;
-
   /// The source image. When you set `base_image_type` to `IMAGE`, set `base_image` to the ID of a custom image. When you set `base_image_type` to `IMAGE_FAMILY`, set `base_image` to the name of an image family.
   late final pulumi.Output<String> baseImage;
-
   /// The type of the source image. Valid values: `IMAGE`, `IMAGE_FAMILY`.
   /// - IMAGE: custom image.
   /// - IMAGE_FAMILY: image family.
   late final pulumi.Output<String> baseImageType;
-
   /// The content of the image template. The content cannot be greater than 16 KB in size, and can contain up to 127 commands.
   late final pulumi.Output<String?> buildContent;
-
   /// Specifies whether to release the intermediate instance if the image cannot be created.
   late final pulumi.Output<bool> deleteInstanceOnFailure;
-
   /// The description of the image template. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`. **Note:** If the intermediate instance cannot be started, the instance is released by default.
   late final pulumi.Output<String?> description;
-
   /// The name prefix of the image to be created. The prefix must be `2` to `64` characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.),and hyphens (-).
   late final pulumi.Output<String?> imageName;
-
   /// The instance type of the instance. You can call the DescribeInstanceTypes operation to query instance types. If you do not specify this parameter, an instance type that provides the fewest vCPUs and memory resources is automatically selected. This configuration is subject to resource availability of instance types. For example, the `ecs.g6.large` instance type is selected by default. If available `ecs.g6.large` resources are insufficient, the `ecs.g6.xlarge` instance type is selected.
   late final pulumi.Output<String?> instanceType;
-
   /// The size of the outbound public bandwidth for the intermediate instance. Unit: `Mbit/s`. Valid values: `0` to `100`. Default value: `0`.
   late final pulumi.Output<int> internetMaxBandwidthOut;
-
   /// The name of the image template. The name must be `2` to `128` characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.),and hyphens (-).
   late final pulumi.Output<String> name;
-
   /// The ID of the resource group.
   late final pulumi.Output<String> resourceGroupId;
-
   /// The size of the system disk of the intermediate instance. Unit: GiB. Valid values: `20` to `500`. Default value: `40`.
   late final pulumi.Output<int> systemDiskSize;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The ID of region to which to distribute the created image.
   late final pulumi.Output<List<String>?> toRegionIds;
-
   /// The ID of the vSwitch. If you do not specify this parameter, a virtual private cloud (VPC) and a vSwitch are created by default.
   late final pulumi.Output<String?> vswitchId;
 
@@ -504,11 +490,11 @@ class EcsImagePipeline extends pulumi.CustomResource {
     EcsImagePipelineArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ecs/ecsImagePipeline:EcsImagePipeline',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ecs/ecsImagePipeline:EcsImagePipeline',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     addAccounts = registerOutput<List<String>?>('addAccounts');
     baseImage = registerOutput<String>('baseImage');
     baseImageType = registerOutput<String>('baseImageType');
@@ -544,11 +530,11 @@ class EcsImagePipeline extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ecs/ecsImagePipeline:EcsImagePipeline',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ecs/ecsImagePipeline:EcsImagePipeline',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     addAccounts = registerOutput<List<String>?>('addAccounts');
     baseImage = registerOutput<String>('baseImage');
     baseImageType = registerOutput<String>('baseImageType');

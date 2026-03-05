@@ -10,10 +10,8 @@ class HostingCustomDomainCert {
   /// before, that formerly-active cert provides SSL coverage for the domain name
   /// until the current cert propagates.
   final pulumi.Input<String>? state;
-
   /// The record's type, which determines what data the record contains.
   final pulumi.Input<String>? type;
-
   /// A set of ACME challenges you can add to your DNS records or existing,
   /// non-Hosting hosting provider to allow Hosting to create an SSL certificate
   /// for your domain name before you point traffic toward hosting. You can use
@@ -26,41 +24,26 @@ class HostingCustomDomainCert {
   /// [state] The state of the certificate. Only the `CERT_ACTIVE` and
   /// [type] The record's type, which determines what data the record contains.
   /// [verification] A set of ACME challenges you can add to your DNS records or existing,
-  HostingCustomDomainCert({this.state, this.type, this.verification});
+  HostingCustomDomainCert({
+    this.state,
+    this.type,
+    this.verification,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'state': ?state,
       'type': ?type,
-      'verification':
-          ?pulumi.Input.mapOptionalInputValue<
-            HostingCustomDomainCertVerification,
-            Map<String, dynamic>
-          >(verification, (value) => value.toMap()),
+      'verification': ?pulumi.Input.mapOptionalInputValue<HostingCustomDomainCertVerification, Map<String, dynamic>>(verification, (value) => value.toMap()),
     };
   }
 
   factory HostingCustomDomainCert.fromMap(Map<String, dynamic> map) {
     return HostingCustomDomainCert(
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      verification: (() {
-        final guardedValue = map['verification'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          HostingCustomDomainCertVerification.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      verification: (() { final guardedValue = map['verification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HostingCustomDomainCertVerification.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

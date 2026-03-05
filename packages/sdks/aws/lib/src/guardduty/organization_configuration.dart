@@ -247,15 +247,12 @@ class OrganizationConfiguration extends pulumi.CustomResource {
   /// Indicates the auto-enablement configuration of GuardDuty for the member accounts in the organization.
   /// Valid values are `ALL`, `NEW`, `NONE`.
   late final pulumi.Output<String> autoEnableOrganizationMembers;
-
   /// Configuration for the collected datasources. [Deprecated](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty-feature-object-api-changes-march2023.html) in favor of `aws.guardduty.OrganizationConfigurationFeature` resources.
   ///
   /// &gt; **NOTE:** One of `auto_enable` or `auto_enable_organization_members` must be specified.
   late final pulumi.Output<OrganizationConfigurationDatasources> datasources;
-
   /// The detector ID of the GuardDuty account.
   late final pulumi.Output<String> detectorId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -268,24 +265,13 @@ class OrganizationConfiguration extends pulumi.CustomResource {
     OrganizationConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:guardduty/organizationConfiguration:OrganizationConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    autoEnableOrganizationMembers = registerOutput<String>(
-      'autoEnableOrganizationMembers',
-    );
-    datasources = registerOutput<OrganizationConfigurationDatasources>(
-      'datasources',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return OrganizationConfigurationDatasources.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'aws:guardduty/organizationConfiguration:OrganizationConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    autoEnableOrganizationMembers = registerOutput<String>('autoEnableOrganizationMembers');
+    datasources = registerOutput<OrganizationConfigurationDatasources>('datasources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationConfigurationDatasources.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     detectorId = registerOutput<String>('detectorId');
     region = registerOutput<String>('region');
   }
@@ -308,24 +294,13 @@ class OrganizationConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:guardduty/organizationConfiguration:OrganizationConfiguration',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    autoEnableOrganizationMembers = registerOutput<String>(
-      'autoEnableOrganizationMembers',
-    );
-    datasources = registerOutput<OrganizationConfigurationDatasources>(
-      'datasources',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return OrganizationConfigurationDatasources.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'aws:guardduty/organizationConfiguration:OrganizationConfiguration',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    autoEnableOrganizationMembers = registerOutput<String>('autoEnableOrganizationMembers');
+    datasources = registerOutput<OrganizationConfigurationDatasources>('datasources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationConfigurationDatasources.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     detectorId = registerOutput<String>('detectorId');
     region = registerOutput<String>('region');
   }

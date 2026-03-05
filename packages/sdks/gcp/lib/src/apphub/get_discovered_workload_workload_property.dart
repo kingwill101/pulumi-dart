@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDiscoveredWorkloadWorkloadProperty {
   /// The service project identifier that the underlying cloud resource resides in.
   final pulumi.Input<String> gcpProject;
-
   /// The location of the discovered workload.
   final pulumi.Input<String> location;
-
   /// The location that the underlying resource resides in if it is zonal.
   final pulumi.Input<String> zone;
 
@@ -30,9 +28,7 @@ class GetDiscoveredWorkloadWorkloadProperty {
     };
   }
 
-  factory GetDiscoveredWorkloadWorkloadProperty.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDiscoveredWorkloadWorkloadProperty.fromMap(Map<String, dynamic> map) {
     return GetDiscoveredWorkloadWorkloadProperty(
       gcpProject: pulumi.Input.fromValue(map['gcpProject'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
@@ -40,3 +36,4 @@ class GetDiscoveredWorkloadWorkloadProperty {
     );
   }
 }
+

@@ -8,17 +8,20 @@ class ResourcePolicyInstanceSchedulePolicyVmStartSchedule {
 
   /// Creates a new [ResourcePolicyInstanceSchedulePolicyVmStartSchedule].
   /// [schedule] Specifies the frequency for the operation, using the unix-cron format.
-  ResourcePolicyInstanceSchedulePolicyVmStartSchedule({required this.schedule});
+  ResourcePolicyInstanceSchedulePolicyVmStartSchedule({
+    required this.schedule,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'schedule': schedule};
+    return <String, dynamic>{
+      'schedule': schedule,
+    };
   }
 
-  factory ResourcePolicyInstanceSchedulePolicyVmStartSchedule.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResourcePolicyInstanceSchedulePolicyVmStartSchedule.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyInstanceSchedulePolicyVmStartSchedule(
       schedule: pulumi.Input.fromValue(map['schedule'] as String),
     );
   }
 }
+

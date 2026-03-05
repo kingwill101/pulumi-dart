@@ -16,3 +16,4 @@ enum AzureStorageProtocol {
     throw ArgumentError('Unknown AzureStorageProtocol value: $value');
   }
 }
+

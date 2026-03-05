@@ -7,7 +7,6 @@ class IntentFulfillmentActivityCodeHook {
   /// to invoke your Lambda function. For more information, see
   /// [Using Lambda Functions](https://docs.aws.amazon.com/lex/latest/dg/using-lambda.html). Must be less than or equal to 5 characters in length.
   final pulumi.Input<String> messageVersion;
-
   /// The Amazon Resource Name (ARN) of the Lambda function.
   final pulumi.Input<String> uri;
 
@@ -20,7 +19,10 @@ class IntentFulfillmentActivityCodeHook {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'messageVersion': messageVersion, 'uri': uri};
+    return <String, dynamic>{
+      'messageVersion': messageVersion,
+      'uri': uri,
+    };
   }
 
   factory IntentFulfillmentActivityCodeHook.fromMap(Map<String, dynamic> map) {
@@ -30,3 +32,4 @@ class IntentFulfillmentActivityCodeHook {
     );
   }
 }
+

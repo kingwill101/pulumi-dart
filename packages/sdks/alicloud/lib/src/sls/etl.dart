@@ -346,26 +346,20 @@ import 'etl_state.dart';
 class Etl extends pulumi.CustomResource {
   /// Detailed configuration of the data processing task.   See `configuration` below.
   late final pulumi.Output<EtlConfiguration> configuration;
-
   /// The time when the task was created.
   late final pulumi.Output<int> createTime;
-
   /// Description of the data processing task.
   late final pulumi.Output<String?> description;
-
   /// The display name of the data processing task.
   late final pulumi.Output<String> displayName;
-
   /// The job name. Naming rules are as follows:
   /// - Job names must be unique within the same project.
   /// - Can only contain lowercase letters, digits, hyphens (-), and underscores (_).
   /// - Must start and end with a lowercase letter or digit.
   /// - Must be 2 to 64 characters in length.
   late final pulumi.Output<String> jobName;
-
   /// Project name.
   late final pulumi.Output<String> project;
-
   /// Task status.
   late final pulumi.Output<String> status;
 
@@ -373,23 +367,17 @@ class Etl extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Etl]. {@macro pulumi_sls_etl_etl_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Etl(String name, {EtlArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:sls/etl:Etl',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
-    configuration = registerOutput<EtlConfiguration>(
-      'configuration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EtlConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+  Etl(
+    String name, {
+    EtlArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:sls/etl:Etl',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    configuration = registerOutput<EtlConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EtlConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<int>('createTime');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
@@ -399,7 +387,11 @@ class Etl extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Etl] resource's state with the given [name] and [id].
-  static Etl get(String name, pulumi.Input<String> id, {EtlState? state}) {
+  static Etl get(
+    String name,
+    pulumi.Input<String> id, {
+    EtlState? state,
+  }) {
     return Etl._get(
       name,
       state: state?.toMap(),
@@ -412,21 +404,12 @@ class Etl extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:sls/etl:Etl',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    configuration = registerOutput<EtlConfiguration>(
-      'configuration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EtlConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'alicloud:sls/etl:Etl',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    configuration = registerOutput<EtlConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EtlConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<int>('createTime');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');

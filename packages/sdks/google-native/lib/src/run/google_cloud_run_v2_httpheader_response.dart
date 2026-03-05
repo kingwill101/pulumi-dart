@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudRunV2HTTPHeaderResponse {
   /// The header field name
   final pulumi.Input<String> name;
-
   /// The header field value
   final pulumi.Input<String> value;
 
   /// Creates a new [GoogleCloudRunV2HTTPHeaderResponse].
   /// [name] The header field name
   /// [value] The header field value
-  GoogleCloudRunV2HTTPHeaderResponse({required this.name, required this.value});
+  GoogleCloudRunV2HTTPHeaderResponse({
+    required this.name,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'value': value};
+    return <String, dynamic>{
+      'name': name,
+      'value': value,
+    };
   }
 
   factory GoogleCloudRunV2HTTPHeaderResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class GoogleCloudRunV2HTTPHeaderResponse {
     );
   }
 }
+

@@ -9,12 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RolePolicyAttachmentArgs {
   /// The name of the policy.
   final pulumi.Input<String> policyName;
-
   /// Policy type.
   /// - Custom: Custom policy.
   /// - System: System policy.
   final pulumi.Input<String> policyType;
-
   /// The RAM role name.
   final pulumi.Input<String> roleName;
 
@@ -44,3 +42,4 @@ class RolePolicyAttachmentArgs {
     );
   }
 }
+

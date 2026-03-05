@@ -176,31 +176,22 @@ import 'sub_resource_response.dart';
 class SecurityPartnerProvider extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The connection status with the Security Partner Provider.
   late final pulumi.Output<String> connectionStatus;
-
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
-
   /// Resource location.
   late final pulumi.Output<String?> location;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// The provisioning state of the Security Partner Provider resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The security provider name.
   late final pulumi.Output<String?> securityProviderName;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource type.
   late final pulumi.Output<String> type;
-
   /// The virtualHub to which the Security Partner Provider belongs.
   late final pulumi.Output<SubResourceResponse?> virtualHub;
 
@@ -213,11 +204,11 @@ class SecurityPartnerProvider extends pulumi.CustomResource {
     SecurityPartnerProviderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:network:SecurityPartnerProvider',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:network:SecurityPartnerProvider',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     connectionStatus = registerOutput<String>('connectionStatus');
     etag = registerOutput<String>('etag');
@@ -227,15 +218,6 @@ class SecurityPartnerProvider extends pulumi.CustomResource {
     securityProviderName = registerOutput<String?>('securityProviderName');
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
-    virtualHub = registerOutput<SubResourceResponse?>(
-      'virtualHub',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SubResourceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    virtualHub = registerOutput<SubResourceResponse?>('virtualHub', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

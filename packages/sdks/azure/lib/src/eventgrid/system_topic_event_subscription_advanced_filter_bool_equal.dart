@@ -16,15 +16,17 @@ class SystemTopicEventSubscriptionAdvancedFilterBoolEqual {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': key, 'value': value};
+    return <String, dynamic>{
+      'key': key,
+      'value': value,
+    };
   }
 
-  factory SystemTopicEventSubscriptionAdvancedFilterBoolEqual.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SystemTopicEventSubscriptionAdvancedFilterBoolEqual.fromMap(Map<String, dynamic> map) {
     return SystemTopicEventSubscriptionAdvancedFilterBoolEqual(
       key: pulumi.Input.fromValue(map['key'] as String),
       value: pulumi.Input.fromValue(map['value'] as bool),
     );
   }
 }
+

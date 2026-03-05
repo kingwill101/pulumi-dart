@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PipeTargetParametersSqsQueueParameters {
   /// This parameter applies only to FIFO (first-in-first-out) queues. The token used for deduplication of sent messages.
   final pulumi.Input<String>? messageDeduplicationId;
-
   /// The FIFO message group ID to use as the target.
   final pulumi.Input<String>? messageGroupId;
 
@@ -24,20 +23,11 @@ class PipeTargetParametersSqsQueueParameters {
     };
   }
 
-  factory PipeTargetParametersSqsQueueParameters.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PipeTargetParametersSqsQueueParameters.fromMap(Map<String, dynamic> map) {
     return PipeTargetParametersSqsQueueParameters(
-      messageDeduplicationId: (() {
-        final guardedValue = map['messageDeduplicationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      messageGroupId: (() {
-        final guardedValue = map['messageGroupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      messageDeduplicationId: (() { final guardedValue = map['messageDeduplicationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      messageGroupId: (() { final guardedValue = map['messageGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

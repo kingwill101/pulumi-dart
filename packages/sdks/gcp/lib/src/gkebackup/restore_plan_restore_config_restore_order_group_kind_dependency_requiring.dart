@@ -7,7 +7,6 @@ class RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiring {
   /// "apiextensions.k8s.io", "storage.k8s.io", etc.
   /// Use empty string for core group.
   final pulumi.Input<String>? resourceGroup;
-
   /// Kind of a Kubernetes resource, e.g.
   /// "CustomResourceDefinition", "StorageClass", etc.
   final pulumi.Input<String>? resourceKind;
@@ -27,20 +26,11 @@ class RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiring {
     };
   }
 
-  factory RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiring.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiring.fromMap(Map<String, dynamic> map) {
     return RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiring(
-      resourceGroup: (() {
-        final guardedValue = map['resourceGroup'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceKind: (() {
-        final guardedValue = map['resourceKind'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      resourceGroup: (() { final guardedValue = map['resourceGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceKind: (() { final guardedValue = map['resourceKind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

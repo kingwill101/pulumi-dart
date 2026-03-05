@@ -40,3 +40,4 @@ enum MetricTransformationUnit {
     throw ArgumentError('Unknown MetricTransformationUnit value: $value');
   }
 }
+

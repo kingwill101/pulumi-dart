@@ -7,52 +7,29 @@ import 'domain_devices_serial_source_qemuvd_agent_mouse.dart';
 class DomainDevicesSerialSourceQemuvdAgent {
   /// Configures clipboard sharing settings for the QEMU guest agent.
   final pulumi.Input<DomainDevicesSerialSourceQemuvdAgentClipBoard>? clipBoard;
-
   /// Configures mouse settings for the QEMU guest agent in the random number generator setup.
   final pulumi.Input<DomainDevicesSerialSourceQemuvdAgentMouse>? mouse;
 
   /// Creates a new [DomainDevicesSerialSourceQemuvdAgent].
   /// [clipBoard] Configures clipboard sharing settings for the QEMU guest agent.
   /// [mouse] Configures mouse settings for the QEMU guest agent in the random number generator setup.
-  DomainDevicesSerialSourceQemuvdAgent({this.clipBoard, this.mouse});
+  DomainDevicesSerialSourceQemuvdAgent({
+    this.clipBoard,
+    this.mouse,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'clipBoard':
-          ?pulumi.Input.mapOptionalInputValue<
-            DomainDevicesSerialSourceQemuvdAgentClipBoard,
-            Map<String, dynamic>
-          >(clipBoard, (value) => value.toMap()),
-      'mouse':
-          ?pulumi.Input.mapOptionalInputValue<
-            DomainDevicesSerialSourceQemuvdAgentMouse,
-            Map<String, dynamic>
-          >(mouse, (value) => value.toMap()),
+      'clipBoard': ?pulumi.Input.mapOptionalInputValue<DomainDevicesSerialSourceQemuvdAgentClipBoard, Map<String, dynamic>>(clipBoard, (value) => value.toMap()),
+      'mouse': ?pulumi.Input.mapOptionalInputValue<DomainDevicesSerialSourceQemuvdAgentMouse, Map<String, dynamic>>(mouse, (value) => value.toMap()),
     };
   }
 
-  factory DomainDevicesSerialSourceQemuvdAgent.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDevicesSerialSourceQemuvdAgent.fromMap(Map<String, dynamic> map) {
     return DomainDevicesSerialSourceQemuvdAgent(
-      clipBoard: (() {
-        final guardedValue = map['clipBoard'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DomainDevicesSerialSourceQemuvdAgentClipBoard.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      mouse: (() {
-        final guardedValue = map['mouse'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DomainDevicesSerialSourceQemuvdAgentMouse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      clipBoard: (() { final guardedValue = map['clipBoard']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesSerialSourceQemuvdAgentClipBoard.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      mouse: (() { final guardedValue = map['mouse']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesSerialSourceQemuvdAgentMouse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

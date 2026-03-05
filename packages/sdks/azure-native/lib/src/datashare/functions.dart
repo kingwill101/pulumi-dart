@@ -169,8 +169,7 @@ Future<GetADLSGen2FileSystemDataSetResult> getADLSGen2FileSystemDataSet(
 /// Uses Azure REST API version 2021-08-01.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datashare_get_adlsgen2_file_system_data_set_mapping_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetADLSGen2FileSystemDataSetMappingResult>
-getADLSGen2FileSystemDataSetMapping(
+Future<GetADLSGen2FileSystemDataSetMappingResult> getADLSGen2FileSystemDataSetMapping(
   GetADLSGen2FileSystemDataSetMappingArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -476,8 +475,7 @@ Future<GetKustoTableDataSetMappingResult> getKustoTableDataSetMapping(
 /// Uses Azure REST API version 2021-08-01.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datashare_get_scheduled_synchronization_setting_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetScheduledSynchronizationSettingResult>
-getScheduledSynchronizationSetting(
+Future<GetScheduledSynchronizationSettingResult> getScheduledSynchronizationSetting(
   GetScheduledSynchronizationSettingArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -621,8 +619,7 @@ Future<GetSqlDWTableDataSetMappingResult> getSqlDWTableDataSetMapping(
 /// Uses Azure REST API version 2021-08-01.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datashare_get_synapse_workspace_sql_pool_table_data_set_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetSynapseWorkspaceSqlPoolTableDataSetResult>
-getSynapseWorkspaceSqlPoolTableDataSet(
+Future<GetSynapseWorkspaceSqlPoolTableDataSetResult> getSynapseWorkspaceSqlPoolTableDataSet(
   GetSynapseWorkspaceSqlPoolTableDataSetArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -640,8 +637,7 @@ getSynapseWorkspaceSqlPoolTableDataSet(
 /// Uses Azure REST API version 2021-08-01.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datashare_get_synapse_workspace_sql_pool_table_data_set_mapping_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetSynapseWorkspaceSqlPoolTableDataSetMappingResult>
-getSynapseWorkspaceSqlPoolTableDataSetMapping(
+Future<GetSynapseWorkspaceSqlPoolTableDataSetMappingResult> getSynapseWorkspaceSqlPoolTableDataSetMapping(
   GetSynapseWorkspaceSqlPoolTableDataSetMappingArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -659,8 +655,7 @@ getSynapseWorkspaceSqlPoolTableDataSetMapping(
 /// Uses Azure REST API version 2021-08-01.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datashare_list_share_subscription_source_share_synchronization_settings_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListShareSubscriptionSourceShareSynchronizationSettingsResult>
-listShareSubscriptionSourceShareSynchronizationSettings(
+Future<ListShareSubscriptionSourceShareSynchronizationSettingsResult> listShareSubscriptionSourceShareSynchronizationSettings(
   ListShareSubscriptionSourceShareSynchronizationSettingsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -670,9 +665,7 @@ listShareSubscriptionSourceShareSynchronizationSettings(
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return ListShareSubscriptionSourceShareSynchronizationSettingsResult.fromMap(
-    result,
-  );
+  return ListShareSubscriptionSourceShareSynchronizationSettingsResult.fromMap(result);
 }
 
 /// List synchronization details
@@ -680,8 +673,7 @@ listShareSubscriptionSourceShareSynchronizationSettings(
 /// Uses Azure REST API version 2021-08-01.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datashare_list_share_subscription_synchronization_details_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListShareSubscriptionSynchronizationDetailsResult>
-listShareSubscriptionSynchronizationDetails(
+Future<ListShareSubscriptionSynchronizationDetailsResult> listShareSubscriptionSynchronizationDetails(
   ListShareSubscriptionSynchronizationDetailsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -699,8 +691,7 @@ listShareSubscriptionSynchronizationDetails(
 /// Uses Azure REST API version 2021-08-01.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datashare_list_share_subscription_synchronizations_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListShareSubscriptionSynchronizationsResult>
-listShareSubscriptionSynchronizations(
+Future<ListShareSubscriptionSynchronizationsResult> listShareSubscriptionSynchronizations(
   ListShareSubscriptionSynchronizationsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

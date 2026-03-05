@@ -8,10 +8,14 @@ class GetClusterBackupSource {
 
   /// Creates a new [GetClusterBackupSource].
   /// [backupName] The name of the backup resource.
-  GetClusterBackupSource({required this.backupName});
+  GetClusterBackupSource({
+    required this.backupName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'backupName': backupName};
+    return <String, dynamic>{
+      'backupName': backupName,
+    };
   }
 
   factory GetClusterBackupSource.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class GetClusterBackupSource {
     );
   }
 }
+

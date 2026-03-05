@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccessConfigurationProvisioningArgs {
   /// The Access configuration ID.
   final pulumi.Input<String> accessConfigurationId;
-
   /// The ID of the Directory.
   final pulumi.Input<String> directoryId;
-
   /// The status of the resource. Valid values: `Provisioned`, `ReprovisionRequired` and `DeprovisionFailed`.
   final pulumi.Input<String>? status;
-
   /// The ID of the target to create the resource range.
   final pulumi.Input<String> targetId;
-
   /// The type of the resource range target to be accessed. Valid values: `RD-Account`.
   final pulumi.Input<String> targetType;
 
@@ -46,21 +42,14 @@ class AccessConfigurationProvisioningArgs {
     };
   }
 
-  factory AccessConfigurationProvisioningArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AccessConfigurationProvisioningArgs.fromMap(Map<String, dynamic> map) {
     return AccessConfigurationProvisioningArgs(
-      accessConfigurationId: pulumi.Input.fromValue(
-        map['accessConfigurationId'] as String,
-      ),
+      accessConfigurationId: pulumi.Input.fromValue(map['accessConfigurationId'] as String),
       directoryId: pulumi.Input.fromValue(map['directoryId'] as String),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       targetId: pulumi.Input.fromValue(map['targetId'] as String),
       targetType: pulumi.Input.fromValue(map['targetType'] as String),
     );
   }
 }
+

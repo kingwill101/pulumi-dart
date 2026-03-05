@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScriptAction {
   /// The user provided name of the script action.
   final pulumi.Input<String> name;
-
   /// The parameters for the script action.
   final pulumi.Input<String>? parameters;
-
   /// The node types on which the script action should be executed.
   final pulumi.Input<dynamic> roles;
-
   /// The URI for the script action.
   final pulumi.Input<String> uri;
 
@@ -40,13 +37,10 @@ class ScriptAction {
   factory ScriptAction.fromMap(Map<String, dynamic> map) {
     return ScriptAction(
       name: pulumi.Input.fromValue(map['name'] as String),
-      parameters: (() {
-        final guardedValue = map['parameters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       roles: pulumi.Input.fromValue(map['roles']),
       uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
+

@@ -374,13 +374,10 @@ import 'load_balancer_zone_shifted_attachment_state.dart';
 class LoadBalancerZoneShiftedAttachment extends pulumi.CustomResource {
   /// Network load balancer id
   late final pulumi.Output<String> loadBalancerId;
-
   /// Status
   late final pulumi.Output<String> status;
-
   /// The list of zones and vSwitch mappings
   late final pulumi.Output<String> vswitchId;
-
   /// ZoneId
   late final pulumi.Output<String> zoneId;
 
@@ -393,11 +390,11 @@ class LoadBalancerZoneShiftedAttachment extends pulumi.CustomResource {
     LoadBalancerZoneShiftedAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:nlb/loadBalancerZoneShiftedAttachment:LoadBalancerZoneShiftedAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:nlb/loadBalancerZoneShiftedAttachment:LoadBalancerZoneShiftedAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     loadBalancerId = registerOutput<String>('loadBalancerId');
     status = registerOutput<String>('status');
     vswitchId = registerOutput<String>('vswitchId');
@@ -422,11 +419,11 @@ class LoadBalancerZoneShiftedAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:nlb/loadBalancerZoneShiftedAttachment:LoadBalancerZoneShiftedAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:nlb/loadBalancerZoneShiftedAttachment:LoadBalancerZoneShiftedAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     loadBalancerId = registerOutput<String>('loadBalancerId');
     status = registerOutput<String>('status');
     vswitchId = registerOutput<String>('vswitchId');

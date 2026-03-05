@@ -6,7 +6,6 @@ class AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRef {
   /// The name of the secret in Cloud Secret Manager.
   /// Format: {secret_name}.
   final pulumi.Input<String> secret;
-
   /// The Cloud Secret Manager secret version. Can be 'latest'
   /// for the latest version, an integer for a specific
   /// version, or a version alias.
@@ -21,19 +20,17 @@ class AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRef {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'secret': secret, 'version': ?version};
+    return <String, dynamic>{
+      'secret': secret,
+      'version': ?version,
+    };
   }
 
-  factory AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRef.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRef.fromMap(Map<String, dynamic> map) {
     return AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRef(
       secret: pulumi.Input.fromValue(map['secret'] as String),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

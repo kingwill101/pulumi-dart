@@ -11,19 +11,14 @@ class LoggingSettingArgs {
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
-
   /// Whether to log metadata.
   final pulumi.Input<bool>? logMetadata;
-
   /// Whether to log prompts and responses.
   final pulumi.Input<bool>? logPromptsAndResponses;
-
   /// Id of the Logging Setting.
   final pulumi.Input<String> loggingSettingId;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -57,32 +52,13 @@ class LoggingSettingArgs {
 
   factory LoggingSettingArgs.fromMap(Map<String, dynamic> map) {
     return LoggingSettingArgs(
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
-      logMetadata: (() {
-        final guardedValue = map['logMetadata'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      logPromptsAndResponses: (() {
-        final guardedValue = map['logPromptsAndResponses'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      loggingSettingId: pulumi.Input.fromValue(
-        map['loggingSettingId'] as String,
-      ),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      logMetadata: (() { final guardedValue = map['logMetadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      logPromptsAndResponses: (() { final guardedValue = map['logPromptsAndResponses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      loggingSettingId: pulumi.Input.fromValue(map['loggingSettingId'] as String),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDatabaseInstanceDnsName {
   final pulumi.Input<String> connectionType;
   final pulumi.Input<String> dnsScope;
-
   /// The name of the instance.
   final pulumi.Input<String> name;
 
@@ -35,3 +34,4 @@ class GetDatabaseInstanceDnsName {
     );
   }
 }
+

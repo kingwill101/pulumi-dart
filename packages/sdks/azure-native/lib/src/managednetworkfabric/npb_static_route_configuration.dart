@@ -8,10 +8,8 @@ import 'static_route_properties.dart';
 class NpbStaticRouteConfiguration {
   /// BFD Configuration properties.
   final pulumi.Input<BfdConfiguration>? bfdConfiguration;
-
   /// List of IPv4 Routes.
   final pulumi.Input<List<StaticRouteProperties>>? ipv4Routes;
-
   /// List of IPv6 Routes.
   final pulumi.Input<List<StaticRouteProperties>>? ipv6Routes;
 
@@ -27,73 +25,18 @@ class NpbStaticRouteConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bfdConfiguration':
-          ?pulumi.Input.mapOptionalInputValue<
-            BfdConfiguration,
-            Map<String, dynamic>
-          >(bfdConfiguration, (value) => value.toMap()),
-      'ipv4Routes':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<StaticRouteProperties>,
-            List<Map<String, dynamic>>
-          >(
-            ipv4Routes,
-            (value) =>
-                pulumi.Input.encodeList<
-                  StaticRouteProperties,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'ipv6Routes':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<StaticRouteProperties>,
-            List<Map<String, dynamic>>
-          >(
-            ipv6Routes,
-            (value) =>
-                pulumi.Input.encodeList<
-                  StaticRouteProperties,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'bfdConfiguration': ?pulumi.Input.mapOptionalInputValue<BfdConfiguration, Map<String, dynamic>>(bfdConfiguration, (value) => value.toMap()),
+      'ipv4Routes': ?pulumi.Input.mapOptionalInputValue<List<StaticRouteProperties>, List<Map<String, dynamic>>>(ipv4Routes, (value) => pulumi.Input.encodeList<StaticRouteProperties, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ipv6Routes': ?pulumi.Input.mapOptionalInputValue<List<StaticRouteProperties>, List<Map<String, dynamic>>>(ipv6Routes, (value) => pulumi.Input.encodeList<StaticRouteProperties, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory NpbStaticRouteConfiguration.fromMap(Map<String, dynamic> map) {
     return NpbStaticRouteConfiguration(
-      bfdConfiguration: (() {
-        final guardedValue = map['bfdConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BfdConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      ipv4Routes: (() {
-        final guardedValue = map['ipv4Routes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<StaticRouteProperties>(
-            guardedValue,
-            (value) => StaticRouteProperties.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      ipv6Routes: (() {
-        final guardedValue = map['ipv6Routes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<StaticRouteProperties>(
-            guardedValue,
-            (value) => StaticRouteProperties.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      bfdConfiguration: (() { final guardedValue = map['bfdConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BfdConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      ipv4Routes: (() { final guardedValue = map['ipv4Routes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<StaticRouteProperties>(guardedValue, (value) => StaticRouteProperties.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      ipv6Routes: (() { final guardedValue = map['ipv6Routes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<StaticRouteProperties>(guardedValue, (value) => StaticRouteProperties.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

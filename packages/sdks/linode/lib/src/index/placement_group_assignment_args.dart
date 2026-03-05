@@ -8,10 +8,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_placement_group_assignment_placement_group_assignment_args_doc}
 class PlacementGroupAssignmentArgs {
   final pulumi.Input<bool>? compliantOnly;
-
   /// The unique ID of the Linode to assign.
   final pulumi.Input<int> linodeId;
-
   /// The unique ID of the target Placement Group.
   final pulumi.Input<int> placementGroupId;
 
@@ -35,13 +33,10 @@ class PlacementGroupAssignmentArgs {
 
   factory PlacementGroupAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return PlacementGroupAssignmentArgs(
-      compliantOnly: (() {
-        final guardedValue = map['compliantOnly'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      compliantOnly: (() { final guardedValue = map['compliantOnly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       linodeId: pulumi.Input.fromValue(map['linodeId'] as int),
       placementGroupId: pulumi.Input.fromValue(map['placementGroupId'] as int),
     );
   }
 }
+

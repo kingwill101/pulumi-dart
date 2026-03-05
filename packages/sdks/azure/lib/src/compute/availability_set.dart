@@ -173,29 +173,22 @@ import 'availability_set_state.dart';
 class AvailabilitySet extends pulumi.CustomResource {
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// Specifies whether the availability set is managed or not. Possible values are `true` (to specify aligned) or `false` (to specify classic). Default is `true`. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> managed;
-
   /// Specifies the name of the availability set. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies the number of fault domains that are used. Defaults to `3`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** The number of Fault Domains varies depending on which Azure Region you're using. More information about update and fault domains and how they work can be found [here](https://learn.microsoft.com/en-us/azure/virtual-machines/availability-set-overview).
   late final pulumi.Output<int?> platformFaultDomainCount;
-
   /// Specifies the number of update domains that are used. Defaults to `5`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** The number of Update Domains varies depending on which Azure Region you're using. More information about update and fault domains and how they work can be found [here](https://learn.microsoft.com/en-us/azure/virtual-machines/availability-set-overview).
   late final pulumi.Output<int?> platformUpdateDomainCount;
-
   /// The ID of the Proximity Placement Group to which this Virtual Machine should be assigned. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> proximityPlacementGroupId;
-
   /// The name of the resource group in which to create the availability set. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -208,21 +201,17 @@ class AvailabilitySet extends pulumi.CustomResource {
     AvailabilitySetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:compute/availabilitySet:AvailabilitySet',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:compute/availabilitySet:AvailabilitySet',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     location = registerOutput<String>('location');
     managed = registerOutput<bool?>('managed');
     this.name = registerOutput<String>('name');
     platformFaultDomainCount = registerOutput<int?>('platformFaultDomainCount');
-    platformUpdateDomainCount = registerOutput<int?>(
-      'platformUpdateDomainCount',
-    );
-    proximityPlacementGroupId = registerOutput<String?>(
-      'proximityPlacementGroupId',
-    );
+    platformUpdateDomainCount = registerOutput<int?>('platformUpdateDomainCount');
+    proximityPlacementGroupId = registerOutput<String?>('proximityPlacementGroupId');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     tags = registerOutput<Map<String, String>?>('tags');
   }
@@ -245,21 +234,17 @@ class AvailabilitySet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:compute/availabilitySet:AvailabilitySet',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:compute/availabilitySet:AvailabilitySet',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     location = registerOutput<String>('location');
     managed = registerOutput<bool?>('managed');
     this.name = registerOutput<String>('name');
     platformFaultDomainCount = registerOutput<int?>('platformFaultDomainCount');
-    platformUpdateDomainCount = registerOutput<int?>(
-      'platformUpdateDomainCount',
-    );
-    proximityPlacementGroupId = registerOutput<String?>(
-      'proximityPlacementGroupId',
-    );
+    platformUpdateDomainCount = registerOutput<int?>('platformUpdateDomainCount');
+    proximityPlacementGroupId = registerOutput<String?>('proximityPlacementGroupId');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     tags = registerOutput<Map<String, String>?>('tags');
   }

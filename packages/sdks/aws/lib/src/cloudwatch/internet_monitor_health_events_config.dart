@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InternetMonitorHealthEventsConfig {
   /// The health event threshold percentage set for availability scores.
   final pulumi.Input<double>? availabilityScoreThreshold;
-
   /// The health event threshold percentage set for performance scores.
   final pulumi.Input<double>? performanceScoreThreshold;
 
@@ -26,16 +25,9 @@ class InternetMonitorHealthEventsConfig {
 
   factory InternetMonitorHealthEventsConfig.fromMap(Map<String, dynamic> map) {
     return InternetMonitorHealthEventsConfig(
-      availabilityScoreThreshold: (() {
-        final guardedValue = map['availabilityScoreThreshold'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      performanceScoreThreshold: (() {
-        final guardedValue = map['performanceScoreThreshold'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      availabilityScoreThreshold: (() { final guardedValue = map['availabilityScoreThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      performanceScoreThreshold: (() { final guardedValue = map['performanceScoreThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

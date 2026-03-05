@@ -10,17 +10,13 @@ import 'template_metadata_response.dart';
 /// on Google Cloud even though it will be deleted from Pulumi state.
 class Template extends pulumi.CustomResource {
   late final pulumi.Output<String> location;
-
   /// The template metadata describing the template name, available parameters, etc.
   late final pulumi.Output<TemplateMetadataResponse> metadata;
   late final pulumi.Output<String> project;
-
   /// Describes the runtime metadata with SDKInfo and available parameters.
   late final pulumi.Output<RuntimeMetadataResponse> runtimeMetadata;
-
   /// The status of the get template request. Any problems with the request will be indicated in the error_details.
   late final pulumi.Output<StatusResponse> status;
-
   /// Template Type.
   late final pulumi.Output<String> templateType;
 
@@ -33,43 +29,16 @@ class Template extends pulumi.CustomResource {
     TemplateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'google-native:dataflow/v1b3:Template',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'google-native:dataflow/v1b3:Template',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     location = registerOutput<String>('location');
-    metadata = registerOutput<TemplateMetadataResponse>(
-      'metadata',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TemplateMetadataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    metadata = registerOutput<TemplateMetadataResponse>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TemplateMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    runtimeMetadata = registerOutput<RuntimeMetadataResponse>(
-      'runtimeMetadata',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RuntimeMetadataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    status = registerOutput<StatusResponse>(
-      'status',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return StatusResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    runtimeMetadata = registerOutput<RuntimeMetadataResponse>('runtimeMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuntimeMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<StatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     templateType = registerOutput<String>('templateType');
   }
 }

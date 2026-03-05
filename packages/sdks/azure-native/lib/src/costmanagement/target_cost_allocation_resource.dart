@@ -7,13 +7,10 @@ import 'cost_allocation_proportion.dart';
 class TargetCostAllocationResource {
   /// If resource type is dimension, this must be either ResourceGroupName or SubscriptionId. If resource type is tag, this must be a valid Azure tag
   final pulumi.Input<String> name;
-
   /// Method of cost allocation for the rule
   final pulumi.Input<String> policyType;
-
   /// Type of resources contained in this cost allocation rule
   final pulumi.Input<String> resourceType;
-
   /// Target resources for cost allocation. This list cannot contain more than 25 values.
   final pulumi.Input<List<CostAllocationProportion>> values;
 
@@ -34,18 +31,7 @@ class TargetCostAllocationResource {
       'name': name,
       'policyType': policyType,
       'resourceType': resourceType,
-      'values':
-          pulumi.Input.mapInputValue<
-            List<CostAllocationProportion>,
-            List<Map<String, dynamic>>
-          >(
-            values,
-            (value) =>
-                pulumi.Input.encodeList<
-                  CostAllocationProportion,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'values': pulumi.Input.mapInputValue<List<CostAllocationProportion>, List<Map<String, dynamic>>>(values, (value) => pulumi.Input.encodeList<CostAllocationProportion, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
@@ -54,14 +40,8 @@ class TargetCostAllocationResource {
       name: pulumi.Input.fromValue(map['name'] as String),
       policyType: pulumi.Input.fromValue(map['policyType'] as String),
       resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
-      values: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<CostAllocationProportion>(
-          map['values']!,
-          (value) => CostAllocationProportion.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      values: pulumi.Input.fromValue(pulumi.Input.decodeList<CostAllocationProportion>(map['values']!, (value) => CostAllocationProportion.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

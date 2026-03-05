@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEventhubNamespaceArgs {
   /// The name of the EventHub Namespace.
   final pulumi.Input<String> name;
-
   /// The Name of the Resource Group where the EventHub Namespace exists.
   final pulumi.Input<String> resourceGroupName;
 
@@ -31,9 +30,8 @@ class GetEventhubNamespaceArgs {
   factory GetEventhubNamespaceArgs.fromMap(Map<String, dynamic> map) {
     return GetEventhubNamespaceArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

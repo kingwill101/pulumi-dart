@@ -5,31 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRouteServicesService {
   /// The region of the network instances that access the cloud services.
   final pulumi.Input<String> accessRegionId;
-
   /// The ID of the CEN instance.
   final pulumi.Input<String> cenId;
-
   /// The IP address of the cloud service.
   final pulumi.Input<List<String>> cidrs;
-
   /// The description of the cloud service.
   final pulumi.Input<String> description;
-
   /// The domain name or IP address of the cloud service.
   final pulumi.Input<String> host;
-
   /// The region of the cloud service.
   final pulumi.Input<String> hostRegionId;
-
   /// The VPC associated with the cloud service.
   final pulumi.Input<String> hostVpcId;
-
   /// The ID of the route service.
   final pulumi.Input<String> id;
-
   /// The status of the cloud service. Valid values: `Active`, `Creating` and `Deleting`.
   final pulumi.Input<String> status;
-
   /// The update interval. Default value: 5. The value cannot be modified.
   final pulumi.Input<String> updateInterval;
 
@@ -87,3 +78,4 @@ class GetRouteServicesService {
     );
   }
 }
+

@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsFecOutputSettings {
   /// The height of the FEC protection matrix.
   final pulumi.Input<int>? columnDepth;
-
   /// Enables column only or column and row based FEC.
   final pulumi.Input<String>? includeFec;
-
   /// The width of the FEC protection matrix.
   final pulumi.Input<int>? rowLength;
 
@@ -30,25 +28,12 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsFecO
     };
   }
 
-  factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsFecOutputSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsFecOutputSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsFecOutputSettings(
-      columnDepth: (() {
-        final guardedValue = map['columnDepth'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      includeFec: (() {
-        final guardedValue = map['includeFec'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      rowLength: (() {
-        final guardedValue = map['rowLength'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      columnDepth: (() { final guardedValue = map['columnDepth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      includeFec: (() { final guardedValue = map['includeFec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      rowLength: (() { final guardedValue = map['rowLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

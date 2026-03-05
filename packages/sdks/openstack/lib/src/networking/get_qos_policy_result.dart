@@ -1,36 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getQosPolicy.
 class GetQosPolicyResult {
   /// The set of string tags applied on the QoS policy.
   final List<String> allTags;
-
   /// The time at which QoS policy was created.
   final String createdAt;
-
   /// See Argument Reference above.
   final String description;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// See Argument Reference above.
   final bool isDefault;
-
   /// See Argument Reference above.
   final String name;
   final String projectId;
-
   /// See Argument Reference above.
   final String region;
-
   /// The revision number of the QoS policy.
   final int revisionNumber;
-
   /// See Argument Reference above.
   final bool shared;
   final List<String>? tags;
-
   /// The time at which QoS policy was created.
   final String updatedAt;
 
@@ -91,12 +83,9 @@ class GetQosPolicyResult {
       region: map['region'] as String,
       revisionNumber: map['revisionNumber'] as int,
       shared: map['shared'] as bool,
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       updatedAt: map['updatedAt'] as String,
     );
   }
 }
+

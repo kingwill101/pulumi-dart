@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OidcTokenResponse {
   /// Audience to be used when generating OIDC token. If not specified, the URI specified in target will be used.
   final pulumi.Input<String> audience;
-
   /// [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating OIDC token. The service account must be within the same project as the job. The caller must have iam.serviceAccounts.actAs permission for the service account.
   final pulumi.Input<String> serviceAccountEmail;
 
@@ -28,9 +27,8 @@ class OidcTokenResponse {
   factory OidcTokenResponse.fromMap(Map<String, dynamic> map) {
     return OidcTokenResponse(
       audience: pulumi.Input.fromValue(map['audience'] as String),
-      serviceAccountEmail: pulumi.Input.fromValue(
-        map['serviceAccountEmail'] as String,
-      ),
+      serviceAccountEmail: pulumi.Input.fromValue(map['serviceAccountEmail'] as String),
     );
   }
 }
+

@@ -8,19 +8,20 @@ class TriggerActionNotificationProperty {
 
   /// Creates a new [TriggerActionNotificationProperty].
   /// [notifyDelayAfter] After a job run starts, the number of minutes to wait before sending a job run delay notification.
-  TriggerActionNotificationProperty({this.notifyDelayAfter});
+  TriggerActionNotificationProperty({
+    this.notifyDelayAfter,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'notifyDelayAfter': ?notifyDelayAfter};
+    return <String, dynamic>{
+      'notifyDelayAfter': ?notifyDelayAfter,
+    };
   }
 
   factory TriggerActionNotificationProperty.fromMap(Map<String, dynamic> map) {
     return TriggerActionNotificationProperty(
-      notifyDelayAfter: (() {
-        final guardedValue = map['notifyDelayAfter'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      notifyDelayAfter: (() { final guardedValue = map['notifyDelayAfter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

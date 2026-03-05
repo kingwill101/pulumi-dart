@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterControlPlaneEndpointsConfigDnsEndpointConfig {
   /// Controls whether user traffic is allowed over this endpoint. Note that GCP-managed services may still use the endpoint even if this is false.
   final pulumi.Input<bool>? allowExternalTraffic;
-
   /// Controls whether the k8s certs auth is allowed via Dns.
   final pulumi.Input<bool>? enableK8sCertsViaDns;
-
   /// Controls whether the k8s token auth is allowed via Dns.
   final pulumi.Input<bool>? enableK8sTokensViaDns;
-
   /// The cluster's DNS endpoint.
   final pulumi.Input<String>? endpoint;
 
@@ -36,30 +33,13 @@ class ClusterControlPlaneEndpointsConfigDnsEndpointConfig {
     };
   }
 
-  factory ClusterControlPlaneEndpointsConfigDnsEndpointConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterControlPlaneEndpointsConfigDnsEndpointConfig.fromMap(Map<String, dynamic> map) {
     return ClusterControlPlaneEndpointsConfigDnsEndpointConfig(
-      allowExternalTraffic: (() {
-        final guardedValue = map['allowExternalTraffic'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      enableK8sCertsViaDns: (() {
-        final guardedValue = map['enableK8sCertsViaDns'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      enableK8sTokensViaDns: (() {
-        final guardedValue = map['enableK8sTokensViaDns'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      endpoint: (() {
-        final guardedValue = map['endpoint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      allowExternalTraffic: (() { final guardedValue = map['allowExternalTraffic']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enableK8sCertsViaDns: (() { final guardedValue = map['enableK8sCertsViaDns']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enableK8sTokensViaDns: (() { final guardedValue = map['enableK8sTokensViaDns']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      endpoint: (() { final guardedValue = map['endpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -162,38 +162,27 @@ import 'multiple_activation_key_args.dart';
 class MultipleActivationKey extends pulumi.CustomResource {
   /// Agreement number under which the key is requested.
   late final pulumi.Output<String?> agreementNumber;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// End of support of security updates activated by the MAK key.
   late final pulumi.Output<String> expirationDate;
-
   /// Number of activations/servers using the MAK key.
   late final pulumi.Output<int?> installedServerNumber;
-
   /// &lt;code&gt; true &lt;/code&gt; if user has eligible on-premises Windows physical or virtual machines, and that the requested key will only be used in their organization; &lt;code&gt; false &lt;/code&gt; otherwise.
   late final pulumi.Output<bool?> isEligible;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// MAK 5x5 key.
   late final pulumi.Output<String> multipleActivationKey;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Type of OS for which the key is requested.
   late final pulumi.Output<String?> osType;
   late final pulumi.Output<String> provisioningState;
-
   /// Type of support
   late final pulumi.Output<String?> supportType;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -206,11 +195,11 @@ class MultipleActivationKey extends pulumi.CustomResource {
     MultipleActivationKeyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:windowsesu:MultipleActivationKey',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:windowsesu:MultipleActivationKey',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     agreementNumber = registerOutput<String?>('agreementNumber');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     expirationDate = registerOutput<String>('expirationDate');

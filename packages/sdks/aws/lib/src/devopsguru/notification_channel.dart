@@ -258,10 +258,8 @@ import 'notification_channel_state.dart';
 class NotificationChannel extends pulumi.CustomResource {
   /// Filter configurations for the Amazon SNS notification topic. See the `filters` argument reference below.
   late final pulumi.Output<NotificationChannelFilters?> filters;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// SNS noficiation channel configurations. See the `sns` argument reference below.
   ///
   /// The following arguments are optional:
@@ -276,32 +274,14 @@ class NotificationChannel extends pulumi.CustomResource {
     NotificationChannelArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:devopsguru/notificationChannel:NotificationChannel',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    filters = registerOutput<NotificationChannelFilters?>(
-      'filters',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NotificationChannelFilters.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'aws:devopsguru/notificationChannel:NotificationChannel',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    filters = registerOutput<NotificationChannelFilters?>('filters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotificationChannelFilters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    sns = registerOutput<NotificationChannelSns>(
-      'sns',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NotificationChannelSns.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sns = registerOutput<NotificationChannelSns>('sns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotificationChannelSns.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [NotificationChannel] resource's state with the given [name] and [id].
@@ -322,31 +302,13 @@ class NotificationChannel extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:devopsguru/notificationChannel:NotificationChannel',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    filters = registerOutput<NotificationChannelFilters?>(
-      'filters',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NotificationChannelFilters.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'aws:devopsguru/notificationChannel:NotificationChannel',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    filters = registerOutput<NotificationChannelFilters?>('filters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotificationChannelFilters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    sns = registerOutput<NotificationChannelSns>(
-      'sns',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NotificationChannelSns.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sns = registerOutput<NotificationChannelSns>('sns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotificationChannelSns.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

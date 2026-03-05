@@ -156,54 +156,41 @@ class BgpvpnV2 extends pulumi.CustomResource {
   /// A list of additional Route Targets that will be
   /// used for export.
   late final pulumi.Output<List<String>> exportTargets;
-
   /// A list of additional Route Targets that will be
   /// imported.
   late final pulumi.Output<List<String>> importTargets;
-
   /// The default BGP LOCAL\_PREF of routes that will be
   /// advertised to the BGP VPN, unless overridden per-route.
   late final pulumi.Output<int?> localPref;
-
   /// The name of the BGP VPN. Changing this updates the name of
   /// the existing BGP VPN.
   late final pulumi.Output<String> name;
-
   /// A list of network IDs that are associated with the BGP VPN.
   late final pulumi.Output<List<String>> networks;
-
   /// A list of port IDs that are associated with the BGP VPN.
   late final pulumi.Output<List<String>> ports;
-
   /// The ID of the project that owns the BGPVPN. Only
   /// administrative and users with `advsvc` role can specify a project ID other
   /// than their own. Changing this creates a new BGP VPN.
   late final pulumi.Output<String> projectId;
-
   /// The region in which to obtain the V2 Networking client.
   /// A Networking client is needed to create a BGP VPN service. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
   /// BGP VPN.
   late final pulumi.Output<String> region;
-
   /// A list of route distinguisher strings. If
   /// specified, one of these RDs will be used to advertise VPN routes.
   late final pulumi.Output<List<String>> routeDistinguishers;
-
   /// A list of Route Targets that will be both
   /// imported and used for export.
   late final pulumi.Output<List<String>> routeTargets;
-
   /// A list of router IDs that are associated with the BGP VPN.
   late final pulumi.Output<List<String>> routers;
-
   /// Indicates whether the BGP VPN is shared across projects.
   late final pulumi.Output<bool> shared;
-
   /// The type of the BGP VPN (either `l2` or `l3`). Changing this
   /// creates a new BGP VPN. Defaults to `l3`.
   late final pulumi.Output<String> type;
-
   /// The globally-assigned VXLAN VNI for the BGP VPN. Changing
   /// this creates a new BGP VPN.
   late final pulumi.Output<int?> vni;
@@ -217,11 +204,11 @@ class BgpvpnV2 extends pulumi.CustomResource {
     BgpvpnV2Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:index/bgpvpnV2:BgpvpnV2',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:index/bgpvpnV2:BgpvpnV2',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     exportTargets = registerOutput<List<String>>('exportTargets');
     importTargets = registerOutput<List<String>>('importTargets');
     localPref = registerOutput<int?>('localPref');
@@ -256,11 +243,11 @@ class BgpvpnV2 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:index/bgpvpnV2:BgpvpnV2',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:index/bgpvpnV2:BgpvpnV2',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     exportTargets = registerOutput<List<String>>('exportTargets');
     importTargets = registerOutput<List<String>>('importTargets');
     localPref = registerOutput<int?>('localPref');

@@ -13,8 +13,7 @@ enum MultiClusterIngressFeatureSpecBilling {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown MultiClusterIngressFeatureSpecBilling value: $value',
-    );
+    throw ArgumentError('Unknown MultiClusterIngressFeatureSpecBilling value: $value');
   }
 }
+

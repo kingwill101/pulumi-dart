@@ -7,7 +7,6 @@ class PyTorchResponse {
   /// Enum to determine the job distribution type.
   /// Expected value is 'PyTorch'.
   final pulumi.Input<String> distributionType;
-
   /// Number of processes per node.
   final pulumi.Input<int>? processCountPerInstance;
 
@@ -28,14 +27,9 @@ class PyTorchResponse {
 
   factory PyTorchResponse.fromMap(Map<String, dynamic> map) {
     return PyTorchResponse(
-      distributionType: pulumi.Input.fromValue(
-        map['distributionType'] as String,
-      ),
-      processCountPerInstance: (() {
-        final guardedValue = map['processCountPerInstance'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      distributionType: pulumi.Input.fromValue(map['distributionType'] as String),
+      processCountPerInstance: (() { final guardedValue = map['processCountPerInstance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

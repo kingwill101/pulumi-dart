@@ -335,54 +335,40 @@ import 'group_state.dart';
 class Group extends pulumi.CustomResource {
   /// The number of instance groups. The default value is 1 and the maximum value is 100.
   late final pulumi.Output<int?> amount;
-
   /// Whether to pay automatically. The default is false.
   late final pulumi.Output<bool?> autoPay;
-
   /// Whether to enable automatic renewal. The default is false.
   late final pulumi.Output<bool?> autoRenew;
-
   /// The billing type.
   late final pulumi.Output<String?> chargeType;
-
   /// Whether to enable GPU acceleration. The default value is false.
   /// - true: On.
   /// - false: closed.
   late final pulumi.Output<bool?> gpuAcceleration;
-
   /// The image ID.
   late final pulumi.Output<String> imageId;
-
   /// The instance group name
   ///
   /// &gt; **NOTE:** &gt;
   ///
   /// &gt; **NOTE:** - The instance group name must be no more than 30 characters in length. Start with an uppercase/lowercase letter or Chinese. It cannot start with http:// or https://. Only Chinese, English, numbers, half-width colons (:), underscores (_), periods (.), or hyphens (-) are supported.
   late final pulumi.Output<String?> instanceGroupName;
-
   /// Instance group specifications.
   late final pulumi.Output<String> instanceGroupSpec;
-
   /// The number of instances in the instance group. The maximum value is 100.
   late final pulumi.Output<int?> numberOfInstances;
-
   /// The network ID.
   /// - Create a shared network instance: Network ID is optional. Enter the network ID whose type is **Shared Network** on the [cloud mobile phone console&gt; Network](https://wya.wuying.aliyun.com/network) page. If the console does not have a shared network, you can fill it in. A shared network is automatically created when the instance group is created.
   /// - Create a VPC instance: the network ID is required. Enter the network ID of `VPC` on the [cloud mobile phone console&gt; Network](https://wya.wuying.aliyun.com/network) page. If the console does not have a VPC network, you need to create a network first.
   late final pulumi.Output<String?> officeSiteId;
-
   /// The duration of the resource purchase. The unit is specified by PeriodUnit.
   late final pulumi.Output<int?> period;
-
   /// The unit of time for purchasing resources.
   late final pulumi.Output<String?> periodUnit;
-
   /// The policy ID. You can query the list of policies by calling ListPolicyGroups.
   late final pulumi.Output<String?> policyGroupId;
-
   /// Instance group status
   late final pulumi.Output<String> status;
-
   /// The vSwitch ID.
   late final pulumi.Output<String?> vswitchId;
 
@@ -390,13 +376,16 @@ class Group extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Group]. {@macro pulumi_cloudphoneinstance_group_group_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Group(String name, {GroupArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:cloudphoneinstance/group:Group',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Group(
+    String name, {
+    GroupArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:cloudphoneinstance/group:Group',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     amount = registerOutput<int?>('amount');
     autoPay = registerOutput<bool?>('autoPay');
     autoRenew = registerOutput<bool?>('autoRenew');
@@ -415,7 +404,11 @@ class Group extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Group] resource's state with the given [name] and [id].
-  static Group get(String name, pulumi.Input<String> id, {GroupState? state}) {
+  static Group get(
+    String name,
+    pulumi.Input<String> id, {
+    GroupState? state,
+  }) {
     return Group._get(
       name,
       state: state?.toMap(),
@@ -428,11 +421,11 @@ class Group extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudphoneinstance/group:Group',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudphoneinstance/group:Group',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     amount = registerOutput<int?>('amount');
     autoPay = registerOutput<bool?>('autoPay');
     autoRenew = registerOutput<bool?>('autoRenew');

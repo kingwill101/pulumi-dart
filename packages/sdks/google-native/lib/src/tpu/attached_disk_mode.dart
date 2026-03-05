@@ -16,3 +16,4 @@ enum AttachedDiskMode {
     throw ArgumentError('Unknown AttachedDiskMode value: $value');
   }
 }
+

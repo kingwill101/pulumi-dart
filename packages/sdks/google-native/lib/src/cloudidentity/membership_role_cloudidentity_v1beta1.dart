@@ -8,13 +8,10 @@ import 'restriction_evaluations_cloudidentity_v1beta1.dart';
 class MembershipRoleCloudidentityV1beta1 {
   /// The expiry details of the `MembershipRole`. Expiry details are only supported for `MEMBER` `MembershipRoles`. May be set if `name` is `MEMBER`. Must not be set if `name` is any other value.
   final pulumi.Input<ExpiryDetailCloudidentityV1beta1>? expiryDetail;
-
   /// The name of the `MembershipRole`. Must be one of `OWNER`, `MANAGER`, `MEMBER`.
   final pulumi.Input<String>? name;
-
   /// Evaluations of restrictions applied to parent group on this membership.
-  final pulumi.Input<RestrictionEvaluationsCloudidentityV1beta1>?
-  restrictionEvaluations;
+  final pulumi.Input<RestrictionEvaluationsCloudidentityV1beta1>? restrictionEvaluations;
 
   /// Creates a new [MembershipRoleCloudidentityV1beta1].
   /// [expiryDetail] The expiry details of the `MembershipRole`. Expiry details are only supported for `MEMBER` `MembershipRoles`. May be set if `name` is `MEMBER`. Must not be set if `name` is any other value.
@@ -28,45 +25,18 @@ class MembershipRoleCloudidentityV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'expiryDetail':
-          ?pulumi.Input.mapOptionalInputValue<
-            ExpiryDetailCloudidentityV1beta1,
-            Map<String, dynamic>
-          >(expiryDetail, (value) => value.toMap()),
+      'expiryDetail': ?pulumi.Input.mapOptionalInputValue<ExpiryDetailCloudidentityV1beta1, Map<String, dynamic>>(expiryDetail, (value) => value.toMap()),
       'name': ?name,
-      'restrictionEvaluations':
-          ?pulumi.Input.mapOptionalInputValue<
-            RestrictionEvaluationsCloudidentityV1beta1,
-            Map<String, dynamic>
-          >(restrictionEvaluations, (value) => value.toMap()),
+      'restrictionEvaluations': ?pulumi.Input.mapOptionalInputValue<RestrictionEvaluationsCloudidentityV1beta1, Map<String, dynamic>>(restrictionEvaluations, (value) => value.toMap()),
     };
   }
 
   factory MembershipRoleCloudidentityV1beta1.fromMap(Map<String, dynamic> map) {
     return MembershipRoleCloudidentityV1beta1(
-      expiryDetail: (() {
-        final guardedValue = map['expiryDetail'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ExpiryDetailCloudidentityV1beta1.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      restrictionEvaluations: (() {
-        final guardedValue = map['restrictionEvaluations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RestrictionEvaluationsCloudidentityV1beta1.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      expiryDetail: (() { final guardedValue = map['expiryDetail']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExpiryDetailCloudidentityV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      restrictionEvaluations: (() { final guardedValue = map['restrictionEvaluations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RestrictionEvaluationsCloudidentityV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

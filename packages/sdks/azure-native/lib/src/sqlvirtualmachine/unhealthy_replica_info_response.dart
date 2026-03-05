@@ -9,19 +9,20 @@ class UnhealthyReplicaInfoResponse {
 
   /// Creates a new [UnhealthyReplicaInfoResponse].
   /// [availabilityGroupName] The name of the availability group
-  UnhealthyReplicaInfoResponse({this.availabilityGroupName});
+  UnhealthyReplicaInfoResponse({
+    this.availabilityGroupName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'availabilityGroupName': ?availabilityGroupName};
+    return <String, dynamic>{
+      'availabilityGroupName': ?availabilityGroupName,
+    };
   }
 
   factory UnhealthyReplicaInfoResponse.fromMap(Map<String, dynamic> map) {
     return UnhealthyReplicaInfoResponse(
-      availabilityGroupName: (() {
-        final guardedValue = map['availabilityGroupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      availabilityGroupName: (() { final guardedValue = map['availabilityGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

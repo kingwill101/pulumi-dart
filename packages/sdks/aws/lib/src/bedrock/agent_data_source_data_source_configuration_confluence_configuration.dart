@@ -5,14 +5,8 @@ import 'agent_data_source_data_source_configuration_confluence_configuration_cra
 import 'agent_data_source_data_source_configuration_confluence_configuration_source_configuration.dart';
 
 class AgentDataSourceDataSourceConfigurationConfluenceConfiguration {
-  final pulumi.Input<
-    AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfiguration
-  >?
-  crawlerConfiguration;
-  final pulumi.Input<
-    AgentDataSourceDataSourceConfigurationConfluenceConfigurationSourceConfiguration
-  >?
-  sourceConfiguration;
+  final pulumi.Input<AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfiguration>? crawlerConfiguration;
+  final pulumi.Input<AgentDataSourceDataSourceConfigurationConfluenceConfigurationSourceConfiguration>? sourceConfiguration;
 
   /// Creates a new [AgentDataSourceDataSourceConfigurationConfluenceConfiguration].
   /// [crawlerConfiguration] Optional.
@@ -24,41 +18,16 @@ class AgentDataSourceDataSourceConfigurationConfluenceConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'crawlerConfiguration':
-          ?pulumi.Input.mapOptionalInputValue<
-            AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfiguration,
-            Map<String, dynamic>
-          >(crawlerConfiguration, (value) => value.toMap()),
-      'sourceConfiguration':
-          ?pulumi.Input.mapOptionalInputValue<
-            AgentDataSourceDataSourceConfigurationConfluenceConfigurationSourceConfiguration,
-            Map<String, dynamic>
-          >(sourceConfiguration, (value) => value.toMap()),
+      'crawlerConfiguration': ?pulumi.Input.mapOptionalInputValue<AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfiguration, Map<String, dynamic>>(crawlerConfiguration, (value) => value.toMap()),
+      'sourceConfiguration': ?pulumi.Input.mapOptionalInputValue<AgentDataSourceDataSourceConfigurationConfluenceConfigurationSourceConfiguration, Map<String, dynamic>>(sourceConfiguration, (value) => value.toMap()),
     };
   }
 
-  factory AgentDataSourceDataSourceConfigurationConfluenceConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentDataSourceDataSourceConfigurationConfluenceConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentDataSourceDataSourceConfigurationConfluenceConfiguration(
-      crawlerConfiguration: (() {
-        final guardedValue = map['crawlerConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      sourceConfiguration: (() {
-        final guardedValue = map['sourceConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AgentDataSourceDataSourceConfigurationConfluenceConfigurationSourceConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      crawlerConfiguration: (() { final guardedValue = map['crawlerConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      sourceConfiguration: (() { final guardedValue = map['sourceConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentDataSourceDataSourceConfigurationConfluenceConfigurationSourceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

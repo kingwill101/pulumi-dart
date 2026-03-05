@@ -177,17 +177,12 @@ import 'custom_routing_endpoint_group_state.dart';
 class CustomRoutingEndpointGroup extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the custom routing endpoint group.
   late final pulumi.Output<String> arn;
-
   /// The port ranges and protocols for all endpoints in a custom routing endpoint group to accept client traffic on. Fields documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>>
-  destinationConfigurations;
-
+  late final pulumi.Output<List<Map<String, dynamic>>> destinationConfigurations;
   /// The list of endpoint objects. Fields documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> endpointConfigurations;
-
   /// The name of the AWS Region where the custom routing endpoint group is located.
   late final pulumi.Output<String> endpointGroupRegion;
-
   /// The Amazon Resource Name (ARN) of the custom routing listener.
   late final pulumi.Output<String> listenerArn;
 
@@ -200,18 +195,14 @@ class CustomRoutingEndpointGroup extends pulumi.CustomResource {
     CustomRoutingEndpointGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:globalaccelerator/customRoutingEndpointGroup:CustomRoutingEndpointGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:globalaccelerator/customRoutingEndpointGroup:CustomRoutingEndpointGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    destinationConfigurations = registerOutput<List<Map<String, dynamic>>>(
-      'destinationConfigurations',
-    );
-    endpointConfigurations = registerOutput<List<Map<String, dynamic>>?>(
-      'endpointConfigurations',
-    );
+    destinationConfigurations = registerOutput<List<Map<String, dynamic>>>('destinationConfigurations');
+    endpointConfigurations = registerOutput<List<Map<String, dynamic>>?>('endpointConfigurations');
     endpointGroupRegion = registerOutput<String>('endpointGroupRegion');
     listenerArn = registerOutput<String>('listenerArn');
   }
@@ -234,18 +225,14 @@ class CustomRoutingEndpointGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:globalaccelerator/customRoutingEndpointGroup:CustomRoutingEndpointGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:globalaccelerator/customRoutingEndpointGroup:CustomRoutingEndpointGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    destinationConfigurations = registerOutput<List<Map<String, dynamic>>>(
-      'destinationConfigurations',
-    );
-    endpointConfigurations = registerOutput<List<Map<String, dynamic>>?>(
-      'endpointConfigurations',
-    );
+    destinationConfigurations = registerOutput<List<Map<String, dynamic>>>('destinationConfigurations');
+    endpointConfigurations = registerOutput<List<Map<String, dynamic>>?>('endpointConfigurations');
     endpointGroupRegion = registerOutput<String>('endpointGroupRegion');
     listenerArn = registerOutput<String>('listenerArn');
   }

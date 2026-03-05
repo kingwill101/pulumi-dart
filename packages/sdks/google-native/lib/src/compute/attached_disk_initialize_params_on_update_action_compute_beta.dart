@@ -7,17 +7,13 @@ enum AttachedDiskInitializeParamsOnUpdateActionComputeBeta {
   const AttachedDiskInitializeParamsOnUpdateActionComputeBeta(this.wireValue);
   final String wireValue;
 
-  static AttachedDiskInitializeParamsOnUpdateActionComputeBeta fromValue(
-    String value,
-  ) {
-    for (final item
-        in AttachedDiskInitializeParamsOnUpdateActionComputeBeta.values) {
+  static AttachedDiskInitializeParamsOnUpdateActionComputeBeta fromValue(String value) {
+    for (final item in AttachedDiskInitializeParamsOnUpdateActionComputeBeta.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown AttachedDiskInitializeParamsOnUpdateActionComputeBeta value: $value',
-    );
+    throw ArgumentError('Unknown AttachedDiskInitializeParamsOnUpdateActionComputeBeta value: $value');
   }
 }
+

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomPermissionDetailsResponse {
   /// Gets or sets the custom permissions description.
   final pulumi.Input<String> description;
-
   /// Gets or sets the custom permissions name.
   final pulumi.Input<String> name;
 
@@ -19,7 +18,10 @@ class CustomPermissionDetailsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'description': description, 'name': name};
+    return <String, dynamic>{
+      'description': description,
+      'name': name,
+    };
   }
 
   factory CustomPermissionDetailsResponse.fromMap(Map<String, dynamic> map) {
@@ -29,3 +31,4 @@ class CustomPermissionDetailsResponse {
     );
   }
 }
+

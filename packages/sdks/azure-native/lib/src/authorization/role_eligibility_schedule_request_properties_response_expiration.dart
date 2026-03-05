@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RoleEligibilityScheduleRequestPropertiesResponseExpiration {
   /// Duration of the role eligibility schedule in TimeSpan.
   final pulumi.Input<String>? duration;
-
   /// End DateTime of the role eligibility schedule.
   final pulumi.Input<String>? endDateTime;
-
   /// Type of the role eligibility schedule expiration
   final pulumi.Input<String>? type;
 
@@ -31,25 +29,12 @@ class RoleEligibilityScheduleRequestPropertiesResponseExpiration {
     };
   }
 
-  factory RoleEligibilityScheduleRequestPropertiesResponseExpiration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RoleEligibilityScheduleRequestPropertiesResponseExpiration.fromMap(Map<String, dynamic> map) {
     return RoleEligibilityScheduleRequestPropertiesResponseExpiration(
-      duration: (() {
-        final guardedValue = map['duration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      endDateTime: (() {
-        final guardedValue = map['endDateTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      duration: (() { final guardedValue = map['duration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      endDateTime: (() { final guardedValue = map['endDateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

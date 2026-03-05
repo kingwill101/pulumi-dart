@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGatewayConnectionArgs {
   /// Specifies the name of the Virtual Network Gateway Connection.
   final pulumi.Input<String> name;
-
   /// Specifies the name of the resource group the Virtual Network Gateway Connection is located in.
   final pulumi.Input<String> resourceGroupName;
 
@@ -31,9 +30,8 @@ class GetGatewayConnectionArgs {
   factory GetGatewayConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetGatewayConnectionArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

@@ -128,37 +128,26 @@ import 'role_definition_args.dart';
 class RoleDefinition extends pulumi.CustomResource {
   /// Role definition assignable scopes.
   late final pulumi.Output<List<String>?> assignableScopes;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Id of the user who created the assignment
   late final pulumi.Output<String> createdBy;
-
   /// Time it was created
   late final pulumi.Output<String> createdOn;
-
   /// The role definition description.
   late final pulumi.Output<String?> description;
-
   /// The role definition name.
   late final pulumi.Output<String> name;
-
   /// Role definition permissions.
   late final pulumi.Output<List<Map<String, dynamic>>?> permissions;
-
   /// The role name.
   late final pulumi.Output<String?> roleName;
-
   /// The role type.
   late final pulumi.Output<String?> roleType;
-
   /// The role definition type.
   late final pulumi.Output<String> type;
-
   /// Id of the user who updated the assignment
   late final pulumi.Output<String> updatedBy;
-
   /// Time it was updated
   late final pulumi.Output<String> updatedOn;
 
@@ -171,11 +160,11 @@ class RoleDefinition extends pulumi.CustomResource {
     RoleDefinitionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:authorization:RoleDefinition',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:authorization:RoleDefinition',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     assignableScopes = registerOutput<List<String>?>('assignableScopes');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createdBy = registerOutput<String>('createdBy');

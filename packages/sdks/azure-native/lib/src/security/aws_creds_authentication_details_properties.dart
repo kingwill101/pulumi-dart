@@ -7,10 +7,8 @@ class AwsCredsAuthenticationDetailsProperties {
   /// Connect to your cloud account, for AWS use either account credentials or role-based authentication. For GCP use account organization credentials.
   /// Expected value is 'awsCreds'.
   final pulumi.Input<String> authenticationType;
-
   /// Public key element of the AWS credential object (write only)
   final pulumi.Input<String> awsAccessKeyId;
-
   /// Secret key element of the AWS credential object (write only)
   final pulumi.Input<String> awsSecretAccessKey;
 
@@ -32,17 +30,12 @@ class AwsCredsAuthenticationDetailsProperties {
     };
   }
 
-  factory AwsCredsAuthenticationDetailsProperties.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AwsCredsAuthenticationDetailsProperties.fromMap(Map<String, dynamic> map) {
     return AwsCredsAuthenticationDetailsProperties(
-      authenticationType: pulumi.Input.fromValue(
-        map['authenticationType'] as String,
-      ),
+      authenticationType: pulumi.Input.fromValue(map['authenticationType'] as String),
       awsAccessKeyId: pulumi.Input.fromValue(map['awsAccessKeyId'] as String),
-      awsSecretAccessKey: pulumi.Input.fromValue(
-        map['awsSecretAccessKey'] as String,
-      ),
+      awsSecretAccessKey: pulumi.Input.fromValue(map['awsSecretAccessKey'] as String),
     );
   }
 }
+

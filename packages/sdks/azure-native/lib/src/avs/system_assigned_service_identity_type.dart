@@ -12,8 +12,7 @@ enum SystemAssignedServiceIdentityType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown SystemAssignedServiceIdentityType value: $value',
-    );
+    throw ArgumentError('Unknown SystemAssignedServiceIdentityType value: $value');
   }
 }
+

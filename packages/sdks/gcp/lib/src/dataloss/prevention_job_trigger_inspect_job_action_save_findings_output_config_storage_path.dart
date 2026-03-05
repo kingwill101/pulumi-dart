@@ -14,14 +14,15 @@ class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePath {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'path': path};
+    return <String, dynamic>{
+      'path': path,
+    };
   }
 
-  factory PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePath.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePath.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePath(
       path: pulumi.Input.fromValue(map['path'] as String),
     );
   }
 }
+

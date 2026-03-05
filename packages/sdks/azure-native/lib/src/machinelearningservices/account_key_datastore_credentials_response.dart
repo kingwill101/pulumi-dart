@@ -10,17 +10,20 @@ class AccountKeyDatastoreCredentialsResponse {
 
   /// Creates a new [AccountKeyDatastoreCredentialsResponse].
   /// [credentialsType] Enum to determine the datastore credentials type.
-  AccountKeyDatastoreCredentialsResponse({required this.credentialsType});
+  AccountKeyDatastoreCredentialsResponse({
+    required this.credentialsType,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'credentialsType': credentialsType};
+    return <String, dynamic>{
+      'credentialsType': credentialsType,
+    };
   }
 
-  factory AccountKeyDatastoreCredentialsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AccountKeyDatastoreCredentialsResponse.fromMap(Map<String, dynamic> map) {
     return AccountKeyDatastoreCredentialsResponse(
       credentialsType: pulumi.Input.fromValue(map['credentialsType'] as String),
     );
   }
 }
+

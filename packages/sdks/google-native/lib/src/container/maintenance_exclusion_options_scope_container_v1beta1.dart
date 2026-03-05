@@ -7,17 +7,13 @@ enum MaintenanceExclusionOptionsScopeContainerV1beta1 {
   const MaintenanceExclusionOptionsScopeContainerV1beta1(this.wireValue);
   final String wireValue;
 
-  static MaintenanceExclusionOptionsScopeContainerV1beta1 fromValue(
-    String value,
-  ) {
-    for (final item
-        in MaintenanceExclusionOptionsScopeContainerV1beta1.values) {
+  static MaintenanceExclusionOptionsScopeContainerV1beta1 fromValue(String value) {
+    for (final item in MaintenanceExclusionOptionsScopeContainerV1beta1.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown MaintenanceExclusionOptionsScopeContainerV1beta1 value: $value',
-    );
+    throw ArgumentError('Unknown MaintenanceExclusionOptionsScopeContainerV1beta1 value: $value');
   }
 }
+

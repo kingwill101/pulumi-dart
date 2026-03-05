@@ -271,16 +271,12 @@ import 'ipv6_firewall_rule_args.dart';
 class IPv6FirewallRule extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The end IP address of the firewall rule. Must be IPv6 format. Must be greater than or equal to startIpv6Address.
   late final pulumi.Output<String?> endIPv6Address;
-
   /// Resource name.
   late final pulumi.Output<String?> name;
-
   /// The start IP address of the firewall rule. Must be IPv6 format.
   late final pulumi.Output<String?> startIPv6Address;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -293,11 +289,11 @@ class IPv6FirewallRule extends pulumi.CustomResource {
     IPv6FirewallRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:sql:IPv6FirewallRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:sql:IPv6FirewallRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     endIPv6Address = registerOutput<String?>('endIPv6Address');
     this.name = registerOutput<String?>('name');

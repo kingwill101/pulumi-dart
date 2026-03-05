@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpnGatewayAttachmentArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The ID of the VPC.
   final pulumi.Input<String> vpcId;
-
   /// The ID of the Virtual Private Gateway.
   final pulumi.Input<String> vpnGatewayId;
 
@@ -36,13 +34,10 @@ class VpnGatewayAttachmentArgs {
 
   factory VpnGatewayAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return VpnGatewayAttachmentArgs(
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
       vpnGatewayId: pulumi.Input.fromValue(map['vpnGatewayId'] as String),
     );
   }
 }
+

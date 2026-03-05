@@ -18,3 +18,4 @@ enum InstructionDataType {
     throw ArgumentError('Unknown InstructionDataType value: $value');
   }
 }
+

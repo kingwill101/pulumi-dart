@@ -9,17 +9,20 @@ class GoogleCloudDialogflowV2ConversationInfoResponse {
 
   /// Creates a new [GoogleCloudDialogflowV2ConversationInfoResponse].
   /// [languageCode] Optional. The language code of the conversation data within this dataset. See https://cloud.google.com/apis/design/standard_fields for more information. Supports all UTF-8 languages.
-  GoogleCloudDialogflowV2ConversationInfoResponse({required this.languageCode});
+  GoogleCloudDialogflowV2ConversationInfoResponse({
+    required this.languageCode,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'languageCode': languageCode};
+    return <String, dynamic>{
+      'languageCode': languageCode,
+    };
   }
 
-  factory GoogleCloudDialogflowV2ConversationInfoResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDialogflowV2ConversationInfoResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2ConversationInfoResponse(
       languageCode: pulumi.Input.fromValue(map['languageCode'] as String),
     );
   }
 }
+

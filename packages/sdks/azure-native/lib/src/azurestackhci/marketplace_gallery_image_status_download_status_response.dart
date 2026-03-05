@@ -9,21 +9,20 @@ class MarketplaceGalleryImageStatusDownloadStatusResponse {
 
   /// Creates a new [MarketplaceGalleryImageStatusDownloadStatusResponse].
   /// [downloadSizeInMB] The downloaded sized of the image in MB
-  MarketplaceGalleryImageStatusDownloadStatusResponse({this.downloadSizeInMB});
+  MarketplaceGalleryImageStatusDownloadStatusResponse({
+    this.downloadSizeInMB,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'downloadSizeInMB': ?downloadSizeInMB};
+    return <String, dynamic>{
+      'downloadSizeInMB': ?downloadSizeInMB,
+    };
   }
 
-  factory MarketplaceGalleryImageStatusDownloadStatusResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MarketplaceGalleryImageStatusDownloadStatusResponse.fromMap(Map<String, dynamic> map) {
     return MarketplaceGalleryImageStatusDownloadStatusResponse(
-      downloadSizeInMB: (() {
-        final guardedValue = map['downloadSizeInMB'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      downloadSizeInMB: (() { final guardedValue = map['downloadSizeInMB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

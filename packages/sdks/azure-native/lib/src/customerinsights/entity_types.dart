@@ -17,3 +17,4 @@ enum EntityTypes {
     throw ArgumentError('Unknown EntityTypes value: $value');
   }
 }
+

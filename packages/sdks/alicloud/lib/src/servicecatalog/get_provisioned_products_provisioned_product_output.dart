@@ -25,9 +25,7 @@ class GetProvisionedProductsProvisionedProductOutput {
     };
   }
 
-  factory GetProvisionedProductsProvisionedProductOutput.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetProvisionedProductsProvisionedProductOutput.fromMap(Map<String, dynamic> map) {
     return GetProvisionedProductsProvisionedProductOutput(
       description: pulumi.Input.fromValue(map['description'] as String),
       outputKey: pulumi.Input.fromValue(map['outputKey'] as String),
@@ -35,3 +33,4 @@ class GetProvisionedProductsProvisionedProductOutput {
     );
   }
 }
+

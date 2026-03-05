@@ -12,14 +12,15 @@ class GetBucketReplicationConfigurationRuleExistingObjectReplication {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'status': status};
+    return <String, dynamic>{
+      'status': status,
+    };
   }
 
-  factory GetBucketReplicationConfigurationRuleExistingObjectReplication.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetBucketReplicationConfigurationRuleExistingObjectReplication.fromMap(Map<String, dynamic> map) {
     return GetBucketReplicationConfigurationRuleExistingObjectReplication(
       status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
+

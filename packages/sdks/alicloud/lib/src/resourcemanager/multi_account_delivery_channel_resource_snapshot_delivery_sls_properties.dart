@@ -17,15 +17,10 @@ class MultiAccountDeliveryChannelResourceSnapshotDeliverySlsProperties {
     };
   }
 
-  factory MultiAccountDeliveryChannelResourceSnapshotDeliverySlsProperties.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MultiAccountDeliveryChannelResourceSnapshotDeliverySlsProperties.fromMap(Map<String, dynamic> map) {
     return MultiAccountDeliveryChannelResourceSnapshotDeliverySlsProperties(
-      oversizedDataOssTargetArn: (() {
-        final guardedValue = map['oversizedDataOssTargetArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      oversizedDataOssTargetArn: (() { final guardedValue = map['oversizedDataOssTargetArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

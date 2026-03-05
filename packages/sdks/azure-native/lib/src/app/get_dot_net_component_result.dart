@@ -9,28 +9,20 @@ import 'system_data_response.dart';
 class GetDotNetComponentResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Type of the .NET Component.
   final String? componentType;
-
   /// List of .NET Components configuration properties
   final List<DotNetComponentConfigurationPropertyResponse>? configurations;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// The name of the resource
   final String name;
-
   /// Provisioning state of the .NET Component.
   final String provisioningState;
-
   /// List of .NET Components that are bound to the .NET component
   final List<DotNetComponentServiceBindResponse>? serviceBinds;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -60,25 +52,11 @@ class GetDotNetComponentResult {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
       'componentType': ?componentType,
-      'configurations': ?(() {
-        final guardedValue = configurations;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          DotNetComponentConfigurationPropertyResponse,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'configurations': ?(() { final guardedValue = configurations; if (guardedValue == null) return null; return pulumi.Input.encodeList<DotNetComponentConfigurationPropertyResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'id': id,
       'name': name,
       'provisioningState': provisioningState,
-      'serviceBinds': ?(() {
-        final guardedValue = serviceBinds;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          DotNetComponentServiceBindResponse,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'serviceBinds': ?(() { final guardedValue = serviceBinds; if (guardedValue == null) return null; return pulumi.Input.encodeList<DotNetComponentServiceBindResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'systemData': systemData.toMap(),
       'type': type,
     };
@@ -87,39 +65,15 @@ class GetDotNetComponentResult {
   factory GetDotNetComponentResult.fromMap(Map<String, dynamic> map) {
     return GetDotNetComponentResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      componentType: (() {
-        final guardedValue = map['componentType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      configurations: (() {
-        final guardedValue = map['configurations'];
-        if (guardedValue == null) return null;
-        return pulumi
-            .Input.decodeList<DotNetComponentConfigurationPropertyResponse>(
-          guardedValue,
-          (value) => DotNetComponentConfigurationPropertyResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      componentType: (() { final guardedValue = map['componentType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      configurations: (() { final guardedValue = map['configurations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<DotNetComponentConfigurationPropertyResponse>(guardedValue, (value) => DotNetComponentConfigurationPropertyResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      serviceBinds: (() {
-        final guardedValue = map['serviceBinds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<DotNetComponentServiceBindResponse>(
-          guardedValue,
-          (value) => DotNetComponentServiceBindResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      serviceBinds: (() { final guardedValue = map['serviceBinds']; if (guardedValue == null) return null; return pulumi.Input.decodeList<DotNetComponentServiceBindResponse>(guardedValue, (value) => DotNetComponentServiceBindResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

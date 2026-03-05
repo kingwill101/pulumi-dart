@@ -9,13 +9,20 @@ class IPRule {
 
   /// Creates a new [IPRule].
   /// [value] An IPv4 address range in CIDR notation, such as '124.56.78.91' (simple IP address) or '124.56.78.0/24' (all addresses that start with 124.56.78).
-  IPRule({required this.value});
+  IPRule({
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': value};
+    return <String, dynamic>{
+      'value': value,
+    };
   }
 
   factory IPRule.fromMap(Map<String, dynamic> map) {
-    return IPRule(value: pulumi.Input.fromValue(map['value'] as String));
+    return IPRule(
+      value: pulumi.Input.fromValue(map['value'] as String),
+    );
   }
 }
+

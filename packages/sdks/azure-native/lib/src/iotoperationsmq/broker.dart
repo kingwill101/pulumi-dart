@@ -1133,63 +1133,42 @@ import 'system_data_response.dart';
 class Broker extends pulumi.CustomResource {
   /// The details of Authentication Docker Image.
   late final pulumi.Output<ContainerImageResponse> authImage;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The details of Broker Docker Image.
   late final pulumi.Output<ContainerImageResponse> brokerImage;
-
   /// The details of Node Tolerations for Broker Pods.
   late final pulumi.Output<NodeTolerationsResponse?> brokerNodeTolerations;
-
   /// The cardinality details of the broker.
   late final pulumi.Output<CardinalityResponse?> cardinality;
-
   /// The diagnostic details of the broker deployment.
   late final pulumi.Output<BrokerDiagnosticsResponse?> diagnostics;
-
   /// The settings of the disk-backed message buffer.
-  late final pulumi.Output<DiskBackedMessageBufferSettingsResponse?>
-  diskBackedMessageBufferSettings;
-
+  late final pulumi.Output<DiskBackedMessageBufferSettingsResponse?> diskBackedMessageBufferSettings;
   /// The setting to enable or disable encryption of internal Traffic.
   late final pulumi.Output<bool?> encryptInternalTraffic;
-
   /// Extended Location
   late final pulumi.Output<ExtendedLocationPropertyResponse> extendedLocation;
-
   /// The details of Health Manager Docker Image.
   late final pulumi.Output<ContainerImageResponse> healthManagerImage;
-
   /// The details of Node Tolerations for Health Manager Pods.
-  late final pulumi.Output<NodeTolerationsResponse?>
-  healthManagerNodeTolerations;
-
+  late final pulumi.Output<NodeTolerationsResponse?> healthManagerNodeTolerations;
   /// Details of the internal CA cert that will be used to secure communication between pods.
   late final pulumi.Output<CertManagerCertOptionsResponse?> internalCerts;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// Memory profile of broker.
   late final pulumi.Output<String?> memoryProfile;
-
   /// The Running Mode of the Broker Deployment.
   late final pulumi.Output<String> mode;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The status of the last operation.
   late final pulumi.Output<String> provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -1197,131 +1176,34 @@ class Broker extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Broker]. {@macro pulumi_iotoperationsmq_broker_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Broker(String name, {BrokerArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:iotoperationsmq:Broker',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
-    authImage = registerOutput<ContainerImageResponse>(
-      'authImage',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ContainerImageResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+  Broker(
+    String name, {
+    BrokerArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:iotoperationsmq:Broker',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    authImage = registerOutput<ContainerImageResponse>('authImage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerImageResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    brokerImage = registerOutput<ContainerImageResponse>(
-      'brokerImage',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ContainerImageResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    brokerNodeTolerations = registerOutput<NodeTolerationsResponse?>(
-      'brokerNodeTolerations',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NodeTolerationsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    cardinality = registerOutput<CardinalityResponse?>(
-      'cardinality',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CardinalityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    diagnostics = registerOutput<BrokerDiagnosticsResponse?>(
-      'diagnostics',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BrokerDiagnosticsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    diskBackedMessageBufferSettings =
-        registerOutput<DiskBackedMessageBufferSettingsResponse?>(
-          'diskBackedMessageBufferSettings',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return DiskBackedMessageBufferSettingsResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    brokerImage = registerOutput<ContainerImageResponse>('brokerImage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerImageResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    brokerNodeTolerations = registerOutput<NodeTolerationsResponse?>('brokerNodeTolerations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeTolerationsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cardinality = registerOutput<CardinalityResponse?>('cardinality', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CardinalityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    diagnostics = registerOutput<BrokerDiagnosticsResponse?>('diagnostics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BrokerDiagnosticsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    diskBackedMessageBufferSettings = registerOutput<DiskBackedMessageBufferSettingsResponse?>('diskBackedMessageBufferSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DiskBackedMessageBufferSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     encryptInternalTraffic = registerOutput<bool?>('encryptInternalTraffic');
-    extendedLocation = registerOutput<ExtendedLocationPropertyResponse>(
-      'extendedLocation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExtendedLocationPropertyResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    healthManagerImage = registerOutput<ContainerImageResponse>(
-      'healthManagerImage',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ContainerImageResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    healthManagerNodeTolerations = registerOutput<NodeTolerationsResponse?>(
-      'healthManagerNodeTolerations',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NodeTolerationsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    internalCerts = registerOutput<CertManagerCertOptionsResponse?>(
-      'internalCerts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CertManagerCertOptionsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    extendedLocation = registerOutput<ExtendedLocationPropertyResponse>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationPropertyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    healthManagerImage = registerOutput<ContainerImageResponse>('healthManagerImage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerImageResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    healthManagerNodeTolerations = registerOutput<NodeTolerationsResponse?>('healthManagerNodeTolerations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeTolerationsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    internalCerts = registerOutput<CertManagerCertOptionsResponse?>('internalCerts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertManagerCertOptionsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     memoryProfile = registerOutput<String?>('memoryProfile');
     mode = registerOutput<String>('mode');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

@@ -710,36 +710,29 @@ class Cluster extends pulumi.CustomResource {
   /// Allows you to configure various aspects of the cluster.
   /// Structure defined below.
   late final pulumi.Output<ClusterClusterConfig> clusterConfig;
-
   /// The list of labels (key/value pairs) to be applied to
   /// instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
   /// which is the name of the cluster.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   late final pulumi.Output<String?> gracefulDecommissionTimeout;
-
   /// The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field 'effective_labels' for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// The name of the cluster, unique within the project and
   /// zone.
   ///
   /// - - -
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the `cluster` will exist. If it
   /// is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// The region in which the cluster and associated nodes will be created in.
   /// Defaults to `global`.
   late final pulumi.Output<String?> region;
-
   /// Allows you to configure a virtual Dataproc on GKE cluster.
   /// Structure defined below.
   late final pulumi.Output<ClusterVirtualClusterConfig> virtualClusterConfig;
@@ -753,40 +746,20 @@ class Cluster extends pulumi.CustomResource {
     ClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:dataproc/cluster:Cluster',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    clusterConfig = registerOutput<ClusterClusterConfig>(
-      'clusterConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterClusterConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:dataproc/cluster:Cluster',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    clusterConfig = registerOutput<ClusterClusterConfig>('clusterConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterClusterConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    gracefulDecommissionTimeout = registerOutput<String?>(
-      'gracefulDecommissionTimeout',
-    );
+    gracefulDecommissionTimeout = registerOutput<String?>('gracefulDecommissionTimeout');
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     region = registerOutput<String?>('region');
-    virtualClusterConfig = registerOutput<ClusterVirtualClusterConfig>(
-      'virtualClusterConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterVirtualClusterConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    virtualClusterConfig = registerOutput<ClusterVirtualClusterConfig>('virtualClusterConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterVirtualClusterConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [Cluster] resource's state with the given [name] and [id].
@@ -807,39 +780,19 @@ class Cluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:dataproc/cluster:Cluster',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    clusterConfig = registerOutput<ClusterClusterConfig>(
-      'clusterConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterClusterConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:dataproc/cluster:Cluster',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    clusterConfig = registerOutput<ClusterClusterConfig>('clusterConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterClusterConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    gracefulDecommissionTimeout = registerOutput<String?>(
-      'gracefulDecommissionTimeout',
-    );
+    gracefulDecommissionTimeout = registerOutput<String?>('gracefulDecommissionTimeout');
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     region = registerOutput<String?>('region');
-    virtualClusterConfig = registerOutput<ClusterVirtualClusterConfig>(
-      'virtualClusterConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterVirtualClusterConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    virtualClusterConfig = registerOutput<ClusterVirtualClusterConfig>('virtualClusterConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterVirtualClusterConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

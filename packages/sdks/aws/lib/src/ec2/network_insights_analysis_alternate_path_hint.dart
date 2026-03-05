@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkInsightsAnalysisAlternatePathHint {
   /// The Amazon Resource Name (ARN) of the component.
   final pulumi.Input<String>? componentArn;
-
   /// The ID of the component.
   final pulumi.Input<String>? componentId;
 
@@ -24,20 +23,11 @@ class NetworkInsightsAnalysisAlternatePathHint {
     };
   }
 
-  factory NetworkInsightsAnalysisAlternatePathHint.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NetworkInsightsAnalysisAlternatePathHint.fromMap(Map<String, dynamic> map) {
     return NetworkInsightsAnalysisAlternatePathHint(
-      componentArn: (() {
-        final guardedValue = map['componentArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      componentId: (() {
-        final guardedValue = map['componentId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      componentArn: (() { final guardedValue = map['componentArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      componentId: (() { final guardedValue = map['componentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

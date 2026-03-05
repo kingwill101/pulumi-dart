@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetProjectArgs {
   /// The name of this Dev Center Project.
   final pulumi.Input<String> name;
-
   /// The name of the Resource Group where the Dev Center Project exists.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetProjectArgs].
   /// [name] The name of this Dev Center Project.
   /// [resourceGroupName] The name of the Resource Group where the Dev Center Project exists.
-  GetProjectArgs({required this.name, required this.resourceGroupName});
+  GetProjectArgs({
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,9 +30,8 @@ class GetProjectArgs {
   factory GetProjectArgs.fromMap(Map<String, dynamic> map) {
     return GetProjectArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

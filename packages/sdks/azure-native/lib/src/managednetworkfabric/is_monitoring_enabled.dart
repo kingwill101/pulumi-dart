@@ -15,3 +15,4 @@ enum IsMonitoringEnabled {
     throw ArgumentError('Unknown IsMonitoringEnabled value: $value');
   }
 }
+

@@ -1,31 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getProject.
 class GetProjectResult {
   /// The date and time when the project was created, (ISO8601)
   final String createdAt;
-
   /// The description of the project
   final String description;
-
   /// The environment of the project's resources. The possible values are: `Development`, `Staging`, `Production`.
   final String environment;
   final String id;
   final bool isDefault;
   final String name;
-
   /// The ID of the project owner.
   final int ownerId;
-
   /// The unique universal identifier of the project owner.
   final String ownerUuid;
-
   /// The purpose of the project, (Default: "Web Application")
   final String purpose;
-
   /// A set of uniform resource names (URNs) for the resources associated with the project
   final List<String> resources;
-
   /// The date and time when the project was last updated, (ISO8601)
   final String updatedAt;
 
@@ -87,3 +81,4 @@ class GetProjectResult {
     );
   }
 }
+

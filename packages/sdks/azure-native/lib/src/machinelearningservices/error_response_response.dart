@@ -10,29 +10,20 @@ class ErrorResponseResponse {
 
   /// Creates a new [ErrorResponseResponse].
   /// [error] The error object.
-  ErrorResponseResponse({this.error});
+  ErrorResponseResponse({
+    this.error,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'error':
-          ?pulumi.Input.mapOptionalInputValue<
-            ErrorDetailResponse,
-            Map<String, dynamic>
-          >(error, (value) => value.toMap()),
+      'error': ?pulumi.Input.mapOptionalInputValue<ErrorDetailResponse, Map<String, dynamic>>(error, (value) => value.toMap()),
     };
   }
 
   factory ErrorResponseResponse.fromMap(Map<String, dynamic> map) {
     return ErrorResponseResponse(
-      error: (() {
-        final guardedValue = map['error'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ErrorDetailResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      error: (() { final guardedValue = map['error']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ErrorDetailResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

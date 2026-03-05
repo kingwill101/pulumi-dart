@@ -231,10 +231,8 @@ import 'vpn_connection_route_state.dart';
 class VpnConnectionRouteEc2 extends pulumi.CustomResource {
   /// The CIDR block associated with the local subnet of the customer network.
   late final pulumi.Output<String> destinationCidrBlock;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The ID of the VPN connection.
   late final pulumi.Output<String> vpnConnectionId;
 
@@ -247,11 +245,11 @@ class VpnConnectionRouteEc2 extends pulumi.CustomResource {
     VpnConnectionRouteArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/vpnConnectionRoute:VpnConnectionRoute',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/vpnConnectionRoute:VpnConnectionRoute',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     destinationCidrBlock = registerOutput<String>('destinationCidrBlock');
     region = registerOutput<String>('region');
     vpnConnectionId = registerOutput<String>('vpnConnectionId');
@@ -275,11 +273,11 @@ class VpnConnectionRouteEc2 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/vpnConnectionRoute:VpnConnectionRoute',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/vpnConnectionRoute:VpnConnectionRoute',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     destinationCidrBlock = registerOutput<String>('destinationCidrBlock');
     region = registerOutput<String>('region');
     vpnConnectionId = registerOutput<String>('vpnConnectionId');

@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSolutionArgs {
   /// The name of the resource group to get. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// User Solution Name.
   final pulumi.Input<String> solutionName;
 
@@ -30,10 +29,9 @@ class GetSolutionArgs {
 
   factory GetSolutionArgs.fromMap(Map<String, dynamic> map) {
     return GetSolutionArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       solutionName: pulumi.Input.fromValue(map['solutionName'] as String),
     );
   }
 }
+

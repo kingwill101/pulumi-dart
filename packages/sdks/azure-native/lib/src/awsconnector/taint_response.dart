@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TaintResponse {
   /// Property effect
   final pulumi.Input<String>? effect;
-
   /// Property key
   final pulumi.Input<String>? key;
-
   /// Property value
   final pulumi.Input<String>? value;
 
@@ -17,29 +15,26 @@ class TaintResponse {
   /// [effect] Property effect
   /// [key] Property key
   /// [value] Property value
-  TaintResponse({this.effect, this.key, this.value});
+  TaintResponse({
+    this.effect,
+    this.key,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'effect': ?effect, 'key': ?key, 'value': ?value};
+    return <String, dynamic>{
+      'effect': ?effect,
+      'key': ?key,
+      'value': ?value,
+    };
   }
 
   factory TaintResponse.fromMap(Map<String, dynamic> map) {
     return TaintResponse(
-      effect: (() {
-        final guardedValue = map['effect'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      key: (() {
-        final guardedValue = map['key'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      effect: (() { final guardedValue = map['effect']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSiteLocation {
   /// Address of the location.
   final pulumi.Input<String> address;
-
   /// Latitude of the location.
   final pulumi.Input<String> latitude;
-
   /// Longitude of the location.
   final pulumi.Input<String> longitude;
 
@@ -38,3 +36,4 @@ class GetSiteLocation {
     );
   }
 }
+

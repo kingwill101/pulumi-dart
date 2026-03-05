@@ -183,55 +183,38 @@ import 'system_data_response.dart';
 class JobDefinition extends pulumi.CustomResource {
   /// Name of the Agent to assign for new Job Runs of this Job Definition.
   late final pulumi.Output<String?> agentName;
-
   /// Fully qualified resource id of the Agent to assign for new Job Runs of this Job Definition.
   late final pulumi.Output<String> agentResourceId;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Strategy to use for copy.
   late final pulumi.Output<String> copyMode;
-
   /// A description for the Job Definition. OnPremToCloud is for migrating data from on-premises to cloud. CloudToCloud is for migrating data between cloud to cloud.
   late final pulumi.Output<String?> description;
-
   /// The name of the Job Run in a non-terminal state, if exists.
   late final pulumi.Output<String> latestJobRunName;
-
   /// The fully qualified resource ID of the Job Run in a non-terminal state, if exists.
   late final pulumi.Output<String> latestJobRunResourceId;
-
   /// The current status of the Job Run in a non-terminal state, if exists.
   late final pulumi.Output<String> latestJobRunStatus;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The provisioning state of this resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The name of the source Endpoint.
   late final pulumi.Output<String> sourceName;
-
   /// Fully qualified resource ID of the source Endpoint.
   late final pulumi.Output<String> sourceResourceId;
-
   /// The subpath to use when reading from the source Endpoint.
   late final pulumi.Output<String?> sourceSubpath;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The name of the target Endpoint.
   late final pulumi.Output<String> targetName;
-
   /// Fully qualified resource ID of the target Endpoint.
   late final pulumi.Output<String> targetResourceId;
-
   /// The subpath to use when writing to the target Endpoint.
   late final pulumi.Output<String?> targetSubpath;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -244,11 +227,11 @@ class JobDefinition extends pulumi.CustomResource {
     JobDefinitionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:storagemover:JobDefinition',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:storagemover:JobDefinition',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     agentName = registerOutput<String?>('agentName');
     agentResourceId = registerOutput<String>('agentResourceId');
     azureApiVersion = registerOutput<String>('azureApiVersion');
@@ -262,16 +245,7 @@ class JobDefinition extends pulumi.CustomResource {
     sourceName = registerOutput<String>('sourceName');
     sourceResourceId = registerOutput<String>('sourceResourceId');
     sourceSubpath = registerOutput<String?>('sourceSubpath');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     targetName = registerOutput<String>('targetName');
     targetResourceId = registerOutput<String>('targetResourceId');
     targetSubpath = registerOutput<String?>('targetSubpath');

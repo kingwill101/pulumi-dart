@@ -159,18 +159,14 @@ class QosBandwidthLimitRule extends pulumi.CustomResource {
   /// The direction of traffic. Defaults to "egress". Changing this updates the direction of the
   /// existing QoS bandwidth limit rule.
   late final pulumi.Output<String?> direction;
-
   /// The maximum burst size in kilobits of a QoS bandwidth limit rule. Changing this updates the
   /// maximum burst size in kilobits of the existing QoS bandwidth limit rule.
   late final pulumi.Output<int?> maxBurstKbps;
-
   /// The maximum kilobits per second of a QoS bandwidth limit rule. Changing this updates the
   /// maximum kilobits per second of the existing QoS bandwidth limit rule.
   late final pulumi.Output<int> maxKbps;
-
   /// The QoS policy reference. Changing this creates a new QoS bandwidth limit rule.
   late final pulumi.Output<String> qosPolicyId;
-
   /// The region in which to obtain the V2 Networking client.
   /// A Networking client is needed to create a Neutron QoS bandwidth limit rule. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new QoS bandwidth limit rule.
@@ -185,11 +181,11 @@ class QosBandwidthLimitRule extends pulumi.CustomResource {
     QosBandwidthLimitRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:networking/qosBandwidthLimitRule:QosBandwidthLimitRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:networking/qosBandwidthLimitRule:QosBandwidthLimitRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     direction = registerOutput<String?>('direction');
     maxBurstKbps = registerOutput<int?>('maxBurstKbps');
     maxKbps = registerOutput<int>('maxKbps');
@@ -215,11 +211,11 @@ class QosBandwidthLimitRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:networking/qosBandwidthLimitRule:QosBandwidthLimitRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:networking/qosBandwidthLimitRule:QosBandwidthLimitRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     direction = registerOutput<String?>('direction');
     maxBurstKbps = registerOutput<int?>('maxBurstKbps');
     maxKbps = registerOutput<int>('maxKbps');

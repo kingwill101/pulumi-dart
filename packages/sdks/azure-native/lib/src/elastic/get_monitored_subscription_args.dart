@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMonitoredSubscriptionArgs {
   /// The configuration name. Only 'default' value is supported.
   final pulumi.Input<String> configurationName;
-
   /// Monitor resource name
   final pulumi.Input<String> monitorName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,13 +34,10 @@ class GetMonitoredSubscriptionArgs {
 
   factory GetMonitoredSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return GetMonitoredSubscriptionArgs(
-      configurationName: pulumi.Input.fromValue(
-        map['configurationName'] as String,
-      ),
+      configurationName: pulumi.Input.fromValue(map['configurationName'] as String),
       monitorName: pulumi.Input.fromValue(map['monitorName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

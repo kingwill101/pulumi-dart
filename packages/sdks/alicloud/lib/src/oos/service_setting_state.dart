@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceSettingState {
   /// The name of the OSS bucket. **NOTE:** When the `delivery_oss_enabled` is `true`, The `delivery_oss_bucket_name` is valid.
   final pulumi.Input<String>? deliveryOssBucketName;
-
   /// Is the recording function for the OSS delivery template enabled.
   final pulumi.Input<bool>? deliveryOssEnabled;
-
   /// The Directory of the OSS bucket. **NOTE:** When the `delivery_oss_enabled` is `true`, The `delivery_oss_bucket_name` is valid.
   final pulumi.Input<String>? deliveryOssKeyPrefix;
-
   /// Is the execution record function to SLS delivery Template turned on.
   final pulumi.Input<bool>? deliverySlsEnabled;
-
   /// The name of SLS  Project. **NOTE:** When the `delivery_sls_enabled` is `true`, The `delivery_sls_project_name` is valid.
   final pulumi.Input<String>? deliverySlsProjectName;
 
@@ -45,31 +41,12 @@ class ServiceSettingState {
 
   factory ServiceSettingState.fromMap(Map<String, dynamic> map) {
     return ServiceSettingState(
-      deliveryOssBucketName: (() {
-        final guardedValue = map['deliveryOssBucketName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      deliveryOssEnabled: (() {
-        final guardedValue = map['deliveryOssEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      deliveryOssKeyPrefix: (() {
-        final guardedValue = map['deliveryOssKeyPrefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      deliverySlsEnabled: (() {
-        final guardedValue = map['deliverySlsEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      deliverySlsProjectName: (() {
-        final guardedValue = map['deliverySlsProjectName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      deliveryOssBucketName: (() { final guardedValue = map['deliveryOssBucketName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deliveryOssEnabled: (() { final guardedValue = map['deliveryOssEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      deliveryOssKeyPrefix: (() { final guardedValue = map['deliveryOssKeyPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deliverySlsEnabled: (() { final guardedValue = map['deliverySlsEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      deliverySlsProjectName: (() { final guardedValue = map['deliverySlsProjectName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

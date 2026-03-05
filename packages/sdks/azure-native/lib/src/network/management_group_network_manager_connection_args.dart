@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagementGroupNetworkManagerConnectionArgs {
   /// A description of the network manager connection.
   final pulumi.Input<String>? description;
-
   /// The management group Id which uniquely identify the Microsoft Azure management group.
   final pulumi.Input<String> managementGroupId;
-
   /// Name for the network manager connection.
   final pulumi.Input<String>? networkManagerConnectionName;
-
   /// Network Manager Id.
   final pulumi.Input<String>? networkManagerId;
 
@@ -40,28 +37,13 @@ class ManagementGroupNetworkManagerConnectionArgs {
     };
   }
 
-  factory ManagementGroupNetworkManagerConnectionArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ManagementGroupNetworkManagerConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ManagementGroupNetworkManagerConnectionArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      managementGroupId: pulumi.Input.fromValue(
-        map['managementGroupId'] as String,
-      ),
-      networkManagerConnectionName: (() {
-        final guardedValue = map['networkManagerConnectionName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      networkManagerId: (() {
-        final guardedValue = map['networkManagerId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      managementGroupId: pulumi.Input.fromValue(map['managementGroupId'] as String),
+      networkManagerConnectionName: (() { final guardedValue = map['networkManagerConnectionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      networkManagerId: (() { final guardedValue = map['networkManagerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

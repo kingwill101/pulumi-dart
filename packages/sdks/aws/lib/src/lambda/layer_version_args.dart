@@ -9,39 +9,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LayerVersionArgs {
   /// Path to the function's deployment package within the local filesystem. If defined, The `s3_`-prefixed options cannot be used.
   final pulumi.Input<dynamic>? code;
-
   /// List of [Architectures](https://docs.aws.amazon.com/lambda/latest/dg/API_PublishLayerVersion.html#SSS-PublishLayerVersion-request-CompatibleArchitectures) this layer is compatible with. Currently `x86_64` and `arm64` can be specified.
   final pulumi.Input<List<String>>? compatibleArchitectures;
-
   /// List of [Runtimes](https://docs.aws.amazon.com/lambda/latest/dg/API_PublishLayerVersion.html#SSS-PublishLayerVersion-request-CompatibleRuntimes) this layer is compatible with. Up to 15 runtimes can be specified.
   final pulumi.Input<List<String>>? compatibleRuntimes;
-
   /// Description of what your Lambda Layer does.
   final pulumi.Input<String>? description;
-
   /// Unique name for your Lambda Layer.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> layerName;
-
   /// License info for your Lambda Layer. See [License Info](https://docs.aws.amazon.com/lambda/latest/dg/API_PublishLayerVersion.html#SSS-PublishLayerVersion-request-LicenseInfo).
   final pulumi.Input<String>? licenseInfo;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// S3 bucket location containing the function's deployment package. Conflicts with `filename`. This bucket must reside in the same AWS region where you are creating the Lambda function.
   final pulumi.Input<String>? s3Bucket;
-
   /// S3 key of an object containing the function's deployment package. Conflicts with `filename`.
   final pulumi.Input<String>? s3Key;
-
   /// Object version containing the function's deployment package. Conflicts with `filename`.
   final pulumi.Input<String>? s3ObjectVersion;
-
   /// Whether to retain the old version of a previously deployed Lambda Layer. Default is `false`. When this is not set to `true`, changing any of `compatible_architectures`, `compatible_runtimes`, `description`, `filename`, `layer_name`, `license_info`, `s3_bucket`, `s3_key`, `s3_object_version`, or `source_code_hash` forces deletion of the existing layer version and creation of a new layer version.
   final pulumi.Input<bool>? skipDestroy;
-
   /// Virtual attribute used to trigger replacement when source code changes. Must be set to a base64-encoded SHA256 hash of the package file specified with either `filename` or `s3_key`. The usual way to set this is `filebase64sha256("file.zip")` or `base64sha256(file("file.zip"))`, where "file.zip" is the local filename of the lambda layer source archive.
   final pulumi.Input<String>? sourceCodeHash;
 
@@ -92,62 +81,19 @@ class LayerVersionArgs {
 
   factory LayerVersionArgs.fromMap(Map<String, dynamic> map) {
     return LayerVersionArgs(
-      code: (() {
-        final guardedValue = map['code'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      compatibleArchitectures: (() {
-        final guardedValue = map['compatibleArchitectures'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      compatibleRuntimes: (() {
-        final guardedValue = map['compatibleRuntimes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      code: (() { final guardedValue = map['code']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      compatibleArchitectures: (() { final guardedValue = map['compatibleArchitectures']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      compatibleRuntimes: (() { final guardedValue = map['compatibleRuntimes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       layerName: pulumi.Input.fromValue(map['layerName'] as String),
-      licenseInfo: (() {
-        final guardedValue = map['licenseInfo'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      s3Bucket: (() {
-        final guardedValue = map['s3Bucket'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      s3Key: (() {
-        final guardedValue = map['s3Key'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      s3ObjectVersion: (() {
-        final guardedValue = map['s3ObjectVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      skipDestroy: (() {
-        final guardedValue = map['skipDestroy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      sourceCodeHash: (() {
-        final guardedValue = map['sourceCodeHash'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      licenseInfo: (() { final guardedValue = map['licenseInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      s3Bucket: (() { final guardedValue = map['s3Bucket']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      s3Key: (() { final guardedValue = map['s3Key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      s3ObjectVersion: (() { final guardedValue = map['s3ObjectVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      skipDestroy: (() { final guardedValue = map['skipDestroy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      sourceCodeHash: (() { final guardedValue = map['sourceCodeHash']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

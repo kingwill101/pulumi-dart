@@ -14,18 +14,15 @@ class GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'resultsTable': ?resultsTable};
+    return <String, dynamic>{
+      'resultsTable': ?resultsTable,
+    };
   }
 
-  factory GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport(
-      resultsTable: (() {
-        final guardedValue = map['resultsTable'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      resultsTable: (() { final guardedValue = map['resultsTable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

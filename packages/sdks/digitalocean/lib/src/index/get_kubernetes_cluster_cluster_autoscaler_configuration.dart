@@ -25,25 +25,12 @@ class GetKubernetesClusterClusterAutoscalerConfiguration {
     };
   }
 
-  factory GetKubernetesClusterClusterAutoscalerConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetKubernetesClusterClusterAutoscalerConfiguration.fromMap(Map<String, dynamic> map) {
     return GetKubernetesClusterClusterAutoscalerConfiguration(
-      expanders: (() {
-        final guardedValue = map['expanders'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      scaleDownUnneededTime: (() {
-        final guardedValue = map['scaleDownUnneededTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      scaleDownUtilizationThreshold: (() {
-        final guardedValue = map['scaleDownUtilizationThreshold'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      expanders: (() { final guardedValue = map['expanders']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      scaleDownUnneededTime: (() { final guardedValue = map['scaleDownUnneededTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      scaleDownUtilizationThreshold: (() { final guardedValue = map['scaleDownUtilizationThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

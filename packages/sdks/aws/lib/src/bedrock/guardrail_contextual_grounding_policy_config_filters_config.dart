@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GuardrailContextualGroundingPolicyConfigFiltersConfig {
   /// The threshold for this filter.
   final pulumi.Input<double> threshold;
-
   /// Type of contextual grounding filter.
   final pulumi.Input<String> type;
 
@@ -18,15 +17,17 @@ class GuardrailContextualGroundingPolicyConfigFiltersConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'threshold': threshold, 'type': type};
+    return <String, dynamic>{
+      'threshold': threshold,
+      'type': type,
+    };
   }
 
-  factory GuardrailContextualGroundingPolicyConfigFiltersConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GuardrailContextualGroundingPolicyConfigFiltersConfig.fromMap(Map<String, dynamic> map) {
     return GuardrailContextualGroundingPolicyConfigFiltersConfig(
       threshold: pulumi.Input.fromValue(map['threshold'] as double),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

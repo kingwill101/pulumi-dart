@@ -250,16 +250,12 @@ import 'certificate_state.dart';
 class Certificate extends pulumi.CustomResource {
   /// The Base-64 representation of the X509 leaf certificate .cer file or just a .pem file content.
   late final pulumi.Output<String> certificateContent;
-
   /// The name of the IoTHub that this certificate will be attached to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> iothubName;
-
   /// Is the certificate verified? Defaults to `false`.
   late final pulumi.Output<bool?> isVerified;
-
   /// Specifies the name of the IotHub Certificate resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the resource group under which the IotHub Certificate resource has to be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
 
@@ -272,11 +268,11 @@ class Certificate extends pulumi.CustomResource {
     CertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:iot/certificate:Certificate',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:iot/certificate:Certificate',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     certificateContent = registerOutput<String>('certificateContent');
     iothubName = registerOutput<String>('iothubName');
     isVerified = registerOutput<bool?>('isVerified');
@@ -302,11 +298,11 @@ class Certificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:iot/certificate:Certificate',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:iot/certificate:Certificate',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     certificateContent = registerOutput<String>('certificateContent');
     iothubName = registerOutput<String>('iothubName');
     isVerified = registerOutput<bool?>('isVerified');

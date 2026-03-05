@@ -8,21 +8,20 @@ class RouterBgpPeerCustomLearnedIpRangeComputeV1 {
 
   /// Creates a new [RouterBgpPeerCustomLearnedIpRangeComputeV1].
   /// [range] The custom learned route IP address range. Must be a valid CIDR-formatted prefix. If an IP address is provided without a subnet mask, it is interpreted as, for IPv4, a `/32` singular IP address range, and, for IPv6, `/128`.
-  RouterBgpPeerCustomLearnedIpRangeComputeV1({this.range});
+  RouterBgpPeerCustomLearnedIpRangeComputeV1({
+    this.range,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'range': ?range};
+    return <String, dynamic>{
+      'range': ?range,
+    };
   }
 
-  factory RouterBgpPeerCustomLearnedIpRangeComputeV1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RouterBgpPeerCustomLearnedIpRangeComputeV1.fromMap(Map<String, dynamic> map) {
     return RouterBgpPeerCustomLearnedIpRangeComputeV1(
-      range: (() {
-        final guardedValue = map['range'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      range: (() { final guardedValue = map['range']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

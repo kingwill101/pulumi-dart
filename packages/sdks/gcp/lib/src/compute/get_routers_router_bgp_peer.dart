@@ -56,9 +56,7 @@ class GetRoutersRouterBgpPeer {
   factory GetRoutersRouterBgpPeer.fromMap(Map<String, dynamic> map) {
     return GetRoutersRouterBgpPeer(
       advertiseMode: pulumi.Input.fromValue(map['advertiseMode'] as String),
-      advertisedRoutePriority: pulumi.Input.fromValue(
-        map['advertisedRoutePriority'] as int,
-      ),
+      advertisedRoutePriority: pulumi.Input.fromValue(map['advertisedRoutePriority'] as int),
       enable: pulumi.Input.fromValue(map['enable'] as String),
       enableIpv6: pulumi.Input.fromValue(map['enableIpv6'] as bool),
       interfaceName: pulumi.Input.fromValue(map['interfaceName'] as String),
@@ -70,3 +68,4 @@ class GetRoutersRouterBgpPeer {
     );
   }
 }
+

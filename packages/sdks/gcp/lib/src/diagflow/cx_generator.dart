@@ -281,32 +281,25 @@ import 'cx_generator_state.dart';
 class CxGenerator extends pulumi.CustomResource {
   /// The human-readable name of the generator, unique within the agent.
   late final pulumi.Output<String> displayName;
-
   /// The language to create generators for the following fields:
   /// * Generator.prompt_text.text
   /// If not specified, the agent's default language is used.
   late final pulumi.Output<String?> languageCode;
-
   /// The LLM model settings.
   /// Structure is documented below.
   late final pulumi.Output<CxGeneratorLlmModelSettings?> llmModelSettings;
-
   /// Parameters passed to the LLM to configure its behavior.
   /// Structure is documented below.
   late final pulumi.Output<CxGeneratorModelParameter?> modelParameter;
-
   /// The unique identifier of the Generator.
   /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/generators/&lt;Generator ID&gt;.
   late final pulumi.Output<String> name;
-
   /// The agent to create a Generator for.
   /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
   late final pulumi.Output<String?> parent;
-
   /// List of custom placeholders in the prompt text.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> placeholders;
-
   /// Prompt for the LLM model.
   /// Structure is documented below.
   late final pulumi.Output<CxGeneratorPromptText> promptText;
@@ -320,46 +313,19 @@ class CxGenerator extends pulumi.CustomResource {
     CxGeneratorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:diagflow/cxGenerator:CxGenerator',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:diagflow/cxGenerator:CxGenerator',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     displayName = registerOutput<String>('displayName');
     languageCode = registerOutput<String?>('languageCode');
-    llmModelSettings = registerOutput<CxGeneratorLlmModelSettings?>(
-      'llmModelSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CxGeneratorLlmModelSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    modelParameter = registerOutput<CxGeneratorModelParameter?>(
-      'modelParameter',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CxGeneratorModelParameter.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    llmModelSettings = registerOutput<CxGeneratorLlmModelSettings?>('llmModelSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxGeneratorLlmModelSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    modelParameter = registerOutput<CxGeneratorModelParameter?>('modelParameter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxGeneratorModelParameter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     parent = registerOutput<String?>('parent');
     placeholders = registerOutput<List<Map<String, dynamic>>?>('placeholders');
-    promptText = registerOutput<CxGeneratorPromptText>(
-      'promptText',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CxGeneratorPromptText.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    promptText = registerOutput<CxGeneratorPromptText>('promptText', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxGeneratorPromptText.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [CxGenerator] resource's state with the given [name] and [id].
@@ -380,45 +346,18 @@ class CxGenerator extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:diagflow/cxGenerator:CxGenerator',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:diagflow/cxGenerator:CxGenerator',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     displayName = registerOutput<String>('displayName');
     languageCode = registerOutput<String?>('languageCode');
-    llmModelSettings = registerOutput<CxGeneratorLlmModelSettings?>(
-      'llmModelSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CxGeneratorLlmModelSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    modelParameter = registerOutput<CxGeneratorModelParameter?>(
-      'modelParameter',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CxGeneratorModelParameter.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    llmModelSettings = registerOutput<CxGeneratorLlmModelSettings?>('llmModelSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxGeneratorLlmModelSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    modelParameter = registerOutput<CxGeneratorModelParameter?>('modelParameter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxGeneratorModelParameter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     parent = registerOutput<String?>('parent');
     placeholders = registerOutput<List<Map<String, dynamic>>?>('placeholders');
-    promptText = registerOutput<CxGeneratorPromptText>(
-      'promptText',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CxGeneratorPromptText.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    promptText = registerOutput<CxGeneratorPromptText>('promptText', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxGeneratorPromptText.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

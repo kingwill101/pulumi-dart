@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ControlPolicyAttachmentArgs {
   /// The ID of the access control policy.
   final pulumi.Input<String> policyId;
-
   /// The ID of the object from which you want to detach the access control policy. Access control policies can be attached to the following objects:
   ///
   /// - Root folder
@@ -20,10 +19,16 @@ class ControlPolicyAttachmentArgs {
   /// Creates a new [ControlPolicyAttachmentArgs].
   /// [policyId] The ID of the access control policy.
   /// [targetId] The ID of the object from which you want to detach the access control policy. Access control policies can be attached to the following objects:
-  ControlPolicyAttachmentArgs({required this.policyId, required this.targetId});
+  ControlPolicyAttachmentArgs({
+    required this.policyId,
+    required this.targetId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'policyId': policyId, 'targetId': targetId};
+    return <String, dynamic>{
+      'policyId': policyId,
+      'targetId': targetId,
+    };
   }
 
   factory ControlPolicyAttachmentArgs.fromMap(Map<String, dynamic> map) {
@@ -33,3 +38,4 @@ class ControlPolicyAttachmentArgs {
     );
   }
 }
+

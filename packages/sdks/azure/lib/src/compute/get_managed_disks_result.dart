@@ -7,7 +7,6 @@ import 'get_managed_disks_disk.dart';
 class GetManagedDisksResult {
   /// a `disk` block as detailed below.
   final List<GetManagedDisksDisk> disks;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String resourceGroupName;
@@ -24,11 +23,7 @@ class GetManagedDisksResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'disks':
-          pulumi.Input.encodeList<GetManagedDisksDisk, Map<String, dynamic>>(
-            disks,
-            (value) => value.toMap(),
-          ),
+      'disks': pulumi.Input.encodeList<GetManagedDisksDisk, Map<String, dynamic>>(disks, (value) => value.toMap()),
       'id': id,
       'resourceGroupName': resourceGroupName,
     };
@@ -36,13 +31,10 @@ class GetManagedDisksResult {
 
   factory GetManagedDisksResult.fromMap(Map<String, dynamic> map) {
     return GetManagedDisksResult(
-      disks: pulumi.Input.decodeList<GetManagedDisksDisk>(
-        map['disks']!,
-        (value) =>
-            GetManagedDisksDisk.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      disks: pulumi.Input.decodeList<GetManagedDisksDisk>(map['disks']!, (value) => GetManagedDisksDisk.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       resourceGroupName: map['resourceGroupName'] as String,
     );
   }
 }
+

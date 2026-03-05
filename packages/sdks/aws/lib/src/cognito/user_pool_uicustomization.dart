@@ -423,28 +423,20 @@ import 'user_pool_uicustomization_state.dart';
 class UserPoolUICustomization extends pulumi.CustomResource {
   /// The client ID for the client app. Defaults to `ALL`. If `ALL` is specified, the `css` and/or `image_file` settings will be used for every client that has no UI customization set previously.
   late final pulumi.Output<String?> clientId;
-
   /// The creation date in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) for the UI customization.
   late final pulumi.Output<String> creationDate;
-
   /// The CSS values in the UI customization, provided as a String. At least one of `css` or `image_file` is required.
   late final pulumi.Output<String?> css;
-
   /// The CSS version number.
   late final pulumi.Output<String> cssVersion;
-
   /// The uploaded logo image for the UI customization, provided as a base64-encoded String. Drift detection is not possible for this argument. At least one of `css` or `image_file` is required.
   late final pulumi.Output<String?> imageFile;
-
   /// The logo image URL for the UI customization.
   late final pulumi.Output<String> imageUrl;
-
   /// The last-modified date in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) for the UI customization.
   late final pulumi.Output<String> lastModifiedDate;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The user pool ID for the user pool.
   late final pulumi.Output<String> userPoolId;
 
@@ -457,11 +449,11 @@ class UserPoolUICustomization extends pulumi.CustomResource {
     UserPoolUICustomizationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cognito/userPoolUICustomization:UserPoolUICustomization',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cognito/userPoolUICustomization:UserPoolUICustomization',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clientId = registerOutput<String?>('clientId');
     creationDate = registerOutput<String>('creationDate');
     css = registerOutput<String?>('css');
@@ -491,11 +483,11 @@ class UserPoolUICustomization extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cognito/userPoolUICustomization:UserPoolUICustomization',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cognito/userPoolUICustomization:UserPoolUICustomization',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clientId = registerOutput<String?>('clientId');
     creationDate = registerOutput<String>('creationDate');
     css = registerOutput<String?>('css');

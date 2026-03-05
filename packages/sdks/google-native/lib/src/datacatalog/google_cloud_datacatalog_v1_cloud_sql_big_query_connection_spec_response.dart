@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponse {
   /// Database name.
   final pulumi.Input<String> database;
-
   /// Cloud SQL instance ID in the format of `project:location:instance`.
   final pulumi.Input<String> instanceId;
-
   /// Type of the Cloud SQL database.
   final pulumi.Input<String> type;
 
@@ -31,9 +29,7 @@ class GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponse {
     };
   }
 
-  factory GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponse(
       database: pulumi.Input.fromValue(map['database'] as String),
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
@@ -41,3 +37,4 @@ class GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponse {
     );
   }
 }
+

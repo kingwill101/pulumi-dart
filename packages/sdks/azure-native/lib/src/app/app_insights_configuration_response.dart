@@ -9,19 +9,20 @@ class AppInsightsConfigurationResponse {
 
   /// Creates a new [AppInsightsConfigurationResponse].
   /// [connectionString] Application Insights connection string
-  AppInsightsConfigurationResponse({this.connectionString});
+  AppInsightsConfigurationResponse({
+    this.connectionString,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'connectionString': ?connectionString};
+    return <String, dynamic>{
+      'connectionString': ?connectionString,
+    };
   }
 
   factory AppInsightsConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return AppInsightsConfigurationResponse(
-      connectionString: (() {
-        final guardedValue = map['connectionString'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      connectionString: (() { final guardedValue = map['connectionString']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

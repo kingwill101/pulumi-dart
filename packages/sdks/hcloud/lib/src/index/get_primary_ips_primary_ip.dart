@@ -71,16 +71,11 @@ class GetPrimaryIpsPrimaryIp {
       id: pulumi.Input.fromValue(map['id'] as int),
       ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
       ipNetwork: pulumi.Input.fromValue(map['ipNetwork'] as String),
-      labels: pulumi.Input.fromValue(
-        (map['labels'] as Map).cast<String, String>(),
-      ),
+      labels: pulumi.Input.fromValue((map['labels'] as Map).cast<String, String>()),
       location: pulumi.Input.fromValue(map['location'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

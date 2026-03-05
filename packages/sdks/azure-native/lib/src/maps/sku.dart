@@ -9,13 +9,20 @@ class Sku {
 
   /// Creates a new [Sku].
   /// [name] The name of the SKU, in standard format (such as G2).
-  Sku({required this.name});
+  Sku({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory Sku.fromMap(Map<String, dynamic> map) {
-    return Sku(name: pulumi.Input.fromValue(map['name'] as String));
+    return Sku(
+      name: pulumi.Input.fromValue(map['name'] as String),
+    );
   }
 }
+

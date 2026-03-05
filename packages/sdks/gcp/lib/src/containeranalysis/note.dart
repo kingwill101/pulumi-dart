@@ -366,36 +366,26 @@ class Note extends pulumi.CustomResource {
   /// project.
   /// Structure is documented below.
   late final pulumi.Output<NoteAttestationAuthority> attestationAuthority;
-
   /// The time this note was created.
   late final pulumi.Output<String> createTime;
-
   /// Time of expiration for this note. Leave empty if note does not expire.
   late final pulumi.Output<String?> expirationTime;
-
   /// The type of analysis this note describes
   late final pulumi.Output<String> kind;
-
   /// A detailed description of the note
   late final pulumi.Output<String?> longDescription;
-
   /// The name of the note.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Names of other notes related to this note.
   late final pulumi.Output<List<String>?> relatedNoteNames;
-
   /// URLs associated with this note and related metadata.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> relatedUrls;
-
   /// A one sentence description of the note.
   late final pulumi.Output<String?> shortDescription;
-
   /// The time this note was last updated.
   late final pulumi.Output<String> updateTime;
 
@@ -403,23 +393,17 @@ class Note extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Note]. {@macro pulumi_containeranalysis_note_note_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Note(String name, {NoteArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'gcp:containeranalysis/note:Note',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
-    attestationAuthority = registerOutput<NoteAttestationAuthority>(
-      'attestationAuthority',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NoteAttestationAuthority.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+  Note(
+    String name, {
+    NoteArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'gcp:containeranalysis/note:Note',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    attestationAuthority = registerOutput<NoteAttestationAuthority>('attestationAuthority', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NoteAttestationAuthority.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     expirationTime = registerOutput<String?>('expirationTime');
     kind = registerOutput<String>('kind');
@@ -433,7 +417,11 @@ class Note extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Note] resource's state with the given [name] and [id].
-  static Note get(String name, pulumi.Input<String> id, {NoteState? state}) {
+  static Note get(
+    String name,
+    pulumi.Input<String> id, {
+    NoteState? state,
+  }) {
     return Note._get(
       name,
       state: state?.toMap(),
@@ -446,21 +434,12 @@ class Note extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:containeranalysis/note:Note',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    attestationAuthority = registerOutput<NoteAttestationAuthority>(
-      'attestationAuthority',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NoteAttestationAuthority.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:containeranalysis/note:Note',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    attestationAuthority = registerOutput<NoteAttestationAuthority>('attestationAuthority', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NoteAttestationAuthority.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     expirationTime = registerOutput<String?>('expirationTime');
     kind = registerOutput<String>('kind');

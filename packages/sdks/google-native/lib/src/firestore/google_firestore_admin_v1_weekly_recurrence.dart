@@ -10,31 +10,20 @@ class GoogleFirestoreAdminV1WeeklyRecurrence {
 
   /// Creates a new [GoogleFirestoreAdminV1WeeklyRecurrence].
   /// [day] The day of week to run. DAY_OF_WEEK_UNSPECIFIED is not allowed.
-  GoogleFirestoreAdminV1WeeklyRecurrence({this.day});
+  GoogleFirestoreAdminV1WeeklyRecurrence({
+    this.day,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'day':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleFirestoreAdminV1WeeklyRecurrenceDay,
-            String
-          >(day, (value) => value.wireValue),
+      'day': ?pulumi.Input.mapOptionalInputValue<GoogleFirestoreAdminV1WeeklyRecurrenceDay, String>(day, (value) => value.wireValue),
     };
   }
 
-  factory GoogleFirestoreAdminV1WeeklyRecurrence.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleFirestoreAdminV1WeeklyRecurrence.fromMap(Map<String, dynamic> map) {
     return GoogleFirestoreAdminV1WeeklyRecurrence(
-      day: (() {
-        final guardedValue = map['day'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleFirestoreAdminV1WeeklyRecurrenceDay.fromValue(
-            guardedValue as String,
-          ),
-        );
-      })(),
+      day: (() { final guardedValue = map['day']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleFirestoreAdminV1WeeklyRecurrenceDay.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

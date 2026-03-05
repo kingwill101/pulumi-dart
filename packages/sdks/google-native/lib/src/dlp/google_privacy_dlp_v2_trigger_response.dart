@@ -7,7 +7,6 @@ import 'google_privacy_dlp_v2_schedule_response.dart';
 class GooglePrivacyDlpV2TriggerResponse {
   /// For use with hybrid jobs. Jobs must be manually created and finished.
   final pulumi.Input<Map<String, dynamic>> manual;
-
   /// Create a job on a repeating basis based on the elapse of time.
   final pulumi.Input<GooglePrivacyDlpV2ScheduleResponse> schedule;
 
@@ -22,24 +21,15 @@ class GooglePrivacyDlpV2TriggerResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'manual': manual,
-      'schedule':
-          pulumi.Input.mapInputValue<
-            GooglePrivacyDlpV2ScheduleResponse,
-            Map<String, dynamic>
-          >(schedule, (value) => value.toMap()),
+      'schedule': pulumi.Input.mapInputValue<GooglePrivacyDlpV2ScheduleResponse, Map<String, dynamic>>(schedule, (value) => value.toMap()),
     };
   }
 
   factory GooglePrivacyDlpV2TriggerResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2TriggerResponse(
-      manual: pulumi.Input.fromValue(
-        (map['manual']! as Map).cast<String, dynamic>(),
-      ),
-      schedule: pulumi.Input.fromValue(
-        GooglePrivacyDlpV2ScheduleResponse.fromMap(
-          (map['schedule']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      manual: pulumi.Input.fromValue((map['manual']! as Map).cast<String, dynamic>()),
+      schedule: pulumi.Input.fromValue(GooglePrivacyDlpV2ScheduleResponse.fromMap((map['schedule']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

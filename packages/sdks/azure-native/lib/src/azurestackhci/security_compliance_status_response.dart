@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecurityComplianceStatusResponse {
   /// Indicates whether data at-rest encryption is enabled on Azure Stack HCI clustered volumes.
   final pulumi.Input<String> dataAtRestEncrypted;
-
   /// Indicates whether HCI cluster has data in-transit protection.
   final pulumi.Input<String> dataInTransitProtected;
-
   /// Time in UTC when compliance status was last updated.
   final pulumi.Input<String> lastUpdated;
-
   /// Indicates whether HCI hosts meets secured-core server requirements.
   final pulumi.Input<String> securedCoreCompliance;
-
   /// Indicates whether HCI hosts have enforced consistent Windows Defender Application Control.
   final pulumi.Input<String> wdacCompliance;
 
@@ -45,17 +41,12 @@ class SecurityComplianceStatusResponse {
 
   factory SecurityComplianceStatusResponse.fromMap(Map<String, dynamic> map) {
     return SecurityComplianceStatusResponse(
-      dataAtRestEncrypted: pulumi.Input.fromValue(
-        map['dataAtRestEncrypted'] as String,
-      ),
-      dataInTransitProtected: pulumi.Input.fromValue(
-        map['dataInTransitProtected'] as String,
-      ),
+      dataAtRestEncrypted: pulumi.Input.fromValue(map['dataAtRestEncrypted'] as String),
+      dataInTransitProtected: pulumi.Input.fromValue(map['dataInTransitProtected'] as String),
       lastUpdated: pulumi.Input.fromValue(map['lastUpdated'] as String),
-      securedCoreCompliance: pulumi.Input.fromValue(
-        map['securedCoreCompliance'] as String,
-      ),
+      securedCoreCompliance: pulumi.Input.fromValue(map['securedCoreCompliance'] as String),
       wdacCompliance: pulumi.Input.fromValue(map['wdacCompliance'] as String),
     );
   }
 }
+

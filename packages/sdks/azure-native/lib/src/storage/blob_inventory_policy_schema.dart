@@ -7,10 +7,8 @@ import 'blob_inventory_policy_rule.dart';
 class BlobInventoryPolicySchema {
   /// Policy is enabled if set to true.
   final pulumi.Input<bool> enabled;
-
   /// The storage account blob inventory policy rules. The rule is applied when it is enabled.
   final pulumi.Input<List<BlobInventoryPolicyRule>> rules;
-
   /// The valid value is Inventory
   final pulumi.Input<String> type;
 
@@ -27,18 +25,7 @@ class BlobInventoryPolicySchema {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enabled': enabled,
-      'rules':
-          pulumi.Input.mapInputValue<
-            List<BlobInventoryPolicyRule>,
-            List<Map<String, dynamic>>
-          >(
-            rules,
-            (value) =>
-                pulumi.Input.encodeList<
-                  BlobInventoryPolicyRule,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'rules': pulumi.Input.mapInputValue<List<BlobInventoryPolicyRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<BlobInventoryPolicyRule, Map<String, dynamic>>(value, (value) => value.toMap())),
       'type': type,
     };
   }
@@ -46,15 +33,9 @@ class BlobInventoryPolicySchema {
   factory BlobInventoryPolicySchema.fromMap(Map<String, dynamic> map) {
     return BlobInventoryPolicySchema(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
-      rules: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<BlobInventoryPolicyRule>(
-          map['rules']!,
-          (value) => BlobInventoryPolicyRule.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      rules: pulumi.Input.fromValue(pulumi.Input.decodeList<BlobInventoryPolicyRule>(map['rules']!, (value) => BlobInventoryPolicyRule.fromMap((value as Map).cast<String, dynamic>()))),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

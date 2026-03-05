@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KafkaTopicMapBatchingResponse {
   /// The setting to enable or disable batching.
   final pulumi.Input<bool>? enabled;
-
   /// The latency of message batching.
   final pulumi.Input<int>? latencyMs;
-
   /// The maximum bytes to send in a batch.
   final pulumi.Input<double>? maxBytes;
-
   /// The maximum messages to send in a batch.
   final pulumi.Input<double>? maxMessages;
 
@@ -39,26 +36,11 @@ class KafkaTopicMapBatchingResponse {
 
   factory KafkaTopicMapBatchingResponse.fromMap(Map<String, dynamic> map) {
     return KafkaTopicMapBatchingResponse(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      latencyMs: (() {
-        final guardedValue = map['latencyMs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      maxBytes: (() {
-        final guardedValue = map['maxBytes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      maxMessages: (() {
-        final guardedValue = map['maxMessages'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      latencyMs: (() { final guardedValue = map['latencyMs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxBytes: (() { final guardedValue = map['maxBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      maxMessages: (() { final guardedValue = map['maxMessages']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

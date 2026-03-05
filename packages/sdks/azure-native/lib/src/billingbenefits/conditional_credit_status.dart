@@ -22,3 +22,4 @@ enum ConditionalCreditStatus {
     throw ArgumentError('Unknown ConditionalCreditStatus value: $value');
   }
 }
+

@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBasicAccelerateIpsArgs {
   /// The address of the Basic Accelerate IP.
   final pulumi.Input<String>? accelerateIpAddress;
-
   /// The id of the Basic Accelerate IP.
   final pulumi.Input<String>? accelerateIpId;
-
   /// A list of Global Accelerator Basic Accelerate IP IDs.
   final pulumi.Input<List<String>>? ids;
-
   /// The ID of the Basic Ip Set.
   final pulumi.Input<String> ipSetId;
-
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
-
   /// The status of the Global Accelerator Basic Accelerate IP instance. Valid Value: `active`, `binding`, `bound`, `unbinding`, `deleting`.
   final pulumi.Input<String>? status;
 
@@ -54,32 +49,13 @@ class GetBasicAccelerateIpsArgs {
 
   factory GetBasicAccelerateIpsArgs.fromMap(Map<String, dynamic> map) {
     return GetBasicAccelerateIpsArgs(
-      accelerateIpAddress: (() {
-        final guardedValue = map['accelerateIpAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      accelerateIpId: (() {
-        final guardedValue = map['accelerateIpId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ids: (() {
-        final guardedValue = map['ids'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      accelerateIpAddress: (() { final guardedValue = map['accelerateIpAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      accelerateIpId: (() { final guardedValue = map['accelerateIpId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ids: (() { final guardedValue = map['ids']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       ipSetId: pulumi.Input.fromValue(map['ipSetId'] as String),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -19,3 +19,4 @@ enum OrganizationRoleStage {
     throw ArgumentError('Unknown OrganizationRoleStage value: $value');
   }
 }
+

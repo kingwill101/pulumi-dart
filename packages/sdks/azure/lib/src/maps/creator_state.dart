@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CreatorState {
   /// The Azure Region where the Azure Maps Creator should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
-
   /// The ID of the Azure Maps Creator. Changing this forces a new resource to be created.
   final pulumi.Input<String>? mapsAccountId;
-
   /// The name of the Azure Maps Creator. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// The storage units to be allocated. Integer values from 1 to 100, inclusive.
   final pulumi.Input<int>? storageUnits;
-
   /// A mapping of tags which should be assigned to the Azure Maps Creator.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -45,33 +41,12 @@ class CreatorState {
 
   factory CreatorState.fromMap(Map<String, dynamic> map) {
     return CreatorState(
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      mapsAccountId: (() {
-        final guardedValue = map['mapsAccountId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      storageUnits: (() {
-        final guardedValue = map['storageUnits'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      mapsAccountId: (() { final guardedValue = map['mapsAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageUnits: (() { final guardedValue = map['storageUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

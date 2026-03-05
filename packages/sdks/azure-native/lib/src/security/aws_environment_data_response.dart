@@ -7,17 +7,13 @@ import 'aws_organizational_data_master_response.dart';
 class AwsEnvironmentDataResponse {
   /// The AWS account name
   final pulumi.Input<String> accountName;
-
   /// The type of the environment data.
   /// Expected value is 'AwsAccount'.
   final pulumi.Input<String> environmentType;
-
   /// The AWS account's organizational data
   final pulumi.Input<AwsOrganizationalDataMasterResponse>? organizationalData;
-
   /// list of regions to scan
   final pulumi.Input<List<String>>? regions;
-
   /// Scan interval in hours (value should be between 1-hour to 24-hours)
   final pulumi.Input<double>? scanInterval;
 
@@ -39,11 +35,7 @@ class AwsEnvironmentDataResponse {
     return <String, dynamic>{
       'accountName': accountName,
       'environmentType': environmentType,
-      'organizationalData':
-          ?pulumi.Input.mapOptionalInputValue<
-            AwsOrganizationalDataMasterResponse,
-            Map<String, dynamic>
-          >(organizationalData, (value) => value.toMap()),
+      'organizationalData': ?pulumi.Input.mapOptionalInputValue<AwsOrganizationalDataMasterResponse, Map<String, dynamic>>(organizationalData, (value) => value.toMap()),
       'regions': ?regions,
       'scanInterval': ?scanInterval,
     };
@@ -53,25 +45,10 @@ class AwsEnvironmentDataResponse {
     return AwsEnvironmentDataResponse(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
       environmentType: pulumi.Input.fromValue(map['environmentType'] as String),
-      organizationalData: (() {
-        final guardedValue = map['organizationalData'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AwsOrganizationalDataMasterResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      regions: (() {
-        final guardedValue = map['regions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      scanInterval: (() {
-        final guardedValue = map['scanInterval'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      organizationalData: (() { final guardedValue = map['organizationalData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AwsOrganizationalDataMasterResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      regions: (() { final guardedValue = map['regions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      scanInterval: (() { final guardedValue = map['scanInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

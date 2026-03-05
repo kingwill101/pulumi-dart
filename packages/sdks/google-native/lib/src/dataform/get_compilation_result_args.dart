@@ -35,16 +35,11 @@ class GetCompilationResultArgs {
 
   factory GetCompilationResultArgs.fromMap(Map<String, dynamic> map) {
     return GetCompilationResultArgs(
-      compilationResultId: pulumi.Input.fromValue(
-        map['compilationResultId'] as String,
-      ),
+      compilationResultId: pulumi.Input.fromValue(map['compilationResultId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       repositoryId: pulumi.Input.fromValue(map['repositoryId'] as String),
     );
   }
 }
+

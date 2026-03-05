@@ -8,21 +8,20 @@ class GroupInstanceRefreshPreferencesAlarmSpecification {
 
   /// Creates a new [GroupInstanceRefreshPreferencesAlarmSpecification].
   /// [alarms] List of Cloudwatch alarms. If any of these alarms goes into ALARM state, Instance Refresh is failed.
-  GroupInstanceRefreshPreferencesAlarmSpecification({this.alarms});
+  GroupInstanceRefreshPreferencesAlarmSpecification({
+    this.alarms,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'alarms': ?alarms};
+    return <String, dynamic>{
+      'alarms': ?alarms,
+    };
   }
 
-  factory GroupInstanceRefreshPreferencesAlarmSpecification.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GroupInstanceRefreshPreferencesAlarmSpecification.fromMap(Map<String, dynamic> map) {
     return GroupInstanceRefreshPreferencesAlarmSpecification(
-      alarms: (() {
-        final guardedValue = map['alarms'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      alarms: (() { final guardedValue = map['alarms']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

@@ -6,15 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkspaceNetworkOutboundRulePrivateEndpointState {
   /// Specifies the name of the Machine Learning Workspace Network Outbound Rule Private Endpoint. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// Specifies the Service Resource ID to connect. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Supported service resources: **Key Vault**, **Storage Account**, **Machine Learning Workspace**, **Redis**.
   final pulumi.Input<String>? serviceResourceId;
-
   /// Whether to enable an additional private endpoint to be used by jobs running on Spark. Changing this forces a new resource to be created.
   final pulumi.Input<bool>? sparkEnabled;
-
   /// Specifies the Sub Resource of the service resource to connect to. Possible values are `vault`,`amlworkspace`,`blob`,`table`,`queue`,`file`,`web`,`dfs`, `redisCache`. Changing this forces a new resource to be created.
   ///
   /// | Service                    | Sub Resource Type                         |
@@ -24,7 +21,6 @@ class WorkspaceNetworkOutboundRulePrivateEndpointState {
   /// | Storage Account            | `blob`,`table`,`queue`,`file`,`web`,`dfs` |
   /// | Key Vault                  | `vault`                                   |
   final pulumi.Input<String>? subResourceTarget;
-
   /// Specifies the ID of the Machine Learning Workspace. Changing this forces a new resource to be created.
   final pulumi.Input<String>? workspaceId;
 
@@ -52,35 +48,14 @@ class WorkspaceNetworkOutboundRulePrivateEndpointState {
     };
   }
 
-  factory WorkspaceNetworkOutboundRulePrivateEndpointState.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WorkspaceNetworkOutboundRulePrivateEndpointState.fromMap(Map<String, dynamic> map) {
     return WorkspaceNetworkOutboundRulePrivateEndpointState(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serviceResourceId: (() {
-        final guardedValue = map['serviceResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sparkEnabled: (() {
-        final guardedValue = map['sparkEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      subResourceTarget: (() {
-        final guardedValue = map['subResourceTarget'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      workspaceId: (() {
-        final guardedValue = map['workspaceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serviceResourceId: (() { final guardedValue = map['serviceResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sparkEnabled: (() { final guardedValue = map['sparkEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      subResourceTarget: (() { final guardedValue = map['subResourceTarget']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      workspaceId: (() { final guardedValue = map['workspaceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

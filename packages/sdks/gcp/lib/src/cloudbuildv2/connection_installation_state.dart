@@ -6,11 +6,9 @@ class ConnectionInstallationState {
   /// (Output)
   /// Output only. Link to follow for next action. Empty string if the installation is already complete.
   final pulumi.Input<String>? actionUri;
-
   /// (Output)
   /// Output only. Message of what the user should do next to continue the installation. Empty string if the installation is already complete.
   final pulumi.Input<String>? message;
-
   /// (Output)
   /// Output only. Current step of the installation process.
   final pulumi.Input<String>? stage;
@@ -19,7 +17,11 @@ class ConnectionInstallationState {
   /// [actionUri] (Output)
   /// [message] (Output)
   /// [stage] (Output)
-  ConnectionInstallationState({this.actionUri, this.message, this.stage});
+  ConnectionInstallationState({
+    this.actionUri,
+    this.message,
+    this.stage,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,21 +33,10 @@ class ConnectionInstallationState {
 
   factory ConnectionInstallationState.fromMap(Map<String, dynamic> map) {
     return ConnectionInstallationState(
-      actionUri: (() {
-        final guardedValue = map['actionUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      message: (() {
-        final guardedValue = map['message'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      stage: (() {
-        final guardedValue = map['stage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      actionUri: (() { final guardedValue = map['actionUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      message: (() { final guardedValue = map['message']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      stage: (() { final guardedValue = map['stage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

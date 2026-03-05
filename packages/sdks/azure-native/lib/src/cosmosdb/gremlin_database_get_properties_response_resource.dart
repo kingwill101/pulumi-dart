@@ -6,19 +6,14 @@ import 'resource_restore_parameters_response.dart';
 class GremlinDatabaseGetPropertiesResponseResource {
   /// Enum to indicate the mode of resource creation.
   final pulumi.Input<String>? createMode;
-
   /// A system generated property representing the resource etag required for optimistic concurrency control.
   final pulumi.Input<String> etag;
-
   /// Name of the Cosmos DB Gremlin database
   final pulumi.Input<String> id;
-
   /// Parameters to indicate the information about the restore
   final pulumi.Input<ResourceRestoreParametersResponse>? restoreParameters;
-
   /// A system generated property. A unique identifier.
   final pulumi.Input<String> rid;
-
   /// A system generated property that denotes the last updated timestamp of the resource.
   final pulumi.Input<double> ts;
 
@@ -43,38 +38,21 @@ class GremlinDatabaseGetPropertiesResponseResource {
       'createMode': ?createMode,
       'etag': etag,
       'id': id,
-      'restoreParameters':
-          ?pulumi.Input.mapOptionalInputValue<
-            ResourceRestoreParametersResponse,
-            Map<String, dynamic>
-          >(restoreParameters, (value) => value.toMap()),
+      'restoreParameters': ?pulumi.Input.mapOptionalInputValue<ResourceRestoreParametersResponse, Map<String, dynamic>>(restoreParameters, (value) => value.toMap()),
       'rid': rid,
       'ts': ts,
     };
   }
 
-  factory GremlinDatabaseGetPropertiesResponseResource.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GremlinDatabaseGetPropertiesResponseResource.fromMap(Map<String, dynamic> map) {
     return GremlinDatabaseGetPropertiesResponseResource(
-      createMode: (() {
-        final guardedValue = map['createMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      createMode: (() { final guardedValue = map['createMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       etag: pulumi.Input.fromValue(map['etag'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
-      restoreParameters: (() {
-        final guardedValue = map['restoreParameters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ResourceRestoreParametersResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      restoreParameters: (() { final guardedValue = map['restoreParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceRestoreParametersResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       rid: pulumi.Input.fromValue(map['rid'] as String),
       ts: pulumi.Input.fromValue(map['ts'] as double),
     );
   }
 }
+

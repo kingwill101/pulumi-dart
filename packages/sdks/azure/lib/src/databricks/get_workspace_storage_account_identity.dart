@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWorkspaceStorageAccountIdentity {
   /// The principal UUID for the internal databricks storage account needed to provide access to the workspace for enabling Customer Managed Keys.
   final pulumi.Input<String> principalId;
-
   /// The UUID of the tenant where the internal databricks storage account was created.
   final pulumi.Input<String> tenantId;
-
   /// The type of the internal databricks storage account.
   final pulumi.Input<String> type;
 
@@ -38,3 +36,4 @@ class GetWorkspaceStorageAccountIdentity {
     );
   }
 }
+

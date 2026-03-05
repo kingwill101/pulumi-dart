@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackupInstanceMysqlFlexibleServerArgs {
   /// The ID of the Backup Policy.
   final pulumi.Input<String> backupPolicyId;
-
   /// The location of the source database. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
-
   /// Specifies the name of the Backup Instance for the MySQL Flexible Server. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// The ID of the source server. Changing this forces a new resource to be created.
   final pulumi.Input<String> serverId;
-
   /// The ID of the Backup Vault within which the MySQL Flexible Server Backup Instance should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> vaultId;
 
@@ -46,23 +42,14 @@ class BackupInstanceMysqlFlexibleServerArgs {
     };
   }
 
-  factory BackupInstanceMysqlFlexibleServerArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BackupInstanceMysqlFlexibleServerArgs.fromMap(Map<String, dynamic> map) {
     return BackupInstanceMysqlFlexibleServerArgs(
       backupPolicyId: pulumi.Input.fromValue(map['backupPolicyId'] as String),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serverId: pulumi.Input.fromValue(map['serverId'] as String),
       vaultId: pulumi.Input.fromValue(map['vaultId'] as String),
     );
   }
 }
+

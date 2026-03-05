@@ -13,91 +13,62 @@ import 'cluster_rebalancing.dart';
 class ClusterState {
   /// Amazon Resource Name (ARN) of the MSK cluster.
   final pulumi.Input<String>? arn;
-
   /// Comma separated list of one or more hostname:port pairs of kafka brokers suitable to bootstrap connectivity to the kafka cluster. Contains a value if `encryption_info.0.encryption_in_transit.0.client_broker` is set to `PLAINTEXT` or `TLS_PLAINTEXT`. The resource sorts values alphabetically. AWS may not always return all endpoints so this value is not guaranteed to be stable across applies.
   final pulumi.Input<String>? bootstrapBrokers;
-
   /// One or more DNS names (or IP addresses) and SASL IAM port pairs. For example, `b-1-public.exampleClusterName.abcde.c2.kafka.us-east-1.amazonaws.com:9198,b-2-public.exampleClusterName.abcde.c2.kafka.us-east-1.amazonaws.com:9198,b-3-public.exampleClusterName.abcde.c2.kafka.us-east-1.amazonaws.com:9198`. This attribute will have a value if `encryption_info.0.encryption_in_transit.0.client_broker` is set to `TLS_PLAINTEXT` or `TLS` and `client_authentication.0.sasl.0.iam` is set to `true` and `broker_node_group_info.0.connectivity_info.0.public_access.0.type` is set to `SERVICE_PROVIDED_EIPS` and the cluster fulfill all other requirements for public access. The resource sorts the list alphabetically. AWS may not always return all endpoints so the values may not be stable across applies.
   final pulumi.Input<String>? bootstrapBrokersPublicSaslIam;
-
   /// One or more DNS names (or IP addresses) and SASL SCRAM port pairs. For example, `b-1-public.exampleClusterName.abcde.c2.kafka.us-east-1.amazonaws.com:9196,b-2-public.exampleClusterName.abcde.c2.kafka.us-east-1.amazonaws.com:9196,b-3-public.exampleClusterName.abcde.c2.kafka.us-east-1.amazonaws.com:9196`. This attribute will have a value if `encryption_info.0.encryption_in_transit.0.client_broker` is set to `TLS_PLAINTEXT` or `TLS` and `client_authentication.0.sasl.0.scram` is set to `true` and `broker_node_group_info.0.connectivity_info.0.public_access.0.type` is set to `SERVICE_PROVIDED_EIPS` and the cluster fulfill all other requirements for public access. The resource sorts the list alphabetically. AWS may not always return all endpoints so the values may not be stable across applies.
   final pulumi.Input<String>? bootstrapBrokersPublicSaslScram;
-
   /// One or more DNS names (or IP addresses) and TLS port pairs. For example, `b-1-public.exampleClusterName.abcde.c2.kafka.us-east-1.amazonaws.com:9194,b-2-public.exampleClusterName.abcde.c2.kafka.us-east-1.amazonaws.com:9194,b-3-public.exampleClusterName.abcde.c2.kafka.us-east-1.amazonaws.com:9194`. This attribute will have a value if `encryption_info.0.encryption_in_transit.0.client_broker` is set to `TLS_PLAINTEXT` or `TLS` and `broker_node_group_info.0.connectivity_info.0.public_access.0.type` is set to `SERVICE_PROVIDED_EIPS` and the cluster fulfill all other requirements for public access. The resource sorts the list alphabetically. AWS may not always return all endpoints so the values may not be stable across applies.
   final pulumi.Input<String>? bootstrapBrokersPublicTls;
-
   /// One or more DNS names (or IP addresses) and SASL IAM port pairs. For example, `b-1.exampleClusterName.abcde.c2.kafka.us-east-1.amazonaws.com:9098,b-2.exampleClusterName.abcde.c2.kafka.us-east-1.amazonaws.com:9098,b-3.exampleClusterName.abcde.c2.kafka.us-east-1.amazonaws.com:9098`. This attribute will have a value if `encryption_info.0.encryption_in_transit.0.client_broker` is set to `TLS_PLAINTEXT` or `TLS` and `client_authentication.0.sasl.0.iam` is set to `true`. The resource sorts the list alphabetically. AWS may not always return all endpoints so the values may not be stable across applies.
   final pulumi.Input<String>? bootstrapBrokersSaslIam;
-
   /// One or more DNS names (or IP addresses) and SASL SCRAM port pairs. For example, `b-1.exampleClusterName.abcde.c2.kafka.us-east-1.amazonaws.com:9096,b-2.exampleClusterName.abcde.c2.kafka.us-east-1.amazonaws.com:9096,b-3.exampleClusterName.abcde.c2.kafka.us-east-1.amazonaws.com:9096`. This attribute will have a value if `encryption_info.0.encryption_in_transit.0.client_broker` is set to `TLS_PLAINTEXT` or `TLS` and `client_authentication.0.sasl.0.scram` is set to `true`. The resource sorts the list alphabetically. AWS may not always return all endpoints so the values may not be stable across applies.
   final pulumi.Input<String>? bootstrapBrokersSaslScram;
-
   /// One or more DNS names (or IP addresses) and TLS port pairs. For example, `b-1.exampleClusterName.abcde.c2.kafka.us-east-1.amazonaws.com:9094,b-2.exampleClusterName.abcde.c2.kafka.us-east-1.amazonaws.com:9094,b-3.exampleClusterName.abcde.c2.kafka.us-east-1.amazonaws.com:9094`. This attribute will have a value if `encryption_info.0.encryption_in_transit.0.client_broker` is set to `TLS_PLAINTEXT` or `TLS`. The resource sorts the list alphabetically. AWS may not always return all endpoints so the values may not be stable across applies.
   final pulumi.Input<String>? bootstrapBrokersTls;
-
   /// A string containing one or more DNS names (or IP addresses) and SASL IAM port pairs for VPC connectivity. AWS may not always return all endpoints so the values may not be stable across applies.
   final pulumi.Input<String>? bootstrapBrokersVpcConnectivitySaslIam;
-
   /// A string containing one or more DNS names (or IP addresses) and SASL SCRAM port pairs for VPC connectivity. AWS may not always return all endpoints so the values may not be stable across applies.
   final pulumi.Input<String>? bootstrapBrokersVpcConnectivitySaslScram;
-
   /// A string containing one or more DNS names (or IP addresses) and TLS port pairs for VPC connectivity. AWS may not always return all endpoints so the values may not be stable across applies.
   final pulumi.Input<String>? bootstrapBrokersVpcConnectivityTls;
-
   /// Configuration block for the broker nodes of the Kafka cluster. See broker_node_group_info Argument Reference below.
   final pulumi.Input<ClusterBrokerNodeGroupInfo>? brokerNodeGroupInfo;
-
   /// Configuration block for specifying a client authentication. See client_authentication Argument Reference below.
   final pulumi.Input<ClusterClientAuthentication>? clientAuthentication;
-
   /// Name of the MSK cluster.
   final pulumi.Input<String>? clusterName;
-
   /// UUID of the MSK cluster, for use in IAM policies.
   final pulumi.Input<String>? clusterUuid;
-
   /// Configuration block for specifying an MSK Configuration to attach to Kafka brokers. See configuration_info Argument Reference below.
   final pulumi.Input<ClusterConfigurationInfo>? configurationInfo;
-
   /// Current version of the MSK Cluster used for updates, e.g., `K13V1IB3VIYZZH`
   final pulumi.Input<String>? currentVersion;
-
   /// Configuration block for specifying encryption. See encryption_info Argument Reference below.
   final pulumi.Input<ClusterEncryptionInfo>? encryptionInfo;
-
   /// Specify the desired enhanced MSK CloudWatch monitoring level. See [Monitoring Amazon MSK with Amazon CloudWatch](https://docs.aws.amazon.com/msk/latest/developerguide/monitoring.html)
   final pulumi.Input<String>? enhancedMonitoring;
-
   /// Specify the desired Kafka software version.
   final pulumi.Input<String>? kafkaVersion;
-
   /// Configuration block for streaming broker logs to Cloudwatch/S3/Kinesis Firehose. See logging_info Argument Reference below.
   final pulumi.Input<ClusterLoggingInfo>? loggingInfo;
-
   /// The desired total number of broker nodes in the kafka cluster.  It must be a multiple of the number of specified client subnets.
   final pulumi.Input<int>? numberOfBrokerNodes;
-
   /// Configuration block for JMX and Node monitoring for the MSK cluster. See open_monitoring Argument Reference below.
   final pulumi.Input<ClusterOpenMonitoring>? openMonitoring;
-
   /// Configuration block for intelligent rebalancing. See rebalancing Argument Reference below. Only applicable to MSK Provisioned clusters with Express brokers.
   final pulumi.Input<ClusterRebalancing>? rebalancing;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Controls storage mode for supported storage tiers. Valid values are: `LOCAL` or `TIERED`.
   final pulumi.Input<String>? storageMode;
-
   /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
-
   /// A comma separated list of one or more hostname:port pairs to use to connect to the Apache Zookeeper cluster. The returned values are sorted alphabetically. The AWS API may not return all endpoints, so this value is not guaranteed to be stable across applies.
   final pulumi.Input<String>? zookeeperConnectString;
-
   /// A comma separated list of one or more hostname:port pairs to use to connect to the Apache Zookeeper cluster via TLS. The returned values are sorted alphabetically. The AWS API may not return all endpoints, so this value is not guaranteed to be stable across applies.
   final pulumi.Input<String>? zookeeperConnectStringTls;
 
@@ -175,52 +146,22 @@ class ClusterState {
       'bootstrapBrokersSaslIam': ?bootstrapBrokersSaslIam,
       'bootstrapBrokersSaslScram': ?bootstrapBrokersSaslScram,
       'bootstrapBrokersTls': ?bootstrapBrokersTls,
-      'bootstrapBrokersVpcConnectivitySaslIam':
-          ?bootstrapBrokersVpcConnectivitySaslIam,
-      'bootstrapBrokersVpcConnectivitySaslScram':
-          ?bootstrapBrokersVpcConnectivitySaslScram,
+      'bootstrapBrokersVpcConnectivitySaslIam': ?bootstrapBrokersVpcConnectivitySaslIam,
+      'bootstrapBrokersVpcConnectivitySaslScram': ?bootstrapBrokersVpcConnectivitySaslScram,
       'bootstrapBrokersVpcConnectivityTls': ?bootstrapBrokersVpcConnectivityTls,
-      'brokerNodeGroupInfo':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterBrokerNodeGroupInfo,
-            Map<String, dynamic>
-          >(brokerNodeGroupInfo, (value) => value.toMap()),
-      'clientAuthentication':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterClientAuthentication,
-            Map<String, dynamic>
-          >(clientAuthentication, (value) => value.toMap()),
+      'brokerNodeGroupInfo': ?pulumi.Input.mapOptionalInputValue<ClusterBrokerNodeGroupInfo, Map<String, dynamic>>(brokerNodeGroupInfo, (value) => value.toMap()),
+      'clientAuthentication': ?pulumi.Input.mapOptionalInputValue<ClusterClientAuthentication, Map<String, dynamic>>(clientAuthentication, (value) => value.toMap()),
       'clusterName': ?clusterName,
       'clusterUuid': ?clusterUuid,
-      'configurationInfo':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterConfigurationInfo,
-            Map<String, dynamic>
-          >(configurationInfo, (value) => value.toMap()),
+      'configurationInfo': ?pulumi.Input.mapOptionalInputValue<ClusterConfigurationInfo, Map<String, dynamic>>(configurationInfo, (value) => value.toMap()),
       'currentVersion': ?currentVersion,
-      'encryptionInfo':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterEncryptionInfo,
-            Map<String, dynamic>
-          >(encryptionInfo, (value) => value.toMap()),
+      'encryptionInfo': ?pulumi.Input.mapOptionalInputValue<ClusterEncryptionInfo, Map<String, dynamic>>(encryptionInfo, (value) => value.toMap()),
       'enhancedMonitoring': ?enhancedMonitoring,
       'kafkaVersion': ?kafkaVersion,
-      'loggingInfo':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterLoggingInfo,
-            Map<String, dynamic>
-          >(loggingInfo, (value) => value.toMap()),
+      'loggingInfo': ?pulumi.Input.mapOptionalInputValue<ClusterLoggingInfo, Map<String, dynamic>>(loggingInfo, (value) => value.toMap()),
       'numberOfBrokerNodes': ?numberOfBrokerNodes,
-      'openMonitoring':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterOpenMonitoring,
-            Map<String, dynamic>
-          >(openMonitoring, (value) => value.toMap()),
-      'rebalancing':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterRebalancing,
-            Map<String, dynamic>
-          >(rebalancing, (value) => value.toMap()),
+      'openMonitoring': ?pulumi.Input.mapOptionalInputValue<ClusterOpenMonitoring, Map<String, dynamic>>(openMonitoring, (value) => value.toMap()),
+      'rebalancing': ?pulumi.Input.mapOptionalInputValue<ClusterRebalancing, Map<String, dynamic>>(rebalancing, (value) => value.toMap()),
       'region': ?region,
       'storageMode': ?storageMode,
       'tags': ?tags,
@@ -232,188 +173,37 @@ class ClusterState {
 
   factory ClusterState.fromMap(Map<String, dynamic> map) {
     return ClusterState(
-      arn: (() {
-        final guardedValue = map['arn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      bootstrapBrokers: (() {
-        final guardedValue = map['bootstrapBrokers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      bootstrapBrokersPublicSaslIam: (() {
-        final guardedValue = map['bootstrapBrokersPublicSaslIam'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      bootstrapBrokersPublicSaslScram: (() {
-        final guardedValue = map['bootstrapBrokersPublicSaslScram'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      bootstrapBrokersPublicTls: (() {
-        final guardedValue = map['bootstrapBrokersPublicTls'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      bootstrapBrokersSaslIam: (() {
-        final guardedValue = map['bootstrapBrokersSaslIam'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      bootstrapBrokersSaslScram: (() {
-        final guardedValue = map['bootstrapBrokersSaslScram'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      bootstrapBrokersTls: (() {
-        final guardedValue = map['bootstrapBrokersTls'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      bootstrapBrokersVpcConnectivitySaslIam: (() {
-        final guardedValue = map['bootstrapBrokersVpcConnectivitySaslIam'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      bootstrapBrokersVpcConnectivitySaslScram: (() {
-        final guardedValue = map['bootstrapBrokersVpcConnectivitySaslScram'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      bootstrapBrokersVpcConnectivityTls: (() {
-        final guardedValue = map['bootstrapBrokersVpcConnectivityTls'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      brokerNodeGroupInfo: (() {
-        final guardedValue = map['brokerNodeGroupInfo'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterBrokerNodeGroupInfo.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      clientAuthentication: (() {
-        final guardedValue = map['clientAuthentication'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterClientAuthentication.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      clusterName: (() {
-        final guardedValue = map['clusterName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      clusterUuid: (() {
-        final guardedValue = map['clusterUuid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      configurationInfo: (() {
-        final guardedValue = map['configurationInfo'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterConfigurationInfo.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      currentVersion: (() {
-        final guardedValue = map['currentVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      encryptionInfo: (() {
-        final guardedValue = map['encryptionInfo'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterEncryptionInfo.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      enhancedMonitoring: (() {
-        final guardedValue = map['enhancedMonitoring'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kafkaVersion: (() {
-        final guardedValue = map['kafkaVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      loggingInfo: (() {
-        final guardedValue = map['loggingInfo'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterLoggingInfo.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      numberOfBrokerNodes: (() {
-        final guardedValue = map['numberOfBrokerNodes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      openMonitoring: (() {
-        final guardedValue = map['openMonitoring'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterOpenMonitoring.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      rebalancing: (() {
-        final guardedValue = map['rebalancing'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterRebalancing.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      storageMode: (() {
-        final guardedValue = map['storageMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      tagsAll: (() {
-        final guardedValue = map['tagsAll'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      zookeeperConnectString: (() {
-        final guardedValue = map['zookeeperConnectString'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      zookeeperConnectStringTls: (() {
-        final guardedValue = map['zookeeperConnectStringTls'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      bootstrapBrokers: (() { final guardedValue = map['bootstrapBrokers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      bootstrapBrokersPublicSaslIam: (() { final guardedValue = map['bootstrapBrokersPublicSaslIam']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      bootstrapBrokersPublicSaslScram: (() { final guardedValue = map['bootstrapBrokersPublicSaslScram']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      bootstrapBrokersPublicTls: (() { final guardedValue = map['bootstrapBrokersPublicTls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      bootstrapBrokersSaslIam: (() { final guardedValue = map['bootstrapBrokersSaslIam']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      bootstrapBrokersSaslScram: (() { final guardedValue = map['bootstrapBrokersSaslScram']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      bootstrapBrokersTls: (() { final guardedValue = map['bootstrapBrokersTls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      bootstrapBrokersVpcConnectivitySaslIam: (() { final guardedValue = map['bootstrapBrokersVpcConnectivitySaslIam']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      bootstrapBrokersVpcConnectivitySaslScram: (() { final guardedValue = map['bootstrapBrokersVpcConnectivitySaslScram']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      bootstrapBrokersVpcConnectivityTls: (() { final guardedValue = map['bootstrapBrokersVpcConnectivityTls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      brokerNodeGroupInfo: (() { final guardedValue = map['brokerNodeGroupInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterBrokerNodeGroupInfo.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      clientAuthentication: (() { final guardedValue = map['clientAuthentication']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterClientAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      clusterName: (() { final guardedValue = map['clusterName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      clusterUuid: (() { final guardedValue = map['clusterUuid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      configurationInfo: (() { final guardedValue = map['configurationInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterConfigurationInfo.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      currentVersion: (() { final guardedValue = map['currentVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      encryptionInfo: (() { final guardedValue = map['encryptionInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterEncryptionInfo.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      enhancedMonitoring: (() { final guardedValue = map['enhancedMonitoring']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kafkaVersion: (() { final guardedValue = map['kafkaVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      loggingInfo: (() { final guardedValue = map['loggingInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterLoggingInfo.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      numberOfBrokerNodes: (() { final guardedValue = map['numberOfBrokerNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      openMonitoring: (() { final guardedValue = map['openMonitoring']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterOpenMonitoring.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      rebalancing: (() { final guardedValue = map['rebalancing']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterRebalancing.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageMode: (() { final guardedValue = map['storageMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      zookeeperConnectString: (() { final guardedValue = map['zookeeperConnectString']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      zookeeperConnectStringTls: (() { final guardedValue = map['zookeeperConnectStringTls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

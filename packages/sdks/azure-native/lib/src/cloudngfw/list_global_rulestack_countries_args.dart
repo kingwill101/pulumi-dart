@@ -32,19 +32,10 @@ class ListGlobalRulestackCountriesArgs {
 
   factory ListGlobalRulestackCountriesArgs.fromMap(Map<String, dynamic> map) {
     return ListGlobalRulestackCountriesArgs(
-      globalRulestackName: pulumi.Input.fromValue(
-        map['globalRulestackName'] as String,
-      ),
-      skip: (() {
-        final guardedValue = map['skip'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      top: (() {
-        final guardedValue = map['top'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      globalRulestackName: pulumi.Input.fromValue(map['globalRulestackName'] as String),
+      skip: (() { final guardedValue = map['skip']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      top: (() { final guardedValue = map['top']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

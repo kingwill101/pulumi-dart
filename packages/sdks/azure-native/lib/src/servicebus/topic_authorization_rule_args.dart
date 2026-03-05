@@ -10,16 +10,12 @@ import 'access_rights.dart';
 class TopicAuthorizationRuleArgs {
   /// The authorization rule name.
   final pulumi.Input<String>? authorizationRuleName;
-
   /// The namespace name
   final pulumi.Input<String> namespaceName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The rights associated with the rule.
   final pulumi.Input<List<AccessRights>> rights;
-
   /// The topic name.
   final pulumi.Input<String> topicName;
 
@@ -42,35 +38,19 @@ class TopicAuthorizationRuleArgs {
       'authorizationRuleName': ?authorizationRuleName,
       'namespaceName': namespaceName,
       'resourceGroupName': resourceGroupName,
-      'rights': pulumi.Input.mapInputValue<List<AccessRights>, List<String>>(
-        rights,
-        (value) => pulumi.Input.encodeList<AccessRights, String>(
-          value,
-          (value) => value.wireValue,
-        ),
-      ),
+      'rights': pulumi.Input.mapInputValue<List<AccessRights>, List<String>>(rights, (value) => pulumi.Input.encodeList<AccessRights, String>(value, (value) => value.wireValue)),
       'topicName': topicName,
     };
   }
 
   factory TopicAuthorizationRuleArgs.fromMap(Map<String, dynamic> map) {
     return TopicAuthorizationRuleArgs(
-      authorizationRuleName: (() {
-        final guardedValue = map['authorizationRuleName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      authorizationRuleName: (() { final guardedValue = map['authorizationRuleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      rights: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<AccessRights>(
-          map['rights']!,
-          (value) => AccessRights.fromValue(value as String),
-        ),
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      rights: pulumi.Input.fromValue(pulumi.Input.decodeList<AccessRights>(map['rights']!, (value) => AccessRights.fromValue(value as String))),
       topicName: pulumi.Input.fromValue(map['topicName'] as String),
     );
   }
 }
+

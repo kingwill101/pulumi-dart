@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LabelingJobTextPropertiesResponse {
   /// Annotation type of text labeling job.
   final pulumi.Input<String>? annotationType;
-
   /// Media type of data asset.
   /// Expected value is 'Text'.
   final pulumi.Input<String> mediaType;
@@ -28,12 +27,9 @@ class LabelingJobTextPropertiesResponse {
 
   factory LabelingJobTextPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return LabelingJobTextPropertiesResponse(
-      annotationType: (() {
-        final guardedValue = map['annotationType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      annotationType: (() { final guardedValue = map['annotationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       mediaType: pulumi.Input.fromValue(map['mediaType'] as String),
     );
   }
 }
+

@@ -9,13 +9,20 @@ class SSISExecutionParameter {
 
   /// Creates a new [SSISExecutionParameter].
   /// [value] SSIS package execution parameter value. Type: string (or Expression with resultType string).
-  SSISExecutionParameter({required this.value});
+  SSISExecutionParameter({
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': value};
+    return <String, dynamic>{
+      'value': value,
+    };
   }
 
   factory SSISExecutionParameter.fromMap(Map<String, dynamic> map) {
-    return SSISExecutionParameter(value: pulumi.Input.fromValue(map['value']));
+    return SSISExecutionParameter(
+      value: pulumi.Input.fromValue(map['value']),
+    );
   }
 }
+

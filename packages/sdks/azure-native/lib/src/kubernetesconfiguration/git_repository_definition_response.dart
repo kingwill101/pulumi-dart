@@ -7,25 +7,18 @@ import 'repository_ref_definition_response.dart';
 class GitRepositoryDefinitionResponse {
   /// Base64-encoded HTTPS certificate authority contents used to access git private git repositories over HTTPS
   final pulumi.Input<String>? httpsCACert;
-
   /// Plaintext HTTPS username used to access private git repositories over HTTPS
   final pulumi.Input<String>? httpsUser;
-
   /// Name of a local secret on the Kubernetes cluster to use as the authentication secret rather than the managed or user-provided configuration secrets.
   final pulumi.Input<String>? localAuthRef;
-
   /// The source reference for the GitRepository object.
   final pulumi.Input<RepositoryRefDefinitionResponse>? repositoryRef;
-
   /// Base64-encoded known_hosts value containing public SSH keys required to access private git repositories over SSH
   final pulumi.Input<String>? sshKnownHosts;
-
   /// The interval at which to re-reconcile the cluster git repository source with the remote.
   final pulumi.Input<double>? syncIntervalInSeconds;
-
   /// The maximum time to attempt to reconcile the cluster git repository source with the remote.
   final pulumi.Input<double>? timeoutInSeconds;
-
   /// The URL to sync for the flux configuration git repository.
   final pulumi.Input<String>? url;
 
@@ -54,11 +47,7 @@ class GitRepositoryDefinitionResponse {
       'httpsCACert': ?httpsCACert,
       'httpsUser': ?httpsUser,
       'localAuthRef': ?localAuthRef,
-      'repositoryRef':
-          ?pulumi.Input.mapOptionalInputValue<
-            RepositoryRefDefinitionResponse,
-            Map<String, dynamic>
-          >(repositoryRef, (value) => value.toMap()),
+      'repositoryRef': ?pulumi.Input.mapOptionalInputValue<RepositoryRefDefinitionResponse, Map<String, dynamic>>(repositoryRef, (value) => value.toMap()),
       'sshKnownHosts': ?sshKnownHosts,
       'syncIntervalInSeconds': ?syncIntervalInSeconds,
       'timeoutInSeconds': ?timeoutInSeconds,
@@ -68,50 +57,15 @@ class GitRepositoryDefinitionResponse {
 
   factory GitRepositoryDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return GitRepositoryDefinitionResponse(
-      httpsCACert: (() {
-        final guardedValue = map['httpsCACert'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      httpsUser: (() {
-        final guardedValue = map['httpsUser'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      localAuthRef: (() {
-        final guardedValue = map['localAuthRef'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      repositoryRef: (() {
-        final guardedValue = map['repositoryRef'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RepositoryRefDefinitionResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      sshKnownHosts: (() {
-        final guardedValue = map['sshKnownHosts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      syncIntervalInSeconds: (() {
-        final guardedValue = map['syncIntervalInSeconds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      timeoutInSeconds: (() {
-        final guardedValue = map['timeoutInSeconds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      url: (() {
-        final guardedValue = map['url'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      httpsCACert: (() { final guardedValue = map['httpsCACert']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      httpsUser: (() { final guardedValue = map['httpsUser']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      localAuthRef: (() { final guardedValue = map['localAuthRef']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      repositoryRef: (() { final guardedValue = map['repositoryRef']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RepositoryRefDefinitionResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      sshKnownHosts: (() { final guardedValue = map['sshKnownHosts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      syncIntervalInSeconds: (() { final guardedValue = map['syncIntervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      timeoutInSeconds: (() { final guardedValue = map['timeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      url: (() { final guardedValue = map['url']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

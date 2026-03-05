@@ -237,13 +237,10 @@ import 'product_group_state.dart';
 class ProductGroup extends pulumi.CustomResource {
   /// The name of the API Management Service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> apiManagementName;
-
   /// The Name of the API Management Group within the API Management Service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> groupName;
-
   /// The ID of the API Management Product within the API Management Service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> productId;
-
   /// The name of the Resource Group in which the API Management Service exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
 
@@ -256,11 +253,11 @@ class ProductGroup extends pulumi.CustomResource {
     ProductGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/productGroup:ProductGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:apimanagement/productGroup:ProductGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     groupName = registerOutput<String>('groupName');
     productId = registerOutput<String>('productId');
@@ -285,11 +282,11 @@ class ProductGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/productGroup:ProductGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:apimanagement/productGroup:ProductGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     groupName = registerOutput<String>('groupName');
     productId = registerOutput<String>('productId');

@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Header {
   /// Property destination
   final pulumi.Input<String>? destination;
-
   /// Property destinationPort
   final pulumi.Input<String>? destinationPort;
-
   /// Property direction
   final pulumi.Input<String>? direction;
-
   /// Property protocol
   final pulumi.Input<String>? protocol;
-
   /// Property source
   final pulumi.Input<String>? source;
-
   /// Property sourcePort
   final pulumi.Input<String>? sourcePort;
 
@@ -51,36 +46,13 @@ class Header {
 
   factory Header.fromMap(Map<String, dynamic> map) {
     return Header(
-      destination: (() {
-        final guardedValue = map['destination'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      destinationPort: (() {
-        final guardedValue = map['destinationPort'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      direction: (() {
-        final guardedValue = map['direction'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      protocol: (() {
-        final guardedValue = map['protocol'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      source: (() {
-        final guardedValue = map['source'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sourcePort: (() {
-        final guardedValue = map['sourcePort'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      destination: (() { final guardedValue = map['destination']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      destinationPort: (() { final guardedValue = map['destinationPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      direction: (() { final guardedValue = map['direction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourcePort: (() { final guardedValue = map['sourcePort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

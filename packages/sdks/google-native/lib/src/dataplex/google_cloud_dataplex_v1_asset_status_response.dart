@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDataplexV1AssetStatusResponse {
   /// Number of active assets.
   final pulumi.Input<int> activeAssets;
-
   /// Number of assets that are in process of updating the security policy on attached resources.
   final pulumi.Input<int> securityPolicyApplyingAssets;
-
   /// Last update time of the status.
   final pulumi.Input<String> updateTime;
 
@@ -31,15 +29,12 @@ class GoogleCloudDataplexV1AssetStatusResponse {
     };
   }
 
-  factory GoogleCloudDataplexV1AssetStatusResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDataplexV1AssetStatusResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1AssetStatusResponse(
       activeAssets: pulumi.Input.fromValue(map['activeAssets'] as int),
-      securityPolicyApplyingAssets: pulumi.Input.fromValue(
-        map['securityPolicyApplyingAssets'] as int,
-      ),
+      securityPolicyApplyingAssets: pulumi.Input.fromValue(map['securityPolicyApplyingAssets'] as int),
       updateTime: pulumi.Input.fromValue(map['updateTime'] as String),
     );
   }
 }
+

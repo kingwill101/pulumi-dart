@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTopicArgs {
   /// Confluent kafka or schema registry cluster id
   final pulumi.Input<String> clusterId;
-
   /// Confluent environment id
   final pulumi.Input<String> environmentId;
-
   /// Organization resource name
   final pulumi.Input<String> organizationName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Confluent kafka or schema registry topic name
   final pulumi.Input<String> topicName;
 
@@ -50,13 +46,10 @@ class GetTopicArgs {
     return GetTopicArgs(
       clusterId: pulumi.Input.fromValue(map['clusterId'] as String),
       environmentId: pulumi.Input.fromValue(map['environmentId'] as String),
-      organizationName: pulumi.Input.fromValue(
-        map['organizationName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      organizationName: pulumi.Input.fromValue(map['organizationName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       topicName: pulumi.Input.fromValue(map['topicName'] as String),
     );
   }
 }
+

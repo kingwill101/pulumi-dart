@@ -137,11 +137,11 @@ class GlobalSettings extends pulumi.CustomResource {
     GlobalSettingsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:backup/globalSettings:GlobalSettings',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:backup/globalSettings:GlobalSettings',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     globalSettings = registerOutput<Map<String, String>>('globalSettings');
   }
 
@@ -163,11 +163,11 @@ class GlobalSettings extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:backup/globalSettings:GlobalSettings',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:backup/globalSettings:GlobalSettings',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     globalSettings = registerOutput<Map<String, String>>('globalSettings');
   }
 }

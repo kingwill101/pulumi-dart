@@ -10,17 +10,13 @@ import 'subscription_type.dart';
 /// {@macro pulumi_beyondcorp_v1alpha_subscription_args_doc}
 class SubscriptionArgs {
   final pulumi.Input<String>? location;
-
   /// Unique resource name of the Subscription. The name is ignored when creating a subscription.
   final pulumi.Input<String>? name;
   final pulumi.Input<String> organizationId;
-
   /// Optional. Number of seats in the subscription.
   final pulumi.Input<String>? seatCount;
-
   /// SKU of subscription.
   final pulumi.Input<SubscriptionSku> sku;
-
   /// Type of subscription.
   final pulumi.Input<SubscriptionType> type;
 
@@ -46,41 +42,20 @@ class SubscriptionArgs {
       'name': ?name,
       'organizationId': organizationId,
       'seatCount': ?seatCount,
-      'sku': pulumi.Input.mapInputValue<SubscriptionSku, String>(
-        sku,
-        (value) => value.wireValue,
-      ),
-      'type': pulumi.Input.mapInputValue<SubscriptionType, String>(
-        type,
-        (value) => value.wireValue,
-      ),
+      'sku': pulumi.Input.mapInputValue<SubscriptionSku, String>(sku, (value) => value.wireValue),
+      'type': pulumi.Input.mapInputValue<SubscriptionType, String>(type, (value) => value.wireValue),
     };
   }
 
   factory SubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return SubscriptionArgs(
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
-      seatCount: (() {
-        final guardedValue = map['seatCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sku: pulumi.Input.fromValue(
-        SubscriptionSku.fromValue(map['sku']! as String),
-      ),
-      type: pulumi.Input.fromValue(
-        SubscriptionType.fromValue(map['type']! as String),
-      ),
+      seatCount: (() { final guardedValue = map['seatCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sku: pulumi.Input.fromValue(SubscriptionSku.fromValue(map['sku']! as String)),
+      type: pulumi.Input.fromValue(SubscriptionType.fromValue(map['type']! as String)),
     );
   }
 }
+

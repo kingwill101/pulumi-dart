@@ -5,70 +5,48 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRulesRule {
   /// Sensitive Data Identification Rules for the Type of. Valid values:
   final pulumi.Input<int> category;
-
   /// Sensitive Data Identification Rules Belongs Type Name.
   final pulumi.Input<String> categoryName;
-
   /// Sensitive Data Identification Rules the Content.
   final pulumi.Input<String> content;
-
   /// The Content Classification.
   final pulumi.Input<String> contentCategory;
-
   /// Sensitive Data Identification Rules the Creation Time of the Number of Milliseconds.
   final pulumi.Input<String> createTime;
-
   /// Sensitive Data Identification Rules of Type. Valid values:
   final pulumi.Input<int> customType;
-
   /// Sensitive Data Identification a Description of the Rule Information.
   final pulumi.Input<String> description;
-
   /// Sensitive Data Identification Rules, Founder of Account Display Name.
   final pulumi.Input<String> displayName;
-
   /// Sensitive Data Identification Rules to the Modified Time of the Number of Milliseconds.
   final pulumi.Input<String> gmtModified;
-
   /// The ID of the Rule.
   final pulumi.Input<String> id;
-
   /// Sensitive Data Identification Rules, Founder Of Account Login.
   final pulumi.Input<String> loginName;
-
   /// The Primary Key.
   final pulumi.Input<String> majorKey;
-
   /// The name of rule.
   final pulumi.Input<String> name;
-
   /// Product Code.
   final pulumi.Input<String> productCode;
-
   /// Product ID. Valid values:
   final pulumi.Input<String> productId;
-
   /// Sensitive Data Identification Rules of Risk Level ID. Valid values:
   final pulumi.Input<String> riskLevelId;
-
   /// Sensitive Data Identification Rules the Risk Level of. S1: Weak Risk Level S2: Moderate Risk Level S3: High Risk Level S4: the Highest Risk Level.
   final pulumi.Input<String> riskLevelName;
-
   /// The first ID of the resource.
   final pulumi.Input<String> ruleId;
-
   /// Triggered the Alarm Conditions.
   final pulumi.Input<String> statExpress;
-
   /// Sensitive Data Identification Rules Detection State of.
   final pulumi.Input<int> status;
-
   /// The Target.
   final pulumi.Input<String> target;
-
   /// The User ID.
   final pulumi.Input<String> userId;
-
   /// The Level of Risk. Valid values:
   final pulumi.Input<int> warnLevel;
 
@@ -178,3 +156,4 @@ class GetRulesRule {
     );
   }
 }
+

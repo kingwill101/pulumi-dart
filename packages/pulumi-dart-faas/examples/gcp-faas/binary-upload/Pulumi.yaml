@@ -1,0 +1,15 @@
+name: gcp-faas-binary-upload
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: Cloud Run binary upload example for pulumi_dart_faas.
+template:
+  config:
+    gcp:project:
+      description: The Google Cloud project to deploy into
+    gcp:region:
+      default: us-central1
+      description: The Google Cloud region
+    baseImageUri:
+      description: Cloud Run base image URI (for example osonly24-compatible image URI)

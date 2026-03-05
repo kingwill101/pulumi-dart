@@ -4,13 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFoldersFolder {
   final pulumi.Input<String> folderId;
-
   /// Folder Path.
   final pulumi.Input<String> folderPath;
-
   /// The Folder ID.
   final pulumi.Input<String> id;
-
   /// The ID of the project.
   final pulumi.Input<String> projectId;
 
@@ -44,3 +41,4 @@ class GetFoldersFolder {
     );
   }
 }
+

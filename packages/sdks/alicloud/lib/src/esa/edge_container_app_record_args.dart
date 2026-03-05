@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EdgeContainerAppRecordArgs {
   /// The application ID
   final pulumi.Input<String> appId;
-
   /// The associated domain name.
   final pulumi.Input<String> recordName;
-
   /// The website ID.
   final pulumi.Input<String>? siteId;
 
@@ -38,11 +36,8 @@ class EdgeContainerAppRecordArgs {
     return EdgeContainerAppRecordArgs(
       appId: pulumi.Input.fromValue(map['appId'] as String),
       recordName: pulumi.Input.fromValue(map['recordName'] as String),
-      siteId: (() {
-        final guardedValue = map['siteId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      siteId: (() { final guardedValue = map['siteId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

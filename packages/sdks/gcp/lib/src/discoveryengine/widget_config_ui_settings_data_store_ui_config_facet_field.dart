@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WidgetConfigUiSettingsDataStoreUiConfigFacetField {
   /// The field name that end users will see.
   final pulumi.Input<String>? displayName;
-
   /// Registered field name. The format is `field.abc`.
   final pulumi.Input<String> field;
 
@@ -18,19 +17,17 @@ class WidgetConfigUiSettingsDataStoreUiConfigFacetField {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'displayName': ?displayName, 'field': field};
+    return <String, dynamic>{
+      'displayName': ?displayName,
+      'field': field,
+    };
   }
 
-  factory WidgetConfigUiSettingsDataStoreUiConfigFacetField.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WidgetConfigUiSettingsDataStoreUiConfigFacetField.fromMap(Map<String, dynamic> map) {
     return WidgetConfigUiSettingsDataStoreUiConfigFacetField(
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       field: pulumi.Input.fromValue(map['field'] as String),
     );
   }
 }
+

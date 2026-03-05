@@ -10,19 +10,20 @@ class UnitMaintenance {
 
   /// Creates a new [UnitMaintenance].
   /// [pinnedUntilTime] If present, it fixes the release on the unit until the given time; i.e.
-  UnitMaintenance({this.pinnedUntilTime});
+  UnitMaintenance({
+    this.pinnedUntilTime,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'pinnedUntilTime': ?pinnedUntilTime};
+    return <String, dynamic>{
+      'pinnedUntilTime': ?pinnedUntilTime,
+    };
   }
 
   factory UnitMaintenance.fromMap(Map<String, dynamic> map) {
     return UnitMaintenance(
-      pinnedUntilTime: (() {
-        final guardedValue = map['pinnedUntilTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      pinnedUntilTime: (() { final guardedValue = map['pinnedUntilTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

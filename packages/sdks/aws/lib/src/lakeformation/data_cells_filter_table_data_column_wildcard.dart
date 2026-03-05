@@ -8,21 +8,20 @@ class DataCellsFilterTableDataColumnWildcard {
 
   /// Creates a new [DataCellsFilterTableDataColumnWildcard].
   /// [excludedColumnNames] (Optional) Excludes column names. Any column with this name will be excluded.
-  DataCellsFilterTableDataColumnWildcard({this.excludedColumnNames});
+  DataCellsFilterTableDataColumnWildcard({
+    this.excludedColumnNames,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'excludedColumnNames': ?excludedColumnNames};
+    return <String, dynamic>{
+      'excludedColumnNames': ?excludedColumnNames,
+    };
   }
 
-  factory DataCellsFilterTableDataColumnWildcard.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DataCellsFilterTableDataColumnWildcard.fromMap(Map<String, dynamic> map) {
     return DataCellsFilterTableDataColumnWildcard(
-      excludedColumnNames: (() {
-        final guardedValue = map['excludedColumnNames'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      excludedColumnNames: (() { final guardedValue = map['excludedColumnNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

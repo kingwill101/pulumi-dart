@@ -12,19 +12,20 @@ class StatefulSetOrdinalsPatch {
 
   /// Creates a new [StatefulSetOrdinalsPatch].
   /// [start] start is the number representing the first replica's index. It may be used to number replicas from an alternate index (eg: 1-indexed) over the default 0-indexed names, or to orchestrate progressive movement of replicas from one StatefulSet to another. If set, replica indices will be in the range:
-  StatefulSetOrdinalsPatch({this.start});
+  StatefulSetOrdinalsPatch({
+    this.start,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'start': ?start};
+    return <String, dynamic>{
+      'start': ?start,
+    };
   }
 
   factory StatefulSetOrdinalsPatch.fromMap(Map<String, dynamic> map) {
     return StatefulSetOrdinalsPatch(
-      start: (() {
-        final guardedValue = map['start'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      start: (() { final guardedValue = map['start']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

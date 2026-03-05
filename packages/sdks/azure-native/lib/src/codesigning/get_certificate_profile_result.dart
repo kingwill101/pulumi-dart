@@ -8,46 +8,32 @@ import 'system_data_response.dart';
 class GetCertificateProfileResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// List of renewed certificates.
   final List<CertificateResponse> certificates;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// Identity validation id used for the certificate subject name.
   final String identityValidationId;
-
   /// Whether to include L in the certificate subject name. Applicable only for private trust, private trust ci profile types
   final bool? includeCity;
-
   /// Whether to include C in the certificate subject name. Applicable only for private trust, private trust ci profile types
   final bool? includeCountry;
-
   /// Whether to include PC in the certificate subject name.
   final bool? includePostalCode;
-
   /// Whether to include S in the certificate subject name. Applicable only for private trust, private trust ci profile types
   final bool? includeState;
-
   /// Whether to include STREET in the certificate subject name.
   final bool? includeStreetAddress;
-
   /// The name of the resource
   final String name;
-
   /// Profile type of the certificate.
   final String profileType;
-
   /// Status of the current operation on certificate profile.
   final String provisioningState;
-
   /// Status of the certificate profile.
   final String status;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -88,11 +74,7 @@ class GetCertificateProfileResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
-      'certificates':
-          pulumi.Input.encodeList<CertificateResponse, Map<String, dynamic>>(
-            certificates,
-            (value) => value.toMap(),
-          ),
+      'certificates': pulumi.Input.encodeList<CertificateResponse, Map<String, dynamic>>(certificates, (value) => value.toMap()),
       'id': id,
       'identityValidationId': identityValidationId,
       'includeCity': ?includeCity,
@@ -112,46 +94,21 @@ class GetCertificateProfileResult {
   factory GetCertificateProfileResult.fromMap(Map<String, dynamic> map) {
     return GetCertificateProfileResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      certificates: pulumi.Input.decodeList<CertificateResponse>(
-        map['certificates']!,
-        (value) =>
-            CertificateResponse.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      certificates: pulumi.Input.decodeList<CertificateResponse>(map['certificates']!, (value) => CertificateResponse.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       identityValidationId: map['identityValidationId'] as String,
-      includeCity: (() {
-        final guardedValue = map['includeCity'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      includeCountry: (() {
-        final guardedValue = map['includeCountry'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      includePostalCode: (() {
-        final guardedValue = map['includePostalCode'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      includeState: (() {
-        final guardedValue = map['includeState'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      includeStreetAddress: (() {
-        final guardedValue = map['includeStreetAddress'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      includeCity: (() { final guardedValue = map['includeCity']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      includeCountry: (() { final guardedValue = map['includeCountry']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      includePostalCode: (() { final guardedValue = map['includePostalCode']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      includeState: (() { final guardedValue = map['includeState']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      includeStreetAddress: (() { final guardedValue = map['includeStreetAddress']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       name: map['name'] as String,
       profileType: map['profileType'] as String,
       provisioningState: map['provisioningState'] as String,
       status: map['status'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

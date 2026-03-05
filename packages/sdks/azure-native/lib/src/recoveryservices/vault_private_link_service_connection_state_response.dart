@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VaultPrivateLinkServiceConnectionStateResponse {
   /// Gets or sets actions required.
   final pulumi.Input<String> actionsRequired;
-
   /// Gets or sets description.
   final pulumi.Input<String> description;
-
   /// Gets or sets the status.
   final pulumi.Input<String> status;
 
@@ -31,9 +29,7 @@ class VaultPrivateLinkServiceConnectionStateResponse {
     };
   }
 
-  factory VaultPrivateLinkServiceConnectionStateResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VaultPrivateLinkServiceConnectionStateResponse.fromMap(Map<String, dynamic> map) {
     return VaultPrivateLinkServiceConnectionStateResponse(
       actionsRequired: pulumi.Input.fromValue(map['actionsRequired'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
@@ -41,3 +37,4 @@ class VaultPrivateLinkServiceConnectionStateResponse {
     );
   }
 }
+

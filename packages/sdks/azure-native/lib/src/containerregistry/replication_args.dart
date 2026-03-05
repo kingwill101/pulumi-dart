@@ -9,22 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReplicationArgs {
   /// The location of the resource. This cannot be changed after the resource is created.
   final pulumi.Input<String>? location;
-
   /// Specifies whether the replication's regional endpoint is enabled. Requests will not be routed to a replication whose regional endpoint is disabled, however its data will continue to be synced with other replications.
   final pulumi.Input<bool>? regionEndpointEnabled;
-
   /// The name of the container registry.
   final pulumi.Input<String> registryName;
-
   /// The name of the replication.
   final pulumi.Input<String>? replicationName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The tags of the resource.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// Whether or not zone redundancy is enabled for this container registry replication
   final pulumi.Input<String>? zoneRedundancy;
 
@@ -60,37 +54,14 @@ class ReplicationArgs {
 
   factory ReplicationArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationArgs(
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      regionEndpointEnabled: (() {
-        final guardedValue = map['regionEndpointEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      regionEndpointEnabled: (() { final guardedValue = map['regionEndpointEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       registryName: pulumi.Input.fromValue(map['registryName'] as String),
-      replicationName: (() {
-        final guardedValue = map['replicationName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      zoneRedundancy: (() {
-        final guardedValue = map['zoneRedundancy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      replicationName: (() { final guardedValue = map['replicationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      zoneRedundancy: (() { final guardedValue = map['zoneRedundancy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

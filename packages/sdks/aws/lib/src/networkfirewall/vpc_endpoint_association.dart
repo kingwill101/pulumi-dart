@@ -151,33 +151,23 @@ import 'vpc_endpoint_association_timeouts.dart';
 class VpcEndpointAssociation extends pulumi.CustomResource {
   /// A description of the VPC endpoint association.
   late final pulumi.Output<String?> description;
-
   /// The Amazon Resource Name (ARN) that identifies the firewall.
   late final pulumi.Output<String> firewallArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The ID for a subnet that's used in an association with a firewall. See Subnet Mapping below for details.
   late final pulumi.Output<VpcEndpointAssociationSubnetMapping> subnetMapping;
-
   /// Map of resource tags to associate with the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<VpcEndpointAssociationTimeouts?> timeouts;
-
   /// ARN of the VPC Endpoint Association.
   late final pulumi.Output<String> vpcEndpointAssociationArn;
-
   /// The unique identifier of the VPC endpoint association.
   late final pulumi.Output<String> vpcEndpointAssociationId;
-
   /// Nested list of information about the current status of the VPC Endpoint Association.
-  late final pulumi.Output<List<Map<String, dynamic>>>
-  vpcEndpointAssociationStatuses;
-
+  late final pulumi.Output<List<Map<String, dynamic>>> vpcEndpointAssociationStatuses;
   /// The unique identifier of the VPC for the endpoint association.
   late final pulumi.Output<String> vpcId;
 
@@ -190,45 +180,21 @@ class VpcEndpointAssociation extends pulumi.CustomResource {
     VpcEndpointAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:networkfirewall/vpcEndpointAssociation:VpcEndpointAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:networkfirewall/vpcEndpointAssociation:VpcEndpointAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     firewallArn = registerOutput<String>('firewallArn');
     region = registerOutput<String>('region');
-    subnetMapping = registerOutput<VpcEndpointAssociationSubnetMapping>(
-      'subnetMapping',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VpcEndpointAssociationSubnetMapping.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    subnetMapping = registerOutput<VpcEndpointAssociationSubnetMapping>('subnetMapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpcEndpointAssociationSubnetMapping.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<VpcEndpointAssociationTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VpcEndpointAssociationTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    vpcEndpointAssociationArn = registerOutput<String>(
-      'vpcEndpointAssociationArn',
-    );
-    vpcEndpointAssociationId = registerOutput<String>(
-      'vpcEndpointAssociationId',
-    );
-    vpcEndpointAssociationStatuses = registerOutput<List<Map<String, dynamic>>>(
-      'vpcEndpointAssociationStatuses',
-    );
+    timeouts = registerOutput<VpcEndpointAssociationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpcEndpointAssociationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vpcEndpointAssociationArn = registerOutput<String>('vpcEndpointAssociationArn');
+    vpcEndpointAssociationId = registerOutput<String>('vpcEndpointAssociationId');
+    vpcEndpointAssociationStatuses = registerOutput<List<Map<String, dynamic>>>('vpcEndpointAssociationStatuses');
     vpcId = registerOutput<String>('vpcId');
   }
 
@@ -250,45 +216,21 @@ class VpcEndpointAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:networkfirewall/vpcEndpointAssociation:VpcEndpointAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:networkfirewall/vpcEndpointAssociation:VpcEndpointAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     firewallArn = registerOutput<String>('firewallArn');
     region = registerOutput<String>('region');
-    subnetMapping = registerOutput<VpcEndpointAssociationSubnetMapping>(
-      'subnetMapping',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VpcEndpointAssociationSubnetMapping.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    subnetMapping = registerOutput<VpcEndpointAssociationSubnetMapping>('subnetMapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpcEndpointAssociationSubnetMapping.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<VpcEndpointAssociationTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VpcEndpointAssociationTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    vpcEndpointAssociationArn = registerOutput<String>(
-      'vpcEndpointAssociationArn',
-    );
-    vpcEndpointAssociationId = registerOutput<String>(
-      'vpcEndpointAssociationId',
-    );
-    vpcEndpointAssociationStatuses = registerOutput<List<Map<String, dynamic>>>(
-      'vpcEndpointAssociationStatuses',
-    );
+    timeouts = registerOutput<VpcEndpointAssociationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpcEndpointAssociationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vpcEndpointAssociationArn = registerOutput<String>('vpcEndpointAssociationArn');
+    vpcEndpointAssociationId = registerOutput<String>('vpcEndpointAssociationId');
+    vpcEndpointAssociationStatuses = registerOutput<List<Map<String, dynamic>>>('vpcEndpointAssociationStatuses');
     vpcId = registerOutput<String>('vpcId');
   }
 }

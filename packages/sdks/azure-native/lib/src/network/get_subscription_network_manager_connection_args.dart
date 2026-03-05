@@ -22,13 +22,10 @@ class GetSubscriptionNetworkManagerConnectionArgs {
     };
   }
 
-  factory GetSubscriptionNetworkManagerConnectionArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetSubscriptionNetworkManagerConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetSubscriptionNetworkManagerConnectionArgs(
-      networkManagerConnectionName: pulumi.Input.fromValue(
-        map['networkManagerConnectionName'] as String,
-      ),
+      networkManagerConnectionName: pulumi.Input.fromValue(map['networkManagerConnectionName'] as String),
     );
   }
 }
+

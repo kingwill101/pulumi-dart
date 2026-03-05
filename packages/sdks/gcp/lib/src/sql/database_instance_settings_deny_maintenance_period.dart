@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatabaseInstanceSettingsDenyMaintenancePeriod {
   /// "deny maintenance period" end date. If the year of the end date is empty, the year of the start date also must be empty. In this case, it means the no maintenance interval recurs every year. The date is in format yyyy-m-dd (the month is without leading zeros)i.e., 2020-1-01, or 2020-11-01, or mm-dd, i.e., 11-01
   final pulumi.Input<String> endDate;
-
   /// "deny maintenance period" start date. If the year of the start date is empty, the year of the end date also must be empty. In this case, it means the deny maintenance period recurs every year. The date is in format yyyy-m-dd (the month is without leading zeros)i.e., 2020-1-01, or 2020-11-01, or mm-dd, i.e., 11-01
   final pulumi.Input<String> startDate;
-
   /// Time in UTC when the "deny maintenance period" starts on startDate and ends on endDate. The time is in format: HH:mm:SS, i.e., 00:00:00
   final pulumi.Input<String> time;
 
@@ -30,9 +28,7 @@ class DatabaseInstanceSettingsDenyMaintenancePeriod {
     };
   }
 
-  factory DatabaseInstanceSettingsDenyMaintenancePeriod.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DatabaseInstanceSettingsDenyMaintenancePeriod.fromMap(Map<String, dynamic> map) {
     return DatabaseInstanceSettingsDenyMaintenancePeriod(
       endDate: pulumi.Input.fromValue(map['endDate'] as String),
       startDate: pulumi.Input.fromValue(map['startDate'] as String),
@@ -40,3 +36,4 @@ class DatabaseInstanceSettingsDenyMaintenancePeriod {
     );
   }
 }
+

@@ -15,3 +15,4 @@ enum LlmDiagnosticSettings {
     throw ArgumentError('Unknown LlmDiagnosticSettings value: $value');
   }
 }
+

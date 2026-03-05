@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PostgresqlFirewallRuleArgs {
   /// The resource ID of the Azure Cosmos DB for PostgreSQL Cluster. Changing this forces a new resource to be created.
   final pulumi.Input<String> clusterId;
-
   /// The end IP address of the Azure Cosmos DB for PostgreSQL Firewall Rule.
   final pulumi.Input<String> endIpAddress;
-
   /// The name which should be used for the Azure Cosmos DB for PostgreSQL Firewall Rule. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// The start IP address of the Azure Cosmos DB for PostgreSQL Firewall Rule.
   final pulumi.Input<String> startIpAddress;
 
@@ -44,12 +41,9 @@ class PostgresqlFirewallRuleArgs {
     return PostgresqlFirewallRuleArgs(
       clusterId: pulumi.Input.fromValue(map['clusterId'] as String),
       endIpAddress: pulumi.Input.fromValue(map['endIpAddress'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       startIpAddress: pulumi.Input.fromValue(map['startIpAddress'] as String),
     );
   }
 }
+

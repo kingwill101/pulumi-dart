@@ -12,40 +12,28 @@ class DatasetAzureBlobArgs {
   ///
   /// The following supported arguments are specific to Azure Blob Dataset:
   final pulumi.Input<Map<String, String>>? additionalProperties;
-
   /// List of tags that can be used for describing the Data Factory Dataset.
   final pulumi.Input<List<String>>? annotations;
-
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   final pulumi.Input<String> dataFactoryId;
-
   /// The description for the Data Factory Dataset.
   final pulumi.Input<String>? description;
-
   /// Is the `filename` using dynamic expression, function or system variables? Defaults to `false`.
   final pulumi.Input<bool>? dynamicFilenameEnabled;
-
   /// Is the `path` using dynamic expression, function or system variables? Defaults to `false`.
   final pulumi.Input<bool>? dynamicPathEnabled;
-
   /// The filename of the Azure Blob.
   final pulumi.Input<String>? filename;
-
   /// The folder that this Dataset is in. If not specified, the Dataset will appear at the root level.
   final pulumi.Input<String>? folder;
-
   /// The Data Factory Linked Service name in which to associate the Dataset with.
   final pulumi.Input<String> linkedServiceName;
-
   /// Specifies the name of the Data Factory Dataset. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   final pulumi.Input<String>? name;
-
   /// A map of parameters to associate with the Data Factory Dataset.
   final pulumi.Input<Map<String, String>>? parameters;
-
   /// The path of the Azure Blob.
   final pulumi.Input<String>? path;
-
   /// A `schema_column` block as defined below.
   final pulumi.Input<List<DatasetAzureBlobSchemaColumn>>? schemaColumns;
 
@@ -93,93 +81,26 @@ class DatasetAzureBlobArgs {
       'name': ?name,
       'parameters': ?parameters,
       'path': ?path,
-      'schemaColumns':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<DatasetAzureBlobSchemaColumn>,
-            List<Map<String, dynamic>>
-          >(
-            schemaColumns,
-            (value) =>
-                pulumi.Input.encodeList<
-                  DatasetAzureBlobSchemaColumn,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'schemaColumns': ?pulumi.Input.mapOptionalInputValue<List<DatasetAzureBlobSchemaColumn>, List<Map<String, dynamic>>>(schemaColumns, (value) => pulumi.Input.encodeList<DatasetAzureBlobSchemaColumn, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DatasetAzureBlobArgs.fromMap(Map<String, dynamic> map) {
     return DatasetAzureBlobArgs(
-      additionalProperties: (() {
-        final guardedValue = map['additionalProperties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      annotations: (() {
-        final guardedValue = map['annotations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      additionalProperties: (() { final guardedValue = map['additionalProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       dataFactoryId: pulumi.Input.fromValue(map['dataFactoryId'] as String),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dynamicFilenameEnabled: (() {
-        final guardedValue = map['dynamicFilenameEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      dynamicPathEnabled: (() {
-        final guardedValue = map['dynamicPathEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      filename: (() {
-        final guardedValue = map['filename'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      folder: (() {
-        final guardedValue = map['folder'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      linkedServiceName: pulumi.Input.fromValue(
-        map['linkedServiceName'] as String,
-      ),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      parameters: (() {
-        final guardedValue = map['parameters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      path: (() {
-        final guardedValue = map['path'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      schemaColumns: (() {
-        final guardedValue = map['schemaColumns'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<DatasetAzureBlobSchemaColumn>(
-            guardedValue,
-            (value) => DatasetAzureBlobSchemaColumn.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dynamicFilenameEnabled: (() { final guardedValue = map['dynamicFilenameEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      dynamicPathEnabled: (() { final guardedValue = map['dynamicPathEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      filename: (() { final guardedValue = map['filename']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      folder: (() { final guardedValue = map['folder']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      linkedServiceName: pulumi.Input.fromValue(map['linkedServiceName'] as String),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      schemaColumns: (() { final guardedValue = map['schemaColumns']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DatasetAzureBlobSchemaColumn>(guardedValue, (value) => DatasetAzureBlobSchemaColumn.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

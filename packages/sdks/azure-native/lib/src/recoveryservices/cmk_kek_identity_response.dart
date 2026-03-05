@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CmkKekIdentityResponse {
   /// Indicate that system assigned identity should be used. Mutually exclusive with 'userAssignedIdentity' field
   final pulumi.Input<bool>? useSystemAssignedIdentity;
-
   /// The user assigned identity to be used to grant permissions in case the type of identity used is UserAssigned
   final pulumi.Input<String>? userAssignedIdentity;
 
@@ -27,16 +26,9 @@ class CmkKekIdentityResponse {
 
   factory CmkKekIdentityResponse.fromMap(Map<String, dynamic> map) {
     return CmkKekIdentityResponse(
-      useSystemAssignedIdentity: (() {
-        final guardedValue = map['useSystemAssignedIdentity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      userAssignedIdentity: (() {
-        final guardedValue = map['userAssignedIdentity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      useSystemAssignedIdentity: (() { final guardedValue = map['useSystemAssignedIdentity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      userAssignedIdentity: (() { final guardedValue = map['userAssignedIdentity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

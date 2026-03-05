@@ -8,28 +8,16 @@ import 'security_gateway_application_upstream_proxy_protocol_contextual_headers_
 class SecurityGatewayApplicationUpstreamProxyProtocolContextualHeaders {
   /// Device info configuration.
   /// Structure is documented below.
-  final pulumi.Input<
-    SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfo
-  >?
-  deviceInfo;
-
+  final pulumi.Input<SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfo>? deviceInfo;
   /// Group info configuration.
   /// Structure is documented below.
-  final pulumi.Input<
-    SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfo
-  >?
-  groupInfo;
-
+  final pulumi.Input<SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfo>? groupInfo;
   /// Default output type for all enabled headers.
   /// Possible values are: `PROTOBUF`, `JSON`, `NONE`.
   final pulumi.Input<String>? outputType;
-
   /// User info configuration.
   /// Structure is documented below.
-  final pulumi.Input<
-    SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfo
-  >?
-  userInfo;
+  final pulumi.Input<SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfo>? userInfo;
 
   /// Creates a new [SecurityGatewayApplicationUpstreamProxyProtocolContextualHeaders].
   /// [deviceInfo] Device info configuration.
@@ -45,61 +33,20 @@ class SecurityGatewayApplicationUpstreamProxyProtocolContextualHeaders {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'deviceInfo':
-          ?pulumi.Input.mapOptionalInputValue<
-            SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfo,
-            Map<String, dynamic>
-          >(deviceInfo, (value) => value.toMap()),
-      'groupInfo':
-          ?pulumi.Input.mapOptionalInputValue<
-            SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfo,
-            Map<String, dynamic>
-          >(groupInfo, (value) => value.toMap()),
+      'deviceInfo': ?pulumi.Input.mapOptionalInputValue<SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfo, Map<String, dynamic>>(deviceInfo, (value) => value.toMap()),
+      'groupInfo': ?pulumi.Input.mapOptionalInputValue<SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfo, Map<String, dynamic>>(groupInfo, (value) => value.toMap()),
       'outputType': ?outputType,
-      'userInfo':
-          ?pulumi.Input.mapOptionalInputValue<
-            SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfo,
-            Map<String, dynamic>
-          >(userInfo, (value) => value.toMap()),
+      'userInfo': ?pulumi.Input.mapOptionalInputValue<SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfo, Map<String, dynamic>>(userInfo, (value) => value.toMap()),
     };
   }
 
-  factory SecurityGatewayApplicationUpstreamProxyProtocolContextualHeaders.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SecurityGatewayApplicationUpstreamProxyProtocolContextualHeaders.fromMap(Map<String, dynamic> map) {
     return SecurityGatewayApplicationUpstreamProxyProtocolContextualHeaders(
-      deviceInfo: (() {
-        final guardedValue = map['deviceInfo'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfo.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      groupInfo: (() {
-        final guardedValue = map['groupInfo'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfo.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      outputType: (() {
-        final guardedValue = map['outputType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      userInfo: (() {
-        final guardedValue = map['userInfo'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfo.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      deviceInfo: (() { final guardedValue = map['deviceInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfo.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      groupInfo: (() { final guardedValue = map['groupInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfo.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      outputType: (() { final guardedValue = map['outputType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      userInfo: (() { final guardedValue = map['userInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfo.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

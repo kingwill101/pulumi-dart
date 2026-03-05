@@ -10,13 +10,10 @@ import 'compound_assessment_properties.dart';
 class CompoundAssessmentOperationArgs {
   /// Compound Assessment ARM name
   final pulumi.Input<String>? compoundAssessmentName;
-
   /// Assessment Project Name
   final pulumi.Input<String> projectName;
-
   /// The resource-specific properties for this resource.
   final pulumi.Input<CompoundAssessmentProperties>? properties;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,35 +33,18 @@ class CompoundAssessmentOperationArgs {
     return <String, dynamic>{
       'compoundAssessmentName': ?compoundAssessmentName,
       'projectName': projectName,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            CompoundAssessmentProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<CompoundAssessmentProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
     };
   }
 
   factory CompoundAssessmentOperationArgs.fromMap(Map<String, dynamic> map) {
     return CompoundAssessmentOperationArgs(
-      compoundAssessmentName: (() {
-        final guardedValue = map['compoundAssessmentName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      compoundAssessmentName: (() { final guardedValue = map['compoundAssessmentName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       projectName: pulumi.Input.fromValue(map['projectName'] as String),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CompoundAssessmentProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CompoundAssessmentProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

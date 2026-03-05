@@ -9,17 +9,20 @@ class GetMetastoreServiceEncryptionConfig {
 
   /// Creates a new [GetMetastoreServiceEncryptionConfig].
   /// [kmsKey] The fully qualified customer provided Cloud KMS key name to use for customer data encryption.
-  GetMetastoreServiceEncryptionConfig({required this.kmsKey});
+  GetMetastoreServiceEncryptionConfig({
+    required this.kmsKey,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'kmsKey': kmsKey};
+    return <String, dynamic>{
+      'kmsKey': kmsKey,
+    };
   }
 
-  factory GetMetastoreServiceEncryptionConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetMetastoreServiceEncryptionConfig.fromMap(Map<String, dynamic> map) {
     return GetMetastoreServiceEncryptionConfig(
       kmsKey: pulumi.Input.fromValue(map['kmsKey'] as String),
     );
   }
 }
+

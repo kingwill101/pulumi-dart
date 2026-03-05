@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAdConnectorOfficeSitesSiteLog {
   /// Log Level. Possible Values: Info: Information Error: Error Warn: Warning.
   final pulumi.Input<String> level;
-
   /// The Log Details.
   final pulumi.Input<String> message;
-
   /// Log Information Corresponding to the Step.
   final pulumi.Input<String> step;
-
   /// Log Print Time.
   final pulumi.Input<String> timeStamp;
 
@@ -45,3 +42,4 @@ class GetAdConnectorOfficeSitesSiteLog {
     );
   }
 }
+

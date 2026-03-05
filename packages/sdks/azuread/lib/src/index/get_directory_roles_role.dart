@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDirectoryRolesRole {
   /// The description of the directory role.
   final pulumi.Input<String> description;
-
   /// The display name of the directory role.
   final pulumi.Input<String> displayName;
-
   /// The object ID of the directory role.
   final pulumi.Input<String> objectId;
-
   /// The template ID of the directory role.
   final pulumi.Input<String> templateId;
 
@@ -45,3 +42,4 @@ class GetDirectoryRolesRole {
     );
   }
 }
+

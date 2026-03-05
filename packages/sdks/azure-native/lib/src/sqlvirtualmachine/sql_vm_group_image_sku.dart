@@ -15,3 +15,4 @@ enum SqlVmGroupImageSku {
     throw ArgumentError('Unknown SqlVmGroupImageSku value: $value');
   }
 }
+

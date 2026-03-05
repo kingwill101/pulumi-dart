@@ -8,43 +8,30 @@ import 'system_data_response.dart';
 class GetDedicatedHsmResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// The geo-location where the resource lives
   final String location;
-
   /// Specifies the management network interfaces of the dedicated hsm.
   final NetworkProfileResponse? managementNetworkProfile;
-
   /// The name of the resource
   final String name;
-
   /// Specifies the network interfaces of the dedicated hsm.
   final NetworkProfileResponse? networkProfile;
-
   /// Provisioning state.
   final String provisioningState;
-
   /// SKU details
   final SkuResponse sku;
-
   /// This field will be used when RP does not support Availability zones.
   final String? stampId;
-
   /// Resource Status Message.
   final String statusMessage;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
-
   /// The Dedicated Hsm zones.
   final List<String>? zones;
 
@@ -104,43 +91,18 @@ class GetDedicatedHsmResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       location: map['location'] as String,
-      managementNetworkProfile: (() {
-        final guardedValue = map['managementNetworkProfile'];
-        if (guardedValue == null) return null;
-        return NetworkProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      managementNetworkProfile: (() { final guardedValue = map['managementNetworkProfile']; if (guardedValue == null) return null; return NetworkProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       name: map['name'] as String,
-      networkProfile: (() {
-        final guardedValue = map['networkProfile'];
-        if (guardedValue == null) return null;
-        return NetworkProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      networkProfile: (() { final guardedValue = map['networkProfile']; if (guardedValue == null) return null; return NetworkProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       provisioningState: map['provisioningState'] as String,
       sku: SkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
-      stampId: (() {
-        final guardedValue = map['stampId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      stampId: (() { final guardedValue = map['stampId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       statusMessage: map['statusMessage'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
-      zones: (() {
-        final guardedValue = map['zones'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
+      zones: (() { final guardedValue = map['zones']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
     );
   }
 }
+

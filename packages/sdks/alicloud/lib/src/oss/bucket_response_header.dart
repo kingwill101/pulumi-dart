@@ -400,7 +400,6 @@ import 'bucket_response_header_state.dart';
 class BucketResponseHeader extends pulumi.CustomResource {
   /// The name of the bucket
   late final pulumi.Output<String> bucket;
-
   /// The container that holds the response header rules. See `rule` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> rules;
 
@@ -413,11 +412,11 @@ class BucketResponseHeader extends pulumi.CustomResource {
     BucketResponseHeaderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:oss/bucketResponseHeader:BucketResponseHeader',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:oss/bucketResponseHeader:BucketResponseHeader',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
     rules = registerOutput<List<Map<String, dynamic>>?>('rules');
   }
@@ -440,11 +439,11 @@ class BucketResponseHeader extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:oss/bucketResponseHeader:BucketResponseHeader',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:oss/bucketResponseHeader:BucketResponseHeader',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
     rules = registerOutput<List<Map<String, dynamic>>?>('rules');
   }

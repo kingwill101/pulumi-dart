@@ -11,7 +11,6 @@ class IAMBindingArgs {
   /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
   /// Structure is documented below.
   final pulumi.Input<IAMBindingCondition>? condition;
-
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -21,12 +20,10 @@ class IAMBindingArgs {
   /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
   final pulumi.Input<List<String>> members;
-
   /// The role that should be applied. Only one
   /// `gcp.serviceaccount.IAMBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
   final pulumi.Input<String> role;
-
   /// The fully-qualified name of the service account to apply policy to.
   final pulumi.Input<String> serviceAccountId;
 
@@ -44,11 +41,7 @@ class IAMBindingArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'condition':
-          ?pulumi.Input.mapOptionalInputValue<
-            IAMBindingCondition,
-            Map<String, dynamic>
-          >(condition, (value) => value.toMap()),
+      'condition': ?pulumi.Input.mapOptionalInputValue<IAMBindingCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
       'members': members,
       'role': role,
       'serviceAccountId': serviceAccountId,
@@ -57,20 +50,11 @@ class IAMBindingArgs {
 
   factory IAMBindingArgs.fromMap(Map<String, dynamic> map) {
     return IAMBindingArgs(
-      condition: (() {
-        final guardedValue = map['condition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          IAMBindingCondition.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      condition: (() { final guardedValue = map['condition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IAMBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       members: pulumi.Input.fromValue((map['members'] as List).cast<String>()),
       role: pulumi.Input.fromValue(map['role'] as String),
-      serviceAccountId: pulumi.Input.fromValue(
-        map['serviceAccountId'] as String,
-      ),
+      serviceAccountId: pulumi.Input.fromValue(map['serviceAccountId'] as String),
     );
   }
 }
+

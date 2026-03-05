@@ -9,25 +9,20 @@ class VirtualNodeSpecBackend {
 
   /// Creates a new [VirtualNodeSpecBackend].
   /// [virtualService] Virtual service to use as a backend for a virtual node.
-  VirtualNodeSpecBackend({required this.virtualService});
+  VirtualNodeSpecBackend({
+    required this.virtualService,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'virtualService':
-          pulumi.Input.mapInputValue<
-            VirtualNodeSpecBackendVirtualService,
-            Map<String, dynamic>
-          >(virtualService, (value) => value.toMap()),
+      'virtualService': pulumi.Input.mapInputValue<VirtualNodeSpecBackendVirtualService, Map<String, dynamic>>(virtualService, (value) => value.toMap()),
     };
   }
 
   factory VirtualNodeSpecBackend.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecBackend(
-      virtualService: pulumi.Input.fromValue(
-        VirtualNodeSpecBackendVirtualService.fromMap(
-          (map['virtualService']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      virtualService: pulumi.Input.fromValue(VirtualNodeSpecBackendVirtualService.fromMap((map['virtualService']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

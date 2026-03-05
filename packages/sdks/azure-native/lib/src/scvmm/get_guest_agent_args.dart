@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGuestAgentArgs {
   /// Name of the GuestAgent.
   final pulumi.Input<String> guestAgentName;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
-
   /// Name of the vm.
   final pulumi.Input<String> virtualMachineName;
 
@@ -37,12 +35,9 @@ class GetGuestAgentArgs {
   factory GetGuestAgentArgs.fromMap(Map<String, dynamic> map) {
     return GetGuestAgentArgs(
       guestAgentName: pulumi.Input.fromValue(map['guestAgentName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      virtualMachineName: pulumi.Input.fromValue(
-        map['virtualMachineName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      virtualMachineName: pulumi.Input.fromValue(map['virtualMachineName'] as String),
     );
   }
 }
+

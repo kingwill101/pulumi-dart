@@ -6,31 +6,22 @@ import 'system_data_response.dart';
 class GetSignalRSharedPrivateLinkResourceResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The group id from the provider of resource the shared private link resource is for
   final String groupId;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// The name of the resource
   final String name;
-
   /// The resource id of the resource the shared private link resource is for
   final String privateLinkResourceId;
-
   /// Provisioning state of the resource.
   final String provisioningState;
-
   /// The request message for requesting approval of the shared private link resource
   final String? requestMessage;
-
   /// Status of the shared private link resource
   final String status;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -73,9 +64,7 @@ class GetSignalRSharedPrivateLinkResourceResult {
     };
   }
 
-  factory GetSignalRSharedPrivateLinkResourceResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetSignalRSharedPrivateLinkResourceResult.fromMap(Map<String, dynamic> map) {
     return GetSignalRSharedPrivateLinkResourceResult(
       azureApiVersion: map['azureApiVersion'] as String,
       groupId: map['groupId'] as String,
@@ -83,16 +72,11 @@ class GetSignalRSharedPrivateLinkResourceResult {
       name: map['name'] as String,
       privateLinkResourceId: map['privateLinkResourceId'] as String,
       provisioningState: map['provisioningState'] as String,
-      requestMessage: (() {
-        final guardedValue = map['requestMessage'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      requestMessage: (() { final guardedValue = map['requestMessage']; if (guardedValue == null) return null; return guardedValue as String; })(),
       status: map['status'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

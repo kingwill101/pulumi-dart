@@ -37,16 +37,9 @@ class GetManagedFolderIamPolicyArgs {
     return GetManagedFolderIamPolicyArgs(
       bucket: pulumi.Input.fromValue(map['bucket'] as String),
       managedFolder: pulumi.Input.fromValue(map['managedFolder'] as String),
-      optionsRequestedPolicyVersion: (() {
-        final guardedValue = map['optionsRequestedPolicyVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      userProject: (() {
-        final guardedValue = map['userProject'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      userProject: (() { final guardedValue = map['userProject']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

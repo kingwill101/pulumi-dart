@@ -191,27 +191,20 @@ import 'parameter_group_state.dart';
 class ParameterGroup extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of parameter group
   late final pulumi.Output<String> arn;
-
   /// The description of the Redshift parameter group. Defaults to "Managed by Pulumi".
   late final pulumi.Output<String> description;
-
   /// The family of the Redshift parameter group.
   late final pulumi.Output<String> family;
-
   /// The name of the Redshift parameter.
   late final pulumi.Output<String> name;
-
   /// A list of Redshift parameters to apply.
   late final pulumi.Output<List<Map<String, dynamic>>?> parameters;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
   /// You can read more about the parameters that Redshift supports in the [documentation](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html)
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -224,11 +217,11 @@ class ParameterGroup extends pulumi.CustomResource {
     ParameterGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:redshift/parameterGroup:ParameterGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:redshift/parameterGroup:ParameterGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String>('description');
     family = registerOutput<String>('family');
@@ -257,11 +250,11 @@ class ParameterGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:redshift/parameterGroup:ParameterGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:redshift/parameterGroup:ParameterGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String>('description');
     family = registerOutput<String>('family');

@@ -9,19 +9,20 @@ class AiMetadataStoreEncryptionSpec {
 
   /// Creates a new [AiMetadataStoreEncryptionSpec].
   /// [kmsKeyName] Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
-  AiMetadataStoreEncryptionSpec({this.kmsKeyName});
+  AiMetadataStoreEncryptionSpec({
+    this.kmsKeyName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'kmsKeyName': ?kmsKeyName};
+    return <String, dynamic>{
+      'kmsKeyName': ?kmsKeyName,
+    };
   }
 
   factory AiMetadataStoreEncryptionSpec.fromMap(Map<String, dynamic> map) {
     return AiMetadataStoreEncryptionSpec(
-      kmsKeyName: (() {
-        final guardedValue = map['kmsKeyName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      kmsKeyName: (() { final guardedValue = map['kmsKeyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

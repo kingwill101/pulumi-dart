@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetHciEdgeDeviceJobArgs {
   /// The name of the EdgeDevice
   final pulumi.Input<String> edgeDeviceName;
-
   /// Name of EdgeDevice Job
   final pulumi.Input<String> jobsName;
-
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceUri;
 
@@ -42,3 +40,4 @@ class GetHciEdgeDeviceJobArgs {
     );
   }
 }
+

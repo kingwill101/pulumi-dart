@@ -18,3 +18,4 @@ enum IpMappingType {
     throw ArgumentError('Unknown IpMappingType value: $value');
   }
 }
+

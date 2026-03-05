@@ -9,7 +9,6 @@ class GetManagedZonesManagedZone {
   final pulumi.Input<String> managedZoneId;
   final pulumi.Input<String>? name;
   final pulumi.Input<List<String>> nameServers;
-
   /// The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
   final pulumi.Input<String>? project;
   final pulumi.Input<String> visibility;
@@ -53,20 +52,11 @@ class GetManagedZonesManagedZone {
       dnsName: pulumi.Input.fromValue(map['dnsName'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
       managedZoneId: pulumi.Input.fromValue(map['managedZoneId'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      nameServers: pulumi.Input.fromValue(
-        (map['nameServers'] as List).cast<String>(),
-      ),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nameServers: pulumi.Input.fromValue((map['nameServers'] as List).cast<String>()),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       visibility: pulumi.Input.fromValue(map['visibility'] as String),
     );
   }
 }
+

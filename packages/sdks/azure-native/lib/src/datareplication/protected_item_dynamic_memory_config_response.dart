@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProtectedItemDynamicMemoryConfigResponse {
   /// Gets or sets maximum memory in MB.
   final pulumi.Input<double> maximumMemoryInMegaBytes;
-
   /// Gets or sets minimum memory in MB.
   final pulumi.Input<double> minimumMemoryInMegaBytes;
-
   /// Gets or sets target memory buffer in %.
   final pulumi.Input<int> targetMemoryBufferPercentage;
 
@@ -31,19 +29,12 @@ class ProtectedItemDynamicMemoryConfigResponse {
     };
   }
 
-  factory ProtectedItemDynamicMemoryConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ProtectedItemDynamicMemoryConfigResponse.fromMap(Map<String, dynamic> map) {
     return ProtectedItemDynamicMemoryConfigResponse(
-      maximumMemoryInMegaBytes: pulumi.Input.fromValue(
-        map['maximumMemoryInMegaBytes'] as double,
-      ),
-      minimumMemoryInMegaBytes: pulumi.Input.fromValue(
-        map['minimumMemoryInMegaBytes'] as double,
-      ),
-      targetMemoryBufferPercentage: pulumi.Input.fromValue(
-        map['targetMemoryBufferPercentage'] as int,
-      ),
+      maximumMemoryInMegaBytes: pulumi.Input.fromValue(map['maximumMemoryInMegaBytes'] as double),
+      minimumMemoryInMegaBytes: pulumi.Input.fromValue(map['minimumMemoryInMegaBytes'] as double),
+      targetMemoryBufferPercentage: pulumi.Input.fromValue(map['targetMemoryBufferPercentage'] as int),
     );
   }
 }
+

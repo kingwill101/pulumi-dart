@@ -167,29 +167,22 @@ import 'rds_backup_state.dart';
 class RdsBackup extends pulumi.CustomResource {
   /// The backup id.
   late final pulumi.Output<String> backupId;
-
   /// The type of backup that you want to perform. Default value: `Physical`. Valid values: `Logical`, `Physical` and `Snapshot`.
   late final pulumi.Output<String> backupMethod;
-
   /// The policy that you want to use for the backup task. Valid values:
   /// * **db**: specifies to perform a database-level backup.
   /// * **instance**: specifies to perform an instance-level backup.
   late final pulumi.Output<String?> backupStrategy;
-
   /// The method that you want to use for the backup task. Default value: `Auto`. Valid values:
   /// * **Auto**: specifies to automatically perform a full or incremental backup.
   /// * **FullBackup**: specifies to perform a full backup.
   late final pulumi.Output<String> backupType;
-
   /// The db instance id.
   late final pulumi.Output<String> dbInstanceId;
-
   /// The names of the databases whose data you want to back up. Separate the names of the databases with commas (,).
   late final pulumi.Output<String?> dbName;
-
   /// Remove form state when resource cannot be deleted. Valid values: `true` and `false`.
   late final pulumi.Output<bool?> removeFromState;
-
   /// Indicates whether the data backup file can be deleted. Valid values: `Enabled` and `Disabled`.
   late final pulumi.Output<String> storeStatus;
 
@@ -202,11 +195,11 @@ class RdsBackup extends pulumi.CustomResource {
     RdsBackupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:rds/rdsBackup:RdsBackup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:rds/rdsBackup:RdsBackup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     backupId = registerOutput<String>('backupId');
     backupMethod = registerOutput<String>('backupMethod');
     backupStrategy = registerOutput<String?>('backupStrategy');
@@ -235,11 +228,11 @@ class RdsBackup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:rds/rdsBackup:RdsBackup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:rds/rdsBackup:RdsBackup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     backupId = registerOutput<String>('backupId');
     backupMethod = registerOutput<String>('backupMethod');
     backupStrategy = registerOutput<String?>('backupStrategy');

@@ -5,23 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstancesInstance {
   /// The timestamp (in seconds) indicating when the WAF instance expires.
   final pulumi.Input<int> endDate;
-
   /// The ID of the WAF instance.
   final pulumi.Input<String> id;
-
   /// Indicates whether the WAF instance has overdue payments.
   final pulumi.Input<int> inDebt;
-
   /// The ID of WAF the instance.
   final pulumi.Input<String> instanceId;
-
   /// The number of days before the trial period of the WAF instance expires.
   final pulumi.Input<int> remainDay;
-
   /// The status of WAF instance to filter results. Optional value: `0`: The instance has expired, `1` : The instance has not expired and is working properly.
   final pulumi.Input<int> status;
   final pulumi.Input<String> subscriptionType;
-
   /// Indicates whether this is a trial instance.
   final pulumi.Input<int> trial;
 
@@ -66,10 +60,9 @@ class GetInstancesInstance {
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
       remainDay: pulumi.Input.fromValue(map['remainDay'] as int),
       status: pulumi.Input.fromValue(map['status'] as int),
-      subscriptionType: pulumi.Input.fromValue(
-        map['subscriptionType'] as String,
-      ),
+      subscriptionType: pulumi.Input.fromValue(map['subscriptionType'] as String),
       trial: pulumi.Input.fromValue(map['trial'] as int),
     );
   }
 }
+

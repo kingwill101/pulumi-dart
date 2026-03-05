@@ -6,33 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VolumeErrorPatchStorageK8sIoV1beta1 {
   /// String detailing the error encountered during Attach or Detach operation. This string may be logged, so it should not contain sensitive information.
   final pulumi.Input<String>? message;
-
   /// Time the error was encountered.
   final pulumi.Input<String>? time;
 
   /// Creates a new [VolumeErrorPatchStorageK8sIoV1beta1].
   /// [message] String detailing the error encountered during Attach or Detach operation. This string may be logged, so it should not contain sensitive information.
   /// [time] Time the error was encountered.
-  VolumeErrorPatchStorageK8sIoV1beta1({this.message, this.time});
+  VolumeErrorPatchStorageK8sIoV1beta1({
+    this.message,
+    this.time,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'message': ?message, 'time': ?time};
+    return <String, dynamic>{
+      'message': ?message,
+      'time': ?time,
+    };
   }
 
-  factory VolumeErrorPatchStorageK8sIoV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VolumeErrorPatchStorageK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return VolumeErrorPatchStorageK8sIoV1beta1(
-      message: (() {
-        final guardedValue = map['message'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      time: (() {
-        final guardedValue = map['time'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      message: (() { final guardedValue = map['message']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      time: (() { final guardedValue = map['time']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

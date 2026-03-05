@@ -13,7 +13,10 @@ class GetAppArgs {
   /// Creates a new [GetAppArgs].
   /// [appId] Required.
   /// [includeExtraData] Optional.
-  GetAppArgs({required this.appId, this.includeExtraData});
+  GetAppArgs({
+    required this.appId,
+    this.includeExtraData,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,11 +28,8 @@ class GetAppArgs {
   factory GetAppArgs.fromMap(Map<String, dynamic> map) {
     return GetAppArgs(
       appId: pulumi.Input.fromValue(map['appId'] as String),
-      includeExtraData: (() {
-        final guardedValue = map['includeExtraData'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      includeExtraData: (() { final guardedValue = map['includeExtraData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -7,10 +7,8 @@ import 'load_balancer_configuration_properties.dart';
 class LoadBalancerConfiguration {
   /// Resource Id
   final pulumi.Input<String>? id;
-
   /// The name of the Load balancer
   final pulumi.Input<String> name;
-
   /// Properties of the load balancer configuration.
   final pulumi.Input<LoadBalancerConfigurationProperties> properties;
 
@@ -28,27 +26,16 @@ class LoadBalancerConfiguration {
     return <String, dynamic>{
       'id': ?id,
       'name': name,
-      'properties':
-          pulumi.Input.mapInputValue<
-            LoadBalancerConfigurationProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': pulumi.Input.mapInputValue<LoadBalancerConfigurationProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
     };
   }
 
   factory LoadBalancerConfiguration.fromMap(Map<String, dynamic> map) {
     return LoadBalancerConfiguration(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      properties: pulumi.Input.fromValue(
-        LoadBalancerConfigurationProperties.fromMap(
-          (map['properties']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      properties: pulumi.Input.fromValue(LoadBalancerConfigurationProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

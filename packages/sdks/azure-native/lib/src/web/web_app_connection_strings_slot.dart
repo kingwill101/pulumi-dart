@@ -17,17 +17,12 @@ import 'web_app_connection_strings_slot_args.dart';
 class WebAppConnectionStringsSlot extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Kind of resource.
   late final pulumi.Output<String?> kind;
-
   /// Resource Name.
   late final pulumi.Output<String> name;
-
   /// Connection strings.
-  late final pulumi.Output<Map<String, ConnStringValueTypePairResponse>>
-  properties;
-
+  late final pulumi.Output<Map<String, ConnStringValueTypePairResponse>> properties;
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -40,27 +35,15 @@ class WebAppConnectionStringsSlot extends pulumi.CustomResource {
     WebAppConnectionStringsSlotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:web:WebAppConnectionStringsSlot',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:web:WebAppConnectionStringsSlot',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     kind = registerOutput<String?>('kind');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<Map<String, ConnStringValueTypePairResponse>>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeMapValues<ConnStringValueTypePairResponse>(
-          guardedValue,
-          (value) => ConnStringValueTypePairResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      },
-    );
+    properties = registerOutput<Map<String, ConnStringValueTypePairResponse>>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<ConnStringValueTypePairResponse>(guardedValue, (value) => ConnStringValueTypePairResponse.fromMap((value as Map).cast<String, dynamic>())); });
     type = registerOutput<String>('type');
   }
 }

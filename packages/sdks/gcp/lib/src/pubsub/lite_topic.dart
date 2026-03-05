@@ -287,26 +287,20 @@ import 'lite_topic_state.dart';
 class LiteTopic extends pulumi.CustomResource {
   /// Name of the topic.
   late final pulumi.Output<String> name;
-
   /// The settings for this topic's partitions.
   /// Structure is documented below.
   late final pulumi.Output<LiteTopicPartitionConfig?> partitionConfig;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The region of the pubsub lite topic.
   late final pulumi.Output<String?> region;
-
   /// The settings for this topic's Reservation usage.
   /// Structure is documented below.
   late final pulumi.Output<LiteTopicReservationConfig?> reservationConfig;
-
   /// The settings for a topic's message retention.
   /// Structure is documented below.
   late final pulumi.Output<LiteTopicRetentionConfig?> retentionConfig;
-
   /// The zone of the pubsub lite topic.
   late final pulumi.Output<String?> zone;
 
@@ -319,44 +313,17 @@ class LiteTopic extends pulumi.CustomResource {
     LiteTopicArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:pubsub/liteTopic:LiteTopic',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:pubsub/liteTopic:LiteTopic',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
-    partitionConfig = registerOutput<LiteTopicPartitionConfig?>(
-      'partitionConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LiteTopicPartitionConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    partitionConfig = registerOutput<LiteTopicPartitionConfig?>('partitionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LiteTopicPartitionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     region = registerOutput<String?>('region');
-    reservationConfig = registerOutput<LiteTopicReservationConfig?>(
-      'reservationConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LiteTopicReservationConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    retentionConfig = registerOutput<LiteTopicRetentionConfig?>(
-      'retentionConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LiteTopicRetentionConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    reservationConfig = registerOutput<LiteTopicReservationConfig?>('reservationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LiteTopicReservationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    retentionConfig = registerOutput<LiteTopicRetentionConfig?>('retentionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LiteTopicRetentionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     zone = registerOutput<String?>('zone');
   }
 
@@ -378,44 +345,17 @@ class LiteTopic extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:pubsub/liteTopic:LiteTopic',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:pubsub/liteTopic:LiteTopic',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
-    partitionConfig = registerOutput<LiteTopicPartitionConfig?>(
-      'partitionConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LiteTopicPartitionConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    partitionConfig = registerOutput<LiteTopicPartitionConfig?>('partitionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LiteTopicPartitionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     region = registerOutput<String?>('region');
-    reservationConfig = registerOutput<LiteTopicReservationConfig?>(
-      'reservationConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LiteTopicReservationConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    retentionConfig = registerOutput<LiteTopicRetentionConfig?>(
-      'retentionConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LiteTopicRetentionConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    reservationConfig = registerOutput<LiteTopicReservationConfig?>('reservationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LiteTopicReservationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    retentionConfig = registerOutput<LiteTopicRetentionConfig?>('retentionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LiteTopicRetentionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     zone = registerOutput<String?>('zone');
   }
 }

@@ -15,3 +15,4 @@ enum ScriptType {
     throw ArgumentError('Unknown ScriptType value: $value');
   }
 }
+

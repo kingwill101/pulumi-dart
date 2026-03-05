@@ -8,10 +8,8 @@ import 'json_mapper_source_field.dart';
 class JsonArrayMapper {
   /// Define a destination field to which the parsed output will be written. The output is a map, it's keys is the given keys array and the matching values are the parsed json array elements.
   final pulumi.Input<JsonMapperDestinationField>? destinationField;
-
   /// Define the names of the keys in the resulting map. The input json array elements are mapped in order, one for every key.
   final pulumi.Input<List<String>> keys;
-
   /// Define a source field from which a json array will be read and parsed to it's elements. The number of elements in the json array is expected to be the same as the length of keys.
   final pulumi.Input<JsonMapperSourceField>? sourceField;
 
@@ -27,41 +25,18 @@ class JsonArrayMapper {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'destinationField':
-          ?pulumi.Input.mapOptionalInputValue<
-            JsonMapperDestinationField,
-            Map<String, dynamic>
-          >(destinationField, (value) => value.toMap()),
+      'destinationField': ?pulumi.Input.mapOptionalInputValue<JsonMapperDestinationField, Map<String, dynamic>>(destinationField, (value) => value.toMap()),
       'keys': keys,
-      'sourceField':
-          ?pulumi.Input.mapOptionalInputValue<
-            JsonMapperSourceField,
-            Map<String, dynamic>
-          >(sourceField, (value) => value.toMap()),
+      'sourceField': ?pulumi.Input.mapOptionalInputValue<JsonMapperSourceField, Map<String, dynamic>>(sourceField, (value) => value.toMap()),
     };
   }
 
   factory JsonArrayMapper.fromMap(Map<String, dynamic> map) {
     return JsonArrayMapper(
-      destinationField: (() {
-        final guardedValue = map['destinationField'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          JsonMapperDestinationField.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      destinationField: (() { final guardedValue = map['destinationField']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JsonMapperDestinationField.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       keys: pulumi.Input.fromValue((map['keys'] as List).cast<String>()),
-      sourceField: (() {
-        final guardedValue = map['sourceField'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          JsonMapperSourceField.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      sourceField: (() { final guardedValue = map['sourceField']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JsonMapperSourceField.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

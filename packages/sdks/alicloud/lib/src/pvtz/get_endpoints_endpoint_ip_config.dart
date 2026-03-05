@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEndpointsEndpointIpConfig {
   /// The Subnet mask.
   final pulumi.Input<String> cidrBlock;
-
   /// The IP address within the parameter range of the subnet mask. **NOTE:** It is recommended to use the IP address assigned by the system.
   final pulumi.Input<String> ip;
-
   /// The Vswitch id.
   final pulumi.Input<String> vswitchId;
-
   /// The Zone ID.
   final pulumi.Input<String> zoneId;
 
@@ -45,3 +42,4 @@ class GetEndpointsEndpointIpConfig {
     );
   }
 }
+

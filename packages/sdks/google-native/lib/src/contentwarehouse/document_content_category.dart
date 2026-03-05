@@ -17,3 +17,4 @@ enum DocumentContentCategory {
     throw ArgumentError('Unknown DocumentContentCategory value: $value');
   }
 }
+

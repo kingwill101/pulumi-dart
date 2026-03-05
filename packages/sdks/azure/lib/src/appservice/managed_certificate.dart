@@ -541,31 +541,22 @@ import 'managed_certificate_state.dart';
 class ManagedCertificate extends pulumi.CustomResource {
   /// The Canonical Name of the Certificate.
   late final pulumi.Output<String> canonicalName;
-
   /// The ID of the App Service Custom Hostname Binding for the Certificate. Changing this forces a new App Service Managed Certificate to be created.
   late final pulumi.Output<String> customHostnameBindingId;
-
   /// The expiration date of the Certificate.
   late final pulumi.Output<String> expirationDate;
-
   /// The friendly name of the Certificate.
   late final pulumi.Output<String> friendlyName;
-
   /// The list of Host Names for the Certificate.
   late final pulumi.Output<List<String>> hostNames;
-
   /// The Start date for the Certificate.
   late final pulumi.Output<String> issueDate;
-
   /// The issuer of the Certificate.
   late final pulumi.Output<String> issuer;
-
   /// The Subject Name for the Certificate.
   late final pulumi.Output<String> subjectName;
-
   /// A mapping of tags which should be assigned to the App Service Managed Certificate.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The Certificate Thumbprint.
   late final pulumi.Output<String> thumbprint;
 
@@ -578,11 +569,11 @@ class ManagedCertificate extends pulumi.CustomResource {
     ManagedCertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appservice/managedCertificate:ManagedCertificate',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appservice/managedCertificate:ManagedCertificate',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     canonicalName = registerOutput<String>('canonicalName');
     customHostnameBindingId = registerOutput<String>('customHostnameBindingId');
     expirationDate = registerOutput<String>('expirationDate');
@@ -613,11 +604,11 @@ class ManagedCertificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appservice/managedCertificate:ManagedCertificate',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appservice/managedCertificate:ManagedCertificate',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     canonicalName = registerOutput<String>('canonicalName');
     customHostnameBindingId = registerOutput<String>('customHostnameBindingId');
     expirationDate = registerOutput<String>('expirationDate');

@@ -8,16 +8,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_eds_get_bundles_get_bundles_args_doc}
 class GetBundlesArgs {
   final pulumi.Input<List<String>>? bundleIds;
-
   /// The bundle type of  the bundle. Valid values: `SYSTEM`,`CUSTOM`.
   final pulumi.Input<String>? bundleType;
-
   /// A list of Bundle IDs.
   final pulumi.Input<List<String>>? ids;
-
   /// A regex string to filter results by Bundle name.
   final pulumi.Input<String>? nameRegex;
-
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
 
@@ -47,31 +43,12 @@ class GetBundlesArgs {
 
   factory GetBundlesArgs.fromMap(Map<String, dynamic> map) {
     return GetBundlesArgs(
-      bundleIds: (() {
-        final guardedValue = map['bundleIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      bundleType: (() {
-        final guardedValue = map['bundleType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ids: (() {
-        final guardedValue = map['ids'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      bundleIds: (() { final guardedValue = map['bundleIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      bundleType: (() { final guardedValue = map['bundleType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ids: (() { final guardedValue = map['ids']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

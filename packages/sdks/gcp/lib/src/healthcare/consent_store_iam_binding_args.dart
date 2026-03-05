@@ -9,15 +9,12 @@ import 'consent_store_iam_binding_condition.dart';
 /// {@macro pulumi_healthcare_consent_store_iam_binding_consent_store_iam_binding_args_doc}
 class ConsentStoreIamBindingArgs {
   final pulumi.Input<ConsentStoreIamBindingCondition>? condition;
-
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> consentStoreId;
-
   /// Identifies the dataset addressed by this request. Must be in the format
   /// 'projects/{project}/locations/{location}/datasets/{dataset}'
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> dataset;
-
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -31,7 +28,6 @@ class ConsentStoreIamBindingArgs {
   /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
   /// * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
   final pulumi.Input<List<String>> members;
-
   /// The role that should be applied. Only one
   /// `gcp.healthcare.ConsentStoreIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -53,11 +49,7 @@ class ConsentStoreIamBindingArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'condition':
-          ?pulumi.Input.mapOptionalInputValue<
-            ConsentStoreIamBindingCondition,
-            Map<String, dynamic>
-          >(condition, (value) => value.toMap()),
+      'condition': ?pulumi.Input.mapOptionalInputValue<ConsentStoreIamBindingCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
       'consentStoreId': consentStoreId,
       'dataset': dataset,
       'members': members,
@@ -67,15 +59,7 @@ class ConsentStoreIamBindingArgs {
 
   factory ConsentStoreIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return ConsentStoreIamBindingArgs(
-      condition: (() {
-        final guardedValue = map['condition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ConsentStoreIamBindingCondition.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      condition: (() { final guardedValue = map['condition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConsentStoreIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       consentStoreId: pulumi.Input.fromValue(map['consentStoreId'] as String),
       dataset: pulumi.Input.fromValue(map['dataset'] as String),
       members: pulumi.Input.fromValue((map['members'] as List).cast<String>()),
@@ -83,3 +67,4 @@ class ConsentStoreIamBindingArgs {
     );
   }
 }
+

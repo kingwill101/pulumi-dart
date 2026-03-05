@@ -8,21 +8,20 @@ class TargetAssociatedEntityAnthosCluster {
 
   /// Creates a new [TargetAssociatedEntityAnthosCluster].
   /// [membership] Optional. Membership of the GKE Hub-registered cluster to which to apply the Skaffold configuration. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
-  TargetAssociatedEntityAnthosCluster({this.membership});
+  TargetAssociatedEntityAnthosCluster({
+    this.membership,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'membership': ?membership};
+    return <String, dynamic>{
+      'membership': ?membership,
+    };
   }
 
-  factory TargetAssociatedEntityAnthosCluster.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory TargetAssociatedEntityAnthosCluster.fromMap(Map<String, dynamic> map) {
     return TargetAssociatedEntityAnthosCluster(
-      membership: (() {
-        final guardedValue = map['membership'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      membership: (() { final guardedValue = map['membership']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

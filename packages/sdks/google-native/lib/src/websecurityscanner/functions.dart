@@ -25,8 +25,7 @@ Future<GetScanConfigResult> getScanConfig(
 /// Gets a ScanConfig.
 /// [args] Arguments passed to this invoke. {@macro pulumi_websecurityscanner_v1alpha_get_scan_config_websecurityscanner_v1alpha_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetScanConfigWebsecurityscannerV1alphaResult>
-getScanConfigWebsecurityscannerV1alpha(
+Future<GetScanConfigWebsecurityscannerV1alphaResult> getScanConfigWebsecurityscannerV1alpha(
   GetScanConfigWebsecurityscannerV1alphaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -42,8 +41,7 @@ getScanConfigWebsecurityscannerV1alpha(
 /// Gets a ScanConfig.
 /// [args] Arguments passed to this invoke. {@macro pulumi_websecurityscanner_v1beta_get_scan_config_websecurityscanner_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetScanConfigWebsecurityscannerV1betaResult>
-getScanConfigWebsecurityscannerV1beta(
+Future<GetScanConfigWebsecurityscannerV1betaResult> getScanConfigWebsecurityscannerV1beta(
   GetScanConfigWebsecurityscannerV1betaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

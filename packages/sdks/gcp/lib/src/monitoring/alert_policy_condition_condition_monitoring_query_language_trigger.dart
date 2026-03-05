@@ -7,7 +7,6 @@ class AlertPolicyConditionConditionMonitoringQueryLanguageTrigger {
   /// that must fail the predicate for the
   /// condition to be triggered.
   final pulumi.Input<int>? count;
-
   /// The percentage of time series that
   /// must fail the predicate for the
   /// condition to be triggered.
@@ -22,23 +21,17 @@ class AlertPolicyConditionConditionMonitoringQueryLanguageTrigger {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'count': ?count, 'percent': ?percent};
+    return <String, dynamic>{
+      'count': ?count,
+      'percent': ?percent,
+    };
   }
 
-  factory AlertPolicyConditionConditionMonitoringQueryLanguageTrigger.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AlertPolicyConditionConditionMonitoringQueryLanguageTrigger.fromMap(Map<String, dynamic> map) {
     return AlertPolicyConditionConditionMonitoringQueryLanguageTrigger(
-      count: (() {
-        final guardedValue = map['count'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      percent: (() {
-        final guardedValue = map['percent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      percent: (() { final guardedValue = map['percent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

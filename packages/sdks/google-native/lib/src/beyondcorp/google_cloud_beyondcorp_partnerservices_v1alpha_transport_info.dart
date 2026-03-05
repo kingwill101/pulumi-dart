@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo {
   /// PEM encoded CA certificate associated with the proxy server certificate.
   final pulumi.Input<String> serverCaCertPem;
-
   /// Optional. PEM encoded CA certificate associated with the certificate used by proxy server for SSL decryption.
   final pulumi.Input<String>? sslDecryptCaCertPem;
 
@@ -25,16 +24,11 @@ class GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo {
     };
   }
 
-  factory GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo.fromMap(Map<String, dynamic> map) {
     return GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo(
       serverCaCertPem: pulumi.Input.fromValue(map['serverCaCertPem'] as String),
-      sslDecryptCaCertPem: (() {
-        final guardedValue = map['sslDecryptCaCertPem'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      sslDecryptCaCertPem: (() { final guardedValue = map['sslDecryptCaCertPem']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

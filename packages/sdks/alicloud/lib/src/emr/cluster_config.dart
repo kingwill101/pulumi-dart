@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterConfig {
   /// Custom configuration service config key, e.g. ’dfs.replication’.
   final pulumi.Input<String> configKey;
-
   /// Custom configuration service config value, e.g. ’3’.
   final pulumi.Input<String> configValue;
-
   /// Custom configuration service file name, e.g. ’hdfs-site’.
   final pulumi.Input<String> fileName;
   final pulumi.Input<String> serviceName;
@@ -43,3 +41,4 @@ class ClusterConfig {
     );
   }
 }
+

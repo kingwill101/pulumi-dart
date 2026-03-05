@@ -8,10 +8,14 @@ class ClusterServiceExternalIpsConfig {
 
   /// Creates a new [ClusterServiceExternalIpsConfig].
   /// [enabled] Controls whether external ips specified by a service will be allowed. It is enabled by default.
-  ClusterServiceExternalIpsConfig({required this.enabled});
+  ClusterServiceExternalIpsConfig({
+    required this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled};
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
   factory ClusterServiceExternalIpsConfig.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class ClusterServiceExternalIpsConfig {
     );
   }
 }
+

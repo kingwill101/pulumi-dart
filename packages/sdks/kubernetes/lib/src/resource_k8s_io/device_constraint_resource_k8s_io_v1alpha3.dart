@@ -10,14 +10,16 @@ class DeviceConstraintResourceK8sIoV1alpha3 {
   ///
   /// Must include the domain qualifier.
   final pulumi.Input<String>? matchAttribute;
-
   /// Requests is a list of the one or more requests in this claim which must co-satisfy this constraint. If a request is fulfilled by multiple devices, then all of the devices must satisfy the constraint. If this is not specified, this constraint applies to all requests in this claim.
   final pulumi.Input<List<String>>? requests;
 
   /// Creates a new [DeviceConstraintResourceK8sIoV1alpha3].
   /// [matchAttribute] MatchAttribute requires that all devices in question have this attribute and that its type and value are the same across those devices.
   /// [requests] Requests is a list of the one or more requests in this claim which must co-satisfy this constraint. If a request is fulfilled by multiple devices, then all of the devices must satisfy the constraint. If this is not specified, this constraint applies to all requests in this claim.
-  DeviceConstraintResourceK8sIoV1alpha3({this.matchAttribute, this.requests});
+  DeviceConstraintResourceK8sIoV1alpha3({
+    this.matchAttribute,
+    this.requests,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,20 +28,11 @@ class DeviceConstraintResourceK8sIoV1alpha3 {
     };
   }
 
-  factory DeviceConstraintResourceK8sIoV1alpha3.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DeviceConstraintResourceK8sIoV1alpha3.fromMap(Map<String, dynamic> map) {
     return DeviceConstraintResourceK8sIoV1alpha3(
-      matchAttribute: (() {
-        final guardedValue = map['matchAttribute'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      requests: (() {
-        final guardedValue = map['requests'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      matchAttribute: (() { final guardedValue = map['matchAttribute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      requests: (() { final guardedValue = map['requests']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

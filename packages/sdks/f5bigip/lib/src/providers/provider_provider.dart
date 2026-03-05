@@ -9,22 +9,16 @@ import 'provider_terraform_config_result.dart';
 class ProviderProvider extends pulumi.ProviderResource {
   /// Domain name/IP of the BigIP
   late final pulumi.Output<String?> address;
-
   /// Login reference for token authentication (see BIG-IP REST docs for details)
   late final pulumi.Output<String?> loginRef;
-
   /// The user's password. Leave empty if using token_value
   late final pulumi.Output<String?> password;
-
   /// Management Port to connect to Bigip
   late final pulumi.Output<String?> port;
-
   /// A token generated outside the provider, in place of password
   late final pulumi.Output<String?> tokenValue;
-
   /// Valid Trusted Certificate path
   late final pulumi.Output<String?> trustedCertPath;
-
   /// Username with API access to the BigIP
   late final pulumi.Output<String?> username;
 
@@ -37,11 +31,11 @@ class ProviderProvider extends pulumi.ProviderResource {
     ProviderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     address = registerOutput<String?>('address');
     loginRef = registerOutput<String?>('loginRef');
     password = registerOutput<String?>('password');

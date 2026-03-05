@@ -11,17 +11,22 @@ class GetKeyArgs {
   ///
   /// &gt; **Note:** The vault must be in the same subscription as the provider. If the vault is in another subscription, you must create an aliased provider for that subscription.
   final pulumi.Input<String> keyVaultId;
-
   /// Specifies the name of the Key Vault Key.
   final pulumi.Input<String> name;
 
   /// Creates a new [GetKeyArgs].
   /// [keyVaultId] Specifies the ID of the Key Vault instance where the Secret resides, available on the `azure.keyvault.KeyVault` Data Source / Resource.
   /// [name] Specifies the name of the Key Vault Key.
-  GetKeyArgs({required this.keyVaultId, required this.name});
+  GetKeyArgs({
+    required this.keyVaultId,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'keyVaultId': keyVaultId, 'name': name};
+    return <String, dynamic>{
+      'keyVaultId': keyVaultId,
+      'name': name,
+    };
   }
 
   factory GetKeyArgs.fromMap(Map<String, dynamic> map) {
@@ -31,3 +36,4 @@ class GetKeyArgs {
     );
   }
 }
+

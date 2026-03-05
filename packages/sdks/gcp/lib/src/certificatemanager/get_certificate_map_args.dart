@@ -11,7 +11,6 @@ class GetCertificateMapArgs {
   ///
   /// - - -
   final pulumi.Input<String> name;
-
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -19,20 +18,23 @@ class GetCertificateMapArgs {
   /// Creates a new [GetCertificateMapArgs].
   /// [name] The name of the certificate map.
   /// [project] The ID of the project in which the resource belongs. If it
-  GetCertificateMapArgs({required this.name, this.project});
+  GetCertificateMapArgs({
+    required this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'project': ?project};
+    return <String, dynamic>{
+      'name': name,
+      'project': ?project,
+    };
   }
 
   factory GetCertificateMapArgs.fromMap(Map<String, dynamic> map) {
     return GetCertificateMapArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

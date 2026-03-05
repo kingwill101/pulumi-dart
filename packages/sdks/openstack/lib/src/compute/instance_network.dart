@@ -6,21 +6,17 @@ class InstanceNetwork {
   /// Specifies if this network should be used for
   /// provisioning access. Accepts true or false. Defaults to false.
   final pulumi.Input<bool>? accessNetwork;
-
   /// Specifies a fixed IPv4 address to be used on this
   /// network. Changing this creates a new server.
   final pulumi.Input<String>? fixedIpV4;
   final pulumi.Input<String>? fixedIpV6;
   final pulumi.Input<String>? mac;
-
   /// The human-readable
   /// name of the network. Changing this creates a new server.
   final pulumi.Input<String>? name;
-
   /// The port UUID of a
   /// network to attach to the server. Changing this creates a new server.
   final pulumi.Input<String>? port;
-
   /// The network UUID to
   /// attach to the server. Changing this creates a new server.
   final pulumi.Input<String>? uuid;
@@ -57,41 +53,14 @@ class InstanceNetwork {
 
   factory InstanceNetwork.fromMap(Map<String, dynamic> map) {
     return InstanceNetwork(
-      accessNetwork: (() {
-        final guardedValue = map['accessNetwork'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      fixedIpV4: (() {
-        final guardedValue = map['fixedIpV4'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      fixedIpV6: (() {
-        final guardedValue = map['fixedIpV6'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      mac: (() {
-        final guardedValue = map['mac'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      port: (() {
-        final guardedValue = map['port'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      uuid: (() {
-        final guardedValue = map['uuid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accessNetwork: (() { final guardedValue = map['accessNetwork']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      fixedIpV4: (() { final guardedValue = map['fixedIpV4']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      fixedIpV6: (() { final guardedValue = map['fixedIpV6']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      mac: (() { final guardedValue = map['mac']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      uuid: (() { final guardedValue = map['uuid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

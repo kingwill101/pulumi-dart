@@ -12,7 +12,11 @@ class ClusterMasterUserSecret {
   /// [kmsKeyId] The ARN for the KMS encryption key. When specifying `kms_key_id`, `storage_encrypted` needs to be set to true.
   /// [secretArn] Optional.
   /// [secretStatus] Optional.
-  ClusterMasterUserSecret({this.kmsKeyId, this.secretArn, this.secretStatus});
+  ClusterMasterUserSecret({
+    this.kmsKeyId,
+    this.secretArn,
+    this.secretStatus,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,21 +28,10 @@ class ClusterMasterUserSecret {
 
   factory ClusterMasterUserSecret.fromMap(Map<String, dynamic> map) {
     return ClusterMasterUserSecret(
-      kmsKeyId: (() {
-        final guardedValue = map['kmsKeyId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      secretArn: (() {
-        final guardedValue = map['secretArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      secretStatus: (() {
-        final guardedValue = map['secretStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      kmsKeyId: (() { final guardedValue = map['kmsKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      secretArn: (() { final guardedValue = map['secretArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      secretStatus: (() { final guardedValue = map['secretStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -8,31 +8,22 @@ import 'system_data_response.dart';
 class GetWorkspaceManagerAssignmentResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Resource Etag.
   final String etag;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// List of resources included in this workspace manager assignment
   final List<AssignmentItemResponse> items;
-
   /// The time the last job associated to this assignment ended at
   final String lastJobEndTime;
-
   /// State of the last job associated to this assignment
   final String lastJobProvisioningState;
-
   /// The name of the resource
   final String name;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The resource name of the workspace manager group targeted by the workspace manager assignment
   final String targetResourceName;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -65,11 +56,7 @@ class GetWorkspaceManagerAssignmentResult {
       'azureApiVersion': azureApiVersion,
       'etag': etag,
       'id': id,
-      'items':
-          pulumi.Input.encodeList<AssignmentItemResponse, Map<String, dynamic>>(
-            items,
-            (value) => value.toMap(),
-          ),
+      'items': pulumi.Input.encodeList<AssignmentItemResponse, Map<String, dynamic>>(items, (value) => value.toMap()),
       'lastJobEndTime': lastJobEndTime,
       'lastJobProvisioningState': lastJobProvisioningState,
       'name': name,
@@ -79,27 +66,19 @@ class GetWorkspaceManagerAssignmentResult {
     };
   }
 
-  factory GetWorkspaceManagerAssignmentResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetWorkspaceManagerAssignmentResult.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceManagerAssignmentResult(
       azureApiVersion: map['azureApiVersion'] as String,
       etag: map['etag'] as String,
       id: map['id'] as String,
-      items: pulumi.Input.decodeList<AssignmentItemResponse>(
-        map['items']!,
-        (value) => AssignmentItemResponse.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      items: pulumi.Input.decodeList<AssignmentItemResponse>(map['items']!, (value) => AssignmentItemResponse.fromMap((value as Map).cast<String, dynamic>())),
       lastJobEndTime: map['lastJobEndTime'] as String,
       lastJobProvisioningState: map['lastJobProvisioningState'] as String,
       name: map['name'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       targetResourceName: map['targetResourceName'] as String,
       type: map['type'] as String,
     );
   }
 }
+

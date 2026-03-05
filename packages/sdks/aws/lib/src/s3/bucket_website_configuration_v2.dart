@@ -411,35 +411,23 @@ import 'bucket_website_configuration_v2_state.dart';
 class BucketWebsiteConfigurationV2 extends pulumi.CustomResource {
   /// Name of the bucket.
   late final pulumi.Output<String> bucket;
-
   /// Name of the error document for the website. See below.
-  late final pulumi.Output<BucketWebsiteConfigurationV2ErrorDocument?>
-  errorDocument;
-
+  late final pulumi.Output<BucketWebsiteConfigurationV2ErrorDocument?> errorDocument;
   /// Account ID of the expected bucket owner.
   late final pulumi.Output<String?> expectedBucketOwner;
-
   /// Name of the index document for the website. See below.
-  late final pulumi.Output<BucketWebsiteConfigurationV2IndexDocument?>
-  indexDocument;
-
+  late final pulumi.Output<BucketWebsiteConfigurationV2IndexDocument?> indexDocument;
   /// Redirect behavior for every request to this bucket's website endpoint. See below. Conflicts with `error_document`, `index_document`, and `routing_rule`.
-  late final pulumi.Output<BucketWebsiteConfigurationV2RedirectAllRequestsTo?>
-  redirectAllRequestsTo;
-
+  late final pulumi.Output<BucketWebsiteConfigurationV2RedirectAllRequestsTo?> redirectAllRequestsTo;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// JSON array containing [routing rules](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-websiteconfiguration-routingrules.html)
   /// describing redirect behavior and when redirects are applied. Use this parameter when your routing rules contain empty String values (`""`) as seen in the example above.
   late final pulumi.Output<String> routingRuleDetails;
-
   /// List of rules that define when a redirect is applied and the redirect behavior. See below.
   late final pulumi.Output<List<Map<String, dynamic>>> routingRules;
-
   /// Domain of the website endpoint. This is used to create Route 53 alias records.
   late final pulumi.Output<String> websiteDomain;
-
   /// Website endpoint.
   late final pulumi.Output<String> websiteEndpoint;
 
@@ -452,44 +440,16 @@ class BucketWebsiteConfigurationV2 extends pulumi.CustomResource {
     BucketWebsiteConfigurationV2Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:s3/bucketWebsiteConfigurationV2:BucketWebsiteConfigurationV2',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:s3/bucketWebsiteConfigurationV2:BucketWebsiteConfigurationV2',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
-    errorDocument = registerOutput<BucketWebsiteConfigurationV2ErrorDocument?>(
-      'errorDocument',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketWebsiteConfigurationV2ErrorDocument.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    errorDocument = registerOutput<BucketWebsiteConfigurationV2ErrorDocument?>('errorDocument', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketWebsiteConfigurationV2ErrorDocument.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
-    indexDocument = registerOutput<BucketWebsiteConfigurationV2IndexDocument?>(
-      'indexDocument',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketWebsiteConfigurationV2IndexDocument.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    redirectAllRequestsTo =
-        registerOutput<BucketWebsiteConfigurationV2RedirectAllRequestsTo?>(
-          'redirectAllRequestsTo',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return BucketWebsiteConfigurationV2RedirectAllRequestsTo.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    indexDocument = registerOutput<BucketWebsiteConfigurationV2IndexDocument?>('indexDocument', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketWebsiteConfigurationV2IndexDocument.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    redirectAllRequestsTo = registerOutput<BucketWebsiteConfigurationV2RedirectAllRequestsTo?>('redirectAllRequestsTo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketWebsiteConfigurationV2RedirectAllRequestsTo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     routingRuleDetails = registerOutput<String>('routingRuleDetails');
     routingRules = registerOutput<List<Map<String, dynamic>>>('routingRules');
@@ -515,44 +475,16 @@ class BucketWebsiteConfigurationV2 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:s3/bucketWebsiteConfigurationV2:BucketWebsiteConfigurationV2',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:s3/bucketWebsiteConfigurationV2:BucketWebsiteConfigurationV2',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
-    errorDocument = registerOutput<BucketWebsiteConfigurationV2ErrorDocument?>(
-      'errorDocument',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketWebsiteConfigurationV2ErrorDocument.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    errorDocument = registerOutput<BucketWebsiteConfigurationV2ErrorDocument?>('errorDocument', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketWebsiteConfigurationV2ErrorDocument.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
-    indexDocument = registerOutput<BucketWebsiteConfigurationV2IndexDocument?>(
-      'indexDocument',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketWebsiteConfigurationV2IndexDocument.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    redirectAllRequestsTo =
-        registerOutput<BucketWebsiteConfigurationV2RedirectAllRequestsTo?>(
-          'redirectAllRequestsTo',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return BucketWebsiteConfigurationV2RedirectAllRequestsTo.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    indexDocument = registerOutput<BucketWebsiteConfigurationV2IndexDocument?>('indexDocument', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketWebsiteConfigurationV2IndexDocument.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    redirectAllRequestsTo = registerOutput<BucketWebsiteConfigurationV2RedirectAllRequestsTo?>('redirectAllRequestsTo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketWebsiteConfigurationV2RedirectAllRequestsTo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     routingRuleDetails = registerOutput<String>('routingRuleDetails');
     routingRules = registerOutput<List<Map<String, dynamic>>>('routingRules');

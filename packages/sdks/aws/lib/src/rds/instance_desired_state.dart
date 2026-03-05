@@ -115,10 +115,8 @@ import 'instance_desired_state_timeouts.dart';
 class InstanceDesiredState extends pulumi.CustomResource {
   /// DB Instance Identifier
   late final pulumi.Output<String> identifier;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Configured state of the DB Instance. Valid values are `available` and `stopped`.
   late final pulumi.Output<String> state;
   late final pulumi.Output<InstanceDesiredStateTimeouts?> timeouts;
@@ -132,24 +130,15 @@ class InstanceDesiredState extends pulumi.CustomResource {
     InstanceDesiredStateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:rds/instanceDesiredState:InstanceDesiredState',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:rds/instanceDesiredState:InstanceDesiredState',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     identifier = registerOutput<String>('identifier');
     region = registerOutput<String>('region');
     state = registerOutput<String>('state');
-    timeouts = registerOutput<InstanceDesiredStateTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceDesiredStateTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<InstanceDesiredStateTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceDesiredStateTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [InstanceDesiredState] resource's state with the given [name] and [id].
@@ -170,23 +159,14 @@ class InstanceDesiredState extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:rds/instanceDesiredState:InstanceDesiredState',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:rds/instanceDesiredState:InstanceDesiredState',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     identifier = registerOutput<String>('identifier');
     region = registerOutput<String>('region');
     this.state = registerOutput<String>('state');
-    timeouts = registerOutput<InstanceDesiredStateTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceDesiredStateTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<InstanceDesiredStateTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceDesiredStateTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

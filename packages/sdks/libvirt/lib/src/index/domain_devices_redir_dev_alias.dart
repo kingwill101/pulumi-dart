@@ -8,10 +8,14 @@ class DomainDevicesRedirDevAlias {
 
   /// Creates a new [DomainDevicesRedirDevAlias].
   /// [name] Sets the name of the alias for the persistent storage device, used for reference in management tasks.
-  DomainDevicesRedirDevAlias({required this.name});
+  DomainDevicesRedirDevAlias({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory DomainDevicesRedirDevAlias.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class DomainDevicesRedirDevAlias {
     );
   }
 }
+

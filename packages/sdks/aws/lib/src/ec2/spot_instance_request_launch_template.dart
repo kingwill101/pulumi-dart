@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SpotInstanceRequestLaunchTemplate {
   /// ID of the launch template. Conflicts with `name`.
   final pulumi.Input<String>? id;
-
   /// Name of the launch template. Conflicts with `id`.
   final pulumi.Input<String>? name;
-
   /// Template version. Can be a specific version number, `$Latest` or `$Default`. The default value is `$Default`.
   final pulumi.Input<String>? version;
 
@@ -16,29 +14,26 @@ class SpotInstanceRequestLaunchTemplate {
   /// [id] ID of the launch template. Conflicts with `name`.
   /// [name] Name of the launch template. Conflicts with `id`.
   /// [version] Template version. Can be a specific version number, `$Latest` or `$Default`. The default value is `$Default`.
-  SpotInstanceRequestLaunchTemplate({this.id, this.name, this.version});
+  SpotInstanceRequestLaunchTemplate({
+    this.id,
+    this.name,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': ?id, 'name': ?name, 'version': ?version};
+    return <String, dynamic>{
+      'id': ?id,
+      'name': ?name,
+      'version': ?version,
+    };
   }
 
   factory SpotInstanceRequestLaunchTemplate.fromMap(Map<String, dynamic> map) {
     return SpotInstanceRequestLaunchTemplate(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

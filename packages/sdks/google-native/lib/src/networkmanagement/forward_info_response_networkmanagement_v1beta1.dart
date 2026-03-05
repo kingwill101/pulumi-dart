@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ForwardInfoResponseNetworkmanagementV1beta1 {
   /// URI of the resource that the packet is forwarded to.
   final pulumi.Input<String> resourceUri;
-
   /// Target type where this packet is forwarded to.
   final pulumi.Input<String> target;
 
@@ -19,15 +18,17 @@ class ForwardInfoResponseNetworkmanagementV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'resourceUri': resourceUri, 'target': target};
+    return <String, dynamic>{
+      'resourceUri': resourceUri,
+      'target': target,
+    };
   }
 
-  factory ForwardInfoResponseNetworkmanagementV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ForwardInfoResponseNetworkmanagementV1beta1.fromMap(Map<String, dynamic> map) {
     return ForwardInfoResponseNetworkmanagementV1beta1(
       resourceUri: pulumi.Input.fromValue(map['resourceUri'] as String),
       target: pulumi.Input.fromValue(map['target'] as String),
     );
   }
 }
+

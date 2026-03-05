@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRunbookArgs {
   /// The name of the Automation Account the runbook belongs to.
   final pulumi.Input<String> automationAccountName;
-
   /// The name of the Automation Runbook.
   final pulumi.Input<String> name;
-
   /// The name of the Resource Group where the Automation exists.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,13 +34,10 @@ class GetRunbookArgs {
 
   factory GetRunbookArgs.fromMap(Map<String, dynamic> map) {
     return GetRunbookArgs(
-      automationAccountName: pulumi.Input.fromValue(
-        map['automationAccountName'] as String,
-      ),
+      automationAccountName: pulumi.Input.fromValue(map['automationAccountName'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

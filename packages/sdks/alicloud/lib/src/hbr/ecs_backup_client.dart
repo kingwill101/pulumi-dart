@@ -457,34 +457,24 @@ import 'ecs_backup_client_state.dart';
 class EcsBackupClient extends pulumi.CustomResource {
   /// The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`. **NOTE:** The value of `CLASSIC` has been deprecated in v1.161.0+.
   late final pulumi.Output<String> dataNetworkType;
-
   /// The data plane proxy settings. Valid values: `CUSTOM`, `DISABLE`, `USE_CONTROL_PROXY`.
   late final pulumi.Output<String> dataProxySetting;
-
   /// The ID of ECS instance.
   late final pulumi.Output<String> instanceId;
-
   /// The number of CPU cores used by a single backup task, 0 means no restrictions.
   late final pulumi.Output<String> maxCpuCore;
-
   /// The number of concurrent jobs for a single backup task, 0 means no restrictions.
   late final pulumi.Output<String> maxWorker;
-
   /// Custom data plane proxy server host address.
   late final pulumi.Output<String> proxyHost;
-
   /// The password of custom data plane proxy server.
   late final pulumi.Output<String> proxyPassword;
-
   /// Custom data plane proxy server host port.
   late final pulumi.Output<String> proxyPort;
-
   /// The username of custom data plane proxy server.
   late final pulumi.Output<String> proxyUser;
-
   /// Status of client. Valid values: `ACTIVATED`, `STOPPED`. You can start or stop the client by specifying the status.
   late final pulumi.Output<String> status;
-
   /// Indicates whether to use the HTTPS protocol. Valid values: `true`, `false`.
   late final pulumi.Output<bool> useHttps;
 
@@ -497,11 +487,11 @@ class EcsBackupClient extends pulumi.CustomResource {
     EcsBackupClientArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:hbr/ecsBackupClient:EcsBackupClient',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:hbr/ecsBackupClient:EcsBackupClient',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dataNetworkType = registerOutput<String>('dataNetworkType');
     dataProxySetting = registerOutput<String>('dataProxySetting');
     instanceId = registerOutput<String>('instanceId');
@@ -533,11 +523,11 @@ class EcsBackupClient extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:hbr/ecsBackupClient:EcsBackupClient',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:hbr/ecsBackupClient:EcsBackupClient',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dataNetworkType = registerOutput<String>('dataNetworkType');
     dataProxySetting = registerOutput<String>('dataProxySetting');
     instanceId = registerOutput<String>('instanceId');

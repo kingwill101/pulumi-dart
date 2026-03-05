@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BrokerAuthenticatorMethodSvid {
   /// Mounted socket path for spiffe agent.
   final pulumi.Input<String> agentSocketPath;
-
   /// Maximum number of re-tries to fetch identity.
   final pulumi.Input<double>? identityMaxRetry;
-
   /// Maximum time to wait before fetching identity again.
   final pulumi.Input<double>? identityWaitRetryMs;
 
@@ -34,16 +32,9 @@ class BrokerAuthenticatorMethodSvid {
   factory BrokerAuthenticatorMethodSvid.fromMap(Map<String, dynamic> map) {
     return BrokerAuthenticatorMethodSvid(
       agentSocketPath: pulumi.Input.fromValue(map['agentSocketPath'] as String),
-      identityMaxRetry: (() {
-        final guardedValue = map['identityMaxRetry'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      identityWaitRetryMs: (() {
-        final guardedValue = map['identityWaitRetryMs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      identityMaxRetry: (() { final guardedValue = map['identityMaxRetry']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      identityWaitRetryMs: (() { final guardedValue = map['identityWaitRetryMs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

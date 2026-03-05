@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetHpcClustersCluster {
   /// The description of ECS Hpc Cluster.
   final pulumi.Input<String> description;
-
   /// The ID of the Hpc Cluster.
   final pulumi.Input<String> hpcClusterId;
-
   /// The ID of the Hpc Cluster.
   final pulumi.Input<String> id;
-
   /// The name of ECS Hpc Cluster.
   final pulumi.Input<String> name;
 
@@ -45,3 +42,4 @@ class GetHpcClustersCluster {
     );
   }
 }
+

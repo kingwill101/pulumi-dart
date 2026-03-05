@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PersistentDiskResponse {
   /// The URI of the Persistent Disk.
   final pulumi.Input<String> diskUri;
-
   /// The ordinal number of the source VM disk.
   final pulumi.Input<int> sourceDiskNumber;
 
@@ -32,3 +31,4 @@ class PersistentDiskResponse {
     );
   }
 }
+

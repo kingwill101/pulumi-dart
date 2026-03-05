@@ -8,10 +8,14 @@ class JobConfigEncryptionMpegCenc {
 
   /// Creates a new [JobConfigEncryptionMpegCenc].
   /// [scheme] Specify the encryption scheme.
-  JobConfigEncryptionMpegCenc({required this.scheme});
+  JobConfigEncryptionMpegCenc({
+    required this.scheme,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'scheme': scheme};
+    return <String, dynamic>{
+      'scheme': scheme,
+    };
   }
 
   factory JobConfigEncryptionMpegCenc.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class JobConfigEncryptionMpegCenc {
     );
   }
 }
+

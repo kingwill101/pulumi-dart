@@ -23,3 +23,4 @@ enum SaaSOfferStatus {
     throw ArgumentError('Unknown SaaSOfferStatus value: $value');
   }
 }
+

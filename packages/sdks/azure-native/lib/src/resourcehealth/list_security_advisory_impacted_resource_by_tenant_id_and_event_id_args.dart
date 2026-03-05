@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListSecurityAdvisoryImpactedResourceByTenantIdAndEventIdArgs {
   /// Event Id which uniquely identifies ServiceHealth event.
   final pulumi.Input<String> eventTrackingId;
-
   /// The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN
   final pulumi.Input<String>? filter;
 
@@ -28,16 +27,11 @@ class ListSecurityAdvisoryImpactedResourceByTenantIdAndEventIdArgs {
     };
   }
 
-  factory ListSecurityAdvisoryImpactedResourceByTenantIdAndEventIdArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListSecurityAdvisoryImpactedResourceByTenantIdAndEventIdArgs.fromMap(Map<String, dynamic> map) {
     return ListSecurityAdvisoryImpactedResourceByTenantIdAndEventIdArgs(
       eventTrackingId: pulumi.Input.fromValue(map['eventTrackingId'] as String),
-      filter: (() {
-        final guardedValue = map['filter'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetShareAclAccessPolicy {
   /// The time at which this Access Policy is valid until.
   final pulumi.Input<String> expiry;
-
   /// The permissions which should be associated with this Shared Identifier. Possible value is combination of `r` (read), `w` (write), `d` (delete), and `l` (list).
   final pulumi.Input<String> permissions;
-
   /// The time at which this Access Policy is valid from.
   final pulumi.Input<String> start;
 
@@ -38,3 +36,4 @@ class GetShareAclAccessPolicy {
     );
   }
 }
+

@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RepositoryRefDefinition {
   /// The git repository branch name to checkout.
   final pulumi.Input<String>? branch;
-
   /// The commit SHA to checkout. This value must be combined with the branch name to be valid. This takes precedence over semver.
   final pulumi.Input<String>? commit;
-
   /// The semver range used to match against git repository tags. This takes precedence over tag.
   final pulumi.Input<String>? semver;
-
   /// The git repository tag name to checkout. This takes precedence over branch.
   final pulumi.Input<String>? tag;
 
@@ -21,7 +18,12 @@ class RepositoryRefDefinition {
   /// [commit] The commit SHA to checkout. This value must be combined with the branch name to be valid. This takes precedence over semver.
   /// [semver] The semver range used to match against git repository tags. This takes precedence over tag.
   /// [tag] The git repository tag name to checkout. This takes precedence over branch.
-  RepositoryRefDefinition({this.branch, this.commit, this.semver, this.tag});
+  RepositoryRefDefinition({
+    this.branch,
+    this.commit,
+    this.semver,
+    this.tag,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,26 +36,11 @@ class RepositoryRefDefinition {
 
   factory RepositoryRefDefinition.fromMap(Map<String, dynamic> map) {
     return RepositoryRefDefinition(
-      branch: (() {
-        final guardedValue = map['branch'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      commit: (() {
-        final guardedValue = map['commit'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      semver: (() {
-        final guardedValue = map['semver'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tag: (() {
-        final guardedValue = map['tag'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      branch: (() { final guardedValue = map['branch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      commit: (() { final guardedValue = map['commit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      semver: (() { final guardedValue = map['semver']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tag: (() { final guardedValue = map['tag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

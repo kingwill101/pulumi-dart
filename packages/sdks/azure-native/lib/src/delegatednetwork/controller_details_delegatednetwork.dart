@@ -140,34 +140,24 @@ import 'controller_details_args.dart';
 class ControllerDetailsDelegatednetwork extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// dnc application id should be used by customer to authenticate with dnc gateway.
   late final pulumi.Output<String> dncAppId;
-
   /// dnc endpoint url that customers can use to connect to
   late final pulumi.Output<String> dncEndpoint;
-
   /// tenant id of dnc application id
   late final pulumi.Output<String> dncTenantId;
-
   /// Location of the resource.
   late final pulumi.Output<String?> location;
-
   /// The name of the resource.
   late final pulumi.Output<String> name;
-
   /// The current state of dnc controller resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The purpose of the dnc controller resource.
   late final pulumi.Output<String?> purpose;
-
   /// Resource guid.
   late final pulumi.Output<String> resourceGuid;
-
   /// The resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of resource.
   late final pulumi.Output<String> type;
 
@@ -180,11 +170,11 @@ class ControllerDetailsDelegatednetwork extends pulumi.CustomResource {
     ControllerDetailsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:delegatednetwork:ControllerDetails',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:delegatednetwork:ControllerDetails',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     dncAppId = registerOutput<String>('dncAppId');
     dncEndpoint = registerOutput<String>('dncEndpoint');

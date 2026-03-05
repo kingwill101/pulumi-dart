@@ -284,31 +284,23 @@ import 'backup_state.dart';
 class Backup extends pulumi.CustomResource {
   /// The amount of bytes needed to allocate a full copy of the snapshot content.
   late final pulumi.Output<String> capacityGb;
-
   /// The time when the snapshot was created in RFC3339 text format.
   late final pulumi.Output<String> createTime;
-
   /// A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
   late final pulumi.Output<String?> description;
-
   /// Amount of bytes that will be downloaded if the backup is restored.
   late final pulumi.Output<String> downloadBytes;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// KMS key name used for data encryption.
   late final pulumi.Output<String> kmsKeyName;
-
   /// Resource labels to represent user-provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
   late final pulumi.Output<String> location;
-
   /// The resource name of the backup. The name must be unique within the specified instance.
   /// The name must be 1-63 characters long, and comply with
   /// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -317,30 +309,22 @@ class Backup extends pulumi.CustomResource {
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// Name of the file share in the source Cloud Filestore instance that the backup is created from.
   late final pulumi.Output<String> sourceFileShare;
-
   /// The resource name of the source Cloud Filestore instance, in the format projects/{projectId}/locations/{locationId}/instances/{instanceId}, used to create this backup.
   late final pulumi.Output<String> sourceInstance;
-
   /// The service tier of the source Cloud Filestore instance that this backup is created from.
   late final pulumi.Output<String> sourceInstanceTier;
-
   /// The backup state.
   late final pulumi.Output<String> state;
-
   /// The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
   late final pulumi.Output<String> storageBytes;
-
   /// A map of resource manager tags.
   /// Resource manager tag keys and values have the same definition as resource manager tags.
   /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
@@ -351,13 +335,16 @@ class Backup extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Backup]. {@macro pulumi_filestore_backup_backup_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Backup(String name, {BackupArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'gcp:filestore/backup:Backup',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Backup(
+    String name, {
+    BackupArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'gcp:filestore/backup:Backup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     capacityGb = registerOutput<String>('capacityGb');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
@@ -395,11 +382,11 @@ class Backup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:filestore/backup:Backup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:filestore/backup:Backup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     capacityGb = registerOutput<String>('capacityGb');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');

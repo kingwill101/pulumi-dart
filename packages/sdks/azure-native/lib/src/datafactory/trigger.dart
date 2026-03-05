@@ -498,16 +498,12 @@ import 'trigger_args.dart';
 class Trigger extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Etag identifies change in the resource.
   late final pulumi.Output<String> etag;
-
   /// The resource name.
   late final pulumi.Output<String> name;
-
   /// Properties of the trigger.
   late final pulumi.Output<BlobEventsTriggerResponse> properties;
-
   /// The resource type.
   late final pulumi.Output<String> type;
 
@@ -520,24 +516,15 @@ class Trigger extends pulumi.CustomResource {
     TriggerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:datafactory:Trigger',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:datafactory:Trigger',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<BlobEventsTriggerResponse>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BlobEventsTriggerResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<BlobEventsTriggerResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BlobEventsTriggerResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

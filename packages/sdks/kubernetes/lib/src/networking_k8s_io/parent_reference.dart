@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ParentReference {
   /// Group is the group of the object being referenced.
   final pulumi.Input<String>? group;
-
   /// Name is the name of the object being referenced.
   final pulumi.Input<String> name;
-
   /// Namespace is the namespace of the object being referenced.
   final pulumi.Input<String>? namespace;
-
   /// Resource is the resource of the object being referenced.
   final pulumi.Input<String> resource;
 
@@ -39,18 +36,11 @@ class ParentReference {
 
   factory ParentReference.fromMap(Map<String, dynamic> map) {
     return ParentReference(
-      group: (() {
-        final guardedValue = map['group'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      group: (() { final guardedValue = map['group']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      namespace: (() {
-        final guardedValue = map['namespace'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      namespace: (() { final guardedValue = map['namespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resource: pulumi.Input.fromValue(map['resource'] as String),
     );
   }
 }
+

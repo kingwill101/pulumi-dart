@@ -9,11 +9,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AiLogicPromptTemplateLockArgs {
   /// The location of the prompt template.
   final pulumi.Input<String> location;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The ID of the prompt template.
   final pulumi.Input<String> templateId;
 
@@ -38,12 +36,9 @@ class AiLogicPromptTemplateLockArgs {
   factory AiLogicPromptTemplateLockArgs.fromMap(Map<String, dynamic> map) {
     return AiLogicPromptTemplateLockArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       templateId: pulumi.Input.fromValue(map['templateId'] as String),
     );
   }
 }
+

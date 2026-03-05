@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IntegrationExporterArgs {
   /// The ID of the Prometheus instance.
   final pulumi.Input<String> clusterId;
-
   /// The type of prometheus integration.
   final pulumi.Input<String> integrationType;
-
   /// Exporter configuration parameter json string.
   final pulumi.Input<String> param;
 
@@ -42,3 +40,4 @@ class IntegrationExporterArgs {
     );
   }
 }
+

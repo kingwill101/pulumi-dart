@@ -22,3 +22,4 @@ enum TransformSummaryKind {
     throw ArgumentError('Unknown TransformSummaryKind value: $value');
   }
 }
+

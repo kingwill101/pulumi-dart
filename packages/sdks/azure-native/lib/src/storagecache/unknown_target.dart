@@ -9,21 +9,20 @@ class UnknownTarget {
 
   /// Creates a new [UnknownTarget].
   /// [attributes] Dictionary of string-&gt;string pairs containing information about the Storage Target.
-  UnknownTarget({this.attributes});
+  UnknownTarget({
+    this.attributes,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'attributes': ?attributes};
+    return <String, dynamic>{
+      'attributes': ?attributes,
+    };
   }
 
   factory UnknownTarget.fromMap(Map<String, dynamic> map) {
     return UnknownTarget(
-      attributes: (() {
-        final guardedValue = map['attributes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      attributes: (() { final guardedValue = map['attributes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

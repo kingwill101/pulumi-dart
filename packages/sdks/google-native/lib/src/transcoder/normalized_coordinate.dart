@@ -6,31 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NormalizedCoordinate {
   /// Normalized x coordinate.
   final pulumi.Input<double>? x;
-
   /// Normalized y coordinate.
   final pulumi.Input<double>? y;
 
   /// Creates a new [NormalizedCoordinate].
   /// [x] Normalized x coordinate.
   /// [y] Normalized y coordinate.
-  NormalizedCoordinate({this.x, this.y});
+  NormalizedCoordinate({
+    this.x,
+    this.y,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'x': ?x, 'y': ?y};
+    return <String, dynamic>{
+      'x': ?x,
+      'y': ?y,
+    };
   }
 
   factory NormalizedCoordinate.fromMap(Map<String, dynamic> map) {
     return NormalizedCoordinate(
-      x: (() {
-        final guardedValue = map['x'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      y: (() {
-        final guardedValue = map['y'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      x: (() { final guardedValue = map['x']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      y: (() { final guardedValue = map['y']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

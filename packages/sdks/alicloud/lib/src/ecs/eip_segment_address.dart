@@ -162,18 +162,14 @@ class EipSegmentAddress extends pulumi.CustomResource {
   ///
   /// Default value: `5`. Unit: Mbit/s.
   late final pulumi.Output<String?> bandwidth;
-
   /// The time when the contiguous Elastic IP address group was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
   late final pulumi.Output<String> createTime;
-
   /// The subnet mask of the contiguous EIP group. Valid values:
   late final pulumi.Output<String> eipMask;
-
   /// The metering method of the contiguous EIP group. Valid values:
   /// - `PayByBandwidth` (default)
   /// - `PayByTraffic`
   late final pulumi.Output<String?> internetChargeType;
-
   /// The line type. Valid values:
   /// - `BGP` (default): BGP (Multi-ISP) line The BGP (Multi-ISP) line is supported in all regions.
   /// - `BGP_PRO`: BGP (Multi-ISP) Pro line BGP (Multi-ISP) Pro line is supported only in the China (Hong Kong), Singapore, Japan (Tokyo), Malaysia (Kuala Lumpur), Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok) regions.
@@ -190,19 +186,14 @@ class EipSegmentAddress extends pulumi.CustomResource {
   ///
   /// If your services are deployed in China East 1 Finance, this parameter is required and you must set the parameter to `BGP_FinanceCloud`.
   late final pulumi.Output<String?> isp;
-
   /// The network type. Set the value to `public`, which specifies the public network type.
   late final pulumi.Output<String?> netmode;
-
   /// The resource group ID.
   late final pulumi.Output<String?> resourceGroupId;
-
   /// The name of the contiguous Elastic IP address group.
   late final pulumi.Output<String> segmentAddressName;
-
   /// The status of the resource
   late final pulumi.Output<String> status;
-
   /// The zone of the contiguous EIP group.
   late final pulumi.Output<String> zone;
 
@@ -215,11 +206,11 @@ class EipSegmentAddress extends pulumi.CustomResource {
     EipSegmentAddressArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ecs/eipSegmentAddress:EipSegmentAddress',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ecs/eipSegmentAddress:EipSegmentAddress',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bandwidth = registerOutput<String?>('bandwidth');
     createTime = registerOutput<String>('createTime');
     eipMask = registerOutput<String>('eipMask');
@@ -250,11 +241,11 @@ class EipSegmentAddress extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ecs/eipSegmentAddress:EipSegmentAddress',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ecs/eipSegmentAddress:EipSegmentAddress',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bandwidth = registerOutput<String?>('bandwidth');
     createTime = registerOutput<String>('createTime');
     eipMask = registerOutput<String>('eipMask');

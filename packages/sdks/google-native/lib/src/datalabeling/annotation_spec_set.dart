@@ -6,16 +6,12 @@ import 'annotation_spec_set_args.dart';
 class AnnotationSpecSet extends pulumi.CustomResource {
   /// The array of AnnotationSpecs that you define when you create the AnnotationSpecSet. These are the possible labels for the labeling task.
   late final pulumi.Output<List<Map<String, dynamic>>> annotationSpecs;
-
   /// The names of any related resources that are blocking changes to the annotation spec set.
   late final pulumi.Output<List<String>> blockingResources;
-
   /// Optional. User-provided description of the annotation specification set. The description can be up to 10,000 characters long.
   late final pulumi.Output<String> description;
-
   /// The display name for AnnotationSpecSet that you define when you create it. Maximum of 64 characters.
   late final pulumi.Output<String> displayName;
-
   /// The AnnotationSpecSet resource name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
@@ -29,14 +25,12 @@ class AnnotationSpecSet extends pulumi.CustomResource {
     AnnotationSpecSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'google-native:datalabeling/v1beta1:AnnotationSpecSet',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    annotationSpecs = registerOutput<List<Map<String, dynamic>>>(
-      'annotationSpecs',
-    );
+          'google-native:datalabeling/v1beta1:AnnotationSpecSet',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    annotationSpecs = registerOutput<List<Map<String, dynamic>>>('annotationSpecs');
     blockingResources = registerOutput<List<String>>('blockingResources');
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');

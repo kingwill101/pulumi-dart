@@ -304,20 +304,16 @@ import 'slot_custom_hostname_binding_state.dart';
 class SlotCustomHostnameBinding extends pulumi.CustomResource {
   /// The ID of the App Service Slot. Changing this forces a new resource to be created.
   late final pulumi.Output<String> appServiceSlotId;
-
   /// Specifies the Custom Hostname to use for the App Service, example `www.example.com`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** A CNAME needs to be configured from this Hostname to the Azure Website - otherwise Azure will reject the Hostname Binding.
   late final pulumi.Output<String> hostname;
-
   /// The SSL type. Possible values are `IpBasedEnabled` and `SniEnabled`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> sslState;
-
   /// The SSL certificate thumbprint. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** `thumbprint` must be specified when `ssl_state` is set.
   late final pulumi.Output<String> thumbprint;
-
   /// The virtual IP address assigned to the hostname if IP based SSL is enabled.
   late final pulumi.Output<String> virtualIp;
 
@@ -330,11 +326,11 @@ class SlotCustomHostnameBinding extends pulumi.CustomResource {
     SlotCustomHostnameBindingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appservice/slotCustomHostnameBinding:SlotCustomHostnameBinding',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appservice/slotCustomHostnameBinding:SlotCustomHostnameBinding',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appServiceSlotId = registerOutput<String>('appServiceSlotId');
     hostname = registerOutput<String>('hostname');
     sslState = registerOutput<String>('sslState');
@@ -360,11 +356,11 @@ class SlotCustomHostnameBinding extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appservice/slotCustomHostnameBinding:SlotCustomHostnameBinding',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appservice/slotCustomHostnameBinding:SlotCustomHostnameBinding',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appServiceSlotId = registerOutput<String>('appServiceSlotId');
     hostname = registerOutput<String>('hostname');
     sslState = registerOutput<String>('sslState');

@@ -140,16 +140,12 @@ import 'domain_ownership_identifier_args.dart';
 class DomainOwnershipIdentifier extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Kind of resource.
   late final pulumi.Output<String?> kind;
-
   /// Resource Name.
   late final pulumi.Output<String> name;
-
   /// Ownership Id.
   late final pulumi.Output<String?> ownershipId;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -162,11 +158,11 @@ class DomainOwnershipIdentifier extends pulumi.CustomResource {
     DomainOwnershipIdentifierArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:domainregistration:DomainOwnershipIdentifier',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:domainregistration:DomainOwnershipIdentifier',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     kind = registerOutput<String?>('kind');
     this.name = registerOutput<String>('name');

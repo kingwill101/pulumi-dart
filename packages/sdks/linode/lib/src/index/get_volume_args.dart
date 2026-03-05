@@ -12,13 +12,20 @@ class GetVolumeArgs {
 
   /// Creates a new [GetVolumeArgs].
   /// [id] The unique numeric ID of the Volume record to query.
-  GetVolumeArgs({required this.id});
+  GetVolumeArgs({
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id};
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
   factory GetVolumeArgs.fromMap(Map<String, dynamic> map) {
-    return GetVolumeArgs(id: pulumi.Input.fromValue(map['id'] as int));
+    return GetVolumeArgs(
+      id: pulumi.Input.fromValue(map['id'] as int),
+    );
   }
 }
+

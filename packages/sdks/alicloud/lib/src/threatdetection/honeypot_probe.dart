@@ -196,40 +196,28 @@ import 'honeypot_probe_state.dart';
 class HoneypotProbe extends pulumi.CustomResource {
   /// ARP spoofing detection.**true**: Enable **false**: Disabled
   late final pulumi.Output<bool?> arp;
-
   /// The ID of the management node.
   late final pulumi.Output<String> controlNodeId;
-
   /// Probe display name.
   late final pulumi.Output<String> displayName;
-
   /// Configure the service.See the following `Block HoneypotBindList`.
   late final pulumi.Output<List<Map<String, dynamic>>?> honeypotBindLists;
-
   /// The first ID of the resource
   late final pulumi.Output<String> honeypotProbeId;
-
   /// Ping scan detection. Value: **true**: Enable **false**: Disabled
   late final pulumi.Output<bool?> ping;
-
   /// Probe type, support `host_probe` and `vpc_black_hole_probe`.
   late final pulumi.Output<String> probeType;
-
   /// The version of the probe.
   late final pulumi.Output<String> probeVersion;
-
   /// The IP address of the proxy.
   late final pulumi.Output<String?> proxyIp;
-
   /// Listen to the IP address list.
   late final pulumi.Output<List<String>> serviceIpLists;
-
   /// The status of the resource
   late final pulumi.Output<String> status;
-
   /// Machine uuid, **probe_type** is `host_probe`. This value cannot be empty.
   late final pulumi.Output<String?> uuid;
-
   /// The ID of the VPC. **probe_type** is `vpc_black_hole_probe`. This value cannot be empty.
   late final pulumi.Output<String?> vpcId;
 
@@ -242,17 +230,15 @@ class HoneypotProbe extends pulumi.CustomResource {
     HoneypotProbeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:threatdetection/honeypotProbe:HoneypotProbe',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:threatdetection/honeypotProbe:HoneypotProbe',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arp = registerOutput<bool?>('arp');
     controlNodeId = registerOutput<String>('controlNodeId');
     displayName = registerOutput<String>('displayName');
-    honeypotBindLists = registerOutput<List<Map<String, dynamic>>?>(
-      'honeypotBindLists',
-    );
+    honeypotBindLists = registerOutput<List<Map<String, dynamic>>?>('honeypotBindLists');
     honeypotProbeId = registerOutput<String>('honeypotProbeId');
     ping = registerOutput<bool?>('ping');
     probeType = registerOutput<String>('probeType');
@@ -282,17 +268,15 @@ class HoneypotProbe extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:threatdetection/honeypotProbe:HoneypotProbe',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:threatdetection/honeypotProbe:HoneypotProbe',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arp = registerOutput<bool?>('arp');
     controlNodeId = registerOutput<String>('controlNodeId');
     displayName = registerOutput<String>('displayName');
-    honeypotBindLists = registerOutput<List<Map<String, dynamic>>?>(
-      'honeypotBindLists',
-    );
+    honeypotBindLists = registerOutput<List<Map<String, dynamic>>?>('honeypotBindLists');
     honeypotProbeId = registerOutput<String>('honeypotProbeId');
     ping = registerOutput<bool?>('ping');
     probeType = registerOutput<String>('probeType');

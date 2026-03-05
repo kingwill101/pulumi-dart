@@ -43,11 +43,8 @@ class GetProductArgs {
       catalogId: pulumi.Input.fromValue(map['catalogId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
       productId: pulumi.Input.fromValue(map['productId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

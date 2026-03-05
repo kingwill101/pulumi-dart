@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccountStorage {
   /// The client ID of the managed identity associated with the storage resource.
   final pulumi.Input<String> identityClientId;
-
   /// The ID of the Storage Account resource associated with this Cognitive Services Account.
   final pulumi.Input<String> storageAccountId;
 
@@ -26,12 +25,9 @@ class GetAccountStorage {
 
   factory GetAccountStorage.fromMap(Map<String, dynamic> map) {
     return GetAccountStorage(
-      identityClientId: pulumi.Input.fromValue(
-        map['identityClientId'] as String,
-      ),
-      storageAccountId: pulumi.Input.fromValue(
-        map['storageAccountId'] as String,
-      ),
+      identityClientId: pulumi.Input.fromValue(map['identityClientId'] as String),
+      storageAccountId: pulumi.Input.fromValue(map['storageAccountId'] as String),
     );
   }
 }
+

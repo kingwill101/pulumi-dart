@@ -233,37 +233,26 @@ import 'adccatalog_args.dart';
 class ADCCatalog extends pulumi.CustomResource {
   /// Azure data catalog admin list.
   late final pulumi.Output<List<Map<String, dynamic>>?> admins;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Automatic unit adjustment enabled or not.
   late final pulumi.Output<bool?> enableAutomaticUnitAdjustment;
-
   /// Resource etag
   late final pulumi.Output<String?> etag;
-
   /// Resource location
   late final pulumi.Output<String?> location;
-
   /// Resource name
   late final pulumi.Output<String> name;
-
   /// Azure data catalog SKU.
   late final pulumi.Output<String?> sku;
-
   /// Azure data catalog provision status.
   late final pulumi.Output<bool?> successfullyProvisioned;
-
   /// Resource tags
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource type
   late final pulumi.Output<String> type;
-
   /// Azure data catalog units.
   late final pulumi.Output<int?> units;
-
   /// Azure data catalog user list.
   late final pulumi.Output<List<Map<String, dynamic>>?> users;
 
@@ -276,16 +265,14 @@ class ADCCatalog extends pulumi.CustomResource {
     ADCCatalogArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:datacatalog:ADCCatalog',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:datacatalog:ADCCatalog',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     admins = registerOutput<List<Map<String, dynamic>>?>('admins');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    enableAutomaticUnitAdjustment = registerOutput<bool?>(
-      'enableAutomaticUnitAdjustment',
-    );
+    enableAutomaticUnitAdjustment = registerOutput<bool?>('enableAutomaticUnitAdjustment');
     etag = registerOutput<String?>('etag');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');

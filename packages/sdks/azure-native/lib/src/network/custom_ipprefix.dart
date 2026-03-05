@@ -142,70 +142,48 @@ import 'sub_resource_response.dart';
 class CustomIPPrefix extends pulumi.CustomResource {
   /// The ASN for CIDR advertising. Should be an integer as string.
   late final pulumi.Output<String?> asn;
-
   /// Authorization message for WAN validation.
   late final pulumi.Output<String?> authorizationMessage;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The list of all Children for IPv6 /48 CustomIpPrefix.
   late final pulumi.Output<List<Map<String, dynamic>>> childCustomIpPrefixes;
-
   /// The prefix range in CIDR notation. Should include the start address and the prefix length.
   late final pulumi.Output<String?> cidr;
-
   /// The commissioned state of the Custom IP Prefix.
   late final pulumi.Output<String?> commissionedState;
-
   /// The Parent CustomIpPrefix for IPv6 /64 CustomIpPrefix.
   late final pulumi.Output<SubResourceResponse?> customIpPrefixParent;
-
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
-
   /// Whether to do express route advertise.
   late final pulumi.Output<bool?> expressRouteAdvertise;
-
   /// The extended location of the custom IP prefix.
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
-
   /// The reason why resource is in failed state.
   late final pulumi.Output<String> failedReason;
-
   /// The Geo for CIDR advertising. Should be an Geo code.
   late final pulumi.Output<String?> geo;
-
   /// Resource location.
   late final pulumi.Output<String?> location;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// Whether to Advertise the range to Internet.
   late final pulumi.Output<bool?> noInternetAdvertise;
-
   /// Type of custom IP prefix. Should be Singular, Parent, or Child.
   late final pulumi.Output<String?> prefixType;
-
   /// The provisioning state of the custom IP prefix resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The list of all referenced PublicIpPrefixes.
   late final pulumi.Output<List<Map<String, dynamic>>> publicIpPrefixes;
-
   /// The resource GUID property of the custom IP prefix resource.
   late final pulumi.Output<String> resourceGuid;
-
   /// Signed message for WAN validation.
   late final pulumi.Output<String?> signedMessage;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource type.
   late final pulumi.Output<String> type;
-
   /// A list of availability zones denoting the IP allocated for the resource needs to come from.
   late final pulumi.Output<List<String>?> zones;
 
@@ -218,41 +196,21 @@ class CustomIPPrefix extends pulumi.CustomResource {
     CustomIPPrefixArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:network:CustomIPPrefix',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:network:CustomIPPrefix',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     asn = registerOutput<String?>('asn');
     authorizationMessage = registerOutput<String?>('authorizationMessage');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    childCustomIpPrefixes = registerOutput<List<Map<String, dynamic>>>(
-      'childCustomIpPrefixes',
-    );
+    childCustomIpPrefixes = registerOutput<List<Map<String, dynamic>>>('childCustomIpPrefixes');
     cidr = registerOutput<String?>('cidr');
     commissionedState = registerOutput<String?>('commissionedState');
-    customIpPrefixParent = registerOutput<SubResourceResponse?>(
-      'customIpPrefixParent',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SubResourceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    customIpPrefixParent = registerOutput<SubResourceResponse?>('customIpPrefixParent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     expressRouteAdvertise = registerOutput<bool?>('expressRouteAdvertise');
-    extendedLocation = registerOutput<ExtendedLocationResponse?>(
-      'extendedLocation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExtendedLocationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     failedReason = registerOutput<String>('failedReason');
     geo = registerOutput<String?>('geo');
     location = registerOutput<String?>('location');
@@ -260,9 +218,7 @@ class CustomIPPrefix extends pulumi.CustomResource {
     noInternetAdvertise = registerOutput<bool?>('noInternetAdvertise');
     prefixType = registerOutput<String?>('prefixType');
     provisioningState = registerOutput<String>('provisioningState');
-    publicIpPrefixes = registerOutput<List<Map<String, dynamic>>>(
-      'publicIpPrefixes',
-    );
+    publicIpPrefixes = registerOutput<List<Map<String, dynamic>>>('publicIpPrefixes');
     resourceGuid = registerOutput<String>('resourceGuid');
     signedMessage = registerOutput<String?>('signedMessage');
     tags = registerOutput<Map<String, String>?>('tags');

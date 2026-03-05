@@ -6,11 +6,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KeyVaultSecretReferenceSecretInfoResponse {
   /// Name of the Key Vault secret.
   final pulumi.Input<String>? name;
-
   /// The secret type.
   /// Expected value is 'keyVaultSecretReference'.
   final pulumi.Input<String> secretType;
-
   /// Version of the Key Vault secret.
   final pulumi.Input<String>? version;
 
@@ -32,21 +30,12 @@ class KeyVaultSecretReferenceSecretInfoResponse {
     };
   }
 
-  factory KeyVaultSecretReferenceSecretInfoResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory KeyVaultSecretReferenceSecretInfoResponse.fromMap(Map<String, dynamic> map) {
     return KeyVaultSecretReferenceSecretInfoResponse(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       secretType: pulumi.Input.fromValue(map['secretType'] as String),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -8,19 +8,20 @@ class UserPoolUsernameConfiguration {
 
   /// Creates a new [UserPoolUsernameConfiguration].
   /// [caseSensitive] Whether username case sensitivity will be applied for all users in the user pool through Cognito APIs.
-  UserPoolUsernameConfiguration({this.caseSensitive});
+  UserPoolUsernameConfiguration({
+    this.caseSensitive,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'caseSensitive': ?caseSensitive};
+    return <String, dynamic>{
+      'caseSensitive': ?caseSensitive,
+    };
   }
 
   factory UserPoolUsernameConfiguration.fromMap(Map<String, dynamic> map) {
     return UserPoolUsernameConfiguration(
-      caseSensitive: (() {
-        final guardedValue = map['caseSensitive'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      caseSensitive: (() { final guardedValue = map['caseSensitive']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVpnServerConfigurationClientRevokedCertificate {
   /// The Name of the VPN Server Configuration.
   final pulumi.Input<String> name;
-
   /// The Thumbprint of the Certificate.
   final pulumi.Input<String> thumbprint;
 
@@ -18,15 +17,17 @@ class GetVpnServerConfigurationClientRevokedCertificate {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'thumbprint': thumbprint};
+    return <String, dynamic>{
+      'name': name,
+      'thumbprint': thumbprint,
+    };
   }
 
-  factory GetVpnServerConfigurationClientRevokedCertificate.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetVpnServerConfigurationClientRevokedCertificate.fromMap(Map<String, dynamic> map) {
     return GetVpnServerConfigurationClientRevokedCertificate(
       name: pulumi.Input.fromValue(map['name'] as String),
       thumbprint: pulumi.Input.fromValue(map['thumbprint'] as String),
     );
   }
 }
+

@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEcsClusterArgs {
   /// Name of EcsCluster
   final pulumi.Input<String> name;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetEcsClusterArgs].
   /// [name] Name of EcsCluster
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetEcsClusterArgs({required this.name, required this.resourceGroupName});
+  GetEcsClusterArgs({
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,9 +30,8 @@ class GetEcsClusterArgs {
   factory GetEcsClusterArgs.fromMap(Map<String, dynamic> map) {
     return GetEcsClusterArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

@@ -43,69 +43,43 @@ class _IndexModuleNamespace {
   final DomainCpuNumaCellCach = module_index.DomainCpuNumaCellCach.new;
   final DomainCpuNumaCellCachArgs = module_index.DomainCpuNumaCellCach.new;
   final DomainCpuNumaCellCachLine = module_index.DomainCpuNumaCellCachLine.new;
-  final DomainCpuNumaCellCachLineArgs =
-      module_index.DomainCpuNumaCellCachLine.new;
+  final DomainCpuNumaCellCachLineArgs = module_index.DomainCpuNumaCellCachLine.new;
   final DomainCpuNumaCellCachSize = module_index.DomainCpuNumaCellCachSize.new;
-  final DomainCpuNumaCellCachSizeArgs =
-      module_index.DomainCpuNumaCellCachSize.new;
-  final DomainCpuNumaCellDistances =
-      module_index.DomainCpuNumaCellDistances.new;
-  final DomainCpuNumaCellDistancesArgs =
-      module_index.DomainCpuNumaCellDistances.new;
-  final DomainCpuNumaCellDistancesSibling =
-      module_index.DomainCpuNumaCellDistancesSibling.new;
-  final DomainCpuNumaCellDistancesSiblingArgs =
-      module_index.DomainCpuNumaCellDistancesSibling.new;
-  final DomainCpuNumaInterconnects =
-      module_index.DomainCpuNumaInterconnects.new;
-  final DomainCpuNumaInterconnectsArgs =
-      module_index.DomainCpuNumaInterconnects.new;
-  final DomainCpuNumaInterconnectsBandwidth =
-      module_index.DomainCpuNumaInterconnectsBandwidth.new;
-  final DomainCpuNumaInterconnectsBandwidthArgs =
-      module_index.DomainCpuNumaInterconnectsBandwidth.new;
-  final DomainCpuNumaInterconnectsLatency =
-      module_index.DomainCpuNumaInterconnectsLatency.new;
-  final DomainCpuNumaInterconnectsLatencyArgs =
-      module_index.DomainCpuNumaInterconnectsLatency.new;
+  final DomainCpuNumaCellCachSizeArgs = module_index.DomainCpuNumaCellCachSize.new;
+  final DomainCpuNumaCellDistances = module_index.DomainCpuNumaCellDistances.new;
+  final DomainCpuNumaCellDistancesArgs = module_index.DomainCpuNumaCellDistances.new;
+  final DomainCpuNumaCellDistancesSibling = module_index.DomainCpuNumaCellDistancesSibling.new;
+  final DomainCpuNumaCellDistancesSiblingArgs = module_index.DomainCpuNumaCellDistancesSibling.new;
+  final DomainCpuNumaInterconnects = module_index.DomainCpuNumaInterconnects.new;
+  final DomainCpuNumaInterconnectsArgs = module_index.DomainCpuNumaInterconnects.new;
+  final DomainCpuNumaInterconnectsBandwidth = module_index.DomainCpuNumaInterconnectsBandwidth.new;
+  final DomainCpuNumaInterconnectsBandwidthArgs = module_index.DomainCpuNumaInterconnectsBandwidth.new;
+  final DomainCpuNumaInterconnectsLatency = module_index.DomainCpuNumaInterconnectsLatency.new;
+  final DomainCpuNumaInterconnectsLatencyArgs = module_index.DomainCpuNumaInterconnectsLatency.new;
   final DomainCpuTopology = module_index.DomainCpuTopology.new;
   final DomainCpuTopologyArgs = module_index.DomainCpuTopology.new;
   final DomainCpuTune = module_index.DomainCpuTune.new;
   final DomainCpuTuneArgs = module_index.DomainCpuTune.new;
   final DomainCpuTuneCacheTune = module_index.DomainCpuTuneCacheTune.new;
   final DomainCpuTuneCacheTuneArgs = module_index.DomainCpuTuneCacheTune.new;
-  final DomainCpuTuneCacheTuneCach =
-      module_index.DomainCpuTuneCacheTuneCach.new;
-  final DomainCpuTuneCacheTuneCachArgs =
-      module_index.DomainCpuTuneCacheTuneCach.new;
-  final DomainCpuTuneCacheTuneMonitor =
-      module_index.DomainCpuTuneCacheTuneMonitor.new;
-  final DomainCpuTuneCacheTuneMonitorArgs =
-      module_index.DomainCpuTuneCacheTuneMonitor.new;
+  final DomainCpuTuneCacheTuneCach = module_index.DomainCpuTuneCacheTuneCach.new;
+  final DomainCpuTuneCacheTuneCachArgs = module_index.DomainCpuTuneCacheTuneCach.new;
+  final DomainCpuTuneCacheTuneMonitor = module_index.DomainCpuTuneCacheTuneMonitor.new;
+  final DomainCpuTuneCacheTuneMonitorArgs = module_index.DomainCpuTuneCacheTuneMonitor.new;
   final DomainCpuTuneEmulatorPin = module_index.DomainCpuTuneEmulatorPin.new;
-  final DomainCpuTuneEmulatorPinArgs =
-      module_index.DomainCpuTuneEmulatorPin.new;
-  final DomainCpuTuneEmulatorSched =
-      module_index.DomainCpuTuneEmulatorSched.new;
-  final DomainCpuTuneEmulatorSchedArgs =
-      module_index.DomainCpuTuneEmulatorSched.new;
+  final DomainCpuTuneEmulatorPinArgs = module_index.DomainCpuTuneEmulatorPin.new;
+  final DomainCpuTuneEmulatorSched = module_index.DomainCpuTuneEmulatorSched.new;
+  final DomainCpuTuneEmulatorSchedArgs = module_index.DomainCpuTuneEmulatorSched.new;
   final DomainCpuTuneIoThreadPin = module_index.DomainCpuTuneIoThreadPin.new;
-  final DomainCpuTuneIoThreadPinArgs =
-      module_index.DomainCpuTuneIoThreadPin.new;
-  final DomainCpuTuneIoThreadSched =
-      module_index.DomainCpuTuneIoThreadSched.new;
-  final DomainCpuTuneIoThreadSchedArgs =
-      module_index.DomainCpuTuneIoThreadSched.new;
+  final DomainCpuTuneIoThreadPinArgs = module_index.DomainCpuTuneIoThreadPin.new;
+  final DomainCpuTuneIoThreadSched = module_index.DomainCpuTuneIoThreadSched.new;
+  final DomainCpuTuneIoThreadSchedArgs = module_index.DomainCpuTuneIoThreadSched.new;
   final DomainCpuTuneMemoryTune = module_index.DomainCpuTuneMemoryTune.new;
   final DomainCpuTuneMemoryTuneArgs = module_index.DomainCpuTuneMemoryTune.new;
-  final DomainCpuTuneMemoryTuneMonitor =
-      module_index.DomainCpuTuneMemoryTuneMonitor.new;
-  final DomainCpuTuneMemoryTuneMonitorArgs =
-      module_index.DomainCpuTuneMemoryTuneMonitor.new;
-  final DomainCpuTuneMemoryTuneNode =
-      module_index.DomainCpuTuneMemoryTuneNode.new;
-  final DomainCpuTuneMemoryTuneNodeArgs =
-      module_index.DomainCpuTuneMemoryTuneNode.new;
+  final DomainCpuTuneMemoryTuneMonitor = module_index.DomainCpuTuneMemoryTuneMonitor.new;
+  final DomainCpuTuneMemoryTuneMonitorArgs = module_index.DomainCpuTuneMemoryTuneMonitor.new;
+  final DomainCpuTuneMemoryTuneNode = module_index.DomainCpuTuneMemoryTuneNode.new;
+  final DomainCpuTuneMemoryTuneNodeArgs = module_index.DomainCpuTuneMemoryTuneNode.new;
   final DomainCpuTuneVcpuPin = module_index.DomainCpuTuneVcpuPin.new;
   final DomainCpuTuneVcpuPinArgs = module_index.DomainCpuTuneVcpuPin.new;
   final DomainCpuTuneVcpuSched = module_index.DomainCpuTuneVcpuSched.new;
@@ -121,368 +95,203 @@ class _IndexModuleNamespace {
   final DomainDevicesAudio = module_index.DomainDevicesAudio.new;
   final DomainDevicesAudioAlsa = module_index.DomainDevicesAudioAlsa.new;
   final DomainDevicesAudioAlsaArgs = module_index.DomainDevicesAudioAlsa.new;
-  final DomainDevicesAudioAlsaInput =
-      module_index.DomainDevicesAudioAlsaInput.new;
-  final DomainDevicesAudioAlsaInputArgs =
-      module_index.DomainDevicesAudioAlsaInput.new;
-  final DomainDevicesAudioAlsaOutput =
-      module_index.DomainDevicesAudioAlsaOutput.new;
-  final DomainDevicesAudioAlsaOutputArgs =
-      module_index.DomainDevicesAudioAlsaOutput.new;
+  final DomainDevicesAudioAlsaInput = module_index.DomainDevicesAudioAlsaInput.new;
+  final DomainDevicesAudioAlsaInputArgs = module_index.DomainDevicesAudioAlsaInput.new;
+  final DomainDevicesAudioAlsaOutput = module_index.DomainDevicesAudioAlsaOutput.new;
+  final DomainDevicesAudioAlsaOutputArgs = module_index.DomainDevicesAudioAlsaOutput.new;
   final DomainDevicesAudioArgs = module_index.DomainDevicesAudio.new;
-  final DomainDevicesAudioCoreAudio =
-      module_index.DomainDevicesAudioCoreAudio.new;
-  final DomainDevicesAudioCoreAudioArgs =
-      module_index.DomainDevicesAudioCoreAudio.new;
-  final DomainDevicesAudioCoreAudioInput =
-      module_index.DomainDevicesAudioCoreAudioInput.new;
-  final DomainDevicesAudioCoreAudioInputArgs =
-      module_index.DomainDevicesAudioCoreAudioInput.new;
-  final DomainDevicesAudioCoreAudioOutput =
-      module_index.DomainDevicesAudioCoreAudioOutput.new;
-  final DomainDevicesAudioCoreAudioOutputArgs =
-      module_index.DomainDevicesAudioCoreAudioOutput.new;
+  final DomainDevicesAudioCoreAudio = module_index.DomainDevicesAudioCoreAudio.new;
+  final DomainDevicesAudioCoreAudioArgs = module_index.DomainDevicesAudioCoreAudio.new;
+  final DomainDevicesAudioCoreAudioInput = module_index.DomainDevicesAudioCoreAudioInput.new;
+  final DomainDevicesAudioCoreAudioInputArgs = module_index.DomainDevicesAudioCoreAudioInput.new;
+  final DomainDevicesAudioCoreAudioOutput = module_index.DomainDevicesAudioCoreAudioOutput.new;
+  final DomainDevicesAudioCoreAudioOutputArgs = module_index.DomainDevicesAudioCoreAudioOutput.new;
   final DomainDevicesAudioDbus = module_index.DomainDevicesAudioDbus.new;
   final DomainDevicesAudioDbusArgs = module_index.DomainDevicesAudioDbus.new;
   final DomainDevicesAudioFile = module_index.DomainDevicesAudioFile.new;
   final DomainDevicesAudioFileArgs = module_index.DomainDevicesAudioFile.new;
   final DomainDevicesAudioJack = module_index.DomainDevicesAudioJack.new;
   final DomainDevicesAudioJackArgs = module_index.DomainDevicesAudioJack.new;
-  final DomainDevicesAudioJackInput =
-      module_index.DomainDevicesAudioJackInput.new;
-  final DomainDevicesAudioJackInputArgs =
-      module_index.DomainDevicesAudioJackInput.new;
-  final DomainDevicesAudioJackOutput =
-      module_index.DomainDevicesAudioJackOutput.new;
-  final DomainDevicesAudioJackOutputArgs =
-      module_index.DomainDevicesAudioJackOutput.new;
+  final DomainDevicesAudioJackInput = module_index.DomainDevicesAudioJackInput.new;
+  final DomainDevicesAudioJackInputArgs = module_index.DomainDevicesAudioJackInput.new;
+  final DomainDevicesAudioJackOutput = module_index.DomainDevicesAudioJackOutput.new;
+  final DomainDevicesAudioJackOutputArgs = module_index.DomainDevicesAudioJackOutput.new;
   final DomainDevicesAudioNone = module_index.DomainDevicesAudioNone.new;
   final DomainDevicesAudioNoneArgs = module_index.DomainDevicesAudioNone.new;
   final DomainDevicesAudioOss = module_index.DomainDevicesAudioOss.new;
   final DomainDevicesAudioOssArgs = module_index.DomainDevicesAudioOss.new;
-  final DomainDevicesAudioOssInput =
-      module_index.DomainDevicesAudioOssInput.new;
-  final DomainDevicesAudioOssInputArgs =
-      module_index.DomainDevicesAudioOssInput.new;
-  final DomainDevicesAudioOssOutput =
-      module_index.DomainDevicesAudioOssOutput.new;
-  final DomainDevicesAudioOssOutputArgs =
-      module_index.DomainDevicesAudioOssOutput.new;
-  final DomainDevicesAudioPipeWire =
-      module_index.DomainDevicesAudioPipeWire.new;
-  final DomainDevicesAudioPipeWireArgs =
-      module_index.DomainDevicesAudioPipeWire.new;
-  final DomainDevicesAudioPipeWireInput =
-      module_index.DomainDevicesAudioPipeWireInput.new;
-  final DomainDevicesAudioPipeWireInputArgs =
-      module_index.DomainDevicesAudioPipeWireInput.new;
-  final DomainDevicesAudioPipeWireOutput =
-      module_index.DomainDevicesAudioPipeWireOutput.new;
-  final DomainDevicesAudioPipeWireOutputArgs =
-      module_index.DomainDevicesAudioPipeWireOutput.new;
-  final DomainDevicesAudioPulseAudio =
-      module_index.DomainDevicesAudioPulseAudio.new;
-  final DomainDevicesAudioPulseAudioArgs =
-      module_index.DomainDevicesAudioPulseAudio.new;
-  final DomainDevicesAudioPulseAudioInput =
-      module_index.DomainDevicesAudioPulseAudioInput.new;
-  final DomainDevicesAudioPulseAudioInputArgs =
-      module_index.DomainDevicesAudioPulseAudioInput.new;
-  final DomainDevicesAudioPulseAudioOutput =
-      module_index.DomainDevicesAudioPulseAudioOutput.new;
-  final DomainDevicesAudioPulseAudioOutputArgs =
-      module_index.DomainDevicesAudioPulseAudioOutput.new;
+  final DomainDevicesAudioOssInput = module_index.DomainDevicesAudioOssInput.new;
+  final DomainDevicesAudioOssInputArgs = module_index.DomainDevicesAudioOssInput.new;
+  final DomainDevicesAudioOssOutput = module_index.DomainDevicesAudioOssOutput.new;
+  final DomainDevicesAudioOssOutputArgs = module_index.DomainDevicesAudioOssOutput.new;
+  final DomainDevicesAudioPipeWire = module_index.DomainDevicesAudioPipeWire.new;
+  final DomainDevicesAudioPipeWireArgs = module_index.DomainDevicesAudioPipeWire.new;
+  final DomainDevicesAudioPipeWireInput = module_index.DomainDevicesAudioPipeWireInput.new;
+  final DomainDevicesAudioPipeWireInputArgs = module_index.DomainDevicesAudioPipeWireInput.new;
+  final DomainDevicesAudioPipeWireOutput = module_index.DomainDevicesAudioPipeWireOutput.new;
+  final DomainDevicesAudioPipeWireOutputArgs = module_index.DomainDevicesAudioPipeWireOutput.new;
+  final DomainDevicesAudioPulseAudio = module_index.DomainDevicesAudioPulseAudio.new;
+  final DomainDevicesAudioPulseAudioArgs = module_index.DomainDevicesAudioPulseAudio.new;
+  final DomainDevicesAudioPulseAudioInput = module_index.DomainDevicesAudioPulseAudioInput.new;
+  final DomainDevicesAudioPulseAudioInputArgs = module_index.DomainDevicesAudioPulseAudioInput.new;
+  final DomainDevicesAudioPulseAudioOutput = module_index.DomainDevicesAudioPulseAudioOutput.new;
+  final DomainDevicesAudioPulseAudioOutputArgs = module_index.DomainDevicesAudioPulseAudioOutput.new;
   final DomainDevicesAudioSdl = module_index.DomainDevicesAudioSdl.new;
   final DomainDevicesAudioSdlArgs = module_index.DomainDevicesAudioSdl.new;
-  final DomainDevicesAudioSdlInput =
-      module_index.DomainDevicesAudioSdlInput.new;
-  final DomainDevicesAudioSdlInputArgs =
-      module_index.DomainDevicesAudioSdlInput.new;
-  final DomainDevicesAudioSdlOutput =
-      module_index.DomainDevicesAudioSdlOutput.new;
-  final DomainDevicesAudioSdlOutputArgs =
-      module_index.DomainDevicesAudioSdlOutput.new;
+  final DomainDevicesAudioSdlInput = module_index.DomainDevicesAudioSdlInput.new;
+  final DomainDevicesAudioSdlInputArgs = module_index.DomainDevicesAudioSdlInput.new;
+  final DomainDevicesAudioSdlOutput = module_index.DomainDevicesAudioSdlOutput.new;
+  final DomainDevicesAudioSdlOutputArgs = module_index.DomainDevicesAudioSdlOutput.new;
   final DomainDevicesAudioSpice = module_index.DomainDevicesAudioSpice.new;
   final DomainDevicesAudioSpiceArgs = module_index.DomainDevicesAudioSpice.new;
   final DomainDevicesChannel = module_index.DomainDevicesChannel.new;
   final DomainDevicesChannelAcpi = module_index.DomainDevicesChannelAcpi.new;
-  final DomainDevicesChannelAcpiArgs =
-      module_index.DomainDevicesChannelAcpi.new;
+  final DomainDevicesChannelAcpiArgs = module_index.DomainDevicesChannelAcpi.new;
   final DomainDevicesChannelAlias = module_index.DomainDevicesChannelAlias.new;
-  final DomainDevicesChannelAliasArgs =
-      module_index.DomainDevicesChannelAlias.new;
+  final DomainDevicesChannelAliasArgs = module_index.DomainDevicesChannelAlias.new;
   final DomainDevicesChannelArgs = module_index.DomainDevicesChannel.new;
   final DomainDevicesChannelLog = module_index.DomainDevicesChannelLog.new;
   final DomainDevicesChannelLogArgs = module_index.DomainDevicesChannelLog.new;
-  final DomainDevicesChannelProtocol =
-      module_index.DomainDevicesChannelProtocol.new;
-  final DomainDevicesChannelProtocolArgs =
-      module_index.DomainDevicesChannelProtocol.new;
-  final DomainDevicesChannelSource =
-      module_index.DomainDevicesChannelSource.new;
-  final DomainDevicesChannelSourceArgs =
-      module_index.DomainDevicesChannelSource.new;
-  final DomainDevicesChannelSourceDbus =
-      module_index.DomainDevicesChannelSourceDbus.new;
-  final DomainDevicesChannelSourceDbusArgs =
-      module_index.DomainDevicesChannelSourceDbus.new;
-  final DomainDevicesChannelSourceDev =
-      module_index.DomainDevicesChannelSourceDev.new;
-  final DomainDevicesChannelSourceDevArgs =
-      module_index.DomainDevicesChannelSourceDev.new;
-  final DomainDevicesChannelSourceDevSecLabel =
-      module_index.DomainDevicesChannelSourceDevSecLabel.new;
-  final DomainDevicesChannelSourceDevSecLabelArgs =
-      module_index.DomainDevicesChannelSourceDevSecLabel.new;
-  final DomainDevicesChannelSourceFile =
-      module_index.DomainDevicesChannelSourceFile.new;
-  final DomainDevicesChannelSourceFileArgs =
-      module_index.DomainDevicesChannelSourceFile.new;
-  final DomainDevicesChannelSourceFileSecLabel =
-      module_index.DomainDevicesChannelSourceFileSecLabel.new;
-  final DomainDevicesChannelSourceFileSecLabelArgs =
-      module_index.DomainDevicesChannelSourceFileSecLabel.new;
-  final DomainDevicesChannelSourceNmdm =
-      module_index.DomainDevicesChannelSourceNmdm.new;
-  final DomainDevicesChannelSourceNmdmArgs =
-      module_index.DomainDevicesChannelSourceNmdm.new;
-  final DomainDevicesChannelSourcePipe =
-      module_index.DomainDevicesChannelSourcePipe.new;
-  final DomainDevicesChannelSourcePipeArgs =
-      module_index.DomainDevicesChannelSourcePipe.new;
-  final DomainDevicesChannelSourcePipeSecLabel =
-      module_index.DomainDevicesChannelSourcePipeSecLabel.new;
-  final DomainDevicesChannelSourcePipeSecLabelArgs =
-      module_index.DomainDevicesChannelSourcePipeSecLabel.new;
-  final DomainDevicesChannelSourcePty =
-      module_index.DomainDevicesChannelSourcePty.new;
-  final DomainDevicesChannelSourcePtyArgs =
-      module_index.DomainDevicesChannelSourcePty.new;
-  final DomainDevicesChannelSourcePtySecLabel =
-      module_index.DomainDevicesChannelSourcePtySecLabel.new;
-  final DomainDevicesChannelSourcePtySecLabelArgs =
-      module_index.DomainDevicesChannelSourcePtySecLabel.new;
-  final DomainDevicesChannelSourceQemuvdAgent =
-      module_index.DomainDevicesChannelSourceQemuvdAgent.new;
-  final DomainDevicesChannelSourceQemuvdAgentArgs =
-      module_index.DomainDevicesChannelSourceQemuvdAgent.new;
-  final DomainDevicesChannelSourceQemuvdAgentClipBoard =
-      module_index.DomainDevicesChannelSourceQemuvdAgentClipBoard.new;
-  final DomainDevicesChannelSourceQemuvdAgentClipBoardArgs =
-      module_index.DomainDevicesChannelSourceQemuvdAgentClipBoard.new;
-  final DomainDevicesChannelSourceQemuvdAgentMouse =
-      module_index.DomainDevicesChannelSourceQemuvdAgentMouse.new;
-  final DomainDevicesChannelSourceQemuvdAgentMouseArgs =
-      module_index.DomainDevicesChannelSourceQemuvdAgentMouse.new;
-  final DomainDevicesChannelSourceSpicePort =
-      module_index.DomainDevicesChannelSourceSpicePort.new;
-  final DomainDevicesChannelSourceSpicePortArgs =
-      module_index.DomainDevicesChannelSourceSpicePort.new;
-  final DomainDevicesChannelSourceTcp =
-      module_index.DomainDevicesChannelSourceTcp.new;
-  final DomainDevicesChannelSourceTcpArgs =
-      module_index.DomainDevicesChannelSourceTcp.new;
-  final DomainDevicesChannelSourceTcpReconnect =
-      module_index.DomainDevicesChannelSourceTcpReconnect.new;
-  final DomainDevicesChannelSourceTcpReconnectArgs =
-      module_index.DomainDevicesChannelSourceTcpReconnect.new;
-  final DomainDevicesChannelSourceUdp =
-      module_index.DomainDevicesChannelSourceUdp.new;
-  final DomainDevicesChannelSourceUdpArgs =
-      module_index.DomainDevicesChannelSourceUdp.new;
-  final DomainDevicesChannelSourceUnix =
-      module_index.DomainDevicesChannelSourceUnix.new;
-  final DomainDevicesChannelSourceUnixArgs =
-      module_index.DomainDevicesChannelSourceUnix.new;
-  final DomainDevicesChannelSourceUnixReconnect =
-      module_index.DomainDevicesChannelSourceUnixReconnect.new;
-  final DomainDevicesChannelSourceUnixReconnectArgs =
-      module_index.DomainDevicesChannelSourceUnixReconnect.new;
-  final DomainDevicesChannelSourceUnixSecLabel =
-      module_index.DomainDevicesChannelSourceUnixSecLabel.new;
-  final DomainDevicesChannelSourceUnixSecLabelArgs =
-      module_index.DomainDevicesChannelSourceUnixSecLabel.new;
-  final DomainDevicesChannelTarget =
-      module_index.DomainDevicesChannelTarget.new;
-  final DomainDevicesChannelTargetArgs =
-      module_index.DomainDevicesChannelTarget.new;
-  final DomainDevicesChannelTargetGuestFwd =
-      module_index.DomainDevicesChannelTargetGuestFwd.new;
-  final DomainDevicesChannelTargetGuestFwdArgs =
-      module_index.DomainDevicesChannelTargetGuestFwd.new;
-  final DomainDevicesChannelTargetVirtIo =
-      module_index.DomainDevicesChannelTargetVirtIo.new;
-  final DomainDevicesChannelTargetVirtIoArgs =
-      module_index.DomainDevicesChannelTargetVirtIo.new;
-  final DomainDevicesChannelTargetXen =
-      module_index.DomainDevicesChannelTargetXen.new;
-  final DomainDevicesChannelTargetXenArgs =
-      module_index.DomainDevicesChannelTargetXen.new;
+  final DomainDevicesChannelProtocol = module_index.DomainDevicesChannelProtocol.new;
+  final DomainDevicesChannelProtocolArgs = module_index.DomainDevicesChannelProtocol.new;
+  final DomainDevicesChannelSource = module_index.DomainDevicesChannelSource.new;
+  final DomainDevicesChannelSourceArgs = module_index.DomainDevicesChannelSource.new;
+  final DomainDevicesChannelSourceDbus = module_index.DomainDevicesChannelSourceDbus.new;
+  final DomainDevicesChannelSourceDbusArgs = module_index.DomainDevicesChannelSourceDbus.new;
+  final DomainDevicesChannelSourceDev = module_index.DomainDevicesChannelSourceDev.new;
+  final DomainDevicesChannelSourceDevArgs = module_index.DomainDevicesChannelSourceDev.new;
+  final DomainDevicesChannelSourceDevSecLabel = module_index.DomainDevicesChannelSourceDevSecLabel.new;
+  final DomainDevicesChannelSourceDevSecLabelArgs = module_index.DomainDevicesChannelSourceDevSecLabel.new;
+  final DomainDevicesChannelSourceFile = module_index.DomainDevicesChannelSourceFile.new;
+  final DomainDevicesChannelSourceFileArgs = module_index.DomainDevicesChannelSourceFile.new;
+  final DomainDevicesChannelSourceFileSecLabel = module_index.DomainDevicesChannelSourceFileSecLabel.new;
+  final DomainDevicesChannelSourceFileSecLabelArgs = module_index.DomainDevicesChannelSourceFileSecLabel.new;
+  final DomainDevicesChannelSourceNmdm = module_index.DomainDevicesChannelSourceNmdm.new;
+  final DomainDevicesChannelSourceNmdmArgs = module_index.DomainDevicesChannelSourceNmdm.new;
+  final DomainDevicesChannelSourcePipe = module_index.DomainDevicesChannelSourcePipe.new;
+  final DomainDevicesChannelSourcePipeArgs = module_index.DomainDevicesChannelSourcePipe.new;
+  final DomainDevicesChannelSourcePipeSecLabel = module_index.DomainDevicesChannelSourcePipeSecLabel.new;
+  final DomainDevicesChannelSourcePipeSecLabelArgs = module_index.DomainDevicesChannelSourcePipeSecLabel.new;
+  final DomainDevicesChannelSourcePty = module_index.DomainDevicesChannelSourcePty.new;
+  final DomainDevicesChannelSourcePtyArgs = module_index.DomainDevicesChannelSourcePty.new;
+  final DomainDevicesChannelSourcePtySecLabel = module_index.DomainDevicesChannelSourcePtySecLabel.new;
+  final DomainDevicesChannelSourcePtySecLabelArgs = module_index.DomainDevicesChannelSourcePtySecLabel.new;
+  final DomainDevicesChannelSourceQemuvdAgent = module_index.DomainDevicesChannelSourceQemuvdAgent.new;
+  final DomainDevicesChannelSourceQemuvdAgentArgs = module_index.DomainDevicesChannelSourceQemuvdAgent.new;
+  final DomainDevicesChannelSourceQemuvdAgentClipBoard = module_index.DomainDevicesChannelSourceQemuvdAgentClipBoard.new;
+  final DomainDevicesChannelSourceQemuvdAgentClipBoardArgs = module_index.DomainDevicesChannelSourceQemuvdAgentClipBoard.new;
+  final DomainDevicesChannelSourceQemuvdAgentMouse = module_index.DomainDevicesChannelSourceQemuvdAgentMouse.new;
+  final DomainDevicesChannelSourceQemuvdAgentMouseArgs = module_index.DomainDevicesChannelSourceQemuvdAgentMouse.new;
+  final DomainDevicesChannelSourceSpicePort = module_index.DomainDevicesChannelSourceSpicePort.new;
+  final DomainDevicesChannelSourceSpicePortArgs = module_index.DomainDevicesChannelSourceSpicePort.new;
+  final DomainDevicesChannelSourceTcp = module_index.DomainDevicesChannelSourceTcp.new;
+  final DomainDevicesChannelSourceTcpArgs = module_index.DomainDevicesChannelSourceTcp.new;
+  final DomainDevicesChannelSourceTcpReconnect = module_index.DomainDevicesChannelSourceTcpReconnect.new;
+  final DomainDevicesChannelSourceTcpReconnectArgs = module_index.DomainDevicesChannelSourceTcpReconnect.new;
+  final DomainDevicesChannelSourceUdp = module_index.DomainDevicesChannelSourceUdp.new;
+  final DomainDevicesChannelSourceUdpArgs = module_index.DomainDevicesChannelSourceUdp.new;
+  final DomainDevicesChannelSourceUnix = module_index.DomainDevicesChannelSourceUnix.new;
+  final DomainDevicesChannelSourceUnixArgs = module_index.DomainDevicesChannelSourceUnix.new;
+  final DomainDevicesChannelSourceUnixReconnect = module_index.DomainDevicesChannelSourceUnixReconnect.new;
+  final DomainDevicesChannelSourceUnixReconnectArgs = module_index.DomainDevicesChannelSourceUnixReconnect.new;
+  final DomainDevicesChannelSourceUnixSecLabel = module_index.DomainDevicesChannelSourceUnixSecLabel.new;
+  final DomainDevicesChannelSourceUnixSecLabelArgs = module_index.DomainDevicesChannelSourceUnixSecLabel.new;
+  final DomainDevicesChannelTarget = module_index.DomainDevicesChannelTarget.new;
+  final DomainDevicesChannelTargetArgs = module_index.DomainDevicesChannelTarget.new;
+  final DomainDevicesChannelTargetGuestFwd = module_index.DomainDevicesChannelTargetGuestFwd.new;
+  final DomainDevicesChannelTargetGuestFwdArgs = module_index.DomainDevicesChannelTargetGuestFwd.new;
+  final DomainDevicesChannelTargetVirtIo = module_index.DomainDevicesChannelTargetVirtIo.new;
+  final DomainDevicesChannelTargetVirtIoArgs = module_index.DomainDevicesChannelTargetVirtIo.new;
+  final DomainDevicesChannelTargetXen = module_index.DomainDevicesChannelTargetXen.new;
+  final DomainDevicesChannelTargetXenArgs = module_index.DomainDevicesChannelTargetXen.new;
   final DomainDevicesConsole = module_index.DomainDevicesConsole.new;
   final DomainDevicesConsoleAcpi = module_index.DomainDevicesConsoleAcpi.new;
-  final DomainDevicesConsoleAcpiArgs =
-      module_index.DomainDevicesConsoleAcpi.new;
+  final DomainDevicesConsoleAcpiArgs = module_index.DomainDevicesConsoleAcpi.new;
   final DomainDevicesConsoleAlias = module_index.DomainDevicesConsoleAlias.new;
-  final DomainDevicesConsoleAliasArgs =
-      module_index.DomainDevicesConsoleAlias.new;
+  final DomainDevicesConsoleAliasArgs = module_index.DomainDevicesConsoleAlias.new;
   final DomainDevicesConsoleArgs = module_index.DomainDevicesConsole.new;
   final DomainDevicesConsoleLog = module_index.DomainDevicesConsoleLog.new;
   final DomainDevicesConsoleLogArgs = module_index.DomainDevicesConsoleLog.new;
-  final DomainDevicesConsoleProtocol =
-      module_index.DomainDevicesConsoleProtocol.new;
-  final DomainDevicesConsoleProtocolArgs =
-      module_index.DomainDevicesConsoleProtocol.new;
-  final DomainDevicesConsoleSource =
-      module_index.DomainDevicesConsoleSource.new;
-  final DomainDevicesConsoleSourceArgs =
-      module_index.DomainDevicesConsoleSource.new;
-  final DomainDevicesConsoleSourceDbus =
-      module_index.DomainDevicesConsoleSourceDbus.new;
-  final DomainDevicesConsoleSourceDbusArgs =
-      module_index.DomainDevicesConsoleSourceDbus.new;
-  final DomainDevicesConsoleSourceDev =
-      module_index.DomainDevicesConsoleSourceDev.new;
-  final DomainDevicesConsoleSourceDevArgs =
-      module_index.DomainDevicesConsoleSourceDev.new;
-  final DomainDevicesConsoleSourceDevSecLabel =
-      module_index.DomainDevicesConsoleSourceDevSecLabel.new;
-  final DomainDevicesConsoleSourceDevSecLabelArgs =
-      module_index.DomainDevicesConsoleSourceDevSecLabel.new;
-  final DomainDevicesConsoleSourceFile =
-      module_index.DomainDevicesConsoleSourceFile.new;
-  final DomainDevicesConsoleSourceFileArgs =
-      module_index.DomainDevicesConsoleSourceFile.new;
-  final DomainDevicesConsoleSourceFileSecLabel =
-      module_index.DomainDevicesConsoleSourceFileSecLabel.new;
-  final DomainDevicesConsoleSourceFileSecLabelArgs =
-      module_index.DomainDevicesConsoleSourceFileSecLabel.new;
-  final DomainDevicesConsoleSourceNmdm =
-      module_index.DomainDevicesConsoleSourceNmdm.new;
-  final DomainDevicesConsoleSourceNmdmArgs =
-      module_index.DomainDevicesConsoleSourceNmdm.new;
-  final DomainDevicesConsoleSourcePipe =
-      module_index.DomainDevicesConsoleSourcePipe.new;
-  final DomainDevicesConsoleSourcePipeArgs =
-      module_index.DomainDevicesConsoleSourcePipe.new;
-  final DomainDevicesConsoleSourcePipeSecLabel =
-      module_index.DomainDevicesConsoleSourcePipeSecLabel.new;
-  final DomainDevicesConsoleSourcePipeSecLabelArgs =
-      module_index.DomainDevicesConsoleSourcePipeSecLabel.new;
-  final DomainDevicesConsoleSourcePty =
-      module_index.DomainDevicesConsoleSourcePty.new;
-  final DomainDevicesConsoleSourcePtyArgs =
-      module_index.DomainDevicesConsoleSourcePty.new;
-  final DomainDevicesConsoleSourcePtySecLabel =
-      module_index.DomainDevicesConsoleSourcePtySecLabel.new;
-  final DomainDevicesConsoleSourcePtySecLabelArgs =
-      module_index.DomainDevicesConsoleSourcePtySecLabel.new;
-  final DomainDevicesConsoleSourceQemuvdAgent =
-      module_index.DomainDevicesConsoleSourceQemuvdAgent.new;
-  final DomainDevicesConsoleSourceQemuvdAgentArgs =
-      module_index.DomainDevicesConsoleSourceQemuvdAgent.new;
-  final DomainDevicesConsoleSourceQemuvdAgentClipBoard =
-      module_index.DomainDevicesConsoleSourceQemuvdAgentClipBoard.new;
-  final DomainDevicesConsoleSourceQemuvdAgentClipBoardArgs =
-      module_index.DomainDevicesConsoleSourceQemuvdAgentClipBoard.new;
-  final DomainDevicesConsoleSourceQemuvdAgentMouse =
-      module_index.DomainDevicesConsoleSourceQemuvdAgentMouse.new;
-  final DomainDevicesConsoleSourceQemuvdAgentMouseArgs =
-      module_index.DomainDevicesConsoleSourceQemuvdAgentMouse.new;
-  final DomainDevicesConsoleSourceSpicePort =
-      module_index.DomainDevicesConsoleSourceSpicePort.new;
-  final DomainDevicesConsoleSourceSpicePortArgs =
-      module_index.DomainDevicesConsoleSourceSpicePort.new;
-  final DomainDevicesConsoleSourceTcp =
-      module_index.DomainDevicesConsoleSourceTcp.new;
-  final DomainDevicesConsoleSourceTcpArgs =
-      module_index.DomainDevicesConsoleSourceTcp.new;
-  final DomainDevicesConsoleSourceTcpReconnect =
-      module_index.DomainDevicesConsoleSourceTcpReconnect.new;
-  final DomainDevicesConsoleSourceTcpReconnectArgs =
-      module_index.DomainDevicesConsoleSourceTcpReconnect.new;
-  final DomainDevicesConsoleSourceUdp =
-      module_index.DomainDevicesConsoleSourceUdp.new;
-  final DomainDevicesConsoleSourceUdpArgs =
-      module_index.DomainDevicesConsoleSourceUdp.new;
-  final DomainDevicesConsoleSourceUnix =
-      module_index.DomainDevicesConsoleSourceUnix.new;
-  final DomainDevicesConsoleSourceUnixArgs =
-      module_index.DomainDevicesConsoleSourceUnix.new;
-  final DomainDevicesConsoleSourceUnixReconnect =
-      module_index.DomainDevicesConsoleSourceUnixReconnect.new;
-  final DomainDevicesConsoleSourceUnixReconnectArgs =
-      module_index.DomainDevicesConsoleSourceUnixReconnect.new;
-  final DomainDevicesConsoleSourceUnixSecLabel =
-      module_index.DomainDevicesConsoleSourceUnixSecLabel.new;
-  final DomainDevicesConsoleSourceUnixSecLabelArgs =
-      module_index.DomainDevicesConsoleSourceUnixSecLabel.new;
-  final DomainDevicesConsoleTarget =
-      module_index.DomainDevicesConsoleTarget.new;
-  final DomainDevicesConsoleTargetArgs =
-      module_index.DomainDevicesConsoleTarget.new;
+  final DomainDevicesConsoleProtocol = module_index.DomainDevicesConsoleProtocol.new;
+  final DomainDevicesConsoleProtocolArgs = module_index.DomainDevicesConsoleProtocol.new;
+  final DomainDevicesConsoleSource = module_index.DomainDevicesConsoleSource.new;
+  final DomainDevicesConsoleSourceArgs = module_index.DomainDevicesConsoleSource.new;
+  final DomainDevicesConsoleSourceDbus = module_index.DomainDevicesConsoleSourceDbus.new;
+  final DomainDevicesConsoleSourceDbusArgs = module_index.DomainDevicesConsoleSourceDbus.new;
+  final DomainDevicesConsoleSourceDev = module_index.DomainDevicesConsoleSourceDev.new;
+  final DomainDevicesConsoleSourceDevArgs = module_index.DomainDevicesConsoleSourceDev.new;
+  final DomainDevicesConsoleSourceDevSecLabel = module_index.DomainDevicesConsoleSourceDevSecLabel.new;
+  final DomainDevicesConsoleSourceDevSecLabelArgs = module_index.DomainDevicesConsoleSourceDevSecLabel.new;
+  final DomainDevicesConsoleSourceFile = module_index.DomainDevicesConsoleSourceFile.new;
+  final DomainDevicesConsoleSourceFileArgs = module_index.DomainDevicesConsoleSourceFile.new;
+  final DomainDevicesConsoleSourceFileSecLabel = module_index.DomainDevicesConsoleSourceFileSecLabel.new;
+  final DomainDevicesConsoleSourceFileSecLabelArgs = module_index.DomainDevicesConsoleSourceFileSecLabel.new;
+  final DomainDevicesConsoleSourceNmdm = module_index.DomainDevicesConsoleSourceNmdm.new;
+  final DomainDevicesConsoleSourceNmdmArgs = module_index.DomainDevicesConsoleSourceNmdm.new;
+  final DomainDevicesConsoleSourcePipe = module_index.DomainDevicesConsoleSourcePipe.new;
+  final DomainDevicesConsoleSourcePipeArgs = module_index.DomainDevicesConsoleSourcePipe.new;
+  final DomainDevicesConsoleSourcePipeSecLabel = module_index.DomainDevicesConsoleSourcePipeSecLabel.new;
+  final DomainDevicesConsoleSourcePipeSecLabelArgs = module_index.DomainDevicesConsoleSourcePipeSecLabel.new;
+  final DomainDevicesConsoleSourcePty = module_index.DomainDevicesConsoleSourcePty.new;
+  final DomainDevicesConsoleSourcePtyArgs = module_index.DomainDevicesConsoleSourcePty.new;
+  final DomainDevicesConsoleSourcePtySecLabel = module_index.DomainDevicesConsoleSourcePtySecLabel.new;
+  final DomainDevicesConsoleSourcePtySecLabelArgs = module_index.DomainDevicesConsoleSourcePtySecLabel.new;
+  final DomainDevicesConsoleSourceQemuvdAgent = module_index.DomainDevicesConsoleSourceQemuvdAgent.new;
+  final DomainDevicesConsoleSourceQemuvdAgentArgs = module_index.DomainDevicesConsoleSourceQemuvdAgent.new;
+  final DomainDevicesConsoleSourceQemuvdAgentClipBoard = module_index.DomainDevicesConsoleSourceQemuvdAgentClipBoard.new;
+  final DomainDevicesConsoleSourceQemuvdAgentClipBoardArgs = module_index.DomainDevicesConsoleSourceQemuvdAgentClipBoard.new;
+  final DomainDevicesConsoleSourceQemuvdAgentMouse = module_index.DomainDevicesConsoleSourceQemuvdAgentMouse.new;
+  final DomainDevicesConsoleSourceQemuvdAgentMouseArgs = module_index.DomainDevicesConsoleSourceQemuvdAgentMouse.new;
+  final DomainDevicesConsoleSourceSpicePort = module_index.DomainDevicesConsoleSourceSpicePort.new;
+  final DomainDevicesConsoleSourceSpicePortArgs = module_index.DomainDevicesConsoleSourceSpicePort.new;
+  final DomainDevicesConsoleSourceTcp = module_index.DomainDevicesConsoleSourceTcp.new;
+  final DomainDevicesConsoleSourceTcpArgs = module_index.DomainDevicesConsoleSourceTcp.new;
+  final DomainDevicesConsoleSourceTcpReconnect = module_index.DomainDevicesConsoleSourceTcpReconnect.new;
+  final DomainDevicesConsoleSourceTcpReconnectArgs = module_index.DomainDevicesConsoleSourceTcpReconnect.new;
+  final DomainDevicesConsoleSourceUdp = module_index.DomainDevicesConsoleSourceUdp.new;
+  final DomainDevicesConsoleSourceUdpArgs = module_index.DomainDevicesConsoleSourceUdp.new;
+  final DomainDevicesConsoleSourceUnix = module_index.DomainDevicesConsoleSourceUnix.new;
+  final DomainDevicesConsoleSourceUnixArgs = module_index.DomainDevicesConsoleSourceUnix.new;
+  final DomainDevicesConsoleSourceUnixReconnect = module_index.DomainDevicesConsoleSourceUnixReconnect.new;
+  final DomainDevicesConsoleSourceUnixReconnectArgs = module_index.DomainDevicesConsoleSourceUnixReconnect.new;
+  final DomainDevicesConsoleSourceUnixSecLabel = module_index.DomainDevicesConsoleSourceUnixSecLabel.new;
+  final DomainDevicesConsoleSourceUnixSecLabelArgs = module_index.DomainDevicesConsoleSourceUnixSecLabel.new;
+  final DomainDevicesConsoleTarget = module_index.DomainDevicesConsoleTarget.new;
+  final DomainDevicesConsoleTargetArgs = module_index.DomainDevicesConsoleTarget.new;
   final DomainDevicesController = module_index.DomainDevicesController.new;
-  final DomainDevicesControllerAcpi =
-      module_index.DomainDevicesControllerAcpi.new;
-  final DomainDevicesControllerAcpiArgs =
-      module_index.DomainDevicesControllerAcpi.new;
-  final DomainDevicesControllerAlias =
-      module_index.DomainDevicesControllerAlias.new;
-  final DomainDevicesControllerAliasArgs =
-      module_index.DomainDevicesControllerAlias.new;
+  final DomainDevicesControllerAcpi = module_index.DomainDevicesControllerAcpi.new;
+  final DomainDevicesControllerAcpiArgs = module_index.DomainDevicesControllerAcpi.new;
+  final DomainDevicesControllerAlias = module_index.DomainDevicesControllerAlias.new;
+  final DomainDevicesControllerAliasArgs = module_index.DomainDevicesControllerAlias.new;
   final DomainDevicesControllerArgs = module_index.DomainDevicesController.new;
-  final DomainDevicesControllerDriver =
-      module_index.DomainDevicesControllerDriver.new;
-  final DomainDevicesControllerDriverArgs =
-      module_index.DomainDevicesControllerDriver.new;
-  final DomainDevicesControllerDriverIoThreads =
-      module_index.DomainDevicesControllerDriverIoThreads.new;
-  final DomainDevicesControllerDriverIoThreadsArgs =
-      module_index.DomainDevicesControllerDriverIoThreads.new;
-  final DomainDevicesControllerDriverIoThreadsIoThread =
-      module_index.DomainDevicesControllerDriverIoThreadsIoThread.new;
-  final DomainDevicesControllerDriverIoThreadsIoThreadArgs =
-      module_index.DomainDevicesControllerDriverIoThreadsIoThread.new;
-  final DomainDevicesControllerDriverIoThreadsIoThreadQueue =
-      module_index.DomainDevicesControllerDriverIoThreadsIoThreadQueue.new;
-  final DomainDevicesControllerDriverIoThreadsIoThreadQueueArgs =
-      module_index.DomainDevicesControllerDriverIoThreadsIoThreadQueue.new;
-  final DomainDevicesControllerNvme =
-      module_index.DomainDevicesControllerNvme.new;
-  final DomainDevicesControllerNvmeArgs =
-      module_index.DomainDevicesControllerNvme.new;
-  final DomainDevicesControllerPci =
-      module_index.DomainDevicesControllerPci.new;
-  final DomainDevicesControllerPciArgs =
-      module_index.DomainDevicesControllerPci.new;
-  final DomainDevicesControllerPciModel =
-      module_index.DomainDevicesControllerPciModel.new;
-  final DomainDevicesControllerPciModelArgs =
-      module_index.DomainDevicesControllerPciModel.new;
-  final DomainDevicesControllerUsb =
-      module_index.DomainDevicesControllerUsb.new;
-  final DomainDevicesControllerUsbArgs =
-      module_index.DomainDevicesControllerUsb.new;
-  final DomainDevicesControllerUsbMaster =
-      module_index.DomainDevicesControllerUsbMaster.new;
-  final DomainDevicesControllerUsbMasterArgs =
-      module_index.DomainDevicesControllerUsbMaster.new;
-  final DomainDevicesControllerVirtIoSerial =
-      module_index.DomainDevicesControllerVirtIoSerial.new;
-  final DomainDevicesControllerVirtIoSerialArgs =
-      module_index.DomainDevicesControllerVirtIoSerial.new;
-  final DomainDevicesControllerXenBus =
-      module_index.DomainDevicesControllerXenBus.new;
-  final DomainDevicesControllerXenBusArgs =
-      module_index.DomainDevicesControllerXenBus.new;
+  final DomainDevicesControllerDriver = module_index.DomainDevicesControllerDriver.new;
+  final DomainDevicesControllerDriverArgs = module_index.DomainDevicesControllerDriver.new;
+  final DomainDevicesControllerDriverIoThreads = module_index.DomainDevicesControllerDriverIoThreads.new;
+  final DomainDevicesControllerDriverIoThreadsArgs = module_index.DomainDevicesControllerDriverIoThreads.new;
+  final DomainDevicesControllerDriverIoThreadsIoThread = module_index.DomainDevicesControllerDriverIoThreadsIoThread.new;
+  final DomainDevicesControllerDriverIoThreadsIoThreadArgs = module_index.DomainDevicesControllerDriverIoThreadsIoThread.new;
+  final DomainDevicesControllerDriverIoThreadsIoThreadQueue = module_index.DomainDevicesControllerDriverIoThreadsIoThreadQueue.new;
+  final DomainDevicesControllerDriverIoThreadsIoThreadQueueArgs = module_index.DomainDevicesControllerDriverIoThreadsIoThreadQueue.new;
+  final DomainDevicesControllerNvme = module_index.DomainDevicesControllerNvme.new;
+  final DomainDevicesControllerNvmeArgs = module_index.DomainDevicesControllerNvme.new;
+  final DomainDevicesControllerPci = module_index.DomainDevicesControllerPci.new;
+  final DomainDevicesControllerPciArgs = module_index.DomainDevicesControllerPci.new;
+  final DomainDevicesControllerPciModel = module_index.DomainDevicesControllerPciModel.new;
+  final DomainDevicesControllerPciModelArgs = module_index.DomainDevicesControllerPciModel.new;
+  final DomainDevicesControllerUsb = module_index.DomainDevicesControllerUsb.new;
+  final DomainDevicesControllerUsbArgs = module_index.DomainDevicesControllerUsb.new;
+  final DomainDevicesControllerUsbMaster = module_index.DomainDevicesControllerUsbMaster.new;
+  final DomainDevicesControllerUsbMasterArgs = module_index.DomainDevicesControllerUsbMaster.new;
+  final DomainDevicesControllerVirtIoSerial = module_index.DomainDevicesControllerVirtIoSerial.new;
+  final DomainDevicesControllerVirtIoSerialArgs = module_index.DomainDevicesControllerVirtIoSerial.new;
+  final DomainDevicesControllerXenBus = module_index.DomainDevicesControllerXenBus.new;
+  final DomainDevicesControllerXenBusArgs = module_index.DomainDevicesControllerXenBus.new;
   final DomainDevicesCrypto = module_index.DomainDevicesCrypto.new;
   final DomainDevicesCryptoAlias = module_index.DomainDevicesCryptoAlias.new;
-  final DomainDevicesCryptoAliasArgs =
-      module_index.DomainDevicesCryptoAlias.new;
+  final DomainDevicesCryptoAliasArgs = module_index.DomainDevicesCryptoAlias.new;
   final DomainDevicesCryptoArgs = module_index.DomainDevicesCrypto.new;
-  final DomainDevicesCryptoBackend =
-      module_index.DomainDevicesCryptoBackend.new;
-  final DomainDevicesCryptoBackendArgs =
-      module_index.DomainDevicesCryptoBackend.new;
+  final DomainDevicesCryptoBackend = module_index.DomainDevicesCryptoBackend.new;
+  final DomainDevicesCryptoBackendArgs = module_index.DomainDevicesCryptoBackend.new;
   final DomainDevicesDisk = module_index.DomainDevicesDisk.new;
   final DomainDevicesDiskAcpi = module_index.DomainDevicesDiskAcpi.new;
   final DomainDevicesDiskAcpiArgs = module_index.DomainDevicesDiskAcpi.new;
@@ -491,1996 +300,868 @@ class _IndexModuleNamespace {
   final DomainDevicesDiskArgs = module_index.DomainDevicesDisk.new;
   final DomainDevicesDiskAuth = module_index.DomainDevicesDiskAuth.new;
   final DomainDevicesDiskAuthArgs = module_index.DomainDevicesDiskAuth.new;
-  final DomainDevicesDiskAuthSecret =
-      module_index.DomainDevicesDiskAuthSecret.new;
-  final DomainDevicesDiskAuthSecretArgs =
-      module_index.DomainDevicesDiskAuthSecret.new;
-  final DomainDevicesDiskBackendDomain =
-      module_index.DomainDevicesDiskBackendDomain.new;
-  final DomainDevicesDiskBackendDomainArgs =
-      module_index.DomainDevicesDiskBackendDomain.new;
-  final DomainDevicesDiskBackingStore =
-      module_index.DomainDevicesDiskBackingStore.new;
-  final DomainDevicesDiskBackingStoreArgs =
-      module_index.DomainDevicesDiskBackingStore.new;
-  final DomainDevicesDiskBackingStoreFormat =
-      module_index.DomainDevicesDiskBackingStoreFormat.new;
-  final DomainDevicesDiskBackingStoreFormatArgs =
-      module_index.DomainDevicesDiskBackingStoreFormat.new;
-  final DomainDevicesDiskBackingStoreFormatMetadataCache =
-      module_index.DomainDevicesDiskBackingStoreFormatMetadataCache.new;
-  final DomainDevicesDiskBackingStoreFormatMetadataCacheArgs =
-      module_index.DomainDevicesDiskBackingStoreFormatMetadataCache.new;
-  final DomainDevicesDiskBackingStoreFormatMetadataCacheMaxSize =
-      module_index.DomainDevicesDiskBackingStoreFormatMetadataCacheMaxSize.new;
-  final DomainDevicesDiskBackingStoreFormatMetadataCacheMaxSizeArgs =
-      module_index.DomainDevicesDiskBackingStoreFormatMetadataCacheMaxSize.new;
-  final DomainDevicesDiskBackingStoreSource =
-      module_index.DomainDevicesDiskBackingStoreSource.new;
-  final DomainDevicesDiskBackingStoreSourceArgs =
-      module_index.DomainDevicesDiskBackingStoreSource.new;
-  final DomainDevicesDiskBackingStoreSourceBlock =
-      module_index.DomainDevicesDiskBackingStoreSourceBlock.new;
-  final DomainDevicesDiskBackingStoreSourceBlockArgs =
-      module_index.DomainDevicesDiskBackingStoreSourceBlock.new;
-  final DomainDevicesDiskBackingStoreSourceBlockSecLabel =
-      module_index.DomainDevicesDiskBackingStoreSourceBlockSecLabel.new;
-  final DomainDevicesDiskBackingStoreSourceBlockSecLabelArgs =
-      module_index.DomainDevicesDiskBackingStoreSourceBlockSecLabel.new;
-  final DomainDevicesDiskBackingStoreSourceCookies =
-      module_index.DomainDevicesDiskBackingStoreSourceCookies.new;
-  final DomainDevicesDiskBackingStoreSourceCookiesArgs =
-      module_index.DomainDevicesDiskBackingStoreSourceCookies.new;
-  final DomainDevicesDiskBackingStoreSourceCookiesCookie =
-      module_index.DomainDevicesDiskBackingStoreSourceCookiesCookie.new;
-  final DomainDevicesDiskBackingStoreSourceCookiesCookieArgs =
-      module_index.DomainDevicesDiskBackingStoreSourceCookiesCookie.new;
-  final DomainDevicesDiskBackingStoreSourceDataStore =
-      module_index.DomainDevicesDiskBackingStoreSourceDataStore.new;
-  final DomainDevicesDiskBackingStoreSourceDataStoreArgs =
-      module_index.DomainDevicesDiskBackingStoreSourceDataStore.new;
-  final DomainDevicesDiskBackingStoreSourceDataStoreFormat =
-      module_index.DomainDevicesDiskBackingStoreSourceDataStoreFormat.new;
-  final DomainDevicesDiskBackingStoreSourceDataStoreFormatArgs =
-      module_index.DomainDevicesDiskBackingStoreSourceDataStoreFormat.new;
-  final DomainDevicesDiskBackingStoreSourceDataStoreFormatMetadataCache =
-      module_index
-          .DomainDevicesDiskBackingStoreSourceDataStoreFormatMetadataCache
-          .new;
-  final DomainDevicesDiskBackingStoreSourceDataStoreFormatMetadataCacheArgs =
-      module_index
-          .DomainDevicesDiskBackingStoreSourceDataStoreFormatMetadataCache
-          .new;
-  final DomainDevicesDiskBackingStoreSourceDataStoreFormatMetadataCacheMaxSize =
-      module_index
-          .DomainDevicesDiskBackingStoreSourceDataStoreFormatMetadataCacheMaxSize
-          .new;
-  final DomainDevicesDiskBackingStoreSourceDataStoreFormatMetadataCacheMaxSizeArgs =
-      module_index
-          .DomainDevicesDiskBackingStoreSourceDataStoreFormatMetadataCacheMaxSize
-          .new;
-  final DomainDevicesDiskBackingStoreSourceDir =
-      module_index.DomainDevicesDiskBackingStoreSourceDir.new;
-  final DomainDevicesDiskBackingStoreSourceDirArgs =
-      module_index.DomainDevicesDiskBackingStoreSourceDir.new;
-  final DomainDevicesDiskBackingStoreSourceEncryption =
-      module_index.DomainDevicesDiskBackingStoreSourceEncryption.new;
-  final DomainDevicesDiskBackingStoreSourceEncryptionArgs =
-      module_index.DomainDevicesDiskBackingStoreSourceEncryption.new;
-  final DomainDevicesDiskBackingStoreSourceEncryptionSecret =
-      module_index.DomainDevicesDiskBackingStoreSourceEncryptionSecret.new;
-  final DomainDevicesDiskBackingStoreSourceEncryptionSecretArgs =
-      module_index.DomainDevicesDiskBackingStoreSourceEncryptionSecret.new;
-  final DomainDevicesDiskBackingStoreSourceFile =
-      module_index.DomainDevicesDiskBackingStoreSourceFile.new;
-  final DomainDevicesDiskBackingStoreSourceFileArgs =
-      module_index.DomainDevicesDiskBackingStoreSourceFile.new;
-  final DomainDevicesDiskBackingStoreSourceFileSecLabel =
-      module_index.DomainDevicesDiskBackingStoreSourceFileSecLabel.new;
-  final DomainDevicesDiskBackingStoreSourceFileSecLabelArgs =
-      module_index.DomainDevicesDiskBackingStoreSourceFileSecLabel.new;
-  final DomainDevicesDiskBackingStoreSourceNetwork =
-      module_index.DomainDevicesDiskBackingStoreSourceNetwork.new;
-  final DomainDevicesDiskBackingStoreSourceNetworkArgs =
-      module_index.DomainDevicesDiskBackingStoreSourceNetwork.new;
-  final DomainDevicesDiskBackingStoreSourceNetworkAuth =
-      module_index.DomainDevicesDiskBackingStoreSourceNetworkAuth.new;
-  final DomainDevicesDiskBackingStoreSourceNetworkAuthArgs =
-      module_index.DomainDevicesDiskBackingStoreSourceNetworkAuth.new;
-  final DomainDevicesDiskBackingStoreSourceNetworkAuthSecret =
-      module_index.DomainDevicesDiskBackingStoreSourceNetworkAuthSecret.new;
-  final DomainDevicesDiskBackingStoreSourceNetworkAuthSecretArgs =
-      module_index.DomainDevicesDiskBackingStoreSourceNetworkAuthSecret.new;
-  final DomainDevicesDiskBackingStoreSourceNetworkConfig =
-      module_index.DomainDevicesDiskBackingStoreSourceNetworkConfig.new;
-  final DomainDevicesDiskBackingStoreSourceNetworkConfigArgs =
-      module_index.DomainDevicesDiskBackingStoreSourceNetworkConfig.new;
-  final DomainDevicesDiskBackingStoreSourceNetworkHost =
-      module_index.DomainDevicesDiskBackingStoreSourceNetworkHost.new;
-  final DomainDevicesDiskBackingStoreSourceNetworkHostArgs =
-      module_index.DomainDevicesDiskBackingStoreSourceNetworkHost.new;
-  final DomainDevicesDiskBackingStoreSourceNetworkIdentity =
-      module_index.DomainDevicesDiskBackingStoreSourceNetworkIdentity.new;
-  final DomainDevicesDiskBackingStoreSourceNetworkIdentityArgs =
-      module_index.DomainDevicesDiskBackingStoreSourceNetworkIdentity.new;
-  final DomainDevicesDiskBackingStoreSourceNetworkInitiator =
-      module_index.DomainDevicesDiskBackingStoreSourceNetworkInitiator.new;
-  final DomainDevicesDiskBackingStoreSourceNetworkInitiatorArgs =
-      module_index.DomainDevicesDiskBackingStoreSourceNetworkInitiator.new;
-  final DomainDevicesDiskBackingStoreSourceNetworkInitiatorIqn =
-      module_index.DomainDevicesDiskBackingStoreSourceNetworkInitiatorIqn.new;
-  final DomainDevicesDiskBackingStoreSourceNetworkInitiatorIqnArgs =
-      module_index.DomainDevicesDiskBackingStoreSourceNetworkInitiatorIqn.new;
-  final DomainDevicesDiskBackingStoreSourceNetworkKnownHosts =
-      module_index.DomainDevicesDiskBackingStoreSourceNetworkKnownHosts.new;
-  final DomainDevicesDiskBackingStoreSourceNetworkKnownHostsArgs =
-      module_index.DomainDevicesDiskBackingStoreSourceNetworkKnownHosts.new;
-  final DomainDevicesDiskBackingStoreSourceNetworkReconnect =
-      module_index.DomainDevicesDiskBackingStoreSourceNetworkReconnect.new;
-  final DomainDevicesDiskBackingStoreSourceNetworkReconnectArgs =
-      module_index.DomainDevicesDiskBackingStoreSourceNetworkReconnect.new;
-  final DomainDevicesDiskBackingStoreSourceNetworkSnapshot =
-      module_index.DomainDevicesDiskBackingStoreSourceNetworkSnapshot.new;
-  final DomainDevicesDiskBackingStoreSourceNetworkSnapshotArgs =
-      module_index.DomainDevicesDiskBackingStoreSourceNetworkSnapshot.new;
-  final DomainDevicesDiskBackingStoreSourceReadahead =
-      module_index.DomainDevicesDiskBackingStoreSourceReadahead.new;
-  final DomainDevicesDiskBackingStoreSourceReadaheadArgs =
-      module_index.DomainDevicesDiskBackingStoreSourceReadahead.new;
-  final DomainDevicesDiskBackingStoreSourceReservations =
-      module_index.DomainDevicesDiskBackingStoreSourceReservations.new;
-  final DomainDevicesDiskBackingStoreSourceReservationsArgs =
-      module_index.DomainDevicesDiskBackingStoreSourceReservations.new;
-  final DomainDevicesDiskBackingStoreSourceReservationsSource =
-      module_index.DomainDevicesDiskBackingStoreSourceReservationsSource.new;
-  final DomainDevicesDiskBackingStoreSourceReservationsSourceArgs =
-      module_index.DomainDevicesDiskBackingStoreSourceReservationsSource.new;
-  final DomainDevicesDiskBackingStoreSourceReservationsSourceDbus = module_index
-      .DomainDevicesDiskBackingStoreSourceReservationsSourceDbus
-      .new;
-  final DomainDevicesDiskBackingStoreSourceReservationsSourceDbusArgs =
-      module_index
-          .DomainDevicesDiskBackingStoreSourceReservationsSourceDbus
-          .new;
-  final DomainDevicesDiskBackingStoreSourceReservationsSourceDev =
-      module_index.DomainDevicesDiskBackingStoreSourceReservationsSourceDev.new;
-  final DomainDevicesDiskBackingStoreSourceReservationsSourceDevArgs =
-      module_index.DomainDevicesDiskBackingStoreSourceReservationsSourceDev.new;
-  final DomainDevicesDiskBackingStoreSourceReservationsSourceDevSecLabel =
-      module_index
-          .DomainDevicesDiskBackingStoreSourceReservationsSourceDevSecLabel
-          .new;
-  final DomainDevicesDiskBackingStoreSourceReservationsSourceDevSecLabelArgs =
-      module_index
-          .DomainDevicesDiskBackingStoreSourceReservationsSourceDevSecLabel
-          .new;
-  final DomainDevicesDiskBackingStoreSourceReservationsSourceFile = module_index
-      .DomainDevicesDiskBackingStoreSourceReservationsSourceFile
-      .new;
-  final DomainDevicesDiskBackingStoreSourceReservationsSourceFileArgs =
-      module_index
-          .DomainDevicesDiskBackingStoreSourceReservationsSourceFile
-          .new;
-  final DomainDevicesDiskBackingStoreSourceReservationsSourceFileSecLabel =
-      module_index
-          .DomainDevicesDiskBackingStoreSourceReservationsSourceFileSecLabel
-          .new;
-  final DomainDevicesDiskBackingStoreSourceReservationsSourceFileSecLabelArgs =
-      module_index
-          .DomainDevicesDiskBackingStoreSourceReservationsSourceFileSecLabel
-          .new;
-  final DomainDevicesDiskBackingStoreSourceReservationsSourceNmdm = module_index
-      .DomainDevicesDiskBackingStoreSourceReservationsSourceNmdm
-      .new;
-  final DomainDevicesDiskBackingStoreSourceReservationsSourceNmdmArgs =
-      module_index
-          .DomainDevicesDiskBackingStoreSourceReservationsSourceNmdm
-          .new;
-  final DomainDevicesDiskBackingStoreSourceReservationsSourcePipe = module_index
-      .DomainDevicesDiskBackingStoreSourceReservationsSourcePipe
-      .new;
-  final DomainDevicesDiskBackingStoreSourceReservationsSourcePipeArgs =
-      module_index
-          .DomainDevicesDiskBackingStoreSourceReservationsSourcePipe
-          .new;
-  final DomainDevicesDiskBackingStoreSourceReservationsSourcePipeSecLabel =
-      module_index
-          .DomainDevicesDiskBackingStoreSourceReservationsSourcePipeSecLabel
-          .new;
-  final DomainDevicesDiskBackingStoreSourceReservationsSourcePipeSecLabelArgs =
-      module_index
-          .DomainDevicesDiskBackingStoreSourceReservationsSourcePipeSecLabel
-          .new;
-  final DomainDevicesDiskBackingStoreSourceReservationsSourcePty =
-      module_index.DomainDevicesDiskBackingStoreSourceReservationsSourcePty.new;
-  final DomainDevicesDiskBackingStoreSourceReservationsSourcePtyArgs =
-      module_index.DomainDevicesDiskBackingStoreSourceReservationsSourcePty.new;
-  final DomainDevicesDiskBackingStoreSourceReservationsSourcePtySecLabel =
-      module_index
-          .DomainDevicesDiskBackingStoreSourceReservationsSourcePtySecLabel
-          .new;
-  final DomainDevicesDiskBackingStoreSourceReservationsSourcePtySecLabelArgs =
-      module_index
-          .DomainDevicesDiskBackingStoreSourceReservationsSourcePtySecLabel
-          .new;
-  final DomainDevicesDiskBackingStoreSourceReservationsSourceQemuvdAgent =
-      module_index
-          .DomainDevicesDiskBackingStoreSourceReservationsSourceQemuvdAgent
-          .new;
-  final DomainDevicesDiskBackingStoreSourceReservationsSourceQemuvdAgentArgs =
-      module_index
-          .DomainDevicesDiskBackingStoreSourceReservationsSourceQemuvdAgent
-          .new;
-  final DomainDevicesDiskBackingStoreSourceReservationsSourceQemuvdAgentClipBoard =
-      module_index
-          .DomainDevicesDiskBackingStoreSourceReservationsSourceQemuvdAgentClipBoard
-          .new;
-  final DomainDevicesDiskBackingStoreSourceReservationsSourceQemuvdAgentClipBoardArgs =
-      module_index
-          .DomainDevicesDiskBackingStoreSourceReservationsSourceQemuvdAgentClipBoard
-          .new;
-  final DomainDevicesDiskBackingStoreSourceReservationsSourceQemuvdAgentMouse =
-      module_index
-          .DomainDevicesDiskBackingStoreSourceReservationsSourceQemuvdAgentMouse
-          .new;
-  final DomainDevicesDiskBackingStoreSourceReservationsSourceQemuvdAgentMouseArgs =
-      module_index
-          .DomainDevicesDiskBackingStoreSourceReservationsSourceQemuvdAgentMouse
-          .new;
-  final DomainDevicesDiskBackingStoreSourceReservationsSourceSpicePort =
-      module_index
-          .DomainDevicesDiskBackingStoreSourceReservationsSourceSpicePort
-          .new;
-  final DomainDevicesDiskBackingStoreSourceReservationsSourceSpicePortArgs =
-      module_index
-          .DomainDevicesDiskBackingStoreSourceReservationsSourceSpicePort
-          .new;
-  final DomainDevicesDiskBackingStoreSourceReservationsSourceTcp =
-      module_index.DomainDevicesDiskBackingStoreSourceReservationsSourceTcp.new;
-  final DomainDevicesDiskBackingStoreSourceReservationsSourceTcpArgs =
-      module_index.DomainDevicesDiskBackingStoreSourceReservationsSourceTcp.new;
-  final DomainDevicesDiskBackingStoreSourceReservationsSourceTcpReconnect =
-      module_index
-          .DomainDevicesDiskBackingStoreSourceReservationsSourceTcpReconnect
-          .new;
-  final DomainDevicesDiskBackingStoreSourceReservationsSourceTcpReconnectArgs =
-      module_index
-          .DomainDevicesDiskBackingStoreSourceReservationsSourceTcpReconnect
-          .new;
-  final DomainDevicesDiskBackingStoreSourceReservationsSourceUdp =
-      module_index.DomainDevicesDiskBackingStoreSourceReservationsSourceUdp.new;
-  final DomainDevicesDiskBackingStoreSourceReservationsSourceUdpArgs =
-      module_index.DomainDevicesDiskBackingStoreSourceReservationsSourceUdp.new;
-  final DomainDevicesDiskBackingStoreSourceReservationsSourceUnix = module_index
-      .DomainDevicesDiskBackingStoreSourceReservationsSourceUnix
-      .new;
-  final DomainDevicesDiskBackingStoreSourceReservationsSourceUnixArgs =
-      module_index
-          .DomainDevicesDiskBackingStoreSourceReservationsSourceUnix
-          .new;
-  final DomainDevicesDiskBackingStoreSourceReservationsSourceUnixReconnect =
-      module_index
-          .DomainDevicesDiskBackingStoreSourceReservationsSourceUnixReconnect
-          .new;
-  final DomainDevicesDiskBackingStoreSourceReservationsSourceUnixReconnectArgs =
-      module_index
-          .DomainDevicesDiskBackingStoreSourceReservationsSourceUnixReconnect
-          .new;
-  final DomainDevicesDiskBackingStoreSourceReservationsSourceUnixSecLabel =
-      module_index
-          .DomainDevicesDiskBackingStoreSourceReservationsSourceUnixSecLabel
-          .new;
-  final DomainDevicesDiskBackingStoreSourceReservationsSourceUnixSecLabelArgs =
-      module_index
-          .DomainDevicesDiskBackingStoreSourceReservationsSourceUnixSecLabel
-          .new;
-  final DomainDevicesDiskBackingStoreSourceSlices =
-      module_index.DomainDevicesDiskBackingStoreSourceSlices.new;
-  final DomainDevicesDiskBackingStoreSourceSlicesArgs =
-      module_index.DomainDevicesDiskBackingStoreSourceSlices.new;
-  final DomainDevicesDiskBackingStoreSourceSlicesSlice =
-      module_index.DomainDevicesDiskBackingStoreSourceSlicesSlice.new;
-  final DomainDevicesDiskBackingStoreSourceSlicesSliceArgs =
-      module_index.DomainDevicesDiskBackingStoreSourceSlicesSlice.new;
-  final DomainDevicesDiskBackingStoreSourceSsl =
-      module_index.DomainDevicesDiskBackingStoreSourceSsl.new;
-  final DomainDevicesDiskBackingStoreSourceSslArgs =
-      module_index.DomainDevicesDiskBackingStoreSourceSsl.new;
-  final DomainDevicesDiskBackingStoreSourceTimeout =
-      module_index.DomainDevicesDiskBackingStoreSourceTimeout.new;
-  final DomainDevicesDiskBackingStoreSourceTimeoutArgs =
-      module_index.DomainDevicesDiskBackingStoreSourceTimeout.new;
-  final DomainDevicesDiskBackingStoreSourceVhostUser =
-      module_index.DomainDevicesDiskBackingStoreSourceVhostUser.new;
-  final DomainDevicesDiskBackingStoreSourceVhostUserArgs =
-      module_index.DomainDevicesDiskBackingStoreSourceVhostUser.new;
-  final DomainDevicesDiskBackingStoreSourceVhostUserDbus =
-      module_index.DomainDevicesDiskBackingStoreSourceVhostUserDbus.new;
-  final DomainDevicesDiskBackingStoreSourceVhostUserDbusArgs =
-      module_index.DomainDevicesDiskBackingStoreSourceVhostUserDbus.new;
-  final DomainDevicesDiskBackingStoreSourceVhostUserDev =
-      module_index.DomainDevicesDiskBackingStoreSourceVhostUserDev.new;
-  final DomainDevicesDiskBackingStoreSourceVhostUserDevArgs =
-      module_index.DomainDevicesDiskBackingStoreSourceVhostUserDev.new;
-  final DomainDevicesDiskBackingStoreSourceVhostUserDevSecLabel =
-      module_index.DomainDevicesDiskBackingStoreSourceVhostUserDevSecLabel.new;
-  final DomainDevicesDiskBackingStoreSourceVhostUserDevSecLabelArgs =
-      module_index.DomainDevicesDiskBackingStoreSourceVhostUserDevSecLabel.new;
-  final DomainDevicesDiskBackingStoreSourceVhostUserFile =
-      module_index.DomainDevicesDiskBackingStoreSourceVhostUserFile.new;
-  final DomainDevicesDiskBackingStoreSourceVhostUserFileArgs =
-      module_index.DomainDevicesDiskBackingStoreSourceVhostUserFile.new;
-  final DomainDevicesDiskBackingStoreSourceVhostUserFileSecLabel =
-      module_index.DomainDevicesDiskBackingStoreSourceVhostUserFileSecLabel.new;
-  final DomainDevicesDiskBackingStoreSourceVhostUserFileSecLabelArgs =
-      module_index.DomainDevicesDiskBackingStoreSourceVhostUserFileSecLabel.new;
-  final DomainDevicesDiskBackingStoreSourceVhostUserNmdm =
-      module_index.DomainDevicesDiskBackingStoreSourceVhostUserNmdm.new;
-  final DomainDevicesDiskBackingStoreSourceVhostUserNmdmArgs =
-      module_index.DomainDevicesDiskBackingStoreSourceVhostUserNmdm.new;
-  final DomainDevicesDiskBackingStoreSourceVhostUserPipe =
-      module_index.DomainDevicesDiskBackingStoreSourceVhostUserPipe.new;
-  final DomainDevicesDiskBackingStoreSourceVhostUserPipeArgs =
-      module_index.DomainDevicesDiskBackingStoreSourceVhostUserPipe.new;
-  final DomainDevicesDiskBackingStoreSourceVhostUserPipeSecLabel =
-      module_index.DomainDevicesDiskBackingStoreSourceVhostUserPipeSecLabel.new;
-  final DomainDevicesDiskBackingStoreSourceVhostUserPipeSecLabelArgs =
-      module_index.DomainDevicesDiskBackingStoreSourceVhostUserPipeSecLabel.new;
-  final DomainDevicesDiskBackingStoreSourceVhostUserPty =
-      module_index.DomainDevicesDiskBackingStoreSourceVhostUserPty.new;
-  final DomainDevicesDiskBackingStoreSourceVhostUserPtyArgs =
-      module_index.DomainDevicesDiskBackingStoreSourceVhostUserPty.new;
-  final DomainDevicesDiskBackingStoreSourceVhostUserPtySecLabel =
-      module_index.DomainDevicesDiskBackingStoreSourceVhostUserPtySecLabel.new;
-  final DomainDevicesDiskBackingStoreSourceVhostUserPtySecLabelArgs =
-      module_index.DomainDevicesDiskBackingStoreSourceVhostUserPtySecLabel.new;
-  final DomainDevicesDiskBackingStoreSourceVhostUserQemuvdAgent =
-      module_index.DomainDevicesDiskBackingStoreSourceVhostUserQemuvdAgent.new;
-  final DomainDevicesDiskBackingStoreSourceVhostUserQemuvdAgentArgs =
-      module_index.DomainDevicesDiskBackingStoreSourceVhostUserQemuvdAgent.new;
-  final DomainDevicesDiskBackingStoreSourceVhostUserQemuvdAgentClipBoard =
-      module_index
-          .DomainDevicesDiskBackingStoreSourceVhostUserQemuvdAgentClipBoard
-          .new;
-  final DomainDevicesDiskBackingStoreSourceVhostUserQemuvdAgentClipBoardArgs =
-      module_index
-          .DomainDevicesDiskBackingStoreSourceVhostUserQemuvdAgentClipBoard
-          .new;
-  final DomainDevicesDiskBackingStoreSourceVhostUserQemuvdAgentMouse =
-      module_index
-          .DomainDevicesDiskBackingStoreSourceVhostUserQemuvdAgentMouse
-          .new;
-  final DomainDevicesDiskBackingStoreSourceVhostUserQemuvdAgentMouseArgs =
-      module_index
-          .DomainDevicesDiskBackingStoreSourceVhostUserQemuvdAgentMouse
-          .new;
-  final DomainDevicesDiskBackingStoreSourceVhostUserSpicePort =
-      module_index.DomainDevicesDiskBackingStoreSourceVhostUserSpicePort.new;
-  final DomainDevicesDiskBackingStoreSourceVhostUserSpicePortArgs =
-      module_index.DomainDevicesDiskBackingStoreSourceVhostUserSpicePort.new;
-  final DomainDevicesDiskBackingStoreSourceVhostUserTcp =
-      module_index.DomainDevicesDiskBackingStoreSourceVhostUserTcp.new;
-  final DomainDevicesDiskBackingStoreSourceVhostUserTcpArgs =
-      module_index.DomainDevicesDiskBackingStoreSourceVhostUserTcp.new;
-  final DomainDevicesDiskBackingStoreSourceVhostUserTcpReconnect =
-      module_index.DomainDevicesDiskBackingStoreSourceVhostUserTcpReconnect.new;
-  final DomainDevicesDiskBackingStoreSourceVhostUserTcpReconnectArgs =
-      module_index.DomainDevicesDiskBackingStoreSourceVhostUserTcpReconnect.new;
-  final DomainDevicesDiskBackingStoreSourceVhostUserUdp =
-      module_index.DomainDevicesDiskBackingStoreSourceVhostUserUdp.new;
-  final DomainDevicesDiskBackingStoreSourceVhostUserUdpArgs =
-      module_index.DomainDevicesDiskBackingStoreSourceVhostUserUdp.new;
-  final DomainDevicesDiskBackingStoreSourceVhostUserUnix =
-      module_index.DomainDevicesDiskBackingStoreSourceVhostUserUnix.new;
-  final DomainDevicesDiskBackingStoreSourceVhostUserUnixArgs =
-      module_index.DomainDevicesDiskBackingStoreSourceVhostUserUnix.new;
-  final DomainDevicesDiskBackingStoreSourceVhostUserUnixReconnect = module_index
-      .DomainDevicesDiskBackingStoreSourceVhostUserUnixReconnect
-      .new;
-  final DomainDevicesDiskBackingStoreSourceVhostUserUnixReconnectArgs =
-      module_index
-          .DomainDevicesDiskBackingStoreSourceVhostUserUnixReconnect
-          .new;
-  final DomainDevicesDiskBackingStoreSourceVhostUserUnixSecLabel =
-      module_index.DomainDevicesDiskBackingStoreSourceVhostUserUnixSecLabel.new;
-  final DomainDevicesDiskBackingStoreSourceVhostUserUnixSecLabelArgs =
-      module_index.DomainDevicesDiskBackingStoreSourceVhostUserUnixSecLabel.new;
-  final DomainDevicesDiskBackingStoreSourceVhostVdpa =
-      module_index.DomainDevicesDiskBackingStoreSourceVhostVdpa.new;
-  final DomainDevicesDiskBackingStoreSourceVhostVdpaArgs =
-      module_index.DomainDevicesDiskBackingStoreSourceVhostVdpa.new;
-  final DomainDevicesDiskBackingStoreSourceVolume =
-      module_index.DomainDevicesDiskBackingStoreSourceVolume.new;
-  final DomainDevicesDiskBackingStoreSourceVolumeArgs =
-      module_index.DomainDevicesDiskBackingStoreSourceVolume.new;
-  final DomainDevicesDiskBackingStoreSourceVolumeSecLabel =
-      module_index.DomainDevicesDiskBackingStoreSourceVolumeSecLabel.new;
-  final DomainDevicesDiskBackingStoreSourceVolumeSecLabelArgs =
-      module_index.DomainDevicesDiskBackingStoreSourceVolumeSecLabel.new;
+  final DomainDevicesDiskAuthSecret = module_index.DomainDevicesDiskAuthSecret.new;
+  final DomainDevicesDiskAuthSecretArgs = module_index.DomainDevicesDiskAuthSecret.new;
+  final DomainDevicesDiskBackendDomain = module_index.DomainDevicesDiskBackendDomain.new;
+  final DomainDevicesDiskBackendDomainArgs = module_index.DomainDevicesDiskBackendDomain.new;
+  final DomainDevicesDiskBackingStore = module_index.DomainDevicesDiskBackingStore.new;
+  final DomainDevicesDiskBackingStoreArgs = module_index.DomainDevicesDiskBackingStore.new;
+  final DomainDevicesDiskBackingStoreFormat = module_index.DomainDevicesDiskBackingStoreFormat.new;
+  final DomainDevicesDiskBackingStoreFormatArgs = module_index.DomainDevicesDiskBackingStoreFormat.new;
+  final DomainDevicesDiskBackingStoreFormatMetadataCache = module_index.DomainDevicesDiskBackingStoreFormatMetadataCache.new;
+  final DomainDevicesDiskBackingStoreFormatMetadataCacheArgs = module_index.DomainDevicesDiskBackingStoreFormatMetadataCache.new;
+  final DomainDevicesDiskBackingStoreFormatMetadataCacheMaxSize = module_index.DomainDevicesDiskBackingStoreFormatMetadataCacheMaxSize.new;
+  final DomainDevicesDiskBackingStoreFormatMetadataCacheMaxSizeArgs = module_index.DomainDevicesDiskBackingStoreFormatMetadataCacheMaxSize.new;
+  final DomainDevicesDiskBackingStoreSource = module_index.DomainDevicesDiskBackingStoreSource.new;
+  final DomainDevicesDiskBackingStoreSourceArgs = module_index.DomainDevicesDiskBackingStoreSource.new;
+  final DomainDevicesDiskBackingStoreSourceBlock = module_index.DomainDevicesDiskBackingStoreSourceBlock.new;
+  final DomainDevicesDiskBackingStoreSourceBlockArgs = module_index.DomainDevicesDiskBackingStoreSourceBlock.new;
+  final DomainDevicesDiskBackingStoreSourceBlockSecLabel = module_index.DomainDevicesDiskBackingStoreSourceBlockSecLabel.new;
+  final DomainDevicesDiskBackingStoreSourceBlockSecLabelArgs = module_index.DomainDevicesDiskBackingStoreSourceBlockSecLabel.new;
+  final DomainDevicesDiskBackingStoreSourceCookies = module_index.DomainDevicesDiskBackingStoreSourceCookies.new;
+  final DomainDevicesDiskBackingStoreSourceCookiesArgs = module_index.DomainDevicesDiskBackingStoreSourceCookies.new;
+  final DomainDevicesDiskBackingStoreSourceCookiesCookie = module_index.DomainDevicesDiskBackingStoreSourceCookiesCookie.new;
+  final DomainDevicesDiskBackingStoreSourceCookiesCookieArgs = module_index.DomainDevicesDiskBackingStoreSourceCookiesCookie.new;
+  final DomainDevicesDiskBackingStoreSourceDataStore = module_index.DomainDevicesDiskBackingStoreSourceDataStore.new;
+  final DomainDevicesDiskBackingStoreSourceDataStoreArgs = module_index.DomainDevicesDiskBackingStoreSourceDataStore.new;
+  final DomainDevicesDiskBackingStoreSourceDataStoreFormat = module_index.DomainDevicesDiskBackingStoreSourceDataStoreFormat.new;
+  final DomainDevicesDiskBackingStoreSourceDataStoreFormatArgs = module_index.DomainDevicesDiskBackingStoreSourceDataStoreFormat.new;
+  final DomainDevicesDiskBackingStoreSourceDataStoreFormatMetadataCache = module_index.DomainDevicesDiskBackingStoreSourceDataStoreFormatMetadataCache.new;
+  final DomainDevicesDiskBackingStoreSourceDataStoreFormatMetadataCacheArgs = module_index.DomainDevicesDiskBackingStoreSourceDataStoreFormatMetadataCache.new;
+  final DomainDevicesDiskBackingStoreSourceDataStoreFormatMetadataCacheMaxSize = module_index.DomainDevicesDiskBackingStoreSourceDataStoreFormatMetadataCacheMaxSize.new;
+  final DomainDevicesDiskBackingStoreSourceDataStoreFormatMetadataCacheMaxSizeArgs = module_index.DomainDevicesDiskBackingStoreSourceDataStoreFormatMetadataCacheMaxSize.new;
+  final DomainDevicesDiskBackingStoreSourceDir = module_index.DomainDevicesDiskBackingStoreSourceDir.new;
+  final DomainDevicesDiskBackingStoreSourceDirArgs = module_index.DomainDevicesDiskBackingStoreSourceDir.new;
+  final DomainDevicesDiskBackingStoreSourceEncryption = module_index.DomainDevicesDiskBackingStoreSourceEncryption.new;
+  final DomainDevicesDiskBackingStoreSourceEncryptionArgs = module_index.DomainDevicesDiskBackingStoreSourceEncryption.new;
+  final DomainDevicesDiskBackingStoreSourceEncryptionSecret = module_index.DomainDevicesDiskBackingStoreSourceEncryptionSecret.new;
+  final DomainDevicesDiskBackingStoreSourceEncryptionSecretArgs = module_index.DomainDevicesDiskBackingStoreSourceEncryptionSecret.new;
+  final DomainDevicesDiskBackingStoreSourceFile = module_index.DomainDevicesDiskBackingStoreSourceFile.new;
+  final DomainDevicesDiskBackingStoreSourceFileArgs = module_index.DomainDevicesDiskBackingStoreSourceFile.new;
+  final DomainDevicesDiskBackingStoreSourceFileSecLabel = module_index.DomainDevicesDiskBackingStoreSourceFileSecLabel.new;
+  final DomainDevicesDiskBackingStoreSourceFileSecLabelArgs = module_index.DomainDevicesDiskBackingStoreSourceFileSecLabel.new;
+  final DomainDevicesDiskBackingStoreSourceNetwork = module_index.DomainDevicesDiskBackingStoreSourceNetwork.new;
+  final DomainDevicesDiskBackingStoreSourceNetworkArgs = module_index.DomainDevicesDiskBackingStoreSourceNetwork.new;
+  final DomainDevicesDiskBackingStoreSourceNetworkAuth = module_index.DomainDevicesDiskBackingStoreSourceNetworkAuth.new;
+  final DomainDevicesDiskBackingStoreSourceNetworkAuthArgs = module_index.DomainDevicesDiskBackingStoreSourceNetworkAuth.new;
+  final DomainDevicesDiskBackingStoreSourceNetworkAuthSecret = module_index.DomainDevicesDiskBackingStoreSourceNetworkAuthSecret.new;
+  final DomainDevicesDiskBackingStoreSourceNetworkAuthSecretArgs = module_index.DomainDevicesDiskBackingStoreSourceNetworkAuthSecret.new;
+  final DomainDevicesDiskBackingStoreSourceNetworkConfig = module_index.DomainDevicesDiskBackingStoreSourceNetworkConfig.new;
+  final DomainDevicesDiskBackingStoreSourceNetworkConfigArgs = module_index.DomainDevicesDiskBackingStoreSourceNetworkConfig.new;
+  final DomainDevicesDiskBackingStoreSourceNetworkHost = module_index.DomainDevicesDiskBackingStoreSourceNetworkHost.new;
+  final DomainDevicesDiskBackingStoreSourceNetworkHostArgs = module_index.DomainDevicesDiskBackingStoreSourceNetworkHost.new;
+  final DomainDevicesDiskBackingStoreSourceNetworkIdentity = module_index.DomainDevicesDiskBackingStoreSourceNetworkIdentity.new;
+  final DomainDevicesDiskBackingStoreSourceNetworkIdentityArgs = module_index.DomainDevicesDiskBackingStoreSourceNetworkIdentity.new;
+  final DomainDevicesDiskBackingStoreSourceNetworkInitiator = module_index.DomainDevicesDiskBackingStoreSourceNetworkInitiator.new;
+  final DomainDevicesDiskBackingStoreSourceNetworkInitiatorArgs = module_index.DomainDevicesDiskBackingStoreSourceNetworkInitiator.new;
+  final DomainDevicesDiskBackingStoreSourceNetworkInitiatorIqn = module_index.DomainDevicesDiskBackingStoreSourceNetworkInitiatorIqn.new;
+  final DomainDevicesDiskBackingStoreSourceNetworkInitiatorIqnArgs = module_index.DomainDevicesDiskBackingStoreSourceNetworkInitiatorIqn.new;
+  final DomainDevicesDiskBackingStoreSourceNetworkKnownHosts = module_index.DomainDevicesDiskBackingStoreSourceNetworkKnownHosts.new;
+  final DomainDevicesDiskBackingStoreSourceNetworkKnownHostsArgs = module_index.DomainDevicesDiskBackingStoreSourceNetworkKnownHosts.new;
+  final DomainDevicesDiskBackingStoreSourceNetworkReconnect = module_index.DomainDevicesDiskBackingStoreSourceNetworkReconnect.new;
+  final DomainDevicesDiskBackingStoreSourceNetworkReconnectArgs = module_index.DomainDevicesDiskBackingStoreSourceNetworkReconnect.new;
+  final DomainDevicesDiskBackingStoreSourceNetworkSnapshot = module_index.DomainDevicesDiskBackingStoreSourceNetworkSnapshot.new;
+  final DomainDevicesDiskBackingStoreSourceNetworkSnapshotArgs = module_index.DomainDevicesDiskBackingStoreSourceNetworkSnapshot.new;
+  final DomainDevicesDiskBackingStoreSourceReadahead = module_index.DomainDevicesDiskBackingStoreSourceReadahead.new;
+  final DomainDevicesDiskBackingStoreSourceReadaheadArgs = module_index.DomainDevicesDiskBackingStoreSourceReadahead.new;
+  final DomainDevicesDiskBackingStoreSourceReservations = module_index.DomainDevicesDiskBackingStoreSourceReservations.new;
+  final DomainDevicesDiskBackingStoreSourceReservationsArgs = module_index.DomainDevicesDiskBackingStoreSourceReservations.new;
+  final DomainDevicesDiskBackingStoreSourceReservationsSource = module_index.DomainDevicesDiskBackingStoreSourceReservationsSource.new;
+  final DomainDevicesDiskBackingStoreSourceReservationsSourceArgs = module_index.DomainDevicesDiskBackingStoreSourceReservationsSource.new;
+  final DomainDevicesDiskBackingStoreSourceReservationsSourceDbus = module_index.DomainDevicesDiskBackingStoreSourceReservationsSourceDbus.new;
+  final DomainDevicesDiskBackingStoreSourceReservationsSourceDbusArgs = module_index.DomainDevicesDiskBackingStoreSourceReservationsSourceDbus.new;
+  final DomainDevicesDiskBackingStoreSourceReservationsSourceDev = module_index.DomainDevicesDiskBackingStoreSourceReservationsSourceDev.new;
+  final DomainDevicesDiskBackingStoreSourceReservationsSourceDevArgs = module_index.DomainDevicesDiskBackingStoreSourceReservationsSourceDev.new;
+  final DomainDevicesDiskBackingStoreSourceReservationsSourceDevSecLabel = module_index.DomainDevicesDiskBackingStoreSourceReservationsSourceDevSecLabel.new;
+  final DomainDevicesDiskBackingStoreSourceReservationsSourceDevSecLabelArgs = module_index.DomainDevicesDiskBackingStoreSourceReservationsSourceDevSecLabel.new;
+  final DomainDevicesDiskBackingStoreSourceReservationsSourceFile = module_index.DomainDevicesDiskBackingStoreSourceReservationsSourceFile.new;
+  final DomainDevicesDiskBackingStoreSourceReservationsSourceFileArgs = module_index.DomainDevicesDiskBackingStoreSourceReservationsSourceFile.new;
+  final DomainDevicesDiskBackingStoreSourceReservationsSourceFileSecLabel = module_index.DomainDevicesDiskBackingStoreSourceReservationsSourceFileSecLabel.new;
+  final DomainDevicesDiskBackingStoreSourceReservationsSourceFileSecLabelArgs = module_index.DomainDevicesDiskBackingStoreSourceReservationsSourceFileSecLabel.new;
+  final DomainDevicesDiskBackingStoreSourceReservationsSourceNmdm = module_index.DomainDevicesDiskBackingStoreSourceReservationsSourceNmdm.new;
+  final DomainDevicesDiskBackingStoreSourceReservationsSourceNmdmArgs = module_index.DomainDevicesDiskBackingStoreSourceReservationsSourceNmdm.new;
+  final DomainDevicesDiskBackingStoreSourceReservationsSourcePipe = module_index.DomainDevicesDiskBackingStoreSourceReservationsSourcePipe.new;
+  final DomainDevicesDiskBackingStoreSourceReservationsSourcePipeArgs = module_index.DomainDevicesDiskBackingStoreSourceReservationsSourcePipe.new;
+  final DomainDevicesDiskBackingStoreSourceReservationsSourcePipeSecLabel = module_index.DomainDevicesDiskBackingStoreSourceReservationsSourcePipeSecLabel.new;
+  final DomainDevicesDiskBackingStoreSourceReservationsSourcePipeSecLabelArgs = module_index.DomainDevicesDiskBackingStoreSourceReservationsSourcePipeSecLabel.new;
+  final DomainDevicesDiskBackingStoreSourceReservationsSourcePty = module_index.DomainDevicesDiskBackingStoreSourceReservationsSourcePty.new;
+  final DomainDevicesDiskBackingStoreSourceReservationsSourcePtyArgs = module_index.DomainDevicesDiskBackingStoreSourceReservationsSourcePty.new;
+  final DomainDevicesDiskBackingStoreSourceReservationsSourcePtySecLabel = module_index.DomainDevicesDiskBackingStoreSourceReservationsSourcePtySecLabel.new;
+  final DomainDevicesDiskBackingStoreSourceReservationsSourcePtySecLabelArgs = module_index.DomainDevicesDiskBackingStoreSourceReservationsSourcePtySecLabel.new;
+  final DomainDevicesDiskBackingStoreSourceReservationsSourceQemuvdAgent = module_index.DomainDevicesDiskBackingStoreSourceReservationsSourceQemuvdAgent.new;
+  final DomainDevicesDiskBackingStoreSourceReservationsSourceQemuvdAgentArgs = module_index.DomainDevicesDiskBackingStoreSourceReservationsSourceQemuvdAgent.new;
+  final DomainDevicesDiskBackingStoreSourceReservationsSourceQemuvdAgentClipBoard = module_index.DomainDevicesDiskBackingStoreSourceReservationsSourceQemuvdAgentClipBoard.new;
+  final DomainDevicesDiskBackingStoreSourceReservationsSourceQemuvdAgentClipBoardArgs = module_index.DomainDevicesDiskBackingStoreSourceReservationsSourceQemuvdAgentClipBoard.new;
+  final DomainDevicesDiskBackingStoreSourceReservationsSourceQemuvdAgentMouse = module_index.DomainDevicesDiskBackingStoreSourceReservationsSourceQemuvdAgentMouse.new;
+  final DomainDevicesDiskBackingStoreSourceReservationsSourceQemuvdAgentMouseArgs = module_index.DomainDevicesDiskBackingStoreSourceReservationsSourceQemuvdAgentMouse.new;
+  final DomainDevicesDiskBackingStoreSourceReservationsSourceSpicePort = module_index.DomainDevicesDiskBackingStoreSourceReservationsSourceSpicePort.new;
+  final DomainDevicesDiskBackingStoreSourceReservationsSourceSpicePortArgs = module_index.DomainDevicesDiskBackingStoreSourceReservationsSourceSpicePort.new;
+  final DomainDevicesDiskBackingStoreSourceReservationsSourceTcp = module_index.DomainDevicesDiskBackingStoreSourceReservationsSourceTcp.new;
+  final DomainDevicesDiskBackingStoreSourceReservationsSourceTcpArgs = module_index.DomainDevicesDiskBackingStoreSourceReservationsSourceTcp.new;
+  final DomainDevicesDiskBackingStoreSourceReservationsSourceTcpReconnect = module_index.DomainDevicesDiskBackingStoreSourceReservationsSourceTcpReconnect.new;
+  final DomainDevicesDiskBackingStoreSourceReservationsSourceTcpReconnectArgs = module_index.DomainDevicesDiskBackingStoreSourceReservationsSourceTcpReconnect.new;
+  final DomainDevicesDiskBackingStoreSourceReservationsSourceUdp = module_index.DomainDevicesDiskBackingStoreSourceReservationsSourceUdp.new;
+  final DomainDevicesDiskBackingStoreSourceReservationsSourceUdpArgs = module_index.DomainDevicesDiskBackingStoreSourceReservationsSourceUdp.new;
+  final DomainDevicesDiskBackingStoreSourceReservationsSourceUnix = module_index.DomainDevicesDiskBackingStoreSourceReservationsSourceUnix.new;
+  final DomainDevicesDiskBackingStoreSourceReservationsSourceUnixArgs = module_index.DomainDevicesDiskBackingStoreSourceReservationsSourceUnix.new;
+  final DomainDevicesDiskBackingStoreSourceReservationsSourceUnixReconnect = module_index.DomainDevicesDiskBackingStoreSourceReservationsSourceUnixReconnect.new;
+  final DomainDevicesDiskBackingStoreSourceReservationsSourceUnixReconnectArgs = module_index.DomainDevicesDiskBackingStoreSourceReservationsSourceUnixReconnect.new;
+  final DomainDevicesDiskBackingStoreSourceReservationsSourceUnixSecLabel = module_index.DomainDevicesDiskBackingStoreSourceReservationsSourceUnixSecLabel.new;
+  final DomainDevicesDiskBackingStoreSourceReservationsSourceUnixSecLabelArgs = module_index.DomainDevicesDiskBackingStoreSourceReservationsSourceUnixSecLabel.new;
+  final DomainDevicesDiskBackingStoreSourceSlices = module_index.DomainDevicesDiskBackingStoreSourceSlices.new;
+  final DomainDevicesDiskBackingStoreSourceSlicesArgs = module_index.DomainDevicesDiskBackingStoreSourceSlices.new;
+  final DomainDevicesDiskBackingStoreSourceSlicesSlice = module_index.DomainDevicesDiskBackingStoreSourceSlicesSlice.new;
+  final DomainDevicesDiskBackingStoreSourceSlicesSliceArgs = module_index.DomainDevicesDiskBackingStoreSourceSlicesSlice.new;
+  final DomainDevicesDiskBackingStoreSourceSsl = module_index.DomainDevicesDiskBackingStoreSourceSsl.new;
+  final DomainDevicesDiskBackingStoreSourceSslArgs = module_index.DomainDevicesDiskBackingStoreSourceSsl.new;
+  final DomainDevicesDiskBackingStoreSourceTimeout = module_index.DomainDevicesDiskBackingStoreSourceTimeout.new;
+  final DomainDevicesDiskBackingStoreSourceTimeoutArgs = module_index.DomainDevicesDiskBackingStoreSourceTimeout.new;
+  final DomainDevicesDiskBackingStoreSourceVhostUser = module_index.DomainDevicesDiskBackingStoreSourceVhostUser.new;
+  final DomainDevicesDiskBackingStoreSourceVhostUserArgs = module_index.DomainDevicesDiskBackingStoreSourceVhostUser.new;
+  final DomainDevicesDiskBackingStoreSourceVhostUserDbus = module_index.DomainDevicesDiskBackingStoreSourceVhostUserDbus.new;
+  final DomainDevicesDiskBackingStoreSourceVhostUserDbusArgs = module_index.DomainDevicesDiskBackingStoreSourceVhostUserDbus.new;
+  final DomainDevicesDiskBackingStoreSourceVhostUserDev = module_index.DomainDevicesDiskBackingStoreSourceVhostUserDev.new;
+  final DomainDevicesDiskBackingStoreSourceVhostUserDevArgs = module_index.DomainDevicesDiskBackingStoreSourceVhostUserDev.new;
+  final DomainDevicesDiskBackingStoreSourceVhostUserDevSecLabel = module_index.DomainDevicesDiskBackingStoreSourceVhostUserDevSecLabel.new;
+  final DomainDevicesDiskBackingStoreSourceVhostUserDevSecLabelArgs = module_index.DomainDevicesDiskBackingStoreSourceVhostUserDevSecLabel.new;
+  final DomainDevicesDiskBackingStoreSourceVhostUserFile = module_index.DomainDevicesDiskBackingStoreSourceVhostUserFile.new;
+  final DomainDevicesDiskBackingStoreSourceVhostUserFileArgs = module_index.DomainDevicesDiskBackingStoreSourceVhostUserFile.new;
+  final DomainDevicesDiskBackingStoreSourceVhostUserFileSecLabel = module_index.DomainDevicesDiskBackingStoreSourceVhostUserFileSecLabel.new;
+  final DomainDevicesDiskBackingStoreSourceVhostUserFileSecLabelArgs = module_index.DomainDevicesDiskBackingStoreSourceVhostUserFileSecLabel.new;
+  final DomainDevicesDiskBackingStoreSourceVhostUserNmdm = module_index.DomainDevicesDiskBackingStoreSourceVhostUserNmdm.new;
+  final DomainDevicesDiskBackingStoreSourceVhostUserNmdmArgs = module_index.DomainDevicesDiskBackingStoreSourceVhostUserNmdm.new;
+  final DomainDevicesDiskBackingStoreSourceVhostUserPipe = module_index.DomainDevicesDiskBackingStoreSourceVhostUserPipe.new;
+  final DomainDevicesDiskBackingStoreSourceVhostUserPipeArgs = module_index.DomainDevicesDiskBackingStoreSourceVhostUserPipe.new;
+  final DomainDevicesDiskBackingStoreSourceVhostUserPipeSecLabel = module_index.DomainDevicesDiskBackingStoreSourceVhostUserPipeSecLabel.new;
+  final DomainDevicesDiskBackingStoreSourceVhostUserPipeSecLabelArgs = module_index.DomainDevicesDiskBackingStoreSourceVhostUserPipeSecLabel.new;
+  final DomainDevicesDiskBackingStoreSourceVhostUserPty = module_index.DomainDevicesDiskBackingStoreSourceVhostUserPty.new;
+  final DomainDevicesDiskBackingStoreSourceVhostUserPtyArgs = module_index.DomainDevicesDiskBackingStoreSourceVhostUserPty.new;
+  final DomainDevicesDiskBackingStoreSourceVhostUserPtySecLabel = module_index.DomainDevicesDiskBackingStoreSourceVhostUserPtySecLabel.new;
+  final DomainDevicesDiskBackingStoreSourceVhostUserPtySecLabelArgs = module_index.DomainDevicesDiskBackingStoreSourceVhostUserPtySecLabel.new;
+  final DomainDevicesDiskBackingStoreSourceVhostUserQemuvdAgent = module_index.DomainDevicesDiskBackingStoreSourceVhostUserQemuvdAgent.new;
+  final DomainDevicesDiskBackingStoreSourceVhostUserQemuvdAgentArgs = module_index.DomainDevicesDiskBackingStoreSourceVhostUserQemuvdAgent.new;
+  final DomainDevicesDiskBackingStoreSourceVhostUserQemuvdAgentClipBoard = module_index.DomainDevicesDiskBackingStoreSourceVhostUserQemuvdAgentClipBoard.new;
+  final DomainDevicesDiskBackingStoreSourceVhostUserQemuvdAgentClipBoardArgs = module_index.DomainDevicesDiskBackingStoreSourceVhostUserQemuvdAgentClipBoard.new;
+  final DomainDevicesDiskBackingStoreSourceVhostUserQemuvdAgentMouse = module_index.DomainDevicesDiskBackingStoreSourceVhostUserQemuvdAgentMouse.new;
+  final DomainDevicesDiskBackingStoreSourceVhostUserQemuvdAgentMouseArgs = module_index.DomainDevicesDiskBackingStoreSourceVhostUserQemuvdAgentMouse.new;
+  final DomainDevicesDiskBackingStoreSourceVhostUserSpicePort = module_index.DomainDevicesDiskBackingStoreSourceVhostUserSpicePort.new;
+  final DomainDevicesDiskBackingStoreSourceVhostUserSpicePortArgs = module_index.DomainDevicesDiskBackingStoreSourceVhostUserSpicePort.new;
+  final DomainDevicesDiskBackingStoreSourceVhostUserTcp = module_index.DomainDevicesDiskBackingStoreSourceVhostUserTcp.new;
+  final DomainDevicesDiskBackingStoreSourceVhostUserTcpArgs = module_index.DomainDevicesDiskBackingStoreSourceVhostUserTcp.new;
+  final DomainDevicesDiskBackingStoreSourceVhostUserTcpReconnect = module_index.DomainDevicesDiskBackingStoreSourceVhostUserTcpReconnect.new;
+  final DomainDevicesDiskBackingStoreSourceVhostUserTcpReconnectArgs = module_index.DomainDevicesDiskBackingStoreSourceVhostUserTcpReconnect.new;
+  final DomainDevicesDiskBackingStoreSourceVhostUserUdp = module_index.DomainDevicesDiskBackingStoreSourceVhostUserUdp.new;
+  final DomainDevicesDiskBackingStoreSourceVhostUserUdpArgs = module_index.DomainDevicesDiskBackingStoreSourceVhostUserUdp.new;
+  final DomainDevicesDiskBackingStoreSourceVhostUserUnix = module_index.DomainDevicesDiskBackingStoreSourceVhostUserUnix.new;
+  final DomainDevicesDiskBackingStoreSourceVhostUserUnixArgs = module_index.DomainDevicesDiskBackingStoreSourceVhostUserUnix.new;
+  final DomainDevicesDiskBackingStoreSourceVhostUserUnixReconnect = module_index.DomainDevicesDiskBackingStoreSourceVhostUserUnixReconnect.new;
+  final DomainDevicesDiskBackingStoreSourceVhostUserUnixReconnectArgs = module_index.DomainDevicesDiskBackingStoreSourceVhostUserUnixReconnect.new;
+  final DomainDevicesDiskBackingStoreSourceVhostUserUnixSecLabel = module_index.DomainDevicesDiskBackingStoreSourceVhostUserUnixSecLabel.new;
+  final DomainDevicesDiskBackingStoreSourceVhostUserUnixSecLabelArgs = module_index.DomainDevicesDiskBackingStoreSourceVhostUserUnixSecLabel.new;
+  final DomainDevicesDiskBackingStoreSourceVhostVdpa = module_index.DomainDevicesDiskBackingStoreSourceVhostVdpa.new;
+  final DomainDevicesDiskBackingStoreSourceVhostVdpaArgs = module_index.DomainDevicesDiskBackingStoreSourceVhostVdpa.new;
+  final DomainDevicesDiskBackingStoreSourceVolume = module_index.DomainDevicesDiskBackingStoreSourceVolume.new;
+  final DomainDevicesDiskBackingStoreSourceVolumeArgs = module_index.DomainDevicesDiskBackingStoreSourceVolume.new;
+  final DomainDevicesDiskBackingStoreSourceVolumeSecLabel = module_index.DomainDevicesDiskBackingStoreSourceVolumeSecLabel.new;
+  final DomainDevicesDiskBackingStoreSourceVolumeSecLabelArgs = module_index.DomainDevicesDiskBackingStoreSourceVolumeSecLabel.new;
   final DomainDevicesDiskBlockIo = module_index.DomainDevicesDiskBlockIo.new;
-  final DomainDevicesDiskBlockIoArgs =
-      module_index.DomainDevicesDiskBlockIo.new;
+  final DomainDevicesDiskBlockIoArgs = module_index.DomainDevicesDiskBlockIo.new;
   final DomainDevicesDiskBoot = module_index.DomainDevicesDiskBoot.new;
   final DomainDevicesDiskBootArgs = module_index.DomainDevicesDiskBoot.new;
   final DomainDevicesDiskDriver = module_index.DomainDevicesDiskDriver.new;
   final DomainDevicesDiskDriverArgs = module_index.DomainDevicesDiskDriver.new;
-  final DomainDevicesDiskDriverIoThreads =
-      module_index.DomainDevicesDiskDriverIoThreads.new;
-  final DomainDevicesDiskDriverIoThreadsArgs =
-      module_index.DomainDevicesDiskDriverIoThreads.new;
-  final DomainDevicesDiskDriverIoThreadsIoThread =
-      module_index.DomainDevicesDiskDriverIoThreadsIoThread.new;
-  final DomainDevicesDiskDriverIoThreadsIoThreadArgs =
-      module_index.DomainDevicesDiskDriverIoThreadsIoThread.new;
-  final DomainDevicesDiskDriverIoThreadsIoThreadQueue =
-      module_index.DomainDevicesDiskDriverIoThreadsIoThreadQueue.new;
-  final DomainDevicesDiskDriverIoThreadsIoThreadQueueArgs =
-      module_index.DomainDevicesDiskDriverIoThreadsIoThreadQueue.new;
-  final DomainDevicesDiskDriverMetadataCache =
-      module_index.DomainDevicesDiskDriverMetadataCache.new;
-  final DomainDevicesDiskDriverMetadataCacheArgs =
-      module_index.DomainDevicesDiskDriverMetadataCache.new;
-  final DomainDevicesDiskDriverMetadataCacheMaxSize =
-      module_index.DomainDevicesDiskDriverMetadataCacheMaxSize.new;
-  final DomainDevicesDiskDriverMetadataCacheMaxSizeArgs =
-      module_index.DomainDevicesDiskDriverMetadataCacheMaxSize.new;
-  final DomainDevicesDiskEncryption =
-      module_index.DomainDevicesDiskEncryption.new;
-  final DomainDevicesDiskEncryptionArgs =
-      module_index.DomainDevicesDiskEncryption.new;
-  final DomainDevicesDiskEncryptionSecret =
-      module_index.DomainDevicesDiskEncryptionSecret.new;
-  final DomainDevicesDiskEncryptionSecretArgs =
-      module_index.DomainDevicesDiskEncryptionSecret.new;
+  final DomainDevicesDiskDriverIoThreads = module_index.DomainDevicesDiskDriverIoThreads.new;
+  final DomainDevicesDiskDriverIoThreadsArgs = module_index.DomainDevicesDiskDriverIoThreads.new;
+  final DomainDevicesDiskDriverIoThreadsIoThread = module_index.DomainDevicesDiskDriverIoThreadsIoThread.new;
+  final DomainDevicesDiskDriverIoThreadsIoThreadArgs = module_index.DomainDevicesDiskDriverIoThreadsIoThread.new;
+  final DomainDevicesDiskDriverIoThreadsIoThreadQueue = module_index.DomainDevicesDiskDriverIoThreadsIoThreadQueue.new;
+  final DomainDevicesDiskDriverIoThreadsIoThreadQueueArgs = module_index.DomainDevicesDiskDriverIoThreadsIoThreadQueue.new;
+  final DomainDevicesDiskDriverMetadataCache = module_index.DomainDevicesDiskDriverMetadataCache.new;
+  final DomainDevicesDiskDriverMetadataCacheArgs = module_index.DomainDevicesDiskDriverMetadataCache.new;
+  final DomainDevicesDiskDriverMetadataCacheMaxSize = module_index.DomainDevicesDiskDriverMetadataCacheMaxSize.new;
+  final DomainDevicesDiskDriverMetadataCacheMaxSizeArgs = module_index.DomainDevicesDiskDriverMetadataCacheMaxSize.new;
+  final DomainDevicesDiskEncryption = module_index.DomainDevicesDiskEncryption.new;
+  final DomainDevicesDiskEncryptionArgs = module_index.DomainDevicesDiskEncryption.new;
+  final DomainDevicesDiskEncryptionSecret = module_index.DomainDevicesDiskEncryptionSecret.new;
+  final DomainDevicesDiskEncryptionSecretArgs = module_index.DomainDevicesDiskEncryptionSecret.new;
   final DomainDevicesDiskGeometry = module_index.DomainDevicesDiskGeometry.new;
-  final DomainDevicesDiskGeometryArgs =
-      module_index.DomainDevicesDiskGeometry.new;
+  final DomainDevicesDiskGeometryArgs = module_index.DomainDevicesDiskGeometry.new;
   final DomainDevicesDiskIoTune = module_index.DomainDevicesDiskIoTune.new;
   final DomainDevicesDiskIoTuneArgs = module_index.DomainDevicesDiskIoTune.new;
   final DomainDevicesDiskMirror = module_index.DomainDevicesDiskMirror.new;
   final DomainDevicesDiskMirrorArgs = module_index.DomainDevicesDiskMirror.new;
-  final DomainDevicesDiskMirrorBackingStore =
-      module_index.DomainDevicesDiskMirrorBackingStore.new;
-  final DomainDevicesDiskMirrorBackingStoreArgs =
-      module_index.DomainDevicesDiskMirrorBackingStore.new;
-  final DomainDevicesDiskMirrorBackingStoreFormat =
-      module_index.DomainDevicesDiskMirrorBackingStoreFormat.new;
-  final DomainDevicesDiskMirrorBackingStoreFormatArgs =
-      module_index.DomainDevicesDiskMirrorBackingStoreFormat.new;
-  final DomainDevicesDiskMirrorBackingStoreFormatMetadataCache =
-      module_index.DomainDevicesDiskMirrorBackingStoreFormatMetadataCache.new;
-  final DomainDevicesDiskMirrorBackingStoreFormatMetadataCacheArgs =
-      module_index.DomainDevicesDiskMirrorBackingStoreFormatMetadataCache.new;
-  final DomainDevicesDiskMirrorBackingStoreFormatMetadataCacheMaxSize =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreFormatMetadataCacheMaxSize
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreFormatMetadataCacheMaxSizeArgs =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreFormatMetadataCacheMaxSize
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSource =
-      module_index.DomainDevicesDiskMirrorBackingStoreSource.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceArgs =
-      module_index.DomainDevicesDiskMirrorBackingStoreSource.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceBlock =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceBlock.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceBlockArgs =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceBlock.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceBlockSecLabel =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceBlockSecLabel.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceBlockSecLabelArgs =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceBlockSecLabel.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceCookies =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceCookies.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceCookiesArgs =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceCookies.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceCookiesCookie =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceCookiesCookie.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceCookiesCookieArgs =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceCookiesCookie.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceDataStore =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceDataStore.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceDataStoreArgs =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceDataStore.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceDataStoreFormat =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceDataStoreFormat.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceDataStoreFormatArgs =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceDataStoreFormat.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceDataStoreFormatMetadataCache =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceDataStoreFormatMetadataCache
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceDataStoreFormatMetadataCacheArgs =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceDataStoreFormatMetadataCache
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceDataStoreFormatMetadataCacheMaxSize =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceDataStoreFormatMetadataCacheMaxSize
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceDataStoreFormatMetadataCacheMaxSizeArgs =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceDataStoreFormatMetadataCacheMaxSize
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceDir =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceDir.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceDirArgs =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceDir.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceEncryption =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceEncryption.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceEncryptionArgs =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceEncryption.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceEncryptionSecret = module_index
-      .DomainDevicesDiskMirrorBackingStoreSourceEncryptionSecret
-      .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceEncryptionSecretArgs =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceEncryptionSecret
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceFile =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceFile.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceFileArgs =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceFile.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceFileSecLabel =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceFileSecLabel.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceFileSecLabelArgs =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceFileSecLabel.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceNetwork =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceNetwork.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceNetworkArgs =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceNetwork.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceNetworkAuth =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceNetworkAuth.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceNetworkAuthArgs =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceNetworkAuth.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceNetworkAuthSecret =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceNetworkAuthSecret
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceNetworkAuthSecretArgs =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceNetworkAuthSecret
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceNetworkConfig =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceNetworkConfig.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceNetworkConfigArgs =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceNetworkConfig.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceNetworkHost =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceNetworkHost.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceNetworkHostArgs =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceNetworkHost.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceNetworkIdentity =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceNetworkIdentity.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceNetworkIdentityArgs =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceNetworkIdentity.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceNetworkInitiator = module_index
-      .DomainDevicesDiskMirrorBackingStoreSourceNetworkInitiator
-      .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceNetworkInitiatorArgs =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceNetworkInitiator
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceNetworkInitiatorIqn =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceNetworkInitiatorIqn
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceNetworkInitiatorIqnArgs =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceNetworkInitiatorIqn
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceNetworkKnownHosts =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceNetworkKnownHosts
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceNetworkKnownHostsArgs =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceNetworkKnownHosts
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceNetworkReconnect = module_index
-      .DomainDevicesDiskMirrorBackingStoreSourceNetworkReconnect
-      .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceNetworkReconnectArgs =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceNetworkReconnect
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceNetworkSnapshot =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceNetworkSnapshot.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceNetworkSnapshotArgs =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceNetworkSnapshot.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceReadahead =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceReadahead.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceReadaheadArgs =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceReadahead.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceReservations =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceReservations.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceReservationsArgs =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceReservations.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSource =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceReservationsSource
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceArgs =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceReservationsSource
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceDbus =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceDbus
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceDbusArgs =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceDbus
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceDev =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceDev
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceDevArgs =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceDev
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceDevSecLabel =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceDevSecLabel
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceDevSecLabelArgs =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceDevSecLabel
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceFile =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceFile
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceFileArgs =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceFile
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceFileSecLabel =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceFileSecLabel
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceFileSecLabelArgs =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceFileSecLabel
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceNmdm =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceNmdm
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceNmdmArgs =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceNmdm
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePipe =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePipe
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePipeArgs =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePipe
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePipeSecLabel =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePipeSecLabel
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePipeSecLabelArgs =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePipeSecLabel
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePty =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePty
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePtyArgs =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePty
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePtySecLabel =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePtySecLabel
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePtySecLabelArgs =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePtySecLabel
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceQemuvdAgent =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceQemuvdAgent
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceQemuvdAgentArgs =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceQemuvdAgent
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceQemuvdAgentClipBoard =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceQemuvdAgentClipBoard
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceQemuvdAgentClipBoardArgs =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceQemuvdAgentClipBoard
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceQemuvdAgentMouse =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceQemuvdAgentMouse
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceQemuvdAgentMouseArgs =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceQemuvdAgentMouse
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceSpicePort =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceSpicePort
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceSpicePortArgs =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceSpicePort
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceTcp =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceTcp
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceTcpArgs =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceTcp
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceTcpReconnect =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceTcpReconnect
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceTcpReconnectArgs =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceTcpReconnect
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceUdp =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceUdp
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceUdpArgs =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceUdp
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceUnix =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceUnix
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceUnixArgs =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceUnix
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceUnixReconnect =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceUnixReconnect
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceUnixReconnectArgs =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceUnixReconnect
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceUnixSecLabel =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceUnixSecLabel
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceUnixSecLabelArgs =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceUnixSecLabel
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceSlices =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceSlices.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceSlicesArgs =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceSlices.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceSlicesSlice =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceSlicesSlice.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceSlicesSliceArgs =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceSlicesSlice.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceSsl =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceSsl.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceSslArgs =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceSsl.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceTimeout =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceTimeout.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceTimeoutArgs =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceTimeout.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceVhostUser =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUser.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserArgs =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUser.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserDbus =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserDbus.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserDbusArgs =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserDbus.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserDev =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserDev.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserDevArgs =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserDev.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserDevSecLabel =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceVhostUserDevSecLabel
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserDevSecLabelArgs =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceVhostUserDevSecLabel
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserFile =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserFile.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserFileArgs =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserFile.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserFileSecLabel =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceVhostUserFileSecLabel
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserFileSecLabelArgs =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceVhostUserFileSecLabel
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserNmdm =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserNmdm.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserNmdmArgs =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserNmdm.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserPipe =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserPipe.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserPipeArgs =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserPipe.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserPipeSecLabel =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceVhostUserPipeSecLabel
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserPipeSecLabelArgs =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceVhostUserPipeSecLabel
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserPty =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserPty.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserPtyArgs =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserPty.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserPtySecLabel =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceVhostUserPtySecLabel
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserPtySecLabelArgs =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceVhostUserPtySecLabel
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserQemuvdAgent =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceVhostUserQemuvdAgent
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserQemuvdAgentArgs =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceVhostUserQemuvdAgent
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserQemuvdAgentClipBoard =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceVhostUserQemuvdAgentClipBoard
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserQemuvdAgentClipBoardArgs =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceVhostUserQemuvdAgentClipBoard
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserQemuvdAgentMouse =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceVhostUserQemuvdAgentMouse
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserQemuvdAgentMouseArgs =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceVhostUserQemuvdAgentMouse
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserSpicePort =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceVhostUserSpicePort
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserSpicePortArgs =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceVhostUserSpicePort
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserTcp =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserTcp.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserTcpArgs =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserTcp.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserTcpReconnect =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceVhostUserTcpReconnect
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserTcpReconnectArgs =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceVhostUserTcpReconnect
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserUdp =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserUdp.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserUdpArgs =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserUdp.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserUnix =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserUnix.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserUnixArgs =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserUnix.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserUnixReconnect =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceVhostUserUnixReconnect
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserUnixReconnectArgs =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceVhostUserUnixReconnect
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserUnixSecLabel =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceVhostUserUnixSecLabel
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserUnixSecLabelArgs =
-      module_index
-          .DomainDevicesDiskMirrorBackingStoreSourceVhostUserUnixSecLabel
-          .new;
-  final DomainDevicesDiskMirrorBackingStoreSourceVhostVdpa =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostVdpa.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceVhostVdpaArgs =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostVdpa.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceVolume =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceVolume.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceVolumeArgs =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceVolume.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceVolumeSecLabel =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceVolumeSecLabel.new;
-  final DomainDevicesDiskMirrorBackingStoreSourceVolumeSecLabelArgs =
-      module_index.DomainDevicesDiskMirrorBackingStoreSourceVolumeSecLabel.new;
-  final DomainDevicesDiskMirrorFormat =
-      module_index.DomainDevicesDiskMirrorFormat.new;
-  final DomainDevicesDiskMirrorFormatArgs =
-      module_index.DomainDevicesDiskMirrorFormat.new;
-  final DomainDevicesDiskMirrorFormatMetadataCache =
-      module_index.DomainDevicesDiskMirrorFormatMetadataCache.new;
-  final DomainDevicesDiskMirrorFormatMetadataCacheArgs =
-      module_index.DomainDevicesDiskMirrorFormatMetadataCache.new;
-  final DomainDevicesDiskMirrorFormatMetadataCacheMaxSize =
-      module_index.DomainDevicesDiskMirrorFormatMetadataCacheMaxSize.new;
-  final DomainDevicesDiskMirrorFormatMetadataCacheMaxSizeArgs =
-      module_index.DomainDevicesDiskMirrorFormatMetadataCacheMaxSize.new;
-  final DomainDevicesDiskMirrorSource =
-      module_index.DomainDevicesDiskMirrorSource.new;
-  final DomainDevicesDiskMirrorSourceArgs =
-      module_index.DomainDevicesDiskMirrorSource.new;
-  final DomainDevicesDiskMirrorSourceBlock =
-      module_index.DomainDevicesDiskMirrorSourceBlock.new;
-  final DomainDevicesDiskMirrorSourceBlockArgs =
-      module_index.DomainDevicesDiskMirrorSourceBlock.new;
-  final DomainDevicesDiskMirrorSourceBlockSecLabel =
-      module_index.DomainDevicesDiskMirrorSourceBlockSecLabel.new;
-  final DomainDevicesDiskMirrorSourceBlockSecLabelArgs =
-      module_index.DomainDevicesDiskMirrorSourceBlockSecLabel.new;
-  final DomainDevicesDiskMirrorSourceCookies =
-      module_index.DomainDevicesDiskMirrorSourceCookies.new;
-  final DomainDevicesDiskMirrorSourceCookiesArgs =
-      module_index.DomainDevicesDiskMirrorSourceCookies.new;
-  final DomainDevicesDiskMirrorSourceCookiesCookie =
-      module_index.DomainDevicesDiskMirrorSourceCookiesCookie.new;
-  final DomainDevicesDiskMirrorSourceCookiesCookieArgs =
-      module_index.DomainDevicesDiskMirrorSourceCookiesCookie.new;
-  final DomainDevicesDiskMirrorSourceDataStore =
-      module_index.DomainDevicesDiskMirrorSourceDataStore.new;
-  final DomainDevicesDiskMirrorSourceDataStoreArgs =
-      module_index.DomainDevicesDiskMirrorSourceDataStore.new;
-  final DomainDevicesDiskMirrorSourceDataStoreFormat =
-      module_index.DomainDevicesDiskMirrorSourceDataStoreFormat.new;
-  final DomainDevicesDiskMirrorSourceDataStoreFormatArgs =
-      module_index.DomainDevicesDiskMirrorSourceDataStoreFormat.new;
-  final DomainDevicesDiskMirrorSourceDataStoreFormatMetadataCache = module_index
-      .DomainDevicesDiskMirrorSourceDataStoreFormatMetadataCache
-      .new;
-  final DomainDevicesDiskMirrorSourceDataStoreFormatMetadataCacheArgs =
-      module_index
-          .DomainDevicesDiskMirrorSourceDataStoreFormatMetadataCache
-          .new;
-  final DomainDevicesDiskMirrorSourceDataStoreFormatMetadataCacheMaxSize =
-      module_index
-          .DomainDevicesDiskMirrorSourceDataStoreFormatMetadataCacheMaxSize
-          .new;
-  final DomainDevicesDiskMirrorSourceDataStoreFormatMetadataCacheMaxSizeArgs =
-      module_index
-          .DomainDevicesDiskMirrorSourceDataStoreFormatMetadataCacheMaxSize
-          .new;
-  final DomainDevicesDiskMirrorSourceDir =
-      module_index.DomainDevicesDiskMirrorSourceDir.new;
-  final DomainDevicesDiskMirrorSourceDirArgs =
-      module_index.DomainDevicesDiskMirrorSourceDir.new;
-  final DomainDevicesDiskMirrorSourceEncryption =
-      module_index.DomainDevicesDiskMirrorSourceEncryption.new;
-  final DomainDevicesDiskMirrorSourceEncryptionArgs =
-      module_index.DomainDevicesDiskMirrorSourceEncryption.new;
-  final DomainDevicesDiskMirrorSourceEncryptionSecret =
-      module_index.DomainDevicesDiskMirrorSourceEncryptionSecret.new;
-  final DomainDevicesDiskMirrorSourceEncryptionSecretArgs =
-      module_index.DomainDevicesDiskMirrorSourceEncryptionSecret.new;
-  final DomainDevicesDiskMirrorSourceFile =
-      module_index.DomainDevicesDiskMirrorSourceFile.new;
-  final DomainDevicesDiskMirrorSourceFileArgs =
-      module_index.DomainDevicesDiskMirrorSourceFile.new;
-  final DomainDevicesDiskMirrorSourceFileSecLabel =
-      module_index.DomainDevicesDiskMirrorSourceFileSecLabel.new;
-  final DomainDevicesDiskMirrorSourceFileSecLabelArgs =
-      module_index.DomainDevicesDiskMirrorSourceFileSecLabel.new;
-  final DomainDevicesDiskMirrorSourceNetwork =
-      module_index.DomainDevicesDiskMirrorSourceNetwork.new;
-  final DomainDevicesDiskMirrorSourceNetworkArgs =
-      module_index.DomainDevicesDiskMirrorSourceNetwork.new;
-  final DomainDevicesDiskMirrorSourceNetworkAuth =
-      module_index.DomainDevicesDiskMirrorSourceNetworkAuth.new;
-  final DomainDevicesDiskMirrorSourceNetworkAuthArgs =
-      module_index.DomainDevicesDiskMirrorSourceNetworkAuth.new;
-  final DomainDevicesDiskMirrorSourceNetworkAuthSecret =
-      module_index.DomainDevicesDiskMirrorSourceNetworkAuthSecret.new;
-  final DomainDevicesDiskMirrorSourceNetworkAuthSecretArgs =
-      module_index.DomainDevicesDiskMirrorSourceNetworkAuthSecret.new;
-  final DomainDevicesDiskMirrorSourceNetworkConfig =
-      module_index.DomainDevicesDiskMirrorSourceNetworkConfig.new;
-  final DomainDevicesDiskMirrorSourceNetworkConfigArgs =
-      module_index.DomainDevicesDiskMirrorSourceNetworkConfig.new;
-  final DomainDevicesDiskMirrorSourceNetworkHost =
-      module_index.DomainDevicesDiskMirrorSourceNetworkHost.new;
-  final DomainDevicesDiskMirrorSourceNetworkHostArgs =
-      module_index.DomainDevicesDiskMirrorSourceNetworkHost.new;
-  final DomainDevicesDiskMirrorSourceNetworkIdentity =
-      module_index.DomainDevicesDiskMirrorSourceNetworkIdentity.new;
-  final DomainDevicesDiskMirrorSourceNetworkIdentityArgs =
-      module_index.DomainDevicesDiskMirrorSourceNetworkIdentity.new;
-  final DomainDevicesDiskMirrorSourceNetworkInitiator =
-      module_index.DomainDevicesDiskMirrorSourceNetworkInitiator.new;
-  final DomainDevicesDiskMirrorSourceNetworkInitiatorArgs =
-      module_index.DomainDevicesDiskMirrorSourceNetworkInitiator.new;
-  final DomainDevicesDiskMirrorSourceNetworkInitiatorIqn =
-      module_index.DomainDevicesDiskMirrorSourceNetworkInitiatorIqn.new;
-  final DomainDevicesDiskMirrorSourceNetworkInitiatorIqnArgs =
-      module_index.DomainDevicesDiskMirrorSourceNetworkInitiatorIqn.new;
-  final DomainDevicesDiskMirrorSourceNetworkKnownHosts =
-      module_index.DomainDevicesDiskMirrorSourceNetworkKnownHosts.new;
-  final DomainDevicesDiskMirrorSourceNetworkKnownHostsArgs =
-      module_index.DomainDevicesDiskMirrorSourceNetworkKnownHosts.new;
-  final DomainDevicesDiskMirrorSourceNetworkReconnect =
-      module_index.DomainDevicesDiskMirrorSourceNetworkReconnect.new;
-  final DomainDevicesDiskMirrorSourceNetworkReconnectArgs =
-      module_index.DomainDevicesDiskMirrorSourceNetworkReconnect.new;
-  final DomainDevicesDiskMirrorSourceNetworkSnapshot =
-      module_index.DomainDevicesDiskMirrorSourceNetworkSnapshot.new;
-  final DomainDevicesDiskMirrorSourceNetworkSnapshotArgs =
-      module_index.DomainDevicesDiskMirrorSourceNetworkSnapshot.new;
-  final DomainDevicesDiskMirrorSourceReadahead =
-      module_index.DomainDevicesDiskMirrorSourceReadahead.new;
-  final DomainDevicesDiskMirrorSourceReadaheadArgs =
-      module_index.DomainDevicesDiskMirrorSourceReadahead.new;
-  final DomainDevicesDiskMirrorSourceReservations =
-      module_index.DomainDevicesDiskMirrorSourceReservations.new;
-  final DomainDevicesDiskMirrorSourceReservationsArgs =
-      module_index.DomainDevicesDiskMirrorSourceReservations.new;
-  final DomainDevicesDiskMirrorSourceReservationsSource =
-      module_index.DomainDevicesDiskMirrorSourceReservationsSource.new;
-  final DomainDevicesDiskMirrorSourceReservationsSourceArgs =
-      module_index.DomainDevicesDiskMirrorSourceReservationsSource.new;
-  final DomainDevicesDiskMirrorSourceReservationsSourceDbus =
-      module_index.DomainDevicesDiskMirrorSourceReservationsSourceDbus.new;
-  final DomainDevicesDiskMirrorSourceReservationsSourceDbusArgs =
-      module_index.DomainDevicesDiskMirrorSourceReservationsSourceDbus.new;
-  final DomainDevicesDiskMirrorSourceReservationsSourceDev =
-      module_index.DomainDevicesDiskMirrorSourceReservationsSourceDev.new;
-  final DomainDevicesDiskMirrorSourceReservationsSourceDevArgs =
-      module_index.DomainDevicesDiskMirrorSourceReservationsSourceDev.new;
-  final DomainDevicesDiskMirrorSourceReservationsSourceDevSecLabel =
-      module_index
-          .DomainDevicesDiskMirrorSourceReservationsSourceDevSecLabel
-          .new;
-  final DomainDevicesDiskMirrorSourceReservationsSourceDevSecLabelArgs =
-      module_index
-          .DomainDevicesDiskMirrorSourceReservationsSourceDevSecLabel
-          .new;
-  final DomainDevicesDiskMirrorSourceReservationsSourceFile =
-      module_index.DomainDevicesDiskMirrorSourceReservationsSourceFile.new;
-  final DomainDevicesDiskMirrorSourceReservationsSourceFileArgs =
-      module_index.DomainDevicesDiskMirrorSourceReservationsSourceFile.new;
-  final DomainDevicesDiskMirrorSourceReservationsSourceFileSecLabel =
-      module_index
-          .DomainDevicesDiskMirrorSourceReservationsSourceFileSecLabel
-          .new;
-  final DomainDevicesDiskMirrorSourceReservationsSourceFileSecLabelArgs =
-      module_index
-          .DomainDevicesDiskMirrorSourceReservationsSourceFileSecLabel
-          .new;
-  final DomainDevicesDiskMirrorSourceReservationsSourceNmdm =
-      module_index.DomainDevicesDiskMirrorSourceReservationsSourceNmdm.new;
-  final DomainDevicesDiskMirrorSourceReservationsSourceNmdmArgs =
-      module_index.DomainDevicesDiskMirrorSourceReservationsSourceNmdm.new;
-  final DomainDevicesDiskMirrorSourceReservationsSourcePipe =
-      module_index.DomainDevicesDiskMirrorSourceReservationsSourcePipe.new;
-  final DomainDevicesDiskMirrorSourceReservationsSourcePipeArgs =
-      module_index.DomainDevicesDiskMirrorSourceReservationsSourcePipe.new;
-  final DomainDevicesDiskMirrorSourceReservationsSourcePipeSecLabel =
-      module_index
-          .DomainDevicesDiskMirrorSourceReservationsSourcePipeSecLabel
-          .new;
-  final DomainDevicesDiskMirrorSourceReservationsSourcePipeSecLabelArgs =
-      module_index
-          .DomainDevicesDiskMirrorSourceReservationsSourcePipeSecLabel
-          .new;
-  final DomainDevicesDiskMirrorSourceReservationsSourcePty =
-      module_index.DomainDevicesDiskMirrorSourceReservationsSourcePty.new;
-  final DomainDevicesDiskMirrorSourceReservationsSourcePtyArgs =
-      module_index.DomainDevicesDiskMirrorSourceReservationsSourcePty.new;
-  final DomainDevicesDiskMirrorSourceReservationsSourcePtySecLabel =
-      module_index
-          .DomainDevicesDiskMirrorSourceReservationsSourcePtySecLabel
-          .new;
-  final DomainDevicesDiskMirrorSourceReservationsSourcePtySecLabelArgs =
-      module_index
-          .DomainDevicesDiskMirrorSourceReservationsSourcePtySecLabel
-          .new;
-  final DomainDevicesDiskMirrorSourceReservationsSourceQemuvdAgent =
-      module_index
-          .DomainDevicesDiskMirrorSourceReservationsSourceQemuvdAgent
-          .new;
-  final DomainDevicesDiskMirrorSourceReservationsSourceQemuvdAgentArgs =
-      module_index
-          .DomainDevicesDiskMirrorSourceReservationsSourceQemuvdAgent
-          .new;
-  final DomainDevicesDiskMirrorSourceReservationsSourceQemuvdAgentClipBoard =
-      module_index
-          .DomainDevicesDiskMirrorSourceReservationsSourceQemuvdAgentClipBoard
-          .new;
-  final DomainDevicesDiskMirrorSourceReservationsSourceQemuvdAgentClipBoardArgs =
-      module_index
-          .DomainDevicesDiskMirrorSourceReservationsSourceQemuvdAgentClipBoard
-          .new;
-  final DomainDevicesDiskMirrorSourceReservationsSourceQemuvdAgentMouse =
-      module_index
-          .DomainDevicesDiskMirrorSourceReservationsSourceQemuvdAgentMouse
-          .new;
-  final DomainDevicesDiskMirrorSourceReservationsSourceQemuvdAgentMouseArgs =
-      module_index
-          .DomainDevicesDiskMirrorSourceReservationsSourceQemuvdAgentMouse
-          .new;
-  final DomainDevicesDiskMirrorSourceReservationsSourceSpicePort =
-      module_index.DomainDevicesDiskMirrorSourceReservationsSourceSpicePort.new;
-  final DomainDevicesDiskMirrorSourceReservationsSourceSpicePortArgs =
-      module_index.DomainDevicesDiskMirrorSourceReservationsSourceSpicePort.new;
-  final DomainDevicesDiskMirrorSourceReservationsSourceTcp =
-      module_index.DomainDevicesDiskMirrorSourceReservationsSourceTcp.new;
-  final DomainDevicesDiskMirrorSourceReservationsSourceTcpArgs =
-      module_index.DomainDevicesDiskMirrorSourceReservationsSourceTcp.new;
-  final DomainDevicesDiskMirrorSourceReservationsSourceTcpReconnect =
-      module_index
-          .DomainDevicesDiskMirrorSourceReservationsSourceTcpReconnect
-          .new;
-  final DomainDevicesDiskMirrorSourceReservationsSourceTcpReconnectArgs =
-      module_index
-          .DomainDevicesDiskMirrorSourceReservationsSourceTcpReconnect
-          .new;
-  final DomainDevicesDiskMirrorSourceReservationsSourceUdp =
-      module_index.DomainDevicesDiskMirrorSourceReservationsSourceUdp.new;
-  final DomainDevicesDiskMirrorSourceReservationsSourceUdpArgs =
-      module_index.DomainDevicesDiskMirrorSourceReservationsSourceUdp.new;
-  final DomainDevicesDiskMirrorSourceReservationsSourceUnix =
-      module_index.DomainDevicesDiskMirrorSourceReservationsSourceUnix.new;
-  final DomainDevicesDiskMirrorSourceReservationsSourceUnixArgs =
-      module_index.DomainDevicesDiskMirrorSourceReservationsSourceUnix.new;
-  final DomainDevicesDiskMirrorSourceReservationsSourceUnixReconnect =
-      module_index
-          .DomainDevicesDiskMirrorSourceReservationsSourceUnixReconnect
-          .new;
-  final DomainDevicesDiskMirrorSourceReservationsSourceUnixReconnectArgs =
-      module_index
-          .DomainDevicesDiskMirrorSourceReservationsSourceUnixReconnect
-          .new;
-  final DomainDevicesDiskMirrorSourceReservationsSourceUnixSecLabel =
-      module_index
-          .DomainDevicesDiskMirrorSourceReservationsSourceUnixSecLabel
-          .new;
-  final DomainDevicesDiskMirrorSourceReservationsSourceUnixSecLabelArgs =
-      module_index
-          .DomainDevicesDiskMirrorSourceReservationsSourceUnixSecLabel
-          .new;
-  final DomainDevicesDiskMirrorSourceSlices =
-      module_index.DomainDevicesDiskMirrorSourceSlices.new;
-  final DomainDevicesDiskMirrorSourceSlicesArgs =
-      module_index.DomainDevicesDiskMirrorSourceSlices.new;
-  final DomainDevicesDiskMirrorSourceSlicesSlice =
-      module_index.DomainDevicesDiskMirrorSourceSlicesSlice.new;
-  final DomainDevicesDiskMirrorSourceSlicesSliceArgs =
-      module_index.DomainDevicesDiskMirrorSourceSlicesSlice.new;
-  final DomainDevicesDiskMirrorSourceSsl =
-      module_index.DomainDevicesDiskMirrorSourceSsl.new;
-  final DomainDevicesDiskMirrorSourceSslArgs =
-      module_index.DomainDevicesDiskMirrorSourceSsl.new;
-  final DomainDevicesDiskMirrorSourceTimeout =
-      module_index.DomainDevicesDiskMirrorSourceTimeout.new;
-  final DomainDevicesDiskMirrorSourceTimeoutArgs =
-      module_index.DomainDevicesDiskMirrorSourceTimeout.new;
-  final DomainDevicesDiskMirrorSourceVhostUser =
-      module_index.DomainDevicesDiskMirrorSourceVhostUser.new;
-  final DomainDevicesDiskMirrorSourceVhostUserArgs =
-      module_index.DomainDevicesDiskMirrorSourceVhostUser.new;
-  final DomainDevicesDiskMirrorSourceVhostUserDbus =
-      module_index.DomainDevicesDiskMirrorSourceVhostUserDbus.new;
-  final DomainDevicesDiskMirrorSourceVhostUserDbusArgs =
-      module_index.DomainDevicesDiskMirrorSourceVhostUserDbus.new;
-  final DomainDevicesDiskMirrorSourceVhostUserDev =
-      module_index.DomainDevicesDiskMirrorSourceVhostUserDev.new;
-  final DomainDevicesDiskMirrorSourceVhostUserDevArgs =
-      module_index.DomainDevicesDiskMirrorSourceVhostUserDev.new;
-  final DomainDevicesDiskMirrorSourceVhostUserDevSecLabel =
-      module_index.DomainDevicesDiskMirrorSourceVhostUserDevSecLabel.new;
-  final DomainDevicesDiskMirrorSourceVhostUserDevSecLabelArgs =
-      module_index.DomainDevicesDiskMirrorSourceVhostUserDevSecLabel.new;
-  final DomainDevicesDiskMirrorSourceVhostUserFile =
-      module_index.DomainDevicesDiskMirrorSourceVhostUserFile.new;
-  final DomainDevicesDiskMirrorSourceVhostUserFileArgs =
-      module_index.DomainDevicesDiskMirrorSourceVhostUserFile.new;
-  final DomainDevicesDiskMirrorSourceVhostUserFileSecLabel =
-      module_index.DomainDevicesDiskMirrorSourceVhostUserFileSecLabel.new;
-  final DomainDevicesDiskMirrorSourceVhostUserFileSecLabelArgs =
-      module_index.DomainDevicesDiskMirrorSourceVhostUserFileSecLabel.new;
-  final DomainDevicesDiskMirrorSourceVhostUserNmdm =
-      module_index.DomainDevicesDiskMirrorSourceVhostUserNmdm.new;
-  final DomainDevicesDiskMirrorSourceVhostUserNmdmArgs =
-      module_index.DomainDevicesDiskMirrorSourceVhostUserNmdm.new;
-  final DomainDevicesDiskMirrorSourceVhostUserPipe =
-      module_index.DomainDevicesDiskMirrorSourceVhostUserPipe.new;
-  final DomainDevicesDiskMirrorSourceVhostUserPipeArgs =
-      module_index.DomainDevicesDiskMirrorSourceVhostUserPipe.new;
-  final DomainDevicesDiskMirrorSourceVhostUserPipeSecLabel =
-      module_index.DomainDevicesDiskMirrorSourceVhostUserPipeSecLabel.new;
-  final DomainDevicesDiskMirrorSourceVhostUserPipeSecLabelArgs =
-      module_index.DomainDevicesDiskMirrorSourceVhostUserPipeSecLabel.new;
-  final DomainDevicesDiskMirrorSourceVhostUserPty =
-      module_index.DomainDevicesDiskMirrorSourceVhostUserPty.new;
-  final DomainDevicesDiskMirrorSourceVhostUserPtyArgs =
-      module_index.DomainDevicesDiskMirrorSourceVhostUserPty.new;
-  final DomainDevicesDiskMirrorSourceVhostUserPtySecLabel =
-      module_index.DomainDevicesDiskMirrorSourceVhostUserPtySecLabel.new;
-  final DomainDevicesDiskMirrorSourceVhostUserPtySecLabelArgs =
-      module_index.DomainDevicesDiskMirrorSourceVhostUserPtySecLabel.new;
-  final DomainDevicesDiskMirrorSourceVhostUserQemuvdAgent =
-      module_index.DomainDevicesDiskMirrorSourceVhostUserQemuvdAgent.new;
-  final DomainDevicesDiskMirrorSourceVhostUserQemuvdAgentArgs =
-      module_index.DomainDevicesDiskMirrorSourceVhostUserQemuvdAgent.new;
-  final DomainDevicesDiskMirrorSourceVhostUserQemuvdAgentClipBoard =
-      module_index
-          .DomainDevicesDiskMirrorSourceVhostUserQemuvdAgentClipBoard
-          .new;
-  final DomainDevicesDiskMirrorSourceVhostUserQemuvdAgentClipBoardArgs =
-      module_index
-          .DomainDevicesDiskMirrorSourceVhostUserQemuvdAgentClipBoard
-          .new;
-  final DomainDevicesDiskMirrorSourceVhostUserQemuvdAgentMouse =
-      module_index.DomainDevicesDiskMirrorSourceVhostUserQemuvdAgentMouse.new;
-  final DomainDevicesDiskMirrorSourceVhostUserQemuvdAgentMouseArgs =
-      module_index.DomainDevicesDiskMirrorSourceVhostUserQemuvdAgentMouse.new;
-  final DomainDevicesDiskMirrorSourceVhostUserSpicePort =
-      module_index.DomainDevicesDiskMirrorSourceVhostUserSpicePort.new;
-  final DomainDevicesDiskMirrorSourceVhostUserSpicePortArgs =
-      module_index.DomainDevicesDiskMirrorSourceVhostUserSpicePort.new;
-  final DomainDevicesDiskMirrorSourceVhostUserTcp =
-      module_index.DomainDevicesDiskMirrorSourceVhostUserTcp.new;
-  final DomainDevicesDiskMirrorSourceVhostUserTcpArgs =
-      module_index.DomainDevicesDiskMirrorSourceVhostUserTcp.new;
-  final DomainDevicesDiskMirrorSourceVhostUserTcpReconnect =
-      module_index.DomainDevicesDiskMirrorSourceVhostUserTcpReconnect.new;
-  final DomainDevicesDiskMirrorSourceVhostUserTcpReconnectArgs =
-      module_index.DomainDevicesDiskMirrorSourceVhostUserTcpReconnect.new;
-  final DomainDevicesDiskMirrorSourceVhostUserUdp =
-      module_index.DomainDevicesDiskMirrorSourceVhostUserUdp.new;
-  final DomainDevicesDiskMirrorSourceVhostUserUdpArgs =
-      module_index.DomainDevicesDiskMirrorSourceVhostUserUdp.new;
-  final DomainDevicesDiskMirrorSourceVhostUserUnix =
-      module_index.DomainDevicesDiskMirrorSourceVhostUserUnix.new;
-  final DomainDevicesDiskMirrorSourceVhostUserUnixArgs =
-      module_index.DomainDevicesDiskMirrorSourceVhostUserUnix.new;
-  final DomainDevicesDiskMirrorSourceVhostUserUnixReconnect =
-      module_index.DomainDevicesDiskMirrorSourceVhostUserUnixReconnect.new;
-  final DomainDevicesDiskMirrorSourceVhostUserUnixReconnectArgs =
-      module_index.DomainDevicesDiskMirrorSourceVhostUserUnixReconnect.new;
-  final DomainDevicesDiskMirrorSourceVhostUserUnixSecLabel =
-      module_index.DomainDevicesDiskMirrorSourceVhostUserUnixSecLabel.new;
-  final DomainDevicesDiskMirrorSourceVhostUserUnixSecLabelArgs =
-      module_index.DomainDevicesDiskMirrorSourceVhostUserUnixSecLabel.new;
-  final DomainDevicesDiskMirrorSourceVhostVdpa =
-      module_index.DomainDevicesDiskMirrorSourceVhostVdpa.new;
-  final DomainDevicesDiskMirrorSourceVhostVdpaArgs =
-      module_index.DomainDevicesDiskMirrorSourceVhostVdpa.new;
-  final DomainDevicesDiskMirrorSourceVolume =
-      module_index.DomainDevicesDiskMirrorSourceVolume.new;
-  final DomainDevicesDiskMirrorSourceVolumeArgs =
-      module_index.DomainDevicesDiskMirrorSourceVolume.new;
-  final DomainDevicesDiskMirrorSourceVolumeSecLabel =
-      module_index.DomainDevicesDiskMirrorSourceVolumeSecLabel.new;
-  final DomainDevicesDiskMirrorSourceVolumeSecLabelArgs =
-      module_index.DomainDevicesDiskMirrorSourceVolumeSecLabel.new;
+  final DomainDevicesDiskMirrorBackingStore = module_index.DomainDevicesDiskMirrorBackingStore.new;
+  final DomainDevicesDiskMirrorBackingStoreArgs = module_index.DomainDevicesDiskMirrorBackingStore.new;
+  final DomainDevicesDiskMirrorBackingStoreFormat = module_index.DomainDevicesDiskMirrorBackingStoreFormat.new;
+  final DomainDevicesDiskMirrorBackingStoreFormatArgs = module_index.DomainDevicesDiskMirrorBackingStoreFormat.new;
+  final DomainDevicesDiskMirrorBackingStoreFormatMetadataCache = module_index.DomainDevicesDiskMirrorBackingStoreFormatMetadataCache.new;
+  final DomainDevicesDiskMirrorBackingStoreFormatMetadataCacheArgs = module_index.DomainDevicesDiskMirrorBackingStoreFormatMetadataCache.new;
+  final DomainDevicesDiskMirrorBackingStoreFormatMetadataCacheMaxSize = module_index.DomainDevicesDiskMirrorBackingStoreFormatMetadataCacheMaxSize.new;
+  final DomainDevicesDiskMirrorBackingStoreFormatMetadataCacheMaxSizeArgs = module_index.DomainDevicesDiskMirrorBackingStoreFormatMetadataCacheMaxSize.new;
+  final DomainDevicesDiskMirrorBackingStoreSource = module_index.DomainDevicesDiskMirrorBackingStoreSource.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceArgs = module_index.DomainDevicesDiskMirrorBackingStoreSource.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceBlock = module_index.DomainDevicesDiskMirrorBackingStoreSourceBlock.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceBlockArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceBlock.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceBlockSecLabel = module_index.DomainDevicesDiskMirrorBackingStoreSourceBlockSecLabel.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceBlockSecLabelArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceBlockSecLabel.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceCookies = module_index.DomainDevicesDiskMirrorBackingStoreSourceCookies.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceCookiesArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceCookies.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceCookiesCookie = module_index.DomainDevicesDiskMirrorBackingStoreSourceCookiesCookie.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceCookiesCookieArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceCookiesCookie.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceDataStore = module_index.DomainDevicesDiskMirrorBackingStoreSourceDataStore.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceDataStoreArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceDataStore.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceDataStoreFormat = module_index.DomainDevicesDiskMirrorBackingStoreSourceDataStoreFormat.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceDataStoreFormatArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceDataStoreFormat.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceDataStoreFormatMetadataCache = module_index.DomainDevicesDiskMirrorBackingStoreSourceDataStoreFormatMetadataCache.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceDataStoreFormatMetadataCacheArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceDataStoreFormatMetadataCache.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceDataStoreFormatMetadataCacheMaxSize = module_index.DomainDevicesDiskMirrorBackingStoreSourceDataStoreFormatMetadataCacheMaxSize.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceDataStoreFormatMetadataCacheMaxSizeArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceDataStoreFormatMetadataCacheMaxSize.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceDir = module_index.DomainDevicesDiskMirrorBackingStoreSourceDir.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceDirArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceDir.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceEncryption = module_index.DomainDevicesDiskMirrorBackingStoreSourceEncryption.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceEncryptionArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceEncryption.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceEncryptionSecret = module_index.DomainDevicesDiskMirrorBackingStoreSourceEncryptionSecret.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceEncryptionSecretArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceEncryptionSecret.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceFile = module_index.DomainDevicesDiskMirrorBackingStoreSourceFile.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceFileArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceFile.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceFileSecLabel = module_index.DomainDevicesDiskMirrorBackingStoreSourceFileSecLabel.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceFileSecLabelArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceFileSecLabel.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceNetwork = module_index.DomainDevicesDiskMirrorBackingStoreSourceNetwork.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceNetworkArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceNetwork.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceNetworkAuth = module_index.DomainDevicesDiskMirrorBackingStoreSourceNetworkAuth.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceNetworkAuthArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceNetworkAuth.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceNetworkAuthSecret = module_index.DomainDevicesDiskMirrorBackingStoreSourceNetworkAuthSecret.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceNetworkAuthSecretArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceNetworkAuthSecret.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceNetworkConfig = module_index.DomainDevicesDiskMirrorBackingStoreSourceNetworkConfig.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceNetworkConfigArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceNetworkConfig.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceNetworkHost = module_index.DomainDevicesDiskMirrorBackingStoreSourceNetworkHost.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceNetworkHostArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceNetworkHost.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceNetworkIdentity = module_index.DomainDevicesDiskMirrorBackingStoreSourceNetworkIdentity.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceNetworkIdentityArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceNetworkIdentity.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceNetworkInitiator = module_index.DomainDevicesDiskMirrorBackingStoreSourceNetworkInitiator.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceNetworkInitiatorArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceNetworkInitiator.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceNetworkInitiatorIqn = module_index.DomainDevicesDiskMirrorBackingStoreSourceNetworkInitiatorIqn.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceNetworkInitiatorIqnArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceNetworkInitiatorIqn.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceNetworkKnownHosts = module_index.DomainDevicesDiskMirrorBackingStoreSourceNetworkKnownHosts.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceNetworkKnownHostsArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceNetworkKnownHosts.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceNetworkReconnect = module_index.DomainDevicesDiskMirrorBackingStoreSourceNetworkReconnect.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceNetworkReconnectArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceNetworkReconnect.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceNetworkSnapshot = module_index.DomainDevicesDiskMirrorBackingStoreSourceNetworkSnapshot.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceNetworkSnapshotArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceNetworkSnapshot.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceReadahead = module_index.DomainDevicesDiskMirrorBackingStoreSourceReadahead.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceReadaheadArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceReadahead.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceReservations = module_index.DomainDevicesDiskMirrorBackingStoreSourceReservations.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceReservationsArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceReservations.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSource = module_index.DomainDevicesDiskMirrorBackingStoreSourceReservationsSource.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceReservationsSource.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceDbus = module_index.DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceDbus.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceDbusArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceDbus.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceDev = module_index.DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceDev.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceDevArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceDev.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceDevSecLabel = module_index.DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceDevSecLabel.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceDevSecLabelArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceDevSecLabel.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceFile = module_index.DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceFile.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceFileArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceFile.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceFileSecLabel = module_index.DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceFileSecLabel.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceFileSecLabelArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceFileSecLabel.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceNmdm = module_index.DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceNmdm.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceNmdmArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceNmdm.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePipe = module_index.DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePipe.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePipeArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePipe.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePipeSecLabel = module_index.DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePipeSecLabel.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePipeSecLabelArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePipeSecLabel.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePty = module_index.DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePty.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePtyArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePty.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePtySecLabel = module_index.DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePtySecLabel.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePtySecLabelArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePtySecLabel.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceQemuvdAgent = module_index.DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceQemuvdAgent.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceQemuvdAgentArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceQemuvdAgent.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceQemuvdAgentClipBoard = module_index.DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceQemuvdAgentClipBoard.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceQemuvdAgentClipBoardArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceQemuvdAgentClipBoard.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceQemuvdAgentMouse = module_index.DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceQemuvdAgentMouse.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceQemuvdAgentMouseArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceQemuvdAgentMouse.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceSpicePort = module_index.DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceSpicePort.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceSpicePortArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceSpicePort.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceTcp = module_index.DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceTcp.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceTcpArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceTcp.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceTcpReconnect = module_index.DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceTcpReconnect.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceTcpReconnectArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceTcpReconnect.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceUdp = module_index.DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceUdp.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceUdpArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceUdp.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceUnix = module_index.DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceUnix.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceUnixArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceUnix.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceUnixReconnect = module_index.DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceUnixReconnect.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceUnixReconnectArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceUnixReconnect.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceUnixSecLabel = module_index.DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceUnixSecLabel.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceUnixSecLabelArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceUnixSecLabel.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceSlices = module_index.DomainDevicesDiskMirrorBackingStoreSourceSlices.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceSlicesArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceSlices.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceSlicesSlice = module_index.DomainDevicesDiskMirrorBackingStoreSourceSlicesSlice.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceSlicesSliceArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceSlicesSlice.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceSsl = module_index.DomainDevicesDiskMirrorBackingStoreSourceSsl.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceSslArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceSsl.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceTimeout = module_index.DomainDevicesDiskMirrorBackingStoreSourceTimeout.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceTimeoutArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceTimeout.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceVhostUser = module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUser.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUser.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserDbus = module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserDbus.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserDbusArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserDbus.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserDev = module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserDev.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserDevArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserDev.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserDevSecLabel = module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserDevSecLabel.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserDevSecLabelArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserDevSecLabel.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserFile = module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserFile.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserFileArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserFile.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserFileSecLabel = module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserFileSecLabel.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserFileSecLabelArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserFileSecLabel.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserNmdm = module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserNmdm.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserNmdmArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserNmdm.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserPipe = module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserPipe.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserPipeArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserPipe.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserPipeSecLabel = module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserPipeSecLabel.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserPipeSecLabelArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserPipeSecLabel.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserPty = module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserPty.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserPtyArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserPty.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserPtySecLabel = module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserPtySecLabel.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserPtySecLabelArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserPtySecLabel.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserQemuvdAgent = module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserQemuvdAgent.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserQemuvdAgentArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserQemuvdAgent.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserQemuvdAgentClipBoard = module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserQemuvdAgentClipBoard.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserQemuvdAgentClipBoardArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserQemuvdAgentClipBoard.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserQemuvdAgentMouse = module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserQemuvdAgentMouse.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserQemuvdAgentMouseArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserQemuvdAgentMouse.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserSpicePort = module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserSpicePort.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserSpicePortArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserSpicePort.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserTcp = module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserTcp.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserTcpArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserTcp.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserTcpReconnect = module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserTcpReconnect.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserTcpReconnectArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserTcpReconnect.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserUdp = module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserUdp.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserUdpArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserUdp.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserUnix = module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserUnix.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserUnixArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserUnix.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserUnixReconnect = module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserUnixReconnect.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserUnixReconnectArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserUnixReconnect.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserUnixSecLabel = module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserUnixSecLabel.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceVhostUserUnixSecLabelArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostUserUnixSecLabel.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceVhostVdpa = module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostVdpa.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceVhostVdpaArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceVhostVdpa.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceVolume = module_index.DomainDevicesDiskMirrorBackingStoreSourceVolume.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceVolumeArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceVolume.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceVolumeSecLabel = module_index.DomainDevicesDiskMirrorBackingStoreSourceVolumeSecLabel.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceVolumeSecLabelArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceVolumeSecLabel.new;
+  final DomainDevicesDiskMirrorFormat = module_index.DomainDevicesDiskMirrorFormat.new;
+  final DomainDevicesDiskMirrorFormatArgs = module_index.DomainDevicesDiskMirrorFormat.new;
+  final DomainDevicesDiskMirrorFormatMetadataCache = module_index.DomainDevicesDiskMirrorFormatMetadataCache.new;
+  final DomainDevicesDiskMirrorFormatMetadataCacheArgs = module_index.DomainDevicesDiskMirrorFormatMetadataCache.new;
+  final DomainDevicesDiskMirrorFormatMetadataCacheMaxSize = module_index.DomainDevicesDiskMirrorFormatMetadataCacheMaxSize.new;
+  final DomainDevicesDiskMirrorFormatMetadataCacheMaxSizeArgs = module_index.DomainDevicesDiskMirrorFormatMetadataCacheMaxSize.new;
+  final DomainDevicesDiskMirrorSource = module_index.DomainDevicesDiskMirrorSource.new;
+  final DomainDevicesDiskMirrorSourceArgs = module_index.DomainDevicesDiskMirrorSource.new;
+  final DomainDevicesDiskMirrorSourceBlock = module_index.DomainDevicesDiskMirrorSourceBlock.new;
+  final DomainDevicesDiskMirrorSourceBlockArgs = module_index.DomainDevicesDiskMirrorSourceBlock.new;
+  final DomainDevicesDiskMirrorSourceBlockSecLabel = module_index.DomainDevicesDiskMirrorSourceBlockSecLabel.new;
+  final DomainDevicesDiskMirrorSourceBlockSecLabelArgs = module_index.DomainDevicesDiskMirrorSourceBlockSecLabel.new;
+  final DomainDevicesDiskMirrorSourceCookies = module_index.DomainDevicesDiskMirrorSourceCookies.new;
+  final DomainDevicesDiskMirrorSourceCookiesArgs = module_index.DomainDevicesDiskMirrorSourceCookies.new;
+  final DomainDevicesDiskMirrorSourceCookiesCookie = module_index.DomainDevicesDiskMirrorSourceCookiesCookie.new;
+  final DomainDevicesDiskMirrorSourceCookiesCookieArgs = module_index.DomainDevicesDiskMirrorSourceCookiesCookie.new;
+  final DomainDevicesDiskMirrorSourceDataStore = module_index.DomainDevicesDiskMirrorSourceDataStore.new;
+  final DomainDevicesDiskMirrorSourceDataStoreArgs = module_index.DomainDevicesDiskMirrorSourceDataStore.new;
+  final DomainDevicesDiskMirrorSourceDataStoreFormat = module_index.DomainDevicesDiskMirrorSourceDataStoreFormat.new;
+  final DomainDevicesDiskMirrorSourceDataStoreFormatArgs = module_index.DomainDevicesDiskMirrorSourceDataStoreFormat.new;
+  final DomainDevicesDiskMirrorSourceDataStoreFormatMetadataCache = module_index.DomainDevicesDiskMirrorSourceDataStoreFormatMetadataCache.new;
+  final DomainDevicesDiskMirrorSourceDataStoreFormatMetadataCacheArgs = module_index.DomainDevicesDiskMirrorSourceDataStoreFormatMetadataCache.new;
+  final DomainDevicesDiskMirrorSourceDataStoreFormatMetadataCacheMaxSize = module_index.DomainDevicesDiskMirrorSourceDataStoreFormatMetadataCacheMaxSize.new;
+  final DomainDevicesDiskMirrorSourceDataStoreFormatMetadataCacheMaxSizeArgs = module_index.DomainDevicesDiskMirrorSourceDataStoreFormatMetadataCacheMaxSize.new;
+  final DomainDevicesDiskMirrorSourceDir = module_index.DomainDevicesDiskMirrorSourceDir.new;
+  final DomainDevicesDiskMirrorSourceDirArgs = module_index.DomainDevicesDiskMirrorSourceDir.new;
+  final DomainDevicesDiskMirrorSourceEncryption = module_index.DomainDevicesDiskMirrorSourceEncryption.new;
+  final DomainDevicesDiskMirrorSourceEncryptionArgs = module_index.DomainDevicesDiskMirrorSourceEncryption.new;
+  final DomainDevicesDiskMirrorSourceEncryptionSecret = module_index.DomainDevicesDiskMirrorSourceEncryptionSecret.new;
+  final DomainDevicesDiskMirrorSourceEncryptionSecretArgs = module_index.DomainDevicesDiskMirrorSourceEncryptionSecret.new;
+  final DomainDevicesDiskMirrorSourceFile = module_index.DomainDevicesDiskMirrorSourceFile.new;
+  final DomainDevicesDiskMirrorSourceFileArgs = module_index.DomainDevicesDiskMirrorSourceFile.new;
+  final DomainDevicesDiskMirrorSourceFileSecLabel = module_index.DomainDevicesDiskMirrorSourceFileSecLabel.new;
+  final DomainDevicesDiskMirrorSourceFileSecLabelArgs = module_index.DomainDevicesDiskMirrorSourceFileSecLabel.new;
+  final DomainDevicesDiskMirrorSourceNetwork = module_index.DomainDevicesDiskMirrorSourceNetwork.new;
+  final DomainDevicesDiskMirrorSourceNetworkArgs = module_index.DomainDevicesDiskMirrorSourceNetwork.new;
+  final DomainDevicesDiskMirrorSourceNetworkAuth = module_index.DomainDevicesDiskMirrorSourceNetworkAuth.new;
+  final DomainDevicesDiskMirrorSourceNetworkAuthArgs = module_index.DomainDevicesDiskMirrorSourceNetworkAuth.new;
+  final DomainDevicesDiskMirrorSourceNetworkAuthSecret = module_index.DomainDevicesDiskMirrorSourceNetworkAuthSecret.new;
+  final DomainDevicesDiskMirrorSourceNetworkAuthSecretArgs = module_index.DomainDevicesDiskMirrorSourceNetworkAuthSecret.new;
+  final DomainDevicesDiskMirrorSourceNetworkConfig = module_index.DomainDevicesDiskMirrorSourceNetworkConfig.new;
+  final DomainDevicesDiskMirrorSourceNetworkConfigArgs = module_index.DomainDevicesDiskMirrorSourceNetworkConfig.new;
+  final DomainDevicesDiskMirrorSourceNetworkHost = module_index.DomainDevicesDiskMirrorSourceNetworkHost.new;
+  final DomainDevicesDiskMirrorSourceNetworkHostArgs = module_index.DomainDevicesDiskMirrorSourceNetworkHost.new;
+  final DomainDevicesDiskMirrorSourceNetworkIdentity = module_index.DomainDevicesDiskMirrorSourceNetworkIdentity.new;
+  final DomainDevicesDiskMirrorSourceNetworkIdentityArgs = module_index.DomainDevicesDiskMirrorSourceNetworkIdentity.new;
+  final DomainDevicesDiskMirrorSourceNetworkInitiator = module_index.DomainDevicesDiskMirrorSourceNetworkInitiator.new;
+  final DomainDevicesDiskMirrorSourceNetworkInitiatorArgs = module_index.DomainDevicesDiskMirrorSourceNetworkInitiator.new;
+  final DomainDevicesDiskMirrorSourceNetworkInitiatorIqn = module_index.DomainDevicesDiskMirrorSourceNetworkInitiatorIqn.new;
+  final DomainDevicesDiskMirrorSourceNetworkInitiatorIqnArgs = module_index.DomainDevicesDiskMirrorSourceNetworkInitiatorIqn.new;
+  final DomainDevicesDiskMirrorSourceNetworkKnownHosts = module_index.DomainDevicesDiskMirrorSourceNetworkKnownHosts.new;
+  final DomainDevicesDiskMirrorSourceNetworkKnownHostsArgs = module_index.DomainDevicesDiskMirrorSourceNetworkKnownHosts.new;
+  final DomainDevicesDiskMirrorSourceNetworkReconnect = module_index.DomainDevicesDiskMirrorSourceNetworkReconnect.new;
+  final DomainDevicesDiskMirrorSourceNetworkReconnectArgs = module_index.DomainDevicesDiskMirrorSourceNetworkReconnect.new;
+  final DomainDevicesDiskMirrorSourceNetworkSnapshot = module_index.DomainDevicesDiskMirrorSourceNetworkSnapshot.new;
+  final DomainDevicesDiskMirrorSourceNetworkSnapshotArgs = module_index.DomainDevicesDiskMirrorSourceNetworkSnapshot.new;
+  final DomainDevicesDiskMirrorSourceReadahead = module_index.DomainDevicesDiskMirrorSourceReadahead.new;
+  final DomainDevicesDiskMirrorSourceReadaheadArgs = module_index.DomainDevicesDiskMirrorSourceReadahead.new;
+  final DomainDevicesDiskMirrorSourceReservations = module_index.DomainDevicesDiskMirrorSourceReservations.new;
+  final DomainDevicesDiskMirrorSourceReservationsArgs = module_index.DomainDevicesDiskMirrorSourceReservations.new;
+  final DomainDevicesDiskMirrorSourceReservationsSource = module_index.DomainDevicesDiskMirrorSourceReservationsSource.new;
+  final DomainDevicesDiskMirrorSourceReservationsSourceArgs = module_index.DomainDevicesDiskMirrorSourceReservationsSource.new;
+  final DomainDevicesDiskMirrorSourceReservationsSourceDbus = module_index.DomainDevicesDiskMirrorSourceReservationsSourceDbus.new;
+  final DomainDevicesDiskMirrorSourceReservationsSourceDbusArgs = module_index.DomainDevicesDiskMirrorSourceReservationsSourceDbus.new;
+  final DomainDevicesDiskMirrorSourceReservationsSourceDev = module_index.DomainDevicesDiskMirrorSourceReservationsSourceDev.new;
+  final DomainDevicesDiskMirrorSourceReservationsSourceDevArgs = module_index.DomainDevicesDiskMirrorSourceReservationsSourceDev.new;
+  final DomainDevicesDiskMirrorSourceReservationsSourceDevSecLabel = module_index.DomainDevicesDiskMirrorSourceReservationsSourceDevSecLabel.new;
+  final DomainDevicesDiskMirrorSourceReservationsSourceDevSecLabelArgs = module_index.DomainDevicesDiskMirrorSourceReservationsSourceDevSecLabel.new;
+  final DomainDevicesDiskMirrorSourceReservationsSourceFile = module_index.DomainDevicesDiskMirrorSourceReservationsSourceFile.new;
+  final DomainDevicesDiskMirrorSourceReservationsSourceFileArgs = module_index.DomainDevicesDiskMirrorSourceReservationsSourceFile.new;
+  final DomainDevicesDiskMirrorSourceReservationsSourceFileSecLabel = module_index.DomainDevicesDiskMirrorSourceReservationsSourceFileSecLabel.new;
+  final DomainDevicesDiskMirrorSourceReservationsSourceFileSecLabelArgs = module_index.DomainDevicesDiskMirrorSourceReservationsSourceFileSecLabel.new;
+  final DomainDevicesDiskMirrorSourceReservationsSourceNmdm = module_index.DomainDevicesDiskMirrorSourceReservationsSourceNmdm.new;
+  final DomainDevicesDiskMirrorSourceReservationsSourceNmdmArgs = module_index.DomainDevicesDiskMirrorSourceReservationsSourceNmdm.new;
+  final DomainDevicesDiskMirrorSourceReservationsSourcePipe = module_index.DomainDevicesDiskMirrorSourceReservationsSourcePipe.new;
+  final DomainDevicesDiskMirrorSourceReservationsSourcePipeArgs = module_index.DomainDevicesDiskMirrorSourceReservationsSourcePipe.new;
+  final DomainDevicesDiskMirrorSourceReservationsSourcePipeSecLabel = module_index.DomainDevicesDiskMirrorSourceReservationsSourcePipeSecLabel.new;
+  final DomainDevicesDiskMirrorSourceReservationsSourcePipeSecLabelArgs = module_index.DomainDevicesDiskMirrorSourceReservationsSourcePipeSecLabel.new;
+  final DomainDevicesDiskMirrorSourceReservationsSourcePty = module_index.DomainDevicesDiskMirrorSourceReservationsSourcePty.new;
+  final DomainDevicesDiskMirrorSourceReservationsSourcePtyArgs = module_index.DomainDevicesDiskMirrorSourceReservationsSourcePty.new;
+  final DomainDevicesDiskMirrorSourceReservationsSourcePtySecLabel = module_index.DomainDevicesDiskMirrorSourceReservationsSourcePtySecLabel.new;
+  final DomainDevicesDiskMirrorSourceReservationsSourcePtySecLabelArgs = module_index.DomainDevicesDiskMirrorSourceReservationsSourcePtySecLabel.new;
+  final DomainDevicesDiskMirrorSourceReservationsSourceQemuvdAgent = module_index.DomainDevicesDiskMirrorSourceReservationsSourceQemuvdAgent.new;
+  final DomainDevicesDiskMirrorSourceReservationsSourceQemuvdAgentArgs = module_index.DomainDevicesDiskMirrorSourceReservationsSourceQemuvdAgent.new;
+  final DomainDevicesDiskMirrorSourceReservationsSourceQemuvdAgentClipBoard = module_index.DomainDevicesDiskMirrorSourceReservationsSourceQemuvdAgentClipBoard.new;
+  final DomainDevicesDiskMirrorSourceReservationsSourceQemuvdAgentClipBoardArgs = module_index.DomainDevicesDiskMirrorSourceReservationsSourceQemuvdAgentClipBoard.new;
+  final DomainDevicesDiskMirrorSourceReservationsSourceQemuvdAgentMouse = module_index.DomainDevicesDiskMirrorSourceReservationsSourceQemuvdAgentMouse.new;
+  final DomainDevicesDiskMirrorSourceReservationsSourceQemuvdAgentMouseArgs = module_index.DomainDevicesDiskMirrorSourceReservationsSourceQemuvdAgentMouse.new;
+  final DomainDevicesDiskMirrorSourceReservationsSourceSpicePort = module_index.DomainDevicesDiskMirrorSourceReservationsSourceSpicePort.new;
+  final DomainDevicesDiskMirrorSourceReservationsSourceSpicePortArgs = module_index.DomainDevicesDiskMirrorSourceReservationsSourceSpicePort.new;
+  final DomainDevicesDiskMirrorSourceReservationsSourceTcp = module_index.DomainDevicesDiskMirrorSourceReservationsSourceTcp.new;
+  final DomainDevicesDiskMirrorSourceReservationsSourceTcpArgs = module_index.DomainDevicesDiskMirrorSourceReservationsSourceTcp.new;
+  final DomainDevicesDiskMirrorSourceReservationsSourceTcpReconnect = module_index.DomainDevicesDiskMirrorSourceReservationsSourceTcpReconnect.new;
+  final DomainDevicesDiskMirrorSourceReservationsSourceTcpReconnectArgs = module_index.DomainDevicesDiskMirrorSourceReservationsSourceTcpReconnect.new;
+  final DomainDevicesDiskMirrorSourceReservationsSourceUdp = module_index.DomainDevicesDiskMirrorSourceReservationsSourceUdp.new;
+  final DomainDevicesDiskMirrorSourceReservationsSourceUdpArgs = module_index.DomainDevicesDiskMirrorSourceReservationsSourceUdp.new;
+  final DomainDevicesDiskMirrorSourceReservationsSourceUnix = module_index.DomainDevicesDiskMirrorSourceReservationsSourceUnix.new;
+  final DomainDevicesDiskMirrorSourceReservationsSourceUnixArgs = module_index.DomainDevicesDiskMirrorSourceReservationsSourceUnix.new;
+  final DomainDevicesDiskMirrorSourceReservationsSourceUnixReconnect = module_index.DomainDevicesDiskMirrorSourceReservationsSourceUnixReconnect.new;
+  final DomainDevicesDiskMirrorSourceReservationsSourceUnixReconnectArgs = module_index.DomainDevicesDiskMirrorSourceReservationsSourceUnixReconnect.new;
+  final DomainDevicesDiskMirrorSourceReservationsSourceUnixSecLabel = module_index.DomainDevicesDiskMirrorSourceReservationsSourceUnixSecLabel.new;
+  final DomainDevicesDiskMirrorSourceReservationsSourceUnixSecLabelArgs = module_index.DomainDevicesDiskMirrorSourceReservationsSourceUnixSecLabel.new;
+  final DomainDevicesDiskMirrorSourceSlices = module_index.DomainDevicesDiskMirrorSourceSlices.new;
+  final DomainDevicesDiskMirrorSourceSlicesArgs = module_index.DomainDevicesDiskMirrorSourceSlices.new;
+  final DomainDevicesDiskMirrorSourceSlicesSlice = module_index.DomainDevicesDiskMirrorSourceSlicesSlice.new;
+  final DomainDevicesDiskMirrorSourceSlicesSliceArgs = module_index.DomainDevicesDiskMirrorSourceSlicesSlice.new;
+  final DomainDevicesDiskMirrorSourceSsl = module_index.DomainDevicesDiskMirrorSourceSsl.new;
+  final DomainDevicesDiskMirrorSourceSslArgs = module_index.DomainDevicesDiskMirrorSourceSsl.new;
+  final DomainDevicesDiskMirrorSourceTimeout = module_index.DomainDevicesDiskMirrorSourceTimeout.new;
+  final DomainDevicesDiskMirrorSourceTimeoutArgs = module_index.DomainDevicesDiskMirrorSourceTimeout.new;
+  final DomainDevicesDiskMirrorSourceVhostUser = module_index.DomainDevicesDiskMirrorSourceVhostUser.new;
+  final DomainDevicesDiskMirrorSourceVhostUserArgs = module_index.DomainDevicesDiskMirrorSourceVhostUser.new;
+  final DomainDevicesDiskMirrorSourceVhostUserDbus = module_index.DomainDevicesDiskMirrorSourceVhostUserDbus.new;
+  final DomainDevicesDiskMirrorSourceVhostUserDbusArgs = module_index.DomainDevicesDiskMirrorSourceVhostUserDbus.new;
+  final DomainDevicesDiskMirrorSourceVhostUserDev = module_index.DomainDevicesDiskMirrorSourceVhostUserDev.new;
+  final DomainDevicesDiskMirrorSourceVhostUserDevArgs = module_index.DomainDevicesDiskMirrorSourceVhostUserDev.new;
+  final DomainDevicesDiskMirrorSourceVhostUserDevSecLabel = module_index.DomainDevicesDiskMirrorSourceVhostUserDevSecLabel.new;
+  final DomainDevicesDiskMirrorSourceVhostUserDevSecLabelArgs = module_index.DomainDevicesDiskMirrorSourceVhostUserDevSecLabel.new;
+  final DomainDevicesDiskMirrorSourceVhostUserFile = module_index.DomainDevicesDiskMirrorSourceVhostUserFile.new;
+  final DomainDevicesDiskMirrorSourceVhostUserFileArgs = module_index.DomainDevicesDiskMirrorSourceVhostUserFile.new;
+  final DomainDevicesDiskMirrorSourceVhostUserFileSecLabel = module_index.DomainDevicesDiskMirrorSourceVhostUserFileSecLabel.new;
+  final DomainDevicesDiskMirrorSourceVhostUserFileSecLabelArgs = module_index.DomainDevicesDiskMirrorSourceVhostUserFileSecLabel.new;
+  final DomainDevicesDiskMirrorSourceVhostUserNmdm = module_index.DomainDevicesDiskMirrorSourceVhostUserNmdm.new;
+  final DomainDevicesDiskMirrorSourceVhostUserNmdmArgs = module_index.DomainDevicesDiskMirrorSourceVhostUserNmdm.new;
+  final DomainDevicesDiskMirrorSourceVhostUserPipe = module_index.DomainDevicesDiskMirrorSourceVhostUserPipe.new;
+  final DomainDevicesDiskMirrorSourceVhostUserPipeArgs = module_index.DomainDevicesDiskMirrorSourceVhostUserPipe.new;
+  final DomainDevicesDiskMirrorSourceVhostUserPipeSecLabel = module_index.DomainDevicesDiskMirrorSourceVhostUserPipeSecLabel.new;
+  final DomainDevicesDiskMirrorSourceVhostUserPipeSecLabelArgs = module_index.DomainDevicesDiskMirrorSourceVhostUserPipeSecLabel.new;
+  final DomainDevicesDiskMirrorSourceVhostUserPty = module_index.DomainDevicesDiskMirrorSourceVhostUserPty.new;
+  final DomainDevicesDiskMirrorSourceVhostUserPtyArgs = module_index.DomainDevicesDiskMirrorSourceVhostUserPty.new;
+  final DomainDevicesDiskMirrorSourceVhostUserPtySecLabel = module_index.DomainDevicesDiskMirrorSourceVhostUserPtySecLabel.new;
+  final DomainDevicesDiskMirrorSourceVhostUserPtySecLabelArgs = module_index.DomainDevicesDiskMirrorSourceVhostUserPtySecLabel.new;
+  final DomainDevicesDiskMirrorSourceVhostUserQemuvdAgent = module_index.DomainDevicesDiskMirrorSourceVhostUserQemuvdAgent.new;
+  final DomainDevicesDiskMirrorSourceVhostUserQemuvdAgentArgs = module_index.DomainDevicesDiskMirrorSourceVhostUserQemuvdAgent.new;
+  final DomainDevicesDiskMirrorSourceVhostUserQemuvdAgentClipBoard = module_index.DomainDevicesDiskMirrorSourceVhostUserQemuvdAgentClipBoard.new;
+  final DomainDevicesDiskMirrorSourceVhostUserQemuvdAgentClipBoardArgs = module_index.DomainDevicesDiskMirrorSourceVhostUserQemuvdAgentClipBoard.new;
+  final DomainDevicesDiskMirrorSourceVhostUserQemuvdAgentMouse = module_index.DomainDevicesDiskMirrorSourceVhostUserQemuvdAgentMouse.new;
+  final DomainDevicesDiskMirrorSourceVhostUserQemuvdAgentMouseArgs = module_index.DomainDevicesDiskMirrorSourceVhostUserQemuvdAgentMouse.new;
+  final DomainDevicesDiskMirrorSourceVhostUserSpicePort = module_index.DomainDevicesDiskMirrorSourceVhostUserSpicePort.new;
+  final DomainDevicesDiskMirrorSourceVhostUserSpicePortArgs = module_index.DomainDevicesDiskMirrorSourceVhostUserSpicePort.new;
+  final DomainDevicesDiskMirrorSourceVhostUserTcp = module_index.DomainDevicesDiskMirrorSourceVhostUserTcp.new;
+  final DomainDevicesDiskMirrorSourceVhostUserTcpArgs = module_index.DomainDevicesDiskMirrorSourceVhostUserTcp.new;
+  final DomainDevicesDiskMirrorSourceVhostUserTcpReconnect = module_index.DomainDevicesDiskMirrorSourceVhostUserTcpReconnect.new;
+  final DomainDevicesDiskMirrorSourceVhostUserTcpReconnectArgs = module_index.DomainDevicesDiskMirrorSourceVhostUserTcpReconnect.new;
+  final DomainDevicesDiskMirrorSourceVhostUserUdp = module_index.DomainDevicesDiskMirrorSourceVhostUserUdp.new;
+  final DomainDevicesDiskMirrorSourceVhostUserUdpArgs = module_index.DomainDevicesDiskMirrorSourceVhostUserUdp.new;
+  final DomainDevicesDiskMirrorSourceVhostUserUnix = module_index.DomainDevicesDiskMirrorSourceVhostUserUnix.new;
+  final DomainDevicesDiskMirrorSourceVhostUserUnixArgs = module_index.DomainDevicesDiskMirrorSourceVhostUserUnix.new;
+  final DomainDevicesDiskMirrorSourceVhostUserUnixReconnect = module_index.DomainDevicesDiskMirrorSourceVhostUserUnixReconnect.new;
+  final DomainDevicesDiskMirrorSourceVhostUserUnixReconnectArgs = module_index.DomainDevicesDiskMirrorSourceVhostUserUnixReconnect.new;
+  final DomainDevicesDiskMirrorSourceVhostUserUnixSecLabel = module_index.DomainDevicesDiskMirrorSourceVhostUserUnixSecLabel.new;
+  final DomainDevicesDiskMirrorSourceVhostUserUnixSecLabelArgs = module_index.DomainDevicesDiskMirrorSourceVhostUserUnixSecLabel.new;
+  final DomainDevicesDiskMirrorSourceVhostVdpa = module_index.DomainDevicesDiskMirrorSourceVhostVdpa.new;
+  final DomainDevicesDiskMirrorSourceVhostVdpaArgs = module_index.DomainDevicesDiskMirrorSourceVhostVdpa.new;
+  final DomainDevicesDiskMirrorSourceVolume = module_index.DomainDevicesDiskMirrorSourceVolume.new;
+  final DomainDevicesDiskMirrorSourceVolumeArgs = module_index.DomainDevicesDiskMirrorSourceVolume.new;
+  final DomainDevicesDiskMirrorSourceVolumeSecLabel = module_index.DomainDevicesDiskMirrorSourceVolumeSecLabel.new;
+  final DomainDevicesDiskMirrorSourceVolumeSecLabelArgs = module_index.DomainDevicesDiskMirrorSourceVolumeSecLabel.new;
   final DomainDevicesDiskSource = module_index.DomainDevicesDiskSource.new;
   final DomainDevicesDiskSourceArgs = module_index.DomainDevicesDiskSource.new;
-  final DomainDevicesDiskSourceBlock =
-      module_index.DomainDevicesDiskSourceBlock.new;
-  final DomainDevicesDiskSourceBlockArgs =
-      module_index.DomainDevicesDiskSourceBlock.new;
-  final DomainDevicesDiskSourceBlockSecLabel =
-      module_index.DomainDevicesDiskSourceBlockSecLabel.new;
-  final DomainDevicesDiskSourceBlockSecLabelArgs =
-      module_index.DomainDevicesDiskSourceBlockSecLabel.new;
-  final DomainDevicesDiskSourceCookies =
-      module_index.DomainDevicesDiskSourceCookies.new;
-  final DomainDevicesDiskSourceCookiesArgs =
-      module_index.DomainDevicesDiskSourceCookies.new;
-  final DomainDevicesDiskSourceCookiesCookie =
-      module_index.DomainDevicesDiskSourceCookiesCookie.new;
-  final DomainDevicesDiskSourceCookiesCookieArgs =
-      module_index.DomainDevicesDiskSourceCookiesCookie.new;
-  final DomainDevicesDiskSourceDataStore =
-      module_index.DomainDevicesDiskSourceDataStore.new;
-  final DomainDevicesDiskSourceDataStoreArgs =
-      module_index.DomainDevicesDiskSourceDataStore.new;
-  final DomainDevicesDiskSourceDataStoreFormat =
-      module_index.DomainDevicesDiskSourceDataStoreFormat.new;
-  final DomainDevicesDiskSourceDataStoreFormatArgs =
-      module_index.DomainDevicesDiskSourceDataStoreFormat.new;
-  final DomainDevicesDiskSourceDataStoreFormatMetadataCache =
-      module_index.DomainDevicesDiskSourceDataStoreFormatMetadataCache.new;
-  final DomainDevicesDiskSourceDataStoreFormatMetadataCacheArgs =
-      module_index.DomainDevicesDiskSourceDataStoreFormatMetadataCache.new;
-  final DomainDevicesDiskSourceDataStoreFormatMetadataCacheMaxSize =
-      module_index
-          .DomainDevicesDiskSourceDataStoreFormatMetadataCacheMaxSize
-          .new;
-  final DomainDevicesDiskSourceDataStoreFormatMetadataCacheMaxSizeArgs =
-      module_index
-          .DomainDevicesDiskSourceDataStoreFormatMetadataCacheMaxSize
-          .new;
-  final DomainDevicesDiskSourceDir =
-      module_index.DomainDevicesDiskSourceDir.new;
-  final DomainDevicesDiskSourceDirArgs =
-      module_index.DomainDevicesDiskSourceDir.new;
-  final DomainDevicesDiskSourceEncryption =
-      module_index.DomainDevicesDiskSourceEncryption.new;
-  final DomainDevicesDiskSourceEncryptionArgs =
-      module_index.DomainDevicesDiskSourceEncryption.new;
-  final DomainDevicesDiskSourceEncryptionSecret =
-      module_index.DomainDevicesDiskSourceEncryptionSecret.new;
-  final DomainDevicesDiskSourceEncryptionSecretArgs =
-      module_index.DomainDevicesDiskSourceEncryptionSecret.new;
-  final DomainDevicesDiskSourceFile =
-      module_index.DomainDevicesDiskSourceFile.new;
-  final DomainDevicesDiskSourceFileArgs =
-      module_index.DomainDevicesDiskSourceFile.new;
-  final DomainDevicesDiskSourceFileSecLabel =
-      module_index.DomainDevicesDiskSourceFileSecLabel.new;
-  final DomainDevicesDiskSourceFileSecLabelArgs =
-      module_index.DomainDevicesDiskSourceFileSecLabel.new;
-  final DomainDevicesDiskSourceNetwork =
-      module_index.DomainDevicesDiskSourceNetwork.new;
-  final DomainDevicesDiskSourceNetworkArgs =
-      module_index.DomainDevicesDiskSourceNetwork.new;
-  final DomainDevicesDiskSourceNetworkAuth =
-      module_index.DomainDevicesDiskSourceNetworkAuth.new;
-  final DomainDevicesDiskSourceNetworkAuthArgs =
-      module_index.DomainDevicesDiskSourceNetworkAuth.new;
-  final DomainDevicesDiskSourceNetworkAuthSecret =
-      module_index.DomainDevicesDiskSourceNetworkAuthSecret.new;
-  final DomainDevicesDiskSourceNetworkAuthSecretArgs =
-      module_index.DomainDevicesDiskSourceNetworkAuthSecret.new;
-  final DomainDevicesDiskSourceNetworkConfig =
-      module_index.DomainDevicesDiskSourceNetworkConfig.new;
-  final DomainDevicesDiskSourceNetworkConfigArgs =
-      module_index.DomainDevicesDiskSourceNetworkConfig.new;
-  final DomainDevicesDiskSourceNetworkHost =
-      module_index.DomainDevicesDiskSourceNetworkHost.new;
-  final DomainDevicesDiskSourceNetworkHostArgs =
-      module_index.DomainDevicesDiskSourceNetworkHost.new;
-  final DomainDevicesDiskSourceNetworkIdentity =
-      module_index.DomainDevicesDiskSourceNetworkIdentity.new;
-  final DomainDevicesDiskSourceNetworkIdentityArgs =
-      module_index.DomainDevicesDiskSourceNetworkIdentity.new;
-  final DomainDevicesDiskSourceNetworkInitiator =
-      module_index.DomainDevicesDiskSourceNetworkInitiator.new;
-  final DomainDevicesDiskSourceNetworkInitiatorArgs =
-      module_index.DomainDevicesDiskSourceNetworkInitiator.new;
-  final DomainDevicesDiskSourceNetworkInitiatorIqn =
-      module_index.DomainDevicesDiskSourceNetworkInitiatorIqn.new;
-  final DomainDevicesDiskSourceNetworkInitiatorIqnArgs =
-      module_index.DomainDevicesDiskSourceNetworkInitiatorIqn.new;
-  final DomainDevicesDiskSourceNetworkKnownHosts =
-      module_index.DomainDevicesDiskSourceNetworkKnownHosts.new;
-  final DomainDevicesDiskSourceNetworkKnownHostsArgs =
-      module_index.DomainDevicesDiskSourceNetworkKnownHosts.new;
-  final DomainDevicesDiskSourceNetworkReconnect =
-      module_index.DomainDevicesDiskSourceNetworkReconnect.new;
-  final DomainDevicesDiskSourceNetworkReconnectArgs =
-      module_index.DomainDevicesDiskSourceNetworkReconnect.new;
-  final DomainDevicesDiskSourceNetworkSnapshot =
-      module_index.DomainDevicesDiskSourceNetworkSnapshot.new;
-  final DomainDevicesDiskSourceNetworkSnapshotArgs =
-      module_index.DomainDevicesDiskSourceNetworkSnapshot.new;
-  final DomainDevicesDiskSourceReadahead =
-      module_index.DomainDevicesDiskSourceReadahead.new;
-  final DomainDevicesDiskSourceReadaheadArgs =
-      module_index.DomainDevicesDiskSourceReadahead.new;
-  final DomainDevicesDiskSourceReservations =
-      module_index.DomainDevicesDiskSourceReservations.new;
-  final DomainDevicesDiskSourceReservationsArgs =
-      module_index.DomainDevicesDiskSourceReservations.new;
-  final DomainDevicesDiskSourceReservationsSource =
-      module_index.DomainDevicesDiskSourceReservationsSource.new;
-  final DomainDevicesDiskSourceReservationsSourceArgs =
-      module_index.DomainDevicesDiskSourceReservationsSource.new;
-  final DomainDevicesDiskSourceReservationsSourceDbus =
-      module_index.DomainDevicesDiskSourceReservationsSourceDbus.new;
-  final DomainDevicesDiskSourceReservationsSourceDbusArgs =
-      module_index.DomainDevicesDiskSourceReservationsSourceDbus.new;
-  final DomainDevicesDiskSourceReservationsSourceDev =
-      module_index.DomainDevicesDiskSourceReservationsSourceDev.new;
-  final DomainDevicesDiskSourceReservationsSourceDevArgs =
-      module_index.DomainDevicesDiskSourceReservationsSourceDev.new;
-  final DomainDevicesDiskSourceReservationsSourceDevSecLabel =
-      module_index.DomainDevicesDiskSourceReservationsSourceDevSecLabel.new;
-  final DomainDevicesDiskSourceReservationsSourceDevSecLabelArgs =
-      module_index.DomainDevicesDiskSourceReservationsSourceDevSecLabel.new;
-  final DomainDevicesDiskSourceReservationsSourceFile =
-      module_index.DomainDevicesDiskSourceReservationsSourceFile.new;
-  final DomainDevicesDiskSourceReservationsSourceFileArgs =
-      module_index.DomainDevicesDiskSourceReservationsSourceFile.new;
-  final DomainDevicesDiskSourceReservationsSourceFileSecLabel =
-      module_index.DomainDevicesDiskSourceReservationsSourceFileSecLabel.new;
-  final DomainDevicesDiskSourceReservationsSourceFileSecLabelArgs =
-      module_index.DomainDevicesDiskSourceReservationsSourceFileSecLabel.new;
-  final DomainDevicesDiskSourceReservationsSourceNmdm =
-      module_index.DomainDevicesDiskSourceReservationsSourceNmdm.new;
-  final DomainDevicesDiskSourceReservationsSourceNmdmArgs =
-      module_index.DomainDevicesDiskSourceReservationsSourceNmdm.new;
-  final DomainDevicesDiskSourceReservationsSourcePipe =
-      module_index.DomainDevicesDiskSourceReservationsSourcePipe.new;
-  final DomainDevicesDiskSourceReservationsSourcePipeArgs =
-      module_index.DomainDevicesDiskSourceReservationsSourcePipe.new;
-  final DomainDevicesDiskSourceReservationsSourcePipeSecLabel =
-      module_index.DomainDevicesDiskSourceReservationsSourcePipeSecLabel.new;
-  final DomainDevicesDiskSourceReservationsSourcePipeSecLabelArgs =
-      module_index.DomainDevicesDiskSourceReservationsSourcePipeSecLabel.new;
-  final DomainDevicesDiskSourceReservationsSourcePty =
-      module_index.DomainDevicesDiskSourceReservationsSourcePty.new;
-  final DomainDevicesDiskSourceReservationsSourcePtyArgs =
-      module_index.DomainDevicesDiskSourceReservationsSourcePty.new;
-  final DomainDevicesDiskSourceReservationsSourcePtySecLabel =
-      module_index.DomainDevicesDiskSourceReservationsSourcePtySecLabel.new;
-  final DomainDevicesDiskSourceReservationsSourcePtySecLabelArgs =
-      module_index.DomainDevicesDiskSourceReservationsSourcePtySecLabel.new;
-  final DomainDevicesDiskSourceReservationsSourceQemuvdAgent =
-      module_index.DomainDevicesDiskSourceReservationsSourceQemuvdAgent.new;
-  final DomainDevicesDiskSourceReservationsSourceQemuvdAgentArgs =
-      module_index.DomainDevicesDiskSourceReservationsSourceQemuvdAgent.new;
-  final DomainDevicesDiskSourceReservationsSourceQemuvdAgentClipBoard =
-      module_index
-          .DomainDevicesDiskSourceReservationsSourceQemuvdAgentClipBoard
-          .new;
-  final DomainDevicesDiskSourceReservationsSourceQemuvdAgentClipBoardArgs =
-      module_index
-          .DomainDevicesDiskSourceReservationsSourceQemuvdAgentClipBoard
-          .new;
-  final DomainDevicesDiskSourceReservationsSourceQemuvdAgentMouse = module_index
-      .DomainDevicesDiskSourceReservationsSourceQemuvdAgentMouse
-      .new;
-  final DomainDevicesDiskSourceReservationsSourceQemuvdAgentMouseArgs =
-      module_index
-          .DomainDevicesDiskSourceReservationsSourceQemuvdAgentMouse
-          .new;
-  final DomainDevicesDiskSourceReservationsSourceSpicePort =
-      module_index.DomainDevicesDiskSourceReservationsSourceSpicePort.new;
-  final DomainDevicesDiskSourceReservationsSourceSpicePortArgs =
-      module_index.DomainDevicesDiskSourceReservationsSourceSpicePort.new;
-  final DomainDevicesDiskSourceReservationsSourceTcp =
-      module_index.DomainDevicesDiskSourceReservationsSourceTcp.new;
-  final DomainDevicesDiskSourceReservationsSourceTcpArgs =
-      module_index.DomainDevicesDiskSourceReservationsSourceTcp.new;
-  final DomainDevicesDiskSourceReservationsSourceTcpReconnect =
-      module_index.DomainDevicesDiskSourceReservationsSourceTcpReconnect.new;
-  final DomainDevicesDiskSourceReservationsSourceTcpReconnectArgs =
-      module_index.DomainDevicesDiskSourceReservationsSourceTcpReconnect.new;
-  final DomainDevicesDiskSourceReservationsSourceUdp =
-      module_index.DomainDevicesDiskSourceReservationsSourceUdp.new;
-  final DomainDevicesDiskSourceReservationsSourceUdpArgs =
-      module_index.DomainDevicesDiskSourceReservationsSourceUdp.new;
-  final DomainDevicesDiskSourceReservationsSourceUnix =
-      module_index.DomainDevicesDiskSourceReservationsSourceUnix.new;
-  final DomainDevicesDiskSourceReservationsSourceUnixArgs =
-      module_index.DomainDevicesDiskSourceReservationsSourceUnix.new;
-  final DomainDevicesDiskSourceReservationsSourceUnixReconnect =
-      module_index.DomainDevicesDiskSourceReservationsSourceUnixReconnect.new;
-  final DomainDevicesDiskSourceReservationsSourceUnixReconnectArgs =
-      module_index.DomainDevicesDiskSourceReservationsSourceUnixReconnect.new;
-  final DomainDevicesDiskSourceReservationsSourceUnixSecLabel =
-      module_index.DomainDevicesDiskSourceReservationsSourceUnixSecLabel.new;
-  final DomainDevicesDiskSourceReservationsSourceUnixSecLabelArgs =
-      module_index.DomainDevicesDiskSourceReservationsSourceUnixSecLabel.new;
-  final DomainDevicesDiskSourceSlices =
-      module_index.DomainDevicesDiskSourceSlices.new;
-  final DomainDevicesDiskSourceSlicesArgs =
-      module_index.DomainDevicesDiskSourceSlices.new;
-  final DomainDevicesDiskSourceSlicesSlice =
-      module_index.DomainDevicesDiskSourceSlicesSlice.new;
-  final DomainDevicesDiskSourceSlicesSliceArgs =
-      module_index.DomainDevicesDiskSourceSlicesSlice.new;
-  final DomainDevicesDiskSourceSsl =
-      module_index.DomainDevicesDiskSourceSsl.new;
-  final DomainDevicesDiskSourceSslArgs =
-      module_index.DomainDevicesDiskSourceSsl.new;
-  final DomainDevicesDiskSourceTimeout =
-      module_index.DomainDevicesDiskSourceTimeout.new;
-  final DomainDevicesDiskSourceTimeoutArgs =
-      module_index.DomainDevicesDiskSourceTimeout.new;
-  final DomainDevicesDiskSourceVhostUser =
-      module_index.DomainDevicesDiskSourceVhostUser.new;
-  final DomainDevicesDiskSourceVhostUserArgs =
-      module_index.DomainDevicesDiskSourceVhostUser.new;
-  final DomainDevicesDiskSourceVhostUserDbus =
-      module_index.DomainDevicesDiskSourceVhostUserDbus.new;
-  final DomainDevicesDiskSourceVhostUserDbusArgs =
-      module_index.DomainDevicesDiskSourceVhostUserDbus.new;
-  final DomainDevicesDiskSourceVhostUserDev =
-      module_index.DomainDevicesDiskSourceVhostUserDev.new;
-  final DomainDevicesDiskSourceVhostUserDevArgs =
-      module_index.DomainDevicesDiskSourceVhostUserDev.new;
-  final DomainDevicesDiskSourceVhostUserDevSecLabel =
-      module_index.DomainDevicesDiskSourceVhostUserDevSecLabel.new;
-  final DomainDevicesDiskSourceVhostUserDevSecLabelArgs =
-      module_index.DomainDevicesDiskSourceVhostUserDevSecLabel.new;
-  final DomainDevicesDiskSourceVhostUserFile =
-      module_index.DomainDevicesDiskSourceVhostUserFile.new;
-  final DomainDevicesDiskSourceVhostUserFileArgs =
-      module_index.DomainDevicesDiskSourceVhostUserFile.new;
-  final DomainDevicesDiskSourceVhostUserFileSecLabel =
-      module_index.DomainDevicesDiskSourceVhostUserFileSecLabel.new;
-  final DomainDevicesDiskSourceVhostUserFileSecLabelArgs =
-      module_index.DomainDevicesDiskSourceVhostUserFileSecLabel.new;
-  final DomainDevicesDiskSourceVhostUserNmdm =
-      module_index.DomainDevicesDiskSourceVhostUserNmdm.new;
-  final DomainDevicesDiskSourceVhostUserNmdmArgs =
-      module_index.DomainDevicesDiskSourceVhostUserNmdm.new;
-  final DomainDevicesDiskSourceVhostUserPipe =
-      module_index.DomainDevicesDiskSourceVhostUserPipe.new;
-  final DomainDevicesDiskSourceVhostUserPipeArgs =
-      module_index.DomainDevicesDiskSourceVhostUserPipe.new;
-  final DomainDevicesDiskSourceVhostUserPipeSecLabel =
-      module_index.DomainDevicesDiskSourceVhostUserPipeSecLabel.new;
-  final DomainDevicesDiskSourceVhostUserPipeSecLabelArgs =
-      module_index.DomainDevicesDiskSourceVhostUserPipeSecLabel.new;
-  final DomainDevicesDiskSourceVhostUserPty =
-      module_index.DomainDevicesDiskSourceVhostUserPty.new;
-  final DomainDevicesDiskSourceVhostUserPtyArgs =
-      module_index.DomainDevicesDiskSourceVhostUserPty.new;
-  final DomainDevicesDiskSourceVhostUserPtySecLabel =
-      module_index.DomainDevicesDiskSourceVhostUserPtySecLabel.new;
-  final DomainDevicesDiskSourceVhostUserPtySecLabelArgs =
-      module_index.DomainDevicesDiskSourceVhostUserPtySecLabel.new;
-  final DomainDevicesDiskSourceVhostUserQemuvdAgent =
-      module_index.DomainDevicesDiskSourceVhostUserQemuvdAgent.new;
-  final DomainDevicesDiskSourceVhostUserQemuvdAgentArgs =
-      module_index.DomainDevicesDiskSourceVhostUserQemuvdAgent.new;
-  final DomainDevicesDiskSourceVhostUserQemuvdAgentClipBoard =
-      module_index.DomainDevicesDiskSourceVhostUserQemuvdAgentClipBoard.new;
-  final DomainDevicesDiskSourceVhostUserQemuvdAgentClipBoardArgs =
-      module_index.DomainDevicesDiskSourceVhostUserQemuvdAgentClipBoard.new;
-  final DomainDevicesDiskSourceVhostUserQemuvdAgentMouse =
-      module_index.DomainDevicesDiskSourceVhostUserQemuvdAgentMouse.new;
-  final DomainDevicesDiskSourceVhostUserQemuvdAgentMouseArgs =
-      module_index.DomainDevicesDiskSourceVhostUserQemuvdAgentMouse.new;
-  final DomainDevicesDiskSourceVhostUserSpicePort =
-      module_index.DomainDevicesDiskSourceVhostUserSpicePort.new;
-  final DomainDevicesDiskSourceVhostUserSpicePortArgs =
-      module_index.DomainDevicesDiskSourceVhostUserSpicePort.new;
-  final DomainDevicesDiskSourceVhostUserTcp =
-      module_index.DomainDevicesDiskSourceVhostUserTcp.new;
-  final DomainDevicesDiskSourceVhostUserTcpArgs =
-      module_index.DomainDevicesDiskSourceVhostUserTcp.new;
-  final DomainDevicesDiskSourceVhostUserTcpReconnect =
-      module_index.DomainDevicesDiskSourceVhostUserTcpReconnect.new;
-  final DomainDevicesDiskSourceVhostUserTcpReconnectArgs =
-      module_index.DomainDevicesDiskSourceVhostUserTcpReconnect.new;
-  final DomainDevicesDiskSourceVhostUserUdp =
-      module_index.DomainDevicesDiskSourceVhostUserUdp.new;
-  final DomainDevicesDiskSourceVhostUserUdpArgs =
-      module_index.DomainDevicesDiskSourceVhostUserUdp.new;
-  final DomainDevicesDiskSourceVhostUserUnix =
-      module_index.DomainDevicesDiskSourceVhostUserUnix.new;
-  final DomainDevicesDiskSourceVhostUserUnixArgs =
-      module_index.DomainDevicesDiskSourceVhostUserUnix.new;
-  final DomainDevicesDiskSourceVhostUserUnixReconnect =
-      module_index.DomainDevicesDiskSourceVhostUserUnixReconnect.new;
-  final DomainDevicesDiskSourceVhostUserUnixReconnectArgs =
-      module_index.DomainDevicesDiskSourceVhostUserUnixReconnect.new;
-  final DomainDevicesDiskSourceVhostUserUnixSecLabel =
-      module_index.DomainDevicesDiskSourceVhostUserUnixSecLabel.new;
-  final DomainDevicesDiskSourceVhostUserUnixSecLabelArgs =
-      module_index.DomainDevicesDiskSourceVhostUserUnixSecLabel.new;
-  final DomainDevicesDiskSourceVhostVdpa =
-      module_index.DomainDevicesDiskSourceVhostVdpa.new;
-  final DomainDevicesDiskSourceVhostVdpaArgs =
-      module_index.DomainDevicesDiskSourceVhostVdpa.new;
-  final DomainDevicesDiskSourceVolume =
-      module_index.DomainDevicesDiskSourceVolume.new;
-  final DomainDevicesDiskSourceVolumeArgs =
-      module_index.DomainDevicesDiskSourceVolume.new;
-  final DomainDevicesDiskSourceVolumeSecLabel =
-      module_index.DomainDevicesDiskSourceVolumeSecLabel.new;
-  final DomainDevicesDiskSourceVolumeSecLabelArgs =
-      module_index.DomainDevicesDiskSourceVolumeSecLabel.new;
+  final DomainDevicesDiskSourceBlock = module_index.DomainDevicesDiskSourceBlock.new;
+  final DomainDevicesDiskSourceBlockArgs = module_index.DomainDevicesDiskSourceBlock.new;
+  final DomainDevicesDiskSourceBlockSecLabel = module_index.DomainDevicesDiskSourceBlockSecLabel.new;
+  final DomainDevicesDiskSourceBlockSecLabelArgs = module_index.DomainDevicesDiskSourceBlockSecLabel.new;
+  final DomainDevicesDiskSourceCookies = module_index.DomainDevicesDiskSourceCookies.new;
+  final DomainDevicesDiskSourceCookiesArgs = module_index.DomainDevicesDiskSourceCookies.new;
+  final DomainDevicesDiskSourceCookiesCookie = module_index.DomainDevicesDiskSourceCookiesCookie.new;
+  final DomainDevicesDiskSourceCookiesCookieArgs = module_index.DomainDevicesDiskSourceCookiesCookie.new;
+  final DomainDevicesDiskSourceDataStore = module_index.DomainDevicesDiskSourceDataStore.new;
+  final DomainDevicesDiskSourceDataStoreArgs = module_index.DomainDevicesDiskSourceDataStore.new;
+  final DomainDevicesDiskSourceDataStoreFormat = module_index.DomainDevicesDiskSourceDataStoreFormat.new;
+  final DomainDevicesDiskSourceDataStoreFormatArgs = module_index.DomainDevicesDiskSourceDataStoreFormat.new;
+  final DomainDevicesDiskSourceDataStoreFormatMetadataCache = module_index.DomainDevicesDiskSourceDataStoreFormatMetadataCache.new;
+  final DomainDevicesDiskSourceDataStoreFormatMetadataCacheArgs = module_index.DomainDevicesDiskSourceDataStoreFormatMetadataCache.new;
+  final DomainDevicesDiskSourceDataStoreFormatMetadataCacheMaxSize = module_index.DomainDevicesDiskSourceDataStoreFormatMetadataCacheMaxSize.new;
+  final DomainDevicesDiskSourceDataStoreFormatMetadataCacheMaxSizeArgs = module_index.DomainDevicesDiskSourceDataStoreFormatMetadataCacheMaxSize.new;
+  final DomainDevicesDiskSourceDir = module_index.DomainDevicesDiskSourceDir.new;
+  final DomainDevicesDiskSourceDirArgs = module_index.DomainDevicesDiskSourceDir.new;
+  final DomainDevicesDiskSourceEncryption = module_index.DomainDevicesDiskSourceEncryption.new;
+  final DomainDevicesDiskSourceEncryptionArgs = module_index.DomainDevicesDiskSourceEncryption.new;
+  final DomainDevicesDiskSourceEncryptionSecret = module_index.DomainDevicesDiskSourceEncryptionSecret.new;
+  final DomainDevicesDiskSourceEncryptionSecretArgs = module_index.DomainDevicesDiskSourceEncryptionSecret.new;
+  final DomainDevicesDiskSourceFile = module_index.DomainDevicesDiskSourceFile.new;
+  final DomainDevicesDiskSourceFileArgs = module_index.DomainDevicesDiskSourceFile.new;
+  final DomainDevicesDiskSourceFileSecLabel = module_index.DomainDevicesDiskSourceFileSecLabel.new;
+  final DomainDevicesDiskSourceFileSecLabelArgs = module_index.DomainDevicesDiskSourceFileSecLabel.new;
+  final DomainDevicesDiskSourceNetwork = module_index.DomainDevicesDiskSourceNetwork.new;
+  final DomainDevicesDiskSourceNetworkArgs = module_index.DomainDevicesDiskSourceNetwork.new;
+  final DomainDevicesDiskSourceNetworkAuth = module_index.DomainDevicesDiskSourceNetworkAuth.new;
+  final DomainDevicesDiskSourceNetworkAuthArgs = module_index.DomainDevicesDiskSourceNetworkAuth.new;
+  final DomainDevicesDiskSourceNetworkAuthSecret = module_index.DomainDevicesDiskSourceNetworkAuthSecret.new;
+  final DomainDevicesDiskSourceNetworkAuthSecretArgs = module_index.DomainDevicesDiskSourceNetworkAuthSecret.new;
+  final DomainDevicesDiskSourceNetworkConfig = module_index.DomainDevicesDiskSourceNetworkConfig.new;
+  final DomainDevicesDiskSourceNetworkConfigArgs = module_index.DomainDevicesDiskSourceNetworkConfig.new;
+  final DomainDevicesDiskSourceNetworkHost = module_index.DomainDevicesDiskSourceNetworkHost.new;
+  final DomainDevicesDiskSourceNetworkHostArgs = module_index.DomainDevicesDiskSourceNetworkHost.new;
+  final DomainDevicesDiskSourceNetworkIdentity = module_index.DomainDevicesDiskSourceNetworkIdentity.new;
+  final DomainDevicesDiskSourceNetworkIdentityArgs = module_index.DomainDevicesDiskSourceNetworkIdentity.new;
+  final DomainDevicesDiskSourceNetworkInitiator = module_index.DomainDevicesDiskSourceNetworkInitiator.new;
+  final DomainDevicesDiskSourceNetworkInitiatorArgs = module_index.DomainDevicesDiskSourceNetworkInitiator.new;
+  final DomainDevicesDiskSourceNetworkInitiatorIqn = module_index.DomainDevicesDiskSourceNetworkInitiatorIqn.new;
+  final DomainDevicesDiskSourceNetworkInitiatorIqnArgs = module_index.DomainDevicesDiskSourceNetworkInitiatorIqn.new;
+  final DomainDevicesDiskSourceNetworkKnownHosts = module_index.DomainDevicesDiskSourceNetworkKnownHosts.new;
+  final DomainDevicesDiskSourceNetworkKnownHostsArgs = module_index.DomainDevicesDiskSourceNetworkKnownHosts.new;
+  final DomainDevicesDiskSourceNetworkReconnect = module_index.DomainDevicesDiskSourceNetworkReconnect.new;
+  final DomainDevicesDiskSourceNetworkReconnectArgs = module_index.DomainDevicesDiskSourceNetworkReconnect.new;
+  final DomainDevicesDiskSourceNetworkSnapshot = module_index.DomainDevicesDiskSourceNetworkSnapshot.new;
+  final DomainDevicesDiskSourceNetworkSnapshotArgs = module_index.DomainDevicesDiskSourceNetworkSnapshot.new;
+  final DomainDevicesDiskSourceReadahead = module_index.DomainDevicesDiskSourceReadahead.new;
+  final DomainDevicesDiskSourceReadaheadArgs = module_index.DomainDevicesDiskSourceReadahead.new;
+  final DomainDevicesDiskSourceReservations = module_index.DomainDevicesDiskSourceReservations.new;
+  final DomainDevicesDiskSourceReservationsArgs = module_index.DomainDevicesDiskSourceReservations.new;
+  final DomainDevicesDiskSourceReservationsSource = module_index.DomainDevicesDiskSourceReservationsSource.new;
+  final DomainDevicesDiskSourceReservationsSourceArgs = module_index.DomainDevicesDiskSourceReservationsSource.new;
+  final DomainDevicesDiskSourceReservationsSourceDbus = module_index.DomainDevicesDiskSourceReservationsSourceDbus.new;
+  final DomainDevicesDiskSourceReservationsSourceDbusArgs = module_index.DomainDevicesDiskSourceReservationsSourceDbus.new;
+  final DomainDevicesDiskSourceReservationsSourceDev = module_index.DomainDevicesDiskSourceReservationsSourceDev.new;
+  final DomainDevicesDiskSourceReservationsSourceDevArgs = module_index.DomainDevicesDiskSourceReservationsSourceDev.new;
+  final DomainDevicesDiskSourceReservationsSourceDevSecLabel = module_index.DomainDevicesDiskSourceReservationsSourceDevSecLabel.new;
+  final DomainDevicesDiskSourceReservationsSourceDevSecLabelArgs = module_index.DomainDevicesDiskSourceReservationsSourceDevSecLabel.new;
+  final DomainDevicesDiskSourceReservationsSourceFile = module_index.DomainDevicesDiskSourceReservationsSourceFile.new;
+  final DomainDevicesDiskSourceReservationsSourceFileArgs = module_index.DomainDevicesDiskSourceReservationsSourceFile.new;
+  final DomainDevicesDiskSourceReservationsSourceFileSecLabel = module_index.DomainDevicesDiskSourceReservationsSourceFileSecLabel.new;
+  final DomainDevicesDiskSourceReservationsSourceFileSecLabelArgs = module_index.DomainDevicesDiskSourceReservationsSourceFileSecLabel.new;
+  final DomainDevicesDiskSourceReservationsSourceNmdm = module_index.DomainDevicesDiskSourceReservationsSourceNmdm.new;
+  final DomainDevicesDiskSourceReservationsSourceNmdmArgs = module_index.DomainDevicesDiskSourceReservationsSourceNmdm.new;
+  final DomainDevicesDiskSourceReservationsSourcePipe = module_index.DomainDevicesDiskSourceReservationsSourcePipe.new;
+  final DomainDevicesDiskSourceReservationsSourcePipeArgs = module_index.DomainDevicesDiskSourceReservationsSourcePipe.new;
+  final DomainDevicesDiskSourceReservationsSourcePipeSecLabel = module_index.DomainDevicesDiskSourceReservationsSourcePipeSecLabel.new;
+  final DomainDevicesDiskSourceReservationsSourcePipeSecLabelArgs = module_index.DomainDevicesDiskSourceReservationsSourcePipeSecLabel.new;
+  final DomainDevicesDiskSourceReservationsSourcePty = module_index.DomainDevicesDiskSourceReservationsSourcePty.new;
+  final DomainDevicesDiskSourceReservationsSourcePtyArgs = module_index.DomainDevicesDiskSourceReservationsSourcePty.new;
+  final DomainDevicesDiskSourceReservationsSourcePtySecLabel = module_index.DomainDevicesDiskSourceReservationsSourcePtySecLabel.new;
+  final DomainDevicesDiskSourceReservationsSourcePtySecLabelArgs = module_index.DomainDevicesDiskSourceReservationsSourcePtySecLabel.new;
+  final DomainDevicesDiskSourceReservationsSourceQemuvdAgent = module_index.DomainDevicesDiskSourceReservationsSourceQemuvdAgent.new;
+  final DomainDevicesDiskSourceReservationsSourceQemuvdAgentArgs = module_index.DomainDevicesDiskSourceReservationsSourceQemuvdAgent.new;
+  final DomainDevicesDiskSourceReservationsSourceQemuvdAgentClipBoard = module_index.DomainDevicesDiskSourceReservationsSourceQemuvdAgentClipBoard.new;
+  final DomainDevicesDiskSourceReservationsSourceQemuvdAgentClipBoardArgs = module_index.DomainDevicesDiskSourceReservationsSourceQemuvdAgentClipBoard.new;
+  final DomainDevicesDiskSourceReservationsSourceQemuvdAgentMouse = module_index.DomainDevicesDiskSourceReservationsSourceQemuvdAgentMouse.new;
+  final DomainDevicesDiskSourceReservationsSourceQemuvdAgentMouseArgs = module_index.DomainDevicesDiskSourceReservationsSourceQemuvdAgentMouse.new;
+  final DomainDevicesDiskSourceReservationsSourceSpicePort = module_index.DomainDevicesDiskSourceReservationsSourceSpicePort.new;
+  final DomainDevicesDiskSourceReservationsSourceSpicePortArgs = module_index.DomainDevicesDiskSourceReservationsSourceSpicePort.new;
+  final DomainDevicesDiskSourceReservationsSourceTcp = module_index.DomainDevicesDiskSourceReservationsSourceTcp.new;
+  final DomainDevicesDiskSourceReservationsSourceTcpArgs = module_index.DomainDevicesDiskSourceReservationsSourceTcp.new;
+  final DomainDevicesDiskSourceReservationsSourceTcpReconnect = module_index.DomainDevicesDiskSourceReservationsSourceTcpReconnect.new;
+  final DomainDevicesDiskSourceReservationsSourceTcpReconnectArgs = module_index.DomainDevicesDiskSourceReservationsSourceTcpReconnect.new;
+  final DomainDevicesDiskSourceReservationsSourceUdp = module_index.DomainDevicesDiskSourceReservationsSourceUdp.new;
+  final DomainDevicesDiskSourceReservationsSourceUdpArgs = module_index.DomainDevicesDiskSourceReservationsSourceUdp.new;
+  final DomainDevicesDiskSourceReservationsSourceUnix = module_index.DomainDevicesDiskSourceReservationsSourceUnix.new;
+  final DomainDevicesDiskSourceReservationsSourceUnixArgs = module_index.DomainDevicesDiskSourceReservationsSourceUnix.new;
+  final DomainDevicesDiskSourceReservationsSourceUnixReconnect = module_index.DomainDevicesDiskSourceReservationsSourceUnixReconnect.new;
+  final DomainDevicesDiskSourceReservationsSourceUnixReconnectArgs = module_index.DomainDevicesDiskSourceReservationsSourceUnixReconnect.new;
+  final DomainDevicesDiskSourceReservationsSourceUnixSecLabel = module_index.DomainDevicesDiskSourceReservationsSourceUnixSecLabel.new;
+  final DomainDevicesDiskSourceReservationsSourceUnixSecLabelArgs = module_index.DomainDevicesDiskSourceReservationsSourceUnixSecLabel.new;
+  final DomainDevicesDiskSourceSlices = module_index.DomainDevicesDiskSourceSlices.new;
+  final DomainDevicesDiskSourceSlicesArgs = module_index.DomainDevicesDiskSourceSlices.new;
+  final DomainDevicesDiskSourceSlicesSlice = module_index.DomainDevicesDiskSourceSlicesSlice.new;
+  final DomainDevicesDiskSourceSlicesSliceArgs = module_index.DomainDevicesDiskSourceSlicesSlice.new;
+  final DomainDevicesDiskSourceSsl = module_index.DomainDevicesDiskSourceSsl.new;
+  final DomainDevicesDiskSourceSslArgs = module_index.DomainDevicesDiskSourceSsl.new;
+  final DomainDevicesDiskSourceTimeout = module_index.DomainDevicesDiskSourceTimeout.new;
+  final DomainDevicesDiskSourceTimeoutArgs = module_index.DomainDevicesDiskSourceTimeout.new;
+  final DomainDevicesDiskSourceVhostUser = module_index.DomainDevicesDiskSourceVhostUser.new;
+  final DomainDevicesDiskSourceVhostUserArgs = module_index.DomainDevicesDiskSourceVhostUser.new;
+  final DomainDevicesDiskSourceVhostUserDbus = module_index.DomainDevicesDiskSourceVhostUserDbus.new;
+  final DomainDevicesDiskSourceVhostUserDbusArgs = module_index.DomainDevicesDiskSourceVhostUserDbus.new;
+  final DomainDevicesDiskSourceVhostUserDev = module_index.DomainDevicesDiskSourceVhostUserDev.new;
+  final DomainDevicesDiskSourceVhostUserDevArgs = module_index.DomainDevicesDiskSourceVhostUserDev.new;
+  final DomainDevicesDiskSourceVhostUserDevSecLabel = module_index.DomainDevicesDiskSourceVhostUserDevSecLabel.new;
+  final DomainDevicesDiskSourceVhostUserDevSecLabelArgs = module_index.DomainDevicesDiskSourceVhostUserDevSecLabel.new;
+  final DomainDevicesDiskSourceVhostUserFile = module_index.DomainDevicesDiskSourceVhostUserFile.new;
+  final DomainDevicesDiskSourceVhostUserFileArgs = module_index.DomainDevicesDiskSourceVhostUserFile.new;
+  final DomainDevicesDiskSourceVhostUserFileSecLabel = module_index.DomainDevicesDiskSourceVhostUserFileSecLabel.new;
+  final DomainDevicesDiskSourceVhostUserFileSecLabelArgs = module_index.DomainDevicesDiskSourceVhostUserFileSecLabel.new;
+  final DomainDevicesDiskSourceVhostUserNmdm = module_index.DomainDevicesDiskSourceVhostUserNmdm.new;
+  final DomainDevicesDiskSourceVhostUserNmdmArgs = module_index.DomainDevicesDiskSourceVhostUserNmdm.new;
+  final DomainDevicesDiskSourceVhostUserPipe = module_index.DomainDevicesDiskSourceVhostUserPipe.new;
+  final DomainDevicesDiskSourceVhostUserPipeArgs = module_index.DomainDevicesDiskSourceVhostUserPipe.new;
+  final DomainDevicesDiskSourceVhostUserPipeSecLabel = module_index.DomainDevicesDiskSourceVhostUserPipeSecLabel.new;
+  final DomainDevicesDiskSourceVhostUserPipeSecLabelArgs = module_index.DomainDevicesDiskSourceVhostUserPipeSecLabel.new;
+  final DomainDevicesDiskSourceVhostUserPty = module_index.DomainDevicesDiskSourceVhostUserPty.new;
+  final DomainDevicesDiskSourceVhostUserPtyArgs = module_index.DomainDevicesDiskSourceVhostUserPty.new;
+  final DomainDevicesDiskSourceVhostUserPtySecLabel = module_index.DomainDevicesDiskSourceVhostUserPtySecLabel.new;
+  final DomainDevicesDiskSourceVhostUserPtySecLabelArgs = module_index.DomainDevicesDiskSourceVhostUserPtySecLabel.new;
+  final DomainDevicesDiskSourceVhostUserQemuvdAgent = module_index.DomainDevicesDiskSourceVhostUserQemuvdAgent.new;
+  final DomainDevicesDiskSourceVhostUserQemuvdAgentArgs = module_index.DomainDevicesDiskSourceVhostUserQemuvdAgent.new;
+  final DomainDevicesDiskSourceVhostUserQemuvdAgentClipBoard = module_index.DomainDevicesDiskSourceVhostUserQemuvdAgentClipBoard.new;
+  final DomainDevicesDiskSourceVhostUserQemuvdAgentClipBoardArgs = module_index.DomainDevicesDiskSourceVhostUserQemuvdAgentClipBoard.new;
+  final DomainDevicesDiskSourceVhostUserQemuvdAgentMouse = module_index.DomainDevicesDiskSourceVhostUserQemuvdAgentMouse.new;
+  final DomainDevicesDiskSourceVhostUserQemuvdAgentMouseArgs = module_index.DomainDevicesDiskSourceVhostUserQemuvdAgentMouse.new;
+  final DomainDevicesDiskSourceVhostUserSpicePort = module_index.DomainDevicesDiskSourceVhostUserSpicePort.new;
+  final DomainDevicesDiskSourceVhostUserSpicePortArgs = module_index.DomainDevicesDiskSourceVhostUserSpicePort.new;
+  final DomainDevicesDiskSourceVhostUserTcp = module_index.DomainDevicesDiskSourceVhostUserTcp.new;
+  final DomainDevicesDiskSourceVhostUserTcpArgs = module_index.DomainDevicesDiskSourceVhostUserTcp.new;
+  final DomainDevicesDiskSourceVhostUserTcpReconnect = module_index.DomainDevicesDiskSourceVhostUserTcpReconnect.new;
+  final DomainDevicesDiskSourceVhostUserTcpReconnectArgs = module_index.DomainDevicesDiskSourceVhostUserTcpReconnect.new;
+  final DomainDevicesDiskSourceVhostUserUdp = module_index.DomainDevicesDiskSourceVhostUserUdp.new;
+  final DomainDevicesDiskSourceVhostUserUdpArgs = module_index.DomainDevicesDiskSourceVhostUserUdp.new;
+  final DomainDevicesDiskSourceVhostUserUnix = module_index.DomainDevicesDiskSourceVhostUserUnix.new;
+  final DomainDevicesDiskSourceVhostUserUnixArgs = module_index.DomainDevicesDiskSourceVhostUserUnix.new;
+  final DomainDevicesDiskSourceVhostUserUnixReconnect = module_index.DomainDevicesDiskSourceVhostUserUnixReconnect.new;
+  final DomainDevicesDiskSourceVhostUserUnixReconnectArgs = module_index.DomainDevicesDiskSourceVhostUserUnixReconnect.new;
+  final DomainDevicesDiskSourceVhostUserUnixSecLabel = module_index.DomainDevicesDiskSourceVhostUserUnixSecLabel.new;
+  final DomainDevicesDiskSourceVhostUserUnixSecLabelArgs = module_index.DomainDevicesDiskSourceVhostUserUnixSecLabel.new;
+  final DomainDevicesDiskSourceVhostVdpa = module_index.DomainDevicesDiskSourceVhostVdpa.new;
+  final DomainDevicesDiskSourceVhostVdpaArgs = module_index.DomainDevicesDiskSourceVhostVdpa.new;
+  final DomainDevicesDiskSourceVolume = module_index.DomainDevicesDiskSourceVolume.new;
+  final DomainDevicesDiskSourceVolumeArgs = module_index.DomainDevicesDiskSourceVolume.new;
+  final DomainDevicesDiskSourceVolumeSecLabel = module_index.DomainDevicesDiskSourceVolumeSecLabel.new;
+  final DomainDevicesDiskSourceVolumeSecLabelArgs = module_index.DomainDevicesDiskSourceVolumeSecLabel.new;
   final DomainDevicesDiskTarget = module_index.DomainDevicesDiskTarget.new;
   final DomainDevicesDiskTargetArgs = module_index.DomainDevicesDiskTarget.new;
-  final DomainDevicesDiskThrottleFilters =
-      module_index.DomainDevicesDiskThrottleFilters.new;
-  final DomainDevicesDiskThrottleFiltersArgs =
-      module_index.DomainDevicesDiskThrottleFilters.new;
-  final DomainDevicesDiskThrottleFiltersThrottleFilter =
-      module_index.DomainDevicesDiskThrottleFiltersThrottleFilter.new;
-  final DomainDevicesDiskThrottleFiltersThrottleFilterArgs =
-      module_index.DomainDevicesDiskThrottleFiltersThrottleFilter.new;
-  final DomainDevicesDiskTransient =
-      module_index.DomainDevicesDiskTransient.new;
-  final DomainDevicesDiskTransientArgs =
-      module_index.DomainDevicesDiskTransient.new;
+  final DomainDevicesDiskThrottleFilters = module_index.DomainDevicesDiskThrottleFilters.new;
+  final DomainDevicesDiskThrottleFiltersArgs = module_index.DomainDevicesDiskThrottleFilters.new;
+  final DomainDevicesDiskThrottleFiltersThrottleFilter = module_index.DomainDevicesDiskThrottleFiltersThrottleFilter.new;
+  final DomainDevicesDiskThrottleFiltersThrottleFilterArgs = module_index.DomainDevicesDiskThrottleFiltersThrottleFilter.new;
+  final DomainDevicesDiskTransient = module_index.DomainDevicesDiskTransient.new;
+  final DomainDevicesDiskTransientArgs = module_index.DomainDevicesDiskTransient.new;
   final DomainDevicesFilesystem = module_index.DomainDevicesFilesystem.new;
-  final DomainDevicesFilesystemAcpi =
-      module_index.DomainDevicesFilesystemAcpi.new;
-  final DomainDevicesFilesystemAcpiArgs =
-      module_index.DomainDevicesFilesystemAcpi.new;
-  final DomainDevicesFilesystemAlias =
-      module_index.DomainDevicesFilesystemAlias.new;
-  final DomainDevicesFilesystemAliasArgs =
-      module_index.DomainDevicesFilesystemAlias.new;
+  final DomainDevicesFilesystemAcpi = module_index.DomainDevicesFilesystemAcpi.new;
+  final DomainDevicesFilesystemAcpiArgs = module_index.DomainDevicesFilesystemAcpi.new;
+  final DomainDevicesFilesystemAlias = module_index.DomainDevicesFilesystemAlias.new;
+  final DomainDevicesFilesystemAliasArgs = module_index.DomainDevicesFilesystemAlias.new;
   final DomainDevicesFilesystemArgs = module_index.DomainDevicesFilesystem.new;
-  final DomainDevicesFilesystemBinary =
-      module_index.DomainDevicesFilesystemBinary.new;
-  final DomainDevicesFilesystemBinaryArgs =
-      module_index.DomainDevicesFilesystemBinary.new;
-  final DomainDevicesFilesystemBinaryCache =
-      module_index.DomainDevicesFilesystemBinaryCache.new;
-  final DomainDevicesFilesystemBinaryCacheArgs =
-      module_index.DomainDevicesFilesystemBinaryCache.new;
-  final DomainDevicesFilesystemBinaryLock =
-      module_index.DomainDevicesFilesystemBinaryLock.new;
-  final DomainDevicesFilesystemBinaryLockArgs =
-      module_index.DomainDevicesFilesystemBinaryLock.new;
-  final DomainDevicesFilesystemBinaryOpenFiles =
-      module_index.DomainDevicesFilesystemBinaryOpenFiles.new;
-  final DomainDevicesFilesystemBinaryOpenFilesArgs =
-      module_index.DomainDevicesFilesystemBinaryOpenFiles.new;
-  final DomainDevicesFilesystemBinarySandbox =
-      module_index.DomainDevicesFilesystemBinarySandbox.new;
-  final DomainDevicesFilesystemBinarySandboxArgs =
-      module_index.DomainDevicesFilesystemBinarySandbox.new;
-  final DomainDevicesFilesystemBinaryThreadPool =
-      module_index.DomainDevicesFilesystemBinaryThreadPool.new;
-  final DomainDevicesFilesystemBinaryThreadPoolArgs =
-      module_index.DomainDevicesFilesystemBinaryThreadPool.new;
-  final DomainDevicesFilesystemBoot =
-      module_index.DomainDevicesFilesystemBoot.new;
-  final DomainDevicesFilesystemBootArgs =
-      module_index.DomainDevicesFilesystemBoot.new;
-  final DomainDevicesFilesystemDriver =
-      module_index.DomainDevicesFilesystemDriver.new;
-  final DomainDevicesFilesystemDriverArgs =
-      module_index.DomainDevicesFilesystemDriver.new;
-  final DomainDevicesFilesystemIdMap =
-      module_index.DomainDevicesFilesystemIdMap.new;
-  final DomainDevicesFilesystemIdMapArgs =
-      module_index.DomainDevicesFilesystemIdMap.new;
-  final DomainDevicesFilesystemIdMapGid =
-      module_index.DomainDevicesFilesystemIdMapGid.new;
-  final DomainDevicesFilesystemIdMapGidArgs =
-      module_index.DomainDevicesFilesystemIdMapGid.new;
-  final DomainDevicesFilesystemIdMapUid =
-      module_index.DomainDevicesFilesystemIdMapUid.new;
-  final DomainDevicesFilesystemIdMapUidArgs =
-      module_index.DomainDevicesFilesystemIdMapUid.new;
-  final DomainDevicesFilesystemSource =
-      module_index.DomainDevicesFilesystemSource.new;
-  final DomainDevicesFilesystemSourceArgs =
-      module_index.DomainDevicesFilesystemSource.new;
-  final DomainDevicesFilesystemSourceBind =
-      module_index.DomainDevicesFilesystemSourceBind.new;
-  final DomainDevicesFilesystemSourceBindArgs =
-      module_index.DomainDevicesFilesystemSourceBind.new;
-  final DomainDevicesFilesystemSourceBlock =
-      module_index.DomainDevicesFilesystemSourceBlock.new;
-  final DomainDevicesFilesystemSourceBlockArgs =
-      module_index.DomainDevicesFilesystemSourceBlock.new;
-  final DomainDevicesFilesystemSourceFile =
-      module_index.DomainDevicesFilesystemSourceFile.new;
-  final DomainDevicesFilesystemSourceFileArgs =
-      module_index.DomainDevicesFilesystemSourceFile.new;
-  final DomainDevicesFilesystemSourceMount =
-      module_index.DomainDevicesFilesystemSourceMount.new;
-  final DomainDevicesFilesystemSourceMountArgs =
-      module_index.DomainDevicesFilesystemSourceMount.new;
-  final DomainDevicesFilesystemSourceRam =
-      module_index.DomainDevicesFilesystemSourceRam.new;
-  final DomainDevicesFilesystemSourceRamArgs =
-      module_index.DomainDevicesFilesystemSourceRam.new;
-  final DomainDevicesFilesystemSourceTemplate =
-      module_index.DomainDevicesFilesystemSourceTemplate.new;
-  final DomainDevicesFilesystemSourceTemplateArgs =
-      module_index.DomainDevicesFilesystemSourceTemplate.new;
-  final DomainDevicesFilesystemSourceVolume =
-      module_index.DomainDevicesFilesystemSourceVolume.new;
-  final DomainDevicesFilesystemSourceVolumeArgs =
-      module_index.DomainDevicesFilesystemSourceVolume.new;
-  final DomainDevicesFilesystemTarget =
-      module_index.DomainDevicesFilesystemTarget.new;
-  final DomainDevicesFilesystemTargetArgs =
-      module_index.DomainDevicesFilesystemTarget.new;
+  final DomainDevicesFilesystemBinary = module_index.DomainDevicesFilesystemBinary.new;
+  final DomainDevicesFilesystemBinaryArgs = module_index.DomainDevicesFilesystemBinary.new;
+  final DomainDevicesFilesystemBinaryCache = module_index.DomainDevicesFilesystemBinaryCache.new;
+  final DomainDevicesFilesystemBinaryCacheArgs = module_index.DomainDevicesFilesystemBinaryCache.new;
+  final DomainDevicesFilesystemBinaryLock = module_index.DomainDevicesFilesystemBinaryLock.new;
+  final DomainDevicesFilesystemBinaryLockArgs = module_index.DomainDevicesFilesystemBinaryLock.new;
+  final DomainDevicesFilesystemBinaryOpenFiles = module_index.DomainDevicesFilesystemBinaryOpenFiles.new;
+  final DomainDevicesFilesystemBinaryOpenFilesArgs = module_index.DomainDevicesFilesystemBinaryOpenFiles.new;
+  final DomainDevicesFilesystemBinarySandbox = module_index.DomainDevicesFilesystemBinarySandbox.new;
+  final DomainDevicesFilesystemBinarySandboxArgs = module_index.DomainDevicesFilesystemBinarySandbox.new;
+  final DomainDevicesFilesystemBinaryThreadPool = module_index.DomainDevicesFilesystemBinaryThreadPool.new;
+  final DomainDevicesFilesystemBinaryThreadPoolArgs = module_index.DomainDevicesFilesystemBinaryThreadPool.new;
+  final DomainDevicesFilesystemBoot = module_index.DomainDevicesFilesystemBoot.new;
+  final DomainDevicesFilesystemBootArgs = module_index.DomainDevicesFilesystemBoot.new;
+  final DomainDevicesFilesystemDriver = module_index.DomainDevicesFilesystemDriver.new;
+  final DomainDevicesFilesystemDriverArgs = module_index.DomainDevicesFilesystemDriver.new;
+  final DomainDevicesFilesystemIdMap = module_index.DomainDevicesFilesystemIdMap.new;
+  final DomainDevicesFilesystemIdMapArgs = module_index.DomainDevicesFilesystemIdMap.new;
+  final DomainDevicesFilesystemIdMapGid = module_index.DomainDevicesFilesystemIdMapGid.new;
+  final DomainDevicesFilesystemIdMapGidArgs = module_index.DomainDevicesFilesystemIdMapGid.new;
+  final DomainDevicesFilesystemIdMapUid = module_index.DomainDevicesFilesystemIdMapUid.new;
+  final DomainDevicesFilesystemIdMapUidArgs = module_index.DomainDevicesFilesystemIdMapUid.new;
+  final DomainDevicesFilesystemSource = module_index.DomainDevicesFilesystemSource.new;
+  final DomainDevicesFilesystemSourceArgs = module_index.DomainDevicesFilesystemSource.new;
+  final DomainDevicesFilesystemSourceBind = module_index.DomainDevicesFilesystemSourceBind.new;
+  final DomainDevicesFilesystemSourceBindArgs = module_index.DomainDevicesFilesystemSourceBind.new;
+  final DomainDevicesFilesystemSourceBlock = module_index.DomainDevicesFilesystemSourceBlock.new;
+  final DomainDevicesFilesystemSourceBlockArgs = module_index.DomainDevicesFilesystemSourceBlock.new;
+  final DomainDevicesFilesystemSourceFile = module_index.DomainDevicesFilesystemSourceFile.new;
+  final DomainDevicesFilesystemSourceFileArgs = module_index.DomainDevicesFilesystemSourceFile.new;
+  final DomainDevicesFilesystemSourceMount = module_index.DomainDevicesFilesystemSourceMount.new;
+  final DomainDevicesFilesystemSourceMountArgs = module_index.DomainDevicesFilesystemSourceMount.new;
+  final DomainDevicesFilesystemSourceRam = module_index.DomainDevicesFilesystemSourceRam.new;
+  final DomainDevicesFilesystemSourceRamArgs = module_index.DomainDevicesFilesystemSourceRam.new;
+  final DomainDevicesFilesystemSourceTemplate = module_index.DomainDevicesFilesystemSourceTemplate.new;
+  final DomainDevicesFilesystemSourceTemplateArgs = module_index.DomainDevicesFilesystemSourceTemplate.new;
+  final DomainDevicesFilesystemSourceVolume = module_index.DomainDevicesFilesystemSourceVolume.new;
+  final DomainDevicesFilesystemSourceVolumeArgs = module_index.DomainDevicesFilesystemSourceVolume.new;
+  final DomainDevicesFilesystemTarget = module_index.DomainDevicesFilesystemTarget.new;
+  final DomainDevicesFilesystemTargetArgs = module_index.DomainDevicesFilesystemTarget.new;
   final DomainDevicesGraphic = module_index.DomainDevicesGraphic.new;
   final DomainDevicesGraphicArgs = module_index.DomainDevicesGraphic.new;
   final DomainDevicesGraphicAudio = module_index.DomainDevicesGraphicAudio.new;
-  final DomainDevicesGraphicAudioArgs =
-      module_index.DomainDevicesGraphicAudio.new;
+  final DomainDevicesGraphicAudioArgs = module_index.DomainDevicesGraphicAudio.new;
   final DomainDevicesGraphicDbus = module_index.DomainDevicesGraphicDbus.new;
-  final DomainDevicesGraphicDbusArgs =
-      module_index.DomainDevicesGraphicDbus.new;
-  final DomainDevicesGraphicDbusGl =
-      module_index.DomainDevicesGraphicDbusGl.new;
-  final DomainDevicesGraphicDbusGlArgs =
-      module_index.DomainDevicesGraphicDbusGl.new;
-  final DomainDevicesGraphicDesktop =
-      module_index.DomainDevicesGraphicDesktop.new;
-  final DomainDevicesGraphicDesktopArgs =
-      module_index.DomainDevicesGraphicDesktop.new;
-  final DomainDevicesGraphicEglHeadless =
-      module_index.DomainDevicesGraphicEglHeadless.new;
-  final DomainDevicesGraphicEglHeadlessArgs =
-      module_index.DomainDevicesGraphicEglHeadless.new;
-  final DomainDevicesGraphicEglHeadlessGl =
-      module_index.DomainDevicesGraphicEglHeadlessGl.new;
-  final DomainDevicesGraphicEglHeadlessGlArgs =
-      module_index.DomainDevicesGraphicEglHeadlessGl.new;
+  final DomainDevicesGraphicDbusArgs = module_index.DomainDevicesGraphicDbus.new;
+  final DomainDevicesGraphicDbusGl = module_index.DomainDevicesGraphicDbusGl.new;
+  final DomainDevicesGraphicDbusGlArgs = module_index.DomainDevicesGraphicDbusGl.new;
+  final DomainDevicesGraphicDesktop = module_index.DomainDevicesGraphicDesktop.new;
+  final DomainDevicesGraphicDesktopArgs = module_index.DomainDevicesGraphicDesktop.new;
+  final DomainDevicesGraphicEglHeadless = module_index.DomainDevicesGraphicEglHeadless.new;
+  final DomainDevicesGraphicEglHeadlessArgs = module_index.DomainDevicesGraphicEglHeadless.new;
+  final DomainDevicesGraphicEglHeadlessGl = module_index.DomainDevicesGraphicEglHeadlessGl.new;
+  final DomainDevicesGraphicEglHeadlessGlArgs = module_index.DomainDevicesGraphicEglHeadlessGl.new;
   final DomainDevicesGraphicRdp = module_index.DomainDevicesGraphicRdp.new;
   final DomainDevicesGraphicRdpArgs = module_index.DomainDevicesGraphicRdp.new;
-  final DomainDevicesGraphicRdpListener =
-      module_index.DomainDevicesGraphicRdpListener.new;
-  final DomainDevicesGraphicRdpListenerAddress =
-      module_index.DomainDevicesGraphicRdpListenerAddress.new;
-  final DomainDevicesGraphicRdpListenerAddressArgs =
-      module_index.DomainDevicesGraphicRdpListenerAddress.new;
-  final DomainDevicesGraphicRdpListenerArgs =
-      module_index.DomainDevicesGraphicRdpListener.new;
-  final DomainDevicesGraphicRdpListenerNetwork =
-      module_index.DomainDevicesGraphicRdpListenerNetwork.new;
-  final DomainDevicesGraphicRdpListenerNetworkArgs =
-      module_index.DomainDevicesGraphicRdpListenerNetwork.new;
-  final DomainDevicesGraphicRdpListenerSocket =
-      module_index.DomainDevicesGraphicRdpListenerSocket.new;
-  final DomainDevicesGraphicRdpListenerSocketArgs =
-      module_index.DomainDevicesGraphicRdpListenerSocket.new;
+  final DomainDevicesGraphicRdpListener = module_index.DomainDevicesGraphicRdpListener.new;
+  final DomainDevicesGraphicRdpListenerAddress = module_index.DomainDevicesGraphicRdpListenerAddress.new;
+  final DomainDevicesGraphicRdpListenerAddressArgs = module_index.DomainDevicesGraphicRdpListenerAddress.new;
+  final DomainDevicesGraphicRdpListenerArgs = module_index.DomainDevicesGraphicRdpListener.new;
+  final DomainDevicesGraphicRdpListenerNetwork = module_index.DomainDevicesGraphicRdpListenerNetwork.new;
+  final DomainDevicesGraphicRdpListenerNetworkArgs = module_index.DomainDevicesGraphicRdpListenerNetwork.new;
+  final DomainDevicesGraphicRdpListenerSocket = module_index.DomainDevicesGraphicRdpListenerSocket.new;
+  final DomainDevicesGraphicRdpListenerSocketArgs = module_index.DomainDevicesGraphicRdpListenerSocket.new;
   final DomainDevicesGraphicSdl = module_index.DomainDevicesGraphicSdl.new;
   final DomainDevicesGraphicSdlArgs = module_index.DomainDevicesGraphicSdl.new;
   final DomainDevicesGraphicSdlGl = module_index.DomainDevicesGraphicSdlGl.new;
-  final DomainDevicesGraphicSdlGlArgs =
-      module_index.DomainDevicesGraphicSdlGl.new;
+  final DomainDevicesGraphicSdlGlArgs = module_index.DomainDevicesGraphicSdlGl.new;
   final DomainDevicesGraphicSpice = module_index.DomainDevicesGraphicSpice.new;
-  final DomainDevicesGraphicSpiceArgs =
-      module_index.DomainDevicesGraphicSpice.new;
-  final DomainDevicesGraphicSpiceChannel =
-      module_index.DomainDevicesGraphicSpiceChannel.new;
-  final DomainDevicesGraphicSpiceChannelArgs =
-      module_index.DomainDevicesGraphicSpiceChannel.new;
-  final DomainDevicesGraphicSpiceClipBoard =
-      module_index.DomainDevicesGraphicSpiceClipBoard.new;
-  final DomainDevicesGraphicSpiceClipBoardArgs =
-      module_index.DomainDevicesGraphicSpiceClipBoard.new;
-  final DomainDevicesGraphicSpiceFileTransfer =
-      module_index.DomainDevicesGraphicSpiceFileTransfer.new;
-  final DomainDevicesGraphicSpiceFileTransferArgs =
-      module_index.DomainDevicesGraphicSpiceFileTransfer.new;
-  final DomainDevicesGraphicSpiceGl =
-      module_index.DomainDevicesGraphicSpiceGl.new;
-  final DomainDevicesGraphicSpiceGlArgs =
-      module_index.DomainDevicesGraphicSpiceGl.new;
-  final DomainDevicesGraphicSpiceImage =
-      module_index.DomainDevicesGraphicSpiceImage.new;
-  final DomainDevicesGraphicSpiceImageArgs =
-      module_index.DomainDevicesGraphicSpiceImage.new;
-  final DomainDevicesGraphicSpiceJpeg =
-      module_index.DomainDevicesGraphicSpiceJpeg.new;
-  final DomainDevicesGraphicSpiceJpegArgs =
-      module_index.DomainDevicesGraphicSpiceJpeg.new;
-  final DomainDevicesGraphicSpiceListener =
-      module_index.DomainDevicesGraphicSpiceListener.new;
-  final DomainDevicesGraphicSpiceListenerAddress =
-      module_index.DomainDevicesGraphicSpiceListenerAddress.new;
-  final DomainDevicesGraphicSpiceListenerAddressArgs =
-      module_index.DomainDevicesGraphicSpiceListenerAddress.new;
-  final DomainDevicesGraphicSpiceListenerArgs =
-      module_index.DomainDevicesGraphicSpiceListener.new;
-  final DomainDevicesGraphicSpiceListenerNetwork =
-      module_index.DomainDevicesGraphicSpiceListenerNetwork.new;
-  final DomainDevicesGraphicSpiceListenerNetworkArgs =
-      module_index.DomainDevicesGraphicSpiceListenerNetwork.new;
-  final DomainDevicesGraphicSpiceListenerSocket =
-      module_index.DomainDevicesGraphicSpiceListenerSocket.new;
-  final DomainDevicesGraphicSpiceListenerSocketArgs =
-      module_index.DomainDevicesGraphicSpiceListenerSocket.new;
-  final DomainDevicesGraphicSpiceMouse =
-      module_index.DomainDevicesGraphicSpiceMouse.new;
-  final DomainDevicesGraphicSpiceMouseArgs =
-      module_index.DomainDevicesGraphicSpiceMouse.new;
-  final DomainDevicesGraphicSpicePlayback =
-      module_index.DomainDevicesGraphicSpicePlayback.new;
-  final DomainDevicesGraphicSpicePlaybackArgs =
-      module_index.DomainDevicesGraphicSpicePlayback.new;
-  final DomainDevicesGraphicSpiceStreaming =
-      module_index.DomainDevicesGraphicSpiceStreaming.new;
-  final DomainDevicesGraphicSpiceStreamingArgs =
-      module_index.DomainDevicesGraphicSpiceStreaming.new;
-  final DomainDevicesGraphicSpiceZlib =
-      module_index.DomainDevicesGraphicSpiceZlib.new;
-  final DomainDevicesGraphicSpiceZlibArgs =
-      module_index.DomainDevicesGraphicSpiceZlib.new;
+  final DomainDevicesGraphicSpiceArgs = module_index.DomainDevicesGraphicSpice.new;
+  final DomainDevicesGraphicSpiceChannel = module_index.DomainDevicesGraphicSpiceChannel.new;
+  final DomainDevicesGraphicSpiceChannelArgs = module_index.DomainDevicesGraphicSpiceChannel.new;
+  final DomainDevicesGraphicSpiceClipBoard = module_index.DomainDevicesGraphicSpiceClipBoard.new;
+  final DomainDevicesGraphicSpiceClipBoardArgs = module_index.DomainDevicesGraphicSpiceClipBoard.new;
+  final DomainDevicesGraphicSpiceFileTransfer = module_index.DomainDevicesGraphicSpiceFileTransfer.new;
+  final DomainDevicesGraphicSpiceFileTransferArgs = module_index.DomainDevicesGraphicSpiceFileTransfer.new;
+  final DomainDevicesGraphicSpiceGl = module_index.DomainDevicesGraphicSpiceGl.new;
+  final DomainDevicesGraphicSpiceGlArgs = module_index.DomainDevicesGraphicSpiceGl.new;
+  final DomainDevicesGraphicSpiceImage = module_index.DomainDevicesGraphicSpiceImage.new;
+  final DomainDevicesGraphicSpiceImageArgs = module_index.DomainDevicesGraphicSpiceImage.new;
+  final DomainDevicesGraphicSpiceJpeg = module_index.DomainDevicesGraphicSpiceJpeg.new;
+  final DomainDevicesGraphicSpiceJpegArgs = module_index.DomainDevicesGraphicSpiceJpeg.new;
+  final DomainDevicesGraphicSpiceListener = module_index.DomainDevicesGraphicSpiceListener.new;
+  final DomainDevicesGraphicSpiceListenerAddress = module_index.DomainDevicesGraphicSpiceListenerAddress.new;
+  final DomainDevicesGraphicSpiceListenerAddressArgs = module_index.DomainDevicesGraphicSpiceListenerAddress.new;
+  final DomainDevicesGraphicSpiceListenerArgs = module_index.DomainDevicesGraphicSpiceListener.new;
+  final DomainDevicesGraphicSpiceListenerNetwork = module_index.DomainDevicesGraphicSpiceListenerNetwork.new;
+  final DomainDevicesGraphicSpiceListenerNetworkArgs = module_index.DomainDevicesGraphicSpiceListenerNetwork.new;
+  final DomainDevicesGraphicSpiceListenerSocket = module_index.DomainDevicesGraphicSpiceListenerSocket.new;
+  final DomainDevicesGraphicSpiceListenerSocketArgs = module_index.DomainDevicesGraphicSpiceListenerSocket.new;
+  final DomainDevicesGraphicSpiceMouse = module_index.DomainDevicesGraphicSpiceMouse.new;
+  final DomainDevicesGraphicSpiceMouseArgs = module_index.DomainDevicesGraphicSpiceMouse.new;
+  final DomainDevicesGraphicSpicePlayback = module_index.DomainDevicesGraphicSpicePlayback.new;
+  final DomainDevicesGraphicSpicePlaybackArgs = module_index.DomainDevicesGraphicSpicePlayback.new;
+  final DomainDevicesGraphicSpiceStreaming = module_index.DomainDevicesGraphicSpiceStreaming.new;
+  final DomainDevicesGraphicSpiceStreamingArgs = module_index.DomainDevicesGraphicSpiceStreaming.new;
+  final DomainDevicesGraphicSpiceZlib = module_index.DomainDevicesGraphicSpiceZlib.new;
+  final DomainDevicesGraphicSpiceZlibArgs = module_index.DomainDevicesGraphicSpiceZlib.new;
   final DomainDevicesGraphicVnc = module_index.DomainDevicesGraphicVnc.new;
   final DomainDevicesGraphicVncArgs = module_index.DomainDevicesGraphicVnc.new;
-  final DomainDevicesGraphicVncListener =
-      module_index.DomainDevicesGraphicVncListener.new;
-  final DomainDevicesGraphicVncListenerAddress =
-      module_index.DomainDevicesGraphicVncListenerAddress.new;
-  final DomainDevicesGraphicVncListenerAddressArgs =
-      module_index.DomainDevicesGraphicVncListenerAddress.new;
-  final DomainDevicesGraphicVncListenerArgs =
-      module_index.DomainDevicesGraphicVncListener.new;
-  final DomainDevicesGraphicVncListenerNetwork =
-      module_index.DomainDevicesGraphicVncListenerNetwork.new;
-  final DomainDevicesGraphicVncListenerNetworkArgs =
-      module_index.DomainDevicesGraphicVncListenerNetwork.new;
-  final DomainDevicesGraphicVncListenerSocket =
-      module_index.DomainDevicesGraphicVncListenerSocket.new;
-  final DomainDevicesGraphicVncListenerSocketArgs =
-      module_index.DomainDevicesGraphicVncListenerSocket.new;
+  final DomainDevicesGraphicVncListener = module_index.DomainDevicesGraphicVncListener.new;
+  final DomainDevicesGraphicVncListenerAddress = module_index.DomainDevicesGraphicVncListenerAddress.new;
+  final DomainDevicesGraphicVncListenerAddressArgs = module_index.DomainDevicesGraphicVncListenerAddress.new;
+  final DomainDevicesGraphicVncListenerArgs = module_index.DomainDevicesGraphicVncListener.new;
+  final DomainDevicesGraphicVncListenerNetwork = module_index.DomainDevicesGraphicVncListenerNetwork.new;
+  final DomainDevicesGraphicVncListenerNetworkArgs = module_index.DomainDevicesGraphicVncListenerNetwork.new;
+  final DomainDevicesGraphicVncListenerSocket = module_index.DomainDevicesGraphicVncListenerSocket.new;
+  final DomainDevicesGraphicVncListenerSocketArgs = module_index.DomainDevicesGraphicVncListenerSocket.new;
   final DomainDevicesHostdev = module_index.DomainDevicesHostdev.new;
   final DomainDevicesHostdevAcpi = module_index.DomainDevicesHostdevAcpi.new;
-  final DomainDevicesHostdevAcpiArgs =
-      module_index.DomainDevicesHostdevAcpi.new;
+  final DomainDevicesHostdevAcpiArgs = module_index.DomainDevicesHostdevAcpi.new;
   final DomainDevicesHostdevAlias = module_index.DomainDevicesHostdevAlias.new;
-  final DomainDevicesHostdevAliasArgs =
-      module_index.DomainDevicesHostdevAlias.new;
+  final DomainDevicesHostdevAliasArgs = module_index.DomainDevicesHostdevAlias.new;
   final DomainDevicesHostdevArgs = module_index.DomainDevicesHostdev.new;
   final DomainDevicesHostdevBoot = module_index.DomainDevicesHostdevBoot.new;
-  final DomainDevicesHostdevBootArgs =
-      module_index.DomainDevicesHostdevBoot.new;
-  final DomainDevicesHostdevCapsMisc =
-      module_index.DomainDevicesHostdevCapsMisc.new;
-  final DomainDevicesHostdevCapsMiscArgs =
-      module_index.DomainDevicesHostdevCapsMisc.new;
-  final DomainDevicesHostdevCapsMiscSource =
-      module_index.DomainDevicesHostdevCapsMiscSource.new;
-  final DomainDevicesHostdevCapsMiscSourceArgs =
-      module_index.DomainDevicesHostdevCapsMiscSource.new;
-  final DomainDevicesHostdevCapsNet =
-      module_index.DomainDevicesHostdevCapsNet.new;
-  final DomainDevicesHostdevCapsNetArgs =
-      module_index.DomainDevicesHostdevCapsNet.new;
-  final DomainDevicesHostdevCapsNetIp =
-      module_index.DomainDevicesHostdevCapsNetIp.new;
-  final DomainDevicesHostdevCapsNetIpArgs =
-      module_index.DomainDevicesHostdevCapsNetIp.new;
-  final DomainDevicesHostdevCapsNetRoute =
-      module_index.DomainDevicesHostdevCapsNetRoute.new;
-  final DomainDevicesHostdevCapsNetRouteArgs =
-      module_index.DomainDevicesHostdevCapsNetRoute.new;
-  final DomainDevicesHostdevCapsNetSource =
-      module_index.DomainDevicesHostdevCapsNetSource.new;
-  final DomainDevicesHostdevCapsNetSourceArgs =
-      module_index.DomainDevicesHostdevCapsNetSource.new;
-  final DomainDevicesHostdevCapsStorage =
-      module_index.DomainDevicesHostdevCapsStorage.new;
-  final DomainDevicesHostdevCapsStorageArgs =
-      module_index.DomainDevicesHostdevCapsStorage.new;
-  final DomainDevicesHostdevCapsStorageSource =
-      module_index.DomainDevicesHostdevCapsStorageSource.new;
-  final DomainDevicesHostdevCapsStorageSourceArgs =
-      module_index.DomainDevicesHostdevCapsStorageSource.new;
+  final DomainDevicesHostdevBootArgs = module_index.DomainDevicesHostdevBoot.new;
+  final DomainDevicesHostdevCapsMisc = module_index.DomainDevicesHostdevCapsMisc.new;
+  final DomainDevicesHostdevCapsMiscArgs = module_index.DomainDevicesHostdevCapsMisc.new;
+  final DomainDevicesHostdevCapsMiscSource = module_index.DomainDevicesHostdevCapsMiscSource.new;
+  final DomainDevicesHostdevCapsMiscSourceArgs = module_index.DomainDevicesHostdevCapsMiscSource.new;
+  final DomainDevicesHostdevCapsNet = module_index.DomainDevicesHostdevCapsNet.new;
+  final DomainDevicesHostdevCapsNetArgs = module_index.DomainDevicesHostdevCapsNet.new;
+  final DomainDevicesHostdevCapsNetIp = module_index.DomainDevicesHostdevCapsNetIp.new;
+  final DomainDevicesHostdevCapsNetIpArgs = module_index.DomainDevicesHostdevCapsNetIp.new;
+  final DomainDevicesHostdevCapsNetRoute = module_index.DomainDevicesHostdevCapsNetRoute.new;
+  final DomainDevicesHostdevCapsNetRouteArgs = module_index.DomainDevicesHostdevCapsNetRoute.new;
+  final DomainDevicesHostdevCapsNetSource = module_index.DomainDevicesHostdevCapsNetSource.new;
+  final DomainDevicesHostdevCapsNetSourceArgs = module_index.DomainDevicesHostdevCapsNetSource.new;
+  final DomainDevicesHostdevCapsStorage = module_index.DomainDevicesHostdevCapsStorage.new;
+  final DomainDevicesHostdevCapsStorageArgs = module_index.DomainDevicesHostdevCapsStorage.new;
+  final DomainDevicesHostdevCapsStorageSource = module_index.DomainDevicesHostdevCapsStorageSource.new;
+  final DomainDevicesHostdevCapsStorageSourceArgs = module_index.DomainDevicesHostdevCapsStorageSource.new;
   final DomainDevicesHostdevRom = module_index.DomainDevicesHostdevRom.new;
   final DomainDevicesHostdevRomArgs = module_index.DomainDevicesHostdevRom.new;
-  final DomainDevicesHostdevSubsysMDev =
-      module_index.DomainDevicesHostdevSubsysMDev.new;
-  final DomainDevicesHostdevSubsysMDevArgs =
-      module_index.DomainDevicesHostdevSubsysMDev.new;
-  final DomainDevicesHostdevSubsysMDevSource =
-      module_index.DomainDevicesHostdevSubsysMDevSource.new;
-  final DomainDevicesHostdevSubsysMDevSourceAddress =
-      module_index.DomainDevicesHostdevSubsysMDevSourceAddress.new;
-  final DomainDevicesHostdevSubsysMDevSourceAddressArgs =
-      module_index.DomainDevicesHostdevSubsysMDevSourceAddress.new;
-  final DomainDevicesHostdevSubsysMDevSourceArgs =
-      module_index.DomainDevicesHostdevSubsysMDevSource.new;
-  final DomainDevicesHostdevSubsysPci =
-      module_index.DomainDevicesHostdevSubsysPci.new;
-  final DomainDevicesHostdevSubsysPciArgs =
-      module_index.DomainDevicesHostdevSubsysPci.new;
-  final DomainDevicesHostdevSubsysPciDriver =
-      module_index.DomainDevicesHostdevSubsysPciDriver.new;
-  final DomainDevicesHostdevSubsysPciDriverArgs =
-      module_index.DomainDevicesHostdevSubsysPciDriver.new;
-  final DomainDevicesHostdevSubsysPciSource =
-      module_index.DomainDevicesHostdevSubsysPciSource.new;
-  final DomainDevicesHostdevSubsysPciSourceAddress =
-      module_index.DomainDevicesHostdevSubsysPciSourceAddress.new;
-  final DomainDevicesHostdevSubsysPciSourceAddressArgs =
-      module_index.DomainDevicesHostdevSubsysPciSourceAddress.new;
-  final DomainDevicesHostdevSubsysPciSourceAddressZpci =
-      module_index.DomainDevicesHostdevSubsysPciSourceAddressZpci.new;
-  final DomainDevicesHostdevSubsysPciSourceAddressZpciArgs =
-      module_index.DomainDevicesHostdevSubsysPciSourceAddressZpci.new;
-  final DomainDevicesHostdevSubsysPciSourceArgs =
-      module_index.DomainDevicesHostdevSubsysPciSource.new;
-  final DomainDevicesHostdevSubsysPciTeaming =
-      module_index.DomainDevicesHostdevSubsysPciTeaming.new;
-  final DomainDevicesHostdevSubsysPciTeamingArgs =
-      module_index.DomainDevicesHostdevSubsysPciTeaming.new;
-  final DomainDevicesHostdevSubsysScsi =
-      module_index.DomainDevicesHostdevSubsysScsi.new;
-  final DomainDevicesHostdevSubsysScsiArgs =
-      module_index.DomainDevicesHostdevSubsysScsi.new;
-  final DomainDevicesHostdevSubsysScsiHost =
-      module_index.DomainDevicesHostdevSubsysScsiHost.new;
-  final DomainDevicesHostdevSubsysScsiHostArgs =
-      module_index.DomainDevicesHostdevSubsysScsiHost.new;
-  final DomainDevicesHostdevSubsysScsiHostSource =
-      module_index.DomainDevicesHostdevSubsysScsiHostSource.new;
-  final DomainDevicesHostdevSubsysScsiHostSourceArgs =
-      module_index.DomainDevicesHostdevSubsysScsiHostSource.new;
-  final DomainDevicesHostdevSubsysScsiSource =
-      module_index.DomainDevicesHostdevSubsysScsiSource.new;
-  final DomainDevicesHostdevSubsysScsiSourceArgs =
-      module_index.DomainDevicesHostdevSubsysScsiSource.new;
-  final DomainDevicesHostdevSubsysScsiSourceHost =
-      module_index.DomainDevicesHostdevSubsysScsiSourceHost.new;
-  final DomainDevicesHostdevSubsysScsiSourceHostAdapter =
-      module_index.DomainDevicesHostdevSubsysScsiSourceHostAdapter.new;
-  final DomainDevicesHostdevSubsysScsiSourceHostAdapterArgs =
-      module_index.DomainDevicesHostdevSubsysScsiSourceHostAdapter.new;
-  final DomainDevicesHostdevSubsysScsiSourceHostAddress =
-      module_index.DomainDevicesHostdevSubsysScsiSourceHostAddress.new;
-  final DomainDevicesHostdevSubsysScsiSourceHostAddressArgs =
-      module_index.DomainDevicesHostdevSubsysScsiSourceHostAddress.new;
-  final DomainDevicesHostdevSubsysScsiSourceHostArgs =
-      module_index.DomainDevicesHostdevSubsysScsiSourceHost.new;
-  final DomainDevicesHostdevSubsysScsiSourceIscsi =
-      module_index.DomainDevicesHostdevSubsysScsiSourceIscsi.new;
-  final DomainDevicesHostdevSubsysScsiSourceIscsiArgs =
-      module_index.DomainDevicesHostdevSubsysScsiSourceIscsi.new;
-  final DomainDevicesHostdevSubsysScsiSourceIscsiAuth =
-      module_index.DomainDevicesHostdevSubsysScsiSourceIscsiAuth.new;
-  final DomainDevicesHostdevSubsysScsiSourceIscsiAuthArgs =
-      module_index.DomainDevicesHostdevSubsysScsiSourceIscsiAuth.new;
-  final DomainDevicesHostdevSubsysScsiSourceIscsiAuthSecret =
-      module_index.DomainDevicesHostdevSubsysScsiSourceIscsiAuthSecret.new;
-  final DomainDevicesHostdevSubsysScsiSourceIscsiAuthSecretArgs =
-      module_index.DomainDevicesHostdevSubsysScsiSourceIscsiAuthSecret.new;
-  final DomainDevicesHostdevSubsysScsiSourceIscsiHost =
-      module_index.DomainDevicesHostdevSubsysScsiSourceIscsiHost.new;
-  final DomainDevicesHostdevSubsysScsiSourceIscsiHostArgs =
-      module_index.DomainDevicesHostdevSubsysScsiSourceIscsiHost.new;
-  final DomainDevicesHostdevSubsysScsiSourceIscsiInitiator =
-      module_index.DomainDevicesHostdevSubsysScsiSourceIscsiInitiator.new;
-  final DomainDevicesHostdevSubsysScsiSourceIscsiInitiatorArgs =
-      module_index.DomainDevicesHostdevSubsysScsiSourceIscsiInitiator.new;
-  final DomainDevicesHostdevSubsysScsiSourceIscsiInitiatorIqn =
-      module_index.DomainDevicesHostdevSubsysScsiSourceIscsiInitiatorIqn.new;
-  final DomainDevicesHostdevSubsysScsiSourceIscsiInitiatorIqnArgs =
-      module_index.DomainDevicesHostdevSubsysScsiSourceIscsiInitiatorIqn.new;
-  final DomainDevicesHostdevSubsysUsb =
-      module_index.DomainDevicesHostdevSubsysUsb.new;
-  final DomainDevicesHostdevSubsysUsbArgs =
-      module_index.DomainDevicesHostdevSubsysUsb.new;
-  final DomainDevicesHostdevSubsysUsbSource =
-      module_index.DomainDevicesHostdevSubsysUsbSource.new;
-  final DomainDevicesHostdevSubsysUsbSourceAddress =
-      module_index.DomainDevicesHostdevSubsysUsbSourceAddress.new;
-  final DomainDevicesHostdevSubsysUsbSourceAddressArgs =
-      module_index.DomainDevicesHostdevSubsysUsbSourceAddress.new;
-  final DomainDevicesHostdevSubsysUsbSourceArgs =
-      module_index.DomainDevicesHostdevSubsysUsbSource.new;
-  final DomainDevicesHostdevSubsysUsbSourceProduct =
-      module_index.DomainDevicesHostdevSubsysUsbSourceProduct.new;
-  final DomainDevicesHostdevSubsysUsbSourceProductArgs =
-      module_index.DomainDevicesHostdevSubsysUsbSourceProduct.new;
-  final DomainDevicesHostdevSubsysUsbSourceVendor =
-      module_index.DomainDevicesHostdevSubsysUsbSourceVendor.new;
-  final DomainDevicesHostdevSubsysUsbSourceVendorArgs =
-      module_index.DomainDevicesHostdevSubsysUsbSourceVendor.new;
+  final DomainDevicesHostdevSubsysMDev = module_index.DomainDevicesHostdevSubsysMDev.new;
+  final DomainDevicesHostdevSubsysMDevArgs = module_index.DomainDevicesHostdevSubsysMDev.new;
+  final DomainDevicesHostdevSubsysMDevSource = module_index.DomainDevicesHostdevSubsysMDevSource.new;
+  final DomainDevicesHostdevSubsysMDevSourceAddress = module_index.DomainDevicesHostdevSubsysMDevSourceAddress.new;
+  final DomainDevicesHostdevSubsysMDevSourceAddressArgs = module_index.DomainDevicesHostdevSubsysMDevSourceAddress.new;
+  final DomainDevicesHostdevSubsysMDevSourceArgs = module_index.DomainDevicesHostdevSubsysMDevSource.new;
+  final DomainDevicesHostdevSubsysPci = module_index.DomainDevicesHostdevSubsysPci.new;
+  final DomainDevicesHostdevSubsysPciArgs = module_index.DomainDevicesHostdevSubsysPci.new;
+  final DomainDevicesHostdevSubsysPciDriver = module_index.DomainDevicesHostdevSubsysPciDriver.new;
+  final DomainDevicesHostdevSubsysPciDriverArgs = module_index.DomainDevicesHostdevSubsysPciDriver.new;
+  final DomainDevicesHostdevSubsysPciSource = module_index.DomainDevicesHostdevSubsysPciSource.new;
+  final DomainDevicesHostdevSubsysPciSourceAddress = module_index.DomainDevicesHostdevSubsysPciSourceAddress.new;
+  final DomainDevicesHostdevSubsysPciSourceAddressArgs = module_index.DomainDevicesHostdevSubsysPciSourceAddress.new;
+  final DomainDevicesHostdevSubsysPciSourceAddressZpci = module_index.DomainDevicesHostdevSubsysPciSourceAddressZpci.new;
+  final DomainDevicesHostdevSubsysPciSourceAddressZpciArgs = module_index.DomainDevicesHostdevSubsysPciSourceAddressZpci.new;
+  final DomainDevicesHostdevSubsysPciSourceArgs = module_index.DomainDevicesHostdevSubsysPciSource.new;
+  final DomainDevicesHostdevSubsysPciTeaming = module_index.DomainDevicesHostdevSubsysPciTeaming.new;
+  final DomainDevicesHostdevSubsysPciTeamingArgs = module_index.DomainDevicesHostdevSubsysPciTeaming.new;
+  final DomainDevicesHostdevSubsysScsi = module_index.DomainDevicesHostdevSubsysScsi.new;
+  final DomainDevicesHostdevSubsysScsiArgs = module_index.DomainDevicesHostdevSubsysScsi.new;
+  final DomainDevicesHostdevSubsysScsiHost = module_index.DomainDevicesHostdevSubsysScsiHost.new;
+  final DomainDevicesHostdevSubsysScsiHostArgs = module_index.DomainDevicesHostdevSubsysScsiHost.new;
+  final DomainDevicesHostdevSubsysScsiHostSource = module_index.DomainDevicesHostdevSubsysScsiHostSource.new;
+  final DomainDevicesHostdevSubsysScsiHostSourceArgs = module_index.DomainDevicesHostdevSubsysScsiHostSource.new;
+  final DomainDevicesHostdevSubsysScsiSource = module_index.DomainDevicesHostdevSubsysScsiSource.new;
+  final DomainDevicesHostdevSubsysScsiSourceArgs = module_index.DomainDevicesHostdevSubsysScsiSource.new;
+  final DomainDevicesHostdevSubsysScsiSourceHost = module_index.DomainDevicesHostdevSubsysScsiSourceHost.new;
+  final DomainDevicesHostdevSubsysScsiSourceHostAdapter = module_index.DomainDevicesHostdevSubsysScsiSourceHostAdapter.new;
+  final DomainDevicesHostdevSubsysScsiSourceHostAdapterArgs = module_index.DomainDevicesHostdevSubsysScsiSourceHostAdapter.new;
+  final DomainDevicesHostdevSubsysScsiSourceHostAddress = module_index.DomainDevicesHostdevSubsysScsiSourceHostAddress.new;
+  final DomainDevicesHostdevSubsysScsiSourceHostAddressArgs = module_index.DomainDevicesHostdevSubsysScsiSourceHostAddress.new;
+  final DomainDevicesHostdevSubsysScsiSourceHostArgs = module_index.DomainDevicesHostdevSubsysScsiSourceHost.new;
+  final DomainDevicesHostdevSubsysScsiSourceIscsi = module_index.DomainDevicesHostdevSubsysScsiSourceIscsi.new;
+  final DomainDevicesHostdevSubsysScsiSourceIscsiArgs = module_index.DomainDevicesHostdevSubsysScsiSourceIscsi.new;
+  final DomainDevicesHostdevSubsysScsiSourceIscsiAuth = module_index.DomainDevicesHostdevSubsysScsiSourceIscsiAuth.new;
+  final DomainDevicesHostdevSubsysScsiSourceIscsiAuthArgs = module_index.DomainDevicesHostdevSubsysScsiSourceIscsiAuth.new;
+  final DomainDevicesHostdevSubsysScsiSourceIscsiAuthSecret = module_index.DomainDevicesHostdevSubsysScsiSourceIscsiAuthSecret.new;
+  final DomainDevicesHostdevSubsysScsiSourceIscsiAuthSecretArgs = module_index.DomainDevicesHostdevSubsysScsiSourceIscsiAuthSecret.new;
+  final DomainDevicesHostdevSubsysScsiSourceIscsiHost = module_index.DomainDevicesHostdevSubsysScsiSourceIscsiHost.new;
+  final DomainDevicesHostdevSubsysScsiSourceIscsiHostArgs = module_index.DomainDevicesHostdevSubsysScsiSourceIscsiHost.new;
+  final DomainDevicesHostdevSubsysScsiSourceIscsiInitiator = module_index.DomainDevicesHostdevSubsysScsiSourceIscsiInitiator.new;
+  final DomainDevicesHostdevSubsysScsiSourceIscsiInitiatorArgs = module_index.DomainDevicesHostdevSubsysScsiSourceIscsiInitiator.new;
+  final DomainDevicesHostdevSubsysScsiSourceIscsiInitiatorIqn = module_index.DomainDevicesHostdevSubsysScsiSourceIscsiInitiatorIqn.new;
+  final DomainDevicesHostdevSubsysScsiSourceIscsiInitiatorIqnArgs = module_index.DomainDevicesHostdevSubsysScsiSourceIscsiInitiatorIqn.new;
+  final DomainDevicesHostdevSubsysUsb = module_index.DomainDevicesHostdevSubsysUsb.new;
+  final DomainDevicesHostdevSubsysUsbArgs = module_index.DomainDevicesHostdevSubsysUsb.new;
+  final DomainDevicesHostdevSubsysUsbSource = module_index.DomainDevicesHostdevSubsysUsbSource.new;
+  final DomainDevicesHostdevSubsysUsbSourceAddress = module_index.DomainDevicesHostdevSubsysUsbSourceAddress.new;
+  final DomainDevicesHostdevSubsysUsbSourceAddressArgs = module_index.DomainDevicesHostdevSubsysUsbSourceAddress.new;
+  final DomainDevicesHostdevSubsysUsbSourceArgs = module_index.DomainDevicesHostdevSubsysUsbSource.new;
+  final DomainDevicesHostdevSubsysUsbSourceProduct = module_index.DomainDevicesHostdevSubsysUsbSourceProduct.new;
+  final DomainDevicesHostdevSubsysUsbSourceProductArgs = module_index.DomainDevicesHostdevSubsysUsbSourceProduct.new;
+  final DomainDevicesHostdevSubsysUsbSourceVendor = module_index.DomainDevicesHostdevSubsysUsbSourceVendor.new;
+  final DomainDevicesHostdevSubsysUsbSourceVendorArgs = module_index.DomainDevicesHostdevSubsysUsbSourceVendor.new;
   final DomainDevicesHub = module_index.DomainDevicesHub.new;
   final DomainDevicesHubAcpi = module_index.DomainDevicesHubAcpi.new;
   final DomainDevicesHubAcpiArgs = module_index.DomainDevicesHubAcpi.new;
@@ -2494,392 +1175,197 @@ class _IndexModuleNamespace {
   final DomainDevicesInputAliasArgs = module_index.DomainDevicesInputAlias.new;
   final DomainDevicesInputArgs = module_index.DomainDevicesInput.new;
   final DomainDevicesInputDriver = module_index.DomainDevicesInputDriver.new;
-  final DomainDevicesInputDriverArgs =
-      module_index.DomainDevicesInputDriver.new;
+  final DomainDevicesInputDriverArgs = module_index.DomainDevicesInputDriver.new;
   final DomainDevicesInputSource = module_index.DomainDevicesInputSource.new;
-  final DomainDevicesInputSourceArgs =
-      module_index.DomainDevicesInputSource.new;
-  final DomainDevicesInputSourceEvDev =
-      module_index.DomainDevicesInputSourceEvDev.new;
-  final DomainDevicesInputSourceEvDevArgs =
-      module_index.DomainDevicesInputSourceEvDev.new;
-  final DomainDevicesInputSourcePassthrough =
-      module_index.DomainDevicesInputSourcePassthrough.new;
-  final DomainDevicesInputSourcePassthroughArgs =
-      module_index.DomainDevicesInputSourcePassthrough.new;
+  final DomainDevicesInputSourceArgs = module_index.DomainDevicesInputSource.new;
+  final DomainDevicesInputSourceEvDev = module_index.DomainDevicesInputSourceEvDev.new;
+  final DomainDevicesInputSourceEvDevArgs = module_index.DomainDevicesInputSourceEvDev.new;
+  final DomainDevicesInputSourcePassthrough = module_index.DomainDevicesInputSourcePassthrough.new;
+  final DomainDevicesInputSourcePassthroughArgs = module_index.DomainDevicesInputSourcePassthrough.new;
   final DomainDevicesInterface = module_index.DomainDevicesInterface.new;
-  final DomainDevicesInterfaceAcpi =
-      module_index.DomainDevicesInterfaceAcpi.new;
-  final DomainDevicesInterfaceAcpiArgs =
-      module_index.DomainDevicesInterfaceAcpi.new;
-  final DomainDevicesInterfaceAlias =
-      module_index.DomainDevicesInterfaceAlias.new;
-  final DomainDevicesInterfaceAliasArgs =
-      module_index.DomainDevicesInterfaceAlias.new;
+  final DomainDevicesInterfaceAcpi = module_index.DomainDevicesInterfaceAcpi.new;
+  final DomainDevicesInterfaceAcpiArgs = module_index.DomainDevicesInterfaceAcpi.new;
+  final DomainDevicesInterfaceAlias = module_index.DomainDevicesInterfaceAlias.new;
+  final DomainDevicesInterfaceAliasArgs = module_index.DomainDevicesInterfaceAlias.new;
   final DomainDevicesInterfaceArgs = module_index.DomainDevicesInterface.new;
-  final DomainDevicesInterfaceBackend =
-      module_index.DomainDevicesInterfaceBackend.new;
-  final DomainDevicesInterfaceBackendArgs =
-      module_index.DomainDevicesInterfaceBackend.new;
-  final DomainDevicesInterfaceBackendDomain =
-      module_index.DomainDevicesInterfaceBackendDomain.new;
-  final DomainDevicesInterfaceBackendDomainArgs =
-      module_index.DomainDevicesInterfaceBackendDomain.new;
-  final DomainDevicesInterfaceBandwidth =
-      module_index.DomainDevicesInterfaceBandwidth.new;
-  final DomainDevicesInterfaceBandwidthArgs =
-      module_index.DomainDevicesInterfaceBandwidth.new;
-  final DomainDevicesInterfaceBandwidthInbound =
-      module_index.DomainDevicesInterfaceBandwidthInbound.new;
-  final DomainDevicesInterfaceBandwidthInboundArgs =
-      module_index.DomainDevicesInterfaceBandwidthInbound.new;
-  final DomainDevicesInterfaceBandwidthOutbound =
-      module_index.DomainDevicesInterfaceBandwidthOutbound.new;
-  final DomainDevicesInterfaceBandwidthOutboundArgs =
-      module_index.DomainDevicesInterfaceBandwidthOutbound.new;
-  final DomainDevicesInterfaceBoot =
-      module_index.DomainDevicesInterfaceBoot.new;
-  final DomainDevicesInterfaceBootArgs =
-      module_index.DomainDevicesInterfaceBoot.new;
-  final DomainDevicesInterfaceCoalesce =
-      module_index.DomainDevicesInterfaceCoalesce.new;
-  final DomainDevicesInterfaceCoalesceArgs =
-      module_index.DomainDevicesInterfaceCoalesce.new;
-  final DomainDevicesInterfaceCoalesceRx =
-      module_index.DomainDevicesInterfaceCoalesceRx.new;
-  final DomainDevicesInterfaceCoalesceRxArgs =
-      module_index.DomainDevicesInterfaceCoalesceRx.new;
-  final DomainDevicesInterfaceCoalesceRxFrames =
-      module_index.DomainDevicesInterfaceCoalesceRxFrames.new;
-  final DomainDevicesInterfaceCoalesceRxFramesArgs =
-      module_index.DomainDevicesInterfaceCoalesceRxFrames.new;
-  final DomainDevicesInterfaceDownScript =
-      module_index.DomainDevicesInterfaceDownScript.new;
-  final DomainDevicesInterfaceDownScriptArgs =
-      module_index.DomainDevicesInterfaceDownScript.new;
-  final DomainDevicesInterfaceDriver =
-      module_index.DomainDevicesInterfaceDriver.new;
-  final DomainDevicesInterfaceDriverArgs =
-      module_index.DomainDevicesInterfaceDriver.new;
-  final DomainDevicesInterfaceDriverGuest =
-      module_index.DomainDevicesInterfaceDriverGuest.new;
-  final DomainDevicesInterfaceDriverGuestArgs =
-      module_index.DomainDevicesInterfaceDriverGuest.new;
-  final DomainDevicesInterfaceDriverHost =
-      module_index.DomainDevicesInterfaceDriverHost.new;
-  final DomainDevicesInterfaceDriverHostArgs =
-      module_index.DomainDevicesInterfaceDriverHost.new;
-  final DomainDevicesInterfaceFilterRef =
-      module_index.DomainDevicesInterfaceFilterRef.new;
-  final DomainDevicesInterfaceFilterRefArgs =
-      module_index.DomainDevicesInterfaceFilterRef.new;
-  final DomainDevicesInterfaceFilterRefParameter =
-      module_index.DomainDevicesInterfaceFilterRefParameter.new;
-  final DomainDevicesInterfaceFilterRefParameterArgs =
-      module_index.DomainDevicesInterfaceFilterRefParameter.new;
-  final DomainDevicesInterfaceGuest =
-      module_index.DomainDevicesInterfaceGuest.new;
-  final DomainDevicesInterfaceGuestArgs =
-      module_index.DomainDevicesInterfaceGuest.new;
+  final DomainDevicesInterfaceBackend = module_index.DomainDevicesInterfaceBackend.new;
+  final DomainDevicesInterfaceBackendArgs = module_index.DomainDevicesInterfaceBackend.new;
+  final DomainDevicesInterfaceBackendDomain = module_index.DomainDevicesInterfaceBackendDomain.new;
+  final DomainDevicesInterfaceBackendDomainArgs = module_index.DomainDevicesInterfaceBackendDomain.new;
+  final DomainDevicesInterfaceBandwidth = module_index.DomainDevicesInterfaceBandwidth.new;
+  final DomainDevicesInterfaceBandwidthArgs = module_index.DomainDevicesInterfaceBandwidth.new;
+  final DomainDevicesInterfaceBandwidthInbound = module_index.DomainDevicesInterfaceBandwidthInbound.new;
+  final DomainDevicesInterfaceBandwidthInboundArgs = module_index.DomainDevicesInterfaceBandwidthInbound.new;
+  final DomainDevicesInterfaceBandwidthOutbound = module_index.DomainDevicesInterfaceBandwidthOutbound.new;
+  final DomainDevicesInterfaceBandwidthOutboundArgs = module_index.DomainDevicesInterfaceBandwidthOutbound.new;
+  final DomainDevicesInterfaceBoot = module_index.DomainDevicesInterfaceBoot.new;
+  final DomainDevicesInterfaceBootArgs = module_index.DomainDevicesInterfaceBoot.new;
+  final DomainDevicesInterfaceCoalesce = module_index.DomainDevicesInterfaceCoalesce.new;
+  final DomainDevicesInterfaceCoalesceArgs = module_index.DomainDevicesInterfaceCoalesce.new;
+  final DomainDevicesInterfaceCoalesceRx = module_index.DomainDevicesInterfaceCoalesceRx.new;
+  final DomainDevicesInterfaceCoalesceRxArgs = module_index.DomainDevicesInterfaceCoalesceRx.new;
+  final DomainDevicesInterfaceCoalesceRxFrames = module_index.DomainDevicesInterfaceCoalesceRxFrames.new;
+  final DomainDevicesInterfaceCoalesceRxFramesArgs = module_index.DomainDevicesInterfaceCoalesceRxFrames.new;
+  final DomainDevicesInterfaceDownScript = module_index.DomainDevicesInterfaceDownScript.new;
+  final DomainDevicesInterfaceDownScriptArgs = module_index.DomainDevicesInterfaceDownScript.new;
+  final DomainDevicesInterfaceDriver = module_index.DomainDevicesInterfaceDriver.new;
+  final DomainDevicesInterfaceDriverArgs = module_index.DomainDevicesInterfaceDriver.new;
+  final DomainDevicesInterfaceDriverGuest = module_index.DomainDevicesInterfaceDriverGuest.new;
+  final DomainDevicesInterfaceDriverGuestArgs = module_index.DomainDevicesInterfaceDriverGuest.new;
+  final DomainDevicesInterfaceDriverHost = module_index.DomainDevicesInterfaceDriverHost.new;
+  final DomainDevicesInterfaceDriverHostArgs = module_index.DomainDevicesInterfaceDriverHost.new;
+  final DomainDevicesInterfaceFilterRef = module_index.DomainDevicesInterfaceFilterRef.new;
+  final DomainDevicesInterfaceFilterRefArgs = module_index.DomainDevicesInterfaceFilterRef.new;
+  final DomainDevicesInterfaceFilterRefParameter = module_index.DomainDevicesInterfaceFilterRefParameter.new;
+  final DomainDevicesInterfaceFilterRefParameterArgs = module_index.DomainDevicesInterfaceFilterRefParameter.new;
+  final DomainDevicesInterfaceGuest = module_index.DomainDevicesInterfaceGuest.new;
+  final DomainDevicesInterfaceGuestArgs = module_index.DomainDevicesInterfaceGuest.new;
   final DomainDevicesInterfaceIp = module_index.DomainDevicesInterfaceIp.new;
-  final DomainDevicesInterfaceIpArgs =
-      module_index.DomainDevicesInterfaceIp.new;
-  final DomainDevicesInterfaceLink =
-      module_index.DomainDevicesInterfaceLink.new;
-  final DomainDevicesInterfaceLinkArgs =
-      module_index.DomainDevicesInterfaceLink.new;
+  final DomainDevicesInterfaceIpArgs = module_index.DomainDevicesInterfaceIp.new;
+  final DomainDevicesInterfaceLink = module_index.DomainDevicesInterfaceLink.new;
+  final DomainDevicesInterfaceLinkArgs = module_index.DomainDevicesInterfaceLink.new;
   final DomainDevicesInterfaceMac = module_index.DomainDevicesInterfaceMac.new;
-  final DomainDevicesInterfaceMacArgs =
-      module_index.DomainDevicesInterfaceMac.new;
-  final DomainDevicesInterfaceModel =
-      module_index.DomainDevicesInterfaceModel.new;
-  final DomainDevicesInterfaceModelArgs =
-      module_index.DomainDevicesInterfaceModel.new;
+  final DomainDevicesInterfaceMacArgs = module_index.DomainDevicesInterfaceMac.new;
+  final DomainDevicesInterfaceModel = module_index.DomainDevicesInterfaceModel.new;
+  final DomainDevicesInterfaceModelArgs = module_index.DomainDevicesInterfaceModel.new;
   final DomainDevicesInterfaceMtu = module_index.DomainDevicesInterfaceMtu.new;
-  final DomainDevicesInterfaceMtuArgs =
-      module_index.DomainDevicesInterfaceMtu.new;
-  final DomainDevicesInterfacePortForward =
-      module_index.DomainDevicesInterfacePortForward.new;
-  final DomainDevicesInterfacePortForwardArgs =
-      module_index.DomainDevicesInterfacePortForward.new;
-  final DomainDevicesInterfacePortForwardRange =
-      module_index.DomainDevicesInterfacePortForwardRange.new;
-  final DomainDevicesInterfacePortForwardRangeArgs =
-      module_index.DomainDevicesInterfacePortForwardRange.new;
-  final DomainDevicesInterfacePortOptions =
-      module_index.DomainDevicesInterfacePortOptions.new;
-  final DomainDevicesInterfacePortOptionsArgs =
-      module_index.DomainDevicesInterfacePortOptions.new;
+  final DomainDevicesInterfaceMtuArgs = module_index.DomainDevicesInterfaceMtu.new;
+  final DomainDevicesInterfacePortForward = module_index.DomainDevicesInterfacePortForward.new;
+  final DomainDevicesInterfacePortForwardArgs = module_index.DomainDevicesInterfacePortForward.new;
+  final DomainDevicesInterfacePortForwardRange = module_index.DomainDevicesInterfacePortForwardRange.new;
+  final DomainDevicesInterfacePortForwardRangeArgs = module_index.DomainDevicesInterfacePortForwardRange.new;
+  final DomainDevicesInterfacePortOptions = module_index.DomainDevicesInterfacePortOptions.new;
+  final DomainDevicesInterfacePortOptionsArgs = module_index.DomainDevicesInterfacePortOptions.new;
   final DomainDevicesInterfaceRom = module_index.DomainDevicesInterfaceRom.new;
-  final DomainDevicesInterfaceRomArgs =
-      module_index.DomainDevicesInterfaceRom.new;
-  final DomainDevicesInterfaceRoute =
-      module_index.DomainDevicesInterfaceRoute.new;
-  final DomainDevicesInterfaceRouteArgs =
-      module_index.DomainDevicesInterfaceRoute.new;
-  final DomainDevicesInterfaceScript =
-      module_index.DomainDevicesInterfaceScript.new;
-  final DomainDevicesInterfaceScriptArgs =
-      module_index.DomainDevicesInterfaceScript.new;
-  final DomainDevicesInterfaceSource =
-      module_index.DomainDevicesInterfaceSource.new;
-  final DomainDevicesInterfaceSourceArgs =
-      module_index.DomainDevicesInterfaceSource.new;
-  final DomainDevicesInterfaceSourceBridge =
-      module_index.DomainDevicesInterfaceSourceBridge.new;
-  final DomainDevicesInterfaceSourceBridgeArgs =
-      module_index.DomainDevicesInterfaceSourceBridge.new;
-  final DomainDevicesInterfaceSourceClient =
-      module_index.DomainDevicesInterfaceSourceClient.new;
-  final DomainDevicesInterfaceSourceClientArgs =
-      module_index.DomainDevicesInterfaceSourceClient.new;
-  final DomainDevicesInterfaceSourceClientLocal =
-      module_index.DomainDevicesInterfaceSourceClientLocal.new;
-  final DomainDevicesInterfaceSourceClientLocalArgs =
-      module_index.DomainDevicesInterfaceSourceClientLocal.new;
-  final DomainDevicesInterfaceSourceDirect =
-      module_index.DomainDevicesInterfaceSourceDirect.new;
-  final DomainDevicesInterfaceSourceDirectArgs =
-      module_index.DomainDevicesInterfaceSourceDirect.new;
-  final DomainDevicesInterfaceSourceEthernet =
-      module_index.DomainDevicesInterfaceSourceEthernet.new;
-  final DomainDevicesInterfaceSourceEthernetArgs =
-      module_index.DomainDevicesInterfaceSourceEthernet.new;
-  final DomainDevicesInterfaceSourceEthernetIp =
-      module_index.DomainDevicesInterfaceSourceEthernetIp.new;
-  final DomainDevicesInterfaceSourceEthernetIpArgs =
-      module_index.DomainDevicesInterfaceSourceEthernetIp.new;
-  final DomainDevicesInterfaceSourceEthernetRoute =
-      module_index.DomainDevicesInterfaceSourceEthernetRoute.new;
-  final DomainDevicesInterfaceSourceEthernetRouteArgs =
-      module_index.DomainDevicesInterfaceSourceEthernetRoute.new;
-  final DomainDevicesInterfaceSourceHostdev =
-      module_index.DomainDevicesInterfaceSourceHostdev.new;
-  final DomainDevicesInterfaceSourceHostdevArgs =
-      module_index.DomainDevicesInterfaceSourceHostdev.new;
-  final DomainDevicesInterfaceSourceHostdevPci =
-      module_index.DomainDevicesInterfaceSourceHostdevPci.new;
-  final DomainDevicesInterfaceSourceHostdevPciAddress =
-      module_index.DomainDevicesInterfaceSourceHostdevPciAddress.new;
-  final DomainDevicesInterfaceSourceHostdevPciAddressArgs =
-      module_index.DomainDevicesInterfaceSourceHostdevPciAddress.new;
-  final DomainDevicesInterfaceSourceHostdevPciAddressZpci =
-      module_index.DomainDevicesInterfaceSourceHostdevPciAddressZpci.new;
-  final DomainDevicesInterfaceSourceHostdevPciAddressZpciArgs =
-      module_index.DomainDevicesInterfaceSourceHostdevPciAddressZpci.new;
-  final DomainDevicesInterfaceSourceHostdevPciArgs =
-      module_index.DomainDevicesInterfaceSourceHostdevPci.new;
-  final DomainDevicesInterfaceSourceHostdevUsb =
-      module_index.DomainDevicesInterfaceSourceHostdevUsb.new;
-  final DomainDevicesInterfaceSourceHostdevUsbAddress =
-      module_index.DomainDevicesInterfaceSourceHostdevUsbAddress.new;
-  final DomainDevicesInterfaceSourceHostdevUsbAddressArgs =
-      module_index.DomainDevicesInterfaceSourceHostdevUsbAddress.new;
-  final DomainDevicesInterfaceSourceHostdevUsbArgs =
-      module_index.DomainDevicesInterfaceSourceHostdevUsb.new;
-  final DomainDevicesInterfaceSourceHostdevUsbProduct =
-      module_index.DomainDevicesInterfaceSourceHostdevUsbProduct.new;
-  final DomainDevicesInterfaceSourceHostdevUsbProductArgs =
-      module_index.DomainDevicesInterfaceSourceHostdevUsbProduct.new;
-  final DomainDevicesInterfaceSourceHostdevUsbVendor =
-      module_index.DomainDevicesInterfaceSourceHostdevUsbVendor.new;
-  final DomainDevicesInterfaceSourceHostdevUsbVendorArgs =
-      module_index.DomainDevicesInterfaceSourceHostdevUsbVendor.new;
-  final DomainDevicesInterfaceSourceInternal =
-      module_index.DomainDevicesInterfaceSourceInternal.new;
-  final DomainDevicesInterfaceSourceInternalArgs =
-      module_index.DomainDevicesInterfaceSourceInternal.new;
-  final DomainDevicesInterfaceSourceMcast =
-      module_index.DomainDevicesInterfaceSourceMcast.new;
-  final DomainDevicesInterfaceSourceMcastArgs =
-      module_index.DomainDevicesInterfaceSourceMcast.new;
-  final DomainDevicesInterfaceSourceMcastLocal =
-      module_index.DomainDevicesInterfaceSourceMcastLocal.new;
-  final DomainDevicesInterfaceSourceMcastLocalArgs =
-      module_index.DomainDevicesInterfaceSourceMcastLocal.new;
-  final DomainDevicesInterfaceSourceNetwork =
-      module_index.DomainDevicesInterfaceSourceNetwork.new;
-  final DomainDevicesInterfaceSourceNetworkArgs =
-      module_index.DomainDevicesInterfaceSourceNetwork.new;
-  final DomainDevicesInterfaceSourceServer =
-      module_index.DomainDevicesInterfaceSourceServer.new;
-  final DomainDevicesInterfaceSourceServerArgs =
-      module_index.DomainDevicesInterfaceSourceServer.new;
-  final DomainDevicesInterfaceSourceServerLocal =
-      module_index.DomainDevicesInterfaceSourceServerLocal.new;
-  final DomainDevicesInterfaceSourceServerLocalArgs =
-      module_index.DomainDevicesInterfaceSourceServerLocal.new;
-  final DomainDevicesInterfaceSourceUdp =
-      module_index.DomainDevicesInterfaceSourceUdp.new;
-  final DomainDevicesInterfaceSourceUdpArgs =
-      module_index.DomainDevicesInterfaceSourceUdp.new;
-  final DomainDevicesInterfaceSourceUdpLocal =
-      module_index.DomainDevicesInterfaceSourceUdpLocal.new;
-  final DomainDevicesInterfaceSourceUdpLocalArgs =
-      module_index.DomainDevicesInterfaceSourceUdpLocal.new;
-  final DomainDevicesInterfaceSourceUser =
-      module_index.DomainDevicesInterfaceSourceUser.new;
-  final DomainDevicesInterfaceSourceUserArgs =
-      module_index.DomainDevicesInterfaceSourceUser.new;
-  final DomainDevicesInterfaceSourceVdpa =
-      module_index.DomainDevicesInterfaceSourceVdpa.new;
-  final DomainDevicesInterfaceSourceVdpaArgs =
-      module_index.DomainDevicesInterfaceSourceVdpa.new;
-  final DomainDevicesInterfaceSourceVds =
-      module_index.DomainDevicesInterfaceSourceVds.new;
-  final DomainDevicesInterfaceSourceVdsArgs =
-      module_index.DomainDevicesInterfaceSourceVds.new;
-  final DomainDevicesInterfaceSourceVhostUser =
-      module_index.DomainDevicesInterfaceSourceVhostUser.new;
-  final DomainDevicesInterfaceSourceVhostUserArgs =
-      module_index.DomainDevicesInterfaceSourceVhostUser.new;
-  final DomainDevicesInterfaceSourceVhostUserChardev =
-      module_index.DomainDevicesInterfaceSourceVhostUserChardev.new;
-  final DomainDevicesInterfaceSourceVhostUserChardevArgs =
-      module_index.DomainDevicesInterfaceSourceVhostUserChardev.new;
-  final DomainDevicesInterfaceSourceVhostUserChardevDbus =
-      module_index.DomainDevicesInterfaceSourceVhostUserChardevDbus.new;
-  final DomainDevicesInterfaceSourceVhostUserChardevDbusArgs =
-      module_index.DomainDevicesInterfaceSourceVhostUserChardevDbus.new;
-  final DomainDevicesInterfaceSourceVhostUserChardevDev =
-      module_index.DomainDevicesInterfaceSourceVhostUserChardevDev.new;
-  final DomainDevicesInterfaceSourceVhostUserChardevDevArgs =
-      module_index.DomainDevicesInterfaceSourceVhostUserChardevDev.new;
-  final DomainDevicesInterfaceSourceVhostUserChardevDevSecLabel =
-      module_index.DomainDevicesInterfaceSourceVhostUserChardevDevSecLabel.new;
-  final DomainDevicesInterfaceSourceVhostUserChardevDevSecLabelArgs =
-      module_index.DomainDevicesInterfaceSourceVhostUserChardevDevSecLabel.new;
-  final DomainDevicesInterfaceSourceVhostUserChardevFile =
-      module_index.DomainDevicesInterfaceSourceVhostUserChardevFile.new;
-  final DomainDevicesInterfaceSourceVhostUserChardevFileArgs =
-      module_index.DomainDevicesInterfaceSourceVhostUserChardevFile.new;
-  final DomainDevicesInterfaceSourceVhostUserChardevFileSecLabel =
-      module_index.DomainDevicesInterfaceSourceVhostUserChardevFileSecLabel.new;
-  final DomainDevicesInterfaceSourceVhostUserChardevFileSecLabelArgs =
-      module_index.DomainDevicesInterfaceSourceVhostUserChardevFileSecLabel.new;
-  final DomainDevicesInterfaceSourceVhostUserChardevNmdm =
-      module_index.DomainDevicesInterfaceSourceVhostUserChardevNmdm.new;
-  final DomainDevicesInterfaceSourceVhostUserChardevNmdmArgs =
-      module_index.DomainDevicesInterfaceSourceVhostUserChardevNmdm.new;
-  final DomainDevicesInterfaceSourceVhostUserChardevPipe =
-      module_index.DomainDevicesInterfaceSourceVhostUserChardevPipe.new;
-  final DomainDevicesInterfaceSourceVhostUserChardevPipeArgs =
-      module_index.DomainDevicesInterfaceSourceVhostUserChardevPipe.new;
-  final DomainDevicesInterfaceSourceVhostUserChardevPipeSecLabel =
-      module_index.DomainDevicesInterfaceSourceVhostUserChardevPipeSecLabel.new;
-  final DomainDevicesInterfaceSourceVhostUserChardevPipeSecLabelArgs =
-      module_index.DomainDevicesInterfaceSourceVhostUserChardevPipeSecLabel.new;
-  final DomainDevicesInterfaceSourceVhostUserChardevPty =
-      module_index.DomainDevicesInterfaceSourceVhostUserChardevPty.new;
-  final DomainDevicesInterfaceSourceVhostUserChardevPtyArgs =
-      module_index.DomainDevicesInterfaceSourceVhostUserChardevPty.new;
-  final DomainDevicesInterfaceSourceVhostUserChardevPtySecLabel =
-      module_index.DomainDevicesInterfaceSourceVhostUserChardevPtySecLabel.new;
-  final DomainDevicesInterfaceSourceVhostUserChardevPtySecLabelArgs =
-      module_index.DomainDevicesInterfaceSourceVhostUserChardevPtySecLabel.new;
-  final DomainDevicesInterfaceSourceVhostUserChardevQemuvdAgent =
-      module_index.DomainDevicesInterfaceSourceVhostUserChardevQemuvdAgent.new;
-  final DomainDevicesInterfaceSourceVhostUserChardevQemuvdAgentArgs =
-      module_index.DomainDevicesInterfaceSourceVhostUserChardevQemuvdAgent.new;
-  final DomainDevicesInterfaceSourceVhostUserChardevQemuvdAgentClipBoard =
-      module_index
-          .DomainDevicesInterfaceSourceVhostUserChardevQemuvdAgentClipBoard
-          .new;
-  final DomainDevicesInterfaceSourceVhostUserChardevQemuvdAgentClipBoardArgs =
-      module_index
-          .DomainDevicesInterfaceSourceVhostUserChardevQemuvdAgentClipBoard
-          .new;
-  final DomainDevicesInterfaceSourceVhostUserChardevQemuvdAgentMouse =
-      module_index
-          .DomainDevicesInterfaceSourceVhostUserChardevQemuvdAgentMouse
-          .new;
-  final DomainDevicesInterfaceSourceVhostUserChardevQemuvdAgentMouseArgs =
-      module_index
-          .DomainDevicesInterfaceSourceVhostUserChardevQemuvdAgentMouse
-          .new;
-  final DomainDevicesInterfaceSourceVhostUserChardevSpicePort =
-      module_index.DomainDevicesInterfaceSourceVhostUserChardevSpicePort.new;
-  final DomainDevicesInterfaceSourceVhostUserChardevSpicePortArgs =
-      module_index.DomainDevicesInterfaceSourceVhostUserChardevSpicePort.new;
-  final DomainDevicesInterfaceSourceVhostUserChardevTcp =
-      module_index.DomainDevicesInterfaceSourceVhostUserChardevTcp.new;
-  final DomainDevicesInterfaceSourceVhostUserChardevTcpArgs =
-      module_index.DomainDevicesInterfaceSourceVhostUserChardevTcp.new;
-  final DomainDevicesInterfaceSourceVhostUserChardevTcpReconnect =
-      module_index.DomainDevicesInterfaceSourceVhostUserChardevTcpReconnect.new;
-  final DomainDevicesInterfaceSourceVhostUserChardevTcpReconnectArgs =
-      module_index.DomainDevicesInterfaceSourceVhostUserChardevTcpReconnect.new;
-  final DomainDevicesInterfaceSourceVhostUserChardevUdp =
-      module_index.DomainDevicesInterfaceSourceVhostUserChardevUdp.new;
-  final DomainDevicesInterfaceSourceVhostUserChardevUdpArgs =
-      module_index.DomainDevicesInterfaceSourceVhostUserChardevUdp.new;
-  final DomainDevicesInterfaceSourceVhostUserChardevUnix =
-      module_index.DomainDevicesInterfaceSourceVhostUserChardevUnix.new;
-  final DomainDevicesInterfaceSourceVhostUserChardevUnixArgs =
-      module_index.DomainDevicesInterfaceSourceVhostUserChardevUnix.new;
-  final DomainDevicesInterfaceSourceVhostUserChardevUnixReconnect = module_index
-      .DomainDevicesInterfaceSourceVhostUserChardevUnixReconnect
-      .new;
-  final DomainDevicesInterfaceSourceVhostUserChardevUnixReconnectArgs =
-      module_index
-          .DomainDevicesInterfaceSourceVhostUserChardevUnixReconnect
-          .new;
-  final DomainDevicesInterfaceSourceVhostUserChardevUnixSecLabel =
-      module_index.DomainDevicesInterfaceSourceVhostUserChardevUnixSecLabel.new;
-  final DomainDevicesInterfaceSourceVhostUserChardevUnixSecLabelArgs =
-      module_index.DomainDevicesInterfaceSourceVhostUserChardevUnixSecLabel.new;
-  final DomainDevicesInterfaceTarget =
-      module_index.DomainDevicesInterfaceTarget.new;
-  final DomainDevicesInterfaceTargetArgs =
-      module_index.DomainDevicesInterfaceTarget.new;
-  final DomainDevicesInterfaceTeaming =
-      module_index.DomainDevicesInterfaceTeaming.new;
-  final DomainDevicesInterfaceTeamingArgs =
-      module_index.DomainDevicesInterfaceTeaming.new;
-  final DomainDevicesInterfaceTune =
-      module_index.DomainDevicesInterfaceTune.new;
-  final DomainDevicesInterfaceTuneArgs =
-      module_index.DomainDevicesInterfaceTune.new;
-  final DomainDevicesInterfaceVirtualPort =
-      module_index.DomainDevicesInterfaceVirtualPort.new;
-  final DomainDevicesInterfaceVirtualPortArgs =
-      module_index.DomainDevicesInterfaceVirtualPort.new;
-  final DomainDevicesInterfaceVirtualPortParams =
-      module_index.DomainDevicesInterfaceVirtualPortParams.new;
-  final DomainDevicesInterfaceVirtualPortParamsAny =
-      module_index.DomainDevicesInterfaceVirtualPortParamsAny.new;
-  final DomainDevicesInterfaceVirtualPortParamsAnyArgs =
-      module_index.DomainDevicesInterfaceVirtualPortParamsAny.new;
-  final DomainDevicesInterfaceVirtualPortParamsArgs =
-      module_index.DomainDevicesInterfaceVirtualPortParams.new;
-  final DomainDevicesInterfaceVirtualPortParamsMidoNet =
-      module_index.DomainDevicesInterfaceVirtualPortParamsMidoNet.new;
-  final DomainDevicesInterfaceVirtualPortParamsMidoNetArgs =
-      module_index.DomainDevicesInterfaceVirtualPortParamsMidoNet.new;
-  final DomainDevicesInterfaceVirtualPortParamsOpenVSwitch =
-      module_index.DomainDevicesInterfaceVirtualPortParamsOpenVSwitch.new;
-  final DomainDevicesInterfaceVirtualPortParamsOpenVSwitchArgs =
-      module_index.DomainDevicesInterfaceVirtualPortParamsOpenVSwitch.new;
-  final DomainDevicesInterfaceVirtualPortParamsVepa8021qbg =
-      module_index.DomainDevicesInterfaceVirtualPortParamsVepa8021qbg.new;
-  final DomainDevicesInterfaceVirtualPortParamsVepa8021qbgArgs =
-      module_index.DomainDevicesInterfaceVirtualPortParamsVepa8021qbg.new;
-  final DomainDevicesInterfaceVirtualPortParamsVnTag8011qbh =
-      module_index.DomainDevicesInterfaceVirtualPortParamsVnTag8011qbh.new;
-  final DomainDevicesInterfaceVirtualPortParamsVnTag8011qbhArgs =
-      module_index.DomainDevicesInterfaceVirtualPortParamsVnTag8011qbh.new;
-  final DomainDevicesInterfaceVlan =
-      module_index.DomainDevicesInterfaceVlan.new;
-  final DomainDevicesInterfaceVlanArgs =
-      module_index.DomainDevicesInterfaceVlan.new;
-  final DomainDevicesInterfaceVlanTag =
-      module_index.DomainDevicesInterfaceVlanTag.new;
-  final DomainDevicesInterfaceVlanTagArgs =
-      module_index.DomainDevicesInterfaceVlanTag.new;
-  final DomainDevicesInterfaceWaitForIp =
-      module_index.DomainDevicesInterfaceWaitForIp.new;
-  final DomainDevicesInterfaceWaitForIpArgs =
-      module_index.DomainDevicesInterfaceWaitForIp.new;
+  final DomainDevicesInterfaceRomArgs = module_index.DomainDevicesInterfaceRom.new;
+  final DomainDevicesInterfaceRoute = module_index.DomainDevicesInterfaceRoute.new;
+  final DomainDevicesInterfaceRouteArgs = module_index.DomainDevicesInterfaceRoute.new;
+  final DomainDevicesInterfaceScript = module_index.DomainDevicesInterfaceScript.new;
+  final DomainDevicesInterfaceScriptArgs = module_index.DomainDevicesInterfaceScript.new;
+  final DomainDevicesInterfaceSource = module_index.DomainDevicesInterfaceSource.new;
+  final DomainDevicesInterfaceSourceArgs = module_index.DomainDevicesInterfaceSource.new;
+  final DomainDevicesInterfaceSourceBridge = module_index.DomainDevicesInterfaceSourceBridge.new;
+  final DomainDevicesInterfaceSourceBridgeArgs = module_index.DomainDevicesInterfaceSourceBridge.new;
+  final DomainDevicesInterfaceSourceClient = module_index.DomainDevicesInterfaceSourceClient.new;
+  final DomainDevicesInterfaceSourceClientArgs = module_index.DomainDevicesInterfaceSourceClient.new;
+  final DomainDevicesInterfaceSourceClientLocal = module_index.DomainDevicesInterfaceSourceClientLocal.new;
+  final DomainDevicesInterfaceSourceClientLocalArgs = module_index.DomainDevicesInterfaceSourceClientLocal.new;
+  final DomainDevicesInterfaceSourceDirect = module_index.DomainDevicesInterfaceSourceDirect.new;
+  final DomainDevicesInterfaceSourceDirectArgs = module_index.DomainDevicesInterfaceSourceDirect.new;
+  final DomainDevicesInterfaceSourceEthernet = module_index.DomainDevicesInterfaceSourceEthernet.new;
+  final DomainDevicesInterfaceSourceEthernetArgs = module_index.DomainDevicesInterfaceSourceEthernet.new;
+  final DomainDevicesInterfaceSourceEthernetIp = module_index.DomainDevicesInterfaceSourceEthernetIp.new;
+  final DomainDevicesInterfaceSourceEthernetIpArgs = module_index.DomainDevicesInterfaceSourceEthernetIp.new;
+  final DomainDevicesInterfaceSourceEthernetRoute = module_index.DomainDevicesInterfaceSourceEthernetRoute.new;
+  final DomainDevicesInterfaceSourceEthernetRouteArgs = module_index.DomainDevicesInterfaceSourceEthernetRoute.new;
+  final DomainDevicesInterfaceSourceHostdev = module_index.DomainDevicesInterfaceSourceHostdev.new;
+  final DomainDevicesInterfaceSourceHostdevArgs = module_index.DomainDevicesInterfaceSourceHostdev.new;
+  final DomainDevicesInterfaceSourceHostdevPci = module_index.DomainDevicesInterfaceSourceHostdevPci.new;
+  final DomainDevicesInterfaceSourceHostdevPciAddress = module_index.DomainDevicesInterfaceSourceHostdevPciAddress.new;
+  final DomainDevicesInterfaceSourceHostdevPciAddressArgs = module_index.DomainDevicesInterfaceSourceHostdevPciAddress.new;
+  final DomainDevicesInterfaceSourceHostdevPciAddressZpci = module_index.DomainDevicesInterfaceSourceHostdevPciAddressZpci.new;
+  final DomainDevicesInterfaceSourceHostdevPciAddressZpciArgs = module_index.DomainDevicesInterfaceSourceHostdevPciAddressZpci.new;
+  final DomainDevicesInterfaceSourceHostdevPciArgs = module_index.DomainDevicesInterfaceSourceHostdevPci.new;
+  final DomainDevicesInterfaceSourceHostdevUsb = module_index.DomainDevicesInterfaceSourceHostdevUsb.new;
+  final DomainDevicesInterfaceSourceHostdevUsbAddress = module_index.DomainDevicesInterfaceSourceHostdevUsbAddress.new;
+  final DomainDevicesInterfaceSourceHostdevUsbAddressArgs = module_index.DomainDevicesInterfaceSourceHostdevUsbAddress.new;
+  final DomainDevicesInterfaceSourceHostdevUsbArgs = module_index.DomainDevicesInterfaceSourceHostdevUsb.new;
+  final DomainDevicesInterfaceSourceHostdevUsbProduct = module_index.DomainDevicesInterfaceSourceHostdevUsbProduct.new;
+  final DomainDevicesInterfaceSourceHostdevUsbProductArgs = module_index.DomainDevicesInterfaceSourceHostdevUsbProduct.new;
+  final DomainDevicesInterfaceSourceHostdevUsbVendor = module_index.DomainDevicesInterfaceSourceHostdevUsbVendor.new;
+  final DomainDevicesInterfaceSourceHostdevUsbVendorArgs = module_index.DomainDevicesInterfaceSourceHostdevUsbVendor.new;
+  final DomainDevicesInterfaceSourceInternal = module_index.DomainDevicesInterfaceSourceInternal.new;
+  final DomainDevicesInterfaceSourceInternalArgs = module_index.DomainDevicesInterfaceSourceInternal.new;
+  final DomainDevicesInterfaceSourceMcast = module_index.DomainDevicesInterfaceSourceMcast.new;
+  final DomainDevicesInterfaceSourceMcastArgs = module_index.DomainDevicesInterfaceSourceMcast.new;
+  final DomainDevicesInterfaceSourceMcastLocal = module_index.DomainDevicesInterfaceSourceMcastLocal.new;
+  final DomainDevicesInterfaceSourceMcastLocalArgs = module_index.DomainDevicesInterfaceSourceMcastLocal.new;
+  final DomainDevicesInterfaceSourceNetwork = module_index.DomainDevicesInterfaceSourceNetwork.new;
+  final DomainDevicesInterfaceSourceNetworkArgs = module_index.DomainDevicesInterfaceSourceNetwork.new;
+  final DomainDevicesInterfaceSourceServer = module_index.DomainDevicesInterfaceSourceServer.new;
+  final DomainDevicesInterfaceSourceServerArgs = module_index.DomainDevicesInterfaceSourceServer.new;
+  final DomainDevicesInterfaceSourceServerLocal = module_index.DomainDevicesInterfaceSourceServerLocal.new;
+  final DomainDevicesInterfaceSourceServerLocalArgs = module_index.DomainDevicesInterfaceSourceServerLocal.new;
+  final DomainDevicesInterfaceSourceUdp = module_index.DomainDevicesInterfaceSourceUdp.new;
+  final DomainDevicesInterfaceSourceUdpArgs = module_index.DomainDevicesInterfaceSourceUdp.new;
+  final DomainDevicesInterfaceSourceUdpLocal = module_index.DomainDevicesInterfaceSourceUdpLocal.new;
+  final DomainDevicesInterfaceSourceUdpLocalArgs = module_index.DomainDevicesInterfaceSourceUdpLocal.new;
+  final DomainDevicesInterfaceSourceUser = module_index.DomainDevicesInterfaceSourceUser.new;
+  final DomainDevicesInterfaceSourceUserArgs = module_index.DomainDevicesInterfaceSourceUser.new;
+  final DomainDevicesInterfaceSourceVdpa = module_index.DomainDevicesInterfaceSourceVdpa.new;
+  final DomainDevicesInterfaceSourceVdpaArgs = module_index.DomainDevicesInterfaceSourceVdpa.new;
+  final DomainDevicesInterfaceSourceVds = module_index.DomainDevicesInterfaceSourceVds.new;
+  final DomainDevicesInterfaceSourceVdsArgs = module_index.DomainDevicesInterfaceSourceVds.new;
+  final DomainDevicesInterfaceSourceVhostUser = module_index.DomainDevicesInterfaceSourceVhostUser.new;
+  final DomainDevicesInterfaceSourceVhostUserArgs = module_index.DomainDevicesInterfaceSourceVhostUser.new;
+  final DomainDevicesInterfaceSourceVhostUserChardev = module_index.DomainDevicesInterfaceSourceVhostUserChardev.new;
+  final DomainDevicesInterfaceSourceVhostUserChardevArgs = module_index.DomainDevicesInterfaceSourceVhostUserChardev.new;
+  final DomainDevicesInterfaceSourceVhostUserChardevDbus = module_index.DomainDevicesInterfaceSourceVhostUserChardevDbus.new;
+  final DomainDevicesInterfaceSourceVhostUserChardevDbusArgs = module_index.DomainDevicesInterfaceSourceVhostUserChardevDbus.new;
+  final DomainDevicesInterfaceSourceVhostUserChardevDev = module_index.DomainDevicesInterfaceSourceVhostUserChardevDev.new;
+  final DomainDevicesInterfaceSourceVhostUserChardevDevArgs = module_index.DomainDevicesInterfaceSourceVhostUserChardevDev.new;
+  final DomainDevicesInterfaceSourceVhostUserChardevDevSecLabel = module_index.DomainDevicesInterfaceSourceVhostUserChardevDevSecLabel.new;
+  final DomainDevicesInterfaceSourceVhostUserChardevDevSecLabelArgs = module_index.DomainDevicesInterfaceSourceVhostUserChardevDevSecLabel.new;
+  final DomainDevicesInterfaceSourceVhostUserChardevFile = module_index.DomainDevicesInterfaceSourceVhostUserChardevFile.new;
+  final DomainDevicesInterfaceSourceVhostUserChardevFileArgs = module_index.DomainDevicesInterfaceSourceVhostUserChardevFile.new;
+  final DomainDevicesInterfaceSourceVhostUserChardevFileSecLabel = module_index.DomainDevicesInterfaceSourceVhostUserChardevFileSecLabel.new;
+  final DomainDevicesInterfaceSourceVhostUserChardevFileSecLabelArgs = module_index.DomainDevicesInterfaceSourceVhostUserChardevFileSecLabel.new;
+  final DomainDevicesInterfaceSourceVhostUserChardevNmdm = module_index.DomainDevicesInterfaceSourceVhostUserChardevNmdm.new;
+  final DomainDevicesInterfaceSourceVhostUserChardevNmdmArgs = module_index.DomainDevicesInterfaceSourceVhostUserChardevNmdm.new;
+  final DomainDevicesInterfaceSourceVhostUserChardevPipe = module_index.DomainDevicesInterfaceSourceVhostUserChardevPipe.new;
+  final DomainDevicesInterfaceSourceVhostUserChardevPipeArgs = module_index.DomainDevicesInterfaceSourceVhostUserChardevPipe.new;
+  final DomainDevicesInterfaceSourceVhostUserChardevPipeSecLabel = module_index.DomainDevicesInterfaceSourceVhostUserChardevPipeSecLabel.new;
+  final DomainDevicesInterfaceSourceVhostUserChardevPipeSecLabelArgs = module_index.DomainDevicesInterfaceSourceVhostUserChardevPipeSecLabel.new;
+  final DomainDevicesInterfaceSourceVhostUserChardevPty = module_index.DomainDevicesInterfaceSourceVhostUserChardevPty.new;
+  final DomainDevicesInterfaceSourceVhostUserChardevPtyArgs = module_index.DomainDevicesInterfaceSourceVhostUserChardevPty.new;
+  final DomainDevicesInterfaceSourceVhostUserChardevPtySecLabel = module_index.DomainDevicesInterfaceSourceVhostUserChardevPtySecLabel.new;
+  final DomainDevicesInterfaceSourceVhostUserChardevPtySecLabelArgs = module_index.DomainDevicesInterfaceSourceVhostUserChardevPtySecLabel.new;
+  final DomainDevicesInterfaceSourceVhostUserChardevQemuvdAgent = module_index.DomainDevicesInterfaceSourceVhostUserChardevQemuvdAgent.new;
+  final DomainDevicesInterfaceSourceVhostUserChardevQemuvdAgentArgs = module_index.DomainDevicesInterfaceSourceVhostUserChardevQemuvdAgent.new;
+  final DomainDevicesInterfaceSourceVhostUserChardevQemuvdAgentClipBoard = module_index.DomainDevicesInterfaceSourceVhostUserChardevQemuvdAgentClipBoard.new;
+  final DomainDevicesInterfaceSourceVhostUserChardevQemuvdAgentClipBoardArgs = module_index.DomainDevicesInterfaceSourceVhostUserChardevQemuvdAgentClipBoard.new;
+  final DomainDevicesInterfaceSourceVhostUserChardevQemuvdAgentMouse = module_index.DomainDevicesInterfaceSourceVhostUserChardevQemuvdAgentMouse.new;
+  final DomainDevicesInterfaceSourceVhostUserChardevQemuvdAgentMouseArgs = module_index.DomainDevicesInterfaceSourceVhostUserChardevQemuvdAgentMouse.new;
+  final DomainDevicesInterfaceSourceVhostUserChardevSpicePort = module_index.DomainDevicesInterfaceSourceVhostUserChardevSpicePort.new;
+  final DomainDevicesInterfaceSourceVhostUserChardevSpicePortArgs = module_index.DomainDevicesInterfaceSourceVhostUserChardevSpicePort.new;
+  final DomainDevicesInterfaceSourceVhostUserChardevTcp = module_index.DomainDevicesInterfaceSourceVhostUserChardevTcp.new;
+  final DomainDevicesInterfaceSourceVhostUserChardevTcpArgs = module_index.DomainDevicesInterfaceSourceVhostUserChardevTcp.new;
+  final DomainDevicesInterfaceSourceVhostUserChardevTcpReconnect = module_index.DomainDevicesInterfaceSourceVhostUserChardevTcpReconnect.new;
+  final DomainDevicesInterfaceSourceVhostUserChardevTcpReconnectArgs = module_index.DomainDevicesInterfaceSourceVhostUserChardevTcpReconnect.new;
+  final DomainDevicesInterfaceSourceVhostUserChardevUdp = module_index.DomainDevicesInterfaceSourceVhostUserChardevUdp.new;
+  final DomainDevicesInterfaceSourceVhostUserChardevUdpArgs = module_index.DomainDevicesInterfaceSourceVhostUserChardevUdp.new;
+  final DomainDevicesInterfaceSourceVhostUserChardevUnix = module_index.DomainDevicesInterfaceSourceVhostUserChardevUnix.new;
+  final DomainDevicesInterfaceSourceVhostUserChardevUnixArgs = module_index.DomainDevicesInterfaceSourceVhostUserChardevUnix.new;
+  final DomainDevicesInterfaceSourceVhostUserChardevUnixReconnect = module_index.DomainDevicesInterfaceSourceVhostUserChardevUnixReconnect.new;
+  final DomainDevicesInterfaceSourceVhostUserChardevUnixReconnectArgs = module_index.DomainDevicesInterfaceSourceVhostUserChardevUnixReconnect.new;
+  final DomainDevicesInterfaceSourceVhostUserChardevUnixSecLabel = module_index.DomainDevicesInterfaceSourceVhostUserChardevUnixSecLabel.new;
+  final DomainDevicesInterfaceSourceVhostUserChardevUnixSecLabelArgs = module_index.DomainDevicesInterfaceSourceVhostUserChardevUnixSecLabel.new;
+  final DomainDevicesInterfaceTarget = module_index.DomainDevicesInterfaceTarget.new;
+  final DomainDevicesInterfaceTargetArgs = module_index.DomainDevicesInterfaceTarget.new;
+  final DomainDevicesInterfaceTeaming = module_index.DomainDevicesInterfaceTeaming.new;
+  final DomainDevicesInterfaceTeamingArgs = module_index.DomainDevicesInterfaceTeaming.new;
+  final DomainDevicesInterfaceTune = module_index.DomainDevicesInterfaceTune.new;
+  final DomainDevicesInterfaceTuneArgs = module_index.DomainDevicesInterfaceTune.new;
+  final DomainDevicesInterfaceVirtualPort = module_index.DomainDevicesInterfaceVirtualPort.new;
+  final DomainDevicesInterfaceVirtualPortArgs = module_index.DomainDevicesInterfaceVirtualPort.new;
+  final DomainDevicesInterfaceVirtualPortParams = module_index.DomainDevicesInterfaceVirtualPortParams.new;
+  final DomainDevicesInterfaceVirtualPortParamsAny = module_index.DomainDevicesInterfaceVirtualPortParamsAny.new;
+  final DomainDevicesInterfaceVirtualPortParamsAnyArgs = module_index.DomainDevicesInterfaceVirtualPortParamsAny.new;
+  final DomainDevicesInterfaceVirtualPortParamsArgs = module_index.DomainDevicesInterfaceVirtualPortParams.new;
+  final DomainDevicesInterfaceVirtualPortParamsMidoNet = module_index.DomainDevicesInterfaceVirtualPortParamsMidoNet.new;
+  final DomainDevicesInterfaceVirtualPortParamsMidoNetArgs = module_index.DomainDevicesInterfaceVirtualPortParamsMidoNet.new;
+  final DomainDevicesInterfaceVirtualPortParamsOpenVSwitch = module_index.DomainDevicesInterfaceVirtualPortParamsOpenVSwitch.new;
+  final DomainDevicesInterfaceVirtualPortParamsOpenVSwitchArgs = module_index.DomainDevicesInterfaceVirtualPortParamsOpenVSwitch.new;
+  final DomainDevicesInterfaceVirtualPortParamsVepa8021qbg = module_index.DomainDevicesInterfaceVirtualPortParamsVepa8021qbg.new;
+  final DomainDevicesInterfaceVirtualPortParamsVepa8021qbgArgs = module_index.DomainDevicesInterfaceVirtualPortParamsVepa8021qbg.new;
+  final DomainDevicesInterfaceVirtualPortParamsVnTag8011qbh = module_index.DomainDevicesInterfaceVirtualPortParamsVnTag8011qbh.new;
+  final DomainDevicesInterfaceVirtualPortParamsVnTag8011qbhArgs = module_index.DomainDevicesInterfaceVirtualPortParamsVnTag8011qbh.new;
+  final DomainDevicesInterfaceVlan = module_index.DomainDevicesInterfaceVlan.new;
+  final DomainDevicesInterfaceVlanArgs = module_index.DomainDevicesInterfaceVlan.new;
+  final DomainDevicesInterfaceVlanTag = module_index.DomainDevicesInterfaceVlanTag.new;
+  final DomainDevicesInterfaceVlanTagArgs = module_index.DomainDevicesInterfaceVlanTag.new;
+  final DomainDevicesInterfaceWaitForIp = module_index.DomainDevicesInterfaceWaitForIp.new;
+  final DomainDevicesInterfaceWaitForIpArgs = module_index.DomainDevicesInterfaceWaitForIp.new;
   final DomainDevicesIommu = module_index.DomainDevicesIommu.new;
   final DomainDevicesIommuAcpi = module_index.DomainDevicesIommuAcpi.new;
   final DomainDevicesIommuAcpiArgs = module_index.DomainDevicesIommuAcpi.new;
@@ -2887,57 +1373,35 @@ class _IndexModuleNamespace {
   final DomainDevicesIommuAliasArgs = module_index.DomainDevicesIommuAlias.new;
   final DomainDevicesIommuArgs = module_index.DomainDevicesIommu.new;
   final DomainDevicesIommuDriver = module_index.DomainDevicesIommuDriver.new;
-  final DomainDevicesIommuDriverArgs =
-      module_index.DomainDevicesIommuDriver.new;
+  final DomainDevicesIommuDriverArgs = module_index.DomainDevicesIommuDriver.new;
   final DomainDevicesLease = module_index.DomainDevicesLease.new;
   final DomainDevicesLeaseArgs = module_index.DomainDevicesLease.new;
   final DomainDevicesLeaseTarget = module_index.DomainDevicesLeaseTarget.new;
-  final DomainDevicesLeaseTargetArgs =
-      module_index.DomainDevicesLeaseTarget.new;
+  final DomainDevicesLeaseTargetArgs = module_index.DomainDevicesLeaseTarget.new;
   final DomainDevicesMemBalloon = module_index.DomainDevicesMemBalloon.new;
-  final DomainDevicesMemBalloonAcpi =
-      module_index.DomainDevicesMemBalloonAcpi.new;
-  final DomainDevicesMemBalloonAcpiArgs =
-      module_index.DomainDevicesMemBalloonAcpi.new;
-  final DomainDevicesMemBalloonAlias =
-      module_index.DomainDevicesMemBalloonAlias.new;
-  final DomainDevicesMemBalloonAliasArgs =
-      module_index.DomainDevicesMemBalloonAlias.new;
+  final DomainDevicesMemBalloonAcpi = module_index.DomainDevicesMemBalloonAcpi.new;
+  final DomainDevicesMemBalloonAcpiArgs = module_index.DomainDevicesMemBalloonAcpi.new;
+  final DomainDevicesMemBalloonAlias = module_index.DomainDevicesMemBalloonAlias.new;
+  final DomainDevicesMemBalloonAliasArgs = module_index.DomainDevicesMemBalloonAlias.new;
   final DomainDevicesMemBalloonArgs = module_index.DomainDevicesMemBalloon.new;
-  final DomainDevicesMemBalloonDriver =
-      module_index.DomainDevicesMemBalloonDriver.new;
-  final DomainDevicesMemBalloonDriverArgs =
-      module_index.DomainDevicesMemBalloonDriver.new;
-  final DomainDevicesMemBalloonStats =
-      module_index.DomainDevicesMemBalloonStats.new;
-  final DomainDevicesMemBalloonStatsArgs =
-      module_index.DomainDevicesMemBalloonStats.new;
+  final DomainDevicesMemBalloonDriver = module_index.DomainDevicesMemBalloonDriver.new;
+  final DomainDevicesMemBalloonDriverArgs = module_index.DomainDevicesMemBalloonDriver.new;
+  final DomainDevicesMemBalloonStats = module_index.DomainDevicesMemBalloonStats.new;
+  final DomainDevicesMemBalloonStatsArgs = module_index.DomainDevicesMemBalloonStats.new;
   final DomainDevicesMemorydev = module_index.DomainDevicesMemorydev.new;
-  final DomainDevicesMemorydevAcpi =
-      module_index.DomainDevicesMemorydevAcpi.new;
-  final DomainDevicesMemorydevAcpiArgs =
-      module_index.DomainDevicesMemorydevAcpi.new;
-  final DomainDevicesMemorydevAlias =
-      module_index.DomainDevicesMemorydevAlias.new;
-  final DomainDevicesMemorydevAliasArgs =
-      module_index.DomainDevicesMemorydevAlias.new;
+  final DomainDevicesMemorydevAcpi = module_index.DomainDevicesMemorydevAcpi.new;
+  final DomainDevicesMemorydevAcpiArgs = module_index.DomainDevicesMemorydevAcpi.new;
+  final DomainDevicesMemorydevAlias = module_index.DomainDevicesMemorydevAlias.new;
+  final DomainDevicesMemorydevAliasArgs = module_index.DomainDevicesMemorydevAlias.new;
   final DomainDevicesMemorydevArgs = module_index.DomainDevicesMemorydev.new;
-  final DomainDevicesMemorydevSource =
-      module_index.DomainDevicesMemorydevSource.new;
-  final DomainDevicesMemorydevSourceArgs =
-      module_index.DomainDevicesMemorydevSource.new;
-  final DomainDevicesMemorydevTarget =
-      module_index.DomainDevicesMemorydevTarget.new;
-  final DomainDevicesMemorydevTargetAddress =
-      module_index.DomainDevicesMemorydevTargetAddress.new;
-  final DomainDevicesMemorydevTargetAddressArgs =
-      module_index.DomainDevicesMemorydevTargetAddress.new;
-  final DomainDevicesMemorydevTargetArgs =
-      module_index.DomainDevicesMemorydevTarget.new;
-  final DomainDevicesMemorydevTargetLabel =
-      module_index.DomainDevicesMemorydevTargetLabel.new;
-  final DomainDevicesMemorydevTargetLabelArgs =
-      module_index.DomainDevicesMemorydevTargetLabel.new;
+  final DomainDevicesMemorydevSource = module_index.DomainDevicesMemorydevSource.new;
+  final DomainDevicesMemorydevSourceArgs = module_index.DomainDevicesMemorydevSource.new;
+  final DomainDevicesMemorydevTarget = module_index.DomainDevicesMemorydevTarget.new;
+  final DomainDevicesMemorydevTargetAddress = module_index.DomainDevicesMemorydevTargetAddress.new;
+  final DomainDevicesMemorydevTargetAddressArgs = module_index.DomainDevicesMemorydevTargetAddress.new;
+  final DomainDevicesMemorydevTargetArgs = module_index.DomainDevicesMemorydevTarget.new;
+  final DomainDevicesMemorydevTargetLabel = module_index.DomainDevicesMemorydevTargetLabel.new;
+  final DomainDevicesMemorydevTargetLabelArgs = module_index.DomainDevicesMemorydevTargetLabel.new;
   final DomainDevicesNvram = module_index.DomainDevicesNvram.new;
   final DomainDevicesNvramAcpi = module_index.DomainDevicesNvramAcpi.new;
   final DomainDevicesNvramAcpiArgs = module_index.DomainDevicesNvramAcpi.new;
@@ -2952,222 +1416,120 @@ class _IndexModuleNamespace {
   final DomainDevicesPanicArgs = module_index.DomainDevicesPanic.new;
   final DomainDevicesParallel = module_index.DomainDevicesParallel.new;
   final DomainDevicesParallelAcpi = module_index.DomainDevicesParallelAcpi.new;
-  final DomainDevicesParallelAcpiArgs =
-      module_index.DomainDevicesParallelAcpi.new;
-  final DomainDevicesParallelAlias =
-      module_index.DomainDevicesParallelAlias.new;
-  final DomainDevicesParallelAliasArgs =
-      module_index.DomainDevicesParallelAlias.new;
+  final DomainDevicesParallelAcpiArgs = module_index.DomainDevicesParallelAcpi.new;
+  final DomainDevicesParallelAlias = module_index.DomainDevicesParallelAlias.new;
+  final DomainDevicesParallelAliasArgs = module_index.DomainDevicesParallelAlias.new;
   final DomainDevicesParallelArgs = module_index.DomainDevicesParallel.new;
   final DomainDevicesParallelLog = module_index.DomainDevicesParallelLog.new;
-  final DomainDevicesParallelLogArgs =
-      module_index.DomainDevicesParallelLog.new;
-  final DomainDevicesParallelProtocol =
-      module_index.DomainDevicesParallelProtocol.new;
-  final DomainDevicesParallelProtocolArgs =
-      module_index.DomainDevicesParallelProtocol.new;
-  final DomainDevicesParallelSource =
-      module_index.DomainDevicesParallelSource.new;
-  final DomainDevicesParallelSourceArgs =
-      module_index.DomainDevicesParallelSource.new;
-  final DomainDevicesParallelSourceDbus =
-      module_index.DomainDevicesParallelSourceDbus.new;
-  final DomainDevicesParallelSourceDbusArgs =
-      module_index.DomainDevicesParallelSourceDbus.new;
-  final DomainDevicesParallelSourceDev =
-      module_index.DomainDevicesParallelSourceDev.new;
-  final DomainDevicesParallelSourceDevArgs =
-      module_index.DomainDevicesParallelSourceDev.new;
-  final DomainDevicesParallelSourceDevSecLabel =
-      module_index.DomainDevicesParallelSourceDevSecLabel.new;
-  final DomainDevicesParallelSourceDevSecLabelArgs =
-      module_index.DomainDevicesParallelSourceDevSecLabel.new;
-  final DomainDevicesParallelSourceFile =
-      module_index.DomainDevicesParallelSourceFile.new;
-  final DomainDevicesParallelSourceFileArgs =
-      module_index.DomainDevicesParallelSourceFile.new;
-  final DomainDevicesParallelSourceFileSecLabel =
-      module_index.DomainDevicesParallelSourceFileSecLabel.new;
-  final DomainDevicesParallelSourceFileSecLabelArgs =
-      module_index.DomainDevicesParallelSourceFileSecLabel.new;
-  final DomainDevicesParallelSourceNmdm =
-      module_index.DomainDevicesParallelSourceNmdm.new;
-  final DomainDevicesParallelSourceNmdmArgs =
-      module_index.DomainDevicesParallelSourceNmdm.new;
-  final DomainDevicesParallelSourcePipe =
-      module_index.DomainDevicesParallelSourcePipe.new;
-  final DomainDevicesParallelSourcePipeArgs =
-      module_index.DomainDevicesParallelSourcePipe.new;
-  final DomainDevicesParallelSourcePipeSecLabel =
-      module_index.DomainDevicesParallelSourcePipeSecLabel.new;
-  final DomainDevicesParallelSourcePipeSecLabelArgs =
-      module_index.DomainDevicesParallelSourcePipeSecLabel.new;
-  final DomainDevicesParallelSourcePty =
-      module_index.DomainDevicesParallelSourcePty.new;
-  final DomainDevicesParallelSourcePtyArgs =
-      module_index.DomainDevicesParallelSourcePty.new;
-  final DomainDevicesParallelSourcePtySecLabel =
-      module_index.DomainDevicesParallelSourcePtySecLabel.new;
-  final DomainDevicesParallelSourcePtySecLabelArgs =
-      module_index.DomainDevicesParallelSourcePtySecLabel.new;
-  final DomainDevicesParallelSourceQemuvdAgent =
-      module_index.DomainDevicesParallelSourceQemuvdAgent.new;
-  final DomainDevicesParallelSourceQemuvdAgentArgs =
-      module_index.DomainDevicesParallelSourceQemuvdAgent.new;
-  final DomainDevicesParallelSourceQemuvdAgentClipBoard =
-      module_index.DomainDevicesParallelSourceQemuvdAgentClipBoard.new;
-  final DomainDevicesParallelSourceQemuvdAgentClipBoardArgs =
-      module_index.DomainDevicesParallelSourceQemuvdAgentClipBoard.new;
-  final DomainDevicesParallelSourceQemuvdAgentMouse =
-      module_index.DomainDevicesParallelSourceQemuvdAgentMouse.new;
-  final DomainDevicesParallelSourceQemuvdAgentMouseArgs =
-      module_index.DomainDevicesParallelSourceQemuvdAgentMouse.new;
-  final DomainDevicesParallelSourceSpicePort =
-      module_index.DomainDevicesParallelSourceSpicePort.new;
-  final DomainDevicesParallelSourceSpicePortArgs =
-      module_index.DomainDevicesParallelSourceSpicePort.new;
-  final DomainDevicesParallelSourceTcp =
-      module_index.DomainDevicesParallelSourceTcp.new;
-  final DomainDevicesParallelSourceTcpArgs =
-      module_index.DomainDevicesParallelSourceTcp.new;
-  final DomainDevicesParallelSourceTcpReconnect =
-      module_index.DomainDevicesParallelSourceTcpReconnect.new;
-  final DomainDevicesParallelSourceTcpReconnectArgs =
-      module_index.DomainDevicesParallelSourceTcpReconnect.new;
-  final DomainDevicesParallelSourceUdp =
-      module_index.DomainDevicesParallelSourceUdp.new;
-  final DomainDevicesParallelSourceUdpArgs =
-      module_index.DomainDevicesParallelSourceUdp.new;
-  final DomainDevicesParallelSourceUnix =
-      module_index.DomainDevicesParallelSourceUnix.new;
-  final DomainDevicesParallelSourceUnixArgs =
-      module_index.DomainDevicesParallelSourceUnix.new;
-  final DomainDevicesParallelSourceUnixReconnect =
-      module_index.DomainDevicesParallelSourceUnixReconnect.new;
-  final DomainDevicesParallelSourceUnixReconnectArgs =
-      module_index.DomainDevicesParallelSourceUnixReconnect.new;
-  final DomainDevicesParallelSourceUnixSecLabel =
-      module_index.DomainDevicesParallelSourceUnixSecLabel.new;
-  final DomainDevicesParallelSourceUnixSecLabelArgs =
-      module_index.DomainDevicesParallelSourceUnixSecLabel.new;
-  final DomainDevicesParallelTarget =
-      module_index.DomainDevicesParallelTarget.new;
-  final DomainDevicesParallelTargetArgs =
-      module_index.DomainDevicesParallelTarget.new;
+  final DomainDevicesParallelLogArgs = module_index.DomainDevicesParallelLog.new;
+  final DomainDevicesParallelProtocol = module_index.DomainDevicesParallelProtocol.new;
+  final DomainDevicesParallelProtocolArgs = module_index.DomainDevicesParallelProtocol.new;
+  final DomainDevicesParallelSource = module_index.DomainDevicesParallelSource.new;
+  final DomainDevicesParallelSourceArgs = module_index.DomainDevicesParallelSource.new;
+  final DomainDevicesParallelSourceDbus = module_index.DomainDevicesParallelSourceDbus.new;
+  final DomainDevicesParallelSourceDbusArgs = module_index.DomainDevicesParallelSourceDbus.new;
+  final DomainDevicesParallelSourceDev = module_index.DomainDevicesParallelSourceDev.new;
+  final DomainDevicesParallelSourceDevArgs = module_index.DomainDevicesParallelSourceDev.new;
+  final DomainDevicesParallelSourceDevSecLabel = module_index.DomainDevicesParallelSourceDevSecLabel.new;
+  final DomainDevicesParallelSourceDevSecLabelArgs = module_index.DomainDevicesParallelSourceDevSecLabel.new;
+  final DomainDevicesParallelSourceFile = module_index.DomainDevicesParallelSourceFile.new;
+  final DomainDevicesParallelSourceFileArgs = module_index.DomainDevicesParallelSourceFile.new;
+  final DomainDevicesParallelSourceFileSecLabel = module_index.DomainDevicesParallelSourceFileSecLabel.new;
+  final DomainDevicesParallelSourceFileSecLabelArgs = module_index.DomainDevicesParallelSourceFileSecLabel.new;
+  final DomainDevicesParallelSourceNmdm = module_index.DomainDevicesParallelSourceNmdm.new;
+  final DomainDevicesParallelSourceNmdmArgs = module_index.DomainDevicesParallelSourceNmdm.new;
+  final DomainDevicesParallelSourcePipe = module_index.DomainDevicesParallelSourcePipe.new;
+  final DomainDevicesParallelSourcePipeArgs = module_index.DomainDevicesParallelSourcePipe.new;
+  final DomainDevicesParallelSourcePipeSecLabel = module_index.DomainDevicesParallelSourcePipeSecLabel.new;
+  final DomainDevicesParallelSourcePipeSecLabelArgs = module_index.DomainDevicesParallelSourcePipeSecLabel.new;
+  final DomainDevicesParallelSourcePty = module_index.DomainDevicesParallelSourcePty.new;
+  final DomainDevicesParallelSourcePtyArgs = module_index.DomainDevicesParallelSourcePty.new;
+  final DomainDevicesParallelSourcePtySecLabel = module_index.DomainDevicesParallelSourcePtySecLabel.new;
+  final DomainDevicesParallelSourcePtySecLabelArgs = module_index.DomainDevicesParallelSourcePtySecLabel.new;
+  final DomainDevicesParallelSourceQemuvdAgent = module_index.DomainDevicesParallelSourceQemuvdAgent.new;
+  final DomainDevicesParallelSourceQemuvdAgentArgs = module_index.DomainDevicesParallelSourceQemuvdAgent.new;
+  final DomainDevicesParallelSourceQemuvdAgentClipBoard = module_index.DomainDevicesParallelSourceQemuvdAgentClipBoard.new;
+  final DomainDevicesParallelSourceQemuvdAgentClipBoardArgs = module_index.DomainDevicesParallelSourceQemuvdAgentClipBoard.new;
+  final DomainDevicesParallelSourceQemuvdAgentMouse = module_index.DomainDevicesParallelSourceQemuvdAgentMouse.new;
+  final DomainDevicesParallelSourceQemuvdAgentMouseArgs = module_index.DomainDevicesParallelSourceQemuvdAgentMouse.new;
+  final DomainDevicesParallelSourceSpicePort = module_index.DomainDevicesParallelSourceSpicePort.new;
+  final DomainDevicesParallelSourceSpicePortArgs = module_index.DomainDevicesParallelSourceSpicePort.new;
+  final DomainDevicesParallelSourceTcp = module_index.DomainDevicesParallelSourceTcp.new;
+  final DomainDevicesParallelSourceTcpArgs = module_index.DomainDevicesParallelSourceTcp.new;
+  final DomainDevicesParallelSourceTcpReconnect = module_index.DomainDevicesParallelSourceTcpReconnect.new;
+  final DomainDevicesParallelSourceTcpReconnectArgs = module_index.DomainDevicesParallelSourceTcpReconnect.new;
+  final DomainDevicesParallelSourceUdp = module_index.DomainDevicesParallelSourceUdp.new;
+  final DomainDevicesParallelSourceUdpArgs = module_index.DomainDevicesParallelSourceUdp.new;
+  final DomainDevicesParallelSourceUnix = module_index.DomainDevicesParallelSourceUnix.new;
+  final DomainDevicesParallelSourceUnixArgs = module_index.DomainDevicesParallelSourceUnix.new;
+  final DomainDevicesParallelSourceUnixReconnect = module_index.DomainDevicesParallelSourceUnixReconnect.new;
+  final DomainDevicesParallelSourceUnixReconnectArgs = module_index.DomainDevicesParallelSourceUnixReconnect.new;
+  final DomainDevicesParallelSourceUnixSecLabel = module_index.DomainDevicesParallelSourceUnixSecLabel.new;
+  final DomainDevicesParallelSourceUnixSecLabelArgs = module_index.DomainDevicesParallelSourceUnixSecLabel.new;
+  final DomainDevicesParallelTarget = module_index.DomainDevicesParallelTarget.new;
+  final DomainDevicesParallelTargetArgs = module_index.DomainDevicesParallelTarget.new;
   final DomainDevicesPstore = module_index.DomainDevicesPstore.new;
   final DomainDevicesPstoreAcpi = module_index.DomainDevicesPstoreAcpi.new;
   final DomainDevicesPstoreAcpiArgs = module_index.DomainDevicesPstoreAcpi.new;
   final DomainDevicesPstoreAlias = module_index.DomainDevicesPstoreAlias.new;
-  final DomainDevicesPstoreAliasArgs =
-      module_index.DomainDevicesPstoreAlias.new;
+  final DomainDevicesPstoreAliasArgs = module_index.DomainDevicesPstoreAlias.new;
   final DomainDevicesPstoreArgs = module_index.DomainDevicesPstore.new;
   final DomainDevicesRedirDev = module_index.DomainDevicesRedirDev.new;
   final DomainDevicesRedirDevAcpi = module_index.DomainDevicesRedirDevAcpi.new;
-  final DomainDevicesRedirDevAcpiArgs =
-      module_index.DomainDevicesRedirDevAcpi.new;
-  final DomainDevicesRedirDevAlias =
-      module_index.DomainDevicesRedirDevAlias.new;
-  final DomainDevicesRedirDevAliasArgs =
-      module_index.DomainDevicesRedirDevAlias.new;
+  final DomainDevicesRedirDevAcpiArgs = module_index.DomainDevicesRedirDevAcpi.new;
+  final DomainDevicesRedirDevAlias = module_index.DomainDevicesRedirDevAlias.new;
+  final DomainDevicesRedirDevAliasArgs = module_index.DomainDevicesRedirDevAlias.new;
   final DomainDevicesRedirDevArgs = module_index.DomainDevicesRedirDev.new;
   final DomainDevicesRedirDevBoot = module_index.DomainDevicesRedirDevBoot.new;
-  final DomainDevicesRedirDevBootArgs =
-      module_index.DomainDevicesRedirDevBoot.new;
-  final DomainDevicesRedirDevProtocol =
-      module_index.DomainDevicesRedirDevProtocol.new;
-  final DomainDevicesRedirDevProtocolArgs =
-      module_index.DomainDevicesRedirDevProtocol.new;
-  final DomainDevicesRedirDevSource =
-      module_index.DomainDevicesRedirDevSource.new;
-  final DomainDevicesRedirDevSourceArgs =
-      module_index.DomainDevicesRedirDevSource.new;
-  final DomainDevicesRedirDevSourceDbus =
-      module_index.DomainDevicesRedirDevSourceDbus.new;
-  final DomainDevicesRedirDevSourceDbusArgs =
-      module_index.DomainDevicesRedirDevSourceDbus.new;
-  final DomainDevicesRedirDevSourceDev =
-      module_index.DomainDevicesRedirDevSourceDev.new;
-  final DomainDevicesRedirDevSourceDevArgs =
-      module_index.DomainDevicesRedirDevSourceDev.new;
-  final DomainDevicesRedirDevSourceDevSecLabel =
-      module_index.DomainDevicesRedirDevSourceDevSecLabel.new;
-  final DomainDevicesRedirDevSourceDevSecLabelArgs =
-      module_index.DomainDevicesRedirDevSourceDevSecLabel.new;
-  final DomainDevicesRedirDevSourceFile =
-      module_index.DomainDevicesRedirDevSourceFile.new;
-  final DomainDevicesRedirDevSourceFileArgs =
-      module_index.DomainDevicesRedirDevSourceFile.new;
-  final DomainDevicesRedirDevSourceFileSecLabel =
-      module_index.DomainDevicesRedirDevSourceFileSecLabel.new;
-  final DomainDevicesRedirDevSourceFileSecLabelArgs =
-      module_index.DomainDevicesRedirDevSourceFileSecLabel.new;
-  final DomainDevicesRedirDevSourceNmdm =
-      module_index.DomainDevicesRedirDevSourceNmdm.new;
-  final DomainDevicesRedirDevSourceNmdmArgs =
-      module_index.DomainDevicesRedirDevSourceNmdm.new;
-  final DomainDevicesRedirDevSourcePipe =
-      module_index.DomainDevicesRedirDevSourcePipe.new;
-  final DomainDevicesRedirDevSourcePipeArgs =
-      module_index.DomainDevicesRedirDevSourcePipe.new;
-  final DomainDevicesRedirDevSourcePipeSecLabel =
-      module_index.DomainDevicesRedirDevSourcePipeSecLabel.new;
-  final DomainDevicesRedirDevSourcePipeSecLabelArgs =
-      module_index.DomainDevicesRedirDevSourcePipeSecLabel.new;
-  final DomainDevicesRedirDevSourcePty =
-      module_index.DomainDevicesRedirDevSourcePty.new;
-  final DomainDevicesRedirDevSourcePtyArgs =
-      module_index.DomainDevicesRedirDevSourcePty.new;
-  final DomainDevicesRedirDevSourcePtySecLabel =
-      module_index.DomainDevicesRedirDevSourcePtySecLabel.new;
-  final DomainDevicesRedirDevSourcePtySecLabelArgs =
-      module_index.DomainDevicesRedirDevSourcePtySecLabel.new;
-  final DomainDevicesRedirDevSourceQemuvdAgent =
-      module_index.DomainDevicesRedirDevSourceQemuvdAgent.new;
-  final DomainDevicesRedirDevSourceQemuvdAgentArgs =
-      module_index.DomainDevicesRedirDevSourceQemuvdAgent.new;
-  final DomainDevicesRedirDevSourceQemuvdAgentClipBoard =
-      module_index.DomainDevicesRedirDevSourceQemuvdAgentClipBoard.new;
-  final DomainDevicesRedirDevSourceQemuvdAgentClipBoardArgs =
-      module_index.DomainDevicesRedirDevSourceQemuvdAgentClipBoard.new;
-  final DomainDevicesRedirDevSourceQemuvdAgentMouse =
-      module_index.DomainDevicesRedirDevSourceQemuvdAgentMouse.new;
-  final DomainDevicesRedirDevSourceQemuvdAgentMouseArgs =
-      module_index.DomainDevicesRedirDevSourceQemuvdAgentMouse.new;
-  final DomainDevicesRedirDevSourceSpicePort =
-      module_index.DomainDevicesRedirDevSourceSpicePort.new;
-  final DomainDevicesRedirDevSourceSpicePortArgs =
-      module_index.DomainDevicesRedirDevSourceSpicePort.new;
-  final DomainDevicesRedirDevSourceTcp =
-      module_index.DomainDevicesRedirDevSourceTcp.new;
-  final DomainDevicesRedirDevSourceTcpArgs =
-      module_index.DomainDevicesRedirDevSourceTcp.new;
-  final DomainDevicesRedirDevSourceTcpReconnect =
-      module_index.DomainDevicesRedirDevSourceTcpReconnect.new;
-  final DomainDevicesRedirDevSourceTcpReconnectArgs =
-      module_index.DomainDevicesRedirDevSourceTcpReconnect.new;
-  final DomainDevicesRedirDevSourceUdp =
-      module_index.DomainDevicesRedirDevSourceUdp.new;
-  final DomainDevicesRedirDevSourceUdpArgs =
-      module_index.DomainDevicesRedirDevSourceUdp.new;
-  final DomainDevicesRedirDevSourceUnix =
-      module_index.DomainDevicesRedirDevSourceUnix.new;
-  final DomainDevicesRedirDevSourceUnixArgs =
-      module_index.DomainDevicesRedirDevSourceUnix.new;
-  final DomainDevicesRedirDevSourceUnixReconnect =
-      module_index.DomainDevicesRedirDevSourceUnixReconnect.new;
-  final DomainDevicesRedirDevSourceUnixReconnectArgs =
-      module_index.DomainDevicesRedirDevSourceUnixReconnect.new;
-  final DomainDevicesRedirDevSourceUnixSecLabel =
-      module_index.DomainDevicesRedirDevSourceUnixSecLabel.new;
-  final DomainDevicesRedirDevSourceUnixSecLabelArgs =
-      module_index.DomainDevicesRedirDevSourceUnixSecLabel.new;
+  final DomainDevicesRedirDevBootArgs = module_index.DomainDevicesRedirDevBoot.new;
+  final DomainDevicesRedirDevProtocol = module_index.DomainDevicesRedirDevProtocol.new;
+  final DomainDevicesRedirDevProtocolArgs = module_index.DomainDevicesRedirDevProtocol.new;
+  final DomainDevicesRedirDevSource = module_index.DomainDevicesRedirDevSource.new;
+  final DomainDevicesRedirDevSourceArgs = module_index.DomainDevicesRedirDevSource.new;
+  final DomainDevicesRedirDevSourceDbus = module_index.DomainDevicesRedirDevSourceDbus.new;
+  final DomainDevicesRedirDevSourceDbusArgs = module_index.DomainDevicesRedirDevSourceDbus.new;
+  final DomainDevicesRedirDevSourceDev = module_index.DomainDevicesRedirDevSourceDev.new;
+  final DomainDevicesRedirDevSourceDevArgs = module_index.DomainDevicesRedirDevSourceDev.new;
+  final DomainDevicesRedirDevSourceDevSecLabel = module_index.DomainDevicesRedirDevSourceDevSecLabel.new;
+  final DomainDevicesRedirDevSourceDevSecLabelArgs = module_index.DomainDevicesRedirDevSourceDevSecLabel.new;
+  final DomainDevicesRedirDevSourceFile = module_index.DomainDevicesRedirDevSourceFile.new;
+  final DomainDevicesRedirDevSourceFileArgs = module_index.DomainDevicesRedirDevSourceFile.new;
+  final DomainDevicesRedirDevSourceFileSecLabel = module_index.DomainDevicesRedirDevSourceFileSecLabel.new;
+  final DomainDevicesRedirDevSourceFileSecLabelArgs = module_index.DomainDevicesRedirDevSourceFileSecLabel.new;
+  final DomainDevicesRedirDevSourceNmdm = module_index.DomainDevicesRedirDevSourceNmdm.new;
+  final DomainDevicesRedirDevSourceNmdmArgs = module_index.DomainDevicesRedirDevSourceNmdm.new;
+  final DomainDevicesRedirDevSourcePipe = module_index.DomainDevicesRedirDevSourcePipe.new;
+  final DomainDevicesRedirDevSourcePipeArgs = module_index.DomainDevicesRedirDevSourcePipe.new;
+  final DomainDevicesRedirDevSourcePipeSecLabel = module_index.DomainDevicesRedirDevSourcePipeSecLabel.new;
+  final DomainDevicesRedirDevSourcePipeSecLabelArgs = module_index.DomainDevicesRedirDevSourcePipeSecLabel.new;
+  final DomainDevicesRedirDevSourcePty = module_index.DomainDevicesRedirDevSourcePty.new;
+  final DomainDevicesRedirDevSourcePtyArgs = module_index.DomainDevicesRedirDevSourcePty.new;
+  final DomainDevicesRedirDevSourcePtySecLabel = module_index.DomainDevicesRedirDevSourcePtySecLabel.new;
+  final DomainDevicesRedirDevSourcePtySecLabelArgs = module_index.DomainDevicesRedirDevSourcePtySecLabel.new;
+  final DomainDevicesRedirDevSourceQemuvdAgent = module_index.DomainDevicesRedirDevSourceQemuvdAgent.new;
+  final DomainDevicesRedirDevSourceQemuvdAgentArgs = module_index.DomainDevicesRedirDevSourceQemuvdAgent.new;
+  final DomainDevicesRedirDevSourceQemuvdAgentClipBoard = module_index.DomainDevicesRedirDevSourceQemuvdAgentClipBoard.new;
+  final DomainDevicesRedirDevSourceQemuvdAgentClipBoardArgs = module_index.DomainDevicesRedirDevSourceQemuvdAgentClipBoard.new;
+  final DomainDevicesRedirDevSourceQemuvdAgentMouse = module_index.DomainDevicesRedirDevSourceQemuvdAgentMouse.new;
+  final DomainDevicesRedirDevSourceQemuvdAgentMouseArgs = module_index.DomainDevicesRedirDevSourceQemuvdAgentMouse.new;
+  final DomainDevicesRedirDevSourceSpicePort = module_index.DomainDevicesRedirDevSourceSpicePort.new;
+  final DomainDevicesRedirDevSourceSpicePortArgs = module_index.DomainDevicesRedirDevSourceSpicePort.new;
+  final DomainDevicesRedirDevSourceTcp = module_index.DomainDevicesRedirDevSourceTcp.new;
+  final DomainDevicesRedirDevSourceTcpArgs = module_index.DomainDevicesRedirDevSourceTcp.new;
+  final DomainDevicesRedirDevSourceTcpReconnect = module_index.DomainDevicesRedirDevSourceTcpReconnect.new;
+  final DomainDevicesRedirDevSourceTcpReconnectArgs = module_index.DomainDevicesRedirDevSourceTcpReconnect.new;
+  final DomainDevicesRedirDevSourceUdp = module_index.DomainDevicesRedirDevSourceUdp.new;
+  final DomainDevicesRedirDevSourceUdpArgs = module_index.DomainDevicesRedirDevSourceUdp.new;
+  final DomainDevicesRedirDevSourceUnix = module_index.DomainDevicesRedirDevSourceUnix.new;
+  final DomainDevicesRedirDevSourceUnixArgs = module_index.DomainDevicesRedirDevSourceUnix.new;
+  final DomainDevicesRedirDevSourceUnixReconnect = module_index.DomainDevicesRedirDevSourceUnixReconnect.new;
+  final DomainDevicesRedirDevSourceUnixReconnectArgs = module_index.DomainDevicesRedirDevSourceUnixReconnect.new;
+  final DomainDevicesRedirDevSourceUnixSecLabel = module_index.DomainDevicesRedirDevSourceUnixSecLabel.new;
+  final DomainDevicesRedirDevSourceUnixSecLabelArgs = module_index.DomainDevicesRedirDevSourceUnixSecLabel.new;
   final DomainDevicesRedirFilter = module_index.DomainDevicesRedirFilter.new;
-  final DomainDevicesRedirFilterArgs =
-      module_index.DomainDevicesRedirFilter.new;
-  final DomainDevicesRedirFilterUsb =
-      module_index.DomainDevicesRedirFilterUsb.new;
-  final DomainDevicesRedirFilterUsbArgs =
-      module_index.DomainDevicesRedirFilterUsb.new;
+  final DomainDevicesRedirFilterArgs = module_index.DomainDevicesRedirFilter.new;
+  final DomainDevicesRedirFilterUsb = module_index.DomainDevicesRedirFilterUsb.new;
+  final DomainDevicesRedirFilterUsbArgs = module_index.DomainDevicesRedirFilterUsb.new;
   final DomainDevicesRng = module_index.DomainDevicesRng.new;
   final DomainDevicesRngAcpi = module_index.DomainDevicesRngAcpi.new;
   final DomainDevicesRngAcpiArgs = module_index.DomainDevicesRngAcpi.new;
@@ -3176,98 +1538,52 @@ class _IndexModuleNamespace {
   final DomainDevicesRngArgs = module_index.DomainDevicesRng.new;
   final DomainDevicesRngBackend = module_index.DomainDevicesRngBackend.new;
   final DomainDevicesRngBackendArgs = module_index.DomainDevicesRngBackend.new;
-  final DomainDevicesRngBackendEgd =
-      module_index.DomainDevicesRngBackendEgd.new;
-  final DomainDevicesRngBackendEgdArgs =
-      module_index.DomainDevicesRngBackendEgd.new;
-  final DomainDevicesRngBackendEgdProtocol =
-      module_index.DomainDevicesRngBackendEgdProtocol.new;
-  final DomainDevicesRngBackendEgdProtocolArgs =
-      module_index.DomainDevicesRngBackendEgdProtocol.new;
-  final DomainDevicesRngBackendEgdSource =
-      module_index.DomainDevicesRngBackendEgdSource.new;
-  final DomainDevicesRngBackendEgdSourceArgs =
-      module_index.DomainDevicesRngBackendEgdSource.new;
-  final DomainDevicesRngBackendEgdSourceDbus =
-      module_index.DomainDevicesRngBackendEgdSourceDbus.new;
-  final DomainDevicesRngBackendEgdSourceDbusArgs =
-      module_index.DomainDevicesRngBackendEgdSourceDbus.new;
-  final DomainDevicesRngBackendEgdSourceDev =
-      module_index.DomainDevicesRngBackendEgdSourceDev.new;
-  final DomainDevicesRngBackendEgdSourceDevArgs =
-      module_index.DomainDevicesRngBackendEgdSourceDev.new;
-  final DomainDevicesRngBackendEgdSourceDevSecLabel =
-      module_index.DomainDevicesRngBackendEgdSourceDevSecLabel.new;
-  final DomainDevicesRngBackendEgdSourceDevSecLabelArgs =
-      module_index.DomainDevicesRngBackendEgdSourceDevSecLabel.new;
-  final DomainDevicesRngBackendEgdSourceFile =
-      module_index.DomainDevicesRngBackendEgdSourceFile.new;
-  final DomainDevicesRngBackendEgdSourceFileArgs =
-      module_index.DomainDevicesRngBackendEgdSourceFile.new;
-  final DomainDevicesRngBackendEgdSourceFileSecLabel =
-      module_index.DomainDevicesRngBackendEgdSourceFileSecLabel.new;
-  final DomainDevicesRngBackendEgdSourceFileSecLabelArgs =
-      module_index.DomainDevicesRngBackendEgdSourceFileSecLabel.new;
-  final DomainDevicesRngBackendEgdSourceNmdm =
-      module_index.DomainDevicesRngBackendEgdSourceNmdm.new;
-  final DomainDevicesRngBackendEgdSourceNmdmArgs =
-      module_index.DomainDevicesRngBackendEgdSourceNmdm.new;
-  final DomainDevicesRngBackendEgdSourcePipe =
-      module_index.DomainDevicesRngBackendEgdSourcePipe.new;
-  final DomainDevicesRngBackendEgdSourcePipeArgs =
-      module_index.DomainDevicesRngBackendEgdSourcePipe.new;
-  final DomainDevicesRngBackendEgdSourcePipeSecLabel =
-      module_index.DomainDevicesRngBackendEgdSourcePipeSecLabel.new;
-  final DomainDevicesRngBackendEgdSourcePipeSecLabelArgs =
-      module_index.DomainDevicesRngBackendEgdSourcePipeSecLabel.new;
-  final DomainDevicesRngBackendEgdSourcePty =
-      module_index.DomainDevicesRngBackendEgdSourcePty.new;
-  final DomainDevicesRngBackendEgdSourcePtyArgs =
-      module_index.DomainDevicesRngBackendEgdSourcePty.new;
-  final DomainDevicesRngBackendEgdSourcePtySecLabel =
-      module_index.DomainDevicesRngBackendEgdSourcePtySecLabel.new;
-  final DomainDevicesRngBackendEgdSourcePtySecLabelArgs =
-      module_index.DomainDevicesRngBackendEgdSourcePtySecLabel.new;
-  final DomainDevicesRngBackendEgdSourceQemuvdAgent =
-      module_index.DomainDevicesRngBackendEgdSourceQemuvdAgent.new;
-  final DomainDevicesRngBackendEgdSourceQemuvdAgentArgs =
-      module_index.DomainDevicesRngBackendEgdSourceQemuvdAgent.new;
-  final DomainDevicesRngBackendEgdSourceQemuvdAgentClipBoard =
-      module_index.DomainDevicesRngBackendEgdSourceQemuvdAgentClipBoard.new;
-  final DomainDevicesRngBackendEgdSourceQemuvdAgentClipBoardArgs =
-      module_index.DomainDevicesRngBackendEgdSourceQemuvdAgentClipBoard.new;
-  final DomainDevicesRngBackendEgdSourceQemuvdAgentMouse =
-      module_index.DomainDevicesRngBackendEgdSourceQemuvdAgentMouse.new;
-  final DomainDevicesRngBackendEgdSourceQemuvdAgentMouseArgs =
-      module_index.DomainDevicesRngBackendEgdSourceQemuvdAgentMouse.new;
-  final DomainDevicesRngBackendEgdSourceSpicePort =
-      module_index.DomainDevicesRngBackendEgdSourceSpicePort.new;
-  final DomainDevicesRngBackendEgdSourceSpicePortArgs =
-      module_index.DomainDevicesRngBackendEgdSourceSpicePort.new;
-  final DomainDevicesRngBackendEgdSourceTcp =
-      module_index.DomainDevicesRngBackendEgdSourceTcp.new;
-  final DomainDevicesRngBackendEgdSourceTcpArgs =
-      module_index.DomainDevicesRngBackendEgdSourceTcp.new;
-  final DomainDevicesRngBackendEgdSourceTcpReconnect =
-      module_index.DomainDevicesRngBackendEgdSourceTcpReconnect.new;
-  final DomainDevicesRngBackendEgdSourceTcpReconnectArgs =
-      module_index.DomainDevicesRngBackendEgdSourceTcpReconnect.new;
-  final DomainDevicesRngBackendEgdSourceUdp =
-      module_index.DomainDevicesRngBackendEgdSourceUdp.new;
-  final DomainDevicesRngBackendEgdSourceUdpArgs =
-      module_index.DomainDevicesRngBackendEgdSourceUdp.new;
-  final DomainDevicesRngBackendEgdSourceUnix =
-      module_index.DomainDevicesRngBackendEgdSourceUnix.new;
-  final DomainDevicesRngBackendEgdSourceUnixArgs =
-      module_index.DomainDevicesRngBackendEgdSourceUnix.new;
-  final DomainDevicesRngBackendEgdSourceUnixReconnect =
-      module_index.DomainDevicesRngBackendEgdSourceUnixReconnect.new;
-  final DomainDevicesRngBackendEgdSourceUnixReconnectArgs =
-      module_index.DomainDevicesRngBackendEgdSourceUnixReconnect.new;
-  final DomainDevicesRngBackendEgdSourceUnixSecLabel =
-      module_index.DomainDevicesRngBackendEgdSourceUnixSecLabel.new;
-  final DomainDevicesRngBackendEgdSourceUnixSecLabelArgs =
-      module_index.DomainDevicesRngBackendEgdSourceUnixSecLabel.new;
+  final DomainDevicesRngBackendEgd = module_index.DomainDevicesRngBackendEgd.new;
+  final DomainDevicesRngBackendEgdArgs = module_index.DomainDevicesRngBackendEgd.new;
+  final DomainDevicesRngBackendEgdProtocol = module_index.DomainDevicesRngBackendEgdProtocol.new;
+  final DomainDevicesRngBackendEgdProtocolArgs = module_index.DomainDevicesRngBackendEgdProtocol.new;
+  final DomainDevicesRngBackendEgdSource = module_index.DomainDevicesRngBackendEgdSource.new;
+  final DomainDevicesRngBackendEgdSourceArgs = module_index.DomainDevicesRngBackendEgdSource.new;
+  final DomainDevicesRngBackendEgdSourceDbus = module_index.DomainDevicesRngBackendEgdSourceDbus.new;
+  final DomainDevicesRngBackendEgdSourceDbusArgs = module_index.DomainDevicesRngBackendEgdSourceDbus.new;
+  final DomainDevicesRngBackendEgdSourceDev = module_index.DomainDevicesRngBackendEgdSourceDev.new;
+  final DomainDevicesRngBackendEgdSourceDevArgs = module_index.DomainDevicesRngBackendEgdSourceDev.new;
+  final DomainDevicesRngBackendEgdSourceDevSecLabel = module_index.DomainDevicesRngBackendEgdSourceDevSecLabel.new;
+  final DomainDevicesRngBackendEgdSourceDevSecLabelArgs = module_index.DomainDevicesRngBackendEgdSourceDevSecLabel.new;
+  final DomainDevicesRngBackendEgdSourceFile = module_index.DomainDevicesRngBackendEgdSourceFile.new;
+  final DomainDevicesRngBackendEgdSourceFileArgs = module_index.DomainDevicesRngBackendEgdSourceFile.new;
+  final DomainDevicesRngBackendEgdSourceFileSecLabel = module_index.DomainDevicesRngBackendEgdSourceFileSecLabel.new;
+  final DomainDevicesRngBackendEgdSourceFileSecLabelArgs = module_index.DomainDevicesRngBackendEgdSourceFileSecLabel.new;
+  final DomainDevicesRngBackendEgdSourceNmdm = module_index.DomainDevicesRngBackendEgdSourceNmdm.new;
+  final DomainDevicesRngBackendEgdSourceNmdmArgs = module_index.DomainDevicesRngBackendEgdSourceNmdm.new;
+  final DomainDevicesRngBackendEgdSourcePipe = module_index.DomainDevicesRngBackendEgdSourcePipe.new;
+  final DomainDevicesRngBackendEgdSourcePipeArgs = module_index.DomainDevicesRngBackendEgdSourcePipe.new;
+  final DomainDevicesRngBackendEgdSourcePipeSecLabel = module_index.DomainDevicesRngBackendEgdSourcePipeSecLabel.new;
+  final DomainDevicesRngBackendEgdSourcePipeSecLabelArgs = module_index.DomainDevicesRngBackendEgdSourcePipeSecLabel.new;
+  final DomainDevicesRngBackendEgdSourcePty = module_index.DomainDevicesRngBackendEgdSourcePty.new;
+  final DomainDevicesRngBackendEgdSourcePtyArgs = module_index.DomainDevicesRngBackendEgdSourcePty.new;
+  final DomainDevicesRngBackendEgdSourcePtySecLabel = module_index.DomainDevicesRngBackendEgdSourcePtySecLabel.new;
+  final DomainDevicesRngBackendEgdSourcePtySecLabelArgs = module_index.DomainDevicesRngBackendEgdSourcePtySecLabel.new;
+  final DomainDevicesRngBackendEgdSourceQemuvdAgent = module_index.DomainDevicesRngBackendEgdSourceQemuvdAgent.new;
+  final DomainDevicesRngBackendEgdSourceQemuvdAgentArgs = module_index.DomainDevicesRngBackendEgdSourceQemuvdAgent.new;
+  final DomainDevicesRngBackendEgdSourceQemuvdAgentClipBoard = module_index.DomainDevicesRngBackendEgdSourceQemuvdAgentClipBoard.new;
+  final DomainDevicesRngBackendEgdSourceQemuvdAgentClipBoardArgs = module_index.DomainDevicesRngBackendEgdSourceQemuvdAgentClipBoard.new;
+  final DomainDevicesRngBackendEgdSourceQemuvdAgentMouse = module_index.DomainDevicesRngBackendEgdSourceQemuvdAgentMouse.new;
+  final DomainDevicesRngBackendEgdSourceQemuvdAgentMouseArgs = module_index.DomainDevicesRngBackendEgdSourceQemuvdAgentMouse.new;
+  final DomainDevicesRngBackendEgdSourceSpicePort = module_index.DomainDevicesRngBackendEgdSourceSpicePort.new;
+  final DomainDevicesRngBackendEgdSourceSpicePortArgs = module_index.DomainDevicesRngBackendEgdSourceSpicePort.new;
+  final DomainDevicesRngBackendEgdSourceTcp = module_index.DomainDevicesRngBackendEgdSourceTcp.new;
+  final DomainDevicesRngBackendEgdSourceTcpArgs = module_index.DomainDevicesRngBackendEgdSourceTcp.new;
+  final DomainDevicesRngBackendEgdSourceTcpReconnect = module_index.DomainDevicesRngBackendEgdSourceTcpReconnect.new;
+  final DomainDevicesRngBackendEgdSourceTcpReconnectArgs = module_index.DomainDevicesRngBackendEgdSourceTcpReconnect.new;
+  final DomainDevicesRngBackendEgdSourceUdp = module_index.DomainDevicesRngBackendEgdSourceUdp.new;
+  final DomainDevicesRngBackendEgdSourceUdpArgs = module_index.DomainDevicesRngBackendEgdSourceUdp.new;
+  final DomainDevicesRngBackendEgdSourceUnix = module_index.DomainDevicesRngBackendEgdSourceUnix.new;
+  final DomainDevicesRngBackendEgdSourceUnixArgs = module_index.DomainDevicesRngBackendEgdSourceUnix.new;
+  final DomainDevicesRngBackendEgdSourceUnixReconnect = module_index.DomainDevicesRngBackendEgdSourceUnixReconnect.new;
+  final DomainDevicesRngBackendEgdSourceUnixReconnectArgs = module_index.DomainDevicesRngBackendEgdSourceUnixReconnect.new;
+  final DomainDevicesRngBackendEgdSourceUnixSecLabel = module_index.DomainDevicesRngBackendEgdSourceUnixSecLabel.new;
+  final DomainDevicesRngBackendEgdSourceUnixSecLabelArgs = module_index.DomainDevicesRngBackendEgdSourceUnixSecLabel.new;
   final DomainDevicesRngDriver = module_index.DomainDevicesRngDriver.new;
   final DomainDevicesRngDriverArgs = module_index.DomainDevicesRngDriver.new;
   final DomainDevicesRngRate = module_index.DomainDevicesRngRate.new;
@@ -3276,105 +1592,58 @@ class _IndexModuleNamespace {
   final DomainDevicesSerialAcpi = module_index.DomainDevicesSerialAcpi.new;
   final DomainDevicesSerialAcpiArgs = module_index.DomainDevicesSerialAcpi.new;
   final DomainDevicesSerialAlias = module_index.DomainDevicesSerialAlias.new;
-  final DomainDevicesSerialAliasArgs =
-      module_index.DomainDevicesSerialAlias.new;
+  final DomainDevicesSerialAliasArgs = module_index.DomainDevicesSerialAlias.new;
   final DomainDevicesSerialArgs = module_index.DomainDevicesSerial.new;
   final DomainDevicesSerialLog = module_index.DomainDevicesSerialLog.new;
   final DomainDevicesSerialLogArgs = module_index.DomainDevicesSerialLog.new;
-  final DomainDevicesSerialProtocol =
-      module_index.DomainDevicesSerialProtocol.new;
-  final DomainDevicesSerialProtocolArgs =
-      module_index.DomainDevicesSerialProtocol.new;
+  final DomainDevicesSerialProtocol = module_index.DomainDevicesSerialProtocol.new;
+  final DomainDevicesSerialProtocolArgs = module_index.DomainDevicesSerialProtocol.new;
   final DomainDevicesSerialSource = module_index.DomainDevicesSerialSource.new;
-  final DomainDevicesSerialSourceArgs =
-      module_index.DomainDevicesSerialSource.new;
-  final DomainDevicesSerialSourceDbus =
-      module_index.DomainDevicesSerialSourceDbus.new;
-  final DomainDevicesSerialSourceDbusArgs =
-      module_index.DomainDevicesSerialSourceDbus.new;
-  final DomainDevicesSerialSourceDev =
-      module_index.DomainDevicesSerialSourceDev.new;
-  final DomainDevicesSerialSourceDevArgs =
-      module_index.DomainDevicesSerialSourceDev.new;
-  final DomainDevicesSerialSourceDevSecLabel =
-      module_index.DomainDevicesSerialSourceDevSecLabel.new;
-  final DomainDevicesSerialSourceDevSecLabelArgs =
-      module_index.DomainDevicesSerialSourceDevSecLabel.new;
-  final DomainDevicesSerialSourceFile =
-      module_index.DomainDevicesSerialSourceFile.new;
-  final DomainDevicesSerialSourceFileArgs =
-      module_index.DomainDevicesSerialSourceFile.new;
-  final DomainDevicesSerialSourceFileSecLabel =
-      module_index.DomainDevicesSerialSourceFileSecLabel.new;
-  final DomainDevicesSerialSourceFileSecLabelArgs =
-      module_index.DomainDevicesSerialSourceFileSecLabel.new;
-  final DomainDevicesSerialSourceNmdm =
-      module_index.DomainDevicesSerialSourceNmdm.new;
-  final DomainDevicesSerialSourceNmdmArgs =
-      module_index.DomainDevicesSerialSourceNmdm.new;
-  final DomainDevicesSerialSourcePipe =
-      module_index.DomainDevicesSerialSourcePipe.new;
-  final DomainDevicesSerialSourcePipeArgs =
-      module_index.DomainDevicesSerialSourcePipe.new;
-  final DomainDevicesSerialSourcePipeSecLabel =
-      module_index.DomainDevicesSerialSourcePipeSecLabel.new;
-  final DomainDevicesSerialSourcePipeSecLabelArgs =
-      module_index.DomainDevicesSerialSourcePipeSecLabel.new;
-  final DomainDevicesSerialSourcePty =
-      module_index.DomainDevicesSerialSourcePty.new;
-  final DomainDevicesSerialSourcePtyArgs =
-      module_index.DomainDevicesSerialSourcePty.new;
-  final DomainDevicesSerialSourcePtySecLabel =
-      module_index.DomainDevicesSerialSourcePtySecLabel.new;
-  final DomainDevicesSerialSourcePtySecLabelArgs =
-      module_index.DomainDevicesSerialSourcePtySecLabel.new;
-  final DomainDevicesSerialSourceQemuvdAgent =
-      module_index.DomainDevicesSerialSourceQemuvdAgent.new;
-  final DomainDevicesSerialSourceQemuvdAgentArgs =
-      module_index.DomainDevicesSerialSourceQemuvdAgent.new;
-  final DomainDevicesSerialSourceQemuvdAgentClipBoard =
-      module_index.DomainDevicesSerialSourceQemuvdAgentClipBoard.new;
-  final DomainDevicesSerialSourceQemuvdAgentClipBoardArgs =
-      module_index.DomainDevicesSerialSourceQemuvdAgentClipBoard.new;
-  final DomainDevicesSerialSourceQemuvdAgentMouse =
-      module_index.DomainDevicesSerialSourceQemuvdAgentMouse.new;
-  final DomainDevicesSerialSourceQemuvdAgentMouseArgs =
-      module_index.DomainDevicesSerialSourceQemuvdAgentMouse.new;
-  final DomainDevicesSerialSourceSpicePort =
-      module_index.DomainDevicesSerialSourceSpicePort.new;
-  final DomainDevicesSerialSourceSpicePortArgs =
-      module_index.DomainDevicesSerialSourceSpicePort.new;
-  final DomainDevicesSerialSourceTcp =
-      module_index.DomainDevicesSerialSourceTcp.new;
-  final DomainDevicesSerialSourceTcpArgs =
-      module_index.DomainDevicesSerialSourceTcp.new;
-  final DomainDevicesSerialSourceTcpReconnect =
-      module_index.DomainDevicesSerialSourceTcpReconnect.new;
-  final DomainDevicesSerialSourceTcpReconnectArgs =
-      module_index.DomainDevicesSerialSourceTcpReconnect.new;
-  final DomainDevicesSerialSourceUdp =
-      module_index.DomainDevicesSerialSourceUdp.new;
-  final DomainDevicesSerialSourceUdpArgs =
-      module_index.DomainDevicesSerialSourceUdp.new;
-  final DomainDevicesSerialSourceUnix =
-      module_index.DomainDevicesSerialSourceUnix.new;
-  final DomainDevicesSerialSourceUnixArgs =
-      module_index.DomainDevicesSerialSourceUnix.new;
-  final DomainDevicesSerialSourceUnixReconnect =
-      module_index.DomainDevicesSerialSourceUnixReconnect.new;
-  final DomainDevicesSerialSourceUnixReconnectArgs =
-      module_index.DomainDevicesSerialSourceUnixReconnect.new;
-  final DomainDevicesSerialSourceUnixSecLabel =
-      module_index.DomainDevicesSerialSourceUnixSecLabel.new;
-  final DomainDevicesSerialSourceUnixSecLabelArgs =
-      module_index.DomainDevicesSerialSourceUnixSecLabel.new;
+  final DomainDevicesSerialSourceArgs = module_index.DomainDevicesSerialSource.new;
+  final DomainDevicesSerialSourceDbus = module_index.DomainDevicesSerialSourceDbus.new;
+  final DomainDevicesSerialSourceDbusArgs = module_index.DomainDevicesSerialSourceDbus.new;
+  final DomainDevicesSerialSourceDev = module_index.DomainDevicesSerialSourceDev.new;
+  final DomainDevicesSerialSourceDevArgs = module_index.DomainDevicesSerialSourceDev.new;
+  final DomainDevicesSerialSourceDevSecLabel = module_index.DomainDevicesSerialSourceDevSecLabel.new;
+  final DomainDevicesSerialSourceDevSecLabelArgs = module_index.DomainDevicesSerialSourceDevSecLabel.new;
+  final DomainDevicesSerialSourceFile = module_index.DomainDevicesSerialSourceFile.new;
+  final DomainDevicesSerialSourceFileArgs = module_index.DomainDevicesSerialSourceFile.new;
+  final DomainDevicesSerialSourceFileSecLabel = module_index.DomainDevicesSerialSourceFileSecLabel.new;
+  final DomainDevicesSerialSourceFileSecLabelArgs = module_index.DomainDevicesSerialSourceFileSecLabel.new;
+  final DomainDevicesSerialSourceNmdm = module_index.DomainDevicesSerialSourceNmdm.new;
+  final DomainDevicesSerialSourceNmdmArgs = module_index.DomainDevicesSerialSourceNmdm.new;
+  final DomainDevicesSerialSourcePipe = module_index.DomainDevicesSerialSourcePipe.new;
+  final DomainDevicesSerialSourcePipeArgs = module_index.DomainDevicesSerialSourcePipe.new;
+  final DomainDevicesSerialSourcePipeSecLabel = module_index.DomainDevicesSerialSourcePipeSecLabel.new;
+  final DomainDevicesSerialSourcePipeSecLabelArgs = module_index.DomainDevicesSerialSourcePipeSecLabel.new;
+  final DomainDevicesSerialSourcePty = module_index.DomainDevicesSerialSourcePty.new;
+  final DomainDevicesSerialSourcePtyArgs = module_index.DomainDevicesSerialSourcePty.new;
+  final DomainDevicesSerialSourcePtySecLabel = module_index.DomainDevicesSerialSourcePtySecLabel.new;
+  final DomainDevicesSerialSourcePtySecLabelArgs = module_index.DomainDevicesSerialSourcePtySecLabel.new;
+  final DomainDevicesSerialSourceQemuvdAgent = module_index.DomainDevicesSerialSourceQemuvdAgent.new;
+  final DomainDevicesSerialSourceQemuvdAgentArgs = module_index.DomainDevicesSerialSourceQemuvdAgent.new;
+  final DomainDevicesSerialSourceQemuvdAgentClipBoard = module_index.DomainDevicesSerialSourceQemuvdAgentClipBoard.new;
+  final DomainDevicesSerialSourceQemuvdAgentClipBoardArgs = module_index.DomainDevicesSerialSourceQemuvdAgentClipBoard.new;
+  final DomainDevicesSerialSourceQemuvdAgentMouse = module_index.DomainDevicesSerialSourceQemuvdAgentMouse.new;
+  final DomainDevicesSerialSourceQemuvdAgentMouseArgs = module_index.DomainDevicesSerialSourceQemuvdAgentMouse.new;
+  final DomainDevicesSerialSourceSpicePort = module_index.DomainDevicesSerialSourceSpicePort.new;
+  final DomainDevicesSerialSourceSpicePortArgs = module_index.DomainDevicesSerialSourceSpicePort.new;
+  final DomainDevicesSerialSourceTcp = module_index.DomainDevicesSerialSourceTcp.new;
+  final DomainDevicesSerialSourceTcpArgs = module_index.DomainDevicesSerialSourceTcp.new;
+  final DomainDevicesSerialSourceTcpReconnect = module_index.DomainDevicesSerialSourceTcpReconnect.new;
+  final DomainDevicesSerialSourceTcpReconnectArgs = module_index.DomainDevicesSerialSourceTcpReconnect.new;
+  final DomainDevicesSerialSourceUdp = module_index.DomainDevicesSerialSourceUdp.new;
+  final DomainDevicesSerialSourceUdpArgs = module_index.DomainDevicesSerialSourceUdp.new;
+  final DomainDevicesSerialSourceUnix = module_index.DomainDevicesSerialSourceUnix.new;
+  final DomainDevicesSerialSourceUnixArgs = module_index.DomainDevicesSerialSourceUnix.new;
+  final DomainDevicesSerialSourceUnixReconnect = module_index.DomainDevicesSerialSourceUnixReconnect.new;
+  final DomainDevicesSerialSourceUnixReconnectArgs = module_index.DomainDevicesSerialSourceUnixReconnect.new;
+  final DomainDevicesSerialSourceUnixSecLabel = module_index.DomainDevicesSerialSourceUnixSecLabel.new;
+  final DomainDevicesSerialSourceUnixSecLabelArgs = module_index.DomainDevicesSerialSourceUnixSecLabel.new;
   final DomainDevicesSerialTarget = module_index.DomainDevicesSerialTarget.new;
-  final DomainDevicesSerialTargetArgs =
-      module_index.DomainDevicesSerialTarget.new;
-  final DomainDevicesSerialTargetModel =
-      module_index.DomainDevicesSerialTargetModel.new;
-  final DomainDevicesSerialTargetModelArgs =
-      module_index.DomainDevicesSerialTargetModel.new;
+  final DomainDevicesSerialTargetArgs = module_index.DomainDevicesSerialTarget.new;
+  final DomainDevicesSerialTargetModel = module_index.DomainDevicesSerialTargetModel.new;
+  final DomainDevicesSerialTargetModelArgs = module_index.DomainDevicesSerialTargetModel.new;
   final DomainDevicesShmem = module_index.DomainDevicesShmem.new;
   final DomainDevicesShmemAcpi = module_index.DomainDevicesShmemAcpi.new;
   final DomainDevicesShmemAcpiArgs = module_index.DomainDevicesShmemAcpi.new;
@@ -3386,110 +1655,59 @@ class _IndexModuleNamespace {
   final DomainDevicesShmemMsi = module_index.DomainDevicesShmemMsi.new;
   final DomainDevicesShmemMsiArgs = module_index.DomainDevicesShmemMsi.new;
   final DomainDevicesShmemServer = module_index.DomainDevicesShmemServer.new;
-  final DomainDevicesShmemServerArgs =
-      module_index.DomainDevicesShmemServer.new;
+  final DomainDevicesShmemServerArgs = module_index.DomainDevicesShmemServer.new;
   final DomainDevicesSmartcard = module_index.DomainDevicesSmartcard.new;
-  final DomainDevicesSmartcardAcpi =
-      module_index.DomainDevicesSmartcardAcpi.new;
-  final DomainDevicesSmartcardAcpiArgs =
-      module_index.DomainDevicesSmartcardAcpi.new;
-  final DomainDevicesSmartcardAlias =
-      module_index.DomainDevicesSmartcardAlias.new;
-  final DomainDevicesSmartcardAliasArgs =
-      module_index.DomainDevicesSmartcardAlias.new;
+  final DomainDevicesSmartcardAcpi = module_index.DomainDevicesSmartcardAcpi.new;
+  final DomainDevicesSmartcardAcpiArgs = module_index.DomainDevicesSmartcardAcpi.new;
+  final DomainDevicesSmartcardAlias = module_index.DomainDevicesSmartcardAlias.new;
+  final DomainDevicesSmartcardAliasArgs = module_index.DomainDevicesSmartcardAlias.new;
   final DomainDevicesSmartcardArgs = module_index.DomainDevicesSmartcard.new;
-  final DomainDevicesSmartcardHostCert =
-      module_index.DomainDevicesSmartcardHostCert.new;
-  final DomainDevicesSmartcardHostCertArgs =
-      module_index.DomainDevicesSmartcardHostCert.new;
-  final DomainDevicesSmartcardPassthrough =
-      module_index.DomainDevicesSmartcardPassthrough.new;
-  final DomainDevicesSmartcardPassthroughArgs =
-      module_index.DomainDevicesSmartcardPassthrough.new;
-  final DomainDevicesSmartcardPassthroughDbus =
-      module_index.DomainDevicesSmartcardPassthroughDbus.new;
-  final DomainDevicesSmartcardPassthroughDbusArgs =
-      module_index.DomainDevicesSmartcardPassthroughDbus.new;
-  final DomainDevicesSmartcardPassthroughDev =
-      module_index.DomainDevicesSmartcardPassthroughDev.new;
-  final DomainDevicesSmartcardPassthroughDevArgs =
-      module_index.DomainDevicesSmartcardPassthroughDev.new;
-  final DomainDevicesSmartcardPassthroughDevSecLabel =
-      module_index.DomainDevicesSmartcardPassthroughDevSecLabel.new;
-  final DomainDevicesSmartcardPassthroughDevSecLabelArgs =
-      module_index.DomainDevicesSmartcardPassthroughDevSecLabel.new;
-  final DomainDevicesSmartcardPassthroughFile =
-      module_index.DomainDevicesSmartcardPassthroughFile.new;
-  final DomainDevicesSmartcardPassthroughFileArgs =
-      module_index.DomainDevicesSmartcardPassthroughFile.new;
-  final DomainDevicesSmartcardPassthroughFileSecLabel =
-      module_index.DomainDevicesSmartcardPassthroughFileSecLabel.new;
-  final DomainDevicesSmartcardPassthroughFileSecLabelArgs =
-      module_index.DomainDevicesSmartcardPassthroughFileSecLabel.new;
-  final DomainDevicesSmartcardPassthroughNmdm =
-      module_index.DomainDevicesSmartcardPassthroughNmdm.new;
-  final DomainDevicesSmartcardPassthroughNmdmArgs =
-      module_index.DomainDevicesSmartcardPassthroughNmdm.new;
-  final DomainDevicesSmartcardPassthroughPipe =
-      module_index.DomainDevicesSmartcardPassthroughPipe.new;
-  final DomainDevicesSmartcardPassthroughPipeArgs =
-      module_index.DomainDevicesSmartcardPassthroughPipe.new;
-  final DomainDevicesSmartcardPassthroughPipeSecLabel =
-      module_index.DomainDevicesSmartcardPassthroughPipeSecLabel.new;
-  final DomainDevicesSmartcardPassthroughPipeSecLabelArgs =
-      module_index.DomainDevicesSmartcardPassthroughPipeSecLabel.new;
-  final DomainDevicesSmartcardPassthroughPty =
-      module_index.DomainDevicesSmartcardPassthroughPty.new;
-  final DomainDevicesSmartcardPassthroughPtyArgs =
-      module_index.DomainDevicesSmartcardPassthroughPty.new;
-  final DomainDevicesSmartcardPassthroughPtySecLabel =
-      module_index.DomainDevicesSmartcardPassthroughPtySecLabel.new;
-  final DomainDevicesSmartcardPassthroughPtySecLabelArgs =
-      module_index.DomainDevicesSmartcardPassthroughPtySecLabel.new;
-  final DomainDevicesSmartcardPassthroughQemuvdAgent =
-      module_index.DomainDevicesSmartcardPassthroughQemuvdAgent.new;
-  final DomainDevicesSmartcardPassthroughQemuvdAgentArgs =
-      module_index.DomainDevicesSmartcardPassthroughQemuvdAgent.new;
-  final DomainDevicesSmartcardPassthroughQemuvdAgentClipBoard =
-      module_index.DomainDevicesSmartcardPassthroughQemuvdAgentClipBoard.new;
-  final DomainDevicesSmartcardPassthroughQemuvdAgentClipBoardArgs =
-      module_index.DomainDevicesSmartcardPassthroughQemuvdAgentClipBoard.new;
-  final DomainDevicesSmartcardPassthroughQemuvdAgentMouse =
-      module_index.DomainDevicesSmartcardPassthroughQemuvdAgentMouse.new;
-  final DomainDevicesSmartcardPassthroughQemuvdAgentMouseArgs =
-      module_index.DomainDevicesSmartcardPassthroughQemuvdAgentMouse.new;
-  final DomainDevicesSmartcardPassthroughSpicePort =
-      module_index.DomainDevicesSmartcardPassthroughSpicePort.new;
-  final DomainDevicesSmartcardPassthroughSpicePortArgs =
-      module_index.DomainDevicesSmartcardPassthroughSpicePort.new;
-  final DomainDevicesSmartcardPassthroughTcp =
-      module_index.DomainDevicesSmartcardPassthroughTcp.new;
-  final DomainDevicesSmartcardPassthroughTcpArgs =
-      module_index.DomainDevicesSmartcardPassthroughTcp.new;
-  final DomainDevicesSmartcardPassthroughTcpReconnect =
-      module_index.DomainDevicesSmartcardPassthroughTcpReconnect.new;
-  final DomainDevicesSmartcardPassthroughTcpReconnectArgs =
-      module_index.DomainDevicesSmartcardPassthroughTcpReconnect.new;
-  final DomainDevicesSmartcardPassthroughUdp =
-      module_index.DomainDevicesSmartcardPassthroughUdp.new;
-  final DomainDevicesSmartcardPassthroughUdpArgs =
-      module_index.DomainDevicesSmartcardPassthroughUdp.new;
-  final DomainDevicesSmartcardPassthroughUnix =
-      module_index.DomainDevicesSmartcardPassthroughUnix.new;
-  final DomainDevicesSmartcardPassthroughUnixArgs =
-      module_index.DomainDevicesSmartcardPassthroughUnix.new;
-  final DomainDevicesSmartcardPassthroughUnixReconnect =
-      module_index.DomainDevicesSmartcardPassthroughUnixReconnect.new;
-  final DomainDevicesSmartcardPassthroughUnixReconnectArgs =
-      module_index.DomainDevicesSmartcardPassthroughUnixReconnect.new;
-  final DomainDevicesSmartcardPassthroughUnixSecLabel =
-      module_index.DomainDevicesSmartcardPassthroughUnixSecLabel.new;
-  final DomainDevicesSmartcardPassthroughUnixSecLabelArgs =
-      module_index.DomainDevicesSmartcardPassthroughUnixSecLabel.new;
-  final DomainDevicesSmartcardProtocol =
-      module_index.DomainDevicesSmartcardProtocol.new;
-  final DomainDevicesSmartcardProtocolArgs =
-      module_index.DomainDevicesSmartcardProtocol.new;
+  final DomainDevicesSmartcardHostCert = module_index.DomainDevicesSmartcardHostCert.new;
+  final DomainDevicesSmartcardHostCertArgs = module_index.DomainDevicesSmartcardHostCert.new;
+  final DomainDevicesSmartcardPassthrough = module_index.DomainDevicesSmartcardPassthrough.new;
+  final DomainDevicesSmartcardPassthroughArgs = module_index.DomainDevicesSmartcardPassthrough.new;
+  final DomainDevicesSmartcardPassthroughDbus = module_index.DomainDevicesSmartcardPassthroughDbus.new;
+  final DomainDevicesSmartcardPassthroughDbusArgs = module_index.DomainDevicesSmartcardPassthroughDbus.new;
+  final DomainDevicesSmartcardPassthroughDev = module_index.DomainDevicesSmartcardPassthroughDev.new;
+  final DomainDevicesSmartcardPassthroughDevArgs = module_index.DomainDevicesSmartcardPassthroughDev.new;
+  final DomainDevicesSmartcardPassthroughDevSecLabel = module_index.DomainDevicesSmartcardPassthroughDevSecLabel.new;
+  final DomainDevicesSmartcardPassthroughDevSecLabelArgs = module_index.DomainDevicesSmartcardPassthroughDevSecLabel.new;
+  final DomainDevicesSmartcardPassthroughFile = module_index.DomainDevicesSmartcardPassthroughFile.new;
+  final DomainDevicesSmartcardPassthroughFileArgs = module_index.DomainDevicesSmartcardPassthroughFile.new;
+  final DomainDevicesSmartcardPassthroughFileSecLabel = module_index.DomainDevicesSmartcardPassthroughFileSecLabel.new;
+  final DomainDevicesSmartcardPassthroughFileSecLabelArgs = module_index.DomainDevicesSmartcardPassthroughFileSecLabel.new;
+  final DomainDevicesSmartcardPassthroughNmdm = module_index.DomainDevicesSmartcardPassthroughNmdm.new;
+  final DomainDevicesSmartcardPassthroughNmdmArgs = module_index.DomainDevicesSmartcardPassthroughNmdm.new;
+  final DomainDevicesSmartcardPassthroughPipe = module_index.DomainDevicesSmartcardPassthroughPipe.new;
+  final DomainDevicesSmartcardPassthroughPipeArgs = module_index.DomainDevicesSmartcardPassthroughPipe.new;
+  final DomainDevicesSmartcardPassthroughPipeSecLabel = module_index.DomainDevicesSmartcardPassthroughPipeSecLabel.new;
+  final DomainDevicesSmartcardPassthroughPipeSecLabelArgs = module_index.DomainDevicesSmartcardPassthroughPipeSecLabel.new;
+  final DomainDevicesSmartcardPassthroughPty = module_index.DomainDevicesSmartcardPassthroughPty.new;
+  final DomainDevicesSmartcardPassthroughPtyArgs = module_index.DomainDevicesSmartcardPassthroughPty.new;
+  final DomainDevicesSmartcardPassthroughPtySecLabel = module_index.DomainDevicesSmartcardPassthroughPtySecLabel.new;
+  final DomainDevicesSmartcardPassthroughPtySecLabelArgs = module_index.DomainDevicesSmartcardPassthroughPtySecLabel.new;
+  final DomainDevicesSmartcardPassthroughQemuvdAgent = module_index.DomainDevicesSmartcardPassthroughQemuvdAgent.new;
+  final DomainDevicesSmartcardPassthroughQemuvdAgentArgs = module_index.DomainDevicesSmartcardPassthroughQemuvdAgent.new;
+  final DomainDevicesSmartcardPassthroughQemuvdAgentClipBoard = module_index.DomainDevicesSmartcardPassthroughQemuvdAgentClipBoard.new;
+  final DomainDevicesSmartcardPassthroughQemuvdAgentClipBoardArgs = module_index.DomainDevicesSmartcardPassthroughQemuvdAgentClipBoard.new;
+  final DomainDevicesSmartcardPassthroughQemuvdAgentMouse = module_index.DomainDevicesSmartcardPassthroughQemuvdAgentMouse.new;
+  final DomainDevicesSmartcardPassthroughQemuvdAgentMouseArgs = module_index.DomainDevicesSmartcardPassthroughQemuvdAgentMouse.new;
+  final DomainDevicesSmartcardPassthroughSpicePort = module_index.DomainDevicesSmartcardPassthroughSpicePort.new;
+  final DomainDevicesSmartcardPassthroughSpicePortArgs = module_index.DomainDevicesSmartcardPassthroughSpicePort.new;
+  final DomainDevicesSmartcardPassthroughTcp = module_index.DomainDevicesSmartcardPassthroughTcp.new;
+  final DomainDevicesSmartcardPassthroughTcpArgs = module_index.DomainDevicesSmartcardPassthroughTcp.new;
+  final DomainDevicesSmartcardPassthroughTcpReconnect = module_index.DomainDevicesSmartcardPassthroughTcpReconnect.new;
+  final DomainDevicesSmartcardPassthroughTcpReconnectArgs = module_index.DomainDevicesSmartcardPassthroughTcpReconnect.new;
+  final DomainDevicesSmartcardPassthroughUdp = module_index.DomainDevicesSmartcardPassthroughUdp.new;
+  final DomainDevicesSmartcardPassthroughUdpArgs = module_index.DomainDevicesSmartcardPassthroughUdp.new;
+  final DomainDevicesSmartcardPassthroughUnix = module_index.DomainDevicesSmartcardPassthroughUnix.new;
+  final DomainDevicesSmartcardPassthroughUnixArgs = module_index.DomainDevicesSmartcardPassthroughUnix.new;
+  final DomainDevicesSmartcardPassthroughUnixReconnect = module_index.DomainDevicesSmartcardPassthroughUnixReconnect.new;
+  final DomainDevicesSmartcardPassthroughUnixReconnectArgs = module_index.DomainDevicesSmartcardPassthroughUnixReconnect.new;
+  final DomainDevicesSmartcardPassthroughUnixSecLabel = module_index.DomainDevicesSmartcardPassthroughUnixSecLabel.new;
+  final DomainDevicesSmartcardPassthroughUnixSecLabelArgs = module_index.DomainDevicesSmartcardPassthroughUnixSecLabel.new;
+  final DomainDevicesSmartcardProtocol = module_index.DomainDevicesSmartcardProtocol.new;
+  final DomainDevicesSmartcardProtocolArgs = module_index.DomainDevicesSmartcardProtocol.new;
   final DomainDevicesSound = module_index.DomainDevicesSound.new;
   final DomainDevicesSoundAcpi = module_index.DomainDevicesSoundAcpi.new;
   final DomainDevicesSoundAcpiArgs = module_index.DomainDevicesSoundAcpi.new;
@@ -3501,8 +1719,7 @@ class _IndexModuleNamespace {
   final DomainDevicesSoundCodec = module_index.DomainDevicesSoundCodec.new;
   final DomainDevicesSoundCodecArgs = module_index.DomainDevicesSoundCodec.new;
   final DomainDevicesSoundDriver = module_index.DomainDevicesSoundDriver.new;
-  final DomainDevicesSoundDriverArgs =
-      module_index.DomainDevicesSoundDriver.new;
+  final DomainDevicesSoundDriverArgs = module_index.DomainDevicesSoundDriver.new;
   final DomainDevicesTpm = module_index.DomainDevicesTpm.new;
   final DomainDevicesTpmAcpi = module_index.DomainDevicesTpmAcpi.new;
   final DomainDevicesTpmAcpiArgs = module_index.DomainDevicesTpmAcpi.new;
@@ -3511,133 +1728,68 @@ class _IndexModuleNamespace {
   final DomainDevicesTpmArgs = module_index.DomainDevicesTpm.new;
   final DomainDevicesTpmBackend = module_index.DomainDevicesTpmBackend.new;
   final DomainDevicesTpmBackendArgs = module_index.DomainDevicesTpmBackend.new;
-  final DomainDevicesTpmBackendEmulator =
-      module_index.DomainDevicesTpmBackendEmulator.new;
-  final DomainDevicesTpmBackendEmulatorActivePcrBanks =
-      module_index.DomainDevicesTpmBackendEmulatorActivePcrBanks.new;
-  final DomainDevicesTpmBackendEmulatorActivePcrBanksArgs =
-      module_index.DomainDevicesTpmBackendEmulatorActivePcrBanks.new;
-  final DomainDevicesTpmBackendEmulatorArgs =
-      module_index.DomainDevicesTpmBackendEmulator.new;
-  final DomainDevicesTpmBackendEmulatorEncryption =
-      module_index.DomainDevicesTpmBackendEmulatorEncryption.new;
-  final DomainDevicesTpmBackendEmulatorEncryptionArgs =
-      module_index.DomainDevicesTpmBackendEmulatorEncryption.new;
-  final DomainDevicesTpmBackendEmulatorProfile =
-      module_index.DomainDevicesTpmBackendEmulatorProfile.new;
-  final DomainDevicesTpmBackendEmulatorProfileArgs =
-      module_index.DomainDevicesTpmBackendEmulatorProfile.new;
-  final DomainDevicesTpmBackendEmulatorSource =
-      module_index.DomainDevicesTpmBackendEmulatorSource.new;
-  final DomainDevicesTpmBackendEmulatorSourceArgs =
-      module_index.DomainDevicesTpmBackendEmulatorSource.new;
-  final DomainDevicesTpmBackendEmulatorSourceDir =
-      module_index.DomainDevicesTpmBackendEmulatorSourceDir.new;
-  final DomainDevicesTpmBackendEmulatorSourceDirArgs =
-      module_index.DomainDevicesTpmBackendEmulatorSourceDir.new;
-  final DomainDevicesTpmBackendEmulatorSourceFile =
-      module_index.DomainDevicesTpmBackendEmulatorSourceFile.new;
-  final DomainDevicesTpmBackendEmulatorSourceFileArgs =
-      module_index.DomainDevicesTpmBackendEmulatorSourceFile.new;
-  final DomainDevicesTpmBackendExternal =
-      module_index.DomainDevicesTpmBackendExternal.new;
-  final DomainDevicesTpmBackendExternalArgs =
-      module_index.DomainDevicesTpmBackendExternal.new;
-  final DomainDevicesTpmBackendExternalSource =
-      module_index.DomainDevicesTpmBackendExternalSource.new;
-  final DomainDevicesTpmBackendExternalSourceArgs =
-      module_index.DomainDevicesTpmBackendExternalSource.new;
-  final DomainDevicesTpmBackendExternalSourceDbus =
-      module_index.DomainDevicesTpmBackendExternalSourceDbus.new;
-  final DomainDevicesTpmBackendExternalSourceDbusArgs =
-      module_index.DomainDevicesTpmBackendExternalSourceDbus.new;
-  final DomainDevicesTpmBackendExternalSourceDev =
-      module_index.DomainDevicesTpmBackendExternalSourceDev.new;
-  final DomainDevicesTpmBackendExternalSourceDevArgs =
-      module_index.DomainDevicesTpmBackendExternalSourceDev.new;
-  final DomainDevicesTpmBackendExternalSourceDevSecLabel =
-      module_index.DomainDevicesTpmBackendExternalSourceDevSecLabel.new;
-  final DomainDevicesTpmBackendExternalSourceDevSecLabelArgs =
-      module_index.DomainDevicesTpmBackendExternalSourceDevSecLabel.new;
-  final DomainDevicesTpmBackendExternalSourceFile =
-      module_index.DomainDevicesTpmBackendExternalSourceFile.new;
-  final DomainDevicesTpmBackendExternalSourceFileArgs =
-      module_index.DomainDevicesTpmBackendExternalSourceFile.new;
-  final DomainDevicesTpmBackendExternalSourceFileSecLabel =
-      module_index.DomainDevicesTpmBackendExternalSourceFileSecLabel.new;
-  final DomainDevicesTpmBackendExternalSourceFileSecLabelArgs =
-      module_index.DomainDevicesTpmBackendExternalSourceFileSecLabel.new;
-  final DomainDevicesTpmBackendExternalSourceNmdm =
-      module_index.DomainDevicesTpmBackendExternalSourceNmdm.new;
-  final DomainDevicesTpmBackendExternalSourceNmdmArgs =
-      module_index.DomainDevicesTpmBackendExternalSourceNmdm.new;
-  final DomainDevicesTpmBackendExternalSourcePipe =
-      module_index.DomainDevicesTpmBackendExternalSourcePipe.new;
-  final DomainDevicesTpmBackendExternalSourcePipeArgs =
-      module_index.DomainDevicesTpmBackendExternalSourcePipe.new;
-  final DomainDevicesTpmBackendExternalSourcePipeSecLabel =
-      module_index.DomainDevicesTpmBackendExternalSourcePipeSecLabel.new;
-  final DomainDevicesTpmBackendExternalSourcePipeSecLabelArgs =
-      module_index.DomainDevicesTpmBackendExternalSourcePipeSecLabel.new;
-  final DomainDevicesTpmBackendExternalSourcePty =
-      module_index.DomainDevicesTpmBackendExternalSourcePty.new;
-  final DomainDevicesTpmBackendExternalSourcePtyArgs =
-      module_index.DomainDevicesTpmBackendExternalSourcePty.new;
-  final DomainDevicesTpmBackendExternalSourcePtySecLabel =
-      module_index.DomainDevicesTpmBackendExternalSourcePtySecLabel.new;
-  final DomainDevicesTpmBackendExternalSourcePtySecLabelArgs =
-      module_index.DomainDevicesTpmBackendExternalSourcePtySecLabel.new;
-  final DomainDevicesTpmBackendExternalSourceQemuvdAgent =
-      module_index.DomainDevicesTpmBackendExternalSourceQemuvdAgent.new;
-  final DomainDevicesTpmBackendExternalSourceQemuvdAgentArgs =
-      module_index.DomainDevicesTpmBackendExternalSourceQemuvdAgent.new;
-  final DomainDevicesTpmBackendExternalSourceQemuvdAgentClipBoard = module_index
-      .DomainDevicesTpmBackendExternalSourceQemuvdAgentClipBoard
-      .new;
-  final DomainDevicesTpmBackendExternalSourceQemuvdAgentClipBoardArgs =
-      module_index
-          .DomainDevicesTpmBackendExternalSourceQemuvdAgentClipBoard
-          .new;
-  final DomainDevicesTpmBackendExternalSourceQemuvdAgentMouse =
-      module_index.DomainDevicesTpmBackendExternalSourceQemuvdAgentMouse.new;
-  final DomainDevicesTpmBackendExternalSourceQemuvdAgentMouseArgs =
-      module_index.DomainDevicesTpmBackendExternalSourceQemuvdAgentMouse.new;
-  final DomainDevicesTpmBackendExternalSourceSpicePort =
-      module_index.DomainDevicesTpmBackendExternalSourceSpicePort.new;
-  final DomainDevicesTpmBackendExternalSourceSpicePortArgs =
-      module_index.DomainDevicesTpmBackendExternalSourceSpicePort.new;
-  final DomainDevicesTpmBackendExternalSourceTcp =
-      module_index.DomainDevicesTpmBackendExternalSourceTcp.new;
-  final DomainDevicesTpmBackendExternalSourceTcpArgs =
-      module_index.DomainDevicesTpmBackendExternalSourceTcp.new;
-  final DomainDevicesTpmBackendExternalSourceTcpReconnect =
-      module_index.DomainDevicesTpmBackendExternalSourceTcpReconnect.new;
-  final DomainDevicesTpmBackendExternalSourceTcpReconnectArgs =
-      module_index.DomainDevicesTpmBackendExternalSourceTcpReconnect.new;
-  final DomainDevicesTpmBackendExternalSourceUdp =
-      module_index.DomainDevicesTpmBackendExternalSourceUdp.new;
-  final DomainDevicesTpmBackendExternalSourceUdpArgs =
-      module_index.DomainDevicesTpmBackendExternalSourceUdp.new;
-  final DomainDevicesTpmBackendExternalSourceUnix =
-      module_index.DomainDevicesTpmBackendExternalSourceUnix.new;
-  final DomainDevicesTpmBackendExternalSourceUnixArgs =
-      module_index.DomainDevicesTpmBackendExternalSourceUnix.new;
-  final DomainDevicesTpmBackendExternalSourceUnixReconnect =
-      module_index.DomainDevicesTpmBackendExternalSourceUnixReconnect.new;
-  final DomainDevicesTpmBackendExternalSourceUnixReconnectArgs =
-      module_index.DomainDevicesTpmBackendExternalSourceUnixReconnect.new;
-  final DomainDevicesTpmBackendExternalSourceUnixSecLabel =
-      module_index.DomainDevicesTpmBackendExternalSourceUnixSecLabel.new;
-  final DomainDevicesTpmBackendExternalSourceUnixSecLabelArgs =
-      module_index.DomainDevicesTpmBackendExternalSourceUnixSecLabel.new;
-  final DomainDevicesTpmBackendPassthrough =
-      module_index.DomainDevicesTpmBackendPassthrough.new;
-  final DomainDevicesTpmBackendPassthroughArgs =
-      module_index.DomainDevicesTpmBackendPassthrough.new;
-  final DomainDevicesTpmBackendPassthroughDevice =
-      module_index.DomainDevicesTpmBackendPassthroughDevice.new;
-  final DomainDevicesTpmBackendPassthroughDeviceArgs =
-      module_index.DomainDevicesTpmBackendPassthroughDevice.new;
+  final DomainDevicesTpmBackendEmulator = module_index.DomainDevicesTpmBackendEmulator.new;
+  final DomainDevicesTpmBackendEmulatorActivePcrBanks = module_index.DomainDevicesTpmBackendEmulatorActivePcrBanks.new;
+  final DomainDevicesTpmBackendEmulatorActivePcrBanksArgs = module_index.DomainDevicesTpmBackendEmulatorActivePcrBanks.new;
+  final DomainDevicesTpmBackendEmulatorArgs = module_index.DomainDevicesTpmBackendEmulator.new;
+  final DomainDevicesTpmBackendEmulatorEncryption = module_index.DomainDevicesTpmBackendEmulatorEncryption.new;
+  final DomainDevicesTpmBackendEmulatorEncryptionArgs = module_index.DomainDevicesTpmBackendEmulatorEncryption.new;
+  final DomainDevicesTpmBackendEmulatorProfile = module_index.DomainDevicesTpmBackendEmulatorProfile.new;
+  final DomainDevicesTpmBackendEmulatorProfileArgs = module_index.DomainDevicesTpmBackendEmulatorProfile.new;
+  final DomainDevicesTpmBackendEmulatorSource = module_index.DomainDevicesTpmBackendEmulatorSource.new;
+  final DomainDevicesTpmBackendEmulatorSourceArgs = module_index.DomainDevicesTpmBackendEmulatorSource.new;
+  final DomainDevicesTpmBackendEmulatorSourceDir = module_index.DomainDevicesTpmBackendEmulatorSourceDir.new;
+  final DomainDevicesTpmBackendEmulatorSourceDirArgs = module_index.DomainDevicesTpmBackendEmulatorSourceDir.new;
+  final DomainDevicesTpmBackendEmulatorSourceFile = module_index.DomainDevicesTpmBackendEmulatorSourceFile.new;
+  final DomainDevicesTpmBackendEmulatorSourceFileArgs = module_index.DomainDevicesTpmBackendEmulatorSourceFile.new;
+  final DomainDevicesTpmBackendExternal = module_index.DomainDevicesTpmBackendExternal.new;
+  final DomainDevicesTpmBackendExternalArgs = module_index.DomainDevicesTpmBackendExternal.new;
+  final DomainDevicesTpmBackendExternalSource = module_index.DomainDevicesTpmBackendExternalSource.new;
+  final DomainDevicesTpmBackendExternalSourceArgs = module_index.DomainDevicesTpmBackendExternalSource.new;
+  final DomainDevicesTpmBackendExternalSourceDbus = module_index.DomainDevicesTpmBackendExternalSourceDbus.new;
+  final DomainDevicesTpmBackendExternalSourceDbusArgs = module_index.DomainDevicesTpmBackendExternalSourceDbus.new;
+  final DomainDevicesTpmBackendExternalSourceDev = module_index.DomainDevicesTpmBackendExternalSourceDev.new;
+  final DomainDevicesTpmBackendExternalSourceDevArgs = module_index.DomainDevicesTpmBackendExternalSourceDev.new;
+  final DomainDevicesTpmBackendExternalSourceDevSecLabel = module_index.DomainDevicesTpmBackendExternalSourceDevSecLabel.new;
+  final DomainDevicesTpmBackendExternalSourceDevSecLabelArgs = module_index.DomainDevicesTpmBackendExternalSourceDevSecLabel.new;
+  final DomainDevicesTpmBackendExternalSourceFile = module_index.DomainDevicesTpmBackendExternalSourceFile.new;
+  final DomainDevicesTpmBackendExternalSourceFileArgs = module_index.DomainDevicesTpmBackendExternalSourceFile.new;
+  final DomainDevicesTpmBackendExternalSourceFileSecLabel = module_index.DomainDevicesTpmBackendExternalSourceFileSecLabel.new;
+  final DomainDevicesTpmBackendExternalSourceFileSecLabelArgs = module_index.DomainDevicesTpmBackendExternalSourceFileSecLabel.new;
+  final DomainDevicesTpmBackendExternalSourceNmdm = module_index.DomainDevicesTpmBackendExternalSourceNmdm.new;
+  final DomainDevicesTpmBackendExternalSourceNmdmArgs = module_index.DomainDevicesTpmBackendExternalSourceNmdm.new;
+  final DomainDevicesTpmBackendExternalSourcePipe = module_index.DomainDevicesTpmBackendExternalSourcePipe.new;
+  final DomainDevicesTpmBackendExternalSourcePipeArgs = module_index.DomainDevicesTpmBackendExternalSourcePipe.new;
+  final DomainDevicesTpmBackendExternalSourcePipeSecLabel = module_index.DomainDevicesTpmBackendExternalSourcePipeSecLabel.new;
+  final DomainDevicesTpmBackendExternalSourcePipeSecLabelArgs = module_index.DomainDevicesTpmBackendExternalSourcePipeSecLabel.new;
+  final DomainDevicesTpmBackendExternalSourcePty = module_index.DomainDevicesTpmBackendExternalSourcePty.new;
+  final DomainDevicesTpmBackendExternalSourcePtyArgs = module_index.DomainDevicesTpmBackendExternalSourcePty.new;
+  final DomainDevicesTpmBackendExternalSourcePtySecLabel = module_index.DomainDevicesTpmBackendExternalSourcePtySecLabel.new;
+  final DomainDevicesTpmBackendExternalSourcePtySecLabelArgs = module_index.DomainDevicesTpmBackendExternalSourcePtySecLabel.new;
+  final DomainDevicesTpmBackendExternalSourceQemuvdAgent = module_index.DomainDevicesTpmBackendExternalSourceQemuvdAgent.new;
+  final DomainDevicesTpmBackendExternalSourceQemuvdAgentArgs = module_index.DomainDevicesTpmBackendExternalSourceQemuvdAgent.new;
+  final DomainDevicesTpmBackendExternalSourceQemuvdAgentClipBoard = module_index.DomainDevicesTpmBackendExternalSourceQemuvdAgentClipBoard.new;
+  final DomainDevicesTpmBackendExternalSourceQemuvdAgentClipBoardArgs = module_index.DomainDevicesTpmBackendExternalSourceQemuvdAgentClipBoard.new;
+  final DomainDevicesTpmBackendExternalSourceQemuvdAgentMouse = module_index.DomainDevicesTpmBackendExternalSourceQemuvdAgentMouse.new;
+  final DomainDevicesTpmBackendExternalSourceQemuvdAgentMouseArgs = module_index.DomainDevicesTpmBackendExternalSourceQemuvdAgentMouse.new;
+  final DomainDevicesTpmBackendExternalSourceSpicePort = module_index.DomainDevicesTpmBackendExternalSourceSpicePort.new;
+  final DomainDevicesTpmBackendExternalSourceSpicePortArgs = module_index.DomainDevicesTpmBackendExternalSourceSpicePort.new;
+  final DomainDevicesTpmBackendExternalSourceTcp = module_index.DomainDevicesTpmBackendExternalSourceTcp.new;
+  final DomainDevicesTpmBackendExternalSourceTcpArgs = module_index.DomainDevicesTpmBackendExternalSourceTcp.new;
+  final DomainDevicesTpmBackendExternalSourceTcpReconnect = module_index.DomainDevicesTpmBackendExternalSourceTcpReconnect.new;
+  final DomainDevicesTpmBackendExternalSourceTcpReconnectArgs = module_index.DomainDevicesTpmBackendExternalSourceTcpReconnect.new;
+  final DomainDevicesTpmBackendExternalSourceUdp = module_index.DomainDevicesTpmBackendExternalSourceUdp.new;
+  final DomainDevicesTpmBackendExternalSourceUdpArgs = module_index.DomainDevicesTpmBackendExternalSourceUdp.new;
+  final DomainDevicesTpmBackendExternalSourceUnix = module_index.DomainDevicesTpmBackendExternalSourceUnix.new;
+  final DomainDevicesTpmBackendExternalSourceUnixArgs = module_index.DomainDevicesTpmBackendExternalSourceUnix.new;
+  final DomainDevicesTpmBackendExternalSourceUnixReconnect = module_index.DomainDevicesTpmBackendExternalSourceUnixReconnect.new;
+  final DomainDevicesTpmBackendExternalSourceUnixReconnectArgs = module_index.DomainDevicesTpmBackendExternalSourceUnixReconnect.new;
+  final DomainDevicesTpmBackendExternalSourceUnixSecLabel = module_index.DomainDevicesTpmBackendExternalSourceUnixSecLabel.new;
+  final DomainDevicesTpmBackendExternalSourceUnixSecLabelArgs = module_index.DomainDevicesTpmBackendExternalSourceUnixSecLabel.new;
+  final DomainDevicesTpmBackendPassthrough = module_index.DomainDevicesTpmBackendPassthrough.new;
+  final DomainDevicesTpmBackendPassthroughArgs = module_index.DomainDevicesTpmBackendPassthrough.new;
+  final DomainDevicesTpmBackendPassthroughDevice = module_index.DomainDevicesTpmBackendPassthroughDevice.new;
+  final DomainDevicesTpmBackendPassthroughDeviceArgs = module_index.DomainDevicesTpmBackendPassthroughDevice.new;
   final DomainDevicesVideo = module_index.DomainDevicesVideo.new;
   final DomainDevicesVideoAcpi = module_index.DomainDevicesVideoAcpi.new;
   final DomainDevicesVideoAcpiArgs = module_index.DomainDevicesVideoAcpi.new;
@@ -3645,18 +1797,13 @@ class _IndexModuleNamespace {
   final DomainDevicesVideoAliasArgs = module_index.DomainDevicesVideoAlias.new;
   final DomainDevicesVideoArgs = module_index.DomainDevicesVideo.new;
   final DomainDevicesVideoDriver = module_index.DomainDevicesVideoDriver.new;
-  final DomainDevicesVideoDriverArgs =
-      module_index.DomainDevicesVideoDriver.new;
+  final DomainDevicesVideoDriverArgs = module_index.DomainDevicesVideoDriver.new;
   final DomainDevicesVideoModel = module_index.DomainDevicesVideoModel.new;
-  final DomainDevicesVideoModelAccel =
-      module_index.DomainDevicesVideoModelAccel.new;
-  final DomainDevicesVideoModelAccelArgs =
-      module_index.DomainDevicesVideoModelAccel.new;
+  final DomainDevicesVideoModelAccel = module_index.DomainDevicesVideoModelAccel.new;
+  final DomainDevicesVideoModelAccelArgs = module_index.DomainDevicesVideoModelAccel.new;
   final DomainDevicesVideoModelArgs = module_index.DomainDevicesVideoModel.new;
-  final DomainDevicesVideoModelResolution =
-      module_index.DomainDevicesVideoModelResolution.new;
-  final DomainDevicesVideoModelResolutionArgs =
-      module_index.DomainDevicesVideoModelResolution.new;
+  final DomainDevicesVideoModelResolution = module_index.DomainDevicesVideoModelResolution.new;
+  final DomainDevicesVideoModelResolutionArgs = module_index.DomainDevicesVideoModelResolution.new;
   final DomainDevicesVsock = module_index.DomainDevicesVsock.new;
   final DomainDevicesVsockAcpi = module_index.DomainDevicesVsockAcpi.new;
   final DomainDevicesVsockAcpiArgs = module_index.DomainDevicesVsockAcpi.new;
@@ -3666,16 +1813,12 @@ class _IndexModuleNamespace {
   final DomainDevicesVsockCid = module_index.DomainDevicesVsockCid.new;
   final DomainDevicesVsockCidArgs = module_index.DomainDevicesVsockCid.new;
   final DomainDevicesVsockDriver = module_index.DomainDevicesVsockDriver.new;
-  final DomainDevicesVsockDriverArgs =
-      module_index.DomainDevicesVsockDriver.new;
+  final DomainDevicesVsockDriverArgs = module_index.DomainDevicesVsockDriver.new;
   final DomainDevicesWatchdog = module_index.DomainDevicesWatchdog.new;
   final DomainDevicesWatchdogAcpi = module_index.DomainDevicesWatchdogAcpi.new;
-  final DomainDevicesWatchdogAcpiArgs =
-      module_index.DomainDevicesWatchdogAcpi.new;
-  final DomainDevicesWatchdogAlias =
-      module_index.DomainDevicesWatchdogAlias.new;
-  final DomainDevicesWatchdogAliasArgs =
-      module_index.DomainDevicesWatchdogAlias.new;
+  final DomainDevicesWatchdogAcpiArgs = module_index.DomainDevicesWatchdogAcpi.new;
+  final DomainDevicesWatchdogAlias = module_index.DomainDevicesWatchdogAlias.new;
+  final DomainDevicesWatchdogAliasArgs = module_index.DomainDevicesWatchdogAlias.new;
   final DomainDevicesWatchdogArgs = module_index.DomainDevicesWatchdog.new;
   final DomainFeatures = module_index.DomainFeatures.new;
   final DomainFeaturesAia = module_index.DomainFeaturesAia.new;
@@ -3683,162 +1826,84 @@ class _IndexModuleNamespace {
   final DomainFeaturesApic = module_index.DomainFeaturesApic.new;
   final DomainFeaturesApicArgs = module_index.DomainFeaturesApic.new;
   final DomainFeaturesArgs = module_index.DomainFeatures.new;
-  final DomainFeaturesAsyncTeardown =
-      module_index.DomainFeaturesAsyncTeardown.new;
-  final DomainFeaturesAsyncTeardownArgs =
-      module_index.DomainFeaturesAsyncTeardown.new;
-  final DomainFeaturesCapabilities =
-      module_index.DomainFeaturesCapabilities.new;
-  final DomainFeaturesCapabilitiesArgs =
-      module_index.DomainFeaturesCapabilities.new;
-  final DomainFeaturesCapabilitiesAuditControl =
-      module_index.DomainFeaturesCapabilitiesAuditControl.new;
-  final DomainFeaturesCapabilitiesAuditControlArgs =
-      module_index.DomainFeaturesCapabilitiesAuditControl.new;
-  final DomainFeaturesCapabilitiesAuditWrite =
-      module_index.DomainFeaturesCapabilitiesAuditWrite.new;
-  final DomainFeaturesCapabilitiesAuditWriteArgs =
-      module_index.DomainFeaturesCapabilitiesAuditWrite.new;
-  final DomainFeaturesCapabilitiesBlockSuspend =
-      module_index.DomainFeaturesCapabilitiesBlockSuspend.new;
-  final DomainFeaturesCapabilitiesBlockSuspendArgs =
-      module_index.DomainFeaturesCapabilitiesBlockSuspend.new;
-  final DomainFeaturesCapabilitiesChown =
-      module_index.DomainFeaturesCapabilitiesChown.new;
-  final DomainFeaturesCapabilitiesChownArgs =
-      module_index.DomainFeaturesCapabilitiesChown.new;
-  final DomainFeaturesCapabilitiesDacOverride =
-      module_index.DomainFeaturesCapabilitiesDacOverride.new;
-  final DomainFeaturesCapabilitiesDacOverrideArgs =
-      module_index.DomainFeaturesCapabilitiesDacOverride.new;
-  final DomainFeaturesCapabilitiesDacReadSearch =
-      module_index.DomainFeaturesCapabilitiesDacReadSearch.new;
-  final DomainFeaturesCapabilitiesDacReadSearchArgs =
-      module_index.DomainFeaturesCapabilitiesDacReadSearch.new;
-  final DomainFeaturesCapabilitiesFowner =
-      module_index.DomainFeaturesCapabilitiesFowner.new;
-  final DomainFeaturesCapabilitiesFownerArgs =
-      module_index.DomainFeaturesCapabilitiesFowner.new;
-  final DomainFeaturesCapabilitiesFsetId =
-      module_index.DomainFeaturesCapabilitiesFsetId.new;
-  final DomainFeaturesCapabilitiesFsetIdArgs =
-      module_index.DomainFeaturesCapabilitiesFsetId.new;
-  final DomainFeaturesCapabilitiesIpcLock =
-      module_index.DomainFeaturesCapabilitiesIpcLock.new;
-  final DomainFeaturesCapabilitiesIpcLockArgs =
-      module_index.DomainFeaturesCapabilitiesIpcLock.new;
-  final DomainFeaturesCapabilitiesIpcOwner =
-      module_index.DomainFeaturesCapabilitiesIpcOwner.new;
-  final DomainFeaturesCapabilitiesIpcOwnerArgs =
-      module_index.DomainFeaturesCapabilitiesIpcOwner.new;
-  final DomainFeaturesCapabilitiesKill =
-      module_index.DomainFeaturesCapabilitiesKill.new;
-  final DomainFeaturesCapabilitiesKillArgs =
-      module_index.DomainFeaturesCapabilitiesKill.new;
-  final DomainFeaturesCapabilitiesLease =
-      module_index.DomainFeaturesCapabilitiesLease.new;
-  final DomainFeaturesCapabilitiesLeaseArgs =
-      module_index.DomainFeaturesCapabilitiesLease.new;
-  final DomainFeaturesCapabilitiesLinuxImmutable =
-      module_index.DomainFeaturesCapabilitiesLinuxImmutable.new;
-  final DomainFeaturesCapabilitiesLinuxImmutableArgs =
-      module_index.DomainFeaturesCapabilitiesLinuxImmutable.new;
-  final DomainFeaturesCapabilitiesMacAdmin =
-      module_index.DomainFeaturesCapabilitiesMacAdmin.new;
-  final DomainFeaturesCapabilitiesMacAdminArgs =
-      module_index.DomainFeaturesCapabilitiesMacAdmin.new;
-  final DomainFeaturesCapabilitiesMacOverride =
-      module_index.DomainFeaturesCapabilitiesMacOverride.new;
-  final DomainFeaturesCapabilitiesMacOverrideArgs =
-      module_index.DomainFeaturesCapabilitiesMacOverride.new;
-  final DomainFeaturesCapabilitiesMkNod =
-      module_index.DomainFeaturesCapabilitiesMkNod.new;
-  final DomainFeaturesCapabilitiesMkNodArgs =
-      module_index.DomainFeaturesCapabilitiesMkNod.new;
-  final DomainFeaturesCapabilitiesNetAdmin =
-      module_index.DomainFeaturesCapabilitiesNetAdmin.new;
-  final DomainFeaturesCapabilitiesNetAdminArgs =
-      module_index.DomainFeaturesCapabilitiesNetAdmin.new;
-  final DomainFeaturesCapabilitiesNetBindService =
-      module_index.DomainFeaturesCapabilitiesNetBindService.new;
-  final DomainFeaturesCapabilitiesNetBindServiceArgs =
-      module_index.DomainFeaturesCapabilitiesNetBindService.new;
-  final DomainFeaturesCapabilitiesNetBroadcast =
-      module_index.DomainFeaturesCapabilitiesNetBroadcast.new;
-  final DomainFeaturesCapabilitiesNetBroadcastArgs =
-      module_index.DomainFeaturesCapabilitiesNetBroadcast.new;
-  final DomainFeaturesCapabilitiesNetRaw =
-      module_index.DomainFeaturesCapabilitiesNetRaw.new;
-  final DomainFeaturesCapabilitiesNetRawArgs =
-      module_index.DomainFeaturesCapabilitiesNetRaw.new;
-  final DomainFeaturesCapabilitiesSetFCap =
-      module_index.DomainFeaturesCapabilitiesSetFCap.new;
-  final DomainFeaturesCapabilitiesSetFCapArgs =
-      module_index.DomainFeaturesCapabilitiesSetFCap.new;
-  final DomainFeaturesCapabilitiesSetGid =
-      module_index.DomainFeaturesCapabilitiesSetGid.new;
-  final DomainFeaturesCapabilitiesSetGidArgs =
-      module_index.DomainFeaturesCapabilitiesSetGid.new;
-  final DomainFeaturesCapabilitiesSetPCap =
-      module_index.DomainFeaturesCapabilitiesSetPCap.new;
-  final DomainFeaturesCapabilitiesSetPCapArgs =
-      module_index.DomainFeaturesCapabilitiesSetPCap.new;
-  final DomainFeaturesCapabilitiesSetUid =
-      module_index.DomainFeaturesCapabilitiesSetUid.new;
-  final DomainFeaturesCapabilitiesSetUidArgs =
-      module_index.DomainFeaturesCapabilitiesSetUid.new;
-  final DomainFeaturesCapabilitiesSysAdmin =
-      module_index.DomainFeaturesCapabilitiesSysAdmin.new;
-  final DomainFeaturesCapabilitiesSysAdminArgs =
-      module_index.DomainFeaturesCapabilitiesSysAdmin.new;
-  final DomainFeaturesCapabilitiesSysBoot =
-      module_index.DomainFeaturesCapabilitiesSysBoot.new;
-  final DomainFeaturesCapabilitiesSysBootArgs =
-      module_index.DomainFeaturesCapabilitiesSysBoot.new;
-  final DomainFeaturesCapabilitiesSysChRoot =
-      module_index.DomainFeaturesCapabilitiesSysChRoot.new;
-  final DomainFeaturesCapabilitiesSysChRootArgs =
-      module_index.DomainFeaturesCapabilitiesSysChRoot.new;
-  final DomainFeaturesCapabilitiesSysLog =
-      module_index.DomainFeaturesCapabilitiesSysLog.new;
-  final DomainFeaturesCapabilitiesSysLogArgs =
-      module_index.DomainFeaturesCapabilitiesSysLog.new;
-  final DomainFeaturesCapabilitiesSysModule =
-      module_index.DomainFeaturesCapabilitiesSysModule.new;
-  final DomainFeaturesCapabilitiesSysModuleArgs =
-      module_index.DomainFeaturesCapabilitiesSysModule.new;
-  final DomainFeaturesCapabilitiesSysNice =
-      module_index.DomainFeaturesCapabilitiesSysNice.new;
-  final DomainFeaturesCapabilitiesSysNiceArgs =
-      module_index.DomainFeaturesCapabilitiesSysNice.new;
-  final DomainFeaturesCapabilitiesSysPAcct =
-      module_index.DomainFeaturesCapabilitiesSysPAcct.new;
-  final DomainFeaturesCapabilitiesSysPAcctArgs =
-      module_index.DomainFeaturesCapabilitiesSysPAcct.new;
-  final DomainFeaturesCapabilitiesSysPTrace =
-      module_index.DomainFeaturesCapabilitiesSysPTrace.new;
-  final DomainFeaturesCapabilitiesSysPTraceArgs =
-      module_index.DomainFeaturesCapabilitiesSysPTrace.new;
-  final DomainFeaturesCapabilitiesSysRawIo =
-      module_index.DomainFeaturesCapabilitiesSysRawIo.new;
-  final DomainFeaturesCapabilitiesSysRawIoArgs =
-      module_index.DomainFeaturesCapabilitiesSysRawIo.new;
-  final DomainFeaturesCapabilitiesSysResource =
-      module_index.DomainFeaturesCapabilitiesSysResource.new;
-  final DomainFeaturesCapabilitiesSysResourceArgs =
-      module_index.DomainFeaturesCapabilitiesSysResource.new;
-  final DomainFeaturesCapabilitiesSysTime =
-      module_index.DomainFeaturesCapabilitiesSysTime.new;
-  final DomainFeaturesCapabilitiesSysTimeArgs =
-      module_index.DomainFeaturesCapabilitiesSysTime.new;
-  final DomainFeaturesCapabilitiesSysTtyCnofig =
-      module_index.DomainFeaturesCapabilitiesSysTtyCnofig.new;
-  final DomainFeaturesCapabilitiesSysTtyCnofigArgs =
-      module_index.DomainFeaturesCapabilitiesSysTtyCnofig.new;
-  final DomainFeaturesCapabilitiesWakeAlarm =
-      module_index.DomainFeaturesCapabilitiesWakeAlarm.new;
-  final DomainFeaturesCapabilitiesWakeAlarmArgs =
-      module_index.DomainFeaturesCapabilitiesWakeAlarm.new;
+  final DomainFeaturesAsyncTeardown = module_index.DomainFeaturesAsyncTeardown.new;
+  final DomainFeaturesAsyncTeardownArgs = module_index.DomainFeaturesAsyncTeardown.new;
+  final DomainFeaturesCapabilities = module_index.DomainFeaturesCapabilities.new;
+  final DomainFeaturesCapabilitiesArgs = module_index.DomainFeaturesCapabilities.new;
+  final DomainFeaturesCapabilitiesAuditControl = module_index.DomainFeaturesCapabilitiesAuditControl.new;
+  final DomainFeaturesCapabilitiesAuditControlArgs = module_index.DomainFeaturesCapabilitiesAuditControl.new;
+  final DomainFeaturesCapabilitiesAuditWrite = module_index.DomainFeaturesCapabilitiesAuditWrite.new;
+  final DomainFeaturesCapabilitiesAuditWriteArgs = module_index.DomainFeaturesCapabilitiesAuditWrite.new;
+  final DomainFeaturesCapabilitiesBlockSuspend = module_index.DomainFeaturesCapabilitiesBlockSuspend.new;
+  final DomainFeaturesCapabilitiesBlockSuspendArgs = module_index.DomainFeaturesCapabilitiesBlockSuspend.new;
+  final DomainFeaturesCapabilitiesChown = module_index.DomainFeaturesCapabilitiesChown.new;
+  final DomainFeaturesCapabilitiesChownArgs = module_index.DomainFeaturesCapabilitiesChown.new;
+  final DomainFeaturesCapabilitiesDacOverride = module_index.DomainFeaturesCapabilitiesDacOverride.new;
+  final DomainFeaturesCapabilitiesDacOverrideArgs = module_index.DomainFeaturesCapabilitiesDacOverride.new;
+  final DomainFeaturesCapabilitiesDacReadSearch = module_index.DomainFeaturesCapabilitiesDacReadSearch.new;
+  final DomainFeaturesCapabilitiesDacReadSearchArgs = module_index.DomainFeaturesCapabilitiesDacReadSearch.new;
+  final DomainFeaturesCapabilitiesFowner = module_index.DomainFeaturesCapabilitiesFowner.new;
+  final DomainFeaturesCapabilitiesFownerArgs = module_index.DomainFeaturesCapabilitiesFowner.new;
+  final DomainFeaturesCapabilitiesFsetId = module_index.DomainFeaturesCapabilitiesFsetId.new;
+  final DomainFeaturesCapabilitiesFsetIdArgs = module_index.DomainFeaturesCapabilitiesFsetId.new;
+  final DomainFeaturesCapabilitiesIpcLock = module_index.DomainFeaturesCapabilitiesIpcLock.new;
+  final DomainFeaturesCapabilitiesIpcLockArgs = module_index.DomainFeaturesCapabilitiesIpcLock.new;
+  final DomainFeaturesCapabilitiesIpcOwner = module_index.DomainFeaturesCapabilitiesIpcOwner.new;
+  final DomainFeaturesCapabilitiesIpcOwnerArgs = module_index.DomainFeaturesCapabilitiesIpcOwner.new;
+  final DomainFeaturesCapabilitiesKill = module_index.DomainFeaturesCapabilitiesKill.new;
+  final DomainFeaturesCapabilitiesKillArgs = module_index.DomainFeaturesCapabilitiesKill.new;
+  final DomainFeaturesCapabilitiesLease = module_index.DomainFeaturesCapabilitiesLease.new;
+  final DomainFeaturesCapabilitiesLeaseArgs = module_index.DomainFeaturesCapabilitiesLease.new;
+  final DomainFeaturesCapabilitiesLinuxImmutable = module_index.DomainFeaturesCapabilitiesLinuxImmutable.new;
+  final DomainFeaturesCapabilitiesLinuxImmutableArgs = module_index.DomainFeaturesCapabilitiesLinuxImmutable.new;
+  final DomainFeaturesCapabilitiesMacAdmin = module_index.DomainFeaturesCapabilitiesMacAdmin.new;
+  final DomainFeaturesCapabilitiesMacAdminArgs = module_index.DomainFeaturesCapabilitiesMacAdmin.new;
+  final DomainFeaturesCapabilitiesMacOverride = module_index.DomainFeaturesCapabilitiesMacOverride.new;
+  final DomainFeaturesCapabilitiesMacOverrideArgs = module_index.DomainFeaturesCapabilitiesMacOverride.new;
+  final DomainFeaturesCapabilitiesMkNod = module_index.DomainFeaturesCapabilitiesMkNod.new;
+  final DomainFeaturesCapabilitiesMkNodArgs = module_index.DomainFeaturesCapabilitiesMkNod.new;
+  final DomainFeaturesCapabilitiesNetAdmin = module_index.DomainFeaturesCapabilitiesNetAdmin.new;
+  final DomainFeaturesCapabilitiesNetAdminArgs = module_index.DomainFeaturesCapabilitiesNetAdmin.new;
+  final DomainFeaturesCapabilitiesNetBindService = module_index.DomainFeaturesCapabilitiesNetBindService.new;
+  final DomainFeaturesCapabilitiesNetBindServiceArgs = module_index.DomainFeaturesCapabilitiesNetBindService.new;
+  final DomainFeaturesCapabilitiesNetBroadcast = module_index.DomainFeaturesCapabilitiesNetBroadcast.new;
+  final DomainFeaturesCapabilitiesNetBroadcastArgs = module_index.DomainFeaturesCapabilitiesNetBroadcast.new;
+  final DomainFeaturesCapabilitiesNetRaw = module_index.DomainFeaturesCapabilitiesNetRaw.new;
+  final DomainFeaturesCapabilitiesNetRawArgs = module_index.DomainFeaturesCapabilitiesNetRaw.new;
+  final DomainFeaturesCapabilitiesSetFCap = module_index.DomainFeaturesCapabilitiesSetFCap.new;
+  final DomainFeaturesCapabilitiesSetFCapArgs = module_index.DomainFeaturesCapabilitiesSetFCap.new;
+  final DomainFeaturesCapabilitiesSetGid = module_index.DomainFeaturesCapabilitiesSetGid.new;
+  final DomainFeaturesCapabilitiesSetGidArgs = module_index.DomainFeaturesCapabilitiesSetGid.new;
+  final DomainFeaturesCapabilitiesSetPCap = module_index.DomainFeaturesCapabilitiesSetPCap.new;
+  final DomainFeaturesCapabilitiesSetPCapArgs = module_index.DomainFeaturesCapabilitiesSetPCap.new;
+  final DomainFeaturesCapabilitiesSetUid = module_index.DomainFeaturesCapabilitiesSetUid.new;
+  final DomainFeaturesCapabilitiesSetUidArgs = module_index.DomainFeaturesCapabilitiesSetUid.new;
+  final DomainFeaturesCapabilitiesSysAdmin = module_index.DomainFeaturesCapabilitiesSysAdmin.new;
+  final DomainFeaturesCapabilitiesSysAdminArgs = module_index.DomainFeaturesCapabilitiesSysAdmin.new;
+  final DomainFeaturesCapabilitiesSysBoot = module_index.DomainFeaturesCapabilitiesSysBoot.new;
+  final DomainFeaturesCapabilitiesSysBootArgs = module_index.DomainFeaturesCapabilitiesSysBoot.new;
+  final DomainFeaturesCapabilitiesSysChRoot = module_index.DomainFeaturesCapabilitiesSysChRoot.new;
+  final DomainFeaturesCapabilitiesSysChRootArgs = module_index.DomainFeaturesCapabilitiesSysChRoot.new;
+  final DomainFeaturesCapabilitiesSysLog = module_index.DomainFeaturesCapabilitiesSysLog.new;
+  final DomainFeaturesCapabilitiesSysLogArgs = module_index.DomainFeaturesCapabilitiesSysLog.new;
+  final DomainFeaturesCapabilitiesSysModule = module_index.DomainFeaturesCapabilitiesSysModule.new;
+  final DomainFeaturesCapabilitiesSysModuleArgs = module_index.DomainFeaturesCapabilitiesSysModule.new;
+  final DomainFeaturesCapabilitiesSysNice = module_index.DomainFeaturesCapabilitiesSysNice.new;
+  final DomainFeaturesCapabilitiesSysNiceArgs = module_index.DomainFeaturesCapabilitiesSysNice.new;
+  final DomainFeaturesCapabilitiesSysPAcct = module_index.DomainFeaturesCapabilitiesSysPAcct.new;
+  final DomainFeaturesCapabilitiesSysPAcctArgs = module_index.DomainFeaturesCapabilitiesSysPAcct.new;
+  final DomainFeaturesCapabilitiesSysPTrace = module_index.DomainFeaturesCapabilitiesSysPTrace.new;
+  final DomainFeaturesCapabilitiesSysPTraceArgs = module_index.DomainFeaturesCapabilitiesSysPTrace.new;
+  final DomainFeaturesCapabilitiesSysRawIo = module_index.DomainFeaturesCapabilitiesSysRawIo.new;
+  final DomainFeaturesCapabilitiesSysRawIoArgs = module_index.DomainFeaturesCapabilitiesSysRawIo.new;
+  final DomainFeaturesCapabilitiesSysResource = module_index.DomainFeaturesCapabilitiesSysResource.new;
+  final DomainFeaturesCapabilitiesSysResourceArgs = module_index.DomainFeaturesCapabilitiesSysResource.new;
+  final DomainFeaturesCapabilitiesSysTime = module_index.DomainFeaturesCapabilitiesSysTime.new;
+  final DomainFeaturesCapabilitiesSysTimeArgs = module_index.DomainFeaturesCapabilitiesSysTime.new;
+  final DomainFeaturesCapabilitiesSysTtyCnofig = module_index.DomainFeaturesCapabilitiesSysTtyCnofig.new;
+  final DomainFeaturesCapabilitiesSysTtyCnofigArgs = module_index.DomainFeaturesCapabilitiesSysTtyCnofig.new;
+  final DomainFeaturesCapabilitiesWakeAlarm = module_index.DomainFeaturesCapabilitiesWakeAlarm.new;
+  final DomainFeaturesCapabilitiesWakeAlarmArgs = module_index.DomainFeaturesCapabilitiesWakeAlarm.new;
   final DomainFeaturesCcfAssist = module_index.DomainFeaturesCcfAssist.new;
   final DomainFeaturesCcfAssistArgs = module_index.DomainFeaturesCcfAssist.new;
   final DomainFeaturesCfpc = module_index.DomainFeaturesCfpc.new;
@@ -3854,98 +1919,59 @@ class _IndexModuleNamespace {
   final DomainFeaturesHyperV = module_index.DomainFeaturesHyperV.new;
   final DomainFeaturesHyperVArgs = module_index.DomainFeaturesHyperV.new;
   final DomainFeaturesHyperVAvic = module_index.DomainFeaturesHyperVAvic.new;
-  final DomainFeaturesHyperVAvicArgs =
-      module_index.DomainFeaturesHyperVAvic.new;
-  final DomainFeaturesHyperVEmsrBitmap =
-      module_index.DomainFeaturesHyperVEmsrBitmap.new;
-  final DomainFeaturesHyperVEmsrBitmapArgs =
-      module_index.DomainFeaturesHyperVEmsrBitmap.new;
+  final DomainFeaturesHyperVAvicArgs = module_index.DomainFeaturesHyperVAvic.new;
+  final DomainFeaturesHyperVEmsrBitmap = module_index.DomainFeaturesHyperVEmsrBitmap.new;
+  final DomainFeaturesHyperVEmsrBitmapArgs = module_index.DomainFeaturesHyperVEmsrBitmap.new;
   final DomainFeaturesHyperVEvmcs = module_index.DomainFeaturesHyperVEvmcs.new;
-  final DomainFeaturesHyperVEvmcsArgs =
-      module_index.DomainFeaturesHyperVEvmcs.new;
-  final DomainFeaturesHyperVFrequencies =
-      module_index.DomainFeaturesHyperVFrequencies.new;
-  final DomainFeaturesHyperVFrequenciesArgs =
-      module_index.DomainFeaturesHyperVFrequencies.new;
+  final DomainFeaturesHyperVEvmcsArgs = module_index.DomainFeaturesHyperVEvmcs.new;
+  final DomainFeaturesHyperVFrequencies = module_index.DomainFeaturesHyperVFrequencies.new;
+  final DomainFeaturesHyperVFrequenciesArgs = module_index.DomainFeaturesHyperVFrequencies.new;
   final DomainFeaturesHyperVIpi = module_index.DomainFeaturesHyperVIpi.new;
   final DomainFeaturesHyperVIpiArgs = module_index.DomainFeaturesHyperVIpi.new;
-  final DomainFeaturesHyperVReEnlightenment =
-      module_index.DomainFeaturesHyperVReEnlightenment.new;
-  final DomainFeaturesHyperVReEnlightenmentArgs =
-      module_index.DomainFeaturesHyperVReEnlightenment.new;
-  final DomainFeaturesHyperVRelaxed =
-      module_index.DomainFeaturesHyperVRelaxed.new;
-  final DomainFeaturesHyperVRelaxedArgs =
-      module_index.DomainFeaturesHyperVRelaxed.new;
+  final DomainFeaturesHyperVReEnlightenment = module_index.DomainFeaturesHyperVReEnlightenment.new;
+  final DomainFeaturesHyperVReEnlightenmentArgs = module_index.DomainFeaturesHyperVReEnlightenment.new;
+  final DomainFeaturesHyperVRelaxed = module_index.DomainFeaturesHyperVRelaxed.new;
+  final DomainFeaturesHyperVRelaxedArgs = module_index.DomainFeaturesHyperVRelaxed.new;
   final DomainFeaturesHyperVReset = module_index.DomainFeaturesHyperVReset.new;
-  final DomainFeaturesHyperVResetArgs =
-      module_index.DomainFeaturesHyperVReset.new;
-  final DomainFeaturesHyperVRuntime =
-      module_index.DomainFeaturesHyperVRuntime.new;
-  final DomainFeaturesHyperVRuntimeArgs =
-      module_index.DomainFeaturesHyperVRuntime.new;
-  final DomainFeaturesHyperVSpinlocks =
-      module_index.DomainFeaturesHyperVSpinlocks.new;
-  final DomainFeaturesHyperVSpinlocksArgs =
-      module_index.DomainFeaturesHyperVSpinlocks.new;
-  final DomainFeaturesHyperVStimer =
-      module_index.DomainFeaturesHyperVStimer.new;
-  final DomainFeaturesHyperVStimerArgs =
-      module_index.DomainFeaturesHyperVStimer.new;
-  final DomainFeaturesHyperVStimerDirect =
-      module_index.DomainFeaturesHyperVStimerDirect.new;
-  final DomainFeaturesHyperVStimerDirectArgs =
-      module_index.DomainFeaturesHyperVStimerDirect.new;
+  final DomainFeaturesHyperVResetArgs = module_index.DomainFeaturesHyperVReset.new;
+  final DomainFeaturesHyperVRuntime = module_index.DomainFeaturesHyperVRuntime.new;
+  final DomainFeaturesHyperVRuntimeArgs = module_index.DomainFeaturesHyperVRuntime.new;
+  final DomainFeaturesHyperVSpinlocks = module_index.DomainFeaturesHyperVSpinlocks.new;
+  final DomainFeaturesHyperVSpinlocksArgs = module_index.DomainFeaturesHyperVSpinlocks.new;
+  final DomainFeaturesHyperVStimer = module_index.DomainFeaturesHyperVStimer.new;
+  final DomainFeaturesHyperVStimerArgs = module_index.DomainFeaturesHyperVStimer.new;
+  final DomainFeaturesHyperVStimerDirect = module_index.DomainFeaturesHyperVStimerDirect.new;
+  final DomainFeaturesHyperVStimerDirectArgs = module_index.DomainFeaturesHyperVStimerDirect.new;
   final DomainFeaturesHyperVSynic = module_index.DomainFeaturesHyperVSynic.new;
-  final DomainFeaturesHyperVSynicArgs =
-      module_index.DomainFeaturesHyperVSynic.new;
-  final DomainFeaturesHyperVTlbFlush =
-      module_index.DomainFeaturesHyperVTlbFlush.new;
-  final DomainFeaturesHyperVTlbFlushArgs =
-      module_index.DomainFeaturesHyperVTlbFlush.new;
-  final DomainFeaturesHyperVTlbFlushDirect =
-      module_index.DomainFeaturesHyperVTlbFlushDirect.new;
-  final DomainFeaturesHyperVTlbFlushDirectArgs =
-      module_index.DomainFeaturesHyperVTlbFlushDirect.new;
-  final DomainFeaturesHyperVTlbFlushExtended =
-      module_index.DomainFeaturesHyperVTlbFlushExtended.new;
-  final DomainFeaturesHyperVTlbFlushExtendedArgs =
-      module_index.DomainFeaturesHyperVTlbFlushExtended.new;
+  final DomainFeaturesHyperVSynicArgs = module_index.DomainFeaturesHyperVSynic.new;
+  final DomainFeaturesHyperVTlbFlush = module_index.DomainFeaturesHyperVTlbFlush.new;
+  final DomainFeaturesHyperVTlbFlushArgs = module_index.DomainFeaturesHyperVTlbFlush.new;
+  final DomainFeaturesHyperVTlbFlushDirect = module_index.DomainFeaturesHyperVTlbFlushDirect.new;
+  final DomainFeaturesHyperVTlbFlushDirectArgs = module_index.DomainFeaturesHyperVTlbFlushDirect.new;
+  final DomainFeaturesHyperVTlbFlushExtended = module_index.DomainFeaturesHyperVTlbFlushExtended.new;
+  final DomainFeaturesHyperVTlbFlushExtendedArgs = module_index.DomainFeaturesHyperVTlbFlushExtended.new;
   final DomainFeaturesHyperVVapic = module_index.DomainFeaturesHyperVVapic.new;
-  final DomainFeaturesHyperVVapicArgs =
-      module_index.DomainFeaturesHyperVVapic.new;
-  final DomainFeaturesHyperVVendorId =
-      module_index.DomainFeaturesHyperVVendorId.new;
-  final DomainFeaturesHyperVVendorIdArgs =
-      module_index.DomainFeaturesHyperVVendorId.new;
-  final DomainFeaturesHyperVVpIndex =
-      module_index.DomainFeaturesHyperVVpIndex.new;
-  final DomainFeaturesHyperVVpIndexArgs =
-      module_index.DomainFeaturesHyperVVpIndex.new;
-  final DomainFeaturesHyperVXmmInput =
-      module_index.DomainFeaturesHyperVXmmInput.new;
-  final DomainFeaturesHyperVXmmInputArgs =
-      module_index.DomainFeaturesHyperVXmmInput.new;
+  final DomainFeaturesHyperVVapicArgs = module_index.DomainFeaturesHyperVVapic.new;
+  final DomainFeaturesHyperVVendorId = module_index.DomainFeaturesHyperVVendorId.new;
+  final DomainFeaturesHyperVVendorIdArgs = module_index.DomainFeaturesHyperVVendorId.new;
+  final DomainFeaturesHyperVVpIndex = module_index.DomainFeaturesHyperVVpIndex.new;
+  final DomainFeaturesHyperVVpIndexArgs = module_index.DomainFeaturesHyperVVpIndex.new;
+  final DomainFeaturesHyperVXmmInput = module_index.DomainFeaturesHyperVXmmInput.new;
+  final DomainFeaturesHyperVXmmInputArgs = module_index.DomainFeaturesHyperVXmmInput.new;
   final DomainFeaturesIbs = module_index.DomainFeaturesIbs.new;
   final DomainFeaturesIbsArgs = module_index.DomainFeaturesIbs.new;
   final DomainFeaturesIoapic = module_index.DomainFeaturesIoapic.new;
   final DomainFeaturesIoapicArgs = module_index.DomainFeaturesIoapic.new;
   final DomainFeaturesKvm = module_index.DomainFeaturesKvm.new;
   final DomainFeaturesKvmArgs = module_index.DomainFeaturesKvm.new;
-  final DomainFeaturesKvmDirtyRing =
-      module_index.DomainFeaturesKvmDirtyRing.new;
-  final DomainFeaturesKvmDirtyRingArgs =
-      module_index.DomainFeaturesKvmDirtyRing.new;
+  final DomainFeaturesKvmDirtyRing = module_index.DomainFeaturesKvmDirtyRing.new;
+  final DomainFeaturesKvmDirtyRingArgs = module_index.DomainFeaturesKvmDirtyRing.new;
   final DomainFeaturesKvmHidden = module_index.DomainFeaturesKvmHidden.new;
   final DomainFeaturesKvmHiddenArgs = module_index.DomainFeaturesKvmHidden.new;
-  final DomainFeaturesKvmHintDedicated =
-      module_index.DomainFeaturesKvmHintDedicated.new;
-  final DomainFeaturesKvmHintDedicatedArgs =
-      module_index.DomainFeaturesKvmHintDedicated.new;
-  final DomainFeaturesKvmPollControl =
-      module_index.DomainFeaturesKvmPollControl.new;
-  final DomainFeaturesKvmPollControlArgs =
-      module_index.DomainFeaturesKvmPollControl.new;
+  final DomainFeaturesKvmHintDedicated = module_index.DomainFeaturesKvmHintDedicated.new;
+  final DomainFeaturesKvmHintDedicatedArgs = module_index.DomainFeaturesKvmHintDedicated.new;
+  final DomainFeaturesKvmPollControl = module_index.DomainFeaturesKvmPollControl.new;
+  final DomainFeaturesKvmPollControlArgs = module_index.DomainFeaturesKvmPollControl.new;
   final DomainFeaturesKvmPvipi = module_index.DomainFeaturesKvmPvipi.new;
   final DomainFeaturesKvmPvipiArgs = module_index.DomainFeaturesKvmPvipi.new;
   final DomainFeaturesMsrs = module_index.DomainFeaturesMsrs.new;
@@ -3957,8 +1983,7 @@ class _IndexModuleNamespace {
   final DomainFeaturesPs2 = module_index.DomainFeaturesPs2.new;
   final DomainFeaturesPs2Args = module_index.DomainFeaturesPs2.new;
   final DomainFeaturesPvSpinlock = module_index.DomainFeaturesPvSpinlock.new;
-  final DomainFeaturesPvSpinlockArgs =
-      module_index.DomainFeaturesPvSpinlock.new;
+  final DomainFeaturesPvSpinlockArgs = module_index.DomainFeaturesPvSpinlock.new;
   final DomainFeaturesRas = module_index.DomainFeaturesRas.new;
   final DomainFeaturesRasArgs = module_index.DomainFeaturesRas.new;
   final DomainFeaturesSbbc = module_index.DomainFeaturesSbbc.new;
@@ -3968,19 +1993,15 @@ class _IndexModuleNamespace {
   final DomainFeaturesTcg = module_index.DomainFeaturesTcg.new;
   final DomainFeaturesTcgArgs = module_index.DomainFeaturesTcg.new;
   final DomainFeaturesVmCoreInfo = module_index.DomainFeaturesVmCoreInfo.new;
-  final DomainFeaturesVmCoreInfoArgs =
-      module_index.DomainFeaturesVmCoreInfo.new;
+  final DomainFeaturesVmCoreInfoArgs = module_index.DomainFeaturesVmCoreInfo.new;
   final DomainFeaturesVmPort = module_index.DomainFeaturesVmPort.new;
   final DomainFeaturesVmPortArgs = module_index.DomainFeaturesVmPort.new;
   final DomainFeaturesXen = module_index.DomainFeaturesXen.new;
   final DomainFeaturesXenArgs = module_index.DomainFeaturesXen.new;
   final DomainFeaturesXenE820host = module_index.DomainFeaturesXenE820host.new;
-  final DomainFeaturesXenE820hostArgs =
-      module_index.DomainFeaturesXenE820host.new;
-  final DomainFeaturesXenPassthrough =
-      module_index.DomainFeaturesXenPassthrough.new;
-  final DomainFeaturesXenPassthroughArgs =
-      module_index.DomainFeaturesXenPassthrough.new;
+  final DomainFeaturesXenE820hostArgs = module_index.DomainFeaturesXenE820host.new;
+  final DomainFeaturesXenPassthrough = module_index.DomainFeaturesXenPassthrough.new;
+  final DomainFeaturesXenPassthroughArgs = module_index.DomainFeaturesXenPassthrough.new;
   final DomainIdMap = module_index.DomainIdMap.new;
   final DomainIdMapArgs = module_index.DomainIdMap.new;
   final DomainIdMapGiD = module_index.DomainIdMapGiD.new;
@@ -3990,12 +2011,9 @@ class _IndexModuleNamespace {
   final DomainIoThreadIDs = module_index.DomainIoThreadIDs.new;
   final DomainIoThreadIDsArgs = module_index.DomainIoThreadIDs.new;
   final DomainIoThreadIDsIoThread = module_index.DomainIoThreadIDsIoThread.new;
-  final DomainIoThreadIDsIoThreadArgs =
-      module_index.DomainIoThreadIDsIoThread.new;
-  final DomainIoThreadIDsIoThreadPoll =
-      module_index.DomainIoThreadIDsIoThreadPoll.new;
-  final DomainIoThreadIDsIoThreadPollArgs =
-      module_index.DomainIoThreadIDsIoThreadPoll.new;
+  final DomainIoThreadIDsIoThreadArgs = module_index.DomainIoThreadIDsIoThread.new;
+  final DomainIoThreadIDsIoThreadPoll = module_index.DomainIoThreadIDsIoThreadPoll.new;
+  final DomainIoThreadIDsIoThreadPollArgs = module_index.DomainIoThreadIDsIoThreadPoll.new;
   final DomainKeyWrap = module_index.DomainKeyWrap.new;
   final DomainKeyWrapArgs = module_index.DomainKeyWrap.new;
   final DomainKeyWrapCipher = module_index.DomainKeyWrapCipher.new;
@@ -4004,38 +2022,24 @@ class _IndexModuleNamespace {
   final DomainLaunchSecurityArgs = module_index.DomainLaunchSecurity.new;
   final DomainLaunchSecuritySev = module_index.DomainLaunchSecuritySev.new;
   final DomainLaunchSecuritySevArgs = module_index.DomainLaunchSecuritySev.new;
-  final DomainLaunchSecuritySevsnp =
-      module_index.DomainLaunchSecuritySevsnp.new;
-  final DomainLaunchSecuritySevsnpArgs =
-      module_index.DomainLaunchSecuritySevsnp.new;
+  final DomainLaunchSecuritySevsnp = module_index.DomainLaunchSecuritySevsnp.new;
+  final DomainLaunchSecuritySevsnpArgs = module_index.DomainLaunchSecuritySevsnp.new;
   final DomainLaunchSecurityTdx = module_index.DomainLaunchSecurityTdx.new;
   final DomainLaunchSecurityTdxArgs = module_index.DomainLaunchSecurityTdx.new;
-  final DomainLaunchSecurityTdxQuoteGenerationService =
-      module_index.DomainLaunchSecurityTdxQuoteGenerationService.new;
-  final DomainLaunchSecurityTdxQuoteGenerationServiceArgs =
-      module_index.DomainLaunchSecurityTdxQuoteGenerationService.new;
+  final DomainLaunchSecurityTdxQuoteGenerationService = module_index.DomainLaunchSecurityTdxQuoteGenerationService.new;
+  final DomainLaunchSecurityTdxQuoteGenerationServiceArgs = module_index.DomainLaunchSecurityTdxQuoteGenerationService.new;
   final DomainMemoryBacking = module_index.DomainMemoryBacking.new;
   final DomainMemoryBackingArgs = module_index.DomainMemoryBacking.new;
-  final DomainMemoryBackingMemoryAccess =
-      module_index.DomainMemoryBackingMemoryAccess.new;
-  final DomainMemoryBackingMemoryAccessArgs =
-      module_index.DomainMemoryBackingMemoryAccess.new;
-  final DomainMemoryBackingMemoryAllocation =
-      module_index.DomainMemoryBackingMemoryAllocation.new;
-  final DomainMemoryBackingMemoryAllocationArgs =
-      module_index.DomainMemoryBackingMemoryAllocation.new;
-  final DomainMemoryBackingMemoryHugePages =
-      module_index.DomainMemoryBackingMemoryHugePages.new;
-  final DomainMemoryBackingMemoryHugePagesArgs =
-      module_index.DomainMemoryBackingMemoryHugePages.new;
-  final DomainMemoryBackingMemoryHugePagesHugepage =
-      module_index.DomainMemoryBackingMemoryHugePagesHugepage.new;
-  final DomainMemoryBackingMemoryHugePagesHugepageArgs =
-      module_index.DomainMemoryBackingMemoryHugePagesHugepage.new;
-  final DomainMemoryBackingMemorySource =
-      module_index.DomainMemoryBackingMemorySource.new;
-  final DomainMemoryBackingMemorySourceArgs =
-      module_index.DomainMemoryBackingMemorySource.new;
+  final DomainMemoryBackingMemoryAccess = module_index.DomainMemoryBackingMemoryAccess.new;
+  final DomainMemoryBackingMemoryAccessArgs = module_index.DomainMemoryBackingMemoryAccess.new;
+  final DomainMemoryBackingMemoryAllocation = module_index.DomainMemoryBackingMemoryAllocation.new;
+  final DomainMemoryBackingMemoryAllocationArgs = module_index.DomainMemoryBackingMemoryAllocation.new;
+  final DomainMemoryBackingMemoryHugePages = module_index.DomainMemoryBackingMemoryHugePages.new;
+  final DomainMemoryBackingMemoryHugePagesArgs = module_index.DomainMemoryBackingMemoryHugePages.new;
+  final DomainMemoryBackingMemoryHugePagesHugepage = module_index.DomainMemoryBackingMemoryHugePagesHugepage.new;
+  final DomainMemoryBackingMemoryHugePagesHugepageArgs = module_index.DomainMemoryBackingMemoryHugePagesHugepage.new;
+  final DomainMemoryBackingMemorySource = module_index.DomainMemoryBackingMemorySource.new;
+  final DomainMemoryBackingMemorySourceArgs = module_index.DomainMemoryBackingMemorySource.new;
   final DomainMemoryTune = module_index.DomainMemoryTune.new;
   final DomainMemoryTuneArgs = module_index.DomainMemoryTune.new;
   final DomainMetadata = module_index.DomainMetadata.new;
@@ -4060,10 +2064,8 @@ class _IndexModuleNamespace {
   final DomainOsBootMenuArgs = module_index.DomainOsBootMenu.new;
   final DomainOsFirmwareInfo = module_index.DomainOsFirmwareInfo.new;
   final DomainOsFirmwareInfoArgs = module_index.DomainOsFirmwareInfo.new;
-  final DomainOsFirmwareInfoFeature =
-      module_index.DomainOsFirmwareInfoFeature.new;
-  final DomainOsFirmwareInfoFeatureArgs =
-      module_index.DomainOsFirmwareInfoFeature.new;
+  final DomainOsFirmwareInfoFeature = module_index.DomainOsFirmwareInfoFeature.new;
+  final DomainOsFirmwareInfoFeatureArgs = module_index.DomainOsFirmwareInfoFeature.new;
   final DomainOsInitEnv = module_index.DomainOsInitEnv.new;
   final DomainOsInitEnvArgs = module_index.DomainOsInitEnv.new;
   final DomainOsNvRam = module_index.DomainOsNvRam.new;
@@ -4071,299 +2073,155 @@ class _IndexModuleNamespace {
   final DomainOsNvRamSource = module_index.DomainOsNvRamSource.new;
   final DomainOsNvRamSourceArgs = module_index.DomainOsNvRamSource.new;
   final DomainOsNvRamSourceBlock = module_index.DomainOsNvRamSourceBlock.new;
-  final DomainOsNvRamSourceBlockArgs =
-      module_index.DomainOsNvRamSourceBlock.new;
-  final DomainOsNvRamSourceBlockSecLabel =
-      module_index.DomainOsNvRamSourceBlockSecLabel.new;
-  final DomainOsNvRamSourceBlockSecLabelArgs =
-      module_index.DomainOsNvRamSourceBlockSecLabel.new;
-  final DomainOsNvRamSourceCookies =
-      module_index.DomainOsNvRamSourceCookies.new;
-  final DomainOsNvRamSourceCookiesArgs =
-      module_index.DomainOsNvRamSourceCookies.new;
-  final DomainOsNvRamSourceCookiesCookie =
-      module_index.DomainOsNvRamSourceCookiesCookie.new;
-  final DomainOsNvRamSourceCookiesCookieArgs =
-      module_index.DomainOsNvRamSourceCookiesCookie.new;
-  final DomainOsNvRamSourceDataStore =
-      module_index.DomainOsNvRamSourceDataStore.new;
-  final DomainOsNvRamSourceDataStoreArgs =
-      module_index.DomainOsNvRamSourceDataStore.new;
-  final DomainOsNvRamSourceDataStoreFormat =
-      module_index.DomainOsNvRamSourceDataStoreFormat.new;
-  final DomainOsNvRamSourceDataStoreFormatArgs =
-      module_index.DomainOsNvRamSourceDataStoreFormat.new;
-  final DomainOsNvRamSourceDataStoreFormatMetadataCache =
-      module_index.DomainOsNvRamSourceDataStoreFormatMetadataCache.new;
-  final DomainOsNvRamSourceDataStoreFormatMetadataCacheArgs =
-      module_index.DomainOsNvRamSourceDataStoreFormatMetadataCache.new;
-  final DomainOsNvRamSourceDataStoreFormatMetadataCacheMaxSize =
-      module_index.DomainOsNvRamSourceDataStoreFormatMetadataCacheMaxSize.new;
-  final DomainOsNvRamSourceDataStoreFormatMetadataCacheMaxSizeArgs =
-      module_index.DomainOsNvRamSourceDataStoreFormatMetadataCacheMaxSize.new;
+  final DomainOsNvRamSourceBlockArgs = module_index.DomainOsNvRamSourceBlock.new;
+  final DomainOsNvRamSourceBlockSecLabel = module_index.DomainOsNvRamSourceBlockSecLabel.new;
+  final DomainOsNvRamSourceBlockSecLabelArgs = module_index.DomainOsNvRamSourceBlockSecLabel.new;
+  final DomainOsNvRamSourceCookies = module_index.DomainOsNvRamSourceCookies.new;
+  final DomainOsNvRamSourceCookiesArgs = module_index.DomainOsNvRamSourceCookies.new;
+  final DomainOsNvRamSourceCookiesCookie = module_index.DomainOsNvRamSourceCookiesCookie.new;
+  final DomainOsNvRamSourceCookiesCookieArgs = module_index.DomainOsNvRamSourceCookiesCookie.new;
+  final DomainOsNvRamSourceDataStore = module_index.DomainOsNvRamSourceDataStore.new;
+  final DomainOsNvRamSourceDataStoreArgs = module_index.DomainOsNvRamSourceDataStore.new;
+  final DomainOsNvRamSourceDataStoreFormat = module_index.DomainOsNvRamSourceDataStoreFormat.new;
+  final DomainOsNvRamSourceDataStoreFormatArgs = module_index.DomainOsNvRamSourceDataStoreFormat.new;
+  final DomainOsNvRamSourceDataStoreFormatMetadataCache = module_index.DomainOsNvRamSourceDataStoreFormatMetadataCache.new;
+  final DomainOsNvRamSourceDataStoreFormatMetadataCacheArgs = module_index.DomainOsNvRamSourceDataStoreFormatMetadataCache.new;
+  final DomainOsNvRamSourceDataStoreFormatMetadataCacheMaxSize = module_index.DomainOsNvRamSourceDataStoreFormatMetadataCacheMaxSize.new;
+  final DomainOsNvRamSourceDataStoreFormatMetadataCacheMaxSizeArgs = module_index.DomainOsNvRamSourceDataStoreFormatMetadataCacheMaxSize.new;
   final DomainOsNvRamSourceDir = module_index.DomainOsNvRamSourceDir.new;
   final DomainOsNvRamSourceDirArgs = module_index.DomainOsNvRamSourceDir.new;
-  final DomainOsNvRamSourceEncryption =
-      module_index.DomainOsNvRamSourceEncryption.new;
-  final DomainOsNvRamSourceEncryptionArgs =
-      module_index.DomainOsNvRamSourceEncryption.new;
-  final DomainOsNvRamSourceEncryptionSecret =
-      module_index.DomainOsNvRamSourceEncryptionSecret.new;
-  final DomainOsNvRamSourceEncryptionSecretArgs =
-      module_index.DomainOsNvRamSourceEncryptionSecret.new;
+  final DomainOsNvRamSourceEncryption = module_index.DomainOsNvRamSourceEncryption.new;
+  final DomainOsNvRamSourceEncryptionArgs = module_index.DomainOsNvRamSourceEncryption.new;
+  final DomainOsNvRamSourceEncryptionSecret = module_index.DomainOsNvRamSourceEncryptionSecret.new;
+  final DomainOsNvRamSourceEncryptionSecretArgs = module_index.DomainOsNvRamSourceEncryptionSecret.new;
   final DomainOsNvRamSourceFile = module_index.DomainOsNvRamSourceFile.new;
   final DomainOsNvRamSourceFileArgs = module_index.DomainOsNvRamSourceFile.new;
-  final DomainOsNvRamSourceFileSecLabel =
-      module_index.DomainOsNvRamSourceFileSecLabel.new;
-  final DomainOsNvRamSourceFileSecLabelArgs =
-      module_index.DomainOsNvRamSourceFileSecLabel.new;
-  final DomainOsNvRamSourceNetwork =
-      module_index.DomainOsNvRamSourceNetwork.new;
-  final DomainOsNvRamSourceNetworkArgs =
-      module_index.DomainOsNvRamSourceNetwork.new;
-  final DomainOsNvRamSourceNetworkAuth =
-      module_index.DomainOsNvRamSourceNetworkAuth.new;
-  final DomainOsNvRamSourceNetworkAuthArgs =
-      module_index.DomainOsNvRamSourceNetworkAuth.new;
-  final DomainOsNvRamSourceNetworkAuthSecret =
-      module_index.DomainOsNvRamSourceNetworkAuthSecret.new;
-  final DomainOsNvRamSourceNetworkAuthSecretArgs =
-      module_index.DomainOsNvRamSourceNetworkAuthSecret.new;
-  final DomainOsNvRamSourceNetworkConfig =
-      module_index.DomainOsNvRamSourceNetworkConfig.new;
-  final DomainOsNvRamSourceNetworkConfigArgs =
-      module_index.DomainOsNvRamSourceNetworkConfig.new;
-  final DomainOsNvRamSourceNetworkHost =
-      module_index.DomainOsNvRamSourceNetworkHost.new;
-  final DomainOsNvRamSourceNetworkHostArgs =
-      module_index.DomainOsNvRamSourceNetworkHost.new;
-  final DomainOsNvRamSourceNetworkIdentity =
-      module_index.DomainOsNvRamSourceNetworkIdentity.new;
-  final DomainOsNvRamSourceNetworkIdentityArgs =
-      module_index.DomainOsNvRamSourceNetworkIdentity.new;
-  final DomainOsNvRamSourceNetworkInitiator =
-      module_index.DomainOsNvRamSourceNetworkInitiator.new;
-  final DomainOsNvRamSourceNetworkInitiatorArgs =
-      module_index.DomainOsNvRamSourceNetworkInitiator.new;
-  final DomainOsNvRamSourceNetworkInitiatorIqn =
-      module_index.DomainOsNvRamSourceNetworkInitiatorIqn.new;
-  final DomainOsNvRamSourceNetworkInitiatorIqnArgs =
-      module_index.DomainOsNvRamSourceNetworkInitiatorIqn.new;
-  final DomainOsNvRamSourceNetworkKnownHosts =
-      module_index.DomainOsNvRamSourceNetworkKnownHosts.new;
-  final DomainOsNvRamSourceNetworkKnownHostsArgs =
-      module_index.DomainOsNvRamSourceNetworkKnownHosts.new;
-  final DomainOsNvRamSourceNetworkReconnect =
-      module_index.DomainOsNvRamSourceNetworkReconnect.new;
-  final DomainOsNvRamSourceNetworkReconnectArgs =
-      module_index.DomainOsNvRamSourceNetworkReconnect.new;
-  final DomainOsNvRamSourceNetworkSnapshot =
-      module_index.DomainOsNvRamSourceNetworkSnapshot.new;
-  final DomainOsNvRamSourceNetworkSnapshotArgs =
-      module_index.DomainOsNvRamSourceNetworkSnapshot.new;
-  final DomainOsNvRamSourceReadahead =
-      module_index.DomainOsNvRamSourceReadahead.new;
-  final DomainOsNvRamSourceReadaheadArgs =
-      module_index.DomainOsNvRamSourceReadahead.new;
-  final DomainOsNvRamSourceReservations =
-      module_index.DomainOsNvRamSourceReservations.new;
-  final DomainOsNvRamSourceReservationsArgs =
-      module_index.DomainOsNvRamSourceReservations.new;
-  final DomainOsNvRamSourceReservationsSource =
-      module_index.DomainOsNvRamSourceReservationsSource.new;
-  final DomainOsNvRamSourceReservationsSourceArgs =
-      module_index.DomainOsNvRamSourceReservationsSource.new;
-  final DomainOsNvRamSourceReservationsSourceDbus =
-      module_index.DomainOsNvRamSourceReservationsSourceDbus.new;
-  final DomainOsNvRamSourceReservationsSourceDbusArgs =
-      module_index.DomainOsNvRamSourceReservationsSourceDbus.new;
-  final DomainOsNvRamSourceReservationsSourceDev =
-      module_index.DomainOsNvRamSourceReservationsSourceDev.new;
-  final DomainOsNvRamSourceReservationsSourceDevArgs =
-      module_index.DomainOsNvRamSourceReservationsSourceDev.new;
-  final DomainOsNvRamSourceReservationsSourceDevSecLabel =
-      module_index.DomainOsNvRamSourceReservationsSourceDevSecLabel.new;
-  final DomainOsNvRamSourceReservationsSourceDevSecLabelArgs =
-      module_index.DomainOsNvRamSourceReservationsSourceDevSecLabel.new;
-  final DomainOsNvRamSourceReservationsSourceFile =
-      module_index.DomainOsNvRamSourceReservationsSourceFile.new;
-  final DomainOsNvRamSourceReservationsSourceFileArgs =
-      module_index.DomainOsNvRamSourceReservationsSourceFile.new;
-  final DomainOsNvRamSourceReservationsSourceFileSecLabel =
-      module_index.DomainOsNvRamSourceReservationsSourceFileSecLabel.new;
-  final DomainOsNvRamSourceReservationsSourceFileSecLabelArgs =
-      module_index.DomainOsNvRamSourceReservationsSourceFileSecLabel.new;
-  final DomainOsNvRamSourceReservationsSourceNmdm =
-      module_index.DomainOsNvRamSourceReservationsSourceNmdm.new;
-  final DomainOsNvRamSourceReservationsSourceNmdmArgs =
-      module_index.DomainOsNvRamSourceReservationsSourceNmdm.new;
-  final DomainOsNvRamSourceReservationsSourcePipe =
-      module_index.DomainOsNvRamSourceReservationsSourcePipe.new;
-  final DomainOsNvRamSourceReservationsSourcePipeArgs =
-      module_index.DomainOsNvRamSourceReservationsSourcePipe.new;
-  final DomainOsNvRamSourceReservationsSourcePipeSecLabel =
-      module_index.DomainOsNvRamSourceReservationsSourcePipeSecLabel.new;
-  final DomainOsNvRamSourceReservationsSourcePipeSecLabelArgs =
-      module_index.DomainOsNvRamSourceReservationsSourcePipeSecLabel.new;
-  final DomainOsNvRamSourceReservationsSourcePty =
-      module_index.DomainOsNvRamSourceReservationsSourcePty.new;
-  final DomainOsNvRamSourceReservationsSourcePtyArgs =
-      module_index.DomainOsNvRamSourceReservationsSourcePty.new;
-  final DomainOsNvRamSourceReservationsSourcePtySecLabel =
-      module_index.DomainOsNvRamSourceReservationsSourcePtySecLabel.new;
-  final DomainOsNvRamSourceReservationsSourcePtySecLabelArgs =
-      module_index.DomainOsNvRamSourceReservationsSourcePtySecLabel.new;
-  final DomainOsNvRamSourceReservationsSourceQemuvdAgent =
-      module_index.DomainOsNvRamSourceReservationsSourceQemuvdAgent.new;
-  final DomainOsNvRamSourceReservationsSourceQemuvdAgentArgs =
-      module_index.DomainOsNvRamSourceReservationsSourceQemuvdAgent.new;
-  final DomainOsNvRamSourceReservationsSourceQemuvdAgentClipBoard = module_index
-      .DomainOsNvRamSourceReservationsSourceQemuvdAgentClipBoard
-      .new;
-  final DomainOsNvRamSourceReservationsSourceQemuvdAgentClipBoardArgs =
-      module_index
-          .DomainOsNvRamSourceReservationsSourceQemuvdAgentClipBoard
-          .new;
-  final DomainOsNvRamSourceReservationsSourceQemuvdAgentMouse =
-      module_index.DomainOsNvRamSourceReservationsSourceQemuvdAgentMouse.new;
-  final DomainOsNvRamSourceReservationsSourceQemuvdAgentMouseArgs =
-      module_index.DomainOsNvRamSourceReservationsSourceQemuvdAgentMouse.new;
-  final DomainOsNvRamSourceReservationsSourceSpicePort =
-      module_index.DomainOsNvRamSourceReservationsSourceSpicePort.new;
-  final DomainOsNvRamSourceReservationsSourceSpicePortArgs =
-      module_index.DomainOsNvRamSourceReservationsSourceSpicePort.new;
-  final DomainOsNvRamSourceReservationsSourceTcp =
-      module_index.DomainOsNvRamSourceReservationsSourceTcp.new;
-  final DomainOsNvRamSourceReservationsSourceTcpArgs =
-      module_index.DomainOsNvRamSourceReservationsSourceTcp.new;
-  final DomainOsNvRamSourceReservationsSourceTcpReconnect =
-      module_index.DomainOsNvRamSourceReservationsSourceTcpReconnect.new;
-  final DomainOsNvRamSourceReservationsSourceTcpReconnectArgs =
-      module_index.DomainOsNvRamSourceReservationsSourceTcpReconnect.new;
-  final DomainOsNvRamSourceReservationsSourceUdp =
-      module_index.DomainOsNvRamSourceReservationsSourceUdp.new;
-  final DomainOsNvRamSourceReservationsSourceUdpArgs =
-      module_index.DomainOsNvRamSourceReservationsSourceUdp.new;
-  final DomainOsNvRamSourceReservationsSourceUnix =
-      module_index.DomainOsNvRamSourceReservationsSourceUnix.new;
-  final DomainOsNvRamSourceReservationsSourceUnixArgs =
-      module_index.DomainOsNvRamSourceReservationsSourceUnix.new;
-  final DomainOsNvRamSourceReservationsSourceUnixReconnect =
-      module_index.DomainOsNvRamSourceReservationsSourceUnixReconnect.new;
-  final DomainOsNvRamSourceReservationsSourceUnixReconnectArgs =
-      module_index.DomainOsNvRamSourceReservationsSourceUnixReconnect.new;
-  final DomainOsNvRamSourceReservationsSourceUnixSecLabel =
-      module_index.DomainOsNvRamSourceReservationsSourceUnixSecLabel.new;
-  final DomainOsNvRamSourceReservationsSourceUnixSecLabelArgs =
-      module_index.DomainOsNvRamSourceReservationsSourceUnixSecLabel.new;
+  final DomainOsNvRamSourceFileSecLabel = module_index.DomainOsNvRamSourceFileSecLabel.new;
+  final DomainOsNvRamSourceFileSecLabelArgs = module_index.DomainOsNvRamSourceFileSecLabel.new;
+  final DomainOsNvRamSourceNetwork = module_index.DomainOsNvRamSourceNetwork.new;
+  final DomainOsNvRamSourceNetworkArgs = module_index.DomainOsNvRamSourceNetwork.new;
+  final DomainOsNvRamSourceNetworkAuth = module_index.DomainOsNvRamSourceNetworkAuth.new;
+  final DomainOsNvRamSourceNetworkAuthArgs = module_index.DomainOsNvRamSourceNetworkAuth.new;
+  final DomainOsNvRamSourceNetworkAuthSecret = module_index.DomainOsNvRamSourceNetworkAuthSecret.new;
+  final DomainOsNvRamSourceNetworkAuthSecretArgs = module_index.DomainOsNvRamSourceNetworkAuthSecret.new;
+  final DomainOsNvRamSourceNetworkConfig = module_index.DomainOsNvRamSourceNetworkConfig.new;
+  final DomainOsNvRamSourceNetworkConfigArgs = module_index.DomainOsNvRamSourceNetworkConfig.new;
+  final DomainOsNvRamSourceNetworkHost = module_index.DomainOsNvRamSourceNetworkHost.new;
+  final DomainOsNvRamSourceNetworkHostArgs = module_index.DomainOsNvRamSourceNetworkHost.new;
+  final DomainOsNvRamSourceNetworkIdentity = module_index.DomainOsNvRamSourceNetworkIdentity.new;
+  final DomainOsNvRamSourceNetworkIdentityArgs = module_index.DomainOsNvRamSourceNetworkIdentity.new;
+  final DomainOsNvRamSourceNetworkInitiator = module_index.DomainOsNvRamSourceNetworkInitiator.new;
+  final DomainOsNvRamSourceNetworkInitiatorArgs = module_index.DomainOsNvRamSourceNetworkInitiator.new;
+  final DomainOsNvRamSourceNetworkInitiatorIqn = module_index.DomainOsNvRamSourceNetworkInitiatorIqn.new;
+  final DomainOsNvRamSourceNetworkInitiatorIqnArgs = module_index.DomainOsNvRamSourceNetworkInitiatorIqn.new;
+  final DomainOsNvRamSourceNetworkKnownHosts = module_index.DomainOsNvRamSourceNetworkKnownHosts.new;
+  final DomainOsNvRamSourceNetworkKnownHostsArgs = module_index.DomainOsNvRamSourceNetworkKnownHosts.new;
+  final DomainOsNvRamSourceNetworkReconnect = module_index.DomainOsNvRamSourceNetworkReconnect.new;
+  final DomainOsNvRamSourceNetworkReconnectArgs = module_index.DomainOsNvRamSourceNetworkReconnect.new;
+  final DomainOsNvRamSourceNetworkSnapshot = module_index.DomainOsNvRamSourceNetworkSnapshot.new;
+  final DomainOsNvRamSourceNetworkSnapshotArgs = module_index.DomainOsNvRamSourceNetworkSnapshot.new;
+  final DomainOsNvRamSourceReadahead = module_index.DomainOsNvRamSourceReadahead.new;
+  final DomainOsNvRamSourceReadaheadArgs = module_index.DomainOsNvRamSourceReadahead.new;
+  final DomainOsNvRamSourceReservations = module_index.DomainOsNvRamSourceReservations.new;
+  final DomainOsNvRamSourceReservationsArgs = module_index.DomainOsNvRamSourceReservations.new;
+  final DomainOsNvRamSourceReservationsSource = module_index.DomainOsNvRamSourceReservationsSource.new;
+  final DomainOsNvRamSourceReservationsSourceArgs = module_index.DomainOsNvRamSourceReservationsSource.new;
+  final DomainOsNvRamSourceReservationsSourceDbus = module_index.DomainOsNvRamSourceReservationsSourceDbus.new;
+  final DomainOsNvRamSourceReservationsSourceDbusArgs = module_index.DomainOsNvRamSourceReservationsSourceDbus.new;
+  final DomainOsNvRamSourceReservationsSourceDev = module_index.DomainOsNvRamSourceReservationsSourceDev.new;
+  final DomainOsNvRamSourceReservationsSourceDevArgs = module_index.DomainOsNvRamSourceReservationsSourceDev.new;
+  final DomainOsNvRamSourceReservationsSourceDevSecLabel = module_index.DomainOsNvRamSourceReservationsSourceDevSecLabel.new;
+  final DomainOsNvRamSourceReservationsSourceDevSecLabelArgs = module_index.DomainOsNvRamSourceReservationsSourceDevSecLabel.new;
+  final DomainOsNvRamSourceReservationsSourceFile = module_index.DomainOsNvRamSourceReservationsSourceFile.new;
+  final DomainOsNvRamSourceReservationsSourceFileArgs = module_index.DomainOsNvRamSourceReservationsSourceFile.new;
+  final DomainOsNvRamSourceReservationsSourceFileSecLabel = module_index.DomainOsNvRamSourceReservationsSourceFileSecLabel.new;
+  final DomainOsNvRamSourceReservationsSourceFileSecLabelArgs = module_index.DomainOsNvRamSourceReservationsSourceFileSecLabel.new;
+  final DomainOsNvRamSourceReservationsSourceNmdm = module_index.DomainOsNvRamSourceReservationsSourceNmdm.new;
+  final DomainOsNvRamSourceReservationsSourceNmdmArgs = module_index.DomainOsNvRamSourceReservationsSourceNmdm.new;
+  final DomainOsNvRamSourceReservationsSourcePipe = module_index.DomainOsNvRamSourceReservationsSourcePipe.new;
+  final DomainOsNvRamSourceReservationsSourcePipeArgs = module_index.DomainOsNvRamSourceReservationsSourcePipe.new;
+  final DomainOsNvRamSourceReservationsSourcePipeSecLabel = module_index.DomainOsNvRamSourceReservationsSourcePipeSecLabel.new;
+  final DomainOsNvRamSourceReservationsSourcePipeSecLabelArgs = module_index.DomainOsNvRamSourceReservationsSourcePipeSecLabel.new;
+  final DomainOsNvRamSourceReservationsSourcePty = module_index.DomainOsNvRamSourceReservationsSourcePty.new;
+  final DomainOsNvRamSourceReservationsSourcePtyArgs = module_index.DomainOsNvRamSourceReservationsSourcePty.new;
+  final DomainOsNvRamSourceReservationsSourcePtySecLabel = module_index.DomainOsNvRamSourceReservationsSourcePtySecLabel.new;
+  final DomainOsNvRamSourceReservationsSourcePtySecLabelArgs = module_index.DomainOsNvRamSourceReservationsSourcePtySecLabel.new;
+  final DomainOsNvRamSourceReservationsSourceQemuvdAgent = module_index.DomainOsNvRamSourceReservationsSourceQemuvdAgent.new;
+  final DomainOsNvRamSourceReservationsSourceQemuvdAgentArgs = module_index.DomainOsNvRamSourceReservationsSourceQemuvdAgent.new;
+  final DomainOsNvRamSourceReservationsSourceQemuvdAgentClipBoard = module_index.DomainOsNvRamSourceReservationsSourceQemuvdAgentClipBoard.new;
+  final DomainOsNvRamSourceReservationsSourceQemuvdAgentClipBoardArgs = module_index.DomainOsNvRamSourceReservationsSourceQemuvdAgentClipBoard.new;
+  final DomainOsNvRamSourceReservationsSourceQemuvdAgentMouse = module_index.DomainOsNvRamSourceReservationsSourceQemuvdAgentMouse.new;
+  final DomainOsNvRamSourceReservationsSourceQemuvdAgentMouseArgs = module_index.DomainOsNvRamSourceReservationsSourceQemuvdAgentMouse.new;
+  final DomainOsNvRamSourceReservationsSourceSpicePort = module_index.DomainOsNvRamSourceReservationsSourceSpicePort.new;
+  final DomainOsNvRamSourceReservationsSourceSpicePortArgs = module_index.DomainOsNvRamSourceReservationsSourceSpicePort.new;
+  final DomainOsNvRamSourceReservationsSourceTcp = module_index.DomainOsNvRamSourceReservationsSourceTcp.new;
+  final DomainOsNvRamSourceReservationsSourceTcpArgs = module_index.DomainOsNvRamSourceReservationsSourceTcp.new;
+  final DomainOsNvRamSourceReservationsSourceTcpReconnect = module_index.DomainOsNvRamSourceReservationsSourceTcpReconnect.new;
+  final DomainOsNvRamSourceReservationsSourceTcpReconnectArgs = module_index.DomainOsNvRamSourceReservationsSourceTcpReconnect.new;
+  final DomainOsNvRamSourceReservationsSourceUdp = module_index.DomainOsNvRamSourceReservationsSourceUdp.new;
+  final DomainOsNvRamSourceReservationsSourceUdpArgs = module_index.DomainOsNvRamSourceReservationsSourceUdp.new;
+  final DomainOsNvRamSourceReservationsSourceUnix = module_index.DomainOsNvRamSourceReservationsSourceUnix.new;
+  final DomainOsNvRamSourceReservationsSourceUnixArgs = module_index.DomainOsNvRamSourceReservationsSourceUnix.new;
+  final DomainOsNvRamSourceReservationsSourceUnixReconnect = module_index.DomainOsNvRamSourceReservationsSourceUnixReconnect.new;
+  final DomainOsNvRamSourceReservationsSourceUnixReconnectArgs = module_index.DomainOsNvRamSourceReservationsSourceUnixReconnect.new;
+  final DomainOsNvRamSourceReservationsSourceUnixSecLabel = module_index.DomainOsNvRamSourceReservationsSourceUnixSecLabel.new;
+  final DomainOsNvRamSourceReservationsSourceUnixSecLabelArgs = module_index.DomainOsNvRamSourceReservationsSourceUnixSecLabel.new;
   final DomainOsNvRamSourceSlices = module_index.DomainOsNvRamSourceSlices.new;
-  final DomainOsNvRamSourceSlicesArgs =
-      module_index.DomainOsNvRamSourceSlices.new;
-  final DomainOsNvRamSourceSlicesSlice =
-      module_index.DomainOsNvRamSourceSlicesSlice.new;
-  final DomainOsNvRamSourceSlicesSliceArgs =
-      module_index.DomainOsNvRamSourceSlicesSlice.new;
+  final DomainOsNvRamSourceSlicesArgs = module_index.DomainOsNvRamSourceSlices.new;
+  final DomainOsNvRamSourceSlicesSlice = module_index.DomainOsNvRamSourceSlicesSlice.new;
+  final DomainOsNvRamSourceSlicesSliceArgs = module_index.DomainOsNvRamSourceSlicesSlice.new;
   final DomainOsNvRamSourceSsl = module_index.DomainOsNvRamSourceSsl.new;
   final DomainOsNvRamSourceSslArgs = module_index.DomainOsNvRamSourceSsl.new;
-  final DomainOsNvRamSourceTimeout =
-      module_index.DomainOsNvRamSourceTimeout.new;
-  final DomainOsNvRamSourceTimeoutArgs =
-      module_index.DomainOsNvRamSourceTimeout.new;
-  final DomainOsNvRamSourceVhostUser =
-      module_index.DomainOsNvRamSourceVhostUser.new;
-  final DomainOsNvRamSourceVhostUserArgs =
-      module_index.DomainOsNvRamSourceVhostUser.new;
-  final DomainOsNvRamSourceVhostUserDbus =
-      module_index.DomainOsNvRamSourceVhostUserDbus.new;
-  final DomainOsNvRamSourceVhostUserDbusArgs =
-      module_index.DomainOsNvRamSourceVhostUserDbus.new;
-  final DomainOsNvRamSourceVhostUserDev =
-      module_index.DomainOsNvRamSourceVhostUserDev.new;
-  final DomainOsNvRamSourceVhostUserDevArgs =
-      module_index.DomainOsNvRamSourceVhostUserDev.new;
-  final DomainOsNvRamSourceVhostUserDevSecLabel =
-      module_index.DomainOsNvRamSourceVhostUserDevSecLabel.new;
-  final DomainOsNvRamSourceVhostUserDevSecLabelArgs =
-      module_index.DomainOsNvRamSourceVhostUserDevSecLabel.new;
-  final DomainOsNvRamSourceVhostUserFile =
-      module_index.DomainOsNvRamSourceVhostUserFile.new;
-  final DomainOsNvRamSourceVhostUserFileArgs =
-      module_index.DomainOsNvRamSourceVhostUserFile.new;
-  final DomainOsNvRamSourceVhostUserFileSecLabel =
-      module_index.DomainOsNvRamSourceVhostUserFileSecLabel.new;
-  final DomainOsNvRamSourceVhostUserFileSecLabelArgs =
-      module_index.DomainOsNvRamSourceVhostUserFileSecLabel.new;
-  final DomainOsNvRamSourceVhostUserNmdm =
-      module_index.DomainOsNvRamSourceVhostUserNmdm.new;
-  final DomainOsNvRamSourceVhostUserNmdmArgs =
-      module_index.DomainOsNvRamSourceVhostUserNmdm.new;
-  final DomainOsNvRamSourceVhostUserPipe =
-      module_index.DomainOsNvRamSourceVhostUserPipe.new;
-  final DomainOsNvRamSourceVhostUserPipeArgs =
-      module_index.DomainOsNvRamSourceVhostUserPipe.new;
-  final DomainOsNvRamSourceVhostUserPipeSecLabel =
-      module_index.DomainOsNvRamSourceVhostUserPipeSecLabel.new;
-  final DomainOsNvRamSourceVhostUserPipeSecLabelArgs =
-      module_index.DomainOsNvRamSourceVhostUserPipeSecLabel.new;
-  final DomainOsNvRamSourceVhostUserPty =
-      module_index.DomainOsNvRamSourceVhostUserPty.new;
-  final DomainOsNvRamSourceVhostUserPtyArgs =
-      module_index.DomainOsNvRamSourceVhostUserPty.new;
-  final DomainOsNvRamSourceVhostUserPtySecLabel =
-      module_index.DomainOsNvRamSourceVhostUserPtySecLabel.new;
-  final DomainOsNvRamSourceVhostUserPtySecLabelArgs =
-      module_index.DomainOsNvRamSourceVhostUserPtySecLabel.new;
-  final DomainOsNvRamSourceVhostUserQemuvdAgent =
-      module_index.DomainOsNvRamSourceVhostUserQemuvdAgent.new;
-  final DomainOsNvRamSourceVhostUserQemuvdAgentArgs =
-      module_index.DomainOsNvRamSourceVhostUserQemuvdAgent.new;
-  final DomainOsNvRamSourceVhostUserQemuvdAgentClipBoard =
-      module_index.DomainOsNvRamSourceVhostUserQemuvdAgentClipBoard.new;
-  final DomainOsNvRamSourceVhostUserQemuvdAgentClipBoardArgs =
-      module_index.DomainOsNvRamSourceVhostUserQemuvdAgentClipBoard.new;
-  final DomainOsNvRamSourceVhostUserQemuvdAgentMouse =
-      module_index.DomainOsNvRamSourceVhostUserQemuvdAgentMouse.new;
-  final DomainOsNvRamSourceVhostUserQemuvdAgentMouseArgs =
-      module_index.DomainOsNvRamSourceVhostUserQemuvdAgentMouse.new;
-  final DomainOsNvRamSourceVhostUserSpicePort =
-      module_index.DomainOsNvRamSourceVhostUserSpicePort.new;
-  final DomainOsNvRamSourceVhostUserSpicePortArgs =
-      module_index.DomainOsNvRamSourceVhostUserSpicePort.new;
-  final DomainOsNvRamSourceVhostUserTcp =
-      module_index.DomainOsNvRamSourceVhostUserTcp.new;
-  final DomainOsNvRamSourceVhostUserTcpArgs =
-      module_index.DomainOsNvRamSourceVhostUserTcp.new;
-  final DomainOsNvRamSourceVhostUserTcpReconnect =
-      module_index.DomainOsNvRamSourceVhostUserTcpReconnect.new;
-  final DomainOsNvRamSourceVhostUserTcpReconnectArgs =
-      module_index.DomainOsNvRamSourceVhostUserTcpReconnect.new;
-  final DomainOsNvRamSourceVhostUserUdp =
-      module_index.DomainOsNvRamSourceVhostUserUdp.new;
-  final DomainOsNvRamSourceVhostUserUdpArgs =
-      module_index.DomainOsNvRamSourceVhostUserUdp.new;
-  final DomainOsNvRamSourceVhostUserUnix =
-      module_index.DomainOsNvRamSourceVhostUserUnix.new;
-  final DomainOsNvRamSourceVhostUserUnixArgs =
-      module_index.DomainOsNvRamSourceVhostUserUnix.new;
-  final DomainOsNvRamSourceVhostUserUnixReconnect =
-      module_index.DomainOsNvRamSourceVhostUserUnixReconnect.new;
-  final DomainOsNvRamSourceVhostUserUnixReconnectArgs =
-      module_index.DomainOsNvRamSourceVhostUserUnixReconnect.new;
-  final DomainOsNvRamSourceVhostUserUnixSecLabel =
-      module_index.DomainOsNvRamSourceVhostUserUnixSecLabel.new;
-  final DomainOsNvRamSourceVhostUserUnixSecLabelArgs =
-      module_index.DomainOsNvRamSourceVhostUserUnixSecLabel.new;
-  final DomainOsNvRamSourceVhostVdpa =
-      module_index.DomainOsNvRamSourceVhostVdpa.new;
-  final DomainOsNvRamSourceVhostVdpaArgs =
-      module_index.DomainOsNvRamSourceVhostVdpa.new;
+  final DomainOsNvRamSourceTimeout = module_index.DomainOsNvRamSourceTimeout.new;
+  final DomainOsNvRamSourceTimeoutArgs = module_index.DomainOsNvRamSourceTimeout.new;
+  final DomainOsNvRamSourceVhostUser = module_index.DomainOsNvRamSourceVhostUser.new;
+  final DomainOsNvRamSourceVhostUserArgs = module_index.DomainOsNvRamSourceVhostUser.new;
+  final DomainOsNvRamSourceVhostUserDbus = module_index.DomainOsNvRamSourceVhostUserDbus.new;
+  final DomainOsNvRamSourceVhostUserDbusArgs = module_index.DomainOsNvRamSourceVhostUserDbus.new;
+  final DomainOsNvRamSourceVhostUserDev = module_index.DomainOsNvRamSourceVhostUserDev.new;
+  final DomainOsNvRamSourceVhostUserDevArgs = module_index.DomainOsNvRamSourceVhostUserDev.new;
+  final DomainOsNvRamSourceVhostUserDevSecLabel = module_index.DomainOsNvRamSourceVhostUserDevSecLabel.new;
+  final DomainOsNvRamSourceVhostUserDevSecLabelArgs = module_index.DomainOsNvRamSourceVhostUserDevSecLabel.new;
+  final DomainOsNvRamSourceVhostUserFile = module_index.DomainOsNvRamSourceVhostUserFile.new;
+  final DomainOsNvRamSourceVhostUserFileArgs = module_index.DomainOsNvRamSourceVhostUserFile.new;
+  final DomainOsNvRamSourceVhostUserFileSecLabel = module_index.DomainOsNvRamSourceVhostUserFileSecLabel.new;
+  final DomainOsNvRamSourceVhostUserFileSecLabelArgs = module_index.DomainOsNvRamSourceVhostUserFileSecLabel.new;
+  final DomainOsNvRamSourceVhostUserNmdm = module_index.DomainOsNvRamSourceVhostUserNmdm.new;
+  final DomainOsNvRamSourceVhostUserNmdmArgs = module_index.DomainOsNvRamSourceVhostUserNmdm.new;
+  final DomainOsNvRamSourceVhostUserPipe = module_index.DomainOsNvRamSourceVhostUserPipe.new;
+  final DomainOsNvRamSourceVhostUserPipeArgs = module_index.DomainOsNvRamSourceVhostUserPipe.new;
+  final DomainOsNvRamSourceVhostUserPipeSecLabel = module_index.DomainOsNvRamSourceVhostUserPipeSecLabel.new;
+  final DomainOsNvRamSourceVhostUserPipeSecLabelArgs = module_index.DomainOsNvRamSourceVhostUserPipeSecLabel.new;
+  final DomainOsNvRamSourceVhostUserPty = module_index.DomainOsNvRamSourceVhostUserPty.new;
+  final DomainOsNvRamSourceVhostUserPtyArgs = module_index.DomainOsNvRamSourceVhostUserPty.new;
+  final DomainOsNvRamSourceVhostUserPtySecLabel = module_index.DomainOsNvRamSourceVhostUserPtySecLabel.new;
+  final DomainOsNvRamSourceVhostUserPtySecLabelArgs = module_index.DomainOsNvRamSourceVhostUserPtySecLabel.new;
+  final DomainOsNvRamSourceVhostUserQemuvdAgent = module_index.DomainOsNvRamSourceVhostUserQemuvdAgent.new;
+  final DomainOsNvRamSourceVhostUserQemuvdAgentArgs = module_index.DomainOsNvRamSourceVhostUserQemuvdAgent.new;
+  final DomainOsNvRamSourceVhostUserQemuvdAgentClipBoard = module_index.DomainOsNvRamSourceVhostUserQemuvdAgentClipBoard.new;
+  final DomainOsNvRamSourceVhostUserQemuvdAgentClipBoardArgs = module_index.DomainOsNvRamSourceVhostUserQemuvdAgentClipBoard.new;
+  final DomainOsNvRamSourceVhostUserQemuvdAgentMouse = module_index.DomainOsNvRamSourceVhostUserQemuvdAgentMouse.new;
+  final DomainOsNvRamSourceVhostUserQemuvdAgentMouseArgs = module_index.DomainOsNvRamSourceVhostUserQemuvdAgentMouse.new;
+  final DomainOsNvRamSourceVhostUserSpicePort = module_index.DomainOsNvRamSourceVhostUserSpicePort.new;
+  final DomainOsNvRamSourceVhostUserSpicePortArgs = module_index.DomainOsNvRamSourceVhostUserSpicePort.new;
+  final DomainOsNvRamSourceVhostUserTcp = module_index.DomainOsNvRamSourceVhostUserTcp.new;
+  final DomainOsNvRamSourceVhostUserTcpArgs = module_index.DomainOsNvRamSourceVhostUserTcp.new;
+  final DomainOsNvRamSourceVhostUserTcpReconnect = module_index.DomainOsNvRamSourceVhostUserTcpReconnect.new;
+  final DomainOsNvRamSourceVhostUserTcpReconnectArgs = module_index.DomainOsNvRamSourceVhostUserTcpReconnect.new;
+  final DomainOsNvRamSourceVhostUserUdp = module_index.DomainOsNvRamSourceVhostUserUdp.new;
+  final DomainOsNvRamSourceVhostUserUdpArgs = module_index.DomainOsNvRamSourceVhostUserUdp.new;
+  final DomainOsNvRamSourceVhostUserUnix = module_index.DomainOsNvRamSourceVhostUserUnix.new;
+  final DomainOsNvRamSourceVhostUserUnixArgs = module_index.DomainOsNvRamSourceVhostUserUnix.new;
+  final DomainOsNvRamSourceVhostUserUnixReconnect = module_index.DomainOsNvRamSourceVhostUserUnixReconnect.new;
+  final DomainOsNvRamSourceVhostUserUnixReconnectArgs = module_index.DomainOsNvRamSourceVhostUserUnixReconnect.new;
+  final DomainOsNvRamSourceVhostUserUnixSecLabel = module_index.DomainOsNvRamSourceVhostUserUnixSecLabel.new;
+  final DomainOsNvRamSourceVhostUserUnixSecLabelArgs = module_index.DomainOsNvRamSourceVhostUserUnixSecLabel.new;
+  final DomainOsNvRamSourceVhostVdpa = module_index.DomainOsNvRamSourceVhostVdpa.new;
+  final DomainOsNvRamSourceVhostVdpaArgs = module_index.DomainOsNvRamSourceVhostVdpa.new;
   final DomainOsNvRamSourceVolume = module_index.DomainOsNvRamSourceVolume.new;
-  final DomainOsNvRamSourceVolumeArgs =
-      module_index.DomainOsNvRamSourceVolume.new;
-  final DomainOsNvRamSourceVolumeSecLabel =
-      module_index.DomainOsNvRamSourceVolumeSecLabel.new;
-  final DomainOsNvRamSourceVolumeSecLabelArgs =
-      module_index.DomainOsNvRamSourceVolumeSecLabel.new;
+  final DomainOsNvRamSourceVolumeArgs = module_index.DomainOsNvRamSourceVolume.new;
+  final DomainOsNvRamSourceVolumeSecLabel = module_index.DomainOsNvRamSourceVolumeSecLabel.new;
+  final DomainOsNvRamSourceVolumeSecLabelArgs = module_index.DomainOsNvRamSourceVolumeSecLabel.new;
   final DomainOsSmBios = module_index.DomainOsSmBios.new;
   final DomainOsSmBiosArgs = module_index.DomainOsSmBios.new;
   final DomainPerf = module_index.DomainPerf.new;
@@ -4378,10 +2236,8 @@ class _IndexModuleNamespace {
   final DomainPmSuspendToMemArgs = module_index.DomainPmSuspendToMem.new;
   final DomainResource = module_index.DomainResource.new;
   final DomainResourceArgs = module_index.DomainResource.new;
-  final DomainResourceFibreChannel =
-      module_index.DomainResourceFibreChannel.new;
-  final DomainResourceFibreChannelArgs =
-      module_index.DomainResourceFibreChannel.new;
+  final DomainResourceFibreChannel = module_index.DomainResourceFibreChannel.new;
+  final DomainResourceFibreChannelArgs = module_index.DomainResourceFibreChannel.new;
   final DomainSecLabel = module_index.DomainSecLabel.new;
   final DomainSecLabelArgs = module_index.DomainSecLabel.new;
   final DomainState = module_index.DomainState.new;
@@ -4394,83 +2250,50 @@ class _IndexModuleNamespace {
   final DomainSysInfoFwCfgEntryArgs = module_index.DomainSysInfoFwCfgEntry.new;
   final DomainSysInfoSmbios = module_index.DomainSysInfoSmbios.new;
   final DomainSysInfoSmbiosArgs = module_index.DomainSysInfoSmbios.new;
-  final DomainSysInfoSmbiosBaseBoard =
-      module_index.DomainSysInfoSmbiosBaseBoard.new;
-  final DomainSysInfoSmbiosBaseBoardArgs =
-      module_index.DomainSysInfoSmbiosBaseBoard.new;
-  final DomainSysInfoSmbiosBaseBoardEntry =
-      module_index.DomainSysInfoSmbiosBaseBoardEntry.new;
-  final DomainSysInfoSmbiosBaseBoardEntryArgs =
-      module_index.DomainSysInfoSmbiosBaseBoardEntry.new;
+  final DomainSysInfoSmbiosBaseBoard = module_index.DomainSysInfoSmbiosBaseBoard.new;
+  final DomainSysInfoSmbiosBaseBoardArgs = module_index.DomainSysInfoSmbiosBaseBoard.new;
+  final DomainSysInfoSmbiosBaseBoardEntry = module_index.DomainSysInfoSmbiosBaseBoardEntry.new;
+  final DomainSysInfoSmbiosBaseBoardEntryArgs = module_index.DomainSysInfoSmbiosBaseBoardEntry.new;
   final DomainSysInfoSmbiosBios = module_index.DomainSysInfoSmbiosBios.new;
   final DomainSysInfoSmbiosBiosArgs = module_index.DomainSysInfoSmbiosBios.new;
-  final DomainSysInfoSmbiosBiosEntry =
-      module_index.DomainSysInfoSmbiosBiosEntry.new;
-  final DomainSysInfoSmbiosBiosEntryArgs =
-      module_index.DomainSysInfoSmbiosBiosEntry.new;
-  final DomainSysInfoSmbiosChassis =
-      module_index.DomainSysInfoSmbiosChassis.new;
-  final DomainSysInfoSmbiosChassisArgs =
-      module_index.DomainSysInfoSmbiosChassis.new;
-  final DomainSysInfoSmbiosChassisEntry =
-      module_index.DomainSysInfoSmbiosChassisEntry.new;
-  final DomainSysInfoSmbiosChassisEntryArgs =
-      module_index.DomainSysInfoSmbiosChassisEntry.new;
+  final DomainSysInfoSmbiosBiosEntry = module_index.DomainSysInfoSmbiosBiosEntry.new;
+  final DomainSysInfoSmbiosBiosEntryArgs = module_index.DomainSysInfoSmbiosBiosEntry.new;
+  final DomainSysInfoSmbiosChassis = module_index.DomainSysInfoSmbiosChassis.new;
+  final DomainSysInfoSmbiosChassisArgs = module_index.DomainSysInfoSmbiosChassis.new;
+  final DomainSysInfoSmbiosChassisEntry = module_index.DomainSysInfoSmbiosChassisEntry.new;
+  final DomainSysInfoSmbiosChassisEntryArgs = module_index.DomainSysInfoSmbiosChassisEntry.new;
   final DomainSysInfoSmbiosMemory = module_index.DomainSysInfoSmbiosMemory.new;
-  final DomainSysInfoSmbiosMemoryArgs =
-      module_index.DomainSysInfoSmbiosMemory.new;
-  final DomainSysInfoSmbiosMemoryEntry =
-      module_index.DomainSysInfoSmbiosMemoryEntry.new;
-  final DomainSysInfoSmbiosMemoryEntryArgs =
-      module_index.DomainSysInfoSmbiosMemoryEntry.new;
-  final DomainSysInfoSmbiosOemStrings =
-      module_index.DomainSysInfoSmbiosOemStrings.new;
-  final DomainSysInfoSmbiosOemStringsArgs =
-      module_index.DomainSysInfoSmbiosOemStrings.new;
-  final DomainSysInfoSmbiosProcessor =
-      module_index.DomainSysInfoSmbiosProcessor.new;
-  final DomainSysInfoSmbiosProcessorArgs =
-      module_index.DomainSysInfoSmbiosProcessor.new;
-  final DomainSysInfoSmbiosProcessorEntry =
-      module_index.DomainSysInfoSmbiosProcessorEntry.new;
-  final DomainSysInfoSmbiosProcessorEntryArgs =
-      module_index.DomainSysInfoSmbiosProcessorEntry.new;
+  final DomainSysInfoSmbiosMemoryArgs = module_index.DomainSysInfoSmbiosMemory.new;
+  final DomainSysInfoSmbiosMemoryEntry = module_index.DomainSysInfoSmbiosMemoryEntry.new;
+  final DomainSysInfoSmbiosMemoryEntryArgs = module_index.DomainSysInfoSmbiosMemoryEntry.new;
+  final DomainSysInfoSmbiosOemStrings = module_index.DomainSysInfoSmbiosOemStrings.new;
+  final DomainSysInfoSmbiosOemStringsArgs = module_index.DomainSysInfoSmbiosOemStrings.new;
+  final DomainSysInfoSmbiosProcessor = module_index.DomainSysInfoSmbiosProcessor.new;
+  final DomainSysInfoSmbiosProcessorArgs = module_index.DomainSysInfoSmbiosProcessor.new;
+  final DomainSysInfoSmbiosProcessorEntry = module_index.DomainSysInfoSmbiosProcessorEntry.new;
+  final DomainSysInfoSmbiosProcessorEntryArgs = module_index.DomainSysInfoSmbiosProcessorEntry.new;
   final DomainSysInfoSmbiosSystem = module_index.DomainSysInfoSmbiosSystem.new;
-  final DomainSysInfoSmbiosSystemArgs =
-      module_index.DomainSysInfoSmbiosSystem.new;
-  final DomainSysInfoSmbiosSystemEntry =
-      module_index.DomainSysInfoSmbiosSystemEntry.new;
-  final DomainSysInfoSmbiosSystemEntryArgs =
-      module_index.DomainSysInfoSmbiosSystemEntry.new;
+  final DomainSysInfoSmbiosSystemArgs = module_index.DomainSysInfoSmbiosSystem.new;
+  final DomainSysInfoSmbiosSystemEntry = module_index.DomainSysInfoSmbiosSystemEntry.new;
+  final DomainSysInfoSmbiosSystemEntryArgs = module_index.DomainSysInfoSmbiosSystemEntry.new;
   final DomainThrottleGroups = module_index.DomainThrottleGroups.new;
   final DomainThrottleGroupsArgs = module_index.DomainThrottleGroups.new;
-  final DomainThrottleGroupsThrottleGroup =
-      module_index.DomainThrottleGroupsThrottleGroup.new;
-  final DomainThrottleGroupsThrottleGroupArgs =
-      module_index.DomainThrottleGroupsThrottleGroup.new;
+  final DomainThrottleGroupsThrottleGroup = module_index.DomainThrottleGroupsThrottleGroup.new;
+  final DomainThrottleGroupsThrottleGroupArgs = module_index.DomainThrottleGroupsThrottleGroup.new;
   final DomainVcpus = module_index.DomainVcpus.new;
   final DomainVcpusArgs = module_index.DomainVcpus.new;
   final DomainVcpusVcpus = module_index.DomainVcpusVcpus.new;
   final DomainVcpusVcpusArgs = module_index.DomainVcpusVcpus.new;
-  final GetDomainInterfaceAddressesArgs =
-      module_index.GetDomainInterfaceAddressesArgs.new;
-  final GetDomainInterfaceAddressesInterface =
-      module_index.GetDomainInterfaceAddressesInterface.new;
-  final GetDomainInterfaceAddressesInterfaceAddr =
-      module_index.GetDomainInterfaceAddressesInterfaceAddr.new;
-  final GetDomainInterfaceAddressesInterfaceAddrArgs =
-      module_index.GetDomainInterfaceAddressesInterfaceAddr.new;
-  final GetDomainInterfaceAddressesInterfaceArgs =
-      module_index.GetDomainInterfaceAddressesInterface.new;
-  final GetDomainInterfaceAddressesResult =
-      module_index.GetDomainInterfaceAddressesResult.new;
-  final GetDomainInterfaceAddressesResultArgs =
-      module_index.GetDomainInterfaceAddressesResult.new;
+  final GetDomainInterfaceAddressesArgs = module_index.GetDomainInterfaceAddressesArgs.new;
+  final GetDomainInterfaceAddressesInterface = module_index.GetDomainInterfaceAddressesInterface.new;
+  final GetDomainInterfaceAddressesInterfaceAddr = module_index.GetDomainInterfaceAddressesInterfaceAddr.new;
+  final GetDomainInterfaceAddressesInterfaceAddrArgs = module_index.GetDomainInterfaceAddressesInterfaceAddr.new;
+  final GetDomainInterfaceAddressesInterfaceArgs = module_index.GetDomainInterfaceAddressesInterface.new;
+  final GetDomainInterfaceAddressesResult = module_index.GetDomainInterfaceAddressesResult.new;
+  final GetDomainInterfaceAddressesResultArgs = module_index.GetDomainInterfaceAddressesResult.new;
   final GetNodeDeviceInfoArgs = module_index.GetNodeDeviceInfoArgs.new;
-  final GetNodeDeviceInfoCapability =
-      module_index.GetNodeDeviceInfoCapability.new;
-  final GetNodeDeviceInfoCapabilityArgs =
-      module_index.GetNodeDeviceInfoCapability.new;
+  final GetNodeDeviceInfoCapability = module_index.GetNodeDeviceInfoCapability.new;
+  final GetNodeDeviceInfoCapabilityArgs = module_index.GetNodeDeviceInfoCapability.new;
   final GetNodeDeviceInfoResult = module_index.GetNodeDeviceInfoResult.new;
   final GetNodeDeviceInfoResultArgs = module_index.GetNodeDeviceInfoResult.new;
   final GetNodeDevicesArgs = module_index.GetNodeDevicesArgs.new;
@@ -4489,8 +2312,7 @@ class _IndexModuleNamespace {
   final NetworkBandwidthInbound = module_index.NetworkBandwidthInbound.new;
   final NetworkBandwidthInboundArgs = module_index.NetworkBandwidthInbound.new;
   final NetworkBandwidthOutbound = module_index.NetworkBandwidthOutbound.new;
-  final NetworkBandwidthOutboundArgs =
-      module_index.NetworkBandwidthOutbound.new;
+  final NetworkBandwidthOutboundArgs = module_index.NetworkBandwidthOutbound.new;
   final NetworkBridge = module_index.NetworkBridge.new;
   final NetworkBridgeArgs = module_index.NetworkBridge.new;
   final NetworkDns = module_index.NetworkDns.new;
@@ -4511,8 +2333,7 @@ class _IndexModuleNamespace {
   final NetworkForwardAddress = module_index.NetworkForwardAddress.new;
   final NetworkForwardAddressArgs = module_index.NetworkForwardAddress.new;
   final NetworkForwardAddressPci = module_index.NetworkForwardAddressPci.new;
-  final NetworkForwardAddressPciArgs =
-      module_index.NetworkForwardAddressPci.new;
+  final NetworkForwardAddressPciArgs = module_index.NetworkForwardAddressPci.new;
   final NetworkForwardArgs = module_index.NetworkForward.new;
   final NetworkForwardDriver = module_index.NetworkForwardDriver.new;
   final NetworkForwardDriverArgs = module_index.NetworkForwardDriver.new;
@@ -4520,8 +2341,7 @@ class _IndexModuleNamespace {
   final NetworkForwardInterfaceArgs = module_index.NetworkForwardInterface.new;
   final NetworkForwardNat = module_index.NetworkForwardNat.new;
   final NetworkForwardNatAddress = module_index.NetworkForwardNatAddress.new;
-  final NetworkForwardNatAddressArgs =
-      module_index.NetworkForwardNatAddress.new;
+  final NetworkForwardNatAddressArgs = module_index.NetworkForwardNatAddress.new;
   final NetworkForwardNatArgs = module_index.NetworkForwardNat.new;
   final NetworkForwardNatPort = module_index.NetworkForwardNatPort.new;
   final NetworkForwardNatPortArgs = module_index.NetworkForwardNatPort.new;
@@ -4551,34 +2371,20 @@ class _IndexModuleNamespace {
   final NetworkMtuArgs = module_index.NetworkMtu.new;
   final NetworkPortGroup = module_index.NetworkPortGroup.new;
   final NetworkPortGroupArgs = module_index.NetworkPortGroup.new;
-  final NetworkPortGroupVirtualPort =
-      module_index.NetworkPortGroupVirtualPort.new;
-  final NetworkPortGroupVirtualPortArgs =
-      module_index.NetworkPortGroupVirtualPort.new;
-  final NetworkPortGroupVirtualPortParams =
-      module_index.NetworkPortGroupVirtualPortParams.new;
-  final NetworkPortGroupVirtualPortParamsAny =
-      module_index.NetworkPortGroupVirtualPortParamsAny.new;
-  final NetworkPortGroupVirtualPortParamsAnyArgs =
-      module_index.NetworkPortGroupVirtualPortParamsAny.new;
-  final NetworkPortGroupVirtualPortParamsArgs =
-      module_index.NetworkPortGroupVirtualPortParams.new;
-  final NetworkPortGroupVirtualPortParamsMidoNet =
-      module_index.NetworkPortGroupVirtualPortParamsMidoNet.new;
-  final NetworkPortGroupVirtualPortParamsMidoNetArgs =
-      module_index.NetworkPortGroupVirtualPortParamsMidoNet.new;
-  final NetworkPortGroupVirtualPortParamsOpenVSwitch =
-      module_index.NetworkPortGroupVirtualPortParamsOpenVSwitch.new;
-  final NetworkPortGroupVirtualPortParamsOpenVSwitchArgs =
-      module_index.NetworkPortGroupVirtualPortParamsOpenVSwitch.new;
-  final NetworkPortGroupVirtualPortParamsVepa8021qbg =
-      module_index.NetworkPortGroupVirtualPortParamsVepa8021qbg.new;
-  final NetworkPortGroupVirtualPortParamsVepa8021qbgArgs =
-      module_index.NetworkPortGroupVirtualPortParamsVepa8021qbg.new;
-  final NetworkPortGroupVirtualPortParamsVnTag8011qbh =
-      module_index.NetworkPortGroupVirtualPortParamsVnTag8011qbh.new;
-  final NetworkPortGroupVirtualPortParamsVnTag8011qbhArgs =
-      module_index.NetworkPortGroupVirtualPortParamsVnTag8011qbh.new;
+  final NetworkPortGroupVirtualPort = module_index.NetworkPortGroupVirtualPort.new;
+  final NetworkPortGroupVirtualPortArgs = module_index.NetworkPortGroupVirtualPort.new;
+  final NetworkPortGroupVirtualPortParams = module_index.NetworkPortGroupVirtualPortParams.new;
+  final NetworkPortGroupVirtualPortParamsAny = module_index.NetworkPortGroupVirtualPortParamsAny.new;
+  final NetworkPortGroupVirtualPortParamsAnyArgs = module_index.NetworkPortGroupVirtualPortParamsAny.new;
+  final NetworkPortGroupVirtualPortParamsArgs = module_index.NetworkPortGroupVirtualPortParams.new;
+  final NetworkPortGroupVirtualPortParamsMidoNet = module_index.NetworkPortGroupVirtualPortParamsMidoNet.new;
+  final NetworkPortGroupVirtualPortParamsMidoNetArgs = module_index.NetworkPortGroupVirtualPortParamsMidoNet.new;
+  final NetworkPortGroupVirtualPortParamsOpenVSwitch = module_index.NetworkPortGroupVirtualPortParamsOpenVSwitch.new;
+  final NetworkPortGroupVirtualPortParamsOpenVSwitchArgs = module_index.NetworkPortGroupVirtualPortParamsOpenVSwitch.new;
+  final NetworkPortGroupVirtualPortParamsVepa8021qbg = module_index.NetworkPortGroupVirtualPortParamsVepa8021qbg.new;
+  final NetworkPortGroupVirtualPortParamsVepa8021qbgArgs = module_index.NetworkPortGroupVirtualPortParamsVepa8021qbg.new;
+  final NetworkPortGroupVirtualPortParamsVnTag8011qbh = module_index.NetworkPortGroupVirtualPortParamsVnTag8011qbh.new;
+  final NetworkPortGroupVirtualPortParamsVnTag8011qbhArgs = module_index.NetworkPortGroupVirtualPortParamsVnTag8011qbh.new;
   final NetworkPortGroupVlan = module_index.NetworkPortGroupVlan.new;
   final NetworkPortGroupVlanArgs = module_index.NetworkPortGroupVlan.new;
   final NetworkPortGroupVlanTag = module_index.NetworkPortGroupVlanTag.new;
@@ -4592,28 +2398,17 @@ class _IndexModuleNamespace {
   final NetworkVirtualPort = module_index.NetworkVirtualPort.new;
   final NetworkVirtualPortArgs = module_index.NetworkVirtualPort.new;
   final NetworkVirtualPortParams = module_index.NetworkVirtualPortParams.new;
-  final NetworkVirtualPortParamsAny =
-      module_index.NetworkVirtualPortParamsAny.new;
-  final NetworkVirtualPortParamsAnyArgs =
-      module_index.NetworkVirtualPortParamsAny.new;
-  final NetworkVirtualPortParamsArgs =
-      module_index.NetworkVirtualPortParams.new;
-  final NetworkVirtualPortParamsMidoNet =
-      module_index.NetworkVirtualPortParamsMidoNet.new;
-  final NetworkVirtualPortParamsMidoNetArgs =
-      module_index.NetworkVirtualPortParamsMidoNet.new;
-  final NetworkVirtualPortParamsOpenVSwitch =
-      module_index.NetworkVirtualPortParamsOpenVSwitch.new;
-  final NetworkVirtualPortParamsOpenVSwitchArgs =
-      module_index.NetworkVirtualPortParamsOpenVSwitch.new;
-  final NetworkVirtualPortParamsVepa8021qbg =
-      module_index.NetworkVirtualPortParamsVepa8021qbg.new;
-  final NetworkVirtualPortParamsVepa8021qbgArgs =
-      module_index.NetworkVirtualPortParamsVepa8021qbg.new;
-  final NetworkVirtualPortParamsVnTag8011qbh =
-      module_index.NetworkVirtualPortParamsVnTag8011qbh.new;
-  final NetworkVirtualPortParamsVnTag8011qbhArgs =
-      module_index.NetworkVirtualPortParamsVnTag8011qbh.new;
+  final NetworkVirtualPortParamsAny = module_index.NetworkVirtualPortParamsAny.new;
+  final NetworkVirtualPortParamsAnyArgs = module_index.NetworkVirtualPortParamsAny.new;
+  final NetworkVirtualPortParamsArgs = module_index.NetworkVirtualPortParams.new;
+  final NetworkVirtualPortParamsMidoNet = module_index.NetworkVirtualPortParamsMidoNet.new;
+  final NetworkVirtualPortParamsMidoNetArgs = module_index.NetworkVirtualPortParamsMidoNet.new;
+  final NetworkVirtualPortParamsOpenVSwitch = module_index.NetworkVirtualPortParamsOpenVSwitch.new;
+  final NetworkVirtualPortParamsOpenVSwitchArgs = module_index.NetworkVirtualPortParamsOpenVSwitch.new;
+  final NetworkVirtualPortParamsVepa8021qbg = module_index.NetworkVirtualPortParamsVepa8021qbg.new;
+  final NetworkVirtualPortParamsVepa8021qbgArgs = module_index.NetworkVirtualPortParamsVepa8021qbg.new;
+  final NetworkVirtualPortParamsVnTag8011qbh = module_index.NetworkVirtualPortParamsVnTag8011qbh.new;
+  final NetworkVirtualPortParamsVnTag8011qbhArgs = module_index.NetworkVirtualPortParamsVnTag8011qbh.new;
   final NetworkVlan = module_index.NetworkVlan.new;
   final NetworkVlanArgs = module_index.NetworkVlan.new;
   final NetworkVlanTag = module_index.NetworkVlanTag.new;
@@ -4631,14 +2426,10 @@ class _IndexModuleNamespace {
   final PoolSource = module_index.PoolSource.new;
   final PoolSourceAdapter = module_index.PoolSourceAdapter.new;
   final PoolSourceAdapterArgs = module_index.PoolSourceAdapter.new;
-  final PoolSourceAdapterParentAddr =
-      module_index.PoolSourceAdapterParentAddr.new;
-  final PoolSourceAdapterParentAddrAddress =
-      module_index.PoolSourceAdapterParentAddrAddress.new;
-  final PoolSourceAdapterParentAddrAddressArgs =
-      module_index.PoolSourceAdapterParentAddrAddress.new;
-  final PoolSourceAdapterParentAddrArgs =
-      module_index.PoolSourceAdapterParentAddr.new;
+  final PoolSourceAdapterParentAddr = module_index.PoolSourceAdapterParentAddr.new;
+  final PoolSourceAdapterParentAddrAddress = module_index.PoolSourceAdapterParentAddrAddress.new;
+  final PoolSourceAdapterParentAddrAddressArgs = module_index.PoolSourceAdapterParentAddrAddress.new;
+  final PoolSourceAdapterParentAddrArgs = module_index.PoolSourceAdapterParentAddr.new;
   final PoolSourceArgs = module_index.PoolSource.new;
   final PoolSourceAuth = module_index.PoolSourceAuth.new;
   final PoolSourceAuthArgs = module_index.PoolSourceAuth.new;
@@ -4646,10 +2437,8 @@ class _IndexModuleNamespace {
   final PoolSourceAuthSecretArgs = module_index.PoolSourceAuthSecret.new;
   final PoolSourceDevice = module_index.PoolSourceDevice.new;
   final PoolSourceDeviceArgs = module_index.PoolSourceDevice.new;
-  final PoolSourceDeviceFreeExtent =
-      module_index.PoolSourceDeviceFreeExtent.new;
-  final PoolSourceDeviceFreeExtentArgs =
-      module_index.PoolSourceDeviceFreeExtent.new;
+  final PoolSourceDeviceFreeExtent = module_index.PoolSourceDeviceFreeExtent.new;
+  final PoolSourceDeviceFreeExtentArgs = module_index.PoolSourceDeviceFreeExtent.new;
   final PoolSourceDir = module_index.PoolSourceDir.new;
   final PoolSourceDirArgs = module_index.PoolSourceDir.new;
   final PoolSourceFormat = module_index.PoolSourceFormat.new;
@@ -4672,17 +2461,12 @@ class _IndexModuleNamespace {
   final PoolTargetArgs = module_index.PoolTarget.new;
   final PoolTargetEncryption = module_index.PoolTargetEncryption.new;
   final PoolTargetEncryptionArgs = module_index.PoolTargetEncryption.new;
-  final PoolTargetEncryptionCipher =
-      module_index.PoolTargetEncryptionCipher.new;
-  final PoolTargetEncryptionCipherArgs =
-      module_index.PoolTargetEncryptionCipher.new;
+  final PoolTargetEncryptionCipher = module_index.PoolTargetEncryptionCipher.new;
+  final PoolTargetEncryptionCipherArgs = module_index.PoolTargetEncryptionCipher.new;
   final PoolTargetEncryptionIvgen = module_index.PoolTargetEncryptionIvgen.new;
-  final PoolTargetEncryptionIvgenArgs =
-      module_index.PoolTargetEncryptionIvgen.new;
-  final PoolTargetEncryptionSecret =
-      module_index.PoolTargetEncryptionSecret.new;
-  final PoolTargetEncryptionSecretArgs =
-      module_index.PoolTargetEncryptionSecret.new;
+  final PoolTargetEncryptionIvgenArgs = module_index.PoolTargetEncryptionIvgen.new;
+  final PoolTargetEncryptionSecret = module_index.PoolTargetEncryptionSecret.new;
+  final PoolTargetEncryptionSecretArgs = module_index.PoolTargetEncryptionSecret.new;
   final PoolTargetPermissions = module_index.PoolTargetPermissions.new;
   final PoolTargetPermissionsArgs = module_index.PoolTargetPermissions.new;
   final PoolTargetTimestamps = module_index.PoolTargetTimestamps.new;
@@ -4692,12 +2476,9 @@ class _IndexModuleNamespace {
   final VolumeBackingStore = module_index.VolumeBackingStore.new;
   final VolumeBackingStoreArgs = module_index.VolumeBackingStore.new;
   final VolumeBackingStoreFormat = module_index.VolumeBackingStoreFormat.new;
-  final VolumeBackingStoreFormatArgs =
-      module_index.VolumeBackingStoreFormat.new;
-  final VolumeBackingStorePermissions =
-      module_index.VolumeBackingStorePermissions.new;
-  final VolumeBackingStorePermissionsArgs =
-      module_index.VolumeBackingStorePermissions.new;
+  final VolumeBackingStoreFormatArgs = module_index.VolumeBackingStoreFormat.new;
+  final VolumeBackingStorePermissions = module_index.VolumeBackingStorePermissions.new;
+  final VolumeBackingStorePermissionsArgs = module_index.VolumeBackingStorePermissions.new;
   final VolumeCreate = module_index.VolumeCreate.new;
   final VolumeCreateArgs = module_index.VolumeCreate.new;
   final VolumeCreateContent = module_index.VolumeCreateContent.new;
@@ -4708,18 +2489,12 @@ class _IndexModuleNamespace {
   final VolumeTargetArgs = module_index.VolumeTarget.new;
   final VolumeTargetEncryption = module_index.VolumeTargetEncryption.new;
   final VolumeTargetEncryptionArgs = module_index.VolumeTargetEncryption.new;
-  final VolumeTargetEncryptionCipher =
-      module_index.VolumeTargetEncryptionCipher.new;
-  final VolumeTargetEncryptionCipherArgs =
-      module_index.VolumeTargetEncryptionCipher.new;
-  final VolumeTargetEncryptionIvgen =
-      module_index.VolumeTargetEncryptionIvgen.new;
-  final VolumeTargetEncryptionIvgenArgs =
-      module_index.VolumeTargetEncryptionIvgen.new;
-  final VolumeTargetEncryptionSecret =
-      module_index.VolumeTargetEncryptionSecret.new;
-  final VolumeTargetEncryptionSecretArgs =
-      module_index.VolumeTargetEncryptionSecret.new;
+  final VolumeTargetEncryptionCipher = module_index.VolumeTargetEncryptionCipher.new;
+  final VolumeTargetEncryptionCipherArgs = module_index.VolumeTargetEncryptionCipher.new;
+  final VolumeTargetEncryptionIvgen = module_index.VolumeTargetEncryptionIvgen.new;
+  final VolumeTargetEncryptionIvgenArgs = module_index.VolumeTargetEncryptionIvgen.new;
+  final VolumeTargetEncryptionSecret = module_index.VolumeTargetEncryptionSecret.new;
+  final VolumeTargetEncryptionSecretArgs = module_index.VolumeTargetEncryptionSecret.new;
   final VolumeTargetFormat = module_index.VolumeTargetFormat.new;
   final VolumeTargetFormatArgs = module_index.VolumeTargetFormat.new;
   final VolumeTargetPermissions = module_index.VolumeTargetPermissions.new;
@@ -4737,10 +2512,8 @@ class _ProvidersModuleNamespace {
   final Libvirt = module_providers.ProviderProvider.new;
   final LibvirtArgs = module_providers.ProviderArgs.new;
   final ProviderArgs = module_providers.ProviderArgs.new;
-  final ProviderTerraformConfigResult =
-      module_providers.ProviderTerraformConfigResult.new;
-  final ProviderTerraformConfigResultArgs =
-      module_providers.ProviderTerraformConfigResult.new;
+  final ProviderTerraformConfigResult = module_providers.ProviderTerraformConfigResult.new;
+  final ProviderTerraformConfigResultArgs = module_providers.ProviderTerraformConfigResult.new;
   final TerraformConfigArgs = module_providers.TerraformConfigArgs.new;
   final TerraformConfigResult = module_providers.TerraformConfigResult.new;
   final TerraformConfigResultArgs = module_providers.TerraformConfigResult.new;

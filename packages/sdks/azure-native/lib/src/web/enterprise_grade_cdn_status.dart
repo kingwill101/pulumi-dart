@@ -17,3 +17,4 @@ enum EnterpriseGradeCdnStatus {
     throw ArgumentError('Unknown EnterpriseGradeCdnStatus value: $value');
   }
 }
+

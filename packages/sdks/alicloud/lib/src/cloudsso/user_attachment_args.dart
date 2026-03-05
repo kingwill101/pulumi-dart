@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserAttachmentArgs {
   /// The ID of the directory.
   final pulumi.Input<String> directoryId;
-
   /// The ID of the group.
   final pulumi.Input<String> groupId;
-
   /// The ID of the user.
   final pulumi.Input<String> userId;
 
@@ -42,3 +40,4 @@ class UserAttachmentArgs {
     );
   }
 }
+

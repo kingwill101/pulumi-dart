@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceTopicArgs {
   /// Specifies whether to enable the logging feature. Default value: `false`. Valid values:
   final pulumi.Input<bool>? enableLogging;
-
   /// . Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.
   final pulumi.Input<bool>? loggingEnabled;
-
   /// The maximum length of the message that is sent to the topic. Default value: `65536`. Valid values: `1024` to `65536`. Unit: bytes.
   final pulumi.Input<int>? maxMessageSize;
-
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// The name of the topic.
   ///
   /// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -50,29 +46,12 @@ class ServiceTopicArgs {
 
   factory ServiceTopicArgs.fromMap(Map<String, dynamic> map) {
     return ServiceTopicArgs(
-      enableLogging: (() {
-        final guardedValue = map['enableLogging'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      loggingEnabled: (() {
-        final guardedValue = map['loggingEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      maxMessageSize: (() {
-        final guardedValue = map['maxMessageSize'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      enableLogging: (() { final guardedValue = map['enableLogging']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      loggingEnabled: (() { final guardedValue = map['loggingEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      maxMessageSize: (() { final guardedValue = map['maxMessageSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       topicName: pulumi.Input.fromValue(map['topicName'] as String),
     );
   }
 }
+

@@ -422,46 +422,32 @@ import 'subscriber_timeouts.dart';
 class Subscriber extends pulumi.CustomResource {
   /// The Amazon S3 or Lake Formation access type.
   late final pulumi.Output<String> accessType;
-
   /// ARN of the Data Lake.
   late final pulumi.Output<String> arn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The Amazon Resource Name (ARN) which uniquely defines the AWS RAM resource share. Before accepting the RAM resource share invitation, you can view details related to the RAM resource share.
   late final pulumi.Output<String> resourceShareArn;
-
   /// The name of the resource share.
   late final pulumi.Output<String> resourceShareName;
-
   /// The ARN of the IAM role to be used by the entity putting logs into your custom source partition.
   late final pulumi.Output<String> roleArn;
-
   /// The ARN for the Amazon Security Lake Amazon S3 bucket.
   late final pulumi.Output<String> s3BucketArn;
-
   /// The supported AWS services from which logs and events are collected. Security Lake supports log and event collection for natively supported AWS services. See `source` Blocks below.
   late final pulumi.Output<List<Map<String, dynamic>>> sources;
-
   /// The description for your subscriber account in Security Lake.
   late final pulumi.Output<String?> subscriberDescription;
-
   /// The subscriber endpoint to which exception messages are posted.
   late final pulumi.Output<String> subscriberEndpoint;
-
   /// The AWS identity used to access your data. See `subscriber_identity` Block below.
   late final pulumi.Output<SubscriberSubscriberIdentity> subscriberIdentity;
-
   /// The name of your Security Lake subscriber account.
   late final pulumi.Output<String?> subscriberName;
-
   /// The subscriber status of the Amazon Security Lake subscriber account.
   late final pulumi.Output<String> subscriberStatus;
-
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<SubscriberTimeouts?> timeouts;
@@ -475,11 +461,11 @@ class Subscriber extends pulumi.CustomResource {
     SubscriberArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:securitylake/subscriber:Subscriber',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:securitylake/subscriber:Subscriber',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessType = registerOutput<String>('accessType');
     arn = registerOutput<String>('arn');
     region = registerOutput<String>('region');
@@ -490,30 +476,12 @@ class Subscriber extends pulumi.CustomResource {
     sources = registerOutput<List<Map<String, dynamic>>>('sources');
     subscriberDescription = registerOutput<String?>('subscriberDescription');
     subscriberEndpoint = registerOutput<String>('subscriberEndpoint');
-    subscriberIdentity = registerOutput<SubscriberSubscriberIdentity>(
-      'subscriberIdentity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SubscriberSubscriberIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    subscriberIdentity = registerOutput<SubscriberSubscriberIdentity>('subscriberIdentity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubscriberSubscriberIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     subscriberName = registerOutput<String?>('subscriberName');
     subscriberStatus = registerOutput<String>('subscriberStatus');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<SubscriberTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SubscriberTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<SubscriberTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubscriberTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [Subscriber] resource's state with the given [name] and [id].
@@ -534,11 +502,11 @@ class Subscriber extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:securitylake/subscriber:Subscriber',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:securitylake/subscriber:Subscriber',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessType = registerOutput<String>('accessType');
     arn = registerOutput<String>('arn');
     region = registerOutput<String>('region');
@@ -549,29 +517,11 @@ class Subscriber extends pulumi.CustomResource {
     sources = registerOutput<List<Map<String, dynamic>>>('sources');
     subscriberDescription = registerOutput<String?>('subscriberDescription');
     subscriberEndpoint = registerOutput<String>('subscriberEndpoint');
-    subscriberIdentity = registerOutput<SubscriberSubscriberIdentity>(
-      'subscriberIdentity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SubscriberSubscriberIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    subscriberIdentity = registerOutput<SubscriberSubscriberIdentity>('subscriberIdentity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubscriberSubscriberIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     subscriberName = registerOutput<String?>('subscriberName');
     subscriberStatus = registerOutput<String>('subscriberStatus');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<SubscriberTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SubscriberTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<SubscriberTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubscriberTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

@@ -7,32 +7,23 @@ import 'notification_rule_target.dart';
 class NotificationRuleState {
   /// The codestar notification rule ARN.
   final pulumi.Input<String>? arn;
-
   /// The level of detail to include in the notifications for this resource. Possible values are `BASIC` and `FULL`.
   final pulumi.Input<String>? detailType;
-
   /// A list of event types associated with this notification rule.
   /// For list of allowed events see [here](https://docs.aws.amazon.com/codestar-notifications/latest/userguide/concepts.html#concepts-api).
   final pulumi.Input<List<String>>? eventTypeIds;
-
   /// The name of notification rule.
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The ARN of the resource to associate with the notification rule.
   final pulumi.Input<String>? resource;
-
   /// The status of the notification rule. Possible values are `ENABLED` and `DISABLED`, default is `ENABLED`.
   final pulumi.Input<String>? status;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
-
   /// Configuration blocks containing notification target information. Can be specified multiple times. At least one target must be specified on creation.
   final pulumi.Input<List<NotificationRuleTarget>>? targets;
 
@@ -71,84 +62,23 @@ class NotificationRuleState {
       'status': ?status,
       'tags': ?tags,
       'tagsAll': ?tagsAll,
-      'targets':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<NotificationRuleTarget>,
-            List<Map<String, dynamic>>
-          >(
-            targets,
-            (value) =>
-                pulumi.Input.encodeList<
-                  NotificationRuleTarget,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'targets': ?pulumi.Input.mapOptionalInputValue<List<NotificationRuleTarget>, List<Map<String, dynamic>>>(targets, (value) => pulumi.Input.encodeList<NotificationRuleTarget, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory NotificationRuleState.fromMap(Map<String, dynamic> map) {
     return NotificationRuleState(
-      arn: (() {
-        final guardedValue = map['arn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      detailType: (() {
-        final guardedValue = map['detailType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      eventTypeIds: (() {
-        final guardedValue = map['eventTypeIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resource: (() {
-        final guardedValue = map['resource'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      tagsAll: (() {
-        final guardedValue = map['tagsAll'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      targets: (() {
-        final guardedValue = map['targets'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<NotificationRuleTarget>(
-            guardedValue,
-            (value) => NotificationRuleTarget.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      detailType: (() { final guardedValue = map['detailType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      eventTypeIds: (() { final guardedValue = map['eventTypeIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resource: (() { final guardedValue = map['resource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      targets: (() { final guardedValue = map['targets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NotificationRuleTarget>(guardedValue, (value) => NotificationRuleTarget.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

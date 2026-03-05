@@ -12,8 +12,7 @@ enum FirewallPolicyIDPSQuerySortOrder {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown FirewallPolicyIDPSQuerySortOrder value: $value',
-    );
+    throw ArgumentError('Unknown FirewallPolicyIDPSQuerySortOrder value: $value');
   }
 }
+

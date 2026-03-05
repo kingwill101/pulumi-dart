@@ -15,3 +15,4 @@ enum CatalogSyncType {
     throw ArgumentError('Unknown CatalogSyncType value: $value');
   }
 }
+

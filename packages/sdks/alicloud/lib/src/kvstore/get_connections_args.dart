@@ -9,27 +9,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConnectionsArgs {
   /// A list of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance ids, only support one item.
   final pulumi.Input<String> ids;
-
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
 
   /// Creates a new [GetConnectionsArgs].
   /// [ids] A list of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance ids, only support one item.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetConnectionsArgs({required this.ids, this.outputFile});
+  GetConnectionsArgs({
+    required this.ids,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'ids': ids, 'outputFile': ?outputFile};
+    return <String, dynamic>{
+      'ids': ids,
+      'outputFile': ?outputFile,
+    };
   }
 
   factory GetConnectionsArgs.fromMap(Map<String, dynamic> map) {
     return GetConnectionsArgs(
       ids: pulumi.Input.fromValue(map['ids'] as String),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

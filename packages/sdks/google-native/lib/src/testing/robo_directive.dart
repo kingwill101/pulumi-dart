@@ -7,10 +7,8 @@ import 'robo_directive_action_type.dart';
 class RoboDirective {
   /// The type of action that Robo should perform on the specified element.
   final pulumi.Input<RoboDirectiveActionType> actionType;
-
   /// The text that Robo is directed to set. If left empty, the directive will be treated as a CLICK on the element matching the resource_name.
   final pulumi.Input<String>? inputText;
-
   /// The android resource name of the target UI element. For example, in Java: R.string.foo in xml: @string/foo Only the "foo" part is needed. Reference doc: https://developer.android.com/guide/topics/resources/accessing-resources.html
   final pulumi.Input<String> resourceName;
 
@@ -26,10 +24,7 @@ class RoboDirective {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actionType': pulumi.Input.mapInputValue<RoboDirectiveActionType, String>(
-        actionType,
-        (value) => value.wireValue,
-      ),
+      'actionType': pulumi.Input.mapInputValue<RoboDirectiveActionType, String>(actionType, (value) => value.wireValue),
       'inputText': ?inputText,
       'resourceName': resourceName,
     };
@@ -37,15 +32,10 @@ class RoboDirective {
 
   factory RoboDirective.fromMap(Map<String, dynamic> map) {
     return RoboDirective(
-      actionType: pulumi.Input.fromValue(
-        RoboDirectiveActionType.fromValue(map['actionType']! as String),
-      ),
-      inputText: (() {
-        final guardedValue = map['inputText'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      actionType: pulumi.Input.fromValue(RoboDirectiveActionType.fromValue(map['actionType']! as String)),
+      inputText: (() { final guardedValue = map['inputText']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
+

@@ -5,40 +5,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSnapshotsSnapshot {
   /// The creation time of the resource.
   final pulumi.Input<String> createTime;
-
   /// The description of the snapshot.
   final pulumi.Input<String> description;
-
   /// The type of the encryption.
   final pulumi.Input<int> encryptType;
-
   /// The ID of the Snapshot.
   final pulumi.Input<String> id;
-
   /// The progress of the snapshot creation. The value of this parameter is expressed as a percentage.
   final pulumi.Input<String> progress;
-
   /// The remaining time that is required to create the snapshot. Unit: seconds.
   final pulumi.Input<int> remainTime;
-
   /// The retention period of the automatic snapshot. Unit: days.
   final pulumi.Input<int> retentionDays;
-
   /// The ID of the resource.
   final pulumi.Input<String> snapshotId;
-
   /// The name of the snapshot.
   final pulumi.Input<String> snapshotName;
-
   /// The ID of the source file system.
   final pulumi.Input<String> sourceFileSystemId;
-
   /// The capacity of the source file system. Unit: GiB.
   final pulumi.Input<String> sourceFileSystemSize;
-
   /// The version of the source file system.
   final pulumi.Input<String> sourceFileSystemVersion;
-
   /// The status of the snapshot.
   final pulumi.Input<String> status;
 
@@ -101,16 +89,11 @@ class GetSnapshotsSnapshot {
       retentionDays: pulumi.Input.fromValue(map['retentionDays'] as int),
       snapshotId: pulumi.Input.fromValue(map['snapshotId'] as String),
       snapshotName: pulumi.Input.fromValue(map['snapshotName'] as String),
-      sourceFileSystemId: pulumi.Input.fromValue(
-        map['sourceFileSystemId'] as String,
-      ),
-      sourceFileSystemSize: pulumi.Input.fromValue(
-        map['sourceFileSystemSize'] as String,
-      ),
-      sourceFileSystemVersion: pulumi.Input.fromValue(
-        map['sourceFileSystemVersion'] as String,
-      ),
+      sourceFileSystemId: pulumi.Input.fromValue(map['sourceFileSystemId'] as String),
+      sourceFileSystemSize: pulumi.Input.fromValue(map['sourceFileSystemSize'] as String),
+      sourceFileSystemVersion: pulumi.Input.fromValue(map['sourceFileSystemVersion'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
+

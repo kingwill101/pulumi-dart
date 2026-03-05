@@ -1887,29 +1887,19 @@ import 'agentcore_gateway_target_timeouts.dart';
 /// ```
 class AgentcoreGatewayTarget extends pulumi.CustomResource {
   /// Configuration for authenticating requests to the target. Required when using `lambda`, `open_api_schema` and `smithy_model` in `mcp` block. If using `mcp_server` in `mcp` block with no authorization, it should not be specified. See `credential_provider_configuration` below.
-  late final pulumi.Output<
-    AgentcoreGatewayTargetCredentialProviderConfiguration?
-  >
-  credentialProviderConfiguration;
-
+  late final pulumi.Output<AgentcoreGatewayTargetCredentialProviderConfiguration?> credentialProviderConfiguration;
   /// Description of the gateway target.
   late final pulumi.Output<String?> description;
-
   /// Identifier of the gateway that this target belongs to.
   late final pulumi.Output<String> gatewayIdentifier;
-
   /// Name of the gateway target.
   late final pulumi.Output<String> name;
-
   /// AWS region where the resource will be created. If not provided, the region from the provider configuration will be used.
   late final pulumi.Output<String> region;
-
   /// Configuration for the target endpoint. See `target_configuration` below.
   ///
   /// The following arguments are optional:
-  late final pulumi.Output<AgentcoreGatewayTargetTargetConfiguration>
-  targetConfiguration;
-
+  late final pulumi.Output<AgentcoreGatewayTargetTargetConfiguration> targetConfiguration;
   /// Unique identifier of the gateway target.
   late final pulumi.Output<String> targetId;
   late final pulumi.Output<AgentcoreGatewayTargetTimeouts?> timeouts;
@@ -1923,48 +1913,19 @@ class AgentcoreGatewayTarget extends pulumi.CustomResource {
     AgentcoreGatewayTargetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:bedrock/agentcoreGatewayTarget:AgentcoreGatewayTarget',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    credentialProviderConfiguration =
-        registerOutput<AgentcoreGatewayTargetCredentialProviderConfiguration?>(
-          'credentialProviderConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AgentcoreGatewayTargetCredentialProviderConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'aws:bedrock/agentcoreGatewayTarget:AgentcoreGatewayTarget',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    credentialProviderConfiguration = registerOutput<AgentcoreGatewayTargetCredentialProviderConfiguration?>('credentialProviderConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreGatewayTargetCredentialProviderConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     gatewayIdentifier = registerOutput<String>('gatewayIdentifier');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    targetConfiguration =
-        registerOutput<AgentcoreGatewayTargetTargetConfiguration>(
-          'targetConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AgentcoreGatewayTargetTargetConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    targetConfiguration = registerOutput<AgentcoreGatewayTargetTargetConfiguration>('targetConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreGatewayTargetTargetConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     targetId = registerOutput<String>('targetId');
-    timeouts = registerOutput<AgentcoreGatewayTargetTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AgentcoreGatewayTargetTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<AgentcoreGatewayTargetTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreGatewayTargetTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [AgentcoreGatewayTarget] resource's state with the given [name] and [id].
@@ -1985,47 +1946,18 @@ class AgentcoreGatewayTarget extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:bedrock/agentcoreGatewayTarget:AgentcoreGatewayTarget',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    credentialProviderConfiguration =
-        registerOutput<AgentcoreGatewayTargetCredentialProviderConfiguration?>(
-          'credentialProviderConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AgentcoreGatewayTargetCredentialProviderConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'aws:bedrock/agentcoreGatewayTarget:AgentcoreGatewayTarget',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    credentialProviderConfiguration = registerOutput<AgentcoreGatewayTargetCredentialProviderConfiguration?>('credentialProviderConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreGatewayTargetCredentialProviderConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     gatewayIdentifier = registerOutput<String>('gatewayIdentifier');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    targetConfiguration =
-        registerOutput<AgentcoreGatewayTargetTargetConfiguration>(
-          'targetConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AgentcoreGatewayTargetTargetConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    targetConfiguration = registerOutput<AgentcoreGatewayTargetTargetConfiguration>('targetConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreGatewayTargetTargetConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     targetId = registerOutput<String>('targetId');
-    timeouts = registerOutput<AgentcoreGatewayTargetTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AgentcoreGatewayTargetTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<AgentcoreGatewayTargetTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreGatewayTargetTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

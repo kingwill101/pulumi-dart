@@ -508,13 +508,10 @@ import 'function_args.dart';
 class FunctionStreamanalytics extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Resource name
   late final pulumi.Output<String?> name;
-
   /// The properties that are associated with a function.
   late final pulumi.Output<AggregateFunctionPropertiesResponse> properties;
-
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -527,23 +524,14 @@ class FunctionStreamanalytics extends pulumi.CustomResource {
     FunctionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:streamanalytics:Function',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:streamanalytics:Function',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String?>('name');
-    properties = registerOutput<AggregateFunctionPropertiesResponse>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AggregateFunctionPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<AggregateFunctionPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AggregateFunctionPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

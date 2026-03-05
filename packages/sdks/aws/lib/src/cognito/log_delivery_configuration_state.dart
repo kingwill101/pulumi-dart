@@ -6,12 +6,9 @@ import 'log_delivery_configuration_log_configuration.dart';
 /// Input properties used for looking up and filtering LogDeliveryConfiguration resources.
 class LogDeliveryConfigurationState {
   /// Configuration block for log delivery. At least one configuration block is required. See Log Configurations below.
-  final pulumi.Input<List<LogDeliveryConfigurationLogConfiguration>>?
-  logConfigurations;
-
+  final pulumi.Input<List<LogDeliveryConfigurationLogConfiguration>>? logConfigurations;
   /// The AWS region.
   final pulumi.Input<String>? region;
-
   /// The ID of the user pool for which to configure log delivery.
   ///
   /// The following arguments are optional:
@@ -29,18 +26,7 @@ class LogDeliveryConfigurationState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'logConfigurations':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<LogDeliveryConfigurationLogConfiguration>,
-            List<Map<String, dynamic>>
-          >(
-            logConfigurations,
-            (value) =>
-                pulumi.Input.encodeList<
-                  LogDeliveryConfigurationLogConfiguration,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'logConfigurations': ?pulumi.Input.mapOptionalInputValue<List<LogDeliveryConfigurationLogConfiguration>, List<Map<String, dynamic>>>(logConfigurations, (value) => pulumi.Input.encodeList<LogDeliveryConfigurationLogConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
       'region': ?region,
       'userPoolId': ?userPoolId,
     };
@@ -48,28 +34,10 @@ class LogDeliveryConfigurationState {
 
   factory LogDeliveryConfigurationState.fromMap(Map<String, dynamic> map) {
     return LogDeliveryConfigurationState(
-      logConfigurations: (() {
-        final guardedValue = map['logConfigurations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<LogDeliveryConfigurationLogConfiguration>(
-            guardedValue,
-            (value) => LogDeliveryConfigurationLogConfiguration.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      userPoolId: (() {
-        final guardedValue = map['userPoolId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      logConfigurations: (() { final guardedValue = map['logConfigurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<LogDeliveryConfigurationLogConfiguration>(guardedValue, (value) => LogDeliveryConfigurationLogConfiguration.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      userPoolId: (() { final guardedValue = map['userPoolId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

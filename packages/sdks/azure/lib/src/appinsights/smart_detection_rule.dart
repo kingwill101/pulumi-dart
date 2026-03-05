@@ -204,16 +204,12 @@ class SmartDetectionRule extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** At least one read or write permission must be defined.
   late final pulumi.Output<List<String>?> additionalEmailRecipients;
-
   /// The ID of the Application Insights component on which the Smart Detection Rule operates. Changing this forces a new resource to be created.
   late final pulumi.Output<String> applicationInsightsId;
-
   /// Is the Application Insights Smart Detection Rule enabled? Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
-
   /// Specifies the name of the Application Insights Smart Detection Rule. Valid values include `Slow page load time`, `Slow server response time`, `Potential memory leak detected`, `Potential security issue detected`, `Long dependency duration`, `Degradation in server response time`, `Degradation in dependency duration`, `Degradation in trace severity ratio`, `Abnormal rise in exception volume`, `Abnormal rise in daily data volume`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Do emails get sent to subscription owners? Defaults to `true`.
   late final pulumi.Output<bool?> sendEmailsToSubscriptionOwners;
 
@@ -226,20 +222,16 @@ class SmartDetectionRule extends pulumi.CustomResource {
     SmartDetectionRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appinsights/smartDetectionRule:SmartDetectionRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    additionalEmailRecipients = registerOutput<List<String>?>(
-      'additionalEmailRecipients',
-    );
+          'azure:appinsights/smartDetectionRule:SmartDetectionRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    additionalEmailRecipients = registerOutput<List<String>?>('additionalEmailRecipients');
     applicationInsightsId = registerOutput<String>('applicationInsightsId');
     enabled = registerOutput<bool?>('enabled');
     this.name = registerOutput<String>('name');
-    sendEmailsToSubscriptionOwners = registerOutput<bool?>(
-      'sendEmailsToSubscriptionOwners',
-    );
+    sendEmailsToSubscriptionOwners = registerOutput<bool?>('sendEmailsToSubscriptionOwners');
   }
 
   /// Gets an existing [SmartDetectionRule] resource's state with the given [name] and [id].
@@ -260,19 +252,15 @@ class SmartDetectionRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appinsights/smartDetectionRule:SmartDetectionRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    additionalEmailRecipients = registerOutput<List<String>?>(
-      'additionalEmailRecipients',
-    );
+          'azure:appinsights/smartDetectionRule:SmartDetectionRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    additionalEmailRecipients = registerOutput<List<String>?>('additionalEmailRecipients');
     applicationInsightsId = registerOutput<String>('applicationInsightsId');
     enabled = registerOutput<bool?>('enabled');
     this.name = registerOutput<String>('name');
-    sendEmailsToSubscriptionOwners = registerOutput<bool?>(
-      'sendEmailsToSubscriptionOwners',
-    );
+    sendEmailsToSubscriptionOwners = registerOutput<bool?>('sendEmailsToSubscriptionOwners');
   }
 }

@@ -137,8 +137,7 @@ Future<GetExposureControlFeatureValueResult> getExposureControlFeatureValue(
 /// Uses Azure REST API version 2018-06-01.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datafactory_get_exposure_control_feature_value_by_factory_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetExposureControlFeatureValueByFactoryResult>
-getExposureControlFeatureValueByFactory(
+Future<GetExposureControlFeatureValueByFactoryResult> getExposureControlFeatureValueByFactory(
   GetExposureControlFeatureValueByFactoryArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -246,8 +245,7 @@ Future<GetIntegrationRuntimeResult> getIntegrationRuntime(
 /// Uses Azure REST API version 2018-06-01.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datafactory_get_integration_runtime_connection_info_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetIntegrationRuntimeConnectionInfoResult>
-getIntegrationRuntimeConnectionInfo(
+Future<GetIntegrationRuntimeConnectionInfoResult> getIntegrationRuntimeConnectionInfo(
   GetIntegrationRuntimeConnectionInfoArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -265,8 +263,7 @@ getIntegrationRuntimeConnectionInfo(
 /// Uses Azure REST API version 2018-06-01.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datafactory_get_integration_runtime_object_metadatum_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetIntegrationRuntimeObjectMetadatumResult>
-getIntegrationRuntimeObjectMetadatum(
+Future<GetIntegrationRuntimeObjectMetadatumResult> getIntegrationRuntimeObjectMetadatum(
   GetIntegrationRuntimeObjectMetadatumArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -392,8 +389,7 @@ Future<GetTriggerResult> getTrigger(
 /// Uses Azure REST API version 2018-06-01.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datafactory_get_trigger_event_subscription_status_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetTriggerEventSubscriptionStatusResult>
-getTriggerEventSubscriptionStatus(
+Future<GetTriggerEventSubscriptionStatusResult> getTriggerEventSubscriptionStatus(
   GetTriggerEventSubscriptionStatusArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

@@ -11,17 +11,14 @@ class LienArgs {
   /// of the Lien, intended to be inspected programmatically. Maximum length of
   /// 200 characters.
   final pulumi.Input<String> origin;
-
   /// A reference to the resource this Lien is attached to.
   /// The server will validate the parent against those for which Liens are supported.
   /// Since a variety of objects can have Liens against them, you must provide the type
   /// prefix (e.g. "projects/my-project-name").
   final pulumi.Input<String> parent;
-
   /// Concise user-visible strings indicating why an action cannot be performed
   /// on a resource. Maximum length of 200 characters.
   final pulumi.Input<String> reason;
-
   /// The types of operations which should be blocked as a result of this Lien.
   /// Each value should correspond to an IAM permission. The server will validate
   /// the permissions against those for which Liens are supported.  An empty
@@ -55,9 +52,8 @@ class LienArgs {
       origin: pulumi.Input.fromValue(map['origin'] as String),
       parent: pulumi.Input.fromValue(map['parent'] as String),
       reason: pulumi.Input.fromValue(map['reason'] as String),
-      restrictions: pulumi.Input.fromValue(
-        (map['restrictions'] as List).cast<String>(),
-      ),
+      restrictions: pulumi.Input.fromValue((map['restrictions'] as List).cast<String>()),
     );
   }
 }
+

@@ -10,17 +10,20 @@ class VmmToAzureNetworkMappingSettingsResponse {
 
   /// Creates a new [VmmToAzureNetworkMappingSettingsResponse].
   /// [instanceType] Gets the Instance type.
-  VmmToAzureNetworkMappingSettingsResponse({required this.instanceType});
+  VmmToAzureNetworkMappingSettingsResponse({
+    required this.instanceType,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'instanceType': instanceType};
+    return <String, dynamic>{
+      'instanceType': instanceType,
+    };
   }
 
-  factory VmmToAzureNetworkMappingSettingsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VmmToAzureNetworkMappingSettingsResponse.fromMap(Map<String, dynamic> map) {
     return VmmToAzureNetworkMappingSettingsResponse(
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
     );
   }
 }
+

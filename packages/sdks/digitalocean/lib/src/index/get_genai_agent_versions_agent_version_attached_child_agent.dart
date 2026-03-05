@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGenaiAgentVersionsAgentVersionAttachedChildAgent {
   /// Name of the child agent
   final pulumi.Input<String> agentName;
-
   /// Child agent unique identifier
   final pulumi.Input<String> childAgentUuid;
-
   /// If case
   final pulumi.Input<String> ifCase;
-
   /// Child agent is deleted
   final pulumi.Input<bool> isDeleted;
-
   /// Route name
   final pulumi.Input<String> routeName;
 
@@ -42,9 +38,7 @@ class GetGenaiAgentVersionsAgentVersionAttachedChildAgent {
     };
   }
 
-  factory GetGenaiAgentVersionsAgentVersionAttachedChildAgent.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetGenaiAgentVersionsAgentVersionAttachedChildAgent.fromMap(Map<String, dynamic> map) {
     return GetGenaiAgentVersionsAgentVersionAttachedChildAgent(
       agentName: pulumi.Input.fromValue(map['agentName'] as String),
       childAgentUuid: pulumi.Input.fromValue(map['childAgentUuid'] as String),
@@ -54,3 +48,4 @@ class GetGenaiAgentVersionsAgentVersionAttachedChildAgent {
     );
   }
 }
+

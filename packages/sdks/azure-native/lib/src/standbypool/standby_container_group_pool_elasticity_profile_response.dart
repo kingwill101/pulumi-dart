@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StandbyContainerGroupPoolElasticityProfileResponse {
   /// Specifies maximum number of standby container groups in the standby pool.
   final pulumi.Input<double> maxReadyCapacity;
-
   /// Specifies refill policy of the pool.
   final pulumi.Input<String>? refillPolicy;
 
@@ -25,18 +24,11 @@ class StandbyContainerGroupPoolElasticityProfileResponse {
     };
   }
 
-  factory StandbyContainerGroupPoolElasticityProfileResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory StandbyContainerGroupPoolElasticityProfileResponse.fromMap(Map<String, dynamic> map) {
     return StandbyContainerGroupPoolElasticityProfileResponse(
-      maxReadyCapacity: pulumi.Input.fromValue(
-        map['maxReadyCapacity'] as double,
-      ),
-      refillPolicy: (() {
-        final guardedValue = map['refillPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      maxReadyCapacity: pulumi.Input.fromValue(map['maxReadyCapacity'] as double),
+      refillPolicy: (() { final guardedValue = map['refillPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

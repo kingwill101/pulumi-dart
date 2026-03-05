@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RaiToolLabelPropertiesResponseProjectScopes {
   /// Dictionary of label key-value pairs for the project scope.
   final pulumi.Input<Map<String, String>> labelValues;
-
   /// Project name to which this scope applies.
   final pulumi.Input<String> project;
 
@@ -18,17 +17,17 @@ class RaiToolLabelPropertiesResponseProjectScopes {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'labelValues': labelValues, 'project': project};
+    return <String, dynamic>{
+      'labelValues': labelValues,
+      'project': project,
+    };
   }
 
-  factory RaiToolLabelPropertiesResponseProjectScopes.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RaiToolLabelPropertiesResponseProjectScopes.fromMap(Map<String, dynamic> map) {
     return RaiToolLabelPropertiesResponseProjectScopes(
-      labelValues: pulumi.Input.fromValue(
-        (map['labelValues'] as Map).cast<String, String>(),
-      ),
+      labelValues: pulumi.Input.fromValue((map['labelValues'] as Map).cast<String, String>()),
       project: pulumi.Input.fromValue(map['project'] as String),
     );
   }
 }
+

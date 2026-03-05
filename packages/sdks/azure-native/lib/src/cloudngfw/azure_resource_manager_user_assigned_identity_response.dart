@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureResourceManagerUserAssignedIdentityResponse {
   /// The active directory client identifier for this principal.
   final pulumi.Input<String>? clientId;
-
   /// The active directory identifier for this principal.
   final pulumi.Input<String>? principalId;
 
@@ -25,20 +24,11 @@ class AzureResourceManagerUserAssignedIdentityResponse {
     };
   }
 
-  factory AzureResourceManagerUserAssignedIdentityResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AzureResourceManagerUserAssignedIdentityResponse.fromMap(Map<String, dynamic> map) {
     return AzureResourceManagerUserAssignedIdentityResponse(
-      clientId: (() {
-        final guardedValue = map['clientId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      principalId: (() {
-        final guardedValue = map['principalId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      clientId: (() { final guardedValue = map['clientId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      principalId: (() { final guardedValue = map['principalId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

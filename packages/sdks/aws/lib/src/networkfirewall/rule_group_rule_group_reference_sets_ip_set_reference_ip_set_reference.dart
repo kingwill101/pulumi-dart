@@ -13,14 +13,15 @@ class RuleGroupRuleGroupReferenceSetsIpSetReferenceIpSetReference {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'referenceArn': referenceArn};
+    return <String, dynamic>{
+      'referenceArn': referenceArn,
+    };
   }
 
-  factory RuleGroupRuleGroupReferenceSetsIpSetReferenceIpSetReference.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RuleGroupRuleGroupReferenceSetsIpSetReferenceIpSetReference.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleGroupReferenceSetsIpSetReferenceIpSetReference(
       referenceArn: pulumi.Input.fromValue(map['referenceArn'] as String),
     );
   }
 }
+

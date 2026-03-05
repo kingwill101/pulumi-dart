@@ -14,3 +14,4 @@ enum TaintEffect {
     throw ArgumentError('Unknown TaintEffect value: $value');
   }
 }
+

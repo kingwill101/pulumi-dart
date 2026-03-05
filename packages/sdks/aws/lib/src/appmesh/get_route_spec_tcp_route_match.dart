@@ -7,10 +7,14 @@ class GetRouteSpecTcpRouteMatch {
 
   /// Creates a new [GetRouteSpecTcpRouteMatch].
   /// [port] Required.
-  GetRouteSpecTcpRouteMatch({required this.port});
+  GetRouteSpecTcpRouteMatch({
+    required this.port,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'port': port};
+    return <String, dynamic>{
+      'port': port,
+    };
   }
 
   factory GetRouteSpecTcpRouteMatch.fromMap(Map<String, dynamic> map) {
@@ -19,3 +23,4 @@ class GetRouteSpecTcpRouteMatch {
     );
   }
 }
+

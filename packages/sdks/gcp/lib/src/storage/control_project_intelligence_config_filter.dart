@@ -9,31 +9,16 @@ import 'control_project_intelligence_config_filter_included_cloud_storage_locati
 class ControlProjectIntelligenceConfigFilter {
   /// Buckets to exclude from the Storage Intelligence plan.
   /// Structure is documented below.
-  final pulumi.Input<
-    ControlProjectIntelligenceConfigFilterExcludedCloudStorageBuckets
-  >?
-  excludedCloudStorageBuckets;
-
+  final pulumi.Input<ControlProjectIntelligenceConfigFilterExcludedCloudStorageBuckets>? excludedCloudStorageBuckets;
   /// Locations to exclude from the Storage Intelligence plan.
   /// Structure is documented below.
-  final pulumi.Input<
-    ControlProjectIntelligenceConfigFilterExcludedCloudStorageLocations
-  >?
-  excludedCloudStorageLocations;
-
+  final pulumi.Input<ControlProjectIntelligenceConfigFilterExcludedCloudStorageLocations>? excludedCloudStorageLocations;
   /// Buckets to include in the Storage Intelligence plan.
   /// Structure is documented below.
-  final pulumi.Input<
-    ControlProjectIntelligenceConfigFilterIncludedCloudStorageBuckets
-  >?
-  includedCloudStorageBuckets;
-
+  final pulumi.Input<ControlProjectIntelligenceConfigFilterIncludedCloudStorageBuckets>? includedCloudStorageBuckets;
   /// Locations to include in the Storage Intelligence plan.
   /// Structure is documented below.
-  final pulumi.Input<
-    ControlProjectIntelligenceConfigFilterIncludedCloudStorageLocations
-  >?
-  includedCloudStorageLocations;
+  final pulumi.Input<ControlProjectIntelligenceConfigFilterIncludedCloudStorageLocations>? includedCloudStorageLocations;
 
   /// Creates a new [ControlProjectIntelligenceConfigFilter].
   /// [excludedCloudStorageBuckets] Buckets to exclude from the Storage Intelligence plan.
@@ -49,69 +34,20 @@ class ControlProjectIntelligenceConfigFilter {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'excludedCloudStorageBuckets':
-          ?pulumi.Input.mapOptionalInputValue<
-            ControlProjectIntelligenceConfigFilterExcludedCloudStorageBuckets,
-            Map<String, dynamic>
-          >(excludedCloudStorageBuckets, (value) => value.toMap()),
-      'excludedCloudStorageLocations':
-          ?pulumi.Input.mapOptionalInputValue<
-            ControlProjectIntelligenceConfigFilterExcludedCloudStorageLocations,
-            Map<String, dynamic>
-          >(excludedCloudStorageLocations, (value) => value.toMap()),
-      'includedCloudStorageBuckets':
-          ?pulumi.Input.mapOptionalInputValue<
-            ControlProjectIntelligenceConfigFilterIncludedCloudStorageBuckets,
-            Map<String, dynamic>
-          >(includedCloudStorageBuckets, (value) => value.toMap()),
-      'includedCloudStorageLocations':
-          ?pulumi.Input.mapOptionalInputValue<
-            ControlProjectIntelligenceConfigFilterIncludedCloudStorageLocations,
-            Map<String, dynamic>
-          >(includedCloudStorageLocations, (value) => value.toMap()),
+      'excludedCloudStorageBuckets': ?pulumi.Input.mapOptionalInputValue<ControlProjectIntelligenceConfigFilterExcludedCloudStorageBuckets, Map<String, dynamic>>(excludedCloudStorageBuckets, (value) => value.toMap()),
+      'excludedCloudStorageLocations': ?pulumi.Input.mapOptionalInputValue<ControlProjectIntelligenceConfigFilterExcludedCloudStorageLocations, Map<String, dynamic>>(excludedCloudStorageLocations, (value) => value.toMap()),
+      'includedCloudStorageBuckets': ?pulumi.Input.mapOptionalInputValue<ControlProjectIntelligenceConfigFilterIncludedCloudStorageBuckets, Map<String, dynamic>>(includedCloudStorageBuckets, (value) => value.toMap()),
+      'includedCloudStorageLocations': ?pulumi.Input.mapOptionalInputValue<ControlProjectIntelligenceConfigFilterIncludedCloudStorageLocations, Map<String, dynamic>>(includedCloudStorageLocations, (value) => value.toMap()),
     };
   }
 
-  factory ControlProjectIntelligenceConfigFilter.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ControlProjectIntelligenceConfigFilter.fromMap(Map<String, dynamic> map) {
     return ControlProjectIntelligenceConfigFilter(
-      excludedCloudStorageBuckets: (() {
-        final guardedValue = map['excludedCloudStorageBuckets'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ControlProjectIntelligenceConfigFilterExcludedCloudStorageBuckets.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      excludedCloudStorageLocations: (() {
-        final guardedValue = map['excludedCloudStorageLocations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ControlProjectIntelligenceConfigFilterExcludedCloudStorageLocations.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      includedCloudStorageBuckets: (() {
-        final guardedValue = map['includedCloudStorageBuckets'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ControlProjectIntelligenceConfigFilterIncludedCloudStorageBuckets.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      includedCloudStorageLocations: (() {
-        final guardedValue = map['includedCloudStorageLocations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ControlProjectIntelligenceConfigFilterIncludedCloudStorageLocations.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      excludedCloudStorageBuckets: (() { final guardedValue = map['excludedCloudStorageBuckets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ControlProjectIntelligenceConfigFilterExcludedCloudStorageBuckets.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      excludedCloudStorageLocations: (() { final guardedValue = map['excludedCloudStorageLocations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ControlProjectIntelligenceConfigFilterExcludedCloudStorageLocations.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      includedCloudStorageBuckets: (() { final guardedValue = map['includedCloudStorageBuckets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ControlProjectIntelligenceConfigFilterIncludedCloudStorageBuckets.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      includedCloudStorageLocations: (() { final guardedValue = map['includedCloudStorageLocations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ControlProjectIntelligenceConfigFilterIncludedCloudStorageLocations.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

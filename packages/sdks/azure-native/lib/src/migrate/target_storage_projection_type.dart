@@ -15,3 +15,4 @@ enum TargetStorageProjectionType {
     throw ArgumentError('Unknown TargetStorageProjectionType value: $value');
   }
 }
+

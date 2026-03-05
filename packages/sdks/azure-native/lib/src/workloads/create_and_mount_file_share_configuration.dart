@@ -7,10 +7,8 @@ class CreateAndMountFileShareConfiguration {
   /// The type of file share config.
   /// Expected value is 'CreateAndMount'.
   final pulumi.Input<String> configurationType;
-
   /// The name of transport file share resource group. This should be pre created by the customer. The app rg is used in case of missing input.
   final pulumi.Input<String>? resourceGroup;
-
   /// The name of file share storage account name . A custom name is used in case of missing input.
   final pulumi.Input<String>? storageAccountName;
 
@@ -32,23 +30,12 @@ class CreateAndMountFileShareConfiguration {
     };
   }
 
-  factory CreateAndMountFileShareConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CreateAndMountFileShareConfiguration.fromMap(Map<String, dynamic> map) {
     return CreateAndMountFileShareConfiguration(
-      configurationType: pulumi.Input.fromValue(
-        map['configurationType'] as String,
-      ),
-      resourceGroup: (() {
-        final guardedValue = map['resourceGroup'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      storageAccountName: (() {
-        final guardedValue = map['storageAccountName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      configurationType: pulumi.Input.fromValue(map['configurationType'] as String),
+      resourceGroup: (() { final guardedValue = map['resourceGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageAccountName: (() { final guardedValue = map['storageAccountName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

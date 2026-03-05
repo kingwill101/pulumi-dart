@@ -262,25 +262,19 @@ import 'delivery_channel_state.dart';
 class DeliveryChannel extends pulumi.CustomResource {
   /// The Alibaba Cloud Resource Name (ARN) of the role to be assumed by the delivery method.
   late final pulumi.Output<String> deliveryChannelAssumeRoleArn;
-
   /// The rule attached to the delivery method. This parameter is applicable only to delivery methods of the MNS type. Please refer to api [PutDeliveryChannel](https://www.alibabacloud.com/help/en/doc-detail/174253.htm) for example format.
   late final pulumi.Output<String> deliveryChannelCondition;
-
   /// The name of the delivery channel.
   late final pulumi.Output<String> deliveryChannelName;
-
   /// The ARN of the delivery destination. This parameter is required when you create a delivery method. The value must be in one of the following formats:
   /// - `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
   /// - `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
   /// - `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
   late final pulumi.Output<String> deliveryChannelTargetArn;
-
   /// The type of the delivery method. This parameter is required when you create a delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
   late final pulumi.Output<String> deliveryChannelType;
-
   /// The description of the delivery method.
   late final pulumi.Output<String> description;
-
   /// The status of the delivery method. Valid values: `0`: The delivery method is disabled., `1`: The delivery destination is enabled. This is the default value.
   late final pulumi.Output<int> status;
 
@@ -293,21 +287,15 @@ class DeliveryChannel extends pulumi.CustomResource {
     DeliveryChannelArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cfg/deliveryChannel:DeliveryChannel',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    deliveryChannelAssumeRoleArn = registerOutput<String>(
-      'deliveryChannelAssumeRoleArn',
-    );
-    deliveryChannelCondition = registerOutput<String>(
-      'deliveryChannelCondition',
-    );
+          'alicloud:cfg/deliveryChannel:DeliveryChannel',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    deliveryChannelAssumeRoleArn = registerOutput<String>('deliveryChannelAssumeRoleArn');
+    deliveryChannelCondition = registerOutput<String>('deliveryChannelCondition');
     deliveryChannelName = registerOutput<String>('deliveryChannelName');
-    deliveryChannelTargetArn = registerOutput<String>(
-      'deliveryChannelTargetArn',
-    );
+    deliveryChannelTargetArn = registerOutput<String>('deliveryChannelTargetArn');
     deliveryChannelType = registerOutput<String>('deliveryChannelType');
     description = registerOutput<String>('description');
     status = registerOutput<int>('status');
@@ -331,21 +319,15 @@ class DeliveryChannel extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cfg/deliveryChannel:DeliveryChannel',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    deliveryChannelAssumeRoleArn = registerOutput<String>(
-      'deliveryChannelAssumeRoleArn',
-    );
-    deliveryChannelCondition = registerOutput<String>(
-      'deliveryChannelCondition',
-    );
+          'alicloud:cfg/deliveryChannel:DeliveryChannel',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    deliveryChannelAssumeRoleArn = registerOutput<String>('deliveryChannelAssumeRoleArn');
+    deliveryChannelCondition = registerOutput<String>('deliveryChannelCondition');
     deliveryChannelName = registerOutput<String>('deliveryChannelName');
-    deliveryChannelTargetArn = registerOutput<String>(
-      'deliveryChannelTargetArn',
-    );
+    deliveryChannelTargetArn = registerOutput<String>('deliveryChannelTargetArn');
     deliveryChannelType = registerOutput<String>('deliveryChannelType');
     description = registerOutput<String>('description');
     status = registerOutput<int>('status');

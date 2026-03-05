@@ -9,10 +9,14 @@ class ClusterClusterTelemetry {
 
   /// Creates a new [ClusterClusterTelemetry].
   /// [type] Telemetry integration for the cluster. Supported values (`ENABLED, DISABLED, SYSTEM_ONLY`);
-  ClusterClusterTelemetry({required this.type});
+  ClusterClusterTelemetry({
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': type};
+    return <String, dynamic>{
+      'type': type,
+    };
   }
 
   factory ClusterClusterTelemetry.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class ClusterClusterTelemetry {
     );
   }
 }
+

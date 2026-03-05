@@ -8,17 +8,13 @@ class GetKeysResult {
   final String? descriptionRegex;
   final bool? enableDetails;
   final String? filters;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of KMS key IDs.
   final List<String> ids;
-
   /// A list of KMS keys. Each element contains the following attributes:
   final List<GetKeysKey> keys;
   final String? outputFile;
-
   /// Status of the key. Possible values: `Enabled`, `Disabled` and `PendingDeletion`.
   final String? status;
 
@@ -49,10 +45,7 @@ class GetKeysResult {
       'filters': ?filters,
       'id': id,
       'ids': ids,
-      'keys': pulumi.Input.encodeList<GetKeysKey, Map<String, dynamic>>(
-        keys,
-        (value) => value.toMap(),
-      ),
+      'keys': pulumi.Input.encodeList<GetKeysKey, Map<String, dynamic>>(keys, (value) => value.toMap()),
       'outputFile': ?outputFile,
       'status': ?status,
     };
@@ -60,37 +53,15 @@ class GetKeysResult {
 
   factory GetKeysResult.fromMap(Map<String, dynamic> map) {
     return GetKeysResult(
-      descriptionRegex: (() {
-        final guardedValue = map['descriptionRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      enableDetails: (() {
-        final guardedValue = map['enableDetails'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      filters: (() {
-        final guardedValue = map['filters'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      descriptionRegex: (() { final guardedValue = map['descriptionRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      enableDetails: (() { final guardedValue = map['enableDetails']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      keys: pulumi.Input.decodeList<GetKeysKey>(
-        map['keys']!,
-        (value) => GetKeysKey.fromMap((value as Map).cast<String, dynamic>()),
-      ),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      keys: pulumi.Input.decodeList<GetKeysKey>(map['keys']!, (value) => GetKeysKey.fromMap((value as Map).cast<String, dynamic>())),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

@@ -6,7 +6,6 @@ import 'get_crypto_key_versions_version_public_key.dart';
 class GetCryptoKeyVersionsVersion {
   /// The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
   final pulumi.Input<String> algorithm;
-
   /// The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the
   /// `gcp.kms.CryptoKey` resource/datasource.
   final pulumi.Input<String> cryptoKey;
@@ -44,18 +43,7 @@ class GetCryptoKeyVersionsVersion {
       'id': id,
       'name': name,
       'protectionLevel': protectionLevel,
-      'publicKeys':
-          pulumi.Input.mapInputValue<
-            List<GetCryptoKeyVersionsVersionPublicKey>,
-            List<Map<String, dynamic>>
-          >(
-            publicKeys,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetCryptoKeyVersionsVersionPublicKey,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'publicKeys': pulumi.Input.mapInputValue<List<GetCryptoKeyVersionsVersionPublicKey>, List<Map<String, dynamic>>>(publicKeys, (value) => pulumi.Input.encodeList<GetCryptoKeyVersionsVersionPublicKey, Map<String, dynamic>>(value, (value) => value.toMap())),
       'state': state,
       'version': version,
     };
@@ -68,16 +56,10 @@ class GetCryptoKeyVersionsVersion {
       id: pulumi.Input.fromValue(map['id'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       protectionLevel: pulumi.Input.fromValue(map['protectionLevel'] as String),
-      publicKeys: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetCryptoKeyVersionsVersionPublicKey>(
-          map['publicKeys']!,
-          (value) => GetCryptoKeyVersionsVersionPublicKey.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      publicKeys: pulumi.Input.fromValue(pulumi.Input.decodeList<GetCryptoKeyVersionsVersionPublicKey>(map['publicKeys']!, (value) => GetCryptoKeyVersionsVersionPublicKey.fromMap((value as Map).cast<String, dynamic>()))),
       state: pulumi.Input.fromValue(map['state'] as String),
       version: pulumi.Input.fromValue(map['version'] as int),
     );
   }
 }
+

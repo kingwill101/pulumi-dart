@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedGroupConfigResponse {
   /// The name of the Instance Group Manager for this group.
   final pulumi.Input<String> instanceGroupManagerName;
-
   /// The partial URI to the instance group manager for this group. E.g. projects/my-project/regions/us-central1/instanceGroupManagers/my-igm.
   final pulumi.Input<String> instanceGroupManagerUri;
-
   /// The name of the Instance Template used for the Managed Instance Group.
   final pulumi.Input<String> instanceTemplateName;
 
@@ -33,15 +31,10 @@ class ManagedGroupConfigResponse {
 
   factory ManagedGroupConfigResponse.fromMap(Map<String, dynamic> map) {
     return ManagedGroupConfigResponse(
-      instanceGroupManagerName: pulumi.Input.fromValue(
-        map['instanceGroupManagerName'] as String,
-      ),
-      instanceGroupManagerUri: pulumi.Input.fromValue(
-        map['instanceGroupManagerUri'] as String,
-      ),
-      instanceTemplateName: pulumi.Input.fromValue(
-        map['instanceTemplateName'] as String,
-      ),
+      instanceGroupManagerName: pulumi.Input.fromValue(map['instanceGroupManagerName'] as String),
+      instanceGroupManagerUri: pulumi.Input.fromValue(map['instanceGroupManagerUri'] as String),
+      instanceTemplateName: pulumi.Input.fromValue(map['instanceTemplateName'] as String),
     );
   }
 }
+

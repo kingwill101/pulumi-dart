@@ -9,10 +9,16 @@ class GetDistributionTenantParameter {
   /// Creates a new [GetDistributionTenantParameter].
   /// [name] Required.
   /// [value] Required.
-  GetDistributionTenantParameter({required this.name, required this.value});
+  GetDistributionTenantParameter({
+    required this.name,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'value': value};
+    return <String, dynamic>{
+      'name': name,
+      'value': value,
+    };
   }
 
   factory GetDistributionTenantParameter.fromMap(Map<String, dynamic> map) {
@@ -22,3 +28,4 @@ class GetDistributionTenantParameter {
     );
   }
 }
+

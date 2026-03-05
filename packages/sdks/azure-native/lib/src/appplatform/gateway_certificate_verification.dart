@@ -15,3 +15,4 @@ enum GatewayCertificateVerification {
     throw ArgumentError('Unknown GatewayCertificateVerification value: $value');
   }
 }
+

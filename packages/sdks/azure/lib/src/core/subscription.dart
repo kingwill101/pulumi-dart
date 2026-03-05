@@ -538,26 +538,20 @@ import 'subscription_state.dart';
 class Subscription extends pulumi.CustomResource {
   /// The Alias name for the subscription. This provider will generate a new GUID if this is not supplied. Changing this forces a new Subscription to be created.
   late final pulumi.Output<String> alias;
-
   /// The Azure Billing Scope ID. Can be a Microsoft Customer Account Billing Scope ID, a Microsoft Partner Account Billing Scope ID or an Enrollment Billing Scope ID.
   late final pulumi.Output<String?> billingScopeId;
-
   /// The ID of the Subscription. Changing this forces a new Subscription to be created.
   ///
   /// &gt; **NOTE:** This value can be specified only for adopting control of an existing Subscription, it cannot be used to provide a custom Subscription ID.
   ///
   /// &gt; **NOTE:** Either `billing_scope_id` or `subscription_id` has to be specified.
   late final pulumi.Output<String> subscriptionId;
-
   /// The Name of the Subscription. This is the Display Name in the portal.
   late final pulumi.Output<String> subscriptionName;
-
   /// A mapping of tags to assign to the Subscription.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The ID of the Tenant to which the subscription belongs.
   late final pulumi.Output<String> tenantId;
-
   /// The workload type of the Subscription. Possible values are `Production` (default) and `DevTest`. Changing this forces a new Subscription to be created.
   late final pulumi.Output<String?> workload;
 
@@ -570,11 +564,11 @@ class Subscription extends pulumi.CustomResource {
     SubscriptionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:core/subscription:Subscription',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:core/subscription:Subscription',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alias = registerOutput<String>('alias');
     billingScopeId = registerOutput<String?>('billingScopeId');
     subscriptionId = registerOutput<String>('subscriptionId');
@@ -602,11 +596,11 @@ class Subscription extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:core/subscription:Subscription',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:core/subscription:Subscription',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alias = registerOutput<String>('alias');
     billingScopeId = registerOutput<String?>('billingScopeId');
     subscriptionId = registerOutput<String>('subscriptionId');

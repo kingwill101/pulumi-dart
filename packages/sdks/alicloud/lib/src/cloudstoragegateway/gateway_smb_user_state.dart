@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GatewaySmbUserState {
   /// The Gateway ID of the Gateway SMB User.
   final pulumi.Input<String>? gatewayId;
-
   /// The password of the Gateway SMB User.
   final pulumi.Input<String>? password;
-
   /// The username of the Gateway SMB User.
   final pulumi.Input<String>? username;
 
@@ -17,7 +15,11 @@ class GatewaySmbUserState {
   /// [gatewayId] The Gateway ID of the Gateway SMB User.
   /// [password] The password of the Gateway SMB User.
   /// [username] The username of the Gateway SMB User.
-  GatewaySmbUserState({this.gatewayId, this.password, this.username});
+  GatewaySmbUserState({
+    this.gatewayId,
+    this.password,
+    this.username,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class GatewaySmbUserState {
 
   factory GatewaySmbUserState.fromMap(Map<String, dynamic> map) {
     return GatewaySmbUserState(
-      gatewayId: (() {
-        final guardedValue = map['gatewayId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      password: (() {
-        final guardedValue = map['password'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      username: (() {
-        final guardedValue = map['username'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      gatewayId: (() { final guardedValue = map['gatewayId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      username: (() { final guardedValue = map['username']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

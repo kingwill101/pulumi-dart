@@ -6,31 +6,22 @@ import 'app_seen_data_response.dart';
 class GetPostRuleCountersResult {
   /// apps seen
   final AppSeenDataResponse? appSeen;
-
   /// firewall name
   final String? firewallName;
-
   /// hit count
   final int? hitCount;
-
   /// last updated timestamp
   final String? lastUpdatedTimestamp;
-
   /// priority number
   final String priority;
-
   /// timestamp of request
   final String? requestTimestamp;
-
   /// rule list name
   final String? ruleListName;
-
   /// rule name
   final String ruleName;
-
   /// rule Stack Name
   final String? ruleStackName;
-
   /// timestamp of response
   final String? timestamp;
 
@@ -75,50 +66,17 @@ class GetPostRuleCountersResult {
 
   factory GetPostRuleCountersResult.fromMap(Map<String, dynamic> map) {
     return GetPostRuleCountersResult(
-      appSeen: (() {
-        final guardedValue = map['appSeen'];
-        if (guardedValue == null) return null;
-        return AppSeenDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      firewallName: (() {
-        final guardedValue = map['firewallName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      hitCount: (() {
-        final guardedValue = map['hitCount'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      lastUpdatedTimestamp: (() {
-        final guardedValue = map['lastUpdatedTimestamp'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      appSeen: (() { final guardedValue = map['appSeen']; if (guardedValue == null) return null; return AppSeenDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      firewallName: (() { final guardedValue = map['firewallName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      hitCount: (() { final guardedValue = map['hitCount']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      lastUpdatedTimestamp: (() { final guardedValue = map['lastUpdatedTimestamp']; if (guardedValue == null) return null; return guardedValue as String; })(),
       priority: map['priority'] as String,
-      requestTimestamp: (() {
-        final guardedValue = map['requestTimestamp'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      ruleListName: (() {
-        final guardedValue = map['ruleListName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      requestTimestamp: (() { final guardedValue = map['requestTimestamp']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ruleListName: (() { final guardedValue = map['ruleListName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       ruleName: map['ruleName'] as String,
-      ruleStackName: (() {
-        final guardedValue = map['ruleStackName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      timestamp: (() {
-        final guardedValue = map['timestamp'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      ruleStackName: (() { final guardedValue = map['ruleStackName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      timestamp: (() { final guardedValue = map['timestamp']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

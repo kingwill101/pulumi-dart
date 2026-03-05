@@ -9,40 +9,18 @@ import 'plan_workflow_step_parallel_config_step_eks_resource_scaling_config_ungr
 class PlanWorkflowStepParallelConfigStepEksResourceScalingConfig {
   /// Capacity monitoring approach. Valid values: `sampledMaxInLast24Hours`, `autoscalingMaxInLast24Hours`.
   final pulumi.Input<String> capacityMonitoringApproach;
-
   /// List of EKS clusters. See EKS Clusters below.
-  final pulumi.Input<
-    List<PlanWorkflowStepParallelConfigStepEksResourceScalingConfigEksCluster>
-  >?
-  eksClusters;
-
+  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepEksResourceScalingConfigEksCluster>>? eksClusters;
   /// Kubernetes resource type. See Kubernetes Resource Type below.
-  final pulumi.Input<
-    List<
-      PlanWorkflowStepParallelConfigStepEksResourceScalingConfigKubernetesResourceType
-    >
-  >?
-  kubernetesResourceTypes;
-
+  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepEksResourceScalingConfigKubernetesResourceType>>? kubernetesResourceTypes;
   /// List of scaling resources. See Scaling Resources below.
-  final pulumi.Input<
-    List<
-      PlanWorkflowStepParallelConfigStepEksResourceScalingConfigScalingResource
-    >
-  >?
-  scalingResources;
-
+  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepEksResourceScalingConfigScalingResource>>? scalingResources;
   /// Target capacity percentage.
   final pulumi.Input<int> targetPercent;
-
   /// Timeout in minutes.
   final pulumi.Input<int>? timeoutMinutes;
-
   /// Ungraceful behavior configuration. See Ungraceful Capacity below.
-  final pulumi.Input<
-    List<PlanWorkflowStepParallelConfigStepEksResourceScalingConfigUngraceful>
-  >?
-  ungracefuls;
+  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepEksResourceScalingConfigUngraceful>>? ungracefuls;
 
   /// Creates a new [PlanWorkflowStepParallelConfigStepEksResourceScalingConfig].
   /// [capacityMonitoringApproach] Capacity monitoring approach. Valid values: `sampledMaxInLast24Hours`, `autoscalingMaxInLast24Hours`.
@@ -65,140 +43,25 @@ class PlanWorkflowStepParallelConfigStepEksResourceScalingConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'capacityMonitoringApproach': capacityMonitoringApproach,
-      'eksClusters':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<
-              PlanWorkflowStepParallelConfigStepEksResourceScalingConfigEksCluster
-            >,
-            List<Map<String, dynamic>>
-          >(
-            eksClusters,
-            (value) =>
-                pulumi.Input.encodeList<
-                  PlanWorkflowStepParallelConfigStepEksResourceScalingConfigEksCluster,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'kubernetesResourceTypes':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<
-              PlanWorkflowStepParallelConfigStepEksResourceScalingConfigKubernetesResourceType
-            >,
-            List<Map<String, dynamic>>
-          >(
-            kubernetesResourceTypes,
-            (value) =>
-                pulumi.Input.encodeList<
-                  PlanWorkflowStepParallelConfigStepEksResourceScalingConfigKubernetesResourceType,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'scalingResources':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<
-              PlanWorkflowStepParallelConfigStepEksResourceScalingConfigScalingResource
-            >,
-            List<Map<String, dynamic>>
-          >(
-            scalingResources,
-            (value) =>
-                pulumi.Input.encodeList<
-                  PlanWorkflowStepParallelConfigStepEksResourceScalingConfigScalingResource,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'eksClusters': ?pulumi.Input.mapOptionalInputValue<List<PlanWorkflowStepParallelConfigStepEksResourceScalingConfigEksCluster>, List<Map<String, dynamic>>>(eksClusters, (value) => pulumi.Input.encodeList<PlanWorkflowStepParallelConfigStepEksResourceScalingConfigEksCluster, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'kubernetesResourceTypes': ?pulumi.Input.mapOptionalInputValue<List<PlanWorkflowStepParallelConfigStepEksResourceScalingConfigKubernetesResourceType>, List<Map<String, dynamic>>>(kubernetesResourceTypes, (value) => pulumi.Input.encodeList<PlanWorkflowStepParallelConfigStepEksResourceScalingConfigKubernetesResourceType, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'scalingResources': ?pulumi.Input.mapOptionalInputValue<List<PlanWorkflowStepParallelConfigStepEksResourceScalingConfigScalingResource>, List<Map<String, dynamic>>>(scalingResources, (value) => pulumi.Input.encodeList<PlanWorkflowStepParallelConfigStepEksResourceScalingConfigScalingResource, Map<String, dynamic>>(value, (value) => value.toMap())),
       'targetPercent': targetPercent,
       'timeoutMinutes': ?timeoutMinutes,
-      'ungracefuls':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<
-              PlanWorkflowStepParallelConfigStepEksResourceScalingConfigUngraceful
-            >,
-            List<Map<String, dynamic>>
-          >(
-            ungracefuls,
-            (value) =>
-                pulumi.Input.encodeList<
-                  PlanWorkflowStepParallelConfigStepEksResourceScalingConfigUngraceful,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'ungracefuls': ?pulumi.Input.mapOptionalInputValue<List<PlanWorkflowStepParallelConfigStepEksResourceScalingConfigUngraceful>, List<Map<String, dynamic>>>(ungracefuls, (value) => pulumi.Input.encodeList<PlanWorkflowStepParallelConfigStepEksResourceScalingConfigUngraceful, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory PlanWorkflowStepParallelConfigStepEksResourceScalingConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PlanWorkflowStepParallelConfigStepEksResourceScalingConfig.fromMap(Map<String, dynamic> map) {
     return PlanWorkflowStepParallelConfigStepEksResourceScalingConfig(
-      capacityMonitoringApproach: pulumi.Input.fromValue(
-        map['capacityMonitoringApproach'] as String,
-      ),
-      eksClusters: (() {
-        final guardedValue = map['eksClusters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            PlanWorkflowStepParallelConfigStepEksResourceScalingConfigEksCluster
-          >(
-            guardedValue,
-            (value) =>
-                PlanWorkflowStepParallelConfigStepEksResourceScalingConfigEksCluster.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
-      kubernetesResourceTypes: (() {
-        final guardedValue = map['kubernetesResourceTypes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            PlanWorkflowStepParallelConfigStepEksResourceScalingConfigKubernetesResourceType
-          >(
-            guardedValue,
-            (value) =>
-                PlanWorkflowStepParallelConfigStepEksResourceScalingConfigKubernetesResourceType.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
-      scalingResources: (() {
-        final guardedValue = map['scalingResources'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            PlanWorkflowStepParallelConfigStepEksResourceScalingConfigScalingResource
-          >(
-            guardedValue,
-            (value) =>
-                PlanWorkflowStepParallelConfigStepEksResourceScalingConfigScalingResource.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
+      capacityMonitoringApproach: pulumi.Input.fromValue(map['capacityMonitoringApproach'] as String),
+      eksClusters: (() { final guardedValue = map['eksClusters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PlanWorkflowStepParallelConfigStepEksResourceScalingConfigEksCluster>(guardedValue, (value) => PlanWorkflowStepParallelConfigStepEksResourceScalingConfigEksCluster.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      kubernetesResourceTypes: (() { final guardedValue = map['kubernetesResourceTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PlanWorkflowStepParallelConfigStepEksResourceScalingConfigKubernetesResourceType>(guardedValue, (value) => PlanWorkflowStepParallelConfigStepEksResourceScalingConfigKubernetesResourceType.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      scalingResources: (() { final guardedValue = map['scalingResources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PlanWorkflowStepParallelConfigStepEksResourceScalingConfigScalingResource>(guardedValue, (value) => PlanWorkflowStepParallelConfigStepEksResourceScalingConfigScalingResource.fromMap((value as Map).cast<String, dynamic>()))); })(),
       targetPercent: pulumi.Input.fromValue(map['targetPercent'] as int),
-      timeoutMinutes: (() {
-        final guardedValue = map['timeoutMinutes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      ungracefuls: (() {
-        final guardedValue = map['ungracefuls'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            PlanWorkflowStepParallelConfigStepEksResourceScalingConfigUngraceful
-          >(
-            guardedValue,
-            (value) =>
-                PlanWorkflowStepParallelConfigStepEksResourceScalingConfigUngraceful.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
+      timeoutMinutes: (() { final guardedValue = map['timeoutMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      ungracefuls: (() { final guardedValue = map['ungracefuls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PlanWorkflowStepParallelConfigStepEksResourceScalingConfigUngraceful>(guardedValue, (value) => PlanWorkflowStepParallelConfigStepEksResourceScalingConfigUngraceful.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

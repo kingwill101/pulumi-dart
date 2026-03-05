@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NonResourceRulePatchAuthorizationK8sIoV1beta1 {
   /// NonResourceURLs is a set of partial urls that a user should have access to.  *s are allowed, but only as the full, final step in the path.  "*" means all.
   final pulumi.Input<List<String>>? nonResourceURLs;
-
   /// Verb is a list of kubernetes non-resource API verbs, like: get, post, put, delete, patch, head, options.  "*" means all.
   final pulumi.Input<List<String>>? verbs;
 
@@ -25,20 +24,11 @@ class NonResourceRulePatchAuthorizationK8sIoV1beta1 {
     };
   }
 
-  factory NonResourceRulePatchAuthorizationK8sIoV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NonResourceRulePatchAuthorizationK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return NonResourceRulePatchAuthorizationK8sIoV1beta1(
-      nonResourceURLs: (() {
-        final guardedValue = map['nonResourceURLs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      verbs: (() {
-        final guardedValue = map['verbs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      nonResourceURLs: (() { final guardedValue = map['nonResourceURLs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      verbs: (() { final guardedValue = map['verbs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

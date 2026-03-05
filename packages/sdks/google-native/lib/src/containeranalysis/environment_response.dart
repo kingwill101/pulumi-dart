@@ -8,17 +8,20 @@ class EnvironmentResponse {
 
   /// Creates a new [EnvironmentResponse].
   /// [customValues] Required.
-  EnvironmentResponse({required this.customValues});
+  EnvironmentResponse({
+    required this.customValues,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'customValues': customValues};
+    return <String, dynamic>{
+      'customValues': customValues,
+    };
   }
 
   factory EnvironmentResponse.fromMap(Map<String, dynamic> map) {
     return EnvironmentResponse(
-      customValues: pulumi.Input.fromValue(
-        (map['customValues'] as Map).cast<String, String>(),
-      ),
+      customValues: pulumi.Input.fromValue((map['customValues'] as Map).cast<String, String>()),
     );
   }
 }
+

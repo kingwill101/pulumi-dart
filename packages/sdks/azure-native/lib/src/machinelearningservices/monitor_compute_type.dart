@@ -14,3 +14,4 @@ enum MonitorComputeType {
     throw ArgumentError('Unknown MonitorComputeType value: $value');
   }
 }
+

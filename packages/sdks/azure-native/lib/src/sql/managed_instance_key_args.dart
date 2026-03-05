@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedInstanceKeyArgs {
   /// The name of the managed instance key to be operated on (updated or created).
   final pulumi.Input<String>? keyName;
-
   /// The name of the managed instance.
   final pulumi.Input<String> managedInstanceName;
-
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
-
   /// The key type like 'ServiceManaged', 'AzureKeyVault'.
   final pulumi.Input<String> serverKeyType;
-
   /// The URI of the key. If the ServerKeyType is AzureKeyVault, then the URI is required.
   final pulumi.Input<String>? uri;
 
@@ -48,23 +44,12 @@ class ManagedInstanceKeyArgs {
 
   factory ManagedInstanceKeyArgs.fromMap(Map<String, dynamic> map) {
     return ManagedInstanceKeyArgs(
-      keyName: (() {
-        final guardedValue = map['keyName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      managedInstanceName: pulumi.Input.fromValue(
-        map['managedInstanceName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      keyName: (() { final guardedValue = map['keyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      managedInstanceName: pulumi.Input.fromValue(map['managedInstanceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serverKeyType: pulumi.Input.fromValue(map['serverKeyType'] as String),
-      uri: (() {
-        final guardedValue = map['uri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      uri: (() { final guardedValue = map['uri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

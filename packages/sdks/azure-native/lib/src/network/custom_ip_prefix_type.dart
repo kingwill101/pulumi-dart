@@ -16,3 +16,4 @@ enum CustomIpPrefixType {
     throw ArgumentError('Unknown CustomIpPrefixType value: $value');
   }
 }
+

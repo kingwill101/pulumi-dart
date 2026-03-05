@@ -6,22 +6,16 @@ enum TlsInspectionPolicyTlsFeatureProfileNetworksecurityV1beta1 {
   profileRestricted("PROFILE_RESTRICTED"),
   profileCustom("PROFILE_CUSTOM");
 
-  const TlsInspectionPolicyTlsFeatureProfileNetworksecurityV1beta1(
-    this.wireValue,
-  );
+  const TlsInspectionPolicyTlsFeatureProfileNetworksecurityV1beta1(this.wireValue);
   final String wireValue;
 
-  static TlsInspectionPolicyTlsFeatureProfileNetworksecurityV1beta1 fromValue(
-    String value,
-  ) {
-    for (final item
-        in TlsInspectionPolicyTlsFeatureProfileNetworksecurityV1beta1.values) {
+  static TlsInspectionPolicyTlsFeatureProfileNetworksecurityV1beta1 fromValue(String value) {
+    for (final item in TlsInspectionPolicyTlsFeatureProfileNetworksecurityV1beta1.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown TlsInspectionPolicyTlsFeatureProfileNetworksecurityV1beta1 value: $value',
-    );
+    throw ArgumentError('Unknown TlsInspectionPolicyTlsFeatureProfileNetworksecurityV1beta1 value: $value');
   }
 }
+

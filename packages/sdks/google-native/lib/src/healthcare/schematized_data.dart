@@ -6,31 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SchematizedData {
   /// JSON output of the parser.
   final pulumi.Input<String>? data;
-
   /// The error output of the parser.
   final pulumi.Input<String>? error;
 
   /// Creates a new [SchematizedData].
   /// [data] JSON output of the parser.
   /// [error] The error output of the parser.
-  SchematizedData({this.data, this.error});
+  SchematizedData({
+    this.data,
+    this.error,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'data': ?data, 'error': ?error};
+    return <String, dynamic>{
+      'data': ?data,
+      'error': ?error,
+    };
   }
 
   factory SchematizedData.fromMap(Map<String, dynamic> map) {
     return SchematizedData(
-      data: (() {
-        final guardedValue = map['data'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      error: (() {
-        final guardedValue = map['error'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      data: (() { final guardedValue = map['data']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      error: (() { final guardedValue = map['error']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

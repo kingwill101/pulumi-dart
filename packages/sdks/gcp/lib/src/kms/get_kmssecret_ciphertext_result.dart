@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getKMSSecretCiphertext.
 class GetKMSSecretCiphertextResult {
   /// Contains the result of encrypting the provided plaintext, encoded in base64.
   final String ciphertext;
   final String cryptoKey;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String plaintext;
@@ -40,3 +40,4 @@ class GetKMSSecretCiphertextResult {
     );
   }
 }
+

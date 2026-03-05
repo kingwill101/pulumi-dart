@@ -9,19 +9,20 @@ class SSETypeEnumValue {
 
   /// Creates a new [SSETypeEnumValue].
   /// [value] Property value
-  SSETypeEnumValue({this.value});
+  SSETypeEnumValue({
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': ?value};
+    return <String, dynamic>{
+      'value': ?value,
+    };
   }
 
   factory SSETypeEnumValue.fromMap(Map<String, dynamic> map) {
     return SSETypeEnumValue(
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

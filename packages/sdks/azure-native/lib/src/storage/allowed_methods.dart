@@ -22,3 +22,4 @@ enum AllowedMethods {
     throw ArgumentError('Unknown AllowedMethods value: $value');
   }
 }
+

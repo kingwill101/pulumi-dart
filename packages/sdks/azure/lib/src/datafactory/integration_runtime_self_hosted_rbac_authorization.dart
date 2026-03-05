@@ -12,17 +12,20 @@ class IntegrationRuntimeSelfHostedRbacAuthorization {
 
   /// Creates a new [IntegrationRuntimeSelfHostedRbacAuthorization].
   /// [resourceId] The resource identifier of the integration runtime to be shared.
-  IntegrationRuntimeSelfHostedRbacAuthorization({required this.resourceId});
+  IntegrationRuntimeSelfHostedRbacAuthorization({
+    required this.resourceId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'resourceId': resourceId};
+    return <String, dynamic>{
+      'resourceId': resourceId,
+    };
   }
 
-  factory IntegrationRuntimeSelfHostedRbacAuthorization.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory IntegrationRuntimeSelfHostedRbacAuthorization.fromMap(Map<String, dynamic> map) {
     return IntegrationRuntimeSelfHostedRbacAuthorization(
       resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
     );
   }
 }
+

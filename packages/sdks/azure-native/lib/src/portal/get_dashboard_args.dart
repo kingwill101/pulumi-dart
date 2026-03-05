@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDashboardArgs {
   /// The name of the dashboard.
   final pulumi.Input<String> dashboardName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -31,9 +30,8 @@ class GetDashboardArgs {
   factory GetDashboardArgs.fromMap(Map<String, dynamic> map) {
     return GetDashboardArgs(
       dashboardName: pulumi.Input.fromValue(map['dashboardName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

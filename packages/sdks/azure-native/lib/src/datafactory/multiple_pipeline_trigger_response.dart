@@ -7,16 +7,12 @@ import 'trigger_pipeline_reference_response.dart';
 class MultiplePipelineTriggerResponse {
   /// List of tags that can be used for describing the trigger.
   final pulumi.Input<List<dynamic>>? annotations;
-
   /// Trigger description.
   final pulumi.Input<String>? description;
-
   /// Pipelines that need to be started.
   final pulumi.Input<List<TriggerPipelineReferenceResponse>>? pipelines;
-
   /// Indicates if trigger is running or not. Updated when Start/Stop APIs are called on the Trigger.
   final pulumi.Input<String> runtimeState;
-
   /// Trigger type.
   /// Expected value is 'MultiplePipelineTrigger'.
   final pulumi.Input<String> type;
@@ -39,18 +35,7 @@ class MultiplePipelineTriggerResponse {
     return <String, dynamic>{
       'annotations': ?annotations,
       'description': ?description,
-      'pipelines':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<TriggerPipelineReferenceResponse>,
-            List<Map<String, dynamic>>
-          >(
-            pipelines,
-            (value) =>
-                pulumi.Input.encodeList<
-                  TriggerPipelineReferenceResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'pipelines': ?pulumi.Input.mapOptionalInputValue<List<TriggerPipelineReferenceResponse>, List<Map<String, dynamic>>>(pipelines, (value) => pulumi.Input.encodeList<TriggerPipelineReferenceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'runtimeState': runtimeState,
       'type': type,
     };
@@ -58,30 +43,12 @@ class MultiplePipelineTriggerResponse {
 
   factory MultiplePipelineTriggerResponse.fromMap(Map<String, dynamic> map) {
     return MultiplePipelineTriggerResponse(
-      annotations: (() {
-        final guardedValue = map['annotations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>());
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pipelines: (() {
-        final guardedValue = map['pipelines'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<TriggerPipelineReferenceResponse>(
-            guardedValue,
-            (value) => TriggerPipelineReferenceResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pipelines: (() { final guardedValue = map['pipelines']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TriggerPipelineReferenceResponse>(guardedValue, (value) => TriggerPipelineReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       runtimeState: pulumi.Input.fromValue(map['runtimeState'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

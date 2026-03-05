@@ -10,21 +10,20 @@ class RuntimeMetric {
 
   /// Creates a new [RuntimeMetric].
   /// [systemMetrics] (Output)
-  RuntimeMetric({this.systemMetrics});
+  RuntimeMetric({
+    this.systemMetrics,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'systemMetrics': ?systemMetrics};
+    return <String, dynamic>{
+      'systemMetrics': ?systemMetrics,
+    };
   }
 
   factory RuntimeMetric.fromMap(Map<String, dynamic> map) {
     return RuntimeMetric(
-      systemMetrics: (() {
-        final guardedValue = map['systemMetrics'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      systemMetrics: (() { final guardedValue = map['systemMetrics']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

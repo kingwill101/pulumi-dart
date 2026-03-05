@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedHardwareSecurityModuleNetworkAcls {
   /// Specifies which traffic can bypass the network rules. Possible values are `AzureServices` and `None`.
   final pulumi.Input<String> bypass;
-
   /// The Default Action to use. Possible values are `Allow` and `Deny`.
   final pulumi.Input<String> defaultAction;
 
@@ -18,15 +17,17 @@ class ManagedHardwareSecurityModuleNetworkAcls {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'bypass': bypass, 'defaultAction': defaultAction};
+    return <String, dynamic>{
+      'bypass': bypass,
+      'defaultAction': defaultAction,
+    };
   }
 
-  factory ManagedHardwareSecurityModuleNetworkAcls.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ManagedHardwareSecurityModuleNetworkAcls.fromMap(Map<String, dynamic> map) {
     return ManagedHardwareSecurityModuleNetworkAcls(
       bypass: pulumi.Input.fromValue(map['bypass'] as String),
       defaultAction: pulumi.Input.fromValue(map['defaultAction'] as String),
     );
   }
 }
+

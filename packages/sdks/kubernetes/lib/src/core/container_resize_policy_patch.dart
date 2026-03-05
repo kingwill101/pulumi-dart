@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContainerResizePolicyPatch {
   /// Name of the resource to which this resource resize policy applies. Supported values: cpu, memory.
   final pulumi.Input<String>? resourceName;
-
   /// Restart policy to apply when specified resource is resized. If not specified, it defaults to NotRequired.
   final pulumi.Input<String>? restartPolicy;
 
   /// Creates a new [ContainerResizePolicyPatch].
   /// [resourceName] Name of the resource to which this resource resize policy applies. Supported values: cpu, memory.
   /// [restartPolicy] Restart policy to apply when specified resource is resized. If not specified, it defaults to NotRequired.
-  ContainerResizePolicyPatch({this.resourceName, this.restartPolicy});
+  ContainerResizePolicyPatch({
+    this.resourceName,
+    this.restartPolicy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class ContainerResizePolicyPatch {
 
   factory ContainerResizePolicyPatch.fromMap(Map<String, dynamic> map) {
     return ContainerResizePolicyPatch(
-      resourceName: (() {
-        final guardedValue = map['resourceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      restartPolicy: (() {
-        final guardedValue = map['restartPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      resourceName: (() { final guardedValue = map['resourceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      restartPolicy: (() { final guardedValue = map['restartPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

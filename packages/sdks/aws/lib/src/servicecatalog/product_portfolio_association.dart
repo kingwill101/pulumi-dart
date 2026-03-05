@@ -112,18 +112,14 @@ import 'product_portfolio_association_state.dart';
 class ProductPortfolioAssociation extends pulumi.CustomResource {
   /// Language code. Valid values: `en` (English), `jp` (Japanese), `zh` (Chinese). Default value is `en`.
   late final pulumi.Output<String?> acceptLanguage;
-
   /// Portfolio identifier.
   late final pulumi.Output<String> portfolioId;
-
   /// Product identifier.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> productId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Identifier of the source portfolio.
   late final pulumi.Output<String?> sourcePortfolioId;
 
@@ -136,11 +132,11 @@ class ProductPortfolioAssociation extends pulumi.CustomResource {
     ProductPortfolioAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:servicecatalog/productPortfolioAssociation:ProductPortfolioAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:servicecatalog/productPortfolioAssociation:ProductPortfolioAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     acceptLanguage = registerOutput<String?>('acceptLanguage');
     portfolioId = registerOutput<String>('portfolioId');
     productId = registerOutput<String>('productId');
@@ -166,11 +162,11 @@ class ProductPortfolioAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:servicecatalog/productPortfolioAssociation:ProductPortfolioAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:servicecatalog/productPortfolioAssociation:ProductPortfolioAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     acceptLanguage = registerOutput<String?>('acceptLanguage');
     portfolioId = registerOutput<String>('portfolioId');
     productId = registerOutput<String>('productId');

@@ -9,10 +9,14 @@ class GooglePrivacyDlpV2WordListResponse {
 
   /// Creates a new [GooglePrivacyDlpV2WordListResponse].
   /// [words] Words or phrases defining the dictionary. The dictionary must contain at least one phrase and every phrase must contain at least 2 characters that are letters or digits. [required]
-  GooglePrivacyDlpV2WordListResponse({required this.words});
+  GooglePrivacyDlpV2WordListResponse({
+    required this.words,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'words': words};
+    return <String, dynamic>{
+      'words': words,
+    };
   }
 
   factory GooglePrivacyDlpV2WordListResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class GooglePrivacyDlpV2WordListResponse {
     );
   }
 }
+

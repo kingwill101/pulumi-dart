@@ -8,22 +8,16 @@ enum GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRe
   rocky("ROCKY"),
   epel("EPEL");
 
-  const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase(
-    this.wireValue,
-  );
+  const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase(this.wireValue);
   final String wireValue;
 
-  static GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase
-  fromValue(String value) {
-    for (final item
-        in GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase
-            .values) {
+  static GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase fromValue(String value) {
+    for (final item in GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase value: $value',
-    );
+    throw ArgumentError('Unknown GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase value: $value');
   }
 }
+

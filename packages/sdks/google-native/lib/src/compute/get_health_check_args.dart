@@ -13,20 +13,23 @@ class GetHealthCheckArgs {
   /// Creates a new [GetHealthCheckArgs].
   /// [healthCheck] Required.
   /// [project] Optional.
-  GetHealthCheckArgs({required this.healthCheck, this.project});
+  GetHealthCheckArgs({
+    required this.healthCheck,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'healthCheck': healthCheck, 'project': ?project};
+    return <String, dynamic>{
+      'healthCheck': healthCheck,
+      'project': ?project,
+    };
   }
 
   factory GetHealthCheckArgs.fromMap(Map<String, dynamic> map) {
     return GetHealthCheckArgs(
       healthCheck: pulumi.Input.fromValue(map['healthCheck'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

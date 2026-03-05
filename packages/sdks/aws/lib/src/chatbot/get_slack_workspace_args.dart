@@ -9,27 +9,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSlackWorkspaceArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Slack workspace name configured with AWS Chatbot.
   final pulumi.Input<String> slackTeamName;
 
   /// Creates a new [GetSlackWorkspaceArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [slackTeamName] Slack workspace name configured with AWS Chatbot.
-  GetSlackWorkspaceArgs({this.region, required this.slackTeamName});
+  GetSlackWorkspaceArgs({
+    this.region,
+    required this.slackTeamName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'region': ?region, 'slackTeamName': slackTeamName};
+    return <String, dynamic>{
+      'region': ?region,
+      'slackTeamName': slackTeamName,
+    };
   }
 
   factory GetSlackWorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return GetSlackWorkspaceArgs(
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       slackTeamName: pulumi.Input.fromValue(map['slackTeamName'] as String),
     );
   }
 }
+

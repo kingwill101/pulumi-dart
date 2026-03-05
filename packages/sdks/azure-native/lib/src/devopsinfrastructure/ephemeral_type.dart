@@ -16,3 +16,4 @@ enum EphemeralType {
     throw ArgumentError('Unknown EphemeralType value: $value');
   }
 }
+

@@ -18,3 +18,4 @@ enum NetworkInterfaceMigrationPhase {
     throw ArgumentError('Unknown NetworkInterfaceMigrationPhase value: $value');
   }
 }
+

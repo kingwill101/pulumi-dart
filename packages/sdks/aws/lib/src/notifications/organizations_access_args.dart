@@ -15,31 +15,23 @@ class OrganizationsAccessArgs {
   /// Creates a new [OrganizationsAccessArgs].
   /// [enabled] Whether to enable organizations access for AWS User Notifications in AWS Organizations. When set to `true`, enables organizations access. When set to `false`, disables organizations access.
   /// [timeouts] Optional.
-  OrganizationsAccessArgs({required this.enabled, this.timeouts});
+  OrganizationsAccessArgs({
+    required this.enabled,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enabled': enabled,
-      'timeouts':
-          ?pulumi.Input.mapOptionalInputValue<
-            OrganizationsAccessTimeouts,
-            Map<String, dynamic>
-          >(timeouts, (value) => value.toMap()),
+      'timeouts': ?pulumi.Input.mapOptionalInputValue<OrganizationsAccessTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
     };
   }
 
   factory OrganizationsAccessArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationsAccessArgs(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
-      timeouts: (() {
-        final guardedValue = map['timeouts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          OrganizationsAccessTimeouts.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      timeouts: (() { final guardedValue = map['timeouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OrganizationsAccessTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

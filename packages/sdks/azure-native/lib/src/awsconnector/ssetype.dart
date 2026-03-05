@@ -16,3 +16,4 @@ enum SSEType {
     throw ArgumentError('Unknown SSEType value: $value');
   }
 }
+

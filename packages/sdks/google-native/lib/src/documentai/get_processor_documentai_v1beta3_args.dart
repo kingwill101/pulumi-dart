@@ -33,11 +33,8 @@ class GetProcessorDocumentaiV1beta3Args {
     return GetProcessorDocumentaiV1beta3Args(
       location: pulumi.Input.fromValue(map['location'] as String),
       processorId: pulumi.Input.fromValue(map['processorId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

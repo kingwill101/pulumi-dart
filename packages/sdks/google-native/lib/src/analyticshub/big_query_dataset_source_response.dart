@@ -9,10 +9,14 @@ class BigQueryDatasetSourceResponse {
 
   /// Creates a new [BigQueryDatasetSourceResponse].
   /// [dataset] Resource name of the dataset source for this listing. e.g. `projects/myproject/datasets/123`
-  BigQueryDatasetSourceResponse({required this.dataset});
+  BigQueryDatasetSourceResponse({
+    required this.dataset,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'dataset': dataset};
+    return <String, dynamic>{
+      'dataset': dataset,
+    };
   }
 
   factory BigQueryDatasetSourceResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class BigQueryDatasetSourceResponse {
     );
   }
 }
+

@@ -404,22 +404,16 @@ import 'compliance_pack_state.dart';
 class CompliancePack extends pulumi.CustomResource {
   /// The Compliance Package Name. **NOTE:** From version 1.146.0, `compliance_pack_name` can be modified.
   late final pulumi.Output<String> compliancePackName;
-
   /// Compliance Package Template Id.
   late final pulumi.Output<String?> compliancePackTemplateId;
-
   /// A list of Config Rule IDs. See `config_rule_ids` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> configRuleIds;
-
   /// A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
   late final pulumi.Output<List<Map<String, dynamic>>?> configRules;
-
   /// The Description of compliance pack.
   late final pulumi.Output<String> description;
-
   /// The Risk Level. Valid values:
   late final pulumi.Output<int> riskLevel;
-
   /// The status of the Compliance Pack.
   late final pulumi.Output<String> status;
 
@@ -432,18 +426,14 @@ class CompliancePack extends pulumi.CustomResource {
     CompliancePackArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cfg/compliancePack:CompliancePack',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cfg/compliancePack:CompliancePack',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     compliancePackName = registerOutput<String>('compliancePackName');
-    compliancePackTemplateId = registerOutput<String?>(
-      'compliancePackTemplateId',
-    );
-    configRuleIds = registerOutput<List<Map<String, dynamic>>?>(
-      'configRuleIds',
-    );
+    compliancePackTemplateId = registerOutput<String?>('compliancePackTemplateId');
+    configRuleIds = registerOutput<List<Map<String, dynamic>>?>('configRuleIds');
     configRules = registerOutput<List<Map<String, dynamic>>?>('configRules');
     description = registerOutput<String>('description');
     riskLevel = registerOutput<int>('riskLevel');
@@ -468,18 +458,14 @@ class CompliancePack extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cfg/compliancePack:CompliancePack',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cfg/compliancePack:CompliancePack',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     compliancePackName = registerOutput<String>('compliancePackName');
-    compliancePackTemplateId = registerOutput<String?>(
-      'compliancePackTemplateId',
-    );
-    configRuleIds = registerOutput<List<Map<String, dynamic>>?>(
-      'configRuleIds',
-    );
+    compliancePackTemplateId = registerOutput<String?>('compliancePackTemplateId');
+    configRuleIds = registerOutput<List<Map<String, dynamic>>?>('configRuleIds');
     configRules = registerOutput<List<Map<String, dynamic>>?>('configRules');
     description = registerOutput<String>('description');
     riskLevel = registerOutput<int>('riskLevel');

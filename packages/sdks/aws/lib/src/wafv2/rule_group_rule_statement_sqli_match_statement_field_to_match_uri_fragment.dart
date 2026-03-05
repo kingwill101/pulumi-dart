@@ -13,18 +13,15 @@ class RuleGroupRuleStatementSqliMatchStatementFieldToMatchUriFragment {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'fallbackBehavior': ?fallbackBehavior};
+    return <String, dynamic>{
+      'fallbackBehavior': ?fallbackBehavior,
+    };
   }
 
-  factory RuleGroupRuleStatementSqliMatchStatementFieldToMatchUriFragment.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RuleGroupRuleStatementSqliMatchStatementFieldToMatchUriFragment.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementSqliMatchStatementFieldToMatchUriFragment(
-      fallbackBehavior: (() {
-        final guardedValue = map['fallbackBehavior'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      fallbackBehavior: (() { final guardedValue = map['fallbackBehavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

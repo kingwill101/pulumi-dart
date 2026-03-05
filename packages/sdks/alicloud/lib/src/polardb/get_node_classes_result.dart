@@ -6,21 +6,17 @@ import 'get_node_classes_class.dart';
 /// Result data returned by getNodeClasses.
 class GetNodeClassesResult {
   final String? category;
-
   /// A list of PolarDB node classes. Each element contains the following attributes:
   final List<GetNodeClassesClass> classes;
-
   /// PolarDB node available class.
   final String? dbNodeClass;
   final String? dbType;
   final String? dbVersion;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? outputFile;
   final String payType;
   final String? regionId;
-
   /// The Zone to launch the PolarDB cluster.
   final String? zoneId;
 
@@ -51,11 +47,7 @@ class GetNodeClassesResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'category': ?category,
-      'classes':
-          pulumi.Input.encodeList<GetNodeClassesClass, Map<String, dynamic>>(
-            classes,
-            (value) => value.toMap(),
-          ),
+      'classes': pulumi.Input.encodeList<GetNodeClassesClass, Map<String, dynamic>>(classes, (value) => value.toMap()),
       'dbNodeClass': ?dbNodeClass,
       'dbType': ?dbType,
       'dbVersion': ?dbVersion,
@@ -69,48 +61,17 @@ class GetNodeClassesResult {
 
   factory GetNodeClassesResult.fromMap(Map<String, dynamic> map) {
     return GetNodeClassesResult(
-      category: (() {
-        final guardedValue = map['category'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      classes: pulumi.Input.decodeList<GetNodeClassesClass>(
-        map['classes']!,
-        (value) =>
-            GetNodeClassesClass.fromMap((value as Map).cast<String, dynamic>()),
-      ),
-      dbNodeClass: (() {
-        final guardedValue = map['dbNodeClass'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      dbType: (() {
-        final guardedValue = map['dbType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      dbVersion: (() {
-        final guardedValue = map['dbVersion'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      category: (() { final guardedValue = map['category']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      classes: pulumi.Input.decodeList<GetNodeClassesClass>(map['classes']!, (value) => GetNodeClassesClass.fromMap((value as Map).cast<String, dynamic>())),
+      dbNodeClass: (() { final guardedValue = map['dbNodeClass']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      dbType: (() { final guardedValue = map['dbType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      dbVersion: (() { final guardedValue = map['dbVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
       payType: map['payType'] as String,
-      regionId: (() {
-        final guardedValue = map['regionId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      zoneId: (() {
-        final guardedValue = map['zoneId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      regionId: (() { final guardedValue = map['regionId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      zoneId: (() { final guardedValue = map['zoneId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

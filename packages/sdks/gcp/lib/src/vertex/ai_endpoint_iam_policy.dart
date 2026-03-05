@@ -18,11 +18,11 @@ class AiEndpointIamPolicy extends pulumi.CustomResource {
     AiEndpointIamPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:vertex/aiEndpointIamPolicy:AiEndpointIamPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:vertex/aiEndpointIamPolicy:AiEndpointIamPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     endpoint = registerOutput<String>('endpoint');
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
@@ -48,11 +48,11 @@ class AiEndpointIamPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:vertex/aiEndpointIamPolicy:AiEndpointIamPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:vertex/aiEndpointIamPolicy:AiEndpointIamPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     endpoint = registerOutput<String>('endpoint');
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPipelineArgs {
   /// The factory name.
   final pulumi.Input<String> factoryName;
-
   /// The pipeline name.
   final pulumi.Input<String> pipelineName;
-
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
 
@@ -38,9 +36,8 @@ class GetPipelineArgs {
     return GetPipelineArgs(
       factoryName: pulumi.Input.fromValue(map['factoryName'] as String),
       pipelineName: pulumi.Input.fromValue(map['pipelineName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

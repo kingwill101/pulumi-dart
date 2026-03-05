@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RemediationEta {
   /// ETA for remediation.
   final pulumi.Input<String> eta;
-
   /// Justification for change of Eta.
   final pulumi.Input<String> justification;
 
   /// Creates a new [RemediationEta].
   /// [eta] ETA for remediation.
   /// [justification] Justification for change of Eta.
-  RemediationEta({required this.eta, required this.justification});
+  RemediationEta({
+    required this.eta,
+    required this.justification,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'eta': eta, 'justification': justification};
+    return <String, dynamic>{
+      'eta': eta,
+      'justification': justification,
+    };
   }
 
   factory RemediationEta.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class RemediationEta {
     );
   }
 }
+

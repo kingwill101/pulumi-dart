@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSignalRSharedPrivateLinkResourceArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the resource.
   final pulumi.Input<String> resourceName;
-
   /// The name of the shared private link resource.
   final pulumi.Input<String> sharedPrivateLinkResourceName;
 
@@ -34,17 +32,12 @@ class GetSignalRSharedPrivateLinkResourceArgs {
     };
   }
 
-  factory GetSignalRSharedPrivateLinkResourceArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetSignalRSharedPrivateLinkResourceArgs.fromMap(Map<String, dynamic> map) {
     return GetSignalRSharedPrivateLinkResourceArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
-      sharedPrivateLinkResourceName: pulumi.Input.fromValue(
-        map['sharedPrivateLinkResourceName'] as String,
-      ),
+      sharedPrivateLinkResourceName: pulumi.Input.fromValue(map['sharedPrivateLinkResourceName'] as String),
     );
   }
 }
+

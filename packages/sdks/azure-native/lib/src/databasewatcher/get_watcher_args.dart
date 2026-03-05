@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWatcherArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The database watcher name.
   final pulumi.Input<String> watcherName;
 
   /// Creates a new [GetWatcherArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [watcherName] The database watcher name.
-  GetWatcherArgs({required this.resourceGroupName, required this.watcherName});
+  GetWatcherArgs({
+    required this.resourceGroupName,
+    required this.watcherName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,10 +29,9 @@ class GetWatcherArgs {
 
   factory GetWatcherArgs.fromMap(Map<String, dynamic> map) {
     return GetWatcherArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       watcherName: pulumi.Input.fromValue(map['watcherName'] as String),
     );
   }
 }
+

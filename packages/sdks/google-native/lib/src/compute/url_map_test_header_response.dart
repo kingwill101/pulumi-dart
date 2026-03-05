@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UrlMapTestHeaderResponse {
   /// Header name.
   final pulumi.Input<String> name;
-
   /// Header value.
   final pulumi.Input<String> value;
 
   /// Creates a new [UrlMapTestHeaderResponse].
   /// [name] Header name.
   /// [value] Header value.
-  UrlMapTestHeaderResponse({required this.name, required this.value});
+  UrlMapTestHeaderResponse({
+    required this.name,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'value': value};
+    return <String, dynamic>{
+      'name': name,
+      'value': value,
+    };
   }
 
   factory UrlMapTestHeaderResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class UrlMapTestHeaderResponse {
     );
   }
 }
+

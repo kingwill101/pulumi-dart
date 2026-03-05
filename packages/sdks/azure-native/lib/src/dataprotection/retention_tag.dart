@@ -9,10 +9,14 @@ class RetentionTag {
 
   /// Creates a new [RetentionTag].
   /// [tagName] Retention Tag Name to relate it to retention rule.
-  RetentionTag({required this.tagName});
+  RetentionTag({
+    required this.tagName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'tagName': tagName};
+    return <String, dynamic>{
+      'tagName': tagName,
+    };
   }
 
   factory RetentionTag.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class RetentionTag {
     );
   }
 }
+

@@ -6,11 +6,7 @@ import 'google_cloud_dialogflow_v2beta1_intent_message_rbm_suggestion_response.d
 /// Rich Business Messaging (RBM) text response with suggestions.
 class GoogleCloudDialogflowV2beta1IntentMessageRbmTextResponse {
   /// Optional. One or more suggestions to show to the user.
-  final pulumi.Input<
-    List<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestionResponse>
-  >
-  rbmSuggestion;
-
+  final pulumi.Input<List<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestionResponse>> rbmSuggestion;
   /// Text sent and displayed to the user.
   final pulumi.Input<String> text;
 
@@ -24,40 +20,16 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmTextResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'rbmSuggestion':
-          pulumi.Input.mapInputValue<
-            List<
-              GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestionResponse
-            >,
-            List<Map<String, dynamic>>
-          >(
-            rbmSuggestion,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestionResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'rbmSuggestion': pulumi.Input.mapInputValue<List<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestionResponse>, List<Map<String, dynamic>>>(rbmSuggestion, (value) => pulumi.Input.encodeList<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'text': text,
     };
   }
 
-  factory GoogleCloudDialogflowV2beta1IntentMessageRbmTextResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDialogflowV2beta1IntentMessageRbmTextResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1IntentMessageRbmTextResponse(
-      rbmSuggestion: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestionResponse
-        >(
-          map['rbmSuggestion']!,
-          (value) =>
-              GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestionResponse.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
+      rbmSuggestion: pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestionResponse>(map['rbmSuggestion']!, (value) => GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestionResponse.fromMap((value as Map).cast<String, dynamic>()))),
       text: pulumi.Input.fromValue(map['text'] as String),
     );
   }
 }
+

@@ -5,32 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetProjectsProject {
   /// The date and time when the project was created, (ISO8601)
   final pulumi.Input<String> createdAt;
-
   /// The description of the project
   final pulumi.Input<String> description;
-
   /// The environment of the project's resources. The possible values are: `Development`, `Staging`, `Production`.
   final pulumi.Input<String> environment;
-
   /// The ID of the project
   final pulumi.Input<String> id;
   final pulumi.Input<bool> isDefault;
-
   /// The name of the project
   final pulumi.Input<String> name;
-
   /// The ID of the project owner
   final pulumi.Input<int> ownerId;
-
   /// The unique universal identifier of the project owner
   final pulumi.Input<String> ownerUuid;
-
   /// The purpose of the project (Default: "Web Application")
   final pulumi.Input<String> purpose;
-
   /// A set of uniform resource names (URNs) for the resources associated with the project
   final pulumi.Input<List<String>> resources;
-
   /// The date and time when the project was last updated, (ISO8601)
   final pulumi.Input<String> updatedAt;
 
@@ -87,10 +78,9 @@ class GetProjectsProject {
       ownerId: pulumi.Input.fromValue(map['ownerId'] as int),
       ownerUuid: pulumi.Input.fromValue(map['ownerUuid'] as String),
       purpose: pulumi.Input.fromValue(map['purpose'] as String),
-      resources: pulumi.Input.fromValue(
-        (map['resources'] as List).cast<String>(),
-      ),
+      resources: pulumi.Input.fromValue((map['resources'] as List).cast<String>()),
       updatedAt: pulumi.Input.fromValue(map['updatedAt'] as String),
     );
   }
 }
+

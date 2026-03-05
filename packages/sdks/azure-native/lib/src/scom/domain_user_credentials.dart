@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainUserCredentials {
   /// Key vault url to get the domain username and password
   final pulumi.Input<String>? keyVaultUrl;
-
   /// Domain Password secret
   final pulumi.Input<String>? passwordSecret;
-
   /// Domain user name secret
   final pulumi.Input<String>? userNameSecret;
 
@@ -33,21 +31,10 @@ class DomainUserCredentials {
 
   factory DomainUserCredentials.fromMap(Map<String, dynamic> map) {
     return DomainUserCredentials(
-      keyVaultUrl: (() {
-        final guardedValue = map['keyVaultUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      passwordSecret: (() {
-        final guardedValue = map['passwordSecret'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      userNameSecret: (() {
-        final guardedValue = map['userNameSecret'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      keyVaultUrl: (() { final guardedValue = map['keyVaultUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      passwordSecret: (() { final guardedValue = map['passwordSecret']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      userNameSecret: (() { final guardedValue = map['userNameSecret']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

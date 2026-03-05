@@ -7,21 +7,20 @@ class EnterpriseCrmEventbusProtoBooleanParameterArray {
 
   /// Creates a new [EnterpriseCrmEventbusProtoBooleanParameterArray].
   /// [booleanValues] Optional.
-  EnterpriseCrmEventbusProtoBooleanParameterArray({this.booleanValues});
+  EnterpriseCrmEventbusProtoBooleanParameterArray({
+    this.booleanValues,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'booleanValues': ?booleanValues};
+    return <String, dynamic>{
+      'booleanValues': ?booleanValues,
+    };
   }
 
-  factory EnterpriseCrmEventbusProtoBooleanParameterArray.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EnterpriseCrmEventbusProtoBooleanParameterArray.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoBooleanParameterArray(
-      booleanValues: (() {
-        final guardedValue = map['booleanValues'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<bool>());
-      })(),
+      booleanValues: (() { final guardedValue = map['booleanValues']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<bool>()); })(),
     );
   }
 }
+

@@ -6,14 +6,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StaticDeliveryAttributeMapping {
   /// Boolean flag to tell if the attribute contains sensitive information .
   final pulumi.Input<bool>? isSecret;
-
   /// Name of the delivery attribute or header.
   final pulumi.Input<String>? name;
-
   /// Type of the delivery attribute or header name.
   /// Expected value is 'Static'.
   final pulumi.Input<String> type;
-
   /// Value of the delivery attribute.
   final pulumi.Input<String>? value;
 
@@ -40,22 +37,11 @@ class StaticDeliveryAttributeMapping {
 
   factory StaticDeliveryAttributeMapping.fromMap(Map<String, dynamic> map) {
     return StaticDeliveryAttributeMapping(
-      isSecret: (() {
-        final guardedValue = map['isSecret'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      isSecret: (() { final guardedValue = map['isSecret']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

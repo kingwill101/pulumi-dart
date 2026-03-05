@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AssignmentReportResourceComplianceReasonResponse {
   /// Code for the compliance of the guest configuration assignment resource.
   final pulumi.Input<String> code;
-
   /// Reason for the compliance of the guest configuration assignment resource.
   final pulumi.Input<String> phrase;
 
@@ -19,15 +18,17 @@ class AssignmentReportResourceComplianceReasonResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'code': code, 'phrase': phrase};
+    return <String, dynamic>{
+      'code': code,
+      'phrase': phrase,
+    };
   }
 
-  factory AssignmentReportResourceComplianceReasonResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AssignmentReportResourceComplianceReasonResponse.fromMap(Map<String, dynamic> map) {
     return AssignmentReportResourceComplianceReasonResponse(
       code: pulumi.Input.fromValue(map['code'] as String),
       phrase: pulumi.Input.fromValue(map['phrase'] as String),
     );
   }
 }
+

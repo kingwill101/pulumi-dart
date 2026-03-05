@@ -412,7 +412,10 @@ Future<GetNodeDevicesResult> getNodeDevices(
 /// }
 /// ```
 /// [options] Invoke options controlling this call.
-Future<GetNodeInfoResult> getNodeInfo({pulumi.InvokeOptions? options}) async {
+Future<GetNodeInfoResult> getNodeInfo(
+  {
+  pulumi.InvokeOptions? options,
+}) async {
   final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'libvirt:index/getNodeInfo:getNodeInfo',

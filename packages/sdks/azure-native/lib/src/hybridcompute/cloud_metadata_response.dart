@@ -9,10 +9,14 @@ class CloudMetadataResponse {
 
   /// Creates a new [CloudMetadataResponse].
   /// [provider] Specifies the cloud provider (Azure/AWS/GCP...).
-  CloudMetadataResponse({required this.provider});
+  CloudMetadataResponse({
+    required this.provider,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'provider': provider};
+    return <String, dynamic>{
+      'provider': provider,
+    };
   }
 
   factory CloudMetadataResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class CloudMetadataResponse {
     );
   }
 }
+

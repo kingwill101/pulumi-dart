@@ -344,28 +344,20 @@ import 'application_group_state.dart';
 class ApplicationGroup extends pulumi.CustomResource {
   /// Option to set the display name for the default sessionDesktop desktop when `type` is set to `Desktop`. A value here is mandatory for connections to the desktop using the Windows 365 portal. Without it the connection will hang at 'Loading Client'.
   late final pulumi.Output<String?> defaultDesktopDisplayName;
-
   /// Option to set a description for the Virtual Desktop Application Group.
   late final pulumi.Output<String?> description;
-
   /// Option to set a friendly name for the Virtual Desktop Application Group.
   late final pulumi.Output<String?> friendlyName;
-
   /// Resource ID for a Virtual Desktop Host Pool to associate with the Virtual Desktop Application Group. Changing the name forces a new resource to be created.
   late final pulumi.Output<String> hostPoolId;
-
   /// The location/region where the Virtual Desktop Application Group is located. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The name of the Virtual Desktop Application Group. Changing the name forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the resource group in which to create the Virtual Desktop Application Group. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Type of Virtual Desktop Application Group. Valid options are `RemoteApp` or `Desktop` application groups. Changing this forces a new resource to be created.
   late final pulumi.Output<String> type;
 
@@ -378,14 +370,12 @@ class ApplicationGroup extends pulumi.CustomResource {
     ApplicationGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:desktopvirtualization/applicationGroup:ApplicationGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    defaultDesktopDisplayName = registerOutput<String?>(
-      'defaultDesktopDisplayName',
-    );
+          'azure:desktopvirtualization/applicationGroup:ApplicationGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    defaultDesktopDisplayName = registerOutput<String?>('defaultDesktopDisplayName');
     description = registerOutput<String?>('description');
     friendlyName = registerOutput<String?>('friendlyName');
     hostPoolId = registerOutput<String>('hostPoolId');
@@ -414,14 +404,12 @@ class ApplicationGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:desktopvirtualization/applicationGroup:ApplicationGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    defaultDesktopDisplayName = registerOutput<String?>(
-      'defaultDesktopDisplayName',
-    );
+          'azure:desktopvirtualization/applicationGroup:ApplicationGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    defaultDesktopDisplayName = registerOutput<String?>('defaultDesktopDisplayName');
     description = registerOutput<String?>('description');
     friendlyName = registerOutput<String?>('friendlyName');
     hostPoolId = registerOutput<String>('hostPoolId');

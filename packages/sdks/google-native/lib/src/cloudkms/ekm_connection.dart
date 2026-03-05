@@ -7,24 +7,18 @@ import 'ekm_connection_args.dart';
 class EkmConnection extends pulumi.CustomResource {
   /// The time at which the EkmConnection was created.
   late final pulumi.Output<String> createTime;
-
   /// Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if KeyManagementMode is CLOUD_KMS.
   late final pulumi.Output<String> cryptoSpacePath;
-
   /// Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`.
   late final pulumi.Output<String> ekmConnectionId;
-
   /// Optional. Etag of the currently stored EkmConnection.
   late final pulumi.Output<String> etag;
-
   /// Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL.
   late final pulumi.Output<String> keyManagementMode;
   late final pulumi.Output<String> location;
-
   /// The resource name for the EkmConnection in the format `projects/*/locations/*/ekmConnections/*`.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
-
   /// A list of ServiceResolvers where the EKM can be reached. There should be one ServiceResolver per EKM replica. Currently, only a single ServiceResolver is supported.
   late final pulumi.Output<List<Map<String, dynamic>>> serviceResolvers;
 
@@ -37,11 +31,11 @@ class EkmConnection extends pulumi.CustomResource {
     EkmConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'google-native:cloudkms/v1:EkmConnection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'google-native:cloudkms/v1:EkmConnection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     cryptoSpacePath = registerOutput<String>('cryptoSpacePath');
     ekmConnectionId = registerOutput<String>('ekmConnectionId');
@@ -50,8 +44,6 @@ class EkmConnection extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    serviceResolvers = registerOutput<List<Map<String, dynamic>>>(
-      'serviceResolvers',
-    );
+    serviceResolvers = registerOutput<List<Map<String, dynamic>>>('serviceResolvers');
   }
 }

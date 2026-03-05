@@ -479,16 +479,12 @@ import 'enrichment_state.dart';
 class Enrichment extends pulumi.CustomResource {
   /// The list of endpoints which will be enriched.
   late final pulumi.Output<List<String>> endpointNames;
-
   /// The IoTHub name of the enrichment. Changing this forces a new resource to be created.
   late final pulumi.Output<String> iothubName;
-
   /// The key of the enrichment. Changing this forces a new resource to be created.
   late final pulumi.Output<String> key;
-
   /// The name of the resource group under which the IoTHub resource is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The value of the enrichment. Value can be any static string, the name of the IoT hub sending the message (use `$iothubname`) or information from the device twin (ex: `$twin.tags.latitude`)
   late final pulumi.Output<String> value;
 
@@ -501,11 +497,11 @@ class Enrichment extends pulumi.CustomResource {
     EnrichmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:iot/enrichment:Enrichment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:iot/enrichment:Enrichment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     endpointNames = registerOutput<List<String>>('endpointNames');
     iothubName = registerOutput<String>('iothubName');
     key = registerOutput<String>('key');
@@ -531,11 +527,11 @@ class Enrichment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:iot/enrichment:Enrichment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:iot/enrichment:Enrichment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     endpointNames = registerOutput<List<String>>('endpointNames');
     iothubName = registerOutput<String>('iothubName');
     key = registerOutput<String>('key');

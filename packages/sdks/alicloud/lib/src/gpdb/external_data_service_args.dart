@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExternalDataServiceArgs {
   /// Instance ID
   final pulumi.Input<String> dbInstanceId;
-
   /// Service Description
   final pulumi.Input<String>? serviceDescription;
-
   /// Service Name
   final pulumi.Input<String> serviceName;
-
   /// Service Specifications
   final pulumi.Input<String> serviceSpec;
 
@@ -43,13 +40,10 @@ class ExternalDataServiceArgs {
   factory ExternalDataServiceArgs.fromMap(Map<String, dynamic> map) {
     return ExternalDataServiceArgs(
       dbInstanceId: pulumi.Input.fromValue(map['dbInstanceId'] as String),
-      serviceDescription: (() {
-        final guardedValue = map['serviceDescription'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      serviceDescription: (() { final guardedValue = map['serviceDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
       serviceSpec: pulumi.Input.fromValue(map['serviceSpec'] as String),
     );
   }
 }
+

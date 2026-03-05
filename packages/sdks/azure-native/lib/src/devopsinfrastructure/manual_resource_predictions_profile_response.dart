@@ -10,17 +10,20 @@ class ManualResourcePredictionsProfileResponse {
 
   /// Creates a new [ManualResourcePredictionsProfileResponse].
   /// [kind] Determines how the stand-by scheme should be provided.
-  ManualResourcePredictionsProfileResponse({required this.kind});
+  ManualResourcePredictionsProfileResponse({
+    required this.kind,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'kind': kind};
+    return <String, dynamic>{
+      'kind': kind,
+    };
   }
 
-  factory ManualResourcePredictionsProfileResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ManualResourcePredictionsProfileResponse.fromMap(Map<String, dynamic> map) {
     return ManualResourcePredictionsProfileResponse(
       kind: pulumi.Input.fromValue(map['kind'] as String),
     );
   }
 }
+

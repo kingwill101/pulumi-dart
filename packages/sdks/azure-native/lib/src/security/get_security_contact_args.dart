@@ -12,17 +12,20 @@ class GetSecurityContactArgs {
 
   /// Creates a new [GetSecurityContactArgs].
   /// [securityContactName] Name of the security contact object
-  GetSecurityContactArgs({required this.securityContactName});
+  GetSecurityContactArgs({
+    required this.securityContactName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'securityContactName': securityContactName};
+    return <String, dynamic>{
+      'securityContactName': securityContactName,
+    };
   }
 
   factory GetSecurityContactArgs.fromMap(Map<String, dynamic> map) {
     return GetSecurityContactArgs(
-      securityContactName: pulumi.Input.fromValue(
-        map['securityContactName'] as String,
-      ),
+      securityContactName: pulumi.Input.fromValue(map['securityContactName'] as String),
     );
   }
 }
+

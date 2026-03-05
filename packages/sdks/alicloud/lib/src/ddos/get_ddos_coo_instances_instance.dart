@@ -5,49 +5,34 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDdosCooInstancesInstance {
   /// The instance's elastic defend bandwidth.
   final pulumi.Input<int> bandwidth;
-
   /// The instance's base defend bandwidth.
   final pulumi.Input<int> baseBandwidth;
-
   /// The creation time of the instance.
   final pulumi.Input<int> createTime;
-
   /// The debt status of the instance.
   final pulumi.Input<int> debtStatus;
-
   /// The instance's count of domain retransmission config.
   final pulumi.Input<int> domainCount;
-
   /// The edition of the instance.
   final pulumi.Input<int> edition;
-
   /// The enabled of the instance.
   final pulumi.Input<int> enabled;
-
   /// The expiry time of the instance.
   final pulumi.Input<int> expireTime;
-
   /// The instance's id.
   final pulumi.Input<String> id;
-
   /// The ip mode of the instance.
   final pulumi.Input<String> ipMode;
-
   /// The ip version of the instance.
   final pulumi.Input<String> ipVersion;
-
   /// The instance's remark.
   final pulumi.Input<String> name;
-
   /// The instance's count of port retransmission config.
   final pulumi.Input<int> portCount;
-
   /// The remark of the instance.
   final pulumi.Input<String> remark;
-
   /// The instance's business bandwidth.
   final pulumi.Input<int> serviceBandwidth;
-
   /// The status of the instance.
   final pulumi.Input<int> status;
 
@@ -129,3 +114,4 @@ class GetDdosCooInstancesInstance {
     );
   }
 }
+

@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CrawlerIcebergTarget {
   /// The name of the connection to use to connect to the Iceberg target.
   final pulumi.Input<String>? connectionName;
-
   /// A list of glob patterns used to exclude from the crawl.
   final pulumi.Input<List<String>>? exclusions;
-
   /// The maximum depth of Amazon S3 paths that the crawler can traverse to discover the Iceberg metadata folder in your Amazon S3 path. Used to limit the crawler run time. Valid values are between `1` and `20`.
   final pulumi.Input<int> maximumTraversalDepth;
-
   /// One or more Amazon S3 paths that contains Iceberg metadata folders as s3://bucket/prefix.
   final pulumi.Input<List<String>> paths;
 
@@ -38,20 +35,11 @@ class CrawlerIcebergTarget {
 
   factory CrawlerIcebergTarget.fromMap(Map<String, dynamic> map) {
     return CrawlerIcebergTarget(
-      connectionName: (() {
-        final guardedValue = map['connectionName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      exclusions: (() {
-        final guardedValue = map['exclusions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      maximumTraversalDepth: pulumi.Input.fromValue(
-        map['maximumTraversalDepth'] as int,
-      ),
+      connectionName: (() { final guardedValue = map['connectionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      exclusions: (() { final guardedValue = map['exclusions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      maximumTraversalDepth: pulumi.Input.fromValue(map['maximumTraversalDepth'] as int),
       paths: pulumi.Input.fromValue((map['paths'] as List).cast<String>()),
     );
   }
 }
+

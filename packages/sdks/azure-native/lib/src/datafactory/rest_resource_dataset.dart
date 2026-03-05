@@ -9,40 +9,28 @@ import 'parameter_specification.dart';
 class RestResourceDataset {
   /// The additional HTTP headers in the request to the RESTful API.
   final pulumi.Input<Map<String, dynamic>>? additionalHeaders;
-
   /// List of tags that can be used for describing the Dataset.
   final pulumi.Input<List<dynamic>>? annotations;
-
   /// Dataset description.
   final pulumi.Input<String>? description;
-
   /// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
   final pulumi.Input<DatasetFolder>? folder;
-
   /// Linked service reference.
   final pulumi.Input<LinkedServiceReference> linkedServiceName;
-
   /// The pagination rules to compose next page requests.
   final pulumi.Input<Map<String, dynamic>>? paginationRules;
-
   /// Parameters for dataset.
   final pulumi.Input<Map<String, ParameterSpecification>>? parameters;
-
   /// The relative URL to the resource that the RESTful API provides. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? relativeUrl;
-
   /// The HTTP request body to the RESTful API if requestMethod is POST. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? requestBody;
-
   /// The HTTP method used to call the RESTful API. The default is GET. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? requestMethod;
-
   /// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
   final pulumi.Input<dynamic>? schema;
-
   /// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
   final pulumi.Input<dynamic>? structure;
-
   /// Type of dataset.
   /// Expected value is 'RestResource'.
   final pulumi.Input<String> type;
@@ -82,29 +70,10 @@ class RestResourceDataset {
       'additionalHeaders': ?additionalHeaders,
       'annotations': ?annotations,
       'description': ?description,
-      'folder':
-          ?pulumi.Input.mapOptionalInputValue<
-            DatasetFolder,
-            Map<String, dynamic>
-          >(folder, (value) => value.toMap()),
-      'linkedServiceName':
-          pulumi.Input.mapInputValue<
-            LinkedServiceReference,
-            Map<String, dynamic>
-          >(linkedServiceName, (value) => value.toMap()),
+      'folder': ?pulumi.Input.mapOptionalInputValue<DatasetFolder, Map<String, dynamic>>(folder, (value) => value.toMap()),
+      'linkedServiceName': pulumi.Input.mapInputValue<LinkedServiceReference, Map<String, dynamic>>(linkedServiceName, (value) => value.toMap()),
       'paginationRules': ?paginationRules,
-      'parameters':
-          ?pulumi.Input.mapOptionalInputValue<
-            Map<String, ParameterSpecification>,
-            Map<String, Map<String, dynamic>>
-          >(
-            parameters,
-            (value) =>
-                pulumi.Input.encodeMapValues<
-                  ParameterSpecification,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecification>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(value, (value) => value.toMap())),
       'relativeUrl': ?relativeUrl,
       'requestBody': ?requestBody,
       'requestMethod': ?requestMethod,
@@ -116,80 +85,20 @@ class RestResourceDataset {
 
   factory RestResourceDataset.fromMap(Map<String, dynamic> map) {
     return RestResourceDataset(
-      additionalHeaders: (() {
-        final guardedValue = map['additionalHeaders'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      annotations: (() {
-        final guardedValue = map['annotations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>());
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      folder: (() {
-        final guardedValue = map['folder'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DatasetFolder.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      linkedServiceName: pulumi.Input.fromValue(
-        LinkedServiceReference.fromMap(
-          (map['linkedServiceName']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      paginationRules: (() {
-        final guardedValue = map['paginationRules'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      parameters: (() {
-        final guardedValue = map['parameters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeMapValues<ParameterSpecification>(
-            guardedValue,
-            (value) => ParameterSpecification.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      relativeUrl: (() {
-        final guardedValue = map['relativeUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      requestBody: (() {
-        final guardedValue = map['requestBody'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      requestMethod: (() {
-        final guardedValue = map['requestMethod'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      schema: (() {
-        final guardedValue = map['schema'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      structure: (() {
-        final guardedValue = map['structure'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
+      additionalHeaders: (() { final guardedValue = map['additionalHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
+      annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      folder: (() { final guardedValue = map['folder']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatasetFolder.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      linkedServiceName: pulumi.Input.fromValue(LinkedServiceReference.fromMap((map['linkedServiceName']! as Map).cast<String, dynamic>())),
+      paginationRules: (() { final guardedValue = map['paginationRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
+      parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<ParameterSpecification>(guardedValue, (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      relativeUrl: (() { final guardedValue = map['relativeUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      requestBody: (() { final guardedValue = map['requestBody']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      requestMethod: (() { final guardedValue = map['requestMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      schema: (() { final guardedValue = map['schema']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      structure: (() { final guardedValue = map['structure']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

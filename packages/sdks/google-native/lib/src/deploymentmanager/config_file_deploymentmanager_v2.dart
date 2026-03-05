@@ -8,19 +8,20 @@ class ConfigFileDeploymentmanagerV2 {
 
   /// Creates a new [ConfigFileDeploymentmanagerV2].
   /// [content] The contents of the file.
-  ConfigFileDeploymentmanagerV2({this.content});
+  ConfigFileDeploymentmanagerV2({
+    this.content,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'content': ?content};
+    return <String, dynamic>{
+      'content': ?content,
+    };
   }
 
   factory ConfigFileDeploymentmanagerV2.fromMap(Map<String, dynamic> map) {
     return ConfigFileDeploymentmanagerV2(
-      content: (() {
-        final guardedValue = map['content'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      content: (() { final guardedValue = map['content']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

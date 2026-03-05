@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAlidnsDomainsDomainRecordLine {
   /// The code of the parent line, or empty if there is none.
   final pulumi.Input<String> fatherCode;
-
   /// Sub-line Code.
   final pulumi.Input<String> lineCode;
-
   /// Parent line display name.
   final pulumi.Input<String> lineDisplayName;
-
   /// Sub-line display name.
   final pulumi.Input<String> lineName;
 
@@ -45,3 +42,4 @@ class GetAlidnsDomainsDomainRecordLine {
     );
   }
 }
+

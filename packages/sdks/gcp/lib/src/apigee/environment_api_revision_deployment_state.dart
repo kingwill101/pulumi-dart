@@ -6,31 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnvironmentApiRevisionDeploymentState {
   /// Apigee API proxy name.
   final pulumi.Input<String>? api;
-
   /// Basepaths associated with the deployed proxy.
   final pulumi.Input<List<String>>? basepaths;
-
   /// RFC3339 timestamp when deployment started.
   final pulumi.Input<String>? deployStartTime;
-
   /// Apigee environment name.
   final pulumi.Input<String>? environment;
-
   /// Apigee organization ID.
   final pulumi.Input<String>? orgId;
-
   /// If true, replaces other deployed revisions of this proxy in the environment.
   final pulumi.Input<bool>? override;
-
   /// API proxy revision number to deploy.
   final pulumi.Input<int>? revision;
-
   /// If true, enables sequenced rollout for safe traffic switching.
   final pulumi.Input<bool>? sequencedRollout;
-
   /// Optional service account the deployed proxy runs as.
   final pulumi.Input<String>? serviceAccount;
-
   /// Deployment state reported by Apigee.
   final pulumi.Input<String>? state;
 
@@ -73,60 +64,19 @@ class EnvironmentApiRevisionDeploymentState {
     };
   }
 
-  factory EnvironmentApiRevisionDeploymentState.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EnvironmentApiRevisionDeploymentState.fromMap(Map<String, dynamic> map) {
     return EnvironmentApiRevisionDeploymentState(
-      api: (() {
-        final guardedValue = map['api'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      basepaths: (() {
-        final guardedValue = map['basepaths'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      deployStartTime: (() {
-        final guardedValue = map['deployStartTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      environment: (() {
-        final guardedValue = map['environment'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      orgId: (() {
-        final guardedValue = map['orgId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      override: (() {
-        final guardedValue = map['override'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      revision: (() {
-        final guardedValue = map['revision'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      sequencedRollout: (() {
-        final guardedValue = map['sequencedRollout'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      serviceAccount: (() {
-        final guardedValue = map['serviceAccount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      api: (() { final guardedValue = map['api']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      basepaths: (() { final guardedValue = map['basepaths']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      deployStartTime: (() { final guardedValue = map['deployStartTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      environment: (() { final guardedValue = map['environment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      orgId: (() { final guardedValue = map['orgId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      override: (() { final guardedValue = map['override']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      revision: (() { final guardedValue = map['revision']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      sequencedRollout: (() { final guardedValue = map['sequencedRollout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      serviceAccount: (() { final guardedValue = map['serviceAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

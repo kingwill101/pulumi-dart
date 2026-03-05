@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagementServerPropertiesResponse {
   /// Management server Fully Qualified Domain Name.
   final pulumi.Input<String> fqdn;
-
   /// Management server health state.
   final pulumi.Input<String> healthState;
-
   /// Management server Name
   final pulumi.Input<String> serverName;
-
   /// Represent whether the Server is a Management Server and/or Web Console Server.
   final pulumi.Input<String> serverRoles;
-
   /// Azure VM Resource Id of the Management server.
   final pulumi.Input<String> vmResId;
 
@@ -53,3 +49,4 @@ class ManagementServerPropertiesResponse {
     );
   }
 }
+

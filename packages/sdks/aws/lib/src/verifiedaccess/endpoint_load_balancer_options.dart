@@ -28,18 +28,7 @@ class EndpointLoadBalancerOptions {
     return <String, dynamic>{
       'loadBalancerArn': ?loadBalancerArn,
       'port': ?port,
-      'portRanges':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<EndpointLoadBalancerOptionsPortRange>,
-            List<Map<String, dynamic>>
-          >(
-            portRanges,
-            (value) =>
-                pulumi.Input.encodeList<
-                  EndpointLoadBalancerOptionsPortRange,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'portRanges': ?pulumi.Input.mapOptionalInputValue<List<EndpointLoadBalancerOptionsPortRange>, List<Map<String, dynamic>>>(portRanges, (value) => pulumi.Input.encodeList<EndpointLoadBalancerOptionsPortRange, Map<String, dynamic>>(value, (value) => value.toMap())),
       'protocol': ?protocol,
       'subnetIds': ?subnetIds,
     };
@@ -47,38 +36,12 @@ class EndpointLoadBalancerOptions {
 
   factory EndpointLoadBalancerOptions.fromMap(Map<String, dynamic> map) {
     return EndpointLoadBalancerOptions(
-      loadBalancerArn: (() {
-        final guardedValue = map['loadBalancerArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      port: (() {
-        final guardedValue = map['port'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      portRanges: (() {
-        final guardedValue = map['portRanges'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<EndpointLoadBalancerOptionsPortRange>(
-            guardedValue,
-            (value) => EndpointLoadBalancerOptionsPortRange.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      protocol: (() {
-        final guardedValue = map['protocol'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subnetIds: (() {
-        final guardedValue = map['subnetIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      loadBalancerArn: (() { final guardedValue = map['loadBalancerArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      portRanges: (() { final guardedValue = map['portRanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EndpointLoadBalancerOptionsPortRange>(guardedValue, (value) => EndpointLoadBalancerOptionsPortRange.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subnetIds: (() { final guardedValue = map['subnetIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

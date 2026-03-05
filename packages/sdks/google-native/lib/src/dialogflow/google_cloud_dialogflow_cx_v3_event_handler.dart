@@ -7,13 +7,10 @@ import 'google_cloud_dialogflow_cx_v3_fulfillment.dart';
 class GoogleCloudDialogflowCxV3EventHandler {
   /// The name of the event to handle.
   final pulumi.Input<String> event;
-
   /// The target flow to transition to. Format: `projects//locations//agents//flows/`.
   final pulumi.Input<String>? targetFlow;
-
   /// The target page to transition to. Format: `projects//locations//agents//flows//pages/`.
   final pulumi.Input<String>? targetPage;
-
   /// The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
   final pulumi.Input<GoogleCloudDialogflowCxV3Fulfillment>? triggerFulfillment;
 
@@ -34,38 +31,17 @@ class GoogleCloudDialogflowCxV3EventHandler {
       'event': event,
       'targetFlow': ?targetFlow,
       'targetPage': ?targetPage,
-      'triggerFulfillment':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudDialogflowCxV3Fulfillment,
-            Map<String, dynamic>
-          >(triggerFulfillment, (value) => value.toMap()),
+      'triggerFulfillment': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowCxV3Fulfillment, Map<String, dynamic>>(triggerFulfillment, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudDialogflowCxV3EventHandler.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDialogflowCxV3EventHandler.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3EventHandler(
       event: pulumi.Input.fromValue(map['event'] as String),
-      targetFlow: (() {
-        final guardedValue = map['targetFlow'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      targetPage: (() {
-        final guardedValue = map['targetPage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      triggerFulfillment: (() {
-        final guardedValue = map['triggerFulfillment'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudDialogflowCxV3Fulfillment.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      targetFlow: (() { final guardedValue = map['targetFlow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      targetPage: (() { final guardedValue = map['targetPage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      triggerFulfillment: (() { final guardedValue = map['triggerFulfillment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudDialogflowCxV3Fulfillment.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

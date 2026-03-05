@@ -10,16 +10,12 @@ import 'capacity_reservation_sku.dart';
 class CapacityReservationArgs {
   /// The ID of the Capacity Reservation Group where the Capacity Reservation exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> capacityReservationGroupId;
-
   /// Specifies the name of this Capacity Reservation. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// A `sku` block as defined below.
   final pulumi.Input<CapacityReservationSku> sku;
-
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// Specifies the Availability Zone for this Capacity Reservation. Changing this forces a new resource to be created.
   final pulumi.Input<String>? zone;
 
@@ -41,11 +37,7 @@ class CapacityReservationArgs {
     return <String, dynamic>{
       'capacityReservationGroupId': capacityReservationGroupId,
       'name': ?name,
-      'sku':
-          pulumi.Input.mapInputValue<
-            CapacityReservationSku,
-            Map<String, dynamic>
-          >(sku, (value) => value.toMap()),
+      'sku': pulumi.Input.mapInputValue<CapacityReservationSku, Map<String, dynamic>>(sku, (value) => value.toMap()),
       'tags': ?tags,
       'zone': ?zone,
     };
@@ -53,31 +45,12 @@ class CapacityReservationArgs {
 
   factory CapacityReservationArgs.fromMap(Map<String, dynamic> map) {
     return CapacityReservationArgs(
-      capacityReservationGroupId: pulumi.Input.fromValue(
-        map['capacityReservationGroupId'] as String,
-      ),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sku: pulumi.Input.fromValue(
-        CapacityReservationSku.fromMap(
-          (map['sku']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      zone: (() {
-        final guardedValue = map['zone'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      capacityReservationGroupId: pulumi.Input.fromValue(map['capacityReservationGroupId'] as String),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sku: pulumi.Input.fromValue(CapacityReservationSku.fromMap((map['sku']! as Map).cast<String, dynamic>())),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      zone: (() { final guardedValue = map['zone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -264,43 +264,30 @@ import 'system_data_response.dart';
 class ScheduledAction extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Scheduled action name.
   late final pulumi.Output<String> displayName;
-
   /// Resource Etag. For update calls, eTag is optional and can be specified to achieve optimistic concurrency. Fetch the resource's eTag by doing a 'GET' call first and then including the latest eTag as part of the request body or 'If-Match' header while performing the update. For create calls, eTag is not required.
   late final pulumi.Output<String> eTag;
-
   /// Destination format of the view data. This is optional.
   late final pulumi.Output<FileDestinationResponse?> fileDestination;
-
   /// Kind of the scheduled action.
   late final pulumi.Output<String?> kind;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Notification properties based on scheduled action kind.
   late final pulumi.Output<NotificationPropertiesResponse> notification;
-
   /// Email address of the point of contact that should get the unsubscribe requests and notification emails.
   late final pulumi.Output<String?> notificationEmail;
-
   /// Schedule of the scheduled action.
   late final pulumi.Output<SchedulePropertiesResponse> schedule;
-
   /// For private scheduled action(Create or Update), scope will be empty.&lt;br /&gt; For shared scheduled action(Create or Update By Scope), Cost Management scope can be 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for BillingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for InvoiceSection scope, '/providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}' for ExternalBillingAccount scope, and '/providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}' for ExternalSubscription scope.
   late final pulumi.Output<String?> scope;
-
   /// Status of the scheduled action.
   late final pulumi.Output<String> status;
-
   /// Kind of the scheduled action.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Cost analysis viewId used for scheduled action. For example, '/providers/Microsoft.CostManagement/views/swaggerExample'
   late final pulumi.Output<String> viewId;
 
@@ -313,59 +300,23 @@ class ScheduledAction extends pulumi.CustomResource {
     ScheduledActionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:costmanagement:ScheduledAction',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:costmanagement:ScheduledAction',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     displayName = registerOutput<String>('displayName');
     eTag = registerOutput<String>('eTag');
-    fileDestination = registerOutput<FileDestinationResponse?>(
-      'fileDestination',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FileDestinationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    fileDestination = registerOutput<FileDestinationResponse?>('fileDestination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FileDestinationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kind = registerOutput<String?>('kind');
     this.name = registerOutput<String>('name');
-    notification = registerOutput<NotificationPropertiesResponse>(
-      'notification',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NotificationPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    notification = registerOutput<NotificationPropertiesResponse>('notification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotificationPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     notificationEmail = registerOutput<String?>('notificationEmail');
-    schedule = registerOutput<SchedulePropertiesResponse>(
-      'schedule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SchedulePropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    schedule = registerOutput<SchedulePropertiesResponse>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SchedulePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     scope = registerOutput<String?>('scope');
     status = registerOutput<String>('status');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     viewId = registerOutput<String>('viewId');
   }

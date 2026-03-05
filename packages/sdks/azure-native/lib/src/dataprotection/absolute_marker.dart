@@ -17,3 +17,4 @@ enum AbsoluteMarker {
     throw ArgumentError('Unknown AbsoluteMarker value: $value');
   }
 }
+

@@ -333,25 +333,18 @@ class TrafficMirrorFilter extends pulumi.CustomResource {
   /// - **true**: The check request is sent without creating traffic Image filter conditions. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
   /// - **false** (default): Sends a normal request, returns a 2xx HTTP status code after passing the check, and directly creates a filter condition.
   late final pulumi.Output<bool?> dryRun;
-
   /// Information about the outbound rule. See the following `Block EgressRules`.
   late final pulumi.Output<List<Map<String, dynamic>>> egressRules;
-
   /// Inward direction rule information. See the following `Block IngressRules`.
   late final pulumi.Output<List<Map<String, dynamic>>> ingressRules;
-
   /// The ID of the resource group to which the VPC belongs.
   late final pulumi.Output<String> resourceGroupId;
-
   /// The status of the resource.
   late final pulumi.Output<String> status;
-
   /// The tags of this resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The description of the TrafficMirrorFilter.
   late final pulumi.Output<String?> trafficMirrorFilterDescription;
-
   /// The name of the TrafficMirrorFilter.
   late final pulumi.Output<String?> trafficMirrorFilterName;
 
@@ -364,23 +357,19 @@ class TrafficMirrorFilter extends pulumi.CustomResource {
     TrafficMirrorFilterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/trafficMirrorFilter:TrafficMirrorFilter',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpc/trafficMirrorFilter:TrafficMirrorFilter',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dryRun = registerOutput<bool?>('dryRun');
     egressRules = registerOutput<List<Map<String, dynamic>>>('egressRules');
     ingressRules = registerOutput<List<Map<String, dynamic>>>('ingressRules');
     resourceGroupId = registerOutput<String>('resourceGroupId');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
-    trafficMirrorFilterDescription = registerOutput<String?>(
-      'trafficMirrorFilterDescription',
-    );
-    trafficMirrorFilterName = registerOutput<String?>(
-      'trafficMirrorFilterName',
-    );
+    trafficMirrorFilterDescription = registerOutput<String?>('trafficMirrorFilterDescription');
+    trafficMirrorFilterName = registerOutput<String?>('trafficMirrorFilterName');
   }
 
   /// Gets an existing [TrafficMirrorFilter] resource's state with the given [name] and [id].
@@ -401,22 +390,18 @@ class TrafficMirrorFilter extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/trafficMirrorFilter:TrafficMirrorFilter',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpc/trafficMirrorFilter:TrafficMirrorFilter',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dryRun = registerOutput<bool?>('dryRun');
     egressRules = registerOutput<List<Map<String, dynamic>>>('egressRules');
     ingressRules = registerOutput<List<Map<String, dynamic>>>('ingressRules');
     resourceGroupId = registerOutput<String>('resourceGroupId');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
-    trafficMirrorFilterDescription = registerOutput<String?>(
-      'trafficMirrorFilterDescription',
-    );
-    trafficMirrorFilterName = registerOutput<String?>(
-      'trafficMirrorFilterName',
-    );
+    trafficMirrorFilterDescription = registerOutput<String?>('trafficMirrorFilterDescription');
+    trafficMirrorFilterName = registerOutput<String?>('trafficMirrorFilterName');
   }
 }

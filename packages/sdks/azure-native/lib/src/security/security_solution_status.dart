@@ -15,3 +15,4 @@ enum SecuritySolutionStatus {
     throw ArgumentError('Unknown SecuritySolutionStatus value: $value');
   }
 }
+

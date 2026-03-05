@@ -19,3 +19,4 @@ enum EnclaveEndpointProtocol {
     throw ArgumentError('Unknown EnclaveEndpointProtocol value: $value');
   }
 }
+

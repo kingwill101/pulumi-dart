@@ -8,31 +8,29 @@ class AllowedHostPath {
   ///
   /// Examples: `/foo` would allow `/foo`, `/foo/` and `/foo/bar` `/foo` would not allow `/food` or `/etc/foo`
   final pulumi.Input<String>? pathPrefix;
-
   /// when set to true, will allow host volumes matching the pathPrefix only if all volume mounts are readOnly.
   final pulumi.Input<bool>? readOnly;
 
   /// Creates a new [AllowedHostPath].
   /// [pathPrefix] pathPrefix is the path prefix that the host volume must match. It does not support `*`. Trailing slashes are trimmed when validating the path prefix with a host path.
   /// [readOnly] when set to true, will allow host volumes matching the pathPrefix only if all volume mounts are readOnly.
-  AllowedHostPath({this.pathPrefix, this.readOnly});
+  AllowedHostPath({
+    this.pathPrefix,
+    this.readOnly,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'pathPrefix': ?pathPrefix, 'readOnly': ?readOnly};
+    return <String, dynamic>{
+      'pathPrefix': ?pathPrefix,
+      'readOnly': ?readOnly,
+    };
   }
 
   factory AllowedHostPath.fromMap(Map<String, dynamic> map) {
     return AllowedHostPath(
-      pathPrefix: (() {
-        final guardedValue = map['pathPrefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      readOnly: (() {
-        final guardedValue = map['readOnly'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      pathPrefix: (() { final guardedValue = map['pathPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      readOnly: (() { final guardedValue = map['readOnly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

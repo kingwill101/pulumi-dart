@@ -139,22 +139,16 @@ import 'resource_group_state.dart';
 class ResourceGroup extends pulumi.CustomResource {
   /// The ID of the Alibaba Cloud account to which the resource group belongs.
   late final pulumi.Output<String> accountId;
-
   /// The display name of the resource group. The name must be 1 to 50 characters in length.
   late final pulumi.Output<String> displayName;
-
   /// Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead.
   late final pulumi.Output<String> name;
-
   /// The status of the resource group in all regions.
   late final pulumi.Output<List<Map<String, dynamic>>> regionStatuses;
-
   /// The unique identifier of the resource group. The identifier must be 3 to 50 characters in length and can contain letters, digits, and hyphens (-). The identifier must start with a letter.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The status of the resource group.
   late final pulumi.Output<String> status;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -167,17 +161,15 @@ class ResourceGroup extends pulumi.CustomResource {
     ResourceGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:resourcemanager/resourceGroup:ResourceGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:resourcemanager/resourceGroup:ResourceGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');
-    regionStatuses = registerOutput<List<Map<String, dynamic>>>(
-      'regionStatuses',
-    );
+    regionStatuses = registerOutput<List<Map<String, dynamic>>>('regionStatuses');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -201,17 +193,15 @@ class ResourceGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:resourcemanager/resourceGroup:ResourceGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:resourcemanager/resourceGroup:ResourceGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');
-    regionStatuses = registerOutput<List<Map<String, dynamic>>>(
-      'regionStatuses',
-    );
+    regionStatuses = registerOutput<List<Map<String, dynamic>>>('regionStatuses');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');

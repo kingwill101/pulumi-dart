@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FhirStoreValidationConfig {
   /// Whether to disable FHIRPath validation for incoming resources. The default value is false. Set this to true to disable checking incoming resources for conformance against FHIRPath requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
   final pulumi.Input<bool>? disableFhirpathValidation;
-
   /// Whether to disable profile validation for this FHIR store. The default value is false. Set this to true to disable checking incoming resources for conformance against structure definitions in this FHIR store.
   final pulumi.Input<bool>? disableProfileValidation;
-
   /// Whether to disable reference type validation for incoming resources. The default value is false. Set this to true to disable checking incoming resources for conformance against reference type requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
   final pulumi.Input<bool>? disableReferenceTypeValidation;
-
   /// Whether to disable required fields validation for incoming resources. The default value is false. Set this to true to disable checking incoming resources for conformance against required fields requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
   final pulumi.Input<bool>? disableRequiredFieldValidation;
-
   /// A list of implementation guide URLs in this FHIR store that are used to configure the profiles to use for validation.
   /// When a URL cannot be resolved (for example, in a type assertion), the server does not return an error.
   /// For example, to use the US Core profiles for validation, set enabledImplementationGuides to ["http://hl7.org/fhir/us/core/ImplementationGuide/ig"]. If enabledImplementationGuides is empty or omitted, then incoming resources are only required to conform to the base FHIR profiles. Otherwise, a resource must conform to at least one profile listed in the global property of one of the enabled ImplementationGuides.
@@ -54,31 +50,12 @@ class FhirStoreValidationConfig {
 
   factory FhirStoreValidationConfig.fromMap(Map<String, dynamic> map) {
     return FhirStoreValidationConfig(
-      disableFhirpathValidation: (() {
-        final guardedValue = map['disableFhirpathValidation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      disableProfileValidation: (() {
-        final guardedValue = map['disableProfileValidation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      disableReferenceTypeValidation: (() {
-        final guardedValue = map['disableReferenceTypeValidation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      disableRequiredFieldValidation: (() {
-        final guardedValue = map['disableRequiredFieldValidation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      enabledImplementationGuides: (() {
-        final guardedValue = map['enabledImplementationGuides'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      disableFhirpathValidation: (() { final guardedValue = map['disableFhirpathValidation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      disableProfileValidation: (() { final guardedValue = map['disableProfileValidation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      disableReferenceTypeValidation: (() { final guardedValue = map['disableReferenceTypeValidation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      disableRequiredFieldValidation: (() { final guardedValue = map['disableRequiredFieldValidation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enabledImplementationGuides: (() { final guardedValue = map['enabledImplementationGuides']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

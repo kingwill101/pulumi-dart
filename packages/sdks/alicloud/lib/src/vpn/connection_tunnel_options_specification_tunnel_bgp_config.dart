@@ -7,10 +7,8 @@ class ConnectionTunnelOptionsSpecificationTunnelBgpConfig {
   final pulumi.Input<String>? bgpStatus;
   final pulumi.Input<String>? localAsn;
   final pulumi.Input<String>? localBgpIp;
-
   /// Peer asn.
   final pulumi.Input<String>? peerAsn;
-
   /// Peer bgp ip.
   final pulumi.Input<String>? peerBgpIp;
   final pulumi.Input<String>? tunnelCidr;
@@ -42,40 +40,15 @@ class ConnectionTunnelOptionsSpecificationTunnelBgpConfig {
     };
   }
 
-  factory ConnectionTunnelOptionsSpecificationTunnelBgpConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConnectionTunnelOptionsSpecificationTunnelBgpConfig.fromMap(Map<String, dynamic> map) {
     return ConnectionTunnelOptionsSpecificationTunnelBgpConfig(
-      bgpStatus: (() {
-        final guardedValue = map['bgpStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      localAsn: (() {
-        final guardedValue = map['localAsn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      localBgpIp: (() {
-        final guardedValue = map['localBgpIp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      peerAsn: (() {
-        final guardedValue = map['peerAsn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      peerBgpIp: (() {
-        final guardedValue = map['peerBgpIp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tunnelCidr: (() {
-        final guardedValue = map['tunnelCidr'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      bgpStatus: (() { final guardedValue = map['bgpStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      localAsn: (() { final guardedValue = map['localAsn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      localBgpIp: (() { final guardedValue = map['localBgpIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      peerAsn: (() { final guardedValue = map['peerAsn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      peerBgpIp: (() { final guardedValue = map['peerBgpIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tunnelCidr: (() { final guardedValue = map['tunnelCidr']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

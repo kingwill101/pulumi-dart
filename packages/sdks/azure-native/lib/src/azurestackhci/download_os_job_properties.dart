@@ -7,10 +7,8 @@ import 'download_request.dart';
 class DownloadOsJobProperties {
   /// Deployment mode to trigger job.
   final pulumi.Input<String>? deploymentMode;
-
   /// Download OS request.
   final pulumi.Input<DownloadRequest> downloadRequest;
-
   /// Job Type supported.
   /// Expected value is 'DownloadOs'.
   final pulumi.Input<String> jobType;
@@ -28,28 +26,17 @@ class DownloadOsJobProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'deploymentMode': ?deploymentMode,
-      'downloadRequest':
-          pulumi.Input.mapInputValue<DownloadRequest, Map<String, dynamic>>(
-            downloadRequest,
-            (value) => value.toMap(),
-          ),
+      'downloadRequest': pulumi.Input.mapInputValue<DownloadRequest, Map<String, dynamic>>(downloadRequest, (value) => value.toMap()),
       'jobType': jobType,
     };
   }
 
   factory DownloadOsJobProperties.fromMap(Map<String, dynamic> map) {
     return DownloadOsJobProperties(
-      deploymentMode: (() {
-        final guardedValue = map['deploymentMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      downloadRequest: pulumi.Input.fromValue(
-        DownloadRequest.fromMap(
-          (map['downloadRequest']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      deploymentMode: (() { final guardedValue = map['deploymentMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      downloadRequest: pulumi.Input.fromValue(DownloadRequest.fromMap((map['downloadRequest']! as Map).cast<String, dynamic>())),
       jobType: pulumi.Input.fromValue(map['jobType'] as String),
     );
   }
 }
+

@@ -6,13 +6,10 @@ import 'get_worker_pool_template_container_env_value_source.dart';
 class GetWorkerPoolTemplateContainerEnv {
   /// The name of the Cloud Run v2 Worker Pool.
   final pulumi.Input<String> name;
-
   /// Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
   final pulumi.Input<String> value;
-
   /// Source for the environment variable's value.
-  final pulumi.Input<List<GetWorkerPoolTemplateContainerEnvValueSource>>
-  valueSources;
+  final pulumi.Input<List<GetWorkerPoolTemplateContainerEnvValueSource>> valueSources;
 
   /// Creates a new [GetWorkerPoolTemplateContainerEnv].
   /// [name] The name of the Cloud Run v2 Worker Pool.
@@ -28,18 +25,7 @@ class GetWorkerPoolTemplateContainerEnv {
     return <String, dynamic>{
       'name': name,
       'value': value,
-      'valueSources':
-          pulumi.Input.mapInputValue<
-            List<GetWorkerPoolTemplateContainerEnvValueSource>,
-            List<Map<String, dynamic>>
-          >(
-            valueSources,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetWorkerPoolTemplateContainerEnvValueSource,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'valueSources': pulumi.Input.mapInputValue<List<GetWorkerPoolTemplateContainerEnvValueSource>, List<Map<String, dynamic>>>(valueSources, (value) => pulumi.Input.encodeList<GetWorkerPoolTemplateContainerEnvValueSource, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
@@ -47,14 +33,8 @@ class GetWorkerPoolTemplateContainerEnv {
     return GetWorkerPoolTemplateContainerEnv(
       name: pulumi.Input.fromValue(map['name'] as String),
       value: pulumi.Input.fromValue(map['value'] as String),
-      valueSources: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetWorkerPoolTemplateContainerEnvValueSource>(
-          map['valueSources']!,
-          (value) => GetWorkerPoolTemplateContainerEnvValueSource.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      valueSources: pulumi.Input.fromValue(pulumi.Input.decodeList<GetWorkerPoolTemplateContainerEnvValueSource>(map['valueSources']!, (value) => GetWorkerPoolTemplateContainerEnvValueSource.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

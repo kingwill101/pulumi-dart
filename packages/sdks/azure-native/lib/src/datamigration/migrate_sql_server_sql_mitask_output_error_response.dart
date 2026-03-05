@@ -6,10 +6,8 @@ import 'reportable_exception_response.dart';
 class MigrateSqlServerSqlMITaskOutputErrorResponse {
   /// Migration error
   final pulumi.Input<ReportableExceptionResponse> error;
-
   /// Result identifier
   final pulumi.Input<String> id;
-
   /// Result type
   /// Expected value is 'ErrorOutput'.
   final pulumi.Input<String> resultType;
@@ -26,27 +24,18 @@ class MigrateSqlServerSqlMITaskOutputErrorResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'error':
-          pulumi.Input.mapInputValue<
-            ReportableExceptionResponse,
-            Map<String, dynamic>
-          >(error, (value) => value.toMap()),
+      'error': pulumi.Input.mapInputValue<ReportableExceptionResponse, Map<String, dynamic>>(error, (value) => value.toMap()),
       'id': id,
       'resultType': resultType,
     };
   }
 
-  factory MigrateSqlServerSqlMITaskOutputErrorResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MigrateSqlServerSqlMITaskOutputErrorResponse.fromMap(Map<String, dynamic> map) {
     return MigrateSqlServerSqlMITaskOutputErrorResponse(
-      error: pulumi.Input.fromValue(
-        ReportableExceptionResponse.fromMap(
-          (map['error']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      error: pulumi.Input.fromValue(ReportableExceptionResponse.fromMap((map['error']! as Map).cast<String, dynamic>())),
       id: pulumi.Input.fromValue(map['id'] as String),
       resultType: pulumi.Input.fromValue(map['resultType'] as String),
     );
   }
 }
+

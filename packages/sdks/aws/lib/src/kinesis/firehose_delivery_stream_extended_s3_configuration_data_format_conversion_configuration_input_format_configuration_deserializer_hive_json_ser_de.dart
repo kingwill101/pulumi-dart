@@ -13,18 +13,15 @@ class FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigura
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'timestampFormats': ?timestampFormats};
+    return <String, dynamic>{
+      'timestampFormats': ?timestampFormats,
+    };
   }
 
-  factory FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDe.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDe.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDe(
-      timestampFormats: (() {
-        final guardedValue = map['timestampFormats'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      timestampFormats: (() { final guardedValue = map['timestampFormats']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

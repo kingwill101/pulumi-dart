@@ -16,3 +16,4 @@ enum StorageAccountType {
     throw ArgumentError('Unknown StorageAccountType value: $value');
   }
 }
+

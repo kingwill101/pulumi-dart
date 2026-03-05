@@ -216,56 +216,39 @@ import 'system_data_response.dart';
 class Report extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// List of synchronized certification records.
   late final pulumi.Output<List<Map<String, dynamic>>> certRecords;
-
   /// Report compliance status.
   late final pulumi.Output<ReportComplianceStatusResponse> complianceStatus;
-
   /// List of report error codes.
   late final pulumi.Output<List<String>> errors;
-
   /// Report last collection trigger time.
   late final pulumi.Output<String> lastTriggerTime;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Report next collection trigger time.
   late final pulumi.Output<String> nextTriggerTime;
-
   /// A list of comma-separated offerGuids indicates a series of offerGuids that map to the report. For example, "00000000-0000-0000-0000-000000000001,00000000-0000-0000-0000-000000000002" and "00000000-0000-0000-0000-000000000003".
   late final pulumi.Output<String?> offerGuid;
-
   /// Azure lifecycle management
   late final pulumi.Output<String> provisioningState;
-
   /// List of resource data.
   late final pulumi.Output<List<Map<String, dynamic>>> resources;
-
   /// Report status.
   late final pulumi.Output<String> status;
-
   /// The information of 'bring your own storage' binding to the report
   late final pulumi.Output<StorageInfoResponse?> storageInfo;
-
   /// List of subscription Ids.
   late final pulumi.Output<List<String>> subscriptions;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Report's tenant id.
   late final pulumi.Output<String> tenantId;
-
   /// Report collection trigger time's time zone, the available list can be obtained by executing "Get-TimeZone -ListAvailable" in PowerShell.
   /// An example of valid timezone id is "Pacific Standard Time".
   late final pulumi.Output<String> timeZone;
-
   /// Report collection trigger time.
   late final pulumi.Output<String> triggerTime;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -273,25 +256,19 @@ class Report extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Report]. {@macro pulumi_appcomplianceautomation_report_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Report(String name, {ReportArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:appcomplianceautomation:Report',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Report(
+    String name, {
+    ReportArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:appcomplianceautomation:Report',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     certRecords = registerOutput<List<Map<String, dynamic>>>('certRecords');
-    complianceStatus = registerOutput<ReportComplianceStatusResponse>(
-      'complianceStatus',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ReportComplianceStatusResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    complianceStatus = registerOutput<ReportComplianceStatusResponse>('complianceStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReportComplianceStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     errors = registerOutput<List<String>>('errors');
     lastTriggerTime = registerOutput<String>('lastTriggerTime');
     this.name = registerOutput<String>('name');
@@ -300,27 +277,9 @@ class Report extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     resources = registerOutput<List<Map<String, dynamic>>>('resources');
     status = registerOutput<String>('status');
-    storageInfo = registerOutput<StorageInfoResponse?>(
-      'storageInfo',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return StorageInfoResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    storageInfo = registerOutput<StorageInfoResponse?>('storageInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StorageInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     subscriptions = registerOutput<List<String>>('subscriptions');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tenantId = registerOutput<String>('tenantId');
     timeZone = registerOutput<String>('timeZone');
     triggerTime = registerOutput<String>('triggerTime');

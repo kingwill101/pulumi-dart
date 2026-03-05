@@ -13,18 +13,15 @@ class EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfigS
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'attribute': ?attribute};
+    return <String, dynamic>{
+      'attribute': ?attribute,
+    };
   }
 
-  factory EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfigSchemaValidationConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfigSchemaValidationConfig.fromMap(Map<String, dynamic> map) {
     return EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfigSchemaValidationConfig(
-      attribute: (() {
-        final guardedValue = map['attribute'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      attribute: (() { final guardedValue = map['attribute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

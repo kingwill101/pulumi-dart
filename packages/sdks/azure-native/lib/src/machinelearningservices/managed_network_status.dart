@@ -15,3 +15,4 @@ enum ManagedNetworkStatus {
     throw ArgumentError('Unknown ManagedNetworkStatus value: $value');
   }
 }
+

@@ -13,16 +13,15 @@ class SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponseComputeV1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'contentTypes': contentTypes};
+    return <String, dynamic>{
+      'contentTypes': contentTypes,
+    };
   }
 
-  factory SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponseComputeV1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponseComputeV1(
-      contentTypes: pulumi.Input.fromValue(
-        (map['contentTypes'] as List).cast<String>(),
-      ),
+      contentTypes: pulumi.Input.fromValue((map['contentTypes'] as List).cast<String>()),
     );
   }
 }
+

@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpcConnectorInfoResponseNetworkmanagementV1beta1 {
   /// Name of a VPC connector.
   final pulumi.Input<String> displayName;
-
   /// Location in which the VPC connector is deployed.
   final pulumi.Input<String> location;
-
   /// URI of a VPC connector.
   final pulumi.Input<String> uri;
 
@@ -31,9 +29,7 @@ class VpcConnectorInfoResponseNetworkmanagementV1beta1 {
     };
   }
 
-  factory VpcConnectorInfoResponseNetworkmanagementV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VpcConnectorInfoResponseNetworkmanagementV1beta1.fromMap(Map<String, dynamic> map) {
     return VpcConnectorInfoResponseNetworkmanagementV1beta1(
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
@@ -41,3 +37,4 @@ class VpcConnectorInfoResponseNetworkmanagementV1beta1 {
     );
   }
 }
+

@@ -5,22 +5,16 @@ enum InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionComputeV1 {
   replace("REPLACE"),
   restart("RESTART");
 
-  const InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionComputeV1(
-    this.wireValue,
-  );
+  const InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionComputeV1(this.wireValue);
   final String wireValue;
 
-  static InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionComputeV1
-  fromValue(String value) {
-    for (final item
-        in InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionComputeV1
-            .values) {
+  static InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionComputeV1 fromValue(String value) {
+    for (final item in InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionComputeV1.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionComputeV1 value: $value',
-    );
+    throw ArgumentError('Unknown InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionComputeV1 value: $value');
   }
 }
+

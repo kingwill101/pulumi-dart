@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackendBucketCdnPolicyCacheKeyPolicyResponseComputeV1 {
   /// Allows HTTP request headers (by name) to be used in the cache key.
   final pulumi.Input<List<String>> includeHttpHeaders;
-
   /// Names of query string parameters to include in cache keys. Default parameters are always included. '&' and '=' will be percent encoded and not treated as delimiters.
   final pulumi.Input<List<String>> queryStringWhitelist;
 
@@ -25,16 +24,11 @@ class BackendBucketCdnPolicyCacheKeyPolicyResponseComputeV1 {
     };
   }
 
-  factory BackendBucketCdnPolicyCacheKeyPolicyResponseComputeV1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BackendBucketCdnPolicyCacheKeyPolicyResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return BackendBucketCdnPolicyCacheKeyPolicyResponseComputeV1(
-      includeHttpHeaders: pulumi.Input.fromValue(
-        (map['includeHttpHeaders'] as List).cast<String>(),
-      ),
-      queryStringWhitelist: pulumi.Input.fromValue(
-        (map['queryStringWhitelist'] as List).cast<String>(),
-      ),
+      includeHttpHeaders: pulumi.Input.fromValue((map['includeHttpHeaders'] as List).cast<String>()),
+      queryStringWhitelist: pulumi.Input.fromValue((map['queryStringWhitelist'] as List).cast<String>()),
     );
   }
 }
+

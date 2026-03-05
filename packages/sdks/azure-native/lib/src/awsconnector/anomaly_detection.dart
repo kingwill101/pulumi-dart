@@ -8,50 +8,29 @@ import 'mitigation_in_effect_enum_enum_value.dart';
 class AnomalyDetection {
   /// &lt;p&gt;Indicates whether anomaly mitigation is in progress.&lt;/p&gt;
   final pulumi.Input<MitigationInEffectEnumEnumValue>? mitigationInEffect;
-
   /// &lt;p&gt;The latest anomaly detection result.&lt;/p&gt;
   final pulumi.Input<AnomalyResultEnumEnumValue>? result;
 
   /// Creates a new [AnomalyDetection].
   /// [mitigationInEffect] &lt;p&gt;Indicates whether anomaly mitigation is in progress.&lt;/p&gt;
   /// [result] &lt;p&gt;The latest anomaly detection result.&lt;/p&gt;
-  AnomalyDetection({this.mitigationInEffect, this.result});
+  AnomalyDetection({
+    this.mitigationInEffect,
+    this.result,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'mitigationInEffect':
-          ?pulumi.Input.mapOptionalInputValue<
-            MitigationInEffectEnumEnumValue,
-            Map<String, dynamic>
-          >(mitigationInEffect, (value) => value.toMap()),
-      'result':
-          ?pulumi.Input.mapOptionalInputValue<
-            AnomalyResultEnumEnumValue,
-            Map<String, dynamic>
-          >(result, (value) => value.toMap()),
+      'mitigationInEffect': ?pulumi.Input.mapOptionalInputValue<MitigationInEffectEnumEnumValue, Map<String, dynamic>>(mitigationInEffect, (value) => value.toMap()),
+      'result': ?pulumi.Input.mapOptionalInputValue<AnomalyResultEnumEnumValue, Map<String, dynamic>>(result, (value) => value.toMap()),
     };
   }
 
   factory AnomalyDetection.fromMap(Map<String, dynamic> map) {
     return AnomalyDetection(
-      mitigationInEffect: (() {
-        final guardedValue = map['mitigationInEffect'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          MitigationInEffectEnumEnumValue.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      result: (() {
-        final guardedValue = map['result'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AnomalyResultEnumEnumValue.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      mitigationInEffect: (() { final guardedValue = map['mitigationInEffect']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MitigationInEffectEnumEnumValue.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      result: (() { final guardedValue = map['result']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AnomalyResultEnumEnumValue.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

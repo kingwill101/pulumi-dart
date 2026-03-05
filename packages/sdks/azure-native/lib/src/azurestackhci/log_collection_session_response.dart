@@ -7,28 +7,20 @@ import 'log_collection_error_response.dart';
 class LogCollectionSessionResponse {
   /// CorrelationId of the log collection
   final pulumi.Input<String> correlationId;
-
   /// End Time of the logs when it was collected
   final pulumi.Input<String> endTimeCollected;
-
   /// Log Collection Error details of the cluster.
   final pulumi.Input<LogCollectionErrorResponse> logCollectionError;
-
   /// LogCollection job type
   final pulumi.Input<String> logCollectionJobType;
-
   /// LogCollection status
   final pulumi.Input<String> logCollectionStatus;
-
   /// End Time of the logs when it was collected
   final pulumi.Input<String> logEndTime;
-
   /// Size of the logs collected
   final pulumi.Input<double> logSize;
-
   /// Start Time of the logs when it was collected
   final pulumi.Input<String> logStartTime;
-
   /// Duration of logs collected
   final pulumi.Input<String> timeCollected;
 
@@ -58,11 +50,7 @@ class LogCollectionSessionResponse {
     return <String, dynamic>{
       'correlationId': correlationId,
       'endTimeCollected': endTimeCollected,
-      'logCollectionError':
-          pulumi.Input.mapInputValue<
-            LogCollectionErrorResponse,
-            Map<String, dynamic>
-          >(logCollectionError, (value) => value.toMap()),
+      'logCollectionError': pulumi.Input.mapInputValue<LogCollectionErrorResponse, Map<String, dynamic>>(logCollectionError, (value) => value.toMap()),
       'logCollectionJobType': logCollectionJobType,
       'logCollectionStatus': logCollectionStatus,
       'logEndTime': logEndTime,
@@ -75,20 +63,10 @@ class LogCollectionSessionResponse {
   factory LogCollectionSessionResponse.fromMap(Map<String, dynamic> map) {
     return LogCollectionSessionResponse(
       correlationId: pulumi.Input.fromValue(map['correlationId'] as String),
-      endTimeCollected: pulumi.Input.fromValue(
-        map['endTimeCollected'] as String,
-      ),
-      logCollectionError: pulumi.Input.fromValue(
-        LogCollectionErrorResponse.fromMap(
-          (map['logCollectionError']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      logCollectionJobType: pulumi.Input.fromValue(
-        map['logCollectionJobType'] as String,
-      ),
-      logCollectionStatus: pulumi.Input.fromValue(
-        map['logCollectionStatus'] as String,
-      ),
+      endTimeCollected: pulumi.Input.fromValue(map['endTimeCollected'] as String),
+      logCollectionError: pulumi.Input.fromValue(LogCollectionErrorResponse.fromMap((map['logCollectionError']! as Map).cast<String, dynamic>())),
+      logCollectionJobType: pulumi.Input.fromValue(map['logCollectionJobType'] as String),
+      logCollectionStatus: pulumi.Input.fromValue(map['logCollectionStatus'] as String),
       logEndTime: pulumi.Input.fromValue(map['logEndTime'] as String),
       logSize: pulumi.Input.fromValue(map['logSize'] as double),
       logStartTime: pulumi.Input.fromValue(map['logStartTime'] as String),
@@ -96,3 +74,4 @@ class LogCollectionSessionResponse {
     );
   }
 }
+

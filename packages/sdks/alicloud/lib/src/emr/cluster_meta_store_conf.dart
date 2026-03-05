@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterMetaStoreConf {
   /// Custom rds database password.
   final pulumi.Input<String> dbPassword;
-
   /// Custom rds database connection url.
   final pulumi.Input<String> dbUrl;
-
   /// Custom rds database user name.
   final pulumi.Input<String> dbUserName;
 
@@ -38,3 +36,4 @@ class ClusterMetaStoreConf {
     );
   }
 }
+

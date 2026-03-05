@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LinuxVirtualMachineGalleryImageReference {
   /// The Offer of the Gallery Image. Changing this forces a new resource to be created.
   final pulumi.Input<String> offer;
-
   /// The Publisher of the Gallery Image. Changing this forces a new resource to be created.
   final pulumi.Input<String> publisher;
-
   /// The SKU of the Gallery Image. Changing this forces a new resource to be created.
   final pulumi.Input<String> sku;
-
   /// The Version of the Gallery Image. Changing this forces a new resource to be created.
   final pulumi.Input<String> version;
 
@@ -36,9 +33,7 @@ class LinuxVirtualMachineGalleryImageReference {
     };
   }
 
-  factory LinuxVirtualMachineGalleryImageReference.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LinuxVirtualMachineGalleryImageReference.fromMap(Map<String, dynamic> map) {
     return LinuxVirtualMachineGalleryImageReference(
       offer: pulumi.Input.fromValue(map['offer'] as String),
       publisher: pulumi.Input.fromValue(map['publisher'] as String),
@@ -47,3 +42,4 @@ class LinuxVirtualMachineGalleryImageReference {
     );
   }
 }
+

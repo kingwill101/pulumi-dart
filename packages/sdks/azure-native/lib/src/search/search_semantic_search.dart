@@ -16,3 +16,4 @@ enum SearchSemanticSearch {
     throw ArgumentError('Unknown SearchSemanticSearch value: $value');
   }
 }
+

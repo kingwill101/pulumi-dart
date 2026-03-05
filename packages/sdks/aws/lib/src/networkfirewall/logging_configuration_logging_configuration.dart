@@ -5,10 +5,7 @@ import 'logging_configuration_logging_configuration_log_destination_config.dart'
 
 class LoggingConfigurationLoggingConfiguration {
   /// Set of configuration blocks describing the logging details for a firewall. See Log Destination Config below for details. At most, only Three blocks can be specified; one for `FLOW` logs and one for `ALERT` logs and one for `TLS` logs.
-  final pulumi.Input<
-    List<LoggingConfigurationLoggingConfigurationLogDestinationConfig>
-  >
-  logDestinationConfigs;
+  final pulumi.Input<List<LoggingConfigurationLoggingConfigurationLogDestinationConfig>> logDestinationConfigs;
 
   /// Creates a new [LoggingConfigurationLoggingConfiguration].
   /// [logDestinationConfigs] Set of configuration blocks describing the logging details for a firewall. See Log Destination Config below for details. At most, only Three blocks can be specified; one for `FLOW` logs and one for `ALERT` logs and one for `TLS` logs.
@@ -18,36 +15,14 @@ class LoggingConfigurationLoggingConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'logDestinationConfigs':
-          pulumi.Input.mapInputValue<
-            List<LoggingConfigurationLoggingConfigurationLogDestinationConfig>,
-            List<Map<String, dynamic>>
-          >(
-            logDestinationConfigs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  LoggingConfigurationLoggingConfigurationLogDestinationConfig,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'logDestinationConfigs': pulumi.Input.mapInputValue<List<LoggingConfigurationLoggingConfigurationLogDestinationConfig>, List<Map<String, dynamic>>>(logDestinationConfigs, (value) => pulumi.Input.encodeList<LoggingConfigurationLoggingConfigurationLogDestinationConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory LoggingConfigurationLoggingConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LoggingConfigurationLoggingConfiguration.fromMap(Map<String, dynamic> map) {
     return LoggingConfigurationLoggingConfiguration(
-      logDestinationConfigs: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          LoggingConfigurationLoggingConfigurationLogDestinationConfig
-        >(
-          map['logDestinationConfigs']!,
-          (value) =>
-              LoggingConfigurationLoggingConfigurationLogDestinationConfig.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
+      logDestinationConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<LoggingConfigurationLoggingConfigurationLogDestinationConfig>(map['logDestinationConfigs']!, (value) => LoggingConfigurationLoggingConfigurationLogDestinationConfig.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

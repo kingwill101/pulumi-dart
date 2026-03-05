@@ -162,58 +162,40 @@ import 'application_registration_state.dart';
 class ApplicationRegistration extends pulumi.CustomResource {
   /// The Client ID for the application, which is globally unique.
   late final pulumi.Output<String> clientId;
-
   /// A description of the application, as shown to end users.
   late final pulumi.Output<String?> description;
-
   /// Whether Microsoft has disabled the registered application. If the application is disabled, this will be a string indicating the status/reason, e.g. `DisabledDueToViolationOfServicesAgreement`
   late final pulumi.Output<String> disabledByMicrosoft;
-
   /// The display name for the application.
   late final pulumi.Output<String> displayName;
-
   /// Configures the `groups` claim issued in a user or OAuth access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
   late final pulumi.Output<List<String>?> groupMembershipClaims;
-
   /// Home page or landing page of the application.
   late final pulumi.Output<String?> homepageUrl;
-
   /// Whether this web application can request an access token using OAuth implicit flow.
   late final pulumi.Output<bool?> implicitAccessTokenIssuanceEnabled;
-
   /// Whether this web application can request an ID token using OAuth implicit flow.
   late final pulumi.Output<bool?> implicitIdTokenIssuanceEnabled;
-
   /// The URL that will be used by Microsoft's authorization service to sign out a user using front-channel, back-channel or SAML logout protocols.
   late final pulumi.Output<String?> logoutUrl;
-
   /// URL of the marketing page for the application.
   late final pulumi.Output<String?> marketingUrl;
-
   /// User-specified notes relevant for the management of the application.
   late final pulumi.Output<String?> notes;
-
   /// The object ID of the application within the tenant.
   late final pulumi.Output<String> objectId;
-
   /// URL of the privacy statement for the application.
   late final pulumi.Output<String?> privacyStatementUrl;
-
   /// The verified publisher domain for the application.
   late final pulumi.Output<String> publisherDomain;
-
   /// The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `sign_in_audience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `2`.
   late final pulumi.Output<int?> requestedAccessTokenVersion;
-
   /// References application context information from a Service or Asset Management database.
   late final pulumi.Output<String?> serviceManagementReference;
-
   /// The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
   late final pulumi.Output<String?> signInAudience;
-
   /// URL of the support page for the application.
   late final pulumi.Output<String?> supportUrl;
-
   /// URL of the terms of service statement for the application.
   late final pulumi.Output<String?> termsOfServiceUrl;
 
@@ -226,37 +208,27 @@ class ApplicationRegistration extends pulumi.CustomResource {
     ApplicationRegistrationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/applicationRegistration:ApplicationRegistration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azuread:index/applicationRegistration:ApplicationRegistration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clientId = registerOutput<String>('clientId');
     description = registerOutput<String?>('description');
     disabledByMicrosoft = registerOutput<String>('disabledByMicrosoft');
     displayName = registerOutput<String>('displayName');
-    groupMembershipClaims = registerOutput<List<String>?>(
-      'groupMembershipClaims',
-    );
+    groupMembershipClaims = registerOutput<List<String>?>('groupMembershipClaims');
     homepageUrl = registerOutput<String?>('homepageUrl');
-    implicitAccessTokenIssuanceEnabled = registerOutput<bool?>(
-      'implicitAccessTokenIssuanceEnabled',
-    );
-    implicitIdTokenIssuanceEnabled = registerOutput<bool?>(
-      'implicitIdTokenIssuanceEnabled',
-    );
+    implicitAccessTokenIssuanceEnabled = registerOutput<bool?>('implicitAccessTokenIssuanceEnabled');
+    implicitIdTokenIssuanceEnabled = registerOutput<bool?>('implicitIdTokenIssuanceEnabled');
     logoutUrl = registerOutput<String?>('logoutUrl');
     marketingUrl = registerOutput<String?>('marketingUrl');
     notes = registerOutput<String?>('notes');
     objectId = registerOutput<String>('objectId');
     privacyStatementUrl = registerOutput<String?>('privacyStatementUrl');
     publisherDomain = registerOutput<String>('publisherDomain');
-    requestedAccessTokenVersion = registerOutput<int?>(
-      'requestedAccessTokenVersion',
-    );
-    serviceManagementReference = registerOutput<String?>(
-      'serviceManagementReference',
-    );
+    requestedAccessTokenVersion = registerOutput<int?>('requestedAccessTokenVersion');
+    serviceManagementReference = registerOutput<String?>('serviceManagementReference');
     signInAudience = registerOutput<String?>('signInAudience');
     supportUrl = registerOutput<String?>('supportUrl');
     termsOfServiceUrl = registerOutput<String?>('termsOfServiceUrl');
@@ -280,37 +252,27 @@ class ApplicationRegistration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/applicationRegistration:ApplicationRegistration',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azuread:index/applicationRegistration:ApplicationRegistration',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clientId = registerOutput<String>('clientId');
     description = registerOutput<String?>('description');
     disabledByMicrosoft = registerOutput<String>('disabledByMicrosoft');
     displayName = registerOutput<String>('displayName');
-    groupMembershipClaims = registerOutput<List<String>?>(
-      'groupMembershipClaims',
-    );
+    groupMembershipClaims = registerOutput<List<String>?>('groupMembershipClaims');
     homepageUrl = registerOutput<String?>('homepageUrl');
-    implicitAccessTokenIssuanceEnabled = registerOutput<bool?>(
-      'implicitAccessTokenIssuanceEnabled',
-    );
-    implicitIdTokenIssuanceEnabled = registerOutput<bool?>(
-      'implicitIdTokenIssuanceEnabled',
-    );
+    implicitAccessTokenIssuanceEnabled = registerOutput<bool?>('implicitAccessTokenIssuanceEnabled');
+    implicitIdTokenIssuanceEnabled = registerOutput<bool?>('implicitIdTokenIssuanceEnabled');
     logoutUrl = registerOutput<String?>('logoutUrl');
     marketingUrl = registerOutput<String?>('marketingUrl');
     notes = registerOutput<String?>('notes');
     objectId = registerOutput<String>('objectId');
     privacyStatementUrl = registerOutput<String?>('privacyStatementUrl');
     publisherDomain = registerOutput<String>('publisherDomain');
-    requestedAccessTokenVersion = registerOutput<int?>(
-      'requestedAccessTokenVersion',
-    );
-    serviceManagementReference = registerOutput<String?>(
-      'serviceManagementReference',
-    );
+    requestedAccessTokenVersion = registerOutput<int?>('requestedAccessTokenVersion');
+    serviceManagementReference = registerOutput<String?>('serviceManagementReference');
     signInAudience = registerOutput<String?>('signInAudience');
     supportUrl = registerOutput<String?>('supportUrl');
     termsOfServiceUrl = registerOutput<String?>('termsOfServiceUrl');

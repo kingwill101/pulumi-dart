@@ -7,10 +7,8 @@ import 'migration_progress_response.dart';
 class MigrationPropertiesResponse {
   /// Migration Progress
   final pulumi.Input<MigrationProgressResponse> migrationProgress;
-
   /// Old Subnet Id
   final pulumi.Input<String> oldSubnetId;
-
   /// Old Vnet Site Id
   final pulumi.Input<String> oldVnetSiteId;
 
@@ -26,11 +24,7 @@ class MigrationPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'migrationProgress':
-          pulumi.Input.mapInputValue<
-            MigrationProgressResponse,
-            Map<String, dynamic>
-          >(migrationProgress, (value) => value.toMap()),
+      'migrationProgress': pulumi.Input.mapInputValue<MigrationProgressResponse, Map<String, dynamic>>(migrationProgress, (value) => value.toMap()),
       'oldSubnetId': oldSubnetId,
       'oldVnetSiteId': oldVnetSiteId,
     };
@@ -38,13 +32,10 @@ class MigrationPropertiesResponse {
 
   factory MigrationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return MigrationPropertiesResponse(
-      migrationProgress: pulumi.Input.fromValue(
-        MigrationProgressResponse.fromMap(
-          (map['migrationProgress']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      migrationProgress: pulumi.Input.fromValue(MigrationProgressResponse.fromMap((map['migrationProgress']! as Map).cast<String, dynamic>())),
       oldSubnetId: pulumi.Input.fromValue(map['oldSubnetId'] as String),
       oldVnetSiteId: pulumi.Input.fromValue(map['oldVnetSiteId'] as String),
     );
   }
 }
+

@@ -6,7 +6,6 @@ import 'get_server_groups_group.dart';
 /// Result data returned by getServerGroups.
 class GetServerGroupsResult {
   final List<GetServerGroupsGroup> groups;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -47,11 +46,7 @@ class GetServerGroupsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'groups':
-          pulumi.Input.encodeList<GetServerGroupsGroup, Map<String, dynamic>>(
-            groups,
-            (value) => value.toMap(),
-          ),
+      'groups': pulumi.Input.encodeList<GetServerGroupsGroup, Map<String, dynamic>>(groups, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'nameRegex': ?nameRegex,
@@ -67,50 +62,18 @@ class GetServerGroupsResult {
 
   factory GetServerGroupsResult.fromMap(Map<String, dynamic> map) {
     return GetServerGroupsResult(
-      groups: pulumi.Input.decodeList<GetServerGroupsGroup>(
-        map['groups']!,
-        (value) => GetServerGroupsGroup.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      groups: pulumi.Input.decodeList<GetServerGroupsGroup>(map['groups']!, (value) => GetServerGroupsGroup.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      resourceGroupId: (() {
-        final guardedValue = map['resourceGroupId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      serverGroupNames: (() {
-        final guardedValue = map['serverGroupNames'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
-      serverGroupType: (() {
-        final guardedValue = map['serverGroupType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceGroupId: (() { final guardedValue = map['resourceGroupId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      serverGroupNames: (() { final guardedValue = map['serverGroupNames']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      serverGroupType: (() { final guardedValue = map['serverGroupType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }
 }
+

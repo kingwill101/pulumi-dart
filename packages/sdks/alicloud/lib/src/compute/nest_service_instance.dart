@@ -488,44 +488,30 @@ import 'nest_service_instance_state.dart';
 class NestServiceInstance extends pulumi.CustomResource {
   /// The order information of cloud market. See `commodity` below.
   late final pulumi.Output<NestServiceInstanceCommodity?> commodity;
-
   /// Whether the service instance has the O&M function. Default value: `false`. Valid values:
   late final pulumi.Output<bool> enableInstanceOps;
-
   /// Whether Prometheus monitoring is enabled. Default value: `false`. Valid values:
   late final pulumi.Output<bool> enableUserPrometheus;
-
   /// The configuration of O&M. See `operation_metadata` below.
-  late final pulumi.Output<NestServiceInstanceOperationMetadata>
-  operationMetadata;
-
+  late final pulumi.Output<NestServiceInstanceOperationMetadata> operationMetadata;
   /// The parameters entered by the deployment service instance.
   late final pulumi.Output<String?> parameters;
-
   /// The type of payment. Valid values: `Permanent`, `Subscription`, `PayAsYouGo`, `CustomFixTime`.
   late final pulumi.Output<String> paymentType;
-
   /// The ID of the resource group.
   late final pulumi.Output<String> resourceGroupId;
-
   /// The ID of the service.
   late final pulumi.Output<String> serviceId;
-
   /// The name of the Service Instance.
   late final pulumi.Output<String> serviceInstanceName;
-
   /// The version of the service.
   late final pulumi.Output<String> serviceVersion;
-
   /// The name of the specification.
   late final pulumi.Output<String?> specificationName;
-
   /// The status of the Service Instance.
   late final pulumi.Output<String> status;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The name of the template.
   late final pulumi.Output<String> templateName;
 
@@ -538,33 +524,15 @@ class NestServiceInstance extends pulumi.CustomResource {
     NestServiceInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:compute/nestServiceInstance:NestServiceInstance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    commodity = registerOutput<NestServiceInstanceCommodity?>(
-      'commodity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NestServiceInstanceCommodity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'alicloud:compute/nestServiceInstance:NestServiceInstance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    commodity = registerOutput<NestServiceInstanceCommodity?>('commodity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NestServiceInstanceCommodity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     enableInstanceOps = registerOutput<bool>('enableInstanceOps');
     enableUserPrometheus = registerOutput<bool>('enableUserPrometheus');
-    operationMetadata = registerOutput<NestServiceInstanceOperationMetadata>(
-      'operationMetadata',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NestServiceInstanceOperationMetadata.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    operationMetadata = registerOutput<NestServiceInstanceOperationMetadata>('operationMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NestServiceInstanceOperationMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     parameters = registerOutput<String?>('parameters');
     paymentType = registerOutput<String>('paymentType');
     resourceGroupId = registerOutput<String>('resourceGroupId');
@@ -595,33 +563,15 @@ class NestServiceInstance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:compute/nestServiceInstance:NestServiceInstance',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    commodity = registerOutput<NestServiceInstanceCommodity?>(
-      'commodity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NestServiceInstanceCommodity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'alicloud:compute/nestServiceInstance:NestServiceInstance',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    commodity = registerOutput<NestServiceInstanceCommodity?>('commodity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NestServiceInstanceCommodity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     enableInstanceOps = registerOutput<bool>('enableInstanceOps');
     enableUserPrometheus = registerOutput<bool>('enableUserPrometheus');
-    operationMetadata = registerOutput<NestServiceInstanceOperationMetadata>(
-      'operationMetadata',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NestServiceInstanceOperationMetadata.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    operationMetadata = registerOutput<NestServiceInstanceOperationMetadata>('operationMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NestServiceInstanceOperationMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     parameters = registerOutput<String?>('parameters');
     paymentType = registerOutput<String>('paymentType');
     resourceGroupId = registerOutput<String>('resourceGroupId');

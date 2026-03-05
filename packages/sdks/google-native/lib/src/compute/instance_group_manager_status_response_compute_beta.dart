@@ -7,24 +7,15 @@ import 'instance_group_manager_status_version_target_response_compute_beta.dart'
 
 class InstanceGroupManagerStatusResponseComputeBeta {
   /// [Output only] Status of all-instances configuration on the group.
-  final pulumi.Input<
-    InstanceGroupManagerStatusAllInstancesConfigResponseComputeBeta
-  >
-  allInstancesConfig;
-
+  final pulumi.Input<InstanceGroupManagerStatusAllInstancesConfigResponseComputeBeta> allInstancesConfig;
   /// The URL of the Autoscaler that targets this instance group manager.
   final pulumi.Input<String> autoscaler;
-
   /// A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
   final pulumi.Input<bool> isStable;
-
   /// Stateful status of the given Instance Group Manager.
-  final pulumi.Input<InstanceGroupManagerStatusStatefulResponseComputeBeta>
-  stateful;
-
+  final pulumi.Input<InstanceGroupManagerStatusStatefulResponseComputeBeta> stateful;
   /// A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
-  final pulumi.Input<InstanceGroupManagerStatusVersionTargetResponseComputeBeta>
-  versionTarget;
+  final pulumi.Input<InstanceGroupManagerStatusVersionTargetResponseComputeBeta> versionTarget;
 
   /// Creates a new [InstanceGroupManagerStatusResponseComputeBeta].
   /// [allInstancesConfig] [Output only] Status of all-instances configuration on the group.
@@ -42,47 +33,22 @@ class InstanceGroupManagerStatusResponseComputeBeta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allInstancesConfig':
-          pulumi.Input.mapInputValue<
-            InstanceGroupManagerStatusAllInstancesConfigResponseComputeBeta,
-            Map<String, dynamic>
-          >(allInstancesConfig, (value) => value.toMap()),
+      'allInstancesConfig': pulumi.Input.mapInputValue<InstanceGroupManagerStatusAllInstancesConfigResponseComputeBeta, Map<String, dynamic>>(allInstancesConfig, (value) => value.toMap()),
       'autoscaler': autoscaler,
       'isStable': isStable,
-      'stateful':
-          pulumi.Input.mapInputValue<
-            InstanceGroupManagerStatusStatefulResponseComputeBeta,
-            Map<String, dynamic>
-          >(stateful, (value) => value.toMap()),
-      'versionTarget':
-          pulumi.Input.mapInputValue<
-            InstanceGroupManagerStatusVersionTargetResponseComputeBeta,
-            Map<String, dynamic>
-          >(versionTarget, (value) => value.toMap()),
+      'stateful': pulumi.Input.mapInputValue<InstanceGroupManagerStatusStatefulResponseComputeBeta, Map<String, dynamic>>(stateful, (value) => value.toMap()),
+      'versionTarget': pulumi.Input.mapInputValue<InstanceGroupManagerStatusVersionTargetResponseComputeBeta, Map<String, dynamic>>(versionTarget, (value) => value.toMap()),
     };
   }
 
-  factory InstanceGroupManagerStatusResponseComputeBeta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InstanceGroupManagerStatusResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerStatusResponseComputeBeta(
-      allInstancesConfig: pulumi.Input.fromValue(
-        InstanceGroupManagerStatusAllInstancesConfigResponseComputeBeta.fromMap(
-          (map['allInstancesConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      allInstancesConfig: pulumi.Input.fromValue(InstanceGroupManagerStatusAllInstancesConfigResponseComputeBeta.fromMap((map['allInstancesConfig']! as Map).cast<String, dynamic>())),
       autoscaler: pulumi.Input.fromValue(map['autoscaler'] as String),
       isStable: pulumi.Input.fromValue(map['isStable'] as bool),
-      stateful: pulumi.Input.fromValue(
-        InstanceGroupManagerStatusStatefulResponseComputeBeta.fromMap(
-          (map['stateful']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      versionTarget: pulumi.Input.fromValue(
-        InstanceGroupManagerStatusVersionTargetResponseComputeBeta.fromMap(
-          (map['versionTarget']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      stateful: pulumi.Input.fromValue(InstanceGroupManagerStatusStatefulResponseComputeBeta.fromMap((map['stateful']! as Map).cast<String, dynamic>())),
+      versionTarget: pulumi.Input.fromValue(InstanceGroupManagerStatusVersionTargetResponseComputeBeta.fromMap((map['versionTarget']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

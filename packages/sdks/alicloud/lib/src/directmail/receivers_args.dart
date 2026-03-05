@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReceiversArgs {
   /// The description of receivers and 1-50 characters in length.
   final pulumi.Input<String>? description;
-
   /// The alias of receivers. Must email address and less than 30 characters in length.
   final pulumi.Input<String> receiversAlias;
-
   /// The name of the resource. The length that cannot be repeated is 1-30 characters.
   final pulumi.Input<String> receiversName;
 
@@ -36,13 +34,10 @@ class ReceiversArgs {
 
   factory ReceiversArgs.fromMap(Map<String, dynamic> map) {
     return ReceiversArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       receiversAlias: pulumi.Input.fromValue(map['receiversAlias'] as String),
       receiversName: pulumi.Input.fromValue(map['receiversName'] as String),
     );
   }
 }
+

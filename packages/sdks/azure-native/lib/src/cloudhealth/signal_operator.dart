@@ -18,3 +18,4 @@ enum SignalOperator {
     throw ArgumentError('Unknown SignalOperator value: $value');
   }
 }
+

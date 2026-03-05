@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServerCertificateArgs {
   /// sort results by expiration date. returns the certificate with expiration date in furthest in the future.
   final pulumi.Input<bool>? latest;
-
   /// exact name of the cert to lookup
   final pulumi.Input<String>? name;
-
   /// prefix of cert to filter by
   final pulumi.Input<String>? namePrefix;
-
   /// prefix of path to filter by
   final pulumi.Input<String>? pathPrefix;
 
@@ -42,26 +39,11 @@ class GetServerCertificateArgs {
 
   factory GetServerCertificateArgs.fromMap(Map<String, dynamic> map) {
     return GetServerCertificateArgs(
-      latest: (() {
-        final guardedValue = map['latest'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      namePrefix: (() {
-        final guardedValue = map['namePrefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pathPrefix: (() {
-        final guardedValue = map['pathPrefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      latest: (() { final guardedValue = map['latest']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      namePrefix: (() { final guardedValue = map['namePrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pathPrefix: (() { final guardedValue = map['pathPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

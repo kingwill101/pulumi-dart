@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PublishTaskState {
   /// The business space key. If you do not set it, the default business space is accessed. The key value is obtained on the business management page of the primary account.
   final pulumi.Input<String>? agentKey;
-
   /// The type of the publishing unit. Please use the CreateInstancePublishTask API to publish the robot.
   final pulumi.Input<String>? bizType;
-
   /// UTC time of task creation
   final pulumi.Input<String>? createTime;
-
   /// Additional release information. Currently supported: If the BizType is faq, enter the category Id in this field to indicate that only the knowledge under these categories is published.
   final pulumi.Input<List<String>>? dataIdLists;
-
   /// UTC time for task modification
   final pulumi.Input<String>? modifyTime;
-
   /// The status of the task.
   final pulumi.Input<String>? status;
 
@@ -51,36 +46,13 @@ class PublishTaskState {
 
   factory PublishTaskState.fromMap(Map<String, dynamic> map) {
     return PublishTaskState(
-      agentKey: (() {
-        final guardedValue = map['agentKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      bizType: (() {
-        final guardedValue = map['bizType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dataIdLists: (() {
-        final guardedValue = map['dataIdLists'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      modifyTime: (() {
-        final guardedValue = map['modifyTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      agentKey: (() { final guardedValue = map['agentKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      bizType: (() { final guardedValue = map['bizType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dataIdLists: (() { final guardedValue = map['dataIdLists']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      modifyTime: (() { final guardedValue = map['modifyTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

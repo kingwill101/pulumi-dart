@@ -7,10 +7,7 @@ class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnection {
   /// Detailed information of a PSC connection that is created by the customer
   /// who owns the cluster.
   /// Structure is documented below.
-  final pulumi.Input<
-    InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnection
-  >?
-  pscConnection;
+  final pulumi.Input<InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnection>? pscConnection;
 
   /// Creates a new [InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnection].
   /// [pscConnection] Detailed information of a PSC connection that is created by the customer
@@ -20,27 +17,14 @@ class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnection {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'pscConnection':
-          ?pulumi.Input.mapOptionalInputValue<
-            InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnection,
-            Map<String, dynamic>
-          >(pscConnection, (value) => value.toMap()),
+      'pscConnection': ?pulumi.Input.mapOptionalInputValue<InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnection, Map<String, dynamic>>(pscConnection, (value) => value.toMap()),
     };
   }
 
-  factory InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnection.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnection.fromMap(Map<String, dynamic> map) {
     return InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnection(
-      pscConnection: (() {
-        final guardedValue = map['pscConnection'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnection.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      pscConnection: (() { final guardedValue = map['pscConnection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnection.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

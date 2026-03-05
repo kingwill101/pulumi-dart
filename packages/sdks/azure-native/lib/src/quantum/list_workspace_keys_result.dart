@@ -6,16 +6,12 @@ import 'api_key_response.dart';
 class ListWorkspaceKeysResult {
   /// Indicator of enablement of the Quantum workspace Api keys.
   final bool? apiKeyEnabled;
-
   /// The connection string of the primary api key.
   final String primaryConnectionString;
-
   /// The quantum workspace primary api key.
   final ApiKeyResponse? primaryKey;
-
   /// The connection string of the secondary api key.
   final String secondaryConnectionString;
-
   /// The quantum workspace secondary api key.
   final ApiKeyResponse? secondaryKey;
 
@@ -45,27 +41,12 @@ class ListWorkspaceKeysResult {
 
   factory ListWorkspaceKeysResult.fromMap(Map<String, dynamic> map) {
     return ListWorkspaceKeysResult(
-      apiKeyEnabled: (() {
-        final guardedValue = map['apiKeyEnabled'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      apiKeyEnabled: (() { final guardedValue = map['apiKeyEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       primaryConnectionString: map['primaryConnectionString'] as String,
-      primaryKey: (() {
-        final guardedValue = map['primaryKey'];
-        if (guardedValue == null) return null;
-        return ApiKeyResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      primaryKey: (() { final guardedValue = map['primaryKey']; if (guardedValue == null) return null; return ApiKeyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       secondaryConnectionString: map['secondaryConnectionString'] as String,
-      secondaryKey: (() {
-        final guardedValue = map['secondaryKey'];
-        if (guardedValue == null) return null;
-        return ApiKeyResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      secondaryKey: (() { final guardedValue = map['secondaryKey']; if (guardedValue == null) return null; return ApiKeyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }
 }
+

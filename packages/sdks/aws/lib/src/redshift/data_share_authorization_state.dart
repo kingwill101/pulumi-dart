@@ -6,21 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataShareAuthorizationState {
   /// Whether to allow write operations for a datashare.
   final pulumi.Input<bool>? allowWrites;
-
   /// Identifier of the data consumer that is authorized to access the datashare. This identifier is an AWS account ID or a keyword, such as `ADX`.
   final pulumi.Input<String>? consumerIdentifier;
-
   /// Amazon Resource Name (ARN) of the datashare that producers are to authorize sharing for.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? dataShareArn;
-
   /// Identifier of a datashare to show its managing entity.
   final pulumi.Input<String>? managedBy;
-
   /// Amazon Resource Name (ARN) of the producer.
   final pulumi.Input<String>? producerArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -53,36 +48,13 @@ class DataShareAuthorizationState {
 
   factory DataShareAuthorizationState.fromMap(Map<String, dynamic> map) {
     return DataShareAuthorizationState(
-      allowWrites: (() {
-        final guardedValue = map['allowWrites'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      consumerIdentifier: (() {
-        final guardedValue = map['consumerIdentifier'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dataShareArn: (() {
-        final guardedValue = map['dataShareArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      managedBy: (() {
-        final guardedValue = map['managedBy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      producerArn: (() {
-        final guardedValue = map['producerArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      allowWrites: (() { final guardedValue = map['allowWrites']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      consumerIdentifier: (() { final guardedValue = map['consumerIdentifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dataShareArn: (() { final guardedValue = map['dataShareArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      managedBy: (() { final guardedValue = map['managedBy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      producerArn: (() { final guardedValue = map['producerArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

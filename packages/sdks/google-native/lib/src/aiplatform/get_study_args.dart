@@ -15,7 +15,11 @@ class GetStudyArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [studyId] Required.
-  GetStudyArgs({required this.location, this.project, required this.studyId});
+  GetStudyArgs({
+    required this.location,
+    this.project,
+    required this.studyId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,12 +32,9 @@ class GetStudyArgs {
   factory GetStudyArgs.fromMap(Map<String, dynamic> map) {
     return GetStudyArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       studyId: pulumi.Input.fromValue(map['studyId'] as String),
     );
   }
 }
+

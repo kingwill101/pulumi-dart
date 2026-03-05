@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StatusConditionResponse {
   /// Canonical code of the condition.
   final pulumi.Input<String> canonicalCode;
-
   /// Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
   final pulumi.Input<String> code;
-
   /// Human-friendly representation of the condition
   final pulumi.Input<String> message;
 
@@ -39,3 +37,4 @@ class StatusConditionResponse {
     );
   }
 }
+

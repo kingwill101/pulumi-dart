@@ -146,22 +146,16 @@ import 'api_release_args.dart';
 class ApiRelease extends pulumi.CustomResource {
   /// Identifier of the API the release belongs to.
   late final pulumi.Output<String?> apiId;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The time the API was released. The date conforms to the following format: yyyy-MM-ddTHH:mm:ssZ as specified by the ISO 8601 standard.
   late final pulumi.Output<String> createdDateTime;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Release Notes
   late final pulumi.Output<String?> notes;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// The time the API release was updated.
   late final pulumi.Output<String> updatedDateTime;
 
@@ -174,11 +168,11 @@ class ApiRelease extends pulumi.CustomResource {
     ApiReleaseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:apimanagement:ApiRelease',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:apimanagement:ApiRelease',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiId = registerOutput<String?>('apiId');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createdDateTime = registerOutput<String>('createdDateTime');

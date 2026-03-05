@@ -21,3 +21,4 @@ enum ConnectionProfileState {
     throw ArgumentError('Unknown ConnectionProfileState value: $value');
   }
 }
+

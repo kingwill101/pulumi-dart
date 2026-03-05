@@ -9,14 +9,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSpacesBucketObjectArgs {
   /// The name of the bucket to read the object from.
   final pulumi.Input<String> bucket;
-
   /// The full path to the object inside the bucket
   final pulumi.Input<String> key;
   final pulumi.Input<String>? range;
-
   /// The slug of the region where the bucket is stored.
   final pulumi.Input<String> region;
-
   /// Specific version ID of the object returned (defaults to latest version)
   final pulumi.Input<String>? versionId;
 
@@ -48,17 +45,10 @@ class GetSpacesBucketObjectArgs {
     return GetSpacesBucketObjectArgs(
       bucket: pulumi.Input.fromValue(map['bucket'] as String),
       key: pulumi.Input.fromValue(map['key'] as String),
-      range: (() {
-        final guardedValue = map['range'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      range: (() { final guardedValue = map['range']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: pulumi.Input.fromValue(map['region'] as String),
-      versionId: (() {
-        final guardedValue = map['versionId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      versionId: (() { final guardedValue = map['versionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

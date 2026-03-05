@@ -32,12 +32,9 @@ class GetRegionCommitmentComputeV1Args {
   factory GetRegionCommitmentComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetRegionCommitmentComputeV1Args(
       commitment: pulumi.Input.fromValue(map['commitment'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: pulumi.Input.fromValue(map['region'] as String),
     );
   }
 }
+

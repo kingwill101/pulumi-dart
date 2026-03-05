@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RoutingPolicy {
   /// List of all destinations which this routing policy is applicable to (for example: Internet, PrivateTraffic).
   final pulumi.Input<List<String>> destinations;
-
   /// The unique name for the routing policy.
   final pulumi.Input<String> name;
-
   /// The next hop resource id on which this routing policy is applicable to.
   final pulumi.Input<String> nextHop;
 
@@ -33,11 +31,10 @@ class RoutingPolicy {
 
   factory RoutingPolicy.fromMap(Map<String, dynamic> map) {
     return RoutingPolicy(
-      destinations: pulumi.Input.fromValue(
-        (map['destinations'] as List).cast<String>(),
-      ),
+      destinations: pulumi.Input.fromValue((map['destinations'] as List).cast<String>()),
       name: pulumi.Input.fromValue(map['name'] as String),
       nextHop: pulumi.Input.fromValue(map['nextHop'] as String),
     );
   }
 }
+

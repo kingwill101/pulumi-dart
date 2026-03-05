@@ -141,31 +141,22 @@ import 'system_data_response.dart';
 class InventoryItem extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Gets the Managed Object name in VMM for the inventory item.
   late final pulumi.Output<String> inventoryItemName;
-
   /// They inventory type.
   late final pulumi.Output<String> inventoryType;
-
   /// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
   late final pulumi.Output<String?> kind;
-
   /// Gets the tracked resource id corresponding to the inventory resource.
   late final pulumi.Output<String> managedResourceId;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Gets the provisioning state.
   late final pulumi.Output<String> provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Gets the UUID (which is assigned by VMM) for the inventory item.
   late final pulumi.Output<String> uuid;
 
@@ -178,11 +169,11 @@ class InventoryItem extends pulumi.CustomResource {
     InventoryItemArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:scvmm:InventoryItem',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:scvmm:InventoryItem',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     inventoryItemName = registerOutput<String>('inventoryItemName');
     inventoryType = registerOutput<String>('inventoryType');
@@ -190,16 +181,7 @@ class InventoryItem extends pulumi.CustomResource {
     managedResourceId = registerOutput<String>('managedResourceId');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     uuid = registerOutput<String>('uuid');
   }

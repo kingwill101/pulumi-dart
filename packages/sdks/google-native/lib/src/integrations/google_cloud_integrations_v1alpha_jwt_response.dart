@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudIntegrationsV1alphaJwtResponse {
   /// The token calculated by the header, payload and signature.
   final pulumi.Input<String> jwt;
-
   /// Identifies which algorithm is used to generate the signature.
   final pulumi.Input<String> jwtHeader;
-
   /// Contains a set of claims. The JWT specification defines seven Registered Claim Names which are the standard fields commonly included in tokens. Custom claims are usually also included, depending on the purpose of the token.
   final pulumi.Input<String> jwtPayload;
-
   /// User's pre-shared secret to sign the token.
   final pulumi.Input<String> secret;
 
@@ -37,9 +34,7 @@ class GoogleCloudIntegrationsV1alphaJwtResponse {
     };
   }
 
-  factory GoogleCloudIntegrationsV1alphaJwtResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudIntegrationsV1alphaJwtResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaJwtResponse(
       jwt: pulumi.Input.fromValue(map['jwt'] as String),
       jwtHeader: pulumi.Input.fromValue(map['jwtHeader'] as String),
@@ -48,3 +43,4 @@ class GoogleCloudIntegrationsV1alphaJwtResponse {
     );
   }
 }
+

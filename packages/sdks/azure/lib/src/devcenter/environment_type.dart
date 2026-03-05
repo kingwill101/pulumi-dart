@@ -225,10 +225,8 @@ import 'environment_type_state.dart';
 class EnvironmentType extends pulumi.CustomResource {
   /// The ID of the associated Dev Center. Changing this forces a new resource to be created.
   late final pulumi.Output<String> devCenterId;
-
   /// Specifies the name of this Dev Center Environment Type. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// A mapping of tags which should be assigned to the Dev Center Environment Type.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -241,11 +239,11 @@ class EnvironmentType extends pulumi.CustomResource {
     EnvironmentTypeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:devcenter/environmentType:EnvironmentType',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:devcenter/environmentType:EnvironmentType',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     devCenterId = registerOutput<String>('devCenterId');
     this.name = registerOutput<String>('name');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -269,11 +267,11 @@ class EnvironmentType extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:devcenter/environmentType:EnvironmentType',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:devcenter/environmentType:EnvironmentType',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     devCenterId = registerOutput<String>('devCenterId');
     this.name = registerOutput<String>('name');
     tags = registerOutput<Map<String, String>?>('tags');

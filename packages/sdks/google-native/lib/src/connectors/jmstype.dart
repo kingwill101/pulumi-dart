@@ -16,3 +16,4 @@ enum JMSType {
     throw ArgumentError('Unknown JMSType value: $value');
   }
 }
+

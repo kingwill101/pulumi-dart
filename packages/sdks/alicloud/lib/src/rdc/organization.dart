@@ -120,13 +120,10 @@ import 'organization_state.dart';
 class Organization extends pulumi.CustomResource {
   /// The desired member count.
   late final pulumi.Output<int?> desiredMemberCount;
-
   /// Company name.
   late final pulumi.Output<String> organizationName;
-
   /// User pk, not required, only required when the ak used by the calling interface is inconsistent with the user pk
   late final pulumi.Output<String?> realPk;
-
   /// This is organization source information
   late final pulumi.Output<String> source;
 
@@ -139,11 +136,11 @@ class Organization extends pulumi.CustomResource {
     OrganizationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:rdc/organization:Organization',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:rdc/organization:Organization',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     desiredMemberCount = registerOutput<int?>('desiredMemberCount');
     organizationName = registerOutput<String>('organizationName');
     realPk = registerOutput<String?>('realPk');
@@ -168,11 +165,11 @@ class Organization extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:rdc/organization:Organization',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:rdc/organization:Organization',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     desiredMemberCount = registerOutput<int?>('desiredMemberCount');
     organizationName = registerOutput<String>('organizationName');
     realPk = registerOutput<String?>('realPk');

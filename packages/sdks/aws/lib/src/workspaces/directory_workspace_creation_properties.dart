@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DirectoryWorkspaceCreationProperties {
   /// The identifier of your custom security group. Should relate to the same VPC, where workspaces reside in.
   final pulumi.Input<String>? customSecurityGroupId;
-
   /// The default organizational unit (OU) for your WorkSpace directories. Should conform `"OU=&lt;value&gt;,DC=&lt;value&gt;,...,DC=&lt;value&gt;"` pattern.
   final pulumi.Input<String>? defaultOu;
-
   /// Indicates whether internet access is enabled for your WorkSpaces.
   final pulumi.Input<bool>? enableInternetAccess;
-
   /// Indicates whether maintenance mode is enabled for your WorkSpaces. Valid only if `workspace_type` is set to `PERSONAL`.
   final pulumi.Input<bool>? enableMaintenanceMode;
-
   /// Indicates whether users are local administrators of their WorkSpaces. Valid only if `workspace_type` is set to `PERSONAL`.
   final pulumi.Input<bool>? userEnabledAsLocalAdministrator;
 
@@ -42,35 +38,14 @@ class DirectoryWorkspaceCreationProperties {
     };
   }
 
-  factory DirectoryWorkspaceCreationProperties.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DirectoryWorkspaceCreationProperties.fromMap(Map<String, dynamic> map) {
     return DirectoryWorkspaceCreationProperties(
-      customSecurityGroupId: (() {
-        final guardedValue = map['customSecurityGroupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      defaultOu: (() {
-        final guardedValue = map['defaultOu'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      enableInternetAccess: (() {
-        final guardedValue = map['enableInternetAccess'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      enableMaintenanceMode: (() {
-        final guardedValue = map['enableMaintenanceMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      userEnabledAsLocalAdministrator: (() {
-        final guardedValue = map['userEnabledAsLocalAdministrator'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      customSecurityGroupId: (() { final guardedValue = map['customSecurityGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      defaultOu: (() { final guardedValue = map['defaultOu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      enableInternetAccess: (() { final guardedValue = map['enableInternetAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enableMaintenanceMode: (() { final guardedValue = map['enableMaintenanceMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      userEnabledAsLocalAdministrator: (() { final guardedValue = map['userEnabledAsLocalAdministrator']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

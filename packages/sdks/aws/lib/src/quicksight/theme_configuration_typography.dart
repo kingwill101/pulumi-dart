@@ -5,44 +5,24 @@ import 'theme_configuration_typography_font_family.dart';
 
 class ThemeConfigurationTypography {
   /// Determines the list of font families. Maximum number of 5 items. See font_families.
-  final pulumi.Input<List<ThemeConfigurationTypographyFontFamily>>?
-  fontFamilies;
+  final pulumi.Input<List<ThemeConfigurationTypographyFontFamily>>? fontFamilies;
 
   /// Creates a new [ThemeConfigurationTypography].
   /// [fontFamilies] Determines the list of font families. Maximum number of 5 items. See font_families.
-  ThemeConfigurationTypography({this.fontFamilies});
+  ThemeConfigurationTypography({
+    this.fontFamilies,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fontFamilies':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ThemeConfigurationTypographyFontFamily>,
-            List<Map<String, dynamic>>
-          >(
-            fontFamilies,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ThemeConfigurationTypographyFontFamily,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'fontFamilies': ?pulumi.Input.mapOptionalInputValue<List<ThemeConfigurationTypographyFontFamily>, List<Map<String, dynamic>>>(fontFamilies, (value) => pulumi.Input.encodeList<ThemeConfigurationTypographyFontFamily, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ThemeConfigurationTypography.fromMap(Map<String, dynamic> map) {
     return ThemeConfigurationTypography(
-      fontFamilies: (() {
-        final guardedValue = map['fontFamilies'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ThemeConfigurationTypographyFontFamily>(
-            guardedValue,
-            (value) => ThemeConfigurationTypographyFontFamily.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      fontFamilies: (() { final guardedValue = map['fontFamilies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ThemeConfigurationTypographyFontFamily>(guardedValue, (value) => ThemeConfigurationTypographyFontFamily.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

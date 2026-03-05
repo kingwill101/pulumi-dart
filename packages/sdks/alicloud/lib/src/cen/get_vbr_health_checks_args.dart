@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVbrHealthChecksArgs {
   /// The ID of the Cloud Enterprise Network (CEN) instance.
   final pulumi.Input<String>? cenId;
-
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
-
   /// The ID of the VBR instance.
   final pulumi.Input<String>? vbrInstanceId;
-
   /// The User ID (UID) of the account to which the VBR instance belongs.
   final pulumi.Input<int>? vbrInstanceOwnerId;
-
   /// The ID of the region where the VBR instance is deployed.
   final pulumi.Input<String> vbrInstanceRegionId;
 
@@ -48,29 +44,12 @@ class GetVbrHealthChecksArgs {
 
   factory GetVbrHealthChecksArgs.fromMap(Map<String, dynamic> map) {
     return GetVbrHealthChecksArgs(
-      cenId: (() {
-        final guardedValue = map['cenId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      vbrInstanceId: (() {
-        final guardedValue = map['vbrInstanceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      vbrInstanceOwnerId: (() {
-        final guardedValue = map['vbrInstanceOwnerId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      vbrInstanceRegionId: pulumi.Input.fromValue(
-        map['vbrInstanceRegionId'] as String,
-      ),
+      cenId: (() { final guardedValue = map['cenId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      vbrInstanceId: (() { final guardedValue = map['vbrInstanceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      vbrInstanceOwnerId: (() { final guardedValue = map['vbrInstanceOwnerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      vbrInstanceRegionId: pulumi.Input.fromValue(map['vbrInstanceRegionId'] as String),
     );
   }
 }
+

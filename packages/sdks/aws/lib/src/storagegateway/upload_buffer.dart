@@ -277,13 +277,10 @@ import 'upload_buffer_state.dart';
 class UploadBuffer extends pulumi.CustomResource {
   /// Local disk identifier. For example, `pci-0000:03:00.0-scsi-0:0:0:0`.
   late final pulumi.Output<String> diskId;
-
   /// Local disk path. For example, `/dev/nvme1n1`.
   late final pulumi.Output<String> diskPath;
-
   /// The Amazon Resource Name (ARN) of the gateway.
   late final pulumi.Output<String> gatewayArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -296,11 +293,11 @@ class UploadBuffer extends pulumi.CustomResource {
     UploadBufferArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:storagegateway/uploadBuffer:UploadBuffer',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:storagegateway/uploadBuffer:UploadBuffer',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     diskId = registerOutput<String>('diskId');
     diskPath = registerOutput<String>('diskPath');
     gatewayArn = registerOutput<String>('gatewayArn');
@@ -325,11 +322,11 @@ class UploadBuffer extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:storagegateway/uploadBuffer:UploadBuffer',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:storagegateway/uploadBuffer:UploadBuffer',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     diskId = registerOutput<String>('diskId');
     diskPath = registerOutput<String>('diskPath');
     gatewayArn = registerOutput<String>('gatewayArn');

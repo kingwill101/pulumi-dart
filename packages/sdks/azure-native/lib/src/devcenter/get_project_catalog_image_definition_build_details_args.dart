@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetProjectCatalogImageDefinitionBuildDetailsArgs {
   /// The ID of the Image Definition Build.
   final pulumi.Input<String> buildName;
-
   /// The name of the Catalog.
   final pulumi.Input<String> catalogName;
-
   /// The name of the Image Definition.
   final pulumi.Input<String> imageDefinitionName;
-
   /// The name of the project.
   final pulumi.Input<String> projectName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -46,19 +42,14 @@ class GetProjectCatalogImageDefinitionBuildDetailsArgs {
     };
   }
 
-  factory GetProjectCatalogImageDefinitionBuildDetailsArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetProjectCatalogImageDefinitionBuildDetailsArgs.fromMap(Map<String, dynamic> map) {
     return GetProjectCatalogImageDefinitionBuildDetailsArgs(
       buildName: pulumi.Input.fromValue(map['buildName'] as String),
       catalogName: pulumi.Input.fromValue(map['catalogName'] as String),
-      imageDefinitionName: pulumi.Input.fromValue(
-        map['imageDefinitionName'] as String,
-      ),
+      imageDefinitionName: pulumi.Input.fromValue(map['imageDefinitionName'] as String),
       projectName: pulumi.Input.fromValue(map['projectName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

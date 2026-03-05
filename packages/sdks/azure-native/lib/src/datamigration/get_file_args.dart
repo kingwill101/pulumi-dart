@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFileArgs {
   /// Name of the File
   final pulumi.Input<String> fileName;
-
   /// Name of the resource group
   final pulumi.Input<String> groupName;
-
   /// Name of the project
   final pulumi.Input<String> projectName;
-
   /// Name of the service
   final pulumi.Input<String> serviceName;
 
@@ -49,3 +46,4 @@ class GetFileArgs {
     );
   }
 }
+

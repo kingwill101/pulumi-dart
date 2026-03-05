@@ -10,32 +10,22 @@ import 'integration_account_map_properties_parameters_schema.dart';
 class IntegrationAccountMapArgs {
   /// The content.
   final pulumi.Input<String>? content;
-
   /// The content type.
   final pulumi.Input<String>? contentType;
-
   /// The integration account name.
   final pulumi.Input<String> integrationAccountName;
-
   /// The resource location.
   final pulumi.Input<String>? location;
-
   /// The integration account map name.
   final pulumi.Input<String>? mapName;
-
   /// The map type.
   final pulumi.Input<String> mapType;
-
   /// The metadata.
   final pulumi.Input<dynamic>? metadata;
-
   /// The parameters schema of integration account map.
-  final pulumi.Input<IntegrationAccountMapPropertiesParametersSchema>?
-  parametersSchema;
-
+  final pulumi.Input<IntegrationAccountMapPropertiesParametersSchema>? parametersSchema;
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
-
   /// The resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -72,11 +62,7 @@ class IntegrationAccountMapArgs {
       'mapName': ?mapName,
       'mapType': mapType,
       'metadata': ?metadata,
-      'parametersSchema':
-          ?pulumi.Input.mapOptionalInputValue<
-            IntegrationAccountMapPropertiesParametersSchema,
-            Map<String, dynamic>
-          >(parametersSchema, (value) => value.toMap()),
+      'parametersSchema': ?pulumi.Input.mapOptionalInputValue<IntegrationAccountMapPropertiesParametersSchema, Map<String, dynamic>>(parametersSchema, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'tags': ?tags,
     };
@@ -84,54 +70,17 @@ class IntegrationAccountMapArgs {
 
   factory IntegrationAccountMapArgs.fromMap(Map<String, dynamic> map) {
     return IntegrationAccountMapArgs(
-      content: (() {
-        final guardedValue = map['content'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      contentType: (() {
-        final guardedValue = map['contentType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      integrationAccountName: pulumi.Input.fromValue(
-        map['integrationAccountName'] as String,
-      ),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      mapName: (() {
-        final guardedValue = map['mapName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      content: (() { final guardedValue = map['content']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      contentType: (() { final guardedValue = map['contentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      integrationAccountName: pulumi.Input.fromValue(map['integrationAccountName'] as String),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      mapName: (() { final guardedValue = map['mapName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       mapType: pulumi.Input.fromValue(map['mapType'] as String),
-      metadata: (() {
-        final guardedValue = map['metadata'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      parametersSchema: (() {
-        final guardedValue = map['parametersSchema'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          IntegrationAccountMapPropertiesParametersSchema.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      parametersSchema: (() { final guardedValue = map['parametersSchema']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IntegrationAccountMapPropertiesParametersSchema.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

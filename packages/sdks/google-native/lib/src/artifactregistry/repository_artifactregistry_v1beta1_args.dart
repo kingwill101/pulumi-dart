@@ -10,21 +10,16 @@ import 'repository_format_artifactregistry_v1beta1.dart';
 class RepositoryArtifactregistryV1beta1Args {
   /// The user-provided description of the repository.
   final pulumi.Input<String>? description;
-
   /// Optional. The format of packages that are stored in the repository.
   final pulumi.Input<RepositoryFormatArtifactregistryV1beta1>? format;
-
   /// The Cloud KMS resource name of the customer managed encryption key that's used to encrypt the contents of the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. This value may not be changed after the Repository has been created.
   final pulumi.Input<String>? kmsKeyName;
-
   /// Labels with user-defined metadata. This field may contain up to 64 entries. Label keys and values may be no longer than 63 characters. Label keys must begin with a lowercase letter and may only contain lowercase letters, numeric characters, underscores, and dashes.
   final pulumi.Input<Map<String, String>>? labels;
   final pulumi.Input<String>? location;
-
   /// The name of the repository, for example: `projects/p1/locations/us-central1/repositories/repo1`.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
-
   /// Required. The repository id to use for this repository.
   final pulumi.Input<String> repositoryId;
 
@@ -51,11 +46,7 @@ class RepositoryArtifactregistryV1beta1Args {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': ?description,
-      'format':
-          ?pulumi.Input.mapOptionalInputValue<
-            RepositoryFormatArtifactregistryV1beta1,
-            String
-          >(format, (value) => value.wireValue),
+      'format': ?pulumi.Input.mapOptionalInputValue<RepositoryFormatArtifactregistryV1beta1, String>(format, (value) => value.wireValue),
       'kmsKeyName': ?kmsKeyName,
       'labels': ?labels,
       'location': ?location,
@@ -65,52 +56,17 @@ class RepositoryArtifactregistryV1beta1Args {
     };
   }
 
-  factory RepositoryArtifactregistryV1beta1Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RepositoryArtifactregistryV1beta1Args.fromMap(Map<String, dynamic> map) {
     return RepositoryArtifactregistryV1beta1Args(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      format: (() {
-        final guardedValue = map['format'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RepositoryFormatArtifactregistryV1beta1.fromValue(
-            guardedValue as String,
-          ),
-        );
-      })(),
-      kmsKeyName: (() {
-        final guardedValue = map['kmsKeyName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      format: (() { final guardedValue = map['format']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RepositoryFormatArtifactregistryV1beta1.fromValue(guardedValue as String)); })(),
+      kmsKeyName: (() { final guardedValue = map['kmsKeyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       repositoryId: pulumi.Input.fromValue(map['repositoryId'] as String),
     );
   }
 }
+

@@ -4,10 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlowSourceFlowConfigSourceConnectorPropertiesSalesforce {
   final pulumi.Input<String>? dataTransferApi;
-
   /// Flag that enables dynamic fetching of new (recently added) fields in the Salesforce objects while running a flow.
   final pulumi.Input<bool>? enableDynamicFieldUpdate;
-
   /// Whether Amazon AppFlow includes deleted files in the flow run.
   final pulumi.Input<bool>? includeDeletedRecords;
   final pulumi.Input<String> object_;
@@ -33,26 +31,13 @@ class FlowSourceFlowConfigSourceConnectorPropertiesSalesforce {
     };
   }
 
-  factory FlowSourceFlowConfigSourceConnectorPropertiesSalesforce.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FlowSourceFlowConfigSourceConnectorPropertiesSalesforce.fromMap(Map<String, dynamic> map) {
     return FlowSourceFlowConfigSourceConnectorPropertiesSalesforce(
-      dataTransferApi: (() {
-        final guardedValue = map['dataTransferApi'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      enableDynamicFieldUpdate: (() {
-        final guardedValue = map['enableDynamicFieldUpdate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      includeDeletedRecords: (() {
-        final guardedValue = map['includeDeletedRecords'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      dataTransferApi: (() { final guardedValue = map['dataTransferApi']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      enableDynamicFieldUpdate: (() { final guardedValue = map['enableDynamicFieldUpdate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      includeDeletedRecords: (() { final guardedValue = map['includeDeletedRecords']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       object_: pulumi.Input.fromValue(map['object'] as String),
     );
   }
 }
+

@@ -3288,83 +3288,56 @@ import 'cluster_state.dart';
 class Cluster extends pulumi.CustomResource {
   /// Boot action parameters.
   late final pulumi.Output<List<Map<String, dynamic>>?> bootstrapActions;
-
   /// Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
   late final pulumi.Output<String?> chargeType;
-
   /// EMR Cluster Type, e.g. HADOOP, KAFKA, DRUID, GATEWAY etc. You can find all valid EMR cluster type in emr web console. Supported 'GATEWAY' available in 1.61.0+.
   late final pulumi.Output<String> clusterType;
-
   /// The custom configurations of emr-cluster service.
   late final pulumi.Output<List<Map<String, dynamic>>?> configs;
-
   /// Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
   late final pulumi.Output<String?> depositType;
-
   /// High security cluster (true) or not. Default value is false.
   late final pulumi.Output<bool?> easEnable;
-
   /// EMR Version, e.g. EMR-3.22.0. You can find the all valid EMR Version in emr web console.
   late final pulumi.Output<String> emrVer;
-
   /// High Available for HDFS and YARN. If this is set true, MASTER group must have two nodes.
   late final pulumi.Output<bool?> highAvailabilityEnable;
-
   /// Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
   late final pulumi.Output<List<Map<String, dynamic>>?> hostGroups;
-
   /// Whether the MASTER node has a public IP address enabled. Default value is false.
   late final pulumi.Output<bool?> isOpenPublicIp;
-
   /// Ssh key pair.
   late final pulumi.Output<String?> keyPairName;
-
   /// Master ssh password.
   late final pulumi.Output<String?> masterPwd;
-
   /// The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
   late final pulumi.Output<ClusterMetaStoreConf?> metaStoreConf;
-
   /// The type of emr-cluster service component metadata storage. ’dlf’ or ’local’ or ’user_rds’ .
   late final pulumi.Output<String> metaStoreType;
-
   /// The configurations of emr-cluster service modification after cluster created.
-  late final pulumi.Output<ClusterModifyClusterServiceConfig?>
-  modifyClusterServiceConfig;
-
+  late final pulumi.Output<ClusterModifyClusterServiceConfig?> modifyClusterServiceConfig;
   /// The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
   late final pulumi.Output<String> name;
-
   /// Optional software list.
   late final pulumi.Output<List<String>?> optionSoftwareLists;
-
   /// If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
   late final pulumi.Output<int?> period;
-
   /// This specify the related cluster id, if this cluster is a Gateway.
   late final pulumi.Output<String?> relatedClusterId;
-
   /// The Id of resource group which the emr-cluster belongs.
   late final pulumi.Output<String?> resourceGroupId;
-
   /// Security Group ID for Cluster, you can also specify this key for each host group.
   late final pulumi.Output<String?> securityGroupId;
-
   /// If this is set true, we can ssh into cluster. Default value is false.
   late final pulumi.Output<bool?> sshEnable;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>> tags;
-
   /// Use local metadb. Default is false.
   late final pulumi.Output<bool?> useLocalMetadb;
-
   /// Alicloud EMR uses roles to perform actions on your behalf when provisioning cluster resources, running applications, dynamically scaling resources. EMR uses the following roles when interacting with other Alicloud services. Default value is AliyunEmrEcsDefaultRole.
   late final pulumi.Output<String?> userDefinedEmrEcsRole;
-
   /// Global vswitch id, you can also specify it in host group.
   late final pulumi.Output<String?> vswitchId;
-
   /// Zone ID, e.g. cn-huhehaote-a
   late final pulumi.Output<String> zoneId;
 
@@ -3377,14 +3350,12 @@ class Cluster extends pulumi.CustomResource {
     ClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:emr/cluster:Cluster',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    bootstrapActions = registerOutput<List<Map<String, dynamic>>?>(
-      'bootstrapActions',
-    );
+          'alicloud:emr/cluster:Cluster',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    bootstrapActions = registerOutput<List<Map<String, dynamic>>?>('bootstrapActions');
     chargeType = registerOutput<String?>('chargeType');
     clusterType = registerOutput<String>('clusterType');
     configs = registerOutput<List<Map<String, dynamic>>?>('configs');
@@ -3396,28 +3367,9 @@ class Cluster extends pulumi.CustomResource {
     isOpenPublicIp = registerOutput<bool?>('isOpenPublicIp');
     keyPairName = registerOutput<String?>('keyPairName');
     masterPwd = registerOutput<String?>('masterPwd');
-    metaStoreConf = registerOutput<ClusterMetaStoreConf?>(
-      'metaStoreConf',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterMetaStoreConf.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    metaStoreConf = registerOutput<ClusterMetaStoreConf?>('metaStoreConf', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterMetaStoreConf.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     metaStoreType = registerOutput<String>('metaStoreType');
-    modifyClusterServiceConfig =
-        registerOutput<ClusterModifyClusterServiceConfig?>(
-          'modifyClusterServiceConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ClusterModifyClusterServiceConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    modifyClusterServiceConfig = registerOutput<ClusterModifyClusterServiceConfig?>('modifyClusterServiceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterModifyClusterServiceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     optionSoftwareLists = registerOutput<List<String>?>('optionSoftwareLists');
     period = registerOutput<int?>('period');
@@ -3450,14 +3402,12 @@ class Cluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:emr/cluster:Cluster',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    bootstrapActions = registerOutput<List<Map<String, dynamic>>?>(
-      'bootstrapActions',
-    );
+          'alicloud:emr/cluster:Cluster',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    bootstrapActions = registerOutput<List<Map<String, dynamic>>?>('bootstrapActions');
     chargeType = registerOutput<String?>('chargeType');
     clusterType = registerOutput<String>('clusterType');
     configs = registerOutput<List<Map<String, dynamic>>?>('configs');
@@ -3469,28 +3419,9 @@ class Cluster extends pulumi.CustomResource {
     isOpenPublicIp = registerOutput<bool?>('isOpenPublicIp');
     keyPairName = registerOutput<String?>('keyPairName');
     masterPwd = registerOutput<String?>('masterPwd');
-    metaStoreConf = registerOutput<ClusterMetaStoreConf?>(
-      'metaStoreConf',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterMetaStoreConf.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    metaStoreConf = registerOutput<ClusterMetaStoreConf?>('metaStoreConf', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterMetaStoreConf.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     metaStoreType = registerOutput<String>('metaStoreType');
-    modifyClusterServiceConfig =
-        registerOutput<ClusterModifyClusterServiceConfig?>(
-          'modifyClusterServiceConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ClusterModifyClusterServiceConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    modifyClusterServiceConfig = registerOutput<ClusterModifyClusterServiceConfig?>('modifyClusterServiceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterModifyClusterServiceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     optionSoftwareLists = registerOutput<List<String>?>('optionSoftwareLists');
     period = registerOutput<int?>('period');

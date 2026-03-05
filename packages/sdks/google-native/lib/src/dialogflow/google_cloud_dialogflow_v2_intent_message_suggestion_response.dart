@@ -9,17 +9,20 @@ class GoogleCloudDialogflowV2IntentMessageSuggestionResponse {
 
   /// Creates a new [GoogleCloudDialogflowV2IntentMessageSuggestionResponse].
   /// [title] The text shown the in the suggestion chip.
-  GoogleCloudDialogflowV2IntentMessageSuggestionResponse({required this.title});
+  GoogleCloudDialogflowV2IntentMessageSuggestionResponse({
+    required this.title,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'title': title};
+    return <String, dynamic>{
+      'title': title,
+    };
   }
 
-  factory GoogleCloudDialogflowV2IntentMessageSuggestionResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDialogflowV2IntentMessageSuggestionResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2IntentMessageSuggestionResponse(
       title: pulumi.Input.fromValue(map['title'] as String),
     );
   }
 }
+

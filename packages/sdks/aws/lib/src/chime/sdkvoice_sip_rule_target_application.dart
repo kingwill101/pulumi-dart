@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SdkvoiceSipRuleTargetApplication {
   /// The AWS Region of the target application.
   final pulumi.Input<String> awsRegion;
-
   /// Priority of the SIP media application in the target list.
   final pulumi.Input<int> priority;
-
   /// The SIP media application ID.
   final pulumi.Input<String> sipMediaApplicationId;
 
@@ -34,9 +32,8 @@ class SdkvoiceSipRuleTargetApplication {
     return SdkvoiceSipRuleTargetApplication(
       awsRegion: pulumi.Input.fromValue(map['awsRegion'] as String),
       priority: pulumi.Input.fromValue(map['priority'] as int),
-      sipMediaApplicationId: pulumi.Input.fromValue(
-        map['sipMediaApplicationId'] as String,
-      ),
+      sipMediaApplicationId: pulumi.Input.fromValue(map['sipMediaApplicationId'] as String),
     );
   }
 }
+

@@ -180,42 +180,29 @@ import 'account_state.dart';
 class Account extends pulumi.CustomResource {
   /// The Primary Access Key for the DSC Endpoint associated with this Automation Account.
   late final pulumi.Output<String> dscPrimaryAccessKey;
-
   /// The Secondary Access Key for the DSC Endpoint associated with this Automation Account.
   late final pulumi.Output<String> dscSecondaryAccessKey;
-
   /// The DSC Server Endpoint associated with this Automation Account.
   late final pulumi.Output<String> dscServerEndpoint;
-
   /// An `encryption` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> encryptions;
-
   /// The URL of automation hybrid service which is used for hybrid worker on-boarding With this Automation Account.
   late final pulumi.Output<String> hybridServiceUrl;
-
   /// An `identity` block as defined below.
   late final pulumi.Output<AccountIdentity?> identity;
-
   /// Whether requests using non-AAD authentication are blocked. Defaults to `true`.
   late final pulumi.Output<bool?> localAuthenticationEnabled;
-
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// Specifies the name of the Automation Account. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-  late final pulumi.Output<List<Map<String, dynamic>>>
-  privateEndpointConnections;
-
+  late final pulumi.Output<List<Map<String, dynamic>>> privateEndpointConnections;
   /// Whether public network access is allowed for the automation account. Defaults to `true`.
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
-
   /// The name of the resource group in which the Automation Account is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The SKU of the account. Possible values are `Basic` and `Free`.
   late final pulumi.Output<String> skuName;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -228,37 +215,22 @@ class Account extends pulumi.CustomResource {
     AccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:automation/account:Account',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:automation/account:Account',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dscPrimaryAccessKey = registerOutput<String>('dscPrimaryAccessKey');
     dscSecondaryAccessKey = registerOutput<String>('dscSecondaryAccessKey');
     dscServerEndpoint = registerOutput<String>('dscServerEndpoint');
     encryptions = registerOutput<List<Map<String, dynamic>>?>('encryptions');
     hybridServiceUrl = registerOutput<String>('hybridServiceUrl');
-    identity = registerOutput<AccountIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccountIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    localAuthenticationEnabled = registerOutput<bool?>(
-      'localAuthenticationEnabled',
-    );
+    identity = registerOutput<AccountIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    localAuthenticationEnabled = registerOutput<bool?>('localAuthenticationEnabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
-      'privateEndpointConnections',
-    );
-    publicNetworkAccessEnabled = registerOutput<bool?>(
-      'publicNetworkAccessEnabled',
-    );
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>('privateEndpointConnections');
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     skuName = registerOutput<String>('skuName');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -282,37 +254,22 @@ class Account extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:automation/account:Account',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:automation/account:Account',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dscPrimaryAccessKey = registerOutput<String>('dscPrimaryAccessKey');
     dscSecondaryAccessKey = registerOutput<String>('dscSecondaryAccessKey');
     dscServerEndpoint = registerOutput<String>('dscServerEndpoint');
     encryptions = registerOutput<List<Map<String, dynamic>>?>('encryptions');
     hybridServiceUrl = registerOutput<String>('hybridServiceUrl');
-    identity = registerOutput<AccountIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccountIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    localAuthenticationEnabled = registerOutput<bool?>(
-      'localAuthenticationEnabled',
-    );
+    identity = registerOutput<AccountIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    localAuthenticationEnabled = registerOutput<bool?>('localAuthenticationEnabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
-      'privateEndpointConnections',
-    );
-    publicNetworkAccessEnabled = registerOutput<bool?>(
-      'publicNetworkAccessEnabled',
-    );
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>('privateEndpointConnections');
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     skuName = registerOutput<String>('skuName');
     tags = registerOutput<Map<String, String>?>('tags');

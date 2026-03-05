@@ -14,14 +14,15 @@ class GoogleCloudAiplatformV1beta1ResourcesConsumedResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'replicaHours': replicaHours};
+    return <String, dynamic>{
+      'replicaHours': replicaHours,
+    };
   }
 
-  factory GoogleCloudAiplatformV1beta1ResourcesConsumedResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudAiplatformV1beta1ResourcesConsumedResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1ResourcesConsumedResponse(
       replicaHours: pulumi.Input.fromValue(map['replicaHours'] as double),
     );
   }
 }
+

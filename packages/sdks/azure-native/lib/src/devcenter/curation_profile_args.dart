@@ -10,16 +10,12 @@ import 'resource_policy.dart';
 class CurationProfileArgs {
   /// The name of the curation profile.
   final pulumi.Input<String>? curationProfileName;
-
   /// The name of the devcenter.
   final pulumi.Input<String> devCenterName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Resource policies that are a part of this curation profile.
   final pulumi.Input<List<ResourcePolicy>>? resourcePolicies;
-
   /// Resources that have access to the shared resources that are a part of this curation profile.
   final pulumi.Input<List<String>>? scopes;
 
@@ -42,49 +38,19 @@ class CurationProfileArgs {
       'curationProfileName': ?curationProfileName,
       'devCenterName': devCenterName,
       'resourceGroupName': resourceGroupName,
-      'resourcePolicies':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ResourcePolicy>,
-            List<Map<String, dynamic>>
-          >(
-            resourcePolicies,
-            (value) =>
-                pulumi.Input.encodeList<ResourcePolicy, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'resourcePolicies': ?pulumi.Input.mapOptionalInputValue<List<ResourcePolicy>, List<Map<String, dynamic>>>(resourcePolicies, (value) => pulumi.Input.encodeList<ResourcePolicy, Map<String, dynamic>>(value, (value) => value.toMap())),
       'scopes': ?scopes,
     };
   }
 
   factory CurationProfileArgs.fromMap(Map<String, dynamic> map) {
     return CurationProfileArgs(
-      curationProfileName: (() {
-        final guardedValue = map['curationProfileName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      curationProfileName: (() { final guardedValue = map['curationProfileName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       devCenterName: pulumi.Input.fromValue(map['devCenterName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      resourcePolicies: (() {
-        final guardedValue = map['resourcePolicies'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ResourcePolicy>(
-            guardedValue,
-            (value) =>
-                ResourcePolicy.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      scopes: (() {
-        final guardedValue = map['scopes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      resourcePolicies: (() { final guardedValue = map['resourcePolicies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ResourcePolicy>(guardedValue, (value) => ResourcePolicy.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      scopes: (() { final guardedValue = map['scopes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

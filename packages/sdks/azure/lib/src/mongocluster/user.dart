@@ -313,16 +313,12 @@ import 'user_state.dart';
 class User extends pulumi.CustomResource {
   /// The identity provider type for the Mongo Cluster User. The only possible value is `MicrosoftEntraID`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> identityProviderType;
-
   /// The ID of the Mongo Cluster where the User should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> mongoClusterId;
-
   /// The Object ID of the Entra ID User or Service Principal. Changing this forces a new resource to be created.
   late final pulumi.Output<String> objectId;
-
   /// The principal type for the Mongo Cluster User. Possible values are `user` and `servicePrincipal`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> principalType;
-
   /// One or more `role` blocks as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<List<Map<String, dynamic>>> roles;
 
@@ -330,13 +326,16 @@ class User extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [User]. {@macro pulumi_mongocluster_user_user_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  User(String name, {UserArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure:mongocluster/user:User',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  User(
+    String name, {
+    UserArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure:mongocluster/user:User',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     identityProviderType = registerOutput<String>('identityProviderType');
     mongoClusterId = registerOutput<String>('mongoClusterId');
     objectId = registerOutput<String>('objectId');
@@ -345,7 +344,11 @@ class User extends pulumi.CustomResource {
   }
 
   /// Gets an existing [User] resource's state with the given [name] and [id].
-  static User get(String name, pulumi.Input<String> id, {UserState? state}) {
+  static User get(
+    String name,
+    pulumi.Input<String> id, {
+    UserState? state,
+  }) {
     return User._get(
       name,
       state: state?.toMap(),
@@ -358,11 +361,11 @@ class User extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:mongocluster/user:User',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:mongocluster/user:User',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     identityProviderType = registerOutput<String>('identityProviderType');
     mongoClusterId = registerOutput<String>('mongoClusterId');
     objectId = registerOutput<String>('objectId');

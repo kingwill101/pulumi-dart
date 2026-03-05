@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceUserAccessParam {
   /// Access keys are important credentials for authentication.
   final pulumi.Input<String> accessId;
-
   /// A Secret Key is a Secret credential paired with an access Key to verify a user's identity and protect the security of an interface.
   final pulumi.Input<String> accessKey;
-
   /// An Endpoint is a network address for accessing a service or API, usually a URL to a specific service instance.
   final pulumi.Input<String> endpoint;
-
   /// A Workspace generally refers to a separate space created by a user on a particular computing environment or platform.
   final pulumi.Input<String> workspaceId;
 
@@ -45,3 +42,4 @@ class ResourceUserAccessParam {
     );
   }
 }
+

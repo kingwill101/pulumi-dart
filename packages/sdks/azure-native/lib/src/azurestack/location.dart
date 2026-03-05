@@ -14,3 +14,4 @@ enum Location {
     throw ArgumentError('Unknown Location value: $value');
   }
 }
+

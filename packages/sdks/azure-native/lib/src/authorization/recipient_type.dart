@@ -16,3 +16,4 @@ enum RecipientType {
     throw ArgumentError('Unknown RecipientType value: $value');
   }
 }
+

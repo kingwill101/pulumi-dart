@@ -15,33 +15,14 @@ class RuleGroupRuleStatementRateBasedStatementScopeDownStatementAndStatement {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'statements':
-          pulumi.Input.mapInputValue<
-            List<RuleGroupRuleStatement>,
-            List<Map<String, dynamic>>
-          >(
-            statements,
-            (value) =>
-                pulumi.Input.encodeList<
-                  RuleGroupRuleStatement,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'statements': pulumi.Input.mapInputValue<List<RuleGroupRuleStatement>, List<Map<String, dynamic>>>(statements, (value) => pulumi.Input.encodeList<RuleGroupRuleStatement, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory RuleGroupRuleStatementRateBasedStatementScopeDownStatementAndStatement.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RuleGroupRuleStatementRateBasedStatementScopeDownStatementAndStatement.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementRateBasedStatementScopeDownStatementAndStatement(
-      statements: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<RuleGroupRuleStatement>(
-          map['statements']!,
-          (value) => RuleGroupRuleStatement.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      statements: pulumi.Input.fromValue(pulumi.Input.decodeList<RuleGroupRuleStatement>(map['statements']!, (value) => RuleGroupRuleStatement.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

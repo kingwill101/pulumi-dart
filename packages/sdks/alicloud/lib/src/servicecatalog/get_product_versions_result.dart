@@ -7,19 +7,15 @@ import 'get_product_versions_version.dart';
 /// Result data returned by getProductVersions.
 class GetProductVersionsResult {
   final bool? enableDetails;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of Product Version IDs.
   final List<String> ids;
   final String? nameRegex;
-
   /// A list of name of Product Versions.
   final List<String> names;
   final String? outputFile;
   final String productId;
-
   /// A list of Product Version Entries. Each element contains the following attributes:
   final List<GetProductVersionsProductVersion> productVersions;
   final List<GetProductVersionsVersion> versions;
@@ -55,53 +51,23 @@ class GetProductVersionsResult {
       'names': names,
       'outputFile': ?outputFile,
       'productId': productId,
-      'productVersions':
-          pulumi.Input.encodeList<
-            GetProductVersionsProductVersion,
-            Map<String, dynamic>
-          >(productVersions, (value) => value.toMap()),
-      'versions':
-          pulumi.Input.encodeList<
-            GetProductVersionsVersion,
-            Map<String, dynamic>
-          >(versions, (value) => value.toMap()),
+      'productVersions': pulumi.Input.encodeList<GetProductVersionsProductVersion, Map<String, dynamic>>(productVersions, (value) => value.toMap()),
+      'versions': pulumi.Input.encodeList<GetProductVersionsVersion, Map<String, dynamic>>(versions, (value) => value.toMap()),
     };
   }
 
   factory GetProductVersionsResult.fromMap(Map<String, dynamic> map) {
     return GetProductVersionsResult(
-      enableDetails: (() {
-        final guardedValue = map['enableDetails'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      enableDetails: (() { final guardedValue = map['enableDetails']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
       productId: map['productId'] as String,
-      productVersions:
-          pulumi.Input.decodeList<GetProductVersionsProductVersion>(
-            map['productVersions']!,
-            (value) => GetProductVersionsProductVersion.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-      versions: pulumi.Input.decodeList<GetProductVersionsVersion>(
-        map['versions']!,
-        (value) => GetProductVersionsVersion.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      productVersions: pulumi.Input.decodeList<GetProductVersionsProductVersion>(map['productVersions']!, (value) => GetProductVersionsProductVersion.fromMap((value as Map).cast<String, dynamic>())),
+      versions: pulumi.Input.decodeList<GetProductVersionsVersion>(map['versions']!, (value) => GetProductVersionsVersion.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

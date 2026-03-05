@@ -32,14 +32,9 @@ class GetAuthorizedCertificateArgs {
   factory GetAuthorizedCertificateArgs.fromMap(Map<String, dynamic> map) {
     return GetAuthorizedCertificateArgs(
       appId: pulumi.Input.fromValue(map['appId'] as String),
-      authorizedCertificateId: pulumi.Input.fromValue(
-        map['authorizedCertificateId'] as String,
-      ),
-      view: (() {
-        final guardedValue = map['view'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      authorizedCertificateId: pulumi.Input.fromValue(map['authorizedCertificateId'] as String),
+      view: (() { final guardedValue = map['view']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -12,14 +12,15 @@ class FlowSourceFlowConfigSourceConnectorPropertiesInforNexus {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'object': object_};
+    return <String, dynamic>{
+      'object': object_,
+    };
   }
 
-  factory FlowSourceFlowConfigSourceConnectorPropertiesInforNexus.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FlowSourceFlowConfigSourceConnectorPropertiesInforNexus.fromMap(Map<String, dynamic> map) {
     return FlowSourceFlowConfigSourceConnectorPropertiesInforNexus(
       object_: pulumi.Input.fromValue(map['object'] as String),
     );
   }
 }
+

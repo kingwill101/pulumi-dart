@@ -189,37 +189,26 @@ import 'system_data_response.dart';
 class IotDpsResource extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The Etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal ETag convention.
   late final pulumi.Output<String?> etag;
-
   /// The managed identities for a provisioning service.
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
-
   /// The resource location.
   late final pulumi.Output<String> location;
-
   /// The resource name.
   late final pulumi.Output<String> name;
-
   /// Service specific properties for a provisioning service
   late final pulumi.Output<IotDpsPropertiesDescriptionResponse> properties;
-
   /// The resource group of the resource.
   late final pulumi.Output<String?> resourcegroup;
-
   /// Sku info for a provisioning Service.
   late final pulumi.Output<IotDpsSkuInfoResponse> sku;
-
   /// The subscription id of the resource.
   late final pulumi.Output<String?> subscriptionid;
-
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The resource type.
   late final pulumi.Output<String> type;
 
@@ -232,57 +221,21 @@ class IotDpsResource extends pulumi.CustomResource {
     IotDpsResourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:deviceprovisioningservices:IotDpsResource',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:deviceprovisioningservices:IotDpsResource',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     etag = registerOutput<String?>('etag');
-    identity = registerOutput<ManagedServiceIdentityResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ManagedServiceIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<IotDpsPropertiesDescriptionResponse>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IotDpsPropertiesDescriptionResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<IotDpsPropertiesDescriptionResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IotDpsPropertiesDescriptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourcegroup = registerOutput<String?>('resourcegroup');
-    sku = registerOutput<IotDpsSkuInfoResponse>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IotDpsSkuInfoResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sku = registerOutput<IotDpsSkuInfoResponse>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IotDpsSkuInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     subscriptionid = registerOutput<String?>('subscriptionid');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

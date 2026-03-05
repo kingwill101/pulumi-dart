@@ -29,19 +29,12 @@ class GetEndpointPolicyNetworkservicesV1beta1Args {
     };
   }
 
-  factory GetEndpointPolicyNetworkservicesV1beta1Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetEndpointPolicyNetworkservicesV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetEndpointPolicyNetworkservicesV1beta1Args(
-      endpointPolicyId: pulumi.Input.fromValue(
-        map['endpointPolicyId'] as String,
-      ),
+      endpointPolicyId: pulumi.Input.fromValue(map['endpointPolicyId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

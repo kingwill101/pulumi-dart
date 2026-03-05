@@ -287,14 +287,11 @@ import 'instance_group_membership_state.dart';
 class InstanceGroupMembership extends pulumi.CustomResource {
   /// An instance being added to the InstanceGroup
   late final pulumi.Output<String> instance;
-
   /// Represents an Instance Group resource name that the instance belongs to.
   late final pulumi.Output<String> instanceGroup;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// A reference to the zone where the instance group resides.
   late final pulumi.Output<String?> zone;
 
@@ -307,11 +304,11 @@ class InstanceGroupMembership extends pulumi.CustomResource {
     InstanceGroupMembershipArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:compute/instanceGroupMembership:InstanceGroupMembership',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:compute/instanceGroupMembership:InstanceGroupMembership',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     instance = registerOutput<String>('instance');
     instanceGroup = registerOutput<String>('instanceGroup');
     project = registerOutput<String>('project');
@@ -336,11 +333,11 @@ class InstanceGroupMembership extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:compute/instanceGroupMembership:InstanceGroupMembership',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:compute/instanceGroupMembership:InstanceGroupMembership',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     instance = registerOutput<String>('instance');
     instanceGroup = registerOutput<String>('instanceGroup');
     project = registerOutput<String>('project');

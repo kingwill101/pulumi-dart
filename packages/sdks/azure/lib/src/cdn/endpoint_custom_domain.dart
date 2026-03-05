@@ -425,22 +425,16 @@ import 'endpoint_custom_domain_user_managed_https.dart';
 class EndpointCustomDomain extends pulumi.CustomResource {
   /// The ID of the CDN Endpoint. Changing this forces a new CDN Endpoint Custom Domain to be created.
   late final pulumi.Output<String> cdnEndpointId;
-
   /// A `cdn_managed_https` block as defined below.
-  late final pulumi.Output<EndpointCustomDomainCdnManagedHttps?>
-  cdnManagedHttps;
-
+  late final pulumi.Output<EndpointCustomDomainCdnManagedHttps?> cdnManagedHttps;
   /// The host name of the custom domain. Changing this forces a new CDN Endpoint Custom Domain to be created.
   late final pulumi.Output<String> hostName;
-
   /// The name which should be used for this CDN Endpoint Custom Domain. Changing this forces a new CDN Endpoint Custom Domain to be created.
   late final pulumi.Output<String> name;
-
   /// A `user_managed_https` block as defined below.
   ///
   /// &gt; **Note:** Only one of `cdn_managed_https` and `user_managed_https` can be specified.
-  late final pulumi.Output<EndpointCustomDomainUserManagedHttps?>
-  userManagedHttps;
+  late final pulumi.Output<EndpointCustomDomainUserManagedHttps?> userManagedHttps;
 
   /// Creates a new [EndpointCustomDomain].
   /// [name] The Pulumi resource name.
@@ -451,34 +445,16 @@ class EndpointCustomDomain extends pulumi.CustomResource {
     EndpointCustomDomainArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:cdn/endpointCustomDomain:EndpointCustomDomain',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:cdn/endpointCustomDomain:EndpointCustomDomain',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cdnEndpointId = registerOutput<String>('cdnEndpointId');
-    cdnManagedHttps = registerOutput<EndpointCustomDomainCdnManagedHttps?>(
-      'cdnManagedHttps',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EndpointCustomDomainCdnManagedHttps.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    cdnManagedHttps = registerOutput<EndpointCustomDomainCdnManagedHttps?>('cdnManagedHttps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointCustomDomainCdnManagedHttps.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     hostName = registerOutput<String>('hostName');
     this.name = registerOutput<String>('name');
-    userManagedHttps = registerOutput<EndpointCustomDomainUserManagedHttps?>(
-      'userManagedHttps',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EndpointCustomDomainUserManagedHttps.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    userManagedHttps = registerOutput<EndpointCustomDomainUserManagedHttps?>('userManagedHttps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointCustomDomainUserManagedHttps.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [EndpointCustomDomain] resource's state with the given [name] and [id].
@@ -499,33 +475,15 @@ class EndpointCustomDomain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:cdn/endpointCustomDomain:EndpointCustomDomain',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:cdn/endpointCustomDomain:EndpointCustomDomain',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cdnEndpointId = registerOutput<String>('cdnEndpointId');
-    cdnManagedHttps = registerOutput<EndpointCustomDomainCdnManagedHttps?>(
-      'cdnManagedHttps',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EndpointCustomDomainCdnManagedHttps.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    cdnManagedHttps = registerOutput<EndpointCustomDomainCdnManagedHttps?>('cdnManagedHttps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointCustomDomainCdnManagedHttps.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     hostName = registerOutput<String>('hostName');
     this.name = registerOutput<String>('name');
-    userManagedHttps = registerOutput<EndpointCustomDomainUserManagedHttps?>(
-      'userManagedHttps',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EndpointCustomDomainUserManagedHttps.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    userManagedHttps = registerOutput<EndpointCustomDomainUserManagedHttps?>('userManagedHttps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointCustomDomainUserManagedHttps.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

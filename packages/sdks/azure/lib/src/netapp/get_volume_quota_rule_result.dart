@@ -1,20 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getVolumeQuotaRule.
 class GetVolumeQuotaRuleResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The Azure Region where the Volume Quota Rule exists.
   final String location;
   final String name;
-
   /// The quota size in kibibytes.
   final int quotaSizeInKib;
-
   /// The quota Target.
   final String quotaTarget;
-
   /// The quota type.
   final String quotaType;
   final String volumeId;
@@ -61,3 +58,4 @@ class GetVolumeQuotaRuleResult {
     );
   }
 }
+

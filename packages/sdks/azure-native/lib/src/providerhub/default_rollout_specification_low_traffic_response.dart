@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The low traffic region configuration.
 class DefaultRolloutSpecificationLowTrafficResponse {
   final pulumi.Input<List<String>>? regions;
-
   /// The wait duration.
   final pulumi.Input<String>? waitDuration;
 
@@ -24,20 +23,11 @@ class DefaultRolloutSpecificationLowTrafficResponse {
     };
   }
 
-  factory DefaultRolloutSpecificationLowTrafficResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DefaultRolloutSpecificationLowTrafficResponse.fromMap(Map<String, dynamic> map) {
     return DefaultRolloutSpecificationLowTrafficResponse(
-      regions: (() {
-        final guardedValue = map['regions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      waitDuration: (() {
-        final guardedValue = map['waitDuration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      regions: (() { final guardedValue = map['regions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      waitDuration: (() { final guardedValue = map['waitDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

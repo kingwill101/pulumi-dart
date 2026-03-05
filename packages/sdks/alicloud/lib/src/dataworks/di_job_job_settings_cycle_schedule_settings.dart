@@ -9,7 +9,6 @@ class DiJobJobSettingsCycleScheduleSettings {
   ///
   /// OfflineIncremental: offline increment
   final pulumi.Input<String>? cycleMigrationType;
-
   /// Scheduling Parameters
   final pulumi.Input<String>? scheduleParameters;
 
@@ -28,20 +27,11 @@ class DiJobJobSettingsCycleScheduleSettings {
     };
   }
 
-  factory DiJobJobSettingsCycleScheduleSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DiJobJobSettingsCycleScheduleSettings.fromMap(Map<String, dynamic> map) {
     return DiJobJobSettingsCycleScheduleSettings(
-      cycleMigrationType: (() {
-        final guardedValue = map['cycleMigrationType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      scheduleParameters: (() {
-        final guardedValue = map['scheduleParameters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      cycleMigrationType: (() { final guardedValue = map['cycleMigrationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      scheduleParameters: (() { final guardedValue = map['scheduleParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

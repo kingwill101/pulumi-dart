@@ -141,14 +141,10 @@ import 'extension_azure_monitor_status_args.dart';
 class ExtensionAzureMonitorStatus extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The status of the monitor on the HDInsight cluster.
   late final pulumi.Output<bool?> clusterMonitoringEnabled;
-
   /// The selected configurations.
-  late final pulumi.Output<AzureMonitorSelectedConfigurationsResponse?>
-  selectedConfigurations;
-
+  late final pulumi.Output<AzureMonitorSelectedConfigurationsResponse?> selectedConfigurations;
   /// The workspace ID of the monitor on the HDInsight cluster.
   late final pulumi.Output<String?> workspaceId;
 
@@ -161,26 +157,14 @@ class ExtensionAzureMonitorStatus extends pulumi.CustomResource {
     ExtensionAzureMonitorStatusArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:hdinsight:ExtensionAzureMonitorStatus',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:hdinsight:ExtensionAzureMonitorStatus',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    clusterMonitoringEnabled = registerOutput<bool?>(
-      'clusterMonitoringEnabled',
-    );
-    selectedConfigurations =
-        registerOutput<AzureMonitorSelectedConfigurationsResponse?>(
-          'selectedConfigurations',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AzureMonitorSelectedConfigurationsResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    clusterMonitoringEnabled = registerOutput<bool?>('clusterMonitoringEnabled');
+    selectedConfigurations = registerOutput<AzureMonitorSelectedConfigurationsResponse?>('selectedConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureMonitorSelectedConfigurationsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     workspaceId = registerOutput<String?>('workspaceId');
   }
 }

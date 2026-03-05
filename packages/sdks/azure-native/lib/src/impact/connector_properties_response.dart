@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectorPropertiesResponse {
   /// unique id of the connector.
   final pulumi.Input<String> connectorId;
-
   /// connector type
   final pulumi.Input<String> connectorType;
-
   /// last run time stamp of this connector in UTC time zone
   final pulumi.Input<String> lastRunTimeStamp;
-
   /// Resource provisioning state.
   final pulumi.Input<String> provisioningState;
-
   /// tenant id of this connector
   final pulumi.Input<String> tenantId;
 
@@ -47,13 +43,10 @@ class ConnectorPropertiesResponse {
     return ConnectorPropertiesResponse(
       connectorId: pulumi.Input.fromValue(map['connectorId'] as String),
       connectorType: pulumi.Input.fromValue(map['connectorType'] as String),
-      lastRunTimeStamp: pulumi.Input.fromValue(
-        map['lastRunTimeStamp'] as String,
-      ),
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
+      lastRunTimeStamp: pulumi.Input.fromValue(map['lastRunTimeStamp'] as String),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
       tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
     );
   }
 }
+

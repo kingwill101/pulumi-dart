@@ -7,27 +7,21 @@ import 'get_key_pair_filter.dart';
 class GetKeyPairResult {
   /// ARN of the Key Pair.
   final String arn;
-
   /// Timestamp for when the key pair was created in ISO 8601 format.
   final String createTime;
   final List<GetKeyPairFilter>? filters;
-
   /// SHA-1 digest of the DER encoded private key.
   final String fingerprint;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final bool? includePublicKey;
   final String? keyName;
   final String? keyPairId;
-
   /// Type of key pair.
   final String keyType;
-
   /// Public key material.
   final String publicKey;
   final String region;
-
   /// Any tags assigned to the Key Pair.
   final Map<String, String> tags;
 
@@ -63,14 +57,7 @@ class GetKeyPairResult {
     return <String, dynamic>{
       'arn': arn,
       'createTime': createTime,
-      'filters': ?(() {
-        final guardedValue = filters;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<GetKeyPairFilter, Map<String, dynamic>>(
-          guardedValue,
-          (value) => value.toMap(),
-        );
-      })(),
+      'filters': ?(() { final guardedValue = filters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetKeyPairFilter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'fingerprint': fingerprint,
       'id': id,
       'includePublicKey': ?includePublicKey,
@@ -87,32 +74,12 @@ class GetKeyPairResult {
     return GetKeyPairResult(
       arn: map['arn'] as String,
       createTime: map['createTime'] as String,
-      filters: (() {
-        final guardedValue = map['filters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<GetKeyPairFilter>(
-          guardedValue,
-          (value) =>
-              GetKeyPairFilter.fromMap((value as Map).cast<String, dynamic>()),
-        );
-      })(),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetKeyPairFilter>(guardedValue, (value) => GetKeyPairFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
       fingerprint: map['fingerprint'] as String,
       id: map['id'] as String,
-      includePublicKey: (() {
-        final guardedValue = map['includePublicKey'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      keyName: (() {
-        final guardedValue = map['keyName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      keyPairId: (() {
-        final guardedValue = map['keyPairId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      includePublicKey: (() { final guardedValue = map['includePublicKey']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      keyName: (() { final guardedValue = map['keyName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      keyPairId: (() { final guardedValue = map['keyPairId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       keyType: map['keyType'] as String,
       publicKey: map['publicKey'] as String,
       region: map['region'] as String,
@@ -120,3 +87,4 @@ class GetKeyPairResult {
     );
   }
 }
+

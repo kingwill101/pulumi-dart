@@ -9,22 +9,16 @@ import 'virtual_network.dart';
 class VirtualNic {
   /// guest OS customization for nic
   final pulumi.Input<GuestOSNICCustomization>? customization;
-
   /// NIC ip address
   final pulumi.Input<List<String>>? ipAddresses;
-
   /// NIC MAC address
   final pulumi.Input<String>? macAddress;
-
   /// Virtual Network
   final pulumi.Input<VirtualNetwork> network;
-
   /// NIC type
   final pulumi.Input<NICType> nicType;
-
   /// Is NIC powered on/off on boot
   final pulumi.Input<bool>? powerOnBoot;
-
   /// NIC id
   final pulumi.Input<String>? virtualNicId;
 
@@ -48,22 +42,11 @@ class VirtualNic {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customization':
-          ?pulumi.Input.mapOptionalInputValue<
-            GuestOSNICCustomization,
-            Map<String, dynamic>
-          >(customization, (value) => value.toMap()),
+      'customization': ?pulumi.Input.mapOptionalInputValue<GuestOSNICCustomization, Map<String, dynamic>>(customization, (value) => value.toMap()),
       'ipAddresses': ?ipAddresses,
       'macAddress': ?macAddress,
-      'network':
-          pulumi.Input.mapInputValue<VirtualNetwork, Map<String, dynamic>>(
-            network,
-            (value) => value.toMap(),
-          ),
-      'nicType': pulumi.Input.mapInputValue<NICType, String>(
-        nicType,
-        (value) => value.wireValue,
-      ),
+      'network': pulumi.Input.mapInputValue<VirtualNetwork, Map<String, dynamic>>(network, (value) => value.toMap()),
+      'nicType': pulumi.Input.mapInputValue<NICType, String>(nicType, (value) => value.wireValue),
       'powerOnBoot': ?powerOnBoot,
       'virtualNicId': ?virtualNicId,
     };
@@ -71,43 +54,14 @@ class VirtualNic {
 
   factory VirtualNic.fromMap(Map<String, dynamic> map) {
     return VirtualNic(
-      customization: (() {
-        final guardedValue = map['customization'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GuestOSNICCustomization.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      ipAddresses: (() {
-        final guardedValue = map['ipAddresses'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      macAddress: (() {
-        final guardedValue = map['macAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      network: pulumi.Input.fromValue(
-        VirtualNetwork.fromMap(
-          (map['network']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      nicType: pulumi.Input.fromValue(
-        NICType.fromValue(map['nicType']! as String),
-      ),
-      powerOnBoot: (() {
-        final guardedValue = map['powerOnBoot'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      virtualNicId: (() {
-        final guardedValue = map['virtualNicId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      customization: (() { final guardedValue = map['customization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GuestOSNICCustomization.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      ipAddresses: (() { final guardedValue = map['ipAddresses']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      macAddress: (() { final guardedValue = map['macAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      network: pulumi.Input.fromValue(VirtualNetwork.fromMap((map['network']! as Map).cast<String, dynamic>())),
+      nicType: pulumi.Input.fromValue(NICType.fromValue(map['nicType']! as String)),
+      powerOnBoot: (() { final guardedValue = map['powerOnBoot']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      virtualNicId: (() { final guardedValue = map['virtualNicId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

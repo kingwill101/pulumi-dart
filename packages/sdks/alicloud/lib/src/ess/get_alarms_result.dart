@@ -7,21 +7,16 @@ import 'get_alarms_alarm.dart';
 class GetAlarmsResult {
   /// A list of alarms. Each element contains the following attributes:
   final List<GetAlarmsAlarm> alarms;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of alarm ids.
   final List<String> ids;
-
   /// The type for the alarm's associated metric.
   final String? metricType;
   final String? nameRegex;
-
   /// A list of alarm names.
   final List<String> names;
   final String? outputFile;
-
   /// The scaling group associated with this alarm.
   final String? scalingGroupId;
 
@@ -47,10 +42,7 @@ class GetAlarmsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'alarms': pulumi.Input.encodeList<GetAlarmsAlarm, Map<String, dynamic>>(
-        alarms,
-        (value) => value.toMap(),
-      ),
+      'alarms': pulumi.Input.encodeList<GetAlarmsAlarm, Map<String, dynamic>>(alarms, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'metricType': ?metricType,
@@ -63,34 +55,15 @@ class GetAlarmsResult {
 
   factory GetAlarmsResult.fromMap(Map<String, dynamic> map) {
     return GetAlarmsResult(
-      alarms: pulumi.Input.decodeList<GetAlarmsAlarm>(
-        map['alarms']!,
-        (value) =>
-            GetAlarmsAlarm.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      alarms: pulumi.Input.decodeList<GetAlarmsAlarm>(map['alarms']!, (value) => GetAlarmsAlarm.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      metricType: (() {
-        final guardedValue = map['metricType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      metricType: (() { final guardedValue = map['metricType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      scalingGroupId: (() {
-        final guardedValue = map['scalingGroupId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      scalingGroupId: (() { final guardedValue = map['scalingGroupId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

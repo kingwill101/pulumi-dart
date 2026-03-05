@@ -9,31 +9,20 @@ class ManagedClusterPodIdentityResponseProvisioningInfo {
 
   /// Creates a new [ManagedClusterPodIdentityResponseProvisioningInfo].
   /// [error] Pod identity assignment error (if any).
-  ManagedClusterPodIdentityResponseProvisioningInfo({this.error});
+  ManagedClusterPodIdentityResponseProvisioningInfo({
+    this.error,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'error':
-          ?pulumi.Input.mapOptionalInputValue<
-            ManagedClusterPodIdentityProvisioningErrorResponse,
-            Map<String, dynamic>
-          >(error, (value) => value.toMap()),
+      'error': ?pulumi.Input.mapOptionalInputValue<ManagedClusterPodIdentityProvisioningErrorResponse, Map<String, dynamic>>(error, (value) => value.toMap()),
     };
   }
 
-  factory ManagedClusterPodIdentityResponseProvisioningInfo.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ManagedClusterPodIdentityResponseProvisioningInfo.fromMap(Map<String, dynamic> map) {
     return ManagedClusterPodIdentityResponseProvisioningInfo(
-      error: (() {
-        final guardedValue = map['error'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ManagedClusterPodIdentityProvisioningErrorResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      error: (() { final guardedValue = map['error']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedClusterPodIdentityProvisioningErrorResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

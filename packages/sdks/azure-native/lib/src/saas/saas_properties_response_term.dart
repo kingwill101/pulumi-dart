@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SaasPropertiesResponseTerm {
   /// The end date of the current term
   final pulumi.Input<String>? endDate;
-
   /// The start date of the current term
   final pulumi.Input<String>? startDate;
-
   /// The unit indicating Monthly / Yearly
   final pulumi.Input<String>? termUnit;
 
@@ -17,7 +15,11 @@ class SaasPropertiesResponseTerm {
   /// [endDate] The end date of the current term
   /// [startDate] The start date of the current term
   /// [termUnit] The unit indicating Monthly / Yearly
-  SaasPropertiesResponseTerm({this.endDate, this.startDate, this.termUnit});
+  SaasPropertiesResponseTerm({
+    this.endDate,
+    this.startDate,
+    this.termUnit,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class SaasPropertiesResponseTerm {
 
   factory SaasPropertiesResponseTerm.fromMap(Map<String, dynamic> map) {
     return SaasPropertiesResponseTerm(
-      endDate: (() {
-        final guardedValue = map['endDate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      startDate: (() {
-        final guardedValue = map['startDate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      termUnit: (() {
-        final guardedValue = map['termUnit'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      endDate: (() { final guardedValue = map['endDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      startDate: (() { final guardedValue = map['startDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      termUnit: (() { final guardedValue = map['termUnit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

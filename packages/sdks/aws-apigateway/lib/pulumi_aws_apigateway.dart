@@ -11,10 +11,8 @@ class _IndexModuleNamespace {
   final APIKeySource = module_index.APIKeySource.values;
   final Authorizer = module_index.Authorizer.new;
   final AuthorizerArgs = module_index.Authorizer.new;
-  final IntegrationConnectionType =
-      module_index.IntegrationConnectionType.values;
-  final IntegrationPassthroughBehavior =
-      module_index.IntegrationPassthroughBehavior.values;
+  final IntegrationConnectionType = module_index.IntegrationConnectionType.values;
+  final IntegrationPassthroughBehavior = module_index.IntegrationPassthroughBehavior.values;
   final IntegrationType = module_index.IntegrationType.values;
   final Method = module_index.Method.values;
   final RequestValidator = module_index.RequestValidator.values;

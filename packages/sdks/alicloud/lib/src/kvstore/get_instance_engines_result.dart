@@ -7,18 +7,14 @@ import 'get_instance_engines_instance_engine.dart';
 class GetInstanceEnginesResult {
   /// Database type.
   final String? engine;
-
   /// Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance version.
   final String? engineVersion;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? instanceChargeType;
-
   /// A list of Tair (Redis OSS-Compatible) And Memcache (KVStore) available instance engines. Each element contains the following attributes:
   final List<GetInstanceEnginesInstanceEngine> instanceEngines;
   final String? outputFile;
-
   /// The Zone to launch the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
   final String zoneId;
 
@@ -46,11 +42,7 @@ class GetInstanceEnginesResult {
       'engineVersion': ?engineVersion,
       'id': id,
       'instanceChargeType': ?instanceChargeType,
-      'instanceEngines':
-          pulumi.Input.encodeList<
-            GetInstanceEnginesInstanceEngine,
-            Map<String, dynamic>
-          >(instanceEngines, (value) => value.toMap()),
+      'instanceEngines': pulumi.Input.encodeList<GetInstanceEnginesInstanceEngine, Map<String, dynamic>>(instanceEngines, (value) => value.toMap()),
       'outputFile': ?outputFile,
       'zoneId': zoneId,
     };
@@ -58,35 +50,14 @@ class GetInstanceEnginesResult {
 
   factory GetInstanceEnginesResult.fromMap(Map<String, dynamic> map) {
     return GetInstanceEnginesResult(
-      engine: (() {
-        final guardedValue = map['engine'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      engineVersion: (() {
-        final guardedValue = map['engineVersion'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      engine: (() { final guardedValue = map['engine']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      engineVersion: (() { final guardedValue = map['engineVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
-      instanceChargeType: (() {
-        final guardedValue = map['instanceChargeType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      instanceEngines:
-          pulumi.Input.decodeList<GetInstanceEnginesInstanceEngine>(
-            map['instanceEngines']!,
-            (value) => GetInstanceEnginesInstanceEngine.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      instanceChargeType: (() { final guardedValue = map['instanceChargeType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      instanceEngines: pulumi.Input.decodeList<GetInstanceEnginesInstanceEngine>(map['instanceEngines']!, (value) => GetInstanceEnginesInstanceEngine.fromMap((value as Map).cast<String, dynamic>())),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
       zoneId: map['zoneId'] as String,
     );
   }
 }
+

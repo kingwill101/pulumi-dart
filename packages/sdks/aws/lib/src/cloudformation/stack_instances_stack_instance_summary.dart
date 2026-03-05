@@ -5,28 +5,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StackInstancesStackInstanceSummary {
   /// Account ID in which the instance is deployed.
   final pulumi.Input<String>? accountId;
-
   /// Detailed status of the stack instance. Values include `PENDING`, `RUNNING`, `SUCCEEDED`, `FAILED`, `CANCELLED`, `INOPERABLE`, `SKIPPED_SUSPENDED_ACCOUNT`, `FAILED_IMPORT`.
   final pulumi.Input<String>? detailedStatus;
-
   /// Status of the stack instance's actual configuration compared to the expected template and parameter configuration of the stack set to which it belongs. Values include `DRIFTED`, `IN_SYNC`, `UNKNOWN`, `NOT_CHECKED`.
   final pulumi.Input<String>? driftStatus;
-
   /// Organization root ID or organizational unit (OU) IDs that you specified for `deployment_targets`.
   final pulumi.Input<String>? organizationalUnitId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// ID of the stack instance.
   final pulumi.Input<String>? stackId;
-
   /// Name or unique ID of the stack set that the stack instance is associated with.
   final pulumi.Input<String>? stackSetId;
-
   /// Status of the stack instance, in terms of its synchronization with its associated stack set. Values include `CURRENT`, `OUTDATED`, `INOPERABLE`.
   final pulumi.Input<String>? status;
-
   /// Explanation for the specific status code assigned to this stack instance.
   final pulumi.Input<String>? statusReason;
 
@@ -68,51 +60,16 @@ class StackInstancesStackInstanceSummary {
 
   factory StackInstancesStackInstanceSummary.fromMap(Map<String, dynamic> map) {
     return StackInstancesStackInstanceSummary(
-      accountId: (() {
-        final guardedValue = map['accountId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      detailedStatus: (() {
-        final guardedValue = map['detailedStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      driftStatus: (() {
-        final guardedValue = map['driftStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      organizationalUnitId: (() {
-        final guardedValue = map['organizationalUnitId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      stackId: (() {
-        final guardedValue = map['stackId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      stackSetId: (() {
-        final guardedValue = map['stackSetId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      statusReason: (() {
-        final guardedValue = map['statusReason'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      detailedStatus: (() { final guardedValue = map['detailedStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      driftStatus: (() { final guardedValue = map['driftStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      organizationalUnitId: (() { final guardedValue = map['organizationalUnitId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      stackId: (() { final guardedValue = map['stackId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      stackSetId: (() { final guardedValue = map['stackSetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      statusReason: (() { final guardedValue = map['statusReason']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

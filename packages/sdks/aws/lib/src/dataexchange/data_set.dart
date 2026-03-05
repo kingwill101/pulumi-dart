@@ -116,22 +116,16 @@ import 'data_set_state.dart';
 class DataSet extends pulumi.CustomResource {
   /// The Amazon Resource Name of this data set.
   late final pulumi.Output<String> arn;
-
   /// The type of asset that is added to a data set. Valid values include `API_GATEWAY_API`, `LAKE_FORMATION_DATA_PERMISSION`, `REDSHIFT_DATA_SHARE`, `S3_DATA_ACCESS`, `S3_SNAPSHOT`.
   late final pulumi.Output<String> assetType;
-
   /// A description for the data set.
   late final pulumi.Output<String> description;
-
   /// The name of the data set.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -144,11 +138,11 @@ class DataSet extends pulumi.CustomResource {
     DataSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:dataexchange/dataSet:DataSet',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:dataexchange/dataSet:DataSet',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     assetType = registerOutput<String>('assetType');
     description = registerOutput<String>('description');
@@ -176,11 +170,11 @@ class DataSet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:dataexchange/dataSet:DataSet',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:dataexchange/dataSet:DataSet',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     assetType = registerOutput<String>('assetType');
     description = registerOutput<String>('description');

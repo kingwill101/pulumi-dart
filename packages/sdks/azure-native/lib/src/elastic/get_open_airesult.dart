@@ -6,16 +6,12 @@ import 'open_aiintegration_properties_response.dart';
 class GetOpenAIResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The id of the integration.
   final String id;
-
   /// Name of the integration.
   final String name;
-
   /// Open AI Integration details.
   final OpenAIIntegrationPropertiesResponse properties;
-
   /// The type of the integration.
   final String type;
 
@@ -48,10 +44,9 @@ class GetOpenAIResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      properties: OpenAIIntegrationPropertiesResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
+      properties: OpenAIIntegrationPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

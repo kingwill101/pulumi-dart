@@ -9,20 +9,13 @@ import 'google_cloud_documentai_v1_document_provenance.dart';
 /// A table representation similar to HTML table structure.
 class GoogleCloudDocumentaiV1DocumentPageTable {
   /// Body rows of the table.
-  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentPageTableTableRow>>?
-  bodyRows;
-
+  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentPageTableTableRow>>? bodyRows;
   /// A list of detected languages together with confidence.
-  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>>?
-  detectedLanguages;
-
+  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>>? detectedLanguages;
   /// Header rows of the table.
-  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentPageTableTableRow>>?
-  headerRows;
-
+  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentPageTableTableRow>>? headerRows;
   /// Layout for Table.
   final pulumi.Input<GoogleCloudDocumentaiV1DocumentPageLayout>? layout;
-
   /// The history of this table.
   final pulumi.Input<GoogleCloudDocumentaiV1DocumentProvenance>? provenance;
 
@@ -42,120 +35,22 @@ class GoogleCloudDocumentaiV1DocumentPageTable {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bodyRows':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GoogleCloudDocumentaiV1DocumentPageTableTableRow>,
-            List<Map<String, dynamic>>
-          >(
-            bodyRows,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GoogleCloudDocumentaiV1DocumentPageTableTableRow,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'detectedLanguages':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>,
-            List<Map<String, dynamic>>
-          >(
-            detectedLanguages,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GoogleCloudDocumentaiV1DocumentPageDetectedLanguage,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'headerRows':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GoogleCloudDocumentaiV1DocumentPageTableTableRow>,
-            List<Map<String, dynamic>>
-          >(
-            headerRows,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GoogleCloudDocumentaiV1DocumentPageTableTableRow,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'layout':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudDocumentaiV1DocumentPageLayout,
-            Map<String, dynamic>
-          >(layout, (value) => value.toMap()),
-      'provenance':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudDocumentaiV1DocumentProvenance,
-            Map<String, dynamic>
-          >(provenance, (value) => value.toMap()),
+      'bodyRows': ?pulumi.Input.mapOptionalInputValue<List<GoogleCloudDocumentaiV1DocumentPageTableTableRow>, List<Map<String, dynamic>>>(bodyRows, (value) => pulumi.Input.encodeList<GoogleCloudDocumentaiV1DocumentPageTableTableRow, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'detectedLanguages': ?pulumi.Input.mapOptionalInputValue<List<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>, List<Map<String, dynamic>>>(detectedLanguages, (value) => pulumi.Input.encodeList<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'headerRows': ?pulumi.Input.mapOptionalInputValue<List<GoogleCloudDocumentaiV1DocumentPageTableTableRow>, List<Map<String, dynamic>>>(headerRows, (value) => pulumi.Input.encodeList<GoogleCloudDocumentaiV1DocumentPageTableTableRow, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'layout': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDocumentaiV1DocumentPageLayout, Map<String, dynamic>>(layout, (value) => value.toMap()),
+      'provenance': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDocumentaiV1DocumentProvenance, Map<String, dynamic>>(provenance, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudDocumentaiV1DocumentPageTable.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDocumentaiV1DocumentPageTable.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentPageTable(
-      bodyRows: (() {
-        final guardedValue = map['bodyRows'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            GoogleCloudDocumentaiV1DocumentPageTableTableRow
-          >(
-            guardedValue,
-            (value) => GoogleCloudDocumentaiV1DocumentPageTableTableRow.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      detectedLanguages: (() {
-        final guardedValue = map['detectedLanguages'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            GoogleCloudDocumentaiV1DocumentPageDetectedLanguage
-          >(
-            guardedValue,
-            (value) =>
-                GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
-      headerRows: (() {
-        final guardedValue = map['headerRows'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            GoogleCloudDocumentaiV1DocumentPageTableTableRow
-          >(
-            guardedValue,
-            (value) => GoogleCloudDocumentaiV1DocumentPageTableTableRow.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      layout: (() {
-        final guardedValue = map['layout'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudDocumentaiV1DocumentPageLayout.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      provenance: (() {
-        final guardedValue = map['provenance'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudDocumentaiV1DocumentProvenance.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      bodyRows: (() { final guardedValue = map['bodyRows']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentPageTableTableRow>(guardedValue, (value) => GoogleCloudDocumentaiV1DocumentPageTableTableRow.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      detectedLanguages: (() { final guardedValue = map['detectedLanguages']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>(guardedValue, (value) => GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      headerRows: (() { final guardedValue = map['headerRows']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentPageTableTableRow>(guardedValue, (value) => GoogleCloudDocumentaiV1DocumentPageTableTableRow.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      layout: (() { final guardedValue = map['layout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudDocumentaiV1DocumentPageLayout.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      provenance: (() { final guardedValue = map['provenance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudDocumentaiV1DocumentProvenance.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

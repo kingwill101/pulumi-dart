@@ -22,51 +22,18 @@ class GetInstanceNetworkingIpv6 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'globals':
-          pulumi.Input.mapInputValue<
-            List<GetInstanceNetworkingIpv6Global>,
-            List<Map<String, dynamic>>
-          >(
-            globals,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetInstanceNetworkingIpv6Global,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'linkLocal':
-          pulumi.Input.mapInputValue<
-            GetInstanceNetworkingIpv6LinkLocal,
-            Map<String, dynamic>
-          >(linkLocal, (value) => value.toMap()),
-      'slaac':
-          pulumi.Input.mapInputValue<
-            GetInstanceNetworkingIpv6Slaac,
-            Map<String, dynamic>
-          >(slaac, (value) => value.toMap()),
+      'globals': pulumi.Input.mapInputValue<List<GetInstanceNetworkingIpv6Global>, List<Map<String, dynamic>>>(globals, (value) => pulumi.Input.encodeList<GetInstanceNetworkingIpv6Global, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'linkLocal': pulumi.Input.mapInputValue<GetInstanceNetworkingIpv6LinkLocal, Map<String, dynamic>>(linkLocal, (value) => value.toMap()),
+      'slaac': pulumi.Input.mapInputValue<GetInstanceNetworkingIpv6Slaac, Map<String, dynamic>>(slaac, (value) => value.toMap()),
     };
   }
 
   factory GetInstanceNetworkingIpv6.fromMap(Map<String, dynamic> map) {
     return GetInstanceNetworkingIpv6(
-      globals: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetInstanceNetworkingIpv6Global>(
-          map['globals']!,
-          (value) => GetInstanceNetworkingIpv6Global.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      linkLocal: pulumi.Input.fromValue(
-        GetInstanceNetworkingIpv6LinkLocal.fromMap(
-          (map['linkLocal']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      slaac: pulumi.Input.fromValue(
-        GetInstanceNetworkingIpv6Slaac.fromMap(
-          (map['slaac']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      globals: pulumi.Input.fromValue(pulumi.Input.decodeList<GetInstanceNetworkingIpv6Global>(map['globals']!, (value) => GetInstanceNetworkingIpv6Global.fromMap((value as Map).cast<String, dynamic>()))),
+      linkLocal: pulumi.Input.fromValue(GetInstanceNetworkingIpv6LinkLocal.fromMap((map['linkLocal']! as Map).cast<String, dynamic>())),
+      slaac: pulumi.Input.fromValue(GetInstanceNetworkingIpv6Slaac.fromMap((map['slaac']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

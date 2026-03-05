@@ -1,9 +1,7 @@
 /// The additional options.
 enum AdditionalOptionsResourceTypeRegistration {
   protectedAsyncOperationPolling("ProtectedAsyncOperationPolling"),
-  protectedAsyncOperationPollingAuditOnly(
-    "ProtectedAsyncOperationPollingAuditOnly",
-  );
+  protectedAsyncOperationPollingAuditOnly("ProtectedAsyncOperationPollingAuditOnly");
 
   const AdditionalOptionsResourceTypeRegistration(this.wireValue);
   final String wireValue;
@@ -14,8 +12,7 @@ enum AdditionalOptionsResourceTypeRegistration {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown AdditionalOptionsResourceTypeRegistration value: $value',
-    );
+    throw ArgumentError('Unknown AdditionalOptionsResourceTypeRegistration value: $value');
   }
 }
+

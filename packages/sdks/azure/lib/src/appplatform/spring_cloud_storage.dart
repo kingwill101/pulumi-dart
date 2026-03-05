@@ -249,13 +249,10 @@ import 'spring_cloud_storage_state.dart';
 class SpringCloudStorage extends pulumi.CustomResource {
   /// The name which should be used for this Spring Cloud Storage. Changing this forces a new Spring Cloud Storage to be created.
   late final pulumi.Output<String> name;
-
   /// The ID of the Spring Cloud Service where the Spring Cloud Storage should exist. Changing this forces a new Spring Cloud Storage to be created.
   late final pulumi.Output<String> springCloudServiceId;
-
   /// The access key of the Azure Storage Account.
   late final pulumi.Output<String> storageAccountKey;
-
   /// The account name of the Azure Storage Account.
   late final pulumi.Output<String> storageAccountName;
 
@@ -268,11 +265,11 @@ class SpringCloudStorage extends pulumi.CustomResource {
     SpringCloudStorageArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appplatform/springCloudStorage:SpringCloudStorage',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appplatform/springCloudStorage:SpringCloudStorage',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     springCloudServiceId = registerOutput<String>('springCloudServiceId');
     storageAccountKey = registerOutput<String>('storageAccountKey');
@@ -297,11 +294,11 @@ class SpringCloudStorage extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appplatform/springCloudStorage:SpringCloudStorage',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appplatform/springCloudStorage:SpringCloudStorage',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     springCloudServiceId = registerOutput<String>('springCloudServiceId');
     storageAccountKey = registerOutput<String>('storageAccountKey');

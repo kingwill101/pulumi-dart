@@ -25,31 +25,18 @@ class FolderReplayPolicysimulatorV1alphaArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'config':
-          pulumi.Input.mapInputValue<
-            GoogleCloudPolicysimulatorV1alphaReplayConfig,
-            Map<String, dynamic>
-          >(config, (value) => value.toMap()),
+      'config': pulumi.Input.mapInputValue<GoogleCloudPolicysimulatorV1alphaReplayConfig, Map<String, dynamic>>(config, (value) => value.toMap()),
       'folderId': folderId,
       'location': ?location,
     };
   }
 
-  factory FolderReplayPolicysimulatorV1alphaArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FolderReplayPolicysimulatorV1alphaArgs.fromMap(Map<String, dynamic> map) {
     return FolderReplayPolicysimulatorV1alphaArgs(
-      config: pulumi.Input.fromValue(
-        GoogleCloudPolicysimulatorV1alphaReplayConfig.fromMap(
-          (map['config']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      config: pulumi.Input.fromValue(GoogleCloudPolicysimulatorV1alphaReplayConfig.fromMap((map['config']! as Map).cast<String, dynamic>())),
       folderId: pulumi.Input.fromValue(map['folderId'] as String),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetThroughputPoolAccountArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Cosmos DB global database account in a Throughput Pool
   final pulumi.Input<String> throughputPoolAccountName;
-
   /// Cosmos DB Throughput Pool name.
   final pulumi.Input<String> throughputPoolName;
 
@@ -36,15 +34,10 @@ class GetThroughputPoolAccountArgs {
 
   factory GetThroughputPoolAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetThroughputPoolAccountArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      throughputPoolAccountName: pulumi.Input.fromValue(
-        map['throughputPoolAccountName'] as String,
-      ),
-      throughputPoolName: pulumi.Input.fromValue(
-        map['throughputPoolName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      throughputPoolAccountName: pulumi.Input.fromValue(map['throughputPoolAccountName'] as String),
+      throughputPoolName: pulumi.Input.fromValue(map['throughputPoolName'] as String),
     );
   }
 }
+

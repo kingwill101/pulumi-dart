@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MetricDimensionResponse {
   /// Name of the dimension.
   final pulumi.Input<String> name;
-
   /// the dimension operator. Only 'Include' and 'Exclude' are supported
   final pulumi.Input<String> operator;
-
   /// list of dimension values.
   final pulumi.Input<List<String>> values;
 
@@ -39,3 +37,4 @@ class MetricDimensionResponse {
     );
   }
 }
+

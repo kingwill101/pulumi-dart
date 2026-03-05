@@ -14,16 +14,15 @@ class ClientCertificateConfigResponseContainerV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'issueClientCertificate': issueClientCertificate};
+    return <String, dynamic>{
+      'issueClientCertificate': issueClientCertificate,
+    };
   }
 
-  factory ClientCertificateConfigResponseContainerV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClientCertificateConfigResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return ClientCertificateConfigResponseContainerV1beta1(
-      issueClientCertificate: pulumi.Input.fromValue(
-        map['issueClientCertificate'] as bool,
-      ),
+      issueClientCertificate: pulumi.Input.fromValue(map['issueClientCertificate'] as bool),
     );
   }
 }
+

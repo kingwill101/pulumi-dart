@@ -13,14 +13,15 @@ class UserProfileUserSettingsJupyterServerAppSettingsCodeRepository {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'repositoryUrl': repositoryUrl};
+    return <String, dynamic>{
+      'repositoryUrl': repositoryUrl,
+    };
   }
 
-  factory UserProfileUserSettingsJupyterServerAppSettingsCodeRepository.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory UserProfileUserSettingsJupyterServerAppSettingsCodeRepository.fromMap(Map<String, dynamic> map) {
     return UserProfileUserSettingsJupyterServerAppSettingsCodeRepository(
       repositoryUrl: pulumi.Input.fromValue(map['repositoryUrl'] as String),
     );
   }
 }
+

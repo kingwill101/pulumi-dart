@@ -8,16 +8,12 @@ class OrderStatusResponse {
   /// Dictionary to hold generic information which is not stored
   /// by the already existing properties
   final pulumi.Input<Map<String, String>> additionalOrderDetails;
-
   /// Comments related to this status change.
   final pulumi.Input<String>? comments;
-
   /// Status of the order as per the allowed status types.
   final pulumi.Input<String> status;
-
   /// Tracking information related to the state in the ordering flow
   final pulumi.Input<TrackingInfoResponse> trackingInformation;
-
   /// Time of status update.
   final pulumi.Input<String> updateDateTime;
 
@@ -40,32 +36,19 @@ class OrderStatusResponse {
       'additionalOrderDetails': additionalOrderDetails,
       'comments': ?comments,
       'status': status,
-      'trackingInformation':
-          pulumi.Input.mapInputValue<
-            TrackingInfoResponse,
-            Map<String, dynamic>
-          >(trackingInformation, (value) => value.toMap()),
+      'trackingInformation': pulumi.Input.mapInputValue<TrackingInfoResponse, Map<String, dynamic>>(trackingInformation, (value) => value.toMap()),
       'updateDateTime': updateDateTime,
     };
   }
 
   factory OrderStatusResponse.fromMap(Map<String, dynamic> map) {
     return OrderStatusResponse(
-      additionalOrderDetails: pulumi.Input.fromValue(
-        (map['additionalOrderDetails'] as Map).cast<String, String>(),
-      ),
-      comments: (() {
-        final guardedValue = map['comments'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      additionalOrderDetails: pulumi.Input.fromValue((map['additionalOrderDetails'] as Map).cast<String, String>()),
+      comments: (() { final guardedValue = map['comments']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       status: pulumi.Input.fromValue(map['status'] as String),
-      trackingInformation: pulumi.Input.fromValue(
-        TrackingInfoResponse.fromMap(
-          (map['trackingInformation']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      trackingInformation: pulumi.Input.fromValue(TrackingInfoResponse.fromMap((map['trackingInformation']! as Map).cast<String, dynamic>())),
       updateDateTime: pulumi.Input.fromValue(map['updateDateTime'] as String),
     );
   }
 }
+

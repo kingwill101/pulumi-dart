@@ -16,3 +16,4 @@ enum EntityImpact {
     throw ArgumentError('Unknown EntityImpact value: $value');
   }
 }
+

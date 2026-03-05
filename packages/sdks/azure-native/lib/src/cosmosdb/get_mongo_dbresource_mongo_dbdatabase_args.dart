@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMongoDBResourceMongoDBDatabaseArgs {
   /// Cosmos DB database account name.
   final pulumi.Input<String> accountName;
-
   /// Cosmos DB database name.
   final pulumi.Input<String> databaseName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,15 +32,12 @@ class GetMongoDBResourceMongoDBDatabaseArgs {
     };
   }
 
-  factory GetMongoDBResourceMongoDBDatabaseArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetMongoDBResourceMongoDBDatabaseArgs.fromMap(Map<String, dynamic> map) {
     return GetMongoDBResourceMongoDBDatabaseArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
       databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

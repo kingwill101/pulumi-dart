@@ -173,31 +173,22 @@ import 'service_fabric_args.dart';
 class ServiceFabric extends pulumi.CustomResource {
   /// The applicable schedule for the virtual machine.
   late final pulumi.Output<ApplicableScheduleResponse> applicableSchedule;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The resource id of the environment under which the service fabric resource is present
   late final pulumi.Output<String?> environmentId;
-
   /// The backing service fabric resource's id
   late final pulumi.Output<String?> externalServiceFabricId;
-
   /// The location of the resource.
   late final pulumi.Output<String?> location;
-
   /// The name of the resource.
   late final pulumi.Output<String> name;
-
   /// The provisioning status of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The tags of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource.
   late final pulumi.Output<String> type;
-
   /// The unique immutable identifier of a resource (Guid).
   late final pulumi.Output<String> uniqueIdentifier;
 
@@ -210,26 +201,15 @@ class ServiceFabric extends pulumi.CustomResource {
     ServiceFabricArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:devtestlab:ServiceFabric',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    applicableSchedule = registerOutput<ApplicableScheduleResponse>(
-      'applicableSchedule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApplicableScheduleResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure-native:devtestlab:ServiceFabric',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    applicableSchedule = registerOutput<ApplicableScheduleResponse>('applicableSchedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicableScheduleResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     environmentId = registerOutput<String?>('environmentId');
-    externalServiceFabricId = registerOutput<String?>(
-      'externalServiceFabricId',
-    );
+    externalServiceFabricId = registerOutput<String?>('externalServiceFabricId');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');

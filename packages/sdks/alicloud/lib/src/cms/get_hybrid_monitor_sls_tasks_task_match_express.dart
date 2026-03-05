@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetHybridMonitorSlsTasksTaskMatchExpress {
   /// The method that is used to match the instance name.
   final pulumi.Input<String> function;
-
   /// The name of the instance.
   final pulumi.Input<String> name;
-
   /// The keyword that corresponds to the instance name.
   final pulumi.Input<String> value;
 
@@ -30,9 +28,7 @@ class GetHybridMonitorSlsTasksTaskMatchExpress {
     };
   }
 
-  factory GetHybridMonitorSlsTasksTaskMatchExpress.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetHybridMonitorSlsTasksTaskMatchExpress.fromMap(Map<String, dynamic> map) {
     return GetHybridMonitorSlsTasksTaskMatchExpress(
       function: pulumi.Input.fromValue(map['function'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
@@ -40,3 +36,4 @@ class GetHybridMonitorSlsTasksTaskMatchExpress {
     );
   }
 }
+

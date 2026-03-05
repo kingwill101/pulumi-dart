@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PackageInformationResponse {
   /// The name of the carrier that is used to ship the import or export drives.
   final pulumi.Input<String> carrierName;
-
   /// The number of drives included in the package.
   final pulumi.Input<double> driveCount;
-
   /// The date when the package is shipped.
   final pulumi.Input<String> shipDate;
-
   /// The tracking number of the package.
   final pulumi.Input<String> trackingNumber;
 
@@ -46,3 +43,4 @@ class PackageInformationResponse {
     );
   }
 }
+

@@ -9,17 +9,20 @@ class SoftwareRecipeStepInstallRpmResponse {
 
   /// Creates a new [SoftwareRecipeStepInstallRpmResponse].
   /// [artifactId] The id of the relevant artifact in the recipe.
-  SoftwareRecipeStepInstallRpmResponse({required this.artifactId});
+  SoftwareRecipeStepInstallRpmResponse({
+    required this.artifactId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'artifactId': artifactId};
+    return <String, dynamic>{
+      'artifactId': artifactId,
+    };
   }
 
-  factory SoftwareRecipeStepInstallRpmResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SoftwareRecipeStepInstallRpmResponse.fromMap(Map<String, dynamic> map) {
     return SoftwareRecipeStepInstallRpmResponse(
       artifactId: pulumi.Input.fromValue(map['artifactId'] as String),
     );
   }
 }
+

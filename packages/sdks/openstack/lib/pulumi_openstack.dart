@@ -16,8 +16,7 @@ import 'package:pulumi_openstack/networking.dart' as module_networking;
 import 'package:pulumi_openstack/objectstorage.dart' as module_objectstorage;
 import 'package:pulumi_openstack/orchestration.dart' as module_orchestration;
 import 'package:pulumi_openstack/providers.dart' as module_providers;
-import 'package:pulumi_openstack/sharedfilesystem.dart'
-    as module_sharedfilesystem;
+import 'package:pulumi_openstack/sharedfilesystem.dart' as module_sharedfilesystem;
 import 'package:pulumi_openstack/vpnaas.dart' as module_vpnaas;
 
 final bgpvpn = _BgpvpnModuleNamespace();
@@ -63,12 +62,9 @@ class _BgpvpnModuleNamespace {
 
 class _BlockstorageModuleNamespace {
   _BlockstorageModuleNamespace();
-  final GetAvailabilityZonesV3Args =
-      module_blockstorage.GetAvailabilityZonesV3Args.new;
-  final GetAvailabilityZonesV3Result =
-      module_blockstorage.GetAvailabilityZonesV3Result.new;
-  final GetAvailabilityZonesV3ResultArgs =
-      module_blockstorage.GetAvailabilityZonesV3Result.new;
+  final GetAvailabilityZonesV3Args = module_blockstorage.GetAvailabilityZonesV3Args.new;
+  final GetAvailabilityZonesV3Result = module_blockstorage.GetAvailabilityZonesV3Result.new;
+  final GetAvailabilityZonesV3ResultArgs = module_blockstorage.GetAvailabilityZonesV3Result.new;
   final GetQuotasetV3Args = module_blockstorage.GetQuotasetV3Args.new;
   final GetQuotasetV3Result = module_blockstorage.GetQuotasetV3Result.new;
   final GetQuotasetV3ResultArgs = module_blockstorage.GetQuotasetV3Result.new;
@@ -77,15 +73,13 @@ class _BlockstorageModuleNamespace {
   final GetSnapshotV3ResultArgs = module_blockstorage.GetSnapshotV3Result.new;
   final GetVolumeV3Args = module_blockstorage.GetVolumeV3Args.new;
   final GetVolumeV3Attachment = module_blockstorage.GetVolumeV3Attachment.new;
-  final GetVolumeV3AttachmentArgs =
-      module_blockstorage.GetVolumeV3Attachment.new;
+  final GetVolumeV3AttachmentArgs = module_blockstorage.GetVolumeV3Attachment.new;
   final GetVolumeV3Result = module_blockstorage.GetVolumeV3Result.new;
   final GetVolumeV3ResultArgs = module_blockstorage.GetVolumeV3Result.new;
   final QosAssociationV3 = module_blockstorage.QosAssociationV3.new;
   final QosAssociationV3Args = module_blockstorage.QosAssociationV3Args.new;
   final QosAssociationV3State = module_blockstorage.QosAssociationV3State.new;
-  final QosAssociationV3StateArgs =
-      module_blockstorage.QosAssociationV3State.new;
+  final QosAssociationV3StateArgs = module_blockstorage.QosAssociationV3State.new;
   final QosV3 = module_blockstorage.QosV3.new;
   final QosV3Args = module_blockstorage.QosV3Args.new;
   final QosV3State = module_blockstorage.QosV3State.new;
@@ -108,10 +102,8 @@ class _BlockstorageModuleNamespace {
   final VolumeStateArgs = module_blockstorage.VolumeState.new;
   final VolumeTypeAccessV3 = module_blockstorage.VolumeTypeAccessV3.new;
   final VolumeTypeAccessV3Args = module_blockstorage.VolumeTypeAccessV3Args.new;
-  final VolumeTypeAccessV3State =
-      module_blockstorage.VolumeTypeAccessV3State.new;
-  final VolumeTypeAccessV3StateArgs =
-      module_blockstorage.VolumeTypeAccessV3State.new;
+  final VolumeTypeAccessV3State = module_blockstorage.VolumeTypeAccessV3State.new;
+  final VolumeTypeAccessV3StateArgs = module_blockstorage.VolumeTypeAccessV3State.new;
   final VolumeTypeV3 = module_blockstorage.VolumeTypeV3.new;
   final VolumeTypeV3Args = module_blockstorage.VolumeTypeV3Args.new;
   final VolumeTypeV3State = module_blockstorage.VolumeTypeV3State.new;
@@ -140,10 +132,8 @@ class _ComputeModuleNamespace {
   final GetAggregateV2Result = module_compute.GetAggregateV2Result.new;
   final GetAggregateV2ResultArgs = module_compute.GetAggregateV2Result.new;
   final GetAvailabilityZonesArgs = module_compute.GetAvailabilityZonesArgs.new;
-  final GetAvailabilityZonesResult =
-      module_compute.GetAvailabilityZonesResult.new;
-  final GetAvailabilityZonesResultArgs =
-      module_compute.GetAvailabilityZonesResult.new;
+  final GetAvailabilityZonesResult = module_compute.GetAvailabilityZonesResult.new;
+  final GetAvailabilityZonesResultArgs = module_compute.GetAvailabilityZonesResult.new;
   final GetFlavorArgs = module_compute.GetFlavorArgs.new;
   final GetFlavorResult = module_compute.GetFlavorResult.new;
   final GetFlavorResultArgs = module_compute.GetFlavorResult.new;
@@ -205,10 +195,8 @@ class _ComputeModuleNamespace {
   final VolumeAttachArgs = module_compute.VolumeAttachArgs.new;
   final VolumeAttachState = module_compute.VolumeAttachState.new;
   final VolumeAttachStateArgs = module_compute.VolumeAttachState.new;
-  final VolumeAttachVendorOptions =
-      module_compute.VolumeAttachVendorOptions.new;
-  final VolumeAttachVendorOptionsArgs =
-      module_compute.VolumeAttachVendorOptions.new;
+  final VolumeAttachVendorOptions = module_compute.VolumeAttachVendorOptions.new;
+  final VolumeAttachVendorOptionsArgs = module_compute.VolumeAttachVendorOptions.new;
   final getAggregateV2 = module_compute.getAggregateV2;
   final getAvailabilityZones = module_compute.getAvailabilityZones;
   final getFlavor = module_compute.getFlavor;
@@ -229,17 +217,13 @@ class _ContainerinfraModuleNamespace {
   final ClusterTemplate = module_containerinfra.ClusterTemplate.new;
   final ClusterTemplateArgs = module_containerinfra.ClusterTemplateArgs.new;
   final ClusterTemplateState = module_containerinfra.ClusterTemplateState.new;
-  final ClusterTemplateStateArgs =
-      module_containerinfra.ClusterTemplateState.new;
+  final ClusterTemplateStateArgs = module_containerinfra.ClusterTemplateState.new;
   final GetClusterArgs = module_containerinfra.GetClusterArgs.new;
   final GetClusterResult = module_containerinfra.GetClusterResult.new;
   final GetClusterResultArgs = module_containerinfra.GetClusterResult.new;
-  final GetClusterTemplateArgs =
-      module_containerinfra.GetClusterTemplateArgs.new;
-  final GetClusterTemplateResult =
-      module_containerinfra.GetClusterTemplateResult.new;
-  final GetClusterTemplateResultArgs =
-      module_containerinfra.GetClusterTemplateResult.new;
+  final GetClusterTemplateArgs = module_containerinfra.GetClusterTemplateArgs.new;
+  final GetClusterTemplateResult = module_containerinfra.GetClusterTemplateResult.new;
+  final GetClusterTemplateResultArgs = module_containerinfra.GetClusterTemplateResult.new;
   final GetNodeGroupArgs = module_containerinfra.GetNodeGroupArgs.new;
   final GetNodeGroupResult = module_containerinfra.GetNodeGroupResult.new;
   final GetNodeGroupResultArgs = module_containerinfra.GetNodeGroupResult.new;
@@ -256,10 +240,8 @@ class _DatabaseModuleNamespace {
   _DatabaseModuleNamespace();
   final Configuration = module_database.Configuration.new;
   final ConfigurationArgs = module_database.ConfigurationArgs.new;
-  final ConfigurationConfiguration =
-      module_database.ConfigurationConfiguration.new;
-  final ConfigurationConfigurationArgs =
-      module_database.ConfigurationConfiguration.new;
+  final ConfigurationConfiguration = module_database.ConfigurationConfiguration.new;
+  final ConfigurationConfigurationArgs = module_database.ConfigurationConfiguration.new;
   final ConfigurationDatastore = module_database.ConfigurationDatastore.new;
   final ConfigurationDatastoreArgs = module_database.ConfigurationDatastore.new;
   final ConfigurationState = module_database.ConfigurationState.new;
@@ -353,16 +335,11 @@ class _FirewallModuleNamespace {
 class _IdentityModuleNamespace {
   _IdentityModuleNamespace();
   final ApplicationCredential = module_identity.ApplicationCredential.new;
-  final ApplicationCredentialAccessRule =
-      module_identity.ApplicationCredentialAccessRule.new;
-  final ApplicationCredentialAccessRuleArgs =
-      module_identity.ApplicationCredentialAccessRule.new;
-  final ApplicationCredentialArgs =
-      module_identity.ApplicationCredentialArgs.new;
-  final ApplicationCredentialState =
-      module_identity.ApplicationCredentialState.new;
-  final ApplicationCredentialStateArgs =
-      module_identity.ApplicationCredentialState.new;
+  final ApplicationCredentialAccessRule = module_identity.ApplicationCredentialAccessRule.new;
+  final ApplicationCredentialAccessRuleArgs = module_identity.ApplicationCredentialAccessRule.new;
+  final ApplicationCredentialArgs = module_identity.ApplicationCredentialArgs.new;
+  final ApplicationCredentialState = module_identity.ApplicationCredentialState.new;
+  final ApplicationCredentialStateArgs = module_identity.ApplicationCredentialState.new;
   final Ec2CredentialV3 = module_identity.Ec2CredentialV3.new;
   final Ec2CredentialV3Args = module_identity.Ec2CredentialV3Args.new;
   final Ec2CredentialV3State = module_identity.Ec2CredentialV3State.new;
@@ -376,14 +353,10 @@ class _IdentityModuleNamespace {
   final GetAuthScopeResultArgs = module_identity.GetAuthScopeResult.new;
   final GetAuthScopeRole = module_identity.GetAuthScopeRole.new;
   final GetAuthScopeRoleArgs = module_identity.GetAuthScopeRole.new;
-  final GetAuthScopeServiceCatalog =
-      module_identity.GetAuthScopeServiceCatalog.new;
-  final GetAuthScopeServiceCatalogArgs =
-      module_identity.GetAuthScopeServiceCatalog.new;
-  final GetAuthScopeServiceCatalogEndpoint =
-      module_identity.GetAuthScopeServiceCatalogEndpoint.new;
-  final GetAuthScopeServiceCatalogEndpointArgs =
-      module_identity.GetAuthScopeServiceCatalogEndpoint.new;
+  final GetAuthScopeServiceCatalog = module_identity.GetAuthScopeServiceCatalog.new;
+  final GetAuthScopeServiceCatalogArgs = module_identity.GetAuthScopeServiceCatalog.new;
+  final GetAuthScopeServiceCatalogEndpoint = module_identity.GetAuthScopeServiceCatalogEndpoint.new;
+  final GetAuthScopeServiceCatalogEndpointArgs = module_identity.GetAuthScopeServiceCatalogEndpoint.new;
   final GetEndpointArgs = module_identity.GetEndpointArgs.new;
   final GetEndpointResult = module_identity.GetEndpointResult.new;
   final GetEndpointResultArgs = module_identity.GetEndpointResult.new;
@@ -410,12 +383,9 @@ class _IdentityModuleNamespace {
   final GroupV3State = module_identity.GroupV3State.new;
   final GroupV3StateArgs = module_identity.GroupV3State.new;
   final InheritRoleAssignment = module_identity.InheritRoleAssignment.new;
-  final InheritRoleAssignmentArgs =
-      module_identity.InheritRoleAssignmentArgs.new;
-  final InheritRoleAssignmentState =
-      module_identity.InheritRoleAssignmentState.new;
-  final InheritRoleAssignmentStateArgs =
-      module_identity.InheritRoleAssignmentState.new;
+  final InheritRoleAssignmentArgs = module_identity.InheritRoleAssignmentArgs.new;
+  final InheritRoleAssignmentState = module_identity.InheritRoleAssignmentState.new;
+  final InheritRoleAssignmentStateArgs = module_identity.InheritRoleAssignmentState.new;
   final LimitV3 = module_identity.LimitV3.new;
   final LimitV3Args = module_identity.LimitV3Args.new;
   final LimitV3State = module_identity.LimitV3State.new;
@@ -447,8 +417,7 @@ class _IdentityModuleNamespace {
   final UserMembershipV3State = module_identity.UserMembershipV3State.new;
   final UserMembershipV3StateArgs = module_identity.UserMembershipV3State.new;
   final UserMultiFactorAuthRule = module_identity.UserMultiFactorAuthRule.new;
-  final UserMultiFactorAuthRuleArgs =
-      module_identity.UserMultiFactorAuthRule.new;
+  final UserMultiFactorAuthRuleArgs = module_identity.UserMultiFactorAuthRule.new;
   final UserState = module_identity.UserState.new;
   final UserStateArgs = module_identity.UserState.new;
   final getAuthScope = module_identity.getAuthScope;
@@ -488,29 +457,19 @@ class _ImagesModuleNamespace {
 class _IndexModuleNamespace {
   _IndexModuleNamespace();
   final BgpvpnNetworkAssociateV2 = module_index.BgpvpnNetworkAssociateV2.new;
-  final BgpvpnNetworkAssociateV2Args =
-      module_index.BgpvpnNetworkAssociateV2Args.new;
-  final BgpvpnNetworkAssociateV2State =
-      module_index.BgpvpnNetworkAssociateV2State.new;
-  final BgpvpnNetworkAssociateV2StateArgs =
-      module_index.BgpvpnNetworkAssociateV2State.new;
+  final BgpvpnNetworkAssociateV2Args = module_index.BgpvpnNetworkAssociateV2Args.new;
+  final BgpvpnNetworkAssociateV2State = module_index.BgpvpnNetworkAssociateV2State.new;
+  final BgpvpnNetworkAssociateV2StateArgs = module_index.BgpvpnNetworkAssociateV2State.new;
   final BgpvpnPortAssociateV2 = module_index.BgpvpnPortAssociateV2.new;
   final BgpvpnPortAssociateV2Args = module_index.BgpvpnPortAssociateV2Args.new;
-  final BgpvpnPortAssociateV2Route =
-      module_index.BgpvpnPortAssociateV2Route.new;
-  final BgpvpnPortAssociateV2RouteArgs =
-      module_index.BgpvpnPortAssociateV2Route.new;
-  final BgpvpnPortAssociateV2State =
-      module_index.BgpvpnPortAssociateV2State.new;
-  final BgpvpnPortAssociateV2StateArgs =
-      module_index.BgpvpnPortAssociateV2State.new;
+  final BgpvpnPortAssociateV2Route = module_index.BgpvpnPortAssociateV2Route.new;
+  final BgpvpnPortAssociateV2RouteArgs = module_index.BgpvpnPortAssociateV2Route.new;
+  final BgpvpnPortAssociateV2State = module_index.BgpvpnPortAssociateV2State.new;
+  final BgpvpnPortAssociateV2StateArgs = module_index.BgpvpnPortAssociateV2State.new;
   final BgpvpnRouterAssociateV2 = module_index.BgpvpnRouterAssociateV2.new;
-  final BgpvpnRouterAssociateV2Args =
-      module_index.BgpvpnRouterAssociateV2Args.new;
-  final BgpvpnRouterAssociateV2State =
-      module_index.BgpvpnRouterAssociateV2State.new;
-  final BgpvpnRouterAssociateV2StateArgs =
-      module_index.BgpvpnRouterAssociateV2State.new;
+  final BgpvpnRouterAssociateV2Args = module_index.BgpvpnRouterAssociateV2Args.new;
+  final BgpvpnRouterAssociateV2State = module_index.BgpvpnRouterAssociateV2State.new;
+  final BgpvpnRouterAssociateV2StateArgs = module_index.BgpvpnRouterAssociateV2State.new;
   final BgpvpnV2 = module_index.BgpvpnV2.new;
   final BgpvpnV2Args = module_index.BgpvpnV2Args.new;
   final BgpvpnV2State = module_index.BgpvpnV2State.new;
@@ -535,14 +494,12 @@ class _IndexModuleNamespace {
   final TaasTapMirrorV2 = module_index.TaasTapMirrorV2.new;
   final TaasTapMirrorV2Args = module_index.TaasTapMirrorV2Args.new;
   final TaasTapMirrorV2Directions = module_index.TaasTapMirrorV2Directions.new;
-  final TaasTapMirrorV2DirectionsArgs =
-      module_index.TaasTapMirrorV2Directions.new;
+  final TaasTapMirrorV2DirectionsArgs = module_index.TaasTapMirrorV2Directions.new;
   final TaasTapMirrorV2State = module_index.TaasTapMirrorV2State.new;
   final TaasTapMirrorV2StateArgs = module_index.TaasTapMirrorV2State.new;
   final WorkflowWorkflowV2Args = module_index.WorkflowWorkflowV2Args.new;
   final WorkflowWorkflowV2Result = module_index.WorkflowWorkflowV2Result.new;
-  final WorkflowWorkflowV2ResultArgs =
-      module_index.WorkflowWorkflowV2Result.new;
+  final WorkflowWorkflowV2ResultArgs = module_index.WorkflowWorkflowV2Result.new;
   final getFwGroupV2 = module_index.getFwGroupV2;
   final getFwPolicyV2 = module_index.getFwPolicyV2;
   final getFwRuleV2 = module_index.getFwRuleV2;
@@ -613,54 +570,38 @@ class _LoadbalancerModuleNamespace {
   final GetFlavorV2Result = module_loadbalancer.GetFlavorV2Result.new;
   final GetFlavorV2ResultArgs = module_loadbalancer.GetFlavorV2Result.new;
   final GetFlavorprofileV2Args = module_loadbalancer.GetFlavorprofileV2Args.new;
-  final GetFlavorprofileV2Result =
-      module_loadbalancer.GetFlavorprofileV2Result.new;
-  final GetFlavorprofileV2ResultArgs =
-      module_loadbalancer.GetFlavorprofileV2Result.new;
-  final GetLbFlavorDeprecatedArgs =
-      module_loadbalancer.GetLbFlavorDeprecatedArgs.new;
-  final GetLbFlavorDeprecatedResult =
-      module_loadbalancer.GetLbFlavorDeprecatedResult.new;
-  final GetLbFlavorDeprecatedResultArgs =
-      module_loadbalancer.GetLbFlavorDeprecatedResult.new;
+  final GetFlavorprofileV2Result = module_loadbalancer.GetFlavorprofileV2Result.new;
+  final GetFlavorprofileV2ResultArgs = module_loadbalancer.GetFlavorprofileV2Result.new;
+  final GetLbFlavorDeprecatedArgs = module_loadbalancer.GetLbFlavorDeprecatedArgs.new;
+  final GetLbFlavorDeprecatedResult = module_loadbalancer.GetLbFlavorDeprecatedResult.new;
+  final GetLbFlavorDeprecatedResultArgs = module_loadbalancer.GetLbFlavorDeprecatedResult.new;
   final GetListenerV2Args = module_loadbalancer.GetListenerV2Args.new;
   final GetListenerV2L7policy = module_loadbalancer.GetListenerV2L7policy.new;
-  final GetListenerV2L7policyArgs =
-      module_loadbalancer.GetListenerV2L7policy.new;
-  final GetListenerV2Loadbalancer =
-      module_loadbalancer.GetListenerV2Loadbalancer.new;
-  final GetListenerV2LoadbalancerArgs =
-      module_loadbalancer.GetListenerV2Loadbalancer.new;
+  final GetListenerV2L7policyArgs = module_loadbalancer.GetListenerV2L7policy.new;
+  final GetListenerV2Loadbalancer = module_loadbalancer.GetListenerV2Loadbalancer.new;
+  final GetListenerV2LoadbalancerArgs = module_loadbalancer.GetListenerV2Loadbalancer.new;
   final GetListenerV2Pool = module_loadbalancer.GetListenerV2Pool.new;
   final GetListenerV2PoolArgs = module_loadbalancer.GetListenerV2Pool.new;
   final GetListenerV2Result = module_loadbalancer.GetListenerV2Result.new;
   final GetListenerV2ResultArgs = module_loadbalancer.GetListenerV2Result.new;
   final GetLoadbalancerV2Args = module_loadbalancer.GetLoadbalancerV2Args.new;
-  final GetLoadbalancerV2Listener =
-      module_loadbalancer.GetLoadbalancerV2Listener.new;
-  final GetLoadbalancerV2ListenerArgs =
-      module_loadbalancer.GetLoadbalancerV2Listener.new;
+  final GetLoadbalancerV2Listener = module_loadbalancer.GetLoadbalancerV2Listener.new;
+  final GetLoadbalancerV2ListenerArgs = module_loadbalancer.GetLoadbalancerV2Listener.new;
   final GetLoadbalancerV2Pool = module_loadbalancer.GetLoadbalancerV2Pool.new;
-  final GetLoadbalancerV2PoolArgs =
-      module_loadbalancer.GetLoadbalancerV2Pool.new;
-  final GetLoadbalancerV2Result =
-      module_loadbalancer.GetLoadbalancerV2Result.new;
-  final GetLoadbalancerV2ResultArgs =
-      module_loadbalancer.GetLoadbalancerV2Result.new;
+  final GetLoadbalancerV2PoolArgs = module_loadbalancer.GetLoadbalancerV2Pool.new;
+  final GetLoadbalancerV2Result = module_loadbalancer.GetLoadbalancerV2Result.new;
+  final GetLoadbalancerV2ResultArgs = module_loadbalancer.GetLoadbalancerV2Result.new;
   final GetPoolV2Args = module_loadbalancer.GetPoolV2Args.new;
   final GetPoolV2Listener = module_loadbalancer.GetPoolV2Listener.new;
   final GetPoolV2ListenerArgs = module_loadbalancer.GetPoolV2Listener.new;
   final GetPoolV2Loadbalancer = module_loadbalancer.GetPoolV2Loadbalancer.new;
-  final GetPoolV2LoadbalancerArgs =
-      module_loadbalancer.GetPoolV2Loadbalancer.new;
+  final GetPoolV2LoadbalancerArgs = module_loadbalancer.GetPoolV2Loadbalancer.new;
   final GetPoolV2Member = module_loadbalancer.GetPoolV2Member.new;
   final GetPoolV2MemberArgs = module_loadbalancer.GetPoolV2Member.new;
   final GetPoolV2Result = module_loadbalancer.GetPoolV2Result.new;
   final GetPoolV2ResultArgs = module_loadbalancer.GetPoolV2Result.new;
-  final GetPoolV2SessionPersistence =
-      module_loadbalancer.GetPoolV2SessionPersistence.new;
-  final GetPoolV2SessionPersistenceArgs =
-      module_loadbalancer.GetPoolV2SessionPersistence.new;
+  final GetPoolV2SessionPersistence = module_loadbalancer.GetPoolV2SessionPersistence.new;
+  final GetPoolV2SessionPersistenceArgs = module_loadbalancer.GetPoolV2SessionPersistence.new;
   final L7PolicyV2 = module_loadbalancer.L7PolicyV2.new;
   final L7PolicyV2Args = module_loadbalancer.L7PolicyV2Args.new;
   final L7PolicyV2State = module_loadbalancer.L7PolicyV2State.new;
@@ -724,10 +665,8 @@ class _NetworkingModuleNamespace {
   final BgpPeerV2State = module_networking.BgpPeerV2State.new;
   final BgpPeerV2StateArgs = module_networking.BgpPeerV2State.new;
   final BgpSpeakerV2 = module_networking.BgpSpeakerV2.new;
-  final BgpSpeakerV2AdvertisedRoute =
-      module_networking.BgpSpeakerV2AdvertisedRoute.new;
-  final BgpSpeakerV2AdvertisedRouteArgs =
-      module_networking.BgpSpeakerV2AdvertisedRoute.new;
+  final BgpSpeakerV2AdvertisedRoute = module_networking.BgpSpeakerV2AdvertisedRoute.new;
+  final BgpSpeakerV2AdvertisedRouteArgs = module_networking.BgpSpeakerV2AdvertisedRoute.new;
   final BgpSpeakerV2Args = module_networking.BgpSpeakerV2Args.new;
   final BgpSpeakerV2State = module_networking.BgpSpeakerV2State.new;
   final BgpSpeakerV2StateArgs = module_networking.BgpSpeakerV2State.new;
@@ -735,10 +674,8 @@ class _NetworkingModuleNamespace {
   final FloatingIpArgs = module_networking.FloatingIpArgs.new;
   final FloatingIpAssociate = module_networking.FloatingIpAssociate.new;
   final FloatingIpAssociateArgs = module_networking.FloatingIpAssociateArgs.new;
-  final FloatingIpAssociateState =
-      module_networking.FloatingIpAssociateState.new;
-  final FloatingIpAssociateStateArgs =
-      module_networking.FloatingIpAssociateState.new;
+  final FloatingIpAssociateState = module_networking.FloatingIpAssociateState.new;
+  final FloatingIpAssociateStateArgs = module_networking.FloatingIpAssociateState.new;
   final FloatingIpState = module_networking.FloatingIpState.new;
   final FloatingIpStateArgs = module_networking.FloatingIpState.new;
   final GetAddressScopeArgs = module_networking.GetAddressScopeArgs.new;
@@ -752,39 +689,27 @@ class _NetworkingModuleNamespace {
   final GetNetworkResultArgs = module_networking.GetNetworkResult.new;
   final GetNetworkSegment = module_networking.GetNetworkSegment.new;
   final GetNetworkSegmentArgs = module_networking.GetNetworkSegment.new;
-  final GetPortAllowedAddressPair =
-      module_networking.GetPortAllowedAddressPair.new;
-  final GetPortAllowedAddressPairArgs =
-      module_networking.GetPortAllowedAddressPair.new;
+  final GetPortAllowedAddressPair = module_networking.GetPortAllowedAddressPair.new;
+  final GetPortAllowedAddressPairArgs = module_networking.GetPortAllowedAddressPair.new;
   final GetPortArgs = module_networking.GetPortArgs.new;
   final GetPortBinding = module_networking.GetPortBinding.new;
   final GetPortBindingArgs = module_networking.GetPortBinding.new;
   final GetPortExtraDhcpOption = module_networking.GetPortExtraDhcpOption.new;
-  final GetPortExtraDhcpOptionArgs =
-      module_networking.GetPortExtraDhcpOption.new;
+  final GetPortExtraDhcpOptionArgs = module_networking.GetPortExtraDhcpOption.new;
   final GetPortIdsArgs = module_networking.GetPortIdsArgs.new;
   final GetPortIdsResult = module_networking.GetPortIdsResult.new;
   final GetPortIdsResultArgs = module_networking.GetPortIdsResult.new;
   final GetPortResult = module_networking.GetPortResult.new;
   final GetPortResultArgs = module_networking.GetPortResult.new;
-  final GetQosBandwidthLimitRuleArgs =
-      module_networking.GetQosBandwidthLimitRuleArgs.new;
-  final GetQosBandwidthLimitRuleResult =
-      module_networking.GetQosBandwidthLimitRuleResult.new;
-  final GetQosBandwidthLimitRuleResultArgs =
-      module_networking.GetQosBandwidthLimitRuleResult.new;
-  final GetQosDscpMarkingRuleArgs =
-      module_networking.GetQosDscpMarkingRuleArgs.new;
-  final GetQosDscpMarkingRuleResult =
-      module_networking.GetQosDscpMarkingRuleResult.new;
-  final GetQosDscpMarkingRuleResultArgs =
-      module_networking.GetQosDscpMarkingRuleResult.new;
-  final GetQosMinimumBandwidthRuleArgs =
-      module_networking.GetQosMinimumBandwidthRuleArgs.new;
-  final GetQosMinimumBandwidthRuleResult =
-      module_networking.GetQosMinimumBandwidthRuleResult.new;
-  final GetQosMinimumBandwidthRuleResultArgs =
-      module_networking.GetQosMinimumBandwidthRuleResult.new;
+  final GetQosBandwidthLimitRuleArgs = module_networking.GetQosBandwidthLimitRuleArgs.new;
+  final GetQosBandwidthLimitRuleResult = module_networking.GetQosBandwidthLimitRuleResult.new;
+  final GetQosBandwidthLimitRuleResultArgs = module_networking.GetQosBandwidthLimitRuleResult.new;
+  final GetQosDscpMarkingRuleArgs = module_networking.GetQosDscpMarkingRuleArgs.new;
+  final GetQosDscpMarkingRuleResult = module_networking.GetQosDscpMarkingRuleResult.new;
+  final GetQosDscpMarkingRuleResultArgs = module_networking.GetQosDscpMarkingRuleResult.new;
+  final GetQosMinimumBandwidthRuleArgs = module_networking.GetQosMinimumBandwidthRuleArgs.new;
+  final GetQosMinimumBandwidthRuleResult = module_networking.GetQosMinimumBandwidthRuleResult.new;
+  final GetQosMinimumBandwidthRuleResultArgs = module_networking.GetQosMinimumBandwidthRuleResult.new;
   final GetQosPolicyArgs = module_networking.GetQosPolicyArgs.new;
   final GetQosPolicyResult = module_networking.GetQosPolicyResult.new;
   final GetQosPolicyResultArgs = module_networking.GetQosPolicyResult.new;
@@ -792,10 +717,8 @@ class _NetworkingModuleNamespace {
   final GetQuotaV2Result = module_networking.GetQuotaV2Result.new;
   final GetQuotaV2ResultArgs = module_networking.GetQuotaV2Result.new;
   final GetRouterArgs = module_networking.GetRouterArgs.new;
-  final GetRouterExternalFixedIp =
-      module_networking.GetRouterExternalFixedIp.new;
-  final GetRouterExternalFixedIpArgs =
-      module_networking.GetRouterExternalFixedIp.new;
+  final GetRouterExternalFixedIp = module_networking.GetRouterExternalFixedIp.new;
+  final GetRouterExternalFixedIpArgs = module_networking.GetRouterExternalFixedIp.new;
   final GetRouterResult = module_networking.GetRouterResult.new;
   final GetRouterResultArgs = module_networking.GetRouterResult.new;
   final GetRouterRoute = module_networking.GetRouterRoute.new;
@@ -807,8 +730,7 @@ class _NetworkingModuleNamespace {
   final GetSegmentV2Result = module_networking.GetSegmentV2Result.new;
   final GetSegmentV2ResultArgs = module_networking.GetSegmentV2Result.new;
   final GetSubnetAllocationPool = module_networking.GetSubnetAllocationPool.new;
-  final GetSubnetAllocationPoolArgs =
-      module_networking.GetSubnetAllocationPool.new;
+  final GetSubnetAllocationPoolArgs = module_networking.GetSubnetAllocationPool.new;
   final GetSubnetArgs = module_networking.GetSubnetArgs.new;
   final GetSubnetHostRoute = module_networking.GetSubnetHostRoute.new;
   final GetSubnetHostRouteArgs = module_networking.GetSubnetHostRoute.new;
@@ -833,8 +755,7 @@ class _NetworkingModuleNamespace {
   final NetworkStateArgs = module_networking.NetworkState.new;
   final Port = module_networking.Port.new;
   final PortAllowedAddressPair = module_networking.PortAllowedAddressPair.new;
-  final PortAllowedAddressPairArgs =
-      module_networking.PortAllowedAddressPair.new;
+  final PortAllowedAddressPairArgs = module_networking.PortAllowedAddressPair.new;
   final PortArgs = module_networking.PortArgs.new;
   final PortBinding = module_networking.PortBinding.new;
   final PortBindingArgs = module_networking.PortBinding.new;
@@ -847,33 +768,23 @@ class _NetworkingModuleNamespace {
   final PortForwardingV2State = module_networking.PortForwardingV2State.new;
   final PortForwardingV2StateArgs = module_networking.PortForwardingV2State.new;
   final PortSecGroupAssociate = module_networking.PortSecGroupAssociate.new;
-  final PortSecGroupAssociateArgs =
-      module_networking.PortSecGroupAssociateArgs.new;
-  final PortSecGroupAssociateState =
-      module_networking.PortSecGroupAssociateState.new;
-  final PortSecGroupAssociateStateArgs =
-      module_networking.PortSecGroupAssociateState.new;
+  final PortSecGroupAssociateArgs = module_networking.PortSecGroupAssociateArgs.new;
+  final PortSecGroupAssociateState = module_networking.PortSecGroupAssociateState.new;
+  final PortSecGroupAssociateStateArgs = module_networking.PortSecGroupAssociateState.new;
   final PortState = module_networking.PortState.new;
   final PortStateArgs = module_networking.PortState.new;
   final QosBandwidthLimitRule = module_networking.QosBandwidthLimitRule.new;
-  final QosBandwidthLimitRuleArgs =
-      module_networking.QosBandwidthLimitRuleArgs.new;
-  final QosBandwidthLimitRuleState =
-      module_networking.QosBandwidthLimitRuleState.new;
-  final QosBandwidthLimitRuleStateArgs =
-      module_networking.QosBandwidthLimitRuleState.new;
+  final QosBandwidthLimitRuleArgs = module_networking.QosBandwidthLimitRuleArgs.new;
+  final QosBandwidthLimitRuleState = module_networking.QosBandwidthLimitRuleState.new;
+  final QosBandwidthLimitRuleStateArgs = module_networking.QosBandwidthLimitRuleState.new;
   final QosDscpMarkingRule = module_networking.QosDscpMarkingRule.new;
   final QosDscpMarkingRuleArgs = module_networking.QosDscpMarkingRuleArgs.new;
   final QosDscpMarkingRuleState = module_networking.QosDscpMarkingRuleState.new;
-  final QosDscpMarkingRuleStateArgs =
-      module_networking.QosDscpMarkingRuleState.new;
+  final QosDscpMarkingRuleStateArgs = module_networking.QosDscpMarkingRuleState.new;
   final QosMinimumBandwidthRule = module_networking.QosMinimumBandwidthRule.new;
-  final QosMinimumBandwidthRuleArgs =
-      module_networking.QosMinimumBandwidthRuleArgs.new;
-  final QosMinimumBandwidthRuleState =
-      module_networking.QosMinimumBandwidthRuleState.new;
-  final QosMinimumBandwidthRuleStateArgs =
-      module_networking.QosMinimumBandwidthRuleState.new;
+  final QosMinimumBandwidthRuleArgs = module_networking.QosMinimumBandwidthRuleArgs.new;
+  final QosMinimumBandwidthRuleState = module_networking.QosMinimumBandwidthRuleState.new;
+  final QosMinimumBandwidthRuleStateArgs = module_networking.QosMinimumBandwidthRuleState.new;
   final QosPolicy = module_networking.QosPolicy.new;
   final QosPolicyArgs = module_networking.QosPolicyArgs.new;
   final QosPolicyState = module_networking.QosPolicyState.new;
@@ -947,8 +858,7 @@ class _NetworkingModuleNamespace {
   final getPortIds = module_networking.getPortIds;
   final getQosBandwidthLimitRule = module_networking.getQosBandwidthLimitRule;
   final getQosDscpMarkingRule = module_networking.getQosDscpMarkingRule;
-  final getQosMinimumBandwidthRule =
-      module_networking.getQosMinimumBandwidthRule;
+  final getQosMinimumBandwidthRule = module_networking.getQosMinimumBandwidthRule;
   final getQosPolicy = module_networking.getQosPolicy;
   final getQuotaV2 = module_networking.getQuotaV2;
   final getRouter = module_networking.getRouter;
@@ -971,14 +881,11 @@ class _ObjectstorageModuleNamespace {
   final ContainerObject = module_objectstorage.ContainerObject.new;
   final ContainerObjectArgs = module_objectstorage.ContainerObjectArgs.new;
   final ContainerObjectState = module_objectstorage.ContainerObjectState.new;
-  final ContainerObjectStateArgs =
-      module_objectstorage.ContainerObjectState.new;
+  final ContainerObjectStateArgs = module_objectstorage.ContainerObjectState.new;
   final ContainerState = module_objectstorage.ContainerState.new;
   final ContainerStateArgs = module_objectstorage.ContainerState.new;
-  final ContainerVersioningLegacy =
-      module_objectstorage.ContainerVersioningLegacy.new;
-  final ContainerVersioningLegacyArgs =
-      module_objectstorage.ContainerVersioningLegacy.new;
+  final ContainerVersioningLegacy = module_objectstorage.ContainerVersioningLegacy.new;
+  final ContainerVersioningLegacyArgs = module_objectstorage.ContainerVersioningLegacy.new;
   final TempUrl = module_objectstorage.TempUrl.new;
   final TempUrlArgs = module_objectstorage.TempUrlArgs.new;
   final TempUrlState = module_objectstorage.TempUrlState.new;
@@ -1000,10 +907,8 @@ class _ProvidersModuleNamespace {
   final Openstack = module_providers.ProviderProvider.new;
   final OpenstackArgs = module_providers.ProviderArgs.new;
   final ProviderArgs = module_providers.ProviderArgs.new;
-  final ProviderTerraformConfigResult =
-      module_providers.ProviderTerraformConfigResult.new;
-  final ProviderTerraformConfigResultArgs =
-      module_providers.ProviderTerraformConfigResult.new;
+  final ProviderTerraformConfigResult = module_providers.ProviderTerraformConfigResult.new;
+  final ProviderTerraformConfigResultArgs = module_providers.ProviderTerraformConfigResult.new;
   final TerraformConfigArgs = module_providers.TerraformConfigArgs.new;
   final TerraformConfigResult = module_providers.TerraformConfigResult.new;
   final TerraformConfigResultArgs = module_providers.TerraformConfigResult.new;
@@ -1012,22 +917,15 @@ class _ProvidersModuleNamespace {
 
 class _SharedfilesystemModuleNamespace {
   _SharedfilesystemModuleNamespace();
-  final GetAvailbilityZonesArgs =
-      module_sharedfilesystem.GetAvailbilityZonesArgs.new;
-  final GetAvailbilityZonesResult =
-      module_sharedfilesystem.GetAvailbilityZonesResult.new;
-  final GetAvailbilityZonesResultArgs =
-      module_sharedfilesystem.GetAvailbilityZonesResult.new;
+  final GetAvailbilityZonesArgs = module_sharedfilesystem.GetAvailbilityZonesArgs.new;
+  final GetAvailbilityZonesResult = module_sharedfilesystem.GetAvailbilityZonesResult.new;
+  final GetAvailbilityZonesResultArgs = module_sharedfilesystem.GetAvailbilityZonesResult.new;
   final GetShareArgs = module_sharedfilesystem.GetShareArgs.new;
-  final GetShareExportLocation =
-      module_sharedfilesystem.GetShareExportLocation.new;
-  final GetShareExportLocationArgs =
-      module_sharedfilesystem.GetShareExportLocation.new;
+  final GetShareExportLocation = module_sharedfilesystem.GetShareExportLocation.new;
+  final GetShareExportLocationArgs = module_sharedfilesystem.GetShareExportLocation.new;
   final GetShareNetworkArgs = module_sharedfilesystem.GetShareNetworkArgs.new;
-  final GetShareNetworkResult =
-      module_sharedfilesystem.GetShareNetworkResult.new;
-  final GetShareNetworkResultArgs =
-      module_sharedfilesystem.GetShareNetworkResult.new;
+  final GetShareNetworkResult = module_sharedfilesystem.GetShareNetworkResult.new;
+  final GetShareNetworkResultArgs = module_sharedfilesystem.GetShareNetworkResult.new;
   final GetShareResult = module_sharedfilesystem.GetShareResult.new;
   final GetShareResultArgs = module_sharedfilesystem.GetShareResult.new;
   final GetSnapshotArgs = module_sharedfilesystem.GetSnapshotArgs.new;
@@ -1036,8 +934,7 @@ class _SharedfilesystemModuleNamespace {
   final SecurityService = module_sharedfilesystem.SecurityService.new;
   final SecurityServiceArgs = module_sharedfilesystem.SecurityServiceArgs.new;
   final SecurityServiceState = module_sharedfilesystem.SecurityServiceState.new;
-  final SecurityServiceStateArgs =
-      module_sharedfilesystem.SecurityServiceState.new;
+  final SecurityServiceStateArgs = module_sharedfilesystem.SecurityServiceState.new;
   final Share = module_sharedfilesystem.Share.new;
   final ShareAccess = module_sharedfilesystem.ShareAccess.new;
   final ShareAccessArgs = module_sharedfilesystem.ShareAccessArgs.new;
@@ -1045,8 +942,7 @@ class _SharedfilesystemModuleNamespace {
   final ShareAccessStateArgs = module_sharedfilesystem.ShareAccessState.new;
   final ShareArgs = module_sharedfilesystem.ShareArgs.new;
   final ShareExportLocation = module_sharedfilesystem.ShareExportLocation.new;
-  final ShareExportLocationArgs =
-      module_sharedfilesystem.ShareExportLocation.new;
+  final ShareExportLocationArgs = module_sharedfilesystem.ShareExportLocation.new;
   final ShareNetwork = module_sharedfilesystem.ShareNetwork.new;
   final ShareNetworkArgs = module_sharedfilesystem.ShareNetworkArgs.new;
   final ShareNetworkState = module_sharedfilesystem.ShareNetworkState.new;

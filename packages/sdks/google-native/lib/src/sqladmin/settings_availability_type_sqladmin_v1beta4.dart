@@ -13,8 +13,7 @@ enum SettingsAvailabilityTypeSqladminV1beta4 {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown SettingsAvailabilityTypeSqladminV1beta4 value: $value',
-    );
+    throw ArgumentError('Unknown SettingsAvailabilityTypeSqladminV1beta4 value: $value');
   }
 }
+

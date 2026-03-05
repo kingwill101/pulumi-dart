@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ThreatIntelligenceExternalReference {
   /// External reference description
   final pulumi.Input<String>? description;
-
   /// External reference ID
   final pulumi.Input<String>? externalId;
-
   /// External reference hashes
   final pulumi.Input<Map<String, String>>? hashes;
-
   /// External reference source name
   final pulumi.Input<String>? sourceName;
-
   /// External reference URL
   final pulumi.Input<String>? url;
 
@@ -43,37 +39,14 @@ class ThreatIntelligenceExternalReference {
     };
   }
 
-  factory ThreatIntelligenceExternalReference.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ThreatIntelligenceExternalReference.fromMap(Map<String, dynamic> map) {
     return ThreatIntelligenceExternalReference(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      externalId: (() {
-        final guardedValue = map['externalId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      hashes: (() {
-        final guardedValue = map['hashes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      sourceName: (() {
-        final guardedValue = map['sourceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      url: (() {
-        final guardedValue = map['url'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      externalId: (() { final guardedValue = map['externalId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      hashes: (() { final guardedValue = map['hashes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      sourceName: (() { final guardedValue = map['sourceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      url: (() { final guardedValue = map['url']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

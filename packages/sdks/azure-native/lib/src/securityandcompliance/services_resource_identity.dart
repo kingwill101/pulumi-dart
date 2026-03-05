@@ -9,19 +9,20 @@ class ServicesResourceIdentity {
 
   /// Creates a new [ServicesResourceIdentity].
   /// [type] Type of identity being specified, currently SystemAssigned and None are allowed.
-  ServicesResourceIdentity({this.type});
+  ServicesResourceIdentity({
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': ?type};
+    return <String, dynamic>{
+      'type': ?type,
+    };
   }
 
   factory ServicesResourceIdentity.fromMap(Map<String, dynamic> map) {
     return ServicesResourceIdentity(
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -7,14 +7,10 @@ import 'google_cloud_dataplex_v1_task_infrastructure_spec_response.dart';
 class GoogleCloudDataplexV1TaskNotebookTaskConfigResponse {
   /// Optional. Cloud Storage URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
   final pulumi.Input<List<String>> archiveUris;
-
   /// Optional. Cloud Storage URIs of files to be placed in the working directory of each executor.
   final pulumi.Input<List<String>> fileUris;
-
   /// Optional. Infrastructure specification for the execution.
-  final pulumi.Input<GoogleCloudDataplexV1TaskInfrastructureSpecResponse>
-  infrastructureSpec;
-
+  final pulumi.Input<GoogleCloudDataplexV1TaskInfrastructureSpecResponse> infrastructureSpec;
   /// Path to input notebook. This can be the Cloud Storage URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
   final pulumi.Input<String> notebook;
 
@@ -34,31 +30,18 @@ class GoogleCloudDataplexV1TaskNotebookTaskConfigResponse {
     return <String, dynamic>{
       'archiveUris': archiveUris,
       'fileUris': fileUris,
-      'infrastructureSpec':
-          pulumi.Input.mapInputValue<
-            GoogleCloudDataplexV1TaskInfrastructureSpecResponse,
-            Map<String, dynamic>
-          >(infrastructureSpec, (value) => value.toMap()),
+      'infrastructureSpec': pulumi.Input.mapInputValue<GoogleCloudDataplexV1TaskInfrastructureSpecResponse, Map<String, dynamic>>(infrastructureSpec, (value) => value.toMap()),
       'notebook': notebook,
     };
   }
 
-  factory GoogleCloudDataplexV1TaskNotebookTaskConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDataplexV1TaskNotebookTaskConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1TaskNotebookTaskConfigResponse(
-      archiveUris: pulumi.Input.fromValue(
-        (map['archiveUris'] as List).cast<String>(),
-      ),
-      fileUris: pulumi.Input.fromValue(
-        (map['fileUris'] as List).cast<String>(),
-      ),
-      infrastructureSpec: pulumi.Input.fromValue(
-        GoogleCloudDataplexV1TaskInfrastructureSpecResponse.fromMap(
-          (map['infrastructureSpec']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      archiveUris: pulumi.Input.fromValue((map['archiveUris'] as List).cast<String>()),
+      fileUris: pulumi.Input.fromValue((map['fileUris'] as List).cast<String>()),
+      infrastructureSpec: pulumi.Input.fromValue(GoogleCloudDataplexV1TaskInfrastructureSpecResponse.fromMap((map['infrastructureSpec']! as Map).cast<String, dynamic>())),
       notebook: pulumi.Input.fromValue(map['notebook'] as String),
     );
   }
 }
+

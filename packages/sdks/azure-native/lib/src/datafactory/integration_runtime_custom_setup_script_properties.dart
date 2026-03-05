@@ -7,7 +7,6 @@ import 'secure_string.dart';
 class IntegrationRuntimeCustomSetupScriptProperties {
   /// The URI of the Azure blob container that contains the custom setup script.
   final pulumi.Input<String>? blobContainerUri;
-
   /// The SAS token of the Azure blob container.
   final pulumi.Input<SecureString>? sasToken;
 
@@ -22,30 +21,15 @@ class IntegrationRuntimeCustomSetupScriptProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'blobContainerUri': ?blobContainerUri,
-      'sasToken':
-          ?pulumi.Input.mapOptionalInputValue<
-            SecureString,
-            Map<String, dynamic>
-          >(sasToken, (value) => value.toMap()),
+      'sasToken': ?pulumi.Input.mapOptionalInputValue<SecureString, Map<String, dynamic>>(sasToken, (value) => value.toMap()),
     };
   }
 
-  factory IntegrationRuntimeCustomSetupScriptProperties.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory IntegrationRuntimeCustomSetupScriptProperties.fromMap(Map<String, dynamic> map) {
     return IntegrationRuntimeCustomSetupScriptProperties(
-      blobContainerUri: (() {
-        final guardedValue = map['blobContainerUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sasToken: (() {
-        final guardedValue = map['sasToken'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SecureString.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
+      blobContainerUri: (() { final guardedValue = map['blobContainerUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sasToken: (() { final guardedValue = map['sasToken']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SecureString.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

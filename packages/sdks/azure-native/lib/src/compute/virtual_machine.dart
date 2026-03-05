@@ -17553,129 +17553,85 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 class VirtualMachine extends pulumi.CustomResource {
   /// Specifies additional capabilities enabled or disabled on the virtual machine.
-  late final pulumi.Output<AdditionalCapabilitiesResponse?>
-  additionalCapabilities;
-
+  late final pulumi.Output<AdditionalCapabilitiesResponse?> additionalCapabilities;
   /// Specifies the gallery applications that should be made available to the VM/VMSS.
   late final pulumi.Output<ApplicationProfileResponse?> applicationProfile;
-
   /// Specifies information about the availability set that the virtual machine should be assigned to. Virtual machines specified in the same availability set are allocated to different nodes to maximize availability. For more information about availability sets, see [Availability sets overview](https://docs.microsoft.com/azure/virtual-machines/availability-set-overview). For more information on Azure planned maintenance, see [Maintenance and updates for Virtual Machines in Azure](https://docs.microsoft.com/azure/virtual-machines/maintenance-and-updates). Currently, a VM can only be added to availability set at creation time. The availability set to which the VM is being added should be under the same resource group as the availability set resource. An existing VM cannot be added to an availability set. This property cannot exist along with a non-null properties.virtualMachineScaleSet reference.
   late final pulumi.Output<SubResourceResponse?> availabilitySet;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Specifies the billing related details of a Azure Spot virtual machine. Minimum api-version: 2019-03-01.
   late final pulumi.Output<BillingProfileResponse?> billingProfile;
-
   /// Specifies information about the capacity reservation that is used to allocate virtual machine. Minimum api-version: 2021-04-01.
-  late final pulumi.Output<CapacityReservationProfileResponse?>
-  capacityReservation;
-
+  late final pulumi.Output<CapacityReservationProfileResponse?> capacityReservation;
   /// Specifies the boot diagnostic settings state. Minimum api-version: 2015-06-15.
   late final pulumi.Output<DiagnosticsProfileResponse?> diagnosticsProfile;
-
   /// Etag is property returned in Create/Update/Get response of the VM, so that customer can supply it in the header to ensure optimistic updates.
   late final pulumi.Output<String> etag;
-
   /// Specifies the eviction policy for the Azure Spot virtual machine and Azure Spot scale set. For Azure Spot virtual machines, both 'Deallocate' and 'Delete' are supported and the minimum api-version is 2019-03-01. For Azure Spot scale sets, both 'Deallocate' and 'Delete' are supported and the minimum api-version is 2017-10-30-preview.
   late final pulumi.Output<String?> evictionPolicy;
-
   /// The extended location of the Virtual Machine.
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
-
   /// Specifies the time alloted for all extensions to start. The time duration should be between 15 minutes and 120 minutes (inclusive) and should be specified in ISO 8601 format. The default value is 90 minutes (PT1H30M). Minimum api-version: 2020-06-01.
   late final pulumi.Output<String?> extensionsTimeBudget;
-
   /// Specifies the hardware settings for the virtual machine.
   late final pulumi.Output<HardwareProfileResponse?> hardwareProfile;
-
   /// Specifies information about the dedicated host that the virtual machine resides in. Minimum api-version: 2018-10-01.
   late final pulumi.Output<SubResourceResponse?> host;
-
   /// Specifies information about the dedicated host group that the virtual machine resides in. **Note:** User cannot specify both host and hostGroup properties. Minimum api-version: 2020-06-01.
   late final pulumi.Output<SubResourceResponse?> hostGroup;
-
   /// The identity of the virtual machine, if configured.
   late final pulumi.Output<VirtualMachineIdentityResponse?> identity;
-
   /// The virtual machine instance view.
   late final pulumi.Output<VirtualMachineInstanceViewResponse> instanceView;
-
   /// Specifies that the image or disk that is being used was licensed on-premises. &lt;br&gt;&lt;br&gt; Possible values for Windows Server operating system are: &lt;br&gt;&lt;br&gt; Windows_Client &lt;br&gt;&lt;br&gt; Windows_Server &lt;br&gt;&lt;br&gt; Possible values for Linux Server operating system are: &lt;br&gt;&lt;br&gt; RHEL_BYOS (for RHEL) &lt;br&gt;&lt;br&gt; SLES_BYOS (for SUSE) &lt;br&gt;&lt;br&gt; For more information, see [Azure Hybrid Use Benefit for Windows Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) &lt;br&gt;&lt;br&gt; [Azure Hybrid Use Benefit for Linux Server](https://docs.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux) &lt;br&gt;&lt;br&gt; Minimum api-version: 2015-06-15
   late final pulumi.Output<String?> licenseType;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// ManagedBy is set to Virtual Machine Scale Set(VMSS) flex ARM resourceID, if the VM is part of the VMSS. This property is used by platform for internal resource group delete optimization.
   late final pulumi.Output<String> managedBy;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Specifies the network interfaces of the virtual machine.
   late final pulumi.Output<NetworkProfileResponse?> networkProfile;
-
   /// Specifies the operating system settings used while creating the virtual machine. Some of the settings cannot be changed once VM is provisioned.
   late final pulumi.Output<OSProfileResponse?> osProfile;
-
   /// Placement section specifies the user-defined constraints for virtual machine hardware placement. This property cannot be changed once VM is provisioned. Minimum api-version: 2024-11-01.
   late final pulumi.Output<PlacementResponse?> placement;
-
   /// Specifies information about the marketplace image used to create the virtual machine. This element is only used for marketplace images. Before you can use a marketplace image from an API, you must enable the image for programmatic use.  In the Azure portal, find the marketplace image that you want to use and then click **Want to deploy programmatically, Get Started -&gt;**. Enter any required information and then click **Save**.
   late final pulumi.Output<PlanResponse?> plan;
-
   /// Specifies the scale set logical fault domain into which the Virtual Machine will be created. By default, the Virtual Machine will by automatically assigned to a fault domain that best maintains balance across available fault domains. This is applicable only if the 'virtualMachineScaleSet' property of this Virtual Machine is set. The Virtual Machine Scale Set that is referenced, must have 'platformFaultDomainCount' greater than 1. This property cannot be updated once the Virtual Machine is created. Fault domain assignment can be viewed in the Virtual Machine Instance View. Minimum api‐version: 2020‐12‐01.
   late final pulumi.Output<int?> platformFaultDomain;
-
   /// Specifies the priority for the virtual machine. Minimum api-version: 2019-03-01
   late final pulumi.Output<String?> priority;
-
   /// The provisioning state, which only appears in the response.
   late final pulumi.Output<String> provisioningState;
-
   /// Specifies information about the proximity placement group that the virtual machine should be assigned to. Minimum api-version: 2018-04-01.
   late final pulumi.Output<SubResourceResponse?> proximityPlacementGroup;
-
   /// The virtual machine child extension resources.
   late final pulumi.Output<List<Map<String, dynamic>>> resources;
-
   /// Specifies Redeploy, Reboot and ScheduledEventsAdditionalPublishingTargets Scheduled Event related configurations for the virtual machine.
-  late final pulumi.Output<ScheduledEventsPolicyResponse?>
-  scheduledEventsPolicy;
-
+  late final pulumi.Output<ScheduledEventsPolicyResponse?> scheduledEventsPolicy;
   /// Specifies Scheduled Event related configurations.
-  late final pulumi.Output<ScheduledEventsProfileResponse?>
-  scheduledEventsProfile;
-
+  late final pulumi.Output<ScheduledEventsProfileResponse?> scheduledEventsProfile;
   /// Specifies the Security related profile settings for the virtual machine.
   late final pulumi.Output<SecurityProfileResponse?> securityProfile;
-
   /// Specifies the storage settings for the virtual machine disks.
   late final pulumi.Output<StorageProfileResponse?> storageProfile;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Specifies the time at which the Virtual Machine resource was created. Minimum api-version: 2021-11-01.
   late final pulumi.Output<String> timeCreated;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// UserData for the VM, which must be base-64 encoded. Customer should not pass any secrets in here. Minimum api-version: 2021-03-01.
   late final pulumi.Output<String?> userData;
-
   /// Specifies information about the virtual machine scale set that the virtual machine should be assigned to. Virtual machines specified in the same virtual machine scale set are allocated to different nodes to maximize availability. Currently, a VM can only be added to virtual machine scale set at creation time. An existing VM cannot be added to a virtual machine scale set. This property cannot exist along with a non-null properties.availabilitySet reference. Minimum api‐version: 2019‐03‐01.
   late final pulumi.Output<SubResourceResponse?> virtualMachineScaleSet;
-
   /// Specifies the VM unique ID which is a 128-bits identifier that is encoded and stored in all Azure IaaS VMs SMBIOS and can be read using platform BIOS commands.
   late final pulumi.Output<String> vmId;
-
   /// The availability zones.
   late final pulumi.Output<List<String>?> zones;
 
@@ -17688,257 +17644,50 @@ class VirtualMachine extends pulumi.CustomResource {
     VirtualMachineArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:compute:VirtualMachine',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    additionalCapabilities = registerOutput<AdditionalCapabilitiesResponse?>(
-      'additionalCapabilities',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AdditionalCapabilitiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    applicationProfile = registerOutput<ApplicationProfileResponse?>(
-      'applicationProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApplicationProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    availabilitySet = registerOutput<SubResourceResponse?>(
-      'availabilitySet',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SubResourceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure-native:compute:VirtualMachine',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    additionalCapabilities = registerOutput<AdditionalCapabilitiesResponse?>('additionalCapabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AdditionalCapabilitiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    applicationProfile = registerOutput<ApplicationProfileResponse?>('applicationProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    availabilitySet = registerOutput<SubResourceResponse?>('availabilitySet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    billingProfile = registerOutput<BillingProfileResponse?>(
-      'billingProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BillingProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    capacityReservation = registerOutput<CapacityReservationProfileResponse?>(
-      'capacityReservation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CapacityReservationProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    diagnosticsProfile = registerOutput<DiagnosticsProfileResponse?>(
-      'diagnosticsProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DiagnosticsProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    billingProfile = registerOutput<BillingProfileResponse?>('billingProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BillingProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    capacityReservation = registerOutput<CapacityReservationProfileResponse?>('capacityReservation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CapacityReservationProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    diagnosticsProfile = registerOutput<DiagnosticsProfileResponse?>('diagnosticsProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DiagnosticsProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     evictionPolicy = registerOutput<String?>('evictionPolicy');
-    extendedLocation = registerOutput<ExtendedLocationResponse?>(
-      'extendedLocation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExtendedLocationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     extensionsTimeBudget = registerOutput<String?>('extensionsTimeBudget');
-    hardwareProfile = registerOutput<HardwareProfileResponse?>(
-      'hardwareProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HardwareProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    host = registerOutput<SubResourceResponse?>(
-      'host',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SubResourceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    hostGroup = registerOutput<SubResourceResponse?>(
-      'hostGroup',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SubResourceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    identity = registerOutput<VirtualMachineIdentityResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VirtualMachineIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    instanceView = registerOutput<VirtualMachineInstanceViewResponse>(
-      'instanceView',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VirtualMachineInstanceViewResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    hardwareProfile = registerOutput<HardwareProfileResponse?>('hardwareProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HardwareProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    host = registerOutput<SubResourceResponse?>('host', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    hostGroup = registerOutput<SubResourceResponse?>('hostGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<VirtualMachineIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    instanceView = registerOutput<VirtualMachineInstanceViewResponse>('instanceView', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineInstanceViewResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     licenseType = registerOutput<String?>('licenseType');
     location = registerOutput<String>('location');
     managedBy = registerOutput<String>('managedBy');
     this.name = registerOutput<String>('name');
-    networkProfile = registerOutput<NetworkProfileResponse?>(
-      'networkProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NetworkProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    osProfile = registerOutput<OSProfileResponse?>(
-      'osProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return OSProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    placement = registerOutput<PlacementResponse?>(
-      'placement',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PlacementResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    plan = registerOutput<PlanResponse?>(
-      'plan',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PlanResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    networkProfile = registerOutput<NetworkProfileResponse?>('networkProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    osProfile = registerOutput<OSProfileResponse?>('osProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OSProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    placement = registerOutput<PlacementResponse?>('placement', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PlacementResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    plan = registerOutput<PlanResponse?>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PlanResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     platformFaultDomain = registerOutput<int?>('platformFaultDomain');
     priority = registerOutput<String?>('priority');
     provisioningState = registerOutput<String>('provisioningState');
-    proximityPlacementGroup = registerOutput<SubResourceResponse?>(
-      'proximityPlacementGroup',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SubResourceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    proximityPlacementGroup = registerOutput<SubResourceResponse?>('proximityPlacementGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resources = registerOutput<List<Map<String, dynamic>>>('resources');
-    scheduledEventsPolicy = registerOutput<ScheduledEventsPolicyResponse?>(
-      'scheduledEventsPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ScheduledEventsPolicyResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    scheduledEventsProfile = registerOutput<ScheduledEventsProfileResponse?>(
-      'scheduledEventsProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ScheduledEventsProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    securityProfile = registerOutput<SecurityProfileResponse?>(
-      'securityProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SecurityProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    storageProfile = registerOutput<StorageProfileResponse?>(
-      'storageProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return StorageProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    scheduledEventsPolicy = registerOutput<ScheduledEventsPolicyResponse?>('scheduledEventsPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduledEventsPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    scheduledEventsProfile = registerOutput<ScheduledEventsProfileResponse?>('scheduledEventsProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduledEventsProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    securityProfile = registerOutput<SecurityProfileResponse?>('securityProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    storageProfile = registerOutput<StorageProfileResponse?>('storageProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StorageProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     timeCreated = registerOutput<String>('timeCreated');
     type = registerOutput<String>('type');
     userData = registerOutput<String?>('userData');
-    virtualMachineScaleSet = registerOutput<SubResourceResponse?>(
-      'virtualMachineScaleSet',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SubResourceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    virtualMachineScaleSet = registerOutput<SubResourceResponse?>('virtualMachineScaleSet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vmId = registerOutput<String>('vmId');
     zones = registerOutput<List<String>?>('zones');
   }

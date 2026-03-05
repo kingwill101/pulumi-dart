@@ -8,17 +8,20 @@ class GetInstanceNetworkConfigAuthorizedExternalNetwork {
 
   /// Creates a new [GetInstanceNetworkConfigAuthorizedExternalNetwork].
   /// [cidrRange] CIDR range for one authorized network of the instance.
-  GetInstanceNetworkConfigAuthorizedExternalNetwork({required this.cidrRange});
+  GetInstanceNetworkConfigAuthorizedExternalNetwork({
+    required this.cidrRange,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'cidrRange': cidrRange};
+    return <String, dynamic>{
+      'cidrRange': cidrRange,
+    };
   }
 
-  factory GetInstanceNetworkConfigAuthorizedExternalNetwork.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetInstanceNetworkConfigAuthorizedExternalNetwork.fromMap(Map<String, dynamic> map) {
     return GetInstanceNetworkConfigAuthorizedExternalNetwork(
       cidrRange: pulumi.Input.fromValue(map['cidrRange'] as String),
     );
   }
 }
+

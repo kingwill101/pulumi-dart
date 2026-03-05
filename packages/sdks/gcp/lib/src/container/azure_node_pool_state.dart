@@ -13,56 +13,39 @@ class AzureNodePoolState {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
-
   /// Autoscaler configuration for this node pool.
   final pulumi.Input<AzureNodePoolAutoscaling>? autoscaling;
-
   /// Optional. The Azure availability zone of the nodes in this nodepool. When unspecified, it defaults to `1`.
   final pulumi.Input<String>? azureAvailabilityZone;
-
   /// The azureCluster for the resource
   final pulumi.Input<String>? cluster;
-
   /// The node configuration of the node pool.
   final pulumi.Input<AzureNodePoolConfig>? config;
-
   /// Output only. The time at which this node pool was created.
   final pulumi.Input<String>? createTime;
   final pulumi.Input<Map<String, String>>? effectiveAnnotations;
-
   /// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
   final pulumi.Input<String>? etag;
-
   /// The location for the resource
   final pulumi.Input<String>? location;
-
   /// The Management configuration for this node pool.
   final pulumi.Input<AzureNodePoolManagement>? management;
-
   /// The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
   final pulumi.Input<AzureNodePoolMaxPodsConstraint>? maxPodsConstraint;
-
   /// The name of this resource.
   final pulumi.Input<String>? name;
-
   /// The project for the resource
   final pulumi.Input<String>? project;
-
   /// Output only. If set, there are currently pending changes to the node pool.
   final pulumi.Input<bool>? reconciling;
-
   /// Output only. The current state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
   final pulumi.Input<String>? state;
-
   /// The ARM ID of the subnet where the node pool VMs run. Make sure it's a subnet under the virtual network in the cluster configuration.
   final pulumi.Input<String>? subnetId;
-
   /// Output only. A globally unique identifier for the node pool.
   final pulumi.Input<String>? uid;
-
   /// Output only. The time at which this node pool was last updated.
   final pulumi.Input<String>? updateTime;
-
   /// The Kubernetes version (e.g. `1.19.10-gke.1000`) running on this node pool.
   final pulumi.Input<String>? version;
 
@@ -111,32 +94,16 @@ class AzureNodePoolState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'annotations': ?annotations,
-      'autoscaling':
-          ?pulumi.Input.mapOptionalInputValue<
-            AzureNodePoolAutoscaling,
-            Map<String, dynamic>
-          >(autoscaling, (value) => value.toMap()),
+      'autoscaling': ?pulumi.Input.mapOptionalInputValue<AzureNodePoolAutoscaling, Map<String, dynamic>>(autoscaling, (value) => value.toMap()),
       'azureAvailabilityZone': ?azureAvailabilityZone,
       'cluster': ?cluster,
-      'config':
-          ?pulumi.Input.mapOptionalInputValue<
-            AzureNodePoolConfig,
-            Map<String, dynamic>
-          >(config, (value) => value.toMap()),
+      'config': ?pulumi.Input.mapOptionalInputValue<AzureNodePoolConfig, Map<String, dynamic>>(config, (value) => value.toMap()),
       'createTime': ?createTime,
       'effectiveAnnotations': ?effectiveAnnotations,
       'etag': ?etag,
       'location': ?location,
-      'management':
-          ?pulumi.Input.mapOptionalInputValue<
-            AzureNodePoolManagement,
-            Map<String, dynamic>
-          >(management, (value) => value.toMap()),
-      'maxPodsConstraint':
-          ?pulumi.Input.mapOptionalInputValue<
-            AzureNodePoolMaxPodsConstraint,
-            Map<String, dynamic>
-          >(maxPodsConstraint, (value) => value.toMap()),
+      'management': ?pulumi.Input.mapOptionalInputValue<AzureNodePoolManagement, Map<String, dynamic>>(management, (value) => value.toMap()),
+      'maxPodsConstraint': ?pulumi.Input.mapOptionalInputValue<AzureNodePoolMaxPodsConstraint, Map<String, dynamic>>(maxPodsConstraint, (value) => value.toMap()),
       'name': ?name,
       'project': ?project,
       'reconciling': ?reconciling,
@@ -150,121 +117,26 @@ class AzureNodePoolState {
 
   factory AzureNodePoolState.fromMap(Map<String, dynamic> map) {
     return AzureNodePoolState(
-      annotations: (() {
-        final guardedValue = map['annotations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      autoscaling: (() {
-        final guardedValue = map['autoscaling'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AzureNodePoolAutoscaling.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      azureAvailabilityZone: (() {
-        final guardedValue = map['azureAvailabilityZone'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      cluster: (() {
-        final guardedValue = map['cluster'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      config: (() {
-        final guardedValue = map['config'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AzureNodePoolConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      effectiveAnnotations: (() {
-        final guardedValue = map['effectiveAnnotations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      etag: (() {
-        final guardedValue = map['etag'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      management: (() {
-        final guardedValue = map['management'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AzureNodePoolManagement.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      maxPodsConstraint: (() {
-        final guardedValue = map['maxPodsConstraint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AzureNodePoolMaxPodsConstraint.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      reconciling: (() {
-        final guardedValue = map['reconciling'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subnetId: (() {
-        final guardedValue = map['subnetId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      uid: (() {
-        final guardedValue = map['uid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      updateTime: (() {
-        final guardedValue = map['updateTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      autoscaling: (() { final guardedValue = map['autoscaling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureNodePoolAutoscaling.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      azureAvailabilityZone: (() { final guardedValue = map['azureAvailabilityZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      cluster: (() { final guardedValue = map['cluster']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      config: (() { final guardedValue = map['config']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureNodePoolConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      effectiveAnnotations: (() { final guardedValue = map['effectiveAnnotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      management: (() { final guardedValue = map['management']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureNodePoolManagement.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      maxPodsConstraint: (() { final guardedValue = map['maxPodsConstraint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureNodePoolMaxPodsConstraint.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      reconciling: (() { final guardedValue = map['reconciling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subnetId: (() { final guardedValue = map['subnetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      uid: (() { final guardedValue = map['uid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

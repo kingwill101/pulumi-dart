@@ -13,8 +13,7 @@ enum ResourceProviderCapabilitiesEffect {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ResourceProviderCapabilitiesEffect value: $value',
-    );
+    throw ArgumentError('Unknown ResourceProviderCapabilitiesEffect value: $value');
   }
 }
+

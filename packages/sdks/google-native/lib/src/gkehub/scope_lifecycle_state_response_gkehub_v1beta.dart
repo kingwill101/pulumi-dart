@@ -9,17 +9,20 @@ class ScopeLifecycleStateResponseGkehubV1beta {
 
   /// Creates a new [ScopeLifecycleStateResponseGkehubV1beta].
   /// [code] The current state of the scope resource.
-  ScopeLifecycleStateResponseGkehubV1beta({required this.code});
+  ScopeLifecycleStateResponseGkehubV1beta({
+    required this.code,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'code': code};
+    return <String, dynamic>{
+      'code': code,
+    };
   }
 
-  factory ScopeLifecycleStateResponseGkehubV1beta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ScopeLifecycleStateResponseGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return ScopeLifecycleStateResponseGkehubV1beta(
       code: pulumi.Input.fromValue(map['code'] as String),
     );
   }
 }
+

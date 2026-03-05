@@ -10,7 +10,6 @@ class GetRegionRouteEntriesArgs {
   /// ID of the CEN instance.
   final pulumi.Input<String> instanceId;
   final pulumi.Input<String>? outputFile;
-
   /// ID of the region.
   final pulumi.Input<String> regionId;
 
@@ -35,12 +34,9 @@ class GetRegionRouteEntriesArgs {
   factory GetRegionRouteEntriesArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionRouteEntriesArgs(
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       regionId: pulumi.Input.fromValue(map['regionId'] as String),
     );
   }
 }
+

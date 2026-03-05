@@ -10,10 +10,14 @@ class TCPSocketActionResponse {
 
   /// Creates a new [TCPSocketActionResponse].
   /// [type] The type of the action to take to perform the health check.
-  TCPSocketActionResponse({required this.type});
+  TCPSocketActionResponse({
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': type};
+    return <String, dynamic>{
+      'type': type,
+    };
   }
 
   factory TCPSocketActionResponse.fromMap(Map<String, dynamic> map) {
@@ -22,3 +26,4 @@ class TCPSocketActionResponse {
     );
   }
 }
+

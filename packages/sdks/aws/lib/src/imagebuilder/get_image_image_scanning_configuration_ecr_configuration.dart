@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetImageImageScanningConfigurationEcrConfiguration {
   /// Set of tags for Image Builder to apply to the output container image that that Amazon Inspector scans.
   final pulumi.Input<List<String>> containerTags;
-
   /// The name of the container repository that Amazon Inspector scans to identify findings for your container images.
   final pulumi.Input<String> repositoryName;
 
@@ -24,14 +23,11 @@ class GetImageImageScanningConfigurationEcrConfiguration {
     };
   }
 
-  factory GetImageImageScanningConfigurationEcrConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetImageImageScanningConfigurationEcrConfiguration.fromMap(Map<String, dynamic> map) {
     return GetImageImageScanningConfigurationEcrConfiguration(
-      containerTags: pulumi.Input.fromValue(
-        (map['containerTags'] as List).cast<String>(),
-      ),
+      containerTags: pulumi.Input.fromValue((map['containerTags'] as List).cast<String>()),
       repositoryName: pulumi.Input.fromValue(map['repositoryName'] as String),
     );
   }
 }
+

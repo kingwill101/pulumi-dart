@@ -178,10 +178,8 @@ import 'kv_namespace_state.dart';
 class KvNamespace extends pulumi.CustomResource {
   /// Namespace description information
   late final pulumi.Output<String> description;
-
   /// Namespace name. The name can contain letters, digits, hyphens (-), and underscores (_).
   late final pulumi.Output<String> namespace;
-
   /// The status of the resource
   late final pulumi.Output<String> status;
 
@@ -194,11 +192,11 @@ class KvNamespace extends pulumi.CustomResource {
     KvNamespaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dcdn/kvNamespace:KvNamespace',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dcdn/kvNamespace:KvNamespace',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String>('description');
     namespace = registerOutput<String>('namespace');
     status = registerOutput<String>('status');
@@ -222,11 +220,11 @@ class KvNamespace extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dcdn/kvNamespace:KvNamespace',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dcdn/kvNamespace:KvNamespace',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String>('description');
     namespace = registerOutput<String>('namespace');
     status = registerOutput<String>('status');

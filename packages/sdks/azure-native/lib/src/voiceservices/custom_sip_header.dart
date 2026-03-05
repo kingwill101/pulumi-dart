@@ -9,19 +9,20 @@ class CustomSipHeader {
 
   /// Creates a new [CustomSipHeader].
   /// [name] The name of the Custom SIP Header
-  CustomSipHeader({this.name});
+  CustomSipHeader({
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name};
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
   factory CustomSipHeader.fromMap(Map<String, dynamic> map) {
     return CustomSipHeader(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

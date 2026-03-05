@@ -7,34 +7,28 @@ class TopicIngestionDataSourceSettingsCloudStorage {
   /// Configuration for reading Cloud Storage data in Avro binary format. The
   /// bytes of each object will be set to the `data` field of a Pub/Sub message.
   final pulumi.Input<Map<String, dynamic>>? avroFormat;
-
   /// Cloud Storage bucket. The bucket name must be without any
   /// prefix like "gs://". See the bucket naming requirements:
   /// https://cloud.google.com/storage/docs/buckets#naming.
   final pulumi.Input<String> bucket;
-
   /// Glob pattern used to match objects that will be ingested. If unset, all
   /// objects will be ingested. See the supported patterns:
   /// https://cloud.google.com/storage/docs/json_api/v1/objects/list#list-objects-and-prefixes-using-glob
   final pulumi.Input<String>? matchGlob;
-
   /// The timestamp set in RFC3339 text format. If set, only objects with a
   /// larger or equal timestamp will be ingested. Unset by default, meaning
   /// all objects will be ingested.
   final pulumi.Input<String>? minimumObjectCreateTime;
-
   /// Configuration for reading Cloud Storage data written via Cloud Storage
   /// subscriptions(See https://cloud.google.com/pubsub/docs/cloudstorage). The
   /// data and attributes fields of the originally exported Pub/Sub message
   /// will be restored when publishing.
   final pulumi.Input<Map<String, dynamic>>? pubsubAvroFormat;
-
   /// Configuration for reading Cloud Storage data in text format. Each line of
   /// text as specified by the delimiter will be set to the `data` field of a
   /// Pub/Sub message.
   /// Structure is documented below.
-  final pulumi.Input<TopicIngestionDataSourceSettingsCloudStorageTextFormat>?
-  textFormat;
+  final pulumi.Input<TopicIngestionDataSourceSettingsCloudStorageTextFormat>? textFormat;
 
   /// Creates a new [TopicIngestionDataSourceSettingsCloudStorage].
   /// [avroFormat] Configuration for reading Cloud Storage data in Avro binary format. The
@@ -59,52 +53,19 @@ class TopicIngestionDataSourceSettingsCloudStorage {
       'matchGlob': ?matchGlob,
       'minimumObjectCreateTime': ?minimumObjectCreateTime,
       'pubsubAvroFormat': ?pubsubAvroFormat,
-      'textFormat':
-          ?pulumi.Input.mapOptionalInputValue<
-            TopicIngestionDataSourceSettingsCloudStorageTextFormat,
-            Map<String, dynamic>
-          >(textFormat, (value) => value.toMap()),
+      'textFormat': ?pulumi.Input.mapOptionalInputValue<TopicIngestionDataSourceSettingsCloudStorageTextFormat, Map<String, dynamic>>(textFormat, (value) => value.toMap()),
     };
   }
 
-  factory TopicIngestionDataSourceSettingsCloudStorage.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory TopicIngestionDataSourceSettingsCloudStorage.fromMap(Map<String, dynamic> map) {
     return TopicIngestionDataSourceSettingsCloudStorage(
-      avroFormat: (() {
-        final guardedValue = map['avroFormat'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      avroFormat: (() { final guardedValue = map['avroFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
       bucket: pulumi.Input.fromValue(map['bucket'] as String),
-      matchGlob: (() {
-        final guardedValue = map['matchGlob'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      minimumObjectCreateTime: (() {
-        final guardedValue = map['minimumObjectCreateTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pubsubAvroFormat: (() {
-        final guardedValue = map['pubsubAvroFormat'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      textFormat: (() {
-        final guardedValue = map['textFormat'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          TopicIngestionDataSourceSettingsCloudStorageTextFormat.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      matchGlob: (() { final guardedValue = map['matchGlob']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      minimumObjectCreateTime: (() { final guardedValue = map['minimumObjectCreateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pubsubAvroFormat: (() { final guardedValue = map['pubsubAvroFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
+      textFormat: (() { final guardedValue = map['textFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TopicIngestionDataSourceSettingsCloudStorageTextFormat.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

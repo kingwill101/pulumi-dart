@@ -9,32 +9,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ADLSGen2FolderDataSetArgs {
   /// The name of the share account.
   final pulumi.Input<String> accountName;
-
   /// The name of the dataSet.
   final pulumi.Input<String>? dataSetName;
-
   /// File system to which the folder belongs.
   final pulumi.Input<String> fileSystem;
-
   /// Folder path within the file system.
   final pulumi.Input<String> folderPath;
-
   /// Kind of data set.
   /// Expected value is 'AdlsGen2Folder'.
   final pulumi.Input<String> kind;
-
   /// Resource group of storage account
   final pulumi.Input<String> resourceGroup;
-
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the share to add the data set to.
   final pulumi.Input<String> shareName;
-
   /// Storage account name of the source data set
   final pulumi.Input<String> storageAccountName;
-
   /// Subscription id of storage account
   final pulumi.Input<String> subscriptionId;
 
@@ -80,23 +71,16 @@ class ADLSGen2FolderDataSetArgs {
   factory ADLSGen2FolderDataSetArgs.fromMap(Map<String, dynamic> map) {
     return ADLSGen2FolderDataSetArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
-      dataSetName: (() {
-        final guardedValue = map['dataSetName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dataSetName: (() { final guardedValue = map['dataSetName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       fileSystem: pulumi.Input.fromValue(map['fileSystem'] as String),
       folderPath: pulumi.Input.fromValue(map['folderPath'] as String),
       kind: pulumi.Input.fromValue(map['kind'] as String),
       resourceGroup: pulumi.Input.fromValue(map['resourceGroup'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       shareName: pulumi.Input.fromValue(map['shareName'] as String),
-      storageAccountName: pulumi.Input.fromValue(
-        map['storageAccountName'] as String,
-      ),
+      storageAccountName: pulumi.Input.fromValue(map['storageAccountName'] as String),
       subscriptionId: pulumi.Input.fromValue(map['subscriptionId'] as String),
     );
   }
 }
+

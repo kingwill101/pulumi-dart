@@ -20,3 +20,4 @@ enum MetricThresholdComparison {
     throw ArgumentError('Unknown MetricThresholdComparison value: $value');
   }
 }
+

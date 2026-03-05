@@ -5,11 +5,7 @@ import 'cluster_broker_node_group_info_connectivity_info_vpc_connectivity_client
 
 class ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthentication {
   /// Configuration block for specifying SASL client authentication. See client_authentication sasl Argument Reference below.
-  final pulumi.Input<
-    ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenticationSasl
-  >?
-  sasl;
-
+  final pulumi.Input<ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenticationSasl>? sasl;
   /// Configuration block for specifying TLS client authentication. See client_authentication tls Argument Reference below.
   final pulumi.Input<bool>? tls;
 
@@ -23,33 +19,16 @@ class ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenticat
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'sasl':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenticationSasl,
-            Map<String, dynamic>
-          >(sasl, (value) => value.toMap()),
+      'sasl': ?pulumi.Input.mapOptionalInputValue<ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenticationSasl, Map<String, dynamic>>(sasl, (value) => value.toMap()),
       'tls': ?tls,
     };
   }
 
-  factory ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthentication.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthentication.fromMap(Map<String, dynamic> map) {
     return ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthentication(
-      sasl: (() {
-        final guardedValue = map['sasl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenticationSasl.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      tls: (() {
-        final guardedValue = map['tls'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      sasl: (() { final guardedValue = map['sasl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenticationSasl.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      tls: (() { final guardedValue = map['tls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

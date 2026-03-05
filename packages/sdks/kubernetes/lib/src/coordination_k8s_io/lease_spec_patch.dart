@@ -6,22 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LeaseSpecPatch {
   /// acquireTime is a time when the current lease was acquired.
   final pulumi.Input<String>? acquireTime;
-
   /// holderIdentity contains the identity of the holder of a current lease. If Coordinated Leader Election is used, the holder identity must be equal to the elected LeaseCandidate.metadata.name field.
   final pulumi.Input<String>? holderIdentity;
-
   /// leaseDurationSeconds is a duration that candidates for a lease need to wait to force acquire it. This is measured against the time of last observed renewTime.
   final pulumi.Input<int>? leaseDurationSeconds;
-
   /// leaseTransitions is the number of transitions of a lease between holders.
   final pulumi.Input<int>? leaseTransitions;
-
   /// PreferredHolder signals to a lease holder that the lease has a more optimal holder and should be given up. This field can only be set if Strategy is also set.
   final pulumi.Input<String>? preferredHolder;
-
   /// renewTime is a time when the current holder of a lease has last updated the lease.
   final pulumi.Input<String>? renewTime;
-
   /// Strategy indicates the strategy for picking the leader for coordinated leader election. If the field is not specified, there is no active coordination for this lease. (Alpha) Using this field requires the CoordinatedLeaderElection feature gate to be enabled.
   final pulumi.Input<String>? strategy;
 
@@ -57,41 +51,14 @@ class LeaseSpecPatch {
 
   factory LeaseSpecPatch.fromMap(Map<String, dynamic> map) {
     return LeaseSpecPatch(
-      acquireTime: (() {
-        final guardedValue = map['acquireTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      holderIdentity: (() {
-        final guardedValue = map['holderIdentity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      leaseDurationSeconds: (() {
-        final guardedValue = map['leaseDurationSeconds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      leaseTransitions: (() {
-        final guardedValue = map['leaseTransitions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      preferredHolder: (() {
-        final guardedValue = map['preferredHolder'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      renewTime: (() {
-        final guardedValue = map['renewTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      strategy: (() {
-        final guardedValue = map['strategy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      acquireTime: (() { final guardedValue = map['acquireTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      holderIdentity: (() { final guardedValue = map['holderIdentity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      leaseDurationSeconds: (() { final guardedValue = map['leaseDurationSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      leaseTransitions: (() { final guardedValue = map['leaseTransitions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      preferredHolder: (() { final guardedValue = map['preferredHolder']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      renewTime: (() { final guardedValue = map['renewTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      strategy: (() { final guardedValue = map['strategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

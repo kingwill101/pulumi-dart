@@ -10,10 +10,14 @@ class QuotaScheduleScheduleListCondition {
 
   /// Creates a new [QuotaScheduleScheduleListCondition].
   /// [at] Effective time. The format is HH:mm, sample value: 00:00
-  QuotaScheduleScheduleListCondition({required this.at});
+  QuotaScheduleScheduleListCondition({
+    required this.at,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'at': at};
+    return <String, dynamic>{
+      'at': at,
+    };
   }
 
   factory QuotaScheduleScheduleListCondition.fromMap(Map<String, dynamic> map) {
@@ -22,3 +26,4 @@ class QuotaScheduleScheduleListCondition {
     );
   }
 }
+

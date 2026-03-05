@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGalleryImageVersionArgs {
   /// The expand expression to apply on the operation.
   final pulumi.Input<String>? expand;
-
   /// The name of the gallery image definition to be retrieved.
   final pulumi.Input<String> galleryImageName;
-
   /// The name of the gallery image version to be retrieved.
   final pulumi.Input<String> galleryImageVersionName;
-
   /// The name of the Shared Image Gallery.
   final pulumi.Input<String> galleryName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -48,21 +44,12 @@ class GetGalleryImageVersionArgs {
 
   factory GetGalleryImageVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetGalleryImageVersionArgs(
-      expand: (() {
-        final guardedValue = map['expand'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      galleryImageName: pulumi.Input.fromValue(
-        map['galleryImageName'] as String,
-      ),
-      galleryImageVersionName: pulumi.Input.fromValue(
-        map['galleryImageVersionName'] as String,
-      ),
+      expand: (() { final guardedValue = map['expand']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      galleryImageName: pulumi.Input.fromValue(map['galleryImageName'] as String),
+      galleryImageVersionName: pulumi.Input.fromValue(map['galleryImageVersionName'] as String),
       galleryName: pulumi.Input.fromValue(map['galleryName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

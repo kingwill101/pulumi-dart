@@ -9,11 +9,9 @@ class GetOpenApiProductsResult {
   final String id;
   final List<String> ids;
   final String? nameRegex;
-
   /// A list of name of Products.
   final List<String> names;
   final String? outputFile;
-
   /// A list of Product Entries. Each element contains the following attributes:
   final List<GetOpenApiProductsProduct> products;
 
@@ -40,11 +38,7 @@ class GetOpenApiProductsResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'products':
-          pulumi.Input.encodeList<
-            GetOpenApiProductsProduct,
-            Map<String, dynamic>
-          >(products, (value) => value.toMap()),
+      'products': pulumi.Input.encodeList<GetOpenApiProductsProduct, Map<String, dynamic>>(products, (value) => value.toMap()),
     };
   }
 
@@ -52,23 +46,11 @@ class GetOpenApiProductsResult {
     return GetOpenApiProductsResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      products: pulumi.Input.decodeList<GetOpenApiProductsProduct>(
-        map['products']!,
-        (value) => GetOpenApiProductsProduct.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      products: pulumi.Input.decodeList<GetOpenApiProductsProduct>(map['products']!, (value) => GetOpenApiProductsProduct.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

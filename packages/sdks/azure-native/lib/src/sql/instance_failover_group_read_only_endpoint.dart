@@ -9,21 +9,20 @@ class InstanceFailoverGroupReadOnlyEndpoint {
 
   /// Creates a new [InstanceFailoverGroupReadOnlyEndpoint].
   /// [failoverPolicy] Failover policy of the read-only endpoint for the failover group.
-  InstanceFailoverGroupReadOnlyEndpoint({this.failoverPolicy});
+  InstanceFailoverGroupReadOnlyEndpoint({
+    this.failoverPolicy,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'failoverPolicy': ?failoverPolicy};
+    return <String, dynamic>{
+      'failoverPolicy': ?failoverPolicy,
+    };
   }
 
-  factory InstanceFailoverGroupReadOnlyEndpoint.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InstanceFailoverGroupReadOnlyEndpoint.fromMap(Map<String, dynamic> map) {
     return InstanceFailoverGroupReadOnlyEndpoint(
-      failoverPolicy: (() {
-        final guardedValue = map['failoverPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      failoverPolicy: (() { final guardedValue = map['failoverPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

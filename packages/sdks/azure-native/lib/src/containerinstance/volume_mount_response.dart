@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VolumeMountResponse {
   /// The path within the container where the volume should be mounted. Must not contain colon (:).
   final pulumi.Input<String> mountPath;
-
   /// The name of the volume mount.
   final pulumi.Input<String> name;
-
   /// The flag indicating whether the volume mount is read-only.
   final pulumi.Input<bool>? readOnly;
 
@@ -35,11 +33,8 @@ class VolumeMountResponse {
     return VolumeMountResponse(
       mountPath: pulumi.Input.fromValue(map['mountPath'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      readOnly: (() {
-        final guardedValue = map['readOnly'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      readOnly: (() { final guardedValue = map['readOnly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

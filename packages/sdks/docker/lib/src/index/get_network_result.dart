@@ -7,22 +7,16 @@ import 'get_network_ipam_config.dart';
 class GetNetworkResult {
   /// The driver of the Docker network. Possible values are `bridge`, `host`, `overlay`, `macvlan`. See [network docs](https://docs.docker.com/network/#network-drivers) for more details.
   final String driver;
-
   /// The ID of this resource.
   final String id;
-
   /// If `true`, the network is internal.
   final bool internal;
-
   /// The IPAM configuration options
   final List<GetNetworkIpamConfig> ipamConfigs;
-
   /// The name of the Docker network.
   final String name;
-
   /// Only available with bridge networks. See [bridge options docs](https://docs.docker.com/engine/reference/commandline/network_create/#bridge-driver-options) for more details.
   final Map<String, String> options;
-
   /// Scope of the network. One of `swarm`, `global`, or `local`.
   final String scope;
 
@@ -49,11 +43,7 @@ class GetNetworkResult {
       'driver': driver,
       'id': id,
       'internal': internal,
-      'ipamConfigs':
-          pulumi.Input.encodeList<GetNetworkIpamConfig, Map<String, dynamic>>(
-            ipamConfigs,
-            (value) => value.toMap(),
-          ),
+      'ipamConfigs': pulumi.Input.encodeList<GetNetworkIpamConfig, Map<String, dynamic>>(ipamConfigs, (value) => value.toMap()),
       'name': name,
       'options': options,
       'scope': scope,
@@ -65,15 +55,11 @@ class GetNetworkResult {
       driver: map['driver'] as String,
       id: map['id'] as String,
       internal: map['internal'] as bool,
-      ipamConfigs: pulumi.Input.decodeList<GetNetworkIpamConfig>(
-        map['ipamConfigs']!,
-        (value) => GetNetworkIpamConfig.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      ipamConfigs: pulumi.Input.decodeList<GetNetworkIpamConfig>(map['ipamConfigs']!, (value) => GetNetworkIpamConfig.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       options: (map['options'] as Map).cast<String, String>(),
       scope: map['scope'] as String,
     );
   }
 }
+

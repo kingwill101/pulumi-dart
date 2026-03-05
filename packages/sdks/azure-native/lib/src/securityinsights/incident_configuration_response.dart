@@ -7,7 +7,6 @@ import 'grouping_configuration_response.dart';
 class IncidentConfigurationResponse {
   /// Create incidents from alerts triggered by this analytics rule
   final pulumi.Input<bool> createIncident;
-
   /// Set how the alerts that are triggered by this analytics rule, are grouped into incidents
   final pulumi.Input<GroupingConfigurationResponse>? groupingConfiguration;
 
@@ -22,26 +21,15 @@ class IncidentConfigurationResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createIncident': createIncident,
-      'groupingConfiguration':
-          ?pulumi.Input.mapOptionalInputValue<
-            GroupingConfigurationResponse,
-            Map<String, dynamic>
-          >(groupingConfiguration, (value) => value.toMap()),
+      'groupingConfiguration': ?pulumi.Input.mapOptionalInputValue<GroupingConfigurationResponse, Map<String, dynamic>>(groupingConfiguration, (value) => value.toMap()),
     };
   }
 
   factory IncidentConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return IncidentConfigurationResponse(
       createIncident: pulumi.Input.fromValue(map['createIncident'] as bool),
-      groupingConfiguration: (() {
-        final guardedValue = map['groupingConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GroupingConfigurationResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      groupingConfiguration: (() { final guardedValue = map['groupingConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GroupingConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

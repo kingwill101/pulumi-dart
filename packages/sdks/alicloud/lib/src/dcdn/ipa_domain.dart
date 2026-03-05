@@ -237,16 +237,12 @@ import 'ipa_domain_state.dart';
 class IpaDomain extends pulumi.CustomResource {
   /// The domain name to be added to IPA. Wildcard domain names are supported. A wildcard domain name must start with a period (.).
   late final pulumi.Output<String> domainName;
-
   /// The ID of the resource group. If you do not set this parameter, the system automatically assigns the ID of the default resource group.
   late final pulumi.Output<String> resourceGroupId;
-
   /// The accelerated region. Valid values: `domestic`, `global`, `overseas`.
   late final pulumi.Output<String> scope;
-
   /// Sources. See `sources` below.
   late final pulumi.Output<List<Map<String, dynamic>>> sources;
-
   /// The status of DCDN Ipa Domain. Valid values: `online`, `offline`. Default to `online`.
   late final pulumi.Output<String> status;
 
@@ -259,11 +255,11 @@ class IpaDomain extends pulumi.CustomResource {
     IpaDomainArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dcdn/ipaDomain:IpaDomain',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dcdn/ipaDomain:IpaDomain',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     domainName = registerOutput<String>('domainName');
     resourceGroupId = registerOutput<String>('resourceGroupId');
     scope = registerOutput<String>('scope');
@@ -289,11 +285,11 @@ class IpaDomain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dcdn/ipaDomain:IpaDomain',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dcdn/ipaDomain:IpaDomain',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     domainName = registerOutput<String>('domainName');
     resourceGroupId = registerOutput<String>('resourceGroupId');
     scope = registerOutput<String>('scope');

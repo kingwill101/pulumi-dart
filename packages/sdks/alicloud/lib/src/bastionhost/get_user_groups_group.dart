@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetUserGroupsGroup {
   /// Specify the New Group of Remark Information. Supports up to 500 Characters.
   final pulumi.Input<String> comment;
-
   /// The ID of the User Group.
   final pulumi.Input<String> id;
-
   /// Specify the New Group of the Bastion Host of Instance Id.
   final pulumi.Input<String> instanceId;
-
   /// The User Group ID.
   final pulumi.Input<String> userGroupId;
-
   /// Specify the New Group Name. Supports up to 128 Characters.
   final pulumi.Input<String> userGroupName;
 
@@ -52,3 +48,4 @@ class GetUserGroupsGroup {
     );
   }
 }
+

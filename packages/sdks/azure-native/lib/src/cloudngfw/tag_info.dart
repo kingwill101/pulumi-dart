@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TagInfo {
   /// tag name
   final pulumi.Input<String> key;
-
   /// tag value
   final pulumi.Input<String> value;
 
   /// Creates a new [TagInfo].
   /// [key] tag name
   /// [value] tag value
-  TagInfo({required this.key, required this.value});
+  TagInfo({
+    required this.key,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': key, 'value': value};
+    return <String, dynamic>{
+      'key': key,
+      'value': value,
+    };
   }
 
   factory TagInfo.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class TagInfo {
     );
   }
 }
+

@@ -310,28 +310,22 @@ import 'server_state.dart';
 class Server extends pulumi.CustomResource {
   /// When true, will drop objects that depend on the server (such as user mappings), and in turn all objects that depend on those objects . (Default: false)
   late final pulumi.Output<bool?> dropCascade;
-
   /// The name of the foreign-data wrapper that manages the server.
   /// Changing this value
   /// will force the creation of a new resource as this value can only be set
   /// when the foreign server is created.
   late final pulumi.Output<String> fdwName;
-
   /// This clause specifies the options for the server. The options typically define the connection details of the server, but the actual names and values are dependent on the server's foreign-data wrapper.
   late final pulumi.Output<Map<String, String>?> options;
-
   /// The name of the foreign server to be created.
   late final pulumi.Output<String> serverName;
-
   /// By default, the user who defines the server becomes its owner. Set this value to configure the new owner of the foreign server.
   late final pulumi.Output<String> serverOwner;
-
   /// Optional server type, potentially useful to foreign-data wrappers.
   /// Changing this value
   /// will force the creation of a new resource as this value can only be set
   /// when the foreign server is created.
   late final pulumi.Output<String?> serverType;
-
   /// Optional server version, potentially useful to foreign-data wrappers.
   late final pulumi.Output<String?> serverVersion;
 
@@ -339,13 +333,16 @@ class Server extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Server]. {@macro pulumi_index_server_server_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Server(String name, {ServerArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'postgresql:index/server:Server',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Server(
+    String name, {
+    ServerArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'postgresql:index/server:Server',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dropCascade = registerOutput<bool?>('dropCascade');
     fdwName = registerOutput<String>('fdwName');
     this.options = registerOutput<Map<String, String>?>('options');
@@ -373,11 +370,11 @@ class Server extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'postgresql:index/server:Server',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'postgresql:index/server:Server',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dropCascade = registerOutput<bool?>('dropCascade');
     fdwName = registerOutput<String>('fdwName');
     this.options = registerOutput<Map<String, String>?>('options');

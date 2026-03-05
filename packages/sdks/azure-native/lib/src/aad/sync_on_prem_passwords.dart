@@ -15,3 +15,4 @@ enum SyncOnPremPasswords {
     throw ArgumentError('Unknown SyncOnPremPasswords value: $value');
   }
 }
+

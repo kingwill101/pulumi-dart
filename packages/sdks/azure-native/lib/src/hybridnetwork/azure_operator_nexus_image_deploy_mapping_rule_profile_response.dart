@@ -7,7 +7,6 @@ import 'image_mapping_rule_profile_response.dart';
 class AzureOperatorNexusImageDeployMappingRuleProfileResponse {
   /// The application enablement.
   final pulumi.Input<String>? applicationEnablement;
-
   /// The vhd mapping rule profile.
   final pulumi.Input<ImageMappingRuleProfileResponse>? imageMappingRuleProfile;
 
@@ -22,32 +21,15 @@ class AzureOperatorNexusImageDeployMappingRuleProfileResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'applicationEnablement': ?applicationEnablement,
-      'imageMappingRuleProfile':
-          ?pulumi.Input.mapOptionalInputValue<
-            ImageMappingRuleProfileResponse,
-            Map<String, dynamic>
-          >(imageMappingRuleProfile, (value) => value.toMap()),
+      'imageMappingRuleProfile': ?pulumi.Input.mapOptionalInputValue<ImageMappingRuleProfileResponse, Map<String, dynamic>>(imageMappingRuleProfile, (value) => value.toMap()),
     };
   }
 
-  factory AzureOperatorNexusImageDeployMappingRuleProfileResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AzureOperatorNexusImageDeployMappingRuleProfileResponse.fromMap(Map<String, dynamic> map) {
     return AzureOperatorNexusImageDeployMappingRuleProfileResponse(
-      applicationEnablement: (() {
-        final guardedValue = map['applicationEnablement'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      imageMappingRuleProfile: (() {
-        final guardedValue = map['imageMappingRuleProfile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ImageMappingRuleProfileResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      applicationEnablement: (() { final guardedValue = map['applicationEnablement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      imageMappingRuleProfile: (() { final guardedValue = map['imageMappingRuleProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ImageMappingRuleProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

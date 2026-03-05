@@ -9,37 +9,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HanaInstanceArgs {
   /// The alert settings. Valid value: `INHERITED`, which indicates that the backup client sends alert notifications in the same way as the backup vault.
   final pulumi.Input<String>? alertSetting;
-
   /// The IDs of ECS instances that host the SAP HANA instance to be registered. HBR installs backup clients on the specified ECS instances.
   final pulumi.Input<List<String>>? ecsInstanceIds;
-
   /// The name of the SAP HANA instance.
   final pulumi.Input<String>? hanaName;
-
   /// The private or internal IP address of the host where the primary node of the SAP HANA instance resides.
   final pulumi.Input<String>? host;
-
   /// The instance number of the SAP HANA system.
   final pulumi.Input<int>? instanceNumber;
-
   /// The password that is used to connect with the SAP HANA database.
   final pulumi.Input<String>? password;
-
   /// The ID of the resource group.
   final pulumi.Input<String>? resourceGroupId;
-
   /// The security identifier (SID) of the SAP HANA database.
   final pulumi.Input<String>? sid;
-
   /// Specifies whether to connect with the SAP HANA database over Secure Sockets Layer (SSL).
   final pulumi.Input<bool>? useSsl;
-
   /// The username of the SYSTEMDB database.
   final pulumi.Input<String>? userName;
-
   /// Specifies whether to verify the SSL certificate of the SAP HANA database.
   final pulumi.Input<bool>? validateCertificate;
-
   /// The ID of the backup vault.
   final pulumi.Input<String> vaultId;
 
@@ -90,62 +79,19 @@ class HanaInstanceArgs {
 
   factory HanaInstanceArgs.fromMap(Map<String, dynamic> map) {
     return HanaInstanceArgs(
-      alertSetting: (() {
-        final guardedValue = map['alertSetting'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ecsInstanceIds: (() {
-        final guardedValue = map['ecsInstanceIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      hanaName: (() {
-        final guardedValue = map['hanaName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      host: (() {
-        final guardedValue = map['host'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      instanceNumber: (() {
-        final guardedValue = map['instanceNumber'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      password: (() {
-        final guardedValue = map['password'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupId: (() {
-        final guardedValue = map['resourceGroupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sid: (() {
-        final guardedValue = map['sid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      useSsl: (() {
-        final guardedValue = map['useSsl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      userName: (() {
-        final guardedValue = map['userName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      validateCertificate: (() {
-        final guardedValue = map['validateCertificate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      alertSetting: (() { final guardedValue = map['alertSetting']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ecsInstanceIds: (() { final guardedValue = map['ecsInstanceIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      hanaName: (() { final guardedValue = map['hanaName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      host: (() { final guardedValue = map['host']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      instanceNumber: (() { final guardedValue = map['instanceNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupId: (() { final guardedValue = map['resourceGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sid: (() { final guardedValue = map['sid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      useSsl: (() { final guardedValue = map['useSsl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      userName: (() { final guardedValue = map['userName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      validateCertificate: (() { final guardedValue = map['validateCertificate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       vaultId: pulumi.Input.fromValue(map['vaultId'] as String),
     );
   }
 }
+

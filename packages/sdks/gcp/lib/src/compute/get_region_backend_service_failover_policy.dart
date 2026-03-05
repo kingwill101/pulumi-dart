@@ -12,13 +12,11 @@ class GetRegionBackendServiceFailoverPolicy {
   /// This can be set to true only if the protocol is TCP.
   /// The default is false.
   final pulumi.Input<bool> disableConnectionDrainOnFailover;
-
   /// This option is used only when no healthy VMs are detected in the primary
   /// and backup instance groups. When set to true, traffic is dropped. When
   /// set to false, new connections are sent across all VMs in the primary group.
   /// The default is false.
   final pulumi.Input<bool> dropTrafficIfUnhealthy;
-
   /// The value of the field must be in [0, 1]. If the ratio of the healthy
   /// VMs in the primary backend is at or below this number, traffic arriving
   /// at the load-balanced IP will be directed to the failover backend.
@@ -47,17 +45,12 @@ class GetRegionBackendServiceFailoverPolicy {
     };
   }
 
-  factory GetRegionBackendServiceFailoverPolicy.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetRegionBackendServiceFailoverPolicy.fromMap(Map<String, dynamic> map) {
     return GetRegionBackendServiceFailoverPolicy(
-      disableConnectionDrainOnFailover: pulumi.Input.fromValue(
-        map['disableConnectionDrainOnFailover'] as bool,
-      ),
-      dropTrafficIfUnhealthy: pulumi.Input.fromValue(
-        map['dropTrafficIfUnhealthy'] as bool,
-      ),
+      disableConnectionDrainOnFailover: pulumi.Input.fromValue(map['disableConnectionDrainOnFailover'] as bool),
+      dropTrafficIfUnhealthy: pulumi.Input.fromValue(map['dropTrafficIfUnhealthy'] as bool),
       failoverRatio: pulumi.Input.fromValue(map['failoverRatio'] as double),
     );
   }
 }
+

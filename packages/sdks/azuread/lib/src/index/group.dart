@@ -713,110 +713,80 @@ class Group extends pulumi.CustomResource {
   ///
   /// &gt; **Caution** When using the azuread.AdministrativeUnitMember resource, or the `members` property of the azuread.AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.
   late final pulumi.Output<List<String>?> administrativeUnitIds;
-
   /// Indicates whether this group can be assigned to an Azure Active Directory role. Defaults to `false`. Can only be set to `true` for security-enabled groups. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> assignableToRole;
-
   /// Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
   ///
   /// &gt; **Known Permissions Issue** The `auto_subscribe_new_members` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
   late final pulumi.Output<bool> autoSubscribeNewMembers;
-
   /// A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SkipExchangeInstantOn`, `SubscribeMembersToCalendarEventsDisabled`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
   late final pulumi.Output<List<String>?> behaviors;
-
   /// The description for the group.
   late final pulumi.Output<String?> description;
-
   /// The display name for the group.
   late final pulumi.Output<String> displayName;
-
   /// A `dynamic_membership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
   late final pulumi.Output<GroupDynamicMembership?> dynamicMembership;
-
   /// Indicates whether people external to the organization can send messages to the group. Can only be set for Unified groups.
   ///
   /// &gt; **Known Permissions Issue** The `external_senders_allowed` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
   late final pulumi.Output<bool> externalSendersAllowed;
-
   /// Indicates whether the group is displayed in certain parts of the Outlook user interface: in the Address Book, in address lists for selecting message recipients, and in the Browse Groups dialog for searching groups. Can only be set for Unified groups.
   ///
   /// &gt; **Known Permissions Issue** The `hide_from_address_lists` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
   late final pulumi.Output<bool> hideFromAddressLists;
-
   /// Indicates whether the group is displayed in Outlook clients, such as Outlook for Windows and Outlook on the web. Can only be set for Unified groups.
   ///
   /// &gt; **Known Permissions Issue** The `hide_from_outlook_clients` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
   late final pulumi.Output<bool> hideFromOutlookClients;
-
   /// The SMTP address for the group.
   late final pulumi.Output<String> mail;
-
   /// Whether the group is a mail enabled, with a shared group mailbox. At least one of `mail_enabled` or `security_enabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).
   late final pulumi.Output<bool?> mailEnabled;
-
   /// The mail alias for the group, unique in the organisation. Required for mail-enabled groups. Changing this forces a new resource to be created.
   late final pulumi.Output<String> mailNickname;
-
   /// A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamic_membership` block.
   ///
   /// !&gt; **Warning** Do not use the `members` property at the same time as the azuread.GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
   late final pulumi.Output<List<String>> members;
-
   /// The object ID of the group.
   late final pulumi.Output<String> objectId;
-
   /// The on-premises FQDN, also called dnsDomainName, synchronised from the on-premises directory when Azure AD Connect is used.
   late final pulumi.Output<String> onpremisesDomainName;
-
   /// The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
   late final pulumi.Output<String> onpremisesGroupType;
-
   /// The on-premises NetBIOS name, synchronised from the on-premises directory when Azure AD Connect is used.
   late final pulumi.Output<String> onpremisesNetbiosName;
-
   /// The on-premises SAM account name, synchronised from the on-premises directory when Azure AD Connect is used.
   late final pulumi.Output<String> onpremisesSamAccountName;
-
   /// The on-premises security identifier (SID), synchronised from the on-premises directory when Azure AD Connect is used.
   late final pulumi.Output<String> onpremisesSecurityIdentifier;
-
   /// Whether this group is synchronised from an on-premises directory (`true`), no longer synchronised (`false`), or has never been synchronised (`null`).
   late final pulumi.Output<bool> onpremisesSyncEnabled;
-
   /// A set of object IDs of principals that will be granted ownership of the group. Supported object types are users or service principals. By default, the principal being used to execute Terraform is assigned as the sole owner. Groups cannot be created with no owners or have all their owners removed.
   ///
   /// &gt; **Group Ownership**  It's recommended to always specify one or more group owners, including the principal being used to execute Terraform, such as in the example above. When removing group owners, if a user principal has been assigned ownership, the last user cannot be removed as an owner. Microsoft 365 groups are required to always have at least one owner which _must be a user_ (i.e. not a service principal).
   late final pulumi.Output<List<String>> owners;
-
   /// The preferred language for a Microsoft 365 group, in ISO 639-1 notation.
   late final pulumi.Output<String> preferredLanguage;
-
   /// If `true`, will return an error if an existing group is found with the same name. Defaults to `false`.
   late final pulumi.Output<bool?> preventDuplicateNames;
-
   /// A set of provisioning options for a Microsoft 365 group. The only supported value is `Team`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for details. Changing this forces a new resource to be created.
   late final pulumi.Output<List<String>?> provisioningOptions;
-
   /// List of email addresses for the group that direct to the same group mailbox.
   late final pulumi.Output<List<String>> proxyAddresses;
-
   /// Whether the group is a security group for controlling access to in-app resources. At least one of `security_enabled` or `mail_enabled` must be specified. A Microsoft 365 group can be security enabled _and_ mail enabled (see the `types` property).
   late final pulumi.Output<bool?> securityEnabled;
-
   /// The colour theme for a Microsoft 365 group. Possible values are `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Red` or `Teal`. By default, no theme is set.
   late final pulumi.Output<String?> theme;
-
   /// A set of group types to configure for the group. Supported values are `DynamicMembership`, which denotes a group with dynamic membership, and `Unified`, which specifies a Microsoft 365 group. Required when `mail_enabled` is true. Changing this forces a new resource to be created.
   ///
   /// &gt; **Supported Group Types** At present, only security groups and Microsoft 365 groups can be created or managed with this resource. Distribution groups and mail-enabled security groups are not supported. Microsoft 365 groups can be security-enabled.
   late final pulumi.Output<List<String>?> types;
-
   /// The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility and this value must be set when the group is created. By default, security groups will receive `Private` visibility and Microsoft 365 groups will receive `Public` visibility.
   ///
   /// &gt; **Group Name Uniqueness** Group names are not unique within Azure Active Directory. Use the `prevent_duplicate_names` argument to check for existing groups if you want to avoid name collisions.
   late final pulumi.Output<String> visibility;
-
   /// Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.
   late final pulumi.Output<bool?> writebackEnabled;
 
@@ -824,31 +794,23 @@ class Group extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Group]. {@macro pulumi_index_group_group_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Group(String name, {GroupArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azuread:index/group:Group',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
-    administrativeUnitIds = registerOutput<List<String>?>(
-      'administrativeUnitIds',
-    );
+  Group(
+    String name, {
+    GroupArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azuread:index/group:Group',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    administrativeUnitIds = registerOutput<List<String>?>('administrativeUnitIds');
     assignableToRole = registerOutput<bool?>('assignableToRole');
     autoSubscribeNewMembers = registerOutput<bool>('autoSubscribeNewMembers');
     behaviors = registerOutput<List<String>?>('behaviors');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
-    dynamicMembership = registerOutput<GroupDynamicMembership?>(
-      'dynamicMembership',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GroupDynamicMembership.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    dynamicMembership = registerOutput<GroupDynamicMembership?>('dynamicMembership', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupDynamicMembership.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     externalSendersAllowed = registerOutput<bool>('externalSendersAllowed');
     hideFromAddressLists = registerOutput<bool>('hideFromAddressLists');
     hideFromOutlookClients = registerOutput<bool>('hideFromOutlookClients');
@@ -860,12 +822,8 @@ class Group extends pulumi.CustomResource {
     onpremisesDomainName = registerOutput<String>('onpremisesDomainName');
     onpremisesGroupType = registerOutput<String>('onpremisesGroupType');
     onpremisesNetbiosName = registerOutput<String>('onpremisesNetbiosName');
-    onpremisesSamAccountName = registerOutput<String>(
-      'onpremisesSamAccountName',
-    );
-    onpremisesSecurityIdentifier = registerOutput<String>(
-      'onpremisesSecurityIdentifier',
-    );
+    onpremisesSamAccountName = registerOutput<String>('onpremisesSamAccountName');
+    onpremisesSecurityIdentifier = registerOutput<String>('onpremisesSecurityIdentifier');
     onpremisesSyncEnabled = registerOutput<bool>('onpremisesSyncEnabled');
     owners = registerOutput<List<String>>('owners');
     preferredLanguage = registerOutput<String>('preferredLanguage');
@@ -880,7 +838,11 @@ class Group extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Group] resource's state with the given [name] and [id].
-  static Group get(String name, pulumi.Input<String> id, {GroupState? state}) {
+  static Group get(
+    String name,
+    pulumi.Input<String> id, {
+    GroupState? state,
+  }) {
     return Group._get(
       name,
       state: state?.toMap(),
@@ -893,29 +855,18 @@ class Group extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/group:Group',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    administrativeUnitIds = registerOutput<List<String>?>(
-      'administrativeUnitIds',
-    );
+          'azuread:index/group:Group',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    administrativeUnitIds = registerOutput<List<String>?>('administrativeUnitIds');
     assignableToRole = registerOutput<bool?>('assignableToRole');
     autoSubscribeNewMembers = registerOutput<bool>('autoSubscribeNewMembers');
     behaviors = registerOutput<List<String>?>('behaviors');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
-    dynamicMembership = registerOutput<GroupDynamicMembership?>(
-      'dynamicMembership',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GroupDynamicMembership.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    dynamicMembership = registerOutput<GroupDynamicMembership?>('dynamicMembership', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupDynamicMembership.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     externalSendersAllowed = registerOutput<bool>('externalSendersAllowed');
     hideFromAddressLists = registerOutput<bool>('hideFromAddressLists');
     hideFromOutlookClients = registerOutput<bool>('hideFromOutlookClients');
@@ -927,12 +878,8 @@ class Group extends pulumi.CustomResource {
     onpremisesDomainName = registerOutput<String>('onpremisesDomainName');
     onpremisesGroupType = registerOutput<String>('onpremisesGroupType');
     onpremisesNetbiosName = registerOutput<String>('onpremisesNetbiosName');
-    onpremisesSamAccountName = registerOutput<String>(
-      'onpremisesSamAccountName',
-    );
-    onpremisesSecurityIdentifier = registerOutput<String>(
-      'onpremisesSecurityIdentifier',
-    );
+    onpremisesSamAccountName = registerOutput<String>('onpremisesSamAccountName');
+    onpremisesSecurityIdentifier = registerOutput<String>('onpremisesSecurityIdentifier');
     onpremisesSyncEnabled = registerOutput<bool>('onpremisesSyncEnabled');
     owners = registerOutput<List<String>>('owners');
     preferredLanguage = registerOutput<String>('preferredLanguage');

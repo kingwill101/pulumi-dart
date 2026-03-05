@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SAPSupportedSkuResponse {
   /// True if the Sku is certified for App server in the SAP system.
   final pulumi.Input<bool>? isAppServerCertified;
-
   /// True if the Sku is certified for Database server in the SAP system.
   final pulumi.Input<bool>? isDatabaseCertified;
-
   /// The VM Sku.
   final pulumi.Input<String>? vmSku;
 
@@ -33,21 +31,10 @@ class SAPSupportedSkuResponse {
 
   factory SAPSupportedSkuResponse.fromMap(Map<String, dynamic> map) {
     return SAPSupportedSkuResponse(
-      isAppServerCertified: (() {
-        final guardedValue = map['isAppServerCertified'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      isDatabaseCertified: (() {
-        final guardedValue = map['isDatabaseCertified'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      vmSku: (() {
-        final guardedValue = map['vmSku'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      isAppServerCertified: (() { final guardedValue = map['isAppServerCertified']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      isDatabaseCertified: (() { final guardedValue = map['isDatabaseCertified']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      vmSku: (() { final guardedValue = map['vmSku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

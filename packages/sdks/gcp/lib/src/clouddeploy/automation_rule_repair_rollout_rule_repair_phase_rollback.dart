@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AutomationRuleRepairRolloutRuleRepairPhaseRollback {
   /// Optional. The starting phase ID for the Rollout. If unspecified, the Rollout will start in the stable phase.
   final pulumi.Input<String>? destinationPhase;
-
   /// Optional. If pending rollout exists on the target, the rollback operation will be aborted.
   final pulumi.Input<bool>? disableRollbackIfRolloutPending;
 
@@ -24,20 +23,11 @@ class AutomationRuleRepairRolloutRuleRepairPhaseRollback {
     };
   }
 
-  factory AutomationRuleRepairRolloutRuleRepairPhaseRollback.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AutomationRuleRepairRolloutRuleRepairPhaseRollback.fromMap(Map<String, dynamic> map) {
     return AutomationRuleRepairRolloutRuleRepairPhaseRollback(
-      destinationPhase: (() {
-        final guardedValue = map['destinationPhase'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      disableRollbackIfRolloutPending: (() {
-        final guardedValue = map['disableRollbackIfRolloutPending'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      destinationPhase: (() { final guardedValue = map['destinationPhase']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      disableRollbackIfRolloutPending: (() { final guardedValue = map['disableRollbackIfRolloutPending']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

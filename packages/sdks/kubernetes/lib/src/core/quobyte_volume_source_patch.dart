@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class QuobyteVolumeSourcePatch {
   /// group to map volume access to Default is no group
   final pulumi.Input<String>? group;
-
   /// readOnly here will force the Quobyte volume to be mounted with read-only permissions. Defaults to false.
   final pulumi.Input<bool>? readOnly;
-
   /// registry represents a single or multiple Quobyte Registry services specified as a string as host:port pair (multiple entries are separated with commas) which acts as the central registry for volumes
   final pulumi.Input<String>? registry;
-
   /// tenant owning the given Quobyte volume in the Backend Used with dynamically provisioned Quobyte volumes, value is set by the plugin
   final pulumi.Input<String>? tenant;
-
   /// user to map volume access to Defaults to serivceaccount user
   final pulumi.Input<String>? user;
-
   /// volume is a string that references an already created Quobyte volume by name.
   final pulumi.Input<String>? volume;
 
@@ -51,36 +46,13 @@ class QuobyteVolumeSourcePatch {
 
   factory QuobyteVolumeSourcePatch.fromMap(Map<String, dynamic> map) {
     return QuobyteVolumeSourcePatch(
-      group: (() {
-        final guardedValue = map['group'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      readOnly: (() {
-        final guardedValue = map['readOnly'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      registry: (() {
-        final guardedValue = map['registry'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tenant: (() {
-        final guardedValue = map['tenant'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      user: (() {
-        final guardedValue = map['user'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      volume: (() {
-        final guardedValue = map['volume'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      group: (() { final guardedValue = map['group']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      readOnly: (() { final guardedValue = map['readOnly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      registry: (() { final guardedValue = map['registry']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tenant: (() { final guardedValue = map['tenant']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      user: (() { final guardedValue = map['user']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      volume: (() { final guardedValue = map['volume']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

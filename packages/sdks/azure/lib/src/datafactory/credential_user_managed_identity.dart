@@ -297,18 +297,14 @@ class CredentialUserManagedIdentity extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** Manually altering a Credential resource will cause annotations to be lost, resulting in a change being detected on the next run.
   late final pulumi.Output<List<String>?> annotations;
-
   /// The Data Factory ID in which to associate the Credential with. Changing this forces a new resource.
   late final pulumi.Output<String> dataFactoryId;
-
   /// The description for the Data Factory Credential.
   late final pulumi.Output<String?> description;
-
   /// The Resouce ID of an existing User Assigned Managed Identity. This can be changed without recreating the resource. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Attempting to create a Credential resource without first assigning the identity to the parent Data Factory will result in an Azure API error.
   late final pulumi.Output<String> identityId;
-
   /// Specifies the name of the Credential. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
 
@@ -321,11 +317,11 @@ class CredentialUserManagedIdentity extends pulumi.CustomResource {
     CredentialUserManagedIdentityArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:datafactory/credentialUserManagedIdentity:CredentialUserManagedIdentity',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:datafactory/credentialUserManagedIdentity:CredentialUserManagedIdentity',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     annotations = registerOutput<List<String>?>('annotations');
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
@@ -351,11 +347,11 @@ class CredentialUserManagedIdentity extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:datafactory/credentialUserManagedIdentity:CredentialUserManagedIdentity',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:datafactory/credentialUserManagedIdentity:CredentialUserManagedIdentity',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     annotations = registerOutput<List<String>?>('annotations');
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');

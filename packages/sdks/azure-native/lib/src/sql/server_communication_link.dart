@@ -138,22 +138,16 @@ import 'server_communication_link_args.dart';
 class ServerCommunicationLink extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Communication link kind.  This property is used for Azure Portal metadata.
   late final pulumi.Output<String> kind;
-
   /// Communication link location.
   late final pulumi.Output<String> location;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// The name of the partner server.
   late final pulumi.Output<String> partnerServer;
-
   /// The state.
   late final pulumi.Output<String> state;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -166,11 +160,11 @@ class ServerCommunicationLink extends pulumi.CustomResource {
     ServerCommunicationLinkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:sql:ServerCommunicationLink',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:sql:ServerCommunicationLink',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     kind = registerOutput<String>('kind');
     location = registerOutput<String>('location');

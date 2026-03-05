@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetArgs {
   /// The name of this Elastic SAN.
   final pulumi.Input<String> name;
-
   /// The name of the Resource Group where the Elastic SAN exists.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetArgs].
   /// [name] The name of this Elastic SAN.
   /// [resourceGroupName] The name of the Resource Group where the Elastic SAN exists.
-  GetArgs({required this.name, required this.resourceGroupName});
+  GetArgs({
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,9 +30,8 @@ class GetArgs {
   factory GetArgs.fromMap(Map<String, dynamic> map) {
     return GetArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

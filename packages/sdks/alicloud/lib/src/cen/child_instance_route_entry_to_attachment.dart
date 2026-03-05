@@ -521,22 +521,16 @@ import 'child_instance_route_entry_to_attachment_state.dart';
 class ChildInstanceRouteEntryToAttachment extends pulumi.CustomResource {
   /// The ID of the CEN instance.
   late final pulumi.Output<String> cenId;
-
   /// The first ID of the resource
   late final pulumi.Output<String> childInstanceRouteTableId;
-
   /// DestinationCidrBlock
   late final pulumi.Output<String> destinationCidrBlock;
-
   /// Whether to perform pre-check on this request, including permission and instance status verification.
   late final pulumi.Output<bool?> dryRun;
-
   /// ServiceType
   late final pulumi.Output<String> serviceType;
-
   /// The status of the resource
   late final pulumi.Output<String> status;
-
   /// TransitRouterAttachmentId
   late final pulumi.Output<String> transitRouterAttachmentId;
 
@@ -549,22 +543,18 @@ class ChildInstanceRouteEntryToAttachment extends pulumi.CustomResource {
     ChildInstanceRouteEntryToAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cen/childInstanceRouteEntryToAttachment:ChildInstanceRouteEntryToAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cen/childInstanceRouteEntryToAttachment:ChildInstanceRouteEntryToAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cenId = registerOutput<String>('cenId');
-    childInstanceRouteTableId = registerOutput<String>(
-      'childInstanceRouteTableId',
-    );
+    childInstanceRouteTableId = registerOutput<String>('childInstanceRouteTableId');
     destinationCidrBlock = registerOutput<String>('destinationCidrBlock');
     dryRun = registerOutput<bool?>('dryRun');
     serviceType = registerOutput<String>('serviceType');
     status = registerOutput<String>('status');
-    transitRouterAttachmentId = registerOutput<String>(
-      'transitRouterAttachmentId',
-    );
+    transitRouterAttachmentId = registerOutput<String>('transitRouterAttachmentId');
   }
 
   /// Gets an existing [ChildInstanceRouteEntryToAttachment] resource's state with the given [name] and [id].
@@ -585,21 +575,17 @@ class ChildInstanceRouteEntryToAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cen/childInstanceRouteEntryToAttachment:ChildInstanceRouteEntryToAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cen/childInstanceRouteEntryToAttachment:ChildInstanceRouteEntryToAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cenId = registerOutput<String>('cenId');
-    childInstanceRouteTableId = registerOutput<String>(
-      'childInstanceRouteTableId',
-    );
+    childInstanceRouteTableId = registerOutput<String>('childInstanceRouteTableId');
     destinationCidrBlock = registerOutput<String>('destinationCidrBlock');
     dryRun = registerOutput<bool?>('dryRun');
     serviceType = registerOutput<String>('serviceType');
     status = registerOutput<String>('status');
-    transitRouterAttachmentId = registerOutput<String>(
-      'transitRouterAttachmentId',
-    );
+    transitRouterAttachmentId = registerOutput<String>('transitRouterAttachmentId');
   }
 }

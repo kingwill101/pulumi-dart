@@ -18,17 +18,10 @@ class ChannelEncoderSettingsMotionGraphicsConfigurationMotionGraphicsSettings {
     };
   }
 
-  factory ChannelEncoderSettingsMotionGraphicsConfigurationMotionGraphicsSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ChannelEncoderSettingsMotionGraphicsConfigurationMotionGraphicsSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsMotionGraphicsConfigurationMotionGraphicsSettings(
-      htmlMotionGraphicsSettings: (() {
-        final guardedValue = map['htmlMotionGraphicsSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      htmlMotionGraphicsSettings: (() { final guardedValue = map['htmlMotionGraphicsSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }
 }
+

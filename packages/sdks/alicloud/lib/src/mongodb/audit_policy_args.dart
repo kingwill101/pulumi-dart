@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AuditPolicyArgs {
   /// Audit state, Valid values: `enable`, `disabled`.
   final pulumi.Input<String> auditStatus;
-
   /// Database Instance Id
   final pulumi.Input<String> dbInstanceId;
-
   /// The type of logs collected by the audit log feature of the instance. Separate multiple types with commas (,). Valid values:
   final pulumi.Input<String>? filter;
-
   /// Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
   final pulumi.Input<int>? storagePeriod;
 
@@ -44,16 +41,9 @@ class AuditPolicyArgs {
     return AuditPolicyArgs(
       auditStatus: pulumi.Input.fromValue(map['auditStatus'] as String),
       dbInstanceId: pulumi.Input.fromValue(map['dbInstanceId'] as String),
-      filter: (() {
-        final guardedValue = map['filter'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      storagePeriod: (() {
-        final guardedValue = map['storagePeriod'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storagePeriod: (() { final guardedValue = map['storagePeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

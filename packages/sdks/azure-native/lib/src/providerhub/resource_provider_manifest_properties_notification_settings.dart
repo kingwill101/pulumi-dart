@@ -15,37 +15,14 @@ class ResourceProviderManifestPropertiesNotificationSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'subscriberSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<SubscriberSetting>,
-            List<Map<String, dynamic>>
-          >(
-            subscriberSettings,
-            (value) =>
-                pulumi.Input.encodeList<
-                  SubscriberSetting,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'subscriberSettings': ?pulumi.Input.mapOptionalInputValue<List<SubscriberSetting>, List<Map<String, dynamic>>>(subscriberSettings, (value) => pulumi.Input.encodeList<SubscriberSetting, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory ResourceProviderManifestPropertiesNotificationSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResourceProviderManifestPropertiesNotificationSettings.fromMap(Map<String, dynamic> map) {
     return ResourceProviderManifestPropertiesNotificationSettings(
-      subscriberSettings: (() {
-        final guardedValue = map['subscriberSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<SubscriberSetting>(
-            guardedValue,
-            (value) => SubscriberSetting.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      subscriberSettings: (() { final guardedValue = map['subscriberSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SubscriberSetting>(guardedValue, (value) => SubscriberSetting.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

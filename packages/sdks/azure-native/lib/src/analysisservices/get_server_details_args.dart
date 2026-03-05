@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServerDetailsArgs {
   /// The name of the Azure Resource group of which a given Analysis Services server is part. This name must be at least 1 character in length, and no more than 90.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the Analysis Services server. It must be a minimum of 3 characters, and a maximum of 63.
   final pulumi.Input<String> serverName;
 
@@ -30,10 +29,9 @@ class GetServerDetailsArgs {
 
   factory GetServerDetailsArgs.fromMap(Map<String, dynamic> map) {
     return GetServerDetailsArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serverName: pulumi.Input.fromValue(map['serverName'] as String),
     );
   }
 }
+

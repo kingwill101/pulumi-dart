@@ -229,16 +229,12 @@ import 'encryption_scope_state.dart';
 class EncryptionScope extends pulumi.CustomResource {
   /// Is a secondary layer of encryption with Platform Managed Keys for data applied? Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> infrastructureEncryptionRequired;
-
   /// The ID of the Key Vault Key. Required when `source` is `Microsoft.KeyVault`.
   late final pulumi.Output<String?> keyVaultKeyId;
-
   /// The name which should be used for this Storage Encryption Scope. Changing this forces a new Storage Encryption Scope to be created.
   late final pulumi.Output<String> name;
-
   /// The source of the Storage Encryption Scope. Possible values are `Microsoft.KeyVault` and `Microsoft.Storage`.
   late final pulumi.Output<String> source;
-
   /// The ID of the Storage Account where this Storage Encryption Scope is created. Changing this forces a new Storage Encryption Scope to be created.
   late final pulumi.Output<String> storageAccountId;
 
@@ -251,14 +247,12 @@ class EncryptionScope extends pulumi.CustomResource {
     EncryptionScopeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:storage/encryptionScope:EncryptionScope',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    infrastructureEncryptionRequired = registerOutput<bool?>(
-      'infrastructureEncryptionRequired',
-    );
+          'azure:storage/encryptionScope:EncryptionScope',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    infrastructureEncryptionRequired = registerOutput<bool?>('infrastructureEncryptionRequired');
     keyVaultKeyId = registerOutput<String?>('keyVaultKeyId');
     this.name = registerOutput<String>('name');
     source = registerOutput<String>('source');
@@ -283,14 +277,12 @@ class EncryptionScope extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:storage/encryptionScope:EncryptionScope',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    infrastructureEncryptionRequired = registerOutput<bool?>(
-      'infrastructureEncryptionRequired',
-    );
+          'azure:storage/encryptionScope:EncryptionScope',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    infrastructureEncryptionRequired = registerOutput<bool?>('infrastructureEncryptionRequired');
     keyVaultKeyId = registerOutput<String?>('keyVaultKeyId');
     this.name = registerOutput<String>('name');
     source = registerOutput<String>('source');

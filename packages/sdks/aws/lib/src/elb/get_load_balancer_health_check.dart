@@ -39,9 +39,8 @@ class GetLoadBalancerHealthCheck {
       interval: pulumi.Input.fromValue(map['interval'] as int),
       target: pulumi.Input.fromValue(map['target'] as String),
       timeout: pulumi.Input.fromValue(map['timeout'] as int),
-      unhealthyThreshold: pulumi.Input.fromValue(
-        map['unhealthyThreshold'] as int,
-      ),
+      unhealthyThreshold: pulumi.Input.fromValue(map['unhealthyThreshold'] as int),
     );
   }
 }
+

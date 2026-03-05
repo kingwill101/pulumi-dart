@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MulticastDomainArgs {
   /// Whether to automatically accept cross-account subnet associations that are associated with the EC2 Transit Gateway Multicast Domain. Valid values: `disable`, `enable`. Default value: `disable`.
   final pulumi.Input<String>? autoAcceptSharedAssociations;
-
   /// Whether to enable Internet Group Management Protocol (IGMP) version 2 for the EC2 Transit Gateway Multicast Domain. Valid values: `disable`, `enable`. Default value: `disable`.
   final pulumi.Input<String>? igmpv2Support;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Whether to enable support for statically configuring multicast group sources for the EC2 Transit Gateway Multicast Domain. Valid values: `disable`, `enable`. Default value: `disable`.
   final pulumi.Input<String>? staticSourcesSupport;
-
   /// Key-value tags for the EC2 Transit Gateway Multicast Domain. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// EC2 Transit Gateway identifier. The EC2 Transit Gateway must have `multicast_support` enabled.
   final pulumi.Input<String> transitGatewayId;
 
@@ -54,36 +49,13 @@ class MulticastDomainArgs {
 
   factory MulticastDomainArgs.fromMap(Map<String, dynamic> map) {
     return MulticastDomainArgs(
-      autoAcceptSharedAssociations: (() {
-        final guardedValue = map['autoAcceptSharedAssociations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      igmpv2Support: (() {
-        final guardedValue = map['igmpv2Support'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      staticSourcesSupport: (() {
-        final guardedValue = map['staticSourcesSupport'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      transitGatewayId: pulumi.Input.fromValue(
-        map['transitGatewayId'] as String,
-      ),
+      autoAcceptSharedAssociations: (() { final guardedValue = map['autoAcceptSharedAssociations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      igmpv2Support: (() { final guardedValue = map['igmpv2Support']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      staticSourcesSupport: (() { final guardedValue = map['staticSourcesSupport']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      transitGatewayId: pulumi.Input.fromValue(map['transitGatewayId'] as String),
     );
   }
 }
+

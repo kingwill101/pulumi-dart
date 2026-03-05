@@ -199,19 +199,14 @@ import 'arc_machine_state.dart';
 class ArcMachine extends pulumi.CustomResource {
   /// An `identity` block as defined below.
   late final pulumi.Output<ArcMachineIdentity?> identity;
-
   /// The kind of the Arc Machine. Possible values are `AVS`, `AWS`, `EPS`, `GCP`, `HCI`, `SCVMM` and `VMware`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> kind;
-
   /// The Azure Region where the Arc Machine should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The name of the Arc machine. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the Resource Group where the Arc Machine should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags to assign to the Arc Machine.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -224,21 +219,12 @@ class ArcMachine extends pulumi.CustomResource {
     ArcMachineArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:arcmachine/arcMachine:ArcMachine',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    identity = registerOutput<ArcMachineIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ArcMachineIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:arcmachine/arcMachine:ArcMachine',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    identity = registerOutput<ArcMachineIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ArcMachineIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kind = registerOutput<String>('kind');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -264,21 +250,12 @@ class ArcMachine extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:arcmachine/arcMachine:ArcMachine',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    identity = registerOutput<ArcMachineIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ArcMachineIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:arcmachine/arcMachine:ArcMachine',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    identity = registerOutput<ArcMachineIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ArcMachineIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kind = registerOutput<String>('kind');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

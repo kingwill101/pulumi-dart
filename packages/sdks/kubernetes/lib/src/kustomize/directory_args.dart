@@ -12,13 +12,10 @@ class DirectoryArgs {
   /// Example: ./helloWorld
   /// Example: https://github.com/kubernetes-sigs/kustomize/tree/master/examples/helloWorld
   final pulumi.Input<String> directory;
-
   /// The default namespace to apply to the resources. Defaults to the provider's namespace.
   final pulumi.Input<String>? namespace;
-
   /// A prefix for the auto-generated resource names. Defaults to the name of the Directory resource. Example: A resource created with resourcePrefix="foo" would produce a resource named "foo:resourceName".
   final pulumi.Input<String>? resourcePrefix;
-
   /// Indicates that child resources should skip the await logic.
   final pulumi.Input<bool>? skipAwait;
 
@@ -46,21 +43,10 @@ class DirectoryArgs {
   factory DirectoryArgs.fromMap(Map<String, dynamic> map) {
     return DirectoryArgs(
       directory: pulumi.Input.fromValue(map['directory'] as String),
-      namespace: (() {
-        final guardedValue = map['namespace'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourcePrefix: (() {
-        final guardedValue = map['resourcePrefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      skipAwait: (() {
-        final guardedValue = map['skipAwait'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      namespace: (() { final guardedValue = map['namespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourcePrefix: (() { final guardedValue = map['resourcePrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      skipAwait: (() { final guardedValue = map['skipAwait']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

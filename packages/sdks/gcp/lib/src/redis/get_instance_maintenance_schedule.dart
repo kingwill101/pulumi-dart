@@ -7,13 +7,11 @@ class GetInstanceMaintenanceSchedule {
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
   /// resolution and up to nine fractional digits.
   final pulumi.Input<String> endTime;
-
   /// Output only. The deadline that the maintenance schedule start time
   /// can not go beyond, including reschedule.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
   /// resolution and up to nine fractional digits.
   final pulumi.Input<String> scheduleDeadlineTime;
-
   /// Output only. The start time of any upcoming scheduled maintenance for this instance.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
   /// resolution and up to nine fractional digits.
@@ -40,10 +38,9 @@ class GetInstanceMaintenanceSchedule {
   factory GetInstanceMaintenanceSchedule.fromMap(Map<String, dynamic> map) {
     return GetInstanceMaintenanceSchedule(
       endTime: pulumi.Input.fromValue(map['endTime'] as String),
-      scheduleDeadlineTime: pulumi.Input.fromValue(
-        map['scheduleDeadlineTime'] as String,
-      ),
+      scheduleDeadlineTime: pulumi.Input.fromValue(map['scheduleDeadlineTime'] as String),
       startTime: pulumi.Input.fromValue(map['startTime'] as String),
     );
   }
 }
+

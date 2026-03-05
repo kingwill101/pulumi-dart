@@ -36,17 +36,10 @@ class GetVmwareClusterIamPolicyArgs {
   factory GetVmwareClusterIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetVmwareClusterIamPolicyArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
-      optionsRequestedPolicyVersion: (() {
-        final guardedValue = map['optionsRequestedPolicyVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vmwareClusterId: pulumi.Input.fromValue(map['vmwareClusterId'] as String),
     );
   }
 }
+

@@ -9,25 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BasicEndpointArgs {
   /// The ID of the Basic GA instance.
   final pulumi.Input<String> acceleratorId;
-
   /// The name of the Basic Endpoint.
   final pulumi.Input<String>? basicEndpointName;
-
   /// The address of the Basic Endpoint.
   final pulumi.Input<String> endpointAddress;
-
   /// The ID of the Basic Endpoint Group.
   final pulumi.Input<String> endpointGroupId;
-
   /// The sub address of the Basic Endpoint.
   final pulumi.Input<String>? endpointSubAddress;
-
   /// The sub address type of the Basic Endpoint. Valid values: `primary`, `secondary`.
   final pulumi.Input<String>? endpointSubAddressType;
-
   /// The type of the Basic Endpoint. Valid values: `ENI`, `SLB`, `ECS` and `NLB`.
   final pulumi.Input<String> endpointType;
-
   /// The zone id of the Basic Endpoint.
   final pulumi.Input<String>? endpointZoneId;
 
@@ -67,29 +60,14 @@ class BasicEndpointArgs {
   factory BasicEndpointArgs.fromMap(Map<String, dynamic> map) {
     return BasicEndpointArgs(
       acceleratorId: pulumi.Input.fromValue(map['acceleratorId'] as String),
-      basicEndpointName: (() {
-        final guardedValue = map['basicEndpointName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      basicEndpointName: (() { final guardedValue = map['basicEndpointName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       endpointAddress: pulumi.Input.fromValue(map['endpointAddress'] as String),
       endpointGroupId: pulumi.Input.fromValue(map['endpointGroupId'] as String),
-      endpointSubAddress: (() {
-        final guardedValue = map['endpointSubAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      endpointSubAddressType: (() {
-        final guardedValue = map['endpointSubAddressType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      endpointSubAddress: (() { final guardedValue = map['endpointSubAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      endpointSubAddressType: (() { final guardedValue = map['endpointSubAddressType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       endpointType: pulumi.Input.fromValue(map['endpointType'] as String),
-      endpointZoneId: (() {
-        final guardedValue = map['endpointZoneId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      endpointZoneId: (() { final guardedValue = map['endpointZoneId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DscNodeConfigurationArgs {
   /// The name of the automation account in which the DSC Node Configuration is created. Changing this forces a new resource to be created.
   final pulumi.Input<String> automationAccountName;
-
   /// The PowerShell DSC Node Configuration (mof content).
   final pulumi.Input<String> contentEmbedded;
-
   /// Specifies the name of the DSC Node Configuration. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// The name of the resource group in which the DSC Node Configuration is created. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
 
@@ -42,18 +39,11 @@ class DscNodeConfigurationArgs {
 
   factory DscNodeConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return DscNodeConfigurationArgs(
-      automationAccountName: pulumi.Input.fromValue(
-        map['automationAccountName'] as String,
-      ),
+      automationAccountName: pulumi.Input.fromValue(map['automationAccountName'] as String),
       contentEmbedded: pulumi.Input.fromValue(map['contentEmbedded'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

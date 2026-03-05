@@ -17,3 +17,4 @@ enum SourceRegistryLoginMode {
     throw ArgumentError('Unknown SourceRegistryLoginMode value: $value');
   }
 }
+

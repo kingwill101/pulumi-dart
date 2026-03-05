@@ -232,7 +232,6 @@ import 'machine_group_state.dart';
 class MachineGroup extends pulumi.CustomResource {
   /// Properties of machine groups. For details, please refer to the groupAttribute parameter description in the following table. See `group_attribute` below.
   late final pulumi.Output<MachineGroupGroupAttribute?> groupAttribute;
-
   /// The name of the machine group. The name must meet the following requirements:
   ///
   /// - The name of each machine group in a project must be unique.
@@ -240,21 +239,17 @@ class MachineGroup extends pulumi.CustomResource {
   /// - It must start and end with a lowercase letter or a digit.
   /// - It must be 3 to 128 characters in length.
   late final pulumi.Output<String> groupName;
-
   /// The type of the machine group. Set the value to an empty string.
   late final pulumi.Output<String?> groupType;
-
   /// The identifier type of the machine group. Valid values:
   ///
   /// - ip: The machine group uses IP addresses as identifiers.
   /// - userdefined: The machine group uses custom identifiers.
   late final pulumi.Output<String> machineIdentifyType;
-
   /// The identification information of the machine group.
   /// - If machineidentifiytype is configured to ip, enter the ip address of the server.
   /// - If machineidentifiytype is configured to userdefined, enter a custom identifier here.
   late final pulumi.Output<List<String>> machineLists;
-
   /// The name of the project.
   late final pulumi.Output<String> projectName;
 
@@ -267,21 +262,12 @@ class MachineGroup extends pulumi.CustomResource {
     MachineGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:sls/machineGroup:MachineGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    groupAttribute = registerOutput<MachineGroupGroupAttribute?>(
-      'groupAttribute',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MachineGroupGroupAttribute.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'alicloud:sls/machineGroup:MachineGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    groupAttribute = registerOutput<MachineGroupGroupAttribute?>('groupAttribute', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MachineGroupGroupAttribute.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     groupName = registerOutput<String>('groupName');
     groupType = registerOutput<String?>('groupType');
     machineIdentifyType = registerOutput<String>('machineIdentifyType');
@@ -307,21 +293,12 @@ class MachineGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:sls/machineGroup:MachineGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    groupAttribute = registerOutput<MachineGroupGroupAttribute?>(
-      'groupAttribute',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MachineGroupGroupAttribute.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'alicloud:sls/machineGroup:MachineGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    groupAttribute = registerOutput<MachineGroupGroupAttribute?>('groupAttribute', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MachineGroupGroupAttribute.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     groupName = registerOutput<String>('groupName');
     groupType = registerOutput<String?>('groupType');
     machineIdentifyType = registerOutput<String>('machineIdentifyType');

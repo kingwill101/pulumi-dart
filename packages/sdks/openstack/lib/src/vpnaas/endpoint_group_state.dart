@@ -7,29 +7,23 @@ class EndpointGroupState {
   /// The human-readable description for the group.
   /// Changing this updates the description of the existing group.
   final pulumi.Input<String>? description;
-
   /// List of endpoints of the same type, for the endpoint group. The values will depend on the type.
   /// Changing this creates a new group.
   final pulumi.Input<List<String>>? endpoints;
-
   /// The name of the group. Changing this updates the name of
   /// the existing group.
   final pulumi.Input<String>? name;
-
   /// The region in which to obtain the V2 Networking client.
   /// A Networking client is needed to create an endpoint group. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
   /// group.
   final pulumi.Input<String>? region;
-
   /// The owner of the group. Required if admin wants to
   /// create an endpoint group for another project. Changing this creates a new group.
   final pulumi.Input<String>? tenantId;
-
   /// The type of the endpoints in the group. A valid value is subnet, cidr, network, router, or vlan.
   /// Changing this creates a new group.
   final pulumi.Input<String>? type;
-
   /// Map of additional options.
   final pulumi.Input<Map<String, String>>? valueSpecs;
 
@@ -65,43 +59,14 @@ class EndpointGroupState {
 
   factory EndpointGroupState.fromMap(Map<String, dynamic> map) {
     return EndpointGroupState(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      endpoints: (() {
-        final guardedValue = map['endpoints'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tenantId: (() {
-        final guardedValue = map['tenantId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      valueSpecs: (() {
-        final guardedValue = map['valueSpecs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      endpoints: (() { final guardedValue = map['endpoints']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      valueSpecs: (() { final guardedValue = map['valueSpecs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

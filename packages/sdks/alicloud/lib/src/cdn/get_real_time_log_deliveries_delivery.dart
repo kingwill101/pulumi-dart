@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRealTimeLogDeliveriesDelivery {
   /// Real-Time Log Service Domain.
   final pulumi.Input<String> domain;
-
   /// The ID of the Real Time Log Delivery.
   final pulumi.Input<String> id;
-
   /// The name of the Logstore that collects log data from Alibaba Cloud Content Delivery Network (CDN) in real time.
   final pulumi.Input<String> logstore;
-
   /// The name of the Log Service project that is used for real-time log delivery.
   final pulumi.Input<String> project;
-
   /// The region where the Log Service project is deployed.
   final pulumi.Input<String> slsRegion;
-
   /// The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
   final pulumi.Input<String> status;
 
@@ -59,3 +54,4 @@ class GetRealTimeLogDeliveriesDelivery {
     );
   }
 }
+

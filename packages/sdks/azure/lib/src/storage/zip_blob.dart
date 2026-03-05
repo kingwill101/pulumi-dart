@@ -29,11 +29,11 @@ class ZipBlob extends pulumi.CustomResource {
     ZipBlobArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:storage/zipBlob:ZipBlob',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:storage/zipBlob:ZipBlob',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessTier = registerOutput<String>('accessTier');
     cacheControl = registerOutput<String?>('cacheControl');
     content = registerOutput<dynamic>('content');
@@ -70,11 +70,11 @@ class ZipBlob extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:storage/zipBlob:ZipBlob',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:storage/zipBlob:ZipBlob',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessTier = registerOutput<String>('accessTier');
     cacheControl = registerOutput<String?>('cacheControl');
     content = registerOutput<dynamic>('content');

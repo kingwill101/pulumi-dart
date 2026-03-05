@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRegionBackendServiceCustomMetric {
   /// If true, the metric data is not used for load balancing.
   final pulumi.Input<bool> dryRun;
-
   /// The name of the regional backend service.
   final pulumi.Input<String> name;
 
@@ -18,15 +17,17 @@ class GetRegionBackendServiceCustomMetric {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'dryRun': dryRun, 'name': name};
+    return <String, dynamic>{
+      'dryRun': dryRun,
+      'name': name,
+    };
   }
 
-  factory GetRegionBackendServiceCustomMetric.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetRegionBackendServiceCustomMetric.fromMap(Map<String, dynamic> map) {
     return GetRegionBackendServiceCustomMetric(
       dryRun: pulumi.Input.fromValue(map['dryRun'] as bool),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

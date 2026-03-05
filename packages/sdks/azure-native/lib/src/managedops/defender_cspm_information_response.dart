@@ -9,17 +9,20 @@ class DefenderCspmInformationResponse {
 
   /// Creates a new [DefenderCspmInformationResponse].
   /// [enablementStatus] Indicates whether the service is enabled.
-  DefenderCspmInformationResponse({required this.enablementStatus});
+  DefenderCspmInformationResponse({
+    required this.enablementStatus,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enablementStatus': enablementStatus};
+    return <String, dynamic>{
+      'enablementStatus': enablementStatus,
+    };
   }
 
   factory DefenderCspmInformationResponse.fromMap(Map<String, dynamic> map) {
     return DefenderCspmInformationResponse(
-      enablementStatus: pulumi.Input.fromValue(
-        map['enablementStatus'] as String,
-      ),
+      enablementStatus: pulumi.Input.fromValue(map['enablementStatus'] as String),
     );
   }
 }
+

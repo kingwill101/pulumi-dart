@@ -7,15 +7,9 @@ import 'managed_instance_private_link_service_connection_state_property_response
 /// Properties of a private endpoint connection.
 class ManagedInstancePrivateEndpointConnectionPropertiesResponse {
   /// Private endpoint which the connection belongs to.
-  final pulumi.Input<ManagedInstancePrivateEndpointPropertyResponse>?
-  privateEndpoint;
-
+  final pulumi.Input<ManagedInstancePrivateEndpointPropertyResponse>? privateEndpoint;
   /// Connection State of the Private Endpoint Connection.
-  final pulumi.Input<
-    ManagedInstancePrivateLinkServiceConnectionStatePropertyResponse
-  >?
-  privateLinkServiceConnectionState;
-
+  final pulumi.Input<ManagedInstancePrivateLinkServiceConnectionStatePropertyResponse>? privateLinkServiceConnectionState;
   /// State of the Private Endpoint Connection.
   final pulumi.Input<String> provisioningState;
 
@@ -31,45 +25,18 @@ class ManagedInstancePrivateEndpointConnectionPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'privateEndpoint':
-          ?pulumi.Input.mapOptionalInputValue<
-            ManagedInstancePrivateEndpointPropertyResponse,
-            Map<String, dynamic>
-          >(privateEndpoint, (value) => value.toMap()),
-      'privateLinkServiceConnectionState':
-          ?pulumi.Input.mapOptionalInputValue<
-            ManagedInstancePrivateLinkServiceConnectionStatePropertyResponse,
-            Map<String, dynamic>
-          >(privateLinkServiceConnectionState, (value) => value.toMap()),
+      'privateEndpoint': ?pulumi.Input.mapOptionalInputValue<ManagedInstancePrivateEndpointPropertyResponse, Map<String, dynamic>>(privateEndpoint, (value) => value.toMap()),
+      'privateLinkServiceConnectionState': ?pulumi.Input.mapOptionalInputValue<ManagedInstancePrivateLinkServiceConnectionStatePropertyResponse, Map<String, dynamic>>(privateLinkServiceConnectionState, (value) => value.toMap()),
       'provisioningState': provisioningState,
     };
   }
 
-  factory ManagedInstancePrivateEndpointConnectionPropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ManagedInstancePrivateEndpointConnectionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ManagedInstancePrivateEndpointConnectionPropertiesResponse(
-      privateEndpoint: (() {
-        final guardedValue = map['privateEndpoint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ManagedInstancePrivateEndpointPropertyResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      privateLinkServiceConnectionState: (() {
-        final guardedValue = map['privateLinkServiceConnectionState'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ManagedInstancePrivateLinkServiceConnectionStatePropertyResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
+      privateEndpoint: (() { final guardedValue = map['privateEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedInstancePrivateEndpointPropertyResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      privateLinkServiceConnectionState: (() { final guardedValue = map['privateLinkServiceConnectionState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedInstancePrivateLinkServiceConnectionStatePropertyResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
     );
   }
 }
+

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WindowsWebAppStickySettings {
   /// A list of `app_setting` names that the Windows Web App will not swap between Slots when a swap operation is triggered.
   final pulumi.Input<List<String>>? appSettingNames;
-
   /// A list of `connection_string` names that the Windows Web App will not swap between Slots when a swap operation is triggered.
   final pulumi.Input<List<String>>? connectionStringNames;
 
@@ -26,16 +25,9 @@ class WindowsWebAppStickySettings {
 
   factory WindowsWebAppStickySettings.fromMap(Map<String, dynamic> map) {
     return WindowsWebAppStickySettings(
-      appSettingNames: (() {
-        final guardedValue = map['appSettingNames'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      connectionStringNames: (() {
-        final guardedValue = map['connectionStringNames'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      appSettingNames: (() { final guardedValue = map['appSettingNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      connectionStringNames: (() { final guardedValue = map['connectionStringNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LocationPreference {
   /// The App Engine application to follow, it must be in the same region as the Cloud SQL instance. WARNING: Changing this might restart the instance.
   final pulumi.Input<String>? followGaeApplication;
-
   /// This is always `sql#locationPreference`.
   final pulumi.Input<String>? kind;
-
   /// The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.). To disable this field, set it to 'no_secondary_zone'.
   final pulumi.Input<String>? secondaryZone;
-
   /// The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.). WARNING: Changing this might restart the instance.
   final pulumi.Input<String>? zone;
 
@@ -39,26 +36,11 @@ class LocationPreference {
 
   factory LocationPreference.fromMap(Map<String, dynamic> map) {
     return LocationPreference(
-      followGaeApplication: (() {
-        final guardedValue = map['followGaeApplication'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      secondaryZone: (() {
-        final guardedValue = map['secondaryZone'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      zone: (() {
-        final guardedValue = map['zone'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      followGaeApplication: (() { final guardedValue = map['followGaeApplication']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      secondaryZone: (() { final guardedValue = map['secondaryZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      zone: (() { final guardedValue = map['zone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

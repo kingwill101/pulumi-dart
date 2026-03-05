@@ -7,19 +7,15 @@ import 'get_vpc_endpoint_connections_connection.dart';
 class GetVpcEndpointConnectionsResult {
   /// A list of Privatelink Vpc Endpoint Connections. Each element contains the following attributes:
   final List<GetVpcEndpointConnectionsConnection> connections;
-
   /// The ID of the Vpc Endpoint.
   final String? endpointId;
   final int? endpointOwnerId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of Vpc Endpoint Connection IDs.
   final List<String> ids;
   final String? outputFile;
   final String serviceId;
-
   /// The status of Vpc Endpoint Connection.
   final String? status;
 
@@ -45,11 +41,7 @@ class GetVpcEndpointConnectionsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connections':
-          pulumi.Input.encodeList<
-            GetVpcEndpointConnectionsConnection,
-            Map<String, dynamic>
-          >(connections, (value) => value.toMap()),
+      'connections': pulumi.Input.encodeList<GetVpcEndpointConnectionsConnection, Map<String, dynamic>>(connections, (value) => value.toMap()),
       'endpointId': ?endpointId,
       'endpointOwnerId': ?endpointOwnerId,
       'id': id,
@@ -62,35 +54,15 @@ class GetVpcEndpointConnectionsResult {
 
   factory GetVpcEndpointConnectionsResult.fromMap(Map<String, dynamic> map) {
     return GetVpcEndpointConnectionsResult(
-      connections: pulumi.Input.decodeList<GetVpcEndpointConnectionsConnection>(
-        map['connections']!,
-        (value) => GetVpcEndpointConnectionsConnection.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      endpointId: (() {
-        final guardedValue = map['endpointId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      endpointOwnerId: (() {
-        final guardedValue = map['endpointOwnerId'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
+      connections: pulumi.Input.decodeList<GetVpcEndpointConnectionsConnection>(map['connections']!, (value) => GetVpcEndpointConnectionsConnection.fromMap((value as Map).cast<String, dynamic>())),
+      endpointId: (() { final guardedValue = map['endpointId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      endpointOwnerId: (() { final guardedValue = map['endpointOwnerId']; if (guardedValue == null) return null; return guardedValue as int; })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
       serviceId: map['serviceId'] as String,
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

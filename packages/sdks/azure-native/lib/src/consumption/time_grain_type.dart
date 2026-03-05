@@ -19,3 +19,4 @@ enum TimeGrainType {
     throw ArgumentError('Unknown TimeGrainType value: $value');
   }
 }
+

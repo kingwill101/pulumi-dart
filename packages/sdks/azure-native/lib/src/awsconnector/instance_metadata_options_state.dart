@@ -15,3 +15,4 @@ enum InstanceMetadataOptionsState {
     throw ArgumentError('Unknown InstanceMetadataOptionsState value: $value');
   }
 }
+

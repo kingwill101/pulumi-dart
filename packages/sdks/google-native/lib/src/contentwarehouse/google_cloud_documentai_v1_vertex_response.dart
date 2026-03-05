@@ -6,25 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDocumentaiV1VertexResponse {
   /// X coordinate.
   final pulumi.Input<int> x;
-
   /// Y coordinate (starts from the top of the image).
   final pulumi.Input<int> y;
 
   /// Creates a new [GoogleCloudDocumentaiV1VertexResponse].
   /// [x] X coordinate.
   /// [y] Y coordinate (starts from the top of the image).
-  GoogleCloudDocumentaiV1VertexResponse({required this.x, required this.y});
+  GoogleCloudDocumentaiV1VertexResponse({
+    required this.x,
+    required this.y,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'x': x, 'y': y};
+    return <String, dynamic>{
+      'x': x,
+      'y': y,
+    };
   }
 
-  factory GoogleCloudDocumentaiV1VertexResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDocumentaiV1VertexResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1VertexResponse(
       x: pulumi.Input.fromValue(map['x'] as int),
       y: pulumi.Input.fromValue(map['y'] as int),
     );
   }
 }
+

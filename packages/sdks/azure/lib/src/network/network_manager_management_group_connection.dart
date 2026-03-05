@@ -400,16 +400,12 @@ import 'network_manager_management_group_connection_state.dart';
 class NetworkManagerManagementGroupConnection extends pulumi.CustomResource {
   /// The Connection state of the Network Manager Management Group Connection.
   late final pulumi.Output<String> connectionState;
-
   /// A description of the Network Manager Management Group Connection.
   late final pulumi.Output<String?> description;
-
   /// Specifies the ID of the target Management Group. Changing this forces a new resource to be created.
   late final pulumi.Output<String> managementGroupId;
-
   /// Specifies the name which should be used for this Network Manager Management Group Connection. Changing this forces a new Network Manager Management Group Connection to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies the ID of the Network Manager which the Management Group is connected to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> networkManagerId;
 
@@ -422,11 +418,11 @@ class NetworkManagerManagementGroupConnection extends pulumi.CustomResource {
     NetworkManagerManagementGroupConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/networkManagerManagementGroupConnection:NetworkManagerManagementGroupConnection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/networkManagerManagementGroupConnection:NetworkManagerManagementGroupConnection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     connectionState = registerOutput<String>('connectionState');
     description = registerOutput<String?>('description');
     managementGroupId = registerOutput<String>('managementGroupId');
@@ -452,11 +448,11 @@ class NetworkManagerManagementGroupConnection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/networkManagerManagementGroupConnection:NetworkManagerManagementGroupConnection',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/networkManagerManagementGroupConnection:NetworkManagerManagementGroupConnection',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     connectionState = registerOutput<String>('connectionState');
     description = registerOutput<String?>('description');
     managementGroupId = registerOutput<String>('managementGroupId');

@@ -5,46 +5,32 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetHanaBackupClientsHanaBackupClient {
   /// The alert settings.
   final pulumi.Input<String> alertSetting;
-
   /// The ID of the backup client.
   final pulumi.Input<String> clientId;
-
   /// The name of the backup client.
   final pulumi.Input<String> clientName;
-
   /// The type of the backup client.
   final pulumi.Input<String> clientType;
-
   /// The version number of the backup client.
   final pulumi.Input<String> clientVersion;
-
   /// The ID of the SAP HANA instance.
   final pulumi.Input<String> clusterId;
-
   /// The id of the Hana Backup Client. It formats as `&lt;vault_id&gt;:&lt;client_id&gt;`.
   final pulumi.Input<String> id;
-
   /// The ID of the instance.
   final pulumi.Input<String> instanceId;
-
   /// The name of the ECS instance.
   final pulumi.Input<String> instanceName;
-
   /// The maximum version number of the backup client.
   final pulumi.Input<String> maxVersion;
-
   /// The network type.
   final pulumi.Input<String> networkType;
-
   /// The status of the Hana Backup Client. Valid Values: `REGISTERED`, `ACTIVATED`, `DEACTIVATED`, `INSTALLING`, `INSTALL_FAILED`, `NOT_INSTALLED`, `UPGRADING`, `UPGRADE_FAILED`, `UNINSTALLING`, `UNINSTALL_FAILED`, `STOPPED`, `UNKNOWN`.
   final pulumi.Input<String> status;
-
   /// The status information.
   final pulumi.Input<String> statusMessage;
-
   /// Indicates whether data is transmitted over HTTPS.
   final pulumi.Input<bool> useHttps;
-
   /// The ID of the backup vault.
   final pulumi.Input<String> vaultId;
 
@@ -102,9 +88,7 @@ class GetHanaBackupClientsHanaBackupClient {
     };
   }
 
-  factory GetHanaBackupClientsHanaBackupClient.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetHanaBackupClientsHanaBackupClient.fromMap(Map<String, dynamic> map) {
     return GetHanaBackupClientsHanaBackupClient(
       alertSetting: pulumi.Input.fromValue(map['alertSetting'] as String),
       clientId: pulumi.Input.fromValue(map['clientId'] as String),
@@ -124,3 +108,4 @@ class GetHanaBackupClientsHanaBackupClient {
     );
   }
 }
+

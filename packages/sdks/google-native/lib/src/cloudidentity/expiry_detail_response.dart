@@ -9,10 +9,14 @@ class ExpiryDetailResponse {
 
   /// Creates a new [ExpiryDetailResponse].
   /// [expireTime] The time at which the `MembershipRole` will expire.
-  ExpiryDetailResponse({required this.expireTime});
+  ExpiryDetailResponse({
+    required this.expireTime,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'expireTime': expireTime};
+    return <String, dynamic>{
+      'expireTime': expireTime,
+    };
   }
 
   factory ExpiryDetailResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class ExpiryDetailResponse {
     );
   }
 }
+

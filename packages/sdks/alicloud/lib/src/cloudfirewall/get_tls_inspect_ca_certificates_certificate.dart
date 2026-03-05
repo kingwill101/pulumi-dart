@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTlsInspectCaCertificatesCertificate {
   /// CA certificate ID
   final pulumi.Input<String> caCertId;
-
   /// The ID of the resource supplied above.
   final pulumi.Input<String> id;
 
@@ -18,15 +17,17 @@ class GetTlsInspectCaCertificatesCertificate {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'caCertId': caCertId, 'id': id};
+    return <String, dynamic>{
+      'caCertId': caCertId,
+      'id': id,
+    };
   }
 
-  factory GetTlsInspectCaCertificatesCertificate.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetTlsInspectCaCertificatesCertificate.fromMap(Map<String, dynamic> map) {
     return GetTlsInspectCaCertificatesCertificate(
       caCertId: pulumi.Input.fromValue(map['caCertId'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
     );
   }
 }
+

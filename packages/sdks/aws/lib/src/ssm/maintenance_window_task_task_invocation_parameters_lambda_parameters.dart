@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MaintenanceWindowTaskTaskInvocationParametersLambdaParameters {
   /// Pass client-specific information to the Lambda function that you are invoking.
   final pulumi.Input<String>? clientContext;
-
   /// JSON to provide to your Lambda function as input.
   final pulumi.Input<String>? payload;
-
   /// Specify a Lambda function version or alias name.
   final pulumi.Input<String>? qualifier;
 
@@ -30,25 +28,12 @@ class MaintenanceWindowTaskTaskInvocationParametersLambdaParameters {
     };
   }
 
-  factory MaintenanceWindowTaskTaskInvocationParametersLambdaParameters.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MaintenanceWindowTaskTaskInvocationParametersLambdaParameters.fromMap(Map<String, dynamic> map) {
     return MaintenanceWindowTaskTaskInvocationParametersLambdaParameters(
-      clientContext: (() {
-        final guardedValue = map['clientContext'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      payload: (() {
-        final guardedValue = map['payload'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      qualifier: (() {
-        final guardedValue = map['qualifier'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      clientContext: (() { final guardedValue = map['clientContext']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      payload: (() { final guardedValue = map['payload']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      qualifier: (() { final guardedValue = map['qualifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -7,18 +7,14 @@ import 'get_instance_attachments_attachment.dart';
 class GetInstanceAttachmentsResult {
   /// A list of instance attachments. Each element contains the following attributes:
   final List<GetInstanceAttachmentsAttachment> attachments;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The instance name.
   final String instanceName;
   final String? nameRegex;
-
   /// A list of vpc names.
   final List<String> names;
   final String? outputFile;
-
   /// A list of vpc ids.
   final List<String> vpcIds;
 
@@ -42,11 +38,7 @@ class GetInstanceAttachmentsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attachments':
-          pulumi.Input.encodeList<
-            GetInstanceAttachmentsAttachment,
-            Map<String, dynamic>
-          >(attachments, (value) => value.toMap()),
+      'attachments': pulumi.Input.encodeList<GetInstanceAttachmentsAttachment, Map<String, dynamic>>(attachments, (value) => value.toMap()),
       'id': id,
       'instanceName': instanceName,
       'nameRegex': ?nameRegex,
@@ -58,26 +50,14 @@ class GetInstanceAttachmentsResult {
 
   factory GetInstanceAttachmentsResult.fromMap(Map<String, dynamic> map) {
     return GetInstanceAttachmentsResult(
-      attachments: pulumi.Input.decodeList<GetInstanceAttachmentsAttachment>(
-        map['attachments']!,
-        (value) => GetInstanceAttachmentsAttachment.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      attachments: pulumi.Input.decodeList<GetInstanceAttachmentsAttachment>(map['attachments']!, (value) => GetInstanceAttachmentsAttachment.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       instanceName: map['instanceName'] as String,
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
       vpcIds: (map['vpcIds'] as List).cast<String>(),
     );
   }
 }
+

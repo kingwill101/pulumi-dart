@@ -10,13 +10,10 @@ import 'billing_profile_properties.dart';
 class BillingProfileArgs {
   /// The ID that uniquely identifies a billing account.
   final pulumi.Input<String> billingAccountName;
-
   /// The ID that uniquely identifies a billing profile.
   final pulumi.Input<String>? billingProfileName;
-
   /// A billing profile.
   final pulumi.Input<BillingProfileProperties>? properties;
-
   /// Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain &lt; &gt; % & \ ? /
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -36,41 +33,18 @@ class BillingProfileArgs {
     return <String, dynamic>{
       'billingAccountName': billingAccountName,
       'billingProfileName': ?billingProfileName,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            BillingProfileProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<BillingProfileProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'tags': ?tags,
     };
   }
 
   factory BillingProfileArgs.fromMap(Map<String, dynamic> map) {
     return BillingProfileArgs(
-      billingAccountName: pulumi.Input.fromValue(
-        map['billingAccountName'] as String,
-      ),
-      billingProfileName: (() {
-        final guardedValue = map['billingProfileName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BillingProfileProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      billingAccountName: pulumi.Input.fromValue(map['billingAccountName'] as String),
+      billingProfileName: (() { final guardedValue = map['billingProfileName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BillingProfileProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

@@ -6,27 +6,20 @@ import 'security_profile_group_args.dart';
 class SecurityProfileGroup extends pulumi.CustomResource {
   /// Resource creation timestamp.
   late final pulumi.Output<String> createTime;
-
   /// Optional. An optional description of the profile group. Max length 2048 characters.
   late final pulumi.Output<String> description;
-
   /// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
   late final pulumi.Output<String> etag;
-
   /// Optional. Labels as key value pairs.
   late final pulumi.Output<Map<String, String>> labels;
   late final pulumi.Output<String> location;
-
   /// Immutable. Identifier. Name of the SecurityProfileGroup resource. It matches pattern `projects|organizations/*/locations/{location}/securityProfileGroups/{security_profile_group}`.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> organizationId;
-
   /// Required. Short name of the SecurityProfileGroup resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "security_profile_group1".
   late final pulumi.Output<String> securityProfileGroupId;
-
   /// Optional. Reference to a SecurityProfile with the threat prevention configuration for the SecurityProfileGroup.
   late final pulumi.Output<String> threatPreventionProfile;
-
   /// Last resource update timestamp.
   late final pulumi.Output<String> updateTime;
 
@@ -39,11 +32,11 @@ class SecurityProfileGroup extends pulumi.CustomResource {
     SecurityProfileGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'google-native:networksecurity/v1beta1:SecurityProfileGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'google-native:networksecurity/v1beta1:SecurityProfileGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     etag = registerOutput<String>('etag');

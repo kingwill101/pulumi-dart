@@ -7,32 +7,23 @@ import 'node_fqdn.dart';
 class NodeState {
   /// IP or hostname of the node
   final pulumi.Input<String>? address;
-
   /// Specifies the maximum number of connections allowed for the node or node address.
   final pulumi.Input<int>? connectionLimit;
-
   /// User-defined description give ltm_node
   final pulumi.Input<String>? description;
-
   /// Specifies the fixed ratio value used for a node during ratio load balancing.
   final pulumi.Input<int>? dynamicRatio;
   final pulumi.Input<NodeFqdn>? fqdn;
-
   /// specifies the name of the monitor or monitor rule that you want to associate with the node.
   final pulumi.Input<String>? monitor;
-
   /// Name of the node
   final pulumi.Input<String>? name;
-
   /// Specifies the maximum number of connections per second allowed for a node or node address. The default value is 'disabled'.
   final pulumi.Input<String>? rateLimit;
-
   /// Sets the ratio number for the node.
   final pulumi.Input<int>? ratio;
-
   /// Enables or disables the node for new sessions. The default value is user-enabled.
   final pulumi.Input<String>? session;
-
   /// Default is "user-up" you can set to "user-down" if you want to disable
   ///
   /// &gt; *NOTE* Below attributes needs to be configured under fqdn option.
@@ -70,11 +61,7 @@ class NodeState {
       'connectionLimit': ?connectionLimit,
       'description': ?description,
       'dynamicRatio': ?dynamicRatio,
-      'fqdn':
-          ?pulumi.Input.mapOptionalInputValue<NodeFqdn, Map<String, dynamic>>(
-            fqdn,
-            (value) => value.toMap(),
-          ),
+      'fqdn': ?pulumi.Input.mapOptionalInputValue<NodeFqdn, Map<String, dynamic>>(fqdn, (value) => value.toMap()),
       'monitor': ?monitor,
       'name': ?name,
       'rateLimit': ?rateLimit,
@@ -86,63 +73,18 @@ class NodeState {
 
   factory NodeState.fromMap(Map<String, dynamic> map) {
     return NodeState(
-      address: (() {
-        final guardedValue = map['address'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      connectionLimit: (() {
-        final guardedValue = map['connectionLimit'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dynamicRatio: (() {
-        final guardedValue = map['dynamicRatio'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      fqdn: (() {
-        final guardedValue = map['fqdn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          NodeFqdn.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      monitor: (() {
-        final guardedValue = map['monitor'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      rateLimit: (() {
-        final guardedValue = map['rateLimit'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ratio: (() {
-        final guardedValue = map['ratio'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      session: (() {
-        final guardedValue = map['session'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      address: (() { final guardedValue = map['address']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      connectionLimit: (() { final guardedValue = map['connectionLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dynamicRatio: (() { final guardedValue = map['dynamicRatio']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      fqdn: (() { final guardedValue = map['fqdn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodeFqdn.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      monitor: (() { final guardedValue = map['monitor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      rateLimit: (() { final guardedValue = map['rateLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ratio: (() { final guardedValue = map['ratio']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      session: (() { final guardedValue = map['session']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

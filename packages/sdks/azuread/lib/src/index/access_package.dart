@@ -158,13 +158,10 @@ import 'access_package_state.dart';
 class AccessPackage extends pulumi.CustomResource {
   /// The ID of the Catalog this access package will be created in.
   late final pulumi.Output<String> catalogId;
-
   /// The description of the access package.
   late final pulumi.Output<String> description;
-
   /// The display name of the access package.
   late final pulumi.Output<String> displayName;
-
   /// Whether the access package is hidden from the requestor.
   late final pulumi.Output<bool?> hidden;
 
@@ -177,11 +174,11 @@ class AccessPackage extends pulumi.CustomResource {
     AccessPackageArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/accessPackage:AccessPackage',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azuread:index/accessPackage:AccessPackage',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     catalogId = registerOutput<String>('catalogId');
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
@@ -206,11 +203,11 @@ class AccessPackage extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/accessPackage:AccessPackage',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azuread:index/accessPackage:AccessPackage',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     catalogId = registerOutput<String>('catalogId');
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');

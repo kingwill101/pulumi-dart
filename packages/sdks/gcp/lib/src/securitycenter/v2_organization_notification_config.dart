@@ -188,33 +188,25 @@ import 'v2_organization_notification_config_streaming_config.dart';
 class V2OrganizationNotificationConfig extends pulumi.CustomResource {
   /// This must be unique within the organization.
   late final pulumi.Output<String> configId;
-
   /// The description of the notification config (max of 1024 characters).
   late final pulumi.Output<String?> description;
-
   /// location Id is provided by organization. If not provided, Use global as default.
   late final pulumi.Output<String?> location;
-
   /// The resource name of this notification config, in the format
   /// `organizations/{{organization}}/notificationConfigs/{{config_id}}`.
   late final pulumi.Output<String> name;
-
   /// The organization whose Cloud Security Command Center the Notification
   /// Config lives in.
   late final pulumi.Output<String> organization;
-
   /// The Pub/Sub topic to send notifications to. Its format is
   /// "projects/[project_id]/topics/[topic]".
   late final pulumi.Output<String> pubsubTopic;
-
   /// The service account that needs "pubsub.topics.publish" permission to
   /// publish to the Pub/Sub topic.
   late final pulumi.Output<String> serviceAccount;
-
   /// The config for triggering streaming-based notifications.
   /// Structure is documented below.
-  late final pulumi.Output<V2OrganizationNotificationConfigStreamingConfig>
-  streamingConfig;
+  late final pulumi.Output<V2OrganizationNotificationConfigStreamingConfig> streamingConfig;
 
   /// Creates a new [V2OrganizationNotificationConfig].
   /// [name] The Pulumi resource name.
@@ -225,11 +217,11 @@ class V2OrganizationNotificationConfig extends pulumi.CustomResource {
     V2OrganizationNotificationConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:securitycenter/v2OrganizationNotificationConfig:V2OrganizationNotificationConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:securitycenter/v2OrganizationNotificationConfig:V2OrganizationNotificationConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     configId = registerOutput<String>('configId');
     description = registerOutput<String?>('description');
     location = registerOutput<String?>('location');
@@ -237,17 +229,7 @@ class V2OrganizationNotificationConfig extends pulumi.CustomResource {
     organization = registerOutput<String>('organization');
     pubsubTopic = registerOutput<String>('pubsubTopic');
     serviceAccount = registerOutput<String>('serviceAccount');
-    streamingConfig =
-        registerOutput<V2OrganizationNotificationConfigStreamingConfig>(
-          'streamingConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return V2OrganizationNotificationConfigStreamingConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    streamingConfig = registerOutput<V2OrganizationNotificationConfigStreamingConfig>('streamingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2OrganizationNotificationConfigStreamingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [V2OrganizationNotificationConfig] resource's state with the given [name] and [id].
@@ -268,11 +250,11 @@ class V2OrganizationNotificationConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:securitycenter/v2OrganizationNotificationConfig:V2OrganizationNotificationConfig',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:securitycenter/v2OrganizationNotificationConfig:V2OrganizationNotificationConfig',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     configId = registerOutput<String>('configId');
     description = registerOutput<String?>('description');
     location = registerOutput<String?>('location');
@@ -280,16 +262,6 @@ class V2OrganizationNotificationConfig extends pulumi.CustomResource {
     organization = registerOutput<String>('organization');
     pubsubTopic = registerOutput<String>('pubsubTopic');
     serviceAccount = registerOutput<String>('serviceAccount');
-    streamingConfig =
-        registerOutput<V2OrganizationNotificationConfigStreamingConfig>(
-          'streamingConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return V2OrganizationNotificationConfigStreamingConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    streamingConfig = registerOutput<V2OrganizationNotificationConfigStreamingConfig>('streamingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2OrganizationNotificationConfigStreamingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEnvironmentConfigWorkloadsConfigWebServer {
   /// CPU request and limit for Airflow web server.
   final pulumi.Input<double> cpu;
-
   /// Memory (GB) request and limit for Airflow web server.
   final pulumi.Input<double> memoryGb;
-
   /// Storage (GB) request and limit for Airflow web server.
   final pulumi.Input<double> storageGb;
 
@@ -30,9 +28,7 @@ class GetEnvironmentConfigWorkloadsConfigWebServer {
     };
   }
 
-  factory GetEnvironmentConfigWorkloadsConfigWebServer.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetEnvironmentConfigWorkloadsConfigWebServer.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentConfigWorkloadsConfigWebServer(
       cpu: pulumi.Input.fromValue(map['cpu'] as double),
       memoryGb: pulumi.Input.fromValue(map['memoryGb'] as double),
@@ -40,3 +36,4 @@ class GetEnvironmentConfigWorkloadsConfigWebServer {
     );
   }
 }
+

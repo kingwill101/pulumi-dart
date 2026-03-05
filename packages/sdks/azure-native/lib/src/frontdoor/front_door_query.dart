@@ -17,3 +17,4 @@ enum FrontDoorQuery {
     throw ArgumentError('Unknown FrontDoorQuery value: $value');
   }
 }
+

@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GkeNamespaceResponse {
   /// The name of the parent cluster.
   final pulumi.Input<String> clusterName;
-
   /// The location of the parent cluster. This may be a zone or region.
   final pulumi.Input<String> location;
-
   /// The name of this namespace.
   final pulumi.Input<String> namespaceName;
-
   /// The project this resource lives in. For legacy services migrated from the Custom type, this may be a distinct project from the one parenting the service itself.
   final pulumi.Input<String> project;
 
@@ -46,3 +43,4 @@ class GkeNamespaceResponse {
     );
   }
 }
+

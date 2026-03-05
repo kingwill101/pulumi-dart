@@ -256,22 +256,16 @@ import 'policy_state.dart';
 class Policy extends pulumi.CustomResource {
   /// Specifies the controls
   late final pulumi.Output<List<String>?> controls;
-
   /// Specifies descriptive text that identifies the ltm policy.
   late final pulumi.Output<String?> description;
-
   /// Name of the Policy ( policy name should be in full path which is combination of partition and policy name )
   late final pulumi.Output<String> name;
-
   /// If you want to publish the policy else it will be deployed in Drafts mode. This attribute is deprecated and will be removed in a future release.
   late final pulumi.Output<String?> publishedCopy;
-
   /// Specifies the protocol
   late final pulumi.Output<List<String>?> requires;
-
   /// List of Rules can be applied using the policy. Each rule is block type with following arguments.
   late final pulumi.Output<List<Map<String, dynamic>>?> rules;
-
   /// Specifies the match strategy
   late final pulumi.Output<String?> strategy;
 
@@ -279,13 +273,16 @@ class Policy extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Policy]. {@macro pulumi_ltm_policy_policy_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Policy(String name, {PolicyArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'f5bigip:ltm/policy:Policy',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Policy(
+    String name, {
+    PolicyArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'f5bigip:ltm/policy:Policy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     controls = registerOutput<List<String>?>('controls');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
@@ -313,11 +310,11 @@ class Policy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:ltm/policy:Policy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:ltm/policy:Policy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     controls = registerOutput<List<String>?>('controls');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');

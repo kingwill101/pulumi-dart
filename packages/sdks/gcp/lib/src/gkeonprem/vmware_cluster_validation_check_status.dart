@@ -11,39 +11,20 @@ class VMwareClusterValidationCheckStatus {
 
   /// Creates a new [VMwareClusterValidationCheckStatus].
   /// [results] (Output)
-  VMwareClusterValidationCheckStatus({this.results});
+  VMwareClusterValidationCheckStatus({
+    this.results,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'results':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<VMwareClusterValidationCheckStatusResult>,
-            List<Map<String, dynamic>>
-          >(
-            results,
-            (value) =>
-                pulumi.Input.encodeList<
-                  VMwareClusterValidationCheckStatusResult,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'results': ?pulumi.Input.mapOptionalInputValue<List<VMwareClusterValidationCheckStatusResult>, List<Map<String, dynamic>>>(results, (value) => pulumi.Input.encodeList<VMwareClusterValidationCheckStatusResult, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory VMwareClusterValidationCheckStatus.fromMap(Map<String, dynamic> map) {
     return VMwareClusterValidationCheckStatus(
-      results: (() {
-        final guardedValue = map['results'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<VMwareClusterValidationCheckStatusResult>(
-            guardedValue,
-            (value) => VMwareClusterValidationCheckStatusResult.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      results: (() { final guardedValue = map['results']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VMwareClusterValidationCheckStatusResult>(guardedValue, (value) => VMwareClusterValidationCheckStatusResult.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

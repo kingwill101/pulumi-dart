@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EncryptionV2ResponseKeyVaultProperties {
   /// The name of KeyVault key.
   final pulumi.Input<String> keyName;
-
   /// The Uri of KeyVault.
   final pulumi.Input<String> keyVaultUri;
-
   /// The version of KeyVault key.
   final pulumi.Input<String> keyVersion;
 
@@ -31,9 +29,7 @@ class EncryptionV2ResponseKeyVaultProperties {
     };
   }
 
-  factory EncryptionV2ResponseKeyVaultProperties.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EncryptionV2ResponseKeyVaultProperties.fromMap(Map<String, dynamic> map) {
     return EncryptionV2ResponseKeyVaultProperties(
       keyName: pulumi.Input.fromValue(map['keyName'] as String),
       keyVaultUri: pulumi.Input.fromValue(map['keyVaultUri'] as String),
@@ -41,3 +37,4 @@ class EncryptionV2ResponseKeyVaultProperties {
     );
   }
 }
+

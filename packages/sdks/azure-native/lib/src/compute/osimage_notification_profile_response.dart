@@ -5,14 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OSImageNotificationProfileResponse {
   /// Specifies whether the OS Image Scheduled event is enabled or disabled.
   final pulumi.Input<bool>? enable;
-
   /// Length of time a Virtual Machine being reimaged or having its OS upgraded will have to potentially approve the OS Image Scheduled Event before the event is auto approved (timed out). The configuration is specified in ISO 8601 format, and the value must be 15 minutes (PT15M)
   final pulumi.Input<String>? notBeforeTimeout;
 
   /// Creates a new [OSImageNotificationProfileResponse].
   /// [enable] Specifies whether the OS Image Scheduled event is enabled or disabled.
   /// [notBeforeTimeout] Length of time a Virtual Machine being reimaged or having its OS upgraded will have to potentially approve the OS Image Scheduled Event before the event is auto approved (timed out). The configuration is specified in ISO 8601 format, and the value must be 15 minutes (PT15M)
-  OSImageNotificationProfileResponse({this.enable, this.notBeforeTimeout});
+  OSImageNotificationProfileResponse({
+    this.enable,
+    this.notBeforeTimeout,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -23,16 +25,9 @@ class OSImageNotificationProfileResponse {
 
   factory OSImageNotificationProfileResponse.fromMap(Map<String, dynamic> map) {
     return OSImageNotificationProfileResponse(
-      enable: (() {
-        final guardedValue = map['enable'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      notBeforeTimeout: (() {
-        final guardedValue = map['notBeforeTimeout'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      enable: (() { final guardedValue = map['enable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      notBeforeTimeout: (() { final guardedValue = map['notBeforeTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

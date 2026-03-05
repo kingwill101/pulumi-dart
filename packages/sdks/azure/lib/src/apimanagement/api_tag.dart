@@ -264,7 +264,6 @@ import 'api_tag_state.dart';
 class ApiTag extends pulumi.CustomResource {
   /// The ID of the API Management API. Changing this forces a new API Management API Tag to be created.
   late final pulumi.Output<String> apiId;
-
   /// The name of the tag. It must be known in the API Management instance. Changing this forces a new API Management API Tag to be created.
   late final pulumi.Output<String> name;
 
@@ -272,13 +271,16 @@ class ApiTag extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [ApiTag]. {@macro pulumi_apimanagement_api_tag_api_tag_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  ApiTag(String name, {ApiTagArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure:apimanagement/apiTag:ApiTag',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  ApiTag(
+    String name, {
+    ApiTagArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure:apimanagement/apiTag:ApiTag',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiId = registerOutput<String>('apiId');
     this.name = registerOutput<String>('name');
   }
@@ -301,11 +303,11 @@ class ApiTag extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/apiTag:ApiTag',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:apimanagement/apiTag:ApiTag',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiId = registerOutput<String>('apiId');
     this.name = registerOutput<String>('name');
   }

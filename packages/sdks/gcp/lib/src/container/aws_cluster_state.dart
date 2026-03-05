@@ -16,65 +16,45 @@ class AwsClusterState {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
-
   /// Configuration related to the cluster RBAC settings.
   final pulumi.Input<AwsClusterAuthorization>? authorization;
-
   /// The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
   final pulumi.Input<String>? awsRegion;
-
   /// Configuration options for the Binary Authorization feature.
   final pulumi.Input<AwsClusterBinaryAuthorization>? binaryAuthorization;
-
   /// Configuration related to the cluster control plane.
   final pulumi.Input<AwsClusterControlPlane>? controlPlane;
-
   /// Output only. The time at which this cluster was created.
   final pulumi.Input<String>? createTime;
-
   /// Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
   final pulumi.Input<String>? description;
   final pulumi.Input<Map<String, String>>? effectiveAnnotations;
-
   /// Output only. The endpoint of the cluster's API server.
   final pulumi.Input<String>? endpoint;
-
   /// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
   final pulumi.Input<String>? etag;
-
   /// Fleet configuration.
   final pulumi.Input<AwsClusterFleet>? fleet;
-
   /// The location for the resource
   final pulumi.Input<String>? location;
-
   /// Logging configuration.
   final pulumi.Input<AwsClusterLoggingConfig>? loggingConfig;
-
   /// The name of this resource.
   final pulumi.Input<String>? name;
-
   /// Cluster-wide networking configuration.
   final pulumi.Input<AwsClusterNetworking>? networking;
-
   /// The project for the resource
   final pulumi.Input<String>? project;
-
   /// Output only. If set, there are currently changes in flight to the cluster.
   final pulumi.Input<bool>? reconciling;
-
   /// Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
   final pulumi.Input<String>? state;
-
   /// Output only. A globally unique identifier for the cluster.
   final pulumi.Input<String>? uid;
-
   /// Output only. The time at which this cluster was last updated.
   final pulumi.Input<String>? updateTime;
-
   /// Output only. Workload Identity settings.
-  final pulumi.Input<List<AwsClusterWorkloadIdentityConfig>>?
-  workloadIdentityConfigs;
+  final pulumi.Input<List<AwsClusterWorkloadIdentityConfig>>? workloadIdentityConfigs;
 
   /// Creates a new [AwsClusterState].
   /// [annotations] Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
@@ -125,206 +105,53 @@ class AwsClusterState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'annotations': ?annotations,
-      'authorization':
-          ?pulumi.Input.mapOptionalInputValue<
-            AwsClusterAuthorization,
-            Map<String, dynamic>
-          >(authorization, (value) => value.toMap()),
+      'authorization': ?pulumi.Input.mapOptionalInputValue<AwsClusterAuthorization, Map<String, dynamic>>(authorization, (value) => value.toMap()),
       'awsRegion': ?awsRegion,
-      'binaryAuthorization':
-          ?pulumi.Input.mapOptionalInputValue<
-            AwsClusterBinaryAuthorization,
-            Map<String, dynamic>
-          >(binaryAuthorization, (value) => value.toMap()),
-      'controlPlane':
-          ?pulumi.Input.mapOptionalInputValue<
-            AwsClusterControlPlane,
-            Map<String, dynamic>
-          >(controlPlane, (value) => value.toMap()),
+      'binaryAuthorization': ?pulumi.Input.mapOptionalInputValue<AwsClusterBinaryAuthorization, Map<String, dynamic>>(binaryAuthorization, (value) => value.toMap()),
+      'controlPlane': ?pulumi.Input.mapOptionalInputValue<AwsClusterControlPlane, Map<String, dynamic>>(controlPlane, (value) => value.toMap()),
       'createTime': ?createTime,
       'description': ?description,
       'effectiveAnnotations': ?effectiveAnnotations,
       'endpoint': ?endpoint,
       'etag': ?etag,
-      'fleet':
-          ?pulumi.Input.mapOptionalInputValue<
-            AwsClusterFleet,
-            Map<String, dynamic>
-          >(fleet, (value) => value.toMap()),
+      'fleet': ?pulumi.Input.mapOptionalInputValue<AwsClusterFleet, Map<String, dynamic>>(fleet, (value) => value.toMap()),
       'location': ?location,
-      'loggingConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            AwsClusterLoggingConfig,
-            Map<String, dynamic>
-          >(loggingConfig, (value) => value.toMap()),
+      'loggingConfig': ?pulumi.Input.mapOptionalInputValue<AwsClusterLoggingConfig, Map<String, dynamic>>(loggingConfig, (value) => value.toMap()),
       'name': ?name,
-      'networking':
-          ?pulumi.Input.mapOptionalInputValue<
-            AwsClusterNetworking,
-            Map<String, dynamic>
-          >(networking, (value) => value.toMap()),
+      'networking': ?pulumi.Input.mapOptionalInputValue<AwsClusterNetworking, Map<String, dynamic>>(networking, (value) => value.toMap()),
       'project': ?project,
       'reconciling': ?reconciling,
       'state': ?state,
       'uid': ?uid,
       'updateTime': ?updateTime,
-      'workloadIdentityConfigs':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<AwsClusterWorkloadIdentityConfig>,
-            List<Map<String, dynamic>>
-          >(
-            workloadIdentityConfigs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  AwsClusterWorkloadIdentityConfig,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'workloadIdentityConfigs': ?pulumi.Input.mapOptionalInputValue<List<AwsClusterWorkloadIdentityConfig>, List<Map<String, dynamic>>>(workloadIdentityConfigs, (value) => pulumi.Input.encodeList<AwsClusterWorkloadIdentityConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AwsClusterState.fromMap(Map<String, dynamic> map) {
     return AwsClusterState(
-      annotations: (() {
-        final guardedValue = map['annotations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      authorization: (() {
-        final guardedValue = map['authorization'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AwsClusterAuthorization.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      awsRegion: (() {
-        final guardedValue = map['awsRegion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      binaryAuthorization: (() {
-        final guardedValue = map['binaryAuthorization'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AwsClusterBinaryAuthorization.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      controlPlane: (() {
-        final guardedValue = map['controlPlane'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AwsClusterControlPlane.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      effectiveAnnotations: (() {
-        final guardedValue = map['effectiveAnnotations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      endpoint: (() {
-        final guardedValue = map['endpoint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      etag: (() {
-        final guardedValue = map['etag'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      fleet: (() {
-        final guardedValue = map['fleet'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AwsClusterFleet.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      loggingConfig: (() {
-        final guardedValue = map['loggingConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AwsClusterLoggingConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      networking: (() {
-        final guardedValue = map['networking'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AwsClusterNetworking.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      reconciling: (() {
-        final guardedValue = map['reconciling'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      uid: (() {
-        final guardedValue = map['uid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      updateTime: (() {
-        final guardedValue = map['updateTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      workloadIdentityConfigs: (() {
-        final guardedValue = map['workloadIdentityConfigs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<AwsClusterWorkloadIdentityConfig>(
-            guardedValue,
-            (value) => AwsClusterWorkloadIdentityConfig.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      authorization: (() { final guardedValue = map['authorization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AwsClusterAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      awsRegion: (() { final guardedValue = map['awsRegion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      binaryAuthorization: (() { final guardedValue = map['binaryAuthorization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AwsClusterBinaryAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      controlPlane: (() { final guardedValue = map['controlPlane']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AwsClusterControlPlane.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      effectiveAnnotations: (() { final guardedValue = map['effectiveAnnotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      endpoint: (() { final guardedValue = map['endpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      fleet: (() { final guardedValue = map['fleet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AwsClusterFleet.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      loggingConfig: (() { final guardedValue = map['loggingConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AwsClusterLoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      networking: (() { final guardedValue = map['networking']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AwsClusterNetworking.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      reconciling: (() { final guardedValue = map['reconciling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      uid: (() { final guardedValue = map['uid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      workloadIdentityConfigs: (() { final guardedValue = map['workloadIdentityConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AwsClusterWorkloadIdentityConfig>(guardedValue, (value) => AwsClusterWorkloadIdentityConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

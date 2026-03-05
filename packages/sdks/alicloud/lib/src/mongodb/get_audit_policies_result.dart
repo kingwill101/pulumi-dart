@@ -6,7 +6,6 @@ import 'get_audit_policies_policy.dart';
 /// Result data returned by getAuditPolicies.
 class GetAuditPoliciesResult {
   final String dbInstanceId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? outputFile;
@@ -29,11 +28,7 @@ class GetAuditPoliciesResult {
       'dbInstanceId': dbInstanceId,
       'id': id,
       'outputFile': ?outputFile,
-      'policies':
-          pulumi.Input.encodeList<GetAuditPoliciesPolicy, Map<String, dynamic>>(
-            policies,
-            (value) => value.toMap(),
-          ),
+      'policies': pulumi.Input.encodeList<GetAuditPoliciesPolicy, Map<String, dynamic>>(policies, (value) => value.toMap()),
     };
   }
 
@@ -41,17 +36,9 @@ class GetAuditPoliciesResult {
     return GetAuditPoliciesResult(
       dbInstanceId: map['dbInstanceId'] as String,
       id: map['id'] as String,
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      policies: pulumi.Input.decodeList<GetAuditPoliciesPolicy>(
-        map['policies']!,
-        (value) => GetAuditPoliciesPolicy.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      policies: pulumi.Input.decodeList<GetAuditPoliciesPolicy>(map['policies']!, (value) => GetAuditPoliciesPolicy.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

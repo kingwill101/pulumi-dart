@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccessPointPublicAccessBlockConfiguration {
   /// Whether Amazon S3 blocks public ACLs for buckets in this account.
   final pulumi.Input<bool> blockPublicAcls;
-
   /// Whether Amazon S3 blocks public bucket policies for buckets in this account.
   final pulumi.Input<bool> blockPublicPolicy;
-
   /// Whether Amazon S3 ignores public ACLs for buckets in this account.
   final pulumi.Input<bool> ignorePublicAcls;
-
   /// Whether Amazon S3 restricts public bucket policies for buckets in this account.
   final pulumi.Input<bool> restrictPublicBuckets;
 
@@ -36,18 +33,13 @@ class GetAccessPointPublicAccessBlockConfiguration {
     };
   }
 
-  factory GetAccessPointPublicAccessBlockConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetAccessPointPublicAccessBlockConfiguration.fromMap(Map<String, dynamic> map) {
     return GetAccessPointPublicAccessBlockConfiguration(
       blockPublicAcls: pulumi.Input.fromValue(map['blockPublicAcls'] as bool),
-      blockPublicPolicy: pulumi.Input.fromValue(
-        map['blockPublicPolicy'] as bool,
-      ),
+      blockPublicPolicy: pulumi.Input.fromValue(map['blockPublicPolicy'] as bool),
       ignorePublicAcls: pulumi.Input.fromValue(map['ignorePublicAcls'] as bool),
-      restrictPublicBuckets: pulumi.Input.fromValue(
-        map['restrictPublicBuckets'] as bool,
-      ),
+      restrictPublicBuckets: pulumi.Input.fromValue(map['restrictPublicBuckets'] as bool),
     );
   }
 }
+

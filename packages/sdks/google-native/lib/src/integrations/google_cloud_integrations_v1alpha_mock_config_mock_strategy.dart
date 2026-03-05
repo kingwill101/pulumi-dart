@@ -9,17 +9,13 @@ enum GoogleCloudIntegrationsV1alphaMockConfigMockStrategy {
   const GoogleCloudIntegrationsV1alphaMockConfigMockStrategy(this.wireValue);
   final String wireValue;
 
-  static GoogleCloudIntegrationsV1alphaMockConfigMockStrategy fromValue(
-    String value,
-  ) {
-    for (final item
-        in GoogleCloudIntegrationsV1alphaMockConfigMockStrategy.values) {
+  static GoogleCloudIntegrationsV1alphaMockConfigMockStrategy fromValue(String value) {
+    for (final item in GoogleCloudIntegrationsV1alphaMockConfigMockStrategy.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GoogleCloudIntegrationsV1alphaMockConfigMockStrategy value: $value',
-    );
+    throw ArgumentError('Unknown GoogleCloudIntegrationsV1alphaMockConfigMockStrategy value: $value');
   }
 }
+

@@ -8,49 +8,34 @@ import 'guest_os_feature_response_compute_v1.dart';
 class SavedAttachedDiskResponseComputeV1 {
   /// Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance).
   final pulumi.Input<bool> autoDelete;
-
   /// Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem.
   final pulumi.Input<bool> boot;
-
   /// Specifies the name of the disk attached to the source instance.
   final pulumi.Input<String> deviceName;
-
   /// The encryption key for the disk.
   final pulumi.Input<CustomerEncryptionKeyResponseComputeV1> diskEncryptionKey;
-
   /// The size of the disk in base-2 GB.
   final pulumi.Input<String> diskSizeGb;
-
   /// URL of the disk type resource. For example: projects/project /zones/zone/diskTypes/pd-standard or pd-ssd
   final pulumi.Input<String> diskType;
-
   /// A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
   final pulumi.Input<List<GuestOsFeatureResponseComputeV1>> guestOsFeatures;
-
   /// Specifies zero-based index of the disk that is attached to the source instance.
   final pulumi.Input<int> index;
-
   /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME.
   final pulumi.Input<String> interface;
-
   /// Type of the resource. Always compute#attachedDisk for attached disks.
   final pulumi.Input<String> kind;
-
   /// Any valid publicly visible licenses.
   final pulumi.Input<List<String>> licenses;
-
   /// The mode in which this disk is attached to the source instance, either READ_WRITE or READ_ONLY.
   final pulumi.Input<String> mode;
-
   /// Specifies a URL of the disk attached to the source instance.
   final pulumi.Input<String> source;
-
   /// A size of the storage used by the disk's snapshot by this machine image.
   final pulumi.Input<String> storageBytes;
-
   /// An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation. This status can either be UPDATING, meaning the size of the snapshot is being updated, or UP_TO_DATE, meaning the size of the snapshot is up-to-date.
   final pulumi.Input<String> storageBytesStatus;
-
   /// Specifies the type of the attached disk, either SCRATCH or PERSISTENT.
   final pulumi.Input<String> type;
 
@@ -95,25 +80,10 @@ class SavedAttachedDiskResponseComputeV1 {
       'autoDelete': autoDelete,
       'boot': boot,
       'deviceName': deviceName,
-      'diskEncryptionKey':
-          pulumi.Input.mapInputValue<
-            CustomerEncryptionKeyResponseComputeV1,
-            Map<String, dynamic>
-          >(diskEncryptionKey, (value) => value.toMap()),
+      'diskEncryptionKey': pulumi.Input.mapInputValue<CustomerEncryptionKeyResponseComputeV1, Map<String, dynamic>>(diskEncryptionKey, (value) => value.toMap()),
       'diskSizeGb': diskSizeGb,
       'diskType': diskType,
-      'guestOsFeatures':
-          pulumi.Input.mapInputValue<
-            List<GuestOsFeatureResponseComputeV1>,
-            List<Map<String, dynamic>>
-          >(
-            guestOsFeatures,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GuestOsFeatureResponseComputeV1,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'guestOsFeatures': pulumi.Input.mapInputValue<List<GuestOsFeatureResponseComputeV1>, List<Map<String, dynamic>>>(guestOsFeatures, (value) => pulumi.Input.encodeList<GuestOsFeatureResponseComputeV1, Map<String, dynamic>>(value, (value) => value.toMap())),
       'index': index,
       'interface': interface,
       'kind': kind,
@@ -131,34 +101,20 @@ class SavedAttachedDiskResponseComputeV1 {
       autoDelete: pulumi.Input.fromValue(map['autoDelete'] as bool),
       boot: pulumi.Input.fromValue(map['boot'] as bool),
       deviceName: pulumi.Input.fromValue(map['deviceName'] as String),
-      diskEncryptionKey: pulumi.Input.fromValue(
-        CustomerEncryptionKeyResponseComputeV1.fromMap(
-          (map['diskEncryptionKey']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      diskEncryptionKey: pulumi.Input.fromValue(CustomerEncryptionKeyResponseComputeV1.fromMap((map['diskEncryptionKey']! as Map).cast<String, dynamic>())),
       diskSizeGb: pulumi.Input.fromValue(map['diskSizeGb'] as String),
       diskType: pulumi.Input.fromValue(map['diskType'] as String),
-      guestOsFeatures: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GuestOsFeatureResponseComputeV1>(
-          map['guestOsFeatures']!,
-          (value) => GuestOsFeatureResponseComputeV1.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      guestOsFeatures: pulumi.Input.fromValue(pulumi.Input.decodeList<GuestOsFeatureResponseComputeV1>(map['guestOsFeatures']!, (value) => GuestOsFeatureResponseComputeV1.fromMap((value as Map).cast<String, dynamic>()))),
       index: pulumi.Input.fromValue(map['index'] as int),
       interface: pulumi.Input.fromValue(map['interface'] as String),
       kind: pulumi.Input.fromValue(map['kind'] as String),
-      licenses: pulumi.Input.fromValue(
-        (map['licenses'] as List).cast<String>(),
-      ),
+      licenses: pulumi.Input.fromValue((map['licenses'] as List).cast<String>()),
       mode: pulumi.Input.fromValue(map['mode'] as String),
       source: pulumi.Input.fromValue(map['source'] as String),
       storageBytes: pulumi.Input.fromValue(map['storageBytes'] as String),
-      storageBytesStatus: pulumi.Input.fromValue(
-        map['storageBytesStatus'] as String,
-      ),
+      storageBytesStatus: pulumi.Input.fromValue(map['storageBytesStatus'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

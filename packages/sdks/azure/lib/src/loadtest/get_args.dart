@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetArgs {
   /// The name of the Load Test Service.
   final pulumi.Input<String> name;
-
   /// The name of the Resource Group in which the Load Test Service exists.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetArgs].
   /// [name] The name of the Load Test Service.
   /// [resourceGroupName] The name of the Resource Group in which the Load Test Service exists.
-  GetArgs({required this.name, required this.resourceGroupName});
+  GetArgs({
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,9 +30,8 @@ class GetArgs {
   factory GetArgs.fromMap(Map<String, dynamic> map) {
     return GetArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

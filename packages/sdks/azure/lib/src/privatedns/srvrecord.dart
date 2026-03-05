@@ -294,22 +294,16 @@ import 'srvrecord_state.dart';
 class SRVRecord extends pulumi.CustomResource {
   /// The FQDN of the DNS SRV Record.
   late final pulumi.Output<String> fqdn;
-
   /// The name of the DNS SRV Record. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// One or more `record` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> records;
-
   /// Specifies the resource group where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The Time To Live (TTL) of the DNS record in seconds.
   late final pulumi.Output<int> ttl;
-
   /// Specifies the Private DNS Zone where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> zoneName;
 
@@ -322,11 +316,11 @@ class SRVRecord extends pulumi.CustomResource {
     SRVRecordArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:privatedns/sRVRecord:SRVRecord',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:privatedns/sRVRecord:SRVRecord',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     fqdn = registerOutput<String>('fqdn');
     this.name = registerOutput<String>('name');
     records = registerOutput<List<Map<String, dynamic>>>('records');
@@ -354,11 +348,11 @@ class SRVRecord extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:privatedns/sRVRecord:SRVRecord',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:privatedns/sRVRecord:SRVRecord',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     fqdn = registerOutput<String>('fqdn');
     this.name = registerOutput<String>('name');
     records = registerOutput<List<Map<String, dynamic>>>('records');

@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HeaderResponse {
   /// The Key of the header.
   final pulumi.Input<String> key;
-
   /// The Value of the header.
   final pulumi.Input<String> value;
 
   /// Creates a new [HeaderResponse].
   /// [key] The Key of the header.
   /// [value] The Value of the header.
-  HeaderResponse({required this.key, required this.value});
+  HeaderResponse({
+    required this.key,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': key, 'value': value};
+    return <String, dynamic>{
+      'key': key,
+      'value': value,
+    };
   }
 
   factory HeaderResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class HeaderResponse {
     );
   }
 }
+

@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRegistrationActivationKeyArgs {
   /// Name of the Azure Stack registration.
   final pulumi.Input<String> registrationName;
-
   /// Name of the resource group.
   final pulumi.Input<String> resourceGroup;
 
@@ -30,10 +29,9 @@ class GetRegistrationActivationKeyArgs {
 
   factory GetRegistrationActivationKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetRegistrationActivationKeyArgs(
-      registrationName: pulumi.Input.fromValue(
-        map['registrationName'] as String,
-      ),
+      registrationName: pulumi.Input.fromValue(map['registrationName'] as String),
       resourceGroup: pulumi.Input.fromValue(map['resourceGroup'] as String),
     );
   }
 }
+

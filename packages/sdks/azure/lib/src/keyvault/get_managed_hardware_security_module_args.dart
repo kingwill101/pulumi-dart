@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetManagedHardwareSecurityModuleArgs {
   /// The name of the Key Vault Managed Hardware Security Module.
   final pulumi.Input<String> name;
-
   /// The name of the Resource Group in which the Key Vault Managed Hardware Security Module exists.
   final pulumi.Input<String> resourceGroupName;
 
@@ -28,14 +27,11 @@ class GetManagedHardwareSecurityModuleArgs {
     };
   }
 
-  factory GetManagedHardwareSecurityModuleArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetManagedHardwareSecurityModuleArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedHardwareSecurityModuleArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

@@ -490,22 +490,16 @@ import 'one_dashboard_raw_state.dart';
 class OneDashboardRaw extends pulumi.CustomResource {
   /// Determines the New Relic account where the dashboard will be created. Defaults to the account associated with the API key used.
   late final pulumi.Output<String> accountId;
-
   /// Brief text describing the dashboard.
   late final pulumi.Output<String?> description;
-
   /// The unique entity identifier of the dashboard page in New Relic.
   late final pulumi.Output<String> guid;
-
   /// The title of the dashboard.
   late final pulumi.Output<String> name;
-
   /// A nested block that describes a page. See Nested page blocks below for details.
   late final pulumi.Output<List<Map<String, dynamic>>> pages;
-
   /// The URL for viewing the dashboard.
   late final pulumi.Output<String> permalink;
-
   /// Determines who can see the dashboard in an account. Valid values are `private`, `public_read_only`, or `public_read_write`. Defaults to `public_read_only`.
   late final pulumi.Output<String?> permissions;
 
@@ -518,11 +512,11 @@ class OneDashboardRaw extends pulumi.CustomResource {
     OneDashboardRawArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:index/oneDashboardRaw:OneDashboardRaw',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:index/oneDashboardRaw:OneDashboardRaw',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     description = registerOutput<String?>('description');
     guid = registerOutput<String>('guid');
@@ -550,11 +544,11 @@ class OneDashboardRaw extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:index/oneDashboardRaw:OneDashboardRaw',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:index/oneDashboardRaw:OneDashboardRaw',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     description = registerOutput<String?>('description');
     guid = registerOutput<String>('guid');

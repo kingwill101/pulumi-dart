@@ -1778,87 +1778,58 @@ import 'system_data_response.dart';
 class Service extends pulumi.CustomResource {
   /// Defines the options for how the data plane API of a search service authenticates requests. This cannot be set if 'disableLocalAuth' is set to true.
   late final pulumi.Output<DataPlaneAuthOptionsResponse?> authOptions;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Configure this property to support the search service using either the Default Compute or Azure Confidential Compute.
   late final pulumi.Output<String?> computeType;
-
   /// A list of data exfiltration scenarios that are explicitly disallowed for the search service. Currently, the only supported value is 'All' to disable all possible data export scenarios with more fine grained controls planned for the future.
   late final pulumi.Output<List<String>?> dataExfiltrationProtections;
-
   /// When set to true, calls to the search service will not be permitted to utilize API keys for authentication. This cannot be set to true if 'dataPlaneAuthOptions' are defined.
   late final pulumi.Output<bool?> disableLocalAuth;
-
   /// A system generated property representing the service's etag that can be for optimistic concurrency control during updates.
   late final pulumi.Output<String> eTag;
-
   /// Specifies any policy regarding encryption of resources (such as indexes) using customer manager keys within a search service.
   late final pulumi.Output<EncryptionWithCmkResponse?> encryptionWithCmk;
-
   /// The endpoint of the Azure AI Search service.
   late final pulumi.Output<String?> endpoint;
-
   /// Applicable only for the standard3 SKU. You can set this property to enable up to 3 high density partitions that allow up to 1000 indexes, which is much higher than the maximum indexes allowed for any other SKU. For the standard3 SKU, the value is either 'Default' or 'HighDensity'. For all other SKUs, this value must be 'Default'.
   late final pulumi.Output<String?> hostingMode;
-
   /// The identity of the resource.
   late final pulumi.Output<IdentityResponse?> identity;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Network specific rules that determine how the Azure AI Search service may be reached.
   late final pulumi.Output<NetworkRuleSetResponse?> networkRuleSet;
-
   /// The number of partitions in the search service; if specified, it can be 1, 2, 3, 4, 6, or 12. Values greater than 1 are only valid for standard SKUs. For 'standard3' services with hostingMode set to 'highDensity', the allowed values are between 1 and 3.
   late final pulumi.Output<int?> partitionCount;
-
   /// The list of private endpoint connections to the Azure AI Search service.
-  late final pulumi.Output<List<Map<String, dynamic>>>
-  privateEndpointConnections;
-
+  late final pulumi.Output<List<Map<String, dynamic>>> privateEndpointConnections;
   /// The state of the last provisioning operation performed on the search service. Provisioning is an intermediate state that occurs while service capacity is being established. After capacity is set up, provisioningState changes to either 'Succeeded' or 'Failed'. Client applications can poll provisioning status (the recommended polling interval is from 30 seconds to one minute) by using the Get Search Service operation to see when an operation is completed. If you are using the free service, this value tends to come back as 'Succeeded' directly in the call to Create search service. This is because the free service uses capacity that is already set up.
   late final pulumi.Output<String> provisioningState;
-
   /// This value can be set to 'Enabled' to avoid breaking changes on existing customer resources and templates. If set to 'Disabled', traffic over public interface is not allowed, and private endpoint connections would be the exclusive access method.
   late final pulumi.Output<String?> publicNetworkAccess;
-
   /// The number of replicas in the search service. If specified, it must be a value between 1 and 12 inclusive for standard SKUs or between 1 and 3 inclusive for basic SKU.
   late final pulumi.Output<int?> replicaCount;
-
   /// Sets options that control the availability of semantic search. This configuration is only possible for certain Azure AI Search SKUs in certain locations.
   late final pulumi.Output<String?> semanticSearch;
-
   /// The date and time the search service was last upgraded. This field will be null until the service gets upgraded for the first time.
   late final pulumi.Output<String> serviceUpgradedAt;
-
   /// The list of shared private link resources managed by the Azure AI Search service.
-  late final pulumi.Output<List<Map<String, dynamic>>>
-  sharedPrivateLinkResources;
-
+  late final pulumi.Output<List<Map<String, dynamic>>> sharedPrivateLinkResources;
   /// The SKU of the search service, which determines price tier and capacity limits. This property is required when creating a new search service.
   late final pulumi.Output<SkuResponse?> sku;
-
   /// The status of the search service. Possible values include: 'running': The search service is running and no provisioning operations are underway. 'provisioning': The search service is being provisioned or scaled up or down. 'deleting': The search service is being deleted. 'degraded': The search service is degraded. This can occur when the underlying search units are not healthy. The search service is most likely operational, but performance might be slow and some requests might be dropped. 'disabled': The search service is disabled. In this state, the service will reject all API requests. 'error': The search service is in an error state. 'stopped': The search service is in a subscription that's disabled. If your service is in the degraded, disabled, or error states, it means the Azure AI Search team is actively investigating the underlying issue. Dedicated services in these states are still chargeable based on the number of search units provisioned.
   late final pulumi.Output<String> status;
-
   /// The details of the search service status.
   late final pulumi.Output<String> statusDetails;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Indicates if the search service has an upgrade available.
   late final pulumi.Output<String?> upgradeAvailable;
 
@@ -1871,96 +1842,36 @@ class Service extends pulumi.CustomResource {
     ServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:search:Service',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    authOptions = registerOutput<DataPlaneAuthOptionsResponse?>(
-      'authOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DataPlaneAuthOptionsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure-native:search:Service',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    authOptions = registerOutput<DataPlaneAuthOptionsResponse?>('authOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataPlaneAuthOptionsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     computeType = registerOutput<String?>('computeType');
-    dataExfiltrationProtections = registerOutput<List<String>?>(
-      'dataExfiltrationProtections',
-    );
+    dataExfiltrationProtections = registerOutput<List<String>?>('dataExfiltrationProtections');
     disableLocalAuth = registerOutput<bool?>('disableLocalAuth');
     eTag = registerOutput<String>('eTag');
-    encryptionWithCmk = registerOutput<EncryptionWithCmkResponse?>(
-      'encryptionWithCmk',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EncryptionWithCmkResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    encryptionWithCmk = registerOutput<EncryptionWithCmkResponse?>('encryptionWithCmk', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionWithCmkResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     endpoint = registerOutput<String?>('endpoint');
     hostingMode = registerOutput<String?>('hostingMode');
-    identity = registerOutput<IdentityResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<IdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    networkRuleSet = registerOutput<NetworkRuleSetResponse?>(
-      'networkRuleSet',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NetworkRuleSetResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    networkRuleSet = registerOutput<NetworkRuleSetResponse?>('networkRuleSet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkRuleSetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     partitionCount = registerOutput<int?>('partitionCount');
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
-      'privateEndpointConnections',
-    );
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>('privateEndpointConnections');
     provisioningState = registerOutput<String>('provisioningState');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     replicaCount = registerOutput<int?>('replicaCount');
     semanticSearch = registerOutput<String?>('semanticSearch');
     serviceUpgradedAt = registerOutput<String>('serviceUpgradedAt');
-    sharedPrivateLinkResources = registerOutput<List<Map<String, dynamic>>>(
-      'sharedPrivateLinkResources',
-    );
-    sku = registerOutput<SkuResponse?>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sharedPrivateLinkResources = registerOutput<List<Map<String, dynamic>>>('sharedPrivateLinkResources');
+    sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
     statusDetails = registerOutput<String>('statusDetails');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     upgradeAvailable = registerOutput<String?>('upgradeAvailable');

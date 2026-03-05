@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getMpaAccountScope.
 class GetMpaAccountScopeResult {
   final String billingAccountName;
   final String customerName;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
 
@@ -34,3 +34,4 @@ class GetMpaAccountScopeResult {
     );
   }
 }
+

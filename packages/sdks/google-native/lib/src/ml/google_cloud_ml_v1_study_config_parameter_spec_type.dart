@@ -15,8 +15,7 @@ enum GoogleCloudMlV1StudyConfigParameterSpecType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GoogleCloudMlV1StudyConfigParameterSpecType value: $value',
-    );
+    throw ArgumentError('Unknown GoogleCloudMlV1StudyConfigParameterSpecType value: $value');
   }
 }
+

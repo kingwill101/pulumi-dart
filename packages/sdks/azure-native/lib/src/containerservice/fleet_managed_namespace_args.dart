@@ -10,19 +10,14 @@ import 'fleet_managed_namespace_properties.dart';
 class FleetManagedNamespaceArgs {
   /// The name of the Fleet resource.
   final pulumi.Input<String> fleetName;
-
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
-
   /// The name of the fleet managed namespace resource.
   final pulumi.Input<String>? managedNamespaceName;
-
   /// The resource-specific properties for this resource.
   final pulumi.Input<FleetManagedNamespaceProperties>? properties;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -47,11 +42,7 @@ class FleetManagedNamespaceArgs {
       'fleetName': fleetName,
       'location': ?location,
       'managedNamespaceName': ?managedNamespaceName,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            FleetManagedNamespaceProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<FleetManagedNamespaceProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'tags': ?tags,
     };
@@ -60,35 +51,12 @@ class FleetManagedNamespaceArgs {
   factory FleetManagedNamespaceArgs.fromMap(Map<String, dynamic> map) {
     return FleetManagedNamespaceArgs(
       fleetName: pulumi.Input.fromValue(map['fleetName'] as String),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      managedNamespaceName: (() {
-        final guardedValue = map['managedNamespaceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FleetManagedNamespaceProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      managedNamespaceName: (() { final guardedValue = map['managedNamespaceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FleetManagedNamespaceProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

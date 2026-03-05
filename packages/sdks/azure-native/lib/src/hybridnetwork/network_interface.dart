@@ -7,13 +7,10 @@ import 'network_interface_ipconfiguration.dart';
 class NetworkInterface {
   /// A list of IP configurations of the network interface.
   final pulumi.Input<List<NetworkInterfaceIPConfiguration>>? ipConfigurations;
-
   /// The MAC address of the network interface.
   final pulumi.Input<String>? macAddress;
-
   /// The name of the network interface.
   final pulumi.Input<String>? networkInterfaceName;
-
   /// The type of the VM switch.
   final pulumi.Input<String>? vmSwitchType;
 
@@ -31,18 +28,7 @@ class NetworkInterface {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ipConfigurations':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<NetworkInterfaceIPConfiguration>,
-            List<Map<String, dynamic>>
-          >(
-            ipConfigurations,
-            (value) =>
-                pulumi.Input.encodeList<
-                  NetworkInterfaceIPConfiguration,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'ipConfigurations': ?pulumi.Input.mapOptionalInputValue<List<NetworkInterfaceIPConfiguration>, List<Map<String, dynamic>>>(ipConfigurations, (value) => pulumi.Input.encodeList<NetworkInterfaceIPConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
       'macAddress': ?macAddress,
       'networkInterfaceName': ?networkInterfaceName,
       'vmSwitchType': ?vmSwitchType,
@@ -51,33 +37,11 @@ class NetworkInterface {
 
   factory NetworkInterface.fromMap(Map<String, dynamic> map) {
     return NetworkInterface(
-      ipConfigurations: (() {
-        final guardedValue = map['ipConfigurations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<NetworkInterfaceIPConfiguration>(
-            guardedValue,
-            (value) => NetworkInterfaceIPConfiguration.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      macAddress: (() {
-        final guardedValue = map['macAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      networkInterfaceName: (() {
-        final guardedValue = map['networkInterfaceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      vmSwitchType: (() {
-        final guardedValue = map['vmSwitchType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ipConfigurations: (() { final guardedValue = map['ipConfigurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NetworkInterfaceIPConfiguration>(guardedValue, (value) => NetworkInterfaceIPConfiguration.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      macAddress: (() { final guardedValue = map['macAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      networkInterfaceName: (() { final guardedValue = map['networkInterfaceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      vmSwitchType: (() { final guardedValue = map['vmSwitchType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

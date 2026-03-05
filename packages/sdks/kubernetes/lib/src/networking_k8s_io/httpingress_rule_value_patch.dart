@@ -10,39 +10,20 @@ class HTTPIngressRuleValuePatch {
 
   /// Creates a new [HTTPIngressRuleValuePatch].
   /// [paths] paths is a collection of paths that map requests to backends.
-  HTTPIngressRuleValuePatch({this.paths});
+  HTTPIngressRuleValuePatch({
+    this.paths,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'paths':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<HTTPIngressPathPatch>,
-            List<Map<String, dynamic>>
-          >(
-            paths,
-            (value) =>
-                pulumi.Input.encodeList<
-                  HTTPIngressPathPatch,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'paths': ?pulumi.Input.mapOptionalInputValue<List<HTTPIngressPathPatch>, List<Map<String, dynamic>>>(paths, (value) => pulumi.Input.encodeList<HTTPIngressPathPatch, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory HTTPIngressRuleValuePatch.fromMap(Map<String, dynamic> map) {
     return HTTPIngressRuleValuePatch(
-      paths: (() {
-        final guardedValue = map['paths'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<HTTPIngressPathPatch>(
-            guardedValue,
-            (value) => HTTPIngressPathPatch.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      paths: (() { final guardedValue = map['paths']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<HTTPIngressPathPatch>(guardedValue, (value) => HTTPIngressPathPatch.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

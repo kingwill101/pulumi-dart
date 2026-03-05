@@ -17,3 +17,4 @@ enum ModelPeriodicTuningState {
     throw ArgumentError('Unknown ModelPeriodicTuningState value: $value');
   }
 }
+

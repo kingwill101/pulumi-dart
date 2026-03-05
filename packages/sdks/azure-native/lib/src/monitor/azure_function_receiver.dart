@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureFunctionReceiver {
   /// The azure resource id of the function app.
   final pulumi.Input<String> functionAppResourceId;
-
   /// The function name in the function app.
   final pulumi.Input<String> functionName;
-
   /// The http trigger url where http request sent to.
   final pulumi.Input<String> httpTriggerUrl;
-
   /// The principal id of the managed identity. The value can be "None", "SystemAssigned"
   final pulumi.Input<String>? managedIdentity;
-
   /// The name of the azure function receiver. Names must be unique across all receivers within an action group.
   final pulumi.Input<String> name;
-
   /// Indicates whether to use common alert schema.
   final pulumi.Input<bool>? useCommonAlertSchema;
 
@@ -51,22 +46,13 @@ class AzureFunctionReceiver {
 
   factory AzureFunctionReceiver.fromMap(Map<String, dynamic> map) {
     return AzureFunctionReceiver(
-      functionAppResourceId: pulumi.Input.fromValue(
-        map['functionAppResourceId'] as String,
-      ),
+      functionAppResourceId: pulumi.Input.fromValue(map['functionAppResourceId'] as String),
       functionName: pulumi.Input.fromValue(map['functionName'] as String),
       httpTriggerUrl: pulumi.Input.fromValue(map['httpTriggerUrl'] as String),
-      managedIdentity: (() {
-        final guardedValue = map['managedIdentity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      managedIdentity: (() { final guardedValue = map['managedIdentity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      useCommonAlertSchema: (() {
-        final guardedValue = map['useCommonAlertSchema'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      useCommonAlertSchema: (() { final guardedValue = map['useCommonAlertSchema']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

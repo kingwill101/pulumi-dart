@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworkInterfaceAttachment {
   /// ID of the network interface attachment.
   final pulumi.Input<String> attachmentId;
-
   /// Device index of the network interface attachment on the instance.
   final pulumi.Input<int> deviceIndex;
-
   /// ID of the instance.
   final pulumi.Input<String> instanceId;
-
   /// AWS account ID of the owner of the instance.
   final pulumi.Input<String> instanceOwnerId;
-
   /// Index of the network card.
   final pulumi.Input<int> networkCardIndex;
 
@@ -52,3 +48,4 @@ class GetNetworkInterfaceAttachment {
     );
   }
 }
+

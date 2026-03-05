@@ -7,21 +7,14 @@ import 'ontap_volume_snaplock_configuration_retention_period.dart';
 class OntapVolumeSnaplockConfiguration {
   /// Enables or disables the audit log volume for an FSx for ONTAP SnapLock volume. The default value is `false`.
   final pulumi.Input<bool>? auditLogVolume;
-
   /// The configuration object for setting the autocommit period of files in an FSx for ONTAP SnapLock volume. See `autocommit_period` Block for details.
-  final pulumi.Input<OntapVolumeSnaplockConfigurationAutocommitPeriod>?
-  autocommitPeriod;
-
+  final pulumi.Input<OntapVolumeSnaplockConfigurationAutocommitPeriod>? autocommitPeriod;
   /// Enables, disables, or permanently disables privileged delete on an FSx for ONTAP SnapLock Enterprise volume. Valid values: `DISABLED`, `ENABLED`, `PERMANENTLY_DISABLED`. The default value is `DISABLED`.
   final pulumi.Input<String>? privilegedDelete;
-
   /// The retention period of an FSx for ONTAP SnapLock volume. See `retention_period` Block for details.
-  final pulumi.Input<OntapVolumeSnaplockConfigurationRetentionPeriod>?
-  retentionPeriod;
-
+  final pulumi.Input<OntapVolumeSnaplockConfigurationRetentionPeriod>? retentionPeriod;
   /// Specifies the retention mode of an FSx for ONTAP SnapLock volume. After it is set, it can't be changed. Valid values: `COMPLIANCE`, `ENTERPRISE`.
   final pulumi.Input<String> snaplockType;
-
   /// Enables or disables volume-append mode on an FSx for ONTAP SnapLock volume. The default value is `false`.
   final pulumi.Input<bool>? volumeAppendModeEnabled;
 
@@ -44,17 +37,9 @@ class OntapVolumeSnaplockConfiguration {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'auditLogVolume': ?auditLogVolume,
-      'autocommitPeriod':
-          ?pulumi.Input.mapOptionalInputValue<
-            OntapVolumeSnaplockConfigurationAutocommitPeriod,
-            Map<String, dynamic>
-          >(autocommitPeriod, (value) => value.toMap()),
+      'autocommitPeriod': ?pulumi.Input.mapOptionalInputValue<OntapVolumeSnaplockConfigurationAutocommitPeriod, Map<String, dynamic>>(autocommitPeriod, (value) => value.toMap()),
       'privilegedDelete': ?privilegedDelete,
-      'retentionPeriod':
-          ?pulumi.Input.mapOptionalInputValue<
-            OntapVolumeSnaplockConfigurationRetentionPeriod,
-            Map<String, dynamic>
-          >(retentionPeriod, (value) => value.toMap()),
+      'retentionPeriod': ?pulumi.Input.mapOptionalInputValue<OntapVolumeSnaplockConfigurationRetentionPeriod, Map<String, dynamic>>(retentionPeriod, (value) => value.toMap()),
       'snaplockType': snaplockType,
       'volumeAppendModeEnabled': ?volumeAppendModeEnabled,
     };
@@ -62,40 +47,13 @@ class OntapVolumeSnaplockConfiguration {
 
   factory OntapVolumeSnaplockConfiguration.fromMap(Map<String, dynamic> map) {
     return OntapVolumeSnaplockConfiguration(
-      auditLogVolume: (() {
-        final guardedValue = map['auditLogVolume'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      autocommitPeriod: (() {
-        final guardedValue = map['autocommitPeriod'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          OntapVolumeSnaplockConfigurationAutocommitPeriod.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      privilegedDelete: (() {
-        final guardedValue = map['privilegedDelete'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      retentionPeriod: (() {
-        final guardedValue = map['retentionPeriod'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          OntapVolumeSnaplockConfigurationRetentionPeriod.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      auditLogVolume: (() { final guardedValue = map['auditLogVolume']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      autocommitPeriod: (() { final guardedValue = map['autocommitPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OntapVolumeSnaplockConfigurationAutocommitPeriod.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      privilegedDelete: (() { final guardedValue = map['privilegedDelete']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      retentionPeriod: (() { final guardedValue = map['retentionPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OntapVolumeSnaplockConfigurationRetentionPeriod.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       snaplockType: pulumi.Input.fromValue(map['snaplockType'] as String),
-      volumeAppendModeEnabled: (() {
-        final guardedValue = map['volumeAppendModeEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      volumeAppendModeEnabled: (() { final guardedValue = map['volumeAppendModeEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworkInterfaceTapConfigurationArgs {
   /// The name of the network interface.
   final pulumi.Input<String> networkInterfaceName;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the tap configuration.
   final pulumi.Input<String> tapConfigurationName;
 
@@ -34,19 +32,12 @@ class GetNetworkInterfaceTapConfigurationArgs {
     };
   }
 
-  factory GetNetworkInterfaceTapConfigurationArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetNetworkInterfaceTapConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkInterfaceTapConfigurationArgs(
-      networkInterfaceName: pulumi.Input.fromValue(
-        map['networkInterfaceName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      tapConfigurationName: pulumi.Input.fromValue(
-        map['tapConfigurationName'] as String,
-      ),
+      networkInterfaceName: pulumi.Input.fromValue(map['networkInterfaceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      tapConfigurationName: pulumi.Input.fromValue(map['tapConfigurationName'] as String),
     );
   }
 }
+

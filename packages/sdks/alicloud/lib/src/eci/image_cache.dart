@@ -387,38 +387,26 @@ import 'image_cache_state.dart';
 class ImageCache extends pulumi.CustomResource {
   /// The ID of the container group job that is used to create the image cache.
   late final pulumi.Output<String> containerGroupId;
-
   /// The instance ID of the Elastic IP Address (EIP). If you want to pull images from the Internet, you must specify an EIP to make sure that the container group can access the Internet. You can also configure the network address translation (NAT) gateway. We recommend that you configure the NAT gateway for the Internet access. Refer to [Public Network Access Method](https://help.aliyun.com/document_detail/99146.html)
   late final pulumi.Output<String?> eipInstanceId;
-
   /// The name of the image cache.
   late final pulumi.Output<String> imageCacheName;
-
   /// The size of the image cache. Default to `20`. Unit: GiB.
   late final pulumi.Output<int?> imageCacheSize;
-
   /// The Image Registry parameters about the image to be cached. See `image_registry_credential` below.
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  imageRegistryCredentials;
-
+  late final pulumi.Output<List<Map<String, dynamic>>?> imageRegistryCredentials;
   /// The images to be cached. The image name must be versioned.
   late final pulumi.Output<List<String>> images;
-
   /// The ID of the resource group.
   late final pulumi.Output<String?> resourceGroupId;
-
   /// The retention days of the image cache. Once the image cache expires, it will be cleared. By default, the image cache never expires. Note: The image cache that fails to be created is retained for only one day.
   late final pulumi.Output<int?> retentionDays;
-
   /// The ID of the security group. You do not need to specify the same security group as the container group.
   late final pulumi.Output<String> securityGroupId;
-
   /// The status of the image cache.
   late final pulumi.Output<String> status;
-
   /// The ID of the VSwitch. You do not need to specify the same VSwitch as the container group.
   late final pulumi.Output<String> vswitchId;
-
   /// The zone id to cache image.
   late final pulumi.Output<String?> zoneId;
 
@@ -431,18 +419,16 @@ class ImageCache extends pulumi.CustomResource {
     ImageCacheArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:eci/imageCache:ImageCache',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:eci/imageCache:ImageCache',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     containerGroupId = registerOutput<String>('containerGroupId');
     eipInstanceId = registerOutput<String?>('eipInstanceId');
     imageCacheName = registerOutput<String>('imageCacheName');
     imageCacheSize = registerOutput<int?>('imageCacheSize');
-    imageRegistryCredentials = registerOutput<List<Map<String, dynamic>>?>(
-      'imageRegistryCredentials',
-    );
+    imageRegistryCredentials = registerOutput<List<Map<String, dynamic>>?>('imageRegistryCredentials');
     images = registerOutput<List<String>>('images');
     resourceGroupId = registerOutput<String?>('resourceGroupId');
     retentionDays = registerOutput<int?>('retentionDays');
@@ -470,18 +456,16 @@ class ImageCache extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:eci/imageCache:ImageCache',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:eci/imageCache:ImageCache',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     containerGroupId = registerOutput<String>('containerGroupId');
     eipInstanceId = registerOutput<String?>('eipInstanceId');
     imageCacheName = registerOutput<String>('imageCacheName');
     imageCacheSize = registerOutput<int?>('imageCacheSize');
-    imageRegistryCredentials = registerOutput<List<Map<String, dynamic>>?>(
-      'imageRegistryCredentials',
-    );
+    imageRegistryCredentials = registerOutput<List<Map<String, dynamic>>?>('imageRegistryCredentials');
     images = registerOutput<List<String>>('images');
     resourceGroupId = registerOutput<String?>('resourceGroupId');
     retentionDays = registerOutput<int?>('retentionDays');

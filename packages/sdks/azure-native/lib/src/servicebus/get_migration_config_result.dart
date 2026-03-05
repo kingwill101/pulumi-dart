@@ -6,34 +6,24 @@ import 'system_data_response.dart';
 class GetMigrationConfigResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// The geo-location where the resource lives
   final String location;
-
   /// State in which Standard to Premium Migration is, possible values : Unknown, Reverting, Completing, Initiating, Syncing, Active
   final String migrationState;
-
   /// The name of the resource
   final String name;
-
   /// Number of entities pending to be replicated.
   final double pendingReplicationOperationsCount;
-
   /// Name to access Standard Namespace after migration
   final String postMigrationName;
-
   /// Provisioning state of Migration Configuration
   final String provisioningState;
-
   /// The system meta data relating to this resource.
   final SystemDataResponse systemData;
-
   /// Existing premium Namespace ARM Id name which has no entities, will be used for migration
   final String targetNamespace;
-
   /// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
   final String type;
 
@@ -86,15 +76,13 @@ class GetMigrationConfigResult {
       location: map['location'] as String,
       migrationState: map['migrationState'] as String,
       name: map['name'] as String,
-      pendingReplicationOperationsCount:
-          map['pendingReplicationOperationsCount'] as double,
+      pendingReplicationOperationsCount: map['pendingReplicationOperationsCount'] as double,
       postMigrationName: map['postMigrationName'] as String,
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       targetNamespace: map['targetNamespace'] as String,
       type: map['type'] as String,
     );
   }
 }
+

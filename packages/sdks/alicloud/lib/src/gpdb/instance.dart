@@ -335,141 +335,99 @@ import 'instance_state.dart';
 class Instance extends pulumi.CustomResource {
   /// Field `availability_zone` has been deprecated from provider version 1.187.0. New field `zone_id` instead.
   late final pulumi.Output<String> availabilityZone;
-
   /// (Available since v1.196.0) The connection string of the instance.
   late final pulumi.Output<String> connectionString;
-
   /// Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
   late final pulumi.Output<bool> createSampleData;
-
   /// Specifies whether to enable or disable data sharing. Default value: `closed`. Valid values:
   late final pulumi.Output<String> dataShareStatus;
-
   /// The db instance category. Valid values: `Basic`, `HighAvailability`.
   /// &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
   late final pulumi.Output<String> dbInstanceCategory;
-
   /// The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/instance-types).
   /// &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
   late final pulumi.Output<String?> dbInstanceClass;
-
   /// The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
   late final pulumi.Output<String> dbInstanceMode;
-
   /// The description of the instance.
   late final pulumi.Output<String> description;
-
   /// The ID of the encryption key.
   /// &gt; **NOTE:** If `encryption_type` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
   late final pulumi.Output<String?> encryptionKey;
-
   /// The encryption type. Valid values: `CloudDisk`.
   /// &gt; **NOTE:** Disk encryption cannot be disabled after it is enabled.
   late final pulumi.Output<String?> encryptionType;
-
   /// The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance) `EngineVersion`.
   late final pulumi.Output<String> engine;
-
   /// The version of the database engine used by the instance.
   late final pulumi.Output<String> engineVersion;
-
   /// Field `instance_charge_type` has been deprecated from provider version 1.187.0. New field `payment_type` instead.
   late final pulumi.Output<String> instanceChargeType;
-
   /// The number of nodes. Valid values: `2`, `4`, `8`, `12`, `16`, `24`, `32`, `64`, `96`, `128`.
   late final pulumi.Output<int?> instanceGroupCount;
-
   /// The network type of the instance. Valid values: `VPC`.
   late final pulumi.Output<String> instanceNetworkType;
-
   /// The specification of segment nodes. Valid values:
   /// - If `db_instance_category` is set to `HighAvailability`, and `db_instance_mode` is set to `StorageElastic`. Valid values: `2C16G`, `4C32G`, `16C128G`.
   /// - If `db_instance_category` is set to `Basic`, and `db_instance_mode` is set to `StorageElastic`. Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
   /// - If `db_instance_mode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
   /// &gt; **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
   late final pulumi.Output<String?> instanceSpec;
-
   /// The ip whitelist. See `ip_whitelist` below.
   /// Default to creating a whitelist group with the group name "default" and security_ip_list "127.0.0.1".
   late final pulumi.Output<List<Map<String, dynamic>>> ipWhitelists;
-
   /// The end time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 03:00Z. start time should be later than end time.
   late final pulumi.Output<String> maintainEndTime;
-
   /// The start time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 02:00Z.
   late final pulumi.Output<String> maintainStartTime;
-
   /// The amount of coordinator node resources. Valid values: `2`, `4`, `8`, `16`, `32`.
   late final pulumi.Output<int> masterCu;
-
   /// The number of Master nodes. **NOTE:** Field `master_node_num` has been deprecated from provider version 1.213.0.
   late final pulumi.Output<int?> masterNodeNum;
-
   /// The parameters. See `parameters` below.
   late final pulumi.Output<List<Map<String, dynamic>>> parameters;
-
   /// The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
   late final pulumi.Output<String> paymentType;
-
   /// The duration that you will buy the resource, in month. required when `payment_type` is `Subscription`. Valid values: `Year`, `Month`.
   late final pulumi.Output<String?> period;
-
   /// (Available since v1.196.0) The connection port of the instance.
   late final pulumi.Output<String> port;
-
   /// The private ip address. **NOTE:** Field `private_ip_address` has been deprecated from provider version 1.213.0.
   late final pulumi.Output<String?> privateIpAddress;
-
   /// The type of the product. Default value: `standard`. Valid values: `standard`, `cost-effective`.
   late final pulumi.Output<String> prodType;
-
   /// The ID of the enterprise resource group to which the instance belongs.
   late final pulumi.Output<String> resourceGroupId;
-
   /// Resource management mode. Valid values: `resourceGroup`, `resourceQueue`.
   late final pulumi.Output<String> resourceManagementMode;
-
   /// Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
   late final pulumi.Output<List<String>?> securityIpLists;
-
   /// The ESSD cloud disk performance level. Valid values: `pl0`, `pl1`, `pl2`.
   late final pulumi.Output<String> segDiskPerformanceLevel;
-
   /// Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
   /// &gt; **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
   late final pulumi.Output<int> segNodeNum;
-
   /// The seg storage type. Valid values: `cloud_essd`. **NOTE:** If `db_instance_mode` is set to `StorageElastic`, `seg_storage_type` is required. From version 1.233.1, `seg_storage_type` cannot be modified, or set to `cloud_efficiency`. `seg_storage_type` can only be set to `cloud_essd`.
   late final pulumi.Output<String> segStorageType;
-
   /// The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `serverless_mode` is valid only when `db_instance_mode` is set to `Serverless`.
   late final pulumi.Output<String> serverlessMode;
-
   /// Enable or disable SSL. Valid values: `0` and `1`.
   late final pulumi.Output<int> sslEnabled;
-
   /// The status of the instance.
   late final pulumi.Output<String> status;
-
   /// The storage capacity. Unit: GB. Valid values: `50` to `4000`.
   /// &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
   late final pulumi.Output<int> storageSize;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The used time. When the parameter `period` is `Year`, the `used_time` value is `1` to `3`. When the parameter `period` is `Month`, the `used_time` value is `1` to `9`.
   late final pulumi.Output<String?> usedTime;
-
   /// Specifies whether to enable vector engine optimization. Default value: `disabled`. Valid values: `enabled` and `disabled`.
   late final pulumi.Output<String> vectorConfigurationStatus;
-
   /// The vpc ID of the resource.
   late final pulumi.Output<String> vpcId;
-
   /// The vswitch id.
   late final pulumi.Output<String> vswitchId;
-
   /// The zone ID of the instance.
   late final pulumi.Output<String> zoneId;
 
@@ -482,11 +440,11 @@ class Instance extends pulumi.CustomResource {
     InstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:gpdb/instance:Instance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:gpdb/instance:Instance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     availabilityZone = registerOutput<String>('availabilityZone');
     connectionString = registerOutput<String>('connectionString');
     createSampleData = registerOutput<bool>('createSampleData');
@@ -526,9 +484,7 @@ class Instance extends pulumi.CustomResource {
     storageSize = registerOutput<int>('storageSize');
     tags = registerOutput<Map<String, String>?>('tags');
     usedTime = registerOutput<String?>('usedTime');
-    vectorConfigurationStatus = registerOutput<String>(
-      'vectorConfigurationStatus',
-    );
+    vectorConfigurationStatus = registerOutput<String>('vectorConfigurationStatus');
     vpcId = registerOutput<String>('vpcId');
     vswitchId = registerOutput<String>('vswitchId');
     zoneId = registerOutput<String>('zoneId');
@@ -552,11 +508,11 @@ class Instance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:gpdb/instance:Instance',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:gpdb/instance:Instance',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     availabilityZone = registerOutput<String>('availabilityZone');
     connectionString = registerOutput<String>('connectionString');
     createSampleData = registerOutput<bool>('createSampleData');
@@ -596,9 +552,7 @@ class Instance extends pulumi.CustomResource {
     storageSize = registerOutput<int>('storageSize');
     tags = registerOutput<Map<String, String>?>('tags');
     usedTime = registerOutput<String?>('usedTime');
-    vectorConfigurationStatus = registerOutput<String>(
-      'vectorConfigurationStatus',
-    );
+    vectorConfigurationStatus = registerOutput<String>('vectorConfigurationStatus');
     vpcId = registerOutput<String>('vpcId');
     vswitchId = registerOutput<String>('vswitchId');
     zoneId = registerOutput<String>('zoneId');

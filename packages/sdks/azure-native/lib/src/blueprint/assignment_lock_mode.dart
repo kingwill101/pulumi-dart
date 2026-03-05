@@ -16,3 +16,4 @@ enum AssignmentLockMode {
     throw ArgumentError('Unknown AssignmentLockMode value: $value');
   }
 }
+

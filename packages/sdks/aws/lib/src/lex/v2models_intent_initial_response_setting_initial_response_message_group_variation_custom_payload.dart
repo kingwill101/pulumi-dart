@@ -13,14 +13,15 @@ class V2modelsIntentInitialResponseSettingInitialResponseMessageGroupVariationCu
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': value};
+    return <String, dynamic>{
+      'value': value,
+    };
   }
 
-  factory V2modelsIntentInitialResponseSettingInitialResponseMessageGroupVariationCustomPayload.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2modelsIntentInitialResponseSettingInitialResponseMessageGroupVariationCustomPayload.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentInitialResponseSettingInitialResponseMessageGroupVariationCustomPayload(
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
+

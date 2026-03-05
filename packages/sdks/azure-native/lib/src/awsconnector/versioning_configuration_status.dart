@@ -15,3 +15,4 @@ enum VersioningConfigurationStatus {
     throw ArgumentError('Unknown VersioningConfigurationStatus value: $value');
   }
 }
+

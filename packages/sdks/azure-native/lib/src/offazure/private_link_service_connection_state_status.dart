@@ -14,8 +14,7 @@ enum PrivateLinkServiceConnectionStateStatus {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown PrivateLinkServiceConnectionStateStatus value: $value',
-    );
+    throw ArgumentError('Unknown PrivateLinkServiceConnectionStateStatus value: $value');
   }
 }
+

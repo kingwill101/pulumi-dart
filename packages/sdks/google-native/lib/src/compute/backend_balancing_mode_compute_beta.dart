@@ -13,8 +13,7 @@ enum BackendBalancingModeComputeBeta {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown BackendBalancingModeComputeBeta value: $value',
-    );
+    throw ArgumentError('Unknown BackendBalancingModeComputeBeta value: $value');
   }
 }
+

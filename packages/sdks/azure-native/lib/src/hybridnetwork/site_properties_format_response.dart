@@ -8,13 +8,10 @@ import 'referenced_resource_response.dart';
 class SitePropertiesFormatResponse {
   /// List of NFVIs
   final pulumi.Input<List<AzureArcK8sClusterNFVIDetailsResponse>>? nfvis;
-
   /// The provisioning state of the site resource. **TODO**: Confirm if this is needed.
   final pulumi.Input<String> provisioningState;
-
   /// The list of site network services on the site.
-  final pulumi.Input<List<ReferencedResourceResponse>>
-  siteNetworkServiceReferences;
+  final pulumi.Input<List<ReferencedResourceResponse>> siteNetworkServiceReferences;
 
   /// Creates a new [SitePropertiesFormatResponse].
   /// [nfvis] List of NFVIs
@@ -28,59 +25,18 @@ class SitePropertiesFormatResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'nfvis':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<AzureArcK8sClusterNFVIDetailsResponse>,
-            List<Map<String, dynamic>>
-          >(
-            nfvis,
-            (value) =>
-                pulumi.Input.encodeList<
-                  AzureArcK8sClusterNFVIDetailsResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'nfvis': ?pulumi.Input.mapOptionalInputValue<List<AzureArcK8sClusterNFVIDetailsResponse>, List<Map<String, dynamic>>>(nfvis, (value) => pulumi.Input.encodeList<AzureArcK8sClusterNFVIDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'provisioningState': provisioningState,
-      'siteNetworkServiceReferences':
-          pulumi.Input.mapInputValue<
-            List<ReferencedResourceResponse>,
-            List<Map<String, dynamic>>
-          >(
-            siteNetworkServiceReferences,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ReferencedResourceResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'siteNetworkServiceReferences': pulumi.Input.mapInputValue<List<ReferencedResourceResponse>, List<Map<String, dynamic>>>(siteNetworkServiceReferences, (value) => pulumi.Input.encodeList<ReferencedResourceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory SitePropertiesFormatResponse.fromMap(Map<String, dynamic> map) {
     return SitePropertiesFormatResponse(
-      nfvis: (() {
-        final guardedValue = map['nfvis'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<AzureArcK8sClusterNFVIDetailsResponse>(
-            guardedValue,
-            (value) => AzureArcK8sClusterNFVIDetailsResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
-      siteNetworkServiceReferences: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<ReferencedResourceResponse>(
-          map['siteNetworkServiceReferences']!,
-          (value) => ReferencedResourceResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      nfvis: (() { final guardedValue = map['nfvis']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AzureArcK8sClusterNFVIDetailsResponse>(guardedValue, (value) => AzureArcK8sClusterNFVIDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
+      siteNetworkServiceReferences: pulumi.Input.fromValue(pulumi.Input.decodeList<ReferencedResourceResponse>(map['siteNetworkServiceReferences']!, (value) => ReferencedResourceResponse.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

@@ -356,13 +356,10 @@ import 'spring_cloud_custom_domain_state.dart';
 class SpringCloudCustomDomain extends pulumi.CustomResource {
   /// Specifies the name of the Spring Cloud Certificate that binds to the Spring Cloud Custom Domain. Required when `thumbprint` is specified
   late final pulumi.Output<String?> certificateName;
-
   /// Specifies the name of the Spring Cloud Custom Domain. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies the resource ID of the Spring Cloud Application. Changing this forces a new resource to be created.
   late final pulumi.Output<String> springCloudAppId;
-
   /// Specifies the thumbprint of the Spring Cloud Certificate that binds to the Spring Cloud Custom Domain. Required when `certificate_name` is specified. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> thumbprint;
 
@@ -375,11 +372,11 @@ class SpringCloudCustomDomain extends pulumi.CustomResource {
     SpringCloudCustomDomainArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appplatform/springCloudCustomDomain:SpringCloudCustomDomain',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appplatform/springCloudCustomDomain:SpringCloudCustomDomain',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     certificateName = registerOutput<String?>('certificateName');
     this.name = registerOutput<String>('name');
     springCloudAppId = registerOutput<String>('springCloudAppId');
@@ -404,11 +401,11 @@ class SpringCloudCustomDomain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appplatform/springCloudCustomDomain:SpringCloudCustomDomain',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appplatform/springCloudCustomDomain:SpringCloudCustomDomain',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     certificateName = registerOutput<String?>('certificateName');
     this.name = registerOutput<String>('name');
     springCloudAppId = registerOutput<String>('springCloudAppId');

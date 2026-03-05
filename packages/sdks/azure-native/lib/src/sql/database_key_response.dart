@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatabaseKeyResponse {
   /// The database key creation date.
   final pulumi.Input<String> creationDate;
-
   /// Subregion of the server key.
   final pulumi.Input<String> subregion;
-
   /// Thumbprint of the database key.
   final pulumi.Input<String> thumbprint;
-
   /// The database key type. Only supported value is 'AzureKeyVault'.
   final pulumi.Input<String> type;
 
@@ -46,3 +43,4 @@ class DatabaseKeyResponse {
     );
   }
 }
+

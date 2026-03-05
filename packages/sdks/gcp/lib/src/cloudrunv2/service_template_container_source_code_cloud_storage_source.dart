@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceTemplateContainerSourceCodeCloudStorageSource {
   /// The Cloud Storage bucket name.
   final pulumi.Input<String> bucket;
-
   /// The Cloud Storage object generation. The is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
   final pulumi.Input<String>? generation;
-
   /// The Cloud Storage object name.
   final pulumi.Input<String> object_;
 
@@ -30,17 +28,12 @@ class ServiceTemplateContainerSourceCodeCloudStorageSource {
     };
   }
 
-  factory ServiceTemplateContainerSourceCodeCloudStorageSource.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ServiceTemplateContainerSourceCodeCloudStorageSource.fromMap(Map<String, dynamic> map) {
     return ServiceTemplateContainerSourceCodeCloudStorageSource(
       bucket: pulumi.Input.fromValue(map['bucket'] as String),
-      generation: (() {
-        final guardedValue = map['generation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      generation: (() { final guardedValue = map['generation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       object_: pulumi.Input.fromValue(map['object'] as String),
     );
   }
 }
+

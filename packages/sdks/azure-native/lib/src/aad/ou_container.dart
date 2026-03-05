@@ -153,46 +153,32 @@ import 'system_data_response.dart';
 class OuContainer extends pulumi.CustomResource {
   /// The list of container accounts
   late final pulumi.Output<List<Map<String, dynamic>>?> accounts;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The OuContainer name
   late final pulumi.Output<String> containerId;
-
   /// The Deployment id
   late final pulumi.Output<String> deploymentId;
-
   /// Distinguished Name of OuContainer instance
   late final pulumi.Output<String> distinguishedName;
-
   /// The domain name of Domain Services.
   late final pulumi.Output<String> domainName;
-
   /// Resource etag
   late final pulumi.Output<String?> etag;
-
   /// Resource location
   late final pulumi.Output<String?> location;
-
   /// Resource name
   late final pulumi.Output<String> name;
-
   /// The current deployment or provisioning state, which only appears in the response.
   late final pulumi.Output<String> provisioningState;
-
   /// Status of OuContainer instance
   late final pulumi.Output<String> serviceStatus;
-
   /// The system meta data relating to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Azure Active Directory tenant id
   late final pulumi.Output<String> tenantId;
-
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -205,11 +191,11 @@ class OuContainer extends pulumi.CustomResource {
     OuContainerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:aad:OuContainer',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:aad:OuContainer',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accounts = registerOutput<List<Map<String, dynamic>>?>('accounts');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     containerId = registerOutput<String>('containerId');
@@ -221,16 +207,7 @@ class OuContainer extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     serviceStatus = registerOutput<String>('serviceStatus');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tenantId = registerOutput<String>('tenantId');
     type = registerOutput<String>('type');

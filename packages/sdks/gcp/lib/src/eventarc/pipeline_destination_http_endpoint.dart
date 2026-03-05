@@ -162,7 +162,6 @@ class PipelineDestinationHttpEndpoint {
   /// standard CloudEvent format. If it doesn't then the outgoing message
   /// request may fail with a persistent error.
   final pulumi.Input<String>? messageBindingTemplate;
-
   /// The URI of the HTTP enpdoint.
   /// The value must be a RFC2396 URI string.
   /// Examples: `https://svc.us-central1.p.local:8080/route`.
@@ -186,12 +185,9 @@ class PipelineDestinationHttpEndpoint {
 
   factory PipelineDestinationHttpEndpoint.fromMap(Map<String, dynamic> map) {
     return PipelineDestinationHttpEndpoint(
-      messageBindingTemplate: (() {
-        final guardedValue = map['messageBindingTemplate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      messageBindingTemplate: (() { final guardedValue = map['messageBindingTemplate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
+

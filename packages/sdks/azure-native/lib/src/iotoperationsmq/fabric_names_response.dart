@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FabricNamesResponse {
   /// Fabric one lake house name.
   final pulumi.Input<String> lakehouseName;
-
   /// Fabric one lake workspace name.
   final pulumi.Input<String> workspaceName;
 
@@ -32,3 +31,4 @@ class FabricNamesResponse {
     );
   }
 }
+

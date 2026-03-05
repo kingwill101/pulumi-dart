@@ -6,22 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RollingUpgradePolicyResponse {
   /// Allow VMSS to ignore AZ boundaries when constructing upgrade batches. Take into consideration the Update Domain and maxBatchInstancePercent to determine the batch size. If this field is not set, Azure Azure Batch will not set its default value. The value of enableCrossZoneUpgrade on the created VirtualMachineScaleSet will be decided by the default configurations on VirtualMachineScaleSet. This field is able to be set to true or false only when using NodePlacementConfiguration as Zonal.
   final pulumi.Input<bool>? enableCrossZoneUpgrade;
-
   /// The maximum percent of total virtual machine instances that will be upgraded simultaneously by the rolling upgrade in one batch. As this is a maximum, unhealthy instances in previous or future batches can cause the percentage of instances in a batch to decrease to ensure higher reliability. The value of this field should be between 5 and 100, inclusive. If both maxBatchInstancePercent and maxUnhealthyInstancePercent are assigned with value, the value of maxBatchInstancePercent should not be more than maxUnhealthyInstancePercent.
   final pulumi.Input<int>? maxBatchInstancePercent;
-
   /// The maximum percentage of the total virtual machine instances in the scale set that can be simultaneously unhealthy, either as a result of being upgraded, or by being found in an unhealthy state by the virtual machine health checks before the rolling upgrade aborts. This constraint will be checked prior to starting any batch. The value of this field should be between 5 and 100, inclusive. If both maxBatchInstancePercent and maxUnhealthyInstancePercent are assigned with value, the value of maxBatchInstancePercent should not be more than maxUnhealthyInstancePercent.
   final pulumi.Input<int>? maxUnhealthyInstancePercent;
-
   /// The maximum percentage of upgraded virtual machine instances that can be found to be in an unhealthy state. This check will happen after each batch is upgraded. If this percentage is ever exceeded, the rolling update aborts. The value of this field should be between 0 and 100, inclusive.
   final pulumi.Input<int>? maxUnhealthyUpgradedInstancePercent;
-
   /// The wait time between completing the update for all virtual machines in one batch and starting the next batch. The time duration should be specified in ISO 8601 format.
   final pulumi.Input<String>? pauseTimeBetweenBatches;
-
   /// Upgrade all unhealthy instances in a scale set before any healthy instances.
   final pulumi.Input<bool>? prioritizeUnhealthyInstances;
-
   /// Rollback failed instances to previous model if the Rolling Upgrade policy is violated.
   final pulumi.Input<bool>? rollbackFailedInstancesOnPolicyBreach;
 
@@ -48,52 +42,23 @@ class RollingUpgradePolicyResponse {
       'enableCrossZoneUpgrade': ?enableCrossZoneUpgrade,
       'maxBatchInstancePercent': ?maxBatchInstancePercent,
       'maxUnhealthyInstancePercent': ?maxUnhealthyInstancePercent,
-      'maxUnhealthyUpgradedInstancePercent':
-          ?maxUnhealthyUpgradedInstancePercent,
+      'maxUnhealthyUpgradedInstancePercent': ?maxUnhealthyUpgradedInstancePercent,
       'pauseTimeBetweenBatches': ?pauseTimeBetweenBatches,
       'prioritizeUnhealthyInstances': ?prioritizeUnhealthyInstances,
-      'rollbackFailedInstancesOnPolicyBreach':
-          ?rollbackFailedInstancesOnPolicyBreach,
+      'rollbackFailedInstancesOnPolicyBreach': ?rollbackFailedInstancesOnPolicyBreach,
     };
   }
 
   factory RollingUpgradePolicyResponse.fromMap(Map<String, dynamic> map) {
     return RollingUpgradePolicyResponse(
-      enableCrossZoneUpgrade: (() {
-        final guardedValue = map['enableCrossZoneUpgrade'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      maxBatchInstancePercent: (() {
-        final guardedValue = map['maxBatchInstancePercent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      maxUnhealthyInstancePercent: (() {
-        final guardedValue = map['maxUnhealthyInstancePercent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      maxUnhealthyUpgradedInstancePercent: (() {
-        final guardedValue = map['maxUnhealthyUpgradedInstancePercent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      pauseTimeBetweenBatches: (() {
-        final guardedValue = map['pauseTimeBetweenBatches'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      prioritizeUnhealthyInstances: (() {
-        final guardedValue = map['prioritizeUnhealthyInstances'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      rollbackFailedInstancesOnPolicyBreach: (() {
-        final guardedValue = map['rollbackFailedInstancesOnPolicyBreach'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enableCrossZoneUpgrade: (() { final guardedValue = map['enableCrossZoneUpgrade']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      maxBatchInstancePercent: (() { final guardedValue = map['maxBatchInstancePercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxUnhealthyInstancePercent: (() { final guardedValue = map['maxUnhealthyInstancePercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxUnhealthyUpgradedInstancePercent: (() { final guardedValue = map['maxUnhealthyUpgradedInstancePercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      pauseTimeBetweenBatches: (() { final guardedValue = map['pauseTimeBetweenBatches']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      prioritizeUnhealthyInstances: (() { final guardedValue = map['prioritizeUnhealthyInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      rollbackFailedInstancesOnPolicyBreach: (() { final guardedValue = map['rollbackFailedInstancesOnPolicyBreach']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

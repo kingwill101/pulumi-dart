@@ -5,25 +5,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTablesTable {
   /// User-provided table labels, in key/value pairs.
   final pulumi.Input<Map<String, String>> labels;
-
   /// The name of the table.
   final pulumi.Input<String> tableId;
 
   /// Creates a new [GetTablesTable].
   /// [labels] User-provided table labels, in key/value pairs.
   /// [tableId] The name of the table.
-  GetTablesTable({required this.labels, required this.tableId});
+  GetTablesTable({
+    required this.labels,
+    required this.tableId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'labels': labels, 'tableId': tableId};
+    return <String, dynamic>{
+      'labels': labels,
+      'tableId': tableId,
+    };
   }
 
   factory GetTablesTable.fromMap(Map<String, dynamic> map) {
     return GetTablesTable(
-      labels: pulumi.Input.fromValue(
-        (map['labels'] as Map).cast<String, String>(),
-      ),
+      labels: pulumi.Input.fromValue((map['labels'] as Map).cast<String, String>()),
       tableId: pulumi.Input.fromValue(map['tableId'] as String),
     );
   }
 }
+

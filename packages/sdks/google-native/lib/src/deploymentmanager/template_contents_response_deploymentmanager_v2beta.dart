@@ -7,16 +7,12 @@ import 'import_file_response_deploymentmanager_v2beta.dart';
 class TemplateContentsResponseDeploymentmanagerV2beta {
   /// Import files referenced by the main template.
   final pulumi.Input<List<ImportFileResponseDeploymentmanagerV2beta>> imports;
-
   /// Which interpreter (python or jinja) should be used during expansion.
   final pulumi.Input<String> interpreter;
-
   /// The filename of the mainTemplate
   final pulumi.Input<String> mainTemplate;
-
   /// The contents of the template schema.
   final pulumi.Input<String> schema;
-
   /// The contents of the main template file.
   final pulumi.Input<String> template;
 
@@ -36,18 +32,7 @@ class TemplateContentsResponseDeploymentmanagerV2beta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'imports':
-          pulumi.Input.mapInputValue<
-            List<ImportFileResponseDeploymentmanagerV2beta>,
-            List<Map<String, dynamic>>
-          >(
-            imports,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ImportFileResponseDeploymentmanagerV2beta,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'imports': pulumi.Input.mapInputValue<List<ImportFileResponseDeploymentmanagerV2beta>, List<Map<String, dynamic>>>(imports, (value) => pulumi.Input.encodeList<ImportFileResponseDeploymentmanagerV2beta, Map<String, dynamic>>(value, (value) => value.toMap())),
       'interpreter': interpreter,
       'mainTemplate': mainTemplate,
       'schema': schema,
@@ -55,18 +40,9 @@ class TemplateContentsResponseDeploymentmanagerV2beta {
     };
   }
 
-  factory TemplateContentsResponseDeploymentmanagerV2beta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory TemplateContentsResponseDeploymentmanagerV2beta.fromMap(Map<String, dynamic> map) {
     return TemplateContentsResponseDeploymentmanagerV2beta(
-      imports: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<ImportFileResponseDeploymentmanagerV2beta>(
-          map['imports']!,
-          (value) => ImportFileResponseDeploymentmanagerV2beta.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      imports: pulumi.Input.fromValue(pulumi.Input.decodeList<ImportFileResponseDeploymentmanagerV2beta>(map['imports']!, (value) => ImportFileResponseDeploymentmanagerV2beta.fromMap((value as Map).cast<String, dynamic>()))),
       interpreter: pulumi.Input.fromValue(map['interpreter'] as String),
       mainTemplate: pulumi.Input.fromValue(map['mainTemplate'] as String),
       schema: pulumi.Input.fromValue(map['schema'] as String),
@@ -74,3 +50,4 @@ class TemplateContentsResponseDeploymentmanagerV2beta {
     );
   }
 }
+

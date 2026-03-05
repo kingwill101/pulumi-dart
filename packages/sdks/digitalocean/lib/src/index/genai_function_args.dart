@@ -9,22 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GenaiFunctionArgs {
   /// The name of the GradientAI resource.
   final pulumi.Input<String> agentId;
-
   /// The region where the GradientAI resource will be created.
   final pulumi.Input<String> description;
-
   /// The model to use for the GradientAI resource.
   final pulumi.Input<String>? faasName;
-
   /// The current status of the GradientAI resource.
   final pulumi.Input<String> faasNamespace;
-
   /// The creation timestamp of the GradientAI resource.
   final pulumi.Input<String> functionName;
-
   /// The input schema of the GradientAI resource.
   final pulumi.Input<String> inputSchema;
-
   /// The output schema of the GradientAI resource.
   final pulumi.Input<String>? outputSchema;
 
@@ -62,19 +56,12 @@ class GenaiFunctionArgs {
     return GenaiFunctionArgs(
       agentId: pulumi.Input.fromValue(map['agentId'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
-      faasName: (() {
-        final guardedValue = map['faasName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      faasName: (() { final guardedValue = map['faasName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       faasNamespace: pulumi.Input.fromValue(map['faasNamespace'] as String),
       functionName: pulumi.Input.fromValue(map['functionName'] as String),
       inputSchema: pulumi.Input.fromValue(map['inputSchema'] as String),
-      outputSchema: (() {
-        final guardedValue = map['outputSchema'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      outputSchema: (() { final guardedValue = map['outputSchema']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

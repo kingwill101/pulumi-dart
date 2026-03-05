@@ -8,17 +8,20 @@ class GetQuickConnectQuickConnectConfigPhoneConfig {
 
   /// Creates a new [GetQuickConnectQuickConnectConfigPhoneConfig].
   /// [phoneNumber] Phone number in in E.164 format.
-  GetQuickConnectQuickConnectConfigPhoneConfig({required this.phoneNumber});
+  GetQuickConnectQuickConnectConfigPhoneConfig({
+    required this.phoneNumber,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'phoneNumber': phoneNumber};
+    return <String, dynamic>{
+      'phoneNumber': phoneNumber,
+    };
   }
 
-  factory GetQuickConnectQuickConnectConfigPhoneConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetQuickConnectQuickConnectConfigPhoneConfig.fromMap(Map<String, dynamic> map) {
     return GetQuickConnectQuickConnectConfigPhoneConfig(
       phoneNumber: pulumi.Input.fromValue(map['phoneNumber'] as String),
     );
   }
 }
+

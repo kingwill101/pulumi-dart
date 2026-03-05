@@ -5,10 +5,7 @@ import 'domain_default_user_settings_space_storage_settings_default_ebs_storage_
 
 class DomainDefaultUserSettingsSpaceStorageSettings {
   /// The default EBS storage settings for a private space. See `default_ebs_storage_settings` Block below.
-  final pulumi.Input<
-    DomainDefaultUserSettingsSpaceStorageSettingsDefaultEbsStorageSettings
-  >?
-  defaultEbsStorageSettings;
+  final pulumi.Input<DomainDefaultUserSettingsSpaceStorageSettingsDefaultEbsStorageSettings>? defaultEbsStorageSettings;
 
   /// Creates a new [DomainDefaultUserSettingsSpaceStorageSettings].
   /// [defaultEbsStorageSettings] The default EBS storage settings for a private space. See `default_ebs_storage_settings` Block below.
@@ -18,27 +15,14 @@ class DomainDefaultUserSettingsSpaceStorageSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'defaultEbsStorageSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            DomainDefaultUserSettingsSpaceStorageSettingsDefaultEbsStorageSettings,
-            Map<String, dynamic>
-          >(defaultEbsStorageSettings, (value) => value.toMap()),
+      'defaultEbsStorageSettings': ?pulumi.Input.mapOptionalInputValue<DomainDefaultUserSettingsSpaceStorageSettingsDefaultEbsStorageSettings, Map<String, dynamic>>(defaultEbsStorageSettings, (value) => value.toMap()),
     };
   }
 
-  factory DomainDefaultUserSettingsSpaceStorageSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDefaultUserSettingsSpaceStorageSettings.fromMap(Map<String, dynamic> map) {
     return DomainDefaultUserSettingsSpaceStorageSettings(
-      defaultEbsStorageSettings: (() {
-        final guardedValue = map['defaultEbsStorageSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DomainDefaultUserSettingsSpaceStorageSettingsDefaultEbsStorageSettings.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      defaultEbsStorageSettings: (() { final guardedValue = map['defaultEbsStorageSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDefaultUserSettingsSpaceStorageSettingsDefaultEbsStorageSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

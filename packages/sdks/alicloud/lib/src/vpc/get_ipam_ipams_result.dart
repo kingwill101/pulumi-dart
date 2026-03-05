@@ -7,27 +7,20 @@ import 'get_ipam_ipams_ipam.dart';
 class GetIpamIpamsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of Ipam IDs.
   final List<String> ids;
-
   /// The first ID of the resource.
   final String? ipamId;
-
   /// The name of the resource.
   final String? ipamName;
-
   /// A list of Ipam Entries. Each element contains the following attributes:
   final List<GetIpamIpamsIpam> ipams;
   final String? nameRegex;
-
   /// A list of name of Ipams.
   final List<String> names;
   final String? outputFile;
-
   /// The ID of the resource group.
   final String? resourceGroupId;
-
   /// The tag of the resource.
   final Map<String, String>? tags;
 
@@ -61,10 +54,7 @@ class GetIpamIpamsResult {
       'ids': ids,
       'ipamId': ?ipamId,
       'ipamName': ?ipamName,
-      'ipams': pulumi.Input.encodeList<GetIpamIpamsIpam, Map<String, dynamic>>(
-        ipams,
-        (value) => value.toMap(),
-      ),
+      'ipams': pulumi.Input.encodeList<GetIpamIpamsIpam, Map<String, dynamic>>(ipams, (value) => value.toMap()),
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
@@ -77,42 +67,15 @@ class GetIpamIpamsResult {
     return GetIpamIpamsResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      ipamId: (() {
-        final guardedValue = map['ipamId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      ipamName: (() {
-        final guardedValue = map['ipamName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      ipams: pulumi.Input.decodeList<GetIpamIpamsIpam>(
-        map['ipams']!,
-        (value) =>
-            GetIpamIpamsIpam.fromMap((value as Map).cast<String, dynamic>()),
-      ),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      ipamId: (() { final guardedValue = map['ipamId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ipamName: (() { final guardedValue = map['ipamName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ipams: pulumi.Input.decodeList<GetIpamIpamsIpam>(map['ipams']!, (value) => GetIpamIpamsIpam.fromMap((value as Map).cast<String, dynamic>())),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      resourceGroupId: (() {
-        final guardedValue = map['resourceGroupId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceGroupId: (() { final guardedValue = map['resourceGroupId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }
 }
+

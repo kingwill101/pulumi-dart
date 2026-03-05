@@ -331,25 +331,18 @@ class StoreIndex extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** At least one of the "full_text" and "field_search" should be specified.
   late final pulumi.Output<List<Map<String, dynamic>>?> fieldSearches;
-
   /// The configuration of full text index. See `full_text` below.
   late final pulumi.Output<StoreIndexFullText?> fullText;
-
   /// Whether to enable log reduce. Default to false.
   late final pulumi.Output<bool?> logReduce;
-
   /// The black list of log reduce.
   late final pulumi.Output<List<String>?> logReduceBlackLists;
-
   /// The white list of log reduce.
   late final pulumi.Output<List<String>?> logReduceWhiteLists;
-
   /// The log store name to the query index belongs.
   late final pulumi.Output<String> logstore;
-
   /// The max text length.
   late final pulumi.Output<int?> maxTextLen;
-
   /// The project name to the log store belongs.
   late final pulumi.Output<String> project;
 
@@ -362,24 +355,13 @@ class StoreIndex extends pulumi.CustomResource {
     StoreIndexArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:log/storeIndex:StoreIndex',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    fieldSearches = registerOutput<List<Map<String, dynamic>>?>(
-      'fieldSearches',
-    );
-    fullText = registerOutput<StoreIndexFullText?>(
-      'fullText',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return StoreIndexFullText.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'alicloud:log/storeIndex:StoreIndex',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    fieldSearches = registerOutput<List<Map<String, dynamic>>?>('fieldSearches');
+    fullText = registerOutput<StoreIndexFullText?>('fullText', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StoreIndexFullText.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     logReduce = registerOutput<bool?>('logReduce');
     logReduceBlackLists = registerOutput<List<String>?>('logReduceBlackLists');
     logReduceWhiteLists = registerOutput<List<String>?>('logReduceWhiteLists');
@@ -406,24 +388,13 @@ class StoreIndex extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:log/storeIndex:StoreIndex',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    fieldSearches = registerOutput<List<Map<String, dynamic>>?>(
-      'fieldSearches',
-    );
-    fullText = registerOutput<StoreIndexFullText?>(
-      'fullText',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return StoreIndexFullText.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'alicloud:log/storeIndex:StoreIndex',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    fieldSearches = registerOutput<List<Map<String, dynamic>>?>('fieldSearches');
+    fullText = registerOutput<StoreIndexFullText?>('fullText', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StoreIndexFullText.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     logReduce = registerOutput<bool?>('logReduce');
     logReduceBlackLists = registerOutput<List<String>?>('logReduceBlackLists');
     logReduceWhiteLists = registerOutput<List<String>?>('logReduceWhiteLists');

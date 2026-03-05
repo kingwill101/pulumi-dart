@@ -8,7 +8,6 @@ import 'instance_view_status_response.dart';
 class CapacityReservationInstanceViewResponse {
   /// The resource status information.
   final pulumi.Input<List<InstanceViewStatusResponse>>? statuses;
-
   /// Unutilized capacity of the capacity reservation.
   final pulumi.Input<CapacityReservationUtilizationResponse>? utilizationInfo;
 
@@ -22,51 +21,16 @@ class CapacityReservationInstanceViewResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'statuses':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<InstanceViewStatusResponse>,
-            List<Map<String, dynamic>>
-          >(
-            statuses,
-            (value) =>
-                pulumi.Input.encodeList<
-                  InstanceViewStatusResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'utilizationInfo':
-          ?pulumi.Input.mapOptionalInputValue<
-            CapacityReservationUtilizationResponse,
-            Map<String, dynamic>
-          >(utilizationInfo, (value) => value.toMap()),
+      'statuses': ?pulumi.Input.mapOptionalInputValue<List<InstanceViewStatusResponse>, List<Map<String, dynamic>>>(statuses, (value) => pulumi.Input.encodeList<InstanceViewStatusResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'utilizationInfo': ?pulumi.Input.mapOptionalInputValue<CapacityReservationUtilizationResponse, Map<String, dynamic>>(utilizationInfo, (value) => value.toMap()),
     };
   }
 
-  factory CapacityReservationInstanceViewResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CapacityReservationInstanceViewResponse.fromMap(Map<String, dynamic> map) {
     return CapacityReservationInstanceViewResponse(
-      statuses: (() {
-        final guardedValue = map['statuses'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<InstanceViewStatusResponse>(
-            guardedValue,
-            (value) => InstanceViewStatusResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      utilizationInfo: (() {
-        final guardedValue = map['utilizationInfo'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CapacityReservationUtilizationResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      statuses: (() { final guardedValue = map['statuses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InstanceViewStatusResponse>(guardedValue, (value) => InstanceViewStatusResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      utilizationInfo: (() { final guardedValue = map['utilizationInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CapacityReservationUtilizationResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

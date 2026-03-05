@@ -14,14 +14,15 @@ class GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriAction {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'uri': uri};
+    return <String, dynamic>{
+      'uri': uri,
+    };
   }
 
-  factory GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriAction.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriAction.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriAction(
       uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
+

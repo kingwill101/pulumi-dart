@@ -7,19 +7,14 @@ import 'system_data_response.dart';
 class GetFeaturesetVersionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// [Required] Additional attributes of the entity.
   final FeaturesetVersionResponse featuresetVersionProperties;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// The name of the resource
   final String name;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -53,15 +48,12 @@ class GetFeaturesetVersionResult {
   factory GetFeaturesetVersionResult.fromMap(Map<String, dynamic> map) {
     return GetFeaturesetVersionResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      featuresetVersionProperties: FeaturesetVersionResponse.fromMap(
-        (map['featuresetVersionProperties']! as Map).cast<String, dynamic>(),
-      ),
+      featuresetVersionProperties: FeaturesetVersionResponse.fromMap((map['featuresetVersionProperties']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       name: map['name'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

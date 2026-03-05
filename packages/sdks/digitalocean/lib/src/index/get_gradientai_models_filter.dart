@@ -31,18 +31,11 @@ class GetGradientaiModelsFilter {
 
   factory GetGradientaiModelsFilter.fromMap(Map<String, dynamic> map) {
     return GetGradientaiModelsFilter(
-      all: (() {
-        final guardedValue = map['all'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      all: (() { final guardedValue = map['all']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       key: pulumi.Input.fromValue(map['key'] as String),
-      matchBy: (() {
-        final guardedValue = map['matchBy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      matchBy: (() { final guardedValue = map['matchBy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
+

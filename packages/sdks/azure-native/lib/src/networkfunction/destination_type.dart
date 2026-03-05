@@ -14,3 +14,4 @@ enum DestinationType {
     throw ArgumentError('Unknown DestinationType value: $value');
   }
 }
+

@@ -17,7 +17,6 @@ class GetAuthorityResult {
   final String desiredState;
   final Map<String, String> effectiveLabels;
   final String gcsBucket;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final bool ignoreActiveCertificatesOnDeletion;
@@ -28,7 +27,6 @@ class GetAuthorityResult {
   final String name;
   final String pemCaCertificate;
   final List<String> pemCaCertificates;
-
   /// The PEM-encoded signed certificate signing request (CSR). This is only set on subordinate certificate authorities that are awaiting user activation.
   final String pemCsr;
   final String? pool;
@@ -101,17 +99,9 @@ class GetAuthorityResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessUrls':
-          pulumi.Input.encodeList<GetAuthorityAccessUrl, Map<String, dynamic>>(
-            accessUrls,
-            (value) => value.toMap(),
-          ),
+      'accessUrls': pulumi.Input.encodeList<GetAuthorityAccessUrl, Map<String, dynamic>>(accessUrls, (value) => value.toMap()),
       'certificateAuthorityId': ?certificateAuthorityId,
-      'configs':
-          pulumi.Input.encodeList<GetAuthorityConfig, Map<String, dynamic>>(
-            configs,
-            (value) => value.toMap(),
-          ),
+      'configs': pulumi.Input.encodeList<GetAuthorityConfig, Map<String, dynamic>>(configs, (value) => value.toMap()),
       'createTime': createTime,
       'deletionProtection': deletionProtection,
       'desiredState': desiredState,
@@ -119,11 +109,7 @@ class GetAuthorityResult {
       'gcsBucket': gcsBucket,
       'id': id,
       'ignoreActiveCertificatesOnDeletion': ignoreActiveCertificatesOnDeletion,
-      'keySpecs':
-          pulumi.Input.encodeList<GetAuthorityKeySpec, Map<String, dynamic>>(
-            keySpecs,
-            (value) => value.toMap(),
-          ),
+      'keySpecs': pulumi.Input.encodeList<GetAuthorityKeySpec, Map<String, dynamic>>(keySpecs, (value) => value.toMap()),
       'labels': labels,
       'lifetime': lifetime,
       'location': ?location,
@@ -136,92 +122,43 @@ class GetAuthorityResult {
       'pulumiLabels': pulumiLabels,
       'skipGracePeriod': skipGracePeriod,
       'state': state,
-      'subordinateConfigs':
-          pulumi.Input.encodeList<
-            GetAuthoritySubordinateConfig,
-            Map<String, dynamic>
-          >(subordinateConfigs, (value) => value.toMap()),
+      'subordinateConfigs': pulumi.Input.encodeList<GetAuthoritySubordinateConfig, Map<String, dynamic>>(subordinateConfigs, (value) => value.toMap()),
       'type': type,
       'updateTime': updateTime,
-      'userDefinedAccessUrls':
-          pulumi.Input.encodeList<
-            GetAuthorityUserDefinedAccessUrl,
-            Map<String, dynamic>
-          >(userDefinedAccessUrls, (value) => value.toMap()),
+      'userDefinedAccessUrls': pulumi.Input.encodeList<GetAuthorityUserDefinedAccessUrl, Map<String, dynamic>>(userDefinedAccessUrls, (value) => value.toMap()),
     };
   }
 
   factory GetAuthorityResult.fromMap(Map<String, dynamic> map) {
     return GetAuthorityResult(
-      accessUrls: pulumi.Input.decodeList<GetAuthorityAccessUrl>(
-        map['accessUrls']!,
-        (value) => GetAuthorityAccessUrl.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      certificateAuthorityId: (() {
-        final guardedValue = map['certificateAuthorityId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      configs: pulumi.Input.decodeList<GetAuthorityConfig>(
-        map['configs']!,
-        (value) =>
-            GetAuthorityConfig.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      accessUrls: pulumi.Input.decodeList<GetAuthorityAccessUrl>(map['accessUrls']!, (value) => GetAuthorityAccessUrl.fromMap((value as Map).cast<String, dynamic>())),
+      certificateAuthorityId: (() { final guardedValue = map['certificateAuthorityId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      configs: pulumi.Input.decodeList<GetAuthorityConfig>(map['configs']!, (value) => GetAuthorityConfig.fromMap((value as Map).cast<String, dynamic>())),
       createTime: map['createTime'] as String,
       deletionProtection: map['deletionProtection'] as bool,
       desiredState: map['desiredState'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       gcsBucket: map['gcsBucket'] as String,
       id: map['id'] as String,
-      ignoreActiveCertificatesOnDeletion:
-          map['ignoreActiveCertificatesOnDeletion'] as bool,
-      keySpecs: pulumi.Input.decodeList<GetAuthorityKeySpec>(
-        map['keySpecs']!,
-        (value) =>
-            GetAuthorityKeySpec.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      ignoreActiveCertificatesOnDeletion: map['ignoreActiveCertificatesOnDeletion'] as bool,
+      keySpecs: pulumi.Input.decodeList<GetAuthorityKeySpec>(map['keySpecs']!, (value) => GetAuthorityKeySpec.fromMap((value as Map).cast<String, dynamic>())),
       labels: (map['labels'] as Map).cast<String, String>(),
       lifetime: map['lifetime'] as String,
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
       pemCaCertificate: map['pemCaCertificate'] as String,
       pemCaCertificates: (map['pemCaCertificates'] as List).cast<String>(),
       pemCsr: map['pemCsr'] as String,
-      pool: (() {
-        final guardedValue = map['pool'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      pool: (() { final guardedValue = map['pool']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       skipGracePeriod: map['skipGracePeriod'] as bool,
       state: map['state'] as String,
-      subordinateConfigs:
-          pulumi.Input.decodeList<GetAuthoritySubordinateConfig>(
-            map['subordinateConfigs']!,
-            (value) => GetAuthoritySubordinateConfig.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      subordinateConfigs: pulumi.Input.decodeList<GetAuthoritySubordinateConfig>(map['subordinateConfigs']!, (value) => GetAuthoritySubordinateConfig.fromMap((value as Map).cast<String, dynamic>())),
       type: map['type'] as String,
       updateTime: map['updateTime'] as String,
-      userDefinedAccessUrls:
-          pulumi.Input.decodeList<GetAuthorityUserDefinedAccessUrl>(
-            map['userDefinedAccessUrls']!,
-            (value) => GetAuthorityUserDefinedAccessUrl.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      userDefinedAccessUrls: pulumi.Input.decodeList<GetAuthorityUserDefinedAccessUrl>(map['userDefinedAccessUrls']!, (value) => GetAuthorityUserDefinedAccessUrl.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

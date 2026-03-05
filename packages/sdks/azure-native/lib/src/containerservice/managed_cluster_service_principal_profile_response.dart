@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedClusterServicePrincipalProfileResponse {
   /// The ID for the service principal.
   final pulumi.Input<String> clientId;
-
   /// The secret password associated with the service principal in plain text.
   final pulumi.Input<String>? secret;
 
@@ -19,19 +18,17 @@ class ManagedClusterServicePrincipalProfileResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'clientId': clientId, 'secret': ?secret};
+    return <String, dynamic>{
+      'clientId': clientId,
+      'secret': ?secret,
+    };
   }
 
-  factory ManagedClusterServicePrincipalProfileResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ManagedClusterServicePrincipalProfileResponse.fromMap(Map<String, dynamic> map) {
     return ManagedClusterServicePrincipalProfileResponse(
       clientId: pulumi.Input.fromValue(map['clientId'] as String),
-      secret: (() {
-        final guardedValue = map['secret'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      secret: (() { final guardedValue = map['secret']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

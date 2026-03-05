@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SpannerIODetailsResponse {
   /// DatabaseId accessed in the connection.
   final pulumi.Input<String> databaseId;
-
   /// InstanceId accessed in the connection.
   final pulumi.Input<String> instanceId;
-
   /// ProjectId accessed in the connection.
   final pulumi.Input<String> project;
 
@@ -39,3 +37,4 @@ class SpannerIODetailsResponse {
     );
   }
 }
+

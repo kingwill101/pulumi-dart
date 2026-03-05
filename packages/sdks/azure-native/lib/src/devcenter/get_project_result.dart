@@ -8,46 +8,32 @@ import 'system_data_response.dart';
 class GetProjectResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Settings to be used when associating a project with a catalog.
   final ProjectCatalogSettingsResponse? catalogSettings;
-
   /// Description of the project.
   final String? description;
-
   /// Resource Id of an associated DevCenter
   final String? devCenterId;
-
   /// The URI of the Dev Center resource this project is associated with.
   final String devCenterUri;
-
   /// The display name of the project.
   final String? displayName;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// Managed identity properties
   final ManagedServiceIdentityResponse? identity;
-
   /// The geo-location where the resource lives
   final String location;
-
   /// When specified, limits the maximum number of Dev Boxes a single user can create across all pools in the project. This will have no effect on existing Dev Boxes when reduced.
   final int? maxDevBoxesPerUser;
-
   /// The name of the resource
   final String name;
-
   /// The provisioning state of the resource.
   final String provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -108,54 +94,21 @@ class GetProjectResult {
   factory GetProjectResult.fromMap(Map<String, dynamic> map) {
     return GetProjectResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      catalogSettings: (() {
-        final guardedValue = map['catalogSettings'];
-        if (guardedValue == null) return null;
-        return ProjectCatalogSettingsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      devCenterId: (() {
-        final guardedValue = map['devCenterId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      catalogSettings: (() { final guardedValue = map['catalogSettings']; if (guardedValue == null) return null; return ProjectCatalogSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      devCenterId: (() { final guardedValue = map['devCenterId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       devCenterUri: map['devCenterUri'] as String,
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return ManagedServiceIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       location: map['location'] as String,
-      maxDevBoxesPerUser: (() {
-        final guardedValue = map['maxDevBoxesPerUser'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
+      maxDevBoxesPerUser: (() { final guardedValue = map['maxDevBoxesPerUser']; if (guardedValue == null) return null; return guardedValue as int; })(),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

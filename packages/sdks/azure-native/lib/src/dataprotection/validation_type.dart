@@ -15,3 +15,4 @@ enum ValidationType {
     throw ArgumentError('Unknown ValidationType value: $value');
   }
 }
+

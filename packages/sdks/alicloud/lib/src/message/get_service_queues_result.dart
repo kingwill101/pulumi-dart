@@ -9,16 +9,13 @@ class GetServiceQueuesResult {
   final String id;
   final List<String> ids;
   final String? nameRegex;
-
   /// A list of Queue names.
   final List<String> names;
   final String? outputFile;
   final int? pageNumber;
   final int? pageSize;
-
   /// The name of the queue.
   final String? queueName;
-
   /// A list of Queues. Each element contains the following attributes:
   final List<GetServiceQueuesQueue> queues;
 
@@ -54,11 +51,7 @@ class GetServiceQueuesResult {
       'pageNumber': ?pageNumber,
       'pageSize': ?pageSize,
       'queueName': ?queueName,
-      'queues':
-          pulumi.Input.encodeList<GetServiceQueuesQueue, Map<String, dynamic>>(
-            queues,
-            (value) => value.toMap(),
-          ),
+      'queues': pulumi.Input.encodeList<GetServiceQueuesQueue, Map<String, dynamic>>(queues, (value) => value.toMap()),
     };
   }
 
@@ -66,38 +59,14 @@ class GetServiceQueuesResult {
     return GetServiceQueuesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      pageNumber: (() {
-        final guardedValue = map['pageNumber'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      pageSize: (() {
-        final guardedValue = map['pageSize'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      queueName: (() {
-        final guardedValue = map['queueName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      queues: pulumi.Input.decodeList<GetServiceQueuesQueue>(
-        map['queues']!,
-        (value) => GetServiceQueuesQueue.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      pageNumber: (() { final guardedValue = map['pageNumber']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      pageSize: (() { final guardedValue = map['pageSize']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      queueName: (() { final guardedValue = map['queueName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      queues: pulumi.Input.decodeList<GetServiceQueuesQueue>(map['queues']!, (value) => GetServiceQueuesQueue.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

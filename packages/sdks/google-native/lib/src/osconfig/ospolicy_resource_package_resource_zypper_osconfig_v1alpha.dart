@@ -9,17 +9,20 @@ class OSPolicyResourcePackageResourceZypperOsconfigV1alpha {
 
   /// Creates a new [OSPolicyResourcePackageResourceZypperOsconfigV1alpha].
   /// [name] Package name.
-  OSPolicyResourcePackageResourceZypperOsconfigV1alpha({required this.name});
+  OSPolicyResourcePackageResourceZypperOsconfigV1alpha({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
-  factory OSPolicyResourcePackageResourceZypperOsconfigV1alpha.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OSPolicyResourcePackageResourceZypperOsconfigV1alpha.fromMap(Map<String, dynamic> map) {
     return OSPolicyResourcePackageResourceZypperOsconfigV1alpha(
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

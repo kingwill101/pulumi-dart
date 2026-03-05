@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLimitsV2Args {
   /// The id of the project to retrieve the limits.
   final pulumi.Input<String> projectId;
-
   /// The region in which to obtain the V2 Compute client.
   /// If omitted, the `region` argument of the provider is used.
   final pulumi.Input<String>? region;
@@ -17,20 +16,23 @@ class GetLimitsV2Args {
   /// Creates a new [GetLimitsV2Args].
   /// [projectId] The id of the project to retrieve the limits.
   /// [region] The region in which to obtain the V2 Compute client.
-  GetLimitsV2Args({required this.projectId, this.region});
+  GetLimitsV2Args({
+    required this.projectId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'projectId': projectId, 'region': ?region};
+    return <String, dynamic>{
+      'projectId': projectId,
+      'region': ?region,
+    };
   }
 
   factory GetLimitsV2Args.fromMap(Map<String, dynamic> map) {
     return GetLimitsV2Args(
       projectId: pulumi.Input.fromValue(map['projectId'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

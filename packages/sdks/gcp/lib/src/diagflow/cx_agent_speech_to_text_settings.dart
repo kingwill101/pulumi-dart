@@ -8,19 +8,20 @@ class CxAgentSpeechToTextSettings {
 
   /// Creates a new [CxAgentSpeechToTextSettings].
   /// [enableSpeechAdaptation] Whether to use speech adaptation for speech recognition.
-  CxAgentSpeechToTextSettings({this.enableSpeechAdaptation});
+  CxAgentSpeechToTextSettings({
+    this.enableSpeechAdaptation,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enableSpeechAdaptation': ?enableSpeechAdaptation};
+    return <String, dynamic>{
+      'enableSpeechAdaptation': ?enableSpeechAdaptation,
+    };
   }
 
   factory CxAgentSpeechToTextSettings.fromMap(Map<String, dynamic> map) {
     return CxAgentSpeechToTextSettings(
-      enableSpeechAdaptation: (() {
-        final guardedValue = map['enableSpeechAdaptation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enableSpeechAdaptation: (() { final guardedValue = map['enableSpeechAdaptation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

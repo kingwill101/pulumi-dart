@@ -36,17 +36,10 @@ class GetObjectIamPolicyArgs {
   factory GetObjectIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetObjectIamPolicyArgs(
       bucket: pulumi.Input.fromValue(map['bucket'] as String),
-      generation: (() {
-        final guardedValue = map['generation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      generation: (() { final guardedValue = map['generation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       object_: pulumi.Input.fromValue(map['object'] as String),
-      userProject: (() {
-        final guardedValue = map['userProject'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      userProject: (() { final guardedValue = map['userProject']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

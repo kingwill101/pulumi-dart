@@ -15,3 +15,4 @@ enum ServerPublicNetworkAccessState {
     throw ArgumentError('Unknown ServerPublicNetworkAccessState value: $value');
   }
 }
+

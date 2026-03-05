@@ -92,44 +92,25 @@ class GetEndpointKafkaSetting {
   factory GetEndpointKafkaSetting.fromMap(Map<String, dynamic> map) {
     return GetEndpointKafkaSetting(
       broker: pulumi.Input.fromValue(map['broker'] as String),
-      includeControlDetails: pulumi.Input.fromValue(
-        map['includeControlDetails'] as bool,
-      ),
-      includeNullAndEmpty: pulumi.Input.fromValue(
-        map['includeNullAndEmpty'] as bool,
-      ),
-      includePartitionValue: pulumi.Input.fromValue(
-        map['includePartitionValue'] as bool,
-      ),
-      includeTableAlterOperations: pulumi.Input.fromValue(
-        map['includeTableAlterOperations'] as bool,
-      ),
-      includeTransactionDetails: pulumi.Input.fromValue(
-        map['includeTransactionDetails'] as bool,
-      ),
+      includeControlDetails: pulumi.Input.fromValue(map['includeControlDetails'] as bool),
+      includeNullAndEmpty: pulumi.Input.fromValue(map['includeNullAndEmpty'] as bool),
+      includePartitionValue: pulumi.Input.fromValue(map['includePartitionValue'] as bool),
+      includeTableAlterOperations: pulumi.Input.fromValue(map['includeTableAlterOperations'] as bool),
+      includeTransactionDetails: pulumi.Input.fromValue(map['includeTransactionDetails'] as bool),
       messageFormat: pulumi.Input.fromValue(map['messageFormat'] as String),
       messageMaxBytes: pulumi.Input.fromValue(map['messageMaxBytes'] as int),
       noHexPrefix: pulumi.Input.fromValue(map['noHexPrefix'] as bool),
-      partitionIncludeSchemaTable: pulumi.Input.fromValue(
-        map['partitionIncludeSchemaTable'] as bool,
-      ),
+      partitionIncludeSchemaTable: pulumi.Input.fromValue(map['partitionIncludeSchemaTable'] as bool),
       saslMechanism: pulumi.Input.fromValue(map['saslMechanism'] as String),
       saslPassword: pulumi.Input.fromValue(map['saslPassword'] as String),
       saslUsername: pulumi.Input.fromValue(map['saslUsername'] as String),
-      securityProtocol: pulumi.Input.fromValue(
-        map['securityProtocol'] as String,
-      ),
-      sslCaCertificateArn: pulumi.Input.fromValue(
-        map['sslCaCertificateArn'] as String,
-      ),
-      sslClientCertificateArn: pulumi.Input.fromValue(
-        map['sslClientCertificateArn'] as String,
-      ),
+      securityProtocol: pulumi.Input.fromValue(map['securityProtocol'] as String),
+      sslCaCertificateArn: pulumi.Input.fromValue(map['sslCaCertificateArn'] as String),
+      sslClientCertificateArn: pulumi.Input.fromValue(map['sslClientCertificateArn'] as String),
       sslClientKeyArn: pulumi.Input.fromValue(map['sslClientKeyArn'] as String),
-      sslClientKeyPassword: pulumi.Input.fromValue(
-        map['sslClientKeyPassword'] as String,
-      ),
+      sslClientKeyPassword: pulumi.Input.fromValue(map['sslClientKeyPassword'] as String),
       topic: pulumi.Input.fromValue(map['topic'] as String),
     );
   }
 }
+

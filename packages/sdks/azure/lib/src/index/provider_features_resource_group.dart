@@ -7,7 +7,9 @@ class ProviderFeaturesResourceGroup {
 
   /// Creates a new [ProviderFeaturesResourceGroup].
   /// [preventDeletionIfContainsResources] Optional.
-  ProviderFeaturesResourceGroup({this.preventDeletionIfContainsResources});
+  ProviderFeaturesResourceGroup({
+    this.preventDeletionIfContainsResources,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -17,11 +19,8 @@ class ProviderFeaturesResourceGroup {
 
   factory ProviderFeaturesResourceGroup.fromMap(Map<String, dynamic> map) {
     return ProviderFeaturesResourceGroup(
-      preventDeletionIfContainsResources: (() {
-        final guardedValue = map['preventDeletionIfContainsResources'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      preventDeletionIfContainsResources: (() { final guardedValue = map['preventDeletionIfContainsResources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

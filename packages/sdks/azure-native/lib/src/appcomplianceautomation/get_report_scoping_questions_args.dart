@@ -12,10 +12,14 @@ class GetReportScopingQuestionsArgs {
 
   /// Creates a new [GetReportScopingQuestionsArgs].
   /// [reportName] Report Name.
-  GetReportScopingQuestionsArgs({required this.reportName});
+  GetReportScopingQuestionsArgs({
+    required this.reportName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'reportName': reportName};
+    return <String, dynamic>{
+      'reportName': reportName,
+    };
   }
 
   factory GetReportScopingQuestionsArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetReportScopingQuestionsArgs {
     );
   }
 }
+

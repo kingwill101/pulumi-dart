@@ -7,10 +7,8 @@ import 'entity_reference.dart';
 class IntegrationRuntimeDataProxyProperties {
   /// The self-hosted integration runtime reference.
   final pulumi.Input<EntityReference>? connectVia;
-
   /// The path to contain the staged data in the Blob storage.
   final pulumi.Input<String>? path;
-
   /// The staging linked service reference.
   final pulumi.Input<EntityReference>? stagingLinkedService;
 
@@ -26,47 +24,18 @@ class IntegrationRuntimeDataProxyProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connectVia':
-          ?pulumi.Input.mapOptionalInputValue<
-            EntityReference,
-            Map<String, dynamic>
-          >(connectVia, (value) => value.toMap()),
+      'connectVia': ?pulumi.Input.mapOptionalInputValue<EntityReference, Map<String, dynamic>>(connectVia, (value) => value.toMap()),
       'path': ?path,
-      'stagingLinkedService':
-          ?pulumi.Input.mapOptionalInputValue<
-            EntityReference,
-            Map<String, dynamic>
-          >(stagingLinkedService, (value) => value.toMap()),
+      'stagingLinkedService': ?pulumi.Input.mapOptionalInputValue<EntityReference, Map<String, dynamic>>(stagingLinkedService, (value) => value.toMap()),
     };
   }
 
-  factory IntegrationRuntimeDataProxyProperties.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory IntegrationRuntimeDataProxyProperties.fromMap(Map<String, dynamic> map) {
     return IntegrationRuntimeDataProxyProperties(
-      connectVia: (() {
-        final guardedValue = map['connectVia'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          EntityReference.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      path: (() {
-        final guardedValue = map['path'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      stagingLinkedService: (() {
-        final guardedValue = map['stagingLinkedService'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          EntityReference.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      connectVia: (() { final guardedValue = map['connectVia']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EntityReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      stagingLinkedService: (() { final guardedValue = map['stagingLinkedService']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EntityReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

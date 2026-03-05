@@ -195,91 +195,63 @@ import 'endpoint_state.dart';
 class Endpoint extends pulumi.CustomResource {
   /// ARN for the certificate.
   late final pulumi.Output<String> certificateArn;
-
   /// Name of the endpoint database.
   late final pulumi.Output<String?> databaseName;
-
   /// Configuration block for OpenSearch settings. See below.
-  late final pulumi.Output<EndpointElasticsearchSettings?>
-  elasticsearchSettings;
-
+  late final pulumi.Output<EndpointElasticsearchSettings?> elasticsearchSettings;
   /// ARN for the endpoint.
   late final pulumi.Output<String> endpointArn;
-
   /// Database endpoint identifier. Identifiers must contain from 1 to 255 alphanumeric characters or hyphens, begin with a letter, contain only ASCII letters, digits, and hyphens, not end with a hyphen, and not contain two consecutive hyphens.
   late final pulumi.Output<String> endpointId;
-
   /// Type of endpoint. Valid values are `source`, `target`.
   late final pulumi.Output<String> endpointType;
-
   /// Type of engine for the endpoint. Valid values are `aurora`, `aurora-postgresql`, `aurora-serverless`, `aurora-postgresql-serverless`,`azuredb`, `azure-sql-managed-instance`, `babelfish`, `db2`, `db2-zos`, `docdb`, `dynamodb`, `elasticsearch`, `kafka`, `kinesis`, `mariadb`, `mongodb`, `mysql`, `opensearch`, `oracle`, `postgres`, `redshift`,`redshift-serverless`, `sqlserver`, `neptune` ,`sybase`. Please note that some of engine names are available only for `target` endpoint type (e.g. `redshift`).
   late final pulumi.Output<String> engineName;
-
   /// Additional attributes associated with the connection. For available attributes for a `source` Endpoint, see [Sources for data migration](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.html). For available attributes for a `target` Endpoint, see [Targets for data migration](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.html).
   late final pulumi.Output<String> extraConnectionAttributes;
-
   /// Configuration block for Kafka settings. See below.
   late final pulumi.Output<EndpointKafkaSettings?> kafkaSettings;
-
   /// Configuration block for Kinesis settings. See below.
   late final pulumi.Output<EndpointKinesisSettings?> kinesisSettings;
-
   /// ARN for the KMS key that will be used to encrypt the connection parameters. If you do not specify a value for `kms_key_arn`, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region. When `engine_name` is `redshift`, `kms_key_arn` is the KMS Key for the Redshift target and the parameter `redshift_settings.server_side_encryption_kms_key_id` encrypts the S3 intermediate storage.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> kmsKeyArn;
-
   /// Configuration block for MongoDB settings. See below.
   late final pulumi.Output<EndpointMongodbSettings?> mongodbSettings;
-
   /// Configuration block for MySQL settings. See below.
   late final pulumi.Output<EndpointMysqlSettings?> mysqlSettings;
-
   /// Configuration block for Oracle settings. See below.
   late final pulumi.Output<EndpointOracleSettings?> oracleSettings;
-
   /// Password to be used to login to the endpoint database.
   late final pulumi.Output<String?> password;
-
   /// Whether to pause associated running replication tasks, regardless if they are managed by Terraform, prior to modifying the endpoint. Only tasks paused by the resource will be restarted after the modification completes. Default is `false`.
   late final pulumi.Output<bool?> pauseReplicationTasks;
-
   /// Port used by the endpoint database.
   late final pulumi.Output<int?> port;
-
   /// Configuration block for Postgres settings. See below.
   late final pulumi.Output<EndpointPostgresSettings?> postgresSettings;
   late final pulumi.Output<EndpointRedisSettings?> redisSettings;
-
   /// Configuration block for Redshift settings. See below.
   late final pulumi.Output<EndpointRedshiftSettings> redshiftSettings;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// ARN of the IAM role that specifies AWS DMS as the trusted entity and has the required permissions to access the value in the Secrets Manager secret referred to by `secrets_manager_arn`. The role must allow the `iam:PassRole` action.
   ///
   /// &gt; **Note:** You can specify one of two sets of values for these permissions. You can specify the values for this setting and `secrets_manager_arn`. Or you can specify clear-text values for `username`, `password` , `server_name`, and `port`. You can't specify both.
   late final pulumi.Output<String?> secretsManagerAccessRoleArn;
-
   /// Full ARN, partial ARN, or friendly name of the Secrets Manager secret that contains the endpoint connection details. Supported only when `engine_name` is `aurora`, `aurora-postgresql`, `mariadb`, `mongodb`, `mysql`, `oracle`, `postgres`, `redshift`, or `sqlserver`.
   late final pulumi.Output<String?> secretsManagerArn;
-
   /// Host name of the server.
   late final pulumi.Output<String?> serverName;
-
   /// ARN used by the service access IAM role for dynamodb endpoints.
   late final pulumi.Output<String?> serviceAccessRole;
-
   /// SSL mode to use for the connection. Valid values are `none`, `require`, `verify-ca`, `verify-full`
   late final pulumi.Output<String> sslMode;
-
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// User name to be used to login to the endpoint database.
   late final pulumi.Output<String?> username;
 
@@ -292,118 +264,33 @@ class Endpoint extends pulumi.CustomResource {
     EndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:dms/endpoint:Endpoint',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:dms/endpoint:Endpoint',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     certificateArn = registerOutput<String>('certificateArn');
     databaseName = registerOutput<String?>('databaseName');
-    elasticsearchSettings = registerOutput<EndpointElasticsearchSettings?>(
-      'elasticsearchSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EndpointElasticsearchSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    elasticsearchSettings = registerOutput<EndpointElasticsearchSettings?>('elasticsearchSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointElasticsearchSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     endpointArn = registerOutput<String>('endpointArn');
     endpointId = registerOutput<String>('endpointId');
     endpointType = registerOutput<String>('endpointType');
     engineName = registerOutput<String>('engineName');
-    extraConnectionAttributes = registerOutput<String>(
-      'extraConnectionAttributes',
-    );
-    kafkaSettings = registerOutput<EndpointKafkaSettings?>(
-      'kafkaSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EndpointKafkaSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    kinesisSettings = registerOutput<EndpointKinesisSettings?>(
-      'kinesisSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EndpointKinesisSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    extraConnectionAttributes = registerOutput<String>('extraConnectionAttributes');
+    kafkaSettings = registerOutput<EndpointKafkaSettings?>('kafkaSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointKafkaSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kinesisSettings = registerOutput<EndpointKinesisSettings?>('kinesisSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointKinesisSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kmsKeyArn = registerOutput<String>('kmsKeyArn');
-    mongodbSettings = registerOutput<EndpointMongodbSettings?>(
-      'mongodbSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EndpointMongodbSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    mysqlSettings = registerOutput<EndpointMysqlSettings?>(
-      'mysqlSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EndpointMysqlSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    oracleSettings = registerOutput<EndpointOracleSettings?>(
-      'oracleSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EndpointOracleSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    mongodbSettings = registerOutput<EndpointMongodbSettings?>('mongodbSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointMongodbSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    mysqlSettings = registerOutput<EndpointMysqlSettings?>('mysqlSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointMysqlSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    oracleSettings = registerOutput<EndpointOracleSettings?>('oracleSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointOracleSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     password = registerOutput<String?>('password');
     pauseReplicationTasks = registerOutput<bool?>('pauseReplicationTasks');
     port = registerOutput<int?>('port');
-    postgresSettings = registerOutput<EndpointPostgresSettings?>(
-      'postgresSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EndpointPostgresSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    redisSettings = registerOutput<EndpointRedisSettings?>(
-      'redisSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EndpointRedisSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    redshiftSettings = registerOutput<EndpointRedshiftSettings>(
-      'redshiftSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EndpointRedshiftSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    postgresSettings = registerOutput<EndpointPostgresSettings?>('postgresSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointPostgresSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    redisSettings = registerOutput<EndpointRedisSettings?>('redisSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointRedisSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    redshiftSettings = registerOutput<EndpointRedshiftSettings>('redshiftSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointRedshiftSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    secretsManagerAccessRoleArn = registerOutput<String?>(
-      'secretsManagerAccessRoleArn',
-    );
+    secretsManagerAccessRoleArn = registerOutput<String?>('secretsManagerAccessRoleArn');
     secretsManagerArn = registerOutput<String?>('secretsManagerArn');
     serverName = registerOutput<String?>('serverName');
     serviceAccessRole = registerOutput<String?>('serviceAccessRole');
@@ -431,118 +318,33 @@ class Endpoint extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:dms/endpoint:Endpoint',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:dms/endpoint:Endpoint',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     certificateArn = registerOutput<String>('certificateArn');
     databaseName = registerOutput<String?>('databaseName');
-    elasticsearchSettings = registerOutput<EndpointElasticsearchSettings?>(
-      'elasticsearchSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EndpointElasticsearchSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    elasticsearchSettings = registerOutput<EndpointElasticsearchSettings?>('elasticsearchSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointElasticsearchSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     endpointArn = registerOutput<String>('endpointArn');
     endpointId = registerOutput<String>('endpointId');
     endpointType = registerOutput<String>('endpointType');
     engineName = registerOutput<String>('engineName');
-    extraConnectionAttributes = registerOutput<String>(
-      'extraConnectionAttributes',
-    );
-    kafkaSettings = registerOutput<EndpointKafkaSettings?>(
-      'kafkaSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EndpointKafkaSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    kinesisSettings = registerOutput<EndpointKinesisSettings?>(
-      'kinesisSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EndpointKinesisSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    extraConnectionAttributes = registerOutput<String>('extraConnectionAttributes');
+    kafkaSettings = registerOutput<EndpointKafkaSettings?>('kafkaSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointKafkaSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kinesisSettings = registerOutput<EndpointKinesisSettings?>('kinesisSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointKinesisSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kmsKeyArn = registerOutput<String>('kmsKeyArn');
-    mongodbSettings = registerOutput<EndpointMongodbSettings?>(
-      'mongodbSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EndpointMongodbSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    mysqlSettings = registerOutput<EndpointMysqlSettings?>(
-      'mysqlSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EndpointMysqlSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    oracleSettings = registerOutput<EndpointOracleSettings?>(
-      'oracleSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EndpointOracleSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    mongodbSettings = registerOutput<EndpointMongodbSettings?>('mongodbSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointMongodbSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    mysqlSettings = registerOutput<EndpointMysqlSettings?>('mysqlSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointMysqlSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    oracleSettings = registerOutput<EndpointOracleSettings?>('oracleSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointOracleSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     password = registerOutput<String?>('password');
     pauseReplicationTasks = registerOutput<bool?>('pauseReplicationTasks');
     port = registerOutput<int?>('port');
-    postgresSettings = registerOutput<EndpointPostgresSettings?>(
-      'postgresSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EndpointPostgresSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    redisSettings = registerOutput<EndpointRedisSettings?>(
-      'redisSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EndpointRedisSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    redshiftSettings = registerOutput<EndpointRedshiftSettings>(
-      'redshiftSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EndpointRedshiftSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    postgresSettings = registerOutput<EndpointPostgresSettings?>('postgresSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointPostgresSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    redisSettings = registerOutput<EndpointRedisSettings?>('redisSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointRedisSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    redshiftSettings = registerOutput<EndpointRedshiftSettings>('redshiftSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointRedshiftSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    secretsManagerAccessRoleArn = registerOutput<String?>(
-      'secretsManagerAccessRoleArn',
-    );
+    secretsManagerAccessRoleArn = registerOutput<String?>('secretsManagerAccessRoleArn');
     secretsManagerArn = registerOutput<String?>('secretsManagerArn');
     serverName = registerOutput<String?>('serverName');
     serviceAccessRole = registerOutput<String?>('serviceAccessRole');

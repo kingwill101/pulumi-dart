@@ -8,7 +8,6 @@ class InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone {
   /// region, on Interconnects in the given facility and metro. Every
   /// Attachment in the AG has such an entry.
   final pulumi.Input<List<String>>? attachment;
-
   /// Attachments in the AttachmentGroup. Keys are arbitrary user-specified
   /// strings. Users are encouraged, but not required, to use their preferred
   /// format for resource links as keys.
@@ -16,7 +15,6 @@ class InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone {
   /// The size of this map is limited by an "Attachments per group" quota.
   /// Structure is documented below.
   final pulumi.Input<List<String>>? attachments;
-
   /// (Output)
   /// The zones that Attachments in this group are present
   /// in, in the given facilities.  This is inherited from their
@@ -41,25 +39,12 @@ class InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone {
     };
   }
 
-  factory InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone.fromMap(Map<String, dynamic> map) {
     return InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone(
-      attachment: (() {
-        final guardedValue = map['attachment'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      attachments: (() {
-        final guardedValue = map['attachments'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      zone: (() {
-        final guardedValue = map['zone'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      attachment: (() { final guardedValue = map['attachment']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      attachments: (() { final guardedValue = map['attachments']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      zone: (() { final guardedValue = map['zone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

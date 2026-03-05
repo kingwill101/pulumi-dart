@@ -326,69 +326,50 @@ import 'database_mysql_updates.dart';
 class DatabaseMysql extends pulumi.CustomResource {
   /// A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format. Use `linode.DatabaseAccessControls` to manage your allow list separately.
   late final pulumi.Output<List<String>> allowLists;
-
   /// The base64-encoded SSL CA certificate for the Managed Database instance.
   late final pulumi.Output<String> caCert;
-
   /// The number of Linode Instance nodes deployed to the Managed Database. (default `1`)
   late final pulumi.Output<int?> clusterSize;
-
   /// When this Managed Database was created.
   late final pulumi.Output<String> created;
-
   /// Whether the Managed Databases is encrypted. (default `false`)
   late final pulumi.Output<bool?> encrypted;
-
   /// The Managed Database engine. (e.g. `mysql`)
   late final pulumi.Output<String> engine;
-
   /// The Managed Database engine in engine/version format. (e.g. `mysql/8.0.30`)
   late final pulumi.Output<String> engineId;
-
   /// The primary host for the Managed Database.
   late final pulumi.Output<String> hostPrimary;
-
   /// The secondary/private network host for the Managed Database.
   late final pulumi.Output<String> hostSecondary;
-
   /// A unique, user-defined string referring to the Managed Database.
   late final pulumi.Output<String> label;
-
   /// The region to use for the Managed Database.
   late final pulumi.Output<String> region;
-
   /// The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`; default `none`)
   ///
   /// * Must be `none` for a single node cluster.
   ///
   /// * Must be `asynch` or `semi_synch` for a high availability cluster.
   late final pulumi.Output<String?> replicationType;
-
   /// The randomly-generated root password for the Managed Database instance.
   late final pulumi.Output<String> rootPassword;
-
   /// The root username for the Managed Database instance.
   late final pulumi.Output<String> rootUsername;
-
   /// Whether to require SSL credentials to establish a connection to the Managed Database. (default `false`)
   ///
   /// * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
   late final pulumi.Output<bool?> sslConnection;
-
   /// The operating status of the Managed Database.
   late final pulumi.Output<String> status;
-
   /// The Linode Instance type used for the nodes of the  Managed Database instance.
   ///
   /// - - -
   late final pulumi.Output<String> type;
-
   /// When this Managed Database was last updated.
   late final pulumi.Output<String> updated;
-
   /// Configuration settings for automated patch update maintenance for the Managed Database.
   late final pulumi.Output<DatabaseMysqlUpdates> updates;
-
   /// The Managed Database engine version. (e.g. `v8.0.26`)
   late final pulumi.Output<String> version;
 
@@ -401,11 +382,11 @@ class DatabaseMysql extends pulumi.CustomResource {
     DatabaseMysqlArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'linode:index/databaseMysql:DatabaseMysql',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'linode:index/databaseMysql:DatabaseMysql',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allowLists = registerOutput<List<String>>('allowLists');
     caCert = registerOutput<String>('caCert');
     clusterSize = registerOutput<int?>('clusterSize');
@@ -424,16 +405,7 @@ class DatabaseMysql extends pulumi.CustomResource {
     status = registerOutput<String>('status');
     type = registerOutput<String>('type');
     updated = registerOutput<String>('updated');
-    updates = registerOutput<DatabaseMysqlUpdates>(
-      'updates',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DatabaseMysqlUpdates.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    updates = registerOutput<DatabaseMysqlUpdates>('updates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseMysqlUpdates.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     version = registerOutput<String>('version');
   }
 
@@ -455,11 +427,11 @@ class DatabaseMysql extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'linode:index/databaseMysql:DatabaseMysql',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'linode:index/databaseMysql:DatabaseMysql',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allowLists = registerOutput<List<String>>('allowLists');
     caCert = registerOutput<String>('caCert');
     clusterSize = registerOutput<int?>('clusterSize');
@@ -478,16 +450,7 @@ class DatabaseMysql extends pulumi.CustomResource {
     status = registerOutput<String>('status');
     type = registerOutput<String>('type');
     updated = registerOutput<String>('updated');
-    updates = registerOutput<DatabaseMysqlUpdates>(
-      'updates',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DatabaseMysqlUpdates.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    updates = registerOutput<DatabaseMysqlUpdates>('updates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseMysqlUpdates.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     version = registerOutput<String>('version');
   }
 }

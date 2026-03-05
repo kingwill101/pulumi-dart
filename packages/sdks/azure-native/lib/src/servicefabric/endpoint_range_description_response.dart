@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EndpointRangeDescriptionResponse {
   /// End port of a range of ports
   final pulumi.Input<int> endPort;
-
   /// Starting port of a range of ports
   final pulumi.Input<int> startPort;
 
@@ -19,7 +18,10 @@ class EndpointRangeDescriptionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'endPort': endPort, 'startPort': startPort};
+    return <String, dynamic>{
+      'endPort': endPort,
+      'startPort': startPort,
+    };
   }
 
   factory EndpointRangeDescriptionResponse.fromMap(Map<String, dynamic> map) {
@@ -29,3 +31,4 @@ class EndpointRangeDescriptionResponse {
     );
   }
 }
+

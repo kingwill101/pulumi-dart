@@ -9,31 +9,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AssetBindArgs {
   /// Bind version.
   final pulumi.Input<int>? authVersion;
-
   /// The first ID of the resource
   final pulumi.Input<String>? uuid;
 
   /// Creates a new [AssetBindArgs].
   /// [authVersion] Bind version.
   /// [uuid] The first ID of the resource
-  AssetBindArgs({this.authVersion, this.uuid});
+  AssetBindArgs({
+    this.authVersion,
+    this.uuid,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'authVersion': ?authVersion, 'uuid': ?uuid};
+    return <String, dynamic>{
+      'authVersion': ?authVersion,
+      'uuid': ?uuid,
+    };
   }
 
   factory AssetBindArgs.fromMap(Map<String, dynamic> map) {
     return AssetBindArgs(
-      authVersion: (() {
-        final guardedValue = map['authVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      uuid: (() {
-        final guardedValue = map['uuid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      authVersion: (() { final guardedValue = map['authVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      uuid: (() { final guardedValue = map['uuid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

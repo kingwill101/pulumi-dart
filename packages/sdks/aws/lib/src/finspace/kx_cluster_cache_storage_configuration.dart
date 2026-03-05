@@ -4,7 +4,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KxClusterCacheStorageConfiguration {
   final pulumi.Input<int> size;
-
   /// Type of KDB database. The following types are available:
   /// * HDB - Historical Database. The data is only accessible with read-only permissions from one of the FinSpace managed KX databases mounted to the cluster.
   /// * RDB - Realtime Database. This type of database captures all the data from a ticker plant and stores it in memory until the end of day, after which it writes all of its data to a disk and reloads the HDB. This cluster type requires local storage for temporary storage of data during the savedown process. If you specify this field in your request, you must provide the `savedownStorageConfiguration` parameter.
@@ -16,10 +15,16 @@ class KxClusterCacheStorageConfiguration {
   /// Creates a new [KxClusterCacheStorageConfiguration].
   /// [size] Required.
   /// [type] Type of KDB database. The following types are available:
-  KxClusterCacheStorageConfiguration({required this.size, required this.type});
+  KxClusterCacheStorageConfiguration({
+    required this.size,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'size': size, 'type': type};
+    return <String, dynamic>{
+      'size': size,
+      'type': type,
+    };
   }
 
   factory KxClusterCacheStorageConfiguration.fromMap(Map<String, dynamic> map) {
@@ -29,3 +34,4 @@ class KxClusterCacheStorageConfiguration {
     );
   }
 }
+

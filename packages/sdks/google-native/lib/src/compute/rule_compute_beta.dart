@@ -9,22 +9,16 @@ import 'rule_action_compute_beta.dart';
 class RuleComputeBeta {
   /// This is deprecated and has no effect. Do not use.
   final pulumi.Input<RuleActionComputeBeta>? action;
-
   /// This is deprecated and has no effect. Do not use.
   final pulumi.Input<List<ConditionComputeBeta>>? conditions;
-
   /// This is deprecated and has no effect. Do not use.
   final pulumi.Input<String>? description;
-
   /// This is deprecated and has no effect. Do not use.
   final pulumi.Input<List<String>>? ins;
-
   /// This is deprecated and has no effect. Do not use.
   final pulumi.Input<List<LogConfigComputeBeta>>? logConfigs;
-
   /// This is deprecated and has no effect. Do not use.
   final pulumi.Input<List<String>>? notIns;
-
   /// This is deprecated and has no effect. Do not use.
   final pulumi.Input<List<String>>? permissions;
 
@@ -48,37 +42,11 @@ class RuleComputeBeta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'action':
-          ?pulumi.Input.mapOptionalInputValue<RuleActionComputeBeta, String>(
-            action,
-            (value) => value.wireValue,
-          ),
-      'conditions':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ConditionComputeBeta>,
-            List<Map<String, dynamic>>
-          >(
-            conditions,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ConditionComputeBeta,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'action': ?pulumi.Input.mapOptionalInputValue<RuleActionComputeBeta, String>(action, (value) => value.wireValue),
+      'conditions': ?pulumi.Input.mapOptionalInputValue<List<ConditionComputeBeta>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<ConditionComputeBeta, Map<String, dynamic>>(value, (value) => value.toMap())),
       'description': ?description,
       'ins': ?ins,
-      'logConfigs':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<LogConfigComputeBeta>,
-            List<Map<String, dynamic>>
-          >(
-            logConfigs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  LogConfigComputeBeta,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'logConfigs': ?pulumi.Input.mapOptionalInputValue<List<LogConfigComputeBeta>, List<Map<String, dynamic>>>(logConfigs, (value) => pulumi.Input.encodeList<LogConfigComputeBeta, Map<String, dynamic>>(value, (value) => value.toMap())),
       'notIns': ?notIns,
       'permissions': ?permissions,
     };
@@ -86,57 +54,14 @@ class RuleComputeBeta {
 
   factory RuleComputeBeta.fromMap(Map<String, dynamic> map) {
     return RuleComputeBeta(
-      action: (() {
-        final guardedValue = map['action'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RuleActionComputeBeta.fromValue(guardedValue as String),
-        );
-      })(),
-      conditions: (() {
-        final guardedValue = map['conditions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ConditionComputeBeta>(
-            guardedValue,
-            (value) => ConditionComputeBeta.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ins: (() {
-        final guardedValue = map['ins'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      logConfigs: (() {
-        final guardedValue = map['logConfigs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<LogConfigComputeBeta>(
-            guardedValue,
-            (value) => LogConfigComputeBeta.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      notIns: (() {
-        final guardedValue = map['notIns'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      permissions: (() {
-        final guardedValue = map['permissions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RuleActionComputeBeta.fromValue(guardedValue as String)); })(),
+      conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ConditionComputeBeta>(guardedValue, (value) => ConditionComputeBeta.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ins: (() { final guardedValue = map['ins']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      logConfigs: (() { final guardedValue = map['logConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<LogConfigComputeBeta>(guardedValue, (value) => LogConfigComputeBeta.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      notIns: (() { final guardedValue = map['notIns']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      permissions: (() { final guardedValue = map['permissions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

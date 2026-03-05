@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AutoScalingConfigurationVersionArgs {
   /// Name of the auto scaling configuration.
   final pulumi.Input<String> autoScalingConfigurationName;
-
   /// Maximal number of concurrent requests that you want an instance to process. When the number of concurrent requests goes over this limit, App Runner scales up your service.
   final pulumi.Input<int>? maxConcurrency;
-
   /// Maximal number of instances that App Runner provisions for your service.
   final pulumi.Input<int>? maxSize;
-
   /// Minimal number of instances that App Runner provisions for your service.
   final pulumi.Input<int>? minSize;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -52,40 +47,15 @@ class AutoScalingConfigurationVersionArgs {
     };
   }
 
-  factory AutoScalingConfigurationVersionArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AutoScalingConfigurationVersionArgs.fromMap(Map<String, dynamic> map) {
     return AutoScalingConfigurationVersionArgs(
-      autoScalingConfigurationName: pulumi.Input.fromValue(
-        map['autoScalingConfigurationName'] as String,
-      ),
-      maxConcurrency: (() {
-        final guardedValue = map['maxConcurrency'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      maxSize: (() {
-        final guardedValue = map['maxSize'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      minSize: (() {
-        final guardedValue = map['minSize'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      autoScalingConfigurationName: pulumi.Input.fromValue(map['autoScalingConfigurationName'] as String),
+      maxConcurrency: (() { final guardedValue = map['maxConcurrency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxSize: (() { final guardedValue = map['maxSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      minSize: (() { final guardedValue = map['minSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

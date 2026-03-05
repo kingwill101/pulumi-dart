@@ -103,14 +103,11 @@ import 'default_route_table_association_timeouts.dart';
 /// ```
 class DefaultRouteTableAssociation extends pulumi.CustomResource {
   late final pulumi.Output<String> originalDefaultRouteTableId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   late final pulumi.Output<DefaultRouteTableAssociationTimeouts?> timeouts;
-
   /// ID of the Transit Gateway to change the default association route table on.
   late final pulumi.Output<String> transitGatewayId;
-
   /// ID of the Transit Gateway Route Table to be made the default association route table.
   late final pulumi.Output<String> transitGatewayRouteTableId;
 
@@ -123,29 +120,16 @@ class DefaultRouteTableAssociation extends pulumi.CustomResource {
     DefaultRouteTableAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2transitgateway/defaultRouteTableAssociation:DefaultRouteTableAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    originalDefaultRouteTableId = registerOutput<String>(
-      'originalDefaultRouteTableId',
-    );
+          'aws:ec2transitgateway/defaultRouteTableAssociation:DefaultRouteTableAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    originalDefaultRouteTableId = registerOutput<String>('originalDefaultRouteTableId');
     region = registerOutput<String>('region');
-    timeouts = registerOutput<DefaultRouteTableAssociationTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DefaultRouteTableAssociationTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<DefaultRouteTableAssociationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DefaultRouteTableAssociationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     transitGatewayId = registerOutput<String>('transitGatewayId');
-    transitGatewayRouteTableId = registerOutput<String>(
-      'transitGatewayRouteTableId',
-    );
+    transitGatewayRouteTableId = registerOutput<String>('transitGatewayRouteTableId');
   }
 
   /// Gets an existing [DefaultRouteTableAssociation] resource's state with the given [name] and [id].
@@ -166,28 +150,15 @@ class DefaultRouteTableAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2transitgateway/defaultRouteTableAssociation:DefaultRouteTableAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    originalDefaultRouteTableId = registerOutput<String>(
-      'originalDefaultRouteTableId',
-    );
+          'aws:ec2transitgateway/defaultRouteTableAssociation:DefaultRouteTableAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    originalDefaultRouteTableId = registerOutput<String>('originalDefaultRouteTableId');
     region = registerOutput<String>('region');
-    timeouts = registerOutput<DefaultRouteTableAssociationTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DefaultRouteTableAssociationTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<DefaultRouteTableAssociationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DefaultRouteTableAssociationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     transitGatewayId = registerOutput<String>('transitGatewayId');
-    transitGatewayRouteTableId = registerOutput<String>(
-      'transitGatewayRouteTableId',
-    );
+    transitGatewayRouteTableId = registerOutput<String>('transitGatewayRouteTableId');
   }
 }

@@ -7,7 +7,6 @@ import 'completion_operation_types.dart';
 class ConnectorMappingCompleteOperation {
   /// The type of completion operation.
   final pulumi.Input<CompletionOperationTypes>? completionOperationType;
-
   /// The destination folder where files will be moved to once the import is done.
   final pulumi.Input<String>? destinationFolder;
 
@@ -21,29 +20,16 @@ class ConnectorMappingCompleteOperation {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'completionOperationType':
-          ?pulumi.Input.mapOptionalInputValue<CompletionOperationTypes, String>(
-            completionOperationType,
-            (value) => value.wireValue,
-          ),
+      'completionOperationType': ?pulumi.Input.mapOptionalInputValue<CompletionOperationTypes, String>(completionOperationType, (value) => value.wireValue),
       'destinationFolder': ?destinationFolder,
     };
   }
 
   factory ConnectorMappingCompleteOperation.fromMap(Map<String, dynamic> map) {
     return ConnectorMappingCompleteOperation(
-      completionOperationType: (() {
-        final guardedValue = map['completionOperationType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CompletionOperationTypes.fromValue(guardedValue as String),
-        );
-      })(),
-      destinationFolder: (() {
-        final guardedValue = map['destinationFolder'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      completionOperationType: (() { final guardedValue = map['completionOperationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CompletionOperationTypes.fromValue(guardedValue as String)); })(),
+      destinationFolder: (() { final guardedValue = map['destinationFolder']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

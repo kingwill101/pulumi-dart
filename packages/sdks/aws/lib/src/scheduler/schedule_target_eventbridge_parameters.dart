@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScheduleTargetEventbridgeParameters {
   /// Free-form string used to decide what fields to expect in the event detail. Up to 128 characters.
   final pulumi.Input<String> detailType;
-
   /// Source of the event.
   final pulumi.Input<String> source;
 
@@ -18,15 +17,17 @@ class ScheduleTargetEventbridgeParameters {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'detailType': detailType, 'source': source};
+    return <String, dynamic>{
+      'detailType': detailType,
+      'source': source,
+    };
   }
 
-  factory ScheduleTargetEventbridgeParameters.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ScheduleTargetEventbridgeParameters.fromMap(Map<String, dynamic> map) {
     return ScheduleTargetEventbridgeParameters(
       detailType: pulumi.Input.fromValue(map['detailType'] as String),
       source: pulumi.Input.fromValue(map['source'] as String),
     );
   }
 }
+

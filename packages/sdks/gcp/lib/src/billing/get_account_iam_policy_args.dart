@@ -12,17 +12,20 @@ class GetAccountIamPolicyArgs {
 
   /// Creates a new [GetAccountIamPolicyArgs].
   /// [billingAccountId] The billing account id.
-  GetAccountIamPolicyArgs({required this.billingAccountId});
+  GetAccountIamPolicyArgs({
+    required this.billingAccountId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'billingAccountId': billingAccountId};
+    return <String, dynamic>{
+      'billingAccountId': billingAccountId,
+    };
   }
 
   factory GetAccountIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountIamPolicyArgs(
-      billingAccountId: pulumi.Input.fromValue(
-        map['billingAccountId'] as String,
-      ),
+      billingAccountId: pulumi.Input.fromValue(map['billingAccountId'] as String),
     );
   }
 }
+

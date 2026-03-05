@@ -13,20 +13,15 @@ class InstanceGroupManagerInstanceFlexibilityPolicyComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'instanceSelectionLists': ?instanceSelectionLists};
+    return <String, dynamic>{
+      'instanceSelectionLists': ?instanceSelectionLists,
+    };
   }
 
-  factory InstanceGroupManagerInstanceFlexibilityPolicyComputeBeta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InstanceGroupManagerInstanceFlexibilityPolicyComputeBeta.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerInstanceFlexibilityPolicyComputeBeta(
-      instanceSelectionLists: (() {
-        final guardedValue = map['instanceSelectionLists'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      instanceSelectionLists: (() { final guardedValue = map['instanceSelectionLists']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

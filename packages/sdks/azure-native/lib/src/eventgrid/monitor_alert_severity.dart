@@ -19,3 +19,4 @@ enum MonitorAlertSeverity {
     throw ArgumentError('Unknown MonitorAlertSeverity value: $value');
   }
 }
+

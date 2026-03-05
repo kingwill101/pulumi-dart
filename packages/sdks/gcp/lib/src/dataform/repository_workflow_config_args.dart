@@ -10,28 +10,20 @@ import 'repository_workflow_config_invocation_config.dart';
 class RepositoryWorkflowConfigArgs {
   /// Optional. Optional schedule (in cron format) for automatic creation of compilation results.
   final pulumi.Input<String>? cronSchedule;
-
   /// Optional. If left unset, a default InvocationConfig will be used.
   /// Structure is documented below.
-  final pulumi.Input<RepositoryWorkflowConfigInvocationConfig>?
-  invocationConfig;
-
+  final pulumi.Input<RepositoryWorkflowConfigInvocationConfig>? invocationConfig;
   /// The workflow's name.
   final pulumi.Input<String>? name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// A reference to the region
   final pulumi.Input<String>? region;
-
   /// The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*/locations/*/repositories/*/releaseConfigs/*.
   final pulumi.Input<String> releaseConfig;
-
   /// A reference to the Dataform repository
   final pulumi.Input<String>? repository;
-
   /// Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
   final pulumi.Input<String>? timeZone;
 
@@ -58,11 +50,7 @@ class RepositoryWorkflowConfigArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'cronSchedule': ?cronSchedule,
-      'invocationConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            RepositoryWorkflowConfigInvocationConfig,
-            Map<String, dynamic>
-          >(invocationConfig, (value) => value.toMap()),
+      'invocationConfig': ?pulumi.Input.mapOptionalInputValue<RepositoryWorkflowConfigInvocationConfig, Map<String, dynamic>>(invocationConfig, (value) => value.toMap()),
       'name': ?name,
       'project': ?project,
       'region': ?region,
@@ -74,46 +62,15 @@ class RepositoryWorkflowConfigArgs {
 
   factory RepositoryWorkflowConfigArgs.fromMap(Map<String, dynamic> map) {
     return RepositoryWorkflowConfigArgs(
-      cronSchedule: (() {
-        final guardedValue = map['cronSchedule'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      invocationConfig: (() {
-        final guardedValue = map['invocationConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RepositoryWorkflowConfigInvocationConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      cronSchedule: (() { final guardedValue = map['cronSchedule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      invocationConfig: (() { final guardedValue = map['invocationConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RepositoryWorkflowConfigInvocationConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       releaseConfig: pulumi.Input.fromValue(map['releaseConfig'] as String),
-      repository: (() {
-        final guardedValue = map['repository'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      timeZone: (() {
-        final guardedValue = map['timeZone'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      repository: (() { final guardedValue = map['repository']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      timeZone: (() { final guardedValue = map['timeZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

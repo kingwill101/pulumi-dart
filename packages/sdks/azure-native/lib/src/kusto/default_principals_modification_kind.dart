@@ -13,8 +13,7 @@ enum DefaultPrincipalsModificationKind {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown DefaultPrincipalsModificationKind value: $value',
-    );
+    throw ArgumentError('Unknown DefaultPrincipalsModificationKind value: $value');
   }
 }
+

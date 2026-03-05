@@ -8,21 +8,20 @@ class DomainFeaturesCapabilitiesSysChRoot {
 
   /// Creates a new [DomainFeaturesCapabilitiesSysChRoot].
   /// [state] Sets the state of the capability to wake from an alarm.
-  DomainFeaturesCapabilitiesSysChRoot({this.state});
+  DomainFeaturesCapabilitiesSysChRoot({
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'state': ?state};
+    return <String, dynamic>{
+      'state': ?state,
+    };
   }
 
-  factory DomainFeaturesCapabilitiesSysChRoot.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainFeaturesCapabilitiesSysChRoot.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesCapabilitiesSysChRoot(
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

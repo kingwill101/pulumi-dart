@@ -185,52 +185,36 @@ import 'system_data_response.dart';
 class FileImport extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The content type of this file.
   late final pulumi.Output<String> contentType;
-
   /// The time the file was imported.
   late final pulumi.Output<String> createdTimeUTC;
-
   /// Represents the error file (if the import was ingested with errors or failed the validation).
   late final pulumi.Output<FileMetadataResponse> errorFile;
-
   /// An ordered list of some of the errors that were encountered during validation.
   late final pulumi.Output<List<Map<String, dynamic>>> errorsPreview;
-
   /// The time the files associated with this import are deleted from the storage account.
   late final pulumi.Output<String> filesValidUntilTimeUTC;
-
   /// Represents the imported file.
   late final pulumi.Output<FileMetadataResponse> importFile;
-
   /// The time the file import record is soft deleted from the database and history.
   late final pulumi.Output<String> importValidUntilTimeUTC;
-
   /// The number of records that have been successfully ingested.
   late final pulumi.Output<int> ingestedRecordCount;
-
   /// Describes how to ingest the records in the file.
   late final pulumi.Output<String> ingestionMode;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The source for the data in the file.
   late final pulumi.Output<String> source;
-
   /// The state of the file import.
   late final pulumi.Output<String> state;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The number of records in the file.
   late final pulumi.Output<int> totalRecordCount;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// The number of records that have passed validation.
   late final pulumi.Output<int> validRecordCount;
 
@@ -243,52 +227,25 @@ class FileImport extends pulumi.CustomResource {
     FileImportArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:securityinsights:FileImport',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:securityinsights:FileImport',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     contentType = registerOutput<String>('contentType');
     createdTimeUTC = registerOutput<String>('createdTimeUTC');
-    errorFile = registerOutput<FileMetadataResponse>(
-      'errorFile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FileMetadataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    errorFile = registerOutput<FileMetadataResponse>('errorFile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FileMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     errorsPreview = registerOutput<List<Map<String, dynamic>>>('errorsPreview');
     filesValidUntilTimeUTC = registerOutput<String>('filesValidUntilTimeUTC');
-    importFile = registerOutput<FileMetadataResponse>(
-      'importFile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FileMetadataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    importFile = registerOutput<FileMetadataResponse>('importFile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FileMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     importValidUntilTimeUTC = registerOutput<String>('importValidUntilTimeUTC');
     ingestedRecordCount = registerOutput<int>('ingestedRecordCount');
     ingestionMode = registerOutput<String>('ingestionMode');
     this.name = registerOutput<String>('name');
     source = registerOutput<String>('source');
     state = registerOutput<String>('state');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     totalRecordCount = registerOutput<int>('totalRecordCount');
     type = registerOutput<String>('type');
     validRecordCount = registerOutput<int>('validRecordCount');

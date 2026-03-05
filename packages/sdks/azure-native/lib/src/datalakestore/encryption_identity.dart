@@ -10,22 +10,20 @@ class EncryptionIdentity {
 
   /// Creates a new [EncryptionIdentity].
   /// [type] The type of encryption being used. Currently the only supported type is 'SystemAssigned'.
-  EncryptionIdentity({required this.type});
+  EncryptionIdentity({
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'type': pulumi.Input.mapInputValue<EncryptionIdentityType, String>(
-        type,
-        (value) => value.wireValue,
-      ),
+      'type': pulumi.Input.mapInputValue<EncryptionIdentityType, String>(type, (value) => value.wireValue),
     };
   }
 
   factory EncryptionIdentity.fromMap(Map<String, dynamic> map) {
     return EncryptionIdentity(
-      type: pulumi.Input.fromValue(
-        EncryptionIdentityType.fromValue(map['type']! as String),
-      ),
+      type: pulumi.Input.fromValue(EncryptionIdentityType.fromValue(map['type']! as String)),
     );
   }
 }
+

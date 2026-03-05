@@ -7,16 +7,12 @@ import 'stream_mqtt_destination_response.dart';
 class NamespaceDiscoveredStreamResponse {
   /// Destinations for a stream.
   final pulumi.Input<List<StreamMqttDestinationResponse>>? destinations;
-
   /// Timestamp (in UTC) indicating when the stream was added or modified.
   final pulumi.Input<String>? lastUpdatedOn;
-
   /// Name of the stream definition.
   final pulumi.Input<String> name;
-
   /// Stringified JSON that contains connector-specific configuration for the specific stream.
   final pulumi.Input<String>? streamConfiguration;
-
   /// URI or type definition ID.
   final pulumi.Input<String>? typeRef;
 
@@ -36,18 +32,7 @@ class NamespaceDiscoveredStreamResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'destinations':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<StreamMqttDestinationResponse>,
-            List<Map<String, dynamic>>
-          >(
-            destinations,
-            (value) =>
-                pulumi.Input.encodeList<
-                  StreamMqttDestinationResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'destinations': ?pulumi.Input.mapOptionalInputValue<List<StreamMqttDestinationResponse>, List<Map<String, dynamic>>>(destinations, (value) => pulumi.Input.encodeList<StreamMqttDestinationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'lastUpdatedOn': ?lastUpdatedOn,
       'name': name,
       'streamConfiguration': ?streamConfiguration,
@@ -57,34 +42,12 @@ class NamespaceDiscoveredStreamResponse {
 
   factory NamespaceDiscoveredStreamResponse.fromMap(Map<String, dynamic> map) {
     return NamespaceDiscoveredStreamResponse(
-      destinations: (() {
-        final guardedValue = map['destinations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<StreamMqttDestinationResponse>(
-            guardedValue,
-            (value) => StreamMqttDestinationResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      lastUpdatedOn: (() {
-        final guardedValue = map['lastUpdatedOn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      destinations: (() { final guardedValue = map['destinations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<StreamMqttDestinationResponse>(guardedValue, (value) => StreamMqttDestinationResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      lastUpdatedOn: (() { final guardedValue = map['lastUpdatedOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      streamConfiguration: (() {
-        final guardedValue = map['streamConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      typeRef: (() {
-        final guardedValue = map['typeRef'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      streamConfiguration: (() { final guardedValue = map['streamConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      typeRef: (() { final guardedValue = map['typeRef']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

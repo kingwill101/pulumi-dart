@@ -9,13 +9,10 @@ class ManagedDiskSasTokenState {
   /// Refer to the [SAS creation reference from Azure](https://docs.microsoft.com/rest/api/compute/disks/grant-access)
   /// for additional details on the fields above.
   final pulumi.Input<String>? accessLevel;
-
   /// The duration for which the export should be allowed. Should be between 30 & 4294967295 seconds. Changing this forces a new resource to be created.
   final pulumi.Input<int>? durationInSeconds;
-
   /// The ID of an existing Managed Disk which should be exported. Changing this forces a new resource to be created.
   final pulumi.Input<String>? managedDiskId;
-
   /// The computed Shared Access Signature (SAS) of the Managed Disk.
   final pulumi.Input<String>? sasUrl;
 
@@ -42,26 +39,11 @@ class ManagedDiskSasTokenState {
 
   factory ManagedDiskSasTokenState.fromMap(Map<String, dynamic> map) {
     return ManagedDiskSasTokenState(
-      accessLevel: (() {
-        final guardedValue = map['accessLevel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      durationInSeconds: (() {
-        final guardedValue = map['durationInSeconds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      managedDiskId: (() {
-        final guardedValue = map['managedDiskId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sasUrl: (() {
-        final guardedValue = map['sasUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accessLevel: (() { final guardedValue = map['accessLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      durationInSeconds: (() { final guardedValue = map['durationInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      managedDiskId: (() { final guardedValue = map['managedDiskId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sasUrl: (() { final guardedValue = map['sasUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

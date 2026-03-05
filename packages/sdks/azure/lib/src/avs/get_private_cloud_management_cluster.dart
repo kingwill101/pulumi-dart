@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPrivateCloudManagementCluster {
   /// The list of the hosts in the management cluster.
   final pulumi.Input<List<String>> hosts;
-
   /// The ID of the management cluster.
   final pulumi.Input<int> id;
-
   /// The size of the management cluster.
   final pulumi.Input<int> size;
 
@@ -23,7 +21,11 @@ class GetPrivateCloudManagementCluster {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'hosts': hosts, 'id': id, 'size': size};
+    return <String, dynamic>{
+      'hosts': hosts,
+      'id': id,
+      'size': size,
+    };
   }
 
   factory GetPrivateCloudManagementCluster.fromMap(Map<String, dynamic> map) {
@@ -34,3 +36,4 @@ class GetPrivateCloudManagementCluster {
     );
   }
 }
+

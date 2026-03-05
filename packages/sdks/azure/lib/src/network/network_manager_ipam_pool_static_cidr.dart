@@ -315,13 +315,10 @@ class NetworkManagerIpamPoolStaticCidr extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** Exactly one of `address_prefixes` or `number_of_ip_addresses_to_allocate` must be specified.
   late final pulumi.Output<List<String>?> addressPrefixes;
-
   /// The ID of the Network Manager IP Address Management (IPAM) Pool. Changing this forces a new Network Manager IPAM Pool Static CIDR to be created.
   late final pulumi.Output<String> ipamPoolId;
-
   /// The name which should be used for this Network Manager IPAM Pool Static CIDR. Changing this forces a new Network Manager IPAM Pool Static CIDR to be created.
   late final pulumi.Output<String> name;
-
   /// The number of IP addresses to allocate to the Static CIDR. The value must be a string representing a positive integer which is a positive power of 2, e.g., `"16"`.
   ///
   /// &gt; **Note:** Exactly one of `address_prefixes` or `number_of_ip_addresses_to_allocate` must be specified.
@@ -336,17 +333,15 @@ class NetworkManagerIpamPoolStaticCidr extends pulumi.CustomResource {
     NetworkManagerIpamPoolStaticCidrArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/networkManagerIpamPoolStaticCidr:NetworkManagerIpamPoolStaticCidr',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/networkManagerIpamPoolStaticCidr:NetworkManagerIpamPoolStaticCidr',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     addressPrefixes = registerOutput<List<String>?>('addressPrefixes');
     ipamPoolId = registerOutput<String>('ipamPoolId');
     this.name = registerOutput<String>('name');
-    numberOfIpAddressesToAllocate = registerOutput<String?>(
-      'numberOfIpAddressesToAllocate',
-    );
+    numberOfIpAddressesToAllocate = registerOutput<String?>('numberOfIpAddressesToAllocate');
   }
 
   /// Gets an existing [NetworkManagerIpamPoolStaticCidr] resource's state with the given [name] and [id].
@@ -367,16 +362,14 @@ class NetworkManagerIpamPoolStaticCidr extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/networkManagerIpamPoolStaticCidr:NetworkManagerIpamPoolStaticCidr',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/networkManagerIpamPoolStaticCidr:NetworkManagerIpamPoolStaticCidr',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     addressPrefixes = registerOutput<List<String>?>('addressPrefixes');
     ipamPoolId = registerOutput<String>('ipamPoolId');
     this.name = registerOutput<String>('name');
-    numberOfIpAddressesToAllocate = registerOutput<String?>(
-      'numberOfIpAddressesToAllocate',
-    );
+    numberOfIpAddressesToAllocate = registerOutput<String?>('numberOfIpAddressesToAllocate');
   }
 }

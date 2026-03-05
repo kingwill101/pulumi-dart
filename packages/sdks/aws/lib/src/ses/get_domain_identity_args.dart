@@ -9,27 +9,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDomainIdentityArgs {
   /// Name of the domain
   final pulumi.Input<String> domain;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
   /// Creates a new [GetDomainIdentityArgs].
   /// [domain] Name of the domain
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetDomainIdentityArgs({required this.domain, this.region});
+  GetDomainIdentityArgs({
+    required this.domain,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'domain': domain, 'region': ?region};
+    return <String, dynamic>{
+      'domain': domain,
+      'region': ?region,
+    };
   }
 
   factory GetDomainIdentityArgs.fromMap(Map<String, dynamic> map) {
     return GetDomainIdentityArgs(
       domain: pulumi.Input.fromValue(map['domain'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

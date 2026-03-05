@@ -169,13 +169,10 @@ import 'group_user_state.dart';
 class GroupUser extends pulumi.CustomResource {
   /// The name of the API Management Service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> apiManagementName;
-
   /// The Name of the API Management Group within the API Management Service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> groupName;
-
   /// The name of the Resource Group in which the API Management Service exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The ID of the API Management User which should be assigned to this API Management Group. Changing this forces a new resource to be created.
   late final pulumi.Output<String> userId;
 
@@ -188,11 +185,11 @@ class GroupUser extends pulumi.CustomResource {
     GroupUserArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/groupUser:GroupUser',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:apimanagement/groupUser:GroupUser',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     groupName = registerOutput<String>('groupName');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -217,11 +214,11 @@ class GroupUser extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/groupUser:GroupUser',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:apimanagement/groupUser:GroupUser',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     groupName = registerOutput<String>('groupName');
     resourceGroupName = registerOutput<String>('resourceGroupName');

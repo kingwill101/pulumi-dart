@@ -558,22 +558,16 @@ import 'oss_export_sink_state.dart';
 class OssExportSink extends pulumi.CustomResource {
   /// OSSExportConfiguration See `configuration` below.
   late final pulumi.Output<OssExportSinkConfiguration> configuration;
-
   /// Creation time. Example value: 1718787534
   late final pulumi.Output<int> createTime;
-
   /// The description of the job.
   late final pulumi.Output<String?> description;
-
   /// The display name of the job.
   late final pulumi.Output<String> displayName;
-
   /// The unique identifier of the OSS data shipping job.
   late final pulumi.Output<String> jobName;
-
   /// The name of the project.
   late final pulumi.Output<String> project;
-
   /// The status of the post task. Example value: RUNNING
   late final pulumi.Output<String> status;
 
@@ -586,21 +580,12 @@ class OssExportSink extends pulumi.CustomResource {
     OssExportSinkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:sls/ossExportSink:OssExportSink',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    configuration = registerOutput<OssExportSinkConfiguration>(
-      'configuration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return OssExportSinkConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'alicloud:sls/ossExportSink:OssExportSink',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    configuration = registerOutput<OssExportSinkConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OssExportSinkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<int>('createTime');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
@@ -627,21 +612,12 @@ class OssExportSink extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:sls/ossExportSink:OssExportSink',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    configuration = registerOutput<OssExportSinkConfiguration>(
-      'configuration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return OssExportSinkConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'alicloud:sls/ossExportSink:OssExportSink',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    configuration = registerOutput<OssExportSinkConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OssExportSinkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<int>('createTime');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');

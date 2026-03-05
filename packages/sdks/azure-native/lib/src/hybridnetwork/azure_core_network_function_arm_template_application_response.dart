@@ -8,20 +8,14 @@ import 'depends_on_profile_response.dart';
 /// Azure core network function Template application definition.
 class AzureCoreNetworkFunctionArmTemplateApplicationResponse {
   /// Azure template artifact profile.
-  final pulumi.Input<AzureCoreArmTemplateArtifactProfileResponse>?
-  artifactProfile;
-
+  final pulumi.Input<AzureCoreArmTemplateArtifactProfileResponse>? artifactProfile;
   /// The artifact type.
   /// Expected value is 'ArmTemplate'.
   final pulumi.Input<String> artifactType;
-
   /// Depends on profile definition.
   final pulumi.Input<DependsOnProfileResponse>? dependsOnProfile;
-
   /// Deploy mapping rule profile.
-  final pulumi.Input<AzureCoreArmTemplateDeployMappingRuleProfileResponse>?
-  deployParametersMappingRuleProfile;
-
+  final pulumi.Input<AzureCoreArmTemplateDeployMappingRuleProfileResponse>? deployParametersMappingRuleProfile;
   /// The name of the network function application.
   final pulumi.Input<String>? name;
 
@@ -41,63 +35,22 @@ class AzureCoreNetworkFunctionArmTemplateApplicationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'artifactProfile':
-          ?pulumi.Input.mapOptionalInputValue<
-            AzureCoreArmTemplateArtifactProfileResponse,
-            Map<String, dynamic>
-          >(artifactProfile, (value) => value.toMap()),
+      'artifactProfile': ?pulumi.Input.mapOptionalInputValue<AzureCoreArmTemplateArtifactProfileResponse, Map<String, dynamic>>(artifactProfile, (value) => value.toMap()),
       'artifactType': artifactType,
-      'dependsOnProfile':
-          ?pulumi.Input.mapOptionalInputValue<
-            DependsOnProfileResponse,
-            Map<String, dynamic>
-          >(dependsOnProfile, (value) => value.toMap()),
-      'deployParametersMappingRuleProfile':
-          ?pulumi.Input.mapOptionalInputValue<
-            AzureCoreArmTemplateDeployMappingRuleProfileResponse,
-            Map<String, dynamic>
-          >(deployParametersMappingRuleProfile, (value) => value.toMap()),
+      'dependsOnProfile': ?pulumi.Input.mapOptionalInputValue<DependsOnProfileResponse, Map<String, dynamic>>(dependsOnProfile, (value) => value.toMap()),
+      'deployParametersMappingRuleProfile': ?pulumi.Input.mapOptionalInputValue<AzureCoreArmTemplateDeployMappingRuleProfileResponse, Map<String, dynamic>>(deployParametersMappingRuleProfile, (value) => value.toMap()),
       'name': ?name,
     };
   }
 
-  factory AzureCoreNetworkFunctionArmTemplateApplicationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AzureCoreNetworkFunctionArmTemplateApplicationResponse.fromMap(Map<String, dynamic> map) {
     return AzureCoreNetworkFunctionArmTemplateApplicationResponse(
-      artifactProfile: (() {
-        final guardedValue = map['artifactProfile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AzureCoreArmTemplateArtifactProfileResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      artifactProfile: (() { final guardedValue = map['artifactProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureCoreArmTemplateArtifactProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       artifactType: pulumi.Input.fromValue(map['artifactType'] as String),
-      dependsOnProfile: (() {
-        final guardedValue = map['dependsOnProfile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DependsOnProfileResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      deployParametersMappingRuleProfile: (() {
-        final guardedValue = map['deployParametersMappingRuleProfile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AzureCoreArmTemplateDeployMappingRuleProfileResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dependsOnProfile: (() { final guardedValue = map['dependsOnProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DependsOnProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deployParametersMappingRuleProfile: (() { final guardedValue = map['deployParametersMappingRuleProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureCoreArmTemplateDeployMappingRuleProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -694,33 +694,24 @@ import 'api_state.dart';
 class Api extends pulumi.CustomResource {
   /// ARN of the Event API.
   late final pulumi.Output<String> apiArn;
-
   /// ID of the Event API.
   late final pulumi.Output<String> apiId;
-
   /// DNS configuration for the Event API.
   late final pulumi.Output<Map<String, String>> dns;
-
   /// Configuration for the Event API. See Event Config below.
   late final pulumi.Output<ApiEventConfig> eventConfig;
-
   /// Name of the Event API.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
-
   /// Contact information for the owner of the Event API.
   late final pulumi.Output<String?> ownerContact;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// ARN of the associated WAF web ACL.
   late final pulumi.Output<String> wafWebAclArn;
   late final pulumi.Output<bool> xrayEnabled;
@@ -729,26 +720,20 @@ class Api extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Api]. {@macro pulumi_appsync_api_api_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Api(String name, {ApiArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:appsync/api:Api',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Api(
+    String name, {
+    ApiArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:appsync/api:Api',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiArn = registerOutput<String>('apiArn');
     apiId = registerOutput<String>('apiId');
     dns = registerOutput<Map<String, String>>('dns');
-    eventConfig = registerOutput<ApiEventConfig>(
-      'eventConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApiEventConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    eventConfig = registerOutput<ApiEventConfig>('eventConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiEventConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     ownerContact = registerOutput<String?>('ownerContact');
     region = registerOutput<String>('region');
@@ -759,7 +744,11 @@ class Api extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Api] resource's state with the given [name] and [id].
-  static Api get(String name, pulumi.Input<String> id, {ApiState? state}) {
+  static Api get(
+    String name,
+    pulumi.Input<String> id, {
+    ApiState? state,
+  }) {
     return Api._get(
       name,
       state: state?.toMap(),
@@ -772,24 +761,15 @@ class Api extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:appsync/api:Api',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:appsync/api:Api',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiArn = registerOutput<String>('apiArn');
     apiId = registerOutput<String>('apiId');
     dns = registerOutput<Map<String, String>>('dns');
-    eventConfig = registerOutput<ApiEventConfig>(
-      'eventConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApiEventConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    eventConfig = registerOutput<ApiEventConfig>('eventConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiEventConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     ownerContact = registerOutput<String?>('ownerContact');
     region = registerOutput<String>('region');

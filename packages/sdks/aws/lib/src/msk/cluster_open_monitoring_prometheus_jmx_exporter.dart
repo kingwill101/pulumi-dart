@@ -8,17 +8,20 @@ class ClusterOpenMonitoringPrometheusJmxExporter {
 
   /// Creates a new [ClusterOpenMonitoringPrometheusJmxExporter].
   /// [enabledInBroker] Indicates whether you want to enable or disable the Node Exporter.
-  ClusterOpenMonitoringPrometheusJmxExporter({required this.enabledInBroker});
+  ClusterOpenMonitoringPrometheusJmxExporter({
+    required this.enabledInBroker,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabledInBroker': enabledInBroker};
+    return <String, dynamic>{
+      'enabledInBroker': enabledInBroker,
+    };
   }
 
-  factory ClusterOpenMonitoringPrometheusJmxExporter.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterOpenMonitoringPrometheusJmxExporter.fromMap(Map<String, dynamic> map) {
     return ClusterOpenMonitoringPrometheusJmxExporter(
       enabledInBroker: pulumi.Input.fromValue(map['enabledInBroker'] as bool),
     );
   }
 }
+

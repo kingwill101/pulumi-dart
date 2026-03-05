@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAppServiceConnectionString {
   /// The name of the App Service.
   final pulumi.Input<String> name;
-
   /// The type of the Connection String.
   final pulumi.Input<String> type;
-
   /// The value for the Connection String.
   final pulumi.Input<String> value;
 
@@ -23,7 +21,11 @@ class GetAppServiceConnectionString {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'type': type, 'value': value};
+    return <String, dynamic>{
+      'name': name,
+      'type': type,
+      'value': value,
+    };
   }
 
   factory GetAppServiceConnectionString.fromMap(Map<String, dynamic> map) {
@@ -34,3 +36,4 @@ class GetAppServiceConnectionString {
     );
   }
 }
+

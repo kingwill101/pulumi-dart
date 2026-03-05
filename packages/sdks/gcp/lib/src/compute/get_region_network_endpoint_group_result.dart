@@ -12,29 +12,22 @@ class GetRegionNetworkEndpointGroupResult {
   final List<GetRegionNetworkEndpointGroupAppEngine> appEngines;
   final List<GetRegionNetworkEndpointGroupCloudFunction> cloudFunctions;
   final List<GetRegionNetworkEndpointGroupCloudRun> cloudRuns;
-
   /// The RNEG description.
   final String description;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? name;
-
   /// The network to which all network endpoints in the RNEG belong.
   final String network;
-
   /// Type of network endpoints in this network endpoint group.
   final String networkEndpointType;
   final String? project;
   final List<GetRegionNetworkEndpointGroupPscData> pscDatas;
-
   /// The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment.
   final String pscTargetService;
   final String? region;
   final String? selfLink;
-  final List<GetRegionNetworkEndpointGroupServerlessDeployment>
-  serverlessDeployments;
-
+  final List<GetRegionNetworkEndpointGroupServerlessDeployment> serverlessDeployments;
   /// subnetwork to which all network endpoints in the RNEG belong.
   final String subnetwork;
 
@@ -74,110 +67,42 @@ class GetRegionNetworkEndpointGroupResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'appEngines':
-          pulumi.Input.encodeList<
-            GetRegionNetworkEndpointGroupAppEngine,
-            Map<String, dynamic>
-          >(appEngines, (value) => value.toMap()),
-      'cloudFunctions':
-          pulumi.Input.encodeList<
-            GetRegionNetworkEndpointGroupCloudFunction,
-            Map<String, dynamic>
-          >(cloudFunctions, (value) => value.toMap()),
-      'cloudRuns':
-          pulumi.Input.encodeList<
-            GetRegionNetworkEndpointGroupCloudRun,
-            Map<String, dynamic>
-          >(cloudRuns, (value) => value.toMap()),
+      'appEngines': pulumi.Input.encodeList<GetRegionNetworkEndpointGroupAppEngine, Map<String, dynamic>>(appEngines, (value) => value.toMap()),
+      'cloudFunctions': pulumi.Input.encodeList<GetRegionNetworkEndpointGroupCloudFunction, Map<String, dynamic>>(cloudFunctions, (value) => value.toMap()),
+      'cloudRuns': pulumi.Input.encodeList<GetRegionNetworkEndpointGroupCloudRun, Map<String, dynamic>>(cloudRuns, (value) => value.toMap()),
       'description': description,
       'id': id,
       'name': ?name,
       'network': network,
       'networkEndpointType': networkEndpointType,
       'project': ?project,
-      'pscDatas':
-          pulumi.Input.encodeList<
-            GetRegionNetworkEndpointGroupPscData,
-            Map<String, dynamic>
-          >(pscDatas, (value) => value.toMap()),
+      'pscDatas': pulumi.Input.encodeList<GetRegionNetworkEndpointGroupPscData, Map<String, dynamic>>(pscDatas, (value) => value.toMap()),
       'pscTargetService': pscTargetService,
       'region': ?region,
       'selfLink': ?selfLink,
-      'serverlessDeployments':
-          pulumi.Input.encodeList<
-            GetRegionNetworkEndpointGroupServerlessDeployment,
-            Map<String, dynamic>
-          >(serverlessDeployments, (value) => value.toMap()),
+      'serverlessDeployments': pulumi.Input.encodeList<GetRegionNetworkEndpointGroupServerlessDeployment, Map<String, dynamic>>(serverlessDeployments, (value) => value.toMap()),
       'subnetwork': subnetwork,
     };
   }
 
-  factory GetRegionNetworkEndpointGroupResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetRegionNetworkEndpointGroupResult.fromMap(Map<String, dynamic> map) {
     return GetRegionNetworkEndpointGroupResult(
-      appEngines:
-          pulumi.Input.decodeList<GetRegionNetworkEndpointGroupAppEngine>(
-            map['appEngines']!,
-            (value) => GetRegionNetworkEndpointGroupAppEngine.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-      cloudFunctions:
-          pulumi.Input.decodeList<GetRegionNetworkEndpointGroupCloudFunction>(
-            map['cloudFunctions']!,
-            (value) => GetRegionNetworkEndpointGroupCloudFunction.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-      cloudRuns: pulumi.Input.decodeList<GetRegionNetworkEndpointGroupCloudRun>(
-        map['cloudRuns']!,
-        (value) => GetRegionNetworkEndpointGroupCloudRun.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      appEngines: pulumi.Input.decodeList<GetRegionNetworkEndpointGroupAppEngine>(map['appEngines']!, (value) => GetRegionNetworkEndpointGroupAppEngine.fromMap((value as Map).cast<String, dynamic>())),
+      cloudFunctions: pulumi.Input.decodeList<GetRegionNetworkEndpointGroupCloudFunction>(map['cloudFunctions']!, (value) => GetRegionNetworkEndpointGroupCloudFunction.fromMap((value as Map).cast<String, dynamic>())),
+      cloudRuns: pulumi.Input.decodeList<GetRegionNetworkEndpointGroupCloudRun>(map['cloudRuns']!, (value) => GetRegionNetworkEndpointGroupCloudRun.fromMap((value as Map).cast<String, dynamic>())),
       description: map['description'] as String,
       id: map['id'] as String,
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       network: map['network'] as String,
       networkEndpointType: map['networkEndpointType'] as String,
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      pscDatas: pulumi.Input.decodeList<GetRegionNetworkEndpointGroupPscData>(
-        map['pscDatas']!,
-        (value) => GetRegionNetworkEndpointGroupPscData.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      pscDatas: pulumi.Input.decodeList<GetRegionNetworkEndpointGroupPscData>(map['pscDatas']!, (value) => GetRegionNetworkEndpointGroupPscData.fromMap((value as Map).cast<String, dynamic>())),
       pscTargetService: map['pscTargetService'] as String,
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      selfLink: (() {
-        final guardedValue = map['selfLink'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      serverlessDeployments:
-          pulumi.Input.decodeList<
-            GetRegionNetworkEndpointGroupServerlessDeployment
-          >(
-            map['serverlessDeployments']!,
-            (value) =>
-                GetRegionNetworkEndpointGroupServerlessDeployment.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      serverlessDeployments: pulumi.Input.decodeList<GetRegionNetworkEndpointGroupServerlessDeployment>(map['serverlessDeployments']!, (value) => GetRegionNetworkEndpointGroupServerlessDeployment.fromMap((value as Map).cast<String, dynamic>())),
       subnetwork: map['subnetwork'] as String,
     );
   }
 }
+

@@ -914,82 +914,63 @@ import 'autonomous_database_state.dart';
 class AutonomousDatabase extends pulumi.CustomResource {
   /// The password for the default ADMIN user.
   late final pulumi.Output<String?> adminPassword;
-
   /// The ID of the Autonomous Database to create. This value is restricted
   /// to (^a-z?$) and must be a maximum of 63
   /// characters in length. The value must start with a letter and end with
   /// a letter or a number.
   late final pulumi.Output<String> autonomousDatabaseId;
-
   /// The subnet CIDR range for the Autonmous Database.
   late final pulumi.Output<String?> cidr;
-
   /// The date and time that the Autonomous Database was created.
   late final pulumi.Output<String> createTime;
-
   /// The name of the Autonomous Database. The database name must be unique in
   /// the project. The name must begin with a letter and can
   /// contain a maximum of 30 alphanumeric characters.
   late final pulumi.Output<String> database;
   late final pulumi.Output<bool?> deletionProtection;
-
   /// List of supported GCP region to clone the Autonomous Database for disaster recovery.
   late final pulumi.Output<List<String>> disasterRecoverySupportedLocations;
-
   /// The display name for the Autonomous Database. The name does not have to
   /// be unique within your project.
   late final pulumi.Output<String> displayName;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// The ID of the subscription entitlement associated with the Autonomous
   /// Database.
   late final pulumi.Output<String> entitlementId;
-
   /// The labels or tags associated with the Autonomous Database.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// Resource ID segment making up resource `name`. See documentation for resource type `oracledatabase.googleapis.com/AutonomousDatabaseBackup`.
   late final pulumi.Output<String> location;
-
   /// Identifier. The name of the Autonomous Database resource in the following format:
   /// projects/{project}/locations/{region}/autonomousDatabases/{autonomous_database}
   late final pulumi.Output<String> name;
-
   /// The name of the VPC network used by the Autonomous Database.
   /// Format: projects/{project}/global/networks/{network}
   late final pulumi.Output<String?> network;
-
   /// The name of the OdbNetwork associated with the Autonomous Database.
   /// Format:
   /// projects/{project}/locations/{location}/odbNetworks/{odb_network}
   /// It is optional but if specified, this should match the parent ODBNetwork of
   /// the odb_subnet and backup_odb_subnet.
   late final pulumi.Output<String> odbNetwork;
-
   /// The name of the OdbSubnet associated with the Autonomous Database for
   /// IP allocation. Format:
   /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
   late final pulumi.Output<String> odbSubnet;
-
   /// The peer Autonomous Database names of the given Autonomous Database.
   late final pulumi.Output<List<String>> peerAutonomousDatabases;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The properties of an Autonomous Database.
   /// Structure is documented below.
   late final pulumi.Output<AutonomousDatabaseProperties> properties;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// The source Autonomous Database configuration for the standby Autonomous Database.
   /// Structure is documented below.
   late final pulumi.Output<AutonomousDatabaseSourceConfig?> sourceConfig;
@@ -1003,20 +984,18 @@ class AutonomousDatabase extends pulumi.CustomResource {
     AutonomousDatabaseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:oracledatabase/autonomousDatabase:AutonomousDatabase',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:oracledatabase/autonomousDatabase:AutonomousDatabase',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     adminPassword = registerOutput<String?>('adminPassword');
     autonomousDatabaseId = registerOutput<String>('autonomousDatabaseId');
     cidr = registerOutput<String?>('cidr');
     createTime = registerOutput<String>('createTime');
     database = registerOutput<String>('database');
     deletionProtection = registerOutput<bool?>('deletionProtection');
-    disasterRecoverySupportedLocations = registerOutput<List<String>>(
-      'disasterRecoverySupportedLocations',
-    );
+    disasterRecoverySupportedLocations = registerOutput<List<String>>('disasterRecoverySupportedLocations');
     displayName = registerOutput<String>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     entitlementId = registerOutput<String>('entitlementId');
@@ -1026,31 +1005,11 @@ class AutonomousDatabase extends pulumi.CustomResource {
     network = registerOutput<String?>('network');
     odbNetwork = registerOutput<String>('odbNetwork');
     odbSubnet = registerOutput<String>('odbSubnet');
-    peerAutonomousDatabases = registerOutput<List<String>>(
-      'peerAutonomousDatabases',
-    );
+    peerAutonomousDatabases = registerOutput<List<String>>('peerAutonomousDatabases');
     project = registerOutput<String>('project');
-    properties = registerOutput<AutonomousDatabaseProperties>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AutonomousDatabaseProperties.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<AutonomousDatabaseProperties>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutonomousDatabaseProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    sourceConfig = registerOutput<AutonomousDatabaseSourceConfig?>(
-      'sourceConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AutonomousDatabaseSourceConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sourceConfig = registerOutput<AutonomousDatabaseSourceConfig?>('sourceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutonomousDatabaseSourceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [AutonomousDatabase] resource's state with the given [name] and [id].
@@ -1071,20 +1030,18 @@ class AutonomousDatabase extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:oracledatabase/autonomousDatabase:AutonomousDatabase',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:oracledatabase/autonomousDatabase:AutonomousDatabase',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     adminPassword = registerOutput<String?>('adminPassword');
     autonomousDatabaseId = registerOutput<String>('autonomousDatabaseId');
     cidr = registerOutput<String?>('cidr');
     createTime = registerOutput<String>('createTime');
     database = registerOutput<String>('database');
     deletionProtection = registerOutput<bool?>('deletionProtection');
-    disasterRecoverySupportedLocations = registerOutput<List<String>>(
-      'disasterRecoverySupportedLocations',
-    );
+    disasterRecoverySupportedLocations = registerOutput<List<String>>('disasterRecoverySupportedLocations');
     displayName = registerOutput<String>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     entitlementId = registerOutput<String>('entitlementId');
@@ -1094,30 +1051,10 @@ class AutonomousDatabase extends pulumi.CustomResource {
     network = registerOutput<String?>('network');
     odbNetwork = registerOutput<String>('odbNetwork');
     odbSubnet = registerOutput<String>('odbSubnet');
-    peerAutonomousDatabases = registerOutput<List<String>>(
-      'peerAutonomousDatabases',
-    );
+    peerAutonomousDatabases = registerOutput<List<String>>('peerAutonomousDatabases');
     project = registerOutput<String>('project');
-    properties = registerOutput<AutonomousDatabaseProperties>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AutonomousDatabaseProperties.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<AutonomousDatabaseProperties>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutonomousDatabaseProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    sourceConfig = registerOutput<AutonomousDatabaseSourceConfig?>(
-      'sourceConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AutonomousDatabaseSourceConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sourceConfig = registerOutput<AutonomousDatabaseSourceConfig?>('sourceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutonomousDatabaseSourceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

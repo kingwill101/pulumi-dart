@@ -194,13 +194,10 @@ import 'acl_entry_attachment_state.dart';
 class AclEntryAttachment extends pulumi.CustomResource {
   /// The ID of the Acl.
   late final pulumi.Output<String> aclId;
-
   /// The description of the entry.
   late final pulumi.Output<String?> description;
-
   /// The CIDR blocks.
   late final pulumi.Output<String> entry;
-
   /// The Status of the resource.
   late final pulumi.Output<String> status;
 
@@ -213,11 +210,11 @@ class AclEntryAttachment extends pulumi.CustomResource {
     AclEntryAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:alb/aclEntryAttachment:AclEntryAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:alb/aclEntryAttachment:AclEntryAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aclId = registerOutput<String>('aclId');
     description = registerOutput<String?>('description');
     entry = registerOutput<String>('entry');
@@ -242,11 +239,11 @@ class AclEntryAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:alb/aclEntryAttachment:AclEntryAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:alb/aclEntryAttachment:AclEntryAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aclId = registerOutput<String>('aclId');
     description = registerOutput<String?>('description');
     entry = registerOutput<String>('entry');

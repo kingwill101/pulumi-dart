@@ -14,16 +14,15 @@ class GoogleCloudContentwarehouseV1DataValidationActionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'conditions': conditions};
+    return <String, dynamic>{
+      'conditions': conditions,
+    };
   }
 
-  factory GoogleCloudContentwarehouseV1DataValidationActionResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudContentwarehouseV1DataValidationActionResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1DataValidationActionResponse(
-      conditions: pulumi.Input.fromValue(
-        (map['conditions'] as Map).cast<String, String>(),
-      ),
+      conditions: pulumi.Input.fromValue((map['conditions'] as Map).cast<String, String>()),
     );
   }
 }
+

@@ -9,15 +9,11 @@ import 'google_cloud_aiplatform_v1_feature_online_store_bigtable.dart';
 /// {@macro pulumi_aiplatform_v1_feature_online_store_args_doc}
 class FeatureOnlineStoreArgs {
   /// Contains settings for the Cloud Bigtable instance that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore.
-  final pulumi.Input<GoogleCloudAiplatformV1FeatureOnlineStoreBigtable>?
-  bigtable;
-
+  final pulumi.Input<GoogleCloudAiplatformV1FeatureOnlineStoreBigtable>? bigtable;
   /// Optional. Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
   final pulumi.Input<String>? etag;
-
   /// Required. The ID to use for this FeatureOnlineStore, which will become the final component of the FeatureOnlineStore's resource name. This value may be up to 60 characters, and valid characters are `[a-z0-9_]`. The first character cannot be a number. The value must be unique within the project and location.
   final pulumi.Input<String> featureOnlineStoreId;
-
   /// Optional. The labels with user-defined metadata to organize your FeatureOnlineStore. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information on and examples of labels. No more than 64 user labels can be associated with one FeatureOnlineStore(System labels are excluded)." System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
   final pulumi.Input<Map<String, String>>? labels;
   final pulumi.Input<String>? location;
@@ -41,11 +37,7 @@ class FeatureOnlineStoreArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bigtable':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudAiplatformV1FeatureOnlineStoreBigtable,
-            Map<String, dynamic>
-          >(bigtable, (value) => value.toMap()),
+      'bigtable': ?pulumi.Input.mapOptionalInputValue<GoogleCloudAiplatformV1FeatureOnlineStoreBigtable, Map<String, dynamic>>(bigtable, (value) => value.toMap()),
       'etag': ?etag,
       'featureOnlineStoreId': featureOnlineStoreId,
       'labels': ?labels,
@@ -56,40 +48,13 @@ class FeatureOnlineStoreArgs {
 
   factory FeatureOnlineStoreArgs.fromMap(Map<String, dynamic> map) {
     return FeatureOnlineStoreArgs(
-      bigtable: (() {
-        final guardedValue = map['bigtable'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudAiplatformV1FeatureOnlineStoreBigtable.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      etag: (() {
-        final guardedValue = map['etag'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      featureOnlineStoreId: pulumi.Input.fromValue(
-        map['featureOnlineStoreId'] as String,
-      ),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      bigtable: (() { final guardedValue = map['bigtable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudAiplatformV1FeatureOnlineStoreBigtable.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      featureOnlineStoreId: pulumi.Input.fromValue(map['featureOnlineStoreId'] as String),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

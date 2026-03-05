@@ -263,7 +263,10 @@ import 'get_vpcs_result.dart';
 ///       arguments: {}
 /// ```
 /// [options] Invoke options controlling this call.
-Future<GetAccountResult> getAccount({pulumi.InvokeOptions? options}) async {
+Future<GetAccountResult> getAccount(
+  {
+  pulumi.InvokeOptions? options,
+}) async {
   final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'linode:index/getAccount:getAccount',
@@ -891,7 +894,8 @@ Future<GetAccountLoginsResult> getAccountLogins(
 ///       arguments: {}
 /// ```
 /// [options] Invoke options controlling this call.
-Future<GetAccountSettingsResult> getAccountSettings({
+Future<GetAccountSettingsResult> getAccountSettings(
+  {
   pulumi.InvokeOptions? options,
 }) async {
   final deployment = pulumi.Deployment.instance;
@@ -1536,8 +1540,7 @@ Future<GetConsumerImageShareGroupResult> getConsumerImageShareGroup(
 /// * `label`
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_consumer_image_share_group_image_shares_get_consumer_image_share_group_image_shares_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetConsumerImageShareGroupImageSharesResult>
-getConsumerImageShareGroupImageShares(
+Future<GetConsumerImageShareGroupImageSharesResult> getConsumerImageShareGroupImageShares(
   GetConsumerImageShareGroupImageSharesArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3398,7 +3401,8 @@ Future<GetDatabaseMysqlBackupsResult> getDatabaseMysqlBackups(
 ///
 /// * `type` - The type of the value of `wait_timeout`.
 /// [options] Invoke options controlling this call.
-Future<GetDatabaseMysqlConfigResult> getDatabaseMysqlConfig({
+Future<GetDatabaseMysqlConfigResult> getDatabaseMysqlConfig(
+  {
   pulumi.InvokeOptions? options,
 }) async {
   final deployment = pulumi.Deployment.instance;
@@ -4522,7 +4526,8 @@ Future<GetDatabasePostgresqlResult> getDatabasePostgresql(
 ///
 /// * `type` - The type of the `wal_writer_delay` setting.
 /// [options] Invoke options controlling this call.
-Future<GetDatabasePostgresqlConfigResult> getDatabasePostgresqlConfig({
+Future<GetDatabasePostgresqlConfigResult> getDatabasePostgresqlConfig(
+  {
   pulumi.InvokeOptions? options,
 }) async {
   final deployment = pulumi.Deployment.instance;
@@ -5559,7 +5564,8 @@ Future<GetFirewallResult> getFirewall(
 }
 
 /// [options] Invoke options controlling this call.
-Future<GetFirewallSettingsResult> getFirewallSettings({
+Future<GetFirewallSettingsResult> getFirewallSettings(
+  {
   pulumi.InvokeOptions? options,
 }) async {
   final deployment = pulumi.Deployment.instance;
@@ -11959,8 +11965,7 @@ Future<GetProducerImageShareGroupResult> getProducerImageShareGroup(
 /// * `label`
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_producer_image_share_group_image_shares_get_producer_image_share_group_image_shares_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetProducerImageShareGroupImageSharesResult>
-getProducerImageShareGroupImageShares(
+Future<GetProducerImageShareGroupImageSharesResult> getProducerImageShareGroupImageShares(
   GetProducerImageShareGroupImageSharesArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -12270,8 +12275,7 @@ Future<GetProducerImageShareGroupMemberResult> getProducerImageShareGroupMember(
 /// * `status`
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_producer_image_share_group_members_get_producer_image_share_group_members_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetProducerImageShareGroupMembersResult>
-getProducerImageShareGroupMembers(
+Future<GetProducerImageShareGroupMembersResult> getProducerImageShareGroupMembers(
   GetProducerImageShareGroupMembersArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -12548,7 +12552,10 @@ Future<GetProducerImageShareGroupsResult> getProducerImageShareGroups(
 ///       arguments: {}
 /// ```
 /// [options] Invoke options controlling this call.
-Future<GetProfileResult> getProfile({pulumi.InvokeOptions? options}) async {
+Future<GetProfileResult> getProfile(
+  {
+  pulumi.InvokeOptions? options,
+}) async {
   final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'linode:index/getProfile:getProfile',

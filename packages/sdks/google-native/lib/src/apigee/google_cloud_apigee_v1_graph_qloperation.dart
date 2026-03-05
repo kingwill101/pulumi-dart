@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudApigeeV1GraphQLOperation {
   /// GraphQL operation name. The name and operation type will be used to apply quotas. If no name is specified, the quota will be applied to all GraphQL operations irrespective of their operation names in the payload.
   final pulumi.Input<String>? operation;
-
   /// GraphQL operation types. Valid values include `query` or `mutation`. **Note**: Apigee does not currently support `subscription` types.
   final pulumi.Input<List<String>> operationTypes;
 
@@ -25,18 +24,11 @@ class GoogleCloudApigeeV1GraphQLOperation {
     };
   }
 
-  factory GoogleCloudApigeeV1GraphQLOperation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudApigeeV1GraphQLOperation.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1GraphQLOperation(
-      operation: (() {
-        final guardedValue = map['operation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      operationTypes: pulumi.Input.fromValue(
-        (map['operationTypes'] as List).cast<String>(),
-      ),
+      operation: (() { final guardedValue = map['operation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      operationTypes: pulumi.Input.fromValue((map['operationTypes'] as List).cast<String>()),
     );
   }
 }
+

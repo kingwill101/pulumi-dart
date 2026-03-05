@@ -13,14 +13,15 @@ class BucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedOb
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled};
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
-  factory BucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObjects.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObjects.fromMap(Map<String, dynamic> map) {
     return BucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObjects(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
+

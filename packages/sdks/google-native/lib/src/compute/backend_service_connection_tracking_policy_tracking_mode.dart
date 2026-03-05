@@ -7,17 +7,13 @@ enum BackendServiceConnectionTrackingPolicyTrackingMode {
   const BackendServiceConnectionTrackingPolicyTrackingMode(this.wireValue);
   final String wireValue;
 
-  static BackendServiceConnectionTrackingPolicyTrackingMode fromValue(
-    String value,
-  ) {
-    for (final item
-        in BackendServiceConnectionTrackingPolicyTrackingMode.values) {
+  static BackendServiceConnectionTrackingPolicyTrackingMode fromValue(String value) {
+    for (final item in BackendServiceConnectionTrackingPolicyTrackingMode.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown BackendServiceConnectionTrackingPolicyTrackingMode value: $value',
-    );
+    throw ArgumentError('Unknown BackendServiceConnectionTrackingPolicyTrackingMode value: $value');
   }
 }
+

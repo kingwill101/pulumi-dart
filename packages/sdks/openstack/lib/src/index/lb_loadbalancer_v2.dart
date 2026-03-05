@@ -106,67 +106,53 @@ class LbLoadbalancerV2 extends pulumi.CustomResource {
   /// The administrative state of the Loadbalancer.
   /// A valid value is true (UP) or false (DOWN).
   late final pulumi.Output<bool?> adminStateUp;
-
   /// The availability zone of the Loadbalancer.
   /// Changing this creates a new loadbalancer. Available only for Octavia
   /// **minor version 2.14 or later**.
   late final pulumi.Output<String?> availabilityZone;
-
   /// Human-readable description for the Loadbalancer.
   late final pulumi.Output<String?> description;
-
   /// The UUID of a flavor. Changing this creates a new
   /// loadbalancer.
   late final pulumi.Output<String> flavorId;
-
   /// The name of the provider. Changing this
   /// creates a new loadbalancer.
   late final pulumi.Output<String> loadbalancerProvider;
-
   /// Human-readable name for the Loadbalancer. Does not have
   /// to be unique.
   late final pulumi.Output<String> name;
-
   /// The region in which to obtain the V2 Networking client.
   /// A Networking client is needed to create an LB member. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
   /// LB member.
   late final pulumi.Output<String> region;
-
   /// A list of security group IDs to apply to the
   /// loadbalancer. The security groups must be specified by ID and not name (as
   /// opposed to how they are configured with the Compute Instance).
   late final pulumi.Output<List<String>> securityGroupIds;
-
   /// A list of simple strings assigned to the loadbalancer.
   /// Available only for Octavia **minor version 2.5 or later**.
   late final pulumi.Output<List<String>?> tags;
-
   /// Required for admins. The UUID of the tenant who owns
   /// the Loadbalancer.  Only administrative users can specify a tenant UUID
   /// other than their own.  Changing this creates a new loadbalancer.
   late final pulumi.Output<String> tenantId;
-
   /// The ip address of the load balancer.
   /// Changing this creates a new loadbalancer.
   late final pulumi.Output<String> vipAddress;
-
   /// The network on which to allocate the
   /// Loadbalancer's address. A tenant can only create Loadbalancers on networks
   /// authorized by policy (e.g. networks that belong to them or networks that
   /// are shared).  Changing this creates a new loadbalancer. Exactly one of
   /// `vip_subnet_id`, `vip_network_id` or `vip_port_id` has to be defined.
   late final pulumi.Output<String> vipNetworkId;
-
   /// The port UUID that the loadbalancer will use.
   /// Changing this creates a new loadbalancer. Exactly one of
   /// `vip_subnet_id`, `vip_network_id` or `vip_port_id` has to be defined.
   late final pulumi.Output<String> vipPortId;
-
   /// The ID of the QoS Policy which will
   /// be applied to the Virtual IP (VIP).
   late final pulumi.Output<String?> vipQosPolicyId;
-
   /// The subnet on which to allocate the
   /// Loadbalancer's address. A tenant can only create Loadbalancers on networks
   /// authorized by policy (e.g. networks that belong to them or networks that
@@ -183,11 +169,11 @@ class LbLoadbalancerV2 extends pulumi.CustomResource {
     LbLoadbalancerV2Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:index/lbLoadbalancerV2:LbLoadbalancerV2',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:index/lbLoadbalancerV2:LbLoadbalancerV2',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     adminStateUp = registerOutput<bool?>('adminStateUp');
     availabilityZone = registerOutput<String?>('availabilityZone');
     description = registerOutput<String?>('description');
@@ -223,11 +209,11 @@ class LbLoadbalancerV2 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:index/lbLoadbalancerV2:LbLoadbalancerV2',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:index/lbLoadbalancerV2:LbLoadbalancerV2',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     adminStateUp = registerOutput<bool?>('adminStateUp');
     availabilityZone = registerOutput<String?>('availabilityZone');
     description = registerOutput<String?>('description');

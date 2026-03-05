@@ -12,19 +12,20 @@ class TagArgs {
 
   /// Creates a new [TagArgs].
   /// [name] The name of the tag
-  TagArgs({this.name});
+  TagArgs({
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name};
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
   factory TagArgs.fromMap(Map<String, dynamic> map) {
     return TagArgs(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

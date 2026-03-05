@@ -1,28 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getGateway.
 class GetGatewayApigatewayV1betaResult {
   /// Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
   final String apiConfig;
-
   /// Created time.
   final String createTime;
-
   /// The default API Gateway host name of the form `{gateway_id}-{hash}.{region_code}.gateway.dev`.
   final String defaultHostname;
-
   /// Optional. Display name.
   final String displayName;
-
   /// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
   final Map<String, String> labels;
-
   /// Resource name of the Gateway. Format: projects/{project}/locations/{location}/gateways/{gateway}
   final String name;
-
   /// The current state of the Gateway.
   final String state;
-
   /// Updated time.
   final String updateTime;
 
@@ -72,3 +66,4 @@ class GetGatewayApigatewayV1betaResult {
     );
   }
 }
+

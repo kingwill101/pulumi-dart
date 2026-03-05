@@ -26,3 +26,4 @@ enum ClientType {
     throw ArgumentError('Unknown ClientType value: $value');
   }
 }
+

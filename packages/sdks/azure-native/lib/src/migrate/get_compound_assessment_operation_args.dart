@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCompoundAssessmentOperationArgs {
   /// Compound Assessment ARM name
   final pulumi.Input<String> compoundAssessmentName;
-
   /// Assessment Project Name
   final pulumi.Input<String> projectName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,13 +34,10 @@ class GetCompoundAssessmentOperationArgs {
 
   factory GetCompoundAssessmentOperationArgs.fromMap(Map<String, dynamic> map) {
     return GetCompoundAssessmentOperationArgs(
-      compoundAssessmentName: pulumi.Input.fromValue(
-        map['compoundAssessmentName'] as String,
-      ),
+      compoundAssessmentName: pulumi.Input.fromValue(map['compoundAssessmentName'] as String),
       projectName: pulumi.Input.fromValue(map['projectName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

@@ -6,11 +6,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class A2ACrossClusterMigrationEnableProtectionInput {
   /// The fabric specific object Id of the virtual machine.
   final pulumi.Input<String>? fabricObjectId;
-
   /// The class type.
   /// Expected value is 'A2ACrossClusterMigration'.
   final pulumi.Input<String> instanceType;
-
   /// The recovery container Id.
   final pulumi.Input<String>? recoveryContainerId;
 
@@ -32,21 +30,12 @@ class A2ACrossClusterMigrationEnableProtectionInput {
     };
   }
 
-  factory A2ACrossClusterMigrationEnableProtectionInput.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory A2ACrossClusterMigrationEnableProtectionInput.fromMap(Map<String, dynamic> map) {
     return A2ACrossClusterMigrationEnableProtectionInput(
-      fabricObjectId: (() {
-        final guardedValue = map['fabricObjectId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      fabricObjectId: (() { final guardedValue = map['fabricObjectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
-      recoveryContainerId: (() {
-        final guardedValue = map['recoveryContainerId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      recoveryContainerId: (() { final guardedValue = map['recoveryContainerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

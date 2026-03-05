@@ -6,25 +6,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GradientaiFunctionState {
   /// The name of the GradientAI resource.
   final pulumi.Input<String>? agentId;
-
   /// The region where the GradientAI resource will be created.
   final pulumi.Input<String>? description;
-
   /// The model to use for the GradientAI resource.
   final pulumi.Input<String>? faasName;
-
   /// The current status of the GradientAI resource.
   final pulumi.Input<String>? faasNamespace;
-
   /// The creation timestamp of the GradientAI resource.
   final pulumi.Input<String>? functionName;
-
   /// The unique identifier of the GradientAI function.
   final pulumi.Input<String>? functionUuid;
-
   /// The input schema of the GradientAI resource.
   final pulumi.Input<String>? inputSchema;
-
   /// The output schema of the GradientAI resource.
   final pulumi.Input<String>? outputSchema;
 
@@ -63,46 +56,15 @@ class GradientaiFunctionState {
 
   factory GradientaiFunctionState.fromMap(Map<String, dynamic> map) {
     return GradientaiFunctionState(
-      agentId: (() {
-        final guardedValue = map['agentId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      faasName: (() {
-        final guardedValue = map['faasName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      faasNamespace: (() {
-        final guardedValue = map['faasNamespace'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      functionName: (() {
-        final guardedValue = map['functionName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      functionUuid: (() {
-        final guardedValue = map['functionUuid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      inputSchema: (() {
-        final guardedValue = map['inputSchema'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      outputSchema: (() {
-        final guardedValue = map['outputSchema'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      agentId: (() { final guardedValue = map['agentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      faasName: (() { final guardedValue = map['faasName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      faasNamespace: (() { final guardedValue = map['faasNamespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      functionName: (() { final guardedValue = map['functionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      functionUuid: (() { final guardedValue = map['functionUuid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      inputSchema: (() { final guardedValue = map['inputSchema']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      outputSchema: (() { final guardedValue = map['outputSchema']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

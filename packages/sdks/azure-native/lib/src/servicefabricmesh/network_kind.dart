@@ -14,3 +14,4 @@ enum NetworkKind {
     throw ArgumentError('Unknown NetworkKind value: $value');
   }
 }
+

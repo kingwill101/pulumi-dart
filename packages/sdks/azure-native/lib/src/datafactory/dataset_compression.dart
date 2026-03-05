@@ -6,27 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatasetCompression {
   /// The dataset compression level. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? level;
-
   /// Type of dataset compression. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> type;
 
   /// Creates a new [DatasetCompression].
   /// [level] The dataset compression level. Type: string (or Expression with resultType string).
   /// [type] Type of dataset compression. Type: string (or Expression with resultType string).
-  DatasetCompression({this.level, required this.type});
+  DatasetCompression({
+    this.level,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'level': ?level, 'type': type};
+    return <String, dynamic>{
+      'level': ?level,
+      'type': type,
+    };
   }
 
   factory DatasetCompression.fromMap(Map<String, dynamic> map) {
     return DatasetCompression(
-      level: (() {
-        final guardedValue = map['level'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
+      level: (() { final guardedValue = map['level']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       type: pulumi.Input.fromValue(map['type']),
     );
   }
 }
+

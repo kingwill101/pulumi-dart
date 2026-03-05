@@ -193,7 +193,6 @@ import 'spring_cloud_application_live_view_state.dart';
 class SpringCloudApplicationLiveView extends pulumi.CustomResource {
   /// The name which should be used for this Spring Cloud Application Live View. Changing this forces a new Spring Cloud Application Live View to be created. The only possible value is `default`.
   late final pulumi.Output<String> name;
-
   /// The ID of the Spring Cloud Service. Changing this forces a new Spring Cloud Application Live View to be created.
   late final pulumi.Output<String> springCloudServiceId;
 
@@ -206,11 +205,11 @@ class SpringCloudApplicationLiveView extends pulumi.CustomResource {
     SpringCloudApplicationLiveViewArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appplatform/springCloudApplicationLiveView:SpringCloudApplicationLiveView',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appplatform/springCloudApplicationLiveView:SpringCloudApplicationLiveView',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     springCloudServiceId = registerOutput<String>('springCloudServiceId');
   }
@@ -233,11 +232,11 @@ class SpringCloudApplicationLiveView extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appplatform/springCloudApplicationLiveView:SpringCloudApplicationLiveView',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appplatform/springCloudApplicationLiveView:SpringCloudApplicationLiveView',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     springCloudServiceId = registerOutput<String>('springCloudServiceId');
   }

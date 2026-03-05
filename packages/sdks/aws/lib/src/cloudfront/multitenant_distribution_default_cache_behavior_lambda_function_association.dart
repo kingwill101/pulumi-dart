@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MultitenantDistributionDefaultCacheBehaviorLambdaFunctionAssociation {
   /// Specific event to trigger this function. Valid values: `viewer-request`, `origin-request`, `viewer-response`, `origin-response`.
   final pulumi.Input<String> eventType;
-
   /// When set to true, the request body is exposed to the Lambda function. Default: `false`.
   final pulumi.Input<bool>? includeBody;
-
   /// ARN of the Lambda function.
   final pulumi.Input<String> lambdaFunctionArn;
 
@@ -30,19 +28,12 @@ class MultitenantDistributionDefaultCacheBehaviorLambdaFunctionAssociation {
     };
   }
 
-  factory MultitenantDistributionDefaultCacheBehaviorLambdaFunctionAssociation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MultitenantDistributionDefaultCacheBehaviorLambdaFunctionAssociation.fromMap(Map<String, dynamic> map) {
     return MultitenantDistributionDefaultCacheBehaviorLambdaFunctionAssociation(
       eventType: pulumi.Input.fromValue(map['eventType'] as String),
-      includeBody: (() {
-        final guardedValue = map['includeBody'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      lambdaFunctionArn: pulumi.Input.fromValue(
-        map['lambdaFunctionArn'] as String,
-      ),
+      includeBody: (() { final guardedValue = map['includeBody']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      lambdaFunctionArn: pulumi.Input.fromValue(map['lambdaFunctionArn'] as String),
     );
   }
 }
+

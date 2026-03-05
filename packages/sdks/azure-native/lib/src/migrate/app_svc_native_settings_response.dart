@@ -9,17 +9,20 @@ class AppSvcNativeSettingsResponse {
 
   /// Creates a new [AppSvcNativeSettingsResponse].
   /// [isolationRequired] Gets or sets the isolation required.
-  AppSvcNativeSettingsResponse({required this.isolationRequired});
+  AppSvcNativeSettingsResponse({
+    required this.isolationRequired,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'isolationRequired': isolationRequired};
+    return <String, dynamic>{
+      'isolationRequired': isolationRequired,
+    };
   }
 
   factory AppSvcNativeSettingsResponse.fromMap(Map<String, dynamic> map) {
     return AppSvcNativeSettingsResponse(
-      isolationRequired: pulumi.Input.fromValue(
-        map['isolationRequired'] as bool,
-      ),
+      isolationRequired: pulumi.Input.fromValue(map['isolationRequired'] as bool),
     );
   }
 }
+

@@ -12,21 +12,14 @@ import 'ingestion_destination_timeouts.dart';
 class IngestionDestinationArgs {
   /// The Amazon Resource Name (ARN) of the app bundle to use for the request.
   final pulumi.Input<String> appBundleArn;
-
   /// Contains information about the destination of ingested data.
-  final pulumi.Input<IngestionDestinationDestinationConfiguration>
-  destinationConfiguration;
-
+  final pulumi.Input<IngestionDestinationDestinationConfiguration> destinationConfiguration;
   /// The Amazon Resource Name (ARN) of the ingestion to use for the request.
   final pulumi.Input<String> ingestionArn;
-
   /// Contains information about how ingested data is processed.
-  final pulumi.Input<IngestionDestinationProcessingConfiguration>
-  processingConfiguration;
-
+  final pulumi.Input<IngestionDestinationProcessingConfiguration> processingConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<IngestionDestinationTimeouts>? timeouts;
@@ -52,62 +45,25 @@ class IngestionDestinationArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'appBundleArn': appBundleArn,
-      'destinationConfiguration':
-          pulumi.Input.mapInputValue<
-            IngestionDestinationDestinationConfiguration,
-            Map<String, dynamic>
-          >(destinationConfiguration, (value) => value.toMap()),
+      'destinationConfiguration': pulumi.Input.mapInputValue<IngestionDestinationDestinationConfiguration, Map<String, dynamic>>(destinationConfiguration, (value) => value.toMap()),
       'ingestionArn': ingestionArn,
-      'processingConfiguration':
-          pulumi.Input.mapInputValue<
-            IngestionDestinationProcessingConfiguration,
-            Map<String, dynamic>
-          >(processingConfiguration, (value) => value.toMap()),
+      'processingConfiguration': pulumi.Input.mapInputValue<IngestionDestinationProcessingConfiguration, Map<String, dynamic>>(processingConfiguration, (value) => value.toMap()),
       'region': ?region,
       'tags': ?tags,
-      'timeouts':
-          ?pulumi.Input.mapOptionalInputValue<
-            IngestionDestinationTimeouts,
-            Map<String, dynamic>
-          >(timeouts, (value) => value.toMap()),
+      'timeouts': ?pulumi.Input.mapOptionalInputValue<IngestionDestinationTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
     };
   }
 
   factory IngestionDestinationArgs.fromMap(Map<String, dynamic> map) {
     return IngestionDestinationArgs(
       appBundleArn: pulumi.Input.fromValue(map['appBundleArn'] as String),
-      destinationConfiguration: pulumi.Input.fromValue(
-        IngestionDestinationDestinationConfiguration.fromMap(
-          (map['destinationConfiguration']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      destinationConfiguration: pulumi.Input.fromValue(IngestionDestinationDestinationConfiguration.fromMap((map['destinationConfiguration']! as Map).cast<String, dynamic>())),
       ingestionArn: pulumi.Input.fromValue(map['ingestionArn'] as String),
-      processingConfiguration: pulumi.Input.fromValue(
-        IngestionDestinationProcessingConfiguration.fromMap(
-          (map['processingConfiguration']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      timeouts: (() {
-        final guardedValue = map['timeouts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          IngestionDestinationTimeouts.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      processingConfiguration: pulumi.Input.fromValue(IngestionDestinationProcessingConfiguration.fromMap((map['processingConfiguration']! as Map).cast<String, dynamic>())),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      timeouts: (() { final guardedValue = map['timeouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IngestionDestinationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

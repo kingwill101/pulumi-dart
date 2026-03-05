@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDataflowEndpointArgs {
   /// Name of Instance dataflowEndpoint resource
   final pulumi.Input<String> dataflowEndpointName;
-
   /// Name of instance.
   final pulumi.Input<String> instanceName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,13 +34,10 @@ class GetDataflowEndpointArgs {
 
   factory GetDataflowEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GetDataflowEndpointArgs(
-      dataflowEndpointName: pulumi.Input.fromValue(
-        map['dataflowEndpointName'] as String,
-      ),
+      dataflowEndpointName: pulumi.Input.fromValue(map['dataflowEndpointName'] as String),
       instanceName: pulumi.Input.fromValue(map['instanceName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

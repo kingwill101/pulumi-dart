@@ -6,28 +6,20 @@ class GetInstancesInstance {
   /// Whether the required RAM authorization is configured.
   final pulumi.Input<bool> authed;
   final pulumi.Input<String> id;
-
   /// The ID of the instance.
   final pulumi.Input<String> instanceId;
-
   /// The number of instances.
   final pulumi.Input<String> instanceNum;
-
   /// Whether the authorized MaxCompute (ODPS) assets.
   final pulumi.Input<bool> odpsSet;
-
   /// Whether the authorized oss assets.
   final pulumi.Input<bool> ossBucketSet;
-
   /// The OSS size of the instance.
   final pulumi.Input<String> ossSize;
-
   /// The payment type of the resource. Valid values: `Subscription`.
   final pulumi.Input<String> paymentType;
-
   /// Whether the authorized rds assets.
   final pulumi.Input<bool> rdsSet;
-
   /// The status of the resource.
   final pulumi.Input<String> status;
 
@@ -85,3 +77,4 @@ class GetInstancesInstance {
     );
   }
 }
+

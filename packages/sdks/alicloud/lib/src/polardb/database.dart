@@ -303,29 +303,22 @@ import 'database_state.dart';
 class Database extends pulumi.CustomResource {
   /// The name of the account that is authorized to access the database. **NOTE:** From version 1.265.0, `account_name` can be modified. However, only PolarDB for PostgreSQL (Compatible with Oracle) and PolarDB for PostgreSQL cluster can be modified.
   late final pulumi.Output<String?> accountName;
-
   /// The character set that is used by the cluster. For more information, see [Character set tables](https://www.alibabacloud.com/help/en/doc-detail/99716.html).
   late final pulumi.Output<String> characterSetName;
-
   /// The language that defines the collation rules in the database.
   /// &gt; **NOTE:** The locale must be compatible with the character set set set by `character_set_name`. This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
   late final pulumi.Output<String?> collate;
-
   /// The language that indicates the character type of the database.
   /// &gt; **NOTE:** The language must be compatible with the character set that is specified by `character_set_name`. The value that you specify must be the same as the value of `collate`. This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
   late final pulumi.Output<String?> ctype;
-
   /// The ID of cluster.
   late final pulumi.Output<String> dbClusterId;
-
   /// The description of the database. The description must meet the following requirements:
   /// - It cannot start with `http://` or `https://`.
   /// - It must be 2 to 256 characters in length.
   late final pulumi.Output<String> dbDescription;
-
   /// The name of the database. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
   late final pulumi.Output<String> dbName;
-
   /// (Available since v1.265.0) The state of the database.
   late final pulumi.Output<String> status;
 
@@ -338,11 +331,11 @@ class Database extends pulumi.CustomResource {
     DatabaseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:polardb/database:Database',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:polardb/database:Database',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountName = registerOutput<String?>('accountName');
     characterSetName = registerOutput<String>('characterSetName');
     collate = registerOutput<String?>('collate');
@@ -371,11 +364,11 @@ class Database extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:polardb/database:Database',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:polardb/database:Database',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountName = registerOutput<String?>('accountName');
     characterSetName = registerOutput<String>('characterSetName');
     collate = registerOutput<String?>('collate');

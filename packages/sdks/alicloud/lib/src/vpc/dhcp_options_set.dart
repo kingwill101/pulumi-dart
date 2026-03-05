@@ -166,44 +166,33 @@ import 'dhcp_options_set_state.dart';
 class DhcpOptionsSet extends pulumi.CustomResource {
   /// Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc. See `associate_vpcs` below.
   late final pulumi.Output<List<Map<String, dynamic>>> associateVpcs;
-
   /// The description can be blank or contain 1 to 256 characters. It must start with a letter or Chinese character but cannot start with http:// or https://.
   late final pulumi.Output<String?> dhcpOptionsSetDescription;
-
   /// The name of the DHCP options set.
   /// The name must be 1 to 128 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
   late final pulumi.Output<String?> dhcpOptionsSetName;
-
   /// The root domain. For example, you can set the value to example.com.
   /// After a DHCP options set is associated with a virtual private cloud (VPC), the root domain in the DHCP options set is automatically synchronized with the ECS instances in the VPC.
   late final pulumi.Output<String?> domainName;
-
   /// The IP address of the DNS server. You can enter at most four DNS server IP addresses. Separate IP addresses with commas (,).
   /// If no IP address is specified, the Elastic Compute Service (ECS) instance uses the IP addresses 100.100.2.136 and 100.100.2.138, which are provided by Alibaba Cloud by default.
   late final pulumi.Output<String?> domainNameServers;
-
   /// Whether to PreCheck only this request, value:
   late final pulumi.Output<bool?> dryRun;
-
   /// The lease time of the IPv6 DHCP option set.
   /// When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.
   /// When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 1d.
   late final pulumi.Output<String> ipv6LeaseTime;
-
   /// The lease time of the IPv4 addresses for the DHCP options set.
   /// If you use hours as the unit, valid values are 24h to 1176h and 87600h to 175200h. Default value: 87600h.
   /// If you use days as the unit, valid values are 1d to 49d and 3650d to 7300d. Default value: 3650d.
   late final pulumi.Output<String> leaseTime;
-
   /// The ID of the account to which the DHCP options set belongs.
   late final pulumi.Output<int> ownerId;
-
   /// The ID of the resource group to which the DHCP options set belongs.
   late final pulumi.Output<String> resourceGroupId;
-
   /// The status of the resource.
   late final pulumi.Output<String> status;
-
   /// Tags of the current resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -216,15 +205,13 @@ class DhcpOptionsSet extends pulumi.CustomResource {
     DhcpOptionsSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/dhcpOptionsSet:DhcpOptionsSet',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpc/dhcpOptionsSet:DhcpOptionsSet',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     associateVpcs = registerOutput<List<Map<String, dynamic>>>('associateVpcs');
-    dhcpOptionsSetDescription = registerOutput<String?>(
-      'dhcpOptionsSetDescription',
-    );
+    dhcpOptionsSetDescription = registerOutput<String?>('dhcpOptionsSetDescription');
     dhcpOptionsSetName = registerOutput<String?>('dhcpOptionsSetName');
     domainName = registerOutput<String?>('domainName');
     domainNameServers = registerOutput<String?>('domainNameServers');
@@ -255,15 +242,13 @@ class DhcpOptionsSet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/dhcpOptionsSet:DhcpOptionsSet',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpc/dhcpOptionsSet:DhcpOptionsSet',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     associateVpcs = registerOutput<List<Map<String, dynamic>>>('associateVpcs');
-    dhcpOptionsSetDescription = registerOutput<String?>(
-      'dhcpOptionsSetDescription',
-    );
+    dhcpOptionsSetDescription = registerOutput<String?>('dhcpOptionsSetDescription');
     dhcpOptionsSetName = registerOutput<String?>('dhcpOptionsSetName');
     domainName = registerOutput<String?>('domainName');
     domainNameServers = registerOutput<String?>('domainNameServers');

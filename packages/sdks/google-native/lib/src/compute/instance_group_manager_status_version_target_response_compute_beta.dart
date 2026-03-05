@@ -13,14 +13,15 @@ class InstanceGroupManagerStatusVersionTargetResponseComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'isReached': isReached};
+    return <String, dynamic>{
+      'isReached': isReached,
+    };
   }
 
-  factory InstanceGroupManagerStatusVersionTargetResponseComputeBeta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InstanceGroupManagerStatusVersionTargetResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerStatusVersionTargetResponseComputeBeta(
       isReached: pulumi.Input.fromValue(map['isReached'] as bool),
     );
   }
 }
+

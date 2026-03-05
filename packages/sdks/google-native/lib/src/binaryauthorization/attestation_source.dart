@@ -9,22 +9,20 @@ class AttestationSource {
 
   /// Creates a new [AttestationSource].
   /// [containerAnalysisAttestationProjects] The IDs of the GCP projects storing the SLSA attestations as Container Analysis Occurrences.
-  AttestationSource({this.containerAnalysisAttestationProjects});
+  AttestationSource({
+    this.containerAnalysisAttestationProjects,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'containerAnalysisAttestationProjects':
-          ?containerAnalysisAttestationProjects,
+      'containerAnalysisAttestationProjects': ?containerAnalysisAttestationProjects,
     };
   }
 
   factory AttestationSource.fromMap(Map<String, dynamic> map) {
     return AttestationSource(
-      containerAnalysisAttestationProjects: (() {
-        final guardedValue = map['containerAnalysisAttestationProjects'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      containerAnalysisAttestationProjects: (() { final guardedValue = map['containerAnalysisAttestationProjects']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

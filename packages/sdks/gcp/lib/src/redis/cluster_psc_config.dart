@@ -10,10 +10,14 @@ class ClusterPscConfig {
 
   /// Creates a new [ClusterPscConfig].
   /// [network] Required. The consumer network where the network address of
-  ClusterPscConfig({required this.network});
+  ClusterPscConfig({
+    required this.network,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'network': network};
+    return <String, dynamic>{
+      'network': network,
+    };
   }
 
   factory ClusterPscConfig.fromMap(Map<String, dynamic> map) {
@@ -22,3 +26,4 @@ class ClusterPscConfig {
     );
   }
 }
+

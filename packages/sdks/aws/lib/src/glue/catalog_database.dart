@@ -242,38 +242,26 @@ import 'catalog_database_target_database.dart';
 class CatalogDatabase extends pulumi.CustomResource {
   /// ARN of the Glue Catalog Database.
   late final pulumi.Output<String> arn;
-
   /// ID of the Glue Catalog to create the database in. If omitted, this defaults to the AWS Account ID.
   late final pulumi.Output<String> catalogId;
-
   /// Creates a set of default permissions on the table for principals. See `create_table_default_permission` below.
-  late final pulumi.Output<List<Map<String, dynamic>>>
-  createTableDefaultPermissions;
-
+  late final pulumi.Output<List<Map<String, dynamic>>> createTableDefaultPermissions;
   /// Description of the database.
   late final pulumi.Output<String?> description;
-
   /// Configuration block that references an entity outside the AWS Glue Data Catalog. See `federated_database` below.
   late final pulumi.Output<CatalogDatabaseFederatedDatabase?> federatedDatabase;
-
   /// Location of the database (for example, an HDFS path).
   late final pulumi.Output<String> locationUri;
-
   /// Name of the database. The acceptable characters are lowercase letters, numbers, and the underscore character.
   late final pulumi.Output<String> name;
-
   /// List of key-value pairs that define parameters and properties of the database.
   late final pulumi.Output<Map<String, String>?> parameters;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// Configuration block for a target database for resource linking. See `target_database` below.
   late final pulumi.Output<CatalogDatabaseTargetDatabase?> targetDatabase;
 
@@ -286,43 +274,23 @@ class CatalogDatabase extends pulumi.CustomResource {
     CatalogDatabaseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:glue/catalogDatabase:CatalogDatabase',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:glue/catalogDatabase:CatalogDatabase',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     catalogId = registerOutput<String>('catalogId');
-    createTableDefaultPermissions = registerOutput<List<Map<String, dynamic>>>(
-      'createTableDefaultPermissions',
-    );
+    createTableDefaultPermissions = registerOutput<List<Map<String, dynamic>>>('createTableDefaultPermissions');
     description = registerOutput<String?>('description');
-    federatedDatabase = registerOutput<CatalogDatabaseFederatedDatabase?>(
-      'federatedDatabase',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CatalogDatabaseFederatedDatabase.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    federatedDatabase = registerOutput<CatalogDatabaseFederatedDatabase?>('federatedDatabase', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CatalogDatabaseFederatedDatabase.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     locationUri = registerOutput<String>('locationUri');
     this.name = registerOutput<String>('name');
     parameters = registerOutput<Map<String, String>?>('parameters');
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    targetDatabase = registerOutput<CatalogDatabaseTargetDatabase?>(
-      'targetDatabase',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CatalogDatabaseTargetDatabase.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    targetDatabase = registerOutput<CatalogDatabaseTargetDatabase?>('targetDatabase', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CatalogDatabaseTargetDatabase.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [CatalogDatabase] resource's state with the given [name] and [id].
@@ -343,42 +311,22 @@ class CatalogDatabase extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:glue/catalogDatabase:CatalogDatabase',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:glue/catalogDatabase:CatalogDatabase',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     catalogId = registerOutput<String>('catalogId');
-    createTableDefaultPermissions = registerOutput<List<Map<String, dynamic>>>(
-      'createTableDefaultPermissions',
-    );
+    createTableDefaultPermissions = registerOutput<List<Map<String, dynamic>>>('createTableDefaultPermissions');
     description = registerOutput<String?>('description');
-    federatedDatabase = registerOutput<CatalogDatabaseFederatedDatabase?>(
-      'federatedDatabase',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CatalogDatabaseFederatedDatabase.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    federatedDatabase = registerOutput<CatalogDatabaseFederatedDatabase?>('federatedDatabase', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CatalogDatabaseFederatedDatabase.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     locationUri = registerOutput<String>('locationUri');
     this.name = registerOutput<String>('name');
     parameters = registerOutput<Map<String, String>?>('parameters');
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    targetDatabase = registerOutput<CatalogDatabaseTargetDatabase?>(
-      'targetDatabase',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CatalogDatabaseTargetDatabase.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    targetDatabase = registerOutput<CatalogDatabaseTargetDatabase?>('targetDatabase', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CatalogDatabaseTargetDatabase.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

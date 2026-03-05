@@ -266,33 +266,24 @@ import 'update_run_strategy_response.dart';
 class UpdateRun extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
   late final pulumi.Output<String> eTag;
-
   /// The update to be applied to all clusters in the UpdateRun. The managedClusterUpdate can be modified until the run is started.
   late final pulumi.Output<ManagedClusterUpdateResponse> managedClusterUpdate;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The provisioning state of the UpdateRun resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The status of the UpdateRun.
   late final pulumi.Output<UpdateRunStatusResponse> status;
-
   /// The strategy defines the order in which the clusters will be updated.
   /// If not set, all members will be updated sequentially. The UpdateRun status will show a single UpdateStage and a single UpdateGroup targeting all members.
   /// The strategy of the UpdateRun can be modified until the run is started.
   late final pulumi.Output<UpdateRunStrategyResponse?> strategy;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// The resource id of the FleetUpdateStrategy resource to reference.
   ///
   /// When creating a new run, there are three ways to define a strategy for the run:
@@ -316,55 +307,19 @@ class UpdateRun extends pulumi.CustomResource {
     UpdateRunArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:containerservice:UpdateRun',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:containerservice:UpdateRun',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     eTag = registerOutput<String>('eTag');
-    managedClusterUpdate = registerOutput<ManagedClusterUpdateResponse>(
-      'managedClusterUpdate',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ManagedClusterUpdateResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    managedClusterUpdate = registerOutput<ManagedClusterUpdateResponse>('managedClusterUpdate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedClusterUpdateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    status = registerOutput<UpdateRunStatusResponse>(
-      'status',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return UpdateRunStatusResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    strategy = registerOutput<UpdateRunStrategyResponse?>(
-      'strategy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return UpdateRunStrategyResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    status = registerOutput<UpdateRunStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UpdateRunStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    strategy = registerOutput<UpdateRunStrategyResponse?>('strategy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UpdateRunStrategyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     updateStrategyId = registerOutput<String?>('updateStrategyId');
   }

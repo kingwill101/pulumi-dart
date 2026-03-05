@@ -1411,52 +1411,36 @@ import 'system_data_response.dart';
 class PrivateRecordSet extends pulumi.CustomResource {
   /// The list of A records in the record set.
   late final pulumi.Output<List<Map<String, dynamic>>?> aRecords;
-
   /// The list of AAAA records in the record set.
   late final pulumi.Output<List<Map<String, dynamic>>?> aaaaRecords;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The CNAME record in the record set.
   late final pulumi.Output<CnameRecordResponse?> cnameRecord;
-
   /// The ETag of the record set.
   late final pulumi.Output<String?> etag;
-
   /// Fully qualified domain name of the record set.
   late final pulumi.Output<String> fqdn;
-
   /// Is the record set auto-registered in the Private DNS zone through a virtual network link?
   late final pulumi.Output<bool> isAutoRegistered;
-
   /// The metadata attached to the record set.
   late final pulumi.Output<Map<String, String>?> metadata;
-
   /// The list of MX records in the record set.
   late final pulumi.Output<List<Map<String, dynamic>>?> mxRecords;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The list of PTR records in the record set.
   late final pulumi.Output<List<Map<String, dynamic>>?> ptrRecords;
-
   /// The SOA record in the record set.
   late final pulumi.Output<SoaRecordResponse?> soaRecord;
-
   /// The list of SRV records in the record set.
   late final pulumi.Output<List<Map<String, dynamic>>?> srvRecords;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The TTL (time-to-live) of the records in the record set.
   late final pulumi.Output<double?> ttl;
-
   /// The list of TXT records in the record set.
   late final pulumi.Output<List<Map<String, dynamic>>?> txtRecords;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -1469,24 +1453,15 @@ class PrivateRecordSet extends pulumi.CustomResource {
     PrivateRecordSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:privatedns:PrivateRecordSet',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:privatedns:PrivateRecordSet',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aRecords = registerOutput<List<Map<String, dynamic>>?>('aRecords');
     aaaaRecords = registerOutput<List<Map<String, dynamic>>?>('aaaaRecords');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    cnameRecord = registerOutput<CnameRecordResponse?>(
-      'cnameRecord',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CnameRecordResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    cnameRecord = registerOutput<CnameRecordResponse?>('cnameRecord', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CnameRecordResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String?>('etag');
     fqdn = registerOutput<String>('fqdn');
     isAutoRegistered = registerOutput<bool>('isAutoRegistered');
@@ -1494,27 +1469,9 @@ class PrivateRecordSet extends pulumi.CustomResource {
     mxRecords = registerOutput<List<Map<String, dynamic>>?>('mxRecords');
     this.name = registerOutput<String>('name');
     ptrRecords = registerOutput<List<Map<String, dynamic>>?>('ptrRecords');
-    soaRecord = registerOutput<SoaRecordResponse?>(
-      'soaRecord',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SoaRecordResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    soaRecord = registerOutput<SoaRecordResponse?>('soaRecord', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SoaRecordResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     srvRecords = registerOutput<List<Map<String, dynamic>>?>('srvRecords');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ttl = registerOutput<double?>('ttl');
     txtRecords = registerOutput<List<Map<String, dynamic>>?>('txtRecords');
     type = registerOutput<String>('type');

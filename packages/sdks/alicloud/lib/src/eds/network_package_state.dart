@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkPackageState {
   /// The bandwidth of package public network bandwidth peak. Valid values: 1~200. Unit:Mbps.
   final pulumi.Input<int>? bandwidth;
-
   /// The internet charge type  of  package.
   final pulumi.Input<String>? internetChargeType;
-
   /// The ID of office site.
   final pulumi.Input<String>? officeSiteId;
-
   /// The status of network package. Valid values: `Creating`, `InUse`, `Releasing`,`Released`.
   final pulumi.Input<String>? status;
 
@@ -39,26 +36,11 @@ class NetworkPackageState {
 
   factory NetworkPackageState.fromMap(Map<String, dynamic> map) {
     return NetworkPackageState(
-      bandwidth: (() {
-        final guardedValue = map['bandwidth'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      internetChargeType: (() {
-        final guardedValue = map['internetChargeType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      officeSiteId: (() {
-        final guardedValue = map['officeSiteId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      bandwidth: (() { final guardedValue = map['bandwidth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      internetChargeType: (() { final guardedValue = map['internetChargeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      officeSiteId: (() { final guardedValue = map['officeSiteId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -6,15 +6,10 @@ import 'domain_devices_disk_source_reservations_source_file_sec_label.dart';
 class DomainDevicesDiskSourceReservationsSourceFile {
   /// Specifies if data should be appended to the file used as a source.
   final pulumi.Input<String>? append;
-
   /// Sets the file path for the RNG source in the EGD backend.
   final pulumi.Input<String> path;
-
   /// Configures security label settings for the file source in the EGD backend.
-  final pulumi.Input<
-    List<DomainDevicesDiskSourceReservationsSourceFileSecLabel>
-  >?
-  secLabels;
+  final pulumi.Input<List<DomainDevicesDiskSourceReservationsSourceFileSecLabel>>? secLabels;
 
   /// Creates a new [DomainDevicesDiskSourceReservationsSourceFile].
   /// [append] Specifies if data should be appended to the file used as a source.
@@ -30,46 +25,16 @@ class DomainDevicesDiskSourceReservationsSourceFile {
     return <String, dynamic>{
       'append': ?append,
       'path': path,
-      'secLabels':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<DomainDevicesDiskSourceReservationsSourceFileSecLabel>,
-            List<Map<String, dynamic>>
-          >(
-            secLabels,
-            (value) =>
-                pulumi.Input.encodeList<
-                  DomainDevicesDiskSourceReservationsSourceFileSecLabel,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'secLabels': ?pulumi.Input.mapOptionalInputValue<List<DomainDevicesDiskSourceReservationsSourceFileSecLabel>, List<Map<String, dynamic>>>(secLabels, (value) => pulumi.Input.encodeList<DomainDevicesDiskSourceReservationsSourceFileSecLabel, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory DomainDevicesDiskSourceReservationsSourceFile.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDevicesDiskSourceReservationsSourceFile.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskSourceReservationsSourceFile(
-      append: (() {
-        final guardedValue = map['append'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      append: (() { final guardedValue = map['append']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       path: pulumi.Input.fromValue(map['path'] as String),
-      secLabels: (() {
-        final guardedValue = map['secLabels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            DomainDevicesDiskSourceReservationsSourceFileSecLabel
-          >(
-            guardedValue,
-            (value) =>
-                DomainDevicesDiskSourceReservationsSourceFileSecLabel.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
+      secLabels: (() { final guardedValue = map['secLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DomainDevicesDiskSourceReservationsSourceFileSecLabel>(guardedValue, (value) => DomainDevicesDiskSourceReservationsSourceFileSecLabel.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

@@ -12,17 +12,13 @@ enum EnterpriseCrmEventbusProtoFailurePolicyRetryStrategy {
   const EnterpriseCrmEventbusProtoFailurePolicyRetryStrategy(this.wireValue);
   final String wireValue;
 
-  static EnterpriseCrmEventbusProtoFailurePolicyRetryStrategy fromValue(
-    String value,
-  ) {
-    for (final item
-        in EnterpriseCrmEventbusProtoFailurePolicyRetryStrategy.values) {
+  static EnterpriseCrmEventbusProtoFailurePolicyRetryStrategy fromValue(String value) {
+    for (final item in EnterpriseCrmEventbusProtoFailurePolicyRetryStrategy.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown EnterpriseCrmEventbusProtoFailurePolicyRetryStrategy value: $value',
-    );
+    throw ArgumentError('Unknown EnterpriseCrmEventbusProtoFailurePolicyRetryStrategy value: $value');
   }
 }
+

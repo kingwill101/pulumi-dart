@@ -6,13 +6,10 @@ import 'get_job_template_template_container_env_value_source.dart';
 class GetJobTemplateTemplateContainerEnv {
   /// The name of the Cloud Run v2 Job.
   final pulumi.Input<String> name;
-
   /// Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
   final pulumi.Input<String> value;
-
   /// Source for the environment variable's value.
-  final pulumi.Input<List<GetJobTemplateTemplateContainerEnvValueSource>>
-  valueSources;
+  final pulumi.Input<List<GetJobTemplateTemplateContainerEnvValueSource>> valueSources;
 
   /// Creates a new [GetJobTemplateTemplateContainerEnv].
   /// [name] The name of the Cloud Run v2 Job.
@@ -28,18 +25,7 @@ class GetJobTemplateTemplateContainerEnv {
     return <String, dynamic>{
       'name': name,
       'value': value,
-      'valueSources':
-          pulumi.Input.mapInputValue<
-            List<GetJobTemplateTemplateContainerEnvValueSource>,
-            List<Map<String, dynamic>>
-          >(
-            valueSources,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetJobTemplateTemplateContainerEnvValueSource,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'valueSources': pulumi.Input.mapInputValue<List<GetJobTemplateTemplateContainerEnvValueSource>, List<Map<String, dynamic>>>(valueSources, (value) => pulumi.Input.encodeList<GetJobTemplateTemplateContainerEnvValueSource, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
@@ -47,14 +33,8 @@ class GetJobTemplateTemplateContainerEnv {
     return GetJobTemplateTemplateContainerEnv(
       name: pulumi.Input.fromValue(map['name'] as String),
       value: pulumi.Input.fromValue(map['value'] as String),
-      valueSources: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetJobTemplateTemplateContainerEnvValueSource>(
-          map['valueSources']!,
-          (value) => GetJobTemplateTemplateContainerEnvValueSource.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      valueSources: pulumi.Input.fromValue(pulumi.Input.decodeList<GetJobTemplateTemplateContainerEnvValueSource>(map['valueSources']!, (value) => GetJobTemplateTemplateContainerEnvValueSource.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

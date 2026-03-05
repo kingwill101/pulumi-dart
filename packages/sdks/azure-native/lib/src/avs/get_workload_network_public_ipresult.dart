@@ -6,28 +6,20 @@ import 'system_data_response.dart';
 class GetWorkloadNetworkPublicIPResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Display name of the Public IP Block.
   final String? displayName;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// The name of the resource
   final String name;
-
   /// Number of Public IPs requested.
   final double? numberOfPublicIPs;
-
   /// The provisioning state
   final String provisioningState;
-
   /// CIDR Block of the Public IP Block.
   final String publicIPBlock;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -70,24 +62,15 @@ class GetWorkloadNetworkPublicIPResult {
   factory GetWorkloadNetworkPublicIPResult.fromMap(Map<String, dynamic> map) {
     return GetWorkloadNetworkPublicIPResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       name: map['name'] as String,
-      numberOfPublicIPs: (() {
-        final guardedValue = map['numberOfPublicIPs'];
-        if (guardedValue == null) return null;
-        return guardedValue as double;
-      })(),
+      numberOfPublicIPs: (() { final guardedValue = map['numberOfPublicIPs']; if (guardedValue == null) return null; return guardedValue as double; })(),
       provisioningState: map['provisioningState'] as String,
       publicIPBlock: map['publicIPBlock'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

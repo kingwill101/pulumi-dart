@@ -10,10 +10,14 @@ class ManagedCertificateParameters {
 
   /// Creates a new [ManagedCertificateParameters].
   /// [type] The type of the secret resource.
-  ManagedCertificateParameters({required this.type});
+  ManagedCertificateParameters({
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': type};
+    return <String, dynamic>{
+      'type': type,
+    };
   }
 
   factory ManagedCertificateParameters.fromMap(Map<String, dynamic> map) {
@@ -22,3 +26,4 @@ class ManagedCertificateParameters {
     );
   }
 }
+

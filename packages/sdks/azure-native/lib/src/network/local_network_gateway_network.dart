@@ -173,37 +173,26 @@ import 'local_network_gateway_args.dart';
 class LocalNetworkGatewayNetwork extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Local network gateway's BGP speaker settings.
   late final pulumi.Output<BgpSettingsResponse?> bgpSettings;
-
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
-
   /// FQDN of local network gateway.
   late final pulumi.Output<String?> fqdn;
-
   /// IP address of local network gateway.
   late final pulumi.Output<String?> gatewayIpAddress;
-
   /// Local network site address space.
   late final pulumi.Output<AddressSpaceResponse?> localNetworkAddressSpace;
-
   /// Resource location.
   late final pulumi.Output<String?> location;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// The provisioning state of the local network gateway resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The resource GUID property of the local network gateway resource.
   late final pulumi.Output<String> resourceGuid;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -216,35 +205,17 @@ class LocalNetworkGatewayNetwork extends pulumi.CustomResource {
     LocalNetworkGatewayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:network:LocalNetworkGateway',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:network:LocalNetworkGateway',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    bgpSettings = registerOutput<BgpSettingsResponse?>(
-      'bgpSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BgpSettingsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    bgpSettings = registerOutput<BgpSettingsResponse?>('bgpSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BgpSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     fqdn = registerOutput<String?>('fqdn');
     gatewayIpAddress = registerOutput<String?>('gatewayIpAddress');
-    localNetworkAddressSpace = registerOutput<AddressSpaceResponse?>(
-      'localNetworkAddressSpace',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AddressSpaceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    localNetworkAddressSpace = registerOutput<AddressSpaceResponse?>('localNetworkAddressSpace', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AddressSpaceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');

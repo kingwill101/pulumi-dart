@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPolicyDefinitionVersionAtManagementGroupArgs {
   /// The name of the management group. The name is case insensitive.
   final pulumi.Input<String> managementGroupName;
-
   /// The name of the policy definition.
   final pulumi.Input<String> policyDefinitionName;
-
   /// The policy definition version.  The format is x.y.z where x is the major version number, y is the minor version number, and z is the patch number
   final pulumi.Input<String> policyDefinitionVersion;
 
@@ -34,19 +32,12 @@ class GetPolicyDefinitionVersionAtManagementGroupArgs {
     };
   }
 
-  factory GetPolicyDefinitionVersionAtManagementGroupArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetPolicyDefinitionVersionAtManagementGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetPolicyDefinitionVersionAtManagementGroupArgs(
-      managementGroupName: pulumi.Input.fromValue(
-        map['managementGroupName'] as String,
-      ),
-      policyDefinitionName: pulumi.Input.fromValue(
-        map['policyDefinitionName'] as String,
-      ),
-      policyDefinitionVersion: pulumi.Input.fromValue(
-        map['policyDefinitionVersion'] as String,
-      ),
+      managementGroupName: pulumi.Input.fromValue(map['managementGroupName'] as String),
+      policyDefinitionName: pulumi.Input.fromValue(map['policyDefinitionName'] as String),
+      policyDefinitionVersion: pulumi.Input.fromValue(map['policyDefinitionVersion'] as String),
     );
   }
 }
+

@@ -169,26 +169,19 @@ import 'custom_action_type_state.dart';
 class CustomActionType extends pulumi.CustomResource {
   /// The action ARN.
   late final pulumi.Output<String> arn;
-
   /// The category of the custom action. Valid values: `Source`, `Build`, `Deploy`, `Test`, `Invoke`, `Approval`
   late final pulumi.Output<String> category;
-
   /// The configuration properties for the custom action. Max 10 items.
   late final pulumi.Output<List<Map<String, dynamic>>?> configurationProperties;
-  late final pulumi.Output<CustomActionTypeInputArtifactDetails>
-  inputArtifactDetails;
-  late final pulumi.Output<CustomActionTypeOutputArtifactDetails>
-  outputArtifactDetails;
-
+  late final pulumi.Output<CustomActionTypeInputArtifactDetails> inputArtifactDetails;
+  late final pulumi.Output<CustomActionTypeOutputArtifactDetails> outputArtifactDetails;
   /// The creator of the action being called.
   late final pulumi.Output<String> owner;
   late final pulumi.Output<String> providerName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   late final pulumi.Output<CustomActionTypeSettings?> settings;
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<String> version;
@@ -202,50 +195,20 @@ class CustomActionType extends pulumi.CustomResource {
     CustomActionTypeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:codepipeline/customActionType:CustomActionType',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:codepipeline/customActionType:CustomActionType',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     category = registerOutput<String>('category');
-    configurationProperties = registerOutput<List<Map<String, dynamic>>?>(
-      'configurationProperties',
-    );
-    inputArtifactDetails = registerOutput<CustomActionTypeInputArtifactDetails>(
-      'inputArtifactDetails',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CustomActionTypeInputArtifactDetails.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    outputArtifactDetails =
-        registerOutput<CustomActionTypeOutputArtifactDetails>(
-          'outputArtifactDetails',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return CustomActionTypeOutputArtifactDetails.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    configurationProperties = registerOutput<List<Map<String, dynamic>>?>('configurationProperties');
+    inputArtifactDetails = registerOutput<CustomActionTypeInputArtifactDetails>('inputArtifactDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomActionTypeInputArtifactDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    outputArtifactDetails = registerOutput<CustomActionTypeOutputArtifactDetails>('outputArtifactDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomActionTypeOutputArtifactDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     owner = registerOutput<String>('owner');
     providerName = registerOutput<String>('providerName');
     region = registerOutput<String>('region');
-    settings = registerOutput<CustomActionTypeSettings?>(
-      'settings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CustomActionTypeSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    settings = registerOutput<CustomActionTypeSettings?>('settings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomActionTypeSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     version = registerOutput<String>('version');
@@ -269,50 +232,20 @@ class CustomActionType extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:codepipeline/customActionType:CustomActionType',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:codepipeline/customActionType:CustomActionType',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     category = registerOutput<String>('category');
-    configurationProperties = registerOutput<List<Map<String, dynamic>>?>(
-      'configurationProperties',
-    );
-    inputArtifactDetails = registerOutput<CustomActionTypeInputArtifactDetails>(
-      'inputArtifactDetails',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CustomActionTypeInputArtifactDetails.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    outputArtifactDetails =
-        registerOutput<CustomActionTypeOutputArtifactDetails>(
-          'outputArtifactDetails',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return CustomActionTypeOutputArtifactDetails.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    configurationProperties = registerOutput<List<Map<String, dynamic>>?>('configurationProperties');
+    inputArtifactDetails = registerOutput<CustomActionTypeInputArtifactDetails>('inputArtifactDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomActionTypeInputArtifactDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    outputArtifactDetails = registerOutput<CustomActionTypeOutputArtifactDetails>('outputArtifactDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomActionTypeOutputArtifactDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     owner = registerOutput<String>('owner');
     providerName = registerOutput<String>('providerName');
     region = registerOutput<String>('region');
-    settings = registerOutput<CustomActionTypeSettings?>(
-      'settings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CustomActionTypeSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    settings = registerOutput<CustomActionTypeSettings?>('settings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomActionTypeSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     version = registerOutput<String>('version');

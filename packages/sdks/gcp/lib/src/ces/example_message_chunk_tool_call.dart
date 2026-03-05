@@ -6,20 +6,16 @@ import 'example_message_chunk_tool_call_toolset_tool.dart';
 class ExampleMessageChunkToolCall {
   /// The input parameters and values for the tool in JSON object format.
   final pulumi.Input<String>? args;
-
   /// (Output)
   /// Display name of the tool.
   final pulumi.Input<String>? displayName;
-
   /// The unique identifier of the tool call. If populated, the client should
   /// return the execution result with the matching ID in
   /// ToolResponse.
   final pulumi.Input<String>? id;
-
   /// The name of the tool to execute.
   /// Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}`
   final pulumi.Input<String>? tool;
-
   /// A tool that is created from a toolset.
   /// Structure is documented below.
   final pulumi.Input<ExampleMessageChunkToolCallToolsetTool>? toolsetTool;
@@ -44,45 +40,18 @@ class ExampleMessageChunkToolCall {
       'displayName': ?displayName,
       'id': ?id,
       'tool': ?tool,
-      'toolsetTool':
-          ?pulumi.Input.mapOptionalInputValue<
-            ExampleMessageChunkToolCallToolsetTool,
-            Map<String, dynamic>
-          >(toolsetTool, (value) => value.toMap()),
+      'toolsetTool': ?pulumi.Input.mapOptionalInputValue<ExampleMessageChunkToolCallToolsetTool, Map<String, dynamic>>(toolsetTool, (value) => value.toMap()),
     };
   }
 
   factory ExampleMessageChunkToolCall.fromMap(Map<String, dynamic> map) {
     return ExampleMessageChunkToolCall(
-      args: (() {
-        final guardedValue = map['args'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tool: (() {
-        final guardedValue = map['tool'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      toolsetTool: (() {
-        final guardedValue = map['toolsetTool'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ExampleMessageChunkToolCallToolsetTool.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      args: (() { final guardedValue = map['args']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tool: (() { final guardedValue = map['tool']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      toolsetTool: (() { final guardedValue = map['toolsetTool']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExampleMessageChunkToolCallToolsetTool.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

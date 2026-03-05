@@ -10,27 +10,20 @@ class GrafeasV1beta1PackageDetailsResponse {
 
   /// Creates a new [GrafeasV1beta1PackageDetailsResponse].
   /// [installation] Where the package was installed.
-  GrafeasV1beta1PackageDetailsResponse({required this.installation});
+  GrafeasV1beta1PackageDetailsResponse({
+    required this.installation,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'installation':
-          pulumi.Input.mapInputValue<
-            InstallationResponseContaineranalysisV1beta1,
-            Map<String, dynamic>
-          >(installation, (value) => value.toMap()),
+      'installation': pulumi.Input.mapInputValue<InstallationResponseContaineranalysisV1beta1, Map<String, dynamic>>(installation, (value) => value.toMap()),
     };
   }
 
-  factory GrafeasV1beta1PackageDetailsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GrafeasV1beta1PackageDetailsResponse.fromMap(Map<String, dynamic> map) {
     return GrafeasV1beta1PackageDetailsResponse(
-      installation: pulumi.Input.fromValue(
-        InstallationResponseContaineranalysisV1beta1.fromMap(
-          (map['installation']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      installation: pulumi.Input.fromValue(InstallationResponseContaineranalysisV1beta1.fromMap((map['installation']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

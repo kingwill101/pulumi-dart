@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SqlServerAuditConfigResponse {
   /// The name of the destination bucket (e.g., gs://mybucket).
   final pulumi.Input<String> bucket;
-
   /// This is always sql#sqlServerAuditConfig
   final pulumi.Input<String> kind;
-
   /// How long to keep generated audit files.
   final pulumi.Input<String> retentionInterval;
-
   /// How often to upload generated audit files.
   final pulumi.Input<String> uploadInterval;
 
@@ -41,10 +38,9 @@ class SqlServerAuditConfigResponse {
     return SqlServerAuditConfigResponse(
       bucket: pulumi.Input.fromValue(map['bucket'] as String),
       kind: pulumi.Input.fromValue(map['kind'] as String),
-      retentionInterval: pulumi.Input.fromValue(
-        map['retentionInterval'] as String,
-      ),
+      retentionInterval: pulumi.Input.fromValue(map['retentionInterval'] as String),
       uploadInterval: pulumi.Input.fromValue(map['uploadInterval'] as String),
     );
   }
 }
+

@@ -134,22 +134,16 @@ import 'network_security_perimeter_profile_args.dart';
 class NetworkSecurityPerimeterProfile extends pulumi.CustomResource {
   /// Version number that increases with every update to access rules within the profile.
   late final pulumi.Output<String> accessRulesVersion;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Version number that increases with every update to diagnostic settings within the profile.
   late final pulumi.Output<String> diagnosticSettingsVersion;
-
   /// Resource location.
   late final pulumi.Output<String?> location;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -162,16 +156,14 @@ class NetworkSecurityPerimeterProfile extends pulumi.CustomResource {
     NetworkSecurityPerimeterProfileArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:network:NetworkSecurityPerimeterProfile',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:network:NetworkSecurityPerimeterProfile',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessRulesVersion = registerOutput<String>('accessRulesVersion');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    diagnosticSettingsVersion = registerOutput<String>(
-      'diagnosticSettingsVersion',
-    );
+    diagnosticSettingsVersion = registerOutput<String>('diagnosticSettingsVersion');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     tags = registerOutput<Map<String, String>?>('tags');

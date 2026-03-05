@@ -18,3 +18,4 @@ enum ProfileType {
     throw ArgumentError('Unknown ProfileType value: $value');
   }
 }
+

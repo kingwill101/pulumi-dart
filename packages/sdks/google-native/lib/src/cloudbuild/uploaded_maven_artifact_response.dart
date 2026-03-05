@@ -8,10 +8,8 @@ import 'time_span_response.dart';
 class UploadedMavenArtifactResponse {
   /// Hash types and values of the Maven Artifact.
   final pulumi.Input<FileHashesResponse> fileHashes;
-
   /// Stores timing information for pushing the specified artifact.
   final pulumi.Input<TimeSpanResponse> pushTiming;
-
   /// URI of the uploaded artifact.
   final pulumi.Input<String> uri;
 
@@ -27,33 +25,18 @@ class UploadedMavenArtifactResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fileHashes':
-          pulumi.Input.mapInputValue<FileHashesResponse, Map<String, dynamic>>(
-            fileHashes,
-            (value) => value.toMap(),
-          ),
-      'pushTiming':
-          pulumi.Input.mapInputValue<TimeSpanResponse, Map<String, dynamic>>(
-            pushTiming,
-            (value) => value.toMap(),
-          ),
+      'fileHashes': pulumi.Input.mapInputValue<FileHashesResponse, Map<String, dynamic>>(fileHashes, (value) => value.toMap()),
+      'pushTiming': pulumi.Input.mapInputValue<TimeSpanResponse, Map<String, dynamic>>(pushTiming, (value) => value.toMap()),
       'uri': uri,
     };
   }
 
   factory UploadedMavenArtifactResponse.fromMap(Map<String, dynamic> map) {
     return UploadedMavenArtifactResponse(
-      fileHashes: pulumi.Input.fromValue(
-        FileHashesResponse.fromMap(
-          (map['fileHashes']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      pushTiming: pulumi.Input.fromValue(
-        TimeSpanResponse.fromMap(
-          (map['pushTiming']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      fileHashes: pulumi.Input.fromValue(FileHashesResponse.fromMap((map['fileHashes']! as Map).cast<String, dynamic>())),
+      pushTiming: pulumi.Input.fromValue(TimeSpanResponse.fromMap((map['pushTiming']! as Map).cast<String, dynamic>())),
       uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
+

@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MaintenanceWindow {
   /// Indicates whether custom window is enabled or disabled.
   final pulumi.Input<String>? customWindow;
-
   /// Day of the week to be used for maintenance window.
   final pulumi.Input<int>? dayOfWeek;
-
   /// Start hour to be used for maintenance window.
   final pulumi.Input<int>? startHour;
-
   /// Start minute to be used for maintenance window.
   final pulumi.Input<int>? startMinute;
 
@@ -39,26 +36,11 @@ class MaintenanceWindow {
 
   factory MaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return MaintenanceWindow(
-      customWindow: (() {
-        final guardedValue = map['customWindow'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dayOfWeek: (() {
-        final guardedValue = map['dayOfWeek'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      startHour: (() {
-        final guardedValue = map['startHour'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      startMinute: (() {
-        final guardedValue = map['startMinute'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      customWindow: (() { final guardedValue = map['customWindow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dayOfWeek: (() { final guardedValue = map['dayOfWeek']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      startHour: (() { final guardedValue = map['startHour']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      startMinute: (() { final guardedValue = map['startMinute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

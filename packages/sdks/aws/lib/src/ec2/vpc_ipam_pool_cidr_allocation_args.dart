@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpcIpamPoolCidrAllocationArgs {
   /// The CIDR you want to assign to the pool.
   final pulumi.Input<String>? cidr;
-
   /// The description for the allocation.
   final pulumi.Input<String>? description;
-
   /// Exclude a particular CIDR range from being returned by the pool.
   final pulumi.Input<List<String>>? disallowedCidrs;
-
   /// The ID of the pool to which you want to assign a CIDR.
   final pulumi.Input<String> ipamPoolId;
-
   /// The netmask length of the CIDR you would like to allocate to the IPAM pool. Valid Values: `0-128`.
   final pulumi.Input<int>? netmaskLength;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -54,32 +49,13 @@ class VpcIpamPoolCidrAllocationArgs {
 
   factory VpcIpamPoolCidrAllocationArgs.fromMap(Map<String, dynamic> map) {
     return VpcIpamPoolCidrAllocationArgs(
-      cidr: (() {
-        final guardedValue = map['cidr'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      disallowedCidrs: (() {
-        final guardedValue = map['disallowedCidrs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      cidr: (() { final guardedValue = map['cidr']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      disallowedCidrs: (() { final guardedValue = map['disallowedCidrs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       ipamPoolId: pulumi.Input.fromValue(map['ipamPoolId'] as String),
-      netmaskLength: (() {
-        final guardedValue = map['netmaskLength'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      netmaskLength: (() { final guardedValue = map['netmaskLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

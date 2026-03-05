@@ -9,19 +9,20 @@ class PowerState {
 
   /// Creates a new [PowerState].
   /// [code] Tells whether the cluster is Running or Stopped
-  PowerState({this.code});
+  PowerState({
+    this.code,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'code': ?code};
+    return <String, dynamic>{
+      'code': ?code,
+    };
   }
 
   factory PowerState.fromMap(Map<String, dynamic> map) {
     return PowerState(
-      code: (() {
-        final guardedValue = map['code'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      code: (() { final guardedValue = map['code']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -5,22 +5,16 @@ enum ReservationAffinityConsumeReservationTypeDataprocV1beta2 {
   anyReservation("ANY_RESERVATION"),
   specificReservation("SPECIFIC_RESERVATION");
 
-  const ReservationAffinityConsumeReservationTypeDataprocV1beta2(
-    this.wireValue,
-  );
+  const ReservationAffinityConsumeReservationTypeDataprocV1beta2(this.wireValue);
   final String wireValue;
 
-  static ReservationAffinityConsumeReservationTypeDataprocV1beta2 fromValue(
-    String value,
-  ) {
-    for (final item
-        in ReservationAffinityConsumeReservationTypeDataprocV1beta2.values) {
+  static ReservationAffinityConsumeReservationTypeDataprocV1beta2 fromValue(String value) {
+    for (final item in ReservationAffinityConsumeReservationTypeDataprocV1beta2.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ReservationAffinityConsumeReservationTypeDataprocV1beta2 value: $value',
-    );
+    throw ArgumentError('Unknown ReservationAffinityConsumeReservationTypeDataprocV1beta2 value: $value');
   }
 }
+

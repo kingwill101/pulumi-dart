@@ -19,13 +19,10 @@ class ApplicationTypeVersionsCleanupPolicyResponse {
     };
   }
 
-  factory ApplicationTypeVersionsCleanupPolicyResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApplicationTypeVersionsCleanupPolicyResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationTypeVersionsCleanupPolicyResponse(
-      maxUnusedVersionsToKeep: pulumi.Input.fromValue(
-        map['maxUnusedVersionsToKeep'] as int,
-      ),
+      maxUnusedVersionsToKeep: pulumi.Input.fromValue(map['maxUnusedVersionsToKeep'] as int),
     );
   }
 }
+

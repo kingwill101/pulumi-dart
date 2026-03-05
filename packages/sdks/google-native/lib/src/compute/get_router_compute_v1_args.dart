@@ -31,13 +31,10 @@ class GetRouterComputeV1Args {
 
   factory GetRouterComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetRouterComputeV1Args(
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: pulumi.Input.fromValue(map['region'] as String),
       router: pulumi.Input.fromValue(map['router'] as String),
     );
   }
 }
+

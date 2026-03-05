@@ -12,21 +12,20 @@ class ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading {
 
   /// Creates a new [ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading].
   /// [policy] Possible kernel module loading policies.
-  ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading({this.policy});
+  ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading({
+    this.policy,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'policy': ?policy};
+    return <String, dynamic>{
+      'policy': ?policy,
+    };
   }
 
-  factory ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading.fromMap(Map<String, dynamic> map) {
     return ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading(
-      policy: (() {
-        final guardedValue = map['policy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      policy: (() { final guardedValue = map['policy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

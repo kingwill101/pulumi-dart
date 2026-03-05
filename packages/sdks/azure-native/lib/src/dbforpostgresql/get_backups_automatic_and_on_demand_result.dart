@@ -6,25 +6,18 @@ import 'system_data_response.dart';
 class GetBackupsAutomaticAndOnDemandResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Type of backup.
   final String? backupType;
-
   /// Time(ISO8601 format) at which the backup was completed.
   final String? completedTime;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// The name of the resource
   final String name;
-
   /// Source of the backup.
   final String? source;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -61,32 +54,17 @@ class GetBackupsAutomaticAndOnDemandResult {
     };
   }
 
-  factory GetBackupsAutomaticAndOnDemandResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetBackupsAutomaticAndOnDemandResult.fromMap(Map<String, dynamic> map) {
     return GetBackupsAutomaticAndOnDemandResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      backupType: (() {
-        final guardedValue = map['backupType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      completedTime: (() {
-        final guardedValue = map['completedTime'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      backupType: (() { final guardedValue = map['backupType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      completedTime: (() { final guardedValue = map['completedTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       name: map['name'] as String,
-      source: (() {
-        final guardedValue = map['source'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetUsersUser {
   /// The email of the user email.
   final pulumi.Input<String> email;
-
   /// The Username. The custom setting is composed of lowercase letters, numbers and underscores, and the length is 3~24 characters.
   final pulumi.Input<String> endUserId;
-
   /// The ID of the user id.
   final pulumi.Input<String> id;
-
   /// The phone of the mobile phone number.
   final pulumi.Input<String> phone;
-
   /// The status of the resource.
   final pulumi.Input<String> status;
 
@@ -52,3 +48,4 @@ class GetUsersUser {
     );
   }
 }
+

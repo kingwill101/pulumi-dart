@@ -8,10 +8,14 @@ class NodePoolQueuedProvisioning {
 
   /// Creates a new [NodePoolQueuedProvisioning].
   /// [enabled] Makes nodes obtainable through the [ProvisioningRequest API](https://cloud.google.com/kubernetes-engine/docs/how-to/provisioningrequest) exclusively.
-  NodePoolQueuedProvisioning({required this.enabled});
+  NodePoolQueuedProvisioning({
+    required this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled};
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
   factory NodePoolQueuedProvisioning.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class NodePoolQueuedProvisioning {
     );
   }
 }
+

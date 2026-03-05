@@ -10,10 +10,8 @@ import 'google_cloud_ml_v1_study_config.dart';
 class StudyArgs {
   final pulumi.Input<String>? location;
   final pulumi.Input<String>? project;
-
   /// Configuration of the study.
   final pulumi.Input<GoogleCloudMlV1StudyConfig> studyConfig;
-
   /// Required. The ID to use for the study, which will become the final component of the study's resource name.
   final pulumi.Input<String> studyId;
 
@@ -33,33 +31,18 @@ class StudyArgs {
     return <String, dynamic>{
       'location': ?location,
       'project': ?project,
-      'studyConfig':
-          pulumi.Input.mapInputValue<
-            GoogleCloudMlV1StudyConfig,
-            Map<String, dynamic>
-          >(studyConfig, (value) => value.toMap()),
+      'studyConfig': pulumi.Input.mapInputValue<GoogleCloudMlV1StudyConfig, Map<String, dynamic>>(studyConfig, (value) => value.toMap()),
       'studyId': studyId,
     };
   }
 
   factory StudyArgs.fromMap(Map<String, dynamic> map) {
     return StudyArgs(
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      studyConfig: pulumi.Input.fromValue(
-        GoogleCloudMlV1StudyConfig.fromMap(
-          (map['studyConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      studyConfig: pulumi.Input.fromValue(GoogleCloudMlV1StudyConfig.fromMap((map['studyConfig']! as Map).cast<String, dynamic>())),
       studyId: pulumi.Input.fromValue(map['studyId'] as String),
     );
   }
 }
+

@@ -36,13 +36,10 @@ class GetReleaseArgs {
   factory GetReleaseArgs.fromMap(Map<String, dynamic> map) {
     return GetReleaseArgs(
       channelId: pulumi.Input.fromValue(map['channelId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       releaseId: pulumi.Input.fromValue(map['releaseId'] as String),
       siteId: pulumi.Input.fromValue(map['siteId'] as String),
     );
   }
 }
+

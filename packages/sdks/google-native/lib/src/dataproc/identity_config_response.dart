@@ -9,7 +9,9 @@ class IdentityConfigResponse {
 
   /// Creates a new [IdentityConfigResponse].
   /// [userServiceAccountMapping] Map of user to service account.
-  IdentityConfigResponse({required this.userServiceAccountMapping});
+  IdentityConfigResponse({
+    required this.userServiceAccountMapping,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,9 +21,8 @@ class IdentityConfigResponse {
 
   factory IdentityConfigResponse.fromMap(Map<String, dynamic> map) {
     return IdentityConfigResponse(
-      userServiceAccountMapping: pulumi.Input.fromValue(
-        (map['userServiceAccountMapping'] as Map).cast<String, String>(),
-      ),
+      userServiceAccountMapping: pulumi.Input.fromValue((map['userServiceAccountMapping'] as Map).cast<String, String>()),
     );
   }
 }
+

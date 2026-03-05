@@ -8,10 +8,8 @@ import 'istio_components.dart';
 class IstioServiceMesh {
   /// Istio Service Mesh Certificate Authority (CA) configuration. For now, we only support plugin certificates as described here https://aka.ms/asm-plugin-ca
   final pulumi.Input<IstioCertificateAuthority>? certificateAuthority;
-
   /// Istio components configuration.
   final pulumi.Input<IstioComponents>? components;
-
   /// The list of revisions of the Istio control plane. When an upgrade is not in progress, this holds one value. When canary upgrade is in progress, this can only hold two consecutive values. For more information, see: https://learn.microsoft.com/en-us/azure/aks/istio-upgrade
   final pulumi.Input<List<String>>? revisions;
 
@@ -27,45 +25,18 @@ class IstioServiceMesh {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certificateAuthority':
-          ?pulumi.Input.mapOptionalInputValue<
-            IstioCertificateAuthority,
-            Map<String, dynamic>
-          >(certificateAuthority, (value) => value.toMap()),
-      'components':
-          ?pulumi.Input.mapOptionalInputValue<
-            IstioComponents,
-            Map<String, dynamic>
-          >(components, (value) => value.toMap()),
+      'certificateAuthority': ?pulumi.Input.mapOptionalInputValue<IstioCertificateAuthority, Map<String, dynamic>>(certificateAuthority, (value) => value.toMap()),
+      'components': ?pulumi.Input.mapOptionalInputValue<IstioComponents, Map<String, dynamic>>(components, (value) => value.toMap()),
       'revisions': ?revisions,
     };
   }
 
   factory IstioServiceMesh.fromMap(Map<String, dynamic> map) {
     return IstioServiceMesh(
-      certificateAuthority: (() {
-        final guardedValue = map['certificateAuthority'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          IstioCertificateAuthority.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      components: (() {
-        final guardedValue = map['components'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          IstioComponents.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      revisions: (() {
-        final guardedValue = map['revisions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      certificateAuthority: (() { final guardedValue = map['certificateAuthority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IstioCertificateAuthority.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      components: (() { final guardedValue = map['components']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IstioComponents.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      revisions: (() { final guardedValue = map['revisions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

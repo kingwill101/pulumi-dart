@@ -626,103 +626,70 @@ import 'gateway_file_share_state.dart';
 class GatewayFileShare extends pulumi.CustomResource {
   /// Whether to enable Windows ABE, the prime minister, need windowsAcl parameter is set to true in the entry into force of. Default value: `false`. **NOTE:** The attribute is valid when the attribute `protocol` is `SMB`. Gateway version &gt;= 1.0.45 above support.
   late final pulumi.Output<bool> accessBasedEnumeration;
-
   /// The Max upload speed of the gateway file share. Unit: `MB/s`, 0 means unlimited. Value range: `0` ~ `1280`. Default value: `0`. **NOTE:** at the same time if you have to limit the maximum write speed, maximum upload speed is no less than the maximum write speed.
   late final pulumi.Output<int> backendLimit;
-
   /// The whether browsable of the gateway file share (that is, in the network neighborhood of whether you can find). The attribute is valid when the attribute `protocol` is `SMB`. Default value: `true`.
   late final pulumi.Output<bool> browsable;
-
   /// Direct reading OSS of the gateway file share.
   late final pulumi.Output<bool> bypassCacheRead;
-
   /// The set up gateway file share cache mode. Valid values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
   late final pulumi.Output<String> cacheMode;
-
   /// File sharing Whether to enable DirectIO (direct I/O mode for data transmission). Default value: `false`.
   late final pulumi.Output<bool> directIo;
-
   /// The maximum download speed of the gateway file share. Unit: `MB/s`. `0` means unlimited. Value range: `0` ~ `1280`. **NOTE:** only in copy mode and enable download file data can be set. only when the shared opens the reverse synchronization or acceded to by the speed synchronization Group when, this parameter will not take effect. Gateway version &gt;= 1.3.0 above support.
   late final pulumi.Output<int> downloadLimit;
-
   /// The whether to enable Upload optimization of the gateway file share, which is suitable for data pure backup migration scenarios. Default value: `false`. **NOTE:** Gateway version &gt;= 1.0.39 above support.
   late final pulumi.Output<bool> fastReclaim;
-
   /// The maximum write speed of the gateway file share. Unit: `MB/s`, `0` means unlimited. Value range: `0` ~ `1280`. Default value: `0`.
   late final pulumi.Output<int> feLimit;
-
   /// The name of the file share. Length from `1` to `255` characters can contain lowercase letters, digits, (.), (_) Or (-), at the same time, must start with a lowercase letter.
   late final pulumi.Output<String> gatewayFileShareName;
-
   /// The ID of the gateway.
   late final pulumi.Output<String> gatewayId;
-
   /// The whether to ignore deleted of the gateway file share. After the opening of the Gateway side delete file or delete cloud (OSS) corresponding to the file. Default value: `false`. **NOTE:** `ignore_delete` and `remote_sync` cannot be enabled simultaneously. Gateway version &gt;= 1.0.40 above support.
   late final pulumi.Output<bool> ignoreDelete;
-
   /// The whether debris optimization of the gateway file share. Default value: `false`.
   late final pulumi.Output<bool> inPlace;
-
   /// The ID of the file share.
   late final pulumi.Output<String> indexId;
-
   /// The synchronization delay, I.e. gateway local cache sync to Alibaba Cloud Object Storage Service (oss) of the delay time. Unit: `Seconds`. Value range: `5` ~ `120`. Default value: `5`. **NOTE:** Gateway version &gt;= 1.0.40 above support.
   late final pulumi.Output<int> lagPeriod;
-
   /// The cache disk inside the device name.
   late final pulumi.Output<String> localPath;
-
   /// The set up gateway file share NFS protocol, whether to enable NFS v4 optimization improve Mount Upload efficiency. Default value: `false`. **NOTE:** If it is enabled, NFS V3 cannot be mounted. The attribute is valid when the attribute `protocol` is `NFS`. Gateway version &gt;= 1.2.0 above support.
   late final pulumi.Output<bool> nfsV4Optimization;
-
   /// The name of the OSS Bucket.
   late final pulumi.Output<String> ossBucketName;
-
   /// Whether they are using SSL connect to OSS Bucket.
   late final pulumi.Output<bool> ossBucketSsl;
-
   /// The gateway file share corresponds to the Object Storage SERVICE (OSS), Bucket Endpoint. **NOTE:** distinguish between intranet and internet Endpoint. We recommend that if the OSS Bucket and the gateway is in the same Region is use the RDS intranet IP Endpoint: `oss-cn-hangzhou-internal.aliyuncs.com`.
   late final pulumi.Output<String> ossEndpoint;
-
   /// In part mode, the directory path group JSON format.
   late final pulumi.Output<String?> partialSyncPaths;
-
   /// The subdirectory path under the object storage (OSS) bucket corresponding to the file share. If it is blank, it means the root directory of the bucket.
   late final pulumi.Output<String?> pathPrefix;
-
   /// The reverse synchronization time intervals of the gateway file share. Value range: `15` ~ `36000`. **NOTE:** in copy mode + reverse synchronization is enabled Download file data, value range: `3600` ~ `36000`.
   late final pulumi.Output<int?> pollingInterval;
-
   /// Share types. Valid values: `SMB`, `NFS`.
   late final pulumi.Output<String> protocol;
-
   /// Whether to enable reverse synchronization of the gateway file share. Default value: `false`.
   late final pulumi.Output<bool> remoteSync;
-
   /// Copy mode, whether to download the file data. Default value: `false`. **NOTE:** only when the attribute `remote_sync` is `true` or acceded to by the speed synchronization group, this parameter will not take effect.
   late final pulumi.Output<bool> remoteSyncDownload;
-
   /// File sharing NFS read-only client list (IP address or IP address range). Use commas (,) to separate multiple clients.
   late final pulumi.Output<String?> roClientList;
-
   /// The read-only client list. When Protocol for Server Message Block (SMB) to go back to.
   late final pulumi.Output<String?> roUserList;
-
   /// Read and write the client list. When Protocol NFS is returned when the status is.
   late final pulumi.Output<String?> rwClientList;
-
   /// Read-write user list. When Protocol for Server Message Block (SMB) to go back to.
   late final pulumi.Output<String?> rwUserList;
-
   /// The NFS protocol user mapping of the gateway file share. Valid values: `none`, `root_squash`, `all_squash`, `all_anonymous`. Default value: `none`. **NOTE:** The attribute is valid when the attribute `protocol` is `NFS`.
   late final pulumi.Output<String> squash;
-
   /// Whether to support the archive transparent read.
   late final pulumi.Output<bool> supportArchive;
-
   /// The set up gateway file share whether to enable transmission acceleration needs corresponding OSS Bucket enabled transport acceleration. **NOTE:** Gateway version &gt;= 1.3.0 above support.
   late final pulumi.Output<bool> transferAcceleration;
-
   /// Whether to enable by Windows access list (requires AD domain) the permissions control. Default value: `false`. **NOTE:** The attribute is valid when the attribute `protocol` is `SMB`. Gateway version &gt;= 1.0.45 above support.
   late final pulumi.Output<bool> windowsAcl;
 
@@ -735,11 +702,11 @@ class GatewayFileShare extends pulumi.CustomResource {
     GatewayFileShareArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudstoragegateway/gatewayFileShare:GatewayFileShare',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudstoragegateway/gatewayFileShare:GatewayFileShare',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessBasedEnumeration = registerOutput<bool>('accessBasedEnumeration');
     backendLimit = registerOutput<int>('backendLimit');
     browsable = registerOutput<bool>('browsable');
@@ -794,11 +761,11 @@ class GatewayFileShare extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudstoragegateway/gatewayFileShare:GatewayFileShare',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudstoragegateway/gatewayFileShare:GatewayFileShare',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessBasedEnumeration = registerOutput<bool>('accessBasedEnumeration');
     backendLimit = registerOutput<int>('backendLimit');
     browsable = registerOutput<bool>('browsable');

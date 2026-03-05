@@ -39,25 +39,12 @@ class GetGithubEnterpriseConfigArgs {
 
   factory GetGithubEnterpriseConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetGithubEnterpriseConfigArgs(
-      configId: (() {
-        final guardedValue = map['configId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      githubEnterpriseConfigId: pulumi.Input.fromValue(
-        map['githubEnterpriseConfigId'] as String,
-      ),
+      configId: (() { final guardedValue = map['configId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      githubEnterpriseConfigId: pulumi.Input.fromValue(map['githubEnterpriseConfigId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      projectId: (() {
-        final guardedValue = map['projectId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      projectId: (() { final guardedValue = map['projectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

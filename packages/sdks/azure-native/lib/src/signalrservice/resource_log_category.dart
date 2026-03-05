@@ -8,7 +8,6 @@ class ResourceLogCategory {
   /// Available values: true, false.
   /// Case insensitive.
   final pulumi.Input<String>? enabled;
-
   /// Gets or sets the resource log category's name.
   /// Available values: ConnectivityLogs, MessagingLogs.
   /// Case insensitive.
@@ -17,24 +16,23 @@ class ResourceLogCategory {
   /// Creates a new [ResourceLogCategory].
   /// [enabled] Indicates whether or the resource log category is enabled.
   /// [name] Gets or sets the resource log category's name.
-  ResourceLogCategory({this.enabled, this.name});
+  ResourceLogCategory({
+    this.enabled,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': ?enabled, 'name': ?name};
+    return <String, dynamic>{
+      'enabled': ?enabled,
+      'name': ?name,
+    };
   }
 
   factory ResourceLogCategory.fromMap(Map<String, dynamic> map) {
     return ResourceLogCategory(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -7,7 +7,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectorDataTypeResponse {
   /// Gets or sets the query to indicate when relevant data was last received in the workspace.
   final pulumi.Input<String> lastDataReceivedQuery;
-
   /// Gets or sets the name of the data type to show in the graph.
   final pulumi.Input<String> name;
 
@@ -28,10 +27,9 @@ class ConnectorDataTypeResponse {
 
   factory ConnectorDataTypeResponse.fromMap(Map<String, dynamic> map) {
     return ConnectorDataTypeResponse(
-      lastDataReceivedQuery: pulumi.Input.fromValue(
-        map['lastDataReceivedQuery'] as String,
-      ),
+      lastDataReceivedQuery: pulumi.Input.fromValue(map['lastDataReceivedQuery'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

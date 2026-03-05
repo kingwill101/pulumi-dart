@@ -16,3 +16,4 @@ enum ClusterDefaultStorageType {
     throw ArgumentError('Unknown ClusterDefaultStorageType value: $value');
   }
 }
+

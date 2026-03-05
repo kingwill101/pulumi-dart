@@ -8,17 +8,20 @@ class ByProductsResponse {
 
   /// Creates a new [ByProductsResponse].
   /// [customValues] Required.
-  ByProductsResponse({required this.customValues});
+  ByProductsResponse({
+    required this.customValues,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'customValues': customValues};
+    return <String, dynamic>{
+      'customValues': customValues,
+    };
   }
 
   factory ByProductsResponse.fromMap(Map<String, dynamic> map) {
     return ByProductsResponse(
-      customValues: pulumi.Input.fromValue(
-        (map['customValues'] as Map).cast<String, String>(),
-      ),
+      customValues: pulumi.Input.fromValue((map['customValues'] as Map).cast<String, String>()),
     );
   }
 }
+

@@ -8,10 +8,8 @@ class DeliveryRuleRouteConfigurationOverrideActionResponse {
   /// The name of the action for the delivery rule.
   /// Expected value is 'RouteConfigurationOverride'.
   final pulumi.Input<String> name;
-
   /// Defines the parameters for the action.
-  final pulumi.Input<RouteConfigurationOverrideActionParametersResponse>
-  parameters;
+  final pulumi.Input<RouteConfigurationOverrideActionParametersResponse> parameters;
 
   /// Creates a new [DeliveryRuleRouteConfigurationOverrideActionResponse].
   /// [name] The name of the action for the delivery rule.
@@ -24,24 +22,15 @@ class DeliveryRuleRouteConfigurationOverrideActionResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'parameters':
-          pulumi.Input.mapInputValue<
-            RouteConfigurationOverrideActionParametersResponse,
-            Map<String, dynamic>
-          >(parameters, (value) => value.toMap()),
+      'parameters': pulumi.Input.mapInputValue<RouteConfigurationOverrideActionParametersResponse, Map<String, dynamic>>(parameters, (value) => value.toMap()),
     };
   }
 
-  factory DeliveryRuleRouteConfigurationOverrideActionResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DeliveryRuleRouteConfigurationOverrideActionResponse.fromMap(Map<String, dynamic> map) {
     return DeliveryRuleRouteConfigurationOverrideActionResponse(
       name: pulumi.Input.fromValue(map['name'] as String),
-      parameters: pulumi.Input.fromValue(
-        RouteConfigurationOverrideActionParametersResponse.fromMap(
-          (map['parameters']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      parameters: pulumi.Input.fromValue(RouteConfigurationOverrideActionParametersResponse.fromMap((map['parameters']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

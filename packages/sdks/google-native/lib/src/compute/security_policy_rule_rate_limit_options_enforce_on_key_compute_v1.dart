@@ -12,17 +12,13 @@ enum SecurityPolicyRuleRateLimitOptionsEnforceOnKeyComputeV1 {
   const SecurityPolicyRuleRateLimitOptionsEnforceOnKeyComputeV1(this.wireValue);
   final String wireValue;
 
-  static SecurityPolicyRuleRateLimitOptionsEnforceOnKeyComputeV1 fromValue(
-    String value,
-  ) {
-    for (final item
-        in SecurityPolicyRuleRateLimitOptionsEnforceOnKeyComputeV1.values) {
+  static SecurityPolicyRuleRateLimitOptionsEnforceOnKeyComputeV1 fromValue(String value) {
+    for (final item in SecurityPolicyRuleRateLimitOptionsEnforceOnKeyComputeV1.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown SecurityPolicyRuleRateLimitOptionsEnforceOnKeyComputeV1 value: $value',
-    );
+    throw ArgumentError('Unknown SecurityPolicyRuleRateLimitOptionsEnforceOnKeyComputeV1 value: $value');
   }
 }
+

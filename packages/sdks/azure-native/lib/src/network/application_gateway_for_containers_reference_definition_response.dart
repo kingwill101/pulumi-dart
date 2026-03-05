@@ -14,14 +14,15 @@ class ApplicationGatewayForContainersReferenceDefinitionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id};
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
-  factory ApplicationGatewayForContainersReferenceDefinitionResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApplicationGatewayForContainersReferenceDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayForContainersReferenceDefinitionResponse(
       id: pulumi.Input.fromValue(map['id'] as String),
     );
   }
 }
+

@@ -114,10 +114,8 @@ import 'dedicated_ip_assignment_state.dart';
 class DedicatedIpAssignment extends pulumi.CustomResource {
   /// Dedicated IP address.
   late final pulumi.Output<String> destinationPoolName;
-
   /// Dedicated IP address.
   late final pulumi.Output<String> ip;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -130,11 +128,11 @@ class DedicatedIpAssignment extends pulumi.CustomResource {
     DedicatedIpAssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:sesv2/dedicatedIpAssignment:DedicatedIpAssignment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:sesv2/dedicatedIpAssignment:DedicatedIpAssignment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     destinationPoolName = registerOutput<String>('destinationPoolName');
     ip = registerOutput<String>('ip');
     region = registerOutput<String>('region');
@@ -158,11 +156,11 @@ class DedicatedIpAssignment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:sesv2/dedicatedIpAssignment:DedicatedIpAssignment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:sesv2/dedicatedIpAssignment:DedicatedIpAssignment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     destinationPoolName = registerOutput<String>('destinationPoolName');
     ip = registerOutput<String>('ip');
     region = registerOutput<String>('region');

@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AkriConnectorTemplateHelmAuthSecretRefResponse {
   /// The key of the password in the secret.
   final pulumi.Input<String> passwordKey;
-
   /// The name of the secret.
   final pulumi.Input<String> secretRef;
-
   /// The key of the username in the secret.
   final pulumi.Input<String> usernameKey;
 
@@ -31,9 +29,7 @@ class AkriConnectorTemplateHelmAuthSecretRefResponse {
     };
   }
 
-  factory AkriConnectorTemplateHelmAuthSecretRefResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AkriConnectorTemplateHelmAuthSecretRefResponse.fromMap(Map<String, dynamic> map) {
     return AkriConnectorTemplateHelmAuthSecretRefResponse(
       passwordKey: pulumi.Input.fromValue(map['passwordKey'] as String),
       secretRef: pulumi.Input.fromValue(map['secretRef'] as String),
@@ -41,3 +37,4 @@ class AkriConnectorTemplateHelmAuthSecretRefResponse {
     );
   }
 }
+

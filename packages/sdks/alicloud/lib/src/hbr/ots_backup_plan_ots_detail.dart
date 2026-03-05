@@ -8,19 +8,20 @@ class OtsBackupPlanOtsDetail {
 
   /// Creates a new [OtsBackupPlanOtsDetail].
   /// [tableNames] The names of the destination tables in the Tablestore instance. **Note:** Required while source_type equals `OTS_TABLE`.
-  OtsBackupPlanOtsDetail({this.tableNames});
+  OtsBackupPlanOtsDetail({
+    this.tableNames,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'tableNames': ?tableNames};
+    return <String, dynamic>{
+      'tableNames': ?tableNames,
+    };
   }
 
   factory OtsBackupPlanOtsDetail.fromMap(Map<String, dynamic> map) {
     return OtsBackupPlanOtsDetail(
-      tableNames: (() {
-        final guardedValue = map['tableNames'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      tableNames: (() { final guardedValue = map['tableNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

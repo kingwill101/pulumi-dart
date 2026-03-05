@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class S3WordsListResponse {
   /// Property bucketName
   final pulumi.Input<String>? bucketName;
-
   /// Property objectKey
   final pulumi.Input<String>? objectKey;
 
   /// Creates a new [S3WordsListResponse].
   /// [bucketName] Property bucketName
   /// [objectKey] Property objectKey
-  S3WordsListResponse({this.bucketName, this.objectKey});
+  S3WordsListResponse({
+    this.bucketName,
+    this.objectKey,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class S3WordsListResponse {
 
   factory S3WordsListResponse.fromMap(Map<String, dynamic> map) {
     return S3WordsListResponse(
-      bucketName: (() {
-        final guardedValue = map['bucketName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      objectKey: (() {
-        final guardedValue = map['objectKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      bucketName: (() { final guardedValue = map['bucketName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      objectKey: (() { final guardedValue = map['objectKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

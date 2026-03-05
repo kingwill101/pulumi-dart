@@ -7,13 +7,10 @@ import 'secret.dart';
 class SshPublicKey {
   /// Format of SSH Client cert.
   final pulumi.Input<String>? certType;
-
   /// SSH Client Cert. It should contain both public and private key.
   final pulumi.Input<Secret>? sshClientCert;
-
   /// Password (passphrase) for ssh client certificate if it has one.
   final pulumi.Input<Secret>? sshClientCertPass;
-
   /// The user account used to authenticate.
   final pulumi.Input<String>? username;
 
@@ -32,46 +29,19 @@ class SshPublicKey {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'certType': ?certType,
-      'sshClientCert':
-          ?pulumi.Input.mapOptionalInputValue<Secret, Map<String, dynamic>>(
-            sshClientCert,
-            (value) => value.toMap(),
-          ),
-      'sshClientCertPass':
-          ?pulumi.Input.mapOptionalInputValue<Secret, Map<String, dynamic>>(
-            sshClientCertPass,
-            (value) => value.toMap(),
-          ),
+      'sshClientCert': ?pulumi.Input.mapOptionalInputValue<Secret, Map<String, dynamic>>(sshClientCert, (value) => value.toMap()),
+      'sshClientCertPass': ?pulumi.Input.mapOptionalInputValue<Secret, Map<String, dynamic>>(sshClientCertPass, (value) => value.toMap()),
       'username': ?username,
     };
   }
 
   factory SshPublicKey.fromMap(Map<String, dynamic> map) {
     return SshPublicKey(
-      certType: (() {
-        final guardedValue = map['certType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sshClientCert: (() {
-        final guardedValue = map['sshClientCert'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          Secret.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      sshClientCertPass: (() {
-        final guardedValue = map['sshClientCertPass'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          Secret.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      username: (() {
-        final guardedValue = map['username'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      certType: (() { final guardedValue = map['certType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sshClientCert: (() { final guardedValue = map['sshClientCert']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Secret.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      sshClientCertPass: (() { final guardedValue = map['sshClientCertPass']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Secret.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      username: (() { final guardedValue = map['username']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -9,58 +9,40 @@ import 'system_data_response.dart';
 class GetElasticSanResult {
   /// Logical zone for Elastic San resource; example: ["1"].
   final List<String>? availabilityZones;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Base size of the Elastic San appliance in TiB.
   final double baseSizeTiB;
-
   /// Extended size of the Elastic San appliance in TiB.
   final double extendedCapacitySizeTiB;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// The geo-location where the resource lives
   final String location;
-
   /// The name of the resource
   final String name;
-
   /// The list of Private Endpoint Connections.
   final List<PrivateEndpointConnectionResponse> privateEndpointConnections;
-
   /// State of the operation on the resource.
   final String provisioningState;
-
   /// Allow or disallow public network access to ElasticSan. Value is optional but if passed in, must be 'Enabled' or 'Disabled'.
   final String? publicNetworkAccess;
-
   /// resource sku
   final SkuResponse sku;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// Total Provisioned IOPS of the Elastic San appliance.
   final double totalIops;
-
   /// Total Provisioned MBps Elastic San appliance.
   final double totalMBps;
-
   /// Total size of the Elastic San appliance in TB.
   final double totalSizeTiB;
-
   /// Total size of the provisioned Volumes in GiB.
   final double totalVolumeSizeGiB;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
-
   /// Total number of volume groups in this Elastic San appliance.
   final double volumeGroupCount;
 
@@ -115,11 +97,7 @@ class GetElasticSanResult {
       'id': id,
       'location': location,
       'name': name,
-      'privateEndpointConnections':
-          pulumi.Input.encodeList<
-            PrivateEndpointConnectionResponse,
-            Map<String, dynamic>
-          >(privateEndpointConnections, (value) => value.toMap()),
+      'privateEndpointConnections': pulumi.Input.encodeList<PrivateEndpointConnectionResponse, Map<String, dynamic>>(privateEndpointConnections, (value) => value.toMap()),
       'provisioningState': provisioningState,
       'publicNetworkAccess': ?publicNetworkAccess,
       'sku': sku.toMap(),
@@ -136,39 +114,19 @@ class GetElasticSanResult {
 
   factory GetElasticSanResult.fromMap(Map<String, dynamic> map) {
     return GetElasticSanResult(
-      availabilityZones: (() {
-        final guardedValue = map['availabilityZones'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
+      availabilityZones: (() { final guardedValue = map['availabilityZones']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       azureApiVersion: map['azureApiVersion'] as String,
       baseSizeTiB: map['baseSizeTiB'] as double,
       extendedCapacitySizeTiB: map['extendedCapacitySizeTiB'] as double,
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      privateEndpointConnections:
-          pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(
-            map['privateEndpointConnections']!,
-            (value) => PrivateEndpointConnectionResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      privateEndpointConnections: pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(map['privateEndpointConnections']!, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
       provisioningState: map['provisioningState'] as String,
-      publicNetworkAccess: (() {
-        final guardedValue = map['publicNetworkAccess'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return guardedValue as String; })(),
       sku: SkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       totalIops: map['totalIops'] as double,
       totalMBps: map['totalMBps'] as double,
       totalSizeTiB: map['totalSizeTiB'] as double,
@@ -178,3 +136,4 @@ class GetElasticSanResult {
     );
   }
 }
+

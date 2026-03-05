@@ -13,8 +13,7 @@ enum ServiceMeshMembershipSpecControlPlane {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ServiceMeshMembershipSpecControlPlane value: $value',
-    );
+    throw ArgumentError('Unknown ServiceMeshMembershipSpecControlPlane value: $value');
   }
 }
+

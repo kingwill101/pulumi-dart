@@ -12,8 +12,7 @@ enum AwsVpcConfigurationAssignPublicIp {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown AwsVpcConfigurationAssignPublicIp value: $value',
-    );
+    throw ArgumentError('Unknown AwsVpcConfigurationAssignPublicIp value: $value');
   }
 }
+

@@ -9,26 +9,20 @@ class GetInsightsAccountsResult {
 
   /// Creates a new [GetInsightsAccountsResult].
   /// [accounts] Required.
-  GetInsightsAccountsResult({required this.accounts});
+  GetInsightsAccountsResult({
+    required this.accounts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accounts':
-          pulumi.Input.encodeList<InsightsAccountState, Map<String, dynamic>>(
-            accounts,
-            (value) => value.toMap(),
-          ),
+      'accounts': pulumi.Input.encodeList<InsightsAccountState, Map<String, dynamic>>(accounts, (value) => value.toMap()),
     };
   }
 
   factory GetInsightsAccountsResult.fromMap(Map<String, dynamic> map) {
     return GetInsightsAccountsResult(
-      accounts: pulumi.Input.decodeList<InsightsAccountState>(
-        map['accounts']!,
-        (value) => InsightsAccountState.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      accounts: pulumi.Input.decodeList<InsightsAccountState>(map['accounts']!, (value) => InsightsAccountState.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -7,10 +7,8 @@ import 'azure_monitor_workspace_properties.dart';
 class NotificationSettings {
   /// The state of notifications feature.
   final pulumi.Input<String>? activationState;
-
   /// Configuration properties of an Azure Monitor workspace that receives change notifications.
-  final pulumi.Input<AzureMonitorWorkspaceProperties>?
-  azureMonitorWorkspaceProperties;
+  final pulumi.Input<AzureMonitorWorkspaceProperties>? azureMonitorWorkspaceProperties;
 
   /// Creates a new [NotificationSettings].
   /// [activationState] The state of notifications feature.
@@ -23,30 +21,15 @@ class NotificationSettings {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'activationState': ?activationState,
-      'azureMonitorWorkspaceProperties':
-          ?pulumi.Input.mapOptionalInputValue<
-            AzureMonitorWorkspaceProperties,
-            Map<String, dynamic>
-          >(azureMonitorWorkspaceProperties, (value) => value.toMap()),
+      'azureMonitorWorkspaceProperties': ?pulumi.Input.mapOptionalInputValue<AzureMonitorWorkspaceProperties, Map<String, dynamic>>(azureMonitorWorkspaceProperties, (value) => value.toMap()),
     };
   }
 
   factory NotificationSettings.fromMap(Map<String, dynamic> map) {
     return NotificationSettings(
-      activationState: (() {
-        final guardedValue = map['activationState'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      azureMonitorWorkspaceProperties: (() {
-        final guardedValue = map['azureMonitorWorkspaceProperties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AzureMonitorWorkspaceProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      activationState: (() { final guardedValue = map['activationState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      azureMonitorWorkspaceProperties: (() { final guardedValue = map['azureMonitorWorkspaceProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureMonitorWorkspaceProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

@@ -104,19 +104,14 @@ import 'extension_state.dart';
 class Extension extends pulumi.CustomResource {
   /// When true, will also create any extensions that this extension depends on that are not already installed. (Default: false)
   late final pulumi.Output<bool?> createCascade;
-
   /// Which database to create the extension on. Defaults to provider database.
   late final pulumi.Output<String> database;
-
   /// When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those objects. (Default: false)
   late final pulumi.Output<bool?> dropCascade;
-
   /// The name of the extension.
   late final pulumi.Output<String> name;
-
   /// Sets the schema of an extension.
   late final pulumi.Output<String> schema;
-
   /// Sets the version number of the extension.
   late final pulumi.Output<String> version;
 
@@ -129,11 +124,11 @@ class Extension extends pulumi.CustomResource {
     ExtensionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'postgresql:index/extension:Extension',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'postgresql:index/extension:Extension',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createCascade = registerOutput<bool?>('createCascade');
     database = registerOutput<String>('database');
     dropCascade = registerOutput<bool?>('dropCascade');
@@ -160,11 +155,11 @@ class Extension extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'postgresql:index/extension:Extension',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'postgresql:index/extension:Extension',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createCascade = registerOutput<bool?>('createCascade');
     database = registerOutput<String>('database');
     dropCascade = registerOutput<bool?>('dropCascade');

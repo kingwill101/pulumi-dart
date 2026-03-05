@@ -147,14 +147,11 @@ class QosMinimumBandwidthRule extends pulumi.CustomResource {
   /// The direction of traffic. Defaults to "egress". Changing this updates the direction of the
   /// existing QoS minimum bandwidth rule.
   late final pulumi.Output<String?> direction;
-
   /// The minimum kilobits per second. Changing this updates the min kbps value of the existing
   /// QoS minimum bandwidth rule.
   late final pulumi.Output<int> minKbps;
-
   /// The QoS policy reference. Changing this creates a new QoS minimum bandwidth rule.
   late final pulumi.Output<String> qosPolicyId;
-
   /// The region in which to obtain the V2 Networking client.
   /// A Networking client is needed to create a Neutron QoS minimum bandwidth rule. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new QoS minimum bandwidth rule.
@@ -169,11 +166,11 @@ class QosMinimumBandwidthRule extends pulumi.CustomResource {
     QosMinimumBandwidthRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:networking/qosMinimumBandwidthRule:QosMinimumBandwidthRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:networking/qosMinimumBandwidthRule:QosMinimumBandwidthRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     direction = registerOutput<String?>('direction');
     minKbps = registerOutput<int>('minKbps');
     qosPolicyId = registerOutput<String>('qosPolicyId');
@@ -198,11 +195,11 @@ class QosMinimumBandwidthRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:networking/qosMinimumBandwidthRule:QosMinimumBandwidthRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:networking/qosMinimumBandwidthRule:QosMinimumBandwidthRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     direction = registerOutput<String?>('direction');
     minKbps = registerOutput<int>('minKbps');
     qosPolicyId = registerOutput<String>('qosPolicyId');

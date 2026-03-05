@@ -7,10 +7,8 @@ import 'x509_certificate_details_response.dart';
 class PublicKeyCertificateResponse {
   /// The certificate data.
   final pulumi.Input<String> certificate;
-
   /// The certificate format.
   final pulumi.Input<String> format;
-
   /// [Output only] The certificate details. Used only for X.509 certificates.
   final pulumi.Input<X509CertificateDetailsResponse> x509Details;
 
@@ -28,11 +26,7 @@ class PublicKeyCertificateResponse {
     return <String, dynamic>{
       'certificate': certificate,
       'format': format,
-      'x509Details':
-          pulumi.Input.mapInputValue<
-            X509CertificateDetailsResponse,
-            Map<String, dynamic>
-          >(x509Details, (value) => value.toMap()),
+      'x509Details': pulumi.Input.mapInputValue<X509CertificateDetailsResponse, Map<String, dynamic>>(x509Details, (value) => value.toMap()),
     };
   }
 
@@ -40,11 +34,8 @@ class PublicKeyCertificateResponse {
     return PublicKeyCertificateResponse(
       certificate: pulumi.Input.fromValue(map['certificate'] as String),
       format: pulumi.Input.fromValue(map['format'] as String),
-      x509Details: pulumi.Input.fromValue(
-        X509CertificateDetailsResponse.fromMap(
-          (map['x509Details']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      x509Details: pulumi.Input.fromValue(X509CertificateDetailsResponse.fromMap((map['x509Details']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

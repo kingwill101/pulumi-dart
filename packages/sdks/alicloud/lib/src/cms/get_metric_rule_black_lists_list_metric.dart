@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMetricRuleBlackListsListMetric {
   /// The name of the monitoring indicator.
   final pulumi.Input<String> metricName;
-
   /// The extended dimension information of the instance. For example, '{"device":"C:"}' indicates that the blacklist policy is applied to all C disks under the ECS instance.
   final pulumi.Input<String> resource;
 
@@ -18,7 +17,10 @@ class GetMetricRuleBlackListsListMetric {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'metricName': metricName, 'resource': resource};
+    return <String, dynamic>{
+      'metricName': metricName,
+      'resource': resource,
+    };
   }
 
   factory GetMetricRuleBlackListsListMetric.fromMap(Map<String, dynamic> map) {
@@ -28,3 +30,4 @@ class GetMetricRuleBlackListsListMetric {
     );
   }
 }
+

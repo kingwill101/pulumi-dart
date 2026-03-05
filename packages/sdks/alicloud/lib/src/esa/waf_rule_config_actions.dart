@@ -12,43 +12,23 @@ class WafRuleConfigActions {
   /// Creates a new [WafRuleConfigActions].
   /// [bypass] The skip configuration specified by the whitelist rule. See `bypass` below.
   /// [response] Optional.
-  WafRuleConfigActions({this.bypass, this.response});
+  WafRuleConfigActions({
+    this.bypass,
+    this.response,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bypass':
-          ?pulumi.Input.mapOptionalInputValue<
-            WafRuleConfigActionsBypass,
-            Map<String, dynamic>
-          >(bypass, (value) => value.toMap()),
-      'response':
-          ?pulumi.Input.mapOptionalInputValue<
-            WafRuleConfigActionsResponse,
-            Map<String, dynamic>
-          >(response, (value) => value.toMap()),
+      'bypass': ?pulumi.Input.mapOptionalInputValue<WafRuleConfigActionsBypass, Map<String, dynamic>>(bypass, (value) => value.toMap()),
+      'response': ?pulumi.Input.mapOptionalInputValue<WafRuleConfigActionsResponse, Map<String, dynamic>>(response, (value) => value.toMap()),
     };
   }
 
   factory WafRuleConfigActions.fromMap(Map<String, dynamic> map) {
     return WafRuleConfigActions(
-      bypass: (() {
-        final guardedValue = map['bypass'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          WafRuleConfigActionsBypass.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      response: (() {
-        final guardedValue = map['response'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          WafRuleConfigActionsResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      bypass: (() { final guardedValue = map['bypass']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WafRuleConfigActionsBypass.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      response: (() { final guardedValue = map['response']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WafRuleConfigActionsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

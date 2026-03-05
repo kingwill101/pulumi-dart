@@ -4,13 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AnalyticsSolutionPlan {
   final pulumi.Input<String>? name;
-
   /// The product name of the solution. For example `OMSGallery/Containers`. Changing this forces a new resource to be created.
   final pulumi.Input<String> product;
-
   /// A promotion code to be used with the solution. Changing this forces a new resource to be created.
   final pulumi.Input<String>? promotionCode;
-
   /// The publisher of the solution. For example `Microsoft`. Changing this forces a new resource to be created.
   final pulumi.Input<String> publisher;
 
@@ -37,18 +34,11 @@ class AnalyticsSolutionPlan {
 
   factory AnalyticsSolutionPlan.fromMap(Map<String, dynamic> map) {
     return AnalyticsSolutionPlan(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       product: pulumi.Input.fromValue(map['product'] as String),
-      promotionCode: (() {
-        final guardedValue = map['promotionCode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      promotionCode: (() { final guardedValue = map['promotionCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       publisher: pulumi.Input.fromValue(map['publisher'] as String),
     );
   }
 }
+

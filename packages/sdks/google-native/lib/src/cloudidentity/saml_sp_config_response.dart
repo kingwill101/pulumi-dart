@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SamlSpConfigResponse {
   /// The SAML **Assertion Consumer Service (ACS) URL** to be used for the IDP-initiated login. Assumed to accept response messages via the `HTTP-POST` binding.
   final pulumi.Input<String> assertionConsumerServiceUri;
-
   /// The SAML **Entity ID** for this service provider.
   final pulumi.Input<String> entityId;
 
@@ -27,10 +26,9 @@ class SamlSpConfigResponse {
 
   factory SamlSpConfigResponse.fromMap(Map<String, dynamic> map) {
     return SamlSpConfigResponse(
-      assertionConsumerServiceUri: pulumi.Input.fromValue(
-        map['assertionConsumerServiceUri'] as String,
-      ),
+      assertionConsumerServiceUri: pulumi.Input.fromValue(map['assertionConsumerServiceUri'] as String),
       entityId: pulumi.Input.fromValue(map['entityId'] as String),
     );
   }
 }
+

@@ -15,3 +15,4 @@ enum ManifestType {
     throw ArgumentError('Unknown ManifestType value: $value');
   }
 }
+

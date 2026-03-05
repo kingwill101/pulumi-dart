@@ -696,15 +696,11 @@ import 'virtual_machine_configuration_assignment_state.dart';
 /// ```
 class VirtualMachineConfigurationAssignment extends pulumi.CustomResource {
   /// A `configuration` block as defined below.
-  late final pulumi.Output<VirtualMachineConfigurationAssignmentConfiguration>
-  configuration;
-
+  late final pulumi.Output<VirtualMachineConfigurationAssignmentConfiguration> configuration;
   /// The Azure location where the Policy Virtual Machine Configuration Assignment should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The name of the Guest Configuration that will be assigned in this Guest Configuration Assignment. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The resource ID of the Policy Virtual Machine which this Guest Configuration Assignment should apply to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> virtualMachineId;
 
@@ -717,22 +713,12 @@ class VirtualMachineConfigurationAssignment extends pulumi.CustomResource {
     VirtualMachineConfigurationAssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:policy/virtualMachineConfigurationAssignment:VirtualMachineConfigurationAssignment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    configuration =
-        registerOutput<VirtualMachineConfigurationAssignmentConfiguration>(
-          'configuration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return VirtualMachineConfigurationAssignmentConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'azure:policy/virtualMachineConfigurationAssignment:VirtualMachineConfigurationAssignment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    configuration = registerOutput<VirtualMachineConfigurationAssignmentConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineConfigurationAssignmentConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     virtualMachineId = registerOutput<String>('virtualMachineId');
@@ -756,22 +742,12 @@ class VirtualMachineConfigurationAssignment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:policy/virtualMachineConfigurationAssignment:VirtualMachineConfigurationAssignment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    configuration =
-        registerOutput<VirtualMachineConfigurationAssignmentConfiguration>(
-          'configuration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return VirtualMachineConfigurationAssignmentConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'azure:policy/virtualMachineConfigurationAssignment:VirtualMachineConfigurationAssignment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    configuration = registerOutput<VirtualMachineConfigurationAssignmentConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineConfigurationAssignmentConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     virtualMachineId = registerOutput<String>('virtualMachineId');

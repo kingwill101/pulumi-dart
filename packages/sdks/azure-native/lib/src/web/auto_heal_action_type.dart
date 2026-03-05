@@ -16,3 +16,4 @@ enum AutoHealActionType {
     throw ArgumentError('Unknown AutoHealActionType value: $value');
   }
 }
+

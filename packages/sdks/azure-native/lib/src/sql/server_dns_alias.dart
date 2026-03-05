@@ -134,13 +134,10 @@ import 'server_dns_alias_args.dart';
 class ServerDnsAlias extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The fully qualified DNS record for alias
   late final pulumi.Output<String> azureDnsRecord;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -153,11 +150,11 @@ class ServerDnsAlias extends pulumi.CustomResource {
     ServerDnsAliasArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:sql:ServerDnsAlias',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:sql:ServerDnsAlias',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     azureDnsRecord = registerOutput<String>('azureDnsRecord');
     this.name = registerOutput<String>('name');

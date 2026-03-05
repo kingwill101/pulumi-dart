@@ -8,17 +8,20 @@ class ResourcePolicyDiskConsistencyGroupPolicy {
 
   /// Creates a new [ResourcePolicyDiskConsistencyGroupPolicy].
   /// [enabled] Enable disk consistency on the resource policy.
-  ResourcePolicyDiskConsistencyGroupPolicy({required this.enabled});
+  ResourcePolicyDiskConsistencyGroupPolicy({
+    required this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled};
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
-  factory ResourcePolicyDiskConsistencyGroupPolicy.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResourcePolicyDiskConsistencyGroupPolicy.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyDiskConsistencyGroupPolicy(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
+

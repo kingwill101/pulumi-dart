@@ -8,17 +8,13 @@ enum GoogleIamV1AuditLogConfigLogTypeBeyondcorpV1alpha {
   const GoogleIamV1AuditLogConfigLogTypeBeyondcorpV1alpha(this.wireValue);
   final String wireValue;
 
-  static GoogleIamV1AuditLogConfigLogTypeBeyondcorpV1alpha fromValue(
-    String value,
-  ) {
-    for (final item
-        in GoogleIamV1AuditLogConfigLogTypeBeyondcorpV1alpha.values) {
+  static GoogleIamV1AuditLogConfigLogTypeBeyondcorpV1alpha fromValue(String value) {
+    for (final item in GoogleIamV1AuditLogConfigLogTypeBeyondcorpV1alpha.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GoogleIamV1AuditLogConfigLogTypeBeyondcorpV1alpha value: $value',
-    );
+    throw ArgumentError('Unknown GoogleIamV1AuditLogConfigLogTypeBeyondcorpV1alpha value: $value');
   }
 }
+

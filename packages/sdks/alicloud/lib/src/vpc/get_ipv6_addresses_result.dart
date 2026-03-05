@@ -7,7 +7,6 @@ import 'get_ipv6_addresses_address.dart';
 class GetIpv6AddressesResult {
   final List<GetIpv6AddressesAddress> addresses;
   final String? associatedInstanceId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -41,11 +40,7 @@ class GetIpv6AddressesResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'addresses':
-          pulumi.Input.encodeList<
-            GetIpv6AddressesAddress,
-            Map<String, dynamic>
-          >(addresses, (value) => value.toMap()),
+      'addresses': pulumi.Input.encodeList<GetIpv6AddressesAddress, Map<String, dynamic>>(addresses, (value) => value.toMap()),
       'associatedInstanceId': ?associatedInstanceId,
       'id': id,
       'ids': ids,
@@ -59,40 +54,16 @@ class GetIpv6AddressesResult {
 
   factory GetIpv6AddressesResult.fromMap(Map<String, dynamic> map) {
     return GetIpv6AddressesResult(
-      addresses: pulumi.Input.decodeList<GetIpv6AddressesAddress>(
-        map['addresses']!,
-        (value) => GetIpv6AddressesAddress.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      associatedInstanceId: (() {
-        final guardedValue = map['associatedInstanceId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      addresses: pulumi.Input.decodeList<GetIpv6AddressesAddress>(map['addresses']!, (value) => GetIpv6AddressesAddress.fromMap((value as Map).cast<String, dynamic>())),
+      associatedInstanceId: (() { final guardedValue = map['associatedInstanceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      vpcId: (() {
-        final guardedValue = map['vpcId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      vswitchId: (() {
-        final guardedValue = map['vswitchId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      vpcId: (() { final guardedValue = map['vpcId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      vswitchId: (() { final guardedValue = map['vswitchId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

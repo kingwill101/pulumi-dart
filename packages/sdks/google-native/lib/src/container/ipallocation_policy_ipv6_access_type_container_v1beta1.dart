@@ -7,17 +7,13 @@ enum IPAllocationPolicyIpv6AccessTypeContainerV1beta1 {
   const IPAllocationPolicyIpv6AccessTypeContainerV1beta1(this.wireValue);
   final String wireValue;
 
-  static IPAllocationPolicyIpv6AccessTypeContainerV1beta1 fromValue(
-    String value,
-  ) {
-    for (final item
-        in IPAllocationPolicyIpv6AccessTypeContainerV1beta1.values) {
+  static IPAllocationPolicyIpv6AccessTypeContainerV1beta1 fromValue(String value) {
+    for (final item in IPAllocationPolicyIpv6AccessTypeContainerV1beta1.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown IPAllocationPolicyIpv6AccessTypeContainerV1beta1 value: $value',
-    );
+    throw ArgumentError('Unknown IPAllocationPolicyIpv6AccessTypeContainerV1beta1 value: $value');
   }
 }
+

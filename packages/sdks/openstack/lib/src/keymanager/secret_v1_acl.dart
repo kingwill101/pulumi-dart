@@ -8,29 +8,20 @@ class SecretV1Acl {
 
   /// Creates a new [SecretV1Acl].
   /// [read] Optional.
-  SecretV1Acl({this.read});
+  SecretV1Acl({
+    this.read,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'read':
-          ?pulumi.Input.mapOptionalInputValue<
-            SecretV1AclRead,
-            Map<String, dynamic>
-          >(read, (value) => value.toMap()),
+      'read': ?pulumi.Input.mapOptionalInputValue<SecretV1AclRead, Map<String, dynamic>>(read, (value) => value.toMap()),
     };
   }
 
   factory SecretV1Acl.fromMap(Map<String, dynamic> map) {
     return SecretV1Acl(
-      read: (() {
-        final guardedValue = map['read'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SecretV1AclRead.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      read: (() { final guardedValue = map['read']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SecretV1AclRead.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

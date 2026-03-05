@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CommandState {
   /// The resulting output from the `commands` executed.
   final pulumi.Input<List<String>>? commandResults;
-
   /// The commands to send to the remote BIG-IP device over the configured provider. The resulting output from the command is returned and added to `command_result`
   final pulumi.Input<List<String>>? commands;
   final pulumi.Input<String>? when;
@@ -15,7 +14,11 @@ class CommandState {
   /// [commandResults] The resulting output from the `commands` executed.
   /// [commands] The commands to send to the remote BIG-IP device over the configured provider. The resulting output from the command is returned and added to `command_result`
   /// [when] Optional.
-  CommandState({this.commandResults, this.commands, this.when});
+  CommandState({
+    this.commandResults,
+    this.commands,
+    this.when,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,21 +30,10 @@ class CommandState {
 
   factory CommandState.fromMap(Map<String, dynamic> map) {
     return CommandState(
-      commandResults: (() {
-        final guardedValue = map['commandResults'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      commands: (() {
-        final guardedValue = map['commands'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      when: (() {
-        final guardedValue = map['when'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      commandResults: (() { final guardedValue = map['commandResults']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      commands: (() { final guardedValue = map['commands']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      when: (() { final guardedValue = map['when']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

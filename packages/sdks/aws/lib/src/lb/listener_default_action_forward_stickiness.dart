@@ -7,7 +7,6 @@ class ListenerDefaultActionForwardStickiness {
   ///
   /// The following arguments are optional:
   final pulumi.Input<int> duration;
-
   /// Whether target group stickiness is enabled. Default is `false`.
   final pulumi.Input<bool>? enabled;
 
@@ -20,19 +19,17 @@ class ListenerDefaultActionForwardStickiness {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'duration': duration, 'enabled': ?enabled};
+    return <String, dynamic>{
+      'duration': duration,
+      'enabled': ?enabled,
+    };
   }
 
-  factory ListenerDefaultActionForwardStickiness.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListenerDefaultActionForwardStickiness.fromMap(Map<String, dynamic> map) {
     return ListenerDefaultActionForwardStickiness(
       duration: pulumi.Input.fromValue(map['duration'] as int),
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

@@ -38,11 +38,8 @@ class GetDicomStoreHealthcareV1beta1Args {
       datasetId: pulumi.Input.fromValue(map['datasetId'] as String),
       dicomStoreId: pulumi.Input.fromValue(map['dicomStoreId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

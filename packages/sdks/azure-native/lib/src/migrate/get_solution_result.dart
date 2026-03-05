@@ -6,19 +6,14 @@ import 'solution_properties_response.dart';
 class GetSolutionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Gets or sets the ETAG for optimistic concurrency control.
   final String? etag;
-
   /// Gets the relative URL to get to this REST resource.
   final String id;
-
   /// Gets the name of this REST resource.
   final String name;
-
   /// Gets or sets the properties of the solution.
   final SolutionPropertiesResponse properties;
-
   /// Gets the type of this REST resource.
   final String type;
 
@@ -52,17 +47,12 @@ class GetSolutionResult {
   factory GetSolutionResult.fromMap(Map<String, dynamic> map) {
     return GetSolutionResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      etag: (() {
-        final guardedValue = map['etag'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       name: map['name'] as String,
-      properties: SolutionPropertiesResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
+      properties: SolutionPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

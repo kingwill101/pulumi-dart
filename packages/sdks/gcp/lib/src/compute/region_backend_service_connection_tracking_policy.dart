@@ -19,16 +19,13 @@ class RegionBackendServiceConnectionTrackingPolicy {
   /// Default value is `DEFAULT_FOR_PROTOCOL`.
   /// Possible values are: `DEFAULT_FOR_PROTOCOL`, `NEVER_PERSIST`, `ALWAYS_PERSIST`.
   final pulumi.Input<String>? connectionPersistenceOnUnhealthyBackends;
-
   /// Enable Strong Session Affinity for Network Load Balancing. This option is not available publicly.
   final pulumi.Input<bool>? enableStrongAffinity;
-
   /// Specifies how long to keep a Connection Tracking entry while there is
   /// no matching traffic (in seconds).
   /// For L4 ILB the minimum(default) is 10 minutes and maximum is 16 hours.
   /// For NLB the minimum(default) is 60 seconds and the maximum is 16 hours.
   final pulumi.Input<int>? idleTimeoutSec;
-
   /// Specifies the key used for connection tracking. There are two options:
   /// `PER_CONNECTION`: The Connection Tracking is performed as per the
   /// Connection Key (default Hash Method) for the specific protocol.
@@ -52,38 +49,20 @@ class RegionBackendServiceConnectionTrackingPolicy {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connectionPersistenceOnUnhealthyBackends':
-          ?connectionPersistenceOnUnhealthyBackends,
+      'connectionPersistenceOnUnhealthyBackends': ?connectionPersistenceOnUnhealthyBackends,
       'enableStrongAffinity': ?enableStrongAffinity,
       'idleTimeoutSec': ?idleTimeoutSec,
       'trackingMode': ?trackingMode,
     };
   }
 
-  factory RegionBackendServiceConnectionTrackingPolicy.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RegionBackendServiceConnectionTrackingPolicy.fromMap(Map<String, dynamic> map) {
     return RegionBackendServiceConnectionTrackingPolicy(
-      connectionPersistenceOnUnhealthyBackends: (() {
-        final guardedValue = map['connectionPersistenceOnUnhealthyBackends'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      enableStrongAffinity: (() {
-        final guardedValue = map['enableStrongAffinity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      idleTimeoutSec: (() {
-        final guardedValue = map['idleTimeoutSec'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      trackingMode: (() {
-        final guardedValue = map['trackingMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      connectionPersistenceOnUnhealthyBackends: (() { final guardedValue = map['connectionPersistenceOnUnhealthyBackends']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      enableStrongAffinity: (() { final guardedValue = map['enableStrongAffinity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      idleTimeoutSec: (() { final guardedValue = map['idleTimeoutSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      trackingMode: (() { final guardedValue = map['trackingMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

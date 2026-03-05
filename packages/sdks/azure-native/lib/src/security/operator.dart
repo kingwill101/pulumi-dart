@@ -22,3 +22,4 @@ enum Operator {
     throw ArgumentError('Unknown Operator value: $value');
   }
 }
+

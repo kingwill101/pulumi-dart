@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVirtualHubIpConfigurationArgs {
   /// The name of the ipconfig.
   final pulumi.Input<String> ipConfigName;
-
   /// The resource group name of the VirtualHub.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the VirtualHub.
   final pulumi.Input<String> virtualHubName;
 
@@ -37,10 +35,9 @@ class GetVirtualHubIpConfigurationArgs {
   factory GetVirtualHubIpConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualHubIpConfigurationArgs(
       ipConfigName: pulumi.Input.fromValue(map['ipConfigName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       virtualHubName: pulumi.Input.fromValue(map['virtualHubName'] as String),
     );
   }
 }
+

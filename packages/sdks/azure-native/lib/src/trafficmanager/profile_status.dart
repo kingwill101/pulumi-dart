@@ -15,3 +15,4 @@ enum ProfileStatus {
     throw ArgumentError('Unknown ProfileStatus value: $value');
   }
 }
+

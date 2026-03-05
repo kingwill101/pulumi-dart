@@ -6,31 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AgentProtocolVersionResponse {
   /// The protocol used by the agent/exposed by a deployment.
   final pulumi.Input<String>? protocol;
-
   /// The version of the protocol.
   final pulumi.Input<String>? version;
 
   /// Creates a new [AgentProtocolVersionResponse].
   /// [protocol] The protocol used by the agent/exposed by a deployment.
   /// [version] The version of the protocol.
-  AgentProtocolVersionResponse({this.protocol, this.version});
+  AgentProtocolVersionResponse({
+    this.protocol,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'protocol': ?protocol, 'version': ?version};
+    return <String, dynamic>{
+      'protocol': ?protocol,
+      'version': ?version,
+    };
   }
 
   factory AgentProtocolVersionResponse.fromMap(Map<String, dynamic> map) {
     return AgentProtocolVersionResponse(
-      protocol: (() {
-        final guardedValue = map['protocol'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

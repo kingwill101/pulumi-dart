@@ -184,89 +184,60 @@ import 'virtual_router_auto_scale_configuration_response.dart';
 class VirtualHub extends pulumi.CustomResource {
   /// Address-prefix for this VirtualHub.
   late final pulumi.Output<String?> addressPrefix;
-
   /// Flag to control transit for VirtualRouter hub.
   late final pulumi.Output<bool?> allowBranchToBranchTraffic;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The azureFirewall associated with this VirtualHub.
   late final pulumi.Output<SubResourceResponse?> azureFirewall;
-
   /// List of references to Bgp Connections.
   late final pulumi.Output<List<Map<String, dynamic>>> bgpConnections;
-
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
-
   /// The expressRouteGateway associated with this VirtualHub.
   late final pulumi.Output<SubResourceResponse?> expressRouteGateway;
-
   /// The hubRoutingPreference of this VirtualHub.
   late final pulumi.Output<String?> hubRoutingPreference;
-
   /// List of references to IpConfigurations.
   late final pulumi.Output<List<Map<String, dynamic>>> ipConfigurations;
-
   /// Kind of service virtual hub. This is metadata used for the Azure portal experience for Route Server.
   late final pulumi.Output<String> kind;
-
   /// Resource location.
   late final pulumi.Output<String> location;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// The P2SVpnGateway associated with this VirtualHub.
   late final pulumi.Output<SubResourceResponse?> p2SVpnGateway;
-
   /// The preferred gateway to route on-prem traffic
   late final pulumi.Output<String?> preferredRoutingGateway;
-
   /// The provisioning state of the virtual hub resource.
   late final pulumi.Output<String> provisioningState;
-
   /// List of references to RouteMaps.
   late final pulumi.Output<List<Map<String, dynamic>>> routeMaps;
-
   /// The routeTable associated with this virtual hub.
   late final pulumi.Output<VirtualHubRouteTableResponse?> routeTable;
-
   /// The routing state.
   late final pulumi.Output<String> routingState;
-
   /// The securityPartnerProvider associated with this VirtualHub.
   late final pulumi.Output<SubResourceResponse?> securityPartnerProvider;
-
   /// The Security Provider name.
   late final pulumi.Output<String?> securityProviderName;
-
   /// The sku of this VirtualHub.
   late final pulumi.Output<String?> sku;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource type.
   late final pulumi.Output<String> type;
-
   /// List of all virtual hub route table v2s associated with this VirtualHub.
   late final pulumi.Output<List<Map<String, dynamic>>?> virtualHubRouteTableV2s;
-
   /// VirtualRouter ASN.
   late final pulumi.Output<double?> virtualRouterAsn;
-
   /// The VirtualHub Router autoscale configuration.
-  late final pulumi.Output<VirtualRouterAutoScaleConfigurationResponse?>
-  virtualRouterAutoScaleConfiguration;
-
+  late final pulumi.Output<VirtualRouterAutoScaleConfigurationResponse?> virtualRouterAutoScaleConfiguration;
   /// VirtualRouter IPs.
   late final pulumi.Output<List<String>?> virtualRouterIps;
-
   /// The VirtualWAN to which the VirtualHub belongs.
   late final pulumi.Output<SubResourceResponse?> virtualWan;
-
   /// The VpnGateway associated with this VirtualHub.
   late final pulumi.Output<SubResourceResponse?> vpnGateway;
 
@@ -279,122 +250,39 @@ class VirtualHub extends pulumi.CustomResource {
     VirtualHubArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:network:VirtualHub',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:network:VirtualHub',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     addressPrefix = registerOutput<String?>('addressPrefix');
-    allowBranchToBranchTraffic = registerOutput<bool?>(
-      'allowBranchToBranchTraffic',
-    );
+    allowBranchToBranchTraffic = registerOutput<bool?>('allowBranchToBranchTraffic');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    azureFirewall = registerOutput<SubResourceResponse?>(
-      'azureFirewall',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SubResourceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    bgpConnections = registerOutput<List<Map<String, dynamic>>>(
-      'bgpConnections',
-    );
+    azureFirewall = registerOutput<SubResourceResponse?>('azureFirewall', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    bgpConnections = registerOutput<List<Map<String, dynamic>>>('bgpConnections');
     etag = registerOutput<String>('etag');
-    expressRouteGateway = registerOutput<SubResourceResponse?>(
-      'expressRouteGateway',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SubResourceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    expressRouteGateway = registerOutput<SubResourceResponse?>('expressRouteGateway', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     hubRoutingPreference = registerOutput<String?>('hubRoutingPreference');
-    ipConfigurations = registerOutput<List<Map<String, dynamic>>>(
-      'ipConfigurations',
-    );
+    ipConfigurations = registerOutput<List<Map<String, dynamic>>>('ipConfigurations');
     kind = registerOutput<String>('kind');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    p2SVpnGateway = registerOutput<SubResourceResponse?>(
-      'p2SVpnGateway',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SubResourceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    preferredRoutingGateway = registerOutput<String?>(
-      'preferredRoutingGateway',
-    );
+    p2SVpnGateway = registerOutput<SubResourceResponse?>('p2SVpnGateway', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    preferredRoutingGateway = registerOutput<String?>('preferredRoutingGateway');
     provisioningState = registerOutput<String>('provisioningState');
     routeMaps = registerOutput<List<Map<String, dynamic>>>('routeMaps');
-    routeTable = registerOutput<VirtualHubRouteTableResponse?>(
-      'routeTable',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VirtualHubRouteTableResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    routeTable = registerOutput<VirtualHubRouteTableResponse?>('routeTable', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualHubRouteTableResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     routingState = registerOutput<String>('routingState');
-    securityPartnerProvider = registerOutput<SubResourceResponse?>(
-      'securityPartnerProvider',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SubResourceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    securityPartnerProvider = registerOutput<SubResourceResponse?>('securityPartnerProvider', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     securityProviderName = registerOutput<String?>('securityProviderName');
     sku = registerOutput<String?>('sku');
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
-    virtualHubRouteTableV2s = registerOutput<List<Map<String, dynamic>>?>(
-      'virtualHubRouteTableV2s',
-    );
+    virtualHubRouteTableV2s = registerOutput<List<Map<String, dynamic>>?>('virtualHubRouteTableV2s');
     virtualRouterAsn = registerOutput<double?>('virtualRouterAsn');
-    virtualRouterAutoScaleConfiguration =
-        registerOutput<VirtualRouterAutoScaleConfigurationResponse?>(
-          'virtualRouterAutoScaleConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return VirtualRouterAutoScaleConfigurationResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    virtualRouterAutoScaleConfiguration = registerOutput<VirtualRouterAutoScaleConfigurationResponse?>('virtualRouterAutoScaleConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualRouterAutoScaleConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     virtualRouterIps = registerOutput<List<String>?>('virtualRouterIps');
-    virtualWan = registerOutput<SubResourceResponse?>(
-      'virtualWan',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SubResourceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    vpnGateway = registerOutput<SubResourceResponse?>(
-      'vpnGateway',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SubResourceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    virtualWan = registerOutput<SubResourceResponse?>('virtualWan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vpnGateway = registerOutput<SubResourceResponse?>('vpnGateway', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

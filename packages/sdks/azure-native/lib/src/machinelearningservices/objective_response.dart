@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ObjectiveResponse {
   /// [Required] Defines supported metric goals for hyperparameter tuning
   final pulumi.Input<String> goal;
-
   /// [Required] Name of the metric to optimize.
   final pulumi.Input<String> primaryMetric;
 
   /// Creates a new [ObjectiveResponse].
   /// [goal] [Required] Defines supported metric goals for hyperparameter tuning
   /// [primaryMetric] [Required] Name of the metric to optimize.
-  ObjectiveResponse({required this.goal, required this.primaryMetric});
+  ObjectiveResponse({
+    required this.goal,
+    required this.primaryMetric,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'goal': goal, 'primaryMetric': primaryMetric};
+    return <String, dynamic>{
+      'goal': goal,
+      'primaryMetric': primaryMetric,
+    };
   }
 
   factory ObjectiveResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class ObjectiveResponse {
     );
   }
 }
+

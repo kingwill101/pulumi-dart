@@ -838,8 +838,7 @@ Future<GetBandwidthPackagesResult> getBandwidthPackages(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_ga_get_basic_accelerate_ip_endpoint_relations_get_basic_accelerate_ip_endpoint_relations_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetBasicAccelerateIpEndpointRelationsResult>
-getBasicAccelerateIpEndpointRelations(
+Future<GetBasicAccelerateIpEndpointRelationsResult> getBasicAccelerateIpEndpointRelations(
   GetBasicAccelerateIpEndpointRelationsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1387,8 +1386,7 @@ Future<GetBasicEndpointsResult> getBasicEndpoints(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_ga_get_custom_routing_endpoint_group_destinations_get_custom_routing_endpoint_group_destinations_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetCustomRoutingEndpointGroupDestinationsResult>
-getCustomRoutingEndpointGroupDestinations(
+Future<GetCustomRoutingEndpointGroupDestinationsResult> getCustomRoutingEndpointGroupDestinations(
   GetCustomRoutingEndpointGroupDestinationsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1686,8 +1684,7 @@ Future<GetCustomRoutingEndpointGroupsResult> getCustomRoutingEndpointGroups(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_ga_get_custom_routing_endpoint_traffic_policies_get_custom_routing_endpoint_traffic_policies_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetCustomRoutingEndpointTrafficPoliciesResult>
-getCustomRoutingEndpointTrafficPolicies(
+Future<GetCustomRoutingEndpointTrafficPoliciesResult> getCustomRoutingEndpointTrafficPolicies(
   GetCustomRoutingEndpointTrafficPoliciesArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -2283,8 +2280,7 @@ Future<GetDomainsResult> getDomains(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_ga_get_endpoint_group_ip_address_cidr_blocks_get_endpoint_group_ip_address_cidr_blocks_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetEndpointGroupIpAddressCidrBlocksResult>
-getEndpointGroupIpAddressCidrBlocks(
+Future<GetEndpointGroupIpAddressCidrBlocksResult> getEndpointGroupIpAddressCidrBlocks(
   GetEndpointGroupIpAddressCidrBlocksArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

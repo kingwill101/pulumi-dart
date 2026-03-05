@@ -10,25 +10,20 @@ class AutomationRuleConditionResponse {
 
   /// Creates a new [AutomationRuleConditionResponse].
   /// [targetsPresentCondition] Optional. Details around targets enumerated in the rule.
-  AutomationRuleConditionResponse({required this.targetsPresentCondition});
+  AutomationRuleConditionResponse({
+    required this.targetsPresentCondition,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'targetsPresentCondition':
-          pulumi.Input.mapInputValue<
-            TargetsPresentConditionResponse,
-            Map<String, dynamic>
-          >(targetsPresentCondition, (value) => value.toMap()),
+      'targetsPresentCondition': pulumi.Input.mapInputValue<TargetsPresentConditionResponse, Map<String, dynamic>>(targetsPresentCondition, (value) => value.toMap()),
     };
   }
 
   factory AutomationRuleConditionResponse.fromMap(Map<String, dynamic> map) {
     return AutomationRuleConditionResponse(
-      targetsPresentCondition: pulumi.Input.fromValue(
-        TargetsPresentConditionResponse.fromMap(
-          (map['targetsPresentCondition']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      targetsPresentCondition: pulumi.Input.fromValue(TargetsPresentConditionResponse.fromMap((map['targetsPresentCondition']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

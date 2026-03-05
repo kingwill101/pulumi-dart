@@ -6,8 +6,7 @@ import 'get_database_mysql_config_mysql.dart';
 
 /// Result data returned by getDatabaseMysqlConfig.
 class GetDatabaseMysqlConfigResult {
-  final List<GetDatabaseMysqlConfigBinlogRetentionPeriod>
-  binlogRetentionPeriods;
+  final List<GetDatabaseMysqlConfigBinlogRetentionPeriod> binlogRetentionPeriods;
   final String id;
   final List<GetDatabaseMysqlConfigMysql> mysqls;
 
@@ -23,36 +22,18 @@ class GetDatabaseMysqlConfigResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'binlogRetentionPeriods':
-          pulumi.Input.encodeList<
-            GetDatabaseMysqlConfigBinlogRetentionPeriod,
-            Map<String, dynamic>
-          >(binlogRetentionPeriods, (value) => value.toMap()),
+      'binlogRetentionPeriods': pulumi.Input.encodeList<GetDatabaseMysqlConfigBinlogRetentionPeriod, Map<String, dynamic>>(binlogRetentionPeriods, (value) => value.toMap()),
       'id': id,
-      'mysqls':
-          pulumi.Input.encodeList<
-            GetDatabaseMysqlConfigMysql,
-            Map<String, dynamic>
-          >(mysqls, (value) => value.toMap()),
+      'mysqls': pulumi.Input.encodeList<GetDatabaseMysqlConfigMysql, Map<String, dynamic>>(mysqls, (value) => value.toMap()),
     };
   }
 
   factory GetDatabaseMysqlConfigResult.fromMap(Map<String, dynamic> map) {
     return GetDatabaseMysqlConfigResult(
-      binlogRetentionPeriods:
-          pulumi.Input.decodeList<GetDatabaseMysqlConfigBinlogRetentionPeriod>(
-            map['binlogRetentionPeriods']!,
-            (value) => GetDatabaseMysqlConfigBinlogRetentionPeriod.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      binlogRetentionPeriods: pulumi.Input.decodeList<GetDatabaseMysqlConfigBinlogRetentionPeriod>(map['binlogRetentionPeriods']!, (value) => GetDatabaseMysqlConfigBinlogRetentionPeriod.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      mysqls: pulumi.Input.decodeList<GetDatabaseMysqlConfigMysql>(
-        map['mysqls']!,
-        (value) => GetDatabaseMysqlConfigMysql.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      mysqls: pulumi.Input.decodeList<GetDatabaseMysqlConfigMysql>(map['mysqls']!, (value) => GetDatabaseMysqlConfigMysql.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

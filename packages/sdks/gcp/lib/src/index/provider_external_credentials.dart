@@ -29,9 +29,8 @@ class ProviderExternalCredentials {
     return ProviderExternalCredentials(
       audience: pulumi.Input.fromValue(map['audience'] as String),
       identityToken: pulumi.Input.fromValue(map['identityToken'] as String),
-      serviceAccountEmail: pulumi.Input.fromValue(
-        map['serviceAccountEmail'] as String,
-      ),
+      serviceAccountEmail: pulumi.Input.fromValue(map['serviceAccountEmail'] as String),
     );
   }
 }
+

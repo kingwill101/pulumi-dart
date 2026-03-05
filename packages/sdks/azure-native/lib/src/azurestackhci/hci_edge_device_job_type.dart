@@ -15,3 +15,4 @@ enum HciEdgeDeviceJobType {
     throw ArgumentError('Unknown HciEdgeDeviceJobType value: $value');
   }
 }
+

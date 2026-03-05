@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermission {
   /// Set of AWS Organization ARNs.
   final pulumi.Input<List<String>> organizationArns;
-
   /// Set of AWS Organizational Unit ARNs.
   final pulumi.Input<List<String>> organizationalUnitArns;
-
   /// Set of EC2 launch permission user groups.
   final pulumi.Input<List<String>> userGroups;
-
   /// Set of AWS Account identifiers.
   final pulumi.Input<List<String>> userIds;
 
@@ -36,20 +33,13 @@ class GetDistributionConfigurationDistributionAmiDistributionConfigurationLaunch
     };
   }
 
-  factory GetDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermission.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermission.fromMap(Map<String, dynamic> map) {
     return GetDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermission(
-      organizationArns: pulumi.Input.fromValue(
-        (map['organizationArns'] as List).cast<String>(),
-      ),
-      organizationalUnitArns: pulumi.Input.fromValue(
-        (map['organizationalUnitArns'] as List).cast<String>(),
-      ),
-      userGroups: pulumi.Input.fromValue(
-        (map['userGroups'] as List).cast<String>(),
-      ),
+      organizationArns: pulumi.Input.fromValue((map['organizationArns'] as List).cast<String>()),
+      organizationalUnitArns: pulumi.Input.fromValue((map['organizationalUnitArns'] as List).cast<String>()),
+      userGroups: pulumi.Input.fromValue((map['userGroups'] as List).cast<String>()),
       userIds: pulumi.Input.fromValue((map['userIds'] as List).cast<String>()),
     );
   }
 }
+

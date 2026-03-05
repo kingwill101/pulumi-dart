@@ -10,26 +10,16 @@ import 'google_cloud_datalabeling_v1beta1_text_metadata_response.dart';
 class GoogleCloudDatalabelingV1beta1InputConfigResponse {
   /// Optional. The type of annotation to be performed on this data. You must specify this field if you are using this InputConfig in an EvaluationJob.
   final pulumi.Input<String> annotationType;
-
   /// Source located in BigQuery. You must specify this field if you are using this InputConfig in an EvaluationJob.
-  final pulumi.Input<GoogleCloudDatalabelingV1beta1BigQuerySourceResponse>
-  bigquerySource;
-
+  final pulumi.Input<GoogleCloudDatalabelingV1beta1BigQuerySourceResponse> bigquerySource;
   /// Optional. Metadata about annotations for the input. You must specify this field if you are using this InputConfig in an EvaluationJob for a model version that performs classification.
-  final pulumi.Input<
-    GoogleCloudDatalabelingV1beta1ClassificationMetadataResponse
-  >
-  classificationMetadata;
-
+  final pulumi.Input<GoogleCloudDatalabelingV1beta1ClassificationMetadataResponse> classificationMetadata;
   /// Data type must be specifed when user tries to import data.
   final pulumi.Input<String> dataType;
-
   /// Source located in Cloud Storage.
   final pulumi.Input<GoogleCloudDatalabelingV1beta1GcsSourceResponse> gcsSource;
-
   /// Required for text import, as language code must be specified.
-  final pulumi.Input<GoogleCloudDatalabelingV1beta1TextMetadataResponse>
-  textMetadata;
+  final pulumi.Input<GoogleCloudDatalabelingV1beta1TextMetadataResponse> textMetadata;
 
   /// Creates a new [GoogleCloudDatalabelingV1beta1InputConfigResponse].
   /// [annotationType] Optional. The type of annotation to be performed on this data. You must specify this field if you are using this InputConfig in an EvaluationJob.
@@ -50,56 +40,23 @@ class GoogleCloudDatalabelingV1beta1InputConfigResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'annotationType': annotationType,
-      'bigquerySource':
-          pulumi.Input.mapInputValue<
-            GoogleCloudDatalabelingV1beta1BigQuerySourceResponse,
-            Map<String, dynamic>
-          >(bigquerySource, (value) => value.toMap()),
-      'classificationMetadata':
-          pulumi.Input.mapInputValue<
-            GoogleCloudDatalabelingV1beta1ClassificationMetadataResponse,
-            Map<String, dynamic>
-          >(classificationMetadata, (value) => value.toMap()),
+      'bigquerySource': pulumi.Input.mapInputValue<GoogleCloudDatalabelingV1beta1BigQuerySourceResponse, Map<String, dynamic>>(bigquerySource, (value) => value.toMap()),
+      'classificationMetadata': pulumi.Input.mapInputValue<GoogleCloudDatalabelingV1beta1ClassificationMetadataResponse, Map<String, dynamic>>(classificationMetadata, (value) => value.toMap()),
       'dataType': dataType,
-      'gcsSource':
-          pulumi.Input.mapInputValue<
-            GoogleCloudDatalabelingV1beta1GcsSourceResponse,
-            Map<String, dynamic>
-          >(gcsSource, (value) => value.toMap()),
-      'textMetadata':
-          pulumi.Input.mapInputValue<
-            GoogleCloudDatalabelingV1beta1TextMetadataResponse,
-            Map<String, dynamic>
-          >(textMetadata, (value) => value.toMap()),
+      'gcsSource': pulumi.Input.mapInputValue<GoogleCloudDatalabelingV1beta1GcsSourceResponse, Map<String, dynamic>>(gcsSource, (value) => value.toMap()),
+      'textMetadata': pulumi.Input.mapInputValue<GoogleCloudDatalabelingV1beta1TextMetadataResponse, Map<String, dynamic>>(textMetadata, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudDatalabelingV1beta1InputConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDatalabelingV1beta1InputConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatalabelingV1beta1InputConfigResponse(
       annotationType: pulumi.Input.fromValue(map['annotationType'] as String),
-      bigquerySource: pulumi.Input.fromValue(
-        GoogleCloudDatalabelingV1beta1BigQuerySourceResponse.fromMap(
-          (map['bigquerySource']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      classificationMetadata: pulumi.Input.fromValue(
-        GoogleCloudDatalabelingV1beta1ClassificationMetadataResponse.fromMap(
-          (map['classificationMetadata']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      bigquerySource: pulumi.Input.fromValue(GoogleCloudDatalabelingV1beta1BigQuerySourceResponse.fromMap((map['bigquerySource']! as Map).cast<String, dynamic>())),
+      classificationMetadata: pulumi.Input.fromValue(GoogleCloudDatalabelingV1beta1ClassificationMetadataResponse.fromMap((map['classificationMetadata']! as Map).cast<String, dynamic>())),
       dataType: pulumi.Input.fromValue(map['dataType'] as String),
-      gcsSource: pulumi.Input.fromValue(
-        GoogleCloudDatalabelingV1beta1GcsSourceResponse.fromMap(
-          (map['gcsSource']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      textMetadata: pulumi.Input.fromValue(
-        GoogleCloudDatalabelingV1beta1TextMetadataResponse.fromMap(
-          (map['textMetadata']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      gcsSource: pulumi.Input.fromValue(GoogleCloudDatalabelingV1beta1GcsSourceResponse.fromMap((map['gcsSource']! as Map).cast<String, dynamic>())),
+      textMetadata: pulumi.Input.fromValue(GoogleCloudDatalabelingV1beta1TextMetadataResponse.fromMap((map['textMetadata']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

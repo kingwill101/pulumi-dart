@@ -611,22 +611,16 @@ import 'image_args.dart';
 class Image extends pulumi.CustomResource {
   /// The fully qualified image name that was pushed to the registry.
   late final pulumi.Output<String> baseImageName;
-
   /// The path to the build context to use.
   late final pulumi.Output<String> context;
-
   /// The location of the Dockerfile relative to the docker build context.
   late final pulumi.Output<String> dockerfile;
-
   /// The fully qualified image name
   late final pulumi.Output<String> imageName;
-
   /// The image's architecture and OS
   late final pulumi.Output<String?> platform;
-
   /// The name of the registry server hosting the image.
   late final pulumi.Output<String> registryServer;
-
   /// **For pushed images:**
   /// The manifest digest of an image pushed to a registry, of the format repository@&lt;algorithm&gt;:&lt;hash&gt;, e.g. `username/demo-image@sha256:a6ae6dd8d39c5bb02320e41abf00cd4cb35905fec540e37d306c878be8d38bd3`.
   /// This reference is unique per image build and push.
@@ -640,13 +634,16 @@ class Image extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Image]. {@macro pulumi_index_image_image_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Image(String name, {ImageArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'docker:index/image:Image',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Image(
+    String name, {
+    ImageArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'docker:index/image:Image',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     baseImageName = registerOutput<String>('baseImageName');
     context = registerOutput<String>('context');
     dockerfile = registerOutput<String>('dockerfile');

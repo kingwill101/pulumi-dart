@@ -155,40 +155,26 @@ import 'virtual_network_tap_args.dart';
 class VirtualNetworkTapNetwork extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The reference to the private IP address on the internal Load Balancer that will receive the tap.
-  late final pulumi.Output<FrontendIPConfigurationResponse?>
-  destinationLoadBalancerFrontEndIPConfiguration;
-
+  late final pulumi.Output<FrontendIPConfigurationResponse?> destinationLoadBalancerFrontEndIPConfiguration;
   /// The reference to the private IP Address of the collector nic that will receive the tap.
-  late final pulumi.Output<NetworkInterfaceIPConfigurationResponse?>
-  destinationNetworkInterfaceIPConfiguration;
-
+  late final pulumi.Output<NetworkInterfaceIPConfigurationResponse?> destinationNetworkInterfaceIPConfiguration;
   /// The VXLAN destination port that will receive the tapped traffic.
   late final pulumi.Output<int?> destinationPort;
-
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
-
   /// Resource location.
   late final pulumi.Output<String?> location;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// Specifies the list of resource IDs for the network interface IP configuration that needs to be tapped.
-  late final pulumi.Output<List<Map<String, dynamic>>>
-  networkInterfaceTapConfigurations;
-
+  late final pulumi.Output<List<Map<String, dynamic>>> networkInterfaceTapConfigurations;
   /// The provisioning state of the virtual network tap resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The resource GUID property of the virtual network tap resource.
   late final pulumi.Output<String> resourceGuid;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -201,42 +187,19 @@ class VirtualNetworkTapNetwork extends pulumi.CustomResource {
     VirtualNetworkTapArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:network:VirtualNetworkTap',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:network:VirtualNetworkTap',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    destinationLoadBalancerFrontEndIPConfiguration =
-        registerOutput<FrontendIPConfigurationResponse?>(
-          'destinationLoadBalancerFrontEndIPConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return FrontendIPConfigurationResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    destinationNetworkInterfaceIPConfiguration =
-        registerOutput<NetworkInterfaceIPConfigurationResponse?>(
-          'destinationNetworkInterfaceIPConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return NetworkInterfaceIPConfigurationResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    destinationLoadBalancerFrontEndIPConfiguration = registerOutput<FrontendIPConfigurationResponse?>('destinationLoadBalancerFrontEndIPConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FrontendIPConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    destinationNetworkInterfaceIPConfiguration = registerOutput<NetworkInterfaceIPConfigurationResponse?>('destinationNetworkInterfaceIPConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkInterfaceIPConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     destinationPort = registerOutput<int?>('destinationPort');
     etag = registerOutput<String>('etag');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    networkInterfaceTapConfigurations =
-        registerOutput<List<Map<String, dynamic>>>(
-          'networkInterfaceTapConfigurations',
-        );
+    networkInterfaceTapConfigurations = registerOutput<List<Map<String, dynamic>>>('networkInterfaceTapConfigurations');
     provisioningState = registerOutput<String>('provisioningState');
     resourceGuid = registerOutput<String>('resourceGuid');
     tags = registerOutput<Map<String, String>?>('tags');

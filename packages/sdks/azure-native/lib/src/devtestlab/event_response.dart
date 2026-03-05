@@ -9,19 +9,20 @@ class EventResponse {
 
   /// Creates a new [EventResponse].
   /// [eventName] The event type for which this notification is enabled (i.e. AutoShutdown, Cost)
-  EventResponse({this.eventName});
+  EventResponse({
+    this.eventName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'eventName': ?eventName};
+    return <String, dynamic>{
+      'eventName': ?eventName,
+    };
   }
 
   factory EventResponse.fromMap(Map<String, dynamic> map) {
     return EventResponse(
-      eventName: (() {
-        final guardedValue = map['eventName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      eventName: (() { final guardedValue = map['eventName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

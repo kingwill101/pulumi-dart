@@ -630,25 +630,18 @@ import 'slb_attachment_state.dart';
 class SlbAttachment extends pulumi.CustomResource {
   /// The ID of the application to which you want to bind an SLB instance.
   late final pulumi.Output<String> appId;
-
   /// The listening port for the bound SLB instance.
   late final pulumi.Output<int?> listenerPort;
-
   /// The ID of the SLB instance that is going to be bound.
   late final pulumi.Output<String> slbId;
-
   /// The IP address that is allocated to the bound SLB instance.
   late final pulumi.Output<String> slbIp;
-
   /// Running Status of SLB instance. Inactive：The instance is stopped, and listener will not monitor and forward traffic. Active：The instance is running. After the instance is created, the default state is active. Locked：The instance is locked, the instance has been owed or locked by Alibaba Cloud. Expired: The instance has expired.
   late final pulumi.Output<String> slbStatus;
-
   /// The type of the bound SLB instance.
   late final pulumi.Output<String> type;
-
   /// The ID of the virtual server (VServer) group associated with the intranet SLB instance.
   late final pulumi.Output<String?> vserverGroupId;
-
   /// VPC related vswitch ID.
   late final pulumi.Output<String> vswitchId;
 
@@ -661,11 +654,11 @@ class SlbAttachment extends pulumi.CustomResource {
     SlbAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:edas/slbAttachment:SlbAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:edas/slbAttachment:SlbAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appId = registerOutput<String>('appId');
     listenerPort = registerOutput<int?>('listenerPort');
     slbId = registerOutput<String>('slbId');
@@ -694,11 +687,11 @@ class SlbAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:edas/slbAttachment:SlbAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:edas/slbAttachment:SlbAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appId = registerOutput<String>('appId');
     listenerPort = registerOutput<int?>('listenerPort');
     slbId = registerOutput<String>('slbId');

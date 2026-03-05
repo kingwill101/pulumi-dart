@@ -24,3 +24,4 @@ enum MaccMilestoneStatus {
     throw ArgumentError('Unknown MaccMilestoneStatus value: $value');
   }
 }
+

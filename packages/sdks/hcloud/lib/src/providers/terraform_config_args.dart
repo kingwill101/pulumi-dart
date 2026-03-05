@@ -11,13 +11,20 @@ class TerraformConfigArgs {
 
   /// Creates a new [TerraformConfigArgs].
   /// [self] Required.
-  TerraformConfigArgs({required this.self});
+  TerraformConfigArgs({
+    required this.self,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'__self__': self};
+    return <String, dynamic>{
+      '__self__': self,
+    };
   }
 
   factory TerraformConfigArgs.fromMap(Map<String, dynamic> map) {
-    return TerraformConfigArgs(self: pulumi.Input.fromValue(map['__self__']));
+    return TerraformConfigArgs(
+      self: pulumi.Input.fromValue(map['__self__']),
+    );
   }
 }
+

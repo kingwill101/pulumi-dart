@@ -444,16 +444,12 @@ import 'managed_policy_attachment_state.dart';
 class ManagedPolicyAttachment extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the SSO Instance under which the operation will be executed.
   late final pulumi.Output<String> instanceArn;
-
   /// The IAM managed policy Amazon Resource Name (ARN) to be attached to the Permission Set.
   late final pulumi.Output<String> managedPolicyArn;
-
   /// The name of the IAM Managed Policy.
   late final pulumi.Output<String> managedPolicyName;
-
   /// The Amazon Resource Name (ARN) of the Permission Set.
   late final pulumi.Output<String> permissionSetArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -466,11 +462,11 @@ class ManagedPolicyAttachment extends pulumi.CustomResource {
     ManagedPolicyAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ssoadmin/managedPolicyAttachment:ManagedPolicyAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ssoadmin/managedPolicyAttachment:ManagedPolicyAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     instanceArn = registerOutput<String>('instanceArn');
     managedPolicyArn = registerOutput<String>('managedPolicyArn');
     managedPolicyName = registerOutput<String>('managedPolicyName');
@@ -496,11 +492,11 @@ class ManagedPolicyAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ssoadmin/managedPolicyAttachment:ManagedPolicyAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ssoadmin/managedPolicyAttachment:ManagedPolicyAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     instanceArn = registerOutput<String>('instanceArn');
     managedPolicyArn = registerOutput<String>('managedPolicyArn');
     managedPolicyName = registerOutput<String>('managedPolicyName');

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSecurityPolicyArgs {
   /// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
   final pulumi.Input<String> profileName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Name of the security policy under the profile.
   final pulumi.Input<String> securityPolicyName;
 
@@ -37,12 +35,9 @@ class GetSecurityPolicyArgs {
   factory GetSecurityPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetSecurityPolicyArgs(
       profileName: pulumi.Input.fromValue(map['profileName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      securityPolicyName: pulumi.Input.fromValue(
-        map['securityPolicyName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      securityPolicyName: pulumi.Input.fromValue(map['securityPolicyName'] as String),
     );
   }
 }
+

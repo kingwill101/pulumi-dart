@@ -5,25 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVpnServerConfigurationIpsecPolicy {
   /// The DH Group, used in IKE Phase 1.
   final pulumi.Input<String> dhGroup;
-
   /// The IKE encryption algorithm, used for IKE Phase 2.
   final pulumi.Input<String> ikeEncryption;
-
   /// The IKE encryption integrity algorithm, used for IKE Phase 2.
   final pulumi.Input<String> ikeIntegrity;
-
   /// The IPSec encryption algorithm, used for IKE phase 1.
   final pulumi.Input<String> ipsecEncryption;
-
   /// The IPSec integrity algorithm, used for IKE phase 1.
   final pulumi.Input<String> ipsecIntegrity;
-
   /// The Pfs Group, used in IKE Phase 2.
   final pulumi.Input<String> pfsGroup;
-
   /// The IPSec Security Association payload size in KB for a Site-to-Site VPN tunnel.
   final pulumi.Input<int> saDataSizeKilobytes;
-
   /// The IPSec Security Association lifetime in seconds for a Site-to-Site VPN tunnel.
   final pulumi.Input<int> saLifetimeSeconds;
 
@@ -60,9 +53,7 @@ class GetVpnServerConfigurationIpsecPolicy {
     };
   }
 
-  factory GetVpnServerConfigurationIpsecPolicy.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetVpnServerConfigurationIpsecPolicy.fromMap(Map<String, dynamic> map) {
     return GetVpnServerConfigurationIpsecPolicy(
       dhGroup: pulumi.Input.fromValue(map['dhGroup'] as String),
       ikeEncryption: pulumi.Input.fromValue(map['ikeEncryption'] as String),
@@ -70,12 +61,9 @@ class GetVpnServerConfigurationIpsecPolicy {
       ipsecEncryption: pulumi.Input.fromValue(map['ipsecEncryption'] as String),
       ipsecIntegrity: pulumi.Input.fromValue(map['ipsecIntegrity'] as String),
       pfsGroup: pulumi.Input.fromValue(map['pfsGroup'] as String),
-      saDataSizeKilobytes: pulumi.Input.fromValue(
-        map['saDataSizeKilobytes'] as int,
-      ),
-      saLifetimeSeconds: pulumi.Input.fromValue(
-        map['saLifetimeSeconds'] as int,
-      ),
+      saDataSizeKilobytes: pulumi.Input.fromValue(map['saDataSizeKilobytes'] as int),
+      saLifetimeSeconds: pulumi.Input.fromValue(map['saLifetimeSeconds'] as int),
     );
   }
 }
+

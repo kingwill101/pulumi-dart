@@ -10,29 +10,20 @@ class SdsConfig {
 
   /// Creates a new [SdsConfig].
   /// [grpcServiceConfig] The configuration to access the SDS server over GRPC.
-  SdsConfig({this.grpcServiceConfig});
+  SdsConfig({
+    this.grpcServiceConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'grpcServiceConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            GrpcServiceConfig,
-            Map<String, dynamic>
-          >(grpcServiceConfig, (value) => value.toMap()),
+      'grpcServiceConfig': ?pulumi.Input.mapOptionalInputValue<GrpcServiceConfig, Map<String, dynamic>>(grpcServiceConfig, (value) => value.toMap()),
     };
   }
 
   factory SdsConfig.fromMap(Map<String, dynamic> map) {
     return SdsConfig(
-      grpcServiceConfig: (() {
-        final guardedValue = map['grpcServiceConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GrpcServiceConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      grpcServiceConfig: (() { final guardedValue = map['grpcServiceConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GrpcServiceConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

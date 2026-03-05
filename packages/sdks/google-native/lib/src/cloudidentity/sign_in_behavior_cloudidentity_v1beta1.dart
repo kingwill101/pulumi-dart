@@ -6,34 +6,24 @@ import 'sign_in_behavior_redirect_condition_cloudidentity_v1beta1.dart';
 /// Controls sign-in behavior.
 class SignInBehaviorCloudidentityV1beta1 {
   /// When to redirect sign-ins to the IdP.
-  final pulumi.Input<SignInBehaviorRedirectConditionCloudidentityV1beta1>?
-  redirectCondition;
+  final pulumi.Input<SignInBehaviorRedirectConditionCloudidentityV1beta1>? redirectCondition;
 
   /// Creates a new [SignInBehaviorCloudidentityV1beta1].
   /// [redirectCondition] When to redirect sign-ins to the IdP.
-  SignInBehaviorCloudidentityV1beta1({this.redirectCondition});
+  SignInBehaviorCloudidentityV1beta1({
+    this.redirectCondition,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'redirectCondition':
-          ?pulumi.Input.mapOptionalInputValue<
-            SignInBehaviorRedirectConditionCloudidentityV1beta1,
-            String
-          >(redirectCondition, (value) => value.wireValue),
+      'redirectCondition': ?pulumi.Input.mapOptionalInputValue<SignInBehaviorRedirectConditionCloudidentityV1beta1, String>(redirectCondition, (value) => value.wireValue),
     };
   }
 
   factory SignInBehaviorCloudidentityV1beta1.fromMap(Map<String, dynamic> map) {
     return SignInBehaviorCloudidentityV1beta1(
-      redirectCondition: (() {
-        final guardedValue = map['redirectCondition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SignInBehaviorRedirectConditionCloudidentityV1beta1.fromValue(
-            guardedValue as String,
-          ),
-        );
-      })(),
+      redirectCondition: (() { final guardedValue = map['redirectCondition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SignInBehaviorRedirectConditionCloudidentityV1beta1.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

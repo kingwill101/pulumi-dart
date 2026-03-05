@@ -20,10 +20,14 @@ class WorkforcePoolProviderSaml {
 
   /// Creates a new [WorkforcePoolProviderSaml].
   /// [idpMetadataXml] SAML Identity provider configuration metadata xml doc.
-  WorkforcePoolProviderSaml({required this.idpMetadataXml});
+  WorkforcePoolProviderSaml({
+    required this.idpMetadataXml,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'idpMetadataXml': idpMetadataXml};
+    return <String, dynamic>{
+      'idpMetadataXml': idpMetadataXml,
+    };
   }
 
   factory WorkforcePoolProviderSaml.fromMap(Map<String, dynamic> map) {
@@ -32,3 +36,4 @@ class WorkforcePoolProviderSaml {
     );
   }
 }
+

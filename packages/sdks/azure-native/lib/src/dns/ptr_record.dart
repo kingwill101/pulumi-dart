@@ -9,19 +9,20 @@ class PtrRecord {
 
   /// Creates a new [PtrRecord].
   /// [ptrdname] The PTR target domain name for this PTR record.
-  PtrRecord({this.ptrdname});
+  PtrRecord({
+    this.ptrdname,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'ptrdname': ?ptrdname};
+    return <String, dynamic>{
+      'ptrdname': ?ptrdname,
+    };
   }
 
   factory PtrRecord.fromMap(Map<String, dynamic> map) {
     return PtrRecord(
-      ptrdname: (() {
-        final guardedValue = map['ptrdname'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ptrdname: (() { final guardedValue = map['ptrdname']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

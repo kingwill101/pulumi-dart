@@ -5,15 +5,11 @@ import 'channel_input_attachment_input_settings_caption_selector_selector_settin
 
 class ChannelInputAttachmentInputSettingsCaptionSelector {
   final pulumi.Input<String>? languageCode;
-
   /// Name of the Channel.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> name;
-  final pulumi.Input<
-    ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettings
-  >?
-  selectorSettings;
+  final pulumi.Input<ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettings>? selectorSettings;
 
   /// Creates a new [ChannelInputAttachmentInputSettingsCaptionSelector].
   /// [languageCode] Optional.
@@ -29,33 +25,16 @@ class ChannelInputAttachmentInputSettingsCaptionSelector {
     return <String, dynamic>{
       'languageCode': ?languageCode,
       'name': name,
-      'selectorSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettings,
-            Map<String, dynamic>
-          >(selectorSettings, (value) => value.toMap()),
+      'selectorSettings': ?pulumi.Input.mapOptionalInputValue<ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettings, Map<String, dynamic>>(selectorSettings, (value) => value.toMap()),
     };
   }
 
-  factory ChannelInputAttachmentInputSettingsCaptionSelector.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ChannelInputAttachmentInputSettingsCaptionSelector.fromMap(Map<String, dynamic> map) {
     return ChannelInputAttachmentInputSettingsCaptionSelector(
-      languageCode: (() {
-        final guardedValue = map['languageCode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      languageCode: (() { final guardedValue = map['languageCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      selectorSettings: (() {
-        final guardedValue = map['selectorSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettings.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      selectorSettings: (() { final guardedValue = map['selectorSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

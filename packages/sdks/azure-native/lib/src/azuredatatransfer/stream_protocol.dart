@@ -16,3 +16,4 @@ enum StreamProtocol {
     throw ArgumentError('Unknown StreamProtocol value: $value');
   }
 }
+

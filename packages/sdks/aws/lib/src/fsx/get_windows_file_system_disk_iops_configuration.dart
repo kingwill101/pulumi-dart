@@ -15,15 +15,17 @@ class GetWindowsFileSystemDiskIopsConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'iops': iops, 'mode': mode};
+    return <String, dynamic>{
+      'iops': iops,
+      'mode': mode,
+    };
   }
 
-  factory GetWindowsFileSystemDiskIopsConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetWindowsFileSystemDiskIopsConfiguration.fromMap(Map<String, dynamic> map) {
     return GetWindowsFileSystemDiskIopsConfiguration(
       iops: pulumi.Input.fromValue(map['iops'] as int),
       mode: pulumi.Input.fromValue(map['mode'] as String),
     );
   }
 }
+

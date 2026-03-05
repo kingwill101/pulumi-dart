@@ -9,19 +9,20 @@ class VmwareDhcpIpConfig {
 
   /// Creates a new [VmwareDhcpIpConfig].
   /// [enabled] enabled is a flag to mark if DHCP IP allocation is used for VMware user clusters.
-  VmwareDhcpIpConfig({this.enabled});
+  VmwareDhcpIpConfig({
+    this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': ?enabled};
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
   factory VmwareDhcpIpConfig.fromMap(Map<String, dynamic> map) {
     return VmwareDhcpIpConfig(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

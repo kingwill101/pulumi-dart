@@ -9,19 +9,20 @@ class PropertyUpdatesInProgressResponse {
 
   /// Creates a new [PropertyUpdatesInProgressResponse].
   /// [targetTier] The target performance tier of the disk if a tier change operation is in progress.
-  PropertyUpdatesInProgressResponse({this.targetTier});
+  PropertyUpdatesInProgressResponse({
+    this.targetTier,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'targetTier': ?targetTier};
+    return <String, dynamic>{
+      'targetTier': ?targetTier,
+    };
   }
 
   factory PropertyUpdatesInProgressResponse.fromMap(Map<String, dynamic> map) {
     return PropertyUpdatesInProgressResponse(
-      targetTier: (() {
-        final guardedValue = map['targetTier'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      targetTier: (() { final guardedValue = map['targetTier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

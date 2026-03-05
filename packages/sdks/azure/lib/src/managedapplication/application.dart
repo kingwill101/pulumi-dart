@@ -391,31 +391,22 @@ import 'application_state.dart';
 class Application extends pulumi.CustomResource {
   /// The application definition ID to deploy.
   late final pulumi.Output<String?> applicationDefinitionId;
-
   /// The kind of the managed application to deploy. Possible values are `MarketPlace` and `ServiceCatalog`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> kind;
-
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The name of the target resource group where all the resources deployed by the managed application will reside. Changing this forces a new resource to be created.
   late final pulumi.Output<String> managedResourceGroupName;
-
   /// Specifies the name of the Managed Application. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name and value pairs that define the managed application outputs.
   late final pulumi.Output<Map<String, String>> outputs;
-
   /// The parameter values to pass to the Managed Application. This field is a JSON object that allows you to assign parameters to this Managed Application.
   late final pulumi.Output<String> parameterValues;
-
   /// One `plan` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<ApplicationPlan?> plan;
-
   /// The name of the Resource Group where the Managed Application should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -428,32 +419,19 @@ class Application extends pulumi.CustomResource {
     ApplicationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:managedapplication/application:Application',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    applicationDefinitionId = registerOutput<String?>(
-      'applicationDefinitionId',
-    );
+          'azure:managedapplication/application:Application',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    applicationDefinitionId = registerOutput<String?>('applicationDefinitionId');
     kind = registerOutput<String>('kind');
     location = registerOutput<String>('location');
-    managedResourceGroupName = registerOutput<String>(
-      'managedResourceGroupName',
-    );
+    managedResourceGroupName = registerOutput<String>('managedResourceGroupName');
     this.name = registerOutput<String>('name');
     outputs = registerOutput<Map<String, String>>('outputs');
     parameterValues = registerOutput<String>('parameterValues');
-    plan = registerOutput<ApplicationPlan?>(
-      'plan',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApplicationPlan.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    plan = registerOutput<ApplicationPlan?>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationPlan.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
     tags = registerOutput<Map<String, String>?>('tags');
   }
@@ -476,32 +454,19 @@ class Application extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:managedapplication/application:Application',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    applicationDefinitionId = registerOutput<String?>(
-      'applicationDefinitionId',
-    );
+          'azure:managedapplication/application:Application',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    applicationDefinitionId = registerOutput<String?>('applicationDefinitionId');
     kind = registerOutput<String>('kind');
     location = registerOutput<String>('location');
-    managedResourceGroupName = registerOutput<String>(
-      'managedResourceGroupName',
-    );
+    managedResourceGroupName = registerOutput<String>('managedResourceGroupName');
     this.name = registerOutput<String>('name');
     outputs = registerOutput<Map<String, String>>('outputs');
     parameterValues = registerOutput<String>('parameterValues');
-    plan = registerOutput<ApplicationPlan?>(
-      'plan',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApplicationPlan.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    plan = registerOutput<ApplicationPlan?>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationPlan.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
     tags = registerOutput<Map<String, String>?>('tags');
   }

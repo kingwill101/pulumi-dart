@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TrunkedNetworkAttachmentConfigurationResponse {
   /// The resource ID of the network that is being configured for attachment.
   final pulumi.Input<String> networkId;
-
   /// The indicator of how this network will be utilized by the Kubernetes cluster.
   final pulumi.Input<String>? pluginType;
 
@@ -18,19 +17,17 @@ class TrunkedNetworkAttachmentConfigurationResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'networkId': networkId, 'pluginType': ?pluginType};
+    return <String, dynamic>{
+      'networkId': networkId,
+      'pluginType': ?pluginType,
+    };
   }
 
-  factory TrunkedNetworkAttachmentConfigurationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory TrunkedNetworkAttachmentConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return TrunkedNetworkAttachmentConfigurationResponse(
       networkId: pulumi.Input.fromValue(map['networkId'] as String),
-      pluginType: (() {
-        final guardedValue = map['pluginType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      pluginType: (() { final guardedValue = map['pluginType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

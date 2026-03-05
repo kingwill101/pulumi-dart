@@ -6,31 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceLimits {
   /// CPU limits in cores. At present, only full cores are supported.
   final pulumi.Input<double>? cpu;
-
   /// The memory limit in GB.
   final pulumi.Input<double>? memoryInGB;
 
   /// Creates a new [ResourceLimits].
   /// [cpu] CPU limits in cores. At present, only full cores are supported.
   /// [memoryInGB] The memory limit in GB.
-  ResourceLimits({this.cpu, this.memoryInGB});
+  ResourceLimits({
+    this.cpu,
+    this.memoryInGB,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'cpu': ?cpu, 'memoryInGB': ?memoryInGB};
+    return <String, dynamic>{
+      'cpu': ?cpu,
+      'memoryInGB': ?memoryInGB,
+    };
   }
 
   factory ResourceLimits.fromMap(Map<String, dynamic> map) {
     return ResourceLimits(
-      cpu: (() {
-        final guardedValue = map['cpu'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      memoryInGB: (() {
-        final guardedValue = map['memoryInGB'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      cpu: (() { final guardedValue = map['cpu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      memoryInGB: (() { final guardedValue = map['memoryInGB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

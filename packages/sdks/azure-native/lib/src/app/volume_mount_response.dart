@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VolumeMountResponse {
   /// Path within the container at which the volume should be mounted.Must not contain ':'.
   final pulumi.Input<String>? mountPath;
-
   /// Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
   final pulumi.Input<String>? subPath;
-
   /// This must match the Name of a Volume.
   final pulumi.Input<String>? volumeName;
 
@@ -17,7 +15,11 @@ class VolumeMountResponse {
   /// [mountPath] Path within the container at which the volume should be mounted.Must not contain ':'.
   /// [subPath] Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
   /// [volumeName] This must match the Name of a Volume.
-  VolumeMountResponse({this.mountPath, this.subPath, this.volumeName});
+  VolumeMountResponse({
+    this.mountPath,
+    this.subPath,
+    this.volumeName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class VolumeMountResponse {
 
   factory VolumeMountResponse.fromMap(Map<String, dynamic> map) {
     return VolumeMountResponse(
-      mountPath: (() {
-        final guardedValue = map['mountPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subPath: (() {
-        final guardedValue = map['subPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      volumeName: (() {
-        final guardedValue = map['volumeName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      mountPath: (() { final guardedValue = map['mountPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subPath: (() { final guardedValue = map['subPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      volumeName: (() { final guardedValue = map['volumeName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

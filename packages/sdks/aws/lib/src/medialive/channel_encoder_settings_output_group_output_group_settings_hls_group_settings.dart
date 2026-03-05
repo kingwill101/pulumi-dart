@@ -13,29 +13,16 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettings {
   final pulumi.Input<String>? baseUrlContent1;
   final pulumi.Input<String>? baseUrlManifest;
   final pulumi.Input<String>? baseUrlManifest1;
-  final pulumi.Input<
-    List<
-      ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsCaptionLanguageMapping
-    >
-  >?
-  captionLanguageMappings;
+  final pulumi.Input<List<ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsCaptionLanguageMapping>>? captionLanguageMappings;
   final pulumi.Input<String>? captionLanguageSetting;
   final pulumi.Input<String>? clientCache;
   final pulumi.Input<String>? codecSpecification;
   final pulumi.Input<String>? constantIv;
-  final pulumi.Input<
-    ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsDestination
-  >
-  destination;
+  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsDestination> destination;
   final pulumi.Input<String>? directoryStructure;
   final pulumi.Input<String>? discontinuityTags;
   final pulumi.Input<String>? encryptionType;
-  final pulumi.Input<
-    List<
-      ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSetting
-    >
-  >?
-  hlsCdnSettings;
+  final pulumi.Input<List<ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSetting>>? hlsCdnSettings;
   final pulumi.Input<String>? hlsId3SegmentTagging;
   final pulumi.Input<String>? iframeOnlyPlaylists;
   final pulumi.Input<String>? incompleteSegmentBehavior;
@@ -46,10 +33,7 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettings {
   final pulumi.Input<int>? keepSegments;
   final pulumi.Input<String>? keyFormat;
   final pulumi.Input<String>? keyFormatVersions;
-  final pulumi.Input<
-    ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsKeyProviderSettings
-  >?
-  keyProviderSettings;
+  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsKeyProviderSettings>? keyProviderSettings;
   final pulumi.Input<String>? manifestCompression;
   final pulumi.Input<String>? manifestDurationFormat;
   final pulumi.Input<int>? minSegmentLength;
@@ -62,7 +46,6 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettings {
   final pulumi.Input<int>? segmentLength;
   final pulumi.Input<int>? segmentsPerSubdirectory;
   final pulumi.Input<String>? streamInfResolution;
-
   /// Indicates ID3 frame that has the timecode.
   final pulumi.Input<String>? timedMetadataId3Frame;
   final pulumi.Input<int>? timedMetadataId3Period;
@@ -164,46 +147,16 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettings {
       'baseUrlContent1': ?baseUrlContent1,
       'baseUrlManifest': ?baseUrlManifest,
       'baseUrlManifest1': ?baseUrlManifest1,
-      'captionLanguageMappings':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<
-              ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsCaptionLanguageMapping
-            >,
-            List<Map<String, dynamic>>
-          >(
-            captionLanguageMappings,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsCaptionLanguageMapping,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'captionLanguageMappings': ?pulumi.Input.mapOptionalInputValue<List<ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsCaptionLanguageMapping>, List<Map<String, dynamic>>>(captionLanguageMappings, (value) => pulumi.Input.encodeList<ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsCaptionLanguageMapping, Map<String, dynamic>>(value, (value) => value.toMap())),
       'captionLanguageSetting': ?captionLanguageSetting,
       'clientCache': ?clientCache,
       'codecSpecification': ?codecSpecification,
       'constantIv': ?constantIv,
-      'destination':
-          pulumi.Input.mapInputValue<
-            ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsDestination,
-            Map<String, dynamic>
-          >(destination, (value) => value.toMap()),
+      'destination': pulumi.Input.mapInputValue<ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsDestination, Map<String, dynamic>>(destination, (value) => value.toMap()),
       'directoryStructure': ?directoryStructure,
       'discontinuityTags': ?discontinuityTags,
       'encryptionType': ?encryptionType,
-      'hlsCdnSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<
-              ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSetting
-            >,
-            List<Map<String, dynamic>>
-          >(
-            hlsCdnSettings,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSetting,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'hlsCdnSettings': ?pulumi.Input.mapOptionalInputValue<List<ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSetting>, List<Map<String, dynamic>>>(hlsCdnSettings, (value) => pulumi.Input.encodeList<ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSetting, Map<String, dynamic>>(value, (value) => value.toMap())),
       'hlsId3SegmentTagging': ?hlsId3SegmentTagging,
       'iframeOnlyPlaylists': ?iframeOnlyPlaylists,
       'incompleteSegmentBehavior': ?incompleteSegmentBehavior,
@@ -214,11 +167,7 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettings {
       'keepSegments': ?keepSegments,
       'keyFormat': ?keyFormat,
       'keyFormatVersions': ?keyFormatVersions,
-      'keyProviderSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsKeyProviderSettings,
-            Map<String, dynamic>
-          >(keyProviderSettings, (value) => value.toMap()),
+      'keyProviderSettings': ?pulumi.Input.mapOptionalInputValue<ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsKeyProviderSettings, Map<String, dynamic>>(keyProviderSettings, (value) => value.toMap()),
       'manifestCompression': ?manifestCompression,
       'manifestDurationFormat': ?manifestDurationFormat,
       'minSegmentLength': ?minSegmentLength,
@@ -238,244 +187,51 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettings {
     };
   }
 
-  factory ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettings(
-      adMarkers: (() {
-        final guardedValue = map['adMarkers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      baseUrlContent: (() {
-        final guardedValue = map['baseUrlContent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      baseUrlContent1: (() {
-        final guardedValue = map['baseUrlContent1'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      baseUrlManifest: (() {
-        final guardedValue = map['baseUrlManifest'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      baseUrlManifest1: (() {
-        final guardedValue = map['baseUrlManifest1'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      captionLanguageMappings: (() {
-        final guardedValue = map['captionLanguageMappings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsCaptionLanguageMapping
-          >(
-            guardedValue,
-            (value) =>
-                ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsCaptionLanguageMapping.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
-      captionLanguageSetting: (() {
-        final guardedValue = map['captionLanguageSetting'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      clientCache: (() {
-        final guardedValue = map['clientCache'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      codecSpecification: (() {
-        final guardedValue = map['codecSpecification'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      constantIv: (() {
-        final guardedValue = map['constantIv'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      destination: pulumi.Input.fromValue(
-        ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsDestination.fromMap(
-          (map['destination']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      directoryStructure: (() {
-        final guardedValue = map['directoryStructure'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      discontinuityTags: (() {
-        final guardedValue = map['discontinuityTags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      encryptionType: (() {
-        final guardedValue = map['encryptionType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      hlsCdnSettings: (() {
-        final guardedValue = map['hlsCdnSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSetting
-          >(
-            guardedValue,
-            (value) =>
-                ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSetting.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
-      hlsId3SegmentTagging: (() {
-        final guardedValue = map['hlsId3SegmentTagging'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      iframeOnlyPlaylists: (() {
-        final guardedValue = map['iframeOnlyPlaylists'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      incompleteSegmentBehavior: (() {
-        final guardedValue = map['incompleteSegmentBehavior'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      indexNSegments: (() {
-        final guardedValue = map['indexNSegments'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      inputLossAction: (() {
-        final guardedValue = map['inputLossAction'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ivInManifest: (() {
-        final guardedValue = map['ivInManifest'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ivSource: (() {
-        final guardedValue = map['ivSource'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keepSegments: (() {
-        final guardedValue = map['keepSegments'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      keyFormat: (() {
-        final guardedValue = map['keyFormat'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keyFormatVersions: (() {
-        final guardedValue = map['keyFormatVersions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keyProviderSettings: (() {
-        final guardedValue = map['keyProviderSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsKeyProviderSettings.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      manifestCompression: (() {
-        final guardedValue = map['manifestCompression'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      manifestDurationFormat: (() {
-        final guardedValue = map['manifestDurationFormat'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      minSegmentLength: (() {
-        final guardedValue = map['minSegmentLength'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      mode: (() {
-        final guardedValue = map['mode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      outputSelection: (() {
-        final guardedValue = map['outputSelection'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      programDateTime: (() {
-        final guardedValue = map['programDateTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      programDateTimeClock: (() {
-        final guardedValue = map['programDateTimeClock'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      programDateTimePeriod: (() {
-        final guardedValue = map['programDateTimePeriod'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      redundantManifest: (() {
-        final guardedValue = map['redundantManifest'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      segmentLength: (() {
-        final guardedValue = map['segmentLength'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      segmentsPerSubdirectory: (() {
-        final guardedValue = map['segmentsPerSubdirectory'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      streamInfResolution: (() {
-        final guardedValue = map['streamInfResolution'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      timedMetadataId3Frame: (() {
-        final guardedValue = map['timedMetadataId3Frame'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      timedMetadataId3Period: (() {
-        final guardedValue = map['timedMetadataId3Period'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      timestampDeltaMilliseconds: (() {
-        final guardedValue = map['timestampDeltaMilliseconds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      tsFileMode: (() {
-        final guardedValue = map['tsFileMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      adMarkers: (() { final guardedValue = map['adMarkers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      baseUrlContent: (() { final guardedValue = map['baseUrlContent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      baseUrlContent1: (() { final guardedValue = map['baseUrlContent1']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      baseUrlManifest: (() { final guardedValue = map['baseUrlManifest']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      baseUrlManifest1: (() { final guardedValue = map['baseUrlManifest1']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      captionLanguageMappings: (() { final guardedValue = map['captionLanguageMappings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsCaptionLanguageMapping>(guardedValue, (value) => ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsCaptionLanguageMapping.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      captionLanguageSetting: (() { final guardedValue = map['captionLanguageSetting']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      clientCache: (() { final guardedValue = map['clientCache']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      codecSpecification: (() { final guardedValue = map['codecSpecification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      constantIv: (() { final guardedValue = map['constantIv']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      destination: pulumi.Input.fromValue(ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsDestination.fromMap((map['destination']! as Map).cast<String, dynamic>())),
+      directoryStructure: (() { final guardedValue = map['directoryStructure']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      discontinuityTags: (() { final guardedValue = map['discontinuityTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      encryptionType: (() { final guardedValue = map['encryptionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      hlsCdnSettings: (() { final guardedValue = map['hlsCdnSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSetting>(guardedValue, (value) => ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSetting.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      hlsId3SegmentTagging: (() { final guardedValue = map['hlsId3SegmentTagging']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      iframeOnlyPlaylists: (() { final guardedValue = map['iframeOnlyPlaylists']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      incompleteSegmentBehavior: (() { final guardedValue = map['incompleteSegmentBehavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      indexNSegments: (() { final guardedValue = map['indexNSegments']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      inputLossAction: (() { final guardedValue = map['inputLossAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ivInManifest: (() { final guardedValue = map['ivInManifest']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ivSource: (() { final guardedValue = map['ivSource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keepSegments: (() { final guardedValue = map['keepSegments']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      keyFormat: (() { final guardedValue = map['keyFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyFormatVersions: (() { final guardedValue = map['keyFormatVersions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyProviderSettings: (() { final guardedValue = map['keyProviderSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsKeyProviderSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      manifestCompression: (() { final guardedValue = map['manifestCompression']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      manifestDurationFormat: (() { final guardedValue = map['manifestDurationFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      minSegmentLength: (() { final guardedValue = map['minSegmentLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      outputSelection: (() { final guardedValue = map['outputSelection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      programDateTime: (() { final guardedValue = map['programDateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      programDateTimeClock: (() { final guardedValue = map['programDateTimeClock']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      programDateTimePeriod: (() { final guardedValue = map['programDateTimePeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      redundantManifest: (() { final guardedValue = map['redundantManifest']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      segmentLength: (() { final guardedValue = map['segmentLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      segmentsPerSubdirectory: (() { final guardedValue = map['segmentsPerSubdirectory']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      streamInfResolution: (() { final guardedValue = map['streamInfResolution']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      timedMetadataId3Frame: (() { final guardedValue = map['timedMetadataId3Frame']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      timedMetadataId3Period: (() { final guardedValue = map['timedMetadataId3Period']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      timestampDeltaMilliseconds: (() { final guardedValue = map['timestampDeltaMilliseconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      tsFileMode: (() { final guardedValue = map['tsFileMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CacheDirectoryFlatFile {
   /// The URI of the file containing group information (`/etc/group` file format in Unix-like OS).
   final pulumi.Input<String> groupFileUri;
-
   /// The URI of the file containing user information (`/etc/passwd` file format in Unix-like OS).
   final pulumi.Input<String> passwordFileUri;
 
@@ -31,3 +30,4 @@ class CacheDirectoryFlatFile {
     );
   }
 }
+

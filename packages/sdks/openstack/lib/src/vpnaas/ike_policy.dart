@@ -104,45 +104,35 @@ class IkePolicy extends pulumi.CustomResource {
   /// aes-xcbc, aes-cmac. Default is sha1.
   /// Changing this updates the algorithm of the existing policy.
   late final pulumi.Output<String?> authAlgorithm;
-
   /// The human-readable description for the policy.
   /// Changing this updates the description of the existing policy.
   late final pulumi.Output<String?> description;
-
   /// The encryption algorithm. Valid values are 3des, aes-128, aes-192, aes-256,
   /// aes-KKK-ctr, aes-KKK-ccm-II, aes-KKK-gcm-II (with KKK = 128/192/256 bits key size and II = 8/12/16 octets ICV).
   /// The default value is aes-128. Changing this updates the existing policy.
   late final pulumi.Output<String?> encryptionAlgorithm;
-
   /// The IKE version. A valid value is v1 or v2. Default is v1.
   /// Changing this updates the existing policy.
   late final pulumi.Output<String?> ikeVersion;
-
   /// The lifetime of the security association. Consists of Unit and Value.
   late final pulumi.Output<List<Map<String, dynamic>>> lifetimes;
-
   /// The name of the policy. Changing this updates the name of
   /// the existing policy.
   late final pulumi.Output<String> name;
-
   /// The perfect forward secrecy mode. Valid values are group2, group5 and group14 to group31.
   /// Default is group5. Changing this updates the existing policy.
   late final pulumi.Output<String?> pfs;
-
   /// The IKE mode. A valid value is main, which is the default.
   /// Changing this updates the existing policy.
   late final pulumi.Output<String?> phase1NegotiationMode;
-
   /// The region in which to obtain the V2 Networking client.
   /// A Networking client is needed to create a VPN service. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
   /// service.
   late final pulumi.Output<String> region;
-
   /// The owner of the policy. Required if admin wants to
   /// create a service for another policy. Changing this creates a new policy.
   late final pulumi.Output<String> tenantId;
-
   /// Map of additional options.
   late final pulumi.Output<Map<String, String>?> valueSpecs;
 
@@ -155,11 +145,11 @@ class IkePolicy extends pulumi.CustomResource {
     IkePolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:vpnaas/ikePolicy:IkePolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:vpnaas/ikePolicy:IkePolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     authAlgorithm = registerOutput<String?>('authAlgorithm');
     description = registerOutput<String?>('description');
     encryptionAlgorithm = registerOutput<String?>('encryptionAlgorithm');
@@ -191,11 +181,11 @@ class IkePolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:vpnaas/ikePolicy:IkePolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:vpnaas/ikePolicy:IkePolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     authAlgorithm = registerOutput<String?>('authAlgorithm');
     description = registerOutput<String?>('description');
     encryptionAlgorithm = registerOutput<String?>('encryptionAlgorithm');

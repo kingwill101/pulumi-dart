@@ -18,13 +18,10 @@ class DomainMatchingAutoMergingConsolidation {
     };
   }
 
-  factory DomainMatchingAutoMergingConsolidation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainMatchingAutoMergingConsolidation.fromMap(Map<String, dynamic> map) {
     return DomainMatchingAutoMergingConsolidation(
-      matchingAttributesLists: pulumi.Input.fromValue(
-        (map['matchingAttributesLists'] as List).cast<List<String>>(),
-      ),
+      matchingAttributesLists: pulumi.Input.fromValue((map['matchingAttributesLists'] as List).cast<List<String>>()),
     );
   }
 }
+

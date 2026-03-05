@@ -9,25 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectorArgs {
   /// Name of the connector.
   final pulumi.Input<String>? connectorName;
-
   /// The connector properties.
   final pulumi.Input<Map<String, dynamic>> connectorProperties;
-
   /// Type of connector.
   final pulumi.Input<String> connectorType;
-
   /// Description of the connector.
   final pulumi.Input<String>? description;
-
   /// Display name of the connector.
   final pulumi.Input<String>? displayName;
-
   /// The name of the hub.
   final pulumi.Input<String> hubName;
-
   /// If this is an internal connector.
   final pulumi.Input<bool>? isInternal;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -66,34 +59,15 @@ class ConnectorArgs {
 
   factory ConnectorArgs.fromMap(Map<String, dynamic> map) {
     return ConnectorArgs(
-      connectorName: (() {
-        final guardedValue = map['connectorName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      connectorProperties: pulumi.Input.fromValue(
-        (map['connectorProperties'] as Map).cast<String, dynamic>(),
-      ),
+      connectorName: (() { final guardedValue = map['connectorName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      connectorProperties: pulumi.Input.fromValue((map['connectorProperties'] as Map).cast<String, dynamic>()),
       connectorType: pulumi.Input.fromValue(map['connectorType'] as String),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       hubName: pulumi.Input.fromValue(map['hubName'] as String),
-      isInternal: (() {
-        final guardedValue = map['isInternal'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      isInternal: (() { final guardedValue = map['isInternal']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

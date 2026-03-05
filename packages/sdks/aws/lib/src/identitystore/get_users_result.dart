@@ -8,10 +8,8 @@ class GetUsersResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String identityStoreId;
-
   /// Region of the address.
   final String region;
-
   /// List of Identity Store Users
   final List<GetUsersUser> users;
 
@@ -32,10 +30,7 @@ class GetUsersResult {
       'id': id,
       'identityStoreId': identityStoreId,
       'region': region,
-      'users': pulumi.Input.encodeList<GetUsersUser, Map<String, dynamic>>(
-        users,
-        (value) => value.toMap(),
-      ),
+      'users': pulumi.Input.encodeList<GetUsersUser, Map<String, dynamic>>(users, (value) => value.toMap()),
     };
   }
 
@@ -44,10 +39,8 @@ class GetUsersResult {
       id: map['id'] as String,
       identityStoreId: map['identityStoreId'] as String,
       region: map['region'] as String,
-      users: pulumi.Input.decodeList<GetUsersUser>(
-        map['users']!,
-        (value) => GetUsersUser.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      users: pulumi.Input.decodeList<GetUsersUser>(map['users']!, (value) => GetUsersUser.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

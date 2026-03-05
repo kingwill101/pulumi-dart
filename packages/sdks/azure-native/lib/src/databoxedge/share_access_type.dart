@@ -16,3 +16,4 @@ enum ShareAccessType {
     throw ArgumentError('Unknown ShareAccessType value: $value');
   }
 }
+

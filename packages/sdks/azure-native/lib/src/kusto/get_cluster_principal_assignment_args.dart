@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClusterPrincipalAssignmentArgs {
   /// The name of the Kusto cluster.
   final pulumi.Input<String> clusterName;
-
   /// The name of the Kusto principalAssignment.
   final pulumi.Input<String> principalAssignmentName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -37,12 +35,9 @@ class GetClusterPrincipalAssignmentArgs {
   factory GetClusterPrincipalAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return GetClusterPrincipalAssignmentArgs(
       clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
-      principalAssignmentName: pulumi.Input.fromValue(
-        map['principalAssignmentName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      principalAssignmentName: pulumi.Input.fromValue(map['principalAssignmentName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

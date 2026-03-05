@@ -13,16 +13,15 @@ class BucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadS3Control {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'daysAfterInitiation': daysAfterInitiation};
+    return <String, dynamic>{
+      'daysAfterInitiation': daysAfterInitiation,
+    };
   }
 
-  factory BucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadS3Control.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadS3Control.fromMap(Map<String, dynamic> map) {
     return BucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadS3Control(
-      daysAfterInitiation: pulumi.Input.fromValue(
-        map['daysAfterInitiation'] as int,
-      ),
+      daysAfterInitiation: pulumi.Input.fromValue(map['daysAfterInitiation'] as int),
     );
   }
 }
+

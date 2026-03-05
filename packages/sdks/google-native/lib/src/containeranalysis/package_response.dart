@@ -10,35 +10,24 @@ import 'version_response_containeranalysis_v1alpha1.dart';
 class PackageResponse {
   /// The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.
   final pulumi.Input<String> architecture;
-
   /// The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package. The cpe_uri will be blank for language packages.
   final pulumi.Input<String> cpeUri;
-
   /// The description of this package.
   final pulumi.Input<String> description;
-
   /// Hash value, typically a file digest, that allows unique identification a specific package.
   final pulumi.Input<List<DigestResponseContaineranalysisV1alpha1>> digest;
-
   /// The various channels by which a package is distributed.
-  final pulumi.Input<List<DistributionResponseContaineranalysisV1alpha1>>
-  distribution;
-
+  final pulumi.Input<List<DistributionResponseContaineranalysisV1alpha1>> distribution;
   /// Licenses that have been declared by the authors of the package.
   final pulumi.Input<LicenseResponseContaineranalysisV1alpha1> license;
-
   /// A freeform text denoting the maintainer of this package.
   final pulumi.Input<String> maintainer;
-
   /// The name of the package.
   final pulumi.Input<String> name;
-
   /// The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
   final pulumi.Input<String> packageType;
-
   /// The homepage for this package.
   final pulumi.Input<String> url;
-
   /// The version of the package.
   final pulumi.Input<VersionResponseContaineranalysisV1alpha1> version;
 
@@ -73,44 +62,14 @@ class PackageResponse {
       'architecture': architecture,
       'cpeUri': cpeUri,
       'description': description,
-      'digest':
-          pulumi.Input.mapInputValue<
-            List<DigestResponseContaineranalysisV1alpha1>,
-            List<Map<String, dynamic>>
-          >(
-            digest,
-            (value) =>
-                pulumi.Input.encodeList<
-                  DigestResponseContaineranalysisV1alpha1,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'distribution':
-          pulumi.Input.mapInputValue<
-            List<DistributionResponseContaineranalysisV1alpha1>,
-            List<Map<String, dynamic>>
-          >(
-            distribution,
-            (value) =>
-                pulumi.Input.encodeList<
-                  DistributionResponseContaineranalysisV1alpha1,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'license':
-          pulumi.Input.mapInputValue<
-            LicenseResponseContaineranalysisV1alpha1,
-            Map<String, dynamic>
-          >(license, (value) => value.toMap()),
+      'digest': pulumi.Input.mapInputValue<List<DigestResponseContaineranalysisV1alpha1>, List<Map<String, dynamic>>>(digest, (value) => pulumi.Input.encodeList<DigestResponseContaineranalysisV1alpha1, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'distribution': pulumi.Input.mapInputValue<List<DistributionResponseContaineranalysisV1alpha1>, List<Map<String, dynamic>>>(distribution, (value) => pulumi.Input.encodeList<DistributionResponseContaineranalysisV1alpha1, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'license': pulumi.Input.mapInputValue<LicenseResponseContaineranalysisV1alpha1, Map<String, dynamic>>(license, (value) => value.toMap()),
       'maintainer': maintainer,
       'name': name,
       'packageType': packageType,
       'url': url,
-      'version':
-          pulumi.Input.mapInputValue<
-            VersionResponseContaineranalysisV1alpha1,
-            Map<String, dynamic>
-          >(version, (value) => value.toMap()),
+      'version': pulumi.Input.mapInputValue<VersionResponseContaineranalysisV1alpha1, Map<String, dynamic>>(version, (value) => value.toMap()),
     };
   }
 
@@ -119,36 +78,15 @@ class PackageResponse {
       architecture: pulumi.Input.fromValue(map['architecture'] as String),
       cpeUri: pulumi.Input.fromValue(map['cpeUri'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
-      digest: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<DigestResponseContaineranalysisV1alpha1>(
-          map['digest']!,
-          (value) => DigestResponseContaineranalysisV1alpha1.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      distribution: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<DistributionResponseContaineranalysisV1alpha1>(
-          map['distribution']!,
-          (value) => DistributionResponseContaineranalysisV1alpha1.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      license: pulumi.Input.fromValue(
-        LicenseResponseContaineranalysisV1alpha1.fromMap(
-          (map['license']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      digest: pulumi.Input.fromValue(pulumi.Input.decodeList<DigestResponseContaineranalysisV1alpha1>(map['digest']!, (value) => DigestResponseContaineranalysisV1alpha1.fromMap((value as Map).cast<String, dynamic>()))),
+      distribution: pulumi.Input.fromValue(pulumi.Input.decodeList<DistributionResponseContaineranalysisV1alpha1>(map['distribution']!, (value) => DistributionResponseContaineranalysisV1alpha1.fromMap((value as Map).cast<String, dynamic>()))),
+      license: pulumi.Input.fromValue(LicenseResponseContaineranalysisV1alpha1.fromMap((map['license']! as Map).cast<String, dynamic>())),
       maintainer: pulumi.Input.fromValue(map['maintainer'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       packageType: pulumi.Input.fromValue(map['packageType'] as String),
       url: pulumi.Input.fromValue(map['url'] as String),
-      version: pulumi.Input.fromValue(
-        VersionResponseContaineranalysisV1alpha1.fromMap(
-          (map['version']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      version: pulumi.Input.fromValue(VersionResponseContaineranalysisV1alpha1.fromMap((map['version']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

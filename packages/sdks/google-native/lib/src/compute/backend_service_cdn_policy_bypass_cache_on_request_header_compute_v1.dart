@@ -9,21 +9,20 @@ class BackendServiceCdnPolicyBypassCacheOnRequestHeaderComputeV1 {
 
   /// Creates a new [BackendServiceCdnPolicyBypassCacheOnRequestHeaderComputeV1].
   /// [headerName] The header field name to match on when bypassing cache. Values are case-insensitive.
-  BackendServiceCdnPolicyBypassCacheOnRequestHeaderComputeV1({this.headerName});
+  BackendServiceCdnPolicyBypassCacheOnRequestHeaderComputeV1({
+    this.headerName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'headerName': ?headerName};
+    return <String, dynamic>{
+      'headerName': ?headerName,
+    };
   }
 
-  factory BackendServiceCdnPolicyBypassCacheOnRequestHeaderComputeV1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BackendServiceCdnPolicyBypassCacheOnRequestHeaderComputeV1.fromMap(Map<String, dynamic> map) {
     return BackendServiceCdnPolicyBypassCacheOnRequestHeaderComputeV1(
-      headerName: (() {
-        final guardedValue = map['headerName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      headerName: (() { final guardedValue = map['headerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

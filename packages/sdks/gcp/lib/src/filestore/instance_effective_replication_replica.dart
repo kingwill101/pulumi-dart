@@ -8,14 +8,11 @@ class InstanceEffectiveReplicationReplica {
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
   final pulumi.Input<String>? lastActiveSyncTime;
-
   /// The peer instance.
   final pulumi.Input<String>? peerInstance;
-
   /// (Output)
   /// Output only. The replica state
   final pulumi.Input<String>? state;
-
   /// (Output)
   /// Output only. Additional information about the replication state, if available.
   final pulumi.Input<List<String>>? stateReasons;
@@ -41,30 +38,13 @@ class InstanceEffectiveReplicationReplica {
     };
   }
 
-  factory InstanceEffectiveReplicationReplica.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InstanceEffectiveReplicationReplica.fromMap(Map<String, dynamic> map) {
     return InstanceEffectiveReplicationReplica(
-      lastActiveSyncTime: (() {
-        final guardedValue = map['lastActiveSyncTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      peerInstance: (() {
-        final guardedValue = map['peerInstance'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      stateReasons: (() {
-        final guardedValue = map['stateReasons'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      lastActiveSyncTime: (() { final guardedValue = map['lastActiveSyncTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      peerInstance: (() { final guardedValue = map['peerInstance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      stateReasons: (() { final guardedValue = map['stateReasons']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

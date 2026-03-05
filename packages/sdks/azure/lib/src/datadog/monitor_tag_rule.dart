@@ -337,13 +337,10 @@ import 'monitor_tag_rule_state.dart';
 class MonitorTagRule extends pulumi.CustomResource {
   /// The Datadog Monitor Id which should be used for this Datadog Monitor Tag Rule. Changing this forces a new Datadog Monitor Tag Rule to be created.
   late final pulumi.Output<String> datadogMonitorId;
-
   /// A `log` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> logs;
-
   /// A `metric` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> metrics;
-
   /// The name of the Tag Rules configuration. The allowed value is `default`. Defaults to `default`.
   late final pulumi.Output<String> name;
 
@@ -356,11 +353,11 @@ class MonitorTagRule extends pulumi.CustomResource {
     MonitorTagRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:datadog/monitorTagRule:MonitorTagRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:datadog/monitorTagRule:MonitorTagRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     datadogMonitorId = registerOutput<String>('datadogMonitorId');
     logs = registerOutput<List<Map<String, dynamic>>?>('logs');
     metrics = registerOutput<List<Map<String, dynamic>>?>('metrics');
@@ -385,11 +382,11 @@ class MonitorTagRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:datadog/monitorTagRule:MonitorTagRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:datadog/monitorTagRule:MonitorTagRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     datadogMonitorId = registerOutput<String>('datadogMonitorId');
     logs = registerOutput<List<Map<String, dynamic>>?>('logs');
     metrics = registerOutput<List<Map<String, dynamic>>?>('metrics');

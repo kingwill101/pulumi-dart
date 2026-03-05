@@ -31,11 +31,7 @@ class ValueResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'booleanValue': booleanValue,
-      'dateValue':
-          pulumi.Input.mapInputValue<DateResponse, Map<String, dynamic>>(
-            dateValue,
-            (value) => value.toMap(),
-          ),
+      'dateValue': pulumi.Input.mapInputValue<DateResponse, Map<String, dynamic>>(dateValue, (value) => value.toMap()),
       'doubleValue': doubleValue,
       'integerValue': integerValue,
       'stringValue': stringValue,
@@ -46,11 +42,7 @@ class ValueResponse {
   factory ValueResponse.fromMap(Map<String, dynamic> map) {
     return ValueResponse(
       booleanValue: pulumi.Input.fromValue(map['booleanValue'] as bool),
-      dateValue: pulumi.Input.fromValue(
-        DateResponse.fromMap(
-          (map['dateValue']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      dateValue: pulumi.Input.fromValue(DateResponse.fromMap((map['dateValue']! as Map).cast<String, dynamic>())),
       doubleValue: pulumi.Input.fromValue(map['doubleValue'] as double),
       integerValue: pulumi.Input.fromValue(map['integerValue'] as String),
       stringValue: pulumi.Input.fromValue(map['stringValue'] as String),
@@ -58,3 +50,4 @@ class ValueResponse {
     );
   }
 }
+

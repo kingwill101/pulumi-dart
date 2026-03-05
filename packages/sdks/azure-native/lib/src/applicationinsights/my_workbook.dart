@@ -18,52 +18,36 @@ import 'system_data_response.dart';
 class MyWorkbook extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Workbook category, as defined by the user at creation time.
   late final pulumi.Output<String> category;
-
   /// The user-defined name of the private workbook.
   late final pulumi.Output<String> displayName;
-
   /// Resource etag
   late final pulumi.Output<Map<String, String>?> etag;
-
   /// Identity used for BYOS
   late final pulumi.Output<MyWorkbookManagedIdentityResponse?> identity;
-
   /// The kind of workbook. Choices are user and shared.
   late final pulumi.Output<String?> kind;
-
   /// Resource location
   late final pulumi.Output<String?> location;
-
   /// Azure resource name
   late final pulumi.Output<String?> name;
-
   /// Configuration of this particular private workbook. Configuration data is a string containing valid JSON
   late final pulumi.Output<String> serializedData;
-
   /// Optional resourceId for a source resource.
   late final pulumi.Output<String?> sourceId;
-
   /// BYOS Storage Account URI
   late final pulumi.Output<String?> storageUri;
-
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Date and time in UTC of the last modification that was made to this private workbook definition.
   late final pulumi.Output<String> timeModified;
-
   /// Azure resource type
   late final pulumi.Output<String?> type;
-
   /// Unique user id of the specific user that owns this private workbook.
   late final pulumi.Output<String> userId;
-
   /// This instance's version of the data model. This can change as new features are added that can be marked private workbook.
   late final pulumi.Output<String?> version;
 
@@ -76,41 +60,23 @@ class MyWorkbook extends pulumi.CustomResource {
     MyWorkbookArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:applicationinsights:MyWorkbook',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:applicationinsights:MyWorkbook',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     category = registerOutput<String>('category');
     displayName = registerOutput<String>('displayName');
     etag = registerOutput<Map<String, String>?>('etag');
-    identity = registerOutput<MyWorkbookManagedIdentityResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MyWorkbookManagedIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<MyWorkbookManagedIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MyWorkbookManagedIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kind = registerOutput<String?>('kind');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String?>('name');
     serializedData = registerOutput<String>('serializedData');
     sourceId = registerOutput<String?>('sourceId');
     storageUri = registerOutput<String?>('storageUri');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     timeModified = registerOutput<String>('timeModified');
     type = registerOutput<String?>('type');

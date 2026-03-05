@@ -213,10 +213,8 @@ class AccountSettingDefault extends pulumi.CustomResource {
   /// Name of the account setting to set.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> principalArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// State of the setting.
   late final pulumi.Output<String> value;
 
@@ -229,11 +227,11 @@ class AccountSettingDefault extends pulumi.CustomResource {
     AccountSettingDefaultArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ecs/accountSettingDefault:AccountSettingDefault',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ecs/accountSettingDefault:AccountSettingDefault',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     principalArn = registerOutput<String>('principalArn');
     region = registerOutput<String>('region');
@@ -258,11 +256,11 @@ class AccountSettingDefault extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ecs/accountSettingDefault:AccountSettingDefault',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ecs/accountSettingDefault:AccountSettingDefault',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     principalArn = registerOutput<String>('principalArn');
     region = registerOutput<String>('region');

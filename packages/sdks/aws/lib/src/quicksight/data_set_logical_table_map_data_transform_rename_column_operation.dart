@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataSetLogicalTableMapDataTransformRenameColumnOperation {
   /// Column to be renamed.
   final pulumi.Input<String> columnName;
-
   /// New name for the column.
   final pulumi.Input<String> newColumnName;
 
@@ -24,12 +23,11 @@ class DataSetLogicalTableMapDataTransformRenameColumnOperation {
     };
   }
 
-  factory DataSetLogicalTableMapDataTransformRenameColumnOperation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DataSetLogicalTableMapDataTransformRenameColumnOperation.fromMap(Map<String, dynamic> map) {
     return DataSetLogicalTableMapDataTransformRenameColumnOperation(
       columnName: pulumi.Input.fromValue(map['columnName'] as String),
       newColumnName: pulumi.Input.fromValue(map['newColumnName'] as String),
     );
   }
 }
+

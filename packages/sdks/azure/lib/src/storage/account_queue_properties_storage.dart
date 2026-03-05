@@ -384,18 +384,14 @@ import 'account_queue_properties_state.dart';
 class AccountQueuePropertiesStorage extends pulumi.CustomResource {
   /// A `cors_rule` block as defined above.
   late final pulumi.Output<List<Map<String, dynamic>>?> corsRules;
-
   /// A `hour_metrics` block as defined below.
   ///
   /// &gt; **Note:** At least one of `cors_rule`, `logging`, `minute_metrics`, or `hour_metrics` must be specified.
   late final pulumi.Output<AccountQueuePropertiesHourMetrics> hourMetrics;
-
   /// A `logging` block as defined below.
   late final pulumi.Output<AccountQueuePropertiesLogging> logging;
-
   /// A `minute_metrics` block as defined below.
   late final pulumi.Output<AccountQueuePropertiesMinuteMetrics> minuteMetrics;
-
   /// The ID of the Storage Account to set Queue Properties on. Changing this forces a new resource to be created.
   late final pulumi.Output<String> storageAccountId;
 
@@ -408,42 +404,15 @@ class AccountQueuePropertiesStorage extends pulumi.CustomResource {
     AccountQueuePropertiesArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:storage/accountQueueProperties:AccountQueueProperties',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:storage/accountQueueProperties:AccountQueueProperties',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     corsRules = registerOutput<List<Map<String, dynamic>>?>('corsRules');
-    hourMetrics = registerOutput<AccountQueuePropertiesHourMetrics>(
-      'hourMetrics',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccountQueuePropertiesHourMetrics.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    logging = registerOutput<AccountQueuePropertiesLogging>(
-      'logging',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccountQueuePropertiesLogging.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    minuteMetrics = registerOutput<AccountQueuePropertiesMinuteMetrics>(
-      'minuteMetrics',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccountQueuePropertiesMinuteMetrics.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    hourMetrics = registerOutput<AccountQueuePropertiesHourMetrics>('hourMetrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountQueuePropertiesHourMetrics.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    logging = registerOutput<AccountQueuePropertiesLogging>('logging', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountQueuePropertiesLogging.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    minuteMetrics = registerOutput<AccountQueuePropertiesMinuteMetrics>('minuteMetrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountQueuePropertiesMinuteMetrics.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     storageAccountId = registerOutput<String>('storageAccountId');
   }
 
@@ -465,42 +434,15 @@ class AccountQueuePropertiesStorage extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:storage/accountQueueProperties:AccountQueueProperties',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:storage/accountQueueProperties:AccountQueueProperties',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     corsRules = registerOutput<List<Map<String, dynamic>>?>('corsRules');
-    hourMetrics = registerOutput<AccountQueuePropertiesHourMetrics>(
-      'hourMetrics',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccountQueuePropertiesHourMetrics.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    logging = registerOutput<AccountQueuePropertiesLogging>(
-      'logging',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccountQueuePropertiesLogging.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    minuteMetrics = registerOutput<AccountQueuePropertiesMinuteMetrics>(
-      'minuteMetrics',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccountQueuePropertiesMinuteMetrics.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    hourMetrics = registerOutput<AccountQueuePropertiesHourMetrics>('hourMetrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountQueuePropertiesHourMetrics.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    logging = registerOutput<AccountQueuePropertiesLogging>('logging', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountQueuePropertiesLogging.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    minuteMetrics = registerOutput<AccountQueuePropertiesMinuteMetrics>('minuteMetrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountQueuePropertiesMinuteMetrics.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     storageAccountId = registerOutput<String>('storageAccountId');
   }
 }

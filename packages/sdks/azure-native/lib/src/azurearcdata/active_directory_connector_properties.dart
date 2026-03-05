@@ -8,12 +8,9 @@ import 'basic_login_information.dart';
 /// The properties of an Active Directory connector resource
 class ActiveDirectoryConnectorProperties {
   /// Username and password for domain service account authentication.
-  final pulumi.Input<BasicLoginInformation>?
-  domainServiceAccountLoginInformation;
-
+  final pulumi.Input<BasicLoginInformation>? domainServiceAccountLoginInformation;
   /// null
   final pulumi.Input<ActiveDirectoryConnectorSpec> spec;
-
   /// null
   final pulumi.Input<ActiveDirectoryConnectorStatus>? status;
 
@@ -29,49 +26,18 @@ class ActiveDirectoryConnectorProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'domainServiceAccountLoginInformation':
-          ?pulumi.Input.mapOptionalInputValue<
-            BasicLoginInformation,
-            Map<String, dynamic>
-          >(domainServiceAccountLoginInformation, (value) => value.toMap()),
-      'spec':
-          pulumi.Input.mapInputValue<
-            ActiveDirectoryConnectorSpec,
-            Map<String, dynamic>
-          >(spec, (value) => value.toMap()),
-      'status':
-          ?pulumi.Input.mapOptionalInputValue<
-            ActiveDirectoryConnectorStatus,
-            Map<String, dynamic>
-          >(status, (value) => value.toMap()),
+      'domainServiceAccountLoginInformation': ?pulumi.Input.mapOptionalInputValue<BasicLoginInformation, Map<String, dynamic>>(domainServiceAccountLoginInformation, (value) => value.toMap()),
+      'spec': pulumi.Input.mapInputValue<ActiveDirectoryConnectorSpec, Map<String, dynamic>>(spec, (value) => value.toMap()),
+      'status': ?pulumi.Input.mapOptionalInputValue<ActiveDirectoryConnectorStatus, Map<String, dynamic>>(status, (value) => value.toMap()),
     };
   }
 
   factory ActiveDirectoryConnectorProperties.fromMap(Map<String, dynamic> map) {
     return ActiveDirectoryConnectorProperties(
-      domainServiceAccountLoginInformation: (() {
-        final guardedValue = map['domainServiceAccountLoginInformation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BasicLoginInformation.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      spec: pulumi.Input.fromValue(
-        ActiveDirectoryConnectorSpec.fromMap(
-          (map['spec']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ActiveDirectoryConnectorStatus.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      domainServiceAccountLoginInformation: (() { final guardedValue = map['domainServiceAccountLoginInformation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BasicLoginInformation.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      spec: pulumi.Input.fromValue(ActiveDirectoryConnectorSpec.fromMap((map['spec']! as Map).cast<String, dynamic>())),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ActiveDirectoryConnectorStatus.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

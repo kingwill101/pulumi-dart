@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LaunchTemplateSpecificationResponse {
   /// Property id
   final pulumi.Input<String>? id;
-
   /// The ID of the launch template. You must specify the ``LaunchTemplateID`` or the ``LaunchTemplateName``, but not both.
   final pulumi.Input<String>? launchTemplateId;
-
   /// The name of the launch template. You must specify the ``LaunchTemplateName`` or the ``LaunchTemplateID``, but not both.
   final pulumi.Input<String>? launchTemplateName;
-
   /// Property name
   final pulumi.Input<String>? name;
-
   /// Property version
   final pulumi.Input<String>? version;
 
@@ -43,35 +39,14 @@ class LaunchTemplateSpecificationResponse {
     };
   }
 
-  factory LaunchTemplateSpecificationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LaunchTemplateSpecificationResponse.fromMap(Map<String, dynamic> map) {
     return LaunchTemplateSpecificationResponse(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      launchTemplateId: (() {
-        final guardedValue = map['launchTemplateId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      launchTemplateName: (() {
-        final guardedValue = map['launchTemplateName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      launchTemplateId: (() { final guardedValue = map['launchTemplateId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      launchTemplateName: (() { final guardedValue = map['launchTemplateName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

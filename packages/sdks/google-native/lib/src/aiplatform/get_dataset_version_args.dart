@@ -40,20 +40,11 @@ class GetDatasetVersionArgs {
   factory GetDatasetVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetDatasetVersionArgs(
       datasetId: pulumi.Input.fromValue(map['datasetId'] as String),
-      datasetVersionId: pulumi.Input.fromValue(
-        map['datasetVersionId'] as String,
-      ),
+      datasetVersionId: pulumi.Input.fromValue(map['datasetVersionId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      readMask: (() {
-        final guardedValue = map['readMask'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      readMask: (() { final guardedValue = map['readMask']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

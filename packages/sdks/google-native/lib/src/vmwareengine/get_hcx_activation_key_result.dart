@@ -1,19 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getHcxActivationKey.
 class GetHcxActivationKeyResult {
   /// HCX activation key.
   final String activationKey;
-
   /// Creation time of HCX activation key.
   final String createTime;
-
   /// The resource name of this HcxActivationKey. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1/privateClouds/my-cloud/hcxActivationKeys/my-key`
   final String name;
-
   /// State of HCX activation key.
   final String state;
-
   /// System-generated unique identifier for the resource.
   final String uid;
 
@@ -51,3 +48,4 @@ class GetHcxActivationKeyResult {
     );
   }
 }
+

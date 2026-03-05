@@ -10,19 +10,20 @@ class InterconnectGroupIntent {
 
   /// Creates a new [InterconnectGroupIntent].
   /// [topologyCapability] The reliability the user intends this group to be capable of, in terms
-  InterconnectGroupIntent({this.topologyCapability});
+  InterconnectGroupIntent({
+    this.topologyCapability,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'topologyCapability': ?topologyCapability};
+    return <String, dynamic>{
+      'topologyCapability': ?topologyCapability,
+    };
   }
 
   factory InterconnectGroupIntent.fromMap(Map<String, dynamic> map) {
     return InterconnectGroupIntent(
-      topologyCapability: (() {
-        final guardedValue = map['topologyCapability'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      topologyCapability: (() { final guardedValue = map['topologyCapability']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

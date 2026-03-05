@@ -230,70 +230,51 @@ import 'auth_config_state.dart';
 class AuthConfig extends pulumi.CustomResource {
   /// Certificate id for client certificate.
   late final pulumi.Output<String> certificateId;
-
   /// Raw client certificate
   /// Structure is documented below.
   late final pulumi.Output<AuthConfigClientCertificate?> clientCertificate;
-
   /// The timestamp when the auth config is created.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> createTime;
-
   /// The creator's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
   late final pulumi.Output<String> creatorEmail;
-
   /// Credential type of the encrypted credential.
   late final pulumi.Output<String> credentialType;
-
   /// Raw auth credentials.
   /// Structure is documented below.
   late final pulumi.Output<AuthConfigDecryptedCredential?> decryptedCredential;
-
   /// A description of the auth config.
   late final pulumi.Output<String?> description;
-
   /// The name of the auth config.
   late final pulumi.Output<String> displayName;
-
   /// Auth credential encrypted by Cloud KMS. Can be decrypted as Credential with proper KMS key.
   /// A base64-encoded string.
   late final pulumi.Output<String> encryptedCredential;
-
   /// User can define the time to receive notification after which the auth config becomes invalid. Support up to 30 days. Support granularity in hours.
   /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
   late final pulumi.Output<List<String>?> expiryNotificationDurations;
-
   /// The last modifier's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
   late final pulumi.Output<String> lastModifierEmail;
-
   /// Location in which client needs to be provisioned.
   late final pulumi.Output<String> location;
-
   /// Resource name of the auth config.
   late final pulumi.Output<String> name;
-
   /// User provided expiry time to override. For the example of Salesforce, username/password credentials can be valid for 6 months depending on the instance settings.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String?> overrideValidTime;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The reason / details of the current status.
   late final pulumi.Output<String> reason;
-
   /// The status of the auth config.
   late final pulumi.Output<String> state;
-
   /// The timestamp when the auth config is modified.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> updateTime;
-
   /// The time until the auth config is valid. Empty or max value is considered the auth config won't expire.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> validTime;
-
   /// The visibility of the auth config.
   /// Possible values are: `PRIVATE`, `CLIENT_VISIBLE`.
   late final pulumi.Output<String?> visibility;
@@ -307,41 +288,21 @@ class AuthConfig extends pulumi.CustomResource {
     AuthConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:applicationintegration/authConfig:AuthConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:applicationintegration/authConfig:AuthConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     certificateId = registerOutput<String>('certificateId');
-    clientCertificate = registerOutput<AuthConfigClientCertificate?>(
-      'clientCertificate',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AuthConfigClientCertificate.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    clientCertificate = registerOutput<AuthConfigClientCertificate?>('clientCertificate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthConfigClientCertificate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     creatorEmail = registerOutput<String>('creatorEmail');
     credentialType = registerOutput<String>('credentialType');
-    decryptedCredential = registerOutput<AuthConfigDecryptedCredential?>(
-      'decryptedCredential',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AuthConfigDecryptedCredential.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    decryptedCredential = registerOutput<AuthConfigDecryptedCredential?>('decryptedCredential', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthConfigDecryptedCredential.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     encryptedCredential = registerOutput<String>('encryptedCredential');
-    expiryNotificationDurations = registerOutput<List<String>?>(
-      'expiryNotificationDurations',
-    );
+    expiryNotificationDurations = registerOutput<List<String>?>('expiryNotificationDurations');
     lastModifierEmail = registerOutput<String>('lastModifierEmail');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -372,41 +333,21 @@ class AuthConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:applicationintegration/authConfig:AuthConfig',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:applicationintegration/authConfig:AuthConfig',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     certificateId = registerOutput<String>('certificateId');
-    clientCertificate = registerOutput<AuthConfigClientCertificate?>(
-      'clientCertificate',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AuthConfigClientCertificate.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    clientCertificate = registerOutput<AuthConfigClientCertificate?>('clientCertificate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthConfigClientCertificate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     creatorEmail = registerOutput<String>('creatorEmail');
     credentialType = registerOutput<String>('credentialType');
-    decryptedCredential = registerOutput<AuthConfigDecryptedCredential?>(
-      'decryptedCredential',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AuthConfigDecryptedCredential.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    decryptedCredential = registerOutput<AuthConfigDecryptedCredential?>('decryptedCredential', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthConfigDecryptedCredential.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     encryptedCredential = registerOutput<String>('encryptedCredential');
-    expiryNotificationDurations = registerOutput<List<String>?>(
-      'expiryNotificationDurations',
-    );
+    expiryNotificationDurations = registerOutput<List<String>?>('expiryNotificationDurations');
     lastModifierEmail = registerOutput<String>('lastModifierEmail');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

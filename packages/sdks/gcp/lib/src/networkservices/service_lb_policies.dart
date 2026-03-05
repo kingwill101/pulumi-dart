@@ -597,49 +597,36 @@ import 'service_lb_policies_state.dart';
 class ServiceLbPolicies extends pulumi.CustomResource {
   /// Option to specify if an unhealthy MIG/NEG should be considered for global load balancing and traffic routing.
   /// Structure is documented below.
-  late final pulumi.Output<ServiceLbPoliciesAutoCapacityDrain?>
-  autoCapacityDrain;
-
+  late final pulumi.Output<ServiceLbPoliciesAutoCapacityDrain?> autoCapacityDrain;
   /// Time the ServiceLbPolicy was created in UTC.
   late final pulumi.Output<String> createTime;
-
   /// A free-text description of the resource. Max length 1024 characters.
   late final pulumi.Output<String?> description;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Option to specify health based failover behavior. This is not related to Network load balancer FailoverPolicy.
   /// Structure is documented below.
   late final pulumi.Output<ServiceLbPoliciesFailoverConfig?> failoverConfig;
-
   /// Configuration to provide isolation support for the associated Backend Service.
   /// Structure is documented below.
   late final pulumi.Output<ServiceLbPoliciesIsolationConfig?> isolationConfig;
-
   /// Set of label tags associated with the ServiceLbPolicy resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// The type of load balancing algorithm to be used. The default behavior is WATERFALL_BY_REGION.
   /// Possible values are: `SPRAY_TO_REGION`, `SPRAY_TO_WORLD`, `WATERFALL_BY_REGION`, `WATERFALL_BY_ZONE`.
   late final pulumi.Output<String?> loadBalancingAlgorithm;
-
   /// The location of the service lb policy.
   late final pulumi.Output<String> location;
-
   /// Name of the ServiceLbPolicy resource. It matches pattern `projects/{project}/locations/{location}/serviceLbPolicies/{service_lb_policy_name}`.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// Time the ServiceLbPolicy was updated in UTC.
   late final pulumi.Output<String> updateTime;
 
@@ -652,44 +639,17 @@ class ServiceLbPolicies extends pulumi.CustomResource {
     ServiceLbPoliciesArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:networkservices/serviceLbPolicies:ServiceLbPolicies',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    autoCapacityDrain = registerOutput<ServiceLbPoliciesAutoCapacityDrain?>(
-      'autoCapacityDrain',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceLbPoliciesAutoCapacityDrain.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:networkservices/serviceLbPolicies:ServiceLbPolicies',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    autoCapacityDrain = registerOutput<ServiceLbPoliciesAutoCapacityDrain?>('autoCapacityDrain', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceLbPoliciesAutoCapacityDrain.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    failoverConfig = registerOutput<ServiceLbPoliciesFailoverConfig?>(
-      'failoverConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceLbPoliciesFailoverConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    isolationConfig = registerOutput<ServiceLbPoliciesIsolationConfig?>(
-      'isolationConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceLbPoliciesIsolationConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    failoverConfig = registerOutput<ServiceLbPoliciesFailoverConfig?>('failoverConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceLbPoliciesFailoverConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    isolationConfig = registerOutput<ServiceLbPoliciesIsolationConfig?>('isolationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceLbPoliciesIsolationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     labels = registerOutput<Map<String, String>?>('labels');
     loadBalancingAlgorithm = registerOutput<String?>('loadBalancingAlgorithm');
     location = registerOutput<String>('location');
@@ -717,44 +677,17 @@ class ServiceLbPolicies extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:networkservices/serviceLbPolicies:ServiceLbPolicies',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    autoCapacityDrain = registerOutput<ServiceLbPoliciesAutoCapacityDrain?>(
-      'autoCapacityDrain',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceLbPoliciesAutoCapacityDrain.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:networkservices/serviceLbPolicies:ServiceLbPolicies',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    autoCapacityDrain = registerOutput<ServiceLbPoliciesAutoCapacityDrain?>('autoCapacityDrain', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceLbPoliciesAutoCapacityDrain.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    failoverConfig = registerOutput<ServiceLbPoliciesFailoverConfig?>(
-      'failoverConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceLbPoliciesFailoverConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    isolationConfig = registerOutput<ServiceLbPoliciesIsolationConfig?>(
-      'isolationConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceLbPoliciesIsolationConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    failoverConfig = registerOutput<ServiceLbPoliciesFailoverConfig?>('failoverConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceLbPoliciesFailoverConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    isolationConfig = registerOutput<ServiceLbPoliciesIsolationConfig?>('isolationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceLbPoliciesIsolationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     labels = registerOutput<Map<String, String>?>('labels');
     loadBalancingAlgorithm = registerOutput<String?>('loadBalancingAlgorithm');
     location = registerOutput<String>('location');

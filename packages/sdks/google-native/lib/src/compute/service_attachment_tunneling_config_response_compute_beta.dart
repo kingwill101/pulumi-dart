@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceAttachmentTunnelingConfigResponseComputeBeta {
   /// Specify the encapsulation protocol and what metadata to include in incoming encapsulated packet headers.
   final pulumi.Input<String> encapsulationProfile;
-
   /// How this Service Attachment will treat traffic sent to the tunnel_ip, destined for the consumer network.
   final pulumi.Input<String> routingMode;
 
@@ -25,14 +24,11 @@ class ServiceAttachmentTunnelingConfigResponseComputeBeta {
     };
   }
 
-  factory ServiceAttachmentTunnelingConfigResponseComputeBeta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ServiceAttachmentTunnelingConfigResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return ServiceAttachmentTunnelingConfigResponseComputeBeta(
-      encapsulationProfile: pulumi.Input.fromValue(
-        map['encapsulationProfile'] as String,
-      ),
+      encapsulationProfile: pulumi.Input.fromValue(map['encapsulationProfile'] as String),
       routingMode: pulumi.Input.fromValue(map['routingMode'] as String),
     );
   }
 }
+

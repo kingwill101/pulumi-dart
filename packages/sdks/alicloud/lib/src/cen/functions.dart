@@ -420,8 +420,7 @@ Future<GetBandwidthPackagesResult> getBandwidthPackages(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_cen_get_child_instance_route_entry_to_attachments_get_child_instance_route_entry_to_attachments_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetChildInstanceRouteEntryToAttachmentsResult>
-getChildInstanceRouteEntryToAttachments(
+Future<GetChildInstanceRouteEntryToAttachmentsResult> getChildInstanceRouteEntryToAttachments(
   GetChildInstanceRouteEntryToAttachmentsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -2483,8 +2482,7 @@ Future<GetTransitRouteTableAggregationsResult> getTransitRouteTableAggregations(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_cen_get_transit_router_available_resources_get_transit_router_available_resources_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetTransitRouterAvailableResourcesResult>
-getTransitRouterAvailableResources(
+Future<GetTransitRouterAvailableResourcesResult> getTransitRouterAvailableResources(
   GetTransitRouterAvailableResourcesArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -2782,8 +2780,7 @@ Future<GetTransitRouterCidrsResult> getTransitRouterCidrs(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_cen_get_transit_router_multicast_domain_associations_get_transit_router_multicast_domain_associations_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetTransitRouterMulticastDomainAssociationsResult>
-getTransitRouterMulticastDomainAssociations(
+Future<GetTransitRouterMulticastDomainAssociationsResult> getTransitRouterMulticastDomainAssociations(
   GetTransitRouterMulticastDomainAssociationsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -2902,8 +2899,7 @@ getTransitRouterMulticastDomainAssociations(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_cen_get_transit_router_multicast_domain_members_get_transit_router_multicast_domain_members_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetTransitRouterMulticastDomainMembersResult>
-getTransitRouterMulticastDomainMembers(
+Future<GetTransitRouterMulticastDomainMembersResult> getTransitRouterMulticastDomainMembers(
   GetTransitRouterMulticastDomainMembersArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3022,8 +3018,7 @@ getTransitRouterMulticastDomainMembers(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_cen_get_transit_router_multicast_domain_peer_members_get_transit_router_multicast_domain_peer_members_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetTransitRouterMulticastDomainPeerMembersResult>
-getTransitRouterMulticastDomainPeerMembers(
+Future<GetTransitRouterMulticastDomainPeerMembersResult> getTransitRouterMulticastDomainPeerMembers(
   GetTransitRouterMulticastDomainPeerMembersArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3140,8 +3135,7 @@ getTransitRouterMulticastDomainPeerMembers(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_cen_get_transit_router_multicast_domain_sources_get_transit_router_multicast_domain_sources_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetTransitRouterMulticastDomainSourcesResult>
-getTransitRouterMulticastDomainSources(
+Future<GetTransitRouterMulticastDomainSourcesResult> getTransitRouterMulticastDomainSources(
   GetTransitRouterMulticastDomainSourcesArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3550,8 +3544,7 @@ Future<GetTransitRouterPeerAttachmentsResult> getTransitRouterPeerAttachments(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_cen_get_transit_router_prefix_list_associations_get_transit_router_prefix_list_associations_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetTransitRouterPrefixListAssociationsResult>
-getTransitRouterPrefixListAssociations(
+Future<GetTransitRouterPrefixListAssociationsResult> getTransitRouterPrefixListAssociations(
   GetTransitRouterPrefixListAssociationsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3686,8 +3679,7 @@ Future<GetTransitRouterRouteEntriesResult> getTransitRouterRouteEntries(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_cen_get_transit_router_route_table_associations_get_transit_router_route_table_associations_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetTransitRouterRouteTableAssociationsResult>
-getTransitRouterRouteTableAssociations(
+Future<GetTransitRouterRouteTableAssociationsResult> getTransitRouterRouteTableAssociations(
   GetTransitRouterRouteTableAssociationsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -4157,8 +4149,7 @@ getTransitRouterRouteTableAssociations(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_cen_get_transit_router_route_table_propagations_get_transit_router_route_table_propagations_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetTransitRouterRouteTablePropagationsResult>
-getTransitRouterRouteTablePropagations(
+Future<GetTransitRouterRouteTablePropagationsResult> getTransitRouterRouteTablePropagations(
   GetTransitRouterRouteTablePropagationsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

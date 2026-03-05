@@ -318,58 +318,40 @@ import 'virtual_hard_disk_status_response.dart';
 class VirtualHardDisk extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Block size in bytes
   late final pulumi.Output<int?> blockSizeBytes;
-
   /// Storage ContainerID of the storage container to be used for VHD
   late final pulumi.Output<String?> containerId;
-
   /// Boolean indicating whether it is an existing local hard disk or if one should be created.
   late final pulumi.Output<bool?> createFromLocal;
-
   /// The format of the actual VHD file [vhd, vhdx]
   late final pulumi.Output<String?> diskFileFormat;
-
   /// Size of the disk in GB
   late final pulumi.Output<double?> diskSizeGB;
-
   /// URL for downloading or accessing the virtual hard disk. This URL points to a secure link from where the VHD can be downloaded or accessed directly.
   late final pulumi.Output<String?> downloadUrl;
-
   /// Boolean for enabling dynamic sizing on the virtual hard disk
   late final pulumi.Output<bool?> dynamic_;
-
   /// The extendedLocation of the resource.
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
-
   /// The hypervisor generation of the Virtual Machine [V1, V2]
   late final pulumi.Output<String?> hyperVGeneration;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// Logical sector in bytes
   late final pulumi.Output<int?> logicalSectorBytes;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Physical sector in bytes
   late final pulumi.Output<int?> physicalSectorBytes;
-
   /// Provisioning state of the virtual hard disk.
   late final pulumi.Output<String> provisioningState;
-
   /// The observed state of virtual hard disks
   late final pulumi.Output<VirtualHardDiskStatusResponse> status;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -382,11 +364,11 @@ class VirtualHardDisk extends pulumi.CustomResource {
     VirtualHardDiskArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:azurestackhci:VirtualHardDisk',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:azurestackhci:VirtualHardDisk',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     blockSizeBytes = registerOutput<int?>('blockSizeBytes');
     containerId = registerOutput<String?>('containerId');
@@ -395,42 +377,15 @@ class VirtualHardDisk extends pulumi.CustomResource {
     diskSizeGB = registerOutput<double?>('diskSizeGB');
     downloadUrl = registerOutput<String?>('downloadUrl');
     dynamic_ = registerOutput<bool?>('dynamic');
-    extendedLocation = registerOutput<ExtendedLocationResponse?>(
-      'extendedLocation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExtendedLocationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     hyperVGeneration = registerOutput<String?>('hyperVGeneration');
     location = registerOutput<String>('location');
     logicalSectorBytes = registerOutput<int?>('logicalSectorBytes');
     this.name = registerOutput<String>('name');
     physicalSectorBytes = registerOutput<int?>('physicalSectorBytes');
     provisioningState = registerOutput<String>('provisioningState');
-    status = registerOutput<VirtualHardDiskStatusResponse>(
-      'status',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VirtualHardDiskStatusResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    status = registerOutput<VirtualHardDiskStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualHardDiskStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

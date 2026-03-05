@@ -210,23 +210,18 @@ import 'queue_state.dart';
 class Queue extends pulumi.CustomResource {
   /// A mapping of MetaData which should be assigned to this Storage Queue.
   late final pulumi.Output<Map<String, String>?> metadata;
-
   /// The name of the Queue which should be created within the Storage Account. Must be unique within the storage account the queue is located. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The Resource Manager ID of this Storage Queue.
   late final pulumi.Output<String> resourceManagerId;
-
   /// The name of the Storage Account where the Storage Queue should be created.
   ///
   /// &gt; **Note:** One of `storage_account_name` or `storage_account_id` must be specified. When specifying `storage_account_id` the resource will use the Resource Manager API, rather than the Data Plane API.
   late final pulumi.Output<String?> storageAccountId;
-
   /// The name of the Storage Account where the Storage Queue should be created. This property is deprecated in favour of `storage_account_id`.
   ///
   /// &gt; **Note:** Migrating from the deprecated `storage_account_name` to `storage_account_id` is supported without recreation. Any other change to either property will result in the resource being recreated.
   late final pulumi.Output<String?> storageAccountName;
-
   /// The data plane URL of the Storage Queue in the format of `&lt;storage queue endpoint&gt;/&lt;queue name&gt;`. E.g. `https://example.queue.core.windows.net/queue1`.
   late final pulumi.Output<String> url;
 
@@ -234,13 +229,16 @@ class Queue extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Queue]. {@macro pulumi_storage_queue_queue_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Queue(String name, {QueueArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure:storage/queue:Queue',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Queue(
+    String name, {
+    QueueArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure:storage/queue:Queue',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     metadata = registerOutput<Map<String, String>?>('metadata');
     this.name = registerOutput<String>('name');
     resourceManagerId = registerOutput<String>('resourceManagerId');
@@ -250,7 +248,11 @@ class Queue extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Queue] resource's state with the given [name] and [id].
-  static Queue get(String name, pulumi.Input<String> id, {QueueState? state}) {
+  static Queue get(
+    String name,
+    pulumi.Input<String> id, {
+    QueueState? state,
+  }) {
     return Queue._get(
       name,
       state: state?.toMap(),
@@ -263,11 +265,11 @@ class Queue extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:storage/queue:Queue',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:storage/queue:Queue',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     metadata = registerOutput<Map<String, String>?>('metadata');
     this.name = registerOutput<String>('name');
     resourceManagerId = registerOutput<String>('resourceManagerId');

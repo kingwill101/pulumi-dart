@@ -228,44 +228,30 @@ import 'packet_capture_storage_location_response.dart';
 class PacketCapture extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Number of bytes captured per packet, the remaining bytes are truncated.
   late final pulumi.Output<double?> bytesToCapturePerPacket;
-
   /// The capture setting holds the 'FileCount', 'FileSizeInBytes', 'SessionTimeLimitInSeconds' values.
   late final pulumi.Output<PacketCaptureSettingsResponse?> captureSettings;
-
   /// This continuous capture is a nullable boolean, which can hold 'null', 'true' or 'false' value. If we do not pass this parameter, it would be consider as 'null', default value is 'null'.
   late final pulumi.Output<bool?> continuousCapture;
-
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
-
   /// A list of packet capture filters.
   late final pulumi.Output<List<Map<String, dynamic>>?> filters;
-
   /// Name of the packet capture session.
   late final pulumi.Output<String> name;
-
   /// The provisioning state of the packet capture session.
   late final pulumi.Output<String> provisioningState;
-
   /// A list of AzureVMSS instances which can be included or excluded to run packet capture. If both included and excluded are empty, then the packet capture will run on all instances of AzureVMSS.
   late final pulumi.Output<PacketCaptureMachineScopeResponse?> scope;
-
   /// The storage location for a packet capture session.
-  late final pulumi.Output<PacketCaptureStorageLocationResponse>
-  storageLocation;
-
+  late final pulumi.Output<PacketCaptureStorageLocationResponse> storageLocation;
   /// The ID of the targeted resource, only AzureVM and AzureVMSS as target type are currently supported.
   late final pulumi.Output<String> target;
-
   /// Target type of the resource provided.
   late final pulumi.Output<String?> targetType;
-
   /// Maximum duration of the capture session in seconds.
   late final pulumi.Output<int?> timeLimitInSeconds;
-
   /// Maximum size of the capture output.
   late final pulumi.Output<double?> totalBytesPerSession;
 
@@ -278,50 +264,21 @@ class PacketCapture extends pulumi.CustomResource {
     PacketCaptureArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:network:PacketCapture',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:network:PacketCapture',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    bytesToCapturePerPacket = registerOutput<double?>(
-      'bytesToCapturePerPacket',
-    );
-    captureSettings = registerOutput<PacketCaptureSettingsResponse?>(
-      'captureSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PacketCaptureSettingsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    bytesToCapturePerPacket = registerOutput<double?>('bytesToCapturePerPacket');
+    captureSettings = registerOutput<PacketCaptureSettingsResponse?>('captureSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PacketCaptureSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     continuousCapture = registerOutput<bool?>('continuousCapture');
     etag = registerOutput<String>('etag');
     filters = registerOutput<List<Map<String, dynamic>>?>('filters');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    scope = registerOutput<PacketCaptureMachineScopeResponse?>(
-      'scope',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PacketCaptureMachineScopeResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    storageLocation = registerOutput<PacketCaptureStorageLocationResponse>(
-      'storageLocation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PacketCaptureStorageLocationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    scope = registerOutput<PacketCaptureMachineScopeResponse?>('scope', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PacketCaptureMachineScopeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    storageLocation = registerOutput<PacketCaptureStorageLocationResponse>('storageLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PacketCaptureStorageLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     target = registerOutput<String>('target');
     targetType = registerOutput<String?>('targetType');
     timeLimitInSeconds = registerOutput<int?>('timeLimitInSeconds');

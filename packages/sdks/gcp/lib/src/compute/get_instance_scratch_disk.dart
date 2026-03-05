@@ -6,10 +6,8 @@ class GetInstanceScratchDisk {
   /// Name with which the attached disk is accessible
   /// under `/dev/disk/by-id/`
   final pulumi.Input<String> deviceName;
-
   /// The disk interface used for attaching this disk. One of `SCSI` or `NVME`.
   final pulumi.Input<String> interface;
-
   /// The size of the image in gigabytes.
   final pulumi.Input<int> size;
 
@@ -39,3 +37,4 @@ class GetInstanceScratchDisk {
     );
   }
 }
+

@@ -6,14 +6,11 @@ import 'get_forwarding_rules_forwarding_rule.dart';
 /// Result data returned by getForwardingRules.
 class GetForwardingRulesResult {
   final String acceleratorId;
-
   /// A list of Ga Forwarding Rules. Each element contains the following attributes:
   final List<GetForwardingRulesForwardingRule> forwardingRules;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
-
   /// The ID of the listener.
   final String listenerId;
   final String? outputFile;
@@ -40,11 +37,7 @@ class GetForwardingRulesResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'acceleratorId': acceleratorId,
-      'forwardingRules':
-          pulumi.Input.encodeList<
-            GetForwardingRulesForwardingRule,
-            Map<String, dynamic>
-          >(forwardingRules, (value) => value.toMap()),
+      'forwardingRules': pulumi.Input.encodeList<GetForwardingRulesForwardingRule, Map<String, dynamic>>(forwardingRules, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'listenerId': listenerId,
@@ -56,26 +49,13 @@ class GetForwardingRulesResult {
   factory GetForwardingRulesResult.fromMap(Map<String, dynamic> map) {
     return GetForwardingRulesResult(
       acceleratorId: map['acceleratorId'] as String,
-      forwardingRules:
-          pulumi.Input.decodeList<GetForwardingRulesForwardingRule>(
-            map['forwardingRules']!,
-            (value) => GetForwardingRulesForwardingRule.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      forwardingRules: pulumi.Input.decodeList<GetForwardingRulesForwardingRule>(map['forwardingRules']!, (value) => GetForwardingRulesForwardingRule.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       listenerId: map['listenerId'] as String,
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

@@ -132,22 +132,16 @@ import 'scope_assignment_args.dart';
 class ScopeAssignment extends pulumi.CustomResource {
   /// The managed network ID with scope will be assigned to.
   late final pulumi.Output<String?> assignedManagedNetwork;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String?> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Provisioning state of the ManagedNetwork resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
   late final pulumi.Output<String> type;
 
@@ -160,11 +154,11 @@ class ScopeAssignment extends pulumi.CustomResource {
     ScopeAssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:managednetwork:ScopeAssignment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:managednetwork:ScopeAssignment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     assignedManagedNetwork = registerOutput<String?>('assignedManagedNetwork');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     etag = registerOutput<String>('etag');

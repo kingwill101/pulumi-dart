@@ -9,10 +9,14 @@ class LoadBalancerProbeReferenceResponse {
 
   /// Creates a new [LoadBalancerProbeReferenceResponse].
   /// [name] name of the health probe
-  LoadBalancerProbeReferenceResponse({required this.name});
+  LoadBalancerProbeReferenceResponse({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory LoadBalancerProbeReferenceResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class LoadBalancerProbeReferenceResponse {
     );
   }
 }
+

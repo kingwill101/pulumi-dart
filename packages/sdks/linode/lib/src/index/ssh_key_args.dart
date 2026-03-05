@@ -9,17 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SshKeyArgs {
   /// A label for the SSH Key.
   final pulumi.Input<String> label;
-
   /// The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
   final pulumi.Input<String> sshKey;
 
   /// Creates a new [SshKeyArgs].
   /// [label] A label for the SSH Key.
   /// [sshKey] The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
-  SshKeyArgs({required this.label, required this.sshKey});
+  SshKeyArgs({
+    required this.label,
+    required this.sshKey,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'label': label, 'sshKey': sshKey};
+    return <String, dynamic>{
+      'label': label,
+      'sshKey': sshKey,
+    };
   }
 
   factory SshKeyArgs.fromMap(Map<String, dynamic> map) {
@@ -29,3 +34,4 @@ class SshKeyArgs {
     );
   }
 }
+

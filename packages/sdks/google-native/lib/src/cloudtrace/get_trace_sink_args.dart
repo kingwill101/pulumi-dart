@@ -13,20 +13,23 @@ class GetTraceSinkArgs {
   /// Creates a new [GetTraceSinkArgs].
   /// [project] Optional.
   /// [traceSinkId] Required.
-  GetTraceSinkArgs({this.project, required this.traceSinkId});
+  GetTraceSinkArgs({
+    this.project,
+    required this.traceSinkId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'project': ?project, 'traceSinkId': traceSinkId};
+    return <String, dynamic>{
+      'project': ?project,
+      'traceSinkId': traceSinkId,
+    };
   }
 
   factory GetTraceSinkArgs.fromMap(Map<String, dynamic> map) {
     return GetTraceSinkArgs(
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       traceSinkId: pulumi.Input.fromValue(map['traceSinkId'] as String),
     );
   }
 }
+

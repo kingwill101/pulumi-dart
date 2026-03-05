@@ -15,19 +15,17 @@ class DiagnosticSettingEnabledLogRetentionPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'days': ?days, 'enabled': enabled};
+    return <String, dynamic>{
+      'days': ?days,
+      'enabled': enabled,
+    };
   }
 
-  factory DiagnosticSettingEnabledLogRetentionPolicy.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DiagnosticSettingEnabledLogRetentionPolicy.fromMap(Map<String, dynamic> map) {
     return DiagnosticSettingEnabledLogRetentionPolicy(
-      days: (() {
-        final guardedValue = map['days'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      days: (() { final guardedValue = map['days']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
+

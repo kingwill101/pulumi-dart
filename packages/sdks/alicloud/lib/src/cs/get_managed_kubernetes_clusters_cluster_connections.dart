@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetManagedKubernetesClustersClusterConnections {
   /// API Server Internet endpoint.
   final pulumi.Input<String> apiServerInternet;
-
   /// API Server Intranet endpoint.
   final pulumi.Input<String> apiServerIntranet;
-
   /// Master node SSH IP address.
   final pulumi.Input<String> masterPublicIp;
-
   /// Service Access Domain.
   final pulumi.Input<String> serviceDomain;
 
@@ -36,18 +33,13 @@ class GetManagedKubernetesClustersClusterConnections {
     };
   }
 
-  factory GetManagedKubernetesClustersClusterConnections.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetManagedKubernetesClustersClusterConnections.fromMap(Map<String, dynamic> map) {
     return GetManagedKubernetesClustersClusterConnections(
-      apiServerInternet: pulumi.Input.fromValue(
-        map['apiServerInternet'] as String,
-      ),
-      apiServerIntranet: pulumi.Input.fromValue(
-        map['apiServerIntranet'] as String,
-      ),
+      apiServerInternet: pulumi.Input.fromValue(map['apiServerInternet'] as String),
+      apiServerIntranet: pulumi.Input.fromValue(map['apiServerIntranet'] as String),
       masterPublicIp: pulumi.Input.fromValue(map['masterPublicIp'] as String),
       serviceDomain: pulumi.Input.fromValue(map['serviceDomain'] as String),
     );
   }
 }
+

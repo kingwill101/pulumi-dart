@@ -1,22 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getSnapshot.
 class GetSnapshotFileV1beta1Result {
   /// The time when the snapshot was created.
   final String createTime;
-
   /// A description of the snapshot with 2048 characters or less. Requests with longer descriptions will be rejected.
   final String description;
-
   /// The amount of bytes needed to allocate a full copy of the snapshot content
   final String filesystemUsedBytes;
-
   /// Resource labels to represent user provided metadata.
   final Map<String, String> labels;
-
   /// The resource name of the snapshot, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}/snapshots/{snapshot_id}`.
   final String name;
-
   /// The snapshot state.
   final String state;
 
@@ -58,3 +54,4 @@ class GetSnapshotFileV1beta1Result {
     );
   }
 }
+

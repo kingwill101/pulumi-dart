@@ -9,21 +9,20 @@ class ResolverLevelMetricsBehaviorEnumValue {
 
   /// Creates a new [ResolverLevelMetricsBehaviorEnumValue].
   /// [value] Property value
-  ResolverLevelMetricsBehaviorEnumValue({this.value});
+  ResolverLevelMetricsBehaviorEnumValue({
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': ?value};
+    return <String, dynamic>{
+      'value': ?value,
+    };
   }
 
-  factory ResolverLevelMetricsBehaviorEnumValue.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResolverLevelMetricsBehaviorEnumValue.fromMap(Map<String, dynamic> map) {
     return ResolverLevelMetricsBehaviorEnumValue(
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

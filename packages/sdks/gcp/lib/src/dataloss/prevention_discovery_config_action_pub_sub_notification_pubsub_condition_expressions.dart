@@ -6,13 +6,7 @@ import 'prevention_discovery_config_action_pub_sub_notification_pubsub_condition
 class PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressions {
   /// Conditions to apply to the expression
   /// Structure is documented below.
-  final pulumi.Input<
-    List<
-      PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsCondition
-    >
-  >?
-  conditions;
-
+  final pulumi.Input<List<PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsCondition>>? conditions;
   /// The operator to apply to the collection of conditions
   /// Possible values are: `OR`, `AND`.
   final pulumi.Input<String>? logicalOperator;
@@ -27,48 +21,16 @@ class PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpression
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'conditions':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<
-              PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsCondition
-            >,
-            List<Map<String, dynamic>>
-          >(
-            conditions,
-            (value) =>
-                pulumi.Input.encodeList<
-                  PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsCondition,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'conditions': ?pulumi.Input.mapOptionalInputValue<List<PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsCondition>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
       'logicalOperator': ?logicalOperator,
     };
   }
 
-  factory PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressions.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressions.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressions(
-      conditions: (() {
-        final guardedValue = map['conditions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsCondition
-          >(
-            guardedValue,
-            (value) =>
-                PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsCondition.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
-      logicalOperator: (() {
-        final guardedValue = map['logicalOperator'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsCondition>(guardedValue, (value) => PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsCondition.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      logicalOperator: (() { final guardedValue = map['logicalOperator']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

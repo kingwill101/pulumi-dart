@@ -9,17 +9,20 @@ class GoogleCloudMlV1EncryptionConfigResponse {
 
   /// Creates a new [GoogleCloudMlV1EncryptionConfigResponse].
   /// [kmsKeyName] The Cloud KMS resource identifier of the customer-managed encryption key used to protect a resource, such as a training job. It has the following format: `projects/{PROJECT_ID}/locations/{REGION}/keyRings/{KEY_RING_NAME}/cryptoKeys/{KEY_NAME}`
-  GoogleCloudMlV1EncryptionConfigResponse({required this.kmsKeyName});
+  GoogleCloudMlV1EncryptionConfigResponse({
+    required this.kmsKeyName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'kmsKeyName': kmsKeyName};
+    return <String, dynamic>{
+      'kmsKeyName': kmsKeyName,
+    };
   }
 
-  factory GoogleCloudMlV1EncryptionConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudMlV1EncryptionConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1EncryptionConfigResponse(
       kmsKeyName: pulumi.Input.fromValue(map['kmsKeyName'] as String),
     );
   }
 }
+

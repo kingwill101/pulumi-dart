@@ -8,10 +8,14 @@ class GetVpcIpsVpcIpIpv6Address {
 
   /// Creates a new [GetVpcIpsVpcIpIpv6Address].
   /// [slaacAddress] A specific address within the prefix that the interface is expected to autoconfigure through SLAAC.
-  GetVpcIpsVpcIpIpv6Address({required this.slaacAddress});
+  GetVpcIpsVpcIpIpv6Address({
+    required this.slaacAddress,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'slaacAddress': slaacAddress};
+    return <String, dynamic>{
+      'slaacAddress': slaacAddress,
+    };
   }
 
   factory GetVpcIpsVpcIpIpv6Address.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class GetVpcIpsVpcIpIpv6Address {
     );
   }
 }
+

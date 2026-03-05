@@ -8,52 +8,37 @@ class ClientUserDefineRuleState {
   /// - **0**: plus White
   /// - **1**: Plus Black.
   final pulumi.Input<int>? actionType;
-
   /// The custom rule name.
   final pulumi.Input<String>? clientUserDefineRuleName;
-
   /// Command line. When the value of the Type attribute is 2, 3, 4, 5, 6, or 7, the command line field is required.
   final pulumi.Input<String>? cmdline;
-
   /// The creation time of the resource.
   final pulumi.Input<int>? createTime;
-
   /// The file path. When the value of the Type attribute is 4 or 6, 7, the FilePath field is required.
   final pulumi.Input<String>? filePath;
-
   /// Process hash list. When the value of the Type attribute is 1, the Hash attribute is required.
   final pulumi.Input<String>? hash;
-
   /// IP address. When the value of the Type attribute is 3, the Ip attribute is required.
   final pulumi.Input<String>? ip;
-
   /// The new file path to rename the file. When the value of the Type attribute is 7, the NewFilePath attribute is required.
   final pulumi.Input<String>? newFilePath;
-
   /// The parent command line.
   final pulumi.Input<String>? parentCmdline;
-
   /// Parent process path.
   final pulumi.Input<String>? parentProcPath;
-
   /// The operating system type. Value:
   /// - **windows**:widows
   /// - **linux**:linux
   /// - **all**: all.
   final pulumi.Input<String>? platform;
-
   /// The port number. When the value of the Type attribute is 3, the PortStr attribute is required. Value range: **1-65535**.
   final pulumi.Input<String>? portStr;
-
   /// The process path. When the Type attribute is set to 2, 3, 4, 5, 6, or 7, the ProcPath attribute is required.
   final pulumi.Input<String>? procPath;
-
   /// The registry value. When the value of the Type attribute is 5, the RegistryKey attribute is required.
   final pulumi.Input<String>? registryContent;
-
   /// The registry key. When the value of the Type attribute is 5, the RegistryKey attribute is required.
   final pulumi.Input<String>? registryKey;
-
   /// The rule type. Value:
   /// - **1**: Process hash
   /// - **2**: command line
@@ -123,86 +108,23 @@ class ClientUserDefineRuleState {
 
   factory ClientUserDefineRuleState.fromMap(Map<String, dynamic> map) {
     return ClientUserDefineRuleState(
-      actionType: (() {
-        final guardedValue = map['actionType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      clientUserDefineRuleName: (() {
-        final guardedValue = map['clientUserDefineRuleName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      cmdline: (() {
-        final guardedValue = map['cmdline'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      filePath: (() {
-        final guardedValue = map['filePath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      hash: (() {
-        final guardedValue = map['hash'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ip: (() {
-        final guardedValue = map['ip'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      newFilePath: (() {
-        final guardedValue = map['newFilePath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      parentCmdline: (() {
-        final guardedValue = map['parentCmdline'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      parentProcPath: (() {
-        final guardedValue = map['parentProcPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      platform: (() {
-        final guardedValue = map['platform'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      portStr: (() {
-        final guardedValue = map['portStr'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      procPath: (() {
-        final guardedValue = map['procPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      registryContent: (() {
-        final guardedValue = map['registryContent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      registryKey: (() {
-        final guardedValue = map['registryKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      actionType: (() { final guardedValue = map['actionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      clientUserDefineRuleName: (() { final guardedValue = map['clientUserDefineRuleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      cmdline: (() { final guardedValue = map['cmdline']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      filePath: (() { final guardedValue = map['filePath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      hash: (() { final guardedValue = map['hash']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ip: (() { final guardedValue = map['ip']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      newFilePath: (() { final guardedValue = map['newFilePath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      parentCmdline: (() { final guardedValue = map['parentCmdline']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      parentProcPath: (() { final guardedValue = map['parentProcPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      platform: (() { final guardedValue = map['platform']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      portStr: (() { final guardedValue = map['portStr']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      procPath: (() { final guardedValue = map['procPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      registryContent: (() { final guardedValue = map['registryContent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      registryKey: (() { final guardedValue = map['registryKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

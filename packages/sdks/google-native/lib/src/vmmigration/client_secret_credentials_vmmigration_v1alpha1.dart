@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClientSecretCredentialsVmmigrationV1alpha1 {
   /// Azure client ID.
   final pulumi.Input<String>? clientId;
-
   /// Input only. Azure client secret.
   final pulumi.Input<String>? clientSecret;
-
   /// Azure tenant ID.
   final pulumi.Input<String>? tenantId;
 
@@ -31,25 +29,12 @@ class ClientSecretCredentialsVmmigrationV1alpha1 {
     };
   }
 
-  factory ClientSecretCredentialsVmmigrationV1alpha1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClientSecretCredentialsVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
     return ClientSecretCredentialsVmmigrationV1alpha1(
-      clientId: (() {
-        final guardedValue = map['clientId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      clientSecret: (() {
-        final guardedValue = map['clientSecret'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tenantId: (() {
-        final guardedValue = map['tenantId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      clientId: (() { final guardedValue = map['clientId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      clientSecret: (() { final guardedValue = map['clientSecret']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

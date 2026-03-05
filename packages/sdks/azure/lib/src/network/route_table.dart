@@ -212,24 +212,18 @@ import 'route_table_state.dart';
 class RouteTable extends pulumi.CustomResource {
   /// Boolean flag which controls propagation of routes learned by BGP on that route table. Defaults to `true`.
   late final pulumi.Output<bool?> bgpRoutePropagationEnabled;
-
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The name of the route.
   late final pulumi.Output<String> name;
-
   /// The name of the resource group in which to create the route table. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A list of objects representing routes. Each object accepts the arguments documented below.
   ///
   /// &gt; **NOTE** Since `route` can be configured both inline and via the separate `azure.network.Route` resource, we have to explicitly set it to empty slice (`[]`) to remove it.
   late final pulumi.Output<List<Map<String, dynamic>>> routes;
-
   /// The collection of Subnets associated with this route table.
   late final pulumi.Output<List<String>> subnets;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -242,14 +236,12 @@ class RouteTable extends pulumi.CustomResource {
     RouteTableArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/routeTable:RouteTable',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    bgpRoutePropagationEnabled = registerOutput<bool?>(
-      'bgpRoutePropagationEnabled',
-    );
+          'azure:network/routeTable:RouteTable',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    bgpRoutePropagationEnabled = registerOutput<bool?>('bgpRoutePropagationEnabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -276,14 +268,12 @@ class RouteTable extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/routeTable:RouteTable',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    bgpRoutePropagationEnabled = registerOutput<bool?>(
-      'bgpRoutePropagationEnabled',
-    );
+          'azure:network/routeTable:RouteTable',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    bgpRoutePropagationEnabled = registerOutput<bool?>('bgpRoutePropagationEnabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');

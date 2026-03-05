@@ -6,10 +6,8 @@ import 'get_route_table_propagations_filter.dart';
 /// Result data returned by getRouteTablePropagations.
 class GetRouteTablePropagationsResult {
   final List<GetRouteTablePropagationsFilter>? filters;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Set of Transit Gateway Route Table Association identifiers.
   final List<String> ids;
   final String region;
@@ -31,14 +29,7 @@ class GetRouteTablePropagationsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?(() {
-        final guardedValue = filters;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          GetRouteTablePropagationsFilter,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'filters': ?(() { final guardedValue = filters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRouteTablePropagationsFilter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'id': id,
       'ids': ids,
       'region': region,
@@ -48,16 +39,7 @@ class GetRouteTablePropagationsResult {
 
   factory GetRouteTablePropagationsResult.fromMap(Map<String, dynamic> map) {
     return GetRouteTablePropagationsResult(
-      filters: (() {
-        final guardedValue = map['filters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<GetRouteTablePropagationsFilter>(
-          guardedValue,
-          (value) => GetRouteTablePropagationsFilter.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRouteTablePropagationsFilter>(guardedValue, (value) => GetRouteTablePropagationsFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       region: map['region'] as String,
@@ -65,3 +47,4 @@ class GetRouteTablePropagationsResult {
     );
   }
 }
+

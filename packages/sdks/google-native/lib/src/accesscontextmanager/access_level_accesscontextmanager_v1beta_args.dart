@@ -10,19 +10,14 @@ import 'custom_level_accesscontextmanager_v1beta.dart';
 /// {@macro pulumi_accesscontextmanager_v1beta_access_level_accesscontextmanager_v1beta_args_doc}
 class AccessLevelAccesscontextmanagerV1betaArgs {
   final pulumi.Input<String> accessPolicyId;
-
   /// A `BasicLevel` composed of `Conditions`.
   final pulumi.Input<BasicLevelAccesscontextmanagerV1beta>? basic;
-
   /// A `CustomLevel` written in the Common Expression Language.
   final pulumi.Input<CustomLevelAccesscontextmanagerV1beta>? custom;
-
   /// Description of the `AccessLevel` and its use. Does not affect behavior.
   final pulumi.Input<String>? description;
-
   /// Resource name for the `AccessLevel`. Format: `accessPolicies/{access_policy}/accessLevels/{access_level}`. The `access_level` component must begin with a letter, followed by alphanumeric characters or `_`. Its maximum length is 50 characters. After you create an `AccessLevel`, you cannot change its `name`.
   final pulumi.Input<String>? name;
-
   /// Human readable title. Must be unique within the Policy.
   final pulumi.Input<String>? title;
 
@@ -45,60 +40,23 @@ class AccessLevelAccesscontextmanagerV1betaArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'accessPolicyId': accessPolicyId,
-      'basic':
-          ?pulumi.Input.mapOptionalInputValue<
-            BasicLevelAccesscontextmanagerV1beta,
-            Map<String, dynamic>
-          >(basic, (value) => value.toMap()),
-      'custom':
-          ?pulumi.Input.mapOptionalInputValue<
-            CustomLevelAccesscontextmanagerV1beta,
-            Map<String, dynamic>
-          >(custom, (value) => value.toMap()),
+      'basic': ?pulumi.Input.mapOptionalInputValue<BasicLevelAccesscontextmanagerV1beta, Map<String, dynamic>>(basic, (value) => value.toMap()),
+      'custom': ?pulumi.Input.mapOptionalInputValue<CustomLevelAccesscontextmanagerV1beta, Map<String, dynamic>>(custom, (value) => value.toMap()),
       'description': ?description,
       'name': ?name,
       'title': ?title,
     };
   }
 
-  factory AccessLevelAccesscontextmanagerV1betaArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AccessLevelAccesscontextmanagerV1betaArgs.fromMap(Map<String, dynamic> map) {
     return AccessLevelAccesscontextmanagerV1betaArgs(
       accessPolicyId: pulumi.Input.fromValue(map['accessPolicyId'] as String),
-      basic: (() {
-        final guardedValue = map['basic'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BasicLevelAccesscontextmanagerV1beta.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      custom: (() {
-        final guardedValue = map['custom'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CustomLevelAccesscontextmanagerV1beta.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      title: (() {
-        final guardedValue = map['title'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      basic: (() { final guardedValue = map['basic']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BasicLevelAccesscontextmanagerV1beta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      custom: (() { final guardedValue = map['custom']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CustomLevelAccesscontextmanagerV1beta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      title: (() { final guardedValue = map['title']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -14,3 +14,4 @@ enum PropagationType {
     throw ArgumentError('Unknown PropagationType value: $value');
   }
 }
+

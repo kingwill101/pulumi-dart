@@ -159,21 +159,16 @@ import 'workspace_workspace_state.dart';
 class WorkspaceWorkspace extends pulumi.CustomResource {
   /// The UTC time when the workspace is created. The time format is ISO8601.
   late final pulumi.Output<String> createTime;
-
   /// Workspace description, no more than 80 characters.
   late final pulumi.Output<String> description;
-
   /// It is recommended that you name the workspace based on the business attribute to identify the purpose of the workspace. If not configured, the default value is the workspace name.
   late final pulumi.Output<String?> displayName;
-
   /// Environments contained in the workspace:
   /// - Simple mode only production environment (prod).
   /// - Standard mode includes development environment (dev) and production environment (prod).
   late final pulumi.Output<List<String>> envTypes;
-
   /// Workspace state, possible values:
   late final pulumi.Output<String> status;
-
   /// The workspace name. The format is as follows:
   /// - 3 to 23 characters in length and can contain letters, underscores, or numbers.
   /// - Must start with a large or small letter.
@@ -189,11 +184,11 @@ class WorkspaceWorkspace extends pulumi.CustomResource {
     WorkspaceWorkspaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:pai/workspaceWorkspace:WorkspaceWorkspace',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:pai/workspaceWorkspace:WorkspaceWorkspace',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     displayName = registerOutput<String?>('displayName');
@@ -220,11 +215,11 @@ class WorkspaceWorkspace extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:pai/workspaceWorkspace:WorkspaceWorkspace',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:pai/workspaceWorkspace:WorkspaceWorkspace',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     displayName = registerOutput<String?>('displayName');

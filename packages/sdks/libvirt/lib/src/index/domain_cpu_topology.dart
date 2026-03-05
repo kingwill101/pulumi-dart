@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainCpuTopology {
   /// Sets the number of CPU clusters configured within the domain.
   final pulumi.Input<double>? clusters;
-
   /// Configures the number of cores allocated to each CPU within the domain topology.
   final pulumi.Input<double>? cores;
-
   /// Specifies the number of dies configured for the CPUs within the domain topology.
   final pulumi.Input<double>? dies;
-
   /// Configures the number of CPU sockets defined in the domain's CPU topology.
   final pulumi.Input<double>? sockets;
-
   /// Sets the number of threads associated with each core in the CPU topology.
   final pulumi.Input<double>? threads;
 
@@ -44,31 +40,12 @@ class DomainCpuTopology {
 
   factory DomainCpuTopology.fromMap(Map<String, dynamic> map) {
     return DomainCpuTopology(
-      clusters: (() {
-        final guardedValue = map['clusters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      cores: (() {
-        final guardedValue = map['cores'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      dies: (() {
-        final guardedValue = map['dies'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      sockets: (() {
-        final guardedValue = map['sockets'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      threads: (() {
-        final guardedValue = map['threads'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      clusters: (() { final guardedValue = map['clusters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      cores: (() { final guardedValue = map['cores']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      dies: (() { final guardedValue = map['dies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      sockets: (() { final guardedValue = map['sockets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      threads: (() { final guardedValue = map['threads']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

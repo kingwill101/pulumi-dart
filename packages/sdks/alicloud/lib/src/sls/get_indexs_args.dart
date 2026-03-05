@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIndexsArgs {
   /// A list of Index IDs. The value is formulated as `&lt;project_name&gt;:&lt;logstore_name&gt;`.
   final pulumi.Input<List<String>>? ids;
-
   /// Logstore name
   final pulumi.Input<String> logstoreName;
-
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
-
   /// Project name
   final pulumi.Input<String> projectName;
 
@@ -42,18 +39,11 @@ class GetIndexsArgs {
 
   factory GetIndexsArgs.fromMap(Map<String, dynamic> map) {
     return GetIndexsArgs(
-      ids: (() {
-        final guardedValue = map['ids'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      ids: (() { final guardedValue = map['ids']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       logstoreName: pulumi.Input.fromValue(map['logstoreName'] as String),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       projectName: pulumi.Input.fromValue(map['projectName'] as String),
     );
   }
 }
+

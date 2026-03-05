@@ -7,16 +7,12 @@ import 'commitment_quota_response.dart';
 class CommitmentPeriodResponse {
   /// Commitment period commitment count.
   final pulumi.Input<int>? count;
-
   /// Commitment period end date.
   final pulumi.Input<String> endDate;
-
   /// Cognitive Services account commitment quota.
   final pulumi.Input<CommitmentQuotaResponse> quota;
-
   /// Commitment period start date.
   final pulumi.Input<String> startDate;
-
   /// Commitment period commitment tier.
   final pulumi.Input<String>? tier;
 
@@ -38,11 +34,7 @@ class CommitmentPeriodResponse {
     return <String, dynamic>{
       'count': ?count,
       'endDate': endDate,
-      'quota':
-          pulumi.Input.mapInputValue<
-            CommitmentQuotaResponse,
-            Map<String, dynamic>
-          >(quota, (value) => value.toMap()),
+      'quota': pulumi.Input.mapInputValue<CommitmentQuotaResponse, Map<String, dynamic>>(quota, (value) => value.toMap()),
       'startDate': startDate,
       'tier': ?tier,
     };
@@ -50,23 +42,12 @@ class CommitmentPeriodResponse {
 
   factory CommitmentPeriodResponse.fromMap(Map<String, dynamic> map) {
     return CommitmentPeriodResponse(
-      count: (() {
-        final guardedValue = map['count'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       endDate: pulumi.Input.fromValue(map['endDate'] as String),
-      quota: pulumi.Input.fromValue(
-        CommitmentQuotaResponse.fromMap(
-          (map['quota']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      quota: pulumi.Input.fromValue(CommitmentQuotaResponse.fromMap((map['quota']! as Map).cast<String, dynamic>())),
       startDate: pulumi.Input.fromValue(map['startDate'] as String),
-      tier: (() {
-        final guardedValue = map['tier'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      tier: (() { final guardedValue = map['tier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

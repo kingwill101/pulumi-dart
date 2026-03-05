@@ -7,17 +7,13 @@ enum InstancePropertiesPrivateIpv6GoogleAccessComputeV1 {
   const InstancePropertiesPrivateIpv6GoogleAccessComputeV1(this.wireValue);
   final String wireValue;
 
-  static InstancePropertiesPrivateIpv6GoogleAccessComputeV1 fromValue(
-    String value,
-  ) {
-    for (final item
-        in InstancePropertiesPrivateIpv6GoogleAccessComputeV1.values) {
+  static InstancePropertiesPrivateIpv6GoogleAccessComputeV1 fromValue(String value) {
+    for (final item in InstancePropertiesPrivateIpv6GoogleAccessComputeV1.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown InstancePropertiesPrivateIpv6GoogleAccessComputeV1 value: $value',
-    );
+    throw ArgumentError('Unknown InstancePropertiesPrivateIpv6GoogleAccessComputeV1 value: $value');
   }
 }
+

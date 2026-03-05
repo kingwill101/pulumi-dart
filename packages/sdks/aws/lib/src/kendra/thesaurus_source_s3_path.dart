@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ThesaurusSourceS3Path {
   /// The name of the S3 bucket that contains the file.
   final pulumi.Input<String> bucket;
-
   /// The name of the file.
   ///
   /// The following arguments are optional:
@@ -14,10 +13,16 @@ class ThesaurusSourceS3Path {
   /// Creates a new [ThesaurusSourceS3Path].
   /// [bucket] The name of the S3 bucket that contains the file.
   /// [key] The name of the file.
-  ThesaurusSourceS3Path({required this.bucket, required this.key});
+  ThesaurusSourceS3Path({
+    required this.bucket,
+    required this.key,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'bucket': bucket, 'key': key};
+    return <String, dynamic>{
+      'bucket': bucket,
+      'key': key,
+    };
   }
 
   factory ThesaurusSourceS3Path.fromMap(Map<String, dynamic> map) {
@@ -27,3 +32,4 @@ class ThesaurusSourceS3Path {
     );
   }
 }
+

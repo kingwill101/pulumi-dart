@@ -25,9 +25,7 @@ class CloudVmClusterIormConfigCacheDbPlan {
     };
   }
 
-  factory CloudVmClusterIormConfigCacheDbPlan.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CloudVmClusterIormConfigCacheDbPlan.fromMap(Map<String, dynamic> map) {
     return CloudVmClusterIormConfigCacheDbPlan(
       dbName: pulumi.Input.fromValue(map['dbName'] as String),
       flashCacheLimit: pulumi.Input.fromValue(map['flashCacheLimit'] as String),
@@ -35,3 +33,4 @@ class CloudVmClusterIormConfigCacheDbPlan {
     );
   }
 }
+

@@ -7,7 +7,6 @@ import 'get_policy_rule.dart';
 class GetPolicyResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// supports the following:
   final List<GetPolicyRule> rules;
   final String storageAccountId;
@@ -25,10 +24,7 @@ class GetPolicyResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'rules': pulumi.Input.encodeList<GetPolicyRule, Map<String, dynamic>>(
-        rules,
-        (value) => value.toMap(),
-      ),
+      'rules': pulumi.Input.encodeList<GetPolicyRule, Map<String, dynamic>>(rules, (value) => value.toMap()),
       'storageAccountId': storageAccountId,
     };
   }
@@ -36,12 +32,9 @@ class GetPolicyResult {
   factory GetPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetPolicyResult(
       id: map['id'] as String,
-      rules: pulumi.Input.decodeList<GetPolicyRule>(
-        map['rules']!,
-        (value) =>
-            GetPolicyRule.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      rules: pulumi.Input.decodeList<GetPolicyRule>(map['rules']!, (value) => GetPolicyRule.fromMap((value as Map).cast<String, dynamic>())),
       storageAccountId: map['storageAccountId'] as String,
     );
   }
 }
+

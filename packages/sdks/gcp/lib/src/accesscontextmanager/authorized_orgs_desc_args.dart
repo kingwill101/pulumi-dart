@@ -12,7 +12,6 @@ class AuthorizedOrgsDescArgs {
   /// "ASSET_TYPE_CREDENTIAL_STRENGTH".
   /// Possible values are: `ASSET_TYPE_DEVICE`, `ASSET_TYPE_CREDENTIAL_STRENGTH`.
   final pulumi.Input<String>? assetType;
-
   /// The direction of the authorization relationship between this organization
   /// and the organizations listed in the "orgs" field. The valid values for this
   /// field include the following:
@@ -29,23 +28,19 @@ class AuthorizedOrgsDescArgs {
   /// "AuthorizedOrgsDesc" resource.
   /// Possible values are: `AUTHORIZATION_DIRECTION_TO`, `AUTHORIZATION_DIRECTION_FROM`.
   final pulumi.Input<String>? authorizationDirection;
-
   /// A granular control type for authorization levels. Valid value is "AUTHORIZATION_TYPE_TRUST".
   /// Possible values are: `AUTHORIZATION_TYPE_TRUST`.
   final pulumi.Input<String>? authorizationType;
-
   /// Resource name for the `AuthorizedOrgsDesc`. Format:
   /// `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`.
   /// The `authorized_orgs_desc` component must begin with a letter, followed by
   /// alphanumeric characters or `_`.
   /// After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
   final pulumi.Input<String>? name;
-
   /// The list of organization ids in this AuthorizedOrgsDesc.
   /// Format: `organizations/&lt;org_number&gt;`
   /// Example: `organizations/123456`
   final pulumi.Input<List<String>>? orgs;
-
   /// Required. Resource name for the access policy which owns this `AuthorizedOrgsDesc`.
   final pulumi.Input<String> parent;
 
@@ -78,32 +73,13 @@ class AuthorizedOrgsDescArgs {
 
   factory AuthorizedOrgsDescArgs.fromMap(Map<String, dynamic> map) {
     return AuthorizedOrgsDescArgs(
-      assetType: (() {
-        final guardedValue = map['assetType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      authorizationDirection: (() {
-        final guardedValue = map['authorizationDirection'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      authorizationType: (() {
-        final guardedValue = map['authorizationType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      orgs: (() {
-        final guardedValue = map['orgs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      assetType: (() { final guardedValue = map['assetType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      authorizationDirection: (() { final guardedValue = map['authorizationDirection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      authorizationType: (() { final guardedValue = map['authorizationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      orgs: (() { final guardedValue = map['orgs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       parent: pulumi.Input.fromValue(map['parent'] as String),
     );
   }
 }
+

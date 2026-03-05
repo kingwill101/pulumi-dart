@@ -449,16 +449,12 @@ import 'snapshot_state.dart';
 class Snapshot extends pulumi.CustomResource {
   /// The description of the Snapshot.
   late final pulumi.Output<String?> description;
-
   /// The ID of the Desktop.
   late final pulumi.Output<String> desktopId;
-
   /// The name of the Snapshot.
   late final pulumi.Output<String> snapshotName;
-
   /// The type of the disk for which to create a snapshot. Valid values: `SYSTEM`, `DATA`.
   late final pulumi.Output<String> sourceDiskType;
-
   /// The status of the snapshot.
   late final pulumi.Output<String> status;
 
@@ -471,11 +467,11 @@ class Snapshot extends pulumi.CustomResource {
     SnapshotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:eds/snapshot:Snapshot',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:eds/snapshot:Snapshot',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     desktopId = registerOutput<String>('desktopId');
     snapshotName = registerOutput<String>('snapshotName');
@@ -501,11 +497,11 @@ class Snapshot extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:eds/snapshot:Snapshot',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:eds/snapshot:Snapshot',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     desktopId = registerOutput<String>('desktopId');
     snapshotName = registerOutput<String>('snapshotName');

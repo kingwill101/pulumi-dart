@@ -41,17 +41,10 @@ class GetEntityTypeDialogflowV3Args {
     return GetEntityTypeDialogflowV3Args(
       agentId: pulumi.Input.fromValue(map['agentId'] as String),
       entityTypeId: pulumi.Input.fromValue(map['entityTypeId'] as String),
-      languageCode: (() {
-        final guardedValue = map['languageCode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      languageCode: (() { final guardedValue = map['languageCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

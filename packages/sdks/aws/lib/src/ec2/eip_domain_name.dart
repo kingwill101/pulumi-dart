@@ -178,13 +178,10 @@ import 'eip_domain_name_timeouts.dart';
 class EipDomainName extends pulumi.CustomResource {
   /// The allocation ID.
   late final pulumi.Output<String> allocationId;
-
   /// The domain name to modify for the IP address.
   late final pulumi.Output<String> domainName;
-
   /// The DNS pointer (PTR) record for the IP address.
   late final pulumi.Output<String> ptrRecord;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   late final pulumi.Output<EipDomainNameTimeouts?> timeouts;
@@ -198,25 +195,16 @@ class EipDomainName extends pulumi.CustomResource {
     EipDomainNameArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/eipDomainName:EipDomainName',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/eipDomainName:EipDomainName',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allocationId = registerOutput<String>('allocationId');
     domainName = registerOutput<String>('domainName');
     ptrRecord = registerOutput<String>('ptrRecord');
     region = registerOutput<String>('region');
-    timeouts = registerOutput<EipDomainNameTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EipDomainNameTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<EipDomainNameTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EipDomainNameTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [EipDomainName] resource's state with the given [name] and [id].
@@ -237,24 +225,15 @@ class EipDomainName extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/eipDomainName:EipDomainName',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/eipDomainName:EipDomainName',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allocationId = registerOutput<String>('allocationId');
     domainName = registerOutput<String>('domainName');
     ptrRecord = registerOutput<String>('ptrRecord');
     region = registerOutput<String>('region');
-    timeouts = registerOutput<EipDomainNameTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EipDomainNameTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<EipDomainNameTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EipDomainNameTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

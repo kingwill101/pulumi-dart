@@ -18,3 +18,4 @@ enum PrincipalType {
     throw ArgumentError('Unknown PrincipalType value: $value');
   }
 }
+

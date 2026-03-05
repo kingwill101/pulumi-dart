@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GalleryArgs {
   /// Specifies the ID of the Dev Center within which this Dev Center Gallery should exist. Changing this forces a new Dev Center Gallery to be created.
   final pulumi.Input<String> devCenterId;
-
   /// Specifies the name of this Dev Center Gallery. Changing this forces a new Dev Center Gallery to be created.
   final pulumi.Input<String>? name;
-
   /// The ID of the Shared Gallery which should be connected to the Dev Center Gallery. Changing this forces a new Dev Center Gallery to be created.
   final pulumi.Input<String> sharedGalleryId;
 
@@ -37,12 +35,9 @@ class GalleryArgs {
   factory GalleryArgs.fromMap(Map<String, dynamic> map) {
     return GalleryArgs(
       devCenterId: pulumi.Input.fromValue(map['devCenterId'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sharedGalleryId: pulumi.Input.fromValue(map['sharedGalleryId'] as String),
     );
   }
 }
+

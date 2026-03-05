@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedDiskEncryptionKeyVaultProperties {
   /// The name of KeyVault key.
   final pulumi.Input<String> keyName;
-
   /// The URI of KeyVault.
   final pulumi.Input<String> keyVaultUri;
-
   /// The version of KeyVault key.
   final pulumi.Input<String> keyVersion;
 
@@ -31,9 +29,7 @@ class ManagedDiskEncryptionKeyVaultProperties {
     };
   }
 
-  factory ManagedDiskEncryptionKeyVaultProperties.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ManagedDiskEncryptionKeyVaultProperties.fromMap(Map<String, dynamic> map) {
     return ManagedDiskEncryptionKeyVaultProperties(
       keyName: pulumi.Input.fromValue(map['keyName'] as String),
       keyVaultUri: pulumi.Input.fromValue(map['keyVaultUri'] as String),
@@ -41,3 +37,4 @@ class ManagedDiskEncryptionKeyVaultProperties {
     );
   }
 }
+

@@ -11,10 +11,8 @@ class GetVersionsArgs {
   /// - Default: Standard Edition
   /// - Pro: Professional Edition
   final pulumi.Input<String>? edition;
-
   /// A list of ASM versions. Its element formats as `&lt;edition&gt;:&lt;version&gt;`.
   final pulumi.Input<List<String>>? ids;
-
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
 
@@ -22,7 +20,11 @@ class GetVersionsArgs {
   /// [edition] The edition of the ASM instance. Valid values:
   /// [ids] A list of ASM versions. Its element formats as `&lt;edition&gt;:&lt;version&gt;`.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetVersionsArgs({this.edition, this.ids, this.outputFile});
+  GetVersionsArgs({
+    this.edition,
+    this.ids,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,21 +36,10 @@ class GetVersionsArgs {
 
   factory GetVersionsArgs.fromMap(Map<String, dynamic> map) {
     return GetVersionsArgs(
-      edition: (() {
-        final guardedValue = map['edition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ids: (() {
-        final guardedValue = map['ids'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      edition: (() { final guardedValue = map['edition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ids: (() { final guardedValue = map['ids']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

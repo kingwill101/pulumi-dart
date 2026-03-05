@@ -110,32 +110,23 @@ import 'traffic_selector_state.dart';
 class TrafficSelector extends pulumi.CustomResource {
   /// Description of the traffic selector.
   late final pulumi.Output<String> description;
-
   /// Specifies the host or network IP address to which the application traffic is destined.When creating a new traffic selector, this parameter is required.
   late final pulumi.Output<String> destinationAddress;
-
   /// Specifies the IP port used by the application. The default value is `All Ports (0)`
   late final pulumi.Output<int> destinationPort;
-
   /// Specifies whether the traffic selector applies to inbound or outbound traffic, or both. The default value is `Both`.
   late final pulumi.Output<String> direction;
-
   /// Specifies the network protocol to use for this traffic. The default value is `All Protocols (255)`
   late final pulumi.Output<int> ipProtocol;
-
   /// Specifies the IPsec policy that tells the BIG-IP system how to handle the packets.When creating a new traffic selector, if this parameter is not specified, the default is `default-ipsec-policy`.
   late final pulumi.Output<String> ipsecPolicy;
-
   /// Name of the IPSec traffic-selector,it should be "full path".The full path is the combination of the partition + name of the IPSec traffic-selector.(For example `/Common/test-selector`)
   late final pulumi.Output<String> name;
-
   /// Specifies the order in which traffic is matched, if traffic can be matched to multiple traffic selectors.Traffic is matched to the traffic selector with the highest priority (lowest order number).
   /// When creating a new traffic selector, if this parameter is not specified, the default is `last`
   late final pulumi.Output<int> order;
-
   /// Specifies the host or network IP address from which the application traffic originates.When creating a new traffic selector, this parameter is required.
   late final pulumi.Output<String> sourceAddress;
-
   /// Specifies the IP port used by the application. The default value is `All Ports (0)`.
   late final pulumi.Output<int> sourcePort;
 
@@ -148,11 +139,11 @@ class TrafficSelector extends pulumi.CustomResource {
     TrafficSelectorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:index/trafficSelector:TrafficSelector',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:index/trafficSelector:TrafficSelector',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String>('description');
     destinationAddress = registerOutput<String>('destinationAddress');
     destinationPort = registerOutput<int>('destinationPort');
@@ -183,11 +174,11 @@ class TrafficSelector extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:index/trafficSelector:TrafficSelector',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:index/trafficSelector:TrafficSelector',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String>('description');
     destinationAddress = registerOutput<String>('destinationAddress');
     destinationPort = registerOutput<int>('destinationPort');

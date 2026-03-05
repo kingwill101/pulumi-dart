@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StateHistoryResponse {
   /// The state of the batch at this point in history.
   final pulumi.Input<String> state;
-
   /// Details about the state at this point in history.
   final pulumi.Input<String> stateMessage;
-
   /// The time when the batch entered the historical state.
   final pulumi.Input<String> stateStartTime;
 
@@ -39,3 +37,4 @@ class StateHistoryResponse {
     );
   }
 }
+

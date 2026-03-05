@@ -664,31 +664,23 @@ import 'server_group_uch_config.dart';
 /// ```
 class ServerGroup extends pulumi.CustomResource {
   /// Elegant interrupt configuration. See `connection_drain_config` below.
-  late final pulumi.Output<ServerGroupConnectionDrainConfig>
-  connectionDrainConfig;
-
+  late final pulumi.Output<ServerGroupConnectionDrainConfig> connectionDrainConfig;
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
-
   /// Indicates whether cross-zone load balancing is enabled for the server group. Valid values:
   late final pulumi.Output<bool> crossZoneEnabled;
-
   /// Whether to PreCheck only this request. Value:
   /// true: Send a check request,
   /// false (default): Send a normal request.
   late final pulumi.Output<bool?> dryRun;
-
   /// The configuration of health checks See `health_check_config` below.
   late final pulumi.Output<ServerGroupHealthCheckConfig> healthCheckConfig;
-
   /// The ID of the resource group to which you want to transfer the cloud resource.
   ///
   /// &gt; **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
   late final pulumi.Output<String?> healthCheckTemplateId;
-
   /// Enable Ipv6
   late final pulumi.Output<bool?> ipv6Enabled;
-
   /// The backend protocol. Valid values:
   ///
   /// *   `HTTP`: allows you to associate an HTTPS, HTTP, or QUIC listener with the server group. This is the default value.
@@ -699,10 +691,8 @@ class ServerGroup extends pulumi.CustomResource {
   ///
   /// &gt; **NOTE:**   You do not need to specify a backend protocol if you set `ServerGroupType` to `Fc`.
   late final pulumi.Output<String> protocol;
-
   /// Elegant interrupt configuration.
   late final pulumi.Output<String> resourceGroupId;
-
   /// The scheduling algorithm. Valid values:
   ///
   /// *   `Wrr` (default): The weighted round-robin algorithm is used. Backend servers that have higher weights receive more requests than those that have lower weights.
@@ -713,41 +703,30 @@ class ServerGroup extends pulumi.CustomResource {
   ///
   /// &gt; **NOTE:**  This parameter takes effect when the `ServerGroupType` parameter is set to `Instance` or `Ip`.
   late final pulumi.Output<String> scheduler;
-
   /// The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
   late final pulumi.Output<String> serverGroupName;
-
   /// The type of server group. Valid values:
   ///
   /// - `Instance` (default): allows you to add servers by specifying `Ecs`, `Eni`, or `Eci`.
   /// - `Ip`: allows you to add servers by specifying IP addresses.
   /// - `Fc`: allows you to add servers by specifying functions of Function Compute.
   late final pulumi.Output<String> serverGroupType;
-
   /// List of servers. See `servers` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> servers;
-
   /// Only applicable to the ALB Ingress scenario, indicating the K8s Service name corresponding to the server group.
   late final pulumi.Output<String?> serviceName;
-
   /// Slow start configuration. See `slow_start_config` below.
   late final pulumi.Output<ServerGroupSlowStartConfig> slowStartConfig;
-
   /// The status of the resource
   late final pulumi.Output<String> status;
-
   /// The configuration of health checks See `sticky_session_config` below.
   late final pulumi.Output<ServerGroupStickySessionConfig?> stickySessionConfig;
-
   /// The creation time of the resource
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Url consistency hash parameter configuration See `uch_config` below.
   late final pulumi.Output<ServerGroupUchConfig?> uchConfig;
-
   /// Specifies whether to enable persistent TCP connections.
   late final pulumi.Output<bool?> upstreamKeepaliveEnabled;
-
   /// The ID of the virtual private cloud (VPC). You can add only servers that are deployed in the specified VPC to the server group.
   ///
   /// &gt; **NOTE:**   This parameter takes effect when the `ServerGroupType` parameter is set to `Instance` or `Ip`.
@@ -762,34 +741,16 @@ class ServerGroup extends pulumi.CustomResource {
     ServerGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:alb/serverGroup:ServerGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    connectionDrainConfig = registerOutput<ServerGroupConnectionDrainConfig>(
-      'connectionDrainConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServerGroupConnectionDrainConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'alicloud:alb/serverGroup:ServerGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    connectionDrainConfig = registerOutput<ServerGroupConnectionDrainConfig>('connectionDrainConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerGroupConnectionDrainConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     crossZoneEnabled = registerOutput<bool>('crossZoneEnabled');
     dryRun = registerOutput<bool?>('dryRun');
-    healthCheckConfig = registerOutput<ServerGroupHealthCheckConfig>(
-      'healthCheckConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServerGroupHealthCheckConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    healthCheckConfig = registerOutput<ServerGroupHealthCheckConfig>('healthCheckConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerGroupHealthCheckConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     healthCheckTemplateId = registerOutput<String?>('healthCheckTemplateId');
     ipv6Enabled = registerOutput<bool?>('ipv6Enabled');
     protocol = registerOutput<String>('protocol');
@@ -799,41 +760,12 @@ class ServerGroup extends pulumi.CustomResource {
     serverGroupType = registerOutput<String>('serverGroupType');
     servers = registerOutput<List<Map<String, dynamic>>?>('servers');
     serviceName = registerOutput<String?>('serviceName');
-    slowStartConfig = registerOutput<ServerGroupSlowStartConfig>(
-      'slowStartConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServerGroupSlowStartConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    slowStartConfig = registerOutput<ServerGroupSlowStartConfig>('slowStartConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerGroupSlowStartConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
-    stickySessionConfig = registerOutput<ServerGroupStickySessionConfig?>(
-      'stickySessionConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServerGroupStickySessionConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    stickySessionConfig = registerOutput<ServerGroupStickySessionConfig?>('stickySessionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerGroupStickySessionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
-    uchConfig = registerOutput<ServerGroupUchConfig?>(
-      'uchConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServerGroupUchConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    upstreamKeepaliveEnabled = registerOutput<bool?>(
-      'upstreamKeepaliveEnabled',
-    );
+    uchConfig = registerOutput<ServerGroupUchConfig?>('uchConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerGroupUchConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    upstreamKeepaliveEnabled = registerOutput<bool?>('upstreamKeepaliveEnabled');
     vpcId = registerOutput<String?>('vpcId');
   }
 
@@ -855,34 +787,16 @@ class ServerGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:alb/serverGroup:ServerGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    connectionDrainConfig = registerOutput<ServerGroupConnectionDrainConfig>(
-      'connectionDrainConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServerGroupConnectionDrainConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'alicloud:alb/serverGroup:ServerGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    connectionDrainConfig = registerOutput<ServerGroupConnectionDrainConfig>('connectionDrainConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerGroupConnectionDrainConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     crossZoneEnabled = registerOutput<bool>('crossZoneEnabled');
     dryRun = registerOutput<bool?>('dryRun');
-    healthCheckConfig = registerOutput<ServerGroupHealthCheckConfig>(
-      'healthCheckConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServerGroupHealthCheckConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    healthCheckConfig = registerOutput<ServerGroupHealthCheckConfig>('healthCheckConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerGroupHealthCheckConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     healthCheckTemplateId = registerOutput<String?>('healthCheckTemplateId');
     ipv6Enabled = registerOutput<bool?>('ipv6Enabled');
     protocol = registerOutput<String>('protocol');
@@ -892,41 +806,12 @@ class ServerGroup extends pulumi.CustomResource {
     serverGroupType = registerOutput<String>('serverGroupType');
     servers = registerOutput<List<Map<String, dynamic>>?>('servers');
     serviceName = registerOutput<String?>('serviceName');
-    slowStartConfig = registerOutput<ServerGroupSlowStartConfig>(
-      'slowStartConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServerGroupSlowStartConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    slowStartConfig = registerOutput<ServerGroupSlowStartConfig>('slowStartConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerGroupSlowStartConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
-    stickySessionConfig = registerOutput<ServerGroupStickySessionConfig?>(
-      'stickySessionConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServerGroupStickySessionConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    stickySessionConfig = registerOutput<ServerGroupStickySessionConfig?>('stickySessionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerGroupStickySessionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
-    uchConfig = registerOutput<ServerGroupUchConfig?>(
-      'uchConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServerGroupUchConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    upstreamKeepaliveEnabled = registerOutput<bool?>(
-      'upstreamKeepaliveEnabled',
-    );
+    uchConfig = registerOutput<ServerGroupUchConfig?>('uchConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerGroupUchConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    upstreamKeepaliveEnabled = registerOutput<bool?>('upstreamKeepaliveEnabled');
     vpcId = registerOutput<String?>('vpcId');
   }
 }

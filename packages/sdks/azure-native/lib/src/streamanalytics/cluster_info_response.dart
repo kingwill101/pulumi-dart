@@ -9,19 +9,20 @@ class ClusterInfoResponse {
 
   /// Creates a new [ClusterInfoResponse].
   /// [id] The resource id of cluster.
-  ClusterInfoResponse({this.id});
+  ClusterInfoResponse({
+    this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': ?id};
+    return <String, dynamic>{
+      'id': ?id,
+    };
   }
 
   factory ClusterInfoResponse.fromMap(Map<String, dynamic> map) {
     return ClusterInfoResponse(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -696,29 +696,22 @@ import 'consumer_quota_override_state.dart';
 class ConsumerQuotaOverride extends pulumi.CustomResource {
   /// If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.
   late final pulumi.Output<Map<String, String>?> dimensions;
-
   /// If the new quota would decrease the existing quota by more than 10%, the request is rejected.
   /// If `force` is `true`, that safety check is ignored.
   late final pulumi.Output<bool?> force;
-
   /// The limit on the metric, e.g. `/project/region`.
   /// &gt; Make sure that `limit` is in a format that doesn't start with `1/` or contain curly braces.
   /// E.g. use `/project/user` instead of `1/{project}/{user}`.
   late final pulumi.Output<String> limit;
-
   /// The metric that should be limited, e.g. `compute.googleapis.com/cpus`.
   late final pulumi.Output<String> metric;
-
   /// The server-generated name of the quota override.
   late final pulumi.Output<String> name;
-
   /// The overriding quota limit value. Can be any nonnegative integer, or -1 (unlimited quota).
   late final pulumi.Output<String> overrideValue;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The service that the metrics belong to, e.g. `compute.googleapis.com`.
   late final pulumi.Output<String> service;
 
@@ -731,11 +724,11 @@ class ConsumerQuotaOverride extends pulumi.CustomResource {
     ConsumerQuotaOverrideArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dimensions = registerOutput<Map<String, String>?>('dimensions');
     force = registerOutput<bool?>('force');
     limit = registerOutput<String>('limit');
@@ -764,11 +757,11 @@ class ConsumerQuotaOverride extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dimensions = registerOutput<Map<String, String>?>('dimensions');
     force = registerOutput<bool?>('force');
     limit = registerOutput<String>('limit');

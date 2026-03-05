@@ -456,13 +456,10 @@ import 'queue_service_properties_args.dart';
 class QueueServiceProperties extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Specifies CORS rules for the Queue service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the Queue service.
   late final pulumi.Output<CorsRulesResponse?> cors;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -475,22 +472,13 @@ class QueueServiceProperties extends pulumi.CustomResource {
     QueueServicePropertiesArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:storage:QueueServiceProperties',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:storage:QueueServiceProperties',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    cors = registerOutput<CorsRulesResponse?>(
-      'cors',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CorsRulesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    cors = registerOutput<CorsRulesResponse?>('cors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CorsRulesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     type = registerOutput<String>('type');
   }

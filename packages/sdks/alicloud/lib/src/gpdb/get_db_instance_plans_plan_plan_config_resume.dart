@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDbInstancePlansPlanPlanConfigResume {
   /// The executed time of the Plan.
   final pulumi.Input<String> executeTime;
-
   /// The Cron Time of the plan.
   final pulumi.Input<String> planCronTime;
-
   /// The Status of the plan Task.
   final pulumi.Input<String> planTaskStatus;
 
@@ -30,9 +28,7 @@ class GetDbInstancePlansPlanPlanConfigResume {
     };
   }
 
-  factory GetDbInstancePlansPlanPlanConfigResume.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDbInstancePlansPlanPlanConfigResume.fromMap(Map<String, dynamic> map) {
     return GetDbInstancePlansPlanPlanConfigResume(
       executeTime: pulumi.Input.fromValue(map['executeTime'] as String),
       planCronTime: pulumi.Input.fromValue(map['planCronTime'] as String),
@@ -40,3 +36,4 @@ class GetDbInstancePlansPlanPlanConfigResume {
     );
   }
 }
+

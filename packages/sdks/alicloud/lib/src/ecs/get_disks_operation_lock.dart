@@ -7,19 +7,20 @@ class GetDisksOperationLock {
 
   /// Creates a new [GetDisksOperationLock].
   /// [lockReason] Optional.
-  GetDisksOperationLock({this.lockReason});
+  GetDisksOperationLock({
+    this.lockReason,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'lockReason': ?lockReason};
+    return <String, dynamic>{
+      'lockReason': ?lockReason,
+    };
   }
 
   factory GetDisksOperationLock.fromMap(Map<String, dynamic> map) {
     return GetDisksOperationLock(
-      lockReason: (() {
-        final guardedValue = map['lockReason'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      lockReason: (() { final guardedValue = map['lockReason']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

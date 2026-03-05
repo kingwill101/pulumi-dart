@@ -222,10 +222,8 @@ import 'domain_policy_state.dart';
 class DomainPolicy extends pulumi.CustomResource {
   /// IAM policy document specifying the access policies for the domain
   late final pulumi.Output<String> accessPolicies;
-
   /// Name of the domain.
   late final pulumi.Output<String> domainName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -238,11 +236,11 @@ class DomainPolicy extends pulumi.CustomResource {
     DomainPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:elasticsearch/domainPolicy:DomainPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:elasticsearch/domainPolicy:DomainPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessPolicies = registerOutput<String>('accessPolicies');
     domainName = registerOutput<String>('domainName');
     region = registerOutput<String>('region');
@@ -266,11 +264,11 @@ class DomainPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:elasticsearch/domainPolicy:DomainPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:elasticsearch/domainPolicy:DomainPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessPolicies = registerOutput<String>('accessPolicies');
     domainName = registerOutput<String>('domainName');
     region = registerOutput<String>('region');

@@ -28,11 +28,7 @@ class GetCustomPropertiesResult {
       'id': id,
       'ids': ids,
       'outputFile': ?outputFile,
-      'properties':
-          pulumi.Input.encodeList<
-            GetCustomPropertiesProperty,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': pulumi.Input.encodeList<GetCustomPropertiesProperty, Map<String, dynamic>>(properties, (value) => value.toMap()),
     };
   }
 
@@ -40,17 +36,9 @@ class GetCustomPropertiesResult {
     return GetCustomPropertiesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      properties: pulumi.Input.decodeList<GetCustomPropertiesProperty>(
-        map['properties']!,
-        (value) => GetCustomPropertiesProperty.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      properties: pulumi.Input.decodeList<GetCustomPropertiesProperty>(map['properties']!, (value) => GetCustomPropertiesProperty.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

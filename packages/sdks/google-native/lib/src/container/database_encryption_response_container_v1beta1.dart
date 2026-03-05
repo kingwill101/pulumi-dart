@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatabaseEncryptionResponseContainerV1beta1 {
   /// Name of CloudKMS key to use for the encryption of secrets in etcd. Ex. projects/my-project/locations/global/keyRings/my-ring/cryptoKeys/my-key
   final pulumi.Input<String> keyName;
-
   /// The desired state of etcd encryption.
   final pulumi.Input<String> state;
 
@@ -19,15 +18,17 @@ class DatabaseEncryptionResponseContainerV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'keyName': keyName, 'state': state};
+    return <String, dynamic>{
+      'keyName': keyName,
+      'state': state,
+    };
   }
 
-  factory DatabaseEncryptionResponseContainerV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DatabaseEncryptionResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return DatabaseEncryptionResponseContainerV1beta1(
       keyName: pulumi.Input.fromValue(map['keyName'] as String),
       state: pulumi.Input.fromValue(map['state'] as String),
     );
   }
 }
+

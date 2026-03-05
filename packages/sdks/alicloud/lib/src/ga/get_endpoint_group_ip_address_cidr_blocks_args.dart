@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEndpointGroupIpAddressCidrBlocksArgs {
   /// The ID of the Global Accelerator (GA) instance.
   final pulumi.Input<String>? acceleratorId;
-
   /// The region ID of the endpoint group.
   final pulumi.Input<String> endpointGroupRegion;
-
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
 
@@ -34,23 +32,12 @@ class GetEndpointGroupIpAddressCidrBlocksArgs {
     };
   }
 
-  factory GetEndpointGroupIpAddressCidrBlocksArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetEndpointGroupIpAddressCidrBlocksArgs.fromMap(Map<String, dynamic> map) {
     return GetEndpointGroupIpAddressCidrBlocksArgs(
-      acceleratorId: (() {
-        final guardedValue = map['acceleratorId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      endpointGroupRegion: pulumi.Input.fromValue(
-        map['endpointGroupRegion'] as String,
-      ),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      acceleratorId: (() { final guardedValue = map['acceleratorId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      endpointGroupRegion: pulumi.Input.fromValue(map['endpointGroupRegion'] as String),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

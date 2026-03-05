@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EncryptionV2KeyVaultProperties {
   /// The name of KeyVault key.
   final pulumi.Input<String> keyName;
-
   /// The Uri of KeyVault.
   final pulumi.Input<String> keyVaultUri;
-
   /// The version of KeyVault key.
   final pulumi.Input<String> keyVersion;
 
@@ -39,3 +37,4 @@ class EncryptionV2KeyVaultProperties {
     );
   }
 }
+

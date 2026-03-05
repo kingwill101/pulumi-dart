@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SpotRestorePolicyResponse {
   /// Enables the Spot-Try-Restore feature where evicted VMSS SPOT instances will be tried to be restored opportunistically based on capacity availability and pricing constraints
   final pulumi.Input<bool>? enabled;
-
   /// Timeout value expressed as an ISO 8601 time duration after which the platform will not try to restore the VMSS SPOT instances
   final pulumi.Input<String>? restoreTimeout;
 
   /// Creates a new [SpotRestorePolicyResponse].
   /// [enabled] Enables the Spot-Try-Restore feature where evicted VMSS SPOT instances will be tried to be restored opportunistically based on capacity availability and pricing constraints
   /// [restoreTimeout] Timeout value expressed as an ISO 8601 time duration after which the platform will not try to restore the VMSS SPOT instances
-  SpotRestorePolicyResponse({this.enabled, this.restoreTimeout});
+  SpotRestorePolicyResponse({
+    this.enabled,
+    this.restoreTimeout,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class SpotRestorePolicyResponse {
 
   factory SpotRestorePolicyResponse.fromMap(Map<String, dynamic> map) {
     return SpotRestorePolicyResponse(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      restoreTimeout: (() {
-        final guardedValue = map['restoreTimeout'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      restoreTimeout: (() { final guardedValue = map['restoreTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -6,19 +6,15 @@ import 'dataset_version_aiplatform_v1beta1_args.dart';
 class DatasetVersionAiplatformV1beta1 extends pulumi.CustomResource {
   /// Name of the associated BigQuery dataset.
   late final pulumi.Output<String> bigQueryDatasetName;
-
   /// Timestamp when this DatasetVersion was created.
   late final pulumi.Output<String> createTime;
   late final pulumi.Output<String> datasetId;
-
   /// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
   late final pulumi.Output<String> etag;
   late final pulumi.Output<String> location;
-
   /// The resource name of the DatasetVersion.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
-
   /// Timestamp when this DatasetVersion was last updated.
   late final pulumi.Output<String> updateTime;
 
@@ -31,11 +27,11 @@ class DatasetVersionAiplatformV1beta1 extends pulumi.CustomResource {
     DatasetVersionAiplatformV1beta1Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'google-native:aiplatform/v1beta1:DatasetVersion',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'google-native:aiplatform/v1beta1:DatasetVersion',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bigQueryDatasetName = registerOutput<String>('bigQueryDatasetName');
     createTime = registerOutput<String>('createTime');
     datasetId = registerOutput<String>('datasetId');

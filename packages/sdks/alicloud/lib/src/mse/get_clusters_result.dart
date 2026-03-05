@@ -6,23 +6,18 @@ import 'get_clusters_cluster.dart';
 /// Result data returned by getClusters.
 class GetClustersResult {
   final String? clusterAliasName;
-
   /// A list of MSE Clusters. Each element contains the following attributes:
   final List<GetClustersCluster> clusters;
   final bool? enableDetails;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of MSE Cluster ids.
   final List<String> ids;
   final String? nameRegex;
-
   /// A list of MSE Cluster names.
   final List<String> names;
   final String? outputFile;
   final String? requestPars;
-
   /// The status of MSE Cluster.
   final String? status;
 
@@ -53,11 +48,7 @@ class GetClustersResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'clusterAliasName': ?clusterAliasName,
-      'clusters':
-          pulumi.Input.encodeList<GetClustersCluster, Map<String, dynamic>>(
-            clusters,
-            (value) => value.toMap(),
-          ),
+      'clusters': pulumi.Input.encodeList<GetClustersCluster, Map<String, dynamic>>(clusters, (value) => value.toMap()),
       'enableDetails': ?enableDetails,
       'id': id,
       'ids': ids,
@@ -71,44 +62,17 @@ class GetClustersResult {
 
   factory GetClustersResult.fromMap(Map<String, dynamic> map) {
     return GetClustersResult(
-      clusterAliasName: (() {
-        final guardedValue = map['clusterAliasName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      clusters: pulumi.Input.decodeList<GetClustersCluster>(
-        map['clusters']!,
-        (value) =>
-            GetClustersCluster.fromMap((value as Map).cast<String, dynamic>()),
-      ),
-      enableDetails: (() {
-        final guardedValue = map['enableDetails'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      clusterAliasName: (() { final guardedValue = map['clusterAliasName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      clusters: pulumi.Input.decodeList<GetClustersCluster>(map['clusters']!, (value) => GetClustersCluster.fromMap((value as Map).cast<String, dynamic>())),
+      enableDetails: (() { final guardedValue = map['enableDetails']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      requestPars: (() {
-        final guardedValue = map['requestPars'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      requestPars: (() { final guardedValue = map['requestPars']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

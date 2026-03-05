@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SshAuthenticationConfig {
   /// Content of a public SSH key to verify an identity of a remote Git host.
   final pulumi.Input<String> hostPublicKey;
-
   /// The name of the Secret Manager secret version to use as a ssh private key for Git operations. Must be in the format `projects/*/secrets/*/versions/*`.
   final pulumi.Input<String> userPrivateKeySecretVersion;
 
@@ -28,9 +27,8 @@ class SshAuthenticationConfig {
   factory SshAuthenticationConfig.fromMap(Map<String, dynamic> map) {
     return SshAuthenticationConfig(
       hostPublicKey: pulumi.Input.fromValue(map['hostPublicKey'] as String),
-      userPrivateKeySecretVersion: pulumi.Input.fromValue(
-        map['userPrivateKeySecretVersion'] as String,
-      ),
+      userPrivateKeySecretVersion: pulumi.Input.fromValue(map['userPrivateKeySecretVersion'] as String),
     );
   }
 }
+

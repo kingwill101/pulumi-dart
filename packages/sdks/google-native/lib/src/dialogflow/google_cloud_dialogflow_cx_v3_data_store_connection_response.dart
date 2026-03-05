@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDialogflowCxV3DataStoreConnectionResponse {
   /// The full name of the referenced data store. Formats: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}` `projects/{project}/locations/{location}/dataStores/{data_store}`
   final pulumi.Input<String> dataStore;
-
   /// The type of the connected data store.
   final pulumi.Input<String> dataStoreType;
 
@@ -25,12 +24,11 @@ class GoogleCloudDialogflowCxV3DataStoreConnectionResponse {
     };
   }
 
-  factory GoogleCloudDialogflowCxV3DataStoreConnectionResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDialogflowCxV3DataStoreConnectionResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3DataStoreConnectionResponse(
       dataStore: pulumi.Input.fromValue(map['dataStore'] as String),
       dataStoreType: pulumi.Input.fromValue(map['dataStoreType'] as String),
     );
   }
 }
+

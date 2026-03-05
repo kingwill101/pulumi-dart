@@ -6,14 +6,9 @@ import 'google_cloud_contactcenterinsights_v1_phrase_match_rule_config_response.
 /// The data for a phrase match rule.
 class GoogleCloudContactcenterinsightsV1PhraseMatchRuleResponse {
   /// Provides additional information about the rule that specifies how to apply the rule.
-  final pulumi.Input<
-    GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfigResponse
-  >
-  config;
-
+  final pulumi.Input<GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfigResponse> config;
   /// Specifies whether the phrase must be missing from the transcript segment or present in the transcript segment.
   final pulumi.Input<bool> negated;
-
   /// The phrase to be matched.
   final pulumi.Input<String> query;
 
@@ -29,27 +24,18 @@ class GoogleCloudContactcenterinsightsV1PhraseMatchRuleResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'config':
-          pulumi.Input.mapInputValue<
-            GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfigResponse,
-            Map<String, dynamic>
-          >(config, (value) => value.toMap()),
+      'config': pulumi.Input.mapInputValue<GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfigResponse, Map<String, dynamic>>(config, (value) => value.toMap()),
       'negated': negated,
       'query': query,
     };
   }
 
-  factory GoogleCloudContactcenterinsightsV1PhraseMatchRuleResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudContactcenterinsightsV1PhraseMatchRuleResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContactcenterinsightsV1PhraseMatchRuleResponse(
-      config: pulumi.Input.fromValue(
-        GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfigResponse.fromMap(
-          (map['config']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      config: pulumi.Input.fromValue(GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfigResponse.fromMap((map['config']! as Map).cast<String, dynamic>())),
       negated: pulumi.Input.fromValue(map['negated'] as bool),
       query: pulumi.Input.fromValue(map['query'] as String),
     );
   }
 }
+

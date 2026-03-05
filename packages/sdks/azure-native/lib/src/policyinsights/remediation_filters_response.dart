@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RemediationFiltersResponse {
   /// The resource locations that will be remediated.
   final pulumi.Input<List<String>>? locations;
-
   /// The IDs of the resources that will be remediated. Can specify at most 100 IDs. This filter cannot be used when ReEvaluateCompliance is set to ReEvaluateCompliance, and cannot be empty if provided.
   final pulumi.Input<List<String>>? resourceIds;
 
   /// Creates a new [RemediationFiltersResponse].
   /// [locations] The resource locations that will be remediated.
   /// [resourceIds] The IDs of the resources that will be remediated. Can specify at most 100 IDs. This filter cannot be used when ReEvaluateCompliance is set to ReEvaluateCompliance, and cannot be empty if provided.
-  RemediationFiltersResponse({this.locations, this.resourceIds});
+  RemediationFiltersResponse({
+    this.locations,
+    this.resourceIds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class RemediationFiltersResponse {
 
   factory RemediationFiltersResponse.fromMap(Map<String, dynamic> map) {
     return RemediationFiltersResponse(
-      locations: (() {
-        final guardedValue = map['locations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      resourceIds: (() {
-        final guardedValue = map['resourceIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      locations: (() { final guardedValue = map['locations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      resourceIds: (() { final guardedValue = map['resourceIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

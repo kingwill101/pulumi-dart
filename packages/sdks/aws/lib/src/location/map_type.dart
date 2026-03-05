@@ -124,30 +124,22 @@ import 'map_state.dart';
 class MapType extends pulumi.CustomResource {
   /// Configuration block with the map style selected from an available data provider. Detailed below.
   late final pulumi.Output<MapConfiguration> configuration;
-
   /// The timestamp for when the map resource was created in ISO 8601 format.
   late final pulumi.Output<String> createTime;
-
   /// An optional description for the map resource.
   late final pulumi.Output<String?> description;
-
   /// The Amazon Resource Name (ARN) for the map resource. Used to specify a resource across all AWS.
   late final pulumi.Output<String> mapArn;
-
   /// The name for the map resource.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> mapName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Key-value tags for the map. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// The timestamp for when the map resource was last updated in ISO 8601 format.
   late final pulumi.Output<String> updateTime;
 
@@ -155,23 +147,17 @@ class MapType extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [MapType]. {@macro pulumi_location_map_map_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  MapType(String name, {MapArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:location/map:Map',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
-    configuration = registerOutput<MapConfiguration>(
-      'configuration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MapConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+  MapType(
+    String name, {
+    MapArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:location/map:Map',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    configuration = registerOutput<MapConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MapConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     mapArn = registerOutput<String>('mapArn');
@@ -183,7 +169,11 @@ class MapType extends pulumi.CustomResource {
   }
 
   /// Gets an existing [MapType] resource's state with the given [name] and [id].
-  static MapType get(String name, pulumi.Input<String> id, {MapState? state}) {
+  static MapType get(
+    String name,
+    pulumi.Input<String> id, {
+    MapState? state,
+  }) {
     return MapType._get(
       name,
       state: state?.toMap(),
@@ -196,21 +186,12 @@ class MapType extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:location/map:Map',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    configuration = registerOutput<MapConfiguration>(
-      'configuration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MapConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'aws:location/map:Map',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    configuration = registerOutput<MapConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MapConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     mapArn = registerOutput<String>('mapArn');

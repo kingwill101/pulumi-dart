@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OperationErrorErrorsItemResponseDeploymentmanagerV2beta {
   /// The error type identifier for this error.
   final pulumi.Input<String> code;
-
   /// Indicates the field in the request that caused the error. This property is optional.
   final pulumi.Input<String> location;
-
   /// An optional, human-readable error message.
   final pulumi.Input<String> message;
 
@@ -30,9 +28,7 @@ class OperationErrorErrorsItemResponseDeploymentmanagerV2beta {
     };
   }
 
-  factory OperationErrorErrorsItemResponseDeploymentmanagerV2beta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OperationErrorErrorsItemResponseDeploymentmanagerV2beta.fromMap(Map<String, dynamic> map) {
     return OperationErrorErrorsItemResponseDeploymentmanagerV2beta(
       code: pulumi.Input.fromValue(map['code'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
@@ -40,3 +36,4 @@ class OperationErrorErrorsItemResponseDeploymentmanagerV2beta {
     );
   }
 }
+

@@ -9,22 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KnowledgeSourceArgs {
   /// Description of the knowledge source.
   final pulumi.Input<String>? description;
-
   /// The name of the knowledge source.
   final pulumi.Input<String>? knowledgeSourceName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Format or origin of the knowledge source.
   final pulumi.Input<String> sourceType;
-
   /// Specifies the units of time for scheduling update intervals for the knowledge source.
   final pulumi.Input<String>? updateFrequency;
-
   /// Endpoint or location of the knowledge source.
   final pulumi.Input<String> url;
-
   /// The name of the web agent.
   final pulumi.Input<String> webAgentName;
 
@@ -60,27 +54,14 @@ class KnowledgeSourceArgs {
 
   factory KnowledgeSourceArgs.fromMap(Map<String, dynamic> map) {
     return KnowledgeSourceArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      knowledgeSourceName: (() {
-        final guardedValue = map['knowledgeSourceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      knowledgeSourceName: (() { final guardedValue = map['knowledgeSourceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       sourceType: pulumi.Input.fromValue(map['sourceType'] as String),
-      updateFrequency: (() {
-        final guardedValue = map['updateFrequency'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      updateFrequency: (() { final guardedValue = map['updateFrequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       url: pulumi.Input.fromValue(map['url'] as String),
       webAgentName: pulumi.Input.fromValue(map['webAgentName'] as String),
     );
   }
 }
+

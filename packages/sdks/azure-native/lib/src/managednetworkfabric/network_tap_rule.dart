@@ -622,53 +622,36 @@ import 'system_data_response.dart';
 class NetworkTapRule extends pulumi.CustomResource {
   /// Administrative state of the resource.
   late final pulumi.Output<String> administrativeState;
-
   /// Switch configuration description.
   late final pulumi.Output<String?> annotation;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Configuration state of the resource.
   late final pulumi.Output<String> configurationState;
-
   /// Input method to configure Network Tap Rule.
   late final pulumi.Output<String> configurationType;
-
   /// List of dynamic match configurations.
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  dynamicMatchConfigurations;
-
+  late final pulumi.Output<List<Map<String, dynamic>>?> dynamicMatchConfigurations;
   /// The last sync timestamp.
   late final pulumi.Output<String> lastSyncedTime;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// List of match configurations.
   late final pulumi.Output<List<Map<String, dynamic>>?> matchConfigurations;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The ARM resource Id of the NetworkTap.
   late final pulumi.Output<String> networkTapId;
-
   /// Polling interval in seconds.
   late final pulumi.Output<int?> pollingIntervalInSeconds;
-
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Network Tap Rules file URL.
   late final pulumi.Output<String?> tapRulesUrl;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -681,38 +664,25 @@ class NetworkTapRule extends pulumi.CustomResource {
     NetworkTapRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:managednetworkfabric:NetworkTapRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:managednetworkfabric:NetworkTapRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     administrativeState = registerOutput<String>('administrativeState');
     annotation = registerOutput<String?>('annotation');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     configurationState = registerOutput<String>('configurationState');
     configurationType = registerOutput<String>('configurationType');
-    dynamicMatchConfigurations = registerOutput<List<Map<String, dynamic>>?>(
-      'dynamicMatchConfigurations',
-    );
+    dynamicMatchConfigurations = registerOutput<List<Map<String, dynamic>>?>('dynamicMatchConfigurations');
     lastSyncedTime = registerOutput<String>('lastSyncedTime');
     location = registerOutput<String>('location');
-    matchConfigurations = registerOutput<List<Map<String, dynamic>>?>(
-      'matchConfigurations',
-    );
+    matchConfigurations = registerOutput<List<Map<String, dynamic>>?>('matchConfigurations');
     this.name = registerOutput<String>('name');
     networkTapId = registerOutput<String>('networkTapId');
     pollingIntervalInSeconds = registerOutput<int?>('pollingIntervalInSeconds');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tapRulesUrl = registerOutput<String?>('tapRulesUrl');
     type = registerOutput<String>('type');

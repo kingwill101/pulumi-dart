@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualSwitchConfigurationOverridesResponse {
   /// Enable IoV for Virtual Switch
   final pulumi.Input<String> enableIov;
-
   /// Load Balancing Algorithm for Virtual Switch
   final pulumi.Input<String> loadBalancingAlgorithm;
 
@@ -25,14 +24,11 @@ class VirtualSwitchConfigurationOverridesResponse {
     };
   }
 
-  factory VirtualSwitchConfigurationOverridesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VirtualSwitchConfigurationOverridesResponse.fromMap(Map<String, dynamic> map) {
     return VirtualSwitchConfigurationOverridesResponse(
       enableIov: pulumi.Input.fromValue(map['enableIov'] as String),
-      loadBalancingAlgorithm: pulumi.Input.fromValue(
-        map['loadBalancingAlgorithm'] as String,
-      ),
+      loadBalancingAlgorithm: pulumi.Input.fromValue(map['loadBalancingAlgorithm'] as String),
     );
   }
 }
+

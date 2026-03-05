@@ -1,40 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getFirewallSupportInfo.
 class GetFirewallSupportInfoResult {
   /// Support account associated with given resource
   final String? accountId;
-
   /// account registered in Customer Support Portal
   final String? accountRegistered;
-
   /// Product usage is in free trial period
   final String? freeTrial;
-
   /// Free trial credit remaining
   final int? freeTrialCreditLeft;
-
   /// Free trial days remaining
   final int? freeTrialDaysLeft;
-
   /// URL for paloaltonetworks live community
   final String? helpURL;
-
   /// product Serial associated with given resource
   final String? productSerial;
-
   /// product SKU associated with given resource
   final String? productSku;
-
   /// URL for registering product in paloaltonetworks Customer Service Portal
   final String? registerURL;
-
   /// URL for paloaltonetworks Customer Service Portal
   final String? supportURL;
-
   /// user domain is supported in Customer Support Portal
   final String? userDomainSupported;
-
   /// user registered in Customer Support Portal
   final String? userRegistered;
 
@@ -85,66 +75,19 @@ class GetFirewallSupportInfoResult {
 
   factory GetFirewallSupportInfoResult.fromMap(Map<String, dynamic> map) {
     return GetFirewallSupportInfoResult(
-      accountId: (() {
-        final guardedValue = map['accountId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      accountRegistered: (() {
-        final guardedValue = map['accountRegistered'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      freeTrial: (() {
-        final guardedValue = map['freeTrial'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      freeTrialCreditLeft: (() {
-        final guardedValue = map['freeTrialCreditLeft'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      freeTrialDaysLeft: (() {
-        final guardedValue = map['freeTrialDaysLeft'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      helpURL: (() {
-        final guardedValue = map['helpURL'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      productSerial: (() {
-        final guardedValue = map['productSerial'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      productSku: (() {
-        final guardedValue = map['productSku'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      registerURL: (() {
-        final guardedValue = map['registerURL'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      supportURL: (() {
-        final guardedValue = map['supportURL'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      userDomainSupported: (() {
-        final guardedValue = map['userDomainSupported'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      userRegistered: (() {
-        final guardedValue = map['userRegistered'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      accountRegistered: (() { final guardedValue = map['accountRegistered']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      freeTrial: (() { final guardedValue = map['freeTrial']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      freeTrialCreditLeft: (() { final guardedValue = map['freeTrialCreditLeft']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      freeTrialDaysLeft: (() { final guardedValue = map['freeTrialDaysLeft']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      helpURL: (() { final guardedValue = map['helpURL']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      productSerial: (() { final guardedValue = map['productSerial']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      productSku: (() { final guardedValue = map['productSku']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      registerURL: (() { final guardedValue = map['registerURL']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      supportURL: (() { final guardedValue = map['supportURL']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      userDomainSupported: (() { final guardedValue = map['userDomainSupported']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      userRegistered: (() { final guardedValue = map['userRegistered']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

@@ -14,3 +14,4 @@ enum InputSchemaMappingType {
     throw ArgumentError('Unknown InputSchemaMappingType value: $value');
   }
 }
+

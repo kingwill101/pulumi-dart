@@ -14,16 +14,12 @@ class RegionalSecretVersionArgs {
   /// * DISABLE
   /// * ABANDON
   final pulumi.Input<String>? deletionPolicy;
-
   /// The current state of the regional secret version.
   final pulumi.Input<bool>? enabled;
-
   /// If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
   final pulumi.Input<bool>? isSecretDataBase64;
-
   /// Secret Manager regional secret resource.
   final pulumi.Input<String> secret;
-
   /// The secret data. Must be no larger than 64KiB.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   final pulumi.Input<String> secretData;
@@ -54,23 +50,12 @@ class RegionalSecretVersionArgs {
 
   factory RegionalSecretVersionArgs.fromMap(Map<String, dynamic> map) {
     return RegionalSecretVersionArgs(
-      deletionPolicy: (() {
-        final guardedValue = map['deletionPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      isSecretDataBase64: (() {
-        final guardedValue = map['isSecretDataBase64'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      isSecretDataBase64: (() { final guardedValue = map['isSecretDataBase64']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       secret: pulumi.Input.fromValue(map['secret'] as String),
       secretData: pulumi.Input.fromValue(map['secretData'] as String),
     );
   }
 }
+

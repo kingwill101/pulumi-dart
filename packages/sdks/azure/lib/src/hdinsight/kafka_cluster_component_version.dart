@@ -8,10 +8,14 @@ class KafkaClusterComponentVersion {
 
   /// Creates a new [KafkaClusterComponentVersion].
   /// [kafka] The version of Kafka which should be used for this HDInsight Kafka Cluster. Changing this forces a new resource to be created.
-  KafkaClusterComponentVersion({required this.kafka});
+  KafkaClusterComponentVersion({
+    required this.kafka,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'kafka': kafka};
+    return <String, dynamic>{
+      'kafka': kafka,
+    };
   }
 
   factory KafkaClusterComponentVersion.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class KafkaClusterComponentVersion {
     );
   }
 }
+

@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConfigurationServiceResourceRequestsResponse {
   /// Cpu allocated to each Application Configuration Service instance
   final pulumi.Input<String> cpu;
-
   /// Instance count of the Application Configuration Service
   final pulumi.Input<int> instanceCount;
-
   /// Memory allocated to each Application Configuration Service instance
   final pulumi.Input<String> memory;
 
@@ -31,9 +29,7 @@ class ConfigurationServiceResourceRequestsResponse {
     };
   }
 
-  factory ConfigurationServiceResourceRequestsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConfigurationServiceResourceRequestsResponse.fromMap(Map<String, dynamic> map) {
     return ConfigurationServiceResourceRequestsResponse(
       cpu: pulumi.Input.fromValue(map['cpu'] as String),
       instanceCount: pulumi.Input.fromValue(map['instanceCount'] as int),
@@ -41,3 +37,4 @@ class ConfigurationServiceResourceRequestsResponse {
     );
   }
 }
+

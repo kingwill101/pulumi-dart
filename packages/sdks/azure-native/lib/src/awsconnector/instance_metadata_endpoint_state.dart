@@ -15,3 +15,4 @@ enum InstanceMetadataEndpointState {
     throw ArgumentError('Unknown InstanceMetadataEndpointState value: $value');
   }
 }
+

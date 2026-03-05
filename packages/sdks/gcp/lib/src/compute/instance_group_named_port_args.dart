@@ -9,18 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceGroupNamedPortArgs {
   /// The name of the instance group.
   final pulumi.Input<String> group;
-
   /// The name for this named port. The name must be 1-63 characters
   /// long, and comply with RFC1035.
   final pulumi.Input<String>? name;
-
   /// The port number, which can be a value between 1 and 65535.
   final pulumi.Input<int> port;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The zone of the instance group.
   final pulumi.Input<String>? zone;
 
@@ -51,22 +47,11 @@ class InstanceGroupNamedPortArgs {
   factory InstanceGroupNamedPortArgs.fromMap(Map<String, dynamic> map) {
     return InstanceGroupNamedPortArgs(
       group: pulumi.Input.fromValue(map['group'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       port: pulumi.Input.fromValue(map['port'] as int),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      zone: (() {
-        final guardedValue = map['zone'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      zone: (() { final guardedValue = map['zone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

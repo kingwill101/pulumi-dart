@@ -32,14 +32,9 @@ class GetWorkstationClusterArgs {
   factory GetWorkstationClusterArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkstationClusterArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      workstationClusterId: pulumi.Input.fromValue(
-        map['workstationClusterId'] as String,
-      ),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      workstationClusterId: pulumi.Input.fromValue(map['workstationClusterId'] as String),
     );
   }
 }
+

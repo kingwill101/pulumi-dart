@@ -264,13 +264,10 @@ import 'event_source_state.dart';
 class EventSource extends pulumi.CustomResource {
   /// The description of the event source.
   late final pulumi.Output<String?> description;
-
   /// The name of the event bus to which the event source is attached.
   late final pulumi.Output<String> eventBusName;
-
   /// The name of the event source.
   late final pulumi.Output<String> eventSourceName;
-
   /// The configuration of the external data source.
   /// When `external_source_type` is `RabbitMQ`, The following attributes are supported:
   /// `RegionId` - The region ID of RabbitMQ.
@@ -286,10 +283,8 @@ class EventSource extends pulumi.CustomResource {
   /// When `external_source_type` is `MNS`, The following attributes are supported:
   /// `QueueName` - The queue name of MNS.
   late final pulumi.Output<Map<String, String>?> externalSourceConfig;
-
   /// The type of the external data source. Valid values: `RabbitMQ`, `RocketMQ` and `MNS`.
   late final pulumi.Output<String?> externalSourceType;
-
   /// Specifies whether to connect to an external data source. Default value: `false`.
   late final pulumi.Output<bool?> linkedExternalSource;
 
@@ -302,17 +297,15 @@ class EventSource extends pulumi.CustomResource {
     EventSourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:eventbridge/eventSource:EventSource',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:eventbridge/eventSource:EventSource',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     eventBusName = registerOutput<String>('eventBusName');
     eventSourceName = registerOutput<String>('eventSourceName');
-    externalSourceConfig = registerOutput<Map<String, String>?>(
-      'externalSourceConfig',
-    );
+    externalSourceConfig = registerOutput<Map<String, String>?>('externalSourceConfig');
     externalSourceType = registerOutput<String?>('externalSourceType');
     linkedExternalSource = registerOutput<bool?>('linkedExternalSource');
   }
@@ -335,17 +328,15 @@ class EventSource extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:eventbridge/eventSource:EventSource',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:eventbridge/eventSource:EventSource',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     eventBusName = registerOutput<String>('eventBusName');
     eventSourceName = registerOutput<String>('eventSourceName');
-    externalSourceConfig = registerOutput<Map<String, String>?>(
-      'externalSourceConfig',
-    );
+    externalSourceConfig = registerOutput<Map<String, String>?>('externalSourceConfig');
     externalSourceType = registerOutput<String?>('externalSourceType');
     linkedExternalSource = registerOutput<bool?>('linkedExternalSource');
   }

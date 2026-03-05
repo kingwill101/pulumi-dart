@@ -286,22 +286,16 @@ import 'flow_state.dart';
 class Flow extends pulumi.CustomResource {
   /// The definition of the flow. It must comply with the Flow Definition Language (FDL) syntax.
   late final pulumi.Output<String> definition;
-
   /// The description of the flow.
   late final pulumi.Output<String> description;
-
   /// The unique ID of the flow.
   late final pulumi.Output<String> flowId;
-
   /// The time when the flow was last modified.
   late final pulumi.Output<String> lastModifiedTime;
-
   /// The name of the flow. The name must be unique in an Alibaba Cloud account.
   late final pulumi.Output<String> name;
-
   /// The ARN of the specified RAM role that Serverless Workflow uses to assume the role when Serverless Workflow executes a flow.
   late final pulumi.Output<String?> roleArn;
-
   /// The type of the flow. Valid values are `FDL` or `DEFAULT`.
   late final pulumi.Output<String> type;
 
@@ -309,13 +303,16 @@ class Flow extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Flow]. {@macro pulumi_fnf_flow_flow_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Flow(String name, {FlowArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:fnf/flow:Flow',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Flow(
+    String name, {
+    FlowArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:fnf/flow:Flow',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     definition = registerOutput<String>('definition');
     description = registerOutput<String>('description');
     flowId = registerOutput<String>('flowId');
@@ -326,7 +323,11 @@ class Flow extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Flow] resource's state with the given [name] and [id].
-  static Flow get(String name, pulumi.Input<String> id, {FlowState? state}) {
+  static Flow get(
+    String name,
+    pulumi.Input<String> id, {
+    FlowState? state,
+  }) {
     return Flow._get(
       name,
       state: state?.toMap(),
@@ -339,11 +340,11 @@ class Flow extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:fnf/flow:Flow',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:fnf/flow:Flow',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     definition = registerOutput<String>('definition');
     description = registerOutput<String>('description');
     flowId = registerOutput<String>('flowId');

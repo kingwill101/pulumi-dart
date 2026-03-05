@@ -6,25 +6,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TerminalServerConfigurationResponse {
   /// ARM Resource ID used for the NetworkDevice.
   final pulumi.Input<String> networkDeviceId;
-
   /// Password for the terminal server connection.
   final pulumi.Input<String> password;
-
   /// IPv4 Address Prefix.
   final pulumi.Input<String> primaryIpv4Prefix;
-
   /// IPv6 Address Prefix.
   final pulumi.Input<String>? primaryIpv6Prefix;
-
   /// Secondary IPv4 Address Prefix.
   final pulumi.Input<String> secondaryIpv4Prefix;
-
   /// Secondary IPv6 Address Prefix.
   final pulumi.Input<String>? secondaryIpv6Prefix;
-
   /// Serial Number of Terminal server.
   final pulumi.Input<String>? serialNumber;
-
   /// Username for the terminal server connection.
   final pulumi.Input<String> username;
 
@@ -61,34 +54,17 @@ class TerminalServerConfigurationResponse {
     };
   }
 
-  factory TerminalServerConfigurationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory TerminalServerConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return TerminalServerConfigurationResponse(
       networkDeviceId: pulumi.Input.fromValue(map['networkDeviceId'] as String),
       password: pulumi.Input.fromValue(map['password'] as String),
-      primaryIpv4Prefix: pulumi.Input.fromValue(
-        map['primaryIpv4Prefix'] as String,
-      ),
-      primaryIpv6Prefix: (() {
-        final guardedValue = map['primaryIpv6Prefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      secondaryIpv4Prefix: pulumi.Input.fromValue(
-        map['secondaryIpv4Prefix'] as String,
-      ),
-      secondaryIpv6Prefix: (() {
-        final guardedValue = map['secondaryIpv6Prefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serialNumber: (() {
-        final guardedValue = map['serialNumber'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      primaryIpv4Prefix: pulumi.Input.fromValue(map['primaryIpv4Prefix'] as String),
+      primaryIpv6Prefix: (() { final guardedValue = map['primaryIpv6Prefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      secondaryIpv4Prefix: pulumi.Input.fromValue(map['secondaryIpv4Prefix'] as String),
+      secondaryIpv6Prefix: (() { final guardedValue = map['secondaryIpv6Prefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serialNumber: (() { final guardedValue = map['serialNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       username: pulumi.Input.fromValue(map['username'] as String),
     );
   }
 }
+

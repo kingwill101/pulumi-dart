@@ -119,8 +119,7 @@ Future<ListDatabaseKeysResult> listDatabaseKeys(
 /// Other available API versions: 2025-07-01, 2025-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native redisenterprise [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_redisenterprise_list_redis_enterprise_skus_for_scaling_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListRedisEnterpriseSkusForScalingResult>
-listRedisEnterpriseSkusForScaling(
+Future<ListRedisEnterpriseSkusForScalingResult> listRedisEnterpriseSkusForScaling(
   ListRedisEnterpriseSkusForScalingArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

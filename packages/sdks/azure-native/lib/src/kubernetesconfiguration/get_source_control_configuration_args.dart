@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSourceControlConfigurationArgs {
   /// The name of the kubernetes cluster.
   final pulumi.Input<String> clusterName;
-
   /// The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.
   final pulumi.Input<String> clusterResourceName;
-
   /// The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
   final pulumi.Input<String> clusterRp;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Name of the Source Control Configuration.
   final pulumi.Input<String> sourceControlConfigurationName;
 
@@ -49,16 +45,11 @@ class GetSourceControlConfigurationArgs {
   factory GetSourceControlConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return GetSourceControlConfigurationArgs(
       clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
-      clusterResourceName: pulumi.Input.fromValue(
-        map['clusterResourceName'] as String,
-      ),
+      clusterResourceName: pulumi.Input.fromValue(map['clusterResourceName'] as String),
       clusterRp: pulumi.Input.fromValue(map['clusterRp'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      sourceControlConfigurationName: pulumi.Input.fromValue(
-        map['sourceControlConfigurationName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      sourceControlConfigurationName: pulumi.Input.fromValue(map['sourceControlConfigurationName'] as String),
     );
   }
 }
+

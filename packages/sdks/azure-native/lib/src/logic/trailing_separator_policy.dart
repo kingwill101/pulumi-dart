@@ -17,3 +17,4 @@ enum TrailingSeparatorPolicy {
     throw ArgumentError('Unknown TrailingSeparatorPolicy value: $value');
   }
 }
+

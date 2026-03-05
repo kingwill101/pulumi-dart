@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDomainCognitoOption {
   /// Whether node to node encryption is enabled.
   final pulumi.Input<bool> enabled;
-
   /// The Cognito Identity pool used by the domain.
   final pulumi.Input<String> identityPoolId;
-
   /// The IAM Role with the AmazonESCognitoAccess policy attached.
   final pulumi.Input<String> roleArn;
-
   /// The Cognito User pool used by the domain.
   final pulumi.Input<String> userPoolId;
 
@@ -45,3 +42,4 @@ class GetDomainCognitoOption {
     );
   }
 }
+

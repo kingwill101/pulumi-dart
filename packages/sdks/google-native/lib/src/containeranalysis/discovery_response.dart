@@ -9,10 +9,14 @@ class DiscoveryResponse {
 
   /// Creates a new [DiscoveryResponse].
   /// [analysisKind] The kind of analysis that is handled by this discovery.
-  DiscoveryResponse({required this.analysisKind});
+  DiscoveryResponse({
+    required this.analysisKind,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'analysisKind': analysisKind};
+    return <String, dynamic>{
+      'analysisKind': analysisKind,
+    };
   }
 
   factory DiscoveryResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class DiscoveryResponse {
     );
   }
 }
+

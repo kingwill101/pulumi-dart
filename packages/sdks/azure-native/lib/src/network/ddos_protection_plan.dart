@@ -134,31 +134,22 @@ import 'ddos_protection_plan_args.dart';
 class DdosProtectionPlan extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
-
   /// Resource location.
   late final pulumi.Output<String?> location;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// The provisioning state of the DDoS protection plan resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The list of public IPs associated with the DDoS protection plan resource. This list is read-only.
   late final pulumi.Output<List<Map<String, dynamic>>> publicIPAddresses;
-
   /// The resource GUID property of the DDoS protection plan resource. It uniquely identifies the resource, even if the user changes its name or migrate the resource across subscriptions or resource groups.
   late final pulumi.Output<String> resourceGuid;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource type.
   late final pulumi.Output<String> type;
-
   /// The list of virtual networks associated with the DDoS protection plan resource. This list is read-only.
   late final pulumi.Output<List<Map<String, dynamic>>> virtualNetworks;
 
@@ -171,24 +162,20 @@ class DdosProtectionPlan extends pulumi.CustomResource {
     DdosProtectionPlanArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:network:DdosProtectionPlan',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:network:DdosProtectionPlan',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     etag = registerOutput<String>('etag');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    publicIPAddresses = registerOutput<List<Map<String, dynamic>>>(
-      'publicIPAddresses',
-    );
+    publicIPAddresses = registerOutput<List<Map<String, dynamic>>>('publicIPAddresses');
     resourceGuid = registerOutput<String>('resourceGuid');
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
-    virtualNetworks = registerOutput<List<Map<String, dynamic>>>(
-      'virtualNetworks',
-    );
+    virtualNetworks = registerOutput<List<Map<String, dynamic>>>('virtualNetworks');
   }
 }

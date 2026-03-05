@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DisasterRecoveryConfigArgs {
   /// The Disaster Recovery configuration name
   final pulumi.Input<String>? alias;
-
   /// Alternate name specified when alias and namespace names are same.
   final pulumi.Input<String>? alternateName;
-
   /// The Namespace name
   final pulumi.Input<String> namespaceName;
-
   /// ARM Id of the Primary/Secondary eventhub namespace name, which is part of GEO DR pairing
   final pulumi.Input<String>? partnerNamespace;
-
   /// Name of the resource group within the azure subscription.
   final pulumi.Input<String> resourceGroupName;
 
@@ -48,25 +44,12 @@ class DisasterRecoveryConfigArgs {
 
   factory DisasterRecoveryConfigArgs.fromMap(Map<String, dynamic> map) {
     return DisasterRecoveryConfigArgs(
-      alias: (() {
-        final guardedValue = map['alias'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      alternateName: (() {
-        final guardedValue = map['alternateName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      alias: (() { final guardedValue = map['alias']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      alternateName: (() { final guardedValue = map['alternateName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
-      partnerNamespace: (() {
-        final guardedValue = map['partnerNamespace'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      partnerNamespace: (() { final guardedValue = map['partnerNamespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

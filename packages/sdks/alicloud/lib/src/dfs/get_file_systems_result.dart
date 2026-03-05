@@ -36,11 +36,7 @@ class GetFileSystemsResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'systems':
-          pulumi.Input.encodeList<GetFileSystemsSystem, Map<String, dynamic>>(
-            systems,
-            (value) => value.toMap(),
-          ),
+      'systems': pulumi.Input.encodeList<GetFileSystemsSystem, Map<String, dynamic>>(systems, (value) => value.toMap()),
     };
   }
 
@@ -48,23 +44,11 @@ class GetFileSystemsResult {
     return GetFileSystemsResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      systems: pulumi.Input.decodeList<GetFileSystemsSystem>(
-        map['systems']!,
-        (value) => GetFileSystemsSystem.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systems: pulumi.Input.decodeList<GetFileSystemsSystem>(map['systems']!, (value) => GetFileSystemsSystem.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

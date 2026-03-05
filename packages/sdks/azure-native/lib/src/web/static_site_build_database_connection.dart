@@ -164,28 +164,20 @@ import 'static_site_build_database_connection_args.dart';
 class StaticSiteBuildDatabaseConnection extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// A list of configuration files associated with this database connection.
   late final pulumi.Output<List<Map<String, dynamic>>> configurationFiles;
-
   /// If present, the identity is used in conjunction with connection string to connect to the database. Use of the system-assigned managed identity is indicated with the string 'SystemAssigned', while use of a user-assigned managed identity is indicated with the resource id of the managed identity resource.
   late final pulumi.Output<String?> connectionIdentity;
-
   /// The connection string to use to connect to the database.
   late final pulumi.Output<String?> connectionString;
-
   /// Kind of resource.
   late final pulumi.Output<String?> kind;
-
   /// Resource Name.
   late final pulumi.Output<String> name;
-
   /// The region of the database resource.
   late final pulumi.Output<String> region;
-
   /// The resource id of the database.
   late final pulumi.Output<String> resourceId;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -198,15 +190,13 @@ class StaticSiteBuildDatabaseConnection extends pulumi.CustomResource {
     StaticSiteBuildDatabaseConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:web:StaticSiteBuildDatabaseConnection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:web:StaticSiteBuildDatabaseConnection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    configurationFiles = registerOutput<List<Map<String, dynamic>>>(
-      'configurationFiles',
-    );
+    configurationFiles = registerOutput<List<Map<String, dynamic>>>('configurationFiles');
     connectionIdentity = registerOutput<String?>('connectionIdentity');
     connectionString = registerOutput<String?>('connectionString');
     kind = registerOutput<String?>('kind');

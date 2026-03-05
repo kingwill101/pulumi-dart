@@ -429,19 +429,14 @@ import 'rule_state.dart';
 class Rule extends pulumi.CustomResource {
   /// The description of the event rule.
   late final pulumi.Output<String?> description;
-
   /// The name of the event bus.
   late final pulumi.Output<String> eventBusName;
-
   /// The pattern to match interested events. Event mode, JSON format. The value description is as follows: `stringEqual` mode. `stringExpression` mode. Each field has up to 5 expressions (map structure).
   late final pulumi.Output<String> filterPattern;
-
   /// The name of the event rule.
   late final pulumi.Output<String> ruleName;
-
   /// The status of the event rule. Valid values: `ENABLE`, `DISABLE`.
   late final pulumi.Output<String> status;
-
   /// The targets of rule. See `targets` below.
   late final pulumi.Output<List<Map<String, dynamic>>> targets;
 
@@ -449,13 +444,16 @@ class Rule extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Rule]. {@macro pulumi_eventbridge_rule_rule_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Rule(String name, {RuleArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:eventbridge/rule:Rule',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Rule(
+    String name, {
+    RuleArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:eventbridge/rule:Rule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     eventBusName = registerOutput<String>('eventBusName');
     filterPattern = registerOutput<String>('filterPattern');
@@ -465,7 +463,11 @@ class Rule extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Rule] resource's state with the given [name] and [id].
-  static Rule get(String name, pulumi.Input<String> id, {RuleState? state}) {
+  static Rule get(
+    String name,
+    pulumi.Input<String> id, {
+    RuleState? state,
+  }) {
     return Rule._get(
       name,
       state: state?.toMap(),
@@ -478,11 +480,11 @@ class Rule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:eventbridge/rule:Rule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:eventbridge/rule:Rule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     eventBusName = registerOutput<String>('eventBusName');
     filterPattern = registerOutput<String>('filterPattern');

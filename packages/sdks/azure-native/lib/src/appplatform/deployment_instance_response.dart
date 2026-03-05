@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeploymentInstanceResponse {
   /// Discovery status of the deployment instance
   final pulumi.Input<String> discoveryStatus;
-
   /// Name of the deployment instance
   final pulumi.Input<String> name;
-
   /// Failed reason of the deployment instance
   final pulumi.Input<String> reason;
-
   /// Start time of the deployment instance
   final pulumi.Input<String> startTime;
-
   /// Status of the deployment instance
   final pulumi.Input<String> status;
-
   /// Availability zone information of the deployment instance
   final pulumi.Input<String> zone;
 
@@ -60,3 +55,4 @@ class DeploymentInstanceResponse {
     );
   }
 }
+

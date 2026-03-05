@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSenderUsernameArgs {
   /// The name of the Domains resource.
   final pulumi.Input<String> domainName;
-
   /// The name of the EmailService resource.
   final pulumi.Input<String> emailServiceName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The valid sender Username.
   final pulumi.Input<String> senderUsername;
 
@@ -43,13 +40,10 @@ class GetSenderUsernameArgs {
   factory GetSenderUsernameArgs.fromMap(Map<String, dynamic> map) {
     return GetSenderUsernameArgs(
       domainName: pulumi.Input.fromValue(map['domainName'] as String),
-      emailServiceName: pulumi.Input.fromValue(
-        map['emailServiceName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      emailServiceName: pulumi.Input.fromValue(map['emailServiceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       senderUsername: pulumi.Input.fromValue(map['senderUsername'] as String),
     );
   }
 }
+

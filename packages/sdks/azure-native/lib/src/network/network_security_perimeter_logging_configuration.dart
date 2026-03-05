@@ -168,21 +168,15 @@ import 'nsp_logging_configuration_properties_response.dart';
 /// ```sh
 /// $ pulumi import azure-native:network:NetworkSecurityPerimeterLoggingConfiguration instance /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/loggingConfigurations/{loggingConfigurationName}
 /// ```
-class NetworkSecurityPerimeterLoggingConfiguration
-    extends pulumi.CustomResource {
+class NetworkSecurityPerimeterLoggingConfiguration extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// Properties of the NSP logging configuration.
-  late final pulumi.Output<NspLoggingConfigurationPropertiesResponse>
-  properties;
-
+  late final pulumi.Output<NspLoggingConfigurationPropertiesResponse> properties;
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -195,24 +189,15 @@ class NetworkSecurityPerimeterLoggingConfiguration
     NetworkSecurityPerimeterLoggingConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:network:NetworkSecurityPerimeterLoggingConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:network:NetworkSecurityPerimeterLoggingConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<NspLoggingConfigurationPropertiesResponse>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NspLoggingConfigurationPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<NspLoggingConfigurationPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NspLoggingConfigurationPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

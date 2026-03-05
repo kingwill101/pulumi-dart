@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSslVpnClientCertsCert {
   /// The time of creation.
   final pulumi.Input<String> createTime;
-
   /// The expiration time of the client certificate.
   final pulumi.Input<int> endTime;
-
   /// ID of the SSL-VPN client certificate.
   final pulumi.Input<String> id;
-
   /// The name of the SSL-VPN client certificate.
   final pulumi.Input<String> name;
-
   /// Use the SSL-VPN server ID as the search key.
   final pulumi.Input<String> sslVpnServerId;
-
   /// The status of the client certificate. valid value:expiring-soon, normal, expired.
   final pulumi.Input<String> status;
 
@@ -59,3 +54,4 @@ class GetSslVpnClientCertsCert {
     );
   }
 }
+

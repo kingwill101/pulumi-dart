@@ -649,16 +649,13 @@ class CustomerManagedKey extends pulumi.CustomResource {
   late final pulumi.Output<String?> federatedIdentityClientId;
   late final pulumi.Output<String> keyName;
   late final pulumi.Output<String> keyVaultId;
-
   /// The ID of the Key Vault Key.
   late final pulumi.Output<String> keyVaultKeyId;
   late final pulumi.Output<String> keyVaultUri;
   late final pulumi.Output<String> keyVersion;
   late final pulumi.Output<String> managedHsmKeyId;
-
   /// The ID of the Storage Account. Changing this forces a new resource to be created.
   late final pulumi.Output<String> storageAccountId;
-
   /// The ID of a user assigned identity.
   late final pulumi.Output<String?> userAssignedIdentityId;
 
@@ -671,14 +668,12 @@ class CustomerManagedKey extends pulumi.CustomResource {
     CustomerManagedKeyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:storage/customerManagedKey:CustomerManagedKey',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    federatedIdentityClientId = registerOutput<String?>(
-      'federatedIdentityClientId',
-    );
+          'azure:storage/customerManagedKey:CustomerManagedKey',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    federatedIdentityClientId = registerOutput<String?>('federatedIdentityClientId');
     keyName = registerOutput<String>('keyName');
     keyVaultId = registerOutput<String>('keyVaultId');
     keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
@@ -707,14 +702,12 @@ class CustomerManagedKey extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:storage/customerManagedKey:CustomerManagedKey',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    federatedIdentityClientId = registerOutput<String?>(
-      'federatedIdentityClientId',
-    );
+          'azure:storage/customerManagedKey:CustomerManagedKey',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    federatedIdentityClientId = registerOutput<String?>('federatedIdentityClientId');
     keyName = registerOutput<String>('keyName');
     keyVaultId = registerOutput<String>('keyVaultId');
     keyVaultKeyId = registerOutput<String>('keyVaultKeyId');

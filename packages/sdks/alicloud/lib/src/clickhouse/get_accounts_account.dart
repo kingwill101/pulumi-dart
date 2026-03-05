@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccountsAccount {
   /// In Chinese, English letter. May contain Chinese and English characters, lowercase letters, numbers, and underscores (_), the dash (-). Cannot start with http:// and https:// at the beginning. Length is from 2 to 256 characters.
   final pulumi.Input<String> accountDescription;
-
   /// Account name: lowercase letters, numbers, underscores, lowercase letter; length no more than 16 characters.
   final pulumi.Input<String> accountName;
-
   /// The Valid Account type: `Normal`, `Super`.
   final pulumi.Input<String> accountType;
-
   /// The DBCluster id.
   final pulumi.Input<String> dbClusterId;
-
   /// The ID of the Account. Its value is same as Queue Name.
   final pulumi.Input<String> id;
-
   /// The status of the resource. Valid Status: `Creating`,`Available`,`Deleting`.
   final pulumi.Input<String> status;
 
@@ -50,9 +45,7 @@ class GetAccountsAccount {
 
   factory GetAccountsAccount.fromMap(Map<String, dynamic> map) {
     return GetAccountsAccount(
-      accountDescription: pulumi.Input.fromValue(
-        map['accountDescription'] as String,
-      ),
+      accountDescription: pulumi.Input.fromValue(map['accountDescription'] as String),
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
       accountType: pulumi.Input.fromValue(map['accountType'] as String),
       dbClusterId: pulumi.Input.fromValue(map['dbClusterId'] as String),
@@ -61,3 +54,4 @@ class GetAccountsAccount {
     );
   }
 }
+

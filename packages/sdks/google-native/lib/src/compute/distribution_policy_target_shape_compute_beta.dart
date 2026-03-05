@@ -14,8 +14,7 @@ enum DistributionPolicyTargetShapeComputeBeta {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown DistributionPolicyTargetShapeComputeBeta value: $value',
-    );
+    throw ArgumentError('Unknown DistributionPolicyTargetShapeComputeBeta value: $value');
   }
 }
+

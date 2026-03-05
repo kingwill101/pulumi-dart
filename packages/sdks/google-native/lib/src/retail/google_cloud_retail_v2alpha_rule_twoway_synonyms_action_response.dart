@@ -14,16 +14,15 @@ class GoogleCloudRetailV2alphaRuleTwowaySynonymsActionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'synonyms': synonyms};
+    return <String, dynamic>{
+      'synonyms': synonyms,
+    };
   }
 
-  factory GoogleCloudRetailV2alphaRuleTwowaySynonymsActionResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudRetailV2alphaRuleTwowaySynonymsActionResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2alphaRuleTwowaySynonymsActionResponse(
-      synonyms: pulumi.Input.fromValue(
-        (map['synonyms'] as List).cast<String>(),
-      ),
+      synonyms: pulumi.Input.fromValue((map['synonyms'] as List).cast<String>()),
     );
   }
 }
+

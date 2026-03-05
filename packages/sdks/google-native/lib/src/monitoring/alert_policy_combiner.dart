@@ -17,3 +17,4 @@ enum AlertPolicyCombiner {
     throw ArgumentError('Unknown AlertPolicyCombiner value: $value');
   }
 }
+

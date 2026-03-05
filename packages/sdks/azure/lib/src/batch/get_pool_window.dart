@@ -8,17 +8,20 @@ class GetPoolWindow {
 
   /// Creates a new [GetPoolWindow].
   /// [enableAutomaticUpdates] Whether automatic updates are enabled on the virtual machine.
-  GetPoolWindow({required this.enableAutomaticUpdates});
+  GetPoolWindow({
+    required this.enableAutomaticUpdates,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enableAutomaticUpdates': enableAutomaticUpdates};
+    return <String, dynamic>{
+      'enableAutomaticUpdates': enableAutomaticUpdates,
+    };
   }
 
   factory GetPoolWindow.fromMap(Map<String, dynamic> map) {
     return GetPoolWindow(
-      enableAutomaticUpdates: pulumi.Input.fromValue(
-        map['enableAutomaticUpdates'] as bool,
-      ),
+      enableAutomaticUpdates: pulumi.Input.fromValue(map['enableAutomaticUpdates'] as bool),
     );
   }
 }
+

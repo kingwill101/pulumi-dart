@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EncryptionIdentityResponse {
   /// The principal identifier associated with the encryption.
   final pulumi.Input<String> principalId;
-
   /// The tenant identifier associated with the encryption.
   final pulumi.Input<String> tenantId;
-
   /// The type of encryption being used. Currently the only supported type is 'SystemAssigned'.
   final pulumi.Input<String> type;
 
@@ -39,3 +37,4 @@ class EncryptionIdentityResponse {
     );
   }
 }
+

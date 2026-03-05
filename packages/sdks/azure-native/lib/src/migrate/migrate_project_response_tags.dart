@@ -8,19 +8,20 @@ class MigrateProjectResponseTags {
 
   /// Creates a new [MigrateProjectResponseTags].
   /// [additionalProperties] Optional.
-  MigrateProjectResponseTags({this.additionalProperties});
+  MigrateProjectResponseTags({
+    this.additionalProperties,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'additionalProperties': ?additionalProperties};
+    return <String, dynamic>{
+      'additionalProperties': ?additionalProperties,
+    };
   }
 
   factory MigrateProjectResponseTags.fromMap(Map<String, dynamic> map) {
     return MigrateProjectResponseTags(
-      additionalProperties: (() {
-        final guardedValue = map['additionalProperties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      additionalProperties: (() { final guardedValue = map['additionalProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

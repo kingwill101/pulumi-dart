@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkManagerRoutingRuleDestination {
   /// The destination address.
   final pulumi.Input<String> address;
-
   /// The type of destination. Possible values are `AddressPrefix` and `ServiceTag`.
   final pulumi.Input<String> type;
 
@@ -18,15 +17,17 @@ class NetworkManagerRoutingRuleDestination {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'address': address, 'type': type};
+    return <String, dynamic>{
+      'address': address,
+      'type': type,
+    };
   }
 
-  factory NetworkManagerRoutingRuleDestination.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NetworkManagerRoutingRuleDestination.fromMap(Map<String, dynamic> map) {
     return NetworkManagerRoutingRuleDestination(
       address: pulumi.Input.fromValue(map['address'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

@@ -189,58 +189,48 @@ import 'graph_vector_search_configuration.dart';
 class Graph extends pulumi.CustomResource {
   /// (String) Graph resource ARN
   late final pulumi.Output<String> arn;
-
   /// Value that indicates whether the Graph has deletion protection enabled. The graph can't be deleted when deletion protection is enabled.
   late final pulumi.Output<bool> deletionProtection;
-
   /// (String) The connection endpoint for the graph. For example: `g-12a3bcdef4.us-east-1.neptune-graph.amazonaws.com`
   late final pulumi.Output<String> endpoint;
-
   /// Contains a user-supplied name for the Graph. If omitted, Terraform will assign a random, unique identifier.
   late final pulumi.Output<String> graphName;
-
   /// Allows user to specify name prefix and have remainder of name automatically generated.
   late final pulumi.Output<String?> graphNamePrefix;
-
   /// The ARN for the KMS encryption key. By Default, Neptune Analytics will use an AWS provided key ("AWS_OWNED_KEY"). This parameter is used if you want to encrypt the graph using a KMS Customer Managed Key (CMK).
   late final pulumi.Output<String> kmsKeyIdentifier;
-
   /// The provisioned memory-optimized Neptune Capacity Units (m-NCUs) to use for the graph.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<int> provisionedMemory;
-
   /// Specifies whether the Graph can be reached over the internet. Access to all graphs requires IAM authentication.  When the Graph is publicly reachable, its Domain Name System (DNS) endpoint resolves to the public IP address from the internet.  When the Graph isn't publicly reachable, you need to create a PrivateGraphEndpoint in a given VPC to ensure the DNS name resolves to a private IP address that is reachable from the VPC.
   late final pulumi.Output<bool> publicConnectivity;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Specifies the number of replicas you want when finished. All replicas will be provisioned in different availability zones.  Replica Count should always be less than or equal to 2.
   late final pulumi.Output<int> replicaCount;
-
   /// Key-value tags for the graph. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<GraphTimeouts?> timeouts;
-
   /// Vector Search Configuration (see below for nested schema of vector_search_configuration)
-  late final pulumi.Output<GraphVectorSearchConfiguration?>
-  vectorSearchConfiguration;
+  late final pulumi.Output<GraphVectorSearchConfiguration?> vectorSearchConfiguration;
 
   /// Creates a new [Graph].
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Graph]. {@macro pulumi_neptunegraph_graph_graph_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Graph(String name, {GraphArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:neptunegraph/graph:Graph',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Graph(
+    String name, {
+    GraphArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:neptunegraph/graph:Graph',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     deletionProtection = registerOutput<bool>('deletionProtection');
     endpoint = registerOutput<String>('endpoint');
@@ -253,30 +243,16 @@ class Graph extends pulumi.CustomResource {
     replicaCount = registerOutput<int>('replicaCount');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<GraphTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GraphTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    vectorSearchConfiguration = registerOutput<GraphVectorSearchConfiguration?>(
-      'vectorSearchConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GraphVectorSearchConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<GraphTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GraphTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vectorSearchConfiguration = registerOutput<GraphVectorSearchConfiguration?>('vectorSearchConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GraphVectorSearchConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [Graph] resource's state with the given [name] and [id].
-  static Graph get(String name, pulumi.Input<String> id, {GraphState? state}) {
+  static Graph get(
+    String name,
+    pulumi.Input<String> id, {
+    GraphState? state,
+  }) {
     return Graph._get(
       name,
       state: state?.toMap(),
@@ -289,11 +265,11 @@ class Graph extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:neptunegraph/graph:Graph',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:neptunegraph/graph:Graph',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     deletionProtection = registerOutput<bool>('deletionProtection');
     endpoint = registerOutput<String>('endpoint');
@@ -306,25 +282,7 @@ class Graph extends pulumi.CustomResource {
     replicaCount = registerOutput<int>('replicaCount');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<GraphTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GraphTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    vectorSearchConfiguration = registerOutput<GraphVectorSearchConfiguration?>(
-      'vectorSearchConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GraphVectorSearchConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<GraphTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GraphTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vectorSearchConfiguration = registerOutput<GraphVectorSearchConfiguration?>('vectorSearchConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GraphVectorSearchConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

@@ -15,3 +15,4 @@ enum CostAllocationResourceType {
     throw ArgumentError('Unknown CostAllocationResourceType value: $value');
   }
 }
+

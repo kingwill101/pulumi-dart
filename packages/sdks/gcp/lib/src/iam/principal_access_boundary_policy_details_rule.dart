@@ -5,11 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PrincipalAccessBoundaryPolicyDetailsRule {
   /// The description of the principal access boundary policy rule. Must be less than or equal to 256 characters.
   final pulumi.Input<String>? description;
-
   /// The access relationship of principals to the resources in this rule.
   /// Possible values: ALLOW
   final pulumi.Input<String> effect;
-
   /// A list of Cloud Resource Manager resources. The resource
   /// and all the descendants are included. The number of resources in a policy
   /// is limited to 500 across all rules.
@@ -38,19 +36,12 @@ class PrincipalAccessBoundaryPolicyDetailsRule {
     };
   }
 
-  factory PrincipalAccessBoundaryPolicyDetailsRule.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PrincipalAccessBoundaryPolicyDetailsRule.fromMap(Map<String, dynamic> map) {
     return PrincipalAccessBoundaryPolicyDetailsRule(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effect: pulumi.Input.fromValue(map['effect'] as String),
-      resources: pulumi.Input.fromValue(
-        (map['resources'] as List).cast<String>(),
-      ),
+      resources: pulumi.Input.fromValue((map['resources'] as List).cast<String>()),
     );
   }
 }
+

@@ -8,45 +8,33 @@ class GetEcsSnapshotsResult {
   /// The category of the snapshot.
   final String? category;
   final bool? dryRun;
-
   /// Indicates whether the snapshot was encrypted.
   final bool? encrypted;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
   final String? kmsKeyId;
   final String? nameRegex;
-
   /// A list of Snapshot names.
   final List<String> names;
   final String? outputFile;
-
   /// The ID of the resource group to which the snapshot belongs.
   final String? resourceGroupId;
   final String? snapshotLinkId;
-
   /// The name of the snapshot.
   final String? snapshotName;
-
   /// The type of the snapshot.
   final String? snapshotType;
-
   /// A list of Ecs Snapshots. Each element contains the following attributes:
   final List<GetEcsSnapshotsSnapshot> snapshots;
-
   /// The type of the source disk.
   final String? sourceDiskType;
-
   /// The status of the snapshot.
   final String? status;
-
   /// The tags of the snapshot.
   final Map<String, String>? tags;
-
   /// The type of the snapshot.
   final String? type;
-
   /// Indicates whether the snapshot was used to create images or cloud disks.
   final String? usage;
 
@@ -107,11 +95,7 @@ class GetEcsSnapshotsResult {
       'snapshotLinkId': ?snapshotLinkId,
       'snapshotName': ?snapshotName,
       'snapshotType': ?snapshotType,
-      'snapshots':
-          pulumi.Input.encodeList<
-            GetEcsSnapshotsSnapshot,
-            Map<String, dynamic>
-          >(snapshots, (value) => value.toMap()),
+      'snapshots': pulumi.Input.encodeList<GetEcsSnapshotsSnapshot, Map<String, dynamic>>(snapshots, (value) => value.toMap()),
       'sourceDiskType': ?sourceDiskType,
       'status': ?status,
       'tags': ?tags,
@@ -122,90 +106,26 @@ class GetEcsSnapshotsResult {
 
   factory GetEcsSnapshotsResult.fromMap(Map<String, dynamic> map) {
     return GetEcsSnapshotsResult(
-      category: (() {
-        final guardedValue = map['category'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      dryRun: (() {
-        final guardedValue = map['dryRun'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      encrypted: (() {
-        final guardedValue = map['encrypted'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      category: (() { final guardedValue = map['category']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      dryRun: (() { final guardedValue = map['dryRun']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      encrypted: (() { final guardedValue = map['encrypted']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      kmsKeyId: (() {
-        final guardedValue = map['kmsKeyId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      kmsKeyId: (() { final guardedValue = map['kmsKeyId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      resourceGroupId: (() {
-        final guardedValue = map['resourceGroupId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      snapshotLinkId: (() {
-        final guardedValue = map['snapshotLinkId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      snapshotName: (() {
-        final guardedValue = map['snapshotName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      snapshotType: (() {
-        final guardedValue = map['snapshotType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      snapshots: pulumi.Input.decodeList<GetEcsSnapshotsSnapshot>(
-        map['snapshots']!,
-        (value) => GetEcsSnapshotsSnapshot.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      sourceDiskType: (() {
-        final guardedValue = map['sourceDiskType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      usage: (() {
-        final guardedValue = map['usage'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceGroupId: (() { final guardedValue = map['resourceGroupId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      snapshotLinkId: (() { final guardedValue = map['snapshotLinkId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      snapshotName: (() { final guardedValue = map['snapshotName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      snapshotType: (() { final guardedValue = map['snapshotType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      snapshots: pulumi.Input.decodeList<GetEcsSnapshotsSnapshot>(map['snapshots']!, (value) => GetEcsSnapshotsSnapshot.fromMap((value as Map).cast<String, dynamic>())),
+      sourceDiskType: (() { final guardedValue = map['sourceDiskType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      usage: (() { final guardedValue = map['usage']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

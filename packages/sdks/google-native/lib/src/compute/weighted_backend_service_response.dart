@@ -7,10 +7,8 @@ import 'http_header_action_response.dart';
 class WeightedBackendServiceResponse {
   /// The full or partial URL to the default BackendService resource. Before forwarding the request to backendService, the load balancer applies any relevant headerActions specified as part of this backendServiceWeight.
   final pulumi.Input<String> backendService;
-
   /// Specifies changes to request and response headers that need to take effect for the selected backendService. headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap. headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
   final pulumi.Input<HttpHeaderActionResponse> headerAction;
-
   /// Specifies the fraction of traffic sent to a backend service, computed as weight / (sum of all weightedBackendService weights in routeAction) . The selection of a backend service is determined only for new traffic. Once a user's request has been directed to a backend service, subsequent requests are sent to the same backend service as determined by the backend service's session affinity policy. The value must be from 0 to 1000.
   final pulumi.Input<int> weight;
 
@@ -27,11 +25,7 @@ class WeightedBackendServiceResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'backendService': backendService,
-      'headerAction':
-          pulumi.Input.mapInputValue<
-            HttpHeaderActionResponse,
-            Map<String, dynamic>
-          >(headerAction, (value) => value.toMap()),
+      'headerAction': pulumi.Input.mapInputValue<HttpHeaderActionResponse, Map<String, dynamic>>(headerAction, (value) => value.toMap()),
       'weight': weight,
     };
   }
@@ -39,12 +33,9 @@ class WeightedBackendServiceResponse {
   factory WeightedBackendServiceResponse.fromMap(Map<String, dynamic> map) {
     return WeightedBackendServiceResponse(
       backendService: pulumi.Input.fromValue(map['backendService'] as String),
-      headerAction: pulumi.Input.fromValue(
-        HttpHeaderActionResponse.fromMap(
-          (map['headerAction']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      headerAction: pulumi.Input.fromValue(HttpHeaderActionResponse.fromMap((map['headerAction']! as Map).cast<String, dynamic>())),
       weight: pulumi.Input.fromValue(map['weight'] as int),
     );
   }
 }
+

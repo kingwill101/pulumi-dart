@@ -1,41 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getReportDefinition.
 class GetReportDefinitionResult {
   /// A list of additional artifacts.
   final List<String> additionalArtifacts;
-
   /// A list of schema elements.
   final List<String> additionalSchemaElements;
-
   /// Preferred format for report.
   final String compression;
-
   /// Preferred compression format for report.
   final String format;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// If true reports are updated after they have been finalized.
   final bool refreshClosedReports;
   final String reportName;
-
   /// Overwrite the previous version of each report or to deliver the report in addition to the previous versions.
   final String reportVersioning;
-
   /// Name of customer S3 bucket.
   final String s3Bucket;
-
   /// Preferred report path prefix.
   final String s3Prefix;
-
   /// Region of customer S3 bucket.
   final String s3Region;
-
   /// Map of key-value pairs assigned to the resource.
   final Map<String, String> tags;
-
   /// Frequency on which report data are measured and displayed.
   final String timeUnit;
 
@@ -90,8 +80,7 @@ class GetReportDefinitionResult {
   factory GetReportDefinitionResult.fromMap(Map<String, dynamic> map) {
     return GetReportDefinitionResult(
       additionalArtifacts: (map['additionalArtifacts'] as List).cast<String>(),
-      additionalSchemaElements: (map['additionalSchemaElements'] as List)
-          .cast<String>(),
+      additionalSchemaElements: (map['additionalSchemaElements'] as List).cast<String>(),
       compression: map['compression'] as String,
       format: map['format'] as String,
       id: map['id'] as String,
@@ -106,3 +95,4 @@ class GetReportDefinitionResult {
     );
   }
 }
+

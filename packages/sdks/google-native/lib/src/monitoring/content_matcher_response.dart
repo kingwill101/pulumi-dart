@@ -7,10 +7,8 @@ import 'json_path_matcher_response.dart';
 class ContentMatcherResponse {
   /// String, regex or JSON content to match. Maximum 1024 bytes. An empty content string indicates no content matching is to be performed.
   final pulumi.Input<String> content;
-
   /// Matcher information for MATCHES_JSON_PATH and NOT_MATCHES_JSON_PATH
   final pulumi.Input<JsonPathMatcherResponse> jsonPathMatcher;
-
   /// The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
   final pulumi.Input<String> matcher;
 
@@ -27,11 +25,7 @@ class ContentMatcherResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'content': content,
-      'jsonPathMatcher':
-          pulumi.Input.mapInputValue<
-            JsonPathMatcherResponse,
-            Map<String, dynamic>
-          >(jsonPathMatcher, (value) => value.toMap()),
+      'jsonPathMatcher': pulumi.Input.mapInputValue<JsonPathMatcherResponse, Map<String, dynamic>>(jsonPathMatcher, (value) => value.toMap()),
       'matcher': matcher,
     };
   }
@@ -39,12 +33,9 @@ class ContentMatcherResponse {
   factory ContentMatcherResponse.fromMap(Map<String, dynamic> map) {
     return ContentMatcherResponse(
       content: pulumi.Input.fromValue(map['content'] as String),
-      jsonPathMatcher: pulumi.Input.fromValue(
-        JsonPathMatcherResponse.fromMap(
-          (map['jsonPathMatcher']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      jsonPathMatcher: pulumi.Input.fromValue(JsonPathMatcherResponse.fromMap((map['jsonPathMatcher']! as Map).cast<String, dynamic>())),
       matcher: pulumi.Input.fromValue(map['matcher'] as String),
     );
   }
 }
+

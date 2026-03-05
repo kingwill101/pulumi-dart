@@ -7,10 +7,8 @@ import '../core/typed_local_object_reference_patch.dart';
 class IngressBackendPatchNetworkingK8sIoV1beta1 {
   /// Resource is an ObjectRef to another Kubernetes resource in the namespace of the Ingress object. If resource is specified, serviceName and servicePort must not be specified.
   final pulumi.Input<TypedLocalObjectReferencePatch>? resource;
-
   /// Specifies the name of the referenced service.
   final pulumi.Input<String>? serviceName;
-
   /// Specifies the port of the referenced service.
   final pulumi.Input<int>? servicePort;
 
@@ -26,39 +24,18 @@ class IngressBackendPatchNetworkingK8sIoV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'resource':
-          ?pulumi.Input.mapOptionalInputValue<
-            TypedLocalObjectReferencePatch,
-            Map<String, dynamic>
-          >(resource, (value) => value.toMap()),
+      'resource': ?pulumi.Input.mapOptionalInputValue<TypedLocalObjectReferencePatch, Map<String, dynamic>>(resource, (value) => value.toMap()),
       'serviceName': ?serviceName,
       'servicePort': ?servicePort,
     };
   }
 
-  factory IngressBackendPatchNetworkingK8sIoV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory IngressBackendPatchNetworkingK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return IngressBackendPatchNetworkingK8sIoV1beta1(
-      resource: (() {
-        final guardedValue = map['resource'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          TypedLocalObjectReferencePatch.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      serviceName: (() {
-        final guardedValue = map['serviceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      servicePort: (() {
-        final guardedValue = map['servicePort'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      resource: (() { final guardedValue = map['resource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TypedLocalObjectReferencePatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      serviceName: (() { final guardedValue = map['serviceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      servicePort: (() { final guardedValue = map['servicePort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

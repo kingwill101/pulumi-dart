@@ -247,22 +247,16 @@ import 'database_account_mongo_dbcollection_args.dart';
 class DatabaseAccountMongoDBCollection extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// List of index keys
   late final pulumi.Output<List<Map<String, dynamic>>?> indexes;
-
   /// The location of the resource group to which the resource belongs.
   late final pulumi.Output<String?> location;
-
   /// The name of the database account.
   late final pulumi.Output<String> name;
-
   /// A key-value pair of shard keys to be applied for the request.
   late final pulumi.Output<Map<String, String>?> shardKey;
-
   /// Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB".
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of Azure resource.
   late final pulumi.Output<String> type;
 
@@ -275,11 +269,11 @@ class DatabaseAccountMongoDBCollection extends pulumi.CustomResource {
     DatabaseAccountMongoDBCollectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:cosmosdb:DatabaseAccountMongoDBCollection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:cosmosdb:DatabaseAccountMongoDBCollection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     indexes = registerOutput<List<Map<String, dynamic>>?>('indexes');
     location = registerOutput<String?>('location');

@@ -15,7 +15,10 @@ class AutomationRuleCriteriaResourceType {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'comparison': comparison, 'value': value};
+    return <String, dynamic>{
+      'comparison': comparison,
+      'value': value,
+    };
   }
 
   factory AutomationRuleCriteriaResourceType.fromMap(Map<String, dynamic> map) {
@@ -25,3 +28,4 @@ class AutomationRuleCriteriaResourceType {
     );
   }
 }
+

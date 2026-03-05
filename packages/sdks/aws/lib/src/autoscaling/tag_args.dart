@@ -10,10 +10,8 @@ import 'tag_tag.dart';
 class TagArgs {
   /// Name of the Autoscaling Group to apply the tag to.
   final pulumi.Input<String> autoscalingGroupName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Tag to create. The `tag` block is documented below.
   final pulumi.Input<TagTag> tag;
 
@@ -21,32 +19,26 @@ class TagArgs {
   /// [autoscalingGroupName] Name of the Autoscaling Group to apply the tag to.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tag] Tag to create. The `tag` block is documented below.
-  TagArgs({required this.autoscalingGroupName, this.region, required this.tag});
+  TagArgs({
+    required this.autoscalingGroupName,
+    this.region,
+    required this.tag,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'autoscalingGroupName': autoscalingGroupName,
       'region': ?region,
-      'tag': pulumi.Input.mapInputValue<TagTag, Map<String, dynamic>>(
-        tag,
-        (value) => value.toMap(),
-      ),
+      'tag': pulumi.Input.mapInputValue<TagTag, Map<String, dynamic>>(tag, (value) => value.toMap()),
     };
   }
 
   factory TagArgs.fromMap(Map<String, dynamic> map) {
     return TagArgs(
-      autoscalingGroupName: pulumi.Input.fromValue(
-        map['autoscalingGroupName'] as String,
-      ),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tag: pulumi.Input.fromValue(
-        TagTag.fromMap((map['tag']! as Map).cast<String, dynamic>()),
-      ),
+      autoscalingGroupName: pulumi.Input.fromValue(map['autoscalingGroupName'] as String),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tag: pulumi.Input.fromValue(TagTag.fromMap((map['tag']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

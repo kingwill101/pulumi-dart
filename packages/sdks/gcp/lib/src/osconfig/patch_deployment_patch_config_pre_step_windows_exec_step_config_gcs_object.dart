@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject {
   /// Bucket of the Cloud Storage object.
   final pulumi.Input<String> bucket;
-
   /// Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
   final pulumi.Input<String> generationNumber;
-
   /// Name of the Cloud Storage object.
   final pulumi.Input<String> object_;
 
@@ -30,15 +28,12 @@ class PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject {
     };
   }
 
-  factory PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject.fromMap(Map<String, dynamic> map) {
     return PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject(
       bucket: pulumi.Input.fromValue(map['bucket'] as String),
-      generationNumber: pulumi.Input.fromValue(
-        map['generationNumber'] as String,
-      ),
+      generationNumber: pulumi.Input.fromValue(map['generationNumber'] as String),
       object_: pulumi.Input.fromValue(map['object'] as String),
     );
   }
 }
+

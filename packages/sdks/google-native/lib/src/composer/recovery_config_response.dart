@@ -10,25 +10,20 @@ class RecoveryConfigResponse {
 
   /// Creates a new [RecoveryConfigResponse].
   /// [scheduledSnapshotsConfig] Optional. The configuration for scheduled snapshot creation mechanism.
-  RecoveryConfigResponse({required this.scheduledSnapshotsConfig});
+  RecoveryConfigResponse({
+    required this.scheduledSnapshotsConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'scheduledSnapshotsConfig':
-          pulumi.Input.mapInputValue<
-            ScheduledSnapshotsConfigResponse,
-            Map<String, dynamic>
-          >(scheduledSnapshotsConfig, (value) => value.toMap()),
+      'scheduledSnapshotsConfig': pulumi.Input.mapInputValue<ScheduledSnapshotsConfigResponse, Map<String, dynamic>>(scheduledSnapshotsConfig, (value) => value.toMap()),
     };
   }
 
   factory RecoveryConfigResponse.fromMap(Map<String, dynamic> map) {
     return RecoveryConfigResponse(
-      scheduledSnapshotsConfig: pulumi.Input.fromValue(
-        ScheduledSnapshotsConfigResponse.fromMap(
-          (map['scheduledSnapshotsConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      scheduledSnapshotsConfig: pulumi.Input.fromValue(ScheduledSnapshotsConfigResponse.fromMap((map['scheduledSnapshotsConfig']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

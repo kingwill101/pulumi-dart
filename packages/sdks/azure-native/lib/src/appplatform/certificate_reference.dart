@@ -9,10 +9,14 @@ class CertificateReference {
 
   /// Creates a new [CertificateReference].
   /// [resourceId] Resource Id of the certificate
-  CertificateReference({required this.resourceId});
+  CertificateReference({
+    required this.resourceId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'resourceId': resourceId};
+    return <String, dynamic>{
+      'resourceId': resourceId,
+    };
   }
 
   factory CertificateReference.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class CertificateReference {
     );
   }
 }
+

@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceGroupMemberRelationshipArgs {
   /// Name of ServiceGroupMember relationship.
   final pulumi.Input<String> name;
-
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceUri;
 
@@ -22,15 +21,17 @@ class GetServiceGroupMemberRelationshipArgs {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'resourceUri': resourceUri};
+    return <String, dynamic>{
+      'name': name,
+      'resourceUri': resourceUri,
+    };
   }
 
-  factory GetServiceGroupMemberRelationshipArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetServiceGroupMemberRelationshipArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceGroupMemberRelationshipArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
       resourceUri: pulumi.Input.fromValue(map['resourceUri'] as String),
     );
   }
 }
+

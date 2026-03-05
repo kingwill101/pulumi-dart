@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationVersionResponse {
   /// Is Deprecated
   final pulumi.Input<bool> isDeprecated;
-
   /// Is Latest
   final pulumi.Input<bool> isLatest;
-
   /// Is Preview
   final pulumi.Input<bool> isPreview;
-
   /// Application Version
   final pulumi.Input<String> version;
 
@@ -46,3 +43,4 @@ class ApplicationVersionResponse {
     );
   }
 }
+

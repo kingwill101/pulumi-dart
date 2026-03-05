@@ -14,3 +14,4 @@ enum NetworkRuleIPAction {
     throw ArgumentError('Unknown NetworkRuleIPAction value: $value');
   }
 }
+

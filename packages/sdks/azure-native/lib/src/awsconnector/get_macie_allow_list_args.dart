@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMacieAllowListArgs {
   /// Name of MacieAllowList
   final pulumi.Input<String> name;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetMacieAllowListArgs].
   /// [name] Name of MacieAllowList
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetMacieAllowListArgs({required this.name, required this.resourceGroupName});
+  GetMacieAllowListArgs({
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,9 +30,8 @@ class GetMacieAllowListArgs {
   factory GetMacieAllowListArgs.fromMap(Map<String, dynamic> map) {
     return GetMacieAllowListArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

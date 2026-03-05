@@ -15,15 +15,17 @@ class GetGatewayRouteSpecHttp2RouteMatchPath {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'exact': exact, 'regex': regex};
+    return <String, dynamic>{
+      'exact': exact,
+      'regex': regex,
+    };
   }
 
-  factory GetGatewayRouteSpecHttp2RouteMatchPath.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetGatewayRouteSpecHttp2RouteMatchPath.fromMap(Map<String, dynamic> map) {
     return GetGatewayRouteSpecHttp2RouteMatchPath(
       exact: pulumi.Input.fromValue(map['exact'] as String),
       regex: pulumi.Input.fromValue(map['regex'] as String),
     );
   }
 }
+

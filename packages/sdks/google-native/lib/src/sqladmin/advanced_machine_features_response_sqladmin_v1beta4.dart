@@ -14,14 +14,15 @@ class AdvancedMachineFeaturesResponseSqladminV1beta4 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'threadsPerCore': threadsPerCore};
+    return <String, dynamic>{
+      'threadsPerCore': threadsPerCore,
+    };
   }
 
-  factory AdvancedMachineFeaturesResponseSqladminV1beta4.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AdvancedMachineFeaturesResponseSqladminV1beta4.fromMap(Map<String, dynamic> map) {
     return AdvancedMachineFeaturesResponseSqladminV1beta4(
       threadsPerCore: pulumi.Input.fromValue(map['threadsPerCore'] as int),
     );
   }
 }
+

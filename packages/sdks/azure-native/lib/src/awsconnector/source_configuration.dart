@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SourceConfiguration {
   /// The name of the application associated with the configuration.
   final pulumi.Input<String>? applicationName;
-
   /// The name of the configuration template.
   final pulumi.Input<String>? templateName;
 
   /// Creates a new [SourceConfiguration].
   /// [applicationName] The name of the application associated with the configuration.
   /// [templateName] The name of the configuration template.
-  SourceConfiguration({this.applicationName, this.templateName});
+  SourceConfiguration({
+    this.applicationName,
+    this.templateName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class SourceConfiguration {
 
   factory SourceConfiguration.fromMap(Map<String, dynamic> map) {
     return SourceConfiguration(
-      applicationName: (() {
-        final guardedValue = map['applicationName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      templateName: (() {
-        final guardedValue = map['templateName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      applicationName: (() { final guardedValue = map['applicationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      templateName: (() { final guardedValue = map['templateName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

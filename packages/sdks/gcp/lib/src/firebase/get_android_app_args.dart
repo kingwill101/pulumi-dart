@@ -12,7 +12,6 @@ class GetAndroidAppArgs {
   ///
   /// - - -
   final pulumi.Input<String> appId;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -20,20 +19,23 @@ class GetAndroidAppArgs {
   /// Creates a new [GetAndroidAppArgs].
   /// [appId] The app_id of name of the Firebase androidApp.
   /// [project] The ID of the project in which the resource belongs.
-  GetAndroidAppArgs({required this.appId, this.project});
+  GetAndroidAppArgs({
+    required this.appId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'appId': appId, 'project': ?project};
+    return <String, dynamic>{
+      'appId': appId,
+      'project': ?project,
+    };
   }
 
   factory GetAndroidAppArgs.fromMap(Map<String, dynamic> map) {
     return GetAndroidAppArgs(
       appId: pulumi.Input.fromValue(map['appId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

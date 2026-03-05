@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkGrantArgs {
   /// The ID of the CCN instance.
   final pulumi.Input<String> ccnId;
-
   /// The ID of the CEN instance.
   final pulumi.Input<String> cenId;
-
   /// The ID of the account to which the CEN instance belongs.
   final pulumi.Input<String> cenUid;
 
@@ -27,7 +25,11 @@ class NetworkGrantArgs {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'ccnId': ccnId, 'cenId': cenId, 'cenUid': cenUid};
+    return <String, dynamic>{
+      'ccnId': ccnId,
+      'cenId': cenId,
+      'cenUid': cenUid,
+    };
   }
 
   factory NetworkGrantArgs.fromMap(Map<String, dynamic> map) {
@@ -38,3 +40,4 @@ class NetworkGrantArgs {
     );
   }
 }
+

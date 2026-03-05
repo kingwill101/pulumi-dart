@@ -8,10 +8,14 @@ class AccountEncryption {
 
   /// Creates a new [AccountEncryption].
   /// [keyVaultKeyId] The full URL path to the Azure key vault key id that should be used to encrypt data, as documented [here](https://docs.microsoft.com/azure/batch/batch-customer-managed-key). Both versioned and versionless keys are supported.
-  AccountEncryption({required this.keyVaultKeyId});
+  AccountEncryption({
+    required this.keyVaultKeyId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'keyVaultKeyId': keyVaultKeyId};
+    return <String, dynamic>{
+      'keyVaultKeyId': keyVaultKeyId,
+    };
   }
 
   factory AccountEncryption.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class AccountEncryption {
     );
   }
 }
+

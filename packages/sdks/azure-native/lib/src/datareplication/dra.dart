@@ -252,14 +252,11 @@ import 'dra_model_response_system_data.dart';
 class Dra extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Gets or sets the name of the resource.
   late final pulumi.Output<String> name;
-
   /// Dra model properties.
   late final pulumi.Output<DraModelPropertiesResponse> properties;
   late final pulumi.Output<DraModelResponseSystemData> systemData;
-
   /// Gets or sets the type of the resource.
   late final pulumi.Output<String> type;
 
@@ -267,35 +264,20 @@ class Dra extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Dra]. {@macro pulumi_datareplication_dra_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Dra(String name, {DraArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:datareplication:Dra',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Dra(
+    String name, {
+    DraArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:datareplication:Dra',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<DraModelPropertiesResponse>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DraModelPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<DraModelResponseSystemData>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DraModelResponseSystemData.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<DraModelPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DraModelPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<DraModelResponseSystemData>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DraModelResponseSystemData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

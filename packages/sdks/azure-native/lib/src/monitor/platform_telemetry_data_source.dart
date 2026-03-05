@@ -7,27 +7,29 @@ class PlatformTelemetryDataSource {
   /// A friendly name for the data source.
   /// This name should be unique across all data sources (regardless of type) within the data collection rule.
   final pulumi.Input<String>? name;
-
   /// List of platform telemetry streams to collect
   final pulumi.Input<List<String>> streams;
 
   /// Creates a new [PlatformTelemetryDataSource].
   /// [name] A friendly name for the data source.
   /// [streams] List of platform telemetry streams to collect
-  PlatformTelemetryDataSource({this.name, required this.streams});
+  PlatformTelemetryDataSource({
+    this.name,
+    required this.streams,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name, 'streams': streams};
+    return <String, dynamic>{
+      'name': ?name,
+      'streams': streams,
+    };
   }
 
   factory PlatformTelemetryDataSource.fromMap(Map<String, dynamic> map) {
     return PlatformTelemetryDataSource(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       streams: pulumi.Input.fromValue((map['streams'] as List).cast<String>()),
     );
   }
 }
+

@@ -9,19 +9,20 @@ class MultichannelResponse {
 
   /// Creates a new [MultichannelResponse].
   /// [enabled] Indicates whether multichannel is enabled
-  MultichannelResponse({this.enabled});
+  MultichannelResponse({
+    this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': ?enabled};
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
   factory MultichannelResponse.fromMap(Map<String, dynamic> map) {
     return MultichannelResponse(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

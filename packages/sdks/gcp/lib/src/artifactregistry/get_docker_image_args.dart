@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDockerImageArgs {
   /// The image name to fetch. If no digest or tag is provided, then the latest modified image will be used.
   final pulumi.Input<String> imageName;
-
   /// The location of the artifact registry.
   final pulumi.Input<String> location;
-
   /// The project ID in which the resource belongs. If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The last part of the repository name to fetch from.
   final pulumi.Input<String> repositoryId;
 
@@ -44,12 +41,9 @@ class GetDockerImageArgs {
     return GetDockerImageArgs(
       imageName: pulumi.Input.fromValue(map['imageName'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       repositoryId: pulumi.Input.fromValue(map['repositoryId'] as String),
     );
   }
 }
+

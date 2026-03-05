@@ -8,10 +8,14 @@ class TransferAgentPoolBandwidthLimit {
 
   /// Creates a new [TransferAgentPoolBandwidthLimit].
   /// [limitMbps] Bandwidth rate in megabytes per second, distributed across all the agents in the pool.
-  TransferAgentPoolBandwidthLimit({required this.limitMbps});
+  TransferAgentPoolBandwidthLimit({
+    required this.limitMbps,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'limitMbps': limitMbps};
+    return <String, dynamic>{
+      'limitMbps': limitMbps,
+    };
   }
 
   factory TransferAgentPoolBandwidthLimit.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class TransferAgentPoolBandwidthLimit {
     );
   }
 }
+

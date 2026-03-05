@@ -12,10 +12,8 @@ import 'image_pipeline_execution_state.dart';
 class ImagePipelineExecution extends pulumi.CustomResource {
   /// The time when the image build task was created.
   late final pulumi.Output<String> createTime;
-
   /// The ID of the image template.
   late final pulumi.Output<String> imagePipelineId;
-
   /// The status of the image build task. Valid values:
   /// - CANCELLED: canceled. The build process has been canceled.
   late final pulumi.Output<String> status;
@@ -29,11 +27,11 @@ class ImagePipelineExecution extends pulumi.CustomResource {
     ImagePipelineExecutionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ecs/imagePipelineExecution:ImagePipelineExecution',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ecs/imagePipelineExecution:ImagePipelineExecution',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     imagePipelineId = registerOutput<String>('imagePipelineId');
     status = registerOutput<String>('status');
@@ -57,11 +55,11 @@ class ImagePipelineExecution extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ecs/imagePipelineExecution:ImagePipelineExecution',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ecs/imagePipelineExecution:ImagePipelineExecution',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     imagePipelineId = registerOutput<String>('imagePipelineId');
     status = registerOutput<String>('status');

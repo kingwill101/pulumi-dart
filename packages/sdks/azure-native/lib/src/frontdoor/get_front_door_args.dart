@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFrontDoorArgs {
   /// Name of the Front Door which is globally unique.
   final pulumi.Input<String> frontDoorName;
-
   /// Name of the Resource group within the Azure subscription.
   final pulumi.Input<String> resourceGroupName;
 
@@ -31,9 +30,8 @@ class GetFrontDoorArgs {
   factory GetFrontDoorArgs.fromMap(Map<String, dynamic> map) {
     return GetFrontDoorArgs(
       frontDoorName: pulumi.Input.fromValue(map['frontDoorName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

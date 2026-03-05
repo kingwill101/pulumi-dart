@@ -14,3 +14,4 @@ enum IngestionType {
     throw ArgumentError('Unknown IngestionType value: $value');
   }
 }
+

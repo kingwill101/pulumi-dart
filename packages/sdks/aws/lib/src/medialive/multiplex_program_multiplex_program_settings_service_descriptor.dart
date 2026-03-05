@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MultiplexProgramMultiplexProgramSettingsServiceDescriptor {
   /// Unique provider name.
   final pulumi.Input<String> providerName;
-
   /// Unique service name.
   final pulumi.Input<String> serviceName;
 
@@ -24,12 +23,11 @@ class MultiplexProgramMultiplexProgramSettingsServiceDescriptor {
     };
   }
 
-  factory MultiplexProgramMultiplexProgramSettingsServiceDescriptor.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MultiplexProgramMultiplexProgramSettingsServiceDescriptor.fromMap(Map<String, dynamic> map) {
     return MultiplexProgramMultiplexProgramSettingsServiceDescriptor(
       providerName: pulumi.Input.fromValue(map['providerName'] as String),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
+

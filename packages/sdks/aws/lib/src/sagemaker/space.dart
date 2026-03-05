@@ -115,37 +115,26 @@ import 'space_state.dart';
 class Space extends pulumi.CustomResource {
   /// The space's Amazon Resource Name (ARN).
   late final pulumi.Output<String> arn;
-
   /// The ID of the associated Domain.
   late final pulumi.Output<String> domainId;
-
   /// The ID of the space's profile in the Amazon Elastic File System volume.
   late final pulumi.Output<String> homeEfsFileSystemUid;
-
   /// A collection of ownership settings. Required if `space_sharing_settings` is set. See `ownership_settings` Block below.
   late final pulumi.Output<SpaceOwnershipSettings?> ownershipSettings;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The name of the space that appears in the SageMaker AI Studio UI.
   late final pulumi.Output<String?> spaceDisplayName;
-
   /// The name of the space.
   late final pulumi.Output<String> spaceName;
-
   /// A collection of space settings. See `space_settings` Block below.
   late final pulumi.Output<SpaceSpaceSettings?> spaceSettings;
-
   /// A collection of space sharing settings. Required if `ownership_settings` is set. See `space_sharing_settings` Block below.
   late final pulumi.Output<SpaceSpaceSharingSettings?> spaceSharingSettings;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// Returns the URL of the space. If the space is created with Amazon Web Services IAM Identity Center (Successor to Amazon Web Services Single Sign-On) authentication, users can navigate to the URL after appending the respective redirect parameter for the application type to be federated through Amazon Web Services IAM Identity Center.
   late final pulumi.Output<String> url;
 
@@ -153,56 +142,36 @@ class Space extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Space]. {@macro pulumi_sagemaker_space_space_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Space(String name, {SpaceArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:sagemaker/space:Space',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Space(
+    String name, {
+    SpaceArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:sagemaker/space:Space',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     domainId = registerOutput<String>('domainId');
     homeEfsFileSystemUid = registerOutput<String>('homeEfsFileSystemUid');
-    ownershipSettings = registerOutput<SpaceOwnershipSettings?>(
-      'ownershipSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SpaceOwnershipSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    ownershipSettings = registerOutput<SpaceOwnershipSettings?>('ownershipSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpaceOwnershipSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     spaceDisplayName = registerOutput<String?>('spaceDisplayName');
     spaceName = registerOutput<String>('spaceName');
-    spaceSettings = registerOutput<SpaceSpaceSettings?>(
-      'spaceSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SpaceSpaceSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    spaceSharingSettings = registerOutput<SpaceSpaceSharingSettings?>(
-      'spaceSharingSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SpaceSpaceSharingSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    spaceSettings = registerOutput<SpaceSpaceSettings?>('spaceSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpaceSpaceSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spaceSharingSettings = registerOutput<SpaceSpaceSharingSettings?>('spaceSharingSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpaceSpaceSharingSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     url = registerOutput<String>('url');
   }
 
   /// Gets an existing [Space] resource's state with the given [name] and [id].
-  static Space get(String name, pulumi.Input<String> id, {SpaceState? state}) {
+  static Space get(
+    String name,
+    pulumi.Input<String> id, {
+    SpaceState? state,
+  }) {
     return Space._get(
       name,
       state: state?.toMap(),
@@ -215,47 +184,20 @@ class Space extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:sagemaker/space:Space',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:sagemaker/space:Space',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     domainId = registerOutput<String>('domainId');
     homeEfsFileSystemUid = registerOutput<String>('homeEfsFileSystemUid');
-    ownershipSettings = registerOutput<SpaceOwnershipSettings?>(
-      'ownershipSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SpaceOwnershipSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    ownershipSettings = registerOutput<SpaceOwnershipSettings?>('ownershipSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpaceOwnershipSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     spaceDisplayName = registerOutput<String?>('spaceDisplayName');
     spaceName = registerOutput<String>('spaceName');
-    spaceSettings = registerOutput<SpaceSpaceSettings?>(
-      'spaceSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SpaceSpaceSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    spaceSharingSettings = registerOutput<SpaceSpaceSharingSettings?>(
-      'spaceSharingSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SpaceSpaceSharingSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    spaceSettings = registerOutput<SpaceSpaceSettings?>('spaceSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpaceSpaceSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spaceSharingSettings = registerOutput<SpaceSpaceSharingSettings?>('spaceSharingSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpaceSpaceSharingSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     url = registerOutput<String>('url');

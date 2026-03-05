@@ -5,28 +5,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWafPoliciesPolicy {
   /// The first ID of the resource.
   final pulumi.Input<String> dcdnWafPolicyId;
-
   /// The type of protection policy.
   final pulumi.Input<String> defenseScene;
-
   /// The number of domain names that use this protection policy.
   final pulumi.Input<int> domainCount;
-
   /// The time when the protection policy was modified.
   final pulumi.Input<String> gmtModified;
-
   /// The ID of the Waf Policy.
   final pulumi.Input<String> id;
-
   /// The name of the protection policy.
   final pulumi.Input<String> policyName;
-
   /// The type of the protection policy.
   final pulumi.Input<String> policyType;
-
   /// The number of protection rules in this protection policy.
   final pulumi.Input<String> ruleCount;
-
   /// The status of the resource. Valid values: `on`, `off`.
   final pulumi.Input<String> status;
 
@@ -80,3 +72,4 @@ class GetWafPoliciesPolicy {
     );
   }
 }
+

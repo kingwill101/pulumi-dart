@@ -14,20 +14,23 @@ class GetNetworkPeeringArgs {
   /// Creates a new [GetNetworkPeeringArgs].
   /// [name] Name of the resource.
   /// [project] Optional.
-  GetNetworkPeeringArgs({required this.name, this.project});
+  GetNetworkPeeringArgs({
+    required this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'project': ?project};
+    return <String, dynamic>{
+      'name': name,
+      'project': ?project,
+    };
   }
 
   factory GetNetworkPeeringArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkPeeringArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

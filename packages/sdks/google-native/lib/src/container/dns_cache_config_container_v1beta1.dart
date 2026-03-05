@@ -9,19 +9,20 @@ class DnsCacheConfigContainerV1beta1 {
 
   /// Creates a new [DnsCacheConfigContainerV1beta1].
   /// [enabled] Whether NodeLocal DNSCache is enabled for this cluster.
-  DnsCacheConfigContainerV1beta1({this.enabled});
+  DnsCacheConfigContainerV1beta1({
+    this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': ?enabled};
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
   factory DnsCacheConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return DnsCacheConfigContainerV1beta1(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

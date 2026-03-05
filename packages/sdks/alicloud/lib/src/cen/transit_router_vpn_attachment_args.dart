@@ -10,37 +10,28 @@ import 'transit_router_vpn_attachment_zone.dart';
 class TransitRouterVpnAttachmentArgs {
   /// Specifies whether to allow the transit router to automatically advertise routes to the IPsec-VPN attachment. Valid values:
   final pulumi.Input<bool>? autoPublishRouteEnabled;
-
   /// The ID of the Cloud Enterprise Network (CEN) instance.
   final pulumi.Input<String>? cenId;
-
   /// The billing method.
   /// Set the value to `POSTPAY`, which is the default value and specifies the pay-as-you-go billing method.
   final pulumi.Input<String>? chargeType;
-
   /// The tag of the resource
   final pulumi.Input<Map<String, String>>? tags;
-
   /// The new description of the VPN attachment.
   /// The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
   final pulumi.Input<String>? transitRouterAttachmentDescription;
-
   /// The name of the VPN attachment.
   /// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
   final pulumi.Input<String>? transitRouterAttachmentName;
-
   /// The ID of the transit router.
   final pulumi.Input<String>? transitRouterId;
-
   /// The ID of the IPsec-VPN attachment.
   final pulumi.Input<String> vpnId;
-
   /// The ID of the Alibaba Cloud account to which the IPsec-VPN connection belongs.
   ///
   /// - If you do not set this parameter, the ID of the current Alibaba Cloud account is used.
   /// - You must set VpnOwnerId if you want to connect the transit router to an IPsec-VPN connection that belongs to another Alibaba Cloud account.
   final pulumi.Input<String>? vpnOwnerId;
-
   /// The Zone ID in the current region.
   /// System will create resources under the Zone that you specify.
   /// Left blank if associated IPSec connection is in dual-tunnel mode. See `zone` below.
@@ -81,78 +72,23 @@ class TransitRouterVpnAttachmentArgs {
       'transitRouterId': ?transitRouterId,
       'vpnId': vpnId,
       'vpnOwnerId': ?vpnOwnerId,
-      'zones':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<TransitRouterVpnAttachmentZone>,
-            List<Map<String, dynamic>>
-          >(
-            zones,
-            (value) =>
-                pulumi.Input.encodeList<
-                  TransitRouterVpnAttachmentZone,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'zones': ?pulumi.Input.mapOptionalInputValue<List<TransitRouterVpnAttachmentZone>, List<Map<String, dynamic>>>(zones, (value) => pulumi.Input.encodeList<TransitRouterVpnAttachmentZone, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory TransitRouterVpnAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return TransitRouterVpnAttachmentArgs(
-      autoPublishRouteEnabled: (() {
-        final guardedValue = map['autoPublishRouteEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      cenId: (() {
-        final guardedValue = map['cenId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      chargeType: (() {
-        final guardedValue = map['chargeType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      transitRouterAttachmentDescription: (() {
-        final guardedValue = map['transitRouterAttachmentDescription'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      transitRouterAttachmentName: (() {
-        final guardedValue = map['transitRouterAttachmentName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      transitRouterId: (() {
-        final guardedValue = map['transitRouterId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      autoPublishRouteEnabled: (() { final guardedValue = map['autoPublishRouteEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      cenId: (() { final guardedValue = map['cenId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      chargeType: (() { final guardedValue = map['chargeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      transitRouterAttachmentDescription: (() { final guardedValue = map['transitRouterAttachmentDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      transitRouterAttachmentName: (() { final guardedValue = map['transitRouterAttachmentName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      transitRouterId: (() { final guardedValue = map['transitRouterId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vpnId: pulumi.Input.fromValue(map['vpnId'] as String),
-      vpnOwnerId: (() {
-        final guardedValue = map['vpnOwnerId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      zones: (() {
-        final guardedValue = map['zones'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<TransitRouterVpnAttachmentZone>(
-            guardedValue,
-            (value) => TransitRouterVpnAttachmentZone.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      vpnOwnerId: (() { final guardedValue = map['vpnOwnerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      zones: (() { final guardedValue = map['zones']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TransitRouterVpnAttachmentZone>(guardedValue, (value) => TransitRouterVpnAttachmentZone.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEnvironmentConfigWorkloadsConfigTriggerer {
   /// The number of triggerers.
   final pulumi.Input<int> count;
-
   /// CPU request and limit for a single Airflow triggerer replica.
   final pulumi.Input<double> cpu;
-
   /// Memory (GB) request and limit for a single Airflow triggerer replica.
   final pulumi.Input<double> memoryGb;
 
@@ -23,12 +21,14 @@ class GetEnvironmentConfigWorkloadsConfigTriggerer {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'count': count, 'cpu': cpu, 'memoryGb': memoryGb};
+    return <String, dynamic>{
+      'count': count,
+      'cpu': cpu,
+      'memoryGb': memoryGb,
+    };
   }
 
-  factory GetEnvironmentConfigWorkloadsConfigTriggerer.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetEnvironmentConfigWorkloadsConfigTriggerer.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentConfigWorkloadsConfigTriggerer(
       count: pulumi.Input.fromValue(map['count'] as int),
       cpu: pulumi.Input.fromValue(map['cpu'] as double),
@@ -36,3 +36,4 @@ class GetEnvironmentConfigWorkloadsConfigTriggerer {
     );
   }
 }
+

@@ -110,19 +110,14 @@ import 'service_linked_role_state.dart';
 class ServiceLinkedRole extends pulumi.CustomResource {
   /// The Alibaba Cloud Resource Name (ARN) of the role.
   late final pulumi.Output<String> arn;
-
   /// The suffix of the role name. Only a few service linked roles support custom suffixes. The role name (including its suffix) must be 1 to 64 characters in length and can contain letters, digits, periods (.), and hyphens (-). For example, if the suffix is Example, the role name is ServiceLinkedRoleName_Example.
   late final pulumi.Output<String?> customSuffix;
-
   /// The description of the service linked role.  This parameter must be specified for only the service linked roles that support custom suffixes. Otherwise, the preset value is used and cannot be modified. The description must be 1 to 1,024 characters in length.
   late final pulumi.Output<String?> description;
-
   /// The ID of the role.
   late final pulumi.Output<String> roleId;
-
   /// The name of the role.
   late final pulumi.Output<String> roleName;
-
   /// The service name. For more information about the service name, see [Cloud services that support service linked roles](https://www.alibabacloud.com/help/en/doc-detail/160674.htm)
   late final pulumi.Output<String> serviceName;
 
@@ -135,11 +130,11 @@ class ServiceLinkedRole extends pulumi.CustomResource {
     ServiceLinkedRoleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:resourcemanager/serviceLinkedRole:ServiceLinkedRole',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:resourcemanager/serviceLinkedRole:ServiceLinkedRole',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     customSuffix = registerOutput<String?>('customSuffix');
     description = registerOutput<String?>('description');
@@ -166,11 +161,11 @@ class ServiceLinkedRole extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:resourcemanager/serviceLinkedRole:ServiceLinkedRole',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:resourcemanager/serviceLinkedRole:ServiceLinkedRole',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     customSuffix = registerOutput<String?>('customSuffix');
     description = registerOutput<String?>('description');

@@ -171,28 +171,20 @@ import 'node_group_attachment_state.dart';
 class NodeGroupAttachment extends pulumi.CustomResource {
   /// Cluster ID
   late final pulumi.Output<String> clusterId;
-
   /// The data disk of the cloud disk to be attached to the node. See `data_disk` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> dataDisks;
-
   /// Node hostname
   late final pulumi.Output<String> hostname;
-
   /// Node login password
   late final pulumi.Output<String?> loginPassword;
-
   /// Node group ID
   late final pulumi.Output<String> nodeGroupId;
-
   /// Node ID
   late final pulumi.Output<String> nodeId;
-
   /// User-defined data
   late final pulumi.Output<String?> userData;
-
   /// Vpc id
   late final pulumi.Output<String> vpcId;
-
   /// vswitch id
   late final pulumi.Output<String> vswitchId;
 
@@ -205,11 +197,11 @@ class NodeGroupAttachment extends pulumi.CustomResource {
     NodeGroupAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:eflo/nodeGroupAttachment:NodeGroupAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:eflo/nodeGroupAttachment:NodeGroupAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterId = registerOutput<String>('clusterId');
     dataDisks = registerOutput<List<Map<String, dynamic>>?>('dataDisks');
     hostname = registerOutput<String>('hostname');
@@ -239,11 +231,11 @@ class NodeGroupAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:eflo/nodeGroupAttachment:NodeGroupAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:eflo/nodeGroupAttachment:NodeGroupAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterId = registerOutput<String>('clusterId');
     dataDisks = registerOutput<List<Map<String, dynamic>>?>('dataDisks');
     hostname = registerOutput<String>('hostname');

@@ -7,11 +7,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
   /// Message encapsulating a value that can be either absolute ("fixed") or
   /// relative ("percent") to a value.
   /// Structure is documented below.
-  final pulumi.Input<
-    V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudget
-  >
-  disruptionBudget;
-
+  final pulumi.Input<V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudget> disruptionBudget;
   /// This determines the minimum duration of time to wait after the
   /// configuration changes are applied through the current rollout. A
   /// VM continues to count towards the `disruption_budget` at least
@@ -29,25 +25,16 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'disruptionBudget':
-          pulumi.Input.mapInputValue<
-            V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudget,
-            Map<String, dynamic>
-          >(disruptionBudget, (value) => value.toMap()),
+      'disruptionBudget': pulumi.Input.mapInputValue<V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudget, Map<String, dynamic>>(disruptionBudget, (value) => value.toMap()),
       'minWaitDuration': minWaitDuration,
     };
   }
 
-  factory V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRollout.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRollout.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRollout(
-      disruptionBudget: pulumi.Input.fromValue(
-        V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudget.fromMap(
-          (map['disruptionBudget']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      disruptionBudget: pulumi.Input.fromValue(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudget.fromMap((map['disruptionBudget']! as Map).cast<String, dynamic>())),
       minWaitDuration: pulumi.Input.fromValue(map['minWaitDuration'] as String),
     );
   }
 }
+

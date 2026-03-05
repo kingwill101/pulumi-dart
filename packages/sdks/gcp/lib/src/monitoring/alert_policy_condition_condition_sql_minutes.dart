@@ -9,17 +9,20 @@ class AlertPolicyConditionConditionSqlMinutes {
 
   /// Creates a new [AlertPolicyConditionConditionSqlMinutes].
   /// [periodicity] Number of minutes between runs. The interval must be greater than or
-  AlertPolicyConditionConditionSqlMinutes({required this.periodicity});
+  AlertPolicyConditionConditionSqlMinutes({
+    required this.periodicity,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'periodicity': periodicity};
+    return <String, dynamic>{
+      'periodicity': periodicity,
+    };
   }
 
-  factory AlertPolicyConditionConditionSqlMinutes.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AlertPolicyConditionConditionSqlMinutes.fromMap(Map<String, dynamic> map) {
     return AlertPolicyConditionConditionSqlMinutes(
       periodicity: pulumi.Input.fromValue(map['periodicity'] as int),
     );
   }
 }
+

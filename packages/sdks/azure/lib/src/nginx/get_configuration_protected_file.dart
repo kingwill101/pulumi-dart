@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConfigurationProtectedFile {
   /// The base-64 encoded contents of this configuration file.
   final pulumi.Input<String> content;
-
   /// The hash of the contents of this configuration file prefixed by the algorithm used.
   final pulumi.Input<String> contentHash;
-
   /// The path of this configuration file.
   final pulumi.Input<String> virtualPath;
 
@@ -38,3 +36,4 @@ class GetConfigurationProtectedFile {
     );
   }
 }
+

@@ -238,25 +238,18 @@ import 'open_id_connect_provider_state.dart';
 class OpenIdConnectProvider extends pulumi.CustomResource {
   /// The name of the API Management Service in which this OpenID Connect Provider should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> apiManagementName;
-
   /// The Client ID used for the Client Application.
   late final pulumi.Output<String> clientId;
-
   /// The Client Secret used for the Client Application.
   late final pulumi.Output<String> clientSecret;
-
   /// A description of this OpenID Connect Provider.
   late final pulumi.Output<String?> description;
-
   /// A user-friendly name for this OpenID Connect Provider.
   late final pulumi.Output<String> displayName;
-
   /// The URI of the Metadata endpoint.
   late final pulumi.Output<String> metadataEndpoint;
-
   /// the Name of the OpenID Connect Provider which should be created within the API Management Service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the Resource Group where the API Management Service exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
 
@@ -269,11 +262,11 @@ class OpenIdConnectProvider extends pulumi.CustomResource {
     OpenIdConnectProviderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/openIdConnectProvider:OpenIdConnectProvider',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:apimanagement/openIdConnectProvider:OpenIdConnectProvider',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     clientId = registerOutput<String>('clientId');
     clientSecret = registerOutput<String>('clientSecret');
@@ -302,11 +295,11 @@ class OpenIdConnectProvider extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/openIdConnectProvider:OpenIdConnectProvider',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:apimanagement/openIdConnectProvider:OpenIdConnectProvider',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     clientId = registerOutput<String>('clientId');
     clientSecret = registerOutput<String>('clientSecret');

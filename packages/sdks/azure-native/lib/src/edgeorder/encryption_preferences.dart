@@ -9,19 +9,20 @@ class EncryptionPreferences {
 
   /// Creates a new [EncryptionPreferences].
   /// [doubleEncryptionStatus] Double encryption status as entered by the customer. It is compulsory to give this parameter if the 'Deny' or 'Disabled' policy is configured.
-  EncryptionPreferences({this.doubleEncryptionStatus});
+  EncryptionPreferences({
+    this.doubleEncryptionStatus,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'doubleEncryptionStatus': ?doubleEncryptionStatus};
+    return <String, dynamic>{
+      'doubleEncryptionStatus': ?doubleEncryptionStatus,
+    };
   }
 
   factory EncryptionPreferences.fromMap(Map<String, dynamic> map) {
     return EncryptionPreferences(
-      doubleEncryptionStatus: (() {
-        final guardedValue = map['doubleEncryptionStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      doubleEncryptionStatus: (() { final guardedValue = map['doubleEncryptionStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

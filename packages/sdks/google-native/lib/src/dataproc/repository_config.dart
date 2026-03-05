@@ -10,29 +10,20 @@ class RepositoryConfig {
 
   /// Creates a new [RepositoryConfig].
   /// [pypiRepositoryConfig] Optional. Configuration for PyPi repository.
-  RepositoryConfig({this.pypiRepositoryConfig});
+  RepositoryConfig({
+    this.pypiRepositoryConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'pypiRepositoryConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            PyPiRepositoryConfig,
-            Map<String, dynamic>
-          >(pypiRepositoryConfig, (value) => value.toMap()),
+      'pypiRepositoryConfig': ?pulumi.Input.mapOptionalInputValue<PyPiRepositoryConfig, Map<String, dynamic>>(pypiRepositoryConfig, (value) => value.toMap()),
     };
   }
 
   factory RepositoryConfig.fromMap(Map<String, dynamic> map) {
     return RepositoryConfig(
-      pypiRepositoryConfig: (() {
-        final guardedValue = map['pypiRepositoryConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PyPiRepositoryConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      pypiRepositoryConfig: (() { final guardedValue = map['pypiRepositoryConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PyPiRepositoryConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

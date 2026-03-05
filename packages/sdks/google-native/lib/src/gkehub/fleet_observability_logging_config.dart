@@ -7,7 +7,6 @@ import 'fleet_observability_routing_config.dart';
 class FleetObservabilityLoggingConfig {
   /// Specified if applying the default routing config to logs not specified in other configs.
   final pulumi.Input<FleetObservabilityRoutingConfig>? defaultConfig;
-
   /// Specified if applying the routing config to all logs for all fleet scopes.
   final pulumi.Input<FleetObservabilityRoutingConfig>? fleetScopeLogsConfig;
 
@@ -21,39 +20,16 @@ class FleetObservabilityLoggingConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'defaultConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            FleetObservabilityRoutingConfig,
-            Map<String, dynamic>
-          >(defaultConfig, (value) => value.toMap()),
-      'fleetScopeLogsConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            FleetObservabilityRoutingConfig,
-            Map<String, dynamic>
-          >(fleetScopeLogsConfig, (value) => value.toMap()),
+      'defaultConfig': ?pulumi.Input.mapOptionalInputValue<FleetObservabilityRoutingConfig, Map<String, dynamic>>(defaultConfig, (value) => value.toMap()),
+      'fleetScopeLogsConfig': ?pulumi.Input.mapOptionalInputValue<FleetObservabilityRoutingConfig, Map<String, dynamic>>(fleetScopeLogsConfig, (value) => value.toMap()),
     };
   }
 
   factory FleetObservabilityLoggingConfig.fromMap(Map<String, dynamic> map) {
     return FleetObservabilityLoggingConfig(
-      defaultConfig: (() {
-        final guardedValue = map['defaultConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FleetObservabilityRoutingConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      fleetScopeLogsConfig: (() {
-        final guardedValue = map['fleetScopeLogsConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FleetObservabilityRoutingConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      defaultConfig: (() { final guardedValue = map['defaultConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FleetObservabilityRoutingConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      fleetScopeLogsConfig: (() { final guardedValue = map['fleetScopeLogsConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FleetObservabilityRoutingConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

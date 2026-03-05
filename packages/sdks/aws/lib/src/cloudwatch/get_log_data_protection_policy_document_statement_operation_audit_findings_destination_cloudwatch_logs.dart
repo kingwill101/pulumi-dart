@@ -13,14 +13,15 @@ class GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestinati
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'logGroup': logGroup};
+    return <String, dynamic>{
+      'logGroup': logGroup,
+    };
   }
 
-  factory GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestinationCloudwatchLogs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestinationCloudwatchLogs.fromMap(Map<String, dynamic> map) {
     return GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestinationCloudwatchLogs(
       logGroup: pulumi.Input.fromValue(map['logGroup'] as String),
     );
   }
 }
+

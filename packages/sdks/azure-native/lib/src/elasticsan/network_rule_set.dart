@@ -10,39 +10,20 @@ class NetworkRuleSet {
 
   /// Creates a new [NetworkRuleSet].
   /// [virtualNetworkRules] The list of virtual network rules.
-  NetworkRuleSet({this.virtualNetworkRules});
+  NetworkRuleSet({
+    this.virtualNetworkRules,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'virtualNetworkRules':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<VirtualNetworkRule>,
-            List<Map<String, dynamic>>
-          >(
-            virtualNetworkRules,
-            (value) =>
-                pulumi.Input.encodeList<
-                  VirtualNetworkRule,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'virtualNetworkRules': ?pulumi.Input.mapOptionalInputValue<List<VirtualNetworkRule>, List<Map<String, dynamic>>>(virtualNetworkRules, (value) => pulumi.Input.encodeList<VirtualNetworkRule, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory NetworkRuleSet.fromMap(Map<String, dynamic> map) {
     return NetworkRuleSet(
-      virtualNetworkRules: (() {
-        final guardedValue = map['virtualNetworkRules'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<VirtualNetworkRule>(
-            guardedValue,
-            (value) => VirtualNetworkRule.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      virtualNetworkRules: (() { final guardedValue = map['virtualNetworkRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VirtualNetworkRule>(guardedValue, (value) => VirtualNetworkRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

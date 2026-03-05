@@ -5,28 +5,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GuardrailContentPolicyConfigFiltersConfig {
   /// Action to take when harmful content is detected. Valid values: `BLOCK`, `NONE`.
   final pulumi.Input<String>? inputAction;
-
   /// Toggles guardrail evaluation on input.
   final pulumi.Input<bool>? inputEnabled;
-
   /// List of selected input modalities. Valid values: `IMAGE`, `TEXT`.
   final pulumi.Input<List<String>>? inputModalities;
-
   /// Strength for filters. Valid values: `NONE`, `LOW`, `MEDIUM`, `HIGH`.
   final pulumi.Input<String> inputStrength;
-
   /// Action to take when harmful content is detected. Valid values: `BLOCK`, `NONE`.
   final pulumi.Input<String>? outputAction;
-
   /// Toggles guardrail evaluation on output.
   final pulumi.Input<bool>? outputEnabled;
-
   /// List of selected output modalities. Valid values: `IMAGE`, `TEXT`.
   final pulumi.Input<List<String>>? outputModalities;
-
   /// Strength for filters. Valid values: `NONE`, `LOW`, `MEDIUM`, `HIGH`.
   final pulumi.Input<String> outputStrength;
-
   /// Type of contextual grounding filter.
   final pulumi.Input<String> type;
 
@@ -66,43 +58,18 @@ class GuardrailContentPolicyConfigFiltersConfig {
     };
   }
 
-  factory GuardrailContentPolicyConfigFiltersConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GuardrailContentPolicyConfigFiltersConfig.fromMap(Map<String, dynamic> map) {
     return GuardrailContentPolicyConfigFiltersConfig(
-      inputAction: (() {
-        final guardedValue = map['inputAction'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      inputEnabled: (() {
-        final guardedValue = map['inputEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      inputModalities: (() {
-        final guardedValue = map['inputModalities'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      inputAction: (() { final guardedValue = map['inputAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      inputEnabled: (() { final guardedValue = map['inputEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      inputModalities: (() { final guardedValue = map['inputModalities']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       inputStrength: pulumi.Input.fromValue(map['inputStrength'] as String),
-      outputAction: (() {
-        final guardedValue = map['outputAction'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      outputEnabled: (() {
-        final guardedValue = map['outputEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      outputModalities: (() {
-        final guardedValue = map['outputModalities'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      outputAction: (() { final guardedValue = map['outputAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      outputEnabled: (() { final guardedValue = map['outputEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      outputModalities: (() { final guardedValue = map['outputModalities']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       outputStrength: pulumi.Input.fromValue(map['outputStrength'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

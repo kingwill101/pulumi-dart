@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPrometheusMonitoringsPrometheusMonitoring {
   /// The ID of the Prometheus instance.
   final pulumi.Input<String> clusterId;
-
   /// The monitoring configuration. The value is a YAML string.
   final pulumi.Input<String> configYaml;
-
   /// The ID of the Prometheus Monitoring. It formats as `&lt;cluster_id&gt;:&lt;monitoring_name&gt;:&lt;type&gt;`.
   final pulumi.Input<String> id;
-
   /// The name of the monitoring configuration.
   final pulumi.Input<String> monitoringName;
-
   /// The status of the monitoring configuration. Valid values: `run`, `stop`.
   final pulumi.Input<String> status;
-
   /// The type of the monitoring configuration. Valid values: `serviceMonitor`, `podMonitor`, `customJob`, `probe`.
   final pulumi.Input<String> type;
 
@@ -48,9 +43,7 @@ class GetPrometheusMonitoringsPrometheusMonitoring {
     };
   }
 
-  factory GetPrometheusMonitoringsPrometheusMonitoring.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetPrometheusMonitoringsPrometheusMonitoring.fromMap(Map<String, dynamic> map) {
     return GetPrometheusMonitoringsPrometheusMonitoring(
       clusterId: pulumi.Input.fromValue(map['clusterId'] as String),
       configYaml: pulumi.Input.fromValue(map['configYaml'] as String),
@@ -61,3 +54,4 @@ class GetPrometheusMonitoringsPrometheusMonitoring {
     );
   }
 }
+

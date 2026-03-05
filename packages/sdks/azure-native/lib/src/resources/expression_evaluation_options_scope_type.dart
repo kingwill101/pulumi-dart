@@ -13,8 +13,7 @@ enum ExpressionEvaluationOptionsScopeType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ExpressionEvaluationOptionsScopeType value: $value',
-    );
+    throw ArgumentError('Unknown ExpressionEvaluationOptionsScopeType value: $value');
   }
 }
+

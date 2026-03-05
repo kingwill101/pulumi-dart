@@ -6,11 +6,9 @@ class BatchStateHistory {
   /// (Output)
   /// The state of the batch at this point in history. For possible values, see the [API documentation](https://cloud.google.com/dataproc-serverless/docs/reference/rest/v1/projects.locations.batches#State).
   final pulumi.Input<String>? state;
-
   /// (Output)
   /// Details about the state at this point in history.
   final pulumi.Input<String>? stateMessage;
-
   /// (Output)
   /// The time when the batch entered the historical state.
   final pulumi.Input<String>? stateStartTime;
@@ -19,7 +17,11 @@ class BatchStateHistory {
   /// [state] (Output)
   /// [stateMessage] (Output)
   /// [stateStartTime] (Output)
-  BatchStateHistory({this.state, this.stateMessage, this.stateStartTime});
+  BatchStateHistory({
+    this.state,
+    this.stateMessage,
+    this.stateStartTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,21 +33,10 @@ class BatchStateHistory {
 
   factory BatchStateHistory.fromMap(Map<String, dynamic> map) {
     return BatchStateHistory(
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      stateMessage: (() {
-        final guardedValue = map['stateMessage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      stateStartTime: (() {
-        final guardedValue = map['stateStartTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      stateMessage: (() { final guardedValue = map['stateMessage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      stateStartTime: (() { final guardedValue = map['stateStartTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

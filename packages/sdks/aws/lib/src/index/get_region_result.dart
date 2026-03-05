@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getRegion.
 class GetRegionResult {
   /// Region's description in this format: "Location (Region name)".
   final String description;
   final String endpoint;
-
   /// Region's name (e.g. `us-east-1`).
   final String id;
   final String name;
@@ -45,3 +45,4 @@ class GetRegionResult {
     );
   }
 }
+

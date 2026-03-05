@@ -5,18 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AddressPoolAddress {
   /// The address that you want to add to the address pool.
   final pulumi.Input<String> address;
-
   /// The source region of the address. expressed as a JSON string. The structure is as follows:
   /// * `LineCodes`: List of home lineCodes.
   /// * `lineCodeRectifyType`: The rectification type of the line code. Default value: `AUTO`. Valid values: `NO_NEED`: no need for rectification. `RECTIFIED`: rectified. `AUTO`: automatic rectification.
   final pulumi.Input<String> attributeInfo;
-
   /// The weight of the address. **NOTE:** The attribute is valid when the attribute `lba_strategy` is `RATIO`.
   final pulumi.Input<int>? lbaWeight;
-
   /// The type of the address. Valid values:`SMART`, `ONLINE` and `OFFLINE`.
   final pulumi.Input<String> mode;
-
   /// The description of the address.
   final pulumi.Input<String>? remark;
 
@@ -48,17 +44,10 @@ class AddressPoolAddress {
     return AddressPoolAddress(
       address: pulumi.Input.fromValue(map['address'] as String),
       attributeInfo: pulumi.Input.fromValue(map['attributeInfo'] as String),
-      lbaWeight: (() {
-        final guardedValue = map['lbaWeight'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      lbaWeight: (() { final guardedValue = map['lbaWeight']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       mode: pulumi.Input.fromValue(map['mode'] as String),
-      remark: (() {
-        final guardedValue = map['remark'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      remark: (() { final guardedValue = map['remark']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

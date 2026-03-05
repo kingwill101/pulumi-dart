@@ -8,10 +8,8 @@ import 'type_checking.dart';
 class ValidatingAdmissionPolicyStatus {
   /// The conditions represent the latest available observations of a policy's current state.
   final pulumi.Input<List<Condition>>? conditions;
-
   /// The generation observed by the controller.
   final pulumi.Input<int>? observedGeneration;
-
   /// The results of type checking for each expression. Presence of this field indicates the completion of the type checking.
   final pulumi.Input<TypeChecking>? typeChecking;
 
@@ -27,51 +25,18 @@ class ValidatingAdmissionPolicyStatus {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'conditions':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<Condition>,
-            List<Map<String, dynamic>>
-          >(
-            conditions,
-            (value) => pulumi.Input.encodeList<Condition, Map<String, dynamic>>(
-              value,
-              (value) => value.toMap(),
-            ),
-          ),
+      'conditions': ?pulumi.Input.mapOptionalInputValue<List<Condition>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<Condition, Map<String, dynamic>>(value, (value) => value.toMap())),
       'observedGeneration': ?observedGeneration,
-      'typeChecking':
-          ?pulumi.Input.mapOptionalInputValue<
-            TypeChecking,
-            Map<String, dynamic>
-          >(typeChecking, (value) => value.toMap()),
+      'typeChecking': ?pulumi.Input.mapOptionalInputValue<TypeChecking, Map<String, dynamic>>(typeChecking, (value) => value.toMap()),
     };
   }
 
   factory ValidatingAdmissionPolicyStatus.fromMap(Map<String, dynamic> map) {
     return ValidatingAdmissionPolicyStatus(
-      conditions: (() {
-        final guardedValue = map['conditions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<Condition>(
-            guardedValue,
-            (value) =>
-                Condition.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      observedGeneration: (() {
-        final guardedValue = map['observedGeneration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      typeChecking: (() {
-        final guardedValue = map['typeChecking'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          TypeChecking.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
+      conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Condition>(guardedValue, (value) => Condition.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      observedGeneration: (() { final guardedValue = map['observedGeneration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      typeChecking: (() { final guardedValue = map['typeChecking']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TypeChecking.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

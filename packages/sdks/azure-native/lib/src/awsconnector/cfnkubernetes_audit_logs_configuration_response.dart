@@ -9,21 +9,20 @@ class CFNKubernetesAuditLogsConfigurationResponse {
 
   /// Creates a new [CFNKubernetesAuditLogsConfigurationResponse].
   /// [enable] Property enable
-  CFNKubernetesAuditLogsConfigurationResponse({this.enable});
+  CFNKubernetesAuditLogsConfigurationResponse({
+    this.enable,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enable': ?enable};
+    return <String, dynamic>{
+      'enable': ?enable,
+    };
   }
 
-  factory CFNKubernetesAuditLogsConfigurationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CFNKubernetesAuditLogsConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return CFNKubernetesAuditLogsConfigurationResponse(
-      enable: (() {
-        final guardedValue = map['enable'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enable: (() { final guardedValue = map['enable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

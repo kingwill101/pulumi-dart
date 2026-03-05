@@ -184,49 +184,34 @@ class ChannelsRegistration extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** It has to turn off the CMK feature before revoking Key Vault Access Policy. For more information, please refer to [Revoke access to customer-managed keys](https://docs.microsoft.com/azure/bot-service/bot-service-encryption?view=azure-bot-service-4.0&WT.mc_id=Portal-Microsoft_Azure_BotService#revoke-access-to-customer-managed-keys).
   late final pulumi.Output<String?> cmkKeyVaultUrl;
-
   /// The description of the Bot Channels Registration.
   late final pulumi.Output<String?> description;
-
   /// The Application Insights API Key to associate with the Bot Channels Registration.
   late final pulumi.Output<String?> developerAppInsightsApiKey;
-
   /// The Application Insights Application ID to associate with the Bot Channels Registration.
   late final pulumi.Output<String?> developerAppInsightsApplicationId;
-
   /// The Application Insights Key to associate with the Bot Channels Registration.
   late final pulumi.Output<String?> developerAppInsightsKey;
-
   /// The name of the Bot Channels Registration will be displayed as. This defaults to `name` if not specified.
   late final pulumi.Output<String> displayName;
-
   /// The Bot Channels Registration endpoint.
   late final pulumi.Output<String?> endpoint;
-
   /// The icon URL to visually identify the Bot Channels Registration. Defaults to `https://docs.botframework.com/static/devportal/client/images/bot-framework-default.png`.
   late final pulumi.Output<String?> iconUrl;
-
   /// The supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The Microsoft Application ID for the Bot Channels Registration. Changing this forces a new resource to be created.
   late final pulumi.Output<String> microsoftAppId;
-
   /// Specifies the name of the Bot Channels Registration. Changing this forces a new resource to be created. Must be globally unique.
   late final pulumi.Output<String> name;
-
   /// Is the Bot Channels Registration in an isolated network?
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
-
   /// The name of the resource group in which to create the Bot Channels Registration. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The SKU of the Bot Channels Registration. Valid values include `F0` or `S1`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> sku;
-
   /// Is the streaming endpoint enabled for the Bot Channels Registration. Defaults to `false`.
   late final pulumi.Output<bool?> streamingEndpointEnabled;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -239,36 +224,26 @@ class ChannelsRegistration extends pulumi.CustomResource {
     ChannelsRegistrationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:bot/channelsRegistration:ChannelsRegistration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:bot/channelsRegistration:ChannelsRegistration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cmkKeyVaultUrl = registerOutput<String?>('cmkKeyVaultUrl');
     description = registerOutput<String?>('description');
-    developerAppInsightsApiKey = registerOutput<String?>(
-      'developerAppInsightsApiKey',
-    );
-    developerAppInsightsApplicationId = registerOutput<String?>(
-      'developerAppInsightsApplicationId',
-    );
-    developerAppInsightsKey = registerOutput<String?>(
-      'developerAppInsightsKey',
-    );
+    developerAppInsightsApiKey = registerOutput<String?>('developerAppInsightsApiKey');
+    developerAppInsightsApplicationId = registerOutput<String?>('developerAppInsightsApplicationId');
+    developerAppInsightsKey = registerOutput<String?>('developerAppInsightsKey');
     displayName = registerOutput<String>('displayName');
     endpoint = registerOutput<String?>('endpoint');
     iconUrl = registerOutput<String?>('iconUrl');
     location = registerOutput<String>('location');
     microsoftAppId = registerOutput<String>('microsoftAppId');
     this.name = registerOutput<String>('name');
-    publicNetworkAccessEnabled = registerOutput<bool?>(
-      'publicNetworkAccessEnabled',
-    );
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sku = registerOutput<String>('sku');
-    streamingEndpointEnabled = registerOutput<bool?>(
-      'streamingEndpointEnabled',
-    );
+    streamingEndpointEnabled = registerOutput<bool?>('streamingEndpointEnabled');
     tags = registerOutput<Map<String, String>?>('tags');
   }
 
@@ -290,36 +265,26 @@ class ChannelsRegistration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:bot/channelsRegistration:ChannelsRegistration',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:bot/channelsRegistration:ChannelsRegistration',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cmkKeyVaultUrl = registerOutput<String?>('cmkKeyVaultUrl');
     description = registerOutput<String?>('description');
-    developerAppInsightsApiKey = registerOutput<String?>(
-      'developerAppInsightsApiKey',
-    );
-    developerAppInsightsApplicationId = registerOutput<String?>(
-      'developerAppInsightsApplicationId',
-    );
-    developerAppInsightsKey = registerOutput<String?>(
-      'developerAppInsightsKey',
-    );
+    developerAppInsightsApiKey = registerOutput<String?>('developerAppInsightsApiKey');
+    developerAppInsightsApplicationId = registerOutput<String?>('developerAppInsightsApplicationId');
+    developerAppInsightsKey = registerOutput<String?>('developerAppInsightsKey');
     displayName = registerOutput<String>('displayName');
     endpoint = registerOutput<String?>('endpoint');
     iconUrl = registerOutput<String?>('iconUrl');
     location = registerOutput<String>('location');
     microsoftAppId = registerOutput<String>('microsoftAppId');
     this.name = registerOutput<String>('name');
-    publicNetworkAccessEnabled = registerOutput<bool?>(
-      'publicNetworkAccessEnabled',
-    );
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sku = registerOutput<String>('sku');
-    streamingEndpointEnabled = registerOutput<bool?>(
-      'streamingEndpointEnabled',
-    );
+    streamingEndpointEnabled = registerOutput<bool?>('streamingEndpointEnabled');
     tags = registerOutput<Map<String, String>?>('tags');
   }
 }

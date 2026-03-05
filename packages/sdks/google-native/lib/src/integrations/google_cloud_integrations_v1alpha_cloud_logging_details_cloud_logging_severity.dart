@@ -6,22 +6,16 @@ enum GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity {
   error("ERROR"),
   warning("WARNING");
 
-  const GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity(
-    this.wireValue,
-  );
+  const GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity(this.wireValue);
   final String wireValue;
 
-  static GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity
-  fromValue(String value) {
-    for (final item
-        in GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity
-            .values) {
+  static GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity fromValue(String value) {
+    for (final item in GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity value: $value',
-    );
+    throw ArgumentError('Unknown GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity value: $value');
   }
 }
+

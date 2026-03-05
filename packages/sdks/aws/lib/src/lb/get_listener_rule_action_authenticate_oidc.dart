@@ -6,31 +6,22 @@ class GetListenerRuleActionAuthenticateOidc {
   /// Set of additional parameters for the request.
   /// Detailed below.
   final pulumi.Input<Map<String, String>> authenticationRequestExtraParams;
-
   /// The authorization endpoint of the IdP.
   final pulumi.Input<String> authorizationEndpoint;
-
   /// OAuth 2.0 client identifier.
   final pulumi.Input<String> clientId;
-
   /// Issuer of the JWT.
   final pulumi.Input<String> issuer;
-
   /// Behavior when the client is not authenticated.
   final pulumi.Input<String> onUnauthenticatedRequest;
-
   /// Set of user claims requested.
   final pulumi.Input<String> scope;
-
   /// Name of the cookie used to maintain session information.
   final pulumi.Input<String> sessionCookieName;
-
   /// Maximum duration of the authentication session in seconds.
   final pulumi.Input<int> sessionTimeout;
-
   /// The token endpoint of the IdP.
   final pulumi.Input<String> tokenEndpoint;
-
   /// The user info endpoint of the IdP.
   final pulumi.Input<String> userInfoEndpoint;
 
@@ -73,30 +64,19 @@ class GetListenerRuleActionAuthenticateOidc {
     };
   }
 
-  factory GetListenerRuleActionAuthenticateOidc.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetListenerRuleActionAuthenticateOidc.fromMap(Map<String, dynamic> map) {
     return GetListenerRuleActionAuthenticateOidc(
-      authenticationRequestExtraParams: pulumi.Input.fromValue(
-        (map['authenticationRequestExtraParams'] as Map).cast<String, String>(),
-      ),
-      authorizationEndpoint: pulumi.Input.fromValue(
-        map['authorizationEndpoint'] as String,
-      ),
+      authenticationRequestExtraParams: pulumi.Input.fromValue((map['authenticationRequestExtraParams'] as Map).cast<String, String>()),
+      authorizationEndpoint: pulumi.Input.fromValue(map['authorizationEndpoint'] as String),
       clientId: pulumi.Input.fromValue(map['clientId'] as String),
       issuer: pulumi.Input.fromValue(map['issuer'] as String),
-      onUnauthenticatedRequest: pulumi.Input.fromValue(
-        map['onUnauthenticatedRequest'] as String,
-      ),
+      onUnauthenticatedRequest: pulumi.Input.fromValue(map['onUnauthenticatedRequest'] as String),
       scope: pulumi.Input.fromValue(map['scope'] as String),
-      sessionCookieName: pulumi.Input.fromValue(
-        map['sessionCookieName'] as String,
-      ),
+      sessionCookieName: pulumi.Input.fromValue(map['sessionCookieName'] as String),
       sessionTimeout: pulumi.Input.fromValue(map['sessionTimeout'] as int),
       tokenEndpoint: pulumi.Input.fromValue(map['tokenEndpoint'] as String),
-      userInfoEndpoint: pulumi.Input.fromValue(
-        map['userInfoEndpoint'] as String,
-      ),
+      userInfoEndpoint: pulumi.Input.fromValue(map['userInfoEndpoint'] as String),
     );
   }
 }
+

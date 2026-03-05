@@ -5,49 +5,34 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNasFileSystemsSystem {
   /// The capacity of nas file system.
   final pulumi.Input<String> capacity;
-
   /// The create time of nas file system.
   final pulumi.Input<String> createTime;
-
   /// The description of nas file system.
   final pulumi.Input<String> description;
-
   /// The filesystem id of nas file system.
   final pulumi.Input<String> fileSystemId;
-
   /// The type of nas file system.
   final pulumi.Input<String> fileSystemType;
-
   /// The ID of the Nas File System.
   final pulumi.Input<String> id;
-
   /// The size of metered.
   final pulumi.Input<String> meteredSize;
-
   /// The domain of mount target.
   final pulumi.Input<String> mountTargetDomain;
-
   /// The status of mount target. Valid values: `Pending`, `Active`, `Inactive`,`Deleting`,`Invalid`.
   final pulumi.Input<String> mountTargetStatus;
-
   /// The name of nas file system.
   final pulumi.Input<String> nasFileSystemName;
-
   /// The ID of office site.
   final pulumi.Input<String> officeSiteId;
-
   /// The name of office site.
   final pulumi.Input<String> officeSiteName;
-
   /// The status of nas file system. Valid values: `Pending`, `Running`, `Stopped`,`Deleting`, `Deleted`, `Invalid`.
   final pulumi.Input<String> status;
-
   /// The storage type of nas file system.
   final pulumi.Input<String> storageType;
-
   /// Whether to support Acl.
   final pulumi.Input<bool> supportAcl;
-
   /// The zone id of nas file system.
   final pulumi.Input<String> zoneId;
 
@@ -117,15 +102,9 @@ class GetNasFileSystemsSystem {
       fileSystemType: pulumi.Input.fromValue(map['fileSystemType'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
       meteredSize: pulumi.Input.fromValue(map['meteredSize'] as String),
-      mountTargetDomain: pulumi.Input.fromValue(
-        map['mountTargetDomain'] as String,
-      ),
-      mountTargetStatus: pulumi.Input.fromValue(
-        map['mountTargetStatus'] as String,
-      ),
-      nasFileSystemName: pulumi.Input.fromValue(
-        map['nasFileSystemName'] as String,
-      ),
+      mountTargetDomain: pulumi.Input.fromValue(map['mountTargetDomain'] as String),
+      mountTargetStatus: pulumi.Input.fromValue(map['mountTargetStatus'] as String),
+      nasFileSystemName: pulumi.Input.fromValue(map['nasFileSystemName'] as String),
       officeSiteId: pulumi.Input.fromValue(map['officeSiteId'] as String),
       officeSiteName: pulumi.Input.fromValue(map['officeSiteName'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
@@ -135,3 +114,4 @@ class GetNasFileSystemsSystem {
     );
   }
 }
+

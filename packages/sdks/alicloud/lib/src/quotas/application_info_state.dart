@@ -71,18 +71,7 @@ class ApplicationInfoState {
       'auditReason': ?auditReason,
       'createTime': ?createTime,
       'desireValue': ?desireValue,
-      'dimensions':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ApplicationInfoDimension>,
-            List<Map<String, dynamic>>
-          >(
-            dimensions,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ApplicationInfoDimension,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'dimensions': ?pulumi.Input.mapOptionalInputValue<List<ApplicationInfoDimension>, List<Map<String, dynamic>>>(dimensions, (value) => pulumi.Input.encodeList<ApplicationInfoDimension, Map<String, dynamic>>(value, (value) => value.toMap())),
       'effectiveTime': ?effectiveTime,
       'envLanguage': ?envLanguage,
       'expireTime': ?expireTime,
@@ -100,103 +89,25 @@ class ApplicationInfoState {
 
   factory ApplicationInfoState.fromMap(Map<String, dynamic> map) {
     return ApplicationInfoState(
-      approveValue: (() {
-        final guardedValue = map['approveValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      auditMode: (() {
-        final guardedValue = map['auditMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      auditReason: (() {
-        final guardedValue = map['auditReason'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      desireValue: (() {
-        final guardedValue = map['desireValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      dimensions: (() {
-        final guardedValue = map['dimensions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ApplicationInfoDimension>(
-            guardedValue,
-            (value) => ApplicationInfoDimension.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      effectiveTime: (() {
-        final guardedValue = map['effectiveTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      envLanguage: (() {
-        final guardedValue = map['envLanguage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      expireTime: (() {
-        final guardedValue = map['expireTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      noticeType: (() {
-        final guardedValue = map['noticeType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      productCode: (() {
-        final guardedValue = map['productCode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      quotaActionCode: (() {
-        final guardedValue = map['quotaActionCode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      quotaCategory: (() {
-        final guardedValue = map['quotaCategory'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      quotaDescription: (() {
-        final guardedValue = map['quotaDescription'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      quotaName: (() {
-        final guardedValue = map['quotaName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      quotaUnit: (() {
-        final guardedValue = map['quotaUnit'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      reason: (() {
-        final guardedValue = map['reason'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      approveValue: (() { final guardedValue = map['approveValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      auditMode: (() { final guardedValue = map['auditMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      auditReason: (() { final guardedValue = map['auditReason']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      desireValue: (() { final guardedValue = map['desireValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      dimensions: (() { final guardedValue = map['dimensions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ApplicationInfoDimension>(guardedValue, (value) => ApplicationInfoDimension.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      effectiveTime: (() { final guardedValue = map['effectiveTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      envLanguage: (() { final guardedValue = map['envLanguage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      expireTime: (() { final guardedValue = map['expireTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      noticeType: (() { final guardedValue = map['noticeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      productCode: (() { final guardedValue = map['productCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      quotaActionCode: (() { final guardedValue = map['quotaActionCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      quotaCategory: (() { final guardedValue = map['quotaCategory']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      quotaDescription: (() { final guardedValue = map['quotaDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      quotaName: (() { final guardedValue = map['quotaName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      quotaUnit: (() { final guardedValue = map['quotaUnit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      reason: (() { final guardedValue = map['reason']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

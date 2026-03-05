@@ -10,21 +10,20 @@ class WorkloadIdentityPoolNamespaceOwnerService {
 
   /// Creates a new [WorkloadIdentityPoolNamespaceOwnerService].
   /// [principalSubject] (Output)
-  WorkloadIdentityPoolNamespaceOwnerService({this.principalSubject});
+  WorkloadIdentityPoolNamespaceOwnerService({
+    this.principalSubject,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'principalSubject': ?principalSubject};
+    return <String, dynamic>{
+      'principalSubject': ?principalSubject,
+    };
   }
 
-  factory WorkloadIdentityPoolNamespaceOwnerService.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WorkloadIdentityPoolNamespaceOwnerService.fromMap(Map<String, dynamic> map) {
     return WorkloadIdentityPoolNamespaceOwnerService(
-      principalSubject: (() {
-        final guardedValue = map['principalSubject'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      principalSubject: (() { final guardedValue = map['principalSubject']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

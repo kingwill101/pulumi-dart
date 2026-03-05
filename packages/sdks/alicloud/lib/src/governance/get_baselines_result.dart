@@ -7,14 +7,11 @@ import 'get_baselines_baseline.dart';
 class GetBaselinesResult {
   /// A list of Baseline Entries. Each element contains the following attributes:
   final List<GetBaselinesBaseline> baselines;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of Baseline IDs.
   final List<String> ids;
   final String? nameRegex;
-
   /// A list of name of Baselines.
   final List<String> names;
   final String? outputFile;
@@ -37,11 +34,7 @@ class GetBaselinesResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'baselines':
-          pulumi.Input.encodeList<GetBaselinesBaseline, Map<String, dynamic>>(
-            baselines,
-            (value) => value.toMap(),
-          ),
+      'baselines': pulumi.Input.encodeList<GetBaselinesBaseline, Map<String, dynamic>>(baselines, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'nameRegex': ?nameRegex,
@@ -52,25 +45,13 @@ class GetBaselinesResult {
 
   factory GetBaselinesResult.fromMap(Map<String, dynamic> map) {
     return GetBaselinesResult(
-      baselines: pulumi.Input.decodeList<GetBaselinesBaseline>(
-        map['baselines']!,
-        (value) => GetBaselinesBaseline.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      baselines: pulumi.Input.decodeList<GetBaselinesBaseline>(map['baselines']!, (value) => GetBaselinesBaseline.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

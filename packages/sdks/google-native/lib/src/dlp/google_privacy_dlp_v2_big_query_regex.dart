@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GooglePrivacyDlpV2BigQueryRegex {
   /// If unset, this property matches all datasets.
   final pulumi.Input<String>? datasetIdRegex;
-
   /// For organizations, if unset, will match all projects. Has no effect for data profile configurations created within a project.
   final pulumi.Input<String>? projectIdRegex;
-
   /// If unset, this property matches all tables.
   final pulumi.Input<String>? tableIdRegex;
 
@@ -33,21 +31,10 @@ class GooglePrivacyDlpV2BigQueryRegex {
 
   factory GooglePrivacyDlpV2BigQueryRegex.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2BigQueryRegex(
-      datasetIdRegex: (() {
-        final guardedValue = map['datasetIdRegex'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      projectIdRegex: (() {
-        final guardedValue = map['projectIdRegex'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tableIdRegex: (() {
-        final guardedValue = map['tableIdRegex'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      datasetIdRegex: (() { final guardedValue = map['datasetIdRegex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      projectIdRegex: (() { final guardedValue = map['projectIdRegex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tableIdRegex: (() { final guardedValue = map['tableIdRegex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

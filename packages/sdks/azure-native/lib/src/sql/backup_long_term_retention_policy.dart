@@ -162,22 +162,16 @@ import 'backup_long_term_retention_policy_args.dart';
 class BackupLongTermRetentionPolicy extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The monthly retention policy for an LTR backup in an ISO 8601 format.
   late final pulumi.Output<String?> monthlyRetention;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// Resource type.
   late final pulumi.Output<String> type;
-
   /// The week of year to take the yearly backup in an ISO 8601 format.
   late final pulumi.Output<int?> weekOfYear;
-
   /// The weekly retention policy for an LTR backup in an ISO 8601 format.
   late final pulumi.Output<String?> weeklyRetention;
-
   /// The yearly retention policy for an LTR backup in an ISO 8601 format.
   late final pulumi.Output<String?> yearlyRetention;
 
@@ -190,11 +184,11 @@ class BackupLongTermRetentionPolicy extends pulumi.CustomResource {
     BackupLongTermRetentionPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:sql:BackupLongTermRetentionPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:sql:BackupLongTermRetentionPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     monthlyRetention = registerOutput<String?>('monthlyRetention');
     this.name = registerOutput<String>('name');

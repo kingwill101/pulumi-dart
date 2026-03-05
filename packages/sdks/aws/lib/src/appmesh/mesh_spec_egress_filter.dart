@@ -8,19 +8,20 @@ class MeshSpecEgressFilter {
 
   /// Creates a new [MeshSpecEgressFilter].
   /// [type] Egress filter type. By default, the type is `DROP_ALL`. Valid values are `ALLOW_ALL` and `DROP_ALL`.
-  MeshSpecEgressFilter({this.type});
+  MeshSpecEgressFilter({
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': ?type};
+    return <String, dynamic>{
+      'type': ?type,
+    };
   }
 
   factory MeshSpecEgressFilter.fromMap(Map<String, dynamic> map) {
     return MeshSpecEgressFilter(
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

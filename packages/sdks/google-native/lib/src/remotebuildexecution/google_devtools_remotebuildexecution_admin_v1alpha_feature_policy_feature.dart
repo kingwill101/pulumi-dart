@@ -7,12 +7,8 @@ import 'google_devtools_remotebuildexecution_admin_v1alpha_feature_policy_featur
 class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature {
   /// A list of acceptable values. Only effective when the policy is `RESTRICTED`.
   final pulumi.Input<List<String>>? allowedValues;
-
   /// The policy of the feature.
-  final pulumi.Input<
-    GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy
-  >?
-  policy;
+  final pulumi.Input<GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy>? policy;
 
   /// Creates a new [GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature].
   /// [allowedValues] A list of acceptable values. Only effective when the policy is `RESTRICTED`.
@@ -25,32 +21,15 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allowedValues': ?allowedValues,
-      'policy':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy,
-            String
-          >(policy, (value) => value.wireValue),
+      'policy': ?pulumi.Input.mapOptionalInputValue<GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy, String>(policy, (value) => value.wireValue),
     };
   }
 
-  factory GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature.fromMap(Map<String, dynamic> map) {
     return GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature(
-      allowedValues: (() {
-        final guardedValue = map['allowedValues'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      policy: (() {
-        final guardedValue = map['policy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy.fromValue(
-            guardedValue as String,
-          ),
-        );
-      })(),
+      allowedValues: (() { final guardedValue = map['allowedValues']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      policy: (() { final guardedValue = map['policy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

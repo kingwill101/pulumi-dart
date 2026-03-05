@@ -6,36 +6,24 @@ import 'google_devtools_artifactregistry_v1_remote_repository_config_yum_reposit
 /// Configuration for a Yum remote repository.
 class YumRepository {
   /// One of the publicly available Yum repositories supported by Artifact Registry.
-  final pulumi.Input<
-    GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository
-  >?
-  publicRepository;
+  final pulumi.Input<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository>? publicRepository;
 
   /// Creates a new [YumRepository].
   /// [publicRepository] One of the publicly available Yum repositories supported by Artifact Registry.
-  YumRepository({this.publicRepository});
+  YumRepository({
+    this.publicRepository,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'publicRepository':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository,
-            Map<String, dynamic>
-          >(publicRepository, (value) => value.toMap()),
+      'publicRepository': ?pulumi.Input.mapOptionalInputValue<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository, Map<String, dynamic>>(publicRepository, (value) => value.toMap()),
     };
   }
 
   factory YumRepository.fromMap(Map<String, dynamic> map) {
     return YumRepository(
-      publicRepository: (() {
-        final guardedValue = map['publicRepository'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      publicRepository: (() { final guardedValue = map['publicRepository']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

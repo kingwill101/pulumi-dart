@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LinuxVirtualMachineTerminationNotification {
   /// Should the termination notification be enabled on this Virtual Machine?
   final pulumi.Input<bool> enabled;
-
   /// Length of time (in minutes, between `5` and `15`) a notification to be sent to the VM on the instance metadata server till the VM gets deleted. The time duration should be specified in ISO 8601 format. Defaults to `PT5M`.
   ///
   /// &gt; **NOTE:** For more information about the termination notification, please [refer to this doc](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-terminate-notification).
@@ -20,19 +19,17 @@ class LinuxVirtualMachineTerminationNotification {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled, 'timeout': ?timeout};
+    return <String, dynamic>{
+      'enabled': enabled,
+      'timeout': ?timeout,
+    };
   }
 
-  factory LinuxVirtualMachineTerminationNotification.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LinuxVirtualMachineTerminationNotification.fromMap(Map<String, dynamic> map) {
     return LinuxVirtualMachineTerminationNotification(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
-      timeout: (() {
-        final guardedValue = map['timeout'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

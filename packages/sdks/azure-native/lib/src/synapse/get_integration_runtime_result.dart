@@ -6,19 +6,14 @@ import 'managed_integration_runtime_response.dart';
 class GetIntegrationRuntimeResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Resource Etag.
   final String etag;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// The name of the resource
   final String name;
-
   /// Integration runtime properties.
   final ManagedIntegrationRuntimeResponse properties;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -55,10 +50,9 @@ class GetIntegrationRuntimeResult {
       etag: map['etag'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      properties: ManagedIntegrationRuntimeResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
+      properties: ManagedIntegrationRuntimeResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SchedulerAcceleratorConfigResponse {
   /// Count of cores of this accelerator.
   final pulumi.Input<String> coreCount;
-
   /// Type of this accelerator.
   final pulumi.Input<String> type;
 
@@ -19,7 +18,10 @@ class SchedulerAcceleratorConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'coreCount': coreCount, 'type': type};
+    return <String, dynamic>{
+      'coreCount': coreCount,
+      'type': type,
+    };
   }
 
   factory SchedulerAcceleratorConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -29,3 +31,4 @@ class SchedulerAcceleratorConfigResponse {
     );
   }
 }
+

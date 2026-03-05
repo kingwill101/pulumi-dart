@@ -32,12 +32,9 @@ class GetTlsRouteArgs {
   factory GetTlsRouteArgs.fromMap(Map<String, dynamic> map) {
     return GetTlsRouteArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tlsRouteId: pulumi.Input.fromValue(map['tlsRouteId'] as String),
     );
   }
 }
+

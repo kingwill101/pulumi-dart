@@ -9,10 +9,14 @@ class ApplicationAttributesCriticality {
 
   /// Creates a new [ApplicationAttributesCriticality].
   /// [type] Criticality type.
-  ApplicationAttributesCriticality({required this.type});
+  ApplicationAttributesCriticality({
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': type};
+    return <String, dynamic>{
+      'type': type,
+    };
   }
 
   factory ApplicationAttributesCriticality.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class ApplicationAttributesCriticality {
     );
   }
 }
+

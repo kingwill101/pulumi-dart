@@ -7,7 +7,6 @@ import 'google_privacy_dlp_v2_value_response.dart';
 class GooglePrivacyDlpV2ValueFrequencyResponse {
   /// How many times the value is contained in the field.
   final pulumi.Input<String> count;
-
   /// A value contained in the field in question.
   final pulumi.Input<GooglePrivacyDlpV2ValueResponse> value;
 
@@ -22,24 +21,15 @@ class GooglePrivacyDlpV2ValueFrequencyResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'count': count,
-      'value':
-          pulumi.Input.mapInputValue<
-            GooglePrivacyDlpV2ValueResponse,
-            Map<String, dynamic>
-          >(value, (value) => value.toMap()),
+      'value': pulumi.Input.mapInputValue<GooglePrivacyDlpV2ValueResponse, Map<String, dynamic>>(value, (value) => value.toMap()),
     };
   }
 
-  factory GooglePrivacyDlpV2ValueFrequencyResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GooglePrivacyDlpV2ValueFrequencyResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2ValueFrequencyResponse(
       count: pulumi.Input.fromValue(map['count'] as String),
-      value: pulumi.Input.fromValue(
-        GooglePrivacyDlpV2ValueResponse.fromMap(
-          (map['value']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      value: pulumi.Input.fromValue(GooglePrivacyDlpV2ValueResponse.fromMap((map['value']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

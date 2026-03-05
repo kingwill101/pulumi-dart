@@ -42,12 +42,9 @@ class GetBuildArgs {
       buildId: pulumi.Input.fromValue(map['buildId'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       projectId: pulumi.Input.fromValue(map['projectId'] as String),
     );
   }
 }
+

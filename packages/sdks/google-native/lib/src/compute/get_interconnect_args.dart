@@ -13,20 +13,23 @@ class GetInterconnectArgs {
   /// Creates a new [GetInterconnectArgs].
   /// [interconnect] Required.
   /// [project] Optional.
-  GetInterconnectArgs({required this.interconnect, this.project});
+  GetInterconnectArgs({
+    required this.interconnect,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'interconnect': interconnect, 'project': ?project};
+    return <String, dynamic>{
+      'interconnect': interconnect,
+      'project': ?project,
+    };
   }
 
   factory GetInterconnectArgs.fromMap(Map<String, dynamic> map) {
     return GetInterconnectArgs(
       interconnect: pulumi.Input.fromValue(map['interconnect'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

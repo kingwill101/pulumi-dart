@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRemediationAtResourceGroupArgs {
   /// The name of the remediation.
   final pulumi.Input<String> remediationName;
-
   /// Resource group name.
   final pulumi.Input<String> resourceGroupName;
 
@@ -31,9 +30,8 @@ class GetRemediationAtResourceGroupArgs {
   factory GetRemediationAtResourceGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetRemediationAtResourceGroupArgs(
       remediationName: pulumi.Input.fromValue(map['remediationName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

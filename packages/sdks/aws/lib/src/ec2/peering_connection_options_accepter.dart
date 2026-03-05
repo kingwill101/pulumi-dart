@@ -8,7 +8,9 @@ class PeeringConnectionOptionsAccepter {
 
   /// Creates a new [PeeringConnectionOptionsAccepter].
   /// [allowRemoteVpcDnsResolution] Allow a local VPC to resolve public DNS hostnames to private IP addresses when queried from instances in the peer VPC.
-  PeeringConnectionOptionsAccepter({this.allowRemoteVpcDnsResolution});
+  PeeringConnectionOptionsAccepter({
+    this.allowRemoteVpcDnsResolution,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -18,11 +20,8 @@ class PeeringConnectionOptionsAccepter {
 
   factory PeeringConnectionOptionsAccepter.fromMap(Map<String, dynamic> map) {
     return PeeringConnectionOptionsAccepter(
-      allowRemoteVpcDnsResolution: (() {
-        final guardedValue = map['allowRemoteVpcDnsResolution'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      allowRemoteVpcDnsResolution: (() { final guardedValue = map['allowRemoteVpcDnsResolution']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

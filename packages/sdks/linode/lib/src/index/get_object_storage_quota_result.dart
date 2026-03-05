@@ -6,26 +6,19 @@ import 'get_object_storage_quota_quota_usage.dart';
 class GetObjectStorageQuotaResult {
   /// The description of the Object Storage quota.
   final String description;
-
   /// The type of the S3 endpoint of the Object Storage.
   final String endpointType;
-
   /// The unique ID of the Object Storage quota data source.
   final String id;
   final String quotaId;
-
   /// The maximum quantity allowed by the quota.
   final int quotaLimit;
-
   /// The name of the Object Storage quota.
   final String quotaName;
-
   /// The usage data for a specific Object Storage related quota on your account. For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-quota-usage).
   final GetObjectStorageQuotaQuotaUsage quotaUsage;
-
   /// The specific Object Storage resource for the quota.
   final String resourceMetric;
-
   /// The S3 endpoint URL of the Object Storage, based on the `endpoint_type` and `region`.
   final String s3Endpoint;
 
@@ -73,11 +66,10 @@ class GetObjectStorageQuotaResult {
       quotaId: map['quotaId'] as String,
       quotaLimit: map['quotaLimit'] as int,
       quotaName: map['quotaName'] as String,
-      quotaUsage: GetObjectStorageQuotaQuotaUsage.fromMap(
-        (map['quotaUsage']! as Map).cast<String, dynamic>(),
-      ),
+      quotaUsage: GetObjectStorageQuotaQuotaUsage.fromMap((map['quotaUsage']! as Map).cast<String, dynamic>()),
       resourceMetric: map['resourceMetric'] as String,
       s3Endpoint: map['s3Endpoint'] as String,
     );
   }
 }
+

@@ -20,3 +20,4 @@ enum AuthorizationMethod {
     throw ArgumentError('Unknown AuthorizationMethod value: $value');
   }
 }
+

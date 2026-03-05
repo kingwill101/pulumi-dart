@@ -209,20 +209,14 @@ import 'integration_account_certificate_state.dart';
 class IntegrationAccountCertificate extends pulumi.CustomResource {
   /// The name of the Logic App Integration Account. Changing this forces a new Logic App Integration Account Certificate to be created.
   late final pulumi.Output<String> integrationAccountName;
-
   /// A `key_vault_key` block as documented below.
-  late final pulumi.Output<IntegrationAccountCertificateKeyVaultKey?>
-  keyVaultKey;
-
+  late final pulumi.Output<IntegrationAccountCertificateKeyVaultKey?> keyVaultKey;
   /// A JSON mapping of any Metadata for this Logic App Integration Account Certificate.
   late final pulumi.Output<String?> metadata;
-
   /// The name which should be used for this Logic App Integration Account Certificate. Changing this forces a new Logic App Integration Account Certificate to be created.
   late final pulumi.Output<String> name;
-
   /// The public certificate for the Logic App Integration Account Certificate.
   late final pulumi.Output<String?> publicCertificate;
-
   /// The name of the Resource Group where the Logic App Integration Account Certificate should exist. Changing this forces a new Logic App Integration Account Certificate to be created.
   late final pulumi.Output<String> resourceGroupName;
 
@@ -235,22 +229,13 @@ class IntegrationAccountCertificate extends pulumi.CustomResource {
     IntegrationAccountCertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:logicapps/integrationAccountCertificate:IntegrationAccountCertificate',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:logicapps/integrationAccountCertificate:IntegrationAccountCertificate',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     integrationAccountName = registerOutput<String>('integrationAccountName');
-    keyVaultKey = registerOutput<IntegrationAccountCertificateKeyVaultKey?>(
-      'keyVaultKey',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IntegrationAccountCertificateKeyVaultKey.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    keyVaultKey = registerOutput<IntegrationAccountCertificateKeyVaultKey?>('keyVaultKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntegrationAccountCertificateKeyVaultKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     metadata = registerOutput<String?>('metadata');
     this.name = registerOutput<String>('name');
     publicCertificate = registerOutput<String?>('publicCertificate');
@@ -275,22 +260,13 @@ class IntegrationAccountCertificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:logicapps/integrationAccountCertificate:IntegrationAccountCertificate',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:logicapps/integrationAccountCertificate:IntegrationAccountCertificate',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     integrationAccountName = registerOutput<String>('integrationAccountName');
-    keyVaultKey = registerOutput<IntegrationAccountCertificateKeyVaultKey?>(
-      'keyVaultKey',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IntegrationAccountCertificateKeyVaultKey.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    keyVaultKey = registerOutput<IntegrationAccountCertificateKeyVaultKey?>('keyVaultKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntegrationAccountCertificateKeyVaultKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     metadata = registerOutput<String?>('metadata');
     this.name = registerOutput<String>('name');
     publicCertificate = registerOutput<String?>('publicCertificate');

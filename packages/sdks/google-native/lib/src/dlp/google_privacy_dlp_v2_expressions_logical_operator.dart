@@ -12,8 +12,7 @@ enum GooglePrivacyDlpV2ExpressionsLogicalOperator {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GooglePrivacyDlpV2ExpressionsLogicalOperator value: $value',
-    );
+    throw ArgumentError('Unknown GooglePrivacyDlpV2ExpressionsLogicalOperator value: $value');
   }
 }
+

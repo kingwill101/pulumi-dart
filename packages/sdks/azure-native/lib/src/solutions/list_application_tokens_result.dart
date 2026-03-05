@@ -10,33 +10,20 @@ class ListApplicationTokensResult {
 
   /// Creates a new [ListApplicationTokensResult].
   /// [value] The array of managed identity tokens.
-  ListApplicationTokensResult({this.value});
+  ListApplicationTokensResult({
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'value': ?(() {
-        final guardedValue = value;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          ManagedIdentityTokenResponse,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'value': ?(() { final guardedValue = value; if (guardedValue == null) return null; return pulumi.Input.encodeList<ManagedIdentityTokenResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory ListApplicationTokensResult.fromMap(Map<String, dynamic> map) {
     return ListApplicationTokensResult(
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<ManagedIdentityTokenResponse>(
-          guardedValue,
-          (value) => ManagedIdentityTokenResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagedIdentityTokenResponse>(guardedValue, (value) => ManagedIdentityTokenResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

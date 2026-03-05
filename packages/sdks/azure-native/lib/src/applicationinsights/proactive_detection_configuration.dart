@@ -243,19 +243,12 @@ import 'proactive_detection_configuration_args.dart';
 class ProactiveDetectionConfiguration extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Resource location
   late final pulumi.Output<String?> location;
-
   /// Azure resource name
   late final pulumi.Output<String?> name;
-
   /// Properties that define a ProactiveDetection configuration.
-  late final pulumi.Output<
-    ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponse
-  >
-  properties;
-
+  late final pulumi.Output<ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponse> properties;
   /// Azure resource type
   late final pulumi.Output<String> type;
 
@@ -268,27 +261,15 @@ class ProactiveDetectionConfiguration extends pulumi.CustomResource {
     ProactiveDetectionConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:applicationinsights:ProactiveDetectionConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:applicationinsights:ProactiveDetectionConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String?>('name');
-    properties =
-        registerOutput<
-          ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponse
-        >(
-          'properties',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    properties = registerOutput<ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

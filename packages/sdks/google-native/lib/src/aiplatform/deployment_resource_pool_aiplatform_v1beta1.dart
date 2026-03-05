@@ -6,14 +6,9 @@ import 'google_cloud_aiplatform_v1beta1_dedicated_resources_response.dart';
 class DeploymentResourcePoolAiplatformV1beta1 extends pulumi.CustomResource {
   /// Timestamp when this DeploymentResourcePool was created.
   late final pulumi.Output<String> createTime;
-
   /// The underlying DedicatedResources that the DeploymentResourcePool uses.
-  late final pulumi.Output<
-    GoogleCloudAiplatformV1beta1DedicatedResourcesResponse
-  >
-  dedicatedResources;
+  late final pulumi.Output<GoogleCloudAiplatformV1beta1DedicatedResourcesResponse> dedicatedResources;
   late final pulumi.Output<String> location;
-
   /// Immutable. The resource name of the DeploymentResourcePool. Format: `projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}`
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
@@ -27,23 +22,13 @@ class DeploymentResourcePoolAiplatformV1beta1 extends pulumi.CustomResource {
     DeploymentResourcePoolAiplatformV1beta1Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'google-native:aiplatform/v1beta1:DeploymentResourcePool',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'google-native:aiplatform/v1beta1:DeploymentResourcePool',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
-    dedicatedResources =
-        registerOutput<GoogleCloudAiplatformV1beta1DedicatedResourcesResponse>(
-          'dedicatedResources',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return GoogleCloudAiplatformV1beta1DedicatedResourcesResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    dedicatedResources = registerOutput<GoogleCloudAiplatformV1beta1DedicatedResourcesResponse>('dedicatedResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1DedicatedResourcesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

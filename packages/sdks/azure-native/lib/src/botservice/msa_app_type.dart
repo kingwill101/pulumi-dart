@@ -16,3 +16,4 @@ enum MsaAppType {
     throw ArgumentError('Unknown MsaAppType value: $value');
   }
 }
+

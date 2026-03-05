@@ -10,13 +10,10 @@ import 'task_properties.dart';
 class TaskArgs {
   /// Migrate Project Name
   final pulumi.Input<String> projectName;
-
   /// The resource-specific properties for this resource.
   final pulumi.Input<TaskProperties>? properties;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Task ARM name
   final pulumi.Input<String>? taskName;
 
@@ -35,11 +32,7 @@ class TaskArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'projectName': projectName,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            TaskProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<TaskProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'taskName': ?taskName,
     };
@@ -48,21 +41,10 @@ class TaskArgs {
   factory TaskArgs.fromMap(Map<String, dynamic> map) {
     return TaskArgs(
       projectName: pulumi.Input.fromValue(map['projectName'] as String),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          TaskProperties.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      taskName: (() {
-        final guardedValue = map['taskName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TaskProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      taskName: (() { final guardedValue = map['taskName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

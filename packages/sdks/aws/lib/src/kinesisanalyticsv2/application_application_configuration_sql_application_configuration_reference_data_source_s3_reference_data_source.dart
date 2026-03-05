@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceS3ReferenceDataSource {
   /// The ARN of the S3 bucket.
   final pulumi.Input<String> bucketArn;
-
   /// The object key name containing the reference data.
   final pulumi.Input<String> fileKey;
 
@@ -18,15 +17,17 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDat
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'bucketArn': bucketArn, 'fileKey': fileKey};
+    return <String, dynamic>{
+      'bucketArn': bucketArn,
+      'fileKey': fileKey,
+    };
   }
 
-  factory ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceS3ReferenceDataSource.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceS3ReferenceDataSource.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceS3ReferenceDataSource(
       bucketArn: pulumi.Input.fromValue(map['bucketArn'] as String),
       fileKey: pulumi.Input.fromValue(map['fileKey'] as String),
     );
   }
 }
+

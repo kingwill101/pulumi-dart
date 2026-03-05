@@ -17,3 +17,4 @@ enum ResourceRecordType {
     throw ArgumentError('Unknown ResourceRecordType value: $value');
   }
 }
+

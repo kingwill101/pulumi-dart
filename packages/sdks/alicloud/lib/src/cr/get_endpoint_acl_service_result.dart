@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getEndpointAclService.
 class GetEndpointAclServiceResult {
   final bool enable;
   final String endpointType;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String instanceId;
@@ -44,12 +44,9 @@ class GetEndpointAclServiceResult {
       endpointType: map['endpointType'] as String,
       id: map['id'] as String,
       instanceId: map['instanceId'] as String,
-      moduleName: (() {
-        final guardedValue = map['moduleName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      moduleName: (() { final guardedValue = map['moduleName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       status: map['status'] as String,
     );
   }
 }
+

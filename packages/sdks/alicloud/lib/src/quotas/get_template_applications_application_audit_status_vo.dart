@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTemplateApplicationsApplicationAuditStatusVo {
   /// Approval document quantity.
   final pulumi.Input<int> count;
-
   /// The approval status of the quota promotion application. Value:-Disagree: reject.-Approve: approved.-Process: under review.-Cancel: Closed.
   final pulumi.Input<String> status;
 
@@ -18,15 +17,17 @@ class GetTemplateApplicationsApplicationAuditStatusVo {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'count': count, 'status': status};
+    return <String, dynamic>{
+      'count': count,
+      'status': status,
+    };
   }
 
-  factory GetTemplateApplicationsApplicationAuditStatusVo.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetTemplateApplicationsApplicationAuditStatusVo.fromMap(Map<String, dynamic> map) {
     return GetTemplateApplicationsApplicationAuditStatusVo(
       count: pulumi.Input.fromValue(map['count'] as int),
       status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
+

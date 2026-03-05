@@ -28,11 +28,7 @@ class GetRoutersResult {
       'id': id,
       'project': project,
       'region': region,
-      'routers':
-          pulumi.Input.encodeList<GetRoutersRouter, Map<String, dynamic>>(
-            routers,
-            (value) => value.toMap(),
-          ),
+      'routers': pulumi.Input.encodeList<GetRoutersRouter, Map<String, dynamic>>(routers, (value) => value.toMap()),
     };
   }
 
@@ -41,11 +37,8 @@ class GetRoutersResult {
       id: map['id'] as String,
       project: map['project'] as String,
       region: map['region'] as String,
-      routers: pulumi.Input.decodeList<GetRoutersRouter>(
-        map['routers']!,
-        (value) =>
-            GetRoutersRouter.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      routers: pulumi.Input.decodeList<GetRoutersRouter>(map['routers']!, (value) => GetRoutersRouter.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

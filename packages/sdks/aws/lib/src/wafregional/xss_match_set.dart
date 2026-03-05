@@ -188,10 +188,8 @@ import 'xss_match_set_state.dart';
 class XssMatchSet extends pulumi.CustomResource {
   /// The name of the set
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The parts of web requests that you want to inspect for cross-site scripting attacks.
   late final pulumi.Output<List<Map<String, dynamic>>?> xssMatchTuples;
 
@@ -204,16 +202,14 @@ class XssMatchSet extends pulumi.CustomResource {
     XssMatchSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:wafregional/xssMatchSet:XssMatchSet',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:wafregional/xssMatchSet:XssMatchSet',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    xssMatchTuples = registerOutput<List<Map<String, dynamic>>?>(
-      'xssMatchTuples',
-    );
+    xssMatchTuples = registerOutput<List<Map<String, dynamic>>?>('xssMatchTuples');
   }
 
   /// Gets an existing [XssMatchSet] resource's state with the given [name] and [id].
@@ -234,15 +230,13 @@ class XssMatchSet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:wafregional/xssMatchSet:XssMatchSet',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:wafregional/xssMatchSet:XssMatchSet',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    xssMatchTuples = registerOutput<List<Map<String, dynamic>>?>(
-      'xssMatchTuples',
-    );
+    xssMatchTuples = registerOutput<List<Map<String, dynamic>>?>('xssMatchTuples');
   }
 }

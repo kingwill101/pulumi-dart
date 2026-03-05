@@ -8,23 +8,17 @@ import 'get_volume_group_network_rule.dart';
 /// Result data returned by getVolumeGroup.
 class GetVolumeGroupResult {
   final String elasticSanId;
-
   /// The type of the key used to encrypt the data of the disk.
   final String encryptionType;
-
   /// An `encryption` block as defined below.
   final List<GetVolumeGroupEncryption> encryptions;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// An `identity` block as defined below.
   final List<GetVolumeGroupIdentity> identities;
   final String name;
-
   /// One or more `network_rule` blocks as defined below.
   final List<GetVolumeGroupNetworkRule> networkRules;
-
   /// The type of the storage target.
   final String protocolType;
 
@@ -52,23 +46,11 @@ class GetVolumeGroupResult {
     return <String, dynamic>{
       'elasticSanId': elasticSanId,
       'encryptionType': encryptionType,
-      'encryptions':
-          pulumi.Input.encodeList<
-            GetVolumeGroupEncryption,
-            Map<String, dynamic>
-          >(encryptions, (value) => value.toMap()),
+      'encryptions': pulumi.Input.encodeList<GetVolumeGroupEncryption, Map<String, dynamic>>(encryptions, (value) => value.toMap()),
       'id': id,
-      'identities':
-          pulumi.Input.encodeList<GetVolumeGroupIdentity, Map<String, dynamic>>(
-            identities,
-            (value) => value.toMap(),
-          ),
+      'identities': pulumi.Input.encodeList<GetVolumeGroupIdentity, Map<String, dynamic>>(identities, (value) => value.toMap()),
       'name': name,
-      'networkRules':
-          pulumi.Input.encodeList<
-            GetVolumeGroupNetworkRule,
-            Map<String, dynamic>
-          >(networkRules, (value) => value.toMap()),
+      'networkRules': pulumi.Input.encodeList<GetVolumeGroupNetworkRule, Map<String, dynamic>>(networkRules, (value) => value.toMap()),
       'protocolType': protocolType,
     };
   }
@@ -77,27 +59,13 @@ class GetVolumeGroupResult {
     return GetVolumeGroupResult(
       elasticSanId: map['elasticSanId'] as String,
       encryptionType: map['encryptionType'] as String,
-      encryptions: pulumi.Input.decodeList<GetVolumeGroupEncryption>(
-        map['encryptions']!,
-        (value) => GetVolumeGroupEncryption.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      encryptions: pulumi.Input.decodeList<GetVolumeGroupEncryption>(map['encryptions']!, (value) => GetVolumeGroupEncryption.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      identities: pulumi.Input.decodeList<GetVolumeGroupIdentity>(
-        map['identities']!,
-        (value) => GetVolumeGroupIdentity.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      identities: pulumi.Input.decodeList<GetVolumeGroupIdentity>(map['identities']!, (value) => GetVolumeGroupIdentity.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
-      networkRules: pulumi.Input.decodeList<GetVolumeGroupNetworkRule>(
-        map['networkRules']!,
-        (value) => GetVolumeGroupNetworkRule.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      networkRules: pulumi.Input.decodeList<GetVolumeGroupNetworkRule>(map['networkRules']!, (value) => GetVolumeGroupNetworkRule.fromMap((value as Map).cast<String, dynamic>())),
       protocolType: map['protocolType'] as String,
     );
   }
 }
+

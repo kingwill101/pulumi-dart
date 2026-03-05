@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BudgetPlannedLimit {
   /// (Required) The amount of cost or usage being measured for a budget.
   final pulumi.Input<String> amount;
-
   /// (Required) The start time of the budget limit. Format: `2017-01-01_12:00`. See [PlannedBudgetLimits](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_Budget.html#awscostmanagement-Type-budgets_Budget-PlannedBudgetLimits) documentation.
   final pulumi.Input<String> startTime;
-
   /// (Required) The unit of measurement used for the budget forecast, actual spend, or budget threshold, such as dollars or GB. See [Spend](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/data-type-spend.html) documentation.
   final pulumi.Input<String> unit;
 
@@ -38,3 +36,4 @@ class BudgetPlannedLimit {
     );
   }
 }
+

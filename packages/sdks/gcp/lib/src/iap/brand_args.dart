@@ -9,11 +9,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BrandArgs {
   /// Application name displayed on OAuth consent screen.
   final pulumi.Input<String> applicationTitle;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// Support email displayed on the OAuth consent screen. Can be either a
   /// user or group email. When a user email is specified, the caller must
   /// be the user with the associated email address. When a group email is
@@ -41,15 +39,10 @@ class BrandArgs {
 
   factory BrandArgs.fromMap(Map<String, dynamic> map) {
     return BrandArgs(
-      applicationTitle: pulumi.Input.fromValue(
-        map['applicationTitle'] as String,
-      ),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      applicationTitle: pulumi.Input.fromValue(map['applicationTitle'] as String),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       supportEmail: pulumi.Input.fromValue(map['supportEmail'] as String),
     );
   }
 }
+

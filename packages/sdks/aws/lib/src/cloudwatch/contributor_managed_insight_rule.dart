@@ -118,17 +118,14 @@ import 'contributor_managed_insight_rule_state.dart';
 class ContributorManagedInsightRule extends pulumi.CustomResource {
   /// ARN of the Contributor Managed Insight Rule.
   late final pulumi.Output<String> arn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// ARN of an Amazon Web Services resource that has managed Contributor Insights rules.
   late final pulumi.Output<String> resourceArn;
   late final pulumi.Output<String> ruleName;
   late final pulumi.Output<String> state;
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// Template name for the managed Contributor Insights rule, as returned by ListManagedInsightRules.
   ///
   /// The following arguments are optional:
@@ -143,11 +140,11 @@ class ContributorManagedInsightRule extends pulumi.CustomResource {
     ContributorManagedInsightRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cloudwatch/contributorManagedInsightRule:ContributorManagedInsightRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cloudwatch/contributorManagedInsightRule:ContributorManagedInsightRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     region = registerOutput<String>('region');
     resourceArn = registerOutput<String>('resourceArn');
@@ -176,11 +173,11 @@ class ContributorManagedInsightRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cloudwatch/contributorManagedInsightRule:ContributorManagedInsightRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cloudwatch/contributorManagedInsightRule:ContributorManagedInsightRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     region = registerOutput<String>('region');
     resourceArn = registerOutput<String>('resourceArn');

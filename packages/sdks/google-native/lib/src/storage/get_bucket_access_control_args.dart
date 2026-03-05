@@ -33,11 +33,8 @@ class GetBucketAccessControlArgs {
     return GetBucketAccessControlArgs(
       bucket: pulumi.Input.fromValue(map['bucket'] as String),
       entity: pulumi.Input.fromValue(map['entity'] as String),
-      userProject: (() {
-        final guardedValue = map['userProject'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      userProject: (() { final guardedValue = map['userProject']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

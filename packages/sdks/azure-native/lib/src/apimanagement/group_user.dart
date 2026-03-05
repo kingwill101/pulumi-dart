@@ -140,34 +140,24 @@ import 'group_user_args.dart';
 class GroupUser extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Email address.
   late final pulumi.Output<String?> email;
-
   /// First name.
   late final pulumi.Output<String?> firstName;
-
   /// Collection of groups user is part of.
   late final pulumi.Output<List<Map<String, dynamic>>> groups;
-
   /// Collection of user identities.
   late final pulumi.Output<List<Map<String, dynamic>>?> identities;
-
   /// Last name.
   late final pulumi.Output<String?> lastName;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Optional note about a user set by the administrator.
   late final pulumi.Output<String?> note;
-
   /// Date of user registration. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
   late final pulumi.Output<String?> registrationDate;
-
   /// Account state. Specifies whether the user is active or not. Blocked users are unable to sign into the developer portal or call any APIs of subscribed products. Default state is Active.
   late final pulumi.Output<String?> state;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -180,11 +170,11 @@ class GroupUser extends pulumi.CustomResource {
     GroupUserArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:apimanagement:GroupUser',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:apimanagement:GroupUser',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     email = registerOutput<String?>('email');
     firstName = registerOutput<String?>('firstName');

@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomerManagedKeyState {
   /// The ID the of the Customer Managed Key to associate with the Data Factory.
   final pulumi.Input<String>? customerManagedKeyId;
-
   /// The ID of the Data Factory Resource the Customer Managed Key will be associated with. Changing this forces a new resource to be created.
   final pulumi.Input<String>? dataFactoryId;
-
   /// The User Assigned Identity ID that will be used to access Key Vaults that contain the encryption keys.
   final pulumi.Input<String>? userAssignedIdentityId;
 
@@ -33,21 +31,10 @@ class CustomerManagedKeyState {
 
   factory CustomerManagedKeyState.fromMap(Map<String, dynamic> map) {
     return CustomerManagedKeyState(
-      customerManagedKeyId: (() {
-        final guardedValue = map['customerManagedKeyId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dataFactoryId: (() {
-        final guardedValue = map['dataFactoryId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      userAssignedIdentityId: (() {
-        final guardedValue = map['userAssignedIdentityId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      customerManagedKeyId: (() { final guardedValue = map['customerManagedKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dataFactoryId: (() { final guardedValue = map['dataFactoryId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      userAssignedIdentityId: (() { final guardedValue = map['userAssignedIdentityId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -13,8 +13,7 @@ enum AzureLargeInstanceHardwareTypeNamesEnum {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown AzureLargeInstanceHardwareTypeNamesEnum value: $value',
-    );
+    throw ArgumentError('Unknown AzureLargeInstanceHardwareTypeNamesEnum value: $value');
   }
 }
+

@@ -9,10 +9,14 @@ class DataCacheConfigResponse {
 
   /// Creates a new [DataCacheConfigResponse].
   /// [dataCacheEnabled] Optional. Whether data cache is enabled for the instance.
-  DataCacheConfigResponse({required this.dataCacheEnabled});
+  DataCacheConfigResponse({
+    required this.dataCacheEnabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'dataCacheEnabled': dataCacheEnabled};
+    return <String, dynamic>{
+      'dataCacheEnabled': dataCacheEnabled,
+    };
   }
 
   factory DataCacheConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class DataCacheConfigResponse {
     );
   }
 }
+

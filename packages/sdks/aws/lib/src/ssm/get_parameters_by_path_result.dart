@@ -1,22 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getParametersByPath.
 class GetParametersByPathResult {
   /// A list that contains the Amazon Resource Names (ARNs) of the retrieved parameters.
   final List<String> arns;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list that contains the names of the retrieved parameters.
   final List<String> names;
   final String path;
   final bool? recursive;
   final String region;
-
   /// A list that contains the types (`String`, `StringList`, or `SecureString`) of retrieved parameters.
   final List<String> types;
-
   /// A list that contains the retrieved parameter values. **Note:** This value is always marked as sensitive in the pulumi preview output, regardless of whether any retrieved parameters are of `SecureString` type. Use the `nonsensitive` function to override the behavior at your own risk and discretion, if you are certain that there are no sensitive values being retrieved.
   final List<String> values;
   final bool? withDecryption;
@@ -63,19 +60,12 @@ class GetParametersByPathResult {
       id: map['id'] as String,
       names: (map['names'] as List).cast<String>(),
       path: map['path'] as String,
-      recursive: (() {
-        final guardedValue = map['recursive'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      recursive: (() { final guardedValue = map['recursive']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       region: map['region'] as String,
       types: (map['types'] as List).cast<String>(),
       values: (map['values'] as List).cast<String>(),
-      withDecryption: (() {
-        final guardedValue = map['withDecryption'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      withDecryption: (() { final guardedValue = map['withDecryption']; if (guardedValue == null) return null; return guardedValue as bool; })(),
     );
   }
 }
+

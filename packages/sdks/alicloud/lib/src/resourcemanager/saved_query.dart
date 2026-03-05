@@ -145,13 +145,10 @@ import 'saved_query_state.dart';
 class SavedQuery extends pulumi.CustomResource {
   /// The creation time of the resource.
   late final pulumi.Output<String> createTime;
-
   /// Query Description.
   late final pulumi.Output<String?> description;
-
   /// Query Expression.
   late final pulumi.Output<String> expression;
-
   /// The name of the resource.
   late final pulumi.Output<String> savedQueryName;
 
@@ -164,11 +161,11 @@ class SavedQuery extends pulumi.CustomResource {
     SavedQueryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:resourcemanager/savedQuery:SavedQuery',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:resourcemanager/savedQuery:SavedQuery',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     expression = registerOutput<String>('expression');
@@ -193,11 +190,11 @@ class SavedQuery extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:resourcemanager/savedQuery:SavedQuery',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:resourcemanager/savedQuery:SavedQuery',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     expression = registerOutput<String>('expression');

@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSiteMonitorsArgs {
   /// A list of Site Monitor IDs.
   final pulumi.Input<List<String>>? ids;
-
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
-
   /// Task ID.
   final pulumi.Input<String>? taskId;
-
   /// Task Type.
   final pulumi.Input<String>? taskType;
 
@@ -24,7 +21,12 @@ class GetSiteMonitorsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [taskId] Task ID.
   /// [taskType] Task Type.
-  GetSiteMonitorsArgs({this.ids, this.outputFile, this.taskId, this.taskType});
+  GetSiteMonitorsArgs({
+    this.ids,
+    this.outputFile,
+    this.taskId,
+    this.taskType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,26 +39,11 @@ class GetSiteMonitorsArgs {
 
   factory GetSiteMonitorsArgs.fromMap(Map<String, dynamic> map) {
     return GetSiteMonitorsArgs(
-      ids: (() {
-        final guardedValue = map['ids'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      taskId: (() {
-        final guardedValue = map['taskId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      taskType: (() {
-        final guardedValue = map['taskType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ids: (() { final guardedValue = map['ids']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      taskId: (() { final guardedValue = map['taskId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      taskType: (() { final guardedValue = map['taskType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

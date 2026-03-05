@@ -5,25 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstancesInstance {
   /// The Creation time of the resource.
   final pulumi.Input<String> createTime;
-
   /// The end time of the resource..
   final pulumi.Input<String> endTime;
-
   /// The ID of the Instance.
   final pulumi.Input<String> id;
-
   /// The first ID of the resource.
   final pulumi.Input<String> instanceId;
-
   /// The payment type of the resource. Valid values: `Subscription`.
   final pulumi.Input<String> paymentType;
-
   /// Automatic renewal period unit. Valid values: `Month`,`Year`.
   final pulumi.Input<String> renewalDurationUnit;
-
   /// Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`. Default Value: `ManualRenewal`.
   final pulumi.Input<String> renewalStatus;
-
   /// The Status of Instance.
   final pulumi.Input<String> status;
 
@@ -67,11 +60,10 @@ class GetInstancesInstance {
       id: pulumi.Input.fromValue(map['id'] as String),
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
       paymentType: pulumi.Input.fromValue(map['paymentType'] as String),
-      renewalDurationUnit: pulumi.Input.fromValue(
-        map['renewalDurationUnit'] as String,
-      ),
+      renewalDurationUnit: pulumi.Input.fromValue(map['renewalDurationUnit'] as String),
       renewalStatus: pulumi.Input.fromValue(map['renewalStatus'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
+

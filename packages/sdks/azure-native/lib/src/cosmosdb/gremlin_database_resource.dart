@@ -7,10 +7,8 @@ import 'resource_restore_parameters.dart';
 class GremlinDatabaseResource {
   /// Enum to indicate the mode of resource creation.
   final pulumi.Input<String>? createMode;
-
   /// Name of the Cosmos DB Gremlin database
   final pulumi.Input<String> id;
-
   /// Parameters to indicate the information about the restore
   final pulumi.Input<ResourceRestoreParameters>? restoreParameters;
 
@@ -28,31 +26,16 @@ class GremlinDatabaseResource {
     return <String, dynamic>{
       'createMode': ?createMode,
       'id': id,
-      'restoreParameters':
-          ?pulumi.Input.mapOptionalInputValue<
-            ResourceRestoreParameters,
-            Map<String, dynamic>
-          >(restoreParameters, (value) => value.toMap()),
+      'restoreParameters': ?pulumi.Input.mapOptionalInputValue<ResourceRestoreParameters, Map<String, dynamic>>(restoreParameters, (value) => value.toMap()),
     };
   }
 
   factory GremlinDatabaseResource.fromMap(Map<String, dynamic> map) {
     return GremlinDatabaseResource(
-      createMode: (() {
-        final guardedValue = map['createMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      createMode: (() { final guardedValue = map['createMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       id: pulumi.Input.fromValue(map['id'] as String),
-      restoreParameters: (() {
-        final guardedValue = map['restoreParameters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ResourceRestoreParameters.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      restoreParameters: (() { final guardedValue = map['restoreParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceRestoreParameters.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

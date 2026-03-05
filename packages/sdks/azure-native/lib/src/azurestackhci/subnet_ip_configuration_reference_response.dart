@@ -9,21 +9,20 @@ class SubnetIpConfigurationReferenceResponse {
 
   /// Creates a new [SubnetIpConfigurationReferenceResponse].
   /// [id] The Azure Resource ID for a Network Interface.
-  SubnetIpConfigurationReferenceResponse({this.id});
+  SubnetIpConfigurationReferenceResponse({
+    this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': ?id};
+    return <String, dynamic>{
+      'id': ?id,
+    };
   }
 
-  factory SubnetIpConfigurationReferenceResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SubnetIpConfigurationReferenceResponse.fromMap(Map<String, dynamic> map) {
     return SubnetIpConfigurationReferenceResponse(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

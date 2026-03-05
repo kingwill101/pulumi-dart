@@ -9,10 +9,14 @@ class IntegrationAccountSkuResponse {
 
   /// Creates a new [IntegrationAccountSkuResponse].
   /// [name] The sku name.
-  IntegrationAccountSkuResponse({required this.name});
+  IntegrationAccountSkuResponse({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory IntegrationAccountSkuResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class IntegrationAccountSkuResponse {
     );
   }
 }
+

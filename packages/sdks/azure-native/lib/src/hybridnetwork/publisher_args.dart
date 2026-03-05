@@ -11,19 +11,14 @@ import 'publisher_properties_format.dart';
 class PublisherArgs {
   /// The managed identity of the publisher, if configured.
   final pulumi.Input<ManagedServiceIdentity>? identity;
-
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
-
   /// Publisher properties.
   final pulumi.Input<PublisherPropertiesFormat>? properties;
-
   /// The name of the publisher.
   final pulumi.Input<String>? publisherName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -45,17 +40,9 @@ class PublisherArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'identity':
-          ?pulumi.Input.mapOptionalInputValue<
-            ManagedServiceIdentity,
-            Map<String, dynamic>
-          >(identity, (value) => value.toMap()),
+      'identity': ?pulumi.Input.mapOptionalInputValue<ManagedServiceIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
       'location': ?location,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            PublisherPropertiesFormat,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<PublisherPropertiesFormat, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'publisherName': ?publisherName,
       'resourceGroupName': resourceGroupName,
       'tags': ?tags,
@@ -64,44 +51,13 @@ class PublisherArgs {
 
   factory PublisherArgs.fromMap(Map<String, dynamic> map) {
     return PublisherArgs(
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ManagedServiceIdentity.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PublisherPropertiesFormat.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      publisherName: (() {
-        final guardedValue = map['publisherName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedServiceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PublisherPropertiesFormat.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      publisherName: (() { final guardedValue = map['publisherName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

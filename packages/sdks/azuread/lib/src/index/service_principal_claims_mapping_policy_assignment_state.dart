@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServicePrincipalClaimsMappingPolicyAssignmentState {
   /// The ID of the claims mapping policy to assign.
   final pulumi.Input<String>? claimsMappingPolicyId;
-
   /// The ID of the service principal for the policy assignment.
   final pulumi.Input<String>? servicePrincipalId;
 
@@ -25,20 +24,11 @@ class ServicePrincipalClaimsMappingPolicyAssignmentState {
     };
   }
 
-  factory ServicePrincipalClaimsMappingPolicyAssignmentState.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ServicePrincipalClaimsMappingPolicyAssignmentState.fromMap(Map<String, dynamic> map) {
     return ServicePrincipalClaimsMappingPolicyAssignmentState(
-      claimsMappingPolicyId: (() {
-        final guardedValue = map['claimsMappingPolicyId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      servicePrincipalId: (() {
-        final guardedValue = map['servicePrincipalId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      claimsMappingPolicyId: (() { final guardedValue = map['claimsMappingPolicyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      servicePrincipalId: (() { final guardedValue = map['servicePrincipalId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

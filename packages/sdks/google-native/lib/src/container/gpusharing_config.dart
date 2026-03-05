@@ -7,40 +7,29 @@ import 'gpusharing_config_gpu_sharing_strategy.dart';
 class GPUSharingConfig {
   /// The type of GPU sharing strategy to enable on the GPU node.
   final pulumi.Input<GPUSharingConfigGpuSharingStrategy>? gpuSharingStrategy;
-
   /// The max number of containers that can share a physical GPU.
   final pulumi.Input<String>? maxSharedClientsPerGpu;
 
   /// Creates a new [GPUSharingConfig].
   /// [gpuSharingStrategy] The type of GPU sharing strategy to enable on the GPU node.
   /// [maxSharedClientsPerGpu] The max number of containers that can share a physical GPU.
-  GPUSharingConfig({this.gpuSharingStrategy, this.maxSharedClientsPerGpu});
+  GPUSharingConfig({
+    this.gpuSharingStrategy,
+    this.maxSharedClientsPerGpu,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'gpuSharingStrategy':
-          ?pulumi.Input.mapOptionalInputValue<
-            GPUSharingConfigGpuSharingStrategy,
-            String
-          >(gpuSharingStrategy, (value) => value.wireValue),
+      'gpuSharingStrategy': ?pulumi.Input.mapOptionalInputValue<GPUSharingConfigGpuSharingStrategy, String>(gpuSharingStrategy, (value) => value.wireValue),
       'maxSharedClientsPerGpu': ?maxSharedClientsPerGpu,
     };
   }
 
   factory GPUSharingConfig.fromMap(Map<String, dynamic> map) {
     return GPUSharingConfig(
-      gpuSharingStrategy: (() {
-        final guardedValue = map['gpuSharingStrategy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GPUSharingConfigGpuSharingStrategy.fromValue(guardedValue as String),
-        );
-      })(),
-      maxSharedClientsPerGpu: (() {
-        final guardedValue = map['maxSharedClientsPerGpu'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      gpuSharingStrategy: (() { final guardedValue = map['gpuSharingStrategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GPUSharingConfigGpuSharingStrategy.fromValue(guardedValue as String)); })(),
+      maxSharedClientsPerGpu: (() { final guardedValue = map['maxSharedClientsPerGpu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

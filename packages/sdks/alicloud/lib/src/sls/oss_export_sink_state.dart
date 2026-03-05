@@ -7,22 +7,16 @@ import 'oss_export_sink_configuration.dart';
 class OssExportSinkState {
   /// OSSExportConfiguration See `configuration` below.
   final pulumi.Input<OssExportSinkConfiguration>? configuration;
-
   /// Creation time. Example value: 1718787534
   final pulumi.Input<int>? createTime;
-
   /// The description of the job.
   final pulumi.Input<String>? description;
-
   /// The display name of the job.
   final pulumi.Input<String>? displayName;
-
   /// The unique identifier of the OSS data shipping job.
   final pulumi.Input<String>? jobName;
-
   /// The name of the project.
   final pulumi.Input<String>? project;
-
   /// The status of the post task. Example value: RUNNING
   final pulumi.Input<String>? status;
 
@@ -46,11 +40,7 @@ class OssExportSinkState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configuration':
-          ?pulumi.Input.mapOptionalInputValue<
-            OssExportSinkConfiguration,
-            Map<String, dynamic>
-          >(configuration, (value) => value.toMap()),
+      'configuration': ?pulumi.Input.mapOptionalInputValue<OssExportSinkConfiguration, Map<String, dynamic>>(configuration, (value) => value.toMap()),
       'createTime': ?createTime,
       'description': ?description,
       'displayName': ?displayName,
@@ -62,45 +52,14 @@ class OssExportSinkState {
 
   factory OssExportSinkState.fromMap(Map<String, dynamic> map) {
     return OssExportSinkState(
-      configuration: (() {
-        final guardedValue = map['configuration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          OssExportSinkConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      jobName: (() {
-        final guardedValue = map['jobName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      configuration: (() { final guardedValue = map['configuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OssExportSinkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      jobName: (() { final guardedValue = map['jobName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

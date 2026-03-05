@@ -147,22 +147,16 @@ import 'workspace_manager_member_args.dart';
 class WorkspaceManagerMember extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Resource Etag.
   late final pulumi.Output<String> etag;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Fully qualified resource ID of the target Sentinel workspace joining the given Sentinel workspace manager
   late final pulumi.Output<String> targetWorkspaceResourceId;
-
   /// Tenant id of the target Sentinel workspace joining the given Sentinel workspace manager
   late final pulumi.Output<String> targetWorkspaceTenantId;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -175,27 +169,16 @@ class WorkspaceManagerMember extends pulumi.CustomResource {
     WorkspaceManagerMemberArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:securityinsights:WorkspaceManagerMember',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:securityinsights:WorkspaceManagerMember',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    targetWorkspaceResourceId = registerOutput<String>(
-      'targetWorkspaceResourceId',
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    targetWorkspaceResourceId = registerOutput<String>('targetWorkspaceResourceId');
     targetWorkspaceTenantId = registerOutput<String>('targetWorkspaceTenantId');
     type = registerOutput<String>('type');
   }

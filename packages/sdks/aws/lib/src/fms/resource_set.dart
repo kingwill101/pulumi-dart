@@ -134,10 +134,8 @@ import 'resource_set_timeouts.dart';
 class ResourceSet extends pulumi.CustomResource {
   /// ARN of the Resource Set.
   late final pulumi.Output<String> arn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Details about the resource set to be created or updated. See `resource_set` Attribute Reference below.
   late final pulumi.Output<List<Map<String, dynamic>>?> resourceSets;
   late final pulumi.Output<Map<String, String>?> tags;
@@ -153,26 +151,17 @@ class ResourceSet extends pulumi.CustomResource {
     ResourceSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:fms/resourceSet:ResourceSet',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:fms/resourceSet:ResourceSet',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     region = registerOutput<String>('region');
     resourceSets = registerOutput<List<Map<String, dynamic>>?>('resourceSets');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ResourceSetTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResourceSetTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<ResourceSetTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceSetTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [ResourceSet] resource's state with the given [name] and [id].
@@ -193,25 +182,16 @@ class ResourceSet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:fms/resourceSet:ResourceSet',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:fms/resourceSet:ResourceSet',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     region = registerOutput<String>('region');
     resourceSets = registerOutput<List<Map<String, dynamic>>?>('resourceSets');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ResourceSetTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResourceSetTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<ResourceSetTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceSetTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

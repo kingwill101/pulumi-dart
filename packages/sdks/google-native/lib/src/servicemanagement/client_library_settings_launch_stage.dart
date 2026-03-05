@@ -18,8 +18,7 @@ enum ClientLibrarySettingsLaunchStage {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ClientLibrarySettingsLaunchStage value: $value',
-    );
+    throw ArgumentError('Unknown ClientLibrarySettingsLaunchStage value: $value');
   }
 }
+

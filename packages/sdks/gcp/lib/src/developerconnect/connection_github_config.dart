@@ -6,13 +6,10 @@ import 'connection_github_config_authorizer_credential.dart';
 class ConnectionGithubConfig {
   /// Optional. GitHub App installation id.
   final pulumi.Input<String>? appInstallationId;
-
   /// Represents an OAuth token of the account that authorized the Connection,
   /// and associated metadata.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionGithubConfigAuthorizerCredential>?
-  authorizerCredential;
-
+  final pulumi.Input<ConnectionGithubConfigAuthorizerCredential>? authorizerCredential;
   /// Required. Immutable. The GitHub Application that was installed to the GitHub user or
   /// organization.
   /// Possible values:
@@ -20,7 +17,6 @@ class ConnectionGithubConfig {
   /// DEVELOPER_CONNECT
   /// FIREBASE
   final pulumi.Input<String> githubApp;
-
   /// (Output)
   /// Output only. The URI to navigate to in order to manage the installation associated
   /// with this GitHubConfig.
@@ -41,11 +37,7 @@ class ConnectionGithubConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'appInstallationId': ?appInstallationId,
-      'authorizerCredential':
-          ?pulumi.Input.mapOptionalInputValue<
-            ConnectionGithubConfigAuthorizerCredential,
-            Map<String, dynamic>
-          >(authorizerCredential, (value) => value.toMap()),
+      'authorizerCredential': ?pulumi.Input.mapOptionalInputValue<ConnectionGithubConfigAuthorizerCredential, Map<String, dynamic>>(authorizerCredential, (value) => value.toMap()),
       'githubApp': githubApp,
       'installationUri': ?installationUri,
     };
@@ -53,26 +45,11 @@ class ConnectionGithubConfig {
 
   factory ConnectionGithubConfig.fromMap(Map<String, dynamic> map) {
     return ConnectionGithubConfig(
-      appInstallationId: (() {
-        final guardedValue = map['appInstallationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      authorizerCredential: (() {
-        final guardedValue = map['authorizerCredential'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ConnectionGithubConfigAuthorizerCredential.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      appInstallationId: (() { final guardedValue = map['appInstallationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      authorizerCredential: (() { final guardedValue = map['authorizerCredential']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectionGithubConfigAuthorizerCredential.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       githubApp: pulumi.Input.fromValue(map['githubApp'] as String),
-      installationUri: (() {
-        final guardedValue = map['installationUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      installationUri: (() { final guardedValue = map['installationUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

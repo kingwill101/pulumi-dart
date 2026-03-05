@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLoadBalancerTarget {
   /// (string) Label Selector to add a group of resources based on the label.
   final pulumi.Input<String> labelSelector;
-
   /// (int) ID of the server which should be a target for this Load Balancer.
   final pulumi.Input<int> serverId;
-
   /// (string) Type of the target. `server` or `label_selector`
   final pulumi.Input<String> type;
 
@@ -38,3 +36,4 @@ class GetLoadBalancerTarget {
     );
   }
 }
+

@@ -18,3 +18,4 @@ enum FeaturizationMode {
     throw ArgumentError('Unknown FeaturizationMode value: $value');
   }
 }
+

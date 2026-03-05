@@ -23,16 +23,9 @@ class ReservedInstanceRecurringCharge {
 
   factory ReservedInstanceRecurringCharge.fromMap(Map<String, dynamic> map) {
     return ReservedInstanceRecurringCharge(
-      recurringChargeAmount: (() {
-        final guardedValue = map['recurringChargeAmount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      recurringChargeFrequency: (() {
-        final guardedValue = map['recurringChargeFrequency'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      recurringChargeAmount: (() { final guardedValue = map['recurringChargeAmount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      recurringChargeFrequency: (() { final guardedValue = map['recurringChargeFrequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

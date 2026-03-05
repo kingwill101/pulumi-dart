@@ -33,24 +33,13 @@ class GetBareMetalAdminClusterIamPolicyArgs {
     };
   }
 
-  factory GetBareMetalAdminClusterIamPolicyArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetBareMetalAdminClusterIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetBareMetalAdminClusterIamPolicyArgs(
-      bareMetalAdminClusterId: pulumi.Input.fromValue(
-        map['bareMetalAdminClusterId'] as String,
-      ),
+      bareMetalAdminClusterId: pulumi.Input.fromValue(map['bareMetalAdminClusterId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      optionsRequestedPolicyVersion: (() {
-        final guardedValue = map['optionsRequestedPolicyVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

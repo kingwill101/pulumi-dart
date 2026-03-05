@@ -21,3 +21,4 @@ enum BuiltInAuthenticationProvider {
     throw ArgumentError('Unknown BuiltInAuthenticationProvider value: $value');
   }
 }
+

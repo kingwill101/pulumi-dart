@@ -10,10 +10,8 @@ import 'secret_state.dart';
 class Secret extends pulumi.CustomResource {
   /// Base64-url-safe-encoded secret data
   late final pulumi.Output<String> data;
-
   /// User-defined key/value metadata
   late final pulumi.Output<List<Map<String, dynamic>>?> labels;
-
   /// User-defined name of the secret
   late final pulumi.Output<String> name;
 
@@ -21,13 +19,16 @@ class Secret extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Secret]. {@macro pulumi_index_secret_secret_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Secret(String name, {SecretArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'docker:index/secret:Secret',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Secret(
+    String name, {
+    SecretArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'docker:index/secret:Secret',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     data = registerOutput<String>('data');
     labels = registerOutput<List<Map<String, dynamic>>?>('labels');
     this.name = registerOutput<String>('name');
@@ -51,11 +52,11 @@ class Secret extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'docker:index/secret:Secret',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'docker:index/secret:Secret',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     data = registerOutput<String>('data');
     labels = registerOutput<List<Map<String, dynamic>>?>('labels');
     this.name = registerOutput<String>('name');

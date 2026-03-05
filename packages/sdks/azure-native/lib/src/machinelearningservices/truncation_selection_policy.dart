@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TruncationSelectionPolicy {
   /// Number of intervals by which to delay the first evaluation.
   final pulumi.Input<int>? delayEvaluation;
-
   /// Interval (number of runs) between policy evaluations.
   final pulumi.Input<int>? evaluationInterval;
-
   /// Expected value is 'TruncationSelection'.
   final pulumi.Input<String> policyType;
-
   /// The percentage of runs to cancel at each evaluation interval.
   final pulumi.Input<int>? truncationPercentage;
 
@@ -39,22 +36,11 @@ class TruncationSelectionPolicy {
 
   factory TruncationSelectionPolicy.fromMap(Map<String, dynamic> map) {
     return TruncationSelectionPolicy(
-      delayEvaluation: (() {
-        final guardedValue = map['delayEvaluation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      evaluationInterval: (() {
-        final guardedValue = map['evaluationInterval'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      delayEvaluation: (() { final guardedValue = map['delayEvaluation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      evaluationInterval: (() { final guardedValue = map['evaluationInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       policyType: pulumi.Input.fromValue(map['policyType'] as String),
-      truncationPercentage: (() {
-        final guardedValue = map['truncationPercentage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      truncationPercentage: (() { final guardedValue = map['truncationPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

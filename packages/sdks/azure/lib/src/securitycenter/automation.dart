@@ -469,30 +469,22 @@ import 'automation_state.dart';
 class Automation extends pulumi.CustomResource {
   /// One or more `action` blocks as defined below. An `action` tells this automation where the data is to be sent to upon being evaluated by the rules in the `source`.
   late final pulumi.Output<List<Map<String, dynamic>>> actions;
-
   /// Specifies the description for the Security Center Automation.
   late final pulumi.Output<String?> description;
-
   /// Boolean to enable or disable this Security Center Automation. Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
-
   /// The Azure Region where the Security Center Automation should exist. Changing this forces a new Security Center Automation to be created.
   late final pulumi.Output<String> location;
-
   /// The name which should be used for this Security Center Automation. Changing this forces a new Security Center Automation to be created.
   ///
   /// &gt; **Note:** For the automation to appear in Azure Portal correctly under Microsoft Defender for Cloud &gt; Environment Settings &gt; Account &gt; Continuous Export, either `ExportToWorkspace` or `ExportToEventHub` must be used.
   late final pulumi.Output<String> name;
-
   /// The name of the Resource Group where the Security Center Automation should exist. Changing this forces a new Security Center Automation to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A list of scopes on which the automation logic is applied, at least one is required. Supported scopes are a subscription (in this format `/subscriptions/00000000-0000-0000-0000-000000000000`) or a resource group under that subscription (in the format `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example`). The automation will only apply on defined scopes.
   late final pulumi.Output<List<String>> scopes;
-
   /// One or more `source` blocks as defined below. A `source` defines what data types will be processed and a set of rules to filter that data.
   late final pulumi.Output<List<Map<String, dynamic>>> sources;
-
   /// A mapping of tags assigned to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -505,11 +497,11 @@ class Automation extends pulumi.CustomResource {
     AutomationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:securitycenter/automation:Automation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:securitycenter/automation:Automation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     actions = registerOutput<List<Map<String, dynamic>>>('actions');
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool?>('enabled');
@@ -539,11 +531,11 @@ class Automation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:securitycenter/automation:Automation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:securitycenter/automation:Automation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     actions = registerOutput<List<Map<String, dynamic>>>('actions');
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool?>('enabled');

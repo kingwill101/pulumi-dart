@@ -9,19 +9,20 @@ class AssignedAssessmentItem {
 
   /// Creates a new [AssignedAssessmentItem].
   /// [assessmentKey] Unique key to a security assessment object
-  AssignedAssessmentItem({this.assessmentKey});
+  AssignedAssessmentItem({
+    this.assessmentKey,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'assessmentKey': ?assessmentKey};
+    return <String, dynamic>{
+      'assessmentKey': ?assessmentKey,
+    };
   }
 
   factory AssignedAssessmentItem.fromMap(Map<String, dynamic> map) {
     return AssignedAssessmentItem(
-      assessmentKey: (() {
-        final guardedValue = map['assessmentKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      assessmentKey: (() { final guardedValue = map['assessmentKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

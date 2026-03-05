@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IndustrialPidProjectState {
   /// The ID of Pid Organization.
   final pulumi.Input<String>? pidOrganizationId;
-
   /// The description of Pid Project.
   final pulumi.Input<String>? pidProjectDesc;
-
   /// The name of Pid Project.
   final pulumi.Input<String>? pidProjectName;
 
@@ -33,21 +31,10 @@ class IndustrialPidProjectState {
 
   factory IndustrialPidProjectState.fromMap(Map<String, dynamic> map) {
     return IndustrialPidProjectState(
-      pidOrganizationId: (() {
-        final guardedValue = map['pidOrganizationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pidProjectDesc: (() {
-        final guardedValue = map['pidProjectDesc'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pidProjectName: (() {
-        final guardedValue = map['pidProjectName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      pidOrganizationId: (() { final guardedValue = map['pidOrganizationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pidProjectDesc: (() { final guardedValue = map['pidProjectDesc']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pidProjectName: (() { final guardedValue = map['pidProjectName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

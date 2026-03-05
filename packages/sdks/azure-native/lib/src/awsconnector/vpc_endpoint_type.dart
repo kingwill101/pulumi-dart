@@ -16,3 +16,4 @@ enum VpcEndpointType {
     throw ArgumentError('Unknown VpcEndpointType value: $value');
   }
 }
+

@@ -5,16 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationApplicationConfigurationFlinkApplicationConfigurationCheckpointConfiguration {
   /// Describes the interval in milliseconds between checkpoint operations.
   final pulumi.Input<int>? checkpointInterval;
-
   /// Describes whether checkpointing is enabled for a Flink-based Kinesis Data Analytics application.
   final pulumi.Input<bool>? checkpointingEnabled;
-
   /// Describes whether the application uses Kinesis Data Analytics' default checkpointing behavior. Valid values: `CUSTOM`, `DEFAULT`. Set this attribute to `CUSTOM` in order for any specified `checkpointing_enabled`, `checkpoint_interval`, or `min_pause_between_checkpoints` attribute values to be effective. If this attribute is set to `DEFAULT`, the application will always use the following values:
   /// * `checkpointing_enabled = true`
   /// * `checkpoint_interval = 60000`
   /// * `min_pause_between_checkpoints = 5000`
   final pulumi.Input<String> configurationType;
-
   /// Describes the minimum time in milliseconds after a checkpoint operation completes that a new checkpoint operation can start.
   final pulumi.Input<int>? minPauseBetweenCheckpoints;
 
@@ -39,28 +36,13 @@ class ApplicationApplicationConfigurationFlinkApplicationConfigurationCheckpoint
     };
   }
 
-  factory ApplicationApplicationConfigurationFlinkApplicationConfigurationCheckpointConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApplicationApplicationConfigurationFlinkApplicationConfigurationCheckpointConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationFlinkApplicationConfigurationCheckpointConfiguration(
-      checkpointInterval: (() {
-        final guardedValue = map['checkpointInterval'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      checkpointingEnabled: (() {
-        final guardedValue = map['checkpointingEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      configurationType: pulumi.Input.fromValue(
-        map['configurationType'] as String,
-      ),
-      minPauseBetweenCheckpoints: (() {
-        final guardedValue = map['minPauseBetweenCheckpoints'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      checkpointInterval: (() { final guardedValue = map['checkpointInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      checkpointingEnabled: (() { final guardedValue = map['checkpointingEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      configurationType: pulumi.Input.fromValue(map['configurationType'] as String),
+      minPauseBetweenCheckpoints: (() { final guardedValue = map['minPauseBetweenCheckpoints']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

@@ -10,29 +10,20 @@ class AuthorizationLoggingOptions {
 
   /// Creates a new [AuthorizationLoggingOptions].
   /// [permissionType] The type of the permission that was checked.
-  AuthorizationLoggingOptions({this.permissionType});
+  AuthorizationLoggingOptions({
+    this.permissionType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'permissionType':
-          ?pulumi.Input.mapOptionalInputValue<
-            AuthorizationLoggingOptionsPermissionType,
-            String
-          >(permissionType, (value) => value.wireValue),
+      'permissionType': ?pulumi.Input.mapOptionalInputValue<AuthorizationLoggingOptionsPermissionType, String>(permissionType, (value) => value.wireValue),
     };
   }
 
   factory AuthorizationLoggingOptions.fromMap(Map<String, dynamic> map) {
     return AuthorizationLoggingOptions(
-      permissionType: (() {
-        final guardedValue = map['permissionType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AuthorizationLoggingOptionsPermissionType.fromValue(
-            guardedValue as String,
-          ),
-        );
-      })(),
+      permissionType: (() { final guardedValue = map['permissionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AuthorizationLoggingOptionsPermissionType.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

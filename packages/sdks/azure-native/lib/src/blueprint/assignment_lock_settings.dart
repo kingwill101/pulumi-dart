@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AssignmentLockSettings {
   /// List of management operations that are excluded from blueprint locks. Up to 200 actions are permitted. If the lock mode is set to 'AllResourcesReadOnly', then the following actions are automatically appended to 'excludedActions': '*/read', 'Microsoft.Network/virtualNetworks/subnets/join/action' and 'Microsoft.Authorization/locks/delete'. If the lock mode is set to 'AllResourcesDoNotDelete', then the following actions are automatically appended to 'excludedActions': 'Microsoft.Authorization/locks/delete'. Duplicate actions will get removed.
   final pulumi.Input<List<String>>? excludedActions;
-
   /// List of AAD principals excluded from blueprint locks. Up to 5 principals are permitted.
   final pulumi.Input<List<String>>? excludedPrincipals;
-
   /// Lock mode.
   final pulumi.Input<String>? mode;
 
@@ -33,21 +31,10 @@ class AssignmentLockSettings {
 
   factory AssignmentLockSettings.fromMap(Map<String, dynamic> map) {
     return AssignmentLockSettings(
-      excludedActions: (() {
-        final guardedValue = map['excludedActions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      excludedPrincipals: (() {
-        final guardedValue = map['excludedPrincipals'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      mode: (() {
-        final guardedValue = map['mode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      excludedActions: (() { final guardedValue = map['excludedActions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      excludedPrincipals: (() { final guardedValue = map['excludedPrincipals']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

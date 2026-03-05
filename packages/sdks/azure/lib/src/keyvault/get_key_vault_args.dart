@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetKeyVaultArgs {
   /// Specifies the name of the Key Vault.
   final pulumi.Input<String> name;
-
   /// The name of the Resource Group in which the Key Vault exists.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetKeyVaultArgs].
   /// [name] Specifies the name of the Key Vault.
   /// [resourceGroupName] The name of the Resource Group in which the Key Vault exists.
-  GetKeyVaultArgs({required this.name, required this.resourceGroupName});
+  GetKeyVaultArgs({
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,9 +30,8 @@ class GetKeyVaultArgs {
   factory GetKeyVaultArgs.fromMap(Map<String, dynamic> map) {
     return GetKeyVaultArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

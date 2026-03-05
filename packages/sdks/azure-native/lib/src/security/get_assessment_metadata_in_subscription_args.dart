@@ -17,16 +17,15 @@ class GetAssessmentMetadataInSubscriptionArgs {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'assessmentMetadataName': assessmentMetadataName};
+    return <String, dynamic>{
+      'assessmentMetadataName': assessmentMetadataName,
+    };
   }
 
-  factory GetAssessmentMetadataInSubscriptionArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetAssessmentMetadataInSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return GetAssessmentMetadataInSubscriptionArgs(
-      assessmentMetadataName: pulumi.Input.fromValue(
-        map['assessmentMetadataName'] as String,
-      ),
+      assessmentMetadataName: pulumi.Input.fromValue(map['assessmentMetadataName'] as String),
     );
   }
 }
+

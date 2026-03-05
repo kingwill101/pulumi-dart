@@ -26,3 +26,4 @@ enum DiscoveryNoteAnalysisKind {
     throw ArgumentError('Unknown DiscoveryNoteAnalysisKind value: $value');
   }
 }
+

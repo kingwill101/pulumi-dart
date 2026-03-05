@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResponseHeadersPolicySecurityHeadersConfigXssProtection {
   /// Whether CloudFront includes the `mode=block` directive in the `X-XSS-Protection` header.
   final pulumi.Input<bool>? modeBlock;
-
   /// Whether CloudFront overrides the `X-XSS-Protection` HTTP response header received from the origin with the one specified in this response headers policy.
   final pulumi.Input<bool> override;
-
   /// A Boolean value that determines the value of the `X-XSS-Protection` HTTP response header. When this setting is `true`, the value of the `X-XSS-Protection` header is `1`. When this setting is `false`, the value of the `X-XSS-Protection` header is `0`.
   final pulumi.Input<bool> protection;
-
   /// A reporting URI, which CloudFront uses as the value of the report directive in the `X-XSS-Protection` header. You cannot specify a `report_uri` when `mode_block` is `true`.
   final pulumi.Input<String>? reportUri;
 
@@ -36,22 +33,13 @@ class ResponseHeadersPolicySecurityHeadersConfigXssProtection {
     };
   }
 
-  factory ResponseHeadersPolicySecurityHeadersConfigXssProtection.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResponseHeadersPolicySecurityHeadersConfigXssProtection.fromMap(Map<String, dynamic> map) {
     return ResponseHeadersPolicySecurityHeadersConfigXssProtection(
-      modeBlock: (() {
-        final guardedValue = map['modeBlock'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      modeBlock: (() { final guardedValue = map['modeBlock']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       override: pulumi.Input.fromValue(map['override'] as bool),
       protection: pulumi.Input.fromValue(map['protection'] as bool),
-      reportUri: (() {
-        final guardedValue = map['reportUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      reportUri: (() { final guardedValue = map['reportUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -15,3 +15,4 @@ enum ExtendedLocationType {
     throw ArgumentError('Unknown ExtendedLocationType value: $value');
   }
 }
+

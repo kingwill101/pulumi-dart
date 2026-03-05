@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getNetworkManagerNetworkGroup.
 class GetNetworkManagerNetworkGroupResult {
   /// A description of the Network Manager Network Group.
   final String description;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The member type of the Network Manager Network Group.
   final String memberType;
   final String name;
@@ -37,9 +36,7 @@ class GetNetworkManagerNetworkGroupResult {
     };
   }
 
-  factory GetNetworkManagerNetworkGroupResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetNetworkManagerNetworkGroupResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkManagerNetworkGroupResult(
       description: map['description'] as String,
       id: map['id'] as String,
@@ -49,3 +46,4 @@ class GetNetworkManagerNetworkGroupResult {
     );
   }
 }
+

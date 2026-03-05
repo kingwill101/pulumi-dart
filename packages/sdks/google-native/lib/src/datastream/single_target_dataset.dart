@@ -9,19 +9,20 @@ class SingleTargetDataset {
 
   /// Creates a new [SingleTargetDataset].
   /// [datasetId] The dataset ID of the target dataset. DatasetIds allowed characters: https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets#datasetreference.
-  SingleTargetDataset({this.datasetId});
+  SingleTargetDataset({
+    this.datasetId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'datasetId': ?datasetId};
+    return <String, dynamic>{
+      'datasetId': ?datasetId,
+    };
   }
 
   factory SingleTargetDataset.fromMap(Map<String, dynamic> map) {
     return SingleTargetDataset(
-      datasetId: (() {
-        final guardedValue = map['datasetId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      datasetId: (() { final guardedValue = map['datasetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

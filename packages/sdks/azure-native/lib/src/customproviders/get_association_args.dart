@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAssociationArgs {
   /// The name of the association.
   final pulumi.Input<String> associationName;
-
   /// The scope of the association.
   final pulumi.Input<String> scope;
 
   /// Creates a new [GetAssociationArgs].
   /// [associationName] The name of the association.
   /// [scope] The scope of the association.
-  GetAssociationArgs({required this.associationName, required this.scope});
+  GetAssociationArgs({
+    required this.associationName,
+    required this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,3 +34,4 @@ class GetAssociationArgs {
     );
   }
 }
+

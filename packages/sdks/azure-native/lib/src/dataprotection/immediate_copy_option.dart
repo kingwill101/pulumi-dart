@@ -10,10 +10,14 @@ class ImmediateCopyOption {
 
   /// Creates a new [ImmediateCopyOption].
   /// [objectType] Type of the specific object - used for deserializing
-  ImmediateCopyOption({required this.objectType});
+  ImmediateCopyOption({
+    required this.objectType,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'objectType': objectType};
+    return <String, dynamic>{
+      'objectType': objectType,
+    };
   }
 
   factory ImmediateCopyOption.fromMap(Map<String, dynamic> map) {
@@ -22,3 +26,4 @@ class ImmediateCopyOption {
     );
   }
 }
+

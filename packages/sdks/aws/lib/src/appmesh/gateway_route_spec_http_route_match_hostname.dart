@@ -5,33 +5,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GatewayRouteSpecHttpRouteMatchHostname {
   /// Exact host name to match on.
   final pulumi.Input<String>? exact;
-
   /// Specified ending characters of the host name to match on.
   final pulumi.Input<String>? suffix;
 
   /// Creates a new [GatewayRouteSpecHttpRouteMatchHostname].
   /// [exact] Exact host name to match on.
   /// [suffix] Specified ending characters of the host name to match on.
-  GatewayRouteSpecHttpRouteMatchHostname({this.exact, this.suffix});
+  GatewayRouteSpecHttpRouteMatchHostname({
+    this.exact,
+    this.suffix,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'exact': ?exact, 'suffix': ?suffix};
+    return <String, dynamic>{
+      'exact': ?exact,
+      'suffix': ?suffix,
+    };
   }
 
-  factory GatewayRouteSpecHttpRouteMatchHostname.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GatewayRouteSpecHttpRouteMatchHostname.fromMap(Map<String, dynamic> map) {
     return GatewayRouteSpecHttpRouteMatchHostname(
-      exact: (() {
-        final guardedValue = map['exact'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      suffix: (() {
-        final guardedValue = map['suffix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      exact: (() { final guardedValue = map['exact']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      suffix: (() { final guardedValue = map['suffix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

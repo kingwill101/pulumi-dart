@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApplicationGroupArgs {
   /// The Application Group name
   final pulumi.Input<String> applicationGroupName;
-
   /// The Namespace name
   final pulumi.Input<String> namespaceName;
-
   /// Name of the resource group within the azure subscription.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,13 +34,10 @@ class GetApplicationGroupArgs {
 
   factory GetApplicationGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetApplicationGroupArgs(
-      applicationGroupName: pulumi.Input.fromValue(
-        map['applicationGroupName'] as String,
-      ),
+      applicationGroupName: pulumi.Input.fromValue(map['applicationGroupName'] as String),
       namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

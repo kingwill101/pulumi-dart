@@ -15,3 +15,4 @@ enum SmbAccessBasedEnumeration {
     throw ArgumentError('Unknown SmbAccessBasedEnumeration value: $value');
   }
 }
+

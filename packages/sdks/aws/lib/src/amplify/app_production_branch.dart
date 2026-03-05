@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppProductionBranch {
   /// Branch name for the production branch.
   final pulumi.Input<String>? branchName;
-
   /// Last deploy time of the production branch.
   final pulumi.Input<String>? lastDeployTime;
-
   /// Status of the production branch.
   final pulumi.Input<String>? status;
-
   /// Thumbnail URL for the production branch.
   final pulumi.Input<String>? thumbnailUrl;
 
@@ -38,26 +35,11 @@ class AppProductionBranch {
 
   factory AppProductionBranch.fromMap(Map<String, dynamic> map) {
     return AppProductionBranch(
-      branchName: (() {
-        final guardedValue = map['branchName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      lastDeployTime: (() {
-        final guardedValue = map['lastDeployTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      thumbnailUrl: (() {
-        final guardedValue = map['thumbnailUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      branchName: (() { final guardedValue = map['branchName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      lastDeployTime: (() { final guardedValue = map['lastDeployTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      thumbnailUrl: (() { final guardedValue = map['thumbnailUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

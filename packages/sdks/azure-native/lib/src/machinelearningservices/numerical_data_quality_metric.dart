@@ -16,3 +16,4 @@ enum NumericalDataQualityMetric {
     throw ArgumentError('Unknown NumericalDataQualityMetric value: $value');
   }
 }
+

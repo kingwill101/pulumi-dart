@@ -8,19 +8,20 @@ class IPRuleResponse {
 
   /// Creates a new [IPRuleResponse].
   /// [addressPrefix] Specifies the IP or IP range in CIDR format. Only IPV4 address is allowed.
-  IPRuleResponse({this.addressPrefix});
+  IPRuleResponse({
+    this.addressPrefix,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'addressPrefix': ?addressPrefix};
+    return <String, dynamic>{
+      'addressPrefix': ?addressPrefix,
+    };
   }
 
   factory IPRuleResponse.fromMap(Map<String, dynamic> map) {
     return IPRuleResponse(
-      addressPrefix: (() {
-        final guardedValue = map['addressPrefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      addressPrefix: (() { final guardedValue = map['addressPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

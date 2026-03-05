@@ -8,62 +8,29 @@ import 'authentication_rule_response.dart';
 class AuthenticationResponse {
   /// Defines a set of authentication providers that a service supports.
   final pulumi.Input<List<AuthProviderResponse>> providers;
-
   /// A list of authentication rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
   final pulumi.Input<List<AuthenticationRuleResponse>> rules;
 
   /// Creates a new [AuthenticationResponse].
   /// [providers] Defines a set of authentication providers that a service supports.
   /// [rules] A list of authentication rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
-  AuthenticationResponse({required this.providers, required this.rules});
+  AuthenticationResponse({
+    required this.providers,
+    required this.rules,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'providers':
-          pulumi.Input.mapInputValue<
-            List<AuthProviderResponse>,
-            List<Map<String, dynamic>>
-          >(
-            providers,
-            (value) =>
-                pulumi.Input.encodeList<
-                  AuthProviderResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'rules':
-          pulumi.Input.mapInputValue<
-            List<AuthenticationRuleResponse>,
-            List<Map<String, dynamic>>
-          >(
-            rules,
-            (value) =>
-                pulumi.Input.encodeList<
-                  AuthenticationRuleResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'providers': pulumi.Input.mapInputValue<List<AuthProviderResponse>, List<Map<String, dynamic>>>(providers, (value) => pulumi.Input.encodeList<AuthProviderResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'rules': pulumi.Input.mapInputValue<List<AuthenticationRuleResponse>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<AuthenticationRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AuthenticationResponse.fromMap(Map<String, dynamic> map) {
     return AuthenticationResponse(
-      providers: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<AuthProviderResponse>(
-          map['providers']!,
-          (value) => AuthProviderResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      rules: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<AuthenticationRuleResponse>(
-          map['rules']!,
-          (value) => AuthenticationRuleResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      providers: pulumi.Input.fromValue(pulumi.Input.decodeList<AuthProviderResponse>(map['providers']!, (value) => AuthProviderResponse.fromMap((value as Map).cast<String, dynamic>()))),
+      rules: pulumi.Input.fromValue(pulumi.Input.decodeList<AuthenticationRuleResponse>(map['rules']!, (value) => AuthenticationRuleResponse.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

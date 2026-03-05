@@ -299,61 +299,44 @@ class NetworkInterface extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** To use Accelerated Networking in an Availability Set, the Availability Set must be deployed onto an Accelerated Networking enabled cluster.
   late final pulumi.Output<bool?> acceleratedNetworkingEnabled;
-
   /// If the Virtual Machine using this Network Interface is part of an Availability Set, then this list will have the union of all DNS servers from all Network Interfaces that are part of the Availability Set.
   late final pulumi.Output<List<String>> appliedDnsServers;
-
   /// Specifies the auxiliary mode used to enable network high-performance feature on Network Virtual Appliances (NVAs). This feature offers competitive performance in Connections Per Second (CPS) optimization, along with improvements to handling large amounts of simultaneous connections. Possible values are `AcceleratedConnections`, `Floating`, `MaxConnections` and `None`.
   ///
   /// &gt; **Note:** `auxiliary_mode` is in **Preview** and requires that the preview is enabled - [more information can be found in the Azure documentation](https://learn.microsoft.com/azure/networking/nva-accelerated-connections#prerequisites).
   late final pulumi.Output<String?> auxiliaryMode;
-
   /// Specifies the SKU used for the network high-performance feature on Network Virtual Appliances (NVAs). Possible values are `A8`, `A4`, `A1`, `A2` and `None`.
   ///
   /// &gt; **Note:** `auxiliary_sku` is in **Preview** and requires that the preview is enabled - [more information can be found in the Azure documentation](https://learn.microsoft.com/azure/networking/nva-accelerated-connections#prerequisites).
   late final pulumi.Output<String?> auxiliarySku;
-
   /// A list of IP Addresses defining the DNS Servers which should be used for this Network Interface.
   ///
   /// &gt; **Note:** Configuring DNS Servers on the Network Interface will override the DNS Servers defined on the Virtual Network.
   late final pulumi.Output<List<String>?> dnsServers;
-
   /// Specifies the Edge Zone within the Azure Region where this Network Interface should exist. Changing this forces a new Network Interface to be created.
   late final pulumi.Output<String?> edgeZone;
-
   /// The (relative) DNS Name used for internal communications between Virtual Machines in the same Virtual Network.
   late final pulumi.Output<String?> internalDnsNameLabel;
-
   /// Even if `internal_dns_name_label` is not specified, a DNS entry is created for the primary NIC of the VM. This DNS name can be constructed by concatenating the VM name with the value of `internal_domain_name_suffix`.
   late final pulumi.Output<String> internalDomainNameSuffix;
-
   /// One or more `ip_configuration` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> ipConfigurations;
-
   /// Should IP Forwarding be enabled? Defaults to `false`.
   late final pulumi.Output<bool?> ipForwardingEnabled;
-
   /// The location where the Network Interface should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The Media Access Control (MAC) Address of the Network Interface.
   late final pulumi.Output<String> macAddress;
-
   /// The name of the Network Interface. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The first private IP address of the network interface.
   late final pulumi.Output<String> privateIpAddress;
-
   /// The private IP addresses of the network interface.
   late final pulumi.Output<List<String>> privateIpAddresses;
-
   /// The name of the Resource Group in which to create the Network Interface. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The ID of the Virtual Machine which this Network Interface is connected to.
   late final pulumi.Output<String> virtualMachineId;
 
@@ -366,26 +349,20 @@ class NetworkInterface extends pulumi.CustomResource {
     NetworkInterfaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/networkInterface:NetworkInterface',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    acceleratedNetworkingEnabled = registerOutput<bool?>(
-      'acceleratedNetworkingEnabled',
-    );
+          'azure:network/networkInterface:NetworkInterface',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    acceleratedNetworkingEnabled = registerOutput<bool?>('acceleratedNetworkingEnabled');
     appliedDnsServers = registerOutput<List<String>>('appliedDnsServers');
     auxiliaryMode = registerOutput<String?>('auxiliaryMode');
     auxiliarySku = registerOutput<String?>('auxiliarySku');
     dnsServers = registerOutput<List<String>?>('dnsServers');
     edgeZone = registerOutput<String?>('edgeZone');
     internalDnsNameLabel = registerOutput<String?>('internalDnsNameLabel');
-    internalDomainNameSuffix = registerOutput<String>(
-      'internalDomainNameSuffix',
-    );
-    ipConfigurations = registerOutput<List<Map<String, dynamic>>>(
-      'ipConfigurations',
-    );
+    internalDomainNameSuffix = registerOutput<String>('internalDomainNameSuffix');
+    ipConfigurations = registerOutput<List<Map<String, dynamic>>>('ipConfigurations');
     ipForwardingEnabled = registerOutput<bool?>('ipForwardingEnabled');
     location = registerOutput<String>('location');
     macAddress = registerOutput<String>('macAddress');
@@ -415,26 +392,20 @@ class NetworkInterface extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/networkInterface:NetworkInterface',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    acceleratedNetworkingEnabled = registerOutput<bool?>(
-      'acceleratedNetworkingEnabled',
-    );
+          'azure:network/networkInterface:NetworkInterface',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    acceleratedNetworkingEnabled = registerOutput<bool?>('acceleratedNetworkingEnabled');
     appliedDnsServers = registerOutput<List<String>>('appliedDnsServers');
     auxiliaryMode = registerOutput<String?>('auxiliaryMode');
     auxiliarySku = registerOutput<String?>('auxiliarySku');
     dnsServers = registerOutput<List<String>?>('dnsServers');
     edgeZone = registerOutput<String?>('edgeZone');
     internalDnsNameLabel = registerOutput<String?>('internalDnsNameLabel');
-    internalDomainNameSuffix = registerOutput<String>(
-      'internalDomainNameSuffix',
-    );
-    ipConfigurations = registerOutput<List<Map<String, dynamic>>>(
-      'ipConfigurations',
-    );
+    internalDomainNameSuffix = registerOutput<String>('internalDomainNameSuffix');
+    ipConfigurations = registerOutput<List<Map<String, dynamic>>>('ipConfigurations');
     ipForwardingEnabled = registerOutput<bool?>('ipForwardingEnabled');
     location = registerOutput<String>('location');
     macAddress = registerOutput<String>('macAddress');

@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StateStoreResourceRule {
   /// Allowed keyTypes pattern, string, binary. The key type used for matching, for example pattern tries to match the key to a glob-style pattern and string checks key is equal to value provided in keys.
   final pulumi.Input<String> keyType;
-
   /// Give access to state store keys for the corresponding principals defined. When key type is pattern set glob-style pattern (e.g., '*', 'clients/*').
   final pulumi.Input<List<String>> keys;
-
   /// Give access for `Read`, `Write` and `ReadWrite` access level.
   final pulumi.Input<String> method;
 
@@ -39,3 +37,4 @@ class StateStoreResourceRule {
     );
   }
 }
+

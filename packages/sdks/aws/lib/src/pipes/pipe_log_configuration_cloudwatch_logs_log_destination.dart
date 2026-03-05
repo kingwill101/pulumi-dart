@@ -8,17 +8,20 @@ class PipeLogConfigurationCloudwatchLogsLogDestination {
 
   /// Creates a new [PipeLogConfigurationCloudwatchLogsLogDestination].
   /// [logGroupArn] Amazon Web Services Resource Name (ARN) for the CloudWatch log group to which EventBridge sends the log records.
-  PipeLogConfigurationCloudwatchLogsLogDestination({required this.logGroupArn});
+  PipeLogConfigurationCloudwatchLogsLogDestination({
+    required this.logGroupArn,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'logGroupArn': logGroupArn};
+    return <String, dynamic>{
+      'logGroupArn': logGroupArn,
+    };
   }
 
-  factory PipeLogConfigurationCloudwatchLogsLogDestination.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PipeLogConfigurationCloudwatchLogsLogDestination.fromMap(Map<String, dynamic> map) {
     return PipeLogConfigurationCloudwatchLogsLogDestination(
       logGroupArn: pulumi.Input.fromValue(map['logGroupArn'] as String),
     );
   }
 }
+

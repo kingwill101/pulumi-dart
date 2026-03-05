@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPartnerNamespaceArgs {
   /// The name of the Event Grid Partner Namespace resource.
   final pulumi.Input<String> name;
-
   /// The name of the resource group in which the Event Grid Partner Namespace exists.
   final pulumi.Input<String> resourceGroupName;
 
@@ -31,9 +30,8 @@ class GetPartnerNamespaceArgs {
   factory GetPartnerNamespaceArgs.fromMap(Map<String, dynamic> map) {
     return GetPartnerNamespaceArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

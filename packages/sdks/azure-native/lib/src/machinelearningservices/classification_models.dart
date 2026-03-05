@@ -26,3 +26,4 @@ enum ClassificationModels {
     throw ArgumentError('Unknown ClassificationModels value: $value');
   }
 }
+

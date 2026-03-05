@@ -7,17 +7,14 @@ import 'get_cluster_identity.dart';
 class GetClusterResult {
   /// The Kusto Cluster URI to be used for data ingestion.
   final String dataIngestionUri;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// An `identity` block as defined below.
   final List<GetClusterIdentity> identities;
   final String location;
   final String name;
   final String resourceGroupName;
   final Map<String, String> tags;
-
   /// The FQDN of the Azure Kusto Cluster.
   final String uri;
 
@@ -45,11 +42,7 @@ class GetClusterResult {
     return <String, dynamic>{
       'dataIngestionUri': dataIngestionUri,
       'id': id,
-      'identities':
-          pulumi.Input.encodeList<GetClusterIdentity, Map<String, dynamic>>(
-            identities,
-            (value) => value.toMap(),
-          ),
+      'identities': pulumi.Input.encodeList<GetClusterIdentity, Map<String, dynamic>>(identities, (value) => value.toMap()),
       'location': location,
       'name': name,
       'resourceGroupName': resourceGroupName,
@@ -62,11 +55,7 @@ class GetClusterResult {
     return GetClusterResult(
       dataIngestionUri: map['dataIngestionUri'] as String,
       id: map['id'] as String,
-      identities: pulumi.Input.decodeList<GetClusterIdentity>(
-        map['identities']!,
-        (value) =>
-            GetClusterIdentity.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      identities: pulumi.Input.decodeList<GetClusterIdentity>(map['identities']!, (value) => GetClusterIdentity.fromMap((value as Map).cast<String, dynamic>())),
       location: map['location'] as String,
       name: map['name'] as String,
       resourceGroupName: map['resourceGroupName'] as String,
@@ -75,3 +64,4 @@ class GetClusterResult {
     );
   }
 }
+

@@ -8,22 +8,16 @@ import 'azure_firewall_nat_rule_response.dart';
 class AzureFirewallNatRuleCollectionResponse {
   /// The action type of a NAT rule collection.
   final pulumi.Input<AzureFirewallNatRCActionResponse>? action;
-
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
-
   /// Resource ID.
   final pulumi.Input<String>? id;
-
   /// The name of the resource that is unique within the Azure firewall. This name can be used to access the resource.
   final pulumi.Input<String>? name;
-
   /// Priority of the NAT rule collection resource.
   final pulumi.Input<int>? priority;
-
   /// The provisioning state of the NAT rule collection resource.
   final pulumi.Input<String> provisioningState;
-
   /// Collection of rules used by a NAT rule collection.
   final pulumi.Input<List<AzureFirewallNatRuleResponse>>? rules;
 
@@ -47,75 +41,26 @@ class AzureFirewallNatRuleCollectionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'action':
-          ?pulumi.Input.mapOptionalInputValue<
-            AzureFirewallNatRCActionResponse,
-            Map<String, dynamic>
-          >(action, (value) => value.toMap()),
+      'action': ?pulumi.Input.mapOptionalInputValue<AzureFirewallNatRCActionResponse, Map<String, dynamic>>(action, (value) => value.toMap()),
       'etag': etag,
       'id': ?id,
       'name': ?name,
       'priority': ?priority,
       'provisioningState': provisioningState,
-      'rules':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<AzureFirewallNatRuleResponse>,
-            List<Map<String, dynamic>>
-          >(
-            rules,
-            (value) =>
-                pulumi.Input.encodeList<
-                  AzureFirewallNatRuleResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'rules': ?pulumi.Input.mapOptionalInputValue<List<AzureFirewallNatRuleResponse>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<AzureFirewallNatRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory AzureFirewallNatRuleCollectionResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AzureFirewallNatRuleCollectionResponse.fromMap(Map<String, dynamic> map) {
     return AzureFirewallNatRuleCollectionResponse(
-      action: (() {
-        final guardedValue = map['action'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AzureFirewallNatRCActionResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureFirewallNatRCActionResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       etag: pulumi.Input.fromValue(map['etag'] as String),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      priority: (() {
-        final guardedValue = map['priority'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
-      rules: (() {
-        final guardedValue = map['rules'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<AzureFirewallNatRuleResponse>(
-            guardedValue,
-            (value) => AzureFirewallNatRuleResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
+      rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AzureFirewallNatRuleResponse>(guardedValue, (value) => AzureFirewallNatRuleResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

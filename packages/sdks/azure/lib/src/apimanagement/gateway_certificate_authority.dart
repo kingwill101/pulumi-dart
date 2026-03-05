@@ -365,13 +365,10 @@ import 'gateway_certificate_authority_state.dart';
 class GatewayCertificateAuthority extends pulumi.CustomResource {
   /// The ID of the API Management Service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> apiManagementId;
-
   /// The name of the API Management Certificate. Changing this forces a new resource to be created.
   late final pulumi.Output<String> certificateName;
-
   /// The name of the API Management Gateway. Changing this forces a new resource to be created.
   late final pulumi.Output<String> gatewayName;
-
   /// Whether the API Management Gateway Certificate Authority is trusted.
   late final pulumi.Output<bool?> isTrusted;
 
@@ -384,11 +381,11 @@ class GatewayCertificateAuthority extends pulumi.CustomResource {
     GatewayCertificateAuthorityArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/gatewayCertificateAuthority:GatewayCertificateAuthority',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:apimanagement/gatewayCertificateAuthority:GatewayCertificateAuthority',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiManagementId = registerOutput<String>('apiManagementId');
     certificateName = registerOutput<String>('certificateName');
     gatewayName = registerOutput<String>('gatewayName');
@@ -413,11 +410,11 @@ class GatewayCertificateAuthority extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/gatewayCertificateAuthority:GatewayCertificateAuthority',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:apimanagement/gatewayCertificateAuthority:GatewayCertificateAuthority',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiManagementId = registerOutput<String>('apiManagementId');
     certificateName = registerOutput<String>('certificateName');
     gatewayName = registerOutput<String>('gatewayName');

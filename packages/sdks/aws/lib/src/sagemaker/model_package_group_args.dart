@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ModelPackageGroupArgs {
   /// A description for the model group.
   final pulumi.Input<String>? modelPackageGroupDescription;
-
   /// The name of the model group.
   final pulumi.Input<String> modelPackageGroupName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -42,26 +39,11 @@ class ModelPackageGroupArgs {
 
   factory ModelPackageGroupArgs.fromMap(Map<String, dynamic> map) {
     return ModelPackageGroupArgs(
-      modelPackageGroupDescription: (() {
-        final guardedValue = map['modelPackageGroupDescription'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      modelPackageGroupName: pulumi.Input.fromValue(
-        map['modelPackageGroupName'] as String,
-      ),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      modelPackageGroupDescription: (() { final guardedValue = map['modelPackageGroupDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      modelPackageGroupName: pulumi.Input.fromValue(map['modelPackageGroupName'] as String),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

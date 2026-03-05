@@ -8,29 +8,17 @@ import 'partner_tenant_args.dart';
 class PartnerTenant extends pulumi.CustomResource {
   /// Timestamp when the resource was created.
   late final pulumi.Output<String> createTime;
-
   /// Optional. An arbitrary caller-provided name for the PartnerTenant. Cannot exceed 64 characters.
   late final pulumi.Output<String> displayName;
-
   /// Optional. Group information for the users enabled to use the partnerTenant. If the group information is not provided then the partnerTenant will be enabled for all users.
-  late final pulumi.Output<
-    GoogleCloudBeyondcorpPartnerservicesV1alphaGroupResponse
-  >
-  group;
-
+  late final pulumi.Output<GoogleCloudBeyondcorpPartnerservicesV1alphaGroupResponse> group;
   /// Unique resource name of the PartnerTenant. The name is ignored when creating PartnerTenant.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> organizationId;
-
   /// Optional. Metadata provided by the Partner associated with PartnerTenant.
-  late final pulumi.Output<
-    GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataResponse
-  >
-  partnerMetadata;
-
+  late final pulumi.Output<GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataResponse> partnerMetadata;
   /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
   late final pulumi.Output<String?> requestId;
-
   /// Timestamp when the resource was last modified.
   late final pulumi.Output<String> updateTime;
 
@@ -43,41 +31,17 @@ class PartnerTenant extends pulumi.CustomResource {
     PartnerTenantArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'google-native:beyondcorp/v1alpha:PartnerTenant',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'google-native:beyondcorp/v1alpha:PartnerTenant',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String>('displayName');
-    group =
-        registerOutput<
-          GoogleCloudBeyondcorpPartnerservicesV1alphaGroupResponse
-        >(
-          'group',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return GoogleCloudBeyondcorpPartnerservicesV1alphaGroupResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    group = registerOutput<GoogleCloudBeyondcorpPartnerservicesV1alphaGroupResponse>('group', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudBeyondcorpPartnerservicesV1alphaGroupResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     organizationId = registerOutput<String>('organizationId');
-    partnerMetadata =
-        registerOutput<
-          GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataResponse
-        >(
-          'partnerMetadata',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    partnerMetadata = registerOutput<GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataResponse>('partnerMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     requestId = registerOutput<String?>('requestId');
     updateTime = registerOutput<String>('updateTime');
   }

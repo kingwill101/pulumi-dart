@@ -9,21 +9,20 @@ class VirtualizationTypeEnumValueResponse {
 
   /// Creates a new [VirtualizationTypeEnumValueResponse].
   /// [value] Property value
-  VirtualizationTypeEnumValueResponse({this.value});
+  VirtualizationTypeEnumValueResponse({
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': ?value};
+    return <String, dynamic>{
+      'value': ?value,
+    };
   }
 
-  factory VirtualizationTypeEnumValueResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VirtualizationTypeEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return VirtualizationTypeEnumValueResponse(
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

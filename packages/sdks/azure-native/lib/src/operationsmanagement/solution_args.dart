@@ -11,19 +11,14 @@ import 'solution_properties.dart';
 class SolutionArgs {
   /// Resource location
   final pulumi.Input<String>? location;
-
   /// Plan for solution object supported by the OperationsManagement resource provider.
   final pulumi.Input<SolutionPlan>? plan;
-
   /// Properties for solution object supported by the OperationsManagement resource provider.
   final pulumi.Input<SolutionProperties>? properties;
-
   /// The name of the resource group to get. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// User Solution Name.
   final pulumi.Input<String>? solutionName;
-
   /// Resource tags
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -46,16 +41,8 @@ class SolutionArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'location': ?location,
-      'plan':
-          ?pulumi.Input.mapOptionalInputValue<
-            SolutionPlan,
-            Map<String, dynamic>
-          >(plan, (value) => value.toMap()),
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            SolutionProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'plan': ?pulumi.Input.mapOptionalInputValue<SolutionPlan, Map<String, dynamic>>(plan, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<SolutionProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'solutionName': ?solutionName,
       'tags': ?tags,
@@ -64,42 +51,13 @@ class SolutionArgs {
 
   factory SolutionArgs.fromMap(Map<String, dynamic> map) {
     return SolutionArgs(
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      plan: (() {
-        final guardedValue = map['plan'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SolutionPlan.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SolutionProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      solutionName: (() {
-        final guardedValue = map['solutionName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      plan: (() { final guardedValue = map['plan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SolutionPlan.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SolutionProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      solutionName: (() { final guardedValue = map['solutionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

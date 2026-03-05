@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EventPublishConfigDatafusionV1beta1 {
   /// Option to enable Event Publishing.
   final pulumi.Input<bool> enabled;
-
   /// The resource name of the Pub/Sub topic. Format: projects/{project_id}/topics/{topic_id}
   final pulumi.Input<String> topic;
 
@@ -19,15 +18,17 @@ class EventPublishConfigDatafusionV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled, 'topic': topic};
+    return <String, dynamic>{
+      'enabled': enabled,
+      'topic': topic,
+    };
   }
 
-  factory EventPublishConfigDatafusionV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EventPublishConfigDatafusionV1beta1.fromMap(Map<String, dynamic> map) {
     return EventPublishConfigDatafusionV1beta1(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
       topic: pulumi.Input.fromValue(map['topic'] as String),
     );
   }
 }
+

@@ -11,14 +11,11 @@ class SynonymSetArgs {
   /// This is a freeform field. Example contexts can be "sales," "engineering," "real estate," "accounting," etc. The context can be supplied during search requests.
   final pulumi.Input<String>? context;
   final pulumi.Input<String>? location;
-
   /// The resource name of the SynonymSet This is mandatory for google.api.resource. Format: projects/{project_number}/locations/{location}/synonymSets/{context}.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
-
   /// List of Synonyms for the context.
-  final pulumi.Input<List<GoogleCloudContentwarehouseV1SynonymSetSynonym>>?
-  synonyms;
+  final pulumi.Input<List<GoogleCloudContentwarehouseV1SynonymSetSynonym>>? synonyms;
 
   /// Creates a new [SynonymSetArgs].
   /// [context] This is a freeform field. Example contexts can be "sales," "engineering," "real estate," "accounting," etc. The context can be supplied during search requests.
@@ -40,56 +37,18 @@ class SynonymSetArgs {
       'location': ?location,
       'name': ?name,
       'project': ?project,
-      'synonyms':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GoogleCloudContentwarehouseV1SynonymSetSynonym>,
-            List<Map<String, dynamic>>
-          >(
-            synonyms,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GoogleCloudContentwarehouseV1SynonymSetSynonym,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'synonyms': ?pulumi.Input.mapOptionalInputValue<List<GoogleCloudContentwarehouseV1SynonymSetSynonym>, List<Map<String, dynamic>>>(synonyms, (value) => pulumi.Input.encodeList<GoogleCloudContentwarehouseV1SynonymSetSynonym, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory SynonymSetArgs.fromMap(Map<String, dynamic> map) {
     return SynonymSetArgs(
-      context: (() {
-        final guardedValue = map['context'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      synonyms: (() {
-        final guardedValue = map['synonyms'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi
-              .Input.decodeList<GoogleCloudContentwarehouseV1SynonymSetSynonym>(
-            guardedValue,
-            (value) => GoogleCloudContentwarehouseV1SynonymSetSynonym.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      context: (() { final guardedValue = map['context']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      synonyms: (() { final guardedValue = map['synonyms']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudContentwarehouseV1SynonymSetSynonym>(guardedValue, (value) => GoogleCloudContentwarehouseV1SynonymSetSynonym.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

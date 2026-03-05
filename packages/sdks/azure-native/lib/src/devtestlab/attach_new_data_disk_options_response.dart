@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AttachNewDataDiskOptionsResponse {
   /// The name of the disk to be attached.
   final pulumi.Input<String>? diskName;
-
   /// Size of the disk to be attached in Gibibytes.
   final pulumi.Input<int>? diskSizeGiB;
-
   /// The storage type for the disk (i.e. Standard, Premium).
   final pulumi.Input<String>? diskType;
 
@@ -33,21 +31,10 @@ class AttachNewDataDiskOptionsResponse {
 
   factory AttachNewDataDiskOptionsResponse.fromMap(Map<String, dynamic> map) {
     return AttachNewDataDiskOptionsResponse(
-      diskName: (() {
-        final guardedValue = map['diskName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      diskSizeGiB: (() {
-        final guardedValue = map['diskSizeGiB'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      diskType: (() {
-        final guardedValue = map['diskType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      diskName: (() { final guardedValue = map['diskName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      diskSizeGiB: (() { final guardedValue = map['diskSizeGiB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      diskType: (() { final guardedValue = map['diskType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

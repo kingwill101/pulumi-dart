@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getRegistryScopeMap.
 class GetRegistryScopeMapResult {
   /// The actions for the Scope Map.
   final List<String> actions;
   final String containerRegistryName;
   final String description;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
@@ -50,3 +50,4 @@ class GetRegistryScopeMapResult {
     );
   }
 }
+

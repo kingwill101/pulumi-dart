@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetExtensionMonitoringStatusArgs {
   /// The name of the cluster.
   final pulumi.Input<String> clusterName;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -31,9 +30,8 @@ class GetExtensionMonitoringStatusArgs {
   factory GetExtensionMonitoringStatusArgs.fromMap(Map<String, dynamic> map) {
     return GetExtensionMonitoringStatusArgs(
       clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

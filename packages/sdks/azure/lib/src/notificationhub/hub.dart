@@ -219,27 +219,20 @@ class Hub extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** Removing the `apns_credential` block will currently force a recreation of this resource [due to this bug in the Azure SDK for Go](https://github.com/Azure/azure-sdk-for-go/issues/2246) - we'll remove this limitation when the SDK bug is fixed.
   late final pulumi.Output<HubApnsCredential?> apnsCredential;
-
   /// A `browser_credential` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<HubBrowserCredential?> browserCredential;
-
   /// A `gcm_credential` block as defined below.
   ///
   /// &gt; **Note:** Removing the `gcm_credential` block will currently force a recreation of this resource [due to this bug in the Azure SDK for Go](https://github.com/Azure/azure-sdk-for-go/issues/2246) - we'll remove this limitation when the SDK bug is fixed.
   late final pulumi.Output<HubGcmCredential?> gcmCredential;
-
   /// The Azure Region in which this Notification Hub Namespace exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The name to use for this Notification Hub. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the Notification Hub Namespace in which to create this Notification Hub. Changing this forces a new resource to be created.
   late final pulumi.Output<String> namespaceName;
-
   /// The name of the Resource Group in which the Notification Hub Namespace exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -247,43 +240,19 @@ class Hub extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Hub]. {@macro pulumi_notificationhub_hub_hub_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Hub(String name, {HubArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure:notificationhub/hub:Hub',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
-    apnsCredential = registerOutput<HubApnsCredential?>(
-      'apnsCredential',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HubApnsCredential.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    browserCredential = registerOutput<HubBrowserCredential?>(
-      'browserCredential',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HubBrowserCredential.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    gcmCredential = registerOutput<HubGcmCredential?>(
-      'gcmCredential',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HubGcmCredential.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+  Hub(
+    String name, {
+    HubArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure:notificationhub/hub:Hub',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    apnsCredential = registerOutput<HubApnsCredential?>('apnsCredential', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HubApnsCredential.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    browserCredential = registerOutput<HubBrowserCredential?>('browserCredential', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HubBrowserCredential.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    gcmCredential = registerOutput<HubGcmCredential?>('gcmCredential', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HubGcmCredential.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     namespaceName = registerOutput<String>('namespaceName');
@@ -292,7 +261,11 @@ class Hub extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Hub] resource's state with the given [name] and [id].
-  static Hub get(String name, pulumi.Input<String> id, {HubState? state}) {
+  static Hub get(
+    String name,
+    pulumi.Input<String> id, {
+    HubState? state,
+  }) {
     return Hub._get(
       name,
       state: state?.toMap(),
@@ -305,41 +278,14 @@ class Hub extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:notificationhub/hub:Hub',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    apnsCredential = registerOutput<HubApnsCredential?>(
-      'apnsCredential',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HubApnsCredential.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    browserCredential = registerOutput<HubBrowserCredential?>(
-      'browserCredential',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HubBrowserCredential.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    gcmCredential = registerOutput<HubGcmCredential?>(
-      'gcmCredential',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HubGcmCredential.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:notificationhub/hub:Hub',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    apnsCredential = registerOutput<HubApnsCredential?>('apnsCredential', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HubApnsCredential.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    browserCredential = registerOutput<HubBrowserCredential?>('browserCredential', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HubBrowserCredential.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    gcmCredential = registerOutput<HubGcmCredential?>('gcmCredential', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HubGcmCredential.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     namespaceName = registerOutput<String>('namespaceName');

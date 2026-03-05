@@ -8,19 +8,20 @@ class EventTargetSqsTarget {
 
   /// Creates a new [EventTargetSqsTarget].
   /// [messageGroupId] The FIFO message group ID to use as the target.
-  EventTargetSqsTarget({this.messageGroupId});
+  EventTargetSqsTarget({
+    this.messageGroupId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'messageGroupId': ?messageGroupId};
+    return <String, dynamic>{
+      'messageGroupId': ?messageGroupId,
+    };
   }
 
   factory EventTargetSqsTarget.fromMap(Map<String, dynamic> map) {
     return EventTargetSqsTarget(
-      messageGroupId: (() {
-        final guardedValue = map['messageGroupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      messageGroupId: (() { final guardedValue = map['messageGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -14,3 +14,4 @@ enum AutoScalingMechanismKind {
     throw ArgumentError('Unknown AutoScalingMechanismKind value: $value');
   }
 }
+

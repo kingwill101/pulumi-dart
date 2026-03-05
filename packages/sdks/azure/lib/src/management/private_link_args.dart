@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PrivateLinkArgs {
   /// The Azure Region where the Resource Management Private Link should exist. Changing this forces a new Resource Management Private Link to be created.
   final pulumi.Input<String>? location;
-
   /// Specifies the name of this Resource Management Private Link. Changing this forces a new Resource Management Private Link to be created.
   final pulumi.Input<String>? name;
-
   /// Specifies the name of the Resource Group within which this Resource Management Private Link should exist. Changing this forces a new Resource Management Private Link to be created.
   final pulumi.Input<String> resourceGroupName;
 
@@ -20,7 +18,11 @@ class PrivateLinkArgs {
   /// [location] The Azure Region where the Resource Management Private Link should exist. Changing this forces a new Resource Management Private Link to be created.
   /// [name] Specifies the name of this Resource Management Private Link. Changing this forces a new Resource Management Private Link to be created.
   /// [resourceGroupName] Specifies the name of the Resource Group within which this Resource Management Private Link should exist. Changing this forces a new Resource Management Private Link to be created.
-  PrivateLinkArgs({this.location, this.name, required this.resourceGroupName});
+  PrivateLinkArgs({
+    this.location,
+    this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,19 +34,10 @@ class PrivateLinkArgs {
 
   factory PrivateLinkArgs.fromMap(Map<String, dynamic> map) {
     return PrivateLinkArgs(
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDialogflowCxV3VersionVariantsVariantResponse {
   /// Whether the variant is for the control group.
   final pulumi.Input<bool> isControlGroup;
-
   /// Percentage of the traffic which should be routed to this version of flow. Traffic allocation for a single flow must sum up to 1.0.
   final pulumi.Input<double> trafficAllocation;
-
   /// The name of the flow version. Format: `projects//locations//agents//flows//versions/`.
   final pulumi.Input<String> version;
 
@@ -31,15 +29,12 @@ class GoogleCloudDialogflowCxV3VersionVariantsVariantResponse {
     };
   }
 
-  factory GoogleCloudDialogflowCxV3VersionVariantsVariantResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDialogflowCxV3VersionVariantsVariantResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3VersionVariantsVariantResponse(
       isControlGroup: pulumi.Input.fromValue(map['isControlGroup'] as bool),
-      trafficAllocation: pulumi.Input.fromValue(
-        map['trafficAllocation'] as double,
-      ),
+      trafficAllocation: pulumi.Input.fromValue(map['trafficAllocation'] as double),
       version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
+

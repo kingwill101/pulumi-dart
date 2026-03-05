@@ -7,7 +7,6 @@ import 'google_monitoring_v3_range_response.dart';
 class DistributionCutResponse {
   /// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries aggregating values. Must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE.
   final pulumi.Input<String> distributionFilter;
-
   /// Range of values considered "good." For a one-sided range, set one bound to an infinite value.
   final pulumi.Input<GoogleMonitoringV3RangeResponse> range;
 
@@ -22,24 +21,15 @@ class DistributionCutResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'distributionFilter': distributionFilter,
-      'range':
-          pulumi.Input.mapInputValue<
-            GoogleMonitoringV3RangeResponse,
-            Map<String, dynamic>
-          >(range, (value) => value.toMap()),
+      'range': pulumi.Input.mapInputValue<GoogleMonitoringV3RangeResponse, Map<String, dynamic>>(range, (value) => value.toMap()),
     };
   }
 
   factory DistributionCutResponse.fromMap(Map<String, dynamic> map) {
     return DistributionCutResponse(
-      distributionFilter: pulumi.Input.fromValue(
-        map['distributionFilter'] as String,
-      ),
-      range: pulumi.Input.fromValue(
-        GoogleMonitoringV3RangeResponse.fromMap(
-          (map['range']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      distributionFilter: pulumi.Input.fromValue(map['distributionFilter'] as String),
+      range: pulumi.Input.fromValue(GoogleMonitoringV3RangeResponse.fromMap((map['range']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

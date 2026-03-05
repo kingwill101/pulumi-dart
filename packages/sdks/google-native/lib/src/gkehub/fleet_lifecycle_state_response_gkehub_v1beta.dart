@@ -9,17 +9,20 @@ class FleetLifecycleStateResponseGkehubV1beta {
 
   /// Creates a new [FleetLifecycleStateResponseGkehubV1beta].
   /// [code] The current state of the Fleet resource.
-  FleetLifecycleStateResponseGkehubV1beta({required this.code});
+  FleetLifecycleStateResponseGkehubV1beta({
+    required this.code,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'code': code};
+    return <String, dynamic>{
+      'code': code,
+    };
   }
 
-  factory FleetLifecycleStateResponseGkehubV1beta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FleetLifecycleStateResponseGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return FleetLifecycleStateResponseGkehubV1beta(
       code: pulumi.Input.fromValue(map['code'] as String),
     );
   }
 }
+

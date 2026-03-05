@@ -4,22 +4,16 @@ enum GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium {
   phoneCall("PHONE_CALL"),
   chat("CHAT");
 
-  const GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium(
-    this.wireValue,
-  );
+  const GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium(this.wireValue);
   final String wireValue;
 
-  static GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium
-  fromValue(String value) {
-    for (final item
-        in GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium
-            .values) {
+  static GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium fromValue(String value) {
+    for (final item in GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium value: $value',
-    );
+    throw ArgumentError('Unknown GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium value: $value');
   }
 }
+

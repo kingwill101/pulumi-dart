@@ -12,10 +12,14 @@ class FileUploadLimitArgs {
 
   /// Creates a new [FileUploadLimitArgs].
   /// [limit] File Upload Threshold.
-  FileUploadLimitArgs({required this.limit});
+  FileUploadLimitArgs({
+    required this.limit,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'limit': limit};
+    return <String, dynamic>{
+      'limit': limit,
+    };
   }
 
   factory FileUploadLimitArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class FileUploadLimitArgs {
     );
   }
 }
+

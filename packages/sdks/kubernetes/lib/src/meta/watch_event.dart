@@ -15,10 +15,16 @@ class WatchEvent {
   /// Creates a new [WatchEvent].
   /// [object_] Object is:
   /// [type] Required.
-  WatchEvent({required this.object_, required this.type});
+  WatchEvent({
+    required this.object_,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'object': object_, 'type': type};
+    return <String, dynamic>{
+      'object': object_,
+      'type': type,
+    };
   }
 
   factory WatchEvent.fromMap(Map<String, dynamic> map) {
@@ -28,3 +34,4 @@ class WatchEvent {
     );
   }
 }
+

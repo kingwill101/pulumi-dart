@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceTypeRegistrationPropertiesCheckNameAvailabilitySpecificationsResponse {
   /// Whether default validation is enabled.
   final pulumi.Input<bool>? enableDefaultValidation;
-
   /// The resource types with custom validation.
   final pulumi.Input<List<String>>? resourceTypesWithCustomValidation;
 
@@ -25,20 +24,11 @@ class ResourceTypeRegistrationPropertiesCheckNameAvailabilitySpecificationsRespo
     };
   }
 
-  factory ResourceTypeRegistrationPropertiesCheckNameAvailabilitySpecificationsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResourceTypeRegistrationPropertiesCheckNameAvailabilitySpecificationsResponse.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationPropertiesCheckNameAvailabilitySpecificationsResponse(
-      enableDefaultValidation: (() {
-        final guardedValue = map['enableDefaultValidation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      resourceTypesWithCustomValidation: (() {
-        final guardedValue = map['resourceTypesWithCustomValidation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      enableDefaultValidation: (() { final guardedValue = map['enableDefaultValidation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      resourceTypesWithCustomValidation: (() { final guardedValue = map['resourceTypesWithCustomValidation']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HelmReleaseSettings {
   /// The backend storage driver for Helm. Values are: configmap, secret, memory, sql.
   final pulumi.Input<String>? driver;
-
   /// The path to the helm plugins directory.
   final pulumi.Input<String>? pluginsPath;
-
   /// The path to the registry config file.
   final pulumi.Input<String>? registryConfigPath;
-
   /// The path to the directory containing cached repository indexes.
   final pulumi.Input<String>? repositoryCache;
-
   /// The path to the file containing repository names and URLs.
   final pulumi.Input<String>? repositoryConfigPath;
 
@@ -45,31 +41,12 @@ class HelmReleaseSettings {
 
   factory HelmReleaseSettings.fromMap(Map<String, dynamic> map) {
     return HelmReleaseSettings(
-      driver: (() {
-        final guardedValue = map['driver'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pluginsPath: (() {
-        final guardedValue = map['pluginsPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      registryConfigPath: (() {
-        final guardedValue = map['registryConfigPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      repositoryCache: (() {
-        final guardedValue = map['repositoryCache'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      repositoryConfigPath: (() {
-        final guardedValue = map['repositoryConfigPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      driver: (() { final guardedValue = map['driver']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pluginsPath: (() { final guardedValue = map['pluginsPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      registryConfigPath: (() { final guardedValue = map['registryConfigPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      repositoryCache: (() { final guardedValue = map['repositoryCache']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      repositoryConfigPath: (() { final guardedValue = map['repositoryConfigPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

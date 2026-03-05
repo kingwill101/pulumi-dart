@@ -182,22 +182,16 @@ import 'v3_alias_state.dart';
 class V3Alias extends pulumi.CustomResource {
   /// Grayscale version
   late final pulumi.Output<Map<String, double>?> additionalVersionWeight;
-
   /// Function Alias
   late final pulumi.Output<String> aliasName;
-
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
-
   /// Description
   late final pulumi.Output<String?> description;
-
   /// Function Name
   late final pulumi.Output<String> functionName;
-
   /// (Available since v1.234.0) Last modification time
   late final pulumi.Output<String> lastModifiedTime;
-
   /// The version that the alias points
   late final pulumi.Output<String?> versionId;
 
@@ -210,14 +204,12 @@ class V3Alias extends pulumi.CustomResource {
     V3AliasArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:fc/v3Alias:V3Alias',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    additionalVersionWeight = registerOutput<Map<String, double>?>(
-      'additionalVersionWeight',
-    );
+          'alicloud:fc/v3Alias:V3Alias',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    additionalVersionWeight = registerOutput<Map<String, double>?>('additionalVersionWeight');
     aliasName = registerOutput<String>('aliasName');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
@@ -244,14 +236,12 @@ class V3Alias extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:fc/v3Alias:V3Alias',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    additionalVersionWeight = registerOutput<Map<String, double>?>(
-      'additionalVersionWeight',
-    );
+          'alicloud:fc/v3Alias:V3Alias',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    additionalVersionWeight = registerOutput<Map<String, double>?>('additionalVersionWeight');
     aliasName = registerOutput<String>('aliasName');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');

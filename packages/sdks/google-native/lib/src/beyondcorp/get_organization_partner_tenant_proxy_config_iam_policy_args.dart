@@ -33,18 +33,13 @@ class GetOrganizationPartnerTenantProxyConfigIamPolicyArgs {
     };
   }
 
-  factory GetOrganizationPartnerTenantProxyConfigIamPolicyArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetOrganizationPartnerTenantProxyConfigIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationPartnerTenantProxyConfigIamPolicyArgs(
-      optionsRequestedPolicyVersion: (() {
-        final guardedValue = map['optionsRequestedPolicyVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
       partnerTenantId: pulumi.Input.fromValue(map['partnerTenantId'] as String),
       proxyConfigId: pulumi.Input.fromValue(map['proxyConfigId'] as String),
     );
   }
 }
+

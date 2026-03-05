@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AgentKnowledgeBaseStorageConfigurationRdsConfigurationFieldMapping {
   /// Name for the universal metadata field where Amazon Bedrock will store any custom metadata from your data source.
   final pulumi.Input<String>? customMetadataField;
-
   /// Name of the field in which Amazon Bedrock stores metadata about the vector store.
   final pulumi.Input<String> metadataField;
-
   /// Name of the field in which Amazon Bedrock stores the ID for each entry.
   final pulumi.Input<String> primaryKeyField;
-
   /// Name of the field in which Amazon Bedrock stores the raw text from your data. The text is split according to the chunking strategy you choose.
   final pulumi.Input<String> textField;
-
   /// Name of the field in which Amazon Bedrock stores the vector embeddings for your data sources.
   final pulumi.Input<String> vectorField;
 
@@ -42,15 +38,9 @@ class AgentKnowledgeBaseStorageConfigurationRdsConfigurationFieldMapping {
     };
   }
 
-  factory AgentKnowledgeBaseStorageConfigurationRdsConfigurationFieldMapping.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentKnowledgeBaseStorageConfigurationRdsConfigurationFieldMapping.fromMap(Map<String, dynamic> map) {
     return AgentKnowledgeBaseStorageConfigurationRdsConfigurationFieldMapping(
-      customMetadataField: (() {
-        final guardedValue = map['customMetadataField'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      customMetadataField: (() { final guardedValue = map['customMetadataField']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       metadataField: pulumi.Input.fromValue(map['metadataField'] as String),
       primaryKeyField: pulumi.Input.fromValue(map['primaryKeyField'] as String),
       textField: pulumi.Input.fromValue(map['textField'] as String),
@@ -58,3 +48,4 @@ class AgentKnowledgeBaseStorageConfigurationRdsConfigurationFieldMapping {
     );
   }
 }
+

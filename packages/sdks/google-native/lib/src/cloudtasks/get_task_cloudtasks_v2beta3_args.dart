@@ -40,18 +40,11 @@ class GetTaskCloudtasksV2beta3Args {
   factory GetTaskCloudtasksV2beta3Args.fromMap(Map<String, dynamic> map) {
     return GetTaskCloudtasksV2beta3Args(
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       queueId: pulumi.Input.fromValue(map['queueId'] as String),
-      responseView: (() {
-        final guardedValue = map['responseView'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      responseView: (() { final guardedValue = map['responseView']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       taskId: pulumi.Input.fromValue(map['taskId'] as String),
     );
   }
 }
+

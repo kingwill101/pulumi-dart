@@ -1166,8 +1166,7 @@ Future<GetManagedHardwareSecurityModuleResult> getManagedHardwareSecurityModule(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_keyvault_get_managed_hardware_security_module_key_get_managed_hardware_security_module_key_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetManagedHardwareSecurityModuleKeyResult>
-getManagedHardwareSecurityModuleKey(
+Future<GetManagedHardwareSecurityModuleKeyResult> getManagedHardwareSecurityModuleKey(
   GetManagedHardwareSecurityModuleKeyArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1288,8 +1287,7 @@ getManagedHardwareSecurityModuleKey(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_keyvault_get_managed_hardware_security_module_role_definition_get_managed_hardware_security_module_role_definition_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetManagedHardwareSecurityModuleRoleDefinitionResult>
-getManagedHardwareSecurityModuleRoleDefinition(
+Future<GetManagedHardwareSecurityModuleRoleDefinitionResult> getManagedHardwareSecurityModuleRoleDefinition(
   GetManagedHardwareSecurityModuleRoleDefinitionArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

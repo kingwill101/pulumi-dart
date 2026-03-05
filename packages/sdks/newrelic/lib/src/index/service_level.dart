@@ -884,24 +884,18 @@ import 'service_level_state.dart';
 class ServiceLevel extends pulumi.CustomResource {
   /// The description of the SLI.
   late final pulumi.Output<String?> description;
-
   /// The events that define the NRDB data for the SLI/SLO calculations.
   /// See Events below for details.
   late final pulumi.Output<ServiceLevelEvents> events;
-
   /// The GUID of the entity (e.g, APM Service, Browser application, Workload, etc.) that you want to relate this SLI to. Note that changing the GUID will force a new resource.
   late final pulumi.Output<String> guid;
-
   /// A short name for the SLI that will help anyone understand what it is about.
   late final pulumi.Output<String> name;
-
   /// The objective of the SLI, only one can be defined.
   /// See Objective below for details.
   late final pulumi.Output<ServiceLevelObjective> objective;
-
   /// The unique entity identifier of the Service Level Indicator in New Relic.
   late final pulumi.Output<String> sliGuid;
-
   /// The unique entity identifier of the Service Level Indicator.
   late final pulumi.Output<String> sliId;
 
@@ -914,34 +908,16 @@ class ServiceLevel extends pulumi.CustomResource {
     ServiceLevelArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:index/serviceLevel:ServiceLevel',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:index/serviceLevel:ServiceLevel',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
-    events = registerOutput<ServiceLevelEvents>(
-      'events',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceLevelEvents.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    events = registerOutput<ServiceLevelEvents>('events', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceLevelEvents.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     guid = registerOutput<String>('guid');
     this.name = registerOutput<String>('name');
-    objective = registerOutput<ServiceLevelObjective>(
-      'objective',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceLevelObjective.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    objective = registerOutput<ServiceLevelObjective>('objective', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceLevelObjective.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sliGuid = registerOutput<String>('sliGuid');
     sliId = registerOutput<String>('sliId');
   }
@@ -964,34 +940,16 @@ class ServiceLevel extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:index/serviceLevel:ServiceLevel',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:index/serviceLevel:ServiceLevel',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
-    events = registerOutput<ServiceLevelEvents>(
-      'events',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceLevelEvents.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    events = registerOutput<ServiceLevelEvents>('events', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceLevelEvents.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     guid = registerOutput<String>('guid');
     this.name = registerOutput<String>('name');
-    objective = registerOutput<ServiceLevelObjective>(
-      'objective',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceLevelObjective.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    objective = registerOutput<ServiceLevelObjective>('objective', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceLevelObjective.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sliGuid = registerOutput<String>('sliGuid');
     sliId = registerOutput<String>('sliId');
   }

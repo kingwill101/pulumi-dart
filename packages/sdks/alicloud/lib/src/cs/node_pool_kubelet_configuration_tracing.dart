@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NodePoolKubeletConfigurationTracing {
   /// The endpoint of the collector.
   final pulumi.Input<String>? endpoint;
-
   /// Number of samples to be collected per million span.
   final pulumi.Input<String>? samplingRatePerMillion;
 
@@ -24,20 +23,11 @@ class NodePoolKubeletConfigurationTracing {
     };
   }
 
-  factory NodePoolKubeletConfigurationTracing.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NodePoolKubeletConfigurationTracing.fromMap(Map<String, dynamic> map) {
     return NodePoolKubeletConfigurationTracing(
-      endpoint: (() {
-        final guardedValue = map['endpoint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      samplingRatePerMillion: (() {
-        final guardedValue = map['samplingRatePerMillion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      endpoint: (() { final guardedValue = map['endpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      samplingRatePerMillion: (() { final guardedValue = map['samplingRatePerMillion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

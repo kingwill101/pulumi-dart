@@ -12,8 +12,7 @@ enum LogConfigDataAccessOptionsLogModeComputeV1 {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown LogConfigDataAccessOptionsLogModeComputeV1 value: $value',
-    );
+    throw ArgumentError('Unknown LogConfigDataAccessOptionsLogModeComputeV1 value: $value');
   }
 }
+

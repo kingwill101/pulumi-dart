@@ -161,62 +161,43 @@ import 'certificate_order_state.dart';
 /// ```
 class CertificateOrder extends pulumi.CustomResource {
   /// Reasons why App Service Certificate is not renewable at the current moment.
-  late final pulumi.Output<List<String>>
-  appServiceCertificateNotRenewableReasons;
-
+  late final pulumi.Output<List<String>> appServiceCertificateNotRenewableReasons;
   /// true if the certificate should be automatically renewed when it expires; otherwise, false. Defaults to `true`.
   late final pulumi.Output<bool?> autoRenew;
-
   /// State of the Key Vault secret. A `certificates` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> certificates;
-
   /// Last CSR that was created for this order.
   late final pulumi.Output<String> csr;
-
   /// The Distinguished Name for the App Service Certificate Order.
   ///
   /// &gt; **Note:** Either `csr` or `distinguished_name` must be set - but not both.
   late final pulumi.Output<String> distinguishedName;
-
   /// Domain verification token.
   late final pulumi.Output<String> domainVerificationToken;
-
   /// Certificate expiration time.
   late final pulumi.Output<String> expirationTime;
-
   /// Certificate thumbprint intermediate certificate.
   late final pulumi.Output<String> intermediateThumbprint;
-
   /// Whether the private key is external or not.
   late final pulumi.Output<bool> isPrivateKeyExternal;
-
   /// Certificate key size. Defaults to `2048`.
   late final pulumi.Output<int?> keySize;
-
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created. Currently the only valid value is `global`.
   late final pulumi.Output<String> location;
-
   /// Specifies the name of the certificate. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Certificate product type, such as `Standard` or `WildCard`. Defaults to `Standard`.
   late final pulumi.Output<String?> productType;
-
   /// The name of the resource group in which to create the certificate. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// Certificate thumbprint for root certificate.
   late final pulumi.Output<String> rootThumbprint;
-
   /// Certificate thumbprint for signed certificate.
   late final pulumi.Output<String> signedCertificateThumbprint;
-
   /// Current order status.
   late final pulumi.Output<String> status;
-
   /// (Optional) A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Duration in years (must be between `1` and `3`). Defaults to `1`.
   late final pulumi.Output<int?> validityInYears;
 
@@ -229,14 +210,12 @@ class CertificateOrder extends pulumi.CustomResource {
     CertificateOrderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appservice/certificateOrder:CertificateOrder',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    appServiceCertificateNotRenewableReasons = registerOutput<List<String>>(
-      'appServiceCertificateNotRenewableReasons',
-    );
+          'azure:appservice/certificateOrder:CertificateOrder',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    appServiceCertificateNotRenewableReasons = registerOutput<List<String>>('appServiceCertificateNotRenewableReasons');
     autoRenew = registerOutput<bool?>('autoRenew');
     certificates = registerOutput<List<Map<String, dynamic>>>('certificates');
     csr = registerOutput<String>('csr');
@@ -251,9 +230,7 @@ class CertificateOrder extends pulumi.CustomResource {
     productType = registerOutput<String?>('productType');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     rootThumbprint = registerOutput<String>('rootThumbprint');
-    signedCertificateThumbprint = registerOutput<String>(
-      'signedCertificateThumbprint',
-    );
+    signedCertificateThumbprint = registerOutput<String>('signedCertificateThumbprint');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     validityInYears = registerOutput<int?>('validityInYears');
@@ -277,14 +254,12 @@ class CertificateOrder extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appservice/certificateOrder:CertificateOrder',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    appServiceCertificateNotRenewableReasons = registerOutput<List<String>>(
-      'appServiceCertificateNotRenewableReasons',
-    );
+          'azure:appservice/certificateOrder:CertificateOrder',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    appServiceCertificateNotRenewableReasons = registerOutput<List<String>>('appServiceCertificateNotRenewableReasons');
     autoRenew = registerOutput<bool?>('autoRenew');
     certificates = registerOutput<List<Map<String, dynamic>>>('certificates');
     csr = registerOutput<String>('csr');
@@ -299,9 +274,7 @@ class CertificateOrder extends pulumi.CustomResource {
     productType = registerOutput<String?>('productType');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     rootThumbprint = registerOutput<String>('rootThumbprint');
-    signedCertificateThumbprint = registerOutput<String>(
-      'signedCertificateThumbprint',
-    );
+    signedCertificateThumbprint = registerOutput<String>('signedCertificateThumbprint');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     validityInYears = registerOutput<int?>('validityInYears');

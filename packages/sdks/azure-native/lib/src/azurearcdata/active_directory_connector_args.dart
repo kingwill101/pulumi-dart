@@ -10,13 +10,10 @@ import 'active_directory_connector_properties.dart';
 class ActiveDirectoryConnectorArgs {
   /// The name of the Active Directory connector instance
   final pulumi.Input<String>? activeDirectoryConnectorName;
-
   /// The name of the data controller
   final pulumi.Input<String> dataControllerName;
-
   /// null
   final pulumi.Input<ActiveDirectoryConnectorProperties> properties;
-
   /// The name of the Azure resource group
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,33 +33,18 @@ class ActiveDirectoryConnectorArgs {
     return <String, dynamic>{
       'activeDirectoryConnectorName': ?activeDirectoryConnectorName,
       'dataControllerName': dataControllerName,
-      'properties':
-          pulumi.Input.mapInputValue<
-            ActiveDirectoryConnectorProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': pulumi.Input.mapInputValue<ActiveDirectoryConnectorProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
     };
   }
 
   factory ActiveDirectoryConnectorArgs.fromMap(Map<String, dynamic> map) {
     return ActiveDirectoryConnectorArgs(
-      activeDirectoryConnectorName: (() {
-        final guardedValue = map['activeDirectoryConnectorName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dataControllerName: pulumi.Input.fromValue(
-        map['dataControllerName'] as String,
-      ),
-      properties: pulumi.Input.fromValue(
-        ActiveDirectoryConnectorProperties.fromMap(
-          (map['properties']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      activeDirectoryConnectorName: (() { final guardedValue = map['activeDirectoryConnectorName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dataControllerName: pulumi.Input.fromValue(map['dataControllerName'] as String),
+      properties: pulumi.Input.fromValue(ActiveDirectoryConnectorProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

@@ -10,10 +10,14 @@ class VirtualNetworkEncryption {
 
   /// Creates a new [VirtualNetworkEncryption].
   /// [enforcement] Specifies if the encrypted Virtual Network allows VM that does not support encryption. Possible values are `DropUnencrypted` and `AllowUnencrypted`.
-  VirtualNetworkEncryption({required this.enforcement});
+  VirtualNetworkEncryption({
+    required this.enforcement,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enforcement': enforcement};
+    return <String, dynamic>{
+      'enforcement': enforcement,
+    };
   }
 
   factory VirtualNetworkEncryption.fromMap(Map<String, dynamic> map) {
@@ -22,3 +26,4 @@ class VirtualNetworkEncryption {
     );
   }
 }
+

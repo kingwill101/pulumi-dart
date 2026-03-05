@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AutoscalingLimitsResponse {
   /// Maximum number of nodes to scale up to.
   final pulumi.Input<int> maxServeNodes;
-
   /// Minimum number of nodes to scale down to.
   final pulumi.Input<int> minServeNodes;
 
@@ -32,3 +31,4 @@ class AutoscalingLimitsResponse {
     );
   }
 }
+

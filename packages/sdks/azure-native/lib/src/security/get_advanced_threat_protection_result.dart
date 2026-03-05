@@ -1,19 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getAdvancedThreatProtection.
 class GetAdvancedThreatProtectionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Resource Id
   final String id;
-
   /// Indicates whether Advanced Threat Protection is enabled.
   final bool? isEnabled;
-
   /// Resource name
   final String name;
-
   /// Resource type
   final String type;
 
@@ -45,13 +42,10 @@ class GetAdvancedThreatProtectionResult {
     return GetAdvancedThreatProtectionResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      isEnabled: (() {
-        final guardedValue = map['isEnabled'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      isEnabled: (() { final guardedValue = map['isEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       name: map['name'] as String,
       type: map['type'] as String,
     );
   }
 }
+

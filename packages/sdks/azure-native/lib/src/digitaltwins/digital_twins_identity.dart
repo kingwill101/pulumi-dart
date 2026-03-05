@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DigitalTwinsIdentity {
   /// The type of Managed Identity used by the DigitalTwinsInstance.
   final pulumi.Input<String>? type;
-
   /// The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form:
   /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
   /// .
@@ -15,7 +14,10 @@ class DigitalTwinsIdentity {
   /// Creates a new [DigitalTwinsIdentity].
   /// [type] The type of Managed Identity used by the DigitalTwinsInstance.
   /// [userAssignedIdentities] The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form:
-  DigitalTwinsIdentity({this.type, this.userAssignedIdentities});
+  DigitalTwinsIdentity({
+    this.type,
+    this.userAssignedIdentities,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,16 +28,9 @@ class DigitalTwinsIdentity {
 
   factory DigitalTwinsIdentity.fromMap(Map<String, dynamic> map) {
     return DigitalTwinsIdentity(
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      userAssignedIdentities: (() {
-        final guardedValue = map['userAssignedIdentities'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      userAssignedIdentities: (() { final guardedValue = map['userAssignedIdentities']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

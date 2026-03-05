@@ -14,3 +14,4 @@ enum BlobEventTypes {
     throw ArgumentError('Unknown BlobEventTypes value: $value');
   }
 }
+

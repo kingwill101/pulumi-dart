@@ -10,24 +10,18 @@ import 'key_timeouts.dart';
 /// {@macro pulumi_paymentcryptography_key_key_args_doc}
 class KeyArgs {
   final pulumi.Input<int>? deletionWindowInDays;
-
   /// Whether to enable the key.
   final pulumi.Input<bool>? enabled;
-
   /// Whether the key is exportable from the service.
   final pulumi.Input<bool> exportable;
-
   /// Role of the key, the algorithm it supports, and the cryptographic operations allowed with the key.
   ///
   /// The following arguments are optional:
   final pulumi.Input<List<KeyKeyAttribute>>? keyAttributes;
-
   /// Algorithm that AWS Payment Cryptography uses to calculate the key check value (KCV).
   final pulumi.Input<String>? keyCheckValueAlgorithm;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Map of tags assigned to the WorkSpaces Connection Alias. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<KeyTimeouts>? timeouts;
@@ -57,77 +51,25 @@ class KeyArgs {
       'deletionWindowInDays': ?deletionWindowInDays,
       'enabled': ?enabled,
       'exportable': exportable,
-      'keyAttributes':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<KeyKeyAttribute>,
-            List<Map<String, dynamic>>
-          >(
-            keyAttributes,
-            (value) =>
-                pulumi.Input.encodeList<KeyKeyAttribute, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'keyAttributes': ?pulumi.Input.mapOptionalInputValue<List<KeyKeyAttribute>, List<Map<String, dynamic>>>(keyAttributes, (value) => pulumi.Input.encodeList<KeyKeyAttribute, Map<String, dynamic>>(value, (value) => value.toMap())),
       'keyCheckValueAlgorithm': ?keyCheckValueAlgorithm,
       'region': ?region,
       'tags': ?tags,
-      'timeouts':
-          ?pulumi.Input.mapOptionalInputValue<
-            KeyTimeouts,
-            Map<String, dynamic>
-          >(timeouts, (value) => value.toMap()),
+      'timeouts': ?pulumi.Input.mapOptionalInputValue<KeyTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
     };
   }
 
   factory KeyArgs.fromMap(Map<String, dynamic> map) {
     return KeyArgs(
-      deletionWindowInDays: (() {
-        final guardedValue = map['deletionWindowInDays'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      deletionWindowInDays: (() { final guardedValue = map['deletionWindowInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       exportable: pulumi.Input.fromValue(map['exportable'] as bool),
-      keyAttributes: (() {
-        final guardedValue = map['keyAttributes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<KeyKeyAttribute>(
-            guardedValue,
-            (value) =>
-                KeyKeyAttribute.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      keyCheckValueAlgorithm: (() {
-        final guardedValue = map['keyCheckValueAlgorithm'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      timeouts: (() {
-        final guardedValue = map['timeouts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          KeyTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
+      keyAttributes: (() { final guardedValue = map['keyAttributes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<KeyKeyAttribute>(guardedValue, (value) => KeyKeyAttribute.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      keyCheckValueAlgorithm: (() { final guardedValue = map['keyCheckValueAlgorithm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      timeouts: (() { final guardedValue = map['timeouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(KeyTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

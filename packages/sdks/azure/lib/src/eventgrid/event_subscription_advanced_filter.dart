@@ -23,84 +23,45 @@ import 'event_subscription_advanced_filter_string_not_in.dart';
 
 class EventSubscriptionAdvancedFilter {
   /// Compares a value of an event using a single boolean value.
-  final pulumi.Input<List<EventSubscriptionAdvancedFilterBoolEqual>>?
-  boolEquals;
-
+  final pulumi.Input<List<EventSubscriptionAdvancedFilterBoolEqual>>? boolEquals;
   /// Evaluates if a value of an event isn't NULL or undefined.
-  final pulumi.Input<List<EventSubscriptionAdvancedFilterIsNotNull>>?
-  isNotNulls;
-
+  final pulumi.Input<List<EventSubscriptionAdvancedFilterIsNotNull>>? isNotNulls;
   /// Evaluates if a value of an event is NULL or undefined.
   ///
   /// Each nested block consists of a key and a value(s) element.
-  final pulumi.Input<List<EventSubscriptionAdvancedFilterIsNullOrUndefined>>?
-  isNullOrUndefineds;
-
+  final pulumi.Input<List<EventSubscriptionAdvancedFilterIsNullOrUndefined>>? isNullOrUndefineds;
   /// Compares a value of an event using a single floating point number.
-  final pulumi.Input<
-    List<EventSubscriptionAdvancedFilterNumberGreaterThanOrEqual>
-  >?
-  numberGreaterThanOrEquals;
-
+  final pulumi.Input<List<EventSubscriptionAdvancedFilterNumberGreaterThanOrEqual>>? numberGreaterThanOrEquals;
   /// Compares a value of an event using a single floating point number.
-  final pulumi.Input<List<EventSubscriptionAdvancedFilterNumberGreaterThan>>?
-  numberGreaterThans;
-
+  final pulumi.Input<List<EventSubscriptionAdvancedFilterNumberGreaterThan>>? numberGreaterThans;
   /// Compares a value of an event using multiple floating point number ranges.
-  final pulumi.Input<List<EventSubscriptionAdvancedFilterNumberInRange>>?
-  numberInRanges;
-
+  final pulumi.Input<List<EventSubscriptionAdvancedFilterNumberInRange>>? numberInRanges;
   /// Compares a value of an event using multiple floating point numbers.
   final pulumi.Input<List<EventSubscriptionAdvancedFilterNumberIn>>? numberIns;
-
   /// Compares a value of an event using a single floating point number.
-  final pulumi.Input<
-    List<EventSubscriptionAdvancedFilterNumberLessThanOrEqual>
-  >?
-  numberLessThanOrEquals;
-
+  final pulumi.Input<List<EventSubscriptionAdvancedFilterNumberLessThanOrEqual>>? numberLessThanOrEquals;
   /// Compares a value of an event using a single floating point number.
-  final pulumi.Input<List<EventSubscriptionAdvancedFilterNumberLessThan>>?
-  numberLessThans;
-
+  final pulumi.Input<List<EventSubscriptionAdvancedFilterNumberLessThan>>? numberLessThans;
   /// Compares a value of an event using multiple floating point number ranges.
-  final pulumi.Input<List<EventSubscriptionAdvancedFilterNumberNotInRange>>?
-  numberNotInRanges;
-
+  final pulumi.Input<List<EventSubscriptionAdvancedFilterNumberNotInRange>>? numberNotInRanges;
   /// Compares a value of an event using multiple floating point numbers.
-  final pulumi.Input<List<EventSubscriptionAdvancedFilterNumberNotIn>>?
-  numberNotIns;
-
+  final pulumi.Input<List<EventSubscriptionAdvancedFilterNumberNotIn>>? numberNotIns;
   /// Compares a value of an event using multiple string values.
-  final pulumi.Input<List<EventSubscriptionAdvancedFilterStringBeginsWith>>?
-  stringBeginsWiths;
-
+  final pulumi.Input<List<EventSubscriptionAdvancedFilterStringBeginsWith>>? stringBeginsWiths;
   /// Compares a value of an event using multiple string values.
-  final pulumi.Input<List<EventSubscriptionAdvancedFilterStringContain>>?
-  stringContains;
-
+  final pulumi.Input<List<EventSubscriptionAdvancedFilterStringContain>>? stringContains;
   /// Compares a value of an event using multiple string values.
-  final pulumi.Input<List<EventSubscriptionAdvancedFilterStringEndsWith>>?
-  stringEndsWiths;
-
+  final pulumi.Input<List<EventSubscriptionAdvancedFilterStringEndsWith>>? stringEndsWiths;
   /// Compares a value of an event using multiple string values.
   final pulumi.Input<List<EventSubscriptionAdvancedFilterStringIn>>? stringIns;
-
   /// Compares a value of an event using multiple string values.
-  final pulumi.Input<List<EventSubscriptionAdvancedFilterStringNotBeginsWith>>?
-  stringNotBeginsWiths;
-
+  final pulumi.Input<List<EventSubscriptionAdvancedFilterStringNotBeginsWith>>? stringNotBeginsWiths;
   /// Compares a value of an event using multiple string values.
-  final pulumi.Input<List<EventSubscriptionAdvancedFilterStringNotContain>>?
-  stringNotContains;
-
+  final pulumi.Input<List<EventSubscriptionAdvancedFilterStringNotContain>>? stringNotContains;
   /// Compares a value of an event using multiple string values.
-  final pulumi.Input<List<EventSubscriptionAdvancedFilterStringNotEndsWith>>?
-  stringNotEndsWiths;
-
+  final pulumi.Input<List<EventSubscriptionAdvancedFilterStringNotEndsWith>>? stringNotEndsWiths;
   /// Compares a value of an event using multiple string values.
-  final pulumi.Input<List<EventSubscriptionAdvancedFilterStringNotIn>>?
-  stringNotIns;
+  final pulumi.Input<List<EventSubscriptionAdvancedFilterStringNotIn>>? stringNotIns;
 
   /// Creates a new [EventSubscriptionAdvancedFilter].
   /// [boolEquals] Compares a value of an event using a single boolean value.
@@ -146,490 +107,50 @@ class EventSubscriptionAdvancedFilter {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'boolEquals':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<EventSubscriptionAdvancedFilterBoolEqual>,
-            List<Map<String, dynamic>>
-          >(
-            boolEquals,
-            (value) =>
-                pulumi.Input.encodeList<
-                  EventSubscriptionAdvancedFilterBoolEqual,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'isNotNulls':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<EventSubscriptionAdvancedFilterIsNotNull>,
-            List<Map<String, dynamic>>
-          >(
-            isNotNulls,
-            (value) =>
-                pulumi.Input.encodeList<
-                  EventSubscriptionAdvancedFilterIsNotNull,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'isNullOrUndefineds':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<EventSubscriptionAdvancedFilterIsNullOrUndefined>,
-            List<Map<String, dynamic>>
-          >(
-            isNullOrUndefineds,
-            (value) =>
-                pulumi.Input.encodeList<
-                  EventSubscriptionAdvancedFilterIsNullOrUndefined,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'numberGreaterThanOrEquals':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<EventSubscriptionAdvancedFilterNumberGreaterThanOrEqual>,
-            List<Map<String, dynamic>>
-          >(
-            numberGreaterThanOrEquals,
-            (value) =>
-                pulumi.Input.encodeList<
-                  EventSubscriptionAdvancedFilterNumberGreaterThanOrEqual,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'numberGreaterThans':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<EventSubscriptionAdvancedFilterNumberGreaterThan>,
-            List<Map<String, dynamic>>
-          >(
-            numberGreaterThans,
-            (value) =>
-                pulumi.Input.encodeList<
-                  EventSubscriptionAdvancedFilterNumberGreaterThan,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'numberInRanges':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<EventSubscriptionAdvancedFilterNumberInRange>,
-            List<Map<String, dynamic>>
-          >(
-            numberInRanges,
-            (value) =>
-                pulumi.Input.encodeList<
-                  EventSubscriptionAdvancedFilterNumberInRange,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'numberIns':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<EventSubscriptionAdvancedFilterNumberIn>,
-            List<Map<String, dynamic>>
-          >(
-            numberIns,
-            (value) =>
-                pulumi.Input.encodeList<
-                  EventSubscriptionAdvancedFilterNumberIn,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'numberLessThanOrEquals':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<EventSubscriptionAdvancedFilterNumberLessThanOrEqual>,
-            List<Map<String, dynamic>>
-          >(
-            numberLessThanOrEquals,
-            (value) =>
-                pulumi.Input.encodeList<
-                  EventSubscriptionAdvancedFilterNumberLessThanOrEqual,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'numberLessThans':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<EventSubscriptionAdvancedFilterNumberLessThan>,
-            List<Map<String, dynamic>>
-          >(
-            numberLessThans,
-            (value) =>
-                pulumi.Input.encodeList<
-                  EventSubscriptionAdvancedFilterNumberLessThan,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'numberNotInRanges':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<EventSubscriptionAdvancedFilterNumberNotInRange>,
-            List<Map<String, dynamic>>
-          >(
-            numberNotInRanges,
-            (value) =>
-                pulumi.Input.encodeList<
-                  EventSubscriptionAdvancedFilterNumberNotInRange,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'numberNotIns':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<EventSubscriptionAdvancedFilterNumberNotIn>,
-            List<Map<String, dynamic>>
-          >(
-            numberNotIns,
-            (value) =>
-                pulumi.Input.encodeList<
-                  EventSubscriptionAdvancedFilterNumberNotIn,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'stringBeginsWiths':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<EventSubscriptionAdvancedFilterStringBeginsWith>,
-            List<Map<String, dynamic>>
-          >(
-            stringBeginsWiths,
-            (value) =>
-                pulumi.Input.encodeList<
-                  EventSubscriptionAdvancedFilterStringBeginsWith,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'stringContains':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<EventSubscriptionAdvancedFilterStringContain>,
-            List<Map<String, dynamic>>
-          >(
-            stringContains,
-            (value) =>
-                pulumi.Input.encodeList<
-                  EventSubscriptionAdvancedFilterStringContain,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'stringEndsWiths':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<EventSubscriptionAdvancedFilterStringEndsWith>,
-            List<Map<String, dynamic>>
-          >(
-            stringEndsWiths,
-            (value) =>
-                pulumi.Input.encodeList<
-                  EventSubscriptionAdvancedFilterStringEndsWith,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'stringIns':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<EventSubscriptionAdvancedFilterStringIn>,
-            List<Map<String, dynamic>>
-          >(
-            stringIns,
-            (value) =>
-                pulumi.Input.encodeList<
-                  EventSubscriptionAdvancedFilterStringIn,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'stringNotBeginsWiths':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<EventSubscriptionAdvancedFilterStringNotBeginsWith>,
-            List<Map<String, dynamic>>
-          >(
-            stringNotBeginsWiths,
-            (value) =>
-                pulumi.Input.encodeList<
-                  EventSubscriptionAdvancedFilterStringNotBeginsWith,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'stringNotContains':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<EventSubscriptionAdvancedFilterStringNotContain>,
-            List<Map<String, dynamic>>
-          >(
-            stringNotContains,
-            (value) =>
-                pulumi.Input.encodeList<
-                  EventSubscriptionAdvancedFilterStringNotContain,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'stringNotEndsWiths':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<EventSubscriptionAdvancedFilterStringNotEndsWith>,
-            List<Map<String, dynamic>>
-          >(
-            stringNotEndsWiths,
-            (value) =>
-                pulumi.Input.encodeList<
-                  EventSubscriptionAdvancedFilterStringNotEndsWith,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'stringNotIns':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<EventSubscriptionAdvancedFilterStringNotIn>,
-            List<Map<String, dynamic>>
-          >(
-            stringNotIns,
-            (value) =>
-                pulumi.Input.encodeList<
-                  EventSubscriptionAdvancedFilterStringNotIn,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'boolEquals': ?pulumi.Input.mapOptionalInputValue<List<EventSubscriptionAdvancedFilterBoolEqual>, List<Map<String, dynamic>>>(boolEquals, (value) => pulumi.Input.encodeList<EventSubscriptionAdvancedFilterBoolEqual, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'isNotNulls': ?pulumi.Input.mapOptionalInputValue<List<EventSubscriptionAdvancedFilterIsNotNull>, List<Map<String, dynamic>>>(isNotNulls, (value) => pulumi.Input.encodeList<EventSubscriptionAdvancedFilterIsNotNull, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'isNullOrUndefineds': ?pulumi.Input.mapOptionalInputValue<List<EventSubscriptionAdvancedFilterIsNullOrUndefined>, List<Map<String, dynamic>>>(isNullOrUndefineds, (value) => pulumi.Input.encodeList<EventSubscriptionAdvancedFilterIsNullOrUndefined, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'numberGreaterThanOrEquals': ?pulumi.Input.mapOptionalInputValue<List<EventSubscriptionAdvancedFilterNumberGreaterThanOrEqual>, List<Map<String, dynamic>>>(numberGreaterThanOrEquals, (value) => pulumi.Input.encodeList<EventSubscriptionAdvancedFilterNumberGreaterThanOrEqual, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'numberGreaterThans': ?pulumi.Input.mapOptionalInputValue<List<EventSubscriptionAdvancedFilterNumberGreaterThan>, List<Map<String, dynamic>>>(numberGreaterThans, (value) => pulumi.Input.encodeList<EventSubscriptionAdvancedFilterNumberGreaterThan, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'numberInRanges': ?pulumi.Input.mapOptionalInputValue<List<EventSubscriptionAdvancedFilterNumberInRange>, List<Map<String, dynamic>>>(numberInRanges, (value) => pulumi.Input.encodeList<EventSubscriptionAdvancedFilterNumberInRange, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'numberIns': ?pulumi.Input.mapOptionalInputValue<List<EventSubscriptionAdvancedFilterNumberIn>, List<Map<String, dynamic>>>(numberIns, (value) => pulumi.Input.encodeList<EventSubscriptionAdvancedFilterNumberIn, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'numberLessThanOrEquals': ?pulumi.Input.mapOptionalInputValue<List<EventSubscriptionAdvancedFilterNumberLessThanOrEqual>, List<Map<String, dynamic>>>(numberLessThanOrEquals, (value) => pulumi.Input.encodeList<EventSubscriptionAdvancedFilterNumberLessThanOrEqual, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'numberLessThans': ?pulumi.Input.mapOptionalInputValue<List<EventSubscriptionAdvancedFilterNumberLessThan>, List<Map<String, dynamic>>>(numberLessThans, (value) => pulumi.Input.encodeList<EventSubscriptionAdvancedFilterNumberLessThan, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'numberNotInRanges': ?pulumi.Input.mapOptionalInputValue<List<EventSubscriptionAdvancedFilterNumberNotInRange>, List<Map<String, dynamic>>>(numberNotInRanges, (value) => pulumi.Input.encodeList<EventSubscriptionAdvancedFilterNumberNotInRange, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'numberNotIns': ?pulumi.Input.mapOptionalInputValue<List<EventSubscriptionAdvancedFilterNumberNotIn>, List<Map<String, dynamic>>>(numberNotIns, (value) => pulumi.Input.encodeList<EventSubscriptionAdvancedFilterNumberNotIn, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'stringBeginsWiths': ?pulumi.Input.mapOptionalInputValue<List<EventSubscriptionAdvancedFilterStringBeginsWith>, List<Map<String, dynamic>>>(stringBeginsWiths, (value) => pulumi.Input.encodeList<EventSubscriptionAdvancedFilterStringBeginsWith, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'stringContains': ?pulumi.Input.mapOptionalInputValue<List<EventSubscriptionAdvancedFilterStringContain>, List<Map<String, dynamic>>>(stringContains, (value) => pulumi.Input.encodeList<EventSubscriptionAdvancedFilterStringContain, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'stringEndsWiths': ?pulumi.Input.mapOptionalInputValue<List<EventSubscriptionAdvancedFilterStringEndsWith>, List<Map<String, dynamic>>>(stringEndsWiths, (value) => pulumi.Input.encodeList<EventSubscriptionAdvancedFilterStringEndsWith, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'stringIns': ?pulumi.Input.mapOptionalInputValue<List<EventSubscriptionAdvancedFilterStringIn>, List<Map<String, dynamic>>>(stringIns, (value) => pulumi.Input.encodeList<EventSubscriptionAdvancedFilterStringIn, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'stringNotBeginsWiths': ?pulumi.Input.mapOptionalInputValue<List<EventSubscriptionAdvancedFilterStringNotBeginsWith>, List<Map<String, dynamic>>>(stringNotBeginsWiths, (value) => pulumi.Input.encodeList<EventSubscriptionAdvancedFilterStringNotBeginsWith, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'stringNotContains': ?pulumi.Input.mapOptionalInputValue<List<EventSubscriptionAdvancedFilterStringNotContain>, List<Map<String, dynamic>>>(stringNotContains, (value) => pulumi.Input.encodeList<EventSubscriptionAdvancedFilterStringNotContain, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'stringNotEndsWiths': ?pulumi.Input.mapOptionalInputValue<List<EventSubscriptionAdvancedFilterStringNotEndsWith>, List<Map<String, dynamic>>>(stringNotEndsWiths, (value) => pulumi.Input.encodeList<EventSubscriptionAdvancedFilterStringNotEndsWith, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'stringNotIns': ?pulumi.Input.mapOptionalInputValue<List<EventSubscriptionAdvancedFilterStringNotIn>, List<Map<String, dynamic>>>(stringNotIns, (value) => pulumi.Input.encodeList<EventSubscriptionAdvancedFilterStringNotIn, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory EventSubscriptionAdvancedFilter.fromMap(Map<String, dynamic> map) {
     return EventSubscriptionAdvancedFilter(
-      boolEquals: (() {
-        final guardedValue = map['boolEquals'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<EventSubscriptionAdvancedFilterBoolEqual>(
-            guardedValue,
-            (value) => EventSubscriptionAdvancedFilterBoolEqual.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      isNotNulls: (() {
-        final guardedValue = map['isNotNulls'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<EventSubscriptionAdvancedFilterIsNotNull>(
-            guardedValue,
-            (value) => EventSubscriptionAdvancedFilterIsNotNull.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      isNullOrUndefineds: (() {
-        final guardedValue = map['isNullOrUndefineds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            EventSubscriptionAdvancedFilterIsNullOrUndefined
-          >(
-            guardedValue,
-            (value) => EventSubscriptionAdvancedFilterIsNullOrUndefined.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      numberGreaterThanOrEquals: (() {
-        final guardedValue = map['numberGreaterThanOrEquals'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            EventSubscriptionAdvancedFilterNumberGreaterThanOrEqual
-          >(
-            guardedValue,
-            (value) =>
-                EventSubscriptionAdvancedFilterNumberGreaterThanOrEqual.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
-      numberGreaterThans: (() {
-        final guardedValue = map['numberGreaterThans'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            EventSubscriptionAdvancedFilterNumberGreaterThan
-          >(
-            guardedValue,
-            (value) => EventSubscriptionAdvancedFilterNumberGreaterThan.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      numberInRanges: (() {
-        final guardedValue = map['numberInRanges'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<EventSubscriptionAdvancedFilterNumberInRange>(
-            guardedValue,
-            (value) => EventSubscriptionAdvancedFilterNumberInRange.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      numberIns: (() {
-        final guardedValue = map['numberIns'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<EventSubscriptionAdvancedFilterNumberIn>(
-            guardedValue,
-            (value) => EventSubscriptionAdvancedFilterNumberIn.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      numberLessThanOrEquals: (() {
-        final guardedValue = map['numberLessThanOrEquals'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            EventSubscriptionAdvancedFilterNumberLessThanOrEqual
-          >(
-            guardedValue,
-            (value) =>
-                EventSubscriptionAdvancedFilterNumberLessThanOrEqual.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
-      numberLessThans: (() {
-        final guardedValue = map['numberLessThans'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi
-              .Input.decodeList<EventSubscriptionAdvancedFilterNumberLessThan>(
-            guardedValue,
-            (value) => EventSubscriptionAdvancedFilterNumberLessThan.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      numberNotInRanges: (() {
-        final guardedValue = map['numberNotInRanges'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            EventSubscriptionAdvancedFilterNumberNotInRange
-          >(
-            guardedValue,
-            (value) => EventSubscriptionAdvancedFilterNumberNotInRange.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      numberNotIns: (() {
-        final guardedValue = map['numberNotIns'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<EventSubscriptionAdvancedFilterNumberNotIn>(
-            guardedValue,
-            (value) => EventSubscriptionAdvancedFilterNumberNotIn.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      stringBeginsWiths: (() {
-        final guardedValue = map['stringBeginsWiths'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            EventSubscriptionAdvancedFilterStringBeginsWith
-          >(
-            guardedValue,
-            (value) => EventSubscriptionAdvancedFilterStringBeginsWith.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      stringContains: (() {
-        final guardedValue = map['stringContains'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<EventSubscriptionAdvancedFilterStringContain>(
-            guardedValue,
-            (value) => EventSubscriptionAdvancedFilterStringContain.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      stringEndsWiths: (() {
-        final guardedValue = map['stringEndsWiths'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi
-              .Input.decodeList<EventSubscriptionAdvancedFilterStringEndsWith>(
-            guardedValue,
-            (value) => EventSubscriptionAdvancedFilterStringEndsWith.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      stringIns: (() {
-        final guardedValue = map['stringIns'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<EventSubscriptionAdvancedFilterStringIn>(
-            guardedValue,
-            (value) => EventSubscriptionAdvancedFilterStringIn.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      stringNotBeginsWiths: (() {
-        final guardedValue = map['stringNotBeginsWiths'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            EventSubscriptionAdvancedFilterStringNotBeginsWith
-          >(
-            guardedValue,
-            (value) =>
-                EventSubscriptionAdvancedFilterStringNotBeginsWith.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
-      stringNotContains: (() {
-        final guardedValue = map['stringNotContains'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            EventSubscriptionAdvancedFilterStringNotContain
-          >(
-            guardedValue,
-            (value) => EventSubscriptionAdvancedFilterStringNotContain.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      stringNotEndsWiths: (() {
-        final guardedValue = map['stringNotEndsWiths'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            EventSubscriptionAdvancedFilterStringNotEndsWith
-          >(
-            guardedValue,
-            (value) => EventSubscriptionAdvancedFilterStringNotEndsWith.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      stringNotIns: (() {
-        final guardedValue = map['stringNotIns'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<EventSubscriptionAdvancedFilterStringNotIn>(
-            guardedValue,
-            (value) => EventSubscriptionAdvancedFilterStringNotIn.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      boolEquals: (() { final guardedValue = map['boolEquals']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EventSubscriptionAdvancedFilterBoolEqual>(guardedValue, (value) => EventSubscriptionAdvancedFilterBoolEqual.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      isNotNulls: (() { final guardedValue = map['isNotNulls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EventSubscriptionAdvancedFilterIsNotNull>(guardedValue, (value) => EventSubscriptionAdvancedFilterIsNotNull.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      isNullOrUndefineds: (() { final guardedValue = map['isNullOrUndefineds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EventSubscriptionAdvancedFilterIsNullOrUndefined>(guardedValue, (value) => EventSubscriptionAdvancedFilterIsNullOrUndefined.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      numberGreaterThanOrEquals: (() { final guardedValue = map['numberGreaterThanOrEquals']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EventSubscriptionAdvancedFilterNumberGreaterThanOrEqual>(guardedValue, (value) => EventSubscriptionAdvancedFilterNumberGreaterThanOrEqual.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      numberGreaterThans: (() { final guardedValue = map['numberGreaterThans']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EventSubscriptionAdvancedFilterNumberGreaterThan>(guardedValue, (value) => EventSubscriptionAdvancedFilterNumberGreaterThan.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      numberInRanges: (() { final guardedValue = map['numberInRanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EventSubscriptionAdvancedFilterNumberInRange>(guardedValue, (value) => EventSubscriptionAdvancedFilterNumberInRange.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      numberIns: (() { final guardedValue = map['numberIns']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EventSubscriptionAdvancedFilterNumberIn>(guardedValue, (value) => EventSubscriptionAdvancedFilterNumberIn.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      numberLessThanOrEquals: (() { final guardedValue = map['numberLessThanOrEquals']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EventSubscriptionAdvancedFilterNumberLessThanOrEqual>(guardedValue, (value) => EventSubscriptionAdvancedFilterNumberLessThanOrEqual.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      numberLessThans: (() { final guardedValue = map['numberLessThans']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EventSubscriptionAdvancedFilterNumberLessThan>(guardedValue, (value) => EventSubscriptionAdvancedFilterNumberLessThan.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      numberNotInRanges: (() { final guardedValue = map['numberNotInRanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EventSubscriptionAdvancedFilterNumberNotInRange>(guardedValue, (value) => EventSubscriptionAdvancedFilterNumberNotInRange.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      numberNotIns: (() { final guardedValue = map['numberNotIns']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EventSubscriptionAdvancedFilterNumberNotIn>(guardedValue, (value) => EventSubscriptionAdvancedFilterNumberNotIn.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      stringBeginsWiths: (() { final guardedValue = map['stringBeginsWiths']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EventSubscriptionAdvancedFilterStringBeginsWith>(guardedValue, (value) => EventSubscriptionAdvancedFilterStringBeginsWith.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      stringContains: (() { final guardedValue = map['stringContains']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EventSubscriptionAdvancedFilterStringContain>(guardedValue, (value) => EventSubscriptionAdvancedFilterStringContain.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      stringEndsWiths: (() { final guardedValue = map['stringEndsWiths']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EventSubscriptionAdvancedFilterStringEndsWith>(guardedValue, (value) => EventSubscriptionAdvancedFilterStringEndsWith.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      stringIns: (() { final guardedValue = map['stringIns']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EventSubscriptionAdvancedFilterStringIn>(guardedValue, (value) => EventSubscriptionAdvancedFilterStringIn.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      stringNotBeginsWiths: (() { final guardedValue = map['stringNotBeginsWiths']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EventSubscriptionAdvancedFilterStringNotBeginsWith>(guardedValue, (value) => EventSubscriptionAdvancedFilterStringNotBeginsWith.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      stringNotContains: (() { final guardedValue = map['stringNotContains']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EventSubscriptionAdvancedFilterStringNotContain>(guardedValue, (value) => EventSubscriptionAdvancedFilterStringNotContain.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      stringNotEndsWiths: (() { final guardedValue = map['stringNotEndsWiths']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EventSubscriptionAdvancedFilterStringNotEndsWith>(guardedValue, (value) => EventSubscriptionAdvancedFilterStringNotEndsWith.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      stringNotIns: (() { final guardedValue = map['stringNotIns']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EventSubscriptionAdvancedFilterStringNotIn>(guardedValue, (value) => EventSubscriptionAdvancedFilterStringNotIn.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

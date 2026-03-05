@@ -15,3 +15,4 @@ enum ComputePowerAction {
     throw ArgumentError('Unknown ComputePowerAction value: $value');
   }
 }
+

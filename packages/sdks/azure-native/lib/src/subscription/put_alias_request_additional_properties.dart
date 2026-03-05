@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PutAliasRequestAdditionalProperties {
   /// Management group Id for the subscription.
   final pulumi.Input<String>? managementGroupId;
-
   /// Owner Id of the subscription
   final pulumi.Input<String>? subscriptionOwnerId;
-
   /// Tenant Id of the subscription
   final pulumi.Input<String>? subscriptionTenantId;
-
   /// Tags for the subscription
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -37,32 +34,13 @@ class PutAliasRequestAdditionalProperties {
     };
   }
 
-  factory PutAliasRequestAdditionalProperties.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PutAliasRequestAdditionalProperties.fromMap(Map<String, dynamic> map) {
     return PutAliasRequestAdditionalProperties(
-      managementGroupId: (() {
-        final guardedValue = map['managementGroupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subscriptionOwnerId: (() {
-        final guardedValue = map['subscriptionOwnerId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subscriptionTenantId: (() {
-        final guardedValue = map['subscriptionTenantId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      managementGroupId: (() { final guardedValue = map['managementGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subscriptionOwnerId: (() { final guardedValue = map['subscriptionOwnerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subscriptionTenantId: (() { final guardedValue = map['subscriptionTenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

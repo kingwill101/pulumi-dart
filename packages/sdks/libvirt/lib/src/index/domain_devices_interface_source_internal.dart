@@ -8,21 +8,20 @@ class DomainDevicesInterfaceSourceInternal {
 
   /// Creates a new [DomainDevicesInterfaceSourceInternal].
   /// [name] Sets the name of the internal network interface.
-  DomainDevicesInterfaceSourceInternal({this.name});
+  DomainDevicesInterfaceSourceInternal({
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name};
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
-  factory DomainDevicesInterfaceSourceInternal.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDevicesInterfaceSourceInternal.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceSourceInternal(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServerFirewallRulesRule {
   /// The ID of the firewall rule.
   final pulumi.Input<String> firewallRuleId;
-
   /// The ID of the Firewall Rule. The value formats as `&lt;instance_id&gt;:&lt;firewall_rule_id&gt;`.
   final pulumi.Input<String> id;
-
   /// Alibaba Cloud simple application server instance ID.
   final pulumi.Input<String> instanceId;
-
   /// The port range of the firewall rule.
   final pulumi.Input<String> port;
-
   /// The remarks of the firewall rule.
   final pulumi.Input<String> remark;
-
   /// The transport layer protocol. Valid values: `Tcp`, `Udp`, `TcpAndUdp`.
   final pulumi.Input<String> ruleProtocol;
 
@@ -59,3 +54,4 @@ class GetServerFirewallRulesRule {
     );
   }
 }
+

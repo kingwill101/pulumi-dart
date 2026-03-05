@@ -9,10 +9,14 @@ class HealthCheckLogConfigResponse {
 
   /// Creates a new [HealthCheckLogConfigResponse].
   /// [enable] Indicates whether or not to export logs. This is false by default, which means no health check logging will be done.
-  HealthCheckLogConfigResponse({required this.enable});
+  HealthCheckLogConfigResponse({
+    required this.enable,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enable': enable};
+    return <String, dynamic>{
+      'enable': enable,
+    };
   }
 
   factory HealthCheckLogConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class HealthCheckLogConfigResponse {
     );
   }
 }
+

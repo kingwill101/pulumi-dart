@@ -15,3 +15,4 @@ enum ContinuousBackupsStatus {
     throw ArgumentError('Unknown ContinuousBackupsStatus value: $value');
   }
 }
+

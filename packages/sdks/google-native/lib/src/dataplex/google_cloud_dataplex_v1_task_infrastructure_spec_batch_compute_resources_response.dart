@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesResponse {
   /// Optional. Total number of job executors. Executor Count should be between 2 and 100. Default=2
   final pulumi.Input<int> executorsCount;
-
   /// Optional. Max configurable executors. If max_executors_count &gt; executors_count, then auto-scaling is enabled. Max Executor Count should be between 2 and 1000. Default=1000
   final pulumi.Input<int> maxExecutorsCount;
 
@@ -25,14 +24,11 @@ class GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesResponse {
     };
   }
 
-  factory GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesResponse(
       executorsCount: pulumi.Input.fromValue(map['executorsCount'] as int),
-      maxExecutorsCount: pulumi.Input.fromValue(
-        map['maxExecutorsCount'] as int,
-      ),
+      maxExecutorsCount: pulumi.Input.fromValue(map['maxExecutorsCount'] as int),
     );
   }
 }
+

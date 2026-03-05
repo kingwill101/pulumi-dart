@@ -8,19 +8,20 @@ class DomainDevicesConsoleSourceDbus {
 
   /// Creates a new [DomainDevicesConsoleSourceDbus].
   /// [channel] Specifies the channel used for the DBus source in the EGD backend.
-  DomainDevicesConsoleSourceDbus({this.channel});
+  DomainDevicesConsoleSourceDbus({
+    this.channel,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'channel': ?channel};
+    return <String, dynamic>{
+      'channel': ?channel,
+    };
   }
 
   factory DomainDevicesConsoleSourceDbus.fromMap(Map<String, dynamic> map) {
     return DomainDevicesConsoleSourceDbus(
-      channel: (() {
-        final guardedValue = map['channel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      channel: (() { final guardedValue = map['channel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -310,43 +310,31 @@ import 'web_test_state.dart';
 class WebTest extends pulumi.CustomResource {
   /// The ID of the Application Insights component on which the WebTest operates. Changing this forces a new resource to be created.
   late final pulumi.Output<String> applicationInsightsId;
-
   /// An XML configuration specification for a WebTest ([see here for more information](https://docs.microsoft.com/rest/api/application-insights/webtests/createorupdate/)).
   late final pulumi.Output<String> configuration;
-
   /// Purpose/user defined descriptive test for this WebTest.
   late final pulumi.Output<String?> description;
-
   /// Is the test actively being monitored.
   late final pulumi.Output<bool?> enabled;
-
   /// Interval in seconds between test runs for this WebTest. Valid options are `300`, `600` and `900`. Defaults to `300`.
   late final pulumi.Output<int?> frequency;
-
   /// A list of where to physically run the tests from to give global coverage for accessibility of your application.
   ///
   /// &gt; **Note:** [Valid options for geo locations are described here](https://docs.microsoft.com/azure/azure-monitor/app/monitor-web-app-availability#location-population-tags)
   late final pulumi.Output<List<String>> geoLocations;
-
   /// The kind of web test that this web test watches. Choices are `ping` and `multistep`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> kind;
-
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created. It needs to correlate with location of parent resource (azurerm_application_insights).
   late final pulumi.Output<String> location;
-
   /// Specifies the name of the Application Insights WebTest. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the resource group in which to create the Application Insights WebTest. Changing this forces a new resource
   late final pulumi.Output<String> resourceGroupName;
-
   /// Allow for retries should this WebTest fail.
   late final pulumi.Output<bool?> retryEnabled;
   late final pulumi.Output<String> syntheticMonitorId;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Seconds until this WebTest will timeout and fail. Default is `30`.
   late final pulumi.Output<int?> timeout;
 
@@ -359,11 +347,11 @@ class WebTest extends pulumi.CustomResource {
     WebTestArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appinsights/webTest:WebTest',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appinsights/webTest:WebTest',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationInsightsId = registerOutput<String>('applicationInsightsId');
     configuration = registerOutput<String>('configuration');
     description = registerOutput<String?>('description');
@@ -398,11 +386,11 @@ class WebTest extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appinsights/webTest:WebTest',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appinsights/webTest:WebTest',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationInsightsId = registerOutput<String>('applicationInsightsId');
     configuration = registerOutput<String>('configuration');
     description = registerOutput<String?>('description');

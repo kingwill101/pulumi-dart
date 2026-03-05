@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VolumeTargetEncryptionCipher {
   /// Specifies the hash algorithm used with the encryption cipher.
   final pulumi.Input<String> hash;
-
   /// Defines the mode for the encryption cipher of the storage volume.
   final pulumi.Input<String> mode;
-
   /// Sets the name of the encryption cipher for the storage volume.
   final pulumi.Input<String> name;
-
   /// Sets the size of the encryption cipher for the storage volume.
   final pulumi.Input<double> size;
 
@@ -45,3 +42,4 @@ class VolumeTargetEncryptionCipher {
     );
   }
 }
+

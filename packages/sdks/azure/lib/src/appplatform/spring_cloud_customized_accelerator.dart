@@ -304,26 +304,18 @@ import 'spring_cloud_customized_accelerator_state.dart';
 class SpringCloudCustomizedAccelerator extends pulumi.CustomResource {
   /// Specifies a list of accelerator tags.
   late final pulumi.Output<List<String>?> acceleratorTags;
-
   /// Specifies the type of the Spring Cloud Customized Accelerator. Possible values are `Accelerator` and `Fragment`. Defaults to `Accelerator`.
   late final pulumi.Output<String?> acceleratorType;
-
   /// Specifies the description of the Spring Cloud Customized Accelerator.
   late final pulumi.Output<String?> description;
-
   /// Specifies the display name of the Spring Cloud Customized Accelerator..
   late final pulumi.Output<String?> displayName;
-
   /// A `git_repository` block as defined below.
-  late final pulumi.Output<SpringCloudCustomizedAcceleratorGitRepository>
-  gitRepository;
-
+  late final pulumi.Output<SpringCloudCustomizedAcceleratorGitRepository> gitRepository;
   /// Specifies the icon URL of the Spring Cloud Customized Accelerator..
   late final pulumi.Output<String?> iconUrl;
-
   /// The name which should be used for this Spring Cloud Customized Accelerator. Changing this forces a new Spring Cloud Customized Accelerator to be created.
   late final pulumi.Output<String> name;
-
   /// The ID of the Spring Cloud Accelerator. Changing this forces a new Spring Cloud Customized Accelerator to be created.
   late final pulumi.Output<String> springCloudAcceleratorId;
 
@@ -336,31 +328,19 @@ class SpringCloudCustomizedAccelerator extends pulumi.CustomResource {
     SpringCloudCustomizedAcceleratorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appplatform/springCloudCustomizedAccelerator:SpringCloudCustomizedAccelerator',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appplatform/springCloudCustomizedAccelerator:SpringCloudCustomizedAccelerator',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     acceleratorTags = registerOutput<List<String>?>('acceleratorTags');
     acceleratorType = registerOutput<String?>('acceleratorType');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
-    gitRepository =
-        registerOutput<SpringCloudCustomizedAcceleratorGitRepository>(
-          'gitRepository',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SpringCloudCustomizedAcceleratorGitRepository.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    gitRepository = registerOutput<SpringCloudCustomizedAcceleratorGitRepository>('gitRepository', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudCustomizedAcceleratorGitRepository.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     iconUrl = registerOutput<String?>('iconUrl');
     this.name = registerOutput<String>('name');
-    springCloudAcceleratorId = registerOutput<String>(
-      'springCloudAcceleratorId',
-    );
+    springCloudAcceleratorId = registerOutput<String>('springCloudAcceleratorId');
   }
 
   /// Gets an existing [SpringCloudCustomizedAccelerator] resource's state with the given [name] and [id].
@@ -381,30 +361,18 @@ class SpringCloudCustomizedAccelerator extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appplatform/springCloudCustomizedAccelerator:SpringCloudCustomizedAccelerator',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appplatform/springCloudCustomizedAccelerator:SpringCloudCustomizedAccelerator',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     acceleratorTags = registerOutput<List<String>?>('acceleratorTags');
     acceleratorType = registerOutput<String?>('acceleratorType');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
-    gitRepository =
-        registerOutput<SpringCloudCustomizedAcceleratorGitRepository>(
-          'gitRepository',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SpringCloudCustomizedAcceleratorGitRepository.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    gitRepository = registerOutput<SpringCloudCustomizedAcceleratorGitRepository>('gitRepository', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudCustomizedAcceleratorGitRepository.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     iconUrl = registerOutput<String?>('iconUrl');
     this.name = registerOutput<String>('name');
-    springCloudAcceleratorId = registerOutput<String>(
-      'springCloudAcceleratorId',
-    );
+    springCloudAcceleratorId = registerOutput<String>('springCloudAcceleratorId');
   }
 }

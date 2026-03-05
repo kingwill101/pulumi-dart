@@ -9224,63 +9224,47 @@ class Stream extends pulumi.CustomResource {
   /// Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
   /// Structure is documented below.
   late final pulumi.Output<StreamBackfillAll?> backfillAll;
-
   /// Backfill strategy to disable automatic backfill for the Stream's objects.
   late final pulumi.Output<Map<String, dynamic>?> backfillNone;
-
   /// Create the stream without validating it.
   late final pulumi.Output<bool?> createWithoutValidation;
-
   /// A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
   /// will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
   late final pulumi.Output<String?> customerManagedEncryptionKey;
-
   /// Desired state of the Stream. Set this field to `RUNNING` to start the stream,
   /// `NOT_STARTED` to create the stream without starting and `PAUSED` to pause
   /// the stream from a `RUNNING` state.
   /// Possible values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
   late final pulumi.Output<String?> desiredState;
-
   /// Destination connection profile configuration.
   /// Structure is documented below.
   late final pulumi.Output<StreamDestinationConfig> destinationConfig;
-
   /// Display name.
   late final pulumi.Output<String> displayName;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// The name of the location this stream is located in.
   late final pulumi.Output<String> location;
-
   /// The stream's name.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// Rule sets to apply to the stream.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> ruleSets;
-
   /// Source connection profile configuration.
   /// Structure is documented below.
   late final pulumi.Output<StreamSourceConfig> sourceConfig;
-
   /// The state of the stream.
   late final pulumi.Output<String> state;
-
   /// The stream identifier.
   late final pulumi.Output<String> streamId;
 
@@ -9288,39 +9272,22 @@ class Stream extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Stream]. {@macro pulumi_datastream_stream_stream_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Stream(String name, {StreamArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'gcp:datastream/stream:Stream',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
-    backfillAll = registerOutput<StreamBackfillAll?>(
-      'backfillAll',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return StreamBackfillAll.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+  Stream(
+    String name, {
+    StreamArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'gcp:datastream/stream:Stream',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    backfillAll = registerOutput<StreamBackfillAll?>('backfillAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamBackfillAll.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     backfillNone = registerOutput<Map<String, dynamic>?>('backfillNone');
     createWithoutValidation = registerOutput<bool?>('createWithoutValidation');
-    customerManagedEncryptionKey = registerOutput<String?>(
-      'customerManagedEncryptionKey',
-    );
+    customerManagedEncryptionKey = registerOutput<String?>('customerManagedEncryptionKey');
     desiredState = registerOutput<String?>('desiredState');
-    destinationConfig = registerOutput<StreamDestinationConfig>(
-      'destinationConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return StreamDestinationConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    destinationConfig = registerOutput<StreamDestinationConfig>('destinationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamDestinationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     displayName = registerOutput<String>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -9329,16 +9296,7 @@ class Stream extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     ruleSets = registerOutput<List<Map<String, dynamic>>?>('ruleSets');
-    sourceConfig = registerOutput<StreamSourceConfig>(
-      'sourceConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return StreamSourceConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sourceConfig = registerOutput<StreamSourceConfig>('sourceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamSourceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     state = registerOutput<String>('state');
     streamId = registerOutput<String>('streamId');
   }
@@ -9361,37 +9319,17 @@ class Stream extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:datastream/stream:Stream',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    backfillAll = registerOutput<StreamBackfillAll?>(
-      'backfillAll',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return StreamBackfillAll.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:datastream/stream:Stream',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    backfillAll = registerOutput<StreamBackfillAll?>('backfillAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamBackfillAll.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     backfillNone = registerOutput<Map<String, dynamic>?>('backfillNone');
     createWithoutValidation = registerOutput<bool?>('createWithoutValidation');
-    customerManagedEncryptionKey = registerOutput<String?>(
-      'customerManagedEncryptionKey',
-    );
+    customerManagedEncryptionKey = registerOutput<String?>('customerManagedEncryptionKey');
     desiredState = registerOutput<String?>('desiredState');
-    destinationConfig = registerOutput<StreamDestinationConfig>(
-      'destinationConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return StreamDestinationConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    destinationConfig = registerOutput<StreamDestinationConfig>('destinationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamDestinationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     displayName = registerOutput<String>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -9400,16 +9338,7 @@ class Stream extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     ruleSets = registerOutput<List<Map<String, dynamic>>?>('ruleSets');
-    sourceConfig = registerOutput<StreamSourceConfig>(
-      'sourceConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return StreamSourceConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sourceConfig = registerOutput<StreamSourceConfig>('sourceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamSourceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.state = registerOutput<String>('state');
     streamId = registerOutput<String>('streamId');
   }

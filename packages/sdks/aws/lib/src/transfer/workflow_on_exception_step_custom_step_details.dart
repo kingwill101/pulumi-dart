@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkflowOnExceptionStepCustomStepDetails {
   /// The name of the step, used as an identifier.
   final pulumi.Input<String>? name;
-
   /// Specifies which file to use as input to the workflow step: either the output from the previous step, or the originally uploaded file for the workflow. Enter ${previous.file} to use the previous file as the input. In this case, this workflow step uses the output file from the previous workflow step as input. This is the default value. Enter ${original.file} to use the originally-uploaded file location as input for this step.
   final pulumi.Input<String>? sourceFileLocation;
-
   /// The ARN for the lambda function that is being called.
   final pulumi.Input<String>? target;
-
   /// Timeout, in seconds, for the step.
   final pulumi.Input<int>? timeoutSeconds;
 
@@ -36,30 +33,13 @@ class WorkflowOnExceptionStepCustomStepDetails {
     };
   }
 
-  factory WorkflowOnExceptionStepCustomStepDetails.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WorkflowOnExceptionStepCustomStepDetails.fromMap(Map<String, dynamic> map) {
     return WorkflowOnExceptionStepCustomStepDetails(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sourceFileLocation: (() {
-        final guardedValue = map['sourceFileLocation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      target: (() {
-        final guardedValue = map['target'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      timeoutSeconds: (() {
-        final guardedValue = map['timeoutSeconds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourceFileLocation: (() { final guardedValue = map['sourceFileLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      target: (() { final guardedValue = map['target']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      timeoutSeconds: (() { final guardedValue = map['timeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

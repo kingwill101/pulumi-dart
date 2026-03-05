@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedClusterOIDCIssuerProfileResponse {
   /// Whether the OIDC issuer is enabled.
   final pulumi.Input<bool>? enabled;
-
   /// The OIDC issuer url of the Managed Cluster.
   final pulumi.Input<String> issuerURL;
 
@@ -19,19 +18,17 @@ class ManagedClusterOIDCIssuerProfileResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': ?enabled, 'issuerURL': issuerURL};
+    return <String, dynamic>{
+      'enabled': ?enabled,
+      'issuerURL': issuerURL,
+    };
   }
 
-  factory ManagedClusterOIDCIssuerProfileResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ManagedClusterOIDCIssuerProfileResponse.fromMap(Map<String, dynamic> map) {
     return ManagedClusterOIDCIssuerProfileResponse(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       issuerURL: pulumi.Input.fromValue(map['issuerURL'] as String),
     );
   }
 }
+

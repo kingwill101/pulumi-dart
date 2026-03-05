@@ -9,10 +9,14 @@ class ManagedComponentReference {
 
   /// Creates a new [ManagedComponentReference].
   /// [resourceId] Resource Id of the managed component
-  ManagedComponentReference({required this.resourceId});
+  ManagedComponentReference({
+    required this.resourceId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'resourceId': resourceId};
+    return <String, dynamic>{
+      'resourceId': resourceId,
+    };
   }
 
   factory ManagedComponentReference.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class ManagedComponentReference {
     );
   }
 }
+

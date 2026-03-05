@@ -23,3 +23,4 @@ enum CapacityCommitmentRenewalPlan {
     throw ArgumentError('Unknown CapacityCommitmentRenewalPlan value: $value');
   }
 }
+

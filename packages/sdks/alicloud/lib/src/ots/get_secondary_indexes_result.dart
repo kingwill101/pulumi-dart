@@ -7,21 +7,16 @@ import 'get_secondary_indexes_index.dart';
 class GetSecondaryIndexesResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of secondary index IDs.
   final List<String> ids;
-
   /// A list of indexes. Each element contains the following attributes:
   final List<GetSecondaryIndexesIndex> indexes;
-
   /// The OTS instance name.
   final String instanceName;
   final String? nameRegex;
-
   /// A list of secondary index  names.
   final List<String> names;
   final String? outputFile;
-
   /// The table name of the OTS which could not be changed.
   final String tableName;
 
@@ -49,11 +44,7 @@ class GetSecondaryIndexesResult {
     return <String, dynamic>{
       'id': id,
       'ids': ids,
-      'indexes':
-          pulumi.Input.encodeList<
-            GetSecondaryIndexesIndex,
-            Map<String, dynamic>
-          >(indexes, (value) => value.toMap()),
+      'indexes': pulumi.Input.encodeList<GetSecondaryIndexesIndex, Map<String, dynamic>>(indexes, (value) => value.toMap()),
       'instanceName': instanceName,
       'nameRegex': ?nameRegex,
       'names': names,
@@ -66,25 +57,13 @@ class GetSecondaryIndexesResult {
     return GetSecondaryIndexesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      indexes: pulumi.Input.decodeList<GetSecondaryIndexesIndex>(
-        map['indexes']!,
-        (value) => GetSecondaryIndexesIndex.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      indexes: pulumi.Input.decodeList<GetSecondaryIndexesIndex>(map['indexes']!, (value) => GetSecondaryIndexesIndex.fromMap((value as Map).cast<String, dynamic>())),
       instanceName: map['instanceName'] as String,
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tableName: map['tableName'] as String,
     );
   }
 }
+

@@ -15,3 +15,4 @@ enum TestEndpointAuthState {
     throw ArgumentError('Unknown TestEndpointAuthState value: $value');
   }
 }
+

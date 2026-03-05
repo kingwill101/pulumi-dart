@@ -364,13 +364,10 @@ import 'edge_container_app_record_state.dart';
 class EdgeContainerAppRecord extends pulumi.CustomResource {
   /// The application ID
   late final pulumi.Output<String> appId;
-
   /// The time when the domain name was added. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
   late final pulumi.Output<String> createTime;
-
   /// The associated domain name.
   late final pulumi.Output<String> recordName;
-
   /// The website ID.
   late final pulumi.Output<String> siteId;
 
@@ -383,11 +380,11 @@ class EdgeContainerAppRecord extends pulumi.CustomResource {
     EdgeContainerAppRecordArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/edgeContainerAppRecord:EdgeContainerAppRecord',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:esa/edgeContainerAppRecord:EdgeContainerAppRecord',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appId = registerOutput<String>('appId');
     createTime = registerOutput<String>('createTime');
     recordName = registerOutput<String>('recordName');
@@ -412,11 +409,11 @@ class EdgeContainerAppRecord extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/edgeContainerAppRecord:EdgeContainerAppRecord',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:esa/edgeContainerAppRecord:EdgeContainerAppRecord',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appId = registerOutput<String>('appId');
     createTime = registerOutput<String>('createTime');
     recordName = registerOutput<String>('recordName');

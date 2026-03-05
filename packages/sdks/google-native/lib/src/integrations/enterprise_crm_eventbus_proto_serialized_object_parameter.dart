@@ -7,21 +7,20 @@ class EnterpriseCrmEventbusProtoSerializedObjectParameter {
 
   /// Creates a new [EnterpriseCrmEventbusProtoSerializedObjectParameter].
   /// [objectValue] Optional.
-  EnterpriseCrmEventbusProtoSerializedObjectParameter({this.objectValue});
+  EnterpriseCrmEventbusProtoSerializedObjectParameter({
+    this.objectValue,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'objectValue': ?objectValue};
+    return <String, dynamic>{
+      'objectValue': ?objectValue,
+    };
   }
 
-  factory EnterpriseCrmEventbusProtoSerializedObjectParameter.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EnterpriseCrmEventbusProtoSerializedObjectParameter.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoSerializedObjectParameter(
-      objectValue: (() {
-        final guardedValue = map['objectValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      objectValue: (() { final guardedValue = map['objectValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MessagingEndpointResponse {
   /// The endpoint address to connect to.
   final pulumi.Input<String> address;
-
   /// Type of connection used for messaging endpoint.
   final pulumi.Input<String>? endpointType;
-
   /// The messaging endpoint Azure resource Id.
   final pulumi.Input<String>? resourceId;
 
@@ -34,16 +32,9 @@ class MessagingEndpointResponse {
   factory MessagingEndpointResponse.fromMap(Map<String, dynamic> map) {
     return MessagingEndpointResponse(
       address: pulumi.Input.fromValue(map['address'] as String),
-      endpointType: (() {
-        final guardedValue = map['endpointType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceId: (() {
-        final guardedValue = map['resourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      endpointType: (() { final guardedValue = map['endpointType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

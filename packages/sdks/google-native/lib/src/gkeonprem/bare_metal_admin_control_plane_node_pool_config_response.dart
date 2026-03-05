@@ -16,23 +16,14 @@ class BareMetalAdminControlPlaneNodePoolConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'nodePoolConfig':
-          pulumi.Input.mapInputValue<
-            BareMetalNodePoolConfigResponse,
-            Map<String, dynamic>
-          >(nodePoolConfig, (value) => value.toMap()),
+      'nodePoolConfig': pulumi.Input.mapInputValue<BareMetalNodePoolConfigResponse, Map<String, dynamic>>(nodePoolConfig, (value) => value.toMap()),
     };
   }
 
-  factory BareMetalAdminControlPlaneNodePoolConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BareMetalAdminControlPlaneNodePoolConfigResponse.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminControlPlaneNodePoolConfigResponse(
-      nodePoolConfig: pulumi.Input.fromValue(
-        BareMetalNodePoolConfigResponse.fromMap(
-          (map['nodePoolConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      nodePoolConfig: pulumi.Input.fromValue(BareMetalNodePoolConfigResponse.fromMap((map['nodePoolConfig']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

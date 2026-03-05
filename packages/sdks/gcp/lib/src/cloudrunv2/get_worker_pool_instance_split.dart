@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWorkerPoolInstanceSplit {
   /// Specifies percent of the instance split to this Revision. This defaults to zero if unspecified.
   final pulumi.Input<int> percent;
-
   /// Revision to which to assign this portion of instances, if split allocation is by revision.
   final pulumi.Input<String> revision;
-
   /// The allocation type for this instance split. Possible values: ["INSTANCE_SPLIT_ALLOCATION_TYPE_LATEST", "INSTANCE_SPLIT_ALLOCATION_TYPE_REVISION"]
   final pulumi.Input<String> type;
 
@@ -38,3 +36,4 @@ class GetWorkerPoolInstanceSplit {
     );
   }
 }
+

@@ -280,25 +280,18 @@ import 'network_manager_ipam_pool_state.dart';
 class NetworkManagerIpamPool extends pulumi.CustomResource {
   /// Specifies a list of IPv4 or IPv6 IP address prefixes. Changing this forces a new Network Manager IPAM Pool to be created.
   late final pulumi.Output<List<String>> addressPrefixes;
-
   /// The description of the Network Manager IPAM Pool.
   late final pulumi.Output<String?> description;
-
   /// The display name for the Network Manager IPAM Pool.
   late final pulumi.Output<String?> displayName;
-
   /// The Azure Region where the Network Manager IPAM Pool should exist. Changing this forces a new Network Manager IPAM Pool to be created.
   late final pulumi.Output<String> location;
-
   /// The name which should be used for this Network Manager IPAM Pool. Changing this forces a new Network Manager IPAM Pool to be created.
   late final pulumi.Output<String> name;
-
   /// The ID of the parent Network Manager. Changing this forces a new Network Manager IPAM Pool to be created.
   late final pulumi.Output<String> networkManagerId;
-
   /// The name of the parent IPAM Pool. Changing this forces a new Network Manager IPAM Pool to be created.
   late final pulumi.Output<String?> parentPoolName;
-
   /// A mapping of tags which should be assigned to the Network Manager IPAM Pool.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -311,11 +304,11 @@ class NetworkManagerIpamPool extends pulumi.CustomResource {
     NetworkManagerIpamPoolArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/networkManagerIpamPool:NetworkManagerIpamPool',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/networkManagerIpamPool:NetworkManagerIpamPool',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     addressPrefixes = registerOutput<List<String>>('addressPrefixes');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
@@ -344,11 +337,11 @@ class NetworkManagerIpamPool extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/networkManagerIpamPool:NetworkManagerIpamPool',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/networkManagerIpamPool:NetworkManagerIpamPool',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     addressPrefixes = registerOutput<List<String>>('addressPrefixes');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');

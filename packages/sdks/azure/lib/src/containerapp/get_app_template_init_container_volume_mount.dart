@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAppTemplateInitContainerVolumeMount {
   /// The name of the Container App.
   final pulumi.Input<String> name;
-
   /// The path in the container at which to mount this volume.
   final pulumi.Input<String> path;
-
   /// The sub path of the volume to be mounted in the container.
   final pulumi.Input<String> subPath;
 
@@ -23,12 +21,14 @@ class GetAppTemplateInitContainerVolumeMount {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'path': path, 'subPath': subPath};
+    return <String, dynamic>{
+      'name': name,
+      'path': path,
+      'subPath': subPath,
+    };
   }
 
-  factory GetAppTemplateInitContainerVolumeMount.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetAppTemplateInitContainerVolumeMount.fromMap(Map<String, dynamic> map) {
     return GetAppTemplateInitContainerVolumeMount(
       name: pulumi.Input.fromValue(map['name'] as String),
       path: pulumi.Input.fromValue(map['path'] as String),
@@ -36,3 +36,4 @@ class GetAppTemplateInitContainerVolumeMount {
     );
   }
 }
+

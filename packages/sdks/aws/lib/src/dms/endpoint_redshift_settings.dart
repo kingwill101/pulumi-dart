@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EndpointRedshiftSettings {
   /// Custom S3 Bucket Object prefix for intermediate storage.
   final pulumi.Input<String>? bucketFolder;
-
   /// Custom S3 Bucket name for intermediate storage.
   final pulumi.Input<String>? bucketName;
-
   /// The server-side encryption mode that you want to encrypt your intermediate .csv object files copied to S3. Defaults to `SSE_S3`. Valid values are `SSE_S3` and `SSE_KMS`.
   final pulumi.Input<String>? encryptionMode;
-
   /// ARN or Id of KMS Key to use when `encryption_mode` is `SSE_KMS`.
   final pulumi.Input<String>? serverSideEncryptionKmsKeyId;
-
   /// Amazon Resource Name (ARN) of the IAM Role with permissions to read from or write to the S3 Bucket for intermediate storage.
   final pulumi.Input<String>? serviceAccessRoleArn;
 
@@ -44,31 +40,12 @@ class EndpointRedshiftSettings {
 
   factory EndpointRedshiftSettings.fromMap(Map<String, dynamic> map) {
     return EndpointRedshiftSettings(
-      bucketFolder: (() {
-        final guardedValue = map['bucketFolder'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      bucketName: (() {
-        final guardedValue = map['bucketName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      encryptionMode: (() {
-        final guardedValue = map['encryptionMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serverSideEncryptionKmsKeyId: (() {
-        final guardedValue = map['serverSideEncryptionKmsKeyId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serviceAccessRoleArn: (() {
-        final guardedValue = map['serviceAccessRoleArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      bucketFolder: (() { final guardedValue = map['bucketFolder']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      bucketName: (() { final guardedValue = map['bucketName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      encryptionMode: (() { final guardedValue = map['encryptionMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serverSideEncryptionKmsKeyId: (() { final guardedValue = map['serverSideEncryptionKmsKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serviceAccessRoleArn: (() { final guardedValue = map['serviceAccessRoleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

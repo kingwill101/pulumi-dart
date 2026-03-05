@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RuleLockConfigurationUnlockDelay {
   /// Unit of time in which to measure the unlock delay. Currently, the unlock delay can be measure only in days.
   final pulumi.Input<String> unlockDelayUnit;
-
   /// Unlock delay period, measured in the unit specified for UnlockDelayUnit.
   final pulumi.Input<int> unlockDelayValue;
 
@@ -31,3 +30,4 @@ class RuleLockConfigurationUnlockDelay {
     );
   }
 }
+

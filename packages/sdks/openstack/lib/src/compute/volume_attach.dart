@@ -935,28 +935,22 @@ import 'volume_attach_vendor_options.dart';
 /// ```
 class VolumeAttach extends pulumi.CustomResource {
   late final pulumi.Output<String> device;
-
   /// The ID of the Instance to attach the Volume to.
   late final pulumi.Output<String> instanceId;
-
   /// Enable attachment of multiattach-capable volumes.
   late final pulumi.Output<bool?> multiattach;
-
   /// The region in which to obtain the V2 Compute client.
   /// A Compute client is needed to create a volume attachment. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a
   /// new volume attachment.
   late final pulumi.Output<String> region;
-
   /// Add a device role tag that is applied to the volume when
   /// attaching it to the VM. Changing this creates a new volume attachment with
   /// the new tag. Requires microversion &gt;= 2.49.
   late final pulumi.Output<String?> tag;
-
   /// Map of additional vendor-specific options.
   /// Supported options are described below.
   late final pulumi.Output<VolumeAttachVendorOptions?> vendorOptions;
-
   /// The ID of the Volume to attach to an Instance.
   late final pulumi.Output<String> volumeId;
 
@@ -969,26 +963,17 @@ class VolumeAttach extends pulumi.CustomResource {
     VolumeAttachArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:compute/volumeAttach:VolumeAttach',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:compute/volumeAttach:VolumeAttach',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     device = registerOutput<String>('device');
     instanceId = registerOutput<String>('instanceId');
     multiattach = registerOutput<bool?>('multiattach');
     region = registerOutput<String>('region');
     tag = registerOutput<String?>('tag');
-    vendorOptions = registerOutput<VolumeAttachVendorOptions?>(
-      'vendorOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VolumeAttachVendorOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    vendorOptions = registerOutput<VolumeAttachVendorOptions?>('vendorOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeAttachVendorOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     volumeId = registerOutput<String>('volumeId');
   }
 
@@ -1010,26 +995,17 @@ class VolumeAttach extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:compute/volumeAttach:VolumeAttach',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:compute/volumeAttach:VolumeAttach',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     device = registerOutput<String>('device');
     instanceId = registerOutput<String>('instanceId');
     multiattach = registerOutput<bool?>('multiattach');
     region = registerOutput<String>('region');
     tag = registerOutput<String?>('tag');
-    vendorOptions = registerOutput<VolumeAttachVendorOptions?>(
-      'vendorOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VolumeAttachVendorOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    vendorOptions = registerOutput<VolumeAttachVendorOptions?>('vendorOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeAttachVendorOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     volumeId = registerOutput<String>('volumeId');
   }
 }

@@ -22,13 +22,10 @@ class SecurityTokenServicePreferencesArgs {
     };
   }
 
-  factory SecurityTokenServicePreferencesArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SecurityTokenServicePreferencesArgs.fromMap(Map<String, dynamic> map) {
     return SecurityTokenServicePreferencesArgs(
-      globalEndpointTokenVersion: pulumi.Input.fromValue(
-        map['globalEndpointTokenVersion'] as String,
-      ),
+      globalEndpointTokenVersion: pulumi.Input.fromValue(map['globalEndpointTokenVersion'] as String),
     );
   }
 }
+

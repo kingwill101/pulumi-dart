@@ -15,3 +15,4 @@ enum ShareKind {
     throw ArgumentError('Unknown ShareKind value: $value');
   }
 }
+

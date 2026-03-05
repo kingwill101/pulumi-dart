@@ -8,28 +8,20 @@ import 'managed_service_identity_response.dart';
 class GetIntegrationServiceEnvironmentResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The resource id.
   final String id;
-
   /// Managed service identity properties.
   final ManagedServiceIdentityResponse? identity;
-
   /// The resource location.
   final String? location;
-
   /// Gets the resource name.
   final String name;
-
   /// The integration service environment properties.
   final IntegrationServiceEnvironmentPropertiesResponse properties;
-
   /// The sku.
   final IntegrationServiceEnvironmentSkuResponse? sku;
-
   /// The resource tags.
   final Map<String, String>? tags;
-
   /// Gets the resource type.
   final String type;
 
@@ -69,41 +61,18 @@ class GetIntegrationServiceEnvironmentResult {
     };
   }
 
-  factory GetIntegrationServiceEnvironmentResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetIntegrationServiceEnvironmentResult.fromMap(Map<String, dynamic> map) {
     return GetIntegrationServiceEnvironmentResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return ManagedServiceIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
-      properties: IntegrationServiceEnvironmentPropertiesResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
-      sku: (() {
-        final guardedValue = map['sku'];
-        if (guardedValue == null) return null;
-        return IntegrationServiceEnvironmentSkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      properties: IntegrationServiceEnvironmentPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
+      sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return IntegrationServiceEnvironmentSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

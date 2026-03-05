@@ -202,16 +202,12 @@ import 'backup_vault_state.dart';
 class BackupVault extends pulumi.CustomResource {
   /// The name of the NetApp account in which the NetApp Vault should be created under. Changing this forces a new resource to be created.
   late final pulumi.Output<String> accountName;
-
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The name of the NetApp Backup Vault. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the resource group where the NetApp Backup Vault should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -224,11 +220,11 @@ class BackupVault extends pulumi.CustomResource {
     BackupVaultArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:netapp/backupVault:BackupVault',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:netapp/backupVault:BackupVault',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountName = registerOutput<String>('accountName');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -254,11 +250,11 @@ class BackupVault extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:netapp/backupVault:BackupVault',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:netapp/backupVault:BackupVault',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountName = registerOutput<String>('accountName');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

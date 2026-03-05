@@ -1,31 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getApiVersionSet.
 class GetApiVersionSetResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Description of API Version Set.
   final String? description;
-
   /// Name of API Version Set
   final String displayName;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// The name of the resource
   final String name;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
-
   /// Name of HTTP header parameter that indicates the API Version if versioningScheme is set to `header`.
   final String? versionHeaderName;
-
   /// Name of query parameter that indicates the API Version if versioningScheme is set to `query`.
   final String? versionQueryName;
-
   /// An value that determines where the API Version identifier will be located in a HTTP request.
   final String versioningScheme;
 
@@ -68,26 +61,15 @@ class GetApiVersionSetResult {
   factory GetApiVersionSetResult.fromMap(Map<String, dynamic> map) {
     return GetApiVersionSetResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       displayName: map['displayName'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
       type: map['type'] as String,
-      versionHeaderName: (() {
-        final guardedValue = map['versionHeaderName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      versionQueryName: (() {
-        final guardedValue = map['versionQueryName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      versionHeaderName: (() { final guardedValue = map['versionHeaderName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      versionQueryName: (() { final guardedValue = map['versionQueryName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       versioningScheme: map['versioningScheme'] as String,
     );
   }
 }
+

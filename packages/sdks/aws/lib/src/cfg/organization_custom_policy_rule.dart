@@ -211,46 +211,32 @@ import 'organization_custom_policy_rule_state.dart';
 class OrganizationCustomPolicyRule extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the rule.
   late final pulumi.Output<String> arn;
-
   /// List of accounts that you can enable debug logging for. The list is null when debug logging is enabled for all accounts.
   late final pulumi.Output<List<String>?> debugLogDeliveryAccounts;
-
   /// Description of the rule.
   late final pulumi.Output<String?> description;
-
   /// List of AWS account identifiers to exclude from the rule.
   late final pulumi.Output<List<String>?> excludedAccounts;
-
   /// A string in JSON format that is passed to the AWS Config Rule Lambda Function.
   late final pulumi.Output<String?> inputParameters;
-
   /// Maximum frequency with which AWS Config runs evaluations for a rule, if the rule is triggered at a periodic frequency. Defaults to `TwentyFour_Hours` for periodic frequency triggered rules. Valid values: `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, or `TwentyFour_Hours`.
   late final pulumi.Output<String?> maximumExecutionFrequency;
-
   /// Name of the rule.
   late final pulumi.Output<String> name;
-
   /// Runtime system for policy rules.
   late final pulumi.Output<String> policyRuntime;
-
   /// Policy definition containing the rule logic.
   late final pulumi.Output<String> policyText;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Identifier of the AWS resource to evaluate.
   late final pulumi.Output<String?> resourceIdScope;
-
   /// List of types of AWS resources to evaluate.
   late final pulumi.Output<List<String>?> resourceTypesScopes;
-
   /// Tag key of AWS resources to evaluate.
   late final pulumi.Output<String?> tagKeyScope;
-
   /// Tag value of AWS resources to evaluate.
   late final pulumi.Output<String?> tagValueScope;
-
   /// List of notification types that trigger AWS Config to run an evaluation for the rule. Valid values: `ConfigurationItemChangeNotification`, `OversizedConfigurationItemChangeNotification`.
   ///
   /// The following arguments are optional:
@@ -265,21 +251,17 @@ class OrganizationCustomPolicyRule extends pulumi.CustomResource {
     OrganizationCustomPolicyRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cfg/organizationCustomPolicyRule:OrganizationCustomPolicyRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cfg/organizationCustomPolicyRule:OrganizationCustomPolicyRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    debugLogDeliveryAccounts = registerOutput<List<String>?>(
-      'debugLogDeliveryAccounts',
-    );
+    debugLogDeliveryAccounts = registerOutput<List<String>?>('debugLogDeliveryAccounts');
     description = registerOutput<String?>('description');
     excludedAccounts = registerOutput<List<String>?>('excludedAccounts');
     inputParameters = registerOutput<String?>('inputParameters');
-    maximumExecutionFrequency = registerOutput<String?>(
-      'maximumExecutionFrequency',
-    );
+    maximumExecutionFrequency = registerOutput<String?>('maximumExecutionFrequency');
     this.name = registerOutput<String>('name');
     policyRuntime = registerOutput<String>('policyRuntime');
     policyText = registerOutput<String>('policyText');
@@ -309,21 +291,17 @@ class OrganizationCustomPolicyRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cfg/organizationCustomPolicyRule:OrganizationCustomPolicyRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cfg/organizationCustomPolicyRule:OrganizationCustomPolicyRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    debugLogDeliveryAccounts = registerOutput<List<String>?>(
-      'debugLogDeliveryAccounts',
-    );
+    debugLogDeliveryAccounts = registerOutput<List<String>?>('debugLogDeliveryAccounts');
     description = registerOutput<String?>('description');
     excludedAccounts = registerOutput<List<String>?>('excludedAccounts');
     inputParameters = registerOutput<String?>('inputParameters');
-    maximumExecutionFrequency = registerOutput<String?>(
-      'maximumExecutionFrequency',
-    );
+    maximumExecutionFrequency = registerOutput<String?>('maximumExecutionFrequency');
     this.name = registerOutput<String>('name');
     policyRuntime = registerOutput<String>('policyRuntime');
     policyText = registerOutput<String>('policyText');

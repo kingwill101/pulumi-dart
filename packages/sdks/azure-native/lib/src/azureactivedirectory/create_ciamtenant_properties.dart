@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CreateCIAMTenantProperties {
   /// Country code of Azure tenant (e.g. 'US'). Refer to [https://aka.ms/ciam-data-location](https://aka.ms/ciam-data-location) to see valid country codes and corresponding data residency locations. If you do not see a country code in an valid data residency location, choose one from the list.
   final pulumi.Input<String> countryCode;
-
   /// The display name of the Azure AD for customers tenant.
   final pulumi.Input<String> displayName;
 
@@ -32,3 +31,4 @@ class CreateCIAMTenantProperties {
     );
   }
 }
+

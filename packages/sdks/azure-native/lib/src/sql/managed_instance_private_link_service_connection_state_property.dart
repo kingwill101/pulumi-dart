@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedInstancePrivateLinkServiceConnectionStateProperty {
   /// The private link service connection description.
   final pulumi.Input<String> description;
-
   /// The private link service connection status.
   final pulumi.Input<String> status;
 
@@ -18,15 +17,17 @@ class ManagedInstancePrivateLinkServiceConnectionStateProperty {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'description': description, 'status': status};
+    return <String, dynamic>{
+      'description': description,
+      'status': status,
+    };
   }
 
-  factory ManagedInstancePrivateLinkServiceConnectionStateProperty.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ManagedInstancePrivateLinkServiceConnectionStateProperty.fromMap(Map<String, dynamic> map) {
     return ManagedInstancePrivateLinkServiceConnectionStateProperty(
       description: pulumi.Input.fromValue(map['description'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
+

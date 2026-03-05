@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TunnelChannel {
   /// The id of the channel.
   final pulumi.Input<String>? channelId;
-
   /// The latest consumption time of the channel, unix time in nanosecond.
   final pulumi.Input<int>? channelRpo;
-
   /// The status of the channel, valid values: `WAIT`, `OPEN`, `CLOSING`, `CLOSE`, `TERMINATED`.
   final pulumi.Input<String>? channelStatus;
-
   /// The type of the channel, valid values: `BaseData`, `Stream`.
   final pulumi.Input<String>? channelType;
-
   /// The client id of the channel.
   final pulumi.Input<String>? clientId;
 
@@ -44,31 +40,12 @@ class TunnelChannel {
 
   factory TunnelChannel.fromMap(Map<String, dynamic> map) {
     return TunnelChannel(
-      channelId: (() {
-        final guardedValue = map['channelId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      channelRpo: (() {
-        final guardedValue = map['channelRpo'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      channelStatus: (() {
-        final guardedValue = map['channelStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      channelType: (() {
-        final guardedValue = map['channelType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      clientId: (() {
-        final guardedValue = map['clientId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      channelId: (() { final guardedValue = map['channelId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      channelRpo: (() { final guardedValue = map['channelRpo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      channelStatus: (() { final guardedValue = map['channelStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      channelType: (() { final guardedValue = map['channelType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      clientId: (() { final guardedValue = map['clientId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -9,17 +9,20 @@ class GooglePrivacyDlpV2KindExpressionResponse {
 
   /// Creates a new [GooglePrivacyDlpV2KindExpressionResponse].
   /// [name] The name of the kind.
-  GooglePrivacyDlpV2KindExpressionResponse({required this.name});
+  GooglePrivacyDlpV2KindExpressionResponse({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
-  factory GooglePrivacyDlpV2KindExpressionResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GooglePrivacyDlpV2KindExpressionResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2KindExpressionResponse(
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

@@ -171,54 +171,38 @@ import 'user_state.dart';
 class User extends pulumi.CustomResource {
   /// Details about the user's address. At most 1 address is allowed. Detailed below.
   late final pulumi.Output<UserAddresses?> addresses;
-
   /// The name that is typically displayed when the user is referenced.
   late final pulumi.Output<String> displayName;
-
   /// Details about the user's email. At most 1 email is allowed. Detailed below.
   late final pulumi.Output<UserEmails?> emails;
-
   /// A list of identifiers issued to this resource by an external identity provider.
   late final pulumi.Output<List<Map<String, dynamic>>> externalIds;
-
   /// The globally unique identifier for the identity store that this user is in.
   late final pulumi.Output<String> identityStoreId;
-
   /// The user's geographical region or location.
   late final pulumi.Output<String?> locale;
-
   /// Details about the user's full name. Detailed below.
   late final pulumi.Output<UserName> name;
-
   /// An alternate name for the user.
   late final pulumi.Output<String?> nickname;
-
   /// Details about the user's phone number. At most 1 phone number is allowed. Detailed below.
   late final pulumi.Output<UserPhoneNumbers?> phoneNumbers;
-
   /// The preferred language of the user.
   late final pulumi.Output<String?> preferredLanguage;
-
   /// An URL that may be associated with the user.
   late final pulumi.Output<String?> profileUrl;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The user's time zone.
   late final pulumi.Output<String?> timezone;
-
   /// The user's title.
   late final pulumi.Output<String?> title;
-
   /// The identifier for this user in the identity store.
   late final pulumi.Output<String> userId;
-
   /// A unique string used to identify the user. This value can consist of letters, accented characters, symbols, numbers, and punctuation. This value is specified at the time the user is created and stored as an attribute of the user object in the identity store. The limit is 128 characters.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> userName;
-
   /// The user type.
   ///
   /// &gt; Unless specified otherwise, all fields can contain up to 1024 characters of free-form text.
@@ -228,56 +212,25 @@ class User extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [User]. {@macro pulumi_identitystore_user_user_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  User(String name, {UserArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:identitystore/user:User',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
-    addresses = registerOutput<UserAddresses?>(
-      'addresses',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return UserAddresses.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+  User(
+    String name, {
+    UserArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:identitystore/user:User',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    addresses = registerOutput<UserAddresses?>('addresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserAddresses.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     displayName = registerOutput<String>('displayName');
-    emails = registerOutput<UserEmails?>(
-      'emails',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return UserEmails.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    emails = registerOutput<UserEmails?>('emails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserEmails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     externalIds = registerOutput<List<Map<String, dynamic>>>('externalIds');
     identityStoreId = registerOutput<String>('identityStoreId');
     locale = registerOutput<String?>('locale');
-    this.name = registerOutput<UserName>(
-      'name',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return UserName.fromMap((guardedValue as Map).cast<String, dynamic>());
-      },
-    );
+    this.name = registerOutput<UserName>('name', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserName.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     nickname = registerOutput<String?>('nickname');
-    phoneNumbers = registerOutput<UserPhoneNumbers?>(
-      'phoneNumbers',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return UserPhoneNumbers.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    phoneNumbers = registerOutput<UserPhoneNumbers?>('phoneNumbers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPhoneNumbers.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     preferredLanguage = registerOutput<String?>('preferredLanguage');
     profileUrl = registerOutput<String?>('profileUrl');
     region = registerOutput<String>('region');
@@ -289,7 +242,11 @@ class User extends pulumi.CustomResource {
   }
 
   /// Gets an existing [User] resource's state with the given [name] and [id].
-  static User get(String name, pulumi.Input<String> id, {UserState? state}) {
+  static User get(
+    String name,
+    pulumi.Input<String> id, {
+    UserState? state,
+  }) {
     return User._get(
       name,
       state: state?.toMap(),
@@ -302,54 +259,20 @@ class User extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:identitystore/user:User',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    addresses = registerOutput<UserAddresses?>(
-      'addresses',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return UserAddresses.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'aws:identitystore/user:User',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    addresses = registerOutput<UserAddresses?>('addresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserAddresses.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     displayName = registerOutput<String>('displayName');
-    emails = registerOutput<UserEmails?>(
-      'emails',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return UserEmails.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    emails = registerOutput<UserEmails?>('emails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserEmails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     externalIds = registerOutput<List<Map<String, dynamic>>>('externalIds');
     identityStoreId = registerOutput<String>('identityStoreId');
     locale = registerOutput<String?>('locale');
-    this.name = registerOutput<UserName>(
-      'name',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return UserName.fromMap((guardedValue as Map).cast<String, dynamic>());
-      },
-    );
+    this.name = registerOutput<UserName>('name', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserName.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     nickname = registerOutput<String?>('nickname');
-    phoneNumbers = registerOutput<UserPhoneNumbers?>(
-      'phoneNumbers',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return UserPhoneNumbers.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    phoneNumbers = registerOutput<UserPhoneNumbers?>('phoneNumbers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPhoneNumbers.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     preferredLanguage = registerOutput<String?>('preferredLanguage');
     profileUrl = registerOutput<String?>('profileUrl');
     region = registerOutput<String>('region');

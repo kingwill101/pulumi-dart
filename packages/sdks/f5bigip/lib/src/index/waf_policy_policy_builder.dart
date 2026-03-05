@@ -8,19 +8,20 @@ class WafPolicyPolicyBuilder {
 
   /// Creates a new [WafPolicyPolicyBuilder].
   /// [learningMode] learning mode setting for policy-builder, possible options: [`automatic`,`disabled`, `manual`]
-  WafPolicyPolicyBuilder({this.learningMode});
+  WafPolicyPolicyBuilder({
+    this.learningMode,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'learningMode': ?learningMode};
+    return <String, dynamic>{
+      'learningMode': ?learningMode,
+    };
   }
 
   factory WafPolicyPolicyBuilder.fromMap(Map<String, dynamic> map) {
     return WafPolicyPolicyBuilder(
-      learningMode: (() {
-        final guardedValue = map['learningMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      learningMode: (() { final guardedValue = map['learningMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

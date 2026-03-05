@@ -212,50 +212,36 @@ import 'environment_timeouts.dart';
 class Environment extends pulumi.CustomResource {
   /// The ID of the Amazon Web Services account where the environment exists
   late final pulumi.Output<String> accountIdentifier;
-
   /// The Amazon Web Services region where the environment exists.
   late final pulumi.Output<String> accountRegion;
-
   /// The blueprint with which the environment is created.
   late final pulumi.Output<String> blueprintIdentifier;
-
   /// The time the environment was created.
   late final pulumi.Output<String> createdAt;
-
   /// The user who created the environment.
   late final pulumi.Output<String> createdBy;
-
   /// The description of the environment.
   late final pulumi.Output<String?> description;
-
   /// The ID of the domain where the environment exists.
   late final pulumi.Output<String> domainIdentifier;
-
   /// The business glossary terms that can be used in this environment.
   late final pulumi.Output<List<String>?> glossaryTerms;
-
   /// The details of the last deployment of the environment.
   late final pulumi.Output<List<Map<String, dynamic>>> lastDeployments;
-
   /// The name of the environment.
   late final pulumi.Output<String> name;
-
   /// The ID of the profile with which the environment is created.
   late final pulumi.Output<String> profileIdentifier;
-
   /// The ID of the project where the environment exists.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> projectIdentifier;
-
   /// The provider of the environment.
   late final pulumi.Output<String> providerEnvironment;
   late final pulumi.Output<List<Map<String, dynamic>>> provisionedResources;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   late final pulumi.Output<EnvironmentTimeouts?> timeouts;
-
   /// The user parameters that are used in the environment.
   /// See User Parameters for more information.
   /// Changing these values recreates the resource.
@@ -270,11 +256,11 @@ class Environment extends pulumi.CustomResource {
     EnvironmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:datazone/environment:Environment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:datazone/environment:Environment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountIdentifier = registerOutput<String>('accountIdentifier');
     accountRegion = registerOutput<String>('accountRegion');
     blueprintIdentifier = registerOutput<String>('blueprintIdentifier');
@@ -283,30 +269,15 @@ class Environment extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     domainIdentifier = registerOutput<String>('domainIdentifier');
     glossaryTerms = registerOutput<List<String>?>('glossaryTerms');
-    lastDeployments = registerOutput<List<Map<String, dynamic>>>(
-      'lastDeployments',
-    );
+    lastDeployments = registerOutput<List<Map<String, dynamic>>>('lastDeployments');
     this.name = registerOutput<String>('name');
     profileIdentifier = registerOutput<String>('profileIdentifier');
     projectIdentifier = registerOutput<String>('projectIdentifier');
     providerEnvironment = registerOutput<String>('providerEnvironment');
-    provisionedResources = registerOutput<List<Map<String, dynamic>>>(
-      'provisionedResources',
-    );
+    provisionedResources = registerOutput<List<Map<String, dynamic>>>('provisionedResources');
     region = registerOutput<String>('region');
-    timeouts = registerOutput<EnvironmentTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EnvironmentTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    userParameters = registerOutput<List<Map<String, dynamic>>?>(
-      'userParameters',
-    );
+    timeouts = registerOutput<EnvironmentTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    userParameters = registerOutput<List<Map<String, dynamic>>?>('userParameters');
   }
 
   /// Gets an existing [Environment] resource's state with the given [name] and [id].
@@ -327,11 +298,11 @@ class Environment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:datazone/environment:Environment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:datazone/environment:Environment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountIdentifier = registerOutput<String>('accountIdentifier');
     accountRegion = registerOutput<String>('accountRegion');
     blueprintIdentifier = registerOutput<String>('blueprintIdentifier');
@@ -340,29 +311,14 @@ class Environment extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     domainIdentifier = registerOutput<String>('domainIdentifier');
     glossaryTerms = registerOutput<List<String>?>('glossaryTerms');
-    lastDeployments = registerOutput<List<Map<String, dynamic>>>(
-      'lastDeployments',
-    );
+    lastDeployments = registerOutput<List<Map<String, dynamic>>>('lastDeployments');
     this.name = registerOutput<String>('name');
     profileIdentifier = registerOutput<String>('profileIdentifier');
     projectIdentifier = registerOutput<String>('projectIdentifier');
     providerEnvironment = registerOutput<String>('providerEnvironment');
-    provisionedResources = registerOutput<List<Map<String, dynamic>>>(
-      'provisionedResources',
-    );
+    provisionedResources = registerOutput<List<Map<String, dynamic>>>('provisionedResources');
     region = registerOutput<String>('region');
-    timeouts = registerOutput<EnvironmentTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EnvironmentTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    userParameters = registerOutput<List<Map<String, dynamic>>?>(
-      'userParameters',
-    );
+    timeouts = registerOutput<EnvironmentTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    userParameters = registerOutput<List<Map<String, dynamic>>?>('userParameters');
   }
 }

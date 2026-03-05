@@ -15,3 +15,4 @@ enum MaccEntityType {
     throw ArgumentError('Unknown MaccEntityType value: $value');
   }
 }
+

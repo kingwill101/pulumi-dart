@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InvitationAccepterState {
   /// The AWS account ID for the account that sent the invitation.
   final pulumi.Input<String>? administratorAccountId;
-
   /// The unique identifier for the invitation.
   final pulumi.Input<String>? invitationId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -33,21 +31,10 @@ class InvitationAccepterState {
 
   factory InvitationAccepterState.fromMap(Map<String, dynamic> map) {
     return InvitationAccepterState(
-      administratorAccountId: (() {
-        final guardedValue = map['administratorAccountId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      invitationId: (() {
-        final guardedValue = map['invitationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      administratorAccountId: (() { final guardedValue = map['administratorAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      invitationId: (() { final guardedValue = map['invitationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

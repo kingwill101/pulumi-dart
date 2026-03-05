@@ -8,18 +8,10 @@ import 'google_iam_admin_v1_workforce_pool_provider_oidc_web_sso_config_response
 class GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig {
   /// Additional scopes to request for in the OIDC authentication request on top of scopes requested by default. By default, the `openid`, `profile` and `email` scopes that are supported by the identity provider are requested. Each additional scope may be at most 256 characters. A maximum of 10 additional scopes may be configured.
   final pulumi.Input<List<String>>? additionalScopes;
-
   /// The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping and attribute condition.
-  final pulumi.Input<
-    GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior
-  >
-  assertionClaimsBehavior;
-
+  final pulumi.Input<GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior> assertionClaimsBehavior;
   /// The Response Type to request for in the OIDC Authorization Request for web sign-in. The `CODE` Response Type is recommended to avoid the Implicit Flow, for security reasons.
-  final pulumi.Input<
-    GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType
-  >
-  responseType;
+  final pulumi.Input<GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType> responseType;
 
   /// Creates a new [GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig].
   /// [additionalScopes] Additional scopes to request for in the OIDC authentication request on top of scopes requested by default. By default, the `openid`, `profile` and `email` scopes that are supported by the identity provider are requested. Each additional scope may be at most 256 characters. A maximum of 10 additional scopes may be configured.
@@ -34,38 +26,17 @@ class GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'additionalScopes': ?additionalScopes,
-      'assertionClaimsBehavior':
-          pulumi.Input.mapInputValue<
-            GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior,
-            String
-          >(assertionClaimsBehavior, (value) => value.wireValue),
-      'responseType':
-          pulumi.Input.mapInputValue<
-            GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType,
-            String
-          >(responseType, (value) => value.wireValue),
+      'assertionClaimsBehavior': pulumi.Input.mapInputValue<GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior, String>(assertionClaimsBehavior, (value) => value.wireValue),
+      'responseType': pulumi.Input.mapInputValue<GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType, String>(responseType, (value) => value.wireValue),
     };
   }
 
-  factory GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig.fromMap(Map<String, dynamic> map) {
     return GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig(
-      additionalScopes: (() {
-        final guardedValue = map['additionalScopes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      assertionClaimsBehavior: pulumi.Input.fromValue(
-        GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior.fromValue(
-          map['assertionClaimsBehavior']! as String,
-        ),
-      ),
-      responseType: pulumi.Input.fromValue(
-        GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType.fromValue(
-          map['responseType']! as String,
-        ),
-      ),
+      additionalScopes: (() { final guardedValue = map['additionalScopes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      assertionClaimsBehavior: pulumi.Input.fromValue(GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior.fromValue(map['assertionClaimsBehavior']! as String)),
+      responseType: pulumi.Input.fromValue(GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType.fromValue(map['responseType']! as String)),
     );
   }
 }
+

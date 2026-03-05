@@ -9,13 +9,20 @@ class ForNode {
 
   /// Creates a new [ForNode].
   /// [name] name represents the name of the node.
-  ForNode({required this.name});
+  ForNode({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory ForNode.fromMap(Map<String, dynamic> map) {
-    return ForNode(name: pulumi.Input.fromValue(map['name'] as String));
+    return ForNode(
+      name: pulumi.Input.fromValue(map['name'] as String),
+    );
   }
 }
+

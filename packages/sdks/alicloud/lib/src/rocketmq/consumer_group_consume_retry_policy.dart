@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConsumerGroupConsumeRetryPolicy {
   /// The dead-letter topic. If the consumer fails to consume a message in an abnormal situation and the message is still unsuccessful after retrying, the message will be delivered to the dead letter Topic for subsequent business recovery or backtracking.
   final pulumi.Input<String>? deadLetterTargetTopic;
-
   /// Maximum number of retries.
   final pulumi.Input<int>? maxRetryTimes;
-
   /// Consume retry policy.
   final pulumi.Input<String>? retryPolicy;
 
@@ -32,21 +30,10 @@ class ConsumerGroupConsumeRetryPolicy {
 
   factory ConsumerGroupConsumeRetryPolicy.fromMap(Map<String, dynamic> map) {
     return ConsumerGroupConsumeRetryPolicy(
-      deadLetterTargetTopic: (() {
-        final guardedValue = map['deadLetterTargetTopic'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      maxRetryTimes: (() {
-        final guardedValue = map['maxRetryTimes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      retryPolicy: (() {
-        final guardedValue = map['retryPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      deadLetterTargetTopic: (() { final guardedValue = map['deadLetterTargetTopic']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      maxRetryTimes: (() { final guardedValue = map['maxRetryTimes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      retryPolicy: (() { final guardedValue = map['retryPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

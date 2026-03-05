@@ -269,16 +269,12 @@ import 'queue_args.dart';
 class Queue extends pulumi.CustomResource {
   /// Integer indicating an approximate number of messages in the queue. This number is not lower than the actual number of messages in the queue, but could be higher.
   late final pulumi.Output<int> approximateMessageCount;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// A name-value pair that represents queue metadata.
   late final pulumi.Output<Map<String, String>?> metadata;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -286,13 +282,16 @@ class Queue extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Queue]. {@macro pulumi_storage_queue_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Queue(String name, {QueueArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:storage:Queue',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Queue(
+    String name, {
+    QueueArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:storage:Queue',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     approximateMessageCount = registerOutput<int>('approximateMessageCount');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     metadata = registerOutput<Map<String, String>?>('metadata');

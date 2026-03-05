@@ -220,10 +220,8 @@ import 'data_connector_aws_cloud_trail_state.dart';
 class DataConnectorAwsCloudTrail extends pulumi.CustomResource {
   /// The ARN of the AWS CloudTrail role, which is connected to this AWS CloudTrail Data Connector.
   late final pulumi.Output<String> awsRoleArn;
-
   /// The ID of the Log Analytics Workspace that this AWS CloudTrail Data Connector resides in. Changing this forces a new AWS CloudTrail Data Connector to be created.
   late final pulumi.Output<String> logAnalyticsWorkspaceId;
-
   /// The name which should be used for this AWS CloudTrail Data Connector. Changing this forces a new AWS CloudTrail Data Connector to be created.
   late final pulumi.Output<String> name;
 
@@ -236,11 +234,11 @@ class DataConnectorAwsCloudTrail extends pulumi.CustomResource {
     DataConnectorAwsCloudTrailArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:sentinel/dataConnectorAwsCloudTrail:DataConnectorAwsCloudTrail',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:sentinel/dataConnectorAwsCloudTrail:DataConnectorAwsCloudTrail',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     awsRoleArn = registerOutput<String>('awsRoleArn');
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     this.name = registerOutput<String>('name');
@@ -264,11 +262,11 @@ class DataConnectorAwsCloudTrail extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:sentinel/dataConnectorAwsCloudTrail:DataConnectorAwsCloudTrail',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:sentinel/dataConnectorAwsCloudTrail:DataConnectorAwsCloudTrail',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     awsRoleArn = registerOutput<String>('awsRoleArn');
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     this.name = registerOutput<String>('name');

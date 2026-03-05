@@ -120,22 +120,16 @@ import 'thing_state.dart';
 class Thing extends pulumi.CustomResource {
   /// The ARN of the thing.
   late final pulumi.Output<String> arn;
-
   /// Map of attributes of the thing.
   late final pulumi.Output<Map<String, String>?> attributes;
-
   /// The default client ID.
   late final pulumi.Output<String> defaultClientId;
-
   /// The name of the thing.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The thing type name.
   late final pulumi.Output<String?> thingTypeName;
-
   /// The current version of the thing record in the registry.
   late final pulumi.Output<int> version;
 
@@ -143,13 +137,16 @@ class Thing extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Thing]. {@macro pulumi_iot_thing_thing_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Thing(String name, {ThingArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:iot/thing:Thing',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Thing(
+    String name, {
+    ThingArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:iot/thing:Thing',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     attributes = registerOutput<Map<String, String>?>('attributes');
     defaultClientId = registerOutput<String>('defaultClientId');
@@ -160,7 +157,11 @@ class Thing extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Thing] resource's state with the given [name] and [id].
-  static Thing get(String name, pulumi.Input<String> id, {ThingState? state}) {
+  static Thing get(
+    String name,
+    pulumi.Input<String> id, {
+    ThingState? state,
+  }) {
     return Thing._get(
       name,
       state: state?.toMap(),
@@ -173,11 +174,11 @@ class Thing extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:iot/thing:Thing',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:iot/thing:Thing',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     attributes = registerOutput<Map<String, String>?>('attributes');
     defaultClientId = registerOutput<String>('defaultClientId');

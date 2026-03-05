@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterStatusResponseDataprocV1beta2 {
   /// Optional details of cluster's state.
   final pulumi.Input<String> detail;
-
   /// The cluster's state.
   final pulumi.Input<String> state;
-
   /// Time when this state was entered (see JSON representation of Timestamp (https://developers.google.com/protocol-buffers/docs/proto3#json)).
   final pulumi.Input<String> stateStartTime;
-
   /// Additional state information that includes status reported by the agent.
   final pulumi.Input<String> substate;
 
@@ -37,9 +34,7 @@ class ClusterStatusResponseDataprocV1beta2 {
     };
   }
 
-  factory ClusterStatusResponseDataprocV1beta2.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterStatusResponseDataprocV1beta2.fromMap(Map<String, dynamic> map) {
     return ClusterStatusResponseDataprocV1beta2(
       detail: pulumi.Input.fromValue(map['detail'] as String),
       state: pulumi.Input.fromValue(map['state'] as String),
@@ -48,3 +43,4 @@ class ClusterStatusResponseDataprocV1beta2 {
     );
   }
 }
+

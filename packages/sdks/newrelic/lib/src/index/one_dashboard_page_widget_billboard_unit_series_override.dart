@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OneDashboardPageWidgetBillboardUnitSeriesOverride {
   /// Series name
   final pulumi.Input<String>? seriesName;
-
   /// (Optional) Choose a unit to customize the unit on your Y axis and in each of your series.
   final pulumi.Input<String>? unit;
 
@@ -18,23 +17,17 @@ class OneDashboardPageWidgetBillboardUnitSeriesOverride {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'seriesName': ?seriesName, 'unit': ?unit};
+    return <String, dynamic>{
+      'seriesName': ?seriesName,
+      'unit': ?unit,
+    };
   }
 
-  factory OneDashboardPageWidgetBillboardUnitSeriesOverride.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OneDashboardPageWidgetBillboardUnitSeriesOverride.fromMap(Map<String, dynamic> map) {
     return OneDashboardPageWidgetBillboardUnitSeriesOverride(
-      seriesName: (() {
-        final guardedValue = map['seriesName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      unit: (() {
-        final guardedValue = map['unit'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      seriesName: (() { final guardedValue = map['seriesName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      unit: (() { final guardedValue = map['unit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -9,10 +9,14 @@ class PrivateEndpointResponse {
 
   /// Creates a new [PrivateEndpointResponse].
   /// [id] Gets or sets id.
-  PrivateEndpointResponse({required this.id});
+  PrivateEndpointResponse({
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id};
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
   factory PrivateEndpointResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class PrivateEndpointResponse {
     );
   }
 }
+

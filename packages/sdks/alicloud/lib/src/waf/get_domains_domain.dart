@@ -6,58 +6,40 @@ import 'get_domains_domain_log_header.dart';
 class GetDomainsDomain {
   /// The type of the WAF cluster.
   final pulumi.Input<String> clusterType;
-
   /// The CNAME record assigned by the WAF instance to the specified domain.
   final pulumi.Input<String> cname;
-
   /// The connection timeout for WAF exclusive clusters. Valid values: `PhysicalCluster` and `VirtualCluster`. Default to `PhysicalCluster`.
   final pulumi.Input<int> connectionTime;
-
   /// Field `domain` has been deprecated from version 1.94.0. Use `domain_name` instead.
   final pulumi.Input<String> domain;
-
   /// Name of the domain.
   final pulumi.Input<String> domainName;
-
   /// List of the HTTP 2.0 ports.
   final pulumi.Input<List<String>> http2Ports;
-
   /// List of the HTTP ports.
   final pulumi.Input<List<String>> httpPorts;
-
   /// Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server.
   final pulumi.Input<String> httpToUserIp;
-
   /// List of the HTTPS ports.
   final pulumi.Input<List<String>> httpsPorts;
-
   /// Specifies whether to redirect HTTP requests as HTTPS requests. Valid values: `On` and `Off`. Default to `Off`.
   final pulumi.Input<String> httpsRedirect;
-
   /// The ID of domain self ID, value as `domain_name`.
   final pulumi.Input<String> id;
-
   /// Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: `On` and "Off". Default to `Off`.
   final pulumi.Input<String> isAccessProduct;
-
   /// The load balancing algorithm that is used to forward requests to the origin. Valid values: `IpHash` and `RoundRobin`. Default to `IpHash`.
   final pulumi.Input<String> loadBalancing;
-
   /// The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
   final pulumi.Input<List<GetDomainsDomainLogHeader>> logHeaders;
-
   /// The read timeout of a WAF exclusive cluster. Unit: seconds.
   final pulumi.Input<int> readTime;
-
   /// The ID of the resource group to which the queried domain belongs in Resource Management.
   final pulumi.Input<String> resourceGroupId;
-
   /// List of the IP address or domain of the origin server to which the specified domain points.
   final pulumi.Input<List<String>> sourceIps;
-
   /// The system data identifier that is used to control optimistic locking.
   final pulumi.Input<int> version;
-
   /// The timeout period for a WAF exclusive cluster write connection. Unit: seconds.
   final pulumi.Input<int> writeTime;
 
@@ -118,18 +100,7 @@ class GetDomainsDomain {
       'id': id,
       'isAccessProduct': isAccessProduct,
       'loadBalancing': loadBalancing,
-      'logHeaders':
-          pulumi.Input.mapInputValue<
-            List<GetDomainsDomainLogHeader>,
-            List<Map<String, dynamic>>
-          >(
-            logHeaders,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetDomainsDomainLogHeader,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'logHeaders': pulumi.Input.mapInputValue<List<GetDomainsDomainLogHeader>, List<Map<String, dynamic>>>(logHeaders, (value) => pulumi.Input.encodeList<GetDomainsDomainLogHeader, Map<String, dynamic>>(value, (value) => value.toMap())),
       'readTime': readTime,
       'resourceGroupId': resourceGroupId,
       'sourceIps': sourceIps,
@@ -145,35 +116,21 @@ class GetDomainsDomain {
       connectionTime: pulumi.Input.fromValue(map['connectionTime'] as int),
       domain: pulumi.Input.fromValue(map['domain'] as String),
       domainName: pulumi.Input.fromValue(map['domainName'] as String),
-      http2Ports: pulumi.Input.fromValue(
-        (map['http2Ports'] as List).cast<String>(),
-      ),
-      httpPorts: pulumi.Input.fromValue(
-        (map['httpPorts'] as List).cast<String>(),
-      ),
+      http2Ports: pulumi.Input.fromValue((map['http2Ports'] as List).cast<String>()),
+      httpPorts: pulumi.Input.fromValue((map['httpPorts'] as List).cast<String>()),
       httpToUserIp: pulumi.Input.fromValue(map['httpToUserIp'] as String),
-      httpsPorts: pulumi.Input.fromValue(
-        (map['httpsPorts'] as List).cast<String>(),
-      ),
+      httpsPorts: pulumi.Input.fromValue((map['httpsPorts'] as List).cast<String>()),
       httpsRedirect: pulumi.Input.fromValue(map['httpsRedirect'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
       isAccessProduct: pulumi.Input.fromValue(map['isAccessProduct'] as String),
       loadBalancing: pulumi.Input.fromValue(map['loadBalancing'] as String),
-      logHeaders: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetDomainsDomainLogHeader>(
-          map['logHeaders']!,
-          (value) => GetDomainsDomainLogHeader.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      logHeaders: pulumi.Input.fromValue(pulumi.Input.decodeList<GetDomainsDomainLogHeader>(map['logHeaders']!, (value) => GetDomainsDomainLogHeader.fromMap((value as Map).cast<String, dynamic>()))),
       readTime: pulumi.Input.fromValue(map['readTime'] as int),
       resourceGroupId: pulumi.Input.fromValue(map['resourceGroupId'] as String),
-      sourceIps: pulumi.Input.fromValue(
-        (map['sourceIps'] as List).cast<String>(),
-      ),
+      sourceIps: pulumi.Input.fromValue((map['sourceIps'] as List).cast<String>()),
       version: pulumi.Input.fromValue(map['version'] as int),
       writeTime: pulumi.Input.fromValue(map['writeTime'] as int),
     );
   }
 }
+

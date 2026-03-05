@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HeaderMatchResponse {
   /// Exact value of the header
   final pulumi.Input<String>? exactMatch;
-
   /// Name of the header
   final pulumi.Input<String>? header;
-
   /// Prefix value of the header
   final pulumi.Input<String>? prefixMatch;
-
   /// Regex value of the header
   final pulumi.Input<String>? regexMatch;
-
   /// Suffix value of the header
   final pulumi.Input<String>? suffixMatch;
 
@@ -45,31 +41,12 @@ class HeaderMatchResponse {
 
   factory HeaderMatchResponse.fromMap(Map<String, dynamic> map) {
     return HeaderMatchResponse(
-      exactMatch: (() {
-        final guardedValue = map['exactMatch'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      header: (() {
-        final guardedValue = map['header'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      prefixMatch: (() {
-        final guardedValue = map['prefixMatch'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      regexMatch: (() {
-        final guardedValue = map['regexMatch'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      suffixMatch: (() {
-        final guardedValue = map['suffixMatch'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      exactMatch: (() { final guardedValue = map['exactMatch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      header: (() { final guardedValue = map['header']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      prefixMatch: (() { final guardedValue = map['prefixMatch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      regexMatch: (() { final guardedValue = map['regexMatch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      suffixMatch: (() { final guardedValue = map['suffixMatch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

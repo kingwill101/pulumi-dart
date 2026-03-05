@@ -12,8 +12,7 @@ enum ODataAadServicePrincipalCredentialType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ODataAadServicePrincipalCredentialType value: $value',
-    );
+    throw ArgumentError('Unknown ODataAadServicePrincipalCredentialType value: $value');
   }
 }
+

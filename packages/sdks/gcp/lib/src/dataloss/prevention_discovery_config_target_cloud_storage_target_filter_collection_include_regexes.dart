@@ -6,12 +6,7 @@ import 'prevention_discovery_config_target_cloud_storage_target_filter_collectio
 class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexes {
   /// The group of regular expression patterns to match against one or more resources. Maximum of 100 entries. The sum of all lengths of regular expressions can't exceed 10 KiB.
   /// Structure is documented below.
-  final pulumi.Input<
-    List<
-      PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPattern
-    >
-  >?
-  patterns;
+  final pulumi.Input<List<PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPattern>>? patterns;
 
   /// Creates a new [PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexes].
   /// [patterns] The group of regular expression patterns to match against one or more resources. Maximum of 100 entries. The sum of all lengths of regular expressions can't exceed 10 KiB.
@@ -21,42 +16,14 @@ class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRe
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'patterns':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<
-              PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPattern
-            >,
-            List<Map<String, dynamic>>
-          >(
-            patterns,
-            (value) =>
-                pulumi.Input.encodeList<
-                  PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPattern,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'patterns': ?pulumi.Input.mapOptionalInputValue<List<PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPattern>, List<Map<String, dynamic>>>(patterns, (value) => pulumi.Input.encodeList<PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPattern, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexes.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexes.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexes(
-      patterns: (() {
-        final guardedValue = map['patterns'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPattern
-          >(
-            guardedValue,
-            (value) =>
-                PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPattern.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
+      patterns: (() { final guardedValue = map['patterns']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPattern>(guardedValue, (value) => PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPattern.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

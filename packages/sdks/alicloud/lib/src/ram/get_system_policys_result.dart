@@ -7,15 +7,12 @@ import 'get_system_policys_policy.dart';
 class GetSystemPolicysResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of System Policy IDs.
   final List<String> ids;
   final String? nameRegex;
-
   /// A list of name of System Policys.
   final List<String> names;
   final String? outputFile;
-
   /// A list of System Policy Entries. Each element contains the following attributes:
   final List<GetSystemPolicysPolicy> policys;
 
@@ -42,11 +39,7 @@ class GetSystemPolicysResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'policys':
-          pulumi.Input.encodeList<GetSystemPolicysPolicy, Map<String, dynamic>>(
-            policys,
-            (value) => value.toMap(),
-          ),
+      'policys': pulumi.Input.encodeList<GetSystemPolicysPolicy, Map<String, dynamic>>(policys, (value) => value.toMap()),
     };
   }
 
@@ -54,23 +47,11 @@ class GetSystemPolicysResult {
     return GetSystemPolicysResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      policys: pulumi.Input.decodeList<GetSystemPolicysPolicy>(
-        map['policys']!,
-        (value) => GetSystemPolicysPolicy.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      policys: pulumi.Input.decodeList<GetSystemPolicysPolicy>(map['policys']!, (value) => GetSystemPolicysPolicy.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

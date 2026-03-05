@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LinkedServiceAzureFileStorageKeyVaultPassword {
   /// Specifies the name of an existing Key Vault Data Factory Linked Service.
   final pulumi.Input<String> linkedServiceName;
-
   /// Specifies the secret name in Azure Key Vault that stores Azure File Storage password.
   final pulumi.Input<String> secretName;
 
@@ -24,14 +23,11 @@ class LinkedServiceAzureFileStorageKeyVaultPassword {
     };
   }
 
-  factory LinkedServiceAzureFileStorageKeyVaultPassword.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LinkedServiceAzureFileStorageKeyVaultPassword.fromMap(Map<String, dynamic> map) {
     return LinkedServiceAzureFileStorageKeyVaultPassword(
-      linkedServiceName: pulumi.Input.fromValue(
-        map['linkedServiceName'] as String,
-      ),
+      linkedServiceName: pulumi.Input.fromValue(map['linkedServiceName'] as String),
       secretName: pulumi.Input.fromValue(map['secretName'] as String),
     );
   }
 }
+

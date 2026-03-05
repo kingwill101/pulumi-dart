@@ -14,3 +14,4 @@ enum SingleServerIdentityProperties {
     throw ArgumentError('Unknown SingleServerIdentityProperties value: $value');
   }
 }
+

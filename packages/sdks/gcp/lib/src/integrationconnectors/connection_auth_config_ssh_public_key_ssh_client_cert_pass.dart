@@ -16,14 +16,15 @@ class ConnectionAuthConfigSshPublicKeySshClientCertPass {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'secretVersion': secretVersion};
+    return <String, dynamic>{
+      'secretVersion': secretVersion,
+    };
   }
 
-  factory ConnectionAuthConfigSshPublicKeySshClientCertPass.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConnectionAuthConfigSshPublicKeySshClientCertPass.fromMap(Map<String, dynamic> map) {
     return ConnectionAuthConfigSshPublicKeySshClientCertPass(
       secretVersion: pulumi.Input.fromValue(map['secretVersion'] as String),
     );
   }
 }
+

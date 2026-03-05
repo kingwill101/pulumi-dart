@@ -9,19 +9,20 @@ class FileIODetails {
 
   /// Creates a new [FileIODetails].
   /// [filePattern] File Pattern used to access files by the connector.
-  FileIODetails({this.filePattern});
+  FileIODetails({
+    this.filePattern,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'filePattern': ?filePattern};
+    return <String, dynamic>{
+      'filePattern': ?filePattern,
+    };
   }
 
   factory FileIODetails.fromMap(Map<String, dynamic> map) {
     return FileIODetails(
-      filePattern: (() {
-        final guardedValue = map['filePattern'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      filePattern: (() { final guardedValue = map['filePattern']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

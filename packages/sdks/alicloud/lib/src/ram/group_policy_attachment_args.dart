@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GroupPolicyAttachmentArgs {
   /// The name of the group.
   final pulumi.Input<String> groupName;
-
   /// The name of the policy.
   final pulumi.Input<String> policyName;
-
   /// Policy type.
   /// - Custom: Custom policy.
   /// - System: System policy.
@@ -44,3 +42,4 @@ class GroupPolicyAttachmentArgs {
     );
   }
 }
+

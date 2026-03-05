@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OrganizationalUnitArgs {
   /// The name for the organizational unit
   final pulumi.Input<String>? name;
-
   /// ID of the parent organizational unit, which may be the root
   final pulumi.Input<String> parentId;
-
   /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -20,7 +18,11 @@ class OrganizationalUnitArgs {
   /// [name] The name for the organizational unit
   /// [parentId] ID of the parent organizational unit, which may be the root
   /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  OrganizationalUnitArgs({this.name, required this.parentId, this.tags});
+  OrganizationalUnitArgs({
+    this.name,
+    required this.parentId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,19 +34,10 @@ class OrganizationalUnitArgs {
 
   factory OrganizationalUnitArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationalUnitArgs(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       parentId: pulumi.Input.fromValue(map['parentId'] as String),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

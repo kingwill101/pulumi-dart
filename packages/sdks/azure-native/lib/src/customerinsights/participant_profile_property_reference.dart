@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ParticipantProfilePropertyReference {
   /// The source interaction property that maps to the target profile property.
   final pulumi.Input<String> interactionPropertyName;
-
   /// The target profile property that maps to the source interaction property.
   final pulumi.Input<String> profilePropertyName;
 
@@ -25,16 +24,11 @@ class ParticipantProfilePropertyReference {
     };
   }
 
-  factory ParticipantProfilePropertyReference.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ParticipantProfilePropertyReference.fromMap(Map<String, dynamic> map) {
     return ParticipantProfilePropertyReference(
-      interactionPropertyName: pulumi.Input.fromValue(
-        map['interactionPropertyName'] as String,
-      ),
-      profilePropertyName: pulumi.Input.fromValue(
-        map['profilePropertyName'] as String,
-      ),
+      interactionPropertyName: pulumi.Input.fromValue(map['interactionPropertyName'] as String),
+      profilePropertyName: pulumi.Input.fromValue(map['profilePropertyName'] as String),
     );
   }
 }
+

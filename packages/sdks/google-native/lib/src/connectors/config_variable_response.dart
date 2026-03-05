@@ -8,19 +8,14 @@ import 'secret_response.dart';
 class ConfigVariableResponse {
   /// Value is a bool.
   final pulumi.Input<bool> boolValue;
-
   /// Value is a Encryption Key.
   final pulumi.Input<EncryptionKeyResponse> encryptionKeyValue;
-
   /// Value is an integer
   final pulumi.Input<String> intValue;
-
   /// Key of the config variable.
   final pulumi.Input<String> key;
-
   /// Value is a secret.
   final pulumi.Input<SecretResponse> secretValue;
-
   /// Value is a string.
   final pulumi.Input<String> stringValue;
 
@@ -43,18 +38,10 @@ class ConfigVariableResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'boolValue': boolValue,
-      'encryptionKeyValue':
-          pulumi.Input.mapInputValue<
-            EncryptionKeyResponse,
-            Map<String, dynamic>
-          >(encryptionKeyValue, (value) => value.toMap()),
+      'encryptionKeyValue': pulumi.Input.mapInputValue<EncryptionKeyResponse, Map<String, dynamic>>(encryptionKeyValue, (value) => value.toMap()),
       'intValue': intValue,
       'key': key,
-      'secretValue':
-          pulumi.Input.mapInputValue<SecretResponse, Map<String, dynamic>>(
-            secretValue,
-            (value) => value.toMap(),
-          ),
+      'secretValue': pulumi.Input.mapInputValue<SecretResponse, Map<String, dynamic>>(secretValue, (value) => value.toMap()),
       'stringValue': stringValue,
     };
   }
@@ -62,19 +49,12 @@ class ConfigVariableResponse {
   factory ConfigVariableResponse.fromMap(Map<String, dynamic> map) {
     return ConfigVariableResponse(
       boolValue: pulumi.Input.fromValue(map['boolValue'] as bool),
-      encryptionKeyValue: pulumi.Input.fromValue(
-        EncryptionKeyResponse.fromMap(
-          (map['encryptionKeyValue']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      encryptionKeyValue: pulumi.Input.fromValue(EncryptionKeyResponse.fromMap((map['encryptionKeyValue']! as Map).cast<String, dynamic>())),
       intValue: pulumi.Input.fromValue(map['intValue'] as String),
       key: pulumi.Input.fromValue(map['key'] as String),
-      secretValue: pulumi.Input.fromValue(
-        SecretResponse.fromMap(
-          (map['secretValue']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      secretValue: pulumi.Input.fromValue(SecretResponse.fromMap((map['secretValue']! as Map).cast<String, dynamic>())),
       stringValue: pulumi.Input.fromValue(map['stringValue'] as String),
     );
   }
 }
+

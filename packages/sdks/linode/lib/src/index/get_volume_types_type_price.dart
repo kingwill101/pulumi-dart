@@ -5,17 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVolumeTypesTypePrice {
   /// Cost (in US dollars) per hour.
   final pulumi.Input<double> hourly;
-
   /// Cost (in US dollars) per month.
   final pulumi.Input<double> monthly;
 
   /// Creates a new [GetVolumeTypesTypePrice].
   /// [hourly] Cost (in US dollars) per hour.
   /// [monthly] Cost (in US dollars) per month.
-  GetVolumeTypesTypePrice({required this.hourly, required this.monthly});
+  GetVolumeTypesTypePrice({
+    required this.hourly,
+    required this.monthly,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'hourly': hourly, 'monthly': monthly};
+    return <String, dynamic>{
+      'hourly': hourly,
+      'monthly': monthly,
+    };
   }
 
   factory GetVolumeTypesTypePrice.fromMap(Map<String, dynamic> map) {
@@ -25,3 +30,4 @@ class GetVolumeTypesTypePrice {
     );
   }
 }
+

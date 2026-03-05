@@ -5,22 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServerGroupsGroupServer {
   /// The description of the server.
   final pulumi.Input<String> description;
-
   /// The port that is used by the server.
   final pulumi.Input<int> port;
-
   /// The ID of the ECS instance, ENI instance or ECI instance.
   final pulumi.Input<String> serverId;
-
   /// The IP address of the ENI instance when it is in the inclusive ENI mode.
   final pulumi.Input<String> serverIp;
-
   /// The type of the server. The type of the server.
   final pulumi.Input<String> serverType;
-
   /// The status of the Server Group. Valid values: `Available`, `Configuring`, `Provisioning`.
   final pulumi.Input<String> status;
-
   /// The weight of the server.
   final pulumi.Input<int> weight;
 
@@ -66,3 +60,4 @@ class GetServerGroupsGroupServer {
     );
   }
 }
+

@@ -9,10 +9,14 @@ class RegexValidationResponse {
 
   /// Creates a new [RegexValidationResponse].
   /// [regexes] RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient).
-  RegexValidationResponse({required this.regexes});
+  RegexValidationResponse({
+    required this.regexes,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'regexes': regexes};
+    return <String, dynamic>{
+      'regexes': regexes,
+    };
   }
 
   factory RegexValidationResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class RegexValidationResponse {
     );
   }
 }
+

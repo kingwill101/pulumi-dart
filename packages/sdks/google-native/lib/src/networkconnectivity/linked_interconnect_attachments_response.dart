@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LinkedInterconnectAttachmentsResponse {
   /// A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
   final pulumi.Input<bool> siteToSiteDataTransfer;
-
   /// The URIs of linked interconnect attachment resources
   final pulumi.Input<List<String>> uris;
-
   /// The VPC network where these VLAN attachments are located.
   final pulumi.Input<String> vpcNetwork;
 
@@ -31,15 +29,12 @@ class LinkedInterconnectAttachmentsResponse {
     };
   }
 
-  factory LinkedInterconnectAttachmentsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LinkedInterconnectAttachmentsResponse.fromMap(Map<String, dynamic> map) {
     return LinkedInterconnectAttachmentsResponse(
-      siteToSiteDataTransfer: pulumi.Input.fromValue(
-        map['siteToSiteDataTransfer'] as bool,
-      ),
+      siteToSiteDataTransfer: pulumi.Input.fromValue(map['siteToSiteDataTransfer'] as bool),
       uris: pulumi.Input.fromValue((map['uris'] as List).cast<String>()),
       vpcNetwork: pulumi.Input.fromValue(map['vpcNetwork'] as String),
     );
   }
 }
+

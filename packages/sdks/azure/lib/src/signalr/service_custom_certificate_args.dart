@@ -11,10 +11,8 @@ class ServiceCustomCertificateArgs {
   ///
   /// &gt; **Note:** Self assigned certificate is not supported and the provisioning status will fail.
   final pulumi.Input<String> customCertificateId;
-
   /// The name of the SignalR Custom Certificate. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// The SignalR ID of the SignalR Custom Certificate. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Custom Certificate is only available for SignalR Premium tier. Please enable managed identity in the corresponding SignalR Service and give the managed identity access to the key vault, the required permission is Get Certificate and Secret.
@@ -40,17 +38,10 @@ class ServiceCustomCertificateArgs {
 
   factory ServiceCustomCertificateArgs.fromMap(Map<String, dynamic> map) {
     return ServiceCustomCertificateArgs(
-      customCertificateId: pulumi.Input.fromValue(
-        map['customCertificateId'] as String,
-      ),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      signalrServiceId: pulumi.Input.fromValue(
-        map['signalrServiceId'] as String,
-      ),
+      customCertificateId: pulumi.Input.fromValue(map['customCertificateId'] as String),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      signalrServiceId: pulumi.Input.fromValue(map['signalrServiceId'] as String),
     );
   }
 }
+

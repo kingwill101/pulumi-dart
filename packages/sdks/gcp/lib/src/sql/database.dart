@@ -383,32 +383,26 @@ class Database extends pulumi.CustomResource {
   /// for more details and supported values. Postgres databases only support
   /// a value of `UTF8` at creation time.
   late final pulumi.Output<String> charset;
-
   /// The collation value. See MySQL's
   /// [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
   /// and Postgres' [Collation Support](https://www.postgresql.org/docs/9.6/static/collation.html)
   /// for more details and supported values. Postgres databases only support
   /// a value of `en_US.UTF8` at creation time.
   late final pulumi.Output<String> collation;
-
   /// The deletion policy for the database. Setting ABANDON allows the resource
   /// to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
   /// deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
   /// values are: "ABANDON", "DELETE". Defaults to "DELETE".
   late final pulumi.Output<String?> deletionPolicy;
-
   /// The name of the Cloud SQL instance. This does not include the project
   /// ID.
   late final pulumi.Output<String> instance;
-
   /// The name of the database in the Cloud SQL instance.
   /// This does not include the project ID or instance name.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
 
@@ -421,11 +415,11 @@ class Database extends pulumi.CustomResource {
     DatabaseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:sql/database:Database',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:sql/database:Database',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     charset = registerOutput<String>('charset');
     collation = registerOutput<String>('collation');
     deletionPolicy = registerOutput<String?>('deletionPolicy');
@@ -453,11 +447,11 @@ class Database extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:sql/database:Database',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:sql/database:Database',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     charset = registerOutput<String>('charset');
     collation = registerOutput<String>('collation');
     deletionPolicy = registerOutput<String?>('deletionPolicy');

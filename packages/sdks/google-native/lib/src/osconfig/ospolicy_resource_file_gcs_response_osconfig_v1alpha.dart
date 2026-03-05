@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OSPolicyResourceFileGcsResponseOsconfigV1alpha {
   /// Bucket of the Cloud Storage object.
   final pulumi.Input<String> bucket;
-
   /// Generation number of the Cloud Storage object.
   final pulumi.Input<String> generation;
-
   /// Name of the Cloud Storage object.
   final pulumi.Input<String> object_;
 
@@ -31,9 +29,7 @@ class OSPolicyResourceFileGcsResponseOsconfigV1alpha {
     };
   }
 
-  factory OSPolicyResourceFileGcsResponseOsconfigV1alpha.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OSPolicyResourceFileGcsResponseOsconfigV1alpha.fromMap(Map<String, dynamic> map) {
     return OSPolicyResourceFileGcsResponseOsconfigV1alpha(
       bucket: pulumi.Input.fromValue(map['bucket'] as String),
       generation: pulumi.Input.fromValue(map['generation'] as String),
@@ -41,3 +37,4 @@ class OSPolicyResourceFileGcsResponseOsconfigV1alpha {
     );
   }
 }
+

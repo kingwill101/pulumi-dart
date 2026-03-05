@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RuleGroupRuleActionCaptchaCustomRequestHandlingInsertHeader {
   /// A friendly name of the rule group.
   final pulumi.Input<String> name;
-
   /// The value of the custom header.
   final pulumi.Input<String> value;
 
@@ -18,15 +17,17 @@ class RuleGroupRuleActionCaptchaCustomRequestHandlingInsertHeader {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'value': value};
+    return <String, dynamic>{
+      'name': name,
+      'value': value,
+    };
   }
 
-  factory RuleGroupRuleActionCaptchaCustomRequestHandlingInsertHeader.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RuleGroupRuleActionCaptchaCustomRequestHandlingInsertHeader.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleActionCaptchaCustomRequestHandlingInsertHeader(
       name: pulumi.Input.fromValue(map['name'] as String),
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
+

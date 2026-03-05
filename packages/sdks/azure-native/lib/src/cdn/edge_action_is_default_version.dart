@@ -15,3 +15,4 @@ enum EdgeActionIsDefaultVersion {
     throw ArgumentError('Unknown EdgeActionIsDefaultVersion value: $value');
   }
 }
+

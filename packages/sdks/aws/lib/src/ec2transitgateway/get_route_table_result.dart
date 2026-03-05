@@ -7,21 +7,16 @@ import 'get_route_table_filter.dart';
 class GetRouteTableResult {
   /// EC2 Transit Gateway Route Table ARN.
   final String arn;
-
   /// Boolean whether this is the default association route table for the EC2 Transit Gateway
   final bool defaultAssociationRouteTable;
-
   /// Boolean whether this is the default propagation route table for the EC2 Transit Gateway
   final bool defaultPropagationRouteTable;
   final List<GetRouteTableFilter>? filters;
-
   /// EC2 Transit Gateway Route Table identifier
   final String id;
   final String region;
-
   /// Key-value tags for the EC2 Transit Gateway Route Table
   final Map<String, String> tags;
-
   /// EC2 Transit Gateway identifier
   final String transitGatewayId;
 
@@ -50,14 +45,7 @@ class GetRouteTableResult {
       'arn': arn,
       'defaultAssociationRouteTable': defaultAssociationRouteTable,
       'defaultPropagationRouteTable': defaultPropagationRouteTable,
-      'filters': ?(() {
-        final guardedValue = filters;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          GetRouteTableFilter,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'filters': ?(() { final guardedValue = filters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRouteTableFilter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'id': id,
       'region': region,
       'tags': tags,
@@ -70,16 +58,7 @@ class GetRouteTableResult {
       arn: map['arn'] as String,
       defaultAssociationRouteTable: map['defaultAssociationRouteTable'] as bool,
       defaultPropagationRouteTable: map['defaultPropagationRouteTable'] as bool,
-      filters: (() {
-        final guardedValue = map['filters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<GetRouteTableFilter>(
-          guardedValue,
-          (value) => GetRouteTableFilter.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRouteTableFilter>(guardedValue, (value) => GetRouteTableFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
       id: map['id'] as String,
       region: map['region'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
@@ -87,3 +66,4 @@ class GetRouteTableResult {
     );
   }
 }
+

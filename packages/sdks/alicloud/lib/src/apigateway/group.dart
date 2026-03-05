@@ -169,25 +169,18 @@ import 'group_user_log_config.dart';
 class Group extends pulumi.CustomResource {
   /// The base path of the api gateway group. Defaults to `/`.
   late final pulumi.Output<String> basePath;
-
   /// The description of the api gateway group. Defaults to null.
   late final pulumi.Output<String?> description;
-
   /// The id of the api gateway.
   late final pulumi.Output<String> instanceId;
-
   /// The name of the api gateway group. Defaults to null.
   late final pulumi.Output<String> name;
-
   /// (Available in 1.69.0+)	Second-level domain name automatically assigned to the API group.
   late final pulumi.Output<String> subDomain;
-
   /// user_log_config defines the config of user log of the group. See `user_log_config` below.
   late final pulumi.Output<GroupUserLogConfig?> userLogConfig;
-
   /// (Available in 1.69.0+)	Second-level VPC domain name automatically assigned to the API group.
   late final pulumi.Output<String> vpcDomain;
-
   /// Whether to enable `vpc_domain`. Defaults to `false`.
   late final pulumi.Output<bool?> vpcIntranetEnable;
 
@@ -195,34 +188,32 @@ class Group extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Group]. {@macro pulumi_apigateway_group_group_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Group(String name, {GroupArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:apigateway/group:Group',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Group(
+    String name, {
+    GroupArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:apigateway/group:Group',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     basePath = registerOutput<String>('basePath');
     description = registerOutput<String?>('description');
     instanceId = registerOutput<String>('instanceId');
     this.name = registerOutput<String>('name');
     subDomain = registerOutput<String>('subDomain');
-    userLogConfig = registerOutput<GroupUserLogConfig?>(
-      'userLogConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GroupUserLogConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    userLogConfig = registerOutput<GroupUserLogConfig?>('userLogConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupUserLogConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vpcDomain = registerOutput<String>('vpcDomain');
     vpcIntranetEnable = registerOutput<bool?>('vpcIntranetEnable');
   }
 
   /// Gets an existing [Group] resource's state with the given [name] and [id].
-  static Group get(String name, pulumi.Input<String> id, {GroupState? state}) {
+  static Group get(
+    String name,
+    pulumi.Input<String> id, {
+    GroupState? state,
+  }) {
     return Group._get(
       name,
       state: state?.toMap(),
@@ -235,26 +226,17 @@ class Group extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:apigateway/group:Group',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:apigateway/group:Group',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     basePath = registerOutput<String>('basePath');
     description = registerOutput<String?>('description');
     instanceId = registerOutput<String>('instanceId');
     this.name = registerOutput<String>('name');
     subDomain = registerOutput<String>('subDomain');
-    userLogConfig = registerOutput<GroupUserLogConfig?>(
-      'userLogConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GroupUserLogConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    userLogConfig = registerOutput<GroupUserLogConfig?>('userLogConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupUserLogConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vpcDomain = registerOutput<String>('vpcDomain');
     vpcIntranetEnable = registerOutput<bool?>('vpcIntranetEnable');
   }

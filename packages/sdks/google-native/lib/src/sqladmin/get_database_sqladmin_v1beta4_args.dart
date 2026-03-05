@@ -33,11 +33,8 @@ class GetDatabaseSqladminV1beta4Args {
     return GetDatabaseSqladminV1beta4Args(
       database: pulumi.Input.fromValue(map['database'] as String),
       instance: pulumi.Input.fromValue(map['instance'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

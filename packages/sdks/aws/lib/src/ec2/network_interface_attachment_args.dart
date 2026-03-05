@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkInterfaceAttachmentArgs {
   /// Network interface index (int).
   final pulumi.Input<int> deviceIndex;
-
   /// Instance ID to attach.
   final pulumi.Input<String> instanceId;
-
   /// Index of the network card. Specify a value greater than 0 when using multiple network cards, which are supported by [some instance types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#network-cards). The default is 0.
   final pulumi.Input<int>? networkCardIndex;
-
   /// ENI ID to attach.
   final pulumi.Input<String> networkInterfaceId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -50,19 +46,10 @@ class NetworkInterfaceAttachmentArgs {
     return NetworkInterfaceAttachmentArgs(
       deviceIndex: pulumi.Input.fromValue(map['deviceIndex'] as int),
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
-      networkCardIndex: (() {
-        final guardedValue = map['networkCardIndex'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      networkInterfaceId: pulumi.Input.fromValue(
-        map['networkInterfaceId'] as String,
-      ),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      networkCardIndex: (() { final guardedValue = map['networkCardIndex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      networkInterfaceId: pulumi.Input.fromValue(map['networkInterfaceId'] as String),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

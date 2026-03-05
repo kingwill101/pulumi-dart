@@ -8,17 +8,13 @@ enum InstanceGroupManagerUpdatePolicyMinimalActionComputeV1 {
   const InstanceGroupManagerUpdatePolicyMinimalActionComputeV1(this.wireValue);
   final String wireValue;
 
-  static InstanceGroupManagerUpdatePolicyMinimalActionComputeV1 fromValue(
-    String value,
-  ) {
-    for (final item
-        in InstanceGroupManagerUpdatePolicyMinimalActionComputeV1.values) {
+  static InstanceGroupManagerUpdatePolicyMinimalActionComputeV1 fromValue(String value) {
+    for (final item in InstanceGroupManagerUpdatePolicyMinimalActionComputeV1.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown InstanceGroupManagerUpdatePolicyMinimalActionComputeV1 value: $value',
-    );
+    throw ArgumentError('Unknown InstanceGroupManagerUpdatePolicyMinimalActionComputeV1 value: $value');
   }
 }
+

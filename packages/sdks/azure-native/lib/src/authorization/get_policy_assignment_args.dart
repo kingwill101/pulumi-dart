@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPolicyAssignmentArgs {
   /// Comma-separated list of additional properties to be included in the response. Supported values are 'LatestDefinitionVersion, EffectiveDefinitionVersion'.
   final pulumi.Input<String>? expand;
-
   /// The name of the policy assignment to get.
   final pulumi.Input<String> policyAssignmentName;
-
   /// The scope of the policy assignment. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
   final pulumi.Input<String> scope;
 
@@ -36,15 +34,10 @@ class GetPolicyAssignmentArgs {
 
   factory GetPolicyAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return GetPolicyAssignmentArgs(
-      expand: (() {
-        final guardedValue = map['expand'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      policyAssignmentName: pulumi.Input.fromValue(
-        map['policyAssignmentName'] as String,
-      ),
+      expand: (() { final guardedValue = map['expand']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      policyAssignmentName: pulumi.Input.fromValue(map['policyAssignmentName'] as String),
       scope: pulumi.Input.fromValue(map['scope'] as String),
     );
   }
 }
+

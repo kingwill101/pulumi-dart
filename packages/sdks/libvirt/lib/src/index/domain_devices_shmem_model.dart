@@ -8,10 +8,14 @@ class DomainDevicesShmemModel {
 
   /// Creates a new [DomainDevicesShmemModel].
   /// [type] Sets the type attribute for the model of the shared memory device.
-  DomainDevicesShmemModel({required this.type});
+  DomainDevicesShmemModel({
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': type};
+    return <String, dynamic>{
+      'type': type,
+    };
   }
 
   factory DomainDevicesShmemModel.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class DomainDevicesShmemModel {
     );
   }
 }
+

@@ -6,35 +6,27 @@ class TaskExecutionStatusLatestJob {
   /// (Output)
   /// The time when the job ended.
   final pulumi.Input<String>? endTime;
-
   /// (Output)
   /// Additional information about the current state.
   final pulumi.Input<String>? message;
-
   /// (Output)
   /// The relative resource name of the job, of the form: projects/{project_number}/locations/{locationId}/lakes/{lakeId}/tasks/{taskId}/jobs/{jobId}.
   final pulumi.Input<String>? name;
-
   /// (Output)
   /// The number of times the job has been retried (excluding the initial attempt).
   final pulumi.Input<int>? retryCount;
-
   /// (Output)
   /// The underlying service running a job.
   final pulumi.Input<String>? service;
-
   /// (Output)
   /// The full resource name for the job run under a particular service.
   final pulumi.Input<String>? serviceJob;
-
   /// (Output)
   /// The time when the job was started.
   final pulumi.Input<String>? startTime;
-
   /// (Output)
   /// Execution state for the job.
   final pulumi.Input<String>? state;
-
   /// (Output)
   /// System generated globally unique ID for the job.
   final pulumi.Input<String>? uid;
@@ -77,51 +69,16 @@ class TaskExecutionStatusLatestJob {
 
   factory TaskExecutionStatusLatestJob.fromMap(Map<String, dynamic> map) {
     return TaskExecutionStatusLatestJob(
-      endTime: (() {
-        final guardedValue = map['endTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      message: (() {
-        final guardedValue = map['message'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      retryCount: (() {
-        final guardedValue = map['retryCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      service: (() {
-        final guardedValue = map['service'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serviceJob: (() {
-        final guardedValue = map['serviceJob'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      startTime: (() {
-        final guardedValue = map['startTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      uid: (() {
-        final guardedValue = map['uid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      endTime: (() { final guardedValue = map['endTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      message: (() { final guardedValue = map['message']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      retryCount: (() { final guardedValue = map['retryCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      service: (() { final guardedValue = map['service']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serviceJob: (() { final guardedValue = map['serviceJob']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      startTime: (() { final guardedValue = map['startTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      uid: (() { final guardedValue = map['uid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

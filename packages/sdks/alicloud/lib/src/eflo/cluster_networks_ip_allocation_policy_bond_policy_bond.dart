@@ -5,33 +5,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterNetworksIpAllocationPolicyBondPolicyBond {
   /// The bond name
   final pulumi.Input<String>? name;
-
   /// IP source cluster subnet
   final pulumi.Input<String>? subnet;
 
   /// Creates a new [ClusterNetworksIpAllocationPolicyBondPolicyBond].
   /// [name] The bond name
   /// [subnet] IP source cluster subnet
-  ClusterNetworksIpAllocationPolicyBondPolicyBond({this.name, this.subnet});
+  ClusterNetworksIpAllocationPolicyBondPolicyBond({
+    this.name,
+    this.subnet,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name, 'subnet': ?subnet};
+    return <String, dynamic>{
+      'name': ?name,
+      'subnet': ?subnet,
+    };
   }
 
-  factory ClusterNetworksIpAllocationPolicyBondPolicyBond.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterNetworksIpAllocationPolicyBondPolicyBond.fromMap(Map<String, dynamic> map) {
     return ClusterNetworksIpAllocationPolicyBondPolicyBond(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subnet: (() {
-        final guardedValue = map['subnet'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subnet: (() { final guardedValue = map['subnet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

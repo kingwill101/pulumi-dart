@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatabaseMysqlUpdates {
   /// The day to perform maintenance.
   final pulumi.Input<String> dayOfWeek;
-
   /// The maximum maintenance window time in hours.
   final pulumi.Input<int> duration;
-
   /// Whether maintenance occurs on a weekly or monthly basis.
   final pulumi.Input<String> frequency;
-
   /// The hour to begin maintenance based in UTC time.
   final pulumi.Input<int> hourOfDay;
-
   /// The week of the month to perform monthly frequency updates. Required for monthly frequency updates.
   final pulumi.Input<int>? weekOfMonth;
 
@@ -48,11 +44,8 @@ class DatabaseMysqlUpdates {
       duration: pulumi.Input.fromValue(map['duration'] as int),
       frequency: pulumi.Input.fromValue(map['frequency'] as String),
       hourOfDay: pulumi.Input.fromValue(map['hourOfDay'] as int),
-      weekOfMonth: (() {
-        final guardedValue = map['weekOfMonth'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      weekOfMonth: (() { final guardedValue = map['weekOfMonth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

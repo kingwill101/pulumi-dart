@@ -9,20 +9,23 @@ class GetGradientaiRegionsSort {
   /// Creates a new [GetGradientaiRegionsSort].
   /// [direction] Optional.
   /// [key] Required.
-  GetGradientaiRegionsSort({this.direction, required this.key});
+  GetGradientaiRegionsSort({
+    this.direction,
+    required this.key,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'direction': ?direction, 'key': key};
+    return <String, dynamic>{
+      'direction': ?direction,
+      'key': key,
+    };
   }
 
   factory GetGradientaiRegionsSort.fromMap(Map<String, dynamic> map) {
     return GetGradientaiRegionsSort(
-      direction: (() {
-        final guardedValue = map['direction'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      direction: (() { final guardedValue = map['direction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       key: pulumi.Input.fromValue(map['key'] as String),
     );
   }
 }
+

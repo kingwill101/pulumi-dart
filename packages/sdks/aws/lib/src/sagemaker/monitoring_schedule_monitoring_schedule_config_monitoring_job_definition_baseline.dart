@@ -6,14 +6,8 @@ import 'monitoring_schedule_monitoring_schedule_config_monitoring_job_definition
 
 class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaseline {
   final pulumi.Input<String>? baseliningJobName;
-  final pulumi.Input<
-    MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaselineConstraintsResource
-  >?
-  constraintsResource;
-  final pulumi.Input<
-    MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaselineStatisticsResource
-  >?
-  statisticsResource;
+  final pulumi.Input<MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaselineConstraintsResource>? constraintsResource;
+  final pulumi.Input<MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaselineStatisticsResource>? statisticsResource;
 
   /// Creates a new [MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaseline].
   /// [baseliningJobName] Optional.
@@ -28,46 +22,17 @@ class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaseline 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'baseliningJobName': ?baseliningJobName,
-      'constraintsResource':
-          ?pulumi.Input.mapOptionalInputValue<
-            MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaselineConstraintsResource,
-            Map<String, dynamic>
-          >(constraintsResource, (value) => value.toMap()),
-      'statisticsResource':
-          ?pulumi.Input.mapOptionalInputValue<
-            MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaselineStatisticsResource,
-            Map<String, dynamic>
-          >(statisticsResource, (value) => value.toMap()),
+      'constraintsResource': ?pulumi.Input.mapOptionalInputValue<MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaselineConstraintsResource, Map<String, dynamic>>(constraintsResource, (value) => value.toMap()),
+      'statisticsResource': ?pulumi.Input.mapOptionalInputValue<MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaselineStatisticsResource, Map<String, dynamic>>(statisticsResource, (value) => value.toMap()),
     };
   }
 
-  factory MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaseline.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaseline.fromMap(Map<String, dynamic> map) {
     return MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaseline(
-      baseliningJobName: (() {
-        final guardedValue = map['baseliningJobName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      constraintsResource: (() {
-        final guardedValue = map['constraintsResource'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaselineConstraintsResource.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      statisticsResource: (() {
-        final guardedValue = map['statisticsResource'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaselineStatisticsResource.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      baseliningJobName: (() { final guardedValue = map['baseliningJobName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      constraintsResource: (() { final guardedValue = map['constraintsResource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaselineConstraintsResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      statisticsResource: (() { final guardedValue = map['statisticsResource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaselineStatisticsResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

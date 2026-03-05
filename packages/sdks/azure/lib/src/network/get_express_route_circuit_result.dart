@@ -9,25 +9,18 @@ import 'get_express_route_circuit_sku.dart';
 class GetExpressRouteCircuitResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The Azure location where the ExpressRoute circuit exists
   final String location;
   final String name;
-
   /// A `peerings` block for the ExpressRoute circuit as documented below
   final List<GetExpressRouteCircuitPeering> peerings;
   final String resourceGroupName;
-
   /// The string needed by the service provider to provision the ExpressRoute circuit.
   final String serviceKey;
-
   /// A `service_provider_properties` block for the ExpressRoute circuit as documented below
-  final List<GetExpressRouteCircuitServiceProviderProperty>
-  serviceProviderProperties;
-
+  final List<GetExpressRouteCircuitServiceProviderProperty> serviceProviderProperties;
   /// The ExpressRoute circuit provisioning state from your chosen service provider. Possible values are `NotProvisioned`, `Provisioning`, `Provisioned`, and `Deprovisioning`.
   final String serviceProviderProvisioningState;
-
   /// A `sku` block for the ExpressRoute circuit as documented below.
   final GetExpressRouteCircuitSku sku;
 
@@ -58,18 +51,10 @@ class GetExpressRouteCircuitResult {
       'id': id,
       'location': location,
       'name': name,
-      'peerings':
-          pulumi.Input.encodeList<
-            GetExpressRouteCircuitPeering,
-            Map<String, dynamic>
-          >(peerings, (value) => value.toMap()),
+      'peerings': pulumi.Input.encodeList<GetExpressRouteCircuitPeering, Map<String, dynamic>>(peerings, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'serviceKey': serviceKey,
-      'serviceProviderProperties':
-          pulumi.Input.encodeList<
-            GetExpressRouteCircuitServiceProviderProperty,
-            Map<String, dynamic>
-          >(serviceProviderProperties, (value) => value.toMap()),
+      'serviceProviderProperties': pulumi.Input.encodeList<GetExpressRouteCircuitServiceProviderProperty, Map<String, dynamic>>(serviceProviderProperties, (value) => value.toMap()),
       'serviceProviderProvisioningState': serviceProviderProvisioningState,
       'sku': sku.toMap(),
     };
@@ -80,27 +65,13 @@ class GetExpressRouteCircuitResult {
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      peerings: pulumi.Input.decodeList<GetExpressRouteCircuitPeering>(
-        map['peerings']!,
-        (value) => GetExpressRouteCircuitPeering.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      peerings: pulumi.Input.decodeList<GetExpressRouteCircuitPeering>(map['peerings']!, (value) => GetExpressRouteCircuitPeering.fromMap((value as Map).cast<String, dynamic>())),
       resourceGroupName: map['resourceGroupName'] as String,
       serviceKey: map['serviceKey'] as String,
-      serviceProviderProperties:
-          pulumi
-              .Input.decodeList<GetExpressRouteCircuitServiceProviderProperty>(
-            map['serviceProviderProperties']!,
-            (value) => GetExpressRouteCircuitServiceProviderProperty.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-      serviceProviderProvisioningState:
-          map['serviceProviderProvisioningState'] as String,
-      sku: GetExpressRouteCircuitSku.fromMap(
-        (map['sku']! as Map).cast<String, dynamic>(),
-      ),
+      serviceProviderProperties: pulumi.Input.decodeList<GetExpressRouteCircuitServiceProviderProperty>(map['serviceProviderProperties']!, (value) => GetExpressRouteCircuitServiceProviderProperty.fromMap((value as Map).cast<String, dynamic>())),
+      serviceProviderProvisioningState: map['serviceProviderProvisioningState'] as String,
+      sku: GetExpressRouteCircuitSku.fromMap((map['sku']! as Map).cast<String, dynamic>()),
     );
   }
 }
+

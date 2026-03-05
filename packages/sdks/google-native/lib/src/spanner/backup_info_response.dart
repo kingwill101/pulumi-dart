@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackupInfoResponse {
   /// Name of the backup.
   final pulumi.Input<String> backup;
-
   /// The time the CreateBackup request was received.
   final pulumi.Input<String> createTime;
-
   /// Name of the database the backup was created from.
   final pulumi.Input<String> sourceDatabase;
-
   /// The backup contains an externally consistent copy of `source_database` at the timestamp specified by `version_time`. If the CreateBackup request did not specify `version_time`, the `version_time` of the backup is equivalent to the `create_time`.
   final pulumi.Input<String> versionTime;
 
@@ -46,3 +43,4 @@ class BackupInfoResponse {
     );
   }
 }
+

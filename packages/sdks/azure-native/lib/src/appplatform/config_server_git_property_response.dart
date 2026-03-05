@@ -7,31 +7,22 @@ import 'git_pattern_repository_response.dart';
 class ConfigServerGitPropertyResponse {
   /// Public sshKey of git repository.
   final pulumi.Input<String>? hostKey;
-
   /// SshKey algorithm of git repository.
   final pulumi.Input<String>? hostKeyAlgorithm;
-
   /// Label of the repository
   final pulumi.Input<String>? label;
-
   /// Password of git repository basic auth.
   final pulumi.Input<String>? password;
-
   /// Private sshKey algorithm of git repository.
   final pulumi.Input<String>? privateKey;
-
   /// Repositories of git.
   final pulumi.Input<List<GitPatternRepositoryResponse>>? repositories;
-
   /// Searching path of the repository
   final pulumi.Input<List<String>>? searchPaths;
-
   /// Strict host key checking or not.
   final pulumi.Input<bool>? strictHostKeyChecking;
-
   /// URI of the repository
   final pulumi.Input<String> uri;
-
   /// Username of git repository basic auth.
   final pulumi.Input<String>? username;
 
@@ -66,18 +57,7 @@ class ConfigServerGitPropertyResponse {
       'label': ?label,
       'password': ?password,
       'privateKey': ?privateKey,
-      'repositories':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GitPatternRepositoryResponse>,
-            List<Map<String, dynamic>>
-          >(
-            repositories,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GitPatternRepositoryResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'repositories': ?pulumi.Input.mapOptionalInputValue<List<GitPatternRepositoryResponse>, List<Map<String, dynamic>>>(repositories, (value) => pulumi.Input.encodeList<GitPatternRepositoryResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'searchPaths': ?searchPaths,
       'strictHostKeyChecking': ?strictHostKeyChecking,
       'uri': uri,
@@ -87,59 +67,17 @@ class ConfigServerGitPropertyResponse {
 
   factory ConfigServerGitPropertyResponse.fromMap(Map<String, dynamic> map) {
     return ConfigServerGitPropertyResponse(
-      hostKey: (() {
-        final guardedValue = map['hostKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      hostKeyAlgorithm: (() {
-        final guardedValue = map['hostKeyAlgorithm'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      label: (() {
-        final guardedValue = map['label'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      password: (() {
-        final guardedValue = map['password'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      privateKey: (() {
-        final guardedValue = map['privateKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      repositories: (() {
-        final guardedValue = map['repositories'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GitPatternRepositoryResponse>(
-            guardedValue,
-            (value) => GitPatternRepositoryResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      searchPaths: (() {
-        final guardedValue = map['searchPaths'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      strictHostKeyChecking: (() {
-        final guardedValue = map['strictHostKeyChecking'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      hostKey: (() { final guardedValue = map['hostKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      hostKeyAlgorithm: (() { final guardedValue = map['hostKeyAlgorithm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      label: (() { final guardedValue = map['label']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateKey: (() { final guardedValue = map['privateKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      repositories: (() { final guardedValue = map['repositories']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GitPatternRepositoryResponse>(guardedValue, (value) => GitPatternRepositoryResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      searchPaths: (() { final guardedValue = map['searchPaths']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      strictHostKeyChecking: (() { final guardedValue = map['strictHostKeyChecking']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       uri: pulumi.Input.fromValue(map['uri'] as String),
-      username: (() {
-        final guardedValue = map['username'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      username: (() { final guardedValue = map['username']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

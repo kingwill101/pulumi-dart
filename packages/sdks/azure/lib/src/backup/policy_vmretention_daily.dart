@@ -10,10 +10,14 @@ class PolicyVMRetentionDaily {
 
   /// Creates a new [PolicyVMRetentionDaily].
   /// [count] The number of daily backups to keep. Must be between `7` and `9999`.
-  PolicyVMRetentionDaily({required this.count});
+  PolicyVMRetentionDaily({
+    required this.count,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'count': count};
+    return <String, dynamic>{
+      'count': count,
+    };
   }
 
   factory PolicyVMRetentionDaily.fromMap(Map<String, dynamic> map) {
@@ -22,3 +26,4 @@ class PolicyVMRetentionDaily {
     );
   }
 }
+

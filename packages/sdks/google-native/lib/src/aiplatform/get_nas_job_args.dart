@@ -15,7 +15,11 @@ class GetNasJobArgs {
   /// [location] Required.
   /// [nasJobId] Required.
   /// [project] Optional.
-  GetNasJobArgs({required this.location, required this.nasJobId, this.project});
+  GetNasJobArgs({
+    required this.location,
+    required this.nasJobId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,11 +33,8 @@ class GetNasJobArgs {
     return GetNasJobArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
       nasJobId: pulumi.Input.fromValue(map['nasJobId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

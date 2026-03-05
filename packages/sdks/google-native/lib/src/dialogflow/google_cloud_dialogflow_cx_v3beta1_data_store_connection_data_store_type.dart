@@ -5,22 +5,16 @@ enum GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType {
   unstructured("UNSTRUCTURED"),
   structured("STRUCTURED");
 
-  const GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType(
-    this.wireValue,
-  );
+  const GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType(this.wireValue);
   final String wireValue;
 
-  static GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType
-  fromValue(String value) {
-    for (final item
-        in GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType
-            .values) {
+  static GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType fromValue(String value) {
+    for (final item in GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType value: $value',
-    );
+    throw ArgumentError('Unknown GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType value: $value');
   }
 }
+

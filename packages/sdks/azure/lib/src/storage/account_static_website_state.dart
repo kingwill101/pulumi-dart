@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccountStaticWebsiteState {
   /// The absolute path to a custom webpage that should be used when a request is made which does not correspond to an existing file.
   final pulumi.Input<String>? error404Document;
-
   /// The webpage that Azure Storage serves for requests to the root of a website or any subfolder. For example, index.html.
   final pulumi.Input<String>? indexDocument;
-
   /// The ID of the Storage Account to set Static Website on. Changing this forces a new resource to be created.
   final pulumi.Input<String>? storageAccountId;
 
@@ -33,21 +31,10 @@ class AccountStaticWebsiteState {
 
   factory AccountStaticWebsiteState.fromMap(Map<String, dynamic> map) {
     return AccountStaticWebsiteState(
-      error404Document: (() {
-        final guardedValue = map['error404Document'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      indexDocument: (() {
-        final guardedValue = map['indexDocument'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      storageAccountId: (() {
-        final guardedValue = map['storageAccountId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      error404Document: (() { final guardedValue = map['error404Document']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      indexDocument: (() { final guardedValue = map['indexDocument']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageAccountId: (() { final guardedValue = map['storageAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

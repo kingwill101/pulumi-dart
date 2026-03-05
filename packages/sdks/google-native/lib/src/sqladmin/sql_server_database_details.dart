@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SqlServerDatabaseDetails {
   /// The version of SQL Server with which the database is to be made compatible
   final pulumi.Input<int>? compatibilityLevel;
-
   /// The recovery model of a SQL Server database
   final pulumi.Input<String>? recoveryModel;
 
   /// Creates a new [SqlServerDatabaseDetails].
   /// [compatibilityLevel] The version of SQL Server with which the database is to be made compatible
   /// [recoveryModel] The recovery model of a SQL Server database
-  SqlServerDatabaseDetails({this.compatibilityLevel, this.recoveryModel});
+  SqlServerDatabaseDetails({
+    this.compatibilityLevel,
+    this.recoveryModel,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class SqlServerDatabaseDetails {
 
   factory SqlServerDatabaseDetails.fromMap(Map<String, dynamic> map) {
     return SqlServerDatabaseDetails(
-      compatibilityLevel: (() {
-        final guardedValue = map['compatibilityLevel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      recoveryModel: (() {
-        final guardedValue = map['recoveryModel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      compatibilityLevel: (() { final guardedValue = map['compatibilityLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      recoveryModel: (() { final guardedValue = map['recoveryModel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

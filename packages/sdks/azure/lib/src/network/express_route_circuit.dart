@@ -217,52 +217,38 @@ import 'express_route_circuit_state.dart';
 class ExpressRouteCircuit extends pulumi.CustomResource {
   /// Allow the circuit to interact with classic (RDFE) resources. Defaults to `false`.
   late final pulumi.Output<bool?> allowClassicOperations;
-
   /// The authorization key. This can be used to set up an ExpressRoute Circuit with an ExpressRoute Port from another subscription.
   late final pulumi.Output<String?> authorizationKey;
-
   /// The bandwidth in Gbps of the circuit being created on the Express Route Port.
   ///
   /// &gt; **Note:** The `express_route_port_id` and the `bandwidth_in_gbps` should be set together and they conflict with `service_provider_name`, `peering_location` and `bandwidth_in_mbps`.
   late final pulumi.Output<double?> bandwidthInGbps;
-
   /// The bandwidth in Mbps of the circuit being created on the Service Provider.
   ///
   /// &gt; **Note:** Once you increase your bandwidth, you will not be able to decrease it to its previous value.
   ///
   /// &gt; **Note:** The `service_provider_name`, the `peering_location` and the `bandwidth_in_mbps` should be set together and they conflict with `express_route_port_id` and `bandwidth_in_gbps`.
   late final pulumi.Output<int?> bandwidthInMbps;
-
   /// The ID of the Express Route Port this Express Route Circuit is based on. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> expressRoutePortId;
-
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The name of the ExpressRoute circuit. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the peering location and **not** the Azure resource location. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> peeringLocation;
-
   /// Enable [rate limiting](https://learn.microsoft.com/en-us/azure/expressroute/rate-limit) for the circuit. Only works with ExpressRoute Ports. Defaults to `false`.
   late final pulumi.Output<bool?> rateLimitingEnabled;
-
   /// The name of the resource group in which to create the ExpressRoute circuit. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The string needed by the service provider to provision the ExpressRoute circuit.
   late final pulumi.Output<String> serviceKey;
-
   /// The name of the ExpressRoute Service Provider. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> serviceProviderName;
-
   /// The ExpressRoute circuit provisioning state from your chosen service provider. Possible values are `NotProvisioned`, `Provisioning`, `Provisioned`, and `Deprovisioning`.
   late final pulumi.Output<String> serviceProviderProvisioningState;
-
   /// A `sku` block for the ExpressRoute circuit as documented below.
   late final pulumi.Output<ExpressRouteCircuitSku> sku;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -275,11 +261,11 @@ class ExpressRouteCircuit extends pulumi.CustomResource {
     ExpressRouteCircuitArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/expressRouteCircuit:ExpressRouteCircuit',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/expressRouteCircuit:ExpressRouteCircuit',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allowClassicOperations = registerOutput<bool?>('allowClassicOperations');
     authorizationKey = registerOutput<String?>('authorizationKey');
     bandwidthInGbps = registerOutput<double?>('bandwidthInGbps');
@@ -292,19 +278,8 @@ class ExpressRouteCircuit extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     serviceKey = registerOutput<String>('serviceKey');
     serviceProviderName = registerOutput<String?>('serviceProviderName');
-    serviceProviderProvisioningState = registerOutput<String>(
-      'serviceProviderProvisioningState',
-    );
-    sku = registerOutput<ExpressRouteCircuitSku>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExpressRouteCircuitSku.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    serviceProviderProvisioningState = registerOutput<String>('serviceProviderProvisioningState');
+    sku = registerOutput<ExpressRouteCircuitSku>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExpressRouteCircuitSku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
   }
 
@@ -326,11 +301,11 @@ class ExpressRouteCircuit extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/expressRouteCircuit:ExpressRouteCircuit',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/expressRouteCircuit:ExpressRouteCircuit',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allowClassicOperations = registerOutput<bool?>('allowClassicOperations');
     authorizationKey = registerOutput<String?>('authorizationKey');
     bandwidthInGbps = registerOutput<double?>('bandwidthInGbps');
@@ -343,19 +318,8 @@ class ExpressRouteCircuit extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     serviceKey = registerOutput<String>('serviceKey');
     serviceProviderName = registerOutput<String?>('serviceProviderName');
-    serviceProviderProvisioningState = registerOutput<String>(
-      'serviceProviderProvisioningState',
-    );
-    sku = registerOutput<ExpressRouteCircuitSku>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExpressRouteCircuitSku.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    serviceProviderProvisioningState = registerOutput<String>('serviceProviderProvisioningState');
+    sku = registerOutput<ExpressRouteCircuitSku>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExpressRouteCircuitSku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
   }
 }

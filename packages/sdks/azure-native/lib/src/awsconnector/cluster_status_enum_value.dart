@@ -9,19 +9,20 @@ class ClusterStatusEnumValue {
 
   /// Creates a new [ClusterStatusEnumValue].
   /// [value] Property value
-  ClusterStatusEnumValue({this.value});
+  ClusterStatusEnumValue({
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': ?value};
+    return <String, dynamic>{
+      'value': ?value,
+    };
   }
 
   factory ClusterStatusEnumValue.fromMap(Map<String, dynamic> map) {
     return ClusterStatusEnumValue(
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

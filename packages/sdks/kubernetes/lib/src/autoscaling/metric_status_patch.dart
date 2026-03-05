@@ -11,19 +11,14 @@ import 'resource_metric_status_patch.dart';
 class MetricStatusPatch {
   /// container resource refers to a resource metric (such as those specified in requests and limits) known to Kubernetes describing a single container in each pod in the current scale target (e.g. CPU or memory). Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the "pods" source.
   final pulumi.Input<ContainerResourceMetricStatusPatch>? containerResource;
-
   /// external refers to a global metric that is not associated with any Kubernetes object. It allows autoscaling based on information coming from components running outside of cluster (for example length of queue in cloud messaging service, or QPS from loadbalancer running outside of cluster).
   final pulumi.Input<ExternalMetricStatusPatch>? external;
-
   /// object refers to a metric describing a single kubernetes object (for example, hits-per-second on an Ingress object).
   final pulumi.Input<ObjectMetricStatusPatch>? object_;
-
   /// pods refers to a metric describing each pod in the current scale target (for example, transactions-processed-per-second).  The values will be averaged together before being compared to the target value.
   final pulumi.Input<PodsMetricStatusPatch>? pods;
-
   /// resource refers to a resource metric (such as those specified in requests and limits) known to Kubernetes describing each pod in the current scale target (e.g. CPU or memory). Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the "pods" source.
   final pulumi.Input<ResourceMetricStatusPatch>? resource;
-
   /// type is the type of metric source.  It will be one of "ContainerResource", "External", "Object", "Pods" or "Resource", each corresponds to a matching field in the object.
   final pulumi.Input<String>? type;
 
@@ -45,87 +40,24 @@ class MetricStatusPatch {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'containerResource':
-          ?pulumi.Input.mapOptionalInputValue<
-            ContainerResourceMetricStatusPatch,
-            Map<String, dynamic>
-          >(containerResource, (value) => value.toMap()),
-      'external':
-          ?pulumi.Input.mapOptionalInputValue<
-            ExternalMetricStatusPatch,
-            Map<String, dynamic>
-          >(external, (value) => value.toMap()),
-      'object':
-          ?pulumi.Input.mapOptionalInputValue<
-            ObjectMetricStatusPatch,
-            Map<String, dynamic>
-          >(object_, (value) => value.toMap()),
-      'pods':
-          ?pulumi.Input.mapOptionalInputValue<
-            PodsMetricStatusPatch,
-            Map<String, dynamic>
-          >(pods, (value) => value.toMap()),
-      'resource':
-          ?pulumi.Input.mapOptionalInputValue<
-            ResourceMetricStatusPatch,
-            Map<String, dynamic>
-          >(resource, (value) => value.toMap()),
+      'containerResource': ?pulumi.Input.mapOptionalInputValue<ContainerResourceMetricStatusPatch, Map<String, dynamic>>(containerResource, (value) => value.toMap()),
+      'external': ?pulumi.Input.mapOptionalInputValue<ExternalMetricStatusPatch, Map<String, dynamic>>(external, (value) => value.toMap()),
+      'object': ?pulumi.Input.mapOptionalInputValue<ObjectMetricStatusPatch, Map<String, dynamic>>(object_, (value) => value.toMap()),
+      'pods': ?pulumi.Input.mapOptionalInputValue<PodsMetricStatusPatch, Map<String, dynamic>>(pods, (value) => value.toMap()),
+      'resource': ?pulumi.Input.mapOptionalInputValue<ResourceMetricStatusPatch, Map<String, dynamic>>(resource, (value) => value.toMap()),
       'type': ?type,
     };
   }
 
   factory MetricStatusPatch.fromMap(Map<String, dynamic> map) {
     return MetricStatusPatch(
-      containerResource: (() {
-        final guardedValue = map['containerResource'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ContainerResourceMetricStatusPatch.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      external: (() {
-        final guardedValue = map['external'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ExternalMetricStatusPatch.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      object_: (() {
-        final guardedValue = map['object'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ObjectMetricStatusPatch.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      pods: (() {
-        final guardedValue = map['pods'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PodsMetricStatusPatch.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      resource: (() {
-        final guardedValue = map['resource'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ResourceMetricStatusPatch.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      containerResource: (() { final guardedValue = map['containerResource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ContainerResourceMetricStatusPatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      external: (() { final guardedValue = map['external']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExternalMetricStatusPatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      object_: (() { final guardedValue = map['object']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ObjectMetricStatusPatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      pods: (() { final guardedValue = map['pods']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PodsMetricStatusPatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resource: (() { final guardedValue = map['resource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceMetricStatusPatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

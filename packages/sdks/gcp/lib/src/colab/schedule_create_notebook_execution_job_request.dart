@@ -6,10 +6,7 @@ import 'schedule_create_notebook_execution_job_request_notebook_execution_job.da
 class ScheduleCreateNotebookExecutionJobRequest {
   /// The NotebookExecutionJob to create.
   /// Structure is documented below.
-  final pulumi.Input<
-    ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob
-  >
-  notebookExecutionJob;
+  final pulumi.Input<ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob> notebookExecutionJob;
 
   /// Creates a new [ScheduleCreateNotebookExecutionJobRequest].
   /// [notebookExecutionJob] The NotebookExecutionJob to create.
@@ -19,23 +16,14 @@ class ScheduleCreateNotebookExecutionJobRequest {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'notebookExecutionJob':
-          pulumi.Input.mapInputValue<
-            ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob,
-            Map<String, dynamic>
-          >(notebookExecutionJob, (value) => value.toMap()),
+      'notebookExecutionJob': pulumi.Input.mapInputValue<ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob, Map<String, dynamic>>(notebookExecutionJob, (value) => value.toMap()),
     };
   }
 
-  factory ScheduleCreateNotebookExecutionJobRequest.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ScheduleCreateNotebookExecutionJobRequest.fromMap(Map<String, dynamic> map) {
     return ScheduleCreateNotebookExecutionJobRequest(
-      notebookExecutionJob: pulumi.Input.fromValue(
-        ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob.fromMap(
-          (map['notebookExecutionJob']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      notebookExecutionJob: pulumi.Input.fromValue(ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob.fromMap((map['notebookExecutionJob']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

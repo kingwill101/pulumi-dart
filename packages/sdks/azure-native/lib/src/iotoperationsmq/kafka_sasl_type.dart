@@ -16,3 +16,4 @@ enum KafkaSaslType {
     throw ArgumentError('Unknown KafkaSaslType value: $value');
   }
 }
+

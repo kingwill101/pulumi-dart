@@ -13,14 +13,15 @@ class ClusterClusterConfigGceClusterConfigNodeGroupAffinity {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'nodeGroupUri': nodeGroupUri};
+    return <String, dynamic>{
+      'nodeGroupUri': nodeGroupUri,
+    };
   }
 
-  factory ClusterClusterConfigGceClusterConfigNodeGroupAffinity.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterClusterConfigGceClusterConfigNodeGroupAffinity.fromMap(Map<String, dynamic> map) {
     return ClusterClusterConfigGceClusterConfigNodeGroupAffinity(
       nodeGroupUri: pulumi.Input.fromValue(map['nodeGroupUri'] as String),
     );
   }
 }
+

@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JobExtractSourceModel {
   /// The ID of the dataset containing this model.
   final pulumi.Input<String> datasetId;
-
   /// The ID of the model.
   final pulumi.Input<String> modelId;
-
   /// The ID of the project containing this model.
   final pulumi.Input<String> projectId;
 
@@ -38,3 +36,4 @@ class JobExtractSourceModel {
     );
   }
 }
+

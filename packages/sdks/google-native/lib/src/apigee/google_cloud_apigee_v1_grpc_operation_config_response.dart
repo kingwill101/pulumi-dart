@@ -8,16 +8,12 @@ import 'google_cloud_apigee_v1_quota_response.dart';
 class GoogleCloudApigeeV1GrpcOperationConfigResponse {
   /// Name of the API proxy with which the gRPC operation and quota are associated.
   final pulumi.Input<String> apiSource;
-
   /// Custom attributes associated with the operation.
   final pulumi.Input<List<GoogleCloudApigeeV1AttributeResponse>> attributes;
-
   /// List of unqualified gRPC method names for the proxy to which quota will be applied. If this field is empty, the Quota will apply to all operations on the gRPC service defined on the proxy. Example: Given a proxy that is configured to serve com.petstore.PetService, the methods com.petstore.PetService.ListPets and com.petstore.PetService.GetPet would be specified here as simply ["ListPets", "GetPet"].
   final pulumi.Input<List<String>> methods;
-
   /// Quota parameters to be enforced for the methods and API source combination. If none are specified, quota enforcement will not be done.
   final pulumi.Input<GoogleCloudApigeeV1QuotaResponse> quota;
-
   /// gRPC Service name associated to be associated with the API proxy, on which quota rules can be applied upon.
   final pulumi.Input<String> service;
 
@@ -38,48 +34,21 @@ class GoogleCloudApigeeV1GrpcOperationConfigResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'apiSource': apiSource,
-      'attributes':
-          pulumi.Input.mapInputValue<
-            List<GoogleCloudApigeeV1AttributeResponse>,
-            List<Map<String, dynamic>>
-          >(
-            attributes,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GoogleCloudApigeeV1AttributeResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'attributes': pulumi.Input.mapInputValue<List<GoogleCloudApigeeV1AttributeResponse>, List<Map<String, dynamic>>>(attributes, (value) => pulumi.Input.encodeList<GoogleCloudApigeeV1AttributeResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'methods': methods,
-      'quota':
-          pulumi.Input.mapInputValue<
-            GoogleCloudApigeeV1QuotaResponse,
-            Map<String, dynamic>
-          >(quota, (value) => value.toMap()),
+      'quota': pulumi.Input.mapInputValue<GoogleCloudApigeeV1QuotaResponse, Map<String, dynamic>>(quota, (value) => value.toMap()),
       'service': service,
     };
   }
 
-  factory GoogleCloudApigeeV1GrpcOperationConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudApigeeV1GrpcOperationConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1GrpcOperationConfigResponse(
       apiSource: pulumi.Input.fromValue(map['apiSource'] as String),
-      attributes: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GoogleCloudApigeeV1AttributeResponse>(
-          map['attributes']!,
-          (value) => GoogleCloudApigeeV1AttributeResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      attributes: pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudApigeeV1AttributeResponse>(map['attributes']!, (value) => GoogleCloudApigeeV1AttributeResponse.fromMap((value as Map).cast<String, dynamic>()))),
       methods: pulumi.Input.fromValue((map['methods'] as List).cast<String>()),
-      quota: pulumi.Input.fromValue(
-        GoogleCloudApigeeV1QuotaResponse.fromMap(
-          (map['quota']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      quota: pulumi.Input.fromValue(GoogleCloudApigeeV1QuotaResponse.fromMap((map['quota']! as Map).cast<String, dynamic>())),
       service: pulumi.Input.fromValue(map['service'] as String),
     );
   }
 }
+

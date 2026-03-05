@@ -9,11 +9,9 @@ import 'google_cloud_contactcenterinsights_v1_annotator_selector.dart';
 /// {@macro pulumi_contactcenterinsights_v1_analysis_args_doc}
 class AnalysisArgs {
   /// To select the annotators to run and the phrase matchers to use (if any). If not specified, all annotators will be run.
-  final pulumi.Input<GoogleCloudContactcenterinsightsV1AnnotatorSelector>?
-  annotatorSelector;
+  final pulumi.Input<GoogleCloudContactcenterinsightsV1AnnotatorSelector>? annotatorSelector;
   final pulumi.Input<String> conversationId;
   final pulumi.Input<String>? location;
-
   /// Immutable. The resource name of the analysis. Format: projects/{project}/locations/{location}/conversations/{conversation}/analyses/{analysis}
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
@@ -34,11 +32,7 @@ class AnalysisArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'annotatorSelector':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudContactcenterinsightsV1AnnotatorSelector,
-            Map<String, dynamic>
-          >(annotatorSelector, (value) => value.toMap()),
+      'annotatorSelector': ?pulumi.Input.mapOptionalInputValue<GoogleCloudContactcenterinsightsV1AnnotatorSelector, Map<String, dynamic>>(annotatorSelector, (value) => value.toMap()),
       'conversationId': conversationId,
       'location': ?location,
       'name': ?name,
@@ -48,31 +42,12 @@ class AnalysisArgs {
 
   factory AnalysisArgs.fromMap(Map<String, dynamic> map) {
     return AnalysisArgs(
-      annotatorSelector: (() {
-        final guardedValue = map['annotatorSelector'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudContactcenterinsightsV1AnnotatorSelector.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      annotatorSelector: (() { final guardedValue = map['annotatorSelector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudContactcenterinsightsV1AnnotatorSelector.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       conversationId: pulumi.Input.fromValue(map['conversationId'] as String),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -15,3 +15,4 @@ enum OrganizationMembershipType {
     throw ArgumentError('Unknown OrganizationMembershipType value: $value');
   }
 }
+

@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VolumeDataProtectionReplication {
   /// The endpoint type, default value is `dst` for destination.
   final pulumi.Input<String>? endpointType;
-
   /// Location of the primary volume. Changing this forces a new resource to be created.
   final pulumi.Input<String> remoteVolumeLocation;
-
   /// Resource ID of the primary volume.
   final pulumi.Input<String> remoteVolumeResourceId;
-
   /// Replication frequency, supported values are '10minutes', 'hourly', 'daily', values are case sensitive.
   ///
   /// A full example of the `data_protection_replication` attribute can be found in the `./examples/netapp/volume_crr` directory within the GitHub Repository
@@ -44,20 +41,11 @@ class VolumeDataProtectionReplication {
 
   factory VolumeDataProtectionReplication.fromMap(Map<String, dynamic> map) {
     return VolumeDataProtectionReplication(
-      endpointType: (() {
-        final guardedValue = map['endpointType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      remoteVolumeLocation: pulumi.Input.fromValue(
-        map['remoteVolumeLocation'] as String,
-      ),
-      remoteVolumeResourceId: pulumi.Input.fromValue(
-        map['remoteVolumeResourceId'] as String,
-      ),
-      replicationFrequency: pulumi.Input.fromValue(
-        map['replicationFrequency'] as String,
-      ),
+      endpointType: (() { final guardedValue = map['endpointType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      remoteVolumeLocation: pulumi.Input.fromValue(map['remoteVolumeLocation'] as String),
+      remoteVolumeResourceId: pulumi.Input.fromValue(map['remoteVolumeResourceId'] as String),
+      replicationFrequency: pulumi.Input.fromValue(map['replicationFrequency'] as String),
     );
   }
 }
+

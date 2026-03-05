@@ -130,51 +130,35 @@ import 'warm_store_configuration_properties_response.dart';
 class Gen2Environment extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The time the resource was created.
   late final pulumi.Output<String> creationTime;
-
   /// The fully qualified domain name used to access the environment data, e.g. to query the environment's events or upload reference data for the environment.
   late final pulumi.Output<String> dataAccessFqdn;
-
   /// An id used to access the environment data, e.g. to query the environment's events or upload reference data for the environment.
   late final pulumi.Output<String> dataAccessId;
-
   /// The kind of the environment.
   /// Expected value is 'Gen2'.
   late final pulumi.Output<String> kind;
-
   /// Resource location
   late final pulumi.Output<String> location;
-
   /// Resource name
   late final pulumi.Output<String> name;
-
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The sku determines the type of environment, either Gen1 (S1 or S2) or Gen2 (L1). For Gen1 environments the sku determines the capacity of the environment, the ingress rate, and the billing rate.
   late final pulumi.Output<SkuResponse> sku;
-
   /// An object that represents the status of the environment, and its internal state in the Time Series Insights service.
   late final pulumi.Output<EnvironmentStatusResponse> status;
-
   /// The storage configuration provides the connection details that allows the Time Series Insights service to connect to the customer storage account that is used to store the environment's data.
-  late final pulumi.Output<Gen2StorageConfigurationOutputResponse>
-  storageConfiguration;
-
+  late final pulumi.Output<Gen2StorageConfigurationOutputResponse> storageConfiguration;
   /// Resource tags
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The list of event properties which will be used to define the environment's time series id.
   late final pulumi.Output<List<Map<String, dynamic>>> timeSeriesIdProperties;
-
   /// Resource type
   late final pulumi.Output<String> type;
-
   /// The warm store configuration provides the details to create a warm store cache that will retain a copy of the environment's data available for faster query.
-  late final pulumi.Output<WarmStoreConfigurationPropertiesResponse?>
-  warmStoreConfiguration;
+  late final pulumi.Output<WarmStoreConfigurationPropertiesResponse?> warmStoreConfiguration;
 
   /// Creates a new [Gen2Environment].
   /// [name] The Pulumi resource name.
@@ -185,11 +169,11 @@ class Gen2Environment extends pulumi.CustomResource {
     Gen2EnvironmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:timeseriesinsights:Gen2Environment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:timeseriesinsights:Gen2Environment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     creationTime = registerOutput<String>('creationTime');
     dataAccessFqdn = registerOutput<String>('dataAccessFqdn');
@@ -198,52 +182,12 @@ class Gen2Environment extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    sku = registerOutput<SkuResponse>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    status = registerOutput<EnvironmentStatusResponse>(
-      'status',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EnvironmentStatusResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    storageConfiguration =
-        registerOutput<Gen2StorageConfigurationOutputResponse>(
-          'storageConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return Gen2StorageConfigurationOutputResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    sku = registerOutput<SkuResponse>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<EnvironmentStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    storageConfiguration = registerOutput<Gen2StorageConfigurationOutputResponse>('storageConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Gen2StorageConfigurationOutputResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
-    timeSeriesIdProperties = registerOutput<List<Map<String, dynamic>>>(
-      'timeSeriesIdProperties',
-    );
+    timeSeriesIdProperties = registerOutput<List<Map<String, dynamic>>>('timeSeriesIdProperties');
     type = registerOutput<String>('type');
-    warmStoreConfiguration =
-        registerOutput<WarmStoreConfigurationPropertiesResponse?>(
-          'warmStoreConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return WarmStoreConfigurationPropertiesResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    warmStoreConfiguration = registerOutput<WarmStoreConfigurationPropertiesResponse?>('warmStoreConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WarmStoreConfigurationPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

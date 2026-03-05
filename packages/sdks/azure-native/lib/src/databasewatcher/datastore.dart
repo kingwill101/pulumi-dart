@@ -6,22 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Datastore {
   /// The Azure resource ID of an Azure Data Explorer cluster.
   final pulumi.Input<String>? adxClusterResourceId;
-
   /// The Kusto cluster display name.
   final pulumi.Input<String>? kustoClusterDisplayName;
-
   /// The Kusto cluster URI.
   final pulumi.Input<String> kustoClusterUri;
-
   /// The Kusto data ingestion URI.
   final pulumi.Input<String> kustoDataIngestionUri;
-
   /// The name of a Kusto database.
   final pulumi.Input<String> kustoDatabaseName;
-
   /// The Kusto management URL.
   final pulumi.Input<String> kustoManagementUrl;
-
   /// The type of a Kusto offering.
   final pulumi.Input<String> kustoOfferingType;
 
@@ -57,29 +51,14 @@ class Datastore {
 
   factory Datastore.fromMap(Map<String, dynamic> map) {
     return Datastore(
-      adxClusterResourceId: (() {
-        final guardedValue = map['adxClusterResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kustoClusterDisplayName: (() {
-        final guardedValue = map['kustoClusterDisplayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      adxClusterResourceId: (() { final guardedValue = map['adxClusterResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kustoClusterDisplayName: (() { final guardedValue = map['kustoClusterDisplayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kustoClusterUri: pulumi.Input.fromValue(map['kustoClusterUri'] as String),
-      kustoDataIngestionUri: pulumi.Input.fromValue(
-        map['kustoDataIngestionUri'] as String,
-      ),
-      kustoDatabaseName: pulumi.Input.fromValue(
-        map['kustoDatabaseName'] as String,
-      ),
-      kustoManagementUrl: pulumi.Input.fromValue(
-        map['kustoManagementUrl'] as String,
-      ),
-      kustoOfferingType: pulumi.Input.fromValue(
-        map['kustoOfferingType'] as String,
-      ),
+      kustoDataIngestionUri: pulumi.Input.fromValue(map['kustoDataIngestionUri'] as String),
+      kustoDatabaseName: pulumi.Input.fromValue(map['kustoDatabaseName'] as String),
+      kustoManagementUrl: pulumi.Input.fromValue(map['kustoManagementUrl'] as String),
+      kustoOfferingType: pulumi.Input.fromValue(map['kustoOfferingType'] as String),
     );
   }
 }
+

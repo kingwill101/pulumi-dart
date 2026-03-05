@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StorageAccountConfigurationResponse {
   /// The storage account access key.
   final pulumi.Input<String>? storageAccountKey;
-
   /// The storage account name.
   final pulumi.Input<String>? storageAccountName;
 
@@ -25,20 +24,11 @@ class StorageAccountConfigurationResponse {
     };
   }
 
-  factory StorageAccountConfigurationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory StorageAccountConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return StorageAccountConfigurationResponse(
-      storageAccountKey: (() {
-        final guardedValue = map['storageAccountKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      storageAccountName: (() {
-        final guardedValue = map['storageAccountName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      storageAccountKey: (() { final guardedValue = map['storageAccountKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageAccountName: (() { final guardedValue = map['storageAccountName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTemplateScratchesScratchPreferenceParameter {
   /// Priority parameter key.
   final pulumi.Input<String> parameterKey;
-
   /// Priority parameter value.
   final pulumi.Input<String> parameterValue;
 
@@ -24,12 +23,11 @@ class GetTemplateScratchesScratchPreferenceParameter {
     };
   }
 
-  factory GetTemplateScratchesScratchPreferenceParameter.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetTemplateScratchesScratchPreferenceParameter.fromMap(Map<String, dynamic> map) {
     return GetTemplateScratchesScratchPreferenceParameter(
       parameterKey: pulumi.Input.fromValue(map['parameterKey'] as String),
       parameterValue: pulumi.Input.fromValue(map['parameterValue'] as String),
     );
   }
 }
+

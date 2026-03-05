@@ -9,21 +9,20 @@ class Account {
 
   /// Creates a new [Account].
   /// [googleAuto] An automatic google login account.
-  Account({this.googleAuto});
+  Account({
+    this.googleAuto,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'googleAuto': ?googleAuto};
+    return <String, dynamic>{
+      'googleAuto': ?googleAuto,
+    };
   }
 
   factory Account.fromMap(Map<String, dynamic> map) {
     return Account(
-      googleAuto: (() {
-        final guardedValue = map['googleAuto'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      googleAuto: (() { final guardedValue = map['googleAuto']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }
 }
+

@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IgnitionState {
   /// Ignition configuration content (JSON)
   final pulumi.Input<String>? content;
-
   /// Name for this ignition resource
   final pulumi.Input<String>? name;
-
   /// Full path to the generated ignition file
   final pulumi.Input<String>? path;
-
   /// Size of the file in bytes
   final pulumi.Input<double>? size;
 
@@ -21,7 +18,12 @@ class IgnitionState {
   /// [name] Name for this ignition resource
   /// [path] Full path to the generated ignition file
   /// [size] Size of the file in bytes
-  IgnitionState({this.content, this.name, this.path, this.size});
+  IgnitionState({
+    this.content,
+    this.name,
+    this.path,
+    this.size,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,26 +36,11 @@ class IgnitionState {
 
   factory IgnitionState.fromMap(Map<String, dynamic> map) {
     return IgnitionState(
-      content: (() {
-        final guardedValue = map['content'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      path: (() {
-        final guardedValue = map['path'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      size: (() {
-        final guardedValue = map['size'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      content: (() { final guardedValue = map['content']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

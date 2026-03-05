@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GSuitePrincipalResponse {
   /// This principal represents all users of the Google Workspace domain of the customer.
   final pulumi.Input<bool> gsuiteDomain;
-
   /// This principal references a Google Workspace group name.
   final pulumi.Input<String> gsuiteGroupEmail;
-
   /// This principal references a Google Workspace user account.
   final pulumi.Input<String> gsuiteUserEmail;
 
@@ -33,10 +31,9 @@ class GSuitePrincipalResponse {
   factory GSuitePrincipalResponse.fromMap(Map<String, dynamic> map) {
     return GSuitePrincipalResponse(
       gsuiteDomain: pulumi.Input.fromValue(map['gsuiteDomain'] as bool),
-      gsuiteGroupEmail: pulumi.Input.fromValue(
-        map['gsuiteGroupEmail'] as String,
-      ),
+      gsuiteGroupEmail: pulumi.Input.fromValue(map['gsuiteGroupEmail'] as String),
       gsuiteUserEmail: pulumi.Input.fromValue(map['gsuiteUserEmail'] as String),
     );
   }
 }
+

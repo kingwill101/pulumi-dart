@@ -412,10 +412,8 @@ import 'instance_v2_state.dart';
 class InstanceV2 extends pulumi.CustomResource {
   /// Coordination Zone VswitchId
   late final pulumi.Output<String?> arbiterVswitchId;
-
   /// Coordination Zone ZoneId
   late final pulumi.Output<String?> arbiterZoneId;
-
   /// Deployment Scenario
   ///
   /// Enumeration value:
@@ -425,7 +423,6 @@ class InstanceV2 extends pulumi.CustomResource {
   ///
   /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<String> archVersion;
-
   /// Automatic renewal duration. Unit: Month.
   ///
   /// Value range: `1` to `12`.
@@ -435,15 +432,12 @@ class InstanceV2 extends pulumi.CustomResource {
   ///
   /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<String?> autoRenewDuration;
-
   /// Whether the instance is automatically renewed. Enumerated values:
   late final pulumi.Output<bool?> autoRenewal;
-
   /// The Sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
   ///
   /// &gt; **NOTE:**  Cloud storage capacity in GB
   late final pulumi.Output<int?> cloudStorageSize;
-
   /// Cloud storage type, the sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
   ///
   /// Enumeration value:
@@ -451,57 +445,42 @@ class InstanceV2 extends pulumi.CustomResource {
   /// - **Performance storage**: Performance-based cloud storage
   /// - **Capacity Storage**: Capacity-based cloud storage
   late final pulumi.Output<String?> cloudStorageType;
-
   /// Whether to enable deletion protection
   late final pulumi.Output<String> deletionProtection;
-
   /// The specified duration when the resource is purchased. Only the subscription instances are valid.
   ///
   /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<int?> duration;
-
   /// Engine List See `engine_list` below.
   late final pulumi.Output<List<Map<String, dynamic>>> engineLists;
-
   /// Instance name
   late final pulumi.Output<String> instanceAlias;
-
   /// Resource attribute fields representing payment types
   ///
   /// Enumeration value:
   /// - `PREPAY`: Prepaid mode
   /// - `POSTPAY`: Postpay mode
   late final pulumi.Output<String> paymentType;
-
   /// Purchase duration unit: Month, Year
   ///
   /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<String?> pricingCycle;
-
   /// Primary zone VswitchId
   late final pulumi.Output<String?> primaryVswitchId;
-
   /// Primary zone ZoneID
   late final pulumi.Output<String?> primaryZoneId;
-
   /// The region ID of the resource
   late final pulumi.Output<String> regionId;
-
   /// Standby zone VswitchId
   late final pulumi.Output<String?> standbyVswitchId;
-
   /// Standby zone ZoneID
   late final pulumi.Output<String?> standbyZoneId;
-
   /// VpcId
   late final pulumi.Output<String> vpcId;
-
   /// VswitchId
   late final pulumi.Output<String> vswitchId;
-
   /// Instance whitelist list See `white_ip_list` below.
   late final pulumi.Output<List<Map<String, dynamic>>> whiteIpLists;
-
   /// The zone ID  of the resource
   late final pulumi.Output<String> zoneId;
 
@@ -514,11 +493,11 @@ class InstanceV2 extends pulumi.CustomResource {
     InstanceV2Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:lindorm/instanceV2:InstanceV2',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:lindorm/instanceV2:InstanceV2',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arbiterVswitchId = registerOutput<String?>('arbiterVswitchId');
     arbiterZoneId = registerOutput<String?>('arbiterZoneId');
     archVersion = registerOutput<String>('archVersion');
@@ -561,11 +540,11 @@ class InstanceV2 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:lindorm/instanceV2:InstanceV2',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:lindorm/instanceV2:InstanceV2',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arbiterVswitchId = registerOutput<String?>('arbiterVswitchId');
     arbiterZoneId = registerOutput<String?>('arbiterZoneId');
     archVersion = registerOutput<String>('archVersion');

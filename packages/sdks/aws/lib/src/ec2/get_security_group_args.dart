@@ -10,21 +10,16 @@ import 'get_security_group_filter.dart';
 class GetSecurityGroupArgs {
   /// Custom filter block as described below.
   final pulumi.Input<List<GetSecurityGroupFilter>>? filters;
-
   /// Id of the specific security group to retrieve.
   final pulumi.Input<String>? id;
-
   /// Name of the field to filter by, as defined by
   /// [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSecurityGroups.html).
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Map of tags, each pair of which must exactly match
   /// a pair on the desired security group.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// Id of the VPC that the desired security group belongs to.
   ///
   /// More complex filters can be expressed using one or more `filter` sub-blocks,
@@ -49,18 +44,7 @@ class GetSecurityGroupArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GetSecurityGroupFilter>,
-            List<Map<String, dynamic>>
-          >(
-            filters,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetSecurityGroupFilter,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetSecurityGroupFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetSecurityGroupFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': ?id,
       'name': ?name,
       'region': ?region,
@@ -71,45 +55,13 @@ class GetSecurityGroupArgs {
 
   factory GetSecurityGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetSecurityGroupArgs(
-      filters: (() {
-        final guardedValue = map['filters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GetSecurityGroupFilter>(
-            guardedValue,
-            (value) => GetSecurityGroupFilter.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      vpcId: (() {
-        final guardedValue = map['vpcId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetSecurityGroupFilter>(guardedValue, (value) => GetSecurityGroupFilter.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      vpcId: (() { final guardedValue = map['vpcId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

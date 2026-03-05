@@ -33,11 +33,8 @@ class GetProcessArgs {
     return GetProcessArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
       processId: pulumi.Input.fromValue(map['processId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

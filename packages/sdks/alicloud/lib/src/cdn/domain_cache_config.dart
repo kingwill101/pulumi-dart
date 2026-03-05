@@ -36,18 +36,11 @@ class DomainCacheConfig {
   factory DomainCacheConfig.fromMap(Map<String, dynamic> map) {
     return DomainCacheConfig(
       cacheContent: pulumi.Input.fromValue(map['cacheContent'] as String),
-      cacheId: (() {
-        final guardedValue = map['cacheId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      cacheId: (() { final guardedValue = map['cacheId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       cacheType: pulumi.Input.fromValue(map['cacheType'] as String),
       ttl: pulumi.Input.fromValue(map['ttl'] as int),
-      weight: (() {
-        final guardedValue = map['weight'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      weight: (() { final guardedValue = map['weight']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

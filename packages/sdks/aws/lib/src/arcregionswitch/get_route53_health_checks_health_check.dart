@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRoute53HealthChecksHealthCheck {
   /// ID of the Route53 health check.
   final pulumi.Input<String> healthCheckId;
-
   /// Hosted zone ID for the health check.
   final pulumi.Input<String> hostedZoneId;
-
   /// Record name for the health check.
   final pulumi.Input<String> recordName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String> region;
-
   /// Status of the health check. Valid values: `healthy`, `unhealthy`, `unknown`.
   final pulumi.Input<String> status;
 
@@ -52,3 +48,4 @@ class GetRoute53HealthChecksHealthCheck {
     );
   }
 }
+

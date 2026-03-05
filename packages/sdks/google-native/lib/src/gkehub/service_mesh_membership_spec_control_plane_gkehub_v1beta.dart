@@ -7,17 +7,13 @@ enum ServiceMeshMembershipSpecControlPlaneGkehubV1beta {
   const ServiceMeshMembershipSpecControlPlaneGkehubV1beta(this.wireValue);
   final String wireValue;
 
-  static ServiceMeshMembershipSpecControlPlaneGkehubV1beta fromValue(
-    String value,
-  ) {
-    for (final item
-        in ServiceMeshMembershipSpecControlPlaneGkehubV1beta.values) {
+  static ServiceMeshMembershipSpecControlPlaneGkehubV1beta fromValue(String value) {
+    for (final item in ServiceMeshMembershipSpecControlPlaneGkehubV1beta.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ServiceMeshMembershipSpecControlPlaneGkehubV1beta value: $value',
-    );
+    throw ArgumentError('Unknown ServiceMeshMembershipSpecControlPlaneGkehubV1beta value: $value');
   }
 }
+

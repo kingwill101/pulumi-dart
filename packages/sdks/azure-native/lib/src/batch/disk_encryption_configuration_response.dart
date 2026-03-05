@@ -9,21 +9,20 @@ class DiskEncryptionConfigurationResponse {
 
   /// Creates a new [DiskEncryptionConfigurationResponse].
   /// [targets] On Linux pool, only "TemporaryDisk" is supported; on Windows pool, "OsDisk" and "TemporaryDisk" must be specified.
-  DiskEncryptionConfigurationResponse({this.targets});
+  DiskEncryptionConfigurationResponse({
+    this.targets,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'targets': ?targets};
+    return <String, dynamic>{
+      'targets': ?targets,
+    };
   }
 
-  factory DiskEncryptionConfigurationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DiskEncryptionConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return DiskEncryptionConfigurationResponse(
-      targets: (() {
-        final guardedValue = map['targets'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      targets: (() { final guardedValue = map['targets']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

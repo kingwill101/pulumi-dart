@@ -317,10 +317,8 @@ import 'spaces_bucket_cors_configuration_state.dart';
 class SpacesBucketCorsConfiguration extends pulumi.CustomResource {
   /// The name of the bucket to which to apply the CORS configuration.
   late final pulumi.Output<String> bucket;
-
   /// Set of origins and methods (cross-origin access that you want to allow). See below. You can configure up to 100 rules.
   late final pulumi.Output<List<Map<String, dynamic>>> corsRules;
-
   /// The region where the bucket resides.
   late final pulumi.Output<String> region;
 
@@ -333,11 +331,11 @@ class SpacesBucketCorsConfiguration extends pulumi.CustomResource {
     SpacesBucketCorsConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/spacesBucketCorsConfiguration:SpacesBucketCorsConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/spacesBucketCorsConfiguration:SpacesBucketCorsConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
     corsRules = registerOutput<List<Map<String, dynamic>>>('corsRules');
     region = registerOutput<String>('region');
@@ -361,11 +359,11 @@ class SpacesBucketCorsConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/spacesBucketCorsConfiguration:SpacesBucketCorsConfiguration',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/spacesBucketCorsConfiguration:SpacesBucketCorsConfiguration',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
     corsRules = registerOutput<List<Map<String, dynamic>>>('corsRules');
     region = registerOutput<String>('region');

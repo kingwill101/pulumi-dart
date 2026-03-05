@@ -16,47 +16,32 @@ import 'upgrade_settings_container_v1beta1.dart';
 class NodePoolContainerV1beta1 {
   /// Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
   final pulumi.Input<NodePoolAutoscalingContainerV1beta1>? autoscaling;
-
   /// Enable best effort provisioning for nodes
-  final pulumi.Input<BestEffortProvisioningContainerV1beta1>?
-  bestEffortProvisioning;
-
+  final pulumi.Input<BestEffortProvisioningContainerV1beta1>? bestEffortProvisioning;
   /// Which conditions caused the current node pool state.
   final pulumi.Input<List<StatusConditionContainerV1beta1>>? conditions;
-
   /// The node configuration of the pool.
   final pulumi.Input<NodeConfigContainerV1beta1>? config;
-
   /// This checksum is computed by the server based on the value of node pool fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
   final pulumi.Input<String>? etag;
-
   /// The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
   final pulumi.Input<int>? initialNodeCount;
-
   /// The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes should be located. If this value is unspecified during node pool creation, the [Cluster.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.FIELDS.locations) value will be used, instead. Warning: changing node pool locations will result in nodes being added and/or removed.
   final pulumi.Input<List<String>>? locations;
-
   /// NodeManagement configuration for this NodePool.
   final pulumi.Input<NodeManagementContainerV1beta1>? management;
-
   /// The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
   final pulumi.Input<MaxPodsConstraintContainerV1beta1>? maxPodsConstraint;
-
   /// The name of the node pool.
   final pulumi.Input<String>? name;
-
   /// Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
   final pulumi.Input<NodeNetworkConfigContainerV1beta1>? networkConfig;
-
   /// Specifies the node placement policy.
   final pulumi.Input<PlacementPolicyContainerV1beta1>? placementPolicy;
-
   /// Specifies the configuration of queued provisioning.
   final pulumi.Input<QueuedProvisioningContainerV1beta1>? queuedProvisioning;
-
   /// Upgrade settings control disruption and speed of the upgrade.
   final pulumi.Input<UpgradeSettingsContainerV1beta1>? upgradeSettings;
-
   /// The version of Kubernetes running on this NodePool's nodes. If unspecified, it defaults as described [here](https://cloud.google.com/kubernetes-engine/versioning#specifying_node_version).
   final pulumi.Input<String>? version;
 
@@ -96,191 +81,42 @@ class NodePoolContainerV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoscaling':
-          ?pulumi.Input.mapOptionalInputValue<
-            NodePoolAutoscalingContainerV1beta1,
-            Map<String, dynamic>
-          >(autoscaling, (value) => value.toMap()),
-      'bestEffortProvisioning':
-          ?pulumi.Input.mapOptionalInputValue<
-            BestEffortProvisioningContainerV1beta1,
-            Map<String, dynamic>
-          >(bestEffortProvisioning, (value) => value.toMap()),
-      'conditions':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<StatusConditionContainerV1beta1>,
-            List<Map<String, dynamic>>
-          >(
-            conditions,
-            (value) =>
-                pulumi.Input.encodeList<
-                  StatusConditionContainerV1beta1,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'config':
-          ?pulumi.Input.mapOptionalInputValue<
-            NodeConfigContainerV1beta1,
-            Map<String, dynamic>
-          >(config, (value) => value.toMap()),
+      'autoscaling': ?pulumi.Input.mapOptionalInputValue<NodePoolAutoscalingContainerV1beta1, Map<String, dynamic>>(autoscaling, (value) => value.toMap()),
+      'bestEffortProvisioning': ?pulumi.Input.mapOptionalInputValue<BestEffortProvisioningContainerV1beta1, Map<String, dynamic>>(bestEffortProvisioning, (value) => value.toMap()),
+      'conditions': ?pulumi.Input.mapOptionalInputValue<List<StatusConditionContainerV1beta1>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<StatusConditionContainerV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'config': ?pulumi.Input.mapOptionalInputValue<NodeConfigContainerV1beta1, Map<String, dynamic>>(config, (value) => value.toMap()),
       'etag': ?etag,
       'initialNodeCount': ?initialNodeCount,
       'locations': ?locations,
-      'management':
-          ?pulumi.Input.mapOptionalInputValue<
-            NodeManagementContainerV1beta1,
-            Map<String, dynamic>
-          >(management, (value) => value.toMap()),
-      'maxPodsConstraint':
-          ?pulumi.Input.mapOptionalInputValue<
-            MaxPodsConstraintContainerV1beta1,
-            Map<String, dynamic>
-          >(maxPodsConstraint, (value) => value.toMap()),
+      'management': ?pulumi.Input.mapOptionalInputValue<NodeManagementContainerV1beta1, Map<String, dynamic>>(management, (value) => value.toMap()),
+      'maxPodsConstraint': ?pulumi.Input.mapOptionalInputValue<MaxPodsConstraintContainerV1beta1, Map<String, dynamic>>(maxPodsConstraint, (value) => value.toMap()),
       'name': ?name,
-      'networkConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            NodeNetworkConfigContainerV1beta1,
-            Map<String, dynamic>
-          >(networkConfig, (value) => value.toMap()),
-      'placementPolicy':
-          ?pulumi.Input.mapOptionalInputValue<
-            PlacementPolicyContainerV1beta1,
-            Map<String, dynamic>
-          >(placementPolicy, (value) => value.toMap()),
-      'queuedProvisioning':
-          ?pulumi.Input.mapOptionalInputValue<
-            QueuedProvisioningContainerV1beta1,
-            Map<String, dynamic>
-          >(queuedProvisioning, (value) => value.toMap()),
-      'upgradeSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            UpgradeSettingsContainerV1beta1,
-            Map<String, dynamic>
-          >(upgradeSettings, (value) => value.toMap()),
+      'networkConfig': ?pulumi.Input.mapOptionalInputValue<NodeNetworkConfigContainerV1beta1, Map<String, dynamic>>(networkConfig, (value) => value.toMap()),
+      'placementPolicy': ?pulumi.Input.mapOptionalInputValue<PlacementPolicyContainerV1beta1, Map<String, dynamic>>(placementPolicy, (value) => value.toMap()),
+      'queuedProvisioning': ?pulumi.Input.mapOptionalInputValue<QueuedProvisioningContainerV1beta1, Map<String, dynamic>>(queuedProvisioning, (value) => value.toMap()),
+      'upgradeSettings': ?pulumi.Input.mapOptionalInputValue<UpgradeSettingsContainerV1beta1, Map<String, dynamic>>(upgradeSettings, (value) => value.toMap()),
       'version': ?version,
     };
   }
 
   factory NodePoolContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return NodePoolContainerV1beta1(
-      autoscaling: (() {
-        final guardedValue = map['autoscaling'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          NodePoolAutoscalingContainerV1beta1.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      bestEffortProvisioning: (() {
-        final guardedValue = map['bestEffortProvisioning'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BestEffortProvisioningContainerV1beta1.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      conditions: (() {
-        final guardedValue = map['conditions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<StatusConditionContainerV1beta1>(
-            guardedValue,
-            (value) => StatusConditionContainerV1beta1.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      config: (() {
-        final guardedValue = map['config'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          NodeConfigContainerV1beta1.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      etag: (() {
-        final guardedValue = map['etag'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      initialNodeCount: (() {
-        final guardedValue = map['initialNodeCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      locations: (() {
-        final guardedValue = map['locations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      management: (() {
-        final guardedValue = map['management'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          NodeManagementContainerV1beta1.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      maxPodsConstraint: (() {
-        final guardedValue = map['maxPodsConstraint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          MaxPodsConstraintContainerV1beta1.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      networkConfig: (() {
-        final guardedValue = map['networkConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          NodeNetworkConfigContainerV1beta1.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      placementPolicy: (() {
-        final guardedValue = map['placementPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PlacementPolicyContainerV1beta1.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      queuedProvisioning: (() {
-        final guardedValue = map['queuedProvisioning'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          QueuedProvisioningContainerV1beta1.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      upgradeSettings: (() {
-        final guardedValue = map['upgradeSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          UpgradeSettingsContainerV1beta1.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      autoscaling: (() { final guardedValue = map['autoscaling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodePoolAutoscalingContainerV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      bestEffortProvisioning: (() { final guardedValue = map['bestEffortProvisioning']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BestEffortProvisioningContainerV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<StatusConditionContainerV1beta1>(guardedValue, (value) => StatusConditionContainerV1beta1.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      config: (() { final guardedValue = map['config']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodeConfigContainerV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      initialNodeCount: (() { final guardedValue = map['initialNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      locations: (() { final guardedValue = map['locations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      management: (() { final guardedValue = map['management']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodeManagementContainerV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      maxPodsConstraint: (() { final guardedValue = map['maxPodsConstraint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MaxPodsConstraintContainerV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      networkConfig: (() { final guardedValue = map['networkConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodeNetworkConfigContainerV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      placementPolicy: (() { final guardedValue = map['placementPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PlacementPolicyContainerV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      queuedProvisioning: (() { final guardedValue = map['queuedProvisioning']; if (guardedValue == null) return null; return pulumi.Input.fromValue(QueuedProvisioningContainerV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      upgradeSettings: (() { final guardedValue = map['upgradeSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(UpgradeSettingsContainerV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

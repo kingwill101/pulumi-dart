@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrapped {
   /// The resource name of the KMS CryptoKey to use for unwrapping.
   final pulumi.Input<String> cryptoKeyName;
-
   /// The wrapped data crypto key.
   /// A base64-encoded string.
   final pulumi.Input<String> wrappedKey;
@@ -25,12 +24,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     };
   }
 
-  factory PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrapped.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrapped.fromMap(Map<String, dynamic> map) {
     return PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrapped(
       cryptoKeyName: pulumi.Input.fromValue(map['cryptoKeyName'] as String),
       wrappedKey: pulumi.Input.fromValue(map['wrappedKey'] as String),
     );
   }
 }
+

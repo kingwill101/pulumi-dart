@@ -8,17 +8,20 @@ class GetControlFolderIntelligenceConfigTrialConfig {
 
   /// Creates a new [GetControlFolderIntelligenceConfigTrialConfig].
   /// [expireTime] The time at which the trial expires.
-  GetControlFolderIntelligenceConfigTrialConfig({required this.expireTime});
+  GetControlFolderIntelligenceConfigTrialConfig({
+    required this.expireTime,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'expireTime': expireTime};
+    return <String, dynamic>{
+      'expireTime': expireTime,
+    };
   }
 
-  factory GetControlFolderIntelligenceConfigTrialConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetControlFolderIntelligenceConfigTrialConfig.fromMap(Map<String, dynamic> map) {
     return GetControlFolderIntelligenceConfigTrialConfig(
       expireTime: pulumi.Input.fromValue(map['expireTime'] as String),
     );
   }
 }
+

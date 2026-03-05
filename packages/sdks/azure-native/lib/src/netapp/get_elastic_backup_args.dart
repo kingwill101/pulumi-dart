@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetElasticBackupArgs {
   /// The name of the ElasticAccount
   final pulumi.Input<String> accountName;
-
   /// The name of the ElasticBackup
   final pulumi.Input<String> backupName;
-
   /// The name of the ElasticBackupVault
   final pulumi.Input<String> backupVaultName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -45,9 +42,8 @@ class GetElasticBackupArgs {
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
       backupName: pulumi.Input.fromValue(map['backupName'] as String),
       backupVaultName: pulumi.Input.fromValue(map['backupVaultName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

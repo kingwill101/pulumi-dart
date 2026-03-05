@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedInstanceOperationStatusResponse {
   /// Operation id
   final pulumi.Input<String> id;
-
   /// Operation Name
   final pulumi.Input<String> operationName;
-
   /// Operation status
   final pulumi.Input<String> operationState;
 
@@ -31,9 +29,7 @@ class ManagedInstanceOperationStatusResponse {
     };
   }
 
-  factory ManagedInstanceOperationStatusResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ManagedInstanceOperationStatusResponse.fromMap(Map<String, dynamic> map) {
     return ManagedInstanceOperationStatusResponse(
       id: pulumi.Input.fromValue(map['id'] as String),
       operationName: pulumi.Input.fromValue(map['operationName'] as String),
@@ -41,3 +37,4 @@ class ManagedInstanceOperationStatusResponse {
     );
   }
 }
+

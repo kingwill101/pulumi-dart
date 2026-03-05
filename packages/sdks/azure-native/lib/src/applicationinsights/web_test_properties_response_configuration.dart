@@ -9,21 +9,20 @@ class WebTestPropertiesResponseConfiguration {
 
   /// Creates a new [WebTestPropertiesResponseConfiguration].
   /// [webTest] The XML specification of a WebTest to run against an application.
-  WebTestPropertiesResponseConfiguration({this.webTest});
+  WebTestPropertiesResponseConfiguration({
+    this.webTest,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'webTest': ?webTest};
+    return <String, dynamic>{
+      'webTest': ?webTest,
+    };
   }
 
-  factory WebTestPropertiesResponseConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WebTestPropertiesResponseConfiguration.fromMap(Map<String, dynamic> map) {
     return WebTestPropertiesResponseConfiguration(
-      webTest: (() {
-        final guardedValue = map['webTest'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      webTest: (() { final guardedValue = map['webTest']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

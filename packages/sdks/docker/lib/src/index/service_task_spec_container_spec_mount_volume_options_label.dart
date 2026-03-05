@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceTaskSpecContainerSpecMountVolumeOptionsLabel {
   /// Name of the label
   final pulumi.Input<String> label;
-
   /// Value of the label
   final pulumi.Input<String> value;
 
@@ -18,15 +17,17 @@ class ServiceTaskSpecContainerSpecMountVolumeOptionsLabel {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'label': label, 'value': value};
+    return <String, dynamic>{
+      'label': label,
+      'value': value,
+    };
   }
 
-  factory ServiceTaskSpecContainerSpecMountVolumeOptionsLabel.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ServiceTaskSpecContainerSpecMountVolumeOptionsLabel.fromMap(Map<String, dynamic> map) {
     return ServiceTaskSpecContainerSpecMountVolumeOptionsLabel(
       label: pulumi.Input.fromValue(map['label'] as String),
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
+

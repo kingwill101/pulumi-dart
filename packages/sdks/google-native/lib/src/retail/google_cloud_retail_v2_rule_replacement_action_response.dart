@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudRetailV2RuleReplacementActionResponse {
   /// Terms from the search query. Will be replaced by replacement term. Can specify up to 100 terms.
   final pulumi.Input<List<String>> queryTerms;
-
   /// Term that will be used for replacement.
   final pulumi.Input<String> replacementTerm;
-
   /// Will be [deprecated = true] post migration;
   final pulumi.Input<String> term;
 
@@ -31,15 +29,12 @@ class GoogleCloudRetailV2RuleReplacementActionResponse {
     };
   }
 
-  factory GoogleCloudRetailV2RuleReplacementActionResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudRetailV2RuleReplacementActionResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2RuleReplacementActionResponse(
-      queryTerms: pulumi.Input.fromValue(
-        (map['queryTerms'] as List).cast<String>(),
-      ),
+      queryTerms: pulumi.Input.fromValue((map['queryTerms'] as List).cast<String>()),
       replacementTerm: pulumi.Input.fromValue(map['replacementTerm'] as String),
       term: pulumi.Input.fromValue(map['term'] as String),
     );
   }
 }
+

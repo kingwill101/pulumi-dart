@@ -33,24 +33,13 @@ class GetGameServerDeploymentIamPolicyGameservicesV1betaArgs {
     };
   }
 
-  factory GetGameServerDeploymentIamPolicyGameservicesV1betaArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetGameServerDeploymentIamPolicyGameservicesV1betaArgs.fromMap(Map<String, dynamic> map) {
     return GetGameServerDeploymentIamPolicyGameservicesV1betaArgs(
-      gameServerDeploymentId: pulumi.Input.fromValue(
-        map['gameServerDeploymentId'] as String,
-      ),
+      gameServerDeploymentId: pulumi.Input.fromValue(map['gameServerDeploymentId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      optionsRequestedPolicyVersion: (() {
-        final guardedValue = map['optionsRequestedPolicyVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -190,17 +190,12 @@ import 'replication_protected_item_properties_response.dart';
 class ReplicationProtectedItem extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Resource Location
   late final pulumi.Output<String?> location;
-
   /// Resource Name
   late final pulumi.Output<String> name;
-
   /// The custom data.
-  late final pulumi.Output<ReplicationProtectedItemPropertiesResponse>
-  properties;
-
+  late final pulumi.Output<ReplicationProtectedItemPropertiesResponse> properties;
   /// Resource Type
   late final pulumi.Output<String> type;
 
@@ -213,24 +208,15 @@ class ReplicationProtectedItem extends pulumi.CustomResource {
     ReplicationProtectedItemArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:recoveryservices:ReplicationProtectedItem',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:recoveryservices:ReplicationProtectedItem',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<ReplicationProtectedItemPropertiesResponse>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ReplicationProtectedItemPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<ReplicationProtectedItemPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicationProtectedItemPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

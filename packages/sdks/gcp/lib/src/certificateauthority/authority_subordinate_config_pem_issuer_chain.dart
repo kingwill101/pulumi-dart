@@ -8,21 +8,20 @@ class AuthoritySubordinateConfigPemIssuerChain {
 
   /// Creates a new [AuthoritySubordinateConfigPemIssuerChain].
   /// [pemCertificates] Expected to be in leaf-to-root order according to RFC 5246.
-  AuthoritySubordinateConfigPemIssuerChain({this.pemCertificates});
+  AuthoritySubordinateConfigPemIssuerChain({
+    this.pemCertificates,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'pemCertificates': ?pemCertificates};
+    return <String, dynamic>{
+      'pemCertificates': ?pemCertificates,
+    };
   }
 
-  factory AuthoritySubordinateConfigPemIssuerChain.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AuthoritySubordinateConfigPemIssuerChain.fromMap(Map<String, dynamic> map) {
     return AuthoritySubordinateConfigPemIssuerChain(
-      pemCertificates: (() {
-        final guardedValue = map['pemCertificates'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      pemCertificates: (() { final guardedValue = map['pemCertificates']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

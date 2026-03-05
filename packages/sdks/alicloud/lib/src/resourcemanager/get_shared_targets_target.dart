@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSharedTargetsTarget {
   /// The ID of the Shared Target.
   final pulumi.Input<String> id;
-
   /// The resource share ID of resource manager.
   final pulumi.Input<String> resourceShareId;
-
   /// The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
   final pulumi.Input<String> status;
-
   /// The ID of the Shared Target.
   final pulumi.Input<String> targetId;
 
@@ -45,3 +42,4 @@ class GetSharedTargetsTarget {
     );
   }
 }
+

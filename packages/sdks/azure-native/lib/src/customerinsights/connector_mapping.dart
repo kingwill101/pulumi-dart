@@ -363,56 +363,38 @@ import 'connector_mapping_properties_response.dart';
 class ConnectorMapping extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The connector mapping name
   late final pulumi.Output<String> connectorMappingName;
-
   /// The connector name.
   late final pulumi.Output<String> connectorName;
-
   /// Type of connector.
   late final pulumi.Output<String?> connectorType;
-
   /// The created time.
   late final pulumi.Output<String> created;
-
   /// The DataFormat ID.
   late final pulumi.Output<String> dataFormatId;
-
   /// The description of the connector mapping.
   late final pulumi.Output<String?> description;
-
   /// Display name for the connector mapping.
   late final pulumi.Output<String?> displayName;
-
   /// Defines which entity type the file should map to.
   late final pulumi.Output<String> entityType;
-
   /// The mapping entity name.
   late final pulumi.Output<String> entityTypeName;
-
   /// The last modified time.
   late final pulumi.Output<String> lastModified;
-
   /// The properties of the mapping.
-  late final pulumi.Output<ConnectorMappingPropertiesResponse>
-  mappingProperties;
-
+  late final pulumi.Output<ConnectorMappingPropertiesResponse> mappingProperties;
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// The next run time based on customer's settings.
   late final pulumi.Output<String> nextRunTime;
-
   /// The RunId.
   late final pulumi.Output<String> runId;
-
   /// State of connector mapping.
   late final pulumi.Output<String> state;
-
   /// The hub name.
   late final pulumi.Output<String> tenantId;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -425,11 +407,11 @@ class ConnectorMapping extends pulumi.CustomResource {
     ConnectorMappingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:customerinsights:ConnectorMapping',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:customerinsights:ConnectorMapping',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     connectorMappingName = registerOutput<String>('connectorMappingName');
     connectorName = registerOutput<String>('connectorName');
@@ -441,16 +423,7 @@ class ConnectorMapping extends pulumi.CustomResource {
     entityType = registerOutput<String>('entityType');
     entityTypeName = registerOutput<String>('entityTypeName');
     lastModified = registerOutput<String>('lastModified');
-    mappingProperties = registerOutput<ConnectorMappingPropertiesResponse>(
-      'mappingProperties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectorMappingPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    mappingProperties = registerOutput<ConnectorMappingPropertiesResponse>('mappingProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectorMappingPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     nextRunTime = registerOutput<String>('nextRunTime');
     runId = registerOutput<String>('runId');

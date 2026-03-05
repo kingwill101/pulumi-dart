@@ -160,37 +160,26 @@ import 'system_data_response.dart';
 class IncidentTask extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Information on the client (user or application) that made some action
   late final pulumi.Output<ClientInfoResponse?> createdBy;
-
   /// The time the task was created
   late final pulumi.Output<String> createdTimeUtc;
-
   /// The description of the task
   late final pulumi.Output<String?> description;
-
   /// Etag of the azure resource
   late final pulumi.Output<String?> etag;
-
   /// Information on the client (user or application) that made some action
   late final pulumi.Output<ClientInfoResponse?> lastModifiedBy;
-
   /// The last time the task was updated
   late final pulumi.Output<String> lastModifiedTimeUtc;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The status of the task
   late final pulumi.Output<String> status;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The title of the task
   late final pulumi.Output<String> title;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -203,48 +192,21 @@ class IncidentTask extends pulumi.CustomResource {
     IncidentTaskArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:securityinsights:IncidentTask',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:securityinsights:IncidentTask',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    createdBy = registerOutput<ClientInfoResponse?>(
-      'createdBy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClientInfoResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    createdBy = registerOutput<ClientInfoResponse?>('createdBy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClientInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdTimeUtc = registerOutput<String>('createdTimeUtc');
     description = registerOutput<String?>('description');
     etag = registerOutput<String?>('etag');
-    lastModifiedBy = registerOutput<ClientInfoResponse?>(
-      'lastModifiedBy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClientInfoResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    lastModifiedBy = registerOutput<ClientInfoResponse?>('lastModifiedBy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClientInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lastModifiedTimeUtc = registerOutput<String>('lastModifiedTimeUtc');
     this.name = registerOutput<String>('name');
     status = registerOutput<String>('status');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     title = registerOutput<String>('title');
     type = registerOutput<String>('type');
   }

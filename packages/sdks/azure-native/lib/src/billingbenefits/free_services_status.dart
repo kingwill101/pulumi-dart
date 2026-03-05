@@ -18,3 +18,4 @@ enum FreeServicesStatus {
     throw ArgumentError('Unknown FreeServicesStatus value: $value');
   }
 }
+

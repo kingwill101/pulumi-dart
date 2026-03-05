@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AutomationRolloutMetadataResponse {
   /// The IDs of the AutomationRuns initiated by an advance rollout rule.
   final pulumi.Input<List<String>> advanceAutomationRuns;
-
   /// The ID of the AutomationRun initiated by a promote release rule.
   final pulumi.Input<String> promoteAutomationRun;
-
   /// The IDs of the AutomationRuns initiated by a repair rollout rule.
   final pulumi.Input<List<String>> repairAutomationRuns;
 
@@ -33,15 +31,10 @@ class AutomationRolloutMetadataResponse {
 
   factory AutomationRolloutMetadataResponse.fromMap(Map<String, dynamic> map) {
     return AutomationRolloutMetadataResponse(
-      advanceAutomationRuns: pulumi.Input.fromValue(
-        (map['advanceAutomationRuns'] as List).cast<String>(),
-      ),
-      promoteAutomationRun: pulumi.Input.fromValue(
-        map['promoteAutomationRun'] as String,
-      ),
-      repairAutomationRuns: pulumi.Input.fromValue(
-        (map['repairAutomationRuns'] as List).cast<String>(),
-      ),
+      advanceAutomationRuns: pulumi.Input.fromValue((map['advanceAutomationRuns'] as List).cast<String>()),
+      promoteAutomationRun: pulumi.Input.fromValue(map['promoteAutomationRun'] as String),
+      repairAutomationRuns: pulumi.Input.fromValue((map['repairAutomationRuns'] as List).cast<String>()),
     );
   }
 }
+

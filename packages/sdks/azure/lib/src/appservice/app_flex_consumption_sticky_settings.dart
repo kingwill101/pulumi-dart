@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppFlexConsumptionStickySettings {
   /// A list of `app_setting` names that the Linux Function App will not swap between Slots when a swap operation is triggered.
   final pulumi.Input<List<String>>? appSettingNames;
-
   /// A list of `connection_string` names that the Linux Function App will not swap between Slots when a swap operation is triggered.
   final pulumi.Input<List<String>>? connectionStringNames;
 
@@ -26,16 +25,9 @@ class AppFlexConsumptionStickySettings {
 
   factory AppFlexConsumptionStickySettings.fromMap(Map<String, dynamic> map) {
     return AppFlexConsumptionStickySettings(
-      appSettingNames: (() {
-        final guardedValue = map['appSettingNames'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      connectionStringNames: (() {
-        final guardedValue = map['connectionStringNames'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      appSettingNames: (() { final guardedValue = map['appSettingNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      connectionStringNames: (() { final guardedValue = map['connectionStringNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

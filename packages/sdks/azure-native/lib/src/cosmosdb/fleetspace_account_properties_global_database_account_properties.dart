@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FleetspaceAccountPropertiesGlobalDatabaseAccountProperties {
   /// The location of  global database account in the Fleetspace Account.
   final pulumi.Input<String>? armLocation;
-
   /// The resource identifier of global database account in the Fleetspace Account.
   final pulumi.Input<String>? resourceId;
 
@@ -25,20 +24,11 @@ class FleetspaceAccountPropertiesGlobalDatabaseAccountProperties {
     };
   }
 
-  factory FleetspaceAccountPropertiesGlobalDatabaseAccountProperties.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FleetspaceAccountPropertiesGlobalDatabaseAccountProperties.fromMap(Map<String, dynamic> map) {
     return FleetspaceAccountPropertiesGlobalDatabaseAccountProperties(
-      armLocation: (() {
-        final guardedValue = map['armLocation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceId: (() {
-        final guardedValue = map['resourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      armLocation: (() { final guardedValue = map['armLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

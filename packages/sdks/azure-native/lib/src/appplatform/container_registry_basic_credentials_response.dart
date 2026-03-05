@@ -6,11 +6,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContainerRegistryBasicCredentialsResponse {
   /// The login server of the Container Registry.
   final pulumi.Input<String> server;
-
   /// The credential type of the container registry credentials.
   /// Expected value is 'BasicAuth'.
   final pulumi.Input<String> type;
-
   /// The username of the Container Registry.
   final pulumi.Input<String> username;
 
@@ -32,9 +30,7 @@ class ContainerRegistryBasicCredentialsResponse {
     };
   }
 
-  factory ContainerRegistryBasicCredentialsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ContainerRegistryBasicCredentialsResponse.fromMap(Map<String, dynamic> map) {
     return ContainerRegistryBasicCredentialsResponse(
       server: pulumi.Input.fromValue(map['server'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
@@ -42,3 +38,4 @@ class ContainerRegistryBasicCredentialsResponse {
     );
   }
 }
+

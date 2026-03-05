@@ -10,11 +10,9 @@ class HostingSiteArgs {
   /// Optional. The [ID of a Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
   /// associated with the Hosting site.
   final pulumi.Input<String>? appId;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// Required. Immutable. A globally unique identifier for the Hosting site. This identifier is
   /// used to construct the Firebase-provisioned subdomains for the site, so it must also be a valid
   /// domain name label.
@@ -24,7 +22,11 @@ class HostingSiteArgs {
   /// [appId] Optional. The [ID of a Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
   /// [project] The ID of the project in which the resource belongs.
   /// [siteId] Required. Immutable. A globally unique identifier for the Hosting site. This identifier is
-  HostingSiteArgs({this.appId, this.project, this.siteId});
+  HostingSiteArgs({
+    this.appId,
+    this.project,
+    this.siteId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,21 +38,10 @@ class HostingSiteArgs {
 
   factory HostingSiteArgs.fromMap(Map<String, dynamic> map) {
     return HostingSiteArgs(
-      appId: (() {
-        final guardedValue = map['appId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      siteId: (() {
-        final guardedValue = map['siteId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      appId: (() { final guardedValue = map['appId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      siteId: (() { final guardedValue = map['siteId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

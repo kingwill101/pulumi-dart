@@ -523,25 +523,18 @@ import 'web_acl_state.dart';
 class WebAcl extends pulumi.CustomResource {
   /// The ARN of the WAF WebACL.
   late final pulumi.Output<String> arn;
-
   /// Configuration block with action that you want AWS WAF to take when a request doesn't match the criteria in any of the rules that are associated with the web ACL. Detailed below.
   late final pulumi.Output<WebAclDefaultAction> defaultAction;
-
   /// Configuration block to enable WAF logging. Detailed below.
   late final pulumi.Output<WebAclLoggingConfiguration?> loggingConfiguration;
-
   /// The name or description for the Amazon CloudWatch metric of this web ACL.
   late final pulumi.Output<String> metricName;
-
   /// The name or description of the web ACL.
   late final pulumi.Output<String> name;
-
   /// Configuration blocks containing rules to associate with the web ACL and the settings for each rule. Detailed below.
   late final pulumi.Output<List<Map<String, dynamic>>?> rules;
-
   /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -549,34 +542,19 @@ class WebAcl extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [WebAcl]. {@macro pulumi_waf_web_acl_web_acl_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  WebAcl(String name, {WebAclArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:waf/webAcl:WebAcl',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  WebAcl(
+    String name, {
+    WebAclArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:waf/webAcl:WebAcl',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    defaultAction = registerOutput<WebAclDefaultAction>(
-      'defaultAction',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WebAclDefaultAction.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    loggingConfiguration = registerOutput<WebAclLoggingConfiguration?>(
-      'loggingConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WebAclLoggingConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    defaultAction = registerOutput<WebAclDefaultAction>('defaultAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclDefaultAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    loggingConfiguration = registerOutput<WebAclLoggingConfiguration?>('loggingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclLoggingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     metricName = registerOutput<String>('metricName');
     this.name = registerOutput<String>('name');
     rules = registerOutput<List<Map<String, dynamic>>?>('rules');
@@ -602,32 +580,14 @@ class WebAcl extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:waf/webAcl:WebAcl',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:waf/webAcl:WebAcl',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    defaultAction = registerOutput<WebAclDefaultAction>(
-      'defaultAction',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WebAclDefaultAction.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    loggingConfiguration = registerOutput<WebAclLoggingConfiguration?>(
-      'loggingConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WebAclLoggingConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    defaultAction = registerOutput<WebAclDefaultAction>('defaultAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclDefaultAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    loggingConfiguration = registerOutput<WebAclLoggingConfiguration?>('loggingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclLoggingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     metricName = registerOutput<String>('metricName');
     this.name = registerOutput<String>('name');
     rules = registerOutput<List<Map<String, dynamic>>?>('rules');

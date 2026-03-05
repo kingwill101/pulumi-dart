@@ -7,7 +7,6 @@ import 'week_day_of_month_osconfig_v1beta.dart';
 class MonthlyScheduleOsconfigV1beta {
   /// One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
   final pulumi.Input<int> monthDay;
-
   /// Week day in a month.
   final pulumi.Input<WeekDayOfMonthOsconfigV1beta> weekDayOfMonth;
 
@@ -22,22 +21,15 @@ class MonthlyScheduleOsconfigV1beta {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'monthDay': monthDay,
-      'weekDayOfMonth':
-          pulumi.Input.mapInputValue<
-            WeekDayOfMonthOsconfigV1beta,
-            Map<String, dynamic>
-          >(weekDayOfMonth, (value) => value.toMap()),
+      'weekDayOfMonth': pulumi.Input.mapInputValue<WeekDayOfMonthOsconfigV1beta, Map<String, dynamic>>(weekDayOfMonth, (value) => value.toMap()),
     };
   }
 
   factory MonthlyScheduleOsconfigV1beta.fromMap(Map<String, dynamic> map) {
     return MonthlyScheduleOsconfigV1beta(
       monthDay: pulumi.Input.fromValue(map['monthDay'] as int),
-      weekDayOfMonth: pulumi.Input.fromValue(
-        WeekDayOfMonthOsconfigV1beta.fromMap(
-          (map['weekDayOfMonth']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      weekDayOfMonth: pulumi.Input.fromValue(WeekDayOfMonthOsconfigV1beta.fromMap((map['weekDayOfMonth']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

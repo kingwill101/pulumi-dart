@@ -432,21 +432,17 @@ import 'custom_key_store_xks_proxy_authentication_credential.dart';
 /// ```
 class CustomKeyStore extends pulumi.CustomResource {
   late final pulumi.Output<String?> cloudHsmClusterId;
-
   /// Unique name for Custom Key Store.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> customKeyStoreName;
-
   /// Specifies the type of key store to create. Valid values are `AWS_CLOUDHSM` and `EXTERNAL_KEY_STORE`. If omitted, AWS will default the value to `AWS_CLOUDHSM`.
   late final pulumi.Output<String> customKeyStoreType;
   late final pulumi.Output<String?> keyStorePassword;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   late final pulumi.Output<String?> trustAnchorCertificate;
-  late final pulumi.Output<CustomKeyStoreXksProxyAuthenticationCredential?>
-  xksProxyAuthenticationCredential;
+  late final pulumi.Output<CustomKeyStoreXksProxyAuthenticationCredential?> xksProxyAuthenticationCredential;
   late final pulumi.Output<String?> xksProxyConnectivity;
   late final pulumi.Output<String?> xksProxyUriEndpoint;
   late final pulumi.Output<String?> xksProxyUriPath;
@@ -461,34 +457,22 @@ class CustomKeyStore extends pulumi.CustomResource {
     CustomKeyStoreArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:kms/customKeyStore:CustomKeyStore',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:kms/customKeyStore:CustomKeyStore',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cloudHsmClusterId = registerOutput<String?>('cloudHsmClusterId');
     customKeyStoreName = registerOutput<String>('customKeyStoreName');
     customKeyStoreType = registerOutput<String>('customKeyStoreType');
     keyStorePassword = registerOutput<String?>('keyStorePassword');
     region = registerOutput<String>('region');
     trustAnchorCertificate = registerOutput<String?>('trustAnchorCertificate');
-    xksProxyAuthenticationCredential =
-        registerOutput<CustomKeyStoreXksProxyAuthenticationCredential?>(
-          'xksProxyAuthenticationCredential',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return CustomKeyStoreXksProxyAuthenticationCredential.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    xksProxyAuthenticationCredential = registerOutput<CustomKeyStoreXksProxyAuthenticationCredential?>('xksProxyAuthenticationCredential', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomKeyStoreXksProxyAuthenticationCredential.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     xksProxyConnectivity = registerOutput<String?>('xksProxyConnectivity');
     xksProxyUriEndpoint = registerOutput<String?>('xksProxyUriEndpoint');
     xksProxyUriPath = registerOutput<String?>('xksProxyUriPath');
-    xksProxyVpcEndpointServiceName = registerOutput<String?>(
-      'xksProxyVpcEndpointServiceName',
-    );
+    xksProxyVpcEndpointServiceName = registerOutput<String?>('xksProxyVpcEndpointServiceName');
   }
 
   /// Gets an existing [CustomKeyStore] resource's state with the given [name] and [id].
@@ -509,33 +493,21 @@ class CustomKeyStore extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:kms/customKeyStore:CustomKeyStore',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:kms/customKeyStore:CustomKeyStore',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cloudHsmClusterId = registerOutput<String?>('cloudHsmClusterId');
     customKeyStoreName = registerOutput<String>('customKeyStoreName');
     customKeyStoreType = registerOutput<String>('customKeyStoreType');
     keyStorePassword = registerOutput<String?>('keyStorePassword');
     region = registerOutput<String>('region');
     trustAnchorCertificate = registerOutput<String?>('trustAnchorCertificate');
-    xksProxyAuthenticationCredential =
-        registerOutput<CustomKeyStoreXksProxyAuthenticationCredential?>(
-          'xksProxyAuthenticationCredential',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return CustomKeyStoreXksProxyAuthenticationCredential.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    xksProxyAuthenticationCredential = registerOutput<CustomKeyStoreXksProxyAuthenticationCredential?>('xksProxyAuthenticationCredential', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomKeyStoreXksProxyAuthenticationCredential.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     xksProxyConnectivity = registerOutput<String?>('xksProxyConnectivity');
     xksProxyUriEndpoint = registerOutput<String?>('xksProxyUriEndpoint');
     xksProxyUriPath = registerOutput<String?>('xksProxyUriPath');
-    xksProxyVpcEndpointServiceName = registerOutput<String?>(
-      'xksProxyVpcEndpointServiceName',
-    );
+    xksProxyVpcEndpointServiceName = registerOutput<String?>('xksProxyVpcEndpointServiceName');
   }
 }

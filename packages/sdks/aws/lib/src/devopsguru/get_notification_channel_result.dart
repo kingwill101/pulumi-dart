@@ -10,7 +10,6 @@ class GetNotificationChannelResult {
   final List<GetNotificationChannelFilter>? filters;
   final String id;
   final String region;
-
   /// SNS noficiation channel configurations. See the `sns` attribute reference below.
   final List<GetNotificationChannelSn>? sns;
 
@@ -28,51 +27,20 @@ class GetNotificationChannelResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?(() {
-        final guardedValue = filters;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          GetNotificationChannelFilter,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'filters': ?(() { final guardedValue = filters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetNotificationChannelFilter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'id': id,
       'region': region,
-      'sns': ?(() {
-        final guardedValue = sns;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          GetNotificationChannelSn,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'sns': ?(() { final guardedValue = sns; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetNotificationChannelSn, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetNotificationChannelResult.fromMap(Map<String, dynamic> map) {
     return GetNotificationChannelResult(
-      filters: (() {
-        final guardedValue = map['filters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<GetNotificationChannelFilter>(
-          guardedValue,
-          (value) => GetNotificationChannelFilter.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetNotificationChannelFilter>(guardedValue, (value) => GetNotificationChannelFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
       id: map['id'] as String,
       region: map['region'] as String,
-      sns: (() {
-        final guardedValue = map['sns'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<GetNotificationChannelSn>(
-          guardedValue,
-          (value) => GetNotificationChannelSn.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      sns: (() { final guardedValue = map['sns']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetNotificationChannelSn>(guardedValue, (value) => GetNotificationChannelSn.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

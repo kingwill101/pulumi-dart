@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GCSPayloadInfoResponse {
   /// The import job format.
   final pulumi.Input<String> format;
-
   /// The payload path in Google Cloud Storage.
   final pulumi.Input<String> path;
 
   /// Creates a new [GCSPayloadInfoResponse].
   /// [format] The import job format.
   /// [path] The payload path in Google Cloud Storage.
-  GCSPayloadInfoResponse({required this.format, required this.path});
+  GCSPayloadInfoResponse({
+    required this.format,
+    required this.path,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'format': format, 'path': path};
+    return <String, dynamic>{
+      'format': format,
+      'path': path,
+    };
   }
 
   factory GCSPayloadInfoResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class GCSPayloadInfoResponse {
     );
   }
 }
+

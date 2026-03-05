@@ -16,3 +16,4 @@ enum PrivateCloudType {
     throw ArgumentError('Unknown PrivateCloudType value: $value');
   }
 }
+

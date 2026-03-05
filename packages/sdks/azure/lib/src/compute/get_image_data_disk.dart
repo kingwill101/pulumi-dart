@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetImageDataDisk {
   /// the URI in Azure storage of the blob used to create the image.
   final pulumi.Input<String> blobUri;
-
   /// the caching mode for the Data Disk, such as `ReadWrite`, `ReadOnly`, or `None`.
   final pulumi.Input<String> caching;
-
   /// the logical unit number of the data disk.
   final pulumi.Input<int> lun;
-
   /// the ID of the Managed Disk used as the Data Disk Image.
   final pulumi.Input<String> managedDiskId;
-
   /// the size of this Data Disk in GB.
   final pulumi.Input<int> sizeGb;
 
@@ -52,3 +48,4 @@ class GetImageDataDisk {
     );
   }
 }
+

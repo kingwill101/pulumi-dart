@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AssignmentDedicatedHostArgs {
   /// Specifies the Dedicated Host ID to which the Maintenance Configuration will be assigned. Changing this forces a new resource to be created.
   final pulumi.Input<String> dedicatedHostId;
-
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
-
   /// Specifies the ID of the Maintenance Configuration Resource. Changing this forces a new resource to be created.
   final pulumi.Input<String> maintenanceConfigurationId;
 
@@ -37,14 +35,9 @@ class AssignmentDedicatedHostArgs {
   factory AssignmentDedicatedHostArgs.fromMap(Map<String, dynamic> map) {
     return AssignmentDedicatedHostArgs(
       dedicatedHostId: pulumi.Input.fromValue(map['dedicatedHostId'] as String),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      maintenanceConfigurationId: pulumi.Input.fromValue(
-        map['maintenanceConfigurationId'] as String,
-      ),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      maintenanceConfigurationId: pulumi.Input.fromValue(map['maintenanceConfigurationId'] as String),
     );
   }
 }
+

@@ -12,8 +12,7 @@ enum ZonalPlatformFaultDomainAlignMode {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ZonalPlatformFaultDomainAlignMode value: $value',
-    );
+    throw ArgumentError('Unknown ZonalPlatformFaultDomainAlignMode value: $value');
   }
 }
+

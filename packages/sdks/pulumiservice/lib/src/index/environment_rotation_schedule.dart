@@ -5,19 +5,14 @@ import 'environment_rotation_schedule_args.dart';
 class EnvironmentRotationSchedule extends pulumi.CustomResource {
   /// Environment name.
   late final pulumi.Output<String> environment;
-
   /// Organization name.
   late final pulumi.Output<String> organization;
-
   /// Project name.
   late final pulumi.Output<String> project;
-
   /// Cron expression for recurring scheduled rotations. If you are supplying this, do not supply timestamp.
   late final pulumi.Output<String?> scheduleCron;
-
   /// Schedule ID of the created rotation schedule, assigned by Pulumi Cloud.
   late final pulumi.Output<String> scheduleId;
-
   /// The time at which the rotation should run, in ISO 8601 format. Eg: 2020-01-01T00:00:00Z. If you are supplying this, do not supply scheduleCron.
   late final pulumi.Output<String?> timestamp;
 
@@ -30,11 +25,11 @@ class EnvironmentRotationSchedule extends pulumi.CustomResource {
     EnvironmentRotationScheduleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'pulumiservice:index:EnvironmentRotationSchedule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'pulumiservice:index:EnvironmentRotationSchedule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     environment = registerOutput<String>('environment');
     organization = registerOutput<String>('organization');
     project = registerOutput<String>('project');

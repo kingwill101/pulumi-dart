@@ -13,23 +13,18 @@ class BackupPlanArgs {
   /// Defines the configuration of Backups created via this BackupPlan.
   /// Structure is documented below.
   final pulumi.Input<BackupPlanBackupConfig>? backupConfig;
-
   /// Defines a schedule for automatic Backup creation via this BackupPlan.
   /// Structure is documented below.
   final pulumi.Input<BackupPlanBackupSchedule>? backupSchedule;
-
   /// The source cluster from which Backups will be created via this BackupPlan.
   final pulumi.Input<String> cluster;
-
   /// This flag indicates whether this BackupPlan has been deactivated.
   /// Setting this field to True locks the BackupPlan such that no further updates will be allowed
   /// (except deletes), including the deactivated field itself. It also prevents any new Backups
   /// from being created via this BackupPlan (including scheduled Backups).
   final pulumi.Input<bool>? deactivated;
-
   /// User specified descriptive string for this BackupPlan.
   final pulumi.Input<String>? description;
-
   /// Description: A set of custom labels supplied by the user.
   /// A list of key-&gt;value pairs.
   /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -37,17 +32,13 @@ class BackupPlanArgs {
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// The region of the Backup Plan.
   final pulumi.Input<String> location;
-
   /// The full name of the BackupPlan Resource.
   final pulumi.Input<String>? name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// RetentionPolicy governs lifecycle of Backups created under this plan.
   /// Structure is documented below.
   final pulumi.Input<BackupPlanRetentionPolicy>? retentionPolicy;
@@ -78,16 +69,8 @@ class BackupPlanArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backupConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            BackupPlanBackupConfig,
-            Map<String, dynamic>
-          >(backupConfig, (value) => value.toMap()),
-      'backupSchedule':
-          ?pulumi.Input.mapOptionalInputValue<
-            BackupPlanBackupSchedule,
-            Map<String, dynamic>
-          >(backupSchedule, (value) => value.toMap()),
+      'backupConfig': ?pulumi.Input.mapOptionalInputValue<BackupPlanBackupConfig, Map<String, dynamic>>(backupConfig, (value) => value.toMap()),
+      'backupSchedule': ?pulumi.Input.mapOptionalInputValue<BackupPlanBackupSchedule, Map<String, dynamic>>(backupSchedule, (value) => value.toMap()),
       'cluster': cluster,
       'deactivated': ?deactivated,
       'description': ?description,
@@ -95,72 +78,23 @@ class BackupPlanArgs {
       'location': location,
       'name': ?name,
       'project': ?project,
-      'retentionPolicy':
-          ?pulumi.Input.mapOptionalInputValue<
-            BackupPlanRetentionPolicy,
-            Map<String, dynamic>
-          >(retentionPolicy, (value) => value.toMap()),
+      'retentionPolicy': ?pulumi.Input.mapOptionalInputValue<BackupPlanRetentionPolicy, Map<String, dynamic>>(retentionPolicy, (value) => value.toMap()),
     };
   }
 
   factory BackupPlanArgs.fromMap(Map<String, dynamic> map) {
     return BackupPlanArgs(
-      backupConfig: (() {
-        final guardedValue = map['backupConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BackupPlanBackupConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      backupSchedule: (() {
-        final guardedValue = map['backupSchedule'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BackupPlanBackupSchedule.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      backupConfig: (() { final guardedValue = map['backupConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BackupPlanBackupConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      backupSchedule: (() { final guardedValue = map['backupSchedule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BackupPlanBackupSchedule.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       cluster: pulumi.Input.fromValue(map['cluster'] as String),
-      deactivated: (() {
-        final guardedValue = map['deactivated'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      deactivated: (() { final guardedValue = map['deactivated']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      retentionPolicy: (() {
-        final guardedValue = map['retentionPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BackupPlanRetentionPolicy.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      retentionPolicy: (() { final guardedValue = map['retentionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BackupPlanRetentionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

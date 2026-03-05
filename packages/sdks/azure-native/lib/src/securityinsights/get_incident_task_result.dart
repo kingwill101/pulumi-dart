@@ -7,40 +7,28 @@ import 'system_data_response.dart';
 class GetIncidentTaskResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Information on the client (user or application) that made some action
   final ClientInfoResponse? createdBy;
-
   /// The time the task was created
   final String createdTimeUtc;
-
   /// The description of the task
   final String? description;
-
   /// Etag of the azure resource
   final String? etag;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// Information on the client (user or application) that made some action
   final ClientInfoResponse? lastModifiedBy;
-
   /// The last time the task was updated
   final String lastModifiedTimeUtc;
-
   /// The name of the resource
   final String name;
-
   /// The status of the task
   final String status;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The title of the task
   final String title;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -95,40 +83,19 @@ class GetIncidentTaskResult {
   factory GetIncidentTaskResult.fromMap(Map<String, dynamic> map) {
     return GetIncidentTaskResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      createdBy: (() {
-        final guardedValue = map['createdBy'];
-        if (guardedValue == null) return null;
-        return ClientInfoResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      createdBy: (() { final guardedValue = map['createdBy']; if (guardedValue == null) return null; return ClientInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       createdTimeUtc: map['createdTimeUtc'] as String,
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      etag: (() {
-        final guardedValue = map['etag'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
-      lastModifiedBy: (() {
-        final guardedValue = map['lastModifiedBy'];
-        if (guardedValue == null) return null;
-        return ClientInfoResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      lastModifiedBy: (() { final guardedValue = map['lastModifiedBy']; if (guardedValue == null) return null; return ClientInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       lastModifiedTimeUtc: map['lastModifiedTimeUtc'] as String,
       name: map['name'] as String,
       status: map['status'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       title: map['title'] as String,
       type: map['type'] as String,
     );
   }
 }
+

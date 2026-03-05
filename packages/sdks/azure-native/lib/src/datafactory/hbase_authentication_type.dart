@@ -15,3 +15,4 @@ enum HBaseAuthenticationType {
     throw ArgumentError('Unknown HBaseAuthenticationType value: $value');
   }
 }
+

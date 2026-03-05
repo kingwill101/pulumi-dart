@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIdentity {
   /// The principal ID of resource identity.
   final pulumi.Input<String> principalId;
-
   /// The tenant ID of resource.
   final pulumi.Input<String> tenantId;
-
   /// The identity type.
   final pulumi.Input<String> type;
 
@@ -38,3 +36,4 @@ class GetIdentity {
     );
   }
 }
+

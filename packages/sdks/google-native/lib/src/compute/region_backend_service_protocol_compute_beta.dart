@@ -18,8 +18,7 @@ enum RegionBackendServiceProtocolComputeBeta {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown RegionBackendServiceProtocolComputeBeta value: $value',
-    );
+    throw ArgumentError('Unknown RegionBackendServiceProtocolComputeBeta value: $value');
   }
 }
+

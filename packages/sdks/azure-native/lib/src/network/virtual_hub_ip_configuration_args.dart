@@ -11,28 +11,20 @@ import 'subnet_network.dart';
 class VirtualHubIpConfigurationArgs {
   /// Resource ID.
   final pulumi.Input<String>? id;
-
   /// The name of the ipconfig.
   final pulumi.Input<String>? ipConfigName;
-
   /// Name of the Ip Configuration.
   final pulumi.Input<String>? name;
-
   /// The private IP address of the IP configuration.
   final pulumi.Input<String>? privateIPAddress;
-
   /// The private IP address allocation method.
   final pulumi.Input<String>? privateIPAllocationMethod;
-
   /// The reference to the public IP resource.
   final pulumi.Input<PublicIPAddressNetwork>? publicIPAddress;
-
   /// The resource group name of the VirtualHub.
   final pulumi.Input<String> resourceGroupName;
-
   /// The reference to the subnet resource.
   final pulumi.Input<SubnetNetwork>? subnet;
-
   /// The name of the VirtualHub.
   final pulumi.Input<String> virtualHubName;
 
@@ -74,45 +66,16 @@ class VirtualHubIpConfigurationArgs {
 
   factory VirtualHubIpConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return VirtualHubIpConfigurationArgs(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ipConfigName: (() {
-        final guardedValue = map['ipConfigName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      privateIPAddress: (() {
-        final guardedValue = map['privateIPAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      privateIPAllocationMethod: (() {
-        final guardedValue = map['privateIPAllocationMethod'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      publicIPAddress: (() {
-        final guardedValue = map['publicIPAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as PublicIPAddressNetwork);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      subnet: (() {
-        final guardedValue = map['subnet'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as SubnetNetwork);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ipConfigName: (() { final guardedValue = map['ipConfigName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateIPAddress: (() { final guardedValue = map['privateIPAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateIPAllocationMethod: (() { final guardedValue = map['privateIPAllocationMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicIPAddress: (() { final guardedValue = map['publicIPAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as PublicIPAddressNetwork); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      subnet: (() { final guardedValue = map['subnet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as SubnetNetwork); })(),
       virtualHubName: pulumi.Input.fromValue(map['virtualHubName'] as String),
     );
   }
 }
+

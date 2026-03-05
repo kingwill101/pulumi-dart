@@ -174,19 +174,14 @@ import 'deployment_properties_extended_response.dart';
 class DeploymentAtSubscriptionScope extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// the location of the deployment.
   late final pulumi.Output<String?> location;
-
   /// The name of the deployment.
   late final pulumi.Output<String> name;
-
   /// Deployment properties.
   late final pulumi.Output<DeploymentPropertiesExtendedResponse> properties;
-
   /// Deployment tags
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the deployment.
   late final pulumi.Output<String> type;
 
@@ -199,24 +194,15 @@ class DeploymentAtSubscriptionScope extends pulumi.CustomResource {
     DeploymentAtSubscriptionScopeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:resources:DeploymentAtSubscriptionScope',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:resources:DeploymentAtSubscriptionScope',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<DeploymentPropertiesExtendedResponse>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DeploymentPropertiesExtendedResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<DeploymentPropertiesExtendedResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentPropertiesExtendedResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

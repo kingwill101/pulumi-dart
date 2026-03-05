@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetStorageBoxAccessSettings {
   /// Whether access from outside the Hetzner network is allowed.
   final pulumi.Input<bool> reachableExternally;
-
   /// Whether the Samba subsystem is enabled.
   final pulumi.Input<bool> sambaEnabled;
-
   /// Whether the SSH subsystem is enabled.
   final pulumi.Input<bool> sshEnabled;
-
   /// Whether the WebDAV subsystem is enabled.
   final pulumi.Input<bool> webdavEnabled;
-
   /// Whether the ZFS snapshot folder is visible.
   final pulumi.Input<bool> zfsEnabled;
 
@@ -44,9 +40,7 @@ class GetStorageBoxAccessSettings {
 
   factory GetStorageBoxAccessSettings.fromMap(Map<String, dynamic> map) {
     return GetStorageBoxAccessSettings(
-      reachableExternally: pulumi.Input.fromValue(
-        map['reachableExternally'] as bool,
-      ),
+      reachableExternally: pulumi.Input.fromValue(map['reachableExternally'] as bool),
       sambaEnabled: pulumi.Input.fromValue(map['sambaEnabled'] as bool),
       sshEnabled: pulumi.Input.fromValue(map['sshEnabled'] as bool),
       webdavEnabled: pulumi.Input.fromValue(map['webdavEnabled'] as bool),
@@ -54,3 +48,4 @@ class GetStorageBoxAccessSettings {
     );
   }
 }
+

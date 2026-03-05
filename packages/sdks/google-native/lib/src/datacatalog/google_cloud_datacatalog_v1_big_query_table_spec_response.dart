@@ -8,10 +8,8 @@ import 'google_cloud_datacatalog_v1_view_spec_response.dart';
 class GoogleCloudDatacatalogV1BigQueryTableSpecResponse {
   /// The table source type.
   final pulumi.Input<String> tableSourceType;
-
   /// Specification of a BigQuery table. Populated only if the `table_source_type` is `BIGQUERY_TABLE`.
   final pulumi.Input<GoogleCloudDatacatalogV1TableSpecResponse> tableSpec;
-
   /// Table view specification. Populated only if the `table_source_type` is `BIGQUERY_VIEW`.
   final pulumi.Input<GoogleCloudDatacatalogV1ViewSpecResponse> viewSpec;
 
@@ -28,34 +26,17 @@ class GoogleCloudDatacatalogV1BigQueryTableSpecResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'tableSourceType': tableSourceType,
-      'tableSpec':
-          pulumi.Input.mapInputValue<
-            GoogleCloudDatacatalogV1TableSpecResponse,
-            Map<String, dynamic>
-          >(tableSpec, (value) => value.toMap()),
-      'viewSpec':
-          pulumi.Input.mapInputValue<
-            GoogleCloudDatacatalogV1ViewSpecResponse,
-            Map<String, dynamic>
-          >(viewSpec, (value) => value.toMap()),
+      'tableSpec': pulumi.Input.mapInputValue<GoogleCloudDatacatalogV1TableSpecResponse, Map<String, dynamic>>(tableSpec, (value) => value.toMap()),
+      'viewSpec': pulumi.Input.mapInputValue<GoogleCloudDatacatalogV1ViewSpecResponse, Map<String, dynamic>>(viewSpec, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudDatacatalogV1BigQueryTableSpecResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDatacatalogV1BigQueryTableSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1BigQueryTableSpecResponse(
       tableSourceType: pulumi.Input.fromValue(map['tableSourceType'] as String),
-      tableSpec: pulumi.Input.fromValue(
-        GoogleCloudDatacatalogV1TableSpecResponse.fromMap(
-          (map['tableSpec']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      viewSpec: pulumi.Input.fromValue(
-        GoogleCloudDatacatalogV1ViewSpecResponse.fromMap(
-          (map['viewSpec']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      tableSpec: pulumi.Input.fromValue(GoogleCloudDatacatalogV1TableSpecResponse.fromMap((map['tableSpec']! as Map).cast<String, dynamic>())),
+      viewSpec: pulumi.Input.fromValue(GoogleCloudDatacatalogV1ViewSpecResponse.fromMap((map['viewSpec']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGroupQuotaSubscriptionArgs {
   /// The GroupQuota name. The name should be unique for the provided context tenantId/MgId.
   final pulumi.Input<String> groupQuotaName;
-
   /// Management Group Id.
   final pulumi.Input<String> managementGroupId;
 
@@ -31,9 +30,8 @@ class GetGroupQuotaSubscriptionArgs {
   factory GetGroupQuotaSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return GetGroupQuotaSubscriptionArgs(
       groupQuotaName: pulumi.Input.fromValue(map['groupQuotaName'] as String),
-      managementGroupId: pulumi.Input.fromValue(
-        map['managementGroupId'] as String,
-      ),
+      managementGroupId: pulumi.Input.fromValue(map['managementGroupId'] as String),
     );
   }
 }
+

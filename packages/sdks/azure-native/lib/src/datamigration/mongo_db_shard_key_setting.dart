@@ -7,48 +7,29 @@ import 'mongo_db_shard_key_field.dart';
 class MongoDbShardKeySetting {
   /// The fields within the shard key
   final pulumi.Input<List<MongoDbShardKeyField>> fields;
-
   /// Whether the shard key is unique
   final pulumi.Input<bool>? isUnique;
 
   /// Creates a new [MongoDbShardKeySetting].
   /// [fields] The fields within the shard key
   /// [isUnique] Whether the shard key is unique
-  MongoDbShardKeySetting({required this.fields, this.isUnique});
+  MongoDbShardKeySetting({
+    required this.fields,
+    this.isUnique,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fields':
-          pulumi.Input.mapInputValue<
-            List<MongoDbShardKeyField>,
-            List<Map<String, dynamic>>
-          >(
-            fields,
-            (value) =>
-                pulumi.Input.encodeList<
-                  MongoDbShardKeyField,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'fields': pulumi.Input.mapInputValue<List<MongoDbShardKeyField>, List<Map<String, dynamic>>>(fields, (value) => pulumi.Input.encodeList<MongoDbShardKeyField, Map<String, dynamic>>(value, (value) => value.toMap())),
       'isUnique': ?isUnique,
     };
   }
 
   factory MongoDbShardKeySetting.fromMap(Map<String, dynamic> map) {
     return MongoDbShardKeySetting(
-      fields: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<MongoDbShardKeyField>(
-          map['fields']!,
-          (value) => MongoDbShardKeyField.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      isUnique: (() {
-        final guardedValue = map['isUnique'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      fields: pulumi.Input.fromValue(pulumi.Input.decodeList<MongoDbShardKeyField>(map['fields']!, (value) => MongoDbShardKeyField.fromMap((value as Map).cast<String, dynamic>()))),
+      isUnique: (() { final guardedValue = map['isUnique']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

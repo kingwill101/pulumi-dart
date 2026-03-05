@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IncidentInfo {
   /// Incident Id
   final pulumi.Input<String>? incidentId;
-
   /// Relation Name
   final pulumi.Input<String>? relationName;
-
   /// The severity of the incident
   final pulumi.Input<String>? severity;
-
   /// The title of the incident
   final pulumi.Input<String>? title;
 
@@ -21,7 +18,12 @@ class IncidentInfo {
   /// [relationName] Relation Name
   /// [severity] The severity of the incident
   /// [title] The title of the incident
-  IncidentInfo({this.incidentId, this.relationName, this.severity, this.title});
+  IncidentInfo({
+    this.incidentId,
+    this.relationName,
+    this.severity,
+    this.title,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,26 +36,11 @@ class IncidentInfo {
 
   factory IncidentInfo.fromMap(Map<String, dynamic> map) {
     return IncidentInfo(
-      incidentId: (() {
-        final guardedValue = map['incidentId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      relationName: (() {
-        final guardedValue = map['relationName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      severity: (() {
-        final guardedValue = map['severity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      title: (() {
-        final guardedValue = map['title'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      incidentId: (() { final guardedValue = map['incidentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      relationName: (() { final guardedValue = map['relationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      severity: (() { final guardedValue = map['severity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      title: (() { final guardedValue = map['title']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

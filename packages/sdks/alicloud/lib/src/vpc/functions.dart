@@ -8154,8 +8154,7 @@ Future<GetSwitchesResult> getSwitches(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_vpc_get_traffic_mirror_filter_egress_rules_get_traffic_mirror_filter_egress_rules_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetTrafficMirrorFilterEgressRulesResult>
-getTrafficMirrorFilterEgressRules(
+Future<GetTrafficMirrorFilterEgressRulesResult> getTrafficMirrorFilterEgressRules(
   GetTrafficMirrorFilterEgressRulesArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -8334,8 +8333,7 @@ getTrafficMirrorFilterEgressRules(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_vpc_get_traffic_mirror_filter_ingress_rules_get_traffic_mirror_filter_ingress_rules_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetTrafficMirrorFilterIngressRulesResult>
-getTrafficMirrorFilterIngressRules(
+Future<GetTrafficMirrorFilterIngressRulesResult> getTrafficMirrorFilterIngressRules(
   GetTrafficMirrorFilterIngressRulesArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

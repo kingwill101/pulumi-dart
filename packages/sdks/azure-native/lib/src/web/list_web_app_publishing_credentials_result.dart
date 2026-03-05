@@ -1,31 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by listWebAppPublishingCredentials.
 class ListWebAppPublishingCredentialsResult {
   /// Resource Id.
   final String id;
-
   /// Kind of resource.
   final String? kind;
-
   /// Resource Name.
   final String name;
-
   /// Password used for publishing.
   final String? publishingPassword;
-
   /// Password hash used for publishing.
   final String? publishingPasswordHash;
-
   /// Password hash salt used for publishing.
   final String? publishingPasswordHashSalt;
-
   /// Username used for publishing.
   final String publishingUserName;
-
   /// Url of SCM site.
   final String? scmUri;
-
   /// Resource type.
   final String type;
 
@@ -65,39 +58,18 @@ class ListWebAppPublishingCredentialsResult {
     };
   }
 
-  factory ListWebAppPublishingCredentialsResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListWebAppPublishingCredentialsResult.fromMap(Map<String, dynamic> map) {
     return ListWebAppPublishingCredentialsResult(
       id: map['id'] as String,
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
-      publishingPassword: (() {
-        final guardedValue = map['publishingPassword'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      publishingPasswordHash: (() {
-        final guardedValue = map['publishingPasswordHash'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      publishingPasswordHashSalt: (() {
-        final guardedValue = map['publishingPasswordHashSalt'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      publishingPassword: (() { final guardedValue = map['publishingPassword']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      publishingPasswordHash: (() { final guardedValue = map['publishingPasswordHash']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      publishingPasswordHashSalt: (() { final guardedValue = map['publishingPasswordHashSalt']; if (guardedValue == null) return null; return guardedValue as String; })(),
       publishingUserName: map['publishingUserName'] as String,
-      scmUri: (() {
-        final guardedValue = map['scmUri'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      scmUri: (() { final guardedValue = map['scmUri']; if (guardedValue == null) return null; return guardedValue as String; })(),
       type: map['type'] as String,
     );
   }
 }
+

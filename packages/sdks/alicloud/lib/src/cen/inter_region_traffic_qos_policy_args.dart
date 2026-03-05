@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InterRegionTrafficQosPolicyArgs {
   /// Bandwidth guarantee mode. You can select by bandwidth or by bandwidth percentage. The default is by percentage.
   final pulumi.Input<String>? bandwidthGuaranteeMode;
-
   /// The description information of the traffic scheduling policy.
   final pulumi.Input<String>? interRegionTrafficQosPolicyDescription;
-
   /// The name of the traffic scheduling policy.
   final pulumi.Input<String>? interRegionTrafficQosPolicyName;
-
   /// Peer Attachment ID.
   final pulumi.Input<String> transitRouterAttachmentId;
-
   /// The ID of the forwarding router instance.
   final pulumi.Input<String> transitRouterId;
 
@@ -39,8 +35,7 @@ class InterRegionTrafficQosPolicyArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bandwidthGuaranteeMode': ?bandwidthGuaranteeMode,
-      'interRegionTrafficQosPolicyDescription':
-          ?interRegionTrafficQosPolicyDescription,
+      'interRegionTrafficQosPolicyDescription': ?interRegionTrafficQosPolicyDescription,
       'interRegionTrafficQosPolicyName': ?interRegionTrafficQosPolicyName,
       'transitRouterAttachmentId': transitRouterAttachmentId,
       'transitRouterId': transitRouterId,
@@ -49,25 +44,12 @@ class InterRegionTrafficQosPolicyArgs {
 
   factory InterRegionTrafficQosPolicyArgs.fromMap(Map<String, dynamic> map) {
     return InterRegionTrafficQosPolicyArgs(
-      bandwidthGuaranteeMode: (() {
-        final guardedValue = map['bandwidthGuaranteeMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      interRegionTrafficQosPolicyDescription: (() {
-        final guardedValue = map['interRegionTrafficQosPolicyDescription'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      interRegionTrafficQosPolicyName: (() {
-        final guardedValue = map['interRegionTrafficQosPolicyName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      transitRouterAttachmentId: pulumi.Input.fromValue(
-        map['transitRouterAttachmentId'] as String,
-      ),
+      bandwidthGuaranteeMode: (() { final guardedValue = map['bandwidthGuaranteeMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      interRegionTrafficQosPolicyDescription: (() { final guardedValue = map['interRegionTrafficQosPolicyDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      interRegionTrafficQosPolicyName: (() { final guardedValue = map['interRegionTrafficQosPolicyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      transitRouterAttachmentId: pulumi.Input.fromValue(map['transitRouterAttachmentId'] as String),
       transitRouterId: pulumi.Input.fromValue(map['transitRouterId'] as String),
     );
   }
 }
+

@@ -9,25 +9,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecGroupRuleArgs {
   /// A description of the rule. Changing this creates a new security group rule.
   final pulumi.Input<String>? description;
-
   /// The direction of the rule, valid values are __ingress__
   /// or __egress__. Changing this creates a new security group rule.
   final pulumi.Input<String> direction;
-
   /// The layer 3 protocol type, valid values are __IPv4__
   /// or __IPv6__. Changing this creates a new security group rule.
   final pulumi.Input<String> ethertype;
-
   /// The higher part of the allowed port range, valid
   /// integer value needs to be between 1 and 65535. Changing this creates a new
   /// security group rule.
   final pulumi.Input<int>? portRangeMax;
-
   /// The lower part of the allowed port range, valid
   /// integer value needs to be between 1 and 65535. Changing this creates a new
   /// security group rule.
   final pulumi.Input<int>? portRangeMin;
-
   /// The layer 4 protocol type, valid values are
   /// following. Changing this creates a new security group rule. This is required
   /// if you want to specify a port range.
@@ -56,33 +51,27 @@ class SecGroupRuleArgs {
   /// * __vrrp__
   /// * __ipip__
   final pulumi.Input<String>? protocol;
-
   /// The region in which to obtain the V2 networking client.
   /// A networking client is needed to create a port. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
   /// security group rule.
   final pulumi.Input<String>? region;
-
   /// The remote address group id, the value
   /// needs to be an OpenStack ID of an address group in the same tenant. Changing
   /// this creates a new security group rule. This argument is mutually exclusive
   /// with `remote_ip_prefix` and `remote_group_id`.
   final pulumi.Input<String>? remoteAddressGroupId;
-
   /// The remote group id, the value needs to be an
   /// Openstack ID of a security group in the same tenant. Changing this creates
   /// a new security group rule.
   final pulumi.Input<String>? remoteGroupId;
-
   /// The remote CIDR, the value needs to be a valid
   /// CIDR (i.e. 192.168.0.0/16). Changing this creates a new security group rule.
   final pulumi.Input<String>? remoteIpPrefix;
-
   /// The security group id the rule should belong
   /// to, the value needs to be an Openstack ID of a security group in the same
   /// tenant. Changing this creates a new security group rule.
   final pulumi.Input<String> securityGroupId;
-
   /// The owner of the security group. Required if admin
   /// wants to create a port for another tenant. Changing this creates a new
   /// security group rule.
@@ -135,54 +124,19 @@ class SecGroupRuleArgs {
 
   factory SecGroupRuleArgs.fromMap(Map<String, dynamic> map) {
     return SecGroupRuleArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       direction: pulumi.Input.fromValue(map['direction'] as String),
       ethertype: pulumi.Input.fromValue(map['ethertype'] as String),
-      portRangeMax: (() {
-        final guardedValue = map['portRangeMax'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      portRangeMin: (() {
-        final guardedValue = map['portRangeMin'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      protocol: (() {
-        final guardedValue = map['protocol'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      remoteAddressGroupId: (() {
-        final guardedValue = map['remoteAddressGroupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      remoteGroupId: (() {
-        final guardedValue = map['remoteGroupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      remoteIpPrefix: (() {
-        final guardedValue = map['remoteIpPrefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      portRangeMax: (() { final guardedValue = map['portRangeMax']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      portRangeMin: (() { final guardedValue = map['portRangeMin']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      remoteAddressGroupId: (() { final guardedValue = map['remoteAddressGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      remoteGroupId: (() { final guardedValue = map['remoteGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      remoteIpPrefix: (() { final guardedValue = map['remoteIpPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       securityGroupId: pulumi.Input.fromValue(map['securityGroupId'] as String),
-      tenantId: (() {
-        final guardedValue = map['tenantId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

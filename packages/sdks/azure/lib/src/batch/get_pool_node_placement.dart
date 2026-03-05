@@ -8,10 +8,14 @@ class GetPoolNodePlacement {
 
   /// Creates a new [GetPoolNodePlacement].
   /// [policy] The placement policy for allocating nodes in the pool.
-  GetPoolNodePlacement({required this.policy});
+  GetPoolNodePlacement({
+    required this.policy,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'policy': policy};
+    return <String, dynamic>{
+      'policy': policy,
+    };
   }
 
   factory GetPoolNodePlacement.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class GetPoolNodePlacement {
     );
   }
 }
+

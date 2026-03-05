@@ -6,22 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TagOptionResourceAssociationState {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// ARN of the resource.
   final pulumi.Input<String>? resourceArn;
-
   /// Creation time of the resource.
   final pulumi.Input<String>? resourceCreatedTime;
-
   /// Description of the resource.
   final pulumi.Input<String>? resourceDescription;
-
   /// Resource identifier.
   final pulumi.Input<String>? resourceId;
-
   /// Description of the resource.
   final pulumi.Input<String>? resourceName;
-
   /// Tag Option identifier.
   final pulumi.Input<String>? tagOptionId;
 
@@ -57,41 +51,14 @@ class TagOptionResourceAssociationState {
 
   factory TagOptionResourceAssociationState.fromMap(Map<String, dynamic> map) {
     return TagOptionResourceAssociationState(
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceArn: (() {
-        final guardedValue = map['resourceArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceCreatedTime: (() {
-        final guardedValue = map['resourceCreatedTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceDescription: (() {
-        final guardedValue = map['resourceDescription'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceId: (() {
-        final guardedValue = map['resourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceName: (() {
-        final guardedValue = map['resourceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tagOptionId: (() {
-        final guardedValue = map['tagOptionId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceArn: (() { final guardedValue = map['resourceArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceCreatedTime: (() { final guardedValue = map['resourceCreatedTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceDescription: (() { final guardedValue = map['resourceDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceName: (() { final guardedValue = map['resourceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tagOptionId: (() { final guardedValue = map['tagOptionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

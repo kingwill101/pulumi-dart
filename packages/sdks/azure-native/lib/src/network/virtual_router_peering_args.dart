@@ -9,22 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualRouterPeeringArgs {
   /// Resource ID.
   final pulumi.Input<String>? id;
-
   /// Name of the virtual router peering that is unique within a virtual router.
   final pulumi.Input<String>? name;
-
   /// Peer ASN.
   final pulumi.Input<double>? peerAsn;
-
   /// Peer IP.
   final pulumi.Input<String>? peerIp;
-
   /// The name of the Virtual Router Peering.
   final pulumi.Input<String>? peeringName;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the Virtual Router.
   final pulumi.Input<String> virtualRouterName;
 
@@ -60,37 +54,14 @@ class VirtualRouterPeeringArgs {
 
   factory VirtualRouterPeeringArgs.fromMap(Map<String, dynamic> map) {
     return VirtualRouterPeeringArgs(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      peerAsn: (() {
-        final guardedValue = map['peerAsn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      peerIp: (() {
-        final guardedValue = map['peerIp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      peeringName: (() {
-        final guardedValue = map['peeringName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      virtualRouterName: pulumi.Input.fromValue(
-        map['virtualRouterName'] as String,
-      ),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      peerAsn: (() { final guardedValue = map['peerAsn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      peerIp: (() { final guardedValue = map['peerIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      peeringName: (() { final guardedValue = map['peeringName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      virtualRouterName: pulumi.Input.fromValue(map['virtualRouterName'] as String),
     );
   }
 }
+

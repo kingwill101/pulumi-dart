@@ -9,21 +9,20 @@ class SqlWorkloadTypeUpdateSettingsResponse {
 
   /// Creates a new [SqlWorkloadTypeUpdateSettingsResponse].
   /// [sqlWorkloadType] SQL Server workload type.
-  SqlWorkloadTypeUpdateSettingsResponse({this.sqlWorkloadType});
+  SqlWorkloadTypeUpdateSettingsResponse({
+    this.sqlWorkloadType,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'sqlWorkloadType': ?sqlWorkloadType};
+    return <String, dynamic>{
+      'sqlWorkloadType': ?sqlWorkloadType,
+    };
   }
 
-  factory SqlWorkloadTypeUpdateSettingsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SqlWorkloadTypeUpdateSettingsResponse.fromMap(Map<String, dynamic> map) {
     return SqlWorkloadTypeUpdateSettingsResponse(
-      sqlWorkloadType: (() {
-        final guardedValue = map['sqlWorkloadType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      sqlWorkloadType: (() { final guardedValue = map['sqlWorkloadType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

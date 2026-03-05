@@ -267,13 +267,10 @@ import 'linked_storage_account_state.dart';
 class LinkedStorageAccount extends pulumi.CustomResource {
   /// The data source type which should be used for this Log Analytics Linked Storage Account. Possible values are `CustomLogs`, `AzureWatson`, `Query`, `Ingestion` and `Alerts`. Changing this forces a new Log Analytics Linked Storage Account to be created.
   late final pulumi.Output<String> dataSourceType;
-
   /// The name of the Resource Group where the Log Analytics Linked Storage Account should exist. Changing this forces a new Log Analytics Linked Storage Account to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The storage account resource ids to be linked.
   late final pulumi.Output<List<String>> storageAccountIds;
-
   /// The resource ID of the Log Analytics Workspace. Changing this forces a new Log Analytics Linked Storage Account to be created.
   late final pulumi.Output<String> workspaceId;
   late final pulumi.Output<String> workspaceResourceId;
@@ -287,11 +284,11 @@ class LinkedStorageAccount extends pulumi.CustomResource {
     LinkedStorageAccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:loganalytics/linkedStorageAccount:LinkedStorageAccount',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:loganalytics/linkedStorageAccount:LinkedStorageAccount',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dataSourceType = registerOutput<String>('dataSourceType');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     storageAccountIds = registerOutput<List<String>>('storageAccountIds');
@@ -317,11 +314,11 @@ class LinkedStorageAccount extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:loganalytics/linkedStorageAccount:LinkedStorageAccount',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:loganalytics/linkedStorageAccount:LinkedStorageAccount',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dataSourceType = registerOutput<String>('dataSourceType');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     storageAccountIds = registerOutput<List<String>>('storageAccountIds');

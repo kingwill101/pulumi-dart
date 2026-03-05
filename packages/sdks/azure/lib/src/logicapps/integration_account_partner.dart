@@ -232,16 +232,12 @@ import 'integration_account_partner_state.dart';
 class IntegrationAccountPartner extends pulumi.CustomResource {
   /// A `business_identity` block as documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> businessIdentities;
-
   /// The name of the Logic App Integration Account. Changing this forces a new Logic App Integration Account Partner to be created.
   late final pulumi.Output<String> integrationAccountName;
-
   /// A JSON mapping of any Metadata for this Logic App Integration Account Partner.
   late final pulumi.Output<String?> metadata;
-
   /// The name which should be used for this Logic App Integration Account Partner. Changing this forces a new Logic App Integration Account Partner to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the Resource Group where the Logic App Integration Account Partner should exist. Changing this forces a new Logic App Integration Account Partner to be created.
   late final pulumi.Output<String> resourceGroupName;
 
@@ -254,14 +250,12 @@ class IntegrationAccountPartner extends pulumi.CustomResource {
     IntegrationAccountPartnerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:logicapps/integrationAccountPartner:IntegrationAccountPartner',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    businessIdentities = registerOutput<List<Map<String, dynamic>>>(
-      'businessIdentities',
-    );
+          'azure:logicapps/integrationAccountPartner:IntegrationAccountPartner',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    businessIdentities = registerOutput<List<Map<String, dynamic>>>('businessIdentities');
     integrationAccountName = registerOutput<String>('integrationAccountName');
     metadata = registerOutput<String?>('metadata');
     this.name = registerOutput<String>('name');
@@ -286,14 +280,12 @@ class IntegrationAccountPartner extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:logicapps/integrationAccountPartner:IntegrationAccountPartner',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    businessIdentities = registerOutput<List<Map<String, dynamic>>>(
-      'businessIdentities',
-    );
+          'azure:logicapps/integrationAccountPartner:IntegrationAccountPartner',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    businessIdentities = registerOutput<List<Map<String, dynamic>>>('businessIdentities');
     integrationAccountName = registerOutput<String>('integrationAccountName');
     metadata = registerOutput<String?>('metadata');
     this.name = registerOutput<String>('name');

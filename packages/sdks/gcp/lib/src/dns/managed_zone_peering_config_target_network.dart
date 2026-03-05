@@ -10,17 +10,20 @@ class ManagedZonePeeringConfigTargetNetwork {
 
   /// Creates a new [ManagedZonePeeringConfigTargetNetwork].
   /// [networkUrl] The id or fully qualified URL of the VPC network to forward queries to.
-  ManagedZonePeeringConfigTargetNetwork({required this.networkUrl});
+  ManagedZonePeeringConfigTargetNetwork({
+    required this.networkUrl,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'networkUrl': networkUrl};
+    return <String, dynamic>{
+      'networkUrl': networkUrl,
+    };
   }
 
-  factory ManagedZonePeeringConfigTargetNetwork.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ManagedZonePeeringConfigTargetNetwork.fromMap(Map<String, dynamic> map) {
     return ManagedZonePeeringConfigTargetNetwork(
       networkUrl: pulumi.Input.fromValue(map['networkUrl'] as String),
     );
   }
 }
+

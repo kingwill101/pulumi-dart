@@ -7,7 +7,6 @@ import 'disk_response.dart';
 class AttachedDiskResponse {
   /// Device name that the guest operating system will see. It is used by Runnable.volumes field to mount disks. So please specify the device_name if you want Batch to help mount the disk, and it should match the device_name field in volumes.
   final pulumi.Input<String> deviceName;
-
   /// Name of an existing PD.
   final pulumi.Input<String> existingDisk;
   final pulumi.Input<DiskResponse> newDisk;
@@ -26,10 +25,7 @@ class AttachedDiskResponse {
     return <String, dynamic>{
       'deviceName': deviceName,
       'existingDisk': existingDisk,
-      'newDisk': pulumi.Input.mapInputValue<DiskResponse, Map<String, dynamic>>(
-        newDisk,
-        (value) => value.toMap(),
-      ),
+      'newDisk': pulumi.Input.mapInputValue<DiskResponse, Map<String, dynamic>>(newDisk, (value) => value.toMap()),
     };
   }
 
@@ -37,9 +33,8 @@ class AttachedDiskResponse {
     return AttachedDiskResponse(
       deviceName: pulumi.Input.fromValue(map['deviceName'] as String),
       existingDisk: pulumi.Input.fromValue(map['existingDisk'] as String),
-      newDisk: pulumi.Input.fromValue(
-        DiskResponse.fromMap((map['newDisk']! as Map).cast<String, dynamic>()),
-      ),
+      newDisk: pulumi.Input.fromValue(DiskResponse.fromMap((map['newDisk']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

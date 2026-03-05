@@ -9,23 +9,16 @@ import 'propagation_policy_response.dart';
 class FleetManagedNamespacePropertiesResponse {
   /// Action if the managed namespace with the same name already exists. Default is Never.
   final pulumi.Input<String> adoptionPolicy;
-
   /// Delete options of a fleet managed namespace. Default is Keep.
   final pulumi.Input<String> deletePolicy;
-
   /// The namespace properties for the fleet managed namespace.
-  final pulumi.Input<ManagedNamespacePropertiesResponse>?
-  managedNamespaceProperties;
-
+  final pulumi.Input<ManagedNamespacePropertiesResponse>? managedNamespaceProperties;
   /// The Azure Portal FQDN of the Fleet hub.
   final pulumi.Input<String> portalFqdn;
-
   /// The profile of the propagation to create the namespace.
   final pulumi.Input<PropagationPolicyResponse>? propagationPolicy;
-
   /// The status of the last operation.
   final pulumi.Input<String> provisioningState;
-
   /// Status information of the last operation for fleet managed namespace.
   final pulumi.Input<FleetManagedNamespaceStatusResponse> status;
 
@@ -51,59 +44,24 @@ class FleetManagedNamespacePropertiesResponse {
     return <String, dynamic>{
       'adoptionPolicy': adoptionPolicy,
       'deletePolicy': deletePolicy,
-      'managedNamespaceProperties':
-          ?pulumi.Input.mapOptionalInputValue<
-            ManagedNamespacePropertiesResponse,
-            Map<String, dynamic>
-          >(managedNamespaceProperties, (value) => value.toMap()),
+      'managedNamespaceProperties': ?pulumi.Input.mapOptionalInputValue<ManagedNamespacePropertiesResponse, Map<String, dynamic>>(managedNamespaceProperties, (value) => value.toMap()),
       'portalFqdn': portalFqdn,
-      'propagationPolicy':
-          ?pulumi.Input.mapOptionalInputValue<
-            PropagationPolicyResponse,
-            Map<String, dynamic>
-          >(propagationPolicy, (value) => value.toMap()),
+      'propagationPolicy': ?pulumi.Input.mapOptionalInputValue<PropagationPolicyResponse, Map<String, dynamic>>(propagationPolicy, (value) => value.toMap()),
       'provisioningState': provisioningState,
-      'status':
-          pulumi.Input.mapInputValue<
-            FleetManagedNamespaceStatusResponse,
-            Map<String, dynamic>
-          >(status, (value) => value.toMap()),
+      'status': pulumi.Input.mapInputValue<FleetManagedNamespaceStatusResponse, Map<String, dynamic>>(status, (value) => value.toMap()),
     };
   }
 
-  factory FleetManagedNamespacePropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FleetManagedNamespacePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return FleetManagedNamespacePropertiesResponse(
       adoptionPolicy: pulumi.Input.fromValue(map['adoptionPolicy'] as String),
       deletePolicy: pulumi.Input.fromValue(map['deletePolicy'] as String),
-      managedNamespaceProperties: (() {
-        final guardedValue = map['managedNamespaceProperties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ManagedNamespacePropertiesResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      managedNamespaceProperties: (() { final guardedValue = map['managedNamespaceProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedNamespacePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       portalFqdn: pulumi.Input.fromValue(map['portalFqdn'] as String),
-      propagationPolicy: (() {
-        final guardedValue = map['propagationPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PropagationPolicyResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
-      status: pulumi.Input.fromValue(
-        FleetManagedNamespaceStatusResponse.fromMap(
-          (map['status']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      propagationPolicy: (() { final guardedValue = map['propagationPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PropagationPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
+      status: pulumi.Input.fromValue(FleetManagedNamespaceStatusResponse.fromMap((map['status']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

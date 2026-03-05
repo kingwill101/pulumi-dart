@@ -14,10 +14,14 @@ class GetSessionContextArgs {
 
   /// Creates a new [GetSessionContextArgs].
   /// [arn] ARN for an assumed role.
-  GetSessionContextArgs({required this.arn});
+  GetSessionContextArgs({
+    required this.arn,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'arn': arn};
+    return <String, dynamic>{
+      'arn': arn,
+    };
   }
 
   factory GetSessionContextArgs.fromMap(Map<String, dynamic> map) {
@@ -26,3 +30,4 @@ class GetSessionContextArgs {
     );
   }
 }
+

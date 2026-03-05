@@ -1,25 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getUser.
 class GetUserResult {
   final String apiManagementName;
-
   /// The Email Address used for this User.
   final String email;
-
   /// The First Name for the User.
   final String firstName;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The Last Name for the User.
   final String lastName;
-
   /// Any notes about this User.
   final String note;
   final String resourceGroupName;
-
   /// The current state of this User, for example `active`, `blocked` or `pending`.
   final String state;
   final String userId;
@@ -74,3 +69,4 @@ class GetUserResult {
     );
   }
 }
+

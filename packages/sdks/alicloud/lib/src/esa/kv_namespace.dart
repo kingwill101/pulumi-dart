@@ -121,10 +121,8 @@ import 'kv_namespace_state.dart';
 class KvNamespace extends pulumi.CustomResource {
   /// The description of the namespace.
   late final pulumi.Output<String?> description;
-
   /// The name of the namespace.
   late final pulumi.Output<String> kvNamespace;
-
   /// The status of the namespace.
   late final pulumi.Output<String> status;
 
@@ -137,11 +135,11 @@ class KvNamespace extends pulumi.CustomResource {
     KvNamespaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/kvNamespace:KvNamespace',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:esa/kvNamespace:KvNamespace',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     kvNamespace = registerOutput<String>('kvNamespace');
     status = registerOutput<String>('status');
@@ -165,11 +163,11 @@ class KvNamespace extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/kvNamespace:KvNamespace',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:esa/kvNamespace:KvNamespace',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     kvNamespace = registerOutput<String>('kvNamespace');
     status = registerOutput<String>('status');

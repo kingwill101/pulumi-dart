@@ -12,8 +12,7 @@ enum KnownDataCollectionEndpointResourceKind {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown KnownDataCollectionEndpointResourceKind value: $value',
-    );
+    throw ArgumentError('Unknown KnownDataCollectionEndpointResourceKind value: $value');
   }
 }
+

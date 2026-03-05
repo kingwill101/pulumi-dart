@@ -397,41 +397,28 @@ import 'unique_key_policy_response.dart';
 class DatabaseAccountGremlinGraph extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The conflict resolution policy for the graph.
-  late final pulumi.Output<ConflictResolutionPolicyResponse?>
-  conflictResolutionPolicy;
-
+  late final pulumi.Output<ConflictResolutionPolicyResponse?> conflictResolutionPolicy;
   /// Default time to live
   late final pulumi.Output<int?> defaultTtl;
-
   /// A system generated property representing the resource etag required for optimistic concurrency control.
   late final pulumi.Output<String?> etag;
-
   /// The configuration of the indexing policy. By default, the indexing is automatic for all document paths within the graph
   late final pulumi.Output<IndexingPolicyResponse?> indexingPolicy;
-
   /// The location of the resource group to which the resource belongs.
   late final pulumi.Output<String?> location;
-
   /// The name of the database account.
   late final pulumi.Output<String> name;
-
   /// The configuration of the partition key to be used for partitioning data into multiple partitions
   late final pulumi.Output<ContainerPartitionKeyResponse?> partitionKey;
-
   /// A system generated property. A unique identifier.
   late final pulumi.Output<String?> rid;
-
   /// Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB".
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A system generated property that denotes the last updated timestamp of the resource.
   late final pulumi.Output<dynamic> ts;
-
   /// The type of Azure resource.
   late final pulumi.Output<String> type;
-
   /// The unique key policy configuration for specifying uniqueness constraints on documents in the collection in the Azure Cosmos DB service.
   late final pulumi.Output<UniqueKeyPolicyResponse?> uniqueKeyPolicy;
 
@@ -444,60 +431,23 @@ class DatabaseAccountGremlinGraph extends pulumi.CustomResource {
     DatabaseAccountGremlinGraphArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:cosmosdb:DatabaseAccountGremlinGraph',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:cosmosdb:DatabaseAccountGremlinGraph',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    conflictResolutionPolicy =
-        registerOutput<ConflictResolutionPolicyResponse?>(
-          'conflictResolutionPolicy',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ConflictResolutionPolicyResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    conflictResolutionPolicy = registerOutput<ConflictResolutionPolicyResponse?>('conflictResolutionPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConflictResolutionPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     defaultTtl = registerOutput<int?>('defaultTtl');
     etag = registerOutput<String?>('etag');
-    indexingPolicy = registerOutput<IndexingPolicyResponse?>(
-      'indexingPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IndexingPolicyResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    indexingPolicy = registerOutput<IndexingPolicyResponse?>('indexingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IndexingPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    partitionKey = registerOutput<ContainerPartitionKeyResponse?>(
-      'partitionKey',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ContainerPartitionKeyResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    partitionKey = registerOutput<ContainerPartitionKeyResponse?>('partitionKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerPartitionKeyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     rid = registerOutput<String?>('rid');
     tags = registerOutput<Map<String, String>?>('tags');
     ts = registerOutput<dynamic>('ts');
     type = registerOutput<String>('type');
-    uniqueKeyPolicy = registerOutput<UniqueKeyPolicyResponse?>(
-      'uniqueKeyPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return UniqueKeyPolicyResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    uniqueKeyPolicy = registerOutput<UniqueKeyPolicyResponse?>('uniqueKeyPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UniqueKeyPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

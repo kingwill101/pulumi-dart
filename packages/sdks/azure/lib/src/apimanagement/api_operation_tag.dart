@@ -298,10 +298,8 @@ import 'api_operation_tag_state.dart';
 class ApiOperationTag extends pulumi.CustomResource {
   /// The ID of the API Management API Operation. Changing this forces a new API Management API Operation Tag to be created.
   late final pulumi.Output<String> apiOperationId;
-
   /// The display name of the API Management API Operation Tag.
   late final pulumi.Output<String> displayName;
-
   /// The name which should be used for this API Management API Operation Tag. Changing this forces a new API Management API Operation Tag to be created. The name must be unique in the API Management Service.
   late final pulumi.Output<String> name;
 
@@ -314,11 +312,11 @@ class ApiOperationTag extends pulumi.CustomResource {
     ApiOperationTagArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/apiOperationTag:ApiOperationTag',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:apimanagement/apiOperationTag:ApiOperationTag',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiOperationId = registerOutput<String>('apiOperationId');
     displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');
@@ -342,11 +340,11 @@ class ApiOperationTag extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/apiOperationTag:ApiOperationTag',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:apimanagement/apiOperationTag:ApiOperationTag',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiOperationId = registerOutput<String>('apiOperationId');
     displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');

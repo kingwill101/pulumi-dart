@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBindingsArgs {
   /// Instance Id.
   final pulumi.Input<String> instanceId;
-
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
-
   /// Virtualhost Name.
   final pulumi.Input<String> virtualHostName;
 
@@ -37,12 +35,9 @@ class GetBindingsArgs {
   factory GetBindingsArgs.fromMap(Map<String, dynamic> map) {
     return GetBindingsArgs(
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       virtualHostName: pulumi.Input.fromValue(map['virtualHostName'] as String),
     );
   }
 }
+

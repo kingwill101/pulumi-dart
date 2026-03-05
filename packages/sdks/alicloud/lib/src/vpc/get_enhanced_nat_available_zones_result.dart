@@ -7,11 +7,9 @@ import 'get_enhanced_nat_available_zones_zone.dart';
 class GetEnhancedNatAvailableZonesResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of available zones IDs by the enhanced NAT gateway.
   final List<String> ids;
   final String? outputFile;
-
   /// A list of available zones. Each element contains the following attributes:
   final List<GetEnhancedNatAvailableZonesZone> zones;
 
@@ -32,11 +30,7 @@ class GetEnhancedNatAvailableZonesResult {
       'id': id,
       'ids': ids,
       'outputFile': ?outputFile,
-      'zones':
-          pulumi.Input.encodeList<
-            GetEnhancedNatAvailableZonesZone,
-            Map<String, dynamic>
-          >(zones, (value) => value.toMap()),
+      'zones': pulumi.Input.encodeList<GetEnhancedNatAvailableZonesZone, Map<String, dynamic>>(zones, (value) => value.toMap()),
     };
   }
 
@@ -44,17 +38,9 @@ class GetEnhancedNatAvailableZonesResult {
     return GetEnhancedNatAvailableZonesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      zones: pulumi.Input.decodeList<GetEnhancedNatAvailableZonesZone>(
-        map['zones']!,
-        (value) => GetEnhancedNatAvailableZonesZone.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      zones: pulumi.Input.decodeList<GetEnhancedNatAvailableZonesZone>(map['zones']!, (value) => GetEnhancedNatAvailableZonesZone.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

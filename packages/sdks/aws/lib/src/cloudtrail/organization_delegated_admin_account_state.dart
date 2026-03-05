@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OrganizationDelegatedAdminAccountState {
   /// An organization member account ID that you want to designate as a delegated administrator.
   final pulumi.Input<String>? accountId;
-
   /// The Amazon Resource Name (ARN) of the delegated administrator's account.
   final pulumi.Input<String>? arn;
-
   /// The email address that is associated with the delegated administrator's AWS account.
   final pulumi.Input<String>? email;
-
   /// The friendly name of the delegated administrator's account.
   final pulumi.Input<String>? name;
-
   /// The AWS CloudTrail service principal name.
   final pulumi.Input<String>? servicePrincipal;
 
@@ -43,35 +39,14 @@ class OrganizationDelegatedAdminAccountState {
     };
   }
 
-  factory OrganizationDelegatedAdminAccountState.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OrganizationDelegatedAdminAccountState.fromMap(Map<String, dynamic> map) {
     return OrganizationDelegatedAdminAccountState(
-      accountId: (() {
-        final guardedValue = map['accountId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      arn: (() {
-        final guardedValue = map['arn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      email: (() {
-        final guardedValue = map['email'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      servicePrincipal: (() {
-        final guardedValue = map['servicePrincipal'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      email: (() { final guardedValue = map['email']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      servicePrincipal: (() { final guardedValue = map['servicePrincipal']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -214,7 +214,6 @@ import 'outbound_firewall_rule_state.dart';
 class OutboundFirewallRule extends pulumi.CustomResource {
   /// The name of the outbound firewall rule. This should be a FQDN. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The resource ID of the SQL Server on which to create the Outbound Firewall Rule. Changing this forces a new resource to be created.
   late final pulumi.Output<String> serverId;
 
@@ -227,11 +226,11 @@ class OutboundFirewallRule extends pulumi.CustomResource {
     OutboundFirewallRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:mssql/outboundFirewallRule:OutboundFirewallRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:mssql/outboundFirewallRule:OutboundFirewallRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     serverId = registerOutput<String>('serverId');
   }
@@ -254,11 +253,11 @@ class OutboundFirewallRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:mssql/outboundFirewallRule:OutboundFirewallRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:mssql/outboundFirewallRule:OutboundFirewallRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     serverId = registerOutput<String>('serverId');
   }

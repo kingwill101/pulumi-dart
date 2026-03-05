@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AudioMappingResponse {
   /// The EditAtom.key that references the atom with audio inputs in the JobConfig.edit_list.
   final pulumi.Input<String> atomKey;
-
   /// Audio volume control in dB. Negative values decrease volume, positive values increase. The default is 0.
   final pulumi.Input<double> gainDb;
-
   /// The zero-based index of the channel in the input audio stream.
   final pulumi.Input<int> inputChannel;
-
   /// The Input.key that identifies the input file.
   final pulumi.Input<String> inputKey;
-
   /// The zero-based index of the track in the input file.
   final pulumi.Input<int> inputTrack;
-
   /// The zero-based index of the channel in the output audio stream.
   final pulumi.Input<int> outputChannel;
 
@@ -60,3 +55,4 @@ class AudioMappingResponse {
     );
   }
 }
+

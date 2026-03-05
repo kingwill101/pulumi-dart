@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetResourcePolicyArgs {
   /// The name of the Resource Policy.
   final pulumi.Input<String> name;
-
   /// Project from which to list the Resource Policy. Defaults to project declared in the provider.
   final pulumi.Input<String>? project;
-
   /// Region where the Resource Policy resides.
   final pulumi.Input<String>? region;
 
@@ -20,7 +18,11 @@ class GetResourcePolicyArgs {
   /// [name] The name of the Resource Policy.
   /// [project] Project from which to list the Resource Policy. Defaults to project declared in the provider.
   /// [region] Region where the Resource Policy resides.
-  GetResourcePolicyArgs({required this.name, this.project, this.region});
+  GetResourcePolicyArgs({
+    required this.name,
+    this.project,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,16 +35,9 @@ class GetResourcePolicyArgs {
   factory GetResourcePolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetResourcePolicyArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

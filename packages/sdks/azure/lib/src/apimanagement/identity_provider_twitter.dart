@@ -220,13 +220,10 @@ import 'identity_provider_twitter_state.dart';
 class IdentityProviderTwitter extends pulumi.CustomResource {
   /// App Consumer API key for Twitter.
   late final pulumi.Output<String> apiKey;
-
   /// The Name of the API Management Service where this Twitter Identity Provider should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> apiManagementName;
-
   /// App Consumer API secret key for Twitter.
   late final pulumi.Output<String> apiSecretKey;
-
   /// The Name of the Resource Group where the API Management Service exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
 
@@ -239,11 +236,11 @@ class IdentityProviderTwitter extends pulumi.CustomResource {
     IdentityProviderTwitterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/identityProviderTwitter:IdentityProviderTwitter',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:apimanagement/identityProviderTwitter:IdentityProviderTwitter',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiKey = registerOutput<String>('apiKey');
     apiManagementName = registerOutput<String>('apiManagementName');
     apiSecretKey = registerOutput<String>('apiSecretKey');
@@ -268,11 +265,11 @@ class IdentityProviderTwitter extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/identityProviderTwitter:IdentityProviderTwitter',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:apimanagement/identityProviderTwitter:IdentityProviderTwitter',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiKey = registerOutput<String>('apiKey');
     apiManagementName = registerOutput<String>('apiManagementName');
     apiSecretKey = registerOutput<String>('apiSecretKey');

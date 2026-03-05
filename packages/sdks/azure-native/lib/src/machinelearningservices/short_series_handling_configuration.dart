@@ -14,8 +14,7 @@ enum ShortSeriesHandlingConfiguration {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ShortSeriesHandlingConfiguration value: $value',
-    );
+    throw ArgumentError('Unknown ShortSeriesHandlingConfiguration value: $value');
   }
 }
+

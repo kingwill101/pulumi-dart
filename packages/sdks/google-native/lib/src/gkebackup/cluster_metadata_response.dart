@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterMetadataResponse {
   /// Anthos version
   final pulumi.Input<String> anthosVersion;
-
   /// A list of the Backup for GKE CRD versions found in the cluster.
   final pulumi.Input<Map<String, String>> backupCrdVersions;
-
   /// The source cluster from which this Backup was created. Valid formats: - `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*` This is inherited from the parent BackupPlan's cluster field.
   final pulumi.Input<String> cluster;
-
   /// GKE version
   final pulumi.Input<String> gkeVersion;
-
   /// The Kubernetes server version of the source cluster.
   final pulumi.Input<String> k8sVersion;
 
@@ -46,12 +42,11 @@ class ClusterMetadataResponse {
   factory ClusterMetadataResponse.fromMap(Map<String, dynamic> map) {
     return ClusterMetadataResponse(
       anthosVersion: pulumi.Input.fromValue(map['anthosVersion'] as String),
-      backupCrdVersions: pulumi.Input.fromValue(
-        (map['backupCrdVersions'] as Map).cast<String, String>(),
-      ),
+      backupCrdVersions: pulumi.Input.fromValue((map['backupCrdVersions'] as Map).cast<String, String>()),
       cluster: pulumi.Input.fromValue(map['cluster'] as String),
       gkeVersion: pulumi.Input.fromValue(map['gkeVersion'] as String),
       k8sVersion: pulumi.Input.fromValue(map['k8sVersion'] as String),
     );
   }
 }
+

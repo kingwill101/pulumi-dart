@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetActionGroupWebhookReceiverAadAuth {
   final pulumi.Input<String> identifierUri;
   final pulumi.Input<String> objectId;
-
   /// The Tenant ID for the subscription containing this Event Hub.
   final pulumi.Input<String> tenantId;
 
@@ -27,9 +26,7 @@ class GetActionGroupWebhookReceiverAadAuth {
     };
   }
 
-  factory GetActionGroupWebhookReceiverAadAuth.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetActionGroupWebhookReceiverAadAuth.fromMap(Map<String, dynamic> map) {
     return GetActionGroupWebhookReceiverAadAuth(
       identifierUri: pulumi.Input.fromValue(map['identifierUri'] as String),
       objectId: pulumi.Input.fromValue(map['objectId'] as String),
@@ -37,3 +34,4 @@ class GetActionGroupWebhookReceiverAadAuth {
     );
   }
 }
+

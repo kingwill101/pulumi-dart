@@ -11,6 +11,12 @@ import 'resource_transformation.dart';
 /// Component resources do not have provider-managed CRUD operations; they are
 /// used to model reusable infrastructure abstractions.
 ///
+/// Use a component resource when you want to package several underlying
+/// resources behind a stable Dart API. Components participate in parent/child
+/// relationships, aliases, providers, transforms, and stack outputs just like
+/// other resources, but they do not correspond to a provider-managed object by
+/// themselves unless [remote] is `true`.
+///
 /// ## Example
 /// ```dart
 /// class Network extends ComponentResource {
@@ -21,6 +27,10 @@ import 'resource_transformation.dart';
 /// {@endtemplate}
 ///
 class ComponentResource extends Resource {
+  /// Creates a logical component resource.
+  ///
+  /// Set [remote] to `true` only for remote components backed by a provider
+  /// implementation. Ordinary Dart components should leave it as `false`.
   ComponentResource(
     String type,
     String name,
@@ -37,6 +47,10 @@ class ComponentResource extends Resource {
        );
 
   /// Registers component outputs with the engine.
+  ///
+  /// Call this after child resources and output values have been initialized.
+  /// These values become the component outputs visible to parent components and
+  /// stack exports that reference this component.
   void registerOutputs([Map<String, dynamic>? outputs]) {
     final resolvedOutputs = outputs ?? _collectOutputs();
     registerOutputsOutput(Output.create(resolvedOutputs));
@@ -50,6 +64,9 @@ class ComponentResource extends Resource {
   }
 
   /// Registers an already-computed output map.
+  ///
+  /// This is useful when the component already has an [Output] carrying the
+  /// final output object.
   void registerOutputsOutput(Output<Map<String, dynamic>> outputs) {
     final operation = DeploymentImpl.instance.registerResourceOutputs(
       this,
@@ -66,6 +83,9 @@ class ComponentResource extends Resource {
 }
 
 /// Resource options specialized for [ComponentResource].
+///
+/// This type exists mainly for API clarity. It has the same fields as
+/// [ResourceOptions], but it is the canonical options type for components.
 class ComponentResourceOptions extends ResourceOptions {
   ComponentResourceOptions({
     super.id,

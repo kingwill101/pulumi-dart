@@ -6,25 +6,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VmwareVCenterConfigResponse {
   /// The vCenter IP address.
   final pulumi.Input<String> address;
-
   /// Contains the vCenter CA certificate public key for SSL verification.
   final pulumi.Input<String> caCertData;
-
   /// The name of the vCenter cluster for the user cluster.
   final pulumi.Input<String> cluster;
-
   /// The name of the vCenter datacenter for the user cluster.
   final pulumi.Input<String> datacenter;
-
   /// The name of the vCenter datastore for the user cluster.
   final pulumi.Input<String> datastore;
-
   /// The name of the vCenter folder for the user cluster.
   final pulumi.Input<String> folder;
-
   /// The name of the vCenter resource pool for the user cluster.
   final pulumi.Input<String> resourcePool;
-
   /// The name of the vCenter storage policy for the user cluster.
   final pulumi.Input<String> storagePolicyName;
 
@@ -70,9 +63,8 @@ class VmwareVCenterConfigResponse {
       datastore: pulumi.Input.fromValue(map['datastore'] as String),
       folder: pulumi.Input.fromValue(map['folder'] as String),
       resourcePool: pulumi.Input.fromValue(map['resourcePool'] as String),
-      storagePolicyName: pulumi.Input.fromValue(
-        map['storagePolicyName'] as String,
-      ),
+      storagePolicyName: pulumi.Input.fromValue(map['storagePolicyName'] as String),
     );
   }
 }
+

@@ -6,11 +6,9 @@ class NodeGroupAutoscalingPolicy {
   /// Maximum size of the node group. Set to a value less than or equal
   /// to 100 and greater than or equal to min-nodes.
   final pulumi.Input<int>? maxNodes;
-
   /// Minimum size of the node group. Must be less
   /// than or equal to max-nodes. The default value is 0.
   final pulumi.Input<int>? minNodes;
-
   /// The autoscaling mode. Set to one of the following:
   /// - OFF: Disables the autoscaler.
   /// - ON: Enables scaling in and scaling out.
@@ -24,7 +22,11 @@ class NodeGroupAutoscalingPolicy {
   /// [maxNodes] Maximum size of the node group. Set to a value less than or equal
   /// [minNodes] Minimum size of the node group. Must be less
   /// [mode] The autoscaling mode. Set to one of the following:
-  NodeGroupAutoscalingPolicy({this.maxNodes, this.minNodes, this.mode});
+  NodeGroupAutoscalingPolicy({
+    this.maxNodes,
+    this.minNodes,
+    this.mode,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,21 +38,10 @@ class NodeGroupAutoscalingPolicy {
 
   factory NodeGroupAutoscalingPolicy.fromMap(Map<String, dynamic> map) {
     return NodeGroupAutoscalingPolicy(
-      maxNodes: (() {
-        final guardedValue = map['maxNodes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      minNodes: (() {
-        final guardedValue = map['minNodes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      mode: (() {
-        final guardedValue = map['mode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      maxNodes: (() { final guardedValue = map['maxNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      minNodes: (() { final guardedValue = map['minNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

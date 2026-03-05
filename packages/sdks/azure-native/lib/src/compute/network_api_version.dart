@@ -15,3 +15,4 @@ enum NetworkApiVersion {
     throw ArgumentError('Unknown NetworkApiVersion value: $value');
   }
 }
+

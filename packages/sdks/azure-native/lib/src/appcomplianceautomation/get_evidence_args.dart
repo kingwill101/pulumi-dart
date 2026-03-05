@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEvidenceArgs {
   /// The evidence name.
   final pulumi.Input<String> evidenceName;
-
   /// Report Name.
   final pulumi.Input<String> reportName;
 
   /// Creates a new [GetEvidenceArgs].
   /// [evidenceName] The evidence name.
   /// [reportName] Report Name.
-  GetEvidenceArgs({required this.evidenceName, required this.reportName});
+  GetEvidenceArgs({
+    required this.evidenceName,
+    required this.reportName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,3 +34,4 @@ class GetEvidenceArgs {
     );
   }
 }
+

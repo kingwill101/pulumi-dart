@@ -10,16 +10,12 @@ import 'gateway_route_config_properties.dart';
 class GatewayRouteConfigArgs {
   /// The name of Spring Cloud Gateway.
   final pulumi.Input<String> gatewayName;
-
   /// API route config of the Spring Cloud Gateway
   final pulumi.Input<GatewayRouteConfigProperties>? properties;
-
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the Spring Cloud Gateway route config.
   final pulumi.Input<String>? routeConfigName;
-
   /// The name of the Service resource.
   final pulumi.Input<String> serviceName;
 
@@ -40,11 +36,7 @@ class GatewayRouteConfigArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'gatewayName': gatewayName,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            GatewayRouteConfigProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<GatewayRouteConfigProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'routeConfigName': ?routeConfigName,
       'serviceName': serviceName,
@@ -54,24 +46,11 @@ class GatewayRouteConfigArgs {
   factory GatewayRouteConfigArgs.fromMap(Map<String, dynamic> map) {
     return GatewayRouteConfigArgs(
       gatewayName: pulumi.Input.fromValue(map['gatewayName'] as String),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GatewayRouteConfigProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      routeConfigName: (() {
-        final guardedValue = map['routeConfigName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GatewayRouteConfigProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      routeConfigName: (() { final guardedValue = map['routeConfigName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
+

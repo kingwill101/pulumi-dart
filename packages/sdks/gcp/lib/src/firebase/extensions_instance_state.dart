@@ -10,49 +10,37 @@ class ExtensionsInstanceState {
   /// The current Config of the Extension Instance.
   /// Structure is documented below.
   final pulumi.Input<ExtensionsInstanceConfig>? config;
-
   /// The time at which the Extension Instance was created.
   final pulumi.Input<String>? createTime;
-
   /// If this Instance has `state: ERRORED`, the error messages
   /// will be found here.
   /// Structure is documented below.
   final pulumi.Input<List<ExtensionsInstanceErrorStatus>>? errorStatuses;
-
   /// A weak etag that is computed by the server based on other configuration
   /// values and may be sent on update and delete requests to ensure the
   /// client has an up-to-date value before proceeding.
   final pulumi.Input<String>? etag;
-
   /// The ID to use for the Extension Instance, which will become the final
   /// component of the instance's name.
   final pulumi.Input<String>? instanceId;
-
   /// The name of the last operation that acted on this Extension
   /// Instance
   final pulumi.Input<String>? lastOperationName;
-
   /// The type of the last operation that acted on the Extension Instance.
   final pulumi.Input<String>? lastOperationType;
-
   /// The fully-qualified resource name of the Extension Instance.
   final pulumi.Input<String>? name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// Data set by the extension instance at runtime.
   /// Structure is documented below.
   final pulumi.Input<List<ExtensionsInstanceRuntimeData>>? runtimeDatas;
-
   /// The email of the service account to be used at runtime by compute resources
   /// created for the operation of the Extension instance.
   final pulumi.Input<String>? serviceAccountEmail;
-
   /// The processing state of the extension instance.
   final pulumi.Input<String>? state;
-
   /// The time at which the Extension Instance was updated.
   final pulumi.Input<String>? updateTime;
 
@@ -88,42 +76,16 @@ class ExtensionsInstanceState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'config':
-          ?pulumi.Input.mapOptionalInputValue<
-            ExtensionsInstanceConfig,
-            Map<String, dynamic>
-          >(config, (value) => value.toMap()),
+      'config': ?pulumi.Input.mapOptionalInputValue<ExtensionsInstanceConfig, Map<String, dynamic>>(config, (value) => value.toMap()),
       'createTime': ?createTime,
-      'errorStatuses':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ExtensionsInstanceErrorStatus>,
-            List<Map<String, dynamic>>
-          >(
-            errorStatuses,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ExtensionsInstanceErrorStatus,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'errorStatuses': ?pulumi.Input.mapOptionalInputValue<List<ExtensionsInstanceErrorStatus>, List<Map<String, dynamic>>>(errorStatuses, (value) => pulumi.Input.encodeList<ExtensionsInstanceErrorStatus, Map<String, dynamic>>(value, (value) => value.toMap())),
       'etag': ?etag,
       'instanceId': ?instanceId,
       'lastOperationName': ?lastOperationName,
       'lastOperationType': ?lastOperationType,
       'name': ?name,
       'project': ?project,
-      'runtimeDatas':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ExtensionsInstanceRuntimeData>,
-            List<Map<String, dynamic>>
-          >(
-            runtimeDatas,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ExtensionsInstanceRuntimeData,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'runtimeDatas': ?pulumi.Input.mapOptionalInputValue<List<ExtensionsInstanceRuntimeData>, List<Map<String, dynamic>>>(runtimeDatas, (value) => pulumi.Input.encodeList<ExtensionsInstanceRuntimeData, Map<String, dynamic>>(value, (value) => value.toMap())),
       'serviceAccountEmail': ?serviceAccountEmail,
       'state': ?state,
       'updateTime': ?updateTime,
@@ -132,89 +94,20 @@ class ExtensionsInstanceState {
 
   factory ExtensionsInstanceState.fromMap(Map<String, dynamic> map) {
     return ExtensionsInstanceState(
-      config: (() {
-        final guardedValue = map['config'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ExtensionsInstanceConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      errorStatuses: (() {
-        final guardedValue = map['errorStatuses'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ExtensionsInstanceErrorStatus>(
-            guardedValue,
-            (value) => ExtensionsInstanceErrorStatus.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      etag: (() {
-        final guardedValue = map['etag'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      instanceId: (() {
-        final guardedValue = map['instanceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      lastOperationName: (() {
-        final guardedValue = map['lastOperationName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      lastOperationType: (() {
-        final guardedValue = map['lastOperationType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      runtimeDatas: (() {
-        final guardedValue = map['runtimeDatas'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ExtensionsInstanceRuntimeData>(
-            guardedValue,
-            (value) => ExtensionsInstanceRuntimeData.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      serviceAccountEmail: (() {
-        final guardedValue = map['serviceAccountEmail'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      updateTime: (() {
-        final guardedValue = map['updateTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      config: (() { final guardedValue = map['config']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExtensionsInstanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      errorStatuses: (() { final guardedValue = map['errorStatuses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ExtensionsInstanceErrorStatus>(guardedValue, (value) => ExtensionsInstanceErrorStatus.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      instanceId: (() { final guardedValue = map['instanceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      lastOperationName: (() { final guardedValue = map['lastOperationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      lastOperationType: (() { final guardedValue = map['lastOperationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      runtimeDatas: (() { final guardedValue = map['runtimeDatas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ExtensionsInstanceRuntimeData>(guardedValue, (value) => ExtensionsInstanceRuntimeData.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      serviceAccountEmail: (() { final guardedValue = map['serviceAccountEmail']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

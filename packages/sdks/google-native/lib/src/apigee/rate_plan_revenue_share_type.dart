@@ -16,3 +16,4 @@ enum RatePlanRevenueShareType {
     throw ArgumentError('Unknown RatePlanRevenueShareType value: $value');
   }
 }
+

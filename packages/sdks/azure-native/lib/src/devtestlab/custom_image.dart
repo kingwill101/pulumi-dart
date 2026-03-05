@@ -195,53 +195,36 @@ import 'custom_image_properties_from_vm_response.dart';
 class CustomImage extends pulumi.CustomResource {
   /// The author of the custom image.
   late final pulumi.Output<String?> author;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The creation date of the custom image.
   late final pulumi.Output<String> creationDate;
-
   /// Storage information about the plan related to this custom image
-  late final pulumi.Output<CustomImagePropertiesFromPlanResponse?>
-  customImagePlan;
-
+  late final pulumi.Output<CustomImagePropertiesFromPlanResponse?> customImagePlan;
   /// Storage information about the data disks present in the custom image
   late final pulumi.Output<List<Map<String, dynamic>>?> dataDiskStorageInfo;
-
   /// The description of the custom image.
   late final pulumi.Output<String?> description;
-
   /// Whether or not the custom images underlying offer/plan has been enabled for programmatic deployment
   late final pulumi.Output<bool?> isPlanAuthorized;
-
   /// The location of the resource.
   late final pulumi.Output<String?> location;
-
   /// The Managed Image Id backing the custom image.
   late final pulumi.Output<String?> managedImageId;
-
   /// The Managed Snapshot Id backing the custom image.
   late final pulumi.Output<String?> managedSnapshotId;
-
   /// The name of the resource.
   late final pulumi.Output<String> name;
-
   /// The provisioning status of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The tags of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource.
   late final pulumi.Output<String> type;
-
   /// The unique immutable identifier of a resource (Guid).
   late final pulumi.Output<String> uniqueIdentifier;
-
   /// The VHD from which the image is to be created.
   late final pulumi.Output<CustomImagePropertiesCustomResponse?> vhd;
-
   /// The virtual machine from which the image is to be created.
   late final pulumi.Output<CustomImagePropertiesFromVmResponse?> vm;
 
@@ -254,27 +237,16 @@ class CustomImage extends pulumi.CustomResource {
     CustomImageArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:devtestlab:CustomImage',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:devtestlab:CustomImage',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     author = registerOutput<String?>('author');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     creationDate = registerOutput<String>('creationDate');
-    customImagePlan = registerOutput<CustomImagePropertiesFromPlanResponse?>(
-      'customImagePlan',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CustomImagePropertiesFromPlanResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    dataDiskStorageInfo = registerOutput<List<Map<String, dynamic>>?>(
-      'dataDiskStorageInfo',
-    );
+    customImagePlan = registerOutput<CustomImagePropertiesFromPlanResponse?>('customImagePlan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomImagePropertiesFromPlanResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataDiskStorageInfo = registerOutput<List<Map<String, dynamic>>?>('dataDiskStorageInfo');
     description = registerOutput<String?>('description');
     isPlanAuthorized = registerOutput<bool?>('isPlanAuthorized');
     location = registerOutput<String?>('location');
@@ -285,25 +257,7 @@ class CustomImage extends pulumi.CustomResource {
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
-    vhd = registerOutput<CustomImagePropertiesCustomResponse?>(
-      'vhd',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CustomImagePropertiesCustomResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    vm = registerOutput<CustomImagePropertiesFromVmResponse?>(
-      'vm',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CustomImagePropertiesFromVmResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    vhd = registerOutput<CustomImagePropertiesCustomResponse?>('vhd', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomImagePropertiesCustomResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vm = registerOutput<CustomImagePropertiesFromVmResponse?>('vm', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomImagePropertiesFromVmResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

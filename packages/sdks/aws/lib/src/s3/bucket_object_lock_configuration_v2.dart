@@ -228,19 +228,14 @@ import 'bucket_object_lock_configuration_v2_state.dart';
 class BucketObjectLockConfigurationV2 extends pulumi.CustomResource {
   /// Name of the bucket.
   late final pulumi.Output<String> bucket;
-
   /// Account ID of the expected bucket owner.
   late final pulumi.Output<String?> expectedBucketOwner;
-
   /// Indicates whether this bucket has an Object Lock configuration enabled. Defaults to `Enabled`. Valid values: `Enabled`.
   late final pulumi.Output<String?> objectLockEnabled;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Configuration block for specifying the Object Lock rule for the specified object. See below.
   late final pulumi.Output<BucketObjectLockConfigurationV2Rule?> rule;
-
   /// This argument is deprecated and no longer needed to enable Object Lock.
   /// To enable Object Lock for an existing bucket, you must first enable versioning on the bucket and then enable Object Lock. For more details on versioning, see the `aws.s3.BucketVersioning` resource.
   late final pulumi.Output<String?> token;
@@ -254,25 +249,16 @@ class BucketObjectLockConfigurationV2 extends pulumi.CustomResource {
     BucketObjectLockConfigurationV2Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:s3/bucketObjectLockConfigurationV2:BucketObjectLockConfigurationV2',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:s3/bucketObjectLockConfigurationV2:BucketObjectLockConfigurationV2',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
     expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
     objectLockEnabled = registerOutput<String?>('objectLockEnabled');
     region = registerOutput<String>('region');
-    rule = registerOutput<BucketObjectLockConfigurationV2Rule?>(
-      'rule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketObjectLockConfigurationV2Rule.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    rule = registerOutput<BucketObjectLockConfigurationV2Rule?>('rule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketObjectLockConfigurationV2Rule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     token = registerOutput<String?>('token');
   }
 
@@ -294,25 +280,16 @@ class BucketObjectLockConfigurationV2 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:s3/bucketObjectLockConfigurationV2:BucketObjectLockConfigurationV2',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:s3/bucketObjectLockConfigurationV2:BucketObjectLockConfigurationV2',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
     expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
     objectLockEnabled = registerOutput<String?>('objectLockEnabled');
     region = registerOutput<String>('region');
-    rule = registerOutput<BucketObjectLockConfigurationV2Rule?>(
-      'rule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketObjectLockConfigurationV2Rule.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    rule = registerOutput<BucketObjectLockConfigurationV2Rule?>('rule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketObjectLockConfigurationV2Rule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     token = registerOutput<String?>('token');
   }
 }

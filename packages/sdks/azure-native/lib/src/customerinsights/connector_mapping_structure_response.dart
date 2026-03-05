@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectorMappingStructureResponse {
   /// The column name of the import file.
   final pulumi.Input<String> columnName;
-
   /// Custom format specifier for input parsing.
   final pulumi.Input<String>? customFormatSpecifier;
-
   /// Indicates if the column is encrypted.
   final pulumi.Input<bool>? isEncrypted;
-
   /// The property name of the mapping entity.
   final pulumi.Input<String> propertyName;
 
@@ -40,17 +37,10 @@ class ConnectorMappingStructureResponse {
   factory ConnectorMappingStructureResponse.fromMap(Map<String, dynamic> map) {
     return ConnectorMappingStructureResponse(
       columnName: pulumi.Input.fromValue(map['columnName'] as String),
-      customFormatSpecifier: (() {
-        final guardedValue = map['customFormatSpecifier'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      isEncrypted: (() {
-        final guardedValue = map['isEncrypted'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      customFormatSpecifier: (() { final guardedValue = map['customFormatSpecifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      isEncrypted: (() { final guardedValue = map['isEncrypted']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       propertyName: pulumi.Input.fromValue(map['propertyName'] as String),
     );
   }
 }
+

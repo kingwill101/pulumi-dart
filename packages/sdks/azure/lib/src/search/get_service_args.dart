@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceArgs {
   /// The Name of the Search Service.
   final pulumi.Input<String> name;
-
   /// The name of the Resource Group where the Search Service exists.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetServiceArgs].
   /// [name] The Name of the Search Service.
   /// [resourceGroupName] The name of the Resource Group where the Search Service exists.
-  GetServiceArgs({required this.name, required this.resourceGroupName});
+  GetServiceArgs({
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,9 +30,8 @@ class GetServiceArgs {
   factory GetServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

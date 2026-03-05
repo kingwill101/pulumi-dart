@@ -8,19 +8,20 @@ class QueueSettings {
 
   /// Creates a new [QueueSettings].
   /// [jobTier] Controls the compute job tier
-  QueueSettings({this.jobTier});
+  QueueSettings({
+    this.jobTier,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'jobTier': ?jobTier};
+    return <String, dynamic>{
+      'jobTier': ?jobTier,
+    };
   }
 
   factory QueueSettings.fromMap(Map<String, dynamic> map) {
     return QueueSettings(
-      jobTier: (() {
-        final guardedValue = map['jobTier'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      jobTier: (() { final guardedValue = map['jobTier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

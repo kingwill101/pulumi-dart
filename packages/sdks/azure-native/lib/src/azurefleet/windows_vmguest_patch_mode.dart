@@ -26,3 +26,4 @@ enum WindowsVMGuestPatchMode {
     throw ArgumentError('Unknown WindowsVMGuestPatchMode value: $value');
   }
 }
+

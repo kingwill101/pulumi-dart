@@ -122,7 +122,10 @@ import 'get_volume_snapshot_result.dart';
 /// * `Microsoft.ElasticSan` - 2023-01-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_elasticsan_get_get_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetResult> get(GetArgs args, {pulumi.InvokeOptions? options}) async {
+Future<GetResult> get(
+  GetArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
   final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'azure:elasticsan/get:get',

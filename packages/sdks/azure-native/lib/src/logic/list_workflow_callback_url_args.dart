@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListWorkflowCallbackUrlArgs {
   /// The key type.
   final pulumi.Input<String>? keyType;
-
   /// The expiry time.
   final pulumi.Input<String>? notAfter;
-
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
-
   /// The workflow name.
   final pulumi.Input<String> workflowName;
 
@@ -42,20 +39,11 @@ class ListWorkflowCallbackUrlArgs {
 
   factory ListWorkflowCallbackUrlArgs.fromMap(Map<String, dynamic> map) {
     return ListWorkflowCallbackUrlArgs(
-      keyType: (() {
-        final guardedValue = map['keyType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      notAfter: (() {
-        final guardedValue = map['notAfter'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      keyType: (() { final guardedValue = map['keyType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      notAfter: (() { final guardedValue = map['notAfter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       workflowName: pulumi.Input.fromValue(map['workflowName'] as String),
     );
   }
 }
+

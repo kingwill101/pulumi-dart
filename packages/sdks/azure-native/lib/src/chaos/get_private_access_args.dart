@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPrivateAccessArgs {
   /// The name of the private access resource that is being created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
   final pulumi.Input<String> privateAccessName;
-
   /// String that represents an Azure resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetPrivateAccessArgs {
 
   factory GetPrivateAccessArgs.fromMap(Map<String, dynamic> map) {
     return GetPrivateAccessArgs(
-      privateAccessName: pulumi.Input.fromValue(
-        map['privateAccessName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      privateAccessName: pulumi.Input.fromValue(map['privateAccessName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

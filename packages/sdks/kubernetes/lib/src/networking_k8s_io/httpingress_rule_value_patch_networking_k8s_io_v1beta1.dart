@@ -10,41 +10,20 @@ class HTTPIngressRuleValuePatchNetworkingK8sIoV1beta1 {
 
   /// Creates a new [HTTPIngressRuleValuePatchNetworkingK8sIoV1beta1].
   /// [paths] A collection of paths that map requests to backends.
-  HTTPIngressRuleValuePatchNetworkingK8sIoV1beta1({this.paths});
+  HTTPIngressRuleValuePatchNetworkingK8sIoV1beta1({
+    this.paths,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'paths':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<HTTPIngressPathPatchNetworkingK8sIoV1beta1>,
-            List<Map<String, dynamic>>
-          >(
-            paths,
-            (value) =>
-                pulumi.Input.encodeList<
-                  HTTPIngressPathPatchNetworkingK8sIoV1beta1,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'paths': ?pulumi.Input.mapOptionalInputValue<List<HTTPIngressPathPatchNetworkingK8sIoV1beta1>, List<Map<String, dynamic>>>(paths, (value) => pulumi.Input.encodeList<HTTPIngressPathPatchNetworkingK8sIoV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory HTTPIngressRuleValuePatchNetworkingK8sIoV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory HTTPIngressRuleValuePatchNetworkingK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return HTTPIngressRuleValuePatchNetworkingK8sIoV1beta1(
-      paths: (() {
-        final guardedValue = map['paths'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<HTTPIngressPathPatchNetworkingK8sIoV1beta1>(
-            guardedValue,
-            (value) => HTTPIngressPathPatchNetworkingK8sIoV1beta1.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      paths: (() { final guardedValue = map['paths']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<HTTPIngressPathPatchNetworkingK8sIoV1beta1>(guardedValue, (value) => HTTPIngressPathPatchNetworkingK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

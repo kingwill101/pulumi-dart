@@ -9,7 +9,10 @@ class TaskDefinitionVolumeFrom {
   /// Creates a new [TaskDefinitionVolumeFrom].
   /// [readOnly] Optional.
   /// [sourceContainer] Optional.
-  TaskDefinitionVolumeFrom({this.readOnly, this.sourceContainer});
+  TaskDefinitionVolumeFrom({
+    this.readOnly,
+    this.sourceContainer,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -20,16 +23,9 @@ class TaskDefinitionVolumeFrom {
 
   factory TaskDefinitionVolumeFrom.fromMap(Map<String, dynamic> map) {
     return TaskDefinitionVolumeFrom(
-      readOnly: (() {
-        final guardedValue = map['readOnly'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      sourceContainer: (() {
-        final guardedValue = map['sourceContainer'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      readOnly: (() { final guardedValue = map['readOnly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      sourceContainer: (() { final guardedValue = map['sourceContainer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -5,22 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworkInterfaceAssociation {
   /// Allocation ID.
   final pulumi.Input<String> allocationId;
-
   /// Association ID.
   final pulumi.Input<String> associationId;
-
   /// Carrier IP address associated with the network interface. This attribute is only set when the network interface is in a subnet which is associated with a Wavelength Zone.
   final pulumi.Input<String> carrierIp;
-
   /// Customer-owned IP address.
   final pulumi.Input<String> customerOwnedIp;
-
   /// ID of the Elastic IP address owner.
   final pulumi.Input<String> ipOwnerId;
-
   /// Public DNS name.
   final pulumi.Input<String> publicDnsName;
-
   /// Address of the Elastic IP address bound to the network interface.
   final pulumi.Input<String> publicIp;
 
@@ -66,3 +60,4 @@ class GetNetworkInterfaceAssociation {
     );
   }
 }
+

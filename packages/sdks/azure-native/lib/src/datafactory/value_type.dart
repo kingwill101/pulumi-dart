@@ -15,3 +15,4 @@ enum ValueType {
     throw ArgumentError('Unknown ValueType value: $value');
   }
 }
+

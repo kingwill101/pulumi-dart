@@ -658,16 +658,12 @@ import 'attestor_state.dart';
 class Attestor extends pulumi.CustomResource {
   /// A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
   /// Structure is documented below.
-  late final pulumi.Output<AttestorAttestationAuthorityNote>
-  attestationAuthorityNote;
-
+  late final pulumi.Output<AttestorAttestationAuthorityNote> attestationAuthorityNote;
   /// A descriptive comment. This field may be updated. The field may be
   /// displayed in chooser dialogs.
   late final pulumi.Output<String?> description;
-
   /// The resource name.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -681,21 +677,12 @@ class Attestor extends pulumi.CustomResource {
     AttestorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:binaryauthorization/attestor:Attestor',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    attestationAuthorityNote = registerOutput<AttestorAttestationAuthorityNote>(
-      'attestationAuthorityNote',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AttestorAttestationAuthorityNote.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:binaryauthorization/attestor:Attestor',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    attestationAuthorityNote = registerOutput<AttestorAttestationAuthorityNote>('attestationAuthorityNote', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AttestorAttestationAuthorityNote.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -719,21 +706,12 @@ class Attestor extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:binaryauthorization/attestor:Attestor',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    attestationAuthorityNote = registerOutput<AttestorAttestationAuthorityNote>(
-      'attestationAuthorityNote',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AttestorAttestationAuthorityNote.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:binaryauthorization/attestor:Attestor',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    attestationAuthorityNote = registerOutput<AttestorAttestationAuthorityNote>('attestationAuthorityNote', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AttestorAttestationAuthorityNote.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

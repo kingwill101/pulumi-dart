@@ -9,7 +9,6 @@ class GetSubnetResult {
   final List<GetSubnetDhcpAddressRange> dhcpAddressRanges;
   final String gatewayId;
   final String gatewayIp;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String ipCidrRange;
@@ -57,11 +56,7 @@ class GetSubnetResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createTime': createTime,
-      'dhcpAddressRanges':
-          pulumi.Input.encodeList<
-            GetSubnetDhcpAddressRange,
-            Map<String, dynamic>
-          >(dhcpAddressRanges, (value) => value.toMap()),
+      'dhcpAddressRanges': pulumi.Input.encodeList<GetSubnetDhcpAddressRange, Map<String, dynamic>>(dhcpAddressRanges, (value) => value.toMap()),
       'gatewayId': gatewayId,
       'gatewayIp': gatewayIp,
       'id': id,
@@ -80,12 +75,7 @@ class GetSubnetResult {
   factory GetSubnetResult.fromMap(Map<String, dynamic> map) {
     return GetSubnetResult(
       createTime: map['createTime'] as String,
-      dhcpAddressRanges: pulumi.Input.decodeList<GetSubnetDhcpAddressRange>(
-        map['dhcpAddressRanges']!,
-        (value) => GetSubnetDhcpAddressRange.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      dhcpAddressRanges: pulumi.Input.decodeList<GetSubnetDhcpAddressRange>(map['dhcpAddressRanges']!, (value) => GetSubnetDhcpAddressRange.fromMap((value as Map).cast<String, dynamic>())),
       gatewayId: map['gatewayId'] as String,
       gatewayIp: map['gatewayIp'] as String,
       id: map['id'] as String,
@@ -101,3 +91,4 @@ class GetSubnetResult {
     );
   }
 }
+

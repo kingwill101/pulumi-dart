@@ -6,25 +6,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScheduleState {
   /// The CRON expression of the time-based schedule to be created.
   final pulumi.Input<String>? cronExpression;
-
   /// The description of the time-based schedule to be created.
   final pulumi.Input<String>? description;
-
   /// Specifies whether to enable the time-based schedule you want to create. Valid values: `false`, `true`.
   final pulumi.Input<bool>? enable;
-
   /// The name of the flow bound to the time-based schedule you want to create.
   final pulumi.Input<String>? flowName;
-
   /// The time when the time-based schedule was last updated.
   final pulumi.Input<String>? lastModifiedTime;
-
   /// The trigger message of the time-based schedule to be created. It must be in JSON object format.
   final pulumi.Input<String>? payload;
-
   /// The ID of the time-based schedule.
   final pulumi.Input<String>? scheduleId;
-
   /// The name of the time-based schedule to be created.
   final pulumi.Input<String>? scheduleName;
 
@@ -63,46 +56,15 @@ class ScheduleState {
 
   factory ScheduleState.fromMap(Map<String, dynamic> map) {
     return ScheduleState(
-      cronExpression: (() {
-        final guardedValue = map['cronExpression'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      enable: (() {
-        final guardedValue = map['enable'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      flowName: (() {
-        final guardedValue = map['flowName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      lastModifiedTime: (() {
-        final guardedValue = map['lastModifiedTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      payload: (() {
-        final guardedValue = map['payload'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      scheduleId: (() {
-        final guardedValue = map['scheduleId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      scheduleName: (() {
-        final guardedValue = map['scheduleName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      cronExpression: (() { final guardedValue = map['cronExpression']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      enable: (() { final guardedValue = map['enable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      flowName: (() { final guardedValue = map['flowName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      lastModifiedTime: (() { final guardedValue = map['lastModifiedTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      payload: (() { final guardedValue = map['payload']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      scheduleId: (() { final guardedValue = map['scheduleId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      scheduleName: (() { final guardedValue = map['scheduleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

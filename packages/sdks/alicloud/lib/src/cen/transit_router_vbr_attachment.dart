@@ -317,45 +317,32 @@ import 'transit_router_vbr_attachment_state.dart';
 class TransitRouterVbrAttachment extends pulumi.CustomResource {
   /// Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to the VBR. Default value: `false`. Valid values:
   late final pulumi.Output<bool?> autoPublishRouteEnabled;
-
   /// The ID of the CEN.
   late final pulumi.Output<String> cenId;
-
   /// Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
   late final pulumi.Output<bool?> dryRun;
-
   /// The resource type of the transit router vbr attachment. Default value: `VBR`. Valid values: `VBR`.
   late final pulumi.Output<String?> resourceType;
-
   /// Whether to enabled route table association. **NOTE:** "Field `route_table_association_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
   late final pulumi.Output<bool?> routeTableAssociationEnabled;
-
   /// Whether to enabled route table propagation. **NOTE:** "Field `route_table_propagation_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
   ///
   /// -&gt;**NOTE:** Ensure that the vbr is not used in Express Connect.
   late final pulumi.Output<bool?> routeTablePropagationEnabled;
-
   /// The status of the Transit Router VBR Attachment.
   late final pulumi.Output<String> status;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The description of the transit router vbr attachment.
   late final pulumi.Output<String?> transitRouterAttachmentDescription;
-
   /// The ID of the VBR connection.
   late final pulumi.Output<String> transitRouterAttachmentId;
-
   /// The name of the transit router vbr attachment.
   late final pulumi.Output<String?> transitRouterAttachmentName;
-
   /// The ID of the transit router.
   late final pulumi.Output<String> transitRouterId;
-
   /// The ID of the VBR.
   late final pulumi.Output<String> vbrId;
-
   /// The owner id of the vbr.
   late final pulumi.Output<String> vbrOwnerId;
 
@@ -368,32 +355,22 @@ class TransitRouterVbrAttachment extends pulumi.CustomResource {
     TransitRouterVbrAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cen/transitRouterVbrAttachment:TransitRouterVbrAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cen/transitRouterVbrAttachment:TransitRouterVbrAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoPublishRouteEnabled = registerOutput<bool?>('autoPublishRouteEnabled');
     cenId = registerOutput<String>('cenId');
     dryRun = registerOutput<bool?>('dryRun');
     resourceType = registerOutput<String?>('resourceType');
-    routeTableAssociationEnabled = registerOutput<bool?>(
-      'routeTableAssociationEnabled',
-    );
-    routeTablePropagationEnabled = registerOutput<bool?>(
-      'routeTablePropagationEnabled',
-    );
+    routeTableAssociationEnabled = registerOutput<bool?>('routeTableAssociationEnabled');
+    routeTablePropagationEnabled = registerOutput<bool?>('routeTablePropagationEnabled');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
-    transitRouterAttachmentDescription = registerOutput<String?>(
-      'transitRouterAttachmentDescription',
-    );
-    transitRouterAttachmentId = registerOutput<String>(
-      'transitRouterAttachmentId',
-    );
-    transitRouterAttachmentName = registerOutput<String?>(
-      'transitRouterAttachmentName',
-    );
+    transitRouterAttachmentDescription = registerOutput<String?>('transitRouterAttachmentDescription');
+    transitRouterAttachmentId = registerOutput<String>('transitRouterAttachmentId');
+    transitRouterAttachmentName = registerOutput<String?>('transitRouterAttachmentName');
     transitRouterId = registerOutput<String>('transitRouterId');
     vbrId = registerOutput<String>('vbrId');
     vbrOwnerId = registerOutput<String>('vbrOwnerId');
@@ -417,32 +394,22 @@ class TransitRouterVbrAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cen/transitRouterVbrAttachment:TransitRouterVbrAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cen/transitRouterVbrAttachment:TransitRouterVbrAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoPublishRouteEnabled = registerOutput<bool?>('autoPublishRouteEnabled');
     cenId = registerOutput<String>('cenId');
     dryRun = registerOutput<bool?>('dryRun');
     resourceType = registerOutput<String?>('resourceType');
-    routeTableAssociationEnabled = registerOutput<bool?>(
-      'routeTableAssociationEnabled',
-    );
-    routeTablePropagationEnabled = registerOutput<bool?>(
-      'routeTablePropagationEnabled',
-    );
+    routeTableAssociationEnabled = registerOutput<bool?>('routeTableAssociationEnabled');
+    routeTablePropagationEnabled = registerOutput<bool?>('routeTablePropagationEnabled');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
-    transitRouterAttachmentDescription = registerOutput<String?>(
-      'transitRouterAttachmentDescription',
-    );
-    transitRouterAttachmentId = registerOutput<String>(
-      'transitRouterAttachmentId',
-    );
-    transitRouterAttachmentName = registerOutput<String?>(
-      'transitRouterAttachmentName',
-    );
+    transitRouterAttachmentDescription = registerOutput<String?>('transitRouterAttachmentDescription');
+    transitRouterAttachmentId = registerOutput<String>('transitRouterAttachmentId');
+    transitRouterAttachmentName = registerOutput<String?>('transitRouterAttachmentName');
     transitRouterId = registerOutput<String>('transitRouterId');
     vbrId = registerOutput<String>('vbrId');
     vbrOwnerId = registerOutput<String>('vbrOwnerId');

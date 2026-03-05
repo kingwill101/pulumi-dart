@@ -7,22 +7,17 @@ import 'get_environments_environment.dart';
 class GetEnvironmentsResult {
   /// The type of the environment instance.
   final String? environmentType;
-
   /// A list of ARMS Environments. Each element contains the following attributes:
   final List<GetEnvironmentsEnvironment> environments;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
   final String? nameRegex;
-
   /// A list of ARMS Environment names.
   final List<String> names;
   final String? outputFile;
-
   /// The ID of the resource group.
   final String? resourceGroupId;
-
   /// The tags of the environment resource.
   final Map<String, String>? tags;
 
@@ -51,11 +46,7 @@ class GetEnvironmentsResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'environmentType': ?environmentType,
-      'environments':
-          pulumi.Input.encodeList<
-            GetEnvironmentsEnvironment,
-            Map<String, dynamic>
-          >(environments, (value) => value.toMap()),
+      'environments': pulumi.Input.encodeList<GetEnvironmentsEnvironment, Map<String, dynamic>>(environments, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'nameRegex': ?nameRegex,
@@ -68,40 +59,16 @@ class GetEnvironmentsResult {
 
   factory GetEnvironmentsResult.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentsResult(
-      environmentType: (() {
-        final guardedValue = map['environmentType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      environments: pulumi.Input.decodeList<GetEnvironmentsEnvironment>(
-        map['environments']!,
-        (value) => GetEnvironmentsEnvironment.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      environmentType: (() { final guardedValue = map['environmentType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      environments: pulumi.Input.decodeList<GetEnvironmentsEnvironment>(map['environments']!, (value) => GetEnvironmentsEnvironment.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      resourceGroupId: (() {
-        final guardedValue = map['resourceGroupId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceGroupId: (() { final guardedValue = map['resourceGroupId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }
 }
+

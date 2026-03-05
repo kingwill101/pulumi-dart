@@ -29,9 +29,7 @@ class GetReplicationGroupLogDeliveryConfiguration {
     };
   }
 
-  factory GetReplicationGroupLogDeliveryConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetReplicationGroupLogDeliveryConfiguration.fromMap(Map<String, dynamic> map) {
     return GetReplicationGroupLogDeliveryConfiguration(
       destination: pulumi.Input.fromValue(map['destination'] as String),
       destinationType: pulumi.Input.fromValue(map['destinationType'] as String),
@@ -40,3 +38,4 @@ class GetReplicationGroupLogDeliveryConfiguration {
     );
   }
 }
+

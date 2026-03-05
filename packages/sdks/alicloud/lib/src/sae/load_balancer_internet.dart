@@ -568,13 +568,10 @@ import 'load_balancer_internet_state.dart';
 class LoadBalancerInternet extends pulumi.CustomResource {
   /// The target application ID that needs to be bound to the SLB.
   late final pulumi.Output<String> appId;
-
   /// Use designated public network SLBs that have been purchased to support non-shared instances.
   late final pulumi.Output<String> internetIp;
-
   /// The internet SLB ID.
   late final pulumi.Output<String?> internetSlbId;
-
   /// The bound private network SLB. See `internet` below.
   late final pulumi.Output<List<Map<String, dynamic>>> internets;
 
@@ -587,11 +584,11 @@ class LoadBalancerInternet extends pulumi.CustomResource {
     LoadBalancerInternetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:sae/loadBalancerInternet:LoadBalancerInternet',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:sae/loadBalancerInternet:LoadBalancerInternet',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appId = registerOutput<String>('appId');
     internetIp = registerOutput<String>('internetIp');
     internetSlbId = registerOutput<String?>('internetSlbId');
@@ -616,11 +613,11 @@ class LoadBalancerInternet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:sae/loadBalancerInternet:LoadBalancerInternet',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:sae/loadBalancerInternet:LoadBalancerInternet',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appId = registerOutput<String>('appId');
     internetIp = registerOutput<String>('internetIp');
     internetSlbId = registerOutput<String?>('internetSlbId');

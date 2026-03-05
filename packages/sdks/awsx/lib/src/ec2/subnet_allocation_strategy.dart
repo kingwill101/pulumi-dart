@@ -16,3 +16,4 @@ enum SubnetAllocationStrategy {
     throw ArgumentError('Unknown SubnetAllocationStrategy value: $value');
   }
 }
+

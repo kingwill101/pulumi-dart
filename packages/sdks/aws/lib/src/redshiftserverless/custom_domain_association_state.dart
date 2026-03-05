@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomDomainAssociationState {
   /// ARN of the certificate for the custom domain association.
   final pulumi.Input<String>? customDomainCertificateArn;
-
   /// Expiration time for the certificate.
   final pulumi.Input<String>? customDomainCertificateExpiryTime;
-
   /// Custom domain to associate with the workgroup.
   final pulumi.Input<String>? customDomainName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Name of the workgroup.
   final pulumi.Input<String>? workgroupName;
 
@@ -45,31 +41,12 @@ class CustomDomainAssociationState {
 
   factory CustomDomainAssociationState.fromMap(Map<String, dynamic> map) {
     return CustomDomainAssociationState(
-      customDomainCertificateArn: (() {
-        final guardedValue = map['customDomainCertificateArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      customDomainCertificateExpiryTime: (() {
-        final guardedValue = map['customDomainCertificateExpiryTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      customDomainName: (() {
-        final guardedValue = map['customDomainName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      workgroupName: (() {
-        final guardedValue = map['workgroupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      customDomainCertificateArn: (() { final guardedValue = map['customDomainCertificateArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      customDomainCertificateExpiryTime: (() { final guardedValue = map['customDomainCertificateExpiryTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      customDomainName: (() { final guardedValue = map['customDomainName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      workgroupName: (() { final guardedValue = map['workgroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

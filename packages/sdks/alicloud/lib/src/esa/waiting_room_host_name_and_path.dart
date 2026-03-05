@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WaitingRoomHostNameAndPath {
   /// The domain name.
   final pulumi.Input<String> domain;
-
   /// The path.
   final pulumi.Input<String> path;
-
   /// The subdomain.
   final pulumi.Input<String> subdomain;
 
@@ -38,3 +36,4 @@ class WaitingRoomHostNameAndPath {
     );
   }
 }
+

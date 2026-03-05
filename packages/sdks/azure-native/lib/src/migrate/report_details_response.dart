@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReportDetailsResponse {
   /// Report status.
   final pulumi.Input<String> reportStatus;
-
   /// Report type.
   final pulumi.Input<String> reportType;
 
   /// Creates a new [ReportDetailsResponse].
   /// [reportStatus] Report status.
   /// [reportType] Report type.
-  ReportDetailsResponse({required this.reportStatus, required this.reportType});
+  ReportDetailsResponse({
+    required this.reportStatus,
+    required this.reportType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,3 +31,4 @@ class ReportDetailsResponse {
     );
   }
 }
+

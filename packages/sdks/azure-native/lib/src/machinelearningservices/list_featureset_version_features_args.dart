@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListFeaturesetVersionFeaturesArgs {
   /// Featureset name. This is case-sensitive.
   final pulumi.Input<String> name;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Continuation token for pagination.
   final pulumi.Input<String>? skip;
-
   /// Comma-separated list of tag names (and optionally values). Example: tag1,tag2=value2
   final pulumi.Input<String>? tags;
-
   /// Featureset Version identifier. This is case-sensitive.
   final pulumi.Input<String> version;
-
   /// Name of Azure Machine Learning workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -55,21 +50,12 @@ class ListFeaturesetVersionFeaturesArgs {
   factory ListFeaturesetVersionFeaturesArgs.fromMap(Map<String, dynamic> map) {
     return ListFeaturesetVersionFeaturesArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      skip: (() {
-        final guardedValue = map['skip'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      skip: (() { final guardedValue = map['skip']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       version: pulumi.Input.fromValue(map['version'] as String),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
+

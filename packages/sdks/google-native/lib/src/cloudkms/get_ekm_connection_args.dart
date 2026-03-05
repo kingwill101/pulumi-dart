@@ -33,11 +33,8 @@ class GetEkmConnectionArgs {
     return GetEkmConnectionArgs(
       ekmConnectionId: pulumi.Input.fromValue(map['ekmConnectionId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

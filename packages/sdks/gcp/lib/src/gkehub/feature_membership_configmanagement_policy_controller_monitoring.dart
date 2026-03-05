@@ -8,21 +8,20 @@ class FeatureMembershipConfigmanagementPolicyControllerMonitoring {
 
   /// Creates a new [FeatureMembershipConfigmanagementPolicyControllerMonitoring].
   /// [backends] Specifies the list of backends Policy Controller will export to. Must be one of `CLOUD_MONITORING` or `PROMETHEUS`. Defaults to [`CLOUD_MONITORING`, `PROMETHEUS`]. Specifying an empty value `[]` disables metrics export.
-  FeatureMembershipConfigmanagementPolicyControllerMonitoring({this.backends});
+  FeatureMembershipConfigmanagementPolicyControllerMonitoring({
+    this.backends,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'backends': ?backends};
+    return <String, dynamic>{
+      'backends': ?backends,
+    };
   }
 
-  factory FeatureMembershipConfigmanagementPolicyControllerMonitoring.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FeatureMembershipConfigmanagementPolicyControllerMonitoring.fromMap(Map<String, dynamic> map) {
     return FeatureMembershipConfigmanagementPolicyControllerMonitoring(
-      backends: (() {
-        final guardedValue = map['backends'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      backends: (() { final guardedValue = map['backends']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

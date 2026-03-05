@@ -7,25 +7,18 @@ import 'vpc_peering_config_response_datastream_v1alpha1.dart';
 class GetPrivateConnectionDatastreamV1alpha1Result {
   /// The create time of the resource.
   final String createTime;
-
   /// Display name.
   final String displayName;
-
   /// In case of error, the details of the error in a user-friendly format.
   final ErrorResponseDatastreamV1alpha1 error;
-
   /// Labels.
   final Map<String, String> labels;
-
   /// The resource's name.
   final String name;
-
   /// The state of the Private Connection.
   final String state;
-
   /// The update time of the resource.
   final String updateTime;
-
   /// VPC Peering Config
   final VpcPeeringConfigResponseDatastreamV1alpha1 vpcPeeringConfig;
 
@@ -62,22 +55,17 @@ class GetPrivateConnectionDatastreamV1alpha1Result {
     };
   }
 
-  factory GetPrivateConnectionDatastreamV1alpha1Result.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetPrivateConnectionDatastreamV1alpha1Result.fromMap(Map<String, dynamic> map) {
     return GetPrivateConnectionDatastreamV1alpha1Result(
       createTime: map['createTime'] as String,
       displayName: map['displayName'] as String,
-      error: ErrorResponseDatastreamV1alpha1.fromMap(
-        (map['error']! as Map).cast<String, dynamic>(),
-      ),
+      error: ErrorResponseDatastreamV1alpha1.fromMap((map['error']! as Map).cast<String, dynamic>()),
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
       state: map['state'] as String,
       updateTime: map['updateTime'] as String,
-      vpcPeeringConfig: VpcPeeringConfigResponseDatastreamV1alpha1.fromMap(
-        (map['vpcPeeringConfig']! as Map).cast<String, dynamic>(),
-      ),
+      vpcPeeringConfig: VpcPeeringConfigResponseDatastreamV1alpha1.fromMap((map['vpcPeeringConfig']! as Map).cast<String, dynamic>()),
     );
   }
 }
+

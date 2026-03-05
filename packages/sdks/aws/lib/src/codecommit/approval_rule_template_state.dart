@@ -6,28 +6,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApprovalRuleTemplateState {
   /// The ID of the approval rule template
   final pulumi.Input<String>? approvalRuleTemplateId;
-
   /// The content of the approval rule template. Maximum of 3000 characters.
   final pulumi.Input<String>? content;
-
   /// The date the approval rule template was created, in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8).
   final pulumi.Input<String>? creationDate;
-
   /// The description of the approval rule template. Maximum of 1000 characters.
   final pulumi.Input<String>? description;
-
   /// The date the approval rule template was most recently changed, in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8).
   final pulumi.Input<String>? lastModifiedDate;
-
   /// The Amazon Resource Name (ARN) of the user who made the most recent changes to the approval rule template.
   final pulumi.Input<String>? lastModifiedUser;
-
   /// The name for the approval rule template. Maximum of 100 characters.
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The SHA-256 hash signature for the content of the approval rule template.
   final pulumi.Input<String>? ruleContentSha256;
 
@@ -69,51 +61,16 @@ class ApprovalRuleTemplateState {
 
   factory ApprovalRuleTemplateState.fromMap(Map<String, dynamic> map) {
     return ApprovalRuleTemplateState(
-      approvalRuleTemplateId: (() {
-        final guardedValue = map['approvalRuleTemplateId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      content: (() {
-        final guardedValue = map['content'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      creationDate: (() {
-        final guardedValue = map['creationDate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      lastModifiedDate: (() {
-        final guardedValue = map['lastModifiedDate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      lastModifiedUser: (() {
-        final guardedValue = map['lastModifiedUser'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ruleContentSha256: (() {
-        final guardedValue = map['ruleContentSha256'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      approvalRuleTemplateId: (() { final guardedValue = map['approvalRuleTemplateId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      content: (() { final guardedValue = map['content']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      creationDate: (() { final guardedValue = map['creationDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      lastModifiedDate: (() { final guardedValue = map['lastModifiedDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      lastModifiedUser: (() { final guardedValue = map['lastModifiedUser']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ruleContentSha256: (() { final guardedValue = map['ruleContentSha256']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

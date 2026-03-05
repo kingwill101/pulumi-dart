@@ -7,18 +7,14 @@ import 'get_caarecord_record.dart';
 class GetCAARecordResult {
   /// The FQDN of the DNS CAA Record.
   final String fqdn;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
-
   /// A list of values that make up the CAA record. Each `record` block supports fields documented below.
   final List<GetCAARecordRecord> records;
   final String resourceGroupName;
-
   /// A mapping of tags assigned to the resource.
   final Map<String, String> tags;
-
   /// The Time To Live (TTL) of the DNS record in seconds.
   final int ttl;
   final String zoneName;
@@ -48,11 +44,7 @@ class GetCAARecordResult {
       'fqdn': fqdn,
       'id': id,
       'name': name,
-      'records':
-          pulumi.Input.encodeList<GetCAARecordRecord, Map<String, dynamic>>(
-            records,
-            (value) => value.toMap(),
-          ),
+      'records': pulumi.Input.encodeList<GetCAARecordRecord, Map<String, dynamic>>(records, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'tags': tags,
       'ttl': ttl,
@@ -65,11 +57,7 @@ class GetCAARecordResult {
       fqdn: map['fqdn'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      records: pulumi.Input.decodeList<GetCAARecordRecord>(
-        map['records']!,
-        (value) =>
-            GetCAARecordRecord.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      records: pulumi.Input.decodeList<GetCAARecordRecord>(map['records']!, (value) => GetCAARecordRecord.fromMap((value as Map).cast<String, dynamic>())),
       resourceGroupName: map['resourceGroupName'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
       ttl: map['ttl'] as int,
@@ -77,3 +65,4 @@ class GetCAARecordResult {
     );
   }
 }
+

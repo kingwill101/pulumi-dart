@@ -15,3 +15,4 @@ enum AllocationState {
     throw ArgumentError('Unknown AllocationState value: $value');
   }
 }
+

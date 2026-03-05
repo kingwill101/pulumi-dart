@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIntegrationAccountSessionArgs {
   /// The integration account name.
   final pulumi.Input<String> integrationAccountName;
-
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
-
   /// The integration account session name.
   final pulumi.Input<String> sessionName;
 
@@ -36,13 +34,10 @@ class GetIntegrationAccountSessionArgs {
 
   factory GetIntegrationAccountSessionArgs.fromMap(Map<String, dynamic> map) {
     return GetIntegrationAccountSessionArgs(
-      integrationAccountName: pulumi.Input.fromValue(
-        map['integrationAccountName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      integrationAccountName: pulumi.Input.fromValue(map['integrationAccountName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       sessionName: pulumi.Input.fromValue(map['sessionName'] as String),
     );
   }
 }
+

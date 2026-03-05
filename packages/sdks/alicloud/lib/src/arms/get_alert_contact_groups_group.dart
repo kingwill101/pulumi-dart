@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAlertContactGroupsGroup {
   /// The first ID of the resource.
   final pulumi.Input<String> alertContactGroupId;
-
   /// The name of the resource.
   final pulumi.Input<String> alertContactGroupName;
-
   /// contact ids.
   final pulumi.Input<List<String>> contactIds;
-
   /// The creation time of the resource.
   final pulumi.Input<String> createTime;
-
   /// The ID of the Alert Contact Group.
   final pulumi.Input<String> id;
 
@@ -44,17 +40,12 @@ class GetAlertContactGroupsGroup {
 
   factory GetAlertContactGroupsGroup.fromMap(Map<String, dynamic> map) {
     return GetAlertContactGroupsGroup(
-      alertContactGroupId: pulumi.Input.fromValue(
-        map['alertContactGroupId'] as String,
-      ),
-      alertContactGroupName: pulumi.Input.fromValue(
-        map['alertContactGroupName'] as String,
-      ),
-      contactIds: pulumi.Input.fromValue(
-        (map['contactIds'] as List).cast<String>(),
-      ),
+      alertContactGroupId: pulumi.Input.fromValue(map['alertContactGroupId'] as String),
+      alertContactGroupName: pulumi.Input.fromValue(map['alertContactGroupName'] as String),
+      contactIds: pulumi.Input.fromValue((map['contactIds'] as List).cast<String>()),
       createTime: pulumi.Input.fromValue(map['createTime'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
     );
   }
 }
+

@@ -18,3 +18,4 @@ enum LoggingConfigProtocol {
     throw ArgumentError('Unknown LoggingConfigProtocol value: $value');
   }
 }
+

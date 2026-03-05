@@ -5,9 +5,7 @@ import 'lifecycle_policy_policy_detail_action_include_resources.dart';
 
 class LifecyclePolicyPolicyDetailAction {
   /// Specifies the resources that the lifecycle policy applies to. Detailed below.
-  final pulumi.Input<LifecyclePolicyPolicyDetailActionIncludeResources>?
-  includeResources;
-
+  final pulumi.Input<LifecyclePolicyPolicyDetailActionIncludeResources>? includeResources;
   /// Specifies the lifecycle action to take. Valid values: `DELETE`, `DEPRECATE` or `DISABLE`.
   ///
   /// The following arguments are optional:
@@ -23,27 +21,16 @@ class LifecyclePolicyPolicyDetailAction {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'includeResources':
-          ?pulumi.Input.mapOptionalInputValue<
-            LifecyclePolicyPolicyDetailActionIncludeResources,
-            Map<String, dynamic>
-          >(includeResources, (value) => value.toMap()),
+      'includeResources': ?pulumi.Input.mapOptionalInputValue<LifecyclePolicyPolicyDetailActionIncludeResources, Map<String, dynamic>>(includeResources, (value) => value.toMap()),
       'type': type,
     };
   }
 
   factory LifecyclePolicyPolicyDetailAction.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyPolicyDetailAction(
-      includeResources: (() {
-        final guardedValue = map['includeResources'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          LifecyclePolicyPolicyDetailActionIncludeResources.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      includeResources: (() { final guardedValue = map['includeResources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LifecyclePolicyPolicyDetailActionIncludeResources.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

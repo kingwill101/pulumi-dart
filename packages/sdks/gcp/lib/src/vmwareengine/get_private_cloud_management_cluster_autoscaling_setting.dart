@@ -15,22 +15,16 @@ class GetPrivateCloudManagementClusterAutoscalingSetting {
   ///
   /// Currently the map must contain only one element
   /// that describes the autoscaling policy for compute nodes.
-  final pulumi.Input<
-    List<GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicy>
-  >
-  autoscalingPolicies;
-
+  final pulumi.Input<List<GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicy>> autoscalingPolicies;
   /// The minimum duration between consecutive autoscale operations.
   /// It starts once addition or removal of nodes is fully completed.
   /// Minimum cool down period is 30m.
   /// Cool down period must be in whole minutes (for example, 30m, 31m, 50m).
   /// Mandatory for successful addition of autoscaling settings in cluster.
   final pulumi.Input<String> coolDownPeriod;
-
   /// Maximum number of nodes of any type in a cluster.
   /// Mandatory for successful addition of autoscaling settings in cluster.
   final pulumi.Input<int> maxClusterNodeCount;
-
   /// Minimum number of nodes of any type in a cluster.
   /// Mandatory for successful addition of autoscaling settings in cluster.
   final pulumi.Input<int> minClusterNodeCount;
@@ -49,48 +43,20 @@ class GetPrivateCloudManagementClusterAutoscalingSetting {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoscalingPolicies':
-          pulumi.Input.mapInputValue<
-            List<
-              GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicy
-            >,
-            List<Map<String, dynamic>>
-          >(
-            autoscalingPolicies,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicy,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'autoscalingPolicies': pulumi.Input.mapInputValue<List<GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicy>, List<Map<String, dynamic>>>(autoscalingPolicies, (value) => pulumi.Input.encodeList<GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicy, Map<String, dynamic>>(value, (value) => value.toMap())),
       'coolDownPeriod': coolDownPeriod,
       'maxClusterNodeCount': maxClusterNodeCount,
       'minClusterNodeCount': minClusterNodeCount,
     };
   }
 
-  factory GetPrivateCloudManagementClusterAutoscalingSetting.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetPrivateCloudManagementClusterAutoscalingSetting.fromMap(Map<String, dynamic> map) {
     return GetPrivateCloudManagementClusterAutoscalingSetting(
-      autoscalingPolicies: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicy
-        >(
-          map['autoscalingPolicies']!,
-          (value) =>
-              GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicy.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
+      autoscalingPolicies: pulumi.Input.fromValue(pulumi.Input.decodeList<GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicy>(map['autoscalingPolicies']!, (value) => GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicy.fromMap((value as Map).cast<String, dynamic>()))),
       coolDownPeriod: pulumi.Input.fromValue(map['coolDownPeriod'] as String),
-      maxClusterNodeCount: pulumi.Input.fromValue(
-        map['maxClusterNodeCount'] as int,
-      ),
-      minClusterNodeCount: pulumi.Input.fromValue(
-        map['minClusterNodeCount'] as int,
-      ),
+      maxClusterNodeCount: pulumi.Input.fromValue(map['maxClusterNodeCount'] as int),
+      minClusterNodeCount: pulumi.Input.fromValue(map['minClusterNodeCount'] as int),
     );
   }
 }
+

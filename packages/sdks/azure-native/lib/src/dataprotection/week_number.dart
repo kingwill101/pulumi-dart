@@ -17,3 +17,4 @@ enum WeekNumber {
     throw ArgumentError('Unknown WeekNumber value: $value');
   }
 }
+

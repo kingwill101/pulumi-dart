@@ -9,10 +9,14 @@ class EncryptionConfigResponse {
 
   /// Creates a new [EncryptionConfigResponse].
   /// [kmsKey] The Cloud KMS resource identifier of the customer-managed encryption key used to protect a resource, such as a disks. It has the following format: `projects/{PROJECT_ID}/locations/{REGION}/keyRings/{KEY_RING_NAME}/cryptoKeys/{KEY_NAME}`
-  EncryptionConfigResponse({required this.kmsKey});
+  EncryptionConfigResponse({
+    required this.kmsKey,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'kmsKey': kmsKey};
+    return <String, dynamic>{
+      'kmsKey': kmsKey,
+    };
   }
 
   factory EncryptionConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class EncryptionConfigResponse {
     );
   }
 }
+

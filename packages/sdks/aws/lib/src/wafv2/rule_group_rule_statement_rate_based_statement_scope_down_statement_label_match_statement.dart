@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RuleGroupRuleStatementRateBasedStatementScopeDownStatementLabelMatchStatement {
   /// The string to match against.
   final pulumi.Input<String> key;
-
   /// Specify whether you want to match using the label name or just the namespace. Valid values are `LABEL` or `NAMESPACE`.
   final pulumi.Input<String> scope;
 
@@ -18,15 +17,17 @@ class RuleGroupRuleStatementRateBasedStatementScopeDownStatementLabelMatchStatem
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': key, 'scope': scope};
+    return <String, dynamic>{
+      'key': key,
+      'scope': scope,
+    };
   }
 
-  factory RuleGroupRuleStatementRateBasedStatementScopeDownStatementLabelMatchStatement.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RuleGroupRuleStatementRateBasedStatementScopeDownStatementLabelMatchStatement.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementRateBasedStatementScopeDownStatementLabelMatchStatement(
       key: pulumi.Input.fromValue(map['key'] as String),
       scope: pulumi.Input.fromValue(map['scope'] as String),
     );
   }
 }
+

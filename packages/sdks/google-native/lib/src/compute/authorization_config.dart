@@ -10,38 +10,20 @@ class AuthorizationConfig {
 
   /// Creates a new [AuthorizationConfig].
   /// [policies] List of RbacPolicies.
-  AuthorizationConfig({this.policies});
+  AuthorizationConfig({
+    this.policies,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'policies':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<RbacPolicy>,
-            List<Map<String, dynamic>>
-          >(
-            policies,
-            (value) =>
-                pulumi.Input.encodeList<RbacPolicy, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'policies': ?pulumi.Input.mapOptionalInputValue<List<RbacPolicy>, List<Map<String, dynamic>>>(policies, (value) => pulumi.Input.encodeList<RbacPolicy, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AuthorizationConfig.fromMap(Map<String, dynamic> map) {
     return AuthorizationConfig(
-      policies: (() {
-        final guardedValue = map['policies'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<RbacPolicy>(
-            guardedValue,
-            (value) =>
-                RbacPolicy.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
+      policies: (() { final guardedValue = map['policies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RbacPolicy>(guardedValue, (value) => RbacPolicy.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

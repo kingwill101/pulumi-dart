@@ -7,32 +7,23 @@ import 'get_profile_referral.dart';
 class GetProfileResult {
   /// The list of SSH Keys authorized to use Lish for this user. This value is ignored if lish_auth_method is 'disabled'.
   final List<String> authorizedKeys;
-
   /// The profile email address. This address will be used for communication with Linode as necessary.
   final String email;
-
   /// If true, email notifications will be sent about account activity. If false, when false business-critical communications may still be sent through email.
   final bool emailNotifications;
   final String id;
-
   /// If true, logins for the user will only be allowed from whitelisted IPs. This setting is currently deprecated, and cannot be enabled.
   final bool ipWhitelistEnabled;
-
   /// The methods of authentication allowed when connecting via Lish. 'keys_only' is the most secure with the intent to use Lish, and 'disabled' is recommended for users that will not use Lish at all.
   final String lishAuthMethod;
-
   /// Credit Card information associated with this Account.
   final List<GetProfileReferral> referrals;
-
   /// If true, the user has restrictions on what can be accessed on the Account.
   final bool restricted;
-
   /// The profile's preferred timezone. This is not used by the API, and is for the benefit of clients only. All times the API returns are in UTC.
   final String timezone;
-
   /// If true, logins from untrusted computers will require Two Factor Authentication.
   final bool twoFactorAuth;
-
   /// The username for logging in to Linode services.
   final String username;
 
@@ -70,11 +61,7 @@ class GetProfileResult {
       'id': id,
       'ipWhitelistEnabled': ipWhitelistEnabled,
       'lishAuthMethod': lishAuthMethod,
-      'referrals':
-          pulumi.Input.encodeList<GetProfileReferral, Map<String, dynamic>>(
-            referrals,
-            (value) => value.toMap(),
-          ),
+      'referrals': pulumi.Input.encodeList<GetProfileReferral, Map<String, dynamic>>(referrals, (value) => value.toMap()),
       'restricted': restricted,
       'timezone': timezone,
       'twoFactorAuth': twoFactorAuth,
@@ -90,11 +77,7 @@ class GetProfileResult {
       id: map['id'] as String,
       ipWhitelistEnabled: map['ipWhitelistEnabled'] as bool,
       lishAuthMethod: map['lishAuthMethod'] as String,
-      referrals: pulumi.Input.decodeList<GetProfileReferral>(
-        map['referrals']!,
-        (value) =>
-            GetProfileReferral.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      referrals: pulumi.Input.decodeList<GetProfileReferral>(map['referrals']!, (value) => GetProfileReferral.fromMap((value as Map).cast<String, dynamic>())),
       restricted: map['restricted'] as bool,
       timezone: map['timezone'] as String,
       twoFactorAuth: map['twoFactorAuth'] as bool,
@@ -102,3 +85,4 @@ class GetProfileResult {
     );
   }
 }
+

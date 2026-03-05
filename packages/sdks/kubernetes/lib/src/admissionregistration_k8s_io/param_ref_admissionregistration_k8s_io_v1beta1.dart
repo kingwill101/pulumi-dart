@@ -11,7 +11,6 @@ class ParamRefAdmissionregistrationK8sIoV1beta1 {
   ///
   /// A single parameter used for all admission requests can be configured by setting the `name` field, leaving `selector` blank, and setting namespace if `paramKind` is namespace-scoped.
   final pulumi.Input<String>? name;
-
   /// namespace is the namespace of the referenced resource. Allows limiting the search for params to a specific namespace. Applies to both `name` and `selector` fields.
   ///
   /// A per-namespace parameter may be used by specifying a namespace-scoped `paramKind` in the policy and leaving this field empty.
@@ -20,14 +19,12 @@ class ParamRefAdmissionregistrationK8sIoV1beta1 {
   ///
   /// - If `paramKind` is namespace-scoped, the namespace of the object being evaluated for admission will be used when this field is left unset. Take care that if this is left empty the binding must not match any cluster-scoped resources, which will result in an error.
   final pulumi.Input<String>? namespace;
-
   /// `parameterNotFoundAction` controls the behavior of the binding when the resource exists, and name or selector is valid, but there are no parameters matched by the binding. If the value is set to `Allow`, then no matched parameters will be treated as successful validation by the binding. If set to `Deny`, then no matched parameters will be subject to the `failurePolicy` of the policy.
   ///
   /// Allowed values are `Allow` or `Deny`
   ///
   /// Required
   final pulumi.Input<String>? parameterNotFoundAction;
-
   /// selector can be used to match multiple param objects based on their labels. Supply selector: {} to match all resources of the ParamKind.
   ///
   /// If multiple params are found, they are all evaluated with the policy expressions and the results are ANDed together.
@@ -52,40 +49,17 @@ class ParamRefAdmissionregistrationK8sIoV1beta1 {
       'name': ?name,
       'namespace': ?namespace,
       'parameterNotFoundAction': ?parameterNotFoundAction,
-      'selector':
-          ?pulumi.Input.mapOptionalInputValue<
-            LabelSelector,
-            Map<String, dynamic>
-          >(selector, (value) => value.toMap()),
+      'selector': ?pulumi.Input.mapOptionalInputValue<LabelSelector, Map<String, dynamic>>(selector, (value) => value.toMap()),
     };
   }
 
-  factory ParamRefAdmissionregistrationK8sIoV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ParamRefAdmissionregistrationK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return ParamRefAdmissionregistrationK8sIoV1beta1(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      namespace: (() {
-        final guardedValue = map['namespace'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      parameterNotFoundAction: (() {
-        final guardedValue = map['parameterNotFoundAction'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      selector: (() {
-        final guardedValue = map['selector'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          LabelSelector.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      namespace: (() { final guardedValue = map['namespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      parameterNotFoundAction: (() { final guardedValue = map['parameterNotFoundAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      selector: (() { final guardedValue = map['selector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LabelSelector.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

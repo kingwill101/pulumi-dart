@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudApigeeV1TraceSamplingConfigResponse {
   /// Sampler of distributed tracing. OFF is the default value.
   final pulumi.Input<String> sampler;
-
   /// Field sampling rate. This value is only applicable when using the PROBABILITY sampler. The supported values are &gt; 0 and &lt;= 0.5.
   final pulumi.Input<double> samplingRate;
 
@@ -19,15 +18,17 @@ class GoogleCloudApigeeV1TraceSamplingConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'sampler': sampler, 'samplingRate': samplingRate};
+    return <String, dynamic>{
+      'sampler': sampler,
+      'samplingRate': samplingRate,
+    };
   }
 
-  factory GoogleCloudApigeeV1TraceSamplingConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudApigeeV1TraceSamplingConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1TraceSamplingConfigResponse(
       sampler: pulumi.Input.fromValue(map['sampler'] as String),
       samplingRate: pulumi.Input.fromValue(map['samplingRate'] as double),
     );
   }
 }
+

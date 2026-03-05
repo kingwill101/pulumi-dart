@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse {
   /// Live Agent chat button ID.
   final pulumi.Input<String> buttonId;
-
   /// Live Agent deployment ID.
   final pulumi.Input<String> deploymentId;
-
   /// Domain of the Live Agent endpoint for this agent. You can find the endpoint URL in the `Live Agent settings` page. For example if URL has the form https://d.la4-c2-phx.salesforceliveagent.com/..., you should fill in d.la4-c2-phx.salesforceliveagent.com.
   final pulumi.Input<String> endpointDomain;
-
   /// The organization ID of the Salesforce account.
   final pulumi.Input<String> organizationId;
 
@@ -37,9 +34,7 @@ class GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigRes
     };
   }
 
-  factory GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse(
       buttonId: pulumi.Input.fromValue(map['buttonId'] as String),
       deploymentId: pulumi.Input.fromValue(map['deploymentId'] as String),
@@ -48,3 +43,4 @@ class GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigRes
     );
   }
 }
+

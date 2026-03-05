@@ -18,3 +18,4 @@ enum EventCode {
     throw ArgumentError('Unknown EventCode value: $value');
   }
 }
+

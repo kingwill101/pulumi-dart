@@ -8,17 +8,20 @@ class GetBrokerEngineTypesBrokerEngineTypeEngineVersion {
 
   /// Creates a new [GetBrokerEngineTypesBrokerEngineTypeEngineVersion].
   /// [name] Name of the engine version.
-  GetBrokerEngineTypesBrokerEngineTypeEngineVersion({required this.name});
+  GetBrokerEngineTypesBrokerEngineTypeEngineVersion({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
-  factory GetBrokerEngineTypesBrokerEngineTypeEngineVersion.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetBrokerEngineTypesBrokerEngineTypeEngineVersion.fromMap(Map<String, dynamic> map) {
     return GetBrokerEngineTypesBrokerEngineTypeEngineVersion(
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

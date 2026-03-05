@@ -10,17 +10,13 @@ import 'shared_storage_resource_names.dart';
 class ThreeTierFullResourceNames {
   /// The full resource names object for application layer resources. The number of entries in this list should be equal to the number VMs to be created for application layer.
   final pulumi.Input<ApplicationServerFullResourceNames>? applicationServer;
-
   /// The full resource names object for central server layer resources.
   final pulumi.Input<CentralServerFullResourceNames>? centralServer;
-
   /// The full resource names object for database layer resources. The number of entries in this list should be equal to the number VMs to be created for database layer.
   final pulumi.Input<DatabaseServerFullResourceNames>? databaseServer;
-
   /// The pattern type to be used for resource naming.
   /// Expected value is 'FullResourceName'.
   final pulumi.Input<String> namingPatternType;
-
   /// The resource names object for shared storage.
   final pulumi.Input<SharedStorageResourceNames>? sharedStorage;
 
@@ -40,71 +36,22 @@ class ThreeTierFullResourceNames {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'applicationServer':
-          ?pulumi.Input.mapOptionalInputValue<
-            ApplicationServerFullResourceNames,
-            Map<String, dynamic>
-          >(applicationServer, (value) => value.toMap()),
-      'centralServer':
-          ?pulumi.Input.mapOptionalInputValue<
-            CentralServerFullResourceNames,
-            Map<String, dynamic>
-          >(centralServer, (value) => value.toMap()),
-      'databaseServer':
-          ?pulumi.Input.mapOptionalInputValue<
-            DatabaseServerFullResourceNames,
-            Map<String, dynamic>
-          >(databaseServer, (value) => value.toMap()),
+      'applicationServer': ?pulumi.Input.mapOptionalInputValue<ApplicationServerFullResourceNames, Map<String, dynamic>>(applicationServer, (value) => value.toMap()),
+      'centralServer': ?pulumi.Input.mapOptionalInputValue<CentralServerFullResourceNames, Map<String, dynamic>>(centralServer, (value) => value.toMap()),
+      'databaseServer': ?pulumi.Input.mapOptionalInputValue<DatabaseServerFullResourceNames, Map<String, dynamic>>(databaseServer, (value) => value.toMap()),
       'namingPatternType': namingPatternType,
-      'sharedStorage':
-          ?pulumi.Input.mapOptionalInputValue<
-            SharedStorageResourceNames,
-            Map<String, dynamic>
-          >(sharedStorage, (value) => value.toMap()),
+      'sharedStorage': ?pulumi.Input.mapOptionalInputValue<SharedStorageResourceNames, Map<String, dynamic>>(sharedStorage, (value) => value.toMap()),
     };
   }
 
   factory ThreeTierFullResourceNames.fromMap(Map<String, dynamic> map) {
     return ThreeTierFullResourceNames(
-      applicationServer: (() {
-        final guardedValue = map['applicationServer'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ApplicationServerFullResourceNames.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      centralServer: (() {
-        final guardedValue = map['centralServer'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CentralServerFullResourceNames.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      databaseServer: (() {
-        final guardedValue = map['databaseServer'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DatabaseServerFullResourceNames.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      namingPatternType: pulumi.Input.fromValue(
-        map['namingPatternType'] as String,
-      ),
-      sharedStorage: (() {
-        final guardedValue = map['sharedStorage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SharedStorageResourceNames.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      applicationServer: (() { final guardedValue = map['applicationServer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ApplicationServerFullResourceNames.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      centralServer: (() { final guardedValue = map['centralServer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CentralServerFullResourceNames.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      databaseServer: (() { final guardedValue = map['databaseServer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatabaseServerFullResourceNames.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      namingPatternType: pulumi.Input.fromValue(map['namingPatternType'] as String),
+      sharedStorage: (() { final guardedValue = map['sharedStorage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SharedStorageResourceNames.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

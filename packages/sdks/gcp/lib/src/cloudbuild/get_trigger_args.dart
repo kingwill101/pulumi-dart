@@ -11,10 +11,8 @@ class GetTriggerArgs {
   ///
   /// - - -
   final pulumi.Input<String> location;
-
   /// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The unique identifier for the trigger..
   final pulumi.Input<String> triggerId;
 
@@ -39,12 +37,9 @@ class GetTriggerArgs {
   factory GetTriggerArgs.fromMap(Map<String, dynamic> map) {
     return GetTriggerArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       triggerId: pulumi.Input.fromValue(map['triggerId'] as String),
     );
   }
 }
+

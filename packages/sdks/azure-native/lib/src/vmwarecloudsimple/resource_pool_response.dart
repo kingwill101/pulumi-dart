@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourcePoolResponse {
   /// Hierarchical resource pool name
   final pulumi.Input<String> fullName;
-
   /// resource pool id (privateCloudId:vsphereId)
   final pulumi.Input<String> id;
-
   /// Azure region
   final pulumi.Input<String> location;
-
   /// {ResourcePoolName}
   final pulumi.Input<String> name;
-
   /// The Private Cloud Id
   final pulumi.Input<String> privateCloudId;
-
   /// {resourceProviderNamespace}/{resourceType}
   final pulumi.Input<String> type;
 
@@ -60,3 +55,4 @@ class ResourcePoolResponse {
     );
   }
 }
+

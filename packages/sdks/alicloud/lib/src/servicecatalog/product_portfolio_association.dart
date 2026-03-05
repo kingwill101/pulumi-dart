@@ -253,7 +253,6 @@ import 'product_portfolio_association_state.dart';
 class ProductPortfolioAssociation extends pulumi.CustomResource {
   /// Product Portfolio ID
   late final pulumi.Output<String> portfolioId;
-
   /// Product ID
   late final pulumi.Output<String> productId;
 
@@ -266,11 +265,11 @@ class ProductPortfolioAssociation extends pulumi.CustomResource {
     ProductPortfolioAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:servicecatalog/productPortfolioAssociation:ProductPortfolioAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:servicecatalog/productPortfolioAssociation:ProductPortfolioAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     portfolioId = registerOutput<String>('portfolioId');
     productId = registerOutput<String>('productId');
   }
@@ -293,11 +292,11 @@ class ProductPortfolioAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:servicecatalog/productPortfolioAssociation:ProductPortfolioAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:servicecatalog/productPortfolioAssociation:ProductPortfolioAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     portfolioId = registerOutput<String>('portfolioId');
     productId = registerOutput<String>('productId');
   }

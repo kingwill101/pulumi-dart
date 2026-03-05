@@ -342,84 +342,53 @@ import 'system_topic_event_subscription_webhook_endpoint.dart';
 /// ```
 class SystemTopicEventSubscription extends pulumi.CustomResource {
   /// A `advanced_filter` block as defined below.
-  late final pulumi.Output<SystemTopicEventSubscriptionAdvancedFilter?>
-  advancedFilter;
-
+  late final pulumi.Output<SystemTopicEventSubscriptionAdvancedFilter?> advancedFilter;
   /// Specifies whether advanced filters should be evaluated against an array of values instead of expecting a singular value. Defaults to `false`.
   late final pulumi.Output<bool?> advancedFilteringOnArraysEnabled;
-
   /// An `azure_function_endpoint` block as defined below.
-  late final pulumi.Output<SystemTopicEventSubscriptionAzureFunctionEndpoint?>
-  azureFunctionEndpoint;
-
+  late final pulumi.Output<SystemTopicEventSubscriptionAzureFunctionEndpoint?> azureFunctionEndpoint;
   /// A `dead_letter_identity` block as defined below.
   ///
   /// &gt; **Note:** `storage_blob_dead_letter_destination` must be specified when a `dead_letter_identity` is specified
-  late final pulumi.Output<SystemTopicEventSubscriptionDeadLetterIdentity?>
-  deadLetterIdentity;
-
+  late final pulumi.Output<SystemTopicEventSubscriptionDeadLetterIdentity?> deadLetterIdentity;
   /// A `delivery_identity` block as defined below.
-  late final pulumi.Output<SystemTopicEventSubscriptionDeliveryIdentity?>
-  deliveryIdentity;
-
+  late final pulumi.Output<SystemTopicEventSubscriptionDeliveryIdentity?> deliveryIdentity;
   /// One or more `delivery_property` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> deliveryProperties;
-
   /// Specifies the event delivery schema for the event subscription. Possible values include: `EventGridSchema`, `CloudEventSchemaV1_0`, `CustomInputSchema`. Defaults to `EventGridSchema`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> eventDeliverySchema;
-
   /// Specifies the id where the Event Hub is located.
   late final pulumi.Output<String> eventhubEndpointId;
-
   /// Specifies the expiration time of the event subscription (Datetime Format `RFC 3339`).
   late final pulumi.Output<String?> expirationTimeUtc;
-
   /// Specifies the id where the Hybrid Connection is located.
   late final pulumi.Output<String> hybridConnectionEndpointId;
-
   /// A list of applicable event types that need to be part of the event subscription.
   late final pulumi.Output<List<String>> includedEventTypes;
-
   /// A list of labels to assign to the event subscription.
   late final pulumi.Output<List<String>?> labels;
-
   /// The name which should be used for this Event Subscription. Changing this forces a new Event Subscription to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the Resource Group where the System Topic exists. Changing this forces a new Event Subscription to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A `retry_policy` block as defined below.
   late final pulumi.Output<SystemTopicEventSubscriptionRetryPolicy> retryPolicy;
-
   /// Specifies the id where the Service Bus Queue is located.
   late final pulumi.Output<String?> serviceBusQueueEndpointId;
-
   /// Specifies the id where the Service Bus Topic is located.
   late final pulumi.Output<String?> serviceBusTopicEndpointId;
-
   /// A `storage_blob_dead_letter_destination` block as defined below.
-  late final pulumi.Output<
-    SystemTopicEventSubscriptionStorageBlobDeadLetterDestination?
-  >
-  storageBlobDeadLetterDestination;
-
+  late final pulumi.Output<SystemTopicEventSubscriptionStorageBlobDeadLetterDestination?> storageBlobDeadLetterDestination;
   /// A `storage_queue_endpoint` block as defined below.
-  late final pulumi.Output<SystemTopicEventSubscriptionStorageQueueEndpoint?>
-  storageQueueEndpoint;
-
+  late final pulumi.Output<SystemTopicEventSubscriptionStorageQueueEndpoint?> storageQueueEndpoint;
   /// A `subject_filter` block as defined below.
-  late final pulumi.Output<SystemTopicEventSubscriptionSubjectFilter?>
-  subjectFilter;
-
+  late final pulumi.Output<SystemTopicEventSubscriptionSubjectFilter?> subjectFilter;
   /// The System Topic where the Event Subscription should be created in. Changing this forces a new Event Subscription to be created.
   late final pulumi.Output<String> systemTopic;
-
   /// A `webhook_endpoint` block as defined below.
   ///
   /// &gt; **Note:** One of `azure_function_endpoint`, `eventhub_endpoint_id`, `hybrid_connection_endpoint`, `hybrid_connection_endpoint_id`, `service_bus_queue_endpoint_id`, `service_bus_topic_endpoint_id`, `storage_queue_endpoint` or `webhook_endpoint` must be specified.
-  late final pulumi.Output<SystemTopicEventSubscriptionWebhookEndpoint?>
-  webhookEndpoint;
+  late final pulumi.Output<SystemTopicEventSubscriptionWebhookEndpoint?> webhookEndpoint;
 
   /// Creates a new [SystemTopicEventSubscription].
   /// [name] The Pulumi resource name.
@@ -430,133 +399,33 @@ class SystemTopicEventSubscription extends pulumi.CustomResource {
     SystemTopicEventSubscriptionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:eventgrid/systemTopicEventSubscription:SystemTopicEventSubscription',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    advancedFilter =
-        registerOutput<SystemTopicEventSubscriptionAdvancedFilter?>(
-          'advancedFilter',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SystemTopicEventSubscriptionAdvancedFilter.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    advancedFilteringOnArraysEnabled = registerOutput<bool?>(
-      'advancedFilteringOnArraysEnabled',
-    );
-    azureFunctionEndpoint =
-        registerOutput<SystemTopicEventSubscriptionAzureFunctionEndpoint?>(
-          'azureFunctionEndpoint',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SystemTopicEventSubscriptionAzureFunctionEndpoint.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    deadLetterIdentity =
-        registerOutput<SystemTopicEventSubscriptionDeadLetterIdentity?>(
-          'deadLetterIdentity',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SystemTopicEventSubscriptionDeadLetterIdentity.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    deliveryIdentity =
-        registerOutput<SystemTopicEventSubscriptionDeliveryIdentity?>(
-          'deliveryIdentity',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SystemTopicEventSubscriptionDeliveryIdentity.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    deliveryProperties = registerOutput<List<Map<String, dynamic>>?>(
-      'deliveryProperties',
-    );
+          'azure:eventgrid/systemTopicEventSubscription:SystemTopicEventSubscription',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    advancedFilter = registerOutput<SystemTopicEventSubscriptionAdvancedFilter?>('advancedFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemTopicEventSubscriptionAdvancedFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    advancedFilteringOnArraysEnabled = registerOutput<bool?>('advancedFilteringOnArraysEnabled');
+    azureFunctionEndpoint = registerOutput<SystemTopicEventSubscriptionAzureFunctionEndpoint?>('azureFunctionEndpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemTopicEventSubscriptionAzureFunctionEndpoint.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deadLetterIdentity = registerOutput<SystemTopicEventSubscriptionDeadLetterIdentity?>('deadLetterIdentity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemTopicEventSubscriptionDeadLetterIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deliveryIdentity = registerOutput<SystemTopicEventSubscriptionDeliveryIdentity?>('deliveryIdentity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemTopicEventSubscriptionDeliveryIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deliveryProperties = registerOutput<List<Map<String, dynamic>>?>('deliveryProperties');
     eventDeliverySchema = registerOutput<String?>('eventDeliverySchema');
     eventhubEndpointId = registerOutput<String>('eventhubEndpointId');
     expirationTimeUtc = registerOutput<String?>('expirationTimeUtc');
-    hybridConnectionEndpointId = registerOutput<String>(
-      'hybridConnectionEndpointId',
-    );
+    hybridConnectionEndpointId = registerOutput<String>('hybridConnectionEndpointId');
     includedEventTypes = registerOutput<List<String>>('includedEventTypes');
     labels = registerOutput<List<String>?>('labels');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    retryPolicy = registerOutput<SystemTopicEventSubscriptionRetryPolicy>(
-      'retryPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemTopicEventSubscriptionRetryPolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    serviceBusQueueEndpointId = registerOutput<String?>(
-      'serviceBusQueueEndpointId',
-    );
-    serviceBusTopicEndpointId = registerOutput<String?>(
-      'serviceBusTopicEndpointId',
-    );
-    storageBlobDeadLetterDestination =
-        registerOutput<
-          SystemTopicEventSubscriptionStorageBlobDeadLetterDestination?
-        >(
-          'storageBlobDeadLetterDestination',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SystemTopicEventSubscriptionStorageBlobDeadLetterDestination.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    storageQueueEndpoint =
-        registerOutput<SystemTopicEventSubscriptionStorageQueueEndpoint?>(
-          'storageQueueEndpoint',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SystemTopicEventSubscriptionStorageQueueEndpoint.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    subjectFilter = registerOutput<SystemTopicEventSubscriptionSubjectFilter?>(
-      'subjectFilter',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemTopicEventSubscriptionSubjectFilter.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    retryPolicy = registerOutput<SystemTopicEventSubscriptionRetryPolicy>('retryPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemTopicEventSubscriptionRetryPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    serviceBusQueueEndpointId = registerOutput<String?>('serviceBusQueueEndpointId');
+    serviceBusTopicEndpointId = registerOutput<String?>('serviceBusTopicEndpointId');
+    storageBlobDeadLetterDestination = registerOutput<SystemTopicEventSubscriptionStorageBlobDeadLetterDestination?>('storageBlobDeadLetterDestination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemTopicEventSubscriptionStorageBlobDeadLetterDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    storageQueueEndpoint = registerOutput<SystemTopicEventSubscriptionStorageQueueEndpoint?>('storageQueueEndpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemTopicEventSubscriptionStorageQueueEndpoint.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    subjectFilter = registerOutput<SystemTopicEventSubscriptionSubjectFilter?>('subjectFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemTopicEventSubscriptionSubjectFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemTopic = registerOutput<String>('systemTopic');
-    webhookEndpoint =
-        registerOutput<SystemTopicEventSubscriptionWebhookEndpoint?>(
-          'webhookEndpoint',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SystemTopicEventSubscriptionWebhookEndpoint.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    webhookEndpoint = registerOutput<SystemTopicEventSubscriptionWebhookEndpoint?>('webhookEndpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemTopicEventSubscriptionWebhookEndpoint.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [SystemTopicEventSubscription] resource's state with the given [name] and [id].
@@ -577,132 +446,32 @@ class SystemTopicEventSubscription extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:eventgrid/systemTopicEventSubscription:SystemTopicEventSubscription',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    advancedFilter =
-        registerOutput<SystemTopicEventSubscriptionAdvancedFilter?>(
-          'advancedFilter',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SystemTopicEventSubscriptionAdvancedFilter.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    advancedFilteringOnArraysEnabled = registerOutput<bool?>(
-      'advancedFilteringOnArraysEnabled',
-    );
-    azureFunctionEndpoint =
-        registerOutput<SystemTopicEventSubscriptionAzureFunctionEndpoint?>(
-          'azureFunctionEndpoint',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SystemTopicEventSubscriptionAzureFunctionEndpoint.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    deadLetterIdentity =
-        registerOutput<SystemTopicEventSubscriptionDeadLetterIdentity?>(
-          'deadLetterIdentity',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SystemTopicEventSubscriptionDeadLetterIdentity.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    deliveryIdentity =
-        registerOutput<SystemTopicEventSubscriptionDeliveryIdentity?>(
-          'deliveryIdentity',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SystemTopicEventSubscriptionDeliveryIdentity.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    deliveryProperties = registerOutput<List<Map<String, dynamic>>?>(
-      'deliveryProperties',
-    );
+          'azure:eventgrid/systemTopicEventSubscription:SystemTopicEventSubscription',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    advancedFilter = registerOutput<SystemTopicEventSubscriptionAdvancedFilter?>('advancedFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemTopicEventSubscriptionAdvancedFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    advancedFilteringOnArraysEnabled = registerOutput<bool?>('advancedFilteringOnArraysEnabled');
+    azureFunctionEndpoint = registerOutput<SystemTopicEventSubscriptionAzureFunctionEndpoint?>('azureFunctionEndpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemTopicEventSubscriptionAzureFunctionEndpoint.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deadLetterIdentity = registerOutput<SystemTopicEventSubscriptionDeadLetterIdentity?>('deadLetterIdentity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemTopicEventSubscriptionDeadLetterIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deliveryIdentity = registerOutput<SystemTopicEventSubscriptionDeliveryIdentity?>('deliveryIdentity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemTopicEventSubscriptionDeliveryIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deliveryProperties = registerOutput<List<Map<String, dynamic>>?>('deliveryProperties');
     eventDeliverySchema = registerOutput<String?>('eventDeliverySchema');
     eventhubEndpointId = registerOutput<String>('eventhubEndpointId');
     expirationTimeUtc = registerOutput<String?>('expirationTimeUtc');
-    hybridConnectionEndpointId = registerOutput<String>(
-      'hybridConnectionEndpointId',
-    );
+    hybridConnectionEndpointId = registerOutput<String>('hybridConnectionEndpointId');
     includedEventTypes = registerOutput<List<String>>('includedEventTypes');
     labels = registerOutput<List<String>?>('labels');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    retryPolicy = registerOutput<SystemTopicEventSubscriptionRetryPolicy>(
-      'retryPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemTopicEventSubscriptionRetryPolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    serviceBusQueueEndpointId = registerOutput<String?>(
-      'serviceBusQueueEndpointId',
-    );
-    serviceBusTopicEndpointId = registerOutput<String?>(
-      'serviceBusTopicEndpointId',
-    );
-    storageBlobDeadLetterDestination =
-        registerOutput<
-          SystemTopicEventSubscriptionStorageBlobDeadLetterDestination?
-        >(
-          'storageBlobDeadLetterDestination',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SystemTopicEventSubscriptionStorageBlobDeadLetterDestination.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    storageQueueEndpoint =
-        registerOutput<SystemTopicEventSubscriptionStorageQueueEndpoint?>(
-          'storageQueueEndpoint',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SystemTopicEventSubscriptionStorageQueueEndpoint.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    subjectFilter = registerOutput<SystemTopicEventSubscriptionSubjectFilter?>(
-      'subjectFilter',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemTopicEventSubscriptionSubjectFilter.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    retryPolicy = registerOutput<SystemTopicEventSubscriptionRetryPolicy>('retryPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemTopicEventSubscriptionRetryPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    serviceBusQueueEndpointId = registerOutput<String?>('serviceBusQueueEndpointId');
+    serviceBusTopicEndpointId = registerOutput<String?>('serviceBusTopicEndpointId');
+    storageBlobDeadLetterDestination = registerOutput<SystemTopicEventSubscriptionStorageBlobDeadLetterDestination?>('storageBlobDeadLetterDestination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemTopicEventSubscriptionStorageBlobDeadLetterDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    storageQueueEndpoint = registerOutput<SystemTopicEventSubscriptionStorageQueueEndpoint?>('storageQueueEndpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemTopicEventSubscriptionStorageQueueEndpoint.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    subjectFilter = registerOutput<SystemTopicEventSubscriptionSubjectFilter?>('subjectFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemTopicEventSubscriptionSubjectFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemTopic = registerOutput<String>('systemTopic');
-    webhookEndpoint =
-        registerOutput<SystemTopicEventSubscriptionWebhookEndpoint?>(
-          'webhookEndpoint',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SystemTopicEventSubscriptionWebhookEndpoint.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    webhookEndpoint = registerOutput<SystemTopicEventSubscriptionWebhookEndpoint?>('webhookEndpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemTopicEventSubscriptionWebhookEndpoint.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAgentsAgent {
   /// The agent id.
   final pulumi.Input<String> agentId;
-
   /// Service space signature, which is used when PAAS interface specifies the service space.
   final pulumi.Input<String> agentKey;
-
   /// The name of the agent.
   final pulumi.Input<String> agentName;
-
   /// ID of the agent.
   final pulumi.Input<String> id;
 
@@ -45,3 +42,4 @@ class GetAgentsAgent {
     );
   }
 }
+

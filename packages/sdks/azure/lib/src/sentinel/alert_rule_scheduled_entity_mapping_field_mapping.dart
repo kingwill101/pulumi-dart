@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AlertRuleScheduledEntityMappingFieldMapping {
   /// The column name to be mapped to the identifier.
   final pulumi.Input<String> columnName;
-
   /// The identifier of the entity.
   final pulumi.Input<String> identifier;
 
@@ -24,12 +23,11 @@ class AlertRuleScheduledEntityMappingFieldMapping {
     };
   }
 
-  factory AlertRuleScheduledEntityMappingFieldMapping.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AlertRuleScheduledEntityMappingFieldMapping.fromMap(Map<String, dynamic> map) {
     return AlertRuleScheduledEntityMappingFieldMapping(
       columnName: pulumi.Input.fromValue(map['columnName'] as String),
       identifier: pulumi.Input.fromValue(map['identifier'] as String),
     );
   }
 }
+

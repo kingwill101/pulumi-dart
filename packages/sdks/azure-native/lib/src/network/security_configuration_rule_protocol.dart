@@ -16,8 +16,7 @@ enum SecurityConfigurationRuleProtocol {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown SecurityConfigurationRuleProtocol value: $value',
-    );
+    throw ArgumentError('Unknown SecurityConfigurationRuleProtocol value: $value');
   }
 }
+

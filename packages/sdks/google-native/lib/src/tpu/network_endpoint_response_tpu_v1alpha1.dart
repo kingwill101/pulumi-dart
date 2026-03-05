@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkEndpointResponseTpuV1alpha1 {
   /// The IP address of this network endpoint.
   final pulumi.Input<String> ipAddress;
-
   /// The port of this network endpoint.
   final pulumi.Input<int> port;
 
@@ -19,7 +18,10 @@ class NetworkEndpointResponseTpuV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'ipAddress': ipAddress, 'port': port};
+    return <String, dynamic>{
+      'ipAddress': ipAddress,
+      'port': port,
+    };
   }
 
   factory NetworkEndpointResponseTpuV1alpha1.fromMap(Map<String, dynamic> map) {
@@ -29,3 +31,4 @@ class NetworkEndpointResponseTpuV1alpha1 {
     );
   }
 }
+

@@ -8,23 +8,17 @@ import 'json_field_with_default.dart';
 class JsonInputSchemaMapping {
   /// The mapping information for the DataVersion property of the Event Grid Event.
   final pulumi.Input<JsonFieldWithDefault>? dataVersion;
-
   /// The mapping information for the EventTime property of the Event Grid Event.
   final pulumi.Input<JsonField>? eventTime;
-
   /// The mapping information for the EventType property of the Event Grid Event.
   final pulumi.Input<JsonFieldWithDefault>? eventType;
-
   /// The mapping information for the Id property of the Event Grid Event.
   final pulumi.Input<JsonField>? id;
-
   /// Type of the custom mapping
   /// Expected value is 'Json'.
   final pulumi.Input<String> inputSchemaMappingType;
-
   /// The mapping information for the Subject property of the Event Grid Event.
   final pulumi.Input<JsonFieldWithDefault>? subject;
-
   /// The mapping information for the Topic property of the Event Grid Event.
   final pulumi.Input<JsonField>? topic;
 
@@ -48,93 +42,26 @@ class JsonInputSchemaMapping {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataVersion':
-          ?pulumi.Input.mapOptionalInputValue<
-            JsonFieldWithDefault,
-            Map<String, dynamic>
-          >(dataVersion, (value) => value.toMap()),
-      'eventTime':
-          ?pulumi.Input.mapOptionalInputValue<JsonField, Map<String, dynamic>>(
-            eventTime,
-            (value) => value.toMap(),
-          ),
-      'eventType':
-          ?pulumi.Input.mapOptionalInputValue<
-            JsonFieldWithDefault,
-            Map<String, dynamic>
-          >(eventType, (value) => value.toMap()),
-      'id':
-          ?pulumi.Input.mapOptionalInputValue<JsonField, Map<String, dynamic>>(
-            id,
-            (value) => value.toMap(),
-          ),
+      'dataVersion': ?pulumi.Input.mapOptionalInputValue<JsonFieldWithDefault, Map<String, dynamic>>(dataVersion, (value) => value.toMap()),
+      'eventTime': ?pulumi.Input.mapOptionalInputValue<JsonField, Map<String, dynamic>>(eventTime, (value) => value.toMap()),
+      'eventType': ?pulumi.Input.mapOptionalInputValue<JsonFieldWithDefault, Map<String, dynamic>>(eventType, (value) => value.toMap()),
+      'id': ?pulumi.Input.mapOptionalInputValue<JsonField, Map<String, dynamic>>(id, (value) => value.toMap()),
       'inputSchemaMappingType': inputSchemaMappingType,
-      'subject':
-          ?pulumi.Input.mapOptionalInputValue<
-            JsonFieldWithDefault,
-            Map<String, dynamic>
-          >(subject, (value) => value.toMap()),
-      'topic':
-          ?pulumi.Input.mapOptionalInputValue<JsonField, Map<String, dynamic>>(
-            topic,
-            (value) => value.toMap(),
-          ),
+      'subject': ?pulumi.Input.mapOptionalInputValue<JsonFieldWithDefault, Map<String, dynamic>>(subject, (value) => value.toMap()),
+      'topic': ?pulumi.Input.mapOptionalInputValue<JsonField, Map<String, dynamic>>(topic, (value) => value.toMap()),
     };
   }
 
   factory JsonInputSchemaMapping.fromMap(Map<String, dynamic> map) {
     return JsonInputSchemaMapping(
-      dataVersion: (() {
-        final guardedValue = map['dataVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          JsonFieldWithDefault.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      eventTime: (() {
-        final guardedValue = map['eventTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          JsonField.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      eventType: (() {
-        final guardedValue = map['eventType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          JsonFieldWithDefault.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          JsonField.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      inputSchemaMappingType: pulumi.Input.fromValue(
-        map['inputSchemaMappingType'] as String,
-      ),
-      subject: (() {
-        final guardedValue = map['subject'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          JsonFieldWithDefault.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      topic: (() {
-        final guardedValue = map['topic'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          JsonField.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
+      dataVersion: (() { final guardedValue = map['dataVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JsonFieldWithDefault.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      eventTime: (() { final guardedValue = map['eventTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JsonField.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      eventType: (() { final guardedValue = map['eventType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JsonFieldWithDefault.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JsonField.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      inputSchemaMappingType: pulumi.Input.fromValue(map['inputSchemaMappingType'] as String),
+      subject: (() { final guardedValue = map['subject']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JsonFieldWithDefault.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      topic: (() { final guardedValue = map['topic']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JsonField.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

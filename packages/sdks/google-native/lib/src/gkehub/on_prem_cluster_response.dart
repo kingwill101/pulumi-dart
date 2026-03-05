@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OnPremClusterResponse {
   /// Immutable. Whether the cluster is an admin cluster.
   final pulumi.Input<bool> adminCluster;
-
   /// If cluster_missing is set then it denotes that API(gkeonprem.googleapis.com) resource for this GKE On-Prem cluster no longer exists.
   final pulumi.Input<bool> clusterMissing;
-
   /// Immutable. The on prem cluster's type.
   final pulumi.Input<String> clusterType;
-
   /// Immutable. Self-link of the Google Cloud resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
   final pulumi.Input<String> resourceLink;
 
@@ -46,3 +43,4 @@ class OnPremClusterResponse {
     );
   }
 }
+

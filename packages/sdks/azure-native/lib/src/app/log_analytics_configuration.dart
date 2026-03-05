@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LogAnalyticsConfiguration {
   /// Log analytics customer id
   final pulumi.Input<String>? customerId;
-
   /// Boolean indicating whether to parse json string log into dynamic json columns
   final pulumi.Input<bool>? dynamicJsonColumns;
-
   /// Log analytics customer key
   final pulumi.Input<String>? sharedKey;
 
@@ -33,21 +31,10 @@ class LogAnalyticsConfiguration {
 
   factory LogAnalyticsConfiguration.fromMap(Map<String, dynamic> map) {
     return LogAnalyticsConfiguration(
-      customerId: (() {
-        final guardedValue = map['customerId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dynamicJsonColumns: (() {
-        final guardedValue = map['dynamicJsonColumns'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      sharedKey: (() {
-        final guardedValue = map['sharedKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      customerId: (() { final guardedValue = map['customerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dynamicJsonColumns: (() { final guardedValue = map['dynamicJsonColumns']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      sharedKey: (() { final guardedValue = map['sharedKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

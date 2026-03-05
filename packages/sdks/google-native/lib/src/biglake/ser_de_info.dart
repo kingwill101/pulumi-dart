@@ -9,19 +9,20 @@ class SerDeInfo {
 
   /// Creates a new [SerDeInfo].
   /// [serializationLib] The fully qualified Java class name of the serialization library.
-  SerDeInfo({this.serializationLib});
+  SerDeInfo({
+    this.serializationLib,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'serializationLib': ?serializationLib};
+    return <String, dynamic>{
+      'serializationLib': ?serializationLib,
+    };
   }
 
   factory SerDeInfo.fromMap(Map<String, dynamic> map) {
     return SerDeInfo(
-      serializationLib: (() {
-        final guardedValue = map['serializationLib'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      serializationLib: (() { final guardedValue = map['serializationLib']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

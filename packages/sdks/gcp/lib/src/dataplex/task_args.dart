@@ -13,41 +13,31 @@ import 'task_trigger_spec.dart';
 class TaskArgs {
   /// User-provided description of the task.
   final pulumi.Input<String>? description;
-
   /// User friendly display name.
   final pulumi.Input<String>? displayName;
-
   /// Configuration for the cluster
   /// Structure is documented below.
   final pulumi.Input<TaskExecutionSpec> executionSpec;
-
   /// User-defined labels for the task.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// The lake in which the task will be created in.
   final pulumi.Input<String>? lake;
-
   /// The location in which the task will be created in.
   final pulumi.Input<String>? location;
-
   /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
   /// Structure is documented below.
   final pulumi.Input<TaskNotebook>? notebook;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
   /// Structure is documented below.
   final pulumi.Input<TaskSpark>? spark;
-
   /// The task Id of the task.
   final pulumi.Input<String>? taskId;
-
   /// Configuration for the cluster
   /// Structure is documented below.
   final pulumi.Input<TaskTriggerSpec> triggerSpec;
@@ -82,97 +72,32 @@ class TaskArgs {
     return <String, dynamic>{
       'description': ?description,
       'displayName': ?displayName,
-      'executionSpec':
-          pulumi.Input.mapInputValue<TaskExecutionSpec, Map<String, dynamic>>(
-            executionSpec,
-            (value) => value.toMap(),
-          ),
+      'executionSpec': pulumi.Input.mapInputValue<TaskExecutionSpec, Map<String, dynamic>>(executionSpec, (value) => value.toMap()),
       'labels': ?labels,
       'lake': ?lake,
       'location': ?location,
-      'notebook':
-          ?pulumi.Input.mapOptionalInputValue<
-            TaskNotebook,
-            Map<String, dynamic>
-          >(notebook, (value) => value.toMap()),
+      'notebook': ?pulumi.Input.mapOptionalInputValue<TaskNotebook, Map<String, dynamic>>(notebook, (value) => value.toMap()),
       'project': ?project,
-      'spark':
-          ?pulumi.Input.mapOptionalInputValue<TaskSpark, Map<String, dynamic>>(
-            spark,
-            (value) => value.toMap(),
-          ),
+      'spark': ?pulumi.Input.mapOptionalInputValue<TaskSpark, Map<String, dynamic>>(spark, (value) => value.toMap()),
       'taskId': ?taskId,
-      'triggerSpec':
-          pulumi.Input.mapInputValue<TaskTriggerSpec, Map<String, dynamic>>(
-            triggerSpec,
-            (value) => value.toMap(),
-          ),
+      'triggerSpec': pulumi.Input.mapInputValue<TaskTriggerSpec, Map<String, dynamic>>(triggerSpec, (value) => value.toMap()),
     };
   }
 
   factory TaskArgs.fromMap(Map<String, dynamic> map) {
     return TaskArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      executionSpec: pulumi.Input.fromValue(
-        TaskExecutionSpec.fromMap(
-          (map['executionSpec']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      lake: (() {
-        final guardedValue = map['lake'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      notebook: (() {
-        final guardedValue = map['notebook'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          TaskNotebook.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      spark: (() {
-        final guardedValue = map['spark'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          TaskSpark.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      taskId: (() {
-        final guardedValue = map['taskId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      triggerSpec: pulumi.Input.fromValue(
-        TaskTriggerSpec.fromMap(
-          (map['triggerSpec']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      executionSpec: pulumi.Input.fromValue(TaskExecutionSpec.fromMap((map['executionSpec']! as Map).cast<String, dynamic>())),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      lake: (() { final guardedValue = map['lake']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      notebook: (() { final guardedValue = map['notebook']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TaskNotebook.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      spark: (() { final guardedValue = map['spark']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TaskSpark.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      taskId: (() { final guardedValue = map['taskId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      triggerSpec: pulumi.Input.fromValue(TaskTriggerSpec.fromMap((map['triggerSpec']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

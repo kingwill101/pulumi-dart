@@ -14,3 +14,4 @@ enum Db2AuthenticationType {
     throw ArgumentError('Unknown Db2AuthenticationType value: $value');
   }
 }
+

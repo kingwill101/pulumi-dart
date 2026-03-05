@@ -9,10 +9,14 @@ class NetworkPolicyConfigResponse {
 
   /// Creates a new [NetworkPolicyConfigResponse].
   /// [disabled] Whether NetworkPolicy is enabled for this cluster.
-  NetworkPolicyConfigResponse({required this.disabled});
+  NetworkPolicyConfigResponse({
+    required this.disabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'disabled': disabled};
+    return <String, dynamic>{
+      'disabled': disabled,
+    };
   }
 
   factory NetworkPolicyConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class NetworkPolicyConfigResponse {
     );
   }
 }
+

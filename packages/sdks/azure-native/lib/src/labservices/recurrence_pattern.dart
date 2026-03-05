@@ -8,13 +8,10 @@ import 'week_day.dart';
 class RecurrencePattern {
   /// When the recurrence will expire. This date is inclusive.
   final pulumi.Input<String> expirationDate;
-
   /// The frequency of the recurrence.
   final pulumi.Input<RecurrenceFrequency> frequency;
-
   /// The interval to invoke the schedule on. For example, interval = 2 and RecurrenceFrequency.Daily will run every 2 days. When no interval is supplied, an interval of 1 is used.
   final pulumi.Input<int>? interval;
-
   /// The week days the schedule runs. Used for when the Frequency is set to Weekly.
   final pulumi.Input<List<WeekDay>>? weekDays;
 
@@ -33,43 +30,19 @@ class RecurrencePattern {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'expirationDate': expirationDate,
-      'frequency': pulumi.Input.mapInputValue<RecurrenceFrequency, String>(
-        frequency,
-        (value) => value.wireValue,
-      ),
+      'frequency': pulumi.Input.mapInputValue<RecurrenceFrequency, String>(frequency, (value) => value.wireValue),
       'interval': ?interval,
-      'weekDays':
-          ?pulumi.Input.mapOptionalInputValue<List<WeekDay>, List<String>>(
-            weekDays,
-            (value) => pulumi.Input.encodeList<WeekDay, String>(
-              value,
-              (value) => value.wireValue,
-            ),
-          ),
+      'weekDays': ?pulumi.Input.mapOptionalInputValue<List<WeekDay>, List<String>>(weekDays, (value) => pulumi.Input.encodeList<WeekDay, String>(value, (value) => value.wireValue)),
     };
   }
 
   factory RecurrencePattern.fromMap(Map<String, dynamic> map) {
     return RecurrencePattern(
       expirationDate: pulumi.Input.fromValue(map['expirationDate'] as String),
-      frequency: pulumi.Input.fromValue(
-        RecurrenceFrequency.fromValue(map['frequency']! as String),
-      ),
-      interval: (() {
-        final guardedValue = map['interval'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      weekDays: (() {
-        final guardedValue = map['weekDays'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<WeekDay>(
-            guardedValue,
-            (value) => WeekDay.fromValue(value as String),
-          ),
-        );
-      })(),
+      frequency: pulumi.Input.fromValue(RecurrenceFrequency.fromValue(map['frequency']! as String)),
+      interval: (() { final guardedValue = map['interval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      weekDays: (() { final guardedValue = map['weekDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WeekDay>(guardedValue, (value) => WeekDay.fromValue(value as String))); })(),
     );
   }
 }
+

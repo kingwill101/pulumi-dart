@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualMachinePlacementHintResponse {
   /// The specification of whether this hint supports affinity or anti-affinity with the referenced resources.
   final pulumi.Input<String> hintType;
-
   /// The resource ID of the target object that the placement hints will be checked against, e.g., the bare metal node to host the virtual machine.
   final pulumi.Input<String> resourceId;
-
   /// The indicator of whether the hint is a hard or soft requirement during scheduling.
   final pulumi.Input<String> schedulingExecution;
-
   /// The scope for the virtual machine affinity or anti-affinity placement hint. It should always be "Machine" in the case of node affinity.
   final pulumi.Input<String> scope;
 
@@ -36,16 +33,13 @@ class VirtualMachinePlacementHintResponse {
     };
   }
 
-  factory VirtualMachinePlacementHintResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VirtualMachinePlacementHintResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachinePlacementHintResponse(
       hintType: pulumi.Input.fromValue(map['hintType'] as String),
       resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
-      schedulingExecution: pulumi.Input.fromValue(
-        map['schedulingExecution'] as String,
-      ),
+      schedulingExecution: pulumi.Input.fromValue(map['schedulingExecution'] as String),
       scope: pulumi.Input.fromValue(map['scope'] as String),
     );
   }
 }
+

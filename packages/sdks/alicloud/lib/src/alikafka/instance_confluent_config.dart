@@ -5,55 +5,38 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceConfluentConfig {
   /// The number of CPU cores of Connect.
   final pulumi.Input<int>? connectCu;
-
   /// The number of replicas of Connect.
   final pulumi.Input<int>? connectReplica;
-
   /// The number of CPU cores of Control Center.
   final pulumi.Input<int>? controlCenterCu;
-
   /// The number of replicas of Control Center.
   final pulumi.Input<int>? controlCenterReplica;
-
   /// The disk capacity of Control Center.
   final pulumi.Input<int>? controlCenterStorage;
-
   /// The number of CPU cores of the Kafka broker.
   final pulumi.Input<int>? kafkaCu;
-
   /// The number of replicas of the Kafka broker.
   final pulumi.Input<int>? kafkaReplica;
-
   /// The number of CPU cores of Kafka Rest Proxy.
   final pulumi.Input<int>? kafkaRestProxyCu;
-
   /// The number of replicas of Kafka Rest Proxy.
   final pulumi.Input<int>? kafkaRestProxyReplica;
-
   /// The disk capacity of the Kafka broker.
   final pulumi.Input<int>? kafkaStorage;
-
   /// The number of CPU cores of ksqlDB.
   final pulumi.Input<int>? ksqlCu;
-
   /// The number of replicas of ksqlDB.
   final pulumi.Input<int>? ksqlReplica;
-
   /// The disk capacity of ksqlDB.
   final pulumi.Input<int>? ksqlStorage;
-
   /// The number of CPU cores of Schema Registry.
   final pulumi.Input<int>? schemaRegistryCu;
-
   /// The number of replicas of Schema Registry.
   final pulumi.Input<int>? schemaRegistryReplica;
-
   /// The number of CPU cores of ZooKeeper.
   final pulumi.Input<int>? zookeeperCu;
-
   /// The number of replicas of ZooKeeper.
   final pulumi.Input<int>? zookeeperReplica;
-
   /// The disk capacity of ZooKeeper.
   final pulumi.Input<int>? zookeeperStorage;
 
@@ -122,96 +105,25 @@ class InstanceConfluentConfig {
 
   factory InstanceConfluentConfig.fromMap(Map<String, dynamic> map) {
     return InstanceConfluentConfig(
-      connectCu: (() {
-        final guardedValue = map['connectCu'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      connectReplica: (() {
-        final guardedValue = map['connectReplica'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      controlCenterCu: (() {
-        final guardedValue = map['controlCenterCu'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      controlCenterReplica: (() {
-        final guardedValue = map['controlCenterReplica'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      controlCenterStorage: (() {
-        final guardedValue = map['controlCenterStorage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      kafkaCu: (() {
-        final guardedValue = map['kafkaCu'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      kafkaReplica: (() {
-        final guardedValue = map['kafkaReplica'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      kafkaRestProxyCu: (() {
-        final guardedValue = map['kafkaRestProxyCu'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      kafkaRestProxyReplica: (() {
-        final guardedValue = map['kafkaRestProxyReplica'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      kafkaStorage: (() {
-        final guardedValue = map['kafkaStorage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      ksqlCu: (() {
-        final guardedValue = map['ksqlCu'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      ksqlReplica: (() {
-        final guardedValue = map['ksqlReplica'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      ksqlStorage: (() {
-        final guardedValue = map['ksqlStorage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      schemaRegistryCu: (() {
-        final guardedValue = map['schemaRegistryCu'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      schemaRegistryReplica: (() {
-        final guardedValue = map['schemaRegistryReplica'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      zookeeperCu: (() {
-        final guardedValue = map['zookeeperCu'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      zookeeperReplica: (() {
-        final guardedValue = map['zookeeperReplica'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      zookeeperStorage: (() {
-        final guardedValue = map['zookeeperStorage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      connectCu: (() { final guardedValue = map['connectCu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      connectReplica: (() { final guardedValue = map['connectReplica']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      controlCenterCu: (() { final guardedValue = map['controlCenterCu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      controlCenterReplica: (() { final guardedValue = map['controlCenterReplica']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      controlCenterStorage: (() { final guardedValue = map['controlCenterStorage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      kafkaCu: (() { final guardedValue = map['kafkaCu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      kafkaReplica: (() { final guardedValue = map['kafkaReplica']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      kafkaRestProxyCu: (() { final guardedValue = map['kafkaRestProxyCu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      kafkaRestProxyReplica: (() { final guardedValue = map['kafkaRestProxyReplica']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      kafkaStorage: (() { final guardedValue = map['kafkaStorage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      ksqlCu: (() { final guardedValue = map['ksqlCu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      ksqlReplica: (() { final guardedValue = map['ksqlReplica']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      ksqlStorage: (() { final guardedValue = map['ksqlStorage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      schemaRegistryCu: (() { final guardedValue = map['schemaRegistryCu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      schemaRegistryReplica: (() { final guardedValue = map['schemaRegistryReplica']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      zookeeperCu: (() { final guardedValue = map['zookeeperCu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      zookeeperReplica: (() { final guardedValue = map['zookeeperReplica']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      zookeeperStorage: (() { final guardedValue = map['zookeeperStorage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

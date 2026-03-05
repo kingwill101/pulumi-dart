@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DenyAssignmentExclusion {
   /// Object Id of Identity
   final pulumi.Input<String> id;
-
   /// Type of Identity
   final pulumi.Input<String> type;
 
   /// Creates a new [DenyAssignmentExclusion].
   /// [id] Object Id of Identity
   /// [type] Type of Identity
-  DenyAssignmentExclusion({required this.id, required this.type});
+  DenyAssignmentExclusion({
+    required this.id,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id, 'type': type};
+    return <String, dynamic>{
+      'id': id,
+      'type': type,
+    };
   }
 
   factory DenyAssignmentExclusion.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class DenyAssignmentExclusion {
     );
   }
 }
+

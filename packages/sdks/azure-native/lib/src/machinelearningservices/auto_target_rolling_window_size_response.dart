@@ -10,17 +10,20 @@ class AutoTargetRollingWindowSizeResponse {
 
   /// Creates a new [AutoTargetRollingWindowSizeResponse].
   /// [mode] Target rolling windows size mode.
-  AutoTargetRollingWindowSizeResponse({required this.mode});
+  AutoTargetRollingWindowSizeResponse({
+    required this.mode,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'mode': mode};
+    return <String, dynamic>{
+      'mode': mode,
+    };
   }
 
-  factory AutoTargetRollingWindowSizeResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AutoTargetRollingWindowSizeResponse.fromMap(Map<String, dynamic> map) {
     return AutoTargetRollingWindowSizeResponse(
       mode: pulumi.Input.fromValue(map['mode'] as String),
     );
   }
 }
+

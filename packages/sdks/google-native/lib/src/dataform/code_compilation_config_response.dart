@@ -6,25 +6,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CodeCompilationConfigResponse {
   /// Optional. The default schema (BigQuery dataset ID) for assertions.
   final pulumi.Input<String> assertionSchema;
-
   /// Optional. The suffix that should be appended to all database (Google Cloud project ID) names.
   final pulumi.Input<String> databaseSuffix;
-
   /// Optional. The default database (Google Cloud project ID).
   final pulumi.Input<String> defaultDatabase;
-
   /// Optional. The default BigQuery location to use. Defaults to "US". See the BigQuery docs for a full list of locations: https://cloud.google.com/bigquery/docs/locations.
   final pulumi.Input<String> defaultLocation;
-
   /// Optional. The default schema (BigQuery dataset ID).
   final pulumi.Input<String> defaultSchema;
-
   /// Optional. The suffix that should be appended to all schema (BigQuery dataset ID) names.
   final pulumi.Input<String> schemaSuffix;
-
   /// Optional. The prefix that should be prepended to all table names.
   final pulumi.Input<String> tablePrefix;
-
   /// Optional. User-defined variables that are made available to project code during compilation.
   final pulumi.Input<Map<String, String>> vars;
 
@@ -74,3 +67,4 @@ class CodeCompilationConfigResponse {
     );
   }
 }
+

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDatalabelingV1beta1AnnotationSpec {
   /// Optional. User-provided description of the annotation specification. The description can be up to 10,000 characters long.
   final pulumi.Input<String>? description;
-
   /// The display name of the AnnotationSpec. Maximum of 64 characters.
   final pulumi.Input<String> displayName;
 
@@ -25,16 +24,11 @@ class GoogleCloudDatalabelingV1beta1AnnotationSpec {
     };
   }
 
-  factory GoogleCloudDatalabelingV1beta1AnnotationSpec.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDatalabelingV1beta1AnnotationSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatalabelingV1beta1AnnotationSpec(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
     );
   }
 }
+

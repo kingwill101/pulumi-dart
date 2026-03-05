@@ -139,15 +139,12 @@ class QosV3 extends pulumi.CustomResource {
   /// `back-end` or `both`. Changing this updates the `consumer` of an
   /// existing qos.
   late final pulumi.Output<String?> consumer;
-
   /// Name of the qos.  Changing this creates a new qos.
   late final pulumi.Output<String> name;
-
   /// The region in which to create the qos. If omitted,
   /// the `region` argument of the provider is used. Changing this creates
   /// a new qos.
   late final pulumi.Output<String> region;
-
   /// Key/Value pairs of specs for the qos.
   late final pulumi.Output<Map<String, String>?> specs;
 
@@ -155,13 +152,16 @@ class QosV3 extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [QosV3]. {@macro pulumi_blockstorage_qos_v3_qos_v3_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  QosV3(String name, {QosV3Args? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'openstack:blockstorage/qosV3:QosV3',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  QosV3(
+    String name, {
+    QosV3Args? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'openstack:blockstorage/qosV3:QosV3',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     consumer = registerOutput<String?>('consumer');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
@@ -169,7 +169,11 @@ class QosV3 extends pulumi.CustomResource {
   }
 
   /// Gets an existing [QosV3] resource's state with the given [name] and [id].
-  static QosV3 get(String name, pulumi.Input<String> id, {QosV3State? state}) {
+  static QosV3 get(
+    String name,
+    pulumi.Input<String> id, {
+    QosV3State? state,
+  }) {
     return QosV3._get(
       name,
       state: state?.toMap(),
@@ -182,11 +186,11 @@ class QosV3 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:blockstorage/qosV3:QosV3',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:blockstorage/qosV3:QosV3',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     consumer = registerOutput<String?>('consumer');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');

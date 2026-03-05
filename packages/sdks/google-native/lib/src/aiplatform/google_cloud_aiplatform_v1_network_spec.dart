@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudAiplatformV1NetworkSpec {
   /// Whether to enable public internet access. Default false.
   final pulumi.Input<bool>? enableInternetAccess;
-
   /// The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks)
   final pulumi.Input<String>? network;
-
   /// The name of the subnet that this instance is in. Format: `projects/{project_id_or_number}/regions/{region}/subnetworks/{subnetwork_id}`
   final pulumi.Input<String>? subnetwork;
 
@@ -33,21 +31,10 @@ class GoogleCloudAiplatformV1NetworkSpec {
 
   factory GoogleCloudAiplatformV1NetworkSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1NetworkSpec(
-      enableInternetAccess: (() {
-        final guardedValue = map['enableInternetAccess'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      network: (() {
-        final guardedValue = map['network'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subnetwork: (() {
-        final guardedValue = map['subnetwork'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      enableInternetAccess: (() { final guardedValue = map['enableInternetAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subnetwork: (() { final guardedValue = map['subnetwork']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

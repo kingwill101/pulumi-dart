@@ -10,13 +10,10 @@ import 'service_group_properties.dart';
 class ServiceGroupArgs {
   /// The kind of the serviceGroup.
   final pulumi.Input<String>? kind;
-
   /// ServiceGroup creation request body parameters.
   final pulumi.Input<ServiceGroupProperties>? properties;
-
   /// ServiceGroup Name.
   final pulumi.Input<String>? serviceGroupName;
-
   /// The serviceGroup tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -35,11 +32,7 @@ class ServiceGroupArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'kind': ?kind,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            ServiceGroupProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<ServiceGroupProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'serviceGroupName': ?serviceGroupName,
       'tags': ?tags,
     };
@@ -47,32 +40,11 @@ class ServiceGroupArgs {
 
   factory ServiceGroupArgs.fromMap(Map<String, dynamic> map) {
     return ServiceGroupArgs(
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ServiceGroupProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      serviceGroupName: (() {
-        final guardedValue = map['serviceGroupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceGroupProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      serviceGroupName: (() { final guardedValue = map['serviceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

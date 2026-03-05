@@ -10,35 +10,20 @@ class AdditionalLocationsProfileResponse {
 
   /// Creates a new [AdditionalLocationsProfileResponse].
   /// [locationProfiles] The list of location profiles.
-  AdditionalLocationsProfileResponse({required this.locationProfiles});
+  AdditionalLocationsProfileResponse({
+    required this.locationProfiles,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'locationProfiles':
-          pulumi.Input.mapInputValue<
-            List<LocationProfileResponse>,
-            List<Map<String, dynamic>>
-          >(
-            locationProfiles,
-            (value) =>
-                pulumi.Input.encodeList<
-                  LocationProfileResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'locationProfiles': pulumi.Input.mapInputValue<List<LocationProfileResponse>, List<Map<String, dynamic>>>(locationProfiles, (value) => pulumi.Input.encodeList<LocationProfileResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AdditionalLocationsProfileResponse.fromMap(Map<String, dynamic> map) {
     return AdditionalLocationsProfileResponse(
-      locationProfiles: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<LocationProfileResponse>(
-          map['locationProfiles']!,
-          (value) => LocationProfileResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      locationProfiles: pulumi.Input.fromValue(pulumi.Input.decodeList<LocationProfileResponse>(map['locationProfiles']!, (value) => LocationProfileResponse.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

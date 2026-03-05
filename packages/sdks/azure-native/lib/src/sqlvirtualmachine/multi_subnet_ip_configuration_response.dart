@@ -7,7 +7,6 @@ import 'private_ipaddress_response.dart';
 class MultiSubnetIpConfigurationResponse {
   /// Private IP address.
   final pulumi.Input<PrivateIPAddressResponse> privateIpAddress;
-
   /// SQL virtual machine instance resource id that are enrolled into the availability group listener.
   final pulumi.Input<String> sqlVirtualMachineInstance;
 
@@ -21,25 +20,16 @@ class MultiSubnetIpConfigurationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'privateIpAddress':
-          pulumi.Input.mapInputValue<
-            PrivateIPAddressResponse,
-            Map<String, dynamic>
-          >(privateIpAddress, (value) => value.toMap()),
+      'privateIpAddress': pulumi.Input.mapInputValue<PrivateIPAddressResponse, Map<String, dynamic>>(privateIpAddress, (value) => value.toMap()),
       'sqlVirtualMachineInstance': sqlVirtualMachineInstance,
     };
   }
 
   factory MultiSubnetIpConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return MultiSubnetIpConfigurationResponse(
-      privateIpAddress: pulumi.Input.fromValue(
-        PrivateIPAddressResponse.fromMap(
-          (map['privateIpAddress']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      sqlVirtualMachineInstance: pulumi.Input.fromValue(
-        map['sqlVirtualMachineInstance'] as String,
-      ),
+      privateIpAddress: pulumi.Input.fromValue(PrivateIPAddressResponse.fromMap((map['privateIpAddress']! as Map).cast<String, dynamic>())),
+      sqlVirtualMachineInstance: pulumi.Input.fromValue(map['sqlVirtualMachineInstance'] as String),
     );
   }
 }
+

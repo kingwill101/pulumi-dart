@@ -15,15 +15,17 @@ class GetGatewayRouteSpecHttp2RouteMatchHostname {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'exact': exact, 'suffix': suffix};
+    return <String, dynamic>{
+      'exact': exact,
+      'suffix': suffix,
+    };
   }
 
-  factory GetGatewayRouteSpecHttp2RouteMatchHostname.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetGatewayRouteSpecHttp2RouteMatchHostname.fromMap(Map<String, dynamic> map) {
     return GetGatewayRouteSpecHttp2RouteMatchHostname(
       exact: pulumi.Input.fromValue(map['exact'] as String),
       suffix: pulumi.Input.fromValue(map['suffix'] as String),
     );
   }
 }
+

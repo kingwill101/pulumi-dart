@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StorageAccountKeyResponse {
   /// Creation time of the key, in round trip date format.
   final pulumi.Input<String> creationTime;
-
   /// Name of the key.
   final pulumi.Input<String> keyName;
-
   /// Permissions for the key -- read-only or full permissions.
   final pulumi.Input<String> permissions;
-
   /// Base 64-encoded value of the key.
   final pulumi.Input<String> value;
 
@@ -46,3 +43,4 @@ class StorageAccountKeyResponse {
     );
   }
 }
+

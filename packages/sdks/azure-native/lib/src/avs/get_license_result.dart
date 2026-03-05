@@ -1,17 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getLicense.
 class GetLicenseResult {
   /// License kind
   final String kind;
-
   /// The state of the license provisioning
   final String provisioningState;
 
   /// Creates a new [GetLicenseResult].
   /// [kind] License kind
   /// [provisioningState] The state of the license provisioning
-  GetLicenseResult({required this.kind, required this.provisioningState});
+  GetLicenseResult({
+    required this.kind,
+    required this.provisioningState,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,3 +30,4 @@ class GetLicenseResult {
     );
   }
 }
+

@@ -32,12 +32,9 @@ class GetCompanyJobsV4Args {
   factory GetCompanyJobsV4Args.fromMap(Map<String, dynamic> map) {
     return GetCompanyJobsV4Args(
       companyId: pulumi.Input.fromValue(map['companyId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
     );
   }
 }
+

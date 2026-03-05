@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SubnetReferenceResponse {
   /// Gets the name of the proxy resource on the target side.
   final pulumi.Input<String>? name;
-
   /// Gets the ARM resource ID of the tracked resource being referenced.
   final pulumi.Input<String> sourceArmResourceId;
 
   /// Creates a new [SubnetReferenceResponse].
   /// [name] Gets the name of the proxy resource on the target side.
   /// [sourceArmResourceId] Gets the ARM resource ID of the tracked resource being referenced.
-  SubnetReferenceResponse({this.name, required this.sourceArmResourceId});
+  SubnetReferenceResponse({
+    this.name,
+    required this.sourceArmResourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,14 +26,9 @@ class SubnetReferenceResponse {
 
   factory SubnetReferenceResponse.fromMap(Map<String, dynamic> map) {
     return SubnetReferenceResponse(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sourceArmResourceId: pulumi.Input.fromValue(
-        map['sourceArmResourceId'] as String,
-      ),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourceArmResourceId: pulumi.Input.fromValue(map['sourceArmResourceId'] as String),
     );
   }
 }
+

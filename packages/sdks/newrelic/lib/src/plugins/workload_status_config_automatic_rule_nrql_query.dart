@@ -8,17 +8,20 @@ class WorkloadStatusConfigAutomaticRuleNrqlQuery {
 
   /// Creates a new [WorkloadStatusConfigAutomaticRuleNrqlQuery].
   /// [query] The entity search query that is used to perform the search of a group of entities.
-  WorkloadStatusConfigAutomaticRuleNrqlQuery({required this.query});
+  WorkloadStatusConfigAutomaticRuleNrqlQuery({
+    required this.query,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'query': query};
+    return <String, dynamic>{
+      'query': query,
+    };
   }
 
-  factory WorkloadStatusConfigAutomaticRuleNrqlQuery.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WorkloadStatusConfigAutomaticRuleNrqlQuery.fromMap(Map<String, dynamic> map) {
     return WorkloadStatusConfigAutomaticRuleNrqlQuery(
       query: pulumi.Input.fromValue(map['query'] as String),
     );
   }
 }
+

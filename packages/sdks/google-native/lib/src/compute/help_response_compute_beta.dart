@@ -10,35 +10,20 @@ class HelpResponseComputeBeta {
 
   /// Creates a new [HelpResponseComputeBeta].
   /// [links] URL(s) pointing to additional information on handling the current error.
-  HelpResponseComputeBeta({required this.links});
+  HelpResponseComputeBeta({
+    required this.links,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'links':
-          pulumi.Input.mapInputValue<
-            List<HelpLinkResponseComputeBeta>,
-            List<Map<String, dynamic>>
-          >(
-            links,
-            (value) =>
-                pulumi.Input.encodeList<
-                  HelpLinkResponseComputeBeta,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'links': pulumi.Input.mapInputValue<List<HelpLinkResponseComputeBeta>, List<Map<String, dynamic>>>(links, (value) => pulumi.Input.encodeList<HelpLinkResponseComputeBeta, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory HelpResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return HelpResponseComputeBeta(
-      links: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<HelpLinkResponseComputeBeta>(
-          map['links']!,
-          (value) => HelpLinkResponseComputeBeta.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      links: pulumi.Input.fromValue(pulumi.Input.decodeList<HelpLinkResponseComputeBeta>(map['links']!, (value) => HelpLinkResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

@@ -6,23 +6,18 @@ class InstanceSchedulerHint {
   /// Arbitrary key/value pairs of additional
   /// properties to pass to the scheduler.
   final pulumi.Input<Map<String, String>>? additionalProperties;
-
   /// An IP Address in CIDR form. The instance
   /// will be placed on a compute node that is in the same subnet.
   final pulumi.Input<String>? buildNearHostIp;
-
   /// The names of cells where not to build the instance.
   final pulumi.Input<List<String>>? differentCells;
-
   /// A list of instance UUIDs. The instance will
   /// be scheduled on a different host than all other instances.
   final pulumi.Input<List<String>>? differentHosts;
-
   /// A UUID of a Server Group. The instance will be placed
   /// into that group. See reference
   /// for details on managing servergroup resources
   final pulumi.Input<String>? group;
-
   /// A conditional query that a compute node must pass in
   /// order to host an instance. The query must use the `JsonFilter` syntax
   /// which is described
@@ -34,11 +29,9 @@ class InstanceSchedulerHint {
   /// [">=", "$free_ram_mb", "1024"]
   /// ```
   final pulumi.Input<List<String>>? queries;
-
   /// A list of instance UUIDs. The instance will be
   /// scheduled on the same host of those specified.
   final pulumi.Input<List<String>>? sameHosts;
-
   /// The name of a cell to host the instance.
   final pulumi.Input<String>? targetCell;
 
@@ -77,48 +70,15 @@ class InstanceSchedulerHint {
 
   factory InstanceSchedulerHint.fromMap(Map<String, dynamic> map) {
     return InstanceSchedulerHint(
-      additionalProperties: (() {
-        final guardedValue = map['additionalProperties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      buildNearHostIp: (() {
-        final guardedValue = map['buildNearHostIp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      differentCells: (() {
-        final guardedValue = map['differentCells'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      differentHosts: (() {
-        final guardedValue = map['differentHosts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      group: (() {
-        final guardedValue = map['group'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      queries: (() {
-        final guardedValue = map['queries'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      sameHosts: (() {
-        final guardedValue = map['sameHosts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      targetCell: (() {
-        final guardedValue = map['targetCell'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      additionalProperties: (() { final guardedValue = map['additionalProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      buildNearHostIp: (() { final guardedValue = map['buildNearHostIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      differentCells: (() { final guardedValue = map['differentCells']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      differentHosts: (() { final guardedValue = map['differentHosts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      group: (() { final guardedValue = map['group']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      queries: (() { final guardedValue = map['queries']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      sameHosts: (() { final guardedValue = map['sameHosts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      targetCell: (() { final guardedValue = map['targetCell']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

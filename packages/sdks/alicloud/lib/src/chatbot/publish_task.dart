@@ -138,19 +138,14 @@ import 'publish_task_state.dart';
 class PublishTask extends pulumi.CustomResource {
   /// The business space key. If you do not set it, the default business space is accessed. The key value is obtained on the business management page of the primary account.
   late final pulumi.Output<String> agentKey;
-
   /// The type of the publishing unit. Please use the CreateInstancePublishTask API to publish the robot.
   late final pulumi.Output<String> bizType;
-
   /// UTC time of task creation
   late final pulumi.Output<String> createTime;
-
   /// Additional release information. Currently supported: If the BizType is faq, enter the category Id in this field to indicate that only the knowledge under these categories is published.
   late final pulumi.Output<List<String>?> dataIdLists;
-
   /// UTC time for task modification
   late final pulumi.Output<String> modifyTime;
-
   /// The status of the task.
   late final pulumi.Output<String> status;
 
@@ -163,11 +158,11 @@ class PublishTask extends pulumi.CustomResource {
     PublishTaskArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:chatbot/publishTask:PublishTask',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:chatbot/publishTask:PublishTask',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     agentKey = registerOutput<String>('agentKey');
     bizType = registerOutput<String>('bizType');
     createTime = registerOutput<String>('createTime');
@@ -194,11 +189,11 @@ class PublishTask extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:chatbot/publishTask:PublishTask',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:chatbot/publishTask:PublishTask',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     agentKey = registerOutput<String>('agentKey');
     bizType = registerOutput<String>('bizType');
     createTime = registerOutput<String>('createTime');

@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TopicRuleErrorActionElasticsearch {
   /// The endpoint of your Elasticsearch domain.
   final pulumi.Input<String> endpoint;
-
   /// The unique identifier for the document you are storing.
   final pulumi.Input<String> id;
-
   /// The Elasticsearch index where you want to store your data.
   final pulumi.Input<String> index;
-
   /// The IAM role ARN that has access to Elasticsearch.
   final pulumi.Input<String> roleArn;
-
   /// The type of document you are storing.
   final pulumi.Input<String> type;
 
@@ -52,3 +48,4 @@ class TopicRuleErrorActionElasticsearch {
     );
   }
 }
+

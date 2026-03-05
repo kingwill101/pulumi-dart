@@ -7,14 +7,11 @@ import 'get_additional_certificates_certificate.dart';
 class GetAdditionalCertificatesResult {
   /// The ID of the GA instance.
   final String acceleratorId;
-
   /// A list of Ga Additional Certificates. Each element contains the following attributes:
   final List<GetAdditionalCertificatesCertificate> certificates;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
-
   /// The ID of the listener. Only HTTPS listeners support this parameter.
   final String listenerId;
   final String? outputFile;
@@ -38,11 +35,7 @@ class GetAdditionalCertificatesResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'acceleratorId': acceleratorId,
-      'certificates':
-          pulumi.Input.encodeList<
-            GetAdditionalCertificatesCertificate,
-            Map<String, dynamic>
-          >(certificates, (value) => value.toMap()),
+      'certificates': pulumi.Input.encodeList<GetAdditionalCertificatesCertificate, Map<String, dynamic>>(certificates, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'listenerId': listenerId,
@@ -53,21 +46,12 @@ class GetAdditionalCertificatesResult {
   factory GetAdditionalCertificatesResult.fromMap(Map<String, dynamic> map) {
     return GetAdditionalCertificatesResult(
       acceleratorId: map['acceleratorId'] as String,
-      certificates:
-          pulumi.Input.decodeList<GetAdditionalCertificatesCertificate>(
-            map['certificates']!,
-            (value) => GetAdditionalCertificatesCertificate.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      certificates: pulumi.Input.decodeList<GetAdditionalCertificatesCertificate>(map['certificates']!, (value) => GetAdditionalCertificatesCertificate.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       listenerId: map['listenerId'] as String,
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

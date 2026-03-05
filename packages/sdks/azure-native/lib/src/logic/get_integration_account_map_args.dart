@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIntegrationAccountMapArgs {
   /// The integration account name.
   final pulumi.Input<String> integrationAccountName;
-
   /// The integration account map name.
   final pulumi.Input<String> mapName;
-
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,13 +34,10 @@ class GetIntegrationAccountMapArgs {
 
   factory GetIntegrationAccountMapArgs.fromMap(Map<String, dynamic> map) {
     return GetIntegrationAccountMapArgs(
-      integrationAccountName: pulumi.Input.fromValue(
-        map['integrationAccountName'] as String,
-      ),
+      integrationAccountName: pulumi.Input.fromValue(map['integrationAccountName'] as String),
       mapName: pulumi.Input.fromValue(map['mapName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

@@ -7,17 +7,20 @@ class GetClusterAddonsConfigStatefulHaConfig {
 
   /// Creates a new [GetClusterAddonsConfigStatefulHaConfig].
   /// [enabled] Required.
-  GetClusterAddonsConfigStatefulHaConfig({required this.enabled});
+  GetClusterAddonsConfigStatefulHaConfig({
+    required this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled};
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
-  factory GetClusterAddonsConfigStatefulHaConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetClusterAddonsConfigStatefulHaConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterAddonsConfigStatefulHaConfig(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
+

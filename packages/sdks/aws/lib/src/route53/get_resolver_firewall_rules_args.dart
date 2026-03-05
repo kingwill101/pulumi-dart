@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetResolverFirewallRulesArgs {
   /// The action that DNS Firewall should take on a DNS query when it matches one of the domains in the rule's domain list.
   final pulumi.Input<String>? action;
-
   /// The unique identifier of the firewall rule group that you want to retrieve the rules for.
   final pulumi.Input<String> firewallRuleGroupId;
-
   /// The setting that determines the processing order of the rules in a rule group.
   final pulumi.Input<int>? priority;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -42,24 +39,11 @@ class GetResolverFirewallRulesArgs {
 
   factory GetResolverFirewallRulesArgs.fromMap(Map<String, dynamic> map) {
     return GetResolverFirewallRulesArgs(
-      action: (() {
-        final guardedValue = map['action'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      firewallRuleGroupId: pulumi.Input.fromValue(
-        map['firewallRuleGroupId'] as String,
-      ),
-      priority: (() {
-        final guardedValue = map['priority'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      firewallRuleGroupId: pulumi.Input.fromValue(map['firewallRuleGroupId'] as String),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

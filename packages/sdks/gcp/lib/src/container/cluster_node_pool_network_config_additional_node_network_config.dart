@@ -7,7 +7,6 @@ class ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig {
   /// network to which the cluster is connected. For Shared VPC, set this to the self link of the
   /// shared network.
   final pulumi.Input<String>? network;
-
   /// The name or self_link of the Google Compute Engine
   /// subnetwork in which the cluster's instances are launched.
   final pulumi.Input<String>? subnetwork;
@@ -21,23 +20,17 @@ class ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'network': ?network, 'subnetwork': ?subnetwork};
+    return <String, dynamic>{
+      'network': ?network,
+      'subnetwork': ?subnetwork,
+    };
   }
 
-  factory ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig.fromMap(Map<String, dynamic> map) {
     return ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig(
-      network: (() {
-        final guardedValue = map['network'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subnetwork: (() {
-        final guardedValue = map['subnetwork'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subnetwork: (() { final guardedValue = map['subnetwork']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

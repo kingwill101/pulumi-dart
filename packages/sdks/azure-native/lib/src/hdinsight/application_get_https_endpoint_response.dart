@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationGetHttpsEndpointResponse {
   /// The list of access modes for the application.
   final pulumi.Input<List<String>>? accessModes;
-
   /// The destination port to connect to.
   final pulumi.Input<int>? destinationPort;
-
   /// The value indicates whether to disable GatewayAuth.
   final pulumi.Input<bool>? disableGatewayAuth;
-
   /// The location of the endpoint.
   final pulumi.Input<String> location;
-
   /// The private ip address of the endpoint.
   final pulumi.Input<String>? privateIPAddress;
-
   /// The public port to connect to.
   final pulumi.Input<int> publicPort;
 
@@ -49,32 +44,15 @@ class ApplicationGetHttpsEndpointResponse {
     };
   }
 
-  factory ApplicationGetHttpsEndpointResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApplicationGetHttpsEndpointResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationGetHttpsEndpointResponse(
-      accessModes: (() {
-        final guardedValue = map['accessModes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      destinationPort: (() {
-        final guardedValue = map['destinationPort'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      disableGatewayAuth: (() {
-        final guardedValue = map['disableGatewayAuth'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      accessModes: (() { final guardedValue = map['accessModes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      destinationPort: (() { final guardedValue = map['destinationPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      disableGatewayAuth: (() { final guardedValue = map['disableGatewayAuth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
-      privateIPAddress: (() {
-        final guardedValue = map['privateIPAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      privateIPAddress: (() { final guardedValue = map['privateIPAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       publicPort: pulumi.Input.fromValue(map['publicPort'] as int),
     );
   }
 }
+

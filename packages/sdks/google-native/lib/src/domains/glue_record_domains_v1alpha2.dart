@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GlueRecordDomainsV1alpha2 {
   /// Domain name of the host in Punycode format.
   final pulumi.Input<String> hostName;
-
   /// List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. `198.51.100.1`). At least one of `ipv4_address` and `ipv6_address` must be set.
   final pulumi.Input<List<String>>? ipv4Addresses;
-
   /// List of IPv6 addresses corresponding to this host in the standard hexadecimal format (e.g. `2001:db8::`). At least one of `ipv4_address` and `ipv6_address` must be set.
   final pulumi.Input<List<String>>? ipv6Addresses;
 
@@ -34,16 +32,9 @@ class GlueRecordDomainsV1alpha2 {
   factory GlueRecordDomainsV1alpha2.fromMap(Map<String, dynamic> map) {
     return GlueRecordDomainsV1alpha2(
       hostName: pulumi.Input.fromValue(map['hostName'] as String),
-      ipv4Addresses: (() {
-        final guardedValue = map['ipv4Addresses'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      ipv6Addresses: (() {
-        final guardedValue = map['ipv6Addresses'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      ipv4Addresses: (() { final guardedValue = map['ipv4Addresses']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      ipv6Addresses: (() { final guardedValue = map['ipv6Addresses']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetProjectCatalogSyncErrorDetailsArgs {
   /// The name of the Catalog.
   final pulumi.Input<String> catalogName;
-
   /// The name of the project.
   final pulumi.Input<String> projectName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,15 +32,12 @@ class GetProjectCatalogSyncErrorDetailsArgs {
     };
   }
 
-  factory GetProjectCatalogSyncErrorDetailsArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetProjectCatalogSyncErrorDetailsArgs.fromMap(Map<String, dynamic> map) {
     return GetProjectCatalogSyncErrorDetailsArgs(
       catalogName: pulumi.Input.fromValue(map['catalogName'] as String),
       projectName: pulumi.Input.fromValue(map['projectName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

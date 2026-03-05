@@ -13,8 +13,7 @@ enum ExternalVpnGatewayRedundancyType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ExternalVpnGatewayRedundancyType value: $value',
-    );
+    throw ArgumentError('Unknown ExternalVpnGatewayRedundancyType value: $value');
   }
 }
+

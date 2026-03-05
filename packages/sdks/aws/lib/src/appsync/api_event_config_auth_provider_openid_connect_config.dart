@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApiEventConfigAuthProviderOpenidConnectConfig {
   /// TTL in seconds for the authentication token.
   final pulumi.Input<int>? authTtl;
-
   /// Client ID for the OpenID Connect provider.
   final pulumi.Input<String>? clientId;
-
   /// TTL in seconds for the issued at time.
   final pulumi.Input<int>? iatTtl;
-
   /// Issuer URL for the OpenID Connect provider.
   final pulumi.Input<String> issuer;
 
@@ -36,26 +33,13 @@ class ApiEventConfigAuthProviderOpenidConnectConfig {
     };
   }
 
-  factory ApiEventConfigAuthProviderOpenidConnectConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApiEventConfigAuthProviderOpenidConnectConfig.fromMap(Map<String, dynamic> map) {
     return ApiEventConfigAuthProviderOpenidConnectConfig(
-      authTtl: (() {
-        final guardedValue = map['authTtl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      clientId: (() {
-        final guardedValue = map['clientId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      iatTtl: (() {
-        final guardedValue = map['iatTtl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      authTtl: (() { final guardedValue = map['authTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      clientId: (() { final guardedValue = map['clientId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      iatTtl: (() { final guardedValue = map['iatTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       issuer: pulumi.Input.fromValue(map['issuer'] as String),
     );
   }
 }
+

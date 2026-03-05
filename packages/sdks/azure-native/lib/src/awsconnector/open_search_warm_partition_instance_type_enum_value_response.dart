@@ -9,21 +9,20 @@ class OpenSearchWarmPartitionInstanceTypeEnumValueResponse {
 
   /// Creates a new [OpenSearchWarmPartitionInstanceTypeEnumValueResponse].
   /// [value] Property value
-  OpenSearchWarmPartitionInstanceTypeEnumValueResponse({this.value});
+  OpenSearchWarmPartitionInstanceTypeEnumValueResponse({
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': ?value};
+    return <String, dynamic>{
+      'value': ?value,
+    };
   }
 
-  factory OpenSearchWarmPartitionInstanceTypeEnumValueResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OpenSearchWarmPartitionInstanceTypeEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return OpenSearchWarmPartitionInstanceTypeEnumValueResponse(
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

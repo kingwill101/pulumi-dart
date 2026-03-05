@@ -9,17 +9,20 @@ class StorageDestinationConfigurationResponse {
 
   /// Creates a new [StorageDestinationConfigurationResponse].
   /// [path] The storage destination path.
-  StorageDestinationConfigurationResponse({required this.path});
+  StorageDestinationConfigurationResponse({
+    required this.path,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'path': path};
+    return <String, dynamic>{
+      'path': path,
+    };
   }
 
-  factory StorageDestinationConfigurationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory StorageDestinationConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return StorageDestinationConfigurationResponse(
       path: pulumi.Input.fromValue(map['path'] as String),
     );
   }
 }
+

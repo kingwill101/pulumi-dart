@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RsaKeyTypeResponse {
   /// Optional. The maximum allowed RSA modulus size (inclusive), in bits. If this is not set, or if set to zero, the service will not enforce an explicit upper bound on RSA modulus sizes.
   final pulumi.Input<String> maxModulusSize;
-
   /// Optional. The minimum allowed RSA modulus size (inclusive), in bits. If this is not set, or if set to zero, the service-level min RSA modulus size will continue to apply.
   final pulumi.Input<String> minModulusSize;
 
@@ -32,3 +31,4 @@ class RsaKeyTypeResponse {
     );
   }
 }
+

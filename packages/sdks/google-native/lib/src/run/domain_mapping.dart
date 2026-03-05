@@ -9,21 +9,16 @@ import 'object_meta_response.dart';
 class DomainMapping extends pulumi.CustomResource {
   /// The API version for this call such as "domains.cloudrun.com/v1".
   late final pulumi.Output<String> apiVersion;
-
   /// Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all`
   late final pulumi.Output<String?> dryRun;
-
   /// The kind of resource, in this case "DomainMapping".
   late final pulumi.Output<String> kind;
   late final pulumi.Output<String> location;
-
   /// Metadata associated with this BuildTemplate.
   late final pulumi.Output<ObjectMetaResponse> metadata;
   late final pulumi.Output<String> project;
-
   /// The spec for this DomainMapping.
   late final pulumi.Output<DomainMappingSpecResponse> spec;
-
   /// The current status of the DomainMapping.
   late final pulumi.Output<DomainMappingStatusResponse> status;
 
@@ -36,45 +31,18 @@ class DomainMapping extends pulumi.CustomResource {
     DomainMappingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'google-native:run/v1:DomainMapping',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'google-native:run/v1:DomainMapping',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiVersion = registerOutput<String>('apiVersion');
     dryRun = registerOutput<String?>('dryRun');
     kind = registerOutput<String>('kind');
     location = registerOutput<String>('location');
-    metadata = registerOutput<ObjectMetaResponse>(
-      'metadata',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ObjectMetaResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    metadata = registerOutput<ObjectMetaResponse>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    spec = registerOutput<DomainMappingSpecResponse>(
-      'spec',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DomainMappingSpecResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    status = registerOutput<DomainMappingStatusResponse>(
-      'status',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DomainMappingStatusResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    spec = registerOutput<DomainMappingSpecResponse>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainMappingSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<DomainMappingStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainMappingStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

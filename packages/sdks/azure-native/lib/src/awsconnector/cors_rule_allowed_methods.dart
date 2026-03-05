@@ -18,3 +18,4 @@ enum CorsRuleAllowedMethods {
     throw ArgumentError('Unknown CorsRuleAllowedMethods value: $value');
   }
 }
+

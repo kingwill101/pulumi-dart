@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GooglePrivacyDlpV2TransformationErrorHandlingResponse {
   /// Ignore errors
   final pulumi.Input<Map<String, dynamic>> leaveUntransformed;
-
   /// Throw an error
   final pulumi.Input<Map<String, dynamic>> throwError;
 
@@ -25,16 +24,11 @@ class GooglePrivacyDlpV2TransformationErrorHandlingResponse {
     };
   }
 
-  factory GooglePrivacyDlpV2TransformationErrorHandlingResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GooglePrivacyDlpV2TransformationErrorHandlingResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2TransformationErrorHandlingResponse(
-      leaveUntransformed: pulumi.Input.fromValue(
-        (map['leaveUntransformed']! as Map).cast<String, dynamic>(),
-      ),
-      throwError: pulumi.Input.fromValue(
-        (map['throwError']! as Map).cast<String, dynamic>(),
-      ),
+      leaveUntransformed: pulumi.Input.fromValue((map['leaveUntransformed']! as Map).cast<String, dynamic>()),
+      throwError: pulumi.Input.fromValue((map['throwError']! as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -16,3 +16,4 @@ enum EventDeliverySchema {
     throw ArgumentError('Unknown EventDeliverySchema value: $value');
   }
 }
+

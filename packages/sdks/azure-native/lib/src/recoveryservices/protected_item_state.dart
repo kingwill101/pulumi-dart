@@ -20,3 +20,4 @@ enum ProtectedItemState {
     throw ArgumentError('Unknown ProtectedItemState value: $value');
   }
 }
+

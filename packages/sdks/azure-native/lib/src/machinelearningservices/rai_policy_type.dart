@@ -15,3 +15,4 @@ enum RaiPolicyType {
     throw ArgumentError('Unknown RaiPolicyType value: $value');
   }
 }
+

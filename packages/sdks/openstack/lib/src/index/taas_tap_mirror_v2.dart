@@ -144,39 +144,31 @@ class TaasTapMirrorV2 extends pulumi.CustomResource {
   /// The human-readable description for the Tap Mirror.
   /// Changing this updates the description of the existing Tap Mirror.
   late final pulumi.Output<String?> description;
-
   /// A block declaring the directions to be mirrored and their
   /// identifiers. One block has to be declared with at least one direction. Changing
   /// this creates a new Tap Mirror.
   late final pulumi.Output<TaasTapMirrorV2Directions> directions;
-
   /// The type of the mirroring, can be `gre` or `erspanv1`.
   /// Changing this creates a new Tap Mirror.
   late final pulumi.Output<String> mirrorType;
-
   /// The name of the Tap Mirror. Changing this updates the name of
   /// the existing Tap Mirror.
   late final pulumi.Output<String> name;
-
   /// The Port ID of the Tap Mirror, this will be the source of
   /// the mirrored traffic, and this traffic will be tunneled into the GRE or ERSPAN
   /// v1 tunnel. The tunnel itself is not starting from this port. Changing this
   /// creates a new Tap Mirror.
   late final pulumi.Output<String> portId;
-
   /// Id of the OpenStack project.
   late final pulumi.Output<String> projectId;
-
   /// The region in which to obtain the V2 Networking client.
   /// A Networking client is needed to create an endpoint group. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
   /// group.
   late final pulumi.Output<String> region;
-
   /// The remote IP of the Tap Mirror, this will be the remote
   /// end of the GRE or ERSPAN v1 tunnel. Changing this creates a new Tap Mirror.
   late final pulumi.Output<String> remoteIp;
-
   /// The owner of the Tap Mirror. Required if admin wants to
   /// create a Tap Mirror for another project. Changing this creates a new Tap Mirror.
   late final pulumi.Output<String> tenantId;
@@ -190,22 +182,13 @@ class TaasTapMirrorV2 extends pulumi.CustomResource {
     TaasTapMirrorV2Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:index/taasTapMirrorV2:TaasTapMirrorV2',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:index/taasTapMirrorV2:TaasTapMirrorV2',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
-    directions = registerOutput<TaasTapMirrorV2Directions>(
-      'directions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TaasTapMirrorV2Directions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    directions = registerOutput<TaasTapMirrorV2Directions>('directions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaasTapMirrorV2Directions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     mirrorType = registerOutput<String>('mirrorType');
     this.name = registerOutput<String>('name');
     portId = registerOutput<String>('portId');
@@ -233,22 +216,13 @@ class TaasTapMirrorV2 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:index/taasTapMirrorV2:TaasTapMirrorV2',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:index/taasTapMirrorV2:TaasTapMirrorV2',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
-    directions = registerOutput<TaasTapMirrorV2Directions>(
-      'directions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TaasTapMirrorV2Directions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    directions = registerOutput<TaasTapMirrorV2Directions>('directions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaasTapMirrorV2Directions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     mirrorType = registerOutput<String>('mirrorType');
     this.name = registerOutput<String>('name');
     portId = registerOutput<String>('portId');

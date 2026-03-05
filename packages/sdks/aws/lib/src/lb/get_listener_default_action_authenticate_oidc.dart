@@ -57,31 +57,20 @@ class GetListenerDefaultActionAuthenticateOidc {
     };
   }
 
-  factory GetListenerDefaultActionAuthenticateOidc.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetListenerDefaultActionAuthenticateOidc.fromMap(Map<String, dynamic> map) {
     return GetListenerDefaultActionAuthenticateOidc(
-      authenticationRequestExtraParams: pulumi.Input.fromValue(
-        (map['authenticationRequestExtraParams'] as Map).cast<String, String>(),
-      ),
-      authorizationEndpoint: pulumi.Input.fromValue(
-        map['authorizationEndpoint'] as String,
-      ),
+      authenticationRequestExtraParams: pulumi.Input.fromValue((map['authenticationRequestExtraParams'] as Map).cast<String, String>()),
+      authorizationEndpoint: pulumi.Input.fromValue(map['authorizationEndpoint'] as String),
       clientId: pulumi.Input.fromValue(map['clientId'] as String),
       clientSecret: pulumi.Input.fromValue(map['clientSecret'] as String),
       issuer: pulumi.Input.fromValue(map['issuer'] as String),
-      onUnauthenticatedRequest: pulumi.Input.fromValue(
-        map['onUnauthenticatedRequest'] as String,
-      ),
+      onUnauthenticatedRequest: pulumi.Input.fromValue(map['onUnauthenticatedRequest'] as String),
       scope: pulumi.Input.fromValue(map['scope'] as String),
-      sessionCookieName: pulumi.Input.fromValue(
-        map['sessionCookieName'] as String,
-      ),
+      sessionCookieName: pulumi.Input.fromValue(map['sessionCookieName'] as String),
       sessionTimeout: pulumi.Input.fromValue(map['sessionTimeout'] as int),
       tokenEndpoint: pulumi.Input.fromValue(map['tokenEndpoint'] as String),
-      userInfoEndpoint: pulumi.Input.fromValue(
-        map['userInfoEndpoint'] as String,
-      ),
+      userInfoEndpoint: pulumi.Input.fromValue(map['userInfoEndpoint'] as String),
     );
   }
 }
+

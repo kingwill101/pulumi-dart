@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureMachineLearningWebServiceOutputColumnResponse {
   /// The (Azure Machine Learning supported) data type of the output column. A list of valid  Azure Machine Learning data types are described at https://msdn.microsoft.com/en-us/library/azure/dn905923.aspx .
   final pulumi.Input<String>? dataType;
-
   /// The name of the output column.
   final pulumi.Input<String>? name;
 
@@ -19,23 +18,17 @@ class AzureMachineLearningWebServiceOutputColumnResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'dataType': ?dataType, 'name': ?name};
+    return <String, dynamic>{
+      'dataType': ?dataType,
+      'name': ?name,
+    };
   }
 
-  factory AzureMachineLearningWebServiceOutputColumnResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AzureMachineLearningWebServiceOutputColumnResponse.fromMap(Map<String, dynamic> map) {
     return AzureMachineLearningWebServiceOutputColumnResponse(
-      dataType: (() {
-        final guardedValue = map['dataType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dataType: (() { final guardedValue = map['dataType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

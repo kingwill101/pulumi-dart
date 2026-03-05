@@ -9,10 +9,14 @@ class MonitoringProfileResponse {
 
   /// Creates a new [MonitoringProfileResponse].
   /// [id] Resource Id of Application Insights Resource
-  MonitoringProfileResponse({required this.id});
+  MonitoringProfileResponse({
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id};
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
   factory MonitoringProfileResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class MonitoringProfileResponse {
     );
   }
 }
+

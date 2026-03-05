@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LogicAppReceiver {
   /// The callback url where http request sent to.
   final pulumi.Input<String> callbackUrl;
-
   /// The principal id of the managed identity. The value can be "None", "SystemAssigned"
   final pulumi.Input<String>? managedIdentity;
-
   /// The name of the logic app receiver. Names must be unique across all receivers within an action group.
   final pulumi.Input<String> name;
-
   /// The azure resource id of the logic app receiver.
   final pulumi.Input<String> resourceId;
-
   /// Indicates whether to use common alert schema.
   final pulumi.Input<bool>? useCommonAlertSchema;
 
@@ -46,18 +42,11 @@ class LogicAppReceiver {
   factory LogicAppReceiver.fromMap(Map<String, dynamic> map) {
     return LogicAppReceiver(
       callbackUrl: pulumi.Input.fromValue(map['callbackUrl'] as String),
-      managedIdentity: (() {
-        final guardedValue = map['managedIdentity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      managedIdentity: (() { final guardedValue = map['managedIdentity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
-      useCommonAlertSchema: (() {
-        final guardedValue = map['useCommonAlertSchema'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      useCommonAlertSchema: (() { final guardedValue = map['useCommonAlertSchema']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

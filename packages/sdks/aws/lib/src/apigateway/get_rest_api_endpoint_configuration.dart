@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRestApiEndpointConfiguration {
   /// The IP address types that can invoke an API (RestApi).
   final pulumi.Input<String> ipAddressType;
-
   /// List of endpoint types.
   final pulumi.Input<List<String>> types;
-
   /// Set of VPC Endpoint identifiers.
   final pulumi.Input<List<String>> vpcEndpointIds;
 
@@ -34,9 +32,8 @@ class GetRestApiEndpointConfiguration {
     return GetRestApiEndpointConfiguration(
       ipAddressType: pulumi.Input.fromValue(map['ipAddressType'] as String),
       types: pulumi.Input.fromValue((map['types'] as List).cast<String>()),
-      vpcEndpointIds: pulumi.Input.fromValue(
-        (map['vpcEndpointIds'] as List).cast<String>(),
-      ),
+      vpcEndpointIds: pulumi.Input.fromValue((map['vpcEndpointIds'] as List).cast<String>()),
     );
   }
 }
+

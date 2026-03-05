@@ -41,8 +41,7 @@ Future<GetBareMetalAdminClusterResult> getBareMetalAdminCluster(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_gkeonprem_v1_get_bare_metal_admin_cluster_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetBareMetalAdminClusterIamPolicyResult>
-getBareMetalAdminClusterIamPolicy(
+Future<GetBareMetalAdminClusterIamPolicyResult> getBareMetalAdminClusterIamPolicy(
   GetBareMetalAdminClusterIamPolicyArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -74,8 +73,7 @@ Future<GetBareMetalClusterResult> getBareMetalCluster(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_gkeonprem_v1_get_bare_metal_cluster_bare_metal_node_pool_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetBareMetalClusterBareMetalNodePoolIamPolicyResult>
-getBareMetalClusterBareMetalNodePoolIamPolicy(
+Future<GetBareMetalClusterBareMetalNodePoolIamPolicyResult> getBareMetalClusterBareMetalNodePoolIamPolicy(
   GetBareMetalClusterBareMetalNodePoolIamPolicyArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -171,8 +169,7 @@ Future<GetVmwareClusterIamPolicyResult> getVmwareClusterIamPolicy(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_gkeonprem_v1_get_vmware_cluster_vmware_node_pool_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetVmwareClusterVmwareNodePoolIamPolicyResult>
-getVmwareClusterVmwareNodePoolIamPolicy(
+Future<GetVmwareClusterVmwareNodePoolIamPolicyResult> getVmwareClusterVmwareNodePoolIamPolicy(
   GetVmwareClusterVmwareNodePoolIamPolicyArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

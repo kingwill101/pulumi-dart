@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TrafficMirrorTargetArgs {
   /// A description of the traffic mirror session.
   final pulumi.Input<String>? description;
-
   /// The VPC Endpoint Id of the Gateway Load Balancer that is associated with the target.
   final pulumi.Input<String>? gatewayLoadBalancerEndpointId;
-
   /// The network interface ID that is associated with the target.
   final pulumi.Input<String>? networkInterfaceId;
-
   /// The Amazon Resource Name (ARN) of the Network Load Balancer that is associated with the target.
   final pulumi.Input<String>? networkLoadBalancerArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
   /// **NOTE:** Either `network_interface_id` or `network_load_balancer_arn` should be specified and both should not be specified together
@@ -56,38 +51,13 @@ class TrafficMirrorTargetArgs {
 
   factory TrafficMirrorTargetArgs.fromMap(Map<String, dynamic> map) {
     return TrafficMirrorTargetArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      gatewayLoadBalancerEndpointId: (() {
-        final guardedValue = map['gatewayLoadBalancerEndpointId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      networkInterfaceId: (() {
-        final guardedValue = map['networkInterfaceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      networkLoadBalancerArn: (() {
-        final guardedValue = map['networkLoadBalancerArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      gatewayLoadBalancerEndpointId: (() { final guardedValue = map['gatewayLoadBalancerEndpointId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      networkInterfaceId: (() { final guardedValue = map['networkInterfaceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      networkLoadBalancerArn: (() { final guardedValue = map['networkLoadBalancerArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

@@ -32,12 +32,9 @@ class GetScopeGkehubV1betaArgs {
   factory GetScopeGkehubV1betaArgs.fromMap(Map<String, dynamic> map) {
     return GetScopeGkehubV1betaArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scopeId: pulumi.Input.fromValue(map['scopeId'] as String),
     );
   }
 }
+

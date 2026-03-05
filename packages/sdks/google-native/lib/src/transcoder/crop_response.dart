@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CropResponse {
   /// The number of pixels to crop from the bottom. The default is 0.
   final pulumi.Input<int> bottomPixels;
-
   /// The number of pixels to crop from the left. The default is 0.
   final pulumi.Input<int> leftPixels;
-
   /// The number of pixels to crop from the right. The default is 0.
   final pulumi.Input<int> rightPixels;
-
   /// The number of pixels to crop from the top. The default is 0.
   final pulumi.Input<int> topPixels;
 
@@ -46,3 +43,4 @@ class CropResponse {
     );
   }
 }
+

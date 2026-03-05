@@ -12,10 +12,14 @@ class GetInstanceNetworkingArgs {
 
   /// Creates a new [GetInstanceNetworkingArgs].
   /// [linodeId] The Linode instance's ID.
-  GetInstanceNetworkingArgs({required this.linodeId});
+  GetInstanceNetworkingArgs({
+    required this.linodeId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'linodeId': linodeId};
+    return <String, dynamic>{
+      'linodeId': linodeId,
+    };
   }
 
   factory GetInstanceNetworkingArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetInstanceNetworkingArgs {
     );
   }
 }
+

@@ -13,8 +13,7 @@ enum KnownPublicNetworkAccessOptions {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown KnownPublicNetworkAccessOptions value: $value',
-    );
+    throw ArgumentError('Unknown KnownPublicNetworkAccessOptions value: $value');
   }
 }
+

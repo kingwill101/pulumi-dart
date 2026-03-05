@@ -10,36 +10,20 @@ class Filter {
 
   /// Creates a new [Filter].
   /// [eventType] Event types to allowlist.
-  Filter({this.eventType});
+  Filter({
+    this.eventType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'eventType':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<FilterEventTypeItem>,
-            List<String>
-          >(
-            eventType,
-            (value) => pulumi.Input.encodeList<FilterEventTypeItem, String>(
-              value,
-              (value) => value.wireValue,
-            ),
-          ),
+      'eventType': ?pulumi.Input.mapOptionalInputValue<List<FilterEventTypeItem>, List<String>>(eventType, (value) => pulumi.Input.encodeList<FilterEventTypeItem, String>(value, (value) => value.wireValue)),
     };
   }
 
   factory Filter.fromMap(Map<String, dynamic> map) {
     return Filter(
-      eventType: (() {
-        final guardedValue = map['eventType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<FilterEventTypeItem>(
-            guardedValue,
-            (value) => FilterEventTypeItem.fromValue(value as String),
-          ),
-        );
-      })(),
+      eventType: (() { final guardedValue = map['eventType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<FilterEventTypeItem>(guardedValue, (value) => FilterEventTypeItem.fromValue(value as String))); })(),
     );
   }
 }
+

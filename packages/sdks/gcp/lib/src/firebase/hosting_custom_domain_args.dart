@@ -12,20 +12,16 @@ class HostingCustomDomainArgs {
   /// `GROUPED` cert type, while Blaze plan can select any option.
   /// Possible values are: `GROUPED`, `PROJECT_GROUPED`, `DEDICATED`.
   final pulumi.Input<String>? certPreference;
-
   /// The ID of the `CustomDomain`, which is the domain name you'd like to use with Firebase Hosting.
   final pulumi.Input<String> customDomain;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// A domain name that this CustomDomain should direct traffic towards. If
   /// specified, Hosting will respond to requests against this CustomDomain
   /// with an HTTP 301 code, and route traffic to the specified `redirect_target`
   /// instead.
   final pulumi.Input<String>? redirectTarget;
-
   /// The ID of the site in which to create this custom domain association.
   final pulumi.Input<String> siteId;
   final pulumi.Input<bool>? waitDnsVerification;
@@ -59,28 +55,13 @@ class HostingCustomDomainArgs {
 
   factory HostingCustomDomainArgs.fromMap(Map<String, dynamic> map) {
     return HostingCustomDomainArgs(
-      certPreference: (() {
-        final guardedValue = map['certPreference'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      certPreference: (() { final guardedValue = map['certPreference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       customDomain: pulumi.Input.fromValue(map['customDomain'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      redirectTarget: (() {
-        final guardedValue = map['redirectTarget'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      redirectTarget: (() { final guardedValue = map['redirectTarget']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       siteId: pulumi.Input.fromValue(map['siteId'] as String),
-      waitDnsVerification: (() {
-        final guardedValue = map['waitDnsVerification'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      waitDnsVerification: (() { final guardedValue = map['waitDnsVerification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

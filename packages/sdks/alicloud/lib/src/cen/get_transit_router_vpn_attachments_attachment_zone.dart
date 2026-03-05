@@ -8,17 +8,20 @@ class GetTransitRouterVpnAttachmentsAttachmentZone {
 
   /// Creates a new [GetTransitRouterVpnAttachmentsAttachmentZone].
   /// [zoneId] The zone ID of the read-only instance.
-  GetTransitRouterVpnAttachmentsAttachmentZone({required this.zoneId});
+  GetTransitRouterVpnAttachmentsAttachmentZone({
+    required this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'zoneId': zoneId};
+    return <String, dynamic>{
+      'zoneId': zoneId,
+    };
   }
 
-  factory GetTransitRouterVpnAttachmentsAttachmentZone.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetTransitRouterVpnAttachmentsAttachmentZone.fromMap(Map<String, dynamic> map) {
     return GetTransitRouterVpnAttachmentsAttachmentZone(
       zoneId: pulumi.Input.fromValue(map['zoneId'] as String),
     );
   }
 }
+

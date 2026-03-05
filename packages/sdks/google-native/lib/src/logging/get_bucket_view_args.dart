@@ -37,12 +37,9 @@ class GetBucketViewArgs {
     return GetBucketViewArgs(
       bucketId: pulumi.Input.fromValue(map['bucketId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       viewId: pulumi.Input.fromValue(map['viewId'] as String),
     );
   }
 }
+

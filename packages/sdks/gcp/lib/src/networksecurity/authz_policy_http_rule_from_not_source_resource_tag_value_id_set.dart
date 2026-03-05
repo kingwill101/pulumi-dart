@@ -9,21 +9,20 @@ class AuthzPolicyHttpRuleFromNotSourceResourceTagValueIdSet {
 
   /// Creates a new [AuthzPolicyHttpRuleFromNotSourceResourceTagValueIdSet].
   /// [ids] A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request. The match follows AND semantics which means all the ids must match.
-  AuthzPolicyHttpRuleFromNotSourceResourceTagValueIdSet({this.ids});
+  AuthzPolicyHttpRuleFromNotSourceResourceTagValueIdSet({
+    this.ids,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'ids': ?ids};
+    return <String, dynamic>{
+      'ids': ?ids,
+    };
   }
 
-  factory AuthzPolicyHttpRuleFromNotSourceResourceTagValueIdSet.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AuthzPolicyHttpRuleFromNotSourceResourceTagValueIdSet.fromMap(Map<String, dynamic> map) {
     return AuthzPolicyHttpRuleFromNotSourceResourceTagValueIdSet(
-      ids: (() {
-        final guardedValue = map['ids'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      ids: (() { final guardedValue = map['ids']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

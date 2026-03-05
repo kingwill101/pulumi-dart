@@ -6,24 +6,19 @@ import 'get_basic_accelerators_accelerator.dart';
 /// Result data returned by getBasicAccelerators.
 class GetBasicAcceleratorsResult {
   final String? acceleratorId;
-
   /// A list of Global Accelerator Basic Accelerators. Each element contains the following attributes:
   final List<GetBasicAcceleratorsAccelerator> accelerators;
-
   /// The bandwidth billing method.
   final String? bandwidthBillingType;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
   final String? nameRegex;
-
   /// A list of Global Accelerator Basic Accelerator names.
   final List<String> names;
   final String? outputFile;
   final int? pageNumber;
   final int? pageSize;
-
   /// The status of the Global Accelerator Basic Accelerator instance.
   final String? status;
 
@@ -56,11 +51,7 @@ class GetBasicAcceleratorsResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'acceleratorId': ?acceleratorId,
-      'accelerators':
-          pulumi.Input.encodeList<
-            GetBasicAcceleratorsAccelerator,
-            Map<String, dynamic>
-          >(accelerators, (value) => value.toMap()),
+      'accelerators': pulumi.Input.encodeList<GetBasicAcceleratorsAccelerator, Map<String, dynamic>>(accelerators, (value) => value.toMap()),
       'bandwidthBillingType': ?bandwidthBillingType,
       'id': id,
       'ids': ids,
@@ -75,50 +66,18 @@ class GetBasicAcceleratorsResult {
 
   factory GetBasicAcceleratorsResult.fromMap(Map<String, dynamic> map) {
     return GetBasicAcceleratorsResult(
-      acceleratorId: (() {
-        final guardedValue = map['acceleratorId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      accelerators: pulumi.Input.decodeList<GetBasicAcceleratorsAccelerator>(
-        map['accelerators']!,
-        (value) => GetBasicAcceleratorsAccelerator.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      bandwidthBillingType: (() {
-        final guardedValue = map['bandwidthBillingType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      acceleratorId: (() { final guardedValue = map['acceleratorId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      accelerators: pulumi.Input.decodeList<GetBasicAcceleratorsAccelerator>(map['accelerators']!, (value) => GetBasicAcceleratorsAccelerator.fromMap((value as Map).cast<String, dynamic>())),
+      bandwidthBillingType: (() { final guardedValue = map['bandwidthBillingType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      pageNumber: (() {
-        final guardedValue = map['pageNumber'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      pageSize: (() {
-        final guardedValue = map['pageSize'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      pageNumber: (() { final guardedValue = map['pageNumber']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      pageSize: (() { final guardedValue = map['pageSize']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

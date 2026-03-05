@@ -17,3 +17,4 @@ enum MoveCost {
     throw ArgumentError('Unknown MoveCost value: $value');
   }
 }
+

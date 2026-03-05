@@ -16,3 +16,4 @@ enum AutoscalingSettingsAlgorithm {
     throw ArgumentError('Unknown AutoscalingSettingsAlgorithm value: $value');
   }
 }
+

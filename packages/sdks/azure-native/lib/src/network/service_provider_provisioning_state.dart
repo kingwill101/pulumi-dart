@@ -14,8 +14,7 @@ enum ServiceProviderProvisioningState {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ServiceProviderProvisioningState value: $value',
-    );
+    throw ArgumentError('Unknown ServiceProviderProvisioningState value: $value');
   }
 }
+

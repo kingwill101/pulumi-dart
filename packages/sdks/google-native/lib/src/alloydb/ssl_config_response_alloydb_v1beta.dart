@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SslConfigResponseAlloydbV1beta {
   /// Optional. Certificate Authority (CA) source. Only CA_SOURCE_MANAGED is supported currently, and is the default value.
   final pulumi.Input<String> caSource;
-
   /// Optional. SSL mode. Specifies client-server SSL/TLS connection behavior.
   final pulumi.Input<String> sslMode;
 
@@ -19,7 +18,10 @@ class SslConfigResponseAlloydbV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'caSource': caSource, 'sslMode': sslMode};
+    return <String, dynamic>{
+      'caSource': caSource,
+      'sslMode': sslMode,
+    };
   }
 
   factory SslConfigResponseAlloydbV1beta.fromMap(Map<String, dynamic> map) {
@@ -29,3 +31,4 @@ class SslConfigResponseAlloydbV1beta {
     );
   }
 }
+

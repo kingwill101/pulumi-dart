@@ -9,10 +9,14 @@ class LoadBalancerDetailsResponse {
 
   /// Creates a new [LoadBalancerDetailsResponse].
   /// [id] Fully qualified resource ID for the load balancer.
-  LoadBalancerDetailsResponse({required this.id});
+  LoadBalancerDetailsResponse({
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id};
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
   factory LoadBalancerDetailsResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class LoadBalancerDetailsResponse {
     );
   }
 }
+

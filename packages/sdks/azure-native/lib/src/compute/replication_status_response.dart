@@ -7,7 +7,6 @@ import 'regional_replication_status_response.dart';
 class ReplicationStatusResponse {
   /// This is the aggregated replication status based on all the regional replication status flags.
   final pulumi.Input<String> aggregatedState;
-
   /// This is a summary of replication status for each region.
   final pulumi.Input<List<RegionalReplicationStatusResponse>> summary;
 
@@ -22,32 +21,15 @@ class ReplicationStatusResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'aggregatedState': aggregatedState,
-      'summary':
-          pulumi.Input.mapInputValue<
-            List<RegionalReplicationStatusResponse>,
-            List<Map<String, dynamic>>
-          >(
-            summary,
-            (value) =>
-                pulumi.Input.encodeList<
-                  RegionalReplicationStatusResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'summary': pulumi.Input.mapInputValue<List<RegionalReplicationStatusResponse>, List<Map<String, dynamic>>>(summary, (value) => pulumi.Input.encodeList<RegionalReplicationStatusResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ReplicationStatusResponse.fromMap(Map<String, dynamic> map) {
     return ReplicationStatusResponse(
       aggregatedState: pulumi.Input.fromValue(map['aggregatedState'] as String),
-      summary: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<RegionalReplicationStatusResponse>(
-          map['summary']!,
-          (value) => RegionalReplicationStatusResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      summary: pulumi.Input.fromValue(pulumi.Input.decodeList<RegionalReplicationStatusResponse>(map['summary']!, (value) => RegionalReplicationStatusResponse.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

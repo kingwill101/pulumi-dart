@@ -5,13 +5,7 @@ import 'get_feature_fleet_default_member_config_policycontroller_policy_controll
 
 class GetFeatureFleetDefaultMemberConfigPolicycontroller {
   /// Configuration of Policy Controller
-  final pulumi.Input<
-    List<
-      GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig
-    >
-  >
-  policyControllerHubConfigs;
-
+  final pulumi.Input<List<GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig>> policyControllerHubConfigs;
   /// Configures the version of Policy Controller
   final pulumi.Input<String> version;
 
@@ -25,40 +19,16 @@ class GetFeatureFleetDefaultMemberConfigPolicycontroller {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'policyControllerHubConfigs':
-          pulumi.Input.mapInputValue<
-            List<
-              GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig
-            >,
-            List<Map<String, dynamic>>
-          >(
-            policyControllerHubConfigs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'policyControllerHubConfigs': pulumi.Input.mapInputValue<List<GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig>, List<Map<String, dynamic>>>(policyControllerHubConfigs, (value) => pulumi.Input.encodeList<GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'version': version,
     };
   }
 
-  factory GetFeatureFleetDefaultMemberConfigPolicycontroller.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetFeatureFleetDefaultMemberConfigPolicycontroller.fromMap(Map<String, dynamic> map) {
     return GetFeatureFleetDefaultMemberConfigPolicycontroller(
-      policyControllerHubConfigs: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig
-        >(
-          map['policyControllerHubConfigs']!,
-          (value) =>
-              GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
+      policyControllerHubConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig>(map['policyControllerHubConfigs']!, (value) => GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig.fromMap((value as Map).cast<String, dynamic>()))),
       version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
+

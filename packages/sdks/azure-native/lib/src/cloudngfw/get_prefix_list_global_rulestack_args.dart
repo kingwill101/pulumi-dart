@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPrefixListGlobalRulestackArgs {
   /// GlobalRulestack resource name
   final pulumi.Input<String> globalRulestackName;
-
   /// Local Rule priority
   final pulumi.Input<String> name;
 
@@ -30,10 +29,9 @@ class GetPrefixListGlobalRulestackArgs {
 
   factory GetPrefixListGlobalRulestackArgs.fromMap(Map<String, dynamic> map) {
     return GetPrefixListGlobalRulestackArgs(
-      globalRulestackName: pulumi.Input.fromValue(
-        map['globalRulestackName'] as String,
-      ),
+      globalRulestackName: pulumi.Input.fromValue(map['globalRulestackName'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

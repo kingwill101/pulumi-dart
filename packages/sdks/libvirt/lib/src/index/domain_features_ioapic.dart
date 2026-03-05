@@ -8,19 +8,20 @@ class DomainFeaturesIoapic {
 
   /// Creates a new [DomainFeaturesIoapic].
   /// [driver] Specifies the driver to be used for the I/O APIC feature.
-  DomainFeaturesIoapic({this.driver});
+  DomainFeaturesIoapic({
+    this.driver,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'driver': ?driver};
+    return <String, dynamic>{
+      'driver': ?driver,
+    };
   }
 
   factory DomainFeaturesIoapic.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesIoapic(
-      driver: (() {
-        final guardedValue = map['driver'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      driver: (() { final guardedValue = map['driver']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

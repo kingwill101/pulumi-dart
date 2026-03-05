@@ -5,11 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceHostnameConfigurationScm {
   /// The Hostname used for the SCM URL.
   final pulumi.Input<String> hostName;
-
   /// The ID of the Key Vault Secret which contains the SSL Certificate.
   final pulumi.Input<String> keyVaultCertificateId;
   final pulumi.Input<String> keyVaultId;
-
   /// Is Client Certificate Negotiation enabled?
   final pulumi.Input<bool> negotiateClientCertificate;
 
@@ -37,13 +35,10 @@ class GetServiceHostnameConfigurationScm {
   factory GetServiceHostnameConfigurationScm.fromMap(Map<String, dynamic> map) {
     return GetServiceHostnameConfigurationScm(
       hostName: pulumi.Input.fromValue(map['hostName'] as String),
-      keyVaultCertificateId: pulumi.Input.fromValue(
-        map['keyVaultCertificateId'] as String,
-      ),
+      keyVaultCertificateId: pulumi.Input.fromValue(map['keyVaultCertificateId'] as String),
       keyVaultId: pulumi.Input.fromValue(map['keyVaultId'] as String),
-      negotiateClientCertificate: pulumi.Input.fromValue(
-        map['negotiateClientCertificate'] as bool,
-      ),
+      negotiateClientCertificate: pulumi.Input.fromValue(map['negotiateClientCertificate'] as bool),
     );
   }
 }
+

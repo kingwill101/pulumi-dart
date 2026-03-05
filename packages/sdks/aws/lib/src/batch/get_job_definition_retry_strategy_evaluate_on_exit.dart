@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetJobDefinitionRetryStrategyEvaluateOnExit {
   /// Specifies the action to take if all of the specified conditions (onStatusReason, onReason, and onExitCode) are met. The values aren't case sensitive.
   final pulumi.Input<String> action;
-
   /// Contains a glob pattern to match against the decimal representation of the ExitCode returned for a job.
   final pulumi.Input<String> onExitCode;
-
   /// Contains a glob pattern to match against the Reason returned for a job.
   final pulumi.Input<String> onReason;
-
   /// Contains a glob pattern to match against the StatusReason returned for a job.
   final pulumi.Input<String> onStatusReason;
 
@@ -36,9 +33,7 @@ class GetJobDefinitionRetryStrategyEvaluateOnExit {
     };
   }
 
-  factory GetJobDefinitionRetryStrategyEvaluateOnExit.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetJobDefinitionRetryStrategyEvaluateOnExit.fromMap(Map<String, dynamic> map) {
     return GetJobDefinitionRetryStrategyEvaluateOnExit(
       action: pulumi.Input.fromValue(map['action'] as String),
       onExitCode: pulumi.Input.fromValue(map['onExitCode'] as String),
@@ -47,3 +42,4 @@ class GetJobDefinitionRetryStrategyEvaluateOnExit {
     );
   }
 }
+

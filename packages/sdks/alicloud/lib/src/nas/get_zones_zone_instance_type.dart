@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetZonesZoneInstanceType {
   /// File transfer protocol type. Valid values:
   final pulumi.Input<String> protocolType;
-
   /// The storage type of the nas zones. Valid values:
   final pulumi.Input<String> storageType;
 
@@ -31,3 +30,4 @@ class GetZonesZoneInstanceType {
     );
   }
 }
+

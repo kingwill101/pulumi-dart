@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PrivateDnsNameOptionsOnLaunchModelProperties {
   /// Property enableResourceNameDnsAAAARecord
   final pulumi.Input<bool>? enableResourceNameDnsAAAARecord;
-
   /// Property enableResourceNameDnsARecord
   final pulumi.Input<bool>? enableResourceNameDnsARecord;
-
   /// Property hostnameType
   final pulumi.Input<String>? hostnameType;
 
@@ -31,25 +29,12 @@ class PrivateDnsNameOptionsOnLaunchModelProperties {
     };
   }
 
-  factory PrivateDnsNameOptionsOnLaunchModelProperties.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PrivateDnsNameOptionsOnLaunchModelProperties.fromMap(Map<String, dynamic> map) {
     return PrivateDnsNameOptionsOnLaunchModelProperties(
-      enableResourceNameDnsAAAARecord: (() {
-        final guardedValue = map['enableResourceNameDnsAAAARecord'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      enableResourceNameDnsARecord: (() {
-        final guardedValue = map['enableResourceNameDnsARecord'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      hostnameType: (() {
-        final guardedValue = map['hostnameType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      enableResourceNameDnsAAAARecord: (() { final guardedValue = map['enableResourceNameDnsAAAARecord']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enableResourceNameDnsARecord: (() { final guardedValue = map['enableResourceNameDnsARecord']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      hostnameType: (() { final guardedValue = map['hostnameType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

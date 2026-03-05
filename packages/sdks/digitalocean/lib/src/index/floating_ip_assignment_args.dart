@@ -9,17 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FloatingIpAssignmentArgs {
   /// The ID of Droplet that the Floating IP will be assigned to.
   final pulumi.Input<int> dropletId;
-
   /// The Floating IP to assign to the Droplet.
   final pulumi.Input<String> ipAddress;
 
   /// Creates a new [FloatingIpAssignmentArgs].
   /// [dropletId] The ID of Droplet that the Floating IP will be assigned to.
   /// [ipAddress] The Floating IP to assign to the Droplet.
-  FloatingIpAssignmentArgs({required this.dropletId, required this.ipAddress});
+  FloatingIpAssignmentArgs({
+    required this.dropletId,
+    required this.ipAddress,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'dropletId': dropletId, 'ipAddress': ipAddress};
+    return <String, dynamic>{
+      'dropletId': dropletId,
+      'ipAddress': ipAddress,
+    };
   }
 
   factory FloatingIpAssignmentArgs.fromMap(Map<String, dynamic> map) {
@@ -29,3 +34,4 @@ class FloatingIpAssignmentArgs {
     );
   }
 }
+

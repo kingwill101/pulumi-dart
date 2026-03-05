@@ -9,59 +9,42 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RouterInterfaceArgs {
   /// Access point ID
   final pulumi.Input<String>? accessPointId;
-
   /// . Field 'name' has been deprecated from provider version 1.263.0.
   final pulumi.Input<bool>? autoPay;
-
   /// Whether to enable automatic renewal. Value:
   final pulumi.Input<bool>? autoRenew;
-
   /// Whether to delete the health check IP address configured on the router interface. Value:
   final pulumi.Input<bool>? deleteHealthCheckIp;
-
   /// The router interface description. It must be 2 to 256 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
   final pulumi.Input<String>? description;
-
   /// Whether the VBR router interface is created by using the fast connection mode. The fast connection mode can automatically complete the connection after the VBR and the router interfaces at both ends of the VPC are created. Value:
   final pulumi.Input<bool>? fastLinkMode;
-
   /// Health check rate. Unit: milliseconds. The recommend value is 2000. Indicates the time interval for sending continuous detection packets during a specified health check.
   final pulumi.Input<int>? hcRate;
-
   /// Health check threshold. Unit: One. The recommend value is 8. Indicates the number of detection packets sent during the specified health check.
   final pulumi.Input<String>? hcThreshold;
-
   /// Health check source IP address
   final pulumi.Input<String>? healthCheckSourceIp;
-
   /// Health check destination IP address
   final pulumi.Input<String>? healthCheckTargetIp;
-
   /// Peer access point ID
   final pulumi.Input<String>? oppositeAccessPointId;
-
   /// . Field 'router_table_id' has been deprecated from provider version 1.263.0.
   final pulumi.Input<String>? oppositeInterfaceId;
-
   /// Account ID of the peer router interface
   final pulumi.Input<String>? oppositeInterfaceOwnerId;
-
   /// Region of the connection peer
   final pulumi.Input<String> oppositeRegionId;
-
   /// The ID of the router to which the opposite router interface belongs.
   final pulumi.Input<String>? oppositeRouterId;
-
   /// The router type associated with the peer router interface. Valid values:
   /// - VRouter: VPC router.
   /// - VBR: Virtual Border Router.
   final pulumi.Input<String>? oppositeRouterType;
-
   /// The payment method of the router interface. Valid values:
   /// - Subscription : PrePaid.
   /// - PayAsYouGo : PostPaid.
   final pulumi.Input<String>? paymentType;
-
   /// Purchase duration, value:
   /// - When you choose to pay on a monthly basis, the value range is **1 to 9**.
   /// - When you choose to pay per year, the value range is **1 to 3**.
@@ -71,7 +54,6 @@ class RouterInterfaceArgs {
   ///
   /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   final pulumi.Input<int>? period;
-
   /// The billing cycle of the prepaid fee. Valid values:
   /// - `Month` (default): monthly payment.
   /// - `Year`: Pay per Year.
@@ -82,26 +64,20 @@ class RouterInterfaceArgs {
   ///
   /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   final pulumi.Input<String>? pricingCycle;
-
   /// The ID of the resource group
   final pulumi.Input<String>? resourceGroupId;
-
   /// The role of the router interface. Valid values:
   /// - InitiatingSide : the initiator of the connection.
   /// - AcceptingSide : Connect to the receiving end.
   final pulumi.Input<String> role;
-
   /// The ID of the router where the route entry is located.
   final pulumi.Input<String> routerId;
-
   /// Resource attribute field representing the resource name. It must be 2 to 128 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
   final pulumi.Input<String>? routerInterfaceName;
-
   /// The type of the router where the routing table resides. Valid values:
   /// - VRouter:VPC router
   /// - VBR: Border Router
   final pulumi.Input<String> routerType;
-
   /// The specification of the router interface. The available specifications and corresponding bandwidth values are as follows:
   /// - Mini.2: 2 Mbps
   /// - Mini.5: 5 Mbps
@@ -118,7 +94,6 @@ class RouterInterfaceArgs {
   ///
   /// When the Role is AcceptingSide (connecting to the receiving end), the Spec value is Negative, which means that the specification is not involved in creating the receiving end router interface.
   final pulumi.Input<String> spec;
-
   /// Resource attribute fields that represent the status of the resource. Value range:
   /// - Idle : Initialize.
   /// - Connecting : the initiator is in the process of Connecting.
@@ -131,7 +106,6 @@ class RouterInterfaceArgs {
   /// - Deleting : Deleting.
   /// - Deleted : Deleted.
   final pulumi.Input<String>? status;
-
   /// The tag of the resource
   ///
   /// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -229,125 +203,34 @@ class RouterInterfaceArgs {
 
   factory RouterInterfaceArgs.fromMap(Map<String, dynamic> map) {
     return RouterInterfaceArgs(
-      accessPointId: (() {
-        final guardedValue = map['accessPointId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      autoPay: (() {
-        final guardedValue = map['autoPay'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      autoRenew: (() {
-        final guardedValue = map['autoRenew'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      deleteHealthCheckIp: (() {
-        final guardedValue = map['deleteHealthCheckIp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      fastLinkMode: (() {
-        final guardedValue = map['fastLinkMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      hcRate: (() {
-        final guardedValue = map['hcRate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      hcThreshold: (() {
-        final guardedValue = map['hcThreshold'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      healthCheckSourceIp: (() {
-        final guardedValue = map['healthCheckSourceIp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      healthCheckTargetIp: (() {
-        final guardedValue = map['healthCheckTargetIp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      oppositeAccessPointId: (() {
-        final guardedValue = map['oppositeAccessPointId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      oppositeInterfaceId: (() {
-        final guardedValue = map['oppositeInterfaceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      oppositeInterfaceOwnerId: (() {
-        final guardedValue = map['oppositeInterfaceOwnerId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      oppositeRegionId: pulumi.Input.fromValue(
-        map['oppositeRegionId'] as String,
-      ),
-      oppositeRouterId: (() {
-        final guardedValue = map['oppositeRouterId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      oppositeRouterType: (() {
-        final guardedValue = map['oppositeRouterType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      paymentType: (() {
-        final guardedValue = map['paymentType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      period: (() {
-        final guardedValue = map['period'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      pricingCycle: (() {
-        final guardedValue = map['pricingCycle'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupId: (() {
-        final guardedValue = map['resourceGroupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accessPointId: (() { final guardedValue = map['accessPointId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      autoPay: (() { final guardedValue = map['autoPay']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      autoRenew: (() { final guardedValue = map['autoRenew']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      deleteHealthCheckIp: (() { final guardedValue = map['deleteHealthCheckIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      fastLinkMode: (() { final guardedValue = map['fastLinkMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      hcRate: (() { final guardedValue = map['hcRate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      hcThreshold: (() { final guardedValue = map['hcThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      healthCheckSourceIp: (() { final guardedValue = map['healthCheckSourceIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      healthCheckTargetIp: (() { final guardedValue = map['healthCheckTargetIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      oppositeAccessPointId: (() { final guardedValue = map['oppositeAccessPointId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      oppositeInterfaceId: (() { final guardedValue = map['oppositeInterfaceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      oppositeInterfaceOwnerId: (() { final guardedValue = map['oppositeInterfaceOwnerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      oppositeRegionId: pulumi.Input.fromValue(map['oppositeRegionId'] as String),
+      oppositeRouterId: (() { final guardedValue = map['oppositeRouterId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      oppositeRouterType: (() { final guardedValue = map['oppositeRouterType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      paymentType: (() { final guardedValue = map['paymentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      period: (() { final guardedValue = map['period']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      pricingCycle: (() { final guardedValue = map['pricingCycle']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupId: (() { final guardedValue = map['resourceGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       role: pulumi.Input.fromValue(map['role'] as String),
       routerId: pulumi.Input.fromValue(map['routerId'] as String),
-      routerInterfaceName: (() {
-        final guardedValue = map['routerInterfaceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      routerInterfaceName: (() { final guardedValue = map['routerInterfaceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       routerType: pulumi.Input.fromValue(map['routerType'] as String),
       spec: pulumi.Input.fromValue(map['spec'] as String),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

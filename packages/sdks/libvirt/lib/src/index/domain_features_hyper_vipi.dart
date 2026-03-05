@@ -8,19 +8,20 @@ class DomainFeaturesHyperVIpi {
 
   /// Creates a new [DomainFeaturesHyperVIpi].
   /// [state] Configures the state of the PS/2 feature, indicating if it is enabled or not.
-  DomainFeaturesHyperVIpi({this.state});
+  DomainFeaturesHyperVIpi({
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'state': ?state};
+    return <String, dynamic>{
+      'state': ?state,
+    };
   }
 
   factory DomainFeaturesHyperVIpi.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesHyperVIpi(
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

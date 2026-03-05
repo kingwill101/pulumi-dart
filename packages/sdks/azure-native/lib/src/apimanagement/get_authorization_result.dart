@@ -6,28 +6,20 @@ import 'authorization_error_response.dart';
 class GetAuthorizationResult {
   /// Authorization type options
   final String? authorizationType;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Authorization error details.
   final AuthorizationErrorResponse? error;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// The name of the resource
   final String name;
-
   /// OAuth2 grant type options
   final String? oAuth2GrantType;
-
   /// Authorization parameters
   final Map<String, String>? parameters;
-
   /// Status of the Authorization
   final String? status;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -69,37 +61,16 @@ class GetAuthorizationResult {
 
   factory GetAuthorizationResult.fromMap(Map<String, dynamic> map) {
     return GetAuthorizationResult(
-      authorizationType: (() {
-        final guardedValue = map['authorizationType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      authorizationType: (() { final guardedValue = map['authorizationType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       azureApiVersion: map['azureApiVersion'] as String,
-      error: (() {
-        final guardedValue = map['error'];
-        if (guardedValue == null) return null;
-        return AuthorizationErrorResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      error: (() { final guardedValue = map['error']; if (guardedValue == null) return null; return AuthorizationErrorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: map['id'] as String,
       name: map['name'] as String,
-      oAuth2GrantType: (() {
-        final guardedValue = map['oAuth2GrantType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      parameters: (() {
-        final guardedValue = map['parameters'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      oAuth2GrantType: (() { final guardedValue = map['oAuth2GrantType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
       type: map['type'] as String,
     );
   }
 }
+

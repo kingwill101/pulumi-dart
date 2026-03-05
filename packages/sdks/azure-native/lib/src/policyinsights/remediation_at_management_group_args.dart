@@ -11,31 +11,22 @@ import 'remediation_properties_failure_threshold.dart';
 class RemediationAtManagementGroupArgs {
   /// The remediation failure threshold settings
   final pulumi.Input<RemediationPropertiesFailureThreshold>? failureThreshold;
-
   /// The filters that will be applied to determine which resources to remediate.
   final pulumi.Input<RemediationFilters>? filters;
-
   /// Management group ID.
   final pulumi.Input<String> managementGroupId;
-
   /// The namespace for Microsoft Management RP; only "Microsoft.Management" is allowed.
   final pulumi.Input<String> managementGroupsNamespace;
-
   /// Determines how many resources to remediate at any given time. Can be used to increase or reduce the pace of the remediation. If not provided, the default parallel deployments value is used.
   final pulumi.Input<int>? parallelDeployments;
-
   /// The resource ID of the policy assignment that should be remediated.
   final pulumi.Input<String>? policyAssignmentId;
-
   /// The policy definition reference ID of the individual definition that should be remediated. Required when the policy assignment being remediated assigns a policy set definition.
   final pulumi.Input<String>? policyDefinitionReferenceId;
-
   /// The name of the remediation.
   final pulumi.Input<String>? remediationName;
-
   /// Determines the max number of resources that can be remediated by the remediation job. If not provided, the default resource count is used.
   final pulumi.Input<int>? resourceCount;
-
   /// The way resources to remediate are discovered. Defaults to ExistingNonCompliant if not specified.
   final pulumi.Input<String>? resourceDiscoveryMode;
 
@@ -65,16 +56,8 @@ class RemediationAtManagementGroupArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'failureThreshold':
-          ?pulumi.Input.mapOptionalInputValue<
-            RemediationPropertiesFailureThreshold,
-            Map<String, dynamic>
-          >(failureThreshold, (value) => value.toMap()),
-      'filters':
-          ?pulumi.Input.mapOptionalInputValue<
-            RemediationFilters,
-            Map<String, dynamic>
-          >(filters, (value) => value.toMap()),
+      'failureThreshold': ?pulumi.Input.mapOptionalInputValue<RemediationPropertiesFailureThreshold, Map<String, dynamic>>(failureThreshold, (value) => value.toMap()),
+      'filters': ?pulumi.Input.mapOptionalInputValue<RemediationFilters, Map<String, dynamic>>(filters, (value) => value.toMap()),
       'managementGroupId': managementGroupId,
       'managementGroupsNamespace': managementGroupsNamespace,
       'parallelDeployments': ?parallelDeployments,
@@ -88,60 +71,17 @@ class RemediationAtManagementGroupArgs {
 
   factory RemediationAtManagementGroupArgs.fromMap(Map<String, dynamic> map) {
     return RemediationAtManagementGroupArgs(
-      failureThreshold: (() {
-        final guardedValue = map['failureThreshold'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RemediationPropertiesFailureThreshold.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      filters: (() {
-        final guardedValue = map['filters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RemediationFilters.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      managementGroupId: pulumi.Input.fromValue(
-        map['managementGroupId'] as String,
-      ),
-      managementGroupsNamespace: pulumi.Input.fromValue(
-        map['managementGroupsNamespace'] as String,
-      ),
-      parallelDeployments: (() {
-        final guardedValue = map['parallelDeployments'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      policyAssignmentId: (() {
-        final guardedValue = map['policyAssignmentId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      policyDefinitionReferenceId: (() {
-        final guardedValue = map['policyDefinitionReferenceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      remediationName: (() {
-        final guardedValue = map['remediationName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceCount: (() {
-        final guardedValue = map['resourceCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      resourceDiscoveryMode: (() {
-        final guardedValue = map['resourceDiscoveryMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      failureThreshold: (() { final guardedValue = map['failureThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RemediationPropertiesFailureThreshold.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RemediationFilters.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      managementGroupId: pulumi.Input.fromValue(map['managementGroupId'] as String),
+      managementGroupsNamespace: pulumi.Input.fromValue(map['managementGroupsNamespace'] as String),
+      parallelDeployments: (() { final guardedValue = map['parallelDeployments']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      policyAssignmentId: (() { final guardedValue = map['policyAssignmentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      policyDefinitionReferenceId: (() { final guardedValue = map['policyDefinitionReferenceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      remediationName: (() { final guardedValue = map['remediationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceCount: (() { final guardedValue = map['resourceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      resourceDiscoveryMode: (() { final guardedValue = map['resourceDiscoveryMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

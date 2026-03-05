@@ -139,13 +139,10 @@ import 'target_directory_result_properties_response.dart';
 class SubscriptionTarDirectory extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Subscription Name.
   late final pulumi.Output<String> name;
-
   /// Subscription Changed Target Directory response properties.
   late final pulumi.Output<TargetDirectoryResultPropertiesResponse> properties;
-
   /// Resource type, Microsoft.Subscription/changeTenantRequest.
   late final pulumi.Output<String> type;
 
@@ -158,23 +155,14 @@ class SubscriptionTarDirectory extends pulumi.CustomResource {
     SubscriptionTarDirectoryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:subscription:SubscriptionTarDirectory',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:subscription:SubscriptionTarDirectory',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<TargetDirectoryResultPropertiesResponse>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TargetDirectoryResultPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<TargetDirectoryResultPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TargetDirectoryResultPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

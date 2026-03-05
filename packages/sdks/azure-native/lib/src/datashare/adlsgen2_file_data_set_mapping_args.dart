@@ -9,38 +9,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ADLSGen2FileDataSetMappingArgs {
   /// The name of the share account.
   final pulumi.Input<String> accountName;
-
   /// The id of the source data set.
   final pulumi.Input<String> dataSetId;
-
   /// The name of the data set mapping to be created.
   final pulumi.Input<String>? dataSetMappingName;
-
   /// File path within the file system.
   final pulumi.Input<String> filePath;
-
   /// File system to which the file belongs.
   final pulumi.Input<String> fileSystem;
-
   /// Kind of data set mapping.
   /// Expected value is 'AdlsGen2File'.
   final pulumi.Input<String> kind;
-
   /// Type of output file
   final pulumi.Input<String>? outputType;
-
   /// Resource group of storage account.
   final pulumi.Input<String> resourceGroup;
-
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the share subscription which will hold the data set sink.
   final pulumi.Input<String> shareSubscriptionName;
-
   /// Storage account name of the source data set.
   final pulumi.Input<String> storageAccountName;
-
   /// Subscription id of storage account.
   final pulumi.Input<String> subscriptionId;
 
@@ -93,30 +82,17 @@ class ADLSGen2FileDataSetMappingArgs {
     return ADLSGen2FileDataSetMappingArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
       dataSetId: pulumi.Input.fromValue(map['dataSetId'] as String),
-      dataSetMappingName: (() {
-        final guardedValue = map['dataSetMappingName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dataSetMappingName: (() { final guardedValue = map['dataSetMappingName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       filePath: pulumi.Input.fromValue(map['filePath'] as String),
       fileSystem: pulumi.Input.fromValue(map['fileSystem'] as String),
       kind: pulumi.Input.fromValue(map['kind'] as String),
-      outputType: (() {
-        final guardedValue = map['outputType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      outputType: (() { final guardedValue = map['outputType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroup: pulumi.Input.fromValue(map['resourceGroup'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      shareSubscriptionName: pulumi.Input.fromValue(
-        map['shareSubscriptionName'] as String,
-      ),
-      storageAccountName: pulumi.Input.fromValue(
-        map['storageAccountName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      shareSubscriptionName: pulumi.Input.fromValue(map['shareSubscriptionName'] as String),
+      storageAccountName: pulumi.Input.fromValue(map['storageAccountName'] as String),
       subscriptionId: pulumi.Input.fromValue(map['subscriptionId'] as String),
     );
   }
 }
+

@@ -14,18 +14,23 @@ class CreationRoleProvider {
   /// Creates a new [CreationRoleProvider].
   /// [provider] Required.
   /// [role] Required.
-  CreationRoleProvider({required this.provider, required this.role});
+  CreationRoleProvider({
+    required this.provider,
+    required this.role,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'provider': provider, 'role': role};
+    return <String, dynamic>{
+      'provider': provider,
+      'role': role,
+    };
   }
 
   factory CreationRoleProvider.fromMap(Map<String, dynamic> map) {
     return CreationRoleProvider(
-      provider: pulumi.Input.fromValue(
-        map['provider'] as pulumi_aws_providers.ProviderProvider,
-      ),
+      provider: pulumi.Input.fromValue(map['provider'] as pulumi_aws_providers.ProviderProvider),
       role: pulumi.Input.fromValue(map['role'] as pulumi_aws_iam.Role),
     );
   }
 }
+

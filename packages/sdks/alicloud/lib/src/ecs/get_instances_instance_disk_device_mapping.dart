@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstancesInstanceDiskDeviceMapping {
   /// Cloud disk category.
   final pulumi.Input<String> category;
-
   /// Device information of the created disk: such as /dev/xvdb.
   final pulumi.Input<String> device;
-
   /// The ID of the Disk.
   final pulumi.Input<String> diskId;
-
   /// The name of the Disk.
   final pulumi.Input<String> diskName;
-
   /// Size of the created disk.
   final pulumi.Input<int> size;
-
   /// Cloud disk type: system disk or data disk.
   final pulumi.Input<String> type;
 
@@ -48,9 +43,7 @@ class GetInstancesInstanceDiskDeviceMapping {
     };
   }
 
-  factory GetInstancesInstanceDiskDeviceMapping.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetInstancesInstanceDiskDeviceMapping.fromMap(Map<String, dynamic> map) {
     return GetInstancesInstanceDiskDeviceMapping(
       category: pulumi.Input.fromValue(map['category'] as String),
       device: pulumi.Input.fromValue(map['device'] as String),
@@ -61,3 +54,4 @@ class GetInstancesInstanceDiskDeviceMapping {
     );
   }
 }
+

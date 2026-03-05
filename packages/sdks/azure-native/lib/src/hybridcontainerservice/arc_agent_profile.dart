@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ArcAgentProfile {
   /// Indicates whether the Arc agents on the provisioned clusters be upgraded automatically to the latest version. Defaults to Enabled.
   final pulumi.Input<String>? agentAutoUpgrade;
-
   /// Version of the Arc agents to be installed on the provisioned Provisioned cluster resource
   final pulumi.Input<String>? agentVersion;
 
   /// Creates a new [ArcAgentProfile].
   /// [agentAutoUpgrade] Indicates whether the Arc agents on the provisioned clusters be upgraded automatically to the latest version. Defaults to Enabled.
   /// [agentVersion] Version of the Arc agents to be installed on the provisioned Provisioned cluster resource
-  ArcAgentProfile({this.agentAutoUpgrade, this.agentVersion});
+  ArcAgentProfile({
+    this.agentAutoUpgrade,
+    this.agentVersion,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class ArcAgentProfile {
 
   factory ArcAgentProfile.fromMap(Map<String, dynamic> map) {
     return ArcAgentProfile(
-      agentAutoUpgrade: (() {
-        final guardedValue = map['agentAutoUpgrade'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      agentVersion: (() {
-        final guardedValue = map['agentVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      agentAutoUpgrade: (() { final guardedValue = map['agentAutoUpgrade']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      agentVersion: (() { final guardedValue = map['agentVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

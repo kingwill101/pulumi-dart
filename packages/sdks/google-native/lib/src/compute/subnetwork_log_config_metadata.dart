@@ -16,3 +16,4 @@ enum SubnetworkLogConfigMetadata {
     throw ArgumentError('Unknown SubnetworkLogConfigMetadata value: $value');
   }
 }
+

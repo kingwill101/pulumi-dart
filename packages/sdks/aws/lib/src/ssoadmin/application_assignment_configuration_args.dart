@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationAssignmentConfigurationArgs {
   /// ARN of the application.
   final pulumi.Input<String> applicationArn;
-
   /// Indicates whether users must have an explicit assignment to access the application. If `false`, all users have access to the application.
   final pulumi.Input<bool> assignmentRequired;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -34,19 +32,12 @@ class ApplicationAssignmentConfigurationArgs {
     };
   }
 
-  factory ApplicationAssignmentConfigurationArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApplicationAssignmentConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationAssignmentConfigurationArgs(
       applicationArn: pulumi.Input.fromValue(map['applicationArn'] as String),
-      assignmentRequired: pulumi.Input.fromValue(
-        map['assignmentRequired'] as bool,
-      ),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      assignmentRequired: pulumi.Input.fromValue(map['assignmentRequired'] as bool),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

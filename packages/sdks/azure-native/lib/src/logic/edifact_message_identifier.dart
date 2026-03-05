@@ -9,10 +9,14 @@ class EdifactMessageIdentifier {
 
   /// Creates a new [EdifactMessageIdentifier].
   /// [messageId] The message id on which this envelope settings has to be applied.
-  EdifactMessageIdentifier({required this.messageId});
+  EdifactMessageIdentifier({
+    required this.messageId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'messageId': messageId};
+    return <String, dynamic>{
+      'messageId': messageId,
+    };
   }
 
   factory EdifactMessageIdentifier.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class EdifactMessageIdentifier {
     );
   }
 }
+

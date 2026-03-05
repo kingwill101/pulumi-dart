@@ -12,8 +12,7 @@ enum IntelligentTieringConfigurationStatus {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown IntelligentTieringConfigurationStatus value: $value',
-    );
+    throw ArgumentError('Unknown IntelligentTieringConfigurationStatus value: $value');
   }
 }
+

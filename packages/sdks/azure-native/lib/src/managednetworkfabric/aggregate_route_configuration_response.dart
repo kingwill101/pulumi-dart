@@ -7,72 +7,29 @@ import 'aggregate_route_response.dart';
 class AggregateRouteConfigurationResponse {
   /// List of IPv4 Route prefixes.
   final pulumi.Input<List<AggregateRouteResponse>>? ipv4Routes;
-
   /// List of Ipv6Routes prefixes.
   final pulumi.Input<List<AggregateRouteResponse>>? ipv6Routes;
 
   /// Creates a new [AggregateRouteConfigurationResponse].
   /// [ipv4Routes] List of IPv4 Route prefixes.
   /// [ipv6Routes] List of Ipv6Routes prefixes.
-  AggregateRouteConfigurationResponse({this.ipv4Routes, this.ipv6Routes});
+  AggregateRouteConfigurationResponse({
+    this.ipv4Routes,
+    this.ipv6Routes,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ipv4Routes':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<AggregateRouteResponse>,
-            List<Map<String, dynamic>>
-          >(
-            ipv4Routes,
-            (value) =>
-                pulumi.Input.encodeList<
-                  AggregateRouteResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'ipv6Routes':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<AggregateRouteResponse>,
-            List<Map<String, dynamic>>
-          >(
-            ipv6Routes,
-            (value) =>
-                pulumi.Input.encodeList<
-                  AggregateRouteResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'ipv4Routes': ?pulumi.Input.mapOptionalInputValue<List<AggregateRouteResponse>, List<Map<String, dynamic>>>(ipv4Routes, (value) => pulumi.Input.encodeList<AggregateRouteResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ipv6Routes': ?pulumi.Input.mapOptionalInputValue<List<AggregateRouteResponse>, List<Map<String, dynamic>>>(ipv6Routes, (value) => pulumi.Input.encodeList<AggregateRouteResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory AggregateRouteConfigurationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AggregateRouteConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return AggregateRouteConfigurationResponse(
-      ipv4Routes: (() {
-        final guardedValue = map['ipv4Routes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<AggregateRouteResponse>(
-            guardedValue,
-            (value) => AggregateRouteResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      ipv6Routes: (() {
-        final guardedValue = map['ipv6Routes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<AggregateRouteResponse>(
-            guardedValue,
-            (value) => AggregateRouteResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      ipv4Routes: (() { final guardedValue = map['ipv4Routes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AggregateRouteResponse>(guardedValue, (value) => AggregateRouteResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      ipv6Routes: (() { final guardedValue = map['ipv6Routes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AggregateRouteResponse>(guardedValue, (value) => AggregateRouteResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

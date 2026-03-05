@@ -9,19 +9,20 @@ class FleetProperties {
 
   /// Creates a new [FleetProperties].
   /// [description] Fleet description.
-  FleetProperties({this.description});
+  FleetProperties({
+    this.description,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'description': ?description};
+    return <String, dynamic>{
+      'description': ?description,
+    };
   }
 
   factory FleetProperties.fromMap(Map<String, dynamic> map) {
     return FleetProperties(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

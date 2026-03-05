@@ -13,14 +13,15 @@ class AgentcoreAgentRuntimeAgentRuntimeArtifactContainerConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'containerUri': containerUri};
+    return <String, dynamic>{
+      'containerUri': containerUri,
+    };
   }
 
-  factory AgentcoreAgentRuntimeAgentRuntimeArtifactContainerConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentcoreAgentRuntimeAgentRuntimeArtifactContainerConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentcoreAgentRuntimeAgentRuntimeArtifactContainerConfiguration(
       containerUri: pulumi.Input.fromValue(map['containerUri'] as String),
     );
   }
 }
+

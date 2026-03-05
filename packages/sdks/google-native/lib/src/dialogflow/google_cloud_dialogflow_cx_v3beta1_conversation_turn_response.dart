@@ -7,16 +7,9 @@ import 'google_cloud_dialogflow_cx_v3beta1_conversation_turn_virtual_agent_outpu
 /// One interaction between a human and virtual agent. The human provides some input and the virtual agent provides a response.
 class GoogleCloudDialogflowCxV3beta1ConversationTurnResponse {
   /// The user input.
-  final pulumi.Input<
-    GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputResponse
-  >
-  userInput;
-
+  final pulumi.Input<GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputResponse> userInput;
   /// The virtual agent output.
-  final pulumi.Input<
-    GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputResponse
-  >
-  virtualAgentOutput;
+  final pulumi.Input<GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputResponse> virtualAgentOutput;
 
   /// Creates a new [GoogleCloudDialogflowCxV3beta1ConversationTurnResponse].
   /// [userInput] The user input.
@@ -28,33 +21,16 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurnResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'userInput':
-          pulumi.Input.mapInputValue<
-            GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputResponse,
-            Map<String, dynamic>
-          >(userInput, (value) => value.toMap()),
-      'virtualAgentOutput':
-          pulumi.Input.mapInputValue<
-            GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputResponse,
-            Map<String, dynamic>
-          >(virtualAgentOutput, (value) => value.toMap()),
+      'userInput': pulumi.Input.mapInputValue<GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputResponse, Map<String, dynamic>>(userInput, (value) => value.toMap()),
+      'virtualAgentOutput': pulumi.Input.mapInputValue<GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputResponse, Map<String, dynamic>>(virtualAgentOutput, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudDialogflowCxV3beta1ConversationTurnResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDialogflowCxV3beta1ConversationTurnResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1ConversationTurnResponse(
-      userInput: pulumi.Input.fromValue(
-        GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputResponse.fromMap(
-          (map['userInput']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      virtualAgentOutput: pulumi.Input.fromValue(
-        GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputResponse.fromMap(
-          (map['virtualAgentOutput']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      userInput: pulumi.Input.fromValue(GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputResponse.fromMap((map['userInput']! as Map).cast<String, dynamic>())),
+      virtualAgentOutput: pulumi.Input.fromValue(GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputResponse.fromMap((map['virtualAgentOutput']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

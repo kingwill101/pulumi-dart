@@ -9,29 +9,21 @@ class GetClusterResult {
   /// ARN of the ECS Cluster
   final String arn;
   final String clusterName;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Number of pending tasks for the ECS Cluster
   final int pendingTasksCount;
   final String region;
-
   /// The number of registered container instances for the ECS Cluster
   final int registeredContainerInstancesCount;
-
   /// Number of running tasks for the ECS Cluster
   final int runningTasksCount;
-
   /// The default Service Connect namespace
   final List<GetClusterServiceConnectDefault> serviceConnectDefaults;
-
   /// Settings associated with the ECS Cluster
   final List<GetClusterSetting> settings;
-
   /// Status of the ECS Cluster
   final String status;
-
   /// Key-value map of resource tags
   final Map<String, String> tags;
 
@@ -70,16 +62,8 @@ class GetClusterResult {
       'region': region,
       'registeredContainerInstancesCount': registeredContainerInstancesCount,
       'runningTasksCount': runningTasksCount,
-      'serviceConnectDefaults':
-          pulumi.Input.encodeList<
-            GetClusterServiceConnectDefault,
-            Map<String, dynamic>
-          >(serviceConnectDefaults, (value) => value.toMap()),
-      'settings':
-          pulumi.Input.encodeList<GetClusterSetting, Map<String, dynamic>>(
-            settings,
-            (value) => value.toMap(),
-          ),
+      'serviceConnectDefaults': pulumi.Input.encodeList<GetClusterServiceConnectDefault, Map<String, dynamic>>(serviceConnectDefaults, (value) => value.toMap()),
+      'settings': pulumi.Input.encodeList<GetClusterSetting, Map<String, dynamic>>(settings, (value) => value.toMap()),
       'status': status,
       'tags': tags,
     };
@@ -92,23 +76,13 @@ class GetClusterResult {
       id: map['id'] as String,
       pendingTasksCount: map['pendingTasksCount'] as int,
       region: map['region'] as String,
-      registeredContainerInstancesCount:
-          map['registeredContainerInstancesCount'] as int,
+      registeredContainerInstancesCount: map['registeredContainerInstancesCount'] as int,
       runningTasksCount: map['runningTasksCount'] as int,
-      serviceConnectDefaults:
-          pulumi.Input.decodeList<GetClusterServiceConnectDefault>(
-            map['serviceConnectDefaults']!,
-            (value) => GetClusterServiceConnectDefault.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-      settings: pulumi.Input.decodeList<GetClusterSetting>(
-        map['settings']!,
-        (value) =>
-            GetClusterSetting.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      serviceConnectDefaults: pulumi.Input.decodeList<GetClusterServiceConnectDefault>(map['serviceConnectDefaults']!, (value) => GetClusterServiceConnectDefault.fromMap((value as Map).cast<String, dynamic>())),
+      settings: pulumi.Input.decodeList<GetClusterSetting>(map['settings']!, (value) => GetClusterSetting.fromMap((value as Map).cast<String, dynamic>())),
       status: map['status'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

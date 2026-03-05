@@ -10,35 +10,20 @@ class AlertRuleAllOfCondition {
 
   /// Creates a new [AlertRuleAllOfCondition].
   /// [allOf] The list of Activity Log Alert rule conditions.
-  AlertRuleAllOfCondition({required this.allOf});
+  AlertRuleAllOfCondition({
+    required this.allOf,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allOf':
-          pulumi.Input.mapInputValue<
-            List<AlertRuleAnyOfOrLeafCondition>,
-            List<Map<String, dynamic>>
-          >(
-            allOf,
-            (value) =>
-                pulumi.Input.encodeList<
-                  AlertRuleAnyOfOrLeafCondition,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'allOf': pulumi.Input.mapInputValue<List<AlertRuleAnyOfOrLeafCondition>, List<Map<String, dynamic>>>(allOf, (value) => pulumi.Input.encodeList<AlertRuleAnyOfOrLeafCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AlertRuleAllOfCondition.fromMap(Map<String, dynamic> map) {
     return AlertRuleAllOfCondition(
-      allOf: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<AlertRuleAnyOfOrLeafCondition>(
-          map['allOf']!,
-          (value) => AlertRuleAnyOfOrLeafCondition.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      allOf: pulumi.Input.fromValue(pulumi.Input.decodeList<AlertRuleAnyOfOrLeafCondition>(map['allOf']!, (value) => AlertRuleAnyOfOrLeafCondition.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

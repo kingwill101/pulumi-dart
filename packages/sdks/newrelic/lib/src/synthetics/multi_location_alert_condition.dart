@@ -720,28 +720,20 @@ import 'multi_location_alert_condition_warning.dart';
 class MultiLocationAlertCondition extends pulumi.CustomResource {
   /// A condition term with the priority set to critical.
   late final pulumi.Output<MultiLocationAlertConditionCritical> critical;
-
   /// Set whether to enable the alert condition.  Defaults to true.
   late final pulumi.Output<bool?> enabled;
-
   /// The Monitor GUID's of the Synthetics monitors to alert on.
   late final pulumi.Output<List<String>> entities;
-
   /// The unique entity identifier of the condition in New Relic.
   late final pulumi.Output<String> entityGuid;
-
   /// The title of the condition.
   late final pulumi.Output<String> name;
-
   /// The ID of the policy where this condition will be used.
   late final pulumi.Output<String> policyId;
-
   /// Runbook URL to display in notifications.
   late final pulumi.Output<String?> runbookUrl;
-
   /// The maximum number of seconds a violation can remain open before being closed by the system. The value must be between 300 seconds (5 minutes) to 2592000 seconds (30 days), both inclusive. Defaults to 259200 seconds (3 days) if this argument is not specified in the configuration, in accordance with the characteristics of this field in NerdGraph, as specified in the [docs](https://docs.newrelic.com/docs/alerts-applied-intelligence/new-relic-alerts/advanced-alerts/rest-api-alerts/alerts-conditions-api-field-names/#violation_time_limit_seconds).
   late final pulumi.Output<int?> violationTimeLimitSeconds;
-
   /// A condition term with the priority set to warning.
   ///
   ///
@@ -757,40 +749,20 @@ class MultiLocationAlertCondition extends pulumi.CustomResource {
     MultiLocationAlertConditionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:synthetics/multiLocationAlertCondition:MultiLocationAlertCondition',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    critical = registerOutput<MultiLocationAlertConditionCritical>(
-      'critical',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MultiLocationAlertConditionCritical.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'newrelic:synthetics/multiLocationAlertCondition:MultiLocationAlertCondition',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    critical = registerOutput<MultiLocationAlertConditionCritical>('critical', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultiLocationAlertConditionCritical.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     enabled = registerOutput<bool?>('enabled');
     entities = registerOutput<List<String>>('entities');
     entityGuid = registerOutput<String>('entityGuid');
     this.name = registerOutput<String>('name');
     policyId = registerOutput<String>('policyId');
     runbookUrl = registerOutput<String?>('runbookUrl');
-    violationTimeLimitSeconds = registerOutput<int?>(
-      'violationTimeLimitSeconds',
-    );
-    warning = registerOutput<MultiLocationAlertConditionWarning?>(
-      'warning',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MultiLocationAlertConditionWarning.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    violationTimeLimitSeconds = registerOutput<int?>('violationTimeLimitSeconds');
+    warning = registerOutput<MultiLocationAlertConditionWarning?>('warning', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultiLocationAlertConditionWarning.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [MultiLocationAlertCondition] resource's state with the given [name] and [id].
@@ -811,39 +783,19 @@ class MultiLocationAlertCondition extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:synthetics/multiLocationAlertCondition:MultiLocationAlertCondition',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    critical = registerOutput<MultiLocationAlertConditionCritical>(
-      'critical',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MultiLocationAlertConditionCritical.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'newrelic:synthetics/multiLocationAlertCondition:MultiLocationAlertCondition',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    critical = registerOutput<MultiLocationAlertConditionCritical>('critical', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultiLocationAlertConditionCritical.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     enabled = registerOutput<bool?>('enabled');
     entities = registerOutput<List<String>>('entities');
     entityGuid = registerOutput<String>('entityGuid');
     this.name = registerOutput<String>('name');
     policyId = registerOutput<String>('policyId');
     runbookUrl = registerOutput<String?>('runbookUrl');
-    violationTimeLimitSeconds = registerOutput<int?>(
-      'violationTimeLimitSeconds',
-    );
-    warning = registerOutput<MultiLocationAlertConditionWarning?>(
-      'warning',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MultiLocationAlertConditionWarning.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    violationTimeLimitSeconds = registerOutput<int?>('violationTimeLimitSeconds');
+    warning = registerOutput<MultiLocationAlertConditionWarning?>('warning', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultiLocationAlertConditionWarning.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

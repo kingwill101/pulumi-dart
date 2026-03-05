@@ -665,19 +665,14 @@ import 'contact_state.dart';
 class Contact extends pulumi.CustomResource {
   /// ID of the orbital contact profile. Changing this forces a new resource to be created.
   late final pulumi.Output<String> contactProfileId;
-
   /// Name of the Azure ground station. Changing this forces a new resource to be created.
   late final pulumi.Output<String> groundStationName;
-
   /// The name of the Contact. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Reservation end time of the Contact. Changing this forces a new resource to be created.
   late final pulumi.Output<String> reservationEndTime;
-
   /// Reservation start time of the Contact. Changing this forces a new resource to be created.
   late final pulumi.Output<String> reservationStartTime;
-
   /// The ID of the spacecraft which the contact will be made to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> spacecraftId;
 
@@ -690,11 +685,11 @@ class Contact extends pulumi.CustomResource {
     ContactArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:orbital/contact:Contact',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:orbital/contact:Contact',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     contactProfileId = registerOutput<String>('contactProfileId');
     groundStationName = registerOutput<String>('groundStationName');
     this.name = registerOutput<String>('name');
@@ -721,11 +716,11 @@ class Contact extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:orbital/contact:Contact',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:orbital/contact:Contact',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     contactProfileId = registerOutput<String>('contactProfileId');
     groundStationName = registerOutput<String>('groundStationName');
     this.name = registerOutput<String>('name');

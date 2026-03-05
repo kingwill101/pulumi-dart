@@ -8,7 +8,9 @@ class FutureReservationStatusSpecificSkuProperties {
 
   /// Creates a new [FutureReservationStatusSpecificSkuProperties].
   /// [sourceInstanceTemplateId] ID of the instance template used to populate the Future Reservation properties.
-  FutureReservationStatusSpecificSkuProperties({this.sourceInstanceTemplateId});
+  FutureReservationStatusSpecificSkuProperties({
+    this.sourceInstanceTemplateId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -16,15 +18,10 @@ class FutureReservationStatusSpecificSkuProperties {
     };
   }
 
-  factory FutureReservationStatusSpecificSkuProperties.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FutureReservationStatusSpecificSkuProperties.fromMap(Map<String, dynamic> map) {
     return FutureReservationStatusSpecificSkuProperties(
-      sourceInstanceTemplateId: (() {
-        final guardedValue = map['sourceInstanceTemplateId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      sourceInstanceTemplateId: (() { final guardedValue = map['sourceInstanceTemplateId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

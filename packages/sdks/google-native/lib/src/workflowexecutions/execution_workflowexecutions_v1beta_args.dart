@@ -10,10 +10,8 @@ import 'execution_call_log_level_workflowexecutions_v1beta.dart';
 class ExecutionWorkflowexecutionsV1betaArgs {
   /// Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are using the REST API directly to run your workflow, you must escape any JSON string value of `argument`. Example: `'{"argument":"{\"firstName\":\"FIRST\",\"lastName\":\"LAST\"}"}'`
   final pulumi.Input<String>? argument;
-
   /// The call logging level associated to this execution.
-  final pulumi.Input<ExecutionCallLogLevelWorkflowexecutionsV1beta>?
-  callLogLevel;
+  final pulumi.Input<ExecutionCallLogLevelWorkflowexecutionsV1beta>? callLogLevel;
   final pulumi.Input<String>? location;
   final pulumi.Input<String>? project;
   final pulumi.Input<String> workflowId;
@@ -35,46 +33,21 @@ class ExecutionWorkflowexecutionsV1betaArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'argument': ?argument,
-      'callLogLevel':
-          ?pulumi.Input.mapOptionalInputValue<
-            ExecutionCallLogLevelWorkflowexecutionsV1beta,
-            String
-          >(callLogLevel, (value) => value.wireValue),
+      'callLogLevel': ?pulumi.Input.mapOptionalInputValue<ExecutionCallLogLevelWorkflowexecutionsV1beta, String>(callLogLevel, (value) => value.wireValue),
       'location': ?location,
       'project': ?project,
       'workflowId': workflowId,
     };
   }
 
-  factory ExecutionWorkflowexecutionsV1betaArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ExecutionWorkflowexecutionsV1betaArgs.fromMap(Map<String, dynamic> map) {
     return ExecutionWorkflowexecutionsV1betaArgs(
-      argument: (() {
-        final guardedValue = map['argument'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      callLogLevel: (() {
-        final guardedValue = map['callLogLevel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ExecutionCallLogLevelWorkflowexecutionsV1beta.fromValue(
-            guardedValue as String,
-          ),
-        );
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      argument: (() { final guardedValue = map['argument']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      callLogLevel: (() { final guardedValue = map['callLogLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExecutionCallLogLevelWorkflowexecutionsV1beta.fromValue(guardedValue as String)); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       workflowId: pulumi.Input.fromValue(map['workflowId'] as String),
     );
   }
 }
+

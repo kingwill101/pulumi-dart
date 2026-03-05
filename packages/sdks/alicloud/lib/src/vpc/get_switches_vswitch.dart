@@ -5,49 +5,34 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSwitchesVswitch {
   /// The available ip address count of the vSwitch.
   final pulumi.Input<int> availableIpAddressCount;
-
   /// Filter results by a specific CIDR block. For example: "172.16.0.0/12".
   final pulumi.Input<String> cidrBlock;
-
   /// Time of creation.
   final pulumi.Input<String> creationTime;
-
   /// Description of the vSwitch.
   final pulumi.Input<String> description;
-
   /// ID of the vSwitch.
   final pulumi.Input<String> id;
-
   /// The IPv6 CIDR block of the switch.
   final pulumi.Input<String> ipv6CidrBlock;
-
   /// Indicate whether the vSwitch is created by the system.
   final pulumi.Input<bool> isDefault;
-
   /// Name of the vSwitch.
   final pulumi.Input<String> name;
-
   /// The Id of resource group which VSWitch belongs.
   final pulumi.Input<String> resourceGroupId;
-
   /// The route table ID of the vSwitch.
   final pulumi.Input<String> routeTableId;
-
   /// The status of the vSwitch. Valid values: `Available` and `Pending`.
   final pulumi.Input<String> status;
-
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>> tags;
-
   /// ID of the VPC that owns the vSwitch.
   final pulumi.Input<String> vpcId;
-
   /// ID of the vSwitch.
   final pulumi.Input<String> vswitchId;
-
   /// The name of the vSwitch.
   final pulumi.Input<String> vswitchName;
-
   /// The availability zone of the vSwitch.
   final pulumi.Input<String> zoneId;
 
@@ -110,9 +95,7 @@ class GetSwitchesVswitch {
 
   factory GetSwitchesVswitch.fromMap(Map<String, dynamic> map) {
     return GetSwitchesVswitch(
-      availableIpAddressCount: pulumi.Input.fromValue(
-        map['availableIpAddressCount'] as int,
-      ),
+      availableIpAddressCount: pulumi.Input.fromValue(map['availableIpAddressCount'] as int),
       cidrBlock: pulumi.Input.fromValue(map['cidrBlock'] as String),
       creationTime: pulumi.Input.fromValue(map['creationTime'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
@@ -131,3 +114,4 @@ class GetSwitchesVswitch {
     );
   }
 }
+

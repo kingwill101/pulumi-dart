@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListWebAppFunctionSecretsSlotArgs {
   /// Function name.
   final pulumi.Input<String> functionName;
-
   /// Site name.
   final pulumi.Input<String> name;
-
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
-
   /// Name of the deployment slot.
   final pulumi.Input<String> slot;
 
@@ -44,10 +41,9 @@ class ListWebAppFunctionSecretsSlotArgs {
     return ListWebAppFunctionSecretsSlotArgs(
       functionName: pulumi.Input.fromValue(map['functionName'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       slot: pulumi.Input.fromValue(map['slot'] as String),
     );
   }
 }
+

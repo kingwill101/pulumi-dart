@@ -837,155 +837,109 @@ import 'edge_kubernetes_state.dart';
 class EdgeKubernetes extends pulumi.CustomResource {
   /// The addon you want to install in cluster. See `addons` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> addons;
-
   /// The ID of availability zone.
   late final pulumi.Output<String> availabilityZone;
-
   /// (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
-  late final pulumi.Output<EdgeKubernetesCertificateAuthority>
-  certificateAuthority;
-
+  late final pulumi.Output<EdgeKubernetesCertificateAuthority> certificateAuthority;
   /// From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
   late final pulumi.Output<String?> clientCert;
-
   /// From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
   late final pulumi.Output<String?> clientKey;
-
   /// From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
   ///
   /// *Removed params*
   late final pulumi.Output<String?> clusterCaCert;
-
   /// The cluster specifications of kubernetes cluster,which can be empty. Valid values:
   /// * ack.standard : Standard edge clusters.
   /// * ack.pro.small : Professional edge clusters.
   late final pulumi.Output<String> clusterSpec;
-
   /// (Map) Map of kubernetes cluster connection information.
   late final pulumi.Output<EdgeKubernetesConnections> connections;
-
   /// Whether to enable cluster deletion protection.
   late final pulumi.Output<bool?> deletionProtection;
-
   /// Install cloud monitor agent on ECS. default: `true`.
   late final pulumi.Output<bool?> installCloudMonitor;
-
   /// Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
   late final pulumi.Output<bool> isEnterpriseSecurityGroup;
-
   /// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
   late final pulumi.Output<String?> keyName;
-
   /// The path of kube config, like ~/.kube/config. Please use the attribute output_file of new DataSource `alicloud.cs.getClusterCredential` to replace it.
   late final pulumi.Output<String?> kubeConfig;
-
   /// The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
   /// -&gt;NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
   ///
   /// *Worker params*
   late final pulumi.Output<String> loadBalancerSpec;
-
   /// A list of one element containing information about the associated log store. See `log_config` below.
   late final pulumi.Output<EdgeKubernetesLogConfig?> logConfig;
-
   /// The kubernetes cluster's name. It is unique in one Alicloud account.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String?> namePrefix;
-
   /// The ID of nat gateway used to launch kubernetes cluster.
   late final pulumi.Output<String> natGatewayId;
-
   /// Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
   late final pulumi.Output<bool?> newNatGateway;
-
   /// The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
   late final pulumi.Output<int?> nodeCidrMask;
-
   /// The password of ssh login cluster node. You have to specify one of `password`, `key_name` `kms_encrypted_password` fields.
   late final pulumi.Output<String?> password;
-
   /// [Flannel Specific] The CIDR block for the pod network when using Flannel.
   late final pulumi.Output<String?> podCidr;
-
   /// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
   late final pulumi.Output<String?> proxyMode;
-
   /// RDS instance list, You can choose which RDS instances whitelist to add instances to.
   late final pulumi.Output<List<String>?> rdsInstances;
-
   /// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
   late final pulumi.Output<String> resourceGroupId;
   late final pulumi.Output<List<String>?> retainResources;
-
   /// The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
   late final pulumi.Output<EdgeKubernetesRuntime?> runtime;
-
   /// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
   late final pulumi.Output<String> securityGroupId;
-
   /// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
   late final pulumi.Output<String?> serviceCidr;
-
   /// Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
   ///
   /// *Network params*
   late final pulumi.Output<bool?> skipSetCertificateAuthority;
-
   /// The public ip of load balancer.
   late final pulumi.Output<String> slbInternet;
-
   /// Whether to create internet load balancer for API Server. Default to true.
   late final pulumi.Output<bool?> slbInternetEnabled;
-
   /// The ID of private load balancer where the current cluster master node is located.
   late final pulumi.Output<String> slbIntranet;
-
   /// Default nil, A map of tags assigned to the kubernetes cluster and work node.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
   late final pulumi.Output<String?> userData;
-
   /// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
   late final pulumi.Output<String> version;
-
   /// The ID of VPC where the current cluster is located.
   late final pulumi.Output<String> vpcId;
-
   /// The data disk configurations of worker nodes, such as the disk type and disk size. See `worker_data_disks` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> workerDataDisks;
-
   /// The system disk category of worker node. Its valid value are `cloud_efficiency`, `cloud_ssd` and `cloud_essd` and . Default to `cloud_efficiency`.
   late final pulumi.Output<String?> workerDiskCategory;
-
   /// Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
   late final pulumi.Output<String?> workerDiskPerformanceLevel;
-
   /// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
   late final pulumi.Output<int?> workerDiskSize;
-
   /// Worker node system disk auto snapshot policy.
   ///
   /// *Computed params*
   ///
   /// You can set some file paths to save kube_config information, but this way is cumbersome. Since version 1.105.0, we've written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kube_config.
   late final pulumi.Output<String?> workerDiskSnapshotPolicyId;
-
   /// Worker payment type, its valid value is `PostPaid`. Defaults to `PostPaid`. More charge details in [ACK@edge charge](https://help.aliyun.com/document_detail/178718.html).
   late final pulumi.Output<String?> workerInstanceChargeType;
-
   /// The instance types of worker node, you can set multiple types to avoid NoStock of a certain type.
   late final pulumi.Output<List<String>> workerInstanceTypes;
-
   /// List of cluster worker nodes.
   late final pulumi.Output<List<Map<String, dynamic>>> workerNodes;
-
   /// The cloud worker node number of the edge kubernetes cluster. Default to 1. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
   late final pulumi.Output<int> workerNumber;
-
   /// The RamRole Name attached to worker node.
   late final pulumi.Output<String> workerRamRoleName;
-
   /// The vswitches used by workers.
   late final pulumi.Output<List<String>> workerVswitchIds;
 
@@ -998,55 +952,26 @@ class EdgeKubernetes extends pulumi.CustomResource {
     EdgeKubernetesArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cs/edgeKubernetes:EdgeKubernetes',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cs/edgeKubernetes:EdgeKubernetes',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     addons = registerOutput<List<Map<String, dynamic>>?>('addons');
     availabilityZone = registerOutput<String>('availabilityZone');
-    certificateAuthority = registerOutput<EdgeKubernetesCertificateAuthority>(
-      'certificateAuthority',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EdgeKubernetesCertificateAuthority.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    certificateAuthority = registerOutput<EdgeKubernetesCertificateAuthority>('certificateAuthority', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EdgeKubernetesCertificateAuthority.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clientCert = registerOutput<String?>('clientCert');
     clientKey = registerOutput<String?>('clientKey');
     clusterCaCert = registerOutput<String?>('clusterCaCert');
     clusterSpec = registerOutput<String>('clusterSpec');
-    connections = registerOutput<EdgeKubernetesConnections>(
-      'connections',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EdgeKubernetesConnections.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    connections = registerOutput<EdgeKubernetesConnections>('connections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EdgeKubernetesConnections.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionProtection = registerOutput<bool?>('deletionProtection');
     installCloudMonitor = registerOutput<bool?>('installCloudMonitor');
-    isEnterpriseSecurityGroup = registerOutput<bool>(
-      'isEnterpriseSecurityGroup',
-    );
+    isEnterpriseSecurityGroup = registerOutput<bool>('isEnterpriseSecurityGroup');
     keyName = registerOutput<String?>('keyName');
     kubeConfig = registerOutput<String?>('kubeConfig');
     loadBalancerSpec = registerOutput<String>('loadBalancerSpec');
-    logConfig = registerOutput<EdgeKubernetesLogConfig?>(
-      'logConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EdgeKubernetesLogConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    logConfig = registerOutput<EdgeKubernetesLogConfig?>('logConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EdgeKubernetesLogConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String?>('namePrefix');
     natGatewayId = registerOutput<String>('natGatewayId');
@@ -1058,21 +983,10 @@ class EdgeKubernetes extends pulumi.CustomResource {
     rdsInstances = registerOutput<List<String>?>('rdsInstances');
     resourceGroupId = registerOutput<String>('resourceGroupId');
     retainResources = registerOutput<List<String>?>('retainResources');
-    runtime = registerOutput<EdgeKubernetesRuntime?>(
-      'runtime',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EdgeKubernetesRuntime.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    runtime = registerOutput<EdgeKubernetesRuntime?>('runtime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EdgeKubernetesRuntime.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     securityGroupId = registerOutput<String>('securityGroupId');
     serviceCidr = registerOutput<String?>('serviceCidr');
-    skipSetCertificateAuthority = registerOutput<bool?>(
-      'skipSetCertificateAuthority',
-    );
+    skipSetCertificateAuthority = registerOutput<bool?>('skipSetCertificateAuthority');
     slbInternet = registerOutput<String>('slbInternet');
     slbInternetEnabled = registerOutput<bool?>('slbInternetEnabled');
     slbIntranet = registerOutput<String>('slbIntranet');
@@ -1080,20 +994,12 @@ class EdgeKubernetes extends pulumi.CustomResource {
     userData = registerOutput<String?>('userData');
     version = registerOutput<String>('version');
     vpcId = registerOutput<String>('vpcId');
-    workerDataDisks = registerOutput<List<Map<String, dynamic>>?>(
-      'workerDataDisks',
-    );
+    workerDataDisks = registerOutput<List<Map<String, dynamic>>?>('workerDataDisks');
     workerDiskCategory = registerOutput<String?>('workerDiskCategory');
-    workerDiskPerformanceLevel = registerOutput<String?>(
-      'workerDiskPerformanceLevel',
-    );
+    workerDiskPerformanceLevel = registerOutput<String?>('workerDiskPerformanceLevel');
     workerDiskSize = registerOutput<int?>('workerDiskSize');
-    workerDiskSnapshotPolicyId = registerOutput<String?>(
-      'workerDiskSnapshotPolicyId',
-    );
-    workerInstanceChargeType = registerOutput<String?>(
-      'workerInstanceChargeType',
-    );
+    workerDiskSnapshotPolicyId = registerOutput<String?>('workerDiskSnapshotPolicyId');
+    workerInstanceChargeType = registerOutput<String?>('workerInstanceChargeType');
     workerInstanceTypes = registerOutput<List<String>>('workerInstanceTypes');
     workerNodes = registerOutput<List<Map<String, dynamic>>>('workerNodes');
     workerNumber = registerOutput<int>('workerNumber');
@@ -1119,55 +1025,26 @@ class EdgeKubernetes extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cs/edgeKubernetes:EdgeKubernetes',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cs/edgeKubernetes:EdgeKubernetes',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     addons = registerOutput<List<Map<String, dynamic>>?>('addons');
     availabilityZone = registerOutput<String>('availabilityZone');
-    certificateAuthority = registerOutput<EdgeKubernetesCertificateAuthority>(
-      'certificateAuthority',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EdgeKubernetesCertificateAuthority.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    certificateAuthority = registerOutput<EdgeKubernetesCertificateAuthority>('certificateAuthority', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EdgeKubernetesCertificateAuthority.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clientCert = registerOutput<String?>('clientCert');
     clientKey = registerOutput<String?>('clientKey');
     clusterCaCert = registerOutput<String?>('clusterCaCert');
     clusterSpec = registerOutput<String>('clusterSpec');
-    connections = registerOutput<EdgeKubernetesConnections>(
-      'connections',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EdgeKubernetesConnections.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    connections = registerOutput<EdgeKubernetesConnections>('connections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EdgeKubernetesConnections.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionProtection = registerOutput<bool?>('deletionProtection');
     installCloudMonitor = registerOutput<bool?>('installCloudMonitor');
-    isEnterpriseSecurityGroup = registerOutput<bool>(
-      'isEnterpriseSecurityGroup',
-    );
+    isEnterpriseSecurityGroup = registerOutput<bool>('isEnterpriseSecurityGroup');
     keyName = registerOutput<String?>('keyName');
     kubeConfig = registerOutput<String?>('kubeConfig');
     loadBalancerSpec = registerOutput<String>('loadBalancerSpec');
-    logConfig = registerOutput<EdgeKubernetesLogConfig?>(
-      'logConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EdgeKubernetesLogConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    logConfig = registerOutput<EdgeKubernetesLogConfig?>('logConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EdgeKubernetesLogConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String?>('namePrefix');
     natGatewayId = registerOutput<String>('natGatewayId');
@@ -1179,21 +1056,10 @@ class EdgeKubernetes extends pulumi.CustomResource {
     rdsInstances = registerOutput<List<String>?>('rdsInstances');
     resourceGroupId = registerOutput<String>('resourceGroupId');
     retainResources = registerOutput<List<String>?>('retainResources');
-    runtime = registerOutput<EdgeKubernetesRuntime?>(
-      'runtime',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EdgeKubernetesRuntime.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    runtime = registerOutput<EdgeKubernetesRuntime?>('runtime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EdgeKubernetesRuntime.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     securityGroupId = registerOutput<String>('securityGroupId');
     serviceCidr = registerOutput<String?>('serviceCidr');
-    skipSetCertificateAuthority = registerOutput<bool?>(
-      'skipSetCertificateAuthority',
-    );
+    skipSetCertificateAuthority = registerOutput<bool?>('skipSetCertificateAuthority');
     slbInternet = registerOutput<String>('slbInternet');
     slbInternetEnabled = registerOutput<bool?>('slbInternetEnabled');
     slbIntranet = registerOutput<String>('slbIntranet');
@@ -1201,20 +1067,12 @@ class EdgeKubernetes extends pulumi.CustomResource {
     userData = registerOutput<String?>('userData');
     version = registerOutput<String>('version');
     vpcId = registerOutput<String>('vpcId');
-    workerDataDisks = registerOutput<List<Map<String, dynamic>>?>(
-      'workerDataDisks',
-    );
+    workerDataDisks = registerOutput<List<Map<String, dynamic>>?>('workerDataDisks');
     workerDiskCategory = registerOutput<String?>('workerDiskCategory');
-    workerDiskPerformanceLevel = registerOutput<String?>(
-      'workerDiskPerformanceLevel',
-    );
+    workerDiskPerformanceLevel = registerOutput<String?>('workerDiskPerformanceLevel');
     workerDiskSize = registerOutput<int?>('workerDiskSize');
-    workerDiskSnapshotPolicyId = registerOutput<String?>(
-      'workerDiskSnapshotPolicyId',
-    );
-    workerInstanceChargeType = registerOutput<String?>(
-      'workerInstanceChargeType',
-    );
+    workerDiskSnapshotPolicyId = registerOutput<String?>('workerDiskSnapshotPolicyId');
+    workerInstanceChargeType = registerOutput<String?>('workerInstanceChargeType');
     workerInstanceTypes = registerOutput<List<String>>('workerInstanceTypes');
     workerNodes = registerOutput<List<Map<String, dynamic>>>('workerNodes');
     workerNumber = registerOutput<int>('workerNumber');

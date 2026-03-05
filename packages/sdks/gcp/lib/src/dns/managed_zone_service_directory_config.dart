@@ -10,25 +10,20 @@ class ManagedZoneServiceDirectoryConfig {
 
   /// Creates a new [ManagedZoneServiceDirectoryConfig].
   /// [namespace] The namespace associated with the zone.
-  ManagedZoneServiceDirectoryConfig({required this.namespace});
+  ManagedZoneServiceDirectoryConfig({
+    required this.namespace,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'namespace':
-          pulumi.Input.mapInputValue<
-            ManagedZoneServiceDirectoryConfigNamespace,
-            Map<String, dynamic>
-          >(namespace, (value) => value.toMap()),
+      'namespace': pulumi.Input.mapInputValue<ManagedZoneServiceDirectoryConfigNamespace, Map<String, dynamic>>(namespace, (value) => value.toMap()),
     };
   }
 
   factory ManagedZoneServiceDirectoryConfig.fromMap(Map<String, dynamic> map) {
     return ManagedZoneServiceDirectoryConfig(
-      namespace: pulumi.Input.fromValue(
-        ManagedZoneServiceDirectoryConfigNamespace.fromMap(
-          (map['namespace']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      namespace: pulumi.Input.fromValue(ManagedZoneServiceDirectoryConfigNamespace.fromMap((map['namespace']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

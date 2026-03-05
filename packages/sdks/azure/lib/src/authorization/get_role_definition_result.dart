@@ -7,19 +7,15 @@ import 'get_role_definition_permission.dart';
 class GetRoleDefinitionResult {
   /// One or more assignable scopes for this Role Definition, such as `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333`, `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`, or `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup/providers/Microsoft.Compute/virtualMachines/myVM`.
   final List<String> assignableScopes;
-
   /// The Description of the built-in Role.
   final String description;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
-
   /// A `permissions` block as documented below.
   final List<GetRoleDefinitionPermission> permissions;
   final String roleDefinitionId;
   final String? scope;
-
   /// The Type of the Role.
   final String type;
 
@@ -49,11 +45,7 @@ class GetRoleDefinitionResult {
       'description': description,
       'id': id,
       'name': name,
-      'permissions':
-          pulumi.Input.encodeList<
-            GetRoleDefinitionPermission,
-            Map<String, dynamic>
-          >(permissions, (value) => value.toMap()),
+      'permissions': pulumi.Input.encodeList<GetRoleDefinitionPermission, Map<String, dynamic>>(permissions, (value) => value.toMap()),
       'roleDefinitionId': roleDefinitionId,
       'scope': ?scope,
       'type': type,
@@ -66,19 +58,11 @@ class GetRoleDefinitionResult {
       description: map['description'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      permissions: pulumi.Input.decodeList<GetRoleDefinitionPermission>(
-        map['permissions']!,
-        (value) => GetRoleDefinitionPermission.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      permissions: pulumi.Input.decodeList<GetRoleDefinitionPermission>(map['permissions']!, (value) => GetRoleDefinitionPermission.fromMap((value as Map).cast<String, dynamic>())),
       roleDefinitionId: map['roleDefinitionId'] as String,
-      scope: (() {
-        final guardedValue = map['scope'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return guardedValue as String; })(),
       type: map['type'] as String,
     );
   }
 }
+

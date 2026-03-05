@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LoadTestProfileMappingArgs {
   /// Mapped Azure Load Test resource Id.
   final pulumi.Input<String>? azureLoadTestingResourceId;
-
   /// Load Test Profile Mapping name
   final pulumi.Input<String>? loadTestProfileMappingName;
-
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceUri;
-
   /// Mapped source resource Id.
   final pulumi.Input<String>? sourceResourceId;
-
   /// Mapped Azure Load Test resource test-profile-id.
   final pulumi.Input<String>? testProfileId;
 
@@ -48,27 +44,12 @@ class LoadTestProfileMappingArgs {
 
   factory LoadTestProfileMappingArgs.fromMap(Map<String, dynamic> map) {
     return LoadTestProfileMappingArgs(
-      azureLoadTestingResourceId: (() {
-        final guardedValue = map['azureLoadTestingResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      loadTestProfileMappingName: (() {
-        final guardedValue = map['loadTestProfileMappingName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      azureLoadTestingResourceId: (() { final guardedValue = map['azureLoadTestingResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      loadTestProfileMappingName: (() { final guardedValue = map['loadTestProfileMappingName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceUri: pulumi.Input.fromValue(map['resourceUri'] as String),
-      sourceResourceId: (() {
-        final guardedValue = map['sourceResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      testProfileId: (() {
-        final guardedValue = map['testProfileId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      sourceResourceId: (() { final guardedValue = map['sourceResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      testProfileId: (() { final guardedValue = map['testProfileId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

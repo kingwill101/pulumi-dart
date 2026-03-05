@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNotificationsNotification {
   /// ID of the notification.
   final pulumi.Input<String> id;
-
   /// The Alibaba Cloud Resource Name (ARN) for the notification object.
   final pulumi.Input<String> notificationArn;
-
   /// The notification types of Auto Scaling events and resource changes.
   final pulumi.Input<List<String>> notificationTypes;
-
   /// Scaling group id the notifications belong to.
   final pulumi.Input<String> scalingGroupId;
 
@@ -40,10 +37,9 @@ class GetNotificationsNotification {
     return GetNotificationsNotification(
       id: pulumi.Input.fromValue(map['id'] as String),
       notificationArn: pulumi.Input.fromValue(map['notificationArn'] as String),
-      notificationTypes: pulumi.Input.fromValue(
-        (map['notificationTypes'] as List).cast<String>(),
-      ),
+      notificationTypes: pulumi.Input.fromValue((map['notificationTypes'] as List).cast<String>()),
       scalingGroupId: pulumi.Input.fromValue(map['scalingGroupId'] as String),
     );
   }
 }
+

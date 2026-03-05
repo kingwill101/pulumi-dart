@@ -7,13 +7,10 @@ import 'validation_summary_item_response.dart';
 class DbLevelValidationStatusResponse {
   /// Name of database.
   final pulumi.Input<String>? databaseName;
-
   /// End time of a database level validation.
   final pulumi.Input<String>? endedOn;
-
   /// Start time of a database level validation.
   final pulumi.Input<String>? startedOn;
-
   /// Summary of database level validations.
   final pulumi.Input<List<ValidationSummaryItemResponse>>? summary;
 
@@ -34,50 +31,17 @@ class DbLevelValidationStatusResponse {
       'databaseName': ?databaseName,
       'endedOn': ?endedOn,
       'startedOn': ?startedOn,
-      'summary':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ValidationSummaryItemResponse>,
-            List<Map<String, dynamic>>
-          >(
-            summary,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ValidationSummaryItemResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'summary': ?pulumi.Input.mapOptionalInputValue<List<ValidationSummaryItemResponse>, List<Map<String, dynamic>>>(summary, (value) => pulumi.Input.encodeList<ValidationSummaryItemResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DbLevelValidationStatusResponse.fromMap(Map<String, dynamic> map) {
     return DbLevelValidationStatusResponse(
-      databaseName: (() {
-        final guardedValue = map['databaseName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      endedOn: (() {
-        final guardedValue = map['endedOn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      startedOn: (() {
-        final guardedValue = map['startedOn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      summary: (() {
-        final guardedValue = map['summary'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ValidationSummaryItemResponse>(
-            guardedValue,
-            (value) => ValidationSummaryItemResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      databaseName: (() { final guardedValue = map['databaseName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      endedOn: (() { final guardedValue = map['endedOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      startedOn: (() { final guardedValue = map['startedOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      summary: (() { final guardedValue = map['summary']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ValidationSummaryItemResponse>(guardedValue, (value) => ValidationSummaryItemResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

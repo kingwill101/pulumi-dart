@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccountCustomerManagedKey {
   /// The client ID of the managed identity associated with the storage resource.
   final pulumi.Input<String> identityClientId;
-
   /// The ID of the Key Vault Key which is used to encrypt the data in this Cognitive Services Account.
   final pulumi.Input<String> keyVaultKeyId;
 
@@ -26,10 +25,9 @@ class GetAccountCustomerManagedKey {
 
   factory GetAccountCustomerManagedKey.fromMap(Map<String, dynamic> map) {
     return GetAccountCustomerManagedKey(
-      identityClientId: pulumi.Input.fromValue(
-        map['identityClientId'] as String,
-      ),
+      identityClientId: pulumi.Input.fromValue(map['identityClientId'] as String),
       keyVaultKeyId: pulumi.Input.fromValue(map['keyVaultKeyId'] as String),
     );
   }
 }
+

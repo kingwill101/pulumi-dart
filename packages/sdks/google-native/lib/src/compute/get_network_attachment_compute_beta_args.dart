@@ -29,19 +29,12 @@ class GetNetworkAttachmentComputeBetaArgs {
     };
   }
 
-  factory GetNetworkAttachmentComputeBetaArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetNetworkAttachmentComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkAttachmentComputeBetaArgs(
-      networkAttachment: pulumi.Input.fromValue(
-        map['networkAttachment'] as String,
-      ),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      networkAttachment: pulumi.Input.fromValue(map['networkAttachment'] as String),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: pulumi.Input.fromValue(map['region'] as String),
     );
   }
 }
+

@@ -12,25 +12,18 @@ import 'transport_layer_application_state.dart';
 class TransportLayerApplication extends pulumi.CustomResource {
   /// Layer 4 application ID.
   late final pulumi.Output<int> applicationId;
-
   /// Whether to enable China mainland network access optimization, default is disabled. Value range:
   late final pulumi.Output<String?> crossBorderOptimization;
-
   /// IP access rule switch. When enabled, the WAF's IP access rules apply to the transport layer application.
   late final pulumi.Output<String?> ipAccessRule;
-
   /// IPv6 switch.
   late final pulumi.Output<String?> ipv6;
-
   /// Domain name of the transport layer application
   late final pulumi.Output<String> recordName;
-
   /// The list of forwarding rules. Rule details. For each rule, other parameters are required except comments. See `rules` below.
   late final pulumi.Output<List<Map<String, dynamic>>> rules;
-
   /// Site ID.
   late final pulumi.Output<String> siteId;
-
   /// Status of the transport layer application, modification and deletion are not allowed.
   late final pulumi.Output<String> status;
 
@@ -43,15 +36,13 @@ class TransportLayerApplication extends pulumi.CustomResource {
     TransportLayerApplicationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/transportLayerApplication:TransportLayerApplication',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:esa/transportLayerApplication:TransportLayerApplication',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationId = registerOutput<int>('applicationId');
-    crossBorderOptimization = registerOutput<String?>(
-      'crossBorderOptimization',
-    );
+    crossBorderOptimization = registerOutput<String?>('crossBorderOptimization');
     ipAccessRule = registerOutput<String?>('ipAccessRule');
     ipv6 = registerOutput<String?>('ipv6');
     recordName = registerOutput<String>('recordName');
@@ -78,15 +69,13 @@ class TransportLayerApplication extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/transportLayerApplication:TransportLayerApplication',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:esa/transportLayerApplication:TransportLayerApplication',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationId = registerOutput<int>('applicationId');
-    crossBorderOptimization = registerOutput<String?>(
-      'crossBorderOptimization',
-    );
+    crossBorderOptimization = registerOutput<String?>('crossBorderOptimization');
     ipAccessRule = registerOutput<String?>('ipAccessRule');
     ipv6 = registerOutput<String?>('ipv6');
     recordName = registerOutput<String>('recordName');

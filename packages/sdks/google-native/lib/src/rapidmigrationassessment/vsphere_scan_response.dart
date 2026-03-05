@@ -9,10 +9,14 @@ class VSphereScanResponse {
 
   /// Creates a new [VSphereScanResponse].
   /// [coreSource] reference to the corresponding VSphere Scan in MC Source.
-  VSphereScanResponse({required this.coreSource});
+  VSphereScanResponse({
+    required this.coreSource,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'coreSource': coreSource};
+    return <String, dynamic>{
+      'coreSource': coreSource,
+    };
   }
 
   factory VSphereScanResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class VSphereScanResponse {
     );
   }
 }
+

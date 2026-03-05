@@ -9,10 +9,14 @@ class CounterResourceK8sIoV1beta1 {
 
   /// Creates a new [CounterResourceK8sIoV1beta1].
   /// [value] Value defines how much of a certain device counter is available.
-  CounterResourceK8sIoV1beta1({required this.value});
+  CounterResourceK8sIoV1beta1({
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': value};
+    return <String, dynamic>{
+      'value': value,
+    };
   }
 
   factory CounterResourceK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class CounterResourceK8sIoV1beta1 {
     );
   }
 }
+

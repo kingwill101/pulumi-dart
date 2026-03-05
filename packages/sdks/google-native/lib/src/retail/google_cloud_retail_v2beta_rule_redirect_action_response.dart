@@ -14,14 +14,15 @@ class GoogleCloudRetailV2betaRuleRedirectActionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'redirectUri': redirectUri};
+    return <String, dynamic>{
+      'redirectUri': redirectUri,
+    };
   }
 
-  factory GoogleCloudRetailV2betaRuleRedirectActionResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudRetailV2betaRuleRedirectActionResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2betaRuleRedirectActionResponse(
       redirectUri: pulumi.Input.fromValue(map['redirectUri'] as String),
     );
   }
 }
+

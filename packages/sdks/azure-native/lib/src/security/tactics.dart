@@ -27,3 +27,4 @@ enum Tactics {
     throw ArgumentError('Unknown Tactics value: $value');
   }
 }
+

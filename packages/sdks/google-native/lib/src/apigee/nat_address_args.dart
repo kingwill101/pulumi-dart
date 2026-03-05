@@ -8,7 +8,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_apigee_v1_nat_address_args_doc}
 class NatAddressArgs {
   final pulumi.Input<String> instanceId;
-
   /// Resource ID of the NAT address.
   final pulumi.Input<String>? name;
   final pulumi.Input<String> organizationId;
@@ -34,12 +33,9 @@ class NatAddressArgs {
   factory NatAddressArgs.fromMap(Map<String, dynamic> map) {
     return NatAddressArgs(
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
     );
   }
 }
+

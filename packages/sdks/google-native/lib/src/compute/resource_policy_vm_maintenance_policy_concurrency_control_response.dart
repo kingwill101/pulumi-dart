@@ -13,14 +13,15 @@ class ResourcePolicyVmMaintenancePolicyConcurrencyControlResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'concurrencyLimit': concurrencyLimit};
+    return <String, dynamic>{
+      'concurrencyLimit': concurrencyLimit,
+    };
   }
 
-  factory ResourcePolicyVmMaintenancePolicyConcurrencyControlResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResourcePolicyVmMaintenancePolicyConcurrencyControlResponse.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyVmMaintenancePolicyConcurrencyControlResponse(
       concurrencyLimit: pulumi.Input.fromValue(map['concurrencyLimit'] as int),
     );
   }
 }
+

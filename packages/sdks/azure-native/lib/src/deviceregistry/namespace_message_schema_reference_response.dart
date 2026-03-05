@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NamespaceMessageSchemaReferenceResponse {
   /// The message schema name.
   final pulumi.Input<String> schemaName;
-
   /// The message schema registry namespace.
   final pulumi.Input<String> schemaRegistryNamespace;
-
   /// The message schema version.
   final pulumi.Input<String> schemaVersion;
 
@@ -31,15 +29,12 @@ class NamespaceMessageSchemaReferenceResponse {
     };
   }
 
-  factory NamespaceMessageSchemaReferenceResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NamespaceMessageSchemaReferenceResponse.fromMap(Map<String, dynamic> map) {
     return NamespaceMessageSchemaReferenceResponse(
       schemaName: pulumi.Input.fromValue(map['schemaName'] as String),
-      schemaRegistryNamespace: pulumi.Input.fromValue(
-        map['schemaRegistryNamespace'] as String,
-      ),
+      schemaRegistryNamespace: pulumi.Input.fromValue(map['schemaRegistryNamespace'] as String),
       schemaVersion: pulumi.Input.fromValue(map['schemaVersion'] as String),
     );
   }
 }
+

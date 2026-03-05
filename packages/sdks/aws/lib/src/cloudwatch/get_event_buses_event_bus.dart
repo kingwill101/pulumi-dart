@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEventBusesEventBus {
   /// The ARN of the event bus.
   final pulumi.Input<String> arn;
-
   /// The time the event bus was created.
   final pulumi.Input<String> creationTime;
-
   /// The event bus description.
   final pulumi.Input<String> description;
-
   /// The time the event bus was last modified.
   final pulumi.Input<String> lastModifiedTime;
-
   /// The name of the event bus.
   final pulumi.Input<String> name;
-
   /// The permissions policy of the event bus, describing which other AWS accounts can write events to this event bus.
   final pulumi.Input<String> policy;
 
@@ -53,11 +48,10 @@ class GetEventBusesEventBus {
       arn: pulumi.Input.fromValue(map['arn'] as String),
       creationTime: pulumi.Input.fromValue(map['creationTime'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
-      lastModifiedTime: pulumi.Input.fromValue(
-        map['lastModifiedTime'] as String,
-      ),
+      lastModifiedTime: pulumi.Input.fromValue(map['lastModifiedTime'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       policy: pulumi.Input.fromValue(map['policy'] as String),
     );
   }
 }
+

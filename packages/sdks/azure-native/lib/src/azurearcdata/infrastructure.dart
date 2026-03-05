@@ -19,3 +19,4 @@ enum Infrastructure {
     throw ArgumentError('Unknown Infrastructure value: $value');
   }
 }
+

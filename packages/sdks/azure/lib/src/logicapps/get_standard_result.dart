@@ -10,89 +10,61 @@ import 'get_standard_site_credential.dart';
 class GetStandardResult {
   /// The ID of the App Service Plan.
   final String appServicePlanId;
-
   /// A map of key-value pairs for [App Settings](https://docs.microsoft.com/azure/azure-functions/functions-app-settings) and custom values.
   final Map<String, String> appSettings;
-
   /// Controls the allowed range for bundle versions.
   final String bundleVersion;
-
   /// Should the Logic App send session affinity cookies, which route client requests in the same session to the same instance.
   final bool clientAffinityEnabled;
-
   /// The mode of the Logic App's client certificates requirement for incoming requests.
   final String clientCertificateMode;
-
   /// A `connection_string` block as defined below.
   final List<GetStandardConnectionString> connectionStrings;
-
   /// The custom domain verification of the Logic App.
   final String customDomainVerificationId;
-
   /// The default hostname of the Logic App.
   final String defaultHostname;
-
   /// Whether the Logic App is enabled.
   final bool enabled;
-
   /// Whether the default FTP basic authentication publishing profile is enabled.
   final bool ftpPublishBasicAuthenticationEnabled;
-
   /// Whether the Logic App can only be accessed via HTTPS.
   final bool httpsOnly;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// An `identity` block as defined below.
   final List<GetStandardIdentity> identities;
-
   /// The kind of the Logic App.
   final String kind;
-
   /// The Azure location where the Logic App Standard exists.
   final String location;
-
   /// The name for this IP Restriction.
   final String name;
-
   /// The outbound IP addresses of the Logic App.
   final String outboundIpAddresses;
-
   /// The possible outbound IP addresses of the Logic App.
   final String possibleOutboundIpAddresses;
-
   /// Whether Public Network Access should be enabled or not.
   final String publicNetworkAccess;
   final String resourceGroupName;
-
   /// Whether the default SCM basic authentication publishing profile is enabled.
   final bool scmPublishBasicAuthenticationEnabled;
-
   /// A `site_config` object as defined below.
   final GetStandardSiteConfig siteConfig;
-
   /// A `site_credential` block as defined below, which contains the site-level credentials used to publish to this Logic App.
   final List<GetStandardSiteCredential> siteCredentials;
-
   /// The access key which will be used to access the backend storage account for the Logic App.
   final String storageAccountAccessKey;
-
   /// The backend storage account name which will be used by this Logic App (e.g. for Stateful workflows data).
   final String storageAccountName;
-
   /// The name of the share used by the logic app.
   final String storageAccountShareName;
-
   /// A mapping of tags assigned to the resource.
   final Map<String, String> tags;
-
   /// Whether the logic app should use the bundled extension package.
   final bool useExtensionBundle;
-
   /// The runtime version associated with the Logic App.
   final String version;
-
   /// The Virtual Network Subnet ID used for this IP Restriction.
   final String virtualNetworkSubnetId;
 
@@ -167,23 +139,14 @@ class GetStandardResult {
       'bundleVersion': bundleVersion,
       'clientAffinityEnabled': clientAffinityEnabled,
       'clientCertificateMode': clientCertificateMode,
-      'connectionStrings':
-          pulumi.Input.encodeList<
-            GetStandardConnectionString,
-            Map<String, dynamic>
-          >(connectionStrings, (value) => value.toMap()),
+      'connectionStrings': pulumi.Input.encodeList<GetStandardConnectionString, Map<String, dynamic>>(connectionStrings, (value) => value.toMap()),
       'customDomainVerificationId': customDomainVerificationId,
       'defaultHostname': defaultHostname,
       'enabled': enabled,
-      'ftpPublishBasicAuthenticationEnabled':
-          ftpPublishBasicAuthenticationEnabled,
+      'ftpPublishBasicAuthenticationEnabled': ftpPublishBasicAuthenticationEnabled,
       'httpsOnly': httpsOnly,
       'id': id,
-      'identities':
-          pulumi.Input.encodeList<GetStandardIdentity, Map<String, dynamic>>(
-            identities,
-            (value) => value.toMap(),
-          ),
+      'identities': pulumi.Input.encodeList<GetStandardIdentity, Map<String, dynamic>>(identities, (value) => value.toMap()),
       'kind': kind,
       'location': location,
       'name': name,
@@ -191,14 +154,9 @@ class GetStandardResult {
       'possibleOutboundIpAddresses': possibleOutboundIpAddresses,
       'publicNetworkAccess': publicNetworkAccess,
       'resourceGroupName': resourceGroupName,
-      'scmPublishBasicAuthenticationEnabled':
-          scmPublishBasicAuthenticationEnabled,
+      'scmPublishBasicAuthenticationEnabled': scmPublishBasicAuthenticationEnabled,
       'siteConfig': siteConfig.toMap(),
-      'siteCredentials':
-          pulumi.Input.encodeList<
-            GetStandardSiteCredential,
-            Map<String, dynamic>
-          >(siteCredentials, (value) => value.toMap()),
+      'siteCredentials': pulumi.Input.encodeList<GetStandardSiteCredential, Map<String, dynamic>>(siteCredentials, (value) => value.toMap()),
       'storageAccountAccessKey': storageAccountAccessKey,
       'storageAccountName': storageAccountName,
       'storageAccountShareName': storageAccountShareName,
@@ -216,24 +174,14 @@ class GetStandardResult {
       bundleVersion: map['bundleVersion'] as String,
       clientAffinityEnabled: map['clientAffinityEnabled'] as bool,
       clientCertificateMode: map['clientCertificateMode'] as String,
-      connectionStrings: pulumi.Input.decodeList<GetStandardConnectionString>(
-        map['connectionStrings']!,
-        (value) => GetStandardConnectionString.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      connectionStrings: pulumi.Input.decodeList<GetStandardConnectionString>(map['connectionStrings']!, (value) => GetStandardConnectionString.fromMap((value as Map).cast<String, dynamic>())),
       customDomainVerificationId: map['customDomainVerificationId'] as String,
       defaultHostname: map['defaultHostname'] as String,
       enabled: map['enabled'] as bool,
-      ftpPublishBasicAuthenticationEnabled:
-          map['ftpPublishBasicAuthenticationEnabled'] as bool,
+      ftpPublishBasicAuthenticationEnabled: map['ftpPublishBasicAuthenticationEnabled'] as bool,
       httpsOnly: map['httpsOnly'] as bool,
       id: map['id'] as String,
-      identities: pulumi.Input.decodeList<GetStandardIdentity>(
-        map['identities']!,
-        (value) =>
-            GetStandardIdentity.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      identities: pulumi.Input.decodeList<GetStandardIdentity>(map['identities']!, (value) => GetStandardIdentity.fromMap((value as Map).cast<String, dynamic>())),
       kind: map['kind'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
@@ -241,17 +189,9 @@ class GetStandardResult {
       possibleOutboundIpAddresses: map['possibleOutboundIpAddresses'] as String,
       publicNetworkAccess: map['publicNetworkAccess'] as String,
       resourceGroupName: map['resourceGroupName'] as String,
-      scmPublishBasicAuthenticationEnabled:
-          map['scmPublishBasicAuthenticationEnabled'] as bool,
-      siteConfig: GetStandardSiteConfig.fromMap(
-        (map['siteConfig']! as Map).cast<String, dynamic>(),
-      ),
-      siteCredentials: pulumi.Input.decodeList<GetStandardSiteCredential>(
-        map['siteCredentials']!,
-        (value) => GetStandardSiteCredential.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      scmPublishBasicAuthenticationEnabled: map['scmPublishBasicAuthenticationEnabled'] as bool,
+      siteConfig: GetStandardSiteConfig.fromMap((map['siteConfig']! as Map).cast<String, dynamic>()),
+      siteCredentials: pulumi.Input.decodeList<GetStandardSiteCredential>(map['siteCredentials']!, (value) => GetStandardSiteCredential.fromMap((value as Map).cast<String, dynamic>())),
       storageAccountAccessKey: map['storageAccountAccessKey'] as String,
       storageAccountName: map['storageAccountName'] as String,
       storageAccountShareName: map['storageAccountShareName'] as String,
@@ -262,3 +202,4 @@ class GetStandardResult {
     );
   }
 }
+

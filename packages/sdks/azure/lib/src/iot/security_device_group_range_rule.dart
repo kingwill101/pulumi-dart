@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecurityDeviceGroupRangeRule {
   /// Specifies the time range. represented in ISO 8601 duration format.
   final pulumi.Input<String> duration;
-
   /// The maximum threshold in the given time window.
   final pulumi.Input<int> max;
-
   /// The minimum threshold in the given time window.
   final pulumi.Input<int> min;
-
   /// The type of supported rule type. Possible Values are `ActiveConnectionsNotInAllowedRange`, `AmqpC2DMessagesNotInAllowedRange`, `MqttC2DMessagesNotInAllowedRange`, `HttpC2DMessagesNotInAllowedRange`, `AmqpC2DRejectedMessagesNotInAllowedRange`, `MqttC2DRejectedMessagesNotInAllowedRange`, `HttpC2DRejectedMessagesNotInAllowedRange`, `AmqpD2CMessagesNotInAllowedRange`, `MqttD2CMessagesNotInAllowedRange`, `HttpD2CMessagesNotInAllowedRange`, `DirectMethodInvokesNotInAllowedRange`, `FailedLocalLoginsNotInAllowedRange`, `FileUploadsNotInAllowedRange`, `QueuePurgesNotInAllowedRange`, `TwinUpdatesNotInAllowedRange` and `UnauthorizedOperationsNotInAllowedRange`.
   final pulumi.Input<String> type;
 
@@ -45,3 +42,4 @@ class SecurityDeviceGroupRangeRule {
     );
   }
 }
+

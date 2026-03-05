@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudContactcenterinsightsV1SmartReplyDataResponse {
   /// The system's confidence score that this reply is a good match for this conversation, ranging from 0.0 (completely uncertain) to 1.0 (completely certain).
   final pulumi.Input<double> confidenceScore;
-
   /// Map that contains metadata about the Smart Reply and the document from which it originates.
   final pulumi.Input<Map<String, String>> metadata;
-
   /// The name of the answer record. Format: projects/{project}/locations/{location}/answerRecords/{answer_record}
   final pulumi.Input<String> queryRecord;
-
   /// The content of the reply.
   final pulumi.Input<String> reply;
 
@@ -37,16 +34,13 @@ class GoogleCloudContactcenterinsightsV1SmartReplyDataResponse {
     };
   }
 
-  factory GoogleCloudContactcenterinsightsV1SmartReplyDataResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudContactcenterinsightsV1SmartReplyDataResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContactcenterinsightsV1SmartReplyDataResponse(
       confidenceScore: pulumi.Input.fromValue(map['confidenceScore'] as double),
-      metadata: pulumi.Input.fromValue(
-        (map['metadata'] as Map).cast<String, String>(),
-      ),
+      metadata: pulumi.Input.fromValue((map['metadata'] as Map).cast<String, String>()),
       queryRecord: pulumi.Input.fromValue(map['queryRecord'] as String),
       reply: pulumi.Input.fromValue(map['reply'] as String),
     );
   }
 }
+

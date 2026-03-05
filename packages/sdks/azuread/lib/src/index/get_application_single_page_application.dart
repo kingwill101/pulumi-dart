@@ -8,19 +8,20 @@ class GetApplicationSinglePageApplication {
 
   /// Creates a new [GetApplicationSinglePageApplication].
   /// [redirectUris] A list of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
-  GetApplicationSinglePageApplication({required this.redirectUris});
+  GetApplicationSinglePageApplication({
+    required this.redirectUris,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'redirectUris': redirectUris};
+    return <String, dynamic>{
+      'redirectUris': redirectUris,
+    };
   }
 
-  factory GetApplicationSinglePageApplication.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetApplicationSinglePageApplication.fromMap(Map<String, dynamic> map) {
     return GetApplicationSinglePageApplication(
-      redirectUris: pulumi.Input.fromValue(
-        (map['redirectUris'] as List).cast<String>(),
-      ),
+      redirectUris: pulumi.Input.fromValue((map['redirectUris'] as List).cast<String>()),
     );
   }
 }
+

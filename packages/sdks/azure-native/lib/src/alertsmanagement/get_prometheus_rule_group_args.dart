@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPrometheusRuleGroupArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the rule group.
   final pulumi.Input<String> ruleGroupName;
 
@@ -30,10 +29,9 @@ class GetPrometheusRuleGroupArgs {
 
   factory GetPrometheusRuleGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetPrometheusRuleGroupArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       ruleGroupName: pulumi.Input.fromValue(map['ruleGroupName'] as String),
     );
   }
 }
+

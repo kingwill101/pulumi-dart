@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetShareSnapshotSchedule {
   /// The name of this Data Share.
   final pulumi.Input<String> name;
-
   /// The interval of the synchronization with the source data.
   final pulumi.Input<String> recurrence;
-
   /// The synchronization with the source data's start time.
   final pulumi.Input<String> startTime;
 
@@ -38,3 +36,4 @@ class GetShareSnapshotSchedule {
     );
   }
 }
+

@@ -567,25 +567,18 @@ import 'hana_backup_client_state.dart';
 class HanaBackupClient extends pulumi.CustomResource {
   /// The alert settings. Valid value: `INHERITED`.
   late final pulumi.Output<String> alertSetting;
-
   /// The ID of the backup client.
   late final pulumi.Output<String> clientId;
-
   /// The installation information of the HBR clients.
   late final pulumi.Output<String?> clientInfo;
-
   /// The ID of the SAP HANA instance.
   late final pulumi.Output<String> clusterId;
-
   /// The ID of the instance.
   late final pulumi.Output<String> instanceId;
-
   /// The status of the Hana Backup Client.
   late final pulumi.Output<String> status;
-
   /// Specifies whether to transmit data over HTTPS. Valid values: `true`, `false`.
   late final pulumi.Output<bool?> useHttps;
-
   /// The ID of the backup vault.
   late final pulumi.Output<String> vaultId;
 
@@ -598,11 +591,11 @@ class HanaBackupClient extends pulumi.CustomResource {
     HanaBackupClientArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:hbr/hanaBackupClient:HanaBackupClient',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:hbr/hanaBackupClient:HanaBackupClient',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alertSetting = registerOutput<String>('alertSetting');
     clientId = registerOutput<String>('clientId');
     clientInfo = registerOutput<String?>('clientInfo');
@@ -631,11 +624,11 @@ class HanaBackupClient extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:hbr/hanaBackupClient:HanaBackupClient',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:hbr/hanaBackupClient:HanaBackupClient',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alertSetting = registerOutput<String>('alertSetting');
     clientId = registerOutput<String>('clientId');
     clientInfo = registerOutput<String?>('clientInfo');

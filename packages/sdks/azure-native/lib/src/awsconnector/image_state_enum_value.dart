@@ -9,19 +9,20 @@ class ImageStateEnumValue {
 
   /// Creates a new [ImageStateEnumValue].
   /// [value] Property value
-  ImageStateEnumValue({this.value});
+  ImageStateEnumValue({
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': ?value};
+    return <String, dynamic>{
+      'value': ?value,
+    };
   }
 
   factory ImageStateEnumValue.fromMap(Map<String, dynamic> map) {
     return ImageStateEnumValue(
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

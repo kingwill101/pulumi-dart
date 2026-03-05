@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPrivateStoreCollectionOfferArgs {
   /// The collection ID
   final pulumi.Input<String> collectionId;
-
   /// The offer ID to update or delete
   final pulumi.Input<String> offerId;
-
   /// The store ID - must use the tenant ID
   final pulumi.Input<String> privateStoreId;
 
@@ -42,3 +40,4 @@ class GetPrivateStoreCollectionOfferArgs {
     );
   }
 }
+

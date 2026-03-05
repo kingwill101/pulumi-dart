@@ -9,10 +9,8 @@ import 'management_policy_version.dart';
 class ManagementPolicyAction {
   /// The management policy action for base blob
   final pulumi.Input<ManagementPolicyBaseBlob>? baseBlob;
-
   /// The management policy action for snapshot
   final pulumi.Input<ManagementPolicySnapShot>? snapshot;
-
   /// The management policy action for version
   final pulumi.Input<ManagementPolicyVersion>? version;
 
@@ -20,57 +18,26 @@ class ManagementPolicyAction {
   /// [baseBlob] The management policy action for base blob
   /// [snapshot] The management policy action for snapshot
   /// [version] The management policy action for version
-  ManagementPolicyAction({this.baseBlob, this.snapshot, this.version});
+  ManagementPolicyAction({
+    this.baseBlob,
+    this.snapshot,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'baseBlob':
-          ?pulumi.Input.mapOptionalInputValue<
-            ManagementPolicyBaseBlob,
-            Map<String, dynamic>
-          >(baseBlob, (value) => value.toMap()),
-      'snapshot':
-          ?pulumi.Input.mapOptionalInputValue<
-            ManagementPolicySnapShot,
-            Map<String, dynamic>
-          >(snapshot, (value) => value.toMap()),
-      'version':
-          ?pulumi.Input.mapOptionalInputValue<
-            ManagementPolicyVersion,
-            Map<String, dynamic>
-          >(version, (value) => value.toMap()),
+      'baseBlob': ?pulumi.Input.mapOptionalInputValue<ManagementPolicyBaseBlob, Map<String, dynamic>>(baseBlob, (value) => value.toMap()),
+      'snapshot': ?pulumi.Input.mapOptionalInputValue<ManagementPolicySnapShot, Map<String, dynamic>>(snapshot, (value) => value.toMap()),
+      'version': ?pulumi.Input.mapOptionalInputValue<ManagementPolicyVersion, Map<String, dynamic>>(version, (value) => value.toMap()),
     };
   }
 
   factory ManagementPolicyAction.fromMap(Map<String, dynamic> map) {
     return ManagementPolicyAction(
-      baseBlob: (() {
-        final guardedValue = map['baseBlob'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ManagementPolicyBaseBlob.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      snapshot: (() {
-        final guardedValue = map['snapshot'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ManagementPolicySnapShot.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ManagementPolicyVersion.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      baseBlob: (() { final guardedValue = map['baseBlob']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagementPolicyBaseBlob.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      snapshot: (() { final guardedValue = map['snapshot']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagementPolicySnapShot.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagementPolicyVersion.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

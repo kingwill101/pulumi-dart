@@ -8,17 +8,20 @@ class SqlContainerIndexingPolicyIncludedPath {
 
   /// Creates a new [SqlContainerIndexingPolicyIncludedPath].
   /// [path] Path for which the indexing behaviour applies to.
-  SqlContainerIndexingPolicyIncludedPath({required this.path});
+  SqlContainerIndexingPolicyIncludedPath({
+    required this.path,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'path': path};
+    return <String, dynamic>{
+      'path': path,
+    };
   }
 
-  factory SqlContainerIndexingPolicyIncludedPath.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SqlContainerIndexingPolicyIncludedPath.fromMap(Map<String, dynamic> map) {
     return SqlContainerIndexingPolicyIncludedPath(
       path: pulumi.Input.fromValue(map['path'] as String),
     );
   }
 }
+

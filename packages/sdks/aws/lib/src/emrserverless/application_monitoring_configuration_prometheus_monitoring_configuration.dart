@@ -13,18 +13,15 @@ class ApplicationMonitoringConfigurationPrometheusMonitoringConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'remoteWriteUrl': ?remoteWriteUrl};
+    return <String, dynamic>{
+      'remoteWriteUrl': ?remoteWriteUrl,
+    };
   }
 
-  factory ApplicationMonitoringConfigurationPrometheusMonitoringConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApplicationMonitoringConfigurationPrometheusMonitoringConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationMonitoringConfigurationPrometheusMonitoringConfiguration(
-      remoteWriteUrl: (() {
-        final guardedValue = map['remoteWriteUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      remoteWriteUrl: (() { final guardedValue = map['remoteWriteUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -15,19 +15,20 @@ class NodePoolInstanceMetadataOptions {
 
   /// Creates a new [NodePoolInstanceMetadataOptions].
   /// [httpTokens] ECS instance metadata access mode configuration. Value range:
-  NodePoolInstanceMetadataOptions({this.httpTokens});
+  NodePoolInstanceMetadataOptions({
+    this.httpTokens,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'httpTokens': ?httpTokens};
+    return <String, dynamic>{
+      'httpTokens': ?httpTokens,
+    };
   }
 
   factory NodePoolInstanceMetadataOptions.fromMap(Map<String, dynamic> map) {
     return NodePoolInstanceMetadataOptions(
-      httpTokens: (() {
-        final guardedValue = map['httpTokens'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      httpTokens: (() { final guardedValue = map['httpTokens']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

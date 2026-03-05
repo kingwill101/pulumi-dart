@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InteractiveQueryClusterMetastoresHive {
   /// The external Hive metastore's existing SQL database. Changing this forces a new resource to be created.
   final pulumi.Input<String> databaseName;
-
   /// The external Hive metastore's existing SQL server admin password. Changing this forces a new resource to be created.
   final pulumi.Input<String> password;
-
   /// The fully-qualified domain name (FQDN) of the SQL server to use for the external Hive metastore. Changing this forces a new resource to be created.
   final pulumi.Input<String> server;
-
   /// The external Hive metastore's existing SQL server admin username. Changing this forces a new resource to be created.
   final pulumi.Input<String> username;
 
@@ -36,9 +33,7 @@ class InteractiveQueryClusterMetastoresHive {
     };
   }
 
-  factory InteractiveQueryClusterMetastoresHive.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InteractiveQueryClusterMetastoresHive.fromMap(Map<String, dynamic> map) {
     return InteractiveQueryClusterMetastoresHive(
       databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
       password: pulumi.Input.fromValue(map['password'] as String),
@@ -47,3 +42,4 @@ class InteractiveQueryClusterMetastoresHive {
     );
   }
 }
+

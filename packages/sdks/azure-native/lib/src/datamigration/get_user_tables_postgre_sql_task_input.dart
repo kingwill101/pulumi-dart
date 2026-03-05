@@ -7,7 +7,6 @@ import 'postgre_sql_connection_info.dart';
 class GetUserTablesPostgreSqlTaskInput {
   /// Information for connecting to PostgreSQL source
   final pulumi.Input<PostgreSqlConnectionInfo> connectionInfo;
-
   /// List of PostgreSQL databases for which to collect tables
   final pulumi.Input<List<String>> selectedDatabases;
 
@@ -21,25 +20,16 @@ class GetUserTablesPostgreSqlTaskInput {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connectionInfo':
-          pulumi.Input.mapInputValue<
-            PostgreSqlConnectionInfo,
-            Map<String, dynamic>
-          >(connectionInfo, (value) => value.toMap()),
+      'connectionInfo': pulumi.Input.mapInputValue<PostgreSqlConnectionInfo, Map<String, dynamic>>(connectionInfo, (value) => value.toMap()),
       'selectedDatabases': selectedDatabases,
     };
   }
 
   factory GetUserTablesPostgreSqlTaskInput.fromMap(Map<String, dynamic> map) {
     return GetUserTablesPostgreSqlTaskInput(
-      connectionInfo: pulumi.Input.fromValue(
-        PostgreSqlConnectionInfo.fromMap(
-          (map['connectionInfo']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      selectedDatabases: pulumi.Input.fromValue(
-        (map['selectedDatabases'] as List).cast<String>(),
-      ),
+      connectionInfo: pulumi.Input.fromValue(PostgreSqlConnectionInfo.fromMap((map['connectionInfo']! as Map).cast<String, dynamic>())),
+      selectedDatabases: pulumi.Input.fromValue((map['selectedDatabases'] as List).cast<String>()),
     );
   }
 }
+

@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LabAnnouncementProperties {
   /// Is the lab announcement active/enabled at this time?
   final pulumi.Input<String>? enabled;
-
   /// The time at which the announcement expires (null for never)
   final pulumi.Input<String>? expirationDate;
-
   /// Has this announcement expired?
   final pulumi.Input<bool>? expired;
-
   /// The markdown text (if any) that this lab displays in the UI. If left empty/null, nothing will be shown.
   final pulumi.Input<String>? markdown;
-
   /// The plain text title for the lab announcement
   final pulumi.Input<String>? title;
 
@@ -45,31 +41,12 @@ class LabAnnouncementProperties {
 
   factory LabAnnouncementProperties.fromMap(Map<String, dynamic> map) {
     return LabAnnouncementProperties(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      expirationDate: (() {
-        final guardedValue = map['expirationDate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      expired: (() {
-        final guardedValue = map['expired'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      markdown: (() {
-        final guardedValue = map['markdown'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      title: (() {
-        final guardedValue = map['title'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      expirationDate: (() { final guardedValue = map['expirationDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      expired: (() { final guardedValue = map['expired']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      markdown: (() { final guardedValue = map['markdown']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      title: (() { final guardedValue = map['title']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

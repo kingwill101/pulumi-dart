@@ -6,10 +6,8 @@ class SecurityProfileThreatPreventionProfileThreatOverride {
   /// Threat action.
   /// Possible values are: `ALERT`, `ALLOW`, `DEFAULT_ACTION`, `DENY`.
   final pulumi.Input<String> action;
-
   /// Vendor-specific ID of a threat to override.
   final pulumi.Input<String> threatId;
-
   /// (Output)
   /// Type of threat.
   final pulumi.Input<String>? type;
@@ -32,17 +30,12 @@ class SecurityProfileThreatPreventionProfileThreatOverride {
     };
   }
 
-  factory SecurityProfileThreatPreventionProfileThreatOverride.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SecurityProfileThreatPreventionProfileThreatOverride.fromMap(Map<String, dynamic> map) {
     return SecurityProfileThreatPreventionProfileThreatOverride(
       action: pulumi.Input.fromValue(map['action'] as String),
       threatId: pulumi.Input.fromValue(map['threatId'] as String),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

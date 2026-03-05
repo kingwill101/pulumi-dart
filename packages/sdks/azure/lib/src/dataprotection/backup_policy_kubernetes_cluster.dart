@@ -353,23 +353,16 @@ import 'backup_policy_kubernetes_cluster_state.dart';
 class BackupPolicyKubernetesCluster extends pulumi.CustomResource {
   /// Specifies a list of repeating time interval. It supports weekly back. It should follow `ISO 8601` repeating time interval. Changing this forces a new resource to be created.
   late final pulumi.Output<List<String>> backupRepeatingTimeIntervals;
-
   /// A `default_retention_rule` block as defined below. Changing this forces a new resource to be created.
-  late final pulumi.Output<BackupPolicyKubernetesClusterDefaultRetentionRule>
-  defaultRetentionRule;
-
+  late final pulumi.Output<BackupPolicyKubernetesClusterDefaultRetentionRule> defaultRetentionRule;
   /// The name which should be used for the Backup Policy Kubernetes Cluster. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the Resource Group where the Backup Policy Kubernetes Cluster should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// One or more `retention_rule` blocks as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<List<Map<String, dynamic>>?> retentionRules;
-
   /// Specifies the Time Zone which should be used by the backup schedule. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> timeZone;
-
   /// The name of the Backup Vault where the Backup Policy Kubernetes Cluster should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> vaultName;
 
@@ -382,30 +375,16 @@ class BackupPolicyKubernetesCluster extends pulumi.CustomResource {
     BackupPolicyKubernetesClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:dataprotection/backupPolicyKubernetesCluster:BackupPolicyKubernetesCluster',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    backupRepeatingTimeIntervals = registerOutput<List<String>>(
-      'backupRepeatingTimeIntervals',
-    );
-    defaultRetentionRule =
-        registerOutput<BackupPolicyKubernetesClusterDefaultRetentionRule>(
-          'defaultRetentionRule',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return BackupPolicyKubernetesClusterDefaultRetentionRule.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'azure:dataprotection/backupPolicyKubernetesCluster:BackupPolicyKubernetesCluster',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    backupRepeatingTimeIntervals = registerOutput<List<String>>('backupRepeatingTimeIntervals');
+    defaultRetentionRule = registerOutput<BackupPolicyKubernetesClusterDefaultRetentionRule>('defaultRetentionRule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupPolicyKubernetesClusterDefaultRetentionRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    retentionRules = registerOutput<List<Map<String, dynamic>>?>(
-      'retentionRules',
-    );
+    retentionRules = registerOutput<List<Map<String, dynamic>>?>('retentionRules');
     timeZone = registerOutput<String?>('timeZone');
     vaultName = registerOutput<String>('vaultName');
   }
@@ -428,30 +407,16 @@ class BackupPolicyKubernetesCluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:dataprotection/backupPolicyKubernetesCluster:BackupPolicyKubernetesCluster',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    backupRepeatingTimeIntervals = registerOutput<List<String>>(
-      'backupRepeatingTimeIntervals',
-    );
-    defaultRetentionRule =
-        registerOutput<BackupPolicyKubernetesClusterDefaultRetentionRule>(
-          'defaultRetentionRule',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return BackupPolicyKubernetesClusterDefaultRetentionRule.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'azure:dataprotection/backupPolicyKubernetesCluster:BackupPolicyKubernetesCluster',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    backupRepeatingTimeIntervals = registerOutput<List<String>>('backupRepeatingTimeIntervals');
+    defaultRetentionRule = registerOutput<BackupPolicyKubernetesClusterDefaultRetentionRule>('defaultRetentionRule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupPolicyKubernetesClusterDefaultRetentionRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    retentionRules = registerOutput<List<Map<String, dynamic>>?>(
-      'retentionRules',
-    );
+    retentionRules = registerOutput<List<Map<String, dynamic>>?>('retentionRules');
     timeZone = registerOutput<String?>('timeZone');
     vaultName = registerOutput<String>('vaultName');
   }

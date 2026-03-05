@@ -1,26 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getVWanConfig.
 class GetVWanConfigResult {
   final String azureVwanName;
   final String azureVwanResourcegroup;
   final String azureVwanVpnsite;
-
   /// (type `string`) provides IP address of BIGIP G/W for IPSec Endpoint.
   final String bigipGwIp;
-
   /// (type `string`) Provides IP Address space used on vWAN Hub.
   final String hubAddressSpace;
-
   /// (type `list`) Provides Subnets connected to vWAN Hub.
   final List<String> hubConnectedSubnets;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// (type `string`) provides pre-shared-key used for IPSec Tunnel creation.
   final String presharedKey;
-
   /// (type `list`) Provides vWAN Gateway Address for IPSec End point
   final List<String> vwanGwAddresses;
 
@@ -74,3 +69,4 @@ class GetVWanConfigResult {
     );
   }
 }
+

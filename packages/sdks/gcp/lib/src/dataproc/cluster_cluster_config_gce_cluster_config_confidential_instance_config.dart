@@ -18,15 +18,10 @@ class ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig {
     };
   }
 
-  factory ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig.fromMap(Map<String, dynamic> map) {
     return ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig(
-      enableConfidentialCompute: (() {
-        final guardedValue = map['enableConfidentialCompute'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enableConfidentialCompute: (() { final guardedValue = map['enableConfidentialCompute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

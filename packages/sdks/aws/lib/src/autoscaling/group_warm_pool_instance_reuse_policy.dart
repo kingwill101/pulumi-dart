@@ -8,19 +8,20 @@ class GroupWarmPoolInstanceReusePolicy {
 
   /// Creates a new [GroupWarmPoolInstanceReusePolicy].
   /// [reuseOnScaleIn] Whether instances in the Auto Scaling group can be returned to the warm pool on scale in.
-  GroupWarmPoolInstanceReusePolicy({this.reuseOnScaleIn});
+  GroupWarmPoolInstanceReusePolicy({
+    this.reuseOnScaleIn,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'reuseOnScaleIn': ?reuseOnScaleIn};
+    return <String, dynamic>{
+      'reuseOnScaleIn': ?reuseOnScaleIn,
+    };
   }
 
   factory GroupWarmPoolInstanceReusePolicy.fromMap(Map<String, dynamic> map) {
     return GroupWarmPoolInstanceReusePolicy(
-      reuseOnScaleIn: (() {
-        final guardedValue = map['reuseOnScaleIn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      reuseOnScaleIn: (() { final guardedValue = map['reuseOnScaleIn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

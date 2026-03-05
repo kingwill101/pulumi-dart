@@ -12,10 +12,14 @@ class GetTagAtScopeArgs {
 
   /// Creates a new [GetTagAtScopeArgs].
   /// [scope] The resource scope.
-  GetTagAtScopeArgs({required this.scope});
+  GetTagAtScopeArgs({
+    required this.scope,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'scope': scope};
+    return <String, dynamic>{
+      'scope': scope,
+    };
   }
 
   factory GetTagAtScopeArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetTagAtScopeArgs {
     );
   }
 }
+

@@ -10,28 +10,20 @@ class GetTunnelPolicyResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
   final String deploymentStatus;
-
   /// Domains referenced by this tunnel policy.
   final List<ActivatedResourceReferenceResponse> domains;
-
   /// Resource ID.
   final String id;
-
   /// Resource name.
   final String name;
-
   /// Provisioning status
   final String provisioningState;
-
   /// Read only system data
   final SystemDataResponse systemData;
-
   /// Target Groups referenced by this tunnel policy.
   final List<ResourceReferenceResponse>? targetGroups;
-
   /// Protocol this tunnel will use for allowing traffic to backends.
   final String? tunnelType;
-
   /// Resource type.
   final String type;
 
@@ -63,23 +55,12 @@ class GetTunnelPolicyResult {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
       'deploymentStatus': deploymentStatus,
-      'domains':
-          pulumi.Input.encodeList<
-            ActivatedResourceReferenceResponse,
-            Map<String, dynamic>
-          >(domains, (value) => value.toMap()),
+      'domains': pulumi.Input.encodeList<ActivatedResourceReferenceResponse, Map<String, dynamic>>(domains, (value) => value.toMap()),
       'id': id,
       'name': name,
       'provisioningState': provisioningState,
       'systemData': systemData.toMap(),
-      'targetGroups': ?(() {
-        final guardedValue = targetGroups;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          ResourceReferenceResponse,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'targetGroups': ?(() { final guardedValue = targetGroups; if (guardedValue == null) return null; return pulumi.Input.encodeList<ResourceReferenceResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'tunnelType': ?tunnelType,
       'type': type,
     };
@@ -89,34 +70,15 @@ class GetTunnelPolicyResult {
     return GetTunnelPolicyResult(
       azureApiVersion: map['azureApiVersion'] as String,
       deploymentStatus: map['deploymentStatus'] as String,
-      domains: pulumi.Input.decodeList<ActivatedResourceReferenceResponse>(
-        map['domains']!,
-        (value) => ActivatedResourceReferenceResponse.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      domains: pulumi.Input.decodeList<ActivatedResourceReferenceResponse>(map['domains']!, (value) => ActivatedResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      targetGroups: (() {
-        final guardedValue = map['targetGroups'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<ResourceReferenceResponse>(
-          guardedValue,
-          (value) => ResourceReferenceResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      tunnelType: (() {
-        final guardedValue = map['tunnelType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      targetGroups: (() { final guardedValue = map['targetGroups']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceReferenceResponse>(guardedValue, (value) => ResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      tunnelType: (() { final guardedValue = map['tunnelType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       type: map['type'] as String,
     );
   }
 }
+

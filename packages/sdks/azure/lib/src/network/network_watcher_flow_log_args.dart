@@ -11,37 +11,27 @@ import 'network_watcher_flow_log_traffic_analytics.dart';
 class NetworkWatcherFlowLogArgs {
   /// Should Network Flow Logging be Enabled?
   final pulumi.Input<bool> enabled;
-
   /// The location where the Network Watcher Flow Log resides. Changing this forces a new resource to be created. Defaults to the `location` of the Network Watcher.
   final pulumi.Input<String>? location;
-
   /// The name of the Network Watcher Flow Log. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? networkSecurityGroupId;
-
   /// The name of the Network Watcher. Changing this forces a new resource to be created.
   final pulumi.Input<String> networkWatcherName;
-
   /// The name of the resource group in which the Network Watcher was deployed. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
-
   /// A `retention_policy` block as documented below.
   final pulumi.Input<NetworkWatcherFlowLogRetentionPolicy> retentionPolicy;
-
   /// The ID of the Storage Account where flow logs are stored.
   final pulumi.Input<String> storageAccountId;
-
   /// A mapping of tags which should be assigned to the Network Watcher Flow Log.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// The ID of the Resource for which to enable flow logs for.
   ///
   /// &gt; **Note:** As of July 30, 2025, it is no longer possible to create new flow logs for Network Security Groups.
   final pulumi.Input<String>? targetResourceId;
-
   /// A `traffic_analytics` block as documented below.
   final pulumi.Input<NetworkWatcherFlowLogTrafficAnalytics>? trafficAnalytics;
-
   /// The version (revision) of the flow log. Possible values are `1` and `2`. Defaults to `1`.
   final pulumi.Input<int>? version;
 
@@ -81,19 +71,11 @@ class NetworkWatcherFlowLogArgs {
       'networkSecurityGroupId': ?networkSecurityGroupId,
       'networkWatcherName': networkWatcherName,
       'resourceGroupName': resourceGroupName,
-      'retentionPolicy':
-          pulumi.Input.mapInputValue<
-            NetworkWatcherFlowLogRetentionPolicy,
-            Map<String, dynamic>
-          >(retentionPolicy, (value) => value.toMap()),
+      'retentionPolicy': pulumi.Input.mapInputValue<NetworkWatcherFlowLogRetentionPolicy, Map<String, dynamic>>(retentionPolicy, (value) => value.toMap()),
       'storageAccountId': storageAccountId,
       'tags': ?tags,
       'targetResourceId': ?targetResourceId,
-      'trafficAnalytics':
-          ?pulumi.Input.mapOptionalInputValue<
-            NetworkWatcherFlowLogTrafficAnalytics,
-            Map<String, dynamic>
-          >(trafficAnalytics, (value) => value.toMap()),
+      'trafficAnalytics': ?pulumi.Input.mapOptionalInputValue<NetworkWatcherFlowLogTrafficAnalytics, Map<String, dynamic>>(trafficAnalytics, (value) => value.toMap()),
       'version': ?version,
     };
   }
@@ -101,61 +83,18 @@ class NetworkWatcherFlowLogArgs {
   factory NetworkWatcherFlowLogArgs.fromMap(Map<String, dynamic> map) {
     return NetworkWatcherFlowLogArgs(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      networkSecurityGroupId: (() {
-        final guardedValue = map['networkSecurityGroupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      networkWatcherName: pulumi.Input.fromValue(
-        map['networkWatcherName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      retentionPolicy: pulumi.Input.fromValue(
-        NetworkWatcherFlowLogRetentionPolicy.fromMap(
-          (map['retentionPolicy']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      storageAccountId: pulumi.Input.fromValue(
-        map['storageAccountId'] as String,
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      targetResourceId: (() {
-        final guardedValue = map['targetResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      trafficAnalytics: (() {
-        final guardedValue = map['trafficAnalytics'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          NetworkWatcherFlowLogTrafficAnalytics.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      networkSecurityGroupId: (() { final guardedValue = map['networkSecurityGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      networkWatcherName: pulumi.Input.fromValue(map['networkWatcherName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      retentionPolicy: pulumi.Input.fromValue(NetworkWatcherFlowLogRetentionPolicy.fromMap((map['retentionPolicy']! as Map).cast<String, dynamic>())),
+      storageAccountId: pulumi.Input.fromValue(map['storageAccountId'] as String),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      targetResourceId: (() { final guardedValue = map['targetResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      trafficAnalytics: (() { final guardedValue = map['trafficAnalytics']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkWatcherFlowLogTrafficAnalytics.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

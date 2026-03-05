@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceStatusResponse {
   /// The last update time for this condition.
   final pulumi.Input<String> lastUpdatedAt;
-
   /// A human readable message indicating details about the status.
   final pulumi.Input<String> message;
-
   /// The reason for the condition's status.
   final pulumi.Input<String> reason;
-
   /// Severity with which to treat failures of this type of condition.
   final pulumi.Input<String> severity;
-
   /// Status of the condition.
   final pulumi.Input<String> status;
-
   /// The type of the condition.
   final pulumi.Input<String> type;
 
@@ -60,3 +55,4 @@ class ResourceStatusResponse {
     );
   }
 }
+

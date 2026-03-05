@@ -10,10 +10,14 @@ class GetRegionalSecretTopic {
 
   /// Creates a new [GetRegionalSecretTopic].
   /// [name] The resource name of the Pub/Sub topic that will be published to, in the following format:
-  GetRegionalSecretTopic({required this.name});
+  GetRegionalSecretTopic({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory GetRegionalSecretTopic.fromMap(Map<String, dynamic> map) {
@@ -22,3 +26,4 @@ class GetRegionalSecretTopic {
     );
   }
 }
+

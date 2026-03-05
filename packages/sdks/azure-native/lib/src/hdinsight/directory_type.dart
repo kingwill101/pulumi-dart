@@ -14,3 +14,4 @@ enum DirectoryType {
     throw ArgumentError('Unknown DirectoryType value: $value');
   }
 }
+

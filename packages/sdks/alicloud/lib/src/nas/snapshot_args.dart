@@ -9,14 +9,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SnapshotArgs {
   /// The description of the snapshot. It must be `2` to `256` characters in length and cannot start with `https://` or `https://`.
   final pulumi.Input<String>? description;
-
   /// The ID of the file system.
   final pulumi.Input<String> fileSystemId;
-
   /// The retention period of the snapshot. Unit: days. Valid values:
   /// * `-1`: The default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
   final pulumi.Input<int>? retentionDays;
-
   /// SnapshotName. It must be `2` to `128` characters in length and must start with a letter, but cannot start with `https://` or `https://`.
   final pulumi.Input<String>? snapshotName;
 
@@ -43,22 +40,11 @@ class SnapshotArgs {
 
   factory SnapshotArgs.fromMap(Map<String, dynamic> map) {
     return SnapshotArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       fileSystemId: pulumi.Input.fromValue(map['fileSystemId'] as String),
-      retentionDays: (() {
-        final guardedValue = map['retentionDays'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      snapshotName: (() {
-        final guardedValue = map['snapshotName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      retentionDays: (() { final guardedValue = map['retentionDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      snapshotName: (() { final guardedValue = map['snapshotName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

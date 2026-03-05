@@ -5,19 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetImagesImage {
   /// Media type of the artifact.
   final pulumi.Input<String> artifactMediaType;
-
   /// Digest of the image manifest.
   final pulumi.Input<String> imageDigest;
-
   /// Media type of the image manifest.
   final pulumi.Input<String> imageManifestMediaType;
   final pulumi.Input<String> imagePushedAt;
   final pulumi.Input<int> imageSizeInBytes;
   final pulumi.Input<List<String>> imageTags;
-
   /// AWS account ID associated with the public registry that contains the repository. If not specified, the default public registry is assumed.
   final pulumi.Input<String> registryId;
-
   /// Name of the public repository.
   final pulumi.Input<String> repositoryName;
 
@@ -56,20 +52,15 @@ class GetImagesImage {
 
   factory GetImagesImage.fromMap(Map<String, dynamic> map) {
     return GetImagesImage(
-      artifactMediaType: pulumi.Input.fromValue(
-        map['artifactMediaType'] as String,
-      ),
+      artifactMediaType: pulumi.Input.fromValue(map['artifactMediaType'] as String),
       imageDigest: pulumi.Input.fromValue(map['imageDigest'] as String),
-      imageManifestMediaType: pulumi.Input.fromValue(
-        map['imageManifestMediaType'] as String,
-      ),
+      imageManifestMediaType: pulumi.Input.fromValue(map['imageManifestMediaType'] as String),
       imagePushedAt: pulumi.Input.fromValue(map['imagePushedAt'] as String),
       imageSizeInBytes: pulumi.Input.fromValue(map['imageSizeInBytes'] as int),
-      imageTags: pulumi.Input.fromValue(
-        (map['imageTags'] as List).cast<String>(),
-      ),
+      imageTags: pulumi.Input.fromValue((map['imageTags'] as List).cast<String>()),
       registryId: pulumi.Input.fromValue(map['registryId'] as String),
       repositoryName: pulumi.Input.fromValue(map['repositoryName'] as String),
     );
   }
 }
+

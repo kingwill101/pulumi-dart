@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProductPolicyArgs {
   /// The name of the API Management Service. Changing this forces a new resource to be created.
   final pulumi.Input<String> apiManagementName;
-
   /// The ID of the API Management Product within the API Management Service. Changing this forces a new resource to be created.
   final pulumi.Input<String> productId;
-
   /// The name of the Resource Group in which the API Management Service exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
-
   /// The XML Content for this Policy.
   final pulumi.Input<String>? xmlContent;
-
   /// A link to a Policy XML Document, which must be publicly available.
   final pulumi.Input<String>? xmlLink;
 
@@ -48,23 +44,12 @@ class ProductPolicyArgs {
 
   factory ProductPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ProductPolicyArgs(
-      apiManagementName: pulumi.Input.fromValue(
-        map['apiManagementName'] as String,
-      ),
+      apiManagementName: pulumi.Input.fromValue(map['apiManagementName'] as String),
       productId: pulumi.Input.fromValue(map['productId'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      xmlContent: (() {
-        final guardedValue = map['xmlContent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      xmlLink: (() {
-        final guardedValue = map['xmlLink'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      xmlContent: (() { final guardedValue = map['xmlContent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      xmlLink: (() { final guardedValue = map['xmlLink']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

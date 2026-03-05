@@ -165,50 +165,35 @@ import 'system_data_response.dart';
 class PartnerNamespace extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// This boolean is used to enable or disable local auth. Default value is false. When the property is set to true, only AAD token will be used to authenticate if user is allowed to publish to the partner namespace.
   late final pulumi.Output<bool?> disableLocalAuth;
-
   /// Endpoint for the partner namespace.
   late final pulumi.Output<String> endpoint;
-
   /// This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled.
   late final pulumi.Output<List<Map<String, dynamic>>?> inboundIpRules;
-
   /// Location of the resource.
   late final pulumi.Output<String> location;
-
   /// Minimum TLS version of the publisher allowed to publish to this partner namespace
   late final pulumi.Output<String?> minimumTlsVersionAllowed;
-
   /// Name of the resource.
   late final pulumi.Output<String> name;
-
   /// The fully qualified ARM Id of the partner registration that should be associated with this partner namespace. This takes the following format:
   /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerRegistrations/{partnerRegistrationName}.
   late final pulumi.Output<String?> partnerRegistrationFullyQualifiedId;
-
   /// This determines if events published to this partner namespace should use the source attribute in the event payload
   /// or use the channel name in the header when matching to the partner topic. If none is specified, source attribute routing will be used to match the partner topic.
   late final pulumi.Output<String?> partnerTopicRoutingMode;
-
   /// List of private endpoint connections.
-  late final pulumi.Output<List<Map<String, dynamic>>>
-  privateEndpointConnections;
-
+  late final pulumi.Output<List<Map<String, dynamic>>> privateEndpointConnections;
   /// Provisioning state of the partner namespace.
   late final pulumi.Output<String> provisioningState;
-
   /// This determines if traffic is allowed over public network. By default it is enabled.
   /// You can further restrict to specific IPs by configuring &lt;seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.PartnerNamespaceProperties.InboundIpRules" /&gt;
   late final pulumi.Output<String?> publicNetworkAccess;
-
   /// The system metadata relating to the Event Grid resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Tags of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Type of the resource.
   late final pulumi.Output<String> type;
 
@@ -221,43 +206,24 @@ class PartnerNamespace extends pulumi.CustomResource {
     PartnerNamespaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:eventgrid:PartnerNamespace',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:eventgrid:PartnerNamespace',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     disableLocalAuth = registerOutput<bool?>('disableLocalAuth');
     endpoint = registerOutput<String>('endpoint');
-    inboundIpRules = registerOutput<List<Map<String, dynamic>>?>(
-      'inboundIpRules',
-    );
+    inboundIpRules = registerOutput<List<Map<String, dynamic>>?>('inboundIpRules');
     location = registerOutput<String>('location');
-    minimumTlsVersionAllowed = registerOutput<String?>(
-      'minimumTlsVersionAllowed',
-    );
+    minimumTlsVersionAllowed = registerOutput<String?>('minimumTlsVersionAllowed');
     this.name = registerOutput<String>('name');
-    partnerRegistrationFullyQualifiedId = registerOutput<String?>(
-      'partnerRegistrationFullyQualifiedId',
-    );
-    partnerTopicRoutingMode = registerOutput<String?>(
-      'partnerTopicRoutingMode',
-    );
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
-      'privateEndpointConnections',
-    );
+    partnerRegistrationFullyQualifiedId = registerOutput<String?>('partnerRegistrationFullyQualifiedId');
+    partnerTopicRoutingMode = registerOutput<String?>('partnerTopicRoutingMode');
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>('privateEndpointConnections');
     provisioningState = registerOutput<String>('provisioningState');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

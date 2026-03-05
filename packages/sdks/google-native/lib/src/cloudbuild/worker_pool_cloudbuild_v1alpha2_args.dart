@@ -12,13 +12,10 @@ class WorkerPoolCloudbuildV1alpha2Args {
   /// Network configuration for the `WorkerPool`.
   final pulumi.Input<NetworkConfigCloudbuildV1alpha2>? networkConfig;
   final pulumi.Input<String>? project;
-
   /// Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
   final pulumi.Input<String> region;
-
   /// Worker configuration for the `WorkerPool`.
   final pulumi.Input<WorkerConfigCloudbuildV1alpha2>? workerConfig;
-
   /// Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
   final pulumi.Input<String> workerPoolId;
 
@@ -38,49 +35,22 @@ class WorkerPoolCloudbuildV1alpha2Args {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'networkConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            NetworkConfigCloudbuildV1alpha2,
-            Map<String, dynamic>
-          >(networkConfig, (value) => value.toMap()),
+      'networkConfig': ?pulumi.Input.mapOptionalInputValue<NetworkConfigCloudbuildV1alpha2, Map<String, dynamic>>(networkConfig, (value) => value.toMap()),
       'project': ?project,
       'region': region,
-      'workerConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            WorkerConfigCloudbuildV1alpha2,
-            Map<String, dynamic>
-          >(workerConfig, (value) => value.toMap()),
+      'workerConfig': ?pulumi.Input.mapOptionalInputValue<WorkerConfigCloudbuildV1alpha2, Map<String, dynamic>>(workerConfig, (value) => value.toMap()),
       'workerPoolId': workerPoolId,
     };
   }
 
   factory WorkerPoolCloudbuildV1alpha2Args.fromMap(Map<String, dynamic> map) {
     return WorkerPoolCloudbuildV1alpha2Args(
-      networkConfig: (() {
-        final guardedValue = map['networkConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          NetworkConfigCloudbuildV1alpha2.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      networkConfig: (() { final guardedValue = map['networkConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkConfigCloudbuildV1alpha2.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: pulumi.Input.fromValue(map['region'] as String),
-      workerConfig: (() {
-        final guardedValue = map['workerConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          WorkerConfigCloudbuildV1alpha2.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      workerConfig: (() { final guardedValue = map['workerConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkerConfigCloudbuildV1alpha2.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       workerPoolId: pulumi.Input.fromValue(map['workerPoolId'] as String),
     );
   }
 }
+

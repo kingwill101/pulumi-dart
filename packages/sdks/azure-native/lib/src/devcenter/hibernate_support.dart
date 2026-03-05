@@ -15,3 +15,4 @@ enum HibernateSupport {
     throw ArgumentError('Unknown HibernateSupport value: $value');
   }
 }
+

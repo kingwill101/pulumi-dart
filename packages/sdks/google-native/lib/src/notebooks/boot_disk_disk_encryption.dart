@@ -16,3 +16,4 @@ enum BootDiskDiskEncryption {
     throw ArgumentError('Unknown BootDiskDiskEncryption value: $value');
   }
 }
+

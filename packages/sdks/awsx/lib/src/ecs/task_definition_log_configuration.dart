@@ -22,41 +22,16 @@ class TaskDefinitionLogConfiguration {
     return <String, dynamic>{
       'logDriver': logDriver,
       'options': ?options,
-      'secretOptions':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<TaskDefinitionSecret>,
-            List<Map<String, dynamic>>
-          >(
-            secretOptions,
-            (value) =>
-                pulumi.Input.encodeList<
-                  TaskDefinitionSecret,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'secretOptions': ?pulumi.Input.mapOptionalInputValue<List<TaskDefinitionSecret>, List<Map<String, dynamic>>>(secretOptions, (value) => pulumi.Input.encodeList<TaskDefinitionSecret, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory TaskDefinitionLogConfiguration.fromMap(Map<String, dynamic> map) {
     return TaskDefinitionLogConfiguration(
       logDriver: pulumi.Input.fromValue(map['logDriver'] as String),
-      options: (() {
-        final guardedValue = map['options'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      secretOptions: (() {
-        final guardedValue = map['secretOptions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<TaskDefinitionSecret>(
-            guardedValue,
-            (value) => TaskDefinitionSecret.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      options: (() { final guardedValue = map['options']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      secretOptions: (() { final guardedValue = map['secretOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TaskDefinitionSecret>(guardedValue, (value) => TaskDefinitionSecret.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

@@ -9,10 +9,14 @@ class BareMetalSrIovConfigResponse {
 
   /// Creates a new [BareMetalSrIovConfigResponse].
   /// [enabled] Whether to install the SR-IOV operator.
-  BareMetalSrIovConfigResponse({required this.enabled});
+  BareMetalSrIovConfigResponse({
+    required this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled};
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
   factory BareMetalSrIovConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class BareMetalSrIovConfigResponse {
     );
   }
 }
+

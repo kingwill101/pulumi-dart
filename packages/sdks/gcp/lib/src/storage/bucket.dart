@@ -1285,95 +1285,66 @@ import 'bucket_website.dart';
 class Bucket extends pulumi.CustomResource {
   /// The bucket's [Autoclass](https://cloud.google.com/storage/docs/autoclass) configuration.  Structure is documented below.
   late final pulumi.Output<BucketAutoclass?> autoclass;
-
   /// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> cors;
-
   /// The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
   late final pulumi.Output<BucketCustomPlacementConfig?> customPlacementConfig;
-
   /// Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
   late final pulumi.Output<bool?> defaultEventBasedHold;
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
   late final pulumi.Output<bool?> enableObjectRetention;
-
   /// The bucket's encryption configuration. Structure is documented below.
   late final pulumi.Output<BucketEncryption?> encryption;
-
   /// When true, before deleting a bucket, delete all objects within the bucket, or Anywhere Caches caching data for that bucket. Otherwise, buckets with objects/caches will fail. Anywhere Cache requires additional permissions to interact with and will be assumed not present when the provider is not permissioned, attempting to delete the bucket anyways. This may result in the objects in the bucket getting destroyed but not the bucket itself if there is a cache in use with the bucket. Force deletion may take a long time to delete buckets with lots of objects or with any Anywhere Caches (80m+).
   late final pulumi.Output<bool?> forceDestroy;
-
   /// The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniform_bucket_level_access` must be enabled on bucket.
   late final pulumi.Output<BucketHierarchicalNamespace?> hierarchicalNamespace;
-
   /// The bucket IP filtering configuration. Specifies the network sources that can access the bucket, as well as its underlying objects. Structure is documented below.
   late final pulumi.Output<BucketIpFilter?> ipFilter;
-
   /// A map of key/value label pairs to assign to the bucket.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> lifecycleRules;
-
   /// The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
   ///
   /// - - -
   late final pulumi.Output<String> location;
-
   /// The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration. Structure is documented below.
   late final pulumi.Output<BucketLogging?> logging;
-
   /// The name of the bucket. Bucket names must be in lowercase and no more than 63 characters long. You can find the complete list of bucket naming rules [here](https://cloud.google.com/storage/docs/buckets#naming).
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The project number of the project in which the resource belongs.
   late final pulumi.Output<int> projectNumber;
-
   /// Prevents public access to a bucket. Acceptable values are "inherited" or "enforced". If "inherited", the bucket uses [public access prevention](https://cloud.google.com/storage/docs/public-access-prevention) only if the bucket is subject to the public access prevention organization policy constraint. Defaults to "inherited".
   late final pulumi.Output<String> publicAccessPrevention;
-
   /// The combination of labels configured directly on the resource and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
   late final pulumi.Output<bool?> requesterPays;
-
   /// Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
   late final pulumi.Output<BucketRetentionPolicy?> retentionPolicy;
-
   /// The recovery point objective for cross-region replication of the bucket. Applicable only for dual and multi-region buckets. `"DEFAULT"` sets default replication. `"ASYNC_TURBO"` value enables turbo replication, valid for dual-region buckets only. See [Turbo Replication](https://cloud.google.com/storage/docs/managing-turbo-replication) for more information. If rpo is not specified at bucket creation, it defaults to `"DEFAULT"` for dual and multi-region buckets. **NOTE** If used with single-region bucket, It will throw an error.
   late final pulumi.Output<String> rpo;
-
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
-
   /// The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
   late final pulumi.Output<BucketSoftDeletePolicy> softDeletePolicy;
-
   /// The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
   late final pulumi.Output<String?> storageClass;
-
   /// The creation time of the bucket in RFC 3339 format.
   late final pulumi.Output<String> timeCreated;
-
   /// Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
   late final pulumi.Output<bool> uniformBucketLevelAccess;
-
   /// The time at which the bucket's metadata or IAM policy was last updated, in RFC 3339 format.
   late final pulumi.Output<String> updated;
-
   /// The base URL of the bucket, in the format `gs://&lt;bucket-name&gt;`.
   late final pulumi.Output<String> url;
-
   /// The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.  Structure is documented below.
   late final pulumi.Output<BucketVersioning> versioning;
-
   /// Configuration if the bucket acts as a website. Structure is documented below.
   late final pulumi.Output<BucketWebsite> website;
 
@@ -1381,136 +1352,47 @@ class Bucket extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Bucket]. {@macro pulumi_storage_bucket_bucket_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Bucket(String name, {BucketArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'gcp:storage/bucket:Bucket',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
-    autoclass = registerOutput<BucketAutoclass?>(
-      'autoclass',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketAutoclass.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+  Bucket(
+    String name, {
+    BucketArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'gcp:storage/bucket:Bucket',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    autoclass = registerOutput<BucketAutoclass?>('autoclass', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketAutoclass.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cors = registerOutput<List<Map<String, dynamic>>?>('cors');
-    customPlacementConfig = registerOutput<BucketCustomPlacementConfig?>(
-      'customPlacementConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketCustomPlacementConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    customPlacementConfig = registerOutput<BucketCustomPlacementConfig?>('customPlacementConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketCustomPlacementConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     defaultEventBasedHold = registerOutput<bool?>('defaultEventBasedHold');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     enableObjectRetention = registerOutput<bool?>('enableObjectRetention');
-    encryption = registerOutput<BucketEncryption?>(
-      'encryption',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketEncryption.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    encryption = registerOutput<BucketEncryption?>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     forceDestroy = registerOutput<bool?>('forceDestroy');
-    hierarchicalNamespace = registerOutput<BucketHierarchicalNamespace?>(
-      'hierarchicalNamespace',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketHierarchicalNamespace.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    ipFilter = registerOutput<BucketIpFilter?>(
-      'ipFilter',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketIpFilter.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    hierarchicalNamespace = registerOutput<BucketHierarchicalNamespace?>('hierarchicalNamespace', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketHierarchicalNamespace.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ipFilter = registerOutput<BucketIpFilter?>('ipFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketIpFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     labels = registerOutput<Map<String, String>?>('labels');
-    lifecycleRules = registerOutput<List<Map<String, dynamic>>?>(
-      'lifecycleRules',
-    );
+    lifecycleRules = registerOutput<List<Map<String, dynamic>>?>('lifecycleRules');
     location = registerOutput<String>('location');
-    logging = registerOutput<BucketLogging?>(
-      'logging',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketLogging.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    logging = registerOutput<BucketLogging?>('logging', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketLogging.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     projectNumber = registerOutput<int>('projectNumber');
     publicAccessPrevention = registerOutput<String>('publicAccessPrevention');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     requesterPays = registerOutput<bool?>('requesterPays');
-    retentionPolicy = registerOutput<BucketRetentionPolicy?>(
-      'retentionPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketRetentionPolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    retentionPolicy = registerOutput<BucketRetentionPolicy?>('retentionPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketRetentionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     rpo = registerOutput<String>('rpo');
     selfLink = registerOutput<String>('selfLink');
-    softDeletePolicy = registerOutput<BucketSoftDeletePolicy>(
-      'softDeletePolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketSoftDeletePolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    softDeletePolicy = registerOutput<BucketSoftDeletePolicy>('softDeletePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketSoftDeletePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     storageClass = registerOutput<String?>('storageClass');
     timeCreated = registerOutput<String>('timeCreated');
     uniformBucketLevelAccess = registerOutput<bool>('uniformBucketLevelAccess');
     updated = registerOutput<String>('updated');
     url = registerOutput<String>('url');
-    versioning = registerOutput<BucketVersioning>(
-      'versioning',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketVersioning.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    website = registerOutput<BucketWebsite>(
-      'website',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketWebsite.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    versioning = registerOutput<BucketVersioning>('versioning', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketVersioning.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    website = registerOutput<BucketWebsite>('website', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketWebsite.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [Bucket] resource's state with the given [name] and [id].
@@ -1531,133 +1413,41 @@ class Bucket extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:storage/bucket:Bucket',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    autoclass = registerOutput<BucketAutoclass?>(
-      'autoclass',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketAutoclass.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:storage/bucket:Bucket',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    autoclass = registerOutput<BucketAutoclass?>('autoclass', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketAutoclass.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cors = registerOutput<List<Map<String, dynamic>>?>('cors');
-    customPlacementConfig = registerOutput<BucketCustomPlacementConfig?>(
-      'customPlacementConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketCustomPlacementConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    customPlacementConfig = registerOutput<BucketCustomPlacementConfig?>('customPlacementConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketCustomPlacementConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     defaultEventBasedHold = registerOutput<bool?>('defaultEventBasedHold');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     enableObjectRetention = registerOutput<bool?>('enableObjectRetention');
-    encryption = registerOutput<BucketEncryption?>(
-      'encryption',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketEncryption.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    encryption = registerOutput<BucketEncryption?>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     forceDestroy = registerOutput<bool?>('forceDestroy');
-    hierarchicalNamespace = registerOutput<BucketHierarchicalNamespace?>(
-      'hierarchicalNamespace',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketHierarchicalNamespace.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    ipFilter = registerOutput<BucketIpFilter?>(
-      'ipFilter',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketIpFilter.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    hierarchicalNamespace = registerOutput<BucketHierarchicalNamespace?>('hierarchicalNamespace', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketHierarchicalNamespace.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ipFilter = registerOutput<BucketIpFilter?>('ipFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketIpFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     labels = registerOutput<Map<String, String>?>('labels');
-    lifecycleRules = registerOutput<List<Map<String, dynamic>>?>(
-      'lifecycleRules',
-    );
+    lifecycleRules = registerOutput<List<Map<String, dynamic>>?>('lifecycleRules');
     location = registerOutput<String>('location');
-    logging = registerOutput<BucketLogging?>(
-      'logging',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketLogging.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    logging = registerOutput<BucketLogging?>('logging', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketLogging.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     projectNumber = registerOutput<int>('projectNumber');
     publicAccessPrevention = registerOutput<String>('publicAccessPrevention');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     requesterPays = registerOutput<bool?>('requesterPays');
-    retentionPolicy = registerOutput<BucketRetentionPolicy?>(
-      'retentionPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketRetentionPolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    retentionPolicy = registerOutput<BucketRetentionPolicy?>('retentionPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketRetentionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     rpo = registerOutput<String>('rpo');
     selfLink = registerOutput<String>('selfLink');
-    softDeletePolicy = registerOutput<BucketSoftDeletePolicy>(
-      'softDeletePolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketSoftDeletePolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    softDeletePolicy = registerOutput<BucketSoftDeletePolicy>('softDeletePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketSoftDeletePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     storageClass = registerOutput<String?>('storageClass');
     timeCreated = registerOutput<String>('timeCreated');
     uniformBucketLevelAccess = registerOutput<bool>('uniformBucketLevelAccess');
     updated = registerOutput<String>('updated');
     url = registerOutput<String>('url');
-    versioning = registerOutput<BucketVersioning>(
-      'versioning',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketVersioning.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    website = registerOutput<BucketWebsite>(
-      'website',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketWebsite.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    versioning = registerOutput<BucketVersioning>('versioning', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketVersioning.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    website = registerOutput<BucketWebsite>('website', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketWebsite.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

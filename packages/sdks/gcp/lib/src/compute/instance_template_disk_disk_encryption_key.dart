@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceTemplateDiskDiskEncryptionKey {
   /// The self link of the encryption key that is stored in Google Cloud KMS
   final pulumi.Input<String>? kmsKeySelfLink;
-
   /// The service account being used for the
   /// encryption request for the given KMS key. If absent, the Compute Engine
   /// default service account is used.
@@ -26,20 +25,11 @@ class InstanceTemplateDiskDiskEncryptionKey {
     };
   }
 
-  factory InstanceTemplateDiskDiskEncryptionKey.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InstanceTemplateDiskDiskEncryptionKey.fromMap(Map<String, dynamic> map) {
     return InstanceTemplateDiskDiskEncryptionKey(
-      kmsKeySelfLink: (() {
-        final guardedValue = map['kmsKeySelfLink'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kmsKeyServiceAccount: (() {
-        final guardedValue = map['kmsKeyServiceAccount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      kmsKeySelfLink: (() { final guardedValue = map['kmsKeySelfLink']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kmsKeyServiceAccount: (() { final guardedValue = map['kmsKeyServiceAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

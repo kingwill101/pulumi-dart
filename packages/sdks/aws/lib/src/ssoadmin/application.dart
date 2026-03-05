@@ -314,42 +314,30 @@ import 'application_state.dart';
 class Application extends pulumi.CustomResource {
   /// AWS account ID.
   late final pulumi.Output<String> applicationAccount;
-
   /// (**Deprecated** Reference `arn` instead) ARN of the application.
   late final pulumi.Output<String> applicationArn;
-
   /// ARN of the application provider.
   late final pulumi.Output<String> applicationProviderArn;
-
   /// ARN of the application.
   late final pulumi.Output<String> arn;
-
   /// A unique, case-sensitive ID that you provide to ensure the idempotency of the request. AWS generates a random value when not provided.
   late final pulumi.Output<String?> clientToken;
-
   /// Description of the application.
   late final pulumi.Output<String?> description;
-
   /// ARN of the instance of IAM Identity Center.
   late final pulumi.Output<String> instanceArn;
-
   /// Name of the application.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
-
   /// Options for the portal associated with an application. See `portal_options` below.
   late final pulumi.Output<ApplicationPortalOptions?> portalOptions;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Status of the application. Valid values are `ENABLED` and `DISABLED`.
   late final pulumi.Output<String> status;
-
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -362,11 +350,11 @@ class Application extends pulumi.CustomResource {
     ApplicationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ssoadmin/application:Application',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ssoadmin/application:Application',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationAccount = registerOutput<String>('applicationAccount');
     applicationArn = registerOutput<String>('applicationArn');
     applicationProviderArn = registerOutput<String>('applicationProviderArn');
@@ -375,16 +363,7 @@ class Application extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     instanceArn = registerOutput<String>('instanceArn');
     this.name = registerOutput<String>('name');
-    portalOptions = registerOutput<ApplicationPortalOptions?>(
-      'portalOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApplicationPortalOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    portalOptions = registerOutput<ApplicationPortalOptions?>('portalOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationPortalOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -409,11 +388,11 @@ class Application extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ssoadmin/application:Application',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ssoadmin/application:Application',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationAccount = registerOutput<String>('applicationAccount');
     applicationArn = registerOutput<String>('applicationArn');
     applicationProviderArn = registerOutput<String>('applicationProviderArn');
@@ -422,16 +401,7 @@ class Application extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     instanceArn = registerOutput<String>('instanceArn');
     this.name = registerOutput<String>('name');
-    portalOptions = registerOutput<ApplicationPortalOptions?>(
-      'portalOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApplicationPortalOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    portalOptions = registerOutput<ApplicationPortalOptions?>('portalOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationPortalOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');

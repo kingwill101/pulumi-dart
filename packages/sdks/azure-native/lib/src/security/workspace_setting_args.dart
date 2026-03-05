@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkspaceSettingArgs {
   /// All the VMs in this scope will send their security data to the mentioned workspace unless overridden by a setting with more specific scope
   final pulumi.Input<String> scope;
-
   /// The full Azure ID of the workspace to save the data in
   final pulumi.Input<String> workspaceId;
-
   /// Name of the security setting
   final pulumi.Input<String>? workspaceSettingName;
 
@@ -38,11 +36,8 @@ class WorkspaceSettingArgs {
     return WorkspaceSettingArgs(
       scope: pulumi.Input.fromValue(map['scope'] as String),
       workspaceId: pulumi.Input.fromValue(map['workspaceId'] as String),
-      workspaceSettingName: (() {
-        final guardedValue = map['workspaceSettingName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      workspaceSettingName: (() { final guardedValue = map['workspaceSettingName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

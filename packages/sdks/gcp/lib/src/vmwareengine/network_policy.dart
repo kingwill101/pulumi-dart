@@ -390,49 +390,38 @@ class NetworkPolicy extends pulumi.CustomResource {
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
   /// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> createTime;
-
   /// User-provided description for this network policy.
   late final pulumi.Output<String?> description;
-
   /// IP address range in CIDR notation used to create internet access and external IP access.
   /// An RFC 1918 CIDR block, with a "/26" prefix, is required. The range cannot overlap with any
   /// prefixes either in the consumer VPC network or in use by the private clouds attached to that VPC network.
   late final pulumi.Output<String> edgeServicesCidr;
-
   /// Network service that allows External IP addresses to be assigned to VMware workloads.
   /// This service can only be enabled when internetAccess is also enabled.
   /// Structure is documented below.
   late final pulumi.Output<NetworkPolicyExternalIp> externalIp;
-
   /// Network service that allows VMware workloads to access the internet.
   /// Structure is documented below.
   late final pulumi.Output<NetworkPolicyInternetAccess> internetAccess;
-
   /// The resource name of the location (region) to create the new network policy in.
   /// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
   /// For example: projects/my-project/locations/us-central1
   late final pulumi.Output<String> location;
-
   /// The ID of the Network Policy.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// System-generated unique identifier for the resource.
   late final pulumi.Output<String> uid;
-
   /// Last updated time of this resource.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
   /// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> updateTime;
-
   /// The relative resource name of the VMware Engine network. Specify the name in the following form:
   /// projects/{project}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId} where {project}
   /// can either be a project number or a project ID.
   late final pulumi.Output<String> vmwareEngineNetwork;
-
   /// The canonical name of the VMware Engine network in the form:
   /// projects/{project_number}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId}
   late final pulumi.Output<String> vmwareEngineNetworkCanonical;
@@ -446,43 +435,23 @@ class NetworkPolicy extends pulumi.CustomResource {
     NetworkPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:vmwareengine/networkPolicy:NetworkPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:vmwareengine/networkPolicy:NetworkPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     edgeServicesCidr = registerOutput<String>('edgeServicesCidr');
-    externalIp = registerOutput<NetworkPolicyExternalIp>(
-      'externalIp',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NetworkPolicyExternalIp.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    internetAccess = registerOutput<NetworkPolicyInternetAccess>(
-      'internetAccess',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NetworkPolicyInternetAccess.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    externalIp = registerOutput<NetworkPolicyExternalIp>('externalIp', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkPolicyExternalIp.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    internetAccess = registerOutput<NetworkPolicyInternetAccess>('internetAccess', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkPolicyInternetAccess.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
     vmwareEngineNetwork = registerOutput<String>('vmwareEngineNetwork');
-    vmwareEngineNetworkCanonical = registerOutput<String>(
-      'vmwareEngineNetworkCanonical',
-    );
+    vmwareEngineNetworkCanonical = registerOutput<String>('vmwareEngineNetworkCanonical');
   }
 
   /// Gets an existing [NetworkPolicy] resource's state with the given [name] and [id].
@@ -503,42 +472,22 @@ class NetworkPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:vmwareengine/networkPolicy:NetworkPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:vmwareengine/networkPolicy:NetworkPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     edgeServicesCidr = registerOutput<String>('edgeServicesCidr');
-    externalIp = registerOutput<NetworkPolicyExternalIp>(
-      'externalIp',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NetworkPolicyExternalIp.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    internetAccess = registerOutput<NetworkPolicyInternetAccess>(
-      'internetAccess',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NetworkPolicyInternetAccess.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    externalIp = registerOutput<NetworkPolicyExternalIp>('externalIp', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkPolicyExternalIp.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    internetAccess = registerOutput<NetworkPolicyInternetAccess>('internetAccess', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkPolicyInternetAccess.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
     vmwareEngineNetwork = registerOutput<String>('vmwareEngineNetwork');
-    vmwareEngineNetworkCanonical = registerOutput<String>(
-      'vmwareEngineNetworkCanonical',
-    );
+    vmwareEngineNetworkCanonical = registerOutput<String>('vmwareEngineNetworkCanonical');
   }
 }

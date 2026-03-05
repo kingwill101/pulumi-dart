@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkManagerDeploymentStatusResponse {
   /// Commit Time.
   final pulumi.Input<String>? commitTime;
-
   /// List of configuration ids.
   final pulumi.Input<List<String>>? configurationIds;
-
   /// Deployment Status.
   final pulumi.Input<String>? deploymentStatus;
-
   /// Configuration Deployment Type.
   final pulumi.Input<String>? deploymentType;
-
   /// Error Message.
   final pulumi.Input<String>? errorMessage;
-
   /// Region Name.
   final pulumi.Input<String>? region;
 
@@ -49,40 +44,15 @@ class NetworkManagerDeploymentStatusResponse {
     };
   }
 
-  factory NetworkManagerDeploymentStatusResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NetworkManagerDeploymentStatusResponse.fromMap(Map<String, dynamic> map) {
     return NetworkManagerDeploymentStatusResponse(
-      commitTime: (() {
-        final guardedValue = map['commitTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      configurationIds: (() {
-        final guardedValue = map['configurationIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      deploymentStatus: (() {
-        final guardedValue = map['deploymentStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      deploymentType: (() {
-        final guardedValue = map['deploymentType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      errorMessage: (() {
-        final guardedValue = map['errorMessage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      commitTime: (() { final guardedValue = map['commitTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      configurationIds: (() { final guardedValue = map['configurationIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      deploymentStatus: (() { final guardedValue = map['deploymentStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deploymentType: (() { final guardedValue = map['deploymentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      errorMessage: (() { final guardedValue = map['errorMessage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

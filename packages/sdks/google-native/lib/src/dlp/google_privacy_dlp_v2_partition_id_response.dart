@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GooglePrivacyDlpV2PartitionIdResponse {
   /// If not empty, the ID of the namespace to which the entities belong.
   final pulumi.Input<String> namespaceId;
-
   /// The ID of the project to which the entities belong.
   final pulumi.Input<String> project;
 
@@ -19,15 +18,17 @@ class GooglePrivacyDlpV2PartitionIdResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'namespaceId': namespaceId, 'project': project};
+    return <String, dynamic>{
+      'namespaceId': namespaceId,
+      'project': project,
+    };
   }
 
-  factory GooglePrivacyDlpV2PartitionIdResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GooglePrivacyDlpV2PartitionIdResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2PartitionIdResponse(
       namespaceId: pulumi.Input.fromValue(map['namespaceId'] as String),
       project: pulumi.Input.fromValue(map['project'] as String),
     );
   }
 }
+

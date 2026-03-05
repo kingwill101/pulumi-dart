@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig {
   /// If enabled, traffic matching each unique value for the specified type constitutes a separate traffic unit. It can only be set to true if value is empty.
   final pulumi.Input<bool> enableEachUniqueValue;
-
   /// Type of this configuration.
   final pulumi.Input<String> type;
-
   /// Requests that match this value constitute a granular traffic unit.
   final pulumi.Input<String> value;
 
@@ -30,15 +28,12 @@ class GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdC
     };
   }
 
-  factory GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig.fromMap(Map<String, dynamic> map) {
     return GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig(
-      enableEachUniqueValue: pulumi.Input.fromValue(
-        map['enableEachUniqueValue'] as bool,
-      ),
+      enableEachUniqueValue: pulumi.Input.fromValue(map['enableEachUniqueValue'] as bool),
       type: pulumi.Input.fromValue(map['type'] as String),
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
+

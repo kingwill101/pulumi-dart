@@ -9,28 +9,19 @@ import 'subnet_reference_response.dart';
 /// Defines NIC IP configuration properties.
 class NicIpConfigurationResourceSettingsResponse {
   /// Gets or sets the references of the load balancer backend address pools.
-  final pulumi.Input<List<LoadBalancerBackendAddressPoolReferenceResponse>>?
-  loadBalancerBackendAddressPools;
-
+  final pulumi.Input<List<LoadBalancerBackendAddressPoolReferenceResponse>>? loadBalancerBackendAddressPools;
   /// Gets or sets the references of the load balancer NAT rules.
-  final pulumi.Input<List<LoadBalancerNatRuleReferenceResponse>>?
-  loadBalancerNatRules;
-
+  final pulumi.Input<List<LoadBalancerNatRuleReferenceResponse>>? loadBalancerNatRules;
   /// Gets or sets the IP configuration name.
   final pulumi.Input<String>? name;
-
   /// Gets or sets a value indicating whether this IP configuration is the primary.
   final pulumi.Input<bool>? primary;
-
   /// Gets or sets the private IP address of the network interface IP Configuration.
   final pulumi.Input<String>? privateIpAddress;
-
   /// Gets or sets the private IP address allocation method.
   final pulumi.Input<String>? privateIpAllocationMethod;
-
   /// Defines reference to a public IP.
   final pulumi.Input<PublicIpReferenceResponse>? publicIp;
-
   /// Defines reference to subnet.
   final pulumi.Input<SubnetReferenceResponse>? subnet;
 
@@ -56,115 +47,28 @@ class NicIpConfigurationResourceSettingsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'loadBalancerBackendAddressPools':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<LoadBalancerBackendAddressPoolReferenceResponse>,
-            List<Map<String, dynamic>>
-          >(
-            loadBalancerBackendAddressPools,
-            (value) =>
-                pulumi.Input.encodeList<
-                  LoadBalancerBackendAddressPoolReferenceResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'loadBalancerNatRules':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<LoadBalancerNatRuleReferenceResponse>,
-            List<Map<String, dynamic>>
-          >(
-            loadBalancerNatRules,
-            (value) =>
-                pulumi.Input.encodeList<
-                  LoadBalancerNatRuleReferenceResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'loadBalancerBackendAddressPools': ?pulumi.Input.mapOptionalInputValue<List<LoadBalancerBackendAddressPoolReferenceResponse>, List<Map<String, dynamic>>>(loadBalancerBackendAddressPools, (value) => pulumi.Input.encodeList<LoadBalancerBackendAddressPoolReferenceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'loadBalancerNatRules': ?pulumi.Input.mapOptionalInputValue<List<LoadBalancerNatRuleReferenceResponse>, List<Map<String, dynamic>>>(loadBalancerNatRules, (value) => pulumi.Input.encodeList<LoadBalancerNatRuleReferenceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': ?name,
       'primary': ?primary,
       'privateIpAddress': ?privateIpAddress,
       'privateIpAllocationMethod': ?privateIpAllocationMethod,
-      'publicIp':
-          ?pulumi.Input.mapOptionalInputValue<
-            PublicIpReferenceResponse,
-            Map<String, dynamic>
-          >(publicIp, (value) => value.toMap()),
-      'subnet':
-          ?pulumi.Input.mapOptionalInputValue<
-            SubnetReferenceResponse,
-            Map<String, dynamic>
-          >(subnet, (value) => value.toMap()),
+      'publicIp': ?pulumi.Input.mapOptionalInputValue<PublicIpReferenceResponse, Map<String, dynamic>>(publicIp, (value) => value.toMap()),
+      'subnet': ?pulumi.Input.mapOptionalInputValue<SubnetReferenceResponse, Map<String, dynamic>>(subnet, (value) => value.toMap()),
     };
   }
 
-  factory NicIpConfigurationResourceSettingsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NicIpConfigurationResourceSettingsResponse.fromMap(Map<String, dynamic> map) {
     return NicIpConfigurationResourceSettingsResponse(
-      loadBalancerBackendAddressPools: (() {
-        final guardedValue = map['loadBalancerBackendAddressPools'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            LoadBalancerBackendAddressPoolReferenceResponse
-          >(
-            guardedValue,
-            (value) => LoadBalancerBackendAddressPoolReferenceResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      loadBalancerNatRules: (() {
-        final guardedValue = map['loadBalancerNatRules'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<LoadBalancerNatRuleReferenceResponse>(
-            guardedValue,
-            (value) => LoadBalancerNatRuleReferenceResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      primary: (() {
-        final guardedValue = map['primary'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      privateIpAddress: (() {
-        final guardedValue = map['privateIpAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      privateIpAllocationMethod: (() {
-        final guardedValue = map['privateIpAllocationMethod'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      publicIp: (() {
-        final guardedValue = map['publicIp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PublicIpReferenceResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      subnet: (() {
-        final guardedValue = map['subnet'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SubnetReferenceResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      loadBalancerBackendAddressPools: (() { final guardedValue = map['loadBalancerBackendAddressPools']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<LoadBalancerBackendAddressPoolReferenceResponse>(guardedValue, (value) => LoadBalancerBackendAddressPoolReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      loadBalancerNatRules: (() { final guardedValue = map['loadBalancerNatRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<LoadBalancerNatRuleReferenceResponse>(guardedValue, (value) => LoadBalancerNatRuleReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      primary: (() { final guardedValue = map['primary']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      privateIpAddress: (() { final guardedValue = map['privateIpAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateIpAllocationMethod: (() { final guardedValue = map['privateIpAllocationMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicIp: (() { final guardedValue = map['publicIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PublicIpReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      subnet: (() { final guardedValue = map['subnet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubnetReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

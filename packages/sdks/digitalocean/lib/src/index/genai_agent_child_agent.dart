@@ -11,42 +11,28 @@ import 'genai_agent_child_agent_deployment.dart';
 class GenaiAgentChildAgent {
   /// ID of the child agent
   final pulumi.Input<String>? agentId;
-
   /// Anthropic API Key information
-  final pulumi.Input<List<GenaiAgentChildAgentAnthropicApiKey>>?
-  anthropicApiKeys;
-
+  final pulumi.Input<List<GenaiAgentChildAgentAnthropicApiKey>>? anthropicApiKeys;
   /// List of API Key Infos
   final pulumi.Input<List<GenaiAgentChildAgentApiKeyInfo>>? apiKeyInfos;
-
   /// List of API Keys
   final pulumi.Input<List<GenaiAgentChildAgentApiKey>>? apiKeys;
-
   /// List of Chatbot Identifiers
-  final pulumi.Input<List<GenaiAgentChildAgentChatbotIdentifier>>?
-  chatbotIdentifiers;
-
+  final pulumi.Input<List<GenaiAgentChildAgentChatbotIdentifier>>? chatbotIdentifiers;
   /// ChatBot configuration
   final pulumi.Input<List<GenaiAgentChildAgentChatbot>>? chatbots;
-
   /// List of API Key Infos
   final pulumi.Input<List<GenaiAgentChildAgentDeployment>>? deployments;
-
   /// Description for the Agent
   final pulumi.Input<String>? description;
-
   /// Instruction for the Agent
   final pulumi.Input<String> instruction;
-
   /// Model UUID of the Agent
   final pulumi.Input<String> modelUuid;
-
   /// Name of the Agent
   final pulumi.Input<String> name;
-
   /// Project ID of the Agent
   final pulumi.Input<String> projectId;
-
   /// Region where the Agent is deployed
   final pulumi.Input<String> region;
 
@@ -83,78 +69,12 @@ class GenaiAgentChildAgent {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'agentId': ?agentId,
-      'anthropicApiKeys':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GenaiAgentChildAgentAnthropicApiKey>,
-            List<Map<String, dynamic>>
-          >(
-            anthropicApiKeys,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GenaiAgentChildAgentAnthropicApiKey,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'apiKeyInfos':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GenaiAgentChildAgentApiKeyInfo>,
-            List<Map<String, dynamic>>
-          >(
-            apiKeyInfos,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GenaiAgentChildAgentApiKeyInfo,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'apiKeys':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GenaiAgentChildAgentApiKey>,
-            List<Map<String, dynamic>>
-          >(
-            apiKeys,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GenaiAgentChildAgentApiKey,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'chatbotIdentifiers':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GenaiAgentChildAgentChatbotIdentifier>,
-            List<Map<String, dynamic>>
-          >(
-            chatbotIdentifiers,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GenaiAgentChildAgentChatbotIdentifier,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'chatbots':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GenaiAgentChildAgentChatbot>,
-            List<Map<String, dynamic>>
-          >(
-            chatbots,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GenaiAgentChildAgentChatbot,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'deployments':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GenaiAgentChildAgentDeployment>,
-            List<Map<String, dynamic>>
-          >(
-            deployments,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GenaiAgentChildAgentDeployment,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'anthropicApiKeys': ?pulumi.Input.mapOptionalInputValue<List<GenaiAgentChildAgentAnthropicApiKey>, List<Map<String, dynamic>>>(anthropicApiKeys, (value) => pulumi.Input.encodeList<GenaiAgentChildAgentAnthropicApiKey, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'apiKeyInfos': ?pulumi.Input.mapOptionalInputValue<List<GenaiAgentChildAgentApiKeyInfo>, List<Map<String, dynamic>>>(apiKeyInfos, (value) => pulumi.Input.encodeList<GenaiAgentChildAgentApiKeyInfo, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'apiKeys': ?pulumi.Input.mapOptionalInputValue<List<GenaiAgentChildAgentApiKey>, List<Map<String, dynamic>>>(apiKeys, (value) => pulumi.Input.encodeList<GenaiAgentChildAgentApiKey, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'chatbotIdentifiers': ?pulumi.Input.mapOptionalInputValue<List<GenaiAgentChildAgentChatbotIdentifier>, List<Map<String, dynamic>>>(chatbotIdentifiers, (value) => pulumi.Input.encodeList<GenaiAgentChildAgentChatbotIdentifier, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'chatbots': ?pulumi.Input.mapOptionalInputValue<List<GenaiAgentChildAgentChatbot>, List<Map<String, dynamic>>>(chatbots, (value) => pulumi.Input.encodeList<GenaiAgentChildAgentChatbot, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'deployments': ?pulumi.Input.mapOptionalInputValue<List<GenaiAgentChildAgentDeployment>, List<Map<String, dynamic>>>(deployments, (value) => pulumi.Input.encodeList<GenaiAgentChildAgentDeployment, Map<String, dynamic>>(value, (value) => value.toMap())),
       'description': ?description,
       'instruction': instruction,
       'modelUuid': modelUuid,
@@ -166,88 +86,14 @@ class GenaiAgentChildAgent {
 
   factory GenaiAgentChildAgent.fromMap(Map<String, dynamic> map) {
     return GenaiAgentChildAgent(
-      agentId: (() {
-        final guardedValue = map['agentId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      anthropicApiKeys: (() {
-        final guardedValue = map['anthropicApiKeys'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GenaiAgentChildAgentAnthropicApiKey>(
-            guardedValue,
-            (value) => GenaiAgentChildAgentAnthropicApiKey.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      apiKeyInfos: (() {
-        final guardedValue = map['apiKeyInfos'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GenaiAgentChildAgentApiKeyInfo>(
-            guardedValue,
-            (value) => GenaiAgentChildAgentApiKeyInfo.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      apiKeys: (() {
-        final guardedValue = map['apiKeys'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GenaiAgentChildAgentApiKey>(
-            guardedValue,
-            (value) => GenaiAgentChildAgentApiKey.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      chatbotIdentifiers: (() {
-        final guardedValue = map['chatbotIdentifiers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GenaiAgentChildAgentChatbotIdentifier>(
-            guardedValue,
-            (value) => GenaiAgentChildAgentChatbotIdentifier.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      chatbots: (() {
-        final guardedValue = map['chatbots'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GenaiAgentChildAgentChatbot>(
-            guardedValue,
-            (value) => GenaiAgentChildAgentChatbot.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      deployments: (() {
-        final guardedValue = map['deployments'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GenaiAgentChildAgentDeployment>(
-            guardedValue,
-            (value) => GenaiAgentChildAgentDeployment.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      agentId: (() { final guardedValue = map['agentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      anthropicApiKeys: (() { final guardedValue = map['anthropicApiKeys']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GenaiAgentChildAgentAnthropicApiKey>(guardedValue, (value) => GenaiAgentChildAgentAnthropicApiKey.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      apiKeyInfos: (() { final guardedValue = map['apiKeyInfos']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GenaiAgentChildAgentApiKeyInfo>(guardedValue, (value) => GenaiAgentChildAgentApiKeyInfo.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      apiKeys: (() { final guardedValue = map['apiKeys']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GenaiAgentChildAgentApiKey>(guardedValue, (value) => GenaiAgentChildAgentApiKey.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      chatbotIdentifiers: (() { final guardedValue = map['chatbotIdentifiers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GenaiAgentChildAgentChatbotIdentifier>(guardedValue, (value) => GenaiAgentChildAgentChatbotIdentifier.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      chatbots: (() { final guardedValue = map['chatbots']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GenaiAgentChildAgentChatbot>(guardedValue, (value) => GenaiAgentChildAgentChatbot.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      deployments: (() { final guardedValue = map['deployments']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GenaiAgentChildAgentDeployment>(guardedValue, (value) => GenaiAgentChildAgentDeployment.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instruction: pulumi.Input.fromValue(map['instruction'] as String),
       modelUuid: pulumi.Input.fromValue(map['modelUuid'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
@@ -256,3 +102,4 @@ class GenaiAgentChildAgent {
     );
   }
 }
+

@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ImageReference {
   /// Image resource ID
   final pulumi.Input<String>? id;
-
   /// The image offer if applicable.
   final pulumi.Input<String>? offer;
-
   /// The image publisher
   final pulumi.Input<String>? publisher;
-
   /// The image SKU
   final pulumi.Input<String>? sku;
-
   /// The image version specified on creation.
   final pulumi.Input<String>? version;
 
@@ -25,7 +21,13 @@ class ImageReference {
   /// [publisher] The image publisher
   /// [sku] The image SKU
   /// [version] The image version specified on creation.
-  ImageReference({this.id, this.offer, this.publisher, this.sku, this.version});
+  ImageReference({
+    this.id,
+    this.offer,
+    this.publisher,
+    this.sku,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,31 +41,12 @@ class ImageReference {
 
   factory ImageReference.fromMap(Map<String, dynamic> map) {
     return ImageReference(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      offer: (() {
-        final guardedValue = map['offer'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      publisher: (() {
-        final guardedValue = map['publisher'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sku: (() {
-        final guardedValue = map['sku'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      offer: (() { final guardedValue = map['offer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publisher: (() { final guardedValue = map['publisher']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

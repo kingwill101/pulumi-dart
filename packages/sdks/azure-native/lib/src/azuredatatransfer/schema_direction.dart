@@ -15,3 +15,4 @@ enum SchemaDirection {
     throw ArgumentError('Unknown SchemaDirection value: $value');
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVpnConnectionArgs {
   /// The name of the vpn connection.
   final pulumi.Input<String> connectionName;
-
   /// The name of the gateway.
   final pulumi.Input<String> gatewayName;
-
   /// The resource group name of the VpnGateway.
   final pulumi.Input<String> resourceGroupName;
 
@@ -38,9 +36,8 @@ class GetVpnConnectionArgs {
     return GetVpnConnectionArgs(
       connectionName: pulumi.Input.fromValue(map['connectionName'] as String),
       gatewayName: pulumi.Input.fromValue(map['gatewayName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

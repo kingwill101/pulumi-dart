@@ -19,28 +19,20 @@ import 'listener_rule_state.dart';
 class ListenerRule extends pulumi.CustomResource {
   /// An Action block. Action blocks are documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> actions;
-
   /// The ARN of the rule (matches `id`)
   late final pulumi.Output<String> arn;
-
   /// A Condition block. Multiple condition blocks of different types can be set and all must be satisfied for the rule to match. Condition blocks are documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> conditions;
-
   /// The ARN of the listener to which to attach the rule.
   late final pulumi.Output<String> listenerArn;
-
   /// The priority for the rule between `1` and `50000`. Leaving it unset will automatically set the rule with next available priority after currently existing highest rule. A listener can't have multiple rules with the same priority.
   late final pulumi.Output<int> priority;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// Configuration block that defines the transform to apply to requests matching this rule. See Transform Blocks below for more details. Once specified, to remove the transform from the rule, remove the `transform` block from the configuration.
   late final pulumi.Output<List<Map<String, dynamic>>?> transforms;
 
@@ -53,11 +45,11 @@ class ListenerRule extends pulumi.CustomResource {
     ListenerRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:alb/listenerRule:ListenerRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:alb/listenerRule:ListenerRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     actions = registerOutput<List<Map<String, dynamic>>>('actions');
     arn = registerOutput<String>('arn');
     conditions = registerOutput<List<Map<String, dynamic>>>('conditions');
@@ -87,11 +79,11 @@ class ListenerRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:alb/listenerRule:ListenerRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:alb/listenerRule:ListenerRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     actions = registerOutput<List<Map<String, dynamic>>>('actions');
     arn = registerOutput<String>('arn');
     conditions = registerOutput<List<Map<String, dynamic>>>('conditions');

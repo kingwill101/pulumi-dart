@@ -7,40 +7,29 @@ import 'runtime_accelerator_config_type.dart';
 class RuntimeAcceleratorConfig {
   /// Count of cores of this accelerator.
   final pulumi.Input<String>? coreCount;
-
   /// Accelerator model.
   final pulumi.Input<RuntimeAcceleratorConfigType>? type;
 
   /// Creates a new [RuntimeAcceleratorConfig].
   /// [coreCount] Count of cores of this accelerator.
   /// [type] Accelerator model.
-  RuntimeAcceleratorConfig({this.coreCount, this.type});
+  RuntimeAcceleratorConfig({
+    this.coreCount,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'coreCount': ?coreCount,
-      'type':
-          ?pulumi.Input.mapOptionalInputValue<
-            RuntimeAcceleratorConfigType,
-            String
-          >(type, (value) => value.wireValue),
+      'type': ?pulumi.Input.mapOptionalInputValue<RuntimeAcceleratorConfigType, String>(type, (value) => value.wireValue),
     };
   }
 
   factory RuntimeAcceleratorConfig.fromMap(Map<String, dynamic> map) {
     return RuntimeAcceleratorConfig(
-      coreCount: (() {
-        final guardedValue = map['coreCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RuntimeAcceleratorConfigType.fromValue(guardedValue as String),
-        );
-      })(),
+      coreCount: (() { final guardedValue = map['coreCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RuntimeAcceleratorConfigType.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

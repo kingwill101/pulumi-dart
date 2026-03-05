@@ -15,16 +15,12 @@ class PipelineJobMappingPipelineJob {
   /// to true. The destination store must use FHIR version R4.
   /// Format: project/{projectID}/locations/{locationID}/datasets/{datasetName}/fhirStores/{fhirStoreID}.
   final pulumi.Input<String>? fhirStoreDestination;
-
   /// A streaming FHIR data source.
   /// Structure is documented below.
-  final pulumi.Input<PipelineJobMappingPipelineJobFhirStreamingSource>?
-  fhirStreamingSource;
-
+  final pulumi.Input<PipelineJobMappingPipelineJobFhirStreamingSource>? fhirStreamingSource;
   /// The location of the mapping configuration.
   /// Structure is documented below.
   final pulumi.Input<PipelineJobMappingPipelineJobMappingConfig> mappingConfig;
-
   /// If set to true, a mapping pipeline will send output snapshots
   /// to the reconciliation pipeline in its dataset. A reconciliation
   /// pipeline must exist in this dataset before a mapping pipeline
@@ -46,46 +42,19 @@ class PipelineJobMappingPipelineJob {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'fhirStoreDestination': ?fhirStoreDestination,
-      'fhirStreamingSource':
-          ?pulumi.Input.mapOptionalInputValue<
-            PipelineJobMappingPipelineJobFhirStreamingSource,
-            Map<String, dynamic>
-          >(fhirStreamingSource, (value) => value.toMap()),
-      'mappingConfig':
-          pulumi.Input.mapInputValue<
-            PipelineJobMappingPipelineJobMappingConfig,
-            Map<String, dynamic>
-          >(mappingConfig, (value) => value.toMap()),
+      'fhirStreamingSource': ?pulumi.Input.mapOptionalInputValue<PipelineJobMappingPipelineJobFhirStreamingSource, Map<String, dynamic>>(fhirStreamingSource, (value) => value.toMap()),
+      'mappingConfig': pulumi.Input.mapInputValue<PipelineJobMappingPipelineJobMappingConfig, Map<String, dynamic>>(mappingConfig, (value) => value.toMap()),
       'reconciliationDestination': ?reconciliationDestination,
     };
   }
 
   factory PipelineJobMappingPipelineJob.fromMap(Map<String, dynamic> map) {
     return PipelineJobMappingPipelineJob(
-      fhirStoreDestination: (() {
-        final guardedValue = map['fhirStoreDestination'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      fhirStreamingSource: (() {
-        final guardedValue = map['fhirStreamingSource'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PipelineJobMappingPipelineJobFhirStreamingSource.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      mappingConfig: pulumi.Input.fromValue(
-        PipelineJobMappingPipelineJobMappingConfig.fromMap(
-          (map['mappingConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      reconciliationDestination: (() {
-        final guardedValue = map['reconciliationDestination'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      fhirStoreDestination: (() { final guardedValue = map['fhirStoreDestination']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      fhirStreamingSource: (() { final guardedValue = map['fhirStreamingSource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PipelineJobMappingPipelineJobFhirStreamingSource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      mappingConfig: pulumi.Input.fromValue(PipelineJobMappingPipelineJobMappingConfig.fromMap((map['mappingConfig']! as Map).cast<String, dynamic>())),
+      reconciliationDestination: (() { final guardedValue = map['reconciliationDestination']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

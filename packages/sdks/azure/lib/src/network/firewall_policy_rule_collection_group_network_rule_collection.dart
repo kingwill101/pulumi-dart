@@ -6,18 +6,12 @@ import 'firewall_policy_rule_collection_group_network_rule_collection_rule.dart'
 class FirewallPolicyRuleCollectionGroupNetworkRuleCollection {
   /// The action to take for the network rules in this collection. Possible values are `Allow` and `Deny`.
   final pulumi.Input<String> action;
-
   /// The name which should be used for this network rule collection.
   final pulumi.Input<String> name;
-
   /// The priority of the network rule collection. The range is `100` - `65000`.
   final pulumi.Input<int> priority;
-
   /// One or more `network_rule` blocks as defined below.
-  final pulumi.Input<
-    List<FirewallPolicyRuleCollectionGroupNetworkRuleCollectionRule>
-  >
-  rules;
+  final pulumi.Input<List<FirewallPolicyRuleCollectionGroupNetworkRuleCollectionRule>> rules;
 
   /// Creates a new [FirewallPolicyRuleCollectionGroupNetworkRuleCollection].
   /// [action] The action to take for the network rules in this collection. Possible values are `Allow` and `Deny`.
@@ -36,39 +30,17 @@ class FirewallPolicyRuleCollectionGroupNetworkRuleCollection {
       'action': action,
       'name': name,
       'priority': priority,
-      'rules':
-          pulumi.Input.mapInputValue<
-            List<FirewallPolicyRuleCollectionGroupNetworkRuleCollectionRule>,
-            List<Map<String, dynamic>>
-          >(
-            rules,
-            (value) =>
-                pulumi.Input.encodeList<
-                  FirewallPolicyRuleCollectionGroupNetworkRuleCollectionRule,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'rules': pulumi.Input.mapInputValue<List<FirewallPolicyRuleCollectionGroupNetworkRuleCollectionRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<FirewallPolicyRuleCollectionGroupNetworkRuleCollectionRule, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory FirewallPolicyRuleCollectionGroupNetworkRuleCollection.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FirewallPolicyRuleCollectionGroupNetworkRuleCollection.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyRuleCollectionGroupNetworkRuleCollection(
       action: pulumi.Input.fromValue(map['action'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       priority: pulumi.Input.fromValue(map['priority'] as int),
-      rules: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          FirewallPolicyRuleCollectionGroupNetworkRuleCollectionRule
-        >(
-          map['rules']!,
-          (value) =>
-              FirewallPolicyRuleCollectionGroupNetworkRuleCollectionRule.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
+      rules: pulumi.Input.fromValue(pulumi.Input.decodeList<FirewallPolicyRuleCollectionGroupNetworkRuleCollectionRule>(map['rules']!, (value) => FirewallPolicyRuleCollectionGroupNetworkRuleCollectionRule.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

@@ -15,20 +15,14 @@ class AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectation
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'toolInvocationParameterCorrectnessThreshold':
-          ?toolInvocationParameterCorrectnessThreshold,
+      'toolInvocationParameterCorrectnessThreshold': ?toolInvocationParameterCorrectnessThreshold,
     };
   }
 
-  factory AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds.fromMap(Map<String, dynamic> map) {
     return AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds(
-      toolInvocationParameterCorrectnessThreshold: (() {
-        final guardedValue = map['toolInvocationParameterCorrectnessThreshold'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      toolInvocationParameterCorrectnessThreshold: (() { final guardedValue = map['toolInvocationParameterCorrectnessThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

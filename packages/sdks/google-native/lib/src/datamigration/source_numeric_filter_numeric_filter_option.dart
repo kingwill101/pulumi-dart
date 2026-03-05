@@ -14,8 +14,7 @@ enum SourceNumericFilterNumericFilterOption {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown SourceNumericFilterNumericFilterOption value: $value',
-    );
+    throw ArgumentError('Unknown SourceNumericFilterNumericFilterOption value: $value');
   }
 }
+

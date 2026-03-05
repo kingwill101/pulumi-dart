@@ -7,10 +7,8 @@ import 'gcs_destination_config_response_datastream_v1alpha1.dart';
 class DestinationConfigResponseDatastreamV1alpha1 {
   /// Destination connection profile identifier.
   final pulumi.Input<String> destinationConnectionProfileName;
-
   /// GCS destination configuration.
-  final pulumi.Input<GcsDestinationConfigResponseDatastreamV1alpha1>
-  gcsDestinationConfig;
+  final pulumi.Input<GcsDestinationConfigResponseDatastreamV1alpha1> gcsDestinationConfig;
 
   /// Creates a new [DestinationConfigResponseDatastreamV1alpha1].
   /// [destinationConnectionProfileName] Destination connection profile identifier.
@@ -23,26 +21,15 @@ class DestinationConfigResponseDatastreamV1alpha1 {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'destinationConnectionProfileName': destinationConnectionProfileName,
-      'gcsDestinationConfig':
-          pulumi.Input.mapInputValue<
-            GcsDestinationConfigResponseDatastreamV1alpha1,
-            Map<String, dynamic>
-          >(gcsDestinationConfig, (value) => value.toMap()),
+      'gcsDestinationConfig': pulumi.Input.mapInputValue<GcsDestinationConfigResponseDatastreamV1alpha1, Map<String, dynamic>>(gcsDestinationConfig, (value) => value.toMap()),
     };
   }
 
-  factory DestinationConfigResponseDatastreamV1alpha1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DestinationConfigResponseDatastreamV1alpha1.fromMap(Map<String, dynamic> map) {
     return DestinationConfigResponseDatastreamV1alpha1(
-      destinationConnectionProfileName: pulumi.Input.fromValue(
-        map['destinationConnectionProfileName'] as String,
-      ),
-      gcsDestinationConfig: pulumi.Input.fromValue(
-        GcsDestinationConfigResponseDatastreamV1alpha1.fromMap(
-          (map['gcsDestinationConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      destinationConnectionProfileName: pulumi.Input.fromValue(map['destinationConnectionProfileName'] as String),
+      gcsDestinationConfig: pulumi.Input.fromValue(GcsDestinationConfigResponseDatastreamV1alpha1.fromMap((map['gcsDestinationConfig']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

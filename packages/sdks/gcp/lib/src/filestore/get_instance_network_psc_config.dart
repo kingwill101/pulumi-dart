@@ -11,10 +11,14 @@ class GetInstanceNetworkPscConfig {
 
   /// Creates a new [GetInstanceNetworkPscConfig].
   /// [endpointProject] Consumer service project in which the Private Service Connect endpoint
-  GetInstanceNetworkPscConfig({required this.endpointProject});
+  GetInstanceNetworkPscConfig({
+    required this.endpointProject,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'endpointProject': endpointProject};
+    return <String, dynamic>{
+      'endpointProject': endpointProject,
+    };
   }
 
   factory GetInstanceNetworkPscConfig.fromMap(Map<String, dynamic> map) {
@@ -23,3 +27,4 @@ class GetInstanceNetworkPscConfig {
     );
   }
 }
+

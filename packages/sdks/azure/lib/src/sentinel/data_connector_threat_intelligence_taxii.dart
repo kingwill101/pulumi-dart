@@ -239,33 +239,24 @@ import 'data_connector_threat_intelligence_taxii_state.dart';
 class DataConnectorThreatIntelligenceTaxii extends pulumi.CustomResource {
   /// The API root URI of the TAXII server.
   late final pulumi.Output<String> apiRootUrl;
-
   /// The collection ID of the TAXII server.
   late final pulumi.Output<String> collectionId;
-
   /// The friendly name which should be used for this Threat Intelligence TAXII Data Connector.
   late final pulumi.Output<String> displayName;
-
   /// The ID of the Log Analytics Workspace that this Threat Intelligence TAXII Data Connector resides in. Changing this forces a new Threat Intelligence TAXII Data Connector to be created.
   late final pulumi.Output<String> logAnalyticsWorkspaceId;
-
   /// The lookback date for the TAXII server in RFC3339. Defaults to `1970-01-01T00:00:00Z`.
   late final pulumi.Output<String?> lookbackDate;
-
   /// The name which should be used for this Threat Intelligence TAXII Data Connector. Changing this forces a new Threat Intelligence TAXII Data Connector to be created.
   late final pulumi.Output<String> name;
-
   /// The password for the TAXII server.
   late final pulumi.Output<String?> password;
-
   /// The polling frequency for the TAXII server. Possible values are `OnceAMinute`, `OnceAnHour` and `OnceADay`. Defaults to `OnceAnHour`.
   late final pulumi.Output<String?> pollingFrequency;
-
   /// The ID of the tenant that this Threat Intelligence TAXII Data Connector connects to. Changing this forces a new Threat Intelligence TAXII Data Connector to be created.
   ///
   /// &gt; **Note:** Currently, only the same tenant as the running account is allowed. Cross-tenant scenario is not supported yet.
   late final pulumi.Output<String> tenantId;
-
   /// The user name for the TAXII server.
   late final pulumi.Output<String?> userName;
 
@@ -278,11 +269,11 @@ class DataConnectorThreatIntelligenceTaxii extends pulumi.CustomResource {
     DataConnectorThreatIntelligenceTaxiiArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:sentinel/dataConnectorThreatIntelligenceTaxii:DataConnectorThreatIntelligenceTaxii',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:sentinel/dataConnectorThreatIntelligenceTaxii:DataConnectorThreatIntelligenceTaxii',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiRootUrl = registerOutput<String>('apiRootUrl');
     collectionId = registerOutput<String>('collectionId');
     displayName = registerOutput<String>('displayName');
@@ -313,11 +304,11 @@ class DataConnectorThreatIntelligenceTaxii extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:sentinel/dataConnectorThreatIntelligenceTaxii:DataConnectorThreatIntelligenceTaxii',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:sentinel/dataConnectorThreatIntelligenceTaxii:DataConnectorThreatIntelligenceTaxii',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiRootUrl = registerOutput<String>('apiRootUrl');
     collectionId = registerOutput<String>('collectionId');
     displayName = registerOutput<String>('displayName');

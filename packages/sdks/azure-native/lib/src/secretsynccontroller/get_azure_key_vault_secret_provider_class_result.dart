@@ -7,41 +7,28 @@ import 'system_data_response.dart';
 class GetAzureKeyVaultSecretProviderClassResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The user assigned managed identity client ID that should be used to access the Azure Key Vault.
   final String clientId;
-
   /// The complex type of the extended location.
-  final AzureResourceManagerCommonTypesExtendedLocationResponse?
-  extendedLocation;
-
+  final AzureResourceManagerCommonTypesExtendedLocationResponse? extendedLocation;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// The name of the Azure Key Vault to sync secrets from.
   final String keyvaultName;
-
   /// The geo-location where the resource lives
   final String location;
-
   /// The name of the resource
   final String name;
-
   /// Objects defines the desired state of synced K8s secret objects
   final String? objects;
-
   /// Provisioning state of the AzureKeyVaultSecretProviderClass instance.
   final String provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// The Azure Active Directory tenant ID that should be used for authenticating requests to the Azure Key Vault.
   final String tenantId;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -93,39 +80,22 @@ class GetAzureKeyVaultSecretProviderClassResult {
     };
   }
 
-  factory GetAzureKeyVaultSecretProviderClassResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetAzureKeyVaultSecretProviderClassResult.fromMap(Map<String, dynamic> map) {
     return GetAzureKeyVaultSecretProviderClassResult(
       azureApiVersion: map['azureApiVersion'] as String,
       clientId: map['clientId'] as String,
-      extendedLocation: (() {
-        final guardedValue = map['extendedLocation'];
-        if (guardedValue == null) return null;
-        return AzureResourceManagerCommonTypesExtendedLocationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return AzureResourceManagerCommonTypesExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: map['id'] as String,
       keyvaultName: map['keyvaultName'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      objects: (() {
-        final guardedValue = map['objects'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      objects: (() { final guardedValue = map['objects']; if (guardedValue == null) return null; return guardedValue as String; })(),
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       tenantId: map['tenantId'] as String,
       type: map['type'] as String,
     );
   }
 }
+

@@ -15,3 +15,4 @@ enum LoggingDetails {
     throw ArgumentError('Unknown LoggingDetails value: $value');
   }
 }
+

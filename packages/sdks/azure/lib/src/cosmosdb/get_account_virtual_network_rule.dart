@@ -8,10 +8,14 @@ class GetAccountVirtualNetworkRule {
 
   /// Creates a new [GetAccountVirtualNetworkRule].
   /// [id] The ID of the virtual network subnet.
-  GetAccountVirtualNetworkRule({required this.id});
+  GetAccountVirtualNetworkRule({
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id};
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
   factory GetAccountVirtualNetworkRule.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class GetAccountVirtualNetworkRule {
     );
   }
 }
+

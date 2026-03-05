@@ -7,19 +7,14 @@ import 'version_response.dart';
 class DistributionResponse {
   /// The CPU architecture for which packages in this distribution channel were built.
   final pulumi.Input<String> architecture;
-
   /// The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
   final pulumi.Input<String> cpeUri;
-
   /// The distribution channel-specific description of this package.
   final pulumi.Input<String> description;
-
   /// The latest available version of this package in this distribution channel.
   final pulumi.Input<VersionResponse> latestVersion;
-
   /// A freeform string denoting the maintainer of this package.
   final pulumi.Input<String> maintainer;
-
   /// The distribution channel-specific homepage for this package.
   final pulumi.Input<String> url;
 
@@ -44,11 +39,7 @@ class DistributionResponse {
       'architecture': architecture,
       'cpeUri': cpeUri,
       'description': description,
-      'latestVersion':
-          pulumi.Input.mapInputValue<VersionResponse, Map<String, dynamic>>(
-            latestVersion,
-            (value) => value.toMap(),
-          ),
+      'latestVersion': pulumi.Input.mapInputValue<VersionResponse, Map<String, dynamic>>(latestVersion, (value) => value.toMap()),
       'maintainer': maintainer,
       'url': url,
     };
@@ -59,13 +50,10 @@ class DistributionResponse {
       architecture: pulumi.Input.fromValue(map['architecture'] as String),
       cpeUri: pulumi.Input.fromValue(map['cpeUri'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
-      latestVersion: pulumi.Input.fromValue(
-        VersionResponse.fromMap(
-          (map['latestVersion']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      latestVersion: pulumi.Input.fromValue(VersionResponse.fromMap((map['latestVersion']! as Map).cast<String, dynamic>())),
       maintainer: pulumi.Input.fromValue(map['maintainer'] as String),
       url: pulumi.Input.fromValue(map['url'] as String),
     );
   }
 }
+

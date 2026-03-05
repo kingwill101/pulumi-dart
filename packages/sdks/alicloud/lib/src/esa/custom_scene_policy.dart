@@ -239,20 +239,15 @@ class CustomScenePolicy extends pulumi.CustomResource {
   /// The time when the policy takes effect.
   /// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
   late final pulumi.Output<String> createTime;
-
   /// The policy name.
   late final pulumi.Output<String> customScenePolicyName;
-
   /// The time when the policy expires.
   /// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
   late final pulumi.Output<String> endTime;
-
   /// The IDs of websites associated.
   late final pulumi.Output<String> siteIds;
-
   /// Policy effective status. Valid values: `Disabled`, `Running`.
   late final pulumi.Output<String> status;
-
   /// The name of the policy template. Valid value:
   late final pulumi.Output<String> template;
 
@@ -265,11 +260,11 @@ class CustomScenePolicy extends pulumi.CustomResource {
     CustomScenePolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/customScenePolicy:CustomScenePolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:esa/customScenePolicy:CustomScenePolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     customScenePolicyName = registerOutput<String>('customScenePolicyName');
     endTime = registerOutput<String>('endTime');
@@ -296,11 +291,11 @@ class CustomScenePolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/customScenePolicy:CustomScenePolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:esa/customScenePolicy:CustomScenePolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     customScenePolicyName = registerOutput<String>('customScenePolicyName');
     endTime = registerOutput<String>('endTime');

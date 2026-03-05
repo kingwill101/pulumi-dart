@@ -5,11 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppVersionSnapshotAgentBeforeToolCallback {
   /// The description of the app version.
   final pulumi.Input<String>? description;
-
   /// (Output)
   /// Whether summarization is disabled.
   final pulumi.Input<bool>? disabled;
-
   /// (Output)
   /// The Python code to execute for the tool.
   final pulumi.Input<String>? pythonCode;
@@ -32,25 +30,12 @@ class AppVersionSnapshotAgentBeforeToolCallback {
     };
   }
 
-  factory AppVersionSnapshotAgentBeforeToolCallback.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppVersionSnapshotAgentBeforeToolCallback.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotAgentBeforeToolCallback(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      disabled: (() {
-        final guardedValue = map['disabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      pythonCode: (() {
-        final guardedValue = map['pythonCode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      pythonCode: (() { final guardedValue = map['pythonCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VerificationStatusRecordResponse {
   /// Error code. This property will only be present if the status is UnableToVerify.
   final pulumi.Input<String> errorCode;
-
   /// Status of the verification operation.
   final pulumi.Input<String> status;
 
@@ -19,7 +18,10 @@ class VerificationStatusRecordResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'errorCode': errorCode, 'status': status};
+    return <String, dynamic>{
+      'errorCode': errorCode,
+      'status': status,
+    };
   }
 
   factory VerificationStatusRecordResponse.fromMap(Map<String, dynamic> map) {
@@ -29,3 +31,4 @@ class VerificationStatusRecordResponse {
     );
   }
 }
+

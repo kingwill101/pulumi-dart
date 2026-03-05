@@ -6,31 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MemoryMiBRequestResponse {
   /// The memory maximum in MiB.
   final pulumi.Input<int>? max;
-
   /// The memory minimum in MiB.
   final pulumi.Input<int>? min;
 
   /// Creates a new [MemoryMiBRequestResponse].
   /// [max] The memory maximum in MiB.
   /// [min] The memory minimum in MiB.
-  MemoryMiBRequestResponse({this.max, this.min});
+  MemoryMiBRequestResponse({
+    this.max,
+    this.min,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'max': ?max, 'min': ?min};
+    return <String, dynamic>{
+      'max': ?max,
+      'min': ?min,
+    };
   }
 
   factory MemoryMiBRequestResponse.fromMap(Map<String, dynamic> map) {
     return MemoryMiBRequestResponse(
-      max: (() {
-        final guardedValue = map['max'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      min: (() {
-        final guardedValue = map['min'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      max: (() { final guardedValue = map['max']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      min: (() { final guardedValue = map['min']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

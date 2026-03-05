@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedInstanceStartStopScheduleSchedule {
   /// Start day of the schedule. Possible values are `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday`.
   final pulumi.Input<String> startDay;
-
   /// Start time of the schedule in 24-hour format (e.g., `08:00`).
   final pulumi.Input<String> startTime;
-
   /// Stop day of the schedule. Possible values are `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday`.
   final pulumi.Input<String> stopDay;
-
   /// Stop time of the schedule in 24-hour format (e.g., `17:00`).
   final pulumi.Input<String> stopTime;
 
@@ -36,9 +33,7 @@ class ManagedInstanceStartStopScheduleSchedule {
     };
   }
 
-  factory ManagedInstanceStartStopScheduleSchedule.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ManagedInstanceStartStopScheduleSchedule.fromMap(Map<String, dynamic> map) {
     return ManagedInstanceStartStopScheduleSchedule(
       startDay: pulumi.Input.fromValue(map['startDay'] as String),
       startTime: pulumi.Input.fromValue(map['startTime'] as String),
@@ -47,3 +42,4 @@ class ManagedInstanceStartStopScheduleSchedule {
     );
   }
 }
+

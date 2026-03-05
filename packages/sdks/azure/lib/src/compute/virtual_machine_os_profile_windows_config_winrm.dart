@@ -7,7 +7,6 @@ class VirtualMachineOsProfileWindowsConfigWinrm {
   ///
   /// &gt; **NOTE:** This can be sourced from the `secret_id` field on the `azure.keyvault.Certificate` resource.
   final pulumi.Input<String>? certificateUrl;
-
   /// Specifies the protocol of listener. Possible values are `HTTP` or `HTTPS`.
   final pulumi.Input<String> protocol;
 
@@ -26,16 +25,11 @@ class VirtualMachineOsProfileWindowsConfigWinrm {
     };
   }
 
-  factory VirtualMachineOsProfileWindowsConfigWinrm.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VirtualMachineOsProfileWindowsConfigWinrm.fromMap(Map<String, dynamic> map) {
     return VirtualMachineOsProfileWindowsConfigWinrm(
-      certificateUrl: (() {
-        final guardedValue = map['certificateUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      certificateUrl: (() { final guardedValue = map['certificateUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
     );
   }
 }
+

@@ -7,17 +7,20 @@ class SecurityPolicyDdosProtectionConfigResponse {
 
   /// Creates a new [SecurityPolicyDdosProtectionConfigResponse].
   /// [ddosProtection] Required.
-  SecurityPolicyDdosProtectionConfigResponse({required this.ddosProtection});
+  SecurityPolicyDdosProtectionConfigResponse({
+    required this.ddosProtection,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'ddosProtection': ddosProtection};
+    return <String, dynamic>{
+      'ddosProtection': ddosProtection,
+    };
   }
 
-  factory SecurityPolicyDdosProtectionConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SecurityPolicyDdosProtectionConfigResponse.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyDdosProtectionConfigResponse(
       ddosProtection: pulumi.Input.fromValue(map['ddosProtection'] as String),
     );
   }
 }
+

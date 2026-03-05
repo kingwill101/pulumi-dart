@@ -9,98 +9,67 @@ import 'sku_description_response.dart';
 class GetAppServicePlanResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// ServerFarm supports ElasticScale. Apps in this plan will scale as if the ServerFarm was ElasticPremium sku
   final bool? elasticScaleEnabled;
-
   /// Extended Location.
   final ExtendedLocationResponse? extendedLocation;
-
   /// The time when the server farm free offer expires.
   final String? freeOfferExpirationTime;
-
   /// Geographical location for the App Service plan.
   final String geoRegion;
-
   /// Specification for the App Service Environment to use for the App Service plan.
   final HostingEnvironmentProfileResponse? hostingEnvironmentProfile;
-
   /// If Hyper-V container app service plan &lt;code&gt;true&lt;/code&gt;, &lt;code&gt;false&lt;/code&gt; otherwise.
   final bool? hyperV;
-
   /// Resource Id.
   final String id;
-
   /// If &lt;code&gt;true&lt;/code&gt;, this App Service Plan owns spot instances.
   final bool? isSpot;
-
   /// Obsolete: If Hyper-V container app service plan &lt;code&gt;true&lt;/code&gt;, &lt;code&gt;false&lt;/code&gt; otherwise.
   final bool? isXenon;
-
   /// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
   final String? kind;
-
   /// Specification for the Kubernetes Environment to use for the App Service plan.
   final KubeEnvironmentProfileResponse? kubeEnvironmentProfile;
-
   /// Resource Location.
   final String location;
-
   /// Maximum number of total workers allowed for this ElasticScaleEnabled App Service Plan
   final int? maximumElasticWorkerCount;
-
   /// Maximum number of instances that can be assigned to this App Service plan.
   final int maximumNumberOfWorkers;
-
   /// Resource Name.
   final String name;
-
   /// Number of apps assigned to this App Service plan.
   final int numberOfSites;
-
   /// The number of instances that are assigned to this App Service plan.
   final int numberOfWorkers;
-
   /// If &lt;code&gt;true&lt;/code&gt;, apps assigned to this App Service plan can be scaled independently.
   /// If &lt;code&gt;false&lt;/code&gt;, apps assigned to this App Service plan will scale to all instances of the plan.
   final bool? perSiteScaling;
-
   /// Provisioning state of the App Service Plan.
   final String provisioningState;
-
   /// If Linux app service plan &lt;code&gt;true&lt;/code&gt;, &lt;code&gt;false&lt;/code&gt; otherwise.
   final bool? reserved;
-
   /// Resource group of the App Service plan.
   final String resourceGroup;
-
   /// Description of a SKU for a scalable resource.
   final SkuDescriptionResponse? sku;
-
   /// The time when the server farm expires. Valid only if it is a spot server farm.
   final String? spotExpirationTime;
-
   /// App Service plan status.
   final String status;
-
   /// App Service plan subscription.
   final String subscription;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// Scaling worker count.
   final int? targetWorkerCount;
-
   /// Scaling worker size ID.
   final int? targetWorkerSizeId;
-
   /// Resource type.
   final String type;
-
   /// Target worker tier assigned to the App Service plan.
   final String? workerTierName;
-
   /// If &lt;code&gt;true&lt;/code&gt;, this App Service Plan will perform availability zone balancing.
   /// If &lt;code&gt;false&lt;/code&gt;, this App Service Plan will not perform availability zone balancing.
   final bool? zoneRedundant;
@@ -213,121 +182,38 @@ class GetAppServicePlanResult {
   factory GetAppServicePlanResult.fromMap(Map<String, dynamic> map) {
     return GetAppServicePlanResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      elasticScaleEnabled: (() {
-        final guardedValue = map['elasticScaleEnabled'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      extendedLocation: (() {
-        final guardedValue = map['extendedLocation'];
-        if (guardedValue == null) return null;
-        return ExtendedLocationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      freeOfferExpirationTime: (() {
-        final guardedValue = map['freeOfferExpirationTime'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      elasticScaleEnabled: (() { final guardedValue = map['elasticScaleEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      freeOfferExpirationTime: (() { final guardedValue = map['freeOfferExpirationTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
       geoRegion: map['geoRegion'] as String,
-      hostingEnvironmentProfile: (() {
-        final guardedValue = map['hostingEnvironmentProfile'];
-        if (guardedValue == null) return null;
-        return HostingEnvironmentProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      hyperV: (() {
-        final guardedValue = map['hyperV'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      hostingEnvironmentProfile: (() { final guardedValue = map['hostingEnvironmentProfile']; if (guardedValue == null) return null; return HostingEnvironmentProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      hyperV: (() { final guardedValue = map['hyperV']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       id: map['id'] as String,
-      isSpot: (() {
-        final guardedValue = map['isSpot'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      isXenon: (() {
-        final guardedValue = map['isXenon'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      kubeEnvironmentProfile: (() {
-        final guardedValue = map['kubeEnvironmentProfile'];
-        if (guardedValue == null) return null;
-        return KubeEnvironmentProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      isSpot: (() { final guardedValue = map['isSpot']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      isXenon: (() { final guardedValue = map['isXenon']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kubeEnvironmentProfile: (() { final guardedValue = map['kubeEnvironmentProfile']; if (guardedValue == null) return null; return KubeEnvironmentProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       location: map['location'] as String,
-      maximumElasticWorkerCount: (() {
-        final guardedValue = map['maximumElasticWorkerCount'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
+      maximumElasticWorkerCount: (() { final guardedValue = map['maximumElasticWorkerCount']; if (guardedValue == null) return null; return guardedValue as int; })(),
       maximumNumberOfWorkers: map['maximumNumberOfWorkers'] as int,
       name: map['name'] as String,
       numberOfSites: map['numberOfSites'] as int,
       numberOfWorkers: map['numberOfWorkers'] as int,
-      perSiteScaling: (() {
-        final guardedValue = map['perSiteScaling'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      perSiteScaling: (() { final guardedValue = map['perSiteScaling']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       provisioningState: map['provisioningState'] as String,
-      reserved: (() {
-        final guardedValue = map['reserved'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      reserved: (() { final guardedValue = map['reserved']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       resourceGroup: map['resourceGroup'] as String,
-      sku: (() {
-        final guardedValue = map['sku'];
-        if (guardedValue == null) return null;
-        return SkuDescriptionResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      spotExpirationTime: (() {
-        final guardedValue = map['spotExpirationTime'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return SkuDescriptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      spotExpirationTime: (() { final guardedValue = map['spotExpirationTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
       status: map['status'] as String,
       subscription: map['subscription'] as String,
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
-      targetWorkerCount: (() {
-        final guardedValue = map['targetWorkerCount'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      targetWorkerSizeId: (() {
-        final guardedValue = map['targetWorkerSizeId'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      targetWorkerCount: (() { final guardedValue = map['targetWorkerCount']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      targetWorkerSizeId: (() { final guardedValue = map['targetWorkerSizeId']; if (guardedValue == null) return null; return guardedValue as int; })(),
       type: map['type'] as String,
-      workerTierName: (() {
-        final guardedValue = map['workerTierName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      zoneRedundant: (() {
-        final guardedValue = map['zoneRedundant'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      workerTierName: (() { final guardedValue = map['workerTierName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      zoneRedundant: (() { final guardedValue = map['zoneRedundant']; if (guardedValue == null) return null; return guardedValue as bool; })(),
     );
   }
 }
+

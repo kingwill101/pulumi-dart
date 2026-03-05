@@ -12,14 +12,15 @@ class GetClusterAddonsConfigGcePersistentDiskCsiDriverConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled};
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
-  factory GetClusterAddonsConfigGcePersistentDiskCsiDriverConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetClusterAddonsConfigGcePersistentDiskCsiDriverConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterAddonsConfigGcePersistentDiskCsiDriverConfig(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
+

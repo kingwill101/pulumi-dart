@@ -271,8 +271,7 @@ Future<GetUrlListResult> getUrlList(
 /// Gets details of a single address group.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networksecurity_v1beta1_get_address_group_networksecurity_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetAddressGroupNetworksecurityV1beta1Result>
-getAddressGroupNetworksecurityV1beta1(
+Future<GetAddressGroupNetworksecurityV1beta1Result> getAddressGroupNetworksecurityV1beta1(
   GetAddressGroupNetworksecurityV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -288,8 +287,7 @@ getAddressGroupNetworksecurityV1beta1(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networksecurity_v1beta1_get_address_group_iam_policy_networksecurity_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetAddressGroupIamPolicyNetworksecurityV1beta1Result>
-getAddressGroupIamPolicyNetworksecurityV1beta1(
+Future<GetAddressGroupIamPolicyNetworksecurityV1beta1Result> getAddressGroupIamPolicyNetworksecurityV1beta1(
   GetAddressGroupIamPolicyNetworksecurityV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -305,8 +303,7 @@ getAddressGroupIamPolicyNetworksecurityV1beta1(
 /// Gets details of a single AuthorizationPolicy.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networksecurity_v1beta1_get_authorization_policy_networksecurity_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetAuthorizationPolicyNetworksecurityV1beta1Result>
-getAuthorizationPolicyNetworksecurityV1beta1(
+Future<GetAuthorizationPolicyNetworksecurityV1beta1Result> getAuthorizationPolicyNetworksecurityV1beta1(
   GetAuthorizationPolicyNetworksecurityV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -322,8 +319,7 @@ getAuthorizationPolicyNetworksecurityV1beta1(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networksecurity_v1beta1_get_authorization_policy_iam_policy_networksecurity_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetAuthorizationPolicyIamPolicyNetworksecurityV1beta1Result>
-getAuthorizationPolicyIamPolicyNetworksecurityV1beta1(
+Future<GetAuthorizationPolicyIamPolicyNetworksecurityV1beta1Result> getAuthorizationPolicyIamPolicyNetworksecurityV1beta1(
   GetAuthorizationPolicyIamPolicyNetworksecurityV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -333,16 +329,13 @@ getAuthorizationPolicyIamPolicyNetworksecurityV1beta1(
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetAuthorizationPolicyIamPolicyNetworksecurityV1beta1Result.fromMap(
-    result,
-  );
+  return GetAuthorizationPolicyIamPolicyNetworksecurityV1beta1Result.fromMap(result);
 }
 
 /// Gets details of a single ClientTlsPolicy.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networksecurity_v1beta1_get_client_tls_policy_networksecurity_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetClientTlsPolicyNetworksecurityV1beta1Result>
-getClientTlsPolicyNetworksecurityV1beta1(
+Future<GetClientTlsPolicyNetworksecurityV1beta1Result> getClientTlsPolicyNetworksecurityV1beta1(
   GetClientTlsPolicyNetworksecurityV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -358,8 +351,7 @@ getClientTlsPolicyNetworksecurityV1beta1(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networksecurity_v1beta1_get_client_tls_policy_iam_policy_networksecurity_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetClientTlsPolicyIamPolicyNetworksecurityV1beta1Result>
-getClientTlsPolicyIamPolicyNetworksecurityV1beta1(
+Future<GetClientTlsPolicyIamPolicyNetworksecurityV1beta1Result> getClientTlsPolicyIamPolicyNetworksecurityV1beta1(
   GetClientTlsPolicyIamPolicyNetworksecurityV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -369,9 +361,7 @@ getClientTlsPolicyIamPolicyNetworksecurityV1beta1(
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetClientTlsPolicyIamPolicyNetworksecurityV1beta1Result.fromMap(
-    result,
-  );
+  return GetClientTlsPolicyIamPolicyNetworksecurityV1beta1Result.fromMap(result);
 }
 
 /// Gets details of a single Endpoint.
@@ -409,8 +399,7 @@ Future<GetFirewallEndpointAssociationResult> getFirewallEndpointAssociation(
 /// Gets details of a single GatewaySecurityPolicy.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networksecurity_v1beta1_get_gateway_security_policy_networksecurity_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetGatewaySecurityPolicyNetworksecurityV1beta1Result>
-getGatewaySecurityPolicyNetworksecurityV1beta1(
+Future<GetGatewaySecurityPolicyNetworksecurityV1beta1Result> getGatewaySecurityPolicyNetworksecurityV1beta1(
   GetGatewaySecurityPolicyNetworksecurityV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -426,8 +415,7 @@ getGatewaySecurityPolicyNetworksecurityV1beta1(
 /// Gets details of a single address group.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networksecurity_v1beta1_get_organization_address_group_networksecurity_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetOrganizationAddressGroupNetworksecurityV1beta1Result>
-getOrganizationAddressGroupNetworksecurityV1beta1(
+Future<GetOrganizationAddressGroupNetworksecurityV1beta1Result> getOrganizationAddressGroupNetworksecurityV1beta1(
   GetOrganizationAddressGroupNetworksecurityV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -437,9 +425,7 @@ getOrganizationAddressGroupNetworksecurityV1beta1(
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetOrganizationAddressGroupNetworksecurityV1beta1Result.fromMap(
-    result,
-  );
+  return GetOrganizationAddressGroupNetworksecurityV1beta1Result.fromMap(result);
 }
 
 /// Gets details of a single GatewaySecurityPolicyRule.
@@ -493,8 +479,7 @@ Future<GetSecurityProfileGroupResult> getSecurityProfileGroup(
 /// Gets details of a single ServerTlsPolicy.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networksecurity_v1beta1_get_server_tls_policy_networksecurity_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetServerTlsPolicyNetworksecurityV1beta1Result>
-getServerTlsPolicyNetworksecurityV1beta1(
+Future<GetServerTlsPolicyNetworksecurityV1beta1Result> getServerTlsPolicyNetworksecurityV1beta1(
   GetServerTlsPolicyNetworksecurityV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -510,8 +495,7 @@ getServerTlsPolicyNetworksecurityV1beta1(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networksecurity_v1beta1_get_server_tls_policy_iam_policy_networksecurity_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetServerTlsPolicyIamPolicyNetworksecurityV1beta1Result>
-getServerTlsPolicyIamPolicyNetworksecurityV1beta1(
+Future<GetServerTlsPolicyIamPolicyNetworksecurityV1beta1Result> getServerTlsPolicyIamPolicyNetworksecurityV1beta1(
   GetServerTlsPolicyIamPolicyNetworksecurityV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -521,16 +505,13 @@ getServerTlsPolicyIamPolicyNetworksecurityV1beta1(
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetServerTlsPolicyIamPolicyNetworksecurityV1beta1Result.fromMap(
-    result,
-  );
+  return GetServerTlsPolicyIamPolicyNetworksecurityV1beta1Result.fromMap(result);
 }
 
 /// Gets details of a single TlsInspectionPolicy.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networksecurity_v1beta1_get_tls_inspection_policy_networksecurity_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetTlsInspectionPolicyNetworksecurityV1beta1Result>
-getTlsInspectionPolicyNetworksecurityV1beta1(
+Future<GetTlsInspectionPolicyNetworksecurityV1beta1Result> getTlsInspectionPolicyNetworksecurityV1beta1(
   GetTlsInspectionPolicyNetworksecurityV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {

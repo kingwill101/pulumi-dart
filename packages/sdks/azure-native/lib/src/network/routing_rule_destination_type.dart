@@ -15,3 +15,4 @@ enum RoutingRuleDestinationType {
     throw ArgumentError('Unknown RoutingRuleDestinationType value: $value');
   }
 }
+

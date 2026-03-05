@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore {
   /// Characters to not transform when masking. Only one of this or `common_characters_to_ignore` must be specified.
   final pulumi.Input<String>? charactersToSkip;
-
   /// Common characters to not transform when masking. Useful to avoid removing punctuation. Only one of this or `characters_to_skip` must be specified.
   /// Possible values are: `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, `WHITESPACE`.
   final pulumi.Input<String>? commonCharactersToIgnore;
@@ -25,20 +24,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     };
   }
 
-  factory PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore.fromMap(Map<String, dynamic> map) {
     return PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore(
-      charactersToSkip: (() {
-        final guardedValue = map['charactersToSkip'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      commonCharactersToIgnore: (() {
-        final guardedValue = map['commonCharactersToIgnore'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      charactersToSkip: (() { final guardedValue = map['charactersToSkip']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      commonCharactersToIgnore: (() { final guardedValue = map['commonCharactersToIgnore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -355,22 +355,16 @@ import 'bgp_peer_state.dart';
 class BgpPeer extends pulumi.CustomResource {
   /// The BFD hop count. Valid values: `1` to `255`. **NOTE:** The attribute is valid when the attribute `enable_bfd` is `true`. The parameter specifies the maximum number of network devices that a packet can traverse from the source to the destination. You can set a proper value based on the factors that affect the physical connection.
   late final pulumi.Output<int?> bfdMultiHop;
-
   /// The ID of the BGP group.
   late final pulumi.Output<String> bgpGroupId;
-
   /// The name of the BGP neighbor.
   late final pulumi.Output<String> bgpPeerName;
-
   /// Specifies whether to enable the Bidirectional Forwarding Detection (BFD) feature.
   late final pulumi.Output<bool?> enableBfd;
-
   /// The IP version.
   late final pulumi.Output<String> ipVersion;
-
   /// The IP address of the BGP peer.
   late final pulumi.Output<String> peerIpAddress;
-
   /// Status of BGP neighbors.
   late final pulumi.Output<String> status;
 
@@ -383,11 +377,11 @@ class BgpPeer extends pulumi.CustomResource {
     BgpPeerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/bgpPeer:BgpPeer',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpc/bgpPeer:BgpPeer',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bfdMultiHop = registerOutput<int?>('bfdMultiHop');
     bgpGroupId = registerOutput<String>('bgpGroupId');
     bgpPeerName = registerOutput<String>('bgpPeerName');
@@ -415,11 +409,11 @@ class BgpPeer extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/bgpPeer:BgpPeer',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpc/bgpPeer:BgpPeer',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bfdMultiHop = registerOutput<int?>('bfdMultiHop');
     bgpGroupId = registerOutput<String>('bgpGroupId');
     bgpPeerName = registerOutput<String>('bgpPeerName');

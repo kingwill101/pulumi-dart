@@ -7,22 +7,13 @@ import 'reportable_exception_response.dart';
 /// Output for the task that validates connection to Azure Database for PostgreSQL and target server requirements for Oracle source.
 class ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponse {
   /// Mapping of schemas per database
-  final pulumi.Input<
-    List<
-      ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponseDatabaseSchemaMap
-    >
-  >?
-  databaseSchemaMap;
-
+  final pulumi.Input<List<ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponseDatabaseSchemaMap>>? databaseSchemaMap;
   /// List of databases on target server
   final pulumi.Input<List<String>> databases;
-
   /// Target server brand version
   final pulumi.Input<String> targetServerBrandVersion;
-
   /// Version of the target server
   final pulumi.Input<String> targetServerVersion;
-
   /// Validation errors associated with the task
   final pulumi.Input<List<ReportableExceptionResponse>> validationErrors;
 
@@ -42,74 +33,22 @@ class ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'databaseSchemaMap':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<
-              ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponseDatabaseSchemaMap
-            >,
-            List<Map<String, dynamic>>
-          >(
-            databaseSchemaMap,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponseDatabaseSchemaMap,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'databaseSchemaMap': ?pulumi.Input.mapOptionalInputValue<List<ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponseDatabaseSchemaMap>, List<Map<String, dynamic>>>(databaseSchemaMap, (value) => pulumi.Input.encodeList<ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponseDatabaseSchemaMap, Map<String, dynamic>>(value, (value) => value.toMap())),
       'databases': databases,
       'targetServerBrandVersion': targetServerBrandVersion,
       'targetServerVersion': targetServerVersion,
-      'validationErrors':
-          pulumi.Input.mapInputValue<
-            List<ReportableExceptionResponse>,
-            List<Map<String, dynamic>>
-          >(
-            validationErrors,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ReportableExceptionResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'validationErrors': pulumi.Input.mapInputValue<List<ReportableExceptionResponse>, List<Map<String, dynamic>>>(validationErrors, (value) => pulumi.Input.encodeList<ReportableExceptionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponse.fromMap(Map<String, dynamic> map) {
     return ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponse(
-      databaseSchemaMap: (() {
-        final guardedValue = map['databaseSchemaMap'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponseDatabaseSchemaMap
-          >(
-            guardedValue,
-            (value) =>
-                ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponseDatabaseSchemaMap.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
-      databases: pulumi.Input.fromValue(
-        (map['databases'] as List).cast<String>(),
-      ),
-      targetServerBrandVersion: pulumi.Input.fromValue(
-        map['targetServerBrandVersion'] as String,
-      ),
-      targetServerVersion: pulumi.Input.fromValue(
-        map['targetServerVersion'] as String,
-      ),
-      validationErrors: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<ReportableExceptionResponse>(
-          map['validationErrors']!,
-          (value) => ReportableExceptionResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      databaseSchemaMap: (() { final guardedValue = map['databaseSchemaMap']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponseDatabaseSchemaMap>(guardedValue, (value) => ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponseDatabaseSchemaMap.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      databases: pulumi.Input.fromValue((map['databases'] as List).cast<String>()),
+      targetServerBrandVersion: pulumi.Input.fromValue(map['targetServerBrandVersion'] as String),
+      targetServerVersion: pulumi.Input.fromValue(map['targetServerVersion'] as String),
+      validationErrors: pulumi.Input.fromValue(pulumi.Input.decodeList<ReportableExceptionResponse>(map['validationErrors']!, (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

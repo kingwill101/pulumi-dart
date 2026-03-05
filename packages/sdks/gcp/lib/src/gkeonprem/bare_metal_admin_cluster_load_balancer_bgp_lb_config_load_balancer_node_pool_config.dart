@@ -6,10 +6,7 @@ import 'bare_metal_admin_cluster_load_balancer_bgp_lb_config_load_balancer_node_
 class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig {
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<
-    BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig
-  >?
-  nodePoolConfig;
+  final pulumi.Input<BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig>? nodePoolConfig;
 
   /// Creates a new [BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig].
   /// [nodePoolConfig] A nested object resource.
@@ -19,27 +16,14 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'nodePoolConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig,
-            Map<String, dynamic>
-          >(nodePoolConfig, (value) => value.toMap()),
+      'nodePoolConfig': ?pulumi.Input.mapOptionalInputValue<BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig, Map<String, dynamic>>(nodePoolConfig, (value) => value.toMap()),
     };
   }
 
-  factory BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig(
-      nodePoolConfig: (() {
-        final guardedValue = map['nodePoolConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      nodePoolConfig: (() { final guardedValue = map['nodePoolConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

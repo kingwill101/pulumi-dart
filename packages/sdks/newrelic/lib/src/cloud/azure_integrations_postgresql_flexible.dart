@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureIntegrationsPostgresqlFlexible {
   /// The data polling interval in seconds
   final pulumi.Input<int>? metricsPollingInterval;
-
   /// Specify each Resource group associated with the resources that you want to monitor. Filter values are case-sensitive
   final pulumi.Input<List<String>>? resourceGroups;
 
@@ -24,20 +23,11 @@ class AzureIntegrationsPostgresqlFlexible {
     };
   }
 
-  factory AzureIntegrationsPostgresqlFlexible.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AzureIntegrationsPostgresqlFlexible.fromMap(Map<String, dynamic> map) {
     return AzureIntegrationsPostgresqlFlexible(
-      metricsPollingInterval: (() {
-        final guardedValue = map['metricsPollingInterval'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      resourceGroups: (() {
-        final guardedValue = map['resourceGroups'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      metricsPollingInterval: (() { final guardedValue = map['metricsPollingInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      resourceGroups: (() { final guardedValue = map['resourceGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

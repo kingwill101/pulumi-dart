@@ -13,7 +13,10 @@ class GetTargetHttpProxyArgs {
   /// Creates a new [GetTargetHttpProxyArgs].
   /// [project] Optional.
   /// [targetHttpProxy] Required.
-  GetTargetHttpProxyArgs({this.project, required this.targetHttpProxy});
+  GetTargetHttpProxyArgs({
+    this.project,
+    required this.targetHttpProxy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,12 +27,9 @@ class GetTargetHttpProxyArgs {
 
   factory GetTargetHttpProxyArgs.fromMap(Map<String, dynamic> map) {
     return GetTargetHttpProxyArgs(
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       targetHttpProxy: pulumi.Input.fromValue(map['targetHttpProxy'] as String),
     );
   }
 }
+

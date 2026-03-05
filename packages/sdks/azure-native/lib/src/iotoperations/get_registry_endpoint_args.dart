@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRegistryEndpointArgs {
   /// Name of instance.
   final pulumi.Input<String> instanceName;
-
   /// Name of RegistryEndpoint resource
   final pulumi.Input<String> registryEndpointName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -37,12 +35,9 @@ class GetRegistryEndpointArgs {
   factory GetRegistryEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GetRegistryEndpointArgs(
       instanceName: pulumi.Input.fromValue(map['instanceName'] as String),
-      registryEndpointName: pulumi.Input.fromValue(
-        map['registryEndpointName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      registryEndpointName: pulumi.Input.fromValue(map['registryEndpointName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

@@ -14,3 +14,4 @@ enum SourceSerializationFormat {
     throw ArgumentError('Unknown SourceSerializationFormat value: $value');
   }
 }
+

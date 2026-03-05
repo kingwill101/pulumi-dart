@@ -14,16 +14,15 @@ class GoogleCloudAiplatformV1ModelExportFormatResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'exportableContents': exportableContents};
+    return <String, dynamic>{
+      'exportableContents': exportableContents,
+    };
   }
 
-  factory GoogleCloudAiplatformV1ModelExportFormatResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudAiplatformV1ModelExportFormatResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1ModelExportFormatResponse(
-      exportableContents: pulumi.Input.fromValue(
-        (map['exportableContents'] as List).cast<String>(),
-      ),
+      exportableContents: pulumi.Input.fromValue((map['exportableContents'] as List).cast<String>()),
     );
   }
 }
+

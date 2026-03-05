@@ -9,19 +9,20 @@ class GitSubmodulesConfigResponse {
 
   /// Creates a new [GitSubmodulesConfigResponse].
   /// [fetchSubmodules] &lt;p&gt; Set to true to fetch Git submodules for your CodeBuild build project. &lt;/p&gt;
-  GitSubmodulesConfigResponse({this.fetchSubmodules});
+  GitSubmodulesConfigResponse({
+    this.fetchSubmodules,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'fetchSubmodules': ?fetchSubmodules};
+    return <String, dynamic>{
+      'fetchSubmodules': ?fetchSubmodules,
+    };
   }
 
   factory GitSubmodulesConfigResponse.fromMap(Map<String, dynamic> map) {
     return GitSubmodulesConfigResponse(
-      fetchSubmodules: (() {
-        final guardedValue = map['fetchSubmodules'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      fetchSubmodules: (() { final guardedValue = map['fetchSubmodules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

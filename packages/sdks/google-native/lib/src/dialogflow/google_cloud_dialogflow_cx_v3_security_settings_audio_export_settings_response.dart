@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsResponse {
   /// Filename pattern for exported audio.
   final pulumi.Input<String> audioExportPattern;
-
   /// File format for exported audio file. Currently only in telephony recordings.
   final pulumi.Input<String> audioFormat;
-
   /// Enable audio redaction if it is true.
   final pulumi.Input<bool> enableAudioRedaction;
-
   /// Cloud Storage bucket to export audio record to. Setting this field would grant the Storage Object Creator role to the Dialogflow Service Agent. API caller that tries to modify this field should have the permission of storage.buckets.setIamPolicy.
   final pulumi.Input<String> gcsBucket;
 
@@ -37,18 +34,13 @@ class GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsResponse {
     };
   }
 
-  factory GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsResponse(
-      audioExportPattern: pulumi.Input.fromValue(
-        map['audioExportPattern'] as String,
-      ),
+      audioExportPattern: pulumi.Input.fromValue(map['audioExportPattern'] as String),
       audioFormat: pulumi.Input.fromValue(map['audioFormat'] as String),
-      enableAudioRedaction: pulumi.Input.fromValue(
-        map['enableAudioRedaction'] as bool,
-      ),
+      enableAudioRedaction: pulumi.Input.fromValue(map['enableAudioRedaction'] as bool),
       gcsBucket: pulumi.Input.fromValue(map['gcsBucket'] as String),
     );
   }
 }
+

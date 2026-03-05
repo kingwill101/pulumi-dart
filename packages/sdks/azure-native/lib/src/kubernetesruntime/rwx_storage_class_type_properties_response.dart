@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RwxStorageClassTypePropertiesResponse {
   /// The backing storageclass used to create new storageclass
   final pulumi.Input<String> backingStorageClassName;
-
   /// Type of a storage class
   /// Expected value is 'RWX'.
   final pulumi.Input<String> type;
@@ -26,14 +25,11 @@ class RwxStorageClassTypePropertiesResponse {
     };
   }
 
-  factory RwxStorageClassTypePropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RwxStorageClassTypePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return RwxStorageClassTypePropertiesResponse(
-      backingStorageClassName: pulumi.Input.fromValue(
-        map['backingStorageClassName'] as String,
-      ),
+      backingStorageClassName: pulumi.Input.fromValue(map['backingStorageClassName'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

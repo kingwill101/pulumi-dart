@@ -6,22 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SyncStatsResponse {
   /// Count of catalog items added during synchronization.
   final pulumi.Input<int> added;
-
   /// Count of catalog items removed during synchronization.
   final pulumi.Input<int> removed;
-
   /// Indicates catalog item types that were synced.
   final pulumi.Input<List<String>>? syncedCatalogItemTypes;
-
   /// Count of synchronization errors that occured during synchronization.
   final pulumi.Input<int> synchronizationErrors;
-
   /// Count of catalog items that were unchanged during synchronization.
   final pulumi.Input<int> unchanged;
-
   /// Count of catalog items updated during synchronization.
   final pulumi.Input<int> updated;
-
   /// Count of catalog items that had validation errors during synchronization.
   final pulumi.Input<int> validationErrors;
 
@@ -59,17 +53,12 @@ class SyncStatsResponse {
     return SyncStatsResponse(
       added: pulumi.Input.fromValue(map['added'] as int),
       removed: pulumi.Input.fromValue(map['removed'] as int),
-      syncedCatalogItemTypes: (() {
-        final guardedValue = map['syncedCatalogItemTypes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      synchronizationErrors: pulumi.Input.fromValue(
-        map['synchronizationErrors'] as int,
-      ),
+      syncedCatalogItemTypes: (() { final guardedValue = map['syncedCatalogItemTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      synchronizationErrors: pulumi.Input.fromValue(map['synchronizationErrors'] as int),
       unchanged: pulumi.Input.fromValue(map['unchanged'] as int),
       updated: pulumi.Input.fromValue(map['updated'] as int),
       validationErrors: pulumi.Input.fromValue(map['validationErrors'] as int),
     );
   }
 }
+

@@ -13,7 +13,10 @@ class GetTargetSslProxyComputeV1Args {
   /// Creates a new [GetTargetSslProxyComputeV1Args].
   /// [project] Optional.
   /// [targetSslProxy] Required.
-  GetTargetSslProxyComputeV1Args({this.project, required this.targetSslProxy});
+  GetTargetSslProxyComputeV1Args({
+    this.project,
+    required this.targetSslProxy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,12 +27,9 @@ class GetTargetSslProxyComputeV1Args {
 
   factory GetTargetSslProxyComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetTargetSslProxyComputeV1Args(
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       targetSslProxy: pulumi.Input.fromValue(map['targetSslProxy'] as String),
     );
   }
 }
+

@@ -12,10 +12,14 @@ class GetAdbsNationalCharacterSetsArgs {
 
   /// Creates a new [GetAdbsNationalCharacterSetsArgs].
   /// [location] The Azure Region to query for the national character sets in.
-  GetAdbsNationalCharacterSetsArgs({required this.location});
+  GetAdbsNationalCharacterSetsArgs({
+    required this.location,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'location': location};
+    return <String, dynamic>{
+      'location': location,
+    };
   }
 
   factory GetAdbsNationalCharacterSetsArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetAdbsNationalCharacterSetsArgs {
     );
   }
 }
+

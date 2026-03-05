@@ -14,3 +14,4 @@ enum IncidentManagementService {
     throw ArgumentError('Unknown IncidentManagementService value: $value');
   }
 }
+

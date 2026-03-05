@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApiKeyAuthModelResponse {
   /// API Key for the user secret key credential
   final pulumi.Input<String> apiKey;
-
   /// API Key Identifier
   final pulumi.Input<String>? apiKeyIdentifier;
-
   /// API Key name
   final pulumi.Input<String> apiKeyName;
-
   /// Flag to indicate if API key is set in HTTP POST payload
   final pulumi.Input<bool>? isApiKeyInPostPayload;
-
   /// Type of paging
   /// Expected value is 'APIKey'.
   final pulumi.Input<String> type;
@@ -47,18 +43,11 @@ class ApiKeyAuthModelResponse {
   factory ApiKeyAuthModelResponse.fromMap(Map<String, dynamic> map) {
     return ApiKeyAuthModelResponse(
       apiKey: pulumi.Input.fromValue(map['apiKey'] as String),
-      apiKeyIdentifier: (() {
-        final guardedValue = map['apiKeyIdentifier'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      apiKeyIdentifier: (() { final guardedValue = map['apiKeyIdentifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       apiKeyName: pulumi.Input.fromValue(map['apiKeyName'] as String),
-      isApiKeyInPostPayload: (() {
-        final guardedValue = map['isApiKeyInPostPayload'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      isApiKeyInPostPayload: (() { final guardedValue = map['isApiKeyInPostPayload']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

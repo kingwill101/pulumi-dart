@@ -4,22 +4,16 @@ enum GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavio
   mergeUserInfoOverIdTokenClaims("MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS"),
   onlyIdTokenClaims("ONLY_ID_TOKEN_CLAIMS");
 
-  const GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior(
-    this.wireValue,
-  );
+  const GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior(this.wireValue);
   final String wireValue;
 
-  static GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior
-  fromValue(String value) {
-    for (final item
-        in GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior
-            .values) {
+  static GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior fromValue(String value) {
+    for (final item in GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior value: $value',
-    );
+    throw ArgumentError('Unknown GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior value: $value');
   }
 }
+

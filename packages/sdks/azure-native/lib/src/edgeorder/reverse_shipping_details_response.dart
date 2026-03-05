@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReverseShippingDetailsResponse {
   /// Carrier Name for display purpose. Not to be used for any processing.
   final pulumi.Input<String> carrierDisplayName;
-
   /// Name of the carrier.
   final pulumi.Input<String> carrierName;
-
   /// SAS key to download the reverse shipment label of the package.
   final pulumi.Input<String> sasKeyForLabel;
-
   /// TrackingId of the package.
   final pulumi.Input<String> trackingId;
-
   /// TrackingUrl of the package.
   final pulumi.Input<String> trackingUrl;
 
@@ -45,9 +41,7 @@ class ReverseShippingDetailsResponse {
 
   factory ReverseShippingDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ReverseShippingDetailsResponse(
-      carrierDisplayName: pulumi.Input.fromValue(
-        map['carrierDisplayName'] as String,
-      ),
+      carrierDisplayName: pulumi.Input.fromValue(map['carrierDisplayName'] as String),
       carrierName: pulumi.Input.fromValue(map['carrierName'] as String),
       sasKeyForLabel: pulumi.Input.fromValue(map['sasKeyForLabel'] as String),
       trackingId: pulumi.Input.fromValue(map['trackingId'] as String),
@@ -55,3 +49,4 @@ class ReverseShippingDetailsResponse {
     );
   }
 }
+

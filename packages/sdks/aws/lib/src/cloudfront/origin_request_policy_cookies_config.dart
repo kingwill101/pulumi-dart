@@ -18,26 +18,15 @@ class OriginRequestPolicyCookiesConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'cookieBehavior': cookieBehavior,
-      'cookies':
-          ?pulumi.Input.mapOptionalInputValue<
-            OriginRequestPolicyCookiesConfigCookies,
-            Map<String, dynamic>
-          >(cookies, (value) => value.toMap()),
+      'cookies': ?pulumi.Input.mapOptionalInputValue<OriginRequestPolicyCookiesConfigCookies, Map<String, dynamic>>(cookies, (value) => value.toMap()),
     };
   }
 
   factory OriginRequestPolicyCookiesConfig.fromMap(Map<String, dynamic> map) {
     return OriginRequestPolicyCookiesConfig(
       cookieBehavior: pulumi.Input.fromValue(map['cookieBehavior'] as String),
-      cookies: (() {
-        final guardedValue = map['cookies'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          OriginRequestPolicyCookiesConfigCookies.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      cookies: (() { final guardedValue = map['cookies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OriginRequestPolicyCookiesConfigCookies.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

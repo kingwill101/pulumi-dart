@@ -12,19 +12,20 @@ class OriginAccessIdentityArgs {
 
   /// Creates a new [OriginAccessIdentityArgs].
   /// [comment] An optional comment for the origin access identity.
-  OriginAccessIdentityArgs({this.comment});
+  OriginAccessIdentityArgs({
+    this.comment,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'comment': ?comment};
+    return <String, dynamic>{
+      'comment': ?comment,
+    };
   }
 
   factory OriginAccessIdentityArgs.fromMap(Map<String, dynamic> map) {
     return OriginAccessIdentityArgs(
-      comment: (() {
-        final guardedValue = map['comment'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      comment: (() { final guardedValue = map['comment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

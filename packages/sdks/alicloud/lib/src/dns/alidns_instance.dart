@@ -141,25 +141,18 @@ import 'alidns_instance_state.dart';
 class AlidnsInstance extends pulumi.CustomResource {
   /// Alidns security level. Valid values: `no`, `basic`, `advanced`.
   late final pulumi.Output<String> dnsSecurity;
-
   /// Number of domain names bound.
   late final pulumi.Output<String> domainNumbers;
-
   /// The billing method of the Alidns instance. Valid values: `Subscription`. Default to `Subscription`.
   late final pulumi.Output<String?> paymentType;
-
   /// Creating a pre-paid instance, it must be set, the unit is month, please enter an integer multiple of 12 for annually paid products.
   late final pulumi.Output<int?> period;
-
   /// Automatic renewal period, the unit is month. When setting RenewalStatus to AutoRenewal, it must be set.
   late final pulumi.Output<int?> renewPeriod;
-
   /// Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, default to `ManualRenewal`.
   late final pulumi.Output<String> renewalStatus;
-
   /// Paid package version. Valid values: `version_personal`, `version_enterprise_basic`, `version_enterprise_advanced`.
   late final pulumi.Output<String> versionCode;
-
   /// Paid package version name.
   late final pulumi.Output<String> versionName;
 
@@ -172,11 +165,11 @@ class AlidnsInstance extends pulumi.CustomResource {
     AlidnsInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dns/alidnsInstance:AlidnsInstance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dns/alidnsInstance:AlidnsInstance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dnsSecurity = registerOutput<String>('dnsSecurity');
     domainNumbers = registerOutput<String>('domainNumbers');
     paymentType = registerOutput<String?>('paymentType');
@@ -205,11 +198,11 @@ class AlidnsInstance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dns/alidnsInstance:AlidnsInstance',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dns/alidnsInstance:AlidnsInstance',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dnsSecurity = registerOutput<String>('dnsSecurity');
     domainNumbers = registerOutput<String>('domainNumbers');
     paymentType = registerOutput<String?>('paymentType');

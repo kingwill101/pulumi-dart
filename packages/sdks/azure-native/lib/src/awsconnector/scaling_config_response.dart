@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScalingConfigResponse {
   /// Property desiredSize
   final pulumi.Input<int>? desiredSize;
-
   /// Property maxSize
   final pulumi.Input<int>? maxSize;
-
   /// Property minSize
   final pulumi.Input<int>? minSize;
 
@@ -17,7 +15,11 @@ class ScalingConfigResponse {
   /// [desiredSize] Property desiredSize
   /// [maxSize] Property maxSize
   /// [minSize] Property minSize
-  ScalingConfigResponse({this.desiredSize, this.maxSize, this.minSize});
+  ScalingConfigResponse({
+    this.desiredSize,
+    this.maxSize,
+    this.minSize,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class ScalingConfigResponse {
 
   factory ScalingConfigResponse.fromMap(Map<String, dynamic> map) {
     return ScalingConfigResponse(
-      desiredSize: (() {
-        final guardedValue = map['desiredSize'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      maxSize: (() {
-        final guardedValue = map['maxSize'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      minSize: (() {
-        final guardedValue = map['minSize'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      desiredSize: (() { final guardedValue = map['desiredSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxSize: (() { final guardedValue = map['maxSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      minSize: (() { final guardedValue = map['minSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

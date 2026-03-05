@@ -8,7 +8,6 @@ class AlertPolicyAlertStrategyNotificationChannelStrategy {
   /// referenced in the notification_channels field of this AlertPolicy. The format is
   /// `projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID]`
   final pulumi.Input<List<String>>? notificationChannelNames;
-
   /// The frequency at which to send reminder notifications for open incidents.
   final pulumi.Input<String>? renotifyInterval;
 
@@ -27,20 +26,11 @@ class AlertPolicyAlertStrategyNotificationChannelStrategy {
     };
   }
 
-  factory AlertPolicyAlertStrategyNotificationChannelStrategy.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AlertPolicyAlertStrategyNotificationChannelStrategy.fromMap(Map<String, dynamic> map) {
     return AlertPolicyAlertStrategyNotificationChannelStrategy(
-      notificationChannelNames: (() {
-        final guardedValue = map['notificationChannelNames'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      renotifyInterval: (() {
-        final guardedValue = map['renotifyInterval'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      notificationChannelNames: (() { final guardedValue = map['notificationChannelNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      renotifyInterval: (() { final guardedValue = map['renotifyInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

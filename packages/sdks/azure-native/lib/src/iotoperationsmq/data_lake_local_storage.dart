@@ -9,10 +9,14 @@ class DataLakeLocalStorage {
 
   /// Creates a new [DataLakeLocalStorage].
   /// [volumeName] Volume name to write to.
-  DataLakeLocalStorage({required this.volumeName});
+  DataLakeLocalStorage({
+    required this.volumeName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'volumeName': volumeName};
+    return <String, dynamic>{
+      'volumeName': volumeName,
+    };
   }
 
   factory DataLakeLocalStorage.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class DataLakeLocalStorage {
     );
   }
 }
+

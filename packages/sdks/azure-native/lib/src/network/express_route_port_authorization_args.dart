@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExpressRoutePortAuthorizationArgs {
   /// The name of the authorization.
   final pulumi.Input<String>? authorizationName;
-
   /// The name of the express route port.
   final pulumi.Input<String> expressRoutePortName;
-
   /// Resource ID.
   final pulumi.Input<String>? id;
-
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   final pulumi.Input<String>? name;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -48,27 +44,12 @@ class ExpressRoutePortAuthorizationArgs {
 
   factory ExpressRoutePortAuthorizationArgs.fromMap(Map<String, dynamic> map) {
     return ExpressRoutePortAuthorizationArgs(
-      authorizationName: (() {
-        final guardedValue = map['authorizationName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      expressRoutePortName: pulumi.Input.fromValue(
-        map['expressRoutePortName'] as String,
-      ),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      authorizationName: (() { final guardedValue = map['authorizationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      expressRoutePortName: pulumi.Input.fromValue(map['expressRoutePortName'] as String),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

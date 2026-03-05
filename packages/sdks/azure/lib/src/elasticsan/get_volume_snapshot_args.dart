@@ -9,17 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVolumeSnapshotArgs {
   /// The name of the Elastic SAN Volume Snapshot.
   final pulumi.Input<String> name;
-
   /// The Elastic SAN Volume Group ID within which the Elastic SAN Volume Snapshot exists.
   final pulumi.Input<String> volumeGroupId;
 
   /// Creates a new [GetVolumeSnapshotArgs].
   /// [name] The name of the Elastic SAN Volume Snapshot.
   /// [volumeGroupId] The Elastic SAN Volume Group ID within which the Elastic SAN Volume Snapshot exists.
-  GetVolumeSnapshotArgs({required this.name, required this.volumeGroupId});
+  GetVolumeSnapshotArgs({
+    required this.name,
+    required this.volumeGroupId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'volumeGroupId': volumeGroupId};
+    return <String, dynamic>{
+      'name': name,
+      'volumeGroupId': volumeGroupId,
+    };
   }
 
   factory GetVolumeSnapshotArgs.fromMap(Map<String, dynamic> map) {
@@ -29,3 +34,4 @@ class GetVolumeSnapshotArgs {
     );
   }
 }
+

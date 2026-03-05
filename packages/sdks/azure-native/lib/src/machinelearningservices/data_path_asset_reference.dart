@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataPathAssetReference {
   /// ARM resource ID of the datastore where the asset is located.
   final pulumi.Input<String>? datastoreId;
-
   /// The path of the file/directory in the datastore.
   final pulumi.Input<String>? path;
-
   /// Enum to determine which reference method to use for an asset.
   /// Expected value is 'DataPath'.
   final pulumi.Input<String> referenceType;
@@ -34,17 +32,10 @@ class DataPathAssetReference {
 
   factory DataPathAssetReference.fromMap(Map<String, dynamic> map) {
     return DataPathAssetReference(
-      datastoreId: (() {
-        final guardedValue = map['datastoreId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      path: (() {
-        final guardedValue = map['path'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      datastoreId: (() { final guardedValue = map['datastoreId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       referenceType: pulumi.Input.fromValue(map['referenceType'] as String),
     );
   }
 }
+

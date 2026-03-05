@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EncryptionWithCmkResponse {
   /// Returns the status of search service compliance with respect to non-CMK-encrypted objects. If a service has more than one unencrypted object, and enforcement is enabled, the service is marked as noncompliant.
   final pulumi.Input<String> encryptionComplianceStatus;
-
   /// Describes how a search service should enforce compliance if it finds objects that aren't encrypted with the customer-managed key.
   final pulumi.Input<String>? enforcement;
 
@@ -27,14 +26,9 @@ class EncryptionWithCmkResponse {
 
   factory EncryptionWithCmkResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionWithCmkResponse(
-      encryptionComplianceStatus: pulumi.Input.fromValue(
-        map['encryptionComplianceStatus'] as String,
-      ),
-      enforcement: (() {
-        final guardedValue = map['enforcement'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      encryptionComplianceStatus: pulumi.Input.fromValue(map['encryptionComplianceStatus'] as String),
+      enforcement: (() { final guardedValue = map['enforcement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IpRule {
   /// IP mask.
   final pulumi.Input<String> ipMask;
-
   /// List of access rights.
   final pulumi.Input<List<String>> rights;
 
   /// Creates a new [IpRule].
   /// [ipMask] IP mask.
   /// [rights] List of access rights.
-  IpRule({required this.ipMask, required this.rights});
+  IpRule({
+    required this.ipMask,
+    required this.rights,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'ipMask': ipMask, 'rights': rights};
+    return <String, dynamic>{
+      'ipMask': ipMask,
+      'rights': rights,
+    };
   }
 
   factory IpRule.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class IpRule {
     );
   }
 }
+

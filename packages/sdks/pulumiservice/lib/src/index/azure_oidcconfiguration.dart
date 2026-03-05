@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureOIDCConfiguration {
   /// The client ID of the federated workload identity.
   final pulumi.Input<String> clientId;
-
   /// The subscription ID of the federated workload identity.
   final pulumi.Input<String> subscriptionId;
-
   /// The tenant ID of the federated workload identity.
   final pulumi.Input<String> tenantId;
 
@@ -38,3 +36,4 @@ class AzureOIDCConfiguration {
     );
   }
 }
+

@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWindowsFunctionAppAuthSettingsV2GithubV2 {
   /// The OAuth 2.0 client ID that was created for the app used for authentication.
   final pulumi.Input<String> clientId;
-
   /// The app setting name containing the OAuth 2.0 client secret that was created for the app used for authentication.
   final pulumi.Input<String> clientSecretSettingName;
-
   /// The list of Login scopes that are requested as part of Microsoft Account authentication.
   final pulumi.Input<List<String>> loginScopes;
 
@@ -30,17 +28,12 @@ class GetWindowsFunctionAppAuthSettingsV2GithubV2 {
     };
   }
 
-  factory GetWindowsFunctionAppAuthSettingsV2GithubV2.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetWindowsFunctionAppAuthSettingsV2GithubV2.fromMap(Map<String, dynamic> map) {
     return GetWindowsFunctionAppAuthSettingsV2GithubV2(
       clientId: pulumi.Input.fromValue(map['clientId'] as String),
-      clientSecretSettingName: pulumi.Input.fromValue(
-        map['clientSecretSettingName'] as String,
-      ),
-      loginScopes: pulumi.Input.fromValue(
-        (map['loginScopes'] as List).cast<String>(),
-      ),
+      clientSecretSettingName: pulumi.Input.fromValue(map['clientSecretSettingName'] as String),
+      loginScopes: pulumi.Input.fromValue((map['loginScopes'] as List).cast<String>()),
     );
   }
 }
+

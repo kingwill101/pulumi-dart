@@ -7,14 +7,11 @@ class FqdnOutboundRuleResponse {
   /// Category of a managed network Outbound Rule of a cognitive services account.
   final pulumi.Input<String>? category;
   final pulumi.Input<String>? destination;
-
   /// Error information about an outbound rule of a cognitive services account if RuleStatus is failed.
   final pulumi.Input<String> errorInformation;
   final pulumi.Input<List<String>> parentRuleNames;
-
   /// Type of a managed network Outbound Rule of a cognitive services account.
   final pulumi.Input<String>? status;
-
   /// Type of a managed network Outbound Rule of a cognitive services account.
   /// Expected value is 'FQDN'.
   final pulumi.Input<String> type;
@@ -48,28 +45,13 @@ class FqdnOutboundRuleResponse {
 
   factory FqdnOutboundRuleResponse.fromMap(Map<String, dynamic> map) {
     return FqdnOutboundRuleResponse(
-      category: (() {
-        final guardedValue = map['category'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      destination: (() {
-        final guardedValue = map['destination'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      errorInformation: pulumi.Input.fromValue(
-        map['errorInformation'] as String,
-      ),
-      parentRuleNames: pulumi.Input.fromValue(
-        (map['parentRuleNames'] as List).cast<String>(),
-      ),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      category: (() { final guardedValue = map['category']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      destination: (() { final guardedValue = map['destination']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      errorInformation: pulumi.Input.fromValue(map['errorInformation'] as String),
+      parentRuleNames: pulumi.Input.fromValue((map['parentRuleNames'] as List).cast<String>()),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

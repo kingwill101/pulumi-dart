@@ -12,8 +12,7 @@ enum RegularPriorityAllocationStrategy {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown RegularPriorityAllocationStrategy value: $value',
-    );
+    throw ArgumentError('Unknown RegularPriorityAllocationStrategy value: $value');
   }
 }
+

@@ -123,13 +123,10 @@ import 'obfuscation_expression_state.dart';
 class ObfuscationExpression extends pulumi.CustomResource {
   /// The account id associated with the obfuscation expression.
   late final pulumi.Output<String> accountId;
-
   /// Description of expression.
   late final pulumi.Output<String?> description;
-
   /// Name of expression.
   late final pulumi.Output<String> name;
-
   /// Regex of expression. Must be wrapped in parentheses, e.g. (regex.*).
   late final pulumi.Output<String> regex;
 
@@ -142,11 +139,11 @@ class ObfuscationExpression extends pulumi.CustomResource {
     ObfuscationExpressionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:index/obfuscationExpression:ObfuscationExpression',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:index/obfuscationExpression:ObfuscationExpression',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
@@ -171,11 +168,11 @@ class ObfuscationExpression extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:index/obfuscationExpression:ObfuscationExpression',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:index/obfuscationExpression:ObfuscationExpression',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');

@@ -482,22 +482,16 @@ import 'experiment_plan_state.dart';
 class ExperimentPlan extends pulumi.CustomResource {
   /// The creation time of the resource.
   late final pulumi.Output<String> createTime;
-
   /// Additional operating parameters. You can include information about the specified node.
   late final pulumi.Output<Map<String, String>?> externalParams;
-
   /// Indicates the name of the experiment plan, which is used to distinguish different experiment plans.
   late final pulumi.Output<String> planName;
-
   /// The ID of the resource group.
   late final pulumi.Output<String> resourceGroupId;
-
   /// The ID of the resource.
   late final pulumi.Output<int> resourceId;
-
   /// The tag of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The ID of the template.
   late final pulumi.Output<int> templateId;
 
@@ -510,11 +504,11 @@ class ExperimentPlan extends pulumi.CustomResource {
     ExperimentPlanArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:eflo/experimentPlan:ExperimentPlan',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:eflo/experimentPlan:ExperimentPlan',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     externalParams = registerOutput<Map<String, String>?>('externalParams');
     planName = registerOutput<String>('planName');
@@ -542,11 +536,11 @@ class ExperimentPlan extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:eflo/experimentPlan:ExperimentPlan',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:eflo/experimentPlan:ExperimentPlan',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     externalParams = registerOutput<Map<String, String>?>('externalParams');
     planName = registerOutput<String>('planName');

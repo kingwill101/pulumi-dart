@@ -7,10 +7,8 @@ import 'get_kubernetes_permission_permission.dart';
 class GetKubernetesPermissionResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of user permission. See `permissions` below.
   final List<GetKubernetesPermissionPermission> permissions;
-
   /// The ID of the RAM user. If you want to query the permissions of a RAM role, specify the ID of the RAM role.
   final String uid;
 
@@ -27,11 +25,7 @@ class GetKubernetesPermissionResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'permissions':
-          pulumi.Input.encodeList<
-            GetKubernetesPermissionPermission,
-            Map<String, dynamic>
-          >(permissions, (value) => value.toMap()),
+      'permissions': pulumi.Input.encodeList<GetKubernetesPermissionPermission, Map<String, dynamic>>(permissions, (value) => value.toMap()),
       'uid': uid,
     };
   }
@@ -39,13 +33,9 @@ class GetKubernetesPermissionResult {
   factory GetKubernetesPermissionResult.fromMap(Map<String, dynamic> map) {
     return GetKubernetesPermissionResult(
       id: map['id'] as String,
-      permissions: pulumi.Input.decodeList<GetKubernetesPermissionPermission>(
-        map['permissions']!,
-        (value) => GetKubernetesPermissionPermission.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      permissions: pulumi.Input.decodeList<GetKubernetesPermissionPermission>(map['permissions']!, (value) => GetKubernetesPermissionPermission.fromMap((value as Map).cast<String, dynamic>())),
       uid: map['uid'] as String,
     );
   }
 }
+

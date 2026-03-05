@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDataConnectorArgs {
   /// Connector name.
   final pulumi.Input<String> dataConnectorName;
-
   /// DataManagerForAgriculture resource name.
   final pulumi.Input<String> dataManagerForAgricultureResourceName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,23 +27,17 @@ class GetDataConnectorArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'dataConnectorName': dataConnectorName,
-      'dataManagerForAgricultureResourceName':
-          dataManagerForAgricultureResourceName,
+      'dataManagerForAgricultureResourceName': dataManagerForAgricultureResourceName,
       'resourceGroupName': resourceGroupName,
     };
   }
 
   factory GetDataConnectorArgs.fromMap(Map<String, dynamic> map) {
     return GetDataConnectorArgs(
-      dataConnectorName: pulumi.Input.fromValue(
-        map['dataConnectorName'] as String,
-      ),
-      dataManagerForAgricultureResourceName: pulumi.Input.fromValue(
-        map['dataManagerForAgricultureResourceName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      dataConnectorName: pulumi.Input.fromValue(map['dataConnectorName'] as String),
+      dataManagerForAgricultureResourceName: pulumi.Input.fromValue(map['dataManagerForAgricultureResourceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

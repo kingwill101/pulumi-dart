@@ -69,8 +69,7 @@ Future<GetTagResult> getTag(
 /// Gets a repository.
 /// [args] Arguments passed to this invoke. {@macro pulumi_artifactregistry_v1beta1_get_repository_artifactregistry_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetRepositoryArtifactregistryV1beta1Result>
-getRepositoryArtifactregistryV1beta1(
+Future<GetRepositoryArtifactregistryV1beta1Result> getRepositoryArtifactregistryV1beta1(
   GetRepositoryArtifactregistryV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -86,8 +85,7 @@ getRepositoryArtifactregistryV1beta1(
 /// Gets the IAM policy for a given resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_artifactregistry_v1beta1_get_repository_iam_policy_artifactregistry_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetRepositoryIamPolicyArtifactregistryV1beta1Result>
-getRepositoryIamPolicyArtifactregistryV1beta1(
+Future<GetRepositoryIamPolicyArtifactregistryV1beta1Result> getRepositoryIamPolicyArtifactregistryV1beta1(
   GetRepositoryIamPolicyArtifactregistryV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -119,8 +117,7 @@ Future<GetTagArtifactregistryV1beta1Result> getTagArtifactregistryV1beta1(
 /// Gets a repository.
 /// [args] Arguments passed to this invoke. {@macro pulumi_artifactregistry_v1beta2_get_repository_artifactregistry_v1beta2_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetRepositoryArtifactregistryV1beta2Result>
-getRepositoryArtifactregistryV1beta2(
+Future<GetRepositoryArtifactregistryV1beta2Result> getRepositoryArtifactregistryV1beta2(
   GetRepositoryArtifactregistryV1beta2Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -136,8 +133,7 @@ getRepositoryArtifactregistryV1beta2(
 /// Gets the IAM policy for a given resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_artifactregistry_v1beta2_get_repository_iam_policy_artifactregistry_v1beta2_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetRepositoryIamPolicyArtifactregistryV1beta2Result>
-getRepositoryIamPolicyArtifactregistryV1beta2(
+Future<GetRepositoryIamPolicyArtifactregistryV1beta2Result> getRepositoryIamPolicyArtifactregistryV1beta2(
   GetRepositoryIamPolicyArtifactregistryV1beta2Args args, {
   pulumi.InvokeOptions? options,
 }) async {

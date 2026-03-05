@@ -9,29 +9,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BlobContainerDataSetArgs {
   /// The name of the share account.
   final pulumi.Input<String> accountName;
-
   /// BLOB Container name.
   final pulumi.Input<String> containerName;
-
   /// The name of the dataSet.
   final pulumi.Input<String>? dataSetName;
-
   /// Kind of data set.
   /// Expected value is 'Container'.
   final pulumi.Input<String> kind;
-
   /// Resource group of storage account
   final pulumi.Input<String> resourceGroup;
-
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the share to add the data set to.
   final pulumi.Input<String> shareName;
-
   /// Storage account name of the source data set
   final pulumi.Input<String> storageAccountName;
-
   /// Subscription id of storage account
   final pulumi.Input<String> subscriptionId;
 
@@ -75,21 +67,14 @@ class BlobContainerDataSetArgs {
     return BlobContainerDataSetArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
       containerName: pulumi.Input.fromValue(map['containerName'] as String),
-      dataSetName: (() {
-        final guardedValue = map['dataSetName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dataSetName: (() { final guardedValue = map['dataSetName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kind: pulumi.Input.fromValue(map['kind'] as String),
       resourceGroup: pulumi.Input.fromValue(map['resourceGroup'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       shareName: pulumi.Input.fromValue(map['shareName'] as String),
-      storageAccountName: pulumi.Input.fromValue(
-        map['storageAccountName'] as String,
-      ),
+      storageAccountName: pulumi.Input.fromValue(map['storageAccountName'] as String),
       subscriptionId: pulumi.Input.fromValue(map['subscriptionId'] as String),
     );
   }
 }
+

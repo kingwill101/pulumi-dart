@@ -15,3 +15,4 @@ enum ValidationThresholdType {
     throw ArgumentError('Unknown ValidationThresholdType value: $value');
   }
 }
+

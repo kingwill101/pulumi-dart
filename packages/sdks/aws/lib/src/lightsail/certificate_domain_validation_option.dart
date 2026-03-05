@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CertificateDomainValidationOption {
   /// Domain name for which the certificate should be issued.
   final pulumi.Input<String>? domainName;
-
   /// Name of the DNS record to create to validate the certificate.
   final pulumi.Input<String>? resourceRecordName;
-
   /// Type of DNS record to create to validate the certificate.
   final pulumi.Input<String>? resourceRecordType;
-
   /// Value of the DNS record to create to validate the certificate.
   final pulumi.Input<String>? resourceRecordValue;
 
@@ -38,26 +35,11 @@ class CertificateDomainValidationOption {
 
   factory CertificateDomainValidationOption.fromMap(Map<String, dynamic> map) {
     return CertificateDomainValidationOption(
-      domainName: (() {
-        final guardedValue = map['domainName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceRecordName: (() {
-        final guardedValue = map['resourceRecordName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceRecordType: (() {
-        final guardedValue = map['resourceRecordType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceRecordValue: (() {
-        final guardedValue = map['resourceRecordValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      domainName: (() { final guardedValue = map['domainName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceRecordName: (() { final guardedValue = map['resourceRecordName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceRecordType: (() { final guardedValue = map['resourceRecordType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceRecordValue: (() { final guardedValue = map['resourceRecordValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

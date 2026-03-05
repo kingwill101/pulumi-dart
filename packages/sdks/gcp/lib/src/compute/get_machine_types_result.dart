@@ -6,10 +6,8 @@ import 'get_machine_types_machine_type.dart';
 /// Result data returned by getMachineTypes.
 class GetMachineTypesResult {
   final String? filter;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The list of machine types matching the provided filter. Structure is documented below.
   final List<GetMachineTypesMachineType> machineTypes;
   final String project;
@@ -33,11 +31,7 @@ class GetMachineTypesResult {
     return <String, dynamic>{
       'filter': ?filter,
       'id': id,
-      'machineTypes':
-          pulumi.Input.encodeList<
-            GetMachineTypesMachineType,
-            Map<String, dynamic>
-          >(machineTypes, (value) => value.toMap()),
+      'machineTypes': pulumi.Input.encodeList<GetMachineTypesMachineType, Map<String, dynamic>>(machineTypes, (value) => value.toMap()),
       'project': project,
       'zone': zone,
     };
@@ -45,20 +39,12 @@ class GetMachineTypesResult {
 
   factory GetMachineTypesResult.fromMap(Map<String, dynamic> map) {
     return GetMachineTypesResult(
-      filter: (() {
-        final guardedValue = map['filter'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
-      machineTypes: pulumi.Input.decodeList<GetMachineTypesMachineType>(
-        map['machineTypes']!,
-        (value) => GetMachineTypesMachineType.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      machineTypes: pulumi.Input.decodeList<GetMachineTypesMachineType>(map['machineTypes']!, (value) => GetMachineTypesMachineType.fromMap((value as Map).cast<String, dynamic>())),
       project: map['project'] as String,
       zone: map['zone'] as String,
     );
   }
 }
+

@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceMonitoringAgentProcessState {
   /// The ID of the instance.
   final pulumi.Input<String>? instanceId;
-
   /// The ID of the process.
   final pulumi.Input<String>? processId;
-
   /// The name of the process.
   final pulumi.Input<String>? processName;
-
   /// The user who launches the process.
   final pulumi.Input<String>? processUser;
 
@@ -39,26 +36,11 @@ class ServiceMonitoringAgentProcessState {
 
   factory ServiceMonitoringAgentProcessState.fromMap(Map<String, dynamic> map) {
     return ServiceMonitoringAgentProcessState(
-      instanceId: (() {
-        final guardedValue = map['instanceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      processId: (() {
-        final guardedValue = map['processId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      processName: (() {
-        final guardedValue = map['processName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      processUser: (() {
-        final guardedValue = map['processUser'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      instanceId: (() { final guardedValue = map['instanceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      processId: (() { final guardedValue = map['processId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      processName: (() { final guardedValue = map['processName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      processUser: (() { final guardedValue = map['processUser']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

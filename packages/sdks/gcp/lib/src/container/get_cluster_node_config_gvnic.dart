@@ -8,10 +8,14 @@ class GetClusterNodeConfigGvnic {
 
   /// Creates a new [GetClusterNodeConfigGvnic].
   /// [enabled] Whether or not gvnic is enabled
-  GetClusterNodeConfigGvnic({required this.enabled});
+  GetClusterNodeConfigGvnic({
+    required this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled};
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
   factory GetClusterNodeConfigGvnic.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class GetClusterNodeConfigGvnic {
     );
   }
 }
+

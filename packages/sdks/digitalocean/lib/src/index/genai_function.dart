@@ -5,25 +5,18 @@ import 'genai_function_state.dart';
 class GenaiFunction extends pulumi.CustomResource {
   /// The name of the GradientAI resource.
   late final pulumi.Output<String> agentId;
-
   /// The region where the GradientAI resource will be created.
   late final pulumi.Output<String> description;
-
   /// The model to use for the GradientAI resource.
   late final pulumi.Output<String?> faasName;
-
   /// The current status of the GradientAI resource.
   late final pulumi.Output<String> faasNamespace;
-
   /// The creation timestamp of the GradientAI resource.
   late final pulumi.Output<String> functionName;
-
   /// The unique identifier of the GradientAI function.
   late final pulumi.Output<String> functionUuid;
-
   /// The input schema of the GradientAI resource.
   late final pulumi.Output<String> inputSchema;
-
   /// The output schema of the GradientAI resource.
   late final pulumi.Output<String?> outputSchema;
 
@@ -36,11 +29,11 @@ class GenaiFunction extends pulumi.CustomResource {
     GenaiFunctionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/genaiFunction:GenaiFunction',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/genaiFunction:GenaiFunction',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     agentId = registerOutput<String>('agentId');
     description = registerOutput<String>('description');
     faasName = registerOutput<String?>('faasName');
@@ -69,11 +62,11 @@ class GenaiFunction extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/genaiFunction:GenaiFunction',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/genaiFunction:GenaiFunction',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     agentId = registerOutput<String>('agentId');
     description = registerOutput<String>('description');
     faasName = registerOutput<String?>('faasName');

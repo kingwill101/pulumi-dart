@@ -9,17 +9,20 @@ class CxToolVersionToolOpenApiSpecServiceDirectoryConfig {
 
   /// Creates a new [CxToolVersionToolOpenApiSpecServiceDirectoryConfig].
   /// [service] The name of [Service Directory](https://cloud.google.com/service-directory/docs) service.
-  CxToolVersionToolOpenApiSpecServiceDirectoryConfig({required this.service});
+  CxToolVersionToolOpenApiSpecServiceDirectoryConfig({
+    required this.service,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'service': service};
+    return <String, dynamic>{
+      'service': service,
+    };
   }
 
-  factory CxToolVersionToolOpenApiSpecServiceDirectoryConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CxToolVersionToolOpenApiSpecServiceDirectoryConfig.fromMap(Map<String, dynamic> map) {
     return CxToolVersionToolOpenApiSpecServiceDirectoryConfig(
       service: pulumi.Input.fromValue(map['service'] as String),
     );
   }
 }
+

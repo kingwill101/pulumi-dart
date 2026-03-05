@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SpringCloudAppCustomPersistentDisk {
   /// These are the mount options for a persistent disk.
   final pulumi.Input<List<String>>? mountOptions;
-
   /// The mount path of the persistent disk.
   final pulumi.Input<String> mountPath;
-
   /// Indicates whether the persistent disk is a readOnly one.
   final pulumi.Input<bool>? readOnlyEnabled;
-
   /// The share name of the Azure File share.
   final pulumi.Input<String> shareName;
-
   /// The name of the Spring Cloud Storage.
   final pulumi.Input<String> storageName;
 
@@ -44,19 +40,12 @@ class SpringCloudAppCustomPersistentDisk {
 
   factory SpringCloudAppCustomPersistentDisk.fromMap(Map<String, dynamic> map) {
     return SpringCloudAppCustomPersistentDisk(
-      mountOptions: (() {
-        final guardedValue = map['mountOptions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      mountOptions: (() { final guardedValue = map['mountOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       mountPath: pulumi.Input.fromValue(map['mountPath'] as String),
-      readOnlyEnabled: (() {
-        final guardedValue = map['readOnlyEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      readOnlyEnabled: (() { final guardedValue = map['readOnlyEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       shareName: pulumi.Input.fromValue(map['shareName'] as String),
       storageName: pulumi.Input.fromValue(map['storageName'] as String),
     );
   }
 }
+

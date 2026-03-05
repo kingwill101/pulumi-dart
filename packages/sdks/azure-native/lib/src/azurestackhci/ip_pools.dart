@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IpPools {
   /// Ending IP address for the management network. A minimum of six free, contiguous IPv4 addresses (excluding your host IPs) are needed for infrastructure services such as clustering.
   final pulumi.Input<String>? endingAddress;
-
   /// Starting IP address for the management network. A minimum of six free, contiguous IPv4 addresses (excluding your host IPs) are needed for infrastructure services such as clustering.
   final pulumi.Input<String>? startingAddress;
 
   /// Creates a new [IpPools].
   /// [endingAddress] Ending IP address for the management network. A minimum of six free, contiguous IPv4 addresses (excluding your host IPs) are needed for infrastructure services such as clustering.
   /// [startingAddress] Starting IP address for the management network. A minimum of six free, contiguous IPv4 addresses (excluding your host IPs) are needed for infrastructure services such as clustering.
-  IpPools({this.endingAddress, this.startingAddress});
+  IpPools({
+    this.endingAddress,
+    this.startingAddress,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class IpPools {
 
   factory IpPools.fromMap(Map<String, dynamic> map) {
     return IpPools(
-      endingAddress: (() {
-        final guardedValue = map['endingAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      startingAddress: (() {
-        final guardedValue = map['startingAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      endingAddress: (() { final guardedValue = map['endingAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      startingAddress: (() { final guardedValue = map['startingAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

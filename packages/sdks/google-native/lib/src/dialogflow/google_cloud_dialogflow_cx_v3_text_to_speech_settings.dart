@@ -9,7 +9,9 @@ class GoogleCloudDialogflowCxV3TextToSpeechSettings {
 
   /// Creates a new [GoogleCloudDialogflowCxV3TextToSpeechSettings].
   /// [synthesizeSpeechConfigs] Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/cx/docs/reference/language) to SynthesizeSpeechConfig. These settings affect: - The [phone gateway](https://cloud.google.com/dialogflow/cx/docs/concept/integration/phone-gateway) synthesize configuration set via Agent.text_to_speech_settings. - How speech is synthesized when invoking session APIs. Agent.text_to_speech_settings only applies if OutputAudioConfig.synthesize_speech_config is not specified.
-  GoogleCloudDialogflowCxV3TextToSpeechSettings({this.synthesizeSpeechConfigs});
+  GoogleCloudDialogflowCxV3TextToSpeechSettings({
+    this.synthesizeSpeechConfigs,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -17,17 +19,10 @@ class GoogleCloudDialogflowCxV3TextToSpeechSettings {
     };
   }
 
-  factory GoogleCloudDialogflowCxV3TextToSpeechSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDialogflowCxV3TextToSpeechSettings.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3TextToSpeechSettings(
-      synthesizeSpeechConfigs: (() {
-        final guardedValue = map['synthesizeSpeechConfigs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      synthesizeSpeechConfigs: (() { final guardedValue = map['synthesizeSpeechConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

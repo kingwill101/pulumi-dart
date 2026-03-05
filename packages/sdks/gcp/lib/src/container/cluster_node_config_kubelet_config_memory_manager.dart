@@ -10,21 +10,20 @@ class ClusterNodeConfigKubeletConfigMemoryManager {
 
   /// Creates a new [ClusterNodeConfigKubeletConfigMemoryManager].
   /// [policy] The [Memory
-  ClusterNodeConfigKubeletConfigMemoryManager({this.policy});
+  ClusterNodeConfigKubeletConfigMemoryManager({
+    this.policy,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'policy': ?policy};
+    return <String, dynamic>{
+      'policy': ?policy,
+    };
   }
 
-  factory ClusterNodeConfigKubeletConfigMemoryManager.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterNodeConfigKubeletConfigMemoryManager.fromMap(Map<String, dynamic> map) {
     return ClusterNodeConfigKubeletConfigMemoryManager(
-      policy: (() {
-        final guardedValue = map['policy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      policy: (() { final guardedValue = map['policy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

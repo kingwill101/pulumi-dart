@@ -5,20 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DraModelResponseSystemData {
   /// Gets or sets the timestamp of resource creation (UTC).
   final pulumi.Input<String>? createdAt;
-
   /// Gets or sets identity that created the resource.
   final pulumi.Input<String>? createdBy;
-
   /// Gets or sets the type of identity that created the resource: user, application,
   /// managedIdentity.
   final pulumi.Input<String>? createdByType;
-
   /// Gets or sets the timestamp of resource last modification (UTC).
   final pulumi.Input<String>? lastModifiedAt;
-
   /// Gets or sets the identity that last modified the resource.
   final pulumi.Input<String>? lastModifiedBy;
-
   /// Gets or sets the type of identity that last modified the resource: user, application,
   /// managedIdentity.
   final pulumi.Input<String>? lastModifiedByType;
@@ -52,36 +47,13 @@ class DraModelResponseSystemData {
 
   factory DraModelResponseSystemData.fromMap(Map<String, dynamic> map) {
     return DraModelResponseSystemData(
-      createdAt: (() {
-        final guardedValue = map['createdAt'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      createdBy: (() {
-        final guardedValue = map['createdBy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      createdByType: (() {
-        final guardedValue = map['createdByType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      lastModifiedAt: (() {
-        final guardedValue = map['lastModifiedAt'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      lastModifiedBy: (() {
-        final guardedValue = map['lastModifiedBy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      lastModifiedByType: (() {
-        final guardedValue = map['lastModifiedByType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      createdBy: (() { final guardedValue = map['createdBy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      createdByType: (() { final guardedValue = map['createdByType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      lastModifiedAt: (() { final guardedValue = map['lastModifiedAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      lastModifiedBy: (() { final guardedValue = map['lastModifiedBy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      lastModifiedByType: (() { final guardedValue = map['lastModifiedByType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

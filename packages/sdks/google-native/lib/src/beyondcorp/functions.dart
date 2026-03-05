@@ -165,8 +165,7 @@ Future<GetAppGatewayIamPolicyResult> getAppGatewayIamPolicy(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_beyondcorp_v1_get_client_connector_service_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetClientConnectorServiceIamPolicyResult>
-getClientConnectorServiceIamPolicy(
+Future<GetClientConnectorServiceIamPolicyResult> getClientConnectorServiceIamPolicy(
   GetClientConnectorServiceIamPolicyArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -198,8 +197,7 @@ Future<GetClientGatewayIamPolicyResult> getClientGatewayIamPolicy(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_beyondcorp_v1_get_organization_partner_tenant_browser_dlp_rule_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetOrganizationPartnerTenantBrowserDlpRuleIamPolicyResult>
-getOrganizationPartnerTenantBrowserDlpRuleIamPolicy(
+Future<GetOrganizationPartnerTenantBrowserDlpRuleIamPolicyResult> getOrganizationPartnerTenantBrowserDlpRuleIamPolicy(
   GetOrganizationPartnerTenantBrowserDlpRuleIamPolicyArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -209,16 +207,13 @@ getOrganizationPartnerTenantBrowserDlpRuleIamPolicy(
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetOrganizationPartnerTenantBrowserDlpRuleIamPolicyResult.fromMap(
-    result,
-  );
+  return GetOrganizationPartnerTenantBrowserDlpRuleIamPolicyResult.fromMap(result);
 }
 
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_beyondcorp_v1_get_organization_partner_tenant_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetOrganizationPartnerTenantIamPolicyResult>
-getOrganizationPartnerTenantIamPolicy(
+Future<GetOrganizationPartnerTenantIamPolicyResult> getOrganizationPartnerTenantIamPolicy(
   GetOrganizationPartnerTenantIamPolicyArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -234,8 +229,7 @@ getOrganizationPartnerTenantIamPolicy(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_beyondcorp_v1_get_organization_partner_tenant_proxy_config_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetOrganizationPartnerTenantProxyConfigIamPolicyResult>
-getOrganizationPartnerTenantProxyConfigIamPolicy(
+Future<GetOrganizationPartnerTenantProxyConfigIamPolicyResult> getOrganizationPartnerTenantProxyConfigIamPolicy(
   GetOrganizationPartnerTenantProxyConfigIamPolicyArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -251,8 +245,7 @@ getOrganizationPartnerTenantProxyConfigIamPolicy(
 /// Gets details of a single AppConnection.
 /// [args] Arguments passed to this invoke. {@macro pulumi_beyondcorp_v1alpha_get_app_connection_beyondcorp_v1alpha_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetAppConnectionBeyondcorpV1alphaResult>
-getAppConnectionBeyondcorpV1alpha(
+Future<GetAppConnectionBeyondcorpV1alphaResult> getAppConnectionBeyondcorpV1alpha(
   GetAppConnectionBeyondcorpV1alphaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -268,8 +261,7 @@ getAppConnectionBeyondcorpV1alpha(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_beyondcorp_v1alpha_get_app_connection_iam_policy_beyondcorp_v1alpha_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetAppConnectionIamPolicyBeyondcorpV1alphaResult>
-getAppConnectionIamPolicyBeyondcorpV1alpha(
+Future<GetAppConnectionIamPolicyBeyondcorpV1alphaResult> getAppConnectionIamPolicyBeyondcorpV1alpha(
   GetAppConnectionIamPolicyBeyondcorpV1alphaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -301,8 +293,7 @@ Future<GetAppConnectorBeyondcorpV1alphaResult> getAppConnectorBeyondcorpV1alpha(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_beyondcorp_v1alpha_get_app_connector_iam_policy_beyondcorp_v1alpha_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetAppConnectorIamPolicyBeyondcorpV1alphaResult>
-getAppConnectorIamPolicyBeyondcorpV1alpha(
+Future<GetAppConnectorIamPolicyBeyondcorpV1alphaResult> getAppConnectorIamPolicyBeyondcorpV1alpha(
   GetAppConnectorIamPolicyBeyondcorpV1alphaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -334,8 +325,7 @@ Future<GetAppGatewayBeyondcorpV1alphaResult> getAppGatewayBeyondcorpV1alpha(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_beyondcorp_v1alpha_get_app_gateway_iam_policy_beyondcorp_v1alpha_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetAppGatewayIamPolicyBeyondcorpV1alphaResult>
-getAppGatewayIamPolicyBeyondcorpV1alpha(
+Future<GetAppGatewayIamPolicyBeyondcorpV1alphaResult> getAppGatewayIamPolicyBeyondcorpV1alpha(
   GetAppGatewayIamPolicyBeyondcorpV1alphaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -399,8 +389,7 @@ Future<GetBrowserDlpRuleResult> getBrowserDlpRule(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_beyondcorp_v1alpha_get_client_connector_service_iam_policy_beyondcorp_v1alpha_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetClientConnectorServiceIamPolicyBeyondcorpV1alphaResult>
-getClientConnectorServiceIamPolicyBeyondcorpV1alpha(
+Future<GetClientConnectorServiceIamPolicyBeyondcorpV1alphaResult> getClientConnectorServiceIamPolicyBeyondcorpV1alpha(
   GetClientConnectorServiceIamPolicyBeyondcorpV1alphaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -410,16 +399,13 @@ getClientConnectorServiceIamPolicyBeyondcorpV1alpha(
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetClientConnectorServiceIamPolicyBeyondcorpV1alphaResult.fromMap(
-    result,
-  );
+  return GetClientConnectorServiceIamPolicyBeyondcorpV1alphaResult.fromMap(result);
 }
 
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_beyondcorp_v1alpha_get_client_gateway_iam_policy_beyondcorp_v1alpha_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetClientGatewayIamPolicyBeyondcorpV1alphaResult>
-getClientGatewayIamPolicyBeyondcorpV1alpha(
+Future<GetClientGatewayIamPolicyBeyondcorpV1alphaResult> getClientGatewayIamPolicyBeyondcorpV1alpha(
   GetClientGatewayIamPolicyBeyondcorpV1alphaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -515,12 +501,8 @@ Future<GetNetConnectionIamPolicyResult> getNetConnectionIamPolicy(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_beyondcorp_v1alpha_get_organization_partner_tenant_browser_dlp_rule_iam_policy_beyondcorp_v1alpha_args_doc}
 /// [options] Invoke options controlling this call.
-Future<
-  GetOrganizationPartnerTenantBrowserDlpRuleIamPolicyBeyondcorpV1alphaResult
->
-getOrganizationPartnerTenantBrowserDlpRuleIamPolicyBeyondcorpV1alpha(
-  GetOrganizationPartnerTenantBrowserDlpRuleIamPolicyBeyondcorpV1alphaArgs
-  args, {
+Future<GetOrganizationPartnerTenantBrowserDlpRuleIamPolicyBeyondcorpV1alphaResult> getOrganizationPartnerTenantBrowserDlpRuleIamPolicyBeyondcorpV1alpha(
+  GetOrganizationPartnerTenantBrowserDlpRuleIamPolicyBeyondcorpV1alphaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
   final deployment = pulumi.Deployment.instance;
@@ -529,16 +511,13 @@ getOrganizationPartnerTenantBrowserDlpRuleIamPolicyBeyondcorpV1alpha(
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetOrganizationPartnerTenantBrowserDlpRuleIamPolicyBeyondcorpV1alphaResult.fromMap(
-    result,
-  );
+  return GetOrganizationPartnerTenantBrowserDlpRuleIamPolicyBeyondcorpV1alphaResult.fromMap(result);
 }
 
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_beyondcorp_v1alpha_get_organization_partner_tenant_iam_policy_beyondcorp_v1alpha_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetOrganizationPartnerTenantIamPolicyBeyondcorpV1alphaResult>
-getOrganizationPartnerTenantIamPolicyBeyondcorpV1alpha(
+Future<GetOrganizationPartnerTenantIamPolicyBeyondcorpV1alphaResult> getOrganizationPartnerTenantIamPolicyBeyondcorpV1alpha(
   GetOrganizationPartnerTenantIamPolicyBeyondcorpV1alphaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -548,16 +527,13 @@ getOrganizationPartnerTenantIamPolicyBeyondcorpV1alpha(
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetOrganizationPartnerTenantIamPolicyBeyondcorpV1alphaResult.fromMap(
-    result,
-  );
+  return GetOrganizationPartnerTenantIamPolicyBeyondcorpV1alphaResult.fromMap(result);
 }
 
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_beyondcorp_v1alpha_get_organization_partner_tenant_proxy_config_iam_policy_beyondcorp_v1alpha_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetOrganizationPartnerTenantProxyConfigIamPolicyBeyondcorpV1alphaResult>
-getOrganizationPartnerTenantProxyConfigIamPolicyBeyondcorpV1alpha(
+Future<GetOrganizationPartnerTenantProxyConfigIamPolicyBeyondcorpV1alphaResult> getOrganizationPartnerTenantProxyConfigIamPolicyBeyondcorpV1alpha(
   GetOrganizationPartnerTenantProxyConfigIamPolicyBeyondcorpV1alphaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -567,9 +543,7 @@ getOrganizationPartnerTenantProxyConfigIamPolicyBeyondcorpV1alpha(
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetOrganizationPartnerTenantProxyConfigIamPolicyBeyondcorpV1alphaResult.fromMap(
-    result,
-  );
+  return GetOrganizationPartnerTenantProxyConfigIamPolicyBeyondcorpV1alphaResult.fromMap(result);
 }
 
 /// Gets details of a single PartnerTenant.

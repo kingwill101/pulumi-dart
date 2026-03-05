@@ -537,35 +537,24 @@ import 'system_data_response.dart';
 class Build extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Status of the build once it has been provisioned.
   late final pulumi.Output<String> buildStatus;
-
   /// Configuration of the build.
   late final pulumi.Output<BuildConfigurationResponse?> configuration;
-
   /// Container registry that the final image will be uploaded to.
-  late final pulumi.Output<ContainerRegistryWithCustomImageResponse?>
-  destinationContainerRegistry;
-
+  late final pulumi.Output<ContainerRegistryWithCustomImageResponse?> destinationContainerRegistry;
   /// Endpoint from which the build logs can be streamed.
   late final pulumi.Output<String> logStreamEndpoint;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Build provisioning state.
   late final pulumi.Output<String> provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Endpoint to use to retrieve an authentication token for log streaming and uploading source code.
   late final pulumi.Output<String> tokenEndpoint;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Endpoint to which the source code should be uploaded.
   late final pulumi.Output<String> uploadEndpoint;
 
@@ -573,49 +562,24 @@ class Build extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Build]. {@macro pulumi_app_build_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Build(String name, {BuildArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:app:Build',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Build(
+    String name, {
+    BuildArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:app:Build',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     buildStatus = registerOutput<String>('buildStatus');
-    configuration = registerOutput<BuildConfigurationResponse?>(
-      'configuration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BuildConfigurationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    destinationContainerRegistry =
-        registerOutput<ContainerRegistryWithCustomImageResponse?>(
-          'destinationContainerRegistry',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ContainerRegistryWithCustomImageResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    configuration = registerOutput<BuildConfigurationResponse?>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BuildConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    destinationContainerRegistry = registerOutput<ContainerRegistryWithCustomImageResponse?>('destinationContainerRegistry', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerRegistryWithCustomImageResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     logStreamEndpoint = registerOutput<String>('logStreamEndpoint');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tokenEndpoint = registerOutput<String>('tokenEndpoint');
     type = registerOutput<String>('type');
     uploadEndpoint = registerOutput<String>('uploadEndpoint');

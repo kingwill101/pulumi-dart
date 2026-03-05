@@ -122,26 +122,19 @@ import 'connection_timeouts.dart';
 class Connection extends pulumi.CustomResource {
   /// The codeconnections connection ARN.
   late final pulumi.Output<String> arn;
-
   /// The codeconnections connection status. Possible values are `PENDING`, `AVAILABLE` and `ERROR`.
   late final pulumi.Output<String> connectionStatus;
-
   /// The Amazon Resource Name (ARN) of the host associated with the connection. Conflicts with `provider_type`
   late final pulumi.Output<String?> hostArn;
-
   /// The name of the connection to be created. The name must be unique in the calling AWS account. Changing `name` will create a new resource.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> ownerAccountId;
-
   /// The name of the external provider where your third-party code repository is configured. Changing `provider_type` will create a new resource. Conflicts with `host_arn`.
   late final pulumi.Output<String> providerType;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Map of key-value resource tags to associate with the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<ConnectionTimeouts?> timeouts;
@@ -155,11 +148,11 @@ class Connection extends pulumi.CustomResource {
     ConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:codeconnections/connection:Connection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:codeconnections/connection:Connection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     connectionStatus = registerOutput<String>('connectionStatus');
     hostArn = registerOutput<String?>('hostArn');
@@ -169,16 +162,7 @@ class Connection extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ConnectionTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectionTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<ConnectionTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [Connection] resource's state with the given [name] and [id].
@@ -199,11 +183,11 @@ class Connection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:codeconnections/connection:Connection',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:codeconnections/connection:Connection',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     connectionStatus = registerOutput<String>('connectionStatus');
     hostArn = registerOutput<String?>('hostArn');
@@ -213,15 +197,6 @@ class Connection extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ConnectionTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectionTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<ConnectionTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

@@ -258,31 +258,22 @@ import 'registry_webook_state.dart';
 class RegistryWebook extends pulumi.CustomResource {
   /// A list of actions that trigger the Webhook to post notifications. At least one action needs to be specified. Valid values are: `push`, `delete`, `quarantine`, `chart_push`, `chart_delete`
   late final pulumi.Output<List<String>> actions;
-
   /// Custom headers that will be added to the webhook notifications request.
   late final pulumi.Output<Map<String, String>?> customHeaders;
-
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// Specifies the name of the Container Registry Webhook. Only Alphanumeric characters allowed. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The Name of Container registry this Webhook belongs to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> registryName;
-
   /// The name of the resource group in which to create the Container Registry Webhook. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// Specifies the scope of repositories that can trigger an event. For example, `foo:*` means events for all tags under repository `foo`. `foo:bar` means events for 'foo:bar' only. `foo` is equivalent to `foo:latest`. Empty means all events. Defaults to `""`.
   late final pulumi.Output<String?> scope;
-
   /// Specifies the service URI for the Webhook to post notifications.
   late final pulumi.Output<String> serviceUri;
-
   /// Specifies if this Webhook triggers notifications or not. Valid values: `enabled` and `disabled`. Default is `enabled`.
   late final pulumi.Output<String?> status;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -295,11 +286,11 @@ class RegistryWebook extends pulumi.CustomResource {
     RegistryWebookArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:containerservice/registryWebook:RegistryWebook',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:containerservice/registryWebook:RegistryWebook',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     actions = registerOutput<List<String>>('actions');
     customHeaders = registerOutput<Map<String, String>?>('customHeaders');
     location = registerOutput<String>('location');
@@ -330,11 +321,11 @@ class RegistryWebook extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:containerservice/registryWebook:RegistryWebook',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:containerservice/registryWebook:RegistryWebook',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     actions = registerOutput<List<String>>('actions');
     customHeaders = registerOutput<Map<String, String>?>('customHeaders');
     location = registerOutput<String>('location');

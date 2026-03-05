@@ -141,10 +141,8 @@ import 'namespace_state.dart';
 class Namespace extends pulumi.CustomResource {
   /// Namespace description.
   late final pulumi.Output<String?> description;
-
   /// Namespace name.
   late final pulumi.Output<String> namespaceName;
-
   /// namespace uid
   late final pulumi.Output<String> namespaceUid;
 
@@ -157,11 +155,11 @@ class Namespace extends pulumi.CustomResource {
     NamespaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:schedulerx/namespace:Namespace',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:schedulerx/namespace:Namespace',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     namespaceName = registerOutput<String>('namespaceName');
     namespaceUid = registerOutput<String>('namespaceUid');
@@ -185,11 +183,11 @@ class Namespace extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:schedulerx/namespace:Namespace',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:schedulerx/namespace:Namespace',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     namespaceName = registerOutput<String>('namespaceName');
     namespaceUid = registerOutput<String>('namespaceUid');

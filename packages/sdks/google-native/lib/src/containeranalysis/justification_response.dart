@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JustificationResponse {
   /// Additional details on why this justification was chosen.
   final pulumi.Input<String> details;
-
   /// The justification type for this vulnerability.
   final pulumi.Input<String> justificationType;
 
@@ -28,9 +27,8 @@ class JustificationResponse {
   factory JustificationResponse.fromMap(Map<String, dynamic> map) {
     return JustificationResponse(
       details: pulumi.Input.fromValue(map['details'] as String),
-      justificationType: pulumi.Input.fromValue(
-        map['justificationType'] as String,
-      ),
+      justificationType: pulumi.Input.fromValue(map['justificationType'] as String),
     );
   }
 }
+

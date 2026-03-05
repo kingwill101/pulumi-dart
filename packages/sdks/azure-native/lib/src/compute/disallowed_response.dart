@@ -9,19 +9,20 @@ class DisallowedResponse {
 
   /// Creates a new [DisallowedResponse].
   /// [diskTypes] A list of disk types.
-  DisallowedResponse({this.diskTypes});
+  DisallowedResponse({
+    this.diskTypes,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'diskTypes': ?diskTypes};
+    return <String, dynamic>{
+      'diskTypes': ?diskTypes,
+    };
   }
 
   factory DisallowedResponse.fromMap(Map<String, dynamic> map) {
     return DisallowedResponse(
-      diskTypes: (() {
-        final guardedValue = map['diskTypes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      diskTypes: (() { final guardedValue = map['diskTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

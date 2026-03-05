@@ -8,14 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_get_logs_get_logs_args_doc}
 class GetLogsArgs {
   final pulumi.Input<bool>? details;
-
   /// Discard headers that docker appends to each log entry
   final pulumi.Input<bool>? discardHeaders;
   final pulumi.Input<bool>? follow;
-
   /// If true populate computed value `logs_list_string`
   final pulumi.Input<bool>? logsListStringEnabled;
-
   /// The name of the Docker Container
   final pulumi.Input<String> name;
   final pulumi.Input<bool>? showStderr;
@@ -69,57 +66,18 @@ class GetLogsArgs {
 
   factory GetLogsArgs.fromMap(Map<String, dynamic> map) {
     return GetLogsArgs(
-      details: (() {
-        final guardedValue = map['details'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      discardHeaders: (() {
-        final guardedValue = map['discardHeaders'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      follow: (() {
-        final guardedValue = map['follow'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      logsListStringEnabled: (() {
-        final guardedValue = map['logsListStringEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      details: (() { final guardedValue = map['details']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      discardHeaders: (() { final guardedValue = map['discardHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      follow: (() { final guardedValue = map['follow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      logsListStringEnabled: (() { final guardedValue = map['logsListStringEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      showStderr: (() {
-        final guardedValue = map['showStderr'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      showStdout: (() {
-        final guardedValue = map['showStdout'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      since: (() {
-        final guardedValue = map['since'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tail: (() {
-        final guardedValue = map['tail'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      timestamps: (() {
-        final guardedValue = map['timestamps'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      until: (() {
-        final guardedValue = map['until'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      showStderr: (() { final guardedValue = map['showStderr']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      showStdout: (() { final guardedValue = map['showStdout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      since: (() { final guardedValue = map['since']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tail: (() { final guardedValue = map['tail']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      timestamps: (() { final guardedValue = map['timestamps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      until: (() { final guardedValue = map['until']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

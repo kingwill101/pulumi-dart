@@ -9,19 +9,20 @@ class SpacesBucketVersioning {
 
   /// Creates a new [SpacesBucketVersioning].
   /// [enabled] Enable versioning. Once you version-enable a bucket, it can never return to an unversioned
-  SpacesBucketVersioning({this.enabled});
+  SpacesBucketVersioning({
+    this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': ?enabled};
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
   factory SpacesBucketVersioning.fromMap(Map<String, dynamic> map) {
     return SpacesBucketVersioning(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

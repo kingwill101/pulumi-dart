@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LogScopeArgs {
   /// Describes this log scopes.
   final pulumi.Input<String>? description;
-
   /// The location of the resource. The only supported location is global so far.
   final pulumi.Input<String>? location;
-
   /// The resource name of the log scope. For example: \`projects/my-project/locations/global/logScopes/my-log-scope\`
   final pulumi.Input<String>? name;
-
   /// The parent of the resource.
   final pulumi.Input<String>? parent;
-
   /// Names of one or more parent resources : *  \`projects/[PROJECT_ID]\` May alternatively be one or more views : * \`projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]\` A log scope can include a maximum of 50 projects and a maximum of 100 resources in total.
   final pulumi.Input<List<String>> resourceNames;
 
@@ -48,29 +44,12 @@ class LogScopeArgs {
 
   factory LogScopeArgs.fromMap(Map<String, dynamic> map) {
     return LogScopeArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      parent: (() {
-        final guardedValue = map['parent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceNames: pulumi.Input.fromValue(
-        (map['resourceNames'] as List).cast<String>(),
-      ),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      parent: (() { final guardedValue = map['parent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceNames: pulumi.Input.fromValue((map['resourceNames'] as List).cast<String>()),
     );
   }
 }
+

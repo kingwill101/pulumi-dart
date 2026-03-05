@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRaiToolLabelArgs {
   /// The name of Cognitive Services account.
   final pulumi.Input<String> accountName;
-
   /// The name of the Rai Tool Label
   final pulumi.Input<String> raiToolConnectionName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -37,12 +35,9 @@ class GetRaiToolLabelArgs {
   factory GetRaiToolLabelArgs.fromMap(Map<String, dynamic> map) {
     return GetRaiToolLabelArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
-      raiToolConnectionName: pulumi.Input.fromValue(
-        map['raiToolConnectionName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      raiToolConnectionName: pulumi.Input.fromValue(map['raiToolConnectionName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

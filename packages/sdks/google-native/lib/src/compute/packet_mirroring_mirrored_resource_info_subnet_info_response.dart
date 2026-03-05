@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PacketMirroringMirroredResourceInfoSubnetInfoResponse {
   /// Unique identifier for the subnetwork; defined by the server.
   final pulumi.Input<String> canonicalUrl;
-
   /// Resource URL to the subnetwork for which traffic from/to all VM instances will be mirrored.
   final pulumi.Input<String> url;
 
@@ -18,15 +17,17 @@ class PacketMirroringMirroredResourceInfoSubnetInfoResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'canonicalUrl': canonicalUrl, 'url': url};
+    return <String, dynamic>{
+      'canonicalUrl': canonicalUrl,
+      'url': url,
+    };
   }
 
-  factory PacketMirroringMirroredResourceInfoSubnetInfoResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PacketMirroringMirroredResourceInfoSubnetInfoResponse.fromMap(Map<String, dynamic> map) {
     return PacketMirroringMirroredResourceInfoSubnetInfoResponse(
       canonicalUrl: pulumi.Input.fromValue(map['canonicalUrl'] as String),
       url: pulumi.Input.fromValue(map['url'] as String),
     );
   }
 }
+

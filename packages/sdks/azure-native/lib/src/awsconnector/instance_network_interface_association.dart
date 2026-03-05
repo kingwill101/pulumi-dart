@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceNetworkInterfaceAssociation {
   /// &lt;p&gt;The carrier IP address associated with the network interface.&lt;/p&gt;
   final pulumi.Input<String>? carrierIp;
-
   /// &lt;p&gt;The customer-owned IP address associated with the network interface.&lt;/p&gt;
   final pulumi.Input<String>? customerOwnedIp;
-
   /// &lt;p&gt;The ID of the owner of the Elastic IP address.&lt;/p&gt;
   final pulumi.Input<String>? ipOwnerId;
-
   /// &lt;p&gt;The public DNS name.&lt;/p&gt;
   final pulumi.Input<String>? publicDnsName;
-
   /// &lt;p&gt;The public IP address or Elastic IP address bound to the network interface.&lt;/p&gt;
   final pulumi.Input<String>? publicIp;
 
@@ -43,35 +39,14 @@ class InstanceNetworkInterfaceAssociation {
     };
   }
 
-  factory InstanceNetworkInterfaceAssociation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InstanceNetworkInterfaceAssociation.fromMap(Map<String, dynamic> map) {
     return InstanceNetworkInterfaceAssociation(
-      carrierIp: (() {
-        final guardedValue = map['carrierIp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      customerOwnedIp: (() {
-        final guardedValue = map['customerOwnedIp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ipOwnerId: (() {
-        final guardedValue = map['ipOwnerId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      publicDnsName: (() {
-        final guardedValue = map['publicDnsName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      publicIp: (() {
-        final guardedValue = map['publicIp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      carrierIp: (() { final guardedValue = map['carrierIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      customerOwnedIp: (() { final guardedValue = map['customerOwnedIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ipOwnerId: (() { final guardedValue = map['ipOwnerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicDnsName: (() { final guardedValue = map['publicDnsName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicIp: (() { final guardedValue = map['publicIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

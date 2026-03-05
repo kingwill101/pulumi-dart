@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SslCertificateSelfManagedSslCertificateComputeBeta {
   /// A local certificate file. The certificate must be in PEM format. The certificate chain must be no greater than 5 certs long. The chain must include at least one intermediate cert.
   final pulumi.Input<String>? certificate;
-
   /// A write-only private key in PEM format. Only insert requests will include this field.
   final pulumi.Input<String>? privateKey;
 
@@ -25,20 +24,11 @@ class SslCertificateSelfManagedSslCertificateComputeBeta {
     };
   }
 
-  factory SslCertificateSelfManagedSslCertificateComputeBeta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SslCertificateSelfManagedSslCertificateComputeBeta.fromMap(Map<String, dynamic> map) {
     return SslCertificateSelfManagedSslCertificateComputeBeta(
-      certificate: (() {
-        final guardedValue = map['certificate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      privateKey: (() {
-        final guardedValue = map['privateKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      certificate: (() { final guardedValue = map['certificate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateKey: (() { final guardedValue = map['privateKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

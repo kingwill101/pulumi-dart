@@ -10,27 +10,20 @@ class TaskTemplateSpec {
 
   /// Creates a new [TaskTemplateSpec].
   /// [spec] Optional. Specification of the desired behavior of the task.
-  TaskTemplateSpec({this.spec});
+  TaskTemplateSpec({
+    this.spec,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'spec':
-          ?pulumi.Input.mapOptionalInputValue<TaskSpec, Map<String, dynamic>>(
-            spec,
-            (value) => value.toMap(),
-          ),
+      'spec': ?pulumi.Input.mapOptionalInputValue<TaskSpec, Map<String, dynamic>>(spec, (value) => value.toMap()),
     };
   }
 
   factory TaskTemplateSpec.fromMap(Map<String, dynamic> map) {
     return TaskTemplateSpec(
-      spec: (() {
-        final guardedValue = map['spec'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          TaskSpec.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
+      spec: (() { final guardedValue = map['spec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TaskSpec.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

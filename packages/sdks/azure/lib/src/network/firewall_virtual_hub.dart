@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FirewallVirtualHub {
   /// The private IP address associated with the Firewall.
   final pulumi.Input<String>? privateIpAddress;
-
   /// The list of public IP addresses associated with the Firewall.
   final pulumi.Input<List<String>>? publicIpAddresses;
-
   /// Specifies the number of public IPs to assign to the Firewall. Defaults to `1`.
   final pulumi.Input<int>? publicIpCount;
-
   /// Specifies the ID of the Virtual Hub where the Firewall resides in.
   final pulumi.Input<String> virtualHubId;
 
@@ -38,22 +35,11 @@ class FirewallVirtualHub {
 
   factory FirewallVirtualHub.fromMap(Map<String, dynamic> map) {
     return FirewallVirtualHub(
-      privateIpAddress: (() {
-        final guardedValue = map['privateIpAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      publicIpAddresses: (() {
-        final guardedValue = map['publicIpAddresses'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      publicIpCount: (() {
-        final guardedValue = map['publicIpCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      privateIpAddress: (() { final guardedValue = map['privateIpAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicIpAddresses: (() { final guardedValue = map['publicIpAddresses']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      publicIpCount: (() { final guardedValue = map['publicIpCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       virtualHubId: pulumi.Input.fromValue(map['virtualHubId'] as String),
     );
   }
 }
+

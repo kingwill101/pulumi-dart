@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDataSharesDataShare {
   /// ARN (Amazon Resource Name) of the data share.
   final pulumi.Input<String> dataShareArn;
-
   /// Identifier of a datashare to show its managing entity.
   final pulumi.Input<String> managedBy;
-
   /// ARN (Amazon Resource Name) of the producer.
   final pulumi.Input<String> producerArn;
 
@@ -38,3 +36,4 @@ class GetDataSharesDataShare {
     );
   }
 }
+

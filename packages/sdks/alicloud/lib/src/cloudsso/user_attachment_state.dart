@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserAttachmentState {
   /// The ID of the directory.
   final pulumi.Input<String>? directoryId;
-
   /// The ID of the group.
   final pulumi.Input<String>? groupId;
-
   /// The ID of the user.
   final pulumi.Input<String>? userId;
 
@@ -17,7 +15,11 @@ class UserAttachmentState {
   /// [directoryId] The ID of the directory.
   /// [groupId] The ID of the group.
   /// [userId] The ID of the user.
-  UserAttachmentState({this.directoryId, this.groupId, this.userId});
+  UserAttachmentState({
+    this.directoryId,
+    this.groupId,
+    this.userId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class UserAttachmentState {
 
   factory UserAttachmentState.fromMap(Map<String, dynamic> map) {
     return UserAttachmentState(
-      directoryId: (() {
-        final guardedValue = map['directoryId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      groupId: (() {
-        final guardedValue = map['groupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      userId: (() {
-        final guardedValue = map['userId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      directoryId: (() { final guardedValue = map['directoryId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      groupId: (() { final guardedValue = map['groupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      userId: (() { final guardedValue = map['userId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

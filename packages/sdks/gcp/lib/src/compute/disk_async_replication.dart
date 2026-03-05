@@ -222,7 +222,6 @@ import 'disk_async_replication_state.dart';
 class DiskAsyncReplication extends pulumi.CustomResource {
   /// The primary disk (source of replication).
   late final pulumi.Output<String> primaryDisk;
-
   /// The secondary disk (target of replication). You can specify only one value. Structure is documented below.
   ///
   /// The `secondary_disk` block includes:
@@ -237,22 +236,13 @@ class DiskAsyncReplication extends pulumi.CustomResource {
     DiskAsyncReplicationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:compute/diskAsyncReplication:DiskAsyncReplication',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:compute/diskAsyncReplication:DiskAsyncReplication',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     primaryDisk = registerOutput<String>('primaryDisk');
-    secondaryDisk = registerOutput<DiskAsyncReplicationSecondaryDisk>(
-      'secondaryDisk',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DiskAsyncReplicationSecondaryDisk.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    secondaryDisk = registerOutput<DiskAsyncReplicationSecondaryDisk>('secondaryDisk', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DiskAsyncReplicationSecondaryDisk.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [DiskAsyncReplication] resource's state with the given [name] and [id].
@@ -273,21 +263,12 @@ class DiskAsyncReplication extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:compute/diskAsyncReplication:DiskAsyncReplication',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:compute/diskAsyncReplication:DiskAsyncReplication',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     primaryDisk = registerOutput<String>('primaryDisk');
-    secondaryDisk = registerOutput<DiskAsyncReplicationSecondaryDisk>(
-      'secondaryDisk',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DiskAsyncReplicationSecondaryDisk.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    secondaryDisk = registerOutput<DiskAsyncReplicationSecondaryDisk>('secondaryDisk', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DiskAsyncReplicationSecondaryDisk.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

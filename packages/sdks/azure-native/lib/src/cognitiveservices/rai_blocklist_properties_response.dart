@@ -9,19 +9,20 @@ class RaiBlocklistPropertiesResponse {
 
   /// Creates a new [RaiBlocklistPropertiesResponse].
   /// [description] Description of the block list.
-  RaiBlocklistPropertiesResponse({this.description});
+  RaiBlocklistPropertiesResponse({
+    this.description,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'description': ?description};
+    return <String, dynamic>{
+      'description': ?description,
+    };
   }
 
   factory RaiBlocklistPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return RaiBlocklistPropertiesResponse(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

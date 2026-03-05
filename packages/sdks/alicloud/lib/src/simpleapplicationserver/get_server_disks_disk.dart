@@ -5,34 +5,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServerDisksDisk {
   /// Disk type. Possible values: `ESSD`, `SSD`.
   final pulumi.Input<String> category;
-
   /// The time when the disk was created. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
   final pulumi.Input<String> createTime;
-
   /// The device name of the disk on the simple application server.
   final pulumi.Input<String> device;
-
   /// The first ID of the resource.
   final pulumi.Input<String> diskId;
-
   /// The name of the resource.
   final pulumi.Input<String> diskName;
-
   /// The type of the disk. Possible values: `System`, `Data`.
   final pulumi.Input<String> diskType;
-
   /// The ID of the Disk.
   final pulumi.Input<String> id;
-
   /// Alibaba Cloud simple application server instance ID.
   final pulumi.Input<String> instanceId;
-
   /// The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`.
   final pulumi.Input<String> paymentType;
-
   /// The size of the disk. Unit: `GB`.
   final pulumi.Input<int> size;
-
   /// The status of the disk. Valid values: `ReIniting`, `Creating`, `In_Use`, `Available`, `Attaching`, `Detaching`.
   final pulumi.Input<String> status;
 
@@ -94,3 +84,4 @@ class GetServerDisksDisk {
     );
   }
 }
+

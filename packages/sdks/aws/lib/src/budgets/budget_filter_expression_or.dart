@@ -11,19 +11,14 @@ import 'budget_filter_expression_or_tags.dart';
 class BudgetFilterExpressionOr {
   /// (Optional) A list of filter expressions to combine with AND logic. Each `and` block is one operand and must itself contain exactly one root.
   final pulumi.Input<List<BudgetFilterExpressionOrAnd>>? ands;
-
   /// (Optional) A Cost Category Filter block.
   final pulumi.Input<BudgetFilterExpressionOrCostCategories>? costCategories;
-
   /// (Optional) A Dimension Filter block.
   final pulumi.Input<BudgetFilterExpressionOrDimensions>? dimensions;
-
   /// (Optional) A single filter expression to negate. Must contain exactly one root.
   final pulumi.Input<BudgetFilterExpressionOrNot>? not;
-
   /// (Optional) A list of filter expressions to combine with OR logic. Each `or` block is one operand and must itself contain exactly one root.
   final pulumi.Input<List<BudgetFilterExpressionOrOr>>? ors;
-
   /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<BudgetFilterExpressionOrTags>? tags;
 
@@ -45,115 +40,24 @@ class BudgetFilterExpressionOr {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ands':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<BudgetFilterExpressionOrAnd>,
-            List<Map<String, dynamic>>
-          >(
-            ands,
-            (value) =>
-                pulumi.Input.encodeList<
-                  BudgetFilterExpressionOrAnd,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'costCategories':
-          ?pulumi.Input.mapOptionalInputValue<
-            BudgetFilterExpressionOrCostCategories,
-            Map<String, dynamic>
-          >(costCategories, (value) => value.toMap()),
-      'dimensions':
-          ?pulumi.Input.mapOptionalInputValue<
-            BudgetFilterExpressionOrDimensions,
-            Map<String, dynamic>
-          >(dimensions, (value) => value.toMap()),
-      'not':
-          ?pulumi.Input.mapOptionalInputValue<
-            BudgetFilterExpressionOrNot,
-            Map<String, dynamic>
-          >(not, (value) => value.toMap()),
-      'ors':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<BudgetFilterExpressionOrOr>,
-            List<Map<String, dynamic>>
-          >(
-            ors,
-            (value) =>
-                pulumi.Input.encodeList<
-                  BudgetFilterExpressionOrOr,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'tags':
-          ?pulumi.Input.mapOptionalInputValue<
-            BudgetFilterExpressionOrTags,
-            Map<String, dynamic>
-          >(tags, (value) => value.toMap()),
+      'ands': ?pulumi.Input.mapOptionalInputValue<List<BudgetFilterExpressionOrAnd>, List<Map<String, dynamic>>>(ands, (value) => pulumi.Input.encodeList<BudgetFilterExpressionOrAnd, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'costCategories': ?pulumi.Input.mapOptionalInputValue<BudgetFilterExpressionOrCostCategories, Map<String, dynamic>>(costCategories, (value) => value.toMap()),
+      'dimensions': ?pulumi.Input.mapOptionalInputValue<BudgetFilterExpressionOrDimensions, Map<String, dynamic>>(dimensions, (value) => value.toMap()),
+      'not': ?pulumi.Input.mapOptionalInputValue<BudgetFilterExpressionOrNot, Map<String, dynamic>>(not, (value) => value.toMap()),
+      'ors': ?pulumi.Input.mapOptionalInputValue<List<BudgetFilterExpressionOrOr>, List<Map<String, dynamic>>>(ors, (value) => pulumi.Input.encodeList<BudgetFilterExpressionOrOr, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'tags': ?pulumi.Input.mapOptionalInputValue<BudgetFilterExpressionOrTags, Map<String, dynamic>>(tags, (value) => value.toMap()),
     };
   }
 
   factory BudgetFilterExpressionOr.fromMap(Map<String, dynamic> map) {
     return BudgetFilterExpressionOr(
-      ands: (() {
-        final guardedValue = map['ands'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<BudgetFilterExpressionOrAnd>(
-            guardedValue,
-            (value) => BudgetFilterExpressionOrAnd.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      costCategories: (() {
-        final guardedValue = map['costCategories'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BudgetFilterExpressionOrCostCategories.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      dimensions: (() {
-        final guardedValue = map['dimensions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BudgetFilterExpressionOrDimensions.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      not: (() {
-        final guardedValue = map['not'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BudgetFilterExpressionOrNot.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      ors: (() {
-        final guardedValue = map['ors'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<BudgetFilterExpressionOrOr>(
-            guardedValue,
-            (value) => BudgetFilterExpressionOrOr.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BudgetFilterExpressionOrTags.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      ands: (() { final guardedValue = map['ands']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<BudgetFilterExpressionOrAnd>(guardedValue, (value) => BudgetFilterExpressionOrAnd.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      costCategories: (() { final guardedValue = map['costCategories']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BudgetFilterExpressionOrCostCategories.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      dimensions: (() { final guardedValue = map['dimensions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BudgetFilterExpressionOrDimensions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      not: (() { final guardedValue = map['not']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BudgetFilterExpressionOrNot.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      ors: (() { final guardedValue = map['ors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<BudgetFilterExpressionOrOr>(guardedValue, (value) => BudgetFilterExpressionOrOr.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BudgetFilterExpressionOrTags.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

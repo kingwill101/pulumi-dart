@@ -15,3 +15,4 @@ enum VmPriority {
     throw ArgumentError('Unknown VmPriority value: $value');
   }
 }
+

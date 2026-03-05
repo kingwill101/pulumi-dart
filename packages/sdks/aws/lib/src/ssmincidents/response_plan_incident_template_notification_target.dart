@@ -8,17 +8,20 @@ class ResponsePlanIncidentTemplateNotificationTarget {
 
   /// Creates a new [ResponsePlanIncidentTemplateNotificationTarget].
   /// [snsTopicArn] The ARN of the Amazon SNS topic.
-  ResponsePlanIncidentTemplateNotificationTarget({required this.snsTopicArn});
+  ResponsePlanIncidentTemplateNotificationTarget({
+    required this.snsTopicArn,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'snsTopicArn': snsTopicArn};
+    return <String, dynamic>{
+      'snsTopicArn': snsTopicArn,
+    };
   }
 
-  factory ResponsePlanIncidentTemplateNotificationTarget.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResponsePlanIncidentTemplateNotificationTarget.fromMap(Map<String, dynamic> map) {
     return ResponsePlanIncidentTemplateNotificationTarget(
       snsTopicArn: pulumi.Input.fromValue(map['snsTopicArn'] as String),
     );
   }
 }
+

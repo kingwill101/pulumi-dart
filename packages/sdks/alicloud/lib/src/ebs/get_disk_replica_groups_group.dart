@@ -5,47 +5,33 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDiskReplicaGroupsGroup {
   /// The description of the consistent replication group.
   final pulumi.Input<String> description;
-
   /// The ID of the region to which the disaster recovery site belongs.
   final pulumi.Input<String> destinationRegionId;
-
   /// The ID of the zone to which the disaster recovery site belongs.
   final pulumi.Input<String> destinationZoneId;
-
   /// Consistent replication group name.
   final pulumi.Input<String> groupName;
-
   /// The ID of the Disk Replica Group.
   final pulumi.Input<String> id;
   final pulumi.Input<String> lastRecoverPoint;
-
   /// The initial source region of the replication group.
   final pulumi.Input<String> primaryRegion;
-
   /// The initial source available area of the replication group.
   final pulumi.Input<String> primaryZone;
-
   /// The ID of the consistent replication group.
   final pulumi.Input<String> replicaGroupId;
-
   /// The recovery point objective (RPO) of the replication pair-consistent group.
   final pulumi.Input<int> rpo;
-
   /// Site information sources for replication pairs and consistent replication groups.
   final pulumi.Input<String> site;
-
   /// The ID of the region to which the production site belongs.
   final pulumi.Input<String> sourceRegionId;
-
   /// The ID of the zone to which the production site belongs.
   final pulumi.Input<String> sourceZoneId;
-
   /// The initial destination region of the replication group.
   final pulumi.Input<String> standbyRegion;
-
   /// The initial destination zone of the replication group.
   final pulumi.Input<String> standbyZone;
-
   /// The status of the consistent replication group. Possible values:
   final pulumi.Input<String> status;
 
@@ -109,17 +95,11 @@ class GetDiskReplicaGroupsGroup {
   factory GetDiskReplicaGroupsGroup.fromMap(Map<String, dynamic> map) {
     return GetDiskReplicaGroupsGroup(
       description: pulumi.Input.fromValue(map['description'] as String),
-      destinationRegionId: pulumi.Input.fromValue(
-        map['destinationRegionId'] as String,
-      ),
-      destinationZoneId: pulumi.Input.fromValue(
-        map['destinationZoneId'] as String,
-      ),
+      destinationRegionId: pulumi.Input.fromValue(map['destinationRegionId'] as String),
+      destinationZoneId: pulumi.Input.fromValue(map['destinationZoneId'] as String),
       groupName: pulumi.Input.fromValue(map['groupName'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
-      lastRecoverPoint: pulumi.Input.fromValue(
-        map['lastRecoverPoint'] as String,
-      ),
+      lastRecoverPoint: pulumi.Input.fromValue(map['lastRecoverPoint'] as String),
       primaryRegion: pulumi.Input.fromValue(map['primaryRegion'] as String),
       primaryZone: pulumi.Input.fromValue(map['primaryZone'] as String),
       replicaGroupId: pulumi.Input.fromValue(map['replicaGroupId'] as String),
@@ -133,3 +113,4 @@ class GetDiskReplicaGroupsGroup {
     );
   }
 }
+

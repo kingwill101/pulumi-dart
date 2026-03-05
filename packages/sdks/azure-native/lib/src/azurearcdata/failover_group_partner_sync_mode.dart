@@ -15,3 +15,4 @@ enum FailoverGroupPartnerSyncMode {
     throw ArgumentError('Unknown FailoverGroupPartnerSyncMode value: $value');
   }
 }
+

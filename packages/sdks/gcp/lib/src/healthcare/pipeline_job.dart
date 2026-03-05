@@ -1890,16 +1890,12 @@ class PipelineJob extends pulumi.CustomResource {
   /// Specifies the backfill configuration.
   /// Structure is documented below.
   late final pulumi.Output<PipelineJobBackfillPipelineJob?> backfillPipelineJob;
-
   /// Healthcare Dataset under which the Pipeline Job is to run
   late final pulumi.Output<String> dataset;
-
   /// If true, disables writing lineage for the pipeline.
   late final pulumi.Output<bool?> disableLineage;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// User-supplied key-value pairs used to organize Pipeline Jobs.
   /// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of
   /// maximum 128 bytes, and must conform to the following PCRE regular expression:
@@ -1914,26 +1910,19 @@ class PipelineJob extends pulumi.CustomResource {
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// Location where the Pipeline Job is to run
   late final pulumi.Output<String> location;
-
   /// Specifies mapping configuration.
   /// Structure is documented below.
   late final pulumi.Output<PipelineJobMappingPipelineJob?> mappingPipelineJob;
-
   /// Specifies the name of the pipeline job. This field is user-assigned.
   late final pulumi.Output<String> name;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// Specifies reconciliation configuration.
   /// Structure is documented below.
-  late final pulumi.Output<PipelineJobReconciliationPipelineJob?>
-  reconciliationPipelineJob;
-
+  late final pulumi.Output<PipelineJobReconciliationPipelineJob?> reconciliationPipelineJob;
   /// The fully qualified name of this dataset
   late final pulumi.Output<String> selfLink;
 
@@ -1946,49 +1935,21 @@ class PipelineJob extends pulumi.CustomResource {
     PipelineJobArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:healthcare/pipelineJob:PipelineJob',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    backfillPipelineJob = registerOutput<PipelineJobBackfillPipelineJob?>(
-      'backfillPipelineJob',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PipelineJobBackfillPipelineJob.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:healthcare/pipelineJob:PipelineJob',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    backfillPipelineJob = registerOutput<PipelineJobBackfillPipelineJob?>('backfillPipelineJob', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineJobBackfillPipelineJob.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataset = registerOutput<String>('dataset');
     disableLineage = registerOutput<bool?>('disableLineage');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
-    mappingPipelineJob = registerOutput<PipelineJobMappingPipelineJob?>(
-      'mappingPipelineJob',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PipelineJobMappingPipelineJob.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    mappingPipelineJob = registerOutput<PipelineJobMappingPipelineJob?>('mappingPipelineJob', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineJobMappingPipelineJob.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    reconciliationPipelineJob =
-        registerOutput<PipelineJobReconciliationPipelineJob?>(
-          'reconciliationPipelineJob',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return PipelineJobReconciliationPipelineJob.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    reconciliationPipelineJob = registerOutput<PipelineJobReconciliationPipelineJob?>('reconciliationPipelineJob', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineJobReconciliationPipelineJob.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     selfLink = registerOutput<String>('selfLink');
   }
 
@@ -2010,49 +1971,21 @@ class PipelineJob extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:healthcare/pipelineJob:PipelineJob',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    backfillPipelineJob = registerOutput<PipelineJobBackfillPipelineJob?>(
-      'backfillPipelineJob',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PipelineJobBackfillPipelineJob.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:healthcare/pipelineJob:PipelineJob',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    backfillPipelineJob = registerOutput<PipelineJobBackfillPipelineJob?>('backfillPipelineJob', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineJobBackfillPipelineJob.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataset = registerOutput<String>('dataset');
     disableLineage = registerOutput<bool?>('disableLineage');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
-    mappingPipelineJob = registerOutput<PipelineJobMappingPipelineJob?>(
-      'mappingPipelineJob',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PipelineJobMappingPipelineJob.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    mappingPipelineJob = registerOutput<PipelineJobMappingPipelineJob?>('mappingPipelineJob', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineJobMappingPipelineJob.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    reconciliationPipelineJob =
-        registerOutput<PipelineJobReconciliationPipelineJob?>(
-          'reconciliationPipelineJob',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return PipelineJobReconciliationPipelineJob.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    reconciliationPipelineJob = registerOutput<PipelineJobReconciliationPipelineJob?>('reconciliationPipelineJob', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineJobReconciliationPipelineJob.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     selfLink = registerOutput<String>('selfLink');
   }
 }

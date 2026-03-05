@@ -10,20 +10,16 @@ import 'ssh_configuration.dart';
 class LinuxConfiguration {
   /// Specifies whether password authentication should be disabled.
   final pulumi.Input<bool>? disablePasswordAuthentication;
-
   /// Indicates whether VMAgent Platform Updates is enabled for the Linux virtual
   /// machine. Default value is false.
   final pulumi.Input<bool>? enableVMAgentPlatformUpdates;
-
   /// [Preview Feature] Specifies settings related to VM Guest Patching on Linux.
   final pulumi.Input<LinuxPatchSettings>? patchSettings;
-
   /// Indicates whether virtual machine agent should be provisioned on the virtual
   /// machine. When this property is not specified in the request body, default
   /// behavior is to set it to true. This will ensure that VM Agent is installed on
   /// the VM so that extensions can be added to the VM later.
   final pulumi.Input<bool>? provisionVMAgent;
-
   /// Specifies the ssh key configuration for a Linux OS.
   final pulumi.Input<SshConfiguration>? ssh;
 
@@ -45,55 +41,20 @@ class LinuxConfiguration {
     return <String, dynamic>{
       'disablePasswordAuthentication': ?disablePasswordAuthentication,
       'enableVMAgentPlatformUpdates': ?enableVMAgentPlatformUpdates,
-      'patchSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            LinuxPatchSettings,
-            Map<String, dynamic>
-          >(patchSettings, (value) => value.toMap()),
+      'patchSettings': ?pulumi.Input.mapOptionalInputValue<LinuxPatchSettings, Map<String, dynamic>>(patchSettings, (value) => value.toMap()),
       'provisionVMAgent': ?provisionVMAgent,
-      'ssh':
-          ?pulumi.Input.mapOptionalInputValue<
-            SshConfiguration,
-            Map<String, dynamic>
-          >(ssh, (value) => value.toMap()),
+      'ssh': ?pulumi.Input.mapOptionalInputValue<SshConfiguration, Map<String, dynamic>>(ssh, (value) => value.toMap()),
     };
   }
 
   factory LinuxConfiguration.fromMap(Map<String, dynamic> map) {
     return LinuxConfiguration(
-      disablePasswordAuthentication: (() {
-        final guardedValue = map['disablePasswordAuthentication'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      enableVMAgentPlatformUpdates: (() {
-        final guardedValue = map['enableVMAgentPlatformUpdates'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      patchSettings: (() {
-        final guardedValue = map['patchSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          LinuxPatchSettings.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      provisionVMAgent: (() {
-        final guardedValue = map['provisionVMAgent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      ssh: (() {
-        final guardedValue = map['ssh'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SshConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      disablePasswordAuthentication: (() { final guardedValue = map['disablePasswordAuthentication']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enableVMAgentPlatformUpdates: (() { final guardedValue = map['enableVMAgentPlatformUpdates']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      patchSettings: (() { final guardedValue = map['patchSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LinuxPatchSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      provisionVMAgent: (() { final guardedValue = map['provisionVMAgent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      ssh: (() { final guardedValue = map['ssh']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SshConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

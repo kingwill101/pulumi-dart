@@ -7,17 +7,13 @@ enum GoogleCloudRecaptchaenterpriseV1WafSettingsWafService {
   const GoogleCloudRecaptchaenterpriseV1WafSettingsWafService(this.wireValue);
   final String wireValue;
 
-  static GoogleCloudRecaptchaenterpriseV1WafSettingsWafService fromValue(
-    String value,
-  ) {
-    for (final item
-        in GoogleCloudRecaptchaenterpriseV1WafSettingsWafService.values) {
+  static GoogleCloudRecaptchaenterpriseV1WafSettingsWafService fromValue(String value) {
+    for (final item in GoogleCloudRecaptchaenterpriseV1WafSettingsWafService.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GoogleCloudRecaptchaenterpriseV1WafSettingsWafService value: $value',
-    );
+    throw ArgumentError('Unknown GoogleCloudRecaptchaenterpriseV1WafSettingsWafService value: $value');
   }
 }
+

@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConditionalForwarderArgs {
   /// ID of directory.
   final pulumi.Input<String> directoryId;
-
   /// A list of forwarder IP addresses.
   final pulumi.Input<List<String>> dnsIps;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The fully qualified domain name of the remote domain for which forwarders will be used.
   final pulumi.Input<String> remoteDomainName;
 
@@ -44,14 +41,9 @@ class ConditionalForwarderArgs {
     return ConditionalForwarderArgs(
       directoryId: pulumi.Input.fromValue(map['directoryId'] as String),
       dnsIps: pulumi.Input.fromValue((map['dnsIps'] as List).cast<String>()),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      remoteDomainName: pulumi.Input.fromValue(
-        map['remoteDomainName'] as String,
-      ),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      remoteDomainName: pulumi.Input.fromValue(map['remoteDomainName'] as String),
     );
   }
 }
+

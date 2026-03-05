@@ -6,16 +6,12 @@ import 'get_instances_instance.dart';
 /// Result data returned by getInstances.
 class GetInstancesResult {
   final String? descriptionRegex;
-
   /// A list of DRDS descriptions.
   final List<String> descriptions;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of DRDS instance IDs.
   final List<String> ids;
-
   /// A list of DRDS instances.
   final List<GetInstancesInstance> instances;
   final String? nameRegex;
@@ -45,11 +41,7 @@ class GetInstancesResult {
       'descriptions': descriptions,
       'id': id,
       'ids': ids,
-      'instances':
-          pulumi.Input.encodeList<GetInstancesInstance, Map<String, dynamic>>(
-            instances,
-            (value) => value.toMap(),
-          ),
+      'instances': pulumi.Input.encodeList<GetInstancesInstance, Map<String, dynamic>>(instances, (value) => value.toMap()),
       'nameRegex': ?nameRegex,
       'outputFile': ?outputFile,
     };
@@ -57,30 +49,14 @@ class GetInstancesResult {
 
   factory GetInstancesResult.fromMap(Map<String, dynamic> map) {
     return GetInstancesResult(
-      descriptionRegex: (() {
-        final guardedValue = map['descriptionRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      descriptionRegex: (() { final guardedValue = map['descriptionRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       descriptions: (map['descriptions'] as List).cast<String>(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      instances: pulumi.Input.decodeList<GetInstancesInstance>(
-        map['instances']!,
-        (value) => GetInstancesInstance.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      instances: pulumi.Input.decodeList<GetInstancesInstance>(map['instances']!, (value) => GetInstancesInstance.fromMap((value as Map).cast<String, dynamic>())),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

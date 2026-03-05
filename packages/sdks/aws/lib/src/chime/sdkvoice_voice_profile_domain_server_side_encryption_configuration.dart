@@ -15,14 +15,15 @@ class SdkvoiceVoiceProfileDomainServerSideEncryptionConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'kmsKeyArn': kmsKeyArn};
+    return <String, dynamic>{
+      'kmsKeyArn': kmsKeyArn,
+    };
   }
 
-  factory SdkvoiceVoiceProfileDomainServerSideEncryptionConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SdkvoiceVoiceProfileDomainServerSideEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return SdkvoiceVoiceProfileDomainServerSideEncryptionConfiguration(
       kmsKeyArn: pulumi.Input.fromValue(map['kmsKeyArn'] as String),
     );
   }
 }
+

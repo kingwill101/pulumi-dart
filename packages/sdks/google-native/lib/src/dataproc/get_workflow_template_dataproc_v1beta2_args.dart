@@ -33,24 +33,13 @@ class GetWorkflowTemplateDataprocV1beta2Args {
     };
   }
 
-  factory GetWorkflowTemplateDataprocV1beta2Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetWorkflowTemplateDataprocV1beta2Args.fromMap(Map<String, dynamic> map) {
     return GetWorkflowTemplateDataprocV1beta2Args(
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      workflowTemplateId: pulumi.Input.fromValue(
-        map['workflowTemplateId'] as String,
-      ),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      workflowTemplateId: pulumi.Input.fromValue(map['workflowTemplateId'] as String),
     );
   }
 }
+

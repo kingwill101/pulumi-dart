@@ -10,38 +10,20 @@ class Backend {
 
   /// Creates a new [Backend].
   /// [rules] A list of API backend rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
-  Backend({this.rules});
+  Backend({
+    this.rules,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'rules':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<BackendRule>,
-            List<Map<String, dynamic>>
-          >(
-            rules,
-            (value) =>
-                pulumi.Input.encodeList<BackendRule, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'rules': ?pulumi.Input.mapOptionalInputValue<List<BackendRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<BackendRule, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory Backend.fromMap(Map<String, dynamic> map) {
     return Backend(
-      rules: (() {
-        final guardedValue = map['rules'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<BackendRule>(
-            guardedValue,
-            (value) =>
-                BackendRule.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
+      rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<BackendRule>(guardedValue, (value) => BackendRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

@@ -7,12 +7,9 @@ import 'log_collection_session_response.dart';
 class LogCollectionPropertiesResponse {
   /// From DateTimeStamp from when logs need to be connected
   final pulumi.Input<String> fromDate;
-
   /// Recent DateTimeStamp where logs are successfully generated
   final pulumi.Input<String> lastLogGenerated;
-  final pulumi.Input<List<LogCollectionSessionResponse>>
-  logCollectionSessionDetails;
-
+  final pulumi.Input<List<LogCollectionSessionResponse>> logCollectionSessionDetails;
   /// To DateTimeStamp till when logs need to be connected
   final pulumi.Input<String> toDate;
 
@@ -32,18 +29,7 @@ class LogCollectionPropertiesResponse {
     return <String, dynamic>{
       'fromDate': fromDate,
       'lastLogGenerated': lastLogGenerated,
-      'logCollectionSessionDetails':
-          pulumi.Input.mapInputValue<
-            List<LogCollectionSessionResponse>,
-            List<Map<String, dynamic>>
-          >(
-            logCollectionSessionDetails,
-            (value) =>
-                pulumi.Input.encodeList<
-                  LogCollectionSessionResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'logCollectionSessionDetails': pulumi.Input.mapInputValue<List<LogCollectionSessionResponse>, List<Map<String, dynamic>>>(logCollectionSessionDetails, (value) => pulumi.Input.encodeList<LogCollectionSessionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'toDate': toDate,
     };
   }
@@ -51,18 +37,10 @@ class LogCollectionPropertiesResponse {
   factory LogCollectionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return LogCollectionPropertiesResponse(
       fromDate: pulumi.Input.fromValue(map['fromDate'] as String),
-      lastLogGenerated: pulumi.Input.fromValue(
-        map['lastLogGenerated'] as String,
-      ),
-      logCollectionSessionDetails: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<LogCollectionSessionResponse>(
-          map['logCollectionSessionDetails']!,
-          (value) => LogCollectionSessionResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      lastLogGenerated: pulumi.Input.fromValue(map['lastLogGenerated'] as String),
+      logCollectionSessionDetails: pulumi.Input.fromValue(pulumi.Input.decodeList<LogCollectionSessionResponse>(map['logCollectionSessionDetails']!, (value) => LogCollectionSessionResponse.fromMap((value as Map).cast<String, dynamic>()))),
       toDate: pulumi.Input.fromValue(map['toDate'] as String),
     );
   }
 }
+

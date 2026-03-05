@@ -8,17 +8,13 @@ enum GoogleCloudDialogflowCxV3ResponseMessageResponseType {
   const GoogleCloudDialogflowCxV3ResponseMessageResponseType(this.wireValue);
   final String wireValue;
 
-  static GoogleCloudDialogflowCxV3ResponseMessageResponseType fromValue(
-    String value,
-  ) {
-    for (final item
-        in GoogleCloudDialogflowCxV3ResponseMessageResponseType.values) {
+  static GoogleCloudDialogflowCxV3ResponseMessageResponseType fromValue(String value) {
+    for (final item in GoogleCloudDialogflowCxV3ResponseMessageResponseType.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GoogleCloudDialogflowCxV3ResponseMessageResponseType value: $value',
-    );
+    throw ArgumentError('Unknown GoogleCloudDialogflowCxV3ResponseMessageResponseType value: $value');
   }
 }
+

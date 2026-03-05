@@ -9,10 +9,14 @@ class MutualTlsResponse {
 
   /// Creates a new [MutualTlsResponse].
   /// [mode] Specifies if the server TLS is configured to be strict or permissive. This field can be set to one of the following: STRICT: Client certificate must be presented, connection is in TLS. PERMISSIVE: Client certificate can be omitted, connection can be either plaintext or TLS.
-  MutualTlsResponse({required this.mode});
+  MutualTlsResponse({
+    required this.mode,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'mode': mode};
+    return <String, dynamic>{
+      'mode': mode,
+    };
   }
 
   factory MutualTlsResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class MutualTlsResponse {
     );
   }
 }
+

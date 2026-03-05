@@ -10,7 +10,10 @@ class CisBenchmarkResponse {
   /// Creates a new [CisBenchmarkResponse].
   /// [profileLevel] Required.
   /// [severity] Required.
-  CisBenchmarkResponse({required this.profileLevel, required this.severity});
+  CisBenchmarkResponse({
+    required this.profileLevel,
+    required this.severity,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,3 +29,4 @@ class CisBenchmarkResponse {
     );
   }
 }
+

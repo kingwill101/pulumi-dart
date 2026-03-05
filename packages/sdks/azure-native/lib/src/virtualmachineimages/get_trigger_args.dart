@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTriggerArgs {
   /// The name of the image Template
   final pulumi.Input<String> imageTemplateName;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the trigger
   final pulumi.Input<String> triggerName;
 
@@ -36,13 +34,10 @@ class GetTriggerArgs {
 
   factory GetTriggerArgs.fromMap(Map<String, dynamic> map) {
     return GetTriggerArgs(
-      imageTemplateName: pulumi.Input.fromValue(
-        map['imageTemplateName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      imageTemplateName: pulumi.Input.fromValue(map['imageTemplateName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       triggerName: pulumi.Input.fromValue(map['triggerName'] as String),
     );
   }
 }
+

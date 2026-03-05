@@ -10,25 +10,20 @@ class NodePoolDefaultsResponse {
 
   /// Creates a new [NodePoolDefaultsResponse].
   /// [nodeConfigDefaults] Subset of NodeConfig message that has defaults.
-  NodePoolDefaultsResponse({required this.nodeConfigDefaults});
+  NodePoolDefaultsResponse({
+    required this.nodeConfigDefaults,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'nodeConfigDefaults':
-          pulumi.Input.mapInputValue<
-            NodeConfigDefaultsResponse,
-            Map<String, dynamic>
-          >(nodeConfigDefaults, (value) => value.toMap()),
+      'nodeConfigDefaults': pulumi.Input.mapInputValue<NodeConfigDefaultsResponse, Map<String, dynamic>>(nodeConfigDefaults, (value) => value.toMap()),
     };
   }
 
   factory NodePoolDefaultsResponse.fromMap(Map<String, dynamic> map) {
     return NodePoolDefaultsResponse(
-      nodeConfigDefaults: pulumi.Input.fromValue(
-        NodeConfigDefaultsResponse.fromMap(
-          (map['nodeConfigDefaults']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      nodeConfigDefaults: pulumi.Input.fromValue(NodeConfigDefaultsResponse.fromMap((map['nodeConfigDefaults']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

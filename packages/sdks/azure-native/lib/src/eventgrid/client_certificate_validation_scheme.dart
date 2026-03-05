@@ -16,8 +16,7 @@ enum ClientCertificateValidationScheme {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ClientCertificateValidationScheme value: $value',
-    );
+    throw ArgumentError('Unknown ClientCertificateValidationScheme value: $value');
   }
 }
+

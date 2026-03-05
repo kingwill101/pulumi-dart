@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListJobCredentialsArgs {
   /// The name of the job Resource within the specified resource group. job names must be between 3 and 24 characters in length and use any alphanumeric and underscore only
   final pulumi.Input<String> jobName;
-
   /// The Resource Group Name
   final pulumi.Input<String> resourceGroupName;
 
@@ -31,9 +30,8 @@ class ListJobCredentialsArgs {
   factory ListJobCredentialsArgs.fromMap(Map<String, dynamic> map) {
     return ListJobCredentialsArgs(
       jobName: pulumi.Input.fromValue(map['jobName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

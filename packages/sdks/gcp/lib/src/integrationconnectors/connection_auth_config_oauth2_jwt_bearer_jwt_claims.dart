@@ -7,10 +7,8 @@ class ConnectionAuthConfigOauth2JwtBearerJwtClaims {
   ///
   /// &lt;a name="nested_auth_config_oauth2_client_credentials"&gt;&lt;/a&gt;The `oauth2_client_credentials` block supports:
   final pulumi.Input<String>? audience;
-
   /// Value for the "iss" claim.
   final pulumi.Input<String>? issuer;
-
   /// Value for the "sub" claim.
   final pulumi.Input<String>? subject;
 
@@ -32,25 +30,12 @@ class ConnectionAuthConfigOauth2JwtBearerJwtClaims {
     };
   }
 
-  factory ConnectionAuthConfigOauth2JwtBearerJwtClaims.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConnectionAuthConfigOauth2JwtBearerJwtClaims.fromMap(Map<String, dynamic> map) {
     return ConnectionAuthConfigOauth2JwtBearerJwtClaims(
-      audience: (() {
-        final guardedValue = map['audience'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      issuer: (() {
-        final guardedValue = map['issuer'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subject: (() {
-        final guardedValue = map['subject'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      audience: (() { final guardedValue = map['audience']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      issuer: (() { final guardedValue = map['issuer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subject: (() { final guardedValue = map['subject']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

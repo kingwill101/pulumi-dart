@@ -39,21 +39,12 @@ class GetFeedbackMessageArgs {
 
   factory GetFeedbackMessageArgs.fromMap(Map<String, dynamic> map) {
     return GetFeedbackMessageArgs(
-      annotatedDatasetId: pulumi.Input.fromValue(
-        map['annotatedDatasetId'] as String,
-      ),
+      annotatedDatasetId: pulumi.Input.fromValue(map['annotatedDatasetId'] as String),
       datasetId: pulumi.Input.fromValue(map['datasetId'] as String),
-      feedbackMessageId: pulumi.Input.fromValue(
-        map['feedbackMessageId'] as String,
-      ),
-      feedbackThreadId: pulumi.Input.fromValue(
-        map['feedbackThreadId'] as String,
-      ),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      feedbackMessageId: pulumi.Input.fromValue(map['feedbackMessageId'] as String),
+      feedbackThreadId: pulumi.Input.fromValue(map['feedbackThreadId'] as String),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

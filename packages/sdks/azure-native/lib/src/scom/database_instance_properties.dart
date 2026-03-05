@@ -9,19 +9,20 @@ class DatabaseInstanceProperties {
 
   /// Creates a new [DatabaseInstanceProperties].
   /// [databaseInstanceId] Resource Id of existing database instance
-  DatabaseInstanceProperties({this.databaseInstanceId});
+  DatabaseInstanceProperties({
+    this.databaseInstanceId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'databaseInstanceId': ?databaseInstanceId};
+    return <String, dynamic>{
+      'databaseInstanceId': ?databaseInstanceId,
+    };
   }
 
   factory DatabaseInstanceProperties.fromMap(Map<String, dynamic> map) {
     return DatabaseInstanceProperties(
-      databaseInstanceId: (() {
-        final guardedValue = map['databaseInstanceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      databaseInstanceId: (() { final guardedValue = map['databaseInstanceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

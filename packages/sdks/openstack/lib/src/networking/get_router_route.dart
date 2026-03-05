@@ -9,7 +9,10 @@ class GetRouterRoute {
   /// Creates a new [GetRouterRoute].
   /// [destinationCidr] Required.
   /// [nextHop] Required.
-  GetRouterRoute({required this.destinationCidr, required this.nextHop});
+  GetRouterRoute({
+    required this.destinationCidr,
+    required this.nextHop,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,3 +28,4 @@ class GetRouterRoute {
     );
   }
 }
+

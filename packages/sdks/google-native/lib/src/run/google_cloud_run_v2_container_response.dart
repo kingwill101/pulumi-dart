@@ -11,37 +11,26 @@ import 'google_cloud_run_v2_volume_mount_response.dart';
 class GoogleCloudRunV2ContainerResponse {
   /// Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
   final pulumi.Input<List<String>> args;
-
   /// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
   final pulumi.Input<List<String>> command;
-
   /// Names of the containers that must start before this container.
   final pulumi.Input<List<String>> dependsOn;
-
   /// List of environment variables to set in the container.
   final pulumi.Input<List<GoogleCloudRunV2EnvVarResponse>> env;
-
   /// Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed.
   final pulumi.Input<String> image;
-
   /// Periodic probe of container liveness. Container will be restarted if the probe fails.
   final pulumi.Input<GoogleCloudRunV2ProbeResponse> livenessProbe;
-
   /// Name of the container specified as a DNS_LABEL (RFC 1123).
   final pulumi.Input<String> name;
-
   /// List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
   final pulumi.Input<List<GoogleCloudRunV2ContainerPortResponse>> ports;
-
   /// Compute Resource requirements by this container.
   final pulumi.Input<GoogleCloudRunV2ResourceRequirementsResponse> resources;
-
   /// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
   final pulumi.Input<GoogleCloudRunV2ProbeResponse> startupProbe;
-
   /// Volume to mount into the container's filesystem.
   final pulumi.Input<List<GoogleCloudRunV2VolumeMountResponse>> volumeMounts;
-
   /// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
   final pulumi.Input<String> workingDir;
 
@@ -78,59 +67,14 @@ class GoogleCloudRunV2ContainerResponse {
       'args': args,
       'command': command,
       'dependsOn': dependsOn,
-      'env':
-          pulumi.Input.mapInputValue<
-            List<GoogleCloudRunV2EnvVarResponse>,
-            List<Map<String, dynamic>>
-          >(
-            env,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GoogleCloudRunV2EnvVarResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'env': pulumi.Input.mapInputValue<List<GoogleCloudRunV2EnvVarResponse>, List<Map<String, dynamic>>>(env, (value) => pulumi.Input.encodeList<GoogleCloudRunV2EnvVarResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'image': image,
-      'livenessProbe':
-          pulumi.Input.mapInputValue<
-            GoogleCloudRunV2ProbeResponse,
-            Map<String, dynamic>
-          >(livenessProbe, (value) => value.toMap()),
+      'livenessProbe': pulumi.Input.mapInputValue<GoogleCloudRunV2ProbeResponse, Map<String, dynamic>>(livenessProbe, (value) => value.toMap()),
       'name': name,
-      'ports':
-          pulumi.Input.mapInputValue<
-            List<GoogleCloudRunV2ContainerPortResponse>,
-            List<Map<String, dynamic>>
-          >(
-            ports,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GoogleCloudRunV2ContainerPortResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'resources':
-          pulumi.Input.mapInputValue<
-            GoogleCloudRunV2ResourceRequirementsResponse,
-            Map<String, dynamic>
-          >(resources, (value) => value.toMap()),
-      'startupProbe':
-          pulumi.Input.mapInputValue<
-            GoogleCloudRunV2ProbeResponse,
-            Map<String, dynamic>
-          >(startupProbe, (value) => value.toMap()),
-      'volumeMounts':
-          pulumi.Input.mapInputValue<
-            List<GoogleCloudRunV2VolumeMountResponse>,
-            List<Map<String, dynamic>>
-          >(
-            volumeMounts,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GoogleCloudRunV2VolumeMountResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'ports': pulumi.Input.mapInputValue<List<GoogleCloudRunV2ContainerPortResponse>, List<Map<String, dynamic>>>(ports, (value) => pulumi.Input.encodeList<GoogleCloudRunV2ContainerPortResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'resources': pulumi.Input.mapInputValue<GoogleCloudRunV2ResourceRequirementsResponse, Map<String, dynamic>>(resources, (value) => value.toMap()),
+      'startupProbe': pulumi.Input.mapInputValue<GoogleCloudRunV2ProbeResponse, Map<String, dynamic>>(startupProbe, (value) => value.toMap()),
+      'volumeMounts': pulumi.Input.mapInputValue<List<GoogleCloudRunV2VolumeMountResponse>, List<Map<String, dynamic>>>(volumeMounts, (value) => pulumi.Input.encodeList<GoogleCloudRunV2VolumeMountResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'workingDir': workingDir,
     };
   }
@@ -139,51 +83,17 @@ class GoogleCloudRunV2ContainerResponse {
     return GoogleCloudRunV2ContainerResponse(
       args: pulumi.Input.fromValue((map['args'] as List).cast<String>()),
       command: pulumi.Input.fromValue((map['command'] as List).cast<String>()),
-      dependsOn: pulumi.Input.fromValue(
-        (map['dependsOn'] as List).cast<String>(),
-      ),
-      env: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GoogleCloudRunV2EnvVarResponse>(
-          map['env']!,
-          (value) => GoogleCloudRunV2EnvVarResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      dependsOn: pulumi.Input.fromValue((map['dependsOn'] as List).cast<String>()),
+      env: pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudRunV2EnvVarResponse>(map['env']!, (value) => GoogleCloudRunV2EnvVarResponse.fromMap((value as Map).cast<String, dynamic>()))),
       image: pulumi.Input.fromValue(map['image'] as String),
-      livenessProbe: pulumi.Input.fromValue(
-        GoogleCloudRunV2ProbeResponse.fromMap(
-          (map['livenessProbe']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      livenessProbe: pulumi.Input.fromValue(GoogleCloudRunV2ProbeResponse.fromMap((map['livenessProbe']! as Map).cast<String, dynamic>())),
       name: pulumi.Input.fromValue(map['name'] as String),
-      ports: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GoogleCloudRunV2ContainerPortResponse>(
-          map['ports']!,
-          (value) => GoogleCloudRunV2ContainerPortResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      resources: pulumi.Input.fromValue(
-        GoogleCloudRunV2ResourceRequirementsResponse.fromMap(
-          (map['resources']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      startupProbe: pulumi.Input.fromValue(
-        GoogleCloudRunV2ProbeResponse.fromMap(
-          (map['startupProbe']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      volumeMounts: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GoogleCloudRunV2VolumeMountResponse>(
-          map['volumeMounts']!,
-          (value) => GoogleCloudRunV2VolumeMountResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      ports: pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudRunV2ContainerPortResponse>(map['ports']!, (value) => GoogleCloudRunV2ContainerPortResponse.fromMap((value as Map).cast<String, dynamic>()))),
+      resources: pulumi.Input.fromValue(GoogleCloudRunV2ResourceRequirementsResponse.fromMap((map['resources']! as Map).cast<String, dynamic>())),
+      startupProbe: pulumi.Input.fromValue(GoogleCloudRunV2ProbeResponse.fromMap((map['startupProbe']! as Map).cast<String, dynamic>())),
+      volumeMounts: pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudRunV2VolumeMountResponse>(map['volumeMounts']!, (value) => GoogleCloudRunV2VolumeMountResponse.fromMap((value as Map).cast<String, dynamic>()))),
       workingDir: pulumi.Input.fromValue(map['workingDir'] as String),
     );
   }
 }
+

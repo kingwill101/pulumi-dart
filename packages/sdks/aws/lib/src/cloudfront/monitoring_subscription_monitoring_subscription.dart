@@ -5,10 +5,7 @@ import 'monitoring_subscription_monitoring_subscription_realtime_metrics_subscri
 
 class MonitoringSubscriptionMonitoringSubscription {
   /// A subscription configuration for additional CloudWatch metrics. See below.
-  final pulumi.Input<
-    MonitoringSubscriptionMonitoringSubscriptionRealtimeMetricsSubscriptionConfig
-  >
-  realtimeMetricsSubscriptionConfig;
+  final pulumi.Input<MonitoringSubscriptionMonitoringSubscriptionRealtimeMetricsSubscriptionConfig> realtimeMetricsSubscriptionConfig;
 
   /// Creates a new [MonitoringSubscriptionMonitoringSubscription].
   /// [realtimeMetricsSubscriptionConfig] A subscription configuration for additional CloudWatch metrics. See below.
@@ -18,24 +15,14 @@ class MonitoringSubscriptionMonitoringSubscription {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'realtimeMetricsSubscriptionConfig':
-          pulumi.Input.mapInputValue<
-            MonitoringSubscriptionMonitoringSubscriptionRealtimeMetricsSubscriptionConfig,
-            Map<String, dynamic>
-          >(realtimeMetricsSubscriptionConfig, (value) => value.toMap()),
+      'realtimeMetricsSubscriptionConfig': pulumi.Input.mapInputValue<MonitoringSubscriptionMonitoringSubscriptionRealtimeMetricsSubscriptionConfig, Map<String, dynamic>>(realtimeMetricsSubscriptionConfig, (value) => value.toMap()),
     };
   }
 
-  factory MonitoringSubscriptionMonitoringSubscription.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MonitoringSubscriptionMonitoringSubscription.fromMap(Map<String, dynamic> map) {
     return MonitoringSubscriptionMonitoringSubscription(
-      realtimeMetricsSubscriptionConfig: pulumi.Input.fromValue(
-        MonitoringSubscriptionMonitoringSubscriptionRealtimeMetricsSubscriptionConfig.fromMap(
-          (map['realtimeMetricsSubscriptionConfig']! as Map)
-              .cast<String, dynamic>(),
-        ),
-      ),
+      realtimeMetricsSubscriptionConfig: pulumi.Input.fromValue(MonitoringSubscriptionMonitoringSubscriptionRealtimeMetricsSubscriptionConfig.fromMap((map['realtimeMetricsSubscriptionConfig']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -6,31 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LinkedResourceResponse {
   /// The ARM id of the linked resource.
   final pulumi.Input<String>? id;
-
   /// The location of the linked resource.
   final pulumi.Input<String>? location;
 
   /// Creates a new [LinkedResourceResponse].
   /// [id] The ARM id of the linked resource.
   /// [location] The location of the linked resource.
-  LinkedResourceResponse({this.id, this.location});
+  LinkedResourceResponse({
+    this.id,
+    this.location,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': ?id, 'location': ?location};
+    return <String, dynamic>{
+      'id': ?id,
+      'location': ?location,
+    };
   }
 
   factory LinkedResourceResponse.fromMap(Map<String, dynamic> map) {
     return LinkedResourceResponse(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

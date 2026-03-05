@@ -7,7 +7,6 @@ import 'get_networks_network.dart';
 class GetNetworksResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// (list) List of all matching networks. See `data.hcloud_network` for schema.
   final List<GetNetworksNetwork> networks;
   final String? withSelector;
@@ -25,11 +24,7 @@ class GetNetworksResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'networks':
-          pulumi.Input.encodeList<GetNetworksNetwork, Map<String, dynamic>>(
-            networks,
-            (value) => value.toMap(),
-          ),
+      'networks': pulumi.Input.encodeList<GetNetworksNetwork, Map<String, dynamic>>(networks, (value) => value.toMap()),
       'withSelector': ?withSelector,
     };
   }
@@ -37,16 +32,9 @@ class GetNetworksResult {
   factory GetNetworksResult.fromMap(Map<String, dynamic> map) {
     return GetNetworksResult(
       id: map['id'] as String,
-      networks: pulumi.Input.decodeList<GetNetworksNetwork>(
-        map['networks']!,
-        (value) =>
-            GetNetworksNetwork.fromMap((value as Map).cast<String, dynamic>()),
-      ),
-      withSelector: (() {
-        final guardedValue = map['withSelector'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      networks: pulumi.Input.decodeList<GetNetworksNetwork>(map['networks']!, (value) => GetNetworksNetwork.fromMap((value as Map).cast<String, dynamic>())),
+      withSelector: (() { final guardedValue = map['withSelector']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

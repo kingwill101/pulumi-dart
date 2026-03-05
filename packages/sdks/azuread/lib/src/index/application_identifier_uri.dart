@@ -259,7 +259,6 @@ import 'application_identifier_uri_state.dart';
 class ApplicationIdentifierUri extends pulumi.CustomResource {
   /// The resource ID of the application registration. Changing this forces a new resource to be created.
   late final pulumi.Output<String> applicationId;
-
   /// The user-defined URI that uniquely identifies an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant. Changing this forces a new resource to be created.
   late final pulumi.Output<String> identifierUri;
 
@@ -272,11 +271,11 @@ class ApplicationIdentifierUri extends pulumi.CustomResource {
     ApplicationIdentifierUriArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/applicationIdentifierUri:ApplicationIdentifierUri',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azuread:index/applicationIdentifierUri:ApplicationIdentifierUri',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationId = registerOutput<String>('applicationId');
     identifierUri = registerOutput<String>('identifierUri');
   }
@@ -299,11 +298,11 @@ class ApplicationIdentifierUri extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/applicationIdentifierUri:ApplicationIdentifierUri',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azuread:index/applicationIdentifierUri:ApplicationIdentifierUri',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationId = registerOutput<String>('applicationId');
     identifierUri = registerOutput<String>('identifierUri');
   }

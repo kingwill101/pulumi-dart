@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HttpServerLocationResponse {
   /// Specify the file name of dataset. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? fileName;
-
   /// Specify the folder path of dataset. Type: string (or Expression with resultType string)
   final pulumi.Input<dynamic>? folderPath;
-
   /// Specify the relativeUrl of http server. Type: string (or Expression with resultType string)
   final pulumi.Input<dynamic>? relativeUrl;
-
   /// Type of dataset storage location.
   /// Expected value is 'HttpServerLocation'.
   final pulumi.Input<String> type;
@@ -40,22 +37,11 @@ class HttpServerLocationResponse {
 
   factory HttpServerLocationResponse.fromMap(Map<String, dynamic> map) {
     return HttpServerLocationResponse(
-      fileName: (() {
-        final guardedValue = map['fileName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      folderPath: (() {
-        final guardedValue = map['folderPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      relativeUrl: (() {
-        final guardedValue = map['relativeUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
+      fileName: (() { final guardedValue = map['fileName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      folderPath: (() { final guardedValue = map['folderPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      relativeUrl: (() { final guardedValue = map['relativeUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

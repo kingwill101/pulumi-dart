@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NodeGroupScalingConfig {
   /// Desired number of worker nodes.
   final pulumi.Input<int> desiredSize;
-
   /// Maximum number of worker nodes.
   final pulumi.Input<int> maxSize;
-
   /// Minimum number of worker nodes.
   final pulumi.Input<int> minSize;
 
@@ -38,3 +36,4 @@ class NodeGroupScalingConfig {
     );
   }
 }
+

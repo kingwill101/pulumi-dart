@@ -8,19 +8,20 @@ class WorkspaceConnectionApiKey {
 
   /// Creates a new [WorkspaceConnectionApiKey].
   /// [key] Optional.
-  WorkspaceConnectionApiKey({this.key});
+  WorkspaceConnectionApiKey({
+    this.key,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': ?key};
+    return <String, dynamic>{
+      'key': ?key,
+    };
   }
 
   factory WorkspaceConnectionApiKey.fromMap(Map<String, dynamic> map) {
     return WorkspaceConnectionApiKey(
-      key: (() {
-        final guardedValue = map['key'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

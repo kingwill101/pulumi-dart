@@ -9,19 +9,20 @@ class ImageArmReference {
 
   /// Creates a new [ImageArmReference].
   /// [id] The Azure Resource ID for an image resource used by the virtual machine instance.
-  ImageArmReference({this.id});
+  ImageArmReference({
+    this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': ?id};
+    return <String, dynamic>{
+      'id': ?id,
+    };
   }
 
   factory ImageArmReference.fromMap(Map<String, dynamic> map) {
     return ImageArmReference(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

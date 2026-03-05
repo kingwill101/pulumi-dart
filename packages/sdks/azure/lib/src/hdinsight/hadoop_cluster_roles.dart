@@ -9,13 +9,10 @@ import 'hadoop_cluster_roles_zookeeper_node.dart';
 class HadoopClusterRoles {
   /// A `edge_node` block as defined below.
   final pulumi.Input<HadoopClusterRolesEdgeNode>? edgeNode;
-
   /// A `head_node` block as defined above.
   final pulumi.Input<HadoopClusterRolesHeadNode> headNode;
-
   /// A `worker_node` block as defined below.
   final pulumi.Input<HadoopClusterRolesWorkerNode> workerNode;
-
   /// A `zookeeper_node` block as defined below.
   final pulumi.Input<HadoopClusterRolesZookeeperNode> zookeeperNode;
 
@@ -33,55 +30,20 @@ class HadoopClusterRoles {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'edgeNode':
-          ?pulumi.Input.mapOptionalInputValue<
-            HadoopClusterRolesEdgeNode,
-            Map<String, dynamic>
-          >(edgeNode, (value) => value.toMap()),
-      'headNode':
-          pulumi.Input.mapInputValue<
-            HadoopClusterRolesHeadNode,
-            Map<String, dynamic>
-          >(headNode, (value) => value.toMap()),
-      'workerNode':
-          pulumi.Input.mapInputValue<
-            HadoopClusterRolesWorkerNode,
-            Map<String, dynamic>
-          >(workerNode, (value) => value.toMap()),
-      'zookeeperNode':
-          pulumi.Input.mapInputValue<
-            HadoopClusterRolesZookeeperNode,
-            Map<String, dynamic>
-          >(zookeeperNode, (value) => value.toMap()),
+      'edgeNode': ?pulumi.Input.mapOptionalInputValue<HadoopClusterRolesEdgeNode, Map<String, dynamic>>(edgeNode, (value) => value.toMap()),
+      'headNode': pulumi.Input.mapInputValue<HadoopClusterRolesHeadNode, Map<String, dynamic>>(headNode, (value) => value.toMap()),
+      'workerNode': pulumi.Input.mapInputValue<HadoopClusterRolesWorkerNode, Map<String, dynamic>>(workerNode, (value) => value.toMap()),
+      'zookeeperNode': pulumi.Input.mapInputValue<HadoopClusterRolesZookeeperNode, Map<String, dynamic>>(zookeeperNode, (value) => value.toMap()),
     };
   }
 
   factory HadoopClusterRoles.fromMap(Map<String, dynamic> map) {
     return HadoopClusterRoles(
-      edgeNode: (() {
-        final guardedValue = map['edgeNode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          HadoopClusterRolesEdgeNode.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      headNode: pulumi.Input.fromValue(
-        HadoopClusterRolesHeadNode.fromMap(
-          (map['headNode']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      workerNode: pulumi.Input.fromValue(
-        HadoopClusterRolesWorkerNode.fromMap(
-          (map['workerNode']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      zookeeperNode: pulumi.Input.fromValue(
-        HadoopClusterRolesZookeeperNode.fromMap(
-          (map['zookeeperNode']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      edgeNode: (() { final guardedValue = map['edgeNode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HadoopClusterRolesEdgeNode.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      headNode: pulumi.Input.fromValue(HadoopClusterRolesHeadNode.fromMap((map['headNode']! as Map).cast<String, dynamic>())),
+      workerNode: pulumi.Input.fromValue(HadoopClusterRolesWorkerNode.fromMap((map['workerNode']! as Map).cast<String, dynamic>())),
+      zookeeperNode: pulumi.Input.fromValue(HadoopClusterRolesZookeeperNode.fromMap((map['zookeeperNode']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

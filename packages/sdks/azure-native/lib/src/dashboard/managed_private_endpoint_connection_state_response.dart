@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedPrivateEndpointConnectionStateResponse {
   /// Gets or sets the reason for approval/rejection of the connection.
   final pulumi.Input<String> description;
-
   /// The approval/rejection status of managed private endpoint connection.
   final pulumi.Input<String> status;
 
@@ -19,15 +18,17 @@ class ManagedPrivateEndpointConnectionStateResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'description': description, 'status': status};
+    return <String, dynamic>{
+      'description': description,
+      'status': status,
+    };
   }
 
-  factory ManagedPrivateEndpointConnectionStateResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ManagedPrivateEndpointConnectionStateResponse.fromMap(Map<String, dynamic> map) {
     return ManagedPrivateEndpointConnectionStateResponse(
       description: pulumi.Input.fromValue(map['description'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
+

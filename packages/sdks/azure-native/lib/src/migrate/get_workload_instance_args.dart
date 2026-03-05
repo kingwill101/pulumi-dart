@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWorkloadInstanceArgs {
   /// ModernizeProject name.
   final pulumi.Input<String> modernizeProjectName;
-
   /// Name of the Azure Resource Group that project is part of.
   final pulumi.Input<String> resourceGroupName;
-
   /// Azure Subscription Id in which project was created.
   final pulumi.Input<String>? subscriptionId;
-
   /// Workload instance name.
   final pulumi.Input<String> workloadInstanceName;
 
@@ -42,20 +39,11 @@ class GetWorkloadInstanceArgs {
 
   factory GetWorkloadInstanceArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkloadInstanceArgs(
-      modernizeProjectName: pulumi.Input.fromValue(
-        map['modernizeProjectName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      subscriptionId: (() {
-        final guardedValue = map['subscriptionId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      workloadInstanceName: pulumi.Input.fromValue(
-        map['workloadInstanceName'] as String,
-      ),
+      modernizeProjectName: pulumi.Input.fromValue(map['modernizeProjectName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      subscriptionId: (() { final guardedValue = map['subscriptionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      workloadInstanceName: pulumi.Input.fromValue(map['workloadInstanceName'] as String),
     );
   }
 }
+

@@ -6,7 +6,6 @@ class JobQueryDestinationEncryptionConfiguration {
   /// Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
   /// The BigQuery Service Account associated with your project requires access to this encryption key.
   final pulumi.Input<String> kmsKeyName;
-
   /// (Output)
   /// Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
   final pulumi.Input<String>? kmsKeyVersion;
@@ -26,16 +25,11 @@ class JobQueryDestinationEncryptionConfiguration {
     };
   }
 
-  factory JobQueryDestinationEncryptionConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory JobQueryDestinationEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return JobQueryDestinationEncryptionConfiguration(
       kmsKeyName: pulumi.Input.fromValue(map['kmsKeyName'] as String),
-      kmsKeyVersion: (() {
-        final guardedValue = map['kmsKeyVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      kmsKeyVersion: (() { final guardedValue = map['kmsKeyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

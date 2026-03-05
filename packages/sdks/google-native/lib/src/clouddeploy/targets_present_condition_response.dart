@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TargetsPresentConditionResponse {
   /// The list of Target names that do not exist. For example, `projects/{project_id}/locations/{location_name}/targets/{target_name}`.
   final pulumi.Input<List<String>> missingTargets;
-
   /// True if there aren't any missing Targets.
   final pulumi.Input<bool> status;
-
   /// Last time the condition was updated.
   final pulumi.Input<String> updateTime;
 
@@ -33,11 +31,10 @@ class TargetsPresentConditionResponse {
 
   factory TargetsPresentConditionResponse.fromMap(Map<String, dynamic> map) {
     return TargetsPresentConditionResponse(
-      missingTargets: pulumi.Input.fromValue(
-        (map['missingTargets'] as List).cast<String>(),
-      ),
+      missingTargets: pulumi.Input.fromValue((map['missingTargets'] as List).cast<String>()),
       status: pulumi.Input.fromValue(map['status'] as bool),
       updateTime: pulumi.Input.fromValue(map['updateTime'] as String),
     );
   }
 }
+

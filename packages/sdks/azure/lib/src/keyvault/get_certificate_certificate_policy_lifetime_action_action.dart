@@ -13,14 +13,15 @@ class GetCertificateCertificatePolicyLifetimeActionAction {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'actionType': actionType};
+    return <String, dynamic>{
+      'actionType': actionType,
+    };
   }
 
-  factory GetCertificateCertificatePolicyLifetimeActionAction.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetCertificateCertificatePolicyLifetimeActionAction.fromMap(Map<String, dynamic> map) {
     return GetCertificateCertificatePolicyLifetimeActionAction(
       actionType: pulumi.Input.fromValue(map['actionType'] as String),
     );
   }
 }
+

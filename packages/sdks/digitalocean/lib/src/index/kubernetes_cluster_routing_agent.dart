@@ -8,10 +8,14 @@ class KubernetesClusterRoutingAgent {
 
   /// Creates a new [KubernetesClusterRoutingAgent].
   /// [enabled] Boolean flag whether the routing-agent should be enabled or not.
-  KubernetesClusterRoutingAgent({required this.enabled});
+  KubernetesClusterRoutingAgent({
+    required this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled};
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
   factory KubernetesClusterRoutingAgent.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class KubernetesClusterRoutingAgent {
     );
   }
 }
+

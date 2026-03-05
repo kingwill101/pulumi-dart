@@ -10,17 +10,12 @@ import 'vpc_ipam_pool_cidr_cidr_authorization_context.dart';
 class VpcIpamPoolCidrArgs {
   /// The CIDR you want to assign to the pool. Conflicts with `netmask_length`.
   final pulumi.Input<String>? cidr;
-
   /// A signed document that proves that you are authorized to bring the specified IP address range to Amazon using BYOIP. This is not stored in the state file. See cidr_authorization_context for more information.
-  final pulumi.Input<VpcIpamPoolCidrCidrAuthorizationContext>?
-  cidrAuthorizationContext;
-
+  final pulumi.Input<VpcIpamPoolCidrCidrAuthorizationContext>? cidrAuthorizationContext;
   /// The ID of the pool to which you want to assign a CIDR.
   final pulumi.Input<String> ipamPoolId;
-
   /// If provided, the cidr provisioned into the specified pool will be the next available cidr given this declared netmask length. Conflicts with `cidr`.
   final pulumi.Input<int>? netmaskLength;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -41,11 +36,7 @@ class VpcIpamPoolCidrArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'cidr': ?cidr,
-      'cidrAuthorizationContext':
-          ?pulumi.Input.mapOptionalInputValue<
-            VpcIpamPoolCidrCidrAuthorizationContext,
-            Map<String, dynamic>
-          >(cidrAuthorizationContext, (value) => value.toMap()),
+      'cidrAuthorizationContext': ?pulumi.Input.mapOptionalInputValue<VpcIpamPoolCidrCidrAuthorizationContext, Map<String, dynamic>>(cidrAuthorizationContext, (value) => value.toMap()),
       'ipamPoolId': ipamPoolId,
       'netmaskLength': ?netmaskLength,
       'region': ?region,
@@ -54,31 +45,12 @@ class VpcIpamPoolCidrArgs {
 
   factory VpcIpamPoolCidrArgs.fromMap(Map<String, dynamic> map) {
     return VpcIpamPoolCidrArgs(
-      cidr: (() {
-        final guardedValue = map['cidr'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      cidrAuthorizationContext: (() {
-        final guardedValue = map['cidrAuthorizationContext'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          VpcIpamPoolCidrCidrAuthorizationContext.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      cidr: (() { final guardedValue = map['cidr']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      cidrAuthorizationContext: (() { final guardedValue = map['cidrAuthorizationContext']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VpcIpamPoolCidrCidrAuthorizationContext.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       ipamPoolId: pulumi.Input.fromValue(map['ipamPoolId'] as String),
-      netmaskLength: (() {
-        final guardedValue = map['netmaskLength'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      netmaskLength: (() { final guardedValue = map['netmaskLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

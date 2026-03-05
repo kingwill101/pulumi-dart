@@ -121,37 +121,26 @@ import 'connection_group_timeouts.dart';
 class ConnectionGroup extends pulumi.CustomResource {
   /// ID of the associated Anycast IP List. `ipv6_enabled` must not be set to `true` in order to set this argument
   late final pulumi.Output<String?> anycastIpListId;
-
   /// ARN of the connection group.
   late final pulumi.Output<String> arn;
-
   /// Whether the connection group is enabled. Default is `true`.
   late final pulumi.Output<bool> enabled;
-
   /// Current version of the connection group.
   late final pulumi.Output<String> etag;
-
   /// Whether IPv6 is enabled for the connection group. Default is `false`.
   late final pulumi.Output<bool> ipv6Enabled;
-
   /// Whether the connection group is the default connection group for the distribution tenants.
   late final pulumi.Output<bool> isDefault;
-
   /// Date and time when the connection group was last modified.
   late final pulumi.Output<String> lastModifiedTime;
-
   /// Name of the connection group.
   late final pulumi.Output<String> name;
-
   /// The routing endpoint (also known as the DNS name) that is assigned to the connection group, such as d111111abcdef8.cloudfront.net.
   late final pulumi.Output<String> routingEndpoint;
-
   /// Current status of the connection group.
   late final pulumi.Output<String> status;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<ConnectionGroupTimeouts?> timeouts;
@@ -166,11 +155,11 @@ class ConnectionGroup extends pulumi.CustomResource {
     ConnectionGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cloudfront/connectionGroup:ConnectionGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cloudfront/connectionGroup:ConnectionGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     anycastIpListId = registerOutput<String?>('anycastIpListId');
     arn = registerOutput<String>('arn');
     enabled = registerOutput<bool>('enabled');
@@ -183,16 +172,7 @@ class ConnectionGroup extends pulumi.CustomResource {
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ConnectionGroupTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectionGroupTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<ConnectionGroupTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionGroupTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     waitForDeployment = registerOutput<bool>('waitForDeployment');
   }
 
@@ -214,11 +194,11 @@ class ConnectionGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cloudfront/connectionGroup:ConnectionGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cloudfront/connectionGroup:ConnectionGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     anycastIpListId = registerOutput<String?>('anycastIpListId');
     arn = registerOutput<String>('arn');
     enabled = registerOutput<bool>('enabled');
@@ -231,16 +211,7 @@ class ConnectionGroup extends pulumi.CustomResource {
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ConnectionGroupTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectionGroupTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<ConnectionGroupTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionGroupTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     waitForDeployment = registerOutput<bool>('waitForDeployment');
   }
 }

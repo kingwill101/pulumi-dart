@@ -16,3 +16,4 @@ enum TumblingWindowFrequency {
     throw ArgumentError('Unknown TumblingWindowFrequency value: $value');
   }
 }
+

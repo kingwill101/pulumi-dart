@@ -648,19 +648,13 @@ import 'hybrid_compute_settings_properties_response.dart';
 /// ```
 class Connector extends pulumi.CustomResource {
   /// Settings for authentication management, these settings are relevant only for the cloud connector.
-  late final pulumi.Output<AwAssumeRoleAuthenticationDetailsPropertiesResponse?>
-  authenticationDetails;
-
+  late final pulumi.Output<AwAssumeRoleAuthenticationDetailsPropertiesResponse?> authenticationDetails;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Settings for hybrid compute management. These settings are relevant only for Arc autoProvision (Hybrid Compute).
-  late final pulumi.Output<HybridComputeSettingsPropertiesResponse?>
-  hybridComputeSettings;
-
+  late final pulumi.Output<HybridComputeSettingsPropertiesResponse?> hybridComputeSettings;
   /// Resource name
   late final pulumi.Output<String> name;
-
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -673,34 +667,14 @@ class Connector extends pulumi.CustomResource {
     ConnectorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:security:Connector',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    authenticationDetails =
-        registerOutput<AwAssumeRoleAuthenticationDetailsPropertiesResponse?>(
-          'authenticationDetails',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AwAssumeRoleAuthenticationDetailsPropertiesResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'azure-native:security:Connector',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    authenticationDetails = registerOutput<AwAssumeRoleAuthenticationDetailsPropertiesResponse?>('authenticationDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AwAssumeRoleAuthenticationDetailsPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    hybridComputeSettings =
-        registerOutput<HybridComputeSettingsPropertiesResponse?>(
-          'hybridComputeSettings',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return HybridComputeSettingsPropertiesResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    hybridComputeSettings = registerOutput<HybridComputeSettingsPropertiesResponse?>('hybridComputeSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HybridComputeSettingsPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     type = registerOutput<String>('type');
   }

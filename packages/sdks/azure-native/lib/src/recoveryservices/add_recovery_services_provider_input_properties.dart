@@ -7,20 +7,14 @@ import 'identity_provider_input.dart';
 class AddRecoveryServicesProviderInputProperties {
   /// The identity provider input for DRA authentication.
   final pulumi.Input<IdentityProviderInput> authenticationIdentityInput;
-
   /// The Bios Id of the machine.
   final pulumi.Input<String>? biosId;
-
   /// The identity provider input for data plane authentication.
-  final pulumi.Input<IdentityProviderInput>?
-  dataPlaneAuthenticationIdentityInput;
-
+  final pulumi.Input<IdentityProviderInput>? dataPlaneAuthenticationIdentityInput;
   /// The Id of the machine where the provider is getting added.
   final pulumi.Input<String>? machineId;
-
   /// The name of the machine where the provider is getting added.
   final pulumi.Input<String> machineName;
-
   /// The identity provider input for resource access.
   final pulumi.Input<IdentityProviderInput> resourceAccessIdentityInput;
 
@@ -42,61 +36,24 @@ class AddRecoveryServicesProviderInputProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authenticationIdentityInput':
-          pulumi.Input.mapInputValue<
-            IdentityProviderInput,
-            Map<String, dynamic>
-          >(authenticationIdentityInput, (value) => value.toMap()),
+      'authenticationIdentityInput': pulumi.Input.mapInputValue<IdentityProviderInput, Map<String, dynamic>>(authenticationIdentityInput, (value) => value.toMap()),
       'biosId': ?biosId,
-      'dataPlaneAuthenticationIdentityInput':
-          ?pulumi.Input.mapOptionalInputValue<
-            IdentityProviderInput,
-            Map<String, dynamic>
-          >(dataPlaneAuthenticationIdentityInput, (value) => value.toMap()),
+      'dataPlaneAuthenticationIdentityInput': ?pulumi.Input.mapOptionalInputValue<IdentityProviderInput, Map<String, dynamic>>(dataPlaneAuthenticationIdentityInput, (value) => value.toMap()),
       'machineId': ?machineId,
       'machineName': machineName,
-      'resourceAccessIdentityInput':
-          pulumi.Input.mapInputValue<
-            IdentityProviderInput,
-            Map<String, dynamic>
-          >(resourceAccessIdentityInput, (value) => value.toMap()),
+      'resourceAccessIdentityInput': pulumi.Input.mapInputValue<IdentityProviderInput, Map<String, dynamic>>(resourceAccessIdentityInput, (value) => value.toMap()),
     };
   }
 
-  factory AddRecoveryServicesProviderInputProperties.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AddRecoveryServicesProviderInputProperties.fromMap(Map<String, dynamic> map) {
     return AddRecoveryServicesProviderInputProperties(
-      authenticationIdentityInput: pulumi.Input.fromValue(
-        IdentityProviderInput.fromMap(
-          (map['authenticationIdentityInput']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      biosId: (() {
-        final guardedValue = map['biosId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dataPlaneAuthenticationIdentityInput: (() {
-        final guardedValue = map['dataPlaneAuthenticationIdentityInput'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          IdentityProviderInput.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      machineId: (() {
-        final guardedValue = map['machineId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      authenticationIdentityInput: pulumi.Input.fromValue(IdentityProviderInput.fromMap((map['authenticationIdentityInput']! as Map).cast<String, dynamic>())),
+      biosId: (() { final guardedValue = map['biosId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dataPlaneAuthenticationIdentityInput: (() { final guardedValue = map['dataPlaneAuthenticationIdentityInput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IdentityProviderInput.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      machineId: (() { final guardedValue = map['machineId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       machineName: pulumi.Input.fromValue(map['machineName'] as String),
-      resourceAccessIdentityInput: pulumi.Input.fromValue(
-        IdentityProviderInput.fromMap(
-          (map['resourceAccessIdentityInput']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      resourceAccessIdentityInput: pulumi.Input.fromValue(IdentityProviderInput.fromMap((map['resourceAccessIdentityInput']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

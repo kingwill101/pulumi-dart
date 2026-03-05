@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRouteEntriesEntry {
   /// The destination CIDR block of the route entry.
   final pulumi.Input<String> cidrBlock;
-
   /// The instance ID of the next hop.
   final pulumi.Input<String> instanceId;
-
   /// The type of the next hop.
   final pulumi.Input<String> nextHopType;
-
   /// The ID of the router table to which the route entry belongs.
   final pulumi.Input<String> routeTableId;
-
   /// The status of the route entry.
   final pulumi.Input<String> status;
-
   /// The type of the route entry.
   final pulumi.Input<String> type;
 
@@ -59,3 +54,4 @@ class GetRouteEntriesEntry {
     );
   }
 }
+

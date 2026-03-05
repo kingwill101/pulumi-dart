@@ -8,13 +8,11 @@ import 'get_security_policy_rule.dart';
 
 /// Result data returned by getSecurityPolicy.
 class GetSecurityPolicyResult {
-  final List<GetSecurityPolicyAdaptiveProtectionConfig>
-  adaptiveProtectionConfigs;
+  final List<GetSecurityPolicyAdaptiveProtectionConfig> adaptiveProtectionConfigs;
   final List<GetSecurityPolicyAdvancedOptionsConfig> advancedOptionsConfigs;
   final String description;
   final Map<String, String> effectiveLabels;
   final String fingerprint;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String labelFingerprint;
@@ -63,16 +61,8 @@ class GetSecurityPolicyResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'adaptiveProtectionConfigs':
-          pulumi.Input.encodeList<
-            GetSecurityPolicyAdaptiveProtectionConfig,
-            Map<String, dynamic>
-          >(adaptiveProtectionConfigs, (value) => value.toMap()),
-      'advancedOptionsConfigs':
-          pulumi.Input.encodeList<
-            GetSecurityPolicyAdvancedOptionsConfig,
-            Map<String, dynamic>
-          >(advancedOptionsConfigs, (value) => value.toMap()),
+      'adaptiveProtectionConfigs': pulumi.Input.encodeList<GetSecurityPolicyAdaptiveProtectionConfig, Map<String, dynamic>>(adaptiveProtectionConfigs, (value) => value.toMap()),
+      'advancedOptionsConfigs': pulumi.Input.encodeList<GetSecurityPolicyAdvancedOptionsConfig, Map<String, dynamic>>(advancedOptionsConfigs, (value) => value.toMap()),
       'description': description,
       'effectiveLabels': effectiveLabels,
       'fingerprint': fingerprint,
@@ -82,16 +72,8 @@ class GetSecurityPolicyResult {
       'name': ?name,
       'project': ?project,
       'pulumiLabels': pulumiLabels,
-      'recaptchaOptionsConfigs':
-          pulumi.Input.encodeList<
-            GetSecurityPolicyRecaptchaOptionsConfig,
-            Map<String, dynamic>
-          >(recaptchaOptionsConfigs, (value) => value.toMap()),
-      'rules':
-          pulumi.Input.encodeList<GetSecurityPolicyRule, Map<String, dynamic>>(
-            rules,
-            (value) => value.toMap(),
-          ),
+      'recaptchaOptionsConfigs': pulumi.Input.encodeList<GetSecurityPolicyRecaptchaOptionsConfig, Map<String, dynamic>>(recaptchaOptionsConfigs, (value) => value.toMap()),
+      'rules': pulumi.Input.encodeList<GetSecurityPolicyRule, Map<String, dynamic>>(rules, (value) => value.toMap()),
       'selfLink': ?selfLink,
       'type': type,
     };
@@ -99,56 +81,22 @@ class GetSecurityPolicyResult {
 
   factory GetSecurityPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetSecurityPolicyResult(
-      adaptiveProtectionConfigs:
-          pulumi.Input.decodeList<GetSecurityPolicyAdaptiveProtectionConfig>(
-            map['adaptiveProtectionConfigs']!,
-            (value) => GetSecurityPolicyAdaptiveProtectionConfig.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-      advancedOptionsConfigs:
-          pulumi.Input.decodeList<GetSecurityPolicyAdvancedOptionsConfig>(
-            map['advancedOptionsConfigs']!,
-            (value) => GetSecurityPolicyAdvancedOptionsConfig.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      adaptiveProtectionConfigs: pulumi.Input.decodeList<GetSecurityPolicyAdaptiveProtectionConfig>(map['adaptiveProtectionConfigs']!, (value) => GetSecurityPolicyAdaptiveProtectionConfig.fromMap((value as Map).cast<String, dynamic>())),
+      advancedOptionsConfigs: pulumi.Input.decodeList<GetSecurityPolicyAdvancedOptionsConfig>(map['advancedOptionsConfigs']!, (value) => GetSecurityPolicyAdvancedOptionsConfig.fromMap((value as Map).cast<String, dynamic>())),
       description: map['description'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       fingerprint: map['fingerprint'] as String,
       id: map['id'] as String,
       labelFingerprint: map['labelFingerprint'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
-      recaptchaOptionsConfigs:
-          pulumi.Input.decodeList<GetSecurityPolicyRecaptchaOptionsConfig>(
-            map['recaptchaOptionsConfigs']!,
-            (value) => GetSecurityPolicyRecaptchaOptionsConfig.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-      rules: pulumi.Input.decodeList<GetSecurityPolicyRule>(
-        map['rules']!,
-        (value) => GetSecurityPolicyRule.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      selfLink: (() {
-        final guardedValue = map['selfLink'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      recaptchaOptionsConfigs: pulumi.Input.decodeList<GetSecurityPolicyRecaptchaOptionsConfig>(map['recaptchaOptionsConfigs']!, (value) => GetSecurityPolicyRecaptchaOptionsConfig.fromMap((value as Map).cast<String, dynamic>())),
+      rules: pulumi.Input.decodeList<GetSecurityPolicyRule>(map['rules']!, (value) => GetSecurityPolicyRule.fromMap((value as Map).cast<String, dynamic>())),
+      selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
       type: map['type'] as String,
     );
   }
 }
+

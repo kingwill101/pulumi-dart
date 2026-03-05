@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AuthorizationAttemptInfoResponse {
   /// Human readable explanation for reaching the state. Provided to help address the configuration issues. Not guaranteed to be stable. For programmatic access use FailureReason enum.
   final pulumi.Input<String> details;
-
   /// Domain name of the authorization attempt.
   final pulumi.Input<String> domain;
-
   /// Reason for failure of the authorization attempt for the domain.
   final pulumi.Input<String> failureReason;
-
   /// State of the domain for managed certificate issuance.
   final pulumi.Input<String> state;
 
@@ -46,3 +43,4 @@ class AuthorizationAttemptInfoResponse {
     );
   }
 }
+

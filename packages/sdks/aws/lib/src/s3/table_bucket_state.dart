@@ -8,23 +8,16 @@ import 'table_bucket_maintenance_configuration.dart';
 class TableBucketState {
   /// ARN of the table bucket.
   final pulumi.Input<String>? arn;
-
   /// Date and time when the bucket was created.
   final pulumi.Input<String>? createdAt;
-
   /// A single table bucket encryption configuration object.
   /// See `encryption_configuration` below.
-  final pulumi.Input<TableBucketEncryptionConfiguration>?
-  encryptionConfiguration;
-
+  final pulumi.Input<TableBucketEncryptionConfiguration>? encryptionConfiguration;
   /// Whether all tables and namespaces within the table bucket should be deleted *when the table bucket is destroyed* so that the table bucket can be destroyed without error. These tables and namespaces are *not* recoverable. This only deletes tables and namespaces when the table bucket is destroyed, *not* when setting this parameter to `true`. Once this parameter is set to `true`, there must be a successful `pulumi up` run before a destroy is required to update this value in the resource state. Without a successful `pulumi up` after this parameter is set, this flag will have no effect. If setting this field in the same operation that would require replacing the table bucket or destroying the table bucket, this flag will not work. Additionally when importing a table bucket, a successful `pulumi up` is required to set this value in state before it will take effect on a destroy operation.
   final pulumi.Input<bool>? forceDestroy;
-
   /// A single table bucket maintenance configuration object.
   /// See `maintenance_configuration` below.
-  final pulumi.Input<TableBucketMaintenanceConfiguration>?
-  maintenanceConfiguration;
-
+  final pulumi.Input<TableBucketMaintenanceConfiguration>? maintenanceConfiguration;
   /// Name of the table bucket.
   /// Must be between 3 and 63 characters in length.
   /// Can consist of lowercase letters, numbers, and hyphens, and must begin and end with a lowercase letter or number.
@@ -32,16 +25,12 @@ class TableBucketState {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? name;
-
   /// Account ID of the account that owns the table bucket.
   final pulumi.Input<String>? ownerAccountId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
@@ -73,17 +62,9 @@ class TableBucketState {
     return <String, dynamic>{
       'arn': ?arn,
       'createdAt': ?createdAt,
-      'encryptionConfiguration':
-          ?pulumi.Input.mapOptionalInputValue<
-            TableBucketEncryptionConfiguration,
-            Map<String, dynamic>
-          >(encryptionConfiguration, (value) => value.toMap()),
+      'encryptionConfiguration': ?pulumi.Input.mapOptionalInputValue<TableBucketEncryptionConfiguration, Map<String, dynamic>>(encryptionConfiguration, (value) => value.toMap()),
       'forceDestroy': ?forceDestroy,
-      'maintenanceConfiguration':
-          ?pulumi.Input.mapOptionalInputValue<
-            TableBucketMaintenanceConfiguration,
-            Map<String, dynamic>
-          >(maintenanceConfiguration, (value) => value.toMap()),
+      'maintenanceConfiguration': ?pulumi.Input.mapOptionalInputValue<TableBucketMaintenanceConfiguration, Map<String, dynamic>>(maintenanceConfiguration, (value) => value.toMap()),
       'name': ?name,
       'ownerAccountId': ?ownerAccountId,
       'region': ?region,
@@ -94,68 +75,17 @@ class TableBucketState {
 
   factory TableBucketState.fromMap(Map<String, dynamic> map) {
     return TableBucketState(
-      arn: (() {
-        final guardedValue = map['arn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      createdAt: (() {
-        final guardedValue = map['createdAt'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      encryptionConfiguration: (() {
-        final guardedValue = map['encryptionConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          TableBucketEncryptionConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      forceDestroy: (() {
-        final guardedValue = map['forceDestroy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      maintenanceConfiguration: (() {
-        final guardedValue = map['maintenanceConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          TableBucketMaintenanceConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ownerAccountId: (() {
-        final guardedValue = map['ownerAccountId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      tagsAll: (() {
-        final guardedValue = map['tagsAll'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      encryptionConfiguration: (() { final guardedValue = map['encryptionConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TableBucketEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      forceDestroy: (() { final guardedValue = map['forceDestroy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      maintenanceConfiguration: (() { final guardedValue = map['maintenanceConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TableBucketMaintenanceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ownerAccountId: (() { final guardedValue = map['ownerAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

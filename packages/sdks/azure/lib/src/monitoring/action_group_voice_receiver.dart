@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ActionGroupVoiceReceiver {
   /// The country code of the voice receiver.
   final pulumi.Input<String> countryCode;
-
   /// The name of the voice receiver.
   final pulumi.Input<String> name;
-
   /// The phone number of the voice receiver.
   final pulumi.Input<String> phoneNumber;
 
@@ -38,3 +36,4 @@ class ActionGroupVoiceReceiver {
     );
   }
 }
+

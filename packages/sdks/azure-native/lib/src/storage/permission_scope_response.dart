@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PermissionScopeResponse {
   /// The permissions for the local user. Possible values include: Read (r), Write (w), Delete (d), List (l), Create (c), Modify Ownership (o), and Modify Permissions (p).
   final pulumi.Input<String> permissions;
-
   /// The name of resource, normally the container name or the file share name, used by the local user.
   final pulumi.Input<String> resourceName;
-
   /// The service used by the local user, e.g. blob, file.
   final pulumi.Input<String> service;
 
@@ -38,3 +36,4 @@ class PermissionScopeResponse {
     );
   }
 }
+

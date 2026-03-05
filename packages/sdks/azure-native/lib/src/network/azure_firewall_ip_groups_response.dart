@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureFirewallIpGroupsResponse {
   /// The iteration number.
   final pulumi.Input<String> changeNumber;
-
   /// Resource ID.
   final pulumi.Input<String> id;
 
   /// Creates a new [AzureFirewallIpGroupsResponse].
   /// [changeNumber] The iteration number.
   /// [id] Resource ID.
-  AzureFirewallIpGroupsResponse({required this.changeNumber, required this.id});
+  AzureFirewallIpGroupsResponse({
+    required this.changeNumber,
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'changeNumber': changeNumber, 'id': id};
+    return <String, dynamic>{
+      'changeNumber': changeNumber,
+      'id': id,
+    };
   }
 
   factory AzureFirewallIpGroupsResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class AzureFirewallIpGroupsResponse {
     );
   }
 }
+

@@ -349,13 +349,10 @@ import 'integration_exporter_state.dart';
 class IntegrationExporter extends pulumi.CustomResource {
   /// The ID of the Prometheus instance.
   late final pulumi.Output<String> clusterId;
-
   /// The ID of the Integration Exporter instance.
   late final pulumi.Output<int> instanceId;
-
   /// The type of prometheus integration.
   late final pulumi.Output<String> integrationType;
-
   /// Exporter configuration parameter json string.
   late final pulumi.Output<String> param;
 
@@ -368,11 +365,11 @@ class IntegrationExporter extends pulumi.CustomResource {
     IntegrationExporterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:arms/integrationExporter:IntegrationExporter',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:arms/integrationExporter:IntegrationExporter',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterId = registerOutput<String>('clusterId');
     instanceId = registerOutput<int>('instanceId');
     integrationType = registerOutput<String>('integrationType');
@@ -397,11 +394,11 @@ class IntegrationExporter extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:arms/integrationExporter:IntegrationExporter',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:arms/integrationExporter:IntegrationExporter',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterId = registerOutput<String>('clusterId');
     instanceId = registerOutput<int>('instanceId');
     integrationType = registerOutput<String>('integrationType');

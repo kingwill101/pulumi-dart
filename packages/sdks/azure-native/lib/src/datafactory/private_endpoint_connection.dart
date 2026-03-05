@@ -196,16 +196,12 @@ import 'remote_private_endpoint_connection_response.dart';
 class PrivateEndpointConnection extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Etag identifies change in the resource.
   late final pulumi.Output<String> etag;
-
   /// The resource name.
   late final pulumi.Output<String> name;
-
   /// Core resource properties
   late final pulumi.Output<RemotePrivateEndpointConnectionResponse> properties;
-
   /// The resource type.
   late final pulumi.Output<String> type;
 
@@ -218,24 +214,15 @@ class PrivateEndpointConnection extends pulumi.CustomResource {
     PrivateEndpointConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:datafactory:PrivateEndpointConnection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:datafactory:PrivateEndpointConnection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<RemotePrivateEndpointConnectionResponse>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RemotePrivateEndpointConnectionResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<RemotePrivateEndpointConnectionResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RemotePrivateEndpointConnectionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

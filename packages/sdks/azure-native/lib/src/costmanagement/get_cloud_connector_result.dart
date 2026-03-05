@@ -6,58 +6,40 @@ import 'connector_collection_info_response.dart';
 class GetCloudConnectorResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Connector billing model
   final String? billingModel;
-
   /// Collection information
   final ConnectorCollectionInfoResponse collectionInfo;
-
   /// Connector definition creation datetime
   final String createdOn;
-
   /// Credentials authentication key (eg AWS ARN)
   final String? credentialsKey;
-
   /// Number of days remaining of trial
   final int daysTrialRemaining;
-
   /// Default ManagementGroupId
   final String? defaultManagementGroupId;
-
   /// Connector DisplayName
   final String? displayName;
-
   /// Associated ExternalBillingAccountId
   final String externalBillingAccountId;
-
   /// Connector id
   final String id;
-
   /// Connector kind (eg aws)
   final String? kind;
-
   /// Connector last modified datetime
   final String modifiedOn;
-
   /// Connector name
   final String name;
-
   /// The display name of the providerBillingAccountId as defined on the external provider
   final String providerBillingAccountDisplayName;
-
   /// Connector providerBillingAccountId, determined from credentials (eg AWS Consolidated account number)
   final String providerBillingAccountId;
-
   /// Identifying source report. (For AWS this is a CUR report name, defined with Daily and with Resources)
   final String? reportId;
-
   /// Connector status
   final String status;
-
   /// Billing SubscriptionId
   final String? subscriptionId;
-
   /// Connector type
   final String type;
 
@@ -130,55 +112,25 @@ class GetCloudConnectorResult {
   factory GetCloudConnectorResult.fromMap(Map<String, dynamic> map) {
     return GetCloudConnectorResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      billingModel: (() {
-        final guardedValue = map['billingModel'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      collectionInfo: ConnectorCollectionInfoResponse.fromMap(
-        (map['collectionInfo']! as Map).cast<String, dynamic>(),
-      ),
+      billingModel: (() { final guardedValue = map['billingModel']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      collectionInfo: ConnectorCollectionInfoResponse.fromMap((map['collectionInfo']! as Map).cast<String, dynamic>()),
       createdOn: map['createdOn'] as String,
-      credentialsKey: (() {
-        final guardedValue = map['credentialsKey'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      credentialsKey: (() { final guardedValue = map['credentialsKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
       daysTrialRemaining: map['daysTrialRemaining'] as int,
-      defaultManagementGroupId: (() {
-        final guardedValue = map['defaultManagementGroupId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      defaultManagementGroupId: (() { final guardedValue = map['defaultManagementGroupId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       externalBillingAccountId: map['externalBillingAccountId'] as String,
       id: map['id'] as String,
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
       modifiedOn: map['modifiedOn'] as String,
       name: map['name'] as String,
-      providerBillingAccountDisplayName:
-          map['providerBillingAccountDisplayName'] as String,
+      providerBillingAccountDisplayName: map['providerBillingAccountDisplayName'] as String,
       providerBillingAccountId: map['providerBillingAccountId'] as String,
-      reportId: (() {
-        final guardedValue = map['reportId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      reportId: (() { final guardedValue = map['reportId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       status: map['status'] as String,
-      subscriptionId: (() {
-        final guardedValue = map['subscriptionId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      subscriptionId: (() { final guardedValue = map['subscriptionId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       type: map['type'] as String,
     );
   }
 }
+

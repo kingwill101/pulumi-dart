@@ -7,17 +7,13 @@ enum GoogleCloudBillingBudgetsV1ThresholdRuleSpendBasis {
   const GoogleCloudBillingBudgetsV1ThresholdRuleSpendBasis(this.wireValue);
   final String wireValue;
 
-  static GoogleCloudBillingBudgetsV1ThresholdRuleSpendBasis fromValue(
-    String value,
-  ) {
-    for (final item
-        in GoogleCloudBillingBudgetsV1ThresholdRuleSpendBasis.values) {
+  static GoogleCloudBillingBudgetsV1ThresholdRuleSpendBasis fromValue(String value) {
+    for (final item in GoogleCloudBillingBudgetsV1ThresholdRuleSpendBasis.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GoogleCloudBillingBudgetsV1ThresholdRuleSpendBasis value: $value',
-    );
+    throw ArgumentError('Unknown GoogleCloudBillingBudgetsV1ThresholdRuleSpendBasis value: $value');
   }
 }
+

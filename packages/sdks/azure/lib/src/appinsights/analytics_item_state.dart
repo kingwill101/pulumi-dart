@@ -6,28 +6,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AnalyticsItemState {
   /// The ID of the Application Insights component on which the Analytics Item exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? applicationInsightsId;
-
   /// The content for the Analytics Item, for example the query text if `type` is `query`.
   final pulumi.Input<String>? content;
-
   /// The alias to use for the function. Required when `type` is `function`.
   final pulumi.Input<String>? functionAlias;
-
   /// Specifies the name of the Application Insights Analytics Item. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// The scope for the Analytics Item. Can be `shared` or `user`. Changing this forces a new resource to be created. Must be `shared` for functions.
   final pulumi.Input<String>? scope;
-
   /// A string containing the time the Analytics Item was created.
   final pulumi.Input<String>? timeCreated;
-
   /// A string containing the time the Analytics Item was last modified.
   final pulumi.Input<String>? timeModified;
-
   /// The type of Analytics Item to create. Can be one of `query`, `function`, `folder`, `recent`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? type;
-
   /// A string indicating the version of the query format
   final pulumi.Input<String>? version;
 
@@ -69,51 +61,16 @@ class AnalyticsItemState {
 
   factory AnalyticsItemState.fromMap(Map<String, dynamic> map) {
     return AnalyticsItemState(
-      applicationInsightsId: (() {
-        final guardedValue = map['applicationInsightsId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      content: (() {
-        final guardedValue = map['content'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      functionAlias: (() {
-        final guardedValue = map['functionAlias'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      scope: (() {
-        final guardedValue = map['scope'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      timeCreated: (() {
-        final guardedValue = map['timeCreated'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      timeModified: (() {
-        final guardedValue = map['timeModified'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      applicationInsightsId: (() { final guardedValue = map['applicationInsightsId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      content: (() { final guardedValue = map['content']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      functionAlias: (() { final guardedValue = map['functionAlias']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      timeCreated: (() { final guardedValue = map['timeCreated']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      timeModified: (() { final guardedValue = map['timeModified']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

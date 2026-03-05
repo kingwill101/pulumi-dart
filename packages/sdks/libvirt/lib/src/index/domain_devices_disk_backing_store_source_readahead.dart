@@ -8,17 +8,20 @@ class DomainDevicesDiskBackingStoreSourceReadahead {
 
   /// Creates a new [DomainDevicesDiskBackingStoreSourceReadahead].
   /// [size] Configures the size of data that should be prefetched when reading from the network block device.
-  DomainDevicesDiskBackingStoreSourceReadahead({required this.size});
+  DomainDevicesDiskBackingStoreSourceReadahead({
+    required this.size,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'size': size};
+    return <String, dynamic>{
+      'size': size,
+    };
   }
 
-  factory DomainDevicesDiskBackingStoreSourceReadahead.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDevicesDiskBackingStoreSourceReadahead.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskBackingStoreSourceReadahead(
       size: pulumi.Input.fromValue(map['size'] as String),
     );
   }
 }
+

@@ -7,7 +7,6 @@ class AccountConnectorProviderOauthConfig {
   /// In the event of changing scopes, user records under AccountConnector will
   /// be deleted and users will re-auth again.
   final pulumi.Input<List<String>> scopes;
-
   /// List of providers that are owned by Developer Connect.
   /// Possible values:
   /// GITHUB
@@ -34,16 +33,11 @@ class AccountConnectorProviderOauthConfig {
     };
   }
 
-  factory AccountConnectorProviderOauthConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AccountConnectorProviderOauthConfig.fromMap(Map<String, dynamic> map) {
     return AccountConnectorProviderOauthConfig(
       scopes: pulumi.Input.fromValue((map['scopes'] as List).cast<String>()),
-      systemProviderId: (() {
-        final guardedValue = map['systemProviderId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      systemProviderId: (() { final guardedValue = map['systemProviderId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

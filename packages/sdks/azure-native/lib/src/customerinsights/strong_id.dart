@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StrongId {
   /// Localized descriptions.
   final pulumi.Input<Map<String, String>>? description;
-
   /// Localized display name.
   final pulumi.Input<Map<String, String>>? displayName;
-
   /// The properties which make up the unique ID.
   final pulumi.Input<List<String>> keyPropertyNames;
-
   /// The Name identifying the strong ID.
   final pulumi.Input<String> strongIdName;
 
@@ -39,24 +36,11 @@ class StrongId {
 
   factory StrongId.fromMap(Map<String, dynamic> map) {
     return StrongId(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      keyPropertyNames: pulumi.Input.fromValue(
-        (map['keyPropertyNames'] as List).cast<String>(),
-      ),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      keyPropertyNames: pulumi.Input.fromValue((map['keyPropertyNames'] as List).cast<String>()),
       strongIdName: pulumi.Input.fromValue(map['strongIdName'] as String),
     );
   }
 }
+

@@ -6,17 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InMagePolicyInput {
   /// The app consistent snapshot frequency (in minutes).
   final pulumi.Input<int>? appConsistentFrequencyInMinutes;
-
   /// The class type.
   /// Expected value is 'InMage'.
   final pulumi.Input<String> instanceType;
-
   /// A value indicating whether multi-VM sync has to be enabled. Value should be 'Enabled' or 'Disabled'.
   final pulumi.Input<String> multiVmSyncStatus;
-
   /// The duration in minutes until which the recovery points need to be stored.
   final pulumi.Input<int>? recoveryPointHistory;
-
   /// The recovery point threshold in minutes.
   final pulumi.Input<int>? recoveryPointThresholdInMinutes;
 
@@ -46,25 +42,12 @@ class InMagePolicyInput {
 
   factory InMagePolicyInput.fromMap(Map<String, dynamic> map) {
     return InMagePolicyInput(
-      appConsistentFrequencyInMinutes: (() {
-        final guardedValue = map['appConsistentFrequencyInMinutes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      appConsistentFrequencyInMinutes: (() { final guardedValue = map['appConsistentFrequencyInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
-      multiVmSyncStatus: pulumi.Input.fromValue(
-        map['multiVmSyncStatus'] as String,
-      ),
-      recoveryPointHistory: (() {
-        final guardedValue = map['recoveryPointHistory'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      recoveryPointThresholdInMinutes: (() {
-        final guardedValue = map['recoveryPointThresholdInMinutes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      multiVmSyncStatus: pulumi.Input.fromValue(map['multiVmSyncStatus'] as String),
+      recoveryPointHistory: (() { final guardedValue = map['recoveryPointHistory']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      recoveryPointThresholdInMinutes: (() { final guardedValue = map['recoveryPointThresholdInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

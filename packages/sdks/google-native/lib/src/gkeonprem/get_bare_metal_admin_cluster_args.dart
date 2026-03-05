@@ -35,20 +35,11 @@ class GetBareMetalAdminClusterArgs {
 
   factory GetBareMetalAdminClusterArgs.fromMap(Map<String, dynamic> map) {
     return GetBareMetalAdminClusterArgs(
-      bareMetalAdminClusterId: pulumi.Input.fromValue(
-        map['bareMetalAdminClusterId'] as String,
-      ),
+      bareMetalAdminClusterId: pulumi.Input.fromValue(map['bareMetalAdminClusterId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      view: (() {
-        final guardedValue = map['view'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      view: (() { final guardedValue = map['view']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

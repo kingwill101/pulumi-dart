@@ -21,3 +21,4 @@ enum SoapApiType {
     throw ArgumentError('Unknown SoapApiType value: $value');
   }
 }
+

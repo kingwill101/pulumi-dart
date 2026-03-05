@@ -22,14 +22,11 @@ class EnterpriseCrmEventbusProtoTaskMetadataAdminResponse {
     };
   }
 
-  factory EnterpriseCrmEventbusProtoTaskMetadataAdminResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EnterpriseCrmEventbusProtoTaskMetadataAdminResponse.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoTaskMetadataAdminResponse(
-      googleGroupEmail: pulumi.Input.fromValue(
-        map['googleGroupEmail'] as String,
-      ),
+      googleGroupEmail: pulumi.Input.fromValue(map['googleGroupEmail'] as String),
       userEmail: pulumi.Input.fromValue(map['userEmail'] as String),
     );
   }
 }
+

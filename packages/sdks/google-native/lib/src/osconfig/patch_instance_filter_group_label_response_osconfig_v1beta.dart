@@ -9,19 +9,20 @@ class PatchInstanceFilterGroupLabelResponseOsconfigV1beta {
 
   /// Creates a new [PatchInstanceFilterGroupLabelResponseOsconfigV1beta].
   /// [labels] Compute Engine instance labels that must be present for a VM instance to be targeted by this filter.
-  PatchInstanceFilterGroupLabelResponseOsconfigV1beta({required this.labels});
+  PatchInstanceFilterGroupLabelResponseOsconfigV1beta({
+    required this.labels,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'labels': labels};
+    return <String, dynamic>{
+      'labels': labels,
+    };
   }
 
-  factory PatchInstanceFilterGroupLabelResponseOsconfigV1beta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PatchInstanceFilterGroupLabelResponseOsconfigV1beta.fromMap(Map<String, dynamic> map) {
     return PatchInstanceFilterGroupLabelResponseOsconfigV1beta(
-      labels: pulumi.Input.fromValue(
-        (map['labels'] as Map).cast<String, String>(),
-      ),
+      labels: pulumi.Input.fromValue((map['labels'] as Map).cast<String, String>()),
     );
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LoadBalancerAccessLogConfigAttachmentArgs {
   /// The ID of the load balancing instance.
   final pulumi.Input<String> loadBalancerId;
-
   /// The log items shipped by the access log.
   final pulumi.Input<String> logProject;
-
   /// Logstore for log delivery.
   final pulumi.Input<String> logStore;
 
@@ -34,9 +32,7 @@ class LoadBalancerAccessLogConfigAttachmentArgs {
     };
   }
 
-  factory LoadBalancerAccessLogConfigAttachmentArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LoadBalancerAccessLogConfigAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return LoadBalancerAccessLogConfigAttachmentArgs(
       loadBalancerId: pulumi.Input.fromValue(map['loadBalancerId'] as String),
       logProject: pulumi.Input.fromValue(map['logProject'] as String),
@@ -44,3 +40,4 @@ class LoadBalancerAccessLogConfigAttachmentArgs {
     );
   }
 }
+

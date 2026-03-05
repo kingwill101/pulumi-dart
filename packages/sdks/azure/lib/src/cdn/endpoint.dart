@@ -240,60 +240,42 @@ import 'endpoint_state.dart';
 class Endpoint extends pulumi.CustomResource {
   /// An array of strings that indicates a content types on which compression will be applied. The value for the elements should be MIME types.
   late final pulumi.Output<List<String>?> contentTypesToCompresses;
-
   /// Rules for the rules engine. An endpoint can contain up until 4 of those rules that consist of conditions and actions. A `delivery_rule` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> deliveryRules;
-
   /// The Fully Qualified Domain Name of the CDN Endpoint.
   late final pulumi.Output<String> fqdn;
-
   /// A set of Geo Filters for this CDN Endpoint. Each `geo_filter` block supports fields documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> geoFilters;
-
   /// Actions that are valid for all resources regardless of any conditions. A `global_delivery_rule` block as defined below.
   late final pulumi.Output<EndpointGlobalDeliveryRule?> globalDeliveryRule;
-
   /// Indicates whether compression is to be enabled.
   late final pulumi.Output<bool?> isCompressionEnabled;
-
   /// Specifies if http allowed. Defaults to `true`.
   late final pulumi.Output<bool?> isHttpAllowed;
-
   /// Specifies if https allowed. Defaults to `true`.
   late final pulumi.Output<bool?> isHttpsAllowed;
-
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// Specifies the name of the CDN Endpoint. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// What types of optimization should this CDN Endpoint optimize for? Possible values include `DynamicSiteAcceleration`, `GeneralMediaStreaming`, `GeneralWebDelivery`, `LargeFileDownload` and `VideoOnDemandMediaStreaming`.
   late final pulumi.Output<String?> optimizationType;
-
   /// The host header CDN provider will send along with content requests to origins.
   late final pulumi.Output<String?> originHostHeader;
-
   /// The path used at for origin requests.
   late final pulumi.Output<String?> originPath;
-
   /// The set of origins of the CDN endpoint. When multiple origins exist, the first origin will be used as primary and rest will be used as failover options. Each `origin` block supports fields documented below. Changing this forces a new resource to be created.
   late final pulumi.Output<List<Map<String, dynamic>>> origins;
-
   /// the path to a file hosted on the origin which helps accelerate delivery of the dynamic content and calculate the most optimal routes for the CDN. This is relative to the `origin_path`.
   ///
   /// &gt; **Note:** `global_delivery_rule` and `delivery_rule` are currently only available for `Microsoft_Standard` CDN profiles.
   late final pulumi.Output<String?> probePath;
-
   /// The CDN Profile to which to attach the CDN Endpoint. Changing this forces a new resource to be created.
   late final pulumi.Output<String> profileName;
-
   /// Sets query string caching behavior. Allowed values are `IgnoreQueryString`, `BypassCaching` and `UseQueryString`. `NotSet` value can be used for `Premium Verizon` CDN profile. Defaults to `IgnoreQueryString`.
   late final pulumi.Output<String?> querystringCachingBehaviour;
-
   /// The name of the resource group in which to create the CDN Endpoint. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -306,29 +288,16 @@ class Endpoint extends pulumi.CustomResource {
     EndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:cdn/endpoint:Endpoint',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    contentTypesToCompresses = registerOutput<List<String>?>(
-      'contentTypesToCompresses',
-    );
-    deliveryRules = registerOutput<List<Map<String, dynamic>>?>(
-      'deliveryRules',
-    );
+          'azure:cdn/endpoint:Endpoint',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    contentTypesToCompresses = registerOutput<List<String>?>('contentTypesToCompresses');
+    deliveryRules = registerOutput<List<Map<String, dynamic>>?>('deliveryRules');
     fqdn = registerOutput<String>('fqdn');
     geoFilters = registerOutput<List<Map<String, dynamic>>?>('geoFilters');
-    globalDeliveryRule = registerOutput<EndpointGlobalDeliveryRule?>(
-      'globalDeliveryRule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EndpointGlobalDeliveryRule.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    globalDeliveryRule = registerOutput<EndpointGlobalDeliveryRule?>('globalDeliveryRule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointGlobalDeliveryRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     isCompressionEnabled = registerOutput<bool?>('isCompressionEnabled');
     isHttpAllowed = registerOutput<bool?>('isHttpAllowed');
     isHttpsAllowed = registerOutput<bool?>('isHttpsAllowed');
@@ -340,9 +309,7 @@ class Endpoint extends pulumi.CustomResource {
     origins = registerOutput<List<Map<String, dynamic>>>('origins');
     probePath = registerOutput<String?>('probePath');
     profileName = registerOutput<String>('profileName');
-    querystringCachingBehaviour = registerOutput<String?>(
-      'querystringCachingBehaviour',
-    );
+    querystringCachingBehaviour = registerOutput<String?>('querystringCachingBehaviour');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     tags = registerOutput<Map<String, String>?>('tags');
   }
@@ -365,29 +332,16 @@ class Endpoint extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:cdn/endpoint:Endpoint',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    contentTypesToCompresses = registerOutput<List<String>?>(
-      'contentTypesToCompresses',
-    );
-    deliveryRules = registerOutput<List<Map<String, dynamic>>?>(
-      'deliveryRules',
-    );
+          'azure:cdn/endpoint:Endpoint',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    contentTypesToCompresses = registerOutput<List<String>?>('contentTypesToCompresses');
+    deliveryRules = registerOutput<List<Map<String, dynamic>>?>('deliveryRules');
     fqdn = registerOutput<String>('fqdn');
     geoFilters = registerOutput<List<Map<String, dynamic>>?>('geoFilters');
-    globalDeliveryRule = registerOutput<EndpointGlobalDeliveryRule?>(
-      'globalDeliveryRule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EndpointGlobalDeliveryRule.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    globalDeliveryRule = registerOutput<EndpointGlobalDeliveryRule?>('globalDeliveryRule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointGlobalDeliveryRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     isCompressionEnabled = registerOutput<bool?>('isCompressionEnabled');
     isHttpAllowed = registerOutput<bool?>('isHttpAllowed');
     isHttpsAllowed = registerOutput<bool?>('isHttpsAllowed');
@@ -399,9 +353,7 @@ class Endpoint extends pulumi.CustomResource {
     origins = registerOutput<List<Map<String, dynamic>>>('origins');
     probePath = registerOutput<String?>('probePath');
     profileName = registerOutput<String>('profileName');
-    querystringCachingBehaviour = registerOutput<String?>(
-      'querystringCachingBehaviour',
-    );
+    querystringCachingBehaviour = registerOutput<String?>('querystringCachingBehaviour');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     tags = registerOutput<Map<String, String>?>('tags');
   }

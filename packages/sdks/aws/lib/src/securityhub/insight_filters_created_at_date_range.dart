@@ -5,17 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InsightFiltersCreatedAtDateRange {
   /// A date range unit for the date filter. Valid values: `DAYS`.
   final pulumi.Input<String> unit;
-
   /// A date range value for the date filter, provided as an Integer.
   final pulumi.Input<int> value;
 
   /// Creates a new [InsightFiltersCreatedAtDateRange].
   /// [unit] A date range unit for the date filter. Valid values: `DAYS`.
   /// [value] A date range value for the date filter, provided as an Integer.
-  InsightFiltersCreatedAtDateRange({required this.unit, required this.value});
+  InsightFiltersCreatedAtDateRange({
+    required this.unit,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'unit': unit, 'value': value};
+    return <String, dynamic>{
+      'unit': unit,
+      'value': value,
+    };
   }
 
   factory InsightFiltersCreatedAtDateRange.fromMap(Map<String, dynamic> map) {
@@ -25,3 +30,4 @@ class InsightFiltersCreatedAtDateRange {
     );
   }
 }
+

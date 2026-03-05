@@ -293,78 +293,52 @@ import 'system_data_response.dart';
 class DomainService extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Configuration diagnostics data containing latest execution from client.
   late final pulumi.Output<ConfigDiagnosticsResponse?> configDiagnostics;
-
   /// Deployment Id
   late final pulumi.Output<String> deploymentId;
-
   /// Domain Configuration Type
   late final pulumi.Output<String?> domainConfigurationType;
-
   /// The name of the Azure domain that the user would like to deploy Domain Services to.
   late final pulumi.Output<String?> domainName;
-
   /// DomainSecurity Settings
-  late final pulumi.Output<DomainSecuritySettingsResponse?>
-  domainSecuritySettings;
-
+  late final pulumi.Output<DomainSecuritySettingsResponse?> domainSecuritySettings;
   /// Resource etag
   late final pulumi.Output<String?> etag;
-
   /// Enabled or Disabled flag to turn on Group-based filtered sync
   late final pulumi.Output<String?> filteredSync;
-
   /// Secure LDAP Settings
   late final pulumi.Output<LdapsSettingsResponse?> ldapsSettings;
-
   /// Resource location
   late final pulumi.Output<String?> location;
-
   /// Migration Properties
   late final pulumi.Output<MigrationPropertiesResponse> migrationProperties;
-
   /// Resource name
   late final pulumi.Output<String> name;
-
   /// Notification Settings
   late final pulumi.Output<NotificationSettingsResponse?> notificationSettings;
-
   /// the current deployment or provisioning state, which only appears in the response.
   late final pulumi.Output<String> provisioningState;
-
   /// List of ReplicaSets
   late final pulumi.Output<List<Map<String, dynamic>>?> replicaSets;
-
   /// Resource Forest Settings
-  late final pulumi.Output<ResourceForestSettingsResponse?>
-  resourceForestSettings;
-
+  late final pulumi.Output<ResourceForestSettingsResponse?> resourceForestSettings;
   /// Sku Type
   late final pulumi.Output<String?> sku;
-
   /// The unique sync application id of the Azure AD Domain Services deployment.
   late final pulumi.Output<String> syncApplicationId;
-
   /// SyncOwner ReplicaSet Id
   late final pulumi.Output<String> syncOwner;
-
   /// All or CloudOnly, All users in AAD are synced to AAD DS domain or only users actively syncing in the cloud
   late final pulumi.Output<String?> syncScope;
-
   /// The system meta data relating to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Azure Active Directory Tenant Id
   late final pulumi.Output<String> tenantId;
-
   /// Resource type
   late final pulumi.Output<String> type;
-
   /// Data Model Version
   late final pulumi.Output<int> version;
 
@@ -377,97 +351,32 @@ class DomainService extends pulumi.CustomResource {
     DomainServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:aad:DomainService',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:aad:DomainService',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    configDiagnostics = registerOutput<ConfigDiagnosticsResponse?>(
-      'configDiagnostics',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConfigDiagnosticsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    configDiagnostics = registerOutput<ConfigDiagnosticsResponse?>('configDiagnostics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigDiagnosticsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deploymentId = registerOutput<String>('deploymentId');
-    domainConfigurationType = registerOutput<String?>(
-      'domainConfigurationType',
-    );
+    domainConfigurationType = registerOutput<String?>('domainConfigurationType');
     domainName = registerOutput<String?>('domainName');
-    domainSecuritySettings = registerOutput<DomainSecuritySettingsResponse?>(
-      'domainSecuritySettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DomainSecuritySettingsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    domainSecuritySettings = registerOutput<DomainSecuritySettingsResponse?>('domainSecuritySettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainSecuritySettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String?>('etag');
     filteredSync = registerOutput<String?>('filteredSync');
-    ldapsSettings = registerOutput<LdapsSettingsResponse?>(
-      'ldapsSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LdapsSettingsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    ldapsSettings = registerOutput<LdapsSettingsResponse?>('ldapsSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LdapsSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String?>('location');
-    migrationProperties = registerOutput<MigrationPropertiesResponse>(
-      'migrationProperties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MigrationPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    migrationProperties = registerOutput<MigrationPropertiesResponse>('migrationProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MigrationPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    notificationSettings = registerOutput<NotificationSettingsResponse?>(
-      'notificationSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NotificationSettingsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    notificationSettings = registerOutput<NotificationSettingsResponse?>('notificationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotificationSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningState = registerOutput<String>('provisioningState');
     replicaSets = registerOutput<List<Map<String, dynamic>>?>('replicaSets');
-    resourceForestSettings = registerOutput<ResourceForestSettingsResponse?>(
-      'resourceForestSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResourceForestSettingsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    resourceForestSettings = registerOutput<ResourceForestSettingsResponse?>('resourceForestSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceForestSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sku = registerOutput<String?>('sku');
     syncApplicationId = registerOutput<String>('syncApplicationId');
     syncOwner = registerOutput<String>('syncOwner');
     syncScope = registerOutput<String?>('syncScope');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tenantId = registerOutput<String>('tenantId');
     type = registerOutput<String>('type');

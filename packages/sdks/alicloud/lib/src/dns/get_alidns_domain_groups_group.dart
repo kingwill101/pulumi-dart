@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAlidnsDomainGroupsGroup {
   /// Number of domain names in the group.
   final pulumi.Input<int> domainCount;
-
   /// Id of the domain group.
   final pulumi.Input<String> groupId;
-
   /// The name of the domain group.
   final pulumi.Input<String> groupName;
-
   /// Id of the instance.
   final pulumi.Input<String> id;
 
@@ -45,3 +42,4 @@ class GetAlidnsDomainGroupsGroup {
     );
   }
 }
+

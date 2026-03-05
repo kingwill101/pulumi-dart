@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IdentityModel {
   /// Gets or sets the authority of the SPN with which fabric agent communicates to service.
   final pulumi.Input<String> aadAuthority;
-
   /// Gets or sets the client/application Id of the SPN with which fabric agent communicates to service.
   final pulumi.Input<String> applicationId;
-
   /// Gets or sets the audience of the SPN with which fabric agent communicates to service.
   final pulumi.Input<String> audience;
-
   /// Gets or sets the object Id of the SPN with which fabric agent communicates to service.
   final pulumi.Input<String> objectId;
-
   /// Gets or sets the tenant Id of the SPN with which fabric agent communicates to service.
   final pulumi.Input<String> tenantId;
 
@@ -53,3 +49,4 @@ class IdentityModel {
     );
   }
 }
+

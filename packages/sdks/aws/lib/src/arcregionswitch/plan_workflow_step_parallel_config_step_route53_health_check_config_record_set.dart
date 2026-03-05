@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfigRecordSet {
   /// Record set identifier.
   final pulumi.Input<String> recordSetIdentifier;
-
   /// AWS region.
   final pulumi.Input<String> region;
 
@@ -24,14 +23,11 @@ class PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfigRecordSet {
     };
   }
 
-  factory PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfigRecordSet.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfigRecordSet.fromMap(Map<String, dynamic> map) {
     return PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfigRecordSet(
-      recordSetIdentifier: pulumi.Input.fromValue(
-        map['recordSetIdentifier'] as String,
-      ),
+      recordSetIdentifier: pulumi.Input.fromValue(map['recordSetIdentifier'] as String),
       region: pulumi.Input.fromValue(map['region'] as String),
     );
   }
 }
+

@@ -9,10 +9,8 @@ import 'ios_device_list_response.dart';
 class EnvironmentMatrixResponse {
   /// A list of Android devices; the test will be run only on the specified devices.
   final pulumi.Input<AndroidDeviceListResponse> androidDeviceList;
-
   /// A matrix of Android devices.
   final pulumi.Input<AndroidMatrixResponse> androidMatrix;
-
   /// A list of iOS devices.
   final pulumi.Input<IosDeviceListResponse> iosDeviceList;
 
@@ -28,41 +26,18 @@ class EnvironmentMatrixResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'androidDeviceList':
-          pulumi.Input.mapInputValue<
-            AndroidDeviceListResponse,
-            Map<String, dynamic>
-          >(androidDeviceList, (value) => value.toMap()),
-      'androidMatrix':
-          pulumi.Input.mapInputValue<
-            AndroidMatrixResponse,
-            Map<String, dynamic>
-          >(androidMatrix, (value) => value.toMap()),
-      'iosDeviceList':
-          pulumi.Input.mapInputValue<
-            IosDeviceListResponse,
-            Map<String, dynamic>
-          >(iosDeviceList, (value) => value.toMap()),
+      'androidDeviceList': pulumi.Input.mapInputValue<AndroidDeviceListResponse, Map<String, dynamic>>(androidDeviceList, (value) => value.toMap()),
+      'androidMatrix': pulumi.Input.mapInputValue<AndroidMatrixResponse, Map<String, dynamic>>(androidMatrix, (value) => value.toMap()),
+      'iosDeviceList': pulumi.Input.mapInputValue<IosDeviceListResponse, Map<String, dynamic>>(iosDeviceList, (value) => value.toMap()),
     };
   }
 
   factory EnvironmentMatrixResponse.fromMap(Map<String, dynamic> map) {
     return EnvironmentMatrixResponse(
-      androidDeviceList: pulumi.Input.fromValue(
-        AndroidDeviceListResponse.fromMap(
-          (map['androidDeviceList']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      androidMatrix: pulumi.Input.fromValue(
-        AndroidMatrixResponse.fromMap(
-          (map['androidMatrix']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      iosDeviceList: pulumi.Input.fromValue(
-        IosDeviceListResponse.fromMap(
-          (map['iosDeviceList']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      androidDeviceList: pulumi.Input.fromValue(AndroidDeviceListResponse.fromMap((map['androidDeviceList']! as Map).cast<String, dynamic>())),
+      androidMatrix: pulumi.Input.fromValue(AndroidMatrixResponse.fromMap((map['androidMatrix']! as Map).cast<String, dynamic>())),
+      iosDeviceList: pulumi.Input.fromValue(IosDeviceListResponse.fromMap((map['iosDeviceList']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

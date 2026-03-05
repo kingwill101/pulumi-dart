@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecurityPostureConfigResponseGkehubV1alpha {
   /// Sets which mode to use for Security Posture features.
   final pulumi.Input<String> mode;
-
   /// Sets which mode to use for vulnerability scanning.
   final pulumi.Input<String> vulnerabilityMode;
 
@@ -25,14 +24,11 @@ class SecurityPostureConfigResponseGkehubV1alpha {
     };
   }
 
-  factory SecurityPostureConfigResponseGkehubV1alpha.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SecurityPostureConfigResponseGkehubV1alpha.fromMap(Map<String, dynamic> map) {
     return SecurityPostureConfigResponseGkehubV1alpha(
       mode: pulumi.Input.fromValue(map['mode'] as String),
-      vulnerabilityMode: pulumi.Input.fromValue(
-        map['vulnerabilityMode'] as String,
-      ),
+      vulnerabilityMode: pulumi.Input.fromValue(map['vulnerabilityMode'] as String),
     );
   }
 }
+

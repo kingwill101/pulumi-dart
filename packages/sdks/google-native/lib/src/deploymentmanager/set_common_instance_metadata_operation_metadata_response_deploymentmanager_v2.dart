@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SetCommonInstanceMetadataOperationMetadataResponseDeploymentmanagerV2 {
   /// The client operation id.
   final pulumi.Input<String> clientOperationId;
-
   /// Status information per location (location name is key). Example key: zones/us-central1-a
   final pulumi.Input<Map<String, String>> perLocationOperations;
 
@@ -24,16 +23,11 @@ class SetCommonInstanceMetadataOperationMetadataResponseDeploymentmanagerV2 {
     };
   }
 
-  factory SetCommonInstanceMetadataOperationMetadataResponseDeploymentmanagerV2.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SetCommonInstanceMetadataOperationMetadataResponseDeploymentmanagerV2.fromMap(Map<String, dynamic> map) {
     return SetCommonInstanceMetadataOperationMetadataResponseDeploymentmanagerV2(
-      clientOperationId: pulumi.Input.fromValue(
-        map['clientOperationId'] as String,
-      ),
-      perLocationOperations: pulumi.Input.fromValue(
-        (map['perLocationOperations'] as Map).cast<String, String>(),
-      ),
+      clientOperationId: pulumi.Input.fromValue(map['clientOperationId'] as String),
+      perLocationOperations: pulumi.Input.fromValue((map['perLocationOperations'] as Map).cast<String, String>()),
     );
   }
 }
+

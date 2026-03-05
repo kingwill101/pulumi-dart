@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecResponse {
   /// The optimization goal of the metric.
   final pulumi.Input<String> goal;
-
   /// The ID of the metric. Must not contain whitespaces.
   final pulumi.Input<String> metricId;
 
@@ -19,15 +18,17 @@ class GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecRes
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'goal': goal, 'metricId': metricId};
+    return <String, dynamic>{
+      'goal': goal,
+      'metricId': metricId,
+    };
   }
 
-  factory GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecResponse(
       goal: pulumi.Input.fromValue(map['goal'] as String),
       metricId: pulumi.Input.fromValue(map['metricId'] as String),
     );
   }
 }
+

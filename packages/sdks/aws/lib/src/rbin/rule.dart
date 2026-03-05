@@ -351,36 +351,26 @@ import 'rule_state.dart';
 /// ```
 class Rule extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
-
   /// Retention rule description.
   late final pulumi.Output<String> description;
-
   /// Exclusion tags to use to identify resources that are to be excluded, or ignored, by a Region-level retention rule. See `exclude_resource_tags` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> excludeResourceTags;
-
   /// Information about the retention rule lock configuration. See `lock_configuration` below.
   late final pulumi.Output<RuleLockConfiguration?> lockConfiguration;
-
   /// (Timestamp) Date and time at which the unlock delay is set to expire. Only returned for retention rules that have been unlocked and that are still within the unlock delay period.
   late final pulumi.Output<String> lockEndTime;
-
   /// (Optional) Lock state of the retention rules to list. Only retention rules with the specified lock state are returned. Valid values are `locked`, `pending_unlock`, `unlocked`.
   late final pulumi.Output<String> lockState;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Resource tags to use to identify resources that are to be retained by a tag-level retention rule. See `resource_tags` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> resourceTags;
-
   /// Resource type to be retained by the retention rule. Valid values are `EBS_SNAPSHOT` and `EC2_IMAGE`.
   late final pulumi.Output<String> resourceType;
-
   /// Information about the retention period for which the retention rule is to retain resources. See `retention_period` below.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<RuleRetentionPeriod> retentionPeriod;
-
   /// (String) State of the retention rule. Only retention rules that are in the `available` state retain resources. Valid values include `pending` and `available`.
   late final pulumi.Output<String> status;
   late final pulumi.Output<Map<String, String>?> tags;
@@ -390,50 +380,37 @@ class Rule extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Rule]. {@macro pulumi_rbin_rule_rule_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Rule(String name, {RuleArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:rbin/rule:Rule',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Rule(
+    String name, {
+    RuleArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:rbin/rule:Rule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String>('description');
-    excludeResourceTags = registerOutput<List<Map<String, dynamic>>?>(
-      'excludeResourceTags',
-    );
-    lockConfiguration = registerOutput<RuleLockConfiguration?>(
-      'lockConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RuleLockConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    excludeResourceTags = registerOutput<List<Map<String, dynamic>>?>('excludeResourceTags');
+    lockConfiguration = registerOutput<RuleLockConfiguration?>('lockConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuleLockConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lockEndTime = registerOutput<String>('lockEndTime');
     lockState = registerOutput<String>('lockState');
     region = registerOutput<String>('region');
     resourceTags = registerOutput<List<Map<String, dynamic>>?>('resourceTags');
     resourceType = registerOutput<String>('resourceType');
-    retentionPeriod = registerOutput<RuleRetentionPeriod>(
-      'retentionPeriod',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RuleRetentionPeriod.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    retentionPeriod = registerOutput<RuleRetentionPeriod>('retentionPeriod', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuleRetentionPeriod.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [Rule] resource's state with the given [name] and [id].
-  static Rule get(String name, pulumi.Input<String> id, {RuleState? state}) {
+  static Rule get(
+    String name,
+    pulumi.Input<String> id, {
+    RuleState? state,
+  }) {
     return Rule._get(
       name,
       state: state?.toMap(),
@@ -446,41 +423,21 @@ class Rule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:rbin/rule:Rule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:rbin/rule:Rule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String>('description');
-    excludeResourceTags = registerOutput<List<Map<String, dynamic>>?>(
-      'excludeResourceTags',
-    );
-    lockConfiguration = registerOutput<RuleLockConfiguration?>(
-      'lockConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RuleLockConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    excludeResourceTags = registerOutput<List<Map<String, dynamic>>?>('excludeResourceTags');
+    lockConfiguration = registerOutput<RuleLockConfiguration?>('lockConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuleLockConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lockEndTime = registerOutput<String>('lockEndTime');
     lockState = registerOutput<String>('lockState');
     region = registerOutput<String>('region');
     resourceTags = registerOutput<List<Map<String, dynamic>>?>('resourceTags');
     resourceType = registerOutput<String>('resourceType');
-    retentionPeriod = registerOutput<RuleRetentionPeriod>(
-      'retentionPeriod',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RuleRetentionPeriod.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    retentionPeriod = registerOutput<RuleRetentionPeriod>('retentionPeriod', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuleRetentionPeriod.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');

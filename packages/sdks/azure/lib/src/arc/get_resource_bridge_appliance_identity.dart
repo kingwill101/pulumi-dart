@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetResourceBridgeApplianceIdentity {
   /// The Principal ID associated with this Managed Service Identity.
   final pulumi.Input<String> principalId;
-
   /// The Tenant ID associated with this Managed Service Identity.
   final pulumi.Input<String> tenantId;
-
   /// The type of this Managed Service Identity.
   final pulumi.Input<String> type;
 
@@ -38,3 +36,4 @@ class GetResourceBridgeApplianceIdentity {
     );
   }
 }
+

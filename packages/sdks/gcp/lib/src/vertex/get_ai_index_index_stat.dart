@@ -5,14 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAiIndexIndexStat {
   /// The number of shards in the Index.
   final pulumi.Input<int> shardsCount;
-
   /// The number of vectors in the Index.
   final pulumi.Input<String> vectorsCount;
 
   /// Creates a new [GetAiIndexIndexStat].
   /// [shardsCount] The number of shards in the Index.
   /// [vectorsCount] The number of vectors in the Index.
-  GetAiIndexIndexStat({required this.shardsCount, required this.vectorsCount});
+  GetAiIndexIndexStat({
+    required this.shardsCount,
+    required this.vectorsCount,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,3 +30,4 @@ class GetAiIndexIndexStat {
     );
   }
 }
+

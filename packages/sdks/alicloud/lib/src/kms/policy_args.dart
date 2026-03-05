@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PolicyArgs {
   /// Network Rules in JSON struct.
   final pulumi.Input<String> accessControlRules;
-
   /// Description.
   final pulumi.Input<String>? description;
-
   /// KMS instance .
   final pulumi.Input<String> kmsInstanceId;
-
   /// Allowed permissions (RBAC)Optional values:"RbacPermission/Template/CryptoServiceKeyUser" and "RbacPermission/Template/CryptoServiceSecretUser".
   final pulumi.Input<List<String>> permissions;
-
   /// Policy Name.
   final pulumi.Input<String> policyName;
-
   /// The resources that the permission policy allows to access.Use "key/${KeyId}" or "key/*"  to specify a key or all keys.Use "secret/${SecretName}" or "secret/*" to specify a secret or all secrets.
   final pulumi.Input<List<String>> resources;
 
@@ -54,22 +49,13 @@ class PolicyArgs {
 
   factory PolicyArgs.fromMap(Map<String, dynamic> map) {
     return PolicyArgs(
-      accessControlRules: pulumi.Input.fromValue(
-        map['accessControlRules'] as String,
-      ),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accessControlRules: pulumi.Input.fromValue(map['accessControlRules'] as String),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kmsInstanceId: pulumi.Input.fromValue(map['kmsInstanceId'] as String),
-      permissions: pulumi.Input.fromValue(
-        (map['permissions'] as List).cast<String>(),
-      ),
+      permissions: pulumi.Input.fromValue((map['permissions'] as List).cast<String>()),
       policyName: pulumi.Input.fromValue(map['policyName'] as String),
-      resources: pulumi.Input.fromValue(
-        (map['resources'] as List).cast<String>(),
-      ),
+      resources: pulumi.Input.fromValue((map['resources'] as List).cast<String>()),
     );
   }
 }
+

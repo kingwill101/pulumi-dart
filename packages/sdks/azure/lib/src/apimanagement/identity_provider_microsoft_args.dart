@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IdentityProviderMicrosoftArgs {
   /// The Name of the API Management Service where this Microsoft Identity Provider should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> apiManagementName;
-
   /// Client Id of the Azure AD Application.
   final pulumi.Input<String> clientId;
-
   /// Client secret of the Azure AD Application.
   final pulumi.Input<String> clientSecret;
-
   /// The Name of the Resource Group where the API Management Service exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
 
@@ -42,14 +39,11 @@ class IdentityProviderMicrosoftArgs {
 
   factory IdentityProviderMicrosoftArgs.fromMap(Map<String, dynamic> map) {
     return IdentityProviderMicrosoftArgs(
-      apiManagementName: pulumi.Input.fromValue(
-        map['apiManagementName'] as String,
-      ),
+      apiManagementName: pulumi.Input.fromValue(map['apiManagementName'] as String),
       clientId: pulumi.Input.fromValue(map['clientId'] as String),
       clientSecret: pulumi.Input.fromValue(map['clientSecret'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

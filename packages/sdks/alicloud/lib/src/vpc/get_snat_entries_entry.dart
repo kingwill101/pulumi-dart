@@ -5,22 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSnatEntriesEntry {
   /// The ID of the Snat Entry.
   final pulumi.Input<String> id;
-
   /// The ID of snat entry.
   final pulumi.Input<String> snatEntryId;
-
   /// The name of snat entry.
   final pulumi.Input<String> snatEntryName;
-
   /// The public IP of the Snat Entry.
   final pulumi.Input<String> snatIp;
-
   /// The source CIDR block of the Snat Entry.
   final pulumi.Input<String> sourceCidr;
-
   /// The source vswitch ID.
   final pulumi.Input<String> sourceVswitchId;
-
   /// The status of the Snat Entry. Valid values: `Available`, `Deleting` and `Pending`.
   final pulumi.Input<String> status;
 
@@ -66,3 +60,4 @@ class GetSnatEntriesEntry {
     );
   }
 }
+

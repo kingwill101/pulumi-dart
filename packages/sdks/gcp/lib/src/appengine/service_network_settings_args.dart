@@ -11,11 +11,9 @@ class ServiceNetworkSettingsArgs {
   /// Ingress settings for this service. Will apply to all versions.
   /// Structure is documented below.
   final pulumi.Input<ServiceNetworkSettingsNetworkSettings> networkSettings;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The name of the service these settings apply to.
   final pulumi.Input<String> service;
 
@@ -31,11 +29,7 @@ class ServiceNetworkSettingsArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'networkSettings':
-          pulumi.Input.mapInputValue<
-            ServiceNetworkSettingsNetworkSettings,
-            Map<String, dynamic>
-          >(networkSettings, (value) => value.toMap()),
+      'networkSettings': pulumi.Input.mapInputValue<ServiceNetworkSettingsNetworkSettings, Map<String, dynamic>>(networkSettings, (value) => value.toMap()),
       'project': ?project,
       'service': service,
     };
@@ -43,17 +37,10 @@ class ServiceNetworkSettingsArgs {
 
   factory ServiceNetworkSettingsArgs.fromMap(Map<String, dynamic> map) {
     return ServiceNetworkSettingsArgs(
-      networkSettings: pulumi.Input.fromValue(
-        ServiceNetworkSettingsNetworkSettings.fromMap(
-          (map['networkSettings']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      networkSettings: pulumi.Input.fromValue(ServiceNetworkSettingsNetworkSettings.fromMap((map['networkSettings']! as Map).cast<String, dynamic>())),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       service: pulumi.Input.fromValue(map['service'] as String),
     );
   }
 }
+

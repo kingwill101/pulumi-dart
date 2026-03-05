@@ -13,8 +13,7 @@ enum FirewallPolicyIntrusionDetectionStateType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown FirewallPolicyIntrusionDetectionStateType value: $value',
-    );
+    throw ArgumentError('Unknown FirewallPolicyIntrusionDetectionStateType value: $value');
   }
 }
+

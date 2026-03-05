@@ -7,7 +7,6 @@ import 'google_iam_v1_audit_log_config_response.dart';
 class GoogleIamV1AuditConfigResponse {
   /// The configuration for logging of each type of permission.
   final pulumi.Input<List<GoogleIamV1AuditLogConfigResponse>> auditLogConfigs;
-
   /// Specifies a service that will be enabled for audit logging. For example, storage.googleapis.com, cloudsql.googleapis.com. allServices is a special value that covers all services.
   final pulumi.Input<String> service;
 
@@ -21,33 +20,16 @@ class GoogleIamV1AuditConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'auditLogConfigs':
-          pulumi.Input.mapInputValue<
-            List<GoogleIamV1AuditLogConfigResponse>,
-            List<Map<String, dynamic>>
-          >(
-            auditLogConfigs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GoogleIamV1AuditLogConfigResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'auditLogConfigs': pulumi.Input.mapInputValue<List<GoogleIamV1AuditLogConfigResponse>, List<Map<String, dynamic>>>(auditLogConfigs, (value) => pulumi.Input.encodeList<GoogleIamV1AuditLogConfigResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'service': service,
     };
   }
 
   factory GoogleIamV1AuditConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleIamV1AuditConfigResponse(
-      auditLogConfigs: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GoogleIamV1AuditLogConfigResponse>(
-          map['auditLogConfigs']!,
-          (value) => GoogleIamV1AuditLogConfigResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      auditLogConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleIamV1AuditLogConfigResponse>(map['auditLogConfigs']!, (value) => GoogleIamV1AuditLogConfigResponse.fromMap((value as Map).cast<String, dynamic>()))),
       service: pulumi.Input.fromValue(map['service'] as String),
     );
   }
 }
+

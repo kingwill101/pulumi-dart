@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScheduledQueryRulesAlertAction {
   /// List of action group reference resource IDs.
   final pulumi.Input<List<String>> actionGroups;
-
   /// Custom payload to be sent for all webhook payloads in alerting action.
   final pulumi.Input<String>? customWebhookPayload;
-
   /// Custom subject override for all email ids in Azure action group.
   final pulumi.Input<String>? emailSubject;
 
@@ -32,19 +30,10 @@ class ScheduledQueryRulesAlertAction {
 
   factory ScheduledQueryRulesAlertAction.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryRulesAlertAction(
-      actionGroups: pulumi.Input.fromValue(
-        (map['actionGroups'] as List).cast<String>(),
-      ),
-      customWebhookPayload: (() {
-        final guardedValue = map['customWebhookPayload'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      emailSubject: (() {
-        final guardedValue = map['emailSubject'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      actionGroups: pulumi.Input.fromValue((map['actionGroups'] as List).cast<String>()),
+      customWebhookPayload: (() { final guardedValue = map['customWebhookPayload']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      emailSubject: (() { final guardedValue = map['emailSubject']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

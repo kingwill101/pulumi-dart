@@ -15,3 +15,4 @@ enum PrivateIPAddressVersion {
     throw ArgumentError('Unknown PrivateIPAddressVersion value: $value');
   }
 }
+

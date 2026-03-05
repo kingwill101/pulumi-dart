@@ -10,13 +10,10 @@ import 'get_connect_filter.dart';
 class GetConnectArgs {
   /// One or more configuration blocks containing name-values filters. Detailed below.
   final pulumi.Input<List<GetConnectFilter>>? filters;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Key-value tags for the EC2 Transit Gateway Connect
   final pulumi.Input<Map<String, String>>? tags;
-
   /// Identifier of the EC2 Transit Gateway Connect.
   final pulumi.Input<String>? transitGatewayConnectId;
 
@@ -34,18 +31,7 @@ class GetConnectArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GetConnectFilter>,
-            List<Map<String, dynamic>>
-          >(
-            filters,
-            (value) =>
-                pulumi.Input.encodeList<GetConnectFilter, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetConnectFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetConnectFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
       'region': ?region,
       'tags': ?tags,
       'transitGatewayConnectId': ?transitGatewayConnectId,
@@ -54,35 +40,11 @@ class GetConnectArgs {
 
   factory GetConnectArgs.fromMap(Map<String, dynamic> map) {
     return GetConnectArgs(
-      filters: (() {
-        final guardedValue = map['filters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GetConnectFilter>(
-            guardedValue,
-            (value) => GetConnectFilter.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      transitGatewayConnectId: (() {
-        final guardedValue = map['transitGatewayConnectId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetConnectFilter>(guardedValue, (value) => GetConnectFilter.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      transitGatewayConnectId: (() { final guardedValue = map['transitGatewayConnectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

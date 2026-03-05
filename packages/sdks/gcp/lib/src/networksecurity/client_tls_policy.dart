@@ -341,43 +341,32 @@ class ClientTlsPolicy extends pulumi.CustomResource {
   /// Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
   /// Structure is documented below.
   late final pulumi.Output<ClientTlsPolicyClientCertificate?> clientCertificate;
-
   /// Time the ClientTlsPolicy was created in UTC.
   late final pulumi.Output<String> createTime;
-
   /// A free-text description of the resource. Max length 1024 characters.
   late final pulumi.Output<String?> description;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Set of label tags associated with the ClientTlsPolicy resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// The location of the client tls policy.
   /// The default value is `global`.
   late final pulumi.Output<String?> location;
-
   /// Name of the ClientTlsPolicy resource.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// Defines the mechanism to obtain the Certificate Authority certificate to validate the server certificate. If empty, client does not validate the server certificate.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> serverValidationCas;
-
   /// Server Name Indication string to present to the server during TLS handshake. E.g: "secure.example.com".
   late final pulumi.Output<String?> sni;
-
   /// Time the ClientTlsPolicy was updated in UTC.
   late final pulumi.Output<String> updateTime;
 
@@ -390,21 +379,12 @@ class ClientTlsPolicy extends pulumi.CustomResource {
     ClientTlsPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:networksecurity/clientTlsPolicy:ClientTlsPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    clientCertificate = registerOutput<ClientTlsPolicyClientCertificate?>(
-      'clientCertificate',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClientTlsPolicyClientCertificate.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:networksecurity/clientTlsPolicy:ClientTlsPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    clientCertificate = registerOutput<ClientTlsPolicyClientCertificate?>('clientCertificate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClientTlsPolicyClientCertificate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -413,9 +393,7 @@ class ClientTlsPolicy extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    serverValidationCas = registerOutput<List<Map<String, dynamic>>?>(
-      'serverValidationCas',
-    );
+    serverValidationCas = registerOutput<List<Map<String, dynamic>>?>('serverValidationCas');
     sni = registerOutput<String?>('sni');
     updateTime = registerOutput<String>('updateTime');
   }
@@ -438,21 +416,12 @@ class ClientTlsPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:networksecurity/clientTlsPolicy:ClientTlsPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    clientCertificate = registerOutput<ClientTlsPolicyClientCertificate?>(
-      'clientCertificate',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClientTlsPolicyClientCertificate.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:networksecurity/clientTlsPolicy:ClientTlsPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    clientCertificate = registerOutput<ClientTlsPolicyClientCertificate?>('clientCertificate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClientTlsPolicyClientCertificate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -461,9 +430,7 @@ class ClientTlsPolicy extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    serverValidationCas = registerOutput<List<Map<String, dynamic>>?>(
-      'serverValidationCas',
-    );
+    serverValidationCas = registerOutput<List<Map<String, dynamic>>?>('serverValidationCas');
     sni = registerOutput<String?>('sni');
     updateTime = registerOutput<String>('updateTime');
   }

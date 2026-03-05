@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudMlV1MeasurementMetric {
   /// Metric name.
   final pulumi.Input<String> metric;
-
   /// The value for this metric.
   final pulumi.Input<double> value;
 
   /// Creates a new [GoogleCloudMlV1MeasurementMetric].
   /// [metric] Metric name.
   /// [value] The value for this metric.
-  GoogleCloudMlV1MeasurementMetric({required this.metric, required this.value});
+  GoogleCloudMlV1MeasurementMetric({
+    required this.metric,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'metric': metric, 'value': value};
+    return <String, dynamic>{
+      'metric': metric,
+      'value': value,
+    };
   }
 
   factory GoogleCloudMlV1MeasurementMetric.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class GoogleCloudMlV1MeasurementMetric {
     );
   }
 }
+

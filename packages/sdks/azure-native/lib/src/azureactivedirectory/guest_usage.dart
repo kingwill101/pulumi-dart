@@ -129,22 +129,16 @@ import 'system_data_response.dart';
 class GuestUsage extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Location of the Guest Usages resource.
   late final pulumi.Output<String?> location;
-
   /// The name of the Guest Usages resource.
   late final pulumi.Output<String> name;
-
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Key-value pairs of additional resource provisioning properties.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// An identifier for the tenant for which the resource is being created
   late final pulumi.Output<String?> tenantId;
-
   /// The type of the Guest Usages resource.
   late final pulumi.Output<String> type;
 
@@ -157,24 +151,15 @@ class GuestUsage extends pulumi.CustomResource {
     GuestUsageArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:azureactivedirectory:GuestUsage',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:azureactivedirectory:GuestUsage',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tenantId = registerOutput<String?>('tenantId');
     type = registerOutput<String>('type');

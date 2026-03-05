@@ -5,30 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StarRocksInstanceObserverNodeGroup {
   /// Number of CUs. CU (Compute Unit) is the basic measurement unit of the service, where 1 CU = 1 CPU core + 4 GiB memory.
   final pulumi.Input<int>? cu;
-
   /// DiskNumber
   final pulumi.Input<int>? diskNumber;
-
   /// Local SSD instance specifications.
   final pulumi.Input<String>? localStorageInstanceType;
-
   /// Resident node number of node group.
   final pulumi.Input<int>? residentNodeNumber;
-
   /// Compute group specification types include the following:
   /// - standard
   final pulumi.Input<String>? specType;
-
   /// Performance levels of cloud disks include the following values:
   /// - pl0: Maximum random read/write IOPS per disk is 10,000.
   /// - pl1: Maximum random read/write IOPS per disk is 50,000.
   /// - pl2: Maximum random read/write IOPS per disk is 100,000.
   /// - pl3: Maximum random read/write IOPS per disk is 1,000,000.
   final pulumi.Input<String>? storagePerformanceLevel;
-
   /// Storage size, measured in GiB.
   final pulumi.Input<int>? storageSize;
-
   /// Zone ID.
   final pulumi.Input<String>? zoneId;
 
@@ -67,46 +60,15 @@ class StarRocksInstanceObserverNodeGroup {
 
   factory StarRocksInstanceObserverNodeGroup.fromMap(Map<String, dynamic> map) {
     return StarRocksInstanceObserverNodeGroup(
-      cu: (() {
-        final guardedValue = map['cu'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      diskNumber: (() {
-        final guardedValue = map['diskNumber'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      localStorageInstanceType: (() {
-        final guardedValue = map['localStorageInstanceType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      residentNodeNumber: (() {
-        final guardedValue = map['residentNodeNumber'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      specType: (() {
-        final guardedValue = map['specType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      storagePerformanceLevel: (() {
-        final guardedValue = map['storagePerformanceLevel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      storageSize: (() {
-        final guardedValue = map['storageSize'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      zoneId: (() {
-        final guardedValue = map['zoneId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      cu: (() { final guardedValue = map['cu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      diskNumber: (() { final guardedValue = map['diskNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      localStorageInstanceType: (() { final guardedValue = map['localStorageInstanceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      residentNodeNumber: (() { final guardedValue = map['residentNodeNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      specType: (() { final guardedValue = map['specType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storagePerformanceLevel: (() { final guardedValue = map['storagePerformanceLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageSize: (() { final guardedValue = map['storageSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      zoneId: (() { final guardedValue = map['zoneId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

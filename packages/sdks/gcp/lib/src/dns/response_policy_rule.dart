@@ -336,22 +336,17 @@ import 'response_policy_rule_state.dart';
 class ResponsePolicyRule extends pulumi.CustomResource {
   /// Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
   late final pulumi.Output<String?> behavior;
-
   /// The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
   late final pulumi.Output<String> dnsName;
-
   /// Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name;
   /// in particular they override private zones, the public internet, and GCP internal DNS. No SOA nor NS types are allowed.
   /// Structure is documented below.
   late final pulumi.Output<ResponsePolicyRuleLocalData?> localData;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Identifies the response policy addressed by this request.
   late final pulumi.Output<String> responsePolicy;
-
   /// An identifier for this rule. Must be unique with the ResponsePolicy.
   late final pulumi.Output<String> ruleName;
 
@@ -364,23 +359,14 @@ class ResponsePolicyRule extends pulumi.CustomResource {
     ResponsePolicyRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:dns/responsePolicyRule:ResponsePolicyRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:dns/responsePolicyRule:ResponsePolicyRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     behavior = registerOutput<String?>('behavior');
     dnsName = registerOutput<String>('dnsName');
-    localData = registerOutput<ResponsePolicyRuleLocalData?>(
-      'localData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResponsePolicyRuleLocalData.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    localData = registerOutput<ResponsePolicyRuleLocalData?>('localData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResponsePolicyRuleLocalData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     responsePolicy = registerOutput<String>('responsePolicy');
     ruleName = registerOutput<String>('ruleName');
@@ -404,23 +390,14 @@ class ResponsePolicyRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:dns/responsePolicyRule:ResponsePolicyRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:dns/responsePolicyRule:ResponsePolicyRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     behavior = registerOutput<String?>('behavior');
     dnsName = registerOutput<String>('dnsName');
-    localData = registerOutput<ResponsePolicyRuleLocalData?>(
-      'localData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResponsePolicyRuleLocalData.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    localData = registerOutput<ResponsePolicyRuleLocalData?>('localData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResponsePolicyRuleLocalData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     responsePolicy = registerOutput<String>('responsePolicy');
     ruleName = registerOutput<String>('ruleName');

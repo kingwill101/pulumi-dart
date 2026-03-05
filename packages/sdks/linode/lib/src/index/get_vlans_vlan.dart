@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVlansVlan {
   /// When the VLAN was created.
   final pulumi.Input<String> created;
-
   /// The unique label of the VLAN.
   final pulumi.Input<String> label;
-
   /// The running Linodes currently attached to the VLAN.
   final pulumi.Input<List<int>> linodes;
-
   /// The region the VLAN is located in. See all regions [here](https://api.linode.com/v4/regions).
   final pulumi.Input<String> region;
 
@@ -45,3 +42,4 @@ class GetVlansVlan {
     );
   }
 }
+

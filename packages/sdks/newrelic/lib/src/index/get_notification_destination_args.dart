@@ -10,15 +10,12 @@ import 'get_notification_destination_secure_url.dart';
 class GetNotificationDestinationArgs {
   /// The New Relic account ID to operate on.  This allows you to override the `account_id` attribute set on the provider. Defaults to the environment variable `NEW_RELIC_ACCOUNT_ID`.
   final pulumi.Input<String>? accountId;
-
   /// The id of the notification destination in New Relic.
   final pulumi.Input<String>? id;
-
   /// The name of the notification destination.
   ///
   /// Optional:
   final pulumi.Input<String>? name;
-
   /// The URL in secure format, showing only the `prefix`, as the `secure_suffix` is a secret.
   final pulumi.Input<List<GetNotificationDestinationSecureUrl>>? secureUrls;
 
@@ -39,50 +36,17 @@ class GetNotificationDestinationArgs {
       'accountId': ?accountId,
       'id': ?id,
       'name': ?name,
-      'secureUrls':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GetNotificationDestinationSecureUrl>,
-            List<Map<String, dynamic>>
-          >(
-            secureUrls,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetNotificationDestinationSecureUrl,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'secureUrls': ?pulumi.Input.mapOptionalInputValue<List<GetNotificationDestinationSecureUrl>, List<Map<String, dynamic>>>(secureUrls, (value) => pulumi.Input.encodeList<GetNotificationDestinationSecureUrl, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetNotificationDestinationArgs.fromMap(Map<String, dynamic> map) {
     return GetNotificationDestinationArgs(
-      accountId: (() {
-        final guardedValue = map['accountId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      secureUrls: (() {
-        final guardedValue = map['secureUrls'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GetNotificationDestinationSecureUrl>(
-            guardedValue,
-            (value) => GetNotificationDestinationSecureUrl.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      secureUrls: (() { final guardedValue = map['secureUrls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetNotificationDestinationSecureUrl>(guardedValue, (value) => GetNotificationDestinationSecureUrl.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

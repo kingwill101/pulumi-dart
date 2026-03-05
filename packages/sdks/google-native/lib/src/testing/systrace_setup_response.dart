@@ -8,10 +8,14 @@ class SystraceSetupResponse {
 
   /// Creates a new [SystraceSetupResponse].
   /// [durationSeconds] Systrace duration in seconds. Should be between 1 and 30 seconds. 0 disables systrace.
-  SystraceSetupResponse({required this.durationSeconds});
+  SystraceSetupResponse({
+    required this.durationSeconds,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'durationSeconds': durationSeconds};
+    return <String, dynamic>{
+      'durationSeconds': durationSeconds,
+    };
   }
 
   factory SystraceSetupResponse.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class SystraceSetupResponse {
     );
   }
 }
+

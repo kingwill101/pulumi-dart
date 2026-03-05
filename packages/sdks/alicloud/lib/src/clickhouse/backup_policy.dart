@@ -364,16 +364,12 @@ import 'backup_policy_state.dart';
 class BackupPolicy extends pulumi.CustomResource {
   /// Data backup days. Valid values: `7` to `730`.
   late final pulumi.Output<int?> backupRetentionPeriod;
-
   /// The id of the DBCluster.
   late final pulumi.Output<String> dbClusterId;
-
   /// DBCluster Backup period. A list of DBCluster Backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
   late final pulumi.Output<List<String>> preferredBackupPeriods;
-
   /// DBCluster backup time, in the format of `HH:mmZ-HH:mmZ`. Time setting interval is one hour. China time is 8 hours behind it.
   late final pulumi.Output<String> preferredBackupTime;
-
   /// The status of the resource.
   late final pulumi.Output<String> status;
 
@@ -386,16 +382,14 @@ class BackupPolicy extends pulumi.CustomResource {
     BackupPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:clickhouse/backupPolicy:BackupPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:clickhouse/backupPolicy:BackupPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     backupRetentionPeriod = registerOutput<int?>('backupRetentionPeriod');
     dbClusterId = registerOutput<String>('dbClusterId');
-    preferredBackupPeriods = registerOutput<List<String>>(
-      'preferredBackupPeriods',
-    );
+    preferredBackupPeriods = registerOutput<List<String>>('preferredBackupPeriods');
     preferredBackupTime = registerOutput<String>('preferredBackupTime');
     status = registerOutput<String>('status');
   }
@@ -418,16 +412,14 @@ class BackupPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:clickhouse/backupPolicy:BackupPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:clickhouse/backupPolicy:BackupPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     backupRetentionPeriod = registerOutput<int?>('backupRetentionPeriod');
     dbClusterId = registerOutput<String>('dbClusterId');
-    preferredBackupPeriods = registerOutput<List<String>>(
-      'preferredBackupPeriods',
-    );
+    preferredBackupPeriods = registerOutput<List<String>>('preferredBackupPeriods');
     preferredBackupTime = registerOutput<String>('preferredBackupTime');
     status = registerOutput<String>('status');
   }

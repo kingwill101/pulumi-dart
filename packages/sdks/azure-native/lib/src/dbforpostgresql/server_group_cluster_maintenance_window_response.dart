@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServerGroupClusterMaintenanceWindowResponse {
   /// Indicates whether custom maintenance window is enabled or not.
   final pulumi.Input<String>? customWindow;
-
   /// Preferred day of the week for maintenance window.
   final pulumi.Input<int>? dayOfWeek;
-
   /// Start hour within preferred day of the week for maintenance window.
   final pulumi.Input<int>? startHour;
-
   /// Start minute within the start hour for maintenance window.
   final pulumi.Input<int>? startMinute;
 
@@ -37,30 +34,13 @@ class ServerGroupClusterMaintenanceWindowResponse {
     };
   }
 
-  factory ServerGroupClusterMaintenanceWindowResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ServerGroupClusterMaintenanceWindowResponse.fromMap(Map<String, dynamic> map) {
     return ServerGroupClusterMaintenanceWindowResponse(
-      customWindow: (() {
-        final guardedValue = map['customWindow'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dayOfWeek: (() {
-        final guardedValue = map['dayOfWeek'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      startHour: (() {
-        final guardedValue = map['startHour'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      startMinute: (() {
-        final guardedValue = map['startMinute'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      customWindow: (() { final guardedValue = map['customWindow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dayOfWeek: (() { final guardedValue = map['dayOfWeek']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      startHour: (() { final guardedValue = map['startHour']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      startMinute: (() { final guardedValue = map['startMinute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

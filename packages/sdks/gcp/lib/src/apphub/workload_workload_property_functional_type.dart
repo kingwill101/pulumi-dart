@@ -9,21 +9,20 @@ class WorkloadWorkloadPropertyFunctionalType {
 
   /// Creates a new [WorkloadWorkloadPropertyFunctionalType].
   /// [type] (Output)
-  WorkloadWorkloadPropertyFunctionalType({this.type});
+  WorkloadWorkloadPropertyFunctionalType({
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': ?type};
+    return <String, dynamic>{
+      'type': ?type,
+    };
   }
 
-  factory WorkloadWorkloadPropertyFunctionalType.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WorkloadWorkloadPropertyFunctionalType.fromMap(Map<String, dynamic> map) {
     return WorkloadWorkloadPropertyFunctionalType(
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

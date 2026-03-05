@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScaleActionResponse {
   /// the amount of time to wait since the last scaling action before this action occurs. It must be between 1 week and 1 minute in ISO 8601 format.
   final pulumi.Input<String> cooldown;
-
   /// the scale direction. Whether the scaling action increases or decreases the number of instances.
   final pulumi.Input<String> direction;
-
   /// the type of action that should occur when the scale rule fires.
   final pulumi.Input<String> type;
-
   /// the number of instances that are involved in the scaling action. This value must be 1 or greater. The default value is 1.
   final pulumi.Input<String>? value;
 
@@ -42,11 +39,8 @@ class ScaleActionResponse {
       cooldown: pulumi.Input.fromValue(map['cooldown'] as String),
       direction: pulumi.Input.fromValue(map['direction'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

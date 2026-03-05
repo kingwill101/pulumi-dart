@@ -11,39 +11,28 @@ import 'identity_info.dart';
 class PartnerTopicArgs {
   /// Activation state of the partner topic.
   final pulumi.Input<String>? activationState;
-
   /// Event Type information from the corresponding event channel.
   final pulumi.Input<EventTypeInfo>? eventTypeInfo;
-
   /// Expiration time of the partner topic. If this timer expires while the partner topic is still never activated,
   /// the partner topic and corresponding event channel are deleted.
   final pulumi.Input<String>? expirationTimeIfNotActivatedUtc;
-
   /// Identity information for the Partner Topic resource.
   final pulumi.Input<IdentityInfo>? identity;
-
   /// Location of the resource.
   final pulumi.Input<String>? location;
-
   /// Context or helpful message that can be used during the approval process by the subscriber.
   final pulumi.Input<String>? messageForActivation;
-
   /// The immutableId of the corresponding partner registration.
   final pulumi.Input<String>? partnerRegistrationImmutableId;
-
   /// Friendly description about the topic. This can be set by the publisher/partner to show custom description for the customer partner topic.
   /// This will be helpful to remove any ambiguity of the origin of creation of the partner topic for the customer.
   final pulumi.Input<String>? partnerTopicFriendlyDescription;
-
   /// Name of the partner topic.
   final pulumi.Input<String>? partnerTopicName;
-
   /// The name of the resource group within the user's subscription.
   final pulumi.Input<String> resourceGroupName;
-
   /// Source associated with this partner topic. This represents a unique partner resource.
   final pulumi.Input<String>? source;
-
   /// Tags of the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -78,17 +67,9 @@ class PartnerTopicArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'activationState': ?activationState,
-      'eventTypeInfo':
-          ?pulumi.Input.mapOptionalInputValue<
-            EventTypeInfo,
-            Map<String, dynamic>
-          >(eventTypeInfo, (value) => value.toMap()),
+      'eventTypeInfo': ?pulumi.Input.mapOptionalInputValue<EventTypeInfo, Map<String, dynamic>>(eventTypeInfo, (value) => value.toMap()),
       'expirationTimeIfNotActivatedUtc': ?expirationTimeIfNotActivatedUtc,
-      'identity':
-          ?pulumi.Input.mapOptionalInputValue<
-            IdentityInfo,
-            Map<String, dynamic>
-          >(identity, (value) => value.toMap()),
+      'identity': ?pulumi.Input.mapOptionalInputValue<IdentityInfo, Map<String, dynamic>>(identity, (value) => value.toMap()),
       'location': ?location,
       'messageForActivation': ?messageForActivation,
       'partnerRegistrationImmutableId': ?partnerRegistrationImmutableId,
@@ -102,70 +83,19 @@ class PartnerTopicArgs {
 
   factory PartnerTopicArgs.fromMap(Map<String, dynamic> map) {
     return PartnerTopicArgs(
-      activationState: (() {
-        final guardedValue = map['activationState'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      eventTypeInfo: (() {
-        final guardedValue = map['eventTypeInfo'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          EventTypeInfo.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      expirationTimeIfNotActivatedUtc: (() {
-        final guardedValue = map['expirationTimeIfNotActivatedUtc'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          IdentityInfo.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      messageForActivation: (() {
-        final guardedValue = map['messageForActivation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      partnerRegistrationImmutableId: (() {
-        final guardedValue = map['partnerRegistrationImmutableId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      partnerTopicFriendlyDescription: (() {
-        final guardedValue = map['partnerTopicFriendlyDescription'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      partnerTopicName: (() {
-        final guardedValue = map['partnerTopicName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      source: (() {
-        final guardedValue = map['source'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      activationState: (() { final guardedValue = map['activationState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      eventTypeInfo: (() { final guardedValue = map['eventTypeInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EventTypeInfo.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      expirationTimeIfNotActivatedUtc: (() { final guardedValue = map['expirationTimeIfNotActivatedUtc']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IdentityInfo.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      messageForActivation: (() { final guardedValue = map['messageForActivation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      partnerRegistrationImmutableId: (() { final guardedValue = map['partnerRegistrationImmutableId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      partnerTopicFriendlyDescription: (() { final guardedValue = map['partnerTopicFriendlyDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      partnerTopicName: (() { final guardedValue = map['partnerTopicName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

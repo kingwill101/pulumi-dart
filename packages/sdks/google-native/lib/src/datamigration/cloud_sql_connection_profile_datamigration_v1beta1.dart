@@ -10,31 +10,20 @@ class CloudSqlConnectionProfileDatamigrationV1beta1 {
 
   /// Creates a new [CloudSqlConnectionProfileDatamigrationV1beta1].
   /// [settings] Immutable. Metadata used to create the destination Cloud SQL database.
-  CloudSqlConnectionProfileDatamigrationV1beta1({this.settings});
+  CloudSqlConnectionProfileDatamigrationV1beta1({
+    this.settings,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'settings':
-          ?pulumi.Input.mapOptionalInputValue<
-            CloudSqlSettingsDatamigrationV1beta1,
-            Map<String, dynamic>
-          >(settings, (value) => value.toMap()),
+      'settings': ?pulumi.Input.mapOptionalInputValue<CloudSqlSettingsDatamigrationV1beta1, Map<String, dynamic>>(settings, (value) => value.toMap()),
     };
   }
 
-  factory CloudSqlConnectionProfileDatamigrationV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CloudSqlConnectionProfileDatamigrationV1beta1.fromMap(Map<String, dynamic> map) {
     return CloudSqlConnectionProfileDatamigrationV1beta1(
-      settings: (() {
-        final guardedValue = map['settings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CloudSqlSettingsDatamigrationV1beta1.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      settings: (() { final guardedValue = map['settings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CloudSqlSettingsDatamigrationV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

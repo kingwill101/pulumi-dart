@@ -8,9 +8,7 @@ class EdgeCacheOriginOriginOverrideAction {
   /// The header actions, including adding and removing
   /// headers, for request handled by this origin.
   /// Structure is documented below.
-  final pulumi.Input<EdgeCacheOriginOriginOverrideActionHeaderAction>?
-  headerAction;
-
+  final pulumi.Input<EdgeCacheOriginOriginOverrideActionHeaderAction>? headerAction;
   /// The URL rewrite configuration for request that are
   /// handled by this origin.
   /// Structure is documented below.
@@ -19,45 +17,23 @@ class EdgeCacheOriginOriginOverrideAction {
   /// Creates a new [EdgeCacheOriginOriginOverrideAction].
   /// [headerAction] The header actions, including adding and removing
   /// [urlRewrite] The URL rewrite configuration for request that are
-  EdgeCacheOriginOriginOverrideAction({this.headerAction, this.urlRewrite});
+  EdgeCacheOriginOriginOverrideAction({
+    this.headerAction,
+    this.urlRewrite,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'headerAction':
-          ?pulumi.Input.mapOptionalInputValue<
-            EdgeCacheOriginOriginOverrideActionHeaderAction,
-            Map<String, dynamic>
-          >(headerAction, (value) => value.toMap()),
-      'urlRewrite':
-          ?pulumi.Input.mapOptionalInputValue<
-            EdgeCacheOriginOriginOverrideActionUrlRewrite,
-            Map<String, dynamic>
-          >(urlRewrite, (value) => value.toMap()),
+      'headerAction': ?pulumi.Input.mapOptionalInputValue<EdgeCacheOriginOriginOverrideActionHeaderAction, Map<String, dynamic>>(headerAction, (value) => value.toMap()),
+      'urlRewrite': ?pulumi.Input.mapOptionalInputValue<EdgeCacheOriginOriginOverrideActionUrlRewrite, Map<String, dynamic>>(urlRewrite, (value) => value.toMap()),
     };
   }
 
-  factory EdgeCacheOriginOriginOverrideAction.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EdgeCacheOriginOriginOverrideAction.fromMap(Map<String, dynamic> map) {
     return EdgeCacheOriginOriginOverrideAction(
-      headerAction: (() {
-        final guardedValue = map['headerAction'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          EdgeCacheOriginOriginOverrideActionHeaderAction.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      urlRewrite: (() {
-        final guardedValue = map['urlRewrite'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          EdgeCacheOriginOriginOverrideActionUrlRewrite.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      headerAction: (() { final guardedValue = map['headerAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EdgeCacheOriginOriginOverrideActionHeaderAction.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      urlRewrite: (() { final guardedValue = map['urlRewrite']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EdgeCacheOriginOriginOverrideActionUrlRewrite.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

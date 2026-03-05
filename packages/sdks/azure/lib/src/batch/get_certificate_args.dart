@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCertificateArgs {
   /// The name of the Batch account.
   final pulumi.Input<String> accountName;
-
   /// The name of the Batch certificate.
   final pulumi.Input<String> name;
-
   /// The Name of the Resource Group where this Batch account exists.
   final pulumi.Input<String> resourceGroupName;
 
@@ -38,9 +36,8 @@ class GetCertificateArgs {
     return GetCertificateArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

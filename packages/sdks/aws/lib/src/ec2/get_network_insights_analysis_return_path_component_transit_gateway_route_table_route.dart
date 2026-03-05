@@ -41,9 +41,7 @@ class GetNetworkInsightsAnalysisReturnPathComponentTransitGatewayRouteTableRoute
     };
   }
 
-  factory GetNetworkInsightsAnalysisReturnPathComponentTransitGatewayRouteTableRoute.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetNetworkInsightsAnalysisReturnPathComponentTransitGatewayRouteTableRoute.fromMap(Map<String, dynamic> map) {
     return GetNetworkInsightsAnalysisReturnPathComponentTransitGatewayRouteTableRoute(
       attachmentId: pulumi.Input.fromValue(map['attachmentId'] as String),
       destinationCidr: pulumi.Input.fromValue(map['destinationCidr'] as String),
@@ -55,3 +53,4 @@ class GetNetworkInsightsAnalysisReturnPathComponentTransitGatewayRouteTableRoute
     );
   }
 }
+

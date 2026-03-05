@@ -2840,26 +2840,20 @@ class BackupPlan extends pulumi.CustomResource {
   /// Defines the configuration of Backups created via this BackupPlan.
   /// Structure is documented below.
   late final pulumi.Output<BackupPlanBackupConfig?> backupConfig;
-
   /// Defines a schedule for automatic Backup creation via this BackupPlan.
   /// Structure is documented below.
   late final pulumi.Output<BackupPlanBackupSchedule?> backupSchedule;
-
   /// The source cluster from which Backups will be created via this BackupPlan.
   late final pulumi.Output<String> cluster;
-
   /// This flag indicates whether this BackupPlan has been deactivated.
   /// Setting this field to True locks the BackupPlan such that no further updates will be allowed
   /// (except deletes), including the deactivated field itself. It also prevents any new Backups
   /// from being created via this BackupPlan (including scheduled Backups).
   late final pulumi.Output<bool> deactivated;
-
   /// User specified descriptive string for this BackupPlan.
   late final pulumi.Output<String?> description;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// etag is used for optimistic concurrency control as a way to help prevent simultaneous
   /// updates of a backup plan from overwriting each other. It is strongly suggested that
   /// systems make use of the 'etag' in the read-modify-write cycle to perform BackupPlan updates
@@ -2867,7 +2861,6 @@ class BackupPlan extends pulumi.CustomResource {
   /// and systems are expected to put that etag in the request to backupPlans.patch or
   /// backupPlans.delete to ensure that their change will be applied to the same version of the resource.
   late final pulumi.Output<String> etag;
-
   /// Description: A set of custom labels supplied by the user.
   /// A list of key-&gt;value pairs.
   /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -2875,34 +2868,25 @@ class BackupPlan extends pulumi.CustomResource {
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// The region of the Backup Plan.
   late final pulumi.Output<String> location;
-
   /// The full name of the BackupPlan Resource.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.
   late final pulumi.Output<int> protectedPodCount;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// RetentionPolicy governs lifecycle of Backups created under this plan.
   /// Structure is documented below.
   late final pulumi.Output<BackupPlanRetentionPolicy?> retentionPolicy;
-
   /// The State of the BackupPlan.
   late final pulumi.Output<String> state;
-
   /// Detailed description of why BackupPlan is in its current state.
   late final pulumi.Output<String> stateReason;
-
   /// Server generated, unique identifier of UUID format.
   late final pulumi.Output<String> uid;
 
@@ -2915,31 +2899,13 @@ class BackupPlan extends pulumi.CustomResource {
     BackupPlanArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:gkebackup/backupPlan:BackupPlan',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    backupConfig = registerOutput<BackupPlanBackupConfig?>(
-      'backupConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BackupPlanBackupConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    backupSchedule = registerOutput<BackupPlanBackupSchedule?>(
-      'backupSchedule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BackupPlanBackupSchedule.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:gkebackup/backupPlan:BackupPlan',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    backupConfig = registerOutput<BackupPlanBackupConfig?>('backupConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupPlanBackupConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    backupSchedule = registerOutput<BackupPlanBackupSchedule?>('backupSchedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupPlanBackupSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cluster = registerOutput<String>('cluster');
     deactivated = registerOutput<bool>('deactivated');
     description = registerOutput<String?>('description');
@@ -2951,16 +2917,7 @@ class BackupPlan extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     protectedPodCount = registerOutput<int>('protectedPodCount');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    retentionPolicy = registerOutput<BackupPlanRetentionPolicy?>(
-      'retentionPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BackupPlanRetentionPolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    retentionPolicy = registerOutput<BackupPlanRetentionPolicy?>('retentionPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupPlanRetentionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     state = registerOutput<String>('state');
     stateReason = registerOutput<String>('stateReason');
     uid = registerOutput<String>('uid');
@@ -2984,31 +2941,13 @@ class BackupPlan extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:gkebackup/backupPlan:BackupPlan',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    backupConfig = registerOutput<BackupPlanBackupConfig?>(
-      'backupConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BackupPlanBackupConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    backupSchedule = registerOutput<BackupPlanBackupSchedule?>(
-      'backupSchedule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BackupPlanBackupSchedule.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:gkebackup/backupPlan:BackupPlan',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    backupConfig = registerOutput<BackupPlanBackupConfig?>('backupConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupPlanBackupConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    backupSchedule = registerOutput<BackupPlanBackupSchedule?>('backupSchedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupPlanBackupSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cluster = registerOutput<String>('cluster');
     deactivated = registerOutput<bool>('deactivated');
     description = registerOutput<String?>('description');
@@ -3020,16 +2959,7 @@ class BackupPlan extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     protectedPodCount = registerOutput<int>('protectedPodCount');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    retentionPolicy = registerOutput<BackupPlanRetentionPolicy?>(
-      'retentionPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BackupPlanRetentionPolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    retentionPolicy = registerOutput<BackupPlanRetentionPolicy?>('retentionPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupPlanRetentionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.state = registerOutput<String>('state');
     stateReason = registerOutput<String>('stateReason');
     uid = registerOutput<String>('uid');

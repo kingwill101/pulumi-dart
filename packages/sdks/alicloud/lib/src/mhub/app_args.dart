@@ -9,22 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppArgs {
   /// AppName.
   final pulumi.Input<String> appName;
-
   /// The app id of iOS. **NOTE:** Either `bundle_id` or `package_name` must be set.
   final pulumi.Input<String>? bundleId;
-
   /// Base64 string of picture.
   final pulumi.Input<String>? encodedIcon;
-
   /// The Industry ID of the app. For information about Industry and how to use it, MHUB[Industry](https://help.aliyun.com/document_detail/201638.html).
   final pulumi.Input<String>? industryId;
-
   /// Android App package name. **NOTE:** Either `bundle_id` or `package_name` must be set.
   final pulumi.Input<String>? packageName;
-
   /// The ID of the Product.
   final pulumi.Input<String> productId;
-
   /// The type of the Product. Valid values: `Android` and `iOS`.
   final pulumi.Input<String> type;
 
@@ -61,28 +55,13 @@ class AppArgs {
   factory AppArgs.fromMap(Map<String, dynamic> map) {
     return AppArgs(
       appName: pulumi.Input.fromValue(map['appName'] as String),
-      bundleId: (() {
-        final guardedValue = map['bundleId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      encodedIcon: (() {
-        final guardedValue = map['encodedIcon'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      industryId: (() {
-        final guardedValue = map['industryId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      packageName: (() {
-        final guardedValue = map['packageName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      bundleId: (() { final guardedValue = map['bundleId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      encodedIcon: (() { final guardedValue = map['encodedIcon']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      industryId: (() { final guardedValue = map['industryId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      packageName: (() { final guardedValue = map['packageName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       productId: pulumi.Input.fromValue(map['productId'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

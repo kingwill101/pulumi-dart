@@ -344,55 +344,38 @@ class GdcApplicationEnvironment extends pulumi.CustomResource {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
-
   /// The id of the application environment
   late final pulumi.Output<String?> applicationEnvironmentId;
-
   /// The timestamp when the resource was created.
   late final pulumi.Output<String> createTime;
-
   /// User-provided human-readable name to be used in user interfaces.
   late final pulumi.Output<String?> displayName;
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// The labels to associate with this application environment. Labels may be used for filtering and billing tracking.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// The location of the application environment
   late final pulumi.Output<String> location;
-
   /// Identifier. The name of the application environment. Format: projects/{project}/locations/{location}/serviceInstances/{service_instance}/applicationEnvironments/{application_environment_id}
   late final pulumi.Output<String> name;
-
   /// The name of the namespace in which to create this ApplicationEnvironment. This namespace must already exist in the cluster
   late final pulumi.Output<String?> namespace;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// The id of the service instance to which this application environment belongs.
   late final pulumi.Output<String> serviceinstance;
-
   /// Represents the SparkApplicationEnvironmentConfig.
   /// Structure is documented below.
-  late final pulumi.Output<
-    GdcApplicationEnvironmentSparkApplicationEnvironmentConfig?
-  >
-  sparkApplicationEnvironmentConfig;
-
+  late final pulumi.Output<GdcApplicationEnvironmentSparkApplicationEnvironmentConfig?> sparkApplicationEnvironmentConfig;
   /// System generated unique identifier for this application environment, formatted as UUID4.
   late final pulumi.Output<String> uid;
-
   /// The timestamp when the resource was most recently updated.
   late final pulumi.Output<String> updateTime;
 
@@ -405,20 +388,16 @@ class GdcApplicationEnvironment extends pulumi.CustomResource {
     GdcApplicationEnvironmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:dataproc/gdcApplicationEnvironment:GdcApplicationEnvironment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:dataproc/gdcApplicationEnvironment:GdcApplicationEnvironment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     annotations = registerOutput<Map<String, String>?>('annotations');
-    applicationEnvironmentId = registerOutput<String?>(
-      'applicationEnvironmentId',
-    );
+    applicationEnvironmentId = registerOutput<String?>('applicationEnvironmentId');
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String?>('displayName');
-    effectiveAnnotations = registerOutput<Map<String, String>>(
-      'effectiveAnnotations',
-    );
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
@@ -427,19 +406,7 @@ class GdcApplicationEnvironment extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     serviceinstance = registerOutput<String>('serviceinstance');
-    sparkApplicationEnvironmentConfig =
-        registerOutput<
-          GdcApplicationEnvironmentSparkApplicationEnvironmentConfig?
-        >(
-          'sparkApplicationEnvironmentConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return GdcApplicationEnvironmentSparkApplicationEnvironmentConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    sparkApplicationEnvironmentConfig = registerOutput<GdcApplicationEnvironmentSparkApplicationEnvironmentConfig?>('sparkApplicationEnvironmentConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GdcApplicationEnvironmentSparkApplicationEnvironmentConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }
@@ -462,20 +429,16 @@ class GdcApplicationEnvironment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:dataproc/gdcApplicationEnvironment:GdcApplicationEnvironment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:dataproc/gdcApplicationEnvironment:GdcApplicationEnvironment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     annotations = registerOutput<Map<String, String>?>('annotations');
-    applicationEnvironmentId = registerOutput<String?>(
-      'applicationEnvironmentId',
-    );
+    applicationEnvironmentId = registerOutput<String?>('applicationEnvironmentId');
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String?>('displayName');
-    effectiveAnnotations = registerOutput<Map<String, String>>(
-      'effectiveAnnotations',
-    );
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
@@ -484,19 +447,7 @@ class GdcApplicationEnvironment extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     serviceinstance = registerOutput<String>('serviceinstance');
-    sparkApplicationEnvironmentConfig =
-        registerOutput<
-          GdcApplicationEnvironmentSparkApplicationEnvironmentConfig?
-        >(
-          'sparkApplicationEnvironmentConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return GdcApplicationEnvironmentSparkApplicationEnvironmentConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    sparkApplicationEnvironmentConfig = registerOutput<GdcApplicationEnvironmentSparkApplicationEnvironmentConfig?>('sparkApplicationEnvironmentConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GdcApplicationEnvironmentSparkApplicationEnvironmentConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }

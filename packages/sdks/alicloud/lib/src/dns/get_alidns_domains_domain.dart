@@ -6,70 +6,48 @@ import 'get_alidns_domains_domain_record_line.dart';
 class GetAlidnsDomainsDomain {
   /// Specifies whether the domain is from Alibaba Cloud or not.
   final pulumi.Input<bool> aliDomain;
-
   /// List of available TTLs.
   final pulumi.Input<List<int>> availableTtls;
-
   /// DNS list of domain names in the resolution system.
   final pulumi.Input<List<String>> dnsServers;
-
   /// ID of the domain.
   final pulumi.Input<String> domainId;
-
   /// Name of the domain.
   final pulumi.Input<String> domainName;
-
   /// Domain group ID, if not filled, the default is all groups.
   final pulumi.Input<String> groupId;
-
   /// Name of group that contains the domain.
   final pulumi.Input<String> groupName;
-
   /// The Id of resource.
   final pulumi.Input<String> id;
-
   /// Whether it is in black hole.
   final pulumi.Input<bool> inBlackHole;
-
   /// Whether it is cleaning.
   final pulumi.Input<bool> inClean;
-
   /// Cloud analysis product ID.
   final pulumi.Input<String> instanceId;
-
   /// The type of the DNS request line.
   final pulumi.Input<String> lineType;
-
   /// Minimum TTL.
   final pulumi.Input<int> minTtl;
-
   /// Punycode of the Chinese domain.
   final pulumi.Input<String> punyCode;
-
   /// Tree-like analytical line list.
   final pulumi.Input<String> recordLineTreeJson;
-
   /// Parse the line data list.
   final pulumi.Input<List<GetAlidnsDomainsDomainRecordLine>> recordLines;
-
   /// Whether it is a regional route.
   final pulumi.Input<bool> regionLines;
-
   /// The Id of resource group which the dns belongs.
   final pulumi.Input<String> remark;
-
   /// The Id of resource group which the dns belongs.
   final pulumi.Input<String> resourceGroupId;
-
   /// Whether to allow auxiliary dns.
   final pulumi.Input<bool> slaveDns;
-
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>> tags;
-
   /// Cloud analysis version code.
   final pulumi.Input<String> versionCode;
-
   /// Cloud analysis version name of the domain.
   final pulumi.Input<String> versionName;
 
@@ -140,18 +118,7 @@ class GetAlidnsDomainsDomain {
       'minTtl': minTtl,
       'punyCode': punyCode,
       'recordLineTreeJson': recordLineTreeJson,
-      'recordLines':
-          pulumi.Input.mapInputValue<
-            List<GetAlidnsDomainsDomainRecordLine>,
-            List<Map<String, dynamic>>
-          >(
-            recordLines,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetAlidnsDomainsDomainRecordLine,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'recordLines': pulumi.Input.mapInputValue<List<GetAlidnsDomainsDomainRecordLine>, List<Map<String, dynamic>>>(recordLines, (value) => pulumi.Input.encodeList<GetAlidnsDomainsDomainRecordLine, Map<String, dynamic>>(value, (value) => value.toMap())),
       'regionLines': regionLines,
       'remark': remark,
       'resourceGroupId': resourceGroupId,
@@ -165,12 +132,8 @@ class GetAlidnsDomainsDomain {
   factory GetAlidnsDomainsDomain.fromMap(Map<String, dynamic> map) {
     return GetAlidnsDomainsDomain(
       aliDomain: pulumi.Input.fromValue(map['aliDomain'] as bool),
-      availableTtls: pulumi.Input.fromValue(
-        (map['availableTtls'] as List).cast<int>(),
-      ),
-      dnsServers: pulumi.Input.fromValue(
-        (map['dnsServers'] as List).cast<String>(),
-      ),
+      availableTtls: pulumi.Input.fromValue((map['availableTtls'] as List).cast<int>()),
+      dnsServers: pulumi.Input.fromValue((map['dnsServers'] as List).cast<String>()),
       domainId: pulumi.Input.fromValue(map['domainId'] as String),
       domainName: pulumi.Input.fromValue(map['domainName'] as String),
       groupId: pulumi.Input.fromValue(map['groupId'] as String),
@@ -182,17 +145,8 @@ class GetAlidnsDomainsDomain {
       lineType: pulumi.Input.fromValue(map['lineType'] as String),
       minTtl: pulumi.Input.fromValue(map['minTtl'] as int),
       punyCode: pulumi.Input.fromValue(map['punyCode'] as String),
-      recordLineTreeJson: pulumi.Input.fromValue(
-        map['recordLineTreeJson'] as String,
-      ),
-      recordLines: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetAlidnsDomainsDomainRecordLine>(
-          map['recordLines']!,
-          (value) => GetAlidnsDomainsDomainRecordLine.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      recordLineTreeJson: pulumi.Input.fromValue(map['recordLineTreeJson'] as String),
+      recordLines: pulumi.Input.fromValue(pulumi.Input.decodeList<GetAlidnsDomainsDomainRecordLine>(map['recordLines']!, (value) => GetAlidnsDomainsDomainRecordLine.fromMap((value as Map).cast<String, dynamic>()))),
       regionLines: pulumi.Input.fromValue(map['regionLines'] as bool),
       remark: pulumi.Input.fromValue(map['remark'] as String),
       resourceGroupId: pulumi.Input.fromValue(map['resourceGroupId'] as String),
@@ -203,3 +157,4 @@ class GetAlidnsDomainsDomain {
     );
   }
 }
+

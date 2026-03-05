@@ -242,19 +242,14 @@ import 'object_lambda_access_point_state.dart';
 class ObjectLambdaAccessPoint extends pulumi.CustomResource {
   /// The AWS account ID for the owner of the bucket for which you want to create an Object Lambda Access Point. Defaults to automatically determined account ID of the AWS provider.
   late final pulumi.Output<String> accountId;
-
   /// Alias for the S3 Object Lambda Access Point.
   late final pulumi.Output<String> alias;
-
   /// Amazon Resource Name (ARN) of the Object Lambda Access Point.
   late final pulumi.Output<String> arn;
-
   /// A configuration block containing details about the Object Lambda Access Point. See Configuration below for more details.
   late final pulumi.Output<ObjectLambdaAccessPointConfiguration> configuration;
-
   /// The name for this Object Lambda Access Point.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -267,24 +262,15 @@ class ObjectLambdaAccessPoint extends pulumi.CustomResource {
     ObjectLambdaAccessPointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:s3control/objectLambdaAccessPoint:ObjectLambdaAccessPoint',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:s3control/objectLambdaAccessPoint:ObjectLambdaAccessPoint',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     alias = registerOutput<String>('alias');
     arn = registerOutput<String>('arn');
-    configuration = registerOutput<ObjectLambdaAccessPointConfiguration>(
-      'configuration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ObjectLambdaAccessPointConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    configuration = registerOutput<ObjectLambdaAccessPointConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectLambdaAccessPointConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
   }
@@ -307,24 +293,15 @@ class ObjectLambdaAccessPoint extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:s3control/objectLambdaAccessPoint:ObjectLambdaAccessPoint',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:s3control/objectLambdaAccessPoint:ObjectLambdaAccessPoint',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     alias = registerOutput<String>('alias');
     arn = registerOutput<String>('arn');
-    configuration = registerOutput<ObjectLambdaAccessPointConfiguration>(
-      'configuration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ObjectLambdaAccessPointConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    configuration = registerOutput<ObjectLambdaAccessPointConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectLambdaAccessPointConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
   }

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExternalDatasetReferenceResponse {
   /// [Required] The connection id that is used to access the external_source. Format: projects/{project_id}/locations/{location_id}/connections/{connection_id}
   final pulumi.Input<String> connection;
-
   /// [Required] External source that backs this dataset.
   final pulumi.Input<String> externalSource;
 
@@ -31,3 +30,4 @@ class ExternalDatasetReferenceResponse {
     );
   }
 }
+

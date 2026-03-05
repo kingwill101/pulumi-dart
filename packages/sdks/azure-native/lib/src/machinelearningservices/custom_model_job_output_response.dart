@@ -5,14 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomModelJobOutputResponse {
   /// Description for the output.
   final pulumi.Input<String>? description;
-
   /// Enum to determine the Job Output Type.
   /// Expected value is 'custom_model'.
   final pulumi.Input<String> jobOutputType;
-
   /// Output Asset Delivery Mode.
   final pulumi.Input<String>? mode;
-
   /// Output Asset URI.
   final pulumi.Input<String>? uri;
 
@@ -39,22 +36,11 @@ class CustomModelJobOutputResponse {
 
   factory CustomModelJobOutputResponse.fromMap(Map<String, dynamic> map) {
     return CustomModelJobOutputResponse(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       jobOutputType: pulumi.Input.fromValue(map['jobOutputType'] as String),
-      mode: (() {
-        final guardedValue = map['mode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      uri: (() {
-        final guardedValue = map['uri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      uri: (() { final guardedValue = map['uri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

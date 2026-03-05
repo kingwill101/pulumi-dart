@@ -8,21 +8,20 @@ class ManagedInstancePrivateEndpointPropertyResponse {
 
   /// Creates a new [ManagedInstancePrivateEndpointPropertyResponse].
   /// [id] Resource id of the private endpoint.
-  ManagedInstancePrivateEndpointPropertyResponse({this.id});
+  ManagedInstancePrivateEndpointPropertyResponse({
+    this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': ?id};
+    return <String, dynamic>{
+      'id': ?id,
+    };
   }
 
-  factory ManagedInstancePrivateEndpointPropertyResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ManagedInstancePrivateEndpointPropertyResponse.fromMap(Map<String, dynamic> map) {
     return ManagedInstancePrivateEndpointPropertyResponse(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

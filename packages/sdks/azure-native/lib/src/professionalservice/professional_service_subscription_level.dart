@@ -344,17 +344,12 @@ import 'professional_service_subscription_level_args.dart';
 class ProfessionalServiceSubscriptionLevel extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// professionalService properties
-  late final pulumi.Output<ProfessionalServiceResourceResponseProperties>
-  properties;
-
+  late final pulumi.Output<ProfessionalServiceResourceResponseProperties> properties;
   /// the resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -367,23 +362,14 @@ class ProfessionalServiceSubscriptionLevel extends pulumi.CustomResource {
     ProfessionalServiceSubscriptionLevelArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:professionalservice:ProfessionalServiceSubscriptionLevel',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:professionalservice:ProfessionalServiceSubscriptionLevel',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<ProfessionalServiceResourceResponseProperties>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ProfessionalServiceResourceResponseProperties.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<ProfessionalServiceResourceResponseProperties>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProfessionalServiceResourceResponseProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

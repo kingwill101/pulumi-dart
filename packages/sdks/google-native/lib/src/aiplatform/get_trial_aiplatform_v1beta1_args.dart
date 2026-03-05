@@ -36,13 +36,10 @@ class GetTrialAiplatformV1beta1Args {
   factory GetTrialAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetTrialAiplatformV1beta1Args(
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       studyId: pulumi.Input.fromValue(map['studyId'] as String),
       trialId: pulumi.Input.fromValue(map['trialId'] as String),
     );
   }
 }
+

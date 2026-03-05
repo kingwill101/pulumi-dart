@@ -16,8 +16,7 @@ enum LoggingConfigApplicationLogLevel {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown LoggingConfigApplicationLogLevel value: $value',
-    );
+    throw ArgumentError('Unknown LoggingConfigApplicationLogLevel value: $value');
   }
 }
+

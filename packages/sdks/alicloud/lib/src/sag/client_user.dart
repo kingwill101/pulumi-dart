@@ -178,25 +178,18 @@ import 'client_user_state.dart';
 class ClientUser extends pulumi.CustomResource {
   /// The SAG APP bandwidth that the user can use. Unit: Kbit/s. Maximum value: 2000 Kbit/s.
   late final pulumi.Output<int> bandwidth;
-
   /// The IP address of the SAG APP. If you specify this parameter, the current account always uses the specified IP address.Note The IP address must be in the private CIDR block of the SAG client.If you do not specify this parameter, the system automatically allocates an IP address from the private CIDR block of the SAG client. In this case, each re-connection uses a different IP address.
   late final pulumi.Output<String?> clientIp;
-
   /// The password of the KMS Encryption.
   late final pulumi.Output<String?> kmsEncryptedPassword;
-
   /// The context of the KMS Encryption.
   late final pulumi.Output<Map<String, String>?> kmsEncryptionContext;
-
   /// The password used to log on to the SAG APP.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
   late final pulumi.Output<String> password;
-
   /// The ID of the SAG instance created for the SAG APP.
   late final pulumi.Output<String> sagId;
-
   /// The email address of the user. The administrator uses this address to send the account information for logging on to the APP to the user.
   late final pulumi.Output<String> userMail;
-
   /// The user name. User names in the same SAG APP must be unique.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
   late final pulumi.Output<String> userName;
 
@@ -209,17 +202,15 @@ class ClientUser extends pulumi.CustomResource {
     ClientUserArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:sag/clientUser:ClientUser',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:sag/clientUser:ClientUser',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bandwidth = registerOutput<int>('bandwidth');
     clientIp = registerOutput<String?>('clientIp');
     kmsEncryptedPassword = registerOutput<String?>('kmsEncryptedPassword');
-    kmsEncryptionContext = registerOutput<Map<String, String>?>(
-      'kmsEncryptionContext',
-    );
+    kmsEncryptionContext = registerOutput<Map<String, String>?>('kmsEncryptionContext');
     password = registerOutput<String>('password');
     sagId = registerOutput<String>('sagId');
     userMail = registerOutput<String>('userMail');
@@ -244,17 +235,15 @@ class ClientUser extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:sag/clientUser:ClientUser',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:sag/clientUser:ClientUser',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bandwidth = registerOutput<int>('bandwidth');
     clientIp = registerOutput<String?>('clientIp');
     kmsEncryptedPassword = registerOutput<String?>('kmsEncryptedPassword');
-    kmsEncryptionContext = registerOutput<Map<String, String>?>(
-      'kmsEncryptionContext',
-    );
+    kmsEncryptionContext = registerOutput<Map<String, String>?>('kmsEncryptionContext');
     password = registerOutput<String>('password');
     sagId = registerOutput<String>('sagId');
     userMail = registerOutput<String>('userMail');

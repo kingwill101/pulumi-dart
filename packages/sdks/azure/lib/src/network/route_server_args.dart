@@ -9,30 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RouteServerArgs {
   /// Whether to enable route exchange between Azure Route Server and the gateway(s).
   final pulumi.Input<bool>? branchToBranchTrafficEnabled;
-
   /// The hub routing preference. Valid values are `ASPath`, `ExpressRoute` or `VpnGateway`. Defaults to `ExpressRoute`.
   final pulumi.Input<String>? hubRoutingPreference;
-
   /// Specifies the supported Azure location where the Route Server should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
-
   /// The name of the Route Server. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// The ID of the Public IP Address. This option is required since September 1st 2021. Changing this forces a new resource to be created.
   final pulumi.Input<String> publicIpAddressId;
-
   /// Specifies the name of the Resource Group where the Route Server should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
-
   /// The SKU of the Route Server. The only possible value is `Standard`. Changing this forces a new resource to be created.
   final pulumi.Input<String> sku;
-
   /// The ID of the Subnet that the Route Server will reside. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Azure Route Server requires a dedicated subnet named RouteServerSubnet. The subnet size has to be at least /27 or short prefix (such as /26 or /25) and cannot be attached to any security group, otherwise, you'll receive an error message when deploying the Route Server.
   final pulumi.Input<String> subnetId;
-
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -74,41 +66,16 @@ class RouteServerArgs {
 
   factory RouteServerArgs.fromMap(Map<String, dynamic> map) {
     return RouteServerArgs(
-      branchToBranchTrafficEnabled: (() {
-        final guardedValue = map['branchToBranchTrafficEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      hubRoutingPreference: (() {
-        final guardedValue = map['hubRoutingPreference'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      publicIpAddressId: pulumi.Input.fromValue(
-        map['publicIpAddressId'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      branchToBranchTrafficEnabled: (() { final guardedValue = map['branchToBranchTrafficEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      hubRoutingPreference: (() { final guardedValue = map['hubRoutingPreference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicIpAddressId: pulumi.Input.fromValue(map['publicIpAddressId'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       sku: pulumi.Input.fromValue(map['sku'] as String),
       subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

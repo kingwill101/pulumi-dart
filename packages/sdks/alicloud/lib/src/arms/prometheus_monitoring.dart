@@ -826,16 +826,12 @@ import 'prometheus_monitoring_state.dart';
 class PrometheusMonitoring extends pulumi.CustomResource {
   /// The ID of the prometheus instance.
   late final pulumi.Output<String> clusterId;
-
   /// Yaml configuration for monitoring.
   late final pulumi.Output<String> configYaml;
-
   /// The name of the resource.
   late final pulumi.Output<String> monitoringName;
-
   /// Valid values: `stop`, `run`.
   late final pulumi.Output<String> status;
-
   /// Monitoring type: `serviceMonitor`, `podMonitor`, `customJob`, `probe`.
   late final pulumi.Output<String> type;
 
@@ -848,11 +844,11 @@ class PrometheusMonitoring extends pulumi.CustomResource {
     PrometheusMonitoringArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:arms/prometheusMonitoring:PrometheusMonitoring',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:arms/prometheusMonitoring:PrometheusMonitoring',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterId = registerOutput<String>('clusterId');
     configYaml = registerOutput<String>('configYaml');
     monitoringName = registerOutput<String>('monitoringName');
@@ -878,11 +874,11 @@ class PrometheusMonitoring extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:arms/prometheusMonitoring:PrometheusMonitoring',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:arms/prometheusMonitoring:PrometheusMonitoring',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterId = registerOutput<String>('clusterId');
     configYaml = registerOutput<String>('configYaml');
     monitoringName = registerOutput<String>('monitoringName');

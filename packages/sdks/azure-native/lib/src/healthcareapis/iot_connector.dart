@@ -349,35 +349,24 @@ import 'system_data_response.dart';
 class IotConnector extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Device Mappings.
   late final pulumi.Output<IotMappingPropertiesResponse?> deviceMapping;
-
   /// An etag associated with the resource, used for optimistic concurrency when editing it.
   late final pulumi.Output<String?> etag;
-
   /// Setting indicating whether the service has a managed identity associated with it.
   late final pulumi.Output<ServiceManagedIdentityResponseIdentity?> identity;
-
   /// Source configuration.
-  late final pulumi.Output<IotEventHubIngestionEndpointConfigurationResponse?>
-  ingestionEndpointConfiguration;
-
+  late final pulumi.Output<IotEventHubIngestionEndpointConfigurationResponse?> ingestionEndpointConfiguration;
   /// The resource location.
   late final pulumi.Output<String?> location;
-
   /// The resource name.
   late final pulumi.Output<String> name;
-
   /// The provisioning state.
   late final pulumi.Output<String> provisioningState;
-
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The resource type.
   late final pulumi.Output<String> type;
 
@@ -390,57 +379,20 @@ class IotConnector extends pulumi.CustomResource {
     IotConnectorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:healthcareapis:IotConnector',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:healthcareapis:IotConnector',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    deviceMapping = registerOutput<IotMappingPropertiesResponse?>(
-      'deviceMapping',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IotMappingPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    deviceMapping = registerOutput<IotMappingPropertiesResponse?>('deviceMapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IotMappingPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String?>('etag');
-    identity = registerOutput<ServiceManagedIdentityResponseIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceManagedIdentityResponseIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    ingestionEndpointConfiguration =
-        registerOutput<IotEventHubIngestionEndpointConfigurationResponse?>(
-          'ingestionEndpointConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return IotEventHubIngestionEndpointConfigurationResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    identity = registerOutput<ServiceManagedIdentityResponseIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceManagedIdentityResponseIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ingestionEndpointConfiguration = registerOutput<IotEventHubIngestionEndpointConfigurationResponse?>('ingestionEndpointConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IotEventHubIngestionEndpointConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

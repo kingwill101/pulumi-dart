@@ -8,17 +8,20 @@ class PolicyVMWorkloadProtectionPolicyRetentionDaily {
 
   /// Creates a new [PolicyVMWorkloadProtectionPolicyRetentionDaily].
   /// [count] The number of daily backups to keep. Possible values are between `7` and `9999`.
-  PolicyVMWorkloadProtectionPolicyRetentionDaily({required this.count});
+  PolicyVMWorkloadProtectionPolicyRetentionDaily({
+    required this.count,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'count': count};
+    return <String, dynamic>{
+      'count': count,
+    };
   }
 
-  factory PolicyVMWorkloadProtectionPolicyRetentionDaily.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PolicyVMWorkloadProtectionPolicyRetentionDaily.fromMap(Map<String, dynamic> map) {
     return PolicyVMWorkloadProtectionPolicyRetentionDaily(
       count: pulumi.Input.fromValue(map['count'] as int),
     );
   }
 }
+

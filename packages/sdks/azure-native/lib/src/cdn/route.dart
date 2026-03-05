@@ -335,54 +335,37 @@ import 'system_data_response.dart';
 class Route extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The caching configuration for this route. To disable caching, do not provide a cacheConfiguration object.
-  late final pulumi.Output<AfdRouteCacheConfigurationResponse?>
-  cacheConfiguration;
-
+  late final pulumi.Output<AfdRouteCacheConfigurationResponse?> cacheConfiguration;
   /// Domains referenced by this endpoint.
   late final pulumi.Output<List<Map<String, dynamic>>?> customDomains;
   late final pulumi.Output<String> deploymentStatus;
-
   /// Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled'
   late final pulumi.Output<String?> enabledState;
-
   /// The name of the endpoint which holds the route.
   late final pulumi.Output<String> endpointName;
-
   /// Protocol this rule will use when forwarding traffic to backends.
   late final pulumi.Output<String?> forwardingProtocol;
-
   /// Whether to automatically redirect HTTP traffic to HTTPS traffic. Note that this is a easy way to set up this rule and it will be the first rule that gets executed.
   late final pulumi.Output<String?> httpsRedirect;
-
   /// whether this route will be linked to the default endpoint domain.
   late final pulumi.Output<String?> linkToDefaultDomain;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// A reference to the origin group.
   late final pulumi.Output<ResourceReferenceResponse?> originGroup;
-
   /// A directory path on the origin that AzureFrontDoor can use to retrieve content from, e.g. contoso.cloudapp.net/originpath.
   late final pulumi.Output<String?> originPath;
-
   /// The route patterns of the rule.
   late final pulumi.Output<List<String>?> patternsToMatch;
-
   /// Provisioning status
   late final pulumi.Output<String> provisioningState;
-
   /// rule sets referenced by this endpoint.
   late final pulumi.Output<List<Map<String, dynamic>>?> ruleSets;
-
   /// List of supported protocols for this route.
   late final pulumi.Output<List<String>?> supportedProtocols;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -390,27 +373,19 @@ class Route extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Route]. {@macro pulumi_cdn_route_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Route(String name, {RouteArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:cdn:Route',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Route(
+    String name, {
+    RouteArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:cdn:Route',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    cacheConfiguration = registerOutput<AfdRouteCacheConfigurationResponse?>(
-      'cacheConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AfdRouteCacheConfigurationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    customDomains = registerOutput<List<Map<String, dynamic>>?>(
-      'customDomains',
-    );
+    cacheConfiguration = registerOutput<AfdRouteCacheConfigurationResponse?>('cacheConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AfdRouteCacheConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    customDomains = registerOutput<List<Map<String, dynamic>>?>('customDomains');
     deploymentStatus = registerOutput<String>('deploymentStatus');
     enabledState = registerOutput<String?>('enabledState');
     endpointName = registerOutput<String>('endpointName');
@@ -418,31 +393,13 @@ class Route extends pulumi.CustomResource {
     httpsRedirect = registerOutput<String?>('httpsRedirect');
     linkToDefaultDomain = registerOutput<String?>('linkToDefaultDomain');
     this.name = registerOutput<String>('name');
-    originGroup = registerOutput<ResourceReferenceResponse?>(
-      'originGroup',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResourceReferenceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    originGroup = registerOutput<ResourceReferenceResponse?>('originGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     originPath = registerOutput<String?>('originPath');
     patternsToMatch = registerOutput<List<String>?>('patternsToMatch');
     provisioningState = registerOutput<String>('provisioningState');
     ruleSets = registerOutput<List<Map<String, dynamic>>?>('ruleSets');
     supportedProtocols = registerOutput<List<String>?>('supportedProtocols');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

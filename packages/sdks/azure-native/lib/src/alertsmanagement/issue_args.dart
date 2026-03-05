@@ -10,10 +10,8 @@ import 'issue_properties.dart';
 class IssueArgs {
   /// The name of the IssueResource
   final pulumi.Input<String>? issueName;
-
   /// The resource-specific properties for this resource.
   final pulumi.Input<IssueProperties>? properties;
-
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceUri;
 
@@ -21,37 +19,26 @@ class IssueArgs {
   /// [issueName] The name of the IssueResource
   /// [properties] The resource-specific properties for this resource.
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
-  IssueArgs({this.issueName, this.properties, required this.resourceUri});
+  IssueArgs({
+    this.issueName,
+    this.properties,
+    required this.resourceUri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'issueName': ?issueName,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            IssueProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<IssueProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceUri': resourceUri,
     };
   }
 
   factory IssueArgs.fromMap(Map<String, dynamic> map) {
     return IssueArgs(
-      issueName: (() {
-        final guardedValue = map['issueName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          IssueProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      issueName: (() { final guardedValue = map['issueName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IssueProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resourceUri: pulumi.Input.fromValue(map['resourceUri'] as String),
     );
   }
 }
+

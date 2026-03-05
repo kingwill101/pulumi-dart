@@ -9,7 +9,9 @@ class SoftwareUpdateOptionsResponse {
 
   /// Creates a new [SoftwareUpdateOptionsResponse].
   /// [autoSoftwareUpdateEnabled] &lt;p&gt;Whether automatic service software updates are enabled for the domain.&lt;/p&gt;
-  SoftwareUpdateOptionsResponse({this.autoSoftwareUpdateEnabled});
+  SoftwareUpdateOptionsResponse({
+    this.autoSoftwareUpdateEnabled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,11 +21,8 @@ class SoftwareUpdateOptionsResponse {
 
   factory SoftwareUpdateOptionsResponse.fromMap(Map<String, dynamic> map) {
     return SoftwareUpdateOptionsResponse(
-      autoSoftwareUpdateEnabled: (() {
-        final guardedValue = map['autoSoftwareUpdateEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      autoSoftwareUpdateEnabled: (() { final guardedValue = map['autoSoftwareUpdateEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

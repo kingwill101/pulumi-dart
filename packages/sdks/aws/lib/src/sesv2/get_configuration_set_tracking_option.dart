@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConfigurationSetTrackingOption {
   /// The domain to use for tracking open and click events.
   final pulumi.Input<String> customRedirectDomain;
-
   /// The https policy to use for tracking open and click events. Valid values are `REQUIRE`, `REQUIRE_OPEN_ONLY` or `OPTIONAL`.
   final pulumi.Input<String> httpsPolicy;
 
@@ -26,10 +25,9 @@ class GetConfigurationSetTrackingOption {
 
   factory GetConfigurationSetTrackingOption.fromMap(Map<String, dynamic> map) {
     return GetConfigurationSetTrackingOption(
-      customRedirectDomain: pulumi.Input.fromValue(
-        map['customRedirectDomain'] as String,
-      ),
+      customRedirectDomain: pulumi.Input.fromValue(map['customRedirectDomain'] as String),
       httpsPolicy: pulumi.Input.fromValue(map['httpsPolicy'] as String),
     );
   }
 }
+

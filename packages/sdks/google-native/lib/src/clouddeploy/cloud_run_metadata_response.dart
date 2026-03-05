@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CloudRunMetadataResponse {
   /// The name of the Cloud Run job that is associated with a `Rollout`. Format is `projects/{project}/locations/{location}/jobs/{job_name}`.
   final pulumi.Input<String> job;
-
   /// The Cloud Run Revision id associated with a `Rollout`.
   final pulumi.Input<String> revision;
-
   /// The name of the Cloud Run Service that is associated with a `Rollout`. Format is `projects/{project}/locations/{location}/services/{service}`.
   final pulumi.Input<String> service;
-
   /// The Cloud Run Service urls that are associated with a `Rollout`.
   final pulumi.Input<List<String>> serviceUrls;
 
@@ -42,9 +39,8 @@ class CloudRunMetadataResponse {
       job: pulumi.Input.fromValue(map['job'] as String),
       revision: pulumi.Input.fromValue(map['revision'] as String),
       service: pulumi.Input.fromValue(map['service'] as String),
-      serviceUrls: pulumi.Input.fromValue(
-        (map['serviceUrls'] as List).cast<String>(),
-      ),
+      serviceUrls: pulumi.Input.fromValue((map['serviceUrls'] as List).cast<String>()),
     );
   }
 }
+

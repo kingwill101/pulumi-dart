@@ -32,12 +32,9 @@ class GetCustomDomainArgs {
   factory GetCustomDomainArgs.fromMap(Map<String, dynamic> map) {
     return GetCustomDomainArgs(
       customDomainId: pulumi.Input.fromValue(map['customDomainId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       siteId: pulumi.Input.fromValue(map['siteId'] as String),
     );
   }
 }
+

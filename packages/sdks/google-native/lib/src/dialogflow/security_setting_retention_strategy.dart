@@ -12,8 +12,7 @@ enum SecuritySettingRetentionStrategy {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown SecuritySettingRetentionStrategy value: $value',
-    );
+    throw ArgumentError('Unknown SecuritySettingRetentionStrategy value: $value');
   }
 }
+

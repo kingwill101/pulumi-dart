@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScalingPlanScalingInstructionPredefinedLoadMetricSpecification {
   /// Metric type. Valid values: `ALBTargetGroupRequestCount`, `ASGTotalCPUUtilization`, `ASGTotalNetworkIn`, `ASGTotalNetworkOut`.
   final pulumi.Input<String> predefinedLoadMetricType;
-
   /// Identifies the resource associated with the metric type.
   final pulumi.Input<String>? resourceLabel;
 
@@ -24,18 +23,11 @@ class ScalingPlanScalingInstructionPredefinedLoadMetricSpecification {
     };
   }
 
-  factory ScalingPlanScalingInstructionPredefinedLoadMetricSpecification.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ScalingPlanScalingInstructionPredefinedLoadMetricSpecification.fromMap(Map<String, dynamic> map) {
     return ScalingPlanScalingInstructionPredefinedLoadMetricSpecification(
-      predefinedLoadMetricType: pulumi.Input.fromValue(
-        map['predefinedLoadMetricType'] as String,
-      ),
-      resourceLabel: (() {
-        final guardedValue = map['resourceLabel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      predefinedLoadMetricType: pulumi.Input.fromValue(map['predefinedLoadMetricType'] as String),
+      resourceLabel: (() { final guardedValue = map['resourceLabel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

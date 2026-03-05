@@ -6,7 +6,6 @@ class ClusterMasterAuthorizedNetworksConfigCidrBlock {
   /// External network that can access Kubernetes master through HTTPS.
   /// Must be specified in CIDR notation.
   final pulumi.Input<String> cidrBlock;
-
   /// Field for users to identify CIDR blocks.
   final pulumi.Input<String>? displayName;
 
@@ -25,16 +24,11 @@ class ClusterMasterAuthorizedNetworksConfigCidrBlock {
     };
   }
 
-  factory ClusterMasterAuthorizedNetworksConfigCidrBlock.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterMasterAuthorizedNetworksConfigCidrBlock.fromMap(Map<String, dynamic> map) {
     return ClusterMasterAuthorizedNetworksConfigCidrBlock(
       cidrBlock: pulumi.Input.fromValue(map['cidrBlock'] as String),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

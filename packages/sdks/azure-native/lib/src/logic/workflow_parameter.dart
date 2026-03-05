@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkflowParameter {
   /// The description.
   final pulumi.Input<String>? description;
-
   /// The metadata.
   final pulumi.Input<dynamic>? metadata;
-
   /// The type.
   final pulumi.Input<String>? type;
-
   /// The value.
   final pulumi.Input<dynamic>? value;
 
@@ -21,7 +18,12 @@ class WorkflowParameter {
   /// [metadata] The metadata.
   /// [type] The type.
   /// [value] The value.
-  WorkflowParameter({this.description, this.metadata, this.type, this.value});
+  WorkflowParameter({
+    this.description,
+    this.metadata,
+    this.type,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,26 +36,11 @@ class WorkflowParameter {
 
   factory WorkflowParameter.fromMap(Map<String, dynamic> map) {
     return WorkflowParameter(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      metadata: (() {
-        final guardedValue = map['metadata'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }
+

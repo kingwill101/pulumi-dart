@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegistryTaskBaseImageTrigger {
   /// Should the trigger be enabled? Defaults to `true`.
   final pulumi.Input<bool>? enabled;
-
   /// The name which should be used for this trigger.
   final pulumi.Input<String> name;
-
   /// The type of the trigger. Possible values are `All` and `Runtime`.
   final pulumi.Input<String> type;
-
   /// The endpoint URL for receiving the trigger.
   final pulumi.Input<String>? updateTriggerEndpoint;
-
   /// Type of payload body for the trigger. Possible values are `Default` and `Token`.
   final pulumi.Input<String>? updateTriggerPayloadType;
 
@@ -44,23 +40,12 @@ class RegistryTaskBaseImageTrigger {
 
   factory RegistryTaskBaseImageTrigger.fromMap(Map<String, dynamic> map) {
     return RegistryTaskBaseImageTrigger(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
-      updateTriggerEndpoint: (() {
-        final guardedValue = map['updateTriggerEndpoint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      updateTriggerPayloadType: (() {
-        final guardedValue = map['updateTriggerPayloadType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      updateTriggerEndpoint: (() { final guardedValue = map['updateTriggerEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      updateTriggerPayloadType: (() { final guardedValue = map['updateTriggerPayloadType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

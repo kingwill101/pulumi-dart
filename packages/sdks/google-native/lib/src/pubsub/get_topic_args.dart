@@ -13,20 +13,23 @@ class GetTopicArgs {
   /// Creates a new [GetTopicArgs].
   /// [project] Optional.
   /// [topicId] Required.
-  GetTopicArgs({this.project, required this.topicId});
+  GetTopicArgs({
+    this.project,
+    required this.topicId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'project': ?project, 'topicId': topicId};
+    return <String, dynamic>{
+      'project': ?project,
+      'topicId': topicId,
+    };
   }
 
   factory GetTopicArgs.fromMap(Map<String, dynamic> map) {
     return GetTopicArgs(
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       topicId: pulumi.Input.fromValue(map['topicId'] as String),
     );
   }
 }
+

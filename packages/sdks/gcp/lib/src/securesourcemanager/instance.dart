@@ -3251,7 +3251,6 @@ import 'instance_workforce_identity_federation_config.dart';
 class Instance extends pulumi.CustomResource {
   /// Time the Instance was created in UTC.
   late final pulumi.Output<String> createTime;
-
   /// The deletion policy for the instance. Setting `ABANDON` allows the resource
   /// to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
   /// and all its contents. Setting `PREVENT` prevents the resource from accidental
@@ -3261,58 +3260,43 @@ class Instance extends pulumi.CustomResource {
   /// * PREVENT
   /// * ABANDON
   late final pulumi.Output<String?> deletionPolicy;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// A list of hostnames for this instance.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> hostConfigs;
-
   /// The name for the Instance.
   late final pulumi.Output<String> instanceId;
-
   /// Customer-managed encryption key name, in the format projects/*/locations/*/keyRings/*/cryptoKeys/*.
   late final pulumi.Output<String?> kmsKey;
-
   /// Labels as key value pairs.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// The location for the Instance.
   late final pulumi.Output<String> location;
-
   /// The resource name for the Instance.
   late final pulumi.Output<String> name;
-
   /// Private settings for private instance.
   /// Structure is documented below.
   late final pulumi.Output<InstancePrivateConfig?> privateConfig;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// The current state of the Instance.
   late final pulumi.Output<String> state;
-
   /// Provides information about the current instance state.
   late final pulumi.Output<String> stateNote;
-
   /// Time the Instance was updated in UTC.
   late final pulumi.Output<String> updateTime;
-
   /// Configuration for Workforce Identity Federation to support third party identity provider.
   /// If unset, defaults to the Google OIDC IdP.
   /// Structure is documented below.
-  late final pulumi.Output<InstanceWorkforceIdentityFederationConfig?>
-  workforceIdentityFederationConfig;
+  late final pulumi.Output<InstanceWorkforceIdentityFederationConfig?> workforceIdentityFederationConfig;
 
   /// Creates a new [Instance].
   /// [name] The Pulumi resource name.
@@ -3323,11 +3307,11 @@ class Instance extends pulumi.CustomResource {
     InstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:securesourcemanager/instance:Instance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:securesourcemanager/instance:Instance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String?>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -3337,32 +3321,13 @@ class Instance extends pulumi.CustomResource {
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    privateConfig = registerOutput<InstancePrivateConfig?>(
-      'privateConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstancePrivateConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    privateConfig = registerOutput<InstancePrivateConfig?>('privateConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstancePrivateConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     state = registerOutput<String>('state');
     stateNote = registerOutput<String>('stateNote');
     updateTime = registerOutput<String>('updateTime');
-    workforceIdentityFederationConfig =
-        registerOutput<InstanceWorkforceIdentityFederationConfig?>(
-          'workforceIdentityFederationConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return InstanceWorkforceIdentityFederationConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    workforceIdentityFederationConfig = registerOutput<InstanceWorkforceIdentityFederationConfig?>('workforceIdentityFederationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceWorkforceIdentityFederationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [Instance] resource's state with the given [name] and [id].
@@ -3383,11 +3348,11 @@ class Instance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:securesourcemanager/instance:Instance',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:securesourcemanager/instance:Instance',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String?>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -3397,31 +3362,12 @@ class Instance extends pulumi.CustomResource {
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    privateConfig = registerOutput<InstancePrivateConfig?>(
-      'privateConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstancePrivateConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    privateConfig = registerOutput<InstancePrivateConfig?>('privateConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstancePrivateConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     this.state = registerOutput<String>('state');
     stateNote = registerOutput<String>('stateNote');
     updateTime = registerOutput<String>('updateTime');
-    workforceIdentityFederationConfig =
-        registerOutput<InstanceWorkforceIdentityFederationConfig?>(
-          'workforceIdentityFederationConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return InstanceWorkforceIdentityFederationConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    workforceIdentityFederationConfig = registerOutput<InstanceWorkforceIdentityFederationConfig?>('workforceIdentityFederationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceWorkforceIdentityFederationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

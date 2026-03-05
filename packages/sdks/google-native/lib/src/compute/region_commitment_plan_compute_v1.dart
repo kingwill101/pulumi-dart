@@ -16,3 +16,4 @@ enum RegionCommitmentPlanComputeV1 {
     throw ArgumentError('Unknown RegionCommitmentPlanComputeV1 value: $value');
   }
 }
+

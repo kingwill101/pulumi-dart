@@ -1302,56 +1302,40 @@ class OpenApiExplorerApiMcpServer extends pulumi.CustomResource {
   /// - Whether to exclude the API from the output API response structure definition
   /// - Whether to return a CLI execution command instead of directly executing the API
   /// - Configuration of constant values for API parameters; parameters set as constants will not have their definitions returned in the tool list   See `additional_api_descriptions` below.
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  additionalApiDescriptions;
-
+  late final pulumi.Output<List<Map<String, dynamic>>?> additionalApiDescriptions;
   /// The list of APIs to be included in the API MCP Server. See `apis` below.
   late final pulumi.Output<List<Map<String, dynamic>>> apis;
-
   /// When multi-account access is enabled, this field defines an additional policy for role assumption. If specified, this policy overrides the original permissions defined for the role, and the assumed role’s permissions are determined solely by this policy.
   late final pulumi.Output<String?> assumeRoleExtraPolicy;
-
   /// The name of the RAM role in the target account to assume when enabling multi-account access for cross-account operations.
   late final pulumi.Output<String?> assumeRoleName;
-
   /// MCP Server creation time in China Standard Time (CST), for example, 2025-12-04 19:46:52.
   late final pulumi.Output<String> createTime;
-
   /// Description of the API MCP service.
   late final pulumi.Output<String?> description;
-
   /// Specifies whether to enable multi-account access. When enabled, the MCP Server exposes the x_assume_account_id parameter by default. When this parameter is provided, the MCP Server switches to the specified account to perform operations.
   late final pulumi.Output<bool?> enableAssumeRole;
-
   /// Whether to enable a custom VPC whitelist. If disabled, the configuration follows the account-level setting.
   late final pulumi.Output<bool?> enableCustomVpcWhitelist;
-
   /// MCP instructions that guide the large language model on how to use this MCP. The client must support the Instructions field defined in the MCP standard protocol.
   late final pulumi.Output<String?> instructions;
-
   /// Documentation language for the API MCP service. You can select either Chinese or English API documentation. The choice of language may affect the AI's response quality due to differences in prompt wording. Supported values are EN_US and ZH_CN.
   late final pulumi.Output<String?> language;
-
   /// Name of the MCP Server. It can contain digits, English letters, and hyphens (-).
   late final pulumi.Output<String> name;
-
   /// The custom OAuth Client ID when selecting a custom OAuth configuration.
   /// `Supported only for Web/Native applications, and the OAuth scope must include /acs/mcp-server.`
   late final pulumi.Output<String?> oauthClientId;
-
   /// List of prompts supported by the MCP Server. For the MCP protocol, clients retrieve this list through the prompts/list RPC call. See `prompts` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> prompts;
-
   /// Whether to enable public network access. This setting takes precedence over the account-level configuration and supports the following options:
   /// - on: enables public network access;
   /// - off: disables public network access;
   /// - follow: inherits the account-level configuration.
   late final pulumi.Output<String?> publicAccess;
-
   /// Enabled system services.
   late final pulumi.Output<List<String>?> systemTools;
   late final pulumi.Output<List<Map<String, dynamic>>?> terraformTools;
-
   /// When public network access is disabled, this field specifies the VPC whitelist that restricts source VPCs. If not set or left empty, no restriction is applied to the source.
   late final pulumi.Output<List<String>?> vpcWhitelists;
 
@@ -1364,23 +1348,19 @@ class OpenApiExplorerApiMcpServer extends pulumi.CustomResource {
     OpenApiExplorerApiMcpServerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:index/openApiExplorerApiMcpServer:OpenApiExplorerApiMcpServer',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    additionalApiDescriptions = registerOutput<List<Map<String, dynamic>>?>(
-      'additionalApiDescriptions',
-    );
+          'alicloud:index/openApiExplorerApiMcpServer:OpenApiExplorerApiMcpServer',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    additionalApiDescriptions = registerOutput<List<Map<String, dynamic>>?>('additionalApiDescriptions');
     apis = registerOutput<List<Map<String, dynamic>>>('apis');
     assumeRoleExtraPolicy = registerOutput<String?>('assumeRoleExtraPolicy');
     assumeRoleName = registerOutput<String?>('assumeRoleName');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     enableAssumeRole = registerOutput<bool?>('enableAssumeRole');
-    enableCustomVpcWhitelist = registerOutput<bool?>(
-      'enableCustomVpcWhitelist',
-    );
+    enableCustomVpcWhitelist = registerOutput<bool?>('enableCustomVpcWhitelist');
     instructions = registerOutput<String?>('instructions');
     language = registerOutput<String?>('language');
     this.name = registerOutput<String>('name');
@@ -1388,9 +1368,7 @@ class OpenApiExplorerApiMcpServer extends pulumi.CustomResource {
     prompts = registerOutput<List<Map<String, dynamic>>?>('prompts');
     publicAccess = registerOutput<String?>('publicAccess');
     systemTools = registerOutput<List<String>?>('systemTools');
-    terraformTools = registerOutput<List<Map<String, dynamic>>?>(
-      'terraformTools',
-    );
+    terraformTools = registerOutput<List<Map<String, dynamic>>?>('terraformTools');
     vpcWhitelists = registerOutput<List<String>?>('vpcWhitelists');
   }
 
@@ -1412,23 +1390,19 @@ class OpenApiExplorerApiMcpServer extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:index/openApiExplorerApiMcpServer:OpenApiExplorerApiMcpServer',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    additionalApiDescriptions = registerOutput<List<Map<String, dynamic>>?>(
-      'additionalApiDescriptions',
-    );
+          'alicloud:index/openApiExplorerApiMcpServer:OpenApiExplorerApiMcpServer',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    additionalApiDescriptions = registerOutput<List<Map<String, dynamic>>?>('additionalApiDescriptions');
     apis = registerOutput<List<Map<String, dynamic>>>('apis');
     assumeRoleExtraPolicy = registerOutput<String?>('assumeRoleExtraPolicy');
     assumeRoleName = registerOutput<String?>('assumeRoleName');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     enableAssumeRole = registerOutput<bool?>('enableAssumeRole');
-    enableCustomVpcWhitelist = registerOutput<bool?>(
-      'enableCustomVpcWhitelist',
-    );
+    enableCustomVpcWhitelist = registerOutput<bool?>('enableCustomVpcWhitelist');
     instructions = registerOutput<String?>('instructions');
     language = registerOutput<String?>('language');
     this.name = registerOutput<String>('name');
@@ -1436,9 +1410,7 @@ class OpenApiExplorerApiMcpServer extends pulumi.CustomResource {
     prompts = registerOutput<List<Map<String, dynamic>>?>('prompts');
     publicAccess = registerOutput<String?>('publicAccess');
     systemTools = registerOutput<List<String>?>('systemTools');
-    terraformTools = registerOutput<List<Map<String, dynamic>>?>(
-      'terraformTools',
-    );
+    terraformTools = registerOutput<List<Map<String, dynamic>>?>('terraformTools');
     vpcWhitelists = registerOutput<List<String>?>('vpcWhitelists');
   }
 }

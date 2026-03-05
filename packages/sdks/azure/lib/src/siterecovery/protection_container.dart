@@ -281,13 +281,10 @@ import 'protection_container_state.dart';
 class ProtectionContainer extends pulumi.CustomResource {
   /// The name of the protection container. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Name of fabric that should contain this protection container. Changing this forces a new resource to be created.
   late final pulumi.Output<String> recoveryFabricName;
-
   /// The name of the vault that should be updated. Changing this forces a new resource to be created.
   late final pulumi.Output<String> recoveryVaultName;
-
   /// Name of the resource group where the vault that should be updated is located. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
 
@@ -300,11 +297,11 @@ class ProtectionContainer extends pulumi.CustomResource {
     ProtectionContainerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:siterecovery/protectionContainer:ProtectionContainer',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:siterecovery/protectionContainer:ProtectionContainer',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     recoveryFabricName = registerOutput<String>('recoveryFabricName');
     recoveryVaultName = registerOutput<String>('recoveryVaultName');
@@ -329,11 +326,11 @@ class ProtectionContainer extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:siterecovery/protectionContainer:ProtectionContainer',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:siterecovery/protectionContainer:ProtectionContainer',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     recoveryFabricName = registerOutput<String>('recoveryFabricName');
     recoveryVaultName = registerOutput<String>('recoveryVaultName');

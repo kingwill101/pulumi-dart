@@ -8,13 +8,10 @@ class ClientState {
   /// is attached to. The format is
   /// `projects/{project_number}/brands/{brand_id}`.
   final pulumi.Input<String>? brand;
-
   /// Output only. Unique identifier of the OAuth client.
   final pulumi.Input<String>? clientId;
-
   /// Human-friendly name given to the OAuth client.
   final pulumi.Input<String>? displayName;
-
   /// Output only. Client secret of the OAuth client.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   final pulumi.Input<String>? secret;
@@ -24,7 +21,12 @@ class ClientState {
   /// [clientId] Output only. Unique identifier of the OAuth client.
   /// [displayName] Human-friendly name given to the OAuth client.
   /// [secret] Output only. Client secret of the OAuth client.
-  ClientState({this.brand, this.clientId, this.displayName, this.secret});
+  ClientState({
+    this.brand,
+    this.clientId,
+    this.displayName,
+    this.secret,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,26 +39,11 @@ class ClientState {
 
   factory ClientState.fromMap(Map<String, dynamic> map) {
     return ClientState(
-      brand: (() {
-        final guardedValue = map['brand'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      clientId: (() {
-        final guardedValue = map['clientId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      secret: (() {
-        final guardedValue = map['secret'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      brand: (() { final guardedValue = map['brand']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      clientId: (() { final guardedValue = map['clientId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      secret: (() { final guardedValue = map['secret']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

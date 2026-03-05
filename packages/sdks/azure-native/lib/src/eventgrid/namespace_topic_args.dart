@@ -10,19 +10,14 @@ class NamespaceTopicArgs {
   /// Event retention for the namespace topic expressed in days. The property default value is 1 day.
   /// Min event retention duration value is 1 day and max event retention duration value is 1 day.
   final pulumi.Input<int>? eventRetentionInDays;
-
   /// This determines the format that is expected for incoming events published to the topic.
   final pulumi.Input<String>? inputSchema;
-
   /// Name of the namespace.
   final pulumi.Input<String> namespaceName;
-
   /// Publisher type of the namespace topic.
   final pulumi.Input<String>? publisherType;
-
   /// The name of the resource group within the user's subscription.
   final pulumi.Input<String> resourceGroupName;
-
   /// Name of the namespace topic.
   final pulumi.Input<String>? topicName;
 
@@ -55,30 +50,13 @@ class NamespaceTopicArgs {
 
   factory NamespaceTopicArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceTopicArgs(
-      eventRetentionInDays: (() {
-        final guardedValue = map['eventRetentionInDays'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      inputSchema: (() {
-        final guardedValue = map['inputSchema'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      eventRetentionInDays: (() { final guardedValue = map['eventRetentionInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      inputSchema: (() { final guardedValue = map['inputSchema']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
-      publisherType: (() {
-        final guardedValue = map['publisherType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      topicName: (() {
-        final guardedValue = map['topicName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      publisherType: (() { final guardedValue = map['publisherType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      topicName: (() { final guardedValue = map['topicName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

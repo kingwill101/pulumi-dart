@@ -5,22 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSlotsSlot {
   /// The name of the database where Replication Slot is located.
   final pulumi.Input<String> database;
-
   /// The plugin used by Replication Slot.
   final pulumi.Input<String> plugin;
-
   /// The Replication Slot name.
   final pulumi.Input<String> slotName;
-
   /// The Replication Slot status.
   final pulumi.Input<String> slotStatus;
-
   /// The Replication Slot type.
   final pulumi.Input<String> slotType;
-
   /// Is the Replication Slot temporary.
   final pulumi.Input<String> temporary;
-
   /// The amount of logs accumulated by Replication Slot.
   final pulumi.Input<String> walDelay;
 
@@ -66,3 +60,4 @@ class GetSlotsSlot {
     );
   }
 }
+

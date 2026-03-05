@@ -8,24 +8,18 @@ import 'get_frontdoor_profile_log_scrubbing_rule.dart';
 class GetFrontdoorProfileResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// An `identity` block as defined below.
   final GetFrontdoorProfileIdentity identity;
-
   /// One or more `log_scrubbing_rule` blocks as defined below.
   final List<GetFrontdoorProfileLogScrubbingRule> logScrubbingRules;
   final String name;
   final String resourceGroupName;
-
   /// The UUID of the Front Door Profile which will be sent in the HTTP Header as the `X-Azure-FDID` attribute.
   final String resourceGuid;
-
   /// Specifies the maximum response timeout in seconds.
   final int responseTimeoutSeconds;
-
   /// Specifies the SKU for this Front Door Profile.
   final String skuName;
-
   /// Specifies a mapping of Tags assigned to this Front Door Profile.
   final Map<String, String> tags;
 
@@ -55,11 +49,7 @@ class GetFrontdoorProfileResult {
     return <String, dynamic>{
       'id': id,
       'identity': identity.toMap(),
-      'logScrubbingRules':
-          pulumi.Input.encodeList<
-            GetFrontdoorProfileLogScrubbingRule,
-            Map<String, dynamic>
-          >(logScrubbingRules, (value) => value.toMap()),
+      'logScrubbingRules': pulumi.Input.encodeList<GetFrontdoorProfileLogScrubbingRule, Map<String, dynamic>>(logScrubbingRules, (value) => value.toMap()),
       'name': name,
       'resourceGroupName': resourceGroupName,
       'resourceGuid': resourceGuid,
@@ -72,16 +62,8 @@ class GetFrontdoorProfileResult {
   factory GetFrontdoorProfileResult.fromMap(Map<String, dynamic> map) {
     return GetFrontdoorProfileResult(
       id: map['id'] as String,
-      identity: GetFrontdoorProfileIdentity.fromMap(
-        (map['identity']! as Map).cast<String, dynamic>(),
-      ),
-      logScrubbingRules:
-          pulumi.Input.decodeList<GetFrontdoorProfileLogScrubbingRule>(
-            map['logScrubbingRules']!,
-            (value) => GetFrontdoorProfileLogScrubbingRule.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      identity: GetFrontdoorProfileIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>()),
+      logScrubbingRules: pulumi.Input.decodeList<GetFrontdoorProfileLogScrubbingRule>(map['logScrubbingRules']!, (value) => GetFrontdoorProfileLogScrubbingRule.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       resourceGroupName: map['resourceGroupName'] as String,
       resourceGuid: map['resourceGuid'] as String,
@@ -91,3 +73,4 @@ class GetFrontdoorProfileResult {
     );
   }
 }
+

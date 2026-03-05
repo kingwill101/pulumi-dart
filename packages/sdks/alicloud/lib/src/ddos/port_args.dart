@@ -10,22 +10,17 @@ import 'port_config.dart';
 class PortArgs {
   /// The port of the origin server. Valid values: `0` to `65535`.
   final pulumi.Input<String>? backendPort;
-
   /// Session persistence settings for port forwarding rules. Use a string representation in JSON format. The specific structure is described as follows.
   /// - `PersistenceTimeout`: is of Integer type and is required. The timeout period of the session. Value range: `30` to `3600`, in seconds. The default value is `0`, which is closed. See `config` below.
   final pulumi.Input<PortConfig>? config;
-
   /// The forwarding port to query. Valid values: `0` to `65535`.
   final pulumi.Input<String> frontendPort;
-
   /// The type of the forwarding protocol to query. Valid values:
   final pulumi.Input<String> frontendProtocol;
-
   /// The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance to which the port forwarding rule belongs.
   ///
   /// &gt; **NOTE:**  You can call the [DescribeInstanceIds](https://www.alibabacloud.com/help/en/doc-detail/157459.html) operation to query the IDs of all instances.
   final pulumi.Input<String> instanceId;
-
   /// List of source IP addresses
   final pulumi.Input<List<String>> realServers;
 
@@ -48,11 +43,7 @@ class PortArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'backendPort': ?backendPort,
-      'config':
-          ?pulumi.Input.mapOptionalInputValue<PortConfig, Map<String, dynamic>>(
-            config,
-            (value) => value.toMap(),
-          ),
+      'config': ?pulumi.Input.mapOptionalInputValue<PortConfig, Map<String, dynamic>>(config, (value) => value.toMap()),
       'frontendPort': frontendPort,
       'frontendProtocol': frontendProtocol,
       'instanceId': instanceId,
@@ -62,26 +53,13 @@ class PortArgs {
 
   factory PortArgs.fromMap(Map<String, dynamic> map) {
     return PortArgs(
-      backendPort: (() {
-        final guardedValue = map['backendPort'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      config: (() {
-        final guardedValue = map['config'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PortConfig.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
+      backendPort: (() { final guardedValue = map['backendPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      config: (() { final guardedValue = map['config']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PortConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       frontendPort: pulumi.Input.fromValue(map['frontendPort'] as String),
-      frontendProtocol: pulumi.Input.fromValue(
-        map['frontendProtocol'] as String,
-      ),
+      frontendProtocol: pulumi.Input.fromValue(map['frontendProtocol'] as String),
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
-      realServers: pulumi.Input.fromValue(
-        (map['realServers'] as List).cast<String>(),
-      ),
+      realServers: pulumi.Input.fromValue((map['realServers'] as List).cast<String>()),
     );
   }
 }
+

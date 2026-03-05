@@ -25,12 +25,11 @@ class GetOrganizationSourceIamPolicySecuritycenterV1beta1Args {
     };
   }
 
-  factory GetOrganizationSourceIamPolicySecuritycenterV1beta1Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetOrganizationSourceIamPolicySecuritycenterV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetOrganizationSourceIamPolicySecuritycenterV1beta1Args(
       organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
       sourceId: pulumi.Input.fromValue(map['sourceId'] as String),
     );
   }
 }
+

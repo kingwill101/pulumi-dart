@@ -157,13 +157,10 @@ import 'policy_state.dart';
 class Policy extends pulumi.CustomResource {
   /// The document of the tag policy.
   late final pulumi.Output<String> policyContent;
-
   /// The description of the policy. The description must be 1 to 512 characters in length.
   late final pulumi.Output<String?> policyDesc;
-
   /// The name of the tag policy. The name must be 1 to 128 characters in length and can contain letters, digits, and underscores (_).
   late final pulumi.Output<String> policyName;
-
   /// The mode of the Tag Policy feature. Valid values: `USER`, `RD`.
   late final pulumi.Output<String> userType;
 
@@ -171,13 +168,16 @@ class Policy extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Policy]. {@macro pulumi_tag_policy_policy_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Policy(String name, {PolicyArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:tag/policy:Policy',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Policy(
+    String name, {
+    PolicyArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:tag/policy:Policy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     policyContent = registerOutput<String>('policyContent');
     policyDesc = registerOutput<String?>('policyDesc');
     policyName = registerOutput<String>('policyName');
@@ -202,11 +202,11 @@ class Policy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:tag/policy:Policy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:tag/policy:Policy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     policyContent = registerOutput<String>('policyContent');
     policyDesc = registerOutput<String?>('policyDesc');
     policyName = registerOutput<String>('policyName');

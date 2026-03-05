@@ -133,22 +133,16 @@ import 'system_data_response.dart';
 class ManagementLockAtResourceGroupLevel extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The level of the lock. Possible values are: NotSpecified, CanNotDelete, ReadOnly. CanNotDelete means authorized users are able to read and modify the resources, but not delete. ReadOnly means authorized users can only read from a resource, but they can't modify or delete it.
   late final pulumi.Output<String> level;
-
   /// The name of the lock.
   late final pulumi.Output<String> name;
-
   /// Notes about the lock. Maximum of 512 characters.
   late final pulumi.Output<String?> notes;
-
   /// The owners of the lock.
   late final pulumi.Output<List<Map<String, dynamic>>?> owners;
-
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The resource type of the lock - Microsoft.Authorization/locks.
   late final pulumi.Output<String> type;
 
@@ -161,26 +155,17 @@ class ManagementLockAtResourceGroupLevel extends pulumi.CustomResource {
     ManagementLockAtResourceGroupLevelArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:authorization:ManagementLockAtResourceGroupLevel',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:authorization:ManagementLockAtResourceGroupLevel',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     level = registerOutput<String>('level');
     this.name = registerOutput<String>('name');
     notes = registerOutput<String?>('notes');
     owners = registerOutput<List<Map<String, dynamic>>?>('owners');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

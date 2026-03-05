@@ -11,17 +11,20 @@ class GetGradientaiIndexingJobDataSourcesArgs {
 
   /// Creates a new [GetGradientaiIndexingJobDataSourcesArgs].
   /// [indexingJobUuid] Required.
-  GetGradientaiIndexingJobDataSourcesArgs({required this.indexingJobUuid});
+  GetGradientaiIndexingJobDataSourcesArgs({
+    required this.indexingJobUuid,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'indexingJobUuid': indexingJobUuid};
+    return <String, dynamic>{
+      'indexingJobUuid': indexingJobUuid,
+    };
   }
 
-  factory GetGradientaiIndexingJobDataSourcesArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetGradientaiIndexingJobDataSourcesArgs.fromMap(Map<String, dynamic> map) {
     return GetGradientaiIndexingJobDataSourcesArgs(
       indexingJobUuid: pulumi.Input.fromValue(map['indexingJobUuid'] as String),
     );
   }
 }
+

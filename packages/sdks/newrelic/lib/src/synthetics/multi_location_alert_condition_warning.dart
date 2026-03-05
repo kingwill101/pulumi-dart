@@ -8,10 +8,14 @@ class MultiLocationAlertConditionWarning {
 
   /// Creates a new [MultiLocationAlertConditionWarning].
   /// [threshold] The minimum number of monitor locations that must be concurrently failing before an incident is opened.
-  MultiLocationAlertConditionWarning({required this.threshold});
+  MultiLocationAlertConditionWarning({
+    required this.threshold,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'threshold': threshold};
+    return <String, dynamic>{
+      'threshold': threshold,
+    };
   }
 
   factory MultiLocationAlertConditionWarning.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class MultiLocationAlertConditionWarning {
     );
   }
 }
+

@@ -211,22 +211,16 @@ import 'access_point_vpc_configuration.dart';
 class AccessPoint extends pulumi.CustomResource {
   /// The name of the access point
   late final pulumi.Output<String> accessPointName;
-
   /// The Bucket to which the current access point belongs.
   late final pulumi.Output<String> bucket;
-
   /// Access point network source. The valid values are as follows:
   /// - vpc: only the specified VPC ID can be used to access the access point.
   /// - internet: the access point can be accessed through both external and internal Endpoint.
   late final pulumi.Output<String> networkOrigin;
-
   /// Configuration of Access Point Blocking Public Access See `public_access_block_configuration` below.
-  late final pulumi.Output<AccessPointPublicAccessBlockConfiguration?>
-  publicAccessBlockConfiguration;
-
+  late final pulumi.Output<AccessPointPublicAccessBlockConfiguration?> publicAccessBlockConfiguration;
   /// The status of the resource
   late final pulumi.Output<String> status;
-
   /// If the Network Origin is vpc, the VPC source information is saved here. See `vpc_configuration` below.
   late final pulumi.Output<AccessPointVpcConfiguration?> vpcConfiguration;
 
@@ -239,36 +233,17 @@ class AccessPoint extends pulumi.CustomResource {
     AccessPointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:oss/accessPoint:AccessPoint',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:oss/accessPoint:AccessPoint',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessPointName = registerOutput<String>('accessPointName');
     bucket = registerOutput<String>('bucket');
     networkOrigin = registerOutput<String>('networkOrigin');
-    publicAccessBlockConfiguration =
-        registerOutput<AccessPointPublicAccessBlockConfiguration?>(
-          'publicAccessBlockConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AccessPointPublicAccessBlockConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    publicAccessBlockConfiguration = registerOutput<AccessPointPublicAccessBlockConfiguration?>('publicAccessBlockConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessPointPublicAccessBlockConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
-    vpcConfiguration = registerOutput<AccessPointVpcConfiguration?>(
-      'vpcConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccessPointVpcConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    vpcConfiguration = registerOutput<AccessPointVpcConfiguration?>('vpcConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessPointVpcConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [AccessPoint] resource's state with the given [name] and [id].
@@ -289,35 +264,16 @@ class AccessPoint extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:oss/accessPoint:AccessPoint',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:oss/accessPoint:AccessPoint',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessPointName = registerOutput<String>('accessPointName');
     bucket = registerOutput<String>('bucket');
     networkOrigin = registerOutput<String>('networkOrigin');
-    publicAccessBlockConfiguration =
-        registerOutput<AccessPointPublicAccessBlockConfiguration?>(
-          'publicAccessBlockConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AccessPointPublicAccessBlockConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    publicAccessBlockConfiguration = registerOutput<AccessPointPublicAccessBlockConfiguration?>('publicAccessBlockConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessPointPublicAccessBlockConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
-    vpcConfiguration = registerOutput<AccessPointVpcConfiguration?>(
-      'vpcConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccessPointVpcConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    vpcConfiguration = registerOutput<AccessPointVpcConfiguration?>('vpcConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessPointVpcConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

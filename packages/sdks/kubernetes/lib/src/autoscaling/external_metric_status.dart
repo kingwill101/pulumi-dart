@@ -8,42 +8,29 @@ import 'metric_value_status.dart';
 class ExternalMetricStatus {
   /// current contains the current value for the given metric
   final pulumi.Input<MetricValueStatus> current;
-
   /// metric identifies the target metric by name and selector
   final pulumi.Input<MetricIdentifier> metric;
 
   /// Creates a new [ExternalMetricStatus].
   /// [current] current contains the current value for the given metric
   /// [metric] metric identifies the target metric by name and selector
-  ExternalMetricStatus({required this.current, required this.metric});
+  ExternalMetricStatus({
+    required this.current,
+    required this.metric,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'current':
-          pulumi.Input.mapInputValue<MetricValueStatus, Map<String, dynamic>>(
-            current,
-            (value) => value.toMap(),
-          ),
-      'metric':
-          pulumi.Input.mapInputValue<MetricIdentifier, Map<String, dynamic>>(
-            metric,
-            (value) => value.toMap(),
-          ),
+      'current': pulumi.Input.mapInputValue<MetricValueStatus, Map<String, dynamic>>(current, (value) => value.toMap()),
+      'metric': pulumi.Input.mapInputValue<MetricIdentifier, Map<String, dynamic>>(metric, (value) => value.toMap()),
     };
   }
 
   factory ExternalMetricStatus.fromMap(Map<String, dynamic> map) {
     return ExternalMetricStatus(
-      current: pulumi.Input.fromValue(
-        MetricValueStatus.fromMap(
-          (map['current']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      metric: pulumi.Input.fromValue(
-        MetricIdentifier.fromMap(
-          (map['metric']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      current: pulumi.Input.fromValue(MetricValueStatus.fromMap((map['current']! as Map).cast<String, dynamic>())),
+      metric: pulumi.Input.fromValue(MetricIdentifier.fromMap((map['metric']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

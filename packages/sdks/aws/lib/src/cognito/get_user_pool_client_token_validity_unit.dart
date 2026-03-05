@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetUserPoolClientTokenValidityUnit {
   /// (Optional) Time unit in for the value in `access_token_validity`, defaults to `hours`.
   final pulumi.Input<String> accessToken;
-
   /// (Optional) Time unit in for the value in `id_token_validity`, defaults to `hours`.
   final pulumi.Input<String> idToken;
-
   /// (Optional) Time unit in for the value in `refresh_token_validity`, defaults to `days`.
   final pulumi.Input<String> refreshToken;
 
@@ -38,3 +36,4 @@ class GetUserPoolClientTokenValidityUnit {
     );
   }
 }
+

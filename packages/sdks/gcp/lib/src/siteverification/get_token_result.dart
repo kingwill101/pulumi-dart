@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getToken.
 class GetTokenResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String identifier;
-
   /// The generated token for use in subsequent verification steps.
   final String token;
   final String type;
@@ -45,3 +45,4 @@ class GetTokenResult {
     );
   }
 }
+

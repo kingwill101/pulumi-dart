@@ -18,7 +18,10 @@ class AnalysisParametersDecimalParameter {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'values': values};
+    return <String, dynamic>{
+      'name': name,
+      'values': values,
+    };
   }
 
   factory AnalysisParametersDecimalParameter.fromMap(Map<String, dynamic> map) {
@@ -28,3 +31,4 @@ class AnalysisParametersDecimalParameter {
     );
   }
 }
+

@@ -9,19 +9,20 @@ class Sku {
 
   /// Creates a new [Sku].
   /// [name] The name of the SKU. Required on PUT (CreateOrReplace) requests.
-  Sku({this.name});
+  Sku({
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name};
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
   factory Sku.fromMap(Map<String, dynamic> map) {
     return Sku(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

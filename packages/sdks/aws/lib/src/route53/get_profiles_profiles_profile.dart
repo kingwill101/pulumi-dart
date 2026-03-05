@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetProfilesProfilesProfile {
   /// ARN of the Profile.
   final pulumi.Input<String> arn;
-
   /// ID of the Profile.
   final pulumi.Input<String> id;
-
   /// Name of the Profile.
   final pulumi.Input<String> name;
-
   /// Share status of the Profile. Valid values [AWS docs](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53profiles_Profile.html)
   final pulumi.Input<String> shareStatus;
 
@@ -45,3 +42,4 @@ class GetProfilesProfilesProfile {
     );
   }
 }
+

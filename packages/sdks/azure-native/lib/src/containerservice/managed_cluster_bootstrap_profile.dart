@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedClusterBootstrapProfile {
   /// The artifact source. The source where the artifacts are downloaded from.
   final pulumi.Input<String>? artifactSource;
-
   /// The resource Id of Azure Container Registry. The registry must have private network access, premium SKU and zone redundancy.
   final pulumi.Input<String>? containerRegistryId;
 
@@ -27,16 +26,9 @@ class ManagedClusterBootstrapProfile {
 
   factory ManagedClusterBootstrapProfile.fromMap(Map<String, dynamic> map) {
     return ManagedClusterBootstrapProfile(
-      artifactSource: (() {
-        final guardedValue = map['artifactSource'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      containerRegistryId: (() {
-        final guardedValue = map['containerRegistryId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      artifactSource: (() { final guardedValue = map['artifactSource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      containerRegistryId: (() { final guardedValue = map['containerRegistryId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

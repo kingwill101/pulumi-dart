@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetQuotaV2Args {
   /// The id of the project to retrieve the quota.
   final pulumi.Input<String> projectId;
-
   /// The region in which to obtain the V2 Network client.
   /// If omitted, the `region` argument of the provider is used.
   final pulumi.Input<String>? region;
@@ -17,20 +16,23 @@ class GetQuotaV2Args {
   /// Creates a new [GetQuotaV2Args].
   /// [projectId] The id of the project to retrieve the quota.
   /// [region] The region in which to obtain the V2 Network client.
-  GetQuotaV2Args({required this.projectId, this.region});
+  GetQuotaV2Args({
+    required this.projectId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'projectId': projectId, 'region': ?region};
+    return <String, dynamic>{
+      'projectId': projectId,
+      'region': ?region,
+    };
   }
 
   factory GetQuotaV2Args.fromMap(Map<String, dynamic> map) {
     return GetQuotaV2Args(
       projectId: pulumi.Input.fromValue(map['projectId'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

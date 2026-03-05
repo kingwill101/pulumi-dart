@@ -5,43 +5,30 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBaseInstancesInstance {
   /// The product code of the OceanBase cluster.
   final pulumi.Input<String> commodityCode;
-
   /// The number of CPU cores of the cluster.
   final pulumi.Input<int> cpu;
-
   /// The creation time of the resource.
   final pulumi.Input<String> createTime;
-
   /// The size of the storage space, in GB.
   final pulumi.Input<String> diskSize;
-
   /// The ID of the Instance.
   final pulumi.Input<String> id;
-
   /// Cluster specification information.
   final pulumi.Input<String> instanceClass;
-
   /// OceanBase cluster ID.
   final pulumi.Input<String> instanceId;
-
   /// OceanBase cluster name.
   final pulumi.Input<String> instanceName;
-
   /// The number of nodes in the cluster.
   final pulumi.Input<String> nodeNum;
-
   /// The payment method of the instance.
   final pulumi.Input<String> paymentType;
-
   /// The ID of the enterprise resource group to which the instance resides.
   final pulumi.Input<String> resourceGroupId;
-
   /// Series of OceanBase clusters.
   final pulumi.Input<String> series;
-
   /// The status of the resource.
   final pulumi.Input<String> status;
-
   /// Information about the zone where the cluster is deployed.
   final pulumi.Input<List<String>> zones;
 
@@ -115,3 +102,4 @@ class GetBaseInstancesInstance {
     );
   }
 }
+

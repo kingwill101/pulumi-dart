@@ -7,34 +7,24 @@ import 'peering_service_prefix_event_response.dart';
 class GetPrefixResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The error message for validation state
   final String errorMessage;
-
   /// The list of events for peering service prefix
   final List<PeeringServicePrefixEventResponse> events;
-
   /// The ID of the resource.
   final String id;
-
   /// The prefix learned type
   final String learnedType;
-
   /// The name of the resource.
   final String name;
-
   /// The peering service prefix key
   final String? peeringServicePrefixKey;
-
   /// The prefix from which your traffic originates.
   final String? prefix;
-
   /// The prefix validation state
   final String prefixValidationState;
-
   /// The provisioning state of the resource.
   final String provisioningState;
-
   /// The type of the resource.
   final String type;
 
@@ -68,11 +58,7 @@ class GetPrefixResult {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
       'errorMessage': errorMessage,
-      'events':
-          pulumi.Input.encodeList<
-            PeeringServicePrefixEventResponse,
-            Map<String, dynamic>
-          >(events, (value) => value.toMap()),
+      'events': pulumi.Input.encodeList<PeeringServicePrefixEventResponse, Map<String, dynamic>>(events, (value) => value.toMap()),
       'id': id,
       'learnedType': learnedType,
       'name': name,
@@ -88,28 +74,16 @@ class GetPrefixResult {
     return GetPrefixResult(
       azureApiVersion: map['azureApiVersion'] as String,
       errorMessage: map['errorMessage'] as String,
-      events: pulumi.Input.decodeList<PeeringServicePrefixEventResponse>(
-        map['events']!,
-        (value) => PeeringServicePrefixEventResponse.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      events: pulumi.Input.decodeList<PeeringServicePrefixEventResponse>(map['events']!, (value) => PeeringServicePrefixEventResponse.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       learnedType: map['learnedType'] as String,
       name: map['name'] as String,
-      peeringServicePrefixKey: (() {
-        final guardedValue = map['peeringServicePrefixKey'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      prefix: (() {
-        final guardedValue = map['prefix'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      peeringServicePrefixKey: (() { final guardedValue = map['peeringServicePrefixKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      prefix: (() { final guardedValue = map['prefix']; if (guardedValue == null) return null; return guardedValue as String; })(),
       prefixValidationState: map['prefixValidationState'] as String,
       provisioningState: map['provisioningState'] as String,
       type: map['type'] as String,
     );
   }
 }
+

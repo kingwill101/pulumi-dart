@@ -11,28 +11,20 @@ import 'extended_location_property.dart';
 class BrokerAuthenticationArgs {
   /// The list of authentication methods supported by the Authentication Resource. For each array element, NOTE - Enum only authenticator type supported.
   final pulumi.Input<List<BrokerAuthenticatorMethods>> authenticationMethods;
-
   /// Name of MQ broker/authentication resource
   final pulumi.Input<String>? authenticationName;
-
   /// Name of MQ broker resource
   final pulumi.Input<String> brokerName;
-
   /// Extended Location
   final pulumi.Input<ExtendedLocationProperty> extendedLocation;
-
   /// The array of listener Resources it supports.
   final pulumi.Input<List<String>> listenerRef;
-
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
-
   /// Name of MQ resource
   final pulumi.Input<String> mqName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -60,25 +52,10 @@ class BrokerAuthenticationArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authenticationMethods':
-          pulumi.Input.mapInputValue<
-            List<BrokerAuthenticatorMethods>,
-            List<Map<String, dynamic>>
-          >(
-            authenticationMethods,
-            (value) =>
-                pulumi.Input.encodeList<
-                  BrokerAuthenticatorMethods,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'authenticationMethods': pulumi.Input.mapInputValue<List<BrokerAuthenticatorMethods>, List<Map<String, dynamic>>>(authenticationMethods, (value) => pulumi.Input.encodeList<BrokerAuthenticatorMethods, Map<String, dynamic>>(value, (value) => value.toMap())),
       'authenticationName': ?authenticationName,
       'brokerName': brokerName,
-      'extendedLocation':
-          pulumi.Input.mapInputValue<
-            ExtendedLocationProperty,
-            Map<String, dynamic>
-          >(extendedLocation, (value) => value.toMap()),
+      'extendedLocation': pulumi.Input.mapInputValue<ExtendedLocationProperty, Map<String, dynamic>>(extendedLocation, (value) => value.toMap()),
       'listenerRef': listenerRef,
       'location': ?location,
       'mqName': mqName,
@@ -89,44 +66,16 @@ class BrokerAuthenticationArgs {
 
   factory BrokerAuthenticationArgs.fromMap(Map<String, dynamic> map) {
     return BrokerAuthenticationArgs(
-      authenticationMethods: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<BrokerAuthenticatorMethods>(
-          map['authenticationMethods']!,
-          (value) => BrokerAuthenticatorMethods.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      authenticationName: (() {
-        final guardedValue = map['authenticationName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      authenticationMethods: pulumi.Input.fromValue(pulumi.Input.decodeList<BrokerAuthenticatorMethods>(map['authenticationMethods']!, (value) => BrokerAuthenticatorMethods.fromMap((value as Map).cast<String, dynamic>()))),
+      authenticationName: (() { final guardedValue = map['authenticationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       brokerName: pulumi.Input.fromValue(map['brokerName'] as String),
-      extendedLocation: pulumi.Input.fromValue(
-        ExtendedLocationProperty.fromMap(
-          (map['extendedLocation']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      listenerRef: pulumi.Input.fromValue(
-        (map['listenerRef'] as List).cast<String>(),
-      ),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      extendedLocation: pulumi.Input.fromValue(ExtendedLocationProperty.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())),
+      listenerRef: pulumi.Input.fromValue((map['listenerRef'] as List).cast<String>()),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       mqName: pulumi.Input.fromValue(map['mqName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

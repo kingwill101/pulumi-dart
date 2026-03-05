@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPrivateResolverVirtualNetworkLinkArgs {
   /// The name of the DNS forwarding ruleset.
   final pulumi.Input<String> dnsForwardingRulesetName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the virtual network link.
   final pulumi.Input<String> virtualNetworkLinkName;
 
@@ -34,19 +32,12 @@ class GetPrivateResolverVirtualNetworkLinkArgs {
     };
   }
 
-  factory GetPrivateResolverVirtualNetworkLinkArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetPrivateResolverVirtualNetworkLinkArgs.fromMap(Map<String, dynamic> map) {
     return GetPrivateResolverVirtualNetworkLinkArgs(
-      dnsForwardingRulesetName: pulumi.Input.fromValue(
-        map['dnsForwardingRulesetName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      virtualNetworkLinkName: pulumi.Input.fromValue(
-        map['virtualNetworkLinkName'] as String,
-      ),
+      dnsForwardingRulesetName: pulumi.Input.fromValue(map['dnsForwardingRulesetName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      virtualNetworkLinkName: pulumi.Input.fromValue(map['virtualNetworkLinkName'] as String),
     );
   }
 }
+

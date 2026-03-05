@@ -7,13 +7,10 @@ import 'assessment_status.dart';
 class AssessmentState {
   /// A map of additional data to associate with the assessment.
   final pulumi.Input<Map<String, String>>? additionalData;
-
   /// The ID of the security Assessment policy to apply to this resource. Changing this forces a new security Assessment to be created.
   final pulumi.Input<String>? assessmentPolicyId;
-
   /// A `status` block as defined below.
   final pulumi.Input<AssessmentStatus>? status;
-
   /// The ID of the target resource. Changing this forces a new security Assessment to be created.
   final pulumi.Input<String>? targetResourceId;
 
@@ -33,43 +30,18 @@ class AssessmentState {
     return <String, dynamic>{
       'additionalData': ?additionalData,
       'assessmentPolicyId': ?assessmentPolicyId,
-      'status':
-          ?pulumi.Input.mapOptionalInputValue<
-            AssessmentStatus,
-            Map<String, dynamic>
-          >(status, (value) => value.toMap()),
+      'status': ?pulumi.Input.mapOptionalInputValue<AssessmentStatus, Map<String, dynamic>>(status, (value) => value.toMap()),
       'targetResourceId': ?targetResourceId,
     };
   }
 
   factory AssessmentState.fromMap(Map<String, dynamic> map) {
     return AssessmentState(
-      additionalData: (() {
-        final guardedValue = map['additionalData'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      assessmentPolicyId: (() {
-        final guardedValue = map['assessmentPolicyId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AssessmentStatus.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      targetResourceId: (() {
-        final guardedValue = map['targetResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      additionalData: (() { final guardedValue = map['additionalData']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      assessmentPolicyId: (() { final guardedValue = map['assessmentPolicyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AssessmentStatus.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      targetResourceId: (() { final guardedValue = map['targetResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

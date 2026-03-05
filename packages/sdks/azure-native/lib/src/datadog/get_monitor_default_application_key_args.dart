@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMonitorDefaultApplicationKeyArgs {
   /// Monitor resource name
   final pulumi.Input<String> monitorName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -28,14 +27,11 @@ class GetMonitorDefaultApplicationKeyArgs {
     };
   }
 
-  factory GetMonitorDefaultApplicationKeyArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetMonitorDefaultApplicationKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetMonitorDefaultApplicationKeyArgs(
       monitorName: pulumi.Input.fromValue(map['monitorName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

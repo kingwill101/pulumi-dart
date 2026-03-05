@@ -6,27 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ParametersLinkResponse {
   /// If included, must match the ContentVersion in the template.
   final pulumi.Input<String>? contentVersion;
-
   /// The URI of the parameters file.
   final pulumi.Input<String> uri;
 
   /// Creates a new [ParametersLinkResponse].
   /// [contentVersion] If included, must match the ContentVersion in the template.
   /// [uri] The URI of the parameters file.
-  ParametersLinkResponse({this.contentVersion, required this.uri});
+  ParametersLinkResponse({
+    this.contentVersion,
+    required this.uri,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'contentVersion': ?contentVersion, 'uri': uri};
+    return <String, dynamic>{
+      'contentVersion': ?contentVersion,
+      'uri': uri,
+    };
   }
 
   factory ParametersLinkResponse.fromMap(Map<String, dynamic> map) {
     return ParametersLinkResponse(
-      contentVersion: (() {
-        final guardedValue = map['contentVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      contentVersion: (() { final guardedValue = map['contentVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
+

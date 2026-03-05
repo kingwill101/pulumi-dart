@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FilterFilterCriteriaInspectorScore {
   /// (Optional) Lower bound of the range, inclusive.
   final pulumi.Input<double> lowerInclusive;
-
   /// (Optional) Upper bound of the range, inclusive.
   final pulumi.Input<double> upperInclusive;
 
@@ -31,3 +30,4 @@ class FilterFilterCriteriaInspectorScore {
     );
   }
 }
+

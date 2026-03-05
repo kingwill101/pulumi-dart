@@ -8,7 +8,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_databricks_workspace_customer_managed_key_workspace_customer_managed_key_args_doc}
 class WorkspaceCustomerManagedKeyArgs {
   final pulumi.Input<String> keyVaultKeyId;
-
   /// The unique identifier of the databricks workspace in Databricks control plane.
   final pulumi.Input<String> workspaceId;
 
@@ -34,3 +33,4 @@ class WorkspaceCustomerManagedKeyArgs {
     );
   }
 }
+

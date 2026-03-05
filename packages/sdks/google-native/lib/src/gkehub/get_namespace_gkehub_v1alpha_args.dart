@@ -37,12 +37,9 @@ class GetNamespaceGkehubV1alphaArgs {
     return GetNamespaceGkehubV1alphaArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
       namespaceId: pulumi.Input.fromValue(map['namespaceId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scopeId: pulumi.Input.fromValue(map['scopeId'] as String),
     );
   }
 }
+

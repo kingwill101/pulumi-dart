@@ -348,31 +348,22 @@ import 'ipsec_server_state.dart';
 class IpsecServer extends pulumi.CustomResource {
   /// The client CIDR block. It refers to the CIDR block that is allocated to the virtual interface of the client.
   late final pulumi.Output<String> clientIpPool;
-
   /// The dry run.
   late final pulumi.Output<bool?> dryRun;
-
   /// Specifies whether you want the configuration to immediately take effect.
   late final pulumi.Output<bool?> effectImmediately;
-
   /// The configuration of Phase 1 negotiations. See `ike_config` below.
   late final pulumi.Output<List<Map<String, dynamic>>> ikeConfigs;
-
   /// The configuration of Phase 2 negotiations. See `ipsec_config` below.
   late final pulumi.Output<List<Map<String, dynamic>>> ipsecConfigs;
-
   /// The name of the IPsec server. The name must be `2` to `128` characters in length, and can contain digits, hyphens (-), and underscores (_). It must start with a letter.
   late final pulumi.Output<String?> ipsecServerName;
-
   /// The local CIDR block. It refers to the CIDR block of the virtual private cloud (VPC) that is used to connect with the client. Separate multiple CIDR blocks with commas (,). Example: `192.168.1.0/24,192.168.2.0/24`.
   late final pulumi.Output<String> localSubnet;
-
   /// The pre-shared key. The pre-shared key is used to authenticate the VPN gateway and the client. By default, the system generates a random string that is 16 bits in length. You can also specify the pre-shared key. It can contain at most 100 characters.
   late final pulumi.Output<String> psk;
-
   /// Whether to enable the pre-shared key authentication method. The value is only `true`, which indicates that the pre-shared key authentication method is enabled.
   late final pulumi.Output<bool?> pskEnabled;
-
   /// The ID of the VPN gateway.
   late final pulumi.Output<String> vpnGatewayId;
 
@@ -385,11 +376,11 @@ class IpsecServer extends pulumi.CustomResource {
     IpsecServerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpn/ipsecServer:IpsecServer',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpn/ipsecServer:IpsecServer',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clientIpPool = registerOutput<String>('clientIpPool');
     dryRun = registerOutput<bool?>('dryRun');
     effectImmediately = registerOutput<bool?>('effectImmediately');
@@ -420,11 +411,11 @@ class IpsecServer extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpn/ipsecServer:IpsecServer',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpn/ipsecServer:IpsecServer',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clientIpPool = registerOutput<String>('clientIpPool');
     dryRun = registerOutput<bool?>('dryRun');
     effectImmediately = registerOutput<bool?>('effectImmediately');

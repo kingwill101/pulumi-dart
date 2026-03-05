@@ -7,13 +7,10 @@ import 'user_info_patch.dart';
 class TokenReviewStatusPatch {
   /// Audiences are audience identifiers chosen by the authenticator that are compatible with both the TokenReview and token. An identifier is any identifier in the intersection of the TokenReviewSpec audiences and the token's audiences. A client of the TokenReview API that sets the spec.audiences field should validate that a compatible audience identifier is returned in the status.audiences field to ensure that the TokenReview server is audience aware. If a TokenReview returns an empty status.audience field where status.authenticated is "true", the token is valid against the audience of the Kubernetes API server.
   final pulumi.Input<List<String>>? audiences;
-
   /// Authenticated indicates that the token was associated with a known user.
   final pulumi.Input<bool>? authenticated;
-
   /// Error indicates that the token couldn't be checked
   final pulumi.Input<String>? error;
-
   /// User is the UserInfo associated with the provided token.
   final pulumi.Input<UserInfoPatch>? user;
 
@@ -34,38 +31,17 @@ class TokenReviewStatusPatch {
       'audiences': ?audiences,
       'authenticated': ?authenticated,
       'error': ?error,
-      'user':
-          ?pulumi.Input.mapOptionalInputValue<
-            UserInfoPatch,
-            Map<String, dynamic>
-          >(user, (value) => value.toMap()),
+      'user': ?pulumi.Input.mapOptionalInputValue<UserInfoPatch, Map<String, dynamic>>(user, (value) => value.toMap()),
     };
   }
 
   factory TokenReviewStatusPatch.fromMap(Map<String, dynamic> map) {
     return TokenReviewStatusPatch(
-      audiences: (() {
-        final guardedValue = map['audiences'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      authenticated: (() {
-        final guardedValue = map['authenticated'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      error: (() {
-        final guardedValue = map['error'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      user: (() {
-        final guardedValue = map['user'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          UserInfoPatch.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
+      audiences: (() { final guardedValue = map['audiences']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      authenticated: (() { final guardedValue = map['authenticated']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      error: (() { final guardedValue = map['error']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      user: (() { final guardedValue = map['user']; if (guardedValue == null) return null; return pulumi.Input.fromValue(UserInfoPatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

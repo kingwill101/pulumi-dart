@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by listPrivateCloudAdminCredentials.
 class ListPrivateCloudAdminCredentialsResult {
   /// NSX-T Manager password
   final String nsxtPassword;
-
   /// NSX-T Manager username
   final String nsxtUsername;
-
   /// vCenter admin password
   final String vcenterPassword;
-
   /// vCenter admin username
   final String vcenterUsername;
 
@@ -35,9 +33,7 @@ class ListPrivateCloudAdminCredentialsResult {
     };
   }
 
-  factory ListPrivateCloudAdminCredentialsResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListPrivateCloudAdminCredentialsResult.fromMap(Map<String, dynamic> map) {
     return ListPrivateCloudAdminCredentialsResult(
       nsxtPassword: map['nsxtPassword'] as String,
       nsxtUsername: map['nsxtUsername'] as String,
@@ -46,3 +42,4 @@ class ListPrivateCloudAdminCredentialsResult {
     );
   }
 }
+

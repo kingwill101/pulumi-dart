@@ -10,8 +10,7 @@ enum EventListenerFilterDiscriminator {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown EventListenerFilterDiscriminator value: $value',
-    );
+    throw ArgumentError('Unknown EventListenerFilterDiscriminator value: $value');
   }
 }
+

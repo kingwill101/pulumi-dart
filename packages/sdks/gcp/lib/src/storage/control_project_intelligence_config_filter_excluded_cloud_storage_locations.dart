@@ -13,16 +13,15 @@ class ControlProjectIntelligenceConfigFilterExcludedCloudStorageLocations {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'locations': locations};
+    return <String, dynamic>{
+      'locations': locations,
+    };
   }
 
-  factory ControlProjectIntelligenceConfigFilterExcludedCloudStorageLocations.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ControlProjectIntelligenceConfigFilterExcludedCloudStorageLocations.fromMap(Map<String, dynamic> map) {
     return ControlProjectIntelligenceConfigFilterExcludedCloudStorageLocations(
-      locations: pulumi.Input.fromValue(
-        (map['locations'] as List).cast<String>(),
-      ),
+      locations: pulumi.Input.fromValue((map['locations'] as List).cast<String>()),
     );
   }
 }
+

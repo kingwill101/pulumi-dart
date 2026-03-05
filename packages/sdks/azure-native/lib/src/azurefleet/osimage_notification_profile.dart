@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OSImageNotificationProfile {
   /// Specifies whether the OS Image Scheduled event is enabled or disabled.
   final pulumi.Input<bool>? enable;
-
   /// Length of time a Virtual Machine being reimaged or having its OS upgraded will
   /// have to potentially approve the OS Image Scheduled Event before the event is
   /// auto approved (timed out). The configuration is specified in ISO 8601 format,
@@ -16,7 +15,10 @@ class OSImageNotificationProfile {
   /// Creates a new [OSImageNotificationProfile].
   /// [enable] Specifies whether the OS Image Scheduled event is enabled or disabled.
   /// [notBeforeTimeout] Length of time a Virtual Machine being reimaged or having its OS upgraded will
-  OSImageNotificationProfile({this.enable, this.notBeforeTimeout});
+  OSImageNotificationProfile({
+    this.enable,
+    this.notBeforeTimeout,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,16 +29,9 @@ class OSImageNotificationProfile {
 
   factory OSImageNotificationProfile.fromMap(Map<String, dynamic> map) {
     return OSImageNotificationProfile(
-      enable: (() {
-        final guardedValue = map['enable'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      notBeforeTimeout: (() {
-        final guardedValue = map['notBeforeTimeout'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      enable: (() { final guardedValue = map['enable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      notBeforeTimeout: (() { final guardedValue = map['notBeforeTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

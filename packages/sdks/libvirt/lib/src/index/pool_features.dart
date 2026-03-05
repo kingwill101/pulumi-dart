@@ -9,29 +9,20 @@ class PoolFeatures {
 
   /// Creates a new [PoolFeatures].
   /// [cow] Indicates whether copy-on-write (COW) is enabled for the storage pool's images.
-  PoolFeatures({this.cow});
+  PoolFeatures({
+    this.cow,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cow':
-          ?pulumi.Input.mapOptionalInputValue<
-            PoolFeaturesCow,
-            Map<String, dynamic>
-          >(cow, (value) => value.toMap()),
+      'cow': ?pulumi.Input.mapOptionalInputValue<PoolFeaturesCow, Map<String, dynamic>>(cow, (value) => value.toMap()),
     };
   }
 
   factory PoolFeatures.fromMap(Map<String, dynamic> map) {
     return PoolFeatures(
-      cow: (() {
-        final guardedValue = map['cow'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PoolFeaturesCow.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      cow: (() { final guardedValue = map['cow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PoolFeaturesCow.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

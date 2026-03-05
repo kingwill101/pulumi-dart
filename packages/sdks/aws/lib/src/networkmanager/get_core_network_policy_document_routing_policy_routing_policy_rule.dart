@@ -5,11 +5,7 @@ import 'get_core_network_policy_document_routing_policy_routing_policy_rule_rule
 
 class GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRule {
   /// Defines the match conditions and actions for the rule. Detailed below.
-  final pulumi.Input<
-    GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRuleRuleDefinition
-  >
-  ruleDefinition;
-
+  final pulumi.Input<GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRuleRuleDefinition> ruleDefinition;
   /// Priority number for the rule within the routing policy. Must be between 1 and 9999. Lower numbers are evaluated first.
   final pulumi.Input<int> ruleNumber;
 
@@ -23,25 +19,16 @@ class GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ruleDefinition':
-          pulumi.Input.mapInputValue<
-            GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRuleRuleDefinition,
-            Map<String, dynamic>
-          >(ruleDefinition, (value) => value.toMap()),
+      'ruleDefinition': pulumi.Input.mapInputValue<GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRuleRuleDefinition, Map<String, dynamic>>(ruleDefinition, (value) => value.toMap()),
       'ruleNumber': ruleNumber,
     };
   }
 
-  factory GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRule.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRule.fromMap(Map<String, dynamic> map) {
     return GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRule(
-      ruleDefinition: pulumi.Input.fromValue(
-        GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRuleRuleDefinition.fromMap(
-          (map['ruleDefinition']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      ruleDefinition: pulumi.Input.fromValue(GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRuleRuleDefinition.fromMap((map['ruleDefinition']! as Map).cast<String, dynamic>())),
       ruleNumber: pulumi.Input.fromValue(map['ruleNumber'] as int),
     );
   }
 }
+

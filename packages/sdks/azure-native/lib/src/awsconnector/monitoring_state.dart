@@ -17,3 +17,4 @@ enum MonitoringState {
     throw ArgumentError('Unknown MonitoringState value: $value');
   }
 }
+

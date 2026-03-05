@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getQueues.
 class GetQueuesResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? queueNamePrefix;
-
   /// A list of queue URLs.
   final List<String> queueUrls;
   final String region;
@@ -34,13 +34,10 @@ class GetQueuesResult {
   factory GetQueuesResult.fromMap(Map<String, dynamic> map) {
     return GetQueuesResult(
       id: map['id'] as String,
-      queueNamePrefix: (() {
-        final guardedValue = map['queueNamePrefix'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      queueNamePrefix: (() { final guardedValue = map['queueNamePrefix']; if (guardedValue == null) return null; return guardedValue as String; })(),
       queueUrls: (map['queueUrls'] as List).cast<String>(),
       region: map['region'] as String,
     );
   }
 }
+

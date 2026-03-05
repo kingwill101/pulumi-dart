@@ -473,27 +473,19 @@ import 'system_data_response.dart';
 class AwsCloudTrailDataConnector extends pulumi.CustomResource {
   /// The Aws Role Arn (with CloudTrailReadOnly policy) that is used to access the Aws account.
   late final pulumi.Output<String?> awsRoleArn;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The available data types for the connector.
-  late final pulumi.Output<AwsCloudTrailDataConnectorDataTypesResponse>
-  dataTypes;
-
+  late final pulumi.Output<AwsCloudTrailDataConnectorDataTypesResponse> dataTypes;
   /// Etag of the azure resource
   late final pulumi.Output<String?> etag;
-
   /// The kind of the data connector
   /// Expected value is 'AmazonWebServicesCloudTrail'.
   late final pulumi.Output<String> kind;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -506,36 +498,18 @@ class AwsCloudTrailDataConnector extends pulumi.CustomResource {
     AwsCloudTrailDataConnectorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:securityinsights:AwsCloudTrailDataConnector',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:securityinsights:AwsCloudTrailDataConnector',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     awsRoleArn = registerOutput<String?>('awsRoleArn');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    dataTypes = registerOutput<AwsCloudTrailDataConnectorDataTypesResponse>(
-      'dataTypes',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AwsCloudTrailDataConnectorDataTypesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    dataTypes = registerOutput<AwsCloudTrailDataConnectorDataTypesResponse>('dataTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AwsCloudTrailDataConnectorDataTypesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String?>('etag');
     kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

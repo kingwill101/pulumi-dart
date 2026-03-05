@@ -17,3 +17,4 @@ enum VolumeDefinitionType {
     throw ArgumentError('Unknown VolumeDefinitionType value: $value');
   }
 }
+

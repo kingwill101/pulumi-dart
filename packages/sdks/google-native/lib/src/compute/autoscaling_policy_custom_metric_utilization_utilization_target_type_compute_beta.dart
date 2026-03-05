@@ -4,22 +4,16 @@ enum AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypeComputeBeta {
   deltaPerSecond("DELTA_PER_SECOND"),
   gauge("GAUGE");
 
-  const AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypeComputeBeta(
-    this.wireValue,
-  );
+  const AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypeComputeBeta(this.wireValue);
   final String wireValue;
 
-  static AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypeComputeBeta
-  fromValue(String value) {
-    for (final item
-        in AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypeComputeBeta
-            .values) {
+  static AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypeComputeBeta fromValue(String value) {
+    for (final item in AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypeComputeBeta.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypeComputeBeta value: $value',
-    );
+    throw ArgumentError('Unknown AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypeComputeBeta value: $value');
   }
 }
+

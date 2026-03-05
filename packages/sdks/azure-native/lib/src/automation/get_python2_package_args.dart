@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPython2PackageArgs {
   /// The name of the automation account.
   final pulumi.Input<String> automationAccountName;
-
   /// The python package name.
   final pulumi.Input<String> packageName;
-
   /// Name of an Azure Resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,13 +34,10 @@ class GetPython2PackageArgs {
 
   factory GetPython2PackageArgs.fromMap(Map<String, dynamic> map) {
     return GetPython2PackageArgs(
-      automationAccountName: pulumi.Input.fromValue(
-        map['automationAccountName'] as String,
-      ),
+      automationAccountName: pulumi.Input.fromValue(map['automationAccountName'] as String),
       packageName: pulumi.Input.fromValue(map['packageName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

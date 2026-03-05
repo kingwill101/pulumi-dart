@@ -11,22 +11,16 @@ import 'sku.dart';
 class SharedCommitmentPlanArgs {
   /// The name of the commitmentPlan associated with the Cognitive Services Account
   final pulumi.Input<String>? commitmentPlanName;
-
   /// The Kind of the resource.
   final pulumi.Input<String>? kind;
-
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
-
   /// Properties of Cognitive Services account commitment plan.
   final pulumi.Input<CommitmentPlanProperties>? properties;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The resource model definition representing SKU
   final pulumi.Input<Sku>? sku;
-
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -53,63 +47,23 @@ class SharedCommitmentPlanArgs {
       'commitmentPlanName': ?commitmentPlanName,
       'kind': ?kind,
       'location': ?location,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            CommitmentPlanProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<CommitmentPlanProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
-      'sku': ?pulumi.Input.mapOptionalInputValue<Sku, Map<String, dynamic>>(
-        sku,
-        (value) => value.toMap(),
-      ),
+      'sku': ?pulumi.Input.mapOptionalInputValue<Sku, Map<String, dynamic>>(sku, (value) => value.toMap()),
       'tags': ?tags,
     };
   }
 
   factory SharedCommitmentPlanArgs.fromMap(Map<String, dynamic> map) {
     return SharedCommitmentPlanArgs(
-      commitmentPlanName: (() {
-        final guardedValue = map['commitmentPlanName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CommitmentPlanProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      sku: (() {
-        final guardedValue = map['sku'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          Sku.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      commitmentPlanName: (() { final guardedValue = map['commitmentPlanName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CommitmentPlanProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Sku.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

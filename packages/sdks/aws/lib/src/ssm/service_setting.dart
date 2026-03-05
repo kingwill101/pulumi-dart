@@ -111,16 +111,12 @@ import 'service_setting_state.dart';
 class ServiceSetting extends pulumi.CustomResource {
   /// ARN of the service setting.
   late final pulumi.Output<String> arn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// ID of the service setting. Valid values are shown in the [AWS documentation](https://docs.aws.amazon.com/systems-manager/latest/APIReference/API_GetServiceSetting.html#API_GetServiceSetting_RequestSyntax).
   late final pulumi.Output<String> settingId;
-
   /// Value of the service setting.
   late final pulumi.Output<String> settingValue;
-
   /// Status of the service setting. Value can be `Default`, `Customized` or `PendingUpdate`.
   late final pulumi.Output<String> status;
 
@@ -133,11 +129,11 @@ class ServiceSetting extends pulumi.CustomResource {
     ServiceSettingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ssm/serviceSetting:ServiceSetting',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ssm/serviceSetting:ServiceSetting',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     region = registerOutput<String>('region');
     settingId = registerOutput<String>('settingId');
@@ -163,11 +159,11 @@ class ServiceSetting extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ssm/serviceSetting:ServiceSetting',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ssm/serviceSetting:ServiceSetting',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     region = registerOutput<String>('region');
     settingId = registerOutput<String>('settingId');

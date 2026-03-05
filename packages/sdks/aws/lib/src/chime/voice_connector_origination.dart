@@ -237,13 +237,10 @@ import 'voice_connector_origination_state.dart';
 class VoiceConnectorOrigination extends pulumi.CustomResource {
   /// When origination settings are disabled, inbound calls are not enabled for your Amazon Chime Voice Connector.
   late final pulumi.Output<bool?> disabled;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Set of call distribution properties defined for your SIP hosts. See route below for more details. Minimum of 1. Maximum of 20.
   late final pulumi.Output<List<Map<String, dynamic>>> routes;
-
   /// The Amazon Chime Voice Connector ID.
   late final pulumi.Output<String> voiceConnectorId;
 
@@ -256,11 +253,11 @@ class VoiceConnectorOrigination extends pulumi.CustomResource {
     VoiceConnectorOriginationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:chime/voiceConnectorOrigination:VoiceConnectorOrigination',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:chime/voiceConnectorOrigination:VoiceConnectorOrigination',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     disabled = registerOutput<bool?>('disabled');
     region = registerOutput<String>('region');
     routes = registerOutput<List<Map<String, dynamic>>>('routes');
@@ -285,11 +282,11 @@ class VoiceConnectorOrigination extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:chime/voiceConnectorOrigination:VoiceConnectorOrigination',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:chime/voiceConnectorOrigination:VoiceConnectorOrigination',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     disabled = registerOutput<bool?>('disabled');
     region = registerOutput<String>('region');
     routes = registerOutput<List<Map<String, dynamic>>>('routes');

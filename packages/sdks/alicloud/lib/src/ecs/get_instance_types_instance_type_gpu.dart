@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceTypesInstanceTypeGpu {
   /// The number of local storage devices that an instance has been attached to.
   final pulumi.Input<String> amount;
-
   /// The category of local storage that an instance has been attached to.
   final pulumi.Input<String> category;
 
@@ -18,7 +17,10 @@ class GetInstanceTypesInstanceTypeGpu {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'amount': amount, 'category': category};
+    return <String, dynamic>{
+      'amount': amount,
+      'category': category,
+    };
   }
 
   factory GetInstanceTypesInstanceTypeGpu.fromMap(Map<String, dynamic> map) {
@@ -28,3 +30,4 @@ class GetInstanceTypesInstanceTypeGpu {
     );
   }
 }
+

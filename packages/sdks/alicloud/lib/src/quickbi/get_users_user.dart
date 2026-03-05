@@ -5,31 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetUsersUser {
   /// Alibaba Cloud account ID.
   final pulumi.Input<String> accountId;
-
   /// An Alibaba Cloud account, Alibaba Cloud name.
   final pulumi.Input<String> accountName;
-
   /// Whether it is the administrator. Valid values: `true` and `false`.
   final pulumi.Input<bool> adminUser;
-
   /// Whether this is a permissions administrator. Valid values: `true` and `false`.
   final pulumi.Input<bool> authAdminUser;
-
   /// The email of the user.
   final pulumi.Input<String> email;
-
   /// The ID of the User.
   final pulumi.Input<String> id;
-
   /// The nickname of the user.
   final pulumi.Input<String> nickName;
-
   /// The phone number of the user.
   final pulumi.Input<String> phone;
-
   /// The ID of the User.
   final pulumi.Input<String> userId;
-
   /// The members of the organization of the type of role separately. Valid values: `Analyst`, `Developer` and `Visitor`.
   final pulumi.Input<String> userType;
 
@@ -87,3 +78,4 @@ class GetUsersUser {
     );
   }
 }
+

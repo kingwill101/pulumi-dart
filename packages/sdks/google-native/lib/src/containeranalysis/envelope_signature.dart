@@ -9,24 +9,23 @@ class EnvelopeSignature {
   /// Creates a new [EnvelopeSignature].
   /// [keyid] Optional.
   /// [sig] Optional.
-  EnvelopeSignature({this.keyid, this.sig});
+  EnvelopeSignature({
+    this.keyid,
+    this.sig,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'keyid': ?keyid, 'sig': ?sig};
+    return <String, dynamic>{
+      'keyid': ?keyid,
+      'sig': ?sig,
+    };
   }
 
   factory EnvelopeSignature.fromMap(Map<String, dynamic> map) {
     return EnvelopeSignature(
-      keyid: (() {
-        final guardedValue = map['keyid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sig: (() {
-        final guardedValue = map['sig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      keyid: (() { final guardedValue = map['keyid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sig: (() { final guardedValue = map['sig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

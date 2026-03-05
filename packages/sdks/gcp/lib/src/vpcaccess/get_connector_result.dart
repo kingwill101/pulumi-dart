@@ -6,7 +6,6 @@ import 'get_connector_subnet.dart';
 /// Result data returned by getConnector.
 class GetConnectorResult {
   final List<String> connectedProjects;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String ipCidrRange;
@@ -73,11 +72,7 @@ class GetConnectorResult {
       'region': ?region,
       'selfLink': selfLink,
       'state': state,
-      'subnets':
-          pulumi.Input.encodeList<GetConnectorSubnet, Map<String, dynamic>>(
-            subnets,
-            (value) => value.toMap(),
-          ),
+      'subnets': pulumi.Input.encodeList<GetConnectorSubnet, Map<String, dynamic>>(subnets, (value) => value.toMap()),
     };
   }
 
@@ -93,23 +88,12 @@ class GetConnectorResult {
       minThroughput: map['minThroughput'] as int,
       name: map['name'] as String,
       network: map['network'] as String,
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
       selfLink: map['selfLink'] as String,
       state: map['state'] as String,
-      subnets: pulumi.Input.decodeList<GetConnectorSubnet>(
-        map['subnets']!,
-        (value) =>
-            GetConnectorSubnet.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      subnets: pulumi.Input.decodeList<GetConnectorSubnet>(map['subnets']!, (value) => GetConnectorSubnet.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

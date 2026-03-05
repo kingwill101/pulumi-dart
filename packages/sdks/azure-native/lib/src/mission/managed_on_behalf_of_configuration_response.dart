@@ -10,41 +10,20 @@ class ManagedOnBehalfOfConfigurationResponse {
 
   /// Creates a new [ManagedOnBehalfOfConfigurationResponse].
   /// [moboBrokerResources] Managed-On-Behalf-Of broker resources
-  ManagedOnBehalfOfConfigurationResponse({this.moboBrokerResources});
+  ManagedOnBehalfOfConfigurationResponse({
+    this.moboBrokerResources,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'moboBrokerResources':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<MoboBrokerResourceResponse>,
-            List<Map<String, dynamic>>
-          >(
-            moboBrokerResources,
-            (value) =>
-                pulumi.Input.encodeList<
-                  MoboBrokerResourceResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'moboBrokerResources': ?pulumi.Input.mapOptionalInputValue<List<MoboBrokerResourceResponse>, List<Map<String, dynamic>>>(moboBrokerResources, (value) => pulumi.Input.encodeList<MoboBrokerResourceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory ManagedOnBehalfOfConfigurationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ManagedOnBehalfOfConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ManagedOnBehalfOfConfigurationResponse(
-      moboBrokerResources: (() {
-        final guardedValue = map['moboBrokerResources'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<MoboBrokerResourceResponse>(
-            guardedValue,
-            (value) => MoboBrokerResourceResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      moboBrokerResources: (() { final guardedValue = map['moboBrokerResources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<MoboBrokerResourceResponse>(guardedValue, (value) => MoboBrokerResourceResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

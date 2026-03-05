@@ -14,115 +14,85 @@ class Node extends pulumi.CustomResource {
   ///
   /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<String?> billingCycle;
-
   /// Classification
   ///
   /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<String?> classify;
-
   /// Cluster id
   late final pulumi.Output<String> clusterId;
-
   /// Node Model
   late final pulumi.Output<String> computingServer;
-
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
-
   /// The data disk of the cloud disk to be attached to the node. See `data_disk` below.
   late final pulumi.Output<List<Map<String, dynamic>>> dataDisks;
-
   /// Offer Information
   ///
   /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<String?> discountLevel;
-
   /// Host name
   late final pulumi.Output<String> hostname;
-
   /// Cluster Number
   late final pulumi.Output<String?> hpnZone;
-
   /// Whether to buy PAI. default value `false`.
   late final pulumi.Output<bool?> installPai;
-
   /// IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ip_allocation_policy` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> ipAllocationPolicies;
-
   /// Login Password
   late final pulumi.Output<String?> loginPassword;
-
   /// Model
   late final pulumi.Output<String> machineType;
-
   /// node group id
   late final pulumi.Output<String> nodeGroupId;
-
   /// node type
   late final pulumi.Output<String> nodeType;
-
   /// Down payment ratio
   ///
   /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<String?> paymentRatio;
-
   /// The payment method of the node. Value range: Subscription: fixed fee installment; PayAsYouGo: pay by volume.
   /// The default is Subscription.
   late final pulumi.Output<String> paymentType;
-
   /// Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
   ///
   /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<int?> period;
-
   /// Form
   ///
   /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<String?> productForm;
-
   /// The region ID of the resource
   late final pulumi.Output<String> regionId;
-
   /// Automatic renewal period, in months.
   ///
   /// &gt; **NOTE:**  When setting `RenewalStatus` to `AutoRenewal`, it must be set.
   late final pulumi.Output<int?> renewPeriod;
-
   /// Automatic renewal status, value:
   /// - AutoRenewal: automatic renewal.
   /// - ManualRenewal: manual renewal.
   ///
   /// The default ManualRenewal.
   late final pulumi.Output<String?> renewalStatus;
-
   /// The ID of the resource group
   late final pulumi.Output<String> resourceGroupId;
-
   /// Architecture
   ///
   /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<String?> serverArch;
-
   /// Number of stages
   ///
   /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<String?> stageNum;
-
   /// The status of the resource
   late final pulumi.Output<String> status;
-
   /// The tag of the resource
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Custom Data
   late final pulumi.Output<String> userData;
-
   /// VPC ID
   late final pulumi.Output<String> vpcId;
-
   /// Switch ID
   late final pulumi.Output<String> vswitchId;
-
   /// Availability Zone
   late final pulumi.Output<String?> zone;
 
@@ -130,13 +100,16 @@ class Node extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Node]. {@macro pulumi_eflo_node_node_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Node(String name, {NodeArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:eflo/node:Node',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Node(
+    String name, {
+    NodeArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:eflo/node:Node',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     billingCycle = registerOutput<String?>('billingCycle');
     classify = registerOutput<String?>('classify');
     clusterId = registerOutput<String>('clusterId');
@@ -147,9 +120,7 @@ class Node extends pulumi.CustomResource {
     hostname = registerOutput<String>('hostname');
     hpnZone = registerOutput<String?>('hpnZone');
     installPai = registerOutput<bool?>('installPai');
-    ipAllocationPolicies = registerOutput<List<Map<String, dynamic>>?>(
-      'ipAllocationPolicies',
-    );
+    ipAllocationPolicies = registerOutput<List<Map<String, dynamic>>?>('ipAllocationPolicies');
     loginPassword = registerOutput<String?>('loginPassword');
     machineType = registerOutput<String>('machineType');
     nodeGroupId = registerOutput<String>('nodeGroupId');
@@ -173,7 +144,11 @@ class Node extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Node] resource's state with the given [name] and [id].
-  static Node get(String name, pulumi.Input<String> id, {NodeState? state}) {
+  static Node get(
+    String name,
+    pulumi.Input<String> id, {
+    NodeState? state,
+  }) {
     return Node._get(
       name,
       state: state?.toMap(),
@@ -186,11 +161,11 @@ class Node extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:eflo/node:Node',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:eflo/node:Node',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     billingCycle = registerOutput<String?>('billingCycle');
     classify = registerOutput<String?>('classify');
     clusterId = registerOutput<String>('clusterId');
@@ -201,9 +176,7 @@ class Node extends pulumi.CustomResource {
     hostname = registerOutput<String>('hostname');
     hpnZone = registerOutput<String?>('hpnZone');
     installPai = registerOutput<bool?>('installPai');
-    ipAllocationPolicies = registerOutput<List<Map<String, dynamic>>?>(
-      'ipAllocationPolicies',
-    );
+    ipAllocationPolicies = registerOutput<List<Map<String, dynamic>>?>('ipAllocationPolicies');
     loginPassword = registerOutput<String?>('loginPassword');
     machineType = registerOutput<String>('machineType');
     nodeGroupId = registerOutput<String>('nodeGroupId');

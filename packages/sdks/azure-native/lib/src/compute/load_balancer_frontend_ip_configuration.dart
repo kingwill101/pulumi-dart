@@ -7,7 +7,6 @@ import 'load_balancer_frontend_ip_configuration_properties.dart';
 class LoadBalancerFrontendIpConfiguration {
   /// The name of the resource that is unique within the set of frontend IP configurations used by the load balancer. This name can be used to access the resource.
   final pulumi.Input<String> name;
-
   /// Properties of load balancer frontend ip configuration.
   final pulumi.Input<LoadBalancerFrontendIpConfigurationProperties> properties;
 
@@ -22,24 +21,15 @@ class LoadBalancerFrontendIpConfiguration {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'properties':
-          pulumi.Input.mapInputValue<
-            LoadBalancerFrontendIpConfigurationProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': pulumi.Input.mapInputValue<LoadBalancerFrontendIpConfigurationProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
     };
   }
 
-  factory LoadBalancerFrontendIpConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LoadBalancerFrontendIpConfiguration.fromMap(Map<String, dynamic> map) {
     return LoadBalancerFrontendIpConfiguration(
       name: pulumi.Input.fromValue(map['name'] as String),
-      properties: pulumi.Input.fromValue(
-        LoadBalancerFrontendIpConfigurationProperties.fromMap(
-          (map['properties']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      properties: pulumi.Input.fromValue(LoadBalancerFrontendIpConfigurationProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

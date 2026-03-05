@@ -13,8 +13,7 @@ enum RuntimeEnvironmentIpConfiguration {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown RuntimeEnvironmentIpConfiguration value: $value',
-    );
+    throw ArgumentError('Unknown RuntimeEnvironmentIpConfiguration value: $value');
   }
 }
+

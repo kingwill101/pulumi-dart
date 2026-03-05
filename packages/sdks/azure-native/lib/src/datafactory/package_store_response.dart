@@ -7,7 +7,6 @@ import 'entity_reference_response.dart';
 class PackageStoreResponse {
   /// The name of the package store
   final pulumi.Input<String> name;
-
   /// The package store linked service reference.
   final pulumi.Input<EntityReferenceResponse> packageStoreLinkedService;
 
@@ -22,22 +21,15 @@ class PackageStoreResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'packageStoreLinkedService':
-          pulumi.Input.mapInputValue<
-            EntityReferenceResponse,
-            Map<String, dynamic>
-          >(packageStoreLinkedService, (value) => value.toMap()),
+      'packageStoreLinkedService': pulumi.Input.mapInputValue<EntityReferenceResponse, Map<String, dynamic>>(packageStoreLinkedService, (value) => value.toMap()),
     };
   }
 
   factory PackageStoreResponse.fromMap(Map<String, dynamic> map) {
     return PackageStoreResponse(
       name: pulumi.Input.fromValue(map['name'] as String),
-      packageStoreLinkedService: pulumi.Input.fromValue(
-        EntityReferenceResponse.fromMap(
-          (map['packageStoreLinkedService']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      packageStoreLinkedService: pulumi.Input.fromValue(EntityReferenceResponse.fromMap((map['packageStoreLinkedService']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

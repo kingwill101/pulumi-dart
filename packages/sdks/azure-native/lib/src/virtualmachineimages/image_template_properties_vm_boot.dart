@@ -10,27 +10,20 @@ class ImageTemplatePropertiesVmBoot {
 
   /// Creates a new [ImageTemplatePropertiesVmBoot].
   /// [state] Enabling this field will improve VM boot time by optimizing the final customized image output.
-  ImageTemplatePropertiesVmBoot({this.state});
+  ImageTemplatePropertiesVmBoot({
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'state':
-          ?pulumi.Input.mapOptionalInputValue<VMBootOptimizationState, String>(
-            state,
-            (value) => value.wireValue,
-          ),
+      'state': ?pulumi.Input.mapOptionalInputValue<VMBootOptimizationState, String>(state, (value) => value.wireValue),
     };
   }
 
   factory ImageTemplatePropertiesVmBoot.fromMap(Map<String, dynamic> map) {
     return ImageTemplatePropertiesVmBoot(
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          VMBootOptimizationState.fromValue(guardedValue as String),
-        );
-      })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VMBootOptimizationState.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

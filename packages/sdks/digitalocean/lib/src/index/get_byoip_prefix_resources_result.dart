@@ -8,7 +8,6 @@ class GetByoipPrefixResourcesResult {
   /// A list of IP addresses allocated from the BYOIP prefix. Each address has the following attributes:
   final List<GetByoipPrefixResourcesAddress> addresses;
   final String byoipPrefixUuid;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
 
@@ -24,11 +23,7 @@ class GetByoipPrefixResourcesResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'addresses':
-          pulumi.Input.encodeList<
-            GetByoipPrefixResourcesAddress,
-            Map<String, dynamic>
-          >(addresses, (value) => value.toMap()),
+      'addresses': pulumi.Input.encodeList<GetByoipPrefixResourcesAddress, Map<String, dynamic>>(addresses, (value) => value.toMap()),
       'byoipPrefixUuid': byoipPrefixUuid,
       'id': id,
     };
@@ -36,14 +31,10 @@ class GetByoipPrefixResourcesResult {
 
   factory GetByoipPrefixResourcesResult.fromMap(Map<String, dynamic> map) {
     return GetByoipPrefixResourcesResult(
-      addresses: pulumi.Input.decodeList<GetByoipPrefixResourcesAddress>(
-        map['addresses']!,
-        (value) => GetByoipPrefixResourcesAddress.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      addresses: pulumi.Input.decodeList<GetByoipPrefixResourcesAddress>(map['addresses']!, (value) => GetByoipPrefixResourcesAddress.fromMap((value as Map).cast<String, dynamic>())),
       byoipPrefixUuid: map['byoipPrefixUuid'] as String,
       id: map['id'] as String,
     );
   }
 }
+

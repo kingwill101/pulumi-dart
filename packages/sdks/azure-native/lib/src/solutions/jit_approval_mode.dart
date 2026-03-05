@@ -16,3 +16,4 @@ enum JitApprovalMode {
     throw ArgumentError('Unknown JitApprovalMode value: $value');
   }
 }
+

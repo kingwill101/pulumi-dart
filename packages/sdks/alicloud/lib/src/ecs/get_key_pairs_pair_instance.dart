@@ -7,25 +7,19 @@ class GetKeyPairsPairInstance {
   final pulumi.Input<String> availabilityZone;
   final pulumi.Input<String> description;
   final pulumi.Input<String> imageId;
-
   /// The ID of the ECS instance.
   final pulumi.Input<String> instanceId;
-
   /// The name of the ECS instance.
   final pulumi.Input<String> instanceName;
   final pulumi.Input<String> instanceType;
-
   /// Name of the key pair.
   final pulumi.Input<String> keyName;
-
   /// The private IP address of the ECS instance.
   final pulumi.Input<String> privateIp;
-
   /// The public IP address or EIP of the ECS instance.
   final pulumi.Input<String> publicIp;
   final pulumi.Input<String> regionId;
   final pulumi.Input<String> status;
-
   /// The ID of the vSwitch attached to the ECS instance.
   final pulumi.Input<String> vswitchId;
 
@@ -76,9 +70,7 @@ class GetKeyPairsPairInstance {
 
   factory GetKeyPairsPairInstance.fromMap(Map<String, dynamic> map) {
     return GetKeyPairsPairInstance(
-      availabilityZone: pulumi.Input.fromValue(
-        map['availabilityZone'] as String,
-      ),
+      availabilityZone: pulumi.Input.fromValue(map['availabilityZone'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
       imageId: pulumi.Input.fromValue(map['imageId'] as String),
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
@@ -93,3 +85,4 @@ class GetKeyPairsPairInstance {
     );
   }
 }
+

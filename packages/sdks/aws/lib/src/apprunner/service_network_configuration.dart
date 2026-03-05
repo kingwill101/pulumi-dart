@@ -6,13 +6,9 @@ import 'service_network_configuration_ingress_configuration.dart';
 
 class ServiceNetworkConfiguration {
   /// Network configuration settings for outbound message traffic. See Egress Configuration below for more details.
-  final pulumi.Input<ServiceNetworkConfigurationEgressConfiguration>?
-  egressConfiguration;
-
+  final pulumi.Input<ServiceNetworkConfigurationEgressConfiguration>? egressConfiguration;
   /// Network configuration settings for inbound network traffic. See Ingress Configuration below for more details.
-  final pulumi.Input<ServiceNetworkConfigurationIngressConfiguration>?
-  ingressConfiguration;
-
+  final pulumi.Input<ServiceNetworkConfigurationIngressConfiguration>? ingressConfiguration;
   /// App Runner provides you with the option to choose between Internet Protocol version 4 (IPv4) and dual stack (IPv4 and IPv6) for your incoming public network configuration. Valid values: `IPV4`, `DUAL_STACK`. Default: `IPV4`.
   final pulumi.Input<String>? ipAddressType;
 
@@ -28,45 +24,18 @@ class ServiceNetworkConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'egressConfiguration':
-          ?pulumi.Input.mapOptionalInputValue<
-            ServiceNetworkConfigurationEgressConfiguration,
-            Map<String, dynamic>
-          >(egressConfiguration, (value) => value.toMap()),
-      'ingressConfiguration':
-          ?pulumi.Input.mapOptionalInputValue<
-            ServiceNetworkConfigurationIngressConfiguration,
-            Map<String, dynamic>
-          >(ingressConfiguration, (value) => value.toMap()),
+      'egressConfiguration': ?pulumi.Input.mapOptionalInputValue<ServiceNetworkConfigurationEgressConfiguration, Map<String, dynamic>>(egressConfiguration, (value) => value.toMap()),
+      'ingressConfiguration': ?pulumi.Input.mapOptionalInputValue<ServiceNetworkConfigurationIngressConfiguration, Map<String, dynamic>>(ingressConfiguration, (value) => value.toMap()),
       'ipAddressType': ?ipAddressType,
     };
   }
 
   factory ServiceNetworkConfiguration.fromMap(Map<String, dynamic> map) {
     return ServiceNetworkConfiguration(
-      egressConfiguration: (() {
-        final guardedValue = map['egressConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ServiceNetworkConfigurationEgressConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      ingressConfiguration: (() {
-        final guardedValue = map['ingressConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ServiceNetworkConfigurationIngressConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      ipAddressType: (() {
-        final guardedValue = map['ipAddressType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      egressConfiguration: (() { final guardedValue = map['egressConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceNetworkConfigurationEgressConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      ingressConfiguration: (() { final guardedValue = map['ingressConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceNetworkConfigurationIngressConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      ipAddressType: (() { final guardedValue = map['ipAddressType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

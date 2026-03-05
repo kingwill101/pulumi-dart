@@ -344,34 +344,24 @@ import 'reference_input_blob_state.dart';
 class ReferenceInputBlob extends pulumi.CustomResource {
   /// The authentication mode for the Stream Analytics Reference Input. Possible values are `Msi` and `ConnectionString`. Defaults to `ConnectionString`.
   late final pulumi.Output<String?> authenticationMode;
-
   /// The date format. Wherever `{date}` appears in `path_pattern`, the value of this property is used as the date format instead.
   late final pulumi.Output<String> dateFormat;
-
   /// The name of the Reference Input Blob. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The blob path pattern. Not a regular expression. It represents a pattern against which blob names will be matched to determine whether or not they should be included as input or output to the job.
   late final pulumi.Output<String> pathPattern;
-
   /// The name of the Resource Group where the Stream Analytics Job exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A `serialization` block as defined below.
   late final pulumi.Output<ReferenceInputBlobSerialization> serialization;
-
   /// The Access Key which should be used to connect to this Storage Account. Required if `authentication_mode` is `ConnectionString`.
   late final pulumi.Output<String?> storageAccountKey;
-
   /// The name of the Storage Account that has the blob container with reference data.
   late final pulumi.Output<String> storageAccountName;
-
   /// The name of the Container within the Storage Account.
   late final pulumi.Output<String> storageContainerName;
-
   /// The name of the Stream Analytics Job. Changing this forces a new resource to be created.
   late final pulumi.Output<String> streamAnalyticsJobName;
-
   /// The time format. Wherever `{time}` appears in `path_pattern`, the value of this property is used as the time format instead.
   late final pulumi.Output<String> timeFormat;
 
@@ -384,26 +374,17 @@ class ReferenceInputBlob extends pulumi.CustomResource {
     ReferenceInputBlobArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:streamanalytics/referenceInputBlob:ReferenceInputBlob',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:streamanalytics/referenceInputBlob:ReferenceInputBlob',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     authenticationMode = registerOutput<String?>('authenticationMode');
     dateFormat = registerOutput<String>('dateFormat');
     this.name = registerOutput<String>('name');
     pathPattern = registerOutput<String>('pathPattern');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    serialization = registerOutput<ReferenceInputBlobSerialization>(
-      'serialization',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ReferenceInputBlobSerialization.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    serialization = registerOutput<ReferenceInputBlobSerialization>('serialization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReferenceInputBlobSerialization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     storageAccountKey = registerOutput<String?>('storageAccountKey');
     storageAccountName = registerOutput<String>('storageAccountName');
     storageContainerName = registerOutput<String>('storageContainerName');
@@ -429,26 +410,17 @@ class ReferenceInputBlob extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:streamanalytics/referenceInputBlob:ReferenceInputBlob',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:streamanalytics/referenceInputBlob:ReferenceInputBlob',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     authenticationMode = registerOutput<String?>('authenticationMode');
     dateFormat = registerOutput<String>('dateFormat');
     this.name = registerOutput<String>('name');
     pathPattern = registerOutput<String>('pathPattern');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    serialization = registerOutput<ReferenceInputBlobSerialization>(
-      'serialization',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ReferenceInputBlobSerialization.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    serialization = registerOutput<ReferenceInputBlobSerialization>('serialization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReferenceInputBlobSerialization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     storageAccountKey = registerOutput<String?>('storageAccountKey');
     storageAccountName = registerOutput<String>('storageAccountName');
     storageContainerName = registerOutput<String>('storageContainerName');

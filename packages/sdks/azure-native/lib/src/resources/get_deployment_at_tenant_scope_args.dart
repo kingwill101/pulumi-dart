@@ -12,10 +12,14 @@ class GetDeploymentAtTenantScopeArgs {
 
   /// Creates a new [GetDeploymentAtTenantScopeArgs].
   /// [deploymentName] The name of the deployment.
-  GetDeploymentAtTenantScopeArgs({required this.deploymentName});
+  GetDeploymentAtTenantScopeArgs({
+    required this.deploymentName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'deploymentName': deploymentName};
+    return <String, dynamic>{
+      'deploymentName': deploymentName,
+    };
   }
 
   factory GetDeploymentAtTenantScopeArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetDeploymentAtTenantScopeArgs {
     );
   }
 }
+

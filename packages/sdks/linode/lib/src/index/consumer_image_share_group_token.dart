@@ -102,31 +102,22 @@ import 'consumer_image_share_group_token_state.dart';
 class ConsumerImageShareGroupToken extends pulumi.CustomResource {
   /// When the token was created.
   late final pulumi.Output<String> created;
-
   /// When the token will expire.
   late final pulumi.Output<String> expiry;
-
   /// A label for the token.
   late final pulumi.Output<String?> label;
-
   /// The label of the Image Share Group that the token is for.
   late final pulumi.Output<String> sharegroupLabel;
-
   /// The UUID of the Image Share Group that the token is for.
   late final pulumi.Output<String> sharegroupUuid;
-
   /// The status of the token.
   late final pulumi.Output<String> status;
-
   /// The one-time-use token to be provided to the Image Share Group Producer.
   late final pulumi.Output<String> token;
-
   /// The UUID of the token.
   late final pulumi.Output<String> tokenUuid;
-
   /// When the token was last updated.
   late final pulumi.Output<String> updated;
-
   /// The UUID of the Image Share Group for which to create a token.
   late final pulumi.Output<String> validForSharegroupUuid;
 
@@ -139,11 +130,11 @@ class ConsumerImageShareGroupToken extends pulumi.CustomResource {
     ConsumerImageShareGroupTokenArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'linode:index/consumerImageShareGroupToken:ConsumerImageShareGroupToken',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'linode:index/consumerImageShareGroupToken:ConsumerImageShareGroupToken',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     created = registerOutput<String>('created');
     expiry = registerOutput<String>('expiry');
     label = registerOutput<String?>('label');
@@ -174,11 +165,11 @@ class ConsumerImageShareGroupToken extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'linode:index/consumerImageShareGroupToken:ConsumerImageShareGroupToken',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'linode:index/consumerImageShareGroupToken:ConsumerImageShareGroupToken',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     created = registerOutput<String>('created');
     expiry = registerOutput<String>('expiry');
     label = registerOutput<String?>('label');

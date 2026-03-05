@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NspLoggingConfigurationProperties {
   /// The log categories to enable in the NSP logging configuration.
   final pulumi.Input<List<String>>? enabledLogCategories;
-
   /// The version of the NSP logging configuration.
   final pulumi.Input<String>? version;
 
   /// Creates a new [NspLoggingConfigurationProperties].
   /// [enabledLogCategories] The log categories to enable in the NSP logging configuration.
   /// [version] The version of the NSP logging configuration.
-  NspLoggingConfigurationProperties({this.enabledLogCategories, this.version});
+  NspLoggingConfigurationProperties({
+    this.enabledLogCategories,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class NspLoggingConfigurationProperties {
 
   factory NspLoggingConfigurationProperties.fromMap(Map<String, dynamic> map) {
     return NspLoggingConfigurationProperties(
-      enabledLogCategories: (() {
-        final guardedValue = map['enabledLogCategories'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      enabledLogCategories: (() { final guardedValue = map['enabledLogCategories']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

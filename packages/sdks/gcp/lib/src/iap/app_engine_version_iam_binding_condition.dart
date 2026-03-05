@@ -9,10 +9,8 @@ class AppEngineVersionIamBindingCondition {
   /// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
   /// consider it to be an entirely different resource and will treat it as such.
   final pulumi.Input<String>? description;
-
   /// Textual representation of an expression in Common Expression Language syntax.
   final pulumi.Input<String> expression;
-
   /// A title for the expression, i.e. a short string describing its purpose.
   final pulumi.Input<String> title;
 
@@ -34,17 +32,12 @@ class AppEngineVersionIamBindingCondition {
     };
   }
 
-  factory AppEngineVersionIamBindingCondition.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppEngineVersionIamBindingCondition.fromMap(Map<String, dynamic> map) {
     return AppEngineVersionIamBindingCondition(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       expression: pulumi.Input.fromValue(map['expression'] as String),
       title: pulumi.Input.fromValue(map['title'] as String),
     );
   }
 }
+

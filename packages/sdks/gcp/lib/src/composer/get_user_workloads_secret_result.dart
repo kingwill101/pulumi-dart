@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getUserWorkloadsSecret.
 class GetUserWorkloadsSecretResult {
   final Map<String, String> data;
   final String environment;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
@@ -44,16 +44,9 @@ class GetUserWorkloadsSecretResult {
       environment: map['environment'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

@@ -9,7 +9,10 @@ class AdditionalAuthorizationResponse {
   /// Creates a new [AdditionalAuthorizationResponse].
   /// [applicationId] Optional.
   /// [roleDefinitionId] Optional.
-  AdditionalAuthorizationResponse({this.applicationId, this.roleDefinitionId});
+  AdditionalAuthorizationResponse({
+    this.applicationId,
+    this.roleDefinitionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -20,16 +23,9 @@ class AdditionalAuthorizationResponse {
 
   factory AdditionalAuthorizationResponse.fromMap(Map<String, dynamic> map) {
     return AdditionalAuthorizationResponse(
-      applicationId: (() {
-        final guardedValue = map['applicationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      roleDefinitionId: (() {
-        final guardedValue = map['roleDefinitionId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      applicationId: (() { final guardedValue = map['applicationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      roleDefinitionId: (() { final guardedValue = map['roleDefinitionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

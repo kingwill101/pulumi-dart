@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVpcArgs {
   /// The unique identifier of an existing VPC.
   final pulumi.Input<String>? id;
-
   /// The name of an existing VPC.
   final pulumi.Input<String>? name;
-
   /// The DigitalOcean region slug for the VPC's location.
   final pulumi.Input<String>? region;
 
@@ -20,29 +18,26 @@ class GetVpcArgs {
   /// [id] The unique identifier of an existing VPC.
   /// [name] The name of an existing VPC.
   /// [region] The DigitalOcean region slug for the VPC's location.
-  GetVpcArgs({this.id, this.name, this.region});
+  GetVpcArgs({
+    this.id,
+    this.name,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': ?id, 'name': ?name, 'region': ?region};
+    return <String, dynamic>{
+      'id': ?id,
+      'name': ?name,
+      'region': ?region,
+    };
   }
 
   factory GetVpcArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcArgs(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

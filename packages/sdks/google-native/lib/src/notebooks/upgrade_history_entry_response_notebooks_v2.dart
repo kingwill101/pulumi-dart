@@ -6,28 +6,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UpgradeHistoryEntryResponseNotebooksV2 {
   /// Optional. Action. Rolloback or Upgrade.
   final pulumi.Input<String> action;
-
   /// Optional. The container image before this instance upgrade.
   final pulumi.Input<String> containerImage;
-
   /// Immutable. The time that this instance upgrade history entry is created.
   final pulumi.Input<String> createTime;
-
   /// Optional. The framework of this notebook instance.
   final pulumi.Input<String> framework;
-
   /// Optional. The snapshot of the boot disk of this notebook instance before upgrade.
   final pulumi.Input<String> snapshot;
-
   /// The state of this instance upgrade history entry.
   final pulumi.Input<String> state;
-
   /// Optional. Target VM Version, like m63.
   final pulumi.Input<String> targetVersion;
-
   /// Optional. The version of the notebook instance before this upgrade.
   final pulumi.Input<String> version;
-
   /// Optional. The VM image before this instance upgrade.
   final pulumi.Input<String> vmImage;
 
@@ -67,9 +59,7 @@ class UpgradeHistoryEntryResponseNotebooksV2 {
     };
   }
 
-  factory UpgradeHistoryEntryResponseNotebooksV2.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory UpgradeHistoryEntryResponseNotebooksV2.fromMap(Map<String, dynamic> map) {
     return UpgradeHistoryEntryResponseNotebooksV2(
       action: pulumi.Input.fromValue(map['action'] as String),
       containerImage: pulumi.Input.fromValue(map['containerImage'] as String),
@@ -83,3 +73,4 @@ class UpgradeHistoryEntryResponseNotebooksV2 {
     );
   }
 }
+

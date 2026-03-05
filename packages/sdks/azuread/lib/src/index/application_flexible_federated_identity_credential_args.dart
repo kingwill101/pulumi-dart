@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationFlexibleFederatedIdentityCredentialArgs {
   /// The resource ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
   final pulumi.Input<String> applicationId;
-
   /// The audience that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
   final pulumi.Input<String> audience;
-
   /// The expression to match for claims. See the Preview Documentation for more information.
   final pulumi.Input<String> claimsMatchingExpression;
-
   /// A description for the federated identity credential.
   final pulumi.Input<String>? description;
-
   /// A unique display name for the federated identity credential. Changing this forces a new resource to be created.
   final pulumi.Input<String> displayName;
-
   /// The URL of the external identity provider, which must match the issuer claim of the external token being exchanged.
   final pulumi.Input<String> issuer;
 
@@ -52,22 +47,15 @@ class ApplicationFlexibleFederatedIdentityCredentialArgs {
     };
   }
 
-  factory ApplicationFlexibleFederatedIdentityCredentialArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApplicationFlexibleFederatedIdentityCredentialArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationFlexibleFederatedIdentityCredentialArgs(
       applicationId: pulumi.Input.fromValue(map['applicationId'] as String),
       audience: pulumi.Input.fromValue(map['audience'] as String),
-      claimsMatchingExpression: pulumi.Input.fromValue(
-        map['claimsMatchingExpression'] as String,
-      ),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      claimsMatchingExpression: pulumi.Input.fromValue(map['claimsMatchingExpression'] as String),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       issuer: pulumi.Input.fromValue(map['issuer'] as String),
     );
   }
 }
+

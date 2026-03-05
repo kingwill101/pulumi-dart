@@ -9,21 +9,20 @@ class ClusterStateChangeReasonCodeEnumValueResponse {
 
   /// Creates a new [ClusterStateChangeReasonCodeEnumValueResponse].
   /// [value] Property value
-  ClusterStateChangeReasonCodeEnumValueResponse({this.value});
+  ClusterStateChangeReasonCodeEnumValueResponse({
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': ?value};
+    return <String, dynamic>{
+      'value': ?value,
+    };
   }
 
-  factory ClusterStateChangeReasonCodeEnumValueResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterStateChangeReasonCodeEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return ClusterStateChangeReasonCodeEnumValueResponse(
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

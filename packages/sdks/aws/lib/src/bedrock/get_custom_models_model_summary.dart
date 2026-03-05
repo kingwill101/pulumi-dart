@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCustomModelsModelSummary {
   /// Creation time of the model.
   final pulumi.Input<String> creationTime;
-
   /// The ARN of the custom model.
   final pulumi.Input<String> modelArn;
-
   /// The name of the custom model.
   final pulumi.Input<String> modelName;
 
@@ -38,3 +36,4 @@ class GetCustomModelsModelSummary {
     );
   }
 }
+

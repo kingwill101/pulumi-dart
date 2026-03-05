@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTableEntityArgs {
   /// The key for the partition where the entity will be retrieved.
   final pulumi.Input<String> partitionKey;
-
   /// The key for the row where the entity will be retrieved.
   final pulumi.Input<String> rowKey;
-
   /// The Storage Table ID where the entity exists.
   final pulumi.Input<String> storageTableId;
 
@@ -42,3 +40,4 @@ class GetTableEntityArgs {
     );
   }
 }
+

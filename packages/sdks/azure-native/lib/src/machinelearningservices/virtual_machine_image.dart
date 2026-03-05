@@ -9,13 +9,20 @@ class VirtualMachineImage {
 
   /// Creates a new [VirtualMachineImage].
   /// [id] Virtual Machine image path
-  VirtualMachineImage({required this.id});
+  VirtualMachineImage({
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id};
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
   factory VirtualMachineImage.fromMap(Map<String, dynamic> map) {
-    return VirtualMachineImage(id: pulumi.Input.fromValue(map['id'] as String));
+    return VirtualMachineImage(
+      id: pulumi.Input.fromValue(map['id'] as String),
+    );
   }
 }
+

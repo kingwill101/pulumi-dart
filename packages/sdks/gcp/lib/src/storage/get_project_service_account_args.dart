@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetProjectServiceAccountArgs {
   /// The project the unique service account was created for. If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The project the lookup originates from. This field is used if you are making the request
   /// from a different account than the one you are finding the service account for.
   final pulumi.Input<String>? userProject;
@@ -17,24 +16,23 @@ class GetProjectServiceAccountArgs {
   /// Creates a new [GetProjectServiceAccountArgs].
   /// [project] The project the unique service account was created for. If it is not provided, the provider project is used.
   /// [userProject] The project the lookup originates from. This field is used if you are making the request
-  GetProjectServiceAccountArgs({this.project, this.userProject});
+  GetProjectServiceAccountArgs({
+    this.project,
+    this.userProject,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'project': ?project, 'userProject': ?userProject};
+    return <String, dynamic>{
+      'project': ?project,
+      'userProject': ?userProject,
+    };
   }
 
   factory GetProjectServiceAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetProjectServiceAccountArgs(
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      userProject: (() {
-        final guardedValue = map['userProject'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      userProject: (() { final guardedValue = map['userProject']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

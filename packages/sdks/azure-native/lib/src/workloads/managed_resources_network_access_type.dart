@@ -12,8 +12,7 @@ enum ManagedResourcesNetworkAccessType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ManagedResourcesNetworkAccessType value: $value',
-    );
+    throw ArgumentError('Unknown ManagedResourcesNetworkAccessType value: $value');
   }
 }
+

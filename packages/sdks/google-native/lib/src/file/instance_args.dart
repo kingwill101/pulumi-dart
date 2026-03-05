@@ -12,27 +12,20 @@ import 'network_config.dart';
 class InstanceArgs {
   /// The description of the instance (2048 characters or less).
   final pulumi.Input<String>? description;
-
   /// Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
   final pulumi.Input<String>? etag;
-
   /// File system shares on the instance. For this version, only a single file share is supported.
   final pulumi.Input<List<FileShareConfig>>? fileShares;
-
   /// Required. The name of the instance to create. The name must be unique for the specified project and location.
   final pulumi.Input<String> instanceId;
-
   /// KMS key name used for data encryption.
   final pulumi.Input<String>? kmsKeyName;
-
   /// Resource labels to represent user provided metadata.
   final pulumi.Input<Map<String, String>>? labels;
   final pulumi.Input<String>? location;
-
   /// VPC networks to which the instance is connected. For this version, only a single network is supported.
   final pulumi.Input<List<NetworkConfig>>? networks;
   final pulumi.Input<String>? project;
-
   /// The service tier of the instance.
   final pulumi.Input<InstanceTier>? tier;
 
@@ -64,106 +57,30 @@ class InstanceArgs {
     return <String, dynamic>{
       'description': ?description,
       'etag': ?etag,
-      'fileShares':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<FileShareConfig>,
-            List<Map<String, dynamic>>
-          >(
-            fileShares,
-            (value) =>
-                pulumi.Input.encodeList<FileShareConfig, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'fileShares': ?pulumi.Input.mapOptionalInputValue<List<FileShareConfig>, List<Map<String, dynamic>>>(fileShares, (value) => pulumi.Input.encodeList<FileShareConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'instanceId': instanceId,
       'kmsKeyName': ?kmsKeyName,
       'labels': ?labels,
       'location': ?location,
-      'networks':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<NetworkConfig>,
-            List<Map<String, dynamic>>
-          >(
-            networks,
-            (value) =>
-                pulumi.Input.encodeList<NetworkConfig, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'networks': ?pulumi.Input.mapOptionalInputValue<List<NetworkConfig>, List<Map<String, dynamic>>>(networks, (value) => pulumi.Input.encodeList<NetworkConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'project': ?project,
-      'tier': ?pulumi.Input.mapOptionalInputValue<InstanceTier, String>(
-        tier,
-        (value) => value.wireValue,
-      ),
+      'tier': ?pulumi.Input.mapOptionalInputValue<InstanceTier, String>(tier, (value) => value.wireValue),
     };
   }
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      etag: (() {
-        final guardedValue = map['etag'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      fileShares: (() {
-        final guardedValue = map['fileShares'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<FileShareConfig>(
-            guardedValue,
-            (value) =>
-                FileShareConfig.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      fileShares: (() { final guardedValue = map['fileShares']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<FileShareConfig>(guardedValue, (value) => FileShareConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
-      kmsKeyName: (() {
-        final guardedValue = map['kmsKeyName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      networks: (() {
-        final guardedValue = map['networks'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<NetworkConfig>(
-            guardedValue,
-            (value) =>
-                NetworkConfig.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tier: (() {
-        final guardedValue = map['tier'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          InstanceTier.fromValue(guardedValue as String),
-        );
-      })(),
+      kmsKeyName: (() { final guardedValue = map['kmsKeyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      networks: (() { final guardedValue = map['networks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NetworkConfig>(guardedValue, (value) => NetworkConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tier: (() { final guardedValue = map['tier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceTier.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

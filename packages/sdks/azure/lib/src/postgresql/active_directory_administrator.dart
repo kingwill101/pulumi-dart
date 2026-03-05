@@ -256,16 +256,12 @@ import 'active_directory_administrator_state.dart';
 class ActiveDirectoryAdministrator extends pulumi.CustomResource {
   /// The login name of the principal to set as the server administrator
   late final pulumi.Output<String> login;
-
   /// The ID of the principal to set as the server administrator. For a managed identity this should be the Client ID of the identity.
   late final pulumi.Output<String> objectId;
-
   /// The name of the resource group for the PostgreSQL server. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The name of the PostgreSQL Server on which to set the administrator. Changing this forces a new resource to be created.
   late final pulumi.Output<String> serverName;
-
   /// The Azure Tenant ID
   late final pulumi.Output<String> tenantId;
 
@@ -278,11 +274,11 @@ class ActiveDirectoryAdministrator extends pulumi.CustomResource {
     ActiveDirectoryAdministratorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:postgresql/activeDirectoryAdministrator:ActiveDirectoryAdministrator',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:postgresql/activeDirectoryAdministrator:ActiveDirectoryAdministrator',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     login = registerOutput<String>('login');
     objectId = registerOutput<String>('objectId');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -308,11 +304,11 @@ class ActiveDirectoryAdministrator extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:postgresql/activeDirectoryAdministrator:ActiveDirectoryAdministrator',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:postgresql/activeDirectoryAdministrator:ActiveDirectoryAdministrator',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     login = registerOutput<String>('login');
     objectId = registerOutput<String>('objectId');
     resourceGroupName = registerOutput<String>('resourceGroupName');

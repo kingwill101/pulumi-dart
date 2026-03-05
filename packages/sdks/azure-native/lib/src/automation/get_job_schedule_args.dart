@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetJobScheduleArgs {
   /// The name of the automation account.
   final pulumi.Input<String> automationAccountName;
-
   /// The job schedule name.
   final pulumi.Input<String> jobScheduleId;
-
   /// Name of an Azure Resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,13 +34,10 @@ class GetJobScheduleArgs {
 
   factory GetJobScheduleArgs.fromMap(Map<String, dynamic> map) {
     return GetJobScheduleArgs(
-      automationAccountName: pulumi.Input.fromValue(
-        map['automationAccountName'] as String,
-      ),
+      automationAccountName: pulumi.Input.fromValue(map['automationAccountName'] as String),
       jobScheduleId: pulumi.Input.fromValue(map['jobScheduleId'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

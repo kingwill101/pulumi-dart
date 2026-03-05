@@ -32,3 +32,4 @@ enum ForecastingModels {
     throw ArgumentError('Unknown ForecastingModels value: $value');
   }
 }
+

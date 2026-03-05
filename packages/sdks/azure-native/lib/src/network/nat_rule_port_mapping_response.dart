@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NatRulePortMappingResponse {
   /// Backend port.
   final pulumi.Input<int>? backendPort;
-
   /// Frontend port.
   final pulumi.Input<int>? frontendPort;
-
   /// Name of inbound NAT rule.
   final pulumi.Input<String>? inboundNatRuleName;
 
@@ -33,21 +31,10 @@ class NatRulePortMappingResponse {
 
   factory NatRulePortMappingResponse.fromMap(Map<String, dynamic> map) {
     return NatRulePortMappingResponse(
-      backendPort: (() {
-        final guardedValue = map['backendPort'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      frontendPort: (() {
-        final guardedValue = map['frontendPort'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      inboundNatRuleName: (() {
-        final guardedValue = map['inboundNatRuleName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      backendPort: (() { final guardedValue = map['backendPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      frontendPort: (() { final guardedValue = map['frontendPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      inboundNatRuleName: (() { final guardedValue = map['inboundNatRuleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

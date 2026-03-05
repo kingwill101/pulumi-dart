@@ -151,48 +151,32 @@ import 'zone_args.dart';
 class Zone extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The etag of the zone.
   late final pulumi.Output<String?> etag;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The maximum number of record sets that can be created in this DNS zone.  This is a read-only property and any attempt to set this value will be ignored.
   late final pulumi.Output<double> maxNumberOfRecordSets;
-
   /// The maximum number of records per record set that can be created in this DNS zone.  This is a read-only property and any attempt to set this value will be ignored.
   late final pulumi.Output<double> maxNumberOfRecordsPerRecordSet;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The name servers for this DNS zone. This is a read-only property and any attempt to set this value will be ignored.
   late final pulumi.Output<List<String>> nameServers;
-
   /// The current number of record sets in this DNS zone.  This is a read-only property and any attempt to set this value will be ignored.
   late final pulumi.Output<double> numberOfRecordSets;
-
   /// A list of references to virtual networks that register hostnames in this DNS zone. This is a only when ZoneType is Private.
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  registrationVirtualNetworks;
-
+  late final pulumi.Output<List<Map<String, dynamic>>?> registrationVirtualNetworks;
   /// A list of references to virtual networks that resolve records in this DNS zone. This is a only when ZoneType is Private.
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  resolutionVirtualNetworks;
-
+  late final pulumi.Output<List<Map<String, dynamic>>?> resolutionVirtualNetworks;
   /// The list of signing keys.
   late final pulumi.Output<List<Map<String, dynamic>>> signingKeys;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// The type of this DNS zone (Public or Private).
   late final pulumi.Output<String?> zoneType;
 
@@ -200,40 +184,28 @@ class Zone extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Zone]. {@macro pulumi_dns_zone_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Zone(String name, {ZoneArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:dns:Zone',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Zone(
+    String name, {
+    ZoneArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:dns:Zone',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     etag = registerOutput<String?>('etag');
     location = registerOutput<String>('location');
     maxNumberOfRecordSets = registerOutput<double>('maxNumberOfRecordSets');
-    maxNumberOfRecordsPerRecordSet = registerOutput<double>(
-      'maxNumberOfRecordsPerRecordSet',
-    );
+    maxNumberOfRecordsPerRecordSet = registerOutput<double>('maxNumberOfRecordsPerRecordSet');
     this.name = registerOutput<String>('name');
     nameServers = registerOutput<List<String>>('nameServers');
     numberOfRecordSets = registerOutput<double>('numberOfRecordSets');
-    registrationVirtualNetworks = registerOutput<List<Map<String, dynamic>>?>(
-      'registrationVirtualNetworks',
-    );
-    resolutionVirtualNetworks = registerOutput<List<Map<String, dynamic>>?>(
-      'resolutionVirtualNetworks',
-    );
+    registrationVirtualNetworks = registerOutput<List<Map<String, dynamic>>?>('registrationVirtualNetworks');
+    resolutionVirtualNetworks = registerOutput<List<Map<String, dynamic>>?>('resolutionVirtualNetworks');
     signingKeys = registerOutput<List<Map<String, dynamic>>>('signingKeys');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     zoneType = registerOutput<String?>('zoneType');

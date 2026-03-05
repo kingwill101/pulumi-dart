@@ -2,25 +2,19 @@
 enum AdvancedMachineFeaturesPerformanceMonitoringUnit {
   architectural("ARCHITECTURAL"),
   enhanced("ENHANCED"),
-  performanceMonitoringUnitUnspecified(
-    "PERFORMANCE_MONITORING_UNIT_UNSPECIFIED",
-  ),
+  performanceMonitoringUnitUnspecified("PERFORMANCE_MONITORING_UNIT_UNSPECIFIED"),
   standard("STANDARD");
 
   const AdvancedMachineFeaturesPerformanceMonitoringUnit(this.wireValue);
   final String wireValue;
 
-  static AdvancedMachineFeaturesPerformanceMonitoringUnit fromValue(
-    String value,
-  ) {
-    for (final item
-        in AdvancedMachineFeaturesPerformanceMonitoringUnit.values) {
+  static AdvancedMachineFeaturesPerformanceMonitoringUnit fromValue(String value) {
+    for (final item in AdvancedMachineFeaturesPerformanceMonitoringUnit.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown AdvancedMachineFeaturesPerformanceMonitoringUnit value: $value',
-    );
+    throw ArgumentError('Unknown AdvancedMachineFeaturesPerformanceMonitoringUnit value: $value');
   }
 }
+

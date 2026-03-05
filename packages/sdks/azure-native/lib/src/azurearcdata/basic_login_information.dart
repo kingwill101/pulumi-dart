@@ -6,31 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BasicLoginInformation {
   /// Login password.
   final pulumi.Input<String>? password;
-
   /// Login username.
   final pulumi.Input<String>? username;
 
   /// Creates a new [BasicLoginInformation].
   /// [password] Login password.
   /// [username] Login username.
-  BasicLoginInformation({this.password, this.username});
+  BasicLoginInformation({
+    this.password,
+    this.username,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'password': ?password, 'username': ?username};
+    return <String, dynamic>{
+      'password': ?password,
+      'username': ?username,
+    };
   }
 
   factory BasicLoginInformation.fromMap(Map<String, dynamic> map) {
     return BasicLoginInformation(
-      password: (() {
-        final guardedValue = map['password'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      username: (() {
-        final guardedValue = map['username'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      username: (() { final guardedValue = map['username']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

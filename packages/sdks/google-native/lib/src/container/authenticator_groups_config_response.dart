@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AuthenticatorGroupsConfigResponse {
   /// Whether this cluster should return group membership lookups during authentication using a group of security groups.
   final pulumi.Input<bool> enabled;
-
   /// The name of the security group-of-groups to be used. Only relevant if enabled = true.
   final pulumi.Input<String> securityGroup;
 
@@ -32,3 +31,4 @@ class AuthenticatorGroupsConfigResponse {
     );
   }
 }
+

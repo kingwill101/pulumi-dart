@@ -9,21 +9,20 @@ class VirtualHardDiskArmReferenceResponse {
 
   /// Creates a new [VirtualHardDiskArmReferenceResponse].
   /// [id] The Azure Resource ID for a Virtual Hard Disk.
-  VirtualHardDiskArmReferenceResponse({this.id});
+  VirtualHardDiskArmReferenceResponse({
+    this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': ?id};
+    return <String, dynamic>{
+      'id': ?id,
+    };
   }
 
-  factory VirtualHardDiskArmReferenceResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VirtualHardDiskArmReferenceResponse.fromMap(Map<String, dynamic> map) {
     return VirtualHardDiskArmReferenceResponse(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

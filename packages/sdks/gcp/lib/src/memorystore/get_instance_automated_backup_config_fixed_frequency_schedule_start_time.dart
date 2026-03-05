@@ -14,14 +14,15 @@ class GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'hours': hours};
+    return <String, dynamic>{
+      'hours': hours,
+    };
   }
 
-  factory GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime.fromMap(Map<String, dynamic> map) {
     return GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime(
       hours: pulumi.Input.fromValue(map['hours'] as int),
     );
   }
 }
+

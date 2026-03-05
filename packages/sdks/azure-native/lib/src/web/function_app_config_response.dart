@@ -9,10 +9,8 @@ import 'functions_scale_and_concurrency_response.dart';
 class FunctionAppConfigResponse {
   /// Function app deployment configuration.
   final pulumi.Input<FunctionsDeploymentResponse>? deployment;
-
   /// Function app runtime settings.
   final pulumi.Input<FunctionsRuntimeResponse>? runtime;
-
   /// Function app scale and concurrency settings.
   final pulumi.Input<FunctionsScaleAndConcurrencyResponse>? scaleAndConcurrency;
 
@@ -28,53 +26,18 @@ class FunctionAppConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'deployment':
-          ?pulumi.Input.mapOptionalInputValue<
-            FunctionsDeploymentResponse,
-            Map<String, dynamic>
-          >(deployment, (value) => value.toMap()),
-      'runtime':
-          ?pulumi.Input.mapOptionalInputValue<
-            FunctionsRuntimeResponse,
-            Map<String, dynamic>
-          >(runtime, (value) => value.toMap()),
-      'scaleAndConcurrency':
-          ?pulumi.Input.mapOptionalInputValue<
-            FunctionsScaleAndConcurrencyResponse,
-            Map<String, dynamic>
-          >(scaleAndConcurrency, (value) => value.toMap()),
+      'deployment': ?pulumi.Input.mapOptionalInputValue<FunctionsDeploymentResponse, Map<String, dynamic>>(deployment, (value) => value.toMap()),
+      'runtime': ?pulumi.Input.mapOptionalInputValue<FunctionsRuntimeResponse, Map<String, dynamic>>(runtime, (value) => value.toMap()),
+      'scaleAndConcurrency': ?pulumi.Input.mapOptionalInputValue<FunctionsScaleAndConcurrencyResponse, Map<String, dynamic>>(scaleAndConcurrency, (value) => value.toMap()),
     };
   }
 
   factory FunctionAppConfigResponse.fromMap(Map<String, dynamic> map) {
     return FunctionAppConfigResponse(
-      deployment: (() {
-        final guardedValue = map['deployment'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FunctionsDeploymentResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      runtime: (() {
-        final guardedValue = map['runtime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FunctionsRuntimeResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      scaleAndConcurrency: (() {
-        final guardedValue = map['scaleAndConcurrency'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FunctionsScaleAndConcurrencyResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      deployment: (() { final guardedValue = map['deployment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FunctionsDeploymentResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      runtime: (() { final guardedValue = map['runtime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FunctionsRuntimeResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      scaleAndConcurrency: (() { final guardedValue = map['scaleAndConcurrency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FunctionsScaleAndConcurrencyResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

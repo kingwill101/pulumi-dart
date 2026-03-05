@@ -367,33 +367,22 @@ import 'system_data_response.dart';
 class GalleryApplicationVersion extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The provisioning state, which only appears in the response.
   late final pulumi.Output<String> provisioningState;
-
   /// The publishing profile of a gallery image version.
-  late final pulumi.Output<GalleryApplicationVersionPublishingProfileResponse>
-  publishingProfile;
-
+  late final pulumi.Output<GalleryApplicationVersionPublishingProfileResponse> publishingProfile;
   /// This is the replication status of the gallery image version.
   late final pulumi.Output<ReplicationStatusResponse> replicationStatus;
-
   /// The safety profile of the Gallery Application Version.
-  late final pulumi.Output<GalleryApplicationVersionSafetyProfileResponse?>
-  safetyProfile;
-
+  late final pulumi.Output<GalleryApplicationVersionSafetyProfileResponse?> safetyProfile;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -406,57 +395,19 @@ class GalleryApplicationVersion extends pulumi.CustomResource {
     GalleryApplicationVersionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:compute:GalleryApplicationVersion',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:compute:GalleryApplicationVersion',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    publishingProfile =
-        registerOutput<GalleryApplicationVersionPublishingProfileResponse>(
-          'publishingProfile',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return GalleryApplicationVersionPublishingProfileResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    replicationStatus = registerOutput<ReplicationStatusResponse>(
-      'replicationStatus',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ReplicationStatusResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    safetyProfile =
-        registerOutput<GalleryApplicationVersionSafetyProfileResponse?>(
-          'safetyProfile',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return GalleryApplicationVersionSafetyProfileResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    publishingProfile = registerOutput<GalleryApplicationVersionPublishingProfileResponse>('publishingProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GalleryApplicationVersionPublishingProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    replicationStatus = registerOutput<ReplicationStatusResponse>('replicationStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicationStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    safetyProfile = registerOutput<GalleryApplicationVersionSafetyProfileResponse?>('safetyProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GalleryApplicationVersionSafetyProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

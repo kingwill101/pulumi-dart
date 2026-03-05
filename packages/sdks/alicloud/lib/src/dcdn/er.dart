@@ -215,10 +215,8 @@ import 'er_state.dart';
 class Er extends pulumi.CustomResource {
   /// Routine The description of the routine.
   late final pulumi.Output<String?> description;
-
   /// The configurations of the specified environment. See `env_conf` below.
   late final pulumi.Output<ErEnvConf> envConf;
-
   /// The name of the routine. The name must be unique among the routines that belong to the same Alibaba Cloud account.
   late final pulumi.Output<String> erName;
 
@@ -226,27 +224,27 @@ class Er extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Er]. {@macro pulumi_dcdn_er_er_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Er(String name, {ErArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:dcdn/er:Er',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Er(
+    String name, {
+    ErArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:dcdn/er:Er',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
-    envConf = registerOutput<ErEnvConf>(
-      'envConf',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ErEnvConf.fromMap((guardedValue as Map).cast<String, dynamic>());
-      },
-    );
+    envConf = registerOutput<ErEnvConf>('envConf', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ErEnvConf.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     erName = registerOutput<String>('erName');
   }
 
   /// Gets an existing [Er] resource's state with the given [name] and [id].
-  static Er get(String name, pulumi.Input<String> id, {ErState? state}) {
+  static Er get(
+    String name,
+    pulumi.Input<String> id, {
+    ErState? state,
+  }) {
     return Er._get(
       name,
       state: state?.toMap(),
@@ -259,20 +257,13 @@ class Er extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dcdn/er:Er',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dcdn/er:Er',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
-    envConf = registerOutput<ErEnvConf>(
-      'envConf',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ErEnvConf.fromMap((guardedValue as Map).cast<String, dynamic>());
-      },
-    );
+    envConf = registerOutput<ErEnvConf>('envConf', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ErEnvConf.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     erName = registerOutput<String>('erName');
   }
 }

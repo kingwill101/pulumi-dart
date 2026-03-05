@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CertificateBindingArgs {
   /// The ID of the certificate to bind to the custom domain. Changing this forces a new App Service Certificate Binding to be created.
   final pulumi.Input<String> certificateId;
-
   /// The ID of the Custom Domain/Hostname Binding. Changing this forces a new App Service Certificate Binding to be created.
   final pulumi.Input<String> hostnameBindingId;
-
   /// The type of certificate binding. Allowed values are `IpBasedEnabled` or `SniEnabled`. Changing this forces a new App Service Certificate Binding to be created.
   final pulumi.Input<String> sslState;
 
@@ -37,10 +35,9 @@ class CertificateBindingArgs {
   factory CertificateBindingArgs.fromMap(Map<String, dynamic> map) {
     return CertificateBindingArgs(
       certificateId: pulumi.Input.fromValue(map['certificateId'] as String),
-      hostnameBindingId: pulumi.Input.fromValue(
-        map['hostnameBindingId'] as String,
-      ),
+      hostnameBindingId: pulumi.Input.fromValue(map['hostnameBindingId'] as String),
       sslState: pulumi.Input.fromValue(map['sslState'] as String),
     );
   }
 }
+

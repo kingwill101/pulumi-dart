@@ -1,15 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getNetworkSecurityPerimeter.
 class GetNetworkSecurityPerimeterResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The Azure Region where the Network Security Perimeter exists.
   final String location;
   final String name;
   final String resourceGroupName;
-
   /// A mapping of tags assigned to the Network Security Perimeter.
   final Map<String, String> tags;
 
@@ -47,3 +46,4 @@ class GetNetworkSecurityPerimeterResult {
     );
   }
 }
+

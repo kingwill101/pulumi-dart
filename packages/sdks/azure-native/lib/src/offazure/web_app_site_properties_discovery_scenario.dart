@@ -12,8 +12,7 @@ enum WebAppSitePropertiesDiscoveryScenario {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown WebAppSitePropertiesDiscoveryScenario value: $value',
-    );
+    throw ArgumentError('Unknown WebAppSitePropertiesDiscoveryScenario value: $value');
   }
 }
+

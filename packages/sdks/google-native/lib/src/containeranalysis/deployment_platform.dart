@@ -17,3 +17,4 @@ enum DeploymentPlatform {
     throw ArgumentError('Unknown DeploymentPlatform value: $value');
   }
 }
+

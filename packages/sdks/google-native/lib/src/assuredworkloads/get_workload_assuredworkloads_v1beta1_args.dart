@@ -29,9 +29,7 @@ class GetWorkloadAssuredworkloadsV1beta1Args {
     };
   }
 
-  factory GetWorkloadAssuredworkloadsV1beta1Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetWorkloadAssuredworkloadsV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetWorkloadAssuredworkloadsV1beta1Args(
       location: pulumi.Input.fromValue(map['location'] as String),
       organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
@@ -39,3 +37,4 @@ class GetWorkloadAssuredworkloadsV1beta1Args {
     );
   }
 }
+

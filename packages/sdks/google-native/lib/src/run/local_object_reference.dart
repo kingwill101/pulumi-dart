@@ -9,19 +9,20 @@ class LocalObjectReference {
 
   /// Creates a new [LocalObjectReference].
   /// [name] Name of the referent.
-  LocalObjectReference({this.name});
+  LocalObjectReference({
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name};
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
   factory LocalObjectReference.fromMap(Map<String, dynamic> map) {
     return LocalObjectReference(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

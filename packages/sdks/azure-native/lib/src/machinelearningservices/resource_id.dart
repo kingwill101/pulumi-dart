@@ -9,13 +9,20 @@ class ResourceId {
 
   /// Creates a new [ResourceId].
   /// [id] The ID of the resource
-  ResourceId({required this.id});
+  ResourceId({
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id};
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
   factory ResourceId.fromMap(Map<String, dynamic> map) {
-    return ResourceId(id: pulumi.Input.fromValue(map['id'] as String));
+    return ResourceId(
+      id: pulumi.Input.fromValue(map['id'] as String),
+    );
   }
 }
+

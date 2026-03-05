@@ -5,10 +5,7 @@ import 'security_policy_rule_http_header_action_http_header_option_response_comp
 
 class SecurityPolicyRuleHttpHeaderActionResponseComputeBeta {
   /// The list of request headers to add or overwrite if they're already present.
-  final pulumi.Input<
-    List<SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseComputeBeta>
-  >
-  requestHeadersToAdds;
+  final pulumi.Input<List<SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseComputeBeta>> requestHeadersToAdds;
 
   /// Creates a new [SecurityPolicyRuleHttpHeaderActionResponseComputeBeta].
   /// [requestHeadersToAdds] The list of request headers to add or overwrite if they're already present.
@@ -18,38 +15,14 @@ class SecurityPolicyRuleHttpHeaderActionResponseComputeBeta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'requestHeadersToAdds':
-          pulumi.Input.mapInputValue<
-            List<
-              SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseComputeBeta
-            >,
-            List<Map<String, dynamic>>
-          >(
-            requestHeadersToAdds,
-            (value) =>
-                pulumi.Input.encodeList<
-                  SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseComputeBeta,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'requestHeadersToAdds': pulumi.Input.mapInputValue<List<SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseComputeBeta>, List<Map<String, dynamic>>>(requestHeadersToAdds, (value) => pulumi.Input.encodeList<SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseComputeBeta, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory SecurityPolicyRuleHttpHeaderActionResponseComputeBeta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SecurityPolicyRuleHttpHeaderActionResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyRuleHttpHeaderActionResponseComputeBeta(
-      requestHeadersToAdds: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseComputeBeta
-        >(
-          map['requestHeadersToAdds']!,
-          (value) =>
-              SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseComputeBeta.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
+      requestHeadersToAdds: pulumi.Input.fromValue(pulumi.Input.decodeList<SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseComputeBeta>(map['requestHeadersToAdds']!, (value) => SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

@@ -9,19 +9,20 @@ class TargetSelectorProperties {
 
   /// Creates a new [TargetSelectorProperties].
   /// [name] Name of the target.
-  TargetSelectorProperties({this.name});
+  TargetSelectorProperties({
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name};
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
   factory TargetSelectorProperties.fromMap(Map<String, dynamic> map) {
     return TargetSelectorProperties(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

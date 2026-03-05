@@ -118,10 +118,8 @@ import 'industrial_pid_project_state.dart';
 class IndustrialPidProject extends pulumi.CustomResource {
   /// The ID of Pid Organization.
   late final pulumi.Output<String> pidOrganizationId;
-
   /// The description of Pid Project.
   late final pulumi.Output<String?> pidProjectDesc;
-
   /// The name of Pid Project.
   late final pulumi.Output<String> pidProjectName;
 
@@ -134,11 +132,11 @@ class IndustrialPidProject extends pulumi.CustomResource {
     IndustrialPidProjectArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:brain/industrialPidProject:IndustrialPidProject',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:brain/industrialPidProject:IndustrialPidProject',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     pidOrganizationId = registerOutput<String>('pidOrganizationId');
     pidProjectDesc = registerOutput<String?>('pidProjectDesc');
     pidProjectName = registerOutput<String>('pidProjectName');
@@ -162,11 +160,11 @@ class IndustrialPidProject extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:brain/industrialPidProject:IndustrialPidProject',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:brain/industrialPidProject:IndustrialPidProject',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     pidOrganizationId = registerOutput<String>('pidOrganizationId');
     pidProjectDesc = registerOutput<String?>('pidProjectDesc');
     pidProjectName = registerOutput<String>('pidProjectName');

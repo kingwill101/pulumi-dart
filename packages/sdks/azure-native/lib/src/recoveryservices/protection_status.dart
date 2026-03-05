@@ -18,3 +18,4 @@ enum ProtectionStatus {
     throw ArgumentError('Unknown ProtectionStatus value: $value');
   }
 }
+

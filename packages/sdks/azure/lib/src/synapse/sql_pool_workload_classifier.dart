@@ -461,25 +461,18 @@ import 'sql_pool_workload_classifier_state.dart';
 class SqlPoolWorkloadClassifier extends pulumi.CustomResource {
   /// Specifies the session context value that a request can be classified against.
   late final pulumi.Output<String?> context;
-
   /// The workload classifier end time for classification. It's of the `HH:MM` format in UTC time zone.
   late final pulumi.Output<String?> endTime;
-
   /// The workload classifier importance. The allowed values are `low`, `below_normal`, `normal`, `above_normal` and `high`.
   late final pulumi.Output<String?> importance;
-
   /// Specifies the label value that a request can be classified against.
   late final pulumi.Output<String?> label;
-
   /// The workload classifier member name used to classified against.
   late final pulumi.Output<String> memberName;
-
   /// The name which should be used for this Synapse SQL Pool Workload Classifier. Changing this forces a new Synapse SQL Pool Workload Classifier to be created.
   late final pulumi.Output<String> name;
-
   /// The workload classifier start time for classification. It's of the `HH:MM` format in UTC time zone.
   late final pulumi.Output<String?> startTime;
-
   /// The ID of the Synapse SQL Pool Workload Group. Changing this forces a new Synapse SQL Pool Workload Classifier to be created.
   late final pulumi.Output<String> workloadGroupId;
 
@@ -492,11 +485,11 @@ class SqlPoolWorkloadClassifier extends pulumi.CustomResource {
     SqlPoolWorkloadClassifierArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:synapse/sqlPoolWorkloadClassifier:SqlPoolWorkloadClassifier',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:synapse/sqlPoolWorkloadClassifier:SqlPoolWorkloadClassifier',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     context = registerOutput<String?>('context');
     endTime = registerOutput<String?>('endTime');
     importance = registerOutput<String?>('importance');
@@ -525,11 +518,11 @@ class SqlPoolWorkloadClassifier extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:synapse/sqlPoolWorkloadClassifier:SqlPoolWorkloadClassifier',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:synapse/sqlPoolWorkloadClassifier:SqlPoolWorkloadClassifier',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     context = registerOutput<String?>('context');
     endTime = registerOutput<String?>('endTime');
     importance = registerOutput<String?>('importance');

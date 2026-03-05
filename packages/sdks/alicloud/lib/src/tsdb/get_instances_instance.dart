@@ -5,55 +5,38 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstancesInstance {
   /// Auto renew.
   final pulumi.Input<String> autoRenew;
-
   /// The cpu core number of instance.
   final pulumi.Input<String> cpuNumber;
-
   /// The disk type of instance. `cloud_ssd` refers to SSD disk, `cloud_efficiency` refers to efficiency disk,cloud_essd refers to ESSD PL1 disk.
   final pulumi.Input<String> diskCategory;
-
   /// The engine type of instance. Enumerative: `tsdb_tsdb` refers to TSDB, `tsdb_influxdb` refers to TSDB for InfluxDB️.
   final pulumi.Input<String> engineType;
-
   /// Instance expiration time.
   final pulumi.Input<int> expiredTime;
-
   /// The ID of the Instance.
   final pulumi.Input<String> id;
-
   /// The alias of the instance.
   final pulumi.Input<String> instanceAlias;
-
   /// The specification of the instance.
   final pulumi.Input<String> instanceClass;
-
   /// The ID of the instance.
   final pulumi.Input<String> instanceId;
-
   /// The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB.
   final pulumi.Input<String> instanceStorage;
-
   /// The memory size of instance.
   final pulumi.Input<String> memorySize;
-
   /// Instance network type.
   final pulumi.Input<String> networkType;
-
   /// The billing method. Valid values: `PayAsYouGo` and `Subscription`. The `PayAsYouGo` value indicates the pay-as-you-go method, and the `Subscription` value indicates the subscription method.
   final pulumi.Input<String> paymentType;
-
   /// Instance status, enumerative: ACTIVATION,DELETED, CREATING,CLASS_CHANGING,LOCKED.
   final pulumi.Input<String> status;
-
   /// The vpc connection address of instance.
   final pulumi.Input<String> vpcConnectionAddress;
-
   /// The ID of the virtual private cloud (VPC) that is connected to the instance.
   final pulumi.Input<String> vpcId;
-
   /// The vswitch id.
   final pulumi.Input<String> vswitchId;
-
   /// The zone ID of the instance.
   final pulumi.Input<String> zoneId;
 
@@ -136,12 +119,11 @@ class GetInstancesInstance {
       networkType: pulumi.Input.fromValue(map['networkType'] as String),
       paymentType: pulumi.Input.fromValue(map['paymentType'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
-      vpcConnectionAddress: pulumi.Input.fromValue(
-        map['vpcConnectionAddress'] as String,
-      ),
+      vpcConnectionAddress: pulumi.Input.fromValue(map['vpcConnectionAddress'] as String),
       vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
       vswitchId: pulumi.Input.fromValue(map['vswitchId'] as String),
       zoneId: pulumi.Input.fromValue(map['zoneId'] as String),
     );
   }
 }
+

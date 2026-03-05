@@ -151,49 +151,34 @@ import 'secret_state.dart';
 class Secret extends pulumi.CustomResource {
   /// The ARN of the secret.
   late final pulumi.Output<String> arn;
-
   /// (Available since v1.224.0) The time when the secret is created.
   late final pulumi.Output<String> createTime;
-
   /// The description of the secret.
   late final pulumi.Output<String?> description;
-
   /// The ID of the KMS instance.
   late final pulumi.Output<String?> dkmsInstanceId;
-
   /// Specifies whether to enable automatic rotation. Default value: `false`. Valid values: `true`, `false`.
   late final pulumi.Output<bool?> enableAutomaticRotation;
-
   /// The ID of the KMS key.
   late final pulumi.Output<String?> encryptionKeyId;
-
   /// The extended configuration of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
   late final pulumi.Output<String?> extendedConfig;
-
   /// Specifies whether to immediately delete a secret. Default value: `false`. Valid values: `true`, `false`.
   late final pulumi.Output<bool?> forceDeleteWithoutRecovery;
-
   /// The time when the secret is scheduled to be deleted.
   late final pulumi.Output<String> plannedDeleteTime;
-
   /// The content of the secret policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setsecretpolicy).
   late final pulumi.Output<String> policy;
-
   /// Specifies the recovery period of the secret if you do not forcibly delete it. Unit: Days. Default value: `30`. Valid values: `7` to `30`. **NOTE:**  If `force_delete_without_recovery` is set to `true`, `recovery_window_in_days` will be ignored.
   late final pulumi.Output<int?> recoveryWindowInDays;
-
   /// The interval for automatic rotation. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
   late final pulumi.Output<String?> rotationInterval;
-
   /// The data of the secret. **NOTE:** From version 1.204.1, `secret_data` updating diff will be ignored when `secret_type` is not `Generic`.
   late final pulumi.Output<String> secretData;
-
   /// The type of the secret value. Default value: `text`. Valid values: `text`, `binary`.
   late final pulumi.Output<String?> secretDataType;
-
   /// The name of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
   late final pulumi.Output<String> secretName;
-
   /// The type of the secret. Valid values:
   /// - `Generic`: Generic secret.
   /// - `Rds`: ApsaraDB RDS secret.
@@ -202,13 +187,10 @@ class Secret extends pulumi.CustomResource {
   /// - `ECS`: ECS secret.
   /// - `PolarDB`: (Available since v1.253.0) PolarDB secret.
   late final pulumi.Output<String> secretType;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The version number of the initial version.
   late final pulumi.Output<String> versionId;
-
   /// The stage label that is used to mark the new version.
   late final pulumi.Output<List<String>> versionStages;
 
@@ -216,13 +198,16 @@ class Secret extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Secret]. {@macro pulumi_kms_secret_secret_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Secret(String name, {SecretArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:kms/secret:Secret',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Secret(
+    String name, {
+    SecretArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:kms/secret:Secret',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
@@ -230,9 +215,7 @@ class Secret extends pulumi.CustomResource {
     enableAutomaticRotation = registerOutput<bool?>('enableAutomaticRotation');
     encryptionKeyId = registerOutput<String?>('encryptionKeyId');
     extendedConfig = registerOutput<String?>('extendedConfig');
-    forceDeleteWithoutRecovery = registerOutput<bool?>(
-      'forceDeleteWithoutRecovery',
-    );
+    forceDeleteWithoutRecovery = registerOutput<bool?>('forceDeleteWithoutRecovery');
     plannedDeleteTime = registerOutput<String>('plannedDeleteTime');
     policy = registerOutput<String>('policy');
     recoveryWindowInDays = registerOutput<int?>('recoveryWindowInDays');
@@ -264,11 +247,11 @@ class Secret extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:kms/secret:Secret',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:kms/secret:Secret',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
@@ -276,9 +259,7 @@ class Secret extends pulumi.CustomResource {
     enableAutomaticRotation = registerOutput<bool?>('enableAutomaticRotation');
     encryptionKeyId = registerOutput<String?>('encryptionKeyId');
     extendedConfig = registerOutput<String?>('extendedConfig');
-    forceDeleteWithoutRecovery = registerOutput<bool?>(
-      'forceDeleteWithoutRecovery',
-    );
+    forceDeleteWithoutRecovery = registerOutput<bool?>('forceDeleteWithoutRecovery');
     plannedDeleteTime = registerOutput<String>('plannedDeleteTime');
     policy = registerOutput<String>('policy');
     recoveryWindowInDays = registerOutput<int?>('recoveryWindowInDays');

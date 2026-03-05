@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SasPolicy {
   /// The SAS Expiration Action defines the action to be performed when sasPolicy.sasExpirationPeriod is violated. The 'Log' action can be used for audit purposes and the 'Block' action can be used to block and deny the usage of SAS tokens that do not adhere to the sas policy expiration period.
   final pulumi.Input<String> expirationAction;
-
   /// The SAS expiration period, DD.HH:MM:SS.
   final pulumi.Input<String> sasExpirationPeriod;
 
@@ -27,12 +26,9 @@ class SasPolicy {
 
   factory SasPolicy.fromMap(Map<String, dynamic> map) {
     return SasPolicy(
-      expirationAction: pulumi.Input.fromValue(
-        map['expirationAction'] as String,
-      ),
-      sasExpirationPeriod: pulumi.Input.fromValue(
-        map['sasExpirationPeriod'] as String,
-      ),
+      expirationAction: pulumi.Input.fromValue(map['expirationAction'] as String),
+      sasExpirationPeriod: pulumi.Input.fromValue(map['sasExpirationPeriod'] as String),
     );
   }
 }
+

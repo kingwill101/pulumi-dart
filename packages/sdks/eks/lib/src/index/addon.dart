@@ -13,10 +13,10 @@ class Addon extends pulumi.ComponentResource {
     AddonArgs? args,
     pulumi.ComponentResourceOptions? options,
   }) : super(
-         'eks:index:Addon',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.ComponentResourceOptions(),
-         remote: true,
-       );
+          'eks:index:Addon',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.ComponentResourceOptions(),
+          remote: true,
+        );
 }

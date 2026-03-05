@@ -1561,8 +1561,7 @@ Future<GetManagedDisksResult> getManagedDisks(
 /// * `Microsoft.Compute` - 2024-11-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_orchestrated_virtual_machine_scale_set_get_orchestrated_virtual_machine_scale_set_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetOrchestratedVirtualMachineScaleSetResult>
-getOrchestratedVirtualMachineScaleSet(
+Future<GetOrchestratedVirtualMachineScaleSetResult> getOrchestratedVirtualMachineScaleSet(
   GetOrchestratedVirtualMachineScaleSetArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

@@ -14,3 +14,4 @@ enum FunctionsDeploymentStorageType {
     throw ArgumentError('Unknown FunctionsDeploymentStorageType value: $value');
   }
 }
+

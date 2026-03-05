@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDatacatalogV1DataplexExternalTableResponse {
   /// Name of the Data Catalog entry representing the external table.
   final pulumi.Input<String> dataCatalogEntry;
-
   /// Fully qualified name (FQN) of the external table.
   final pulumi.Input<String> fullyQualifiedName;
-
   /// Google Cloud resource name of the external table.
   final pulumi.Input<String> googleCloudResource;
-
   /// Service in which the external table is registered.
   final pulumi.Input<String> system;
 
@@ -37,20 +34,13 @@ class GoogleCloudDatacatalogV1DataplexExternalTableResponse {
     };
   }
 
-  factory GoogleCloudDatacatalogV1DataplexExternalTableResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDatacatalogV1DataplexExternalTableResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1DataplexExternalTableResponse(
-      dataCatalogEntry: pulumi.Input.fromValue(
-        map['dataCatalogEntry'] as String,
-      ),
-      fullyQualifiedName: pulumi.Input.fromValue(
-        map['fullyQualifiedName'] as String,
-      ),
-      googleCloudResource: pulumi.Input.fromValue(
-        map['googleCloudResource'] as String,
-      ),
+      dataCatalogEntry: pulumi.Input.fromValue(map['dataCatalogEntry'] as String),
+      fullyQualifiedName: pulumi.Input.fromValue(map['fullyQualifiedName'] as String),
+      googleCloudResource: pulumi.Input.fromValue(map['googleCloudResource'] as String),
       system: pulumi.Input.fromValue(map['system'] as String),
     );
   }
 }
+

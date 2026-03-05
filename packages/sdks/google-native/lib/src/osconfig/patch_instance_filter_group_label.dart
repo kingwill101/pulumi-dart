@@ -9,21 +9,20 @@ class PatchInstanceFilterGroupLabel {
 
   /// Creates a new [PatchInstanceFilterGroupLabel].
   /// [labels] Compute Engine instance labels that must be present for a VM instance to be targeted by this filter.
-  PatchInstanceFilterGroupLabel({this.labels});
+  PatchInstanceFilterGroupLabel({
+    this.labels,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'labels': ?labels};
+    return <String, dynamic>{
+      'labels': ?labels,
+    };
   }
 
   factory PatchInstanceFilterGroupLabel.fromMap(Map<String, dynamic> map) {
     return PatchInstanceFilterGroupLabel(
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

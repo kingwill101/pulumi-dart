@@ -338,28 +338,20 @@ import 'router_tr_association_state.dart';
 class RouterTrAssociation extends pulumi.CustomResource {
   /// List of allowed route prefixes.
   late final pulumi.Output<List<String>?> allowedPrefixes;
-
   /// The first ID of the resource.
   late final pulumi.Output<String> associationId;
-
   /// The region to which the VPC or TR belongs.
   late final pulumi.Output<String> associationRegionId;
-
   /// The ID of the CEN instance.
   late final pulumi.Output<String?> cenId;
-
   /// The creation time of the resource.
   late final pulumi.Output<String> createTime;
-
   /// The ID of the leased line gateway instance.
   late final pulumi.Output<String> ecrId;
-
   /// The status of the resource.
   late final pulumi.Output<String> status;
-
   /// The ID of the forwarding router instance.
   late final pulumi.Output<String> transitRouterId;
-
   /// The ID of the Alibaba Cloud account to which the forwarding router belongs.
   late final pulumi.Output<int?> transitRouterOwnerId;
 
@@ -372,11 +364,11 @@ class RouterTrAssociation extends pulumi.CustomResource {
     RouterTrAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:expressconnect/routerTrAssociation:RouterTrAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:expressconnect/routerTrAssociation:RouterTrAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allowedPrefixes = registerOutput<List<String>?>('allowedPrefixes');
     associationId = registerOutput<String>('associationId');
     associationRegionId = registerOutput<String>('associationRegionId');
@@ -406,11 +398,11 @@ class RouterTrAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:expressconnect/routerTrAssociation:RouterTrAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:expressconnect/routerTrAssociation:RouterTrAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allowedPrefixes = registerOutput<List<String>?>('allowedPrefixes');
     associationId = registerOutput<String>('associationId');
     associationRegionId = registerOutput<String>('associationRegionId');

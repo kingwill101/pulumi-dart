@@ -127,15 +127,12 @@ import 'vpcsc_config_state.dart';
 class VpcscConfig extends pulumi.CustomResource {
   /// The name of the location this config is located in.
   late final pulumi.Output<String> location;
-
   /// The name of the project's VPC SC Config.
   /// Always of the form: projects/{project}/location/{location}/vpcscConfig
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The VPC SC policy for project and location.
   /// Possible values are: `DENY`, `ALLOW`.
   late final pulumi.Output<String?> vpcscPolicy;
@@ -149,11 +146,11 @@ class VpcscConfig extends pulumi.CustomResource {
     VpcscConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:artifactregistry/vpcscConfig:VpcscConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:artifactregistry/vpcscConfig:VpcscConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -178,11 +175,11 @@ class VpcscConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:artifactregistry/vpcscConfig:VpcscConfig',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:artifactregistry/vpcscConfig:VpcscConfig',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

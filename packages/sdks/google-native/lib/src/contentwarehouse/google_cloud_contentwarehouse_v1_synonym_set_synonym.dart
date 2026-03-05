@@ -9,21 +9,20 @@ class GoogleCloudContentwarehouseV1SynonymSetSynonym {
 
   /// Creates a new [GoogleCloudContentwarehouseV1SynonymSetSynonym].
   /// [words] For example: sale, invoice, bill, order
-  GoogleCloudContentwarehouseV1SynonymSetSynonym({this.words});
+  GoogleCloudContentwarehouseV1SynonymSetSynonym({
+    this.words,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'words': ?words};
+    return <String, dynamic>{
+      'words': ?words,
+    };
   }
 
-  factory GoogleCloudContentwarehouseV1SynonymSetSynonym.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudContentwarehouseV1SynonymSetSynonym.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1SynonymSetSynonym(
-      words: (() {
-        final guardedValue = map['words'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      words: (() { final guardedValue = map['words']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

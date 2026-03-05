@@ -629,37 +629,26 @@ import 'update_configuration_response.dart';
 class SoftwareUpdateConfigurationByName extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// CreatedBy property, which only appears in the response.
   late final pulumi.Output<String> createdBy;
-
   /// Creation time of the resource, which only appears in the response.
   late final pulumi.Output<String> creationTime;
-
   /// Details of provisioning error
   late final pulumi.Output<ErrorResponseResponse?> error;
-
   /// LastModifiedBy property, which only appears in the response.
   late final pulumi.Output<String> lastModifiedBy;
-
   /// Last time resource was modified, which only appears in the response.
   late final pulumi.Output<String> lastModifiedTime;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// Provisioning state for the software update configuration, which only appears in the response.
   late final pulumi.Output<String> provisioningState;
-
   /// Schedule information for the Software update configuration
   late final pulumi.Output<SUCSchedulePropertiesResponse> scheduleInfo;
-
   /// Tasks information for the Software update configuration.
   late final pulumi.Output<SoftwareUpdateConfigurationTasksResponse?> tasks;
-
   /// Resource type
   late final pulumi.Output<String> type;
-
   /// update specific properties for the Software update configuration
   late final pulumi.Output<UpdateConfigurationResponse> updateConfiguration;
 
@@ -672,58 +661,22 @@ class SoftwareUpdateConfigurationByName extends pulumi.CustomResource {
     SoftwareUpdateConfigurationByNameArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:automation:SoftwareUpdateConfigurationByName',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:automation:SoftwareUpdateConfigurationByName',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createdBy = registerOutput<String>('createdBy');
     creationTime = registerOutput<String>('creationTime');
-    error = registerOutput<ErrorResponseResponse?>(
-      'error',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ErrorResponseResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    error = registerOutput<ErrorResponseResponse?>('error', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ErrorResponseResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lastModifiedBy = registerOutput<String>('lastModifiedBy');
     lastModifiedTime = registerOutput<String>('lastModifiedTime');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    scheduleInfo = registerOutput<SUCSchedulePropertiesResponse>(
-      'scheduleInfo',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SUCSchedulePropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    tasks = registerOutput<SoftwareUpdateConfigurationTasksResponse?>(
-      'tasks',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SoftwareUpdateConfigurationTasksResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    scheduleInfo = registerOutput<SUCSchedulePropertiesResponse>('scheduleInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SUCSchedulePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tasks = registerOutput<SoftwareUpdateConfigurationTasksResponse?>('tasks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SoftwareUpdateConfigurationTasksResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
-    updateConfiguration = registerOutput<UpdateConfigurationResponse>(
-      'updateConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return UpdateConfigurationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    updateConfiguration = registerOutput<UpdateConfigurationResponse>('updateConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UpdateConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

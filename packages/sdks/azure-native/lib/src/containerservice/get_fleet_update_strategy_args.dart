@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFleetUpdateStrategyArgs {
   /// The name of the Fleet resource.
   final pulumi.Input<String> fleetName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the UpdateStrategy resource.
   final pulumi.Input<String> updateStrategyName;
 
@@ -37,12 +35,9 @@ class GetFleetUpdateStrategyArgs {
   factory GetFleetUpdateStrategyArgs.fromMap(Map<String, dynamic> map) {
     return GetFleetUpdateStrategyArgs(
       fleetName: pulumi.Input.fromValue(map['fleetName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      updateStrategyName: pulumi.Input.fromValue(
-        map['updateStrategyName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      updateStrategyName: pulumi.Input.fromValue(map['updateStrategyName'] as String),
     );
   }
 }
+

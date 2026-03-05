@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The JIT scheduling policies.
 class JitSchedulingPolicy {
   final pulumi.Input<String> duration;
-
   /// The start time of the request.
   final pulumi.Input<String> startTime;
-
   /// The type of JIT schedule.
   final pulumi.Input<String> type;
 
@@ -38,3 +36,4 @@ class JitSchedulingPolicy {
     );
   }
 }
+

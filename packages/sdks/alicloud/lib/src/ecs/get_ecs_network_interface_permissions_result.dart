@@ -46,51 +46,24 @@ class GetEcsNetworkInterfacePermissionsResult {
       'outputFile': ?outputFile,
       'pageNumber': ?pageNumber,
       'pageSize': ?pageSize,
-      'permissions':
-          pulumi.Input.encodeList<
-            GetEcsNetworkInterfacePermissionsPermission,
-            Map<String, dynamic>
-          >(permissions, (value) => value.toMap()),
+      'permissions': pulumi.Input.encodeList<GetEcsNetworkInterfacePermissionsPermission, Map<String, dynamic>>(permissions, (value) => value.toMap()),
       'status': ?status,
       'totalCount': totalCount,
     };
   }
 
-  factory GetEcsNetworkInterfacePermissionsResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetEcsNetworkInterfacePermissionsResult.fromMap(Map<String, dynamic> map) {
     return GetEcsNetworkInterfacePermissionsResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       networkInterfaceId: map['networkInterfaceId'] as String,
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      pageNumber: (() {
-        final guardedValue = map['pageNumber'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      pageSize: (() {
-        final guardedValue = map['pageSize'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      permissions:
-          pulumi.Input.decodeList<GetEcsNetworkInterfacePermissionsPermission>(
-            map['permissions']!,
-            (value) => GetEcsNetworkInterfacePermissionsPermission.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      pageNumber: (() { final guardedValue = map['pageNumber']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      pageSize: (() { final guardedValue = map['pageSize']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      permissions: pulumi.Input.decodeList<GetEcsNetworkInterfacePermissionsPermission>(map['permissions']!, (value) => GetEcsNetworkInterfacePermissionsPermission.fromMap((value as Map).cast<String, dynamic>())),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
       totalCount: map['totalCount'] as int,
     );
   }
 }
+

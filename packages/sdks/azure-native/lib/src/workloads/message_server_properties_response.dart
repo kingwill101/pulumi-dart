@@ -6,22 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MessageServerPropertiesResponse {
   /// Defines the health of SAP Instances.
   final pulumi.Input<String> health;
-
   /// message server SAP Hostname.
   final pulumi.Input<String> hostname;
-
   /// message server HTTP Port.
   final pulumi.Input<double> httpPort;
-
   /// message server HTTPS Port.
   final pulumi.Input<double> httpsPort;
-
   /// message server internal MS port.
   final pulumi.Input<double> internalMsPort;
-
   /// message server IP Address.
   final pulumi.Input<String> ipAddress;
-
   /// message server port.
   final pulumi.Input<double> msPort;
 
@@ -67,3 +61,4 @@ class MessageServerPropertiesResponse {
     );
   }
 }
+

@@ -13,14 +13,15 @@ class AgentcoreGatewayTargetTargetConfigurationMcpMcpServer {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'endpoint': endpoint};
+    return <String, dynamic>{
+      'endpoint': endpoint,
+    };
   }
 
-  factory AgentcoreGatewayTargetTargetConfigurationMcpMcpServer.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentcoreGatewayTargetTargetConfigurationMcpMcpServer.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayTargetTargetConfigurationMcpMcpServer(
       endpoint: pulumi.Input.fromValue(map['endpoint'] as String),
     );
   }
 }
+

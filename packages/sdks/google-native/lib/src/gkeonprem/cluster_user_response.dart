@@ -9,10 +9,14 @@ class ClusterUserResponse {
 
   /// Creates a new [ClusterUserResponse].
   /// [username] The name of the user, e.g. `my-gcp-id@gmail.com`.
-  ClusterUserResponse({required this.username});
+  ClusterUserResponse({
+    required this.username,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'username': username};
+    return <String, dynamic>{
+      'username': username,
+    };
   }
 
   factory ClusterUserResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class ClusterUserResponse {
     );
   }
 }
+

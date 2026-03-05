@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagementURIResponse {
   /// The ManagementServer AGM/RD API URL.
   final pulumi.Input<String> api;
-
   /// The ManagementServer AGM/RD WebUI URL.
   final pulumi.Input<String> webUi;
 
   /// Creates a new [ManagementURIResponse].
   /// [api] The ManagementServer AGM/RD API URL.
   /// [webUi] The ManagementServer AGM/RD WebUI URL.
-  ManagementURIResponse({required this.api, required this.webUi});
+  ManagementURIResponse({
+    required this.api,
+    required this.webUi,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'api': api, 'webUi': webUi};
+    return <String, dynamic>{
+      'api': api,
+      'webUi': webUi,
+    };
   }
 
   factory ManagementURIResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class ManagementURIResponse {
     );
   }
 }
+

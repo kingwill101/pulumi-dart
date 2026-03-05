@@ -9,13 +9,10 @@ import 'video_stream.dart';
 class ElementaryStream {
   /// Encoding of an audio stream.
   final pulumi.Input<AudioStream>? audioStream;
-
   /// A unique key for this elementary stream.
   final pulumi.Input<String>? key;
-
   /// Encoding of a text stream. For example, closed captions or subtitles.
   final pulumi.Input<TextStream>? textStream;
-
   /// Encoding of a video stream.
   final pulumi.Input<VideoStream>? videoStream;
 
@@ -33,53 +30,20 @@ class ElementaryStream {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'audioStream':
-          ?pulumi.Input.mapOptionalInputValue<
-            AudioStream,
-            Map<String, dynamic>
-          >(audioStream, (value) => value.toMap()),
+      'audioStream': ?pulumi.Input.mapOptionalInputValue<AudioStream, Map<String, dynamic>>(audioStream, (value) => value.toMap()),
       'key': ?key,
-      'textStream':
-          ?pulumi.Input.mapOptionalInputValue<TextStream, Map<String, dynamic>>(
-            textStream,
-            (value) => value.toMap(),
-          ),
-      'videoStream':
-          ?pulumi.Input.mapOptionalInputValue<
-            VideoStream,
-            Map<String, dynamic>
-          >(videoStream, (value) => value.toMap()),
+      'textStream': ?pulumi.Input.mapOptionalInputValue<TextStream, Map<String, dynamic>>(textStream, (value) => value.toMap()),
+      'videoStream': ?pulumi.Input.mapOptionalInputValue<VideoStream, Map<String, dynamic>>(videoStream, (value) => value.toMap()),
     };
   }
 
   factory ElementaryStream.fromMap(Map<String, dynamic> map) {
     return ElementaryStream(
-      audioStream: (() {
-        final guardedValue = map['audioStream'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AudioStream.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      key: (() {
-        final guardedValue = map['key'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      textStream: (() {
-        final guardedValue = map['textStream'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          TextStream.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      videoStream: (() {
-        final guardedValue = map['videoStream'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          VideoStream.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
+      audioStream: (() { final guardedValue = map['audioStream']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AudioStream.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      textStream: (() { final guardedValue = map['textStream']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TextStream.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      videoStream: (() { final guardedValue = map['videoStream']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VideoStream.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

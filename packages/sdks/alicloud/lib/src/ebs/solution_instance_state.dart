@@ -7,22 +7,16 @@ import 'solution_instance_parameter.dart';
 class SolutionInstanceState {
   /// Solution Instance Creation Time.
   final pulumi.Input<String>? createTime;
-
   /// Solution Instance Description.
   final pulumi.Input<String>? description;
-
   /// Solution Instance Creation Parameters. See `parameters` below.
   final pulumi.Input<List<SolutionInstanceParameter>>? parameters;
-
   /// The ID of the resource group.
   final pulumi.Input<String>? resourceGroupId;
-
   /// Solution ID.
   final pulumi.Input<String>? solutionId;
-
   /// Solution Instance Name.
   final pulumi.Input<String>? solutionInstanceName;
-
   /// The status of the resource.
   final pulumi.Input<String>? status;
 
@@ -48,18 +42,7 @@ class SolutionInstanceState {
     return <String, dynamic>{
       'createTime': ?createTime,
       'description': ?description,
-      'parameters':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<SolutionInstanceParameter>,
-            List<Map<String, dynamic>>
-          >(
-            parameters,
-            (value) =>
-                pulumi.Input.encodeList<
-                  SolutionInstanceParameter,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<List<SolutionInstanceParameter>, List<Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeList<SolutionInstanceParameter, Map<String, dynamic>>(value, (value) => value.toMap())),
       'resourceGroupId': ?resourceGroupId,
       'solutionId': ?solutionId,
       'solutionInstanceName': ?solutionInstanceName,
@@ -69,48 +52,14 @@ class SolutionInstanceState {
 
   factory SolutionInstanceState.fromMap(Map<String, dynamic> map) {
     return SolutionInstanceState(
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      parameters: (() {
-        final guardedValue = map['parameters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<SolutionInstanceParameter>(
-            guardedValue,
-            (value) => SolutionInstanceParameter.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      resourceGroupId: (() {
-        final guardedValue = map['resourceGroupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      solutionId: (() {
-        final guardedValue = map['solutionId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      solutionInstanceName: (() {
-        final guardedValue = map['solutionInstanceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SolutionInstanceParameter>(guardedValue, (value) => SolutionInstanceParameter.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      resourceGroupId: (() { final guardedValue = map['resourceGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      solutionId: (() { final guardedValue = map['solutionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      solutionInstanceName: (() { final guardedValue = map['solutionInstanceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

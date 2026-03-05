@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSolutionConfigurationArgs {
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceUri;
-
   /// Represent Solution Configuration Resource.
   final pulumi.Input<String> solutionConfiguration;
 
@@ -31,9 +30,8 @@ class GetSolutionConfigurationArgs {
   factory GetSolutionConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return GetSolutionConfigurationArgs(
       resourceUri: pulumi.Input.fromValue(map['resourceUri'] as String),
-      solutionConfiguration: pulumi.Input.fromValue(
-        map['solutionConfiguration'] as String,
-      ),
+      solutionConfiguration: pulumi.Input.fromValue(map['solutionConfiguration'] as String),
     );
   }
 }
+

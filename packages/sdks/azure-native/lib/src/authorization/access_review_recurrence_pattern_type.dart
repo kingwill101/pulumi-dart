@@ -12,8 +12,7 @@ enum AccessReviewRecurrencePatternType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown AccessReviewRecurrencePatternType value: $value',
-    );
+    throw ArgumentError('Unknown AccessReviewRecurrencePatternType value: $value');
   }
 }
+

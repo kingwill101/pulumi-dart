@@ -9,27 +9,20 @@ class ServerlessClusterClientAuthentication {
 
   /// Creates a new [ServerlessClusterClientAuthentication].
   /// [sasl] Details for client authentication using SASL. See below.
-  ServerlessClusterClientAuthentication({required this.sasl});
+  ServerlessClusterClientAuthentication({
+    required this.sasl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'sasl':
-          pulumi.Input.mapInputValue<
-            ServerlessClusterClientAuthenticationSasl,
-            Map<String, dynamic>
-          >(sasl, (value) => value.toMap()),
+      'sasl': pulumi.Input.mapInputValue<ServerlessClusterClientAuthenticationSasl, Map<String, dynamic>>(sasl, (value) => value.toMap()),
     };
   }
 
-  factory ServerlessClusterClientAuthentication.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ServerlessClusterClientAuthentication.fromMap(Map<String, dynamic> map) {
     return ServerlessClusterClientAuthentication(
-      sasl: pulumi.Input.fromValue(
-        ServerlessClusterClientAuthenticationSasl.fromMap(
-          (map['sasl']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      sasl: pulumi.Input.fromValue(ServerlessClusterClientAuthenticationSasl.fromMap((map['sasl']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

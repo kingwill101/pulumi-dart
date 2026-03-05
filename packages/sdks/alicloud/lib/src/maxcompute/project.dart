@@ -150,47 +150,34 @@ import 'project_state.dart';
 class Project extends pulumi.CustomResource {
   /// Project description information. The length is 1 to 256 English or Chinese characters. The default value is blank.
   late final pulumi.Output<String?> comment;
-
   /// Represents the creation time of the project
   late final pulumi.Output<String> createTime;
-
   /// Used to implement computing resource allocation. Valid values: subQuota Nickname
   /// If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
   late final pulumi.Output<String?> defaultQuota;
-
   /// IP whitelist See `ip_white_list` below.
   late final pulumi.Output<ProjectIpWhiteList?> ipWhiteList;
-
   /// Whether to logically delete. Default value: true. Value: (ture/false),
   ///
   /// &gt; **NOTE:** -- ture: In this case, the project status will be changed to' deleting' and completely deleted after 14 days. -- false: delete immediately, that is, completely deleted and permanently irrecoverable.
   late final pulumi.Output<String?> isLogical;
-
   /// Project owner
   late final pulumi.Output<String> owner;
   late final pulumi.Output<String?> productType;
-
   /// The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
   late final pulumi.Output<String> projectName;
-
   /// Project base attributes See `properties` below.
   late final pulumi.Output<ProjectProperties> properties;
-
   /// The region ID of the resource
   late final pulumi.Output<String> regionId;
-
   /// Security-related attributes See `security_properties` below.
   late final pulumi.Output<ProjectSecurityProperties> securityProperties;
-
   /// The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
   late final pulumi.Output<String> status;
-
   /// The tag of the resource
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Indicates whether data storage by schema is supported. Valid values:
   late final pulumi.Output<bool> threeTierModel;
-
   /// Project type
   late final pulumi.Output<String> type;
 
@@ -203,49 +190,22 @@ class Project extends pulumi.CustomResource {
     ProjectArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:maxcompute/project:Project',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:maxcompute/project:Project',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     comment = registerOutput<String?>('comment');
     createTime = registerOutput<String>('createTime');
     defaultQuota = registerOutput<String?>('defaultQuota');
-    ipWhiteList = registerOutput<ProjectIpWhiteList?>(
-      'ipWhiteList',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ProjectIpWhiteList.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    ipWhiteList = registerOutput<ProjectIpWhiteList?>('ipWhiteList', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectIpWhiteList.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     isLogical = registerOutput<String?>('isLogical');
     owner = registerOutput<String>('owner');
     productType = registerOutput<String?>('productType');
     projectName = registerOutput<String>('projectName');
-    properties = registerOutput<ProjectProperties>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ProjectProperties.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<ProjectProperties>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     regionId = registerOutput<String>('regionId');
-    securityProperties = registerOutput<ProjectSecurityProperties>(
-      'securityProperties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ProjectSecurityProperties.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    securityProperties = registerOutput<ProjectSecurityProperties>('securityProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectSecurityProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     threeTierModel = registerOutput<bool>('threeTierModel');
@@ -270,49 +230,22 @@ class Project extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:maxcompute/project:Project',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:maxcompute/project:Project',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     comment = registerOutput<String?>('comment');
     createTime = registerOutput<String>('createTime');
     defaultQuota = registerOutput<String?>('defaultQuota');
-    ipWhiteList = registerOutput<ProjectIpWhiteList?>(
-      'ipWhiteList',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ProjectIpWhiteList.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    ipWhiteList = registerOutput<ProjectIpWhiteList?>('ipWhiteList', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectIpWhiteList.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     isLogical = registerOutput<String?>('isLogical');
     owner = registerOutput<String>('owner');
     productType = registerOutput<String?>('productType');
     projectName = registerOutput<String>('projectName');
-    properties = registerOutput<ProjectProperties>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ProjectProperties.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<ProjectProperties>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     regionId = registerOutput<String>('regionId');
-    securityProperties = registerOutput<ProjectSecurityProperties>(
-      'securityProperties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ProjectSecurityProperties.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    securityProperties = registerOutput<ProjectSecurityProperties>('securityProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectSecurityProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     threeTierModel = registerOutput<bool>('threeTierModel');

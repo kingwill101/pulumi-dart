@@ -15,3 +15,4 @@ enum MitigationInEffectEnum {
     throw ArgumentError('Unknown MitigationInEffectEnum value: $value');
   }
 }
+

@@ -11,19 +11,20 @@ class GetGenaiKnowledgeBaseDataSourcesArgs {
 
   /// Creates a new [GetGenaiKnowledgeBaseDataSourcesArgs].
   /// [knowledgeBaseUuid] Required.
-  GetGenaiKnowledgeBaseDataSourcesArgs({required this.knowledgeBaseUuid});
+  GetGenaiKnowledgeBaseDataSourcesArgs({
+    required this.knowledgeBaseUuid,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'knowledgeBaseUuid': knowledgeBaseUuid};
+    return <String, dynamic>{
+      'knowledgeBaseUuid': knowledgeBaseUuid,
+    };
   }
 
-  factory GetGenaiKnowledgeBaseDataSourcesArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetGenaiKnowledgeBaseDataSourcesArgs.fromMap(Map<String, dynamic> map) {
     return GetGenaiKnowledgeBaseDataSourcesArgs(
-      knowledgeBaseUuid: pulumi.Input.fromValue(
-        map['knowledgeBaseUuid'] as String,
-      ),
+      knowledgeBaseUuid: pulumi.Input.fromValue(map['knowledgeBaseUuid'] as String),
     );
   }
 }
+

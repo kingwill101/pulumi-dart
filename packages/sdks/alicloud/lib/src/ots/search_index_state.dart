@@ -7,28 +7,20 @@ import 'search_index_schema.dart';
 class SearchIndexState {
   /// The search index create time.
   final pulumi.Input<int>? createTime;
-
   /// The timestamp for sync phase.
   final pulumi.Input<int>? currentSyncTimestamp;
-
   /// The index id of the search index which could not be changed.
   final pulumi.Input<String>? indexId;
-
   /// The index name of the OTS Table. If changed, a new index would be created.
   final pulumi.Input<String>? indexName;
-
   /// The name of the OTS instance in which table will located.
   final pulumi.Input<String>? instanceName;
-
   /// The schema of the search index. If changed, a new index would be created. See `schema` below.
   final pulumi.Input<List<SearchIndexSchema>>? schemas;
-
   /// The search index sync phase. possible values: `Full`, `Incr`.
   final pulumi.Input<String>? syncPhase;
-
   /// The name of the OTS table. If changed, a new table would be created.
   final pulumi.Input<String>? tableName;
-
   /// The index type of the OTS Table. Specifies the retention period of data in the search index. Unit: seconds. Default value: -1.
   /// If the retention period exceeds the TTL value, OTS automatically deletes expired data.
   final pulumi.Input<int>? timeToLive;
@@ -62,18 +54,7 @@ class SearchIndexState {
       'indexId': ?indexId,
       'indexName': ?indexName,
       'instanceName': ?instanceName,
-      'schemas':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<SearchIndexSchema>,
-            List<Map<String, dynamic>>
-          >(
-            schemas,
-            (value) =>
-                pulumi.Input.encodeList<
-                  SearchIndexSchema,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'schemas': ?pulumi.Input.mapOptionalInputValue<List<SearchIndexSchema>, List<Map<String, dynamic>>>(schemas, (value) => pulumi.Input.encodeList<SearchIndexSchema, Map<String, dynamic>>(value, (value) => value.toMap())),
       'syncPhase': ?syncPhase,
       'tableName': ?tableName,
       'timeToLive': ?timeToLive,
@@ -82,58 +63,16 @@ class SearchIndexState {
 
   factory SearchIndexState.fromMap(Map<String, dynamic> map) {
     return SearchIndexState(
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      currentSyncTimestamp: (() {
-        final guardedValue = map['currentSyncTimestamp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      indexId: (() {
-        final guardedValue = map['indexId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      indexName: (() {
-        final guardedValue = map['indexName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      instanceName: (() {
-        final guardedValue = map['instanceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      schemas: (() {
-        final guardedValue = map['schemas'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<SearchIndexSchema>(
-            guardedValue,
-            (value) => SearchIndexSchema.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      syncPhase: (() {
-        final guardedValue = map['syncPhase'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tableName: (() {
-        final guardedValue = map['tableName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      timeToLive: (() {
-        final guardedValue = map['timeToLive'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      currentSyncTimestamp: (() { final guardedValue = map['currentSyncTimestamp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      indexId: (() { final guardedValue = map['indexId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      indexName: (() { final guardedValue = map['indexName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      instanceName: (() { final guardedValue = map['instanceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      schemas: (() { final guardedValue = map['schemas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SearchIndexSchema>(guardedValue, (value) => SearchIndexSchema.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      syncPhase: (() { final guardedValue = map['syncPhase']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tableName: (() { final guardedValue = map['tableName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      timeToLive: (() { final guardedValue = map['timeToLive']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

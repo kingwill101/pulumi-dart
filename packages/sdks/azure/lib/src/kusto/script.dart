@@ -538,28 +538,20 @@ import 'script_state.dart';
 class Script extends pulumi.CustomResource {
   /// Flag that indicates whether to continue if one of the command fails.
   late final pulumi.Output<bool?> continueOnErrorsEnabled;
-
   /// The ID of the Kusto Database. Changing this forces a new Kusto Script to be created.
   late final pulumi.Output<String> databaseId;
-
   /// A unique string. If changed the script will be applied again.
   late final pulumi.Output<String> forceAnUpdateWhenValueChanged;
-
   /// The name which should be used for this Kusto Script. Changing this forces a new Kusto Script to be created.
   late final pulumi.Output<String> name;
-
   /// Whether the script caller’s permissions remain in effect after the script has finished running? Possible values are `RemovePermissionOnScriptCompletion` and `RetainPermissionOnScriptCompletion`.
   late final pulumi.Output<String?> principalPermissionsAction;
-
   /// The SAS token used to access the script. Must be provided when using scriptUrl property. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> sasToken;
-
   /// The script content. This property should be used when the script is provide inline and not through file in a SA. Must not be used together with `url` and `sas_token` properties. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> scriptContent;
-
   /// The type of script commands. Possible values are `Database` or `Cluster`. Defaults to `Database`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> scriptLevel;
-
   /// The url to the KQL script blob file. Must not be used together with scriptContent property. Please reference [this documentation](https://docs.microsoft.com/azure/data-explorer/database-script) that describes the commands that are allowed in the script.
   late final pulumi.Output<String?> url;
 
@@ -567,22 +559,21 @@ class Script extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Script]. {@macro pulumi_kusto_script_script_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Script(String name, {ScriptArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure:kusto/script:Script',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Script(
+    String name, {
+    ScriptArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure:kusto/script:Script',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     continueOnErrorsEnabled = registerOutput<bool?>('continueOnErrorsEnabled');
     databaseId = registerOutput<String>('databaseId');
-    forceAnUpdateWhenValueChanged = registerOutput<String>(
-      'forceAnUpdateWhenValueChanged',
-    );
+    forceAnUpdateWhenValueChanged = registerOutput<String>('forceAnUpdateWhenValueChanged');
     this.name = registerOutput<String>('name');
-    principalPermissionsAction = registerOutput<String?>(
-      'principalPermissionsAction',
-    );
+    principalPermissionsAction = registerOutput<String?>('principalPermissionsAction');
     sasToken = registerOutput<String?>('sasToken');
     scriptContent = registerOutput<String?>('scriptContent');
     scriptLevel = registerOutput<String?>('scriptLevel');
@@ -607,20 +598,16 @@ class Script extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:kusto/script:Script',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:kusto/script:Script',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     continueOnErrorsEnabled = registerOutput<bool?>('continueOnErrorsEnabled');
     databaseId = registerOutput<String>('databaseId');
-    forceAnUpdateWhenValueChanged = registerOutput<String>(
-      'forceAnUpdateWhenValueChanged',
-    );
+    forceAnUpdateWhenValueChanged = registerOutput<String>('forceAnUpdateWhenValueChanged');
     this.name = registerOutput<String>('name');
-    principalPermissionsAction = registerOutput<String?>(
-      'principalPermissionsAction',
-    );
+    principalPermissionsAction = registerOutput<String?>('principalPermissionsAction');
     sasToken = registerOutput<String?>('sasToken');
     scriptContent = registerOutput<String?>('scriptContent');
     scriptLevel = registerOutput<String?>('scriptLevel');

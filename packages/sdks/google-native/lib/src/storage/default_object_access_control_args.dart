@@ -10,13 +10,10 @@ import 'default_object_access_control_project_team.dart';
 class DefaultObjectAccessControlArgs {
   /// The name of the bucket.
   final pulumi.Input<String> bucket;
-
   /// The domain associated with the entity, if any.
   final pulumi.Input<String>? domain;
-
   /// The email address associated with the entity, if any.
   final pulumi.Input<String>? email;
-
   /// The entity holding the permission, in one of the following forms:
   /// - user-userId
   /// - user-email
@@ -30,34 +27,24 @@ class DefaultObjectAccessControlArgs {
   /// - The group example@googlegroups.com would be group-example@googlegroups.com.
   /// - To refer to all members of the Google Apps for Business domain example.com, the entity would be domain-example.com.
   final pulumi.Input<String>? entity;
-
   /// The ID for the entity, if any.
   final pulumi.Input<String>? entityId;
-
   /// HTTP 1.1 Entity tag for the access-control entry.
   final pulumi.Input<String>? etag;
-
   /// The content generation of the object, if applied to an object.
   final pulumi.Input<String>? generation;
-
   /// The ID of the access-control entry.
   final pulumi.Input<String>? id;
-
   /// The kind of item this is. For object access control entries, this is always storage#objectAccessControl.
   final pulumi.Input<String>? kind;
-
   /// The name of the object, if applied to an object.
   final pulumi.Input<String>? object_;
-
   /// The project team associated with the entity, if any.
   final pulumi.Input<DefaultObjectAccessControlProjectTeam>? projectTeam;
-
   /// The access permission for the entity.
   final pulumi.Input<String>? role;
-
   /// The link to this access-control entry.
   final pulumi.Input<String>? selfLink;
-
   /// The project to be billed for this request. Required for Requester Pays buckets.
   final pulumi.Input<String>? userProject;
 
@@ -105,11 +92,7 @@ class DefaultObjectAccessControlArgs {
       'id': ?id,
       'kind': ?kind,
       'object': ?object_,
-      'projectTeam':
-          ?pulumi.Input.mapOptionalInputValue<
-            DefaultObjectAccessControlProjectTeam,
-            Map<String, dynamic>
-          >(projectTeam, (value) => value.toMap()),
+      'projectTeam': ?pulumi.Input.mapOptionalInputValue<DefaultObjectAccessControlProjectTeam, Map<String, dynamic>>(projectTeam, (value) => value.toMap()),
       'role': ?role,
       'selfLink': ?selfLink,
       'userProject': ?userProject,
@@ -119,75 +102,20 @@ class DefaultObjectAccessControlArgs {
   factory DefaultObjectAccessControlArgs.fromMap(Map<String, dynamic> map) {
     return DefaultObjectAccessControlArgs(
       bucket: pulumi.Input.fromValue(map['bucket'] as String),
-      domain: (() {
-        final guardedValue = map['domain'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      email: (() {
-        final guardedValue = map['email'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      entity: (() {
-        final guardedValue = map['entity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      entityId: (() {
-        final guardedValue = map['entityId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      etag: (() {
-        final guardedValue = map['etag'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      generation: (() {
-        final guardedValue = map['generation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      object_: (() {
-        final guardedValue = map['object'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      projectTeam: (() {
-        final guardedValue = map['projectTeam'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DefaultObjectAccessControlProjectTeam.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      role: (() {
-        final guardedValue = map['role'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      selfLink: (() {
-        final guardedValue = map['selfLink'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      userProject: (() {
-        final guardedValue = map['userProject'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      domain: (() { final guardedValue = map['domain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      email: (() { final guardedValue = map['email']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      entity: (() { final guardedValue = map['entity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      entityId: (() { final guardedValue = map['entityId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      generation: (() { final guardedValue = map['generation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      object_: (() { final guardedValue = map['object']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      projectTeam: (() { final guardedValue = map['projectTeam']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DefaultObjectAccessControlProjectTeam.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      role: (() { final guardedValue = map['role']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      userProject: (() { final guardedValue = map['userProject']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

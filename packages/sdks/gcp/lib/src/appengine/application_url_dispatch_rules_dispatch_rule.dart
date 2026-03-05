@@ -6,11 +6,9 @@ class ApplicationUrlDispatchRulesDispatchRule {
   /// Domain name to match against. The wildcard "*" is supported if specified before a period: "*.".
   /// Defaults to matching all domains: "*".
   final pulumi.Input<String>? domain;
-
   /// Pathname within the host. Must start with a "/". A single "*" can be included at the end of the path.
   /// The sum of the lengths of the domain and path may not exceed 100 characters.
   final pulumi.Input<String> path;
-
   /// Pathname within the host. Must start with a "/". A single "*" can be included at the end of the path.
   /// The sum of the lengths of the domain and path may not exceed 100 characters.
   final pulumi.Input<String> service;
@@ -33,17 +31,12 @@ class ApplicationUrlDispatchRulesDispatchRule {
     };
   }
 
-  factory ApplicationUrlDispatchRulesDispatchRule.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApplicationUrlDispatchRulesDispatchRule.fromMap(Map<String, dynamic> map) {
     return ApplicationUrlDispatchRulesDispatchRule(
-      domain: (() {
-        final guardedValue = map['domain'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      domain: (() { final guardedValue = map['domain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       path: pulumi.Input.fromValue(map['path'] as String),
       service: pulumi.Input.fromValue(map['service'] as String),
     );
   }
 }
+

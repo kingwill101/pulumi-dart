@@ -15,3 +15,4 @@ enum SingleSignOnType {
     throw ArgumentError('Unknown SingleSignOnType value: $value');
   }
 }
+

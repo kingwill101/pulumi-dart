@@ -1492,7 +1492,6 @@ class VmwareAdminCluster extends pulumi.CustomResource {
   /// The VMware admin cluster addon node configuration.
   /// Structure is documented below.
   late final pulumi.Output<VmwareAdminClusterAddonNode> addonNode;
-
   /// Annotations on the VMware Admin Cluster.
   /// This field has the same restrictions as Kubernetes annotations.
   /// The total size of all keys and values combined is limited to 256k.
@@ -1505,60 +1504,44 @@ class VmwareAdminCluster extends pulumi.CustomResource {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>> annotations;
-
   /// AAGConfig specifies whether to spread VMware Admin Cluster nodes across at
   /// least three physical hosts in the datacenter.
   /// Structure is documented below.
-  late final pulumi.Output<VmwareAdminClusterAntiAffinityGroups>
-  antiAffinityGroups;
-
+  late final pulumi.Output<VmwareAdminClusterAntiAffinityGroups> antiAffinityGroups;
   /// The VMware admin cluster authorization configuration.
   /// Structure is documented below.
   late final pulumi.Output<VmwareAdminClusterAuthorization?> authorization;
-
   /// Configuration for auto repairing.
   /// Structure is documented below.
   late final pulumi.Output<VmwareAdminClusterAutoRepairConfig> autoRepairConfig;
-
   /// The bootstrap cluster this VMware admin cluster belongs to.
   late final pulumi.Output<String> bootstrapClusterMembership;
-
   /// The VMware admin cluster control plane node configuration.
   /// Structure is documented below.
-  late final pulumi.Output<VmwareAdminClusterControlPlaneNode?>
-  controlPlaneNode;
-
+  late final pulumi.Output<VmwareAdminClusterControlPlaneNode?> controlPlaneNode;
   /// The time the cluster was created, in RFC3339 text format.
   late final pulumi.Output<String> createTime;
-
   /// A human readable description of this VMware admin cluster.
   late final pulumi.Output<String> description;
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
-
   /// If set, the advanced cluster feature is enabled.
   late final pulumi.Output<bool> enableAdvancedCluster;
-
   /// The DNS name of VMware admin cluster's API server.
   late final pulumi.Output<String> endpoint;
-
   /// This checksum is computed by the server based on the value of other
   /// fields, and may be sent on update and delete requests to ensure the
   /// client has an up-to-date value before proceeding.
   /// Allows clients to perform consistent read-modify-writes
   /// through optimistic concurrency control.
   late final pulumi.Output<String> etag;
-
   /// Fleet configuration for the cluster.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> fleets;
-
   /// The OS image type for the VMware admin cluster.
   late final pulumi.Output<String> imageType;
-
   /// Specifies the load balancer configuration for VMware admin cluster.
   /// Structure is documented below.
   late final pulumi.Output<VmwareAdminClusterLoadBalancer?> loadBalancer;
-
   /// The object name of the VMwareAdminCluster custom resource on the
   /// associated admin cluster. This field is used to support conflicting
   /// names when enrolling existing clusters to the API. When used as a part of
@@ -1570,54 +1553,39 @@ class VmwareAdminCluster extends pulumi.CustomResource {
   /// kubectl and should expect to see the local name when viewing admin
   /// cluster controller logs.
   late final pulumi.Output<String> localName;
-
   /// The location of the resource.
   late final pulumi.Output<String> location;
-
   /// The VMware admin cluster resource name.
   late final pulumi.Output<String> name;
-
   /// The VMware admin cluster network configuration.
   /// Structure is documented below.
   late final pulumi.Output<VmwareAdminClusterNetworkConfig> networkConfig;
-
   /// The Anthos clusters on the VMware version for the admin cluster.
   late final pulumi.Output<String?> onPremVersion;
-
   /// The VMware platform configuration.
   /// Structure is documented below.
   late final pulumi.Output<VmwareAdminClusterPlatformConfig?> platformConfig;
-
   /// Configuration for private registry.
   /// Structure is documented below.
-  late final pulumi.Output<VmwareAdminClusterPrivateRegistryConfig?>
-  privateRegistryConfig;
-
+  late final pulumi.Output<VmwareAdminClusterPrivateRegistryConfig?> privateRegistryConfig;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Configuration for proxy.
   /// Structure is documented below.
   late final pulumi.Output<VmwareAdminClusterProxy?> proxy;
-
   /// If set, there are currently changes in flight to the VMware admin cluster.
   late final pulumi.Output<bool> reconciling;
-
   /// (Output)
   /// The lifecycle state of the condition.
   late final pulumi.Output<String> state;
-
   /// ResourceStatus representing detailed cluster state.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> statuses;
-
   /// The unique identifier of the VMware Admin Cluster.
   late final pulumi.Output<String> uid;
-
   /// The time the cluster was last updated, in RFC3339 text format.
   late final pulumi.Output<String> updateTime;
-
   /// Specifies vCenter config for the admin cluster.
   /// Structure is documented below.
   late final pulumi.Output<VmwareAdminClusterVcenter?> vcenter;
@@ -1631,146 +1599,42 @@ class VmwareAdminCluster extends pulumi.CustomResource {
     VmwareAdminClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:gkeonprem/vmwareAdminCluster:VmwareAdminCluster',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    addonNode = registerOutput<VmwareAdminClusterAddonNode>(
-      'addonNode',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VmwareAdminClusterAddonNode.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:gkeonprem/vmwareAdminCluster:VmwareAdminCluster',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    addonNode = registerOutput<VmwareAdminClusterAddonNode>('addonNode', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VmwareAdminClusterAddonNode.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     annotations = registerOutput<Map<String, String>>('annotations');
-    antiAffinityGroups = registerOutput<VmwareAdminClusterAntiAffinityGroups>(
-      'antiAffinityGroups',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VmwareAdminClusterAntiAffinityGroups.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    authorization = registerOutput<VmwareAdminClusterAuthorization?>(
-      'authorization',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VmwareAdminClusterAuthorization.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    autoRepairConfig = registerOutput<VmwareAdminClusterAutoRepairConfig>(
-      'autoRepairConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VmwareAdminClusterAutoRepairConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    bootstrapClusterMembership = registerOutput<String>(
-      'bootstrapClusterMembership',
-    );
-    controlPlaneNode = registerOutput<VmwareAdminClusterControlPlaneNode?>(
-      'controlPlaneNode',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VmwareAdminClusterControlPlaneNode.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    antiAffinityGroups = registerOutput<VmwareAdminClusterAntiAffinityGroups>('antiAffinityGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VmwareAdminClusterAntiAffinityGroups.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    authorization = registerOutput<VmwareAdminClusterAuthorization?>('authorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VmwareAdminClusterAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    autoRepairConfig = registerOutput<VmwareAdminClusterAutoRepairConfig>('autoRepairConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VmwareAdminClusterAutoRepairConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    bootstrapClusterMembership = registerOutput<String>('bootstrapClusterMembership');
+    controlPlaneNode = registerOutput<VmwareAdminClusterControlPlaneNode?>('controlPlaneNode', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VmwareAdminClusterControlPlaneNode.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
-    effectiveAnnotations = registerOutput<Map<String, String>>(
-      'effectiveAnnotations',
-    );
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     enableAdvancedCluster = registerOutput<bool>('enableAdvancedCluster');
     endpoint = registerOutput<String>('endpoint');
     etag = registerOutput<String>('etag');
     fleets = registerOutput<List<Map<String, dynamic>>>('fleets');
     imageType = registerOutput<String>('imageType');
-    loadBalancer = registerOutput<VmwareAdminClusterLoadBalancer?>(
-      'loadBalancer',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VmwareAdminClusterLoadBalancer.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    loadBalancer = registerOutput<VmwareAdminClusterLoadBalancer?>('loadBalancer', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VmwareAdminClusterLoadBalancer.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     localName = registerOutput<String>('localName');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    networkConfig = registerOutput<VmwareAdminClusterNetworkConfig>(
-      'networkConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VmwareAdminClusterNetworkConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    networkConfig = registerOutput<VmwareAdminClusterNetworkConfig>('networkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VmwareAdminClusterNetworkConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     onPremVersion = registerOutput<String?>('onPremVersion');
-    platformConfig = registerOutput<VmwareAdminClusterPlatformConfig?>(
-      'platformConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VmwareAdminClusterPlatformConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    privateRegistryConfig =
-        registerOutput<VmwareAdminClusterPrivateRegistryConfig?>(
-          'privateRegistryConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return VmwareAdminClusterPrivateRegistryConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    platformConfig = registerOutput<VmwareAdminClusterPlatformConfig?>('platformConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VmwareAdminClusterPlatformConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    privateRegistryConfig = registerOutput<VmwareAdminClusterPrivateRegistryConfig?>('privateRegistryConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VmwareAdminClusterPrivateRegistryConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    proxy = registerOutput<VmwareAdminClusterProxy?>(
-      'proxy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VmwareAdminClusterProxy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    proxy = registerOutput<VmwareAdminClusterProxy?>('proxy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VmwareAdminClusterProxy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     reconciling = registerOutput<bool>('reconciling');
     state = registerOutput<String>('state');
     statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
-    vcenter = registerOutput<VmwareAdminClusterVcenter?>(
-      'vcenter',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VmwareAdminClusterVcenter.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    vcenter = registerOutput<VmwareAdminClusterVcenter?>('vcenter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VmwareAdminClusterVcenter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [VmwareAdminCluster] resource's state with the given [name] and [id].
@@ -1791,145 +1655,41 @@ class VmwareAdminCluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:gkeonprem/vmwareAdminCluster:VmwareAdminCluster',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    addonNode = registerOutput<VmwareAdminClusterAddonNode>(
-      'addonNode',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VmwareAdminClusterAddonNode.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:gkeonprem/vmwareAdminCluster:VmwareAdminCluster',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    addonNode = registerOutput<VmwareAdminClusterAddonNode>('addonNode', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VmwareAdminClusterAddonNode.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     annotations = registerOutput<Map<String, String>>('annotations');
-    antiAffinityGroups = registerOutput<VmwareAdminClusterAntiAffinityGroups>(
-      'antiAffinityGroups',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VmwareAdminClusterAntiAffinityGroups.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    authorization = registerOutput<VmwareAdminClusterAuthorization?>(
-      'authorization',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VmwareAdminClusterAuthorization.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    autoRepairConfig = registerOutput<VmwareAdminClusterAutoRepairConfig>(
-      'autoRepairConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VmwareAdminClusterAutoRepairConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    bootstrapClusterMembership = registerOutput<String>(
-      'bootstrapClusterMembership',
-    );
-    controlPlaneNode = registerOutput<VmwareAdminClusterControlPlaneNode?>(
-      'controlPlaneNode',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VmwareAdminClusterControlPlaneNode.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    antiAffinityGroups = registerOutput<VmwareAdminClusterAntiAffinityGroups>('antiAffinityGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VmwareAdminClusterAntiAffinityGroups.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    authorization = registerOutput<VmwareAdminClusterAuthorization?>('authorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VmwareAdminClusterAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    autoRepairConfig = registerOutput<VmwareAdminClusterAutoRepairConfig>('autoRepairConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VmwareAdminClusterAutoRepairConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    bootstrapClusterMembership = registerOutput<String>('bootstrapClusterMembership');
+    controlPlaneNode = registerOutput<VmwareAdminClusterControlPlaneNode?>('controlPlaneNode', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VmwareAdminClusterControlPlaneNode.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
-    effectiveAnnotations = registerOutput<Map<String, String>>(
-      'effectiveAnnotations',
-    );
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     enableAdvancedCluster = registerOutput<bool>('enableAdvancedCluster');
     endpoint = registerOutput<String>('endpoint');
     etag = registerOutput<String>('etag');
     fleets = registerOutput<List<Map<String, dynamic>>>('fleets');
     imageType = registerOutput<String>('imageType');
-    loadBalancer = registerOutput<VmwareAdminClusterLoadBalancer?>(
-      'loadBalancer',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VmwareAdminClusterLoadBalancer.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    loadBalancer = registerOutput<VmwareAdminClusterLoadBalancer?>('loadBalancer', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VmwareAdminClusterLoadBalancer.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     localName = registerOutput<String>('localName');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    networkConfig = registerOutput<VmwareAdminClusterNetworkConfig>(
-      'networkConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VmwareAdminClusterNetworkConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    networkConfig = registerOutput<VmwareAdminClusterNetworkConfig>('networkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VmwareAdminClusterNetworkConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     onPremVersion = registerOutput<String?>('onPremVersion');
-    platformConfig = registerOutput<VmwareAdminClusterPlatformConfig?>(
-      'platformConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VmwareAdminClusterPlatformConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    privateRegistryConfig =
-        registerOutput<VmwareAdminClusterPrivateRegistryConfig?>(
-          'privateRegistryConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return VmwareAdminClusterPrivateRegistryConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    platformConfig = registerOutput<VmwareAdminClusterPlatformConfig?>('platformConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VmwareAdminClusterPlatformConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    privateRegistryConfig = registerOutput<VmwareAdminClusterPrivateRegistryConfig?>('privateRegistryConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VmwareAdminClusterPrivateRegistryConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    proxy = registerOutput<VmwareAdminClusterProxy?>(
-      'proxy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VmwareAdminClusterProxy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    proxy = registerOutput<VmwareAdminClusterProxy?>('proxy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VmwareAdminClusterProxy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     reconciling = registerOutput<bool>('reconciling');
     this.state = registerOutput<String>('state');
     statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
-    vcenter = registerOutput<VmwareAdminClusterVcenter?>(
-      'vcenter',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VmwareAdminClusterVcenter.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    vcenter = registerOutput<VmwareAdminClusterVcenter?>('vcenter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VmwareAdminClusterVcenter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

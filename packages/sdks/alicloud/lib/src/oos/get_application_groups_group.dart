@@ -5,31 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApplicationGroupsGroup {
   /// The name of the Application group.
   final pulumi.Input<String> applicationGroupName;
-
   /// The name of the Application.
   final pulumi.Input<String> applicationName;
-
   /// The ID of the cloud monitor group.
   final pulumi.Input<String> cmsGroupId;
-
   /// The Creation time of the resource.
   final pulumi.Input<String> createTime;
-
   /// The region ID of the deployment.
   final pulumi.Input<String> deployRegionId;
-
   /// Application group description information.
   final pulumi.Input<String> description;
-
   /// The ID of the Application Group. Its value is same as Queue Name.
   final pulumi.Input<String> id;
-
   /// Label key.
   final pulumi.Input<String> importTagKey;
-
   /// Label value.
   final pulumi.Input<String> importTagValue;
-
   /// The Update time of the resource.
   final pulumi.Input<String> updateTime;
 
@@ -74,9 +65,7 @@ class GetApplicationGroupsGroup {
 
   factory GetApplicationGroupsGroup.fromMap(Map<String, dynamic> map) {
     return GetApplicationGroupsGroup(
-      applicationGroupName: pulumi.Input.fromValue(
-        map['applicationGroupName'] as String,
-      ),
+      applicationGroupName: pulumi.Input.fromValue(map['applicationGroupName'] as String),
       applicationName: pulumi.Input.fromValue(map['applicationName'] as String),
       cmsGroupId: pulumi.Input.fromValue(map['cmsGroupId'] as String),
       createTime: pulumi.Input.fromValue(map['createTime'] as String),
@@ -89,3 +78,4 @@ class GetApplicationGroupsGroup {
     );
   }
 }
+

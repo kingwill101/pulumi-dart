@@ -7,19 +7,14 @@ import 'version_response_containeranalysis_v1alpha1.dart';
 class DistributionResponseContaineranalysisV1alpha1 {
   /// The CPU architecture for which packages in this distribution channel were built
   final pulumi.Input<String> architecture;
-
   /// The cpe_uri in [cpe format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
   final pulumi.Input<String> cpeUri;
-
   /// The distribution channel-specific description of this package.
   final pulumi.Input<String> description;
-
   /// The latest available version of this package in this distribution channel.
   final pulumi.Input<VersionResponseContaineranalysisV1alpha1> latestVersion;
-
   /// A freeform string denoting the maintainer of this package.
   final pulumi.Input<String> maintainer;
-
   /// The distribution channel-specific homepage for this package.
   final pulumi.Input<String> url;
 
@@ -44,30 +39,21 @@ class DistributionResponseContaineranalysisV1alpha1 {
       'architecture': architecture,
       'cpeUri': cpeUri,
       'description': description,
-      'latestVersion':
-          pulumi.Input.mapInputValue<
-            VersionResponseContaineranalysisV1alpha1,
-            Map<String, dynamic>
-          >(latestVersion, (value) => value.toMap()),
+      'latestVersion': pulumi.Input.mapInputValue<VersionResponseContaineranalysisV1alpha1, Map<String, dynamic>>(latestVersion, (value) => value.toMap()),
       'maintainer': maintainer,
       'url': url,
     };
   }
 
-  factory DistributionResponseContaineranalysisV1alpha1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DistributionResponseContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return DistributionResponseContaineranalysisV1alpha1(
       architecture: pulumi.Input.fromValue(map['architecture'] as String),
       cpeUri: pulumi.Input.fromValue(map['cpeUri'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
-      latestVersion: pulumi.Input.fromValue(
-        VersionResponseContaineranalysisV1alpha1.fromMap(
-          (map['latestVersion']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      latestVersion: pulumi.Input.fromValue(VersionResponseContaineranalysisV1alpha1.fromMap((map['latestVersion']! as Map).cast<String, dynamic>())),
       maintainer: pulumi.Input.fromValue(map['maintainer'] as String),
       url: pulumi.Input.fromValue(map['url'] as String),
     );
   }
 }
+

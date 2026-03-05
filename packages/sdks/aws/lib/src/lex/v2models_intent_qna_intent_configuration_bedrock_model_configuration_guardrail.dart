@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class V2modelsIntentQnaIntentConfigurationBedrockModelConfigurationGuardrail {
   /// Identifier of the guardrail.
   final pulumi.Input<String> identifier;
-
   /// Version of the guardrail.
   final pulumi.Input<String> version;
 
@@ -18,15 +17,17 @@ class V2modelsIntentQnaIntentConfigurationBedrockModelConfigurationGuardrail {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'identifier': identifier, 'version': version};
+    return <String, dynamic>{
+      'identifier': identifier,
+      'version': version,
+    };
   }
 
-  factory V2modelsIntentQnaIntentConfigurationBedrockModelConfigurationGuardrail.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2modelsIntentQnaIntentConfigurationBedrockModelConfigurationGuardrail.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentQnaIntentConfigurationBedrockModelConfigurationGuardrail(
       identifier: pulumi.Input.fromValue(map['identifier'] as String),
       version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
+

@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLinuxWebAppSiteConfigIpRestrictionHeader {
   /// The list of Azure Front Door IDs.
   final pulumi.Input<List<String>> xAzureFdids;
-
   /// Specifies if a Front Door Health Probe is expected.
   final pulumi.Input<List<String>> xFdHealthProbes;
-
   /// The list of addresses for which matching is applied.
   final pulumi.Input<List<String>> xForwardedFors;
-
   /// The list of Hosts for which matching will be applied.
   final pulumi.Input<List<String>> xForwardedHosts;
 
@@ -36,22 +33,13 @@ class GetLinuxWebAppSiteConfigIpRestrictionHeader {
     };
   }
 
-  factory GetLinuxWebAppSiteConfigIpRestrictionHeader.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetLinuxWebAppSiteConfigIpRestrictionHeader.fromMap(Map<String, dynamic> map) {
     return GetLinuxWebAppSiteConfigIpRestrictionHeader(
-      xAzureFdids: pulumi.Input.fromValue(
-        (map['xAzureFdids'] as List).cast<String>(),
-      ),
-      xFdHealthProbes: pulumi.Input.fromValue(
-        (map['xFdHealthProbes'] as List).cast<String>(),
-      ),
-      xForwardedFors: pulumi.Input.fromValue(
-        (map['xForwardedFors'] as List).cast<String>(),
-      ),
-      xForwardedHosts: pulumi.Input.fromValue(
-        (map['xForwardedHosts'] as List).cast<String>(),
-      ),
+      xAzureFdids: pulumi.Input.fromValue((map['xAzureFdids'] as List).cast<String>()),
+      xFdHealthProbes: pulumi.Input.fromValue((map['xFdHealthProbes'] as List).cast<String>()),
+      xForwardedFors: pulumi.Input.fromValue((map['xForwardedFors'] as List).cast<String>()),
+      xForwardedHosts: pulumi.Input.fromValue((map['xForwardedHosts'] as List).cast<String>()),
     );
   }
 }
+

@@ -6,37 +6,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DisplayDataResponse {
   /// Contains value if the data is of a boolean type.
   final pulumi.Input<bool> boolValue;
-
   /// Contains value if the data is of duration type.
   final pulumi.Input<String> durationValue;
-
   /// Contains value if the data is of float type.
   final pulumi.Input<double> floatValue;
-
   /// Contains value if the data is of int64 type.
   final pulumi.Input<String> int64Value;
-
   /// Contains value if the data is of java class type.
   final pulumi.Input<String> javaClassValue;
-
   /// The key identifying the display data. This is intended to be used as a label for the display data when viewed in a dax monitoring system.
   final pulumi.Input<String> key;
-
   /// An optional label to display in a dax UI for the element.
   final pulumi.Input<String> label;
-
   /// The namespace for the key. This is usually a class name or programming language namespace (i.e. python module) which defines the display data. This allows a dax monitoring system to specially handle the data and perform custom rendering.
   final pulumi.Input<String> namespace;
-
   /// A possible additional shorter value to display. For example a java_class_name_value of com.mypackage.MyDoFn will be stored with MyDoFn as the short_str_value and com.mypackage.MyDoFn as the java_class_name value. short_str_value can be displayed and java_class_name_value will be displayed as a tooltip.
   final pulumi.Input<String> shortStrValue;
-
   /// Contains value if the data is of string type.
   final pulumi.Input<String> strValue;
-
   /// Contains value if the data is of timestamp type.
   final pulumi.Input<String> timestampValue;
-
   /// An optional full URL.
   final pulumi.Input<String> url;
 
@@ -102,3 +91,4 @@ class DisplayDataResponse {
     );
   }
 }
+

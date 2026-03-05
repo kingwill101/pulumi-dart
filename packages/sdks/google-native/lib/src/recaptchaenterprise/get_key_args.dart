@@ -13,20 +13,23 @@ class GetKeyArgs {
   /// Creates a new [GetKeyArgs].
   /// [keyId] Required.
   /// [project] Optional.
-  GetKeyArgs({required this.keyId, this.project});
+  GetKeyArgs({
+    required this.keyId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'keyId': keyId, 'project': ?project};
+    return <String, dynamic>{
+      'keyId': keyId,
+      'project': ?project,
+    };
   }
 
   factory GetKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetKeyArgs(
       keyId: pulumi.Input.fromValue(map['keyId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

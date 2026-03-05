@@ -83,46 +83,13 @@ class GetMongoInstancesInstance {
       'instanceClass': instanceClass,
       'instanceType': instanceType,
       'lockMode': lockMode,
-      'mongos':
-          pulumi.Input.mapInputValue<
-            List<GetMongoInstancesInstanceMongo>,
-            List<Map<String, dynamic>>
-          >(
-            mongos,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetMongoInstancesInstanceMongo,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'mongos': pulumi.Input.mapInputValue<List<GetMongoInstancesInstanceMongo>, List<Map<String, dynamic>>>(mongos, (value) => pulumi.Input.encodeList<GetMongoInstancesInstanceMongo, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
       'networkType': networkType,
       'regionId': regionId,
       'replication': replication,
-      'restoreRanges':
-          pulumi.Input.mapInputValue<
-            List<GetMongoInstancesInstanceRestoreRange>,
-            List<Map<String, dynamic>>
-          >(
-            restoreRanges,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetMongoInstancesInstanceRestoreRange,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'shards':
-          pulumi.Input.mapInputValue<
-            List<GetMongoInstancesInstanceShard>,
-            List<Map<String, dynamic>>
-          >(
-            shards,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetMongoInstancesInstanceShard,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'restoreRanges': pulumi.Input.mapInputValue<List<GetMongoInstancesInstanceRestoreRange>, List<Map<String, dynamic>>>(restoreRanges, (value) => pulumi.Input.encodeList<GetMongoInstancesInstanceRestoreRange, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'shards': pulumi.Input.mapInputValue<List<GetMongoInstancesInstanceShard>, List<Map<String, dynamic>>>(shards, (value) => pulumi.Input.encodeList<GetMongoInstancesInstanceShard, Map<String, dynamic>>(value, (value) => value.toMap())),
       'status': status,
       'storage': storage,
       'tags': tags,
@@ -131,9 +98,7 @@ class GetMongoInstancesInstance {
 
   factory GetMongoInstancesInstance.fromMap(Map<String, dynamic> map) {
     return GetMongoInstancesInstance(
-      availabilityZone: pulumi.Input.fromValue(
-        map['availabilityZone'] as String,
-      ),
+      availabilityZone: pulumi.Input.fromValue(map['availabilityZone'] as String),
       chargeType: pulumi.Input.fromValue(map['chargeType'] as String),
       creationTime: pulumi.Input.fromValue(map['creationTime'] as String),
       engine: pulumi.Input.fromValue(map['engine'] as String),
@@ -143,37 +108,17 @@ class GetMongoInstancesInstance {
       instanceClass: pulumi.Input.fromValue(map['instanceClass'] as String),
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
       lockMode: pulumi.Input.fromValue(map['lockMode'] as String),
-      mongos: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetMongoInstancesInstanceMongo>(
-          map['mongos']!,
-          (value) => GetMongoInstancesInstanceMongo.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      mongos: pulumi.Input.fromValue(pulumi.Input.decodeList<GetMongoInstancesInstanceMongo>(map['mongos']!, (value) => GetMongoInstancesInstanceMongo.fromMap((value as Map).cast<String, dynamic>()))),
       name: pulumi.Input.fromValue(map['name'] as String),
       networkType: pulumi.Input.fromValue(map['networkType'] as String),
       regionId: pulumi.Input.fromValue(map['regionId'] as String),
       replication: pulumi.Input.fromValue(map['replication'] as String),
-      restoreRanges: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetMongoInstancesInstanceRestoreRange>(
-          map['restoreRanges']!,
-          (value) => GetMongoInstancesInstanceRestoreRange.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      shards: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetMongoInstancesInstanceShard>(
-          map['shards']!,
-          (value) => GetMongoInstancesInstanceShard.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      restoreRanges: pulumi.Input.fromValue(pulumi.Input.decodeList<GetMongoInstancesInstanceRestoreRange>(map['restoreRanges']!, (value) => GetMongoInstancesInstanceRestoreRange.fromMap((value as Map).cast<String, dynamic>()))),
+      shards: pulumi.Input.fromValue(pulumi.Input.decodeList<GetMongoInstancesInstanceShard>(map['shards']!, (value) => GetMongoInstancesInstanceShard.fromMap((value as Map).cast<String, dynamic>()))),
       status: pulumi.Input.fromValue(map['status'] as String),
       storage: pulumi.Input.fromValue(map['storage'] as int),
       tags: pulumi.Input.fromValue((map['tags'] as Map).cast<String, String>()),
     );
   }
 }
+

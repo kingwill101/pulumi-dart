@@ -10,19 +10,14 @@ import 'get_resources_tag_filter.dart';
 class GetResourcesArgs {
   /// Specifies whether to exclude resources that are compliant with the tag policy. You can use this parameter only if the `include_compliance_details` argument is also set to `true`.
   final pulumi.Input<bool>? excludeCompliantResources;
-
   /// Specifies whether to include details regarding the compliance with the effective tag policy.
   final pulumi.Input<bool>? includeComplianceDetails;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Specifies a list of ARNs of resources for which you want to retrieve tag data. Conflicts with `filter`.
   final pulumi.Input<List<String>>? resourceArnLists;
-
   /// Constraints on the resources that you want returned. The format of each resource type is `service:resourceType`. For example, specifying a resource type of `ec2` returns all Amazon EC2 resources (which includes EC2 instances). Specifying a resource type of `ec2:instance` returns only EC2 instances.
   final pulumi.Input<List<String>>? resourceTypeFilters;
-
   /// Specifies a list of Tag Filters (keys and values) to restrict the output to only those resources that have the specified tag and, if included, the specified value. See Tag Filter below. Conflicts with `resource_arn_list`.
   final pulumi.Input<List<GetResourcesTagFilter>>? tagFilters;
 
@@ -49,60 +44,19 @@ class GetResourcesArgs {
       'region': ?region,
       'resourceArnLists': ?resourceArnLists,
       'resourceTypeFilters': ?resourceTypeFilters,
-      'tagFilters':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GetResourcesTagFilter>,
-            List<Map<String, dynamic>>
-          >(
-            tagFilters,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetResourcesTagFilter,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'tagFilters': ?pulumi.Input.mapOptionalInputValue<List<GetResourcesTagFilter>, List<Map<String, dynamic>>>(tagFilters, (value) => pulumi.Input.encodeList<GetResourcesTagFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetResourcesArgs.fromMap(Map<String, dynamic> map) {
     return GetResourcesArgs(
-      excludeCompliantResources: (() {
-        final guardedValue = map['excludeCompliantResources'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      includeComplianceDetails: (() {
-        final guardedValue = map['includeComplianceDetails'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceArnLists: (() {
-        final guardedValue = map['resourceArnLists'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      resourceTypeFilters: (() {
-        final guardedValue = map['resourceTypeFilters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      tagFilters: (() {
-        final guardedValue = map['tagFilters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GetResourcesTagFilter>(
-            guardedValue,
-            (value) => GetResourcesTagFilter.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      excludeCompliantResources: (() { final guardedValue = map['excludeCompliantResources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      includeComplianceDetails: (() { final guardedValue = map['includeComplianceDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceArnLists: (() { final guardedValue = map['resourceArnLists']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      resourceTypeFilters: (() { final guardedValue = map['resourceTypeFilters']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      tagFilters: (() { final guardedValue = map['tagFilters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetResourcesTagFilter>(guardedValue, (value) => GetResourcesTagFilter.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

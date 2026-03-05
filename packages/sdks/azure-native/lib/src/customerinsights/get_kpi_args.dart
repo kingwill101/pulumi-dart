@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetKpiArgs {
   /// The name of the hub.
   final pulumi.Input<String> hubName;
-
   /// The name of the KPI.
   final pulumi.Input<String> kpiName;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -38,9 +36,8 @@ class GetKpiArgs {
     return GetKpiArgs(
       hubName: pulumi.Input.fromValue(map['hubName'] as String),
       kpiName: pulumi.Input.fromValue(map['kpiName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

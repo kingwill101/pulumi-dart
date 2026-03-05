@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GroupInstanceMaintenancePolicy {
   /// Specifies the upper limit on the number of instances that are in the InService or Pending state with a healthy status during an instance replacement activity.
   final pulumi.Input<int> maxHealthyPercentage;
-
   /// Specifies the lower limit on the number of instances that must be in the InService state with a healthy status during an instance replacement activity.
   final pulumi.Input<int> minHealthyPercentage;
 
@@ -26,12 +25,9 @@ class GroupInstanceMaintenancePolicy {
 
   factory GroupInstanceMaintenancePolicy.fromMap(Map<String, dynamic> map) {
     return GroupInstanceMaintenancePolicy(
-      maxHealthyPercentage: pulumi.Input.fromValue(
-        map['maxHealthyPercentage'] as int,
-      ),
-      minHealthyPercentage: pulumi.Input.fromValue(
-        map['minHealthyPercentage'] as int,
-      ),
+      maxHealthyPercentage: pulumi.Input.fromValue(map['maxHealthyPercentage'] as int),
+      minHealthyPercentage: pulumi.Input.fromValue(map['minHealthyPercentage'] as int),
     );
   }
 }
+

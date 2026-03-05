@@ -10,38 +10,20 @@ class ManagedRuleSetList {
 
   /// Creates a new [ManagedRuleSetList].
   /// [managedRuleSets] List of rule sets.
-  ManagedRuleSetList({this.managedRuleSets});
+  ManagedRuleSetList({
+    this.managedRuleSets,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'managedRuleSets':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ManagedRuleSet>,
-            List<Map<String, dynamic>>
-          >(
-            managedRuleSets,
-            (value) =>
-                pulumi.Input.encodeList<ManagedRuleSet, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'managedRuleSets': ?pulumi.Input.mapOptionalInputValue<List<ManagedRuleSet>, List<Map<String, dynamic>>>(managedRuleSets, (value) => pulumi.Input.encodeList<ManagedRuleSet, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ManagedRuleSetList.fromMap(Map<String, dynamic> map) {
     return ManagedRuleSetList(
-      managedRuleSets: (() {
-        final guardedValue = map['managedRuleSets'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ManagedRuleSet>(
-            guardedValue,
-            (value) =>
-                ManagedRuleSet.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
+      managedRuleSets: (() { final guardedValue = map['managedRuleSets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ManagedRuleSet>(guardedValue, (value) => ManagedRuleSet.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

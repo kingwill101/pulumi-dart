@@ -332,17 +332,13 @@ class CryptoKey extends pulumi.CustomResource {
   /// The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
   /// The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
   late final pulumi.Output<String> cryptoKeyBackend;
-
   /// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
   /// If not specified at creation time, the default duration is 30 days.
   late final pulumi.Output<String> destroyScheduledDuration;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Whether this key may contain imported versions only.
   late final pulumi.Output<bool> importOnly;
-
   /// The policy used for Key Access Justifications Policy Enforcement. If this
   /// field is present and this key is enrolled in Key Access Justifications
   /// Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
@@ -352,49 +348,39 @@ class CryptoKey extends pulumi.CustomResource {
   /// By default, this field is absent, and all justification codes are allowed.
   /// This field is currently in beta and is subject to change.
   /// Structure is documented below.
-  late final pulumi.Output<CryptoKeyKeyAccessJustificationsPolicy>
-  keyAccessJustificationsPolicy;
-
+  late final pulumi.Output<CryptoKeyKeyAccessJustificationsPolicy> keyAccessJustificationsPolicy;
   /// The KeyRing that this key belongs to.
   /// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
   late final pulumi.Output<String> keyRing;
-
   /// Labels with user-defined metadata to apply to this resource.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// The resource name for the CryptoKey.
   late final pulumi.Output<String> name;
-
   /// A copy of the primary CryptoKeyVersion that will be used by cryptoKeys.encrypt when this CryptoKey is given in EncryptRequest.name.
   /// Keys with purpose ENCRYPT_DECRYPT may have a primary. For other keys, this field will be unset.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> primaries;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// The immutable purpose of this CryptoKey. See the
   /// [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
   /// for possible inputs.
   /// Default value is "ENCRYPT_DECRYPT".
   late final pulumi.Output<String?> purpose;
-
   /// Every time this period passes, generate a new CryptoKeyVersion and set it as the primary.
   /// The first rotation will take place after the specified period. The rotation period has
   /// the format of a decimal number with up to 9 fractional digits, followed by the
   /// letter `s` (seconds). It must be greater than a day (ie, 86400).
   late final pulumi.Output<String?> rotationPeriod;
-
   /// If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
   /// You must use the `gcp.kms.CryptoKeyVersion` resource to create a new CryptoKeyVersion
   /// or `gcp.kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
   /// This field is only applicable during initial CryptoKey creation.
   late final pulumi.Output<bool?> skipInitialVersionCreation;
-
   /// A template describing settings for new crypto key versions.
   /// Structure is documented below.
   late final pulumi.Output<CryptoKeyVersionTemplate> versionTemplate;
@@ -408,28 +394,16 @@ class CryptoKey extends pulumi.CustomResource {
     CryptoKeyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:kms/cryptoKey:CryptoKey',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:kms/cryptoKey:CryptoKey',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cryptoKeyBackend = registerOutput<String>('cryptoKeyBackend');
-    destroyScheduledDuration = registerOutput<String>(
-      'destroyScheduledDuration',
-    );
+    destroyScheduledDuration = registerOutput<String>('destroyScheduledDuration');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     importOnly = registerOutput<bool>('importOnly');
-    keyAccessJustificationsPolicy =
-        registerOutput<CryptoKeyKeyAccessJustificationsPolicy>(
-          'keyAccessJustificationsPolicy',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return CryptoKeyKeyAccessJustificationsPolicy.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    keyAccessJustificationsPolicy = registerOutput<CryptoKeyKeyAccessJustificationsPolicy>('keyAccessJustificationsPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CryptoKeyKeyAccessJustificationsPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     keyRing = registerOutput<String>('keyRing');
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
@@ -437,19 +411,8 @@ class CryptoKey extends pulumi.CustomResource {
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     purpose = registerOutput<String?>('purpose');
     rotationPeriod = registerOutput<String?>('rotationPeriod');
-    skipInitialVersionCreation = registerOutput<bool?>(
-      'skipInitialVersionCreation',
-    );
-    versionTemplate = registerOutput<CryptoKeyVersionTemplate>(
-      'versionTemplate',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CryptoKeyVersionTemplate.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    skipInitialVersionCreation = registerOutput<bool?>('skipInitialVersionCreation');
+    versionTemplate = registerOutput<CryptoKeyVersionTemplate>('versionTemplate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CryptoKeyVersionTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [CryptoKey] resource's state with the given [name] and [id].
@@ -470,28 +433,16 @@ class CryptoKey extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:kms/cryptoKey:CryptoKey',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:kms/cryptoKey:CryptoKey',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cryptoKeyBackend = registerOutput<String>('cryptoKeyBackend');
-    destroyScheduledDuration = registerOutput<String>(
-      'destroyScheduledDuration',
-    );
+    destroyScheduledDuration = registerOutput<String>('destroyScheduledDuration');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     importOnly = registerOutput<bool>('importOnly');
-    keyAccessJustificationsPolicy =
-        registerOutput<CryptoKeyKeyAccessJustificationsPolicy>(
-          'keyAccessJustificationsPolicy',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return CryptoKeyKeyAccessJustificationsPolicy.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    keyAccessJustificationsPolicy = registerOutput<CryptoKeyKeyAccessJustificationsPolicy>('keyAccessJustificationsPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CryptoKeyKeyAccessJustificationsPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     keyRing = registerOutput<String>('keyRing');
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
@@ -499,18 +450,7 @@ class CryptoKey extends pulumi.CustomResource {
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     purpose = registerOutput<String?>('purpose');
     rotationPeriod = registerOutput<String?>('rotationPeriod');
-    skipInitialVersionCreation = registerOutput<bool?>(
-      'skipInitialVersionCreation',
-    );
-    versionTemplate = registerOutput<CryptoKeyVersionTemplate>(
-      'versionTemplate',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CryptoKeyVersionTemplate.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    skipInitialVersionCreation = registerOutput<bool?>('skipInitialVersionCreation');
+    versionTemplate = registerOutput<CryptoKeyVersionTemplate>('versionTemplate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CryptoKeyVersionTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

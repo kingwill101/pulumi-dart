@@ -1,38 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getImage.
 class GetImageResult {
   /// (string) Architecture of the Image.
   final String architecture;
-
   /// (string) Date when the Image was created (in ISO-8601 format).
   final String created;
-
   /// (string) Point in time when the image is considered to be deprecated (in ISO-8601 format).
   final String deprecated;
-
   /// (string) Description of the Image.
   final String description;
-
   /// (int) Unique ID of the Image.
   final int id;
   final bool? includeDeprecated;
   final Map<String, String> labels;
   final bool? mostRecent;
-
   /// (string) Name of the Image, only present when the Image is of type `system`.
   final String name;
-
   /// (string) Flavor of operating system contained in the image, could be `ubuntu`, `centos`, `debian`, `fedora` or `unknown`.
   final String osFlavor;
-
   /// (string) Operating system version.
   final String osVersion;
-
   /// (bool) Indicates that rapid deploy of the image is available.
   final bool rapidDeploy;
   final String? selector;
-
   /// (string) Type of the Image, could be `system`, `backup` or `snapshot`.
   final String type;
   final String? withArchitecture;
@@ -106,42 +98,19 @@ class GetImageResult {
       deprecated: map['deprecated'] as String,
       description: map['description'] as String,
       id: map['id'] as int,
-      includeDeprecated: (() {
-        final guardedValue = map['includeDeprecated'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      includeDeprecated: (() { final guardedValue = map['includeDeprecated']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       labels: (map['labels'] as Map).cast<String, String>(),
-      mostRecent: (() {
-        final guardedValue = map['mostRecent'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      mostRecent: (() { final guardedValue = map['mostRecent']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       name: map['name'] as String,
       osFlavor: map['osFlavor'] as String,
       osVersion: map['osVersion'] as String,
       rapidDeploy: map['rapidDeploy'] as bool,
-      selector: (() {
-        final guardedValue = map['selector'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      selector: (() { final guardedValue = map['selector']; if (guardedValue == null) return null; return guardedValue as String; })(),
       type: map['type'] as String,
-      withArchitecture: (() {
-        final guardedValue = map['withArchitecture'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      withSelector: (() {
-        final guardedValue = map['withSelector'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      withStatuses: (() {
-        final guardedValue = map['withStatuses'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
+      withArchitecture: (() { final guardedValue = map['withArchitecture']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      withSelector: (() { final guardedValue = map['withSelector']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      withStatuses: (() { final guardedValue = map['withStatuses']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
     );
   }
 }
+

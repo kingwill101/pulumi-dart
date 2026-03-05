@@ -9,7 +9,10 @@ class GetSubnetHostRoute {
   /// Creates a new [GetSubnetHostRoute].
   /// [destinationCidr] Required.
   /// [nextHop] Required.
-  GetSubnetHostRoute({required this.destinationCidr, required this.nextHop});
+  GetSubnetHostRoute({
+    required this.destinationCidr,
+    required this.nextHop,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,3 +28,4 @@ class GetSubnetHostRoute {
     );
   }
 }
+

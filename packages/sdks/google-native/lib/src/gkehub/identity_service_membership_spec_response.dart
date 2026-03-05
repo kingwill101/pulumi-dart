@@ -10,37 +10,20 @@ class IdentityServiceMembershipSpecResponse {
 
   /// Creates a new [IdentityServiceMembershipSpecResponse].
   /// [authMethods] A member may support multiple auth methods.
-  IdentityServiceMembershipSpecResponse({required this.authMethods});
+  IdentityServiceMembershipSpecResponse({
+    required this.authMethods,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authMethods':
-          pulumi.Input.mapInputValue<
-            List<IdentityServiceAuthMethodResponse>,
-            List<Map<String, dynamic>>
-          >(
-            authMethods,
-            (value) =>
-                pulumi.Input.encodeList<
-                  IdentityServiceAuthMethodResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'authMethods': pulumi.Input.mapInputValue<List<IdentityServiceAuthMethodResponse>, List<Map<String, dynamic>>>(authMethods, (value) => pulumi.Input.encodeList<IdentityServiceAuthMethodResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory IdentityServiceMembershipSpecResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory IdentityServiceMembershipSpecResponse.fromMap(Map<String, dynamic> map) {
     return IdentityServiceMembershipSpecResponse(
-      authMethods: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<IdentityServiceAuthMethodResponse>(
-          map['authMethods']!,
-          (value) => IdentityServiceAuthMethodResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      authMethods: pulumi.Input.fromValue(pulumi.Input.decodeList<IdentityServiceAuthMethodResponse>(map['authMethods']!, (value) => IdentityServiceAuthMethodResponse.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

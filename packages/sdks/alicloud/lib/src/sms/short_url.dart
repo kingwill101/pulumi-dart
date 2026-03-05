@@ -125,13 +125,10 @@ import 'short_url_state.dart';
 class ShortUrl extends pulumi.CustomResource {
   /// Short chain service use validity period. Valid values: `30`, `60`, `90`. The unit is days, and the maximum validity period is 90 days.
   late final pulumi.Output<int> effectiveDays;
-
   /// The name of the resource.
   late final pulumi.Output<String> shortUrlName;
-
   /// The original link address.
   late final pulumi.Output<String> sourceUrl;
-
   /// Short chain status.
   late final pulumi.Output<String> status;
 
@@ -144,11 +141,11 @@ class ShortUrl extends pulumi.CustomResource {
     ShortUrlArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:sms/shortUrl:ShortUrl',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:sms/shortUrl:ShortUrl',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     effectiveDays = registerOutput<int>('effectiveDays');
     shortUrlName = registerOutput<String>('shortUrlName');
     sourceUrl = registerOutput<String>('sourceUrl');
@@ -173,11 +170,11 @@ class ShortUrl extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:sms/shortUrl:ShortUrl',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:sms/shortUrl:ShortUrl',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     effectiveDays = registerOutput<int>('effectiveDays');
     shortUrlName = registerOutput<String>('shortUrlName');
     sourceUrl = registerOutput<String>('sourceUrl');

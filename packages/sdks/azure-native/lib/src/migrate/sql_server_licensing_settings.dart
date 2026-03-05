@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SqlServerLicensingSettings {
   /// Licence cost.
   final pulumi.Input<double> licenseCost;
-
   /// Software assurance (SA) cost.
   final pulumi.Input<double> softwareAssuranceCost;
-
   /// SQL Server version.
   final pulumi.Input<String> version;
 
@@ -34,10 +32,9 @@ class SqlServerLicensingSettings {
   factory SqlServerLicensingSettings.fromMap(Map<String, dynamic> map) {
     return SqlServerLicensingSettings(
       licenseCost: pulumi.Input.fromValue(map['licenseCost'] as double),
-      softwareAssuranceCost: pulumi.Input.fromValue(
-        map['softwareAssuranceCost'] as double,
-      ),
+      softwareAssuranceCost: pulumi.Input.fromValue(map['softwareAssuranceCost'] as double),
       version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
+

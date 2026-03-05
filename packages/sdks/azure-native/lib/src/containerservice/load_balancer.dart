@@ -154,31 +154,22 @@ import 'system_data_response.dart';
 class LoadBalancer extends pulumi.CustomResource {
   /// Whether to automatically place services on the load balancer. If not supplied, the default value is true. If set to false manually, both of the external and the internal load balancer will not be selected for services unless they explicitly target it.
   late final pulumi.Output<bool?> allowServicePlacement;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Nodes that match this selector will be possible members of this load balancer.
   late final pulumi.Output<LabelSelectorResponse?> nodeSelector;
-
   /// Required field. A string value that must specify the ID of an existing agent pool. All nodes in the given pool will always be added to this load balancer. This agent pool must have at least one node and minCount&gt;=1 for autoscaling operations. An agent pool can only be the primary pool for a single load balancer.
   late final pulumi.Output<String> primaryAgentPoolName;
-
   /// The current provisioning state.
   late final pulumi.Output<String> provisioningState;
-
   /// Only services that must match this selector can be placed on this load balancer.
   late final pulumi.Output<LabelSelectorResponse?> serviceLabelSelector;
-
   /// Services created in namespaces that match the selector can be placed on this load balancer.
   late final pulumi.Output<LabelSelectorResponse?> serviceNamespaceSelector;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -191,56 +182,20 @@ class LoadBalancer extends pulumi.CustomResource {
     LoadBalancerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:containerservice:LoadBalancer',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:containerservice:LoadBalancer',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allowServicePlacement = registerOutput<bool?>('allowServicePlacement');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    nodeSelector = registerOutput<LabelSelectorResponse?>(
-      'nodeSelector',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LabelSelectorResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    nodeSelector = registerOutput<LabelSelectorResponse?>('nodeSelector', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LabelSelectorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     primaryAgentPoolName = registerOutput<String>('primaryAgentPoolName');
     provisioningState = registerOutput<String>('provisioningState');
-    serviceLabelSelector = registerOutput<LabelSelectorResponse?>(
-      'serviceLabelSelector',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LabelSelectorResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    serviceNamespaceSelector = registerOutput<LabelSelectorResponse?>(
-      'serviceNamespaceSelector',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LabelSelectorResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    serviceLabelSelector = registerOutput<LabelSelectorResponse?>('serviceLabelSelector', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LabelSelectorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    serviceNamespaceSelector = registerOutput<LabelSelectorResponse?>('serviceNamespaceSelector', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LabelSelectorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

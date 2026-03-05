@@ -12,10 +12,14 @@ class GetVirtualMachineInstanceArgs {
 
   /// Creates a new [GetVirtualMachineInstanceArgs].
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
-  GetVirtualMachineInstanceArgs({required this.resourceUri});
+  GetVirtualMachineInstanceArgs({
+    required this.resourceUri,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'resourceUri': resourceUri};
+    return <String, dynamic>{
+      'resourceUri': resourceUri,
+    };
   }
 
   factory GetVirtualMachineInstanceArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetVirtualMachineInstanceArgs {
     );
   }
 }
+

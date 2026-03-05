@@ -8,17 +8,20 @@ class CertificateCertificatePolicyLifetimeActionAction {
 
   /// Creates a new [CertificateCertificatePolicyLifetimeActionAction].
   /// [actionType] The Type of action to be performed when the lifetime trigger is triggerec. Possible values include `AutoRenew` and `EmailContacts`.
-  CertificateCertificatePolicyLifetimeActionAction({required this.actionType});
+  CertificateCertificatePolicyLifetimeActionAction({
+    required this.actionType,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'actionType': actionType};
+    return <String, dynamic>{
+      'actionType': actionType,
+    };
   }
 
-  factory CertificateCertificatePolicyLifetimeActionAction.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CertificateCertificatePolicyLifetimeActionAction.fromMap(Map<String, dynamic> map) {
     return CertificateCertificatePolicyLifetimeActionAction(
       actionType: pulumi.Input.fromValue(map['actionType'] as String),
     );
   }
 }
+

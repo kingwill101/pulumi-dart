@@ -6,9 +6,7 @@ enum ChannelProvisioningState {
   valueSucceeded("Succeeded"),
   valueCanceled("Canceled"),
   valueFailed("Failed"),
-  valueIdleDueToMirroredPartnerTopicDeletion(
-    "IdleDueToMirroredPartnerTopicDeletion",
-  );
+  valueIdleDueToMirroredPartnerTopicDeletion("IdleDueToMirroredPartnerTopicDeletion");
 
   const ChannelProvisioningState(this.wireValue);
   final String wireValue;
@@ -22,3 +20,4 @@ enum ChannelProvisioningState {
     throw ArgumentError('Unknown ChannelProvisioningState value: $value');
   }
 }
+

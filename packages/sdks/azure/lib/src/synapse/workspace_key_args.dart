@@ -11,13 +11,10 @@ class WorkspaceKeyArgs {
   ///
   /// &gt; **Note:** Only one key can actively encrypt a workspace. When performing a key rotation, setting a new key as the active key will disable existing keys.
   final pulumi.Input<bool> active;
-
   /// Specifies the name of the workspace key. Should match the name of the key in the synapse workspace.
   final pulumi.Input<String> customerManagedKeyName;
-
   /// The Azure Key Vault Key Versionless ID to be used as the Customer Managed Key (CMK) for double encryption
   final pulumi.Input<String>? customerManagedKeyVersionlessId;
-
   /// The ID of the Synapse Workspace where the encryption key should be configured.
   final pulumi.Input<String> synapseWorkspaceId;
 
@@ -45,17 +42,10 @@ class WorkspaceKeyArgs {
   factory WorkspaceKeyArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceKeyArgs(
       active: pulumi.Input.fromValue(map['active'] as bool),
-      customerManagedKeyName: pulumi.Input.fromValue(
-        map['customerManagedKeyName'] as String,
-      ),
-      customerManagedKeyVersionlessId: (() {
-        final guardedValue = map['customerManagedKeyVersionlessId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      synapseWorkspaceId: pulumi.Input.fromValue(
-        map['synapseWorkspaceId'] as String,
-      ),
+      customerManagedKeyName: pulumi.Input.fromValue(map['customerManagedKeyName'] as String),
+      customerManagedKeyVersionlessId: (() { final guardedValue = map['customerManagedKeyVersionlessId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      synapseWorkspaceId: pulumi.Input.fromValue(map['synapseWorkspaceId'] as String),
     );
   }
 }
+

@@ -34,23 +34,17 @@ class Sharedflow extends pulumi.CustomResource {
   /// - - -
   late final pulumi.Output<String> configBundle;
   late final pulumi.Output<String?> detectMd5hash;
-
   /// The id of the most recently created revision for this shared flow.
   late final pulumi.Output<String> latestRevisionId;
-
   /// (Computed) Base 64 MD5 hash of the uploaded data. It is speculative as remote does not return hash of the bundle. Remote changes are detected using returned last_modified timestamp.
   late final pulumi.Output<String> md5hash;
-
   /// Metadata describing the shared flow.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> metaDatas;
-
   /// The ID of the shared flow.
   late final pulumi.Output<String> name;
-
   /// The Apigee Organization name associated with the Apigee instance.
   late final pulumi.Output<String> orgId;
-
   /// A list of revisions of this shared flow.
   late final pulumi.Output<List<String>> revisions;
 
@@ -63,11 +57,11 @@ class Sharedflow extends pulumi.CustomResource {
     SharedflowArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:apigee/sharedflow:Sharedflow',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:apigee/sharedflow:Sharedflow',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     configBundle = registerOutput<String>('configBundle');
     detectMd5hash = registerOutput<String?>('detectMd5hash');
     latestRevisionId = registerOutput<String>('latestRevisionId');
@@ -96,11 +90,11 @@ class Sharedflow extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:apigee/sharedflow:Sharedflow',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:apigee/sharedflow:Sharedflow',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     configBundle = registerOutput<String>('configBundle');
     detectMd5hash = registerOutput<String?>('detectMd5hash');
     latestRevisionId = registerOutput<String>('latestRevisionId');

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RuleRetentionPeriod {
   /// Unit of time in which the retention period is measured. Currently, only DAYS is supported.
   final pulumi.Input<String> retentionPeriodUnit;
-
   /// Period value for which the retention rule is to retain resources. The period is measured using the unit specified for RetentionPeriodUnit.
   final pulumi.Input<int> retentionPeriodValue;
 
@@ -26,12 +25,9 @@ class RuleRetentionPeriod {
 
   factory RuleRetentionPeriod.fromMap(Map<String, dynamic> map) {
     return RuleRetentionPeriod(
-      retentionPeriodUnit: pulumi.Input.fromValue(
-        map['retentionPeriodUnit'] as String,
-      ),
-      retentionPeriodValue: pulumi.Input.fromValue(
-        map['retentionPeriodValue'] as int,
-      ),
+      retentionPeriodUnit: pulumi.Input.fromValue(map['retentionPeriodUnit'] as String),
+      retentionPeriodValue: pulumi.Input.fromValue(map['retentionPeriodValue'] as int),
     );
   }
 }
+

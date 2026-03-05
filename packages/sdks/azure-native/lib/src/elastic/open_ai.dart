@@ -135,13 +135,10 @@ import 'open_aiintegration_properties_response.dart';
 class OpenAI extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Name of the integration.
   late final pulumi.Output<String> name;
-
   /// Open AI Integration details.
   late final pulumi.Output<OpenAIIntegrationPropertiesResponse> properties;
-
   /// The type of the integration.
   late final pulumi.Output<String> type;
 
@@ -149,25 +146,19 @@ class OpenAI extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [OpenAI]. {@macro pulumi_elastic_open_aiargs_doc}
   /// [options] Resource options controlling this resource's behavior.
-  OpenAI(String name, {OpenAIArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:elastic:OpenAI',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  OpenAI(
+    String name, {
+    OpenAIArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:elastic:OpenAI',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<OpenAIIntegrationPropertiesResponse>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return OpenAIIntegrationPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<OpenAIIntegrationPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OpenAIIntegrationPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

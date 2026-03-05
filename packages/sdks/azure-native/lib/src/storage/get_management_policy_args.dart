@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetManagementPolicyArgs {
   /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
   final pulumi.Input<String> accountName;
-
   /// The name of the Storage Account Management Policy. It should always be 'default'
   final pulumi.Input<String> managementPolicyName;
-
   /// The name of the resource group within the user's subscription. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -37,12 +35,9 @@ class GetManagementPolicyArgs {
   factory GetManagementPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetManagementPolicyArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
-      managementPolicyName: pulumi.Input.fromValue(
-        map['managementPolicyName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      managementPolicyName: pulumi.Input.fromValue(map['managementPolicyName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

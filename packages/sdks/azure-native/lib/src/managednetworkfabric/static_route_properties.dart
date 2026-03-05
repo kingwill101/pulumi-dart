@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StaticRouteProperties {
   /// List of next hop addresses.
   final pulumi.Input<List<String>> nextHop;
-
   /// Prefix of the route.
   final pulumi.Input<String> prefix;
 
   /// Creates a new [StaticRouteProperties].
   /// [nextHop] List of next hop addresses.
   /// [prefix] Prefix of the route.
-  StaticRouteProperties({required this.nextHop, required this.prefix});
+  StaticRouteProperties({
+    required this.nextHop,
+    required this.prefix,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'nextHop': nextHop, 'prefix': prefix};
+    return <String, dynamic>{
+      'nextHop': nextHop,
+      'prefix': prefix,
+    };
   }
 
   factory StaticRouteProperties.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class StaticRouteProperties {
     );
   }
 }
+

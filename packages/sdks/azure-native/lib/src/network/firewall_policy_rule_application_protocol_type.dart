@@ -12,8 +12,7 @@ enum FirewallPolicyRuleApplicationProtocolType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown FirewallPolicyRuleApplicationProtocolType value: $value',
-    );
+    throw ArgumentError('Unknown FirewallPolicyRuleApplicationProtocolType value: $value');
   }
 }
+

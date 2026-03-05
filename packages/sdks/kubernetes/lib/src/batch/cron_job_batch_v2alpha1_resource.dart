@@ -8,16 +8,12 @@ import 'cron_job_status_batch_v2alpha1.dart';
 class CronJobBatchV2alpha1Resource extends pulumi.CustomResource {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   late final pulumi.Output<String> apiVersion;
-
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   late final pulumi.Output<String> kind;
-
   /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   late final pulumi.Output<ObjectMeta> metadata;
-
   /// Specification of the desired behavior of a cron job, including the schedule. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
   late final pulumi.Output<CronJobSpecBatchV2alpha1> spec;
-
   /// Current status of a cron job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
   late final pulumi.Output<CronJobStatusBatchV2alpha1?> status;
 
@@ -30,42 +26,15 @@ class CronJobBatchV2alpha1Resource extends pulumi.CustomResource {
     CronJobBatchV2alpha1Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'kubernetes:batch/v2alpha1:CronJob',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'kubernetes:batch/v2alpha1:CronJob',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiVersion = registerOutput<String>('apiVersion');
     kind = registerOutput<String>('kind');
-    metadata = registerOutput<ObjectMeta>(
-      'metadata',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ObjectMeta.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    spec = registerOutput<CronJobSpecBatchV2alpha1>(
-      'spec',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CronJobSpecBatchV2alpha1.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    status = registerOutput<CronJobStatusBatchV2alpha1?>(
-      'status',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CronJobStatusBatchV2alpha1.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    metadata = registerOutput<ObjectMeta>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spec = registerOutput<CronJobSpecBatchV2alpha1>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CronJobSpecBatchV2alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<CronJobStatusBatchV2alpha1?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CronJobStatusBatchV2alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

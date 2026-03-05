@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TrafficRoutingRule {
   /// The unique identifier of the deployment to which traffic is routed by this rule.
   final pulumi.Input<String>? deploymentId;
-
   /// A user-provided description for this traffic routing rule.
   final pulumi.Input<String>? description;
-
   /// The identifier of this traffic routing rule.
   final pulumi.Input<String>? ruleId;
-
   /// Gets or sets the percentage of traffic allocated to this instance.
   final pulumi.Input<int>? trafficPercentage;
 
@@ -39,26 +36,11 @@ class TrafficRoutingRule {
 
   factory TrafficRoutingRule.fromMap(Map<String, dynamic> map) {
     return TrafficRoutingRule(
-      deploymentId: (() {
-        final guardedValue = map['deploymentId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ruleId: (() {
-        final guardedValue = map['ruleId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      trafficPercentage: (() {
-        final guardedValue = map['trafficPercentage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      deploymentId: (() { final guardedValue = map['deploymentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ruleId: (() { final guardedValue = map['ruleId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      trafficPercentage: (() { final guardedValue = map['trafficPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

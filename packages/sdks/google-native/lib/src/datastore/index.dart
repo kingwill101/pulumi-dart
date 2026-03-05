@@ -6,17 +6,13 @@ import 'index_args.dart';
 class Index extends pulumi.CustomResource {
   /// The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
   late final pulumi.Output<String> ancestor;
-
   /// The resource ID of the index.
   late final pulumi.Output<String> indexId;
-
   /// The entity kind to which this index applies.
   late final pulumi.Output<String> kind;
   late final pulumi.Output<String> project;
-
   /// An ordered sequence of property names and their index attributes. Requires: * A maximum of 100 properties.
   late final pulumi.Output<List<Map<String, dynamic>>> properties;
-
   /// The state of the index.
   late final pulumi.Output<String> state;
 
@@ -24,13 +20,16 @@ class Index extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Index]. {@macro pulumi_datastore_v1_index_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Index(String name, {IndexArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'google-native:datastore/v1:Index',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Index(
+    String name, {
+    IndexArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'google-native:datastore/v1:Index',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     ancestor = registerOutput<String>('ancestor');
     indexId = registerOutput<String>('indexId');
     kind = registerOutput<String>('kind');

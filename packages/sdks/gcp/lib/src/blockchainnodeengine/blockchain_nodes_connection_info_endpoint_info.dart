@@ -6,7 +6,6 @@ class BlockchainNodesConnectionInfoEndpointInfo {
   /// (Output)
   /// The assigned URL for the node JSON-RPC API endpoint.
   final pulumi.Input<String>? jsonRpcApiEndpoint;
-
   /// (Output)
   /// The assigned URL for the node WebSockets API endpoint.
   final pulumi.Input<String>? websocketsApiEndpoint;
@@ -26,20 +25,11 @@ class BlockchainNodesConnectionInfoEndpointInfo {
     };
   }
 
-  factory BlockchainNodesConnectionInfoEndpointInfo.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BlockchainNodesConnectionInfoEndpointInfo.fromMap(Map<String, dynamic> map) {
     return BlockchainNodesConnectionInfoEndpointInfo(
-      jsonRpcApiEndpoint: (() {
-        final guardedValue = map['jsonRpcApiEndpoint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      websocketsApiEndpoint: (() {
-        final guardedValue = map['websocketsApiEndpoint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      jsonRpcApiEndpoint: (() { final guardedValue = map['jsonRpcApiEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      websocketsApiEndpoint: (() { final guardedValue = map['websocketsApiEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -9,21 +9,20 @@ class RecordingStrategyTypeEnumValueResponse {
 
   /// Creates a new [RecordingStrategyTypeEnumValueResponse].
   /// [value] Property value
-  RecordingStrategyTypeEnumValueResponse({this.value});
+  RecordingStrategyTypeEnumValueResponse({
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': ?value};
+    return <String, dynamic>{
+      'value': ?value,
+    };
   }
 
-  factory RecordingStrategyTypeEnumValueResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RecordingStrategyTypeEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return RecordingStrategyTypeEnumValueResponse(
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

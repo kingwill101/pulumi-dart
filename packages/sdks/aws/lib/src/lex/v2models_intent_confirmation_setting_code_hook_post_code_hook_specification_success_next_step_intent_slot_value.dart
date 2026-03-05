@@ -13,18 +13,15 @@ class V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessN
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'interpretedValue': ?interpretedValue};
+    return <String, dynamic>{
+      'interpretedValue': ?interpretedValue,
+    };
   }
 
-  factory V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessNextStepIntentSlotValue.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessNextStepIntentSlotValue.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessNextStepIntentSlotValue(
-      interpretedValue: (() {
-        final guardedValue = map['interpretedValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      interpretedValue: (() { final guardedValue = map['interpretedValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

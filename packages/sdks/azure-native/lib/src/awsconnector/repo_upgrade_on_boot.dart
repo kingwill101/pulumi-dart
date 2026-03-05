@@ -15,3 +15,4 @@ enum RepoUpgradeOnBoot {
     throw ArgumentError('Unknown RepoUpgradeOnBoot value: $value');
   }
 }
+

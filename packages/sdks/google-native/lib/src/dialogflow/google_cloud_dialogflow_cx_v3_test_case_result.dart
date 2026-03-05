@@ -7,19 +7,13 @@ import 'google_cloud_dialogflow_cx_v3_test_case_result_test_result.dart';
 /// Represents a result from running a test case in an agent environment.
 class GoogleCloudDialogflowCxV3TestCaseResult {
   /// The conversation turns uttered during the test case replay in chronological order.
-  final pulumi.Input<List<GoogleCloudDialogflowCxV3ConversationTurn>>?
-  conversationTurns;
-
+  final pulumi.Input<List<GoogleCloudDialogflowCxV3ConversationTurn>>? conversationTurns;
   /// Environment where the test was run. If not set, it indicates the draft environment.
   final pulumi.Input<String>? environment;
-
   /// The resource name for the test case result. Format: `projects//locations//agents//testCases/ /results/`.
   final pulumi.Input<String>? name;
-
   /// Whether the test case passed in the agent environment.
-  final pulumi.Input<GoogleCloudDialogflowCxV3TestCaseResultTestResult>?
-  testResult;
-
+  final pulumi.Input<GoogleCloudDialogflowCxV3TestCaseResultTestResult>? testResult;
   /// The time that the test was run.
   final pulumi.Input<String>? testTime;
 
@@ -39,69 +33,22 @@ class GoogleCloudDialogflowCxV3TestCaseResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'conversationTurns':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GoogleCloudDialogflowCxV3ConversationTurn>,
-            List<Map<String, dynamic>>
-          >(
-            conversationTurns,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GoogleCloudDialogflowCxV3ConversationTurn,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'conversationTurns': ?pulumi.Input.mapOptionalInputValue<List<GoogleCloudDialogflowCxV3ConversationTurn>, List<Map<String, dynamic>>>(conversationTurns, (value) => pulumi.Input.encodeList<GoogleCloudDialogflowCxV3ConversationTurn, Map<String, dynamic>>(value, (value) => value.toMap())),
       'environment': ?environment,
       'name': ?name,
-      'testResult':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudDialogflowCxV3TestCaseResultTestResult,
-            String
-          >(testResult, (value) => value.wireValue),
+      'testResult': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowCxV3TestCaseResultTestResult, String>(testResult, (value) => value.wireValue),
       'testTime': ?testTime,
     };
   }
 
-  factory GoogleCloudDialogflowCxV3TestCaseResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDialogflowCxV3TestCaseResult.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3TestCaseResult(
-      conversationTurns: (() {
-        final guardedValue = map['conversationTurns'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GoogleCloudDialogflowCxV3ConversationTurn>(
-            guardedValue,
-            (value) => GoogleCloudDialogflowCxV3ConversationTurn.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      environment: (() {
-        final guardedValue = map['environment'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      testResult: (() {
-        final guardedValue = map['testResult'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudDialogflowCxV3TestCaseResultTestResult.fromValue(
-            guardedValue as String,
-          ),
-        );
-      })(),
-      testTime: (() {
-        final guardedValue = map['testTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      conversationTurns: (() { final guardedValue = map['conversationTurns']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudDialogflowCxV3ConversationTurn>(guardedValue, (value) => GoogleCloudDialogflowCxV3ConversationTurn.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      environment: (() { final guardedValue = map['environment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      testResult: (() { final guardedValue = map['testResult']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudDialogflowCxV3TestCaseResultTestResult.fromValue(guardedValue as String)); })(),
+      testTime: (() { final guardedValue = map['testTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

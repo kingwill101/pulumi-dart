@@ -14,8 +14,7 @@ enum RegistryEndpointAuthenticationMethod {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown RegistryEndpointAuthenticationMethod value: $value',
-    );
+    throw ArgumentError('Unknown RegistryEndpointAuthenticationMethod value: $value');
   }
 }
+

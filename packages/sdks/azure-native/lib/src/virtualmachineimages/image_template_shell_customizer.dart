@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ImageTemplateShellCustomizer {
   /// Array of shell commands to execute
   final pulumi.Input<List<String>>? inline;
-
   /// Friendly Name to provide context on what this customization step does
   final pulumi.Input<String>? name;
-
   /// URI of the shell script to be run for customizing. It can be a github link, SAS URI for Azure Storage, etc
   final pulumi.Input<String>? scriptUri;
-
   /// SHA256 checksum of the shell script provided in the scriptUri field
   final pulumi.Input<String>? sha256Checksum;
-
   /// The type of customization tool you want to use on the Image. For example, "Shell" can be shell customizer
   /// Expected value is 'Shell'.
   final pulumi.Input<String> type;
@@ -46,27 +42,12 @@ class ImageTemplateShellCustomizer {
 
   factory ImageTemplateShellCustomizer.fromMap(Map<String, dynamic> map) {
     return ImageTemplateShellCustomizer(
-      inline: (() {
-        final guardedValue = map['inline'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      scriptUri: (() {
-        final guardedValue = map['scriptUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sha256Checksum: (() {
-        final guardedValue = map['sha256Checksum'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      inline: (() { final guardedValue = map['inline']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      scriptUri: (() { final guardedValue = map['scriptUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sha256Checksum: (() { final guardedValue = map['sha256Checksum']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

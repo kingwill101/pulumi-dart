@@ -11,10 +11,8 @@ class FlexibleServerConfigurationArgs {
   ///
   /// &gt; **Note:** PostgreSQL provides the ability to extend the functionality using azure extensions, with PostgreSQL azure extensions you should specify the `name` value as `azure.extensions` and the `value` you wish to allow in the [extensions list](https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/concepts-extensions?WT.mc_id=Portal-Microsoft_Azure_OSSDatabases#extension-versions).
   final pulumi.Input<String>? name;
-
   /// The ID of the PostgreSQL Flexible Server where we want to change configuration. Changing this forces a new PostgreSQL Flexible Server Configuration resource.
   final pulumi.Input<String> serverId;
-
   /// Specifies the value of the PostgreSQL Configuration. See the PostgreSQL documentation for valid values.
   final pulumi.Input<String> value;
 
@@ -38,13 +36,10 @@ class FlexibleServerConfigurationArgs {
 
   factory FlexibleServerConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return FlexibleServerConfigurationArgs(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serverId: pulumi.Input.fromValue(map['serverId'] as String),
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
+

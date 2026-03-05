@@ -9,10 +9,16 @@ class GetVolumeFilter {
   /// Creates a new [GetVolumeFilter].
   /// [name] Required.
   /// [values] Required.
-  GetVolumeFilter({required this.name, required this.values});
+  GetVolumeFilter({
+    required this.name,
+    required this.values,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'values': values};
+    return <String, dynamic>{
+      'name': name,
+      'values': values,
+    };
   }
 
   factory GetVolumeFilter.fromMap(Map<String, dynamic> map) {
@@ -22,3 +28,4 @@ class GetVolumeFilter {
     );
   }
 }
+

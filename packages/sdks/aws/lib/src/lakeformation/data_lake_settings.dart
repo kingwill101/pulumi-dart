@@ -649,39 +649,26 @@ import 'data_lake_settings_state.dart';
 class DataLakeSettings extends pulumi.CustomResource {
   /// Set of ARNs of AWS Lake Formation principals (IAM users or roles).
   late final pulumi.Output<List<String>> admins;
-
   /// Whether to allow Amazon EMR clusters to access data managed by Lake Formation.
   late final pulumi.Output<bool?> allowExternalDataFiltering;
-
   /// Whether to allow a third-party query engine to get data access credentials without session tags when a caller has full data access permissions.
   late final pulumi.Output<bool?> allowFullTableExternalDataAccess;
-
   /// Lake Formation relies on a privileged process secured by Amazon EMR or the third party integrator to tag the user's role while assuming it.
   late final pulumi.Output<List<String>> authorizedSessionTagValueLists;
-
   /// Identifier for the Data Catalog. By default, the account ID.
   late final pulumi.Output<String?> catalogId;
-
   /// Up to three configuration blocks of principal permissions for default create database permissions. Detailed below.
-  late final pulumi.Output<List<Map<String, dynamic>>>
-  createDatabaseDefaultPermissions;
-
+  late final pulumi.Output<List<Map<String, dynamic>>> createDatabaseDefaultPermissions;
   /// Up to three configuration blocks of principal permissions for default create table permissions. Detailed below.
-  late final pulumi.Output<List<Map<String, dynamic>>>
-  createTableDefaultPermissions;
-
+  late final pulumi.Output<List<Map<String, dynamic>>> createTableDefaultPermissions;
   /// A list of the account IDs of Amazon Web Services accounts with Amazon EMR clusters that are to perform data filtering.
   late final pulumi.Output<List<String>> externalDataFilteringAllowLists;
-
   /// Key-value map of additional configuration. Valid values for the `CROSS_ACCOUNT_VERSION` key are `"1"`, `"2"`, `"3"`, or `"4"`. `SET_CONTEXT` is also returned with a value of `TRUE`. In a fresh account, prior to configuring, `CROSS_ACCOUNT_VERSION` is `"1"`. Destroying this resource sets the `CROSS_ACCOUNT_VERSION` to `"1"`.
   late final pulumi.Output<Map<String, String>> parameters;
-
   /// Set of ARNs of AWS Lake Formation principals (IAM users or roles) with only view access to the resources.
   late final pulumi.Output<List<String>> readOnlyAdmins;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// List of the resource-owning account IDs that the caller's account can use to share their user access details (user ARNs).
   ///
   /// &gt; **NOTE:** Although optional, not including `admins`, `create_database_default_permissions`, `create_table_default_permissions`, `parameters`, and/or `trusted_resource_owners` results in the setting being cleared.
@@ -696,38 +683,23 @@ class DataLakeSettings extends pulumi.CustomResource {
     DataLakeSettingsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:lakeformation/dataLakeSettings:DataLakeSettings',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:lakeformation/dataLakeSettings:DataLakeSettings',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     admins = registerOutput<List<String>>('admins');
-    allowExternalDataFiltering = registerOutput<bool?>(
-      'allowExternalDataFiltering',
-    );
-    allowFullTableExternalDataAccess = registerOutput<bool?>(
-      'allowFullTableExternalDataAccess',
-    );
-    authorizedSessionTagValueLists = registerOutput<List<String>>(
-      'authorizedSessionTagValueLists',
-    );
+    allowExternalDataFiltering = registerOutput<bool?>('allowExternalDataFiltering');
+    allowFullTableExternalDataAccess = registerOutput<bool?>('allowFullTableExternalDataAccess');
+    authorizedSessionTagValueLists = registerOutput<List<String>>('authorizedSessionTagValueLists');
     catalogId = registerOutput<String?>('catalogId');
-    createDatabaseDefaultPermissions =
-        registerOutput<List<Map<String, dynamic>>>(
-          'createDatabaseDefaultPermissions',
-        );
-    createTableDefaultPermissions = registerOutput<List<Map<String, dynamic>>>(
-      'createTableDefaultPermissions',
-    );
-    externalDataFilteringAllowLists = registerOutput<List<String>>(
-      'externalDataFilteringAllowLists',
-    );
+    createDatabaseDefaultPermissions = registerOutput<List<Map<String, dynamic>>>('createDatabaseDefaultPermissions');
+    createTableDefaultPermissions = registerOutput<List<Map<String, dynamic>>>('createTableDefaultPermissions');
+    externalDataFilteringAllowLists = registerOutput<List<String>>('externalDataFilteringAllowLists');
     parameters = registerOutput<Map<String, String>>('parameters');
     readOnlyAdmins = registerOutput<List<String>>('readOnlyAdmins');
     region = registerOutput<String>('region');
-    trustedResourceOwners = registerOutput<List<String>>(
-      'trustedResourceOwners',
-    );
+    trustedResourceOwners = registerOutput<List<String>>('trustedResourceOwners');
   }
 
   /// Gets an existing [DataLakeSettings] resource's state with the given [name] and [id].
@@ -748,37 +720,22 @@ class DataLakeSettings extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:lakeformation/dataLakeSettings:DataLakeSettings',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:lakeformation/dataLakeSettings:DataLakeSettings',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     admins = registerOutput<List<String>>('admins');
-    allowExternalDataFiltering = registerOutput<bool?>(
-      'allowExternalDataFiltering',
-    );
-    allowFullTableExternalDataAccess = registerOutput<bool?>(
-      'allowFullTableExternalDataAccess',
-    );
-    authorizedSessionTagValueLists = registerOutput<List<String>>(
-      'authorizedSessionTagValueLists',
-    );
+    allowExternalDataFiltering = registerOutput<bool?>('allowExternalDataFiltering');
+    allowFullTableExternalDataAccess = registerOutput<bool?>('allowFullTableExternalDataAccess');
+    authorizedSessionTagValueLists = registerOutput<List<String>>('authorizedSessionTagValueLists');
     catalogId = registerOutput<String?>('catalogId');
-    createDatabaseDefaultPermissions =
-        registerOutput<List<Map<String, dynamic>>>(
-          'createDatabaseDefaultPermissions',
-        );
-    createTableDefaultPermissions = registerOutput<List<Map<String, dynamic>>>(
-      'createTableDefaultPermissions',
-    );
-    externalDataFilteringAllowLists = registerOutput<List<String>>(
-      'externalDataFilteringAllowLists',
-    );
+    createDatabaseDefaultPermissions = registerOutput<List<Map<String, dynamic>>>('createDatabaseDefaultPermissions');
+    createTableDefaultPermissions = registerOutput<List<Map<String, dynamic>>>('createTableDefaultPermissions');
+    externalDataFilteringAllowLists = registerOutput<List<String>>('externalDataFilteringAllowLists');
     parameters = registerOutput<Map<String, String>>('parameters');
     readOnlyAdmins = registerOutput<List<String>>('readOnlyAdmins');
     region = registerOutput<String>('region');
-    trustedResourceOwners = registerOutput<List<String>>(
-      'trustedResourceOwners',
-    );
+    trustedResourceOwners = registerOutput<List<String>>('trustedResourceOwners');
   }
 }

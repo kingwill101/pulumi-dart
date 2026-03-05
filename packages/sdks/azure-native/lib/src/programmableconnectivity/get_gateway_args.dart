@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGatewayArgs {
   /// Azure Programmable Connectivity Gateway Name.
   final pulumi.Input<String> gatewayName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetGatewayArgs].
   /// [gatewayName] Azure Programmable Connectivity Gateway Name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetGatewayArgs({required this.gatewayName, required this.resourceGroupName});
+  GetGatewayArgs({
+    required this.gatewayName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,9 +30,8 @@ class GetGatewayArgs {
   factory GetGatewayArgs.fromMap(Map<String, dynamic> map) {
     return GetGatewayArgs(
       gatewayName: pulumi.Input.fromValue(map['gatewayName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

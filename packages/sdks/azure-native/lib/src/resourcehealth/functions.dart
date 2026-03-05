@@ -11,8 +11,7 @@ import 'list_security_advisory_impacted_resource_by_tenant_id_and_event_id_resul
 /// Other available API versions: 2022-10-01, 2023-07-01-preview, 2023-10-01-preview, 2025-04-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native resourcehealth [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_resourcehealth_list_security_advisory_impacted_resource_by_subscription_id_and_event_id_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdResult>
-listSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventId(
+Future<ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdResult> listSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventId(
   ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -22,9 +21,7 @@ listSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventId(
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdResult.fromMap(
-    result,
-  );
+  return ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdResult.fromMap(result);
 }
 
 /// Lists impacted resources in the tenant by an event (Security Advisory).
@@ -34,8 +31,7 @@ listSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventId(
 /// Other available API versions: 2022-10-01, 2023-07-01-preview, 2023-10-01-preview, 2025-04-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native resourcehealth [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_resourcehealth_list_security_advisory_impacted_resource_by_tenant_id_and_event_id_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListSecurityAdvisoryImpactedResourceByTenantIdAndEventIdResult>
-listSecurityAdvisoryImpactedResourceByTenantIdAndEventId(
+Future<ListSecurityAdvisoryImpactedResourceByTenantIdAndEventIdResult> listSecurityAdvisoryImpactedResourceByTenantIdAndEventId(
   ListSecurityAdvisoryImpactedResourceByTenantIdAndEventIdArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -45,7 +41,5 @@ listSecurityAdvisoryImpactedResourceByTenantIdAndEventId(
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return ListSecurityAdvisoryImpactedResourceByTenantIdAndEventIdResult.fromMap(
-    result,
-  );
+  return ListSecurityAdvisoryImpactedResourceByTenantIdAndEventIdResult.fromMap(result);
 }

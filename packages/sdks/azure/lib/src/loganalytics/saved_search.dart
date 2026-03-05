@@ -221,25 +221,18 @@ import 'saved_search_state.dart';
 class SavedSearch extends pulumi.CustomResource {
   /// The category that the Saved Search will be listed under. Changing this forces a new resource to be created.
   late final pulumi.Output<String> category;
-
   /// The name that Saved Search will be displayed as. Changing this forces a new resource to be created.
   late final pulumi.Output<String> displayName;
-
   /// The function alias if the query serves as a function. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> functionAlias;
-
   /// The function parameters if the query serves as a function. Changing this forces a new resource to be created. For more examples and proper syntax please refer to [this document](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/functions/user-defined-functions).
   late final pulumi.Output<List<String>?> functionParameters;
-
   /// Specifies the ID of the Log Analytics Workspace that the Saved Search will be associated with. Changing this forces a new resource to be created.
   late final pulumi.Output<String> logAnalyticsWorkspaceId;
-
   /// Specifies the name of the Log Analytics Saved Search. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The query expression for the saved search. Changing this forces a new resource to be created.
   late final pulumi.Output<String> query;
-
   /// A mapping of tags which should be assigned to the Logs Analytics Saved Search. Changing this forces a new resource to be created.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -252,11 +245,11 @@ class SavedSearch extends pulumi.CustomResource {
     SavedSearchArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:loganalytics/savedSearch:SavedSearch',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:loganalytics/savedSearch:SavedSearch',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     category = registerOutput<String>('category');
     displayName = registerOutput<String>('displayName');
     functionAlias = registerOutput<String?>('functionAlias');
@@ -285,11 +278,11 @@ class SavedSearch extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:loganalytics/savedSearch:SavedSearch',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:loganalytics/savedSearch:SavedSearch',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     category = registerOutput<String>('category');
     displayName = registerOutput<String>('displayName');
     functionAlias = registerOutput<String?>('functionAlias');

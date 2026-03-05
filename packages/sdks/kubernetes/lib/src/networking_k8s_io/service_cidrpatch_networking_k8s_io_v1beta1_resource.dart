@@ -11,23 +11,17 @@ import 'service_cidrstatus_patch_networking_k8s_io_v1beta1.dart';
 /// [Server-Side Apply Docs](https://www.pulumi.com/registry/packages/kubernetes/how-to-guides/managing-resources-with-server-side-apply/) for
 /// additional information about using Server-Side Apply to manage Kubernetes resources with Pulumi.
 /// ServiceCIDR defines a range of IP addresses using CIDR format (e.g. 192.168.0.0/24 or 2001:db2::/64). This range is used to allocate ClusterIPs to Service objects.
-class ServiceCIDRPatchNetworkingK8sIoV1beta1Resource
-    extends pulumi.CustomResource {
+class ServiceCIDRPatchNetworkingK8sIoV1beta1Resource extends pulumi.CustomResource {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   late final pulumi.Output<String?> apiVersion;
-
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   late final pulumi.Output<String?> kind;
-
   /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   late final pulumi.Output<ObjectMetaPatch?> metadata;
-
   /// spec is the desired state of the ServiceCIDR. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
   late final pulumi.Output<ServiceCIDRSpecPatchNetworkingK8sIoV1beta1?> spec;
-
   /// status represents the current state of the ServiceCIDR. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-  late final pulumi.Output<ServiceCIDRStatusPatchNetworkingK8sIoV1beta1?>
-  status;
+  late final pulumi.Output<ServiceCIDRStatusPatchNetworkingK8sIoV1beta1?> status;
 
   /// Creates a new [ServiceCIDRPatchNetworkingK8sIoV1beta1Resource].
   /// [name] The Pulumi resource name.
@@ -38,42 +32,15 @@ class ServiceCIDRPatchNetworkingK8sIoV1beta1Resource
     ServiceCIDRPatchNetworkingK8sIoV1beta1Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'kubernetes:networking.k8s.io/v1beta1:ServiceCIDRPatch',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'kubernetes:networking.k8s.io/v1beta1:ServiceCIDRPatch',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiVersion = registerOutput<String?>('apiVersion');
     kind = registerOutput<String?>('kind');
-    metadata = registerOutput<ObjectMetaPatch?>(
-      'metadata',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ObjectMetaPatch.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    spec = registerOutput<ServiceCIDRSpecPatchNetworkingK8sIoV1beta1?>(
-      'spec',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceCIDRSpecPatchNetworkingK8sIoV1beta1.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    status = registerOutput<ServiceCIDRStatusPatchNetworkingK8sIoV1beta1?>(
-      'status',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceCIDRStatusPatchNetworkingK8sIoV1beta1.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spec = registerOutput<ServiceCIDRSpecPatchNetworkingK8sIoV1beta1?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceCIDRSpecPatchNetworkingK8sIoV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<ServiceCIDRStatusPatchNetworkingK8sIoV1beta1?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceCIDRStatusPatchNetworkingK8sIoV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

@@ -14,3 +14,4 @@ enum SAPDatabaseScaleMethod {
     throw ArgumentError('Unknown SAPDatabaseScaleMethod value: $value');
   }
 }
+

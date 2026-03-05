@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CacheBlobTargetState {
   /// The name of the access policy applied to this target. Defaults to `default`.
   final pulumi.Input<String>? accessPolicyName;
-
   /// The name HPC Cache, which the HPC Cache Blob Target will be added to. Changing this forces a new resource to be created.
   final pulumi.Input<String>? cacheName;
-
   /// The name of the HPC Cache Blob Target. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// The client-facing file path of the HPC Cache Blob Target.
   final pulumi.Input<String>? namespacePath;
-
   /// The name of the Resource Group in which to create the HPC Cache Blob Target. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
-
   /// The Resource Manager ID of the Storage Container used as the HPC Cache Blob Target. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** This is the Resource Manager ID of the Storage Container, rather than the regular ID - and can be accessed on the `azure.storage.Container` Data Source/Resource as `resource_manager_id`.
@@ -53,36 +48,13 @@ class CacheBlobTargetState {
 
   factory CacheBlobTargetState.fromMap(Map<String, dynamic> map) {
     return CacheBlobTargetState(
-      accessPolicyName: (() {
-        final guardedValue = map['accessPolicyName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      cacheName: (() {
-        final guardedValue = map['cacheName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      namespacePath: (() {
-        final guardedValue = map['namespacePath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: (() {
-        final guardedValue = map['resourceGroupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      storageContainerId: (() {
-        final guardedValue = map['storageContainerId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accessPolicyName: (() { final guardedValue = map['accessPolicyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      cacheName: (() { final guardedValue = map['cacheName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      namespacePath: (() { final guardedValue = map['namespacePath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageContainerId: (() { final guardedValue = map['storageContainerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

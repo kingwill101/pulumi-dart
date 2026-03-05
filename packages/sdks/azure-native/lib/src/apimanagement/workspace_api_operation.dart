@@ -324,34 +324,24 @@ import 'workspace_api_operation_args.dart';
 class WorkspaceApiOperation extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Description of the operation. May include HTML formatting tags.
   late final pulumi.Output<String?> description;
-
   /// Operation Name.
   late final pulumi.Output<String> displayName;
-
   /// A Valid HTTP Operation Method. Typical Http Methods like GET, PUT, POST but not limited by only them.
   late final pulumi.Output<String> method;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Operation Policies
   late final pulumi.Output<String?> policies;
-
   /// An entity containing request details.
   late final pulumi.Output<RequestContractResponse?> request;
-
   /// Array of Operation responses.
   late final pulumi.Output<List<Map<String, dynamic>>?> responses;
-
   /// Collection of URL template parameters.
   late final pulumi.Output<List<Map<String, dynamic>>?> templateParameters;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Relative URL template identifying the target resource for this operation. May include parameters. Example: /customers/{cid}/orders/{oid}/?date={date}
   late final pulumi.Output<String> urlTemplate;
 
@@ -364,31 +354,20 @@ class WorkspaceApiOperation extends pulumi.CustomResource {
     WorkspaceApiOperationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:apimanagement:WorkspaceApiOperation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:apimanagement:WorkspaceApiOperation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     method = registerOutput<String>('method');
     this.name = registerOutput<String>('name');
     policies = registerOutput<String?>('policies');
-    request = registerOutput<RequestContractResponse?>(
-      'request',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RequestContractResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    request = registerOutput<RequestContractResponse?>('request', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RequestContractResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     responses = registerOutput<List<Map<String, dynamic>>?>('responses');
-    templateParameters = registerOutput<List<Map<String, dynamic>>?>(
-      'templateParameters',
-    );
+    templateParameters = registerOutput<List<Map<String, dynamic>>?>('templateParameters');
     type = registerOutput<String>('type');
     urlTemplate = registerOutput<String>('urlTemplate');
   }

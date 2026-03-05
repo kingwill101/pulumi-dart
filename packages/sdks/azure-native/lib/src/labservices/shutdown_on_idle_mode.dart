@@ -16,3 +16,4 @@ enum ShutdownOnIdleMode {
     throw ArgumentError('Unknown ShutdownOnIdleMode value: $value');
   }
 }
+

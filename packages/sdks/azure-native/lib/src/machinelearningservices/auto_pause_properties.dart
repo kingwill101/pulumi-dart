@@ -10,7 +10,10 @@ class AutoPauseProperties {
   /// Creates a new [AutoPauseProperties].
   /// [delayInMinutes] Optional.
   /// [enabled] Optional.
-  AutoPauseProperties({this.delayInMinutes, this.enabled});
+  AutoPauseProperties({
+    this.delayInMinutes,
+    this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,16 +24,9 @@ class AutoPauseProperties {
 
   factory AutoPauseProperties.fromMap(Map<String, dynamic> map) {
     return AutoPauseProperties(
-      delayInMinutes: (() {
-        final guardedValue = map['delayInMinutes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      delayInMinutes: (() { final guardedValue = map['delayInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

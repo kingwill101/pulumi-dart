@@ -674,88 +674,60 @@ import 'transformation_response.dart';
 class StreamingJob extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The cluster which streaming jobs will run on.
   late final pulumi.Output<ClusterInfoResponse?> cluster;
-
   /// Controls certain runtime behaviors of the streaming job.
   late final pulumi.Output<String?> compatibilityLevel;
-
   /// Valid values are JobStorageAccount and SystemAccount. If set to JobStorageAccount, this requires the user to also specify jobStorageAccount property. .
   late final pulumi.Output<String?> contentStoragePolicy;
-
   /// Value is an ISO-8601 formatted UTC timestamp indicating when the streaming job was created.
   late final pulumi.Output<String> createdDate;
-
   /// The data locale of the stream analytics job. Value should be the name of a supported .NET Culture from the set https://msdn.microsoft.com/en-us/library/system.globalization.culturetypes(v=vs.110).aspx. Defaults to 'en-US' if none specified.
   late final pulumi.Output<String?> dataLocale;
-
   /// The current entity tag for the streaming job. This is an opaque string. You can use it to detect whether the resource has changed between requests. You can also use it in the If-Match or If-None-Match headers for write operations for optimistic concurrency.
   late final pulumi.Output<String> etag;
-
   /// The maximum tolerable delay in seconds where events arriving late could be included.  Supported range is -1 to 1814399 (20.23:59:59 days) and -1 is used to specify wait indefinitely. If the property is absent, it is interpreted to have a value of -1.
   late final pulumi.Output<int?> eventsLateArrivalMaxDelayInSeconds;
-
   /// The maximum tolerable delay in seconds where out-of-order events can be adjusted to be back in order.
   late final pulumi.Output<int?> eventsOutOfOrderMaxDelayInSeconds;
-
   /// Indicates the policy to apply to events that arrive out of order in the input event stream.
   late final pulumi.Output<String?> eventsOutOfOrderPolicy;
-
   /// A list of one or more functions for the streaming job. The name property for each function is required when specifying this property in a PUT request. This property cannot be modify via a PATCH operation. You must use the PATCH API available for the individual transformation.
   late final pulumi.Output<List<Map<String, dynamic>>?> functions;
-
   /// Describes the system-assigned managed identity assigned to this job that can be used to authenticate with inputs and outputs.
   late final pulumi.Output<IdentityResponse?> identity;
-
   /// A list of one or more inputs to the streaming job. The name property for each input is required when specifying this property in a PUT request. This property cannot be modify via a PATCH operation. You must use the PATCH API available for the individual input.
   late final pulumi.Output<List<Map<String, dynamic>>?> inputs;
-
   /// A GUID uniquely identifying the streaming job. This GUID is generated upon creation of the streaming job.
   late final pulumi.Output<String> jobId;
-
   /// Describes the state of the streaming job.
   late final pulumi.Output<String> jobState;
-
   /// The properties that are associated with an Azure Storage account with MSI
   late final pulumi.Output<JobStorageAccountResponse?> jobStorageAccount;
-
   /// Describes the type of the job. Valid modes are `Cloud` and 'Edge'.
   late final pulumi.Output<String?> jobType;
-
   /// Value is either an ISO-8601 formatted timestamp indicating the last output event time of the streaming job or null indicating that output has not yet been produced. In case of multiple outputs or multiple streams, this shows the latest value in that set.
   late final pulumi.Output<String> lastOutputEventTime;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String?> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Indicates the policy to apply to events that arrive at the output and cannot be written to the external storage due to being malformed (missing column values, column values of wrong type or size).
   late final pulumi.Output<String?> outputErrorPolicy;
-
   /// This property should only be utilized when it is desired that the job be started immediately upon creation. Value may be JobStartTime, CustomTime, or LastOutputEventTime to indicate whether the starting point of the output event stream should start whenever the job is started, start at a custom user time stamp specified via the outputStartTime property, or start from the last event output time.
   late final pulumi.Output<String?> outputStartMode;
-
   /// Value is either an ISO-8601 formatted time stamp that indicates the starting point of the output event stream, or null to indicate that the output event stream will start whenever the streaming job is started. This property must have a value if outputStartMode is set to CustomTime.
   late final pulumi.Output<String?> outputStartTime;
-
   /// A list of one or more outputs for the streaming job. The name property for each output is required when specifying this property in a PUT request. This property cannot be modify via a PATCH operation. You must use the PATCH API available for the individual output.
   late final pulumi.Output<List<Map<String, dynamic>>?> outputs;
-
   /// Describes the provisioning status of the streaming job.
   late final pulumi.Output<String> provisioningState;
-
   /// Describes the SKU of the streaming job. Required on PUT (CreateOrReplace) requests.
   late final pulumi.Output<SkuResponse?> sku;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Indicates the query and the number of streaming units to use for the streaming job. The name property of the transformation is required when specifying this property in a PUT request. This property cannot be modify via a PATCH operation. You must use the PATCH API available for the individual transformation.
   late final pulumi.Output<TransformationResponse?> transformation;
-
   /// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
   late final pulumi.Output<String> type;
 
@@ -768,58 +740,27 @@ class StreamingJob extends pulumi.CustomResource {
     StreamingJobArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:streamanalytics:StreamingJob',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:streamanalytics:StreamingJob',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    cluster = registerOutput<ClusterInfoResponse?>(
-      'cluster',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterInfoResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    cluster = registerOutput<ClusterInfoResponse?>('cluster', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     compatibilityLevel = registerOutput<String?>('compatibilityLevel');
     contentStoragePolicy = registerOutput<String?>('contentStoragePolicy');
     createdDate = registerOutput<String>('createdDate');
     dataLocale = registerOutput<String?>('dataLocale');
     etag = registerOutput<String>('etag');
-    eventsLateArrivalMaxDelayInSeconds = registerOutput<int?>(
-      'eventsLateArrivalMaxDelayInSeconds',
-    );
-    eventsOutOfOrderMaxDelayInSeconds = registerOutput<int?>(
-      'eventsOutOfOrderMaxDelayInSeconds',
-    );
+    eventsLateArrivalMaxDelayInSeconds = registerOutput<int?>('eventsLateArrivalMaxDelayInSeconds');
+    eventsOutOfOrderMaxDelayInSeconds = registerOutput<int?>('eventsOutOfOrderMaxDelayInSeconds');
     eventsOutOfOrderPolicy = registerOutput<String?>('eventsOutOfOrderPolicy');
     functions = registerOutput<List<Map<String, dynamic>>?>('functions');
-    identity = registerOutput<IdentityResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<IdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     inputs = registerOutput<List<Map<String, dynamic>>?>('inputs');
     jobId = registerOutput<String>('jobId');
     jobState = registerOutput<String>('jobState');
-    jobStorageAccount = registerOutput<JobStorageAccountResponse?>(
-      'jobStorageAccount',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return JobStorageAccountResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    jobStorageAccount = registerOutput<JobStorageAccountResponse?>('jobStorageAccount', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobStorageAccountResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     jobType = registerOutput<String?>('jobType');
     lastOutputEventTime = registerOutput<String>('lastOutputEventTime');
     location = registerOutput<String?>('location');
@@ -829,27 +770,9 @@ class StreamingJob extends pulumi.CustomResource {
     outputStartTime = registerOutput<String?>('outputStartTime');
     outputs = registerOutput<List<Map<String, dynamic>>?>('outputs');
     provisioningState = registerOutput<String>('provisioningState');
-    sku = registerOutput<SkuResponse?>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
-    transformation = registerOutput<TransformationResponse?>(
-      'transformation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TransformationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    transformation = registerOutput<TransformationResponse?>('transformation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TransformationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

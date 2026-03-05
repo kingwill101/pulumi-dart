@@ -131,8 +131,10 @@ Future<GetUserSettingsWithLocationResult> getUserSettingsWithLocation(
 ///
 /// Other available API versions: 2020-09-01-preview, 2025-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native portal [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [options] Invoke options controlling this call.
-Future<ListListTenantConfigurationViolationResult>
-listListTenantConfigurationViolation({pulumi.InvokeOptions? options}) async {
+Future<ListListTenantConfigurationViolationResult> listListTenantConfigurationViolation(
+  {
+  pulumi.InvokeOptions? options,
+}) async {
   final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'azure-native:portal:listListTenantConfigurationViolation',

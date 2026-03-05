@@ -8,17 +8,20 @@ class VirtualNodeSpecListenerTlsCertificateAcm {
 
   /// Creates a new [VirtualNodeSpecListenerTlsCertificateAcm].
   /// [certificateArn] ARN for the certificate.
-  VirtualNodeSpecListenerTlsCertificateAcm({required this.certificateArn});
+  VirtualNodeSpecListenerTlsCertificateAcm({
+    required this.certificateArn,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'certificateArn': certificateArn};
+    return <String, dynamic>{
+      'certificateArn': certificateArn,
+    };
   }
 
-  factory VirtualNodeSpecListenerTlsCertificateAcm.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VirtualNodeSpecListenerTlsCertificateAcm.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecListenerTlsCertificateAcm(
       certificateArn: pulumi.Input.fromValue(map['certificateArn'] as String),
     );
   }
 }
+

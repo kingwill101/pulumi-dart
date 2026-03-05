@@ -536,19 +536,15 @@ import 'response_policy_state.dart';
 class ResponsePolicy extends pulumi.CustomResource {
   /// The description of the response policy, such as `My new response policy`.
   late final pulumi.Output<String?> description;
-
   /// The list of Google Kubernetes Engine clusters that can see this zone.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> gkeClusters;
-
   /// The list of network names specifying networks to which this policy is applied.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> networks;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The user assigned name for this Response Policy, such as `myresponsepolicy`.
   late final pulumi.Output<String> responsePolicyName;
 
@@ -561,11 +557,11 @@ class ResponsePolicy extends pulumi.CustomResource {
     ResponsePolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:dns/responsePolicy:ResponsePolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:dns/responsePolicy:ResponsePolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     gkeClusters = registerOutput<List<Map<String, dynamic>>?>('gkeClusters');
     networks = registerOutput<List<Map<String, dynamic>>?>('networks');
@@ -591,11 +587,11 @@ class ResponsePolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:dns/responsePolicy:ResponsePolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:dns/responsePolicy:ResponsePolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     gkeClusters = registerOutput<List<Map<String, dynamic>>?>('gkeClusters');
     networks = registerOutput<List<Map<String, dynamic>>?>('networks');

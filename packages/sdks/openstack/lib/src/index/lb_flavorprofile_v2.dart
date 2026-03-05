@@ -251,15 +251,12 @@ class LbFlavorprofileV2 extends pulumi.CustomResource {
   /// can be used for readability as shown in the example above.
   /// Changing this updates the existing flavorprofile.
   late final pulumi.Output<String> flavorData;
-
   /// Name of the flavorprofile. Changing this updates the existing
   /// flavorprofile.
   late final pulumi.Output<String> name;
-
   /// The provider_name that the flavor_profile will use.
   /// Changing this updates the existing flavorprofile.
   late final pulumi.Output<String> providerName;
-
   /// The region in which to obtain the V2 Networking client.
   /// A Networking client is needed to create an LB member. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
@@ -275,11 +272,11 @@ class LbFlavorprofileV2 extends pulumi.CustomResource {
     LbFlavorprofileV2Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:index/lbFlavorprofileV2:LbFlavorprofileV2',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:index/lbFlavorprofileV2:LbFlavorprofileV2',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     flavorData = registerOutput<String>('flavorData');
     this.name = registerOutput<String>('name');
     providerName = registerOutput<String>('providerName');
@@ -304,11 +301,11 @@ class LbFlavorprofileV2 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:index/lbFlavorprofileV2:LbFlavorprofileV2',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:index/lbFlavorprofileV2:LbFlavorprofileV2',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     flavorData = registerOutput<String>('flavorData');
     this.name = registerOutput<String>('name');
     providerName = registerOutput<String>('providerName');

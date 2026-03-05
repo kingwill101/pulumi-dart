@@ -10,17 +10,20 @@ class RoleBasedBuiltInAuthorizationPolicyResponse {
 
   /// Creates a new [RoleBasedBuiltInAuthorizationPolicyResponse].
   /// [type] Authorization scheme type.
-  RoleBasedBuiltInAuthorizationPolicyResponse({required this.type});
+  RoleBasedBuiltInAuthorizationPolicyResponse({
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': type};
+    return <String, dynamic>{
+      'type': type,
+    };
   }
 
-  factory RoleBasedBuiltInAuthorizationPolicyResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RoleBasedBuiltInAuthorizationPolicyResponse.fromMap(Map<String, dynamic> map) {
     return RoleBasedBuiltInAuthorizationPolicyResponse(
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

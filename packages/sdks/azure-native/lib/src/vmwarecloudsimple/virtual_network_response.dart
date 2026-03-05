@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualNetworkResponse {
   /// can be used in vm creation/deletion
   final pulumi.Input<bool> assignable;
-
   /// virtual network id (privateCloudId:vsphereId)
   final pulumi.Input<String> id;
-
   /// Azure region
   final pulumi.Input<String> location;
-
   /// {VirtualNetworkName}
   final pulumi.Input<String> name;
-
   /// The Private Cloud id
   final pulumi.Input<String> privateCloudId;
-
   /// {resourceProviderNamespace}/{resourceType}
   final pulumi.Input<String> type;
 
@@ -60,3 +55,4 @@ class VirtualNetworkResponse {
     );
   }
 }
+

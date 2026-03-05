@@ -260,22 +260,13 @@ class DrtAccessRoleArnAssociation extends pulumi.CustomResource {
     DrtAccessRoleArnAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:shield/drtAccessRoleArnAssociation:DrtAccessRoleArnAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:shield/drtAccessRoleArnAssociation:DrtAccessRoleArnAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     roleArn = registerOutput<String>('roleArn');
-    timeouts = registerOutput<DrtAccessRoleArnAssociationTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DrtAccessRoleArnAssociationTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<DrtAccessRoleArnAssociationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DrtAccessRoleArnAssociationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [DrtAccessRoleArnAssociation] resource's state with the given [name] and [id].
@@ -296,21 +287,12 @@ class DrtAccessRoleArnAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:shield/drtAccessRoleArnAssociation:DrtAccessRoleArnAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:shield/drtAccessRoleArnAssociation:DrtAccessRoleArnAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     roleArn = registerOutput<String>('roleArn');
-    timeouts = registerOutput<DrtAccessRoleArnAssociationTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DrtAccessRoleArnAssociationTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<DrtAccessRoleArnAssociationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DrtAccessRoleArnAssociationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

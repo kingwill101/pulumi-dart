@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConfigurationPropertiesResponse {
   /// When flag is set to true Markdown tile will require external storage configuration (URI). The inline content configuration will be prohibited.
   final pulumi.Input<bool>? enforcePrivateMarkdownStorage;
-
   /// The status of the last operation.
   final pulumi.Input<String> provisioningState;
 
@@ -27,14 +26,9 @@ class ConfigurationPropertiesResponse {
 
   factory ConfigurationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ConfigurationPropertiesResponse(
-      enforcePrivateMarkdownStorage: (() {
-        final guardedValue = map['enforcePrivateMarkdownStorage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
+      enforcePrivateMarkdownStorage: (() { final guardedValue = map['enforcePrivateMarkdownStorage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
     );
   }
 }
+

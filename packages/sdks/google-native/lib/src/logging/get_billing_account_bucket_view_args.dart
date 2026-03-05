@@ -35,12 +35,11 @@ class GetBillingAccountBucketViewArgs {
 
   factory GetBillingAccountBucketViewArgs.fromMap(Map<String, dynamic> map) {
     return GetBillingAccountBucketViewArgs(
-      billingAccountId: pulumi.Input.fromValue(
-        map['billingAccountId'] as String,
-      ),
+      billingAccountId: pulumi.Input.fromValue(map['billingAccountId'] as String),
       bucketId: pulumi.Input.fromValue(map['bucketId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
       viewId: pulumi.Input.fromValue(map['viewId'] as String),
     );
   }
 }
+

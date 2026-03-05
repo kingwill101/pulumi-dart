@@ -9,13 +9,20 @@ class Aws {
 
   /// Creates a new [Aws].
   /// [accountId] The AWS account ID.
-  Aws({required this.accountId});
+  Aws({
+    required this.accountId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'accountId': accountId};
+    return <String, dynamic>{
+      'accountId': accountId,
+    };
   }
 
   factory Aws.fromMap(Map<String, dynamic> map) {
-    return Aws(accountId: pulumi.Input.fromValue(map['accountId'] as String));
+    return Aws(
+      accountId: pulumi.Input.fromValue(map['accountId'] as String),
+    );
   }
 }
+

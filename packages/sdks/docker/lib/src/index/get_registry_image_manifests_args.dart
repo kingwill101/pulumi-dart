@@ -10,10 +10,8 @@ import 'get_registry_image_manifests_auth_config.dart';
 class GetRegistryImageManifestsArgs {
   /// Authentication configuration for the Docker registry. It is only used for this resource.
   final pulumi.Input<GetRegistryImageManifestsAuthConfig>? authConfig;
-
   /// If `true`, the verification of TLS certificates of the server/registry is disabled. Defaults to `false`
   final pulumi.Input<bool>? insecureSkipVerify;
-
   /// The name of the Docker image, including any tags. e.g. `alpine:latest`
   final pulumi.Input<String> name;
 
@@ -29,11 +27,7 @@ class GetRegistryImageManifestsArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            GetRegistryImageManifestsAuthConfig,
-            Map<String, dynamic>
-          >(authConfig, (value) => value.toMap()),
+      'authConfig': ?pulumi.Input.mapOptionalInputValue<GetRegistryImageManifestsAuthConfig, Map<String, dynamic>>(authConfig, (value) => value.toMap()),
       'insecureSkipVerify': ?insecureSkipVerify,
       'name': name,
     };
@@ -41,21 +35,10 @@ class GetRegistryImageManifestsArgs {
 
   factory GetRegistryImageManifestsArgs.fromMap(Map<String, dynamic> map) {
     return GetRegistryImageManifestsArgs(
-      authConfig: (() {
-        final guardedValue = map['authConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GetRegistryImageManifestsAuthConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      insecureSkipVerify: (() {
-        final guardedValue = map['insecureSkipVerify'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      authConfig: (() { final guardedValue = map['authConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GetRegistryImageManifestsAuthConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      insecureSkipVerify: (() { final guardedValue = map['insecureSkipVerify']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFlexibleServerMaintenanceWindow {
   /// The day of week of the maintenance window.
   final pulumi.Input<int> dayOfWeek;
-
   /// The start hour of the maintenance window.
   final pulumi.Input<int> startHour;
-
   /// The start minute of the maintenance window.
   final pulumi.Input<int> startMinute;
 
@@ -38,3 +36,4 @@ class GetFlexibleServerMaintenanceWindow {
     );
   }
 }
+

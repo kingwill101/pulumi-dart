@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CxGenerativeSettingsGenerativeSafetySettingsBannedPhrase {
   /// Language code of the phrase.
   final pulumi.Input<String> languageCode;
-
   /// Text input which can be used for prompt or banned phrases.
   final pulumi.Input<String> text;
 
@@ -18,15 +17,17 @@ class CxGenerativeSettingsGenerativeSafetySettingsBannedPhrase {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'languageCode': languageCode, 'text': text};
+    return <String, dynamic>{
+      'languageCode': languageCode,
+      'text': text,
+    };
   }
 
-  factory CxGenerativeSettingsGenerativeSafetySettingsBannedPhrase.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CxGenerativeSettingsGenerativeSafetySettingsBannedPhrase.fromMap(Map<String, dynamic> map) {
     return CxGenerativeSettingsGenerativeSafetySettingsBannedPhrase(
       languageCode: pulumi.Input.fromValue(map['languageCode'] as String),
       text: pulumi.Input.fromValue(map['text'] as String),
     );
   }
 }
+

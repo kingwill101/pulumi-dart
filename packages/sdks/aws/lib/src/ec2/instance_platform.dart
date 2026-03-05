@@ -20,3 +20,4 @@ enum InstancePlatform {
     throw ArgumentError('Unknown InstancePlatform value: $value');
   }
 }
+

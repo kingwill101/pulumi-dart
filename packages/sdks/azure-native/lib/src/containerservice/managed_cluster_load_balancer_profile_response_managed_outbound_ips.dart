@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedClusterLoadBalancerProfileResponseManagedOutboundIPs {
   /// The desired number of IPv4 outbound IPs created/managed by Azure for the cluster load balancer. Allowed values must be in the range of 1 to 100 (inclusive). The default value is 1.
   final pulumi.Input<int>? count;
-
   /// The desired number of IPv6 outbound IPs created/managed by Azure for the cluster load balancer. Allowed values must be in the range of 1 to 100 (inclusive). The default value is 0 for single-stack and 1 for dual-stack.
   final pulumi.Input<int>? countIPv6;
 
@@ -19,23 +18,17 @@ class ManagedClusterLoadBalancerProfileResponseManagedOutboundIPs {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'count': ?count, 'countIPv6': ?countIPv6};
+    return <String, dynamic>{
+      'count': ?count,
+      'countIPv6': ?countIPv6,
+    };
   }
 
-  factory ManagedClusterLoadBalancerProfileResponseManagedOutboundIPs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ManagedClusterLoadBalancerProfileResponseManagedOutboundIPs.fromMap(Map<String, dynamic> map) {
     return ManagedClusterLoadBalancerProfileResponseManagedOutboundIPs(
-      count: (() {
-        final guardedValue = map['count'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      countIPv6: (() {
-        final guardedValue = map['countIPv6'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      countIPv6: (() { final guardedValue = map['countIPv6']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

@@ -147,32 +147,22 @@ import 'recording_configuration_thumbnail_configuration.dart';
 class RecordingConfiguration extends pulumi.CustomResource {
   /// ARN of the Recording Configuration.
   late final pulumi.Output<String> arn;
-
   /// Object containing destination configuration for where recorded video will be stored.
-  late final pulumi.Output<RecordingConfigurationDestinationConfiguration>
-  destinationConfiguration;
-
+  late final pulumi.Output<RecordingConfigurationDestinationConfiguration> destinationConfiguration;
   /// Recording Configuration name.
   late final pulumi.Output<String> name;
-
   /// If a broadcast disconnects and then reconnects within the specified interval, the multiple streams will be considered a single broadcast and merged together.
   late final pulumi.Output<int> recordingReconnectWindowSeconds;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The current state of the Recording Configuration.
   late final pulumi.Output<String> state;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// Object containing information to enable/disable the recording of thumbnails for a live session and modify the interval at which thumbnails are generated for the live session.
-  late final pulumi.Output<RecordingConfigurationThumbnailConfiguration>
-  thumbnailConfiguration;
+  late final pulumi.Output<RecordingConfigurationThumbnailConfiguration> thumbnailConfiguration;
 
   /// Creates a new [RecordingConfiguration].
   /// [name] The Pulumi resource name.
@@ -183,42 +173,20 @@ class RecordingConfiguration extends pulumi.CustomResource {
     RecordingConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ivs/recordingConfiguration:RecordingConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ivs/recordingConfiguration:RecordingConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    destinationConfiguration =
-        registerOutput<RecordingConfigurationDestinationConfiguration>(
-          'destinationConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return RecordingConfigurationDestinationConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    destinationConfiguration = registerOutput<RecordingConfigurationDestinationConfiguration>('destinationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RecordingConfigurationDestinationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    recordingReconnectWindowSeconds = registerOutput<int>(
-      'recordingReconnectWindowSeconds',
-    );
+    recordingReconnectWindowSeconds = registerOutput<int>('recordingReconnectWindowSeconds');
     region = registerOutput<String>('region');
     state = registerOutput<String>('state');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    thumbnailConfiguration =
-        registerOutput<RecordingConfigurationThumbnailConfiguration>(
-          'thumbnailConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return RecordingConfigurationThumbnailConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    thumbnailConfiguration = registerOutput<RecordingConfigurationThumbnailConfiguration>('thumbnailConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RecordingConfigurationThumbnailConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [RecordingConfiguration] resource's state with the given [name] and [id].
@@ -239,41 +207,19 @@ class RecordingConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ivs/recordingConfiguration:RecordingConfiguration',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ivs/recordingConfiguration:RecordingConfiguration',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    destinationConfiguration =
-        registerOutput<RecordingConfigurationDestinationConfiguration>(
-          'destinationConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return RecordingConfigurationDestinationConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    destinationConfiguration = registerOutput<RecordingConfigurationDestinationConfiguration>('destinationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RecordingConfigurationDestinationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    recordingReconnectWindowSeconds = registerOutput<int>(
-      'recordingReconnectWindowSeconds',
-    );
+    recordingReconnectWindowSeconds = registerOutput<int>('recordingReconnectWindowSeconds');
     region = registerOutput<String>('region');
     this.state = registerOutput<String>('state');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    thumbnailConfiguration =
-        registerOutput<RecordingConfigurationThumbnailConfiguration>(
-          'thumbnailConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return RecordingConfigurationThumbnailConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    thumbnailConfiguration = registerOutput<RecordingConfigurationThumbnailConfiguration>('thumbnailConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RecordingConfigurationThumbnailConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

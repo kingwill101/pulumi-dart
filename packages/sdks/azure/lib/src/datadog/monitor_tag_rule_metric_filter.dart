@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MonitorTagRuleMetricFilter {
   /// Allowed values Include or Exclude.
   final pulumi.Input<String> action;
-
   /// Name of the Tag.
   final pulumi.Input<String> name;
-
   /// Value of the Tag.
   final pulumi.Input<String> value;
 
@@ -23,7 +21,11 @@ class MonitorTagRuleMetricFilter {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'action': action, 'name': name, 'value': value};
+    return <String, dynamic>{
+      'action': action,
+      'name': name,
+      'value': value,
+    };
   }
 
   factory MonitorTagRuleMetricFilter.fromMap(Map<String, dynamic> map) {
@@ -34,3 +36,4 @@ class MonitorTagRuleMetricFilter {
     );
   }
 }
+

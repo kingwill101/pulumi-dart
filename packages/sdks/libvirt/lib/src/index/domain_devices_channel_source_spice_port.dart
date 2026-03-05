@@ -8,17 +8,20 @@ class DomainDevicesChannelSourceSpicePort {
 
   /// Creates a new [DomainDevicesChannelSourceSpicePort].
   /// [channel] Sets the channel attribute for the SPICE port in the random number generator backend.
-  DomainDevicesChannelSourceSpicePort({required this.channel});
+  DomainDevicesChannelSourceSpicePort({
+    required this.channel,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'channel': channel};
+    return <String, dynamic>{
+      'channel': channel,
+    };
   }
 
-  factory DomainDevicesChannelSourceSpicePort.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDevicesChannelSourceSpicePort.fromMap(Map<String, dynamic> map) {
     return DomainDevicesChannelSourceSpicePort(
       channel: pulumi.Input.fromValue(map['channel'] as String),
     );
   }
 }
+

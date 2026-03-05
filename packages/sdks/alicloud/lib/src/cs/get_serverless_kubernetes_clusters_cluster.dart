@@ -5,33 +5,23 @@ import 'get_serverless_kubernetes_clusters_cluster_connections.dart';
 
 class GetServerlessKubernetesClustersCluster {
   /// Map of serverless cluster connection information. It contains several attributes to `Block Connections`.
-  final pulumi.Input<GetServerlessKubernetesClustersClusterConnections>
-  connections;
-
+  final pulumi.Input<GetServerlessKubernetesClustersClusterConnections> connections;
   /// Whether the cluster support delete protection.
   final pulumi.Input<bool> deletionProtection;
-
   /// Whether to create internet eip for API Server.
   final pulumi.Input<bool> endpointPublicAccessEnabled;
-
   /// The ID of the container cluster.
   final pulumi.Input<String> id;
-
   /// The name of the container cluster.
   final pulumi.Input<String> name;
-
   /// The ID of nat gateway used to launch kubernetes cluster.
   final pulumi.Input<String> natGatewayId;
-
   /// The ID of security group where the current cluster  is located.
   final pulumi.Input<String> securityGroupId;
-
   /// A map of tags assigned to the kubernetes cluster.
   final pulumi.Input<Map<String, String>> tags;
-
   /// The ID of VPC where the current cluster is located.
   final pulumi.Input<String> vpcId;
-
   /// The ID of vSwitch where the current cluster is located.
   final pulumi.Input<String> vswitchId;
 
@@ -61,11 +51,7 @@ class GetServerlessKubernetesClustersCluster {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connections':
-          pulumi.Input.mapInputValue<
-            GetServerlessKubernetesClustersClusterConnections,
-            Map<String, dynamic>
-          >(connections, (value) => value.toMap()),
+      'connections': pulumi.Input.mapInputValue<GetServerlessKubernetesClustersClusterConnections, Map<String, dynamic>>(connections, (value) => value.toMap()),
       'deletionProtection': deletionProtection,
       'endpointPublicAccessEnabled': endpointPublicAccessEnabled,
       'id': id,
@@ -78,21 +64,11 @@ class GetServerlessKubernetesClustersCluster {
     };
   }
 
-  factory GetServerlessKubernetesClustersCluster.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetServerlessKubernetesClustersCluster.fromMap(Map<String, dynamic> map) {
     return GetServerlessKubernetesClustersCluster(
-      connections: pulumi.Input.fromValue(
-        GetServerlessKubernetesClustersClusterConnections.fromMap(
-          (map['connections']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      deletionProtection: pulumi.Input.fromValue(
-        map['deletionProtection'] as bool,
-      ),
-      endpointPublicAccessEnabled: pulumi.Input.fromValue(
-        map['endpointPublicAccessEnabled'] as bool,
-      ),
+      connections: pulumi.Input.fromValue(GetServerlessKubernetesClustersClusterConnections.fromMap((map['connections']! as Map).cast<String, dynamic>())),
+      deletionProtection: pulumi.Input.fromValue(map['deletionProtection'] as bool),
+      endpointPublicAccessEnabled: pulumi.Input.fromValue(map['endpointPublicAccessEnabled'] as bool),
       id: pulumi.Input.fromValue(map['id'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       natGatewayId: pulumi.Input.fromValue(map['natGatewayId'] as String),
@@ -103,3 +79,4 @@ class GetServerlessKubernetesClustersCluster {
     );
   }
 }
+

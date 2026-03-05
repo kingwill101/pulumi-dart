@@ -10,10 +10,14 @@ class AvroSerializationResponse {
 
   /// Creates a new [AvroSerializationResponse].
   /// [type] Indicates the type of serialization that the input or output uses. Required on PUT (CreateOrReplace) requests.
-  AvroSerializationResponse({required this.type});
+  AvroSerializationResponse({
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': type};
+    return <String, dynamic>{
+      'type': type,
+    };
   }
 
   factory AvroSerializationResponse.fromMap(Map<String, dynamic> map) {
@@ -22,3 +26,4 @@ class AvroSerializationResponse {
     );
   }
 }
+

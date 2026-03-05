@@ -38,7 +38,6 @@ import 'service_config_state.dart';
 class ServiceConfig extends pulumi.CustomResource {
   /// Base64-url-safe-encoded config data
   late final pulumi.Output<String> data;
-
   /// User-defined name of the config
   late final pulumi.Output<String> name;
 
@@ -51,11 +50,11 @@ class ServiceConfig extends pulumi.CustomResource {
     ServiceConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'docker:index/serviceConfig:ServiceConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'docker:index/serviceConfig:ServiceConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     data = registerOutput<String>('data');
     this.name = registerOutput<String>('name');
   }
@@ -78,11 +77,11 @@ class ServiceConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'docker:index/serviceConfig:ServiceConfig',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'docker:index/serviceConfig:ServiceConfig',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     data = registerOutput<String>('data');
     this.name = registerOutput<String>('name');
   }

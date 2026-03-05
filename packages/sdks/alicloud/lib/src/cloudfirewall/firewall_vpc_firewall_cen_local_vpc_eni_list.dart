@@ -5,14 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FirewallVpcFirewallCenLocalVpcEniList {
   /// The ID of the instance of the ENI in the VPC.
   final pulumi.Input<String>? eniId;
-
   /// The private IP address of the ENI in the VPC.
   final pulumi.Input<String>? eniPrivateIpAddress;
 
   /// Creates a new [FirewallVpcFirewallCenLocalVpcEniList].
   /// [eniId] The ID of the instance of the ENI in the VPC.
   /// [eniPrivateIpAddress] The private IP address of the ENI in the VPC.
-  FirewallVpcFirewallCenLocalVpcEniList({this.eniId, this.eniPrivateIpAddress});
+  FirewallVpcFirewallCenLocalVpcEniList({
+    this.eniId,
+    this.eniPrivateIpAddress,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,20 +23,11 @@ class FirewallVpcFirewallCenLocalVpcEniList {
     };
   }
 
-  factory FirewallVpcFirewallCenLocalVpcEniList.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FirewallVpcFirewallCenLocalVpcEniList.fromMap(Map<String, dynamic> map) {
     return FirewallVpcFirewallCenLocalVpcEniList(
-      eniId: (() {
-        final guardedValue = map['eniId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      eniPrivateIpAddress: (() {
-        final guardedValue = map['eniPrivateIpAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      eniId: (() { final guardedValue = map['eniId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      eniPrivateIpAddress: (() { final guardedValue = map['eniPrivateIpAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -156,23 +156,16 @@ import 'system_data_response.dart';
 class OrganizationEnvironmentById extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Type of environment
   late final pulumi.Output<String?> kind;
-
   /// Metadata of the record
   late final pulumi.Output<SCMetadataEntityResponse?> metadata;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Stream governance configuration
-  late final pulumi.Output<StreamGovernanceConfigResponse?>
-  streamGovernanceConfig;
-
+  late final pulumi.Output<StreamGovernanceConfigResponse?> streamGovernanceConfig;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -185,44 +178,17 @@ class OrganizationEnvironmentById extends pulumi.CustomResource {
     OrganizationEnvironmentByIdArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:confluent:OrganizationEnvironmentById',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:confluent:OrganizationEnvironmentById',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     kind = registerOutput<String?>('kind');
-    metadata = registerOutput<SCMetadataEntityResponse?>(
-      'metadata',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SCMetadataEntityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    metadata = registerOutput<SCMetadataEntityResponse?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SCMetadataEntityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    streamGovernanceConfig = registerOutput<StreamGovernanceConfigResponse?>(
-      'streamGovernanceConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return StreamGovernanceConfigResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    streamGovernanceConfig = registerOutput<StreamGovernanceConfigResponse?>('streamGovernanceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamGovernanceConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

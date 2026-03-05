@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JavaComponentPropertiesResponseScale {
   /// Optional. Maximum number of Java component replicas
   final pulumi.Input<int>? maxReplicas;
-
   /// Optional. Minimum number of Java component replicas. Defaults to 1 if not set
   final pulumi.Input<int>? minReplicas;
 
   /// Creates a new [JavaComponentPropertiesResponseScale].
   /// [maxReplicas] Optional. Maximum number of Java component replicas
   /// [minReplicas] Optional. Minimum number of Java component replicas. Defaults to 1 if not set
-  JavaComponentPropertiesResponseScale({this.maxReplicas, this.minReplicas});
+  JavaComponentPropertiesResponseScale({
+    this.maxReplicas,
+    this.minReplicas,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -22,20 +24,11 @@ class JavaComponentPropertiesResponseScale {
     };
   }
 
-  factory JavaComponentPropertiesResponseScale.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory JavaComponentPropertiesResponseScale.fromMap(Map<String, dynamic> map) {
     return JavaComponentPropertiesResponseScale(
-      maxReplicas: (() {
-        final guardedValue = map['maxReplicas'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      minReplicas: (() {
-        final guardedValue = map['minReplicas'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      maxReplicas: (() { final guardedValue = map['maxReplicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      minReplicas: (() { final guardedValue = map['minReplicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

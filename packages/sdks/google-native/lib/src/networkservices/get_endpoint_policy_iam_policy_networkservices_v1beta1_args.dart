@@ -33,24 +33,13 @@ class GetEndpointPolicyIamPolicyNetworkservicesV1beta1Args {
     };
   }
 
-  factory GetEndpointPolicyIamPolicyNetworkservicesV1beta1Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetEndpointPolicyIamPolicyNetworkservicesV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetEndpointPolicyIamPolicyNetworkservicesV1beta1Args(
-      endpointPolicyId: pulumi.Input.fromValue(
-        map['endpointPolicyId'] as String,
-      ),
+      endpointPolicyId: pulumi.Input.fromValue(map['endpointPolicyId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      optionsRequestedPolicyVersion: (() {
-        final guardedValue = map['optionsRequestedPolicyVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

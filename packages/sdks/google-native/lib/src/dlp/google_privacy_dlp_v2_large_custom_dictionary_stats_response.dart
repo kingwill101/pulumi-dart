@@ -14,16 +14,15 @@ class GooglePrivacyDlpV2LargeCustomDictionaryStatsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'approxNumPhrases': approxNumPhrases};
+    return <String, dynamic>{
+      'approxNumPhrases': approxNumPhrases,
+    };
   }
 
-  factory GooglePrivacyDlpV2LargeCustomDictionaryStatsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GooglePrivacyDlpV2LargeCustomDictionaryStatsResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2LargeCustomDictionaryStatsResponse(
-      approxNumPhrases: pulumi.Input.fromValue(
-        map['approxNumPhrases'] as String,
-      ),
+      approxNumPhrases: pulumi.Input.fromValue(map['approxNumPhrases'] as String),
     );
   }
 }
+

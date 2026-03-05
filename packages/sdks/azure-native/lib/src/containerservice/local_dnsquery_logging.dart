@@ -15,3 +15,4 @@ enum LocalDNSQueryLogging {
     throw ArgumentError('Unknown LocalDNSQueryLogging value: $value');
   }
 }
+

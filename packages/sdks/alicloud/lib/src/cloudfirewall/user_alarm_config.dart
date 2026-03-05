@@ -12,14 +12,11 @@ import 'user_alarm_config_state.dart';
 class UserAlarmConfig extends pulumi.CustomResource {
   /// The alarm configuration. More details see `alarm_config` below.
   late final pulumi.Output<List<Map<String, dynamic>>> alarmConfigs;
-
   /// The alarm language. Possible values are `zh`, `en`.
   late final pulumi.Output<String?> alarmLang;
-
   /// Conflict with `notify_config`. The contact configuration. More details see `contact_config` below.
   late final pulumi.Output<List<Map<String, dynamic>>> contactConfigs;
   late final pulumi.Output<String?> lang;
-
   /// Conflict with `contact_config`. The notification configuration. More details see `notify_config` below.
   late final pulumi.Output<List<Map<String, dynamic>>> notifyConfigs;
   late final pulumi.Output<String?> useDefaultContact;
@@ -33,16 +30,14 @@ class UserAlarmConfig extends pulumi.CustomResource {
     UserAlarmConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudfirewall/userAlarmConfig:UserAlarmConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudfirewall/userAlarmConfig:UserAlarmConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alarmConfigs = registerOutput<List<Map<String, dynamic>>>('alarmConfigs');
     alarmLang = registerOutput<String?>('alarmLang');
-    contactConfigs = registerOutput<List<Map<String, dynamic>>>(
-      'contactConfigs',
-    );
+    contactConfigs = registerOutput<List<Map<String, dynamic>>>('contactConfigs');
     lang = registerOutput<String?>('lang');
     notifyConfigs = registerOutput<List<Map<String, dynamic>>>('notifyConfigs');
     useDefaultContact = registerOutput<String?>('useDefaultContact');
@@ -66,16 +61,14 @@ class UserAlarmConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudfirewall/userAlarmConfig:UserAlarmConfig',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudfirewall/userAlarmConfig:UserAlarmConfig',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alarmConfigs = registerOutput<List<Map<String, dynamic>>>('alarmConfigs');
     alarmLang = registerOutput<String?>('alarmLang');
-    contactConfigs = registerOutput<List<Map<String, dynamic>>>(
-      'contactConfigs',
-    );
+    contactConfigs = registerOutput<List<Map<String, dynamic>>>('contactConfigs');
     lang = registerOutput<String?>('lang');
     notifyConfigs = registerOutput<List<Map<String, dynamic>>>('notifyConfigs');
     useDefaultContact = registerOutput<String?>('useDefaultContact');

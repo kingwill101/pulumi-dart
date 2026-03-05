@@ -17,3 +17,4 @@ enum EnvironmentPermission {
     throw ArgumentError('Unknown EnvironmentPermission value: $value');
   }
 }
+

@@ -13,7 +13,10 @@ class GetDeviceSessionArgs {
   /// Creates a new [GetDeviceSessionArgs].
   /// [deviceSessionId] Required.
   /// [project] Optional.
-  GetDeviceSessionArgs({required this.deviceSessionId, this.project});
+  GetDeviceSessionArgs({
+    required this.deviceSessionId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,11 +28,8 @@ class GetDeviceSessionArgs {
   factory GetDeviceSessionArgs.fromMap(Map<String, dynamic> map) {
     return GetDeviceSessionArgs(
       deviceSessionId: pulumi.Input.fromValue(map['deviceSessionId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

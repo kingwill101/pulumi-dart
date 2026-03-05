@@ -10,16 +10,12 @@ import 'assignment_item.dart';
 class WorkspaceManagerAssignmentArgs {
   /// List of resources included in this workspace manager assignment
   final pulumi.Input<List<AssignmentItem>> items;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The resource name of the workspace manager group targeted by the workspace manager assignment
   final pulumi.Input<String> targetResourceName;
-
   /// The name of the workspace manager assignment
   final pulumi.Input<String>? workspaceManagerAssignmentName;
-
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -39,18 +35,7 @@ class WorkspaceManagerAssignmentArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'items':
-          pulumi.Input.mapInputValue<
-            List<AssignmentItem>,
-            List<Map<String, dynamic>>
-          >(
-            items,
-            (value) =>
-                pulumi.Input.encodeList<AssignmentItem, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'items': pulumi.Input.mapInputValue<List<AssignmentItem>, List<Map<String, dynamic>>>(items, (value) => pulumi.Input.encodeList<AssignmentItem, Map<String, dynamic>>(value, (value) => value.toMap())),
       'resourceGroupName': resourceGroupName,
       'targetResourceName': targetResourceName,
       'workspaceManagerAssignmentName': ?workspaceManagerAssignmentName,
@@ -60,25 +45,12 @@ class WorkspaceManagerAssignmentArgs {
 
   factory WorkspaceManagerAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceManagerAssignmentArgs(
-      items: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<AssignmentItem>(
-          map['items']!,
-          (value) =>
-              AssignmentItem.fromMap((value as Map).cast<String, dynamic>()),
-        ),
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      targetResourceName: pulumi.Input.fromValue(
-        map['targetResourceName'] as String,
-      ),
-      workspaceManagerAssignmentName: (() {
-        final guardedValue = map['workspaceManagerAssignmentName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      items: pulumi.Input.fromValue(pulumi.Input.decodeList<AssignmentItem>(map['items']!, (value) => AssignmentItem.fromMap((value as Map).cast<String, dynamic>()))),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      targetResourceName: pulumi.Input.fromValue(map['targetResourceName'] as String),
+      workspaceManagerAssignmentName: (() { final guardedValue = map['workspaceManagerAssignmentName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
+

@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AdminUser {
   /// Optional. Last/family name of the first admin user.
   final pulumi.Input<String>? familyName;
-
   /// Optional. First/given name of the first admin user.
   final pulumi.Input<String>? givenName;
 
   /// Creates a new [AdminUser].
   /// [familyName] Optional. Last/family name of the first admin user.
   /// [givenName] Optional. First/given name of the first admin user.
-  AdminUser({this.familyName, this.givenName});
+  AdminUser({
+    this.familyName,
+    this.givenName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class AdminUser {
 
   factory AdminUser.fromMap(Map<String, dynamic> map) {
     return AdminUser(
-      familyName: (() {
-        final guardedValue = map['familyName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      givenName: (() {
-        final guardedValue = map['givenName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      familyName: (() { final guardedValue = map['familyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      givenName: (() { final guardedValue = map['givenName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

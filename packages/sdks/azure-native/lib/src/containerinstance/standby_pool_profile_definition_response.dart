@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StandbyPoolProfileDefinitionResponse {
   /// The flag to determine whether ACI should fail the create request if the container group can not be obtained from standby pool.
   final pulumi.Input<bool>? failContainerGroupCreateOnReuseFailure;
-
   /// The standby pool profile reference id.This will be an ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyPoolName}'.
   final pulumi.Input<String>? id;
 
@@ -20,26 +19,16 @@ class StandbyPoolProfileDefinitionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'failContainerGroupCreateOnReuseFailure':
-          ?failContainerGroupCreateOnReuseFailure,
+      'failContainerGroupCreateOnReuseFailure': ?failContainerGroupCreateOnReuseFailure,
       'id': ?id,
     };
   }
 
-  factory StandbyPoolProfileDefinitionResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory StandbyPoolProfileDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return StandbyPoolProfileDefinitionResponse(
-      failContainerGroupCreateOnReuseFailure: (() {
-        final guardedValue = map['failContainerGroupCreateOnReuseFailure'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      failContainerGroupCreateOnReuseFailure: (() { final guardedValue = map['failContainerGroupCreateOnReuseFailure']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

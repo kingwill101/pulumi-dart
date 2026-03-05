@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SCMetadataEntity {
   /// Created Date Time
   final pulumi.Input<String>? createdTimestamp;
-
   /// Deleted Date time
   final pulumi.Input<String>? deletedTimestamp;
-
   /// Resource name of the record
   final pulumi.Input<String>? resourceName;
-
   /// Self lookup url
   final pulumi.Input<String>? self;
-
   /// Updated Date time
   final pulumi.Input<String>? updatedTimestamp;
 
@@ -45,31 +41,12 @@ class SCMetadataEntity {
 
   factory SCMetadataEntity.fromMap(Map<String, dynamic> map) {
     return SCMetadataEntity(
-      createdTimestamp: (() {
-        final guardedValue = map['createdTimestamp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      deletedTimestamp: (() {
-        final guardedValue = map['deletedTimestamp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceName: (() {
-        final guardedValue = map['resourceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      self: (() {
-        final guardedValue = map['self'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      updatedTimestamp: (() {
-        final guardedValue = map['updatedTimestamp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      createdTimestamp: (() { final guardedValue = map['createdTimestamp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletedTimestamp: (() { final guardedValue = map['deletedTimestamp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceName: (() { final guardedValue = map['resourceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      self: (() { final guardedValue = map['self']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      updatedTimestamp: (() { final guardedValue = map['updatedTimestamp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

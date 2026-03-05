@@ -5,22 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSecondaryIndexesIndex {
   /// A list of defined column for index, referenced from Table's primary keys or predefined columns.
   final pulumi.Input<List<String>> definedColumns;
-
   /// The resource ID. The value is `&lt;instance_name&gt;:&lt;table_name&gt;:&lt;indexName&gt;:&lt;indexType&gt;`.
   final pulumi.Input<String> id;
-
   /// The index name of the OTS Table which could not be changed.
   final pulumi.Input<String> indexName;
-
   /// The index type of the OTS Table which could not be changed.
   final pulumi.Input<String> indexType;
-
   /// The name of OTS instance.
   final pulumi.Input<String> instanceName;
-
   /// A list of primary keys for index, referenced from Table's primary keys or predefined columns.
   final pulumi.Input<List<String>> primaryKeys;
-
   /// The name of OTS table.
   final pulumi.Input<String> tableName;
 
@@ -56,17 +50,14 @@ class GetSecondaryIndexesIndex {
 
   factory GetSecondaryIndexesIndex.fromMap(Map<String, dynamic> map) {
     return GetSecondaryIndexesIndex(
-      definedColumns: pulumi.Input.fromValue(
-        (map['definedColumns'] as List).cast<String>(),
-      ),
+      definedColumns: pulumi.Input.fromValue((map['definedColumns'] as List).cast<String>()),
       id: pulumi.Input.fromValue(map['id'] as String),
       indexName: pulumi.Input.fromValue(map['indexName'] as String),
       indexType: pulumi.Input.fromValue(map['indexType'] as String),
       instanceName: pulumi.Input.fromValue(map['instanceName'] as String),
-      primaryKeys: pulumi.Input.fromValue(
-        (map['primaryKeys'] as List).cast<String>(),
-      ),
+      primaryKeys: pulumi.Input.fromValue((map['primaryKeys'] as List).cast<String>()),
       tableName: pulumi.Input.fromValue(map['tableName'] as String),
     );
   }
 }
+

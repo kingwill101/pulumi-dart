@@ -9,40 +9,29 @@ import 'provider_terraform_config_result.dart';
 class ProviderProvider extends pulumi.ProviderResource {
   /// AWS profile to use for IAM auth
   late final pulumi.Output<String?> awsRdsIamProfile;
-
   /// AWS IAM role to assume for IAM auth
   late final pulumi.Output<String?> awsRdsIamProviderRoleArn;
-
   /// AWS region to use for IAM auth
   late final pulumi.Output<String?> awsRdsIamRegion;
   late final pulumi.Output<String?> azureTenantId;
-
   /// The name of the database to connect to in order to connect to (defaults to `postgres`).
   late final pulumi.Output<String?> database;
-
   /// Database username associated to the connected user (for user name maps)
   late final pulumi.Output<String?> databaseUsername;
-
   /// Specify the expected version of PostgreSQL.
   late final pulumi.Output<String?> expectedVersion;
-
   /// Service account to impersonate when using GCP IAM authentication.
   late final pulumi.Output<String?> gcpIamImpersonateServiceAccount;
-
   /// Name of PostgreSQL server address to connect to
   late final pulumi.Output<String?> host;
-
   /// Password to be used if the PostgreSQL server demands password authentication
   late final pulumi.Output<String?> password;
   late final pulumi.Output<String?> scheme;
   late final pulumi.Output<String?> sslMode;
-
   /// This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the PostgreSQL server
   late final pulumi.Output<String?> sslmode;
-
   /// The SSL server root certificate file path. The file must contain PEM encoded data.
   late final pulumi.Output<String?> sslrootcert;
-
   /// PostgreSQL user name to connect as
   late final pulumi.Output<String?> username;
 
@@ -55,23 +44,19 @@ class ProviderProvider extends pulumi.ProviderResource {
     ProviderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'postgresql',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'postgresql',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     awsRdsIamProfile = registerOutput<String?>('awsRdsIamProfile');
-    awsRdsIamProviderRoleArn = registerOutput<String?>(
-      'awsRdsIamProviderRoleArn',
-    );
+    awsRdsIamProviderRoleArn = registerOutput<String?>('awsRdsIamProviderRoleArn');
     awsRdsIamRegion = registerOutput<String?>('awsRdsIamRegion');
     azureTenantId = registerOutput<String?>('azureTenantId');
     database = registerOutput<String?>('database');
     databaseUsername = registerOutput<String?>('databaseUsername');
     expectedVersion = registerOutput<String?>('expectedVersion');
-    gcpIamImpersonateServiceAccount = registerOutput<String?>(
-      'gcpIamImpersonateServiceAccount',
-    );
+    gcpIamImpersonateServiceAccount = registerOutput<String?>('gcpIamImpersonateServiceAccount');
     host = registerOutput<String?>('host');
     password = registerOutput<String?>('password');
     scheme = registerOutput<String?>('scheme');

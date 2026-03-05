@@ -5,35 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetImagesImage {
   /// The size of the image tar.gz archive stored in Google Cloud Storage in bytes.
   final pulumi.Input<int> archiveSizeBytes;
-
   /// The creation timestamp in RFC3339 text format.
   final pulumi.Input<String> creationTimestamp;
-
   /// An optional description of this image.
   final pulumi.Input<String> description;
-
   /// The size of the image when restored onto a persistent disk in gigabytes.
   final pulumi.Input<int> diskSizeGb;
-
   /// The family name of the image.
   final pulumi.Input<String> family;
   final pulumi.Input<int> imageId;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>> labels;
-
   /// The name of the image.
   final pulumi.Input<String> name;
-
   /// The URI of the image.
   final pulumi.Input<String> selfLink;
-
   /// The URL of the source disk used to create this image.
   final pulumi.Input<String> sourceDisk;
-
   /// The ID value of the disk used to create this image.
   final pulumi.Input<String> sourceDiskId;
-
   /// The ID value of the image used to create this image.
   final pulumi.Input<String> sourceImageId;
 
@@ -85,16 +75,12 @@ class GetImagesImage {
   factory GetImagesImage.fromMap(Map<String, dynamic> map) {
     return GetImagesImage(
       archiveSizeBytes: pulumi.Input.fromValue(map['archiveSizeBytes'] as int),
-      creationTimestamp: pulumi.Input.fromValue(
-        map['creationTimestamp'] as String,
-      ),
+      creationTimestamp: pulumi.Input.fromValue(map['creationTimestamp'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
       diskSizeGb: pulumi.Input.fromValue(map['diskSizeGb'] as int),
       family: pulumi.Input.fromValue(map['family'] as String),
       imageId: pulumi.Input.fromValue(map['imageId'] as int),
-      labels: pulumi.Input.fromValue(
-        (map['labels'] as Map).cast<String, String>(),
-      ),
+      labels: pulumi.Input.fromValue((map['labels'] as Map).cast<String, String>()),
       name: pulumi.Input.fromValue(map['name'] as String),
       selfLink: pulumi.Input.fromValue(map['selfLink'] as String),
       sourceDisk: pulumi.Input.fromValue(map['sourceDisk'] as String),
@@ -103,3 +89,4 @@ class GetImagesImage {
     );
   }
 }
+

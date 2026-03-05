@@ -379,18 +379,14 @@ import 'real_time_log_delivery_state.dart';
 class RealTimeLogDelivery extends pulumi.CustomResource {
   /// The accelerated domain name for which you want to disable real-time log delivery. You can specify multiple domain names and separate them with commas (,).
   late final pulumi.Output<String> domain;
-
   /// The ID of the region where the Log Service project is deployed. You can specify multiple region IDs and separate them with commas (,).
   ///
   /// For more information about regions, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
   late final pulumi.Output<String> logstore;
-
   /// The name of the Logstore that collects log data from Alibaba Cloud CDN in real time. You can specify multiple Logstore names and separate them with commas (,).
   late final pulumi.Output<String> project;
-
   /// The ID of the region where the Log Service project is deployed. For more information, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
   late final pulumi.Output<String> slsRegion;
-
   /// Resource attribute fields that represent the status of the resource.
   ///
   /// Value:
@@ -407,11 +403,11 @@ class RealTimeLogDelivery extends pulumi.CustomResource {
     RealTimeLogDeliveryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cdn/realTimeLogDelivery:RealTimeLogDelivery',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cdn/realTimeLogDelivery:RealTimeLogDelivery',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     domain = registerOutput<String>('domain');
     logstore = registerOutput<String>('logstore');
     project = registerOutput<String>('project');
@@ -437,11 +433,11 @@ class RealTimeLogDelivery extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cdn/realTimeLogDelivery:RealTimeLogDelivery',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cdn/realTimeLogDelivery:RealTimeLogDelivery',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     domain = registerOutput<String>('domain');
     logstore = registerOutput<String>('logstore');
     project = registerOutput<String>('project');

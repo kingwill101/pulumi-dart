@@ -11,7 +11,11 @@ class BuildMetadata {
   /// [finishedOn] Optional.
   /// [invocationId] Optional.
   /// [startedOn] Optional.
-  BuildMetadata({this.finishedOn, this.invocationId, this.startedOn});
+  BuildMetadata({
+    this.finishedOn,
+    this.invocationId,
+    this.startedOn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -23,21 +27,10 @@ class BuildMetadata {
 
   factory BuildMetadata.fromMap(Map<String, dynamic> map) {
     return BuildMetadata(
-      finishedOn: (() {
-        final guardedValue = map['finishedOn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      invocationId: (() {
-        final guardedValue = map['invocationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      startedOn: (() {
-        final guardedValue = map['startedOn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      finishedOn: (() { final guardedValue = map['finishedOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      invocationId: (() { final guardedValue = map['invocationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      startedOn: (() { final guardedValue = map['startedOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -6,32 +6,23 @@ import 'system_data_response.dart';
 class GetKustoDatabaseDataSetResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Unique id for identifying a data set resource
   final String dataSetId;
-
   /// The resource id of the azure resource
   final String id;
-
   /// Kind of data set.
   /// Expected value is 'KustoDatabase'.
   final String kind;
-
   /// Resource id of the kusto database.
   final String kustoDatabaseResourceId;
-
   /// Location of the kusto cluster.
   final String location;
-
   /// Name of the azure resource
   final String name;
-
   /// Provisioning state of the kusto database data set.
   final String provisioningState;
-
   /// System Data of the Azure resource.
   final SystemDataResponse systemData;
-
   /// Type of the azure resource
   final String type;
 
@@ -84,10 +75,9 @@ class GetKustoDatabaseDataSetResult {
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

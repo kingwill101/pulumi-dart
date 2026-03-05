@@ -10,13 +10,10 @@ import 'api_destination_http_api_parameters.dart';
 class ApiDestinationArgs {
   /// The name of the API destination.
   final pulumi.Input<String> apiDestinationName;
-
   /// The name of the connection.
   final pulumi.Input<String> connectionName;
-
   /// The description of the API destination.
   final pulumi.Input<String>? description;
-
   /// The parameters that are configured for the API destination. See `http_api_parameters` below.
   final pulumi.Input<ApiDestinationHttpApiParameters> httpApiParameters;
 
@@ -37,30 +34,17 @@ class ApiDestinationArgs {
       'apiDestinationName': apiDestinationName,
       'connectionName': connectionName,
       'description': ?description,
-      'httpApiParameters':
-          pulumi.Input.mapInputValue<
-            ApiDestinationHttpApiParameters,
-            Map<String, dynamic>
-          >(httpApiParameters, (value) => value.toMap()),
+      'httpApiParameters': pulumi.Input.mapInputValue<ApiDestinationHttpApiParameters, Map<String, dynamic>>(httpApiParameters, (value) => value.toMap()),
     };
   }
 
   factory ApiDestinationArgs.fromMap(Map<String, dynamic> map) {
     return ApiDestinationArgs(
-      apiDestinationName: pulumi.Input.fromValue(
-        map['apiDestinationName'] as String,
-      ),
+      apiDestinationName: pulumi.Input.fromValue(map['apiDestinationName'] as String),
       connectionName: pulumi.Input.fromValue(map['connectionName'] as String),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      httpApiParameters: pulumi.Input.fromValue(
-        ApiDestinationHttpApiParameters.fromMap(
-          (map['httpApiParameters']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      httpApiParameters: pulumi.Input.fromValue(ApiDestinationHttpApiParameters.fromMap((map['httpApiParameters']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

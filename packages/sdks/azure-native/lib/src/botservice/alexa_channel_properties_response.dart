@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AlexaChannelPropertiesResponse {
   /// The Alexa skill Id
   final pulumi.Input<String> alexaSkillId;
-
   /// Whether this channel is enabled for the bot
   final pulumi.Input<bool> isEnabled;
-
   /// Full Uri used to configured the skill in Alexa
   final pulumi.Input<String> serviceEndpointUri;
-
   /// Url fragment used in part of the Uri configured in Alexa
   final pulumi.Input<String> urlFragment;
 
@@ -41,10 +38,9 @@ class AlexaChannelPropertiesResponse {
     return AlexaChannelPropertiesResponse(
       alexaSkillId: pulumi.Input.fromValue(map['alexaSkillId'] as String),
       isEnabled: pulumi.Input.fromValue(map['isEnabled'] as bool),
-      serviceEndpointUri: pulumi.Input.fromValue(
-        map['serviceEndpointUri'] as String,
-      ),
+      serviceEndpointUri: pulumi.Input.fromValue(map['serviceEndpointUri'] as String),
       urlFragment: pulumi.Input.fromValue(map['urlFragment'] as String),
     );
   }
 }
+

@@ -17,3 +17,4 @@ enum RedirectType {
     throw ArgumentError('Unknown RedirectType value: $value');
   }
 }
+

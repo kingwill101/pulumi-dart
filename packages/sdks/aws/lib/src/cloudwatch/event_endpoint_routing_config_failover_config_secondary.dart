@@ -8,21 +8,20 @@ class EventEndpointRoutingConfigFailoverConfigSecondary {
 
   /// Creates a new [EventEndpointRoutingConfigFailoverConfigSecondary].
   /// [route] The name of the secondary Region.
-  EventEndpointRoutingConfigFailoverConfigSecondary({this.route});
+  EventEndpointRoutingConfigFailoverConfigSecondary({
+    this.route,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'route': ?route};
+    return <String, dynamic>{
+      'route': ?route,
+    };
   }
 
-  factory EventEndpointRoutingConfigFailoverConfigSecondary.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EventEndpointRoutingConfigFailoverConfigSecondary.fromMap(Map<String, dynamic> map) {
     return EventEndpointRoutingConfigFailoverConfigSecondary(
-      route: (() {
-        final guardedValue = map['route'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      route: (() { final guardedValue = map['route']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

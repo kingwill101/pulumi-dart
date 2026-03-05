@@ -21,12 +21,11 @@ class GetNetworkManagedServiceServiceNetworkEndpoint {
     };
   }
 
-  factory GetNetworkManagedServiceServiceNetworkEndpoint.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetNetworkManagedServiceServiceNetworkEndpoint.fromMap(Map<String, dynamic> map) {
     return GetNetworkManagedServiceServiceNetworkEndpoint(
       vpcEndpointId: pulumi.Input.fromValue(map['vpcEndpointId'] as String),
       vpcEndpointType: pulumi.Input.fromValue(map['vpcEndpointType'] as String),
     );
   }
 }
+

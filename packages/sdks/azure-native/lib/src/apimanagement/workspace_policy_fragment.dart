@@ -158,19 +158,14 @@ import 'workspace_policy_fragment_args.dart';
 class WorkspacePolicyFragment extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Policy fragment description.
   late final pulumi.Output<String?> description;
-
   /// Format of the policy fragment content.
   late final pulumi.Output<String?> format;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Contents of the policy fragment.
   late final pulumi.Output<String> value;
 
@@ -183,11 +178,11 @@ class WorkspacePolicyFragment extends pulumi.CustomResource {
     WorkspacePolicyFragmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:apimanagement:WorkspacePolicyFragment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:apimanagement:WorkspacePolicyFragment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     description = registerOutput<String?>('description');
     format = registerOutput<String?>('format');

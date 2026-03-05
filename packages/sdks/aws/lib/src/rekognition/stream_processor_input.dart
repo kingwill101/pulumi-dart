@@ -9,25 +9,20 @@ class StreamProcessorInput {
 
   /// Creates a new [StreamProcessorInput].
   /// [kinesisVideoStream] Kinesis input stream. See `kinesis_video_stream`.
-  StreamProcessorInput({required this.kinesisVideoStream});
+  StreamProcessorInput({
+    required this.kinesisVideoStream,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'kinesisVideoStream':
-          pulumi.Input.mapInputValue<
-            StreamProcessorInputKinesisVideoStream,
-            Map<String, dynamic>
-          >(kinesisVideoStream, (value) => value.toMap()),
+      'kinesisVideoStream': pulumi.Input.mapInputValue<StreamProcessorInputKinesisVideoStream, Map<String, dynamic>>(kinesisVideoStream, (value) => value.toMap()),
     };
   }
 
   factory StreamProcessorInput.fromMap(Map<String, dynamic> map) {
     return StreamProcessorInput(
-      kinesisVideoStream: pulumi.Input.fromValue(
-        StreamProcessorInputKinesisVideoStream.fromMap(
-          (map['kinesisVideoStream']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      kinesisVideoStream: pulumi.Input.fromValue(StreamProcessorInputKinesisVideoStream.fromMap((map['kinesisVideoStream']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

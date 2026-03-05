@@ -324,43 +324,30 @@ import 'system_data_response.dart';
 class ProjectCatalog extends pulumi.CustomResource {
   /// Properties for an Azure DevOps catalog type.
   late final pulumi.Output<GitCatalogResponse?> adoGit;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The connection state of the catalog.
   late final pulumi.Output<String> connectionState;
-
   /// Properties for a GitHub catalog type.
   late final pulumi.Output<GitCatalogResponse?> gitHub;
-
   /// When the catalog was last connected.
   late final pulumi.Output<String> lastConnectionTime;
-
   /// Stats of the latest synchronization.
   late final pulumi.Output<SyncStatsResponse> lastSyncStats;
-
   /// When the catalog was last synced.
   late final pulumi.Output<String> lastSyncTime;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The synchronization state of the catalog.
   late final pulumi.Output<String> syncState;
-
   /// Indicates the type of sync that is configured for the catalog.
   late final pulumi.Output<String?> syncType;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -373,59 +360,23 @@ class ProjectCatalog extends pulumi.CustomResource {
     ProjectCatalogArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:devcenter:ProjectCatalog',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    adoGit = registerOutput<GitCatalogResponse?>(
-      'adoGit',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GitCatalogResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure-native:devcenter:ProjectCatalog',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    adoGit = registerOutput<GitCatalogResponse?>('adoGit', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GitCatalogResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     connectionState = registerOutput<String>('connectionState');
-    gitHub = registerOutput<GitCatalogResponse?>(
-      'gitHub',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GitCatalogResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    gitHub = registerOutput<GitCatalogResponse?>('gitHub', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GitCatalogResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lastConnectionTime = registerOutput<String>('lastConnectionTime');
-    lastSyncStats = registerOutput<SyncStatsResponse>(
-      'lastSyncStats',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SyncStatsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    lastSyncStats = registerOutput<SyncStatsResponse>('lastSyncStats', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SyncStatsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lastSyncTime = registerOutput<String>('lastSyncTime');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     syncState = registerOutput<String>('syncState');
     syncType = registerOutput<String?>('syncType');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

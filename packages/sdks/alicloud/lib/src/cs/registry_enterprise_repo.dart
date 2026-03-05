@@ -306,24 +306,18 @@ import 'registry_enterprise_repo_state.dart';
 class RegistryEnterpriseRepo extends pulumi.CustomResource {
   /// The description of the repository.
   late final pulumi.Output<String?> detail;
-
   /// The ID of the Container Registry Enterprise Edition instance.
   late final pulumi.Output<String> instanceId;
-
   /// The name of the image repository.
   late final pulumi.Output<String> name;
-
   /// The name of the namespace to which the image repository belongs.
   late final pulumi.Output<String> namespace;
-
   /// The ID of the repository.
   late final pulumi.Output<String> repoId;
-
   /// The type of the repository. Valid values:
   /// - `PUBLIC`: The repository is a public repository.
   /// - `PRIVATE`: The repository is a private repository.
   late final pulumi.Output<String> repoType;
-
   /// The summary about the repository.
   late final pulumi.Output<String> summary;
 
@@ -336,11 +330,11 @@ class RegistryEnterpriseRepo extends pulumi.CustomResource {
     RegistryEnterpriseRepoArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cs/registryEnterpriseRepo:RegistryEnterpriseRepo',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cs/registryEnterpriseRepo:RegistryEnterpriseRepo',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     detail = registerOutput<String?>('detail');
     instanceId = registerOutput<String>('instanceId');
     this.name = registerOutput<String>('name');
@@ -368,11 +362,11 @@ class RegistryEnterpriseRepo extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cs/registryEnterpriseRepo:RegistryEnterpriseRepo',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cs/registryEnterpriseRepo:RegistryEnterpriseRepo',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     detail = registerOutput<String?>('detail');
     instanceId = registerOutput<String>('instanceId');
     this.name = registerOutput<String>('name');

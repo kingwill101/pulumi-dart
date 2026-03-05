@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetContainerDefinitionArgs {
   /// Name of the container definition
   final pulumi.Input<String> containerName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// ARN of the task definition which contains the container
   final pulumi.Input<String> taskDefinition;
 
@@ -37,12 +35,9 @@ class GetContainerDefinitionArgs {
   factory GetContainerDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return GetContainerDefinitionArgs(
       containerName: pulumi.Input.fromValue(map['containerName'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       taskDefinition: pulumi.Input.fromValue(map['taskDefinition'] as String),
     );
   }
 }
+

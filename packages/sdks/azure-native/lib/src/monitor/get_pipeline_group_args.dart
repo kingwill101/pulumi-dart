@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPipelineGroupArgs {
   /// The name of pipeline group. The name is case insensitive.
   final pulumi.Input<String> pipelineGroupName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetPipelineGroupArgs {
 
   factory GetPipelineGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetPipelineGroupArgs(
-      pipelineGroupName: pulumi.Input.fromValue(
-        map['pipelineGroupName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      pipelineGroupName: pulumi.Input.fromValue(map['pipelineGroupName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

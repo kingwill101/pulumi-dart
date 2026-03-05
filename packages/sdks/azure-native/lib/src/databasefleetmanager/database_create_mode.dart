@@ -16,3 +16,4 @@ enum DatabaseCreateMode {
     throw ArgumentError('Unknown DatabaseCreateMode value: $value');
   }
 }
+

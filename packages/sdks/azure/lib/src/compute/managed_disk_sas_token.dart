@@ -223,13 +223,10 @@ class ManagedDiskSasToken extends pulumi.CustomResource {
   /// Refer to the [SAS creation reference from Azure](https://docs.microsoft.com/rest/api/compute/disks/grant-access)
   /// for additional details on the fields above.
   late final pulumi.Output<String> accessLevel;
-
   /// The duration for which the export should be allowed. Should be between 30 & 4294967295 seconds. Changing this forces a new resource to be created.
   late final pulumi.Output<int> durationInSeconds;
-
   /// The ID of an existing Managed Disk which should be exported. Changing this forces a new resource to be created.
   late final pulumi.Output<String> managedDiskId;
-
   /// The computed Shared Access Signature (SAS) of the Managed Disk.
   late final pulumi.Output<String> sasUrl;
 
@@ -242,11 +239,11 @@ class ManagedDiskSasToken extends pulumi.CustomResource {
     ManagedDiskSasTokenArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:compute/managedDiskSasToken:ManagedDiskSasToken',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:compute/managedDiskSasToken:ManagedDiskSasToken',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessLevel = registerOutput<String>('accessLevel');
     durationInSeconds = registerOutput<int>('durationInSeconds');
     managedDiskId = registerOutput<String>('managedDiskId');
@@ -271,11 +268,11 @@ class ManagedDiskSasToken extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:compute/managedDiskSasToken:ManagedDiskSasToken',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:compute/managedDiskSasToken:ManagedDiskSasToken',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessLevel = registerOutput<String>('accessLevel');
     durationInSeconds = registerOutput<int>('durationInSeconds');
     managedDiskId = registerOutput<String>('managedDiskId');

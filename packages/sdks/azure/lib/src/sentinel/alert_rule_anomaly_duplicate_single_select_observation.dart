@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AlertRuleAnomalyDuplicateSingleSelectObservation {
   /// The description of the single select observation.
   final pulumi.Input<String>? description;
-
   /// The name of the single select observation.
   final pulumi.Input<String> name;
-
   /// A list of supported values of the single select observation.
   final pulumi.Input<List<String>>? supportedValues;
-
   /// The value of the multi select observation.
   final pulumi.Input<String> value;
 
@@ -36,22 +33,13 @@ class AlertRuleAnomalyDuplicateSingleSelectObservation {
     };
   }
 
-  factory AlertRuleAnomalyDuplicateSingleSelectObservation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AlertRuleAnomalyDuplicateSingleSelectObservation.fromMap(Map<String, dynamic> map) {
     return AlertRuleAnomalyDuplicateSingleSelectObservation(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      supportedValues: (() {
-        final guardedValue = map['supportedValues'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      supportedValues: (() { final guardedValue = map['supportedValues']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
+

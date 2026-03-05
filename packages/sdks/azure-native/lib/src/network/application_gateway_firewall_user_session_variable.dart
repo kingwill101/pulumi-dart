@@ -13,8 +13,7 @@ enum ApplicationGatewayFirewallUserSessionVariable {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ApplicationGatewayFirewallUserSessionVariable value: $value',
-    );
+    throw ArgumentError('Unknown ApplicationGatewayFirewallUserSessionVariable value: $value');
   }
 }
+

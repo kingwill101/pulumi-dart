@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkInfoResponse {
   /// Name of a Compute Engine network.
   final pulumi.Input<String> displayName;
-
   /// The IP range that matches the test.
   final pulumi.Input<String> matchedIpRange;
-
   /// URI of a Compute Engine network.
   final pulumi.Input<String> uri;
 
@@ -39,3 +37,4 @@ class NetworkInfoResponse {
     );
   }
 }
+

@@ -10,10 +10,8 @@ import 'bucket_cors_cors_rule.dart';
 class BucketCorsArgs {
   /// The name of the Bucket.
   final pulumi.Input<String> bucket;
-
   /// The Cross-Origin Resource Sharing (CORS) configuration of the Bucket. See `cors_rule` below.
   final pulumi.Input<List<BucketCorsCorsRule>> corsRules;
-
   /// Specifies whether to return the Vary: Origin header. Valid values: true: returns the Vary: Origin header, regardless of whether the request is a cross-origin request or whether the cross-origin request succeeds. false: does not return the Vary: Origin header. This element is valid only when at least one CORS rule is configured.
   final pulumi.Input<bool>? responseVary;
 
@@ -30,18 +28,7 @@ class BucketCorsArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bucket': bucket,
-      'corsRules':
-          pulumi.Input.mapInputValue<
-            List<BucketCorsCorsRule>,
-            List<Map<String, dynamic>>
-          >(
-            corsRules,
-            (value) =>
-                pulumi.Input.encodeList<
-                  BucketCorsCorsRule,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'corsRules': pulumi.Input.mapInputValue<List<BucketCorsCorsRule>, List<Map<String, dynamic>>>(corsRules, (value) => pulumi.Input.encodeList<BucketCorsCorsRule, Map<String, dynamic>>(value, (value) => value.toMap())),
       'responseVary': ?responseVary,
     };
   }
@@ -49,19 +36,9 @@ class BucketCorsArgs {
   factory BucketCorsArgs.fromMap(Map<String, dynamic> map) {
     return BucketCorsArgs(
       bucket: pulumi.Input.fromValue(map['bucket'] as String),
-      corsRules: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<BucketCorsCorsRule>(
-          map['corsRules']!,
-          (value) => BucketCorsCorsRule.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      responseVary: (() {
-        final guardedValue = map['responseVary'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      corsRules: pulumi.Input.fromValue(pulumi.Input.decodeList<BucketCorsCorsRule>(map['corsRules']!, (value) => BucketCorsCorsRule.fromMap((value as Map).cast<String, dynamic>()))),
+      responseVary: (() { final guardedValue = map['responseVary']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

@@ -12,11 +12,9 @@ class GetHcVpnGatewayArgs {
   ///
   /// - - -
   final pulumi.Input<String> name;
-
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The region in which the resource belongs. If it
   /// is not provided, the project region is used.
   final pulumi.Input<String>? region;
@@ -25,7 +23,11 @@ class GetHcVpnGatewayArgs {
   /// [name] The name of the forwarding rule.
   /// [project] The project in which the resource belongs. If it
   /// [region] The region in which the resource belongs. If it
-  GetHcVpnGatewayArgs({required this.name, this.project, this.region});
+  GetHcVpnGatewayArgs({
+    required this.name,
+    this.project,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,16 +40,9 @@ class GetHcVpnGatewayArgs {
   factory GetHcVpnGatewayArgs.fromMap(Map<String, dynamic> map) {
     return GetHcVpnGatewayArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

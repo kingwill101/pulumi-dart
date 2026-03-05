@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ImageTemplateFileValidatorResponse {
   /// The absolute path to a file (with nested directory structures already created) where the file (from sourceUri) will be uploaded to in the VM
   final pulumi.Input<String>? destination;
-
   /// Friendly Name to provide context on what this validation step does
   final pulumi.Input<String>? name;
-
   /// SHA256 checksum of the file provided in the sourceUri field above
   final pulumi.Input<String>? sha256Checksum;
-
   /// The URI of the file to be uploaded to the VM for validation. It can be a github link, Azure Storage URI (authorized or SAS), etc
   final pulumi.Input<String>? sourceUri;
-
   /// The type of validation you want to use on the Image. For example, "Shell" can be shell validation
   /// Expected value is 'File'.
   final pulumi.Input<String> type;
@@ -46,27 +42,12 @@ class ImageTemplateFileValidatorResponse {
 
   factory ImageTemplateFileValidatorResponse.fromMap(Map<String, dynamic> map) {
     return ImageTemplateFileValidatorResponse(
-      destination: (() {
-        final guardedValue = map['destination'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sha256Checksum: (() {
-        final guardedValue = map['sha256Checksum'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sourceUri: (() {
-        final guardedValue = map['sourceUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      destination: (() { final guardedValue = map['destination']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sha256Checksum: (() { final guardedValue = map['sha256Checksum']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourceUri: (() { final guardedValue = map['sourceUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

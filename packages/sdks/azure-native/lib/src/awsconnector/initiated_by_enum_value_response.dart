@@ -9,19 +9,20 @@ class InitiatedByEnumValueResponse {
 
   /// Creates a new [InitiatedByEnumValueResponse].
   /// [value] Property value
-  InitiatedByEnumValueResponse({this.value});
+  InitiatedByEnumValueResponse({
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': ?value};
+    return <String, dynamic>{
+      'value': ?value,
+    };
   }
 
   factory InitiatedByEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return InitiatedByEnumValueResponse(
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

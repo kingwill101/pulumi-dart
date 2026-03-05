@@ -17,3 +17,4 @@ enum EnvironmentKind {
     throw ArgumentError('Unknown EnvironmentKind value: $value');
   }
 }
+

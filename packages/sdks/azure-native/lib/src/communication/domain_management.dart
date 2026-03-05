@@ -16,3 +16,4 @@ enum DomainManagement {
     throw ArgumentError('Unknown DomainManagement value: $value');
   }
 }
+

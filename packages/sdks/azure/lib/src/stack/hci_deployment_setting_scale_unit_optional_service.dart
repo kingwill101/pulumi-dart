@@ -8,17 +8,20 @@ class HciDeploymentSettingScaleUnitOptionalService {
 
   /// Creates a new [HciDeploymentSettingScaleUnitOptionalService].
   /// [customLocation] Specifies the name of custom location. A custom location will be created after the deployment is completed. Changing this forces a new Stack HCI Deployment Setting to be created.
-  HciDeploymentSettingScaleUnitOptionalService({required this.customLocation});
+  HciDeploymentSettingScaleUnitOptionalService({
+    required this.customLocation,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'customLocation': customLocation};
+    return <String, dynamic>{
+      'customLocation': customLocation,
+    };
   }
 
-  factory HciDeploymentSettingScaleUnitOptionalService.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory HciDeploymentSettingScaleUnitOptionalService.fromMap(Map<String, dynamic> map) {
     return HciDeploymentSettingScaleUnitOptionalService(
       customLocation: pulumi.Input.fromValue(map['customLocation'] as String),
     );
   }
 }
+

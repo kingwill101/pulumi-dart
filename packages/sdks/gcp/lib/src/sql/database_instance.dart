@@ -1934,19 +1934,15 @@ import 'database_instance_state.dart';
 class DatabaseInstance extends pulumi.CustomResource {
   /// The list of all maintenance versions applicable on the instance.
   late final pulumi.Output<List<String>> availableMaintenanceVersions;
-
   /// The name of the BackupDR backup to restore from.
   late final pulumi.Output<String?> backupdrBackup;
-
   /// The context needed to create this instance as a clone of another instance. When this field is set during
   /// resource creation, this provider will attempt to clone another instance as indicated in the context. The
   /// configuration is detailed below.
   late final pulumi.Output<DatabaseInstanceClone?> clone;
-
   /// The connection name of the instance to be used in
   /// connection strings. For example, when connecting with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy).
   late final pulumi.Output<String> connectionName;
-
   /// The MySQL, PostgreSQL or
   /// SQL Server version to use. Supported values include `MYSQL_5_6`,
   /// `MYSQL_5_7`, `MYSQL_8_0`, `MYSQL_8_4`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`,
@@ -1957,19 +1953,15 @@ class DatabaseInstance extends pulumi.CustomResource {
   /// [Database Version Policies](https://cloud.google.com/sql/docs/db-versions)
   /// includes an up-to-date reference of supported versions.
   late final pulumi.Output<String> databaseVersion;
-
   /// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
   /// in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
   ///
   /// &gt; **NOTE:** This flag only protects instances from deletion within Pulumi. To protect your instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Pulumi), use the API flag `settings.deletion_protection_enabled`.
   late final pulumi.Output<bool?> deletionProtection;
-
   /// The DNS name of the instance. See [Connect to an instance using Private Service Connect](https://cloud.google.com/sql/docs/mysql/configure-private-service-connect#view-summary-information-cloud-sql-instances-psc-enabled) for more details.
   late final pulumi.Output<String> dnsName;
-
   /// The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
   late final pulumi.Output<List<Map<String, dynamic>>> dnsNames;
-
   /// The full path to the encryption key used for the CMEK disk encryption.  Setting
   /// up disk encryption currently requires manual steps outside of this provider.
   /// The provided key must be in the same region as the SQL instance.  In order
@@ -1979,96 +1971,69 @@ class DatabaseInstance extends pulumi.CustomResource {
   /// That service account needs the `Cloud KMS &gt; Cloud KMS CryptoKey Encrypter/Decrypter` role on your
   /// key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
   late final pulumi.Output<String> encryptionKeyName;
-
   /// The description of final backup. Only set this field when `final_backup_config.enabled` is true.
   late final pulumi.Output<String?> finalBackupDescription;
-
   /// The first IPv4 address of any type assigned.
   late final pulumi.Output<String> firstIpAddress;
-
   /// The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
   late final pulumi.Output<String> instanceType;
   late final pulumi.Output<List<Map<String, dynamic>>> ipAddresses;
-
   /// The current software version on the instance. This attribute can not be set during creation. Refer to `available_maintenance_versions` attribute to see what `maintenance_version` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenance_version` value that is older than the current one on the instance will be ignored.
   late final pulumi.Output<String> maintenanceVersion;
-
   /// The name of the existing instance that will
   /// act as the master in the replication setup. Note, this requires the master to
   /// have `binary_log_enabled` set, as well as existing backups.
   late final pulumi.Output<String> masterInstanceName;
-
   /// The name of the instance. If the name is left
   /// blank, the provider will randomly generate one when the instance is first
   /// created. This is done because after a name is used, it cannot be reused for
   /// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
   late final pulumi.Output<String> name;
-
   /// For a read pool instance, the number of nodes in the read pool. For read pools with auto scaling enabled, this field is read only.
   late final pulumi.Output<int> nodeCount;
-
   /// Configuration for creating a new instance using point-in-time-restore from backupdr backup.
-  late final pulumi.Output<DatabaseInstancePointInTimeRestoreContext?>
-  pointInTimeRestoreContext;
-
+  late final pulumi.Output<DatabaseInstancePointInTimeRestoreContext?> pointInTimeRestoreContext;
   /// The first private (`PRIVATE`) IPv4 address assigned.
   late final pulumi.Output<String> privateIpAddress;
-
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// the URI that points to the service attachment of the instance.
   late final pulumi.Output<String> pscServiceAttachmentLink;
-
   /// The first public (`PRIMARY`) IPv4 address assigned.
   late final pulumi.Output<String> publicIpAddress;
-
   /// The region the instance will sit in. If a region is not provided in the resource definition,
   /// the provider region will be used instead.
   ///
   /// - - -
   late final pulumi.Output<String> region;
-
   /// The configuration for replication. The
   /// configuration is detailed below.
-  late final pulumi.Output<DatabaseInstanceReplicaConfiguration>
-  replicaConfiguration;
-
+  late final pulumi.Output<DatabaseInstanceReplicaConfiguration> replicaConfiguration;
   /// List of replica names. Can be updated.
   late final pulumi.Output<List<String>> replicaNames;
-
   /// A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set if the primary has psa_write_endpoint set or both the primary and replica are created.
-  late final pulumi.Output<DatabaseInstanceReplicationCluster>
-  replicationCluster;
-
+  late final pulumi.Output<DatabaseInstanceReplicationCluster> replicationCluster;
   /// The context needed to restore the database to a backup run. This field will
   /// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
   /// **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
   /// block during resource creation/update will trigger the restore action after the resource is created/updated.
-  late final pulumi.Output<DatabaseInstanceRestoreBackupContext?>
-  restoreBackupContext;
-
+  late final pulumi.Output<DatabaseInstanceRestoreBackupContext?> restoreBackupContext;
   /// Initial root password. Can be updated. Required for MS SQL Server.
   late final pulumi.Output<String?> rootPassword;
-
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// Initial root password. Can be updated. Required for MS SQL Server. **Note**: This property is write-only and will not be read from the API.
   ///
   /// &gt; **Note:** One of `root_password` or `root_password_wo` can only be set.
   late final pulumi.Output<String?> rootPasswordWo;
-
   /// Triggers update of `root_password_wo` write-only. Increment this value when an update to `root_password_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
   late final pulumi.Output<String?> rootPasswordWoVersion;
-
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
   late final pulumi.Output<List<Map<String, dynamic>>> serverCaCerts;
-
   /// The service account email address assigned to the
   /// instance.
   late final pulumi.Output<String> serviceAccountEmailAddress;
-
   /// The settings to use for the database. The
   /// configuration is detailed below. Required if `clone` is not set.
   late final pulumi.Output<DatabaseInstanceSettings> settings;
@@ -2082,25 +2047,14 @@ class DatabaseInstance extends pulumi.CustomResource {
     DatabaseInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:sql/databaseInstance:DatabaseInstance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    availableMaintenanceVersions = registerOutput<List<String>>(
-      'availableMaintenanceVersions',
-    );
+          'gcp:sql/databaseInstance:DatabaseInstance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    availableMaintenanceVersions = registerOutput<List<String>>('availableMaintenanceVersions');
     backupdrBackup = registerOutput<String?>('backupdrBackup');
-    clone = registerOutput<DatabaseInstanceClone?>(
-      'clone',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DatabaseInstanceClone.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    clone = registerOutput<DatabaseInstanceClone?>('clone', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseInstanceClone.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     connectionName = registerOutput<String>('connectionName');
     databaseVersion = registerOutput<String>('databaseVersion');
     deletionProtection = registerOutput<bool?>('deletionProtection');
@@ -2115,74 +2069,23 @@ class DatabaseInstance extends pulumi.CustomResource {
     masterInstanceName = registerOutput<String>('masterInstanceName');
     this.name = registerOutput<String>('name');
     nodeCount = registerOutput<int>('nodeCount');
-    pointInTimeRestoreContext =
-        registerOutput<DatabaseInstancePointInTimeRestoreContext?>(
-          'pointInTimeRestoreContext',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return DatabaseInstancePointInTimeRestoreContext.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    pointInTimeRestoreContext = registerOutput<DatabaseInstancePointInTimeRestoreContext?>('pointInTimeRestoreContext', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseInstancePointInTimeRestoreContext.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     privateIpAddress = registerOutput<String>('privateIpAddress');
     project = registerOutput<String>('project');
-    pscServiceAttachmentLink = registerOutput<String>(
-      'pscServiceAttachmentLink',
-    );
+    pscServiceAttachmentLink = registerOutput<String>('pscServiceAttachmentLink');
     publicIpAddress = registerOutput<String>('publicIpAddress');
     region = registerOutput<String>('region');
-    replicaConfiguration = registerOutput<DatabaseInstanceReplicaConfiguration>(
-      'replicaConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DatabaseInstanceReplicaConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    replicaConfiguration = registerOutput<DatabaseInstanceReplicaConfiguration>('replicaConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseInstanceReplicaConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     replicaNames = registerOutput<List<String>>('replicaNames');
-    replicationCluster = registerOutput<DatabaseInstanceReplicationCluster>(
-      'replicationCluster',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DatabaseInstanceReplicationCluster.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    restoreBackupContext =
-        registerOutput<DatabaseInstanceRestoreBackupContext?>(
-          'restoreBackupContext',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return DatabaseInstanceRestoreBackupContext.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    replicationCluster = registerOutput<DatabaseInstanceReplicationCluster>('replicationCluster', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseInstanceReplicationCluster.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    restoreBackupContext = registerOutput<DatabaseInstanceRestoreBackupContext?>('restoreBackupContext', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseInstanceRestoreBackupContext.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     rootPassword = registerOutput<String?>('rootPassword');
     rootPasswordWo = registerOutput<String?>('rootPasswordWo');
     rootPasswordWoVersion = registerOutput<String?>('rootPasswordWoVersion');
     selfLink = registerOutput<String>('selfLink');
     serverCaCerts = registerOutput<List<Map<String, dynamic>>>('serverCaCerts');
-    serviceAccountEmailAddress = registerOutput<String>(
-      'serviceAccountEmailAddress',
-    );
-    settings = registerOutput<DatabaseInstanceSettings>(
-      'settings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DatabaseInstanceSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    serviceAccountEmailAddress = registerOutput<String>('serviceAccountEmailAddress');
+    settings = registerOutput<DatabaseInstanceSettings>('settings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseInstanceSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [DatabaseInstance] resource's state with the given [name] and [id].
@@ -2203,25 +2106,14 @@ class DatabaseInstance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:sql/databaseInstance:DatabaseInstance',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    availableMaintenanceVersions = registerOutput<List<String>>(
-      'availableMaintenanceVersions',
-    );
+          'gcp:sql/databaseInstance:DatabaseInstance',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    availableMaintenanceVersions = registerOutput<List<String>>('availableMaintenanceVersions');
     backupdrBackup = registerOutput<String?>('backupdrBackup');
-    clone = registerOutput<DatabaseInstanceClone?>(
-      'clone',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DatabaseInstanceClone.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    clone = registerOutput<DatabaseInstanceClone?>('clone', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseInstanceClone.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     connectionName = registerOutput<String>('connectionName');
     databaseVersion = registerOutput<String>('databaseVersion');
     deletionProtection = registerOutput<bool?>('deletionProtection');
@@ -2236,73 +2128,22 @@ class DatabaseInstance extends pulumi.CustomResource {
     masterInstanceName = registerOutput<String>('masterInstanceName');
     this.name = registerOutput<String>('name');
     nodeCount = registerOutput<int>('nodeCount');
-    pointInTimeRestoreContext =
-        registerOutput<DatabaseInstancePointInTimeRestoreContext?>(
-          'pointInTimeRestoreContext',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return DatabaseInstancePointInTimeRestoreContext.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    pointInTimeRestoreContext = registerOutput<DatabaseInstancePointInTimeRestoreContext?>('pointInTimeRestoreContext', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseInstancePointInTimeRestoreContext.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     privateIpAddress = registerOutput<String>('privateIpAddress');
     project = registerOutput<String>('project');
-    pscServiceAttachmentLink = registerOutput<String>(
-      'pscServiceAttachmentLink',
-    );
+    pscServiceAttachmentLink = registerOutput<String>('pscServiceAttachmentLink');
     publicIpAddress = registerOutput<String>('publicIpAddress');
     region = registerOutput<String>('region');
-    replicaConfiguration = registerOutput<DatabaseInstanceReplicaConfiguration>(
-      'replicaConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DatabaseInstanceReplicaConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    replicaConfiguration = registerOutput<DatabaseInstanceReplicaConfiguration>('replicaConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseInstanceReplicaConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     replicaNames = registerOutput<List<String>>('replicaNames');
-    replicationCluster = registerOutput<DatabaseInstanceReplicationCluster>(
-      'replicationCluster',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DatabaseInstanceReplicationCluster.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    restoreBackupContext =
-        registerOutput<DatabaseInstanceRestoreBackupContext?>(
-          'restoreBackupContext',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return DatabaseInstanceRestoreBackupContext.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    replicationCluster = registerOutput<DatabaseInstanceReplicationCluster>('replicationCluster', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseInstanceReplicationCluster.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    restoreBackupContext = registerOutput<DatabaseInstanceRestoreBackupContext?>('restoreBackupContext', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseInstanceRestoreBackupContext.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     rootPassword = registerOutput<String?>('rootPassword');
     rootPasswordWo = registerOutput<String?>('rootPasswordWo');
     rootPasswordWoVersion = registerOutput<String?>('rootPasswordWoVersion');
     selfLink = registerOutput<String>('selfLink');
     serverCaCerts = registerOutput<List<Map<String, dynamic>>>('serverCaCerts');
-    serviceAccountEmailAddress = registerOutput<String>(
-      'serviceAccountEmailAddress',
-    );
-    settings = registerOutput<DatabaseInstanceSettings>(
-      'settings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DatabaseInstanceSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    serviceAccountEmailAddress = registerOutput<String>('serviceAccountEmailAddress');
+    settings = registerOutput<DatabaseInstanceSettings>('settings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseInstanceSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

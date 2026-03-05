@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackendServiceFabricClusterServerX509Name {
   /// The thumbprint for the issuer of the certificate.
   final pulumi.Input<String> issuerCertificateThumbprint;
-
   /// The common name of the certificate.
   final pulumi.Input<String> name;
 
@@ -24,14 +23,11 @@ class BackendServiceFabricClusterServerX509Name {
     };
   }
 
-  factory BackendServiceFabricClusterServerX509Name.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BackendServiceFabricClusterServerX509Name.fromMap(Map<String, dynamic> map) {
     return BackendServiceFabricClusterServerX509Name(
-      issuerCertificateThumbprint: pulumi.Input.fromValue(
-        map['issuerCertificateThumbprint'] as String,
-      ),
+      issuerCertificateThumbprint: pulumi.Input.fromValue(map['issuerCertificateThumbprint'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

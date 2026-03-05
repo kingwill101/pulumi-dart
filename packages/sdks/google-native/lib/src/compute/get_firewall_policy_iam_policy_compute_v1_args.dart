@@ -25,16 +25,11 @@ class GetFirewallPolicyIamPolicyComputeV1Args {
     };
   }
 
-  factory GetFirewallPolicyIamPolicyComputeV1Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetFirewallPolicyIamPolicyComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetFirewallPolicyIamPolicyComputeV1Args(
-      optionsRequestedPolicyVersion: (() {
-        final guardedValue = map['optionsRequestedPolicyVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       resource: pulumi.Input.fromValue(map['resource'] as String),
     );
   }
 }
+

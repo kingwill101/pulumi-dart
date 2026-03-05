@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MasterSlaveServerGroupServer {
   /// Determine if the server is executing. Valid value 0, 1.
   final pulumi.Input<int>? isBackup;
-
   /// The port used by the backend server. Valid value range: [1-65535].
   final pulumi.Input<int> port;
-
   /// A list backend server ID (ECS instance ID).
   final pulumi.Input<String> serverId;
-
   /// The server type of the backend server. Valid value Master, Slave.
   final pulumi.Input<String>? serverType;
-
   /// Type of the backend server. Valid value ecs, eni. Default to eni.
   final pulumi.Input<String>? type;
-
   /// Weight of the backend server. Valid value range: [0-100]. Default to 100.
   final pulumi.Input<int>? weight;
 
@@ -50,28 +45,13 @@ class MasterSlaveServerGroupServer {
 
   factory MasterSlaveServerGroupServer.fromMap(Map<String, dynamic> map) {
     return MasterSlaveServerGroupServer(
-      isBackup: (() {
-        final guardedValue = map['isBackup'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      isBackup: (() { final guardedValue = map['isBackup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       port: pulumi.Input.fromValue(map['port'] as int),
       serverId: pulumi.Input.fromValue(map['serverId'] as String),
-      serverType: (() {
-        final guardedValue = map['serverType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      weight: (() {
-        final guardedValue = map['weight'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      serverType: (() { final guardedValue = map['serverType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      weight: (() { final guardedValue = map['weight']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

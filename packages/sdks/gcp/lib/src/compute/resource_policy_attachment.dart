@@ -344,15 +344,12 @@ import 'resource_policy_attachment_state.dart';
 class ResourcePolicyAttachment extends pulumi.CustomResource {
   /// The name of the instance in which the resource policies are attached to.
   late final pulumi.Output<String> instance;
-
   /// The resource policy to be attached to the instance for scheduling start/stop
   /// operations. Do not specify the self link.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// A reference to the zone where the instance resides.
   late final pulumi.Output<String> zone;
 
@@ -365,11 +362,11 @@ class ResourcePolicyAttachment extends pulumi.CustomResource {
     ResourcePolicyAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:compute/resourcePolicyAttachment:ResourcePolicyAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:compute/resourcePolicyAttachment:ResourcePolicyAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     instance = registerOutput<String>('instance');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -394,11 +391,11 @@ class ResourcePolicyAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:compute/resourcePolicyAttachment:ResourcePolicyAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:compute/resourcePolicyAttachment:ResourcePolicyAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     instance = registerOutput<String>('instance');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VendorSkuPreviewArgs {
   /// Preview subscription ID.
   final pulumi.Input<String>? previewSubscription;
-
   /// The name of the vendor sku.
   final pulumi.Input<String> skuName;
-
   /// The name of the vendor.
   final pulumi.Input<String> vendorName;
 
@@ -36,13 +34,10 @@ class VendorSkuPreviewArgs {
 
   factory VendorSkuPreviewArgs.fromMap(Map<String, dynamic> map) {
     return VendorSkuPreviewArgs(
-      previewSubscription: (() {
-        final guardedValue = map['previewSubscription'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      previewSubscription: (() { final guardedValue = map['previewSubscription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       skuName: pulumi.Input.fromValue(map['skuName'] as String),
       vendorName: pulumi.Input.fromValue(map['vendorName'] as String),
     );
   }
 }
+

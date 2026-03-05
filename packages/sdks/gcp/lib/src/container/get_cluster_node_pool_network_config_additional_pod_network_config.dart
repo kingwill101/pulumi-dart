@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig {
   /// The maximum number of pods per node which use this pod network.
   final pulumi.Input<int> maxPodsPerNode;
-
   /// The name of the secondary range on the subnet which provides IP address for this pod range.
   final pulumi.Input<String> secondaryPodRange;
-
   /// Name of the subnetwork where the additional pod network belongs.
   final pulumi.Input<String> subnetwork;
 
@@ -30,15 +28,12 @@ class GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig {
     };
   }
 
-  factory GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig(
       maxPodsPerNode: pulumi.Input.fromValue(map['maxPodsPerNode'] as int),
-      secondaryPodRange: pulumi.Input.fromValue(
-        map['secondaryPodRange'] as String,
-      ),
+      secondaryPodRange: pulumi.Input.fromValue(map['secondaryPodRange'] as String),
       subnetwork: pulumi.Input.fromValue(map['subnetwork'] as String),
     );
   }
 }
+

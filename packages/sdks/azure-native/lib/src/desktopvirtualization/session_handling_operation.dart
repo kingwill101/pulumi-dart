@@ -15,3 +15,4 @@ enum SessionHandlingOperation {
     throw ArgumentError('Unknown SessionHandlingOperation value: $value');
   }
 }
+

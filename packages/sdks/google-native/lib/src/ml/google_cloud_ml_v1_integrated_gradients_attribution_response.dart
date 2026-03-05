@@ -14,14 +14,15 @@ class GoogleCloudMlV1IntegratedGradientsAttributionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'numIntegralSteps': numIntegralSteps};
+    return <String, dynamic>{
+      'numIntegralSteps': numIntegralSteps,
+    };
   }
 
-  factory GoogleCloudMlV1IntegratedGradientsAttributionResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudMlV1IntegratedGradientsAttributionResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1IntegratedGradientsAttributionResponse(
       numIntegralSteps: pulumi.Input.fromValue(map['numIntegralSteps'] as int),
     );
   }
 }
+

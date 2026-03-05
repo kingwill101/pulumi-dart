@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecurityPostureReference {
   /// The list of virtual machine extension names to exclude when applying the security posture.
   final pulumi.Input<List<String>>? excludeExtensions;
-
   /// The security posture reference id in the form of /CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|latest
   final pulumi.Input<String> id;
-
   /// Whether the security posture can be overridden by the user.
   final pulumi.Input<bool>? isOverridable;
 
@@ -33,17 +31,10 @@ class SecurityPostureReference {
 
   factory SecurityPostureReference.fromMap(Map<String, dynamic> map) {
     return SecurityPostureReference(
-      excludeExtensions: (() {
-        final guardedValue = map['excludeExtensions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      excludeExtensions: (() { final guardedValue = map['excludeExtensions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       id: pulumi.Input.fromValue(map['id'] as String),
-      isOverridable: (() {
-        final guardedValue = map['isOverridable'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      isOverridable: (() { final guardedValue = map['isOverridable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

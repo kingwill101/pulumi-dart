@@ -9,19 +9,20 @@ class FileSystemTypeEnumValueResponse {
 
   /// Creates a new [FileSystemTypeEnumValueResponse].
   /// [value] Property value
-  FileSystemTypeEnumValueResponse({this.value});
+  FileSystemTypeEnumValueResponse({
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': ?value};
+    return <String, dynamic>{
+      'value': ?value,
+    };
   }
 
   factory FileSystemTypeEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return FileSystemTypeEnumValueResponse(
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

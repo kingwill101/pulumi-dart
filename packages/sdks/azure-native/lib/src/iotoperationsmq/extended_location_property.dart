@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExtendedLocationProperty {
   /// The name of the extended location.
   final pulumi.Input<String> name;
-
   /// Type of ExtendedLocation.
   final pulumi.Input<String> type;
 
   /// Creates a new [ExtendedLocationProperty].
   /// [name] The name of the extended location.
   /// [type] Type of ExtendedLocation.
-  ExtendedLocationProperty({required this.name, required this.type});
+  ExtendedLocationProperty({
+    required this.name,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'type': type};
+    return <String, dynamic>{
+      'name': name,
+      'type': type,
+    };
   }
 
   factory ExtendedLocationProperty.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class ExtendedLocationProperty {
     );
   }
 }
+

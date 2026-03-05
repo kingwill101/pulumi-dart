@@ -5,27 +5,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResizeRequestRequestedRunDuration {
   /// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
   final pulumi.Input<int>? nanos;
-
   /// Span of time at a resolution of a second. Must be from 600 to 604800 inclusive. Note: minimum and maximum allowed range for requestedRunDuration is 10 minutes (600 seconds) and 7 days(604800 seconds) correspondingly.
   final pulumi.Input<String> seconds;
 
   /// Creates a new [ResizeRequestRequestedRunDuration].
   /// [nanos] Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
   /// [seconds] Span of time at a resolution of a second. Must be from 600 to 604800 inclusive. Note: minimum and maximum allowed range for requestedRunDuration is 10 minutes (600 seconds) and 7 days(604800 seconds) correspondingly.
-  ResizeRequestRequestedRunDuration({this.nanos, required this.seconds});
+  ResizeRequestRequestedRunDuration({
+    this.nanos,
+    required this.seconds,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'nanos': ?nanos, 'seconds': seconds};
+    return <String, dynamic>{
+      'nanos': ?nanos,
+      'seconds': seconds,
+    };
   }
 
   factory ResizeRequestRequestedRunDuration.fromMap(Map<String, dynamic> map) {
     return ResizeRequestRequestedRunDuration(
-      nanos: (() {
-        final guardedValue = map['nanos'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      nanos: (() { final guardedValue = map['nanos']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       seconds: pulumi.Input.fromValue(map['seconds'] as String),
     );
   }
 }
+

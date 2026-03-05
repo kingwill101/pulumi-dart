@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecurityContactPropertiesResponseNotificationsByRole {
   /// Defines which RBAC roles will get email notifications from Microsoft Defender for Cloud. List of allowed RBAC roles:
   final pulumi.Input<List<String>>? roles;
-
   /// Defines whether to send email notifications from AMicrosoft Defender for Cloud to persons with specific RBAC roles on the subscription.
   final pulumi.Input<String>? state;
 
@@ -19,23 +18,17 @@ class SecurityContactPropertiesResponseNotificationsByRole {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'roles': ?roles, 'state': ?state};
+    return <String, dynamic>{
+      'roles': ?roles,
+      'state': ?state,
+    };
   }
 
-  factory SecurityContactPropertiesResponseNotificationsByRole.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SecurityContactPropertiesResponseNotificationsByRole.fromMap(Map<String, dynamic> map) {
     return SecurityContactPropertiesResponseNotificationsByRole(
-      roles: (() {
-        final guardedValue = map['roles'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      roles: (() { final guardedValue = map['roles']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

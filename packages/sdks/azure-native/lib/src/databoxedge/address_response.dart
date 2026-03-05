@@ -6,22 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AddressResponse {
   /// The address line1.
   final pulumi.Input<String>? addressLine1;
-
   /// The address line2.
   final pulumi.Input<String>? addressLine2;
-
   /// The address line3.
   final pulumi.Input<String>? addressLine3;
-
   /// The city name.
   final pulumi.Input<String>? city;
-
   /// The country name.
   final pulumi.Input<String> country;
-
   /// The postal code.
   final pulumi.Input<String>? postalCode;
-
   /// The state name.
   final pulumi.Input<String>? state;
 
@@ -57,37 +51,14 @@ class AddressResponse {
 
   factory AddressResponse.fromMap(Map<String, dynamic> map) {
     return AddressResponse(
-      addressLine1: (() {
-        final guardedValue = map['addressLine1'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      addressLine2: (() {
-        final guardedValue = map['addressLine2'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      addressLine3: (() {
-        final guardedValue = map['addressLine3'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      city: (() {
-        final guardedValue = map['city'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      addressLine1: (() { final guardedValue = map['addressLine1']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      addressLine2: (() { final guardedValue = map['addressLine2']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      addressLine3: (() { final guardedValue = map['addressLine3']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      city: (() { final guardedValue = map['city']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       country: pulumi.Input.fromValue(map['country'] as String),
-      postalCode: (() {
-        final guardedValue = map['postalCode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      postalCode: (() { final guardedValue = map['postalCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

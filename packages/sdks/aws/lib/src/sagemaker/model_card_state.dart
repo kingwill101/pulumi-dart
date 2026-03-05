@@ -8,25 +8,18 @@ import 'model_card_timeouts.dart';
 class ModelCardState {
   /// Content of the model card in [model card JSON schema](https://docs.aws.amazon.com/sagemaker/latest/dg/model-cards.html#model-cards-json-schema).
   final pulumi.Input<String>? content;
-
   /// The Amazon Resource Name (ARN) of the model card.
   final pulumi.Input<String>? modelCardArn;
-
   /// Name of the model card.
   final pulumi.Input<String>? modelCardName;
-
   /// Approval status of the model card. Valid values: `Draft`, `PendingReview`, `Approved`, `Archived`.
   final pulumi.Input<String>? modelCardStatus;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// KMS key to encrypt, decrypt, and re-encrypt model card content. Fields are documented below.
   final pulumi.Input<ModelCardSecurityConfig>? securityConfig;
-
   /// A mapping of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   final pulumi.Input<ModelCardTimeouts>? timeouts;
@@ -60,80 +53,25 @@ class ModelCardState {
       'modelCardName': ?modelCardName,
       'modelCardStatus': ?modelCardStatus,
       'region': ?region,
-      'securityConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ModelCardSecurityConfig,
-            Map<String, dynamic>
-          >(securityConfig, (value) => value.toMap()),
+      'securityConfig': ?pulumi.Input.mapOptionalInputValue<ModelCardSecurityConfig, Map<String, dynamic>>(securityConfig, (value) => value.toMap()),
       'tags': ?tags,
       'tagsAll': ?tagsAll,
-      'timeouts':
-          ?pulumi.Input.mapOptionalInputValue<
-            ModelCardTimeouts,
-            Map<String, dynamic>
-          >(timeouts, (value) => value.toMap()),
+      'timeouts': ?pulumi.Input.mapOptionalInputValue<ModelCardTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
     };
   }
 
   factory ModelCardState.fromMap(Map<String, dynamic> map) {
     return ModelCardState(
-      content: (() {
-        final guardedValue = map['content'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      modelCardArn: (() {
-        final guardedValue = map['modelCardArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      modelCardName: (() {
-        final guardedValue = map['modelCardName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      modelCardStatus: (() {
-        final guardedValue = map['modelCardStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      securityConfig: (() {
-        final guardedValue = map['securityConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ModelCardSecurityConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      tagsAll: (() {
-        final guardedValue = map['tagsAll'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      timeouts: (() {
-        final guardedValue = map['timeouts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ModelCardTimeouts.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      content: (() { final guardedValue = map['content']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      modelCardArn: (() { final guardedValue = map['modelCardArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      modelCardName: (() { final guardedValue = map['modelCardName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      modelCardStatus: (() { final guardedValue = map['modelCardStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      securityConfig: (() { final guardedValue = map['securityConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ModelCardSecurityConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      timeouts: (() { final guardedValue = map['timeouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ModelCardTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

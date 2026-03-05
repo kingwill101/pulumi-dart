@@ -8,17 +8,20 @@ class DomainDevicesDiskSourceVhostUserQemuvdAgentMouse {
 
   /// Creates a new [DomainDevicesDiskSourceVhostUserQemuvdAgentMouse].
   /// [mode] Sets the mode for the mouse interaction through the QEMU guest agent.
-  DomainDevicesDiskSourceVhostUserQemuvdAgentMouse({required this.mode});
+  DomainDevicesDiskSourceVhostUserQemuvdAgentMouse({
+    required this.mode,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'mode': mode};
+    return <String, dynamic>{
+      'mode': mode,
+    };
   }
 
-  factory DomainDevicesDiskSourceVhostUserQemuvdAgentMouse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDevicesDiskSourceVhostUserQemuvdAgentMouse.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskSourceVhostUserQemuvdAgentMouse(
       mode: pulumi.Input.fromValue(map['mode'] as String),
     );
   }
 }
+

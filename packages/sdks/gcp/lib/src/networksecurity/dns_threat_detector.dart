@@ -211,37 +211,28 @@ class DnsThreatDetector extends pulumi.CustomResource {
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
   late final pulumi.Output<String> createTime;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// List of networks that are excluded from detection. Format: projects/{project}/global/networks/{name}.
   late final pulumi.Output<List<String>?> excludedNetworks;
-
   /// Set of label tags associated with the DNS Threat Detector resource.
   /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// The location of the DNS Threat Detector. The only supported value is `global`.
   late final pulumi.Output<String?> location;
-
   /// Name of the DnsThreatDetector resource.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// DNS Threat Detection provider. The only supported value is `INFOBLOX`.
   late final pulumi.Output<String?> threatDetectorProvider;
-
   /// The timestamp when the resource was updated.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -256,11 +247,11 @@ class DnsThreatDetector extends pulumi.CustomResource {
     DnsThreatDetectorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:networksecurity/dnsThreatDetector:DnsThreatDetector',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:networksecurity/dnsThreatDetector:DnsThreatDetector',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     excludedNetworks = registerOutput<List<String>?>('excludedNetworks');
@@ -291,11 +282,11 @@ class DnsThreatDetector extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:networksecurity/dnsThreatDetector:DnsThreatDetector',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:networksecurity/dnsThreatDetector:DnsThreatDetector',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     excludedNetworks = registerOutput<List<String>?>('excludedNetworks');

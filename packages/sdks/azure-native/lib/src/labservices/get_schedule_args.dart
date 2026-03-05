@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetScheduleArgs {
   /// The name of the lab that uniquely identifies it within containing lab plan. Used in resource URIs.
   final pulumi.Input<String> labName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
   final pulumi.Input<String> scheduleName;
 
@@ -37,10 +35,9 @@ class GetScheduleArgs {
   factory GetScheduleArgs.fromMap(Map<String, dynamic> map) {
     return GetScheduleArgs(
       labName: pulumi.Input.fromValue(map['labName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       scheduleName: pulumi.Input.fromValue(map['scheduleName'] as String),
     );
   }
 }
+

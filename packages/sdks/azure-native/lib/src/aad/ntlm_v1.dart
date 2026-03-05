@@ -15,3 +15,4 @@ enum NtlmV1 {
     throw ArgumentError('Unknown NtlmV1 value: $value');
   }
 }
+

@@ -37,9 +37,7 @@ class GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTable {
     };
   }
 
-  factory GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTable.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTable.fromMap(Map<String, dynamic> map) {
     return GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTable(
       description: pulumi.Input.fromValue(map['description'] as String),
       example: pulumi.Input.fromValue(map['example'] as String),
@@ -50,3 +48,4 @@ class GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTable {
     );
   }
 }
+

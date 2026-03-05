@@ -10,11 +10,9 @@ import 'class_item.dart';
 class CustomClassArgs {
   /// The ID to use for the custom class, which will become the final component of the custom class' resource name. This value should restrict to letters, numbers, and hyphens, with the first character a letter, the last a letter or a number, and be 4-63 characters.
   final pulumi.Input<String> customClassId;
-
   /// A collection of class items.
   final pulumi.Input<List<ClassItem>>? items;
   final pulumi.Input<String>? location;
-
   /// The resource name of the custom class.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
@@ -36,17 +34,7 @@ class CustomClassArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'customClassId': customClassId,
-      'items':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ClassItem>,
-            List<Map<String, dynamic>>
-          >(
-            items,
-            (value) => pulumi.Input.encodeList<ClassItem, Map<String, dynamic>>(
-              value,
-              (value) => value.toMap(),
-            ),
-          ),
+      'items': ?pulumi.Input.mapOptionalInputValue<List<ClassItem>, List<Map<String, dynamic>>>(items, (value) => pulumi.Input.encodeList<ClassItem, Map<String, dynamic>>(value, (value) => value.toMap())),
       'location': ?location,
       'name': ?name,
       'project': ?project,
@@ -56,32 +44,11 @@ class CustomClassArgs {
   factory CustomClassArgs.fromMap(Map<String, dynamic> map) {
     return CustomClassArgs(
       customClassId: pulumi.Input.fromValue(map['customClassId'] as String),
-      items: (() {
-        final guardedValue = map['items'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ClassItem>(
-            guardedValue,
-            (value) =>
-                ClassItem.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      items: (() { final guardedValue = map['items']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ClassItem>(guardedValue, (value) => ClassItem.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

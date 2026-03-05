@@ -9,10 +9,14 @@ class ImageFreshnessCheckResponse {
 
   /// Creates a new [ImageFreshnessCheckResponse].
   /// [maxUploadAgeDays] The max number of days that is allowed since the image was uploaded. Must be greater than zero.
-  ImageFreshnessCheckResponse({required this.maxUploadAgeDays});
+  ImageFreshnessCheckResponse({
+    required this.maxUploadAgeDays,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'maxUploadAgeDays': maxUploadAgeDays};
+    return <String, dynamic>{
+      'maxUploadAgeDays': maxUploadAgeDays,
+    };
   }
 
   factory ImageFreshnessCheckResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class ImageFreshnessCheckResponse {
     );
   }
 }
+

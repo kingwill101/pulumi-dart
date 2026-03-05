@@ -15,3 +15,4 @@ enum AssessmentSizingCriterion {
     throw ArgumentError('Unknown AssessmentSizingCriterion value: $value');
   }
 }
+

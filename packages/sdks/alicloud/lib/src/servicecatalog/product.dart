@@ -153,16 +153,12 @@ import 'product_state.dart';
 class Product extends pulumi.CustomResource {
   /// The creation time of the product
   late final pulumi.Output<String> createTime;
-
   /// The description of the product
   late final pulumi.Output<String?> description;
-
   /// The name of the product
   late final pulumi.Output<String> productName;
-
   /// The type of the product
   late final pulumi.Output<String> productType;
-
   /// The provider name of the product
   late final pulumi.Output<String> providerName;
 
@@ -175,11 +171,11 @@ class Product extends pulumi.CustomResource {
     ProductArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:servicecatalog/product:Product',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:servicecatalog/product:Product',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     productName = registerOutput<String>('productName');
@@ -205,11 +201,11 @@ class Product extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:servicecatalog/product:Product',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:servicecatalog/product:Product',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     productName = registerOutput<String>('productName');

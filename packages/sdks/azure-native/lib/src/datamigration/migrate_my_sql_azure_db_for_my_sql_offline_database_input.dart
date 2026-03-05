@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MigrateMySqlAzureDbForMySqlOfflineDatabaseInput {
   /// Name of the database
   final pulumi.Input<String>? name;
-
   /// Mapping of source to target tables
   final pulumi.Input<Map<String, String>>? tableMap;
-
   /// Name of target database. Note: Target database will be truncated before starting migration.
   final pulumi.Input<String>? targetDatabaseName;
 
@@ -31,27 +29,12 @@ class MigrateMySqlAzureDbForMySqlOfflineDatabaseInput {
     };
   }
 
-  factory MigrateMySqlAzureDbForMySqlOfflineDatabaseInput.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MigrateMySqlAzureDbForMySqlOfflineDatabaseInput.fromMap(Map<String, dynamic> map) {
     return MigrateMySqlAzureDbForMySqlOfflineDatabaseInput(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tableMap: (() {
-        final guardedValue = map['tableMap'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      targetDatabaseName: (() {
-        final guardedValue = map['targetDatabaseName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tableMap: (() { final guardedValue = map['tableMap']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      targetDatabaseName: (() { final guardedValue = map['targetDatabaseName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

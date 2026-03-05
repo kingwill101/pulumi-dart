@@ -140,7 +140,6 @@ import 'console_properties_response.dart';
 class Console extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Cloud shell console properties.
   late final pulumi.Output<ConsolePropertiesResponse> properties;
 
@@ -153,21 +152,12 @@ class Console extends pulumi.CustomResource {
     ConsoleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:portal:Console',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:portal:Console',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    properties = registerOutput<ConsolePropertiesResponse>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConsolePropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<ConsolePropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConsolePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

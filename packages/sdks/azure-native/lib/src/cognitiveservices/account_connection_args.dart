@@ -10,13 +10,10 @@ import 'aadauth_type_connection_properties.dart';
 class AccountConnectionArgs {
   /// The name of Cognitive Services account.
   final pulumi.Input<String> accountName;
-
   /// Friendly name of the connection
   final pulumi.Input<String>? connectionName;
-
   /// Connection property base schema.
   final pulumi.Input<AADAuthTypeConnectionProperties> properties;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,11 +33,7 @@ class AccountConnectionArgs {
     return <String, dynamic>{
       'accountName': accountName,
       'connectionName': ?connectionName,
-      'properties':
-          pulumi.Input.mapInputValue<
-            AADAuthTypeConnectionProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': pulumi.Input.mapInputValue<AADAuthTypeConnectionProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
     };
   }
@@ -48,19 +41,10 @@ class AccountConnectionArgs {
   factory AccountConnectionArgs.fromMap(Map<String, dynamic> map) {
     return AccountConnectionArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
-      connectionName: (() {
-        final guardedValue = map['connectionName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      properties: pulumi.Input.fromValue(
-        AADAuthTypeConnectionProperties.fromMap(
-          (map['properties']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      connectionName: (() { final guardedValue = map['connectionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      properties: pulumi.Input.fromValue(AADAuthTypeConnectionProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

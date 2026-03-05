@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DnssecConfigArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the DNS zone (without a terminating dot).
   final pulumi.Input<String> zoneName;
 
   /// Creates a new [DnssecConfigArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [zoneName] The name of the DNS zone (without a terminating dot).
-  DnssecConfigArgs({required this.resourceGroupName, required this.zoneName});
+  DnssecConfigArgs({
+    required this.resourceGroupName,
+    required this.zoneName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,10 +29,9 @@ class DnssecConfigArgs {
 
   factory DnssecConfigArgs.fromMap(Map<String, dynamic> map) {
     return DnssecConfigArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       zoneName: pulumi.Input.fromValue(map['zoneName'] as String),
     );
   }
 }
+

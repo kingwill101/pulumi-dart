@@ -581,27 +581,21 @@ class AccessKey extends pulumi.CustomResource {
   /// (Available since v1.246.0) The create time of the AccessKey.
   late final pulumi.Output<String> createTime;
   late final pulumi.Output<String> encryptedSecret;
-
   /// (Available since v1.47.0) The fingerprint of the PGP key used to encrypt the secret
   late final pulumi.Output<String> keyFingerprint;
-
   /// Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`
   late final pulumi.Output<String?> pgpKey;
-
   /// (Available since v1.98.0) The secret access key. Note that this will be written to the state file.
   /// If you use this, please protect your backend state file judiciously.
   /// Alternatively, you may supply a `pgp_key` instead, which will prevent the secret from being stored in plaintext,
   /// at the cost of preventing the use of the secret key in automation.
   late final pulumi.Output<String> secret;
-
   /// The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn't get its secret ever.
   late final pulumi.Output<String?> secretFile;
-
   /// The status of the AccessKey. Value:
   /// - Active: Activated.
   /// - Inactive: Disabled.
   late final pulumi.Output<String> status;
-
   /// The RAM user name.
   late final pulumi.Output<String?> userName;
 
@@ -614,11 +608,11 @@ class AccessKey extends pulumi.CustomResource {
     AccessKeyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ram/accessKey:AccessKey',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ram/accessKey:AccessKey',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     encryptedSecret = registerOutput<String>('encryptedSecret');
     keyFingerprint = registerOutput<String>('keyFingerprint');
@@ -647,11 +641,11 @@ class AccessKey extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ram/accessKey:AccessKey',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ram/accessKey:AccessKey',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     encryptedSecret = registerOutput<String>('encryptedSecret');
     keyFingerprint = registerOutput<String>('keyFingerprint');

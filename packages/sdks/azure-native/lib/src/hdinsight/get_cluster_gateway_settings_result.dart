@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getClusterGatewaySettings.
 class GetClusterGatewaySettingsResult {
   /// Indicates whether or not the gateway settings based authorization is enabled.
   final String isCredentialEnabled;
-
   /// The gateway settings user password.
   final String password;
-
   /// The gateway settings user name.
   final String userName;
 
@@ -37,3 +36,4 @@ class GetClusterGatewaySettingsResult {
     );
   }
 }
+

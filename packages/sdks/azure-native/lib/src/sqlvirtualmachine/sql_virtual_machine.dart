@@ -2022,90 +2022,58 @@ import 'wsfc_domain_credentials_response.dart';
 class SqlVirtualMachine extends pulumi.CustomResource {
   /// Additional VM Patching solution enabled on the Virtual Machine
   late final pulumi.Output<String> additionalVmPatch;
-
   /// SQL best practices Assessment Settings.
   late final pulumi.Output<AssessmentSettingsResponse?> assessmentSettings;
-
   /// Auto backup settings for SQL Server.
   late final pulumi.Output<AutoBackupSettingsResponse?> autoBackupSettings;
-
   /// Auto patching settings for applying critical security updates to SQL virtual machine.
   late final pulumi.Output<AutoPatchingSettingsResponse?> autoPatchingSettings;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Enable automatic upgrade of Sql IaaS extension Agent.
   late final pulumi.Output<bool?> enableAutomaticUpgrade;
-
   /// DO NOT USE. This value will be deprecated. Azure Active Directory identity of the server.
   late final pulumi.Output<ResourceIdentityResponse?> identity;
-
   /// Key vault credential settings.
-  late final pulumi.Output<KeyVaultCredentialSettingsResponse?>
-  keyVaultCredentialSettings;
-
+  late final pulumi.Output<KeyVaultCredentialSettingsResponse?> keyVaultCredentialSettings;
   /// SQL IaaS Agent least privilege mode.
   late final pulumi.Output<String?> leastPrivilegeMode;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Operating System of the current SQL Virtual Machine.
   late final pulumi.Output<String> osType;
-
   /// Provisioning state to track the async operation status.
   late final pulumi.Output<String> provisioningState;
-
   /// SQL Server configuration management settings.
-  late final pulumi.Output<ServerConfigurationsManagementSettingsResponse?>
-  serverConfigurationsManagementSettings;
-
+  late final pulumi.Output<ServerConfigurationsManagementSettingsResponse?> serverConfigurationsManagementSettings;
   /// SQL image offer. Examples include SQL2016-WS2016, SQL2017-WS2016.
   late final pulumi.Output<String?> sqlImageOffer;
-
   /// SQL Server edition type.
   late final pulumi.Output<String?> sqlImageSku;
-
   /// SQL Server Management type. NOTE: This parameter is not used anymore. API will automatically detect the Sql Management, refrain from using it.
   late final pulumi.Output<String?> sqlManagement;
-
   /// SQL Server license type.
   late final pulumi.Output<String?> sqlServerLicenseType;
-
   /// ARM resource id of the SQL virtual machine group this SQL virtual machine is or will be part of.
   late final pulumi.Output<String?> sqlVirtualMachineGroupResourceId;
-
   /// Storage Configuration Settings.
-  late final pulumi.Output<StorageConfigurationSettingsResponse?>
-  storageConfigurationSettings;
-
+  late final pulumi.Output<StorageConfigurationSettingsResponse?> storageConfigurationSettings;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Troubleshooting status
   late final pulumi.Output<TroubleshootingStatusResponse> troubleshootingStatus;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Virtual Machine Identity details used for Sql IaaS extension configurations.
-  late final pulumi.Output<VirtualMachineIdentityResponse?>
-  virtualMachineIdentitySettings;
-
+  late final pulumi.Output<VirtualMachineIdentityResponse?> virtualMachineIdentitySettings;
   /// ARM Resource id of underlying virtual machine created from SQL marketplace image.
   late final pulumi.Output<String?> virtualMachineResourceId;
-
   /// Domain credentials for setting up Windows Server Failover Cluster for SQL availability group.
-  late final pulumi.Output<WsfcDomainCredentialsResponse?>
-  wsfcDomainCredentials;
-
+  late final pulumi.Output<WsfcDomainCredentialsResponse?> wsfcDomainCredentials;
   /// Domain credentials for setting up Windows Server Failover Cluster for SQL availability group.
   late final pulumi.Output<String?> wsfcStaticIp;
 
@@ -2118,145 +2086,38 @@ class SqlVirtualMachine extends pulumi.CustomResource {
     SqlVirtualMachineArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:sqlvirtualmachine:SqlVirtualMachine',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:sqlvirtualmachine:SqlVirtualMachine',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     additionalVmPatch = registerOutput<String>('additionalVmPatch');
-    assessmentSettings = registerOutput<AssessmentSettingsResponse?>(
-      'assessmentSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AssessmentSettingsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    autoBackupSettings = registerOutput<AutoBackupSettingsResponse?>(
-      'autoBackupSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AutoBackupSettingsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    autoPatchingSettings = registerOutput<AutoPatchingSettingsResponse?>(
-      'autoPatchingSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AutoPatchingSettingsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    assessmentSettings = registerOutput<AssessmentSettingsResponse?>('assessmentSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssessmentSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    autoBackupSettings = registerOutput<AutoBackupSettingsResponse?>('autoBackupSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutoBackupSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    autoPatchingSettings = registerOutput<AutoPatchingSettingsResponse?>('autoPatchingSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutoPatchingSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     enableAutomaticUpgrade = registerOutput<bool?>('enableAutomaticUpgrade');
-    identity = registerOutput<ResourceIdentityResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResourceIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    keyVaultCredentialSettings =
-        registerOutput<KeyVaultCredentialSettingsResponse?>(
-          'keyVaultCredentialSettings',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return KeyVaultCredentialSettingsResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    identity = registerOutput<ResourceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    keyVaultCredentialSettings = registerOutput<KeyVaultCredentialSettingsResponse?>('keyVaultCredentialSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KeyVaultCredentialSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     leastPrivilegeMode = registerOutput<String?>('leastPrivilegeMode');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     osType = registerOutput<String>('osType');
     provisioningState = registerOutput<String>('provisioningState');
-    serverConfigurationsManagementSettings =
-        registerOutput<ServerConfigurationsManagementSettingsResponse?>(
-          'serverConfigurationsManagementSettings',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ServerConfigurationsManagementSettingsResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    serverConfigurationsManagementSettings = registerOutput<ServerConfigurationsManagementSettingsResponse?>('serverConfigurationsManagementSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerConfigurationsManagementSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sqlImageOffer = registerOutput<String?>('sqlImageOffer');
     sqlImageSku = registerOutput<String?>('sqlImageSku');
     sqlManagement = registerOutput<String?>('sqlManagement');
     sqlServerLicenseType = registerOutput<String?>('sqlServerLicenseType');
-    sqlVirtualMachineGroupResourceId = registerOutput<String?>(
-      'sqlVirtualMachineGroupResourceId',
-    );
-    storageConfigurationSettings =
-        registerOutput<StorageConfigurationSettingsResponse?>(
-          'storageConfigurationSettings',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return StorageConfigurationSettingsResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sqlVirtualMachineGroupResourceId = registerOutput<String?>('sqlVirtualMachineGroupResourceId');
+    storageConfigurationSettings = registerOutput<StorageConfigurationSettingsResponse?>('storageConfigurationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StorageConfigurationSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
-    troubleshootingStatus = registerOutput<TroubleshootingStatusResponse>(
-      'troubleshootingStatus',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TroubleshootingStatusResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    troubleshootingStatus = registerOutput<TroubleshootingStatusResponse>('troubleshootingStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TroubleshootingStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
-    virtualMachineIdentitySettings =
-        registerOutput<VirtualMachineIdentityResponse?>(
-          'virtualMachineIdentitySettings',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return VirtualMachineIdentityResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    virtualMachineResourceId = registerOutput<String?>(
-      'virtualMachineResourceId',
-    );
-    wsfcDomainCredentials = registerOutput<WsfcDomainCredentialsResponse?>(
-      'wsfcDomainCredentials',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WsfcDomainCredentialsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    virtualMachineIdentitySettings = registerOutput<VirtualMachineIdentityResponse?>('virtualMachineIdentitySettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    virtualMachineResourceId = registerOutput<String?>('virtualMachineResourceId');
+    wsfcDomainCredentials = registerOutput<WsfcDomainCredentialsResponse?>('wsfcDomainCredentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WsfcDomainCredentialsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     wsfcStaticIp = registerOutput<String?>('wsfcStaticIp');
   }
 }

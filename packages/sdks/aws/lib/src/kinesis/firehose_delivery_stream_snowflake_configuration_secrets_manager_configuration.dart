@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FirehoseDeliveryStreamSnowflakeConfigurationSecretsManagerConfiguration {
   /// Enables or disables the Secrets Manager configuration.
   final pulumi.Input<bool>? enabled;
-
   /// The ARN of the role the stream assumes.
   final pulumi.Input<String>? roleArn;
-
   /// The ARN of the Secrets Manager secret. This value is required if `enabled` is true.
   final pulumi.Input<String>? secretArn;
 
@@ -30,25 +28,12 @@ class FirehoseDeliveryStreamSnowflakeConfigurationSecretsManagerConfiguration {
     };
   }
 
-  factory FirehoseDeliveryStreamSnowflakeConfigurationSecretsManagerConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FirehoseDeliveryStreamSnowflakeConfigurationSecretsManagerConfiguration.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamSnowflakeConfigurationSecretsManagerConfiguration(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      roleArn: (() {
-        final guardedValue = map['roleArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      secretArn: (() {
-        final guardedValue = map['secretArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      roleArn: (() { final guardedValue = map['roleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      secretArn: (() { final guardedValue = map['secretArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

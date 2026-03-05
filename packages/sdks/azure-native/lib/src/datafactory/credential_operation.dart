@@ -157,16 +157,12 @@ import 'managed_identity_credential_response.dart';
 class CredentialOperation extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Etag identifies change in the resource.
   late final pulumi.Output<String> etag;
-
   /// The resource name.
   late final pulumi.Output<String> name;
-
   /// Properties of credentials.
   late final pulumi.Output<ManagedIdentityCredentialResponse> properties;
-
   /// The resource type.
   late final pulumi.Output<String> type;
 
@@ -179,24 +175,15 @@ class CredentialOperation extends pulumi.CustomResource {
     CredentialOperationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:datafactory:CredentialOperation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:datafactory:CredentialOperation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<ManagedIdentityCredentialResponse>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ManagedIdentityCredentialResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<ManagedIdentityCredentialResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedIdentityCredentialResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

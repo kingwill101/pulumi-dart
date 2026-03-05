@@ -9,19 +9,20 @@ class HostIPPatch {
 
   /// Creates a new [HostIPPatch].
   /// [ip] IP is the IP address assigned to the host
-  HostIPPatch({this.ip});
+  HostIPPatch({
+    this.ip,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'ip': ?ip};
+    return <String, dynamic>{
+      'ip': ?ip,
+    };
   }
 
   factory HostIPPatch.fromMap(Map<String, dynamic> map) {
     return HostIPPatch(
-      ip: (() {
-        final guardedValue = map['ip'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ip: (() { final guardedValue = map['ip']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

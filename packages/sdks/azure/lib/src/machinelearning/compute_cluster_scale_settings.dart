@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ComputeClusterScaleSettings {
   /// Maximum node count.
   final pulumi.Input<int> maxNodeCount;
-
   /// Minimal node count.
   final pulumi.Input<int> minNodeCount;
-
   /// Node Idle Time Before Scale Down: defines the time until the compute is shutdown when it has gone into Idle state. Is defined according to W3C XML schema standard for duration.
   final pulumi.Input<String> scaleDownNodesAfterIdleDuration;
 
@@ -34,9 +32,8 @@ class ComputeClusterScaleSettings {
     return ComputeClusterScaleSettings(
       maxNodeCount: pulumi.Input.fromValue(map['maxNodeCount'] as int),
       minNodeCount: pulumi.Input.fromValue(map['minNodeCount'] as int),
-      scaleDownNodesAfterIdleDuration: pulumi.Input.fromValue(
-        map['scaleDownNodesAfterIdleDuration'] as String,
-      ),
+      scaleDownNodesAfterIdleDuration: pulumi.Input.fromValue(map['scaleDownNodesAfterIdleDuration'] as String),
     );
   }
 }
+

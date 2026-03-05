@@ -13,7 +13,6 @@ class GetGlobalForwardingRuleResult {
   final String externalManagedBackendBucketMigrationState;
   final double externalManagedBackendBucketMigrationTestingPercentage;
   final int forwardingRuleId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String ipAddress;
@@ -33,8 +32,7 @@ class GetGlobalForwardingRuleResult {
   final String pscConnectionStatus;
   final Map<String, String> pulumiLabels;
   final String selfLink;
-  final List<GetGlobalForwardingRuleServiceDirectoryRegistration>
-  serviceDirectoryRegistrations;
+  final List<GetGlobalForwardingRuleServiceDirectoryRegistration> serviceDirectoryRegistrations;
   final List<String> sourceIpRanges;
   final String subnetwork;
   final String target;
@@ -107,10 +105,8 @@ class GetGlobalForwardingRuleResult {
       'baseForwardingRule': baseForwardingRule,
       'description': description,
       'effectiveLabels': effectiveLabels,
-      'externalManagedBackendBucketMigrationState':
-          externalManagedBackendBucketMigrationState,
-      'externalManagedBackendBucketMigrationTestingPercentage':
-          externalManagedBackendBucketMigrationTestingPercentage,
+      'externalManagedBackendBucketMigrationState': externalManagedBackendBucketMigrationState,
+      'externalManagedBackendBucketMigrationTestingPercentage': externalManagedBackendBucketMigrationTestingPercentage,
       'forwardingRuleId': forwardingRuleId,
       'id': id,
       'ipAddress': ipAddress,
@@ -119,11 +115,7 @@ class GetGlobalForwardingRuleResult {
       'labelFingerprint': labelFingerprint,
       'labels': labels,
       'loadBalancingScheme': loadBalancingScheme,
-      'metadataFilters':
-          pulumi.Input.encodeList<
-            GetGlobalForwardingRuleMetadataFilter,
-            Map<String, dynamic>
-          >(metadataFilters, (value) => value.toMap()),
+      'metadataFilters': pulumi.Input.encodeList<GetGlobalForwardingRuleMetadataFilter, Map<String, dynamic>>(metadataFilters, (value) => value.toMap()),
       'name': name,
       'network': network,
       'networkTier': networkTier,
@@ -134,11 +126,7 @@ class GetGlobalForwardingRuleResult {
       'pscConnectionStatus': pscConnectionStatus,
       'pulumiLabels': pulumiLabels,
       'selfLink': selfLink,
-      'serviceDirectoryRegistrations':
-          pulumi.Input.encodeList<
-            GetGlobalForwardingRuleServiceDirectoryRegistration,
-            Map<String, dynamic>
-          >(serviceDirectoryRegistrations, (value) => value.toMap()),
+      'serviceDirectoryRegistrations': pulumi.Input.encodeList<GetGlobalForwardingRuleServiceDirectoryRegistration, Map<String, dynamic>>(serviceDirectoryRegistrations, (value) => value.toMap()),
       'sourceIpRanges': sourceIpRanges,
       'subnetwork': subnetwork,
       'target': target,
@@ -151,11 +139,8 @@ class GetGlobalForwardingRuleResult {
       baseForwardingRule: map['baseForwardingRule'] as String,
       description: map['description'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
-      externalManagedBackendBucketMigrationState:
-          map['externalManagedBackendBucketMigrationState'] as String,
-      externalManagedBackendBucketMigrationTestingPercentage:
-          map['externalManagedBackendBucketMigrationTestingPercentage']
-              as double,
+      externalManagedBackendBucketMigrationState: map['externalManagedBackendBucketMigrationState'] as String,
+      externalManagedBackendBucketMigrationTestingPercentage: map['externalManagedBackendBucketMigrationTestingPercentage'] as double,
       forwardingRuleId: map['forwardingRuleId'] as int,
       id: map['id'] as String,
       ipAddress: map['ipAddress'] as String,
@@ -164,40 +149,22 @@ class GetGlobalForwardingRuleResult {
       labelFingerprint: map['labelFingerprint'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
       loadBalancingScheme: map['loadBalancingScheme'] as String,
-      metadataFilters:
-          pulumi.Input.decodeList<GetGlobalForwardingRuleMetadataFilter>(
-            map['metadataFilters']!,
-            (value) => GetGlobalForwardingRuleMetadataFilter.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      metadataFilters: pulumi.Input.decodeList<GetGlobalForwardingRuleMetadataFilter>(map['metadataFilters']!, (value) => GetGlobalForwardingRuleMetadataFilter.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       network: map['network'] as String,
       networkTier: map['networkTier'] as String,
       noAutomateDnsZone: map['noAutomateDnsZone'] as bool,
       portRange: map['portRange'] as String,
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
       pscConnectionId: map['pscConnectionId'] as String,
       pscConnectionStatus: map['pscConnectionStatus'] as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       selfLink: map['selfLink'] as String,
-      serviceDirectoryRegistrations:
-          pulumi.Input.decodeList<
-            GetGlobalForwardingRuleServiceDirectoryRegistration
-          >(
-            map['serviceDirectoryRegistrations']!,
-            (value) =>
-                GetGlobalForwardingRuleServiceDirectoryRegistration.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      serviceDirectoryRegistrations: pulumi.Input.decodeList<GetGlobalForwardingRuleServiceDirectoryRegistration>(map['serviceDirectoryRegistrations']!, (value) => GetGlobalForwardingRuleServiceDirectoryRegistration.fromMap((value as Map).cast<String, dynamic>())),
       sourceIpRanges: (map['sourceIpRanges'] as List).cast<String>(),
       subnetwork: map['subnetwork'] as String,
       target: map['target'] as String,
     );
   }
 }
+

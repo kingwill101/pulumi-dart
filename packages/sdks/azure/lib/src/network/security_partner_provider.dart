@@ -337,19 +337,14 @@ import 'security_partner_provider_state.dart';
 class SecurityPartnerProvider extends pulumi.CustomResource {
   /// The Azure Region where the Security Partner Provider should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The name which should be used for this Security Partner Provider. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the Resource Group where the Security Partner Provider should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The security provider name. Possible values are `ZScaler`, `IBoss` and `Checkpoint` is allowed. Changing this forces a new resource to be created.
   late final pulumi.Output<String> securityProviderName;
-
   /// A mapping of tags which should be assigned to the Security Partner Provider.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The ID of the Virtual Hub within which this Security Partner Provider should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> virtualHubId;
 
@@ -362,11 +357,11 @@ class SecurityPartnerProvider extends pulumi.CustomResource {
     SecurityPartnerProviderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/securityPartnerProvider:SecurityPartnerProvider',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/securityPartnerProvider:SecurityPartnerProvider',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -393,11 +388,11 @@ class SecurityPartnerProvider extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/securityPartnerProvider:SecurityPartnerProvider',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/securityPartnerProvider:SecurityPartnerProvider',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');

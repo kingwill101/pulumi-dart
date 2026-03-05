@@ -283,42 +283,32 @@ import 'sac_realm_symantec_options.dart';
 class SacRealm extends pulumi.CustomResource {
   /// Timestamp when the realm was created.
   late final pulumi.Output<String> createTime;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// Identifier. Resource name.
   late final pulumi.Output<String> name;
-
   /// Key to be shared with SSE service provider during pairing.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> pairingKeys;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// SSE service provider associated with the realm.
   /// Possible values are: `SECURITY_SERVICE_UNSPECIFIED`, `PALO_ALTO_PRISMA_ACCESS`, `SYMANTEC_CLOUD_SWG`.
   late final pulumi.Output<String> securityService;
-
   /// State of the realm.
   late final pulumi.Output<String> state;
-
   /// Configuration required for Symantec realms.
   /// Structure is documented below.
   late final pulumi.Output<SacRealmSymantecOptions?> symantecOptions;
-
   /// Timestamp when the realm was last updated.
   late final pulumi.Output<String> updateTime;
 
@@ -331,11 +321,11 @@ class SacRealm extends pulumi.CustomResource {
     SacRealmArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:networksecurity/sacRealm:SacRealm',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:networksecurity/sacRealm:SacRealm',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -345,16 +335,7 @@ class SacRealm extends pulumi.CustomResource {
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     securityService = registerOutput<String>('securityService');
     state = registerOutput<String>('state');
-    symantecOptions = registerOutput<SacRealmSymantecOptions?>(
-      'symantecOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SacRealmSymantecOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    symantecOptions = registerOutput<SacRealmSymantecOptions?>('symantecOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SacRealmSymantecOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updateTime = registerOutput<String>('updateTime');
   }
 
@@ -376,11 +357,11 @@ class SacRealm extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:networksecurity/sacRealm:SacRealm',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:networksecurity/sacRealm:SacRealm',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -390,16 +371,7 @@ class SacRealm extends pulumi.CustomResource {
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     securityService = registerOutput<String>('securityService');
     this.state = registerOutput<String>('state');
-    symantecOptions = registerOutput<SacRealmSymantecOptions?>(
-      'symantecOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SacRealmSymantecOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    symantecOptions = registerOutput<SacRealmSymantecOptions?>('symantecOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SacRealmSymantecOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updateTime = registerOutput<String>('updateTime');
   }
 }

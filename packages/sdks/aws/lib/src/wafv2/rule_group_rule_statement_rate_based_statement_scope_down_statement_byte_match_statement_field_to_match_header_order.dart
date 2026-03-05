@@ -13,16 +13,15 @@ class RuleGroupRuleStatementRateBasedStatementScopeDownStatementByteMatchStateme
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'oversizeHandling': oversizeHandling};
+    return <String, dynamic>{
+      'oversizeHandling': oversizeHandling,
+    };
   }
 
-  factory RuleGroupRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementFieldToMatchHeaderOrder.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RuleGroupRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementFieldToMatchHeaderOrder.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementFieldToMatchHeaderOrder(
-      oversizeHandling: pulumi.Input.fromValue(
-        map['oversizeHandling'] as String,
-      ),
+      oversizeHandling: pulumi.Input.fromValue(map['oversizeHandling'] as String),
     );
   }
 }
+

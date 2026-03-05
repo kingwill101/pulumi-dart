@@ -8,17 +8,20 @@ class ClusterEnableK8sBetaApis {
 
   /// Creates a new [ClusterEnableK8sBetaApis].
   /// [enabledApis] Enabled Kubernetes Beta APIs.
-  ClusterEnableK8sBetaApis({required this.enabledApis});
+  ClusterEnableK8sBetaApis({
+    required this.enabledApis,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabledApis': enabledApis};
+    return <String, dynamic>{
+      'enabledApis': enabledApis,
+    };
   }
 
   factory ClusterEnableK8sBetaApis.fromMap(Map<String, dynamic> map) {
     return ClusterEnableK8sBetaApis(
-      enabledApis: pulumi.Input.fromValue(
-        (map['enabledApis'] as List).cast<String>(),
-      ),
+      enabledApis: pulumi.Input.fromValue((map['enabledApis'] as List).cast<String>()),
     );
   }
 }
+

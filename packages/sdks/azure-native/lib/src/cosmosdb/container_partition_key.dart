@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContainerPartitionKey {
   /// Indicates the kind of algorithm used for partitioning. For MultiHash, multiple partition keys (upto three maximum) are supported for container create
   final pulumi.Input<String>? kind;
-
   /// List of paths using which data within the container can be partitioned
   final pulumi.Input<List<String>>? paths;
-
   /// Indicates the version of the partition key definition
   final pulumi.Input<int>? version;
 
@@ -17,7 +15,11 @@ class ContainerPartitionKey {
   /// [kind] Indicates the kind of algorithm used for partitioning. For MultiHash, multiple partition keys (upto three maximum) are supported for container create
   /// [paths] List of paths using which data within the container can be partitioned
   /// [version] Indicates the version of the partition key definition
-  ContainerPartitionKey({this.kind, this.paths, this.version});
+  ContainerPartitionKey({
+    this.kind,
+    this.paths,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class ContainerPartitionKey {
 
   factory ContainerPartitionKey.fromMap(Map<String, dynamic> map) {
     return ContainerPartitionKey(
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      paths: (() {
-        final guardedValue = map['paths'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      paths: (() { final guardedValue = map['paths']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

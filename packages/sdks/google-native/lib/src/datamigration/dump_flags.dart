@@ -10,36 +10,20 @@ class DumpFlags {
 
   /// Creates a new [DumpFlags].
   /// [dumpFlags] The flags for the initial dump.
-  DumpFlags({this.dumpFlags});
+  DumpFlags({
+    this.dumpFlags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dumpFlags':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<DumpFlag>,
-            List<Map<String, dynamic>>
-          >(
-            dumpFlags,
-            (value) => pulumi.Input.encodeList<DumpFlag, Map<String, dynamic>>(
-              value,
-              (value) => value.toMap(),
-            ),
-          ),
+      'dumpFlags': ?pulumi.Input.mapOptionalInputValue<List<DumpFlag>, List<Map<String, dynamic>>>(dumpFlags, (value) => pulumi.Input.encodeList<DumpFlag, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DumpFlags.fromMap(Map<String, dynamic> map) {
     return DumpFlags(
-      dumpFlags: (() {
-        final guardedValue = map['dumpFlags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<DumpFlag>(
-            guardedValue,
-            (value) => DumpFlag.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
+      dumpFlags: (() { final guardedValue = map['dumpFlags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DumpFlag>(guardedValue, (value) => DumpFlag.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

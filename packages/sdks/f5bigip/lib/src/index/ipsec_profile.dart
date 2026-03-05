@@ -108,13 +108,10 @@ import 'ipsec_profile_state.dart';
 class IpsecProfile extends pulumi.CustomResource {
   /// Specifies descriptive text that identifies the IPsec interface tunnel profile.
   late final pulumi.Output<String> description;
-
   /// Displays the name of the IPsec interface tunnel profile,it should be "full path".The full path is the combination of the partition + name of the IPSec profile.(For example `/Common/test-profile`)
   late final pulumi.Output<String> name;
-
   /// Specifies the profile from which this profile inherits settings. The default is the system-supplied `/Common/ipsec` profile
   late final pulumi.Output<String?> parentProfile;
-
   /// Specifies the traffic selector for the IPsec interface tunnel to which the profile is applied
   late final pulumi.Output<String> trafficSelector;
 
@@ -127,11 +124,11 @@ class IpsecProfile extends pulumi.CustomResource {
     IpsecProfileArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:index/ipsecProfile:IpsecProfile',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:index/ipsecProfile:IpsecProfile',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String>('description');
     this.name = registerOutput<String>('name');
     parentProfile = registerOutput<String?>('parentProfile');
@@ -156,11 +153,11 @@ class IpsecProfile extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:index/ipsecProfile:IpsecProfile',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:index/ipsecProfile:IpsecProfile',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String>('description');
     this.name = registerOutput<String>('name');
     parentProfile = registerOutput<String?>('parentProfile');

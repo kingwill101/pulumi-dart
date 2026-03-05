@@ -237,19 +237,14 @@ import 'channel_sms_state.dart';
 class ChannelSms extends pulumi.CustomResource {
   /// The name of the Bot Resource this channel will be associated with. Changing this forces a new resource to be created.
   late final pulumi.Output<String> botName;
-
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The phone number for the SMS Channel.
   late final pulumi.Output<String> phoneNumber;
-
   /// The name of the resource group where the SMS Channel should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The account security identifier (SID) for the SMS Channel.
   late final pulumi.Output<String> smsChannelAccountSecurityId;
-
   /// The authorization token for the SMS Channel.
   late final pulumi.Output<String> smsChannelAuthToken;
 
@@ -262,18 +257,16 @@ class ChannelSms extends pulumi.CustomResource {
     ChannelSmsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:bot/channelSms:ChannelSms',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:bot/channelSms:ChannelSms',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     botName = registerOutput<String>('botName');
     location = registerOutput<String>('location');
     phoneNumber = registerOutput<String>('phoneNumber');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    smsChannelAccountSecurityId = registerOutput<String>(
-      'smsChannelAccountSecurityId',
-    );
+    smsChannelAccountSecurityId = registerOutput<String>('smsChannelAccountSecurityId');
     smsChannelAuthToken = registerOutput<String>('smsChannelAuthToken');
   }
 
@@ -295,18 +288,16 @@ class ChannelSms extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:bot/channelSms:ChannelSms',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:bot/channelSms:ChannelSms',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     botName = registerOutput<String>('botName');
     location = registerOutput<String>('location');
     phoneNumber = registerOutput<String>('phoneNumber');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    smsChannelAccountSecurityId = registerOutput<String>(
-      'smsChannelAccountSecurityId',
-    );
+    smsChannelAccountSecurityId = registerOutput<String>('smsChannelAccountSecurityId');
     smsChannelAuthToken = registerOutput<String>('smsChannelAuthToken');
   }
 }

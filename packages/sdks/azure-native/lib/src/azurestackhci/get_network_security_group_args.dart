@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworkSecurityGroupArgs {
   /// Name of the network security group
   final pulumi.Input<String> networkSecurityGroupName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetNetworkSecurityGroupArgs {
 
   factory GetNetworkSecurityGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkSecurityGroupArgs(
-      networkSecurityGroupName: pulumi.Input.fromValue(
-        map['networkSecurityGroupName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      networkSecurityGroupName: pulumi.Input.fromValue(map['networkSecurityGroupName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

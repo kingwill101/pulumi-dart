@@ -14,8 +14,7 @@ enum FirewallPolicyRuleNetworkProtocol {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown FirewallPolicyRuleNetworkProtocol value: $value',
-    );
+    throw ArgumentError('Unknown FirewallPolicyRuleNetworkProtocol value: $value');
   }
 }
+

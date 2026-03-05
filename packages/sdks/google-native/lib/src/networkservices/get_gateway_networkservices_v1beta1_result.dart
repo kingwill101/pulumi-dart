@@ -1,49 +1,36 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getGateway.
 class GetGatewayNetworkservicesV1beta1Result {
   /// Optional. Zero or one IPv4 or IPv6 address on which the Gateway will receive the traffic. When no address is provided, an IP from the subnetwork is allocated This field only applies to gateways of type 'SECURE_WEB_GATEWAY'. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6.
   final List<String> addresses;
-
   /// Optional. A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection. This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
   final List<String> certificateUrls;
-
   /// The timestamp when the resource was created.
   final String createTime;
-
   /// Optional. A free-text description of the resource. Max length 1024 characters.
   final String description;
-
   /// Optional. A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections. For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`. This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
   final String gatewaySecurityPolicy;
-
   /// Optional. Set of label tags associated with the Gateway resource.
   final Map<String, String> labels;
-
   /// Name of the Gateway resource. It matches pattern `projects/*/locations/*/gateways/`.
   final String name;
-
   /// Optional. The relative resource name identifying the VPC network that is using this configuration. For example: `projects/*/global/networks/network-1`. Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
   final String network;
-
   /// One or more port numbers (1-65535), on which the Gateway will receive traffic. The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
   final List<int> ports;
-
   /// Optional. Scope determines how configuration across multiple Gateway instances are merged. The configuration for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to the proxy/load balancer. Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
   final String scope;
-
   /// Server-defined URL of this resource
   final String selfLink;
-
   /// Optional. A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated. If empty, TLS termination is disabled.
   final String serverTlsPolicy;
-
   /// Optional. The relative resource name identifying the subnetwork in which this SWG is allocated. For example: `projects/*/regions/us-central1/subnetworks/network-1` Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY".
   final String subnetwork;
-
   /// Immutable. The type of the customer managed gateway. This field is required. If unspecified, an error is returned.
   final String type;
-
   /// The timestamp when the resource was updated.
   final String updateTime;
 
@@ -101,9 +88,7 @@ class GetGatewayNetworkservicesV1beta1Result {
     };
   }
 
-  factory GetGatewayNetworkservicesV1beta1Result.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetGatewayNetworkservicesV1beta1Result.fromMap(Map<String, dynamic> map) {
     return GetGatewayNetworkservicesV1beta1Result(
       addresses: (map['addresses'] as List).cast<String>(),
       certificateUrls: (map['certificateUrls'] as List).cast<String>(),
@@ -123,3 +108,4 @@ class GetGatewayNetworkservicesV1beta1Result {
     );
   }
 }
+

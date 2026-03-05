@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IterationResultResponse {
   /// Time taken to run the iteration in milliseconds.
   final pulumi.Input<String> durationMs;
-
   /// Loss computed on the eval data at the end of iteration.
   final pulumi.Input<double> evalLoss;
-
   /// Index of the iteration, 0 based.
   final pulumi.Input<int> index;
-
   /// Learn rate used for this iteration.
   final pulumi.Input<double> learnRate;
-
   /// Loss computed on the training data at the end of iteration.
   final pulumi.Input<double> trainingLoss;
 
@@ -52,3 +48,4 @@ class IterationResultResponse {
     );
   }
 }
+

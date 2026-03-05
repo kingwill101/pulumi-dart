@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CloudTieringSpaceSavingsResponse {
   /// Cached content size on the server
   final pulumi.Input<double> cachedSizeBytes;
-
   /// Last updated timestamp
   final pulumi.Input<String> lastUpdatedTimestamp;
-
   /// Count of bytes saved on the server
   final pulumi.Input<double> spaceSavingsBytes;
-
   /// Percentage of cached size over total size
   final pulumi.Input<int> spaceSavingsPercent;
-
   /// Total size of content in the azure file share
   final pulumi.Input<double> totalSizeCloudBytes;
-
   /// Volume size
   final pulumi.Input<double> volumeSizeBytes;
 
@@ -52,19 +47,12 @@ class CloudTieringSpaceSavingsResponse {
   factory CloudTieringSpaceSavingsResponse.fromMap(Map<String, dynamic> map) {
     return CloudTieringSpaceSavingsResponse(
       cachedSizeBytes: pulumi.Input.fromValue(map['cachedSizeBytes'] as double),
-      lastUpdatedTimestamp: pulumi.Input.fromValue(
-        map['lastUpdatedTimestamp'] as String,
-      ),
-      spaceSavingsBytes: pulumi.Input.fromValue(
-        map['spaceSavingsBytes'] as double,
-      ),
-      spaceSavingsPercent: pulumi.Input.fromValue(
-        map['spaceSavingsPercent'] as int,
-      ),
-      totalSizeCloudBytes: pulumi.Input.fromValue(
-        map['totalSizeCloudBytes'] as double,
-      ),
+      lastUpdatedTimestamp: pulumi.Input.fromValue(map['lastUpdatedTimestamp'] as String),
+      spaceSavingsBytes: pulumi.Input.fromValue(map['spaceSavingsBytes'] as double),
+      spaceSavingsPercent: pulumi.Input.fromValue(map['spaceSavingsPercent'] as int),
+      totalSizeCloudBytes: pulumi.Input.fromValue(map['totalSizeCloudBytes'] as double),
       volumeSizeBytes: pulumi.Input.fromValue(map['volumeSizeBytes'] as double),
     );
   }
 }
+

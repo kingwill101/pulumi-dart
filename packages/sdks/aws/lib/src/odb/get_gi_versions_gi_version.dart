@@ -8,10 +8,14 @@ class GetGiVersionsGiVersion {
 
   /// Creates a new [GetGiVersionsGiVersion].
   /// [version] The GI software version.
-  GetGiVersionsGiVersion({required this.version});
+  GetGiVersionsGiVersion({
+    required this.version,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'version': version};
+    return <String, dynamic>{
+      'version': version,
+    };
   }
 
   factory GetGiVersionsGiVersion.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class GetGiVersionsGiVersion {
     );
   }
 }
+

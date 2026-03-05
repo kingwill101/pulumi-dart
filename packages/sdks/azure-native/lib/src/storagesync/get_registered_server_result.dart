@@ -6,97 +6,66 @@ import 'system_data_response.dart';
 class GetRegisteredServerResult {
   /// Server auth type.
   final String activeAuthType;
-
   /// Registered Server Agent Version
   final String? agentVersion;
-
   /// Registered Server Agent Version Expiration Date
   final String agentVersionExpirationDate;
-
   /// Registered Server Agent Version Status
   final String agentVersionStatus;
-
   /// Server Application Id
   final String? applicationId;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Registered Server clusterId
   final String? clusterId;
-
   /// Registered Server clusterName
   final String? clusterName;
-
   /// Resource discoveryEndpointUri
   final String? discoveryEndpointUri;
-
   /// Friendly Name
   final String? friendlyName;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// Apply server with newly discovered ApplicationId if available.
   final bool identity;
-
   /// Registered Server last heart beat
   final String? lastHeartBeat;
-
   /// Resource Last Operation Name
   final String? lastOperationName;
-
   /// Registered Server lastWorkflowId
   final String? lastWorkflowId;
-
   /// Latest Server Application Id discovered from the server. It is not yet applied.
   final String? latestApplicationId;
-
   /// Management Endpoint Uri
   final String? managementEndpointUri;
-
   /// Monitoring Configuration
   final String? monitoringConfiguration;
-
   /// Telemetry Endpoint Uri
   final String? monitoringEndpointUri;
-
   /// The name of the resource
   final String name;
-
   /// Registered Server Provisioning State
   final String? provisioningState;
-
   /// Resource Location
   final String? resourceLocation;
-
   /// Registered Server Certificate
   final String? serverCertificate;
-
   /// Registered Server serverId
   final String? serverId;
-
   /// Registered Server Management Error Code
   final int? serverManagementErrorCode;
-
   /// Server name
   final String serverName;
-
   /// Registered Server OS Version
   final String? serverOSVersion;
-
   /// Registered Server serverRole
   final String? serverRole;
-
   /// Service Location
   final String? serviceLocation;
-
   /// Registered Server storageSyncServiceUid
   final String? storageSyncServiceUid;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -208,127 +177,38 @@ class GetRegisteredServerResult {
   factory GetRegisteredServerResult.fromMap(Map<String, dynamic> map) {
     return GetRegisteredServerResult(
       activeAuthType: map['activeAuthType'] as String,
-      agentVersion: (() {
-        final guardedValue = map['agentVersion'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      agentVersion: (() { final guardedValue = map['agentVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       agentVersionExpirationDate: map['agentVersionExpirationDate'] as String,
       agentVersionStatus: map['agentVersionStatus'] as String,
-      applicationId: (() {
-        final guardedValue = map['applicationId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      applicationId: (() { final guardedValue = map['applicationId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       azureApiVersion: map['azureApiVersion'] as String,
-      clusterId: (() {
-        final guardedValue = map['clusterId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      clusterName: (() {
-        final guardedValue = map['clusterName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      discoveryEndpointUri: (() {
-        final guardedValue = map['discoveryEndpointUri'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      friendlyName: (() {
-        final guardedValue = map['friendlyName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      clusterId: (() { final guardedValue = map['clusterId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      clusterName: (() { final guardedValue = map['clusterName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      discoveryEndpointUri: (() { final guardedValue = map['discoveryEndpointUri']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      friendlyName: (() { final guardedValue = map['friendlyName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       identity: map['identity'] as bool,
-      lastHeartBeat: (() {
-        final guardedValue = map['lastHeartBeat'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      lastOperationName: (() {
-        final guardedValue = map['lastOperationName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      lastWorkflowId: (() {
-        final guardedValue = map['lastWorkflowId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      latestApplicationId: (() {
-        final guardedValue = map['latestApplicationId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      managementEndpointUri: (() {
-        final guardedValue = map['managementEndpointUri'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      monitoringConfiguration: (() {
-        final guardedValue = map['monitoringConfiguration'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      monitoringEndpointUri: (() {
-        final guardedValue = map['monitoringEndpointUri'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      lastHeartBeat: (() { final guardedValue = map['lastHeartBeat']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      lastOperationName: (() { final guardedValue = map['lastOperationName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      lastWorkflowId: (() { final guardedValue = map['lastWorkflowId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      latestApplicationId: (() { final guardedValue = map['latestApplicationId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      managementEndpointUri: (() { final guardedValue = map['managementEndpointUri']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      monitoringConfiguration: (() { final guardedValue = map['monitoringConfiguration']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      monitoringEndpointUri: (() { final guardedValue = map['monitoringEndpointUri']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
-      provisioningState: (() {
-        final guardedValue = map['provisioningState'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      resourceLocation: (() {
-        final guardedValue = map['resourceLocation'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      serverCertificate: (() {
-        final guardedValue = map['serverCertificate'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      serverId: (() {
-        final guardedValue = map['serverId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      serverManagementErrorCode: (() {
-        final guardedValue = map['serverManagementErrorCode'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceLocation: (() { final guardedValue = map['resourceLocation']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      serverCertificate: (() { final guardedValue = map['serverCertificate']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      serverId: (() { final guardedValue = map['serverId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      serverManagementErrorCode: (() { final guardedValue = map['serverManagementErrorCode']; if (guardedValue == null) return null; return guardedValue as int; })(),
       serverName: map['serverName'] as String,
-      serverOSVersion: (() {
-        final guardedValue = map['serverOSVersion'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      serverRole: (() {
-        final guardedValue = map['serverRole'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      serviceLocation: (() {
-        final guardedValue = map['serviceLocation'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      storageSyncServiceUid: (() {
-        final guardedValue = map['storageSyncServiceUid'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      serverOSVersion: (() { final guardedValue = map['serverOSVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      serverRole: (() { final guardedValue = map['serverRole']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      serviceLocation: (() { final guardedValue = map['serviceLocation']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      storageSyncServiceUid: (() { final guardedValue = map['storageSyncServiceUid']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

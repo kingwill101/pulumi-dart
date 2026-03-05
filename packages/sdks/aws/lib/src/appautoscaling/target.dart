@@ -710,34 +710,24 @@ import 'target_suspended_state.dart';
 class Target extends pulumi.CustomResource {
   /// The ARN of the scalable target.
   late final pulumi.Output<String> arn;
-
   /// Max capacity of the scalable target.
   late final pulumi.Output<int> maxCapacity;
-
   /// Min capacity of the scalable target.
   late final pulumi.Output<int> minCapacity;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Resource type and unique identifier string for the resource associated with the scaling policy. Documentation can be found in the `ResourceId` parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_RegisterScalableTarget.html#API_RegisterScalableTarget_RequestParameters)
   late final pulumi.Output<String> resourceId;
-
   /// ARN of the IAM role that allows Application AutoScaling to modify your scalable target on your behalf. This defaults to an IAM Service-Linked Role for most services and custom IAM Roles are ignored by the API for those namespaces. See the [AWS Application Auto Scaling documentation](https://docs.aws.amazon.com/autoscaling/application/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-roles) for more information about how this service interacts with IAM.
   late final pulumi.Output<String> roleArn;
-
   /// Scalable dimension of the scalable target. Documentation can be found in the `ScalableDimension` parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_RegisterScalableTarget.html#API_RegisterScalableTarget_RequestParameters)
   late final pulumi.Output<String> scalableDimension;
-
   /// AWS service namespace of the scalable target. Documentation can be found in the `ServiceNamespace` parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_RegisterScalableTarget.html#API_RegisterScalableTarget_RequestParameters)
   late final pulumi.Output<String> serviceNamespace;
-
   /// Specifies whether the scaling activities for a scalable target are in a suspended state.
   late final pulumi.Output<TargetSuspendedState> suspendedState;
-
   /// Map of tags to assign to the scalable target. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -745,13 +735,16 @@ class Target extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Target]. {@macro pulumi_appautoscaling_target_target_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Target(String name, {TargetArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:appautoscaling/target:Target',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Target(
+    String name, {
+    TargetArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:appautoscaling/target:Target',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     maxCapacity = registerOutput<int>('maxCapacity');
     minCapacity = registerOutput<int>('minCapacity');
@@ -760,16 +753,7 @@ class Target extends pulumi.CustomResource {
     roleArn = registerOutput<String>('roleArn');
     scalableDimension = registerOutput<String>('scalableDimension');
     serviceNamespace = registerOutput<String>('serviceNamespace');
-    suspendedState = registerOutput<TargetSuspendedState>(
-      'suspendedState',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TargetSuspendedState.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    suspendedState = registerOutput<TargetSuspendedState>('suspendedState', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TargetSuspendedState.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
@@ -792,11 +776,11 @@ class Target extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:appautoscaling/target:Target',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:appautoscaling/target:Target',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     maxCapacity = registerOutput<int>('maxCapacity');
     minCapacity = registerOutput<int>('minCapacity');
@@ -805,16 +789,7 @@ class Target extends pulumi.CustomResource {
     roleArn = registerOutput<String>('roleArn');
     scalableDimension = registerOutput<String>('scalableDimension');
     serviceNamespace = registerOutput<String>('serviceNamespace');
-    suspendedState = registerOutput<TargetSuspendedState>(
-      'suspendedState',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TargetSuspendedState.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    suspendedState = registerOutput<TargetSuspendedState>('suspendedState', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TargetSuspendedState.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }

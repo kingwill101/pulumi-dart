@@ -367,13 +367,10 @@ import 'account_privilege_state.dart';
 class AccountPrivilege extends pulumi.CustomResource {
   /// A specified account name.
   late final pulumi.Output<String> accountName;
-
   /// List of specified database name.
   late final pulumi.Output<List<String>> dbNames;
-
   /// The Id of instance in which account belongs.
   late final pulumi.Output<String> instanceId;
-
   /// The privilege of one account access database. Valid values:
   /// - ReadOnly: This value is only for MySQL, MariaDB and SQL Server
   /// - ReadWrite: This value is only for MySQL, MariaDB and SQL Server
@@ -392,11 +389,11 @@ class AccountPrivilege extends pulumi.CustomResource {
     AccountPrivilegeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:rds/accountPrivilege:AccountPrivilege',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:rds/accountPrivilege:AccountPrivilege',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountName = registerOutput<String>('accountName');
     dbNames = registerOutput<List<String>>('dbNames');
     instanceId = registerOutput<String>('instanceId');
@@ -421,11 +418,11 @@ class AccountPrivilege extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:rds/accountPrivilege:AccountPrivilege',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:rds/accountPrivilege:AccountPrivilege',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountName = registerOutput<String>('accountName');
     dbNames = registerOutput<List<String>>('dbNames');
     instanceId = registerOutput<String>('instanceId');

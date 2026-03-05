@@ -27,10 +27,9 @@ class GetHostSecurityReportArgs {
 
   factory GetHostSecurityReportArgs.fromMap(Map<String, dynamic> map) {
     return GetHostSecurityReportArgs(
-      hostSecurityReportId: pulumi.Input.fromValue(
-        map['hostSecurityReportId'] as String,
-      ),
+      hostSecurityReportId: pulumi.Input.fromValue(map['hostSecurityReportId'] as String),
       organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
     );
   }
 }
+

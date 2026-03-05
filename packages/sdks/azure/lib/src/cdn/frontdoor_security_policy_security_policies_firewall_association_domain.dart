@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FrontdoorSecurityPolicySecurityPoliciesFirewallAssociationDomain {
   /// Is the Front Door Custom Domain/Endpoint activated?
   final pulumi.Input<bool>? active;
-
   /// The Resource Id of the **Front Door Custom Domain** or **Front Door Endpoint** that should be bound to this Front Door Security Policy.
   final pulumi.Input<String> cdnFrontdoorDomainId;
 
@@ -24,18 +23,11 @@ class FrontdoorSecurityPolicySecurityPoliciesFirewallAssociationDomain {
     };
   }
 
-  factory FrontdoorSecurityPolicySecurityPoliciesFirewallAssociationDomain.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FrontdoorSecurityPolicySecurityPoliciesFirewallAssociationDomain.fromMap(Map<String, dynamic> map) {
     return FrontdoorSecurityPolicySecurityPoliciesFirewallAssociationDomain(
-      active: (() {
-        final guardedValue = map['active'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      cdnFrontdoorDomainId: pulumi.Input.fromValue(
-        map['cdnFrontdoorDomainId'] as String,
-      ),
+      active: (() { final guardedValue = map['active']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      cdnFrontdoorDomainId: pulumi.Input.fromValue(map['cdnFrontdoorDomainId'] as String),
     );
   }
 }
+

@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceTypesInstanceTypeLocalStorage {
   /// The number of local storage devices that an instance has been attached to.
   final pulumi.Input<String> amount;
-
   /// The capacity of a local storage in GB.
   final pulumi.Input<String> capacity;
-
   /// The category of local storage that an instance has been attached to.
   final pulumi.Input<String> category;
 
@@ -30,9 +28,7 @@ class GetInstanceTypesInstanceTypeLocalStorage {
     };
   }
 
-  factory GetInstanceTypesInstanceTypeLocalStorage.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetInstanceTypesInstanceTypeLocalStorage.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypesInstanceTypeLocalStorage(
       amount: pulumi.Input.fromValue(map['amount'] as String),
       capacity: pulumi.Input.fromValue(map['capacity'] as String),
@@ -40,3 +36,4 @@ class GetInstanceTypesInstanceTypeLocalStorage {
     );
   }
 }
+

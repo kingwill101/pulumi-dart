@@ -11,81 +11,56 @@ import 'get_account_storage.dart';
 class GetAccountResult {
   /// The ID of the search service.
   final String customQuestionAnsweringSearchServiceId;
-
   /// The subdomain name used for Entra ID token-based authentication.
   final String customSubdomainName;
-
   /// A `customer_managed_key` block as defined below.
   final List<GetAccountCustomerManagedKey> customerManagedKeys;
-
   /// Whether dynamic throttling is enabled for this Cognitive Services Account.
   final bool dynamicThrottlingEnabled;
-
   /// The endpoint of the Cognitive Services Account.
   final String endpoint;
-
   /// List of FQDNs allowed for the Cognitive Services Account.
   final List<String> fqdns;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A `identity` block as defined below.
   final List<GetAccountIdentity> identities;
-
   /// The type of the Cognitive Services Account.
   final String kind;
-
   /// Whether local authentication methods are enabled for the Cognitive Services Account.
   final bool localAuthEnabled;
-
   /// The Azure location where the Cognitive Services Account exists.
   final String location;
-
   /// The Microsoft Entra Application (client) ID.
   final String metricsAdvisorAadClientId;
-
   /// The Microsoft Entra Tenant ID.
   final String metricsAdvisorAadTenantId;
-
   /// The super user of Metrics Advisor.
   final String metricsAdvisorSuperUserName;
-
   /// The website name of Metrics Advisor.
   final String metricsAdvisorWebsiteName;
   final String name;
-
   /// A `network_acls` block as defined below.
   final List<GetAccountNetworkAcl> networkAcls;
-
   /// A `network_injection` block as defined below.
   final List<GetAccountNetworkInjection> networkInjections;
-
   /// Whether outbound network access is restricted for the Cognitive Services Account.
   final bool outboundNetworkAccessRestricted;
-
   /// The primary access key of the Cognitive Services Account.
   final String primaryAccessKey;
-
   /// Whether project management is enabled.
   final bool projectManagementEnabled;
-
   /// Whether public network access is allowed for the Cognitive Services Account.
   final bool publicNetworkAccessEnabled;
-
   /// The link to the QNA runtime.
   final String qnaRuntimeEndpoint;
   final String resourceGroupName;
-
   /// The secondary access key of the Cognitive Services Account.
   final String secondaryAccessKey;
-
   /// The SKU name of the Cognitive Services Account.
   final String skuName;
-
   /// A `storage` block as defined below.
   final List<GetAccountStorage> storages;
-
   /// A mapping of tags to assigned to the resource.
   final Map<String, String>? tags;
 
@@ -151,23 +126,14 @@ class GetAccountResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customQuestionAnsweringSearchServiceId':
-          customQuestionAnsweringSearchServiceId,
+      'customQuestionAnsweringSearchServiceId': customQuestionAnsweringSearchServiceId,
       'customSubdomainName': customSubdomainName,
-      'customerManagedKeys':
-          pulumi.Input.encodeList<
-            GetAccountCustomerManagedKey,
-            Map<String, dynamic>
-          >(customerManagedKeys, (value) => value.toMap()),
+      'customerManagedKeys': pulumi.Input.encodeList<GetAccountCustomerManagedKey, Map<String, dynamic>>(customerManagedKeys, (value) => value.toMap()),
       'dynamicThrottlingEnabled': dynamicThrottlingEnabled,
       'endpoint': endpoint,
       'fqdns': fqdns,
       'id': id,
-      'identities':
-          pulumi.Input.encodeList<GetAccountIdentity, Map<String, dynamic>>(
-            identities,
-            (value) => value.toMap(),
-          ),
+      'identities': pulumi.Input.encodeList<GetAccountIdentity, Map<String, dynamic>>(identities, (value) => value.toMap()),
       'kind': kind,
       'localAuthEnabled': localAuthEnabled,
       'location': location,
@@ -176,16 +142,8 @@ class GetAccountResult {
       'metricsAdvisorSuperUserName': metricsAdvisorSuperUserName,
       'metricsAdvisorWebsiteName': metricsAdvisorWebsiteName,
       'name': name,
-      'networkAcls':
-          pulumi.Input.encodeList<GetAccountNetworkAcl, Map<String, dynamic>>(
-            networkAcls,
-            (value) => value.toMap(),
-          ),
-      'networkInjections':
-          pulumi.Input.encodeList<
-            GetAccountNetworkInjection,
-            Map<String, dynamic>
-          >(networkInjections, (value) => value.toMap()),
+      'networkAcls': pulumi.Input.encodeList<GetAccountNetworkAcl, Map<String, dynamic>>(networkAcls, (value) => value.toMap()),
+      'networkInjections': pulumi.Input.encodeList<GetAccountNetworkInjection, Map<String, dynamic>>(networkInjections, (value) => value.toMap()),
       'outboundNetworkAccessRestricted': outboundNetworkAccessRestricted,
       'primaryAccessKey': primaryAccessKey,
       'projectManagementEnabled': projectManagementEnabled,
@@ -194,36 +152,21 @@ class GetAccountResult {
       'resourceGroupName': resourceGroupName,
       'secondaryAccessKey': secondaryAccessKey,
       'skuName': skuName,
-      'storages':
-          pulumi.Input.encodeList<GetAccountStorage, Map<String, dynamic>>(
-            storages,
-            (value) => value.toMap(),
-          ),
+      'storages': pulumi.Input.encodeList<GetAccountStorage, Map<String, dynamic>>(storages, (value) => value.toMap()),
       'tags': ?tags,
     };
   }
 
   factory GetAccountResult.fromMap(Map<String, dynamic> map) {
     return GetAccountResult(
-      customQuestionAnsweringSearchServiceId:
-          map['customQuestionAnsweringSearchServiceId'] as String,
+      customQuestionAnsweringSearchServiceId: map['customQuestionAnsweringSearchServiceId'] as String,
       customSubdomainName: map['customSubdomainName'] as String,
-      customerManagedKeys:
-          pulumi.Input.decodeList<GetAccountCustomerManagedKey>(
-            map['customerManagedKeys']!,
-            (value) => GetAccountCustomerManagedKey.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      customerManagedKeys: pulumi.Input.decodeList<GetAccountCustomerManagedKey>(map['customerManagedKeys']!, (value) => GetAccountCustomerManagedKey.fromMap((value as Map).cast<String, dynamic>())),
       dynamicThrottlingEnabled: map['dynamicThrottlingEnabled'] as bool,
       endpoint: map['endpoint'] as String,
       fqdns: (map['fqdns'] as List).cast<String>(),
       id: map['id'] as String,
-      identities: pulumi.Input.decodeList<GetAccountIdentity>(
-        map['identities']!,
-        (value) =>
-            GetAccountIdentity.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      identities: pulumi.Input.decodeList<GetAccountIdentity>(map['identities']!, (value) => GetAccountIdentity.fromMap((value as Map).cast<String, dynamic>())),
       kind: map['kind'] as String,
       localAuthEnabled: map['localAuthEnabled'] as bool,
       location: map['location'] as String,
@@ -232,20 +175,9 @@ class GetAccountResult {
       metricsAdvisorSuperUserName: map['metricsAdvisorSuperUserName'] as String,
       metricsAdvisorWebsiteName: map['metricsAdvisorWebsiteName'] as String,
       name: map['name'] as String,
-      networkAcls: pulumi.Input.decodeList<GetAccountNetworkAcl>(
-        map['networkAcls']!,
-        (value) => GetAccountNetworkAcl.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      networkInjections: pulumi.Input.decodeList<GetAccountNetworkInjection>(
-        map['networkInjections']!,
-        (value) => GetAccountNetworkInjection.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      outboundNetworkAccessRestricted:
-          map['outboundNetworkAccessRestricted'] as bool,
+      networkAcls: pulumi.Input.decodeList<GetAccountNetworkAcl>(map['networkAcls']!, (value) => GetAccountNetworkAcl.fromMap((value as Map).cast<String, dynamic>())),
+      networkInjections: pulumi.Input.decodeList<GetAccountNetworkInjection>(map['networkInjections']!, (value) => GetAccountNetworkInjection.fromMap((value as Map).cast<String, dynamic>())),
+      outboundNetworkAccessRestricted: map['outboundNetworkAccessRestricted'] as bool,
       primaryAccessKey: map['primaryAccessKey'] as String,
       projectManagementEnabled: map['projectManagementEnabled'] as bool,
       publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] as bool,
@@ -253,16 +185,9 @@ class GetAccountResult {
       resourceGroupName: map['resourceGroupName'] as String,
       secondaryAccessKey: map['secondaryAccessKey'] as String,
       skuName: map['skuName'] as String,
-      storages: pulumi.Input.decodeList<GetAccountStorage>(
-        map['storages']!,
-        (value) =>
-            GetAccountStorage.fromMap((value as Map).cast<String, dynamic>()),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      storages: pulumi.Input.decodeList<GetAccountStorage>(map['storages']!, (value) => GetAccountStorage.fromMap((value as Map).cast<String, dynamic>())),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }
 }
+

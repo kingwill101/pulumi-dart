@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ElasticTrafficFilterRuleResponse {
   /// Guid of Private Endpoint in the elastic filter rule
   final pulumi.Input<String>? azureEndpointGuid;
-
   /// Name of the Private Endpoint in the elastic filter rule
   final pulumi.Input<String>? azureEndpointName;
-
   /// Description of the elastic filter rule
   final pulumi.Input<String>? description;
-
   /// Id of the elastic filter rule
   final pulumi.Input<String>? id;
-
   /// IP of the elastic filter rule
   final pulumi.Input<String>? source;
 
@@ -45,31 +41,12 @@ class ElasticTrafficFilterRuleResponse {
 
   factory ElasticTrafficFilterRuleResponse.fromMap(Map<String, dynamic> map) {
     return ElasticTrafficFilterRuleResponse(
-      azureEndpointGuid: (() {
-        final guardedValue = map['azureEndpointGuid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      azureEndpointName: (() {
-        final guardedValue = map['azureEndpointName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      source: (() {
-        final guardedValue = map['source'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      azureEndpointGuid: (() { final guardedValue = map['azureEndpointGuid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      azureEndpointName: (() { final guardedValue = map['azureEndpointName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

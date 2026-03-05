@@ -560,19 +560,14 @@ import 'bucket_versioning_v2_versioning_configuration.dart';
 class BucketVersioningV2 extends pulumi.CustomResource {
   /// Name of the S3 bucket.
   late final pulumi.Output<String> bucket;
-
   /// Account ID of the expected bucket owner.
   late final pulumi.Output<String?> expectedBucketOwner;
-
   /// Concatenation of the authentication device's serial number, a space, and the value that is displayed on your authentication device.
   late final pulumi.Output<String?> mfa;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Configuration block for the versioning parameters. See below.
-  late final pulumi.Output<BucketVersioningV2VersioningConfiguration>
-  versioningConfiguration;
+  late final pulumi.Output<BucketVersioningV2VersioningConfiguration> versioningConfiguration;
 
   /// Creates a new [BucketVersioningV2].
   /// [name] The Pulumi resource name.
@@ -583,26 +578,16 @@ class BucketVersioningV2 extends pulumi.CustomResource {
     BucketVersioningV2Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:s3/bucketVersioningV2:BucketVersioningV2',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:s3/bucketVersioningV2:BucketVersioningV2',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
     expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
     mfa = registerOutput<String?>('mfa');
     region = registerOutput<String>('region');
-    versioningConfiguration =
-        registerOutput<BucketVersioningV2VersioningConfiguration>(
-          'versioningConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return BucketVersioningV2VersioningConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    versioningConfiguration = registerOutput<BucketVersioningV2VersioningConfiguration>('versioningConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketVersioningV2VersioningConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [BucketVersioningV2] resource's state with the given [name] and [id].
@@ -623,25 +608,15 @@ class BucketVersioningV2 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:s3/bucketVersioningV2:BucketVersioningV2',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:s3/bucketVersioningV2:BucketVersioningV2',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
     expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
     mfa = registerOutput<String?>('mfa');
     region = registerOutput<String>('region');
-    versioningConfiguration =
-        registerOutput<BucketVersioningV2VersioningConfiguration>(
-          'versioningConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return BucketVersioningV2VersioningConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    versioningConfiguration = registerOutput<BucketVersioningV2VersioningConfiguration>('versioningConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketVersioningV2VersioningConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

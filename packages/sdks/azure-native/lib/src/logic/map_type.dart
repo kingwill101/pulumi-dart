@@ -18,3 +18,4 @@ enum MapType {
     throw ArgumentError('Unknown MapType value: $value');
   }
 }
+

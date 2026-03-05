@@ -15,3 +15,4 @@ enum CosmosDbConnectionMode {
     throw ArgumentError('Unknown CosmosDbConnectionMode value: $value');
   }
 }
+

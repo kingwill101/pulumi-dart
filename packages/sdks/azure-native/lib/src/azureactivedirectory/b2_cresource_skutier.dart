@@ -14,3 +14,4 @@ enum B2CResourceSKUTier {
     throw ArgumentError('Unknown B2CResourceSKUTier value: $value');
   }
 }
+

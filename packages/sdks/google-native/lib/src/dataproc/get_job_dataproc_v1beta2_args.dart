@@ -32,12 +32,9 @@ class GetJobDataprocV1beta2Args {
   factory GetJobDataprocV1beta2Args.fromMap(Map<String, dynamic> map) {
     return GetJobDataprocV1beta2Args(
       jobId: pulumi.Input.fromValue(map['jobId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: pulumi.Input.fromValue(map['region'] as String),
     );
   }
 }
+

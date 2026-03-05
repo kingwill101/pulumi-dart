@@ -9,17 +9,20 @@ class BareMetalMultipleNetworkInterfacesConfigResponse {
 
   /// Creates a new [BareMetalMultipleNetworkInterfacesConfigResponse].
   /// [enabled] Whether to enable multiple network interfaces for your pods. When set network_config.advanced_networking is automatically set to true.
-  BareMetalMultipleNetworkInterfacesConfigResponse({required this.enabled});
+  BareMetalMultipleNetworkInterfacesConfigResponse({
+    required this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled};
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
-  factory BareMetalMultipleNetworkInterfacesConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BareMetalMultipleNetworkInterfacesConfigResponse.fromMap(Map<String, dynamic> map) {
     return BareMetalMultipleNetworkInterfacesConfigResponse(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
+

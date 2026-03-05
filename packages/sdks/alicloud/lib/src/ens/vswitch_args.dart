@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VswitchArgs {
   /// The CIDR block of the vSwitch.
   final pulumi.Input<String> cidrBlock;
-
   /// The description of the vSwitch.
   final pulumi.Input<String>? description;
-
   /// ENS Region ID.
   final pulumi.Input<String> ensRegionId;
-
   /// The ID of the network to which the vSwitch that you want to create belongs.
   final pulumi.Input<String>? networkId;
-
   /// The name of the vSwitch.
   final pulumi.Input<String>? vswitchName;
 
@@ -49,22 +45,11 @@ class VswitchArgs {
   factory VswitchArgs.fromMap(Map<String, dynamic> map) {
     return VswitchArgs(
       cidrBlock: pulumi.Input.fromValue(map['cidrBlock'] as String),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ensRegionId: pulumi.Input.fromValue(map['ensRegionId'] as String),
-      networkId: (() {
-        final guardedValue = map['networkId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      vswitchName: (() {
-        final guardedValue = map['vswitchName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      networkId: (() { final guardedValue = map['networkId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      vswitchName: (() { final guardedValue = map['vswitchName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

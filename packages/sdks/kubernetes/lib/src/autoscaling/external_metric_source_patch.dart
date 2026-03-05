@@ -8,50 +8,29 @@ import 'metric_target_patch.dart';
 class ExternalMetricSourcePatch {
   /// metric identifies the target metric by name and selector
   final pulumi.Input<MetricIdentifierPatch>? metric;
-
   /// target specifies the target value for the given metric
   final pulumi.Input<MetricTargetPatch>? target;
 
   /// Creates a new [ExternalMetricSourcePatch].
   /// [metric] metric identifies the target metric by name and selector
   /// [target] target specifies the target value for the given metric
-  ExternalMetricSourcePatch({this.metric, this.target});
+  ExternalMetricSourcePatch({
+    this.metric,
+    this.target,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'metric':
-          ?pulumi.Input.mapOptionalInputValue<
-            MetricIdentifierPatch,
-            Map<String, dynamic>
-          >(metric, (value) => value.toMap()),
-      'target':
-          ?pulumi.Input.mapOptionalInputValue<
-            MetricTargetPatch,
-            Map<String, dynamic>
-          >(target, (value) => value.toMap()),
+      'metric': ?pulumi.Input.mapOptionalInputValue<MetricIdentifierPatch, Map<String, dynamic>>(metric, (value) => value.toMap()),
+      'target': ?pulumi.Input.mapOptionalInputValue<MetricTargetPatch, Map<String, dynamic>>(target, (value) => value.toMap()),
     };
   }
 
   factory ExternalMetricSourcePatch.fromMap(Map<String, dynamic> map) {
     return ExternalMetricSourcePatch(
-      metric: (() {
-        final guardedValue = map['metric'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          MetricIdentifierPatch.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      target: (() {
-        final guardedValue = map['target'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          MetricTargetPatch.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      metric: (() { final guardedValue = map['metric']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MetricIdentifierPatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      target: (() { final guardedValue = map['target']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MetricTargetPatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

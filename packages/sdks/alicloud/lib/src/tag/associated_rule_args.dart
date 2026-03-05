@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AssociatedRuleArgs {
   /// The setting name of the associated resource tag rule. For specific values, see the Rule Setting Name column in [Resources that Support Associated Resource Tag Settings](https://www.alibabacloud.com/help/en/resource-management/tag/user-guide/associated-resource-label-settings)
   final pulumi.Input<String> associatedSettingName;
-
   /// Whether to enable the associated resource tag rule. Valid values: `Enable`, `Disable`.
   final pulumi.Input<String> status;
-
   /// List of tag keys for the associated resource tag rule.
   final pulumi.Input<List<String>>? tagKeys;
 
@@ -36,15 +34,10 @@ class AssociatedRuleArgs {
 
   factory AssociatedRuleArgs.fromMap(Map<String, dynamic> map) {
     return AssociatedRuleArgs(
-      associatedSettingName: pulumi.Input.fromValue(
-        map['associatedSettingName'] as String,
-      ),
+      associatedSettingName: pulumi.Input.fromValue(map['associatedSettingName'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
-      tagKeys: (() {
-        final guardedValue = map['tagKeys'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      tagKeys: (() { final guardedValue = map['tagKeys']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

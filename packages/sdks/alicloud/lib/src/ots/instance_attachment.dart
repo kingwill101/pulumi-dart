@@ -343,13 +343,10 @@ import 'instance_attachment_state.dart';
 class InstanceAttachment extends pulumi.CustomResource {
   /// The name of the OTS instance.
   late final pulumi.Output<String> instanceName;
-
   /// The ID of attaching VPC to instance.
   late final pulumi.Output<String> vpcId;
-
   /// The name of attaching VPC to instance. It can only contain letters and numbers, must start with a letter, and is limited to 3-16 characters in length.
   late final pulumi.Output<String> vpcName;
-
   /// The ID of attaching VSwitch to instance.
   late final pulumi.Output<String> vswitchId;
 
@@ -362,11 +359,11 @@ class InstanceAttachment extends pulumi.CustomResource {
     InstanceAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ots/instanceAttachment:InstanceAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ots/instanceAttachment:InstanceAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     instanceName = registerOutput<String>('instanceName');
     vpcId = registerOutput<String>('vpcId');
     vpcName = registerOutput<String>('vpcName');
@@ -391,11 +388,11 @@ class InstanceAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ots/instanceAttachment:InstanceAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ots/instanceAttachment:InstanceAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     instanceName = registerOutput<String>('instanceName');
     vpcId = registerOutput<String>('vpcId');
     vpcName = registerOutput<String>('vpcName');

@@ -8,38 +8,27 @@ import 'system_data_response.dart';
 class GetKubernetesRoleResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Host OS supported by the Kubernetes role.
   final String hostPlatform;
-
   /// Platform where the runtime is hosted.
   final String hostPlatformType;
-
   /// The path ID that uniquely identifies the object.
   final String id;
-
   /// Role type.
   /// Expected value is 'Kubernetes'.
   final String kind;
-
   /// Kubernetes cluster configuration
   final KubernetesClusterInfoResponse kubernetesClusterInfo;
-
   /// Kubernetes role resources
   final KubernetesRoleResourcesResponse kubernetesRoleResources;
-
   /// The object name.
   final String name;
-
   /// State of Kubernetes deployment
   final String provisioningState;
-
   /// Role status.
   final String roleStatus;
-
   /// Metadata pertaining to creation and last modification of Role
   final SystemDataResponse systemData;
-
   /// The hierarchical type of the object.
   final String type;
 
@@ -95,19 +84,14 @@ class GetKubernetesRoleResult {
       hostPlatformType: map['hostPlatformType'] as String,
       id: map['id'] as String,
       kind: map['kind'] as String,
-      kubernetesClusterInfo: KubernetesClusterInfoResponse.fromMap(
-        (map['kubernetesClusterInfo']! as Map).cast<String, dynamic>(),
-      ),
-      kubernetesRoleResources: KubernetesRoleResourcesResponse.fromMap(
-        (map['kubernetesRoleResources']! as Map).cast<String, dynamic>(),
-      ),
+      kubernetesClusterInfo: KubernetesClusterInfoResponse.fromMap((map['kubernetesClusterInfo']! as Map).cast<String, dynamic>()),
+      kubernetesRoleResources: KubernetesRoleResourcesResponse.fromMap((map['kubernetesRoleResources']! as Map).cast<String, dynamic>()),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       roleStatus: map['roleStatus'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

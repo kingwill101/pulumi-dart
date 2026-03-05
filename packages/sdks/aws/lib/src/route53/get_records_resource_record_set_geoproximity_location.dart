@@ -6,14 +6,10 @@ import 'get_records_resource_record_set_geoproximity_location_coordinates.dart';
 class GetRecordsResourceRecordSetGeoproximityLocation {
   /// The AWS Region the resource you are directing DNS traffic to, is in.
   final pulumi.Input<String> awsRegion;
-
   /// The bias increases or decreases the size of the geographic region from which Route 53 routes traffic to a resource.
   final pulumi.Input<int> bias;
-
   /// Contains the longitude and latitude for a geographic region.
-  final pulumi.Input<GetRecordsResourceRecordSetGeoproximityLocationCoordinates>
-  coordinates;
-
+  final pulumi.Input<GetRecordsResourceRecordSetGeoproximityLocationCoordinates> coordinates;
   /// An AWS Local Zone Group.
   final pulumi.Input<String> localZoneGroup;
 
@@ -33,27 +29,18 @@ class GetRecordsResourceRecordSetGeoproximityLocation {
     return <String, dynamic>{
       'awsRegion': awsRegion,
       'bias': bias,
-      'coordinates':
-          pulumi.Input.mapInputValue<
-            GetRecordsResourceRecordSetGeoproximityLocationCoordinates,
-            Map<String, dynamic>
-          >(coordinates, (value) => value.toMap()),
+      'coordinates': pulumi.Input.mapInputValue<GetRecordsResourceRecordSetGeoproximityLocationCoordinates, Map<String, dynamic>>(coordinates, (value) => value.toMap()),
       'localZoneGroup': localZoneGroup,
     };
   }
 
-  factory GetRecordsResourceRecordSetGeoproximityLocation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetRecordsResourceRecordSetGeoproximityLocation.fromMap(Map<String, dynamic> map) {
     return GetRecordsResourceRecordSetGeoproximityLocation(
       awsRegion: pulumi.Input.fromValue(map['awsRegion'] as String),
       bias: pulumi.Input.fromValue(map['bias'] as int),
-      coordinates: pulumi.Input.fromValue(
-        GetRecordsResourceRecordSetGeoproximityLocationCoordinates.fromMap(
-          (map['coordinates']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      coordinates: pulumi.Input.fromValue(GetRecordsResourceRecordSetGeoproximityLocationCoordinates.fromMap((map['coordinates']! as Map).cast<String, dynamic>())),
       localZoneGroup: pulumi.Input.fromValue(map['localZoneGroup'] as String),
     );
   }
 }
+

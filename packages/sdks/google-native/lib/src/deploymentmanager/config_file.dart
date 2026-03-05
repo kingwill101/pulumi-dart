@@ -8,19 +8,20 @@ class ConfigFile {
 
   /// Creates a new [ConfigFile].
   /// [content] The contents of the file.
-  ConfigFile({this.content});
+  ConfigFile({
+    this.content,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'content': ?content};
+    return <String, dynamic>{
+      'content': ?content,
+    };
   }
 
   factory ConfigFile.fromMap(Map<String, dynamic> map) {
     return ConfigFile(
-      content: (() {
-        final guardedValue = map['content'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      content: (() { final guardedValue = map['content']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WindowsServerLicensingSettingsResponse {
   /// Licence Cost.
   final pulumi.Input<double> licenseCost;
-
   /// Licenses per core.
   final pulumi.Input<int> licensesPerCore;
-
   /// Software assurance (SA) cost.
   final pulumi.Input<double> softwareAssuranceCost;
 
@@ -31,15 +29,12 @@ class WindowsServerLicensingSettingsResponse {
     };
   }
 
-  factory WindowsServerLicensingSettingsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WindowsServerLicensingSettingsResponse.fromMap(Map<String, dynamic> map) {
     return WindowsServerLicensingSettingsResponse(
       licenseCost: pulumi.Input.fromValue(map['licenseCost'] as double),
       licensesPerCore: pulumi.Input.fromValue(map['licensesPerCore'] as int),
-      softwareAssuranceCost: pulumi.Input.fromValue(
-        map['softwareAssuranceCost'] as double,
-      ),
+      softwareAssuranceCost: pulumi.Input.fromValue(map['softwareAssuranceCost'] as double),
     );
   }
 }
+

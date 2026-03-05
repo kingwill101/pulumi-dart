@@ -6,7 +6,6 @@ import 'get_network_acls_acl.dart';
 /// Result data returned by getNetworkAcls.
 class GetNetworkAclsResult {
   final List<GetNetworkAclsAcl> acls;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -47,10 +46,7 @@ class GetNetworkAclsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'acls': pulumi.Input.encodeList<GetNetworkAclsAcl, Map<String, dynamic>>(
-        acls,
-        (value) => value.toMap(),
-      ),
+      'acls': pulumi.Input.encodeList<GetNetworkAclsAcl, Map<String, dynamic>>(acls, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'nameRegex': ?nameRegex,
@@ -66,49 +62,18 @@ class GetNetworkAclsResult {
 
   factory GetNetworkAclsResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkAclsResult(
-      acls: pulumi.Input.decodeList<GetNetworkAclsAcl>(
-        map['acls']!,
-        (value) =>
-            GetNetworkAclsAcl.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      acls: pulumi.Input.decodeList<GetNetworkAclsAcl>(map['acls']!, (value) => GetNetworkAclsAcl.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      networkAclName: (() {
-        final guardedValue = map['networkAclName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      resourceId: (() {
-        final guardedValue = map['resourceId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      resourceType: (() {
-        final guardedValue = map['resourceType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      vpcId: (() {
-        final guardedValue = map['vpcId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      networkAclName: (() { final guardedValue = map['networkAclName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceType: (() { final guardedValue = map['resourceType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      vpcId: (() { final guardedValue = map['vpcId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

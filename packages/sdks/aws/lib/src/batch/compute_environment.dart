@@ -1109,47 +1109,32 @@ import 'compute_environment_update_policy.dart';
 class ComputeEnvironment extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the compute environment.
   late final pulumi.Output<String> arn;
-
   /// Details of the compute resources managed by the compute environment. This parameter is required for managed compute environments. See details below.
   late final pulumi.Output<ComputeEnvironmentComputeResources> computeResources;
-
   /// The Amazon Resource Name (ARN) of the underlying Amazon ECS cluster used by the compute environment.
   late final pulumi.Output<String> ecsClusterArn;
-
   /// Details for the Amazon EKS cluster that supports the compute environment. See details below.
-  late final pulumi.Output<ComputeEnvironmentEksConfiguration?>
-  eksConfiguration;
-
+  late final pulumi.Output<ComputeEnvironmentEksConfiguration?> eksConfiguration;
   /// The name for your compute environment. Up to 128 letters (uppercase and lowercase), numbers, and underscores are allowed. If omitted, the provider will assign a random, unique name.
   late final pulumi.Output<String> name;
-
   /// Creates a unique compute environment name beginning with the specified prefix. Conflicts with `name`.
   late final pulumi.Output<String> namePrefix;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The full Amazon Resource Name (ARN) of the IAM role that allows AWS Batch to make calls to other AWS services on your behalf.
   late final pulumi.Output<String> serviceRole;
-
   /// The state of the compute environment. If the state is `ENABLED`, then the compute environment accepts jobs from a queue and can scale out automatically based on queues. Valid items are `ENABLED` or `DISABLED`. Defaults to `ENABLED`.
   late final pulumi.Output<String?> state;
-
   /// The current status of the compute environment (for example, CREATING or VALID).
   late final pulumi.Output<String> status;
-
   /// A short, human-readable string to provide additional details about the current status of the compute environment.
   late final pulumi.Output<String> statusReason;
-
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// The type of the compute environment. Valid items are `MANAGED` or `UNMANAGED`.
   late final pulumi.Output<String> type;
-
   /// Specifies the infrastructure update policy for the compute environment. See details below.
   late final pulumi.Output<ComputeEnvironmentUpdatePolicy> updatePolicy;
 
@@ -1162,33 +1147,15 @@ class ComputeEnvironment extends pulumi.CustomResource {
     ComputeEnvironmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:batch/computeEnvironment:ComputeEnvironment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:batch/computeEnvironment:ComputeEnvironment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    computeResources = registerOutput<ComputeEnvironmentComputeResources>(
-      'computeResources',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ComputeEnvironmentComputeResources.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    computeResources = registerOutput<ComputeEnvironmentComputeResources>('computeResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ComputeEnvironmentComputeResources.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ecsClusterArn = registerOutput<String>('ecsClusterArn');
-    eksConfiguration = registerOutput<ComputeEnvironmentEksConfiguration?>(
-      'eksConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ComputeEnvironmentEksConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    eksConfiguration = registerOutput<ComputeEnvironmentEksConfiguration?>('eksConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ComputeEnvironmentEksConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
     region = registerOutput<String>('region');
@@ -1199,16 +1166,7 @@ class ComputeEnvironment extends pulumi.CustomResource {
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     type = registerOutput<String>('type');
-    updatePolicy = registerOutput<ComputeEnvironmentUpdatePolicy>(
-      'updatePolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ComputeEnvironmentUpdatePolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    updatePolicy = registerOutput<ComputeEnvironmentUpdatePolicy>('updatePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ComputeEnvironmentUpdatePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [ComputeEnvironment] resource's state with the given [name] and [id].
@@ -1229,33 +1187,15 @@ class ComputeEnvironment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:batch/computeEnvironment:ComputeEnvironment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:batch/computeEnvironment:ComputeEnvironment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    computeResources = registerOutput<ComputeEnvironmentComputeResources>(
-      'computeResources',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ComputeEnvironmentComputeResources.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    computeResources = registerOutput<ComputeEnvironmentComputeResources>('computeResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ComputeEnvironmentComputeResources.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ecsClusterArn = registerOutput<String>('ecsClusterArn');
-    eksConfiguration = registerOutput<ComputeEnvironmentEksConfiguration?>(
-      'eksConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ComputeEnvironmentEksConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    eksConfiguration = registerOutput<ComputeEnvironmentEksConfiguration?>('eksConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ComputeEnvironmentEksConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
     region = registerOutput<String>('region');
@@ -1266,15 +1206,6 @@ class ComputeEnvironment extends pulumi.CustomResource {
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     type = registerOutput<String>('type');
-    updatePolicy = registerOutput<ComputeEnvironmentUpdatePolicy>(
-      'updatePolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ComputeEnvironmentUpdatePolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    updatePolicy = registerOutput<ComputeEnvironmentUpdatePolicy>('updatePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ComputeEnvironmentUpdatePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

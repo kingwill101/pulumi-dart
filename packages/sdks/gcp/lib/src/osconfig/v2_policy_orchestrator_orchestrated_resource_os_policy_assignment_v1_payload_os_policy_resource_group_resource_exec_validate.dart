@@ -6,14 +6,9 @@ import 'v2_policy_orchestrator_orchestrated_resource_os_policy_assignment_v1_pay
 class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidate {
   /// Optional arguments to pass to the source during execution.
   final pulumi.Input<List<String>>? args;
-
   /// A remote or local file.
   /// Structure is documented below.
-  final pulumi.Input<
-    V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFile
-  >?
-  file;
-
+  final pulumi.Input<V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFile>? file;
   /// Required. The script interpreter to use.
   /// Possible values:
   /// INTERPRETER_UNSPECIFIED
@@ -21,7 +16,6 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
   /// SHELL
   /// POWERSHELL
   final pulumi.Input<String> interpreter;
-
   /// Only recorded for enforce Exec.
   /// Path to an output file (that is created by this Exec) whose
   /// content will be recorded in OSPolicyResourceCompliance after a
@@ -29,7 +23,6 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
   /// this ExecResource being non-compliant. Output file size is limited to
   /// 500K bytes.
   final pulumi.Input<String>? outputFilePath;
-
   /// An inline script.
   /// The size of the script is limited to 32KiB.
   final pulumi.Input<String>? script;
@@ -51,46 +44,21 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'args': ?args,
-      'file':
-          ?pulumi.Input.mapOptionalInputValue<
-            V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFile,
-            Map<String, dynamic>
-          >(file, (value) => value.toMap()),
+      'file': ?pulumi.Input.mapOptionalInputValue<V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFile, Map<String, dynamic>>(file, (value) => value.toMap()),
       'interpreter': interpreter,
       'outputFilePath': ?outputFilePath,
       'script': ?script,
     };
   }
 
-  factory V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidate.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidate.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidate(
-      args: (() {
-        final guardedValue = map['args'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      file: (() {
-        final guardedValue = map['file'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFile.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      args: (() { final guardedValue = map['args']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      file: (() { final guardedValue = map['file']; if (guardedValue == null) return null; return pulumi.Input.fromValue(V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       interpreter: pulumi.Input.fromValue(map['interpreter'] as String),
-      outputFilePath: (() {
-        final guardedValue = map['outputFilePath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      script: (() {
-        final guardedValue = map['script'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      outputFilePath: (() { final guardedValue = map['outputFilePath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      script: (() { final guardedValue = map['script']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

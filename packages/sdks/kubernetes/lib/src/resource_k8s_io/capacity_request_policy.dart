@@ -9,7 +9,6 @@ import 'capacity_request_policy_range.dart';
 class CapacityRequestPolicy {
   /// Default specifies how much of this capacity is consumed by a request that does not contain an entry for it in DeviceRequest's Capacity.
   final pulumi.Input<String>? default_;
-
   /// ValidRange defines an acceptable quantity value range in consuming requests.
   ///
   /// If this field is set, Default must be defined and it must fall within the defined ValidRange.
@@ -18,7 +17,6 @@ class CapacityRequestPolicy {
   ///
   /// If the request doesn't contain this capacity entry, Default value is used.
   final pulumi.Input<CapacityRequestPolicyRange>? validRange;
-
   /// ValidValues defines a set of acceptable quantity values in consuming requests.
   ///
   /// Must not contain more than 10 entries. Must be sorted in ascending order.
@@ -34,41 +32,26 @@ class CapacityRequestPolicy {
   /// [default_] Default specifies how much of this capacity is consumed by a request that does not contain an entry for it in DeviceRequest's Capacity.
   /// [validRange] ValidRange defines an acceptable quantity value range in consuming requests.
   /// [validValues] ValidValues defines a set of acceptable quantity values in consuming requests.
-  CapacityRequestPolicy({this.default_, this.validRange, this.validValues});
+  CapacityRequestPolicy({
+    this.default_,
+    this.validRange,
+    this.validValues,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'default': ?default_,
-      'validRange':
-          ?pulumi.Input.mapOptionalInputValue<
-            CapacityRequestPolicyRange,
-            Map<String, dynamic>
-          >(validRange, (value) => value.toMap()),
+      'validRange': ?pulumi.Input.mapOptionalInputValue<CapacityRequestPolicyRange, Map<String, dynamic>>(validRange, (value) => value.toMap()),
       'validValues': ?validValues,
     };
   }
 
   factory CapacityRequestPolicy.fromMap(Map<String, dynamic> map) {
     return CapacityRequestPolicy(
-      default_: (() {
-        final guardedValue = map['default'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      validRange: (() {
-        final guardedValue = map['validRange'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CapacityRequestPolicyRange.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      validValues: (() {
-        final guardedValue = map['validValues'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      default_: (() { final guardedValue = map['default']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      validRange: (() { final guardedValue = map['validRange']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CapacityRequestPolicyRange.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      validValues: (() { final guardedValue = map['validValues']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

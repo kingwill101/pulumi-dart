@@ -14,3 +14,4 @@ enum AnalyticsConnectorMappingType {
     throw ArgumentError('Unknown AnalyticsConnectorMappingType value: $value');
   }
 }
+

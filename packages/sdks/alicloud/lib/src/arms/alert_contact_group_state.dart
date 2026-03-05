@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AlertContactGroupState {
   /// The name of the resource.
   final pulumi.Input<String>? alertContactGroupName;
-
   /// The list id of alert contact.
   final pulumi.Input<List<String>>? contactIds;
 
   /// Creates a new [AlertContactGroupState].
   /// [alertContactGroupName] The name of the resource.
   /// [contactIds] The list id of alert contact.
-  AlertContactGroupState({this.alertContactGroupName, this.contactIds});
+  AlertContactGroupState({
+    this.alertContactGroupName,
+    this.contactIds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class AlertContactGroupState {
 
   factory AlertContactGroupState.fromMap(Map<String, dynamic> map) {
     return AlertContactGroupState(
-      alertContactGroupName: (() {
-        final guardedValue = map['alertContactGroupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      contactIds: (() {
-        final guardedValue = map['contactIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      alertContactGroupName: (() { final guardedValue = map['alertContactGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      contactIds: (() { final guardedValue = map['contactIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

@@ -157,27 +157,20 @@ import 'job_schedule_state.dart';
 class JobSchedule extends pulumi.CustomResource {
   /// The name of the Automation Account in which the Job Schedule is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> automationAccountName;
-
   /// The UUID identifying the Automation Job Schedule. Changing this forces a new resource to be created.
   late final pulumi.Output<String> jobScheduleId;
-
   /// A map of key/value pairs corresponding to the arguments that can be passed to the Runbook. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** The parameter keys/names must strictly be in lowercase, even if this is not the case in the runbook. This is due to a limitation in Azure Automation where the parameter names are normalized. The values specified don't have this limitation.
   late final pulumi.Output<Map<String, String>?> parameters;
-
   /// The name of the resource group in which the Job Schedule is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The Resource Manager ID of the Automation Job Schedule.
   late final pulumi.Output<String> resourceManagerId;
-
   /// Name of a Hybrid Worker Group the Runbook will be executed on. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> runOn;
-
   /// The name of a Runbook to link to a Schedule. It needs to be in the same Automation Account as the Schedule and Job Schedule. Changing this forces a new resource to be created.
   late final pulumi.Output<String> runbookName;
-
   /// The name of the Schedule. Changing this forces a new resource to be created.
   late final pulumi.Output<String> scheduleName;
 
@@ -190,11 +183,11 @@ class JobSchedule extends pulumi.CustomResource {
     JobScheduleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:automation/jobSchedule:JobSchedule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:automation/jobSchedule:JobSchedule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     automationAccountName = registerOutput<String>('automationAccountName');
     jobScheduleId = registerOutput<String>('jobScheduleId');
     parameters = registerOutput<Map<String, String>?>('parameters');
@@ -223,11 +216,11 @@ class JobSchedule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:automation/jobSchedule:JobSchedule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:automation/jobSchedule:JobSchedule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     automationAccountName = registerOutput<String>('automationAccountName');
     jobScheduleId = registerOutput<String>('jobScheduleId');
     parameters = registerOutput<Map<String, String>?>('parameters');

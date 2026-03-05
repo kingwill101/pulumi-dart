@@ -6,25 +6,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RosettaNetPipActivityBehaviorResponse {
   /// The value indicating whether the RosettaNet PIP is used for a single action.
   final pulumi.Input<String> actionType;
-
   /// The value indicating whether authorization is required.
   final pulumi.Input<bool> isAuthorizationRequired;
-
   /// The value indicating whether secured transport is required.
   final pulumi.Input<bool> isSecuredTransportRequired;
-
   /// The value indicating whether non-repudiation is for origin and content.
   final pulumi.Input<bool> nonRepudiationOfOriginAndContent;
-
   /// The persistent confidentiality encryption scope.
   final pulumi.Input<String> persistentConfidentialityScope;
-
   /// The value indicating whether the RosettaNet PIP communication is synchronous.
   final pulumi.Input<String> responseType;
-
   /// The value indicating retry count.
   final pulumi.Input<int> retryCount;
-
   /// The time to perform in seconds.
   final pulumi.Input<int> timeToPerformInSeconds;
 
@@ -61,28 +54,17 @@ class RosettaNetPipActivityBehaviorResponse {
     };
   }
 
-  factory RosettaNetPipActivityBehaviorResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RosettaNetPipActivityBehaviorResponse.fromMap(Map<String, dynamic> map) {
     return RosettaNetPipActivityBehaviorResponse(
       actionType: pulumi.Input.fromValue(map['actionType'] as String),
-      isAuthorizationRequired: pulumi.Input.fromValue(
-        map['isAuthorizationRequired'] as bool,
-      ),
-      isSecuredTransportRequired: pulumi.Input.fromValue(
-        map['isSecuredTransportRequired'] as bool,
-      ),
-      nonRepudiationOfOriginAndContent: pulumi.Input.fromValue(
-        map['nonRepudiationOfOriginAndContent'] as bool,
-      ),
-      persistentConfidentialityScope: pulumi.Input.fromValue(
-        map['persistentConfidentialityScope'] as String,
-      ),
+      isAuthorizationRequired: pulumi.Input.fromValue(map['isAuthorizationRequired'] as bool),
+      isSecuredTransportRequired: pulumi.Input.fromValue(map['isSecuredTransportRequired'] as bool),
+      nonRepudiationOfOriginAndContent: pulumi.Input.fromValue(map['nonRepudiationOfOriginAndContent'] as bool),
+      persistentConfidentialityScope: pulumi.Input.fromValue(map['persistentConfidentialityScope'] as String),
       responseType: pulumi.Input.fromValue(map['responseType'] as String),
       retryCount: pulumi.Input.fromValue(map['retryCount'] as int),
-      timeToPerformInSeconds: pulumi.Input.fromValue(
-        map['timeToPerformInSeconds'] as int,
-      ),
+      timeToPerformInSeconds: pulumi.Input.fromValue(map['timeToPerformInSeconds'] as int),
     );
   }
 }
+

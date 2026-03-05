@@ -7,10 +7,8 @@ import 'files_not_tiering_error_response.dart';
 class CloudTieringFilesNotTieringResponse {
   /// Array of tiering errors
   final pulumi.Input<List<FilesNotTieringErrorResponse>> errors;
-
   /// Last updated timestamp
   final pulumi.Input<String> lastUpdatedTimestamp;
-
   /// Last cloud tiering result (HResult)
   final pulumi.Input<double> totalFileCount;
 
@@ -26,39 +24,18 @@ class CloudTieringFilesNotTieringResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'errors':
-          pulumi.Input.mapInputValue<
-            List<FilesNotTieringErrorResponse>,
-            List<Map<String, dynamic>>
-          >(
-            errors,
-            (value) =>
-                pulumi.Input.encodeList<
-                  FilesNotTieringErrorResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'errors': pulumi.Input.mapInputValue<List<FilesNotTieringErrorResponse>, List<Map<String, dynamic>>>(errors, (value) => pulumi.Input.encodeList<FilesNotTieringErrorResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'lastUpdatedTimestamp': lastUpdatedTimestamp,
       'totalFileCount': totalFileCount,
     };
   }
 
-  factory CloudTieringFilesNotTieringResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CloudTieringFilesNotTieringResponse.fromMap(Map<String, dynamic> map) {
     return CloudTieringFilesNotTieringResponse(
-      errors: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<FilesNotTieringErrorResponse>(
-          map['errors']!,
-          (value) => FilesNotTieringErrorResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      lastUpdatedTimestamp: pulumi.Input.fromValue(
-        map['lastUpdatedTimestamp'] as String,
-      ),
+      errors: pulumi.Input.fromValue(pulumi.Input.decodeList<FilesNotTieringErrorResponse>(map['errors']!, (value) => FilesNotTieringErrorResponse.fromMap((value as Map).cast<String, dynamic>()))),
+      lastUpdatedTimestamp: pulumi.Input.fromValue(map['lastUpdatedTimestamp'] as String),
       totalFileCount: pulumi.Input.fromValue(map['totalFileCount'] as double),
     );
   }
 }
+

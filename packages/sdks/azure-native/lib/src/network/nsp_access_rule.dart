@@ -169,44 +169,30 @@ import 'nsp_access_rule_args.dart';
 class NspAccessRule extends pulumi.CustomResource {
   /// Inbound address prefixes (IPv4/IPv6)
   late final pulumi.Output<List<String>?> addressPrefixes;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Direction that specifies whether the access rules is inbound/outbound.
   late final pulumi.Output<String?> direction;
-
   /// Outbound rules email address format.
   late final pulumi.Output<List<String>?> emailAddresses;
-
   /// Outbound rules fully qualified domain name format.
   late final pulumi.Output<List<String>?> fullyQualifiedDomainNames;
-
   /// Resource location.
   late final pulumi.Output<String?> location;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// Rule specified by the perimeter id.
-  late final pulumi.Output<List<Map<String, dynamic>>>
-  networkSecurityPerimeters;
-
+  late final pulumi.Output<List<Map<String, dynamic>>> networkSecurityPerimeters;
   /// Outbound rules phone number format.
   late final pulumi.Output<List<String>?> phoneNumbers;
-
   /// The provisioning state of the scope assignment resource.
   late final pulumi.Output<String> provisioningState;
-
   /// Inbound rules service tag names.
   late final pulumi.Output<List<String>?> serviceTags;
-
   /// List of subscription ids
   late final pulumi.Output<List<Map<String, dynamic>>?> subscriptions;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -219,29 +205,23 @@ class NspAccessRule extends pulumi.CustomResource {
     NspAccessRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:network:NspAccessRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:network:NspAccessRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     addressPrefixes = registerOutput<List<String>?>('addressPrefixes');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     direction = registerOutput<String?>('direction');
     emailAddresses = registerOutput<List<String>?>('emailAddresses');
-    fullyQualifiedDomainNames = registerOutput<List<String>?>(
-      'fullyQualifiedDomainNames',
-    );
+    fullyQualifiedDomainNames = registerOutput<List<String>?>('fullyQualifiedDomainNames');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    networkSecurityPerimeters = registerOutput<List<Map<String, dynamic>>>(
-      'networkSecurityPerimeters',
-    );
+    networkSecurityPerimeters = registerOutput<List<Map<String, dynamic>>>('networkSecurityPerimeters');
     phoneNumbers = registerOutput<List<String>?>('phoneNumbers');
     provisioningState = registerOutput<String>('provisioningState');
     serviceTags = registerOutput<List<String>?>('serviceTags');
-    subscriptions = registerOutput<List<Map<String, dynamic>>?>(
-      'subscriptions',
-    );
+    subscriptions = registerOutput<List<Map<String, dynamic>>?>('subscriptions');
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

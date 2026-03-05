@@ -9,11 +9,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OauthClientArgs {
   /// Required. The list of OAuth grant types is allowed for the OauthClient.
   final pulumi.Input<List<String>> allowedGrantTypes;
-
   /// Required. The list of redirect uris that is allowed to redirect back
   /// when authorization process is completed.
   final pulumi.Input<List<String>> allowedRedirectUris;
-
   /// Required. The list of scopes that the OauthClient is allowed to request during
   /// OAuth flows.
   /// The following scopes are supported:
@@ -21,7 +19,6 @@ class OauthClientArgs {
   /// and delete your Google Cloud data and see the email address for your Google
   /// Account.
   final pulumi.Input<List<String>> allowedScopes;
-
   /// Immutable. The type of OauthClient. Either public or private.
   /// For private clients, the client secret can be managed using the dedicated
   /// OauthClientCredential resource.
@@ -30,29 +27,23 @@ class OauthClientArgs {
   /// PUBLIC_CLIENT
   /// CONFIDENTIAL_CLIENT
   final pulumi.Input<String>? clientType;
-
   /// A user-specified description of the OauthClient.
   /// Cannot exceed 256 characters.
   final pulumi.Input<String>? description;
-
   /// Whether the OauthClient is disabled. You cannot use a disabled OAuth
   /// client.
   final pulumi.Input<bool>? disabled;
-
   /// A user-specified display name of the OauthClient.
   /// Cannot exceed 32 characters.
   final pulumi.Input<String>? displayName;
-
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
-
   /// Required. The ID to use for the OauthClient, which becomes the final component of
   /// the resource name. This value should be a string of 6 to 63 lowercase
   /// letters, digits, or hyphens. It must start with a letter, and cannot have a
   /// trailing hyphen. The prefix `gcp-` is reserved for use by Google, and may
   /// not be specified.
   final pulumi.Input<String> oauthClientId;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -98,42 +89,17 @@ class OauthClientArgs {
 
   factory OauthClientArgs.fromMap(Map<String, dynamic> map) {
     return OauthClientArgs(
-      allowedGrantTypes: pulumi.Input.fromValue(
-        (map['allowedGrantTypes'] as List).cast<String>(),
-      ),
-      allowedRedirectUris: pulumi.Input.fromValue(
-        (map['allowedRedirectUris'] as List).cast<String>(),
-      ),
-      allowedScopes: pulumi.Input.fromValue(
-        (map['allowedScopes'] as List).cast<String>(),
-      ),
-      clientType: (() {
-        final guardedValue = map['clientType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      disabled: (() {
-        final guardedValue = map['disabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      allowedGrantTypes: pulumi.Input.fromValue((map['allowedGrantTypes'] as List).cast<String>()),
+      allowedRedirectUris: pulumi.Input.fromValue((map['allowedRedirectUris'] as List).cast<String>()),
+      allowedScopes: pulumi.Input.fromValue((map['allowedScopes'] as List).cast<String>()),
+      clientType: (() { final guardedValue = map['clientType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
       oauthClientId: pulumi.Input.fromValue(map['oauthClientId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

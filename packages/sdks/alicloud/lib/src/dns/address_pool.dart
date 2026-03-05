@@ -425,16 +425,12 @@ import 'address_pool_state.dart';
 class AddressPool extends pulumi.CustomResource {
   /// The name of the address pool.
   late final pulumi.Output<String> addressPoolName;
-
   /// The address lists of the Address Pool. See `address` below for details.
   late final pulumi.Output<List<Map<String, dynamic>>> addresses;
-
   /// The ID of the instance.
   late final pulumi.Output<String> instanceId;
-
   /// The load balancing policy of the address pool. Valid values:`ALL_RR` or `RATIO`. `ALL_RR`: returns all addresses. `RATIO`: returns addresses by weight.
   late final pulumi.Output<String> lbaStrategy;
-
   /// The type of the address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
   late final pulumi.Output<String> type;
 
@@ -447,11 +443,11 @@ class AddressPool extends pulumi.CustomResource {
     AddressPoolArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dns/addressPool:AddressPool',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dns/addressPool:AddressPool',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     addressPoolName = registerOutput<String>('addressPoolName');
     addresses = registerOutput<List<Map<String, dynamic>>>('addresses');
     instanceId = registerOutput<String>('instanceId');
@@ -477,11 +473,11 @@ class AddressPool extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dns/addressPool:AddressPool',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dns/addressPool:AddressPool',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     addressPoolName = registerOutput<String>('addressPoolName');
     addresses = registerOutput<List<Map<String, dynamic>>>('addresses');
     instanceId = registerOutput<String>('instanceId');

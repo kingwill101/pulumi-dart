@@ -7,10 +7,14 @@ class GetLaunchTemplateMaintenanceOption {
 
   /// Creates a new [GetLaunchTemplateMaintenanceOption].
   /// [autoRecovery] Required.
-  GetLaunchTemplateMaintenanceOption({required this.autoRecovery});
+  GetLaunchTemplateMaintenanceOption({
+    required this.autoRecovery,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'autoRecovery': autoRecovery};
+    return <String, dynamic>{
+      'autoRecovery': autoRecovery,
+    };
   }
 
   factory GetLaunchTemplateMaintenanceOption.fromMap(Map<String, dynamic> map) {
@@ -19,3 +23,4 @@ class GetLaunchTemplateMaintenanceOption {
     );
   }
 }
+

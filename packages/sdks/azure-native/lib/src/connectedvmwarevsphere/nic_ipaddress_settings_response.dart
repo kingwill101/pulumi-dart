@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NicIPAddressSettingsResponse {
   /// Gets the ip address allocation method.
   final pulumi.Input<String> allocationMethod;
-
   /// Gets the ip address for the nic.
   final pulumi.Input<String> ipAddress;
-
   /// Gets the mask.
   final pulumi.Input<String> subnetMask;
 
@@ -33,11 +31,10 @@ class NicIPAddressSettingsResponse {
 
   factory NicIPAddressSettingsResponse.fromMap(Map<String, dynamic> map) {
     return NicIPAddressSettingsResponse(
-      allocationMethod: pulumi.Input.fromValue(
-        map['allocationMethod'] as String,
-      ),
+      allocationMethod: pulumi.Input.fromValue(map['allocationMethod'] as String),
       ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
       subnetMask: pulumi.Input.fromValue(map['subnetMask'] as String),
     );
   }
 }
+

@@ -5,17 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AlertLabel {
   /// Labels's key for new alert.
   final pulumi.Input<String> key;
-
   /// Labels's value for new alert.
   final pulumi.Input<String> value;
 
   /// Creates a new [AlertLabel].
   /// [key] Labels's key for new alert.
   /// [value] Labels's value for new alert.
-  AlertLabel({required this.key, required this.value});
+  AlertLabel({
+    required this.key,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': key, 'value': value};
+    return <String, dynamic>{
+      'key': key,
+      'value': value,
+    };
   }
 
   factory AlertLabel.fromMap(Map<String, dynamic> map) {
@@ -25,3 +30,4 @@ class AlertLabel {
     );
   }
 }
+

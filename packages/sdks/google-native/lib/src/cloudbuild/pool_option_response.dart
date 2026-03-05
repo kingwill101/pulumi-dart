@@ -9,10 +9,14 @@ class PoolOptionResponse {
 
   /// Creates a new [PoolOptionResponse].
   /// [name] The `WorkerPool` resource to execute the build on. You must have `cloudbuild.workerpools.use` on the project hosting the WorkerPool. Format projects/{project}/locations/{location}/workerPools/{workerPoolId}
-  PoolOptionResponse({required this.name});
+  PoolOptionResponse({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory PoolOptionResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class PoolOptionResponse {
     );
   }
 }
+

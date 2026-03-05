@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomAccountResponseWebsecurityscannerV1beta {
   /// The login form URL of the website.
   final pulumi.Input<String> loginUrl;
-
   /// Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs.
   final pulumi.Input<String> password;
-
   /// The user name of the custom account.
   final pulumi.Input<String> username;
 
@@ -31,9 +29,7 @@ class CustomAccountResponseWebsecurityscannerV1beta {
     };
   }
 
-  factory CustomAccountResponseWebsecurityscannerV1beta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CustomAccountResponseWebsecurityscannerV1beta.fromMap(Map<String, dynamic> map) {
     return CustomAccountResponseWebsecurityscannerV1beta(
       loginUrl: pulumi.Input.fromValue(map['loginUrl'] as String),
       password: pulumi.Input.fromValue(map['password'] as String),
@@ -41,3 +37,4 @@ class CustomAccountResponseWebsecurityscannerV1beta {
     );
   }
 }
+

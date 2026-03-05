@@ -716,16 +716,12 @@ import 'zone_attachment_state.dart';
 class ZoneAttachment extends pulumi.CustomResource {
   /// The language of code.
   late final pulumi.Output<String?> lang;
-
   /// The user custom IP address.
   late final pulumi.Output<String?> userClientIp;
-
   /// The id List of the VPC with the same region, for example:["vpc-1","vpc-2"].
   late final pulumi.Output<List<String>> vpcIds;
-
   /// See `vpcs` below.Recommend to use `vpcs`.
   late final pulumi.Output<List<Map<String, dynamic>>> vpcs;
-
   /// The name of the Private Zone Record.
   late final pulumi.Output<String> zoneId;
 
@@ -738,11 +734,11 @@ class ZoneAttachment extends pulumi.CustomResource {
     ZoneAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:pvtz/zoneAttachment:ZoneAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:pvtz/zoneAttachment:ZoneAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     lang = registerOutput<String?>('lang');
     userClientIp = registerOutput<String?>('userClientIp');
     vpcIds = registerOutput<List<String>>('vpcIds');
@@ -768,11 +764,11 @@ class ZoneAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:pvtz/zoneAttachment:ZoneAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:pvtz/zoneAttachment:ZoneAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     lang = registerOutput<String?>('lang');
     userClientIp = registerOutput<String?>('userClientIp');
     vpcIds = registerOutput<List<String>>('vpcIds');

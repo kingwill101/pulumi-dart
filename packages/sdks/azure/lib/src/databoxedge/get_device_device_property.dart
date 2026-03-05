@@ -5,34 +5,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDeviceDeviceProperty {
   /// The Data Box Edge/Gateway device local capacity in MB.
   final pulumi.Input<int> capacity;
-
   /// Type of compute roles configured.
   final pulumi.Input<List<String>> configuredRoleTypes;
-
   /// The Data Box Edge/Gateway device culture.
   final pulumi.Input<String> culture;
-
   /// The device software version number of the device (e.g. 1.2.18105.6).
   final pulumi.Input<String> hcsVersion;
-
   /// The Data Box Edge/Gateway device model.
   final pulumi.Input<String> model;
-
   /// The number of nodes in the cluster.
   final pulumi.Input<int> nodeCount;
-
   /// The Serial Number of Data Box Edge/Gateway device.
   final pulumi.Input<String> serialNumber;
-
   /// The Data Box Edge/Gateway device software version.
   final pulumi.Input<String> softwareVersion;
-
   /// The status of the Data Box Edge/Gateway device.
   final pulumi.Input<String> status;
-
   /// The Data Box Edge/Gateway device timezone.
   final pulumi.Input<String> timeZone;
-
   /// The type of the Data Box Edge/Gateway device.
   final pulumi.Input<String> type;
 
@@ -81,9 +71,7 @@ class GetDeviceDeviceProperty {
   factory GetDeviceDeviceProperty.fromMap(Map<String, dynamic> map) {
     return GetDeviceDeviceProperty(
       capacity: pulumi.Input.fromValue(map['capacity'] as int),
-      configuredRoleTypes: pulumi.Input.fromValue(
-        (map['configuredRoleTypes'] as List).cast<String>(),
-      ),
+      configuredRoleTypes: pulumi.Input.fromValue((map['configuredRoleTypes'] as List).cast<String>()),
       culture: pulumi.Input.fromValue(map['culture'] as String),
       hcsVersion: pulumi.Input.fromValue(map['hcsVersion'] as String),
       model: pulumi.Input.fromValue(map['model'] as String),
@@ -96,3 +84,4 @@ class GetDeviceDeviceProperty {
     );
   }
 }
+

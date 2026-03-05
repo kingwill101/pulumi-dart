@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPacketCaptureArgs {
   /// The name of the network watcher.
   final pulumi.Input<String> networkWatcherName;
-
   /// The name of the packet capture session.
   final pulumi.Input<String> packetCaptureName;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,15 +34,10 @@ class GetPacketCaptureArgs {
 
   factory GetPacketCaptureArgs.fromMap(Map<String, dynamic> map) {
     return GetPacketCaptureArgs(
-      networkWatcherName: pulumi.Input.fromValue(
-        map['networkWatcherName'] as String,
-      ),
-      packetCaptureName: pulumi.Input.fromValue(
-        map['packetCaptureName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      networkWatcherName: pulumi.Input.fromValue(map['networkWatcherName'] as String),
+      packetCaptureName: pulumi.Input.fromValue(map['packetCaptureName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

@@ -7,10 +7,8 @@ class GraphQueryResponse {
   /// Gets or sets the base query for the graph.
   /// The base query is wrapped by Sentinel UI infra with a KQL query, that measures the volume over time.
   final pulumi.Input<String> baseQuery;
-
   /// Gets or sets the legend for the graph.
   final pulumi.Input<String> legend;
-
   /// Gets or sets the metric name that the query is checking. For example: 'Total data receive'.
   final pulumi.Input<String> metricName;
 
@@ -40,3 +38,4 @@ class GraphQueryResponse {
     );
   }
 }
+

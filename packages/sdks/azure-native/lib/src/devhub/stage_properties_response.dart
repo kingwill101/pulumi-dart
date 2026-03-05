@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StagePropertiesResponse {
   final pulumi.Input<List<String>>? dependencies;
   final pulumi.Input<String>? gitEnvironment;
-
   /// Stage Name
   final pulumi.Input<String>? stageName;
 
@@ -30,21 +29,10 @@ class StagePropertiesResponse {
 
   factory StagePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return StagePropertiesResponse(
-      dependencies: (() {
-        final guardedValue = map['dependencies'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      gitEnvironment: (() {
-        final guardedValue = map['gitEnvironment'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      stageName: (() {
-        final guardedValue = map['stageName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dependencies: (() { final guardedValue = map['dependencies']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      gitEnvironment: (() { final guardedValue = map['gitEnvironment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      stageName: (() { final guardedValue = map['stageName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

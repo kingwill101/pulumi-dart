@@ -194,7 +194,6 @@ import 'reserved_ip_assignment_state.dart';
 class ReservedIpAssignment extends pulumi.CustomResource {
   /// The ID of Droplet that the reserved IP will be assigned to.
   late final pulumi.Output<int> dropletId;
-
   /// The reserved IP to assign to the Droplet.
   late final pulumi.Output<String> ipAddress;
 
@@ -207,11 +206,11 @@ class ReservedIpAssignment extends pulumi.CustomResource {
     ReservedIpAssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/reservedIpAssignment:ReservedIpAssignment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/reservedIpAssignment:ReservedIpAssignment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dropletId = registerOutput<int>('dropletId');
     ipAddress = registerOutput<String>('ipAddress');
   }
@@ -234,11 +233,11 @@ class ReservedIpAssignment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/reservedIpAssignment:ReservedIpAssignment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/reservedIpAssignment:ReservedIpAssignment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dropletId = registerOutput<int>('dropletId');
     ipAddress = registerOutput<String>('ipAddress');
   }

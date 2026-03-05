@@ -6,31 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClientGroupInfo {
   /// The AAD security group id.
   final pulumi.Input<String>? groupId;
-
   /// The AAD security group name.
   final pulumi.Input<String>? groupName;
 
   /// Creates a new [ClientGroupInfo].
   /// [groupId] The AAD security group id.
   /// [groupName] The AAD security group name.
-  ClientGroupInfo({this.groupId, this.groupName});
+  ClientGroupInfo({
+    this.groupId,
+    this.groupName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'groupId': ?groupId, 'groupName': ?groupName};
+    return <String, dynamic>{
+      'groupId': ?groupId,
+      'groupName': ?groupName,
+    };
   }
 
   factory ClientGroupInfo.fromMap(Map<String, dynamic> map) {
     return ClientGroupInfo(
-      groupId: (() {
-        final guardedValue = map['groupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      groupName: (() {
-        final guardedValue = map['groupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      groupId: (() { final guardedValue = map['groupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      groupName: (() { final guardedValue = map['groupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

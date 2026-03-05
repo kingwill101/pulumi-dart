@@ -16,3 +16,4 @@ enum VirtualMachineDeviceModelType {
     throw ArgumentError('Unknown VirtualMachineDeviceModelType value: $value');
   }
 }
+

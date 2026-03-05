@@ -14,14 +14,15 @@ class GoogleCloudAiplatformV1beta1BigQueryDestinationResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'outputUri': outputUri};
+    return <String, dynamic>{
+      'outputUri': outputUri,
+    };
   }
 
-  factory GoogleCloudAiplatformV1beta1BigQueryDestinationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudAiplatformV1beta1BigQueryDestinationResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1BigQueryDestinationResponse(
       outputUri: pulumi.Input.fromValue(map['outputUri'] as String),
     );
   }
 }
+

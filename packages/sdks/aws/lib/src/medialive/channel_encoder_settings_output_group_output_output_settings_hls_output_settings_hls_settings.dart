@@ -6,19 +6,10 @@ import 'channel_encoder_settings_output_group_output_output_settings_hls_output_
 import 'channel_encoder_settings_output_group_output_output_settings_hls_output_settings_hls_settings_standard_hls_settings.dart';
 
 class ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettings {
-  final pulumi.Input<
-    ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsAudioOnlyHlsSettings
-  >?
-  audioOnlyHlsSettings;
-  final pulumi.Input<
-    ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsFmp4HlsSettings
-  >?
-  fmp4HlsSettings;
+  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsAudioOnlyHlsSettings>? audioOnlyHlsSettings;
+  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsFmp4HlsSettings>? fmp4HlsSettings;
   final pulumi.Input<Map<String, dynamic>>? frameCaptureHlsSettings;
-  final pulumi.Input<
-    ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettings
-  >?
-  standardHlsSettings;
+  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettings>? standardHlsSettings;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettings].
   /// [audioOnlyHlsSettings] Optional.
@@ -34,63 +25,20 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsS
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'audioOnlyHlsSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsAudioOnlyHlsSettings,
-            Map<String, dynamic>
-          >(audioOnlyHlsSettings, (value) => value.toMap()),
-      'fmp4HlsSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsFmp4HlsSettings,
-            Map<String, dynamic>
-          >(fmp4HlsSettings, (value) => value.toMap()),
+      'audioOnlyHlsSettings': ?pulumi.Input.mapOptionalInputValue<ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsAudioOnlyHlsSettings, Map<String, dynamic>>(audioOnlyHlsSettings, (value) => value.toMap()),
+      'fmp4HlsSettings': ?pulumi.Input.mapOptionalInputValue<ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsFmp4HlsSettings, Map<String, dynamic>>(fmp4HlsSettings, (value) => value.toMap()),
       'frameCaptureHlsSettings': ?frameCaptureHlsSettings,
-      'standardHlsSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettings,
-            Map<String, dynamic>
-          >(standardHlsSettings, (value) => value.toMap()),
+      'standardHlsSettings': ?pulumi.Input.mapOptionalInputValue<ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettings, Map<String, dynamic>>(standardHlsSettings, (value) => value.toMap()),
     };
   }
 
-  factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettings(
-      audioOnlyHlsSettings: (() {
-        final guardedValue = map['audioOnlyHlsSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsAudioOnlyHlsSettings.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      fmp4HlsSettings: (() {
-        final guardedValue = map['fmp4HlsSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsFmp4HlsSettings.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      frameCaptureHlsSettings: (() {
-        final guardedValue = map['frameCaptureHlsSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      standardHlsSettings: (() {
-        final guardedValue = map['standardHlsSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettings.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      audioOnlyHlsSettings: (() { final guardedValue = map['audioOnlyHlsSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsAudioOnlyHlsSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      fmp4HlsSettings: (() { final guardedValue = map['fmp4HlsSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsFmp4HlsSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      frameCaptureHlsSettings: (() { final guardedValue = map['frameCaptureHlsSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
+      standardHlsSettings: (() { final guardedValue = map['standardHlsSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

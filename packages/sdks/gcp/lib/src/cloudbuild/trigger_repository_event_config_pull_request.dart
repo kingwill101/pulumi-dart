@@ -5,11 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TriggerRepositoryEventConfigPullRequest {
   /// Regex of branches to match.
   final pulumi.Input<String>? branch;
-
   /// Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
   /// Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
   final pulumi.Input<String>? commentControl;
-
   /// If true, branches that do NOT match the git_ref will trigger a build.
   final pulumi.Input<bool>? invertRegex;
 
@@ -31,25 +29,12 @@ class TriggerRepositoryEventConfigPullRequest {
     };
   }
 
-  factory TriggerRepositoryEventConfigPullRequest.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory TriggerRepositoryEventConfigPullRequest.fromMap(Map<String, dynamic> map) {
     return TriggerRepositoryEventConfigPullRequest(
-      branch: (() {
-        final guardedValue = map['branch'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      commentControl: (() {
-        final guardedValue = map['commentControl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      invertRegex: (() {
-        final guardedValue = map['invertRegex'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      branch: (() { final guardedValue = map['branch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      commentControl: (() { final guardedValue = map['commentControl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      invertRegex: (() { final guardedValue = map['invertRegex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

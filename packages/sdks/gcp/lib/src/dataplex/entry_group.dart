@@ -269,46 +269,34 @@ import 'entry_group_state.dart';
 class EntryGroup extends pulumi.CustomResource {
   /// The time when the EntryGroup was created.
   late final pulumi.Output<String> createTime;
-
   /// Description of the EntryGroup.
   late final pulumi.Output<String?> description;
-
   /// User friendly display name.
   late final pulumi.Output<String?> displayName;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// The entry group id of the entry group.
   late final pulumi.Output<String?> entryGroupId;
-
   /// User-defined labels for the EntryGroup.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// The location where entry group will be created in.
   late final pulumi.Output<String?> location;
-
   /// The relative resource name of the EntryGroup, of the form: projects/{project_number}/locations/{location_id}/entryGroups/{entry_group_id}
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// Denotes the transfer status of the Entry Group. It is unspecified
   /// for Entry Group created from Dataplex API.
   late final pulumi.Output<String> transferStatus;
-
   /// System generated globally unique ID for the EntryGroup. This ID will be different if the EntryGroup is deleted and re-created with the same name.
   late final pulumi.Output<String> uid;
-
   /// The time when the EntryGroup was last updated.
   late final pulumi.Output<String> updateTime;
 
@@ -321,11 +309,11 @@ class EntryGroup extends pulumi.CustomResource {
     EntryGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:dataplex/entryGroup:EntryGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:dataplex/entryGroup:EntryGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
@@ -359,11 +347,11 @@ class EntryGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:dataplex/entryGroup:EntryGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:dataplex/entryGroup:EntryGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');

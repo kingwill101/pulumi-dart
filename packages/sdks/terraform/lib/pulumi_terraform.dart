@@ -18,8 +18,7 @@ class _StateModuleNamespace {
   final GetLocalReferenceResultArgs = module_state.GetLocalReferenceResult.new;
   final GetRemoteReferenceArgs = module_state.GetRemoteReferenceArgs.new;
   final GetRemoteReferenceResult = module_state.GetRemoteReferenceResult.new;
-  final GetRemoteReferenceResultArgs =
-      module_state.GetRemoteReferenceResult.new;
+  final GetRemoteReferenceResultArgs = module_state.GetRemoteReferenceResult.new;
   final Workspaces = module_state.Workspaces.new;
   final WorkspacesArgs = module_state.Workspaces.new;
   final getLocalReference = module_state.getLocalReference;

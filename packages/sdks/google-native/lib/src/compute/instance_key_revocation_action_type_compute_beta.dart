@@ -13,8 +13,7 @@ enum InstanceKeyRevocationActionTypeComputeBeta {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown InstanceKeyRevocationActionTypeComputeBeta value: $value',
-    );
+    throw ArgumentError('Unknown InstanceKeyRevocationActionTypeComputeBeta value: $value');
   }
 }
+

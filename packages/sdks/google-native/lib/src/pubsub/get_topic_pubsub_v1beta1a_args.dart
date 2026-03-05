@@ -11,10 +11,14 @@ class GetTopicPubsubV1beta1aArgs {
 
   /// Creates a new [GetTopicPubsubV1beta1aArgs].
   /// [topicId] Required.
-  GetTopicPubsubV1beta1aArgs({required this.topicId});
+  GetTopicPubsubV1beta1aArgs({
+    required this.topicId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'topicId': topicId};
+    return <String, dynamic>{
+      'topicId': topicId,
+    };
   }
 
   factory GetTopicPubsubV1beta1aArgs.fromMap(Map<String, dynamic> map) {
@@ -23,3 +27,4 @@ class GetTopicPubsubV1beta1aArgs {
     );
   }
 }
+

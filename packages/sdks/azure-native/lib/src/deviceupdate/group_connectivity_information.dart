@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GroupConnectivityInformation {
   /// List of customer visible FQDNs.
   final pulumi.Input<List<String>>? customerVisibleFqdns;
-
   /// PrivateLinkService ARM region.
   final pulumi.Input<String>? privateLinkServiceArmRegion;
-
   /// Redirect map ID.
   final pulumi.Input<String>? redirectMapId;
 
@@ -33,21 +31,10 @@ class GroupConnectivityInformation {
 
   factory GroupConnectivityInformation.fromMap(Map<String, dynamic> map) {
     return GroupConnectivityInformation(
-      customerVisibleFqdns: (() {
-        final guardedValue = map['customerVisibleFqdns'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      privateLinkServiceArmRegion: (() {
-        final guardedValue = map['privateLinkServiceArmRegion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      redirectMapId: (() {
-        final guardedValue = map['redirectMapId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      customerVisibleFqdns: (() { final guardedValue = map['customerVisibleFqdns']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      privateLinkServiceArmRegion: (() { final guardedValue = map['privateLinkServiceArmRegion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      redirectMapId: (() { final guardedValue = map['redirectMapId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

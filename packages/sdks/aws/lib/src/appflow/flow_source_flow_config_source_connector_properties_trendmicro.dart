@@ -12,14 +12,15 @@ class FlowSourceFlowConfigSourceConnectorPropertiesTrendmicro {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'object': object_};
+    return <String, dynamic>{
+      'object': object_,
+    };
   }
 
-  factory FlowSourceFlowConfigSourceConnectorPropertiesTrendmicro.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FlowSourceFlowConfigSourceConnectorPropertiesTrendmicro.fromMap(Map<String, dynamic> map) {
     return FlowSourceFlowConfigSourceConnectorPropertiesTrendmicro(
       object_: pulumi.Input.fromValue(map['object'] as String),
     );
   }
 }
+

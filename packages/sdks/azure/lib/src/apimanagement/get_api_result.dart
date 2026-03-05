@@ -6,46 +6,33 @@ import 'get_api_subscription_key_parameter_name.dart';
 /// Result data returned by getApi.
 class GetApiResult {
   final String apiManagementName;
-
   /// A description of the API Management API, which may include HTML formatting tags.
   final String description;
-
   /// The display name of the API.
   final String displayName;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Is this the current API Revision?
   final bool isCurrent;
-
   /// Is this API Revision online/accessible via the Gateway?
   final bool isOnline;
   final String name;
-
   /// The Path for this API Management API.
   final String path;
-
   /// A list of protocols the operations in this API can be invoked.
   final List<String> protocols;
   final String resourceGroupName;
   final String revision;
-
   /// Absolute URL of the backend service implementing this API.
   final String serviceUrl;
-
   /// Should this API expose a SOAP frontend, rather than a HTTP frontend?
   final bool soapPassThrough;
-
   /// A `subscription_key_parameter_names` block as documented below.
   final List<GetApiSubscriptionKeyParameterName> subscriptionKeyParameterNames;
-
   /// Should this API require a subscription key?
   final bool subscriptionRequired;
-
   /// The Version number of this API, if this API is versioned.
   final String version;
-
   /// The ID of the Version Set which this API is associated with.
   final String versionSetId;
 
@@ -102,11 +89,7 @@ class GetApiResult {
       'revision': revision,
       'serviceUrl': serviceUrl,
       'soapPassThrough': soapPassThrough,
-      'subscriptionKeyParameterNames':
-          pulumi.Input.encodeList<
-            GetApiSubscriptionKeyParameterName,
-            Map<String, dynamic>
-          >(subscriptionKeyParameterNames, (value) => value.toMap()),
+      'subscriptionKeyParameterNames': pulumi.Input.encodeList<GetApiSubscriptionKeyParameterName, Map<String, dynamic>>(subscriptionKeyParameterNames, (value) => value.toMap()),
       'subscriptionRequired': subscriptionRequired,
       'version': version,
       'versionSetId': versionSetId,
@@ -128,16 +111,11 @@ class GetApiResult {
       revision: map['revision'] as String,
       serviceUrl: map['serviceUrl'] as String,
       soapPassThrough: map['soapPassThrough'] as bool,
-      subscriptionKeyParameterNames:
-          pulumi.Input.decodeList<GetApiSubscriptionKeyParameterName>(
-            map['subscriptionKeyParameterNames']!,
-            (value) => GetApiSubscriptionKeyParameterName.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      subscriptionKeyParameterNames: pulumi.Input.decodeList<GetApiSubscriptionKeyParameterName>(map['subscriptionKeyParameterNames']!, (value) => GetApiSubscriptionKeyParameterName.fromMap((value as Map).cast<String, dynamic>())),
       subscriptionRequired: map['subscriptionRequired'] as bool,
       version: map['version'] as String,
       versionSetId: map['versionSetId'] as String,
     );
   }
 }
+

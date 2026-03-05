@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceZoneVswitchSecurityGroup {
   /// The CIDR block of the VSwitch.
   final pulumi.Input<String> cidrBlock;
-
   /// The ID of the security group.
   final pulumi.Input<String> securityGroup;
-
   /// The VSwitch ID.
   final pulumi.Input<String> vswitchId;
-
   /// The zone ID.
   final pulumi.Input<String> zoneId;
 
@@ -45,3 +42,4 @@ class InstanceZoneVswitchSecurityGroup {
     );
   }
 }
+

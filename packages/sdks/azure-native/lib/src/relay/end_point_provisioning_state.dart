@@ -19,3 +19,4 @@ enum EndPointProvisioningState {
     throw ArgumentError('Unknown EndPointProvisioningState value: $value');
   }
 }
+

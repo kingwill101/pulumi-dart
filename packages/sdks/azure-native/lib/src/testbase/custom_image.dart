@@ -158,52 +158,36 @@ import 'system_data_response.dart';
 class CustomImage extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The UTC timestamp when the custom image was published.
   late final pulumi.Output<String> creationTime;
-
   /// Image definition name.
   late final pulumi.Output<String> definitionName;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// This property indicates the size of the VHD to be created.
   late final pulumi.Output<double> osDiskImageSizeInGB;
-
   /// Product of the custom image.
   late final pulumi.Output<String> product;
-
   /// The provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// Release of the custom image OS.
   late final pulumi.Output<String> release;
-
   /// The release version date of the release of the custom image OS.
   late final pulumi.Output<String> releaseVersionDate;
-
   /// Custom image source type.
   late final pulumi.Output<String> source;
-
   /// Status of the custom image.
   late final pulumi.Output<String> status;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// The validation result of the custom image.
   late final pulumi.Output<ImageValidationResultsResponse> validationResults;
-
   /// Image version name.
   late final pulumi.Output<String> versionName;
-
   /// The file name of the associated VHD resource.
   late final pulumi.Output<String> vhdFileName;
-
   /// The Id of the associated VHD resource.
   late final pulumi.Output<String?> vhdId;
 
@@ -216,11 +200,11 @@ class CustomImage extends pulumi.CustomResource {
     CustomImageArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:testbase:CustomImage',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:testbase:CustomImage',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     creationTime = registerOutput<String>('creationTime');
     definitionName = registerOutput<String>('definitionName');
@@ -232,27 +216,9 @@ class CustomImage extends pulumi.CustomResource {
     releaseVersionDate = registerOutput<String>('releaseVersionDate');
     source = registerOutput<String>('source');
     status = registerOutput<String>('status');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
-    validationResults = registerOutput<ImageValidationResultsResponse>(
-      'validationResults',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ImageValidationResultsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    validationResults = registerOutput<ImageValidationResultsResponse>('validationResults', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageValidationResultsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     versionName = registerOutput<String>('versionName');
     vhdFileName = registerOutput<String>('vhdFileName');
     vhdId = registerOutput<String?>('vhdId');

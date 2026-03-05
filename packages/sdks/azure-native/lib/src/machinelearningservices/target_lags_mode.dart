@@ -15,3 +15,4 @@ enum TargetLagsMode {
     throw ArgumentError('Unknown TargetLagsMode value: $value');
   }
 }
+

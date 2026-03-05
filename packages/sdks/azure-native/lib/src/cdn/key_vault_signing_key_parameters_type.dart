@@ -10,8 +10,7 @@ enum KeyVaultSigningKeyParametersType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown KeyVaultSigningKeyParametersType value: $value',
-    );
+    throw ArgumentError('Unknown KeyVaultSigningKeyParametersType value: $value');
   }
 }
+

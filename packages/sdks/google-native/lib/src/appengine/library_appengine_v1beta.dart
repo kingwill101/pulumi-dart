@@ -6,31 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LibraryAppengineV1beta {
   /// Name of the library. Example: "django".
   final pulumi.Input<String>? name;
-
   /// Version of the library to select, or "latest".
   final pulumi.Input<String>? version;
 
   /// Creates a new [LibraryAppengineV1beta].
   /// [name] Name of the library. Example: "django".
   /// [version] Version of the library to select, or "latest".
-  LibraryAppengineV1beta({this.name, this.version});
+  LibraryAppengineV1beta({
+    this.name,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name, 'version': ?version};
+    return <String, dynamic>{
+      'name': ?name,
+      'version': ?version,
+    };
   }
 
   factory LibraryAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return LibraryAppengineV1beta(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

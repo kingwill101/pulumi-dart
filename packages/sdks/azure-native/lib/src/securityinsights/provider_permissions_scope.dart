@@ -16,3 +16,4 @@ enum ProviderPermissionsScope {
     throw ArgumentError('Unknown ProviderPermissionsScope value: $value');
   }
 }
+

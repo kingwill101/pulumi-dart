@@ -191,32 +191,23 @@ import 'system_data_response.dart';
 class Channel extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The type of the event channel which represents the direction flow of events.
   late final pulumi.Output<String?> channelType;
-
   /// Expiration time of the channel. If this timer expires while the corresponding partner topic is never activated,
   /// the channel and corresponding partner topic are deleted.
   late final pulumi.Output<String?> expirationTimeIfNotActivatedUtc;
-
   /// Context or helpful message that can be used during the approval process by the subscriber.
   late final pulumi.Output<String?> messageForActivation;
-
   /// Name of the resource.
   late final pulumi.Output<String> name;
-
   /// This property should be populated when channelType is PartnerTopic and represents information about the partner topic resource corresponding to the channel.
   late final pulumi.Output<PartnerTopicInfoResponse?> partnerTopicInfo;
-
   /// Provisioning state of the channel.
   late final pulumi.Output<String?> provisioningState;
-
   /// The readiness state of the corresponding partner topic.
   late final pulumi.Output<String?> readinessState;
-
   /// The system metadata relating to the Event Grid resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Type of the resource.
   late final pulumi.Output<String> type;
 
@@ -229,40 +220,20 @@ class Channel extends pulumi.CustomResource {
     ChannelArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:eventgrid:Channel',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:eventgrid:Channel',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     channelType = registerOutput<String?>('channelType');
-    expirationTimeIfNotActivatedUtc = registerOutput<String?>(
-      'expirationTimeIfNotActivatedUtc',
-    );
+    expirationTimeIfNotActivatedUtc = registerOutput<String?>('expirationTimeIfNotActivatedUtc');
     messageForActivation = registerOutput<String?>('messageForActivation');
     this.name = registerOutput<String>('name');
-    partnerTopicInfo = registerOutput<PartnerTopicInfoResponse?>(
-      'partnerTopicInfo',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PartnerTopicInfoResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    partnerTopicInfo = registerOutput<PartnerTopicInfoResponse?>('partnerTopicInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PartnerTopicInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningState = registerOutput<String?>('provisioningState');
     readinessState = registerOutput<String?>('readinessState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

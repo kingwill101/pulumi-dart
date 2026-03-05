@@ -12,10 +12,14 @@ class GetSourceControlTokenArgs {
 
   /// Creates a new [GetSourceControlTokenArgs].
   /// [type] The Token type. Possible values include `Bitbucket`, `Dropbox`, `Github`, and `OneDrive`.
-  GetSourceControlTokenArgs({required this.type});
+  GetSourceControlTokenArgs({
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': type};
+    return <String, dynamic>{
+      'type': type,
+    };
   }
 
   factory GetSourceControlTokenArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetSourceControlTokenArgs {
     );
   }
 }
+

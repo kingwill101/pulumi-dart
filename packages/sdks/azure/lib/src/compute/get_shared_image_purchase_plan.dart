@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSharedImagePurchasePlan {
   /// The name of the Shared Image.
   final pulumi.Input<String> name;
-
   /// (Optional) The Purchase Plan Product for this Gallery Image.
   final pulumi.Input<String> product;
-
   /// (Optional) The Purchase Plan Publisher for this Gallery Image.
   final pulumi.Input<String> publisher;
 
@@ -38,3 +36,4 @@ class GetSharedImagePurchasePlan {
     );
   }
 }
+

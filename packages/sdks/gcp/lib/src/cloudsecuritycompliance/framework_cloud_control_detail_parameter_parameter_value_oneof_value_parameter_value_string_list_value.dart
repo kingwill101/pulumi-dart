@@ -13,14 +13,15 @@ class FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValue
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'values': values};
+    return <String, dynamic>{
+      'values': values,
+    };
   }
 
-  factory FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValue.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValue.fromMap(Map<String, dynamic> map) {
     return FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValue(
       values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
+

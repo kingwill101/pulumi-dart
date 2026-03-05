@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScheduledQueryRecentlyFailedRunQueryInsightsResponseQuerySpatialCoverageMaxis {
   /// Partition key used for partitioning, which can be a default measure_name or a customer defined partition key.
   final pulumi.Input<List<String>>? partitionKeys;
-
   /// ARN of the table which is queried with the largest time range.
   final pulumi.Input<String>? tableArn;
-
   /// Maximum duration in nanoseconds between the start and end of the query.
   final pulumi.Input<double>? value;
 
@@ -30,25 +28,12 @@ class ScheduledQueryRecentlyFailedRunQueryInsightsResponseQuerySpatialCoverageMa
     };
   }
 
-  factory ScheduledQueryRecentlyFailedRunQueryInsightsResponseQuerySpatialCoverageMaxis.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ScheduledQueryRecentlyFailedRunQueryInsightsResponseQuerySpatialCoverageMaxis.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryRecentlyFailedRunQueryInsightsResponseQuerySpatialCoverageMaxis(
-      partitionKeys: (() {
-        final guardedValue = map['partitionKeys'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      tableArn: (() {
-        final guardedValue = map['tableArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      partitionKeys: (() { final guardedValue = map['partitionKeys']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      tableArn: (() { final guardedValue = map['tableArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

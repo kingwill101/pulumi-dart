@@ -10,34 +10,19 @@ import 'google_cloud_dataplex_v1_scanned_data_response.dart';
 /// The output of a DataQualityScan.
 class GoogleCloudDataplexV1DataQualityResultResponse {
   /// A list of results at the column level.A column will have a corresponding DataQualityColumnResult if and only if there is at least one rule with the 'column' field set to it.
-  final pulumi.Input<List<GoogleCloudDataplexV1DataQualityColumnResultResponse>>
-  columns;
-
+  final pulumi.Input<List<GoogleCloudDataplexV1DataQualityColumnResultResponse>> columns;
   /// A list of results at the dimension level.A dimension will have a corresponding DataQualityDimensionResult if and only if there is at least one rule with the 'dimension' field set to it.
-  final pulumi.Input<
-    List<GoogleCloudDataplexV1DataQualityDimensionResultResponse>
-  >
-  dimensions;
-
+  final pulumi.Input<List<GoogleCloudDataplexV1DataQualityDimensionResultResponse>> dimensions;
   /// Overall data quality result -- true if all rules passed.
   final pulumi.Input<bool> passed;
-
   /// The result of post scan actions.
-  final pulumi.Input<
-    GoogleCloudDataplexV1DataQualityResultPostScanActionsResultResponse
-  >
-  postScanActionsResult;
-
+  final pulumi.Input<GoogleCloudDataplexV1DataQualityResultPostScanActionsResultResponse> postScanActionsResult;
   /// The count of rows processed.
   final pulumi.Input<String> rowCount;
-
   /// A list of all the rules in a job, and their results.
-  final pulumi.Input<List<GoogleCloudDataplexV1DataQualityRuleResultResponse>>
-  rules;
-
+  final pulumi.Input<List<GoogleCloudDataplexV1DataQualityRuleResultResponse>> rules;
   /// The data scanned for this result.
   final pulumi.Input<GoogleCloudDataplexV1ScannedDataResponse> scannedData;
-
   /// The overall data quality score.The score ranges between 0, 100 (up to two decimal points).
   final pulumi.Input<double> score;
 
@@ -63,107 +48,28 @@ class GoogleCloudDataplexV1DataQualityResultResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'columns':
-          pulumi.Input.mapInputValue<
-            List<GoogleCloudDataplexV1DataQualityColumnResultResponse>,
-            List<Map<String, dynamic>>
-          >(
-            columns,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GoogleCloudDataplexV1DataQualityColumnResultResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'dimensions':
-          pulumi.Input.mapInputValue<
-            List<GoogleCloudDataplexV1DataQualityDimensionResultResponse>,
-            List<Map<String, dynamic>>
-          >(
-            dimensions,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GoogleCloudDataplexV1DataQualityDimensionResultResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'columns': pulumi.Input.mapInputValue<List<GoogleCloudDataplexV1DataQualityColumnResultResponse>, List<Map<String, dynamic>>>(columns, (value) => pulumi.Input.encodeList<GoogleCloudDataplexV1DataQualityColumnResultResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'dimensions': pulumi.Input.mapInputValue<List<GoogleCloudDataplexV1DataQualityDimensionResultResponse>, List<Map<String, dynamic>>>(dimensions, (value) => pulumi.Input.encodeList<GoogleCloudDataplexV1DataQualityDimensionResultResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'passed': passed,
-      'postScanActionsResult':
-          pulumi.Input.mapInputValue<
-            GoogleCloudDataplexV1DataQualityResultPostScanActionsResultResponse,
-            Map<String, dynamic>
-          >(postScanActionsResult, (value) => value.toMap()),
+      'postScanActionsResult': pulumi.Input.mapInputValue<GoogleCloudDataplexV1DataQualityResultPostScanActionsResultResponse, Map<String, dynamic>>(postScanActionsResult, (value) => value.toMap()),
       'rowCount': rowCount,
-      'rules':
-          pulumi.Input.mapInputValue<
-            List<GoogleCloudDataplexV1DataQualityRuleResultResponse>,
-            List<Map<String, dynamic>>
-          >(
-            rules,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GoogleCloudDataplexV1DataQualityRuleResultResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'scannedData':
-          pulumi.Input.mapInputValue<
-            GoogleCloudDataplexV1ScannedDataResponse,
-            Map<String, dynamic>
-          >(scannedData, (value) => value.toMap()),
+      'rules': pulumi.Input.mapInputValue<List<GoogleCloudDataplexV1DataQualityRuleResultResponse>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<GoogleCloudDataplexV1DataQualityRuleResultResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'scannedData': pulumi.Input.mapInputValue<GoogleCloudDataplexV1ScannedDataResponse, Map<String, dynamic>>(scannedData, (value) => value.toMap()),
       'score': score,
     };
   }
 
-  factory GoogleCloudDataplexV1DataQualityResultResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDataplexV1DataQualityResultResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1DataQualityResultResponse(
-      columns: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GoogleCloudDataplexV1DataQualityColumnResultResponse
-        >(
-          map['columns']!,
-          (value) =>
-              GoogleCloudDataplexV1DataQualityColumnResultResponse.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
-      dimensions: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GoogleCloudDataplexV1DataQualityDimensionResultResponse
-        >(
-          map['dimensions']!,
-          (value) =>
-              GoogleCloudDataplexV1DataQualityDimensionResultResponse.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
+      columns: pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudDataplexV1DataQualityColumnResultResponse>(map['columns']!, (value) => GoogleCloudDataplexV1DataQualityColumnResultResponse.fromMap((value as Map).cast<String, dynamic>()))),
+      dimensions: pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudDataplexV1DataQualityDimensionResultResponse>(map['dimensions']!, (value) => GoogleCloudDataplexV1DataQualityDimensionResultResponse.fromMap((value as Map).cast<String, dynamic>()))),
       passed: pulumi.Input.fromValue(map['passed'] as bool),
-      postScanActionsResult: pulumi.Input.fromValue(
-        GoogleCloudDataplexV1DataQualityResultPostScanActionsResultResponse.fromMap(
-          (map['postScanActionsResult']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      postScanActionsResult: pulumi.Input.fromValue(GoogleCloudDataplexV1DataQualityResultPostScanActionsResultResponse.fromMap((map['postScanActionsResult']! as Map).cast<String, dynamic>())),
       rowCount: pulumi.Input.fromValue(map['rowCount'] as String),
-      rules: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GoogleCloudDataplexV1DataQualityRuleResultResponse
-        >(
-          map['rules']!,
-          (value) => GoogleCloudDataplexV1DataQualityRuleResultResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      scannedData: pulumi.Input.fromValue(
-        GoogleCloudDataplexV1ScannedDataResponse.fromMap(
-          (map['scannedData']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      rules: pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudDataplexV1DataQualityRuleResultResponse>(map['rules']!, (value) => GoogleCloudDataplexV1DataQualityRuleResultResponse.fromMap((value as Map).cast<String, dynamic>()))),
+      scannedData: pulumi.Input.fromValue(GoogleCloudDataplexV1ScannedDataResponse.fromMap((map['scannedData']! as Map).cast<String, dynamic>())),
       score: pulumi.Input.fromValue(map['score'] as double),
     );
   }
 }
+

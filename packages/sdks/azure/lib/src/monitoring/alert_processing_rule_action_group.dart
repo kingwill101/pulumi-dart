@@ -437,28 +437,20 @@ import 'alert_processing_rule_action_group_state.dart';
 class AlertProcessingRuleActionGroup extends pulumi.CustomResource {
   /// Specifies a list of Action Group IDs.
   late final pulumi.Output<List<String>> addActionGroupIds;
-
   /// A `condition` block as defined below.
   late final pulumi.Output<AlertProcessingRuleActionGroupCondition?> condition;
-
   /// Specifies a description for the Alert Processing Rule.
   late final pulumi.Output<String?> description;
-
   /// Should the Alert Processing Rule be enabled? Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
-
   /// The name which should be used for this Alert Processing Rule. Changing this forces a new Alert Processing Rule to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the Resource Group where the Alert Processing Rule should exist. Changing this forces a new Alert Processing Rule to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A `schedule` block as defined below.
   late final pulumi.Output<AlertProcessingRuleActionGroupSchedule?> schedule;
-
   /// A list of resource IDs which will be the target of alert processing rule.
   late final pulumi.Output<List<String>> scopes;
-
   /// A mapping of tags which should be assigned to the Alert Processing Rule.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -471,36 +463,18 @@ class AlertProcessingRuleActionGroup extends pulumi.CustomResource {
     AlertProcessingRuleActionGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:monitoring/alertProcessingRuleActionGroup:AlertProcessingRuleActionGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:monitoring/alertProcessingRuleActionGroup:AlertProcessingRuleActionGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     addActionGroupIds = registerOutput<List<String>>('addActionGroupIds');
-    condition = registerOutput<AlertProcessingRuleActionGroupCondition?>(
-      'condition',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AlertProcessingRuleActionGroupCondition.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    condition = registerOutput<AlertProcessingRuleActionGroupCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlertProcessingRuleActionGroupCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool?>('enabled');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    schedule = registerOutput<AlertProcessingRuleActionGroupSchedule?>(
-      'schedule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AlertProcessingRuleActionGroupSchedule.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    schedule = registerOutput<AlertProcessingRuleActionGroupSchedule?>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlertProcessingRuleActionGroupSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     scopes = registerOutput<List<String>>('scopes');
     tags = registerOutput<Map<String, String>?>('tags');
   }
@@ -523,36 +497,18 @@ class AlertProcessingRuleActionGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:monitoring/alertProcessingRuleActionGroup:AlertProcessingRuleActionGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:monitoring/alertProcessingRuleActionGroup:AlertProcessingRuleActionGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     addActionGroupIds = registerOutput<List<String>>('addActionGroupIds');
-    condition = registerOutput<AlertProcessingRuleActionGroupCondition?>(
-      'condition',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AlertProcessingRuleActionGroupCondition.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    condition = registerOutput<AlertProcessingRuleActionGroupCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlertProcessingRuleActionGroupCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool?>('enabled');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    schedule = registerOutput<AlertProcessingRuleActionGroupSchedule?>(
-      'schedule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AlertProcessingRuleActionGroupSchedule.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    schedule = registerOutput<AlertProcessingRuleActionGroupSchedule?>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlertProcessingRuleActionGroupSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     scopes = registerOutput<List<String>>('scopes');
     tags = registerOutput<Map<String, String>?>('tags');
   }

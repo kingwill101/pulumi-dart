@@ -287,13 +287,10 @@ import 'config_map_state.dart';
 class ConfigMap extends pulumi.CustomResource {
   /// ConfigMap instance data.
   late final pulumi.Output<String> data;
-
   /// The Description of ConfigMap.
   late final pulumi.Output<String?> description;
-
   /// ConfigMap instance name.
   late final pulumi.Output<String> name;
-
   /// The NamespaceId of ConfigMap.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
   late final pulumi.Output<String> namespaceId;
 
@@ -306,11 +303,11 @@ class ConfigMap extends pulumi.CustomResource {
     ConfigMapArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:sae/configMap:ConfigMap',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:sae/configMap:ConfigMap',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     data = registerOutput<String>('data');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
@@ -335,11 +332,11 @@ class ConfigMap extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:sae/configMap:ConfigMap',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:sae/configMap:ConfigMap',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     data = registerOutput<String>('data');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');

@@ -160,60 +160,42 @@ import 'system_data_response.dart';
 class AgentPool extends pulumi.CustomResource {
   /// AvailabilityZones - The list of Availability zones to use for nodes. Datacenter racks modelled as zones
   late final pulumi.Output<List<String>?> availabilityZones;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The underlying cloud infra provider properties.
   late final pulumi.Output<CloudProviderProfileResponse?> cloudProviderProfile;
-
   /// Count - Number of agents to host docker containers. Allowed values must be in the range of 1 to 100 (inclusive). The default value is 1.
   late final pulumi.Output<int?> count;
   late final pulumi.Output<AgentPoolResponseExtendedLocation?> extendedLocation;
-
   /// The resource location
   late final pulumi.Output<String?> location;
-
   /// The maximum number of nodes for auto-scaling
   late final pulumi.Output<int?> maxCount;
-
   /// The maximum number of pods that can run on a node.
   late final pulumi.Output<int?> maxPods;
-
   /// The minimum number of nodes for auto-scaling
   late final pulumi.Output<int?> minCount;
-
   /// Mode - AgentPoolMode represents mode of an agent pool. Possible values include: 'System', 'LB', 'User'. Default is 'User'
   late final pulumi.Output<String?> mode;
-
   /// Resource Name
   late final pulumi.Output<String> name;
-
   /// The version of node image
   late final pulumi.Output<String?> nodeImageVersion;
-
   /// NodeLabels - Agent pool node labels to be persisted across all nodes in agent pool.
   late final pulumi.Output<Map<String, String>?> nodeLabels;
-
   /// NodeTaints - Taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule.
   late final pulumi.Output<List<String>?> nodeTaints;
-
   /// OsType - OsType to be used to specify os type. Choose from Linux and Windows. Default to Linux. Possible values include: 'Linux', 'Windows'
   late final pulumi.Output<String?> osType;
   late final pulumi.Output<String> provisioningState;
-
   /// HybridAKSNodePoolStatus defines the observed state of HybridAKSNodePool
   late final pulumi.Output<AgentPoolProvisioningStatusResponseStatus?> status;
-
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource Type
   late final pulumi.Output<String> type;
-
   /// VmSize - The size of the agent pool VMs.
   late final pulumi.Output<String?> vmSize;
 
@@ -226,34 +208,16 @@ class AgentPool extends pulumi.CustomResource {
     AgentPoolArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:hybridcontainerservice:AgentPool',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:hybridcontainerservice:AgentPool',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     availabilityZones = registerOutput<List<String>?>('availabilityZones');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    cloudProviderProfile = registerOutput<CloudProviderProfileResponse?>(
-      'cloudProviderProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CloudProviderProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    cloudProviderProfile = registerOutput<CloudProviderProfileResponse?>('cloudProviderProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CloudProviderProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     count = registerOutput<int?>('count');
-    extendedLocation = registerOutput<AgentPoolResponseExtendedLocation?>(
-      'extendedLocation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AgentPoolResponseExtendedLocation.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    extendedLocation = registerOutput<AgentPoolResponseExtendedLocation?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentPoolResponseExtendedLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String?>('location');
     maxCount = registerOutput<int?>('maxCount');
     maxPods = registerOutput<int?>('maxPods');
@@ -265,26 +229,8 @@ class AgentPool extends pulumi.CustomResource {
     nodeTaints = registerOutput<List<String>?>('nodeTaints');
     osType = registerOutput<String?>('osType');
     provisioningState = registerOutput<String>('provisioningState');
-    status = registerOutput<AgentPoolProvisioningStatusResponseStatus?>(
-      'status',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AgentPoolProvisioningStatusResponseStatus.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    status = registerOutput<AgentPoolProvisioningStatusResponseStatus?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentPoolProvisioningStatusResponseStatus.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     vmSize = registerOutput<String?>('vmSize');

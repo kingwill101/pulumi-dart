@@ -6,16 +6,12 @@ import 'defender_for_storage_setting_properties_response.dart';
 class GetDefenderForStorageResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Resource Id
   final String id;
-
   /// Resource name
   final String name;
-
   /// Defender for Storage resource properties.
   final DefenderForStorageSettingPropertiesResponse properties;
-
   /// Resource type
   final String type;
 
@@ -48,10 +44,9 @@ class GetDefenderForStorageResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      properties: DefenderForStorageSettingPropertiesResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
+      properties: DefenderForStorageSettingPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

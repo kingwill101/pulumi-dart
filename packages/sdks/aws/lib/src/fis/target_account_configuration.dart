@@ -124,18 +124,14 @@ import 'target_account_configuration_state.dart';
 class TargetAccountConfiguration extends pulumi.CustomResource {
   /// Account ID of the target account.
   late final pulumi.Output<String> accountId;
-
   /// Description of the target account.
   late final pulumi.Output<String> description;
-
   /// Experiment Template ID.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> experimentTemplateId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// ARN of the IAM Role for the target account.
   late final pulumi.Output<String> roleArn;
 
@@ -148,11 +144,11 @@ class TargetAccountConfiguration extends pulumi.CustomResource {
     TargetAccountConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:fis/targetAccountConfiguration:TargetAccountConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:fis/targetAccountConfiguration:TargetAccountConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     description = registerOutput<String>('description');
     experimentTemplateId = registerOutput<String>('experimentTemplateId');
@@ -178,11 +174,11 @@ class TargetAccountConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:fis/targetAccountConfiguration:TargetAccountConfiguration',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:fis/targetAccountConfiguration:TargetAccountConfiguration',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     description = registerOutput<String>('description');
     experimentTemplateId = registerOutput<String>('experimentTemplateId');

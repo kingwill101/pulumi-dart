@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConformancePackInputParameter {
   /// The input key.
   final pulumi.Input<String> parameterName;
-
   /// The input value.
   final pulumi.Input<String> parameterValue;
 
@@ -31,3 +30,4 @@ class ConformancePackInputParameter {
     );
   }
 }
+

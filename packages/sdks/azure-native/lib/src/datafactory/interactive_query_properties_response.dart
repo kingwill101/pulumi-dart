@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InteractiveQueryPropertiesResponse {
   /// The allowed idle time for interactive authoring.
   final pulumi.Input<int> autoTerminationMinutes;
-
   /// The interactive authoring capability status. Must be one of InteractiveCapabilityStatus. The default value is 'Enabling'.
   final pulumi.Input<String> status;
 
@@ -27,10 +26,9 @@ class InteractiveQueryPropertiesResponse {
 
   factory InteractiveQueryPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return InteractiveQueryPropertiesResponse(
-      autoTerminationMinutes: pulumi.Input.fromValue(
-        map['autoTerminationMinutes'] as int,
-      ),
+      autoTerminationMinutes: pulumi.Input.fromValue(map['autoTerminationMinutes'] as int),
       status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
+

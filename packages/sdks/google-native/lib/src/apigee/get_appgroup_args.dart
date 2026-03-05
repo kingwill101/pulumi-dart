@@ -13,7 +13,10 @@ class GetAppgroupArgs {
   /// Creates a new [GetAppgroupArgs].
   /// [appgroupId] Required.
   /// [organizationId] Required.
-  GetAppgroupArgs({required this.appgroupId, required this.organizationId});
+  GetAppgroupArgs({
+    required this.appgroupId,
+    required this.organizationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,3 +32,4 @@ class GetAppgroupArgs {
     );
   }
 }
+

@@ -29,21 +29,12 @@ class GetDeploymentIamPolicyDeploymentmanagerV2Args {
     };
   }
 
-  factory GetDeploymentIamPolicyDeploymentmanagerV2Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDeploymentIamPolicyDeploymentmanagerV2Args.fromMap(Map<String, dynamic> map) {
     return GetDeploymentIamPolicyDeploymentmanagerV2Args(
-      optionsRequestedPolicyVersion: (() {
-        final guardedValue = map['optionsRequestedPolicyVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resource: pulumi.Input.fromValue(map['resource'] as String),
     );
   }
 }
+

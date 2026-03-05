@@ -9,19 +9,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GatewaySecurityPolicyArgs {
   /// A free-text description of the resource. Max length 1024 characters.
   final pulumi.Input<String>? description;
-
   /// The location of the gateway security policy.
   /// The default value is `global`.
   final pulumi.Input<String>? location;
-
   /// Name of the resource. Name is of the form projects/{project}/locations/{location}/gatewaySecurityPolicies/{gatewaySecurityPolicy}
   /// gatewaySecurityPolicy should match the pattern:(^a-z?$).
   final pulumi.Input<String>? name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
   final pulumi.Input<String>? tlsInspectionPolicy;
 
@@ -51,31 +47,12 @@ class GatewaySecurityPolicyArgs {
 
   factory GatewaySecurityPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GatewaySecurityPolicyArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tlsInspectionPolicy: (() {
-        final guardedValue = map['tlsInspectionPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tlsInspectionPolicy: (() { final guardedValue = map['tlsInspectionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -225,36 +225,26 @@ import 'metric_rule_template_state.dart';
 class MetricRuleTemplate extends pulumi.CustomResource {
   /// The details of alert rules that are generated based on the alert template. See `alert_templates` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> alertTemplates;
-
   /// The mode in which the alert template is applied. Valid values:
   /// - `GROUP_INSTANCE_FIRST`: The metrics in the application group take precedence.
   /// - `ALARM_TEMPLATE_FIRST `: The metrics specified in the alert template take precedence.
   late final pulumi.Output<String?> applyMode;
-
   /// The description of the alert template.
   late final pulumi.Output<String?> description;
-
   /// The end of the time period during which the alert rule is effective. Valid values: `00` to `23`. The value `00` indicates 00:59 and the value `23` indicates 23:59.
   late final pulumi.Output<String?> enableEndTime;
-
   /// The beginning of the time period during which the alert rule is effective. Valid values: `00` to `23`. The value `00` indicates 00:00 and the value `23` indicates 23:00.
   late final pulumi.Output<String?> enableStartTime;
-
   /// The ID of the application group.
   late final pulumi.Output<String?> groupId;
-
   /// The name of the alert template.
   late final pulumi.Output<String> metricRuleTemplateName;
-
   /// The alert notification method. Valid values:
   late final pulumi.Output<String?> notifyLevel;
-
   /// The version of the alert template.
   late final pulumi.Output<String> restVersion;
-
   /// The mute period during which notifications are not repeatedly sent for an alert. Unit: seconds. Default value: `86400`. Valid values: `0` to `86400`.
   late final pulumi.Output<int?> silenceTime;
-
   /// The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
   late final pulumi.Output<String?> webhook;
 
@@ -267,14 +257,12 @@ class MetricRuleTemplate extends pulumi.CustomResource {
     MetricRuleTemplateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cms/metricRuleTemplate:MetricRuleTemplate',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    alertTemplates = registerOutput<List<Map<String, dynamic>>?>(
-      'alertTemplates',
-    );
+          'alicloud:cms/metricRuleTemplate:MetricRuleTemplate',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    alertTemplates = registerOutput<List<Map<String, dynamic>>?>('alertTemplates');
     applyMode = registerOutput<String?>('applyMode');
     description = registerOutput<String?>('description');
     enableEndTime = registerOutput<String?>('enableEndTime');
@@ -305,14 +293,12 @@ class MetricRuleTemplate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cms/metricRuleTemplate:MetricRuleTemplate',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    alertTemplates = registerOutput<List<Map<String, dynamic>>?>(
-      'alertTemplates',
-    );
+          'alicloud:cms/metricRuleTemplate:MetricRuleTemplate',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    alertTemplates = registerOutput<List<Map<String, dynamic>>?>('alertTemplates');
     applyMode = registerOutput<String?>('applyMode');
     description = registerOutput<String?>('description');
     enableEndTime = registerOutput<String?>('enableEndTime');

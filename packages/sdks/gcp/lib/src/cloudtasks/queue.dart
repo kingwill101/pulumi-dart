@@ -1014,29 +1014,22 @@ class Queue extends pulumi.CustomResource {
   /// Overrides for task-level appEngineRouting. These settings apply only
   /// to App Engine tasks in this queue
   /// Structure is documented below.
-  late final pulumi.Output<QueueAppEngineRoutingOverride?>
-  appEngineRoutingOverride;
-
+  late final pulumi.Output<QueueAppEngineRoutingOverride?> appEngineRoutingOverride;
   /// The desired state of the queue. Use this to pause and resume the queue.
   ///
   /// * RUNNING: The queue is running. Tasks can be dispatched.
   /// * PAUSED: The queue is paused. Tasks are not dispatched but can be added to the queue.
   late final pulumi.Output<String?> desiredState;
-
   /// Modifies HTTP target for HTTP tasks.
   /// Structure is documented below.
   late final pulumi.Output<QueueHttpTarget?> httpTarget;
-
   /// The location of the queue
   late final pulumi.Output<String> location;
-
   /// The queue name.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Rate limits for task dispatches.
   /// The queue's actual dispatch rate is the result of:
   /// * Number of tasks in the queue
@@ -1046,16 +1039,12 @@ class Queue extends pulumi.CustomResource {
   /// smooth sudden large traffic spikes.
   /// Structure is documented below.
   late final pulumi.Output<QueueRateLimits> rateLimits;
-
   /// Settings that determine the retry behavior.
   /// Structure is documented below.
   late final pulumi.Output<QueueRetryConfig> retryConfig;
-
   /// Configuration options for writing logs to Stackdriver Logging.
   /// Structure is documented below.
-  late final pulumi.Output<QueueStackdriverLoggingConfig?>
-  stackdriverLoggingConfig;
-
+  late final pulumi.Output<QueueStackdriverLoggingConfig?> stackdriverLoggingConfig;
   /// The current state of the queue.
   late final pulumi.Output<String> state;
 
@@ -1063,72 +1052,34 @@ class Queue extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Queue]. {@macro pulumi_cloudtasks_queue_queue_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Queue(String name, {QueueArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'gcp:cloudtasks/queue:Queue',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
-    appEngineRoutingOverride = registerOutput<QueueAppEngineRoutingOverride?>(
-      'appEngineRoutingOverride',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return QueueAppEngineRoutingOverride.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+  Queue(
+    String name, {
+    QueueArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'gcp:cloudtasks/queue:Queue',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    appEngineRoutingOverride = registerOutput<QueueAppEngineRoutingOverride?>('appEngineRoutingOverride', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QueueAppEngineRoutingOverride.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     desiredState = registerOutput<String?>('desiredState');
-    httpTarget = registerOutput<QueueHttpTarget?>(
-      'httpTarget',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return QueueHttpTarget.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    httpTarget = registerOutput<QueueHttpTarget?>('httpTarget', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QueueHttpTarget.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    rateLimits = registerOutput<QueueRateLimits>(
-      'rateLimits',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return QueueRateLimits.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    retryConfig = registerOutput<QueueRetryConfig>(
-      'retryConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return QueueRetryConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    stackdriverLoggingConfig = registerOutput<QueueStackdriverLoggingConfig?>(
-      'stackdriverLoggingConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return QueueStackdriverLoggingConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    rateLimits = registerOutput<QueueRateLimits>('rateLimits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QueueRateLimits.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    retryConfig = registerOutput<QueueRetryConfig>('retryConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QueueRetryConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    stackdriverLoggingConfig = registerOutput<QueueStackdriverLoggingConfig?>('stackdriverLoggingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QueueStackdriverLoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     state = registerOutput<String>('state');
   }
 
   /// Gets an existing [Queue] resource's state with the given [name] and [id].
-  static Queue get(String name, pulumi.Input<String> id, {QueueState? state}) {
+  static Queue get(
+    String name,
+    pulumi.Input<String> id, {
+    QueueState? state,
+  }) {
     return Queue._get(
       name,
       state: state?.toMap(),
@@ -1141,65 +1092,20 @@ class Queue extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:cloudtasks/queue:Queue',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    appEngineRoutingOverride = registerOutput<QueueAppEngineRoutingOverride?>(
-      'appEngineRoutingOverride',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return QueueAppEngineRoutingOverride.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:cloudtasks/queue:Queue',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    appEngineRoutingOverride = registerOutput<QueueAppEngineRoutingOverride?>('appEngineRoutingOverride', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QueueAppEngineRoutingOverride.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     desiredState = registerOutput<String?>('desiredState');
-    httpTarget = registerOutput<QueueHttpTarget?>(
-      'httpTarget',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return QueueHttpTarget.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    httpTarget = registerOutput<QueueHttpTarget?>('httpTarget', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QueueHttpTarget.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    rateLimits = registerOutput<QueueRateLimits>(
-      'rateLimits',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return QueueRateLimits.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    retryConfig = registerOutput<QueueRetryConfig>(
-      'retryConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return QueueRetryConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    stackdriverLoggingConfig = registerOutput<QueueStackdriverLoggingConfig?>(
-      'stackdriverLoggingConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return QueueStackdriverLoggingConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    rateLimits = registerOutput<QueueRateLimits>('rateLimits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QueueRateLimits.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    retryConfig = registerOutput<QueueRetryConfig>('retryConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QueueRetryConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    stackdriverLoggingConfig = registerOutput<QueueStackdriverLoggingConfig?>('stackdriverLoggingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QueueStackdriverLoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.state = registerOutput<String>('state');
   }
 }

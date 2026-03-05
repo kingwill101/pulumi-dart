@@ -1,34 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getDataMaskingPolicy.
 class GetDataMaskingPolicyResult {
   /// The list of the application principals. This is a legacy parameter and is no longer used.
   final String applicationPrincipals;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The state of the data masking policy.
   final String dataMaskingState;
-
   /// The list of the exempt principals. Specifies the semicolon-separated list of database users for which the data masking policy does not apply. The specified users receive data results without masking for all of the database queries.
   final String? exemptPrincipals;
-
   /// Resource ID.
   final String id;
-
   /// The kind of Data Masking Policy. Metadata, used for Azure portal.
   final String kind;
-
   /// The location of the data masking policy.
   final String location;
-
   /// The masking level. This is a legacy parameter and is no longer used.
   final String maskingLevel;
-
   /// Resource name.
   final String name;
-
   /// Resource type.
   final String type;
 
@@ -76,11 +68,7 @@ class GetDataMaskingPolicyResult {
       applicationPrincipals: map['applicationPrincipals'] as String,
       azureApiVersion: map['azureApiVersion'] as String,
       dataMaskingState: map['dataMaskingState'] as String,
-      exemptPrincipals: (() {
-        final guardedValue = map['exemptPrincipals'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      exemptPrincipals: (() { final guardedValue = map['exemptPrincipals']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       kind: map['kind'] as String,
       location: map['location'] as String,
@@ -90,3 +78,4 @@ class GetDataMaskingPolicyResult {
     );
   }
 }
+

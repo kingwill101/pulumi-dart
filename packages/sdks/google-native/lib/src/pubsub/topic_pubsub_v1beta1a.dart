@@ -15,11 +15,11 @@ class TopicPubsubV1beta1a extends pulumi.CustomResource {
     TopicPubsubV1beta1aArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'google-native:pubsub/v1beta1a:Topic',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'google-native:pubsub/v1beta1a:Topic',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
   }
 }

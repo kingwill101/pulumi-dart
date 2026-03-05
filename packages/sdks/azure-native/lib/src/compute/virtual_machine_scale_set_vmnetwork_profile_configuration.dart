@@ -6,8 +6,7 @@ import 'virtual_machine_scale_set_network_configuration.dart';
 /// Describes a virtual machine scale set VM network profile.
 class VirtualMachineScaleSetVMNetworkProfileConfiguration {
   /// The list of network configurations.
-  final pulumi.Input<List<VirtualMachineScaleSetNetworkConfiguration>>?
-  networkInterfaceConfigurations;
+  final pulumi.Input<List<VirtualMachineScaleSetNetworkConfiguration>>? networkInterfaceConfigurations;
 
   /// Creates a new [VirtualMachineScaleSetVMNetworkProfileConfiguration].
   /// [networkInterfaceConfigurations] The list of network configurations.
@@ -17,37 +16,14 @@ class VirtualMachineScaleSetVMNetworkProfileConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'networkInterfaceConfigurations':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<VirtualMachineScaleSetNetworkConfiguration>,
-            List<Map<String, dynamic>>
-          >(
-            networkInterfaceConfigurations,
-            (value) =>
-                pulumi.Input.encodeList<
-                  VirtualMachineScaleSetNetworkConfiguration,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'networkInterfaceConfigurations': ?pulumi.Input.mapOptionalInputValue<List<VirtualMachineScaleSetNetworkConfiguration>, List<Map<String, dynamic>>>(networkInterfaceConfigurations, (value) => pulumi.Input.encodeList<VirtualMachineScaleSetNetworkConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory VirtualMachineScaleSetVMNetworkProfileConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VirtualMachineScaleSetVMNetworkProfileConfiguration.fromMap(Map<String, dynamic> map) {
     return VirtualMachineScaleSetVMNetworkProfileConfiguration(
-      networkInterfaceConfigurations: (() {
-        final guardedValue = map['networkInterfaceConfigurations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<VirtualMachineScaleSetNetworkConfiguration>(
-            guardedValue,
-            (value) => VirtualMachineScaleSetNetworkConfiguration.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      networkInterfaceConfigurations: (() { final guardedValue = map['networkInterfaceConfigurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VirtualMachineScaleSetNetworkConfiguration>(guardedValue, (value) => VirtualMachineScaleSetNetworkConfiguration.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

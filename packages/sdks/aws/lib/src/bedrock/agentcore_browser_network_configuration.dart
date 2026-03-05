@@ -6,7 +6,6 @@ import 'agentcore_browser_network_configuration_vpc_config.dart';
 class AgentcoreBrowserNetworkConfiguration {
   /// Network mode for the browser. Valid values: `PUBLIC`, `VPC`.
   final pulumi.Input<String> networkMode;
-
   /// VPC configuration when `network_mode` is `VPC`. See `vpc_config` below.
   final pulumi.Input<AgentcoreBrowserNetworkConfigurationVpcConfig>? vpcConfig;
 
@@ -21,28 +20,15 @@ class AgentcoreBrowserNetworkConfiguration {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'networkMode': networkMode,
-      'vpcConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            AgentcoreBrowserNetworkConfigurationVpcConfig,
-            Map<String, dynamic>
-          >(vpcConfig, (value) => value.toMap()),
+      'vpcConfig': ?pulumi.Input.mapOptionalInputValue<AgentcoreBrowserNetworkConfigurationVpcConfig, Map<String, dynamic>>(vpcConfig, (value) => value.toMap()),
     };
   }
 
-  factory AgentcoreBrowserNetworkConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentcoreBrowserNetworkConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentcoreBrowserNetworkConfiguration(
       networkMode: pulumi.Input.fromValue(map['networkMode'] as String),
-      vpcConfig: (() {
-        final guardedValue = map['vpcConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AgentcoreBrowserNetworkConfigurationVpcConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      vpcConfig: (() { final guardedValue = map['vpcConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentcoreBrowserNetworkConfigurationVpcConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

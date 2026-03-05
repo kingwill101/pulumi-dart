@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudAiplatformV1StudySpecParameterSpecIntegerValueSpecResponse {
   /// A default value for an `INTEGER` parameter that is assumed to be a relatively good starting point. Unset value signals that there is no offered starting point. Currently only supported by the Vertex AI Vizier service. Not supported by HyperparameterTuningJob or TrainingPipeline.
   final pulumi.Input<String> defaultValue;
-
   /// Inclusive maximum value of the parameter.
   final pulumi.Input<String> maxValue;
-
   /// Inclusive minimum value of the parameter.
   final pulumi.Input<String> minValue;
 
@@ -31,9 +29,7 @@ class GoogleCloudAiplatformV1StudySpecParameterSpecIntegerValueSpecResponse {
     };
   }
 
-  factory GoogleCloudAiplatformV1StudySpecParameterSpecIntegerValueSpecResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudAiplatformV1StudySpecParameterSpecIntegerValueSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1StudySpecParameterSpecIntegerValueSpecResponse(
       defaultValue: pulumi.Input.fromValue(map['defaultValue'] as String),
       maxValue: pulumi.Input.fromValue(map['maxValue'] as String),
@@ -41,3 +37,4 @@ class GoogleCloudAiplatformV1StudySpecParameterSpecIntegerValueSpecResponse {
     );
   }
 }
+

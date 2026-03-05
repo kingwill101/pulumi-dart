@@ -375,46 +375,32 @@ import 'system_data_response.dart';
 class KafkaConnectorTopicMap extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The batching settings for kafka messages.
   late final pulumi.Output<KafkaTopicMapBatchingResponse?> batching;
-
   /// The compression to use for kafka messages.
   late final pulumi.Output<String?> compression;
-
   /// The flag to copy Mqtt properties.
   late final pulumi.Output<String?> copyMqttProperties;
-
   /// Extended Location
   late final pulumi.Output<ExtendedLocationPropertyResponse> extendedLocation;
-
   /// The kafkaConnector CRD it refers to.
   late final pulumi.Output<String> kafkaConnectorRef;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The partition to use for Kafka.
   late final pulumi.Output<String?> partitionKeyProperty;
-
   /// The partition strategy to use for Kafka.
   late final pulumi.Output<String?> partitionStrategy;
-
   /// The status of the last operation.
   late final pulumi.Output<String> provisioningState;
-
   /// The route details for Kafka connector.
   late final pulumi.Output<List<Map<String, dynamic>>> routes;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -427,34 +413,16 @@ class KafkaConnectorTopicMap extends pulumi.CustomResource {
     KafkaConnectorTopicMapArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:iotoperationsmq:KafkaConnectorTopicMap',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:iotoperationsmq:KafkaConnectorTopicMap',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    batching = registerOutput<KafkaTopicMapBatchingResponse?>(
-      'batching',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return KafkaTopicMapBatchingResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    batching = registerOutput<KafkaTopicMapBatchingResponse?>('batching', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KafkaTopicMapBatchingResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     compression = registerOutput<String?>('compression');
     copyMqttProperties = registerOutput<String?>('copyMqttProperties');
-    extendedLocation = registerOutput<ExtendedLocationPropertyResponse>(
-      'extendedLocation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExtendedLocationPropertyResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    extendedLocation = registerOutput<ExtendedLocationPropertyResponse>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationPropertyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kafkaConnectorRef = registerOutput<String>('kafkaConnectorRef');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -462,16 +430,7 @@ class KafkaConnectorTopicMap extends pulumi.CustomResource {
     partitionStrategy = registerOutput<String?>('partitionStrategy');
     provisioningState = registerOutput<String>('provisioningState');
     routes = registerOutput<List<Map<String, dynamic>>>('routes');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

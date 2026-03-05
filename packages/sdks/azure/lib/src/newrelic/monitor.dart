@@ -391,41 +391,30 @@ import 'monitor_user.dart';
 class Monitor extends pulumi.CustomResource {
   /// Specifies the source of account creation. Possible values are `LIFTR` and `NEWRELIC`. Defaults to `LIFTR`. Changing this forces a new Azure Native New Relic Monitor to be created.
   late final pulumi.Output<String?> accountCreationSource;
-
   /// Specifies the account id. Changing this forces a new Azure Native New Relic Monitor to be created.
   ///
   /// &gt; **Note:** The value of `account_id` must come from an Azure Native New Relic Monitor instance of another different subscription.
   late final pulumi.Output<String> accountId;
-
   /// An `identity` block as defined below. Changing this forces a new Azure Native New Relic Monitor to be created.
   late final pulumi.Output<MonitorIdentity?> identity;
-
   /// Specifies the ingestion key of account. Changing this forces a new Azure Native New Relic Monitor to be created.
   late final pulumi.Output<String?> ingestionKey;
-
   /// Specifies the Azure Region where the Azure Native New Relic Monitor should exist. Changing this forces a new Azure Native New Relic Monitor to be created.
   late final pulumi.Output<String> location;
-
   /// Specifies the name which should be used for this Azure Native New Relic Monitor. Changing this forces a new Azure Native New Relic Monitor to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies the source of org creation. Possible values are `LIFTR` and `NEWRELIC`. Defaults to `LIFTR`. Changing this forces a new Azure Native New Relic Monitor to be created.
   late final pulumi.Output<String?> orgCreationSource;
-
   /// Specifies the organization id. Changing this forces a new Azure Native New Relic Monitor to be created.
   ///
   /// &gt; **Note:** The value of `organization_id` must come from an Azure Native New Relic Monitor instance of another different subscription.
   late final pulumi.Output<String> organizationId;
-
   /// A `plan` block as defined below. Changing this forces a new Azure Native New Relic Monitor to be created.
   late final pulumi.Output<MonitorPlan> plan;
-
   /// Specifies the name of the Resource Group where the Azure Native New Relic Monitor should exist. Changing this forces a new Azure Native New Relic Monitor to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A `user` block as defined below. Changing this forces a new Azure Native New Relic Monitor to be created.
   late final pulumi.Output<MonitorUser> user;
-
   /// Specifies the user id. Changing this forces a new Azure Native New Relic Monitor to be created.
   late final pulumi.Output<String?> userId;
 
@@ -438,49 +427,22 @@ class Monitor extends pulumi.CustomResource {
     MonitorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:newrelic/monitor:Monitor',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:newrelic/monitor:Monitor',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountCreationSource = registerOutput<String?>('accountCreationSource');
     accountId = registerOutput<String>('accountId');
-    identity = registerOutput<MonitorIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MonitorIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<MonitorIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MonitorIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ingestionKey = registerOutput<String?>('ingestionKey');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     orgCreationSource = registerOutput<String?>('orgCreationSource');
     organizationId = registerOutput<String>('organizationId');
-    plan = registerOutput<MonitorPlan>(
-      'plan',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MonitorPlan.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    plan = registerOutput<MonitorPlan>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MonitorPlan.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    user = registerOutput<MonitorUser>(
-      'user',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MonitorUser.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    user = registerOutput<MonitorUser>('user', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MonitorUser.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     userId = registerOutput<String?>('userId');
   }
 
@@ -502,49 +464,22 @@ class Monitor extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:newrelic/monitor:Monitor',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:newrelic/monitor:Monitor',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountCreationSource = registerOutput<String?>('accountCreationSource');
     accountId = registerOutput<String>('accountId');
-    identity = registerOutput<MonitorIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MonitorIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<MonitorIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MonitorIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ingestionKey = registerOutput<String?>('ingestionKey');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     orgCreationSource = registerOutput<String?>('orgCreationSource');
     organizationId = registerOutput<String>('organizationId');
-    plan = registerOutput<MonitorPlan>(
-      'plan',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MonitorPlan.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    plan = registerOutput<MonitorPlan>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MonitorPlan.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    user = registerOutput<MonitorUser>(
-      'user',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MonitorUser.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    user = registerOutput<MonitorUser>('user', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MonitorUser.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     userId = registerOutput<String?>('userId');
   }
 }

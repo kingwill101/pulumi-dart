@@ -7,16 +7,12 @@ import 'attestor_attestation_authority_note.dart';
 class AttestorState {
   /// A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
   /// Structure is documented below.
-  final pulumi.Input<AttestorAttestationAuthorityNote>?
-  attestationAuthorityNote;
-
+  final pulumi.Input<AttestorAttestationAuthorityNote>? attestationAuthorityNote;
   /// A descriptive comment. This field may be updated. The field may be
   /// displayed in chooser dialogs.
   final pulumi.Input<String>? description;
-
   /// The resource name.
   final pulumi.Input<String>? name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -35,11 +31,7 @@ class AttestorState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attestationAuthorityNote':
-          ?pulumi.Input.mapOptionalInputValue<
-            AttestorAttestationAuthorityNote,
-            Map<String, dynamic>
-          >(attestationAuthorityNote, (value) => value.toMap()),
+      'attestationAuthorityNote': ?pulumi.Input.mapOptionalInputValue<AttestorAttestationAuthorityNote, Map<String, dynamic>>(attestationAuthorityNote, (value) => value.toMap()),
       'description': ?description,
       'name': ?name,
       'project': ?project,
@@ -48,30 +40,11 @@ class AttestorState {
 
   factory AttestorState.fromMap(Map<String, dynamic> map) {
     return AttestorState(
-      attestationAuthorityNote: (() {
-        final guardedValue = map['attestationAuthorityNote'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AttestorAttestationAuthorityNote.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      attestationAuthorityNote: (() { final guardedValue = map['attestationAuthorityNote']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AttestorAttestationAuthorityNote.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

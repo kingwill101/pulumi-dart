@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFlowLogArgs {
   /// The name of the flow log resource.
   final pulumi.Input<String> flowLogName;
-
   /// The name of the network watcher.
   final pulumi.Input<String> networkWatcherName;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -37,12 +35,9 @@ class GetFlowLogArgs {
   factory GetFlowLogArgs.fromMap(Map<String, dynamic> map) {
     return GetFlowLogArgs(
       flowLogName: pulumi.Input.fromValue(map['flowLogName'] as String),
-      networkWatcherName: pulumi.Input.fromValue(
-        map['networkWatcherName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      networkWatcherName: pulumi.Input.fromValue(map['networkWatcherName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

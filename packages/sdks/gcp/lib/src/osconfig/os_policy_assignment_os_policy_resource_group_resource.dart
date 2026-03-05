@@ -10,11 +10,9 @@ class OsPolicyAssignmentOsPolicyResourceGroupResource {
   /// Exec resource Structure is
   /// documented below.
   final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourceExec>? exec;
-
   /// File resource Structure is
   /// documented below.
   final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourceFile>? file;
-
   /// The id of the resource with the following restrictions:
   ///
   /// *   Must contain only lowercase letters, numbers, and hyphens.
@@ -23,15 +21,12 @@ class OsPolicyAssignmentOsPolicyResourceGroupResource {
   /// *   Must end with a number or a letter.
   /// *   Must be unique within the OS policy.
   final pulumi.Input<String> id;
-
   /// Package resource Structure is
   /// documented below.
   final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourcePkg>? pkg;
-
   /// Package repository resource Structure is
   /// documented below.
-  final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourceRepository>?
-  repository;
+  final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourceRepository>? repository;
 
   /// Creates a new [OsPolicyAssignmentOsPolicyResourceGroupResource].
   /// [exec] Exec resource Structure is
@@ -49,71 +44,22 @@ class OsPolicyAssignmentOsPolicyResourceGroupResource {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'exec':
-          ?pulumi.Input.mapOptionalInputValue<
-            OsPolicyAssignmentOsPolicyResourceGroupResourceExec,
-            Map<String, dynamic>
-          >(exec, (value) => value.toMap()),
-      'file':
-          ?pulumi.Input.mapOptionalInputValue<
-            OsPolicyAssignmentOsPolicyResourceGroupResourceFile,
-            Map<String, dynamic>
-          >(file, (value) => value.toMap()),
+      'exec': ?pulumi.Input.mapOptionalInputValue<OsPolicyAssignmentOsPolicyResourceGroupResourceExec, Map<String, dynamic>>(exec, (value) => value.toMap()),
+      'file': ?pulumi.Input.mapOptionalInputValue<OsPolicyAssignmentOsPolicyResourceGroupResourceFile, Map<String, dynamic>>(file, (value) => value.toMap()),
       'id': id,
-      'pkg':
-          ?pulumi.Input.mapOptionalInputValue<
-            OsPolicyAssignmentOsPolicyResourceGroupResourcePkg,
-            Map<String, dynamic>
-          >(pkg, (value) => value.toMap()),
-      'repository':
-          ?pulumi.Input.mapOptionalInputValue<
-            OsPolicyAssignmentOsPolicyResourceGroupResourceRepository,
-            Map<String, dynamic>
-          >(repository, (value) => value.toMap()),
+      'pkg': ?pulumi.Input.mapOptionalInputValue<OsPolicyAssignmentOsPolicyResourceGroupResourcePkg, Map<String, dynamic>>(pkg, (value) => value.toMap()),
+      'repository': ?pulumi.Input.mapOptionalInputValue<OsPolicyAssignmentOsPolicyResourceGroupResourceRepository, Map<String, dynamic>>(repository, (value) => value.toMap()),
     };
   }
 
-  factory OsPolicyAssignmentOsPolicyResourceGroupResource.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OsPolicyAssignmentOsPolicyResourceGroupResource.fromMap(Map<String, dynamic> map) {
     return OsPolicyAssignmentOsPolicyResourceGroupResource(
-      exec: (() {
-        final guardedValue = map['exec'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          OsPolicyAssignmentOsPolicyResourceGroupResourceExec.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      file: (() {
-        final guardedValue = map['file'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          OsPolicyAssignmentOsPolicyResourceGroupResourceFile.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      exec: (() { final guardedValue = map['exec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OsPolicyAssignmentOsPolicyResourceGroupResourceExec.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      file: (() { final guardedValue = map['file']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OsPolicyAssignmentOsPolicyResourceGroupResourceFile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       id: pulumi.Input.fromValue(map['id'] as String),
-      pkg: (() {
-        final guardedValue = map['pkg'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          OsPolicyAssignmentOsPolicyResourceGroupResourcePkg.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      repository: (() {
-        final guardedValue = map['repository'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          OsPolicyAssignmentOsPolicyResourceGroupResourceRepository.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      pkg: (() { final guardedValue = map['pkg']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OsPolicyAssignmentOsPolicyResourceGroupResourcePkg.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      repository: (() { final guardedValue = map['repository']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OsPolicyAssignmentOsPolicyResourceGroupResourceRepository.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

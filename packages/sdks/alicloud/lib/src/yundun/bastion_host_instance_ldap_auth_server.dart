@@ -65,48 +65,17 @@ class BastionHostInstanceLdapAuthServer {
     return BastionHostInstanceLdapAuthServer(
       account: pulumi.Input.fromValue(map['account'] as String),
       baseDn: pulumi.Input.fromValue(map['baseDn'] as String),
-      emailMapping: (() {
-        final guardedValue = map['emailMapping'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      filter: (() {
-        final guardedValue = map['filter'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      isSsl: (() {
-        final guardedValue = map['isSsl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      loginNameMapping: (() {
-        final guardedValue = map['loginNameMapping'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      mobileMapping: (() {
-        final guardedValue = map['mobileMapping'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      nameMapping: (() {
-        final guardedValue = map['nameMapping'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      password: (() {
-        final guardedValue = map['password'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      emailMapping: (() { final guardedValue = map['emailMapping']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      isSsl: (() { final guardedValue = map['isSsl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      loginNameMapping: (() { final guardedValue = map['loginNameMapping']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      mobileMapping: (() { final guardedValue = map['mobileMapping']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nameMapping: (() { final guardedValue = map['nameMapping']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       port: pulumi.Input.fromValue(map['port'] as int),
       server: pulumi.Input.fromValue(map['server'] as String),
-      standbyServer: (() {
-        final guardedValue = map['standbyServer'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      standbyServer: (() { final guardedValue = map['standbyServer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

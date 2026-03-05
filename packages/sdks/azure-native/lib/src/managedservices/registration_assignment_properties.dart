@@ -9,7 +9,9 @@ class RegistrationAssignmentProperties {
 
   /// Creates a new [RegistrationAssignmentProperties].
   /// [registrationDefinitionId] The fully qualified path of the registration definition.
-  RegistrationAssignmentProperties({required this.registrationDefinitionId});
+  RegistrationAssignmentProperties({
+    required this.registrationDefinitionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,9 +21,8 @@ class RegistrationAssignmentProperties {
 
   factory RegistrationAssignmentProperties.fromMap(Map<String, dynamic> map) {
     return RegistrationAssignmentProperties(
-      registrationDefinitionId: pulumi.Input.fromValue(
-        map['registrationDefinitionId'] as String,
-      ),
+      registrationDefinitionId: pulumi.Input.fromValue(map['registrationDefinitionId'] as String),
     );
   }
 }
+

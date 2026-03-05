@@ -7,11 +7,9 @@ class AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfig {
   /// to, e.g., "my-internal-domain.corp.".
   /// Must end with a dot.
   final pulumi.Input<String> domain;
-
   /// Required. The VPC network name in the targetProject
   /// where the DNS zone specified by 'domain' is visible.
   final pulumi.Input<String> targetNetwork;
-
   /// Required. The project id hosting the Cloud DNS managed
   /// zone that contains the 'domain'.
   /// The Vertex AI service Agent requires the dns.peer role
@@ -36,9 +34,7 @@ class AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfig {
     };
   }
 
-  factory AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfig.fromMap(Map<String, dynamic> map) {
     return AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfig(
       domain: pulumi.Input.fromValue(map['domain'] as String),
       targetNetwork: pulumi.Input.fromValue(map['targetNetwork'] as String),
@@ -46,3 +42,4 @@ class AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfig {
     );
   }
 }
+

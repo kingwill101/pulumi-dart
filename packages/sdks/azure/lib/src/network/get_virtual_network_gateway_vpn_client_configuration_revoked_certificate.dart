@@ -16,15 +16,17 @@ class GetVirtualNetworkGatewayVpnClientConfigurationRevokedCertificate {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'thumbprint': thumbprint};
+    return <String, dynamic>{
+      'name': name,
+      'thumbprint': thumbprint,
+    };
   }
 
-  factory GetVirtualNetworkGatewayVpnClientConfigurationRevokedCertificate.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetVirtualNetworkGatewayVpnClientConfigurationRevokedCertificate.fromMap(Map<String, dynamic> map) {
     return GetVirtualNetworkGatewayVpnClientConfigurationRevokedCertificate(
       name: pulumi.Input.fromValue(map['name'] as String),
       thumbprint: pulumi.Input.fromValue(map['thumbprint'] as String),
     );
   }
 }
+

@@ -8,19 +8,20 @@ class EventTargetDeadLetterConfig {
 
   /// Creates a new [EventTargetDeadLetterConfig].
   /// [arn] ARN of the SQS queue specified as the target for the dead-letter queue.
-  EventTargetDeadLetterConfig({this.arn});
+  EventTargetDeadLetterConfig({
+    this.arn,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'arn': ?arn};
+    return <String, dynamic>{
+      'arn': ?arn,
+    };
   }
 
   factory EventTargetDeadLetterConfig.fromMap(Map<String, dynamic> map) {
     return EventTargetDeadLetterConfig(
-      arn: (() {
-        final guardedValue = map['arn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

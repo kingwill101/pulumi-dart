@@ -146,28 +146,20 @@ import 'server_key_args.dart';
 class ServerKey extends pulumi.CustomResource {
   /// Key auto rotation opt-in flag. Either true or false.
   late final pulumi.Output<bool> autoRotationEnabled;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The server key creation date.
   late final pulumi.Output<String> creationDate;
-
   /// Kind of encryption protector. This is metadata used for the Azure portal experience.
   late final pulumi.Output<String> kind;
-
   /// Resource location.
   late final pulumi.Output<String> location;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// Subregion of the server key.
   late final pulumi.Output<String> subregion;
-
   /// Thumbprint of the server key.
   late final pulumi.Output<String> thumbprint;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -180,11 +172,11 @@ class ServerKey extends pulumi.CustomResource {
     ServerKeyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:sql:ServerKey',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:sql:ServerKey',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoRotationEnabled = registerOutput<bool>('autoRotationEnabled');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     creationDate = registerOutput<String>('creationDate');

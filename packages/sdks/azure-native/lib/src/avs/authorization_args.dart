@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AuthorizationArgs {
   /// Name of the ExpressRoute Circuit Authorization
   final pulumi.Input<String>? authorizationName;
-
   /// The ID of the ExpressRoute Circuit
   final pulumi.Input<String>? expressRouteId;
-
   /// Name of the private cloud
   final pulumi.Input<String> privateCloudName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -42,22 +39,11 @@ class AuthorizationArgs {
 
   factory AuthorizationArgs.fromMap(Map<String, dynamic> map) {
     return AuthorizationArgs(
-      authorizationName: (() {
-        final guardedValue = map['authorizationName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      expressRouteId: (() {
-        final guardedValue = map['expressRouteId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      privateCloudName: pulumi.Input.fromValue(
-        map['privateCloudName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      authorizationName: (() { final guardedValue = map['authorizationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      expressRouteId: (() { final guardedValue = map['expressRouteId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateCloudName: pulumi.Input.fromValue(map['privateCloudName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

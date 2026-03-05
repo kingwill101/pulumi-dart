@@ -12,10 +12,14 @@ class GetAccountDeletionCheckTaskArgs {
 
   /// Creates a new [GetAccountDeletionCheckTaskArgs].
   /// [accountId] The ID of the member that you want to delete.
-  GetAccountDeletionCheckTaskArgs({required this.accountId});
+  GetAccountDeletionCheckTaskArgs({
+    required this.accountId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'accountId': accountId};
+    return <String, dynamic>{
+      'accountId': accountId,
+    };
   }
 
   factory GetAccountDeletionCheckTaskArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetAccountDeletionCheckTaskArgs {
     );
   }
 }
+

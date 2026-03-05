@@ -13,35 +13,24 @@ import 'event_grid_topic_input_mapping_fields.dart';
 class EventGridTopicArgs {
   /// An `identity` block as defined below.
   final pulumi.Input<EventGridTopicIdentity>? identity;
-
   /// One or more `inbound_ip_rule` blocks as defined below.
   final pulumi.Input<List<EventGridTopicInboundIpRule>>? inboundIpRules;
-
   /// A `input_mapping_default_values` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<EventGridTopicInputMappingDefaultValues>?
-  inputMappingDefaultValues;
-
+  final pulumi.Input<EventGridTopicInputMappingDefaultValues>? inputMappingDefaultValues;
   /// A `input_mapping_fields` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<EventGridTopicInputMappingFields>? inputMappingFields;
-
   /// Specifies the schema in which incoming events will be published to this domain. Allowed values are `CloudEventSchemaV1_0`, `CustomEventSchema`, or `EventGridSchema`. Defaults to `EventGridSchema`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? inputSchema;
-
   /// Whether local authentication methods is enabled for the EventGrid Topic. Defaults to `true`.
   final pulumi.Input<bool>? localAuthEnabled;
-
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
-
   /// Specifies the name of the EventGrid Topic resource. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// Whether or not public network access is allowed for this server. Defaults to `true`.
   final pulumi.Input<bool>? publicNetworkAccessEnabled;
-
   /// The name of the resource group in which the EventGrid Topic exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
-
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -73,33 +62,10 @@ class EventGridTopicArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'identity':
-          ?pulumi.Input.mapOptionalInputValue<
-            EventGridTopicIdentity,
-            Map<String, dynamic>
-          >(identity, (value) => value.toMap()),
-      'inboundIpRules':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<EventGridTopicInboundIpRule>,
-            List<Map<String, dynamic>>
-          >(
-            inboundIpRules,
-            (value) =>
-                pulumi.Input.encodeList<
-                  EventGridTopicInboundIpRule,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'inputMappingDefaultValues':
-          ?pulumi.Input.mapOptionalInputValue<
-            EventGridTopicInputMappingDefaultValues,
-            Map<String, dynamic>
-          >(inputMappingDefaultValues, (value) => value.toMap()),
-      'inputMappingFields':
-          ?pulumi.Input.mapOptionalInputValue<
-            EventGridTopicInputMappingFields,
-            Map<String, dynamic>
-          >(inputMappingFields, (value) => value.toMap()),
+      'identity': ?pulumi.Input.mapOptionalInputValue<EventGridTopicIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'inboundIpRules': ?pulumi.Input.mapOptionalInputValue<List<EventGridTopicInboundIpRule>, List<Map<String, dynamic>>>(inboundIpRules, (value) => pulumi.Input.encodeList<EventGridTopicInboundIpRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'inputMappingDefaultValues': ?pulumi.Input.mapOptionalInputValue<EventGridTopicInputMappingDefaultValues, Map<String, dynamic>>(inputMappingDefaultValues, (value) => value.toMap()),
+      'inputMappingFields': ?pulumi.Input.mapOptionalInputValue<EventGridTopicInputMappingFields, Map<String, dynamic>>(inputMappingFields, (value) => value.toMap()),
       'inputSchema': ?inputSchema,
       'localAuthEnabled': ?localAuthEnabled,
       'location': ?location,
@@ -112,80 +78,18 @@ class EventGridTopicArgs {
 
   factory EventGridTopicArgs.fromMap(Map<String, dynamic> map) {
     return EventGridTopicArgs(
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          EventGridTopicIdentity.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      inboundIpRules: (() {
-        final guardedValue = map['inboundIpRules'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<EventGridTopicInboundIpRule>(
-            guardedValue,
-            (value) => EventGridTopicInboundIpRule.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      inputMappingDefaultValues: (() {
-        final guardedValue = map['inputMappingDefaultValues'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          EventGridTopicInputMappingDefaultValues.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      inputMappingFields: (() {
-        final guardedValue = map['inputMappingFields'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          EventGridTopicInputMappingFields.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      inputSchema: (() {
-        final guardedValue = map['inputSchema'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      localAuthEnabled: (() {
-        final guardedValue = map['localAuthEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      publicNetworkAccessEnabled: (() {
-        final guardedValue = map['publicNetworkAccessEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EventGridTopicIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      inboundIpRules: (() { final guardedValue = map['inboundIpRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EventGridTopicInboundIpRule>(guardedValue, (value) => EventGridTopicInboundIpRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      inputMappingDefaultValues: (() { final guardedValue = map['inputMappingDefaultValues']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EventGridTopicInputMappingDefaultValues.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      inputMappingFields: (() { final guardedValue = map['inputMappingFields']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EventGridTopicInputMappingFields.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      inputSchema: (() { final guardedValue = map['inputSchema']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      localAuthEnabled: (() { final guardedValue = map['localAuthEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicNetworkAccessEnabled: (() { final guardedValue = map['publicNetworkAccessEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

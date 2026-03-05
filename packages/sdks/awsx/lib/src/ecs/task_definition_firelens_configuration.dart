@@ -9,26 +9,23 @@ class TaskDefinitionFirelensConfiguration {
   /// Creates a new [TaskDefinitionFirelensConfiguration].
   /// [options] Optional.
   /// [type] Optional.
-  TaskDefinitionFirelensConfiguration({this.options, this.type});
+  TaskDefinitionFirelensConfiguration({
+    this.options,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'options': ?options, 'type': ?type};
+    return <String, dynamic>{
+      'options': ?options,
+      'type': ?type,
+    };
   }
 
-  factory TaskDefinitionFirelensConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory TaskDefinitionFirelensConfiguration.fromMap(Map<String, dynamic> map) {
     return TaskDefinitionFirelensConfiguration(
-      options: (() {
-        final guardedValue = map['options'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      options: (() { final guardedValue = map['options']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

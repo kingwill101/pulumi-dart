@@ -7,19 +7,20 @@ class RuleRuleActionRemoveHeaderConfig {
 
   /// Creates a new [RuleRuleActionRemoveHeaderConfig].
   /// [key] Optional.
-  RuleRuleActionRemoveHeaderConfig({this.key});
+  RuleRuleActionRemoveHeaderConfig({
+    this.key,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': ?key};
+    return <String, dynamic>{
+      'key': ?key,
+    };
   }
 
   factory RuleRuleActionRemoveHeaderConfig.fromMap(Map<String, dynamic> map) {
     return RuleRuleActionRemoveHeaderConfig(
-      key: (() {
-        final guardedValue = map['key'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

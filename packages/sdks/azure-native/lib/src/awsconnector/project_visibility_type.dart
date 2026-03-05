@@ -15,3 +15,4 @@ enum ProjectVisibilityType {
     throw ArgumentError('Unknown ProjectVisibilityType value: $value');
   }
 }
+

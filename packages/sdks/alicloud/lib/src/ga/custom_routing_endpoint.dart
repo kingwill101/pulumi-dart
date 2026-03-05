@@ -502,28 +502,21 @@ import 'custom_routing_endpoint_state.dart';
 class CustomRoutingEndpoint extends pulumi.CustomResource {
   /// The ID of the GA instance with which the endpoint is associated.
   late final pulumi.Output<String> acceleratorId;
-
   /// The ID of the Custom Routing Endpoint.
   late final pulumi.Output<String> customRoutingEndpointId;
-
   /// The ID of the endpoint (vSwitch).
   late final pulumi.Output<String> endpoint;
-
   /// The ID of the endpoint group in which to create endpoints.
   late final pulumi.Output<String> endpointGroupId;
-
   /// The ID of the listener with which the endpoint is associated.
   late final pulumi.Output<String> listenerId;
-
   /// The status of the Custom Routing Endpoint.
   late final pulumi.Output<String> status;
-
   /// The access policy of traffic to the endpoint. Default value: `DenyAll`. Valid values:
   /// - `DenyAll`: denies all traffic to the endpoint.
   /// - `AllowAll`: allows all traffic to the endpoint.
   /// - `AllowCustom`: allows traffic only to specified destinations in the endpoint.
   late final pulumi.Output<String> trafficToEndpointPolicy;
-
   /// The backend service type of the endpoint. Valid values: `PrivateSubNet`.
   late final pulumi.Output<String> type;
 
@@ -536,11 +529,11 @@ class CustomRoutingEndpoint extends pulumi.CustomResource {
     CustomRoutingEndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ga/customRoutingEndpoint:CustomRoutingEndpoint',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ga/customRoutingEndpoint:CustomRoutingEndpoint',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     acceleratorId = registerOutput<String>('acceleratorId');
     customRoutingEndpointId = registerOutput<String>('customRoutingEndpointId');
     endpoint = registerOutput<String>('endpoint');
@@ -569,11 +562,11 @@ class CustomRoutingEndpoint extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ga/customRoutingEndpoint:CustomRoutingEndpoint',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ga/customRoutingEndpoint:CustomRoutingEndpoint',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     acceleratorId = registerOutput<String>('acceleratorId');
     customRoutingEndpointId = registerOutput<String>('customRoutingEndpointId');
     endpoint = registerOutput<String>('endpoint');

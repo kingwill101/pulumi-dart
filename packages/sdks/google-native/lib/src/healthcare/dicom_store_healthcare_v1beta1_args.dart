@@ -10,24 +10,18 @@ import 'notification_config_healthcare_v1beta1.dart';
 /// {@macro pulumi_healthcare_v1beta1_dicom_store_healthcare_v1beta1_args_doc}
 class DicomStoreHealthcareV1beta1Args {
   final pulumi.Input<String> datasetId;
-
   /// The ID of the DICOM store that is being created. Any string value up to 256 characters in length.
   final pulumi.Input<String>? dicomStoreId;
-
   /// User-supplied key-value pairs used to organize DICOM stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
   final pulumi.Input<Map<String, String>>? labels;
   final pulumi.Input<String>? location;
-
   /// Resource name of the DICOM store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
   final pulumi.Input<String>? name;
-
   /// Notification destination for new DICOM instances. Supplied by the client.
   final pulumi.Input<NotificationConfigHealthcareV1beta1>? notificationConfig;
   final pulumi.Input<String>? project;
-
   /// Optional. A list of streaming configs used to configure the destination of streaming exports for every DICOM instance insertion in this DICOM store. After a new config is added to `stream_configs`, DICOM instance insertions are streamed to the new destination. When a config is removed from `stream_configs`, the server stops streaming to that destination. Each config must contain a unique destination.
-  final pulumi.Input<List<GoogleCloudHealthcareV1beta1DicomStreamConfig>>?
-  streamConfigs;
+  final pulumi.Input<List<GoogleCloudHealthcareV1beta1DicomStreamConfig>>? streamConfigs;
 
   /// Creates a new [DicomStoreHealthcareV1beta1Args].
   /// [datasetId] Required.
@@ -56,79 +50,23 @@ class DicomStoreHealthcareV1beta1Args {
       'labels': ?labels,
       'location': ?location,
       'name': ?name,
-      'notificationConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            NotificationConfigHealthcareV1beta1,
-            Map<String, dynamic>
-          >(notificationConfig, (value) => value.toMap()),
+      'notificationConfig': ?pulumi.Input.mapOptionalInputValue<NotificationConfigHealthcareV1beta1, Map<String, dynamic>>(notificationConfig, (value) => value.toMap()),
       'project': ?project,
-      'streamConfigs':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GoogleCloudHealthcareV1beta1DicomStreamConfig>,
-            List<Map<String, dynamic>>
-          >(
-            streamConfigs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GoogleCloudHealthcareV1beta1DicomStreamConfig,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'streamConfigs': ?pulumi.Input.mapOptionalInputValue<List<GoogleCloudHealthcareV1beta1DicomStreamConfig>, List<Map<String, dynamic>>>(streamConfigs, (value) => pulumi.Input.encodeList<GoogleCloudHealthcareV1beta1DicomStreamConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DicomStoreHealthcareV1beta1Args.fromMap(Map<String, dynamic> map) {
     return DicomStoreHealthcareV1beta1Args(
       datasetId: pulumi.Input.fromValue(map['datasetId'] as String),
-      dicomStoreId: (() {
-        final guardedValue = map['dicomStoreId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      notificationConfig: (() {
-        final guardedValue = map['notificationConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          NotificationConfigHealthcareV1beta1.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      streamConfigs: (() {
-        final guardedValue = map['streamConfigs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi
-              .Input.decodeList<GoogleCloudHealthcareV1beta1DicomStreamConfig>(
-            guardedValue,
-            (value) => GoogleCloudHealthcareV1beta1DicomStreamConfig.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      dicomStoreId: (() { final guardedValue = map['dicomStoreId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      notificationConfig: (() { final guardedValue = map['notificationConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NotificationConfigHealthcareV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      streamConfigs: (() { final guardedValue = map['streamConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudHealthcareV1beta1DicomStreamConfig>(guardedValue, (value) => GoogleCloudHealthcareV1beta1DicomStreamConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

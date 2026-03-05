@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCustomRolloutArgs {
   /// The name of the resource provider hosted within ProviderHub.
   final pulumi.Input<String> providerNamespace;
-
   /// The rollout name.
   final pulumi.Input<String> rolloutName;
 
@@ -30,10 +29,9 @@ class GetCustomRolloutArgs {
 
   factory GetCustomRolloutArgs.fromMap(Map<String, dynamic> map) {
     return GetCustomRolloutArgs(
-      providerNamespace: pulumi.Input.fromValue(
-        map['providerNamespace'] as String,
-      ),
+      providerNamespace: pulumi.Input.fromValue(map['providerNamespace'] as String),
       rolloutName: pulumi.Input.fromValue(map['rolloutName'] as String),
     );
   }
 }
+

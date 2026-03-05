@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConsumerImageShareGroupTokenArgs {
   /// A label for the token.
   final pulumi.Input<String>? label;
-
   /// The UUID of the Image Share Group for which to create a token.
   final pulumi.Input<String> validForSharegroupUuid;
 
@@ -30,14 +29,9 @@ class ConsumerImageShareGroupTokenArgs {
 
   factory ConsumerImageShareGroupTokenArgs.fromMap(Map<String, dynamic> map) {
     return ConsumerImageShareGroupTokenArgs(
-      label: (() {
-        final guardedValue = map['label'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      validForSharegroupUuid: pulumi.Input.fromValue(
-        map['validForSharegroupUuid'] as String,
-      ),
+      label: (() { final guardedValue = map['label']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      validForSharegroupUuid: pulumi.Input.fromValue(map['validForSharegroupUuid'] as String),
     );
   }
 }
+

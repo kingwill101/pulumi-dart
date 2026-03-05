@@ -8,22 +8,20 @@ class OpenApiValidationResponse {
 
   /// Creates a new [OpenApiValidationResponse].
   /// [allowNoncompliantCollectionResponse] Indicates whether a non compliance response is allowed for a LIST call
-  OpenApiValidationResponse({this.allowNoncompliantCollectionResponse});
+  OpenApiValidationResponse({
+    this.allowNoncompliantCollectionResponse,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allowNoncompliantCollectionResponse':
-          ?allowNoncompliantCollectionResponse,
+      'allowNoncompliantCollectionResponse': ?allowNoncompliantCollectionResponse,
     };
   }
 
   factory OpenApiValidationResponse.fromMap(Map<String, dynamic> map) {
     return OpenApiValidationResponse(
-      allowNoncompliantCollectionResponse: (() {
-        final guardedValue = map['allowNoncompliantCollectionResponse'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      allowNoncompliantCollectionResponse: (() { final guardedValue = map['allowNoncompliantCollectionResponse']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

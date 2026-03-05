@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AWSV4Signature {
   /// The access key used for s3 bucket authentication. Required for updating or creating a backend that uses AWS v4 signature authentication, but will not be returned as part of the configuration when queried with a REST API GET request. @InputOnly
   final pulumi.Input<String>? accessKey;
-
   /// The identifier of an access key used for s3 bucket authentication.
   final pulumi.Input<String>? accessKeyId;
-
   /// The optional version identifier for the access key. You can use this to keep track of different iterations of your access key.
   final pulumi.Input<String>? accessKeyVersion;
-
   /// The name of the cloud region of your origin. This is a free-form field with the name of the region your cloud uses to host your origin. For example, "us-east-1" for AWS or "us-ashburn-1" for OCI.
   final pulumi.Input<String>? originRegion;
 
@@ -39,26 +36,11 @@ class AWSV4Signature {
 
   factory AWSV4Signature.fromMap(Map<String, dynamic> map) {
     return AWSV4Signature(
-      accessKey: (() {
-        final guardedValue = map['accessKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      accessKeyId: (() {
-        final guardedValue = map['accessKeyId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      accessKeyVersion: (() {
-        final guardedValue = map['accessKeyVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      originRegion: (() {
-        final guardedValue = map['originRegion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accessKey: (() { final guardedValue = map['accessKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      accessKeyId: (() { final guardedValue = map['accessKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      accessKeyVersion: (() { final guardedValue = map['accessKeyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      originRegion: (() { final guardedValue = map['originRegion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

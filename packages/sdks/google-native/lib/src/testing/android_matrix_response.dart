@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AndroidMatrixResponse {
   /// The ids of the set of Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
   final pulumi.Input<List<String>> androidModelIds;
-
   /// The ids of the set of Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
   final pulumi.Input<List<String>> androidVersionIds;
-
   /// The set of locales the test device will enable for testing. Use the TestEnvironmentDiscoveryService to get supported options.
   final pulumi.Input<List<String>> locales;
-
   /// The set of orientations to test with. Use the TestEnvironmentDiscoveryService to get supported options.
   final pulumi.Input<List<String>> orientations;
 
@@ -39,16 +36,11 @@ class AndroidMatrixResponse {
 
   factory AndroidMatrixResponse.fromMap(Map<String, dynamic> map) {
     return AndroidMatrixResponse(
-      androidModelIds: pulumi.Input.fromValue(
-        (map['androidModelIds'] as List).cast<String>(),
-      ),
-      androidVersionIds: pulumi.Input.fromValue(
-        (map['androidVersionIds'] as List).cast<String>(),
-      ),
+      androidModelIds: pulumi.Input.fromValue((map['androidModelIds'] as List).cast<String>()),
+      androidVersionIds: pulumi.Input.fromValue((map['androidVersionIds'] as List).cast<String>()),
       locales: pulumi.Input.fromValue((map['locales'] as List).cast<String>()),
-      orientations: pulumi.Input.fromValue(
-        (map['orientations'] as List).cast<String>(),
-      ),
+      orientations: pulumi.Input.fromValue((map['orientations'] as List).cast<String>()),
     );
   }
 }
+

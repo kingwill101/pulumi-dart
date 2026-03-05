@@ -17,3 +17,4 @@ enum BastionHostSkuName {
     throw ArgumentError('Unknown BastionHostSkuName value: $value');
   }
 }
+

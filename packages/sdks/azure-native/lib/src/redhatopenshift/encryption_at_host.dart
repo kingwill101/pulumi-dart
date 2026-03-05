@@ -15,3 +15,4 @@ enum EncryptionAtHost {
     throw ArgumentError('Unknown EncryptionAtHost value: $value');
   }
 }
+

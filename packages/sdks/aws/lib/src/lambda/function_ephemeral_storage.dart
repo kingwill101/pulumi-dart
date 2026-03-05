@@ -8,19 +8,20 @@ class FunctionEphemeralStorage {
 
   /// Creates a new [FunctionEphemeralStorage].
   /// [size] Amount of ephemeral storage (`/tmp`) in MB. Valid between 512 MB and 10,240 MB (10 GB).
-  FunctionEphemeralStorage({this.size});
+  FunctionEphemeralStorage({
+    this.size,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'size': ?size};
+    return <String, dynamic>{
+      'size': ?size,
+    };
   }
 
   factory FunctionEphemeralStorage.fromMap(Map<String, dynamic> map) {
     return FunctionEphemeralStorage(
-      size: (() {
-        final guardedValue = map['size'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

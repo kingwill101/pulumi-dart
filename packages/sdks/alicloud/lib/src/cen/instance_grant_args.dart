@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceGrantArgs {
   /// The ID of the CEN.
   final pulumi.Input<String> cenId;
-
   /// The owner UID of the  CEN which the child instance granted to.
   final pulumi.Input<String> cenOwnerId;
-
   /// The ID of the child instance to grant.
   final pulumi.Input<String> childInstanceId;
 
@@ -42,3 +40,4 @@ class InstanceGrantArgs {
     );
   }
 }
+

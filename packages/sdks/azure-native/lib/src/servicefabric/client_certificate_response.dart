@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClientCertificateResponse {
   /// Certificate common name.
   final pulumi.Input<String>? commonName;
-
   /// Indicates if the client certificate has admin access to the cluster. Non admin clients can perform only read only operations on the cluster.
   final pulumi.Input<bool> isAdmin;
-
   /// Issuer thumbprint for the certificate. Only used together with CommonName.
   final pulumi.Input<String>? issuerThumbprint;
-
   /// Certificate thumbprint.
   final pulumi.Input<String>? thumbprint;
 
@@ -39,22 +36,11 @@ class ClientCertificateResponse {
 
   factory ClientCertificateResponse.fromMap(Map<String, dynamic> map) {
     return ClientCertificateResponse(
-      commonName: (() {
-        final guardedValue = map['commonName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      commonName: (() { final guardedValue = map['commonName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       isAdmin: pulumi.Input.fromValue(map['isAdmin'] as bool),
-      issuerThumbprint: (() {
-        final guardedValue = map['issuerThumbprint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      thumbprint: (() {
-        final guardedValue = map['thumbprint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      issuerThumbprint: (() { final guardedValue = map['issuerThumbprint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      thumbprint: (() { final guardedValue = map['thumbprint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataProviderResponseAnalyticshubV1beta1 {
   /// Optional. Name of the data provider.
   final pulumi.Input<String> name;
-
   /// Optional. Email or URL of the data provider. Max Length: 1000 bytes.
   final pulumi.Input<String> primaryContact;
 
@@ -19,15 +18,17 @@ class DataProviderResponseAnalyticshubV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'primaryContact': primaryContact};
+    return <String, dynamic>{
+      'name': name,
+      'primaryContact': primaryContact,
+    };
   }
 
-  factory DataProviderResponseAnalyticshubV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DataProviderResponseAnalyticshubV1beta1.fromMap(Map<String, dynamic> map) {
     return DataProviderResponseAnalyticshubV1beta1(
       name: pulumi.Input.fromValue(map['name'] as String),
       primaryContact: pulumi.Input.fromValue(map['primaryContact'] as String),
     );
   }
 }
+

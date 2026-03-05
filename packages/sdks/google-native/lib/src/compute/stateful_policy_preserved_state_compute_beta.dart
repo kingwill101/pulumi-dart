@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StatefulPolicyPreservedStateComputeBeta {
   /// Disks created on the instances that will be preserved on instance delete, update, etc. This map is keyed with the device names of the disks.
   final pulumi.Input<Map<String, String>>? disks;
-
   /// External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
   final pulumi.Input<Map<String, String>>? externalIPs;
-
   /// Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
   final pulumi.Input<Map<String, String>>? internalIPs;
 
@@ -31,31 +29,12 @@ class StatefulPolicyPreservedStateComputeBeta {
     };
   }
 
-  factory StatefulPolicyPreservedStateComputeBeta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory StatefulPolicyPreservedStateComputeBeta.fromMap(Map<String, dynamic> map) {
     return StatefulPolicyPreservedStateComputeBeta(
-      disks: (() {
-        final guardedValue = map['disks'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      externalIPs: (() {
-        final guardedValue = map['externalIPs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      internalIPs: (() {
-        final guardedValue = map['internalIPs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      disks: (() { final guardedValue = map['disks']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      externalIPs: (() { final guardedValue = map['externalIPs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      internalIPs: (() { final guardedValue = map['internalIPs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

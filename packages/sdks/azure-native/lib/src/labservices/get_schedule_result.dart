@@ -8,37 +8,26 @@ import 'system_data_response.dart';
 class GetScheduleResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// The name of the resource
   final String name;
-
   /// Notes for this schedule.
   final String? notes;
-
   /// Current provisioning state of the schedule.
   final String provisioningState;
-
   /// The recurrence pattern of the scheduled actions.
   final RecurrencePatternResponse? recurrencePattern;
-
   /// Error details of last operation done on schedule.
   final ResourceOperationErrorResponse resourceOperationError;
-
   /// When lab user virtual machines will be started. Timestamp offsets will be ignored and timeZoneId is used instead.
   final String? startAt;
-
   /// When lab user virtual machines will be stopped. Timestamp offsets will be ignored and timeZoneId is used instead.
   final String stopAt;
-
   /// Metadata pertaining to creation and last modification of the schedule.
   final SystemDataResponse systemData;
-
   /// The IANA timezone id for the schedule.
   final String timeZoneId;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -92,33 +81,16 @@ class GetScheduleResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      notes: (() {
-        final guardedValue = map['notes'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      notes: (() { final guardedValue = map['notes']; if (guardedValue == null) return null; return guardedValue as String; })(),
       provisioningState: map['provisioningState'] as String,
-      recurrencePattern: (() {
-        final guardedValue = map['recurrencePattern'];
-        if (guardedValue == null) return null;
-        return RecurrencePatternResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      resourceOperationError: ResourceOperationErrorResponse.fromMap(
-        (map['resourceOperationError']! as Map).cast<String, dynamic>(),
-      ),
-      startAt: (() {
-        final guardedValue = map['startAt'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      recurrencePattern: (() { final guardedValue = map['recurrencePattern']; if (guardedValue == null) return null; return RecurrencePatternResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      resourceOperationError: ResourceOperationErrorResponse.fromMap((map['resourceOperationError']! as Map).cast<String, dynamic>()),
+      startAt: (() { final guardedValue = map['startAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
       stopAt: map['stopAt'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       timeZoneId: map['timeZoneId'] as String,
       type: map['type'] as String,
     );
   }
 }
+

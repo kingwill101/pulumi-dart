@@ -15,3 +15,4 @@ enum ContinuousTier {
     throw ArgumentError('Unknown ContinuousTier value: $value');
   }
 }
+

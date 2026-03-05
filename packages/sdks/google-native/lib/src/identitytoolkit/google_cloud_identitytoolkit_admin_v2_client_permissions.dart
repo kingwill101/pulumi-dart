@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudIdentitytoolkitAdminV2ClientPermissions {
   /// When true, end users cannot delete their account on the associated project through any of our API methods
   final pulumi.Input<bool>? disabledUserDeletion;
-
   /// When true, end users cannot sign up for a new account on the associated project through any of our API methods
   final pulumi.Input<bool>? disabledUserSignup;
 
@@ -25,20 +24,11 @@ class GoogleCloudIdentitytoolkitAdminV2ClientPermissions {
     };
   }
 
-  factory GoogleCloudIdentitytoolkitAdminV2ClientPermissions.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudIdentitytoolkitAdminV2ClientPermissions.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIdentitytoolkitAdminV2ClientPermissions(
-      disabledUserDeletion: (() {
-        final guardedValue = map['disabledUserDeletion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      disabledUserSignup: (() {
-        final guardedValue = map['disabledUserSignup'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      disabledUserDeletion: (() { final guardedValue = map['disabledUserDeletion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      disabledUserSignup: (() { final guardedValue = map['disabledUserSignup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

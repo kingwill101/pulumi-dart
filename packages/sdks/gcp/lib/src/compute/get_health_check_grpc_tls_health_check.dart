@@ -9,11 +9,9 @@ class GetHealthCheckGrpcTlsHealthCheck {
   /// - Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service.
   /// The grpcServiceName can only be ASCII.
   final pulumi.Input<String> grpcServiceName;
-
   /// The port number for the health check request.
   /// Must be specified if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
   final pulumi.Input<int> port;
-
   /// Specifies how port is selected for health checking, can be one of the
   /// following values:
   ///
@@ -51,9 +49,8 @@ class GetHealthCheckGrpcTlsHealthCheck {
     return GetHealthCheckGrpcTlsHealthCheck(
       grpcServiceName: pulumi.Input.fromValue(map['grpcServiceName'] as String),
       port: pulumi.Input.fromValue(map['port'] as int),
-      portSpecification: pulumi.Input.fromValue(
-        map['portSpecification'] as String,
-      ),
+      portSpecification: pulumi.Input.fromValue(map['portSpecification'] as String),
     );
   }
 }
+

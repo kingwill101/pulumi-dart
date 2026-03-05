@@ -6,14 +6,9 @@ import 'security_policy_adaptive_protection_config_layer7_ddos_defense_config.da
 
 /// Configuration options for Cloud Armor Adaptive Protection (CAAP).
 class SecurityPolicyAdaptiveProtectionConfig {
-  final pulumi.Input<SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig>?
-  autoDeployConfig;
-
+  final pulumi.Input<SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig>? autoDeployConfig;
   /// If set to true, enables Cloud Armor Machine Learning.
-  final pulumi.Input<
-    SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig
-  >?
-  layer7DdosDefenseConfig;
+  final pulumi.Input<SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig>? layer7DdosDefenseConfig;
 
   /// Creates a new [SecurityPolicyAdaptiveProtectionConfig].
   /// [autoDeployConfig] Optional.
@@ -25,41 +20,16 @@ class SecurityPolicyAdaptiveProtectionConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoDeployConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig,
-            Map<String, dynamic>
-          >(autoDeployConfig, (value) => value.toMap()),
-      'layer7DdosDefenseConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig,
-            Map<String, dynamic>
-          >(layer7DdosDefenseConfig, (value) => value.toMap()),
+      'autoDeployConfig': ?pulumi.Input.mapOptionalInputValue<SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig, Map<String, dynamic>>(autoDeployConfig, (value) => value.toMap()),
+      'layer7DdosDefenseConfig': ?pulumi.Input.mapOptionalInputValue<SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig, Map<String, dynamic>>(layer7DdosDefenseConfig, (value) => value.toMap()),
     };
   }
 
-  factory SecurityPolicyAdaptiveProtectionConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SecurityPolicyAdaptiveProtectionConfig.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyAdaptiveProtectionConfig(
-      autoDeployConfig: (() {
-        final guardedValue = map['autoDeployConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      layer7DdosDefenseConfig: (() {
-        final guardedValue = map['layer7DdosDefenseConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      autoDeployConfig: (() { final guardedValue = map['autoDeployConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      layer7DdosDefenseConfig: (() { final guardedValue = map['layer7DdosDefenseConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

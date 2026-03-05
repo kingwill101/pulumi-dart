@@ -9,21 +9,20 @@ class DataplexConfigMetastoreV1beta {
 
   /// Creates a new [DataplexConfigMetastoreV1beta].
   /// [lakeResources] A reference to the Lake resources that this metastore service is attached to. The key is the lake resource name. Example: projects/{project_number}/locations/{location_id}/lakes/{lake_id}.
-  DataplexConfigMetastoreV1beta({this.lakeResources});
+  DataplexConfigMetastoreV1beta({
+    this.lakeResources,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'lakeResources': ?lakeResources};
+    return <String, dynamic>{
+      'lakeResources': ?lakeResources,
+    };
   }
 
   factory DataplexConfigMetastoreV1beta.fromMap(Map<String, dynamic> map) {
     return DataplexConfigMetastoreV1beta(
-      lakeResources: (() {
-        final guardedValue = map['lakeResources'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      lakeResources: (() { final guardedValue = map['lakeResources']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

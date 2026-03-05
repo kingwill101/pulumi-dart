@@ -12,10 +12,14 @@ class GetTrafficManagerArgs {
 
   /// Creates a new [GetTrafficManagerArgs].
   /// [name] Specifies the name of the Location, for example `World`, `Europe` or `Germany`.
-  GetTrafficManagerArgs({required this.name});
+  GetTrafficManagerArgs({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory GetTrafficManagerArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetTrafficManagerArgs {
     );
   }
 }
+

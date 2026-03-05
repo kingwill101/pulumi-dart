@@ -14,3 +14,4 @@ enum ExcludedPrincipalTypes {
     throw ArgumentError('Unknown ExcludedPrincipalTypes value: $value');
   }
 }
+

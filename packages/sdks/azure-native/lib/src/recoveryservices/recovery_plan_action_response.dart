@@ -7,14 +7,10 @@ import 'recovery_plan_automation_runbook_action_details_response.dart';
 class RecoveryPlanActionResponse {
   /// The action name.
   final pulumi.Input<String> actionName;
-
   /// The custom details.
-  final pulumi.Input<RecoveryPlanAutomationRunbookActionDetailsResponse>
-  customDetails;
-
+  final pulumi.Input<RecoveryPlanAutomationRunbookActionDetailsResponse> customDetails;
   /// The list of failover directions.
   final pulumi.Input<List<String>> failoverDirections;
-
   /// The list of failover types.
   final pulumi.Input<List<String>> failoverTypes;
 
@@ -33,11 +29,7 @@ class RecoveryPlanActionResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'actionName': actionName,
-      'customDetails':
-          pulumi.Input.mapInputValue<
-            RecoveryPlanAutomationRunbookActionDetailsResponse,
-            Map<String, dynamic>
-          >(customDetails, (value) => value.toMap()),
+      'customDetails': pulumi.Input.mapInputValue<RecoveryPlanAutomationRunbookActionDetailsResponse, Map<String, dynamic>>(customDetails, (value) => value.toMap()),
       'failoverDirections': failoverDirections,
       'failoverTypes': failoverTypes,
     };
@@ -46,17 +38,10 @@ class RecoveryPlanActionResponse {
   factory RecoveryPlanActionResponse.fromMap(Map<String, dynamic> map) {
     return RecoveryPlanActionResponse(
       actionName: pulumi.Input.fromValue(map['actionName'] as String),
-      customDetails: pulumi.Input.fromValue(
-        RecoveryPlanAutomationRunbookActionDetailsResponse.fromMap(
-          (map['customDetails']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      failoverDirections: pulumi.Input.fromValue(
-        (map['failoverDirections'] as List).cast<String>(),
-      ),
-      failoverTypes: pulumi.Input.fromValue(
-        (map['failoverTypes'] as List).cast<String>(),
-      ),
+      customDetails: pulumi.Input.fromValue(RecoveryPlanAutomationRunbookActionDetailsResponse.fromMap((map['customDetails']! as Map).cast<String, dynamic>())),
+      failoverDirections: pulumi.Input.fromValue((map['failoverDirections'] as List).cast<String>()),
+      failoverTypes: pulumi.Input.fromValue((map['failoverTypes'] as List).cast<String>()),
     );
   }
 }
+

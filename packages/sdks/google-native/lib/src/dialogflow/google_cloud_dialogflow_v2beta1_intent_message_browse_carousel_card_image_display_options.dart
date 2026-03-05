@@ -6,22 +6,16 @@ enum GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOpti
   cropped("CROPPED"),
   blurredBackground("BLURRED_BACKGROUND");
 
-  const GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptions(
-    this.wireValue,
-  );
+  const GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptions(this.wireValue);
   final String wireValue;
 
-  static GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptions
-  fromValue(String value) {
-    for (final item
-        in GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptions
-            .values) {
+  static GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptions fromValue(String value) {
+    for (final item in GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptions.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptions value: $value',
-    );
+    throw ArgumentError('Unknown GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptions value: $value');
   }
 }
+

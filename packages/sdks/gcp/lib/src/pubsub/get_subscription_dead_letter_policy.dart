@@ -15,7 +15,6 @@ class GetSubscriptionDeadLetterPolicy {
   /// Users should ensure that there is a subscription attached to this topic
   /// since messages published to a topic with no subscriptions are lost.
   final pulumi.Input<String> deadLetterTopic;
-
   /// The maximum number of delivery attempts for any message. The value must be
   /// between 5 and 100.
   ///
@@ -48,9 +47,8 @@ class GetSubscriptionDeadLetterPolicy {
   factory GetSubscriptionDeadLetterPolicy.fromMap(Map<String, dynamic> map) {
     return GetSubscriptionDeadLetterPolicy(
       deadLetterTopic: pulumi.Input.fromValue(map['deadLetterTopic'] as String),
-      maxDeliveryAttempts: pulumi.Input.fromValue(
-        map['maxDeliveryAttempts'] as int,
-      ),
+      maxDeliveryAttempts: pulumi.Input.fromValue(map['maxDeliveryAttempts'] as int),
     );
   }
 }
+

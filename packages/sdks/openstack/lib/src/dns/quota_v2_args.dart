@@ -10,26 +10,20 @@ class QuotaV2Args {
   /// The maximum number of zones that can be
   /// exported via the API.
   final pulumi.Input<int>? apiExportSize;
-
   /// ID of the project to manage quota. Changing this
   /// creates new quota.
   final pulumi.Input<String> projectId;
-
   /// The maximum number of records in a
   /// recordset.
   final pulumi.Input<int>? recordsetRecords;
-
   /// The region in which to obtain the V2 DNS client. If
   /// omitted, the `region` argument of the provider is used. Changing this creates
   /// a new DNS quota.
   final pulumi.Input<String>? region;
-
   /// The maximum number of records in a zone.
   final pulumi.Input<int>? zoneRecords;
-
   /// The maximum number of recordsets in a zone.
   final pulumi.Input<int>? zoneRecordsets;
-
   /// The maximum number of zones that can be created.
   final pulumi.Input<int>? zones;
 
@@ -65,37 +59,14 @@ class QuotaV2Args {
 
   factory QuotaV2Args.fromMap(Map<String, dynamic> map) {
     return QuotaV2Args(
-      apiExportSize: (() {
-        final guardedValue = map['apiExportSize'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      apiExportSize: (() { final guardedValue = map['apiExportSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       projectId: pulumi.Input.fromValue(map['projectId'] as String),
-      recordsetRecords: (() {
-        final guardedValue = map['recordsetRecords'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      zoneRecords: (() {
-        final guardedValue = map['zoneRecords'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      zoneRecordsets: (() {
-        final guardedValue = map['zoneRecordsets'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      zones: (() {
-        final guardedValue = map['zones'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      recordsetRecords: (() { final guardedValue = map['recordsetRecords']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      zoneRecords: (() { final guardedValue = map['zoneRecords']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      zoneRecordsets: (() { final guardedValue = map['zoneRecordsets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      zones: (() { final guardedValue = map['zones']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

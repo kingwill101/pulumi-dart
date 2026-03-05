@@ -146,31 +146,22 @@ import 'prefix_args.dart';
 class Prefix extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The error message for validation state
   late final pulumi.Output<String> errorMessage;
-
   /// The list of events for peering service prefix
   late final pulumi.Output<List<Map<String, dynamic>>> events;
-
   /// The prefix learned type
   late final pulumi.Output<String> learnedType;
-
   /// The name of the resource.
   late final pulumi.Output<String> name;
-
   /// The peering service prefix key
   late final pulumi.Output<String?> peeringServicePrefixKey;
-
   /// The prefix from which your traffic originates.
   late final pulumi.Output<String?> prefix;
-
   /// The prefix validation state
   late final pulumi.Output<String> prefixValidationState;
-
   /// The provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The type of the resource.
   late final pulumi.Output<String> type;
 
@@ -178,21 +169,22 @@ class Prefix extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Prefix]. {@macro pulumi_peering_prefix_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Prefix(String name, {PrefixArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:peering:Prefix',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Prefix(
+    String name, {
+    PrefixArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:peering:Prefix',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     errorMessage = registerOutput<String>('errorMessage');
     events = registerOutput<List<Map<String, dynamic>>>('events');
     learnedType = registerOutput<String>('learnedType');
     this.name = registerOutput<String>('name');
-    peeringServicePrefixKey = registerOutput<String?>(
-      'peeringServicePrefixKey',
-    );
+    peeringServicePrefixKey = registerOutput<String?>('peeringServicePrefixKey');
     prefix = registerOutput<String?>('prefix');
     prefixValidationState = registerOutput<String>('prefixValidationState');
     provisioningState = registerOutput<String>('provisioningState');

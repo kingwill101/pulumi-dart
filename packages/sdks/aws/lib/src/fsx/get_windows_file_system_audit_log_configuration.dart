@@ -25,19 +25,12 @@ class GetWindowsFileSystemAuditLogConfiguration {
     };
   }
 
-  factory GetWindowsFileSystemAuditLogConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetWindowsFileSystemAuditLogConfiguration.fromMap(Map<String, dynamic> map) {
     return GetWindowsFileSystemAuditLogConfiguration(
-      auditLogDestination: pulumi.Input.fromValue(
-        map['auditLogDestination'] as String,
-      ),
-      fileAccessAuditLogLevel: pulumi.Input.fromValue(
-        map['fileAccessAuditLogLevel'] as String,
-      ),
-      fileShareAccessAuditLogLevel: pulumi.Input.fromValue(
-        map['fileShareAccessAuditLogLevel'] as String,
-      ),
+      auditLogDestination: pulumi.Input.fromValue(map['auditLogDestination'] as String),
+      fileAccessAuditLogLevel: pulumi.Input.fromValue(map['fileAccessAuditLogLevel'] as String),
+      fileShareAccessAuditLogLevel: pulumi.Input.fromValue(map['fileShareAccessAuditLogLevel'] as String),
     );
   }
 }
+

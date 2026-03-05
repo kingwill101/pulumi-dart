@@ -39,13 +39,10 @@ import '../internal/package_registration.dart' as package_registration;
 class Combustion extends pulumi.CustomResource {
   /// Combustion script content (shell script)
   late final pulumi.Output<String> content;
-
   /// Name for this combustion resource
   late final pulumi.Output<String> name;
-
   /// Full path to the generated combustion script file
   late final pulumi.Output<String> path;
-
   /// Size of the file in bytes
   late final pulumi.Output<double> size;
 
@@ -58,12 +55,12 @@ class Combustion extends pulumi.CustomResource {
     CombustionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'libvirt:index/combustion:Combustion',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-         registerPackageRequest: package_registration.registerPackageRequest,
-       ) {
+          'libvirt:index/combustion:Combustion',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+          registerPackageRequest: package_registration.registerPackageRequest,
+        ) {
     content = registerOutput<String>('content');
     this.name = registerOutput<String>('name');
     path = registerOutput<String>('path');
@@ -88,11 +85,11 @@ class Combustion extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'libvirt:index/combustion:Combustion',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'libvirt:index/combustion:Combustion',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     content = registerOutput<String>('content');
     this.name = registerOutput<String>('name');
     path = registerOutput<String>('path');

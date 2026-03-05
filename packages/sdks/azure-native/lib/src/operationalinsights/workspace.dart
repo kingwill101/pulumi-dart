@@ -180,65 +180,44 @@ import 'workspace_sku_response.dart';
 class Workspace extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Workspace creation date.
   late final pulumi.Output<String> createdDate;
-
   /// This is a read-only property. Represents the ID associated with the workspace.
   late final pulumi.Output<String> customerId;
-
   /// The resource ID of the default Data Collection Rule to use for this workspace. Expected format is - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/dataCollectionRules/{dcrName}.
   late final pulumi.Output<String?> defaultDataCollectionRuleResourceId;
-
   /// The etag of the workspace.
   late final pulumi.Output<String?> etag;
-
   /// Workspace features.
   late final pulumi.Output<WorkspaceFeaturesResponse?> features;
-
   /// Indicates whether customer managed storage is mandatory for query management.
   late final pulumi.Output<bool?> forceCmkForQuery;
-
   /// The identity of the resource.
   late final pulumi.Output<IdentityResponse?> identity;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// Workspace modification date.
   late final pulumi.Output<String> modifiedDate;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// List of linked private link scope resources.
-  late final pulumi.Output<List<Map<String, dynamic>>>
-  privateLinkScopedResources;
-
+  late final pulumi.Output<List<Map<String, dynamic>>> privateLinkScopedResources;
   /// The provisioning state of the workspace.
   late final pulumi.Output<String> provisioningState;
-
   /// The network access type for accessing Log Analytics ingestion.
   late final pulumi.Output<String?> publicNetworkAccessForIngestion;
-
   /// The network access type for accessing Log Analytics query.
   late final pulumi.Output<String?> publicNetworkAccessForQuery;
-
   /// The workspace data retention in days. Allowed values are per pricing plan. See pricing tiers documentation for details.
   late final pulumi.Output<int?> retentionInDays;
-
   /// The SKU of the workspace.
   late final pulumi.Output<WorkspaceSkuResponse?> sku;
-
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// The daily volume cap for ingestion.
   late final pulumi.Output<WorkspaceCappingResponse?> workspaceCapping;
 
@@ -251,84 +230,31 @@ class Workspace extends pulumi.CustomResource {
     WorkspaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:operationalinsights:Workspace',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:operationalinsights:Workspace',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createdDate = registerOutput<String>('createdDate');
     customerId = registerOutput<String>('customerId');
-    defaultDataCollectionRuleResourceId = registerOutput<String?>(
-      'defaultDataCollectionRuleResourceId',
-    );
+    defaultDataCollectionRuleResourceId = registerOutput<String?>('defaultDataCollectionRuleResourceId');
     etag = registerOutput<String?>('etag');
-    features = registerOutput<WorkspaceFeaturesResponse?>(
-      'features',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WorkspaceFeaturesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    features = registerOutput<WorkspaceFeaturesResponse?>('features', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceFeaturesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     forceCmkForQuery = registerOutput<bool?>('forceCmkForQuery');
-    identity = registerOutput<IdentityResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<IdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     modifiedDate = registerOutput<String>('modifiedDate');
     this.name = registerOutput<String>('name');
-    privateLinkScopedResources = registerOutput<List<Map<String, dynamic>>>(
-      'privateLinkScopedResources',
-    );
+    privateLinkScopedResources = registerOutput<List<Map<String, dynamic>>>('privateLinkScopedResources');
     provisioningState = registerOutput<String>('provisioningState');
-    publicNetworkAccessForIngestion = registerOutput<String?>(
-      'publicNetworkAccessForIngestion',
-    );
-    publicNetworkAccessForQuery = registerOutput<String?>(
-      'publicNetworkAccessForQuery',
-    );
+    publicNetworkAccessForIngestion = registerOutput<String?>('publicNetworkAccessForIngestion');
+    publicNetworkAccessForQuery = registerOutput<String?>('publicNetworkAccessForQuery');
     retentionInDays = registerOutput<int?>('retentionInDays');
-    sku = registerOutput<WorkspaceSkuResponse?>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WorkspaceSkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sku = registerOutput<WorkspaceSkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
-    workspaceCapping = registerOutput<WorkspaceCappingResponse?>(
-      'workspaceCapping',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WorkspaceCappingResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    workspaceCapping = registerOutput<WorkspaceCappingResponse?>('workspaceCapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceCappingResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

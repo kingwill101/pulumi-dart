@@ -5,38 +5,24 @@ import 'user_profile_user_settings_tensor_board_app_settings_default_resource_sp
 
 class UserProfileUserSettingsTensorBoardAppSettings {
   /// The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. see Default Resource Spec below.
-  final pulumi.Input<
-    UserProfileUserSettingsTensorBoardAppSettingsDefaultResourceSpec
-  >?
-  defaultResourceSpec;
+  final pulumi.Input<UserProfileUserSettingsTensorBoardAppSettingsDefaultResourceSpec>? defaultResourceSpec;
 
   /// Creates a new [UserProfileUserSettingsTensorBoardAppSettings].
   /// [defaultResourceSpec] The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. see Default Resource Spec below.
-  UserProfileUserSettingsTensorBoardAppSettings({this.defaultResourceSpec});
+  UserProfileUserSettingsTensorBoardAppSettings({
+    this.defaultResourceSpec,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'defaultResourceSpec':
-          ?pulumi.Input.mapOptionalInputValue<
-            UserProfileUserSettingsTensorBoardAppSettingsDefaultResourceSpec,
-            Map<String, dynamic>
-          >(defaultResourceSpec, (value) => value.toMap()),
+      'defaultResourceSpec': ?pulumi.Input.mapOptionalInputValue<UserProfileUserSettingsTensorBoardAppSettingsDefaultResourceSpec, Map<String, dynamic>>(defaultResourceSpec, (value) => value.toMap()),
     };
   }
 
-  factory UserProfileUserSettingsTensorBoardAppSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory UserProfileUserSettingsTensorBoardAppSettings.fromMap(Map<String, dynamic> map) {
     return UserProfileUserSettingsTensorBoardAppSettings(
-      defaultResourceSpec: (() {
-        final guardedValue = map['defaultResourceSpec'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          UserProfileUserSettingsTensorBoardAppSettingsDefaultResourceSpec.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      defaultResourceSpec: (() { final guardedValue = map['defaultResourceSpec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(UserProfileUserSettingsTensorBoardAppSettingsDefaultResourceSpec.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

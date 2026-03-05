@@ -13,10 +13,16 @@ class GetApiArgs {
   /// Creates a new [GetApiArgs].
   /// [apiId] Required.
   /// [organizationId] Required.
-  GetApiArgs({required this.apiId, required this.organizationId});
+  GetApiArgs({
+    required this.apiId,
+    required this.organizationId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'apiId': apiId, 'organizationId': organizationId};
+    return <String, dynamic>{
+      'apiId': apiId,
+      'organizationId': organizationId,
+    };
   }
 
   factory GetApiArgs.fromMap(Map<String, dynamic> map) {
@@ -26,3 +32,4 @@ class GetApiArgs {
     );
   }
 }
+

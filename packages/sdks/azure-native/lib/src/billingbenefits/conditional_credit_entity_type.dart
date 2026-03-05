@@ -15,3 +15,4 @@ enum ConditionalCreditEntityType {
     throw ArgumentError('Unknown ConditionalCreditEntityType value: $value');
   }
 }
+

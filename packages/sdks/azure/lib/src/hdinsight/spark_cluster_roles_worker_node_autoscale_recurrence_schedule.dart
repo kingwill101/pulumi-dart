@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SparkClusterRolesWorkerNodeAutoscaleRecurrenceSchedule {
   /// The days of the week to perform autoscale. Possible values are `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday` and `Sunday`.
   final pulumi.Input<List<String>> days;
-
   /// The number of worker nodes to autoscale at the specified time.
   final pulumi.Input<int> targetInstanceCount;
-
   /// The time of day to perform the autoscale in 24hour format.
   final pulumi.Input<String> time;
 
@@ -30,15 +28,12 @@ class SparkClusterRolesWorkerNodeAutoscaleRecurrenceSchedule {
     };
   }
 
-  factory SparkClusterRolesWorkerNodeAutoscaleRecurrenceSchedule.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SparkClusterRolesWorkerNodeAutoscaleRecurrenceSchedule.fromMap(Map<String, dynamic> map) {
     return SparkClusterRolesWorkerNodeAutoscaleRecurrenceSchedule(
       days: pulumi.Input.fromValue((map['days'] as List).cast<String>()),
-      targetInstanceCount: pulumi.Input.fromValue(
-        map['targetInstanceCount'] as int,
-      ),
+      targetInstanceCount: pulumi.Input.fromValue(map['targetInstanceCount'] as int),
       time: pulumi.Input.fromValue(map['time'] as String),
     );
   }
 }
+

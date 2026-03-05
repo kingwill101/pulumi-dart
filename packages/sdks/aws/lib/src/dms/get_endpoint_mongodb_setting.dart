@@ -42,11 +42,10 @@ class GetEndpointMongodbSetting {
       authMechanism: pulumi.Input.fromValue(map['authMechanism'] as String),
       authSource: pulumi.Input.fromValue(map['authSource'] as String),
       authType: pulumi.Input.fromValue(map['authType'] as String),
-      docsToInvestigate: pulumi.Input.fromValue(
-        map['docsToInvestigate'] as String,
-      ),
+      docsToInvestigate: pulumi.Input.fromValue(map['docsToInvestigate'] as String),
       extractDocId: pulumi.Input.fromValue(map['extractDocId'] as String),
       nestingLevel: pulumi.Input.fromValue(map['nestingLevel'] as String),
     );
   }
 }
+

@@ -5,40 +5,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMscSubContactsContact {
   /// UID.
   final pulumi.Input<String> accountUid;
-
   /// The first ID of the resource.
   final pulumi.Input<String> contactId;
-
   /// The User's Contact Name. **Note:** The name must be 2 to 12 characters in length, and can contain uppercase and lowercase letters.
   final pulumi.Input<String> contactName;
-
   /// The User's Contact Email Address.
   final pulumi.Input<String> email;
-
   /// The ID of the Contact.
   final pulumi.Input<String> id;
-
   /// Indicates Whether the BGP Group Is the Account Itself.
   final pulumi.Input<bool> isAccount;
-
   /// Whether They Have Expired Or Not.
   final pulumi.Input<bool> isObsolete;
-
   /// Email Validation for.
   final pulumi.Input<bool> isVerifiedEmail;
-
   /// If the Phone Verification.
   final pulumi.Input<bool> isVerifiedMobile;
-
   /// Last Verification Email Transmission Time.
   final pulumi.Input<String> lastEmailVerificationTimeStamp;
-
   /// The Pieces of Authentication SMS Sending Time.
   final pulumi.Input<String> lastMobileVerificationTimeStamp;
-
   /// The User's Telephone.
   final pulumi.Input<String> mobile;
-
   /// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
   final pulumi.Input<String> position;
 
@@ -101,14 +89,11 @@ class GetMscSubContactsContact {
       isObsolete: pulumi.Input.fromValue(map['isObsolete'] as bool),
       isVerifiedEmail: pulumi.Input.fromValue(map['isVerifiedEmail'] as bool),
       isVerifiedMobile: pulumi.Input.fromValue(map['isVerifiedMobile'] as bool),
-      lastEmailVerificationTimeStamp: pulumi.Input.fromValue(
-        map['lastEmailVerificationTimeStamp'] as String,
-      ),
-      lastMobileVerificationTimeStamp: pulumi.Input.fromValue(
-        map['lastMobileVerificationTimeStamp'] as String,
-      ),
+      lastEmailVerificationTimeStamp: pulumi.Input.fromValue(map['lastEmailVerificationTimeStamp'] as String),
+      lastMobileVerificationTimeStamp: pulumi.Input.fromValue(map['lastMobileVerificationTimeStamp'] as String),
       mobile: pulumi.Input.fromValue(map['mobile'] as String),
       position: pulumi.Input.fromValue(map['position'] as String),
     );
   }
 }
+

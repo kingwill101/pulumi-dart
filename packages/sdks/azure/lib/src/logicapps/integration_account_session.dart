@@ -224,13 +224,10 @@ import 'integration_account_session_state.dart';
 class IntegrationAccountSession extends pulumi.CustomResource {
   /// The content of the Logic App Integration Account Session.
   late final pulumi.Output<String> content;
-
   /// The name of the Logic App Integration Account. Changing this forces a new Logic App Integration Account Session to be created.
   late final pulumi.Output<String> integrationAccountName;
-
   /// The name which should be used for this Logic App Integration Account Session. Changing this forces a new Logic App Integration Account Session to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the Resource Group where the Logic App Integration Account Session should exist. Changing this forces a new Logic App Integration Account Session to be created.
   late final pulumi.Output<String> resourceGroupName;
 
@@ -243,11 +240,11 @@ class IntegrationAccountSession extends pulumi.CustomResource {
     IntegrationAccountSessionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:logicapps/integrationAccountSession:IntegrationAccountSession',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:logicapps/integrationAccountSession:IntegrationAccountSession',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     content = registerOutput<String>('content');
     integrationAccountName = registerOutput<String>('integrationAccountName');
     this.name = registerOutput<String>('name');
@@ -272,11 +269,11 @@ class IntegrationAccountSession extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:logicapps/integrationAccountSession:IntegrationAccountSession',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:logicapps/integrationAccountSession:IntegrationAccountSession',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     content = registerOutput<String>('content');
     integrationAccountName = registerOutput<String>('integrationAccountName');
     this.name = registerOutput<String>('name');

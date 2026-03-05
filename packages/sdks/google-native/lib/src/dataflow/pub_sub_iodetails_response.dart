@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PubSubIODetailsResponse {
   /// Subscription used in the connection.
   final pulumi.Input<String> subscription;
-
   /// Topic accessed in the connection.
   final pulumi.Input<String> topic;
 
   /// Creates a new [PubSubIODetailsResponse].
   /// [subscription] Subscription used in the connection.
   /// [topic] Topic accessed in the connection.
-  PubSubIODetailsResponse({required this.subscription, required this.topic});
+  PubSubIODetailsResponse({
+    required this.subscription,
+    required this.topic,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'subscription': subscription, 'topic': topic};
+    return <String, dynamic>{
+      'subscription': subscription,
+      'topic': topic,
+    };
   }
 
   factory PubSubIODetailsResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class PubSubIODetailsResponse {
     );
   }
 }
+

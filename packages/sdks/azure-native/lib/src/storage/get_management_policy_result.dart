@@ -6,19 +6,14 @@ import 'management_policy_schema_response.dart';
 class GetManagementPolicyResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// Returns the date and time the ManagementPolicies was last modified.
   final String lastModifiedTime;
-
   /// The name of the resource
   final String name;
-
   /// The Storage Account ManagementPolicy, in JSON format. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
   final ManagementPolicySchemaResponse policy;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -55,10 +50,9 @@ class GetManagementPolicyResult {
       id: map['id'] as String,
       lastModifiedTime: map['lastModifiedTime'] as String,
       name: map['name'] as String,
-      policy: ManagementPolicySchemaResponse.fromMap(
-        (map['policy']! as Map).cast<String, dynamic>(),
-      ),
+      policy: ManagementPolicySchemaResponse.fromMap((map['policy']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

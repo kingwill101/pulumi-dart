@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VaultNotificationsArgs {
   /// An array of events that indicate the status of jobs to back up resources to the backup vault.
   final pulumi.Input<List<String>> backupVaultEvents;
-
   /// Name of the backup vault to add notifications for.
   final pulumi.Input<String> backupVaultName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The Amazon Resource Name (ARN) that specifies the topic for a backup vault’s events
   final pulumi.Input<String> snsTopicArn;
 
@@ -42,16 +39,11 @@ class VaultNotificationsArgs {
 
   factory VaultNotificationsArgs.fromMap(Map<String, dynamic> map) {
     return VaultNotificationsArgs(
-      backupVaultEvents: pulumi.Input.fromValue(
-        (map['backupVaultEvents'] as List).cast<String>(),
-      ),
+      backupVaultEvents: pulumi.Input.fromValue((map['backupVaultEvents'] as List).cast<String>()),
       backupVaultName: pulumi.Input.fromValue(map['backupVaultName'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       snsTopicArn: pulumi.Input.fromValue(map['snsTopicArn'] as String),
     );
   }
 }
+

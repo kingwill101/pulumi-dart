@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AuthenticationProfileArgs {
   /// The content of the authentication profile in JSON format. The maximum length of the JSON string is determined by a quota for your account.
   final pulumi.Input<String> authenticationProfileContent;
-
   /// The name of the authentication profile.
   final pulumi.Input<String> authenticationProfileName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -36,17 +34,10 @@ class AuthenticationProfileArgs {
 
   factory AuthenticationProfileArgs.fromMap(Map<String, dynamic> map) {
     return AuthenticationProfileArgs(
-      authenticationProfileContent: pulumi.Input.fromValue(
-        map['authenticationProfileContent'] as String,
-      ),
-      authenticationProfileName: pulumi.Input.fromValue(
-        map['authenticationProfileName'] as String,
-      ),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      authenticationProfileContent: pulumi.Input.fromValue(map['authenticationProfileContent'] as String),
+      authenticationProfileName: pulumi.Input.fromValue(map['authenticationProfileName'] as String),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

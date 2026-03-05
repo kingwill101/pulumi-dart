@@ -9,19 +9,20 @@ class NetworkTagsContainerV1beta1 {
 
   /// Creates a new [NetworkTagsContainerV1beta1].
   /// [tags] List of network tags.
-  NetworkTagsContainerV1beta1({this.tags});
+  NetworkTagsContainerV1beta1({
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'tags': ?tags};
+    return <String, dynamic>{
+      'tags': ?tags,
+    };
   }
 
   factory NetworkTagsContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return NetworkTagsContainerV1beta1(
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

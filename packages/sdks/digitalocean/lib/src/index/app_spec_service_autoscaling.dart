@@ -6,10 +6,8 @@ import 'app_spec_service_autoscaling_metrics.dart';
 class AppSpecServiceAutoscaling {
   /// The maximum amount of instances for this component. Must be more than min_instance_count.
   final pulumi.Input<int> maxInstanceCount;
-
   /// The metrics that the component is scaled on.
   final pulumi.Input<AppSpecServiceAutoscalingMetrics> metrics;
-
   /// The minimum amount of instances for this component. Must be less than max_instance_count.
   final pulumi.Input<int> minInstanceCount;
 
@@ -26,11 +24,7 @@ class AppSpecServiceAutoscaling {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'maxInstanceCount': maxInstanceCount,
-      'metrics':
-          pulumi.Input.mapInputValue<
-            AppSpecServiceAutoscalingMetrics,
-            Map<String, dynamic>
-          >(metrics, (value) => value.toMap()),
+      'metrics': pulumi.Input.mapInputValue<AppSpecServiceAutoscalingMetrics, Map<String, dynamic>>(metrics, (value) => value.toMap()),
       'minInstanceCount': minInstanceCount,
     };
   }
@@ -38,12 +32,9 @@ class AppSpecServiceAutoscaling {
   factory AppSpecServiceAutoscaling.fromMap(Map<String, dynamic> map) {
     return AppSpecServiceAutoscaling(
       maxInstanceCount: pulumi.Input.fromValue(map['maxInstanceCount'] as int),
-      metrics: pulumi.Input.fromValue(
-        AppSpecServiceAutoscalingMetrics.fromMap(
-          (map['metrics']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      metrics: pulumi.Input.fromValue(AppSpecServiceAutoscalingMetrics.fromMap((map['metrics']! as Map).cast<String, dynamic>())),
       minInstanceCount: pulumi.Input.fromValue(map['minInstanceCount'] as int),
     );
   }
 }
+

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceDeploymentConfigurationLinearConfiguration {
   /// Number of minutes to wait between each step during a linear deployment. Valid range: 0-1440 minutes.
   final pulumi.Input<String>? stepBakeTimeInMinutes;
-
   /// Percentage of traffic to shift in each step during a linear deployment. Valid range: 3.0-100.0.
   final pulumi.Input<double>? stepPercent;
 
@@ -24,20 +23,11 @@ class ServiceDeploymentConfigurationLinearConfiguration {
     };
   }
 
-  factory ServiceDeploymentConfigurationLinearConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ServiceDeploymentConfigurationLinearConfiguration.fromMap(Map<String, dynamic> map) {
     return ServiceDeploymentConfigurationLinearConfiguration(
-      stepBakeTimeInMinutes: (() {
-        final guardedValue = map['stepBakeTimeInMinutes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      stepPercent: (() {
-        final guardedValue = map['stepPercent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      stepBakeTimeInMinutes: (() { final guardedValue = map['stepBakeTimeInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      stepPercent: (() { final guardedValue = map['stepPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

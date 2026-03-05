@@ -571,19 +571,14 @@ import 'log_account_policy_state.dart';
 class LogAccountPolicy extends pulumi.CustomResource {
   /// Text of the account policy. Refer to the [AWS docs](https://docs.aws.amazon.com/cli/latest/reference/logs/put-account-policy.html) for more information.
   late final pulumi.Output<String> policyDocument;
-
   /// Name of the account policy.
   late final pulumi.Output<String> policyName;
-
   /// Type of account policy. One of `DATA_PROTECTION_POLICY`, `SUBSCRIPTION_FILTER_POLICY`, `FIELD_INDEX_POLICY` or `TRANSFORMER_POLICY`. You can have one account policy per type in an account.
   late final pulumi.Output<String> policyType;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Currently defaults to and only accepts the value: `ALL`.
   late final pulumi.Output<String?> scope;
-
   /// Criteria for applying a subscription filter policy to a selection of log groups. The only allowable criteria selector is `LogGroupName NOT IN []`.
   late final pulumi.Output<String?> selectionCriteria;
 
@@ -596,11 +591,11 @@ class LogAccountPolicy extends pulumi.CustomResource {
     LogAccountPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cloudwatch/logAccountPolicy:LogAccountPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cloudwatch/logAccountPolicy:LogAccountPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     policyDocument = registerOutput<String>('policyDocument');
     policyName = registerOutput<String>('policyName');
     policyType = registerOutput<String>('policyType');
@@ -627,11 +622,11 @@ class LogAccountPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cloudwatch/logAccountPolicy:LogAccountPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cloudwatch/logAccountPolicy:LogAccountPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     policyDocument = registerOutput<String>('policyDocument');
     policyName = registerOutput<String>('policyName');
     policyType = registerOutput<String>('policyType');

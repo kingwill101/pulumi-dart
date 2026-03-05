@@ -395,28 +395,20 @@ import 'gateway_host_name_configuration_state.dart';
 class GatewayHostNameConfiguration extends pulumi.CustomResource {
   /// The ID of the API Management Service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> apiManagementId;
-
   /// The certificate ID to be used for TLS connection establishment.
   late final pulumi.Output<String> certificateId;
-
   /// The name of the API Management Gateway. Changing this forces a new resource to be created.
   late final pulumi.Output<String> gatewayName;
-
   /// The host name to use for the API Management Gateway Host Name Configuration.
   late final pulumi.Output<String> hostName;
-
   /// Whether HTTP/2.0 is supported. Defaults to `true`.
   late final pulumi.Output<bool?> http2Enabled;
-
   /// The name of the API Management Gateway Host Name Configuration. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Whether the API Management Gateway requests a client certificate.
   late final pulumi.Output<bool?> requestClientCertificateEnabled;
-
   /// Whether TLS 1.0 is supported.
   late final pulumi.Output<bool?> tls10Enabled;
-
   /// Whether TLS 1.1 is supported.
   late final pulumi.Output<bool?> tls11Enabled;
 
@@ -429,20 +421,18 @@ class GatewayHostNameConfiguration extends pulumi.CustomResource {
     GatewayHostNameConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/gatewayHostNameConfiguration:GatewayHostNameConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:apimanagement/gatewayHostNameConfiguration:GatewayHostNameConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiManagementId = registerOutput<String>('apiManagementId');
     certificateId = registerOutput<String>('certificateId');
     gatewayName = registerOutput<String>('gatewayName');
     hostName = registerOutput<String>('hostName');
     http2Enabled = registerOutput<bool?>('http2Enabled');
     this.name = registerOutput<String>('name');
-    requestClientCertificateEnabled = registerOutput<bool?>(
-      'requestClientCertificateEnabled',
-    );
+    requestClientCertificateEnabled = registerOutput<bool?>('requestClientCertificateEnabled');
     tls10Enabled = registerOutput<bool?>('tls10Enabled');
     tls11Enabled = registerOutput<bool?>('tls11Enabled');
   }
@@ -465,20 +455,18 @@ class GatewayHostNameConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/gatewayHostNameConfiguration:GatewayHostNameConfiguration',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:apimanagement/gatewayHostNameConfiguration:GatewayHostNameConfiguration',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiManagementId = registerOutput<String>('apiManagementId');
     certificateId = registerOutput<String>('certificateId');
     gatewayName = registerOutput<String>('gatewayName');
     hostName = registerOutput<String>('hostName');
     http2Enabled = registerOutput<bool?>('http2Enabled');
     this.name = registerOutput<String>('name');
-    requestClientCertificateEnabled = registerOutput<bool?>(
-      'requestClientCertificateEnabled',
-    );
+    requestClientCertificateEnabled = registerOutput<bool?>('requestClientCertificateEnabled');
     tls10Enabled = registerOutput<bool?>('tls10Enabled');
     tls11Enabled = registerOutput<bool?>('tls11Enabled');
   }

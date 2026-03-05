@@ -7,13 +7,10 @@ import 'filtering_tag.dart';
 class LogRules {
   /// List of filtering tags to be used for capturing logs. This only takes effect if SendResourceLogs flag is enabled. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.
   final pulumi.Input<List<FilteringTag>>? filteringTags;
-
   /// Flag specifying if AAD logs should be sent for the Monitor resource.
   final pulumi.Input<bool>? sendAadLogs;
-
   /// Flag specifying if Azure resource logs should be sent for the Monitor resource.
   final pulumi.Input<bool>? sendResourceLogs;
-
   /// Flag specifying if Azure subscription logs should be sent for the Monitor resource.
   final pulumi.Input<bool>? sendSubscriptionLogs;
 
@@ -31,18 +28,7 @@ class LogRules {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filteringTags':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<FilteringTag>,
-            List<Map<String, dynamic>>
-          >(
-            filteringTags,
-            (value) =>
-                pulumi.Input.encodeList<FilteringTag, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'filteringTags': ?pulumi.Input.mapOptionalInputValue<List<FilteringTag>, List<Map<String, dynamic>>>(filteringTags, (value) => pulumi.Input.encodeList<FilteringTag, Map<String, dynamic>>(value, (value) => value.toMap())),
       'sendAadLogs': ?sendAadLogs,
       'sendResourceLogs': ?sendResourceLogs,
       'sendSubscriptionLogs': ?sendSubscriptionLogs,
@@ -51,32 +37,11 @@ class LogRules {
 
   factory LogRules.fromMap(Map<String, dynamic> map) {
     return LogRules(
-      filteringTags: (() {
-        final guardedValue = map['filteringTags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<FilteringTag>(
-            guardedValue,
-            (value) =>
-                FilteringTag.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      sendAadLogs: (() {
-        final guardedValue = map['sendAadLogs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      sendResourceLogs: (() {
-        final guardedValue = map['sendResourceLogs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      sendSubscriptionLogs: (() {
-        final guardedValue = map['sendSubscriptionLogs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      filteringTags: (() { final guardedValue = map['filteringTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<FilteringTag>(guardedValue, (value) => FilteringTag.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      sendAadLogs: (() { final guardedValue = map['sendAadLogs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      sendResourceLogs: (() { final guardedValue = map['sendResourceLogs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      sendSubscriptionLogs: (() { final guardedValue = map['sendSubscriptionLogs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

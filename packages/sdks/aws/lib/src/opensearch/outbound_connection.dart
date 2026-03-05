@@ -212,26 +212,18 @@ import 'outbound_connection_state.dart';
 class OutboundConnection extends pulumi.CustomResource {
   /// Accepts the connection.
   late final pulumi.Output<bool?> acceptConnection;
-
   /// Specifies the connection alias that will be used by the customer for this connection.
   late final pulumi.Output<String> connectionAlias;
-
   /// Specifies the connection mode. Accepted values are `DIRECT` or `VPC_ENDPOINT`.
   late final pulumi.Output<String> connectionMode;
-
   /// Configuration block for the outbound connection.
-  late final pulumi.Output<OutboundConnectionConnectionProperties>
-  connectionProperties;
-
+  late final pulumi.Output<OutboundConnectionConnectionProperties> connectionProperties;
   /// Status of the connection request.
   late final pulumi.Output<String> connectionStatus;
-
   /// Configuration block for the local Opensearch domain.
   late final pulumi.Output<OutboundConnectionLocalDomainInfo> localDomainInfo;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Configuration block for the remote Opensearch domain.
   late final pulumi.Output<OutboundConnectionRemoteDomainInfo> remoteDomainInfo;
 
@@ -244,47 +236,19 @@ class OutboundConnection extends pulumi.CustomResource {
     OutboundConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:opensearch/outboundConnection:OutboundConnection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:opensearch/outboundConnection:OutboundConnection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     acceptConnection = registerOutput<bool?>('acceptConnection');
     connectionAlias = registerOutput<String>('connectionAlias');
     connectionMode = registerOutput<String>('connectionMode');
-    connectionProperties =
-        registerOutput<OutboundConnectionConnectionProperties>(
-          'connectionProperties',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return OutboundConnectionConnectionProperties.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    connectionProperties = registerOutput<OutboundConnectionConnectionProperties>('connectionProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OutboundConnectionConnectionProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     connectionStatus = registerOutput<String>('connectionStatus');
-    localDomainInfo = registerOutput<OutboundConnectionLocalDomainInfo>(
-      'localDomainInfo',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return OutboundConnectionLocalDomainInfo.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    localDomainInfo = registerOutput<OutboundConnectionLocalDomainInfo>('localDomainInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OutboundConnectionLocalDomainInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    remoteDomainInfo = registerOutput<OutboundConnectionRemoteDomainInfo>(
-      'remoteDomainInfo',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return OutboundConnectionRemoteDomainInfo.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    remoteDomainInfo = registerOutput<OutboundConnectionRemoteDomainInfo>('remoteDomainInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OutboundConnectionRemoteDomainInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [OutboundConnection] resource's state with the given [name] and [id].
@@ -305,46 +269,18 @@ class OutboundConnection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:opensearch/outboundConnection:OutboundConnection',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:opensearch/outboundConnection:OutboundConnection',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     acceptConnection = registerOutput<bool?>('acceptConnection');
     connectionAlias = registerOutput<String>('connectionAlias');
     connectionMode = registerOutput<String>('connectionMode');
-    connectionProperties =
-        registerOutput<OutboundConnectionConnectionProperties>(
-          'connectionProperties',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return OutboundConnectionConnectionProperties.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    connectionProperties = registerOutput<OutboundConnectionConnectionProperties>('connectionProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OutboundConnectionConnectionProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     connectionStatus = registerOutput<String>('connectionStatus');
-    localDomainInfo = registerOutput<OutboundConnectionLocalDomainInfo>(
-      'localDomainInfo',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return OutboundConnectionLocalDomainInfo.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    localDomainInfo = registerOutput<OutboundConnectionLocalDomainInfo>('localDomainInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OutboundConnectionLocalDomainInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    remoteDomainInfo = registerOutput<OutboundConnectionRemoteDomainInfo>(
-      'remoteDomainInfo',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return OutboundConnectionRemoteDomainInfo.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    remoteDomainInfo = registerOutput<OutboundConnectionRemoteDomainInfo>('remoteDomainInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OutboundConnectionRemoteDomainInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

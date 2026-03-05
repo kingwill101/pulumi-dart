@@ -1,22 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getAggregateV2.
 class GetAggregateV2Result {
   /// List of Hypervisors contained in the Host Aggregate
   final List<String> hosts;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Metadata of the Host Aggregate
   final Map<String, String> metadata;
-
   /// See Argument Reference above.
   final String name;
-
   /// See Argument Reference above.
   final String region;
-
   /// Availability zone of the Host Aggregate
   final String zone;
 
@@ -58,3 +54,4 @@ class GetAggregateV2Result {
     );
   }
 }
+

@@ -5,11 +5,7 @@ import 'agent_knowledge_base_knowledge_base_configuration_sql_knowledge_base_con
 
 class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfigurationProvisionedConfiguration {
   /// Configurations for authentication to Amazon Redshift. See `auth_configuration` block for details.
-  final pulumi.Input<
-    AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfigurationProvisionedConfigurationAuthConfiguration
-  >
-  authConfiguration;
-
+  final pulumi.Input<AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfigurationProvisionedConfigurationAuthConfiguration> authConfiguration;
   /// ID of the Amazon Redshift cluster.
   final pulumi.Input<String> clusterIdentifier;
 
@@ -23,27 +19,16 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationR
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authConfiguration':
-          pulumi.Input.mapInputValue<
-            AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfigurationProvisionedConfigurationAuthConfiguration,
-            Map<String, dynamic>
-          >(authConfiguration, (value) => value.toMap()),
+      'authConfiguration': pulumi.Input.mapInputValue<AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfigurationProvisionedConfigurationAuthConfiguration, Map<String, dynamic>>(authConfiguration, (value) => value.toMap()),
       'clusterIdentifier': clusterIdentifier,
     };
   }
 
-  factory AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfigurationProvisionedConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfigurationProvisionedConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfigurationProvisionedConfiguration(
-      authConfiguration: pulumi.Input.fromValue(
-        AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfigurationProvisionedConfigurationAuthConfiguration.fromMap(
-          (map['authConfiguration']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      clusterIdentifier: pulumi.Input.fromValue(
-        map['clusterIdentifier'] as String,
-      ),
+      authConfiguration: pulumi.Input.fromValue(AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfigurationProvisionedConfigurationAuthConfiguration.fromMap((map['authConfiguration']! as Map).cast<String, dynamic>())),
+      clusterIdentifier: pulumi.Input.fromValue(map['clusterIdentifier'] as String),
     );
   }
 }
+

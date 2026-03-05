@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleMonitoringV3RangeResponse {
   /// Range maximum.
   final pulumi.Input<double> max;
-
   /// Range minimum.
   final pulumi.Input<double> min;
 
   /// Creates a new [GoogleMonitoringV3RangeResponse].
   /// [max] Range maximum.
   /// [min] Range minimum.
-  GoogleMonitoringV3RangeResponse({required this.max, required this.min});
+  GoogleMonitoringV3RangeResponse({
+    required this.max,
+    required this.min,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'max': max, 'min': min};
+    return <String, dynamic>{
+      'max': max,
+      'min': min,
+    };
   }
 
   factory GoogleMonitoringV3RangeResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class GoogleMonitoringV3RangeResponse {
     );
   }
 }
+

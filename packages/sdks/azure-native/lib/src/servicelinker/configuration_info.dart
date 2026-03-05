@@ -8,22 +8,16 @@ import 'dapr_properties.dart';
 class ConfigurationInfo {
   /// Optional, indicate whether to apply configurations on source application. If enable, generate configurations and applied to the source application. Default is enable. If optOut, no configuration change will be made on source.
   final pulumi.Input<String>? action;
-
   /// A dictionary of additional configurations to be added. Service will auto generate a set of basic configurations and this property is to full fill more customized configurations
   final pulumi.Input<Map<String, String>>? additionalConfigurations;
-
   /// A dictionary of additional properties to be added in the end of connection string.
   final pulumi.Input<Map<String, String>>? additionalConnectionStringProperties;
-
   /// An option to store configuration into different place
   final pulumi.Input<ConfigurationStore>? configurationStore;
-
   /// Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations
   final pulumi.Input<Map<String, String>>? customizedKeys;
-
   /// Indicates some additional properties for dapr client type
   final pulumi.Input<DaprProperties>? daprProperties;
-
   /// Indicates whether to clean up previous operation when Linker is updating or deleting
   final pulumi.Input<String>? deleteOrUpdateBehavior;
 
@@ -49,72 +43,24 @@ class ConfigurationInfo {
     return <String, dynamic>{
       'action': ?action,
       'additionalConfigurations': ?additionalConfigurations,
-      'additionalConnectionStringProperties':
-          ?additionalConnectionStringProperties,
-      'configurationStore':
-          ?pulumi.Input.mapOptionalInputValue<
-            ConfigurationStore,
-            Map<String, dynamic>
-          >(configurationStore, (value) => value.toMap()),
+      'additionalConnectionStringProperties': ?additionalConnectionStringProperties,
+      'configurationStore': ?pulumi.Input.mapOptionalInputValue<ConfigurationStore, Map<String, dynamic>>(configurationStore, (value) => value.toMap()),
       'customizedKeys': ?customizedKeys,
-      'daprProperties':
-          ?pulumi.Input.mapOptionalInputValue<
-            DaprProperties,
-            Map<String, dynamic>
-          >(daprProperties, (value) => value.toMap()),
+      'daprProperties': ?pulumi.Input.mapOptionalInputValue<DaprProperties, Map<String, dynamic>>(daprProperties, (value) => value.toMap()),
       'deleteOrUpdateBehavior': ?deleteOrUpdateBehavior,
     };
   }
 
   factory ConfigurationInfo.fromMap(Map<String, dynamic> map) {
     return ConfigurationInfo(
-      action: (() {
-        final guardedValue = map['action'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      additionalConfigurations: (() {
-        final guardedValue = map['additionalConfigurations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      additionalConnectionStringProperties: (() {
-        final guardedValue = map['additionalConnectionStringProperties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      configurationStore: (() {
-        final guardedValue = map['configurationStore'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ConfigurationStore.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      customizedKeys: (() {
-        final guardedValue = map['customizedKeys'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      daprProperties: (() {
-        final guardedValue = map['daprProperties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DaprProperties.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      deleteOrUpdateBehavior: (() {
-        final guardedValue = map['deleteOrUpdateBehavior'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      additionalConfigurations: (() { final guardedValue = map['additionalConfigurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      additionalConnectionStringProperties: (() { final guardedValue = map['additionalConnectionStringProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      configurationStore: (() { final guardedValue = map['configurationStore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConfigurationStore.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      customizedKeys: (() { final guardedValue = map['customizedKeys']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      daprProperties: (() { final guardedValue = map['daprProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DaprProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deleteOrUpdateBehavior: (() { final guardedValue = map['deleteOrUpdateBehavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

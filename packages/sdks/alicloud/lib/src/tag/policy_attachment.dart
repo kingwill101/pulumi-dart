@@ -211,10 +211,8 @@ import 'policy_attachment_state.dart';
 class PolicyAttachment extends pulumi.CustomResource {
   /// The ID of the tag policy.
   late final pulumi.Output<String> policyId;
-
   /// The ID of the object.
   late final pulumi.Output<String> targetId;
-
   /// The type of the object. Valid values: `USER`, `ROOT`, `FOLDER`, `ACCOUNT`.
   late final pulumi.Output<String> targetType;
 
@@ -227,11 +225,11 @@ class PolicyAttachment extends pulumi.CustomResource {
     PolicyAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:tag/policyAttachment:PolicyAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:tag/policyAttachment:PolicyAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     policyId = registerOutput<String>('policyId');
     targetId = registerOutput<String>('targetId');
     targetType = registerOutput<String>('targetType');
@@ -255,11 +253,11 @@ class PolicyAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:tag/policyAttachment:PolicyAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:tag/policyAttachment:PolicyAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     policyId = registerOutput<String>('policyId');
     targetId = registerOutput<String>('targetId');
     targetType = registerOutput<String>('targetType');

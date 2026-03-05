@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DaxClusterNotificationConfigurationResponse {
   /// &lt;p&gt;The Amazon Resource Name (ARN) that identifies the topic. &lt;/p&gt;
   final pulumi.Input<String>? topicArn;
-
   /// &lt;p&gt;The current state of the topic. A value of “active” means that notifications will be sent to the topic. A value of “inactive” means that notifications will not be sent to the topic.&lt;/p&gt;
   final pulumi.Input<String>? topicStatus;
 
@@ -25,20 +24,11 @@ class DaxClusterNotificationConfigurationResponse {
     };
   }
 
-  factory DaxClusterNotificationConfigurationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DaxClusterNotificationConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return DaxClusterNotificationConfigurationResponse(
-      topicArn: (() {
-        final guardedValue = map['topicArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      topicStatus: (() {
-        final guardedValue = map['topicStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      topicArn: (() { final guardedValue = map['topicArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      topicStatus: (() { final guardedValue = map['topicStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

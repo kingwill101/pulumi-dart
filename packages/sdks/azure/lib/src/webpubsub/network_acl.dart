@@ -490,13 +490,10 @@ import 'network_acl_state.dart';
 class NetworkAcl extends pulumi.CustomResource {
   /// The default action to control the network access when no other rule matches. Possible values are `Allow` and `Deny`. Defaults to `Deny`.
   late final pulumi.Output<String?> defaultAction;
-
   /// A `private_endpoint` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> privateEndpoints;
-
   /// A `public_network` block as defined below.
   late final pulumi.Output<NetworkAclPublicNetwork> publicNetwork;
-
   /// The ID of the Web Pubsub service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> webPubsubId;
 
@@ -509,25 +506,14 @@ class NetworkAcl extends pulumi.CustomResource {
     NetworkAclArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:webpubsub/networkAcl:NetworkAcl',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:webpubsub/networkAcl:NetworkAcl',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     defaultAction = registerOutput<String?>('defaultAction');
-    privateEndpoints = registerOutput<List<Map<String, dynamic>>?>(
-      'privateEndpoints',
-    );
-    publicNetwork = registerOutput<NetworkAclPublicNetwork>(
-      'publicNetwork',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NetworkAclPublicNetwork.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    privateEndpoints = registerOutput<List<Map<String, dynamic>>?>('privateEndpoints');
+    publicNetwork = registerOutput<NetworkAclPublicNetwork>('publicNetwork', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkAclPublicNetwork.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     webPubsubId = registerOutput<String>('webPubsubId');
   }
 
@@ -549,25 +535,14 @@ class NetworkAcl extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:webpubsub/networkAcl:NetworkAcl',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:webpubsub/networkAcl:NetworkAcl',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     defaultAction = registerOutput<String?>('defaultAction');
-    privateEndpoints = registerOutput<List<Map<String, dynamic>>?>(
-      'privateEndpoints',
-    );
-    publicNetwork = registerOutput<NetworkAclPublicNetwork>(
-      'publicNetwork',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NetworkAclPublicNetwork.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    privateEndpoints = registerOutput<List<Map<String, dynamic>>?>('privateEndpoints');
+    publicNetwork = registerOutput<NetworkAclPublicNetwork>('publicNetwork', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkAclPublicNetwork.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     webPubsubId = registerOutput<String>('webPubsubId');
   }
 }

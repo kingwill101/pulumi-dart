@@ -6,7 +6,6 @@ class TableTableConstraintsForeignKeyColumnReferences {
   /// The column in the primary key that are
   /// referenced by the referencingColumn
   final pulumi.Input<String> referencedColumn;
-
   /// The column that composes the foreign key.
   final pulumi.Input<String> referencingColumn;
 
@@ -25,16 +24,11 @@ class TableTableConstraintsForeignKeyColumnReferences {
     };
   }
 
-  factory TableTableConstraintsForeignKeyColumnReferences.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory TableTableConstraintsForeignKeyColumnReferences.fromMap(Map<String, dynamic> map) {
     return TableTableConstraintsForeignKeyColumnReferences(
-      referencedColumn: pulumi.Input.fromValue(
-        map['referencedColumn'] as String,
-      ),
-      referencingColumn: pulumi.Input.fromValue(
-        map['referencingColumn'] as String,
-      ),
+      referencedColumn: pulumi.Input.fromValue(map['referencedColumn'] as String),
+      referencingColumn: pulumi.Input.fromValue(map['referencingColumn'] as String),
     );
   }
 }
+

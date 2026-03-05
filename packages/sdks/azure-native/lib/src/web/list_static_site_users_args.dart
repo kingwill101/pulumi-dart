@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListStaticSiteUsersArgs {
   /// The auth provider for the users.
   final pulumi.Input<String> authprovider;
-
   /// Name of the static site.
   final pulumi.Input<String> name;
-
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
 
@@ -38,9 +36,8 @@ class ListStaticSiteUsersArgs {
     return ListStaticSiteUsersArgs(
       authprovider: pulumi.Input.fromValue(map['authprovider'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

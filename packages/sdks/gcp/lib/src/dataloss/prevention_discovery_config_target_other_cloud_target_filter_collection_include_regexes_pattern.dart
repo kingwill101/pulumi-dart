@@ -9,10 +9,7 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRege
   ///
   ///
   /// &lt;a name="nested_targets_other_cloud_target_filter_collection_include_regexes_patterns_amazon_s3_bucket_regex"&gt;&lt;/a&gt;The `amazon_s3_bucket_regex` block supports:
-  final pulumi.Input<
-    PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegex
-  >?
-  amazonS3BucketRegex;
+  final pulumi.Input<PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegex>? amazonS3BucketRegex;
 
   /// Creates a new [PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPattern].
   /// [amazonS3BucketRegex] Regex for Cloud Storage.
@@ -22,27 +19,14 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRege
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'amazonS3BucketRegex':
-          ?pulumi.Input.mapOptionalInputValue<
-            PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegex,
-            Map<String, dynamic>
-          >(amazonS3BucketRegex, (value) => value.toMap()),
+      'amazonS3BucketRegex': ?pulumi.Input.mapOptionalInputValue<PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegex, Map<String, dynamic>>(amazonS3BucketRegex, (value) => value.toMap()),
     };
   }
 
-  factory PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPattern.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPattern.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPattern(
-      amazonS3BucketRegex: (() {
-        final guardedValue = map['amazonS3BucketRegex'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegex.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      amazonS3BucketRegex: (() { final guardedValue = map['amazonS3BucketRegex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegex.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

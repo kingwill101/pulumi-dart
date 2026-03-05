@@ -122,16 +122,12 @@ import 'domain_state.dart';
 class Domain extends pulumi.CustomResource {
   /// A list of the dns server name.
   late final pulumi.Output<List<String>> dnsServers;
-
   /// The domain ID.
   late final pulumi.Output<String> domainId;
-
   /// Id of the group in which the domain will add. If not supplied, then use default group.
   late final pulumi.Output<String?> groupId;
-
   /// Name of the domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
   late final pulumi.Output<String> name;
-
   /// The Id of resource group which the dns belongs.
   late final pulumi.Output<String?> resourceGroupId;
 
@@ -139,13 +135,16 @@ class Domain extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Domain]. {@macro pulumi_dns_domain_domain_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Domain(String name, {DomainArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:dns/domain:Domain',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Domain(
+    String name, {
+    DomainArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:dns/domain:Domain',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dnsServers = registerOutput<List<String>>('dnsServers');
     domainId = registerOutput<String>('domainId');
     groupId = registerOutput<String?>('groupId');
@@ -171,11 +170,11 @@ class Domain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dns/domain:Domain',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dns/domain:Domain',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dnsServers = registerOutput<List<String>>('dnsServers');
     domainId = registerOutput<String>('domainId');
     groupId = registerOutput<String?>('groupId');

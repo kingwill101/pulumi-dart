@@ -8,10 +8,14 @@ class PolicyFileShareRetentionDaily {
 
   /// Creates a new [PolicyFileShareRetentionDaily].
   /// [count] The number of daily backups to keep. Must be between `1` and `200` (inclusive)
-  PolicyFileShareRetentionDaily({required this.count});
+  PolicyFileShareRetentionDaily({
+    required this.count,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'count': count};
+    return <String, dynamic>{
+      'count': count,
+    };
   }
 
   factory PolicyFileShareRetentionDaily.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class PolicyFileShareRetentionDaily {
     );
   }
 }
+

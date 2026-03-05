@@ -10,19 +10,20 @@ class PluginHostingService {
 
   /// Creates a new [PluginHostingService].
   /// [serviceUri] The URI of the service implemented by the plugin developer, used to
-  PluginHostingService({this.serviceUri});
+  PluginHostingService({
+    this.serviceUri,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'serviceUri': ?serviceUri};
+    return <String, dynamic>{
+      'serviceUri': ?serviceUri,
+    };
   }
 
   factory PluginHostingService.fromMap(Map<String, dynamic> map) {
     return PluginHostingService(
-      serviceUri: (() {
-        final guardedValue = map['serviceUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      serviceUri: (() { final guardedValue = map['serviceUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

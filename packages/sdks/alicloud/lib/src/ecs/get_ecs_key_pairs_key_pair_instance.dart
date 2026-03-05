@@ -5,37 +5,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEcsKeyPairsKeyPairInstance {
   /// The zone ID of the instance.
   final pulumi.Input<String> availabilityZone;
-
   /// The description of the ECS instance.
   final pulumi.Input<String> description;
-
   /// The image ID of the instance.
   final pulumi.Input<String> imageId;
-
   /// The ID of the ECS instance.
   final pulumi.Input<String> instanceId;
-
   /// The name of the ECS instance.
   final pulumi.Input<String> instanceName;
-
   /// The instance type of the instance.
   final pulumi.Input<String> instanceType;
-
   /// The name of the key pair.
   final pulumi.Input<String> keyName;
-
   /// The private IP address of the ECS instance.
   final pulumi.Input<String> privateIp;
-
   /// The public IP address or EIP of the ECS instance.
   final pulumi.Input<String> publicIp;
-
   /// The region ID of the instance.
   final pulumi.Input<String> regionId;
-
   /// The status of the instance.
   final pulumi.Input<String> status;
-
   /// The ID of the vSwitch.
   final pulumi.Input<String> vswitchId;
 
@@ -86,9 +75,7 @@ class GetEcsKeyPairsKeyPairInstance {
 
   factory GetEcsKeyPairsKeyPairInstance.fromMap(Map<String, dynamic> map) {
     return GetEcsKeyPairsKeyPairInstance(
-      availabilityZone: pulumi.Input.fromValue(
-        map['availabilityZone'] as String,
-      ),
+      availabilityZone: pulumi.Input.fromValue(map['availabilityZone'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
       imageId: pulumi.Input.fromValue(map['imageId'] as String),
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
@@ -103,3 +90,4 @@ class GetEcsKeyPairsKeyPairInstance {
     );
   }
 }
+

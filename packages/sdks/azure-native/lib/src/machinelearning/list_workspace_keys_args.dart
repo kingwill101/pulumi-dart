@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListWorkspaceKeysArgs {
   /// The name of the resource group to which the machine learning workspace belongs.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the machine learning workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -30,10 +29,9 @@ class ListWorkspaceKeysArgs {
 
   factory ListWorkspaceKeysArgs.fromMap(Map<String, dynamic> map) {
     return ListWorkspaceKeysArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
+

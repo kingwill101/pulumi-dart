@@ -8,43 +8,30 @@ import 'throttling_information_response.dart';
 class GetSmartDetectorAlertRuleResult {
   /// The alert rule actions.
   final ActionGroupsInformationResponse actionGroups;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The alert rule description.
   final String? description;
-
   /// The alert rule's detector.
   final DetectorResponse detector;
-
   /// The alert rule frequency in ISO8601 format. The time granularity must be in minutes and minimum value is 1 minute, depending on the detector.
   final String frequency;
-
   /// The resource ID.
   final String id;
-
   /// The resource location.
   final String? location;
-
   /// The resource name.
   final String name;
-
   /// The alert rule resources scope.
   final List<String> scope;
-
   /// The alert rule severity.
   final String severity;
-
   /// The alert rule state.
   final String state;
-
   /// The resource tags.
   final Map<String, String>? tags;
-
   /// The alert rule throttling information.
   final ThrottlingInformationResponse? throttling;
-
   /// The resource type.
   final String type;
 
@@ -101,42 +88,21 @@ class GetSmartDetectorAlertRuleResult {
 
   factory GetSmartDetectorAlertRuleResult.fromMap(Map<String, dynamic> map) {
     return GetSmartDetectorAlertRuleResult(
-      actionGroups: ActionGroupsInformationResponse.fromMap(
-        (map['actionGroups']! as Map).cast<String, dynamic>(),
-      ),
+      actionGroups: ActionGroupsInformationResponse.fromMap((map['actionGroups']! as Map).cast<String, dynamic>()),
       azureApiVersion: map['azureApiVersion'] as String,
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      detector: DetectorResponse.fromMap(
-        (map['detector']! as Map).cast<String, dynamic>(),
-      ),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      detector: DetectorResponse.fromMap((map['detector']! as Map).cast<String, dynamic>()),
       frequency: map['frequency'] as String,
       id: map['id'] as String,
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
       scope: (map['scope'] as List).cast<String>(),
       severity: map['severity'] as String,
       state: map['state'] as String,
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
-      throttling: (() {
-        final guardedValue = map['throttling'];
-        if (guardedValue == null) return null;
-        return ThrottlingInformationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      throttling: (() { final guardedValue = map['throttling']; if (guardedValue == null) return null; return ThrottlingInformationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       type: map['type'] as String,
     );
   }
 }
+

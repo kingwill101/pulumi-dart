@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPartnerTopicEventSubscriptionArgs {
   /// Name of the event subscription to be found.
   final pulumi.Input<String> eventSubscriptionName;
-
   /// Name of the partner topic.
   final pulumi.Input<String> partnerTopicName;
-
   /// The name of the resource group within the user's subscription.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,19 +32,12 @@ class GetPartnerTopicEventSubscriptionArgs {
     };
   }
 
-  factory GetPartnerTopicEventSubscriptionArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetPartnerTopicEventSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return GetPartnerTopicEventSubscriptionArgs(
-      eventSubscriptionName: pulumi.Input.fromValue(
-        map['eventSubscriptionName'] as String,
-      ),
-      partnerTopicName: pulumi.Input.fromValue(
-        map['partnerTopicName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      eventSubscriptionName: pulumi.Input.fromValue(map['eventSubscriptionName'] as String),
+      partnerTopicName: pulumi.Input.fromValue(map['partnerTopicName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

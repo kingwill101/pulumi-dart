@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetResponsePlanActionSsmAutomationParameter {
   /// The name of the PagerDuty configuration.
   final pulumi.Input<String> name;
-
   /// The values for the associated parameter name.
   final pulumi.Input<List<String>> values;
 
@@ -18,15 +17,17 @@ class GetResponsePlanActionSsmAutomationParameter {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'values': values};
+    return <String, dynamic>{
+      'name': name,
+      'values': values,
+    };
   }
 
-  factory GetResponsePlanActionSsmAutomationParameter.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetResponsePlanActionSsmAutomationParameter.fromMap(Map<String, dynamic> map) {
     return GetResponsePlanActionSsmAutomationParameter(
       name: pulumi.Input.fromValue(map['name'] as String),
       values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
+

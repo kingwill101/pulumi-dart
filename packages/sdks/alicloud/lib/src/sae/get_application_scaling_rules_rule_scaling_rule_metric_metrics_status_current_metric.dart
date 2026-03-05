@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric {
   /// The current value.
   final pulumi.Input<int> currentValue;
-
   /// The name of the trigger condition.
   final pulumi.Input<String> name;
-
   /// The metric type. Associated with monitoring indicators.
   final pulumi.Input<String> type;
 
@@ -30,9 +28,7 @@ class GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric 
     };
   }
 
-  factory GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric.fromMap(Map<String, dynamic> map) {
     return GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric(
       currentValue: pulumi.Input.fromValue(map['currentValue'] as int),
       name: pulumi.Input.fromValue(map['name'] as String),
@@ -40,3 +36,4 @@ class GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric 
     );
   }
 }
+

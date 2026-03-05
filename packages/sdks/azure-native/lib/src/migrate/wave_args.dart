@@ -10,13 +10,10 @@ import 'wave_properties.dart';
 class WaveArgs {
   /// Migrate Project Name
   final pulumi.Input<String> projectName;
-
   /// The resource-specific properties for this resource.
   final pulumi.Input<WaveProperties>? properties;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Migration Wave Resource
   final pulumi.Input<String>? waveName;
 
@@ -35,11 +32,7 @@ class WaveArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'projectName': projectName,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            WaveProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<WaveProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'waveName': ?waveName,
     };
@@ -48,21 +41,10 @@ class WaveArgs {
   factory WaveArgs.fromMap(Map<String, dynamic> map) {
     return WaveArgs(
       projectName: pulumi.Input.fromValue(map['projectName'] as String),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          WaveProperties.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      waveName: (() {
-        final guardedValue = map['waveName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WaveProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      waveName: (() { final guardedValue = map['waveName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

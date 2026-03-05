@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ErrorHandlerResponse {
   /// Error condition this handler applies to.
   final pulumi.Input<String> errorCode;
-
   /// MIME type of file. Defaults to text/html.
   final pulumi.Input<String> mimeType;
-
   /// Static file content to be served for this error.
   final pulumi.Input<String> staticFile;
 
@@ -39,3 +37,4 @@ class ErrorHandlerResponse {
     );
   }
 }
+

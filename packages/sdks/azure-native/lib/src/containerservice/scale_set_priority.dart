@@ -15,3 +15,4 @@ enum ScaleSetPriority {
     throw ArgumentError('Unknown ScaleSetPriority value: $value');
   }
 }
+

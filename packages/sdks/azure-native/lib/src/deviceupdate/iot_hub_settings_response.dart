@@ -9,10 +9,14 @@ class IotHubSettingsResponse {
 
   /// Creates a new [IotHubSettingsResponse].
   /// [resourceId] IoTHub resource ID
-  IotHubSettingsResponse({required this.resourceId});
+  IotHubSettingsResponse({
+    required this.resourceId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'resourceId': resourceId};
+    return <String, dynamic>{
+      'resourceId': resourceId,
+    };
   }
 
   factory IotHubSettingsResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class IotHubSettingsResponse {
     );
   }
 }
+

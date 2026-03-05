@@ -158,34 +158,24 @@ import 'virtual_network_appliance_args.dart';
 class VirtualNetworkAppliance extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Bandwidth of the VirtualNetworkAppliance resource in Gbps.
   late final pulumi.Output<String?> bandwidthInGbps;
-
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
-
   /// A list of IPConfigurations of the virtual network appliance.
   late final pulumi.Output<List<Map<String, dynamic>>> ipConfigurations;
-
   /// Resource location.
   late final pulumi.Output<String?> location;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// The provisioning state of the virtual network appliance resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The resource GUID property of the virtual network appliance resource.
   late final pulumi.Output<String> resourceGuid;
-
   /// The reference to the subnet resource.
   late final pulumi.Output<SubnetResponse?> subnet;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -198,31 +188,20 @@ class VirtualNetworkAppliance extends pulumi.CustomResource {
     VirtualNetworkApplianceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:network:VirtualNetworkAppliance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:network:VirtualNetworkAppliance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     bandwidthInGbps = registerOutput<String?>('bandwidthInGbps');
     etag = registerOutput<String>('etag');
-    ipConfigurations = registerOutput<List<Map<String, dynamic>>>(
-      'ipConfigurations',
-    );
+    ipConfigurations = registerOutput<List<Map<String, dynamic>>>('ipConfigurations');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     resourceGuid = registerOutput<String>('resourceGuid');
-    subnet = registerOutput<SubnetResponse?>(
-      'subnet',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SubnetResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    subnet = registerOutput<SubnetResponse?>('subnet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubnetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

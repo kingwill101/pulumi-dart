@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApiPolicyArgs {
   /// The name of the API Management Service. Changing this forces a new resource to be created.
   final pulumi.Input<String> apiManagementName;
-
   /// The ID of the API Management API within the API Management Service. Changing this forces a new resource to be created.
   final pulumi.Input<String> apiName;
-
   /// The name of the Resource Group in which the API Management Service exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
-
   /// The XML Content for this Policy as a string.
   final pulumi.Input<String>? xmlContent;
-
   /// A link to a Policy XML Document, which must be publicly available.
   final pulumi.Input<String>? xmlLink;
 
@@ -48,23 +44,12 @@ class ApiPolicyArgs {
 
   factory ApiPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ApiPolicyArgs(
-      apiManagementName: pulumi.Input.fromValue(
-        map['apiManagementName'] as String,
-      ),
+      apiManagementName: pulumi.Input.fromValue(map['apiManagementName'] as String),
       apiName: pulumi.Input.fromValue(map['apiName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      xmlContent: (() {
-        final guardedValue = map['xmlContent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      xmlLink: (() {
-        final guardedValue = map['xmlLink'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      xmlContent: (() { final guardedValue = map['xmlContent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      xmlLink: (() { final guardedValue = map['xmlLink']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

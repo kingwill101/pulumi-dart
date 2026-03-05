@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StorageAccountMicrosoftEndpointsResponse {
   /// Gets the blob endpoint.
   final pulumi.Input<String> blob;
-
   /// Gets the dfs endpoint.
   final pulumi.Input<String> dfs;
-
   /// Gets the file endpoint.
   final pulumi.Input<String> file;
-
   /// Gets the queue endpoint.
   final pulumi.Input<String> queue;
-
   /// Gets the table endpoint.
   final pulumi.Input<String> table;
-
   /// Gets the web endpoint.
   final pulumi.Input<String> web;
 
@@ -49,9 +44,7 @@ class StorageAccountMicrosoftEndpointsResponse {
     };
   }
 
-  factory StorageAccountMicrosoftEndpointsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory StorageAccountMicrosoftEndpointsResponse.fromMap(Map<String, dynamic> map) {
     return StorageAccountMicrosoftEndpointsResponse(
       blob: pulumi.Input.fromValue(map['blob'] as String),
       dfs: pulumi.Input.fromValue(map['dfs'] as String),
@@ -62,3 +55,4 @@ class StorageAccountMicrosoftEndpointsResponse {
     );
   }
 }
+

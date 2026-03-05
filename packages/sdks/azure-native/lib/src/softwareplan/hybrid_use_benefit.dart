@@ -146,25 +146,18 @@ import 'sku_response.dart';
 class HybridUseBenefit extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Created date
   late final pulumi.Output<String> createdDate;
-
   /// Indicates the revision of the hybrid use benefit
   late final pulumi.Output<int> etag;
-
   /// Last updated date
   late final pulumi.Output<String> lastUpdatedDate;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Provisioning state
   late final pulumi.Output<String> provisioningState;
-
   /// Hybrid use benefit SKU
   late final pulumi.Output<SkuResponse> sku;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -177,27 +170,18 @@ class HybridUseBenefit extends pulumi.CustomResource {
     HybridUseBenefitArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:softwareplan:HybridUseBenefit',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:softwareplan:HybridUseBenefit',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createdDate = registerOutput<String>('createdDate');
     etag = registerOutput<int>('etag');
     lastUpdatedDate = registerOutput<String>('lastUpdatedDate');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    sku = registerOutput<SkuResponse>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sku = registerOutput<SkuResponse>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

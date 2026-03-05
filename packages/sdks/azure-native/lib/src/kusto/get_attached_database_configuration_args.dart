@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAttachedDatabaseConfigurationArgs {
   /// The name of the attached database configuration.
   final pulumi.Input<String> attachedDatabaseConfigurationName;
-
   /// The name of the Kusto cluster.
   final pulumi.Input<String> clusterName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,17 +32,12 @@ class GetAttachedDatabaseConfigurationArgs {
     };
   }
 
-  factory GetAttachedDatabaseConfigurationArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetAttachedDatabaseConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return GetAttachedDatabaseConfigurationArgs(
-      attachedDatabaseConfigurationName: pulumi.Input.fromValue(
-        map['attachedDatabaseConfigurationName'] as String,
-      ),
+      attachedDatabaseConfigurationName: pulumi.Input.fromValue(map['attachedDatabaseConfigurationName'] as String),
       clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

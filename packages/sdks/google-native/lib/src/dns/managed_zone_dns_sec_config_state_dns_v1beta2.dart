@@ -13,8 +13,7 @@ enum ManagedZoneDnsSecConfigStateDnsV1beta2 {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ManagedZoneDnsSecConfigStateDnsV1beta2 value: $value',
-    );
+    throw ArgumentError('Unknown ManagedZoneDnsSecConfigStateDnsV1beta2 value: $value');
   }
 }
+

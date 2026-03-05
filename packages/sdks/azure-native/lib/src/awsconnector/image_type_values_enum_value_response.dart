@@ -9,19 +9,20 @@ class ImageTypeValuesEnumValueResponse {
 
   /// Creates a new [ImageTypeValuesEnumValueResponse].
   /// [value] Property value
-  ImageTypeValuesEnumValueResponse({this.value});
+  ImageTypeValuesEnumValueResponse({
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': ?value};
+    return <String, dynamic>{
+      'value': ?value,
+    };
   }
 
   factory ImageTypeValuesEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return ImageTypeValuesEnumValueResponse(
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

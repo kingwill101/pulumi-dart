@@ -7,19 +7,14 @@ import 'hci_validation_failure_detail_response.dart';
 class HciEdgeDeviceArcExtensionResponse {
   /// Error details while installing Arc extension.
   final pulumi.Input<List<HciValidationFailureDetailResponse>> errorDetails;
-
   /// Arc extension name installed on edge device.
   final pulumi.Input<String> extensionName;
-
   /// Arc Extension Azure resource id.
   final pulumi.Input<String> extensionResourceId;
-
   /// Indicates whether the extension is managed by the user or by Azure.
   final pulumi.Input<String> managedBy;
-
   /// Arc extension state from arc machine extension.
   final pulumi.Input<String> state;
-
   /// Extension version installed.
   final pulumi.Input<String> typeHandlerVersion;
 
@@ -41,18 +36,7 @@ class HciEdgeDeviceArcExtensionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'errorDetails':
-          pulumi.Input.mapInputValue<
-            List<HciValidationFailureDetailResponse>,
-            List<Map<String, dynamic>>
-          >(
-            errorDetails,
-            (value) =>
-                pulumi.Input.encodeList<
-                  HciValidationFailureDetailResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'errorDetails': pulumi.Input.mapInputValue<List<HciValidationFailureDetailResponse>, List<Map<String, dynamic>>>(errorDetails, (value) => pulumi.Input.encodeList<HciValidationFailureDetailResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'extensionName': extensionName,
       'extensionResourceId': extensionResourceId,
       'managedBy': managedBy,
@@ -63,23 +47,13 @@ class HciEdgeDeviceArcExtensionResponse {
 
   factory HciEdgeDeviceArcExtensionResponse.fromMap(Map<String, dynamic> map) {
     return HciEdgeDeviceArcExtensionResponse(
-      errorDetails: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<HciValidationFailureDetailResponse>(
-          map['errorDetails']!,
-          (value) => HciValidationFailureDetailResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      errorDetails: pulumi.Input.fromValue(pulumi.Input.decodeList<HciValidationFailureDetailResponse>(map['errorDetails']!, (value) => HciValidationFailureDetailResponse.fromMap((value as Map).cast<String, dynamic>()))),
       extensionName: pulumi.Input.fromValue(map['extensionName'] as String),
-      extensionResourceId: pulumi.Input.fromValue(
-        map['extensionResourceId'] as String,
-      ),
+      extensionResourceId: pulumi.Input.fromValue(map['extensionResourceId'] as String),
       managedBy: pulumi.Input.fromValue(map['managedBy'] as String),
       state: pulumi.Input.fromValue(map['state'] as String),
-      typeHandlerVersion: pulumi.Input.fromValue(
-        map['typeHandlerVersion'] as String,
-      ),
+      typeHandlerVersion: pulumi.Input.fromValue(map['typeHandlerVersion'] as String),
     );
   }
 }
+

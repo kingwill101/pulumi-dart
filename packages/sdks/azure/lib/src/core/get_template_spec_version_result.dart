@@ -1,15 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getTemplateSpecVersion.
 class GetTemplateSpecVersionResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
   final String resourceGroupName;
-
   /// A mapping of tags assigned to the Template.
   final Map<String, String> tags;
-
   /// The ARM Template body of the Template Spec Version.
   final String templateBody;
   final String version;
@@ -52,3 +51,4 @@ class GetTemplateSpecVersionResult {
     );
   }
 }
+

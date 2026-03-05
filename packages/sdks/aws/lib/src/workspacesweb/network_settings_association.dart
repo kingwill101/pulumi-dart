@@ -423,12 +423,10 @@ import 'network_settings_association_state.dart';
 class NetworkSettingsAssociation extends pulumi.CustomResource {
   /// ARN of the network settings to associate with the portal. Forces replacement if changed.
   late final pulumi.Output<String> networkSettingsArn;
-
   /// ARN of the portal to associate with the network settings. Forces replacement if changed.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> portalArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -441,11 +439,11 @@ class NetworkSettingsAssociation extends pulumi.CustomResource {
     NetworkSettingsAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:workspacesweb/networkSettingsAssociation:NetworkSettingsAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:workspacesweb/networkSettingsAssociation:NetworkSettingsAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     networkSettingsArn = registerOutput<String>('networkSettingsArn');
     portalArn = registerOutput<String>('portalArn');
     region = registerOutput<String>('region');
@@ -469,11 +467,11 @@ class NetworkSettingsAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:workspacesweb/networkSettingsAssociation:NetworkSettingsAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:workspacesweb/networkSettingsAssociation:NetworkSettingsAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     networkSettingsArn = registerOutput<String>('networkSettingsArn');
     portalArn = registerOutput<String>('portalArn');
     region = registerOutput<String>('region');

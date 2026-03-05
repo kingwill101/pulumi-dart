@@ -10,33 +10,20 @@ class ListBitLockerKeyResult {
 
   /// Creates a new [ListBitLockerKeyResult].
   /// [value] drive status
-  ListBitLockerKeyResult({this.value});
+  ListBitLockerKeyResult({
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'value': ?(() {
-        final guardedValue = value;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          DriveBitLockerKeyResponse,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'value': ?(() { final guardedValue = value; if (guardedValue == null) return null; return pulumi.Input.encodeList<DriveBitLockerKeyResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory ListBitLockerKeyResult.fromMap(Map<String, dynamic> map) {
     return ListBitLockerKeyResult(
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<DriveBitLockerKeyResponse>(
-          guardedValue,
-          (value) => DriveBitLockerKeyResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.decodeList<DriveBitLockerKeyResponse>(guardedValue, (value) => DriveBitLockerKeyResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

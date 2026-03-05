@@ -7,29 +7,21 @@ import 'get_route_services_service.dart';
 class GetRouteServicesResult {
   /// The region of the network instances that access the cloud services.
   final String? accessRegionId;
-
   /// The ID of the CEN instance.
   final String cenId;
-
   /// The domain name or IP address of the cloud service.
   final String? host;
-
   /// The region of the cloud service.
   final String? hostRegionId;
-
   /// The VPC associated with the cloud service.
   final String? hostVpcId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of CEN Route Service IDs.
   final List<String> ids;
   final String? outputFile;
-
   /// A list of CEN Route Services. Each element contains the following attributes:
   final List<GetRouteServicesService> services;
-
   /// The status of the cloud service.
   final String? status;
 
@@ -67,56 +59,24 @@ class GetRouteServicesResult {
       'id': id,
       'ids': ids,
       'outputFile': ?outputFile,
-      'services':
-          pulumi.Input.encodeList<
-            GetRouteServicesService,
-            Map<String, dynamic>
-          >(services, (value) => value.toMap()),
+      'services': pulumi.Input.encodeList<GetRouteServicesService, Map<String, dynamic>>(services, (value) => value.toMap()),
       'status': ?status,
     };
   }
 
   factory GetRouteServicesResult.fromMap(Map<String, dynamic> map) {
     return GetRouteServicesResult(
-      accessRegionId: (() {
-        final guardedValue = map['accessRegionId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      accessRegionId: (() { final guardedValue = map['accessRegionId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       cenId: map['cenId'] as String,
-      host: (() {
-        final guardedValue = map['host'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      hostRegionId: (() {
-        final guardedValue = map['hostRegionId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      hostVpcId: (() {
-        final guardedValue = map['hostVpcId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      host: (() { final guardedValue = map['host']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      hostRegionId: (() { final guardedValue = map['hostRegionId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      hostVpcId: (() { final guardedValue = map['hostVpcId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      services: pulumi.Input.decodeList<GetRouteServicesService>(
-        map['services']!,
-        (value) => GetRouteServicesService.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      services: pulumi.Input.decodeList<GetRouteServicesService>(map['services']!, (value) => GetRouteServicesService.fromMap((value as Map).cast<String, dynamic>())),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

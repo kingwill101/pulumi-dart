@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccessKeyCredentialsResponse {
   /// AWS access key ID.
   final pulumi.Input<String> accessKeyId;
-
   /// Input only. AWS secret access key.
   final pulumi.Input<String> secretAccessKey;
-
   /// Input only. AWS session token. Used only when AWS security token service (STS) is responsible for creating the temporary credentials.
   final pulumi.Input<String> sessionToken;
 
@@ -39,3 +37,4 @@ class AccessKeyCredentialsResponse {
     );
   }
 }
+

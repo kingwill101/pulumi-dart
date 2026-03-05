@@ -808,29 +808,20 @@ import 'function_async_invoke_config_state.dart';
 class FunctionAsyncInvokeConfig extends pulumi.CustomResource {
   /// The date this resource was created.
   late final pulumi.Output<String> createdTime;
-
   /// Configuration block with destination configuration. See `destination_config` below.
-  late final pulumi.Output<FunctionAsyncInvokeConfigDestinationConfig?>
-  destinationConfig;
-
+  late final pulumi.Output<FunctionAsyncInvokeConfigDestinationConfig?> destinationConfig;
   /// Name of the Function Compute Function.
   late final pulumi.Output<String> functionName;
-
   /// The date this resource was last modified.
   late final pulumi.Output<String> lastModifiedTime;
-
   /// Maximum age of a request that Function Compute sends to a function for processing in seconds. Valid values between 1 and 2592000 (between 60 and 21600 before v1.167.0).
   late final pulumi.Output<int?> maximumEventAgeInSeconds;
-
   /// Maximum number of times to retry when the function returns an error. Valid values between 0 and 8 (between 0 and 2 before v1.167.0). Defaults to 2.
   late final pulumi.Output<int?> maximumRetryAttempts;
-
   /// Function Compute Function published version, `LATEST`, or Function Compute Alias name. The default value is `LATEST`.
   late final pulumi.Output<String?> qualifier;
-
   /// Name of the Function Compute Function, omitting any version or alias qualifier.
   late final pulumi.Output<String> serviceName;
-
   /// Function Compute async job configuration(also known as Task Mode). valid values true or false, default `false`
   late final pulumi.Output<bool?> statefulInvocation;
 
@@ -843,23 +834,13 @@ class FunctionAsyncInvokeConfig extends pulumi.CustomResource {
     FunctionAsyncInvokeConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:fc/functionAsyncInvokeConfig:FunctionAsyncInvokeConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:fc/functionAsyncInvokeConfig:FunctionAsyncInvokeConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createdTime = registerOutput<String>('createdTime');
-    destinationConfig =
-        registerOutput<FunctionAsyncInvokeConfigDestinationConfig?>(
-          'destinationConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return FunctionAsyncInvokeConfigDestinationConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    destinationConfig = registerOutput<FunctionAsyncInvokeConfigDestinationConfig?>('destinationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionAsyncInvokeConfigDestinationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     functionName = registerOutput<String>('functionName');
     lastModifiedTime = registerOutput<String>('lastModifiedTime');
     maximumEventAgeInSeconds = registerOutput<int?>('maximumEventAgeInSeconds');
@@ -887,23 +868,13 @@ class FunctionAsyncInvokeConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:fc/functionAsyncInvokeConfig:FunctionAsyncInvokeConfig',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:fc/functionAsyncInvokeConfig:FunctionAsyncInvokeConfig',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createdTime = registerOutput<String>('createdTime');
-    destinationConfig =
-        registerOutput<FunctionAsyncInvokeConfigDestinationConfig?>(
-          'destinationConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return FunctionAsyncInvokeConfigDestinationConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    destinationConfig = registerOutput<FunctionAsyncInvokeConfigDestinationConfig?>('destinationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionAsyncInvokeConfigDestinationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     functionName = registerOutput<String>('functionName');
     lastModifiedTime = registerOutput<String>('lastModifiedTime');
     maximumEventAgeInSeconds = registerOutput<int?>('maximumEventAgeInSeconds');

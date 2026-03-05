@@ -9,19 +9,20 @@ class TimeBasedRetention {
 
   /// Creates a new [TimeBasedRetention].
   /// [retentionPeriod] The retention period.
-  TimeBasedRetention({this.retentionPeriod});
+  TimeBasedRetention({
+    this.retentionPeriod,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'retentionPeriod': ?retentionPeriod};
+    return <String, dynamic>{
+      'retentionPeriod': ?retentionPeriod,
+    };
   }
 
   factory TimeBasedRetention.fromMap(Map<String, dynamic> map) {
     return TimeBasedRetention(
-      retentionPeriod: (() {
-        final guardedValue = map['retentionPeriod'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      retentionPeriod: (() { final guardedValue = map['retentionPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

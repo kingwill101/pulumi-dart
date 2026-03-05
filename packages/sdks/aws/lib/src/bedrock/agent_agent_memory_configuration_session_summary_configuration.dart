@@ -13,16 +13,15 @@ class AgentAgentMemoryConfigurationSessionSummaryConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'maxRecentSessions': maxRecentSessions};
+    return <String, dynamic>{
+      'maxRecentSessions': maxRecentSessions,
+    };
   }
 
-  factory AgentAgentMemoryConfigurationSessionSummaryConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentAgentMemoryConfigurationSessionSummaryConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentAgentMemoryConfigurationSessionSummaryConfiguration(
-      maxRecentSessions: pulumi.Input.fromValue(
-        map['maxRecentSessions'] as int,
-      ),
+      maxRecentSessions: pulumi.Input.fromValue(map['maxRecentSessions'] as int),
     );
   }
 }
+

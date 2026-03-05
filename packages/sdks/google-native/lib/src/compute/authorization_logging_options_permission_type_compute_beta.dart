@@ -9,17 +9,13 @@ enum AuthorizationLoggingOptionsPermissionTypeComputeBeta {
   const AuthorizationLoggingOptionsPermissionTypeComputeBeta(this.wireValue);
   final String wireValue;
 
-  static AuthorizationLoggingOptionsPermissionTypeComputeBeta fromValue(
-    String value,
-  ) {
-    for (final item
-        in AuthorizationLoggingOptionsPermissionTypeComputeBeta.values) {
+  static AuthorizationLoggingOptionsPermissionTypeComputeBeta fromValue(String value) {
+    for (final item in AuthorizationLoggingOptionsPermissionTypeComputeBeta.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown AuthorizationLoggingOptionsPermissionTypeComputeBeta value: $value',
-    );
+    throw ArgumentError('Unknown AuthorizationLoggingOptionsPermissionTypeComputeBeta value: $value');
   }
 }
+

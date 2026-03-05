@@ -15,3 +15,4 @@ enum PublicIPAddressSkuName {
     throw ArgumentError('Unknown PublicIPAddressSkuName value: $value');
   }
 }
+

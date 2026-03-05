@@ -342,13 +342,10 @@ import 'copy_to_remote_args.dart';
 class CopyToRemote extends pulumi.CustomResource {
   /// The parameters with which to connect to the remote host.
   late final pulumi.Output<Connection> connection;
-
   /// The destination path on the remote host. The last element of the path will be created if it doesn't exist but it's an error when additional elements don't exist. When the remote path is an existing directory, the source file or directory will be copied into that directory. When the source is a file and the remote path is an existing file, that file will be overwritten. When the source is a directory and the remote path an existing file, the copy will fail.
   late final pulumi.Output<String> remotePath;
-
   /// An [asset or an archive](https://www.pulumi.com/docs/concepts/assets-archives/) to upload as the source of the copy. It must be a `FileAsset`, `StringAsset`, or a `FileArchive`. The item will be copied as-is; archives like .tgz will not be unpacked. Directories are copied recursively, overwriting existing files.
   late final pulumi.Output<dynamic> source;
-
   /// Trigger replacements on changes to this input.
   late final pulumi.Output<List<Map<String, dynamic>>?> triggers;
 
@@ -361,21 +358,12 @@ class CopyToRemote extends pulumi.CustomResource {
     CopyToRemoteArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'command:remote:CopyToRemote',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    connection = registerOutput<Connection>(
-      'connection',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return Connection.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'command:remote:CopyToRemote',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    connection = registerOutput<Connection>('connection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Connection.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     remotePath = registerOutput<String>('remotePath');
     source = registerOutput<dynamic>('source');
     triggers = registerOutput<List<Map<String, dynamic>>?>('triggers');

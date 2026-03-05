@@ -6,49 +6,34 @@ import 'system_data_response.dart';
 class GetLinkedSubscriptionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The status of the remote management connection of the Azure Stack device.
   final String deviceConnectionStatus;
-
   /// The identifier of the Azure Stack device for remote management.
   final String deviceId;
-
   /// The connection state of the Azure Stack device.
   final String deviceLinkState;
-
   /// The object identifier associated with the Azure Stack device connecting to Azure.
   final String deviceObjectId;
-
   /// The entity tag used for optimistic concurrency when modifying the resource.
   final String? etag;
-
   /// ID of the resource.
   final String id;
-
   /// The kind of the resource.
   final String kind;
-
   /// The last remote management connection time for the Azure Stack device connected to the linked subscription resource.
   final String lastConnectedTime;
-
   /// The identifier associated with the device subscription.
   final String? linkedSubscriptionId;
-
   /// Location of the resource.
   final String location;
-
   /// Name of the resource.
   final String name;
-
   /// The identifier associated with the device registration.
   final String? registrationResourceId;
-
   /// Metadata pertaining to creation and last modification of the resource.
   final SystemDataResponse systemData;
-
   /// Custom tags for the resource.
   final Map<String, String>? tags;
-
   /// Type of Resource.
   final String type;
 
@@ -116,35 +101,18 @@ class GetLinkedSubscriptionResult {
       deviceId: map['deviceId'] as String,
       deviceLinkState: map['deviceLinkState'] as String,
       deviceObjectId: map['deviceObjectId'] as String,
-      etag: (() {
-        final guardedValue = map['etag'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       kind: map['kind'] as String,
       lastConnectedTime: map['lastConnectedTime'] as String,
-      linkedSubscriptionId: (() {
-        final guardedValue = map['linkedSubscriptionId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      linkedSubscriptionId: (() { final guardedValue = map['linkedSubscriptionId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: map['location'] as String,
       name: map['name'] as String,
-      registrationResourceId: (() {
-        final guardedValue = map['registrationResourceId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      registrationResourceId: (() { final guardedValue = map['registrationResourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

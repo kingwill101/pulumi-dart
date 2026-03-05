@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EndpointArgs {
   /// The endpoint name.
   final pulumi.Input<String>? endpointName;
-
   /// The resource Id of the connectivity endpoint (optional).
   final pulumi.Input<String>? resourceId;
-
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceUri;
-
   /// The type of endpoint.
   final pulumi.Input<String> type;
 
@@ -42,18 +39,11 @@ class EndpointArgs {
 
   factory EndpointArgs.fromMap(Map<String, dynamic> map) {
     return EndpointArgs(
-      endpointName: (() {
-        final guardedValue = map['endpointName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceId: (() {
-        final guardedValue = map['resourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      endpointName: (() { final guardedValue = map['endpointName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceUri: pulumi.Input.fromValue(map['resourceUri'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

@@ -314,40 +314,28 @@ import 'system_data_response.dart';
 class Firmware extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// User-specified description of the firmware.
   late final pulumi.Output<String?> description;
-
   /// File name for a firmware that user uploaded.
   late final pulumi.Output<String?> fileName;
-
   /// File size of the uploaded firmware image.
   late final pulumi.Output<double?> fileSize;
-
   /// Firmware model.
   late final pulumi.Output<String?> model;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The status of firmware scan.
   late final pulumi.Output<String?> status;
-
   /// A list of errors or other messages generated during firmware analysis
   late final pulumi.Output<List<Map<String, dynamic>>?> statusMessages;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Firmware vendor.
   late final pulumi.Output<String?> vendor;
-
   /// Firmware version.
   late final pulumi.Output<String?> version;
 
@@ -360,11 +348,11 @@ class Firmware extends pulumi.CustomResource {
     FirmwareArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:iotfirmwaredefense:Firmware',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:iotfirmwaredefense:Firmware',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     description = registerOutput<String?>('description');
     fileName = registerOutput<String?>('fileName');
@@ -373,19 +361,8 @@ class Firmware extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     status = registerOutput<String?>('status');
-    statusMessages = registerOutput<List<Map<String, dynamic>>?>(
-      'statusMessages',
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    statusMessages = registerOutput<List<Map<String, dynamic>>?>('statusMessages');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     vendor = registerOutput<String?>('vendor');
     version = registerOutput<String?>('version');

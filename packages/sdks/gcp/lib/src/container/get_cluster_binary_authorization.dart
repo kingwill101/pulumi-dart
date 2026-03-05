@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClusterBinaryAuthorization {
   /// Enable Binary Authorization for this cluster.
   final pulumi.Input<bool> enabled;
-
   /// Mode of operation for Binary Authorization policy evaluation.
   final pulumi.Input<String> evaluationMode;
 
@@ -31,3 +30,4 @@ class GetClusterBinaryAuthorization {
     );
   }
 }
+

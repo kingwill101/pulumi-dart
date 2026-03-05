@@ -270,22 +270,16 @@ import 'vpc_state.dart';
 class Vpc extends pulumi.CustomResource {
   /// The date and time of when the VPC was created.
   late final pulumi.Output<String> createdAt;
-
   /// A boolean indicating whether or not the VPC is the default one for the region.
   late final pulumi.Output<bool> default_;
-
   /// A free-form text field up to a limit of 255 characters to describe the VPC.
   late final pulumi.Output<String?> description;
-
   /// The range of IP addresses for the VPC in CIDR notation. Network ranges cannot overlap with other networks in the same account and must be in range of private addresses as defined in RFC1918. It may not be larger than `/16` or smaller than `/24`.
   late final pulumi.Output<String> ipRange;
-
   /// A name for the VPC. Must be unique and contain alphanumeric characters, dashes, and periods only.
   late final pulumi.Output<String> name;
-
   /// The DigitalOcean region slug for the VPC's location.
   late final pulumi.Output<String> region;
-
   /// The uniform resource name (URN) for the VPC.
   late final pulumi.Output<String> vpcUrn;
 
@@ -293,13 +287,16 @@ class Vpc extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Vpc]. {@macro pulumi_index_vpc_vpc_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Vpc(String name, {VpcArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'digitalocean:index/vpc:Vpc',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Vpc(
+    String name, {
+    VpcArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'digitalocean:index/vpc:Vpc',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createdAt = registerOutput<String>('createdAt');
     default_ = registerOutput<bool>('default');
     description = registerOutput<String?>('description');
@@ -310,7 +307,11 @@ class Vpc extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Vpc] resource's state with the given [name] and [id].
-  static Vpc get(String name, pulumi.Input<String> id, {VpcState? state}) {
+  static Vpc get(
+    String name,
+    pulumi.Input<String> id, {
+    VpcState? state,
+  }) {
     return Vpc._get(
       name,
       state: state?.toMap(),
@@ -323,11 +324,11 @@ class Vpc extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/vpc:Vpc',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/vpc:Vpc',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createdAt = registerOutput<String>('createdAt');
     default_ = registerOutput<bool>('default');
     description = registerOutput<String?>('description');

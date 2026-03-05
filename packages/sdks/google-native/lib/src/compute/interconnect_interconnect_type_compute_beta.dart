@@ -13,8 +13,7 @@ enum InterconnectInterconnectTypeComputeBeta {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown InterconnectInterconnectTypeComputeBeta value: $value',
-    );
+    throw ArgumentError('Unknown InterconnectInterconnectTypeComputeBeta value: $value');
   }
 }
+

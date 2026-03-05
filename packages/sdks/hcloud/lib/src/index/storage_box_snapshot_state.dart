@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StorageBoxSnapshotState {
   /// Description of the Storage Box Snapshot.
   final pulumi.Input<String>? description;
-
   /// Whether the Storage Box Snapshot was created automatically.
   final pulumi.Input<bool>? isAutomatic;
-
   /// User-defined [labels](https://docs.hetzner.cloud/reference/cloud#labels) (key-value pairs) for the resource.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// Name of the Storage Box Snapshot.
   final pulumi.Input<String>? name;
-
   /// ID of the Storage Box.
   final pulumi.Input<int>? storageBoxId;
 
@@ -45,33 +41,12 @@ class StorageBoxSnapshotState {
 
   factory StorageBoxSnapshotState.fromMap(Map<String, dynamic> map) {
     return StorageBoxSnapshotState(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      isAutomatic: (() {
-        final guardedValue = map['isAutomatic'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      storageBoxId: (() {
-        final guardedValue = map['storageBoxId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      isAutomatic: (() { final guardedValue = map['isAutomatic']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageBoxId: (() { final guardedValue = map['storageBoxId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

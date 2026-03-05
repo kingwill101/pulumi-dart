@@ -203,28 +203,20 @@ import 'basic_defense_threshold_state.dart';
 class BasicDefenseThreshold extends pulumi.CustomResource {
   /// Specifies the traffic scrubbing threshold. Unit: Mbit/s. The traffic scrubbing threshold cannot exceed the peak inbound or outbound Internet traffic, whichever is larger, of the asset.
   late final pulumi.Output<int> bps;
-
   /// The type of the threshold to query. Valid values: `defense`,`blackhole`.
   late final pulumi.Output<String> ddosType;
-
   /// The ID of the instance.
   late final pulumi.Output<String> instanceId;
-
   /// The instance type of the public IP address asset. Value: `ecs`,`slb`,`eip`.
   late final pulumi.Output<String> instanceType;
-
   /// The Internet IP address.
   late final pulumi.Output<String> internetIp;
-
   /// Whether it is the system default threshold. Value:
   late final pulumi.Output<bool> isAuto;
-
   /// The maximum traffic scrubbing threshold. Unit: Mbit/s.
   late final pulumi.Output<int> maxBps;
-
   /// The maximum packet scrubbing threshold. Unit: pps.
   late final pulumi.Output<int> maxPps;
-
   /// The current message number cleaning threshold. Unit: pps.
   late final pulumi.Output<int> pps;
 
@@ -237,11 +229,11 @@ class BasicDefenseThreshold extends pulumi.CustomResource {
     BasicDefenseThresholdArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ddos/basicDefenseThreshold:BasicDefenseThreshold',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ddos/basicDefenseThreshold:BasicDefenseThreshold',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bps = registerOutput<int>('bps');
     ddosType = registerOutput<String>('ddosType');
     instanceId = registerOutput<String>('instanceId');
@@ -271,11 +263,11 @@ class BasicDefenseThreshold extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ddos/basicDefenseThreshold:BasicDefenseThreshold',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ddos/basicDefenseThreshold:BasicDefenseThreshold',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bps = registerOutput<int>('bps');
     ddosType = registerOutput<String>('ddosType');
     instanceId = registerOutput<String>('instanceId');

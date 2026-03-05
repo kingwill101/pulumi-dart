@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GlobalParameterSpecification {
   /// Global Parameter type.
   final pulumi.Input<String> type;
-
   /// Value of parameter.
   final pulumi.Input<dynamic> value;
 
   /// Creates a new [GlobalParameterSpecification].
   /// [type] Global Parameter type.
   /// [value] Value of parameter.
-  GlobalParameterSpecification({required this.type, required this.value});
+  GlobalParameterSpecification({
+    required this.type,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': type, 'value': value};
+    return <String, dynamic>{
+      'type': type,
+      'value': value,
+    };
   }
 
   factory GlobalParameterSpecification.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class GlobalParameterSpecification {
     );
   }
 }
+

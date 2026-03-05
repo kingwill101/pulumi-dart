@@ -11,44 +11,29 @@ class CounterSetResourceK8sIoV1beta2 {
   ///
   /// The maximum number of counters is 32.
   final pulumi.Input<Map<String, CounterResourceK8sIoV1beta2>> counters;
-
   /// Name defines the name of the counter set. It must be a DNS label.
   final pulumi.Input<String> name;
 
   /// Creates a new [CounterSetResourceK8sIoV1beta2].
   /// [counters] Counters defines the set of counters for this CounterSet The name of each counter must be unique in that set and must be a DNS label.
   /// [name] Name defines the name of the counter set. It must be a DNS label.
-  CounterSetResourceK8sIoV1beta2({required this.counters, required this.name});
+  CounterSetResourceK8sIoV1beta2({
+    required this.counters,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'counters':
-          pulumi.Input.mapInputValue<
-            Map<String, CounterResourceK8sIoV1beta2>,
-            Map<String, Map<String, dynamic>>
-          >(
-            counters,
-            (value) =>
-                pulumi.Input.encodeMapValues<
-                  CounterResourceK8sIoV1beta2,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'counters': pulumi.Input.mapInputValue<Map<String, CounterResourceK8sIoV1beta2>, Map<String, Map<String, dynamic>>>(counters, (value) => pulumi.Input.encodeMapValues<CounterResourceK8sIoV1beta2, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
     };
   }
 
   factory CounterSetResourceK8sIoV1beta2.fromMap(Map<String, dynamic> map) {
     return CounterSetResourceK8sIoV1beta2(
-      counters: pulumi.Input.fromValue(
-        pulumi.Input.decodeMapValues<CounterResourceK8sIoV1beta2>(
-          map['counters']!,
-          (value) => CounterResourceK8sIoV1beta2.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      counters: pulumi.Input.fromValue(pulumi.Input.decodeMapValues<CounterResourceK8sIoV1beta2>(map['counters']!, (value) => CounterResourceK8sIoV1beta2.fromMap((value as Map).cast<String, dynamic>()))),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

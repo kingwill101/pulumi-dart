@@ -15,7 +15,11 @@ class GetSourceArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [sourceId] Required.
-  GetSourceArgs({required this.location, this.project, required this.sourceId});
+  GetSourceArgs({
+    required this.location,
+    this.project,
+    required this.sourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,12 +32,9 @@ class GetSourceArgs {
   factory GetSourceArgs.fromMap(Map<String, dynamic> map) {
     return GetSourceArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sourceId: pulumi.Input.fromValue(map['sourceId'] as String),
     );
   }
 }
+

@@ -8,10 +8,14 @@ class AssessmentScopeAwsAccount {
 
   /// Creates a new [AssessmentScopeAwsAccount].
   /// [id] Identifier for the Amazon Web Services account.
-  AssessmentScopeAwsAccount({required this.id});
+  AssessmentScopeAwsAccount({
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id};
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
   factory AssessmentScopeAwsAccount.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class AssessmentScopeAwsAccount {
     );
   }
 }
+

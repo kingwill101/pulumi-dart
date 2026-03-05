@@ -10,29 +10,20 @@ class ConfigQuota {
 
   /// Creates a new [ConfigQuota].
   /// [signUpQuotaConfig] Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP. None of quota, startTime, or quotaDuration can be skipped.
-  ConfigQuota({this.signUpQuotaConfig});
+  ConfigQuota({
+    this.signUpQuotaConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'signUpQuotaConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ConfigQuotaSignUpQuotaConfig,
-            Map<String, dynamic>
-          >(signUpQuotaConfig, (value) => value.toMap()),
+      'signUpQuotaConfig': ?pulumi.Input.mapOptionalInputValue<ConfigQuotaSignUpQuotaConfig, Map<String, dynamic>>(signUpQuotaConfig, (value) => value.toMap()),
     };
   }
 
   factory ConfigQuota.fromMap(Map<String, dynamic> map) {
     return ConfigQuota(
-      signUpQuotaConfig: (() {
-        final guardedValue = map['signUpQuotaConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ConfigQuotaSignUpQuotaConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      signUpQuotaConfig: (() { final guardedValue = map['signUpQuotaConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConfigQuotaSignUpQuotaConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

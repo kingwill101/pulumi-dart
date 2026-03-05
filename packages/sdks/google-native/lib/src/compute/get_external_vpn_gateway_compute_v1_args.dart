@@ -27,14 +27,9 @@ class GetExternalVpnGatewayComputeV1Args {
 
   factory GetExternalVpnGatewayComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetExternalVpnGatewayComputeV1Args(
-      externalVpnGateway: pulumi.Input.fromValue(
-        map['externalVpnGateway'] as String,
-      ),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      externalVpnGateway: pulumi.Input.fromValue(map['externalVpnGateway'] as String),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

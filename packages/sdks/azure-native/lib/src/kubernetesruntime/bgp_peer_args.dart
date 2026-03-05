@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BgpPeerArgs {
   /// The name of the BgpPeer
   final pulumi.Input<String>? bgpPeerName;
-
   /// My ASN
   final pulumi.Input<int> myAsn;
-
   /// Peer Address
   final pulumi.Input<String> peerAddress;
-
   /// Peer ASN
   final pulumi.Input<int> peerAsn;
-
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceUri;
 
@@ -48,11 +44,7 @@ class BgpPeerArgs {
 
   factory BgpPeerArgs.fromMap(Map<String, dynamic> map) {
     return BgpPeerArgs(
-      bgpPeerName: (() {
-        final guardedValue = map['bgpPeerName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      bgpPeerName: (() { final guardedValue = map['bgpPeerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       myAsn: pulumi.Input.fromValue(map['myAsn'] as int),
       peerAddress: pulumi.Input.fromValue(map['peerAddress'] as String),
       peerAsn: pulumi.Input.fromValue(map['peerAsn'] as int),
@@ -60,3 +52,4 @@ class BgpPeerArgs {
     );
   }
 }
+

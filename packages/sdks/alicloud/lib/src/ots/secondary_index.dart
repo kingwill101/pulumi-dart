@@ -534,22 +534,16 @@ import 'secondary_index_state.dart';
 class SecondaryIndex extends pulumi.CustomResource {
   /// A list of defined column for index, referenced from Table's primary keys or predefined columns.
   late final pulumi.Output<List<String>?> definedColumns;
-
   /// whether the index contains data that already exists in the data table. When include_base_data is set to true, it means that stock data is included.
   late final pulumi.Output<bool> includeBaseData;
-
   /// The index name of the OTS Table. If changed, a new index would be created.
   late final pulumi.Output<String> indexName;
-
   /// The index type of the OTS Table. If changed, a new index would be created, only `Global` or `Local` is allowed.
   late final pulumi.Output<String> indexType;
-
   /// The name of the OTS instance in which table will located.
   late final pulumi.Output<String> instanceName;
-
   /// A list of primary keys for index, referenced from Table's primary keys or predefined columns.
   late final pulumi.Output<List<String>> primaryKeys;
-
   /// The name of the OTS table. If changed, a new table would be created.
   late final pulumi.Output<String> tableName;
 
@@ -562,11 +556,11 @@ class SecondaryIndex extends pulumi.CustomResource {
     SecondaryIndexArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ots/secondaryIndex:SecondaryIndex',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ots/secondaryIndex:SecondaryIndex',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     definedColumns = registerOutput<List<String>?>('definedColumns');
     includeBaseData = registerOutput<bool>('includeBaseData');
     indexName = registerOutput<String>('indexName');
@@ -594,11 +588,11 @@ class SecondaryIndex extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ots/secondaryIndex:SecondaryIndex',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ots/secondaryIndex:SecondaryIndex',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     definedColumns = registerOutput<List<String>?>('definedColumns');
     includeBaseData = registerOutput<bool>('includeBaseData');
     indexName = registerOutput<String>('indexName');

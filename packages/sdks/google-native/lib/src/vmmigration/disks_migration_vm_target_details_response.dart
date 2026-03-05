@@ -9,17 +9,20 @@ class DisksMigrationVmTargetDetailsResponse {
 
   /// Creates a new [DisksMigrationVmTargetDetailsResponse].
   /// [vmUri] The URI of the Compute Engine VM.
-  DisksMigrationVmTargetDetailsResponse({required this.vmUri});
+  DisksMigrationVmTargetDetailsResponse({
+    required this.vmUri,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'vmUri': vmUri};
+    return <String, dynamic>{
+      'vmUri': vmUri,
+    };
   }
 
-  factory DisksMigrationVmTargetDetailsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DisksMigrationVmTargetDetailsResponse.fromMap(Map<String, dynamic> map) {
     return DisksMigrationVmTargetDetailsResponse(
       vmUri: pulumi.Input.fromValue(map['vmUri'] as String),
     );
   }
 }
+

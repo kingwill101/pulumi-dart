@@ -15,3 +15,4 @@ enum CapacityPolicy {
     throw ArgumentError('Unknown CapacityPolicy value: $value');
   }
 }
+

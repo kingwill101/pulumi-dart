@@ -9,55 +9,42 @@ import 'db_system_properties_time_zone.dart';
 class DbSystemProperties {
   /// The number of CPU cores to enable for the DbSystem.
   final pulumi.Input<int> computeCount;
-
   /// The compute model of the DbSystem.
   /// Possible values:
   /// ECPU
   /// OCPU
   final pulumi.Input<String>? computeModel;
-
   /// Data collection options for DbSystem.
   /// Structure is documented below.
-  final pulumi.Input<DbSystemPropertiesDataCollectionOptions>?
-  dataCollectionOptions;
-
+  final pulumi.Input<DbSystemPropertiesDataCollectionOptions>? dataCollectionOptions;
   /// The data storage size in GB that is currently available to DbSystems.
   final pulumi.Input<int>? dataStorageSizeGb;
-
   /// The database edition of the DbSystem.
   /// Possible values:
   /// STANDARD_EDITION
   /// ENTERPRISE_EDITION
   /// ENTERPRISE_EDITION_HIGH_PERFORMANCE
   final pulumi.Input<String> databaseEdition;
-
   /// Details of the Database Home resource.
   /// Structure is documented below.
   final pulumi.Input<DbSystemPropertiesDbHome>? dbHome;
-
   /// Details of the DbSystem Options.
   /// Structure is documented below.
   final pulumi.Input<DbSystemPropertiesDbSystemOptions>? dbSystemOptions;
-
   /// The host domain name of the DbSystem.
   final pulumi.Input<String>? domain;
-
   /// (Output)
   /// The hostname of the DbSystem.
   final pulumi.Input<String>? hostname;
-
   /// Prefix for DB System host names.
   final pulumi.Input<String>? hostnamePrefix;
-
   /// The initial data storage size in GB.
   final pulumi.Input<int> initialDataStorageSizeGb;
-
   /// The license model of the DbSystem.
   /// Possible values:
   /// LICENSE_INCLUDED
   /// BRING_YOUR_OWN_LICENSE
   final pulumi.Input<String> licenseModel;
-
   /// (Output)
   /// State of the DbSystem.
   /// Possible values:
@@ -72,29 +59,21 @@ class DbSystemProperties {
   /// NEEDS_ATTENTION
   /// UPGRADING
   final pulumi.Input<String>? lifecycleState;
-
   /// The memory size in GB.
   final pulumi.Input<int>? memorySizeGb;
-
   /// The number of nodes in the DbSystem.
   final pulumi.Input<int>? nodeCount;
-
   /// (Output)
   /// OCID of the DbSystem.
   final pulumi.Input<String>? ocid;
-
   /// The private IP address of the DbSystem.
   final pulumi.Input<String>? privateIp;
-
   /// The reco/redo storage size in GB.
   final pulumi.Input<int>? recoStorageSizeGb;
-
   /// Shape of DB System.
   final pulumi.Input<String> shape;
-
   /// SSH public keys to be stored with the DbSystem.
   final pulumi.Input<List<String>> sshPublicKeys;
-
   /// Represents a time zone from the
   /// [IANA Time Zone Database](https://www.iana.org/time-zones).
   /// Structure is documented below.
@@ -150,23 +129,11 @@ class DbSystemProperties {
     return <String, dynamic>{
       'computeCount': computeCount,
       'computeModel': ?computeModel,
-      'dataCollectionOptions':
-          ?pulumi.Input.mapOptionalInputValue<
-            DbSystemPropertiesDataCollectionOptions,
-            Map<String, dynamic>
-          >(dataCollectionOptions, (value) => value.toMap()),
+      'dataCollectionOptions': ?pulumi.Input.mapOptionalInputValue<DbSystemPropertiesDataCollectionOptions, Map<String, dynamic>>(dataCollectionOptions, (value) => value.toMap()),
       'dataStorageSizeGb': ?dataStorageSizeGb,
       'databaseEdition': databaseEdition,
-      'dbHome':
-          ?pulumi.Input.mapOptionalInputValue<
-            DbSystemPropertiesDbHome,
-            Map<String, dynamic>
-          >(dbHome, (value) => value.toMap()),
-      'dbSystemOptions':
-          ?pulumi.Input.mapOptionalInputValue<
-            DbSystemPropertiesDbSystemOptions,
-            Map<String, dynamic>
-          >(dbSystemOptions, (value) => value.toMap()),
+      'dbHome': ?pulumi.Input.mapOptionalInputValue<DbSystemPropertiesDbHome, Map<String, dynamic>>(dbHome, (value) => value.toMap()),
+      'dbSystemOptions': ?pulumi.Input.mapOptionalInputValue<DbSystemPropertiesDbSystemOptions, Map<String, dynamic>>(dbSystemOptions, (value) => value.toMap()),
       'domain': ?domain,
       'hostname': ?hostname,
       'hostnamePrefix': ?hostnamePrefix,
@@ -180,117 +147,34 @@ class DbSystemProperties {
       'recoStorageSizeGb': ?recoStorageSizeGb,
       'shape': shape,
       'sshPublicKeys': sshPublicKeys,
-      'timeZone':
-          ?pulumi.Input.mapOptionalInputValue<
-            DbSystemPropertiesTimeZone,
-            Map<String, dynamic>
-          >(timeZone, (value) => value.toMap()),
+      'timeZone': ?pulumi.Input.mapOptionalInputValue<DbSystemPropertiesTimeZone, Map<String, dynamic>>(timeZone, (value) => value.toMap()),
     };
   }
 
   factory DbSystemProperties.fromMap(Map<String, dynamic> map) {
     return DbSystemProperties(
       computeCount: pulumi.Input.fromValue(map['computeCount'] as int),
-      computeModel: (() {
-        final guardedValue = map['computeModel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dataCollectionOptions: (() {
-        final guardedValue = map['dataCollectionOptions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DbSystemPropertiesDataCollectionOptions.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      dataStorageSizeGb: (() {
-        final guardedValue = map['dataStorageSizeGb'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      computeModel: (() { final guardedValue = map['computeModel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dataCollectionOptions: (() { final guardedValue = map['dataCollectionOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DbSystemPropertiesDataCollectionOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      dataStorageSizeGb: (() { final guardedValue = map['dataStorageSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       databaseEdition: pulumi.Input.fromValue(map['databaseEdition'] as String),
-      dbHome: (() {
-        final guardedValue = map['dbHome'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DbSystemPropertiesDbHome.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      dbSystemOptions: (() {
-        final guardedValue = map['dbSystemOptions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DbSystemPropertiesDbSystemOptions.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      domain: (() {
-        final guardedValue = map['domain'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      hostname: (() {
-        final guardedValue = map['hostname'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      hostnamePrefix: (() {
-        final guardedValue = map['hostnamePrefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      initialDataStorageSizeGb: pulumi.Input.fromValue(
-        map['initialDataStorageSizeGb'] as int,
-      ),
+      dbHome: (() { final guardedValue = map['dbHome']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DbSystemPropertiesDbHome.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      dbSystemOptions: (() { final guardedValue = map['dbSystemOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DbSystemPropertiesDbSystemOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      domain: (() { final guardedValue = map['domain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      hostname: (() { final guardedValue = map['hostname']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      hostnamePrefix: (() { final guardedValue = map['hostnamePrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      initialDataStorageSizeGb: pulumi.Input.fromValue(map['initialDataStorageSizeGb'] as int),
       licenseModel: pulumi.Input.fromValue(map['licenseModel'] as String),
-      lifecycleState: (() {
-        final guardedValue = map['lifecycleState'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      memorySizeGb: (() {
-        final guardedValue = map['memorySizeGb'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      nodeCount: (() {
-        final guardedValue = map['nodeCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      ocid: (() {
-        final guardedValue = map['ocid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      privateIp: (() {
-        final guardedValue = map['privateIp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      recoStorageSizeGb: (() {
-        final guardedValue = map['recoStorageSizeGb'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      lifecycleState: (() { final guardedValue = map['lifecycleState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      memorySizeGb: (() { final guardedValue = map['memorySizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      nodeCount: (() { final guardedValue = map['nodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      ocid: (() { final guardedValue = map['ocid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateIp: (() { final guardedValue = map['privateIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      recoStorageSizeGb: (() { final guardedValue = map['recoStorageSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       shape: pulumi.Input.fromValue(map['shape'] as String),
-      sshPublicKeys: pulumi.Input.fromValue(
-        (map['sshPublicKeys'] as List).cast<String>(),
-      ),
-      timeZone: (() {
-        final guardedValue = map['timeZone'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DbSystemPropertiesTimeZone.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      sshPublicKeys: pulumi.Input.fromValue((map['sshPublicKeys'] as List).cast<String>()),
+      timeZone: (() { final guardedValue = map['timeZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DbSystemPropertiesTimeZone.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

@@ -14,74 +14,47 @@ import 'get_linux_function_app_auth_settings_v2_twitter_v2.dart';
 
 class GetLinuxFunctionAppAuthSettingsV2 {
   /// An `active_directory_v2` block as defined below.
-  final pulumi.Input<List<GetLinuxFunctionAppAuthSettingsV2ActiveDirectoryV2>>
-  activeDirectoryV2s;
-
+  final pulumi.Input<List<GetLinuxFunctionAppAuthSettingsV2ActiveDirectoryV2>> activeDirectoryV2s;
   /// An `apple_v2` block as defined below.
   final pulumi.Input<List<GetLinuxFunctionAppAuthSettingsV2AppleV2>> appleV2s;
-
   /// Are the AuthV2 Settings enabled.
   final pulumi.Input<bool> authEnabled;
-
   /// An `azure_static_web_app_v2` block as defined below.
-  final pulumi.Input<List<GetLinuxFunctionAppAuthSettingsV2AzureStaticWebAppV2>>
-  azureStaticWebAppV2s;
-
+  final pulumi.Input<List<GetLinuxFunctionAppAuthSettingsV2AzureStaticWebAppV2>> azureStaticWebAppV2s;
   /// The path to the App Auth settings.
   final pulumi.Input<String> configFilePath;
-
   /// Zero or more `custom_oidc_v2` blocks as defined below.
-  final pulumi.Input<List<GetLinuxFunctionAppAuthSettingsV2CustomOidcV2>>
-  customOidcV2s;
-
+  final pulumi.Input<List<GetLinuxFunctionAppAuthSettingsV2CustomOidcV2>> customOidcV2s;
   /// The Default Authentication Provider used when more than one Authentication Provider is configured and the `unauthenticated_action` is set to `RedirectToLoginPage`.
   final pulumi.Input<String> defaultProvider;
-
   /// The paths which should be excluded from the `unauthenticated_action` when it is set to `RedirectToLoginPage`.
   final pulumi.Input<List<String>> excludedPaths;
-
   /// A `facebook_v2` block as defined below.
-  final pulumi.Input<List<GetLinuxFunctionAppAuthSettingsV2FacebookV2>>
-  facebookV2s;
-
+  final pulumi.Input<List<GetLinuxFunctionAppAuthSettingsV2FacebookV2>> facebookV2s;
   /// The convention used to determine the url of the request made.
   final pulumi.Input<String> forwardProxyConvention;
-
   /// The name of the custom header containing the host of the request.
   final pulumi.Input<String> forwardProxyCustomHostHeaderName;
-
   /// The name of the custom header containing the scheme of the request.
   final pulumi.Input<String> forwardProxyCustomSchemeHeaderName;
-
   /// A `github_v2` block as defined below.
   final pulumi.Input<List<GetLinuxFunctionAppAuthSettingsV2GithubV2>> githubV2s;
-
   /// A `google_v2` block as defined below.
   final pulumi.Input<List<GetLinuxFunctionAppAuthSettingsV2GoogleV2>> googleV2s;
-
   /// The prefix that should precede all the authentication and authorisation paths.
   final pulumi.Input<String> httpRouteApiPrefix;
-
   /// A `login` block as defined below.
   final pulumi.Input<List<GetLinuxFunctionAppAuthSettingsV2Login>> logins;
-
   /// A `microsoft_v2` block as defined below.
-  final pulumi.Input<List<GetLinuxFunctionAppAuthSettingsV2MicrosoftV2>>
-  microsoftV2s;
-
+  final pulumi.Input<List<GetLinuxFunctionAppAuthSettingsV2MicrosoftV2>> microsoftV2s;
   /// Is the authentication flow used for all requests.
   final pulumi.Input<bool> requireAuthentication;
-
   /// Is HTTPS required on connections?
   final pulumi.Input<bool> requireHttps;
-
   /// The Runtime Version of the Authentication and Authorisation feature of this App.
   final pulumi.Input<String> runtimeVersion;
-
   /// A `twitter_v2` block as defined below.
-  final pulumi.Input<List<GetLinuxFunctionAppAuthSettingsV2TwitterV2>>
-  twitterV2s;
-
+  final pulumi.Input<List<GetLinuxFunctionAppAuthSettingsV2TwitterV2>> twitterV2s;
   /// The action to take for requests made without authentication.
   final pulumi.Input<String> unauthenticatedAction;
 
@@ -135,254 +108,56 @@ class GetLinuxFunctionAppAuthSettingsV2 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'activeDirectoryV2s':
-          pulumi.Input.mapInputValue<
-            List<GetLinuxFunctionAppAuthSettingsV2ActiveDirectoryV2>,
-            List<Map<String, dynamic>>
-          >(
-            activeDirectoryV2s,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetLinuxFunctionAppAuthSettingsV2ActiveDirectoryV2,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'appleV2s':
-          pulumi.Input.mapInputValue<
-            List<GetLinuxFunctionAppAuthSettingsV2AppleV2>,
-            List<Map<String, dynamic>>
-          >(
-            appleV2s,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetLinuxFunctionAppAuthSettingsV2AppleV2,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'activeDirectoryV2s': pulumi.Input.mapInputValue<List<GetLinuxFunctionAppAuthSettingsV2ActiveDirectoryV2>, List<Map<String, dynamic>>>(activeDirectoryV2s, (value) => pulumi.Input.encodeList<GetLinuxFunctionAppAuthSettingsV2ActiveDirectoryV2, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'appleV2s': pulumi.Input.mapInputValue<List<GetLinuxFunctionAppAuthSettingsV2AppleV2>, List<Map<String, dynamic>>>(appleV2s, (value) => pulumi.Input.encodeList<GetLinuxFunctionAppAuthSettingsV2AppleV2, Map<String, dynamic>>(value, (value) => value.toMap())),
       'authEnabled': authEnabled,
-      'azureStaticWebAppV2s':
-          pulumi.Input.mapInputValue<
-            List<GetLinuxFunctionAppAuthSettingsV2AzureStaticWebAppV2>,
-            List<Map<String, dynamic>>
-          >(
-            azureStaticWebAppV2s,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetLinuxFunctionAppAuthSettingsV2AzureStaticWebAppV2,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'azureStaticWebAppV2s': pulumi.Input.mapInputValue<List<GetLinuxFunctionAppAuthSettingsV2AzureStaticWebAppV2>, List<Map<String, dynamic>>>(azureStaticWebAppV2s, (value) => pulumi.Input.encodeList<GetLinuxFunctionAppAuthSettingsV2AzureStaticWebAppV2, Map<String, dynamic>>(value, (value) => value.toMap())),
       'configFilePath': configFilePath,
-      'customOidcV2s':
-          pulumi.Input.mapInputValue<
-            List<GetLinuxFunctionAppAuthSettingsV2CustomOidcV2>,
-            List<Map<String, dynamic>>
-          >(
-            customOidcV2s,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetLinuxFunctionAppAuthSettingsV2CustomOidcV2,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'customOidcV2s': pulumi.Input.mapInputValue<List<GetLinuxFunctionAppAuthSettingsV2CustomOidcV2>, List<Map<String, dynamic>>>(customOidcV2s, (value) => pulumi.Input.encodeList<GetLinuxFunctionAppAuthSettingsV2CustomOidcV2, Map<String, dynamic>>(value, (value) => value.toMap())),
       'defaultProvider': defaultProvider,
       'excludedPaths': excludedPaths,
-      'facebookV2s':
-          pulumi.Input.mapInputValue<
-            List<GetLinuxFunctionAppAuthSettingsV2FacebookV2>,
-            List<Map<String, dynamic>>
-          >(
-            facebookV2s,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetLinuxFunctionAppAuthSettingsV2FacebookV2,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'facebookV2s': pulumi.Input.mapInputValue<List<GetLinuxFunctionAppAuthSettingsV2FacebookV2>, List<Map<String, dynamic>>>(facebookV2s, (value) => pulumi.Input.encodeList<GetLinuxFunctionAppAuthSettingsV2FacebookV2, Map<String, dynamic>>(value, (value) => value.toMap())),
       'forwardProxyConvention': forwardProxyConvention,
       'forwardProxyCustomHostHeaderName': forwardProxyCustomHostHeaderName,
       'forwardProxyCustomSchemeHeaderName': forwardProxyCustomSchemeHeaderName,
-      'githubV2s':
-          pulumi.Input.mapInputValue<
-            List<GetLinuxFunctionAppAuthSettingsV2GithubV2>,
-            List<Map<String, dynamic>>
-          >(
-            githubV2s,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetLinuxFunctionAppAuthSettingsV2GithubV2,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'googleV2s':
-          pulumi.Input.mapInputValue<
-            List<GetLinuxFunctionAppAuthSettingsV2GoogleV2>,
-            List<Map<String, dynamic>>
-          >(
-            googleV2s,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetLinuxFunctionAppAuthSettingsV2GoogleV2,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'githubV2s': pulumi.Input.mapInputValue<List<GetLinuxFunctionAppAuthSettingsV2GithubV2>, List<Map<String, dynamic>>>(githubV2s, (value) => pulumi.Input.encodeList<GetLinuxFunctionAppAuthSettingsV2GithubV2, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'googleV2s': pulumi.Input.mapInputValue<List<GetLinuxFunctionAppAuthSettingsV2GoogleV2>, List<Map<String, dynamic>>>(googleV2s, (value) => pulumi.Input.encodeList<GetLinuxFunctionAppAuthSettingsV2GoogleV2, Map<String, dynamic>>(value, (value) => value.toMap())),
       'httpRouteApiPrefix': httpRouteApiPrefix,
-      'logins':
-          pulumi.Input.mapInputValue<
-            List<GetLinuxFunctionAppAuthSettingsV2Login>,
-            List<Map<String, dynamic>>
-          >(
-            logins,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetLinuxFunctionAppAuthSettingsV2Login,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'microsoftV2s':
-          pulumi.Input.mapInputValue<
-            List<GetLinuxFunctionAppAuthSettingsV2MicrosoftV2>,
-            List<Map<String, dynamic>>
-          >(
-            microsoftV2s,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetLinuxFunctionAppAuthSettingsV2MicrosoftV2,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'logins': pulumi.Input.mapInputValue<List<GetLinuxFunctionAppAuthSettingsV2Login>, List<Map<String, dynamic>>>(logins, (value) => pulumi.Input.encodeList<GetLinuxFunctionAppAuthSettingsV2Login, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'microsoftV2s': pulumi.Input.mapInputValue<List<GetLinuxFunctionAppAuthSettingsV2MicrosoftV2>, List<Map<String, dynamic>>>(microsoftV2s, (value) => pulumi.Input.encodeList<GetLinuxFunctionAppAuthSettingsV2MicrosoftV2, Map<String, dynamic>>(value, (value) => value.toMap())),
       'requireAuthentication': requireAuthentication,
       'requireHttps': requireHttps,
       'runtimeVersion': runtimeVersion,
-      'twitterV2s':
-          pulumi.Input.mapInputValue<
-            List<GetLinuxFunctionAppAuthSettingsV2TwitterV2>,
-            List<Map<String, dynamic>>
-          >(
-            twitterV2s,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetLinuxFunctionAppAuthSettingsV2TwitterV2,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'twitterV2s': pulumi.Input.mapInputValue<List<GetLinuxFunctionAppAuthSettingsV2TwitterV2>, List<Map<String, dynamic>>>(twitterV2s, (value) => pulumi.Input.encodeList<GetLinuxFunctionAppAuthSettingsV2TwitterV2, Map<String, dynamic>>(value, (value) => value.toMap())),
       'unauthenticatedAction': unauthenticatedAction,
     };
   }
 
   factory GetLinuxFunctionAppAuthSettingsV2.fromMap(Map<String, dynamic> map) {
     return GetLinuxFunctionAppAuthSettingsV2(
-      activeDirectoryV2s: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GetLinuxFunctionAppAuthSettingsV2ActiveDirectoryV2
-        >(
-          map['activeDirectoryV2s']!,
-          (value) => GetLinuxFunctionAppAuthSettingsV2ActiveDirectoryV2.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      appleV2s: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetLinuxFunctionAppAuthSettingsV2AppleV2>(
-          map['appleV2s']!,
-          (value) => GetLinuxFunctionAppAuthSettingsV2AppleV2.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      activeDirectoryV2s: pulumi.Input.fromValue(pulumi.Input.decodeList<GetLinuxFunctionAppAuthSettingsV2ActiveDirectoryV2>(map['activeDirectoryV2s']!, (value) => GetLinuxFunctionAppAuthSettingsV2ActiveDirectoryV2.fromMap((value as Map).cast<String, dynamic>()))),
+      appleV2s: pulumi.Input.fromValue(pulumi.Input.decodeList<GetLinuxFunctionAppAuthSettingsV2AppleV2>(map['appleV2s']!, (value) => GetLinuxFunctionAppAuthSettingsV2AppleV2.fromMap((value as Map).cast<String, dynamic>()))),
       authEnabled: pulumi.Input.fromValue(map['authEnabled'] as bool),
-      azureStaticWebAppV2s: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GetLinuxFunctionAppAuthSettingsV2AzureStaticWebAppV2
-        >(
-          map['azureStaticWebAppV2s']!,
-          (value) =>
-              GetLinuxFunctionAppAuthSettingsV2AzureStaticWebAppV2.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
+      azureStaticWebAppV2s: pulumi.Input.fromValue(pulumi.Input.decodeList<GetLinuxFunctionAppAuthSettingsV2AzureStaticWebAppV2>(map['azureStaticWebAppV2s']!, (value) => GetLinuxFunctionAppAuthSettingsV2AzureStaticWebAppV2.fromMap((value as Map).cast<String, dynamic>()))),
       configFilePath: pulumi.Input.fromValue(map['configFilePath'] as String),
-      customOidcV2s: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetLinuxFunctionAppAuthSettingsV2CustomOidcV2>(
-          map['customOidcV2s']!,
-          (value) => GetLinuxFunctionAppAuthSettingsV2CustomOidcV2.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      customOidcV2s: pulumi.Input.fromValue(pulumi.Input.decodeList<GetLinuxFunctionAppAuthSettingsV2CustomOidcV2>(map['customOidcV2s']!, (value) => GetLinuxFunctionAppAuthSettingsV2CustomOidcV2.fromMap((value as Map).cast<String, dynamic>()))),
       defaultProvider: pulumi.Input.fromValue(map['defaultProvider'] as String),
-      excludedPaths: pulumi.Input.fromValue(
-        (map['excludedPaths'] as List).cast<String>(),
-      ),
-      facebookV2s: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetLinuxFunctionAppAuthSettingsV2FacebookV2>(
-          map['facebookV2s']!,
-          (value) => GetLinuxFunctionAppAuthSettingsV2FacebookV2.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      forwardProxyConvention: pulumi.Input.fromValue(
-        map['forwardProxyConvention'] as String,
-      ),
-      forwardProxyCustomHostHeaderName: pulumi.Input.fromValue(
-        map['forwardProxyCustomHostHeaderName'] as String,
-      ),
-      forwardProxyCustomSchemeHeaderName: pulumi.Input.fromValue(
-        map['forwardProxyCustomSchemeHeaderName'] as String,
-      ),
-      githubV2s: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetLinuxFunctionAppAuthSettingsV2GithubV2>(
-          map['githubV2s']!,
-          (value) => GetLinuxFunctionAppAuthSettingsV2GithubV2.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      googleV2s: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetLinuxFunctionAppAuthSettingsV2GoogleV2>(
-          map['googleV2s']!,
-          (value) => GetLinuxFunctionAppAuthSettingsV2GoogleV2.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      httpRouteApiPrefix: pulumi.Input.fromValue(
-        map['httpRouteApiPrefix'] as String,
-      ),
-      logins: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetLinuxFunctionAppAuthSettingsV2Login>(
-          map['logins']!,
-          (value) => GetLinuxFunctionAppAuthSettingsV2Login.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      microsoftV2s: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetLinuxFunctionAppAuthSettingsV2MicrosoftV2>(
-          map['microsoftV2s']!,
-          (value) => GetLinuxFunctionAppAuthSettingsV2MicrosoftV2.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      requireAuthentication: pulumi.Input.fromValue(
-        map['requireAuthentication'] as bool,
-      ),
+      excludedPaths: pulumi.Input.fromValue((map['excludedPaths'] as List).cast<String>()),
+      facebookV2s: pulumi.Input.fromValue(pulumi.Input.decodeList<GetLinuxFunctionAppAuthSettingsV2FacebookV2>(map['facebookV2s']!, (value) => GetLinuxFunctionAppAuthSettingsV2FacebookV2.fromMap((value as Map).cast<String, dynamic>()))),
+      forwardProxyConvention: pulumi.Input.fromValue(map['forwardProxyConvention'] as String),
+      forwardProxyCustomHostHeaderName: pulumi.Input.fromValue(map['forwardProxyCustomHostHeaderName'] as String),
+      forwardProxyCustomSchemeHeaderName: pulumi.Input.fromValue(map['forwardProxyCustomSchemeHeaderName'] as String),
+      githubV2s: pulumi.Input.fromValue(pulumi.Input.decodeList<GetLinuxFunctionAppAuthSettingsV2GithubV2>(map['githubV2s']!, (value) => GetLinuxFunctionAppAuthSettingsV2GithubV2.fromMap((value as Map).cast<String, dynamic>()))),
+      googleV2s: pulumi.Input.fromValue(pulumi.Input.decodeList<GetLinuxFunctionAppAuthSettingsV2GoogleV2>(map['googleV2s']!, (value) => GetLinuxFunctionAppAuthSettingsV2GoogleV2.fromMap((value as Map).cast<String, dynamic>()))),
+      httpRouteApiPrefix: pulumi.Input.fromValue(map['httpRouteApiPrefix'] as String),
+      logins: pulumi.Input.fromValue(pulumi.Input.decodeList<GetLinuxFunctionAppAuthSettingsV2Login>(map['logins']!, (value) => GetLinuxFunctionAppAuthSettingsV2Login.fromMap((value as Map).cast<String, dynamic>()))),
+      microsoftV2s: pulumi.Input.fromValue(pulumi.Input.decodeList<GetLinuxFunctionAppAuthSettingsV2MicrosoftV2>(map['microsoftV2s']!, (value) => GetLinuxFunctionAppAuthSettingsV2MicrosoftV2.fromMap((value as Map).cast<String, dynamic>()))),
+      requireAuthentication: pulumi.Input.fromValue(map['requireAuthentication'] as bool),
       requireHttps: pulumi.Input.fromValue(map['requireHttps'] as bool),
       runtimeVersion: pulumi.Input.fromValue(map['runtimeVersion'] as String),
-      twitterV2s: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetLinuxFunctionAppAuthSettingsV2TwitterV2>(
-          map['twitterV2s']!,
-          (value) => GetLinuxFunctionAppAuthSettingsV2TwitterV2.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      unauthenticatedAction: pulumi.Input.fromValue(
-        map['unauthenticatedAction'] as String,
-      ),
+      twitterV2s: pulumi.Input.fromValue(pulumi.Input.decodeList<GetLinuxFunctionAppAuthSettingsV2TwitterV2>(map['twitterV2s']!, (value) => GetLinuxFunctionAppAuthSettingsV2TwitterV2.fromMap((value as Map).cast<String, dynamic>()))),
+      unauthenticatedAction: pulumi.Input.fromValue(map['unauthenticatedAction'] as String),
     );
   }
 }
+

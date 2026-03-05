@@ -5,40 +5,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAlertsAlertConfigurationQueryList {
   /// Chart Name.
   final pulumi.Input<String> chartTitle;
-
   /// Dashboard ID.
   final pulumi.Input<String> dashboardId;
-
   /// End time. When storeType is set to log or metric, end must be set.
   final pulumi.Input<String> end;
-
   /// Whether to use exclusive SQL. The value is as follows: auto: automatic switching. enable: Starts. disable: disable.
   final pulumi.Input<String> powerSqlMode;
-
   /// Project Name.
   final pulumi.Input<String> project;
-
   /// Query and analysis statements. When storeType is set to log or metric, query is set to the query analysis statement. When storeType is set to meta, set query to an empty string.
   final pulumi.Input<String> query;
-
   /// Region of the target Project.
   final pulumi.Input<String> region;
-
   /// Roles used to write alarm data to the event Library.
   final pulumi.Input<String> roleArn;
-
   /// Start time. When storeType is set to log or metric, start must be set.
   final pulumi.Input<String> start;
-
   /// Query the Logstore, Metricstore, or resource data associated with the statistics. When storeType is set to log, store is set to the target Logstore. When storeType is set to metric, store is set to the target Metricstore. When storeType is set to meta, store is set to the target resource data name.
   final pulumi.Input<String> store;
-
   /// Query the data source type. The value is as follows: log: Logstore. metric: Time series Library. meta: resource data.
   final pulumi.Input<String> storeType;
-
   /// Time Type.
   final pulumi.Input<String> timeSpanType;
-
   /// Use of specific scene alarm front end.
   final pulumi.Input<String> ui;
 
@@ -90,9 +78,7 @@ class GetAlertsAlertConfigurationQueryList {
     };
   }
 
-  factory GetAlertsAlertConfigurationQueryList.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetAlertsAlertConfigurationQueryList.fromMap(Map<String, dynamic> map) {
     return GetAlertsAlertConfigurationQueryList(
       chartTitle: pulumi.Input.fromValue(map['chartTitle'] as String),
       dashboardId: pulumi.Input.fromValue(map['dashboardId'] as String),
@@ -110,3 +96,4 @@ class GetAlertsAlertConfigurationQueryList {
     );
   }
 }
+

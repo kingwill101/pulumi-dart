@@ -15,3 +15,4 @@ enum InstanceOperationType {
     throw ArgumentError('Unknown InstanceOperationType value: $value');
   }
 }
+

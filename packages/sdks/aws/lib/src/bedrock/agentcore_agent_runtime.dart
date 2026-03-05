@@ -919,60 +919,39 @@ import 'agentcore_agent_runtime_timeouts.dart';
 class AgentcoreAgentRuntime extends pulumi.CustomResource {
   /// ARN of the Agent Runtime.
   late final pulumi.Output<String> agentRuntimeArn;
-
   /// Container artifact configuration. See `agent_runtime_artifact` below.
-  late final pulumi.Output<AgentcoreAgentRuntimeAgentRuntimeArtifact>
-  agentRuntimeArtifact;
-
+  late final pulumi.Output<AgentcoreAgentRuntimeAgentRuntimeArtifact> agentRuntimeArtifact;
   /// Unique identifier of the Agent Runtime.
   late final pulumi.Output<String> agentRuntimeId;
-
   /// Name of the agent runtime.
   late final pulumi.Output<String> agentRuntimeName;
-
   /// Version of the Agent Runtime.
   late final pulumi.Output<String> agentRuntimeVersion;
-
   /// Authorization configuration for authenticating incoming requests. See `authorizer_configuration` below.
-  late final pulumi.Output<AgentcoreAgentRuntimeAuthorizerConfiguration?>
-  authorizerConfiguration;
-
+  late final pulumi.Output<AgentcoreAgentRuntimeAuthorizerConfiguration?> authorizerConfiguration;
   /// Description of the agent runtime.
   late final pulumi.Output<String?> description;
-
   /// Map of environment variables to pass to the container.
   late final pulumi.Output<Map<String, String>?> environmentVariables;
-
   /// Runtime session and resource lifecycle configuration for the agent runtime. See `lifecycle_configuration` below.
   late final pulumi.Output<List<Map<String, dynamic>>> lifecycleConfigurations;
-
   /// Network configuration for the agent runtime. See `network_configuration` below.
   ///
   /// The following arguments are optional:
-  late final pulumi.Output<AgentcoreAgentRuntimeNetworkConfiguration>
-  networkConfiguration;
-
+  late final pulumi.Output<AgentcoreAgentRuntimeNetworkConfiguration> networkConfiguration;
   /// Protocol configuration for the agent runtime. See `protocol_configuration` below.
-  late final pulumi.Output<AgentcoreAgentRuntimeProtocolConfiguration?>
-  protocolConfiguration;
-
+  late final pulumi.Output<AgentcoreAgentRuntimeProtocolConfiguration?> protocolConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Configuration for HTTP request headers that will be passed through to the runtime. See `request_header_configuration` below.
-  late final pulumi.Output<AgentcoreAgentRuntimeRequestHeaderConfiguration?>
-  requestHeaderConfiguration;
-
+  late final pulumi.Output<AgentcoreAgentRuntimeRequestHeaderConfiguration?> requestHeaderConfiguration;
   /// ARN of the IAM role that the agent runtime assumes to access AWS services.
   late final pulumi.Output<String> roleArn;
-
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<AgentcoreAgentRuntimeTimeouts?> timeouts;
-
   /// Workload identity details for the agent runtime. See `workload_identity_details` below.
   late final pulumi.Output<List<Map<String, dynamic>>> workloadIdentityDetails;
 
@@ -985,94 +964,29 @@ class AgentcoreAgentRuntime extends pulumi.CustomResource {
     AgentcoreAgentRuntimeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:bedrock/agentcoreAgentRuntime:AgentcoreAgentRuntime',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:bedrock/agentcoreAgentRuntime:AgentcoreAgentRuntime',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     agentRuntimeArn = registerOutput<String>('agentRuntimeArn');
-    agentRuntimeArtifact =
-        registerOutput<AgentcoreAgentRuntimeAgentRuntimeArtifact>(
-          'agentRuntimeArtifact',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AgentcoreAgentRuntimeAgentRuntimeArtifact.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    agentRuntimeArtifact = registerOutput<AgentcoreAgentRuntimeAgentRuntimeArtifact>('agentRuntimeArtifact', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreAgentRuntimeAgentRuntimeArtifact.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     agentRuntimeId = registerOutput<String>('agentRuntimeId');
     agentRuntimeName = registerOutput<String>('agentRuntimeName');
     agentRuntimeVersion = registerOutput<String>('agentRuntimeVersion');
-    authorizerConfiguration =
-        registerOutput<AgentcoreAgentRuntimeAuthorizerConfiguration?>(
-          'authorizerConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AgentcoreAgentRuntimeAuthorizerConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    authorizerConfiguration = registerOutput<AgentcoreAgentRuntimeAuthorizerConfiguration?>('authorizerConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreAgentRuntimeAuthorizerConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
-    environmentVariables = registerOutput<Map<String, String>?>(
-      'environmentVariables',
-    );
-    lifecycleConfigurations = registerOutput<List<Map<String, dynamic>>>(
-      'lifecycleConfigurations',
-    );
-    networkConfiguration =
-        registerOutput<AgentcoreAgentRuntimeNetworkConfiguration>(
-          'networkConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AgentcoreAgentRuntimeNetworkConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    protocolConfiguration =
-        registerOutput<AgentcoreAgentRuntimeProtocolConfiguration?>(
-          'protocolConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AgentcoreAgentRuntimeProtocolConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    environmentVariables = registerOutput<Map<String, String>?>('environmentVariables');
+    lifecycleConfigurations = registerOutput<List<Map<String, dynamic>>>('lifecycleConfigurations');
+    networkConfiguration = registerOutput<AgentcoreAgentRuntimeNetworkConfiguration>('networkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreAgentRuntimeNetworkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    protocolConfiguration = registerOutput<AgentcoreAgentRuntimeProtocolConfiguration?>('protocolConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreAgentRuntimeProtocolConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    requestHeaderConfiguration =
-        registerOutput<AgentcoreAgentRuntimeRequestHeaderConfiguration?>(
-          'requestHeaderConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AgentcoreAgentRuntimeRequestHeaderConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    requestHeaderConfiguration = registerOutput<AgentcoreAgentRuntimeRequestHeaderConfiguration?>('requestHeaderConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreAgentRuntimeRequestHeaderConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     roleArn = registerOutput<String>('roleArn');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<AgentcoreAgentRuntimeTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AgentcoreAgentRuntimeTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    workloadIdentityDetails = registerOutput<List<Map<String, dynamic>>>(
-      'workloadIdentityDetails',
-    );
+    timeouts = registerOutput<AgentcoreAgentRuntimeTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreAgentRuntimeTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    workloadIdentityDetails = registerOutput<List<Map<String, dynamic>>>('workloadIdentityDetails');
   }
 
   /// Gets an existing [AgentcoreAgentRuntime] resource's state with the given [name] and [id].
@@ -1093,93 +1007,28 @@ class AgentcoreAgentRuntime extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:bedrock/agentcoreAgentRuntime:AgentcoreAgentRuntime',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:bedrock/agentcoreAgentRuntime:AgentcoreAgentRuntime',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     agentRuntimeArn = registerOutput<String>('agentRuntimeArn');
-    agentRuntimeArtifact =
-        registerOutput<AgentcoreAgentRuntimeAgentRuntimeArtifact>(
-          'agentRuntimeArtifact',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AgentcoreAgentRuntimeAgentRuntimeArtifact.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    agentRuntimeArtifact = registerOutput<AgentcoreAgentRuntimeAgentRuntimeArtifact>('agentRuntimeArtifact', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreAgentRuntimeAgentRuntimeArtifact.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     agentRuntimeId = registerOutput<String>('agentRuntimeId');
     agentRuntimeName = registerOutput<String>('agentRuntimeName');
     agentRuntimeVersion = registerOutput<String>('agentRuntimeVersion');
-    authorizerConfiguration =
-        registerOutput<AgentcoreAgentRuntimeAuthorizerConfiguration?>(
-          'authorizerConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AgentcoreAgentRuntimeAuthorizerConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    authorizerConfiguration = registerOutput<AgentcoreAgentRuntimeAuthorizerConfiguration?>('authorizerConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreAgentRuntimeAuthorizerConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
-    environmentVariables = registerOutput<Map<String, String>?>(
-      'environmentVariables',
-    );
-    lifecycleConfigurations = registerOutput<List<Map<String, dynamic>>>(
-      'lifecycleConfigurations',
-    );
-    networkConfiguration =
-        registerOutput<AgentcoreAgentRuntimeNetworkConfiguration>(
-          'networkConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AgentcoreAgentRuntimeNetworkConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    protocolConfiguration =
-        registerOutput<AgentcoreAgentRuntimeProtocolConfiguration?>(
-          'protocolConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AgentcoreAgentRuntimeProtocolConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    environmentVariables = registerOutput<Map<String, String>?>('environmentVariables');
+    lifecycleConfigurations = registerOutput<List<Map<String, dynamic>>>('lifecycleConfigurations');
+    networkConfiguration = registerOutput<AgentcoreAgentRuntimeNetworkConfiguration>('networkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreAgentRuntimeNetworkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    protocolConfiguration = registerOutput<AgentcoreAgentRuntimeProtocolConfiguration?>('protocolConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreAgentRuntimeProtocolConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    requestHeaderConfiguration =
-        registerOutput<AgentcoreAgentRuntimeRequestHeaderConfiguration?>(
-          'requestHeaderConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AgentcoreAgentRuntimeRequestHeaderConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    requestHeaderConfiguration = registerOutput<AgentcoreAgentRuntimeRequestHeaderConfiguration?>('requestHeaderConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreAgentRuntimeRequestHeaderConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     roleArn = registerOutput<String>('roleArn');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<AgentcoreAgentRuntimeTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AgentcoreAgentRuntimeTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    workloadIdentityDetails = registerOutput<List<Map<String, dynamic>>>(
-      'workloadIdentityDetails',
-    );
+    timeouts = registerOutput<AgentcoreAgentRuntimeTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreAgentRuntimeTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    workloadIdentityDetails = registerOutput<List<Map<String, dynamic>>>('workloadIdentityDetails');
   }
 }

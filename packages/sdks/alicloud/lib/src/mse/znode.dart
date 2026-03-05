@@ -326,13 +326,10 @@ import 'znode_state.dart';
 class Znode extends pulumi.CustomResource {
   /// The language type of the returned information. Valid values: `zh` or `en`.
   late final pulumi.Output<String?> acceptLanguage;
-
   /// The ID of the Cluster.
   late final pulumi.Output<String> clusterId;
-
   /// The Node data.
   late final pulumi.Output<String?> data;
-
   /// The Node path. The value must start with a forward slash (/).
   late final pulumi.Output<String> path;
 
@@ -340,13 +337,16 @@ class Znode extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Znode]. {@macro pulumi_mse_znode_znode_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Znode(String name, {ZnodeArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:mse/znode:Znode',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Znode(
+    String name, {
+    ZnodeArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:mse/znode:Znode',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     acceptLanguage = registerOutput<String?>('acceptLanguage');
     clusterId = registerOutput<String>('clusterId');
     data = registerOutput<String?>('data');
@@ -354,7 +354,11 @@ class Znode extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Znode] resource's state with the given [name] and [id].
-  static Znode get(String name, pulumi.Input<String> id, {ZnodeState? state}) {
+  static Znode get(
+    String name,
+    pulumi.Input<String> id, {
+    ZnodeState? state,
+  }) {
     return Znode._get(
       name,
       state: state?.toMap(),
@@ -367,11 +371,11 @@ class Znode extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:mse/znode:Znode',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:mse/znode:Znode',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     acceptLanguage = registerOutput<String?>('acceptLanguage');
     clusterId = registerOutput<String>('clusterId');
     data = registerOutput<String?>('data');

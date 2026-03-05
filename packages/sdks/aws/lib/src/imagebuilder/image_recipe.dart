@@ -260,54 +260,38 @@ import 'image_recipe_systems_manager_agent.dart';
 class ImageRecipe extends pulumi.CustomResource {
   /// Tags that are applied to the AMI that Image Builder creates during the Build phase prior to image distribution. Maximum of 50 tags.
   late final pulumi.Output<Map<String, String>?> amiTags;
-
   /// Amazon Resource Name (ARN) of the image recipe.
   late final pulumi.Output<String> arn;
-
   /// Configuration block(s) with block device mappings for the image recipe. Detailed below.
   late final pulumi.Output<List<Map<String, dynamic>>?> blockDeviceMappings;
-
   /// Ordered configuration block(s) with components for the image recipe. Detailed below.
   late final pulumi.Output<List<Map<String, dynamic>>> components;
-
   /// Date the image recipe was created.
   late final pulumi.Output<String> dateCreated;
-
   /// Description of the image recipe.
   late final pulumi.Output<String?> description;
-
   /// Name of the image recipe.
   late final pulumi.Output<String> name;
-
   /// Owner of the image recipe.
   late final pulumi.Output<String> owner;
-
   /// The image recipe uses this image as a base from which to build your customized image. The value can be the base image ARN, an AMI ID, or an SSM Parameter referencing the AMI. For an SSM Parameter, enter the prefix `ssm:`, followed by the parameter name or ARN.
   late final pulumi.Output<String> parentImage;
-
   /// Platform of the image recipe.
   late final pulumi.Output<String> platform;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Configuration block for the Systems Manager Agent installed by default by Image Builder. Detailed below.
   late final pulumi.Output<ImageRecipeSystemsManagerAgent> systemsManagerAgent;
-
   /// Key-value map of resource tags for the image recipe. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// Base64 encoded user data. Use this to provide commands or a command script to run when you launch your build instance.
   late final pulumi.Output<String> userDataBase64;
-
   /// The semantic version of the image recipe, which specifies the version in the following format, with numeric values in each position to indicate a specific version: major.minor.patch. For example: 1.0.0.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> version;
-
   /// The working directory to be used during build and test workflows.
   late final pulumi.Output<String?> workingDirectory;
 
@@ -320,16 +304,14 @@ class ImageRecipe extends pulumi.CustomResource {
     ImageRecipeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:imagebuilder/imageRecipe:ImageRecipe',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:imagebuilder/imageRecipe:ImageRecipe',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     amiTags = registerOutput<Map<String, String>?>('amiTags');
     arn = registerOutput<String>('arn');
-    blockDeviceMappings = registerOutput<List<Map<String, dynamic>>?>(
-      'blockDeviceMappings',
-    );
+    blockDeviceMappings = registerOutput<List<Map<String, dynamic>>?>('blockDeviceMappings');
     components = registerOutput<List<Map<String, dynamic>>>('components');
     dateCreated = registerOutput<String>('dateCreated');
     description = registerOutput<String?>('description');
@@ -338,16 +320,7 @@ class ImageRecipe extends pulumi.CustomResource {
     parentImage = registerOutput<String>('parentImage');
     platform = registerOutput<String>('platform');
     region = registerOutput<String>('region');
-    systemsManagerAgent = registerOutput<ImageRecipeSystemsManagerAgent>(
-      'systemsManagerAgent',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ImageRecipeSystemsManagerAgent.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemsManagerAgent = registerOutput<ImageRecipeSystemsManagerAgent>('systemsManagerAgent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageRecipeSystemsManagerAgent.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     userDataBase64 = registerOutput<String>('userDataBase64');
@@ -373,16 +346,14 @@ class ImageRecipe extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:imagebuilder/imageRecipe:ImageRecipe',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:imagebuilder/imageRecipe:ImageRecipe',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     amiTags = registerOutput<Map<String, String>?>('amiTags');
     arn = registerOutput<String>('arn');
-    blockDeviceMappings = registerOutput<List<Map<String, dynamic>>?>(
-      'blockDeviceMappings',
-    );
+    blockDeviceMappings = registerOutput<List<Map<String, dynamic>>?>('blockDeviceMappings');
     components = registerOutput<List<Map<String, dynamic>>>('components');
     dateCreated = registerOutput<String>('dateCreated');
     description = registerOutput<String?>('description');
@@ -391,16 +362,7 @@ class ImageRecipe extends pulumi.CustomResource {
     parentImage = registerOutput<String>('parentImage');
     platform = registerOutput<String>('platform');
     region = registerOutput<String>('region');
-    systemsManagerAgent = registerOutput<ImageRecipeSystemsManagerAgent>(
-      'systemsManagerAgent',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ImageRecipeSystemsManagerAgent.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemsManagerAgent = registerOutput<ImageRecipeSystemsManagerAgent>('systemsManagerAgent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageRecipeSystemsManagerAgent.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     userDataBase64 = registerOutput<String>('userDataBase64');

@@ -9,8 +9,7 @@ class ResourceStatusResponseComputeBeta {
   /// An opaque ID of the host on which the VM is running.
   final pulumi.Input<String> physicalHost;
   final pulumi.Input<ResourceStatusSchedulingResponseComputeBeta> scheduling;
-  final pulumi.Input<UpcomingMaintenanceResponseComputeBeta>
-  upcomingMaintenance;
+  final pulumi.Input<UpcomingMaintenanceResponseComputeBeta> upcomingMaintenance;
 
   /// Creates a new [ResourceStatusResponseComputeBeta].
   /// [physicalHost] An opaque ID of the host on which the VM is running.
@@ -25,32 +24,17 @@ class ResourceStatusResponseComputeBeta {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'physicalHost': physicalHost,
-      'scheduling':
-          pulumi.Input.mapInputValue<
-            ResourceStatusSchedulingResponseComputeBeta,
-            Map<String, dynamic>
-          >(scheduling, (value) => value.toMap()),
-      'upcomingMaintenance':
-          pulumi.Input.mapInputValue<
-            UpcomingMaintenanceResponseComputeBeta,
-            Map<String, dynamic>
-          >(upcomingMaintenance, (value) => value.toMap()),
+      'scheduling': pulumi.Input.mapInputValue<ResourceStatusSchedulingResponseComputeBeta, Map<String, dynamic>>(scheduling, (value) => value.toMap()),
+      'upcomingMaintenance': pulumi.Input.mapInputValue<UpcomingMaintenanceResponseComputeBeta, Map<String, dynamic>>(upcomingMaintenance, (value) => value.toMap()),
     };
   }
 
   factory ResourceStatusResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return ResourceStatusResponseComputeBeta(
       physicalHost: pulumi.Input.fromValue(map['physicalHost'] as String),
-      scheduling: pulumi.Input.fromValue(
-        ResourceStatusSchedulingResponseComputeBeta.fromMap(
-          (map['scheduling']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      upcomingMaintenance: pulumi.Input.fromValue(
-        UpcomingMaintenanceResponseComputeBeta.fromMap(
-          (map['upcomingMaintenance']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      scheduling: pulumi.Input.fromValue(ResourceStatusSchedulingResponseComputeBeta.fromMap((map['scheduling']! as Map).cast<String, dynamic>())),
+      upcomingMaintenance: pulumi.Input.fromValue(UpcomingMaintenanceResponseComputeBeta.fromMap((map['upcomingMaintenance']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

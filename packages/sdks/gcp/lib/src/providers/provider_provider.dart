@@ -210,471 +210,203 @@ class ProviderProvider extends pulumi.ProviderResource {
     ProviderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    accessApprovalCustomEndpoint = registerOutput<String?>(
-      'accessApprovalCustomEndpoint',
-    );
-    accessContextManagerCustomEndpoint = registerOutput<String?>(
-      'accessContextManagerCustomEndpoint',
-    );
+          'gcp',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    accessApprovalCustomEndpoint = registerOutput<String?>('accessApprovalCustomEndpoint');
+    accessContextManagerCustomEndpoint = registerOutput<String?>('accessContextManagerCustomEndpoint');
     accessToken = registerOutput<String?>('accessToken');
-    activeDirectoryCustomEndpoint = registerOutput<String?>(
-      'activeDirectoryCustomEndpoint',
-    );
+    activeDirectoryCustomEndpoint = registerOutput<String?>('activeDirectoryCustomEndpoint');
     alloydbCustomEndpoint = registerOutput<String?>('alloydbCustomEndpoint');
-    apiGatewayCustomEndpoint = registerOutput<String?>(
-      'apiGatewayCustomEndpoint',
-    );
+    apiGatewayCustomEndpoint = registerOutput<String?>('apiGatewayCustomEndpoint');
     apigeeCustomEndpoint = registerOutput<String?>('apigeeCustomEndpoint');
     apihubCustomEndpoint = registerOutput<String?>('apihubCustomEndpoint');
     apikeysCustomEndpoint = registerOutput<String?>('apikeysCustomEndpoint');
-    appEngineCustomEndpoint = registerOutput<String?>(
-      'appEngineCustomEndpoint',
-    );
+    appEngineCustomEndpoint = registerOutput<String?>('appEngineCustomEndpoint');
     apphubCustomEndpoint = registerOutput<String?>('apphubCustomEndpoint');
-    artifactRegistryCustomEndpoint = registerOutput<String?>(
-      'artifactRegistryCustomEndpoint',
-    );
-    assuredWorkloadsCustomEndpoint = registerOutput<String?>(
-      'assuredWorkloadsCustomEndpoint',
-    );
+    artifactRegistryCustomEndpoint = registerOutput<String?>('artifactRegistryCustomEndpoint');
+    assuredWorkloadsCustomEndpoint = registerOutput<String?>('assuredWorkloadsCustomEndpoint');
     backupDrCustomEndpoint = registerOutput<String?>('backupDrCustomEndpoint');
-    beyondcorpCustomEndpoint = registerOutput<String?>(
-      'beyondcorpCustomEndpoint',
-    );
+    beyondcorpCustomEndpoint = registerOutput<String?>('beyondcorpCustomEndpoint');
     bigQueryCustomEndpoint = registerOutput<String?>('bigQueryCustomEndpoint');
     biglakeCustomEndpoint = registerOutput<String?>('biglakeCustomEndpoint');
-    biglakeIcebergCustomEndpoint = registerOutput<String?>(
-      'biglakeIcebergCustomEndpoint',
-    );
-    bigqueryAnalyticsHubCustomEndpoint = registerOutput<String?>(
-      'bigqueryAnalyticsHubCustomEndpoint',
-    );
-    bigqueryConnectionCustomEndpoint = registerOutput<String?>(
-      'bigqueryConnectionCustomEndpoint',
-    );
-    bigqueryDataTransferCustomEndpoint = registerOutput<String?>(
-      'bigqueryDataTransferCustomEndpoint',
-    );
-    bigqueryDatapolicyCustomEndpoint = registerOutput<String?>(
-      'bigqueryDatapolicyCustomEndpoint',
-    );
-    bigqueryDatapolicyv2CustomEndpoint = registerOutput<String?>(
-      'bigqueryDatapolicyv2CustomEndpoint',
-    );
-    bigqueryReservationCustomEndpoint = registerOutput<String?>(
-      'bigqueryReservationCustomEndpoint',
-    );
+    biglakeIcebergCustomEndpoint = registerOutput<String?>('biglakeIcebergCustomEndpoint');
+    bigqueryAnalyticsHubCustomEndpoint = registerOutput<String?>('bigqueryAnalyticsHubCustomEndpoint');
+    bigqueryConnectionCustomEndpoint = registerOutput<String?>('bigqueryConnectionCustomEndpoint');
+    bigqueryDataTransferCustomEndpoint = registerOutput<String?>('bigqueryDataTransferCustomEndpoint');
+    bigqueryDatapolicyCustomEndpoint = registerOutput<String?>('bigqueryDatapolicyCustomEndpoint');
+    bigqueryDatapolicyv2CustomEndpoint = registerOutput<String?>('bigqueryDatapolicyv2CustomEndpoint');
+    bigqueryReservationCustomEndpoint = registerOutput<String?>('bigqueryReservationCustomEndpoint');
     bigtableCustomEndpoint = registerOutput<String?>('bigtableCustomEndpoint');
     billingCustomEndpoint = registerOutput<String?>('billingCustomEndpoint');
     billingProject = registerOutput<String?>('billingProject');
-    binaryAuthorizationCustomEndpoint = registerOutput<String?>(
-      'binaryAuthorizationCustomEndpoint',
-    );
-    blockchainNodeEngineCustomEndpoint = registerOutput<String?>(
-      'blockchainNodeEngineCustomEndpoint',
-    );
-    certificateManagerCustomEndpoint = registerOutput<String?>(
-      'certificateManagerCustomEndpoint',
-    );
+    binaryAuthorizationCustomEndpoint = registerOutput<String?>('binaryAuthorizationCustomEndpoint');
+    blockchainNodeEngineCustomEndpoint = registerOutput<String?>('blockchainNodeEngineCustomEndpoint');
+    certificateManagerCustomEndpoint = registerOutput<String?>('certificateManagerCustomEndpoint');
     cesCustomEndpoint = registerOutput<String?>('cesCustomEndpoint');
-    chronicleCustomEndpoint = registerOutput<String?>(
-      'chronicleCustomEndpoint',
-    );
-    cloudAssetCustomEndpoint = registerOutput<String?>(
-      'cloudAssetCustomEndpoint',
-    );
-    cloudBillingCustomEndpoint = registerOutput<String?>(
-      'cloudBillingCustomEndpoint',
-    );
-    cloudBuildCustomEndpoint = registerOutput<String?>(
-      'cloudBuildCustomEndpoint',
-    );
-    cloudFunctionsCustomEndpoint = registerOutput<String?>(
-      'cloudFunctionsCustomEndpoint',
-    );
-    cloudIdentityCustomEndpoint = registerOutput<String?>(
-      'cloudIdentityCustomEndpoint',
-    );
+    chronicleCustomEndpoint = registerOutput<String?>('chronicleCustomEndpoint');
+    cloudAssetCustomEndpoint = registerOutput<String?>('cloudAssetCustomEndpoint');
+    cloudBillingCustomEndpoint = registerOutput<String?>('cloudBillingCustomEndpoint');
+    cloudBuildCustomEndpoint = registerOutput<String?>('cloudBuildCustomEndpoint');
+    cloudFunctionsCustomEndpoint = registerOutput<String?>('cloudFunctionsCustomEndpoint');
+    cloudIdentityCustomEndpoint = registerOutput<String?>('cloudIdentityCustomEndpoint');
     cloudIdsCustomEndpoint = registerOutput<String?>('cloudIdsCustomEndpoint');
-    cloudQuotasCustomEndpoint = registerOutput<String?>(
-      'cloudQuotasCustomEndpoint',
-    );
-    cloudResourceManagerCustomEndpoint = registerOutput<String?>(
-      'cloudResourceManagerCustomEndpoint',
-    );
+    cloudQuotasCustomEndpoint = registerOutput<String?>('cloudQuotasCustomEndpoint');
+    cloudResourceManagerCustomEndpoint = registerOutput<String?>('cloudResourceManagerCustomEndpoint');
     cloudRunCustomEndpoint = registerOutput<String?>('cloudRunCustomEndpoint');
-    cloudRunV2CustomEndpoint = registerOutput<String?>(
-      'cloudRunV2CustomEndpoint',
-    );
-    cloudSchedulerCustomEndpoint = registerOutput<String?>(
-      'cloudSchedulerCustomEndpoint',
-    );
-    cloudSecurityComplianceCustomEndpoint = registerOutput<String?>(
-      'cloudSecurityComplianceCustomEndpoint',
-    );
-    cloudTasksCustomEndpoint = registerOutput<String?>(
-      'cloudTasksCustomEndpoint',
-    );
-    cloudbuildv2CustomEndpoint = registerOutput<String?>(
-      'cloudbuildv2CustomEndpoint',
-    );
-    clouddeployCustomEndpoint = registerOutput<String?>(
-      'clouddeployCustomEndpoint',
-    );
-    clouddomainsCustomEndpoint = registerOutput<String?>(
-      'clouddomainsCustomEndpoint',
-    );
-    cloudfunctions2CustomEndpoint = registerOutput<String?>(
-      'cloudfunctions2CustomEndpoint',
-    );
+    cloudRunV2CustomEndpoint = registerOutput<String?>('cloudRunV2CustomEndpoint');
+    cloudSchedulerCustomEndpoint = registerOutput<String?>('cloudSchedulerCustomEndpoint');
+    cloudSecurityComplianceCustomEndpoint = registerOutput<String?>('cloudSecurityComplianceCustomEndpoint');
+    cloudTasksCustomEndpoint = registerOutput<String?>('cloudTasksCustomEndpoint');
+    cloudbuildv2CustomEndpoint = registerOutput<String?>('cloudbuildv2CustomEndpoint');
+    clouddeployCustomEndpoint = registerOutput<String?>('clouddeployCustomEndpoint');
+    clouddomainsCustomEndpoint = registerOutput<String?>('clouddomainsCustomEndpoint');
+    cloudfunctions2CustomEndpoint = registerOutput<String?>('cloudfunctions2CustomEndpoint');
     colabCustomEndpoint = registerOutput<String?>('colabCustomEndpoint');
     composerCustomEndpoint = registerOutput<String?>('composerCustomEndpoint');
     computeCustomEndpoint = registerOutput<String?>('computeCustomEndpoint');
-    contactCenterInsightsCustomEndpoint = registerOutput<String?>(
-      'contactCenterInsightsCustomEndpoint',
-    );
-    containerAnalysisCustomEndpoint = registerOutput<String?>(
-      'containerAnalysisCustomEndpoint',
-    );
-    containerAttachedCustomEndpoint = registerOutput<String?>(
-      'containerAttachedCustomEndpoint',
-    );
-    containerAwsCustomEndpoint = registerOutput<String?>(
-      'containerAwsCustomEndpoint',
-    );
-    containerAzureCustomEndpoint = registerOutput<String?>(
-      'containerAzureCustomEndpoint',
-    );
-    containerCustomEndpoint = registerOutput<String?>(
-      'containerCustomEndpoint',
-    );
-    coreBillingCustomEndpoint = registerOutput<String?>(
-      'coreBillingCustomEndpoint',
-    );
+    contactCenterInsightsCustomEndpoint = registerOutput<String?>('contactCenterInsightsCustomEndpoint');
+    containerAnalysisCustomEndpoint = registerOutput<String?>('containerAnalysisCustomEndpoint');
+    containerAttachedCustomEndpoint = registerOutput<String?>('containerAttachedCustomEndpoint');
+    containerAwsCustomEndpoint = registerOutput<String?>('containerAwsCustomEndpoint');
+    containerAzureCustomEndpoint = registerOutput<String?>('containerAzureCustomEndpoint');
+    containerCustomEndpoint = registerOutput<String?>('containerCustomEndpoint');
+    coreBillingCustomEndpoint = registerOutput<String?>('coreBillingCustomEndpoint');
     credentials = registerOutput<String?>('credentials');
-    dataCatalogCustomEndpoint = registerOutput<String?>(
-      'dataCatalogCustomEndpoint',
-    );
-    dataFusionCustomEndpoint = registerOutput<String?>(
-      'dataFusionCustomEndpoint',
-    );
-    dataLossPreventionCustomEndpoint = registerOutput<String?>(
-      'dataLossPreventionCustomEndpoint',
-    );
-    dataPipelineCustomEndpoint = registerOutput<String?>(
-      'dataPipelineCustomEndpoint',
-    );
-    databaseMigrationServiceCustomEndpoint = registerOutput<String?>(
-      'databaseMigrationServiceCustomEndpoint',
-    );
+    dataCatalogCustomEndpoint = registerOutput<String?>('dataCatalogCustomEndpoint');
+    dataFusionCustomEndpoint = registerOutput<String?>('dataFusionCustomEndpoint');
+    dataLossPreventionCustomEndpoint = registerOutput<String?>('dataLossPreventionCustomEndpoint');
+    dataPipelineCustomEndpoint = registerOutput<String?>('dataPipelineCustomEndpoint');
+    databaseMigrationServiceCustomEndpoint = registerOutput<String?>('databaseMigrationServiceCustomEndpoint');
     dataflowCustomEndpoint = registerOutput<String?>('dataflowCustomEndpoint');
     dataformCustomEndpoint = registerOutput<String?>('dataformCustomEndpoint');
     dataplexCustomEndpoint = registerOutput<String?>('dataplexCustomEndpoint');
     dataprocCustomEndpoint = registerOutput<String?>('dataprocCustomEndpoint');
-    dataprocGdcCustomEndpoint = registerOutput<String?>(
-      'dataprocGdcCustomEndpoint',
-    );
-    dataprocMetastoreCustomEndpoint = registerOutput<String?>(
-      'dataprocMetastoreCustomEndpoint',
-    );
-    datastreamCustomEndpoint = registerOutput<String?>(
-      'datastreamCustomEndpoint',
-    );
-    deploymentManagerCustomEndpoint = registerOutput<String?>(
-      'deploymentManagerCustomEndpoint',
-    );
-    developerConnectCustomEndpoint = registerOutput<String?>(
-      'developerConnectCustomEndpoint',
-    );
-    dialogflowCustomEndpoint = registerOutput<String?>(
-      'dialogflowCustomEndpoint',
-    );
-    dialogflowCxCustomEndpoint = registerOutput<String?>(
-      'dialogflowCxCustomEndpoint',
-    );
-    discoveryEngineCustomEndpoint = registerOutput<String?>(
-      'discoveryEngineCustomEndpoint',
-    );
+    dataprocGdcCustomEndpoint = registerOutput<String?>('dataprocGdcCustomEndpoint');
+    dataprocMetastoreCustomEndpoint = registerOutput<String?>('dataprocMetastoreCustomEndpoint');
+    datastreamCustomEndpoint = registerOutput<String?>('datastreamCustomEndpoint');
+    deploymentManagerCustomEndpoint = registerOutput<String?>('deploymentManagerCustomEndpoint');
+    developerConnectCustomEndpoint = registerOutput<String?>('developerConnectCustomEndpoint');
+    dialogflowCustomEndpoint = registerOutput<String?>('dialogflowCustomEndpoint');
+    dialogflowCxCustomEndpoint = registerOutput<String?>('dialogflowCxCustomEndpoint');
+    discoveryEngineCustomEndpoint = registerOutput<String?>('discoveryEngineCustomEndpoint');
     dnsCustomEndpoint = registerOutput<String?>('dnsCustomEndpoint');
-    documentAiCustomEndpoint = registerOutput<String?>(
-      'documentAiCustomEndpoint',
-    );
-    documentAiWarehouseCustomEndpoint = registerOutput<String?>(
-      'documentAiWarehouseCustomEndpoint',
-    );
-    edgecontainerCustomEndpoint = registerOutput<String?>(
-      'edgecontainerCustomEndpoint',
-    );
-    edgenetworkCustomEndpoint = registerOutput<String?>(
-      'edgenetworkCustomEndpoint',
-    );
-    essentialContactsCustomEndpoint = registerOutput<String?>(
-      'essentialContactsCustomEndpoint',
-    );
+    documentAiCustomEndpoint = registerOutput<String?>('documentAiCustomEndpoint');
+    documentAiWarehouseCustomEndpoint = registerOutput<String?>('documentAiWarehouseCustomEndpoint');
+    edgecontainerCustomEndpoint = registerOutput<String?>('edgecontainerCustomEndpoint');
+    edgenetworkCustomEndpoint = registerOutput<String?>('edgenetworkCustomEndpoint');
+    essentialContactsCustomEndpoint = registerOutput<String?>('essentialContactsCustomEndpoint');
     eventarcCustomEndpoint = registerOutput<String?>('eventarcCustomEndpoint');
-    filestoreCustomEndpoint = registerOutput<String?>(
-      'filestoreCustomEndpoint',
-    );
-    firebaseAiLogicCustomEndpoint = registerOutput<String?>(
-      'firebaseAiLogicCustomEndpoint',
-    );
-    firebaseAppCheckCustomEndpoint = registerOutput<String?>(
-      'firebaseAppCheckCustomEndpoint',
-    );
-    firebaseAppHostingCustomEndpoint = registerOutput<String?>(
-      'firebaseAppHostingCustomEndpoint',
-    );
+    filestoreCustomEndpoint = registerOutput<String?>('filestoreCustomEndpoint');
+    firebaseAiLogicCustomEndpoint = registerOutput<String?>('firebaseAiLogicCustomEndpoint');
+    firebaseAppCheckCustomEndpoint = registerOutput<String?>('firebaseAppCheckCustomEndpoint');
+    firebaseAppHostingCustomEndpoint = registerOutput<String?>('firebaseAppHostingCustomEndpoint');
     firebaseCustomEndpoint = registerOutput<String?>('firebaseCustomEndpoint');
-    firebaseDataConnectCustomEndpoint = registerOutput<String?>(
-      'firebaseDataConnectCustomEndpoint',
-    );
-    firebaseDatabaseCustomEndpoint = registerOutput<String?>(
-      'firebaseDatabaseCustomEndpoint',
-    );
-    firebaseExtensionsCustomEndpoint = registerOutput<String?>(
-      'firebaseExtensionsCustomEndpoint',
-    );
-    firebaseHostingCustomEndpoint = registerOutput<String?>(
-      'firebaseHostingCustomEndpoint',
-    );
-    firebaseStorageCustomEndpoint = registerOutput<String?>(
-      'firebaseStorageCustomEndpoint',
-    );
-    firebaserulesCustomEndpoint = registerOutput<String?>(
-      'firebaserulesCustomEndpoint',
-    );
-    firestoreCustomEndpoint = registerOutput<String?>(
-      'firestoreCustomEndpoint',
-    );
+    firebaseDataConnectCustomEndpoint = registerOutput<String?>('firebaseDataConnectCustomEndpoint');
+    firebaseDatabaseCustomEndpoint = registerOutput<String?>('firebaseDatabaseCustomEndpoint');
+    firebaseExtensionsCustomEndpoint = registerOutput<String?>('firebaseExtensionsCustomEndpoint');
+    firebaseHostingCustomEndpoint = registerOutput<String?>('firebaseHostingCustomEndpoint');
+    firebaseStorageCustomEndpoint = registerOutput<String?>('firebaseStorageCustomEndpoint');
+    firebaserulesCustomEndpoint = registerOutput<String?>('firebaserulesCustomEndpoint');
+    firestoreCustomEndpoint = registerOutput<String?>('firestoreCustomEndpoint');
     geminiCustomEndpoint = registerOutput<String?>('geminiCustomEndpoint');
-    gkeBackupCustomEndpoint = registerOutput<String?>(
-      'gkeBackupCustomEndpoint',
-    );
+    gkeBackupCustomEndpoint = registerOutput<String?>('gkeBackupCustomEndpoint');
     gkeHub2CustomEndpoint = registerOutput<String?>('gkeHub2CustomEndpoint');
     gkeHubCustomEndpoint = registerOutput<String?>('gkeHubCustomEndpoint');
-    gkeonpremCustomEndpoint = registerOutput<String?>(
-      'gkeonpremCustomEndpoint',
-    );
+    gkeonpremCustomEndpoint = registerOutput<String?>('gkeonpremCustomEndpoint');
     googlePartnerName = registerOutput<String?>('googlePartnerName');
-    healthcareCustomEndpoint = registerOutput<String?>(
-      'healthcareCustomEndpoint',
-    );
+    healthcareCustomEndpoint = registerOutput<String?>('healthcareCustomEndpoint');
     iam2CustomEndpoint = registerOutput<String?>('iam2CustomEndpoint');
     iam3CustomEndpoint = registerOutput<String?>('iam3CustomEndpoint');
     iamBetaCustomEndpoint = registerOutput<String?>('iamBetaCustomEndpoint');
-    iamCredentialsCustomEndpoint = registerOutput<String?>(
-      'iamCredentialsCustomEndpoint',
-    );
+    iamCredentialsCustomEndpoint = registerOutput<String?>('iamCredentialsCustomEndpoint');
     iamCustomEndpoint = registerOutput<String?>('iamCustomEndpoint');
-    iamWorkforcePoolCustomEndpoint = registerOutput<String?>(
-      'iamWorkforcePoolCustomEndpoint',
-    );
+    iamWorkforcePoolCustomEndpoint = registerOutput<String?>('iamWorkforcePoolCustomEndpoint');
     iapCustomEndpoint = registerOutput<String?>('iapCustomEndpoint');
-    identityPlatformCustomEndpoint = registerOutput<String?>(
-      'identityPlatformCustomEndpoint',
-    );
-    impersonateServiceAccount = registerOutput<String?>(
-      'impersonateServiceAccount',
-    );
-    integrationConnectorsCustomEndpoint = registerOutput<String?>(
-      'integrationConnectorsCustomEndpoint',
-    );
-    integrationsCustomEndpoint = registerOutput<String?>(
-      'integrationsCustomEndpoint',
-    );
+    identityPlatformCustomEndpoint = registerOutput<String?>('identityPlatformCustomEndpoint');
+    impersonateServiceAccount = registerOutput<String?>('impersonateServiceAccount');
+    integrationConnectorsCustomEndpoint = registerOutput<String?>('integrationConnectorsCustomEndpoint');
+    integrationsCustomEndpoint = registerOutput<String?>('integrationsCustomEndpoint');
     kmsCustomEndpoint = registerOutput<String?>('kmsCustomEndpoint');
     loggingCustomEndpoint = registerOutput<String?>('loggingCustomEndpoint');
     lookerCustomEndpoint = registerOutput<String?>('lookerCustomEndpoint');
     lustreCustomEndpoint = registerOutput<String?>('lustreCustomEndpoint');
-    managedKafkaCustomEndpoint = registerOutput<String?>(
-      'managedKafkaCustomEndpoint',
-    );
+    managedKafkaCustomEndpoint = registerOutput<String?>('managedKafkaCustomEndpoint');
     memcacheCustomEndpoint = registerOutput<String?>('memcacheCustomEndpoint');
-    memorystoreCustomEndpoint = registerOutput<String?>(
-      'memorystoreCustomEndpoint',
-    );
-    migrationCenterCustomEndpoint = registerOutput<String?>(
-      'migrationCenterCustomEndpoint',
-    );
+    memorystoreCustomEndpoint = registerOutput<String?>('memorystoreCustomEndpoint');
+    migrationCenterCustomEndpoint = registerOutput<String?>('migrationCenterCustomEndpoint');
     mlEngineCustomEndpoint = registerOutput<String?>('mlEngineCustomEndpoint');
-    modelArmorCustomEndpoint = registerOutput<String?>(
-      'modelArmorCustomEndpoint',
-    );
-    modelArmorGlobalCustomEndpoint = registerOutput<String?>(
-      'modelArmorGlobalCustomEndpoint',
-    );
-    monitoringCustomEndpoint = registerOutput<String?>(
-      'monitoringCustomEndpoint',
-    );
+    modelArmorCustomEndpoint = registerOutput<String?>('modelArmorCustomEndpoint');
+    modelArmorGlobalCustomEndpoint = registerOutput<String?>('modelArmorGlobalCustomEndpoint');
+    monitoringCustomEndpoint = registerOutput<String?>('monitoringCustomEndpoint');
     netappCustomEndpoint = registerOutput<String?>('netappCustomEndpoint');
-    networkConnectivityCustomEndpoint = registerOutput<String?>(
-      'networkConnectivityCustomEndpoint',
-    );
-    networkConnectivityv1CustomEndpoint = registerOutput<String?>(
-      'networkConnectivityv1CustomEndpoint',
-    );
-    networkManagementCustomEndpoint = registerOutput<String?>(
-      'networkManagementCustomEndpoint',
-    );
-    networkSecurityCustomEndpoint = registerOutput<String?>(
-      'networkSecurityCustomEndpoint',
-    );
-    networkServicesCustomEndpoint = registerOutput<String?>(
-      'networkServicesCustomEndpoint',
-    );
-    notebooksCustomEndpoint = registerOutput<String?>(
-      'notebooksCustomEndpoint',
-    );
-    observabilityCustomEndpoint = registerOutput<String?>(
-      'observabilityCustomEndpoint',
-    );
-    oracleDatabaseCustomEndpoint = registerOutput<String?>(
-      'oracleDatabaseCustomEndpoint',
-    );
-    orgPolicyCustomEndpoint = registerOutput<String?>(
-      'orgPolicyCustomEndpoint',
-    );
+    networkConnectivityCustomEndpoint = registerOutput<String?>('networkConnectivityCustomEndpoint');
+    networkConnectivityv1CustomEndpoint = registerOutput<String?>('networkConnectivityv1CustomEndpoint');
+    networkManagementCustomEndpoint = registerOutput<String?>('networkManagementCustomEndpoint');
+    networkSecurityCustomEndpoint = registerOutput<String?>('networkSecurityCustomEndpoint');
+    networkServicesCustomEndpoint = registerOutput<String?>('networkServicesCustomEndpoint');
+    notebooksCustomEndpoint = registerOutput<String?>('notebooksCustomEndpoint');
+    observabilityCustomEndpoint = registerOutput<String?>('observabilityCustomEndpoint');
+    oracleDatabaseCustomEndpoint = registerOutput<String?>('oracleDatabaseCustomEndpoint');
+    orgPolicyCustomEndpoint = registerOutput<String?>('orgPolicyCustomEndpoint');
     osConfigCustomEndpoint = registerOutput<String?>('osConfigCustomEndpoint');
-    osConfigV2CustomEndpoint = registerOutput<String?>(
-      'osConfigV2CustomEndpoint',
-    );
+    osConfigV2CustomEndpoint = registerOutput<String?>('osConfigV2CustomEndpoint');
     osLoginCustomEndpoint = registerOutput<String?>('osLoginCustomEndpoint');
-    parallelstoreCustomEndpoint = registerOutput<String?>(
-      'parallelstoreCustomEndpoint',
-    );
-    parameterManagerCustomEndpoint = registerOutput<String?>(
-      'parameterManagerCustomEndpoint',
-    );
-    parameterManagerRegionalCustomEndpoint = registerOutput<String?>(
-      'parameterManagerRegionalCustomEndpoint',
-    );
-    privatecaCustomEndpoint = registerOutput<String?>(
-      'privatecaCustomEndpoint',
-    );
-    privilegedAccessManagerCustomEndpoint = registerOutput<String?>(
-      'privilegedAccessManagerCustomEndpoint',
-    );
+    parallelstoreCustomEndpoint = registerOutput<String?>('parallelstoreCustomEndpoint');
+    parameterManagerCustomEndpoint = registerOutput<String?>('parameterManagerCustomEndpoint');
+    parameterManagerRegionalCustomEndpoint = registerOutput<String?>('parameterManagerRegionalCustomEndpoint');
+    privatecaCustomEndpoint = registerOutput<String?>('privatecaCustomEndpoint');
+    privilegedAccessManagerCustomEndpoint = registerOutput<String?>('privilegedAccessManagerCustomEndpoint');
     project = registerOutput<String?>('project');
     publicCaCustomEndpoint = registerOutput<String?>('publicCaCustomEndpoint');
     pubsubCustomEndpoint = registerOutput<String?>('pubsubCustomEndpoint');
-    pubsubLiteCustomEndpoint = registerOutput<String?>(
-      'pubsubLiteCustomEndpoint',
-    );
-    pulumiAttributionLabelAdditionStrategy = registerOutput<String?>(
-      'pulumiAttributionLabelAdditionStrategy',
-    );
-    recaptchaEnterpriseCustomEndpoint = registerOutput<String?>(
-      'recaptchaEnterpriseCustomEndpoint',
-    );
+    pubsubLiteCustomEndpoint = registerOutput<String?>('pubsubLiteCustomEndpoint');
+    pulumiAttributionLabelAdditionStrategy = registerOutput<String?>('pulumiAttributionLabelAdditionStrategy');
+    recaptchaEnterpriseCustomEndpoint = registerOutput<String?>('recaptchaEnterpriseCustomEndpoint');
     redisCustomEndpoint = registerOutput<String?>('redisCustomEndpoint');
     region = registerOutput<String?>('region');
     requestReason = registerOutput<String?>('requestReason');
     requestTimeout = registerOutput<String?>('requestTimeout');
-    resourceManager3CustomEndpoint = registerOutput<String?>(
-      'resourceManager3CustomEndpoint',
-    );
-    resourceManagerCustomEndpoint = registerOutput<String?>(
-      'resourceManagerCustomEndpoint',
-    );
-    resourceManagerV3CustomEndpoint = registerOutput<String?>(
-      'resourceManagerV3CustomEndpoint',
-    );
-    runtimeConfigCustomEndpoint = registerOutput<String?>(
-      'runtimeConfigCustomEndpoint',
-    );
-    runtimeconfigCustomEndpoint = registerOutput<String?>(
-      'runtimeconfigCustomEndpoint',
-    );
-    saasRuntimeCustomEndpoint = registerOutput<String?>(
-      'saasRuntimeCustomEndpoint',
-    );
-    secretManagerCustomEndpoint = registerOutput<String?>(
-      'secretManagerCustomEndpoint',
-    );
-    secretManagerRegionalCustomEndpoint = registerOutput<String?>(
-      'secretManagerRegionalCustomEndpoint',
-    );
-    secureSourceManagerCustomEndpoint = registerOutput<String?>(
-      'secureSourceManagerCustomEndpoint',
-    );
-    securityCenterCustomEndpoint = registerOutput<String?>(
-      'securityCenterCustomEndpoint',
-    );
-    securityCenterManagementCustomEndpoint = registerOutput<String?>(
-      'securityCenterManagementCustomEndpoint',
-    );
-    securityCenterV2CustomEndpoint = registerOutput<String?>(
-      'securityCenterV2CustomEndpoint',
-    );
-    securityScannerCustomEndpoint = registerOutput<String?>(
-      'securityScannerCustomEndpoint',
-    );
-    securitypostureCustomEndpoint = registerOutput<String?>(
-      'securitypostureCustomEndpoint',
-    );
-    serviceDirectoryCustomEndpoint = registerOutput<String?>(
-      'serviceDirectoryCustomEndpoint',
-    );
-    serviceManagementCustomEndpoint = registerOutput<String?>(
-      'serviceManagementCustomEndpoint',
-    );
-    serviceNetworkingCustomEndpoint = registerOutput<String?>(
-      'serviceNetworkingCustomEndpoint',
-    );
-    serviceUsageCustomEndpoint = registerOutput<String?>(
-      'serviceUsageCustomEndpoint',
-    );
-    siteVerificationCustomEndpoint = registerOutput<String?>(
-      'siteVerificationCustomEndpoint',
-    );
-    sourceRepoCustomEndpoint = registerOutput<String?>(
-      'sourceRepoCustomEndpoint',
-    );
+    resourceManager3CustomEndpoint = registerOutput<String?>('resourceManager3CustomEndpoint');
+    resourceManagerCustomEndpoint = registerOutput<String?>('resourceManagerCustomEndpoint');
+    resourceManagerV3CustomEndpoint = registerOutput<String?>('resourceManagerV3CustomEndpoint');
+    runtimeConfigCustomEndpoint = registerOutput<String?>('runtimeConfigCustomEndpoint');
+    runtimeconfigCustomEndpoint = registerOutput<String?>('runtimeconfigCustomEndpoint');
+    saasRuntimeCustomEndpoint = registerOutput<String?>('saasRuntimeCustomEndpoint');
+    secretManagerCustomEndpoint = registerOutput<String?>('secretManagerCustomEndpoint');
+    secretManagerRegionalCustomEndpoint = registerOutput<String?>('secretManagerRegionalCustomEndpoint');
+    secureSourceManagerCustomEndpoint = registerOutput<String?>('secureSourceManagerCustomEndpoint');
+    securityCenterCustomEndpoint = registerOutput<String?>('securityCenterCustomEndpoint');
+    securityCenterManagementCustomEndpoint = registerOutput<String?>('securityCenterManagementCustomEndpoint');
+    securityCenterV2CustomEndpoint = registerOutput<String?>('securityCenterV2CustomEndpoint');
+    securityScannerCustomEndpoint = registerOutput<String?>('securityScannerCustomEndpoint');
+    securitypostureCustomEndpoint = registerOutput<String?>('securitypostureCustomEndpoint');
+    serviceDirectoryCustomEndpoint = registerOutput<String?>('serviceDirectoryCustomEndpoint');
+    serviceManagementCustomEndpoint = registerOutput<String?>('serviceManagementCustomEndpoint');
+    serviceNetworkingCustomEndpoint = registerOutput<String?>('serviceNetworkingCustomEndpoint');
+    serviceUsageCustomEndpoint = registerOutput<String?>('serviceUsageCustomEndpoint');
+    siteVerificationCustomEndpoint = registerOutput<String?>('siteVerificationCustomEndpoint');
+    sourceRepoCustomEndpoint = registerOutput<String?>('sourceRepoCustomEndpoint');
     spannerCustomEndpoint = registerOutput<String?>('spannerCustomEndpoint');
     sqlCustomEndpoint = registerOutput<String?>('sqlCustomEndpoint');
-    storageBatchOperationsCustomEndpoint = registerOutput<String?>(
-      'storageBatchOperationsCustomEndpoint',
-    );
-    storageControlCustomEndpoint = registerOutput<String?>(
-      'storageControlCustomEndpoint',
-    );
+    storageBatchOperationsCustomEndpoint = registerOutput<String?>('storageBatchOperationsCustomEndpoint');
+    storageControlCustomEndpoint = registerOutput<String?>('storageControlCustomEndpoint');
     storageCustomEndpoint = registerOutput<String?>('storageCustomEndpoint');
-    storageInsightsCustomEndpoint = registerOutput<String?>(
-      'storageInsightsCustomEndpoint',
-    );
-    storageTransferCustomEndpoint = registerOutput<String?>(
-      'storageTransferCustomEndpoint',
-    );
+    storageInsightsCustomEndpoint = registerOutput<String?>('storageInsightsCustomEndpoint');
+    storageTransferCustomEndpoint = registerOutput<String?>('storageTransferCustomEndpoint');
     tagsCustomEndpoint = registerOutput<String?>('tagsCustomEndpoint');
-    tagsLocationCustomEndpoint = registerOutput<String?>(
-      'tagsLocationCustomEndpoint',
-    );
+    tagsLocationCustomEndpoint = registerOutput<String?>('tagsLocationCustomEndpoint');
     tpuV2CustomEndpoint = registerOutput<String?>('tpuV2CustomEndpoint');
-    transcoderCustomEndpoint = registerOutput<String?>(
-      'transcoderCustomEndpoint',
-    );
+    transcoderCustomEndpoint = registerOutput<String?>('transcoderCustomEndpoint');
     universeDomain = registerOutput<String?>('universeDomain');
     vertexAiCustomEndpoint = registerOutput<String?>('vertexAiCustomEndpoint');
-    vmwareengineCustomEndpoint = registerOutput<String?>(
-      'vmwareengineCustomEndpoint',
-    );
-    vpcAccessCustomEndpoint = registerOutput<String?>(
-      'vpcAccessCustomEndpoint',
-    );
-    workbenchCustomEndpoint = registerOutput<String?>(
-      'workbenchCustomEndpoint',
-    );
-    workflowsCustomEndpoint = registerOutput<String?>(
-      'workflowsCustomEndpoint',
-    );
-    workstationsCustomEndpoint = registerOutput<String?>(
-      'workstationsCustomEndpoint',
-    );
+    vmwareengineCustomEndpoint = registerOutput<String?>('vmwareengineCustomEndpoint');
+    vpcAccessCustomEndpoint = registerOutput<String?>('vpcAccessCustomEndpoint');
+    workbenchCustomEndpoint = registerOutput<String?>('workbenchCustomEndpoint');
+    workflowsCustomEndpoint = registerOutput<String?>('workflowsCustomEndpoint');
+    workstationsCustomEndpoint = registerOutput<String?>('workstationsCustomEndpoint');
     zone = registerOutput<String?>('zone');
   }
 

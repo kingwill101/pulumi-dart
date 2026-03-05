@@ -33,11 +33,9 @@ import 'instance_attachment_state.dart';
 class InstanceAttachment extends pulumi.CustomResource {
   /// The resource ID of the environment.
   late final pulumi.Output<String> environment;
-
   /// The Apigee instance associated with the Apigee environment,
   /// in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
   late final pulumi.Output<String> instanceId;
-
   /// The name of the newly created  attachment (output parameter).
   late final pulumi.Output<String> name;
 
@@ -50,11 +48,11 @@ class InstanceAttachment extends pulumi.CustomResource {
     InstanceAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:apigee/instanceAttachment:InstanceAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:apigee/instanceAttachment:InstanceAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     environment = registerOutput<String>('environment');
     instanceId = registerOutput<String>('instanceId');
     this.name = registerOutput<String>('name');
@@ -78,11 +76,11 @@ class InstanceAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:apigee/instanceAttachment:InstanceAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:apigee/instanceAttachment:InstanceAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     environment = registerOutput<String>('environment');
     instanceId = registerOutput<String>('instanceId');
     this.name = registerOutput<String>('name');

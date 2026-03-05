@@ -13,8 +13,7 @@ enum ManagedCertificateDomainControlValidation {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ManagedCertificateDomainControlValidation value: $value',
-    );
+    throw ArgumentError('Unknown ManagedCertificateDomainControlValidation value: $value');
   }
 }
+

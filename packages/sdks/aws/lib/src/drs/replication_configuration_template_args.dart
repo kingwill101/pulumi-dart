@@ -11,51 +11,35 @@ import 'replication_configuration_template_timeouts.dart';
 class ReplicationConfigurationTemplateArgs {
   /// Whether to associate the default Elastic Disaster Recovery Security group with the Replication Configuration Template.
   final pulumi.Input<bool> associateDefaultSecurityGroup;
-
   /// Whether to allow the AWS replication agent to automatically replicate newly added disks.
   final pulumi.Input<bool>? autoReplicateNewDisks;
-
   /// Configure bandwidth throttling for the outbound data transfer rate of the Source Server in Mbps.
   final pulumi.Input<int> bandwidthThrottling;
-
   /// Whether to create a Public IP for the Recovery Instance by default.
   final pulumi.Input<bool> createPublicIp;
-
   /// Data plane routing mechanism that will be used for replication. Valid values are `PUBLIC_IP` and `PRIVATE_IP`.
   final pulumi.Input<String> dataPlaneRouting;
-
   /// Staging Disk EBS volume type to be used during replication. Valid values are `GP2`, `GP3`, `ST1`, or `AUTO`.
   final pulumi.Input<String> defaultLargeStagingDiskType;
-
   /// Type of EBS encryption to be used during replication. Valid values are `DEFAULT` and `CUSTOM`.
   final pulumi.Input<String> ebsEncryption;
-
   /// ARN of the EBS encryption key to be used during replication.
   final pulumi.Input<String>? ebsEncryptionKeyArn;
-
   /// Configuration block for Point in time (PIT) policy to manage snapshots taken during replication. See below.
-  final pulumi.Input<List<ReplicationConfigurationTemplatePitPolicy>>?
-  pitPolicies;
-
+  final pulumi.Input<List<ReplicationConfigurationTemplatePitPolicy>>? pitPolicies;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Instance type to be used for the replication server.
   final pulumi.Input<String> replicationServerInstanceType;
-
   /// Security group IDs that will be used by the replication server.
   final pulumi.Input<List<String>> replicationServersSecurityGroupsIds;
-
   /// Subnet to be used by the replication staging area.
   final pulumi.Input<String> stagingAreaSubnetId;
-
   /// Set of tags to be associated with all resources created in the replication staging area: EC2 replication server, EBS volumes, EBS snapshots, etc.
   final pulumi.Input<Map<String, String>> stagingAreaTags;
-
   /// Set of tags to be associated with the Replication Configuration Template resource.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<ReplicationConfigurationTemplateTimeouts>? timeouts;
-
   /// Whether to use a dedicated Replication Server in the replication staging area.
   ///
   /// The following arguments are optional:
@@ -109,110 +93,38 @@ class ReplicationConfigurationTemplateArgs {
       'defaultLargeStagingDiskType': defaultLargeStagingDiskType,
       'ebsEncryption': ebsEncryption,
       'ebsEncryptionKeyArn': ?ebsEncryptionKeyArn,
-      'pitPolicies':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ReplicationConfigurationTemplatePitPolicy>,
-            List<Map<String, dynamic>>
-          >(
-            pitPolicies,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ReplicationConfigurationTemplatePitPolicy,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'pitPolicies': ?pulumi.Input.mapOptionalInputValue<List<ReplicationConfigurationTemplatePitPolicy>, List<Map<String, dynamic>>>(pitPolicies, (value) => pulumi.Input.encodeList<ReplicationConfigurationTemplatePitPolicy, Map<String, dynamic>>(value, (value) => value.toMap())),
       'region': ?region,
       'replicationServerInstanceType': replicationServerInstanceType,
-      'replicationServersSecurityGroupsIds':
-          replicationServersSecurityGroupsIds,
+      'replicationServersSecurityGroupsIds': replicationServersSecurityGroupsIds,
       'stagingAreaSubnetId': stagingAreaSubnetId,
       'stagingAreaTags': stagingAreaTags,
       'tags': ?tags,
-      'timeouts':
-          ?pulumi.Input.mapOptionalInputValue<
-            ReplicationConfigurationTemplateTimeouts,
-            Map<String, dynamic>
-          >(timeouts, (value) => value.toMap()),
+      'timeouts': ?pulumi.Input.mapOptionalInputValue<ReplicationConfigurationTemplateTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
       'useDedicatedReplicationServer': useDedicatedReplicationServer,
     };
   }
 
-  factory ReplicationConfigurationTemplateArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ReplicationConfigurationTemplateArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationConfigurationTemplateArgs(
-      associateDefaultSecurityGroup: pulumi.Input.fromValue(
-        map['associateDefaultSecurityGroup'] as bool,
-      ),
-      autoReplicateNewDisks: (() {
-        final guardedValue = map['autoReplicateNewDisks'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      bandwidthThrottling: pulumi.Input.fromValue(
-        map['bandwidthThrottling'] as int,
-      ),
+      associateDefaultSecurityGroup: pulumi.Input.fromValue(map['associateDefaultSecurityGroup'] as bool),
+      autoReplicateNewDisks: (() { final guardedValue = map['autoReplicateNewDisks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      bandwidthThrottling: pulumi.Input.fromValue(map['bandwidthThrottling'] as int),
       createPublicIp: pulumi.Input.fromValue(map['createPublicIp'] as bool),
-      dataPlaneRouting: pulumi.Input.fromValue(
-        map['dataPlaneRouting'] as String,
-      ),
-      defaultLargeStagingDiskType: pulumi.Input.fromValue(
-        map['defaultLargeStagingDiskType'] as String,
-      ),
+      dataPlaneRouting: pulumi.Input.fromValue(map['dataPlaneRouting'] as String),
+      defaultLargeStagingDiskType: pulumi.Input.fromValue(map['defaultLargeStagingDiskType'] as String),
       ebsEncryption: pulumi.Input.fromValue(map['ebsEncryption'] as String),
-      ebsEncryptionKeyArn: (() {
-        final guardedValue = map['ebsEncryptionKeyArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pitPolicies: (() {
-        final guardedValue = map['pitPolicies'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ReplicationConfigurationTemplatePitPolicy>(
-            guardedValue,
-            (value) => ReplicationConfigurationTemplatePitPolicy.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      replicationServerInstanceType: pulumi.Input.fromValue(
-        map['replicationServerInstanceType'] as String,
-      ),
-      replicationServersSecurityGroupsIds: pulumi.Input.fromValue(
-        (map['replicationServersSecurityGroupsIds'] as List).cast<String>(),
-      ),
-      stagingAreaSubnetId: pulumi.Input.fromValue(
-        map['stagingAreaSubnetId'] as String,
-      ),
-      stagingAreaTags: pulumi.Input.fromValue(
-        (map['stagingAreaTags'] as Map).cast<String, String>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      timeouts: (() {
-        final guardedValue = map['timeouts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ReplicationConfigurationTemplateTimeouts.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      useDedicatedReplicationServer: pulumi.Input.fromValue(
-        map['useDedicatedReplicationServer'] as bool,
-      ),
+      ebsEncryptionKeyArn: (() { final guardedValue = map['ebsEncryptionKeyArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pitPolicies: (() { final guardedValue = map['pitPolicies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ReplicationConfigurationTemplatePitPolicy>(guardedValue, (value) => ReplicationConfigurationTemplatePitPolicy.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      replicationServerInstanceType: pulumi.Input.fromValue(map['replicationServerInstanceType'] as String),
+      replicationServersSecurityGroupsIds: pulumi.Input.fromValue((map['replicationServersSecurityGroupsIds'] as List).cast<String>()),
+      stagingAreaSubnetId: pulumi.Input.fromValue(map['stagingAreaSubnetId'] as String),
+      stagingAreaTags: pulumi.Input.fromValue((map['stagingAreaTags'] as Map).cast<String, String>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      timeouts: (() { final guardedValue = map['timeouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ReplicationConfigurationTemplateTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      useDedicatedReplicationServer: pulumi.Input.fromValue(map['useDedicatedReplicationServer'] as bool),
     );
   }
 }
+

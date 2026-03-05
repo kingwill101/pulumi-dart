@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMoveCollectionArgs {
   /// The Move Collection Name.
   final pulumi.Input<String> moveCollectionName;
-
   /// The Resource Group Name.
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetMoveCollectionArgs {
 
   factory GetMoveCollectionArgs.fromMap(Map<String, dynamic> map) {
     return GetMoveCollectionArgs(
-      moveCollectionName: pulumi.Input.fromValue(
-        map['moveCollectionName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      moveCollectionName: pulumi.Input.fromValue(map['moveCollectionName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

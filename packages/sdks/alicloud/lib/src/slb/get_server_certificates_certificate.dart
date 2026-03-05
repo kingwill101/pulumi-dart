@@ -5,43 +5,30 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServerCertificatesCertificate {
   /// Id of server certificate issued by alibaba cloud.
   final pulumi.Input<String> alicloudCertificateId;
-
   /// Name of server certificate issued by alibaba cloud.
   final pulumi.Input<String> alicloudCertificateName;
-
   /// Server certificate common name.
   final pulumi.Input<String> commonName;
-
   /// Server certificate created time.
   final pulumi.Input<String> createdTime;
-
   /// Server certificate created timestamp.
   final pulumi.Input<int> createdTimestamp;
-
   /// Server certificate expired time.
   final pulumi.Input<String> expiredTime;
-
   /// Server certificate expired timestamp.
   final pulumi.Input<int> expiredTimestamp;
-
   /// Server certificate fingerprint.
   final pulumi.Input<String> fingerprint;
-
   /// Server certificate ID.
   final pulumi.Input<String> id;
-
   /// Is server certificate issued by alibaba cloud or not.
   final pulumi.Input<bool> isAlicloudCertificate;
-
   /// Server certificate name.
   final pulumi.Input<String> name;
-
   /// The Id of resource group which the slb server certificates belongs.
   final pulumi.Input<String>? resourceGroupId;
-
   /// Server certificate subject alternative name list.
   final pulumi.Input<List<String>> subjectAlternativeNames;
-
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -98,12 +85,8 @@ class GetServerCertificatesCertificate {
 
   factory GetServerCertificatesCertificate.fromMap(Map<String, dynamic> map) {
     return GetServerCertificatesCertificate(
-      alicloudCertificateId: pulumi.Input.fromValue(
-        map['alicloudCertificateId'] as String,
-      ),
-      alicloudCertificateName: pulumi.Input.fromValue(
-        map['alicloudCertificateName'] as String,
-      ),
+      alicloudCertificateId: pulumi.Input.fromValue(map['alicloudCertificateId'] as String),
+      alicloudCertificateName: pulumi.Input.fromValue(map['alicloudCertificateName'] as String),
       commonName: pulumi.Input.fromValue(map['commonName'] as String),
       createdTime: pulumi.Input.fromValue(map['createdTime'] as String),
       createdTimestamp: pulumi.Input.fromValue(map['createdTimestamp'] as int),
@@ -111,25 +94,12 @@ class GetServerCertificatesCertificate {
       expiredTimestamp: pulumi.Input.fromValue(map['expiredTimestamp'] as int),
       fingerprint: pulumi.Input.fromValue(map['fingerprint'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
-      isAlicloudCertificate: pulumi.Input.fromValue(
-        map['isAlicloudCertificate'] as bool,
-      ),
+      isAlicloudCertificate: pulumi.Input.fromValue(map['isAlicloudCertificate'] as bool),
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupId: (() {
-        final guardedValue = map['resourceGroupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subjectAlternativeNames: pulumi.Input.fromValue(
-        (map['subjectAlternativeNames'] as List).cast<String>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      resourceGroupId: (() { final guardedValue = map['resourceGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subjectAlternativeNames: pulumi.Input.fromValue((map['subjectAlternativeNames'] as List).cast<String>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

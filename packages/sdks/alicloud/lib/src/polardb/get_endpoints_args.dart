@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEndpointsArgs {
   /// PolarDB cluster ID.
   final pulumi.Input<String> dbClusterId;
-
   /// endpoint of the cluster.
   final pulumi.Input<String>? dbEndpointId;
 
   /// Creates a new [GetEndpointsArgs].
   /// [dbClusterId] PolarDB cluster ID.
   /// [dbEndpointId] endpoint of the cluster.
-  GetEndpointsArgs({required this.dbClusterId, this.dbEndpointId});
+  GetEndpointsArgs({
+    required this.dbClusterId,
+    this.dbEndpointId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,11 +30,8 @@ class GetEndpointsArgs {
   factory GetEndpointsArgs.fromMap(Map<String, dynamic> map) {
     return GetEndpointsArgs(
       dbClusterId: pulumi.Input.fromValue(map['dbClusterId'] as String),
-      dbEndpointId: (() {
-        final guardedValue = map['dbEndpointId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dbEndpointId: (() { final guardedValue = map['dbEndpointId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

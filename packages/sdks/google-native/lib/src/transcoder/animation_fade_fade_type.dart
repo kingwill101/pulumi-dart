@@ -16,3 +16,4 @@ enum AnimationFadeFadeType {
     throw ArgumentError('Unknown AnimationFadeFadeType value: $value');
   }
 }
+

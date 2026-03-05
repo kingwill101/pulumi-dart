@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPublicIPAddressArgs {
   /// Name of the public IP
   final pulumi.Input<String> publicIPAddressName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetPublicIPAddressArgs {
 
   factory GetPublicIPAddressArgs.fromMap(Map<String, dynamic> map) {
     return GetPublicIPAddressArgs(
-      publicIPAddressName: pulumi.Input.fromValue(
-        map['publicIPAddressName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      publicIPAddressName: pulumi.Input.fromValue(map['publicIPAddressName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

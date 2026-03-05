@@ -9,40 +9,28 @@ import 'tier_response.dart';
 class AwsElasticBeanstalkEnvironmentPropertiesResponse {
   /// The name of the application that is associated with this environment.
   final pulumi.Input<String>? applicationName;
-
   /// If specified, the environment attempts to use this value as the prefix for the CNAME in your Elastic Beanstalk environment URL. If not specified, the CNAME is generated automatically by appending a random alphanumeric string to the environment name.
   final pulumi.Input<String>? cnamePrefix;
-
   /// Your description for this environment.
   final pulumi.Input<String>? description;
-
   /// Property endpointURL
   final pulumi.Input<String>? endpointURL;
-
   /// A unique name for the environment.
   final pulumi.Input<String>? environmentName;
-
   /// The Amazon Resource Name (ARN) of an existing IAM role to be used as the environment's operations role.
   final pulumi.Input<String>? operationsRole;
-
   /// Key-value pairs defining configuration options for this environment, such as the instance type.
   final pulumi.Input<List<OptionSettingResponse>>? optionSettings;
-
   /// The Amazon Resource Name (ARN) of the custom platform to use with the environment.
   final pulumi.Input<String>? platformArn;
-
   /// The name of an Elastic Beanstalk solution stack (platform version) to use with the environment.
   final pulumi.Input<String>? solutionStackName;
-
   /// Specifies the tags applied to resources in the environment.
   final pulumi.Input<List<TagResponse>>? tags;
-
   /// The name of the Elastic Beanstalk configuration template to use with the environment.
   final pulumi.Input<String>? templateName;
-
   /// Specifies the tier to use in creating this environment. The environment tier that you choose determines whether Elastic Beanstalk provisions resources to support a web application that handles HTTP(S) requests or a web application that handles background-processing tasks.
   final pulumi.Input<TierResponse>? tier;
-
   /// The name of the application version to deploy.
   final pulumi.Input<String>? versionLabel;
 
@@ -84,126 +72,32 @@ class AwsElasticBeanstalkEnvironmentPropertiesResponse {
       'endpointURL': ?endpointURL,
       'environmentName': ?environmentName,
       'operationsRole': ?operationsRole,
-      'optionSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<OptionSettingResponse>,
-            List<Map<String, dynamic>>
-          >(
-            optionSettings,
-            (value) =>
-                pulumi.Input.encodeList<
-                  OptionSettingResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'optionSettings': ?pulumi.Input.mapOptionalInputValue<List<OptionSettingResponse>, List<Map<String, dynamic>>>(optionSettings, (value) => pulumi.Input.encodeList<OptionSettingResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'platformArn': ?platformArn,
       'solutionStackName': ?solutionStackName,
-      'tags':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<TagResponse>,
-            List<Map<String, dynamic>>
-          >(
-            tags,
-            (value) =>
-                pulumi.Input.encodeList<TagResponse, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'tags': ?pulumi.Input.mapOptionalInputValue<List<TagResponse>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<TagResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'templateName': ?templateName,
-      'tier':
-          ?pulumi.Input.mapOptionalInputValue<
-            TierResponse,
-            Map<String, dynamic>
-          >(tier, (value) => value.toMap()),
+      'tier': ?pulumi.Input.mapOptionalInputValue<TierResponse, Map<String, dynamic>>(tier, (value) => value.toMap()),
       'versionLabel': ?versionLabel,
     };
   }
 
-  factory AwsElasticBeanstalkEnvironmentPropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AwsElasticBeanstalkEnvironmentPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsElasticBeanstalkEnvironmentPropertiesResponse(
-      applicationName: (() {
-        final guardedValue = map['applicationName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      cnamePrefix: (() {
-        final guardedValue = map['cnamePrefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      endpointURL: (() {
-        final guardedValue = map['endpointURL'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      environmentName: (() {
-        final guardedValue = map['environmentName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      operationsRole: (() {
-        final guardedValue = map['operationsRole'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      optionSettings: (() {
-        final guardedValue = map['optionSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<OptionSettingResponse>(
-            guardedValue,
-            (value) => OptionSettingResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      platformArn: (() {
-        final guardedValue = map['platformArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      solutionStackName: (() {
-        final guardedValue = map['solutionStackName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<TagResponse>(
-            guardedValue,
-            (value) =>
-                TagResponse.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      templateName: (() {
-        final guardedValue = map['templateName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tier: (() {
-        final guardedValue = map['tier'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          TierResponse.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      versionLabel: (() {
-        final guardedValue = map['versionLabel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      applicationName: (() { final guardedValue = map['applicationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      cnamePrefix: (() { final guardedValue = map['cnamePrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      endpointURL: (() { final guardedValue = map['endpointURL']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      environmentName: (() { final guardedValue = map['environmentName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      operationsRole: (() { final guardedValue = map['operationsRole']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      optionSettings: (() { final guardedValue = map['optionSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<OptionSettingResponse>(guardedValue, (value) => OptionSettingResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      platformArn: (() { final guardedValue = map['platformArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      solutionStackName: (() { final guardedValue = map['solutionStackName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TagResponse>(guardedValue, (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      templateName: (() { final guardedValue = map['templateName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tier: (() { final guardedValue = map['tier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TierResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      versionLabel: (() { final guardedValue = map['versionLabel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VmwareDiskDetailsResponseVmmigrationV1alpha1 {
   /// The ordinal number of the disk.
   final pulumi.Input<int> diskNumber;
-
   /// The disk label.
   final pulumi.Input<String> label;
-
   /// Size in GB.
   final pulumi.Input<String> sizeGb;
 
@@ -31,9 +29,7 @@ class VmwareDiskDetailsResponseVmmigrationV1alpha1 {
     };
   }
 
-  factory VmwareDiskDetailsResponseVmmigrationV1alpha1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VmwareDiskDetailsResponseVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
     return VmwareDiskDetailsResponseVmmigrationV1alpha1(
       diskNumber: pulumi.Input.fromValue(map['diskNumber'] as int),
       label: pulumi.Input.fromValue(map['label'] as String),
@@ -41,3 +37,4 @@ class VmwareDiskDetailsResponseVmmigrationV1alpha1 {
     );
   }
 }
+

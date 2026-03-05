@@ -7,10 +7,8 @@ import 'duration_response_compute_v1.dart';
 class ConsistentHashLoadBalancerSettingsHttpCookieResponseComputeV1 {
   /// Name of the cookie.
   final pulumi.Input<String> name;
-
   /// Path to set for the cookie.
   final pulumi.Input<String> path;
-
   /// Lifetime of the cookie.
   final pulumi.Input<DurationResponseComputeV1> ttl;
 
@@ -28,25 +26,16 @@ class ConsistentHashLoadBalancerSettingsHttpCookieResponseComputeV1 {
     return <String, dynamic>{
       'name': name,
       'path': path,
-      'ttl':
-          pulumi.Input.mapInputValue<
-            DurationResponseComputeV1,
-            Map<String, dynamic>
-          >(ttl, (value) => value.toMap()),
+      'ttl': pulumi.Input.mapInputValue<DurationResponseComputeV1, Map<String, dynamic>>(ttl, (value) => value.toMap()),
     };
   }
 
-  factory ConsistentHashLoadBalancerSettingsHttpCookieResponseComputeV1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConsistentHashLoadBalancerSettingsHttpCookieResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return ConsistentHashLoadBalancerSettingsHttpCookieResponseComputeV1(
       name: pulumi.Input.fromValue(map['name'] as String),
       path: pulumi.Input.fromValue(map['path'] as String),
-      ttl: pulumi.Input.fromValue(
-        DurationResponseComputeV1.fromMap(
-          (map['ttl']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      ttl: pulumi.Input.fromValue(DurationResponseComputeV1.fromMap((map['ttl']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

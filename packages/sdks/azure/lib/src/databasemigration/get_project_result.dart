@@ -1,22 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getProject.
 class GetProjectResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Azure location where the resource exists.
   final String location;
   final String name;
   final String resourceGroupName;
   final String serviceName;
-
   /// The platform type of the migration source.
   final String sourcePlatform;
-
   /// A mapping of tags to assigned to the resource.
   final Map<String, String> tags;
-
   /// The platform type of the migration target.
   final String targetPlatform;
 
@@ -66,3 +63,4 @@ class GetProjectResult {
     );
   }
 }
+

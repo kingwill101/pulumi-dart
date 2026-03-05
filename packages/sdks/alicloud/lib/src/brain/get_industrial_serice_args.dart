@@ -14,19 +14,20 @@ class GetIndustrialSericeArgs {
 
   /// Creates a new [GetIndustrialSericeArgs].
   /// [enable] Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
-  GetIndustrialSericeArgs({this.enable});
+  GetIndustrialSericeArgs({
+    this.enable,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enable': ?enable};
+    return <String, dynamic>{
+      'enable': ?enable,
+    };
   }
 
   factory GetIndustrialSericeArgs.fromMap(Map<String, dynamic> map) {
     return GetIndustrialSericeArgs(
-      enable: (() {
-        final guardedValue = map['enable'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      enable: (() { final guardedValue = map['enable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

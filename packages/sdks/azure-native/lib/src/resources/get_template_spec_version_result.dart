@@ -8,37 +8,26 @@ import 'system_data_response.dart';
 class GetTemplateSpecVersionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Template Spec version description.
   final String? description;
-
   /// String Id used to locate any resource on Azure.
   final String id;
-
   /// An array of linked template artifacts.
   final List<LinkedTemplateArtifactResponse>? linkedTemplates;
-
   /// The location of the Template Spec Version. It must match the location of the parent Template Spec.
   final String location;
-
   /// The main Azure Resource Manager template content.
   final dynamic mainTemplate;
-
   /// The version metadata. Metadata is an open-ended object and is typically a collection of key-value pairs.
   final dynamic metadata;
-
   /// Name of this resource.
   final String name;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// Type of this resource.
   final String type;
-
   /// The Azure Resource Manager template UI definition content.
   final dynamic uiFormDefinition;
 
@@ -75,14 +64,7 @@ class GetTemplateSpecVersionResult {
       'azureApiVersion': azureApiVersion,
       'description': ?description,
       'id': id,
-      'linkedTemplates': ?(() {
-        final guardedValue = linkedTemplates;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          LinkedTemplateArtifactResponse,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'linkedTemplates': ?(() { final guardedValue = linkedTemplates; if (guardedValue == null) return null; return pulumi.Input.encodeList<LinkedTemplateArtifactResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'location': location,
       'mainTemplate': ?mainTemplate,
       'metadata': ?metadata,
@@ -97,48 +79,18 @@ class GetTemplateSpecVersionResult {
   factory GetTemplateSpecVersionResult.fromMap(Map<String, dynamic> map) {
     return GetTemplateSpecVersionResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
-      linkedTemplates: (() {
-        final guardedValue = map['linkedTemplates'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<LinkedTemplateArtifactResponse>(
-          guardedValue,
-          (value) => LinkedTemplateArtifactResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      linkedTemplates: (() { final guardedValue = map['linkedTemplates']; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinkedTemplateArtifactResponse>(guardedValue, (value) => LinkedTemplateArtifactResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       location: map['location'] as String,
-      mainTemplate: (() {
-        final guardedValue = map['mainTemplate'];
-        if (guardedValue == null) return null;
-        return guardedValue;
-      })(),
-      metadata: (() {
-        final guardedValue = map['metadata'];
-        if (guardedValue == null) return null;
-        return guardedValue;
-      })(),
+      mainTemplate: (() { final guardedValue = map['mainTemplate']; if (guardedValue == null) return null; return guardedValue; })(),
+      metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return guardedValue; })(),
       name: map['name'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
-      uiFormDefinition: (() {
-        final guardedValue = map['uiFormDefinition'];
-        if (guardedValue == null) return null;
-        return guardedValue;
-      })(),
+      uiFormDefinition: (() { final guardedValue = map['uiFormDefinition']; if (guardedValue == null) return null; return guardedValue; })(),
     );
   }
 }
+

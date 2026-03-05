@@ -8,10 +8,14 @@ class MetricBucketOptionsExplicitBuckets {
 
   /// Creates a new [MetricBucketOptionsExplicitBuckets].
   /// [bounds] The values must be monotonically increasing.
-  MetricBucketOptionsExplicitBuckets({required this.bounds});
+  MetricBucketOptionsExplicitBuckets({
+    required this.bounds,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'bounds': bounds};
+    return <String, dynamic>{
+      'bounds': bounds,
+    };
   }
 
   factory MetricBucketOptionsExplicitBuckets.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class MetricBucketOptionsExplicitBuckets {
     );
   }
 }
+

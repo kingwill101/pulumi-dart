@@ -16,3 +16,4 @@ enum NotificationLevel {
     throw ArgumentError('Unknown NotificationLevel value: $value');
   }
 }
+

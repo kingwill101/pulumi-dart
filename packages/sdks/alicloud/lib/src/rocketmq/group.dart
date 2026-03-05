@@ -221,22 +221,16 @@ import 'group_state.dart';
 class Group extends pulumi.CustomResource {
   /// Replaced by `group_name` after version 1.98.0.
   late final pulumi.Output<String> groupId;
-
   /// Name of the group. Two groups on a single instance cannot have the same name. A `group_name` starts with "GID_" or "GID-", and contains letters, numbers, hyphens (-), and underscores (_).
   late final pulumi.Output<String> groupName;
-
   /// Specify the protocol applicable to the created Group ID. Valid values: `tcp`, `http`. Default to `tcp`.
   late final pulumi.Output<String?> groupType;
-
   /// ID of the ONS Instance that owns the groups.
   late final pulumi.Output<String> instanceId;
-
   /// This attribute is used to set the message reading enabled or disabled. It can only be set after the group is used by the client.
   late final pulumi.Output<bool?> readEnable;
-
   /// This attribute is a concise description of group. The length cannot exceed 256.
   late final pulumi.Output<String?> remark;
-
   /// A mapping of tags to assign to the resource.
   /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
   /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -246,13 +240,16 @@ class Group extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Group]. {@macro pulumi_rocketmq_group_group_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Group(String name, {GroupArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:rocketmq/group:Group',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Group(
+    String name, {
+    GroupArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:rocketmq/group:Group',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     groupId = registerOutput<String>('groupId');
     groupName = registerOutput<String>('groupName');
     groupType = registerOutput<String?>('groupType');
@@ -263,7 +260,11 @@ class Group extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Group] resource's state with the given [name] and [id].
-  static Group get(String name, pulumi.Input<String> id, {GroupState? state}) {
+  static Group get(
+    String name,
+    pulumi.Input<String> id, {
+    GroupState? state,
+  }) {
     return Group._get(
       name,
       state: state?.toMap(),
@@ -276,11 +277,11 @@ class Group extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:rocketmq/group:Group',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:rocketmq/group:Group',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     groupId = registerOutput<String>('groupId');
     groupName = registerOutput<String>('groupName');
     groupType = registerOutput<String?>('groupType');

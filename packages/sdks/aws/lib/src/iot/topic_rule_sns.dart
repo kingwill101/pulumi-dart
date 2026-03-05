@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TopicRuleSns {
   /// The message format of the message to publish. Accepted values are "JSON" and "RAW".
   final pulumi.Input<String>? messageFormat;
-
   /// The ARN of the IAM role that grants access.
   final pulumi.Input<String> roleArn;
-
   /// The ARN of the SNS topic.
   final pulumi.Input<String> targetArn;
 
@@ -32,13 +30,10 @@ class TopicRuleSns {
 
   factory TopicRuleSns.fromMap(Map<String, dynamic> map) {
     return TopicRuleSns(
-      messageFormat: (() {
-        final guardedValue = map['messageFormat'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      messageFormat: (() { final guardedValue = map['messageFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       roleArn: pulumi.Input.fromValue(map['roleArn'] as String),
       targetArn: pulumi.Input.fromValue(map['targetArn'] as String),
     );
   }
 }
+

@@ -8,21 +8,20 @@ class BucketOverwriteConfigRulePrincipals {
 
   /// Creates a new [BucketOverwriteConfigRulePrincipals].
   /// [principals] Authorized subject. Supports the input of primary accounts, sub-accounts, or roles. Invalid setting if the value is empty.
-  BucketOverwriteConfigRulePrincipals({this.principals});
+  BucketOverwriteConfigRulePrincipals({
+    this.principals,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'principals': ?principals};
+    return <String, dynamic>{
+      'principals': ?principals,
+    };
   }
 
-  factory BucketOverwriteConfigRulePrincipals.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BucketOverwriteConfigRulePrincipals.fromMap(Map<String, dynamic> map) {
     return BucketOverwriteConfigRulePrincipals(
-      principals: (() {
-        final guardedValue = map['principals'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      principals: (() { final guardedValue = map['principals']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

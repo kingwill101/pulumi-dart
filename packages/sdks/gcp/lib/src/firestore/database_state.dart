@@ -8,46 +8,37 @@ class DatabaseState {
   /// The App Engine integration mode to use for this database.
   /// Possible values are: `ENABLED`, `DISABLED`.
   final pulumi.Input<String>? appEngineIntegrationMode;
-
   /// The CMEK (Customer Managed Encryption Key) configuration for a Firestore
   /// database. If not present, the database is secured by the default Google
   /// encryption key.
   /// Structure is documented below.
   final pulumi.Input<DatabaseCmekConfig>? cmekConfig;
-
   /// The concurrency control mode to use for this database.
   /// Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
   final pulumi.Input<String>? concurrencyMode;
-
   /// Output only. The timestamp at which this database was created.
   final pulumi.Input<String>? createTime;
-
   /// The database edition.
   /// Possible values are: `STANDARD`, `ENTERPRISE`.
   final pulumi.Input<String>? databaseEdition;
   final pulumi.Input<String>? deleteProtectionState;
   final pulumi.Input<String>? deletionPolicy;
-
   /// Output only. The earliest timestamp at which older versions of the data can be read from the database. See versionRetentionPeriod above; this field is populated with now - versionRetentionPeriod.
   /// This value is continuously updated, and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   final pulumi.Input<String>? earliestVersionTime;
-
   /// Output only. This checksum is computed by the server based on the value of other fields,
   /// and may be sent on update and delete requests to ensure the client has an
   /// up-to-date value before proceeding.
   final pulumi.Input<String>? etag;
-
   /// Output only. The keyPrefix for this database.
   /// This keyPrefix is used, in combination with the project id ("~") to construct the application id
   /// that is returned from the Cloud Datastore APIs in Google App Engine first generation runtimes.
   /// This value may be empty in which case the appid to use for URL-encoded keys is the project_id (eg: foo instead of v~foo).
   final pulumi.Input<String>? keyPrefix;
-
   /// The location of the database. Available locations are listed at
   /// https://cloud.google.com/firestore/docs/locations.
   final pulumi.Input<String>? locationId;
-
   /// The ID to use for the database, which will become the final
   /// component of the database's resource name. This value should be 4-63
   /// characters. Valid characters are /[a-z][0-9]-/ with first character
@@ -55,7 +46,6 @@ class DatabaseState {
   /// UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/.
   /// "(default)" database id is also valid.
   final pulumi.Input<String>? name;
-
   /// Whether to enable the PITR feature on this database.
   /// If `POINT_IN_TIME_RECOVERY_ENABLED` is selected, reads are supported on selected versions of the data from within the past 7 days.
   /// versionRetentionPeriod and earliestVersionTime can be used to determine the supported versions. These include reads against any timestamp within the past hour
@@ -64,11 +54,9 @@ class DatabaseState {
   /// Default value is `POINT_IN_TIME_RECOVERY_DISABLED`.
   /// Possible values are: `POINT_IN_TIME_RECOVERY_ENABLED`, `POINT_IN_TIME_RECOVERY_DISABLED`.
   final pulumi.Input<String>? pointInTimeRecoveryEnablement;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// Input only. A map of resource manager tags. Resource manager tag keys
   /// and values have the same definition as resource manager tags.
   /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
@@ -76,19 +64,15 @@ class DatabaseState {
   /// resource replacement when mutated. To apply tags to an existing resource, see
   /// the `gcp.tags.TagValue` resource.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// The type of the database.
   /// See https://cloud.google.com/datastore/docs/firestore-or-datastore
   /// for information about how to choose.
   /// Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
   final pulumi.Input<String>? type;
-
   /// Output only. The system-generated UUID4 for this Database.
   final pulumi.Input<String>? uid;
-
   /// Output only. The timestamp at which this database was most recently updated.
   final pulumi.Input<String>? updateTime;
-
   /// Output only. The period during which past versions of data are retained in the database.
   /// Any read or query can specify a readTime within this window, and will read the state of the database at that time.
   /// If the PITR feature is enabled, the retention period is 7 days. Otherwise, the retention period is 1 hour.
@@ -140,11 +124,7 @@ class DatabaseState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'appEngineIntegrationMode': ?appEngineIntegrationMode,
-      'cmekConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            DatabaseCmekConfig,
-            Map<String, dynamic>
-          >(cmekConfig, (value) => value.toMap()),
+      'cmekConfig': ?pulumi.Input.mapOptionalInputValue<DatabaseCmekConfig, Map<String, dynamic>>(cmekConfig, (value) => value.toMap()),
       'concurrencyMode': ?concurrencyMode,
       'createTime': ?createTime,
       'databaseEdition': ?databaseEdition,
@@ -167,107 +147,26 @@ class DatabaseState {
 
   factory DatabaseState.fromMap(Map<String, dynamic> map) {
     return DatabaseState(
-      appEngineIntegrationMode: (() {
-        final guardedValue = map['appEngineIntegrationMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      cmekConfig: (() {
-        final guardedValue = map['cmekConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DatabaseCmekConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      concurrencyMode: (() {
-        final guardedValue = map['concurrencyMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      databaseEdition: (() {
-        final guardedValue = map['databaseEdition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      deleteProtectionState: (() {
-        final guardedValue = map['deleteProtectionState'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      deletionPolicy: (() {
-        final guardedValue = map['deletionPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      earliestVersionTime: (() {
-        final guardedValue = map['earliestVersionTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      etag: (() {
-        final guardedValue = map['etag'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keyPrefix: (() {
-        final guardedValue = map['keyPrefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      locationId: (() {
-        final guardedValue = map['locationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pointInTimeRecoveryEnablement: (() {
-        final guardedValue = map['pointInTimeRecoveryEnablement'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      uid: (() {
-        final guardedValue = map['uid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      updateTime: (() {
-        final guardedValue = map['updateTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      versionRetentionPeriod: (() {
-        final guardedValue = map['versionRetentionPeriod'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      appEngineIntegrationMode: (() { final guardedValue = map['appEngineIntegrationMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      cmekConfig: (() { final guardedValue = map['cmekConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatabaseCmekConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      concurrencyMode: (() { final guardedValue = map['concurrencyMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      databaseEdition: (() { final guardedValue = map['databaseEdition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deleteProtectionState: (() { final guardedValue = map['deleteProtectionState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      earliestVersionTime: (() { final guardedValue = map['earliestVersionTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyPrefix: (() { final guardedValue = map['keyPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      locationId: (() { final guardedValue = map['locationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pointInTimeRecoveryEnablement: (() { final guardedValue = map['pointInTimeRecoveryEnablement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      uid: (() { final guardedValue = map['uid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      versionRetentionPeriod: (() { final guardedValue = map['versionRetentionPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

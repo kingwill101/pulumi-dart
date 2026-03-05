@@ -6,27 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ParameterSpecification {
   /// Default value of parameter.
   final pulumi.Input<dynamic>? defaultValue;
-
   /// Parameter type.
   final pulumi.Input<String> type;
 
   /// Creates a new [ParameterSpecification].
   /// [defaultValue] Default value of parameter.
   /// [type] Parameter type.
-  ParameterSpecification({this.defaultValue, required this.type});
+  ParameterSpecification({
+    this.defaultValue,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'defaultValue': ?defaultValue, 'type': type};
+    return <String, dynamic>{
+      'defaultValue': ?defaultValue,
+      'type': type,
+    };
   }
 
   factory ParameterSpecification.fromMap(Map<String, dynamic> map) {
     return ParameterSpecification(
-      defaultValue: (() {
-        final guardedValue = map['defaultValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
+      defaultValue: (() { final guardedValue = map['defaultValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

@@ -7,16 +7,12 @@ import 'extension_instance_view_response.dart';
 class PerNodeExtensionStateResponse {
   /// Fully qualified resource ID for the particular Arc Extension on this node.
   final pulumi.Input<String> extension;
-
   /// The extension instance view.
   final pulumi.Input<ExtensionInstanceViewResponse> instanceView;
-
   /// Name of the node in HCI Cluster.
   final pulumi.Input<String> name;
-
   /// State of Arc Extension in this node.
   final pulumi.Input<String> state;
-
   /// Specifies the version of the script handler.
   final pulumi.Input<String> typeHandlerVersion;
 
@@ -37,11 +33,7 @@ class PerNodeExtensionStateResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'extension': extension,
-      'instanceView':
-          pulumi.Input.mapInputValue<
-            ExtensionInstanceViewResponse,
-            Map<String, dynamic>
-          >(instanceView, (value) => value.toMap()),
+      'instanceView': pulumi.Input.mapInputValue<ExtensionInstanceViewResponse, Map<String, dynamic>>(instanceView, (value) => value.toMap()),
       'name': name,
       'state': state,
       'typeHandlerVersion': typeHandlerVersion,
@@ -51,16 +43,11 @@ class PerNodeExtensionStateResponse {
   factory PerNodeExtensionStateResponse.fromMap(Map<String, dynamic> map) {
     return PerNodeExtensionStateResponse(
       extension: pulumi.Input.fromValue(map['extension'] as String),
-      instanceView: pulumi.Input.fromValue(
-        ExtensionInstanceViewResponse.fromMap(
-          (map['instanceView']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      instanceView: pulumi.Input.fromValue(ExtensionInstanceViewResponse.fromMap((map['instanceView']! as Map).cast<String, dynamic>())),
       name: pulumi.Input.fromValue(map['name'] as String),
       state: pulumi.Input.fromValue(map['state'] as String),
-      typeHandlerVersion: pulumi.Input.fromValue(
-        map['typeHandlerVersion'] as String,
-      ),
+      typeHandlerVersion: pulumi.Input.fromValue(map['typeHandlerVersion'] as String),
     );
   }
 }
+

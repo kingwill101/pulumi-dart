@@ -6,7 +6,6 @@ class GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucket {
   /// The list of cloud storage bucket names to include in the DatasetConfig.
   /// Exactly one of the bucket_name and bucket_prefix_regex should be specified.
   final pulumi.Input<String> bucketName;
-
   /// The list of regex patterns for bucket names matching the regex.
   /// Regex should follow the syntax specified in google/re2 on GitHub.
   /// Exactly one of the bucket_name and bucket_prefix_regex should be specified.
@@ -27,14 +26,11 @@ class GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucket {
     };
   }
 
-  factory GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucket.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucket.fromMap(Map<String, dynamic> map) {
     return GetInsightsDatasetConfigIncludeCloudStorageBucketCloudStorageBucket(
       bucketName: pulumi.Input.fromValue(map['bucketName'] as String),
-      bucketPrefixRegex: pulumi.Input.fromValue(
-        map['bucketPrefixRegex'] as String,
-      ),
+      bucketPrefixRegex: pulumi.Input.fromValue(map['bucketPrefixRegex'] as String),
     );
   }
 }
+

@@ -540,28 +540,20 @@ import 'consumer_group_state.dart';
 class ConsumerGroup extends pulumi.CustomResource {
   /// Consumption retry strategy. See `consume_retry_policy` below.
   late final pulumi.Output<ConsumerGroupConsumeRetryPolicy> consumeRetryPolicy;
-
   /// The first ID of the resource.
   late final pulumi.Output<String> consumerGroupId;
-
   /// The creation time of the resource.
   late final pulumi.Output<String> createTime;
-
   /// Delivery order.
   late final pulumi.Output<String?> deliveryOrderType;
-
   /// Instance ID.
   late final pulumi.Output<String> instanceId;
-
   /// Maximum received message tps.
   late final pulumi.Output<int?> maxReceiveTps;
-
   /// (Available since v1.247.0) The ID of the region in which the instance resides.
   late final pulumi.Output<String> regionId;
-
   /// Custom remarks.
   late final pulumi.Output<String?> remark;
-
   /// The status of the resource.
   late final pulumi.Output<String> status;
 
@@ -574,21 +566,12 @@ class ConsumerGroup extends pulumi.CustomResource {
     ConsumerGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:rocketmq/consumerGroup:ConsumerGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    consumeRetryPolicy = registerOutput<ConsumerGroupConsumeRetryPolicy>(
-      'consumeRetryPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConsumerGroupConsumeRetryPolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'alicloud:rocketmq/consumerGroup:ConsumerGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    consumeRetryPolicy = registerOutput<ConsumerGroupConsumeRetryPolicy>('consumeRetryPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConsumerGroupConsumeRetryPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     consumerGroupId = registerOutput<String>('consumerGroupId');
     createTime = registerOutput<String>('createTime');
     deliveryOrderType = registerOutput<String?>('deliveryOrderType');
@@ -617,21 +600,12 @@ class ConsumerGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:rocketmq/consumerGroup:ConsumerGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    consumeRetryPolicy = registerOutput<ConsumerGroupConsumeRetryPolicy>(
-      'consumeRetryPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConsumerGroupConsumeRetryPolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'alicloud:rocketmq/consumerGroup:ConsumerGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    consumeRetryPolicy = registerOutput<ConsumerGroupConsumeRetryPolicy>('consumeRetryPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConsumerGroupConsumeRetryPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     consumerGroupId = registerOutput<String>('consumerGroupId');
     createTime = registerOutput<String>('createTime');
     deliveryOrderType = registerOutput<String?>('deliveryOrderType');

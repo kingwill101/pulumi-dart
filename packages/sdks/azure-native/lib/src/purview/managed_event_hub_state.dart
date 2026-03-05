@@ -16,3 +16,4 @@ enum ManagedEventHubState {
     throw ArgumentError('Unknown ManagedEventHubState value: $value');
   }
 }
+

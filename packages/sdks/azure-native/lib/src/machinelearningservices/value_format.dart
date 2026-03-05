@@ -14,3 +14,4 @@ enum ValueFormat {
     throw ArgumentError('Unknown ValueFormat value: $value');
   }
 }
+

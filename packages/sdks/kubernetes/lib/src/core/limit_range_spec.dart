@@ -10,34 +10,20 @@ class LimitRangeSpec {
 
   /// Creates a new [LimitRangeSpec].
   /// [limits] Limits is the list of LimitRangeItem objects that are enforced.
-  LimitRangeSpec({required this.limits});
+  LimitRangeSpec({
+    required this.limits,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'limits':
-          pulumi.Input.mapInputValue<
-            List<LimitRangeItem>,
-            List<Map<String, dynamic>>
-          >(
-            limits,
-            (value) =>
-                pulumi.Input.encodeList<LimitRangeItem, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'limits': pulumi.Input.mapInputValue<List<LimitRangeItem>, List<Map<String, dynamic>>>(limits, (value) => pulumi.Input.encodeList<LimitRangeItem, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory LimitRangeSpec.fromMap(Map<String, dynamic> map) {
     return LimitRangeSpec(
-      limits: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<LimitRangeItem>(
-          map['limits']!,
-          (value) =>
-              LimitRangeItem.fromMap((value as Map).cast<String, dynamic>()),
-        ),
-      ),
+      limits: pulumi.Input.fromValue(pulumi.Input.decodeList<LimitRangeItem>(map['limits']!, (value) => LimitRangeItem.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

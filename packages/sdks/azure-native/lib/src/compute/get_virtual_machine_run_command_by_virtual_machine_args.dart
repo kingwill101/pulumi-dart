@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVirtualMachineRunCommandByVirtualMachineArgs {
   /// The expand expression to apply on the operation.
   final pulumi.Input<String>? expand;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the VirtualMachineRunCommand
   final pulumi.Input<String> runCommandName;
-
   /// The name of the VirtualMachine
   final pulumi.Input<String> vmName;
 
@@ -40,20 +37,13 @@ class GetVirtualMachineRunCommandByVirtualMachineArgs {
     };
   }
 
-  factory GetVirtualMachineRunCommandByVirtualMachineArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetVirtualMachineRunCommandByVirtualMachineArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualMachineRunCommandByVirtualMachineArgs(
-      expand: (() {
-        final guardedValue = map['expand'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      expand: (() { final guardedValue = map['expand']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       runCommandName: pulumi.Input.fromValue(map['runCommandName'] as String),
       vmName: pulumi.Input.fromValue(map['vmName'] as String),
     );
   }
 }
+

@@ -337,12 +337,9 @@ import 'user_hierarchy_structure_state.dart';
 /// ```
 class UserHierarchyStructure extends pulumi.CustomResource {
   /// A block that defines the hierarchy structure's levels. The `hierarchy_structure` block is documented below.
-  late final pulumi.Output<UserHierarchyStructureHierarchyStructure>
-  hierarchyStructure;
-
+  late final pulumi.Output<UserHierarchyStructureHierarchyStructure> hierarchyStructure;
   /// Specifies the identifier of the hosting Amazon Connect Instance.
   late final pulumi.Output<String> instanceId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -355,22 +352,12 @@ class UserHierarchyStructure extends pulumi.CustomResource {
     UserHierarchyStructureArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:connect/userHierarchyStructure:UserHierarchyStructure',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    hierarchyStructure =
-        registerOutput<UserHierarchyStructureHierarchyStructure>(
-          'hierarchyStructure',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return UserHierarchyStructureHierarchyStructure.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'aws:connect/userHierarchyStructure:UserHierarchyStructure',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    hierarchyStructure = registerOutput<UserHierarchyStructureHierarchyStructure>('hierarchyStructure', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserHierarchyStructureHierarchyStructure.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     instanceId = registerOutput<String>('instanceId');
     region = registerOutput<String>('region');
   }
@@ -393,22 +380,12 @@ class UserHierarchyStructure extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:connect/userHierarchyStructure:UserHierarchyStructure',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    hierarchyStructure =
-        registerOutput<UserHierarchyStructureHierarchyStructure>(
-          'hierarchyStructure',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return UserHierarchyStructureHierarchyStructure.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'aws:connect/userHierarchyStructure:UserHierarchyStructure',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    hierarchyStructure = registerOutput<UserHierarchyStructureHierarchyStructure>('hierarchyStructure', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserHierarchyStructureHierarchyStructure.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     instanceId = registerOutput<String>('instanceId');
     region = registerOutput<String>('region');
   }

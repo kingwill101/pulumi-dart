@@ -105,10 +105,8 @@ import 'reserved_ipv6_state.dart';
 class ReservedIpv6 extends pulumi.CustomResource {
   late final pulumi.Output<int> dropletId;
   late final pulumi.Output<String> ip;
-
   /// The region that the reserved IPv6 needs to be reserved to.
   late final pulumi.Output<String> regionSlug;
-
   /// the uniform resource name for the reserved ipv6
   late final pulumi.Output<String> reservedIpv6Urn;
 
@@ -121,11 +119,11 @@ class ReservedIpv6 extends pulumi.CustomResource {
     ReservedIpv6Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/reservedIpv6:ReservedIpv6',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/reservedIpv6:ReservedIpv6',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dropletId = registerOutput<int>('dropletId');
     ip = registerOutput<String>('ip');
     regionSlug = registerOutput<String>('regionSlug');
@@ -150,11 +148,11 @@ class ReservedIpv6 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/reservedIpv6:ReservedIpv6',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/reservedIpv6:ReservedIpv6',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dropletId = registerOutput<int>('dropletId');
     ip = registerOutput<String>('ip');
     regionSlug = registerOutput<String>('regionSlug');

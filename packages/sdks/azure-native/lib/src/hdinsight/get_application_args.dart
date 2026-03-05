@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApplicationArgs {
   /// The constant value for the application name.
   final pulumi.Input<String> applicationName;
-
   /// The name of the cluster.
   final pulumi.Input<String> clusterName;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -38,9 +36,8 @@ class GetApplicationArgs {
     return GetApplicationArgs(
       applicationName: pulumi.Input.fromValue(map['applicationName'] as String),
       clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

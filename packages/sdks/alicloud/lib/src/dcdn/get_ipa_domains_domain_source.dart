@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIpaDomainsDomainSource {
   /// The address of the origin server.
   final pulumi.Input<String> content;
-
   /// The custom port.
   final pulumi.Input<int> port;
-
   /// The priority of the origin server if multiple origin servers are specified.
   final pulumi.Input<String> priority;
-
   /// The type of the origin server.
   final pulumi.Input<String> type;
-
   /// The weight of the origin server if multiple origin servers are specified.
   final pulumi.Input<int> weight;
 
@@ -52,3 +48,4 @@ class GetIpaDomainsDomainSource {
     );
   }
 }
+

@@ -9,31 +9,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWorkspacesArgs {
   /// Limits results to workspaces with aliases that begin with this value.
   final pulumi.Input<String>? aliasPrefix;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
   /// Creates a new [GetWorkspacesArgs].
   /// [aliasPrefix] Limits results to workspaces with aliases that begin with this value.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetWorkspacesArgs({this.aliasPrefix, this.region});
+  GetWorkspacesArgs({
+    this.aliasPrefix,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'aliasPrefix': ?aliasPrefix, 'region': ?region};
+    return <String, dynamic>{
+      'aliasPrefix': ?aliasPrefix,
+      'region': ?region,
+    };
   }
 
   factory GetWorkspacesArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkspacesArgs(
-      aliasPrefix: (() {
-        final guardedValue = map['aliasPrefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      aliasPrefix: (() { final guardedValue = map['aliasPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

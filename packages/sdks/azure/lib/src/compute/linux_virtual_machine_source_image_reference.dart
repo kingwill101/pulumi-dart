@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LinuxVirtualMachineSourceImageReference {
   /// Specifies the offer of the image used to create the virtual machines. Changing this forces a new resource to be created.
   final pulumi.Input<String> offer;
-
   /// Specifies the publisher of the image used to create the virtual machines. Changing this forces a new resource to be created.
   final pulumi.Input<String> publisher;
-
   /// Specifies the SKU of the image used to create the virtual machines. Changing this forces a new resource to be created.
   final pulumi.Input<String> sku;
-
   /// Specifies the version of the image used to create the virtual machines. Changing this forces a new resource to be created.
   final pulumi.Input<String> version;
 
@@ -36,9 +33,7 @@ class LinuxVirtualMachineSourceImageReference {
     };
   }
 
-  factory LinuxVirtualMachineSourceImageReference.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LinuxVirtualMachineSourceImageReference.fromMap(Map<String, dynamic> map) {
     return LinuxVirtualMachineSourceImageReference(
       offer: pulumi.Input.fromValue(map['offer'] as String),
       publisher: pulumi.Input.fromValue(map['publisher'] as String),
@@ -47,3 +42,4 @@ class LinuxVirtualMachineSourceImageReference {
     );
   }
 }
+

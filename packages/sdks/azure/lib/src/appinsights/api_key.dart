@@ -447,16 +447,12 @@ import 'api_key_state.dart';
 class ApiKey extends pulumi.CustomResource {
   /// The API Key secret (Sensitive).
   late final pulumi.Output<String> apiKey;
-
   /// The ID of the Application Insights component on which the API key operates. Changing this forces a new resource to be created.
   late final pulumi.Output<String> applicationInsightsId;
-
   /// Specifies the name of the Application Insights API key. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies the list of read permissions granted to the API key. Valid values are `agentconfig`, `aggregate`, `api`, `draft`, `extendqueries`, `search`. Please note these values are case sensitive. Changing this forces a new resource to be created.
   late final pulumi.Output<List<String>?> readPermissions;
-
   /// Specifies the list of write permissions granted to the API key. Valid values are `annotations`. Please note these values are case sensitive. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** At least one read or write permission must be defined.
@@ -466,13 +462,16 @@ class ApiKey extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [ApiKey]. {@macro pulumi_appinsights_api_key_api_key_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  ApiKey(String name, {ApiKeyArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure:appinsights/apiKey:ApiKey',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  ApiKey(
+    String name, {
+    ApiKeyArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure:appinsights/apiKey:ApiKey',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiKey = registerOutput<String>('apiKey');
     applicationInsightsId = registerOutput<String>('applicationInsightsId');
     this.name = registerOutput<String>('name');
@@ -498,11 +497,11 @@ class ApiKey extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appinsights/apiKey:ApiKey',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appinsights/apiKey:ApiKey',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiKey = registerOutput<String>('apiKey');
     applicationInsightsId = registerOutput<String>('applicationInsightsId');
     this.name = registerOutput<String>('name');

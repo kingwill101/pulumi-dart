@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSupportPlanTypeArgs {
   /// The Canonical support plan type.
   final pulumi.Input<String> planTypeName;
-
   /// The support plan type. For now the only valid type is "canonical".
   final pulumi.Input<String> providerName;
 
@@ -35,3 +34,4 @@ class GetSupportPlanTypeArgs {
     );
   }
 }
+

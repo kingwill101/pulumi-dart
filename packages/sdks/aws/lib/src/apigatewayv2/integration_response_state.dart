@@ -6,22 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IntegrationResponseState {
   /// API identifier.
   final pulumi.Input<String>? apiId;
-
   /// How to handle response payload content type conversions. Valid values: `CONVERT_TO_BINARY`, `CONVERT_TO_TEXT`.
   final pulumi.Input<String>? contentHandlingStrategy;
-
   /// Identifier of the `aws.apigatewayv2.Integration`.
   final pulumi.Input<String>? integrationId;
-
   /// Integration response key.
   final pulumi.Input<String>? integrationResponseKey;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Map of Velocity templates that are applied on the request payload based on the value of the Content-Type header sent by the client.
   final pulumi.Input<Map<String, String>>? responseTemplates;
-
   /// The [template selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-template-selection-expressions) for the integration response.
   final pulumi.Input<String>? templateSelectionExpression;
 
@@ -57,43 +51,14 @@ class IntegrationResponseState {
 
   factory IntegrationResponseState.fromMap(Map<String, dynamic> map) {
     return IntegrationResponseState(
-      apiId: (() {
-        final guardedValue = map['apiId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      contentHandlingStrategy: (() {
-        final guardedValue = map['contentHandlingStrategy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      integrationId: (() {
-        final guardedValue = map['integrationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      integrationResponseKey: (() {
-        final guardedValue = map['integrationResponseKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      responseTemplates: (() {
-        final guardedValue = map['responseTemplates'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      templateSelectionExpression: (() {
-        final guardedValue = map['templateSelectionExpression'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      apiId: (() { final guardedValue = map['apiId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      contentHandlingStrategy: (() { final guardedValue = map['contentHandlingStrategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      integrationId: (() { final guardedValue = map['integrationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      integrationResponseKey: (() { final guardedValue = map['integrationResponseKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      responseTemplates: (() { final guardedValue = map['responseTemplates']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      templateSelectionExpression: (() { final guardedValue = map['templateSelectionExpression']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

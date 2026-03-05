@@ -6,7 +6,6 @@ class StreamDestinationConfigGcsDestinationConfigJsonFileFormat {
   /// Compression of the loaded JSON file.
   /// Possible values are: `NO_COMPRESSION`, `GZIP`.
   final pulumi.Input<String>? compression;
-
   /// The schema file format along JSON data files.
   /// Possible values are: `NO_SCHEMA_FILE`, `AVRO_SCHEMA_FILE`.
   final pulumi.Input<String>? schemaFileFormat;
@@ -26,20 +25,11 @@ class StreamDestinationConfigGcsDestinationConfigJsonFileFormat {
     };
   }
 
-  factory StreamDestinationConfigGcsDestinationConfigJsonFileFormat.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory StreamDestinationConfigGcsDestinationConfigJsonFileFormat.fromMap(Map<String, dynamic> map) {
     return StreamDestinationConfigGcsDestinationConfigJsonFileFormat(
-      compression: (() {
-        final guardedValue = map['compression'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      schemaFileFormat: (() {
-        final guardedValue = map['schemaFileFormat'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      compression: (() { final guardedValue = map['compression']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      schemaFileFormat: (() { final guardedValue = map['schemaFileFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

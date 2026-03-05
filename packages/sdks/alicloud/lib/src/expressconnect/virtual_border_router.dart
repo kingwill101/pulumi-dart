@@ -246,80 +246,56 @@ import 'virtual_border_router_state.dart';
 class VirtualBorderRouter extends pulumi.CustomResource {
   /// Field `associated_physical_connections` has been deprecated from provider version 1.263.0. Please use the resource `alicloud.expressconnect.VbrPconnAssociation` instead.
   late final pulumi.Output<String?> associatedPhysicalConnections;
-
   /// The bandwidth of the VBR instance. Unit: Mbps. Valid values:
   /// - When creating a VBR instance for an exclusive leased line, the values are `50`, `100`, `200`, `300`, `400`, `500`, `1000`, `2048`, `5120`, `8192`, `10240`, `20480`, `40960`, `50120`, `61440`, and `102400`.
   /// - When creating a VBR instance for a shared line, you do not need to configure it. The bandwidth of the VBR is the bandwidth set when creating a shared physical line.
   late final pulumi.Output<int> bandwidth;
-
   /// The circuit code provided by the operator for the physical connection.
   late final pulumi.Output<String?> circuitCode;
-
   /// (Available since v1.263.0) The creation time of the VBR.
   late final pulumi.Output<String> createTime;
-
   /// The description information of the VBR.
   late final pulumi.Output<String?> description;
-
   /// Multiple of detection time.
   /// That is the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
   /// Valid values: `3` to `10`.
   late final pulumi.Output<int> detectMultiplier;
-
   /// Whether IPv6 is enabled.
   late final pulumi.Output<bool?> enableIpv6;
-
   /// The IPv4 address on the Alibaba Cloud side of the VBR instance.
   late final pulumi.Output<String> localGatewayIp;
-
   /// The IPv6 address on the Alibaba Cloud side of the VBR instance.
   late final pulumi.Output<String?> localIpv6GatewayIp;
-
   /// Configure the receiving interval of BFD packets. Valid values: `200` to `1000`.
   late final pulumi.Output<int> minRxInterval;
-
   /// Configure the sending interval of BFD packets. Valid values: `200` to `1000`.
   late final pulumi.Output<int> minTxInterval;
-
   /// Maximum transmission unit.
   late final pulumi.Output<int> mtu;
-
   /// The IPv4 address of the client side of the VBR instance.
   late final pulumi.Output<String> peerGatewayIp;
-
   /// The IPv6 address of the client side of the VBR instance.
   late final pulumi.Output<String?> peerIpv6GatewayIp;
-
   /// The subnet masks of the Alibaba Cloud-side IPv6 and the customer-side IPv6 of The VBR instance.
   late final pulumi.Output<String?> peeringIpv6SubnetMask;
-
   /// The subnet masks of the Alibaba Cloud-side IPv4 and the customer-side IPv4 of The VBR instance.
   late final pulumi.Output<String> peeringSubnetMask;
-
   /// The ID of the physical connection to which the VBR belongs.
   late final pulumi.Output<String> physicalConnectionId;
-
   /// The ID of the resource group.
   late final pulumi.Output<String> resourceGroupId;
-
   /// (Available since v1.166.0) The Route Table ID Of the Virtual Border Router.
   late final pulumi.Output<String> routeTableId;
-
   /// Whether to allow inter-IDC communication. Valid values: `true`, `false`.
   late final pulumi.Output<bool?> sitelinkEnable;
-
   /// The status of the VBR. Valid values: `active`, `terminated`.
   late final pulumi.Output<String> status;
-
   /// The tag of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The account ID of the VBR instance owner. The default value is the logon Alibaba Cloud account ID.
   late final pulumi.Output<String?> vbrOwnerId;
-
   /// The name of the VBR instance.
   late final pulumi.Output<String?> virtualBorderRouterName;
-
   /// The VLAN ID of the VBR instance. Valid values: `0` to `2999`.
   late final pulumi.Output<int> vlanId;
 
@@ -332,14 +308,12 @@ class VirtualBorderRouter extends pulumi.CustomResource {
     VirtualBorderRouterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:expressconnect/virtualBorderRouter:VirtualBorderRouter',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    associatedPhysicalConnections = registerOutput<String?>(
-      'associatedPhysicalConnections',
-    );
+          'alicloud:expressconnect/virtualBorderRouter:VirtualBorderRouter',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    associatedPhysicalConnections = registerOutput<String?>('associatedPhysicalConnections');
     bandwidth = registerOutput<int>('bandwidth');
     circuitCode = registerOutput<String?>('circuitCode');
     createTime = registerOutput<String>('createTime');
@@ -362,9 +336,7 @@ class VirtualBorderRouter extends pulumi.CustomResource {
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     vbrOwnerId = registerOutput<String?>('vbrOwnerId');
-    virtualBorderRouterName = registerOutput<String?>(
-      'virtualBorderRouterName',
-    );
+    virtualBorderRouterName = registerOutput<String?>('virtualBorderRouterName');
     vlanId = registerOutput<int>('vlanId');
   }
 
@@ -386,14 +358,12 @@ class VirtualBorderRouter extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:expressconnect/virtualBorderRouter:VirtualBorderRouter',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    associatedPhysicalConnections = registerOutput<String?>(
-      'associatedPhysicalConnections',
-    );
+          'alicloud:expressconnect/virtualBorderRouter:VirtualBorderRouter',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    associatedPhysicalConnections = registerOutput<String?>('associatedPhysicalConnections');
     bandwidth = registerOutput<int>('bandwidth');
     circuitCode = registerOutput<String?>('circuitCode');
     createTime = registerOutput<String>('createTime');
@@ -416,9 +386,7 @@ class VirtualBorderRouter extends pulumi.CustomResource {
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     vbrOwnerId = registerOutput<String?>('vbrOwnerId');
-    virtualBorderRouterName = registerOutput<String?>(
-      'virtualBorderRouterName',
-    );
+    virtualBorderRouterName = registerOutput<String?>('virtualBorderRouterName');
     vlanId = registerOutput<int>('vlanId');
   }
 }

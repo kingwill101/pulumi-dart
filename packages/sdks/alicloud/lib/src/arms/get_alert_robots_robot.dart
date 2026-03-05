@@ -5,25 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAlertRobotsRobot {
   /// The creation time of the resource.
   final pulumi.Input<String> createTime;
-
   /// Specifies whether the alert robot receives daily notifications.
   final pulumi.Input<String> dailyNoc;
-
   /// The time of the daily notification.
   final pulumi.Input<String> dailyNocTime;
-
   /// The ID of the Alert Robot.
   final pulumi.Input<String> id;
-
   /// The webhook url of the robot.
   final pulumi.Input<String> robotAddr;
-
   /// The id of the robot.
   final pulumi.Input<String> robotId;
-
   /// The name of the robot.
   final pulumi.Input<String> robotName;
-
   /// The robot type.
   final pulumi.Input<String> robotType;
 
@@ -73,3 +66,4 @@ class GetAlertRobotsRobot {
     );
   }
 }
+

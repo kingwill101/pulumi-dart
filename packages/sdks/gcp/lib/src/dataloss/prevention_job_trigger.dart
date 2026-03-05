@@ -4005,41 +4005,31 @@ import 'prevention_job_trigger_state.dart';
 class PreventionJobTrigger extends pulumi.CustomResource {
   /// The creation timestamp of an inspectTemplate. Set by the server.
   late final pulumi.Output<String> createTime;
-
   /// A description of the job trigger.
   late final pulumi.Output<String?> description;
-
   /// User set display name of the job trigger.
   late final pulumi.Output<String?> displayName;
-
   /// Controls what and how to inspect for findings.
   /// Structure is documented below.
   late final pulumi.Output<PreventionJobTriggerInspectJob?> inspectJob;
-
   /// The timestamp of the last time this trigger executed.
   late final pulumi.Output<String> lastRunTime;
-
   /// The resource name of the job trigger. Set by the server.
   late final pulumi.Output<String> name;
-
   /// The parent of the trigger, either in the format `projects/{{project}}`
   /// or `projects/{{project}}/locations/{{location}}`
   late final pulumi.Output<String> parent;
-
   /// Whether the trigger is currently active.
   /// Default value is `HEALTHY`.
   /// Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
   late final pulumi.Output<String?> status;
-
   /// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
   /// that is, it must match the regular expression: [a-zA-Z\d-_]+.
   /// The maximum length is 100 characters. Can be empty to allow the system to generate one.
   late final pulumi.Output<String> triggerId;
-
   /// What event needs to occur for a new job to be started.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> triggers;
-
   /// The last update timestamp of an inspectTemplate. Set by the server.
   late final pulumi.Output<String> updateTime;
 
@@ -4052,24 +4042,15 @@ class PreventionJobTrigger extends pulumi.CustomResource {
     PreventionJobTriggerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:dataloss/preventionJobTrigger:PreventionJobTrigger',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:dataloss/preventionJobTrigger:PreventionJobTrigger',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
-    inspectJob = registerOutput<PreventionJobTriggerInspectJob?>(
-      'inspectJob',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PreventionJobTriggerInspectJob.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    inspectJob = registerOutput<PreventionJobTriggerInspectJob?>('inspectJob', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PreventionJobTriggerInspectJob.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lastRunTime = registerOutput<String>('lastRunTime');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');
@@ -4097,24 +4078,15 @@ class PreventionJobTrigger extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:dataloss/preventionJobTrigger:PreventionJobTrigger',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:dataloss/preventionJobTrigger:PreventionJobTrigger',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
-    inspectJob = registerOutput<PreventionJobTriggerInspectJob?>(
-      'inspectJob',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PreventionJobTriggerInspectJob.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    inspectJob = registerOutput<PreventionJobTriggerInspectJob?>('inspectJob', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PreventionJobTriggerInspectJob.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lastRunTime = registerOutput<String>('lastRunTime');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');

@@ -19,15 +19,10 @@ class ResourceTypeRegistrationPropertiesResourceTypeCommonAttributeManagement {
     };
   }
 
-  factory ResourceTypeRegistrationPropertiesResourceTypeCommonAttributeManagement.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResourceTypeRegistrationPropertiesResourceTypeCommonAttributeManagement.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationPropertiesResourceTypeCommonAttributeManagement(
-      commonApiVersionsMergeMode: (() {
-        final guardedValue = map['commonApiVersionsMergeMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      commonApiVersionsMergeMode: (() { final guardedValue = map['commonApiVersionsMergeMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

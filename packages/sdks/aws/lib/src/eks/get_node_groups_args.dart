@@ -9,27 +9,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNodeGroupsArgs {
   /// Name of the cluster.
   final pulumi.Input<String> clusterName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
   /// Creates a new [GetNodeGroupsArgs].
   /// [clusterName] Name of the cluster.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetNodeGroupsArgs({required this.clusterName, this.region});
+  GetNodeGroupsArgs({
+    required this.clusterName,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'clusterName': clusterName, 'region': ?region};
+    return <String, dynamic>{
+      'clusterName': clusterName,
+      'region': ?region,
+    };
   }
 
   factory GetNodeGroupsArgs.fromMap(Map<String, dynamic> map) {
     return GetNodeGroupsArgs(
       clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

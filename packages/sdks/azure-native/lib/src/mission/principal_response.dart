@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PrincipalResponse {
   /// The object id associated with the principal
   final pulumi.Input<String> id;
-
   /// The type of the object id. We currently allow users, groups, and service principals
   final pulumi.Input<String> type;
 
   /// Creates a new [PrincipalResponse].
   /// [id] The object id associated with the principal
   /// [type] The type of the object id. We currently allow users, groups, and service principals
-  PrincipalResponse({required this.id, required this.type});
+  PrincipalResponse({
+    required this.id,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id, 'type': type};
+    return <String, dynamic>{
+      'id': id,
+      'type': type,
+    };
   }
 
   factory PrincipalResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class PrincipalResponse {
     );
   }
 }
+

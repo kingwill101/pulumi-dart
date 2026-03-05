@@ -3772,171 +3772,114 @@ import 'virtual_machines_profile_response.dart';
 class AgentPool extends pulumi.CustomResource {
   /// The list of Availability zones to use for nodes. This can only be specified if the AgentPoolType property is 'VirtualMachineScaleSets'.
   late final pulumi.Output<List<String>?> availabilityZones;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// AKS will associate the specified agent pool with the Capacity Reservation Group.
   late final pulumi.Output<String?> capacityReservationGroupID;
-
   /// Number of agents (VMs) to host docker containers. Allowed values must be in the range of 0 to 1000 (inclusive) for user pools and in the range of 1 to 1000 (inclusive) for system pools. The default value is 1.
   late final pulumi.Output<int?> count;
-
   /// CreationData to be used to specify the source Snapshot ID if the node pool will be created/upgraded using a snapshot.
   late final pulumi.Output<CreationDataResponse?> creationData;
-
   /// The version of Kubernetes the Agent Pool is running. If orchestratorVersion is a fully specified version &lt;major.minor.patch&gt;, this field will be exactly equal to it. If orchestratorVersion is &lt;major.minor&gt;, this field will contain the full &lt;major.minor.patch&gt; version being used.
   late final pulumi.Output<String> currentOrchestratorVersion;
-
   /// Unique read-only string used to implement optimistic concurrency. The eTag value will change when the resource is updated. Specify an if-match or if-none-match header with the eTag value for a subsequent request to enable optimistic concurrency per the normal eTag convention.
   late final pulumi.Output<String> eTag;
-
   /// Whether to enable auto-scaler
   late final pulumi.Output<bool?> enableAutoScaling;
-
   /// Whether to enable host based OS and data drive encryption. This is only supported on certain VM sizes and in certain Azure regions. For more information, see: https://docs.microsoft.com/azure/aks/enable-host-encryption
   late final pulumi.Output<bool?> enableEncryptionAtHost;
-
   /// Whether to use a FIPS-enabled OS. See [Add a FIPS-enabled node pool](https://docs.microsoft.com/azure/aks/use-multiple-node-pools#add-a-fips-enabled-node-pool-preview) for more details.
   late final pulumi.Output<bool?> enableFIPS;
-
   /// Whether each node is allocated its own public IP. Some scenarios may require nodes in a node pool to receive their own dedicated public IP addresses. A common scenario is for gaming workloads, where a console needs to make a direct connection to a cloud virtual machine to minimize hops. For more information see [assigning a public IP per node](https://docs.microsoft.com/azure/aks/use-multiple-node-pools#assign-a-public-ip-per-node-for-your-node-pools). The default is false.
   late final pulumi.Output<bool?> enableNodePublicIP;
-
   /// Whether to enable UltraSSD
   late final pulumi.Output<bool?> enableUltraSSD;
-
   /// Profile specific to a managed agent pool in Gateway mode. This field cannot be set if agent pool mode is not Gateway.
   late final pulumi.Output<AgentPoolGatewayProfileResponse?> gatewayProfile;
-
   /// GPUInstanceProfile to be used to specify GPU MIG instance profile for supported GPU VM SKU.
   late final pulumi.Output<String?> gpuInstanceProfile;
-
   /// GPU settings for the Agent Pool.
   late final pulumi.Output<GPUProfileResponse?> gpuProfile;
-
   /// The fully qualified resource ID of the Dedicated Host Group to provision virtual machines from, used only in creation scenario and not allowed to changed once set. This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}. For more information see [Azure dedicated hosts](https://docs.microsoft.com/azure/virtual-machines/dedicated-hosts).
   late final pulumi.Output<String?> hostGroupID;
-
   /// The Kubelet configuration on the agent pool nodes.
   late final pulumi.Output<KubeletConfigResponse?> kubeletConfig;
-
   /// Determines the placement of emptyDir volumes, container runtime data root, and Kubelet ephemeral storage.
   late final pulumi.Output<String?> kubeletDiskType;
-
   /// The OS configuration of Linux agent nodes.
   late final pulumi.Output<LinuxOSConfigResponse?> linuxOSConfig;
-
   /// Configures the per-node local DNS, with VnetDNS and KubeDNS overrides. LocalDNS helps improve performance and reliability of DNS resolution in an AKS cluster. For more details see aka.ms/aks/localdns.
   late final pulumi.Output<LocalDNSProfileResponse?> localDNSProfile;
-
   /// The maximum number of nodes for auto-scaling
   late final pulumi.Output<int?> maxCount;
-
   /// The maximum number of pods that can run on a node.
   late final pulumi.Output<int?> maxPods;
-
   /// Message of the day for Linux nodes, base64-encoded. A base64-encoded string which will be written to /etc/motd after decoding. This allows customization of the message of the day for Linux nodes. It must not be specified for Windows nodes. It must be a static string (i.e., will be printed raw and not be executed as a script).
   late final pulumi.Output<String?> messageOfTheDay;
-
   /// The minimum number of nodes for auto-scaling
   late final pulumi.Output<int?> minCount;
-
   /// The mode of an agent pool. A cluster must have at least one 'System' Agent Pool at all times. For additional information on agent pool restrictions and best practices, see: https://docs.microsoft.com/azure/aks/use-system-pools
   late final pulumi.Output<String?> mode;
-
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   late final pulumi.Output<String> name;
-
   /// Network-related settings of an agent pool.
   late final pulumi.Output<AgentPoolNetworkProfileResponse?> networkProfile;
-
   /// The version of node image
   late final pulumi.Output<String> nodeImageVersion;
-
   /// The node labels to be persisted across all nodes in agent pool.
   late final pulumi.Output<Map<String, String>?> nodeLabels;
-
   /// The public IP prefix ID which VM nodes should use IPs from. This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPPrefixes/{publicIPPrefixName}
   late final pulumi.Output<String?> nodePublicIPPrefixID;
-
   /// The taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule.
   late final pulumi.Output<List<String>?> nodeTaints;
-
   /// The version of Kubernetes specified by the user. Both patch version &lt;major.minor.patch&gt; (e.g. 1.20.13) and &lt;major.minor&gt; (e.g. 1.20) are supported. When &lt;major.minor&gt; is specified, the latest supported GA patch version is chosen automatically. Updating the cluster with the same &lt;major.minor&gt; once it has been created (e.g. 1.14.x -&gt; 1.14) will not trigger an upgrade, even if a newer patch version is available. As a best practice, you should upgrade all node pools in an AKS cluster to the same Kubernetes version. The node pool version must have the same major version as the control plane. The node pool minor version must be within two minor versions of the control plane version. The node pool version cannot be greater than the control plane version. For more information see [upgrading a node pool](https://docs.microsoft.com/azure/aks/use-multiple-node-pools#upgrade-a-node-pool).
   late final pulumi.Output<String?> orchestratorVersion;
-
   /// OS Disk Size in GB to be used to specify the disk size for every machine in the master/agent pool. If you specify 0, it will apply the default osDisk size according to the vmSize specified.
   late final pulumi.Output<int?> osDiskSizeGB;
-
   /// The OS disk type to be used for machines in the agent pool. The default is 'Ephemeral' if the VM supports it and has a cache disk larger than the requested OSDiskSizeGB. Otherwise, defaults to 'Managed'. May not be changed after creation. For more information see [Ephemeral OS](https://docs.microsoft.com/azure/aks/cluster-configuration#ephemeral-os).
   late final pulumi.Output<String?> osDiskType;
-
   /// Specifies the OS SKU used by the agent pool. The default is Ubuntu if OSType is Linux. The default is Windows2019 when Kubernetes &lt;= 1.24 or Windows2022 when Kubernetes &gt;= 1.25 if OSType is Windows.
   late final pulumi.Output<String?> osSKU;
-
   /// The operating system type. The default is Linux.
   late final pulumi.Output<String?> osType;
-
   /// Pod IP Allocation Mode. The IP allocation mode for pods in the agent pool. Must be used with podSubnetId. The default is 'DynamicIndividual'.
   late final pulumi.Output<String?> podIPAllocationMode;
-
   /// The ID of the subnet which pods will join when launched. If omitted, pod IPs are statically assigned on the node subnet (see vnetSubnetID for more details). This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}
   late final pulumi.Output<String?> podSubnetID;
-
   /// Whether the Agent Pool is running or stopped. When an Agent Pool is first created it is initially Running. The Agent Pool can be stopped by setting this field to Stopped. A stopped Agent Pool stops all of its VMs and does not accrue billing charges. An Agent Pool can only be stopped if it is Running and provisioning state is Succeeded
   late final pulumi.Output<PowerStateResponse?> powerState;
-
   /// The current deployment or provisioning state.
   late final pulumi.Output<String> provisioningState;
-
   /// The ID for Proximity Placement Group.
   late final pulumi.Output<String?> proximityPlacementGroupID;
-
   /// The scale down mode to use when scaling the Agent Pool. This also effects the cluster autoscaler behavior. If not specified, it defaults to Delete.
   late final pulumi.Output<String?> scaleDownMode;
-
   /// The Virtual Machine Scale Set eviction policy to use. This cannot be specified unless the scaleSetPriority is 'Spot'. If not specified, the default is 'Delete'.
   late final pulumi.Output<String?> scaleSetEvictionPolicy;
-
   /// The Virtual Machine Scale Set priority. If not specified, the default is 'Regular'.
   late final pulumi.Output<String?> scaleSetPriority;
-
   /// The security settings of an agent pool.
   late final pulumi.Output<AgentPoolSecurityProfileResponse?> securityProfile;
-
   /// The max price (in US Dollars) you are willing to pay for spot instances. Possible values are any decimal value greater than zero or -1 which indicates default price to be up-to on-demand. Possible values are any decimal value greater than zero or -1 which indicates the willingness to pay any on-demand price. For more details on spot pricing, see [spot VMs pricing](https://docs.microsoft.com/azure/virtual-machines/spot-vms#pricing)
   late final pulumi.Output<double?> spotMaxPrice;
-
   /// Contains read-only information about the Agent Pool.
   late final pulumi.Output<AgentPoolStatusResponse?> status;
-
   /// The tags to be persisted on the agent pool virtual machine scale set.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource type
   late final pulumi.Output<String> type;
-
   /// Settings for upgrading the agentpool
   late final pulumi.Output<AgentPoolUpgradeSettingsResponse?> upgradeSettings;
-
   /// The status of nodes in a VirtualMachines agent pool.
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  virtualMachineNodesStatus;
-
+  late final pulumi.Output<List<Map<String, dynamic>>?> virtualMachineNodesStatus;
   /// Specifications on VirtualMachines agent pool.
-  late final pulumi.Output<VirtualMachinesProfileResponse?>
-  virtualMachinesProfile;
-
+  late final pulumi.Output<VirtualMachinesProfileResponse?> virtualMachinesProfile;
   /// The size of the agent pool VMs. VM size availability varies by region. If a node contains insufficient compute resources (memory, cpu, etc) pods might fail to run correctly. For more details on restricted VM sizes, see: https://docs.microsoft.com/azure/aks/quotas-skus-regions
   late final pulumi.Output<String?> vmSize;
-
   /// The ID of the subnet which agent pool nodes and optionally pods will join on startup. If this is not specified, a VNET and subnet will be generated and used. If no podSubnetID is specified, this applies to nodes and pods, otherwise it applies to just nodes. This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}
   late final pulumi.Output<String?> vnetSubnetID;
-
   /// The Windows agent pool's specific profile.
   late final pulumi.Output<AgentPoolWindowsProfileResponse?> windowsProfile;
-
   /// Determines the type of workload a node can run.
   late final pulumi.Output<String?> workloadRuntime;
 
@@ -3949,105 +3892,38 @@ class AgentPool extends pulumi.CustomResource {
     AgentPoolArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:containerservice:AgentPool',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:containerservice:AgentPool',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     availabilityZones = registerOutput<List<String>?>('availabilityZones');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    capacityReservationGroupID = registerOutput<String?>(
-      'capacityReservationGroupID',
-    );
+    capacityReservationGroupID = registerOutput<String?>('capacityReservationGroupID');
     count = registerOutput<int?>('count');
-    creationData = registerOutput<CreationDataResponse?>(
-      'creationData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CreationDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    currentOrchestratorVersion = registerOutput<String>(
-      'currentOrchestratorVersion',
-    );
+    creationData = registerOutput<CreationDataResponse?>('creationData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CreationDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    currentOrchestratorVersion = registerOutput<String>('currentOrchestratorVersion');
     eTag = registerOutput<String>('eTag');
     enableAutoScaling = registerOutput<bool?>('enableAutoScaling');
     enableEncryptionAtHost = registerOutput<bool?>('enableEncryptionAtHost');
     enableFIPS = registerOutput<bool?>('enableFIPS');
     enableNodePublicIP = registerOutput<bool?>('enableNodePublicIP');
     enableUltraSSD = registerOutput<bool?>('enableUltraSSD');
-    gatewayProfile = registerOutput<AgentPoolGatewayProfileResponse?>(
-      'gatewayProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AgentPoolGatewayProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    gatewayProfile = registerOutput<AgentPoolGatewayProfileResponse?>('gatewayProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentPoolGatewayProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     gpuInstanceProfile = registerOutput<String?>('gpuInstanceProfile');
-    gpuProfile = registerOutput<GPUProfileResponse?>(
-      'gpuProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GPUProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    gpuProfile = registerOutput<GPUProfileResponse?>('gpuProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GPUProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     hostGroupID = registerOutput<String?>('hostGroupID');
-    kubeletConfig = registerOutput<KubeletConfigResponse?>(
-      'kubeletConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return KubeletConfigResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    kubeletConfig = registerOutput<KubeletConfigResponse?>('kubeletConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubeletConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kubeletDiskType = registerOutput<String?>('kubeletDiskType');
-    linuxOSConfig = registerOutput<LinuxOSConfigResponse?>(
-      'linuxOSConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LinuxOSConfigResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    localDNSProfile = registerOutput<LocalDNSProfileResponse?>(
-      'localDNSProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LocalDNSProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    linuxOSConfig = registerOutput<LinuxOSConfigResponse?>('linuxOSConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxOSConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    localDNSProfile = registerOutput<LocalDNSProfileResponse?>('localDNSProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LocalDNSProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     maxCount = registerOutput<int?>('maxCount');
     maxPods = registerOutput<int?>('maxPods');
     messageOfTheDay = registerOutput<String?>('messageOfTheDay');
     minCount = registerOutput<int?>('minCount');
     mode = registerOutput<String?>('mode');
     this.name = registerOutput<String>('name');
-    networkProfile = registerOutput<AgentPoolNetworkProfileResponse?>(
-      'networkProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AgentPoolNetworkProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    networkProfile = registerOutput<AgentPoolNetworkProfileResponse?>('networkProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentPoolNetworkProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     nodeImageVersion = registerOutput<String>('nodeImageVersion');
     nodeLabels = registerOutput<Map<String, String>?>('nodeLabels');
     nodePublicIPPrefixID = registerOutput<String?>('nodePublicIPPrefixID');
@@ -4059,81 +3935,23 @@ class AgentPool extends pulumi.CustomResource {
     osType = registerOutput<String?>('osType');
     podIPAllocationMode = registerOutput<String?>('podIPAllocationMode');
     podSubnetID = registerOutput<String?>('podSubnetID');
-    powerState = registerOutput<PowerStateResponse?>(
-      'powerState',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PowerStateResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    powerState = registerOutput<PowerStateResponse?>('powerState', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PowerStateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningState = registerOutput<String>('provisioningState');
-    proximityPlacementGroupID = registerOutput<String?>(
-      'proximityPlacementGroupID',
-    );
+    proximityPlacementGroupID = registerOutput<String?>('proximityPlacementGroupID');
     scaleDownMode = registerOutput<String?>('scaleDownMode');
     scaleSetEvictionPolicy = registerOutput<String?>('scaleSetEvictionPolicy');
     scaleSetPriority = registerOutput<String?>('scaleSetPriority');
-    securityProfile = registerOutput<AgentPoolSecurityProfileResponse?>(
-      'securityProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AgentPoolSecurityProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    securityProfile = registerOutput<AgentPoolSecurityProfileResponse?>('securityProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentPoolSecurityProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     spotMaxPrice = registerOutput<double?>('spotMaxPrice');
-    status = registerOutput<AgentPoolStatusResponse?>(
-      'status',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AgentPoolStatusResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    status = registerOutput<AgentPoolStatusResponse?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentPoolStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
-    upgradeSettings = registerOutput<AgentPoolUpgradeSettingsResponse?>(
-      'upgradeSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AgentPoolUpgradeSettingsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    virtualMachineNodesStatus = registerOutput<List<Map<String, dynamic>>?>(
-      'virtualMachineNodesStatus',
-    );
-    virtualMachinesProfile = registerOutput<VirtualMachinesProfileResponse?>(
-      'virtualMachinesProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VirtualMachinesProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    upgradeSettings = registerOutput<AgentPoolUpgradeSettingsResponse?>('upgradeSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentPoolUpgradeSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    virtualMachineNodesStatus = registerOutput<List<Map<String, dynamic>>?>('virtualMachineNodesStatus');
+    virtualMachinesProfile = registerOutput<VirtualMachinesProfileResponse?>('virtualMachinesProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachinesProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vmSize = registerOutput<String?>('vmSize');
     vnetSubnetID = registerOutput<String?>('vnetSubnetID');
-    windowsProfile = registerOutput<AgentPoolWindowsProfileResponse?>(
-      'windowsProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AgentPoolWindowsProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    windowsProfile = registerOutput<AgentPoolWindowsProfileResponse?>('windowsProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentPoolWindowsProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     workloadRuntime = registerOutput<String?>('workloadRuntime');
   }
 }

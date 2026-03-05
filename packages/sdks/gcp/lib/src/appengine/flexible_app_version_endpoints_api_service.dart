@@ -10,14 +10,11 @@ class FlexibleAppVersionEndpointsApiService {
   /// Endpoints also has a rollout strategy called "MANAGED". When using this, Endpoints fetches the latest configuration and does not need
   /// the configuration ID. In this case, configId must be omitted.
   final pulumi.Input<String>? configId;
-
   /// Enable or disable trace sampling. By default, this is set to false for enabled.
   final pulumi.Input<bool>? disableTraceSampling;
-
   /// Endpoints service name which is the name of the "service" resource in the Service Management API.
   /// For example "myapi.endpoints.myproject.cloud.goog"
   final pulumi.Input<String> name;
-
   /// Endpoints rollout strategy. If FIXED, configId must be specified. If MANAGED, configId must be omitted.
   /// Default value is `FIXED`.
   /// Possible values are: `FIXED`, `MANAGED`.
@@ -44,26 +41,13 @@ class FlexibleAppVersionEndpointsApiService {
     };
   }
 
-  factory FlexibleAppVersionEndpointsApiService.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FlexibleAppVersionEndpointsApiService.fromMap(Map<String, dynamic> map) {
     return FlexibleAppVersionEndpointsApiService(
-      configId: (() {
-        final guardedValue = map['configId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      disableTraceSampling: (() {
-        final guardedValue = map['disableTraceSampling'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      configId: (() { final guardedValue = map['configId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      disableTraceSampling: (() { final guardedValue = map['disableTraceSampling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      rolloutStrategy: (() {
-        final guardedValue = map['rolloutStrategy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      rolloutStrategy: (() { final guardedValue = map['rolloutStrategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

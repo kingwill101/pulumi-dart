@@ -5,31 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetForwardEntriesEntry {
   /// The public IP address.
   final pulumi.Input<String> externalIp;
-
   /// The public port.
   final pulumi.Input<String> externalPort;
-
   /// The forward entry ID.
   final pulumi.Input<String> forwardEntryId;
-
   /// The name of forward entry.
   final pulumi.Input<String> forwardEntryName;
-
   /// The ID of the Forward Entry.
   final pulumi.Input<String> id;
-
   /// The private IP address.
   final pulumi.Input<String> internalIp;
-
   /// The internal port.
   final pulumi.Input<String> internalPort;
-
   /// The ip protocol. Valid values: `any`,`tcp` and `udp`.
   final pulumi.Input<String> ipProtocol;
-
   /// The forward entry name.
   final pulumi.Input<String> name;
-
   /// The status of farward entry. Valid value `Available`, `Deleting` and `Pending`.
   final pulumi.Input<String> status;
 
@@ -77,9 +68,7 @@ class GetForwardEntriesEntry {
       externalIp: pulumi.Input.fromValue(map['externalIp'] as String),
       externalPort: pulumi.Input.fromValue(map['externalPort'] as String),
       forwardEntryId: pulumi.Input.fromValue(map['forwardEntryId'] as String),
-      forwardEntryName: pulumi.Input.fromValue(
-        map['forwardEntryName'] as String,
-      ),
+      forwardEntryName: pulumi.Input.fromValue(map['forwardEntryName'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
       internalIp: pulumi.Input.fromValue(map['internalIp'] as String),
       internalPort: pulumi.Input.fromValue(map['internalPort'] as String),
@@ -89,3 +78,4 @@ class GetForwardEntriesEntry {
     );
   }
 }
+

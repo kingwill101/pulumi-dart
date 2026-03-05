@@ -8,12 +8,9 @@ import 'virtual_network_arm_reference.dart';
 /// Backend address pool for the load balancer.
 class BackendAddressPoolProperties {
   /// List of backend addresses for the backend pool
-  final pulumi.Input<List<LoadBalancerBackendAddress>>?
-  loadBalancerBackendAddresses;
-
+  final pulumi.Input<List<LoadBalancerBackendAddress>>? loadBalancerBackendAddresses;
   /// Reference to the logical network for this backend pool. Mutually exclusive with virtualNetwork
   final pulumi.Input<LogicalNetworkArmReference>? logicalNetwork;
-
   /// Reference to the virtual network for this backend pool. Mutually exclusive with logicalNetwork
   final pulumi.Input<VirtualNetworkArmReference>? virtualNetwork;
 
@@ -29,63 +26,18 @@ class BackendAddressPoolProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'loadBalancerBackendAddresses':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<LoadBalancerBackendAddress>,
-            List<Map<String, dynamic>>
-          >(
-            loadBalancerBackendAddresses,
-            (value) =>
-                pulumi.Input.encodeList<
-                  LoadBalancerBackendAddress,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'logicalNetwork':
-          ?pulumi.Input.mapOptionalInputValue<
-            LogicalNetworkArmReference,
-            Map<String, dynamic>
-          >(logicalNetwork, (value) => value.toMap()),
-      'virtualNetwork':
-          ?pulumi.Input.mapOptionalInputValue<
-            VirtualNetworkArmReference,
-            Map<String, dynamic>
-          >(virtualNetwork, (value) => value.toMap()),
+      'loadBalancerBackendAddresses': ?pulumi.Input.mapOptionalInputValue<List<LoadBalancerBackendAddress>, List<Map<String, dynamic>>>(loadBalancerBackendAddresses, (value) => pulumi.Input.encodeList<LoadBalancerBackendAddress, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'logicalNetwork': ?pulumi.Input.mapOptionalInputValue<LogicalNetworkArmReference, Map<String, dynamic>>(logicalNetwork, (value) => value.toMap()),
+      'virtualNetwork': ?pulumi.Input.mapOptionalInputValue<VirtualNetworkArmReference, Map<String, dynamic>>(virtualNetwork, (value) => value.toMap()),
     };
   }
 
   factory BackendAddressPoolProperties.fromMap(Map<String, dynamic> map) {
     return BackendAddressPoolProperties(
-      loadBalancerBackendAddresses: (() {
-        final guardedValue = map['loadBalancerBackendAddresses'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<LoadBalancerBackendAddress>(
-            guardedValue,
-            (value) => LoadBalancerBackendAddress.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      logicalNetwork: (() {
-        final guardedValue = map['logicalNetwork'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          LogicalNetworkArmReference.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      virtualNetwork: (() {
-        final guardedValue = map['virtualNetwork'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          VirtualNetworkArmReference.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      loadBalancerBackendAddresses: (() { final guardedValue = map['loadBalancerBackendAddresses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<LoadBalancerBackendAddress>(guardedValue, (value) => LoadBalancerBackendAddress.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      logicalNetwork: (() { final guardedValue = map['logicalNetwork']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LogicalNetworkArmReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      virtualNetwork: (() { final guardedValue = map['virtualNetwork']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualNetworkArmReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

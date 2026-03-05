@@ -9,19 +9,20 @@ class ContentLink {
 
   /// Creates a new [ContentLink].
   /// [uri] The content link URI.
-  ContentLink({this.uri});
+  ContentLink({
+    this.uri,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'uri': ?uri};
+    return <String, dynamic>{
+      'uri': ?uri,
+    };
   }
 
   factory ContentLink.fromMap(Map<String, dynamic> map) {
     return ContentLink(
-      uri: (() {
-        final guardedValue = map['uri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      uri: (() { final guardedValue = map['uri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

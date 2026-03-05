@@ -7,19 +7,9 @@ import 'google_cloud_discoveryengine_v1beta_search_response_summary_summary_skip
 /// Summary of the top N search result specified by the summary spec.
 class GoogleCloudDiscoveryengineV1betaSearchResponseSummary {
   /// A collection of Safety Attribute categories and their associated confidence scores.
-  final pulumi.Input<
-    GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributes
-  >?
-  safetyAttributes;
-
+  final pulumi.Input<GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributes>? safetyAttributes;
   /// Additional summary-skipped reasons. This provides the reason for ignored cases. If nothing is skipped, this field is not set.
-  final pulumi.Input<
-    List<
-      GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItem
-    >
-  >?
-  summarySkippedReasons;
-
+  final pulumi.Input<List<GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItem>>? summarySkippedReasons;
   /// The summary content.
   final pulumi.Input<String>? summaryText;
 
@@ -35,62 +25,18 @@ class GoogleCloudDiscoveryengineV1betaSearchResponseSummary {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'safetyAttributes':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributes,
-            Map<String, dynamic>
-          >(safetyAttributes, (value) => value.toMap()),
-      'summarySkippedReasons':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<
-              GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItem
-            >,
-            List<String>
-          >(
-            summarySkippedReasons,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItem,
-                  String
-                >(value, (value) => value.wireValue),
-          ),
+      'safetyAttributes': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributes, Map<String, dynamic>>(safetyAttributes, (value) => value.toMap()),
+      'summarySkippedReasons': ?pulumi.Input.mapOptionalInputValue<List<GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItem>, List<String>>(summarySkippedReasons, (value) => pulumi.Input.encodeList<GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItem, String>(value, (value) => value.wireValue)),
       'summaryText': ?summaryText,
     };
   }
 
-  factory GoogleCloudDiscoveryengineV1betaSearchResponseSummary.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDiscoveryengineV1betaSearchResponseSummary.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDiscoveryengineV1betaSearchResponseSummary(
-      safetyAttributes: (() {
-        final guardedValue = map['safetyAttributes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributes.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      summarySkippedReasons: (() {
-        final guardedValue = map['summarySkippedReasons'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItem
-          >(
-            guardedValue,
-            (value) =>
-                GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItem.fromValue(
-                  value as String,
-                ),
-          ),
-        );
-      })(),
-      summaryText: (() {
-        final guardedValue = map['summaryText'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      safetyAttributes: (() { final guardedValue = map['safetyAttributes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributes.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      summarySkippedReasons: (() { final guardedValue = map['summarySkippedReasons']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItem>(guardedValue, (value) => GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItem.fromValue(value as String))); })(),
+      summaryText: (() { final guardedValue = map['summaryText']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

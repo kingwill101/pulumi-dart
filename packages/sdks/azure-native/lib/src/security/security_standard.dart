@@ -563,31 +563,22 @@ import 'standard_metadata_response.dart';
 class SecurityStandard extends pulumi.CustomResource {
   /// List of assessment keys to apply to standard scope.
   late final pulumi.Output<List<Map<String, dynamic>>?> assessments;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// List of all standard supported clouds.
   late final pulumi.Output<List<String>?> cloudProviders;
-
   /// Description of the standard
   late final pulumi.Output<String?> description;
-
   /// Display name of the standard, equivalent to the standardId
   late final pulumi.Output<String?> displayName;
-
   /// The security standard metadata.
   late final pulumi.Output<StandardMetadataResponse?> metadata;
-
   /// Resource name
   late final pulumi.Output<String> name;
-
   /// The policy set definition id associated with the standard.
   late final pulumi.Output<String?> policySetDefinitionId;
-
   /// Standard type (Custom or Default or Compliance only currently)
   late final pulumi.Output<String> standardType;
-
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -600,26 +591,17 @@ class SecurityStandard extends pulumi.CustomResource {
     SecurityStandardArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:security:SecurityStandard',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:security:SecurityStandard',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     assessments = registerOutput<List<Map<String, dynamic>>?>('assessments');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     cloudProviders = registerOutput<List<String>?>('cloudProviders');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
-    metadata = registerOutput<StandardMetadataResponse?>(
-      'metadata',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return StandardMetadataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    metadata = registerOutput<StandardMetadataResponse?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandardMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     policySetDefinitionId = registerOutput<String?>('policySetDefinitionId');
     standardType = registerOutput<String>('standardType');

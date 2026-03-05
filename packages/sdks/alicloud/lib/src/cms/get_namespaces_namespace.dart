@@ -5,22 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNamespacesNamespace {
   /// Create the timestamp of the indicator warehouse.
   final pulumi.Input<String> createTime;
-
   /// Description of indicator warehouse.
   final pulumi.Input<String> description;
-
   /// The ID of the Namespace.
   final pulumi.Input<String> id;
-
   /// The timestamp of the last modification indicator warehouse.
   final pulumi.Input<String> modifyTime;
-
   /// Indicator warehouse name.
   final pulumi.Input<String> namespace;
-
   /// The ID of the Namespace.
   final pulumi.Input<String> namespaceId;
-
   /// Data storage duration.
   final pulumi.Input<String> specification;
 
@@ -66,3 +60,4 @@ class GetNamespacesNamespace {
     );
   }
 }
+

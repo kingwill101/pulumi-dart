@@ -142,83 +142,55 @@ import 'tracked_resource_response_system_data.dart';
 /// ```
 class Account extends pulumi.CustomResource {
   /// Gets or sets the status of the account.
-  late final pulumi.Output<AccountPropertiesResponseAccountStatus>
-  accountStatus;
-
+  late final pulumi.Output<AccountPropertiesResponseAccountStatus> accountStatus;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// External Cloud Service connectors
   late final pulumi.Output<CloudConnectorsResponse?> cloudConnectors;
-
   /// Gets the time at which the entity was created.
   late final pulumi.Output<String> createdAt;
-
   /// Gets the creator of the entity.
   late final pulumi.Output<String> createdBy;
-
   /// Gets the creators of the entity's object id.
   late final pulumi.Output<String> createdByObjectId;
-
   /// Gets the default domain in the account.
   late final pulumi.Output<String> defaultDomain;
-
   /// The URIs that are the public endpoints of the account.
   late final pulumi.Output<AccountPropertiesResponseEndpoints> endpoints;
-
   /// Gets or sets the friendly name.
   late final pulumi.Output<String> friendlyName;
-
   /// The Managed Identity of the resource
   late final pulumi.Output<IdentityResponse?> identity;
-
   /// Ingestion Storage Account Info
   late final pulumi.Output<IngestionStorageResponse?> ingestionStorage;
-
   /// Gets or sets the location.
   late final pulumi.Output<String?> location;
-
   /// Gets or sets the state of managed eventhub. If enabled managed eventhub will be created, if disabled the managed eventhub will be removed.
   late final pulumi.Output<String?> managedEventHubState;
-
   /// Gets or sets the managed resource group name
   late final pulumi.Output<String?> managedResourceGroupName;
-
   /// Gets the resource identifiers of the managed resources.
-  late final pulumi.Output<AccountPropertiesResponseManagedResources>
-  managedResources;
-
+  late final pulumi.Output<AccountPropertiesResponseManagedResources> managedResources;
   /// Gets or sets the public network access for managed resources.
   late final pulumi.Output<String?> managedResourcesPublicNetworkAccess;
-
   /// Gets or sets the Merge Info.
   late final pulumi.Output<AccountMergeInfoResponse?> mergeInfo;
-
   /// Gets or sets the name.
   late final pulumi.Output<String> name;
-
   /// Gets the private endpoint connections information.
-  late final pulumi.Output<List<Map<String, dynamic>>>
-  privateEndpointConnections;
-
+  late final pulumi.Output<List<Map<String, dynamic>>> privateEndpointConnections;
   /// Gets or sets the state of the provisioning.
   late final pulumi.Output<String> provisioningState;
-
   /// Gets or sets the public network access.
   late final pulumi.Output<String?> publicNetworkAccess;
-
   /// Gets or sets the Sku.
   late final pulumi.Output<AccountResponseSku?> sku;
-
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<TrackedResourceResponseSystemData> systemData;
-
   /// Tags on the azure resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Gets or sets the state of tenant endpoint.
   late final pulumi.Output<String?> tenantEndpointState;
-
   /// Gets or sets the type.
   late final pulumi.Output<String> type;
 
@@ -231,122 +203,34 @@ class Account extends pulumi.CustomResource {
     AccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:purview:Account',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    accountStatus = registerOutput<AccountPropertiesResponseAccountStatus>(
-      'accountStatus',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccountPropertiesResponseAccountStatus.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure-native:purview:Account',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    accountStatus = registerOutput<AccountPropertiesResponseAccountStatus>('accountStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountPropertiesResponseAccountStatus.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    cloudConnectors = registerOutput<CloudConnectorsResponse?>(
-      'cloudConnectors',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CloudConnectorsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    cloudConnectors = registerOutput<CloudConnectorsResponse?>('cloudConnectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CloudConnectorsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdAt = registerOutput<String>('createdAt');
     createdBy = registerOutput<String>('createdBy');
     createdByObjectId = registerOutput<String>('createdByObjectId');
     defaultDomain = registerOutput<String>('defaultDomain');
-    endpoints = registerOutput<AccountPropertiesResponseEndpoints>(
-      'endpoints',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccountPropertiesResponseEndpoints.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    endpoints = registerOutput<AccountPropertiesResponseEndpoints>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountPropertiesResponseEndpoints.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     friendlyName = registerOutput<String>('friendlyName');
-    identity = registerOutput<IdentityResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    ingestionStorage = registerOutput<IngestionStorageResponse?>(
-      'ingestionStorage',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IngestionStorageResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<IdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ingestionStorage = registerOutput<IngestionStorageResponse?>('ingestionStorage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IngestionStorageResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String?>('location');
     managedEventHubState = registerOutput<String?>('managedEventHubState');
-    managedResourceGroupName = registerOutput<String?>(
-      'managedResourceGroupName',
-    );
-    managedResources =
-        registerOutput<AccountPropertiesResponseManagedResources>(
-          'managedResources',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AccountPropertiesResponseManagedResources.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    managedResourcesPublicNetworkAccess = registerOutput<String?>(
-      'managedResourcesPublicNetworkAccess',
-    );
-    mergeInfo = registerOutput<AccountMergeInfoResponse?>(
-      'mergeInfo',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccountMergeInfoResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    managedResourceGroupName = registerOutput<String?>('managedResourceGroupName');
+    managedResources = registerOutput<AccountPropertiesResponseManagedResources>('managedResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountPropertiesResponseManagedResources.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    managedResourcesPublicNetworkAccess = registerOutput<String?>('managedResourcesPublicNetworkAccess');
+    mergeInfo = registerOutput<AccountMergeInfoResponse?>('mergeInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountMergeInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
-      'privateEndpointConnections',
-    );
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>('privateEndpointConnections');
     provisioningState = registerOutput<String>('provisioningState');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    sku = registerOutput<AccountResponseSku?>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccountResponseSku.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<TrackedResourceResponseSystemData>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TrackedResourceResponseSystemData.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sku = registerOutput<AccountResponseSku?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountResponseSku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<TrackedResourceResponseSystemData>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrackedResourceResponseSystemData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tenantEndpointState = registerOutput<String?>('tenantEndpointState');
     type = registerOutput<String>('type');

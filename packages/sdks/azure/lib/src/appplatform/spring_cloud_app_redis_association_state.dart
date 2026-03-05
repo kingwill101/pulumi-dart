@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SpringCloudAppRedisAssociationState {
   /// Specifies the name of the Spring Cloud Application Association. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// Specifies the Redis Cache access key.
   final pulumi.Input<String>? redisAccessKey;
-
   /// Specifies the Redis Cache resource ID. Changing this forces a new resource to be created.
   final pulumi.Input<String>? redisCacheId;
-
   /// Specifies the Spring Cloud Application resource ID in which the Association is created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? springCloudAppId;
-
   /// Should SSL be used when connecting to Redis? Defaults to `true`.
   final pulumi.Input<bool>? sslEnabled;
 
@@ -43,35 +39,14 @@ class SpringCloudAppRedisAssociationState {
     };
   }
 
-  factory SpringCloudAppRedisAssociationState.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SpringCloudAppRedisAssociationState.fromMap(Map<String, dynamic> map) {
     return SpringCloudAppRedisAssociationState(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      redisAccessKey: (() {
-        final guardedValue = map['redisAccessKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      redisCacheId: (() {
-        final guardedValue = map['redisCacheId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      springCloudAppId: (() {
-        final guardedValue = map['springCloudAppId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sslEnabled: (() {
-        final guardedValue = map['sslEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      redisAccessKey: (() { final guardedValue = map['redisAccessKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      redisCacheId: (() { final guardedValue = map['redisCacheId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      springCloudAppId: (() { final guardedValue = map['springCloudAppId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sslEnabled: (() { final guardedValue = map['sslEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

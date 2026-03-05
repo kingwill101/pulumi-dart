@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RoleRefPatchRbacAuthorizationK8sIoV1beta1 {
   /// APIGroup is the group for the resource being referenced
   final pulumi.Input<String>? apiGroup;
-
   /// Kind is the type of resource being referenced
   final pulumi.Input<String>? kind;
-
   /// Name is the name of resource being referenced
   final pulumi.Input<String>? name;
 
@@ -31,25 +29,12 @@ class RoleRefPatchRbacAuthorizationK8sIoV1beta1 {
     };
   }
 
-  factory RoleRefPatchRbacAuthorizationK8sIoV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RoleRefPatchRbacAuthorizationK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return RoleRefPatchRbacAuthorizationK8sIoV1beta1(
-      apiGroup: (() {
-        final guardedValue = map['apiGroup'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      apiGroup: (() { final guardedValue = map['apiGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

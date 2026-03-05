@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by listBatchAccountKeys.
 class ListBatchAccountKeysResult {
   /// The Batch account name.
   final String accountName;
-
   /// The primary key associated with the account.
   final String primary;
-
   /// The secondary key associated with the account.
   final String secondary;
 
@@ -37,3 +36,4 @@ class ListBatchAccountKeysResult {
     );
   }
 }
+

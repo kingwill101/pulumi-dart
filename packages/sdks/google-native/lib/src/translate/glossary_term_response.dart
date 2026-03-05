@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GlossaryTermResponse {
   /// The language for this glossary term.
   final pulumi.Input<String> languageCode;
-
   /// The text for the glossary term.
   final pulumi.Input<String> text;
 
   /// Creates a new [GlossaryTermResponse].
   /// [languageCode] The language for this glossary term.
   /// [text] The text for the glossary term.
-  GlossaryTermResponse({required this.languageCode, required this.text});
+  GlossaryTermResponse({
+    required this.languageCode,
+    required this.text,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'languageCode': languageCode, 'text': text};
+    return <String, dynamic>{
+      'languageCode': languageCode,
+      'text': text,
+    };
   }
 
   factory GlossaryTermResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class GlossaryTermResponse {
     );
   }
 }
+

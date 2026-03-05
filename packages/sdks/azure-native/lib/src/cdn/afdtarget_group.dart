@@ -226,19 +226,14 @@ class AFDTargetGroup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   late final pulumi.Output<String> deploymentStatus;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// Provisioning status
   late final pulumi.Output<String> provisioningState;
-
   /// Read only system data
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// TargetEndpoint list referenced by this target group.
   late final pulumi.Output<List<Map<String, dynamic>>> targetEndpoints;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -251,28 +246,17 @@ class AFDTargetGroup extends pulumi.CustomResource {
     AFDTargetGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:cdn:AFDTargetGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:cdn:AFDTargetGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     deploymentStatus = registerOutput<String>('deploymentStatus');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    targetEndpoints = registerOutput<List<Map<String, dynamic>>>(
-      'targetEndpoints',
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    targetEndpoints = registerOutput<List<Map<String, dynamic>>>('targetEndpoints');
     type = registerOutput<String>('type');
   }
 }

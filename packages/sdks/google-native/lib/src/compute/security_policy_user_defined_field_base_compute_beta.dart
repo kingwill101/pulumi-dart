@@ -14,8 +14,7 @@ enum SecurityPolicyUserDefinedFieldBaseComputeBeta {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown SecurityPolicyUserDefinedFieldBaseComputeBeta value: $value',
-    );
+    throw ArgumentError('Unknown SecurityPolicyUserDefinedFieldBaseComputeBeta value: $value');
   }
 }
+

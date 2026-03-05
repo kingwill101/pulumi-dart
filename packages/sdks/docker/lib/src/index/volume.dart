@@ -128,19 +128,14 @@ import 'volume_state.dart';
 class Volume extends pulumi.CustomResource {
   /// Cluster-specific options for volume creation. Only works if the Docker daemon is running in swarm mode and is the swarm manager.
   late final pulumi.Output<VolumeCluster?> cluster;
-
   /// Driver type for the volume. Defaults to `local`.
   late final pulumi.Output<String> driver;
-
   /// Options specific to the driver.
   late final pulumi.Output<Map<String, String>?> driverOpts;
-
   /// User-defined key/value metadata
   late final pulumi.Output<List<Map<String, dynamic>>?> labels;
-
   /// The mountpoint of the volume.
   late final pulumi.Output<String> mountpoint;
-
   /// The name of the Docker volume (will be generated if not provided).
   late final pulumi.Output<String> name;
 
@@ -148,23 +143,17 @@ class Volume extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Volume]. {@macro pulumi_index_volume_volume_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Volume(String name, {VolumeArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'docker:index/volume:Volume',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
-    cluster = registerOutput<VolumeCluster?>(
-      'cluster',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VolumeCluster.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+  Volume(
+    String name, {
+    VolumeArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'docker:index/volume:Volume',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    cluster = registerOutput<VolumeCluster?>('cluster', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeCluster.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     driver = registerOutput<String>('driver');
     driverOpts = registerOutput<Map<String, String>?>('driverOpts');
     labels = registerOutput<List<Map<String, dynamic>>?>('labels');
@@ -190,21 +179,12 @@ class Volume extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'docker:index/volume:Volume',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    cluster = registerOutput<VolumeCluster?>(
-      'cluster',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VolumeCluster.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'docker:index/volume:Volume',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    cluster = registerOutput<VolumeCluster?>('cluster', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeCluster.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     driver = registerOutput<String>('driver');
     driverOpts = registerOutput<Map<String, String>?>('driverOpts');
     labels = registerOutput<List<Map<String, dynamic>>?>('labels');

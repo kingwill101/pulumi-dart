@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServerlessAccessPolicyArgs {
   /// Name of the policy.
   final pulumi.Input<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Type of access policy. Must be `data`.
   final pulumi.Input<String> type;
 
@@ -27,18 +25,19 @@ class GetServerlessAccessPolicyArgs {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'region': ?region, 'type': type};
+    return <String, dynamic>{
+      'name': name,
+      'region': ?region,
+      'type': type,
+    };
   }
 
   factory GetServerlessAccessPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetServerlessAccessPolicyArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

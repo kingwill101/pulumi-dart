@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDedicatedCloudNodeArgs {
   /// dedicated cloud node name
   final pulumi.Input<String> dedicatedCloudNodeName;
-
   /// The name of the resource group
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetDedicatedCloudNodeArgs {
 
   factory GetDedicatedCloudNodeArgs.fromMap(Map<String, dynamic> map) {
     return GetDedicatedCloudNodeArgs(
-      dedicatedCloudNodeName: pulumi.Input.fromValue(
-        map['dedicatedCloudNodeName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      dedicatedCloudNodeName: pulumi.Input.fromValue(map['dedicatedCloudNodeName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

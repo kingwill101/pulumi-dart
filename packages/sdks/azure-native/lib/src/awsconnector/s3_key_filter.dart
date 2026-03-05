@@ -10,38 +10,20 @@ class S3KeyFilter {
 
   /// Creates a new [S3KeyFilter].
   /// [rules] A list of containers for the key-value pair that defines the criteria for the filter rule.
-  S3KeyFilter({this.rules});
+  S3KeyFilter({
+    this.rules,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'rules':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<FilterRule>,
-            List<Map<String, dynamic>>
-          >(
-            rules,
-            (value) =>
-                pulumi.Input.encodeList<FilterRule, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'rules': ?pulumi.Input.mapOptionalInputValue<List<FilterRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<FilterRule, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory S3KeyFilter.fromMap(Map<String, dynamic> map) {
     return S3KeyFilter(
-      rules: (() {
-        final guardedValue = map['rules'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<FilterRule>(
-            guardedValue,
-            (value) =>
-                FilterRule.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
+      rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<FilterRule>(guardedValue, (value) => FilterRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

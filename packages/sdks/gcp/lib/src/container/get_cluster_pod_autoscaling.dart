@@ -11,10 +11,14 @@ class GetClusterPodAutoscaling {
 
   /// Creates a new [GetClusterPodAutoscaling].
   /// [hpaProfile] HPA Profile is used to configure the Horizontal Pod Autoscaler (HPA) profile for the cluster.
-  GetClusterPodAutoscaling({required this.hpaProfile});
+  GetClusterPodAutoscaling({
+    required this.hpaProfile,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'hpaProfile': hpaProfile};
+    return <String, dynamic>{
+      'hpaProfile': hpaProfile,
+    };
   }
 
   factory GetClusterPodAutoscaling.fromMap(Map<String, dynamic> map) {
@@ -23,3 +27,4 @@ class GetClusterPodAutoscaling {
     );
   }
 }
+

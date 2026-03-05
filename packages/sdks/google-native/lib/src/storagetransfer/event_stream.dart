@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EventStream {
   /// Specifies the data and time at which Storage Transfer Service stops listening for events from this stream. After this time, any transfers in progress will complete, but no new transfers are initiated.
   final pulumi.Input<String>? eventStreamExpirationTime;
-
   /// Specifies the date and time that Storage Transfer Service starts listening for events from this stream. If no start time is specified or start time is in the past, Storage Transfer Service starts listening immediately.
   final pulumi.Input<String>? eventStreamStartTime;
-
   /// Specifies a unique name of the resource such as AWS SQS ARN in the form 'arn:aws:sqs:region:account_id:queue_name', or Pub/Sub subscription resource name in the form 'projects/{project}/subscriptions/{sub}'.
   final pulumi.Input<String> name;
 
@@ -33,17 +31,10 @@ class EventStream {
 
   factory EventStream.fromMap(Map<String, dynamic> map) {
     return EventStream(
-      eventStreamExpirationTime: (() {
-        final guardedValue = map['eventStreamExpirationTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      eventStreamStartTime: (() {
-        final guardedValue = map['eventStreamStartTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      eventStreamExpirationTime: (() { final guardedValue = map['eventStreamExpirationTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      eventStreamStartTime: (() { final guardedValue = map['eventStreamStartTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

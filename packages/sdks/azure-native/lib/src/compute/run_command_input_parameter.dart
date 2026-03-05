@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RunCommandInputParameter {
   /// The run command parameter name.
   final pulumi.Input<String> name;
-
   /// The run command parameter value.
   final pulumi.Input<String> value;
 
   /// Creates a new [RunCommandInputParameter].
   /// [name] The run command parameter name.
   /// [value] The run command parameter value.
-  RunCommandInputParameter({required this.name, required this.value});
+  RunCommandInputParameter({
+    required this.name,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'value': value};
+    return <String, dynamic>{
+      'name': name,
+      'value': value,
+    };
   }
 
   factory RunCommandInputParameter.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class RunCommandInputParameter {
     );
   }
 }
+

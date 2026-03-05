@@ -392,29 +392,20 @@ import 'table_state.dart';
 class Table extends pulumi.CustomResource {
   /// The ARN that uniquely identifies this table.
   late final pulumi.Output<String> arn;
-
   /// The name of the Timestream database.
   late final pulumi.Output<String> databaseName;
-
   /// Contains properties to set on the table when enabling magnetic store writes. See Magnetic Store Write Properties below for more details.
-  late final pulumi.Output<TableMagneticStoreWriteProperties>
-  magneticStoreWriteProperties;
-
+  late final pulumi.Output<TableMagneticStoreWriteProperties> magneticStoreWriteProperties;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The retention duration for the memory store and magnetic store. See Retention Properties below for more details. If not provided, `magnetic_store_retention_period_in_days` default to 73000 and `memory_store_retention_period_in_hours` defaults to 6.
   late final pulumi.Output<TableRetentionProperties> retentionProperties;
-
   /// The schema of the table. See Schema below for more details.
   late final pulumi.Output<TableSchema> schema;
-
   /// The name of the Timestream table.
   late final pulumi.Output<String> tableName;
-
   /// Map of tags to assign to this resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -422,54 +413,33 @@ class Table extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Table]. {@macro pulumi_timestreamwrite_table_table_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Table(String name, {TableArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:timestreamwrite/table:Table',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Table(
+    String name, {
+    TableArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:timestreamwrite/table:Table',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     databaseName = registerOutput<String>('databaseName');
-    magneticStoreWriteProperties =
-        registerOutput<TableMagneticStoreWriteProperties>(
-          'magneticStoreWriteProperties',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return TableMagneticStoreWriteProperties.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    magneticStoreWriteProperties = registerOutput<TableMagneticStoreWriteProperties>('magneticStoreWriteProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableMagneticStoreWriteProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    retentionProperties = registerOutput<TableRetentionProperties>(
-      'retentionProperties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TableRetentionProperties.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    schema = registerOutput<TableSchema>(
-      'schema',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TableSchema.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    retentionProperties = registerOutput<TableRetentionProperties>('retentionProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableRetentionProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    schema = registerOutput<TableSchema>('schema', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableSchema.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tableName = registerOutput<String>('tableName');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [Table] resource's state with the given [name] and [id].
-  static Table get(String name, pulumi.Input<String> id, {TableState? state}) {
+  static Table get(
+    String name,
+    pulumi.Input<String> id, {
+    TableState? state,
+  }) {
     return Table._get(
       name,
       state: state?.toMap(),
@@ -482,45 +452,17 @@ class Table extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:timestreamwrite/table:Table',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:timestreamwrite/table:Table',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     databaseName = registerOutput<String>('databaseName');
-    magneticStoreWriteProperties =
-        registerOutput<TableMagneticStoreWriteProperties>(
-          'magneticStoreWriteProperties',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return TableMagneticStoreWriteProperties.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    magneticStoreWriteProperties = registerOutput<TableMagneticStoreWriteProperties>('magneticStoreWriteProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableMagneticStoreWriteProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    retentionProperties = registerOutput<TableRetentionProperties>(
-      'retentionProperties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TableRetentionProperties.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    schema = registerOutput<TableSchema>(
-      'schema',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TableSchema.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    retentionProperties = registerOutput<TableRetentionProperties>('retentionProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableRetentionProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    schema = registerOutput<TableSchema>('schema', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableSchema.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tableName = registerOutput<String>('tableName');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');

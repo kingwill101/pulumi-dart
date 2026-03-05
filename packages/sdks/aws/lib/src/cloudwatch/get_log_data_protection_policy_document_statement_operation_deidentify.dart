@@ -13,16 +13,15 @@ class GetLogDataProtectionPolicyDocumentStatementOperationDeidentify {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'maskConfig': maskConfig};
+    return <String, dynamic>{
+      'maskConfig': maskConfig,
+    };
   }
 
-  factory GetLogDataProtectionPolicyDocumentStatementOperationDeidentify.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetLogDataProtectionPolicyDocumentStatementOperationDeidentify.fromMap(Map<String, dynamic> map) {
     return GetLogDataProtectionPolicyDocumentStatementOperationDeidentify(
-      maskConfig: pulumi.Input.fromValue(
-        (map['maskConfig']! as Map).cast<String, dynamic>(),
-      ),
+      maskConfig: pulumi.Input.fromValue((map['maskConfig']! as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -26,17 +26,20 @@ class V2ProjectNotificationConfigStreamingConfig {
 
   /// Creates a new [V2ProjectNotificationConfigStreamingConfig].
   /// [filter] Expression that defines the filter to apply across create/update
-  V2ProjectNotificationConfigStreamingConfig({required this.filter});
+  V2ProjectNotificationConfigStreamingConfig({
+    required this.filter,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'filter': filter};
+    return <String, dynamic>{
+      'filter': filter,
+    };
   }
 
-  factory V2ProjectNotificationConfigStreamingConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2ProjectNotificationConfigStreamingConfig.fromMap(Map<String, dynamic> map) {
     return V2ProjectNotificationConfigStreamingConfig(
       filter: pulumi.Input.fromValue(map['filter'] as String),
     );
   }
 }
+

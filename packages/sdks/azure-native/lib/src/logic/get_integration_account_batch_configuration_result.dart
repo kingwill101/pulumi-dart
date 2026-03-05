@@ -6,22 +6,16 @@ import 'batch_configuration_properties_response.dart';
 class GetIntegrationAccountBatchConfigurationResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The resource id.
   final String id;
-
   /// The resource location.
   final String? location;
-
   /// Gets the resource name.
   final String name;
-
   /// The batch configuration properties.
   final BatchConfigurationPropertiesResponse properties;
-
   /// The resource tags.
   final Map<String, String>? tags;
-
   /// Gets the resource type.
   final String type;
 
@@ -55,27 +49,16 @@ class GetIntegrationAccountBatchConfigurationResult {
     };
   }
 
-  factory GetIntegrationAccountBatchConfigurationResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetIntegrationAccountBatchConfigurationResult.fromMap(Map<String, dynamic> map) {
     return GetIntegrationAccountBatchConfigurationResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
-      properties: BatchConfigurationPropertiesResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      properties: BatchConfigurationPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

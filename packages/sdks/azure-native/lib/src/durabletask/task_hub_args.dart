@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TaskHubArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the Scheduler
   final pulumi.Input<String> schedulerName;
-
   /// The name of the TaskHub
   final pulumi.Input<String>? taskHubName;
 
@@ -36,15 +34,10 @@ class TaskHubArgs {
 
   factory TaskHubArgs.fromMap(Map<String, dynamic> map) {
     return TaskHubArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       schedulerName: pulumi.Input.fromValue(map['schedulerName'] as String),
-      taskHubName: (() {
-        final guardedValue = map['taskHubName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      taskHubName: (() { final guardedValue = map['taskHubName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

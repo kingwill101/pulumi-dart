@@ -9,21 +9,20 @@ class ServiceServicePropertyRegistrationType {
 
   /// Creates a new [ServiceServicePropertyRegistrationType].
   /// [type] (Output)
-  ServiceServicePropertyRegistrationType({this.type});
+  ServiceServicePropertyRegistrationType({
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': ?type};
+    return <String, dynamic>{
+      'type': ?type,
+    };
   }
 
-  factory ServiceServicePropertyRegistrationType.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ServiceServicePropertyRegistrationType.fromMap(Map<String, dynamic> map) {
     return ServiceServicePropertyRegistrationType(
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

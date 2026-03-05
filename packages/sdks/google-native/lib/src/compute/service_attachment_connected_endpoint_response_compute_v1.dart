@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceAttachmentConnectedEndpointResponseComputeV1 {
   /// The url of the consumer network.
   final pulumi.Input<String> consumerNetwork;
-
   /// The url of a connected endpoint.
   final pulumi.Input<String> endpoint;
-
   /// The PSC connection id of the connected endpoint.
   final pulumi.Input<String> pscConnectionId;
-
   /// The status of a connected endpoint to this service attachment.
   final pulumi.Input<String> status;
 
@@ -37,9 +34,7 @@ class ServiceAttachmentConnectedEndpointResponseComputeV1 {
     };
   }
 
-  factory ServiceAttachmentConnectedEndpointResponseComputeV1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ServiceAttachmentConnectedEndpointResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return ServiceAttachmentConnectedEndpointResponseComputeV1(
       consumerNetwork: pulumi.Input.fromValue(map['consumerNetwork'] as String),
       endpoint: pulumi.Input.fromValue(map['endpoint'] as String),
@@ -48,3 +43,4 @@ class ServiceAttachmentConnectedEndpointResponseComputeV1 {
     );
   }
 }
+

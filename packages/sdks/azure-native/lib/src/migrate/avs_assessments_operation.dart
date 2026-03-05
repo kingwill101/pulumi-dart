@@ -362,171 +362,116 @@ class AvsAssessmentsOperation extends pulumi.CustomResource {
   /// This is the number of machines
   /// affected by each type of error in this assessment.
   late final pulumi.Output<Map<String, int>> assessmentErrorSummary;
-
   /// Assessment type of the assessment.
   late final pulumi.Output<String> assessmentType;
-
   /// AVS Assessment Scenario.
   late final pulumi.Output<String?> avsAssessmentScenario;
-
   /// Estimated External Storage for Assessment.
-  late final pulumi.Output<List<Map<String, dynamic>>>
-  avsEstimatedExternalStorages;
-
+  late final pulumi.Output<List<Map<String, dynamic>>> avsEstimatedExternalStorages;
   /// Estimated External Storage for Assessment.
   late final pulumi.Output<List<Map<String, dynamic>>> avsEstimatedNetworks;
-
   /// Estimated AVS SKU for Assessment.
   late final pulumi.Output<List<Map<String, dynamic>>> avsEstimatedNodes;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Azure Location or Azure region where to which the machines will be migrated.
   late final pulumi.Output<String?> azureLocation;
-
   /// Azure Offer code according to which cost estimation is done.
   late final pulumi.Output<String?> azureOfferCode;
-
   /// Confidence Rating in Percentage.
   late final pulumi.Output<double> confidenceRatingInPercentage;
-
   /// collection of cost components.
   late final pulumi.Output<List<Map<String, dynamic>>> costComponents;
-
   /// Percentage of CPU capacity reserved for processing additional workloads.
   late final pulumi.Output<double?> cpuHeadroom;
-
   /// Predicted CPU utilization.
   late final pulumi.Output<double> cpuUtilization;
-
   /// Date and Time when assessment was created.
   late final pulumi.Output<String> createdTimestamp;
-
   /// Currency in which prices should be reported.
   late final pulumi.Output<String?> currency;
-
   /// De-duplication compression.
   late final pulumi.Output<double?> dedupeCompression;
-
   /// Custom discount percentage.
   late final pulumi.Output<double?> discountPercentage;
-
   /// List of AVS external storage types.
   late final pulumi.Output<List<String>?> externalStorageTypes;
-
   /// Failures to tolerate and RAID level in a common property.
   late final pulumi.Output<String?> failuresToTolerateAndRaidLevel;
-
   /// List of Failures to tolerate and RAID levels in a common property.
   late final pulumi.Output<List<String>?> failuresToTolerateAndRaidLevelList;
-
   /// Gets the group type for the assessment.
   late final pulumi.Output<String> groupType;
-
   /// Is Stretch Cluster Enabled.
   late final pulumi.Output<bool?> isStretchClusterEnabled;
-
   /// Is VCF license applied
   late final pulumi.Output<bool?> isVcfByolEnabled;
-
   /// Limiting factor.
   late final pulumi.Output<String> limitingFactor;
-
   /// Memory overcommit.
   late final pulumi.Output<double?> memOvercommit;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// AVS node type.
   late final pulumi.Output<String?> nodeType;
-
   /// AVS node types.
   late final pulumi.Output<List<String>?> nodeTypes;
-
   /// Number of machines part of the assessment.
   late final pulumi.Output<int> numberOfMachines;
-
   /// Recommended number of nodes.
   late final pulumi.Output<int> numberOfNodes;
-
   /// Percentile of the utilization data values to be considered while assessing
   /// machines.
   late final pulumi.Output<String?> percentile;
-
   /// Gets or sets the end time to consider performance data for assessment.
   late final pulumi.Output<String?> perfDataEndTime;
-
   /// Gets or sets the start time to consider performance data for assessment.
   late final pulumi.Output<String?> perfDataStartTime;
-
   /// Time when the Azure Prices were queried. Date-Time represented in ISO-8601
   /// format.
   late final pulumi.Output<String> pricesTimestamp;
-
   /// The status of the last operation.
   late final pulumi.Output<String?> provisioningState;
-
   /// Predicted RAM utilization.
   late final pulumi.Output<double> ramUtilization;
-
   /// Reserved instance.
   late final pulumi.Output<String?> reservedInstance;
-
   /// Percentage of buffer that user wants on performance metrics when recommending
   /// Azure sizes.
   late final pulumi.Output<double?> scalingFactor;
-
   /// Schema version.
   late final pulumi.Output<String> schemaVersion;
-
   /// Assessment sizing criterion.
   late final pulumi.Output<String?> sizingCriterion;
-
   /// User configurable setting to display the Stage of Assessment.
   late final pulumi.Output<String> stage;
-
   /// Whether assessment is in valid state and all machines have been assessed.
   late final pulumi.Output<String> status;
-
   /// Predicted storage utilization.
   late final pulumi.Output<double> storageUtilization;
-
   /// Gets or sets the Assessment cloud suitability.
   late final pulumi.Output<String> suitability;
-
   /// Gets or sets the Assessment suitability explanation.
   late final pulumi.Output<String> suitabilityExplanation;
-
   /// Cloud suitability summary for all the machines in the assessment.
   late final pulumi.Output<Map<String, int>> suitabilitySummary;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Time Range for which the historic utilization data should be considered for
   /// assessment.
   late final pulumi.Output<String?> timeRange;
-
   /// Predicted total CPU cores used.
   late final pulumi.Output<double> totalCpuCores;
-
   /// Total monthly cost.
   late final pulumi.Output<double> totalMonthlyCost;
-
   /// Predicted total RAM used in GB.
   late final pulumi.Output<double> totalRamInGB;
-
   /// Predicted total Storage used in GB.
   late final pulumi.Output<double> totalStorageInGB;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Date and Time when assessment was last updated.
   late final pulumi.Output<String> updatedTimestamp;
-
   /// VCPU over subscription.
   late final pulumi.Output<double?> vcpuOversubscription;
 
@@ -539,49 +484,31 @@ class AvsAssessmentsOperation extends pulumi.CustomResource {
     AvsAssessmentsOperationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:migrate:AvsAssessmentsOperation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    assessmentErrorSummary = registerOutput<Map<String, int>>(
-      'assessmentErrorSummary',
-    );
+          'azure-native:migrate:AvsAssessmentsOperation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    assessmentErrorSummary = registerOutput<Map<String, int>>('assessmentErrorSummary');
     assessmentType = registerOutput<String>('assessmentType');
     avsAssessmentScenario = registerOutput<String?>('avsAssessmentScenario');
-    avsEstimatedExternalStorages = registerOutput<List<Map<String, dynamic>>>(
-      'avsEstimatedExternalStorages',
-    );
-    avsEstimatedNetworks = registerOutput<List<Map<String, dynamic>>>(
-      'avsEstimatedNetworks',
-    );
-    avsEstimatedNodes = registerOutput<List<Map<String, dynamic>>>(
-      'avsEstimatedNodes',
-    );
+    avsEstimatedExternalStorages = registerOutput<List<Map<String, dynamic>>>('avsEstimatedExternalStorages');
+    avsEstimatedNetworks = registerOutput<List<Map<String, dynamic>>>('avsEstimatedNetworks');
+    avsEstimatedNodes = registerOutput<List<Map<String, dynamic>>>('avsEstimatedNodes');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     azureLocation = registerOutput<String?>('azureLocation');
     azureOfferCode = registerOutput<String?>('azureOfferCode');
-    confidenceRatingInPercentage = registerOutput<double>(
-      'confidenceRatingInPercentage',
-    );
-    costComponents = registerOutput<List<Map<String, dynamic>>>(
-      'costComponents',
-    );
+    confidenceRatingInPercentage = registerOutput<double>('confidenceRatingInPercentage');
+    costComponents = registerOutput<List<Map<String, dynamic>>>('costComponents');
     cpuHeadroom = registerOutput<double?>('cpuHeadroom');
     cpuUtilization = registerOutput<double>('cpuUtilization');
     createdTimestamp = registerOutput<String>('createdTimestamp');
     currency = registerOutput<String?>('currency');
     dedupeCompression = registerOutput<double?>('dedupeCompression');
     discountPercentage = registerOutput<double?>('discountPercentage');
-    externalStorageTypes = registerOutput<List<String>?>(
-      'externalStorageTypes',
-    );
-    failuresToTolerateAndRaidLevel = registerOutput<String?>(
-      'failuresToTolerateAndRaidLevel',
-    );
-    failuresToTolerateAndRaidLevelList = registerOutput<List<String>?>(
-      'failuresToTolerateAndRaidLevelList',
-    );
+    externalStorageTypes = registerOutput<List<String>?>('externalStorageTypes');
+    failuresToTolerateAndRaidLevel = registerOutput<String?>('failuresToTolerateAndRaidLevel');
+    failuresToTolerateAndRaidLevelList = registerOutput<List<String>?>('failuresToTolerateAndRaidLevelList');
     groupType = registerOutput<String>('groupType');
     isStretchClusterEnabled = registerOutput<bool?>('isStretchClusterEnabled');
     isVcfByolEnabled = registerOutput<bool?>('isVcfByolEnabled');
@@ -608,16 +535,7 @@ class AvsAssessmentsOperation extends pulumi.CustomResource {
     suitability = registerOutput<String>('suitability');
     suitabilityExplanation = registerOutput<String>('suitabilityExplanation');
     suitabilitySummary = registerOutput<Map<String, int>>('suitabilitySummary');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     timeRange = registerOutput<String?>('timeRange');
     totalCpuCores = registerOutput<double>('totalCpuCores');
     totalMonthlyCost = registerOutput<double>('totalMonthlyCost');

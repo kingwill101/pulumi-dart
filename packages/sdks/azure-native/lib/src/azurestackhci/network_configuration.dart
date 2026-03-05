@@ -10,38 +10,20 @@ class NetworkConfiguration {
 
   /// Creates a new [NetworkConfiguration].
   /// [networkAdapters] List of network adapters.
-  NetworkConfiguration({this.networkAdapters});
+  NetworkConfiguration({
+    this.networkAdapters,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'networkAdapters':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<NetworkAdapter>,
-            List<Map<String, dynamic>>
-          >(
-            networkAdapters,
-            (value) =>
-                pulumi.Input.encodeList<NetworkAdapter, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'networkAdapters': ?pulumi.Input.mapOptionalInputValue<List<NetworkAdapter>, List<Map<String, dynamic>>>(networkAdapters, (value) => pulumi.Input.encodeList<NetworkAdapter, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory NetworkConfiguration.fromMap(Map<String, dynamic> map) {
     return NetworkConfiguration(
-      networkAdapters: (() {
-        final guardedValue = map['networkAdapters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<NetworkAdapter>(
-            guardedValue,
-            (value) =>
-                NetworkAdapter.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
+      networkAdapters: (() { final guardedValue = map['networkAdapters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NetworkAdapter>(guardedValue, (value) => NetworkAdapter.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackendServiceIAPResponseComputeBeta {
   /// Whether the serving infrastructure will authenticate and authorize all incoming requests.
   final pulumi.Input<bool> enabled;
-
   /// OAuth2 client ID to use for the authentication flow.
   final pulumi.Input<String> oauth2ClientId;
-
   /// OAuth2 client secret to use for the authentication flow. For security reasons, this value cannot be retrieved via the API. Instead, the SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field. @InputOnly
   final pulumi.Input<String> oauth2ClientSecret;
-
   /// SHA256 hash value for the field oauth2_client_secret above.
   final pulumi.Input<String> oauth2ClientSecretSha256;
 
@@ -37,18 +34,13 @@ class BackendServiceIAPResponseComputeBeta {
     };
   }
 
-  factory BackendServiceIAPResponseComputeBeta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BackendServiceIAPResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return BackendServiceIAPResponseComputeBeta(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
       oauth2ClientId: pulumi.Input.fromValue(map['oauth2ClientId'] as String),
-      oauth2ClientSecret: pulumi.Input.fromValue(
-        map['oauth2ClientSecret'] as String,
-      ),
-      oauth2ClientSecretSha256: pulumi.Input.fromValue(
-        map['oauth2ClientSecretSha256'] as String,
-      ),
+      oauth2ClientSecret: pulumi.Input.fromValue(map['oauth2ClientSecret'] as String),
+      oauth2ClientSecretSha256: pulumi.Input.fromValue(map['oauth2ClientSecretSha256'] as String),
     );
   }
 }
+

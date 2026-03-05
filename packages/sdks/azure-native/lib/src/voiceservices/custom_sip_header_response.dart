@@ -9,19 +9,20 @@ class CustomSipHeaderResponse {
 
   /// Creates a new [CustomSipHeaderResponse].
   /// [name] The name of the Custom SIP Header
-  CustomSipHeaderResponse({this.name});
+  CustomSipHeaderResponse({
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name};
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
   factory CustomSipHeaderResponse.fromMap(Map<String, dynamic> map) {
     return CustomSipHeaderResponse(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserMapping {
   /// A list of groups within Kubernetes to which the user is mapped to.
   final pulumi.Input<List<String>> groups;
-
   /// The ARN of the IAM user to add.
   final pulumi.Input<String> userArn;
-
   /// The user name within Kubernetes to map to the IAM user. By default, the user name is the ARN of the IAM user.
   final pulumi.Input<String> username;
 
@@ -39,3 +37,4 @@ class UserMapping {
     );
   }
 }
+

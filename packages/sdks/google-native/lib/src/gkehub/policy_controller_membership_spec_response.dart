@@ -6,9 +6,7 @@ import 'policy_controller_hub_config_response.dart';
 /// **Policy Controller**: Configuration for a single cluster. Intended to parallel the PolicyController CR.
 class PolicyControllerMembershipSpecResponse {
   /// Policy Controller configuration for the cluster.
-  final pulumi.Input<PolicyControllerHubConfigResponse>
-  policyControllerHubConfig;
-
+  final pulumi.Input<PolicyControllerHubConfigResponse> policyControllerHubConfig;
   /// Version of Policy Controller installed.
   final pulumi.Input<String> version;
 
@@ -22,25 +20,16 @@ class PolicyControllerMembershipSpecResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'policyControllerHubConfig':
-          pulumi.Input.mapInputValue<
-            PolicyControllerHubConfigResponse,
-            Map<String, dynamic>
-          >(policyControllerHubConfig, (value) => value.toMap()),
+      'policyControllerHubConfig': pulumi.Input.mapInputValue<PolicyControllerHubConfigResponse, Map<String, dynamic>>(policyControllerHubConfig, (value) => value.toMap()),
       'version': version,
     };
   }
 
-  factory PolicyControllerMembershipSpecResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PolicyControllerMembershipSpecResponse.fromMap(Map<String, dynamic> map) {
     return PolicyControllerMembershipSpecResponse(
-      policyControllerHubConfig: pulumi.Input.fromValue(
-        PolicyControllerHubConfigResponse.fromMap(
-          (map['policyControllerHubConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      policyControllerHubConfig: pulumi.Input.fromValue(PolicyControllerHubConfigResponse.fromMap((map['policyControllerHubConfig']! as Map).cast<String, dynamic>())),
       version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
+

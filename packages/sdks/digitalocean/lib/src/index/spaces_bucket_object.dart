@@ -249,34 +249,24 @@ import 'spaces_bucket_object_state.dart';
 class SpacesBucketObject extends pulumi.CustomResource {
   /// The canned ACL to apply. DigitalOcean supports "private" and "public-read". (Defaults to "private".)
   late final pulumi.Output<String?> acl;
-
   /// The name of the bucket to put the file in.
   late final pulumi.Output<String> bucket;
-
   /// Specifies caching behavior along the request/reply chain Read [w3c cache_control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
   late final pulumi.Output<String?> cacheControl;
-
   /// Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text.
   late final pulumi.Output<String?> content;
-
   /// Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `gzipbase64` function with small text strings. For larger objects, use `source` to stream the content from a disk file.
   late final pulumi.Output<String?> contentBase64;
-
   /// Specifies presentational information for the object. Read [w3c content_disposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
   late final pulumi.Output<String?> contentDisposition;
-
   /// Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [w3c content encoding](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11) for further information.
   late final pulumi.Output<String?> contentEncoding;
-
   /// The language the content is in e.g. en-US or en-GB.
   late final pulumi.Output<String?> contentLanguage;
-
   /// A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
   late final pulumi.Output<String> contentType;
-
   /// Used to trigger updates. The only meaningful value is `${filemd5("path/to/file")}` (Terraform 0.11.12 or later) or `${md5(file("path/to/file"))}` (Terraform 0.11.11 or earlier).
   late final pulumi.Output<String> etag;
-
   /// Allow the object to be deleted by removing any legal hold on any object version.
   /// Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
   ///
@@ -284,22 +274,16 @@ class SpacesBucketObject extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** Terraform ignores all leading `/`s in the object's `key` and treats multiple `/`s in the rest of the object's `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
   late final pulumi.Output<bool?> forceDestroy;
-
   /// The name of the object once it is in the bucket.
   late final pulumi.Output<String> key;
-
   /// A mapping of keys/values to provision metadata (will be automatically prefixed by `x-amz-meta-`, note that only lowercase label are currently supported by the AWS Go API).
   late final pulumi.Output<Map<String, String>?> metadata;
-
   /// The region where the bucket resides (Defaults to `nyc3`)
   late final pulumi.Output<String> region;
-
   /// The path to a file that will be read and uploaded as raw bytes for the object content.
   late final pulumi.Output<String?> source;
-
   /// A unique version ID value for the object, if bucket versioning is enabled.
   late final pulumi.Output<String> versionId;
-
   /// Specifies a target URL for [website redirect](http://docs.aws.amazon.com/AmazonS3/latest/dev/how-to-page-redirect.html).
   late final pulumi.Output<String?> websiteRedirect;
 
@@ -312,11 +296,11 @@ class SpacesBucketObject extends pulumi.CustomResource {
     SpacesBucketObjectArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/spacesBucketObject:SpacesBucketObject',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/spacesBucketObject:SpacesBucketObject',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     acl = registerOutput<String?>('acl');
     bucket = registerOutput<String>('bucket');
     cacheControl = registerOutput<String?>('cacheControl');
@@ -354,11 +338,11 @@ class SpacesBucketObject extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/spacesBucketObject:SpacesBucketObject',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/spacesBucketObject:SpacesBucketObject',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     acl = registerOutput<String?>('acl');
     bucket = registerOutput<String>('bucket');
     cacheControl = registerOutput<String?>('cacheControl');

@@ -5,25 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccessRulesRule {
   /// The resource ID of the Access Group.
   final pulumi.Input<String> accessGroupId;
-
   /// The ID of the Access Rule.
   final pulumi.Input<String> accessRuleId;
-
   /// The created time of the Access Rule.
   final pulumi.Input<String> createTime;
-
   /// The description of the Access Rule.
   final pulumi.Input<String> description;
-
   /// The resource ID of Access Rule.
   final pulumi.Input<String> id;
-
   /// The NetworkSegment of the Access Rule.
   final pulumi.Input<String> networkSegment;
-
   /// The priority of the Access Rule.
   final pulumi.Input<int> priority;
-
   /// RWAccessType of the Access Rule. Valid values: `RDONLY`, `RDWR`.
   final pulumi.Input<String> rwAccessType;
 
@@ -73,3 +66,4 @@ class GetAccessRulesRule {
     );
   }
 }
+

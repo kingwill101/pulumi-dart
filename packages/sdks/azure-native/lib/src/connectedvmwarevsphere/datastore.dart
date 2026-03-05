@@ -173,55 +173,38 @@ import 'system_data_response.dart';
 class Datastore extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Gets or sets Maximum capacity of this datastore in GBs.
   late final pulumi.Output<double> capacityGB;
-
   /// Gets the name of the corresponding resource in Kubernetes.
   late final pulumi.Output<String> customResourceName;
-
   /// Gets or sets the extended location.
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
-
   /// Gets or sets Available space of this datastore in GBs.
   late final pulumi.Output<double> freeSpaceGB;
-
   /// Gets or sets the inventory Item ID for the datastore.
   late final pulumi.Output<String?> inventoryItemId;
-
   /// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
   late final pulumi.Output<String?> kind;
-
   /// Gets or sets the location.
   late final pulumi.Output<String> location;
-
   /// Gets or sets the vCenter Managed Object name for the datastore.
   late final pulumi.Output<String> moName;
-
   /// Gets or sets the vCenter MoRef (Managed Object Reference) ID for the datastore.
   late final pulumi.Output<String?> moRefId;
-
   /// Gets or sets the name.
   late final pulumi.Output<String> name;
-
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The resource status information.
   late final pulumi.Output<List<Map<String, dynamic>>> statuses;
-
   /// The system data.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Gets or sets the Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Gets or sets the type of the resource.
   late final pulumi.Output<String> type;
-
   /// Gets or sets a unique identifier for this resource.
   late final pulumi.Output<String> uuid;
-
   /// Gets or sets the ARM Id of the vCenter resource in which this datastore resides.
   late final pulumi.Output<String?> vCenterId;
 
@@ -234,24 +217,15 @@ class Datastore extends pulumi.CustomResource {
     DatastoreArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:connectedvmwarevsphere:Datastore',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:connectedvmwarevsphere:Datastore',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     capacityGB = registerOutput<double>('capacityGB');
     customResourceName = registerOutput<String>('customResourceName');
-    extendedLocation = registerOutput<ExtendedLocationResponse?>(
-      'extendedLocation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExtendedLocationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     freeSpaceGB = registerOutput<double>('freeSpaceGB');
     inventoryItemId = registerOutput<String?>('inventoryItemId');
     kind = registerOutput<String?>('kind');
@@ -261,16 +235,7 @@ class Datastore extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     uuid = registerOutput<String>('uuid');

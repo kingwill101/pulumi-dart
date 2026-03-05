@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGradientaiRegionsRegion {
   /// Inference URL for the model
   final pulumi.Input<String> inferenceUrl;
-
   /// Region where the model is deployed
   final pulumi.Input<String> region;
-
   /// Indicates if the model serves batch requests
   final pulumi.Input<bool> servesBatch;
-
   /// Indicates if the model serves inference requests
   final pulumi.Input<bool> servesInference;
-
   /// Streaming inference URL for the model
   final pulumi.Input<String> streamInferenceUrl;
 
@@ -48,9 +44,8 @@ class GetGradientaiRegionsRegion {
       region: pulumi.Input.fromValue(map['region'] as String),
       servesBatch: pulumi.Input.fromValue(map['servesBatch'] as bool),
       servesInference: pulumi.Input.fromValue(map['servesInference'] as bool),
-      streamInferenceUrl: pulumi.Input.fromValue(
-        map['streamInferenceUrl'] as String,
-      ),
+      streamInferenceUrl: pulumi.Input.fromValue(map['streamInferenceUrl'] as String),
     );
   }
 }
+

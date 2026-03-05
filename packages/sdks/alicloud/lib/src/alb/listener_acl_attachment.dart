@@ -668,15 +668,12 @@ import 'listener_acl_attachment_state.dart';
 class ListenerAclAttachment extends pulumi.CustomResource {
   /// The ID list of the access policy group bound by the listener.
   late final pulumi.Output<String> aclId;
-
   /// Access control type:
   /// - **White**: only requests from IP addresses or address segments in the selected access control list are forwarded. The whitelist applies to scenarios where only specific IP addresses are allowed to access. There are certain business risks in setting up a whitelist. Once the whitelist is set, only the IP addresses in the whitelist can access the load balancer listener. If whitelist access is enabled but no IP addresses are added to the access policy group, the server load balancer listener forwards all requests.
   /// - **Black**: All requests from IP addresses or address segments in the selected access control list are not forwarded. Blacklists are applicable to scenarios where only certain IP addresses are restricted. If blacklist access is enabled and no IP is added to the access policy group, the server load balancer listener forwards all requests.
   late final pulumi.Output<String> aclType;
-
   /// Listener instance ID.
   late final pulumi.Output<String> listenerId;
-
   /// Listener Status.
   late final pulumi.Output<String> status;
 
@@ -689,11 +686,11 @@ class ListenerAclAttachment extends pulumi.CustomResource {
     ListenerAclAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:alb/listenerAclAttachment:ListenerAclAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:alb/listenerAclAttachment:ListenerAclAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aclId = registerOutput<String>('aclId');
     aclType = registerOutput<String>('aclType');
     listenerId = registerOutput<String>('listenerId');
@@ -718,11 +715,11 @@ class ListenerAclAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:alb/listenerAclAttachment:ListenerAclAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:alb/listenerAclAttachment:ListenerAclAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aclId = registerOutput<String>('aclId');
     aclType = registerOutput<String>('aclType');
     listenerId = registerOutput<String>('listenerId');

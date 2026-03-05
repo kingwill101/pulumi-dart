@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification {
   /// ID of the launch template. Conflicts with `launch_template_name`.
   final pulumi.Input<String>? launchTemplateId;
-
   /// Name of the launch template. Conflicts with `launch_template_id`.
   final pulumi.Input<String>? launchTemplateName;
   final pulumi.Input<String>? version;
@@ -28,25 +27,12 @@ class GroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification {
     };
   }
 
-  factory GroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification.fromMap(Map<String, dynamic> map) {
     return GroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification(
-      launchTemplateId: (() {
-        final guardedValue = map['launchTemplateId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      launchTemplateName: (() {
-        final guardedValue = map['launchTemplateName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      launchTemplateId: (() { final guardedValue = map['launchTemplateId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      launchTemplateName: (() { final guardedValue = map['launchTemplateName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -7,13 +7,10 @@ import 'google_cloud_beyondcorp_partnerservices_v1alpha_rule_setting_response.da
 class GetBrowserDlpRuleResult {
   /// The group to which this Rule should be applied to.
   final GoogleCloudBeyondcorpPartnerservicesV1alphaGroupResponse group;
-
   /// Unique resource name. The name is ignored when creating BrowserDlpRule.
   final String name;
-
   /// The policy settings to apply.
-  final GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingResponse
-  ruleSetting;
+  final GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingResponse ruleSetting;
 
   /// Creates a new [GetBrowserDlpRuleResult].
   /// [group] The group to which this Rule should be applied to.
@@ -35,14 +32,10 @@ class GetBrowserDlpRuleResult {
 
   factory GetBrowserDlpRuleResult.fromMap(Map<String, dynamic> map) {
     return GetBrowserDlpRuleResult(
-      group: GoogleCloudBeyondcorpPartnerservicesV1alphaGroupResponse.fromMap(
-        (map['group']! as Map).cast<String, dynamic>(),
-      ),
+      group: GoogleCloudBeyondcorpPartnerservicesV1alphaGroupResponse.fromMap((map['group']! as Map).cast<String, dynamic>()),
       name: map['name'] as String,
-      ruleSetting:
-          GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingResponse.fromMap(
-            (map['ruleSetting']! as Map).cast<String, dynamic>(),
-          ),
+      ruleSetting: GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingResponse.fromMap((map['ruleSetting']! as Map).cast<String, dynamic>()),
     );
   }
 }
+

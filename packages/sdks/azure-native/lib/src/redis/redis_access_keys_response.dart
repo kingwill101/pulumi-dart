@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RedisAccessKeysResponse {
   /// The current primary key that clients can use to authenticate with Redis cache.
   final pulumi.Input<String> primaryKey;
-
   /// The current secondary key that clients can use to authenticate with Redis cache.
   final pulumi.Input<String> secondaryKey;
 
@@ -32,3 +31,4 @@ class RedisAccessKeysResponse {
     );
   }
 }
+

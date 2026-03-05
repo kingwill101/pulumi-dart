@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ParameterGroupStatus {
   /// &lt;p&gt;The node IDs of one or more nodes to be rebooted.&lt;/p&gt;
   final pulumi.Input<List<String>>? nodeIdsToReboot;
-
   /// &lt;p&gt;The status of parameter updates. &lt;/p&gt;
   final pulumi.Input<String>? parameterApplyStatus;
-
   /// &lt;p&gt;The name of the parameter group.&lt;/p&gt;
   final pulumi.Input<String>? parameterGroupName;
 
@@ -33,21 +31,10 @@ class ParameterGroupStatus {
 
   factory ParameterGroupStatus.fromMap(Map<String, dynamic> map) {
     return ParameterGroupStatus(
-      nodeIdsToReboot: (() {
-        final guardedValue = map['nodeIdsToReboot'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      parameterApplyStatus: (() {
-        final guardedValue = map['parameterApplyStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      parameterGroupName: (() {
-        final guardedValue = map['parameterGroupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      nodeIdsToReboot: (() { final guardedValue = map['nodeIdsToReboot']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      parameterApplyStatus: (() { final guardedValue = map['parameterApplyStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      parameterGroupName: (() { final guardedValue = map['parameterGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

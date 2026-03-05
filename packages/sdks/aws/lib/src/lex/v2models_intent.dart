@@ -1110,71 +1110,46 @@ import 'v2models_intent_timeouts.dart';
 class V2modelsIntent extends pulumi.CustomResource {
   /// Identifier of the bot associated with this intent.
   late final pulumi.Output<String> botId;
-
   /// Version of the bot associated with this intent.
   late final pulumi.Output<String> botVersion;
-
   /// Configuration block for the response that Amazon Lex sends to the user when the intent is closed. See `closing_setting`.
   late final pulumi.Output<V2modelsIntentClosingSetting?> closingSetting;
-
   /// Configuration block for prompts that Amazon Lex sends to the user to confirm the completion of an intent. If the user answers "no," the settings contain a statement that is sent to the user to end the intent. If you configure this block without `prompt_specification.*.prompt_attempts_specification`, AWS will provide default configurations for `Initial` and `Retry1` `prompt_attempts_specification`s. This will cause Terraform to report differences. Use the `confirmation_setting` configuration above in the Basic Usage example to avoid differences resulting from AWS default configuration. See `confirmation_setting`.
-  late final pulumi.Output<V2modelsIntentConfirmationSetting?>
-  confirmationSetting;
-
+  late final pulumi.Output<V2modelsIntentConfirmationSetting?> confirmationSetting;
   /// Timestamp of the date and time that the intent was created.
   late final pulumi.Output<String> creationDateTime;
-
   /// Description of the intent. Use the description to help identify the intent in lists.
   late final pulumi.Output<String?> description;
-
   /// Configuration block for invoking the alias Lambda function for each user input. You can invoke this Lambda function to personalize user interaction. See `dialog_code_hook`.
   late final pulumi.Output<V2modelsIntentDialogCodeHook?> dialogCodeHook;
-
   /// Configuration block for invoking the alias Lambda function when the intent is ready for fulfillment. You can invoke this function to complete the bot's transaction with the user. See `fulfillment_code_hook`.
-  late final pulumi.Output<V2modelsIntentFulfillmentCodeHook?>
-  fulfillmentCodeHook;
-
+  late final pulumi.Output<V2modelsIntentFulfillmentCodeHook?> fulfillmentCodeHook;
   /// Configuration block for the response that is sent to the user at the beginning of a conversation, before eliciting slot values. See `initial_response_setting`.
-  late final pulumi.Output<V2modelsIntentInitialResponseSetting?>
-  initialResponseSetting;
-
+  late final pulumi.Output<V2modelsIntentInitialResponseSetting?> initialResponseSetting;
   /// Configuration blocks for contexts that must be active for this intent to be considered by Amazon Lex. When an intent has an input context list, Amazon Lex only considers using the intent in an interaction with the user when the specified contexts are included in the active context list for the session. If the contexts are not active, then Amazon Lex will not use the intent. A context can be automatically activated using the outputContexts property or it can be set at runtime. See `input_context`.
   late final pulumi.Output<List<Map<String, dynamic>>?> inputContexts;
-
   /// Unique identifier for the intent.
   late final pulumi.Output<String> intentId;
-
   /// Configuration block for information required to use the AMAZON.KendraSearchIntent intent to connect to an Amazon Kendra index. The AMAZON.KendraSearchIntent intent is called when Amazon Lex can't determine another intent to invoke. Cannot be used with `qna_intent_configuration`. See `kendra_configuration`.
-  late final pulumi.Output<V2modelsIntentKendraConfiguration?>
-  kendraConfiguration;
-
+  late final pulumi.Output<V2modelsIntentKendraConfiguration?> kendraConfiguration;
   /// Timestamp of the last time that the intent was modified.
   late final pulumi.Output<String> lastUpdatedDateTime;
-
   /// Identifier of the language and locale where this intent is used. All of the bots, slot types, and slots used by the intent must have the same locale.
   late final pulumi.Output<String> localeId;
-
   /// Name of the intent. Intent names must be unique in the locale that contains the intent and cannot match the name of any built-in intent.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
-
   /// Configuration blocks for contexts that the intent activates when it is fulfilled. You can use an output context to indicate the intents that Amazon Lex should consider for the next turn of the conversation with a customer. When you use the outputContextsList property, all of the contexts specified in the list are activated when the intent is fulfilled. You can set up to 10 output contexts. You can also set the number of conversation turns that the context should be active, or the length of time that the context should be active. See `output_context`.
   late final pulumi.Output<List<Map<String, dynamic>>?> outputContexts;
-
   /// Identifier for the built-in intent to base this intent on.
   late final pulumi.Output<String?> parentIntentSignature;
-
   /// Configuration block for QnA intent settings. This is used when `parent_intent_signature` is set to `AMAZON.QnAIntent`. Cannot be used with `kendra_configuration`. See `qna_intent_configuration`.
-  late final pulumi.Output<V2modelsIntentQnaIntentConfiguration?>
-  qnaIntentConfiguration;
-
+  late final pulumi.Output<V2modelsIntentQnaIntentConfiguration?> qnaIntentConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Configuration block for strings that a user might say to signal the intent. See `sample_utterance`.
   late final pulumi.Output<List<Map<String, dynamic>>?> sampleUtterances;
-
   /// Configuration block for a new list of slots and their priorities that are contained by the intent. This is ignored on create and only valid for updates. See `slot_priority`.
   late final pulumi.Output<List<Map<String, dynamic>>?> slotPriorities;
   late final pulumi.Output<V2modelsIntentTimeouts?> timeouts;
@@ -1188,115 +1163,33 @@ class V2modelsIntent extends pulumi.CustomResource {
     V2modelsIntentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:lex/v2modelsIntent:V2modelsIntent',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:lex/v2modelsIntent:V2modelsIntent',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     botId = registerOutput<String>('botId');
     botVersion = registerOutput<String>('botVersion');
-    closingSetting = registerOutput<V2modelsIntentClosingSetting?>(
-      'closingSetting',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return V2modelsIntentClosingSetting.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    confirmationSetting = registerOutput<V2modelsIntentConfirmationSetting?>(
-      'confirmationSetting',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return V2modelsIntentConfirmationSetting.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    closingSetting = registerOutput<V2modelsIntentClosingSetting?>('closingSetting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2modelsIntentClosingSetting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    confirmationSetting = registerOutput<V2modelsIntentConfirmationSetting?>('confirmationSetting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2modelsIntentConfirmationSetting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     creationDateTime = registerOutput<String>('creationDateTime');
     description = registerOutput<String?>('description');
-    dialogCodeHook = registerOutput<V2modelsIntentDialogCodeHook?>(
-      'dialogCodeHook',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return V2modelsIntentDialogCodeHook.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    fulfillmentCodeHook = registerOutput<V2modelsIntentFulfillmentCodeHook?>(
-      'fulfillmentCodeHook',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return V2modelsIntentFulfillmentCodeHook.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    initialResponseSetting =
-        registerOutput<V2modelsIntentInitialResponseSetting?>(
-          'initialResponseSetting',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return V2modelsIntentInitialResponseSetting.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    inputContexts = registerOutput<List<Map<String, dynamic>>?>(
-      'inputContexts',
-    );
+    dialogCodeHook = registerOutput<V2modelsIntentDialogCodeHook?>('dialogCodeHook', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2modelsIntentDialogCodeHook.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    fulfillmentCodeHook = registerOutput<V2modelsIntentFulfillmentCodeHook?>('fulfillmentCodeHook', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2modelsIntentFulfillmentCodeHook.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    initialResponseSetting = registerOutput<V2modelsIntentInitialResponseSetting?>('initialResponseSetting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2modelsIntentInitialResponseSetting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    inputContexts = registerOutput<List<Map<String, dynamic>>?>('inputContexts');
     intentId = registerOutput<String>('intentId');
-    kendraConfiguration = registerOutput<V2modelsIntentKendraConfiguration?>(
-      'kendraConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return V2modelsIntentKendraConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    kendraConfiguration = registerOutput<V2modelsIntentKendraConfiguration?>('kendraConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2modelsIntentKendraConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lastUpdatedDateTime = registerOutput<String>('lastUpdatedDateTime');
     localeId = registerOutput<String>('localeId');
     this.name = registerOutput<String>('name');
-    outputContexts = registerOutput<List<Map<String, dynamic>>?>(
-      'outputContexts',
-    );
+    outputContexts = registerOutput<List<Map<String, dynamic>>?>('outputContexts');
     parentIntentSignature = registerOutput<String?>('parentIntentSignature');
-    qnaIntentConfiguration =
-        registerOutput<V2modelsIntentQnaIntentConfiguration?>(
-          'qnaIntentConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return V2modelsIntentQnaIntentConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    qnaIntentConfiguration = registerOutput<V2modelsIntentQnaIntentConfiguration?>('qnaIntentConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2modelsIntentQnaIntentConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    sampleUtterances = registerOutput<List<Map<String, dynamic>>?>(
-      'sampleUtterances',
-    );
-    slotPriorities = registerOutput<List<Map<String, dynamic>>?>(
-      'slotPriorities',
-    );
-    timeouts = registerOutput<V2modelsIntentTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return V2modelsIntentTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sampleUtterances = registerOutput<List<Map<String, dynamic>>?>('sampleUtterances');
+    slotPriorities = registerOutput<List<Map<String, dynamic>>?>('slotPriorities');
+    timeouts = registerOutput<V2modelsIntentTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2modelsIntentTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [V2modelsIntent] resource's state with the given [name] and [id].
@@ -1317,114 +1210,32 @@ class V2modelsIntent extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:lex/v2modelsIntent:V2modelsIntent',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:lex/v2modelsIntent:V2modelsIntent',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     botId = registerOutput<String>('botId');
     botVersion = registerOutput<String>('botVersion');
-    closingSetting = registerOutput<V2modelsIntentClosingSetting?>(
-      'closingSetting',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return V2modelsIntentClosingSetting.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    confirmationSetting = registerOutput<V2modelsIntentConfirmationSetting?>(
-      'confirmationSetting',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return V2modelsIntentConfirmationSetting.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    closingSetting = registerOutput<V2modelsIntentClosingSetting?>('closingSetting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2modelsIntentClosingSetting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    confirmationSetting = registerOutput<V2modelsIntentConfirmationSetting?>('confirmationSetting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2modelsIntentConfirmationSetting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     creationDateTime = registerOutput<String>('creationDateTime');
     description = registerOutput<String?>('description');
-    dialogCodeHook = registerOutput<V2modelsIntentDialogCodeHook?>(
-      'dialogCodeHook',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return V2modelsIntentDialogCodeHook.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    fulfillmentCodeHook = registerOutput<V2modelsIntentFulfillmentCodeHook?>(
-      'fulfillmentCodeHook',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return V2modelsIntentFulfillmentCodeHook.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    initialResponseSetting =
-        registerOutput<V2modelsIntentInitialResponseSetting?>(
-          'initialResponseSetting',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return V2modelsIntentInitialResponseSetting.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    inputContexts = registerOutput<List<Map<String, dynamic>>?>(
-      'inputContexts',
-    );
+    dialogCodeHook = registerOutput<V2modelsIntentDialogCodeHook?>('dialogCodeHook', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2modelsIntentDialogCodeHook.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    fulfillmentCodeHook = registerOutput<V2modelsIntentFulfillmentCodeHook?>('fulfillmentCodeHook', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2modelsIntentFulfillmentCodeHook.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    initialResponseSetting = registerOutput<V2modelsIntentInitialResponseSetting?>('initialResponseSetting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2modelsIntentInitialResponseSetting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    inputContexts = registerOutput<List<Map<String, dynamic>>?>('inputContexts');
     intentId = registerOutput<String>('intentId');
-    kendraConfiguration = registerOutput<V2modelsIntentKendraConfiguration?>(
-      'kendraConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return V2modelsIntentKendraConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    kendraConfiguration = registerOutput<V2modelsIntentKendraConfiguration?>('kendraConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2modelsIntentKendraConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lastUpdatedDateTime = registerOutput<String>('lastUpdatedDateTime');
     localeId = registerOutput<String>('localeId');
     this.name = registerOutput<String>('name');
-    outputContexts = registerOutput<List<Map<String, dynamic>>?>(
-      'outputContexts',
-    );
+    outputContexts = registerOutput<List<Map<String, dynamic>>?>('outputContexts');
     parentIntentSignature = registerOutput<String?>('parentIntentSignature');
-    qnaIntentConfiguration =
-        registerOutput<V2modelsIntentQnaIntentConfiguration?>(
-          'qnaIntentConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return V2modelsIntentQnaIntentConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    qnaIntentConfiguration = registerOutput<V2modelsIntentQnaIntentConfiguration?>('qnaIntentConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2modelsIntentQnaIntentConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    sampleUtterances = registerOutput<List<Map<String, dynamic>>?>(
-      'sampleUtterances',
-    );
-    slotPriorities = registerOutput<List<Map<String, dynamic>>?>(
-      'slotPriorities',
-    );
-    timeouts = registerOutput<V2modelsIntentTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return V2modelsIntentTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sampleUtterances = registerOutput<List<Map<String, dynamic>>?>('sampleUtterances');
+    slotPriorities = registerOutput<List<Map<String, dynamic>>?>('slotPriorities');
+    timeouts = registerOutput<V2modelsIntentTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2modelsIntentTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

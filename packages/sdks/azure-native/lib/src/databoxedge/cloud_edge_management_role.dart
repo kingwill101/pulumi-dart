@@ -136,26 +136,19 @@ import 'system_data_response.dart';
 class CloudEdgeManagementRole extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Edge Profile of the resource
   late final pulumi.Output<EdgeProfileResponse> edgeProfile;
-
   /// Role type.
   /// Expected value is 'CloudEdgeManagement'.
   late final pulumi.Output<String> kind;
-
   /// Local Edge Management Status
   late final pulumi.Output<String> localManagementStatus;
-
   /// The object name.
   late final pulumi.Output<String> name;
-
   /// Role status.
   late final pulumi.Output<String> roleStatus;
-
   /// Metadata pertaining to creation and last modification of Role
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The hierarchical type of the object.
   late final pulumi.Output<String> type;
 
@@ -168,36 +161,18 @@ class CloudEdgeManagementRole extends pulumi.CustomResource {
     CloudEdgeManagementRoleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:databoxedge:CloudEdgeManagementRole',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:databoxedge:CloudEdgeManagementRole',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    edgeProfile = registerOutput<EdgeProfileResponse>(
-      'edgeProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EdgeProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    edgeProfile = registerOutput<EdgeProfileResponse>('edgeProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EdgeProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kind = registerOutput<String>('kind');
     localManagementStatus = registerOutput<String>('localManagementStatus');
     this.name = registerOutput<String>('name');
     roleStatus = registerOutput<String>('roleStatus');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

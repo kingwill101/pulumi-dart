@@ -19,3 +19,4 @@ enum PipelineState {
     throw ArgumentError('Unknown PipelineState value: $value');
   }
 }
+

@@ -12,25 +12,20 @@ class InstanceConfigArgs {
   /// Only set for user managed configurations.
   /// baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this configuration.
   final pulumi.Input<String>? baseConfig;
-
   /// The name of this instance configuration as it appears in UIs.
   final pulumi.Input<String> displayName;
-
   /// An object containing a list of "key": value pairs.
   /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// A unique identifier for the instance configuration. Values are of the
   /// form projects/&lt;project&gt;/instanceConfigs/[a-z][-a-z0-9]*
   final pulumi.Input<String>? name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The geographic placement of nodes in this instance configuration and their replication properties.
   /// Structure is documented below.
   final pulumi.Input<List<InstanceConfigReplica>> replicas;
@@ -58,54 +53,19 @@ class InstanceConfigArgs {
       'labels': ?labels,
       'name': ?name,
       'project': ?project,
-      'replicas':
-          pulumi.Input.mapInputValue<
-            List<InstanceConfigReplica>,
-            List<Map<String, dynamic>>
-          >(
-            replicas,
-            (value) =>
-                pulumi.Input.encodeList<
-                  InstanceConfigReplica,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'replicas': pulumi.Input.mapInputValue<List<InstanceConfigReplica>, List<Map<String, dynamic>>>(replicas, (value) => pulumi.Input.encodeList<InstanceConfigReplica, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory InstanceConfigArgs.fromMap(Map<String, dynamic> map) {
     return InstanceConfigArgs(
-      baseConfig: (() {
-        final guardedValue = map['baseConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      baseConfig: (() { final guardedValue = map['baseConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      replicas: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<InstanceConfigReplica>(
-          map['replicas']!,
-          (value) => InstanceConfigReplica.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      replicas: pulumi.Input.fromValue(pulumi.Input.decodeList<InstanceConfigReplica>(map['replicas']!, (value) => InstanceConfigReplica.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

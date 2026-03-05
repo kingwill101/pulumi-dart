@@ -13,18 +13,15 @@ class WebAclRuleStatementSizeConstraintStatementFieldToMatchBody {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'oversizeHandling': ?oversizeHandling};
+    return <String, dynamic>{
+      'oversizeHandling': ?oversizeHandling,
+    };
   }
 
-  factory WebAclRuleStatementSizeConstraintStatementFieldToMatchBody.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WebAclRuleStatementSizeConstraintStatementFieldToMatchBody.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementSizeConstraintStatementFieldToMatchBody(
-      oversizeHandling: (() {
-        final guardedValue = map['oversizeHandling'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      oversizeHandling: (() { final guardedValue = map['oversizeHandling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

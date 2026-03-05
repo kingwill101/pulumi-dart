@@ -5,22 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualGatewaySpecListenerHealthCheck {
   /// Number of consecutive successful health checks that must occur before declaring listener healthy.
   final pulumi.Input<int> healthyThreshold;
-
   /// Time period in milliseconds between each health check execution.
   final pulumi.Input<int> intervalMillis;
-
   /// Destination path for the health check request. This is only required if the specified protocol is `http` or `http2`.
   final pulumi.Input<String>? path;
-
   /// Destination port for the health check request. This port must match the port defined in the `port_mapping` for the listener.
   final pulumi.Input<int>? port;
-
   /// Protocol for the health check request. Valid values are `http`, `http2`, and `grpc`.
   final pulumi.Input<String> protocol;
-
   /// Amount of time to wait when receiving a response from the health check, in milliseconds.
   final pulumi.Input<int> timeoutMillis;
-
   /// Number of consecutive failed health checks that must occur before declaring a virtual gateway unhealthy.
   final pulumi.Input<int> unhealthyThreshold;
 
@@ -54,27 +48,16 @@ class VirtualGatewaySpecListenerHealthCheck {
     };
   }
 
-  factory VirtualGatewaySpecListenerHealthCheck.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VirtualGatewaySpecListenerHealthCheck.fromMap(Map<String, dynamic> map) {
     return VirtualGatewaySpecListenerHealthCheck(
       healthyThreshold: pulumi.Input.fromValue(map['healthyThreshold'] as int),
       intervalMillis: pulumi.Input.fromValue(map['intervalMillis'] as int),
-      path: (() {
-        final guardedValue = map['path'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      port: (() {
-        final guardedValue = map['port'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
       timeoutMillis: pulumi.Input.fromValue(map['timeoutMillis'] as int),
-      unhealthyThreshold: pulumi.Input.fromValue(
-        map['unhealthyThreshold'] as int,
-      ),
+      unhealthyThreshold: pulumi.Input.fromValue(map['unhealthyThreshold'] as int),
     );
   }
 }
+

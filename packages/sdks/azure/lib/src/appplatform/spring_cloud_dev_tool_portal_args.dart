@@ -10,19 +10,14 @@ import 'spring_cloud_dev_tool_portal_sso.dart';
 class SpringCloudDevToolPortalArgs {
   /// Should the Accelerator plugin be enabled?
   final pulumi.Input<bool>? applicationAcceleratorEnabled;
-
   /// Should the Application Live View be enabled?
   final pulumi.Input<bool>? applicationLiveViewEnabled;
-
   /// The name which should be used for this Spring Cloud Dev Tool Portal. The only possible value is `default`. Changing this forces a new Spring Cloud Dev Tool Portal to be created.
   final pulumi.Input<String>? name;
-
   /// Is public network access enabled?
   final pulumi.Input<bool>? publicNetworkAccessEnabled;
-
   /// The ID of the Spring Cloud Service. Changing this forces a new Spring Cloud Dev Tool Portal to be created.
   final pulumi.Input<String> springCloudServiceId;
-
   /// A `sso` block as defined below.
   final pulumi.Input<SpringCloudDevToolPortalSso>? sso;
 
@@ -49,48 +44,19 @@ class SpringCloudDevToolPortalArgs {
       'name': ?name,
       'publicNetworkAccessEnabled': ?publicNetworkAccessEnabled,
       'springCloudServiceId': springCloudServiceId,
-      'sso':
-          ?pulumi.Input.mapOptionalInputValue<
-            SpringCloudDevToolPortalSso,
-            Map<String, dynamic>
-          >(sso, (value) => value.toMap()),
+      'sso': ?pulumi.Input.mapOptionalInputValue<SpringCloudDevToolPortalSso, Map<String, dynamic>>(sso, (value) => value.toMap()),
     };
   }
 
   factory SpringCloudDevToolPortalArgs.fromMap(Map<String, dynamic> map) {
     return SpringCloudDevToolPortalArgs(
-      applicationAcceleratorEnabled: (() {
-        final guardedValue = map['applicationAcceleratorEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      applicationLiveViewEnabled: (() {
-        final guardedValue = map['applicationLiveViewEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      publicNetworkAccessEnabled: (() {
-        final guardedValue = map['publicNetworkAccessEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      springCloudServiceId: pulumi.Input.fromValue(
-        map['springCloudServiceId'] as String,
-      ),
-      sso: (() {
-        final guardedValue = map['sso'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SpringCloudDevToolPortalSso.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      applicationAcceleratorEnabled: (() { final guardedValue = map['applicationAcceleratorEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      applicationLiveViewEnabled: (() { final guardedValue = map['applicationLiveViewEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicNetworkAccessEnabled: (() { final guardedValue = map['publicNetworkAccessEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      springCloudServiceId: pulumi.Input.fromValue(map['springCloudServiceId'] as String),
+      sso: (() { final guardedValue = map['sso']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SpringCloudDevToolPortalSso.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSchemasArgs {
   /// The PostgreSQL database which will be queried for schema names.
   final pulumi.Input<String> database;
-
   /// Determines whether to include system schemas (pg_ prefix and information_schema). 'public' will always be included. Defaults to ``false``.
   final pulumi.Input<bool>? includeSystemSchemas;
-
   /// List of expressions which will be pattern matched in the query using the PostgreSQL ``LIKE ALL`` operators.
   final pulumi.Input<List<String>>? likeAllPatterns;
-
   /// List of expressions which will be pattern matched in the query using the PostgreSQL ``LIKE ANY`` operators.
   final pulumi.Input<List<String>>? likeAnyPatterns;
-
   /// List of expressions which will be pattern matched in the query using the PostgreSQL ``NOT LIKE ALL`` operators.
   final pulumi.Input<List<String>>? notLikeAllPatterns;
-
   /// Expression which will be pattern matched in the query using the PostgreSQL ``~`` (regular expression match) operator.
   ///
   /// Note that all optional arguments can be used in conjunction.
@@ -57,31 +52,12 @@ class GetSchemasArgs {
   factory GetSchemasArgs.fromMap(Map<String, dynamic> map) {
     return GetSchemasArgs(
       database: pulumi.Input.fromValue(map['database'] as String),
-      includeSystemSchemas: (() {
-        final guardedValue = map['includeSystemSchemas'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      likeAllPatterns: (() {
-        final guardedValue = map['likeAllPatterns'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      likeAnyPatterns: (() {
-        final guardedValue = map['likeAnyPatterns'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      notLikeAllPatterns: (() {
-        final guardedValue = map['notLikeAllPatterns'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      regexPattern: (() {
-        final guardedValue = map['regexPattern'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      includeSystemSchemas: (() { final guardedValue = map['includeSystemSchemas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      likeAllPatterns: (() { final guardedValue = map['likeAllPatterns']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      likeAnyPatterns: (() { final guardedValue = map['likeAnyPatterns']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      notLikeAllPatterns: (() { final guardedValue = map['notLikeAllPatterns']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      regexPattern: (() { final guardedValue = map['regexPattern']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

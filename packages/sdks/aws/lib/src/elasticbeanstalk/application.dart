@@ -146,22 +146,16 @@ import 'application_state.dart';
 /// ```
 class Application extends pulumi.CustomResource {
   late final pulumi.Output<ApplicationAppversionLifecycle?> appversionLifecycle;
-
   /// The ARN assigned by AWS for this Elastic Beanstalk Application.
   late final pulumi.Output<String> arn;
-
   /// Short description of the application
   late final pulumi.Output<String?> description;
-
   /// The name of the application, must be unique within your account
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Key-value map of tags for the Elastic Beanstalk Application. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -174,21 +168,12 @@ class Application extends pulumi.CustomResource {
     ApplicationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:elasticbeanstalk/application:Application',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    appversionLifecycle = registerOutput<ApplicationAppversionLifecycle?>(
-      'appversionLifecycle',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApplicationAppversionLifecycle.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'aws:elasticbeanstalk/application:Application',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    appversionLifecycle = registerOutput<ApplicationAppversionLifecycle?>('appversionLifecycle', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationAppversionLifecycle.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
@@ -215,21 +200,12 @@ class Application extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:elasticbeanstalk/application:Application',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    appversionLifecycle = registerOutput<ApplicationAppversionLifecycle?>(
-      'appversionLifecycle',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApplicationAppversionLifecycle.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'aws:elasticbeanstalk/application:Application',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    appversionLifecycle = registerOutput<ApplicationAppversionLifecycle?>('appversionLifecycle', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationAppversionLifecycle.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');

@@ -1,18 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getResolverOutboundEndpoint.
 class GetResolverOutboundEndpointResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The Azure Region where the Private DNS Resolver Outbound Endpoint exists.
   final String location;
   final String name;
   final String privateDnsResolverId;
-
   /// The ID of the Subnet that is linked to the Private DNS Resolver Outbound Endpoint.
   final String subnetId;
-
   /// The tags assigned to the Private DNS Resolver Outbound Endpoint.
   final Map<String, String> tags;
 
@@ -54,3 +52,4 @@ class GetResolverOutboundEndpointResult {
     );
   }
 }
+

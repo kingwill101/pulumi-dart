@@ -9,21 +9,20 @@ class ClientCertificateConfigContainerV1beta1 {
 
   /// Creates a new [ClientCertificateConfigContainerV1beta1].
   /// [issueClientCertificate] Issue a client certificate.
-  ClientCertificateConfigContainerV1beta1({this.issueClientCertificate});
+  ClientCertificateConfigContainerV1beta1({
+    this.issueClientCertificate,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'issueClientCertificate': ?issueClientCertificate};
+    return <String, dynamic>{
+      'issueClientCertificate': ?issueClientCertificate,
+    };
   }
 
-  factory ClientCertificateConfigContainerV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClientCertificateConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return ClientCertificateConfigContainerV1beta1(
-      issueClientCertificate: (() {
-        final guardedValue = map['issueClientCertificate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      issueClientCertificate: (() { final guardedValue = map['issueClientCertificate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

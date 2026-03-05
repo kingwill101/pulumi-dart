@@ -9,10 +9,14 @@ class MapsAccountPropertiesLocations {
 
   /// Creates a new [MapsAccountPropertiesLocations].
   /// [locationName] The location name.
-  MapsAccountPropertiesLocations({required this.locationName});
+  MapsAccountPropertiesLocations({
+    required this.locationName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'locationName': locationName};
+    return <String, dynamic>{
+      'locationName': locationName,
+    };
   }
 
   factory MapsAccountPropertiesLocations.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class MapsAccountPropertiesLocations {
     );
   }
 }
+

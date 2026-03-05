@@ -35,16 +35,11 @@ class GetExternalAddressArgs {
 
   factory GetExternalAddressArgs.fromMap(Map<String, dynamic> map) {
     return GetExternalAddressArgs(
-      externalAddressId: pulumi.Input.fromValue(
-        map['externalAddressId'] as String,
-      ),
+      externalAddressId: pulumi.Input.fromValue(map['externalAddressId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
       privateCloudId: pulumi.Input.fromValue(map['privateCloudId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

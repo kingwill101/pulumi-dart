@@ -6,33 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReferenceDataSetKeyPropertyResponse {
   /// The name of the key property.
   final pulumi.Input<String>? name;
-
   /// The type of the key property.
   final pulumi.Input<String>? type;
 
   /// Creates a new [ReferenceDataSetKeyPropertyResponse].
   /// [name] The name of the key property.
   /// [type] The type of the key property.
-  ReferenceDataSetKeyPropertyResponse({this.name, this.type});
+  ReferenceDataSetKeyPropertyResponse({
+    this.name,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name, 'type': ?type};
+    return <String, dynamic>{
+      'name': ?name,
+      'type': ?type,
+    };
   }
 
-  factory ReferenceDataSetKeyPropertyResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ReferenceDataSetKeyPropertyResponse.fromMap(Map<String, dynamic> map) {
     return ReferenceDataSetKeyPropertyResponse(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

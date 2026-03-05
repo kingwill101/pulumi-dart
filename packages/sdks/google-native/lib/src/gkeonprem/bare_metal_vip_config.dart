@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BareMetalVipConfig {
   /// The VIP which you previously set aside for the Kubernetes API of this bare metal user cluster.
   final pulumi.Input<String>? controlPlaneVip;
-
   /// The VIP which you previously set aside for ingress traffic into this bare metal user cluster.
   final pulumi.Input<String>? ingressVip;
 
   /// Creates a new [BareMetalVipConfig].
   /// [controlPlaneVip] The VIP which you previously set aside for the Kubernetes API of this bare metal user cluster.
   /// [ingressVip] The VIP which you previously set aside for ingress traffic into this bare metal user cluster.
-  BareMetalVipConfig({this.controlPlaneVip, this.ingressVip});
+  BareMetalVipConfig({
+    this.controlPlaneVip,
+    this.ingressVip,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class BareMetalVipConfig {
 
   factory BareMetalVipConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalVipConfig(
-      controlPlaneVip: (() {
-        final guardedValue = map['controlPlaneVip'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ingressVip: (() {
-        final guardedValue = map['ingressVip'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      controlPlaneVip: (() { final guardedValue = map['controlPlaneVip']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ingressVip: (() { final guardedValue = map['ingressVip']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

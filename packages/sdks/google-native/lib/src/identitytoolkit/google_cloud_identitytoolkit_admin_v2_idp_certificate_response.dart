@@ -14,14 +14,15 @@ class GoogleCloudIdentitytoolkitAdminV2IdpCertificateResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'x509Certificate': x509Certificate};
+    return <String, dynamic>{
+      'x509Certificate': x509Certificate,
+    };
   }
 
-  factory GoogleCloudIdentitytoolkitAdminV2IdpCertificateResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudIdentitytoolkitAdminV2IdpCertificateResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIdentitytoolkitAdminV2IdpCertificateResponse(
       x509Certificate: pulumi.Input.fromValue(map['x509Certificate'] as String),
     );
   }
 }
+

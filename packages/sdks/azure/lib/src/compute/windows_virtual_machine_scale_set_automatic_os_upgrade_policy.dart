@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WindowsVirtualMachineScaleSetAutomaticOsUpgradePolicy {
   /// Should automatic rollbacks be disabled?
   final pulumi.Input<bool> disableAutomaticRollback;
-
   /// Should OS Upgrades automatically be applied to Scale Set instances in a rolling fashion when a newer version of the OS Image becomes available?
   final pulumi.Input<bool> enableAutomaticOsUpgrade;
 
@@ -24,16 +23,11 @@ class WindowsVirtualMachineScaleSetAutomaticOsUpgradePolicy {
     };
   }
 
-  factory WindowsVirtualMachineScaleSetAutomaticOsUpgradePolicy.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WindowsVirtualMachineScaleSetAutomaticOsUpgradePolicy.fromMap(Map<String, dynamic> map) {
     return WindowsVirtualMachineScaleSetAutomaticOsUpgradePolicy(
-      disableAutomaticRollback: pulumi.Input.fromValue(
-        map['disableAutomaticRollback'] as bool,
-      ),
-      enableAutomaticOsUpgrade: pulumi.Input.fromValue(
-        map['enableAutomaticOsUpgrade'] as bool,
-      ),
+      disableAutomaticRollback: pulumi.Input.fromValue(map['disableAutomaticRollback'] as bool),
+      enableAutomaticOsUpgrade: pulumi.Input.fromValue(map['enableAutomaticOsUpgrade'] as bool),
     );
   }
 }
+

@@ -10,31 +10,25 @@ class RemediationArgs {
   /// The account Group ID.
   /// For more information about how to obtain the account group ID, see ListAggregators.
   final pulumi.Input<String> aggregatorId;
-
   /// The rule ID.
   /// For more information about how to obtain the rule ID, see [ListAggregateConfigRules].
   final pulumi.Input<String> configRuleId;
-
   /// Correction of execution mode. Value:
   /// - NON_EXECUTION: Not executed.
   /// - AUTO_EXECUTION: Automatically executed.
   /// - MANUAL_EXECUTION: Execute manually.
   /// - NOT_CONFIG: Not set.
   final pulumi.Input<String> invokeType;
-
   /// Correct the parameters of the settings.
   /// For more information about how to obtain the parameters of remediation settings, see the parameter 'Template definition' in ListRemediationTemplates '.
   final pulumi.Input<String> remediationOriginParams;
-
   /// The source of the template to perform the correction. Value:
   /// - ALIYUN (default): Official website template.
   /// - CUSTOM: CUSTOM template.
   /// - NONE: NONE.
   final pulumi.Input<String>? remediationSourceType;
-
   /// The ID of the correction template.
   final pulumi.Input<String> remediationTemplateId;
-
   /// Remediation type. Value:
   /// - OOS: Operation and maintenance orchestration (Template correction).
   /// - FC: Function Compute (custom correction).
@@ -75,18 +69,11 @@ class RemediationArgs {
       aggregatorId: pulumi.Input.fromValue(map['aggregatorId'] as String),
       configRuleId: pulumi.Input.fromValue(map['configRuleId'] as String),
       invokeType: pulumi.Input.fromValue(map['invokeType'] as String),
-      remediationOriginParams: pulumi.Input.fromValue(
-        map['remediationOriginParams'] as String,
-      ),
-      remediationSourceType: (() {
-        final guardedValue = map['remediationSourceType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      remediationTemplateId: pulumi.Input.fromValue(
-        map['remediationTemplateId'] as String,
-      ),
+      remediationOriginParams: pulumi.Input.fromValue(map['remediationOriginParams'] as String),
+      remediationSourceType: (() { final guardedValue = map['remediationSourceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      remediationTemplateId: pulumi.Input.fromValue(map['remediationTemplateId'] as String),
       remediationType: pulumi.Input.fromValue(map['remediationType'] as String),
     );
   }
 }
+

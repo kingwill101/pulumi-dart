@@ -250,25 +250,18 @@ import 'router_vpc_association_state.dart';
 class RouterVpcAssociation extends pulumi.CustomResource {
   /// The list of allowed route prefixes.
   late final pulumi.Output<List<String>?> allowedPrefixes;
-
   /// The ID of the association between the ECR and the VPC.
   late final pulumi.Output<String> associationId;
-
   /// The region ID of the resource to be associated.
   late final pulumi.Output<String> associationRegionId;
-
   /// The time when the association was created.
   late final pulumi.Output<String> createTime;
-
   /// The ECR ID.
   late final pulumi.Output<String> ecrId;
-
   /// The deployment state of the associated resource.
   late final pulumi.Output<String> status;
-
   /// The VPC ID.
   late final pulumi.Output<String> vpcId;
-
   /// The ID of the Alibaba Cloud account that owns the VPC.
   /// &gt; **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpc_owner_id` is required.
   late final pulumi.Output<int> vpcOwnerId;
@@ -282,11 +275,11 @@ class RouterVpcAssociation extends pulumi.CustomResource {
     RouterVpcAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:expressconnect/routerVpcAssociation:RouterVpcAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:expressconnect/routerVpcAssociation:RouterVpcAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allowedPrefixes = registerOutput<List<String>?>('allowedPrefixes');
     associationId = registerOutput<String>('associationId');
     associationRegionId = registerOutput<String>('associationRegionId');
@@ -315,11 +308,11 @@ class RouterVpcAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:expressconnect/routerVpcAssociation:RouterVpcAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:expressconnect/routerVpcAssociation:RouterVpcAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allowedPrefixes = registerOutput<List<String>?>('allowedPrefixes');
     associationId = registerOutput<String>('associationId');
     associationRegionId = registerOutput<String>('associationRegionId');

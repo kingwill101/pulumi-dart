@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudAiplatformV1NfsMountResponse {
   /// Destination mount path. The NFS will be mounted for the user under /mnt/nfs/
   final pulumi.Input<String> mountPoint;
-
   /// Source path exported from NFS server. Has to start with '/', and combined with the ip address, it indicates the source mount path in the form of `server:path`
   final pulumi.Input<String> path;
-
   /// IP address of the NFS server.
   final pulumi.Input<String> server;
 
@@ -31,9 +29,7 @@ class GoogleCloudAiplatformV1NfsMountResponse {
     };
   }
 
-  factory GoogleCloudAiplatformV1NfsMountResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudAiplatformV1NfsMountResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1NfsMountResponse(
       mountPoint: pulumi.Input.fromValue(map['mountPoint'] as String),
       path: pulumi.Input.fromValue(map['path'] as String),
@@ -41,3 +37,4 @@ class GoogleCloudAiplatformV1NfsMountResponse {
     );
   }
 }
+

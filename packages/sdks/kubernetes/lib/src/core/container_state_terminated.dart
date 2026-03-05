@@ -6,22 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContainerStateTerminated {
   /// Container's ID in the format '&lt;type&gt;://&lt;container_id&gt;'
   final pulumi.Input<String>? containerID;
-
   /// Exit status from the last termination of the container
   final pulumi.Input<int> exitCode;
-
   /// Time at which the container last terminated
   final pulumi.Input<String>? finishedAt;
-
   /// Message regarding the last termination of the container
   final pulumi.Input<String>? message;
-
   /// (brief) reason from the last termination of the container
   final pulumi.Input<String>? reason;
-
   /// Signal from the last termination of the container
   final pulumi.Input<int>? signal;
-
   /// Time at which previous execution of the container started
   final pulumi.Input<String>? startedAt;
 
@@ -57,37 +51,14 @@ class ContainerStateTerminated {
 
   factory ContainerStateTerminated.fromMap(Map<String, dynamic> map) {
     return ContainerStateTerminated(
-      containerID: (() {
-        final guardedValue = map['containerID'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      containerID: (() { final guardedValue = map['containerID']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       exitCode: pulumi.Input.fromValue(map['exitCode'] as int),
-      finishedAt: (() {
-        final guardedValue = map['finishedAt'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      message: (() {
-        final guardedValue = map['message'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      reason: (() {
-        final guardedValue = map['reason'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      signal: (() {
-        final guardedValue = map['signal'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      startedAt: (() {
-        final guardedValue = map['startedAt'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      finishedAt: (() { final guardedValue = map['finishedAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      message: (() { final guardedValue = map['message']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      reason: (() { final guardedValue = map['reason']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      signal: (() { final guardedValue = map['signal']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      startedAt: (() { final guardedValue = map['startedAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

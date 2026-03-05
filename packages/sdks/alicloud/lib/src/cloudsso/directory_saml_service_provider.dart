@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DirectorySamlServiceProvider {
   /// ACS URL of SP.
   final pulumi.Input<String>? acsUrl;
-
   /// Signature algorithms supported by AuthNRequest
   final pulumi.Input<String>? authnSignAlgo;
-
   /// Type of certificate used for signing in the SSO process
   final pulumi.Input<String>? certificateType;
-
   /// SP metadata document (Base64 encoding).
   final pulumi.Input<String>? encodedMetadataDocument;
-
   /// SP identity.
   final pulumi.Input<String>? entityId;
-
   /// Whether IdP-side encryption of Assertion is supported.
   final pulumi.Input<bool>? supportEncryptedAssertion;
 
@@ -50,36 +45,13 @@ class DirectorySamlServiceProvider {
 
   factory DirectorySamlServiceProvider.fromMap(Map<String, dynamic> map) {
     return DirectorySamlServiceProvider(
-      acsUrl: (() {
-        final guardedValue = map['acsUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      authnSignAlgo: (() {
-        final guardedValue = map['authnSignAlgo'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      certificateType: (() {
-        final guardedValue = map['certificateType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      encodedMetadataDocument: (() {
-        final guardedValue = map['encodedMetadataDocument'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      entityId: (() {
-        final guardedValue = map['entityId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      supportEncryptedAssertion: (() {
-        final guardedValue = map['supportEncryptedAssertion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      acsUrl: (() { final guardedValue = map['acsUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      authnSignAlgo: (() { final guardedValue = map['authnSignAlgo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      certificateType: (() { final guardedValue = map['certificateType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      encodedMetadataDocument: (() { final guardedValue = map['encodedMetadataDocument']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      entityId: (() { final guardedValue = map['entityId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      supportEncryptedAssertion: (() { final guardedValue = map['supportEncryptedAssertion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

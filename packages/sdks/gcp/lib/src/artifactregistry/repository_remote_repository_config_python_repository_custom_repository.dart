@@ -8,21 +8,20 @@ class RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository {
 
   /// Creates a new [RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository].
   /// [uri] Specific uri to the registry, e.g. `"https://pypi.io"`
-  RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository({this.uri});
+  RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository({
+    this.uri,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'uri': ?uri};
+    return <String, dynamic>{
+      'uri': ?uri,
+    };
   }
 
-  factory RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository.fromMap(Map<String, dynamic> map) {
     return RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository(
-      uri: (() {
-        final guardedValue = map['uri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      uri: (() { final guardedValue = map['uri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

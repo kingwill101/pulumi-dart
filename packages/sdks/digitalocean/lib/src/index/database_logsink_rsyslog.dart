@@ -671,37 +671,26 @@ import 'database_logsink_rsyslog_state.dart';
 class DatabaseLogsinkRsyslog extends pulumi.CustomResource {
   /// CA certificate for TLS verification in PEM format. Can be specified using `file()` function.
   late final pulumi.Output<String?> caCert;
-
   /// Client certificate for mutual TLS authentication in PEM format. **Note**: Requires `tls` to be `true`.
   late final pulumi.Output<String?> clientCert;
-
   /// Client private key for mutual TLS authentication in PEM format. **Note**: Requires `tls` to be `true`. This field is marked as sensitive.
   late final pulumi.Output<String?> clientKey;
-
   /// UUID of the source database cluster that will forward logs.
   late final pulumi.Output<String> clusterId;
-
   /// Log format to use. Must be one of `rfc5424` (default), `rfc3164`, or `custom`.
   late final pulumi.Output<String?> format;
-
   /// Custom logline template. **Required** when `format` is set to `custom`. Supports rsyslog-style templating with the following tokens: `%HOSTNAME%`, `%app-name%`, `%msg%`, `%msgid%`, `%pri%`, `%procid%`, `%structured-data%`, `%timestamp%`, and `%timestamp:::date-rfc3339%`.
   late final pulumi.Output<String?> logline;
-
   /// The unique identifier for the logsink as returned by the DigitalOcean API.
   late final pulumi.Output<String> logsinkId;
-
   /// Display name for the logsink. **Note**: This is immutable; changing it will force recreation of the resource.
   late final pulumi.Output<String> name;
-
   /// Port number for the rsyslog server. Must be between 1 and 65535.
   late final pulumi.Output<int> port;
-
   /// Hostname or IP address of the rsyslog server.
   late final pulumi.Output<String> server;
-
   /// Content of the structured data block for RFC5424 messages.
   late final pulumi.Output<String?> structuredData;
-
   /// Enable TLS encryption for the rsyslog connection. Defaults to `false`. **Note**: It is highly recommended to enable TLS as log messages may contain sensitive information.
   late final pulumi.Output<bool?> tls;
 
@@ -714,11 +703,11 @@ class DatabaseLogsinkRsyslog extends pulumi.CustomResource {
     DatabaseLogsinkRsyslogArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/databaseLogsinkRsyslog:DatabaseLogsinkRsyslog',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/databaseLogsinkRsyslog:DatabaseLogsinkRsyslog',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     caCert = registerOutput<String?>('caCert');
     clientCert = registerOutput<String?>('clientCert');
     clientKey = registerOutput<String?>('clientKey');
@@ -751,11 +740,11 @@ class DatabaseLogsinkRsyslog extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/databaseLogsinkRsyslog:DatabaseLogsinkRsyslog',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/databaseLogsinkRsyslog:DatabaseLogsinkRsyslog',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     caCert = registerOutput<String?>('caCert');
     clientCert = registerOutput<String?>('clientCert');
     clientKey = registerOutput<String?>('clientKey');

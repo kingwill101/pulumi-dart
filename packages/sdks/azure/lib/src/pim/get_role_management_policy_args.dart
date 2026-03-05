@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRoleManagementPolicyArgs {
   /// The scoped Role Definition ID of the role for which this policy applies.
   final pulumi.Input<String> roleDefinitionId;
-
   /// The scope to which this Role Management Policy applies. Can refer to a management group, a subscription, a resource group or a resource.
   final pulumi.Input<String> scope;
 
@@ -30,10 +29,9 @@ class GetRoleManagementPolicyArgs {
 
   factory GetRoleManagementPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetRoleManagementPolicyArgs(
-      roleDefinitionId: pulumi.Input.fromValue(
-        map['roleDefinitionId'] as String,
-      ),
+      roleDefinitionId: pulumi.Input.fromValue(map['roleDefinitionId'] as String),
       scope: pulumi.Input.fromValue(map['scope'] as String),
     );
   }
 }
+

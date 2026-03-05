@@ -10,17 +10,20 @@ class AmlTokenComputeIdentity {
 
   /// Creates a new [AmlTokenComputeIdentity].
   /// [computeIdentityType] Monitor compute identity type enum.
-  AmlTokenComputeIdentity({required this.computeIdentityType});
+  AmlTokenComputeIdentity({
+    required this.computeIdentityType,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'computeIdentityType': computeIdentityType};
+    return <String, dynamic>{
+      'computeIdentityType': computeIdentityType,
+    };
   }
 
   factory AmlTokenComputeIdentity.fromMap(Map<String, dynamic> map) {
     return AmlTokenComputeIdentity(
-      computeIdentityType: pulumi.Input.fromValue(
-        map['computeIdentityType'] as String,
-      ),
+      computeIdentityType: pulumi.Input.fromValue(map['computeIdentityType'] as String),
     );
   }
 }
+

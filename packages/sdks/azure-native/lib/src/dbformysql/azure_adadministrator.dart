@@ -165,28 +165,20 @@ import 'system_data_response.dart';
 class AzureADAdministrator extends pulumi.CustomResource {
   /// Type of the sever administrator.
   late final pulumi.Output<String?> administratorType;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The resource id of the identity used for AAD Authentication.
   late final pulumi.Output<String?> identityResourceId;
-
   /// Login name of the server administrator.
   late final pulumi.Output<String?> login;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// SID (object ID) of the server administrator.
   late final pulumi.Output<String?> sid;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Tenant ID of the administrator.
   late final pulumi.Output<String?> tenantId;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -199,27 +191,18 @@ class AzureADAdministrator extends pulumi.CustomResource {
     AzureADAdministratorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:dbformysql:AzureADAdministrator',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:dbformysql:AzureADAdministrator',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     administratorType = registerOutput<String?>('administratorType');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     identityResourceId = registerOutput<String?>('identityResourceId');
     login = registerOutput<String?>('login');
     this.name = registerOutput<String>('name');
     sid = registerOutput<String?>('sid');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tenantId = registerOutput<String?>('tenantId');
     type = registerOutput<String>('type');
   }

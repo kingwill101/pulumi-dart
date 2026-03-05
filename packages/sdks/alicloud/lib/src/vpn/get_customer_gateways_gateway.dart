@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCustomerGatewaysGateway {
   /// The autonomous system number of the local data center gateway device of the VPN customer gateway.
   final pulumi.Input<int> asn;
-
   /// The creation time of the VPN customer gateway.
   final pulumi.Input<String> createTime;
-
   /// The description of the VPN customer gateway.
   final pulumi.Input<String> description;
-
   /// ID of the VPN customer gateway .
   final pulumi.Input<String> id;
-
   /// The ip address of the VPN customer gateway.
   final pulumi.Input<String> ipAddress;
-
   /// The name of the VPN customer gateway.
   final pulumi.Input<String> name;
 
@@ -59,3 +54,4 @@ class GetCustomerGatewaysGateway {
     );
   }
 }
+

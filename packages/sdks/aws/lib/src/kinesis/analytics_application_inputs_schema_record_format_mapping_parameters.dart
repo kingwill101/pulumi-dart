@@ -7,17 +7,10 @@ import 'analytics_application_inputs_schema_record_format_mapping_parameters_jso
 class AnalyticsApplicationInputsSchemaRecordFormatMappingParameters {
   /// Mapping information when the record format uses delimiters.
   /// See CSV Mapping Parameters below for more details.
-  final pulumi.Input<
-    AnalyticsApplicationInputsSchemaRecordFormatMappingParametersCsv
-  >?
-  csv;
-
+  final pulumi.Input<AnalyticsApplicationInputsSchemaRecordFormatMappingParametersCsv>? csv;
   /// Mapping information when JSON is the record format on the streaming source.
   /// See JSON Mapping Parameters below for more details.
-  final pulumi.Input<
-    AnalyticsApplicationInputsSchemaRecordFormatMappingParametersJson
-  >?
-  json;
+  final pulumi.Input<AnalyticsApplicationInputsSchemaRecordFormatMappingParametersJson>? json;
 
   /// Creates a new [AnalyticsApplicationInputsSchemaRecordFormatMappingParameters].
   /// [csv] Mapping information when the record format uses delimiters.
@@ -29,41 +22,16 @@ class AnalyticsApplicationInputsSchemaRecordFormatMappingParameters {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'csv':
-          ?pulumi.Input.mapOptionalInputValue<
-            AnalyticsApplicationInputsSchemaRecordFormatMappingParametersCsv,
-            Map<String, dynamic>
-          >(csv, (value) => value.toMap()),
-      'json':
-          ?pulumi.Input.mapOptionalInputValue<
-            AnalyticsApplicationInputsSchemaRecordFormatMappingParametersJson,
-            Map<String, dynamic>
-          >(json, (value) => value.toMap()),
+      'csv': ?pulumi.Input.mapOptionalInputValue<AnalyticsApplicationInputsSchemaRecordFormatMappingParametersCsv, Map<String, dynamic>>(csv, (value) => value.toMap()),
+      'json': ?pulumi.Input.mapOptionalInputValue<AnalyticsApplicationInputsSchemaRecordFormatMappingParametersJson, Map<String, dynamic>>(json, (value) => value.toMap()),
     };
   }
 
-  factory AnalyticsApplicationInputsSchemaRecordFormatMappingParameters.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AnalyticsApplicationInputsSchemaRecordFormatMappingParameters.fromMap(Map<String, dynamic> map) {
     return AnalyticsApplicationInputsSchemaRecordFormatMappingParameters(
-      csv: (() {
-        final guardedValue = map['csv'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AnalyticsApplicationInputsSchemaRecordFormatMappingParametersCsv.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      json: (() {
-        final guardedValue = map['json'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AnalyticsApplicationInputsSchemaRecordFormatMappingParametersJson.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      csv: (() { final guardedValue = map['csv']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AnalyticsApplicationInputsSchemaRecordFormatMappingParametersCsv.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      json: (() { final guardedValue = map['json']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AnalyticsApplicationInputsSchemaRecordFormatMappingParametersJson.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

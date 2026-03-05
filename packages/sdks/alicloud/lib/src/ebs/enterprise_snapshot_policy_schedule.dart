@@ -8,10 +8,14 @@ class EnterpriseSnapshotPolicySchedule {
 
   /// Creates a new [EnterpriseSnapshotPolicySchedule].
   /// [cronExpression] CronTab expression.
-  EnterpriseSnapshotPolicySchedule({required this.cronExpression});
+  EnterpriseSnapshotPolicySchedule({
+    required this.cronExpression,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'cronExpression': cronExpression};
+    return <String, dynamic>{
+      'cronExpression': cronExpression,
+    };
   }
 
   factory EnterpriseSnapshotPolicySchedule.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class EnterpriseSnapshotPolicySchedule {
     );
   }
 }
+

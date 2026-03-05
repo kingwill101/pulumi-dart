@@ -16,3 +16,4 @@ enum AzureEnvironmentType {
     throw ArgumentError('Unknown AzureEnvironmentType value: $value');
   }
 }
+

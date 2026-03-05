@@ -16,15 +16,17 @@ class GetManagedRuleGroupRuleActionCaptchaCustomRequestHandlingInsertHeader {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'value': value};
+    return <String, dynamic>{
+      'name': name,
+      'value': value,
+    };
   }
 
-  factory GetManagedRuleGroupRuleActionCaptchaCustomRequestHandlingInsertHeader.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetManagedRuleGroupRuleActionCaptchaCustomRequestHandlingInsertHeader.fromMap(Map<String, dynamic> map) {
     return GetManagedRuleGroupRuleActionCaptchaCustomRequestHandlingInsertHeader(
       name: pulumi.Input.fromValue(map['name'] as String),
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
+

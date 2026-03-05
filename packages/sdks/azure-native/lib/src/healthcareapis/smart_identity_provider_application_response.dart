@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SmartIdentityProviderApplicationResponse {
   /// The actions that are permitted to be performed on FHIR resources for the application.
   final pulumi.Input<List<String>>? allowedDataActions;
-
   /// The audience that will be used to validate bearer tokens against the given authority.
   final pulumi.Input<String>? audience;
-
   /// The application client id defined in the identity provider. This value will be used to validate bearer tokens against the given authority.
   final pulumi.Input<String>? clientId;
 
@@ -31,25 +29,12 @@ class SmartIdentityProviderApplicationResponse {
     };
   }
 
-  factory SmartIdentityProviderApplicationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SmartIdentityProviderApplicationResponse.fromMap(Map<String, dynamic> map) {
     return SmartIdentityProviderApplicationResponse(
-      allowedDataActions: (() {
-        final guardedValue = map['allowedDataActions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      audience: (() {
-        final guardedValue = map['audience'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      clientId: (() {
-        final guardedValue = map['clientId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      allowedDataActions: (() { final guardedValue = map['allowedDataActions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      audience: (() { final guardedValue = map['audience']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      clientId: (() { final guardedValue = map['clientId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

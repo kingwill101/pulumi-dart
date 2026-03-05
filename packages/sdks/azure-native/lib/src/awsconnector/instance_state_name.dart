@@ -19,3 +19,4 @@ enum InstanceStateName {
     throw ArgumentError('Unknown InstanceStateName value: $value');
   }
 }
+

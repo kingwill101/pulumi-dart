@@ -22,31 +22,16 @@ class DiagnosticSettingMetric {
     return <String, dynamic>{
       'category': category,
       'enabled': ?enabled,
-      'retentionPolicy':
-          ?pulumi.Input.mapOptionalInputValue<
-            DiagnosticSettingMetricRetentionPolicy,
-            Map<String, dynamic>
-          >(retentionPolicy, (value) => value.toMap()),
+      'retentionPolicy': ?pulumi.Input.mapOptionalInputValue<DiagnosticSettingMetricRetentionPolicy, Map<String, dynamic>>(retentionPolicy, (value) => value.toMap()),
     };
   }
 
   factory DiagnosticSettingMetric.fromMap(Map<String, dynamic> map) {
     return DiagnosticSettingMetric(
       category: pulumi.Input.fromValue(map['category'] as String),
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      retentionPolicy: (() {
-        final guardedValue = map['retentionPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DiagnosticSettingMetricRetentionPolicy.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      retentionPolicy: (() { final guardedValue = map['retentionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DiagnosticSettingMetricRetentionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

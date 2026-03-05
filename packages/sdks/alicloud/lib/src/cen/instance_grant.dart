@@ -270,10 +270,8 @@ import 'instance_grant_state.dart';
 class InstanceGrant extends pulumi.CustomResource {
   /// The ID of the CEN.
   late final pulumi.Output<String> cenId;
-
   /// The owner UID of the  CEN which the child instance granted to.
   late final pulumi.Output<String> cenOwnerId;
-
   /// The ID of the child instance to grant.
   late final pulumi.Output<String> childInstanceId;
 
@@ -286,11 +284,11 @@ class InstanceGrant extends pulumi.CustomResource {
     InstanceGrantArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cen/instanceGrant:InstanceGrant',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cen/instanceGrant:InstanceGrant',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cenId = registerOutput<String>('cenId');
     cenOwnerId = registerOutput<String>('cenOwnerId');
     childInstanceId = registerOutput<String>('childInstanceId');
@@ -314,11 +312,11 @@ class InstanceGrant extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cen/instanceGrant:InstanceGrant',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cen/instanceGrant:InstanceGrant',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cenId = registerOutput<String>('cenId');
     cenOwnerId = registerOutput<String>('cenOwnerId');
     childInstanceId = registerOutput<String>('childInstanceId');

@@ -20,22 +20,15 @@ class ResourceStatusResponseComputeV1 {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'physicalHost': physicalHost,
-      'upcomingMaintenance':
-          pulumi.Input.mapInputValue<
-            UpcomingMaintenanceResponseComputeV1,
-            Map<String, dynamic>
-          >(upcomingMaintenance, (value) => value.toMap()),
+      'upcomingMaintenance': pulumi.Input.mapInputValue<UpcomingMaintenanceResponseComputeV1, Map<String, dynamic>>(upcomingMaintenance, (value) => value.toMap()),
     };
   }
 
   factory ResourceStatusResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return ResourceStatusResponseComputeV1(
       physicalHost: pulumi.Input.fromValue(map['physicalHost'] as String),
-      upcomingMaintenance: pulumi.Input.fromValue(
-        UpcomingMaintenanceResponseComputeV1.fromMap(
-          (map['upcomingMaintenance']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      upcomingMaintenance: pulumi.Input.fromValue(UpcomingMaintenanceResponseComputeV1.fromMap((map['upcomingMaintenance']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

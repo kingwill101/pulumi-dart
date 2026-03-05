@@ -8,17 +8,20 @@ class GetPlacementGroupMigrationsOutbound {
 
   /// Creates a new [GetPlacementGroupMigrationsOutbound].
   /// [linodeId] The ID of the Linode.
-  GetPlacementGroupMigrationsOutbound({required this.linodeId});
+  GetPlacementGroupMigrationsOutbound({
+    required this.linodeId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'linodeId': linodeId};
+    return <String, dynamic>{
+      'linodeId': linodeId,
+    };
   }
 
-  factory GetPlacementGroupMigrationsOutbound.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetPlacementGroupMigrationsOutbound.fromMap(Map<String, dynamic> map) {
     return GetPlacementGroupMigrationsOutbound(
       linodeId: pulumi.Input.fromValue(map['linodeId'] as int),
     );
   }
 }
+

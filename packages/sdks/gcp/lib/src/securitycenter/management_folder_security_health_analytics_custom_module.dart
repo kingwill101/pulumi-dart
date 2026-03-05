@@ -570,44 +570,32 @@ import 'management_folder_security_health_analytics_custom_module_state.dart';
 /// ```sh
 /// $ pulumi import gcp:securitycenter/managementFolderSecurityHealthAnalyticsCustomModule:ManagementFolderSecurityHealthAnalyticsCustomModule default {{folder}}/{{location}}/{{name}}
 /// ```
-class ManagementFolderSecurityHealthAnalyticsCustomModule
-    extends pulumi.CustomResource {
+class ManagementFolderSecurityHealthAnalyticsCustomModule extends pulumi.CustomResource {
   /// If empty, indicates that the custom module was created in the organization, folder,
   /// or project in which you are viewing the custom module. Otherwise, ancestor_module
   /// specifies the organization or folder from which the custom module is inherited.
   late final pulumi.Output<String> ancestorModule;
-
   /// The user specified custom configuration for the module.
   /// Structure is documented below.
-  late final pulumi.Output<
-    ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfig?
-  >
-  customConfig;
-
+  late final pulumi.Output<ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfig?> customConfig;
   /// The display name of the Security Health Analytics custom module. This
   /// display name becomes the finding category for all findings that are
   /// returned by this custom module. The display name must be between 1 and
   /// 128 characters, start with a lowercase letter, and contain alphanumeric
   /// characters or underscores only.
   late final pulumi.Output<String?> displayName;
-
   /// The enablement state of the custom module.
   /// Possible values are: `ENABLED`, `DISABLED`.
   late final pulumi.Output<String?> enablementState;
-
   /// Numerical ID of the parent folder.
   late final pulumi.Output<String> folder;
-
   /// The editor that last updated the custom module.
   late final pulumi.Output<String> lastEditor;
-
   /// Location ID of the parent organization. If not provided, 'global' will be used as the default location.
   late final pulumi.Output<String?> location;
-
   /// The resource name of the custom module. Its format is "folders/{folder}/locations/{location}/securityHealthAnalyticsCustomModules/{securityHealthAnalyticsCustomModule}".
   /// The id {securityHealthAnalyticsCustomModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
   late final pulumi.Output<String> name;
-
   /// The time at which the custom module was last updated.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
   /// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -622,25 +610,13 @@ class ManagementFolderSecurityHealthAnalyticsCustomModule
     ManagementFolderSecurityHealthAnalyticsCustomModuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:securitycenter/managementFolderSecurityHealthAnalyticsCustomModule:ManagementFolderSecurityHealthAnalyticsCustomModule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:securitycenter/managementFolderSecurityHealthAnalyticsCustomModule:ManagementFolderSecurityHealthAnalyticsCustomModule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     ancestorModule = registerOutput<String>('ancestorModule');
-    customConfig =
-        registerOutput<
-          ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfig?
-        >(
-          'customConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    customConfig = registerOutput<ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfig?>('customConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     displayName = registerOutput<String?>('displayName');
     enablementState = registerOutput<String?>('enablementState');
     folder = registerOutput<String>('folder');
@@ -668,25 +644,13 @@ class ManagementFolderSecurityHealthAnalyticsCustomModule
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:securitycenter/managementFolderSecurityHealthAnalyticsCustomModule:ManagementFolderSecurityHealthAnalyticsCustomModule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:securitycenter/managementFolderSecurityHealthAnalyticsCustomModule:ManagementFolderSecurityHealthAnalyticsCustomModule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     ancestorModule = registerOutput<String>('ancestorModule');
-    customConfig =
-        registerOutput<
-          ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfig?
-        >(
-          'customConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    customConfig = registerOutput<ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfig?>('customConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     displayName = registerOutput<String?>('displayName');
     enablementState = registerOutput<String?>('enablementState');
     folder = registerOutput<String>('folder');

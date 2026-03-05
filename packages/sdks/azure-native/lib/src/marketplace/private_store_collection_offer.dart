@@ -164,46 +164,32 @@ import 'system_data_response.dart';
 class PrivateStoreCollectionOffer extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Private store offer creation date
   late final pulumi.Output<String> createdAt;
-
   /// Identifier for purposes of race condition
   late final pulumi.Output<String?> eTag;
-
   /// Icon File Uris
   late final pulumi.Output<Map<String, String>?> iconFileUris;
-
   /// Private store offer modification date
   late final pulumi.Output<String> modifiedAt;
-
   /// The name of the resource.
   late final pulumi.Output<String> name;
-
   /// It will be displayed prominently in the marketplace
   late final pulumi.Output<String> offerDisplayName;
-
   /// Offer plans
   late final pulumi.Output<List<Map<String, dynamic>>?> plans;
-
   /// Private store unique id
   late final pulumi.Output<String> privateStoreId;
-
   /// Publisher name that will be displayed prominently in the marketplace
   late final pulumi.Output<String> publisherDisplayName;
-
   /// Plan ids limitation for this offer
   late final pulumi.Output<List<String>?> specificPlanIdsLimitation;
-
   /// Metadata pertaining to creation and last modification of the resource
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource.
   late final pulumi.Output<String> type;
-
   /// Offers unique id
   late final pulumi.Output<String> uniqueOfferId;
-
   /// Indicating whether the offer was not updated to db (true = not updated). If the allow list is identical to the existed one in db, the offer would not be updated.
   late final pulumi.Output<bool?> updateSuppressedDueIdempotence;
 
@@ -216,11 +202,11 @@ class PrivateStoreCollectionOffer extends pulumi.CustomResource {
     PrivateStoreCollectionOfferArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:marketplace:PrivateStoreCollectionOffer',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:marketplace:PrivateStoreCollectionOffer',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createdAt = registerOutput<String>('createdAt');
     eTag = registerOutput<String?>('eTag');
@@ -231,23 +217,10 @@ class PrivateStoreCollectionOffer extends pulumi.CustomResource {
     plans = registerOutput<List<Map<String, dynamic>>?>('plans');
     privateStoreId = registerOutput<String>('privateStoreId');
     publisherDisplayName = registerOutput<String>('publisherDisplayName');
-    specificPlanIdsLimitation = registerOutput<List<String>?>(
-      'specificPlanIdsLimitation',
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    specificPlanIdsLimitation = registerOutput<List<String>?>('specificPlanIdsLimitation');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     uniqueOfferId = registerOutput<String>('uniqueOfferId');
-    updateSuppressedDueIdempotence = registerOutput<bool?>(
-      'updateSuppressedDueIdempotence',
-    );
+    updateSuppressedDueIdempotence = registerOutput<bool?>('updateSuppressedDueIdempotence');
   }
 }

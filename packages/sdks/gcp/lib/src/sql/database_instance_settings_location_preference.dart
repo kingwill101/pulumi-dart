@@ -6,10 +6,8 @@ class DatabaseInstanceSettingsLocationPreference {
   /// A GAE application whose zone to remain
   /// in. Must be in the same region as this instance.
   final pulumi.Input<String>? followGaeApplication;
-
   /// The preferred Compute Engine zone for the secondary/failover.
   final pulumi.Input<String>? secondaryZone;
-
   /// The preferred compute engine
   /// [zone](https://cloud.google.com/compute/docs/zones?hl=en).
   final pulumi.Input<String>? zone;
@@ -32,25 +30,12 @@ class DatabaseInstanceSettingsLocationPreference {
     };
   }
 
-  factory DatabaseInstanceSettingsLocationPreference.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DatabaseInstanceSettingsLocationPreference.fromMap(Map<String, dynamic> map) {
     return DatabaseInstanceSettingsLocationPreference(
-      followGaeApplication: (() {
-        final guardedValue = map['followGaeApplication'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      secondaryZone: (() {
-        final guardedValue = map['secondaryZone'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      zone: (() {
-        final guardedValue = map['zone'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      followGaeApplication: (() { final guardedValue = map['followGaeApplication']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      secondaryZone: (() { final guardedValue = map['secondaryZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      zone: (() { final guardedValue = map['zone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

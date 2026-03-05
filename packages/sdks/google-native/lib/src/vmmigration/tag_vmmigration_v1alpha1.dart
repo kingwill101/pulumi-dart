@@ -6,31 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TagVmmigrationV1alpha1 {
   /// Key of tag.
   final pulumi.Input<String>? key;
-
   /// Value of tag.
   final pulumi.Input<String>? value;
 
   /// Creates a new [TagVmmigrationV1alpha1].
   /// [key] Key of tag.
   /// [value] Value of tag.
-  TagVmmigrationV1alpha1({this.key, this.value});
+  TagVmmigrationV1alpha1({
+    this.key,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': ?key, 'value': ?value};
+    return <String, dynamic>{
+      'key': ?key,
+      'value': ?value,
+    };
   }
 
   factory TagVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
     return TagVmmigrationV1alpha1(
-      key: (() {
-        final guardedValue = map['key'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IotEventHubIngestionEndpointConfiguration {
   /// Consumer group of the event hub to connected to.
   final pulumi.Input<String>? consumerGroup;
-
   /// Event Hub name to connect to.
   final pulumi.Input<String>? eventHubName;
-
   /// Fully qualified namespace of the Event Hub to connect to.
   final pulumi.Input<String>? fullyQualifiedEventHubNamespace;
 
@@ -31,25 +29,12 @@ class IotEventHubIngestionEndpointConfiguration {
     };
   }
 
-  factory IotEventHubIngestionEndpointConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory IotEventHubIngestionEndpointConfiguration.fromMap(Map<String, dynamic> map) {
     return IotEventHubIngestionEndpointConfiguration(
-      consumerGroup: (() {
-        final guardedValue = map['consumerGroup'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      eventHubName: (() {
-        final guardedValue = map['eventHubName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      fullyQualifiedEventHubNamespace: (() {
-        final guardedValue = map['fullyQualifiedEventHubNamespace'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      consumerGroup: (() { final guardedValue = map['consumerGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      eventHubName: (() { final guardedValue = map['eventHubName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      fullyQualifiedEventHubNamespace: (() { final guardedValue = map['fullyQualifiedEventHubNamespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

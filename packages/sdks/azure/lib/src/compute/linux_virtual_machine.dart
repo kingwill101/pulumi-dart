@@ -496,198 +496,142 @@ import 'linux_virtual_machine_termination_notification.dart';
 /// ```
 class LinuxVirtualMachine extends pulumi.CustomResource {
   /// A `additional_capabilities` block as defined below.
-  late final pulumi.Output<LinuxVirtualMachineAdditionalCapabilities?>
-  additionalCapabilities;
-
+  late final pulumi.Output<LinuxVirtualMachineAdditionalCapabilities?> additionalCapabilities;
   /// The Password which should be used for the local-administrator on this Virtual Machine. Changing this forces a new resource to be created.
   ///
   /// &gt; **NOTE:** When an `admin_password` is specified `disable_password_authentication` must be set to `false`.
   /// &gt; **NOTE:** One of either `admin_password` or `admin_ssh_key` must be specified.
   late final pulumi.Output<String?> adminPassword;
-
   /// One or more `admin_ssh_key` blocks as defined below. Changing this forces a new resource to be created.
   ///
   /// &gt; **NOTE:** One of either `admin_password` or `admin_ssh_key` must be specified.
   late final pulumi.Output<List<Map<String, dynamic>>?> adminSshKeys;
-
   /// The username of the local administrator used for the Virtual Machine. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** This is required unless using an existing OS Managed Disk by specifying `os_managed_disk_id`.
   late final pulumi.Output<String?> adminUsername;
-
   /// Should Extension Operations be allowed on this Virtual Machine? Defaults to `true`.
   late final pulumi.Output<bool> allowExtensionOperations;
-
   /// Specifies the ID of the Availability Set in which the Virtual Machine should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> availabilitySetId;
-
   /// A `boot_diagnostics` block as defined below.
   late final pulumi.Output<LinuxVirtualMachineBootDiagnostics?> bootDiagnostics;
-
   /// Specifies whether to skip platform scheduled patching when a user schedule is associated with the VM. Defaults to `false`.
   ///
   /// &gt; **NOTE:** `bypass_platform_safety_checks_on_user_schedule_enabled` can only be set to `true` when `patch_mode` is set to `AutomaticByPlatform`.
-  late final pulumi.Output<bool?>
-  bypassPlatformSafetyChecksOnUserScheduleEnabled;
-
+  late final pulumi.Output<bool?> bypassPlatformSafetyChecksOnUserScheduleEnabled;
   /// Specifies the ID of the Capacity Reservation Group which the Virtual Machine should be allocated to.
   ///
   /// &gt; **NOTE:** `capacity_reservation_group_id` cannot be used with `availability_set_id` or `proximity_placement_group_id`
   late final pulumi.Output<String?> capacityReservationGroupId;
-
   /// Specifies the Hostname which should be used for this Virtual Machine. If unspecified this defaults to the value for the `name` field. If the value of the `name` field is not a valid `computer_name`, then you must specify `computer_name`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> computerName;
-
   /// The Base64-Encoded Custom Data which should be used for this Virtual Machine. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> customData;
-
   /// The ID of a Dedicated Host Group that this Linux Virtual Machine should be run within. Conflicts with `dedicated_host_id`.
   late final pulumi.Output<String?> dedicatedHostGroupId;
-
   /// The ID of a Dedicated Host where this machine should be run on. Conflicts with `dedicated_host_group_id`.
   late final pulumi.Output<String?> dedicatedHostId;
-
   /// Should Password Authentication be disabled on this Virtual Machine? Defaults to `true`. Changing this forces a new resource to be created.
   ///
   /// &gt; In general we'd recommend using SSH Keys for authentication rather than Passwords - but there's tradeoff's to each - please [see this thread for more information](https://security.stackexchange.com/questions/69407/why-is-using-an-ssh-key-more-secure-than-using-passwords).
   ///
   /// &gt; **NOTE:** When an `admin_password` is specified `disable_password_authentication` must be set to `false`.
   late final pulumi.Output<bool> disablePasswordAuthentication;
-
   /// Specifies the Disk Controller Type used for this Virtual Machine. Possible values are `SCSI` and `NVMe`.
   late final pulumi.Output<String> diskControllerType;
-
   /// Specifies the Edge Zone within the Azure Region where this Linux Virtual Machine should exist. Changing this forces a new Linux Virtual Machine to be created.
   late final pulumi.Output<String?> edgeZone;
-
   /// Should all of the disks (including the temp disk) attached to this Virtual Machine be encrypted by enabling Encryption at Host?
   late final pulumi.Output<bool?> encryptionAtHostEnabled;
-
   /// Specifies what should happen when the Virtual Machine is evicted for price reasons when using a Spot instance. Possible values are `Deallocate` and `Delete`. Changing this forces a new resource to be created.
   ///
   /// &gt; **NOTE:** This can only be configured when `priority` is set to `Spot`.
   late final pulumi.Output<String?> evictionPolicy;
-
   /// Specifies the duration allocated for all extensions to start. The time duration should be between 15 minutes and 120 minutes (inclusive) and should be specified in ISO 8601 format. Defaults to `PT1H30M`.
   late final pulumi.Output<String?> extensionsTimeBudget;
-
   /// One or more `gallery_application` blocks as defined below.
   ///
   /// &gt; **Note** Gallery Application Assignments can be defined either directly on `azure.compute.LinuxVirtualMachine` resource, or using the `azure.compute.GalleryApplicationAssignment` resource - but the two approaches cannot be used together. If both are used with the same Virtual Machine, spurious changes will occur. If `azure.compute.GalleryApplicationAssignment` is used, it's recommended to use `ignore_changes` for the `gallery_application` block on the corresponding `azure.compute.LinuxVirtualMachine` resource, to avoid a persistent diff when using this resource.
   late final pulumi.Output<List<Map<String, dynamic>>?> galleryApplications;
-
   /// An `identity` block as defined below.
   late final pulumi.Output<LinuxVirtualMachineIdentity?> identity;
-
   /// Specifies the License Type for this Virtual Machine. Possible values are `RHEL_BYOS`, `RHEL_BASE`, `RHEL_EUS`, `RHEL_SAPAPPS`, `RHEL_SAPHA`, `RHEL_BASESAPAPPS`, `RHEL_BASESAPHA`, `SLES_BYOS`, `SLES_SAP`, `SLES_HPC`, `UBUNTU_PRO`.
   late final pulumi.Output<String?> licenseType;
-
   /// The Azure location where the Linux Virtual Machine should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The maximum price you're willing to pay for this Virtual Machine, in US Dollars; which must be greater than the current spot price. If this bid price falls below the current spot price the Virtual Machine will be evicted using the `eviction_policy`. Defaults to `-1`, which means that the Virtual Machine should not be evicted for price reasons.
   ///
   /// &gt; **NOTE:** This can only be configured when `priority` is set to `Spot`.
   late final pulumi.Output<double?> maxBidPrice;
-
   /// The name of the Linux Virtual Machine. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// . A list of Network Interface IDs which should be attached to this Virtual Machine. The first Network Interface ID in this list will be the Primary Network Interface on the Virtual Machine.
   late final pulumi.Output<List<String>> networkInterfaceIds;
-
   /// A `os_disk` block as defined below.
   late final pulumi.Output<LinuxVirtualMachineOsDisk> osDisk;
-
   /// A `os_image_notification` block as defined below.
-  late final pulumi.Output<LinuxVirtualMachineOsImageNotification?>
-  osImageNotification;
-
+  late final pulumi.Output<LinuxVirtualMachineOsImageNotification?> osImageNotification;
   /// The ID of an existing Managed Disk to use as the OS Disk for this Linux Virtual Machine. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** When specifying an existing Managed Disk it is not currently possible to subsequently manage the Operating System Profile properties: `admin_username`, `admin_password`, `bypass_platform_safety_checks_on_user_schedule_enabled`, `computer_name`, `custom_data`, `provision_vm_agent`, `patch_mode`, `patch_assessment_mode`, or `reboot_setting`.
   late final pulumi.Output<String> osManagedDiskId;
-
   /// Specifies the mode of VM Guest Patching for the Virtual Machine. Possible values are `AutomaticByPlatform` or `ImageDefault`. Defaults to `ImageDefault`.
   ///
   /// &gt; **NOTE:** If the `patch_assessment_mode` is set to `AutomaticByPlatform` then the `provision_vm_agent` field must be set to `true`.
   late final pulumi.Output<String> patchAssessmentMode;
-
   /// Specifies the mode of in-guest patching to this Linux Virtual Machine. Possible values are `AutomaticByPlatform` and `ImageDefault`. Defaults to `ImageDefault`. For more information on patch modes please see the [product documentation](https://docs.microsoft.com/azure/virtual-machines/automatic-vm-guest-patching#patch-orchestration-modes).
   ///
   /// &gt; **NOTE:** If `patch_mode` is set to `AutomaticByPlatform` then `provision_vm_agent` must also be set to `true`.
   late final pulumi.Output<String> patchMode;
-
   /// A `plan` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<LinuxVirtualMachinePlan?> plan;
-
   /// Specifies the Platform Fault Domain in which this Linux Virtual Machine should be created. Defaults to `-1`, which means this will be automatically assigned to a fault domain that best maintains balance across the available fault domains. Changing this forces a new Linux Virtual Machine to be created.
   late final pulumi.Output<int?> platformFaultDomain;
-
   /// Specifies the priority of this Virtual Machine. Possible values are `Regular` and `Spot`. Defaults to `Regular`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> priority;
-
   /// The Primary Private IP Address assigned to this Virtual Machine.
   late final pulumi.Output<String> privateIpAddress;
-
   /// A list of Private IP Addresses assigned to this Virtual Machine.
   late final pulumi.Output<List<String>> privateIpAddresses;
-
   /// Should the Azure VM Agent be provisioned on this Virtual Machine? Defaults to `true`. Changing this forces a new resource to be created.
   ///
   /// &gt; **NOTE:** If `provision_vm_agent` is set to `false` then `allow_extension_operations` must also be set to `false`.
   late final pulumi.Output<bool> provisionVmAgent;
-
   /// The ID of the Proximity Placement Group which the Virtual Machine should be assigned to.
   late final pulumi.Output<String?> proximityPlacementGroupId;
-
   /// The Primary Public IP Address assigned to this Virtual Machine.
   late final pulumi.Output<String> publicIpAddress;
-
   /// A list of the Public IP Addresses assigned to this Virtual Machine.
   late final pulumi.Output<List<String>> publicIpAddresses;
-
   /// Specifies the reboot setting for platform scheduled patching. Possible values are `Always`, `IfRequired` and `Never`.
   ///
   /// &gt; **NOTE:** `reboot_setting` can only be set when `patch_mode` is set to `AutomaticByPlatform`.
   late final pulumi.Output<String?> rebootSetting;
-
   /// The name of the Resource Group in which the Linux Virtual Machine should be exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// One or more `secret` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> secrets;
-
   /// Specifies whether secure boot should be enabled on the virtual machine. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> secureBootEnabled;
-
   /// The SKU which should be used for this Virtual Machine, such as `Standard_F2`.
   late final pulumi.Output<String> size;
-
   /// The ID of the Image which this Virtual Machine should be created from. Changing this forces a new resource to be created. Possible Image ID types include `Image ID`s, `Shared Image ID`s, `Shared Image Version ID`s, `Community Gallery Image ID`s, `Community Gallery Image Version ID`s, `Shared Gallery Image ID`s and `Shared Gallery Image Version ID`s.
   ///
   /// &gt; **NOTE:** One of either `source_image_id` or `source_image_reference` must be set.
   late final pulumi.Output<String?> sourceImageId;
-
   /// A `source_image_reference` block as defined below. Changing this forces a new resource to be created.
   ///
   /// &gt; **NOTE:** One of either `source_image_id` or `source_image_reference` must be set.
-  late final pulumi.Output<LinuxVirtualMachineSourceImageReference?>
-  sourceImageReference;
-
+  late final pulumi.Output<LinuxVirtualMachineSourceImageReference?> sourceImageReference;
   /// A mapping of tags which should be assigned to this Virtual Machine.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A `termination_notification` block as defined below.
-  late final pulumi.Output<LinuxVirtualMachineTerminationNotification>
-  terminationNotification;
-
+  late final pulumi.Output<LinuxVirtualMachineTerminationNotification> terminationNotification;
   /// The Base64-Encoded User Data which should be used for this Virtual Machine.
   late final pulumi.Output<String?> userData;
-
   /// A 128-bit identifier which uniquely identifies this Virtual Machine.
   late final pulumi.Output<String> virtualMachineId;
-
   /// Specifies the Orchestrated Virtual Machine Scale Set that this Virtual Machine should be created within.
   ///
   /// &gt; **NOTE:** To update `virtual_machine_scale_set_id` the Preview Feature `Microsoft.Compute/SingleFDAttachDetachVMToVmss` needs to be enabled, see [the documentation](https://review.learn.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-attach-detach-vm#enroll-in-the-preview) for more information.
@@ -696,13 +640,10 @@ class LinuxVirtualMachine extends pulumi.CustomResource {
   ///
   /// &gt; **NOTE:** To attach an existing VM to a Virtual Machine Scale Set, the scale set must have `single_placement_group` set to `false`, see [the documentation](https://learn.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-attach-detach-vm?tabs=portal-1%2Cportal-2%2Cportal-3#limitations-for-attaching-an-existing-vm-to-a-scale-set) for more information.
   late final pulumi.Output<String?> virtualMachineScaleSetId;
-
   /// Specifies whether VMAgent Platform Updates is enabled. Defaults to `false`.
   late final pulumi.Output<bool> vmAgentPlatformUpdatesEnabled;
-
   /// Specifies whether vTPM should be enabled on the virtual machine. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> vtpmEnabled;
-
   /// Specifies the Availability Zones in which this Linux Virtual Machine should be located. Changing this forces a new Linux Virtual Machine to be created.
   late final pulumi.Output<String?> zone;
 
@@ -715,115 +656,49 @@ class LinuxVirtualMachine extends pulumi.CustomResource {
     LinuxVirtualMachineArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:compute/linuxVirtualMachine:LinuxVirtualMachine',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    additionalCapabilities =
-        registerOutput<LinuxVirtualMachineAdditionalCapabilities?>(
-          'additionalCapabilities',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return LinuxVirtualMachineAdditionalCapabilities.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'azure:compute/linuxVirtualMachine:LinuxVirtualMachine',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    additionalCapabilities = registerOutput<LinuxVirtualMachineAdditionalCapabilities?>('additionalCapabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineAdditionalCapabilities.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     adminPassword = registerOutput<String?>('adminPassword');
     adminSshKeys = registerOutput<List<Map<String, dynamic>>?>('adminSshKeys');
     adminUsername = registerOutput<String?>('adminUsername');
     allowExtensionOperations = registerOutput<bool>('allowExtensionOperations');
     availabilitySetId = registerOutput<String?>('availabilitySetId');
-    bootDiagnostics = registerOutput<LinuxVirtualMachineBootDiagnostics?>(
-      'bootDiagnostics',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LinuxVirtualMachineBootDiagnostics.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    bypassPlatformSafetyChecksOnUserScheduleEnabled = registerOutput<bool?>(
-      'bypassPlatformSafetyChecksOnUserScheduleEnabled',
-    );
-    capacityReservationGroupId = registerOutput<String?>(
-      'capacityReservationGroupId',
-    );
+    bootDiagnostics = registerOutput<LinuxVirtualMachineBootDiagnostics?>('bootDiagnostics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineBootDiagnostics.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    bypassPlatformSafetyChecksOnUserScheduleEnabled = registerOutput<bool?>('bypassPlatformSafetyChecksOnUserScheduleEnabled');
+    capacityReservationGroupId = registerOutput<String?>('capacityReservationGroupId');
     computerName = registerOutput<String>('computerName');
     customData = registerOutput<String?>('customData');
     dedicatedHostGroupId = registerOutput<String?>('dedicatedHostGroupId');
     dedicatedHostId = registerOutput<String?>('dedicatedHostId');
-    disablePasswordAuthentication = registerOutput<bool>(
-      'disablePasswordAuthentication',
-    );
+    disablePasswordAuthentication = registerOutput<bool>('disablePasswordAuthentication');
     diskControllerType = registerOutput<String>('diskControllerType');
     edgeZone = registerOutput<String?>('edgeZone');
     encryptionAtHostEnabled = registerOutput<bool?>('encryptionAtHostEnabled');
     evictionPolicy = registerOutput<String?>('evictionPolicy');
     extensionsTimeBudget = registerOutput<String?>('extensionsTimeBudget');
-    galleryApplications = registerOutput<List<Map<String, dynamic>>?>(
-      'galleryApplications',
-    );
-    identity = registerOutput<LinuxVirtualMachineIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LinuxVirtualMachineIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    galleryApplications = registerOutput<List<Map<String, dynamic>>?>('galleryApplications');
+    identity = registerOutput<LinuxVirtualMachineIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     licenseType = registerOutput<String?>('licenseType');
     location = registerOutput<String>('location');
     maxBidPrice = registerOutput<double?>('maxBidPrice');
     this.name = registerOutput<String>('name');
     networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds');
-    osDisk = registerOutput<LinuxVirtualMachineOsDisk>(
-      'osDisk',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LinuxVirtualMachineOsDisk.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    osImageNotification =
-        registerOutput<LinuxVirtualMachineOsImageNotification?>(
-          'osImageNotification',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return LinuxVirtualMachineOsImageNotification.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    osDisk = registerOutput<LinuxVirtualMachineOsDisk>('osDisk', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineOsDisk.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    osImageNotification = registerOutput<LinuxVirtualMachineOsImageNotification?>('osImageNotification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineOsImageNotification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     osManagedDiskId = registerOutput<String>('osManagedDiskId');
     patchAssessmentMode = registerOutput<String>('patchAssessmentMode');
     patchMode = registerOutput<String>('patchMode');
-    plan = registerOutput<LinuxVirtualMachinePlan?>(
-      'plan',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LinuxVirtualMachinePlan.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    plan = registerOutput<LinuxVirtualMachinePlan?>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachinePlan.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     platformFaultDomain = registerOutput<int?>('platformFaultDomain');
     priority = registerOutput<String?>('priority');
     privateIpAddress = registerOutput<String>('privateIpAddress');
     privateIpAddresses = registerOutput<List<String>>('privateIpAddresses');
     provisionVmAgent = registerOutput<bool>('provisionVmAgent');
-    proximityPlacementGroupId = registerOutput<String?>(
-      'proximityPlacementGroupId',
-    );
+    proximityPlacementGroupId = registerOutput<String?>('proximityPlacementGroupId');
     publicIpAddress = registerOutput<String>('publicIpAddress');
     publicIpAddresses = registerOutput<List<String>>('publicIpAddresses');
     rebootSetting = registerOutput<String?>('rebootSetting');
@@ -832,37 +707,13 @@ class LinuxVirtualMachine extends pulumi.CustomResource {
     secureBootEnabled = registerOutput<bool?>('secureBootEnabled');
     size = registerOutput<String>('size');
     sourceImageId = registerOutput<String?>('sourceImageId');
-    sourceImageReference =
-        registerOutput<LinuxVirtualMachineSourceImageReference?>(
-          'sourceImageReference',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return LinuxVirtualMachineSourceImageReference.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    sourceImageReference = registerOutput<LinuxVirtualMachineSourceImageReference?>('sourceImageReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineSourceImageReference.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
-    terminationNotification =
-        registerOutput<LinuxVirtualMachineTerminationNotification>(
-          'terminationNotification',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return LinuxVirtualMachineTerminationNotification.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    terminationNotification = registerOutput<LinuxVirtualMachineTerminationNotification>('terminationNotification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineTerminationNotification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     userData = registerOutput<String?>('userData');
     virtualMachineId = registerOutput<String>('virtualMachineId');
-    virtualMachineScaleSetId = registerOutput<String?>(
-      'virtualMachineScaleSetId',
-    );
-    vmAgentPlatformUpdatesEnabled = registerOutput<bool>(
-      'vmAgentPlatformUpdatesEnabled',
-    );
+    virtualMachineScaleSetId = registerOutput<String?>('virtualMachineScaleSetId');
+    vmAgentPlatformUpdatesEnabled = registerOutput<bool>('vmAgentPlatformUpdatesEnabled');
     vtpmEnabled = registerOutput<bool?>('vtpmEnabled');
     zone = registerOutput<String?>('zone');
   }
@@ -885,115 +736,49 @@ class LinuxVirtualMachine extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:compute/linuxVirtualMachine:LinuxVirtualMachine',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    additionalCapabilities =
-        registerOutput<LinuxVirtualMachineAdditionalCapabilities?>(
-          'additionalCapabilities',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return LinuxVirtualMachineAdditionalCapabilities.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'azure:compute/linuxVirtualMachine:LinuxVirtualMachine',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    additionalCapabilities = registerOutput<LinuxVirtualMachineAdditionalCapabilities?>('additionalCapabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineAdditionalCapabilities.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     adminPassword = registerOutput<String?>('adminPassword');
     adminSshKeys = registerOutput<List<Map<String, dynamic>>?>('adminSshKeys');
     adminUsername = registerOutput<String?>('adminUsername');
     allowExtensionOperations = registerOutput<bool>('allowExtensionOperations');
     availabilitySetId = registerOutput<String?>('availabilitySetId');
-    bootDiagnostics = registerOutput<LinuxVirtualMachineBootDiagnostics?>(
-      'bootDiagnostics',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LinuxVirtualMachineBootDiagnostics.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    bypassPlatformSafetyChecksOnUserScheduleEnabled = registerOutput<bool?>(
-      'bypassPlatformSafetyChecksOnUserScheduleEnabled',
-    );
-    capacityReservationGroupId = registerOutput<String?>(
-      'capacityReservationGroupId',
-    );
+    bootDiagnostics = registerOutput<LinuxVirtualMachineBootDiagnostics?>('bootDiagnostics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineBootDiagnostics.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    bypassPlatformSafetyChecksOnUserScheduleEnabled = registerOutput<bool?>('bypassPlatformSafetyChecksOnUserScheduleEnabled');
+    capacityReservationGroupId = registerOutput<String?>('capacityReservationGroupId');
     computerName = registerOutput<String>('computerName');
     customData = registerOutput<String?>('customData');
     dedicatedHostGroupId = registerOutput<String?>('dedicatedHostGroupId');
     dedicatedHostId = registerOutput<String?>('dedicatedHostId');
-    disablePasswordAuthentication = registerOutput<bool>(
-      'disablePasswordAuthentication',
-    );
+    disablePasswordAuthentication = registerOutput<bool>('disablePasswordAuthentication');
     diskControllerType = registerOutput<String>('diskControllerType');
     edgeZone = registerOutput<String?>('edgeZone');
     encryptionAtHostEnabled = registerOutput<bool?>('encryptionAtHostEnabled');
     evictionPolicy = registerOutput<String?>('evictionPolicy');
     extensionsTimeBudget = registerOutput<String?>('extensionsTimeBudget');
-    galleryApplications = registerOutput<List<Map<String, dynamic>>?>(
-      'galleryApplications',
-    );
-    identity = registerOutput<LinuxVirtualMachineIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LinuxVirtualMachineIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    galleryApplications = registerOutput<List<Map<String, dynamic>>?>('galleryApplications');
+    identity = registerOutput<LinuxVirtualMachineIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     licenseType = registerOutput<String?>('licenseType');
     location = registerOutput<String>('location');
     maxBidPrice = registerOutput<double?>('maxBidPrice');
     this.name = registerOutput<String>('name');
     networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds');
-    osDisk = registerOutput<LinuxVirtualMachineOsDisk>(
-      'osDisk',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LinuxVirtualMachineOsDisk.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    osImageNotification =
-        registerOutput<LinuxVirtualMachineOsImageNotification?>(
-          'osImageNotification',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return LinuxVirtualMachineOsImageNotification.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    osDisk = registerOutput<LinuxVirtualMachineOsDisk>('osDisk', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineOsDisk.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    osImageNotification = registerOutput<LinuxVirtualMachineOsImageNotification?>('osImageNotification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineOsImageNotification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     osManagedDiskId = registerOutput<String>('osManagedDiskId');
     patchAssessmentMode = registerOutput<String>('patchAssessmentMode');
     patchMode = registerOutput<String>('patchMode');
-    plan = registerOutput<LinuxVirtualMachinePlan?>(
-      'plan',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LinuxVirtualMachinePlan.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    plan = registerOutput<LinuxVirtualMachinePlan?>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachinePlan.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     platformFaultDomain = registerOutput<int?>('platformFaultDomain');
     priority = registerOutput<String?>('priority');
     privateIpAddress = registerOutput<String>('privateIpAddress');
     privateIpAddresses = registerOutput<List<String>>('privateIpAddresses');
     provisionVmAgent = registerOutput<bool>('provisionVmAgent');
-    proximityPlacementGroupId = registerOutput<String?>(
-      'proximityPlacementGroupId',
-    );
+    proximityPlacementGroupId = registerOutput<String?>('proximityPlacementGroupId');
     publicIpAddress = registerOutput<String>('publicIpAddress');
     publicIpAddresses = registerOutput<List<String>>('publicIpAddresses');
     rebootSetting = registerOutput<String?>('rebootSetting');
@@ -1002,37 +787,13 @@ class LinuxVirtualMachine extends pulumi.CustomResource {
     secureBootEnabled = registerOutput<bool?>('secureBootEnabled');
     size = registerOutput<String>('size');
     sourceImageId = registerOutput<String?>('sourceImageId');
-    sourceImageReference =
-        registerOutput<LinuxVirtualMachineSourceImageReference?>(
-          'sourceImageReference',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return LinuxVirtualMachineSourceImageReference.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    sourceImageReference = registerOutput<LinuxVirtualMachineSourceImageReference?>('sourceImageReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineSourceImageReference.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
-    terminationNotification =
-        registerOutput<LinuxVirtualMachineTerminationNotification>(
-          'terminationNotification',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return LinuxVirtualMachineTerminationNotification.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    terminationNotification = registerOutput<LinuxVirtualMachineTerminationNotification>('terminationNotification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineTerminationNotification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     userData = registerOutput<String?>('userData');
     virtualMachineId = registerOutput<String>('virtualMachineId');
-    virtualMachineScaleSetId = registerOutput<String?>(
-      'virtualMachineScaleSetId',
-    );
-    vmAgentPlatformUpdatesEnabled = registerOutput<bool>(
-      'vmAgentPlatformUpdatesEnabled',
-    );
+    virtualMachineScaleSetId = registerOutput<String?>('virtualMachineScaleSetId');
+    vmAgentPlatformUpdatesEnabled = registerOutput<bool>('vmAgentPlatformUpdatesEnabled');
     vtpmEnabled = registerOutput<bool?>('vtpmEnabled');
     zone = registerOutput<String?>('zone');
   }

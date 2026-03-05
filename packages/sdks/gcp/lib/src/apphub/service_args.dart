@@ -10,27 +10,20 @@ import 'service_attributes.dart';
 class ServiceArgs {
   /// Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
   final pulumi.Input<String> applicationId;
-
   /// Consumer provided attributes.
   /// Structure is documented below.
   final pulumi.Input<ServiceAttributes>? attributes;
-
   /// User-defined description of a Service.
   final pulumi.Input<String>? description;
-
   /// Immutable. The resource name of the original discovered service.
   final pulumi.Input<String> discoveredService;
-
   /// User-defined name for the Service.
   final pulumi.Input<String>? displayName;
-
   /// Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
   final pulumi.Input<String> location;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The Service identifier.
   final pulumi.Input<String> serviceId;
 
@@ -57,11 +50,7 @@ class ServiceArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'applicationId': applicationId,
-      'attributes':
-          ?pulumi.Input.mapOptionalInputValue<
-            ServiceAttributes,
-            Map<String, dynamic>
-          >(attributes, (value) => value.toMap()),
+      'attributes': ?pulumi.Input.mapOptionalInputValue<ServiceAttributes, Map<String, dynamic>>(attributes, (value) => value.toMap()),
       'description': ?description,
       'discoveredService': discoveredService,
       'displayName': ?displayName,
@@ -74,35 +63,14 @@ class ServiceArgs {
   factory ServiceArgs.fromMap(Map<String, dynamic> map) {
     return ServiceArgs(
       applicationId: pulumi.Input.fromValue(map['applicationId'] as String),
-      attributes: (() {
-        final guardedValue = map['attributes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ServiceAttributes.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      discoveredService: pulumi.Input.fromValue(
-        map['discoveredService'] as String,
-      ),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      attributes: (() { final guardedValue = map['attributes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceAttributes.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      discoveredService: pulumi.Input.fromValue(map['discoveredService'] as String),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serviceId: pulumi.Input.fromValue(map['serviceId'] as String),
     );
   }
 }
+

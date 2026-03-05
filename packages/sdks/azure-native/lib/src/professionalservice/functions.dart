@@ -7,8 +7,7 @@ import 'get_professional_service_subscription_level_result.dart';
 /// Uses Azure REST API version 2023-07-01-preview.
 /// [args] Arguments passed to this invoke. {@macro pulumi_professionalservice_get_professional_service_subscription_level_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetProfessionalServiceSubscriptionLevelResult>
-getProfessionalServiceSubscriptionLevel(
+Future<GetProfessionalServiceSubscriptionLevelResult> getProfessionalServiceSubscriptionLevel(
   GetProfessionalServiceSubscriptionLevelArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

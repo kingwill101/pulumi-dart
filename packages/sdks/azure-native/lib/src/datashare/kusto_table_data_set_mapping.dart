@@ -615,32 +615,23 @@ import 'system_data_response.dart';
 class KustoTableDataSetMapping extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The id of the source data set.
   late final pulumi.Output<String> dataSetId;
-
   /// Gets the status of the data set mapping.
   late final pulumi.Output<String> dataSetMappingStatus;
-
   /// Kind of data set mapping.
   /// Expected value is 'KustoTable'.
   late final pulumi.Output<String> kind;
-
   /// Resource id of the sink kusto cluster.
   late final pulumi.Output<String> kustoClusterResourceId;
-
   /// Location of the sink kusto cluster.
   late final pulumi.Output<String> location;
-
   /// Name of the azure resource
   late final pulumi.Output<String> name;
-
   /// Provisioning state of the data set mapping.
   late final pulumi.Output<String> provisioningState;
-
   /// System Data of the Azure resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Type of the azure resource
   late final pulumi.Output<String> type;
 
@@ -653,11 +644,11 @@ class KustoTableDataSetMapping extends pulumi.CustomResource {
     KustoTableDataSetMappingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:datashare:KustoTableDataSetMapping',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:datashare:KustoTableDataSetMapping',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     dataSetId = registerOutput<String>('dataSetId');
     dataSetMappingStatus = registerOutput<String>('dataSetMappingStatus');
@@ -666,16 +657,7 @@ class KustoTableDataSetMapping extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

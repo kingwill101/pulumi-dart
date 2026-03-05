@@ -15,3 +15,4 @@ enum Schedule {
     throw ArgumentError('Unknown Schedule value: $value');
   }
 }
+

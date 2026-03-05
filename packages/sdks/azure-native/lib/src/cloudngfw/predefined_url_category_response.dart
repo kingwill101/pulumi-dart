@@ -10,10 +10,16 @@ class PredefinedUrlCategoryResponse {
   /// Creates a new [PredefinedUrlCategoryResponse].
   /// [action] Required.
   /// [name] Required.
-  PredefinedUrlCategoryResponse({required this.action, required this.name});
+  PredefinedUrlCategoryResponse({
+    required this.action,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'action': action, 'name': name};
+    return <String, dynamic>{
+      'action': action,
+      'name': name,
+    };
   }
 
   factory PredefinedUrlCategoryResponse.fromMap(Map<String, dynamic> map) {
@@ -23,3 +29,4 @@ class PredefinedUrlCategoryResponse {
     );
   }
 }
+

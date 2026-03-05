@@ -226,33 +226,24 @@ class Container extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** When updating `container_access_type` for an existing storage container resource, Shared Key authentication will always be used, as AzureAD authentication is not supported.
   late final pulumi.Output<String?> containerAccessType;
-
   /// The default encryption scope to use for blobs uploaded to this container. Changing this forces a new resource to be created.
   late final pulumi.Output<String> defaultEncryptionScope;
-
   /// Whether to allow blobs to override the default encryption scope for this container. Can only be set when specifying `default_encryption_scope`. Defaults to `true`. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> encryptionScopeOverrideEnabled;
-
   /// Is there an Immutability Policy configured on this Storage Container?
   late final pulumi.Output<bool> hasImmutabilityPolicy;
-
   /// Is there a Legal Hold configured on this Storage Container?
   late final pulumi.Output<bool> hasLegalHold;
-
   /// A mapping of MetaData for this Container. All metadata keys should be lowercase.
   late final pulumi.Output<Map<String, String>> metadata;
-
   /// The name of the Container which should be created within the Storage Account. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The Resource Manager ID of this Storage Container.
   late final pulumi.Output<String> resourceManagerId;
-
   /// The name of the Storage Account where the Container should be created.
   ///
   /// &gt; **Note:** One of `storage_account_name` or `storage_account_id` must be specified. When specifying `storage_account_id` the resource will use the Resource Manager API, rather than the Data Plane API.
   late final pulumi.Output<String?> storageAccountId;
-
   /// The name of the Storage Account where the Container should be created. This property is deprecated in favour of `storage_account_id`.
   ///
   /// &gt; **Note:** Migrating from the deprecated `storage_account_name` to `storage_account_id` is supported without recreation. Any other change to either property will result in the resource being recreated.
@@ -267,16 +258,14 @@ class Container extends pulumi.CustomResource {
     ContainerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:storage/container:Container',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:storage/container:Container',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     containerAccessType = registerOutput<String?>('containerAccessType');
     defaultEncryptionScope = registerOutput<String>('defaultEncryptionScope');
-    encryptionScopeOverrideEnabled = registerOutput<bool?>(
-      'encryptionScopeOverrideEnabled',
-    );
+    encryptionScopeOverrideEnabled = registerOutput<bool?>('encryptionScopeOverrideEnabled');
     hasImmutabilityPolicy = registerOutput<bool>('hasImmutabilityPolicy');
     hasLegalHold = registerOutput<bool>('hasLegalHold');
     metadata = registerOutput<Map<String, String>>('metadata');
@@ -304,16 +293,14 @@ class Container extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:storage/container:Container',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:storage/container:Container',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     containerAccessType = registerOutput<String?>('containerAccessType');
     defaultEncryptionScope = registerOutput<String>('defaultEncryptionScope');
-    encryptionScopeOverrideEnabled = registerOutput<bool?>(
-      'encryptionScopeOverrideEnabled',
-    );
+    encryptionScopeOverrideEnabled = registerOutput<bool?>('encryptionScopeOverrideEnabled');
     hasImmutabilityPolicy = registerOutput<bool>('hasImmutabilityPolicy');
     hasLegalHold = registerOutput<bool>('hasLegalHold');
     metadata = registerOutput<Map<String, String>>('metadata');

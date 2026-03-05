@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetManagementAssociationArgs {
   /// User ManagementAssociation Name.
   final pulumi.Input<String> managementAssociationName;
-
   /// Provider name for the parent resource.
   final pulumi.Input<String> providerName;
-
   /// The name of the resource group to get. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Parent resource name.
   final pulumi.Input<String> resourceName;
-
   /// Resource type for the parent resource
   final pulumi.Input<String> resourceType;
 
@@ -48,15 +44,12 @@ class GetManagementAssociationArgs {
 
   factory GetManagementAssociationArgs.fromMap(Map<String, dynamic> map) {
     return GetManagementAssociationArgs(
-      managementAssociationName: pulumi.Input.fromValue(
-        map['managementAssociationName'] as String,
-      ),
+      managementAssociationName: pulumi.Input.fromValue(map['managementAssociationName'] as String),
       providerName: pulumi.Input.fromValue(map['providerName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
       resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
     );
   }
 }
+

@@ -17,17 +17,13 @@ enum SoftwareConfigOptionalComponentsItemDataprocV1beta2 {
   const SoftwareConfigOptionalComponentsItemDataprocV1beta2(this.wireValue);
   final String wireValue;
 
-  static SoftwareConfigOptionalComponentsItemDataprocV1beta2 fromValue(
-    String value,
-  ) {
-    for (final item
-        in SoftwareConfigOptionalComponentsItemDataprocV1beta2.values) {
+  static SoftwareConfigOptionalComponentsItemDataprocV1beta2 fromValue(String value) {
+    for (final item in SoftwareConfigOptionalComponentsItemDataprocV1beta2.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown SoftwareConfigOptionalComponentsItemDataprocV1beta2 value: $value',
-    );
+    throw ArgumentError('Unknown SoftwareConfigOptionalComponentsItemDataprocV1beta2 value: $value');
   }
 }
+

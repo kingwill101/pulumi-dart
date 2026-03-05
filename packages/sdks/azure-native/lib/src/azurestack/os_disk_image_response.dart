@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OsDiskImageResponse {
   /// OS operating system type.
   final pulumi.Input<String> operatingSystem;
-
   /// SAS key for source blob.
   final pulumi.Input<String> sourceBlobSasUri;
 
@@ -28,9 +27,8 @@ class OsDiskImageResponse {
   factory OsDiskImageResponse.fromMap(Map<String, dynamic> map) {
     return OsDiskImageResponse(
       operatingSystem: pulumi.Input.fromValue(map['operatingSystem'] as String),
-      sourceBlobSasUri: pulumi.Input.fromValue(
-        map['sourceBlobSasUri'] as String,
-      ),
+      sourceBlobSasUri: pulumi.Input.fromValue(map['sourceBlobSasUri'] as String),
     );
   }
 }
+

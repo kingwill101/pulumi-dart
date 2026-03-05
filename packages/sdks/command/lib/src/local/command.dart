@@ -646,10 +646,8 @@ class Command extends pulumi.CustomResource {
   /// injected into the environment of the next run as PULUMI_COMMAND_STDOUT and PULUMI_COMMAND_STDERR.
   /// Defaults to true.
   late final pulumi.Output<bool?> addPreviousOutputInEnv;
-
   /// An archive asset containing files found after running the command.
   late final pulumi.Output<dynamic> archive;
-
   /// A list of path globs to return as a single archive asset after the command completes.
   ///
   /// When specifying glob patterns the following rules apply:
@@ -689,7 +687,6 @@ class Command extends pulumi.CustomResource {
   /// - src/index.js
   /// ```
   late final pulumi.Output<List<String>?> archivePaths;
-
   /// A list of path globs to read after the command completes.
   ///
   /// When specifying glob patterns the following rules apply:
@@ -729,11 +726,9 @@ class Command extends pulumi.CustomResource {
   /// - src/index.js
   /// ```
   late final pulumi.Output<List<String>?> assetPaths;
-
   /// A map of assets found after running the command.
   /// The key is the relative path from the command dir
   late final pulumi.Output<Map<String, dynamic>?> assets;
-
   /// The command to run once on resource creation.
   ///
   /// If an `update` command isn't provided, then `create` will also be run when the resource's inputs are modified.
@@ -742,37 +737,28 @@ class Command extends pulumi.CustomResource {
   ///
   /// Use `local.runOutput` if you need to run a command on every execution of your program.
   late final pulumi.Output<String?> create;
-
   /// The command to run on resource delettion.
   ///
   /// The environment variables `PULUMI_COMMAND_STDOUT` and `PULUMI_COMMAND_STDERR` are set to the stdout and stderr properties of the Command resource from previous create or update steps.
   late final pulumi.Output<String?> delete;
-
   /// The directory from which to run the command from. If `dir` does not exist, then
   /// `Command` will fail.
   late final pulumi.Output<String?> dir;
-
   /// Additional environment variables available to the command's process.
   late final pulumi.Output<Map<String, String>?> environment;
-
   /// The program and arguments to run the command.
   /// On Linux and macOS, defaults to: `["/bin/sh", "-c"]`. On Windows, defaults to: `["cmd", "/C"]`
   late final pulumi.Output<List<String>?> interpreter;
-
   /// If the command's stdout and stderr should be logged. This doesn't affect the capturing of
   /// stdout and stderr as outputs. If there might be secrets in the output, you can disable logging here and mark the
   /// outputs as secret via 'additionalSecretOutputs'. Defaults to logging both stdout and stderr.
   late final pulumi.Output<Logging?> logging;
-
   /// The standard error of the command's process
   late final pulumi.Output<String> stderr;
-
   /// Pass a string to the command's process as standard in
   late final pulumi.Output<String?> stdin;
-
   /// The standard output of the command's process
   late final pulumi.Output<String> stdout;
-
   /// The resource will be updated (or replaced) if any of these values change.
   ///
   /// The trigger values can be of any type.
@@ -781,7 +767,6 @@ class Command extends pulumi.CustomResource {
   ///
   /// Please see the resource documentation for examples.
   late final pulumi.Output<List<Map<String, dynamic>>?> triggers;
-
   /// The command to run when the resource is updated.
   ///
   /// If empty, the create command will be executed instead.
@@ -802,11 +787,11 @@ class Command extends pulumi.CustomResource {
     CommandArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'command:local:Command',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'command:local:Command',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     addPreviousOutputInEnv = registerOutput<bool?>('addPreviousOutputInEnv');
     archive = registerOutput<dynamic>('archive');
     archivePaths = registerOutput<List<String>?>('archivePaths');
@@ -817,14 +802,7 @@ class Command extends pulumi.CustomResource {
     dir = registerOutput<String?>('dir');
     environment = registerOutput<Map<String, String>?>('environment');
     interpreter = registerOutput<List<String>?>('interpreter');
-    logging = registerOutput<Logging?>(
-      'logging',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return Logging.fromValue(guardedValue as String);
-      },
-    );
+    logging = registerOutput<Logging?>('logging', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Logging.fromValue(guardedValue as String); });
     stderr = registerOutput<String>('stderr');
     stdin = registerOutput<String?>('stdin');
     stdout = registerOutput<String>('stdout');

@@ -3582,75 +3582,53 @@ import 'spoke_state.dart';
 class Spoke extends pulumi.CustomResource {
   /// Output only. The time the spoke was created.
   late final pulumi.Output<String> createTime;
-
   /// An optional description of the spoke.
   late final pulumi.Output<String?> description;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// This is a gateway that can apply specialized processing to traffic going through it.
   /// Structure is documented below.
   late final pulumi.Output<SpokeGateway?> gateway;
-
   /// The name of the group that this spoke is associated with.
   late final pulumi.Output<String> group;
-
   /// Immutable. The URI of the hub that this spoke is attached to.
   late final pulumi.Output<String> hub;
-
   /// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
   /// Structure is documented below.
-  late final pulumi.Output<SpokeLinkedInterconnectAttachments?>
-  linkedInterconnectAttachments;
-
+  late final pulumi.Output<SpokeLinkedInterconnectAttachments?> linkedInterconnectAttachments;
   /// Producer VPC network that is associated with the spoke.
   /// Structure is documented below.
-  late final pulumi.Output<SpokeLinkedProducerVpcNetwork?>
-  linkedProducerVpcNetwork;
-
+  late final pulumi.Output<SpokeLinkedProducerVpcNetwork?> linkedProducerVpcNetwork;
   /// The URIs of linked Router appliance resources
   /// Structure is documented below.
-  late final pulumi.Output<SpokeLinkedRouterApplianceInstances?>
-  linkedRouterApplianceInstances;
-
+  late final pulumi.Output<SpokeLinkedRouterApplianceInstances?> linkedRouterApplianceInstances;
   /// VPC network that is associated with the spoke.
   /// Structure is documented below.
   late final pulumi.Output<SpokeLinkedVpcNetwork?> linkedVpcNetwork;
-
   /// The URIs of linked VPN tunnel resources
   /// Structure is documented below.
   late final pulumi.Output<SpokeLinkedVpnTunnels?> linkedVpnTunnels;
-
   /// The location for the resource
   late final pulumi.Output<String> location;
-
   /// Immutable. The name of the spoke. Spoke names must be unique.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// The reasons for the current state in the lifecycle
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> reasons;
-
   /// Output only. The current lifecycle state of this spoke.
   late final pulumi.Output<String> state;
-
   /// Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
   late final pulumi.Output<String> uniqueId;
-
   /// Output only. The time the spoke was last updated.
   late final pulumi.Output<String> updateTime;
 
@@ -3658,81 +3636,28 @@ class Spoke extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Spoke]. {@macro pulumi_networkconnectivity_spoke_spoke_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Spoke(String name, {SpokeArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'gcp:networkconnectivity/spoke:Spoke',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Spoke(
+    String name, {
+    SpokeArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'gcp:networkconnectivity/spoke:Spoke',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    gateway = registerOutput<SpokeGateway?>(
-      'gateway',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SpokeGateway.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    gateway = registerOutput<SpokeGateway?>('gateway', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpokeGateway.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     group = registerOutput<String>('group');
     hub = registerOutput<String>('hub');
     labels = registerOutput<Map<String, String>?>('labels');
-    linkedInterconnectAttachments =
-        registerOutput<SpokeLinkedInterconnectAttachments?>(
-          'linkedInterconnectAttachments',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SpokeLinkedInterconnectAttachments.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    linkedProducerVpcNetwork = registerOutput<SpokeLinkedProducerVpcNetwork?>(
-      'linkedProducerVpcNetwork',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SpokeLinkedProducerVpcNetwork.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    linkedRouterApplianceInstances =
-        registerOutput<SpokeLinkedRouterApplianceInstances?>(
-          'linkedRouterApplianceInstances',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SpokeLinkedRouterApplianceInstances.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    linkedVpcNetwork = registerOutput<SpokeLinkedVpcNetwork?>(
-      'linkedVpcNetwork',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SpokeLinkedVpcNetwork.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    linkedVpnTunnels = registerOutput<SpokeLinkedVpnTunnels?>(
-      'linkedVpnTunnels',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SpokeLinkedVpnTunnels.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    linkedInterconnectAttachments = registerOutput<SpokeLinkedInterconnectAttachments?>('linkedInterconnectAttachments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpokeLinkedInterconnectAttachments.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    linkedProducerVpcNetwork = registerOutput<SpokeLinkedProducerVpcNetwork?>('linkedProducerVpcNetwork', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpokeLinkedProducerVpcNetwork.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    linkedRouterApplianceInstances = registerOutput<SpokeLinkedRouterApplianceInstances?>('linkedRouterApplianceInstances', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpokeLinkedRouterApplianceInstances.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    linkedVpcNetwork = registerOutput<SpokeLinkedVpcNetwork?>('linkedVpcNetwork', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpokeLinkedVpcNetwork.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    linkedVpnTunnels = registerOutput<SpokeLinkedVpnTunnels?>('linkedVpnTunnels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpokeLinkedVpnTunnels.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -3744,7 +3669,11 @@ class Spoke extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Spoke] resource's state with the given [name] and [id].
-  static Spoke get(String name, pulumi.Input<String> id, {SpokeState? state}) {
+  static Spoke get(
+    String name,
+    pulumi.Input<String> id, {
+    SpokeState? state,
+  }) {
     return Spoke._get(
       name,
       state: state?.toMap(),
@@ -3757,79 +3686,23 @@ class Spoke extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:networkconnectivity/spoke:Spoke',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:networkconnectivity/spoke:Spoke',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    gateway = registerOutput<SpokeGateway?>(
-      'gateway',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SpokeGateway.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    gateway = registerOutput<SpokeGateway?>('gateway', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpokeGateway.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     group = registerOutput<String>('group');
     hub = registerOutput<String>('hub');
     labels = registerOutput<Map<String, String>?>('labels');
-    linkedInterconnectAttachments =
-        registerOutput<SpokeLinkedInterconnectAttachments?>(
-          'linkedInterconnectAttachments',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SpokeLinkedInterconnectAttachments.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    linkedProducerVpcNetwork = registerOutput<SpokeLinkedProducerVpcNetwork?>(
-      'linkedProducerVpcNetwork',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SpokeLinkedProducerVpcNetwork.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    linkedRouterApplianceInstances =
-        registerOutput<SpokeLinkedRouterApplianceInstances?>(
-          'linkedRouterApplianceInstances',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SpokeLinkedRouterApplianceInstances.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    linkedVpcNetwork = registerOutput<SpokeLinkedVpcNetwork?>(
-      'linkedVpcNetwork',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SpokeLinkedVpcNetwork.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    linkedVpnTunnels = registerOutput<SpokeLinkedVpnTunnels?>(
-      'linkedVpnTunnels',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SpokeLinkedVpnTunnels.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    linkedInterconnectAttachments = registerOutput<SpokeLinkedInterconnectAttachments?>('linkedInterconnectAttachments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpokeLinkedInterconnectAttachments.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    linkedProducerVpcNetwork = registerOutput<SpokeLinkedProducerVpcNetwork?>('linkedProducerVpcNetwork', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpokeLinkedProducerVpcNetwork.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    linkedRouterApplianceInstances = registerOutput<SpokeLinkedRouterApplianceInstances?>('linkedRouterApplianceInstances', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpokeLinkedRouterApplianceInstances.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    linkedVpcNetwork = registerOutput<SpokeLinkedVpcNetwork?>('linkedVpcNetwork', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpokeLinkedVpcNetwork.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    linkedVpnTunnels = registerOutput<SpokeLinkedVpnTunnels?>('linkedVpnTunnels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpokeLinkedVpnTunnels.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

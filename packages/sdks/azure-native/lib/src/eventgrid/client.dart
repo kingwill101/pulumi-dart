@@ -222,32 +222,22 @@ class Client extends pulumi.CustomResource {
   /// Example:
   /// "attributes": { "room": "345", "floor": 12, "deviceTypes": ["Fan", "Light"] }
   late final pulumi.Output<dynamic> attributes;
-
   /// The name presented by the client for authentication. The default value is the name of the resource.
   late final pulumi.Output<String?> authenticationName;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The client certificate authentication information.
-  late final pulumi.Output<ClientCertificateAuthenticationResponse?>
-  clientCertificateAuthentication;
-
+  late final pulumi.Output<ClientCertificateAuthenticationResponse?> clientCertificateAuthentication;
   /// Description for the Client resource.
   late final pulumi.Output<String?> description;
-
   /// Name of the resource.
   late final pulumi.Output<String> name;
-
   /// Provisioning state of the Client resource.
   late final pulumi.Output<String> provisioningState;
-
   /// Indicates if the client is enabled or not. Default value is Enabled.
   late final pulumi.Output<String?> state;
-
   /// The system metadata relating to the Event Grid resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Type of the resource.
   late final pulumi.Output<String> type;
 
@@ -255,41 +245,25 @@ class Client extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Client]. {@macro pulumi_eventgrid_client_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Client(String name, {ClientArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:eventgrid:Client',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Client(
+    String name, {
+    ClientArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:eventgrid:Client',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     attributes = registerOutput<dynamic>('attributes');
     authenticationName = registerOutput<String?>('authenticationName');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    clientCertificateAuthentication =
-        registerOutput<ClientCertificateAuthenticationResponse?>(
-          'clientCertificateAuthentication',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ClientCertificateAuthenticationResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    clientCertificateAuthentication = registerOutput<ClientCertificateAuthenticationResponse?>('clientCertificateAuthentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClientCertificateAuthenticationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     state = registerOutput<String?>('state');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

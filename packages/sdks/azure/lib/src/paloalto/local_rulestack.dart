@@ -157,31 +157,22 @@ import 'local_rulestack_state.dart';
 class LocalRulestack extends pulumi.CustomResource {
   /// The setting to use for Anti-Spyware. Possible values include `BestPractice`, and `Custom`.
   late final pulumi.Output<String?> antiSpywareProfile;
-
   /// The setting to use for Anti-Virus. Possible values include `BestPractice`, and `Custom`.
   late final pulumi.Output<String?> antiVirusProfile;
-
   /// The description for this Local Rulestack.
   late final pulumi.Output<String?> description;
-
   /// TThe setting to use for DNS Subscription. Possible values include `BestPractice`, and `Custom`.
   late final pulumi.Output<String?> dnsSubscription;
-
   /// The setting to use for the File Blocking Profile. Possible values include `BestPractice`, and `Custom`.
   late final pulumi.Output<String?> fileBlockingProfile;
-
   /// The Azure Region where the Palo Alto Networks Rulestack should exist. Changing this forces a new Palo Alto Networks Rulestack to be created.
   late final pulumi.Output<String> location;
-
   /// The name which should be used for this Palo Alto Networks Rulestack. Changing this forces a new Palo Alto Networks Rulestack to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the Resource Group where the Palo Alto Networks Rulestack should exist. Changing this forces a new Palo Alto Networks Rulestack to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The setting to use for the URL Filtering Profile. Possible values include `BestPractice`, and `Custom`.
   late final pulumi.Output<String?> urlFilteringProfile;
-
   /// The setting to use for the Vulnerability Profile. Possible values include `BestPractice`, and `Custom`.
   late final pulumi.Output<String?> vulnerabilityProfile;
 
@@ -194,11 +185,11 @@ class LocalRulestack extends pulumi.CustomResource {
     LocalRulestackArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:paloalto/localRulestack:LocalRulestack',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:paloalto/localRulestack:LocalRulestack',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     antiSpywareProfile = registerOutput<String?>('antiSpywareProfile');
     antiVirusProfile = registerOutput<String?>('antiVirusProfile');
     description = registerOutput<String?>('description');
@@ -229,11 +220,11 @@ class LocalRulestack extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:paloalto/localRulestack:LocalRulestack',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:paloalto/localRulestack:LocalRulestack',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     antiSpywareProfile = registerOutput<String?>('antiSpywareProfile');
     antiVirusProfile = registerOutput<String?>('antiVirusProfile');
     description = registerOutput<String?>('description');

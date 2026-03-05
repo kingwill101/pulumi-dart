@@ -432,37 +432,27 @@ import 'preset_video.dart';
 class Preset extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the Elastic Transcoder Preset.
   late final pulumi.Output<String> arn;
-
   /// Audio parameters object (documented below).
   late final pulumi.Output<PresetAudio?> audio;
-
   /// Codec options for the audio parameters (documented below)
   late final pulumi.Output<PresetAudioCodecOptions> audioCodecOptions;
-
   /// The container type for the output file. Valid values are `flac`, `flv`, `fmp4`, `gif`, `mp3`, `mp4`, `mpg`, `mxf`, `oga`, `ogg`, `ts`, and `webm`.
   late final pulumi.Output<String> container;
-
   /// A description of the preset (maximum 255 characters)
   late final pulumi.Output<String?> description;
-
   /// The name of the preset. (maximum 40 characters)
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Thumbnail parameters object (documented below)
   late final pulumi.Output<PresetThumbnails?> thumbnails;
   late final pulumi.Output<String> type;
-
   /// Video parameters object (documented below)
   late final pulumi.Output<PresetVideo?> video;
-
   /// Codec options for the video parameters
   ///
   /// See ["Create Preset"](http://docs.aws.amazon.com/elastictranscoder/latest/developerguide/create-preset.html) in the AWS docs for reference.
   late final pulumi.Output<Map<String, String>?> videoCodecOptions;
-
   /// Watermark parameters for the video parameters (documented below)
   late final pulumi.Output<List<Map<String, dynamic>>?> videoWatermarks;
 
@@ -470,65 +460,28 @@ class Preset extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Preset]. {@macro pulumi_elastictranscoder_preset_preset_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Preset(String name, {PresetArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:elastictranscoder/preset:Preset',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Preset(
+    String name, {
+    PresetArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:elastictranscoder/preset:Preset',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    audio = registerOutput<PresetAudio?>(
-      'audio',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PresetAudio.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    audioCodecOptions = registerOutput<PresetAudioCodecOptions>(
-      'audioCodecOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PresetAudioCodecOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    audio = registerOutput<PresetAudio?>('audio', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PresetAudio.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    audioCodecOptions = registerOutput<PresetAudioCodecOptions>('audioCodecOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PresetAudioCodecOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     container = registerOutput<String>('container');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    thumbnails = registerOutput<PresetThumbnails?>(
-      'thumbnails',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PresetThumbnails.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    thumbnails = registerOutput<PresetThumbnails?>('thumbnails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PresetThumbnails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
-    video = registerOutput<PresetVideo?>(
-      'video',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PresetVideo.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    videoCodecOptions = registerOutput<Map<String, String>?>(
-      'videoCodecOptions',
-    );
-    videoWatermarks = registerOutput<List<Map<String, dynamic>>?>(
-      'videoWatermarks',
-    );
+    video = registerOutput<PresetVideo?>('video', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PresetVideo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    videoCodecOptions = registerOutput<Map<String, String>?>('videoCodecOptions');
+    videoWatermarks = registerOutput<List<Map<String, dynamic>>?>('videoWatermarks');
   }
 
   /// Gets an existing [Preset] resource's state with the given [name] and [id].
@@ -549,62 +502,22 @@ class Preset extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:elastictranscoder/preset:Preset',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:elastictranscoder/preset:Preset',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    audio = registerOutput<PresetAudio?>(
-      'audio',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PresetAudio.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    audioCodecOptions = registerOutput<PresetAudioCodecOptions>(
-      'audioCodecOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PresetAudioCodecOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    audio = registerOutput<PresetAudio?>('audio', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PresetAudio.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    audioCodecOptions = registerOutput<PresetAudioCodecOptions>('audioCodecOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PresetAudioCodecOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     container = registerOutput<String>('container');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    thumbnails = registerOutput<PresetThumbnails?>(
-      'thumbnails',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PresetThumbnails.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    thumbnails = registerOutput<PresetThumbnails?>('thumbnails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PresetThumbnails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
-    video = registerOutput<PresetVideo?>(
-      'video',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PresetVideo.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    videoCodecOptions = registerOutput<Map<String, String>?>(
-      'videoCodecOptions',
-    );
-    videoWatermarks = registerOutput<List<Map<String, dynamic>>?>(
-      'videoWatermarks',
-    );
+    video = registerOutput<PresetVideo?>('video', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PresetVideo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    videoCodecOptions = registerOutput<Map<String, String>?>('videoCodecOptions');
+    videoWatermarks = registerOutput<List<Map<String, dynamic>>?>('videoWatermarks');
   }
 }

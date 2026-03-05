@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConfigurationProfilesVersionArgs {
   /// The configuration profile name.
   final pulumi.Input<String> configurationProfileName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The configuration profile version name.
   final pulumi.Input<String> versionName;
 
@@ -34,17 +32,12 @@ class GetConfigurationProfilesVersionArgs {
     };
   }
 
-  factory GetConfigurationProfilesVersionArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetConfigurationProfilesVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetConfigurationProfilesVersionArgs(
-      configurationProfileName: pulumi.Input.fromValue(
-        map['configurationProfileName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      configurationProfileName: pulumi.Input.fromValue(map['configurationProfileName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       versionName: pulumi.Input.fromValue(map['versionName'] as String),
     );
   }
 }
+

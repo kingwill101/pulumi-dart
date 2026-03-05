@@ -7,10 +7,8 @@ class AzureToAzureNetworkMappingSettingsResponse {
   /// Gets the Instance type.
   /// Expected value is 'AzureToAzure'.
   final pulumi.Input<String> instanceType;
-
   /// The primary fabric location.
   final pulumi.Input<String>? primaryFabricLocation;
-
   /// The recovery fabric location.
   final pulumi.Input<String>? recoveryFabricLocation;
 
@@ -32,21 +30,12 @@ class AzureToAzureNetworkMappingSettingsResponse {
     };
   }
 
-  factory AzureToAzureNetworkMappingSettingsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AzureToAzureNetworkMappingSettingsResponse.fromMap(Map<String, dynamic> map) {
     return AzureToAzureNetworkMappingSettingsResponse(
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
-      primaryFabricLocation: (() {
-        final guardedValue = map['primaryFabricLocation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      recoveryFabricLocation: (() {
-        final guardedValue = map['recoveryFabricLocation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      primaryFabricLocation: (() { final guardedValue = map['primaryFabricLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      recoveryFabricLocation: (() { final guardedValue = map['recoveryFabricLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

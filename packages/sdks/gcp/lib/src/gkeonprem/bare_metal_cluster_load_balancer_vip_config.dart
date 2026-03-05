@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BareMetalClusterLoadBalancerVipConfig {
   /// The VIP which you previously set aside for the Kubernetes API of this Bare Metal User Cluster.
   final pulumi.Input<String> controlPlaneVip;
-
   /// The VIP which you previously set aside for ingress traffic into this Bare Metal User Cluster.
   final pulumi.Input<String> ingressVip;
 
@@ -24,12 +23,11 @@ class BareMetalClusterLoadBalancerVipConfig {
     };
   }
 
-  factory BareMetalClusterLoadBalancerVipConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BareMetalClusterLoadBalancerVipConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalClusterLoadBalancerVipConfig(
       controlPlaneVip: pulumi.Input.fromValue(map['controlPlaneVip'] as String),
       ingressVip: pulumi.Input.fromValue(map['ingressVip'] as String),
     );
   }
 }
+

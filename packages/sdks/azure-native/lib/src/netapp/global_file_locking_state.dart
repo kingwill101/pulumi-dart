@@ -15,3 +15,4 @@ enum GlobalFileLockingState {
     throw ArgumentError('Unknown GlobalFileLockingState value: $value');
   }
 }
+

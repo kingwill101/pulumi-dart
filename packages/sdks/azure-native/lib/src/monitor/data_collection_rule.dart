@@ -637,60 +637,39 @@ import 'stream_declaration_response.dart';
 class DataCollectionRule extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The resource ID of the data collection endpoint that this rule can be used with.
   late final pulumi.Output<String?> dataCollectionEndpointId;
-
   /// The specification of data flows.
   late final pulumi.Output<List<Map<String, dynamic>>?> dataFlows;
-
   /// The specification of data sources.
   /// This property is optional and can be omitted if the rule is meant to be used via direct calls to the provisioned endpoint.
   late final pulumi.Output<DataCollectionRuleResponseDataSources?> dataSources;
-
   /// Description of the data collection rule.
   late final pulumi.Output<String?> description;
-
   /// The specification of destinations.
-  late final pulumi.Output<DataCollectionRuleResponseDestinations?>
-  destinations;
-
+  late final pulumi.Output<DataCollectionRuleResponseDestinations?> destinations;
   /// Resource entity tag (ETag).
   late final pulumi.Output<String> etag;
-
   /// Managed service identity of the resource.
-  late final pulumi.Output<DataCollectionRuleResourceResponseIdentity?>
-  identity;
-
+  late final pulumi.Output<DataCollectionRuleResourceResponseIdentity?> identity;
   /// The immutable ID of this data collection rule. This property is READ-ONLY.
   late final pulumi.Output<String> immutableId;
-
   /// The kind of the resource.
   late final pulumi.Output<String?> kind;
-
   /// The geo-location where the resource lives.
   late final pulumi.Output<String> location;
-
   /// Metadata about the resource
   late final pulumi.Output<DataCollectionRuleResponseMetadata> metadata;
-
   /// The name of the resource.
   late final pulumi.Output<String> name;
-
   /// The resource provisioning state.
   late final pulumi.Output<String> provisioningState;
-
   /// Declaration of custom streams used in this rule.
-  late final pulumi.Output<Map<String, StreamDeclarationResponse>?>
-  streamDeclarations;
-
+  late final pulumi.Output<Map<String, StreamDeclarationResponse>?> streamDeclarations;
   /// Metadata pertaining to creation and last modification of the resource.
-  late final pulumi.Output<DataCollectionRuleResourceResponseSystemData>
-  systemData;
-
+  late final pulumi.Output<DataCollectionRuleResourceResponseSystemData> systemData;
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource.
   late final pulumi.Output<String> type;
 
@@ -703,87 +682,27 @@ class DataCollectionRule extends pulumi.CustomResource {
     DataCollectionRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:monitor:DataCollectionRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:monitor:DataCollectionRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    dataCollectionEndpointId = registerOutput<String?>(
-      'dataCollectionEndpointId',
-    );
+    dataCollectionEndpointId = registerOutput<String?>('dataCollectionEndpointId');
     dataFlows = registerOutput<List<Map<String, dynamic>>?>('dataFlows');
-    dataSources = registerOutput<DataCollectionRuleResponseDataSources?>(
-      'dataSources',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DataCollectionRuleResponseDataSources.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    dataSources = registerOutput<DataCollectionRuleResponseDataSources?>('dataSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataCollectionRuleResponseDataSources.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
-    destinations = registerOutput<DataCollectionRuleResponseDestinations?>(
-      'destinations',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DataCollectionRuleResponseDestinations.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    destinations = registerOutput<DataCollectionRuleResponseDestinations?>('destinations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataCollectionRuleResponseDestinations.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
-    identity = registerOutput<DataCollectionRuleResourceResponseIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DataCollectionRuleResourceResponseIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<DataCollectionRuleResourceResponseIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataCollectionRuleResourceResponseIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     immutableId = registerOutput<String>('immutableId');
     kind = registerOutput<String?>('kind');
     location = registerOutput<String>('location');
-    metadata = registerOutput<DataCollectionRuleResponseMetadata>(
-      'metadata',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DataCollectionRuleResponseMetadata.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    metadata = registerOutput<DataCollectionRuleResponseMetadata>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataCollectionRuleResponseMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    streamDeclarations =
-        registerOutput<Map<String, StreamDeclarationResponse>?>(
-          'streamDeclarations',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return pulumi.Input.decodeMapValues<StreamDeclarationResponse>(
-              guardedValue,
-              (value) => StreamDeclarationResponse.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            );
-          },
-        );
-    systemData = registerOutput<DataCollectionRuleResourceResponseSystemData>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DataCollectionRuleResourceResponseSystemData.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    streamDeclarations = registerOutput<Map<String, StreamDeclarationResponse>?>('streamDeclarations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<StreamDeclarationResponse>(guardedValue, (value) => StreamDeclarationResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    systemData = registerOutput<DataCollectionRuleResourceResponseSystemData>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataCollectionRuleResourceResponseSystemData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

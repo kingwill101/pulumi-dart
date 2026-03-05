@@ -6,33 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecurityContextCapabilitiesDefinition {
   /// The capabilities to add to the container.
   final pulumi.Input<List<String>>? add;
-
   /// The capabilities to drop from the container.
   final pulumi.Input<List<String>>? drop;
 
   /// Creates a new [SecurityContextCapabilitiesDefinition].
   /// [add] The capabilities to add to the container.
   /// [drop] The capabilities to drop from the container.
-  SecurityContextCapabilitiesDefinition({this.add, this.drop});
+  SecurityContextCapabilitiesDefinition({
+    this.add,
+    this.drop,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'add': ?add, 'drop': ?drop};
+    return <String, dynamic>{
+      'add': ?add,
+      'drop': ?drop,
+    };
   }
 
-  factory SecurityContextCapabilitiesDefinition.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SecurityContextCapabilitiesDefinition.fromMap(Map<String, dynamic> map) {
     return SecurityContextCapabilitiesDefinition(
-      add: (() {
-        final guardedValue = map['add'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      drop: (() {
-        final guardedValue = map['drop'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      add: (() { final guardedValue = map['add']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      drop: (() { final guardedValue = map['drop']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

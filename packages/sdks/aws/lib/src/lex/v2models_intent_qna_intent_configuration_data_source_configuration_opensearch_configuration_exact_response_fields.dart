@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class V2modelsIntentQnaIntentConfigurationDataSourceConfigurationOpensearchConfigurationExactResponseFields {
   /// Field name for the answer.
   final pulumi.Input<String> answerField;
-
   /// Field name for the question.
   final pulumi.Input<String> questionField;
 
@@ -24,12 +23,11 @@ class V2modelsIntentQnaIntentConfigurationDataSourceConfigurationOpensearchConfi
     };
   }
 
-  factory V2modelsIntentQnaIntentConfigurationDataSourceConfigurationOpensearchConfigurationExactResponseFields.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2modelsIntentQnaIntentConfigurationDataSourceConfigurationOpensearchConfigurationExactResponseFields.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentQnaIntentConfigurationDataSourceConfigurationOpensearchConfigurationExactResponseFields(
       answerField: pulumi.Input.fromValue(map['answerField'] as String),
       questionField: pulumi.Input.fromValue(map['questionField'] as String),
     );
   }
 }
+

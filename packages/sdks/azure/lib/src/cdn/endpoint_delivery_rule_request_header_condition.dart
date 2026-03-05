@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EndpointDeliveryRuleRequestHeaderCondition {
   /// List of header values. This is required if `operator` is not `Any`.
   final pulumi.Input<List<String>>? matchValues;
-
   /// Defaults to `false`.
   final pulumi.Input<bool>? negateCondition;
-
   /// Valid values are `Any`, `BeginsWith`, `Contains`, `EndsWith`, `Equal`, `GreaterThan`, `GreaterThanOrEqual`, `LessThan` and `LessThanOrEqual`.
   final pulumi.Input<String> operator;
-
   /// Header name.
   final pulumi.Input<String> selector;
-
   /// A list of transforms. Valid values are `Lowercase` and `Uppercase`.
   final pulumi.Input<List<String>>? transforms;
 
@@ -42,27 +38,14 @@ class EndpointDeliveryRuleRequestHeaderCondition {
     };
   }
 
-  factory EndpointDeliveryRuleRequestHeaderCondition.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EndpointDeliveryRuleRequestHeaderCondition.fromMap(Map<String, dynamic> map) {
     return EndpointDeliveryRuleRequestHeaderCondition(
-      matchValues: (() {
-        final guardedValue = map['matchValues'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      negateCondition: (() {
-        final guardedValue = map['negateCondition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      matchValues: (() { final guardedValue = map['matchValues']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      negateCondition: (() { final guardedValue = map['negateCondition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       operator: pulumi.Input.fromValue(map['operator'] as String),
       selector: pulumi.Input.fromValue(map['selector'] as String),
-      transforms: (() {
-        final guardedValue = map['transforms'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      transforms: (() { final guardedValue = map['transforms']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

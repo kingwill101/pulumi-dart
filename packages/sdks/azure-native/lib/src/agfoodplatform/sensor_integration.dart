@@ -9,19 +9,20 @@ class SensorIntegration {
 
   /// Creates a new [SensorIntegration].
   /// [enabled] Sensor integration enable state.
-  SensorIntegration({this.enabled});
+  SensorIntegration({
+    this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': ?enabled};
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
   factory SensorIntegration.fromMap(Map<String, dynamic> map) {
     return SensorIntegration(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

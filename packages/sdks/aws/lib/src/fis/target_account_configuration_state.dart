@@ -6,18 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TargetAccountConfigurationState {
   /// Account ID of the target account.
   final pulumi.Input<String>? accountId;
-
   /// Description of the target account.
   final pulumi.Input<String>? description;
-
   /// Experiment Template ID.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? experimentTemplateId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// ARN of the IAM Role for the target account.
   final pulumi.Input<String>? roleArn;
 
@@ -47,31 +43,12 @@ class TargetAccountConfigurationState {
 
   factory TargetAccountConfigurationState.fromMap(Map<String, dynamic> map) {
     return TargetAccountConfigurationState(
-      accountId: (() {
-        final guardedValue = map['accountId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      experimentTemplateId: (() {
-        final guardedValue = map['experimentTemplateId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      roleArn: (() {
-        final guardedValue = map['roleArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      experimentTemplateId: (() { final guardedValue = map['experimentTemplateId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      roleArn: (() { final guardedValue = map['roleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

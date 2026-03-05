@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SkaffoldSupportedConditionResponse {
   /// The time at which this release's version of skaffold will enter maintenance mode.
   final pulumi.Input<String> maintenanceModeTime;
-
   /// The skaffold support state for this release's version of skaffold.
   final pulumi.Input<String> skaffoldSupportState;
-
   /// True if the version of skaffold used by this release is supported.
   final pulumi.Input<bool> status;
-
   /// The time at which this release's version of skaffold will no longer be supported.
   final pulumi.Input<String> supportExpirationTime;
 
@@ -39,16 +36,11 @@ class SkaffoldSupportedConditionResponse {
 
   factory SkaffoldSupportedConditionResponse.fromMap(Map<String, dynamic> map) {
     return SkaffoldSupportedConditionResponse(
-      maintenanceModeTime: pulumi.Input.fromValue(
-        map['maintenanceModeTime'] as String,
-      ),
-      skaffoldSupportState: pulumi.Input.fromValue(
-        map['skaffoldSupportState'] as String,
-      ),
+      maintenanceModeTime: pulumi.Input.fromValue(map['maintenanceModeTime'] as String),
+      skaffoldSupportState: pulumi.Input.fromValue(map['skaffoldSupportState'] as String),
       status: pulumi.Input.fromValue(map['status'] as bool),
-      supportExpirationTime: pulumi.Input.fromValue(
-        map['supportExpirationTime'] as String,
-      ),
+      supportExpirationTime: pulumi.Input.fromValue(map['supportExpirationTime'] as String),
     );
   }
 }
+

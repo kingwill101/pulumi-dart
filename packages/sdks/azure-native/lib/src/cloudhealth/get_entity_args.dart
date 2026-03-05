@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEntityArgs {
   /// Name of the entity. Must be unique within a health model.
   final pulumi.Input<String> entityName;
-
   /// Name of health model resource
   final pulumi.Input<String> healthModelName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -38,9 +36,8 @@ class GetEntityArgs {
     return GetEntityArgs(
       entityName: pulumi.Input.fromValue(map['entityName'] as String),
       healthModelName: pulumi.Input.fromValue(map['healthModelName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

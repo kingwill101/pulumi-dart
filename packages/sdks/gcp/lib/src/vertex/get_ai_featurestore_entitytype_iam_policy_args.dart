@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAiFeaturestoreEntitytypeIamPolicyArgs {
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> entitytype;
-
   /// The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}. Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> featurestore;
 
@@ -28,12 +27,11 @@ class GetAiFeaturestoreEntitytypeIamPolicyArgs {
     };
   }
 
-  factory GetAiFeaturestoreEntitytypeIamPolicyArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetAiFeaturestoreEntitytypeIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetAiFeaturestoreEntitytypeIamPolicyArgs(
       entitytype: pulumi.Input.fromValue(map['entitytype'] as String),
       featurestore: pulumi.Input.fromValue(map['featurestore'] as String),
     );
   }
 }
+

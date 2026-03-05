@@ -582,26 +582,20 @@ import 'frontdoor_custom_domain_tls.dart';
 class FrontdoorCustomDomain extends pulumi.CustomResource {
   /// The ID of the Front Door Profile. Changing this forces a new Front Door Custom Domain to be created.
   late final pulumi.Output<String> cdnFrontdoorProfileId;
-
   /// The ID of the Azure DNS Zone which should be used for this Front Door Custom Domain. If you are using Azure to host your [DNS domains](https://learn.microsoft.com/azure/dns/dns-overview), you must delegate the domain provider's domain name system (DNS) to an Azure DNS Zone. For more information, see [Delegate a domain to Azure DNS](https://learn.microsoft.com/azure/dns/dns-delegate-domain-azure-dns). Otherwise, if you're using your own domain provider to handle your DNS, you must validate the Front Door Custom Domain by creating the DNS TXT records manually.
   ///
   /// &lt;!-- * `pre_validated_cdn_frontdoor_custom_domain_id` - (Optional) The resource ID of the pre-validated Front Door Custom Domain. This domain type is used when you wish to onboard a validated Azure service domain, and then configure the Azure service behind an Azure Front Door.
   ///
   /// &gt; **Note:** Currently `pre_validated_cdn_frontdoor_custom_domain_id` only supports domains validated by Static Web App. --&gt;
   late final pulumi.Output<String?> dnsZoneId;
-
   /// The date time that the token expires.
   late final pulumi.Output<String> expirationDate;
-
   /// The host name of the domain. The `host_name` field must be the FQDN of your domain(e.g. `contoso.fabrikam.com`). Changing this forces a new Front Door Custom Domain to be created.
   late final pulumi.Output<String> hostName;
-
   /// The name which should be used for this Front Door Custom Domain. Possible values must be between 2 and 260 characters in length, must begin with a letter or number, end with a letter or number and contain only letters, numbers and hyphens. Changing this forces a new Front Door Custom Domain to be created.
   late final pulumi.Output<String> name;
-
   /// A `tls` block as defined below.
   late final pulumi.Output<FrontdoorCustomDomainTls> tls;
-
   /// Challenge used for DNS TXT record or file based validation.
   late final pulumi.Output<String> validationToken;
 
@@ -614,26 +608,17 @@ class FrontdoorCustomDomain extends pulumi.CustomResource {
     FrontdoorCustomDomainArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:cdn/frontdoorCustomDomain:FrontdoorCustomDomain',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:cdn/frontdoorCustomDomain:FrontdoorCustomDomain',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cdnFrontdoorProfileId = registerOutput<String>('cdnFrontdoorProfileId');
     dnsZoneId = registerOutput<String?>('dnsZoneId');
     expirationDate = registerOutput<String>('expirationDate');
     hostName = registerOutput<String>('hostName');
     this.name = registerOutput<String>('name');
-    tls = registerOutput<FrontdoorCustomDomainTls>(
-      'tls',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FrontdoorCustomDomainTls.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    tls = registerOutput<FrontdoorCustomDomainTls>('tls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FrontdoorCustomDomainTls.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     validationToken = registerOutput<String>('validationToken');
   }
 
@@ -655,26 +640,17 @@ class FrontdoorCustomDomain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:cdn/frontdoorCustomDomain:FrontdoorCustomDomain',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:cdn/frontdoorCustomDomain:FrontdoorCustomDomain',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cdnFrontdoorProfileId = registerOutput<String>('cdnFrontdoorProfileId');
     dnsZoneId = registerOutput<String?>('dnsZoneId');
     expirationDate = registerOutput<String>('expirationDate');
     hostName = registerOutput<String>('hostName');
     this.name = registerOutput<String>('name');
-    tls = registerOutput<FrontdoorCustomDomainTls>(
-      'tls',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FrontdoorCustomDomainTls.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    tls = registerOutput<FrontdoorCustomDomainTls>('tls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FrontdoorCustomDomainTls.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     validationToken = registerOutput<String>('validationToken');
   }
 }

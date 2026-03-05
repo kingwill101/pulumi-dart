@@ -1256,114 +1256,79 @@ import 'azure_integrations_vpn_gateway.dart';
 class AzureIntegrations extends pulumi.CustomResource {
   /// The New Relic account ID to operate on.  This allows the user to override the `account_id` attribute set on the provider. Defaults to the environment variable `NEW_RELIC_ACCOUNT_ID`.
   late final pulumi.Output<String> accountId;
-
   /// Azure API Management. See Integration blocks below for details.
   late final pulumi.Output<AzureIntegrationsApiManagement?> apiManagement;
-
   /// Azure App Gateway. See Integration blocks below for details.
   late final pulumi.Output<AzureIntegrationsAppGateway?> appGateway;
-
   /// Azure App Service. See Integration blocks below for details.
   late final pulumi.Output<AzureIntegrationsAppService?> appService;
-
   /// Azure Auto Discovery
   late final pulumi.Output<AzureIntegrationsAutoDiscovery?> autoDiscovery;
-
   /// Azure Containers. See Integration blocks below for details.
   late final pulumi.Output<AzureIntegrationsContainers?> containers;
-
   /// Azure CosmosDB. See Integration blocks below for details.
   late final pulumi.Output<AzureIntegrationsCosmosDb?> cosmosDb;
-
   /// Azure Cost Management. See Integration blocks below for details.
   late final pulumi.Output<AzureIntegrationsCostManagement?> costManagement;
-
   /// Azure Data Factory. See Integration blocks below for details.
   late final pulumi.Output<AzureIntegrationsDataFactory?> dataFactory;
-
   /// Azure Event Hub. See Integration blocks below for details.
   late final pulumi.Output<AzureIntegrationsEventHub?> eventHub;
-
   /// Azure Express Route. See Integration blocks below for details.
   late final pulumi.Output<AzureIntegrationsExpressRoute?> expressRoute;
-
   /// Azure Firewalls. See Integration blocks below for details.
   late final pulumi.Output<AzureIntegrationsFirewalls?> firewalls;
-
   /// Azure Front Door. See Integration blocks below for details.
   late final pulumi.Output<AzureIntegrationsFrontDoor?> frontDoor;
-
   /// Azure Functions. See Integration blocks below for details.
   late final pulumi.Output<AzureIntegrationsFunctions?> functions;
-
   /// Azure Key Vault. See Integration blocks below for details.
   late final pulumi.Output<AzureIntegrationsKeyVault?> keyVault;
-
   /// The ID of the linked Azure account in New Relic.
   ///
   ///
   /// The following arguments/integration blocks are intended to be used with a minimum `metrics_polling_interval` of 60 seconds.
   late final pulumi.Output<String> linkedAccountId;
-
   /// Azure Load Balancer. See Integration blocks below for details.
   late final pulumi.Output<AzureIntegrationsLoadBalancer?> loadBalancer;
-
   /// Azure Logic Apps. See Integration blocks below for details.
   late final pulumi.Output<AzureIntegrationsLogicApps?> logicApps;
-
   /// Azure Machine Learning. See Integration blocks below for details.
   late final pulumi.Output<AzureIntegrationsMachineLearning?> machineLearning;
-
   /// Azure MariaDB. See Integration blocks below for details.
   late final pulumi.Output<AzureIntegrationsMariaDb?> mariaDb;
-
   /// Azure Monitor. See Integration blocks below for details.
   ///
   /// The following arguments/integration blocks are intended to be used with a minimum `metrics_polling_interval` of 300 seconds.
   late final pulumi.Output<AzureIntegrationsMonitor?> monitor;
-
   /// Azure MySQL. See Integration blocks below for details.
   late final pulumi.Output<AzureIntegrationsMysql?> mysql;
-
   /// Azure MySQL Flexible Server. See Integration blocks below for details.
   late final pulumi.Output<AzureIntegrationsMysqlFlexible?> mysqlFlexible;
-
   /// Azure PostgreSQL. See Integration blocks below for details.
   late final pulumi.Output<AzureIntegrationsPostgresql?> postgresql;
-
   /// Azure PostgreSQL Flexible Server. See Integration blocks below for details.
-  late final pulumi.Output<AzureIntegrationsPostgresqlFlexible?>
-  postgresqlFlexible;
-
+  late final pulumi.Output<AzureIntegrationsPostgresqlFlexible?> postgresqlFlexible;
   /// Azure Power BI Dedicated. See Integration blocks below for details.
   late final pulumi.Output<AzureIntegrationsPowerBiDedicated?> powerBiDedicated;
-
   /// Azure Redis Cache. See Integration blocks below for details.
   late final pulumi.Output<AzureIntegrationsRedisCache?> redisCache;
-
   /// Azure Service Bus. See Integration blocks below for details.
   late final pulumi.Output<AzureIntegrationsServiceBus?> serviceBus;
-
   /// Azure SQL. See Integration blocks below for details.
   late final pulumi.Output<AzureIntegrationsSql?> sql;
-
   /// Azure SQL Managed. See Integration blocks below for details.
   late final pulumi.Output<AzureIntegrationsSqlManaged?> sqlManaged;
-
   /// for Azure Storage. See Integration blocks below for details.
   ///
   /// The following arguments/integration blocks are intended to be used with a minimum `metrics_polling_interval` of 3600 seconds.
   late final pulumi.Output<AzureIntegrationsStorage?> storage;
-
   /// Azure Virtual machine. See Integration blocks below for details.
   late final pulumi.Output<AzureIntegrationsVirtualMachine?> virtualMachine;
-
   /// for Azure Virtual networks. See Integration blocks below for details.
   late final pulumi.Output<AzureIntegrationsVirtualNetworks?> virtualNetworks;
-
   /// Azure VMs. See Integration blocks below for details.
   late final pulumi.Output<AzureIntegrationsVms?> vms;
-
   /// Azure VPN Gateway. See Integration blocks below for details.
   ///
   /// The following arguments/integration blocks are intended to be used with a minimum `metrics_polling_interval` of 1800 seconds.
@@ -1378,343 +1343,46 @@ class AzureIntegrations extends pulumi.CustomResource {
     AzureIntegrationsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:cloud/azureIntegrations:AzureIntegrations',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:cloud/azureIntegrations:AzureIntegrations',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
-    apiManagement = registerOutput<AzureIntegrationsApiManagement?>(
-      'apiManagement',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsApiManagement.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    appGateway = registerOutput<AzureIntegrationsAppGateway?>(
-      'appGateway',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsAppGateway.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    appService = registerOutput<AzureIntegrationsAppService?>(
-      'appService',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsAppService.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    autoDiscovery = registerOutput<AzureIntegrationsAutoDiscovery?>(
-      'autoDiscovery',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsAutoDiscovery.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    containers = registerOutput<AzureIntegrationsContainers?>(
-      'containers',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsContainers.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    cosmosDb = registerOutput<AzureIntegrationsCosmosDb?>(
-      'cosmosDb',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsCosmosDb.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    costManagement = registerOutput<AzureIntegrationsCostManagement?>(
-      'costManagement',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsCostManagement.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    dataFactory = registerOutput<AzureIntegrationsDataFactory?>(
-      'dataFactory',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsDataFactory.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    eventHub = registerOutput<AzureIntegrationsEventHub?>(
-      'eventHub',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsEventHub.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    expressRoute = registerOutput<AzureIntegrationsExpressRoute?>(
-      'expressRoute',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsExpressRoute.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    firewalls = registerOutput<AzureIntegrationsFirewalls?>(
-      'firewalls',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsFirewalls.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    frontDoor = registerOutput<AzureIntegrationsFrontDoor?>(
-      'frontDoor',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsFrontDoor.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    functions = registerOutput<AzureIntegrationsFunctions?>(
-      'functions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsFunctions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    keyVault = registerOutput<AzureIntegrationsKeyVault?>(
-      'keyVault',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsKeyVault.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    apiManagement = registerOutput<AzureIntegrationsApiManagement?>('apiManagement', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsApiManagement.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    appGateway = registerOutput<AzureIntegrationsAppGateway?>('appGateway', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsAppGateway.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    appService = registerOutput<AzureIntegrationsAppService?>('appService', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsAppService.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    autoDiscovery = registerOutput<AzureIntegrationsAutoDiscovery?>('autoDiscovery', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsAutoDiscovery.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    containers = registerOutput<AzureIntegrationsContainers?>('containers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsContainers.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cosmosDb = registerOutput<AzureIntegrationsCosmosDb?>('cosmosDb', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsCosmosDb.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    costManagement = registerOutput<AzureIntegrationsCostManagement?>('costManagement', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsCostManagement.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataFactory = registerOutput<AzureIntegrationsDataFactory?>('dataFactory', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsDataFactory.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    eventHub = registerOutput<AzureIntegrationsEventHub?>('eventHub', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsEventHub.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    expressRoute = registerOutput<AzureIntegrationsExpressRoute?>('expressRoute', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsExpressRoute.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    firewalls = registerOutput<AzureIntegrationsFirewalls?>('firewalls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsFirewalls.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    frontDoor = registerOutput<AzureIntegrationsFrontDoor?>('frontDoor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsFrontDoor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    functions = registerOutput<AzureIntegrationsFunctions?>('functions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsFunctions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    keyVault = registerOutput<AzureIntegrationsKeyVault?>('keyVault', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsKeyVault.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     linkedAccountId = registerOutput<String>('linkedAccountId');
-    loadBalancer = registerOutput<AzureIntegrationsLoadBalancer?>(
-      'loadBalancer',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsLoadBalancer.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    logicApps = registerOutput<AzureIntegrationsLogicApps?>(
-      'logicApps',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsLogicApps.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    machineLearning = registerOutput<AzureIntegrationsMachineLearning?>(
-      'machineLearning',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsMachineLearning.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    mariaDb = registerOutput<AzureIntegrationsMariaDb?>(
-      'mariaDb',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsMariaDb.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    monitor = registerOutput<AzureIntegrationsMonitor?>(
-      'monitor',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsMonitor.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    mysql = registerOutput<AzureIntegrationsMysql?>(
-      'mysql',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsMysql.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    mysqlFlexible = registerOutput<AzureIntegrationsMysqlFlexible?>(
-      'mysqlFlexible',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsMysqlFlexible.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    postgresql = registerOutput<AzureIntegrationsPostgresql?>(
-      'postgresql',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsPostgresql.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    postgresqlFlexible = registerOutput<AzureIntegrationsPostgresqlFlexible?>(
-      'postgresqlFlexible',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsPostgresqlFlexible.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    powerBiDedicated = registerOutput<AzureIntegrationsPowerBiDedicated?>(
-      'powerBiDedicated',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsPowerBiDedicated.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    redisCache = registerOutput<AzureIntegrationsRedisCache?>(
-      'redisCache',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsRedisCache.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    serviceBus = registerOutput<AzureIntegrationsServiceBus?>(
-      'serviceBus',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsServiceBus.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    sql = registerOutput<AzureIntegrationsSql?>(
-      'sql',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsSql.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    sqlManaged = registerOutput<AzureIntegrationsSqlManaged?>(
-      'sqlManaged',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsSqlManaged.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    storage = registerOutput<AzureIntegrationsStorage?>(
-      'storage',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsStorage.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    virtualMachine = registerOutput<AzureIntegrationsVirtualMachine?>(
-      'virtualMachine',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsVirtualMachine.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    virtualNetworks = registerOutput<AzureIntegrationsVirtualNetworks?>(
-      'virtualNetworks',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsVirtualNetworks.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    vms = registerOutput<AzureIntegrationsVms?>(
-      'vms',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsVms.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    vpnGateway = registerOutput<AzureIntegrationsVpnGateway?>(
-      'vpnGateway',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsVpnGateway.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    loadBalancer = registerOutput<AzureIntegrationsLoadBalancer?>('loadBalancer', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsLoadBalancer.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    logicApps = registerOutput<AzureIntegrationsLogicApps?>('logicApps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsLogicApps.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    machineLearning = registerOutput<AzureIntegrationsMachineLearning?>('machineLearning', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsMachineLearning.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    mariaDb = registerOutput<AzureIntegrationsMariaDb?>('mariaDb', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsMariaDb.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    monitor = registerOutput<AzureIntegrationsMonitor?>('monitor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsMonitor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    mysql = registerOutput<AzureIntegrationsMysql?>('mysql', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsMysql.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    mysqlFlexible = registerOutput<AzureIntegrationsMysqlFlexible?>('mysqlFlexible', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsMysqlFlexible.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    postgresql = registerOutput<AzureIntegrationsPostgresql?>('postgresql', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsPostgresql.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    postgresqlFlexible = registerOutput<AzureIntegrationsPostgresqlFlexible?>('postgresqlFlexible', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsPostgresqlFlexible.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    powerBiDedicated = registerOutput<AzureIntegrationsPowerBiDedicated?>('powerBiDedicated', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsPowerBiDedicated.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    redisCache = registerOutput<AzureIntegrationsRedisCache?>('redisCache', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsRedisCache.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    serviceBus = registerOutput<AzureIntegrationsServiceBus?>('serviceBus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsServiceBus.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sql = registerOutput<AzureIntegrationsSql?>('sql', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsSql.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sqlManaged = registerOutput<AzureIntegrationsSqlManaged?>('sqlManaged', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsSqlManaged.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    storage = registerOutput<AzureIntegrationsStorage?>('storage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsStorage.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    virtualMachine = registerOutput<AzureIntegrationsVirtualMachine?>('virtualMachine', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsVirtualMachine.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    virtualNetworks = registerOutput<AzureIntegrationsVirtualNetworks?>('virtualNetworks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsVirtualNetworks.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vms = registerOutput<AzureIntegrationsVms?>('vms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsVms.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vpnGateway = registerOutput<AzureIntegrationsVpnGateway?>('vpnGateway', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsVpnGateway.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [AzureIntegrations] resource's state with the given [name] and [id].
@@ -1735,342 +1403,45 @@ class AzureIntegrations extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:cloud/azureIntegrations:AzureIntegrations',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:cloud/azureIntegrations:AzureIntegrations',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
-    apiManagement = registerOutput<AzureIntegrationsApiManagement?>(
-      'apiManagement',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsApiManagement.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    appGateway = registerOutput<AzureIntegrationsAppGateway?>(
-      'appGateway',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsAppGateway.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    appService = registerOutput<AzureIntegrationsAppService?>(
-      'appService',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsAppService.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    autoDiscovery = registerOutput<AzureIntegrationsAutoDiscovery?>(
-      'autoDiscovery',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsAutoDiscovery.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    containers = registerOutput<AzureIntegrationsContainers?>(
-      'containers',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsContainers.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    cosmosDb = registerOutput<AzureIntegrationsCosmosDb?>(
-      'cosmosDb',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsCosmosDb.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    costManagement = registerOutput<AzureIntegrationsCostManagement?>(
-      'costManagement',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsCostManagement.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    dataFactory = registerOutput<AzureIntegrationsDataFactory?>(
-      'dataFactory',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsDataFactory.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    eventHub = registerOutput<AzureIntegrationsEventHub?>(
-      'eventHub',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsEventHub.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    expressRoute = registerOutput<AzureIntegrationsExpressRoute?>(
-      'expressRoute',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsExpressRoute.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    firewalls = registerOutput<AzureIntegrationsFirewalls?>(
-      'firewalls',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsFirewalls.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    frontDoor = registerOutput<AzureIntegrationsFrontDoor?>(
-      'frontDoor',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsFrontDoor.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    functions = registerOutput<AzureIntegrationsFunctions?>(
-      'functions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsFunctions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    keyVault = registerOutput<AzureIntegrationsKeyVault?>(
-      'keyVault',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsKeyVault.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    apiManagement = registerOutput<AzureIntegrationsApiManagement?>('apiManagement', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsApiManagement.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    appGateway = registerOutput<AzureIntegrationsAppGateway?>('appGateway', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsAppGateway.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    appService = registerOutput<AzureIntegrationsAppService?>('appService', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsAppService.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    autoDiscovery = registerOutput<AzureIntegrationsAutoDiscovery?>('autoDiscovery', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsAutoDiscovery.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    containers = registerOutput<AzureIntegrationsContainers?>('containers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsContainers.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cosmosDb = registerOutput<AzureIntegrationsCosmosDb?>('cosmosDb', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsCosmosDb.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    costManagement = registerOutput<AzureIntegrationsCostManagement?>('costManagement', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsCostManagement.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataFactory = registerOutput<AzureIntegrationsDataFactory?>('dataFactory', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsDataFactory.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    eventHub = registerOutput<AzureIntegrationsEventHub?>('eventHub', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsEventHub.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    expressRoute = registerOutput<AzureIntegrationsExpressRoute?>('expressRoute', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsExpressRoute.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    firewalls = registerOutput<AzureIntegrationsFirewalls?>('firewalls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsFirewalls.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    frontDoor = registerOutput<AzureIntegrationsFrontDoor?>('frontDoor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsFrontDoor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    functions = registerOutput<AzureIntegrationsFunctions?>('functions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsFunctions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    keyVault = registerOutput<AzureIntegrationsKeyVault?>('keyVault', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsKeyVault.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     linkedAccountId = registerOutput<String>('linkedAccountId');
-    loadBalancer = registerOutput<AzureIntegrationsLoadBalancer?>(
-      'loadBalancer',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsLoadBalancer.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    logicApps = registerOutput<AzureIntegrationsLogicApps?>(
-      'logicApps',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsLogicApps.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    machineLearning = registerOutput<AzureIntegrationsMachineLearning?>(
-      'machineLearning',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsMachineLearning.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    mariaDb = registerOutput<AzureIntegrationsMariaDb?>(
-      'mariaDb',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsMariaDb.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    monitor = registerOutput<AzureIntegrationsMonitor?>(
-      'monitor',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsMonitor.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    mysql = registerOutput<AzureIntegrationsMysql?>(
-      'mysql',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsMysql.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    mysqlFlexible = registerOutput<AzureIntegrationsMysqlFlexible?>(
-      'mysqlFlexible',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsMysqlFlexible.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    postgresql = registerOutput<AzureIntegrationsPostgresql?>(
-      'postgresql',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsPostgresql.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    postgresqlFlexible = registerOutput<AzureIntegrationsPostgresqlFlexible?>(
-      'postgresqlFlexible',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsPostgresqlFlexible.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    powerBiDedicated = registerOutput<AzureIntegrationsPowerBiDedicated?>(
-      'powerBiDedicated',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsPowerBiDedicated.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    redisCache = registerOutput<AzureIntegrationsRedisCache?>(
-      'redisCache',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsRedisCache.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    serviceBus = registerOutput<AzureIntegrationsServiceBus?>(
-      'serviceBus',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsServiceBus.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    sql = registerOutput<AzureIntegrationsSql?>(
-      'sql',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsSql.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    sqlManaged = registerOutput<AzureIntegrationsSqlManaged?>(
-      'sqlManaged',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsSqlManaged.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    storage = registerOutput<AzureIntegrationsStorage?>(
-      'storage',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsStorage.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    virtualMachine = registerOutput<AzureIntegrationsVirtualMachine?>(
-      'virtualMachine',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsVirtualMachine.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    virtualNetworks = registerOutput<AzureIntegrationsVirtualNetworks?>(
-      'virtualNetworks',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsVirtualNetworks.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    vms = registerOutput<AzureIntegrationsVms?>(
-      'vms',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsVms.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    vpnGateway = registerOutput<AzureIntegrationsVpnGateway?>(
-      'vpnGateway',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureIntegrationsVpnGateway.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    loadBalancer = registerOutput<AzureIntegrationsLoadBalancer?>('loadBalancer', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsLoadBalancer.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    logicApps = registerOutput<AzureIntegrationsLogicApps?>('logicApps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsLogicApps.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    machineLearning = registerOutput<AzureIntegrationsMachineLearning?>('machineLearning', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsMachineLearning.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    mariaDb = registerOutput<AzureIntegrationsMariaDb?>('mariaDb', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsMariaDb.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    monitor = registerOutput<AzureIntegrationsMonitor?>('monitor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsMonitor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    mysql = registerOutput<AzureIntegrationsMysql?>('mysql', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsMysql.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    mysqlFlexible = registerOutput<AzureIntegrationsMysqlFlexible?>('mysqlFlexible', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsMysqlFlexible.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    postgresql = registerOutput<AzureIntegrationsPostgresql?>('postgresql', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsPostgresql.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    postgresqlFlexible = registerOutput<AzureIntegrationsPostgresqlFlexible?>('postgresqlFlexible', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsPostgresqlFlexible.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    powerBiDedicated = registerOutput<AzureIntegrationsPowerBiDedicated?>('powerBiDedicated', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsPowerBiDedicated.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    redisCache = registerOutput<AzureIntegrationsRedisCache?>('redisCache', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsRedisCache.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    serviceBus = registerOutput<AzureIntegrationsServiceBus?>('serviceBus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsServiceBus.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sql = registerOutput<AzureIntegrationsSql?>('sql', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsSql.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sqlManaged = registerOutput<AzureIntegrationsSqlManaged?>('sqlManaged', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsSqlManaged.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    storage = registerOutput<AzureIntegrationsStorage?>('storage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsStorage.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    virtualMachine = registerOutput<AzureIntegrationsVirtualMachine?>('virtualMachine', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsVirtualMachine.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    virtualNetworks = registerOutput<AzureIntegrationsVirtualNetworks?>('virtualNetworks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsVirtualNetworks.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vms = registerOutput<AzureIntegrationsVms?>('vms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsVms.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vpnGateway = registerOutput<AzureIntegrationsVpnGateway?>('vpnGateway', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureIntegrationsVpnGateway.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

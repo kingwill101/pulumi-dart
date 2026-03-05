@@ -13,7 +13,6 @@ class VaultCertificate {
   /// &lt;UppercaseThumbprint&gt;.prv for private key. Both of these files are .pem
   /// formatted.
   final pulumi.Input<String>? certificateStore;
-
   /// This is the URL of a certificate that has been uploaded to Key Vault as a
   /// secret. For adding a secret to the Key Vault, see [Add a key or secret to the
   /// key
@@ -32,7 +31,10 @@ class VaultCertificate {
   /// Creates a new [VaultCertificate].
   /// [certificateStore] For Windows VMs, specifies the certificate store on the Virtual Machine to
   /// [certificateUrl] This is the URL of a certificate that has been uploaded to Key Vault as a
-  VaultCertificate({this.certificateStore, this.certificateUrl});
+  VaultCertificate({
+    this.certificateStore,
+    this.certificateUrl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,16 +45,9 @@ class VaultCertificate {
 
   factory VaultCertificate.fromMap(Map<String, dynamic> map) {
     return VaultCertificate(
-      certificateStore: (() {
-        final guardedValue = map['certificateStore'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      certificateUrl: (() {
-        final guardedValue = map['certificateUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      certificateStore: (() { final guardedValue = map['certificateStore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      certificateUrl: (() { final guardedValue = map['certificateUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

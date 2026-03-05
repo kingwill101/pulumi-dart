@@ -147,25 +147,18 @@ import 'throughput_pool_account_args.dart';
 class ThroughputPoolAccount extends pulumi.CustomResource {
   /// The instance id of global database account in the throughputPool.
   late final pulumi.Output<String> accountInstanceId;
-
   /// The location of  global database account in the throughputPool.
   late final pulumi.Output<String?> accountLocation;
-
   /// The resource identifier of global database account in the throughputPool.
   late final pulumi.Output<String?> accountResourceIdentifier;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// A provisioning state of the ThroughputPool Account.
   late final pulumi.Output<String> provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -178,29 +171,18 @@ class ThroughputPoolAccount extends pulumi.CustomResource {
     ThroughputPoolAccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:cosmosdb:ThroughputPoolAccount',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:cosmosdb:ThroughputPoolAccount',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountInstanceId = registerOutput<String>('accountInstanceId');
     accountLocation = registerOutput<String?>('accountLocation');
-    accountResourceIdentifier = registerOutput<String?>(
-      'accountResourceIdentifier',
-    );
+    accountResourceIdentifier = registerOutput<String?>('accountResourceIdentifier');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

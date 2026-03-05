@@ -1,17 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getReservedIp.
 class GetReservedIpResult {
   /// The Droplet id that the reserved IP has been assigned to.
   final int dropletId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String ipAddress;
-
   /// The region that the reserved IP is reserved to.
   final String region;
-
   /// The uniform resource name of the reserved IP.
   final String urn;
 
@@ -49,3 +47,4 @@ class GetReservedIpResult {
     );
   }
 }
+

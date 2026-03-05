@@ -660,26 +660,20 @@ class Instance extends pulumi.CustomResource {
   /// Output only. List of access_points.
   /// Contains a list of IPv4 addresses used for client side configuration.
   late final pulumi.Output<List<String>> accessPoints;
-
   /// Required. Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
   late final pulumi.Output<String> capacityGib;
-
   /// The time when the instance was created.
   late final pulumi.Output<String> createTime;
-
   /// The version of DAOS software running in the instance.
   late final pulumi.Output<String> daosVersion;
-
   /// Parallelstore Instance deployment type.
   /// Possible values:
   /// DEPLOYMENT_TYPE_UNSPECIFIED
   /// SCRATCH
   /// PERSISTENT
   late final pulumi.Output<String?> deploymentType;
-
   /// The description of the instance. 2048 characters or less.
   late final pulumi.Output<String?> description;
-
   /// Stripe level for directories.
   /// MIN when directory has a small number of files.
   /// MAX when directory has a large number of files.
@@ -689,16 +683,13 @@ class Instance extends pulumi.CustomResource {
   /// DIRECTORY_STRIPE_LEVEL_BALANCED
   /// DIRECTORY_STRIPE_LEVEL_MAX
   late final pulumi.Output<String?> directoryStripeLevel;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Immutable. Contains the id of the allocated IP address
   /// range associated with the private service access connection for example, \"test-default\"
   /// associated with IP range 10.0.0.0/29. This field is populated by the service
   /// and contains the value currently used by the service.
   late final pulumi.Output<String> effectiveReservedIpRange;
-
   /// Stripe level for files.
   /// MIN better suited for small size files.
   /// MAX higher throughput performance for larger files.
@@ -708,7 +699,6 @@ class Instance extends pulumi.CustomResource {
   /// FILE_STRIPE_LEVEL_BALANCED
   /// FILE_STRIPE_LEVEL_MAX
   late final pulumi.Output<String?> fileStripeLevel;
-
   /// The logical name of the Parallelstore instance in the user project with the following restrictions:
   /// * Must contain only lowercase letters, numbers, and hyphens.
   /// * Must start with a letter.
@@ -716,7 +706,6 @@ class Instance extends pulumi.CustomResource {
   /// * Must end with a number or a letter.
   /// * Must be unique within the customer project/ location
   late final pulumi.Output<String> instanceId;
-
   /// Cloud Labels are a flexible and lightweight mechanism for
   /// organizing cloud resources into groups that reflect a customer's organizational
   /// needs and deployment strategies. Cloud Labels can be used to filter collections
@@ -739,32 +728,25 @@ class Instance extends pulumi.CustomResource {
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// Part of `parent`. See documentation of `projectsId`.
   late final pulumi.Output<String> location;
-
   /// Identifier. The resource name of the instance, in the format
   /// `projects/{project}/locations/{location}/instances/{instance_id}`
   late final pulumi.Output<String> name;
-
   /// Immutable. The name of the Google Compute Engine [VPC network](https://cloud.google.com/vpc/docs/vpc)
   /// to which the instance is connected.
   late final pulumi.Output<String?> network;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// Immutable. Contains the id of the allocated IP address range
   /// associated with the private service access connection for example, \"test-default\"
   /// associated with IP range 10.0.0.0/29. If no range id is provided all ranges will
   /// be considered.
   late final pulumi.Output<String?> reservedIpRange;
-
   /// The instance state.
   /// Possible values:
   /// STATE_UNSPECIFIED
@@ -774,7 +756,6 @@ class Instance extends pulumi.CustomResource {
   /// FAILED
   /// UPGRADING
   late final pulumi.Output<String> state;
-
   /// The time when the instance was updated.
   late final pulumi.Output<String> updateTime;
 
@@ -787,11 +768,11 @@ class Instance extends pulumi.CustomResource {
     InstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:parallelstore/instance:Instance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:parallelstore/instance:Instance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessPoints = registerOutput<List<String>>('accessPoints');
     capacityGib = registerOutput<String>('capacityGib');
     createTime = registerOutput<String>('createTime');
@@ -800,9 +781,7 @@ class Instance extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     directoryStripeLevel = registerOutput<String?>('directoryStripeLevel');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    effectiveReservedIpRange = registerOutput<String>(
-      'effectiveReservedIpRange',
-    );
+    effectiveReservedIpRange = registerOutput<String>('effectiveReservedIpRange');
     fileStripeLevel = registerOutput<String?>('fileStripeLevel');
     instanceId = registerOutput<String>('instanceId');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -834,11 +813,11 @@ class Instance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:parallelstore/instance:Instance',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:parallelstore/instance:Instance',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessPoints = registerOutput<List<String>>('accessPoints');
     capacityGib = registerOutput<String>('capacityGib');
     createTime = registerOutput<String>('createTime');
@@ -847,9 +826,7 @@ class Instance extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     directoryStripeLevel = registerOutput<String?>('directoryStripeLevel');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    effectiveReservedIpRange = registerOutput<String>(
-      'effectiveReservedIpRange',
-    );
+    effectiveReservedIpRange = registerOutput<String>('effectiveReservedIpRange');
     fileStripeLevel = registerOutput<String?>('fileStripeLevel');
     instanceId = registerOutput<String>('instanceId');
     labels = registerOutput<Map<String, String>?>('labels');

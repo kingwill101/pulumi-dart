@@ -9,7 +9,9 @@ class NodeFeatures {
 
   /// Creates a new [NodeFeatures].
   /// [supplementalGroupsPolicy] SupplementalGroupsPolicy is set to true if the runtime supports SupplementalGroupsPolicy and ContainerUser.
-  NodeFeatures({this.supplementalGroupsPolicy});
+  NodeFeatures({
+    this.supplementalGroupsPolicy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,11 +21,8 @@ class NodeFeatures {
 
   factory NodeFeatures.fromMap(Map<String, dynamic> map) {
     return NodeFeatures(
-      supplementalGroupsPolicy: (() {
-        final guardedValue = map['supplementalGroupsPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      supplementalGroupsPolicy: (() { final guardedValue = map['supplementalGroupsPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

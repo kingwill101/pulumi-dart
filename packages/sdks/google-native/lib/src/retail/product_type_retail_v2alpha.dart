@@ -17,3 +17,4 @@ enum ProductTypeRetailV2alpha {
     throw ArgumentError('Unknown ProductTypeRetailV2alpha value: $value');
   }
 }
+

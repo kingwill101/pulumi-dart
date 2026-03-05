@@ -16,3 +16,4 @@ enum AttestationComplianceState {
     throw ArgumentError('Unknown AttestationComplianceState value: $value');
   }
 }
+

@@ -17,3 +17,4 @@ enum CategoryType {
     throw ArgumentError('Unknown CategoryType value: $value');
   }
 }
+

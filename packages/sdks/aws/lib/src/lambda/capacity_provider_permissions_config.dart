@@ -20,9 +20,8 @@ class CapacityProviderPermissionsConfig {
 
   factory CapacityProviderPermissionsConfig.fromMap(Map<String, dynamic> map) {
     return CapacityProviderPermissionsConfig(
-      capacityProviderOperatorRoleArn: pulumi.Input.fromValue(
-        map['capacityProviderOperatorRoleArn'] as String,
-      ),
+      capacityProviderOperatorRoleArn: pulumi.Input.fromValue(map['capacityProviderOperatorRoleArn'] as String),
     );
   }
 }
+

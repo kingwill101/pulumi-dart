@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIntegrationAccountBatchConfigurationArgs {
   /// The batch configuration name.
   final pulumi.Input<String> batchConfigurationName;
-
   /// The integration account name.
   final pulumi.Input<String> integrationAccountName;
-
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,19 +32,12 @@ class GetIntegrationAccountBatchConfigurationArgs {
     };
   }
 
-  factory GetIntegrationAccountBatchConfigurationArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetIntegrationAccountBatchConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return GetIntegrationAccountBatchConfigurationArgs(
-      batchConfigurationName: pulumi.Input.fromValue(
-        map['batchConfigurationName'] as String,
-      ),
-      integrationAccountName: pulumi.Input.fromValue(
-        map['integrationAccountName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      batchConfigurationName: pulumi.Input.fromValue(map['batchConfigurationName'] as String),
+      integrationAccountName: pulumi.Input.fromValue(map['integrationAccountName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

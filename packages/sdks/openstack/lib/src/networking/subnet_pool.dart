@@ -319,83 +319,65 @@ class SubnetPool extends pulumi.CustomResource {
   /// subnetpool. Changing this updates the address scope id of the existing
   /// subnetpool.
   late final pulumi.Output<String?> addressScopeId;
-
   /// The collection of tags assigned on the subnetpool, which have been
   /// explicitly and implicitly added.
   late final pulumi.Output<List<String>> allTags;
-
   /// The time at which subnetpool was created.
   late final pulumi.Output<String> createdAt;
-
   /// The size of the prefix to allocate when the cidr
   /// or prefixlen attributes are omitted when you create the subnet. Defaults to the
   /// MinPrefixLen. Changing this updates the default prefixlen of the existing
   /// subnetpool.
   late final pulumi.Output<int> defaultPrefixlen;
-
   /// The per-project quota on the prefix space that can be
   /// allocated from the subnetpool for project subnets. Changing this updates the
   /// default quota of the existing subnetpool.
   late final pulumi.Output<int?> defaultQuota;
-
   /// The human-readable description for the subnetpool.
   /// Changing this updates the description of the existing subnetpool.
   late final pulumi.Output<String?> description;
-
   /// The IP protocol version.
   late final pulumi.Output<int> ipVersion;
-
   /// Indicates whether the subnetpool is default
   /// subnetpool or not. Changing this updates the default status of the existing
   /// subnetpool.
   late final pulumi.Output<bool?> isDefault;
-
   /// The maximum prefix size that can be allocated from
   /// the subnetpool. For IPv4 subnetpools, default is 32. For IPv6 subnetpools,
   /// default is 128. Changing this updates the max prefixlen of the existing
   /// subnetpool.
   late final pulumi.Output<int> maxPrefixlen;
-
   /// The smallest prefix that can be allocated from a
   /// subnetpool. For IPv4 subnetpools, default is 8. For IPv6 subnetpools, default
   /// is 64. Changing this updates the min prefixlen of the existing subnetpool.
   late final pulumi.Output<int> minPrefixlen;
-
   /// The name of the subnetpool. Changing this updates the name of
   /// the existing subnetpool.
   late final pulumi.Output<String> name;
-
   /// A list of subnet prefixes to assign to the subnetpool.
   /// Neutron API merges adjacent prefixes and treats them as a single prefix. Each
   /// subnet prefix must be unique among all subnet prefixes in all subnetpools that
   /// are associated with the address scope. Changing this updates the prefixes list
   /// of the existing subnetpool.
   late final pulumi.Output<List<String>> prefixes;
-
   /// The owner of the subnetpool. Required if admin wants to
   /// create a subnetpool for another project. Changing this creates a new subnetpool.
   late final pulumi.Output<String> projectId;
-
   /// The region in which to obtain the V2 Networking client.
   /// A Networking client is needed to create a Neutron subnetpool. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
   /// subnetpool.
   late final pulumi.Output<String> region;
-
   /// The revision number of the subnetpool.
   late final pulumi.Output<int> revisionNumber;
-
   /// Indicates whether this subnetpool is shared across
   /// all projects. Changing this updates the shared status of the existing
   /// subnetpool.
   late final pulumi.Output<bool?> shared;
-
   /// A set of string tags for the subnetpool.
   late final pulumi.Output<List<String>?> tags;
-
   /// The time at which subnetpool was created.
   late final pulumi.Output<String> updatedAt;
-
   /// Map of additional options.
   late final pulumi.Output<Map<String, String>?> valueSpecs;
 
@@ -408,11 +390,11 @@ class SubnetPool extends pulumi.CustomResource {
     SubnetPoolArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:networking/subnetPool:SubnetPool',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:networking/subnetPool:SubnetPool',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     addressScopeId = registerOutput<String?>('addressScopeId');
     allTags = registerOutput<List<String>>('allTags');
     createdAt = registerOutput<String>('createdAt');
@@ -452,11 +434,11 @@ class SubnetPool extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:networking/subnetPool:SubnetPool',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:networking/subnetPool:SubnetPool',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     addressScopeId = registerOutput<String?>('addressScopeId');
     allTags = registerOutput<List<String>>('allTags');
     createdAt = registerOutput<String>('createdAt');

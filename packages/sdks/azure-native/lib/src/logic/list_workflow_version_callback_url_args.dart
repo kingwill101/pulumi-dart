@@ -10,19 +10,14 @@ import 'key_type.dart';
 class ListWorkflowVersionCallbackUrlArgs {
   /// The key type.
   final pulumi.Input<KeyType>? keyType;
-
   /// The expiry time.
   final pulumi.Input<String>? notAfter;
-
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
-
   /// The workflow trigger name.
   final pulumi.Input<String> triggerName;
-
   /// The workflow versionId.
   final pulumi.Input<String> versionId;
-
   /// The workflow name.
   final pulumi.Input<String> workflowName;
 
@@ -44,10 +39,7 @@ class ListWorkflowVersionCallbackUrlArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'keyType': ?pulumi.Input.mapOptionalInputValue<KeyType, String>(
-        keyType,
-        (value) => value.wireValue,
-      ),
+      'keyType': ?pulumi.Input.mapOptionalInputValue<KeyType, String>(keyType, (value) => value.wireValue),
       'notAfter': ?notAfter,
       'resourceGroupName': resourceGroupName,
       'triggerName': triggerName,
@@ -58,24 +50,13 @@ class ListWorkflowVersionCallbackUrlArgs {
 
   factory ListWorkflowVersionCallbackUrlArgs.fromMap(Map<String, dynamic> map) {
     return ListWorkflowVersionCallbackUrlArgs(
-      keyType: (() {
-        final guardedValue = map['keyType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          KeyType.fromValue(guardedValue as String),
-        );
-      })(),
-      notAfter: (() {
-        final guardedValue = map['notAfter'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      keyType: (() { final guardedValue = map['keyType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(KeyType.fromValue(guardedValue as String)); })(),
+      notAfter: (() { final guardedValue = map['notAfter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       triggerName: pulumi.Input.fromValue(map['triggerName'] as String),
       versionId: pulumi.Input.fromValue(map['versionId'] as String),
       workflowName: pulumi.Input.fromValue(map['workflowName'] as String),
     );
   }
 }
+

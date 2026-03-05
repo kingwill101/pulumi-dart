@@ -5,16 +5,12 @@ import 'environment_version_tag_args.dart';
 class EnvironmentVersionTag extends pulumi.CustomResource {
   /// Environment name.
   late final pulumi.Output<String> environment;
-
   /// Organization name.
   late final pulumi.Output<String> organization;
-
   /// Project name.
   late final pulumi.Output<String> project;
-
   /// Revision number.
   late final pulumi.Output<int> revision;
-
   /// Tag name.
   late final pulumi.Output<String> tagName;
 
@@ -27,11 +23,11 @@ class EnvironmentVersionTag extends pulumi.CustomResource {
     EnvironmentVersionTagArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'pulumiservice:index:EnvironmentVersionTag',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'pulumiservice:index:EnvironmentVersionTag',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     environment = registerOutput<String>('environment');
     organization = registerOutput<String>('organization');
     project = registerOutput<String>('project');

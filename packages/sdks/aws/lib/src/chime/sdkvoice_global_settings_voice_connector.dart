@@ -8,21 +8,20 @@ class SdkvoiceGlobalSettingsVoiceConnector {
 
   /// Creates a new [SdkvoiceGlobalSettingsVoiceConnector].
   /// [cdrBucket] The S3 bucket that stores the Voice Connector's call detail records.
-  SdkvoiceGlobalSettingsVoiceConnector({this.cdrBucket});
+  SdkvoiceGlobalSettingsVoiceConnector({
+    this.cdrBucket,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'cdrBucket': ?cdrBucket};
+    return <String, dynamic>{
+      'cdrBucket': ?cdrBucket,
+    };
   }
 
-  factory SdkvoiceGlobalSettingsVoiceConnector.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SdkvoiceGlobalSettingsVoiceConnector.fromMap(Map<String, dynamic> map) {
     return SdkvoiceGlobalSettingsVoiceConnector(
-      cdrBucket: (() {
-        final guardedValue = map['cdrBucket'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      cdrBucket: (() { final guardedValue = map['cdrBucket']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

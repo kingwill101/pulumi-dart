@@ -7,13 +7,10 @@ import 'compute_node_identity_reference_response.dart';
 class ContainerRegistryResponse {
   /// The reference to a user assigned identity associated with the Batch pool which a compute node will use.
   final pulumi.Input<ComputeNodeIdentityReferenceResponse>? identityReference;
-
   /// The password to log into the registry server.
   final pulumi.Input<String>? password;
-
   /// If omitted, the default is "docker.io".
   final pulumi.Input<String>? registryServer;
-
   /// The user name to log into the registry server.
   final pulumi.Input<String>? userName;
 
@@ -31,11 +28,7 @@ class ContainerRegistryResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'identityReference':
-          ?pulumi.Input.mapOptionalInputValue<
-            ComputeNodeIdentityReferenceResponse,
-            Map<String, dynamic>
-          >(identityReference, (value) => value.toMap()),
+      'identityReference': ?pulumi.Input.mapOptionalInputValue<ComputeNodeIdentityReferenceResponse, Map<String, dynamic>>(identityReference, (value) => value.toMap()),
       'password': ?password,
       'registryServer': ?registryServer,
       'userName': ?userName,
@@ -44,30 +37,11 @@ class ContainerRegistryResponse {
 
   factory ContainerRegistryResponse.fromMap(Map<String, dynamic> map) {
     return ContainerRegistryResponse(
-      identityReference: (() {
-        final guardedValue = map['identityReference'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ComputeNodeIdentityReferenceResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      password: (() {
-        final guardedValue = map['password'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      registryServer: (() {
-        final guardedValue = map['registryServer'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      userName: (() {
-        final guardedValue = map['userName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      identityReference: (() { final guardedValue = map['identityReference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ComputeNodeIdentityReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      registryServer: (() { final guardedValue = map['registryServer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      userName: (() { final guardedValue = map['userName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

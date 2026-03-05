@@ -8,10 +8,14 @@ class StandardAppVersionHandlerScript {
 
   /// Creates a new [StandardAppVersionHandlerScript].
   /// [scriptPath] Path to the script from the application root directory.
-  StandardAppVersionHandlerScript({required this.scriptPath});
+  StandardAppVersionHandlerScript({
+    required this.scriptPath,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'scriptPath': scriptPath};
+    return <String, dynamic>{
+      'scriptPath': scriptPath,
+    };
   }
 
   factory StandardAppVersionHandlerScript.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class StandardAppVersionHandlerScript {
     );
   }
 }
+

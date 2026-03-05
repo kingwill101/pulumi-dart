@@ -184,13 +184,10 @@ import 'directory_role_eligibility_schedule_request_state.dart';
 class DirectoryRoleEligibilityScheduleRequest extends pulumi.CustomResource {
   /// Identifier of the directory object representing the scope of the role eligibility. Changing this forces a new resource to be created.
   late final pulumi.Output<String> directoryScopeId;
-
   /// Justification for why the principal is granted the role eligibility. Changing this forces a new resource to be created.
   late final pulumi.Output<String> justification;
-
   /// The object ID of the principal to granted the role eligibility. Changing this forces a new resource to be created.
   late final pulumi.Output<String> principalId;
-
   /// The template ID (in the case of built-in roles) or object ID (in the case of custom roles) of the directory role you want to assign. Changing this forces a new resource to be created.
   late final pulumi.Output<String> roleDefinitionId;
 
@@ -203,11 +200,11 @@ class DirectoryRoleEligibilityScheduleRequest extends pulumi.CustomResource {
     DirectoryRoleEligibilityScheduleRequestArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/directoryRoleEligibilityScheduleRequest:DirectoryRoleEligibilityScheduleRequest',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azuread:index/directoryRoleEligibilityScheduleRequest:DirectoryRoleEligibilityScheduleRequest',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     directoryScopeId = registerOutput<String>('directoryScopeId');
     justification = registerOutput<String>('justification');
     principalId = registerOutput<String>('principalId');
@@ -232,11 +229,11 @@ class DirectoryRoleEligibilityScheduleRequest extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/directoryRoleEligibilityScheduleRequest:DirectoryRoleEligibilityScheduleRequest',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azuread:index/directoryRoleEligibilityScheduleRequest:DirectoryRoleEligibilityScheduleRequest',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     directoryScopeId = registerOutput<String>('directoryScopeId');
     justification = registerOutput<String>('justification');
     principalId = registerOutput<String>('principalId');

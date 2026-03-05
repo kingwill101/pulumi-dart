@@ -478,16 +478,12 @@ import 'rule_state.dart';
 class Rule extends pulumi.CustomResource {
   /// The ID of the Endpoint.
   late final pulumi.Output<String> endpointId;
-
   /// Forwarding target. See `forward_ips` below.
   late final pulumi.Output<List<Map<String, dynamic>>> forwardIps;
-
   /// The name of the resource.
   late final pulumi.Output<String> ruleName;
-
   /// The type of the rule. Valid values: `OUTBOUND`.
   late final pulumi.Output<String?> type;
-
   /// The name of the forwarding zone.
   late final pulumi.Output<String> zoneName;
 
@@ -495,13 +491,16 @@ class Rule extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Rule]. {@macro pulumi_pvtz_rule_rule_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Rule(String name, {RuleArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:pvtz/rule:Rule',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Rule(
+    String name, {
+    RuleArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:pvtz/rule:Rule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     endpointId = registerOutput<String>('endpointId');
     forwardIps = registerOutput<List<Map<String, dynamic>>>('forwardIps');
     ruleName = registerOutput<String>('ruleName');
@@ -510,7 +509,11 @@ class Rule extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Rule] resource's state with the given [name] and [id].
-  static Rule get(String name, pulumi.Input<String> id, {RuleState? state}) {
+  static Rule get(
+    String name,
+    pulumi.Input<String> id, {
+    RuleState? state,
+  }) {
     return Rule._get(
       name,
       state: state?.toMap(),
@@ -523,11 +526,11 @@ class Rule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:pvtz/rule:Rule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:pvtz/rule:Rule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     endpointId = registerOutput<String>('endpointId');
     forwardIps = registerOutput<List<Map<String, dynamic>>>('forwardIps');
     ruleName = registerOutput<String>('ruleName');

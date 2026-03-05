@@ -398,23 +398,16 @@ import 'failover_group_state.dart';
 class FailoverGroup extends pulumi.CustomResource {
   /// A set of database names to include in the failover group.
   late final pulumi.Output<List<String>?> databases;
-
   /// The name of the Failover Group. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// A `partner_server` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> partnerServers;
-
   /// A `read_write_endpoint_failover_policy` block as defined below.
-  late final pulumi.Output<FailoverGroupReadWriteEndpointFailoverPolicy>
-  readWriteEndpointFailoverPolicy;
-
+  late final pulumi.Output<FailoverGroupReadWriteEndpointFailoverPolicy> readWriteEndpointFailoverPolicy;
   /// Whether failover is enabled for the readonly endpoint. Defaults to `false`.
   late final pulumi.Output<bool> readonlyEndpointFailoverPolicyEnabled;
-
   /// The ID of the primary SQL Server on which to create the failover group. Changing this forces a new resource to be created.
   late final pulumi.Output<String> serverId;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -427,30 +420,16 @@ class FailoverGroup extends pulumi.CustomResource {
     FailoverGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:mssql/failoverGroup:FailoverGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:mssql/failoverGroup:FailoverGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     databases = registerOutput<List<String>?>('databases');
     this.name = registerOutput<String>('name');
-    partnerServers = registerOutput<List<Map<String, dynamic>>>(
-      'partnerServers',
-    );
-    readWriteEndpointFailoverPolicy =
-        registerOutput<FailoverGroupReadWriteEndpointFailoverPolicy>(
-          'readWriteEndpointFailoverPolicy',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return FailoverGroupReadWriteEndpointFailoverPolicy.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    readonlyEndpointFailoverPolicyEnabled = registerOutput<bool>(
-      'readonlyEndpointFailoverPolicyEnabled',
-    );
+    partnerServers = registerOutput<List<Map<String, dynamic>>>('partnerServers');
+    readWriteEndpointFailoverPolicy = registerOutput<FailoverGroupReadWriteEndpointFailoverPolicy>('readWriteEndpointFailoverPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FailoverGroupReadWriteEndpointFailoverPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    readonlyEndpointFailoverPolicyEnabled = registerOutput<bool>('readonlyEndpointFailoverPolicyEnabled');
     serverId = registerOutput<String>('serverId');
     tags = registerOutput<Map<String, String>?>('tags');
   }
@@ -473,30 +452,16 @@ class FailoverGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:mssql/failoverGroup:FailoverGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:mssql/failoverGroup:FailoverGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     databases = registerOutput<List<String>?>('databases');
     this.name = registerOutput<String>('name');
-    partnerServers = registerOutput<List<Map<String, dynamic>>>(
-      'partnerServers',
-    );
-    readWriteEndpointFailoverPolicy =
-        registerOutput<FailoverGroupReadWriteEndpointFailoverPolicy>(
-          'readWriteEndpointFailoverPolicy',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return FailoverGroupReadWriteEndpointFailoverPolicy.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    readonlyEndpointFailoverPolicyEnabled = registerOutput<bool>(
-      'readonlyEndpointFailoverPolicyEnabled',
-    );
+    partnerServers = registerOutput<List<Map<String, dynamic>>>('partnerServers');
+    readWriteEndpointFailoverPolicy = registerOutput<FailoverGroupReadWriteEndpointFailoverPolicy>('readWriteEndpointFailoverPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FailoverGroupReadWriteEndpointFailoverPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    readonlyEndpointFailoverPolicyEnabled = registerOutput<bool>('readonlyEndpointFailoverPolicyEnabled');
     serverId = registerOutput<String>('serverId');
     tags = registerOutput<Map<String, String>?>('tags');
   }

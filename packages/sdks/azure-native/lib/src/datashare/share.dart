@@ -151,34 +151,24 @@ import 'system_data_response.dart';
 class Share extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Time at which the share was created.
   late final pulumi.Output<String> createdAt;
-
   /// Share description.
   late final pulumi.Output<String?> description;
-
   /// Name of the azure resource
   late final pulumi.Output<String> name;
-
   /// Gets or sets the provisioning state
   late final pulumi.Output<String> provisioningState;
-
   /// Share kind.
   late final pulumi.Output<String?> shareKind;
-
   /// System Data of the Azure resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Share terms.
   late final pulumi.Output<String?> terms;
-
   /// Type of the azure resource
   late final pulumi.Output<String> type;
-
   /// Email of the user who created the resource
   late final pulumi.Output<String> userEmail;
-
   /// Name of the user who created the resource
   late final pulumi.Output<String> userName;
 
@@ -186,29 +176,23 @@ class Share extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Share]. {@macro pulumi_datashare_share_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Share(String name, {ShareArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:datashare:Share',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Share(
+    String name, {
+    ShareArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:datashare:Share',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createdAt = registerOutput<String>('createdAt');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     shareKind = registerOutput<String?>('shareKind');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     terms = registerOutput<String?>('terms');
     type = registerOutput<String>('type');
     userEmail = registerOutput<String>('userEmail');

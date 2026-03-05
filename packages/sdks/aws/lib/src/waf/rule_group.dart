@@ -192,19 +192,14 @@ import 'rule_group_state.dart';
 class RuleGroup extends pulumi.CustomResource {
   /// A list of activated rules, see below
   late final pulumi.Output<List<Map<String, dynamic>>?> activatedRules;
-
   /// The ARN of the WAF rule group.
   late final pulumi.Output<String> arn;
-
   /// A friendly name for the metrics from the rule group
   late final pulumi.Output<String> metricName;
-
   /// Name of the rule group. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
   late final pulumi.Output<String> name;
-
   /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -217,14 +212,12 @@ class RuleGroup extends pulumi.CustomResource {
     RuleGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:waf/ruleGroup:RuleGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    activatedRules = registerOutput<List<Map<String, dynamic>>?>(
-      'activatedRules',
-    );
+          'aws:waf/ruleGroup:RuleGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    activatedRules = registerOutput<List<Map<String, dynamic>>?>('activatedRules');
     arn = registerOutput<String>('arn');
     metricName = registerOutput<String>('metricName');
     this.name = registerOutput<String>('name');
@@ -250,14 +243,12 @@ class RuleGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:waf/ruleGroup:RuleGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    activatedRules = registerOutput<List<Map<String, dynamic>>?>(
-      'activatedRules',
-    );
+          'aws:waf/ruleGroup:RuleGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    activatedRules = registerOutput<List<Map<String, dynamic>>?>('activatedRules');
     arn = registerOutput<String>('arn');
     metricName = registerOutput<String>('metricName');
     this.name = registerOutput<String>('name');

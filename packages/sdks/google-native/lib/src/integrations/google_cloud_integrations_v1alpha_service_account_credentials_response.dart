@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudIntegrationsV1alphaServiceAccountCredentialsResponse {
   /// A space-delimited list of requested scope permissions.
   final pulumi.Input<String> scope;
-
   /// Name of the service account that has the permission to make the request.
   final pulumi.Input<String> serviceAccount;
 
@@ -19,15 +18,17 @@ class GoogleCloudIntegrationsV1alphaServiceAccountCredentialsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'scope': scope, 'serviceAccount': serviceAccount};
+    return <String, dynamic>{
+      'scope': scope,
+      'serviceAccount': serviceAccount,
+    };
   }
 
-  factory GoogleCloudIntegrationsV1alphaServiceAccountCredentialsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudIntegrationsV1alphaServiceAccountCredentialsResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaServiceAccountCredentialsResponse(
       scope: pulumi.Input.fromValue(map['scope'] as String),
       serviceAccount: pulumi.Input.fromValue(map['serviceAccount'] as String),
     );
   }
 }
+

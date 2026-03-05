@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CollectionPolicyCentralizeConfig {
   /// Destination Logstore for centralized forwarding. Its region must match destRegion and it must belong to destProject.
   final pulumi.Input<String>? destLogstore;
-
   /// Destination project for centralized forwarding. Its region must match destRegion.
   final pulumi.Input<String>? destProject;
-
   /// Destination region for centralized forwarding.
   final pulumi.Input<String>? destRegion;
-
   /// Retention period (in days) for the destination Logstore in centralized forwarding. This setting takes effect only when the destination Logstore is created for the first time.
   final pulumi.Input<int>? destTtl;
 
@@ -38,26 +35,11 @@ class CollectionPolicyCentralizeConfig {
 
   factory CollectionPolicyCentralizeConfig.fromMap(Map<String, dynamic> map) {
     return CollectionPolicyCentralizeConfig(
-      destLogstore: (() {
-        final guardedValue = map['destLogstore'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      destProject: (() {
-        final guardedValue = map['destProject'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      destRegion: (() {
-        final guardedValue = map['destRegion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      destTtl: (() {
-        final guardedValue = map['destTtl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      destLogstore: (() { final guardedValue = map['destLogstore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      destProject: (() { final guardedValue = map['destProject']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      destRegion: (() { final guardedValue = map['destRegion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      destTtl: (() { final guardedValue = map['destTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

@@ -9,10 +9,14 @@ class SecretResponseMetastoreV1alpha {
 
   /// Creates a new [SecretResponseMetastoreV1alpha].
   /// [cloudSecret] The relative resource name of a Secret Manager secret version, in the following form:projects/{project_number}/secrets/{secret_id}/versions/{version_id}.
-  SecretResponseMetastoreV1alpha({required this.cloudSecret});
+  SecretResponseMetastoreV1alpha({
+    required this.cloudSecret,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'cloudSecret': cloudSecret};
+    return <String, dynamic>{
+      'cloudSecret': cloudSecret,
+    };
   }
 
   factory SecretResponseMetastoreV1alpha.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class SecretResponseMetastoreV1alpha {
     );
   }
 }
+

@@ -13,7 +13,10 @@ class GetSourceArgs {
   /// Creates a new [GetSourceArgs].
   /// [organizationId] Required.
   /// [sourceId] Required.
-  GetSourceArgs({required this.organizationId, required this.sourceId});
+  GetSourceArgs({
+    required this.organizationId,
+    required this.sourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,3 +32,4 @@ class GetSourceArgs {
     );
   }
 }
+

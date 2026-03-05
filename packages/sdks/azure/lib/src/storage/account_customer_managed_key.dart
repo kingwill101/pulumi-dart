@@ -6,7 +6,6 @@ class AccountCustomerManagedKey {
   /// The ID of the Key Vault Key, supplying a version-less key ID will enable auto-rotation of this key.
   final pulumi.Input<String>? keyVaultKeyId;
   final pulumi.Input<String>? managedHsmKeyId;
-
   /// The ID of a user assigned identity.
   ///
   /// &gt; **Note:** `customer_managed_key` can only be set when the `account_kind` is set to `StorageV2` or `account_tier` set to `Premium`, and the identity type is `UserAssigned`.
@@ -32,19 +31,10 @@ class AccountCustomerManagedKey {
 
   factory AccountCustomerManagedKey.fromMap(Map<String, dynamic> map) {
     return AccountCustomerManagedKey(
-      keyVaultKeyId: (() {
-        final guardedValue = map['keyVaultKeyId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      managedHsmKeyId: (() {
-        final guardedValue = map['managedHsmKeyId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      userAssignedIdentityId: pulumi.Input.fromValue(
-        map['userAssignedIdentityId'] as String,
-      ),
+      keyVaultKeyId: (() { final guardedValue = map['keyVaultKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      managedHsmKeyId: (() { final guardedValue = map['managedHsmKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      userAssignedIdentityId: pulumi.Input.fromValue(map['userAssignedIdentityId'] as String),
     );
   }
 }
+

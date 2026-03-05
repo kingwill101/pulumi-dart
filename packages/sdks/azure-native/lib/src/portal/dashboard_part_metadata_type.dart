@@ -14,3 +14,4 @@ enum DashboardPartMetadataType {
     throw ArgumentError('Unknown DashboardPartMetadataType value: $value');
   }
 }
+

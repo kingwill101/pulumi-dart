@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataPartitionRuleArgs {
   /// The account id associated with the data partition rule.
   final pulumi.Input<String>? accountId;
-
   /// The description of the data partition rule.
   final pulumi.Input<String>? description;
-
   /// Whether or not this data partition rule is enabled.
   final pulumi.Input<bool> enabled;
-
   /// The NRQL to match events for this data partition rule. Logs matching this criteria will be routed to the specified data partition.
   final pulumi.Input<String> nrql;
-
   /// The retention policy of the data partition data. Valid values are `SECONDARY` and `STANDARD`.
   final pulumi.Input<String> retentionPolicy;
-
   /// The name of the data partition where logs will be allocated once the rule is enabled.
   final pulumi.Input<String> targetDataPartition;
 
@@ -54,22 +49,13 @@ class DataPartitionRuleArgs {
 
   factory DataPartitionRuleArgs.fromMap(Map<String, dynamic> map) {
     return DataPartitionRuleArgs(
-      accountId: (() {
-        final guardedValue = map['accountId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
       nrql: pulumi.Input.fromValue(map['nrql'] as String),
       retentionPolicy: pulumi.Input.fromValue(map['retentionPolicy'] as String),
-      targetDataPartition: pulumi.Input.fromValue(
-        map['targetDataPartition'] as String,
-      ),
+      targetDataPartition: pulumi.Input.fromValue(map['targetDataPartition'] as String),
     );
   }
 }
+

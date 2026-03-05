@@ -10,10 +10,8 @@ import 'policy_definition.dart';
 class PolicyArgs {
   /// The definition of the policy. See Definition below.
   final pulumi.Input<PolicyDefinition> definition;
-
   /// The Policy Store ID of the policy store.
   final pulumi.Input<String> policyStoreId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -29,11 +27,7 @@ class PolicyArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'definition':
-          pulumi.Input.mapInputValue<PolicyDefinition, Map<String, dynamic>>(
-            definition,
-            (value) => value.toMap(),
-          ),
+      'definition': pulumi.Input.mapInputValue<PolicyDefinition, Map<String, dynamic>>(definition, (value) => value.toMap()),
       'policyStoreId': policyStoreId,
       'region': ?region,
     };
@@ -41,17 +35,10 @@ class PolicyArgs {
 
   factory PolicyArgs.fromMap(Map<String, dynamic> map) {
     return PolicyArgs(
-      definition: pulumi.Input.fromValue(
-        PolicyDefinition.fromMap(
-          (map['definition']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      definition: pulumi.Input.fromValue(PolicyDefinition.fromMap((map['definition']! as Map).cast<String, dynamic>())),
       policyStoreId: pulumi.Input.fromValue(map['policyStoreId'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

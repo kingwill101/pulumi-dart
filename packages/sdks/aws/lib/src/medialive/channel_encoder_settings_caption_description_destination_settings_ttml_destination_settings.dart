@@ -13,14 +13,15 @@ class ChannelEncoderSettingsCaptionDescriptionDestinationSettingsTtmlDestination
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'styleControl': styleControl};
+    return <String, dynamic>{
+      'styleControl': styleControl,
+    };
   }
 
-  factory ChannelEncoderSettingsCaptionDescriptionDestinationSettingsTtmlDestinationSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ChannelEncoderSettingsCaptionDescriptionDestinationSettingsTtmlDestinationSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsCaptionDescriptionDestinationSettingsTtmlDestinationSettings(
       styleControl: pulumi.Input.fromValue(map['styleControl'] as String),
     );
   }
 }
+

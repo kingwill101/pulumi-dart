@@ -13,8 +13,7 @@ enum FreeInstanceMetadataExpireBehavior {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown FreeInstanceMetadataExpireBehavior value: $value',
-    );
+    throw ArgumentError('Unknown FreeInstanceMetadataExpireBehavior value: $value');
   }
 }
+

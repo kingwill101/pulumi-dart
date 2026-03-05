@@ -167,31 +167,22 @@ import 'system_data_response.dart';
 class AvailabilitySet extends pulumi.CustomResource {
   /// Name of the availability set.
   late final pulumi.Output<String?> availabilitySetName;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The extended location.
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
-
   /// Gets or sets the location.
   late final pulumi.Output<String?> location;
-
   /// Resource Name
   late final pulumi.Output<String> name;
-
   /// Gets or sets the provisioning state.
   late final pulumi.Output<String> provisioningState;
-
   /// The system data.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource Type
   late final pulumi.Output<String> type;
-
   /// ARM Id of the vmmServer resource in which this resource resides.
   late final pulumi.Output<String?> vmmServerId;
 
@@ -204,36 +195,18 @@ class AvailabilitySet extends pulumi.CustomResource {
     AvailabilitySetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:scvmm:AvailabilitySet',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:scvmm:AvailabilitySet',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     availabilitySetName = registerOutput<String?>('availabilitySetName');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    extendedLocation = registerOutput<ExtendedLocationResponse?>(
-      'extendedLocation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExtendedLocationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     vmmServerId = registerOutput<String?>('vmmServerId');

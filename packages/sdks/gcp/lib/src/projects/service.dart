@@ -124,18 +124,15 @@ class Service extends pulumi.CustomResource {
   /// If `true`, the usage of the service to be disabled will be checked and an error
   /// will be returned if the service to be disabled has usage in last 30 days.
   late final pulumi.Output<bool?> checkIfServiceHasUsageOnDestroy;
-
   /// If `true`, services that are enabled
   /// and which depend on this service should also be disabled when this service is
   /// destroyed. If `false` or unset, an error will be generated if any enabled
   /// services depend on this service when destroying it.
   late final pulumi.Output<bool?> disableDependentServices;
   late final pulumi.Output<bool?> disableOnDestroy;
-
   /// The project ID. If not provided, the provider project
   /// is used.
   late final pulumi.Output<String> project;
-
   /// The service to enable.
   late final pulumi.Output<String> service;
 
@@ -148,17 +145,13 @@ class Service extends pulumi.CustomResource {
     ServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:projects/service:Service',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    checkIfServiceHasUsageOnDestroy = registerOutput<bool?>(
-      'checkIfServiceHasUsageOnDestroy',
-    );
-    disableDependentServices = registerOutput<bool?>(
-      'disableDependentServices',
-    );
+          'gcp:projects/service:Service',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    checkIfServiceHasUsageOnDestroy = registerOutput<bool?>('checkIfServiceHasUsageOnDestroy');
+    disableDependentServices = registerOutput<bool?>('disableDependentServices');
     disableOnDestroy = registerOutput<bool?>('disableOnDestroy');
     project = registerOutput<String>('project');
     service = registerOutput<String>('service');
@@ -182,17 +175,13 @@ class Service extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:projects/service:Service',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    checkIfServiceHasUsageOnDestroy = registerOutput<bool?>(
-      'checkIfServiceHasUsageOnDestroy',
-    );
-    disableDependentServices = registerOutput<bool?>(
-      'disableDependentServices',
-    );
+          'gcp:projects/service:Service',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    checkIfServiceHasUsageOnDestroy = registerOutput<bool?>('checkIfServiceHasUsageOnDestroy');
+    disableDependentServices = registerOutput<bool?>('disableDependentServices');
     disableOnDestroy = registerOutput<bool?>('disableOnDestroy');
     project = registerOutput<String>('project');
     service = registerOutput<String>('service');

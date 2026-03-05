@@ -245,91 +245,65 @@ class LoadBalancer extends pulumi.CustomResource {
   /// **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
   /// or `least_connections`. The default value is `round_robin`.
   late final pulumi.Output<String?> algorithm;
-
   /// A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
   late final pulumi.Output<bool?> disableLetsEncryptDnsRecords;
-
   /// A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> domains;
-
   /// A list of the IDs of each droplet to be attached to the Load Balancer.
   late final pulumi.Output<List<int>> dropletIds;
-
   /// The name of a Droplet tag corresponding to Droplets to be assigned to the Load Balancer.
   late final pulumi.Output<String?> dropletTag;
-
   /// A boolean value indicating whether HTTP keepalive connections are maintained to target Droplets. Default value is `false`.
   late final pulumi.Output<bool?> enableBackendKeepalive;
-
   /// A boolean value indicating whether PROXY
   /// Protocol should be used to pass information from connecting client requests to
   /// the backend service. Default value is `false`.
   late final pulumi.Output<bool?> enableProxyProtocol;
-
   /// A block containing rules for allowing/denying traffic to the Load Balancer. The `firewall` block is documented below. Only 1 firewall is allowed.
   late final pulumi.Output<LoadBalancerFirewall> firewall;
-
   /// A list of `forwarding_rule` to be assigned to the
   /// Load Balancer. The `forwarding_rule` block is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> forwardingRules;
-
   /// A block containing `glb_settings` required to define target rules for a Global Load Balancer. The `glb_settings` block is documented below.
   late final pulumi.Output<LoadBalancerGlbSettings> glbSettings;
-
   /// A `healthcheck` block to be assigned to the
   /// Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
   late final pulumi.Output<LoadBalancerHealthcheck> healthcheck;
-
   /// Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
   late final pulumi.Output<int> httpIdleTimeoutSeconds;
-
   /// The ip of the Load Balancer
   late final pulumi.Output<String> ip;
   late final pulumi.Output<String> ipv6;
-
   /// The uniform resource name for the Load Balancer
   late final pulumi.Output<String> loadBalancerUrn;
-
   /// The Load Balancer name
   late final pulumi.Output<String> name;
-
   /// The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
   late final pulumi.Output<String?> network;
-
   /// The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
   late final pulumi.Output<String?> networkStack;
-
   /// The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
   late final pulumi.Output<String> projectId;
-
   /// A boolean value indicating whether
   /// HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
   /// Default value is `false`.
   late final pulumi.Output<bool?> redirectHttpToHttps;
-
   /// The region to start in
   late final pulumi.Output<String?> region;
-
   /// The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `size_unit` may be provided.
   late final pulumi.Output<String?> size;
-
   /// The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
   late final pulumi.Output<int> sizeUnit;
   late final pulumi.Output<String> status;
-
   /// A `sticky_sessions` block to be assigned to the
   /// Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
   late final pulumi.Output<LoadBalancerStickySessions> stickySessions;
-
   /// A list of Load Balancer IDs to be attached behind a Global Load Balancer.
   late final pulumi.Output<List<String>> targetLoadBalancerIds;
-
   /// The tls cipher policy controls the cipher suites to be used by the load balancer. It must be either of `DEFAULT` or `STRONG`. Defaults to `DEFAULT`.
   late final pulumi.Output<String?> tlsCipherPolicy;
-
   /// The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
   late final pulumi.Output<String> type;
-
   /// The ID of the VPC where the load balancer will be located.
   late final pulumi.Output<String> vpcUuid;
 
@@ -342,53 +316,22 @@ class LoadBalancer extends pulumi.CustomResource {
     LoadBalancerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/loadBalancer:LoadBalancer',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/loadBalancer:LoadBalancer',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     algorithm = registerOutput<String?>('algorithm');
-    disableLetsEncryptDnsRecords = registerOutput<bool?>(
-      'disableLetsEncryptDnsRecords',
-    );
+    disableLetsEncryptDnsRecords = registerOutput<bool?>('disableLetsEncryptDnsRecords');
     domains = registerOutput<List<Map<String, dynamic>>>('domains');
     dropletIds = registerOutput<List<int>>('dropletIds');
     dropletTag = registerOutput<String?>('dropletTag');
     enableBackendKeepalive = registerOutput<bool?>('enableBackendKeepalive');
     enableProxyProtocol = registerOutput<bool?>('enableProxyProtocol');
-    firewall = registerOutput<LoadBalancerFirewall>(
-      'firewall',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LoadBalancerFirewall.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    forwardingRules = registerOutput<List<Map<String, dynamic>>?>(
-      'forwardingRules',
-    );
-    glbSettings = registerOutput<LoadBalancerGlbSettings>(
-      'glbSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LoadBalancerGlbSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    healthcheck = registerOutput<LoadBalancerHealthcheck>(
-      'healthcheck',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LoadBalancerHealthcheck.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    firewall = registerOutput<LoadBalancerFirewall>('firewall', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerFirewall.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    forwardingRules = registerOutput<List<Map<String, dynamic>>?>('forwardingRules');
+    glbSettings = registerOutput<LoadBalancerGlbSettings>('glbSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerGlbSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    healthcheck = registerOutput<LoadBalancerHealthcheck>('healthcheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerHealthcheck.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     httpIdleTimeoutSeconds = registerOutput<int>('httpIdleTimeoutSeconds');
     ip = registerOutput<String>('ip');
     ipv6 = registerOutput<String>('ipv6');
@@ -402,19 +345,8 @@ class LoadBalancer extends pulumi.CustomResource {
     size = registerOutput<String?>('size');
     sizeUnit = registerOutput<int>('sizeUnit');
     status = registerOutput<String>('status');
-    stickySessions = registerOutput<LoadBalancerStickySessions>(
-      'stickySessions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LoadBalancerStickySessions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    targetLoadBalancerIds = registerOutput<List<String>>(
-      'targetLoadBalancerIds',
-    );
+    stickySessions = registerOutput<LoadBalancerStickySessions>('stickySessions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerStickySessions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    targetLoadBalancerIds = registerOutput<List<String>>('targetLoadBalancerIds');
     tlsCipherPolicy = registerOutput<String?>('tlsCipherPolicy');
     type = registerOutput<String>('type');
     vpcUuid = registerOutput<String>('vpcUuid');
@@ -438,53 +370,22 @@ class LoadBalancer extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/loadBalancer:LoadBalancer',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/loadBalancer:LoadBalancer',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     algorithm = registerOutput<String?>('algorithm');
-    disableLetsEncryptDnsRecords = registerOutput<bool?>(
-      'disableLetsEncryptDnsRecords',
-    );
+    disableLetsEncryptDnsRecords = registerOutput<bool?>('disableLetsEncryptDnsRecords');
     domains = registerOutput<List<Map<String, dynamic>>>('domains');
     dropletIds = registerOutput<List<int>>('dropletIds');
     dropletTag = registerOutput<String?>('dropletTag');
     enableBackendKeepalive = registerOutput<bool?>('enableBackendKeepalive');
     enableProxyProtocol = registerOutput<bool?>('enableProxyProtocol');
-    firewall = registerOutput<LoadBalancerFirewall>(
-      'firewall',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LoadBalancerFirewall.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    forwardingRules = registerOutput<List<Map<String, dynamic>>?>(
-      'forwardingRules',
-    );
-    glbSettings = registerOutput<LoadBalancerGlbSettings>(
-      'glbSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LoadBalancerGlbSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    healthcheck = registerOutput<LoadBalancerHealthcheck>(
-      'healthcheck',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LoadBalancerHealthcheck.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    firewall = registerOutput<LoadBalancerFirewall>('firewall', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerFirewall.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    forwardingRules = registerOutput<List<Map<String, dynamic>>?>('forwardingRules');
+    glbSettings = registerOutput<LoadBalancerGlbSettings>('glbSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerGlbSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    healthcheck = registerOutput<LoadBalancerHealthcheck>('healthcheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerHealthcheck.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     httpIdleTimeoutSeconds = registerOutput<int>('httpIdleTimeoutSeconds');
     ip = registerOutput<String>('ip');
     ipv6 = registerOutput<String>('ipv6');
@@ -498,19 +399,8 @@ class LoadBalancer extends pulumi.CustomResource {
     size = registerOutput<String?>('size');
     sizeUnit = registerOutput<int>('sizeUnit');
     status = registerOutput<String>('status');
-    stickySessions = registerOutput<LoadBalancerStickySessions>(
-      'stickySessions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LoadBalancerStickySessions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    targetLoadBalancerIds = registerOutput<List<String>>(
-      'targetLoadBalancerIds',
-    );
+    stickySessions = registerOutput<LoadBalancerStickySessions>('stickySessions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerStickySessions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    targetLoadBalancerIds = registerOutput<List<String>>('targetLoadBalancerIds');
     tlsCipherPolicy = registerOutput<String?>('tlsCipherPolicy');
     type = registerOutput<String>('type');
     vpcUuid = registerOutput<String>('vpcUuid');

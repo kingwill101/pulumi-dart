@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBlobInventoryPolicyArgs {
   /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
   final pulumi.Input<String> accountName;
-
   /// The name of the storage account blob inventory policy. It should always be 'default'
   final pulumi.Input<String> blobInventoryPolicyName;
-
   /// The name of the resource group within the user's subscription. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -37,12 +35,9 @@ class GetBlobInventoryPolicyArgs {
   factory GetBlobInventoryPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetBlobInventoryPolicyArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
-      blobInventoryPolicyName: pulumi.Input.fromValue(
-        map['blobInventoryPolicyName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      blobInventoryPolicyName: pulumi.Input.fromValue(map['blobInventoryPolicyName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

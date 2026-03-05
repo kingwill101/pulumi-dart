@@ -20,19 +20,14 @@ import 'backup_plan_state.dart';
 class BackupPlan extends pulumi.CustomResource {
   /// Specifies whether to activate the backup plan. Valid values: `True`, `False`. Default value: `True`.
   late final pulumi.Output<bool> active;
-
   /// The backup cycle. Valid values: `Friday`, `Monday`, `Saturday`, `Sunday`, `Thursday`, `Tuesday`, `Wednesday`.
   late final pulumi.Output<String> backupPeriod;
-
   /// The start time of the backup task each day. The time is displayed in UTC and denoted by Z.
   late final pulumi.Output<String> backupTime;
-
   /// The ID of the cluster for the backup.
   late final pulumi.Output<String> clusterId;
-
   /// The ID of the data center for the backup in the cluster.
   late final pulumi.Output<String> dataCenterId;
-
   /// The duration for which you want to retain the backup. Valid values: 1 to 30. Unit: days. Default value: `30`.
   late final pulumi.Output<int> retentionPeriod;
 
@@ -45,11 +40,11 @@ class BackupPlan extends pulumi.CustomResource {
     BackupPlanArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cassandra/backupPlan:BackupPlan',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cassandra/backupPlan:BackupPlan',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     active = registerOutput<bool>('active');
     backupPeriod = registerOutput<String>('backupPeriod');
     backupTime = registerOutput<String>('backupTime');
@@ -76,11 +71,11 @@ class BackupPlan extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cassandra/backupPlan:BackupPlan',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cassandra/backupPlan:BackupPlan',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     active = registerOutput<bool>('active');
     backupPeriod = registerOutput<String>('backupPeriod');
     backupTime = registerOutput<String>('backupTime');

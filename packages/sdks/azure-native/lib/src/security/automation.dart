@@ -800,37 +800,26 @@ import 'automation_args.dart';
 class Automation extends pulumi.CustomResource {
   /// A collection of the actions which are triggered if all the configured rules evaluations, within at least one rule set, are true.
   late final pulumi.Output<List<Map<String, dynamic>>?> actions;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The security automation description.
   late final pulumi.Output<String?> description;
-
   /// Entity tag is used for comparing two or more entities from the same requested resource.
   late final pulumi.Output<String?> etag;
-
   /// Indicates whether the security automation is enabled.
   late final pulumi.Output<bool?> isEnabled;
-
   /// Kind of the resource
   late final pulumi.Output<String?> kind;
-
   /// Location where the resource is stored
   late final pulumi.Output<String?> location;
-
   /// Resource name
   late final pulumi.Output<String> name;
-
   /// A collection of scopes on which the security automations logic is applied. Supported scopes are the subscription itself or a resource group under that subscription. The automation will only apply on defined scopes.
   late final pulumi.Output<List<Map<String, dynamic>>?> scopes;
-
   /// A collection of the source event types which evaluate the security automation set of rules.
   late final pulumi.Output<List<Map<String, dynamic>>?> sources;
-
   /// A list of key value pairs that describe the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -843,11 +832,11 @@ class Automation extends pulumi.CustomResource {
     AutomationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:security:Automation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:security:Automation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     actions = registerOutput<List<Map<String, dynamic>>?>('actions');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     description = registerOutput<String?>('description');

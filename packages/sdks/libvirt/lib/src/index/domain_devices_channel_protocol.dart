@@ -8,10 +8,14 @@ class DomainDevicesChannelProtocol {
 
   /// Creates a new [DomainDevicesChannelProtocol].
   /// [type] Specifies the type of protocol used for the EGD source backend.
-  DomainDevicesChannelProtocol({required this.type});
+  DomainDevicesChannelProtocol({
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': type};
+    return <String, dynamic>{
+      'type': type,
+    };
   }
 
   factory DomainDevicesChannelProtocol.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class DomainDevicesChannelProtocol {
     );
   }
 }
+

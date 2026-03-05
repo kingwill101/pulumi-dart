@@ -29,22 +29,13 @@ class GetAppServiceSiteConfigScmIpRestrictionHeaders {
     };
   }
 
-  factory GetAppServiceSiteConfigScmIpRestrictionHeaders.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetAppServiceSiteConfigScmIpRestrictionHeaders.fromMap(Map<String, dynamic> map) {
     return GetAppServiceSiteConfigScmIpRestrictionHeaders(
-      xAzureFdids: pulumi.Input.fromValue(
-        (map['xAzureFdids'] as List).cast<String>(),
-      ),
-      xFdHealthProbes: pulumi.Input.fromValue(
-        (map['xFdHealthProbes'] as List).cast<String>(),
-      ),
-      xForwardedFors: pulumi.Input.fromValue(
-        (map['xForwardedFors'] as List).cast<String>(),
-      ),
-      xForwardedHosts: pulumi.Input.fromValue(
-        (map['xForwardedHosts'] as List).cast<String>(),
-      ),
+      xAzureFdids: pulumi.Input.fromValue((map['xAzureFdids'] as List).cast<String>()),
+      xFdHealthProbes: pulumi.Input.fromValue((map['xFdHealthProbes'] as List).cast<String>()),
+      xForwardedFors: pulumi.Input.fromValue((map['xForwardedFors'] as List).cast<String>()),
+      xForwardedHosts: pulumi.Input.fromValue((map['xForwardedHosts'] as List).cast<String>()),
     );
   }
 }
+

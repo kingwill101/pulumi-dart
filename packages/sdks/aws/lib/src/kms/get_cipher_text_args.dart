@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCipherTextArgs {
   /// An optional mapping that makes up the encryption context.
   final pulumi.Input<Map<String, String>>? context;
-
   /// Globally unique key ID for the customer master key.
   final pulumi.Input<String> keyId;
-
   /// Data to be encrypted. Note that this may show up in logs, and it will be stored in the state file.
   final pulumi.Input<String> plaintext;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -42,20 +39,11 @@ class GetCipherTextArgs {
 
   factory GetCipherTextArgs.fromMap(Map<String, dynamic> map) {
     return GetCipherTextArgs(
-      context: (() {
-        final guardedValue = map['context'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      context: (() { final guardedValue = map['context']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       keyId: pulumi.Input.fromValue(map['keyId'] as String),
       plaintext: pulumi.Input.fromValue(map['plaintext'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

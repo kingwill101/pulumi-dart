@@ -6,11 +6,9 @@ class NotificationChannelSensitiveLabels {
   /// An authorization token for a notification channel. Channel types that support this field include: slack
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   final pulumi.Input<String>? authToken;
-
   /// An password for a notification channel. Channel types that support this field include: webhook_basicauth
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   final pulumi.Input<String>? password;
-
   /// An servicekey token for a notification channel. Channel types that support this field include: pagerduty
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   final pulumi.Input<String>? serviceKey;
@@ -35,21 +33,10 @@ class NotificationChannelSensitiveLabels {
 
   factory NotificationChannelSensitiveLabels.fromMap(Map<String, dynamic> map) {
     return NotificationChannelSensitiveLabels(
-      authToken: (() {
-        final guardedValue = map['authToken'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      password: (() {
-        final guardedValue = map['password'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serviceKey: (() {
-        final guardedValue = map['serviceKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      authToken: (() { final guardedValue = map['authToken']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serviceKey: (() { final guardedValue = map['serviceKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

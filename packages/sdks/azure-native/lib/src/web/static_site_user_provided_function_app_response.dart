@@ -6,22 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StaticSiteUserProvidedFunctionAppResponse {
   /// The date and time on which the function app was registered with the static site.
   final pulumi.Input<String> createdOn;
-
   /// The region of the function app registered with the static site
   final pulumi.Input<String>? functionAppRegion;
-
   /// The resource id of the function app registered with the static site
   final pulumi.Input<String>? functionAppResourceId;
-
   /// Resource Id.
   final pulumi.Input<String> id;
-
   /// Kind of resource.
   final pulumi.Input<String>? kind;
-
   /// Resource Name.
   final pulumi.Input<String> name;
-
   /// Resource type.
   final pulumi.Input<String> type;
 
@@ -55,29 +49,16 @@ class StaticSiteUserProvidedFunctionAppResponse {
     };
   }
 
-  factory StaticSiteUserProvidedFunctionAppResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory StaticSiteUserProvidedFunctionAppResponse.fromMap(Map<String, dynamic> map) {
     return StaticSiteUserProvidedFunctionAppResponse(
       createdOn: pulumi.Input.fromValue(map['createdOn'] as String),
-      functionAppRegion: (() {
-        final guardedValue = map['functionAppRegion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      functionAppResourceId: (() {
-        final guardedValue = map['functionAppResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      functionAppRegion: (() { final guardedValue = map['functionAppRegion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      functionAppResourceId: (() { final guardedValue = map['functionAppResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       id: pulumi.Input.fromValue(map['id'] as String),
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

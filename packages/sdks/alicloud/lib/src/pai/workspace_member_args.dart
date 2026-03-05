@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkspaceMemberArgs {
   /// The list of roles. see [how to use it](https://www.alibabacloud.com/help/en/pai/developer-reference/api-aiworkspace-2021-02-04-createmember).
   final pulumi.Input<List<String>> roles;
-
   /// The ID of the User.
   final pulumi.Input<String> userId;
-
   /// The ID of the Workspace.
   final pulumi.Input<String> workspaceId;
 
@@ -42,3 +40,4 @@ class WorkspaceMemberArgs {
     );
   }
 }
+

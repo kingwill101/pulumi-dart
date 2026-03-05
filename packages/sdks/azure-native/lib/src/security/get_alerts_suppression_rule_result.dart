@@ -6,34 +6,24 @@ import 'suppression_alerts_scope_response.dart';
 class GetAlertsSuppressionRuleResult {
   /// Type of the alert to automatically suppress. For all alert types, use '*'
   final String alertType;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Any comment regarding the rule
   final String? comment;
-
   /// Expiration date of the rule, if value is not provided or provided as null there will no expiration at all
   final String? expirationDateUtc;
-
   /// Resource Id
   final String id;
-
   /// The last time this rule was modified
   final String lastModifiedUtc;
-
   /// Resource name
   final String name;
-
   /// The reason for dismissing the alert
   final String reason;
-
   /// Possible states of the rule
   final String state;
-
   /// The suppression conditions
   final SuppressionAlertsScopeResponse? suppressionAlertsScope;
-
   /// Resource type
   final String type;
 
@@ -83,29 +73,16 @@ class GetAlertsSuppressionRuleResult {
     return GetAlertsSuppressionRuleResult(
       alertType: map['alertType'] as String,
       azureApiVersion: map['azureApiVersion'] as String,
-      comment: (() {
-        final guardedValue = map['comment'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      expirationDateUtc: (() {
-        final guardedValue = map['expirationDateUtc'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      comment: (() { final guardedValue = map['comment']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      expirationDateUtc: (() { final guardedValue = map['expirationDateUtc']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       lastModifiedUtc: map['lastModifiedUtc'] as String,
       name: map['name'] as String,
       reason: map['reason'] as String,
       state: map['state'] as String,
-      suppressionAlertsScope: (() {
-        final guardedValue = map['suppressionAlertsScope'];
-        if (guardedValue == null) return null;
-        return SuppressionAlertsScopeResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      suppressionAlertsScope: (() { final guardedValue = map['suppressionAlertsScope']; if (guardedValue == null) return null; return SuppressionAlertsScopeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       type: map['type'] as String,
     );
   }
 }
+

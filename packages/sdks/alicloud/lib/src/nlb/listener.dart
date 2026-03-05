@@ -704,7 +704,6 @@ import 'listener_state.dart';
 class Listener extends pulumi.CustomResource {
   /// Specifies whether to enable Application-Layer Protocol Negotiation (ALPN). Valid values:
   late final pulumi.Output<bool> alpnEnabled;
-
   /// The ALPN policy. Valid values:
   /// - `HTTP1Only`: uses only HTTP 1.x. The priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
   /// - `HTTP2Only`: uses only HTTP 2.0.
@@ -715,81 +714,61 @@ class Listener extends pulumi.CustomResource {
   ///
   /// &gt; **NOTE:**  Effective only for TCPSSL listener.
   late final pulumi.Output<String?> alpnPolicy;
-
   /// The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP.
   ///
   /// &gt; **NOTE:**  Only one CA certificate is supported.
   late final pulumi.Output<List<String>?> caCertificateIds;
-
   /// Specifies whether to enable mutual authentication. Valid values:
   late final pulumi.Output<bool> caEnabled;
-
   /// The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP.
   ///
   /// &gt; **NOTE:**  This parameter takes effect only for TCPSSL listeners.
   late final pulumi.Output<List<String>?> certificateIds;
-
   /// The maximum number of connections that can be created per second on the NLB instance. Valid values: `0` to `1000000`. `0` specifies that the number of connections is unlimited.
   late final pulumi.Output<int?> cps;
-
   /// The last port in the listener port range. Valid values: `0` to `65535`. The number of the last port must be greater than the number of the first port.
   ///
   /// &gt; **NOTE:**  This parameter is required when `ListenerPort` is set to `0`.
   late final pulumi.Output<int?> endPort;
-
   /// The timeout period of idle connections. Unit: seconds. Valid values: `1` to `900`. Default value: `900`.
   late final pulumi.Output<int> idleTimeout;
-
   /// Enter a name for the listener.
   /// The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
   late final pulumi.Output<String?> listenerDescription;
-
   /// The listener port. Valid values: `0` to `65535`.
   /// If you set the value to `0`, the listener listens by port range. If you set the value to `0`, you must specify `StartPort` and `EndPort`.
   late final pulumi.Output<int> listenerPort;
-
   /// The listening protocol. Valid values: `TCP`, `UDP`, and `TCPSSL`.
   late final pulumi.Output<String> listenerProtocol;
-
   /// The ID of the Network Load Balancer (NLB) instance.
   late final pulumi.Output<String> loadBalancerId;
-
   /// The maximum size of a TCP segment. Unit: bytes. Valid values: `0` to `1500`. `0` specifies that the maximum segment size remains unchanged.
   ///
   /// &gt; **NOTE:**  This parameter is supported only by TCP listeners and listeners that use SSL over TCP.
   late final pulumi.Output<int?> mss;
-
   /// The Proxy Protocol is used to carry the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to the backend server for configuration. See `proxy_protocol_config` below.
   late final pulumi.Output<ListenerProxyProtocolConfig> proxyProtocolConfig;
-
   /// Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Valid values:
   late final pulumi.Output<bool> proxyProtocolEnabled;
-
   /// The ID of the region where the Network Load Balancer (NLB) instance is deployed.
   /// You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/doc-detail/443657.html) operation to query the most recent region list.
   late final pulumi.Output<String> regionId;
-
   /// Specifies whether to enable fine-grained monitoring. Valid values:
   late final pulumi.Output<bool> secSensorEnabled;
-
   /// The security policy ID. System security policies and custom security policies are supported.
   ///
   /// Valid values: `tls_cipher_policy\_1\_0` (default), `tls_cipher_policy\_1\_1`, `tls_cipher_policy\_1\_2`, `tls_cipher_policy\_1\_2\_strict`, and `tls_cipher_policy\_1\_2\_strict_with\_1\_3`.
   ///
   /// &gt; **NOTE:**  This parameter takes effect only for listeners that use SSL over TCP.
   late final pulumi.Output<String> securityPolicyId;
-
   /// The ID of the server group.
   late final pulumi.Output<String> serverGroupId;
-
   /// The first port in the listener port range. Valid values: `0` to `65535`.
   ///
   /// &gt; **NOTE:**  This parameter is required when `ListenerPort` is set to `0`.
   late final pulumi.Output<int?> startPort;
-
   /// The status of the resource. Valid values: `Running`, `Stopped`. When you want to enable this instance, you can set the property value to `Running`;
   late final pulumi.Output<String> status;
-
   /// The tag of the resource
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -802,11 +781,11 @@ class Listener extends pulumi.CustomResource {
     ListenerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:nlb/listener:Listener',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:nlb/listener:Listener',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alpnEnabled = registerOutput<bool>('alpnEnabled');
     alpnPolicy = registerOutput<String?>('alpnPolicy');
     caCertificateIds = registerOutput<List<String>?>('caCertificateIds');
@@ -820,16 +799,7 @@ class Listener extends pulumi.CustomResource {
     listenerProtocol = registerOutput<String>('listenerProtocol');
     loadBalancerId = registerOutput<String>('loadBalancerId');
     mss = registerOutput<int?>('mss');
-    proxyProtocolConfig = registerOutput<ListenerProxyProtocolConfig>(
-      'proxyProtocolConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ListenerProxyProtocolConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    proxyProtocolConfig = registerOutput<ListenerProxyProtocolConfig>('proxyProtocolConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ListenerProxyProtocolConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     proxyProtocolEnabled = registerOutput<bool>('proxyProtocolEnabled');
     regionId = registerOutput<String>('regionId');
     secSensorEnabled = registerOutput<bool>('secSensorEnabled');
@@ -858,11 +828,11 @@ class Listener extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:nlb/listener:Listener',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:nlb/listener:Listener',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alpnEnabled = registerOutput<bool>('alpnEnabled');
     alpnPolicy = registerOutput<String?>('alpnPolicy');
     caCertificateIds = registerOutput<List<String>?>('caCertificateIds');
@@ -876,16 +846,7 @@ class Listener extends pulumi.CustomResource {
     listenerProtocol = registerOutput<String>('listenerProtocol');
     loadBalancerId = registerOutput<String>('loadBalancerId');
     mss = registerOutput<int?>('mss');
-    proxyProtocolConfig = registerOutput<ListenerProxyProtocolConfig>(
-      'proxyProtocolConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ListenerProxyProtocolConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    proxyProtocolConfig = registerOutput<ListenerProxyProtocolConfig>('proxyProtocolConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ListenerProxyProtocolConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     proxyProtocolEnabled = registerOutput<bool>('proxyProtocolEnabled');
     regionId = registerOutput<String>('regionId');
     secSensorEnabled = registerOutput<bool>('secSensorEnabled');

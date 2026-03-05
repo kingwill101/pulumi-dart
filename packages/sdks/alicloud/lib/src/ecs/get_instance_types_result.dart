@@ -6,30 +6,24 @@ import 'get_instance_types_instance_type.dart';
 /// Result data returned by getInstanceTypes.
 class GetInstanceTypesResult {
   final String? availabilityZone;
-
   /// Number of CPU cores.
   final int? cpuCoreCount;
-
   /// (Deprecated since v1.239.0) The maximum number of ENIs per instance. It sames as `eni_quantity`.
   final int? eniAmount;
   final int? gpuAmount;
   final String? gpuSpec;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of instance type IDs.
   final List<String> ids;
   final String? imageId;
   final String? instanceChargeType;
   final String? instanceType;
   final String? instanceTypeFamily;
-
   /// A list of image types. Each element contains the following attributes:
   final List<GetInstanceTypesInstanceType> instanceTypes;
   final bool? isOutdated;
   final String? kubernetesNodeRole;
-
   /// Size of memory, measured in GB.
   final double? memorySize;
   final int? minimumEniIpv6AddressQuantity;
@@ -101,11 +95,7 @@ class GetInstanceTypesResult {
       'instanceChargeType': ?instanceChargeType,
       'instanceType': ?instanceType,
       'instanceTypeFamily': ?instanceTypeFamily,
-      'instanceTypes':
-          pulumi.Input.encodeList<
-            GetInstanceTypesInstanceType,
-            Map<String, dynamic>
-          >(instanceTypes, (value) => value.toMap()),
+      'instanceTypes': pulumi.Input.encodeList<GetInstanceTypesInstanceType, Map<String, dynamic>>(instanceTypes, (value) => value.toMap()),
       'isOutdated': ?isOutdated,
       'kubernetesNodeRole': ?kubernetesNodeRole,
       'memorySize': ?memorySize,
@@ -121,109 +111,29 @@ class GetInstanceTypesResult {
 
   factory GetInstanceTypesResult.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypesResult(
-      availabilityZone: (() {
-        final guardedValue = map['availabilityZone'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      cpuCoreCount: (() {
-        final guardedValue = map['cpuCoreCount'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      eniAmount: (() {
-        final guardedValue = map['eniAmount'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      gpuAmount: (() {
-        final guardedValue = map['gpuAmount'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      gpuSpec: (() {
-        final guardedValue = map['gpuSpec'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      availabilityZone: (() { final guardedValue = map['availabilityZone']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      cpuCoreCount: (() { final guardedValue = map['cpuCoreCount']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      eniAmount: (() { final guardedValue = map['eniAmount']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      gpuAmount: (() { final guardedValue = map['gpuAmount']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      gpuSpec: (() { final guardedValue = map['gpuSpec']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      imageId: (() {
-        final guardedValue = map['imageId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      instanceChargeType: (() {
-        final guardedValue = map['instanceChargeType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      instanceType: (() {
-        final guardedValue = map['instanceType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      instanceTypeFamily: (() {
-        final guardedValue = map['instanceTypeFamily'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      instanceTypes: pulumi.Input.decodeList<GetInstanceTypesInstanceType>(
-        map['instanceTypes']!,
-        (value) => GetInstanceTypesInstanceType.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      isOutdated: (() {
-        final guardedValue = map['isOutdated'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      kubernetesNodeRole: (() {
-        final guardedValue = map['kubernetesNodeRole'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      memorySize: (() {
-        final guardedValue = map['memorySize'];
-        if (guardedValue == null) return null;
-        return guardedValue as double;
-      })(),
-      minimumEniIpv6AddressQuantity: (() {
-        final guardedValue = map['minimumEniIpv6AddressQuantity'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      minimumEniPrivateIpAddressQuantity: (() {
-        final guardedValue = map['minimumEniPrivateIpAddressQuantity'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      networkType: (() {
-        final guardedValue = map['networkType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      sortedBy: (() {
-        final guardedValue = map['sortedBy'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      spotStrategy: (() {
-        final guardedValue = map['spotStrategy'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      systemDiskCategory: (() {
-        final guardedValue = map['systemDiskCategory'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      imageId: (() { final guardedValue = map['imageId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      instanceChargeType: (() { final guardedValue = map['instanceChargeType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      instanceType: (() { final guardedValue = map['instanceType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      instanceTypeFamily: (() { final guardedValue = map['instanceTypeFamily']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      instanceTypes: pulumi.Input.decodeList<GetInstanceTypesInstanceType>(map['instanceTypes']!, (value) => GetInstanceTypesInstanceType.fromMap((value as Map).cast<String, dynamic>())),
+      isOutdated: (() { final guardedValue = map['isOutdated']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      kubernetesNodeRole: (() { final guardedValue = map['kubernetesNodeRole']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      memorySize: (() { final guardedValue = map['memorySize']; if (guardedValue == null) return null; return guardedValue as double; })(),
+      minimumEniIpv6AddressQuantity: (() { final guardedValue = map['minimumEniIpv6AddressQuantity']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      minimumEniPrivateIpAddressQuantity: (() { final guardedValue = map['minimumEniPrivateIpAddressQuantity']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      networkType: (() { final guardedValue = map['networkType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sortedBy: (() { final guardedValue = map['sortedBy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      spotStrategy: (() { final guardedValue = map['spotStrategy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemDiskCategory: (() { final guardedValue = map['systemDiskCategory']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

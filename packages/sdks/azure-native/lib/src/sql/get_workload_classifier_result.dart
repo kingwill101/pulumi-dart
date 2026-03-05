@@ -1,34 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getWorkloadClassifier.
 class GetWorkloadClassifierResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The workload classifier context.
   final String? context;
-
   /// The workload classifier end time for classification.
   final String? endTime;
-
   /// Resource ID.
   final String id;
-
   /// The workload classifier importance.
   final String? importance;
-
   /// The workload classifier label.
   final String? label;
-
   /// The workload classifier member name.
   final String memberName;
-
   /// Resource name.
   final String name;
-
   /// The workload classifier start time for classification.
   final String? startTime;
-
   /// Resource type.
   final String type;
 
@@ -74,35 +66,16 @@ class GetWorkloadClassifierResult {
   factory GetWorkloadClassifierResult.fromMap(Map<String, dynamic> map) {
     return GetWorkloadClassifierResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      context: (() {
-        final guardedValue = map['context'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      endTime: (() {
-        final guardedValue = map['endTime'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      context: (() { final guardedValue = map['context']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      endTime: (() { final guardedValue = map['endTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
-      importance: (() {
-        final guardedValue = map['importance'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      label: (() {
-        final guardedValue = map['label'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      importance: (() { final guardedValue = map['importance']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      label: (() { final guardedValue = map['label']; if (guardedValue == null) return null; return guardedValue as String; })(),
       memberName: map['memberName'] as String,
       name: map['name'] as String,
-      startTime: (() {
-        final guardedValue = map['startTime'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      startTime: (() { final guardedValue = map['startTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
       type: map['type'] as String,
     );
   }
 }
+

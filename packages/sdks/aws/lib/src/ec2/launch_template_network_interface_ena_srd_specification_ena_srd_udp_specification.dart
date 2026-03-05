@@ -15,18 +15,15 @@ class LaunchTemplateNetworkInterfaceEnaSrdSpecificationEnaSrdUdpSpecification {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enaSrdUdpEnabled': ?enaSrdUdpEnabled};
+    return <String, dynamic>{
+      'enaSrdUdpEnabled': ?enaSrdUdpEnabled,
+    };
   }
 
-  factory LaunchTemplateNetworkInterfaceEnaSrdSpecificationEnaSrdUdpSpecification.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LaunchTemplateNetworkInterfaceEnaSrdSpecificationEnaSrdUdpSpecification.fromMap(Map<String, dynamic> map) {
     return LaunchTemplateNetworkInterfaceEnaSrdSpecificationEnaSrdUdpSpecification(
-      enaSrdUdpEnabled: (() {
-        final guardedValue = map['enaSrdUdpEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enaSrdUdpEnabled: (() { final guardedValue = map['enaSrdUdpEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

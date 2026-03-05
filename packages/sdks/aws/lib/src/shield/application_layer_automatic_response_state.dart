@@ -7,7 +7,6 @@ import 'application_layer_automatic_response_timeouts.dart';
 class ApplicationLayerAutomaticResponseState {
   /// One of `COUNT` or `BLOCK`
   final pulumi.Input<String>? action;
-
   /// ARN of the resource to protect (Cloudfront Distributions and ALBs only at this time).
   final pulumi.Input<String>? resourceArn;
   final pulumi.Input<ApplicationLayerAutomaticResponseTimeouts>? timeouts;
@@ -26,37 +25,16 @@ class ApplicationLayerAutomaticResponseState {
     return <String, dynamic>{
       'action': ?action,
       'resourceArn': ?resourceArn,
-      'timeouts':
-          ?pulumi.Input.mapOptionalInputValue<
-            ApplicationLayerAutomaticResponseTimeouts,
-            Map<String, dynamic>
-          >(timeouts, (value) => value.toMap()),
+      'timeouts': ?pulumi.Input.mapOptionalInputValue<ApplicationLayerAutomaticResponseTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
     };
   }
 
-  factory ApplicationLayerAutomaticResponseState.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApplicationLayerAutomaticResponseState.fromMap(Map<String, dynamic> map) {
     return ApplicationLayerAutomaticResponseState(
-      action: (() {
-        final guardedValue = map['action'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceArn: (() {
-        final guardedValue = map['resourceArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      timeouts: (() {
-        final guardedValue = map['timeouts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ApplicationLayerAutomaticResponseTimeouts.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceArn: (() { final guardedValue = map['resourceArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      timeouts: (() { final guardedValue = map['timeouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ApplicationLayerAutomaticResponseTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

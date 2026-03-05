@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DedicatedCloudServiceArgs {
   /// dedicated cloud Service name
   final pulumi.Input<String>? dedicatedCloudServiceName;
-
   /// gateway Subnet for the account. It will collect the subnet address and always treat it as /28
   final pulumi.Input<String> gatewaySubnet;
-
   /// Azure region
   final pulumi.Input<String>? location;
-
   /// The name of the resource group
   final pulumi.Input<String> resourceGroupName;
-
   /// The list of tags
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -48,27 +44,12 @@ class DedicatedCloudServiceArgs {
 
   factory DedicatedCloudServiceArgs.fromMap(Map<String, dynamic> map) {
     return DedicatedCloudServiceArgs(
-      dedicatedCloudServiceName: (() {
-        final guardedValue = map['dedicatedCloudServiceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dedicatedCloudServiceName: (() { final guardedValue = map['dedicatedCloudServiceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       gatewaySubnet: pulumi.Input.fromValue(map['gatewaySubnet'] as String),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

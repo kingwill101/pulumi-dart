@@ -7,7 +7,6 @@ import 'get_db_clusters_cluster.dart';
 class GetDbClustersResult {
   /// A list of SelectDB DBClusters. Each element contains the following attributes:
   final List<GetDbClustersCluster> clusters;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -27,11 +26,7 @@ class GetDbClustersResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'clusters':
-          pulumi.Input.encodeList<GetDbClustersCluster, Map<String, dynamic>>(
-            clusters,
-            (value) => value.toMap(),
-          ),
+      'clusters': pulumi.Input.encodeList<GetDbClustersCluster, Map<String, dynamic>>(clusters, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'outputFile': ?outputFile,
@@ -40,19 +35,11 @@ class GetDbClustersResult {
 
   factory GetDbClustersResult.fromMap(Map<String, dynamic> map) {
     return GetDbClustersResult(
-      clusters: pulumi.Input.decodeList<GetDbClustersCluster>(
-        map['clusters']!,
-        (value) => GetDbClustersCluster.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      clusters: pulumi.Input.decodeList<GetDbClustersCluster>(map['clusters']!, (value) => GetDbClustersCluster.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

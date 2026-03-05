@@ -18,8 +18,7 @@ enum RegionBackendServiceProtocolComputeV1 {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown RegionBackendServiceProtocolComputeV1 value: $value',
-    );
+    throw ArgumentError('Unknown RegionBackendServiceProtocolComputeV1 value: $value');
   }
 }
+

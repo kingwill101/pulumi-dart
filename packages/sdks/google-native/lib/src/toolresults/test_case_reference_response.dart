@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TestCaseReferenceResponse {
   /// The name of the class.
   final pulumi.Input<String> className;
-
   /// The name of the test case. Required.
   final pulumi.Input<String> name;
-
   /// The name of the test suite to which this test case belongs.
   final pulumi.Input<String> testSuiteName;
 
@@ -39,3 +37,4 @@ class TestCaseReferenceResponse {
     );
   }
 }
+

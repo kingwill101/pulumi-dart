@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProjectSecondarySourceVersion {
   /// An identifier for a source in the build project.
   final pulumi.Input<String> sourceIdentifier;
-
   /// The source version for the corresponding source identifier.
   /// See [AWS docs](https://docs.aws.amazon.com/codebuild/latest/APIReference/API_ProjectSourceVersion.html#CodeBuild-Type-ProjectSourceVersion-sourceVersion)
   /// for more details.
@@ -28,10 +27,9 @@ class ProjectSecondarySourceVersion {
 
   factory ProjectSecondarySourceVersion.fromMap(Map<String, dynamic> map) {
     return ProjectSecondarySourceVersion(
-      sourceIdentifier: pulumi.Input.fromValue(
-        map['sourceIdentifier'] as String,
-      ),
+      sourceIdentifier: pulumi.Input.fromValue(map['sourceIdentifier'] as String),
       sourceVersion: pulumi.Input.fromValue(map['sourceVersion'] as String),
     );
   }
 }
+

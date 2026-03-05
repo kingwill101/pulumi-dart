@@ -123,30 +123,23 @@ class PortForwardingV2 extends pulumi.CustomResource {
   /// A text describing the port forwarding. Changing this
   /// updates the `description` of an existing port forwarding.
   late final pulumi.Output<String?> description;
-
   /// The TCP/UDP/other protocol port number of the port forwarding. Changing this
   /// updates the `external_port` of an existing port forwarding.
   late final pulumi.Output<int> externalPort;
-
   /// The ID of the Neutron floating IP address. Changing this creates a new port forwarding.
   late final pulumi.Output<String> floatingipId;
-
   /// The fixed IPv4 address of the Neutron port associated with the port forwarding.
   /// Changing this updates the `internal_ip_address` of an existing port forwarding.
   late final pulumi.Output<String> internalIpAddress;
-
   /// The TCP/UDP/other protocol port number of the Neutron port fixed IP address associated to the
   /// port forwarding. Changing this updates the `internal_port` of an existing port forwarding.
   late final pulumi.Output<int> internalPort;
-
   /// The ID of the Neutron port associated with the port forwarding. Changing
   /// this updates the `internal_port_id` of an existing port forwarding.
   late final pulumi.Output<String> internalPortId;
-
   /// The IP protocol used in the port forwarding. Changing this updates the `protocol`
   /// of an existing port forwarding.
   late final pulumi.Output<String> protocol;
-
   /// The region in which to obtain the V2 networking client.
   /// A networking client is needed to create a port forwarding. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
@@ -162,11 +155,11 @@ class PortForwardingV2 extends pulumi.CustomResource {
     PortForwardingV2Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:networking/portForwardingV2:PortForwardingV2',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:networking/portForwardingV2:PortForwardingV2',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     externalPort = registerOutput<int>('externalPort');
     floatingipId = registerOutput<String>('floatingipId');
@@ -195,11 +188,11 @@ class PortForwardingV2 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:networking/portForwardingV2:PortForwardingV2',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:networking/portForwardingV2:PortForwardingV2',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     externalPort = registerOutput<int>('externalPort');
     floatingipId = registerOutput<String>('floatingipId');

@@ -15,3 +15,4 @@ enum BgpMultiHop {
     throw ArgumentError('Unknown BgpMultiHop value: $value');
   }
 }
+

@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ThresholdCustomAlertRuleResponse {
   /// The description of the custom alert.
   final pulumi.Input<String> description;
-
   /// The display name of the custom alert.
   final pulumi.Input<String> displayName;
-
   /// Status of the custom alert.
   final pulumi.Input<bool> isEnabled;
-
   /// The maximum threshold.
   final pulumi.Input<int> maxThreshold;
-
   /// The minimum threshold.
   final pulumi.Input<int> minThreshold;
-
   /// The type of the custom alert rule.
   /// Expected value is 'ThresholdCustomAlertRule'.
   final pulumi.Input<String> ruleType;
@@ -61,3 +56,4 @@ class ThresholdCustomAlertRuleResponse {
     );
   }
 }
+

@@ -239,28 +239,20 @@ import 'web_app_sites_controller_args.dart';
 class WebAppSitesController extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Gets or sets the discovery scenario.
   late final pulumi.Output<String?> discoveryScenario;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// provisioning state enum
   late final pulumi.Output<String> provisioningState;
-
   /// Gets the service endpoint.
   late final pulumi.Output<String> serviceEndpoint;
-
   /// Gets or sets the appliance details used by service to communicate
   ///
   /// to the appliance.
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  siteAppliancePropertiesCollection;
-
+  late final pulumi.Output<List<Map<String, dynamic>>?> siteAppliancePropertiesCollection;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -273,30 +265,18 @@ class WebAppSitesController extends pulumi.CustomResource {
     WebAppSitesControllerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:offazure:WebAppSitesController',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:offazure:WebAppSitesController',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     discoveryScenario = registerOutput<String?>('discoveryScenario');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     serviceEndpoint = registerOutput<String>('serviceEndpoint');
-    siteAppliancePropertiesCollection =
-        registerOutput<List<Map<String, dynamic>>?>(
-          'siteAppliancePropertiesCollection',
-        );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    siteAppliancePropertiesCollection = registerOutput<List<Map<String, dynamic>>?>('siteAppliancePropertiesCollection');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

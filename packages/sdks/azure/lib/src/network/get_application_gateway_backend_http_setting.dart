@@ -7,55 +7,34 @@ import 'get_application_gateway_backend_http_setting_connection_draining.dart';
 class GetApplicationGatewayBackendHttpSetting {
   /// The name of the affinity cookie.
   final pulumi.Input<String> affinityCookieName;
-
   /// One or more `authentication_certificate` blocks as defined below.
-  final pulumi.Input<
-    List<GetApplicationGatewayBackendHttpSettingAuthenticationCertificate>
-  >
-  authenticationCertificates;
-
+  final pulumi.Input<List<GetApplicationGatewayBackendHttpSettingAuthenticationCertificate>> authenticationCertificates;
   /// A `connection_draining` block as defined below.
-  final pulumi.Input<
-    List<GetApplicationGatewayBackendHttpSettingConnectionDraining>
-  >
-  connectionDrainings;
-
+  final pulumi.Input<List<GetApplicationGatewayBackendHttpSettingConnectionDraining>> connectionDrainings;
   /// Is Cookie-Based Affinity enabled?
   final pulumi.Input<String> cookieBasedAffinity;
-
   /// Whether a dedicated backend connection is used.
   final pulumi.Input<bool> dedicatedBackendConnectionEnabled;
-
   /// The Hostname which is used for this HTTP Listener.
   final pulumi.Input<String> hostName;
-
   /// The ID of the Rewrite Rule Set
   final pulumi.Input<String> id;
-
   /// The name of this Application Gateway.
   final pulumi.Input<String> name;
-
   /// The URL path to rewrite.
   final pulumi.Input<String> path;
-
   /// Whether host header will be picked from the host name of the backend server.
   final pulumi.Input<bool> pickHostNameFromBackendAddress;
-
   /// Custom port which is used for probing the backend servers.
   final pulumi.Input<int> port;
-
   /// The ID of the associated Probe.
   final pulumi.Input<String> probeId;
-
   /// The name of the associated HTTP Probe.
   final pulumi.Input<String> probeName;
-
   /// The Protocol used for this Probe.
   final pulumi.Input<String> protocol;
-
   /// The request timeout in seconds.
   final pulumi.Input<int> requestTimeout;
-
   /// A list of `trusted_root_certificate` names.
   final pulumi.Input<List<String>> trustedRootCertificateNames;
 
@@ -98,32 +77,8 @@ class GetApplicationGatewayBackendHttpSetting {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'affinityCookieName': affinityCookieName,
-      'authenticationCertificates':
-          pulumi.Input.mapInputValue<
-            List<
-              GetApplicationGatewayBackendHttpSettingAuthenticationCertificate
-            >,
-            List<Map<String, dynamic>>
-          >(
-            authenticationCertificates,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetApplicationGatewayBackendHttpSettingAuthenticationCertificate,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'connectionDrainings':
-          pulumi.Input.mapInputValue<
-            List<GetApplicationGatewayBackendHttpSettingConnectionDraining>,
-            List<Map<String, dynamic>>
-          >(
-            connectionDrainings,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetApplicationGatewayBackendHttpSettingConnectionDraining,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'authenticationCertificates': pulumi.Input.mapInputValue<List<GetApplicationGatewayBackendHttpSettingAuthenticationCertificate>, List<Map<String, dynamic>>>(authenticationCertificates, (value) => pulumi.Input.encodeList<GetApplicationGatewayBackendHttpSettingAuthenticationCertificate, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'connectionDrainings': pulumi.Input.mapInputValue<List<GetApplicationGatewayBackendHttpSettingConnectionDraining>, List<Map<String, dynamic>>>(connectionDrainings, (value) => pulumi.Input.encodeList<GetApplicationGatewayBackendHttpSettingConnectionDraining, Map<String, dynamic>>(value, (value) => value.toMap())),
       'cookieBasedAffinity': cookieBasedAffinity,
       'dedicatedBackendConnectionEnabled': dedicatedBackendConnectionEnabled,
       'hostName': hostName,
@@ -140,56 +95,25 @@ class GetApplicationGatewayBackendHttpSetting {
     };
   }
 
-  factory GetApplicationGatewayBackendHttpSetting.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetApplicationGatewayBackendHttpSetting.fromMap(Map<String, dynamic> map) {
     return GetApplicationGatewayBackendHttpSetting(
-      affinityCookieName: pulumi.Input.fromValue(
-        map['affinityCookieName'] as String,
-      ),
-      authenticationCertificates: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GetApplicationGatewayBackendHttpSettingAuthenticationCertificate
-        >(
-          map['authenticationCertificates']!,
-          (value) =>
-              GetApplicationGatewayBackendHttpSettingAuthenticationCertificate.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
-      connectionDrainings: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GetApplicationGatewayBackendHttpSettingConnectionDraining
-        >(
-          map['connectionDrainings']!,
-          (value) =>
-              GetApplicationGatewayBackendHttpSettingConnectionDraining.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
-      cookieBasedAffinity: pulumi.Input.fromValue(
-        map['cookieBasedAffinity'] as String,
-      ),
-      dedicatedBackendConnectionEnabled: pulumi.Input.fromValue(
-        map['dedicatedBackendConnectionEnabled'] as bool,
-      ),
+      affinityCookieName: pulumi.Input.fromValue(map['affinityCookieName'] as String),
+      authenticationCertificates: pulumi.Input.fromValue(pulumi.Input.decodeList<GetApplicationGatewayBackendHttpSettingAuthenticationCertificate>(map['authenticationCertificates']!, (value) => GetApplicationGatewayBackendHttpSettingAuthenticationCertificate.fromMap((value as Map).cast<String, dynamic>()))),
+      connectionDrainings: pulumi.Input.fromValue(pulumi.Input.decodeList<GetApplicationGatewayBackendHttpSettingConnectionDraining>(map['connectionDrainings']!, (value) => GetApplicationGatewayBackendHttpSettingConnectionDraining.fromMap((value as Map).cast<String, dynamic>()))),
+      cookieBasedAffinity: pulumi.Input.fromValue(map['cookieBasedAffinity'] as String),
+      dedicatedBackendConnectionEnabled: pulumi.Input.fromValue(map['dedicatedBackendConnectionEnabled'] as bool),
       hostName: pulumi.Input.fromValue(map['hostName'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       path: pulumi.Input.fromValue(map['path'] as String),
-      pickHostNameFromBackendAddress: pulumi.Input.fromValue(
-        map['pickHostNameFromBackendAddress'] as bool,
-      ),
+      pickHostNameFromBackendAddress: pulumi.Input.fromValue(map['pickHostNameFromBackendAddress'] as bool),
       port: pulumi.Input.fromValue(map['port'] as int),
       probeId: pulumi.Input.fromValue(map['probeId'] as String),
       probeName: pulumi.Input.fromValue(map['probeName'] as String),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
       requestTimeout: pulumi.Input.fromValue(map['requestTimeout'] as int),
-      trustedRootCertificateNames: pulumi.Input.fromValue(
-        (map['trustedRootCertificateNames'] as List).cast<String>(),
-      ),
+      trustedRootCertificateNames: pulumi.Input.fromValue((map['trustedRootCertificateNames'] as List).cast<String>()),
     );
   }
 }
+

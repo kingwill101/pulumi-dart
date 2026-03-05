@@ -15,3 +15,4 @@ enum PersonalDesktopAssignmentType {
     throw ArgumentError('Unknown PersonalDesktopAssignmentType value: $value');
   }
 }
+

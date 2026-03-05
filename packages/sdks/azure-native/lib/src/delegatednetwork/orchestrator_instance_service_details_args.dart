@@ -11,37 +11,26 @@ import 'orchestrator_identity.dart';
 class OrchestratorInstanceServiceDetailsArgs {
   /// K8s APIServer url. Either one of apiServerEndpoint or privateLinkResourceId can be specified
   final pulumi.Input<String>? apiServerEndpoint;
-
   /// RootCA certificate of kubernetes cluster base64 encoded
   final pulumi.Input<String>? clusterRootCA;
-
   /// Properties of the controller.
   final pulumi.Input<ControllerDetailsDelegatednetwork> controllerDetails;
-
   /// The identity of the orchestrator
   final pulumi.Input<OrchestratorIdentity>? identity;
-
   /// The kind of workbook. Choices are user and shared.
   final pulumi.Input<String> kind;
-
   /// Location of the resource.
   final pulumi.Input<String>? location;
-
   /// AAD ID used with apiserver
   final pulumi.Input<String>? orchestratorAppId;
-
   /// TenantID of server App ID
   final pulumi.Input<String>? orchestratorTenantId;
-
   /// private link arm resource id. Either one of apiServerEndpoint or privateLinkResourceId can be specified
   final pulumi.Input<String>? privateLinkResourceId;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the resource. It must be a minimum of 3 characters, and a maximum of 63.
   final pulumi.Input<String>? resourceName;
-
   /// The resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -78,11 +67,7 @@ class OrchestratorInstanceServiceDetailsArgs {
       'apiServerEndpoint': ?apiServerEndpoint,
       'clusterRootCA': ?clusterRootCA,
       'controllerDetails': controllerDetails,
-      'identity':
-          ?pulumi.Input.mapOptionalInputValue<
-            OrchestratorIdentity,
-            Map<String, dynamic>
-          >(identity, (value) => value.toMap()),
+      'identity': ?pulumi.Input.mapOptionalInputValue<OrchestratorIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
       'kind': kind,
       'location': ?location,
       'orchestratorAppId': ?orchestratorAppId,
@@ -94,68 +79,21 @@ class OrchestratorInstanceServiceDetailsArgs {
     };
   }
 
-  factory OrchestratorInstanceServiceDetailsArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OrchestratorInstanceServiceDetailsArgs.fromMap(Map<String, dynamic> map) {
     return OrchestratorInstanceServiceDetailsArgs(
-      apiServerEndpoint: (() {
-        final guardedValue = map['apiServerEndpoint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      clusterRootCA: (() {
-        final guardedValue = map['clusterRootCA'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      controllerDetails: pulumi.Input.fromValue(
-        map['controllerDetails'] as ControllerDetailsDelegatednetwork,
-      ),
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          OrchestratorIdentity.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      apiServerEndpoint: (() { final guardedValue = map['apiServerEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      clusterRootCA: (() { final guardedValue = map['clusterRootCA']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      controllerDetails: pulumi.Input.fromValue(map['controllerDetails'] as ControllerDetailsDelegatednetwork),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OrchestratorIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       kind: pulumi.Input.fromValue(map['kind'] as String),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      orchestratorAppId: (() {
-        final guardedValue = map['orchestratorAppId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      orchestratorTenantId: (() {
-        final guardedValue = map['orchestratorTenantId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      privateLinkResourceId: (() {
-        final guardedValue = map['privateLinkResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      resourceName: (() {
-        final guardedValue = map['resourceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      orchestratorAppId: (() { final guardedValue = map['orchestratorAppId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      orchestratorTenantId: (() { final guardedValue = map['orchestratorTenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateLinkResourceId: (() { final guardedValue = map['privateLinkResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      resourceName: (() { final guardedValue = map['resourceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

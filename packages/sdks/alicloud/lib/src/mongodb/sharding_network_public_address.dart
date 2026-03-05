@@ -365,10 +365,8 @@ import 'sharding_network_public_address_state.dart';
 class ShardingNetworkPublicAddress extends pulumi.CustomResource {
   /// The ID of the instance.
   late final pulumi.Output<String> dbInstanceId;
-
   /// The endpoint of the instance.
   late final pulumi.Output<List<Map<String, dynamic>>> networkAddresses;
-
   /// The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
   late final pulumi.Output<String> nodeId;
 
@@ -381,15 +379,13 @@ class ShardingNetworkPublicAddress extends pulumi.CustomResource {
     ShardingNetworkPublicAddressArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:mongodb/shardingNetworkPublicAddress:ShardingNetworkPublicAddress',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:mongodb/shardingNetworkPublicAddress:ShardingNetworkPublicAddress',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dbInstanceId = registerOutput<String>('dbInstanceId');
-    networkAddresses = registerOutput<List<Map<String, dynamic>>>(
-      'networkAddresses',
-    );
+    networkAddresses = registerOutput<List<Map<String, dynamic>>>('networkAddresses');
     nodeId = registerOutput<String>('nodeId');
   }
 
@@ -411,15 +407,13 @@ class ShardingNetworkPublicAddress extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:mongodb/shardingNetworkPublicAddress:ShardingNetworkPublicAddress',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:mongodb/shardingNetworkPublicAddress:ShardingNetworkPublicAddress',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dbInstanceId = registerOutput<String>('dbInstanceId');
-    networkAddresses = registerOutput<List<Map<String, dynamic>>>(
-      'networkAddresses',
-    );
+    networkAddresses = registerOutput<List<Map<String, dynamic>>>('networkAddresses');
     nodeId = registerOutput<String>('nodeId');
   }
 }

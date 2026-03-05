@@ -7,16 +7,13 @@ enum CloudRunConfigLoadBalancerTypeContainerV1beta1 {
   const CloudRunConfigLoadBalancerTypeContainerV1beta1(this.wireValue);
   final String wireValue;
 
-  static CloudRunConfigLoadBalancerTypeContainerV1beta1 fromValue(
-    String value,
-  ) {
+  static CloudRunConfigLoadBalancerTypeContainerV1beta1 fromValue(String value) {
     for (final item in CloudRunConfigLoadBalancerTypeContainerV1beta1.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown CloudRunConfigLoadBalancerTypeContainerV1beta1 value: $value',
-    );
+    throw ArgumentError('Unknown CloudRunConfigLoadBalancerTypeContainerV1beta1 value: $value');
   }
 }
+

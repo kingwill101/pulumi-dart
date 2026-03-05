@@ -7,29 +7,19 @@ import 'status_response_containeranalysis_v1beta1.dart';
 
 /// Provides information about the analysis status of a discovered resource.
 class DiscoveredResponseContaineranalysisV1beta1 {
-  final pulumi.Input<AnalysisCompletedResponseContaineranalysisV1beta1>
-  analysisCompleted;
-
+  final pulumi.Input<AnalysisCompletedResponseContaineranalysisV1beta1> analysisCompleted;
   /// Indicates any errors encountered during analysis of a resource. There could be 0 or more of these errors.
-  final pulumi.Input<List<StatusResponseContaineranalysisV1beta1>>
-  analysisError;
-
+  final pulumi.Input<List<StatusResponseContaineranalysisV1beta1>> analysisError;
   /// The status of discovery for the resource.
   final pulumi.Input<String> analysisStatus;
-
   /// When an error is encountered this will contain a LocalizedMessage under details to show to the user. The LocalizedMessage is output only and populated by the API.
-  final pulumi.Input<StatusResponseContaineranalysisV1beta1>
-  analysisStatusError;
-
+  final pulumi.Input<StatusResponseContaineranalysisV1beta1> analysisStatusError;
   /// Whether the resource is continuously analyzed.
   final pulumi.Input<String> continuousAnalysis;
-
   /// The last time continuous analysis was done for this resource. Deprecated, do not use.
   final pulumi.Input<String> lastAnalysisTime;
-
   /// The last time this resource was scanned.
   final pulumi.Input<String> lastScanTime;
-
   /// The status of an SBOM generation.
   final pulumi.Input<SBOMStatusResponseContaineranalysisV1beta1> sbomStatus;
 
@@ -55,75 +45,28 @@ class DiscoveredResponseContaineranalysisV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'analysisCompleted':
-          pulumi.Input.mapInputValue<
-            AnalysisCompletedResponseContaineranalysisV1beta1,
-            Map<String, dynamic>
-          >(analysisCompleted, (value) => value.toMap()),
-      'analysisError':
-          pulumi.Input.mapInputValue<
-            List<StatusResponseContaineranalysisV1beta1>,
-            List<Map<String, dynamic>>
-          >(
-            analysisError,
-            (value) =>
-                pulumi.Input.encodeList<
-                  StatusResponseContaineranalysisV1beta1,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'analysisCompleted': pulumi.Input.mapInputValue<AnalysisCompletedResponseContaineranalysisV1beta1, Map<String, dynamic>>(analysisCompleted, (value) => value.toMap()),
+      'analysisError': pulumi.Input.mapInputValue<List<StatusResponseContaineranalysisV1beta1>, List<Map<String, dynamic>>>(analysisError, (value) => pulumi.Input.encodeList<StatusResponseContaineranalysisV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
       'analysisStatus': analysisStatus,
-      'analysisStatusError':
-          pulumi.Input.mapInputValue<
-            StatusResponseContaineranalysisV1beta1,
-            Map<String, dynamic>
-          >(analysisStatusError, (value) => value.toMap()),
+      'analysisStatusError': pulumi.Input.mapInputValue<StatusResponseContaineranalysisV1beta1, Map<String, dynamic>>(analysisStatusError, (value) => value.toMap()),
       'continuousAnalysis': continuousAnalysis,
       'lastAnalysisTime': lastAnalysisTime,
       'lastScanTime': lastScanTime,
-      'sbomStatus':
-          pulumi.Input.mapInputValue<
-            SBOMStatusResponseContaineranalysisV1beta1,
-            Map<String, dynamic>
-          >(sbomStatus, (value) => value.toMap()),
+      'sbomStatus': pulumi.Input.mapInputValue<SBOMStatusResponseContaineranalysisV1beta1, Map<String, dynamic>>(sbomStatus, (value) => value.toMap()),
     };
   }
 
-  factory DiscoveredResponseContaineranalysisV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DiscoveredResponseContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return DiscoveredResponseContaineranalysisV1beta1(
-      analysisCompleted: pulumi.Input.fromValue(
-        AnalysisCompletedResponseContaineranalysisV1beta1.fromMap(
-          (map['analysisCompleted']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      analysisError: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<StatusResponseContaineranalysisV1beta1>(
-          map['analysisError']!,
-          (value) => StatusResponseContaineranalysisV1beta1.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      analysisCompleted: pulumi.Input.fromValue(AnalysisCompletedResponseContaineranalysisV1beta1.fromMap((map['analysisCompleted']! as Map).cast<String, dynamic>())),
+      analysisError: pulumi.Input.fromValue(pulumi.Input.decodeList<StatusResponseContaineranalysisV1beta1>(map['analysisError']!, (value) => StatusResponseContaineranalysisV1beta1.fromMap((value as Map).cast<String, dynamic>()))),
       analysisStatus: pulumi.Input.fromValue(map['analysisStatus'] as String),
-      analysisStatusError: pulumi.Input.fromValue(
-        StatusResponseContaineranalysisV1beta1.fromMap(
-          (map['analysisStatusError']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      continuousAnalysis: pulumi.Input.fromValue(
-        map['continuousAnalysis'] as String,
-      ),
-      lastAnalysisTime: pulumi.Input.fromValue(
-        map['lastAnalysisTime'] as String,
-      ),
+      analysisStatusError: pulumi.Input.fromValue(StatusResponseContaineranalysisV1beta1.fromMap((map['analysisStatusError']! as Map).cast<String, dynamic>())),
+      continuousAnalysis: pulumi.Input.fromValue(map['continuousAnalysis'] as String),
+      lastAnalysisTime: pulumi.Input.fromValue(map['lastAnalysisTime'] as String),
       lastScanTime: pulumi.Input.fromValue(map['lastScanTime'] as String),
-      sbomStatus: pulumi.Input.fromValue(
-        SBOMStatusResponseContaineranalysisV1beta1.fromMap(
-          (map['sbomStatus']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      sbomStatus: pulumi.Input.fromValue(SBOMStatusResponseContaineranalysisV1beta1.fromMap((map['sbomStatus']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

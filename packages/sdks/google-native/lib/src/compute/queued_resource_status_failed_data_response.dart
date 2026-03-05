@@ -10,27 +10,20 @@ class QueuedResourceStatusFailedDataResponse {
 
   /// Creates a new [QueuedResourceStatusFailedDataResponse].
   /// [error] The error(s) that caused the QueuedResource to enter the FAILED state.
-  QueuedResourceStatusFailedDataResponse({required this.error});
+  QueuedResourceStatusFailedDataResponse({
+    required this.error,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'error':
-          pulumi.Input.mapInputValue<
-            QueuedResourceStatusFailedDataErrorResponse,
-            Map<String, dynamic>
-          >(error, (value) => value.toMap()),
+      'error': pulumi.Input.mapInputValue<QueuedResourceStatusFailedDataErrorResponse, Map<String, dynamic>>(error, (value) => value.toMap()),
     };
   }
 
-  factory QueuedResourceStatusFailedDataResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory QueuedResourceStatusFailedDataResponse.fromMap(Map<String, dynamic> map) {
     return QueuedResourceStatusFailedDataResponse(
-      error: pulumi.Input.fromValue(
-        QueuedResourceStatusFailedDataErrorResponse.fromMap(
-          (map['error']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      error: pulumi.Input.fromValue(QueuedResourceStatusFailedDataErrorResponse.fromMap((map['error']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

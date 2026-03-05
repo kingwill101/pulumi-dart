@@ -10,22 +10,20 @@ class Gateway {
 
   /// Creates a new [Gateway].
   /// [type] The type of hosting used by the gateway.
-  Gateway({required this.type});
+  Gateway({
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'type': pulumi.Input.mapInputValue<GatewayType, String>(
-        type,
-        (value) => value.wireValue,
-      ),
+      'type': pulumi.Input.mapInputValue<GatewayType, String>(type, (value) => value.wireValue),
     };
   }
 
   factory Gateway.fromMap(Map<String, dynamic> map) {
     return Gateway(
-      type: pulumi.Input.fromValue(
-        GatewayType.fromValue(map['type']! as String),
-      ),
+      type: pulumi.Input.fromValue(GatewayType.fromValue(map['type']! as String)),
     );
   }
 }
+

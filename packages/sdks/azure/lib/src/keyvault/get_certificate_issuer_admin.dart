@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCertificateIssuerAdmin {
   /// E-mail address of the admin.
   final pulumi.Input<String> emailAddress;
-
   /// First name of the admin.
   final pulumi.Input<String> firstName;
-
   /// Last name of the admin.
   final pulumi.Input<String> lastName;
-
   /// Phone number of the admin.
   final pulumi.Input<String> phone;
 
@@ -45,3 +42,4 @@ class GetCertificateIssuerAdmin {
     );
   }
 }
+

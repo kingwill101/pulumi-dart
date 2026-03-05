@@ -8,17 +8,20 @@ class GetClusterNodeConfigContainerdConfigWritableCgroup {
 
   /// Creates a new [GetClusterNodeConfigContainerdConfigWritableCgroup].
   /// [enabled] Whether writable cgroups are enabled.
-  GetClusterNodeConfigContainerdConfigWritableCgroup({required this.enabled});
+  GetClusterNodeConfigContainerdConfigWritableCgroup({
+    required this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled};
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
-  factory GetClusterNodeConfigContainerdConfigWritableCgroup.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetClusterNodeConfigContainerdConfigWritableCgroup.fromMap(Map<String, dynamic> map) {
     return GetClusterNodeConfigContainerdConfigWritableCgroup(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
+

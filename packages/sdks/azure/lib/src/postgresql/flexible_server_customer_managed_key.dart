@@ -7,17 +7,14 @@ class FlexibleServerCustomerManagedKey {
   ///
   /// &gt; **Note:** The key vault in which this key exists must be in the same region as the geo-redundant backup.
   final pulumi.Input<String>? geoBackupKeyVaultKeyId;
-
   /// The geo backup user managed identity id for a Customer Managed Key. Must be added to `identity.identity_ids`.
   ///
   /// &gt; **Note:** This managed identity cannot be the same as `primary_user_assigned_identity_id`, additionally this identity must be created in the same region as the geo-redundant backup.
   ///
   /// &gt; **Note:** `primary_user_assigned_identity_id` or `geo_backup_user_assigned_identity_id` is required when `type` is set to `UserAssigned`.
   final pulumi.Input<String>? geoBackupUserAssignedIdentityId;
-
   /// The versioned/versionless ID of the Key Vault Key.
   final pulumi.Input<String> keyVaultKeyId;
-
   /// Specifies the primary user managed identity id for a Customer Managed Key. Must be added to `identity.identity_ids`.
   final pulumi.Input<String>? primaryUserAssignedIdentityId;
 
@@ -44,22 +41,11 @@ class FlexibleServerCustomerManagedKey {
 
   factory FlexibleServerCustomerManagedKey.fromMap(Map<String, dynamic> map) {
     return FlexibleServerCustomerManagedKey(
-      geoBackupKeyVaultKeyId: (() {
-        final guardedValue = map['geoBackupKeyVaultKeyId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      geoBackupUserAssignedIdentityId: (() {
-        final guardedValue = map['geoBackupUserAssignedIdentityId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      geoBackupKeyVaultKeyId: (() { final guardedValue = map['geoBackupKeyVaultKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      geoBackupUserAssignedIdentityId: (() { final guardedValue = map['geoBackupUserAssignedIdentityId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       keyVaultKeyId: pulumi.Input.fromValue(map['keyVaultKeyId'] as String),
-      primaryUserAssignedIdentityId: (() {
-        final guardedValue = map['primaryUserAssignedIdentityId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      primaryUserAssignedIdentityId: (() { final guardedValue = map['primaryUserAssignedIdentityId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

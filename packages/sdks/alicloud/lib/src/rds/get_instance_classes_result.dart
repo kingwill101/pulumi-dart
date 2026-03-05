@@ -12,14 +12,11 @@ class GetInstanceClassesResult {
   final String? dbInstanceStorageType;
   final String? engine;
   final String? engineVersion;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// (Available in 1.60.0+) A list of Rds instance class codes.
   final List<String> ids;
   final String? instanceChargeType;
-
   /// A list of Rds available resource. Each element contains the following attributes:
   final List<GetInstanceClassesInstanceClass> instanceClasses;
   final bool? multiZone;
@@ -76,11 +73,7 @@ class GetInstanceClassesResult {
       'id': id,
       'ids': ids,
       'instanceChargeType': ?instanceChargeType,
-      'instanceClasses':
-          pulumi.Input.encodeList<
-            GetInstanceClassesInstanceClass,
-            Map<String, dynamic>
-          >(instanceClasses, (value) => value.toMap()),
+      'instanceClasses': pulumi.Input.encodeList<GetInstanceClassesInstanceClass, Map<String, dynamic>>(instanceClasses, (value) => value.toMap()),
       'multiZone': ?multiZone,
       'outputFile': ?outputFile,
       'sortedBy': ?sortedBy,
@@ -91,79 +84,23 @@ class GetInstanceClassesResult {
 
   factory GetInstanceClassesResult.fromMap(Map<String, dynamic> map) {
     return GetInstanceClassesResult(
-      category: (() {
-        final guardedValue = map['category'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      commodityCode: (() {
-        final guardedValue = map['commodityCode'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      dbInstanceClass: (() {
-        final guardedValue = map['dbInstanceClass'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      dbInstanceId: (() {
-        final guardedValue = map['dbInstanceId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      dbInstanceStorageType: (() {
-        final guardedValue = map['dbInstanceStorageType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      engine: (() {
-        final guardedValue = map['engine'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      engineVersion: (() {
-        final guardedValue = map['engineVersion'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      category: (() { final guardedValue = map['category']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      commodityCode: (() { final guardedValue = map['commodityCode']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      dbInstanceClass: (() { final guardedValue = map['dbInstanceClass']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      dbInstanceId: (() { final guardedValue = map['dbInstanceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      dbInstanceStorageType: (() { final guardedValue = map['dbInstanceStorageType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      engine: (() { final guardedValue = map['engine']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      engineVersion: (() { final guardedValue = map['engineVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      instanceChargeType: (() {
-        final guardedValue = map['instanceChargeType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      instanceClasses: pulumi.Input.decodeList<GetInstanceClassesInstanceClass>(
-        map['instanceClasses']!,
-        (value) => GetInstanceClassesInstanceClass.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      multiZone: (() {
-        final guardedValue = map['multiZone'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      sortedBy: (() {
-        final guardedValue = map['sortedBy'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      storageType: (() {
-        final guardedValue = map['storageType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      zoneId: (() {
-        final guardedValue = map['zoneId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      instanceChargeType: (() { final guardedValue = map['instanceChargeType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      instanceClasses: pulumi.Input.decodeList<GetInstanceClassesInstanceClass>(map['instanceClasses']!, (value) => GetInstanceClassesInstanceClass.fromMap((value as Map).cast<String, dynamic>())),
+      multiZone: (() { final guardedValue = map['multiZone']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sortedBy: (() { final guardedValue = map['sortedBy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      storageType: (() { final guardedValue = map['storageType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      zoneId: (() { final guardedValue = map['zoneId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

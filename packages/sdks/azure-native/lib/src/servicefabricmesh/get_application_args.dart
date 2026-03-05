@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApplicationArgs {
   /// The identity of the application.
   final pulumi.Input<String> applicationResourceName;
-
   /// Azure resource group name
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetApplicationArgs {
 
   factory GetApplicationArgs.fromMap(Map<String, dynamic> map) {
     return GetApplicationArgs(
-      applicationResourceName: pulumi.Input.fromValue(
-        map['applicationResourceName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      applicationResourceName: pulumi.Input.fromValue(map['applicationResourceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

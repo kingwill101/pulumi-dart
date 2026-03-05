@@ -8,20 +8,17 @@ class GetBackendServiceTlsSetting {
   /// Can be used in authenticating TLS connections to the backend, as specified by the authenticationMode field.
   /// Can only be specified if authenticationMode is not NONE.
   final pulumi.Input<String> authenticationConfig;
-
   /// Server Name Indication - see RFC3546 section 3.1. If set, the load balancer sends this string as the SNI hostname in the
   /// TLS connection to the backend, and requires that this string match a Subject Alternative Name (SAN) in the backend's
   /// server certificate. With a Regional Internet NEG backend, if the SNI is specified here, the load balancer uses it
   /// regardless of whether the Regional Internet NEG is specified with FQDN or IP address and port.
   final pulumi.Input<String> sni;
-
   /// A list of Subject Alternative Names (SANs) that the Load Balancer verifies during a TLS handshake with the backend.
   /// When the server presents its X.509 certificate to the Load Balancer, the Load Balancer inspects the certificate's SAN field,
   /// and requires that at least one SAN match one of the subjectAltNames in the list. This field is limited to 5 entries.
   /// When both sni and subjectAltNames are specified, the load balancer matches the backend certificate's SAN only to
   /// subjectAltNames.
-  final pulumi.Input<List<GetBackendServiceTlsSettingSubjectAltName>>
-  subjectAltNames;
+  final pulumi.Input<List<GetBackendServiceTlsSettingSubjectAltName>> subjectAltNames;
 
   /// Creates a new [GetBackendServiceTlsSetting].
   /// [authenticationConfig] Reference to the BackendAuthenticationConfig resource from the networksecurity.googleapis.com namespace.
@@ -37,35 +34,16 @@ class GetBackendServiceTlsSetting {
     return <String, dynamic>{
       'authenticationConfig': authenticationConfig,
       'sni': sni,
-      'subjectAltNames':
-          pulumi.Input.mapInputValue<
-            List<GetBackendServiceTlsSettingSubjectAltName>,
-            List<Map<String, dynamic>>
-          >(
-            subjectAltNames,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetBackendServiceTlsSettingSubjectAltName,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'subjectAltNames': pulumi.Input.mapInputValue<List<GetBackendServiceTlsSettingSubjectAltName>, List<Map<String, dynamic>>>(subjectAltNames, (value) => pulumi.Input.encodeList<GetBackendServiceTlsSettingSubjectAltName, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetBackendServiceTlsSetting.fromMap(Map<String, dynamic> map) {
     return GetBackendServiceTlsSetting(
-      authenticationConfig: pulumi.Input.fromValue(
-        map['authenticationConfig'] as String,
-      ),
+      authenticationConfig: pulumi.Input.fromValue(map['authenticationConfig'] as String),
       sni: pulumi.Input.fromValue(map['sni'] as String),
-      subjectAltNames: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetBackendServiceTlsSettingSubjectAltName>(
-          map['subjectAltNames']!,
-          (value) => GetBackendServiceTlsSettingSubjectAltName.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      subjectAltNames: pulumi.Input.fromValue(pulumi.Input.decodeList<GetBackendServiceTlsSettingSubjectAltName>(map['subjectAltNames']!, (value) => GetBackendServiceTlsSettingSubjectAltName.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

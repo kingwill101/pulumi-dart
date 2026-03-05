@@ -339,41 +339,28 @@ import 'vmss_fabric_profile_response.dart';
 class Pool extends pulumi.CustomResource {
   /// Defines how the machine will be handled once it executed a job.
   late final pulumi.Output<StatefulResponse> agentProfile;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The resource id of the DevCenter Project the pool belongs to.
   late final pulumi.Output<String> devCenterProjectResourceId;
-
   /// Defines the type of fabric the agent will run on.
   late final pulumi.Output<VmssFabricProfileResponse> fabricProfile;
-
   /// The managed service identities assigned to this resource.
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// Defines how many resources can there be created at any given time.
   late final pulumi.Output<int> maximumConcurrency;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Defines the organization in which the pool will be used.
-  late final pulumi.Output<AzureDevOpsOrganizationProfileResponse>
-  organizationProfile;
-
+  late final pulumi.Output<AzureDevOpsOrganizationProfileResponse> organizationProfile;
   /// The status of the current operation.
   late final pulumi.Output<String?> provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -381,72 +368,27 @@ class Pool extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Pool]. {@macro pulumi_devopsinfrastructure_pool_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Pool(String name, {PoolArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:devopsinfrastructure:Pool',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
-    agentProfile = registerOutput<StatefulResponse>(
-      'agentProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return StatefulResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+  Pool(
+    String name, {
+    PoolArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:devopsinfrastructure:Pool',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    agentProfile = registerOutput<StatefulResponse>('agentProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StatefulResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    devCenterProjectResourceId = registerOutput<String>(
-      'devCenterProjectResourceId',
-    );
-    fabricProfile = registerOutput<VmssFabricProfileResponse>(
-      'fabricProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VmssFabricProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    identity = registerOutput<ManagedServiceIdentityResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ManagedServiceIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    devCenterProjectResourceId = registerOutput<String>('devCenterProjectResourceId');
+    fabricProfile = registerOutput<VmssFabricProfileResponse>('fabricProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VmssFabricProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     maximumConcurrency = registerOutput<int>('maximumConcurrency');
     this.name = registerOutput<String>('name');
-    organizationProfile =
-        registerOutput<AzureDevOpsOrganizationProfileResponse>(
-          'organizationProfile',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AzureDevOpsOrganizationProfileResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    organizationProfile = registerOutput<AzureDevOpsOrganizationProfileResponse>('organizationProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureDevOpsOrganizationProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningState = registerOutput<String?>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

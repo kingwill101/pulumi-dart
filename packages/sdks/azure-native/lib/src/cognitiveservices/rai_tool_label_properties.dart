@@ -8,10 +8,8 @@ import 'rai_tool_label_properties_project_scopes.dart';
 class RaiToolLabelProperties {
   /// Account-level tool label definition.
   final pulumi.Input<RaiToolLabelPropertiesAccountScope>? accountScope;
-
   /// List of project-level tool label definitions.
   final pulumi.Input<List<RaiToolLabelPropertiesProjectScopes>>? projectScopes;
-
   /// The unique tool connection name, e.g., 'Web_Search'.
   final pulumi.Input<String> toolConnectionName;
 
@@ -27,53 +25,18 @@ class RaiToolLabelProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accountScope':
-          ?pulumi.Input.mapOptionalInputValue<
-            RaiToolLabelPropertiesAccountScope,
-            Map<String, dynamic>
-          >(accountScope, (value) => value.toMap()),
-      'projectScopes':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<RaiToolLabelPropertiesProjectScopes>,
-            List<Map<String, dynamic>>
-          >(
-            projectScopes,
-            (value) =>
-                pulumi.Input.encodeList<
-                  RaiToolLabelPropertiesProjectScopes,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'accountScope': ?pulumi.Input.mapOptionalInputValue<RaiToolLabelPropertiesAccountScope, Map<String, dynamic>>(accountScope, (value) => value.toMap()),
+      'projectScopes': ?pulumi.Input.mapOptionalInputValue<List<RaiToolLabelPropertiesProjectScopes>, List<Map<String, dynamic>>>(projectScopes, (value) => pulumi.Input.encodeList<RaiToolLabelPropertiesProjectScopes, Map<String, dynamic>>(value, (value) => value.toMap())),
       'toolConnectionName': toolConnectionName,
     };
   }
 
   factory RaiToolLabelProperties.fromMap(Map<String, dynamic> map) {
     return RaiToolLabelProperties(
-      accountScope: (() {
-        final guardedValue = map['accountScope'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RaiToolLabelPropertiesAccountScope.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      projectScopes: (() {
-        final guardedValue = map['projectScopes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<RaiToolLabelPropertiesProjectScopes>(
-            guardedValue,
-            (value) => RaiToolLabelPropertiesProjectScopes.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      toolConnectionName: pulumi.Input.fromValue(
-        map['toolConnectionName'] as String,
-      ),
+      accountScope: (() { final guardedValue = map['accountScope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RaiToolLabelPropertiesAccountScope.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      projectScopes: (() { final guardedValue = map['projectScopes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RaiToolLabelPropertiesProjectScopes>(guardedValue, (value) => RaiToolLabelPropertiesProjectScopes.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      toolConnectionName: pulumi.Input.fromValue(map['toolConnectionName'] as String),
     );
   }
 }
+

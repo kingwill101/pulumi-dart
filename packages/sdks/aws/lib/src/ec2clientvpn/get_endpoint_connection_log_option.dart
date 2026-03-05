@@ -27,13 +27,10 @@ class GetEndpointConnectionLogOption {
 
   factory GetEndpointConnectionLogOption.fromMap(Map<String, dynamic> map) {
     return GetEndpointConnectionLogOption(
-      cloudwatchLogGroup: pulumi.Input.fromValue(
-        map['cloudwatchLogGroup'] as String,
-      ),
-      cloudwatchLogStream: pulumi.Input.fromValue(
-        map['cloudwatchLogStream'] as String,
-      ),
+      cloudwatchLogGroup: pulumi.Input.fromValue(map['cloudwatchLogGroup'] as String),
+      cloudwatchLogStream: pulumi.Input.fromValue(map['cloudwatchLogStream'] as String),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
+

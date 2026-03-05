@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CacheFromAzureBlob {
   /// Base URL of the storage account.
   final pulumi.Input<String>? accountUrl;
-
   /// The name of the cache image.
   final pulumi.Input<String> name;
-
   /// Blob storage account key.
   final pulumi.Input<String>? secretAccessKey;
 
@@ -32,17 +30,10 @@ class CacheFromAzureBlob {
 
   factory CacheFromAzureBlob.fromMap(Map<String, dynamic> map) {
     return CacheFromAzureBlob(
-      accountUrl: (() {
-        final guardedValue = map['accountUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accountUrl: (() { final guardedValue = map['accountUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      secretAccessKey: (() {
-        final guardedValue = map['secretAccessKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      secretAccessKey: (() { final guardedValue = map['secretAccessKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

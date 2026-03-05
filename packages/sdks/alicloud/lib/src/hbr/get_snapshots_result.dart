@@ -10,7 +10,6 @@ class GetSnapshotsResult {
   final String? completeTimeChecker;
   final String? createTime;
   final String? fileSystemId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -70,11 +69,7 @@ class GetSnapshotsResult {
       'limit': ?limit,
       'outputFile': ?outputFile,
       'query': ?query,
-      'snapshots':
-          pulumi.Input.encodeList<GetSnapshotsSnapshot, Map<String, dynamic>>(
-            snapshots,
-            (value) => value.toMap(),
-          ),
+      'snapshots': pulumi.Input.encodeList<GetSnapshotsSnapshot, Map<String, dynamic>>(snapshots, (value) => value.toMap()),
       'sourceType': sourceType,
       'status': ?status,
       'vaultId': vaultId,
@@ -83,66 +78,22 @@ class GetSnapshotsResult {
 
   factory GetSnapshotsResult.fromMap(Map<String, dynamic> map) {
     return GetSnapshotsResult(
-      bucket: (() {
-        final guardedValue = map['bucket'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      completeTime: (() {
-        final guardedValue = map['completeTime'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      completeTimeChecker: (() {
-        final guardedValue = map['completeTimeChecker'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      fileSystemId: (() {
-        final guardedValue = map['fileSystemId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      bucket: (() { final guardedValue = map['bucket']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      completeTime: (() { final guardedValue = map['completeTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      completeTimeChecker: (() { final guardedValue = map['completeTimeChecker']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      fileSystemId: (() { final guardedValue = map['fileSystemId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      instanceId: (() {
-        final guardedValue = map['instanceId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      limit: (() {
-        final guardedValue = map['limit'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      query: (() {
-        final guardedValue = map['query'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      snapshots: pulumi.Input.decodeList<GetSnapshotsSnapshot>(
-        map['snapshots']!,
-        (value) => GetSnapshotsSnapshot.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      instanceId: (() { final guardedValue = map['instanceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      limit: (() { final guardedValue = map['limit']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      query: (() { final guardedValue = map['query']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      snapshots: pulumi.Input.decodeList<GetSnapshotsSnapshot>(map['snapshots']!, (value) => GetSnapshotsSnapshot.fromMap((value as Map).cast<String, dynamic>())),
       sourceType: map['sourceType'] as String,
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
       vaultId: map['vaultId'] as String,
     );
   }
 }
+

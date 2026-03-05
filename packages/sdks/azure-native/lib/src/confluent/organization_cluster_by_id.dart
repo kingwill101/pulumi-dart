@@ -188,25 +188,18 @@ import 'system_data_response.dart';
 class OrganizationClusterById extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Type of cluster
   late final pulumi.Output<String?> kind;
-
   /// Metadata of the record
   late final pulumi.Output<SCMetadataEntityResponse?> metadata;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Specification of the cluster
   late final pulumi.Output<SCClusterSpecEntityResponse?> spec;
-
   /// Specification of the cluster status
   late final pulumi.Output<ClusterStatusEntityResponse?> status;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -219,54 +212,18 @@ class OrganizationClusterById extends pulumi.CustomResource {
     OrganizationClusterByIdArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:confluent:OrganizationClusterById',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:confluent:OrganizationClusterById',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     kind = registerOutput<String?>('kind');
-    metadata = registerOutput<SCMetadataEntityResponse?>(
-      'metadata',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SCMetadataEntityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    metadata = registerOutput<SCMetadataEntityResponse?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SCMetadataEntityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    spec = registerOutput<SCClusterSpecEntityResponse?>(
-      'spec',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SCClusterSpecEntityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    status = registerOutput<ClusterStatusEntityResponse?>(
-      'status',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterStatusEntityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    spec = registerOutput<SCClusterSpecEntityResponse?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SCClusterSpecEntityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<ClusterStatusEntityResponse?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterStatusEntityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

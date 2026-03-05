@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProductSubscriptionState {
   /// The ARN of a resource that represents your subscription to the product that generates the findings that you want to import into Security Hub.
   final pulumi.Input<String>? arn;
-
   /// The ARN of the product that generates findings that you want to import into Security Hub - see below.
   ///
   /// Amazon maintains a list of [Product integrations in AWS Security Hub](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-findings-providers.html) that changes over time. Any of the products on the linked [Available AWS service integrations](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-internal-providers.html) or [Available third-party partner product integrations](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-partner-providers.html) can be configured using `aws.securityhub.ProductSubscription`.
@@ -47,7 +46,6 @@ class ProductSubscriptionState {
   /// * `arn:aws:securityhub:${var.region}::product/turbot/turbot`
   /// * `arn:aws:securityhub:${var.region}::product/twistlock/twistlock-enterprise`
   final pulumi.Input<String>? productArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -55,7 +53,11 @@ class ProductSubscriptionState {
   /// [arn] The ARN of a resource that represents your subscription to the product that generates the findings that you want to import into Security Hub.
   /// [productArn] The ARN of the product that generates findings that you want to import into Security Hub - see below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  ProductSubscriptionState({this.arn, this.productArn, this.region});
+  ProductSubscriptionState({
+    this.arn,
+    this.productArn,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,21 +69,10 @@ class ProductSubscriptionState {
 
   factory ProductSubscriptionState.fromMap(Map<String, dynamic> map) {
     return ProductSubscriptionState(
-      arn: (() {
-        final guardedValue = map['arn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      productArn: (() {
-        final guardedValue = map['productArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      productArn: (() { final guardedValue = map['productArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

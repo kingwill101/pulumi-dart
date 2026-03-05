@@ -444,42 +444,30 @@ import 'traffic_manager_nested_endpoint_state.dart';
 class TrafficManagerNestedEndpoint extends pulumi.CustomResource {
   /// One or more `custom_header` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> customHeaders;
-
   /// Is the endpoint enabled? Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
-
   /// Specifies the Azure location of the Endpoint, this must be specified for Profiles using the `Performance` routing method.
   late final pulumi.Output<String> endpointLocation;
-
   /// A list of Geographic Regions used to distribute traffic, such as `WORLD`, `UK` or `DE`. The same location can't be specified in two endpoints. [See the Geographic Hierarchies documentation for more information](https://docs.microsoft.com/rest/api/trafficmanager/geographichierarchies/getdefault).
   late final pulumi.Output<List<String>?> geoMappings;
-
   /// This argument specifies the minimum number of endpoints that must be ‘online’ in the child profile in order for the parent profile to direct traffic to any of the endpoints in that child profile. This value must be larger than `0`.
   ///
   /// &gt; **Note:** If `min_child_endpoints` is less than either `minimum_required_child_endpoints_ipv4` or `minimum_required_child_endpoints_ipv6`, then it won't have any effect.
   late final pulumi.Output<int> minimumChildEndpoints;
-
   /// This argument specifies the minimum number of IPv4 (DNS record type A) endpoints that must be ‘online’ in the child profile in order for the parent profile to direct traffic to any of the endpoints in that child profile. This argument only applies to Endpoints of type `nestedEndpoints` and
   late final pulumi.Output<int?> minimumRequiredChildEndpointsIpv4;
-
   /// This argument specifies the minimum number of IPv6 (DNS record type AAAA) endpoints that must be ‘online’ in the child profile in order for the parent profile to direct traffic to any of the endpoints in that child profile. This argument only applies to Endpoints of type `nestedEndpoints` and
   late final pulumi.Output<int?> minimumRequiredChildEndpointsIpv6;
-
   /// The name of the External Endpoint. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies the priority of this Endpoint, this must be specified for Profiles using the `Priority` traffic routing method. Supports values between 1 and 1000, with no Endpoints sharing the same value. If omitted the value will be computed in order of creation.
   late final pulumi.Output<int> priority;
-
   /// The ID of the Traffic Manager Profile that this External Endpoint should be created within. Changing this forces a new resource to be created.
   late final pulumi.Output<String> profileId;
-
   /// One or more `subnet` blocks as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<List<Map<String, dynamic>>?> subnets;
-
   /// The resource id of an Azure resource to target.
   late final pulumi.Output<String> targetResourceId;
-
   /// Specifies how much traffic should be distributed to this endpoint, this must be specified for Profiles using the Weighted traffic routing method. Valid values are between `1` and `1000`. Defaults to `1`.
   late final pulumi.Output<int?> weight;
 
@@ -492,24 +480,18 @@ class TrafficManagerNestedEndpoint extends pulumi.CustomResource {
     TrafficManagerNestedEndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/trafficManagerNestedEndpoint:TrafficManagerNestedEndpoint',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    customHeaders = registerOutput<List<Map<String, dynamic>>?>(
-      'customHeaders',
-    );
+          'azure:network/trafficManagerNestedEndpoint:TrafficManagerNestedEndpoint',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    customHeaders = registerOutput<List<Map<String, dynamic>>?>('customHeaders');
     enabled = registerOutput<bool?>('enabled');
     endpointLocation = registerOutput<String>('endpointLocation');
     geoMappings = registerOutput<List<String>?>('geoMappings');
     minimumChildEndpoints = registerOutput<int>('minimumChildEndpoints');
-    minimumRequiredChildEndpointsIpv4 = registerOutput<int?>(
-      'minimumRequiredChildEndpointsIpv4',
-    );
-    minimumRequiredChildEndpointsIpv6 = registerOutput<int?>(
-      'minimumRequiredChildEndpointsIpv6',
-    );
+    minimumRequiredChildEndpointsIpv4 = registerOutput<int?>('minimumRequiredChildEndpointsIpv4');
+    minimumRequiredChildEndpointsIpv6 = registerOutput<int?>('minimumRequiredChildEndpointsIpv6');
     this.name = registerOutput<String>('name');
     priority = registerOutput<int>('priority');
     profileId = registerOutput<String>('profileId');
@@ -536,24 +518,18 @@ class TrafficManagerNestedEndpoint extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/trafficManagerNestedEndpoint:TrafficManagerNestedEndpoint',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    customHeaders = registerOutput<List<Map<String, dynamic>>?>(
-      'customHeaders',
-    );
+          'azure:network/trafficManagerNestedEndpoint:TrafficManagerNestedEndpoint',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    customHeaders = registerOutput<List<Map<String, dynamic>>?>('customHeaders');
     enabled = registerOutput<bool?>('enabled');
     endpointLocation = registerOutput<String>('endpointLocation');
     geoMappings = registerOutput<List<String>?>('geoMappings');
     minimumChildEndpoints = registerOutput<int>('minimumChildEndpoints');
-    minimumRequiredChildEndpointsIpv4 = registerOutput<int?>(
-      'minimumRequiredChildEndpointsIpv4',
-    );
-    minimumRequiredChildEndpointsIpv6 = registerOutput<int?>(
-      'minimumRequiredChildEndpointsIpv6',
-    );
+    minimumRequiredChildEndpointsIpv4 = registerOutput<int?>('minimumRequiredChildEndpointsIpv4');
+    minimumRequiredChildEndpointsIpv6 = registerOutput<int?>('minimumRequiredChildEndpointsIpv6');
     this.name = registerOutput<String>('name');
     priority = registerOutput<int>('priority');
     profileId = registerOutput<String>('profileId');

@@ -12,21 +12,20 @@ class AppDefaultChannelProfilePersonaProperty {
 
   /// Creates a new [AppDefaultChannelProfilePersonaProperty].
   /// [persona] The persona of the channel.
-  AppDefaultChannelProfilePersonaProperty({this.persona});
+  AppDefaultChannelProfilePersonaProperty({
+    this.persona,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'persona': ?persona};
+    return <String, dynamic>{
+      'persona': ?persona,
+    };
   }
 
-  factory AppDefaultChannelProfilePersonaProperty.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppDefaultChannelProfilePersonaProperty.fromMap(Map<String, dynamic> map) {
     return AppDefaultChannelProfilePersonaProperty(
-      persona: (() {
-        final guardedValue = map['persona'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      persona: (() { final guardedValue = map['persona']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

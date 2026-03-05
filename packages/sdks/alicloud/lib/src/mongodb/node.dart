@@ -514,7 +514,6 @@ class Node extends pulumi.CustomResource {
   ///
   /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<String?> accountName;
-
   /// Account password, value description:
   /// - Consists of at least three of uppercase letters, lowercase letters, numbers, and special characters.
   /// - Oh-! @#$%^& *()_+-= is a special character.
@@ -525,50 +524,39 @@ class Node extends pulumi.CustomResource {
   ///
   /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<String?> accountPassword;
-
   /// Whether to pay automatically. Value description:
   late final pulumi.Output<bool?> autoPay;
-
   /// Additional parameters, business information.
   ///
   /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<String?> businessInfo;
-
   /// The ID of the sharded cluster instance.
   late final pulumi.Output<String> dbInstanceId;
   late final pulumi.Output<String?> effectiveTime;
-
   /// Request Source, value description:
   /// - `OpenApi`: The request source is OpenApi.
   late final pulumi.Output<String?> fromApp;
-
   /// The specifications of the Shard node or Mongos node. For more information, see Instance Specifications.
   late final pulumi.Output<String> nodeClass;
-
   /// The first ID of the resource
   late final pulumi.Output<String> nodeId;
-
   /// The disk space of the Node. Unit: GB.
   ///
   /// Value range: `10` to `2000`, with a step size of 10GB.
   ///
   /// &gt; **NOTE:**  When the node type is `Shard`, you need to configure this parameter.
   late final pulumi.Output<int?> nodeStorage;
-
   /// Node type, value description:
   late final pulumi.Output<String> nodeType;
   late final pulumi.Output<String?> orderType;
-
   /// The number of read-only nodes in the Shard.
   ///
   /// Value range: `0` to `5` (integer). Default value: **0 * *.
   ///
   /// &gt; **NOTE:**  This parameter is currently only supported by China Station.
   late final pulumi.Output<int> readonlyReplicas;
-
   /// Whether to apply for the direct connection address of the Shard node. Value description:
   late final pulumi.Output<bool?> shardDirect;
-
   /// Running status of node in sharded cluster
   late final pulumi.Output<String> status;
   late final pulumi.Output<String?> switchTime;
@@ -577,13 +565,16 @@ class Node extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Node]. {@macro pulumi_mongodb_node_node_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Node(String name, {NodeArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:mongodb/node:Node',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Node(
+    String name, {
+    NodeArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:mongodb/node:Node',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountName = registerOutput<String?>('accountName');
     accountPassword = registerOutput<String?>('accountPassword');
     autoPay = registerOutput<bool?>('autoPay');
@@ -603,7 +594,11 @@ class Node extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Node] resource's state with the given [name] and [id].
-  static Node get(String name, pulumi.Input<String> id, {NodeState? state}) {
+  static Node get(
+    String name,
+    pulumi.Input<String> id, {
+    NodeState? state,
+  }) {
     return Node._get(
       name,
       state: state?.toMap(),
@@ -616,11 +611,11 @@ class Node extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:mongodb/node:Node',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:mongodb/node:Node',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountName = registerOutput<String?>('accountName');
     accountPassword = registerOutput<String?>('accountPassword');
     autoPay = registerOutput<bool?>('autoPay');

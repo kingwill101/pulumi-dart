@@ -252,47 +252,33 @@ import 'database_replica_state.dart';
 class DatabaseReplica extends pulumi.CustomResource {
   /// The ID of the original source database cluster.
   late final pulumi.Output<String> clusterId;
-
   /// Name of the replica's default database.
   late final pulumi.Output<String> database;
-
   /// Database replica's hostname.
   late final pulumi.Output<String> host;
-
   /// The name for the database replica.
   late final pulumi.Output<String> name;
-
   /// Password for the replica's default user.
   late final pulumi.Output<String> password;
-
   /// Network port that the database replica is listening on.
   late final pulumi.Output<int> port;
-
   /// Same as `host`, but only accessible from resources within the account and in the same region.
   late final pulumi.Output<String> privateHost;
-
   /// The ID of the VPC where the database replica will be located.
   late final pulumi.Output<String> privateNetworkUuid;
-
   /// Same as `uri`, but only accessible from resources within the account and in the same region.
   late final pulumi.Output<String> privateUri;
-
   /// DigitalOcean region where the replica will reside.
   late final pulumi.Output<String?> region;
-
   /// Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
   late final pulumi.Output<String?> size;
   late final pulumi.Output<String> storageSizeMib;
-
   /// A list of tag names to be applied to the database replica.
   late final pulumi.Output<List<String>?> tags;
-
   /// The full URI for connecting to the database replica.
   late final pulumi.Output<String> uri;
-
   /// Username for the replica's default user.
   late final pulumi.Output<String> user;
-
   /// The UUID of the database replica. The uuid can be used to reference the database replica as the target database cluster in other resources. See example  "Create firewall rule for database replica" above.
   late final pulumi.Output<String> uuid;
 
@@ -305,11 +291,11 @@ class DatabaseReplica extends pulumi.CustomResource {
     DatabaseReplicaArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/databaseReplica:DatabaseReplica',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/databaseReplica:DatabaseReplica',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterId = registerOutput<String>('clusterId');
     database = registerOutput<String>('database');
     host = registerOutput<String>('host');
@@ -346,11 +332,11 @@ class DatabaseReplica extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/databaseReplica:DatabaseReplica',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/databaseReplica:DatabaseReplica',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterId = registerOutput<String>('clusterId');
     database = registerOutput<String>('database');
     host = registerOutput<String>('host');

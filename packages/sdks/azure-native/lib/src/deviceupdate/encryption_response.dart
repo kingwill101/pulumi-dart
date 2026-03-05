@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EncryptionResponse {
   /// The URI of the key vault
   final pulumi.Input<String>? keyVaultKeyUri;
-
   /// The full resourceId of the user assigned identity to be used for key vault access. Identity has to be also assigned to the Account
   final pulumi.Input<String>? userAssignedIdentity;
 
   /// Creates a new [EncryptionResponse].
   /// [keyVaultKeyUri] The URI of the key vault
   /// [userAssignedIdentity] The full resourceId of the user assigned identity to be used for key vault access. Identity has to be also assigned to the Account
-  EncryptionResponse({this.keyVaultKeyUri, this.userAssignedIdentity});
+  EncryptionResponse({
+    this.keyVaultKeyUri,
+    this.userAssignedIdentity,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class EncryptionResponse {
 
   factory EncryptionResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionResponse(
-      keyVaultKeyUri: (() {
-        final guardedValue = map['keyVaultKeyUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      userAssignedIdentity: (() {
-        final guardedValue = map['userAssignedIdentity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      keyVaultKeyUri: (() { final guardedValue = map['keyVaultKeyUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      userAssignedIdentity: (() { final guardedValue = map['userAssignedIdentity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -37,19 +37,14 @@ class GetEndpointServicedirectoryV1beta1Args {
     };
   }
 
-  factory GetEndpointServicedirectoryV1beta1Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetEndpointServicedirectoryV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetEndpointServicedirectoryV1beta1Args(
       endpointId: pulumi.Input.fromValue(map['endpointId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
       namespaceId: pulumi.Input.fromValue(map['namespaceId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serviceId: pulumi.Input.fromValue(map['serviceId'] as String),
     );
   }
 }
+

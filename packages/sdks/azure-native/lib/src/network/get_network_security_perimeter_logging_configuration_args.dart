@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworkSecurityPerimeterLoggingConfigurationArgs {
   /// The name of the NSP logging configuration. Accepts 'instance' as name.
   final pulumi.Input<String> loggingConfigurationName;
-
   /// The name of the network security perimeter.
   final pulumi.Input<String> networkSecurityPerimeterName;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,19 +32,12 @@ class GetNetworkSecurityPerimeterLoggingConfigurationArgs {
     };
   }
 
-  factory GetNetworkSecurityPerimeterLoggingConfigurationArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetNetworkSecurityPerimeterLoggingConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkSecurityPerimeterLoggingConfigurationArgs(
-      loggingConfigurationName: pulumi.Input.fromValue(
-        map['loggingConfigurationName'] as String,
-      ),
-      networkSecurityPerimeterName: pulumi.Input.fromValue(
-        map['networkSecurityPerimeterName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      loggingConfigurationName: pulumi.Input.fromValue(map['loggingConfigurationName'] as String),
+      networkSecurityPerimeterName: pulumi.Input.fromValue(map['networkSecurityPerimeterName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

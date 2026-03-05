@@ -10,19 +10,14 @@ import 'build_storage_location.dart';
 class BuildArgs {
   /// Name of the build
   final pulumi.Input<String>? name;
-
   /// Operating system that the game server binaries are built to run on. Valid values: `WINDOWS_2012`, `AMAZON_LINUX`, `AMAZON_LINUX_2`, `WINDOWS_2016`, `AMAZON_LINUX_2023`.
   final pulumi.Input<String> operatingSystem;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Information indicating where your game build files are stored. See below.
   final pulumi.Input<BuildStorageLocation> storageLocation;
-
   /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// Version that is associated with this build.
   final pulumi.Input<String>? version;
 
@@ -47,11 +42,7 @@ class BuildArgs {
       'name': ?name,
       'operatingSystem': operatingSystem,
       'region': ?region,
-      'storageLocation':
-          pulumi.Input.mapInputValue<
-            BuildStorageLocation,
-            Map<String, dynamic>
-          >(storageLocation, (value) => value.toMap()),
+      'storageLocation': pulumi.Input.mapInputValue<BuildStorageLocation, Map<String, dynamic>>(storageLocation, (value) => value.toMap()),
       'tags': ?tags,
       'version': ?version,
     };
@@ -59,34 +50,13 @@ class BuildArgs {
 
   factory BuildArgs.fromMap(Map<String, dynamic> map) {
     return BuildArgs(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       operatingSystem: pulumi.Input.fromValue(map['operatingSystem'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      storageLocation: pulumi.Input.fromValue(
-        BuildStorageLocation.fromMap(
-          (map['storageLocation']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageLocation: pulumi.Input.fromValue(BuildStorageLocation.fromMap((map['storageLocation']! as Map).cast<String, dynamic>())),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

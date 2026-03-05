@@ -5,40 +5,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetQuotasQuota {
   /// Is the quota adjustable.
   final pulumi.Input<bool> adjustable;
-
   /// The range of quota adjustment.
   final pulumi.Input<List<String>> applicableRanges;
-
   /// The type of quota.
   final pulumi.Input<String> applicableType;
-
   /// Show used quota.
   final pulumi.Input<bool> consumable;
-
   /// The ID of the Quota.
   final pulumi.Input<String> id;
-
   /// The quota action code.
   final pulumi.Input<String> quotaActionCode;
-
   /// The quota description.
   final pulumi.Input<String> quotaDescription;
-
   /// The quota name.
   final pulumi.Input<String> quotaName;
-
   /// The quota type.
   final pulumi.Input<String> quotaType;
-
   /// The quota unit.
   final pulumi.Input<String> quotaUnit;
-
   /// TotalQuota.
   final pulumi.Input<double> totalQuota;
-
   /// The total of usage.
   final pulumi.Input<double> totalUsage;
-
   /// The unadjustable detail.
   final pulumi.Input<String> unadjustableDetail;
 
@@ -93,24 +81,19 @@ class GetQuotasQuota {
   factory GetQuotasQuota.fromMap(Map<String, dynamic> map) {
     return GetQuotasQuota(
       adjustable: pulumi.Input.fromValue(map['adjustable'] as bool),
-      applicableRanges: pulumi.Input.fromValue(
-        (map['applicableRanges'] as List).cast<String>(),
-      ),
+      applicableRanges: pulumi.Input.fromValue((map['applicableRanges'] as List).cast<String>()),
       applicableType: pulumi.Input.fromValue(map['applicableType'] as String),
       consumable: pulumi.Input.fromValue(map['consumable'] as bool),
       id: pulumi.Input.fromValue(map['id'] as String),
       quotaActionCode: pulumi.Input.fromValue(map['quotaActionCode'] as String),
-      quotaDescription: pulumi.Input.fromValue(
-        map['quotaDescription'] as String,
-      ),
+      quotaDescription: pulumi.Input.fromValue(map['quotaDescription'] as String),
       quotaName: pulumi.Input.fromValue(map['quotaName'] as String),
       quotaType: pulumi.Input.fromValue(map['quotaType'] as String),
       quotaUnit: pulumi.Input.fromValue(map['quotaUnit'] as String),
       totalQuota: pulumi.Input.fromValue(map['totalQuota'] as double),
       totalUsage: pulumi.Input.fromValue(map['totalUsage'] as double),
-      unadjustableDetail: pulumi.Input.fromValue(
-        map['unadjustableDetail'] as String,
-      ),
+      unadjustableDetail: pulumi.Input.fromValue(map['unadjustableDetail'] as String),
     );
   }
 }
+

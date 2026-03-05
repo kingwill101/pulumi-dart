@@ -5,10 +5,7 @@ import 'get_repository_remote_repository_config_apt_repository_public_repository
 
 class GetRepositoryRemoteRepositoryConfigAptRepository {
   /// One of the publicly available Apt repositories supported by Artifact Registry.
-  final pulumi.Input<
-    List<GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepository>
-  >
-  publicRepositories;
+  final pulumi.Input<List<GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepository>> publicRepositories;
 
   /// Creates a new [GetRepositoryRemoteRepositoryConfigAptRepository].
   /// [publicRepositories] One of the publicly available Apt repositories supported by Artifact Registry.
@@ -18,38 +15,14 @@ class GetRepositoryRemoteRepositoryConfigAptRepository {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'publicRepositories':
-          pulumi.Input.mapInputValue<
-            List<
-              GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepository
-            >,
-            List<Map<String, dynamic>>
-          >(
-            publicRepositories,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepository,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'publicRepositories': pulumi.Input.mapInputValue<List<GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepository>, List<Map<String, dynamic>>>(publicRepositories, (value) => pulumi.Input.encodeList<GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepository, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory GetRepositoryRemoteRepositoryConfigAptRepository.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetRepositoryRemoteRepositoryConfigAptRepository.fromMap(Map<String, dynamic> map) {
     return GetRepositoryRemoteRepositoryConfigAptRepository(
-      publicRepositories: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepository
-        >(
-          map['publicRepositories']!,
-          (value) =>
-              GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepository.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
+      publicRepositories: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepository>(map['publicRepositories']!, (value) => GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepository.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

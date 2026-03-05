@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApplicationGatewayRewriteRuleSetRewriteRuleUrl {
   /// The components used to rewrite the URL.
   final pulumi.Input<String> components;
-
   /// The URL path to rewrite.
   final pulumi.Input<String> path;
-
   /// The query string to rewrite.
   final pulumi.Input<String> queryString;
-
   /// Whether the URL path map is reevaluated after this rewrite has been applied.
   final pulumi.Input<bool> reroute;
 
@@ -36,9 +33,7 @@ class GetApplicationGatewayRewriteRuleSetRewriteRuleUrl {
     };
   }
 
-  factory GetApplicationGatewayRewriteRuleSetRewriteRuleUrl.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetApplicationGatewayRewriteRuleSetRewriteRuleUrl.fromMap(Map<String, dynamic> map) {
     return GetApplicationGatewayRewriteRuleSetRewriteRuleUrl(
       components: pulumi.Input.fromValue(map['components'] as String),
       path: pulumi.Input.fromValue(map['path'] as String),
@@ -47,3 +42,4 @@ class GetApplicationGatewayRewriteRuleSetRewriteRuleUrl {
     );
   }
 }
+

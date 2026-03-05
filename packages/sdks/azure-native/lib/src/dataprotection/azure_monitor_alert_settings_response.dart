@@ -8,7 +8,9 @@ class AzureMonitorAlertSettingsResponse {
 
   /// Creates a new [AzureMonitorAlertSettingsResponse].
   /// [alertsForAllJobFailures] Optional.
-  AzureMonitorAlertSettingsResponse({this.alertsForAllJobFailures});
+  AzureMonitorAlertSettingsResponse({
+    this.alertsForAllJobFailures,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -18,11 +20,8 @@ class AzureMonitorAlertSettingsResponse {
 
   factory AzureMonitorAlertSettingsResponse.fromMap(Map<String, dynamic> map) {
     return AzureMonitorAlertSettingsResponse(
-      alertsForAllJobFailures: (() {
-        final guardedValue = map['alertsForAllJobFailures'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      alertsForAllJobFailures: (() { final guardedValue = map['alertsForAllJobFailures']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

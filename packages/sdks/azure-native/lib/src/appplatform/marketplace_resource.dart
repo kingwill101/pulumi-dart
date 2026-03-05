@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MarketplaceResource {
   /// The plan id of the 3rd Party Artifact that is being procured.
   final pulumi.Input<String>? plan;
-
   /// The 3rd Party artifact that is being procured.
   final pulumi.Input<String>? product;
-
   /// The publisher id of the 3rd Party Artifact that is being bought.
   final pulumi.Input<String>? publisher;
 
@@ -17,7 +15,11 @@ class MarketplaceResource {
   /// [plan] The plan id of the 3rd Party Artifact that is being procured.
   /// [product] The 3rd Party artifact that is being procured.
   /// [publisher] The publisher id of the 3rd Party Artifact that is being bought.
-  MarketplaceResource({this.plan, this.product, this.publisher});
+  MarketplaceResource({
+    this.plan,
+    this.product,
+    this.publisher,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class MarketplaceResource {
 
   factory MarketplaceResource.fromMap(Map<String, dynamic> map) {
     return MarketplaceResource(
-      plan: (() {
-        final guardedValue = map['plan'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      product: (() {
-        final guardedValue = map['product'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      publisher: (() {
-        final guardedValue = map['publisher'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      plan: (() { final guardedValue = map['plan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      product: (() { final guardedValue = map['product']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publisher: (() { final guardedValue = map['publisher']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

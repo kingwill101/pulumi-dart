@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAutoscaleSettingArgs {
   /// The autoscale setting name.
   final pulumi.Input<String> autoscaleSettingName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetAutoscaleSettingArgs {
 
   factory GetAutoscaleSettingArgs.fromMap(Map<String, dynamic> map) {
     return GetAutoscaleSettingArgs(
-      autoscaleSettingName: pulumi.Input.fromValue(
-        map['autoscaleSettingName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      autoscaleSettingName: pulumi.Input.fromValue(map['autoscaleSettingName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

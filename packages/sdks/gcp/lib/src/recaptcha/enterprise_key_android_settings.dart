@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnterpriseKeyAndroidSettings {
   /// If set to true, it means allowed_package_names will not be enforced.
   final pulumi.Input<bool>? allowAllPackageNames;
-
   /// Android package names of apps allowed to use the key. Example: 'com.companyname.appname'
   final pulumi.Input<List<String>>? allowedPackageNames;
 
@@ -26,16 +25,9 @@ class EnterpriseKeyAndroidSettings {
 
   factory EnterpriseKeyAndroidSettings.fromMap(Map<String, dynamic> map) {
     return EnterpriseKeyAndroidSettings(
-      allowAllPackageNames: (() {
-        final guardedValue = map['allowAllPackageNames'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      allowedPackageNames: (() {
-        final guardedValue = map['allowedPackageNames'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      allowAllPackageNames: (() { final guardedValue = map['allowAllPackageNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      allowedPackageNames: (() { final guardedValue = map['allowedPackageNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

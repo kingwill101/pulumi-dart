@@ -6,20 +6,11 @@ import 'next_generation_firewall_virtual_network_panorama_destination_nat_fronte
 
 class NextGenerationFirewallVirtualNetworkPanoramaDestinationNat {
   /// A `backend_config` block as defined above.
-  final pulumi.Input<
-    NextGenerationFirewallVirtualNetworkPanoramaDestinationNatBackendConfig
-  >?
-  backendConfig;
-
+  final pulumi.Input<NextGenerationFirewallVirtualNetworkPanoramaDestinationNatBackendConfig>? backendConfig;
   /// A `frontend_config` block as defined below.
-  final pulumi.Input<
-    NextGenerationFirewallVirtualNetworkPanoramaDestinationNatFrontendConfig
-  >?
-  frontendConfig;
-
+  final pulumi.Input<NextGenerationFirewallVirtualNetworkPanoramaDestinationNatFrontendConfig>? frontendConfig;
   /// The name which should be used for this Destination NAT.
   final pulumi.Input<String> name;
-
   /// The Protocol for this Destination NAT configuration. Possible values include `TCP` and `UDP`.
   final pulumi.Input<String> protocol;
 
@@ -37,45 +28,20 @@ class NextGenerationFirewallVirtualNetworkPanoramaDestinationNat {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backendConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            NextGenerationFirewallVirtualNetworkPanoramaDestinationNatBackendConfig,
-            Map<String, dynamic>
-          >(backendConfig, (value) => value.toMap()),
-      'frontendConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            NextGenerationFirewallVirtualNetworkPanoramaDestinationNatFrontendConfig,
-            Map<String, dynamic>
-          >(frontendConfig, (value) => value.toMap()),
+      'backendConfig': ?pulumi.Input.mapOptionalInputValue<NextGenerationFirewallVirtualNetworkPanoramaDestinationNatBackendConfig, Map<String, dynamic>>(backendConfig, (value) => value.toMap()),
+      'frontendConfig': ?pulumi.Input.mapOptionalInputValue<NextGenerationFirewallVirtualNetworkPanoramaDestinationNatFrontendConfig, Map<String, dynamic>>(frontendConfig, (value) => value.toMap()),
       'name': name,
       'protocol': protocol,
     };
   }
 
-  factory NextGenerationFirewallVirtualNetworkPanoramaDestinationNat.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NextGenerationFirewallVirtualNetworkPanoramaDestinationNat.fromMap(Map<String, dynamic> map) {
     return NextGenerationFirewallVirtualNetworkPanoramaDestinationNat(
-      backendConfig: (() {
-        final guardedValue = map['backendConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          NextGenerationFirewallVirtualNetworkPanoramaDestinationNatBackendConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      frontendConfig: (() {
-        final guardedValue = map['frontendConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          NextGenerationFirewallVirtualNetworkPanoramaDestinationNatFrontendConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      backendConfig: (() { final guardedValue = map['backendConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NextGenerationFirewallVirtualNetworkPanoramaDestinationNatBackendConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      frontendConfig: (() { final guardedValue = map['frontendConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NextGenerationFirewallVirtualNetworkPanoramaDestinationNatFrontendConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
     );
   }
 }
+

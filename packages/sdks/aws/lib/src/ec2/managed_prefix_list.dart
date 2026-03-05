@@ -204,31 +204,22 @@ import 'managed_prefix_list_state.dart';
 class ManagedPrefixList extends pulumi.CustomResource {
   /// Address family (`IPv4` or `IPv6`) of this prefix list.
   late final pulumi.Output<String> addressFamily;
-
   /// ARN of the prefix list.
   late final pulumi.Output<String> arn;
-
   /// Configuration block for prefix list entry. Detailed below. Different entries may have overlapping CIDR blocks, but a particular CIDR should not be duplicated.
   late final pulumi.Output<List<Map<String, dynamic>>> entries;
-
   /// Maximum number of entries that this prefix list can contain.
   late final pulumi.Output<int> maxEntries;
-
   /// Name of this resource. The name must not start with `com.amazonaws`.
   late final pulumi.Output<String> name;
-
   /// ID of the AWS account that owns this prefix list.
   late final pulumi.Output<String> ownerId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Map of tags to assign to this resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// Latest version of this prefix list.
   late final pulumi.Output<int> version;
 
@@ -241,11 +232,11 @@ class ManagedPrefixList extends pulumi.CustomResource {
     ManagedPrefixListArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/managedPrefixList:ManagedPrefixList',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/managedPrefixList:ManagedPrefixList',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     addressFamily = registerOutput<String>('addressFamily');
     arn = registerOutput<String>('arn');
     entries = registerOutput<List<Map<String, dynamic>>>('entries');
@@ -276,11 +267,11 @@ class ManagedPrefixList extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/managedPrefixList:ManagedPrefixList',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/managedPrefixList:ManagedPrefixList',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     addressFamily = registerOutput<String>('addressFamily');
     arn = registerOutput<String>('arn');
     entries = registerOutput<List<Map<String, dynamic>>>('entries');

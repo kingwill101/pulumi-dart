@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponse {
   /// The schema name in the source.
   final pulumi.Input<String> name;
-
   /// The Doc AI processor type name.
   final pulumi.Input<String> processorType;
 
@@ -19,15 +18,17 @@ class GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'processorType': processorType};
+    return <String, dynamic>{
+      'name': name,
+      'processorType': processorType,
+    };
   }
 
-  factory GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponse(
       name: pulumi.Input.fromValue(map['name'] as String),
       processorType: pulumi.Input.fromValue(map['processorType'] as String),
     );
   }
 }
+

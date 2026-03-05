@@ -7,13 +7,10 @@ import 'broker_authenticator_custom_auth.dart';
 class BrokerAuthenticatorMethodCustom {
   /// Optional authentication needed for authenticating with the custom authentication server.
   final pulumi.Input<BrokerAuthenticatorCustomAuth>? auth;
-
   /// Optional CA certificate for validating the custom authentication server's certificate.
   final pulumi.Input<String>? caCertConfigMap;
-
   /// Endpoint of the custom authentication server. Must be an HTTPS endpoint.
   final pulumi.Input<String> endpoint;
-
   /// Additional HTTP headers to pass to the custom authentication server.
   final pulumi.Input<Map<String, String>>? headers;
 
@@ -31,11 +28,7 @@ class BrokerAuthenticatorMethodCustom {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'auth':
-          ?pulumi.Input.mapOptionalInputValue<
-            BrokerAuthenticatorCustomAuth,
-            Map<String, dynamic>
-          >(auth, (value) => value.toMap()),
+      'auth': ?pulumi.Input.mapOptionalInputValue<BrokerAuthenticatorCustomAuth, Map<String, dynamic>>(auth, (value) => value.toMap()),
       'caCertConfigMap': ?caCertConfigMap,
       'endpoint': endpoint,
       'headers': ?headers,
@@ -44,28 +37,11 @@ class BrokerAuthenticatorMethodCustom {
 
   factory BrokerAuthenticatorMethodCustom.fromMap(Map<String, dynamic> map) {
     return BrokerAuthenticatorMethodCustom(
-      auth: (() {
-        final guardedValue = map['auth'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BrokerAuthenticatorCustomAuth.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      caCertConfigMap: (() {
-        final guardedValue = map['caCertConfigMap'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      auth: (() { final guardedValue = map['auth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BrokerAuthenticatorCustomAuth.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      caCertConfigMap: (() { final guardedValue = map['caCertConfigMap']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       endpoint: pulumi.Input.fromValue(map['endpoint'] as String),
-      headers: (() {
-        final guardedValue = map['headers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      headers: (() { final guardedValue = map['headers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

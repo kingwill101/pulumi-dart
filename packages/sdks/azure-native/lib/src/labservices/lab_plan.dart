@@ -289,52 +289,34 @@ import 'system_data_response.dart';
 class LabPlan extends pulumi.CustomResource {
   /// The allowed regions for the lab creator to use when creating labs using this lab plan.
   late final pulumi.Output<List<String>?> allowedRegions;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The default lab shutdown profile. This can be changed on a lab resource and only provides a default profile.
-  late final pulumi.Output<AutoShutdownProfileResponse?>
-  defaultAutoShutdownProfile;
-
+  late final pulumi.Output<AutoShutdownProfileResponse?> defaultAutoShutdownProfile;
   /// The default lab connection profile. This can be changed on a lab resource and only provides a default profile.
   late final pulumi.Output<ConnectionProfileResponse?> defaultConnectionProfile;
-
   /// The lab plan network profile. To enforce lab network policies they must be defined here and cannot be changed when there are existing labs associated with this lab plan.
-  late final pulumi.Output<LabPlanNetworkProfileResponse?>
-  defaultNetworkProfile;
-
+  late final pulumi.Output<LabPlanNetworkProfileResponse?> defaultNetworkProfile;
   /// Managed Identity Information
   late final pulumi.Output<IdentityResponse?> identity;
-
   /// Base Url of the lms instance this lab plan can link lab rosters against.
   late final pulumi.Output<String?> linkedLmsInstance;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Current provisioning state of the lab plan.
   late final pulumi.Output<String> provisioningState;
-
   /// Error details of last operation done on lab plan.
-  late final pulumi.Output<ResourceOperationErrorResponse>
-  resourceOperationError;
-
+  late final pulumi.Output<ResourceOperationErrorResponse> resourceOperationError;
   /// Resource ID of the Shared Image Gallery attached to this lab plan. When saving a lab template virtual machine image it will be persisted in this gallery. Shared images from the gallery can be made available to use when creating new labs.
   late final pulumi.Output<String?> sharedGalleryId;
-
   /// Support contact information and instructions for users of the lab plan. This information is displayed to lab owners and virtual machine users for all labs in the lab plan.
   late final pulumi.Output<SupportInfoResponse?> supportInfo;
-
   /// Metadata pertaining to creation and last modification of the lab plan.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -347,88 +329,25 @@ class LabPlan extends pulumi.CustomResource {
     LabPlanArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:labservices:LabPlan',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:labservices:LabPlan',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allowedRegions = registerOutput<List<String>?>('allowedRegions');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    defaultAutoShutdownProfile = registerOutput<AutoShutdownProfileResponse?>(
-      'defaultAutoShutdownProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AutoShutdownProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    defaultConnectionProfile = registerOutput<ConnectionProfileResponse?>(
-      'defaultConnectionProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectionProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    defaultNetworkProfile = registerOutput<LabPlanNetworkProfileResponse?>(
-      'defaultNetworkProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LabPlanNetworkProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    identity = registerOutput<IdentityResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    defaultAutoShutdownProfile = registerOutput<AutoShutdownProfileResponse?>('defaultAutoShutdownProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutoShutdownProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    defaultConnectionProfile = registerOutput<ConnectionProfileResponse?>('defaultConnectionProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    defaultNetworkProfile = registerOutput<LabPlanNetworkProfileResponse?>('defaultNetworkProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LabPlanNetworkProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<IdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     linkedLmsInstance = registerOutput<String?>('linkedLmsInstance');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    resourceOperationError = registerOutput<ResourceOperationErrorResponse>(
-      'resourceOperationError',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResourceOperationErrorResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    resourceOperationError = registerOutput<ResourceOperationErrorResponse>('resourceOperationError', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceOperationErrorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sharedGalleryId = registerOutput<String?>('sharedGalleryId');
-    supportInfo = registerOutput<SupportInfoResponse?>(
-      'supportInfo',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SupportInfoResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    supportInfo = registerOutput<SupportInfoResponse?>('supportInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SupportInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

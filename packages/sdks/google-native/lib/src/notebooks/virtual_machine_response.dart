@@ -7,10 +7,8 @@ import 'virtual_machine_config_response.dart';
 class VirtualMachineResponse {
   /// The unique identifier of the Managed Compute Engine instance.
   final pulumi.Input<String> instanceId;
-
   /// The user-friendly name of the Managed Compute Engine instance.
   final pulumi.Input<String> instanceName;
-
   /// Virtual Machine configuration settings.
   final pulumi.Input<VirtualMachineConfigResponse> virtualMachineConfig;
 
@@ -28,11 +26,7 @@ class VirtualMachineResponse {
     return <String, dynamic>{
       'instanceId': instanceId,
       'instanceName': instanceName,
-      'virtualMachineConfig':
-          pulumi.Input.mapInputValue<
-            VirtualMachineConfigResponse,
-            Map<String, dynamic>
-          >(virtualMachineConfig, (value) => value.toMap()),
+      'virtualMachineConfig': pulumi.Input.mapInputValue<VirtualMachineConfigResponse, Map<String, dynamic>>(virtualMachineConfig, (value) => value.toMap()),
     };
   }
 
@@ -40,11 +34,8 @@ class VirtualMachineResponse {
     return VirtualMachineResponse(
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
       instanceName: pulumi.Input.fromValue(map['instanceName'] as String),
-      virtualMachineConfig: pulumi.Input.fromValue(
-        VirtualMachineConfigResponse.fromMap(
-          (map['virtualMachineConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      virtualMachineConfig: pulumi.Input.fromValue(VirtualMachineConfigResponse.fromMap((map['virtualMachineConfig']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

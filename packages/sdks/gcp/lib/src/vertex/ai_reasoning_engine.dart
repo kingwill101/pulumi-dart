@@ -2000,34 +2000,26 @@ class AiReasoningEngine extends pulumi.CustomResource {
   /// The timestamp of when the Index was created in RFC3339 UTC "Zulu" format,
   /// with nanosecond resolution and up to nine fractional digits.
   late final pulumi.Output<String> createTime;
-
   /// The description of the ReasoningEngine.
   late final pulumi.Output<String?> description;
-
   /// The display name of the ReasoningEngine.
   late final pulumi.Output<String> displayName;
-
   /// Optional. Customer-managed encryption key spec for a ReasoningEngine.
   /// If set, this ReasoningEngine and all sub-resources of this ReasoningEngine
   /// will be secured by this key.
   /// Structure is documented below.
   late final pulumi.Output<AiReasoningEngineEncryptionSpec?> encryptionSpec;
-
   /// The generated name of the ReasoningEngine, in the format
   /// projects/{project}/locations/{location}/reasoningEngines/{reasoningEngine}
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The region of the reasoning engine. eg us-central1
   late final pulumi.Output<String?> region;
-
   /// Optional. Configurations of the ReasoningEngine.
   /// Structure is documented below.
   late final pulumi.Output<AiReasoningEngineSpec?> spec;
-
   /// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu"
   /// format, with nanosecond resolution and up to nine fractional digits.
   late final pulumi.Output<String> updateTime;
@@ -2041,37 +2033,19 @@ class AiReasoningEngine extends pulumi.CustomResource {
     AiReasoningEngineArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:vertex/aiReasoningEngine:AiReasoningEngine',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:vertex/aiReasoningEngine:AiReasoningEngine',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
-    encryptionSpec = registerOutput<AiReasoningEngineEncryptionSpec?>(
-      'encryptionSpec',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AiReasoningEngineEncryptionSpec.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    encryptionSpec = registerOutput<AiReasoningEngineEncryptionSpec?>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiReasoningEngineEncryptionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     region = registerOutput<String?>('region');
-    spec = registerOutput<AiReasoningEngineSpec?>(
-      'spec',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AiReasoningEngineSpec.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    spec = registerOutput<AiReasoningEngineSpec?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiReasoningEngineSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updateTime = registerOutput<String>('updateTime');
   }
 
@@ -2093,37 +2067,19 @@ class AiReasoningEngine extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:vertex/aiReasoningEngine:AiReasoningEngine',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:vertex/aiReasoningEngine:AiReasoningEngine',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
-    encryptionSpec = registerOutput<AiReasoningEngineEncryptionSpec?>(
-      'encryptionSpec',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AiReasoningEngineEncryptionSpec.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    encryptionSpec = registerOutput<AiReasoningEngineEncryptionSpec?>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiReasoningEngineEncryptionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     region = registerOutput<String?>('region');
-    spec = registerOutput<AiReasoningEngineSpec?>(
-      'spec',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AiReasoningEngineSpec.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    spec = registerOutput<AiReasoningEngineSpec?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiReasoningEngineSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updateTime = registerOutput<String>('updateTime');
   }
 }

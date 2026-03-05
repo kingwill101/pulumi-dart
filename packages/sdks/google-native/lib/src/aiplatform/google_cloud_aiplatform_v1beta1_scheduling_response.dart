@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudAiplatformV1beta1SchedulingResponse {
   /// Optional. Indicates if the job should retry for internal errors after the job starts running. If true, overrides `Scheduling.restart_job_on_worker_restart` to false.
   final pulumi.Input<bool> disableRetries;
-
   /// Restarts the entire CustomJob if a worker gets restarted. This feature can be used by distributed training jobs that are not resilient to workers leaving and joining a job.
   final pulumi.Input<bool> restartJobOnWorkerRestart;
-
   /// The maximum job running time. The default is 7 days.
   final pulumi.Input<String> timeout;
 
@@ -31,15 +29,12 @@ class GoogleCloudAiplatformV1beta1SchedulingResponse {
     };
   }
 
-  factory GoogleCloudAiplatformV1beta1SchedulingResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudAiplatformV1beta1SchedulingResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1SchedulingResponse(
       disableRetries: pulumi.Input.fromValue(map['disableRetries'] as bool),
-      restartJobOnWorkerRestart: pulumi.Input.fromValue(
-        map['restartJobOnWorkerRestart'] as bool,
-      ),
+      restartJobOnWorkerRestart: pulumi.Input.fromValue(map['restartJobOnWorkerRestart'] as bool),
       timeout: pulumi.Input.fromValue(map['timeout'] as String),
     );
   }
 }
+

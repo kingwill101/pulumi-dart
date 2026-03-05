@@ -12,7 +12,9 @@ class GetKubernetesVersionsArgs {
 
   /// Creates a new [GetKubernetesVersionsArgs].
   /// [customLocationResourceUri] The fully qualified Azure Resource Manager identifier of the custom location resource.
-  GetKubernetesVersionsArgs({required this.customLocationResourceUri});
+  GetKubernetesVersionsArgs({
+    required this.customLocationResourceUri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -22,9 +24,8 @@ class GetKubernetesVersionsArgs {
 
   factory GetKubernetesVersionsArgs.fromMap(Map<String, dynamic> map) {
     return GetKubernetesVersionsArgs(
-      customLocationResourceUri: pulumi.Input.fromValue(
-        map['customLocationResourceUri'] as String,
-      ),
+      customLocationResourceUri: pulumi.Input.fromValue(map['customLocationResourceUri'] as String),
     );
   }
 }
+

@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IngestionSourcesPropertiesFormatResponse {
   /// Resource ID.
   final pulumi.Input<String>? resourceId;
-
   /// Ingestion source type.
   final pulumi.Input<String>? sourceType;
 
   /// Creates a new [IngestionSourcesPropertiesFormatResponse].
   /// [resourceId] Resource ID.
   /// [sourceType] Ingestion source type.
-  IngestionSourcesPropertiesFormatResponse({this.resourceId, this.sourceType});
+  IngestionSourcesPropertiesFormatResponse({
+    this.resourceId,
+    this.sourceType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -22,20 +24,11 @@ class IngestionSourcesPropertiesFormatResponse {
     };
   }
 
-  factory IngestionSourcesPropertiesFormatResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory IngestionSourcesPropertiesFormatResponse.fromMap(Map<String, dynamic> map) {
     return IngestionSourcesPropertiesFormatResponse(
-      resourceId: (() {
-        final guardedValue = map['resourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sourceType: (() {
-        final guardedValue = map['sourceType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourceType: (() { final guardedValue = map['sourceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -6,16 +6,12 @@ import 'tags_response.dart';
 class GetTagAtScopeResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The ID of the tags wrapper resource.
   final String id;
-
   /// The name of the tags wrapper resource.
   final String name;
-
   /// The set of tags.
   final TagsResponse properties;
-
   /// The type of the tags wrapper resource.
   final String type;
 
@@ -48,10 +44,9 @@ class GetTagAtScopeResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      properties: TagsResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
+      properties: TagsResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

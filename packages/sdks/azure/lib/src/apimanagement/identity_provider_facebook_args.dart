@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IdentityProviderFacebookArgs {
   /// The Name of the API Management Service where this Facebook Identity Provider should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> apiManagementName;
-
   /// App ID for Facebook.
   final pulumi.Input<String> appId;
-
   /// App Secret for Facebook.
   final pulumi.Input<String> appSecret;
-
   /// The Name of the Resource Group where the API Management Service exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
 
@@ -42,14 +39,11 @@ class IdentityProviderFacebookArgs {
 
   factory IdentityProviderFacebookArgs.fromMap(Map<String, dynamic> map) {
     return IdentityProviderFacebookArgs(
-      apiManagementName: pulumi.Input.fromValue(
-        map['apiManagementName'] as String,
-      ),
+      apiManagementName: pulumi.Input.fromValue(map['apiManagementName'] as String),
       appId: pulumi.Input.fromValue(map['appId'] as String),
       appSecret: pulumi.Input.fromValue(map['appSecret'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

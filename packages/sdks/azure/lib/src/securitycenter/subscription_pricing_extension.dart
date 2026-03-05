@@ -9,7 +9,6 @@ class SubscriptionPricingExtension {
   ///
   /// &gt; **Note:** Changing the pricing tier to `Standard` affects all resources of the given type in the subscription and could be quite costly.
   final pulumi.Input<Map<String, String>>? additionalExtensionProperties;
-
   /// The name of extension.
   final pulumi.Input<String> name;
 
@@ -30,14 +29,9 @@ class SubscriptionPricingExtension {
 
   factory SubscriptionPricingExtension.fromMap(Map<String, dynamic> map) {
     return SubscriptionPricingExtension(
-      additionalExtensionProperties: (() {
-        final guardedValue = map['additionalExtensionProperties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      additionalExtensionProperties: (() { final guardedValue = map['additionalExtensionProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

@@ -8,10 +8,14 @@ class DomainDevicesGraphicSpiceClipBoard {
 
   /// Creates a new [DomainDevicesGraphicSpiceClipBoard].
   /// [copyPaste] Determines whether the copy-paste functionality is enabled for the Spice clipboard.
-  DomainDevicesGraphicSpiceClipBoard({required this.copyPaste});
+  DomainDevicesGraphicSpiceClipBoard({
+    required this.copyPaste,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'copyPaste': copyPaste};
+    return <String, dynamic>{
+      'copyPaste': copyPaste,
+    };
   }
 
   factory DomainDevicesGraphicSpiceClipBoard.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class DomainDevicesGraphicSpiceClipBoard {
     );
   }
 }
+

@@ -9,17 +9,20 @@ class MembershipBindingLifecycleStateResponseGkehubV1beta {
 
   /// Creates a new [MembershipBindingLifecycleStateResponseGkehubV1beta].
   /// [code] The current state of the MembershipBinding resource.
-  MembershipBindingLifecycleStateResponseGkehubV1beta({required this.code});
+  MembershipBindingLifecycleStateResponseGkehubV1beta({
+    required this.code,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'code': code};
+    return <String, dynamic>{
+      'code': code,
+    };
   }
 
-  factory MembershipBindingLifecycleStateResponseGkehubV1beta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MembershipBindingLifecycleStateResponseGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return MembershipBindingLifecycleStateResponseGkehubV1beta(
       code: pulumi.Input.fromValue(map['code'] as String),
     );
   }
 }
+

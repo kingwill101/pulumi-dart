@@ -7,8 +7,7 @@ class OpenApiImageCache extends pulumi.CustomResource {
   late final pulumi.Output<String?> eipInstanceId;
   late final pulumi.Output<String> imageCacheName;
   late final pulumi.Output<int?> imageCacheSize;
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  imageRegistryCredentials;
+  late final pulumi.Output<List<Map<String, dynamic>>?> imageRegistryCredentials;
   late final pulumi.Output<List<String>> images;
   late final pulumi.Output<String?> resourceGroupId;
   late final pulumi.Output<int?> retentionDays;
@@ -26,18 +25,16 @@ class OpenApiImageCache extends pulumi.CustomResource {
     OpenApiImageCacheArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:eci/openApiImageCache:OpenApiImageCache',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:eci/openApiImageCache:OpenApiImageCache',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     containerGroupId = registerOutput<String>('containerGroupId');
     eipInstanceId = registerOutput<String?>('eipInstanceId');
     imageCacheName = registerOutput<String>('imageCacheName');
     imageCacheSize = registerOutput<int?>('imageCacheSize');
-    imageRegistryCredentials = registerOutput<List<Map<String, dynamic>>?>(
-      'imageRegistryCredentials',
-    );
+    imageRegistryCredentials = registerOutput<List<Map<String, dynamic>>?>('imageRegistryCredentials');
     images = registerOutput<List<String>>('images');
     resourceGroupId = registerOutput<String?>('resourceGroupId');
     retentionDays = registerOutput<int?>('retentionDays');
@@ -65,18 +62,16 @@ class OpenApiImageCache extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:eci/openApiImageCache:OpenApiImageCache',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:eci/openApiImageCache:OpenApiImageCache',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     containerGroupId = registerOutput<String>('containerGroupId');
     eipInstanceId = registerOutput<String?>('eipInstanceId');
     imageCacheName = registerOutput<String>('imageCacheName');
     imageCacheSize = registerOutput<int?>('imageCacheSize');
-    imageRegistryCredentials = registerOutput<List<Map<String, dynamic>>?>(
-      'imageRegistryCredentials',
-    );
+    imageRegistryCredentials = registerOutput<List<Map<String, dynamic>>?>('imageRegistryCredentials');
     images = registerOutput<List<String>>('images');
     resourceGroupId = registerOutput<String?>('resourceGroupId');
     retentionDays = registerOutput<int?>('retentionDays');

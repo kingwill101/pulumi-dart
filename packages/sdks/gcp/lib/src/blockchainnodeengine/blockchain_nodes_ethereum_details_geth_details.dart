@@ -11,21 +11,20 @@ class BlockchainNodesEthereumDetailsGethDetails {
 
   /// Creates a new [BlockchainNodesEthereumDetailsGethDetails].
   /// [garbageCollectionMode] Blockchain garbage collection modes. Only applicable when NodeType is FULL or ARCHIVE.
-  BlockchainNodesEthereumDetailsGethDetails({this.garbageCollectionMode});
+  BlockchainNodesEthereumDetailsGethDetails({
+    this.garbageCollectionMode,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'garbageCollectionMode': ?garbageCollectionMode};
+    return <String, dynamic>{
+      'garbageCollectionMode': ?garbageCollectionMode,
+    };
   }
 
-  factory BlockchainNodesEthereumDetailsGethDetails.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BlockchainNodesEthereumDetailsGethDetails.fromMap(Map<String, dynamic> map) {
     return BlockchainNodesEthereumDetailsGethDetails(
-      garbageCollectionMode: (() {
-        final guardedValue = map['garbageCollectionMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      garbageCollectionMode: (() { final guardedValue = map['garbageCollectionMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -19,49 +19,16 @@ class AuthorizedApplicationProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataAuthorizations':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ApplicationDataAuthorization>,
-            List<Map<String, dynamic>>
-          >(
-            dataAuthorizations,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ApplicationDataAuthorization,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'providerAuthorization':
-          ?pulumi.Input.mapOptionalInputValue<
-            ApplicationProviderAuthorization,
-            Map<String, dynamic>
-          >(providerAuthorization, (value) => value.toMap()),
+      'dataAuthorizations': ?pulumi.Input.mapOptionalInputValue<List<ApplicationDataAuthorization>, List<Map<String, dynamic>>>(dataAuthorizations, (value) => pulumi.Input.encodeList<ApplicationDataAuthorization, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'providerAuthorization': ?pulumi.Input.mapOptionalInputValue<ApplicationProviderAuthorization, Map<String, dynamic>>(providerAuthorization, (value) => value.toMap()),
     };
   }
 
   factory AuthorizedApplicationProperties.fromMap(Map<String, dynamic> map) {
     return AuthorizedApplicationProperties(
-      dataAuthorizations: (() {
-        final guardedValue = map['dataAuthorizations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ApplicationDataAuthorization>(
-            guardedValue,
-            (value) => ApplicationDataAuthorization.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      providerAuthorization: (() {
-        final guardedValue = map['providerAuthorization'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ApplicationProviderAuthorization.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      dataAuthorizations: (() { final guardedValue = map['dataAuthorizations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ApplicationDataAuthorization>(guardedValue, (value) => ApplicationDataAuthorization.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      providerAuthorization: (() { final guardedValue = map['providerAuthorization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ApplicationProviderAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConditionalCreditArgs {
   /// Name of the conditional credit
   final pulumi.Input<String> conditionalCreditName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetConditionalCreditArgs {
 
   factory GetConditionalCreditArgs.fromMap(Map<String, dynamic> map) {
     return GetConditionalCreditArgs(
-      conditionalCreditName: pulumi.Input.fromValue(
-        map['conditionalCreditName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      conditionalCreditName: pulumi.Input.fromValue(map['conditionalCreditName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

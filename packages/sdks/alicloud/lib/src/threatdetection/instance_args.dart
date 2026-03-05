@@ -10,49 +10,38 @@ import 'instance_post_pay_module_switch_obj.dart';
 class InstanceArgs {
   /// Number of servers.
   final pulumi.Input<String>? buyNumber;
-
   /// Container Image security scan. Interval type, value interval:[0,200000].
   ///
   /// &gt; **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
   final pulumi.Input<String>? containerImageScan;
-
   /// Container Image security scan. Interval type, value interval:[0,200000].
   ///
   /// &gt; **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
   final pulumi.Input<String>? containerImageScanNew;
-
   /// Number of cloud honeypot licenses. Interval type, value interval:[20,500].
   ///
   /// &gt; **NOTE:**  This module can only be purchased when honeypot_switch = 1, starting with 20.
   final pulumi.Input<String>? honeypot;
-
   /// Cloud honeypot. Value:
   /// - 1: Yes.
   /// - 2: No.
   final pulumi.Input<String>? honeypotSwitch;
-
   /// Change configuration type, value
   /// - Upgrade: Upgrade.
   /// - Downgrade: Downgrade.
   final pulumi.Input<String>? modifyType;
-
   /// The payment type of the resource
   final pulumi.Input<String> paymentType;
-
   /// Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
   ///
   /// &gt; **NOTE:**  must be set when creating a prepaid instance.
   final pulumi.Input<int>? period;
-
   /// Post-paid signage. Value:
   final pulumi.Input<int>? postPaidFlag;
-
   /// Automatic binding switch for new assets in host and container protection. Valid values:
   final pulumi.Input<int>? postPaidHostAutoBind;
-
   /// The version that is automatically bound to the host and container protection of a pay-as-you-go instance. Valid values:
   final pulumi.Input<int>? postPaidHostAutoBindVersion;
-
   /// The switch status of the pay-as-you-go module. The value is a JSON string. Valid values:
   /// - Key:
   /// - `VUL`: Vulnerability Repair Module.
@@ -68,108 +57,86 @@ class InstanceArgs {
   /// - Value: `0` means off, `1` means on
   /// &gt; **NOTE:** Field `post_pay_module_switch` has been deprecated from provider version 1.269.0. New field `post_pay_module_switch_obj` instead.
   final pulumi.Input<String>? postPayModuleSwitch;
-
   /// Pay-as-you-go module switch. See `post_pay_module_switch_obj` below.
   final pulumi.Input<InstancePostPayModuleSwitchObj>? postPayModuleSwitchObj;
-
   /// Number of application protection licenses. Interval type, value interval:[1,100000000].
   final pulumi.Input<String>? raspCount;
-
   /// Automatic renewal cycle, in months.
   ///
   /// &gt; **NOTE:**  When `RenewalStatus` is set to `AutoRenewal`, it must be set.
   final pulumi.Input<int>? renewPeriod;
-
   /// Automatic renewal period unit, value:
   /// - M: month.
   /// - Y: years.
   ///
   /// &gt; **NOTE:**  Must be set when RenewalStatus = AutoRenewal.
   final pulumi.Input<String>? renewalPeriodUnit;
-
   /// Automatic renewal status, value:
   /// - AutoRenewal: automatic renewal.
   /// - ManualRenewal: manual renewal.
   ///
   /// Default ManualRenewal.
   final pulumi.Input<String>? renewalStatus;
-
   /// Anti-ransomware capacity. Unit: GB. Interval type, value interval:[0,9999999999].
   ///
   /// &gt; **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
   final pulumi.Input<String>? sasAntiRansomware;
-
   /// Cloud platform configuration check scan times, interval type, value range:[15000,9999999999].
   ///
   /// &gt; **NOTE:**  You must have sas_cspm_switch = 1 to purchase this module. The step size is 55000, that is, only multiples of 55000 can be filled in.
   final pulumi.Input<String>? sasCspm;
-
   /// Cloud platform configuration check switch. Value:
   /// - 0: No.
   /// - 1: Yes.
   final pulumi.Input<String>? sasCspmSwitch;
-
   /// Security screen. Value:
   /// - true: Yes.
   /// - false: No.
   final pulumi.Input<bool>? sasSc;
-
   /// Number of malicious file detections. Unit: 10,000 times. Interval type, value interval:[10,9999999999].
   ///
   /// &gt; **NOTE:**  This module can only be purchased when sas_sdk_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
   final pulumi.Input<String>? sasSdk;
-
   /// Malicious file detection SDK.
   final pulumi.Input<String>? sasSdkSwitch;
-
   /// Log analysis storage capacity. Unit: GB. Interval type, value interval:[0,600000].
   ///
   /// &gt; **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
   final pulumi.Input<String>? sasSlsStorage;
-
   /// Web tamper-proof switch. Value:
   /// - 0: No.
   /// - 1: Yes.
   final pulumi.Input<String>? sasWebguardBoolean;
-
   /// Tamper-proof authorization number. Value:
   /// - 0: No
   /// 1: Yes.
   final pulumi.Input<String>? sasWebguardOrderNum;
-
   /// The subscription type. Value:
   /// - Subscription: Prepaid.
   /// - PayAsYouGo: Post-paid.
   final pulumi.Input<String>? subscriptionType;
-
   /// Threat Analysis log storage capacity. Interval type, value interval:[0,9999999999].
   ///
   /// &gt; **NOTE:**  This module can only be purchased when Threat_analysis_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
   final pulumi.Input<String>? threatAnalysis;
-
   /// Threat analysis and response log access traffic. After ThreatAnalysisSwitch1 is selected, it must be selected. Interval type, value interval:[0,9999999999].
   ///
   /// &gt; **NOTE:**  Step size is 100.
   final pulumi.Input<String>? threatAnalysisFlow;
-
   /// Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
   ///
   /// &gt; **NOTE:**  The step size is 1000, that is, only multiples of 1000 can be filled in.
   final pulumi.Input<String>? threatAnalysisSlsStorage;
-
   /// Threat analysis. Value:
   /// - 0: No.
   /// - 1: Yes.
   final pulumi.Input<String>? threatAnalysisSwitch;
-
   /// Threat analysis and response switch (new), values:
   /// - 0: No
   /// - 1: Yes
   final pulumi.Input<String>? threatAnalysisSwitch1;
-
   /// Number of cores.
   final pulumi.Input<String>? vCore;
-
   /// Select the security center version. Value:
   /// - level7: Antivirus Edition.
   /// - level3: Premium version.
@@ -177,12 +144,10 @@ class InstanceArgs {
   /// - level8: Ultimate.
   /// - level10: Purchase value-added services only.
   final pulumi.Input<String>? versionCode;
-
   /// Vulnerability repair times, interval type, value range:[20,100000000].
   ///
   /// &gt; **NOTE:**  This module can only be purchased when vul_switch = 1. Only when the version_code value is level7 or level10. other versions do not need to be purchased separately.
   final pulumi.Input<String>? vulCount;
-
   /// Vulnerability fix switch. Value:
   /// - 0: No.
   /// - 1: Yes.
@@ -280,11 +245,7 @@ class InstanceArgs {
       'postPaidHostAutoBind': ?postPaidHostAutoBind,
       'postPaidHostAutoBindVersion': ?postPaidHostAutoBindVersion,
       'postPayModuleSwitch': ?postPayModuleSwitch,
-      'postPayModuleSwitchObj':
-          ?pulumi.Input.mapOptionalInputValue<
-            InstancePostPayModuleSwitchObj,
-            Map<String, dynamic>
-          >(postPayModuleSwitchObj, (value) => value.toMap()),
+      'postPayModuleSwitchObj': ?pulumi.Input.mapOptionalInputValue<InstancePostPayModuleSwitchObj, Map<String, dynamic>>(postPayModuleSwitchObj, (value) => value.toMap()),
       'raspCount': ?raspCount,
       'renewPeriod': ?renewPeriod,
       'renewalPeriodUnit': ?renewalPeriodUnit,
@@ -313,186 +274,43 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      buyNumber: (() {
-        final guardedValue = map['buyNumber'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      containerImageScan: (() {
-        final guardedValue = map['containerImageScan'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      containerImageScanNew: (() {
-        final guardedValue = map['containerImageScanNew'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      honeypot: (() {
-        final guardedValue = map['honeypot'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      honeypotSwitch: (() {
-        final guardedValue = map['honeypotSwitch'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      modifyType: (() {
-        final guardedValue = map['modifyType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      buyNumber: (() { final guardedValue = map['buyNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      containerImageScan: (() { final guardedValue = map['containerImageScan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      containerImageScanNew: (() { final guardedValue = map['containerImageScanNew']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      honeypot: (() { final guardedValue = map['honeypot']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      honeypotSwitch: (() { final guardedValue = map['honeypotSwitch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      modifyType: (() { final guardedValue = map['modifyType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       paymentType: pulumi.Input.fromValue(map['paymentType'] as String),
-      period: (() {
-        final guardedValue = map['period'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      postPaidFlag: (() {
-        final guardedValue = map['postPaidFlag'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      postPaidHostAutoBind: (() {
-        final guardedValue = map['postPaidHostAutoBind'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      postPaidHostAutoBindVersion: (() {
-        final guardedValue = map['postPaidHostAutoBindVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      postPayModuleSwitch: (() {
-        final guardedValue = map['postPayModuleSwitch'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      postPayModuleSwitchObj: (() {
-        final guardedValue = map['postPayModuleSwitchObj'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          InstancePostPayModuleSwitchObj.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      raspCount: (() {
-        final guardedValue = map['raspCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      renewPeriod: (() {
-        final guardedValue = map['renewPeriod'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      renewalPeriodUnit: (() {
-        final guardedValue = map['renewalPeriodUnit'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      renewalStatus: (() {
-        final guardedValue = map['renewalStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sasAntiRansomware: (() {
-        final guardedValue = map['sasAntiRansomware'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sasCspm: (() {
-        final guardedValue = map['sasCspm'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sasCspmSwitch: (() {
-        final guardedValue = map['sasCspmSwitch'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sasSc: (() {
-        final guardedValue = map['sasSc'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      sasSdk: (() {
-        final guardedValue = map['sasSdk'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sasSdkSwitch: (() {
-        final guardedValue = map['sasSdkSwitch'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sasSlsStorage: (() {
-        final guardedValue = map['sasSlsStorage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sasWebguardBoolean: (() {
-        final guardedValue = map['sasWebguardBoolean'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sasWebguardOrderNum: (() {
-        final guardedValue = map['sasWebguardOrderNum'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subscriptionType: (() {
-        final guardedValue = map['subscriptionType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      threatAnalysis: (() {
-        final guardedValue = map['threatAnalysis'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      threatAnalysisFlow: (() {
-        final guardedValue = map['threatAnalysisFlow'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      threatAnalysisSlsStorage: (() {
-        final guardedValue = map['threatAnalysisSlsStorage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      threatAnalysisSwitch: (() {
-        final guardedValue = map['threatAnalysisSwitch'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      threatAnalysisSwitch1: (() {
-        final guardedValue = map['threatAnalysisSwitch1'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      vCore: (() {
-        final guardedValue = map['vCore'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      versionCode: (() {
-        final guardedValue = map['versionCode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      vulCount: (() {
-        final guardedValue = map['vulCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      vulSwitch: (() {
-        final guardedValue = map['vulSwitch'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      period: (() { final guardedValue = map['period']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      postPaidFlag: (() { final guardedValue = map['postPaidFlag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      postPaidHostAutoBind: (() { final guardedValue = map['postPaidHostAutoBind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      postPaidHostAutoBindVersion: (() { final guardedValue = map['postPaidHostAutoBindVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      postPayModuleSwitch: (() { final guardedValue = map['postPayModuleSwitch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      postPayModuleSwitchObj: (() { final guardedValue = map['postPayModuleSwitchObj']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstancePostPayModuleSwitchObj.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      raspCount: (() { final guardedValue = map['raspCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      renewPeriod: (() { final guardedValue = map['renewPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      renewalPeriodUnit: (() { final guardedValue = map['renewalPeriodUnit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      renewalStatus: (() { final guardedValue = map['renewalStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sasAntiRansomware: (() { final guardedValue = map['sasAntiRansomware']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sasCspm: (() { final guardedValue = map['sasCspm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sasCspmSwitch: (() { final guardedValue = map['sasCspmSwitch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sasSc: (() { final guardedValue = map['sasSc']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      sasSdk: (() { final guardedValue = map['sasSdk']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sasSdkSwitch: (() { final guardedValue = map['sasSdkSwitch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sasSlsStorage: (() { final guardedValue = map['sasSlsStorage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sasWebguardBoolean: (() { final guardedValue = map['sasWebguardBoolean']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sasWebguardOrderNum: (() { final guardedValue = map['sasWebguardOrderNum']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subscriptionType: (() { final guardedValue = map['subscriptionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      threatAnalysis: (() { final guardedValue = map['threatAnalysis']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      threatAnalysisFlow: (() { final guardedValue = map['threatAnalysisFlow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      threatAnalysisSlsStorage: (() { final guardedValue = map['threatAnalysisSlsStorage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      threatAnalysisSwitch: (() { final guardedValue = map['threatAnalysisSwitch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      threatAnalysisSwitch1: (() { final guardedValue = map['threatAnalysisSwitch1']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      vCore: (() { final guardedValue = map['vCore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      versionCode: (() { final guardedValue = map['versionCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      vulCount: (() { final guardedValue = map['vulCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      vulSwitch: (() { final guardedValue = map['vulSwitch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

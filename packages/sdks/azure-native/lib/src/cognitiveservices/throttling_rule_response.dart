@@ -32,18 +32,7 @@ class ThrottlingRuleResponse {
       'count': ?count,
       'dynamicThrottlingEnabled': ?dynamicThrottlingEnabled,
       'key': ?key,
-      'matchPatterns':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<RequestMatchPatternResponse>,
-            List<Map<String, dynamic>>
-          >(
-            matchPatterns,
-            (value) =>
-                pulumi.Input.encodeList<
-                  RequestMatchPatternResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'matchPatterns': ?pulumi.Input.mapOptionalInputValue<List<RequestMatchPatternResponse>, List<Map<String, dynamic>>>(matchPatterns, (value) => pulumi.Input.encodeList<RequestMatchPatternResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'minCount': ?minCount,
       'renewalPeriod': ?renewalPeriod,
     };
@@ -51,43 +40,13 @@ class ThrottlingRuleResponse {
 
   factory ThrottlingRuleResponse.fromMap(Map<String, dynamic> map) {
     return ThrottlingRuleResponse(
-      count: (() {
-        final guardedValue = map['count'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      dynamicThrottlingEnabled: (() {
-        final guardedValue = map['dynamicThrottlingEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      key: (() {
-        final guardedValue = map['key'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      matchPatterns: (() {
-        final guardedValue = map['matchPatterns'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<RequestMatchPatternResponse>(
-            guardedValue,
-            (value) => RequestMatchPatternResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      minCount: (() {
-        final guardedValue = map['minCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      renewalPeriod: (() {
-        final guardedValue = map['renewalPeriod'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      dynamicThrottlingEnabled: (() { final guardedValue = map['dynamicThrottlingEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      matchPatterns: (() { final guardedValue = map['matchPatterns']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RequestMatchPatternResponse>(guardedValue, (value) => RequestMatchPatternResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      minCount: (() { final guardedValue = map['minCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      renewalPeriod: (() { final guardedValue = map['renewalPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

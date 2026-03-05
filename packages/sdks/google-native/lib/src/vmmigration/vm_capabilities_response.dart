@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VmCapabilitiesResponse {
   /// The last time OS capabilities list was updated.
   final pulumi.Input<String> lastOsCapabilitiesUpdateTime;
-
   /// Unordered list. List of certain VM OS capabilities needed for some Compute Engine features.
   final pulumi.Input<List<String>> osCapabilities;
 
@@ -27,12 +26,9 @@ class VmCapabilitiesResponse {
 
   factory VmCapabilitiesResponse.fromMap(Map<String, dynamic> map) {
     return VmCapabilitiesResponse(
-      lastOsCapabilitiesUpdateTime: pulumi.Input.fromValue(
-        map['lastOsCapabilitiesUpdateTime'] as String,
-      ),
-      osCapabilities: pulumi.Input.fromValue(
-        (map['osCapabilities'] as List).cast<String>(),
-      ),
+      lastOsCapabilitiesUpdateTime: pulumi.Input.fromValue(map['lastOsCapabilitiesUpdateTime'] as String),
+      osCapabilities: pulumi.Input.fromValue((map['osCapabilities'] as List).cast<String>()),
     );
   }
 }
+

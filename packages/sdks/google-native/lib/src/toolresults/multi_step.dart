@@ -7,10 +7,8 @@ import 'primary_step.dart';
 class MultiStep {
   /// Unique int given to each step. Ranges from 0(inclusive) to total number of steps(exclusive). The primary step is 0.
   final pulumi.Input<int>? multistepNumber;
-
   /// Present if it is a primary (original) step.
   final pulumi.Input<PrimaryStep>? primaryStep;
-
   /// Step Id of the primary (original) step, which might be this step.
   final pulumi.Input<String>? primaryStepId;
 
@@ -18,39 +16,26 @@ class MultiStep {
   /// [multistepNumber] Unique int given to each step. Ranges from 0(inclusive) to total number of steps(exclusive). The primary step is 0.
   /// [primaryStep] Present if it is a primary (original) step.
   /// [primaryStepId] Step Id of the primary (original) step, which might be this step.
-  MultiStep({this.multistepNumber, this.primaryStep, this.primaryStepId});
+  MultiStep({
+    this.multistepNumber,
+    this.primaryStep,
+    this.primaryStepId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'multistepNumber': ?multistepNumber,
-      'primaryStep':
-          ?pulumi.Input.mapOptionalInputValue<
-            PrimaryStep,
-            Map<String, dynamic>
-          >(primaryStep, (value) => value.toMap()),
+      'primaryStep': ?pulumi.Input.mapOptionalInputValue<PrimaryStep, Map<String, dynamic>>(primaryStep, (value) => value.toMap()),
       'primaryStepId': ?primaryStepId,
     };
   }
 
   factory MultiStep.fromMap(Map<String, dynamic> map) {
     return MultiStep(
-      multistepNumber: (() {
-        final guardedValue = map['multistepNumber'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      primaryStep: (() {
-        final guardedValue = map['primaryStep'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PrimaryStep.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      primaryStepId: (() {
-        final guardedValue = map['primaryStepId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      multistepNumber: (() { final guardedValue = map['multistepNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      primaryStep: (() { final guardedValue = map['primaryStep']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PrimaryStep.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      primaryStepId: (() { final guardedValue = map['primaryStepId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

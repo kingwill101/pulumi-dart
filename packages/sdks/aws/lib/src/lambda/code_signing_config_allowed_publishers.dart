@@ -8,7 +8,9 @@ class CodeSigningConfigAllowedPublishers {
 
   /// Creates a new [CodeSigningConfigAllowedPublishers].
   /// [signingProfileVersionArns] Set of ARNs for each of the signing profiles. A signing profile defines a trusted user who can sign a code package. Maximum of 20 signing profiles.
-  CodeSigningConfigAllowedPublishers({required this.signingProfileVersionArns});
+  CodeSigningConfigAllowedPublishers({
+    required this.signingProfileVersionArns,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -18,9 +20,8 @@ class CodeSigningConfigAllowedPublishers {
 
   factory CodeSigningConfigAllowedPublishers.fromMap(Map<String, dynamic> map) {
     return CodeSigningConfigAllowedPublishers(
-      signingProfileVersionArns: pulumi.Input.fromValue(
-        (map['signingProfileVersionArns'] as List).cast<String>(),
-      ),
+      signingProfileVersionArns: pulumi.Input.fromValue((map['signingProfileVersionArns'] as List).cast<String>()),
     );
   }
 }
+

@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProvisionedClusterIdentityResponse {
   /// The principal id of provisioned cluster identity. This property will only be provided for a system assigned identity.
   final pulumi.Input<String> principalId;
-
   /// The tenant id associated with the provisioned cluster. This property will only be provided for a system assigned identity.
   final pulumi.Input<String> tenantId;
-
   /// The type of identity used for the provisioned cluster. The type SystemAssigned, includes a system created identity. The type None means no identity is assigned to the provisioned cluster.
   final pulumi.Input<String> type;
 
@@ -39,3 +37,4 @@ class ProvisionedClusterIdentityResponse {
     );
   }
 }
+

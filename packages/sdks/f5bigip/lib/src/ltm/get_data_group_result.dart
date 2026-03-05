@@ -9,10 +9,8 @@ class GetDataGroupResult {
   final String id;
   final String name;
   final String partition;
-
   /// Specifies record of type (string/ip/integer)
   final List<GetDataGroupRecord> records;
-
   /// The Data Group type (string, ip, integer)"
   final String type;
 
@@ -35,11 +33,7 @@ class GetDataGroupResult {
       'id': id,
       'name': name,
       'partition': partition,
-      'records':
-          pulumi.Input.encodeList<GetDataGroupRecord, Map<String, dynamic>>(
-            records,
-            (value) => value.toMap(),
-          ),
+      'records': pulumi.Input.encodeList<GetDataGroupRecord, Map<String, dynamic>>(records, (value) => value.toMap()),
       'type': type,
     };
   }
@@ -49,12 +43,9 @@ class GetDataGroupResult {
       id: map['id'] as String,
       name: map['name'] as String,
       partition: map['partition'] as String,
-      records: pulumi.Input.decodeList<GetDataGroupRecord>(
-        map['records']!,
-        (value) =>
-            GetDataGroupRecord.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      records: pulumi.Input.decodeList<GetDataGroupRecord>(map['records']!, (value) => GetDataGroupRecord.fromMap((value as Map).cast<String, dynamic>())),
       type: map['type'] as String,
     );
   }
 }
+

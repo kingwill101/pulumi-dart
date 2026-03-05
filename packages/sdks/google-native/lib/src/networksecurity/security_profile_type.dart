@@ -15,3 +15,4 @@ enum SecurityProfileType {
     throw ArgumentError('Unknown SecurityProfileType value: $value');
   }
 }
+

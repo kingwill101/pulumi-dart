@@ -8,10 +8,14 @@ class AccountAnalyticalStorage {
 
   /// Creates a new [AccountAnalyticalStorage].
   /// [schemaType] The schema type of the Analytical Storage for this Cosmos DB account. Possible values are `FullFidelity` and `WellDefined`.
-  AccountAnalyticalStorage({required this.schemaType});
+  AccountAnalyticalStorage({
+    required this.schemaType,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'schemaType': schemaType};
+    return <String, dynamic>{
+      'schemaType': schemaType,
+    };
   }
 
   factory AccountAnalyticalStorage.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class AccountAnalyticalStorage {
     );
   }
 }
+

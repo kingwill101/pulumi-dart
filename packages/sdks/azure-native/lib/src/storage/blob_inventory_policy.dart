@@ -1770,19 +1770,14 @@ import 'system_data_response.dart';
 class BlobInventoryPolicy extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Returns the last modified date and time of the blob inventory policy.
   late final pulumi.Output<String> lastModifiedTime;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The storage account blob inventory policy object. It is composed of policy rules.
   late final pulumi.Output<BlobInventoryPolicySchemaResponse> policy;
-
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -1795,34 +1790,16 @@ class BlobInventoryPolicy extends pulumi.CustomResource {
     BlobInventoryPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:storage:BlobInventoryPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:storage:BlobInventoryPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     lastModifiedTime = registerOutput<String>('lastModifiedTime');
     this.name = registerOutput<String>('name');
-    policy = registerOutput<BlobInventoryPolicySchemaResponse>(
-      'policy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BlobInventoryPolicySchemaResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    policy = registerOutput<BlobInventoryPolicySchemaResponse>('policy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BlobInventoryPolicySchemaResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

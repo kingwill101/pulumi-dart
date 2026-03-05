@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LogCollectionErrorResponse {
   /// Error Code of the log collection
   final pulumi.Input<String> errorCode;
-
   /// Error Message of the log collection
   final pulumi.Input<String> errorMessage;
 
@@ -32,3 +31,4 @@ class LogCollectionErrorResponse {
     );
   }
 }
+

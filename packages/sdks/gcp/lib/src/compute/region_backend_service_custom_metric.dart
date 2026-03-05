@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegionBackendServiceCustomMetric {
   /// If true, the metric data is not used for load balancing.
   final pulumi.Input<bool> dryRun;
-
   /// Name of a custom utilization signal. The name must be 1-64 characters
   /// long and match the regular expression a-z? which
   /// means the first character must be a lowercase letter, and all following
@@ -20,10 +19,16 @@ class RegionBackendServiceCustomMetric {
   /// Creates a new [RegionBackendServiceCustomMetric].
   /// [dryRun] If true, the metric data is not used for load balancing.
   /// [name] Name of a custom utilization signal. The name must be 1-64 characters
-  RegionBackendServiceCustomMetric({required this.dryRun, required this.name});
+  RegionBackendServiceCustomMetric({
+    required this.dryRun,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'dryRun': dryRun, 'name': name};
+    return <String, dynamic>{
+      'dryRun': dryRun,
+      'name': name,
+    };
   }
 
   factory RegionBackendServiceCustomMetric.fromMap(Map<String, dynamic> map) {
@@ -33,3 +38,4 @@ class RegionBackendServiceCustomMetric {
     );
   }
 }
+

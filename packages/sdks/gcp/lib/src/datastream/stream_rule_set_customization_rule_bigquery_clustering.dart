@@ -8,17 +8,20 @@ class StreamRuleSetCustomizationRuleBigqueryClustering {
 
   /// Creates a new [StreamRuleSetCustomizationRuleBigqueryClustering].
   /// [columns] Column names to set as clustering columns.
-  StreamRuleSetCustomizationRuleBigqueryClustering({required this.columns});
+  StreamRuleSetCustomizationRuleBigqueryClustering({
+    required this.columns,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'columns': columns};
+    return <String, dynamic>{
+      'columns': columns,
+    };
   }
 
-  factory StreamRuleSetCustomizationRuleBigqueryClustering.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory StreamRuleSetCustomizationRuleBigqueryClustering.fromMap(Map<String, dynamic> map) {
     return StreamRuleSetCustomizationRuleBigqueryClustering(
       columns: pulumi.Input.fromValue((map['columns'] as List).cast<String>()),
     );
   }
 }
+

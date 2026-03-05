@@ -6,11 +6,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScriptStringExecutionParameter {
   /// The parameter name
   final pulumi.Input<String> name;
-
   /// script execution parameter type
   /// Expected value is 'Value'.
   final pulumi.Input<String> type;
-
   /// The value for the passed parameter
   final pulumi.Input<String>? value;
 
@@ -25,18 +23,19 @@ class ScriptStringExecutionParameter {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'type': type, 'value': ?value};
+    return <String, dynamic>{
+      'name': name,
+      'type': type,
+      'value': ?value,
+    };
   }
 
   factory ScriptStringExecutionParameter.fromMap(Map<String, dynamic> map) {
     return ScriptStringExecutionParameter(
       name: pulumi.Input.fromValue(map['name'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

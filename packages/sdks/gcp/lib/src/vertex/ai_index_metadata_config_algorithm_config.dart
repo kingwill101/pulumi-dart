@@ -7,12 +7,10 @@ class AiIndexMetadataConfigAlgorithmConfig {
   /// Configuration options for using brute force search, which simply implements the
   /// standard linear search in the database for each query.
   final pulumi.Input<Map<String, dynamic>>? bruteForceConfig;
-
   /// Configuration options for using the tree-AH algorithm (Shallow tree + Asymmetric Hashing).
   /// Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
   /// Structure is documented below.
-  final pulumi.Input<AiIndexMetadataConfigAlgorithmConfigTreeAhConfig>?
-  treeAhConfig;
+  final pulumi.Input<AiIndexMetadataConfigAlgorithmConfigTreeAhConfig>? treeAhConfig;
 
   /// Creates a new [AiIndexMetadataConfigAlgorithmConfig].
   /// [bruteForceConfig] Configuration options for using brute force search, which simply implements the
@@ -25,34 +23,15 @@ class AiIndexMetadataConfigAlgorithmConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bruteForceConfig': ?bruteForceConfig,
-      'treeAhConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            AiIndexMetadataConfigAlgorithmConfigTreeAhConfig,
-            Map<String, dynamic>
-          >(treeAhConfig, (value) => value.toMap()),
+      'treeAhConfig': ?pulumi.Input.mapOptionalInputValue<AiIndexMetadataConfigAlgorithmConfigTreeAhConfig, Map<String, dynamic>>(treeAhConfig, (value) => value.toMap()),
     };
   }
 
-  factory AiIndexMetadataConfigAlgorithmConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AiIndexMetadataConfigAlgorithmConfig.fromMap(Map<String, dynamic> map) {
     return AiIndexMetadataConfigAlgorithmConfig(
-      bruteForceConfig: (() {
-        final guardedValue = map['bruteForceConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      treeAhConfig: (() {
-        final guardedValue = map['treeAhConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AiIndexMetadataConfigAlgorithmConfigTreeAhConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      bruteForceConfig: (() { final guardedValue = map['bruteForceConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
+      treeAhConfig: (() { final guardedValue = map['treeAhConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AiIndexMetadataConfigAlgorithmConfigTreeAhConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

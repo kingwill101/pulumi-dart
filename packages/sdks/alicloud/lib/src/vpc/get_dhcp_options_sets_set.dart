@@ -5,30 +5,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDhcpOptionsSetsSet {
   /// The Number of VPCs bound by the DHCP option set.
   final pulumi.Input<int> associateVpcCount;
-
   /// The description of the DHCP options set. The description must be 2 to 256
   /// characters in length and cannot start with `http://` or `https://`.
   final pulumi.Input<String> dhcpOptionsSetDescription;
   final pulumi.Input<String> dhcpOptionsSetId;
-
   /// The root domain, for example, example.com. After a DHCP options set is associated with a
   /// Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the
   /// ECS instances in the VPC network.
   final pulumi.Input<String> dhcpOptionsSetName;
-
   /// The root domain, for example, example.com. After a DHCP options set is associated with a Virtual
   /// Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS
   /// instances in the VPC network.
   final pulumi.Input<String> domainName;
-
   /// The DNS server IP addresses. Up to four DNS server IP addresses can be specified. IP
   /// addresses must be separated with commas (,).
   final pulumi.Input<String> domainNameServers;
   final pulumi.Input<String> id;
-
   /// The ID of the account to which the DHCP options set belongs.
   final pulumi.Input<String> ownerId;
-
   /// The status of the DHCP options set. Valid values: `Available`, `InUse` or `Pending`. `Available`: The DHCP options set is available for use. `InUse`: The DHCP options set is in use. `Pending`: The DHCP options set is being configured.
   final pulumi.Input<String> status;
 
@@ -70,25 +64,16 @@ class GetDhcpOptionsSetsSet {
 
   factory GetDhcpOptionsSetsSet.fromMap(Map<String, dynamic> map) {
     return GetDhcpOptionsSetsSet(
-      associateVpcCount: pulumi.Input.fromValue(
-        map['associateVpcCount'] as int,
-      ),
-      dhcpOptionsSetDescription: pulumi.Input.fromValue(
-        map['dhcpOptionsSetDescription'] as String,
-      ),
-      dhcpOptionsSetId: pulumi.Input.fromValue(
-        map['dhcpOptionsSetId'] as String,
-      ),
-      dhcpOptionsSetName: pulumi.Input.fromValue(
-        map['dhcpOptionsSetName'] as String,
-      ),
+      associateVpcCount: pulumi.Input.fromValue(map['associateVpcCount'] as int),
+      dhcpOptionsSetDescription: pulumi.Input.fromValue(map['dhcpOptionsSetDescription'] as String),
+      dhcpOptionsSetId: pulumi.Input.fromValue(map['dhcpOptionsSetId'] as String),
+      dhcpOptionsSetName: pulumi.Input.fromValue(map['dhcpOptionsSetName'] as String),
       domainName: pulumi.Input.fromValue(map['domainName'] as String),
-      domainNameServers: pulumi.Input.fromValue(
-        map['domainNameServers'] as String,
-      ),
+      domainNameServers: pulumi.Input.fromValue(map['domainNameServers'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
       ownerId: pulumi.Input.fromValue(map['ownerId'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
+

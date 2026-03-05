@@ -8,19 +8,20 @@ class DomainDevicesDiskSourceDir {
 
   /// Creates a new [DomainDevicesDiskSourceDir].
   /// [dir] Defines the specific directory path for the backing store source configuration.
-  DomainDevicesDiskSourceDir({this.dir});
+  DomainDevicesDiskSourceDir({
+    this.dir,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'dir': ?dir};
+    return <String, dynamic>{
+      'dir': ?dir,
+    };
   }
 
   factory DomainDevicesDiskSourceDir.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskSourceDir(
-      dir: (() {
-        final guardedValue = map['dir'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dir: (() { final guardedValue = map['dir']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

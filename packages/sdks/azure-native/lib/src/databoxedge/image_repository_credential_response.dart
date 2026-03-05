@@ -7,10 +7,8 @@ import 'asymmetric_encrypted_secret_response.dart';
 class ImageRepositoryCredentialResponse {
   /// Image repository url (e.g.: mcr.microsoft.com).
   final pulumi.Input<String> imageRepositoryUrl;
-
   /// Repository user password.
   final pulumi.Input<AsymmetricEncryptedSecretResponse>? password;
-
   /// Repository user name.
   final pulumi.Input<String> userName;
 
@@ -27,30 +25,17 @@ class ImageRepositoryCredentialResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'imageRepositoryUrl': imageRepositoryUrl,
-      'password':
-          ?pulumi.Input.mapOptionalInputValue<
-            AsymmetricEncryptedSecretResponse,
-            Map<String, dynamic>
-          >(password, (value) => value.toMap()),
+      'password': ?pulumi.Input.mapOptionalInputValue<AsymmetricEncryptedSecretResponse, Map<String, dynamic>>(password, (value) => value.toMap()),
       'userName': userName,
     };
   }
 
   factory ImageRepositoryCredentialResponse.fromMap(Map<String, dynamic> map) {
     return ImageRepositoryCredentialResponse(
-      imageRepositoryUrl: pulumi.Input.fromValue(
-        map['imageRepositoryUrl'] as String,
-      ),
-      password: (() {
-        final guardedValue = map['password'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AsymmetricEncryptedSecretResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      imageRepositoryUrl: pulumi.Input.fromValue(map['imageRepositoryUrl'] as String),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AsymmetricEncryptedSecretResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       userName: pulumi.Input.fromValue(map['userName'] as String),
     );
   }
 }
+

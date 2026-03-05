@@ -9,44 +9,31 @@ import 'url_dispatch_rule_response.dart';
 class GetAppResult {
   /// Google Apps authentication domain that controls which users can access this application.Defaults to open access for any Google Account.
   final String authDomain;
-
   /// Google Cloud Storage bucket that can be used for storing files associated with this application. This bucket is associated with the application and can be used by the gcloud deployment commands.
   final String codeBucket;
-
   /// The type of the Cloud Firestore or Cloud Datastore database associated with this application.
   final String databaseType;
-
   /// Google Cloud Storage bucket that can be used by this application to store content.
   final String defaultBucket;
-
   /// Cookie expiration policy for this application.
   final String defaultCookieExpiration;
-
   /// Hostname used to reach this application, as resolved by App Engine.
   final String defaultHostname;
-
   /// HTTP path dispatch rules for requests to the application that do not explicitly target a service or version. Rules are order-dependent. Up to 20 dispatch rules can be supported.
   final List<UrlDispatchRuleResponse> dispatchRules;
-
   /// The feature specific settings to be used in the application.
   final FeatureSettingsResponse featureSettings;
-
   /// The Google Container Registry domain used for storing managed build docker images for this application.
   final String gcrDomain;
-
   /// Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetApplicationRequest
   final Map<String, String> generatedCustomerMetadata;
   final IdentityAwareProxyResponse iap;
-
   /// Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
   final String location;
-
   /// Full path to the Application resource in the API. Example: apps/myapp.
   final String name;
-
   /// The service account associated with the application. This is the app-level default identity. If no identity provided during create version, Admin API will fallback to this one.
   final String serviceAccount;
-
   /// Serving status of this application.
   final String servingStatus;
 
@@ -92,11 +79,7 @@ class GetAppResult {
       'defaultBucket': defaultBucket,
       'defaultCookieExpiration': defaultCookieExpiration,
       'defaultHostname': defaultHostname,
-      'dispatchRules':
-          pulumi.Input.encodeList<
-            UrlDispatchRuleResponse,
-            Map<String, dynamic>
-          >(dispatchRules, (value) => value.toMap()),
+      'dispatchRules': pulumi.Input.encodeList<UrlDispatchRuleResponse, Map<String, dynamic>>(dispatchRules, (value) => value.toMap()),
       'featureSettings': featureSettings.toMap(),
       'gcrDomain': gcrDomain,
       'generatedCustomerMetadata': generatedCustomerMetadata,
@@ -116,21 +99,11 @@ class GetAppResult {
       defaultBucket: map['defaultBucket'] as String,
       defaultCookieExpiration: map['defaultCookieExpiration'] as String,
       defaultHostname: map['defaultHostname'] as String,
-      dispatchRules: pulumi.Input.decodeList<UrlDispatchRuleResponse>(
-        map['dispatchRules']!,
-        (value) => UrlDispatchRuleResponse.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      featureSettings: FeatureSettingsResponse.fromMap(
-        (map['featureSettings']! as Map).cast<String, dynamic>(),
-      ),
+      dispatchRules: pulumi.Input.decodeList<UrlDispatchRuleResponse>(map['dispatchRules']!, (value) => UrlDispatchRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
+      featureSettings: FeatureSettingsResponse.fromMap((map['featureSettings']! as Map).cast<String, dynamic>()),
       gcrDomain: map['gcrDomain'] as String,
-      generatedCustomerMetadata: (map['generatedCustomerMetadata'] as Map)
-          .cast<String, String>(),
-      iap: IdentityAwareProxyResponse.fromMap(
-        (map['iap']! as Map).cast<String, dynamic>(),
-      ),
+      generatedCustomerMetadata: (map['generatedCustomerMetadata'] as Map).cast<String, String>(),
+      iap: IdentityAwareProxyResponse.fromMap((map['iap']! as Map).cast<String, dynamic>()),
       location: map['location'] as String,
       name: map['name'] as String,
       serviceAccount: map['serviceAccount'] as String,
@@ -138,3 +111,4 @@ class GetAppResult {
     );
   }
 }
+

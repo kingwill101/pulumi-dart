@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTagsTag {
   /// The ID of the tag.
   final pulumi.Input<String> id;
-
   /// The ID of the tag.
   final pulumi.Input<String> tagId;
-
   /// The name of the tag.
   final pulumi.Input<String> tagName;
 
@@ -16,10 +14,18 @@ class GetTagsTag {
   /// [id] The ID of the tag.
   /// [tagId] The ID of the tag.
   /// [tagName] The name of the tag.
-  GetTagsTag({required this.id, required this.tagId, required this.tagName});
+  GetTagsTag({
+    required this.id,
+    required this.tagId,
+    required this.tagName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id, 'tagId': tagId, 'tagName': tagName};
+    return <String, dynamic>{
+      'id': id,
+      'tagId': tagId,
+      'tagName': tagName,
+    };
   }
 
   factory GetTagsTag.fromMap(Map<String, dynamic> map) {
@@ -30,3 +36,4 @@ class GetTagsTag {
     );
   }
 }
+

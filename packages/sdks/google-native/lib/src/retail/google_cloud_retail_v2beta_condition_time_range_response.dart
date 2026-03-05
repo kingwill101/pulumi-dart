@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudRetailV2betaConditionTimeRangeResponse {
   /// End of time range. Range is inclusive.
   final pulumi.Input<String> endTime;
-
   /// Start of time range. Range is inclusive.
   final pulumi.Input<String> startTime;
 
@@ -19,15 +18,17 @@ class GoogleCloudRetailV2betaConditionTimeRangeResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'endTime': endTime, 'startTime': startTime};
+    return <String, dynamic>{
+      'endTime': endTime,
+      'startTime': startTime,
+    };
   }
 
-  factory GoogleCloudRetailV2betaConditionTimeRangeResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudRetailV2betaConditionTimeRangeResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2betaConditionTimeRangeResponse(
       endTime: pulumi.Input.fromValue(map['endTime'] as String),
       startTime: pulumi.Input.fromValue(map['startTime'] as String),
     );
   }
 }
+

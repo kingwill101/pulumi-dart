@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudContactcenterinsightsV1AnnotationBoundaryResponse {
   /// The index in the sequence of transcribed pieces of the conversation where the boundary is located. This index starts at zero.
   final pulumi.Input<int> transcriptIndex;
-
   /// The word index of this boundary with respect to the first word in the transcript piece. This index starts at zero.
   final pulumi.Input<int> wordIndex;
 
@@ -25,12 +24,11 @@ class GoogleCloudContactcenterinsightsV1AnnotationBoundaryResponse {
     };
   }
 
-  factory GoogleCloudContactcenterinsightsV1AnnotationBoundaryResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudContactcenterinsightsV1AnnotationBoundaryResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContactcenterinsightsV1AnnotationBoundaryResponse(
       transcriptIndex: pulumi.Input.fromValue(map['transcriptIndex'] as int),
       wordIndex: pulumi.Input.fromValue(map['wordIndex'] as int),
     );
   }
 }
+

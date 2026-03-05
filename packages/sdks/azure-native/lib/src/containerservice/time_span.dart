@@ -6,31 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TimeSpan {
   /// The end of a time span
   final pulumi.Input<String>? end;
-
   /// The start of a time span
   final pulumi.Input<String>? start;
 
   /// Creates a new [TimeSpan].
   /// [end] The end of a time span
   /// [start] The start of a time span
-  TimeSpan({this.end, this.start});
+  TimeSpan({
+    this.end,
+    this.start,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'end': ?end, 'start': ?start};
+    return <String, dynamic>{
+      'end': ?end,
+      'start': ?start,
+    };
   }
 
   factory TimeSpan.fromMap(Map<String, dynamic> map) {
     return TimeSpan(
-      end: (() {
-        final guardedValue = map['end'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      start: (() {
-        final guardedValue = map['start'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      end: (() { final guardedValue = map['end']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      start: (() { final guardedValue = map['start']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

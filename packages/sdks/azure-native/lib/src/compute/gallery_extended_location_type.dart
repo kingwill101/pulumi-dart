@@ -15,3 +15,4 @@ enum GalleryExtendedLocationType {
     throw ArgumentError('Unknown GalleryExtendedLocationType value: $value');
   }
 }
+

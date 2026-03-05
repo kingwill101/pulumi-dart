@@ -254,40 +254,28 @@ import 'system_data_response.dart';
 class GalleryApplication extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// A list of custom actions that can be performed with all of the Gallery Application Versions within this Gallery Application.
   late final pulumi.Output<List<Map<String, dynamic>>?> customActions;
-
   /// The description of this gallery Application Definition resource. This property is updatable.
   late final pulumi.Output<String?> description;
-
   /// The end of life date of the gallery Application Definition. This property can be used for decommissioning purposes. This property is updatable.
   late final pulumi.Output<String?> endOfLifeDate;
-
   /// The Eula agreement for the gallery Application Definition.
   late final pulumi.Output<String?> eula;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The privacy statement uri.
   late final pulumi.Output<String?> privacyStatementUri;
-
   /// The release note uri.
   late final pulumi.Output<String?> releaseNoteUri;
-
   /// This property allows you to specify the supported type of the OS that application is built for. Possible values are: **Windows,** **Linux.**
   late final pulumi.Output<String> supportedOSType;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -300,15 +288,13 @@ class GalleryApplication extends pulumi.CustomResource {
     GalleryApplicationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:compute:GalleryApplication',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:compute:GalleryApplication',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    customActions = registerOutput<List<Map<String, dynamic>>?>(
-      'customActions',
-    );
+    customActions = registerOutput<List<Map<String, dynamic>>?>('customActions');
     description = registerOutput<String?>('description');
     endOfLifeDate = registerOutput<String?>('endOfLifeDate');
     eula = registerOutput<String?>('eula');
@@ -317,16 +303,7 @@ class GalleryApplication extends pulumi.CustomResource {
     privacyStatementUri = registerOutput<String?>('privacyStatementUri');
     releaseNoteUri = registerOutput<String?>('releaseNoteUri');
     supportedOSType = registerOutput<String>('supportedOSType');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

@@ -19,3 +19,4 @@ enum ScalingConfigInstanceSize {
     throw ArgumentError('Unknown ScalingConfigInstanceSize value: $value');
   }
 }
+

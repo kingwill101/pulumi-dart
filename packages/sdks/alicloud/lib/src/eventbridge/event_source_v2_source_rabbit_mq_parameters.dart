@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EventSourceV2SourceRabbitMqParameters {
   /// The ID of the RabbitMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
   final pulumi.Input<String>? instanceId;
-
   /// The name of the Queue of the RabbitMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
   final pulumi.Input<String>? queueName;
-
   /// The region of the RabbitMQ instance.
   final pulumi.Input<String>? regionId;
-
   /// The name of the Vhost of the RabbitMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
   final pulumi.Input<String>? virtualHostName;
 
@@ -36,30 +33,13 @@ class EventSourceV2SourceRabbitMqParameters {
     };
   }
 
-  factory EventSourceV2SourceRabbitMqParameters.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EventSourceV2SourceRabbitMqParameters.fromMap(Map<String, dynamic> map) {
     return EventSourceV2SourceRabbitMqParameters(
-      instanceId: (() {
-        final guardedValue = map['instanceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      queueName: (() {
-        final guardedValue = map['queueName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      regionId: (() {
-        final guardedValue = map['regionId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      virtualHostName: (() {
-        final guardedValue = map['virtualHostName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      instanceId: (() { final guardedValue = map['instanceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      queueName: (() { final guardedValue = map['queueName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      regionId: (() { final guardedValue = map['regionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      virtualHostName: (() { final guardedValue = map['virtualHostName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

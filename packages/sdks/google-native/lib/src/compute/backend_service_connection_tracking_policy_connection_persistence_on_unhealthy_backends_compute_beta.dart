@@ -4,22 +4,16 @@ enum BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBacke
   defaultForProtocol("DEFAULT_FOR_PROTOCOL"),
   neverPersist("NEVER_PERSIST");
 
-  const BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackendsComputeBeta(
-    this.wireValue,
-  );
+  const BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackendsComputeBeta(this.wireValue);
   final String wireValue;
 
-  static BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackendsComputeBeta
-  fromValue(String value) {
-    for (final item
-        in BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackendsComputeBeta
-            .values) {
+  static BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackendsComputeBeta fromValue(String value) {
+    for (final item in BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackendsComputeBeta.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackendsComputeBeta value: $value',
-    );
+    throw ArgumentError('Unknown BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackendsComputeBeta value: $value');
   }
 }
+

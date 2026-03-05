@@ -181,28 +181,20 @@ import 'hci_extension_state.dart';
 class HciExtension extends pulumi.CustomResource {
   /// The ID of the Azure Stack HCI Cluster Arc Setting. Changing this forces a new resource to be created.
   late final pulumi.Output<String> arcSettingId;
-
   /// Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true. Changing this forces a new resource to be created. Possible values are `true` and `false`. Defaults to `true`.
   late final pulumi.Output<bool?> autoUpgradeMinorVersionEnabled;
-
   /// Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available. Possible values are `true` and `false`. Defaults to `true`.
   late final pulumi.Output<bool?> automaticUpgradeEnabled;
-
   /// The name which should be used for this Azure Stack HCI Extension. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The json formatted protected settings for the extension.
   late final pulumi.Output<String?> protectedSettings;
-
   /// The name of the extension handler publisher, such as `Microsoft.Azure.Monitor`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> publisher;
-
   /// The json formatted public settings for the extension.
   late final pulumi.Output<String?> settings;
-
   /// Specifies the type of the extension. For example `CustomScriptExtension` or `AzureMonitorLinuxAgent`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> type;
-
   /// Specifies the version of the script handler.
   ///
   /// &gt; **Note:** `type_handler_version` cannot be set when `automatic_upgrade_enabled` is set to `true`.
@@ -217,15 +209,13 @@ class HciExtension extends pulumi.CustomResource {
     HciExtensionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:stack/hciExtension:HciExtension',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:stack/hciExtension:HciExtension',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arcSettingId = registerOutput<String>('arcSettingId');
-    autoUpgradeMinorVersionEnabled = registerOutput<bool?>(
-      'autoUpgradeMinorVersionEnabled',
-    );
+    autoUpgradeMinorVersionEnabled = registerOutput<bool?>('autoUpgradeMinorVersionEnabled');
     automaticUpgradeEnabled = registerOutput<bool?>('automaticUpgradeEnabled');
     this.name = registerOutput<String>('name');
     protectedSettings = registerOutput<String?>('protectedSettings');
@@ -253,15 +243,13 @@ class HciExtension extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:stack/hciExtension:HciExtension',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:stack/hciExtension:HciExtension',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arcSettingId = registerOutput<String>('arcSettingId');
-    autoUpgradeMinorVersionEnabled = registerOutput<bool?>(
-      'autoUpgradeMinorVersionEnabled',
-    );
+    autoUpgradeMinorVersionEnabled = registerOutput<bool?>('autoUpgradeMinorVersionEnabled');
     automaticUpgradeEnabled = registerOutput<bool?>('automaticUpgradeEnabled');
     this.name = registerOutput<String>('name');
     protectedSettings = registerOutput<String?>('protectedSettings');

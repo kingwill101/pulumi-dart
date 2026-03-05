@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkflowTemplatePlacementManagedClusterConfigEndpointConfig {
   /// If true, enable http access to specific ports on the cluster from external sources. Defaults to false.
   final pulumi.Input<bool>? enableHttpPortAccess;
-
   /// Output only. The map of port descriptions to URLs. Will only be populated if enable_http_port_access is true.
   final pulumi.Input<Map<String, String>>? httpPorts;
 
@@ -24,22 +23,11 @@ class WorkflowTemplatePlacementManagedClusterConfigEndpointConfig {
     };
   }
 
-  factory WorkflowTemplatePlacementManagedClusterConfigEndpointConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WorkflowTemplatePlacementManagedClusterConfigEndpointConfig.fromMap(Map<String, dynamic> map) {
     return WorkflowTemplatePlacementManagedClusterConfigEndpointConfig(
-      enableHttpPortAccess: (() {
-        final guardedValue = map['enableHttpPortAccess'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      httpPorts: (() {
-        final guardedValue = map['httpPorts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      enableHttpPortAccess: (() { final guardedValue = map['enableHttpPortAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      httpPorts: (() { final guardedValue = map['httpPorts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

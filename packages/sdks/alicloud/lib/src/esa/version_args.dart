@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VersionArgs {
   /// The Site version's description.
   final pulumi.Input<String>? description;
-
   /// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
   final pulumi.Input<int> originVersion;
-
   /// The site ID, which can be obtained by calling the ListSites API.
   final pulumi.Input<String> siteId;
 
@@ -36,13 +34,10 @@ class VersionArgs {
 
   factory VersionArgs.fromMap(Map<String, dynamic> map) {
     return VersionArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       originVersion: pulumi.Input.fromValue(map['originVersion'] as int),
       siteId: pulumi.Input.fromValue(map['siteId'] as String),
     );
   }
 }
+

@@ -138,36 +138,26 @@ import 'transit_gateway_peering_state.dart';
 class TransitGatewayPeering extends pulumi.CustomResource {
   /// Peering ARN.
   late final pulumi.Output<String> arn;
-
   /// ARN of the core network.
   late final pulumi.Output<String> coreNetworkArn;
-
   /// ID of a core network.
   late final pulumi.Output<String> coreNetworkId;
-
   /// Edge location for the peer.
   late final pulumi.Output<String> edgeLocation;
-
   /// ID of the account owner.
   late final pulumi.Output<String> ownerAccountId;
-
   /// Type of peering. This will be `TRANSIT_GATEWAY`.
   late final pulumi.Output<String> peeringType;
-
   /// Resource ARN of the peer.
   late final pulumi.Output<String> resourceArn;
-
   /// Key-value tags for the peering. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// ARN of the transit gateway for the peering request.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> transitGatewayArn;
-
   /// ID of the transit gateway peering attachment.
   late final pulumi.Output<String> transitGatewayPeeringAttachmentId;
 
@@ -180,11 +170,11 @@ class TransitGatewayPeering extends pulumi.CustomResource {
     TransitGatewayPeeringArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:networkmanager/transitGatewayPeering:TransitGatewayPeering',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:networkmanager/transitGatewayPeering:TransitGatewayPeering',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     coreNetworkArn = registerOutput<String>('coreNetworkArn');
     coreNetworkId = registerOutput<String>('coreNetworkId');
@@ -195,9 +185,7 @@ class TransitGatewayPeering extends pulumi.CustomResource {
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     transitGatewayArn = registerOutput<String>('transitGatewayArn');
-    transitGatewayPeeringAttachmentId = registerOutput<String>(
-      'transitGatewayPeeringAttachmentId',
-    );
+    transitGatewayPeeringAttachmentId = registerOutput<String>('transitGatewayPeeringAttachmentId');
   }
 
   /// Gets an existing [TransitGatewayPeering] resource's state with the given [name] and [id].
@@ -218,11 +206,11 @@ class TransitGatewayPeering extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:networkmanager/transitGatewayPeering:TransitGatewayPeering',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:networkmanager/transitGatewayPeering:TransitGatewayPeering',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     coreNetworkArn = registerOutput<String>('coreNetworkArn');
     coreNetworkId = registerOutput<String>('coreNetworkId');
@@ -233,8 +221,6 @@ class TransitGatewayPeering extends pulumi.CustomResource {
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     transitGatewayArn = registerOutput<String>('transitGatewayArn');
-    transitGatewayPeeringAttachmentId = registerOutput<String>(
-      'transitGatewayPeeringAttachmentId',
-    );
+    transitGatewayPeeringAttachmentId = registerOutput<String>('transitGatewayPeeringAttachmentId');
   }
 }

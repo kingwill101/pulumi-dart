@@ -8,10 +8,14 @@ class GetCustomModelValidationMetric {
 
   /// Creates a new [GetCustomModelValidationMetric].
   /// [validationLoss] The validation loss associated with the validator.
-  GetCustomModelValidationMetric({required this.validationLoss});
+  GetCustomModelValidationMetric({
+    required this.validationLoss,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'validationLoss': validationLoss};
+    return <String, dynamic>{
+      'validationLoss': validationLoss,
+    };
   }
 
   factory GetCustomModelValidationMetric.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class GetCustomModelValidationMetric {
     );
   }
 }
+

@@ -9,17 +9,20 @@ class PrivateConnectivityResponse {
 
   /// Creates a new [PrivateConnectivityResponse].
   /// [privateConnection] A reference to a private connection resource. Format: `projects/{project}/locations/{location}/privateConnections/{name}`
-  PrivateConnectivityResponse({required this.privateConnection});
+  PrivateConnectivityResponse({
+    required this.privateConnection,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'privateConnection': privateConnection};
+    return <String, dynamic>{
+      'privateConnection': privateConnection,
+    };
   }
 
   factory PrivateConnectivityResponse.fromMap(Map<String, dynamic> map) {
     return PrivateConnectivityResponse(
-      privateConnection: pulumi.Input.fromValue(
-        map['privateConnection'] as String,
-      ),
+      privateConnection: pulumi.Input.fromValue(map['privateConnection'] as String),
     );
   }
 }
+

@@ -601,10 +601,8 @@ import 'plan_state.dart';
 class Plan extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the contact or escalation plan.
   late final pulumi.Output<String> contactId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// One or more configuration blocks for specifying a list of stages that the escalation plan or engagement plan uses to engage contacts and contact methods. See Stage below for more details.
   late final pulumi.Output<List<Map<String, dynamic>>> stages;
 
@@ -612,20 +610,27 @@ class Plan extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Plan]. {@macro pulumi_ssmcontacts_plan_plan_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Plan(String name, {PlanArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:ssmcontacts/plan:Plan',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Plan(
+    String name, {
+    PlanArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:ssmcontacts/plan:Plan',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     contactId = registerOutput<String>('contactId');
     region = registerOutput<String>('region');
     stages = registerOutput<List<Map<String, dynamic>>>('stages');
   }
 
   /// Gets an existing [Plan] resource's state with the given [name] and [id].
-  static Plan get(String name, pulumi.Input<String> id, {PlanState? state}) {
+  static Plan get(
+    String name,
+    pulumi.Input<String> id, {
+    PlanState? state,
+  }) {
     return Plan._get(
       name,
       state: state?.toMap(),
@@ -638,11 +643,11 @@ class Plan extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ssmcontacts/plan:Plan',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ssmcontacts/plan:Plan',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     contactId = registerOutput<String>('contactId');
     region = registerOutput<String>('region');
     stages = registerOutput<List<Map<String, dynamic>>>('stages');

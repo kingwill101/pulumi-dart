@@ -29,17 +29,12 @@ class GetTaxonomyIamPolicyDatacatalogV1beta1Args {
     };
   }
 
-  factory GetTaxonomyIamPolicyDatacatalogV1beta1Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetTaxonomyIamPolicyDatacatalogV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetTaxonomyIamPolicyDatacatalogV1beta1Args(
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       taxonomyId: pulumi.Input.fromValue(map['taxonomyId'] as String),
     );
   }
 }
+

@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VmUptime {
   /// Number of days in a month for VM uptime.
   final pulumi.Input<double>? daysPerMonth;
-
   /// Number of hours per day for VM uptime.
   final pulumi.Input<double>? hoursPerDay;
 
   /// Creates a new [VmUptime].
   /// [daysPerMonth] Number of days in a month for VM uptime.
   /// [hoursPerDay] Number of hours per day for VM uptime.
-  VmUptime({this.daysPerMonth, this.hoursPerDay});
+  VmUptime({
+    this.daysPerMonth,
+    this.hoursPerDay,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class VmUptime {
 
   factory VmUptime.fromMap(Map<String, dynamic> map) {
     return VmUptime(
-      daysPerMonth: (() {
-        final guardedValue = map['daysPerMonth'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      hoursPerDay: (() {
-        final guardedValue = map['hoursPerDay'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      daysPerMonth: (() { final guardedValue = map['daysPerMonth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      hoursPerDay: (() { final guardedValue = map['hoursPerDay']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

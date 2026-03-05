@@ -271,32 +271,23 @@ import 'system_data_response.dart';
 class Rule extends pulumi.CustomResource {
   /// A list of actions that are executed when all the conditions of a rule are satisfied.
   late final pulumi.Output<List<Map<String, dynamic>>?> actions;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// A list of conditions that must be matched for the actions to be executed
   late final pulumi.Output<List<Map<String, dynamic>>?> conditions;
   late final pulumi.Output<String> deploymentStatus;
-
   /// If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue.
   late final pulumi.Output<String?> matchProcessingBehavior;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,………}. A rule with a lesser order will be applied before a rule with a greater order. Rule with order 0 is a special rule. It does not require any condition and actions listed in it will always be applied.
   late final pulumi.Output<int?> order;
-
   /// Provisioning status
   late final pulumi.Output<String> provisioningState;
-
   /// The name of the rule set containing the rule.
   late final pulumi.Output<String> ruleSetName;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -304,34 +295,26 @@ class Rule extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Rule]. {@macro pulumi_cdn_rule_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Rule(String name, {RuleArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:cdn:Rule',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Rule(
+    String name, {
+    RuleArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:cdn:Rule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     actions = registerOutput<List<Map<String, dynamic>>?>('actions');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     conditions = registerOutput<List<Map<String, dynamic>>?>('conditions');
     deploymentStatus = registerOutput<String>('deploymentStatus');
-    matchProcessingBehavior = registerOutput<String?>(
-      'matchProcessingBehavior',
-    );
+    matchProcessingBehavior = registerOutput<String?>('matchProcessingBehavior');
     this.name = registerOutput<String>('name');
     order = registerOutput<int?>('order');
     provisioningState = registerOutput<String>('provisioningState');
     ruleSetName = registerOutput<String>('ruleSetName');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

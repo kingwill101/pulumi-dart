@@ -209,32 +209,22 @@ import 'suppression_alerts_scope_response.dart';
 class AlertsSuppressionRule extends pulumi.CustomResource {
   /// Type of the alert to automatically suppress. For all alert types, use '*'
   late final pulumi.Output<String> alertType;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Any comment regarding the rule
   late final pulumi.Output<String?> comment;
-
   /// Expiration date of the rule, if value is not provided or provided as null there will no expiration at all
   late final pulumi.Output<String?> expirationDateUtc;
-
   /// The last time this rule was modified
   late final pulumi.Output<String> lastModifiedUtc;
-
   /// Resource name
   late final pulumi.Output<String> name;
-
   /// The reason for dismissing the alert
   late final pulumi.Output<String> reason;
-
   /// Possible states of the rule
   late final pulumi.Output<String> state;
-
   /// The suppression conditions
-  late final pulumi.Output<SuppressionAlertsScopeResponse?>
-  suppressionAlertsScope;
-
+  late final pulumi.Output<SuppressionAlertsScopeResponse?> suppressionAlertsScope;
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -247,11 +237,11 @@ class AlertsSuppressionRule extends pulumi.CustomResource {
     AlertsSuppressionRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:security:AlertsSuppressionRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:security:AlertsSuppressionRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alertType = registerOutput<String>('alertType');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     comment = registerOutput<String?>('comment');
@@ -260,16 +250,7 @@ class AlertsSuppressionRule extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     reason = registerOutput<String>('reason');
     state = registerOutput<String>('state');
-    suppressionAlertsScope = registerOutput<SuppressionAlertsScopeResponse?>(
-      'suppressionAlertsScope',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SuppressionAlertsScopeResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    suppressionAlertsScope = registerOutput<SuppressionAlertsScopeResponse?>('suppressionAlertsScope', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SuppressionAlertsScopeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

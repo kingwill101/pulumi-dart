@@ -9,17 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSecurityStandardArgs {
   /// The scope of the security standard. Valid scopes are: management group (format: 'providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
   final pulumi.Input<String> scope;
-
   /// The Security Standard key - unique key for the standard type
   final pulumi.Input<String> standardId;
 
   /// Creates a new [GetSecurityStandardArgs].
   /// [scope] The scope of the security standard. Valid scopes are: management group (format: 'providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
   /// [standardId] The Security Standard key - unique key for the standard type
-  GetSecurityStandardArgs({required this.scope, required this.standardId});
+  GetSecurityStandardArgs({
+    required this.scope,
+    required this.standardId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'scope': scope, 'standardId': standardId};
+    return <String, dynamic>{
+      'scope': scope,
+      'standardId': standardId,
+    };
   }
 
   factory GetSecurityStandardArgs.fromMap(Map<String, dynamic> map) {
@@ -29,3 +34,4 @@ class GetSecurityStandardArgs {
     );
   }
 }
+

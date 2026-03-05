@@ -7,10 +7,8 @@ import 'storage_information_response.dart';
 class ApplicationServerVmDetailsResponse {
   /// Storage details of all the Storage Accounts attached to the App Virtual Machine. For e.g. NFS on AFS Shared Storage.
   final pulumi.Input<List<StorageInformationResponse>> storageDetails;
-
   /// Defines the type of application server VM.
   final pulumi.Input<String> type;
-
   /// The virtual machine id.
   final pulumi.Input<String> virtualMachineId;
 
@@ -26,18 +24,7 @@ class ApplicationServerVmDetailsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'storageDetails':
-          pulumi.Input.mapInputValue<
-            List<StorageInformationResponse>,
-            List<Map<String, dynamic>>
-          >(
-            storageDetails,
-            (value) =>
-                pulumi.Input.encodeList<
-                  StorageInformationResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'storageDetails': pulumi.Input.mapInputValue<List<StorageInformationResponse>, List<Map<String, dynamic>>>(storageDetails, (value) => pulumi.Input.encodeList<StorageInformationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'type': type,
       'virtualMachineId': virtualMachineId,
     };
@@ -45,18 +32,10 @@ class ApplicationServerVmDetailsResponse {
 
   factory ApplicationServerVmDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationServerVmDetailsResponse(
-      storageDetails: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<StorageInformationResponse>(
-          map['storageDetails']!,
-          (value) => StorageInformationResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      storageDetails: pulumi.Input.fromValue(pulumi.Input.decodeList<StorageInformationResponse>(map['storageDetails']!, (value) => StorageInformationResponse.fromMap((value as Map).cast<String, dynamic>()))),
       type: pulumi.Input.fromValue(map['type'] as String),
-      virtualMachineId: pulumi.Input.fromValue(
-        map['virtualMachineId'] as String,
-      ),
+      virtualMachineId: pulumi.Input.fromValue(map['virtualMachineId'] as String),
     );
   }
 }
+

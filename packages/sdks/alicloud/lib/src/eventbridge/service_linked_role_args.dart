@@ -12,10 +12,14 @@ class ServiceLinkedRoleArgs {
 
   /// Creates a new [ServiceLinkedRoleArgs].
   /// [productName] The name of the cloud service or the name of the service-linked role with which the cloud service is associated. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/developer-reference/api-eventbridge-2020-04-01-createservicelinkedroleforproduct).
-  ServiceLinkedRoleArgs({required this.productName});
+  ServiceLinkedRoleArgs({
+    required this.productName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'productName': productName};
+    return <String, dynamic>{
+      'productName': productName,
+    };
   }
 
   factory ServiceLinkedRoleArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class ServiceLinkedRoleArgs {
     );
   }
 }
+

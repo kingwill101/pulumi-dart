@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGroupRoleManagementPolicyArgs {
   /// The ID of the Azure AD group for which the policy applies.
   final pulumi.Input<String> groupId;
-
   /// The type of assignment this policy coveres. Can be either `member` or `owner`.
   final pulumi.Input<String> roleId;
 
@@ -22,7 +21,10 @@ class GetGroupRoleManagementPolicyArgs {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'groupId': groupId, 'roleId': roleId};
+    return <String, dynamic>{
+      'groupId': groupId,
+      'roleId': roleId,
+    };
   }
 
   factory GetGroupRoleManagementPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -32,3 +34,4 @@ class GetGroupRoleManagementPolicyArgs {
     );
   }
 }
+

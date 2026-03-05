@@ -23,3 +23,4 @@ enum UrlFileNameOperator {
     throw ArgumentError('Unknown UrlFileNameOperator value: $value');
   }
 }
+

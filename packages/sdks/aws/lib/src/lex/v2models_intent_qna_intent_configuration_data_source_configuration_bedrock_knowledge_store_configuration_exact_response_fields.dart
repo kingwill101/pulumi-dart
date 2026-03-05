@@ -13,18 +13,15 @@ class V2modelsIntentQnaIntentConfigurationDataSourceConfigurationBedrockKnowledg
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'answerField': ?answerField};
+    return <String, dynamic>{
+      'answerField': ?answerField,
+    };
   }
 
-  factory V2modelsIntentQnaIntentConfigurationDataSourceConfigurationBedrockKnowledgeStoreConfigurationExactResponseFields.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2modelsIntentQnaIntentConfigurationDataSourceConfigurationBedrockKnowledgeStoreConfigurationExactResponseFields.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentQnaIntentConfigurationDataSourceConfigurationBedrockKnowledgeStoreConfigurationExactResponseFields(
-      answerField: (() {
-        final guardedValue = map['answerField'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      answerField: (() { final guardedValue = map['answerField']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

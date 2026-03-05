@@ -13,8 +13,7 @@ enum EventTriggerRetryPolicyCloudfunctionsV2alpha {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown EventTriggerRetryPolicyCloudfunctionsV2alpha value: $value',
-    );
+    throw ArgumentError('Unknown EventTriggerRetryPolicyCloudfunctionsV2alpha value: $value');
   }
 }
+

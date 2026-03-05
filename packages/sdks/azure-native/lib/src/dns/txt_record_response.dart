@@ -9,19 +9,20 @@ class TxtRecordResponse {
 
   /// Creates a new [TxtRecordResponse].
   /// [value] The text value of this TXT record.
-  TxtRecordResponse({this.value});
+  TxtRecordResponse({
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': ?value};
+    return <String, dynamic>{
+      'value': ?value,
+    };
   }
 
   factory TxtRecordResponse.fromMap(Map<String, dynamic> map) {
     return TxtRecordResponse(
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

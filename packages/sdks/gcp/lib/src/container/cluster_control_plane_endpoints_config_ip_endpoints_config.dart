@@ -8,21 +8,20 @@ class ClusterControlPlaneEndpointsConfigIpEndpointsConfig {
 
   /// Creates a new [ClusterControlPlaneEndpointsConfigIpEndpointsConfig].
   /// [enabled] Controls whether to allow direct IP access. Defaults to `true`.
-  ClusterControlPlaneEndpointsConfigIpEndpointsConfig({this.enabled});
+  ClusterControlPlaneEndpointsConfigIpEndpointsConfig({
+    this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': ?enabled};
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
-  factory ClusterControlPlaneEndpointsConfigIpEndpointsConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterControlPlaneEndpointsConfigIpEndpointsConfig.fromMap(Map<String, dynamic> map) {
     return ClusterControlPlaneEndpointsConfigIpEndpointsConfig(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

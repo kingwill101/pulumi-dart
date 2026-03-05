@@ -40,9 +40,7 @@ class GetProxyAuth {
   factory GetProxyAuth.fromMap(Map<String, dynamic> map) {
     return GetProxyAuth(
       authScheme: pulumi.Input.fromValue(map['authScheme'] as String),
-      clientPasswordAuthType: pulumi.Input.fromValue(
-        map['clientPasswordAuthType'] as String,
-      ),
+      clientPasswordAuthType: pulumi.Input.fromValue(map['clientPasswordAuthType'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
       iamAuth: pulumi.Input.fromValue(map['iamAuth'] as String),
       secretArn: pulumi.Input.fromValue(map['secretArn'] as String),
@@ -50,3 +48,4 @@ class GetProxyAuth {
     );
   }
 }
+

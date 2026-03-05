@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceConfiguration {
   /// The port on which service is enabled.
   final pulumi.Input<double> port;
-
   /// Name of the service.
   final pulumi.Input<String> serviceName;
 
   /// Creates a new [ServiceConfiguration].
   /// [port] The port on which service is enabled.
   /// [serviceName] Name of the service.
-  ServiceConfiguration({required this.port, required this.serviceName});
+  ServiceConfiguration({
+    required this.port,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'port': port, 'serviceName': serviceName};
+    return <String, dynamic>{
+      'port': port,
+      'serviceName': serviceName,
+    };
   }
 
   factory ServiceConfiguration.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class ServiceConfiguration {
     );
   }
 }
+

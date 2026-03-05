@@ -14,21 +14,20 @@ class AppVersionSnapshotToolOpenApiToolServiceDirectoryConfig {
 
   /// Creates a new [AppVersionSnapshotToolOpenApiToolServiceDirectoryConfig].
   /// [service] (Output)
-  AppVersionSnapshotToolOpenApiToolServiceDirectoryConfig({this.service});
+  AppVersionSnapshotToolOpenApiToolServiceDirectoryConfig({
+    this.service,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'service': ?service};
+    return <String, dynamic>{
+      'service': ?service,
+    };
   }
 
-  factory AppVersionSnapshotToolOpenApiToolServiceDirectoryConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppVersionSnapshotToolOpenApiToolServiceDirectoryConfig.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolOpenApiToolServiceDirectoryConfig(
-      service: (() {
-        final guardedValue = map['service'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      service: (() { final guardedValue = map['service']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

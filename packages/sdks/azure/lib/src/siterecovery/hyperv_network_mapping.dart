@@ -265,16 +265,12 @@ import 'hyperv_network_mapping_state.dart';
 class HypervNetworkMapping extends pulumi.CustomResource {
   /// The name of the HyperV network mapping. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The ID of the Recovery Services Vault where the HyperV network mapping should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> recoveryVaultId;
-
   /// The Name of the primary network. Changing this forces a new resource to be created.
   late final pulumi.Output<String> sourceNetworkName;
-
   /// Specifies the name of source System Center Virtual Machine Manager where the source network exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> sourceSystemCenterVirtualMachineManagerName;
-
   /// The id of the recovery network. Changing this forces a new resource to be created.
   late final pulumi.Output<String> targetNetworkId;
 
@@ -287,17 +283,15 @@ class HypervNetworkMapping extends pulumi.CustomResource {
     HypervNetworkMappingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:siterecovery/hypervNetworkMapping:HypervNetworkMapping',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:siterecovery/hypervNetworkMapping:HypervNetworkMapping',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     recoveryVaultId = registerOutput<String>('recoveryVaultId');
     sourceNetworkName = registerOutput<String>('sourceNetworkName');
-    sourceSystemCenterVirtualMachineManagerName = registerOutput<String>(
-      'sourceSystemCenterVirtualMachineManagerName',
-    );
+    sourceSystemCenterVirtualMachineManagerName = registerOutput<String>('sourceSystemCenterVirtualMachineManagerName');
     targetNetworkId = registerOutput<String>('targetNetworkId');
   }
 
@@ -319,17 +313,15 @@ class HypervNetworkMapping extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:siterecovery/hypervNetworkMapping:HypervNetworkMapping',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:siterecovery/hypervNetworkMapping:HypervNetworkMapping',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     recoveryVaultId = registerOutput<String>('recoveryVaultId');
     sourceNetworkName = registerOutput<String>('sourceNetworkName');
-    sourceSystemCenterVirtualMachineManagerName = registerOutput<String>(
-      'sourceSystemCenterVirtualMachineManagerName',
-    );
+    sourceSystemCenterVirtualMachineManagerName = registerOutput<String>('sourceSystemCenterVirtualMachineManagerName');
     targetNetworkId = registerOutput<String>('targetNetworkId');
   }
 }

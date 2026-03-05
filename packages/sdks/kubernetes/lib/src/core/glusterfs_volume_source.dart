@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GlusterfsVolumeSource {
   /// endpoints is the endpoint name that details Glusterfs topology.
   final pulumi.Input<String> endpoints;
-
   /// path is the Glusterfs volume path. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
   final pulumi.Input<String> path;
-
   /// readOnly here will force the Glusterfs volume to be mounted with read-only permissions. Defaults to false. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
   final pulumi.Input<bool>? readOnly;
 
@@ -35,11 +33,8 @@ class GlusterfsVolumeSource {
     return GlusterfsVolumeSource(
       endpoints: pulumi.Input.fromValue(map['endpoints'] as String),
       path: pulumi.Input.fromValue(map['path'] as String),
-      readOnly: (() {
-        final guardedValue = map['readOnly'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      readOnly: (() { final guardedValue = map['readOnly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

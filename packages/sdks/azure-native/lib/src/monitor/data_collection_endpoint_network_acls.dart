@@ -9,19 +9,20 @@ class DataCollectionEndpointNetworkAcls {
 
   /// Creates a new [DataCollectionEndpointNetworkAcls].
   /// [publicNetworkAccess] The configuration to set whether network access from public internet to the endpoints are allowed.
-  DataCollectionEndpointNetworkAcls({this.publicNetworkAccess});
+  DataCollectionEndpointNetworkAcls({
+    this.publicNetworkAccess,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'publicNetworkAccess': ?publicNetworkAccess};
+    return <String, dynamic>{
+      'publicNetworkAccess': ?publicNetworkAccess,
+    };
   }
 
   factory DataCollectionEndpointNetworkAcls.fromMap(Map<String, dynamic> map) {
     return DataCollectionEndpointNetworkAcls(
-      publicNetworkAccess: (() {
-        final guardedValue = map['publicNetworkAccess'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

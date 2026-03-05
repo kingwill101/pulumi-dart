@@ -1,64 +1,46 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getExportConfiguration.
 class GetExportConfigurationResult {
   /// The name of the Application Insights component.
   final String applicationName;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The name of the destination storage container.
   final String containerName;
-
   /// The name of destination account.
   final String destinationAccountId;
-
   /// The destination account location ID.
   final String destinationStorageLocationId;
-
   /// The destination storage account subscription ID.
   final String destinationStorageSubscriptionId;
-
   /// The destination type.
   final String destinationType;
-
   /// The unique ID of the export configuration inside an Application Insights component. It is auto generated when the Continuous Export configuration is created.
   final String exportId;
-
   /// This indicates current Continuous Export configuration status. The possible values are 'Preparing', 'Success', 'Failure'.
   final String exportStatus;
-
   /// The instrumentation key of the Application Insights component.
   final String instrumentationKey;
-
   /// This will be 'true' if the Continuous Export configuration is enabled, otherwise it will be 'false'.
   final String isUserEnabled;
-
   /// The last time the Continuous Export configuration started failing.
   final String lastGapTime;
-
   /// The last time data was successfully delivered to the destination storage container for this Continuous Export configuration.
   final String lastSuccessTime;
-
   /// Last time the Continuous Export configuration was updated.
   final String lastUserUpdate;
-
   /// Deprecated
   final String? notificationQueueEnabled;
-
   /// This is the reason the Continuous Export configuration started failing. It can be 'AzureStorageNotFound' or 'AzureStorageAccessDenied'.
   final String permanentErrorReason;
-
   /// This comma separated list of document types that will be exported. The possible values include 'Requests', 'Event', 'Exceptions', 'Metrics', 'PageViews', 'PageViewPerformance', 'Rdd', 'PerformanceCounters', 'Availability', 'Messages'.
   final String? recordTypes;
-
   /// The resource group of the Application Insights component.
   final String resourceGroup;
-
   /// The name of the destination storage account.
   final String storageName;
-
   /// The subscription of the Application Insights component.
   final String subscriptionId;
 
@@ -137,10 +119,8 @@ class GetExportConfigurationResult {
       azureApiVersion: map['azureApiVersion'] as String,
       containerName: map['containerName'] as String,
       destinationAccountId: map['destinationAccountId'] as String,
-      destinationStorageLocationId:
-          map['destinationStorageLocationId'] as String,
-      destinationStorageSubscriptionId:
-          map['destinationStorageSubscriptionId'] as String,
+      destinationStorageLocationId: map['destinationStorageLocationId'] as String,
+      destinationStorageSubscriptionId: map['destinationStorageSubscriptionId'] as String,
       destinationType: map['destinationType'] as String,
       exportId: map['exportId'] as String,
       exportStatus: map['exportStatus'] as String,
@@ -149,20 +129,13 @@ class GetExportConfigurationResult {
       lastGapTime: map['lastGapTime'] as String,
       lastSuccessTime: map['lastSuccessTime'] as String,
       lastUserUpdate: map['lastUserUpdate'] as String,
-      notificationQueueEnabled: (() {
-        final guardedValue = map['notificationQueueEnabled'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      notificationQueueEnabled: (() { final guardedValue = map['notificationQueueEnabled']; if (guardedValue == null) return null; return guardedValue as String; })(),
       permanentErrorReason: map['permanentErrorReason'] as String,
-      recordTypes: (() {
-        final guardedValue = map['recordTypes'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      recordTypes: (() { final guardedValue = map['recordTypes']; if (guardedValue == null) return null; return guardedValue as String; })(),
       resourceGroup: map['resourceGroup'] as String,
       storageName: map['storageName'] as String,
       subscriptionId: map['subscriptionId'] as String,
     );
   }
 }
+

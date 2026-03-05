@@ -11,10 +11,14 @@ class GetGroupArgs {
 
   /// Creates a new [GetGroupArgs].
   /// [groupId] Required.
-  GetGroupArgs({required this.groupId});
+  GetGroupArgs({
+    required this.groupId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'groupId': groupId};
+    return <String, dynamic>{
+      'groupId': groupId,
+    };
   }
 
   factory GetGroupArgs.fromMap(Map<String, dynamic> map) {
@@ -23,3 +27,4 @@ class GetGroupArgs {
     );
   }
 }
+

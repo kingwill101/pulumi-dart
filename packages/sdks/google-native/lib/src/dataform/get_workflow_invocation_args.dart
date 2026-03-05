@@ -36,15 +36,10 @@ class GetWorkflowInvocationArgs {
   factory GetWorkflowInvocationArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkflowInvocationArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       repositoryId: pulumi.Input.fromValue(map['repositoryId'] as String),
-      workflowInvocationId: pulumi.Input.fromValue(
-        map['workflowInvocationId'] as String,
-      ),
+      workflowInvocationId: pulumi.Input.fromValue(map['workflowInvocationId'] as String),
     );
   }
 }
+

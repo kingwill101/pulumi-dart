@@ -12,13 +12,10 @@ class GetGatewayVcoRoutesResult {
   final int? pageNumber;
   final int? pageSize;
   final String? routeEntryType;
-
   /// A list of Vpn Gateway Vco Routes. Each element contains the following attributes:
   final List<GetGatewayVcoRoutesRoute> routes;
-
   /// The status of the vpn route entry.
   final String? status;
-
   /// The id of the vpn connection.
   final String vpnConnectionId;
 
@@ -52,11 +49,7 @@ class GetGatewayVcoRoutesResult {
       'pageNumber': ?pageNumber,
       'pageSize': ?pageSize,
       'routeEntryType': ?routeEntryType,
-      'routes':
-          pulumi.Input.encodeList<
-            GetGatewayVcoRoutesRoute,
-            Map<String, dynamic>
-          >(routes, (value) => value.toMap()),
+      'routes': pulumi.Input.encodeList<GetGatewayVcoRoutesRoute, Map<String, dynamic>>(routes, (value) => value.toMap()),
       'status': ?status,
       'vpnConnectionId': vpnConnectionId,
     };
@@ -66,38 +59,14 @@ class GetGatewayVcoRoutesResult {
     return GetGatewayVcoRoutesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      pageNumber: (() {
-        final guardedValue = map['pageNumber'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      pageSize: (() {
-        final guardedValue = map['pageSize'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      routeEntryType: (() {
-        final guardedValue = map['routeEntryType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      routes: pulumi.Input.decodeList<GetGatewayVcoRoutesRoute>(
-        map['routes']!,
-        (value) => GetGatewayVcoRoutesRoute.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      pageNumber: (() { final guardedValue = map['pageNumber']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      pageSize: (() { final guardedValue = map['pageSize']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      routeEntryType: (() { final guardedValue = map['routeEntryType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      routes: pulumi.Input.decodeList<GetGatewayVcoRoutesRoute>(map['routes']!, (value) => GetGatewayVcoRoutesRoute.fromMap((value as Map).cast<String, dynamic>())),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
       vpnConnectionId: map['vpnConnectionId'] as String,
     );
   }
 }
+

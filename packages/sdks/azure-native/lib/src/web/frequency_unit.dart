@@ -15,3 +15,4 @@ enum FrequencyUnit {
     throw ArgumentError('Unknown FrequencyUnit value: $value');
   }
 }
+

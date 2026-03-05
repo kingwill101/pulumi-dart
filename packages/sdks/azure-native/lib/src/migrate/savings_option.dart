@@ -16,3 +16,4 @@ enum SavingsOption {
     throw ArgumentError('Unknown SavingsOption value: $value');
   }
 }
+

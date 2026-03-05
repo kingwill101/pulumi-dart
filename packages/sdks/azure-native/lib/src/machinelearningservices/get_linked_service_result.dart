@@ -7,22 +7,16 @@ import 'linked_service_props_response.dart';
 class GetLinkedServiceResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// ResourceId of the link of the linked service.
   final String id;
-
   /// Identity for the resource.
   final IdentityResponse? identity;
-
   /// location of the linked service.
   final String? location;
-
   /// Friendly name of the linked service.
   final String name;
-
   /// LinkedService specific properties.
   final LinkedServicePropsResponse properties;
-
   /// Resource type of linked service.
   final String type;
 
@@ -60,23 +54,12 @@ class GetLinkedServiceResult {
     return GetLinkedServiceResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return IdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return IdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
-      properties: LinkedServicePropsResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
+      properties: LinkedServicePropsResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

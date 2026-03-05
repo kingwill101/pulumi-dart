@@ -7,9 +7,7 @@ import 'security_posture_config_gkehub_v1alpha.dart';
 /// DefaultClusterConfig describes the default cluster configurations to be applied to all clusters born-in-fleet.
 class DefaultClusterConfigGkehubV1alpha {
   /// Optional. Enable/Disable binary authorization features for the cluster.
-  final pulumi.Input<BinaryAuthorizationConfigGkehubV1alpha>?
-  binaryAuthorizationConfig;
-
+  final pulumi.Input<BinaryAuthorizationConfigGkehubV1alpha>? binaryAuthorizationConfig;
   /// Enable/Disable Security Posture features for the cluster.
   final pulumi.Input<SecurityPostureConfigGkehubV1alpha>? securityPostureConfig;
 
@@ -23,39 +21,16 @@ class DefaultClusterConfigGkehubV1alpha {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'binaryAuthorizationConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            BinaryAuthorizationConfigGkehubV1alpha,
-            Map<String, dynamic>
-          >(binaryAuthorizationConfig, (value) => value.toMap()),
-      'securityPostureConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            SecurityPostureConfigGkehubV1alpha,
-            Map<String, dynamic>
-          >(securityPostureConfig, (value) => value.toMap()),
+      'binaryAuthorizationConfig': ?pulumi.Input.mapOptionalInputValue<BinaryAuthorizationConfigGkehubV1alpha, Map<String, dynamic>>(binaryAuthorizationConfig, (value) => value.toMap()),
+      'securityPostureConfig': ?pulumi.Input.mapOptionalInputValue<SecurityPostureConfigGkehubV1alpha, Map<String, dynamic>>(securityPostureConfig, (value) => value.toMap()),
     };
   }
 
   factory DefaultClusterConfigGkehubV1alpha.fromMap(Map<String, dynamic> map) {
     return DefaultClusterConfigGkehubV1alpha(
-      binaryAuthorizationConfig: (() {
-        final guardedValue = map['binaryAuthorizationConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BinaryAuthorizationConfigGkehubV1alpha.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      securityPostureConfig: (() {
-        final guardedValue = map['securityPostureConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SecurityPostureConfigGkehubV1alpha.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      binaryAuthorizationConfig: (() { final guardedValue = map['binaryAuthorizationConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BinaryAuthorizationConfigGkehubV1alpha.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      securityPostureConfig: (() { final guardedValue = map['securityPostureConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SecurityPostureConfigGkehubV1alpha.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

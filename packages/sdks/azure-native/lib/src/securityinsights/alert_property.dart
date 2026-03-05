@@ -22,3 +22,4 @@ enum AlertProperty {
     throw ArgumentError('Unknown AlertProperty value: $value');
   }
 }
+

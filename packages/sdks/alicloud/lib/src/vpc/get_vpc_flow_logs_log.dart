@@ -5,31 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVpcFlowLogsLog {
   /// The Description of flow log.
   final pulumi.Input<String> description;
-
   /// The flow log ID.
   final pulumi.Input<String> flowLogId;
-
   /// The flow log name.
   final pulumi.Input<String> flowLogName;
-
   /// The ID of the Flow Log.
   final pulumi.Input<String> id;
-
   /// The log store name.
   final pulumi.Input<String> logStoreName;
-
   /// The project name.
   final pulumi.Input<String> projectName;
-
   /// The resource id.
   final pulumi.Input<String> resourceId;
-
   /// The resource type.
   final pulumi.Input<String> resourceType;
-
   /// The status of flow log.
   final pulumi.Input<String> status;
-
   /// The traffic type.
   final pulumi.Input<String> trafficType;
 
@@ -87,3 +78,4 @@ class GetVpcFlowLogsLog {
     );
   }
 }
+

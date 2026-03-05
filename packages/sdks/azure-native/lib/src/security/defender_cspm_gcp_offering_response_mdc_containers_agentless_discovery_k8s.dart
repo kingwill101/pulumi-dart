@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DefenderCspmGcpOfferingResponseMdcContainersAgentlessDiscoveryK8s {
   /// Is Microsoft Defender container agentless discovery enabled
   final pulumi.Input<bool>? enabled;
-
   /// The service account email address in GCP for this feature
   final pulumi.Input<String>? serviceAccountEmailAddress;
-
   /// The workload identity provider id in GCP for this feature
   final pulumi.Input<String>? workloadIdentityProviderId;
 
@@ -31,25 +29,12 @@ class DefenderCspmGcpOfferingResponseMdcContainersAgentlessDiscoveryK8s {
     };
   }
 
-  factory DefenderCspmGcpOfferingResponseMdcContainersAgentlessDiscoveryK8s.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DefenderCspmGcpOfferingResponseMdcContainersAgentlessDiscoveryK8s.fromMap(Map<String, dynamic> map) {
     return DefenderCspmGcpOfferingResponseMdcContainersAgentlessDiscoveryK8s(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      serviceAccountEmailAddress: (() {
-        final guardedValue = map['serviceAccountEmailAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      workloadIdentityProviderId: (() {
-        final guardedValue = map['workloadIdentityProviderId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      serviceAccountEmailAddress: (() { final guardedValue = map['serviceAccountEmailAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      workloadIdentityProviderId: (() { final guardedValue = map['workloadIdentityProviderId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

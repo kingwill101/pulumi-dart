@@ -15,3 +15,4 @@ enum ConfigurationType {
     throw ArgumentError('Unknown ConfigurationType value: $value');
   }
 }
+

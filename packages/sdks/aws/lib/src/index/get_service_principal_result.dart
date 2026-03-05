@@ -1,15 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getServicePrincipal.
 class GetServicePrincipalResult {
   /// Identifier of the current Service Principal (compound of service, Region and suffix). (e.g. `logs.us-east-1.amazonaws.com`in AWS Commercial, `logs.cn-north-1.amazonaws.com.cn` in AWS China).
   final String id;
-
   /// Service Principal Name (e.g., `logs.amazonaws.com` in AWS Commercial, `logs.amazonaws.com.cn` in AWS China).
   final String name;
   final String region;
   final String serviceName;
-
   /// Suffix of the SPN (e.g., `amazonaws.com` in AWS Commercial, `amazonaws.com.cn` in AWS China).
   final String suffix;
 
@@ -47,3 +46,4 @@ class GetServicePrincipalResult {
     );
   }
 }
+

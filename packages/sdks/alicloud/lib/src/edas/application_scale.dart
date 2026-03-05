@@ -553,16 +553,12 @@ import 'application_scale_state.dart';
 class ApplicationScale extends pulumi.CustomResource {
   /// The ID of the application that you want to deploy.
   late final pulumi.Output<String> appId;
-
   /// The ID of the instance group to which you want to add ECS instances to scale out the application.
   late final pulumi.Output<String> deployGroup;
-
   /// The ecc information of the resource supplied above. The value is formulated as `&lt;ecc1,ecc2&gt;`.
   late final pulumi.Output<String> eccInfo;
-
   /// The IDs of the Elastic Compute Unit (ECU) where you want to deploy the application. Type: List.
   late final pulumi.Output<List<String>> ecuInfos;
-
   /// This parameter specifies whether to forcibly remove an ECS instance where the application is deployed. It is set as true only after the ECS instance expires. In normal cases, this parameter do not need to be specified.
   late final pulumi.Output<bool?> forceStatus;
 
@@ -575,11 +571,11 @@ class ApplicationScale extends pulumi.CustomResource {
     ApplicationScaleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:edas/applicationScale:ApplicationScale',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:edas/applicationScale:ApplicationScale',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appId = registerOutput<String>('appId');
     deployGroup = registerOutput<String>('deployGroup');
     eccInfo = registerOutput<String>('eccInfo');
@@ -605,11 +601,11 @@ class ApplicationScale extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:edas/applicationScale:ApplicationScale',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:edas/applicationScale:ApplicationScale',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appId = registerOutput<String>('appId');
     deployGroup = registerOutput<String>('deployGroup');
     eccInfo = registerOutput<String>('eccInfo');

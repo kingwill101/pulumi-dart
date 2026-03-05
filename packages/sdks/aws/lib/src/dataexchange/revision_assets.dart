@@ -166,33 +166,25 @@ import 'revision_assets_timeouts.dart';
 class RevisionAssets extends pulumi.CustomResource {
   /// The ARN of the Data Exchange Revision Assets.
   late final pulumi.Output<String> arn;
-
   /// A block to define the asset associated with the revision. See Asset for more details.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<List<Map<String, dynamic>>?> assets;
-
   /// A comment for the revision. Maximum length is 16,348 characters.
   late final pulumi.Output<String?> comment;
-
   /// The timestamp when the revision was created, in RFC3339 format.
   late final pulumi.Output<String> createdAt;
-
   /// Unique identifier for the data set associated with the revision.
   late final pulumi.Output<String> dataSetId;
   late final pulumi.Output<bool> finalized;
   late final pulumi.Output<bool?> forceDestroy;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<RevisionAssetsTimeouts?> timeouts;
-
   /// The timestamp when the revision was last updated, in RFC3339 format.
   late final pulumi.Output<String> updatedAt;
 
@@ -205,11 +197,11 @@ class RevisionAssets extends pulumi.CustomResource {
     RevisionAssetsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:dataexchange/revisionAssets:RevisionAssets',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:dataexchange/revisionAssets:RevisionAssets',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     assets = registerOutput<List<Map<String, dynamic>>?>('assets');
     comment = registerOutput<String?>('comment');
@@ -220,16 +212,7 @@ class RevisionAssets extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<RevisionAssetsTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RevisionAssetsTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<RevisionAssetsTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RevisionAssetsTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updatedAt = registerOutput<String>('updatedAt');
   }
 
@@ -251,11 +234,11 @@ class RevisionAssets extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:dataexchange/revisionAssets:RevisionAssets',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:dataexchange/revisionAssets:RevisionAssets',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     assets = registerOutput<List<Map<String, dynamic>>?>('assets');
     comment = registerOutput<String?>('comment');
@@ -266,16 +249,7 @@ class RevisionAssets extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<RevisionAssetsTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RevisionAssetsTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<RevisionAssetsTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RevisionAssetsTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updatedAt = registerOutput<String>('updatedAt');
   }
 }

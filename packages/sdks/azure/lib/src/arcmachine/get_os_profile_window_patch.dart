@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetOsProfileWindowPatch {
   /// Specifies the assessment mode.
   final pulumi.Input<String> assessmentMode;
-
   /// Specifies the patch mode.
   final pulumi.Input<String> patchMode;
 
@@ -31,3 +30,4 @@ class GetOsProfileWindowPatch {
     );
   }
 }
+

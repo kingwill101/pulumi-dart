@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AbusePenaltyResponse {
   /// The action of AbusePenalty.
   final pulumi.Input<String>? action;
-
   /// The datetime of expiration of the AbusePenalty.
   final pulumi.Input<String>? expiration;
-
   /// The percentage of rate limit.
   final pulumi.Input<double>? rateLimitPercentage;
 
@@ -33,21 +31,10 @@ class AbusePenaltyResponse {
 
   factory AbusePenaltyResponse.fromMap(Map<String, dynamic> map) {
     return AbusePenaltyResponse(
-      action: (() {
-        final guardedValue = map['action'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      expiration: (() {
-        final guardedValue = map['expiration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      rateLimitPercentage: (() {
-        final guardedValue = map['rateLimitPercentage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      expiration: (() { final guardedValue = map['expiration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      rateLimitPercentage: (() { final guardedValue = map['rateLimitPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

@@ -14,7 +14,6 @@ class OccurenceAttestationSignature {
   /// * RFC6920 digest-named SubjectPublicKeyInfo (digest of the DER serialization):
   /// * "ni:///sha-256;cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU"
   final pulumi.Input<String> publicKeyId;
-
   /// The content of the signature, an opaque bytestring.
   /// The payload that this signature verifies MUST be
   /// unambiguously provided with the Signature during
@@ -27,7 +26,10 @@ class OccurenceAttestationSignature {
   /// Creates a new [OccurenceAttestationSignature].
   /// [publicKeyId] The identifier for the public key that verifies this
   /// [signature] The content of the signature, an opaque bytestring.
-  OccurenceAttestationSignature({required this.publicKeyId, this.signature});
+  OccurenceAttestationSignature({
+    required this.publicKeyId,
+    this.signature,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,11 +41,8 @@ class OccurenceAttestationSignature {
   factory OccurenceAttestationSignature.fromMap(Map<String, dynamic> map) {
     return OccurenceAttestationSignature(
       publicKeyId: pulumi.Input.fromValue(map['publicKeyId'] as String),
-      signature: (() {
-        final guardedValue = map['signature'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      signature: (() { final guardedValue = map['signature']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -6,19 +6,14 @@ import 'express_route_circuit_peering_ipv6_microsoft_peering.dart';
 class ExpressRouteCircuitPeeringIpv6 {
   /// A boolean value indicating whether the IPv6 peering is enabled. Defaults to `true`.
   final pulumi.Input<bool>? enabled;
-
   /// A `microsoft_peering` block as defined below.
-  final pulumi.Input<ExpressRouteCircuitPeeringIpv6MicrosoftPeering>?
-  microsoftPeering;
-
+  final pulumi.Input<ExpressRouteCircuitPeeringIpv6MicrosoftPeering>? microsoftPeering;
   /// A subnet for the primary link.
   final pulumi.Input<String> primaryPeerAddressPrefix;
-
   /// The ID of the Route Filter. Only available when `peering_type` is set to `MicrosoftPeering`.
   ///
   /// &gt; **Note:** `ipv6` can be specified when `peering_type` is `MicrosoftPeering` or `AzurePrivatePeering`
   final pulumi.Input<String>? routeFilterId;
-
   /// A subnet for the secondary link.
   final pulumi.Input<String> secondaryPeerAddressPrefix;
 
@@ -39,11 +34,7 @@ class ExpressRouteCircuitPeeringIpv6 {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enabled': ?enabled,
-      'microsoftPeering':
-          ?pulumi.Input.mapOptionalInputValue<
-            ExpressRouteCircuitPeeringIpv6MicrosoftPeering,
-            Map<String, dynamic>
-          >(microsoftPeering, (value) => value.toMap()),
+      'microsoftPeering': ?pulumi.Input.mapOptionalInputValue<ExpressRouteCircuitPeeringIpv6MicrosoftPeering, Map<String, dynamic>>(microsoftPeering, (value) => value.toMap()),
       'primaryPeerAddressPrefix': primaryPeerAddressPrefix,
       'routeFilterId': ?routeFilterId,
       'secondaryPeerAddressPrefix': secondaryPeerAddressPrefix,
@@ -52,31 +43,12 @@ class ExpressRouteCircuitPeeringIpv6 {
 
   factory ExpressRouteCircuitPeeringIpv6.fromMap(Map<String, dynamic> map) {
     return ExpressRouteCircuitPeeringIpv6(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      microsoftPeering: (() {
-        final guardedValue = map['microsoftPeering'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ExpressRouteCircuitPeeringIpv6MicrosoftPeering.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      primaryPeerAddressPrefix: pulumi.Input.fromValue(
-        map['primaryPeerAddressPrefix'] as String,
-      ),
-      routeFilterId: (() {
-        final guardedValue = map['routeFilterId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      secondaryPeerAddressPrefix: pulumi.Input.fromValue(
-        map['secondaryPeerAddressPrefix'] as String,
-      ),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      microsoftPeering: (() { final guardedValue = map['microsoftPeering']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExpressRouteCircuitPeeringIpv6MicrosoftPeering.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      primaryPeerAddressPrefix: pulumi.Input.fromValue(map['primaryPeerAddressPrefix'] as String),
+      routeFilterId: (() { final guardedValue = map['routeFilterId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      secondaryPeerAddressPrefix: pulumi.Input.fromValue(map['secondaryPeerAddressPrefix'] as String),
     );
   }
 }
+

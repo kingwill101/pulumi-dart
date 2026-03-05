@@ -15,3 +15,4 @@ enum ResourceRecordSetFailover {
     throw ArgumentError('Unknown ResourceRecordSetFailover value: $value');
   }
 }
+

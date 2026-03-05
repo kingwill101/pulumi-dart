@@ -12,14 +12,11 @@ class AppCheckDebugTokenArgs {
   /// [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id),
   /// or [Android App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps#AndroidApp.FIELDS.app_id)
   final pulumi.Input<String> appId;
-
   /// A human readable display name used to identify this debug token.
   final pulumi.Input<String> displayName;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The secret token itself. Must be provided during creation, and must be a UUID4,
   /// case insensitive. You may use a method of your choice such as random/random_uuid
   /// to generate the token.
@@ -54,12 +51,9 @@ class AppCheckDebugTokenArgs {
     return AppCheckDebugTokenArgs(
       appId: pulumi.Input.fromValue(map['appId'] as String),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       token: pulumi.Input.fromValue(map['token'] as String),
     );
   }
 }
+

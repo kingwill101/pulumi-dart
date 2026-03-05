@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceUpstreamEndpoint {
   /// The categories to match on, or `*` for all.
   final pulumi.Input<List<String>> categoryPatterns;
-
   /// The events to match on, or `*` for all.
   final pulumi.Input<List<String>> eventPatterns;
-
   /// The hubs to match on, or `*` for all.
   final pulumi.Input<List<String>> hubPatterns;
-
   /// The upstream URL Template. This can be a url or a template such as `http://host.com/{hub}/api/{category}/{event}`.
   final pulumi.Input<String> urlTemplate;
-
   /// Specifies the Managed Identity IDs to be assigned to this signalR upstream setting by using resource uuid as both system assigned and user assigned identity is supported.
   final pulumi.Input<String>? userAssignedIdentityId;
 
@@ -44,21 +40,12 @@ class ServiceUpstreamEndpoint {
 
   factory ServiceUpstreamEndpoint.fromMap(Map<String, dynamic> map) {
     return ServiceUpstreamEndpoint(
-      categoryPatterns: pulumi.Input.fromValue(
-        (map['categoryPatterns'] as List).cast<String>(),
-      ),
-      eventPatterns: pulumi.Input.fromValue(
-        (map['eventPatterns'] as List).cast<String>(),
-      ),
-      hubPatterns: pulumi.Input.fromValue(
-        (map['hubPatterns'] as List).cast<String>(),
-      ),
+      categoryPatterns: pulumi.Input.fromValue((map['categoryPatterns'] as List).cast<String>()),
+      eventPatterns: pulumi.Input.fromValue((map['eventPatterns'] as List).cast<String>()),
+      hubPatterns: pulumi.Input.fromValue((map['hubPatterns'] as List).cast<String>()),
       urlTemplate: pulumi.Input.fromValue(map['urlTemplate'] as String),
-      userAssignedIdentityId: (() {
-        final guardedValue = map['userAssignedIdentityId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      userAssignedIdentityId: (() { final guardedValue = map['userAssignedIdentityId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -163,38 +163,27 @@ import 'system_data_response.dart';
 class ScheduledTrigger extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Time at which the trigger was created.
   late final pulumi.Output<String> createdAt;
-
   /// Kind of synchronization on trigger.
   /// Expected value is 'ScheduleBased'.
   late final pulumi.Output<String> kind;
-
   /// Name of the azure resource
   late final pulumi.Output<String> name;
-
   /// Gets the provisioning state
   late final pulumi.Output<String> provisioningState;
-
   /// Recurrence Interval
   late final pulumi.Output<String> recurrenceInterval;
-
   /// Synchronization mode
   late final pulumi.Output<String?> synchronizationMode;
-
   /// Synchronization time
   late final pulumi.Output<String> synchronizationTime;
-
   /// System Data of the Azure resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Gets the trigger state
   late final pulumi.Output<String> triggerStatus;
-
   /// Type of the azure resource
   late final pulumi.Output<String> type;
-
   /// Name of the user who created the trigger.
   late final pulumi.Output<String> userName;
 
@@ -207,11 +196,11 @@ class ScheduledTrigger extends pulumi.CustomResource {
     ScheduledTriggerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:datashare:ScheduledTrigger',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:datashare:ScheduledTrigger',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createdAt = registerOutput<String>('createdAt');
     kind = registerOutput<String>('kind');
@@ -220,16 +209,7 @@ class ScheduledTrigger extends pulumi.CustomResource {
     recurrenceInterval = registerOutput<String>('recurrenceInterval');
     synchronizationMode = registerOutput<String?>('synchronizationMode');
     synchronizationTime = registerOutput<String>('synchronizationTime');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     triggerStatus = registerOutput<String>('triggerStatus');
     type = registerOutput<String>('type');
     userName = registerOutput<String>('userName');

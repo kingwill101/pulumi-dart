@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PredictiveAutoscalePolicyResponse {
   /// the amount of time to specify by which instances are launched in advance. It must be between 1 minute and 60 minutes in ISO 8601 format.
   final pulumi.Input<String>? scaleLookAheadTime;
-
   /// the predictive autoscale mode
   final pulumi.Input<String> scaleMode;
 
@@ -27,12 +26,9 @@ class PredictiveAutoscalePolicyResponse {
 
   factory PredictiveAutoscalePolicyResponse.fromMap(Map<String, dynamic> map) {
     return PredictiveAutoscalePolicyResponse(
-      scaleLookAheadTime: (() {
-        final guardedValue = map['scaleLookAheadTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      scaleLookAheadTime: (() { final guardedValue = map['scaleLookAheadTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scaleMode: pulumi.Input.fromValue(map['scaleMode'] as String),
     );
   }
 }
+

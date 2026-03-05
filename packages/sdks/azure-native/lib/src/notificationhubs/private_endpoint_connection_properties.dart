@@ -6,9 +6,7 @@ import 'remote_private_link_service_connection_state.dart';
 /// Private Endpoint Connection properties.
 class PrivateEndpointConnectionProperties {
   /// State of the Private Link Service connection.
-  final pulumi.Input<RemotePrivateLinkServiceConnectionState>?
-  privateLinkServiceConnectionState;
-
+  final pulumi.Input<RemotePrivateLinkServiceConnectionState>? privateLinkServiceConnectionState;
   /// State of Private Endpoint Connection.
   final pulumi.Input<String>? provisioningState;
 
@@ -22,33 +20,16 @@ class PrivateEndpointConnectionProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'privateLinkServiceConnectionState':
-          ?pulumi.Input.mapOptionalInputValue<
-            RemotePrivateLinkServiceConnectionState,
-            Map<String, dynamic>
-          >(privateLinkServiceConnectionState, (value) => value.toMap()),
+      'privateLinkServiceConnectionState': ?pulumi.Input.mapOptionalInputValue<RemotePrivateLinkServiceConnectionState, Map<String, dynamic>>(privateLinkServiceConnectionState, (value) => value.toMap()),
       'provisioningState': ?provisioningState,
     };
   }
 
-  factory PrivateEndpointConnectionProperties.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PrivateEndpointConnectionProperties.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointConnectionProperties(
-      privateLinkServiceConnectionState: (() {
-        final guardedValue = map['privateLinkServiceConnectionState'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RemotePrivateLinkServiceConnectionState.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      provisioningState: (() {
-        final guardedValue = map['provisioningState'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      privateLinkServiceConnectionState: (() { final guardedValue = map['privateLinkServiceConnectionState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RemotePrivateLinkServiceConnectionState.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

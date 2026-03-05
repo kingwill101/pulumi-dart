@@ -6,25 +6,18 @@ import 'system_data_response.dart';
 class GetManagementGroupNetworkManagerConnectionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// A description of the network manager connection.
   final String? description;
-
   /// A unique read-only string that changes whenever the resource is updated.
   final String etag;
-
   /// Resource ID.
   final String id;
-
   /// Resource name.
   final String name;
-
   /// Network Manager Id.
   final String? networkManagerId;
-
   /// The system metadata related to this resource.
   final SystemDataResponse systemData;
-
   /// Resource type.
   final String type;
 
@@ -61,28 +54,17 @@ class GetManagementGroupNetworkManagerConnectionResult {
     };
   }
 
-  factory GetManagementGroupNetworkManagerConnectionResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetManagementGroupNetworkManagerConnectionResult.fromMap(Map<String, dynamic> map) {
     return GetManagementGroupNetworkManagerConnectionResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       etag: map['etag'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      networkManagerId: (() {
-        final guardedValue = map['networkManagerId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      networkManagerId: (() { final guardedValue = map['networkManagerId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

@@ -153,13 +153,10 @@ import 'network_state.dart';
 class Network extends pulumi.CustomResource {
   /// The CidrBlock of the CCN instance. Defaults to null.
   late final pulumi.Output<String?> cidrBlock;
-
   /// The description of the CCN instance. The description can contain 2 to 256 characters. The description must start with English letters, but cannot start with http:// or https://.
   late final pulumi.Output<String?> description;
-
   /// Created by default. If the client does not have ccn in the binding, it will create a ccn for the user to replace.
   late final pulumi.Output<bool> isDefault;
-
   /// The name of the CCN instance. The name can contain 2 to 128 characters including a-z, A-Z, 0-9, periods, underlines, and hyphens. The name must start with an English letter, but cannot start with http:// or https://.
   late final pulumi.Output<String> name;
 
@@ -172,11 +169,11 @@ class Network extends pulumi.CustomResource {
     NetworkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudconnect/network:Network',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudconnect/network:Network',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cidrBlock = registerOutput<String?>('cidrBlock');
     description = registerOutput<String?>('description');
     isDefault = registerOutput<bool>('isDefault');
@@ -201,11 +198,11 @@ class Network extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudconnect/network:Network',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudconnect/network:Network',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cidrBlock = registerOutput<String?>('cidrBlock');
     description = registerOutput<String?>('description');
     isDefault = registerOutput<bool>('isDefault');

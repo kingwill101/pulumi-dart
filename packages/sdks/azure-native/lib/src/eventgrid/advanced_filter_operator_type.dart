@@ -32,3 +32,4 @@ enum AdvancedFilterOperatorType {
     throw ArgumentError('Unknown AdvancedFilterOperatorType value: $value');
   }
 }
+

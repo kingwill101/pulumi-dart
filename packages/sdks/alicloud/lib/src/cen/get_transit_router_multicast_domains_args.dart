@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTransitRouterMulticastDomainsArgs {
   /// A list of Transit Router Multicast Domain IDs.
   final pulumi.Input<List<String>>? ids;
-
   /// A regex string to filter results by Transit Router Multicast Domain name.
   final pulumi.Input<String>? nameRegex;
-
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
-
   /// The status of the multicast domain. Valid Value: `Active`.
   final pulumi.Input<String>? status;
-
   /// The ID of the transit router.
   final pulumi.Input<String> transitRouterId;
-
   /// The ID of the multicast domain.
   final pulumi.Input<String>? transitRouterMulticastDomainId;
 
@@ -52,36 +47,15 @@ class GetTransitRouterMulticastDomainsArgs {
     };
   }
 
-  factory GetTransitRouterMulticastDomainsArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetTransitRouterMulticastDomainsArgs.fromMap(Map<String, dynamic> map) {
     return GetTransitRouterMulticastDomainsArgs(
-      ids: (() {
-        final guardedValue = map['ids'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ids: (() { final guardedValue = map['ids']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       transitRouterId: pulumi.Input.fromValue(map['transitRouterId'] as String),
-      transitRouterMulticastDomainId: (() {
-        final guardedValue = map['transitRouterMulticastDomainId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      transitRouterMulticastDomainId: (() { final guardedValue = map['transitRouterMulticastDomainId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

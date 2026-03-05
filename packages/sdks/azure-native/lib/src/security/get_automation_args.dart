@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAutomationArgs {
   /// The security automation name.
   final pulumi.Input<String> automationName;
-
   /// The name of the resource group within the user's subscription. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -31,9 +30,8 @@ class GetAutomationArgs {
   factory GetAutomationArgs.fromMap(Map<String, dynamic> map) {
     return GetAutomationArgs(
       automationName: pulumi.Input.fromValue(map['automationName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

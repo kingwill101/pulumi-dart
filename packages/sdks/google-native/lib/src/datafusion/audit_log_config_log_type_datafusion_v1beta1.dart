@@ -14,8 +14,7 @@ enum AuditLogConfigLogTypeDatafusionV1beta1 {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown AuditLogConfigLogTypeDatafusionV1beta1 value: $value',
-    );
+    throw ArgumentError('Unknown AuditLogConfigLogTypeDatafusionV1beta1 value: $value');
   }
 }
+

@@ -16,58 +16,40 @@ class ConnectionArgs {
   /// - **true**: Automatically configure routes.
   /// - **false**: does not automatically configure routes.
   final pulumi.Input<bool>? autoConfigRoute;
-
   /// vpnBgp configuration. See `bgp_config` below.
   final pulumi.Input<ConnectionBgpConfig>? bgpConfig;
-
   /// The ID of the customer gateway.
   final pulumi.Input<String>? customerGatewayId;
-
   /// Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
   final pulumi.Input<bool>? effectImmediately;
-
   /// Wether enable Dpd detection.
   final pulumi.Input<bool>? enableDpd;
-
   /// enable nat traversal.
   final pulumi.Input<bool>? enableNatTraversal;
-
   /// Enable tunnel bgp.
   final pulumi.Input<bool>? enableTunnelsBgp;
-
   /// Health Check information. See `health_check_config` below.
   final pulumi.Input<ConnectionHealthCheckConfig>? healthCheckConfig;
-
   /// The configuration of Phase 1 negotiations. See `ike_config` below.
   final pulumi.Input<ConnectionIkeConfig>? ikeConfig;
-
   /// IPsec configuration. See `ipsec_config` below.
   final pulumi.Input<ConnectionIpsecConfig>? ipsecConfig;
-
   /// The CIDR block of the VPC to be connected with the local data center. This parameter is used for phase-two negotiation.
   final pulumi.Input<List<String>> localSubnets;
-
   /// . Field 'name' has been deprecated from provider version 1.216.0. New field 'vpn_connection_name' instead.
   final pulumi.Input<String>? name;
-
   /// The network type of the IPsec connection. Value:
   /// - **public**: public network, indicating that the IPsec connection establishes an encrypted communication channel through the public network.
   /// - **private**: private network, indicating that the IPsec connection establishes an encrypted communication channel through the private network.
   final pulumi.Input<String>? networkType;
-
   /// The CIDR block of the local data center. This parameter is used for phase-two negotiation.
   final pulumi.Input<List<String>> remoteSubnets;
-
   /// Tags.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// The tunnel options of IPsec. See `tunnel_options_specification` below.
-  final pulumi.Input<List<ConnectionTunnelOptionsSpecification>>?
-  tunnelOptionsSpecifications;
-
+  final pulumi.Input<List<ConnectionTunnelOptionsSpecification>>? tunnelOptionsSpecifications;
   /// The name of the IPsec-VPN connection.
   final pulumi.Input<String>? vpnConnectionName;
-
   /// The ID of the VPN gateway.
   final pulumi.Input<String> vpnGatewayId;
 
@@ -114,48 +96,21 @@ class ConnectionArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'autoConfigRoute': ?autoConfigRoute,
-      'bgpConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ConnectionBgpConfig,
-            Map<String, dynamic>
-          >(bgpConfig, (value) => value.toMap()),
+      'bgpConfig': ?pulumi.Input.mapOptionalInputValue<ConnectionBgpConfig, Map<String, dynamic>>(bgpConfig, (value) => value.toMap()),
       'customerGatewayId': ?customerGatewayId,
       'effectImmediately': ?effectImmediately,
       'enableDpd': ?enableDpd,
       'enableNatTraversal': ?enableNatTraversal,
       'enableTunnelsBgp': ?enableTunnelsBgp,
-      'healthCheckConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ConnectionHealthCheckConfig,
-            Map<String, dynamic>
-          >(healthCheckConfig, (value) => value.toMap()),
-      'ikeConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ConnectionIkeConfig,
-            Map<String, dynamic>
-          >(ikeConfig, (value) => value.toMap()),
-      'ipsecConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ConnectionIpsecConfig,
-            Map<String, dynamic>
-          >(ipsecConfig, (value) => value.toMap()),
+      'healthCheckConfig': ?pulumi.Input.mapOptionalInputValue<ConnectionHealthCheckConfig, Map<String, dynamic>>(healthCheckConfig, (value) => value.toMap()),
+      'ikeConfig': ?pulumi.Input.mapOptionalInputValue<ConnectionIkeConfig, Map<String, dynamic>>(ikeConfig, (value) => value.toMap()),
+      'ipsecConfig': ?pulumi.Input.mapOptionalInputValue<ConnectionIpsecConfig, Map<String, dynamic>>(ipsecConfig, (value) => value.toMap()),
       'localSubnets': localSubnets,
       'name': ?name,
       'networkType': ?networkType,
       'remoteSubnets': remoteSubnets,
       'tags': ?tags,
-      'tunnelOptionsSpecifications':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ConnectionTunnelOptionsSpecification>,
-            List<Map<String, dynamic>>
-          >(
-            tunnelOptionsSpecifications,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ConnectionTunnelOptionsSpecification,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'tunnelOptionsSpecifications': ?pulumi.Input.mapOptionalInputValue<List<ConnectionTunnelOptionsSpecification>, List<Map<String, dynamic>>>(tunnelOptionsSpecifications, (value) => pulumi.Input.encodeList<ConnectionTunnelOptionsSpecification, Map<String, dynamic>>(value, (value) => value.toMap())),
       'vpnConnectionName': ?vpnConnectionName,
       'vpnGatewayId': vpnGatewayId,
     };
@@ -163,113 +118,25 @@ class ConnectionArgs {
 
   factory ConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionArgs(
-      autoConfigRoute: (() {
-        final guardedValue = map['autoConfigRoute'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      bgpConfig: (() {
-        final guardedValue = map['bgpConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ConnectionBgpConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      customerGatewayId: (() {
-        final guardedValue = map['customerGatewayId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      effectImmediately: (() {
-        final guardedValue = map['effectImmediately'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      enableDpd: (() {
-        final guardedValue = map['enableDpd'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      enableNatTraversal: (() {
-        final guardedValue = map['enableNatTraversal'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      enableTunnelsBgp: (() {
-        final guardedValue = map['enableTunnelsBgp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      healthCheckConfig: (() {
-        final guardedValue = map['healthCheckConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ConnectionHealthCheckConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      ikeConfig: (() {
-        final guardedValue = map['ikeConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ConnectionIkeConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      ipsecConfig: (() {
-        final guardedValue = map['ipsecConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ConnectionIpsecConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      localSubnets: pulumi.Input.fromValue(
-        (map['localSubnets'] as List).cast<String>(),
-      ),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      networkType: (() {
-        final guardedValue = map['networkType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      remoteSubnets: pulumi.Input.fromValue(
-        (map['remoteSubnets'] as List).cast<String>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      tunnelOptionsSpecifications: (() {
-        final guardedValue = map['tunnelOptionsSpecifications'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ConnectionTunnelOptionsSpecification>(
-            guardedValue,
-            (value) => ConnectionTunnelOptionsSpecification.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      vpnConnectionName: (() {
-        final guardedValue = map['vpnConnectionName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      autoConfigRoute: (() { final guardedValue = map['autoConfigRoute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      bgpConfig: (() { final guardedValue = map['bgpConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectionBgpConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      customerGatewayId: (() { final guardedValue = map['customerGatewayId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      effectImmediately: (() { final guardedValue = map['effectImmediately']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enableDpd: (() { final guardedValue = map['enableDpd']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enableNatTraversal: (() { final guardedValue = map['enableNatTraversal']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enableTunnelsBgp: (() { final guardedValue = map['enableTunnelsBgp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      healthCheckConfig: (() { final guardedValue = map['healthCheckConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectionHealthCheckConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      ikeConfig: (() { final guardedValue = map['ikeConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectionIkeConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      ipsecConfig: (() { final guardedValue = map['ipsecConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectionIpsecConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      localSubnets: pulumi.Input.fromValue((map['localSubnets'] as List).cast<String>()),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      networkType: (() { final guardedValue = map['networkType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      remoteSubnets: pulumi.Input.fromValue((map['remoteSubnets'] as List).cast<String>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      tunnelOptionsSpecifications: (() { final guardedValue = map['tunnelOptionsSpecifications']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ConnectionTunnelOptionsSpecification>(guardedValue, (value) => ConnectionTunnelOptionsSpecification.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      vpnConnectionName: (() { final guardedValue = map['vpnConnectionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vpnGatewayId: pulumi.Input.fromValue(map['vpnGatewayId'] as String),
     );
   }
 }
+

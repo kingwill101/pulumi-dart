@@ -19,15 +19,10 @@ class GoogleCloudAiplatformV1beta1StudySpecTransferLearningConfig {
     };
   }
 
-  factory GoogleCloudAiplatformV1beta1StudySpecTransferLearningConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudAiplatformV1beta1StudySpecTransferLearningConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1StudySpecTransferLearningConfig(
-      disableTransferLearning: (() {
-        final guardedValue = map['disableTransferLearning'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      disableTransferLearning: (() { final guardedValue = map['disableTransferLearning']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

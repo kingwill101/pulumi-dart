@@ -9,17 +9,20 @@ class MultiTargetResponse {
 
   /// Creates a new [MultiTargetResponse].
   /// [targetIds] The target_ids of this multiTarget.
-  MultiTargetResponse({required this.targetIds});
+  MultiTargetResponse({
+    required this.targetIds,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'targetIds': targetIds};
+    return <String, dynamic>{
+      'targetIds': targetIds,
+    };
   }
 
   factory MultiTargetResponse.fromMap(Map<String, dynamic> map) {
     return MultiTargetResponse(
-      targetIds: pulumi.Input.fromValue(
-        (map['targetIds'] as List).cast<String>(),
-      ),
+      targetIds: pulumi.Input.fromValue((map['targetIds'] as List).cast<String>()),
     );
   }
 }
+

@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataStoreUtilizationDetailsResponse {
   /// The datastore name.
   final pulumi.Input<String> dataStoreName;
-
   /// The total snapshots created for server migration in the datastore.
   final pulumi.Input<double> totalSnapshotsCreated;
-
   /// The total count of snapshots supported by the datastore.
   final pulumi.Input<double> totalSnapshotsSupported;
 
@@ -31,17 +29,12 @@ class DataStoreUtilizationDetailsResponse {
     };
   }
 
-  factory DataStoreUtilizationDetailsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DataStoreUtilizationDetailsResponse.fromMap(Map<String, dynamic> map) {
     return DataStoreUtilizationDetailsResponse(
       dataStoreName: pulumi.Input.fromValue(map['dataStoreName'] as String),
-      totalSnapshotsCreated: pulumi.Input.fromValue(
-        map['totalSnapshotsCreated'] as double,
-      ),
-      totalSnapshotsSupported: pulumi.Input.fromValue(
-        map['totalSnapshotsSupported'] as double,
-      ),
+      totalSnapshotsCreated: pulumi.Input.fromValue(map['totalSnapshotsCreated'] as double),
+      totalSnapshotsSupported: pulumi.Input.fromValue(map['totalSnapshotsSupported'] as double),
     );
   }
 }
+

@@ -7,14 +7,12 @@ import 'get_secret_versions_version.dart';
 class GetSecretVersionsResult {
   /// ARN of the secret.
   final String arn;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final bool? includeDeprecated;
   final String name;
   final String region;
   final String secretId;
-
   /// List of the versions of the secret. Attributes are specified below.
   final List<GetSecretVersionsVersion> versions;
 
@@ -44,11 +42,7 @@ class GetSecretVersionsResult {
       'name': name,
       'region': region,
       'secretId': secretId,
-      'versions':
-          pulumi.Input.encodeList<
-            GetSecretVersionsVersion,
-            Map<String, dynamic>
-          >(versions, (value) => value.toMap()),
+      'versions': pulumi.Input.encodeList<GetSecretVersionsVersion, Map<String, dynamic>>(versions, (value) => value.toMap()),
     };
   }
 
@@ -56,20 +50,12 @@ class GetSecretVersionsResult {
     return GetSecretVersionsResult(
       arn: map['arn'] as String,
       id: map['id'] as String,
-      includeDeprecated: (() {
-        final guardedValue = map['includeDeprecated'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      includeDeprecated: (() { final guardedValue = map['includeDeprecated']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       name: map['name'] as String,
       region: map['region'] as String,
       secretId: map['secretId'] as String,
-      versions: pulumi.Input.decodeList<GetSecretVersionsVersion>(
-        map['versions']!,
-        (value) => GetSecretVersionsVersion.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      versions: pulumi.Input.decodeList<GetSecretVersionsVersion>(map['versions']!, (value) => GetSecretVersionsVersion.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

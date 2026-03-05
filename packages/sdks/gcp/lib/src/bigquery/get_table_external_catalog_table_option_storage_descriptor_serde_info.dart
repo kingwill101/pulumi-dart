@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTableExternalCatalogTableOptionStorageDescriptorSerdeInfo {
   /// Name of the SerDe. The maximum length is 256 characters.
   final pulumi.Input<String> name;
-
   /// Key-value pairs that define the initialization parameters for the serialization library. Maximum size 10 Kib.
   final pulumi.Input<Map<String, String>> parameters;
-
   /// Specifies a fully-qualified class name of the serialization library that is responsible for the translation of data between table representation and the underlying low-level input and output format structures. The maximum length is 256 characters.
   final pulumi.Input<String> serializationLibrary;
 
@@ -30,17 +28,12 @@ class GetTableExternalCatalogTableOptionStorageDescriptorSerdeInfo {
     };
   }
 
-  factory GetTableExternalCatalogTableOptionStorageDescriptorSerdeInfo.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetTableExternalCatalogTableOptionStorageDescriptorSerdeInfo.fromMap(Map<String, dynamic> map) {
     return GetTableExternalCatalogTableOptionStorageDescriptorSerdeInfo(
       name: pulumi.Input.fromValue(map['name'] as String),
-      parameters: pulumi.Input.fromValue(
-        (map['parameters'] as Map).cast<String, String>(),
-      ),
-      serializationLibrary: pulumi.Input.fromValue(
-        map['serializationLibrary'] as String,
-      ),
+      parameters: pulumi.Input.fromValue((map['parameters'] as Map).cast<String, String>()),
+      serializationLibrary: pulumi.Input.fromValue(map['serializationLibrary'] as String),
     );
   }
 }
+

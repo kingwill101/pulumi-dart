@@ -6,22 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReadinessCheckResponseAppengineV1beta {
   /// A maximum time limit on application initialization, measured from moment the application successfully replies to a healthcheck until it is ready to serve traffic.
   final pulumi.Input<String> appStartTimeout;
-
   /// Interval between health checks.
   final pulumi.Input<String> checkInterval;
-
   /// Number of consecutive failed checks required before removing traffic.
   final pulumi.Input<int> failureThreshold;
-
   /// Host header to send when performing a HTTP Readiness check. Example: "myapp.appspot.com"
   final pulumi.Input<String> host;
-
   /// The request path.
   final pulumi.Input<String> path;
-
   /// Number of consecutive successful checks required before receiving traffic.
   final pulumi.Input<int> successThreshold;
-
   /// Time before the check is considered failed.
   final pulumi.Input<String> timeout;
 
@@ -55,9 +49,7 @@ class ReadinessCheckResponseAppengineV1beta {
     };
   }
 
-  factory ReadinessCheckResponseAppengineV1beta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ReadinessCheckResponseAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return ReadinessCheckResponseAppengineV1beta(
       appStartTimeout: pulumi.Input.fromValue(map['appStartTimeout'] as String),
       checkInterval: pulumi.Input.fromValue(map['checkInterval'] as String),
@@ -69,3 +61,4 @@ class ReadinessCheckResponseAppengineV1beta {
     );
   }
 }
+

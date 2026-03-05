@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AlexaChannelProperties {
   /// The Alexa skill Id
   final pulumi.Input<String> alexaSkillId;
-
   /// Whether this channel is enabled for the bot
   final pulumi.Input<bool> isEnabled;
 
   /// Creates a new [AlexaChannelProperties].
   /// [alexaSkillId] The Alexa skill Id
   /// [isEnabled] Whether this channel is enabled for the bot
-  AlexaChannelProperties({required this.alexaSkillId, required this.isEnabled});
+  AlexaChannelProperties({
+    required this.alexaSkillId,
+    required this.isEnabled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,3 +31,4 @@ class AlexaChannelProperties {
     );
   }
 }
+

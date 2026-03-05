@@ -116,28 +116,20 @@ import 'endpoint_access_state.dart';
 class EndpointAccess extends pulumi.CustomResource {
   /// The DNS address of the endpoint.
   late final pulumi.Output<String> address;
-
   /// The cluster identifier of the cluster to access.
   late final pulumi.Output<String> clusterIdentifier;
-
   /// The Redshift-managed VPC endpoint name.
   late final pulumi.Output<String> endpointName;
-
   /// The port number on which the cluster accepts incoming connections.
   late final pulumi.Output<int> port;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The Amazon Web Services account ID of the owner of the cluster. This is only required if the cluster is in another Amazon Web Services account.
   late final pulumi.Output<String> resourceOwner;
-
   /// The subnet group from which Amazon Redshift chooses the subnet to deploy the endpoint.
   late final pulumi.Output<String> subnetGroupName;
-
   /// The connection endpoint for connecting to an Amazon Redshift cluster through the proxy. See details below.
   late final pulumi.Output<List<Map<String, dynamic>>> vpcEndpoints;
-
   /// The security group that defines the ports, protocols, and sources for inbound traffic that you are authorizing into your endpoint.
   late final pulumi.Output<List<String>> vpcSecurityGroupIds;
 
@@ -150,11 +142,11 @@ class EndpointAccess extends pulumi.CustomResource {
     EndpointAccessArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:redshift/endpointAccess:EndpointAccess',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:redshift/endpointAccess:EndpointAccess',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     address = registerOutput<String>('address');
     clusterIdentifier = registerOutput<String>('clusterIdentifier');
     endpointName = registerOutput<String>('endpointName');
@@ -184,11 +176,11 @@ class EndpointAccess extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:redshift/endpointAccess:EndpointAccess',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:redshift/endpointAccess:EndpointAccess',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     address = registerOutput<String>('address');
     clusterIdentifier = registerOutput<String>('clusterIdentifier');
     endpointName = registerOutput<String>('endpointName');

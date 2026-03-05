@@ -33,11 +33,8 @@ class GetMigrationJobArgs {
     return GetMigrationJobArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
       migrationJobId: pulumi.Input.fromValue(map['migrationJobId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -211,16 +211,12 @@ import 'system_data_response.dart';
 class MonitoringConfig extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The metrics configuration details
   late final pulumi.Output<List<Map<String, dynamic>>> metricConfigurations;
-
   /// The object name.
   late final pulumi.Output<String> name;
-
   /// Metadata pertaining to creation and last modification of MonitoringConfiguration
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The hierarchical type of the object.
   late final pulumi.Output<String> type;
 
@@ -233,26 +229,15 @@ class MonitoringConfig extends pulumi.CustomResource {
     MonitoringConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:databoxedge:MonitoringConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:databoxedge:MonitoringConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    metricConfigurations = registerOutput<List<Map<String, dynamic>>>(
-      'metricConfigurations',
-    );
+    metricConfigurations = registerOutput<List<Map<String, dynamic>>>('metricConfigurations');
     this.name = registerOutput<String>('name');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

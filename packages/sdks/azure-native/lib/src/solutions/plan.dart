@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Plan {
   /// The plan name.
   final pulumi.Input<String> name;
-
   /// The product code.
   final pulumi.Input<String> product;
-
   /// The promotion code.
   final pulumi.Input<String>? promotionCode;
-
   /// The publisher ID.
   final pulumi.Input<String> publisher;
-
   /// The plan's version.
   final pulumi.Input<String> version;
 
@@ -47,13 +43,10 @@ class Plan {
     return Plan(
       name: pulumi.Input.fromValue(map['name'] as String),
       product: pulumi.Input.fromValue(map['product'] as String),
-      promotionCode: (() {
-        final guardedValue = map['promotionCode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      promotionCode: (() { final guardedValue = map['promotionCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       publisher: pulumi.Input.fromValue(map['publisher'] as String),
       version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
+

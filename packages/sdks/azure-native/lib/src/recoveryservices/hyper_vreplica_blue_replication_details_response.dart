@@ -8,28 +8,20 @@ import 'vmnic_details_response.dart';
 /// HyperV replica 2012 R2 (Blue) replication details.
 class HyperVReplicaBlueReplicationDetailsResponse {
   /// Initial replication details.
-  final pulumi.Input<InitialReplicationDetailsResponse>?
-  initialReplicationDetails;
-
+  final pulumi.Input<InitialReplicationDetailsResponse>? initialReplicationDetails;
   /// Gets the Instance type.
   /// Expected value is 'HyperVReplica2012R2'.
   final pulumi.Input<String> instanceType;
-
   /// The Last replication time.
   final pulumi.Input<String>? lastReplicatedTime;
-
   /// VM disk details.
   final pulumi.Input<List<DiskDetailsResponse>>? vMDiskDetails;
-
   /// The virtual machine Id.
   final pulumi.Input<String>? vmId;
-
   /// The PE Network details.
   final pulumi.Input<List<VMNicDetailsResponse>>? vmNics;
-
   /// The protection state for the vm.
   final pulumi.Input<String>? vmProtectionState;
-
   /// The protection state description for the vm.
   final pulumi.Input<String>? vmProtectionStateDescription;
 
@@ -55,101 +47,28 @@ class HyperVReplicaBlueReplicationDetailsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'initialReplicationDetails':
-          ?pulumi.Input.mapOptionalInputValue<
-            InitialReplicationDetailsResponse,
-            Map<String, dynamic>
-          >(initialReplicationDetails, (value) => value.toMap()),
+      'initialReplicationDetails': ?pulumi.Input.mapOptionalInputValue<InitialReplicationDetailsResponse, Map<String, dynamic>>(initialReplicationDetails, (value) => value.toMap()),
       'instanceType': instanceType,
       'lastReplicatedTime': ?lastReplicatedTime,
-      'vMDiskDetails':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<DiskDetailsResponse>,
-            List<Map<String, dynamic>>
-          >(
-            vMDiskDetails,
-            (value) =>
-                pulumi.Input.encodeList<
-                  DiskDetailsResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'vMDiskDetails': ?pulumi.Input.mapOptionalInputValue<List<DiskDetailsResponse>, List<Map<String, dynamic>>>(vMDiskDetails, (value) => pulumi.Input.encodeList<DiskDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'vmId': ?vmId,
-      'vmNics':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<VMNicDetailsResponse>,
-            List<Map<String, dynamic>>
-          >(
-            vmNics,
-            (value) =>
-                pulumi.Input.encodeList<
-                  VMNicDetailsResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'vmNics': ?pulumi.Input.mapOptionalInputValue<List<VMNicDetailsResponse>, List<Map<String, dynamic>>>(vmNics, (value) => pulumi.Input.encodeList<VMNicDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'vmProtectionState': ?vmProtectionState,
       'vmProtectionStateDescription': ?vmProtectionStateDescription,
     };
   }
 
-  factory HyperVReplicaBlueReplicationDetailsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory HyperVReplicaBlueReplicationDetailsResponse.fromMap(Map<String, dynamic> map) {
     return HyperVReplicaBlueReplicationDetailsResponse(
-      initialReplicationDetails: (() {
-        final guardedValue = map['initialReplicationDetails'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          InitialReplicationDetailsResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      initialReplicationDetails: (() { final guardedValue = map['initialReplicationDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InitialReplicationDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
-      lastReplicatedTime: (() {
-        final guardedValue = map['lastReplicatedTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      vMDiskDetails: (() {
-        final guardedValue = map['vMDiskDetails'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<DiskDetailsResponse>(
-            guardedValue,
-            (value) => DiskDetailsResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      vmId: (() {
-        final guardedValue = map['vmId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      vmNics: (() {
-        final guardedValue = map['vmNics'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<VMNicDetailsResponse>(
-            guardedValue,
-            (value) => VMNicDetailsResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      vmProtectionState: (() {
-        final guardedValue = map['vmProtectionState'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      vmProtectionStateDescription: (() {
-        final guardedValue = map['vmProtectionStateDescription'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      lastReplicatedTime: (() { final guardedValue = map['lastReplicatedTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      vMDiskDetails: (() { final guardedValue = map['vMDiskDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DiskDetailsResponse>(guardedValue, (value) => DiskDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      vmId: (() { final guardedValue = map['vmId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      vmNics: (() { final guardedValue = map['vmNics']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VMNicDetailsResponse>(guardedValue, (value) => VMNicDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      vmProtectionState: (() { final guardedValue = map['vmProtectionState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      vmProtectionStateDescription: (() { final guardedValue = map['vmProtectionStateDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

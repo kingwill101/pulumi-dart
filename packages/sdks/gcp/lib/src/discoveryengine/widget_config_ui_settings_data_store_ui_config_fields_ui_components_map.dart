@@ -5,14 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMap {
   /// Each value may be one of: `MOBILE`, `DESKTOP`.
   final pulumi.Input<List<String>>? deviceVisibilities;
-
   /// The template to customize how the field is displayed.
   /// An example value would be a string that looks like: "Price: {value}".
   final pulumi.Input<String>? displayTemplate;
-
   /// Registered field name. The format is `field.abc`.
   final pulumi.Input<String> field;
-
   /// The identifier for this object. Format specified above.
   final pulumi.Input<String> uiComponent;
 
@@ -37,22 +34,13 @@ class WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMap {
     };
   }
 
-  factory WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMap.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMap.fromMap(Map<String, dynamic> map) {
     return WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMap(
-      deviceVisibilities: (() {
-        final guardedValue = map['deviceVisibilities'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      displayTemplate: (() {
-        final guardedValue = map['displayTemplate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      deviceVisibilities: (() { final guardedValue = map['deviceVisibilities']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      displayTemplate: (() { final guardedValue = map['displayTemplate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       field: pulumi.Input.fromValue(map['field'] as String),
       uiComponent: pulumi.Input.fromValue(map['uiComponent'] as String),
     );
   }
 }
+

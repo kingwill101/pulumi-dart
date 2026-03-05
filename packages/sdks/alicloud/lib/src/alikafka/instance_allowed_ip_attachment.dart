@@ -392,13 +392,10 @@ import 'instance_allowed_ip_attachment_state.dart';
 class InstanceAllowedIpAttachment extends pulumi.CustomResource {
   /// The IP address whitelist. It can be a CIDR block.
   late final pulumi.Output<String> allowedIp;
-
   /// The type of the whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
   late final pulumi.Output<String> allowedType;
-
   /// The ID of the instance.
   late final pulumi.Output<String> instanceId;
-
   /// The Port range. Valid Value: `9092/9092`, `9093/9093`, `9094/9094`, `9095/9095`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`. From version 1.219.0, `port_range` can be set to `9094/9094`, `9095/9095`.
   /// - `9092/9092`: The port range for access from virtual private clouds (VPCs) by using the default endpoint.
   /// - `9093/9093`: The port range for access from the Internet.
@@ -415,11 +412,11 @@ class InstanceAllowedIpAttachment extends pulumi.CustomResource {
     InstanceAllowedIpAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:alikafka/instanceAllowedIpAttachment:InstanceAllowedIpAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:alikafka/instanceAllowedIpAttachment:InstanceAllowedIpAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allowedIp = registerOutput<String>('allowedIp');
     allowedType = registerOutput<String>('allowedType');
     instanceId = registerOutput<String>('instanceId');
@@ -444,11 +441,11 @@ class InstanceAllowedIpAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:alikafka/instanceAllowedIpAttachment:InstanceAllowedIpAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:alikafka/instanceAllowedIpAttachment:InstanceAllowedIpAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allowedIp = registerOutput<String>('allowedIp');
     allowedType = registerOutput<String>('allowedType');
     instanceId = registerOutput<String>('instanceId');

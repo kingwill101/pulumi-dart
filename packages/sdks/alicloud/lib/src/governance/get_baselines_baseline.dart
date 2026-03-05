@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBaselinesBaseline {
   /// Baseline ID
   final pulumi.Input<String> baselineId;
-
   /// Baseline Name.
   final pulumi.Input<String> baselineName;
-
   /// Baseline Description.
   final pulumi.Input<String> description;
 
@@ -38,3 +36,4 @@ class GetBaselinesBaseline {
     );
   }
 }
+

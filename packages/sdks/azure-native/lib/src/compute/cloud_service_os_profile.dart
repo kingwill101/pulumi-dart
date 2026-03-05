@@ -10,39 +10,20 @@ class CloudServiceOsProfile {
 
   /// Creates a new [CloudServiceOsProfile].
   /// [secrets] Specifies set of certificates that should be installed onto the role instances.
-  CloudServiceOsProfile({this.secrets});
+  CloudServiceOsProfile({
+    this.secrets,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'secrets':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<CloudServiceVaultSecretGroup>,
-            List<Map<String, dynamic>>
-          >(
-            secrets,
-            (value) =>
-                pulumi.Input.encodeList<
-                  CloudServiceVaultSecretGroup,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'secrets': ?pulumi.Input.mapOptionalInputValue<List<CloudServiceVaultSecretGroup>, List<Map<String, dynamic>>>(secrets, (value) => pulumi.Input.encodeList<CloudServiceVaultSecretGroup, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory CloudServiceOsProfile.fromMap(Map<String, dynamic> map) {
     return CloudServiceOsProfile(
-      secrets: (() {
-        final guardedValue = map['secrets'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<CloudServiceVaultSecretGroup>(
-            guardedValue,
-            (value) => CloudServiceVaultSecretGroup.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      secrets: (() { final guardedValue = map['secrets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CloudServiceVaultSecretGroup>(guardedValue, (value) => CloudServiceVaultSecretGroup.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

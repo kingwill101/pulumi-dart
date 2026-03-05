@@ -15,3 +15,4 @@ enum ApprovalPolicy {
     throw ArgumentError('Unknown ApprovalPolicy value: $value');
   }
 }
+

@@ -10,12 +10,10 @@ class AppVersionSnapshotToolOpenApiToolApiAuthenticationApiKeyConfig {
   /// service agent
   /// `service-@gcp-sa-ces.iam.gserviceaccount.com`.
   final pulumi.Input<String>? apiKeySecretVersion;
-
   /// (Output)
   /// The parameter name or the header name of the API key.
   /// E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
   final pulumi.Input<String>? keyName;
-
   /// (Output)
   /// Key location in the request.
   /// Possible values:
@@ -41,25 +39,12 @@ class AppVersionSnapshotToolOpenApiToolApiAuthenticationApiKeyConfig {
     };
   }
 
-  factory AppVersionSnapshotToolOpenApiToolApiAuthenticationApiKeyConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppVersionSnapshotToolOpenApiToolApiAuthenticationApiKeyConfig.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolOpenApiToolApiAuthenticationApiKeyConfig(
-      apiKeySecretVersion: (() {
-        final guardedValue = map['apiKeySecretVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keyName: (() {
-        final guardedValue = map['keyName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      requestLocation: (() {
-        final guardedValue = map['requestLocation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      apiKeySecretVersion: (() { final guardedValue = map['apiKeySecretVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyName: (() { final guardedValue = map['keyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      requestLocation: (() { final guardedValue = map['requestLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

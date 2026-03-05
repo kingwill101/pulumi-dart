@@ -20,3 +20,4 @@ enum TapRuleActionType {
     throw ArgumentError('Unknown TapRuleActionType value: $value');
   }
 }
+

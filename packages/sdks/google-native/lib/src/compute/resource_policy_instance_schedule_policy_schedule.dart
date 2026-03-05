@@ -9,21 +9,20 @@ class ResourcePolicyInstanceSchedulePolicySchedule {
 
   /// Creates a new [ResourcePolicyInstanceSchedulePolicySchedule].
   /// [schedule] Specifies the frequency for the operation, using the unix-cron format.
-  ResourcePolicyInstanceSchedulePolicySchedule({this.schedule});
+  ResourcePolicyInstanceSchedulePolicySchedule({
+    this.schedule,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'schedule': ?schedule};
+    return <String, dynamic>{
+      'schedule': ?schedule,
+    };
   }
 
-  factory ResourcePolicyInstanceSchedulePolicySchedule.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResourcePolicyInstanceSchedulePolicySchedule.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyInstanceSchedulePolicySchedule(
-      schedule: (() {
-        final guardedValue = map['schedule'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      schedule: (() { final guardedValue = map['schedule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

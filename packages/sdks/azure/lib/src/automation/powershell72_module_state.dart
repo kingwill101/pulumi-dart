@@ -7,13 +7,10 @@ import 'powershell72_module_module_link.dart';
 class Powershell72ModuleState {
   /// The ID of Automation Account to manage this Watcher. Changing this forces a new Watcher to be created.
   final pulumi.Input<String>? automationAccountId;
-
   /// A `module_link` block as defined below.
   final pulumi.Input<Powershell72ModuleModuleLink>? moduleLink;
-
   /// Specifies the name of the Module. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -32,11 +29,7 @@ class Powershell72ModuleState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'automationAccountId': ?automationAccountId,
-      'moduleLink':
-          ?pulumi.Input.mapOptionalInputValue<
-            Powershell72ModuleModuleLink,
-            Map<String, dynamic>
-          >(moduleLink, (value) => value.toMap()),
+      'moduleLink': ?pulumi.Input.mapOptionalInputValue<Powershell72ModuleModuleLink, Map<String, dynamic>>(moduleLink, (value) => value.toMap()),
       'name': ?name,
       'tags': ?tags,
     };
@@ -44,32 +37,11 @@ class Powershell72ModuleState {
 
   factory Powershell72ModuleState.fromMap(Map<String, dynamic> map) {
     return Powershell72ModuleState(
-      automationAccountId: (() {
-        final guardedValue = map['automationAccountId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      moduleLink: (() {
-        final guardedValue = map['moduleLink'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          Powershell72ModuleModuleLink.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      automationAccountId: (() { final guardedValue = map['automationAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      moduleLink: (() { final guardedValue = map['moduleLink']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Powershell72ModuleModuleLink.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

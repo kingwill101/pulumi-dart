@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccountSASResourceTypes {
   /// Should permission be granted to the container?
   final pulumi.Input<bool> container;
-
   /// Should permission be granted only to a specific object?
   final pulumi.Input<bool> object_;
-
   /// Should permission be granted to the entire service?
   final pulumi.Input<bool> service;
 
@@ -38,3 +36,4 @@ class GetAccountSASResourceTypes {
     );
   }
 }
+

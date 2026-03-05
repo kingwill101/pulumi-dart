@@ -6,15 +6,12 @@ class DomainMappingStatusCondition {
   /// (Output)
   /// Human readable message indicating details about the current status.
   final pulumi.Input<String>? message;
-
   /// (Output)
   /// One-word CamelCase reason for the condition's current status.
   final pulumi.Input<String>? reason;
-
   /// (Output)
   /// Status of the condition, one of True, False, Unknown.
   final pulumi.Input<String>? status;
-
   /// Resource record type. Example: `AAAA`.
   /// Possible values are: `A`, `AAAA`, `CNAME`.
   final pulumi.Input<String>? type;
@@ -42,26 +39,11 @@ class DomainMappingStatusCondition {
 
   factory DomainMappingStatusCondition.fromMap(Map<String, dynamic> map) {
     return DomainMappingStatusCondition(
-      message: (() {
-        final guardedValue = map['message'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      reason: (() {
-        final guardedValue = map['reason'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      message: (() { final guardedValue = map['message']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      reason: (() { final guardedValue = map['reason']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

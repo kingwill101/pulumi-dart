@@ -470,31 +470,22 @@ import 'contact_profile_state.dart';
 class ContactProfile extends pulumi.CustomResource {
   /// Auto-tracking configurations for a spacecraft. Possible values are `disabled`, `xBand` and `sBand`.
   late final pulumi.Output<String> autoTracking;
-
   /// ARM resource identifier of the Event Hub used for telemetry. Requires granting Orbital Resource Provider the rights to send telemetry into the hub.
   late final pulumi.Output<String?> eventHubUri;
-
   /// A list of spacecraft links. A `links` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<List<Map<String, dynamic>>> links;
-
   /// The location where the contact profile exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// Maximum elevation of the antenna during the contact in decimal degrees.
   late final pulumi.Output<double?> minimumElevationDegrees;
-
   /// Minimum viable contact duration in ISO 8601 format. Used for listing the available contacts with a spacecraft at a given ground station.
   late final pulumi.Output<String> minimumVariableContactDuration;
-
   /// The name of the contact profile. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// ARM resource identifier of the subnet delegated to the Microsoft.Orbital/orbitalGateways. Needs to be at least a class C subnet, and should not have any IP created in it. Changing this forces a new resource to be created.
   late final pulumi.Output<String> networkConfigurationSubnetId;
-
   /// The name of the Resource Group where the contact profile exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -507,25 +498,19 @@ class ContactProfile extends pulumi.CustomResource {
     ContactProfileArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:orbital/contactProfile:ContactProfile',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:orbital/contactProfile:ContactProfile',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoTracking = registerOutput<String>('autoTracking');
     eventHubUri = registerOutput<String?>('eventHubUri');
     links = registerOutput<List<Map<String, dynamic>>>('links');
     location = registerOutput<String>('location');
-    minimumElevationDegrees = registerOutput<double?>(
-      'minimumElevationDegrees',
-    );
-    minimumVariableContactDuration = registerOutput<String>(
-      'minimumVariableContactDuration',
-    );
+    minimumElevationDegrees = registerOutput<double?>('minimumElevationDegrees');
+    minimumVariableContactDuration = registerOutput<String>('minimumVariableContactDuration');
     this.name = registerOutput<String>('name');
-    networkConfigurationSubnetId = registerOutput<String>(
-      'networkConfigurationSubnetId',
-    );
+    networkConfigurationSubnetId = registerOutput<String>('networkConfigurationSubnetId');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     tags = registerOutput<Map<String, String>?>('tags');
   }
@@ -548,25 +533,19 @@ class ContactProfile extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:orbital/contactProfile:ContactProfile',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:orbital/contactProfile:ContactProfile',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoTracking = registerOutput<String>('autoTracking');
     eventHubUri = registerOutput<String?>('eventHubUri');
     links = registerOutput<List<Map<String, dynamic>>>('links');
     location = registerOutput<String>('location');
-    minimumElevationDegrees = registerOutput<double?>(
-      'minimumElevationDegrees',
-    );
-    minimumVariableContactDuration = registerOutput<String>(
-      'minimumVariableContactDuration',
-    );
+    minimumElevationDegrees = registerOutput<double?>('minimumElevationDegrees');
+    minimumVariableContactDuration = registerOutput<String>('minimumVariableContactDuration');
     this.name = registerOutput<String>('name');
-    networkConfigurationSubnetId = registerOutput<String>(
-      'networkConfigurationSubnetId',
-    );
+    networkConfigurationSubnetId = registerOutput<String>('networkConfigurationSubnetId');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     tags = registerOutput<Map<String, String>?>('tags');
   }

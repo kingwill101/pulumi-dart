@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CostAllocationTagState {
   /// The status of a cost allocation tag. Valid values are `Active` and `Inactive`.
   final pulumi.Input<String>? status;
-
   /// The key for the cost allocation tag.
   final pulumi.Input<String>? tagKey;
-
   /// The type of cost allocation tag.
   final pulumi.Input<String>? type;
 
@@ -17,7 +15,11 @@ class CostAllocationTagState {
   /// [status] The status of a cost allocation tag. Valid values are `Active` and `Inactive`.
   /// [tagKey] The key for the cost allocation tag.
   /// [type] The type of cost allocation tag.
-  CostAllocationTagState({this.status, this.tagKey, this.type});
+  CostAllocationTagState({
+    this.status,
+    this.tagKey,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class CostAllocationTagState {
 
   factory CostAllocationTagState.fromMap(Map<String, dynamic> map) {
     return CostAllocationTagState(
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tagKey: (() {
-        final guardedValue = map['tagKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tagKey: (() { final guardedValue = map['tagKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

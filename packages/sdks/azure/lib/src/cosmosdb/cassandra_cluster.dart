@@ -21,45 +21,32 @@ import 'cassandra_cluster_state.dart';
 class CassandraCluster extends pulumi.CustomResource {
   /// The authentication method that is used to authenticate clients. Possible values are `None` and `Cassandra`. Defaults to `Cassandra`.
   late final pulumi.Output<String?> authenticationMethod;
-
   /// A list of TLS certificates that is used to authorize client connecting to the Cassandra Cluster.
   late final pulumi.Output<List<String>?> clientCertificatePems;
-
   /// The initial admin password for this Cassandra Cluster. Changing this forces a new resource to be created.
   late final pulumi.Output<String> defaultAdminPassword;
-
   /// The ID of the delegated management subnet for this Cassandra Cluster. Changing this forces a new Cassandra Cluster to be created.
   late final pulumi.Output<String> delegatedManagementSubnetId;
-
   /// A list of TLS certificates that is used to authorize gossip from unmanaged Cassandra Data Center.
   late final pulumi.Output<List<String>?> externalGossipCertificatePems;
-
   /// A list of IP Addresses of the seed nodes in unmanaged the Cassandra Data Center which will be added to the seed node lists of all managed nodes.
   late final pulumi.Output<List<String>?> externalSeedNodeIpAddresses;
-
   /// The number of hours to wait between taking a backup of the Cassandra Cluster. Defaults to `24`.
   ///
   /// &gt; **Note:** To disable this feature, set this property to `0`.
   late final pulumi.Output<int?> hoursBetweenBackups;
-
   /// An `identity` block as defined below.
   late final pulumi.Output<CassandraClusterIdentity?> identity;
-
   /// The Azure Region where the Cassandra Cluster should exist. Changing this forces a new Cassandra Cluster to be created.
   late final pulumi.Output<String> location;
-
   /// The name which should be used for this Cassandra Cluster. Changing this forces a new Cassandra Cluster to be created.
   late final pulumi.Output<String> name;
-
   /// Is the automatic repair enabled on the Cassandra Cluster? Defaults to `true`.
   late final pulumi.Output<bool?> repairEnabled;
-
   /// The name of the Resource Group where the Cassandra Cluster should exist. Changing this forces a new Cassandra Cluster to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags assigned to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The version of Cassandra what the Cluster converges to run. Possible values are `3.11`, `4.0`, `4.1` and `5.0`. Defaults to `3.11`. Changing this forces a new Cassandra Cluster to be created.
   late final pulumi.Output<String?> version;
 
@@ -72,36 +59,19 @@ class CassandraCluster extends pulumi.CustomResource {
     CassandraClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:cosmosdb/cassandraCluster:CassandraCluster',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:cosmosdb/cassandraCluster:CassandraCluster',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     authenticationMethod = registerOutput<String?>('authenticationMethod');
-    clientCertificatePems = registerOutput<List<String>?>(
-      'clientCertificatePems',
-    );
+    clientCertificatePems = registerOutput<List<String>?>('clientCertificatePems');
     defaultAdminPassword = registerOutput<String>('defaultAdminPassword');
-    delegatedManagementSubnetId = registerOutput<String>(
-      'delegatedManagementSubnetId',
-    );
-    externalGossipCertificatePems = registerOutput<List<String>?>(
-      'externalGossipCertificatePems',
-    );
-    externalSeedNodeIpAddresses = registerOutput<List<String>?>(
-      'externalSeedNodeIpAddresses',
-    );
+    delegatedManagementSubnetId = registerOutput<String>('delegatedManagementSubnetId');
+    externalGossipCertificatePems = registerOutput<List<String>?>('externalGossipCertificatePems');
+    externalSeedNodeIpAddresses = registerOutput<List<String>?>('externalSeedNodeIpAddresses');
     hoursBetweenBackups = registerOutput<int?>('hoursBetweenBackups');
-    identity = registerOutput<CassandraClusterIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CassandraClusterIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<CassandraClusterIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CassandraClusterIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     repairEnabled = registerOutput<bool?>('repairEnabled');
@@ -128,36 +98,19 @@ class CassandraCluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:cosmosdb/cassandraCluster:CassandraCluster',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:cosmosdb/cassandraCluster:CassandraCluster',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     authenticationMethod = registerOutput<String?>('authenticationMethod');
-    clientCertificatePems = registerOutput<List<String>?>(
-      'clientCertificatePems',
-    );
+    clientCertificatePems = registerOutput<List<String>?>('clientCertificatePems');
     defaultAdminPassword = registerOutput<String>('defaultAdminPassword');
-    delegatedManagementSubnetId = registerOutput<String>(
-      'delegatedManagementSubnetId',
-    );
-    externalGossipCertificatePems = registerOutput<List<String>?>(
-      'externalGossipCertificatePems',
-    );
-    externalSeedNodeIpAddresses = registerOutput<List<String>?>(
-      'externalSeedNodeIpAddresses',
-    );
+    delegatedManagementSubnetId = registerOutput<String>('delegatedManagementSubnetId');
+    externalGossipCertificatePems = registerOutput<List<String>?>('externalGossipCertificatePems');
+    externalSeedNodeIpAddresses = registerOutput<List<String>?>('externalSeedNodeIpAddresses');
     hoursBetweenBackups = registerOutput<int?>('hoursBetweenBackups');
-    identity = registerOutput<CassandraClusterIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CassandraClusterIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<CassandraClusterIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CassandraClusterIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     repairEnabled = registerOutput<bool?>('repairEnabled');

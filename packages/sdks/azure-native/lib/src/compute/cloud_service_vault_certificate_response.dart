@@ -9,21 +9,20 @@ class CloudServiceVaultCertificateResponse {
 
   /// Creates a new [CloudServiceVaultCertificateResponse].
   /// [certificateUrl] This is the URL of a certificate that has been uploaded to Key Vault as a secret.
-  CloudServiceVaultCertificateResponse({this.certificateUrl});
+  CloudServiceVaultCertificateResponse({
+    this.certificateUrl,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'certificateUrl': ?certificateUrl};
+    return <String, dynamic>{
+      'certificateUrl': ?certificateUrl,
+    };
   }
 
-  factory CloudServiceVaultCertificateResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CloudServiceVaultCertificateResponse.fromMap(Map<String, dynamic> map) {
     return CloudServiceVaultCertificateResponse(
-      certificateUrl: (() {
-        final guardedValue = map['certificateUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      certificateUrl: (() { final guardedValue = map['certificateUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

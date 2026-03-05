@@ -7,18 +7,14 @@ import 'get_ssl_vpn_servers_server.dart';
 class GetSslVpnServersResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of SSL-VPN server IDs.
   final List<String> ids;
   final String? nameRegex;
-
   /// A list of SSL-VPN server names.
   final List<String> names;
   final String? outputFile;
-
   /// A list of SSL-VPN servers. Each element contains the following attributes:
   final List<GetSslVpnServersServer> servers;
-
   /// The ID of the VPN gateway instance.
   final String? vpnGatewayId;
 
@@ -47,11 +43,7 @@ class GetSslVpnServersResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'servers':
-          pulumi.Input.encodeList<GetSslVpnServersServer, Map<String, dynamic>>(
-            servers,
-            (value) => value.toMap(),
-          ),
+      'servers': pulumi.Input.encodeList<GetSslVpnServersServer, Map<String, dynamic>>(servers, (value) => value.toMap()),
       'vpnGatewayId': ?vpnGatewayId,
     };
   }
@@ -60,28 +52,12 @@ class GetSslVpnServersResult {
     return GetSslVpnServersResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      servers: pulumi.Input.decodeList<GetSslVpnServersServer>(
-        map['servers']!,
-        (value) => GetSslVpnServersServer.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      vpnGatewayId: (() {
-        final guardedValue = map['vpnGatewayId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      servers: pulumi.Input.decodeList<GetSslVpnServersServer>(map['servers']!, (value) => GetSslVpnServersServer.fromMap((value as Map).cast<String, dynamic>())),
+      vpnGatewayId: (() { final guardedValue = map['vpnGatewayId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

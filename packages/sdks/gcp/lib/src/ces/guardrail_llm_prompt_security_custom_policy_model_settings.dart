@@ -6,7 +6,6 @@ class GuardrailLlmPromptSecurityCustomPolicyModelSettings {
   /// The LLM model that the agent should use.
   /// If not set, the agent will inherit the model from its parent agent.
   final pulumi.Input<String>? model;
-
   /// If set, this temperature will be used for the LLM model. Temperature
   /// controls the randomness of the model's responses. Lower temperatures
   /// produce responses that are more predictable. Higher temperatures produce
@@ -22,23 +21,17 @@ class GuardrailLlmPromptSecurityCustomPolicyModelSettings {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'model': ?model, 'temperature': ?temperature};
+    return <String, dynamic>{
+      'model': ?model,
+      'temperature': ?temperature,
+    };
   }
 
-  factory GuardrailLlmPromptSecurityCustomPolicyModelSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GuardrailLlmPromptSecurityCustomPolicyModelSettings.fromMap(Map<String, dynamic> map) {
     return GuardrailLlmPromptSecurityCustomPolicyModelSettings(
-      model: (() {
-        final guardedValue = map['model'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      temperature: (() {
-        final guardedValue = map['temperature'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      model: (() { final guardedValue = map['model']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      temperature: (() { final guardedValue = map['temperature']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

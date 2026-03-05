@@ -10,17 +10,13 @@ class UserWorkloadsConfigMapArgs {
   /// The "data" field of Kubernetes ConfigMap, organized in key-value pairs.
   /// For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
   final pulumi.Input<Map<String, String>>? data;
-
   /// Environment where the Kubernetes ConfigMap will be stored and used.
   final pulumi.Input<String> environment;
-
   /// Name of the Kubernetes ConfigMap.
   final pulumi.Input<String>? name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The location or Compute Engine region for the environment.
   final pulumi.Input<String>? region;
 
@@ -50,29 +46,12 @@ class UserWorkloadsConfigMapArgs {
 
   factory UserWorkloadsConfigMapArgs.fromMap(Map<String, dynamic> map) {
     return UserWorkloadsConfigMapArgs(
-      data: (() {
-        final guardedValue = map['data'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      data: (() { final guardedValue = map['data']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       environment: pulumi.Input.fromValue(map['environment'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -9,43 +9,31 @@ import 'crypto_key_version_template_response.dart';
 class CryptoKey extends pulumi.CustomResource {
   /// The time at which this CryptoKey was created.
   late final pulumi.Output<String> createTime;
-
   /// Immutable. The resource name of the backend environment where the key material for all CryptoKeyVersions associated with this CryptoKey reside and where all related cryptographic operations are performed. Only applicable if CryptoKeyVersions have a ProtectionLevel of EXTERNAL_VPC, with the resource name in the format `projects/*/locations/*/ekmConnections/*`. Note, this list is non-exhaustive and may apply to additional ProtectionLevels in the future.
   late final pulumi.Output<String> cryptoKeyBackend;
-
   /// Required. It must be unique within a KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`
   late final pulumi.Output<String> cryptoKeyId;
-
   /// Immutable. The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED. If not specified at creation time, the default duration is 24 hours.
   late final pulumi.Output<String> destroyScheduledDuration;
-
   /// Immutable. Whether this key may contain imported versions only.
   late final pulumi.Output<bool> importOnly;
   late final pulumi.Output<String> keyRingId;
-
   /// Labels with user-defined metadata. For more information, see [Labeling Keys](https://cloud.google.com/kms/docs/labeling-keys).
   late final pulumi.Output<Map<String, String>> labels;
   late final pulumi.Output<String> location;
-
   /// The resource name for this CryptoKey in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
   late final pulumi.Output<String> name;
-
   /// At next_rotation_time, the Key Management Service will automatically: 1. Create a new version of this CryptoKey. 2. Mark the new version as primary. Key rotations performed manually via CreateCryptoKeyVersion and UpdateCryptoKeyPrimaryVersion do not affect next_rotation_time. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
   late final pulumi.Output<String> nextRotationTime;
-
   /// A copy of the "primary" CryptoKeyVersion that will be used by Encrypt when this CryptoKey is given in EncryptRequest.name. The CryptoKey's primary version can be updated via UpdateCryptoKeyPrimaryVersion. Keys with purpose ENCRYPT_DECRYPT may have a primary. For other keys, this field will be omitted.
   late final pulumi.Output<CryptoKeyVersionResponse> primary;
   late final pulumi.Output<String> project;
-
   /// Immutable. The immutable purpose of this CryptoKey.
   late final pulumi.Output<String> purpose;
-
   /// next_rotation_time will be advanced by this period when the service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours. If rotation_period is set, next_rotation_time must also be set. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
   late final pulumi.Output<String> rotationPeriod;
-
   /// If set to true, the request will create a CryptoKey without any CryptoKeyVersions. You must manually call CreateCryptoKeyVersion or ImportCryptoKeyVersion before you can use this CryptoKey.
   late final pulumi.Output<bool?> skipInitialVersionCreation;
-
   /// A template describing settings for new CryptoKeyVersion instances. The properties of new CryptoKeyVersion instances created by either CreateCryptoKeyVersion or auto-rotation are controlled by this template.
   late final pulumi.Output<CryptoKeyVersionTemplateResponse> versionTemplate;
 
@@ -58,48 +46,26 @@ class CryptoKey extends pulumi.CustomResource {
     CryptoKeyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'google-native:cloudkms/v1:CryptoKey',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'google-native:cloudkms/v1:CryptoKey',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     cryptoKeyBackend = registerOutput<String>('cryptoKeyBackend');
     cryptoKeyId = registerOutput<String>('cryptoKeyId');
-    destroyScheduledDuration = registerOutput<String>(
-      'destroyScheduledDuration',
-    );
+    destroyScheduledDuration = registerOutput<String>('destroyScheduledDuration');
     importOnly = registerOutput<bool>('importOnly');
     keyRingId = registerOutput<String>('keyRingId');
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     nextRotationTime = registerOutput<String>('nextRotationTime');
-    primary = registerOutput<CryptoKeyVersionResponse>(
-      'primary',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CryptoKeyVersionResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    primary = registerOutput<CryptoKeyVersionResponse>('primary', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CryptoKeyVersionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     purpose = registerOutput<String>('purpose');
     rotationPeriod = registerOutput<String>('rotationPeriod');
-    skipInitialVersionCreation = registerOutput<bool?>(
-      'skipInitialVersionCreation',
-    );
-    versionTemplate = registerOutput<CryptoKeyVersionTemplateResponse>(
-      'versionTemplate',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CryptoKeyVersionTemplateResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    skipInitialVersionCreation = registerOutput<bool?>('skipInitialVersionCreation');
+    versionTemplate = registerOutput<CryptoKeyVersionTemplateResponse>('versionTemplate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CryptoKeyVersionTemplateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

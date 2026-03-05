@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectionCloudSpanner {
   /// Cloud Spanner database in the form `project/instance/database'.
   final pulumi.Input<String> database;
-
   /// Cloud Spanner database role for fine-grained access control. The Cloud Spanner admin should have provisioned the database role with appropriate permissions, such as `SELECT` and `INSERT`. Other users should only use roles provided by their Cloud Spanner admins. The database role name must start with a letter, and can only contain letters, numbers, and underscores. For more details, see https://cloud.google.com/spanner/docs/fgac-about.
   final pulumi.Input<String>? databaseRole;
-
   /// Allows setting max parallelism per query when executing on Spanner independent compute resources. If unspecified, default values of parallelism are chosen that are dependent on the Cloud Spanner instance configuration. `useParallelism` and `useDataBoost` must be set when setting max parallelism.
   final pulumi.Input<int>? maxParallelism;
-
   /// If set, the request will be executed via Spanner independent compute resources. `use_parallelism` must be set when using data boost.
   final pulumi.Input<bool>? useDataBoost;
-
   /// If parallelism should be used when reading from Cloud Spanner.
   final pulumi.Input<bool>? useParallelism;
-
   /// (Optional, Deprecated)
   /// If the serverless analytics service should be used to read data from Cloud Spanner. `useParallelism` must be set when using serverless analytics.
   ///
@@ -54,31 +49,12 @@ class ConnectionCloudSpanner {
   factory ConnectionCloudSpanner.fromMap(Map<String, dynamic> map) {
     return ConnectionCloudSpanner(
       database: pulumi.Input.fromValue(map['database'] as String),
-      databaseRole: (() {
-        final guardedValue = map['databaseRole'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      maxParallelism: (() {
-        final guardedValue = map['maxParallelism'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      useDataBoost: (() {
-        final guardedValue = map['useDataBoost'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      useParallelism: (() {
-        final guardedValue = map['useParallelism'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      useServerlessAnalytics: (() {
-        final guardedValue = map['useServerlessAnalytics'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      databaseRole: (() { final guardedValue = map['databaseRole']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      maxParallelism: (() { final guardedValue = map['maxParallelism']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      useDataBoost: (() { final guardedValue = map['useDataBoost']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      useParallelism: (() { final guardedValue = map['useParallelism']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      useServerlessAnalytics: (() { final guardedValue = map['useServerlessAnalytics']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

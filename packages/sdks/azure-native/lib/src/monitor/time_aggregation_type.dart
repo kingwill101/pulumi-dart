@@ -19,3 +19,4 @@ enum TimeAggregationType {
     throw ArgumentError('Unknown TimeAggregationType value: $value');
   }
 }
+

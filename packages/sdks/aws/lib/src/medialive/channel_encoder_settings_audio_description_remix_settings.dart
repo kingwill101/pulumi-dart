@@ -4,10 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'channel_encoder_settings_audio_description_remix_settings_channel_mapping.dart';
 
 class ChannelEncoderSettingsAudioDescriptionRemixSettings {
-  final pulumi.Input<
-    List<ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMapping>
-  >
-  channelMappings;
+  final pulumi.Input<List<ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMapping>> channelMappings;
   final pulumi.Input<int>? channelsIn;
   final pulumi.Input<int>? channelsOut;
 
@@ -23,50 +20,18 @@ class ChannelEncoderSettingsAudioDescriptionRemixSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'channelMappings':
-          pulumi.Input.mapInputValue<
-            List<
-              ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMapping
-            >,
-            List<Map<String, dynamic>>
-          >(
-            channelMappings,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMapping,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'channelMappings': pulumi.Input.mapInputValue<List<ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMapping>, List<Map<String, dynamic>>>(channelMappings, (value) => pulumi.Input.encodeList<ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMapping, Map<String, dynamic>>(value, (value) => value.toMap())),
       'channelsIn': ?channelsIn,
       'channelsOut': ?channelsOut,
     };
   }
 
-  factory ChannelEncoderSettingsAudioDescriptionRemixSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ChannelEncoderSettingsAudioDescriptionRemixSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsAudioDescriptionRemixSettings(
-      channelMappings: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMapping
-        >(
-          map['channelMappings']!,
-          (value) =>
-              ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMapping.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
-      channelsIn: (() {
-        final guardedValue = map['channelsIn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      channelsOut: (() {
-        final guardedValue = map['channelsOut'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      channelMappings: pulumi.Input.fromValue(pulumi.Input.decodeList<ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMapping>(map['channelMappings']!, (value) => ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMapping.fromMap((value as Map).cast<String, dynamic>()))),
+      channelsIn: (() { final guardedValue = map['channelsIn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      channelsOut: (() { final guardedValue = map['channelsOut']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

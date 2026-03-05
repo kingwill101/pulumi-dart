@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceHybridDoubleWriteArgs {
   /// Target Namespace.
   final pulumi.Input<String> namespace;
-
   /// Source Namespace.
   final pulumi.Input<String> sourceNamespace;
-
   /// Source UserId.
   final pulumi.Input<String> sourceUserId;
-
   /// Target UserId.
   final pulumi.Input<String> userId;
 
@@ -49,3 +46,4 @@ class ServiceHybridDoubleWriteArgs {
     );
   }
 }
+

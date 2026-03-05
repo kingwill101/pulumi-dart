@@ -6,46 +6,32 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SynchronizationDetailsResponse {
   /// Id of data set
   final pulumi.Input<String> dataSetId;
-
   /// Type of the data set
   final pulumi.Input<String> dataSetType;
-
   /// Duration of data set level copy
   final pulumi.Input<int> durationMs;
-
   /// End time of data set level copy
   final pulumi.Input<String> endTime;
-
   /// The number of files read from the source data set
   final pulumi.Input<double> filesRead;
-
   /// The number of files written into the sink data set
   final pulumi.Input<double> filesWritten;
-
   /// Error message if any
   final pulumi.Input<String> message;
-
   /// Name of the data set
   final pulumi.Input<String> name;
-
   /// The number of files copied into the sink data set
   final pulumi.Input<double> rowsCopied;
-
   /// The number of rows read from the source data set.
   final pulumi.Input<double> rowsRead;
-
   /// The size of the data read from the source data set in bytes
   final pulumi.Input<double> sizeRead;
-
   /// The size of the data written into the sink data set in bytes
   final pulumi.Input<double> sizeWritten;
-
   /// Start time of data set level copy
   final pulumi.Input<String> startTime;
-
   /// Raw Status
   final pulumi.Input<String> status;
-
   /// The vCore units consumed for the data set synchronization
   final pulumi.Input<double> vCore;
 
@@ -123,3 +109,4 @@ class SynchronizationDetailsResponse {
     );
   }
 }
+

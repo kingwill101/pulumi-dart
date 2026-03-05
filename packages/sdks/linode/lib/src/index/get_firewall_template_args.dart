@@ -12,10 +12,14 @@ class GetFirewallTemplateArgs {
 
   /// Creates a new [GetFirewallTemplateArgs].
   /// [slug] The slug of the firewall template.
-  GetFirewallTemplateArgs({required this.slug});
+  GetFirewallTemplateArgs({
+    required this.slug,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'slug': slug};
+    return <String, dynamic>{
+      'slug': slug,
+    };
   }
 
   factory GetFirewallTemplateArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetFirewallTemplateArgs {
     );
   }
 }
+

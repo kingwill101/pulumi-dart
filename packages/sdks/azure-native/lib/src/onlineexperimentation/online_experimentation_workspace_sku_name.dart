@@ -14,8 +14,7 @@ enum OnlineExperimentationWorkspaceSkuName {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown OnlineExperimentationWorkspaceSkuName value: $value',
-    );
+    throw ArgumentError('Unknown OnlineExperimentationWorkspaceSkuName value: $value');
   }
 }
+

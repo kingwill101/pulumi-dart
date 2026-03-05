@@ -14,62 +14,34 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
   /// - install: `apt-get update && apt-get -y install [name]`
   /// - remove: `apt-get -y remove [name]`
   /// Structure is documented below.
-  final pulumi.Input<
-    V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgApt
-  >?
-  apt;
-
+  final pulumi.Input<V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgApt>? apt;
   /// A deb package file. dpkg packages only support INSTALLED state.
   /// Structure is documented below.
-  final pulumi.Input<
-    V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDeb
-  >?
-  deb;
-
+  final pulumi.Input<V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDeb>? deb;
   /// The desired state the agent should maintain for this package.
   /// Possible values are: `INSTALLED`, `REMOVED`.
   final pulumi.Input<String> desiredState;
-
   /// A package managed by GooGet.
   /// - install: `googet -noconfirm install package`
   /// - remove: `googet -noconfirm remove package`
   /// Structure is documented below.
-  final pulumi.Input<
-    V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGooget
-  >?
-  googet;
-
+  final pulumi.Input<V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGooget>? googet;
   /// An MSI package. MSI packages only support INSTALLED state.
   /// Structure is documented below.
-  final pulumi.Input<
-    V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsi
-  >?
-  msi;
-
+  final pulumi.Input<V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsi>? msi;
   /// An RPM package file. RPM packages only support INSTALLED state.
   /// Structure is documented below.
-  final pulumi.Input<
-    V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpm
-  >?
-  rpm;
-
+  final pulumi.Input<V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpm>? rpm;
   /// A package managed by YUM.
   /// - install: `yum -y install package`
   /// - remove: `yum -y remove package`
   /// Structure is documented below.
-  final pulumi.Input<
-    V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYum
-  >?
-  yum;
-
+  final pulumi.Input<V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYum>? yum;
   /// A package managed by Zypper.
   /// - install: `zypper -y install package`
   /// - remove: `zypper -y rm package`
   /// Structure is documented below.
-  final pulumi.Input<
-    V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypper
-  >?
-  zypper;
+  final pulumi.Input<V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypper>? zypper;
 
   /// Creates a new [V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkg].
   /// [apt] A package managed by APT.
@@ -93,113 +65,28 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'apt':
-          ?pulumi.Input.mapOptionalInputValue<
-            V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgApt,
-            Map<String, dynamic>
-          >(apt, (value) => value.toMap()),
-      'deb':
-          ?pulumi.Input.mapOptionalInputValue<
-            V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDeb,
-            Map<String, dynamic>
-          >(deb, (value) => value.toMap()),
+      'apt': ?pulumi.Input.mapOptionalInputValue<V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgApt, Map<String, dynamic>>(apt, (value) => value.toMap()),
+      'deb': ?pulumi.Input.mapOptionalInputValue<V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDeb, Map<String, dynamic>>(deb, (value) => value.toMap()),
       'desiredState': desiredState,
-      'googet':
-          ?pulumi.Input.mapOptionalInputValue<
-            V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGooget,
-            Map<String, dynamic>
-          >(googet, (value) => value.toMap()),
-      'msi':
-          ?pulumi.Input.mapOptionalInputValue<
-            V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsi,
-            Map<String, dynamic>
-          >(msi, (value) => value.toMap()),
-      'rpm':
-          ?pulumi.Input.mapOptionalInputValue<
-            V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpm,
-            Map<String, dynamic>
-          >(rpm, (value) => value.toMap()),
-      'yum':
-          ?pulumi.Input.mapOptionalInputValue<
-            V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYum,
-            Map<String, dynamic>
-          >(yum, (value) => value.toMap()),
-      'zypper':
-          ?pulumi.Input.mapOptionalInputValue<
-            V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypper,
-            Map<String, dynamic>
-          >(zypper, (value) => value.toMap()),
+      'googet': ?pulumi.Input.mapOptionalInputValue<V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGooget, Map<String, dynamic>>(googet, (value) => value.toMap()),
+      'msi': ?pulumi.Input.mapOptionalInputValue<V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsi, Map<String, dynamic>>(msi, (value) => value.toMap()),
+      'rpm': ?pulumi.Input.mapOptionalInputValue<V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpm, Map<String, dynamic>>(rpm, (value) => value.toMap()),
+      'yum': ?pulumi.Input.mapOptionalInputValue<V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYum, Map<String, dynamic>>(yum, (value) => value.toMap()),
+      'zypper': ?pulumi.Input.mapOptionalInputValue<V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypper, Map<String, dynamic>>(zypper, (value) => value.toMap()),
     };
   }
 
-  factory V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkg.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkg.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkg(
-      apt: (() {
-        final guardedValue = map['apt'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgApt.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      deb: (() {
-        final guardedValue = map['deb'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDeb.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      apt: (() { final guardedValue = map['apt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgApt.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deb: (() { final guardedValue = map['deb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDeb.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       desiredState: pulumi.Input.fromValue(map['desiredState'] as String),
-      googet: (() {
-        final guardedValue = map['googet'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGooget.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      msi: (() {
-        final guardedValue = map['msi'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsi.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      rpm: (() {
-        final guardedValue = map['rpm'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpm.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      yum: (() {
-        final guardedValue = map['yum'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYum.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      zypper: (() {
-        final guardedValue = map['zypper'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypper.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      googet: (() { final guardedValue = map['googet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGooget.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      msi: (() { final guardedValue = map['msi']; if (guardedValue == null) return null; return pulumi.Input.fromValue(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsi.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      rpm: (() { final guardedValue = map['rpm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpm.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      yum: (() { final guardedValue = map['yum']; if (guardedValue == null) return null; return pulumi.Input.fromValue(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYum.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      zypper: (() { final guardedValue = map['zypper']; if (guardedValue == null) return null; return pulumi.Input.fromValue(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypper.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

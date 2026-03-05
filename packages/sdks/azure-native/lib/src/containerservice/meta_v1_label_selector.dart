@@ -7,54 +7,29 @@ import 'meta_v1_label_selector_requirement.dart';
 class MetaV1LabelSelector {
   /// matchExpressions is a list of label selector requirements. The requirements are ANDed.
   final pulumi.Input<List<MetaV1LabelSelectorRequirement>>? matchExpressions;
-
   /// matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
   final pulumi.Input<Map<String, String>>? matchLabels;
 
   /// Creates a new [MetaV1LabelSelector].
   /// [matchExpressions] matchExpressions is a list of label selector requirements. The requirements are ANDed.
   /// [matchLabels] matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
-  MetaV1LabelSelector({this.matchExpressions, this.matchLabels});
+  MetaV1LabelSelector({
+    this.matchExpressions,
+    this.matchLabels,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'matchExpressions':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<MetaV1LabelSelectorRequirement>,
-            List<Map<String, dynamic>>
-          >(
-            matchExpressions,
-            (value) =>
-                pulumi.Input.encodeList<
-                  MetaV1LabelSelectorRequirement,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'matchExpressions': ?pulumi.Input.mapOptionalInputValue<List<MetaV1LabelSelectorRequirement>, List<Map<String, dynamic>>>(matchExpressions, (value) => pulumi.Input.encodeList<MetaV1LabelSelectorRequirement, Map<String, dynamic>>(value, (value) => value.toMap())),
       'matchLabels': ?matchLabels,
     };
   }
 
   factory MetaV1LabelSelector.fromMap(Map<String, dynamic> map) {
     return MetaV1LabelSelector(
-      matchExpressions: (() {
-        final guardedValue = map['matchExpressions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<MetaV1LabelSelectorRequirement>(
-            guardedValue,
-            (value) => MetaV1LabelSelectorRequirement.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      matchLabels: (() {
-        final guardedValue = map['matchLabels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      matchExpressions: (() { final guardedValue = map['matchExpressions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<MetaV1LabelSelectorRequirement>(guardedValue, (value) => MetaV1LabelSelectorRequirement.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      matchLabels: (() { final guardedValue = map['matchLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

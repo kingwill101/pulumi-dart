@@ -440,69 +440,46 @@ import 'load_balancer_state.dart';
 class LoadBalancer extends pulumi.CustomResource {
   /// The configuration of the access log. See `access_log_config` below.
   late final pulumi.Output<LoadBalancerAccessLogConfig?> accessLogConfig;
-
   /// The method in which IP addresses are assigned. Valid values:  Fixed: The ALB instance uses a fixed IP address. Dynamic (default): An IP address is dynamically assigned to each zone of the ALB instance.
   late final pulumi.Output<String?> addressAllocatedMode;
-
   /// The protocol version. Value:
   /// - `IPv4`:IPv4 type.
   /// - `DualStack`: the dual-stack type.
   late final pulumi.Output<String> addressIpVersion;
-
   /// The type of IP address that the SLB instance uses to provide services.
   late final pulumi.Output<String> addressType;
-
   /// The ID of the EIP bandwidth plan which is associated with an ALB instance that uses a public IP address.
   late final pulumi.Output<String?> bandwidthPackageId;
-
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
-
   /// The Protection Configuration See `deletion_protection_config` below.
-  late final pulumi.Output<LoadBalancerDeletionProtectionConfig>
-  deletionProtectionConfig;
-
+  late final pulumi.Output<LoadBalancerDeletionProtectionConfig> deletionProtectionConfig;
   /// Specifies whether to enable deletion protection. Default value: `false`. Valid values:
   late final pulumi.Output<bool> deletionProtectionEnabled;
-
   /// DNS Domain Name
   late final pulumi.Output<String> dnsName;
-
   /// Whether to PreCheck only this request, value:
   late final pulumi.Output<bool?> dryRun;
-
   /// The address type of Ipv6
   late final pulumi.Output<String> ipv6AddressType;
-
   /// The configuration of the billing method. See `load_balancer_billing_config` below.
-  late final pulumi.Output<LoadBalancerLoadBalancerBillingConfig>
-  loadBalancerBillingConfig;
-
+  late final pulumi.Output<LoadBalancerLoadBalancerBillingConfig> loadBalancerBillingConfig;
   /// The edition of the ALB instance.
   late final pulumi.Output<String> loadBalancerEdition;
-
   /// The name of the resource
   late final pulumi.Output<String?> loadBalancerName;
-
   /// Modify the Protection Configuration See `modification_protection_config` below.
-  late final pulumi.Output<LoadBalancerModificationProtectionConfig>
-  modificationProtectionConfig;
-
+  late final pulumi.Output<LoadBalancerModificationProtectionConfig> modificationProtectionConfig;
   /// The region ID of the resource
   late final pulumi.Output<String> regionId;
-
   /// The ID of the resource group
   late final pulumi.Output<String> resourceGroupId;
-
   /// Server Load Balancer Instance Status:, indicating that the instance listener will no longer forward traffic.(default).
   late final pulumi.Output<String> status;
-
   /// The tag of the resource
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The ID of the virtual private cloud (VPC) where the SLB instance is deployed.
   late final pulumi.Output<String> vpcId;
-
   /// The zones and vSwitches. You must specify at least two zones. See `zone_mappings` below.
   late final pulumi.Output<List<Map<String, dynamic>>> zoneMappings;
 
@@ -515,67 +492,26 @@ class LoadBalancer extends pulumi.CustomResource {
     LoadBalancerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:alb/loadBalancer:LoadBalancer',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    accessLogConfig = registerOutput<LoadBalancerAccessLogConfig?>(
-      'accessLogConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LoadBalancerAccessLogConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'alicloud:alb/loadBalancer:LoadBalancer',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    accessLogConfig = registerOutput<LoadBalancerAccessLogConfig?>('accessLogConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerAccessLogConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     addressAllocatedMode = registerOutput<String?>('addressAllocatedMode');
     addressIpVersion = registerOutput<String>('addressIpVersion');
     addressType = registerOutput<String>('addressType');
     bandwidthPackageId = registerOutput<String?>('bandwidthPackageId');
     createTime = registerOutput<String>('createTime');
-    deletionProtectionConfig =
-        registerOutput<LoadBalancerDeletionProtectionConfig>(
-          'deletionProtectionConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return LoadBalancerDeletionProtectionConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    deletionProtectionEnabled = registerOutput<bool>(
-      'deletionProtectionEnabled',
-    );
+    deletionProtectionConfig = registerOutput<LoadBalancerDeletionProtectionConfig>('deletionProtectionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerDeletionProtectionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionProtectionEnabled = registerOutput<bool>('deletionProtectionEnabled');
     dnsName = registerOutput<String>('dnsName');
     dryRun = registerOutput<bool?>('dryRun');
     ipv6AddressType = registerOutput<String>('ipv6AddressType');
-    loadBalancerBillingConfig =
-        registerOutput<LoadBalancerLoadBalancerBillingConfig>(
-          'loadBalancerBillingConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return LoadBalancerLoadBalancerBillingConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    loadBalancerBillingConfig = registerOutput<LoadBalancerLoadBalancerBillingConfig>('loadBalancerBillingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerLoadBalancerBillingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     loadBalancerEdition = registerOutput<String>('loadBalancerEdition');
     loadBalancerName = registerOutput<String?>('loadBalancerName');
-    modificationProtectionConfig =
-        registerOutput<LoadBalancerModificationProtectionConfig>(
-          'modificationProtectionConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return LoadBalancerModificationProtectionConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    modificationProtectionConfig = registerOutput<LoadBalancerModificationProtectionConfig>('modificationProtectionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerModificationProtectionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     regionId = registerOutput<String>('regionId');
     resourceGroupId = registerOutput<String>('resourceGroupId');
     status = registerOutput<String>('status');
@@ -602,67 +538,26 @@ class LoadBalancer extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:alb/loadBalancer:LoadBalancer',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    accessLogConfig = registerOutput<LoadBalancerAccessLogConfig?>(
-      'accessLogConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LoadBalancerAccessLogConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'alicloud:alb/loadBalancer:LoadBalancer',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    accessLogConfig = registerOutput<LoadBalancerAccessLogConfig?>('accessLogConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerAccessLogConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     addressAllocatedMode = registerOutput<String?>('addressAllocatedMode');
     addressIpVersion = registerOutput<String>('addressIpVersion');
     addressType = registerOutput<String>('addressType');
     bandwidthPackageId = registerOutput<String?>('bandwidthPackageId');
     createTime = registerOutput<String>('createTime');
-    deletionProtectionConfig =
-        registerOutput<LoadBalancerDeletionProtectionConfig>(
-          'deletionProtectionConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return LoadBalancerDeletionProtectionConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    deletionProtectionEnabled = registerOutput<bool>(
-      'deletionProtectionEnabled',
-    );
+    deletionProtectionConfig = registerOutput<LoadBalancerDeletionProtectionConfig>('deletionProtectionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerDeletionProtectionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionProtectionEnabled = registerOutput<bool>('deletionProtectionEnabled');
     dnsName = registerOutput<String>('dnsName');
     dryRun = registerOutput<bool?>('dryRun');
     ipv6AddressType = registerOutput<String>('ipv6AddressType');
-    loadBalancerBillingConfig =
-        registerOutput<LoadBalancerLoadBalancerBillingConfig>(
-          'loadBalancerBillingConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return LoadBalancerLoadBalancerBillingConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    loadBalancerBillingConfig = registerOutput<LoadBalancerLoadBalancerBillingConfig>('loadBalancerBillingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerLoadBalancerBillingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     loadBalancerEdition = registerOutput<String>('loadBalancerEdition');
     loadBalancerName = registerOutput<String?>('loadBalancerName');
-    modificationProtectionConfig =
-        registerOutput<LoadBalancerModificationProtectionConfig>(
-          'modificationProtectionConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return LoadBalancerModificationProtectionConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    modificationProtectionConfig = registerOutput<LoadBalancerModificationProtectionConfig>('modificationProtectionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerModificationProtectionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     regionId = registerOutput<String>('regionId');
     resourceGroupId = registerOutput<String>('resourceGroupId');
     status = registerOutput<String>('status');

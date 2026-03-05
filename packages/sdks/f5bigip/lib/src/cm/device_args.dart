@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeviceArgs {
   /// IP address used for config sync
   final pulumi.Input<String> configsyncIp;
-
   /// IP address used for state mirroring
   final pulumi.Input<String>? mirrorIp;
-
   /// Secondary IP address used for state mirroring
   final pulumi.Input<String>? mirrorSecondaryIp;
-
   /// Address of the Device which needs to be Deviceensed
   final pulumi.Input<String> name;
 
@@ -43,17 +40,10 @@ class DeviceArgs {
   factory DeviceArgs.fromMap(Map<String, dynamic> map) {
     return DeviceArgs(
       configsyncIp: pulumi.Input.fromValue(map['configsyncIp'] as String),
-      mirrorIp: (() {
-        final guardedValue = map['mirrorIp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      mirrorSecondaryIp: (() {
-        final guardedValue = map['mirrorSecondaryIp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      mirrorIp: (() { final guardedValue = map['mirrorIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      mirrorSecondaryIp: (() { final guardedValue = map['mirrorSecondaryIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

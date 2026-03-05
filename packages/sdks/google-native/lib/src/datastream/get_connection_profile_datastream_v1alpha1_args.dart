@@ -29,19 +29,12 @@ class GetConnectionProfileDatastreamV1alpha1Args {
     };
   }
 
-  factory GetConnectionProfileDatastreamV1alpha1Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetConnectionProfileDatastreamV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return GetConnectionProfileDatastreamV1alpha1Args(
-      connectionProfileId: pulumi.Input.fromValue(
-        map['connectionProfileId'] as String,
-      ),
+      connectionProfileId: pulumi.Input.fromValue(map['connectionProfileId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

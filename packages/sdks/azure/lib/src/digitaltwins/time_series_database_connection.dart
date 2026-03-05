@@ -701,31 +701,22 @@ import 'time_series_database_connection_state.dart';
 class TimeSeriesDatabaseConnection extends pulumi.CustomResource {
   /// The ID of the Digital Twins. Changing this forces a new resource to be created.
   late final pulumi.Output<String> digitalTwinsId;
-
   /// Name of the Event Hub Consumer Group. Changing this forces a new resource to be created. Defaults to `$Default`.
   late final pulumi.Output<String?> eventhubConsumerGroupName;
-
   /// Name of the Event Hub. Changing this forces a new resource to be created.
   late final pulumi.Output<String> eventhubName;
-
   /// URI of the Event Hub Namespace. Changing this forces a new resource to be created.
   late final pulumi.Output<String> eventhubNamespaceEndpointUri;
-
   /// The ID of the Event Hub Namespace. Changing this forces a new resource to be created.
   late final pulumi.Output<String> eventhubNamespaceId;
-
   /// The ID of the Kusto Cluster. Changing this forces a new resource to be created.
   late final pulumi.Output<String> kustoClusterId;
-
   /// URI of the Kusto Cluster. Changing this forces a new resource to be created.
   late final pulumi.Output<String> kustoClusterUri;
-
   /// Name of the Kusto Database. Changing this forces a new resource to be created.
   late final pulumi.Output<String> kustoDatabaseName;
-
   /// Name of the Kusto Table. Defaults to `AdtPropertyEvents`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> kustoTableName;
-
   /// The name which should be used for this Digital Twins Time Series Database Connection. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
 
@@ -738,19 +729,15 @@ class TimeSeriesDatabaseConnection extends pulumi.CustomResource {
     TimeSeriesDatabaseConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:digitaltwins/timeSeriesDatabaseConnection:TimeSeriesDatabaseConnection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:digitaltwins/timeSeriesDatabaseConnection:TimeSeriesDatabaseConnection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     digitalTwinsId = registerOutput<String>('digitalTwinsId');
-    eventhubConsumerGroupName = registerOutput<String?>(
-      'eventhubConsumerGroupName',
-    );
+    eventhubConsumerGroupName = registerOutput<String?>('eventhubConsumerGroupName');
     eventhubName = registerOutput<String>('eventhubName');
-    eventhubNamespaceEndpointUri = registerOutput<String>(
-      'eventhubNamespaceEndpointUri',
-    );
+    eventhubNamespaceEndpointUri = registerOutput<String>('eventhubNamespaceEndpointUri');
     eventhubNamespaceId = registerOutput<String>('eventhubNamespaceId');
     kustoClusterId = registerOutput<String>('kustoClusterId');
     kustoClusterUri = registerOutput<String>('kustoClusterUri');
@@ -777,19 +764,15 @@ class TimeSeriesDatabaseConnection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:digitaltwins/timeSeriesDatabaseConnection:TimeSeriesDatabaseConnection',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:digitaltwins/timeSeriesDatabaseConnection:TimeSeriesDatabaseConnection',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     digitalTwinsId = registerOutput<String>('digitalTwinsId');
-    eventhubConsumerGroupName = registerOutput<String?>(
-      'eventhubConsumerGroupName',
-    );
+    eventhubConsumerGroupName = registerOutput<String?>('eventhubConsumerGroupName');
     eventhubName = registerOutput<String>('eventhubName');
-    eventhubNamespaceEndpointUri = registerOutput<String>(
-      'eventhubNamespaceEndpointUri',
-    );
+    eventhubNamespaceEndpointUri = registerOutput<String>('eventhubNamespaceEndpointUri');
     eventhubNamespaceId = registerOutput<String>('eventhubNamespaceId');
     kustoClusterId = registerOutput<String>('kustoClusterId');
     kustoClusterUri = registerOutput<String>('kustoClusterUri');

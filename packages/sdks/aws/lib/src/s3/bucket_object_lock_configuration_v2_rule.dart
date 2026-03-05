@@ -5,32 +5,24 @@ import 'bucket_object_lock_configuration_v2_rule_default_retention.dart';
 
 class BucketObjectLockConfigurationV2Rule {
   /// Configuration block for specifying the default Object Lock retention settings for new objects placed in the specified bucket. See below.
-  final pulumi.Input<BucketObjectLockConfigurationV2RuleDefaultRetention>
-  defaultRetention;
+  final pulumi.Input<BucketObjectLockConfigurationV2RuleDefaultRetention> defaultRetention;
 
   /// Creates a new [BucketObjectLockConfigurationV2Rule].
   /// [defaultRetention] Configuration block for specifying the default Object Lock retention settings for new objects placed in the specified bucket. See below.
-  BucketObjectLockConfigurationV2Rule({required this.defaultRetention});
+  BucketObjectLockConfigurationV2Rule({
+    required this.defaultRetention,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'defaultRetention':
-          pulumi.Input.mapInputValue<
-            BucketObjectLockConfigurationV2RuleDefaultRetention,
-            Map<String, dynamic>
-          >(defaultRetention, (value) => value.toMap()),
+      'defaultRetention': pulumi.Input.mapInputValue<BucketObjectLockConfigurationV2RuleDefaultRetention, Map<String, dynamic>>(defaultRetention, (value) => value.toMap()),
     };
   }
 
-  factory BucketObjectLockConfigurationV2Rule.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BucketObjectLockConfigurationV2Rule.fromMap(Map<String, dynamic> map) {
     return BucketObjectLockConfigurationV2Rule(
-      defaultRetention: pulumi.Input.fromValue(
-        BucketObjectLockConfigurationV2RuleDefaultRetention.fromMap(
-          (map['defaultRetention']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      defaultRetention: pulumi.Input.fromValue(BucketObjectLockConfigurationV2RuleDefaultRetention.fromMap((map['defaultRetention']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

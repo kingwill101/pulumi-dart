@@ -127,19 +127,14 @@ import 'events_to_metrics_rule_state.dart';
 class EventsToMetricsRule extends pulumi.CustomResource {
   /// Account with the event and where the metrics will be put.
   late final pulumi.Output<String> accountId;
-
   /// Provides additional information about the rule.
   late final pulumi.Output<String?> description;
-
   /// True means this rule is enabled. False means the rule is currently not creating metrics.
   late final pulumi.Output<bool?> enabled;
-
   /// The name of the rule. This must be unique within an account.
   late final pulumi.Output<String> name;
-
   /// Explains how to create metrics from events.
   late final pulumi.Output<String> nrql;
-
   /// The id, uniquely identifying the rule.
   late final pulumi.Output<String> ruleId;
 
@@ -152,11 +147,11 @@ class EventsToMetricsRule extends pulumi.CustomResource {
     EventsToMetricsRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:index/eventsToMetricsRule:EventsToMetricsRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:index/eventsToMetricsRule:EventsToMetricsRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool?>('enabled');
@@ -183,11 +178,11 @@ class EventsToMetricsRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:index/eventsToMetricsRule:EventsToMetricsRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:index/eventsToMetricsRule:EventsToMetricsRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool?>('enabled');

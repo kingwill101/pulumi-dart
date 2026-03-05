@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserAssignedIdentityResponse {
   /// The client id of user assigned identity.
   final pulumi.Input<String> clientId;
-
   /// The principal id of user assigned identity.
   final pulumi.Input<String> principalId;
-
   /// The tenant id of user assigned identity.
   final pulumi.Input<String>? tenantId;
 
@@ -35,11 +33,8 @@ class UserAssignedIdentityResponse {
     return UserAssignedIdentityResponse(
       clientId: pulumi.Input.fromValue(map['clientId'] as String),
       principalId: pulumi.Input.fromValue(map['principalId'] as String),
-      tenantId: (() {
-        final guardedValue = map['tenantId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

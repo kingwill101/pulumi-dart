@@ -8,17 +8,20 @@ class DomainOsNvRamSourceVhostUserQemuvdAgentClipBoard {
 
   /// Creates a new [DomainOsNvRamSourceVhostUserQemuvdAgentClipBoard].
   /// [copyPaste] Enables or disables clipboard copy-paste functionality through the QEMU guest agent.
-  DomainOsNvRamSourceVhostUserQemuvdAgentClipBoard({required this.copyPaste});
+  DomainOsNvRamSourceVhostUserQemuvdAgentClipBoard({
+    required this.copyPaste,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'copyPaste': copyPaste};
+    return <String, dynamic>{
+      'copyPaste': copyPaste,
+    };
   }
 
-  factory DomainOsNvRamSourceVhostUserQemuvdAgentClipBoard.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainOsNvRamSourceVhostUserQemuvdAgentClipBoard.fromMap(Map<String, dynamic> map) {
     return DomainOsNvRamSourceVhostUserQemuvdAgentClipBoard(
       copyPaste: pulumi.Input.fromValue(map['copyPaste'] as String),
     );
   }
 }
+

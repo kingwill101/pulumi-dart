@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkflowIssuesFilterPredicate {
   /// Issue event attribute to check
   final pulumi.Input<String> attribute;
-
   /// An operator to use to compare the attribute with the provided `values`, see supported operators below
   final pulumi.Input<String> operator;
-
   /// The `attribute` must match **any** of the values in this list
   final pulumi.Input<List<String>> values;
 
@@ -38,3 +36,4 @@ class WorkflowIssuesFilterPredicate {
     );
   }
 }
+

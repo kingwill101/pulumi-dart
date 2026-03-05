@@ -8,21 +8,20 @@ class DomainClusterConfigZoneAwarenessConfig {
 
   /// Creates a new [DomainClusterConfigZoneAwarenessConfig].
   /// [availabilityZoneCount] Number of Availability Zones for the domain to use with `zone_awareness_enabled`. Defaults to `2`. Valid values: `2` or `3`.
-  DomainClusterConfigZoneAwarenessConfig({this.availabilityZoneCount});
+  DomainClusterConfigZoneAwarenessConfig({
+    this.availabilityZoneCount,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'availabilityZoneCount': ?availabilityZoneCount};
+    return <String, dynamic>{
+      'availabilityZoneCount': ?availabilityZoneCount,
+    };
   }
 
-  factory DomainClusterConfigZoneAwarenessConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainClusterConfigZoneAwarenessConfig.fromMap(Map<String, dynamic> map) {
     return DomainClusterConfigZoneAwarenessConfig(
-      availabilityZoneCount: (() {
-        final guardedValue = map['availabilityZoneCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      availabilityZoneCount: (() { final guardedValue = map['availabilityZoneCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

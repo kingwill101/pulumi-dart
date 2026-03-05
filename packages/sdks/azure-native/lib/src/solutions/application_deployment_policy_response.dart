@@ -9,17 +9,20 @@ class ApplicationDeploymentPolicyResponse {
 
   /// Creates a new [ApplicationDeploymentPolicyResponse].
   /// [deploymentMode] The managed application deployment mode.
-  ApplicationDeploymentPolicyResponse({required this.deploymentMode});
+  ApplicationDeploymentPolicyResponse({
+    required this.deploymentMode,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'deploymentMode': deploymentMode};
+    return <String, dynamic>{
+      'deploymentMode': deploymentMode,
+    };
   }
 
-  factory ApplicationDeploymentPolicyResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApplicationDeploymentPolicyResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationDeploymentPolicyResponse(
       deploymentMode: pulumi.Input.fromValue(map['deploymentMode'] as String),
     );
   }
 }
+

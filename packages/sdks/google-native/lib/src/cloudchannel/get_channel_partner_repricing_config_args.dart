@@ -29,17 +29,12 @@ class GetChannelPartnerRepricingConfigArgs {
     };
   }
 
-  factory GetChannelPartnerRepricingConfigArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetChannelPartnerRepricingConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetChannelPartnerRepricingConfigArgs(
       accountId: pulumi.Input.fromValue(map['accountId'] as String),
-      channelPartnerLinkId: pulumi.Input.fromValue(
-        map['channelPartnerLinkId'] as String,
-      ),
-      channelPartnerRepricingConfigId: pulumi.Input.fromValue(
-        map['channelPartnerRepricingConfigId'] as String,
-      ),
+      channelPartnerLinkId: pulumi.Input.fromValue(map['channelPartnerLinkId'] as String),
+      channelPartnerRepricingConfigId: pulumi.Input.fromValue(map['channelPartnerRepricingConfigId'] as String),
     );
   }
 }
+

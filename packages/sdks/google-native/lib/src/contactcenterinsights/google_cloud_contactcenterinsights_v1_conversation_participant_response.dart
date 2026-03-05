@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudContactcenterinsightsV1ConversationParticipantResponse {
   /// Deprecated. Use `dialogflow_participant_name` instead. The name of the Dialogflow participant. Format: projects/{project}/locations/{location}/conversations/{conversation}/participants/{participant}
   final pulumi.Input<String> dialogflowParticipant;
-
   /// The name of the participant provided by Dialogflow. Format: projects/{project}/locations/{location}/conversations/{conversation}/participants/{participant}
   final pulumi.Input<String> dialogflowParticipantName;
-
   /// Obfuscated user ID from Dialogflow.
   final pulumi.Input<String> obfuscatedExternalUserId;
-
   /// The role of the participant.
   final pulumi.Input<String> role;
-
   /// A user-specified ID representing the participant.
   final pulumi.Input<String> userId;
 
@@ -43,21 +39,14 @@ class GoogleCloudContactcenterinsightsV1ConversationParticipantResponse {
     };
   }
 
-  factory GoogleCloudContactcenterinsightsV1ConversationParticipantResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudContactcenterinsightsV1ConversationParticipantResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContactcenterinsightsV1ConversationParticipantResponse(
-      dialogflowParticipant: pulumi.Input.fromValue(
-        map['dialogflowParticipant'] as String,
-      ),
-      dialogflowParticipantName: pulumi.Input.fromValue(
-        map['dialogflowParticipantName'] as String,
-      ),
-      obfuscatedExternalUserId: pulumi.Input.fromValue(
-        map['obfuscatedExternalUserId'] as String,
-      ),
+      dialogflowParticipant: pulumi.Input.fromValue(map['dialogflowParticipant'] as String),
+      dialogflowParticipantName: pulumi.Input.fromValue(map['dialogflowParticipantName'] as String),
+      obfuscatedExternalUserId: pulumi.Input.fromValue(map['obfuscatedExternalUserId'] as String),
       role: pulumi.Input.fromValue(map['role'] as String),
       userId: pulumi.Input.fromValue(map['userId'] as String),
     );
   }
 }
+

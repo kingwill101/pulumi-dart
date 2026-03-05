@@ -6,29 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TrackedResource {
   /// The geo-location where the resource lives
   final pulumi.Input<String> location;
-
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [TrackedResource].
   /// [location] The geo-location where the resource lives
   /// [tags] Resource tags.
-  TrackedResource({required this.location, this.tags});
+  TrackedResource({
+    required this.location,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'location': location, 'tags': ?tags};
+    return <String, dynamic>{
+      'location': location,
+      'tags': ?tags,
+    };
   }
 
   factory TrackedResource.fromMap(Map<String, dynamic> map) {
     return TrackedResource(
       location: pulumi.Input.fromValue(map['location'] as String),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

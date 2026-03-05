@@ -134,29 +134,21 @@ import 'system_data_response.dart';
 class MECRole extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Activation key of the MEC.
   late final pulumi.Output<AsymmetricEncryptedSecretResponse?> connectionString;
-
   /// Controller Endpoint.
   late final pulumi.Output<String?> controllerEndpoint;
-
   /// Role type.
   /// Expected value is 'MEC'.
   late final pulumi.Output<String> kind;
-
   /// The object name.
   late final pulumi.Output<String> name;
-
   /// Unique Id of the Resource.
   late final pulumi.Output<String?> resourceUniqueId;
-
   /// Role status.
   late final pulumi.Output<String> roleStatus;
-
   /// Metadata pertaining to creation and last modification of Role
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The hierarchical type of the object.
   late final pulumi.Output<String> type;
 
@@ -169,37 +161,19 @@ class MECRole extends pulumi.CustomResource {
     MECRoleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:databoxedge:MECRole',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:databoxedge:MECRole',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    connectionString = registerOutput<AsymmetricEncryptedSecretResponse?>(
-      'connectionString',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AsymmetricEncryptedSecretResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    connectionString = registerOutput<AsymmetricEncryptedSecretResponse?>('connectionString', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AsymmetricEncryptedSecretResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     controllerEndpoint = registerOutput<String?>('controllerEndpoint');
     kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
     resourceUniqueId = registerOutput<String?>('resourceUniqueId');
     roleStatus = registerOutput<String>('roleStatus');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

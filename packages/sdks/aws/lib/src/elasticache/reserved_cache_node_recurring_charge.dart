@@ -23,12 +23,9 @@ class ReservedCacheNodeRecurringCharge {
 
   factory ReservedCacheNodeRecurringCharge.fromMap(Map<String, dynamic> map) {
     return ReservedCacheNodeRecurringCharge(
-      recurringChargeAmount: pulumi.Input.fromValue(
-        map['recurringChargeAmount'] as double,
-      ),
-      recurringChargeFrequency: pulumi.Input.fromValue(
-        map['recurringChargeFrequency'] as String,
-      ),
+      recurringChargeAmount: pulumi.Input.fromValue(map['recurringChargeAmount'] as double),
+      recurringChargeFrequency: pulumi.Input.fromValue(map['recurringChargeFrequency'] as String),
     );
   }
 }
+

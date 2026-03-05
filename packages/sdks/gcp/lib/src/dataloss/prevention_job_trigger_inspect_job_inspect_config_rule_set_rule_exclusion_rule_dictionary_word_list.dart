@@ -14,14 +14,15 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDiction
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'words': words};
+    return <String, dynamic>{
+      'words': words,
+    };
   }
 
-  factory PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryWordList.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryWordList.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryWordList(
       words: pulumi.Input.fromValue((map['words'] as List).cast<String>()),
     );
   }
 }
+

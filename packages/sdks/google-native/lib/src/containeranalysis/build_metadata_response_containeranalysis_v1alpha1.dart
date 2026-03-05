@@ -25,9 +25,7 @@ class BuildMetadataResponseContaineranalysisV1alpha1 {
     };
   }
 
-  factory BuildMetadataResponseContaineranalysisV1alpha1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BuildMetadataResponseContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return BuildMetadataResponseContaineranalysisV1alpha1(
       finishedOn: pulumi.Input.fromValue(map['finishedOn'] as String),
       invocationId: pulumi.Input.fromValue(map['invocationId'] as String),
@@ -35,3 +33,4 @@ class BuildMetadataResponseContaineranalysisV1alpha1 {
     );
   }
 }
+

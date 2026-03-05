@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualHostArgs {
   /// InstanceId.
   final pulumi.Input<String> instanceId;
-
   /// VirtualHostName.
   final pulumi.Input<String> virtualHostName;
 
   /// Creates a new [VirtualHostArgs].
   /// [instanceId] InstanceId.
   /// [virtualHostName] VirtualHostName.
-  VirtualHostArgs({required this.instanceId, required this.virtualHostName});
+  VirtualHostArgs({
+    required this.instanceId,
+    required this.virtualHostName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,3 +34,4 @@ class VirtualHostArgs {
     );
   }
 }
+

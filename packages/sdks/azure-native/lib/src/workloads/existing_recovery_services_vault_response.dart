@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExistingRecoveryServicesVaultResponse {
   /// The resource ID of the recovery services vault that has been created.
   final pulumi.Input<String> id;
-
   /// The vault type, whether it is existing or has to be created.
   /// Expected value is 'Existing'.
   final pulumi.Input<String> vaultType;
@@ -20,15 +19,17 @@ class ExistingRecoveryServicesVaultResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id, 'vaultType': vaultType};
+    return <String, dynamic>{
+      'id': id,
+      'vaultType': vaultType,
+    };
   }
 
-  factory ExistingRecoveryServicesVaultResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ExistingRecoveryServicesVaultResponse.fromMap(Map<String, dynamic> map) {
     return ExistingRecoveryServicesVaultResponse(
       id: pulumi.Input.fromValue(map['id'] as String),
       vaultType: pulumi.Input.fromValue(map['vaultType'] as String),
     );
   }
 }
+

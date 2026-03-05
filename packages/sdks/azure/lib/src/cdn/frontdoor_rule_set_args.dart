@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FrontdoorRuleSetArgs {
   /// The ID of the Front Door Profile. Changing this forces a new Front Door Rule Set to be created.
   final pulumi.Input<String> cdnFrontdoorProfileId;
-
   /// The name which should be used for this Front Door Rule Set. Changing this forces a new Front Door Rule Set to be created.
   final pulumi.Input<String>? name;
 
   /// Creates a new [FrontdoorRuleSetArgs].
   /// [cdnFrontdoorProfileId] The ID of the Front Door Profile. Changing this forces a new Front Door Rule Set to be created.
   /// [name] The name which should be used for this Front Door Rule Set. Changing this forces a new Front Door Rule Set to be created.
-  FrontdoorRuleSetArgs({required this.cdnFrontdoorProfileId, this.name});
+  FrontdoorRuleSetArgs({
+    required this.cdnFrontdoorProfileId,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,14 +29,9 @@ class FrontdoorRuleSetArgs {
 
   factory FrontdoorRuleSetArgs.fromMap(Map<String, dynamic> map) {
     return FrontdoorRuleSetArgs(
-      cdnFrontdoorProfileId: pulumi.Input.fromValue(
-        map['cdnFrontdoorProfileId'] as String,
-      ),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      cdnFrontdoorProfileId: pulumi.Input.fromValue(map['cdnFrontdoorProfileId'] as String),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

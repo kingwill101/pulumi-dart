@@ -142,67 +142,46 @@ import 'topic_args.dart';
 class Topic extends pulumi.CustomResource {
   /// Last time the message was sent, or a request was received, for this topic.
   late final pulumi.Output<String> accessedAt;
-
   /// ISO 8601 timespan idle interval after which the topic is automatically deleted. The minimum duration is 5 minutes.
   late final pulumi.Output<String?> autoDeleteOnIdle;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Message count details
   late final pulumi.Output<MessageCountDetailsResponse> countDetails;
-
   /// Exact time the message was created.
   late final pulumi.Output<String> createdAt;
-
   /// ISO 8601 Default message timespan to live value. This is the duration after which the message expires, starting from when the message is sent to Service Bus. This is the default value used when TimeToLive is not set on a message itself.
   late final pulumi.Output<String?> defaultMessageTimeToLive;
-
   /// ISO8601 timespan structure that defines the duration of the duplicate detection history. The default value is 10 minutes.
   late final pulumi.Output<String?> duplicateDetectionHistoryTimeWindow;
-
   /// Value that indicates whether server-side batched operations are enabled.
   late final pulumi.Output<bool?> enableBatchedOperations;
-
   /// Value that indicates whether Express Entities are enabled. An express topic holds a message in memory temporarily before writing it to persistent storage.
   late final pulumi.Output<bool?> enableExpress;
-
   /// Value that indicates whether the topic to be partitioned across multiple message brokers is enabled.
   late final pulumi.Output<bool?> enablePartitioning;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// Maximum size (in KB) of the message payload that can be accepted by the topic. This property is only used in Premium today and default is 1024.
   late final pulumi.Output<double?> maxMessageSizeInKilobytes;
-
   /// Maximum size of the topic in megabytes, which is the size of the memory allocated for the topic. Default is 1024.
   late final pulumi.Output<int?> maxSizeInMegabytes;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Value indicating if this topic requires duplicate detection.
   late final pulumi.Output<bool?> requiresDuplicateDetection;
-
   /// Size of the topic, in bytes.
   late final pulumi.Output<double> sizeInBytes;
-
   /// Enumerates the possible values for the status of a messaging entity.
   late final pulumi.Output<String?> status;
-
   /// Number of subscriptions.
   late final pulumi.Output<int> subscriptionCount;
-
   /// Value that indicates whether the topic supports ordering.
   late final pulumi.Output<bool?> supportOrdering;
-
   /// The system meta data relating to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
   late final pulumi.Output<String> type;
-
   /// The exact time the message was updated.
   late final pulumi.Output<String> updatedAt;
 
@@ -210,59 +189,36 @@ class Topic extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Topic]. {@macro pulumi_servicebus_topic_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Topic(String name, {TopicArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:servicebus:Topic',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Topic(
+    String name, {
+    TopicArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:servicebus:Topic',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessedAt = registerOutput<String>('accessedAt');
     autoDeleteOnIdle = registerOutput<String?>('autoDeleteOnIdle');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    countDetails = registerOutput<MessageCountDetailsResponse>(
-      'countDetails',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MessageCountDetailsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    countDetails = registerOutput<MessageCountDetailsResponse>('countDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MessageCountDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdAt = registerOutput<String>('createdAt');
-    defaultMessageTimeToLive = registerOutput<String?>(
-      'defaultMessageTimeToLive',
-    );
-    duplicateDetectionHistoryTimeWindow = registerOutput<String?>(
-      'duplicateDetectionHistoryTimeWindow',
-    );
+    defaultMessageTimeToLive = registerOutput<String?>('defaultMessageTimeToLive');
+    duplicateDetectionHistoryTimeWindow = registerOutput<String?>('duplicateDetectionHistoryTimeWindow');
     enableBatchedOperations = registerOutput<bool?>('enableBatchedOperations');
     enableExpress = registerOutput<bool?>('enableExpress');
     enablePartitioning = registerOutput<bool?>('enablePartitioning');
     location = registerOutput<String>('location');
-    maxMessageSizeInKilobytes = registerOutput<double?>(
-      'maxMessageSizeInKilobytes',
-    );
+    maxMessageSizeInKilobytes = registerOutput<double?>('maxMessageSizeInKilobytes');
     maxSizeInMegabytes = registerOutput<int?>('maxSizeInMegabytes');
     this.name = registerOutput<String>('name');
-    requiresDuplicateDetection = registerOutput<bool?>(
-      'requiresDuplicateDetection',
-    );
+    requiresDuplicateDetection = registerOutput<bool?>('requiresDuplicateDetection');
     sizeInBytes = registerOutput<double>('sizeInBytes');
     status = registerOutput<String?>('status');
     subscriptionCount = registerOutput<int>('subscriptionCount');
     supportOrdering = registerOutput<bool?>('supportOrdering');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     updatedAt = registerOutput<String>('updatedAt');
   }

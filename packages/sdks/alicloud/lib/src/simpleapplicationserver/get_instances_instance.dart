@@ -5,40 +5,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstancesInstance {
   /// The billing status of the simple application server. Valid values: `Normal`, `Expired` and `Overdue`.
   final pulumi.Input<String> businessStatus;
-
   /// The time when the simple application server was created.
   final pulumi.Input<String> createTime;
-
   /// The DDoS protection status. Valid values: `Normal`, `BlackHole`, and `Defense`.
   final pulumi.Input<String> ddosStatus;
-
   /// The time when the simple application server expires.
   final pulumi.Input<String> expiredTime;
-
   /// The ID of the Instance.
   final pulumi.Input<String> id;
-
   /// The ID of the simple application server Image.
   final pulumi.Input<String> imageId;
-
   /// The internal IP address of the simple application server.
   final pulumi.Input<String> innerIpAddress;
-
   /// The ID of the simple application server.
   final pulumi.Input<String> instanceId;
-
   /// The name of the resource.
   final pulumi.Input<String> instanceName;
-
   /// The billing method of the simple application server.
   final pulumi.Input<String> paymentType;
-
   /// The ID of the simple application server plan.
   final pulumi.Input<String> planId;
-
   /// The public IP address of the simple application server.
   final pulumi.Input<String> publicIpAddress;
-
   /// The status of the resource.
   final pulumi.Input<String> status;
 
@@ -108,3 +96,4 @@ class GetInstancesInstance {
     );
   }
 }
+

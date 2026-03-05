@@ -12,90 +12,64 @@ class LoadBalancerState {
   /// - **ipv4:** IPv4. This is the default value.
   /// - **DualStack:** dual stack.
   final pulumi.Input<String>? addressIpVersion;
-
   /// The type of IPv4 address used by the NLB instance. Valid values:
   /// - `Internet`: The NLB instance uses a public IP address. The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
   /// - `Intranet`: The NLB instance uses a private IP address. The domain name of the NLB instance is resolved to the private IP address. Therefore, the NLB instance can be accessed over the virtual private cloud (VPC) where the NLB instance is deployed.
   ///
   /// &gt; **NOTE:**   To enable a public IPv6 address for an NLB instance, call the [EnableLoadBalancerIpv6Internet](https://www.alibabacloud.com/help/en/doc-detail/445878.html) operation.
   final pulumi.Input<String>? addressType;
-
   /// The ID of the EIP bandwidth plan that is associated with the Internet-facing NLB instance.
   final pulumi.Input<String>? bandwidthPackageId;
-
   /// The speed limit of new connections per second processed by NLB instances in each VIP. Value range: `0` to `1000000`.
   ///
   /// - *0** means no speed limit.
   final pulumi.Input<int>? cps;
-
   /// Resource creation time, using Greenwich Mean Time, formating' yyyy-MM-ddTHH:mm:ssZ '.
   final pulumi.Input<String>? createTime;
-
   /// Specifies whether to enable cross-zone load balancing for the NLB instance. Valid values:
   final pulumi.Input<bool>? crossZoneEnabled;
-
   /// Specifies whether to enable deletion protection. Default value: `false`. See `deletion_protection_config` below.
-  final pulumi.Input<LoadBalancerDeletionProtectionConfig>?
-  deletionProtectionConfig;
-
+  final pulumi.Input<LoadBalancerDeletionProtectionConfig>? deletionProtectionConfig;
   /// Specifies whether to enable deletion protection. Default value: `false`. Valid values:
   final pulumi.Input<bool>? deletionProtectionEnabled;
-
   /// The reason why the deletion protection feature is enabled or disabled. The `deletion_protection_reason` takes effect only when `deletion_protection_enabled` is set to `true`.
   final pulumi.Input<String>? deletionProtectionReason;
-
   /// The domain name of the NLB instance.
   final pulumi.Input<String>? dnsName;
-
   /// The type of IPv6 address used by the NLB instance. Valid values:
   /// - `Internet`: a public IP address. The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
   /// - `Intranet`: a private IP address. The domain name of the NLB instance is resolved to the private IP address. Therefore, the NLB instance can be accessed over the VPC where the NLB instance is deployed.
   final pulumi.Input<String>? ipv6AddressType;
-
   /// The business status of the NLB instance.
   final pulumi.Input<String>? loadBalancerBusinessStatus;
-
   /// The name of the NLB instance.
   /// The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter.
   final pulumi.Input<String>? loadBalancerName;
-
   /// The type of the Server Load Balancer (SLB) instance. Set the value to `network`, which specifies NLB.
   final pulumi.Input<String>? loadBalancerType;
-
   /// Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. See `modification_protection_config` below.
-  final pulumi.Input<LoadBalancerModificationProtectionConfig>?
-  modificationProtectionConfig;
-
+  final pulumi.Input<LoadBalancerModificationProtectionConfig>? modificationProtectionConfig;
   /// The reason why the configuration read-only mode is enabled. The `modification_protection_reason` takes effect only when `modification_protection_status` is set to `ConsoleProtection`.
   final pulumi.Input<String>? modificationProtectionReason;
-
   /// Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
   /// - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modification_protection_reason`. If the `modification_protection_reason` is set, the value is cleared.
   /// - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modification_protection_reason`.
   final pulumi.Input<String>? modificationProtectionStatus;
-
   /// The payment type of the resource
   final pulumi.Input<String>? paymentType;
-
   /// The ID of the region where the NLB instance is deployed.
   final pulumi.Input<String>? regionId;
-
   /// The ID of the new resource group.
   /// You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
   final pulumi.Input<String>? resourceGroupId;
-
   /// The security group to which the network-based SLB instance belongs.
   final pulumi.Input<List<String>>? securityGroupIds;
-
   /// Zone Status
   final pulumi.Input<String>? status;
-
   /// List of labels.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// The ID of the VPC where the NLB instance is deployed.
   final pulumi.Input<String>? vpcId;
-
   /// Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See `zone_mappings` below.
   final pulumi.Input<List<LoadBalancerZoneMapping>>? zoneMappings;
 
@@ -161,11 +135,7 @@ class LoadBalancerState {
       'cps': ?cps,
       'createTime': ?createTime,
       'crossZoneEnabled': ?crossZoneEnabled,
-      'deletionProtectionConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            LoadBalancerDeletionProtectionConfig,
-            Map<String, dynamic>
-          >(deletionProtectionConfig, (value) => value.toMap()),
+      'deletionProtectionConfig': ?pulumi.Input.mapOptionalInputValue<LoadBalancerDeletionProtectionConfig, Map<String, dynamic>>(deletionProtectionConfig, (value) => value.toMap()),
       'deletionProtectionEnabled': ?deletionProtectionEnabled,
       'deletionProtectionReason': ?deletionProtectionReason,
       'dnsName': ?dnsName,
@@ -173,11 +143,7 @@ class LoadBalancerState {
       'loadBalancerBusinessStatus': ?loadBalancerBusinessStatus,
       'loadBalancerName': ?loadBalancerName,
       'loadBalancerType': ?loadBalancerType,
-      'modificationProtectionConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            LoadBalancerModificationProtectionConfig,
-            Map<String, dynamic>
-          >(modificationProtectionConfig, (value) => value.toMap()),
+      'modificationProtectionConfig': ?pulumi.Input.mapOptionalInputValue<LoadBalancerModificationProtectionConfig, Map<String, dynamic>>(modificationProtectionConfig, (value) => value.toMap()),
       'modificationProtectionReason': ?modificationProtectionReason,
       'modificationProtectionStatus': ?modificationProtectionStatus,
       'paymentType': ?paymentType,
@@ -187,165 +153,38 @@ class LoadBalancerState {
       'status': ?status,
       'tags': ?tags,
       'vpcId': ?vpcId,
-      'zoneMappings':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<LoadBalancerZoneMapping>,
-            List<Map<String, dynamic>>
-          >(
-            zoneMappings,
-            (value) =>
-                pulumi.Input.encodeList<
-                  LoadBalancerZoneMapping,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'zoneMappings': ?pulumi.Input.mapOptionalInputValue<List<LoadBalancerZoneMapping>, List<Map<String, dynamic>>>(zoneMappings, (value) => pulumi.Input.encodeList<LoadBalancerZoneMapping, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory LoadBalancerState.fromMap(Map<String, dynamic> map) {
     return LoadBalancerState(
-      addressIpVersion: (() {
-        final guardedValue = map['addressIpVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      addressType: (() {
-        final guardedValue = map['addressType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      bandwidthPackageId: (() {
-        final guardedValue = map['bandwidthPackageId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      cps: (() {
-        final guardedValue = map['cps'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      crossZoneEnabled: (() {
-        final guardedValue = map['crossZoneEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      deletionProtectionConfig: (() {
-        final guardedValue = map['deletionProtectionConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          LoadBalancerDeletionProtectionConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      deletionProtectionEnabled: (() {
-        final guardedValue = map['deletionProtectionEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      deletionProtectionReason: (() {
-        final guardedValue = map['deletionProtectionReason'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dnsName: (() {
-        final guardedValue = map['dnsName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ipv6AddressType: (() {
-        final guardedValue = map['ipv6AddressType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      loadBalancerBusinessStatus: (() {
-        final guardedValue = map['loadBalancerBusinessStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      loadBalancerName: (() {
-        final guardedValue = map['loadBalancerName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      loadBalancerType: (() {
-        final guardedValue = map['loadBalancerType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      modificationProtectionConfig: (() {
-        final guardedValue = map['modificationProtectionConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          LoadBalancerModificationProtectionConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      modificationProtectionReason: (() {
-        final guardedValue = map['modificationProtectionReason'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      modificationProtectionStatus: (() {
-        final guardedValue = map['modificationProtectionStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      paymentType: (() {
-        final guardedValue = map['paymentType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      regionId: (() {
-        final guardedValue = map['regionId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupId: (() {
-        final guardedValue = map['resourceGroupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      securityGroupIds: (() {
-        final guardedValue = map['securityGroupIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      vpcId: (() {
-        final guardedValue = map['vpcId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      zoneMappings: (() {
-        final guardedValue = map['zoneMappings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<LoadBalancerZoneMapping>(
-            guardedValue,
-            (value) => LoadBalancerZoneMapping.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      addressIpVersion: (() { final guardedValue = map['addressIpVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      addressType: (() { final guardedValue = map['addressType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      bandwidthPackageId: (() { final guardedValue = map['bandwidthPackageId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      cps: (() { final guardedValue = map['cps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      crossZoneEnabled: (() { final guardedValue = map['crossZoneEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      deletionProtectionConfig: (() { final guardedValue = map['deletionProtectionConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LoadBalancerDeletionProtectionConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deletionProtectionEnabled: (() { final guardedValue = map['deletionProtectionEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      deletionProtectionReason: (() { final guardedValue = map['deletionProtectionReason']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dnsName: (() { final guardedValue = map['dnsName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ipv6AddressType: (() { final guardedValue = map['ipv6AddressType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      loadBalancerBusinessStatus: (() { final guardedValue = map['loadBalancerBusinessStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      loadBalancerName: (() { final guardedValue = map['loadBalancerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      loadBalancerType: (() { final guardedValue = map['loadBalancerType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      modificationProtectionConfig: (() { final guardedValue = map['modificationProtectionConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LoadBalancerModificationProtectionConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      modificationProtectionReason: (() { final guardedValue = map['modificationProtectionReason']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      modificationProtectionStatus: (() { final guardedValue = map['modificationProtectionStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      paymentType: (() { final guardedValue = map['paymentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      regionId: (() { final guardedValue = map['regionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupId: (() { final guardedValue = map['resourceGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      securityGroupIds: (() { final guardedValue = map['securityGroupIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      vpcId: (() { final guardedValue = map['vpcId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      zoneMappings: (() { final guardedValue = map['zoneMappings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<LoadBalancerZoneMapping>(guardedValue, (value) => LoadBalancerZoneMapping.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

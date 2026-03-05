@@ -16,3 +16,4 @@ enum TrafficType {
     throw ArgumentError('Unknown TrafficType value: $value');
   }
 }
+

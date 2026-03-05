@@ -24,3 +24,4 @@ enum RulesEngineOperator {
     throw ArgumentError('Unknown RulesEngineOperator value: $value');
   }
 }
+

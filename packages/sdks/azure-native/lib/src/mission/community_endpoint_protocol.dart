@@ -21,3 +21,4 @@ enum CommunityEndpointProtocol {
     throw ArgumentError('Unknown CommunityEndpointProtocol value: $value');
   }
 }
+

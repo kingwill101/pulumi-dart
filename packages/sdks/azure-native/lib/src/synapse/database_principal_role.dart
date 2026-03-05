@@ -19,3 +19,4 @@ enum DatabasePrincipalRole {
     throw ArgumentError('Unknown DatabasePrincipalRole value: $value');
   }
 }
+

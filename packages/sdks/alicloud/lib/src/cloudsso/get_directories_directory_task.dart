@@ -5,46 +5,32 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDirectoriesDirectoryTask {
   /// The ID of Access Configuration.
   final pulumi.Input<String> accessConfigurationId;
-
   /// The Name of Access Configuration.
   final pulumi.Input<String> accessConfigurationName;
-
   /// The End Time of Task.
   final pulumi.Input<String> endTime;
-
   /// the Reason for the Failure of  the task.
   final pulumi.Input<String> failureReason;
-
   /// The ID of Cloud SSO Identity.
   final pulumi.Input<String> principalId;
-
   /// The Name of Cloud SSO Identity.
   final pulumi.Input<String> principalName;
-
   /// The Type of Cloud SSO Identity.
   final pulumi.Input<String> principalType;
-
   /// The Start Time of Task.
   final pulumi.Input<String> startTime;
-
   /// The Task Status.
   final pulumi.Input<String> status;
-
   /// The Id of deploy target.
   final pulumi.Input<String> targetId;
-
   /// The Name of Deploy Target.
   final pulumi.Input<String> targetName;
-
   /// The Path in RD of Deploy Target.
   final pulumi.Input<String> targetPath;
-
   /// The Type of Deploy Target.
   final pulumi.Input<String> targetType;
-
   /// The ID of the Task.
   final pulumi.Input<String> taskId;
-
   /// The Type of the Task.
   final pulumi.Input<String> taskType;
 
@@ -104,12 +90,8 @@ class GetDirectoriesDirectoryTask {
 
   factory GetDirectoriesDirectoryTask.fromMap(Map<String, dynamic> map) {
     return GetDirectoriesDirectoryTask(
-      accessConfigurationId: pulumi.Input.fromValue(
-        map['accessConfigurationId'] as String,
-      ),
-      accessConfigurationName: pulumi.Input.fromValue(
-        map['accessConfigurationName'] as String,
-      ),
+      accessConfigurationId: pulumi.Input.fromValue(map['accessConfigurationId'] as String),
+      accessConfigurationName: pulumi.Input.fromValue(map['accessConfigurationName'] as String),
       endTime: pulumi.Input.fromValue(map['endTime'] as String),
       failureReason: pulumi.Input.fromValue(map['failureReason'] as String),
       principalId: pulumi.Input.fromValue(map['principalId'] as String),
@@ -126,3 +108,4 @@ class GetDirectoriesDirectoryTask {
     );
   }
 }
+

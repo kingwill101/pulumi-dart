@@ -17,3 +17,4 @@ enum ClusterTelemetryType {
     throw ArgumentError('Unknown ClusterTelemetryType value: $value');
   }
 }
+

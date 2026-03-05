@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceTypesType {
   /// Cpu size of the instance type.
   final pulumi.Input<int> cpuSize;
-
   /// Mem size of the instance type.
   final pulumi.Input<int> memSize;
-
   /// Name of the instance type.
   final pulumi.Input<String> value;
 
@@ -38,3 +36,4 @@ class GetInstanceTypesType {
     );
   }
 }
+

@@ -21,3 +21,4 @@ enum MetricDescriptorLaunchStage {
     throw ArgumentError('Unknown MetricDescriptorLaunchStage value: $value');
   }
 }
+

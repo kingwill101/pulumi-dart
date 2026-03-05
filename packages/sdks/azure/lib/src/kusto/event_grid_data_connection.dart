@@ -631,51 +631,36 @@ import 'event_grid_data_connection_state.dart';
 class EventGridDataConnection extends pulumi.CustomResource {
   /// Specifies the blob storage event type that needs to be processed. Possible Values are `Microsoft.Storage.BlobCreated` and `Microsoft.Storage.BlobRenamed`. Defaults to `Microsoft.Storage.BlobCreated`.
   late final pulumi.Output<String?> blobStorageEventType;
-
   /// Specifies the name of the Kusto Cluster this data connection will be added to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> clusterName;
-
   /// Specifies the data format of the EventHub messages. Allowed values: `APACHEAVRO`, `AVRO`, `CSV`, `JSON`, `MULTIJSON`, `ORC`, `PARQUET`, `PSV`, `RAW`, `SCSV`, `SINGLEJSON`, `SOHSV`, `TSV`, `TSVE`, `TXT` and `W3CLOGFILE`.
   late final pulumi.Output<String?> dataFormat;
-
   /// Specifies the name of the Kusto Database this data connection will be added to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> databaseName;
-
   /// Indication for database routing information from the data connection, by default only database routing information is allowed. Allowed values: `Single`, `Multi`. Changing this forces a new resource to be created. Defaults to `Single`.
   late final pulumi.Output<String?> databaseRoutingType;
-
   /// The resource ID of the event grid that is subscribed to the storage account events.
   late final pulumi.Output<String> eventgridEventSubscriptionId;
   late final pulumi.Output<String> eventgridResourceId;
-
   /// Specifies the Event Hub consumer group this data connection will use for ingestion. Changing this forces a new resource to be created.
   late final pulumi.Output<String> eventhubConsumerGroupName;
-
   /// Specifies the resource id of the Event Hub this data connection will use for ingestion. Changing this forces a new resource to be created.
   late final pulumi.Output<String> eventhubId;
-
   /// The location where the Kusto Database should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// Empty for non-managed identity based data connection. For system assigned identity, provide cluster resource Id. For user assigned identity (UAI) provide the UAI resource Id.
   late final pulumi.Output<String> managedIdentityId;
   late final pulumi.Output<String> managedIdentityResourceId;
-
   /// Specifies the mapping rule used for the message ingestion. Mapping rule must exist before resource is created.
   late final pulumi.Output<String?> mappingRuleName;
-
   /// The name of the Kusto Event Grid Data Connection to create. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies the Resource Group where the Kusto Database should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// is the first record of every file ignored? Defaults to `false`.
   late final pulumi.Output<bool?> skipFirstRecord;
-
   /// Specifies the resource id of the Storage Account this data connection will use for ingestion. Changing this forces a new resource to be created.
   late final pulumi.Output<String> storageAccountId;
-
   /// Specifies the target table name used for the message ingestion. Table must exist before resource is created.
   late final pulumi.Output<String?> tableName;
 
@@ -688,29 +673,23 @@ class EventGridDataConnection extends pulumi.CustomResource {
     EventGridDataConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:kusto/eventGridDataConnection:EventGridDataConnection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:kusto/eventGridDataConnection:EventGridDataConnection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     blobStorageEventType = registerOutput<String?>('blobStorageEventType');
     clusterName = registerOutput<String>('clusterName');
     dataFormat = registerOutput<String?>('dataFormat');
     databaseName = registerOutput<String>('databaseName');
     databaseRoutingType = registerOutput<String?>('databaseRoutingType');
-    eventgridEventSubscriptionId = registerOutput<String>(
-      'eventgridEventSubscriptionId',
-    );
+    eventgridEventSubscriptionId = registerOutput<String>('eventgridEventSubscriptionId');
     eventgridResourceId = registerOutput<String>('eventgridResourceId');
-    eventhubConsumerGroupName = registerOutput<String>(
-      'eventhubConsumerGroupName',
-    );
+    eventhubConsumerGroupName = registerOutput<String>('eventhubConsumerGroupName');
     eventhubId = registerOutput<String>('eventhubId');
     location = registerOutput<String>('location');
     managedIdentityId = registerOutput<String>('managedIdentityId');
-    managedIdentityResourceId = registerOutput<String>(
-      'managedIdentityResourceId',
-    );
+    managedIdentityResourceId = registerOutput<String>('managedIdentityResourceId');
     mappingRuleName = registerOutput<String?>('mappingRuleName');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -737,29 +716,23 @@ class EventGridDataConnection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:kusto/eventGridDataConnection:EventGridDataConnection',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:kusto/eventGridDataConnection:EventGridDataConnection',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     blobStorageEventType = registerOutput<String?>('blobStorageEventType');
     clusterName = registerOutput<String>('clusterName');
     dataFormat = registerOutput<String?>('dataFormat');
     databaseName = registerOutput<String>('databaseName');
     databaseRoutingType = registerOutput<String?>('databaseRoutingType');
-    eventgridEventSubscriptionId = registerOutput<String>(
-      'eventgridEventSubscriptionId',
-    );
+    eventgridEventSubscriptionId = registerOutput<String>('eventgridEventSubscriptionId');
     eventgridResourceId = registerOutput<String>('eventgridResourceId');
-    eventhubConsumerGroupName = registerOutput<String>(
-      'eventhubConsumerGroupName',
-    );
+    eventhubConsumerGroupName = registerOutput<String>('eventhubConsumerGroupName');
     eventhubId = registerOutput<String>('eventhubId');
     location = registerOutput<String>('location');
     managedIdentityId = registerOutput<String>('managedIdentityId');
-    managedIdentityResourceId = registerOutput<String>(
-      'managedIdentityResourceId',
-    );
+    managedIdentityResourceId = registerOutput<String>('managedIdentityResourceId');
     mappingRuleName = registerOutput<String?>('mappingRuleName');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');

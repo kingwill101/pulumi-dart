@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EfsLocationEc2Config {
   /// List of Amazon Resource Names (ARNs) of the EC2 Security Groups that are associated with the EFS Mount Target.
   final pulumi.Input<List<String>> securityGroupArns;
-
   /// Amazon Resource Name (ARN) of the EC2 Subnet that is associated with the EFS Mount Target.
   final pulumi.Input<String> subnetArn;
 
@@ -26,10 +25,9 @@ class EfsLocationEc2Config {
 
   factory EfsLocationEc2Config.fromMap(Map<String, dynamic> map) {
     return EfsLocationEc2Config(
-      securityGroupArns: pulumi.Input.fromValue(
-        (map['securityGroupArns'] as List).cast<String>(),
-      ),
+      securityGroupArns: pulumi.Input.fromValue((map['securityGroupArns'] as List).cast<String>()),
       subnetArn: pulumi.Input.fromValue(map['subnetArn'] as String),
     );
   }
 }
+

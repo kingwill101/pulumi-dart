@@ -243,13 +243,10 @@ import 'database_kafka_schema_registry_state.dart';
 class DatabaseKafkaSchemaRegistry extends pulumi.CustomResource {
   /// The ID of the target Kafka cluster.
   late final pulumi.Output<String> clusterId;
-
   /// The schema definition as a string.
   late final pulumi.Output<String> schema;
-
   /// The schema type. Available values are: avro, json, or protobuf.
   late final pulumi.Output<String> schemaType;
-
   /// The name of the schema subject.
   late final pulumi.Output<String> subjectName;
 
@@ -262,11 +259,11 @@ class DatabaseKafkaSchemaRegistry extends pulumi.CustomResource {
     DatabaseKafkaSchemaRegistryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/databaseKafkaSchemaRegistry:DatabaseKafkaSchemaRegistry',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/databaseKafkaSchemaRegistry:DatabaseKafkaSchemaRegistry',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterId = registerOutput<String>('clusterId');
     schema = registerOutput<String>('schema');
     schemaType = registerOutput<String>('schemaType');
@@ -291,11 +288,11 @@ class DatabaseKafkaSchemaRegistry extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/databaseKafkaSchemaRegistry:DatabaseKafkaSchemaRegistry',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/databaseKafkaSchemaRegistry:DatabaseKafkaSchemaRegistry',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterId = registerOutput<String>('clusterId');
     schema = registerOutput<String>('schema');
     schemaType = registerOutput<String>('schemaType');

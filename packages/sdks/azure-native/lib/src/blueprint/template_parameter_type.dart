@@ -20,3 +20,4 @@ enum TemplateParameterType {
     throw ArgumentError('Unknown TemplateParameterType value: $value');
   }
 }
+

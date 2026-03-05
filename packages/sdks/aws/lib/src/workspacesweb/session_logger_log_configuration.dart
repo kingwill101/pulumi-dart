@@ -9,29 +9,20 @@ class SessionLoggerLogConfiguration {
 
   /// Creates a new [SessionLoggerLogConfiguration].
   /// [s3] Configuration block for S3 log delivery. See S3 Configuration below.
-  SessionLoggerLogConfiguration({this.s3});
+  SessionLoggerLogConfiguration({
+    this.s3,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      's3':
-          ?pulumi.Input.mapOptionalInputValue<
-            SessionLoggerLogConfigurationS3,
-            Map<String, dynamic>
-          >(s3, (value) => value.toMap()),
+      's3': ?pulumi.Input.mapOptionalInputValue<SessionLoggerLogConfigurationS3, Map<String, dynamic>>(s3, (value) => value.toMap()),
     };
   }
 
   factory SessionLoggerLogConfiguration.fromMap(Map<String, dynamic> map) {
     return SessionLoggerLogConfiguration(
-      s3: (() {
-        final guardedValue = map['s3'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SessionLoggerLogConfigurationS3.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      s3: (() { final guardedValue = map['s3']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SessionLoggerLogConfigurationS3.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IPRuleResponse {
   /// Action when client IP address is matched.
   final pulumi.Input<String> action;
-
   /// IPv4 address, or IPv4 address range in CIDR format.
   final pulumi.Input<String> value;
 
   /// Creates a new [IPRuleResponse].
   /// [action] Action when client IP address is matched.
   /// [value] IPv4 address, or IPv4 address range in CIDR format.
-  IPRuleResponse({required this.action, required this.value});
+  IPRuleResponse({
+    required this.action,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'action': action, 'value': value};
+    return <String, dynamic>{
+      'action': action,
+      'value': value,
+    };
   }
 
   factory IPRuleResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class IPRuleResponse {
     );
   }
 }
+

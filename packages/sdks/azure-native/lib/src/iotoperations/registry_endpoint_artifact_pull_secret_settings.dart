@@ -9,17 +9,20 @@ class RegistryEndpointArtifactPullSecretSettings {
 
   /// Creates a new [RegistryEndpointArtifactPullSecretSettings].
   /// [secretRef] The name of the kubernetes secret that contains the artifact pull secret.
-  RegistryEndpointArtifactPullSecretSettings({required this.secretRef});
+  RegistryEndpointArtifactPullSecretSettings({
+    required this.secretRef,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'secretRef': secretRef};
+    return <String, dynamic>{
+      'secretRef': secretRef,
+    };
   }
 
-  factory RegistryEndpointArtifactPullSecretSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RegistryEndpointArtifactPullSecretSettings.fromMap(Map<String, dynamic> map) {
     return RegistryEndpointArtifactPullSecretSettings(
       secretRef: pulumi.Input.fromValue(map['secretRef'] as String),
     );
   }
 }
+

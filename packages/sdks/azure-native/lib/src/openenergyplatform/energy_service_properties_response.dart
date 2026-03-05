@@ -24,18 +24,7 @@ class EnergyServicePropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'authAppId': ?authAppId,
-      'dataPartitionNames':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<DataPartitionNamesResponse>,
-            List<Map<String, dynamic>>
-          >(
-            dataPartitionNames,
-            (value) =>
-                pulumi.Input.encodeList<
-                  DataPartitionNamesResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'dataPartitionNames': ?pulumi.Input.mapOptionalInputValue<List<DataPartitionNamesResponse>, List<Map<String, dynamic>>>(dataPartitionNames, (value) => pulumi.Input.encodeList<DataPartitionNamesResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'dnsName': dnsName,
       'provisioningState': provisioningState,
     };
@@ -43,27 +32,11 @@ class EnergyServicePropertiesResponse {
 
   factory EnergyServicePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return EnergyServicePropertiesResponse(
-      authAppId: (() {
-        final guardedValue = map['authAppId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dataPartitionNames: (() {
-        final guardedValue = map['dataPartitionNames'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<DataPartitionNamesResponse>(
-            guardedValue,
-            (value) => DataPartitionNamesResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      authAppId: (() { final guardedValue = map['authAppId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dataPartitionNames: (() { final guardedValue = map['dataPartitionNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DataPartitionNamesResponse>(guardedValue, (value) => DataPartitionNamesResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       dnsName: pulumi.Input.fromValue(map['dnsName'] as String),
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
     );
   }
 }
+

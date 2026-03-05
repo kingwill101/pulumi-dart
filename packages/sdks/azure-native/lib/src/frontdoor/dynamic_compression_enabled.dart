@@ -15,3 +15,4 @@ enum DynamicCompressionEnabled {
     throw ArgumentError('Unknown DynamicCompressionEnabled value: $value');
   }
 }
+

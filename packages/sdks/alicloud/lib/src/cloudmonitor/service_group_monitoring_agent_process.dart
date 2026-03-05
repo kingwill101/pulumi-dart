@@ -384,19 +384,14 @@ import 'service_group_monitoring_agent_process_state.dart';
 class ServiceGroupMonitoringAgentProcess extends pulumi.CustomResource {
   /// The alert rule configurations. See `alert_config` below.
   late final pulumi.Output<List<Map<String, dynamic>>> alertConfigs;
-
   /// The ID of the application group.
   late final pulumi.Output<String> groupId;
-
   /// The ID of the Group Monitoring Agent Process.
   late final pulumi.Output<String> groupMonitoringAgentProcessId;
-
   /// The logical operator used between conditional expressions that are used to match instances. Valid values: `all`, `and`, `or`.
   late final pulumi.Output<String> matchExpressFilterRelation;
-
   /// The expressions used to match instances. See `match_express` below.
   late final pulumi.Output<List<Map<String, dynamic>>> matchExpresses;
-
   /// The name of the process.
   late final pulumi.Output<String> processName;
 
@@ -409,22 +404,16 @@ class ServiceGroupMonitoringAgentProcess extends pulumi.CustomResource {
     ServiceGroupMonitoringAgentProcessArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudmonitor/serviceGroupMonitoringAgentProcess:ServiceGroupMonitoringAgentProcess',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudmonitor/serviceGroupMonitoringAgentProcess:ServiceGroupMonitoringAgentProcess',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alertConfigs = registerOutput<List<Map<String, dynamic>>>('alertConfigs');
     groupId = registerOutput<String>('groupId');
-    groupMonitoringAgentProcessId = registerOutput<String>(
-      'groupMonitoringAgentProcessId',
-    );
-    matchExpressFilterRelation = registerOutput<String>(
-      'matchExpressFilterRelation',
-    );
-    matchExpresses = registerOutput<List<Map<String, dynamic>>>(
-      'matchExpresses',
-    );
+    groupMonitoringAgentProcessId = registerOutput<String>('groupMonitoringAgentProcessId');
+    matchExpressFilterRelation = registerOutput<String>('matchExpressFilterRelation');
+    matchExpresses = registerOutput<List<Map<String, dynamic>>>('matchExpresses');
     processName = registerOutput<String>('processName');
   }
 
@@ -446,22 +435,16 @@ class ServiceGroupMonitoringAgentProcess extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudmonitor/serviceGroupMonitoringAgentProcess:ServiceGroupMonitoringAgentProcess',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudmonitor/serviceGroupMonitoringAgentProcess:ServiceGroupMonitoringAgentProcess',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alertConfigs = registerOutput<List<Map<String, dynamic>>>('alertConfigs');
     groupId = registerOutput<String>('groupId');
-    groupMonitoringAgentProcessId = registerOutput<String>(
-      'groupMonitoringAgentProcessId',
-    );
-    matchExpressFilterRelation = registerOutput<String>(
-      'matchExpressFilterRelation',
-    );
-    matchExpresses = registerOutput<List<Map<String, dynamic>>>(
-      'matchExpresses',
-    );
+    groupMonitoringAgentProcessId = registerOutput<String>('groupMonitoringAgentProcessId');
+    matchExpressFilterRelation = registerOutput<String>('matchExpressFilterRelation');
+    matchExpresses = registerOutput<List<Map<String, dynamic>>>('matchExpresses');
     processName = registerOutput<String>('processName');
   }
 }

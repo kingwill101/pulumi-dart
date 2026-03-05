@@ -15,3 +15,4 @@ enum StandardSupportedClouds {
     throw ArgumentError('Unknown StandardSupportedClouds value: $value');
   }
 }
+

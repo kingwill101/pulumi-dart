@@ -14,20 +14,23 @@ class GetCharacterSetNamesArgs {
   /// Creates a new [GetCharacterSetNamesArgs].
   /// [engine] Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB`.
   /// [outputFile] Optional.
-  GetCharacterSetNamesArgs({required this.engine, this.outputFile});
+  GetCharacterSetNamesArgs({
+    required this.engine,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'engine': engine, 'outputFile': ?outputFile};
+    return <String, dynamic>{
+      'engine': engine,
+      'outputFile': ?outputFile,
+    };
   }
 
   factory GetCharacterSetNamesArgs.fromMap(Map<String, dynamic> map) {
     return GetCharacterSetNamesArgs(
       engine: pulumi.Input.fromValue(map['engine'] as String),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -8,10 +8,14 @@ class GremlinGraphUniqueKey {
 
   /// Creates a new [GremlinGraphUniqueKey].
   /// [paths] A list of paths to use for this unique key. Changing this forces a new resource to be created.
-  GremlinGraphUniqueKey({required this.paths});
+  GremlinGraphUniqueKey({
+    required this.paths,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'paths': paths};
+    return <String, dynamic>{
+      'paths': paths,
+    };
   }
 
   factory GremlinGraphUniqueKey.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class GremlinGraphUniqueKey {
     );
   }
 }
+

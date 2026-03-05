@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AssetDiscoveryStatusStat {
   /// The count of data items within the referenced resource.
   final pulumi.Input<int>? dataItems;
-
   /// The number of stored data bytes within the referenced resource.
   final pulumi.Input<int>? dataSize;
-
   /// The count of fileset entities within the referenced resource.
   final pulumi.Input<int>? filesets;
-
   /// The count of table entities within the referenced resource.
   final pulumi.Input<int>? tables;
 
@@ -38,26 +35,11 @@ class AssetDiscoveryStatusStat {
 
   factory AssetDiscoveryStatusStat.fromMap(Map<String, dynamic> map) {
     return AssetDiscoveryStatusStat(
-      dataItems: (() {
-        final guardedValue = map['dataItems'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      dataSize: (() {
-        final guardedValue = map['dataSize'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      filesets: (() {
-        final guardedValue = map['filesets'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      tables: (() {
-        final guardedValue = map['tables'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      dataItems: (() { final guardedValue = map['dataItems']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      dataSize: (() { final guardedValue = map['dataSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      filesets: (() { final guardedValue = map['filesets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      tables: (() { final guardedValue = map['tables']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

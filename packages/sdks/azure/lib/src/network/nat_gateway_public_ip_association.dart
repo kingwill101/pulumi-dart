@@ -249,7 +249,6 @@ import 'nat_gateway_public_ip_association_state.dart';
 class NatGatewayPublicIpAssociation extends pulumi.CustomResource {
   /// The ID of the NAT Gateway. Changing this forces a new resource to be created.
   late final pulumi.Output<String> natGatewayId;
-
   /// The ID of the Public IP which this NAT Gateway which should be connected to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> publicIpAddressId;
 
@@ -262,11 +261,11 @@ class NatGatewayPublicIpAssociation extends pulumi.CustomResource {
     NatGatewayPublicIpAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/natGatewayPublicIpAssociation:NatGatewayPublicIpAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/natGatewayPublicIpAssociation:NatGatewayPublicIpAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     natGatewayId = registerOutput<String>('natGatewayId');
     publicIpAddressId = registerOutput<String>('publicIpAddressId');
   }
@@ -289,11 +288,11 @@ class NatGatewayPublicIpAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/natGatewayPublicIpAssociation:NatGatewayPublicIpAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/natGatewayPublicIpAssociation:NatGatewayPublicIpAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     natGatewayId = registerOutput<String>('natGatewayId');
     publicIpAddressId = registerOutput<String>('publicIpAddressId');
   }

@@ -12,7 +12,6 @@ import 'bucket_versioning_state.dart';
 class BucketVersioningOss extends pulumi.CustomResource {
   /// The name of the bucket.
   late final pulumi.Output<String> bucket;
-
   /// A bucket can be in one of the following versioning states: disabled, enabled, or suspended. By default, versioning is disabled for a bucket. Updating the value from Enabled or Suspended to Disabled will result in errors, because OSS does not support returning buckets to an unversioned state. .
   late final pulumi.Output<String> status;
 
@@ -25,11 +24,11 @@ class BucketVersioningOss extends pulumi.CustomResource {
     BucketVersioningArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:oss/bucketVersioning:BucketVersioning',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:oss/bucketVersioning:BucketVersioning',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
     status = registerOutput<String>('status');
   }
@@ -52,11 +51,11 @@ class BucketVersioningOss extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:oss/bucketVersioning:BucketVersioning',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:oss/bucketVersioning:BucketVersioning',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
     status = registerOutput<String>('status');
   }

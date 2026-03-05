@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SavedQueryState {
   /// The creation time of the resource.
   final pulumi.Input<String>? createTime;
-
   /// Query Description.
   final pulumi.Input<String>? description;
-
   /// Query Expression.
   final pulumi.Input<String>? expression;
-
   /// The name of the resource.
   final pulumi.Input<String>? savedQueryName;
 
@@ -39,26 +36,11 @@ class SavedQueryState {
 
   factory SavedQueryState.fromMap(Map<String, dynamic> map) {
     return SavedQueryState(
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      expression: (() {
-        final guardedValue = map['expression'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      savedQueryName: (() {
-        final guardedValue = map['savedQueryName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      expression: (() { final guardedValue = map['expression']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      savedQueryName: (() { final guardedValue = map['savedQueryName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

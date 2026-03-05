@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NotificationsSourceAttackPathResponse {
   /// Defines the minimal attach path risk level which will be sent as email notifications
   final pulumi.Input<String>? minimalRiskLevel;
-
   /// The source type that will trigger the notification
   /// Expected value is 'AttackPath'.
   final pulumi.Input<String> sourceType;
@@ -26,16 +25,11 @@ class NotificationsSourceAttackPathResponse {
     };
   }
 
-  factory NotificationsSourceAttackPathResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NotificationsSourceAttackPathResponse.fromMap(Map<String, dynamic> map) {
     return NotificationsSourceAttackPathResponse(
-      minimalRiskLevel: (() {
-        final guardedValue = map['minimalRiskLevel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      minimalRiskLevel: (() { final guardedValue = map['minimalRiskLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sourceType: pulumi.Input.fromValue(map['sourceType'] as String),
     );
   }
 }
+

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataSetPhysicalTableMapRelationalTableInputColumn {
   /// Name of this column in the underlying data source.
   final pulumi.Input<String> name;
-
   /// Data type of the column.
   final pulumi.Input<String> type;
 
@@ -18,15 +17,17 @@ class DataSetPhysicalTableMapRelationalTableInputColumn {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'type': type};
+    return <String, dynamic>{
+      'name': name,
+      'type': type,
+    };
   }
 
-  factory DataSetPhysicalTableMapRelationalTableInputColumn.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DataSetPhysicalTableMapRelationalTableInputColumn.fromMap(Map<String, dynamic> map) {
     return DataSetPhysicalTableMapRelationalTableInputColumn(
       name: pulumi.Input.fromValue(map['name'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

@@ -9,19 +9,14 @@ import 'vm_attachment_details.dart';
 class PersistentDiskDefaults {
   /// A map of labels to associate with the Persistent Disk.
   final pulumi.Input<Map<String, String>>? additionalLabels;
-
   /// Optional. The name of the Persistent Disk to create.
   final pulumi.Input<String>? diskName;
-
   /// The disk type to use.
   final pulumi.Input<PersistentDiskDefaultsDiskType>? diskType;
-
   /// Optional. The encryption to apply to the disk.
   final pulumi.Input<Encryption>? encryption;
-
   /// The ordinal number of the source VM disk.
   final pulumi.Input<int> sourceDiskNumber;
-
   /// Optional. Details for attachment of the disk to a VM. Used when the disk is set to be attacked to a target VM.
   final pulumi.Input<VmAttachmentDetails>? vmAttachmentDetails;
 
@@ -45,63 +40,22 @@ class PersistentDiskDefaults {
     return <String, dynamic>{
       'additionalLabels': ?additionalLabels,
       'diskName': ?diskName,
-      'diskType':
-          ?pulumi.Input.mapOptionalInputValue<
-            PersistentDiskDefaultsDiskType,
-            String
-          >(diskType, (value) => value.wireValue),
-      'encryption':
-          ?pulumi.Input.mapOptionalInputValue<Encryption, Map<String, dynamic>>(
-            encryption,
-            (value) => value.toMap(),
-          ),
+      'diskType': ?pulumi.Input.mapOptionalInputValue<PersistentDiskDefaultsDiskType, String>(diskType, (value) => value.wireValue),
+      'encryption': ?pulumi.Input.mapOptionalInputValue<Encryption, Map<String, dynamic>>(encryption, (value) => value.toMap()),
       'sourceDiskNumber': sourceDiskNumber,
-      'vmAttachmentDetails':
-          ?pulumi.Input.mapOptionalInputValue<
-            VmAttachmentDetails,
-            Map<String, dynamic>
-          >(vmAttachmentDetails, (value) => value.toMap()),
+      'vmAttachmentDetails': ?pulumi.Input.mapOptionalInputValue<VmAttachmentDetails, Map<String, dynamic>>(vmAttachmentDetails, (value) => value.toMap()),
     };
   }
 
   factory PersistentDiskDefaults.fromMap(Map<String, dynamic> map) {
     return PersistentDiskDefaults(
-      additionalLabels: (() {
-        final guardedValue = map['additionalLabels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      diskName: (() {
-        final guardedValue = map['diskName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      diskType: (() {
-        final guardedValue = map['diskType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PersistentDiskDefaultsDiskType.fromValue(guardedValue as String),
-        );
-      })(),
-      encryption: (() {
-        final guardedValue = map['encryption'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          Encryption.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
+      additionalLabels: (() { final guardedValue = map['additionalLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      diskName: (() { final guardedValue = map['diskName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      diskType: (() { final guardedValue = map['diskType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PersistentDiskDefaultsDiskType.fromValue(guardedValue as String)); })(),
+      encryption: (() { final guardedValue = map['encryption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Encryption.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       sourceDiskNumber: pulumi.Input.fromValue(map['sourceDiskNumber'] as int),
-      vmAttachmentDetails: (() {
-        final guardedValue = map['vmAttachmentDetails'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          VmAttachmentDetails.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      vmAttachmentDetails: (() { final guardedValue = map['vmAttachmentDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VmAttachmentDetails.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

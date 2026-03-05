@@ -15,3 +15,4 @@ enum BackupScheduleType {
     throw ArgumentError('Unknown BackupScheduleType value: $value');
   }
 }
+

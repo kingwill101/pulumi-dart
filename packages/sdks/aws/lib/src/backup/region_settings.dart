@@ -248,10 +248,8 @@ import 'region_settings_state.dart';
 class RegionSettings extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// A map of service names to their full management preferences for the Region. For more information, see the AWS Documentation on [what full management is](https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html#full-management) and [which services support full management](https://docs.aws.amazon.com/aws-backup/latest/devguide/backup-feature-availability.html#features-by-resource).
   late final pulumi.Output<Map<String, bool>> resourceTypeManagementPreference;
-
   /// A map of service names to their opt-in preferences for the Region. See [AWS Documentation on which services support backup](https://docs.aws.amazon.com/aws-backup/latest/devguide/backup-feature-availability.html).
   late final pulumi.Output<Map<String, bool>> resourceTypeOptInPreference;
 
@@ -264,18 +262,14 @@ class RegionSettings extends pulumi.CustomResource {
     RegionSettingsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:backup/regionSettings:RegionSettings',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:backup/regionSettings:RegionSettings',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     region = registerOutput<String>('region');
-    resourceTypeManagementPreference = registerOutput<Map<String, bool>>(
-      'resourceTypeManagementPreference',
-    );
-    resourceTypeOptInPreference = registerOutput<Map<String, bool>>(
-      'resourceTypeOptInPreference',
-    );
+    resourceTypeManagementPreference = registerOutput<Map<String, bool>>('resourceTypeManagementPreference');
+    resourceTypeOptInPreference = registerOutput<Map<String, bool>>('resourceTypeOptInPreference');
   }
 
   /// Gets an existing [RegionSettings] resource's state with the given [name] and [id].
@@ -296,17 +290,13 @@ class RegionSettings extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:backup/regionSettings:RegionSettings',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:backup/regionSettings:RegionSettings',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     region = registerOutput<String>('region');
-    resourceTypeManagementPreference = registerOutput<Map<String, bool>>(
-      'resourceTypeManagementPreference',
-    );
-    resourceTypeOptInPreference = registerOutput<Map<String, bool>>(
-      'resourceTypeOptInPreference',
-    );
+    resourceTypeManagementPreference = registerOutput<Map<String, bool>>('resourceTypeManagementPreference');
+    resourceTypeOptInPreference = registerOutput<Map<String, bool>>('resourceTypeOptInPreference');
   }
 }

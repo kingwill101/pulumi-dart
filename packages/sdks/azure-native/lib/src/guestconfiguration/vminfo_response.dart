@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VMInfoResponse {
   /// Azure resource Id of the VM.
   final pulumi.Input<String> id;
-
   /// UUID(Universally Unique Identifier) of the VM.
   final pulumi.Input<String> uuid;
 
   /// Creates a new [VMInfoResponse].
   /// [id] Azure resource Id of the VM.
   /// [uuid] UUID(Universally Unique Identifier) of the VM.
-  VMInfoResponse({required this.id, required this.uuid});
+  VMInfoResponse({
+    required this.id,
+    required this.uuid,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id, 'uuid': uuid};
+    return <String, dynamic>{
+      'id': id,
+      'uuid': uuid,
+    };
   }
 
   factory VMInfoResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class VMInfoResponse {
     );
   }
 }
+

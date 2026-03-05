@@ -15,3 +15,4 @@ enum DataCollectionMode {
     throw ArgumentError('Unknown DataCollectionMode value: $value');
   }
 }
+

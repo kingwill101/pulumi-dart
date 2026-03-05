@@ -133,22 +133,16 @@ import 'data_partition_rule_state.dart';
 class DataPartitionRule extends pulumi.CustomResource {
   /// The account id associated with the data partition rule.
   late final pulumi.Output<String> accountId;
-
   /// Whether or not this data partition rule is deleted. Deleting a data partition rule does not delete the already persisted data. This data will be retained for a given period of time specified in the retention policy field.
   late final pulumi.Output<bool> deleted;
-
   /// The description of the data partition rule.
   late final pulumi.Output<String?> description;
-
   /// Whether or not this data partition rule is enabled.
   late final pulumi.Output<bool> enabled;
-
   /// The NRQL to match events for this data partition rule. Logs matching this criteria will be routed to the specified data partition.
   late final pulumi.Output<String> nrql;
-
   /// The retention policy of the data partition data. Valid values are `SECONDARY` and `STANDARD`.
   late final pulumi.Output<String> retentionPolicy;
-
   /// The name of the data partition where logs will be allocated once the rule is enabled.
   late final pulumi.Output<String> targetDataPartition;
 
@@ -161,11 +155,11 @@ class DataPartitionRule extends pulumi.CustomResource {
     DataPartitionRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:index/dataPartitionRule:DataPartitionRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:index/dataPartitionRule:DataPartitionRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     deleted = registerOutput<bool>('deleted');
     description = registerOutput<String?>('description');
@@ -193,11 +187,11 @@ class DataPartitionRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:index/dataPartitionRule:DataPartitionRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:index/dataPartitionRule:DataPartitionRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     deleted = registerOutput<bool>('deleted');
     description = registerOutput<String?>('description');

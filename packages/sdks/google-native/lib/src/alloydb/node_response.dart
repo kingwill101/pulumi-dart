@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NodeResponse {
   /// The private IP address of the VM e.g. "10.57.0.34".
   final pulumi.Input<String> ip;
-
   /// Determined by state of the compute VM and postgres-service health. Compute VM state can have values listed in https://cloud.google.com/compute/docs/instances/instance-life-cycle and postgres-service health can have values: HEALTHY and UNHEALTHY.
   final pulumi.Input<String> state;
-
   /// The Compute Engine zone of the VM e.g. "us-central1-b".
   final pulumi.Input<String> zone;
 
@@ -17,10 +15,18 @@ class NodeResponse {
   /// [ip] The private IP address of the VM e.g. "10.57.0.34".
   /// [state] Determined by state of the compute VM and postgres-service health. Compute VM state can have values listed in https://cloud.google.com/compute/docs/instances/instance-life-cycle and postgres-service health can have values: HEALTHY and UNHEALTHY.
   /// [zone] The Compute Engine zone of the VM e.g. "us-central1-b".
-  NodeResponse({required this.ip, required this.state, required this.zone});
+  NodeResponse({
+    required this.ip,
+    required this.state,
+    required this.zone,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'ip': ip, 'state': state, 'zone': zone};
+    return <String, dynamic>{
+      'ip': ip,
+      'state': state,
+      'zone': zone,
+    };
   }
 
   factory NodeResponse.fromMap(Map<String, dynamic> map) {
@@ -31,3 +37,4 @@ class NodeResponse {
     );
   }
 }
+

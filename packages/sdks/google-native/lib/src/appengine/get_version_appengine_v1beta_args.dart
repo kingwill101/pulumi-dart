@@ -40,18 +40,11 @@ class GetVersionAppengineV1betaArgs {
   factory GetVersionAppengineV1betaArgs.fromMap(Map<String, dynamic> map) {
     return GetVersionAppengineV1betaArgs(
       appId: pulumi.Input.fromValue(map['appId'] as String),
-      includeExtraData: (() {
-        final guardedValue = map['includeExtraData'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      includeExtraData: (() { final guardedValue = map['includeExtraData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serviceId: pulumi.Input.fromValue(map['serviceId'] as String),
       versionId: pulumi.Input.fromValue(map['versionId'] as String),
-      view: (() {
-        final guardedValue = map['view'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      view: (() { final guardedValue = map['view']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

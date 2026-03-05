@@ -16,3 +16,4 @@ enum OrganizationAddressGroupType {
     throw ArgumentError('Unknown OrganizationAddressGroupType value: $value');
   }
 }
+

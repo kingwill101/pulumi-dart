@@ -7,22 +7,16 @@ import 'execution_parameters_response.dart';
 class ScheduledActionsScheduleResponse {
   /// The type of deadline the scheduled action is supposed to follow for the schedule. If no value is passed, it will default to InitiateAt.
   final pulumi.Input<String>? deadlineType;
-
   /// The execution parameters the scheduled action is supposed to follow
   final pulumi.Input<ExecutionParametersResponse>? executionParameters;
-
   /// The days of the month the scheduled action is supposed to run on. If empty, it means it will run on every day of the month.
   final pulumi.Input<List<int>> requestedDaysOfTheMonth;
-
   /// The months the scheduled action is supposed to run on
   final pulumi.Input<List<String>> requestedMonths;
-
   /// The week days the scheduled action is supposed to run on
   final pulumi.Input<List<String>> requestedWeekDays;
-
   /// The time the scheduled action is supposed to run on
   final pulumi.Input<String> scheduledTime;
-
   /// The timezone the scheduled time is specified on
   final pulumi.Input<String> timeZone;
 
@@ -47,11 +41,7 @@ class ScheduledActionsScheduleResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'deadlineType': ?deadlineType,
-      'executionParameters':
-          ?pulumi.Input.mapOptionalInputValue<
-            ExecutionParametersResponse,
-            Map<String, dynamic>
-          >(executionParameters, (value) => value.toMap()),
+      'executionParameters': ?pulumi.Input.mapOptionalInputValue<ExecutionParametersResponse, Map<String, dynamic>>(executionParameters, (value) => value.toMap()),
       'requestedDaysOfTheMonth': requestedDaysOfTheMonth,
       'requestedMonths': requestedMonths,
       'requestedWeekDays': requestedWeekDays,
@@ -62,31 +52,14 @@ class ScheduledActionsScheduleResponse {
 
   factory ScheduledActionsScheduleResponse.fromMap(Map<String, dynamic> map) {
     return ScheduledActionsScheduleResponse(
-      deadlineType: (() {
-        final guardedValue = map['deadlineType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      executionParameters: (() {
-        final guardedValue = map['executionParameters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ExecutionParametersResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      requestedDaysOfTheMonth: pulumi.Input.fromValue(
-        (map['requestedDaysOfTheMonth'] as List).cast<int>(),
-      ),
-      requestedMonths: pulumi.Input.fromValue(
-        (map['requestedMonths'] as List).cast<String>(),
-      ),
-      requestedWeekDays: pulumi.Input.fromValue(
-        (map['requestedWeekDays'] as List).cast<String>(),
-      ),
+      deadlineType: (() { final guardedValue = map['deadlineType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      executionParameters: (() { final guardedValue = map['executionParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExecutionParametersResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      requestedDaysOfTheMonth: pulumi.Input.fromValue((map['requestedDaysOfTheMonth'] as List).cast<int>()),
+      requestedMonths: pulumi.Input.fromValue((map['requestedMonths'] as List).cast<String>()),
+      requestedWeekDays: pulumi.Input.fromValue((map['requestedWeekDays'] as List).cast<String>()),
       scheduledTime: pulumi.Input.fromValue(map['scheduledTime'] as String),
       timeZone: pulumi.Input.fromValue(map['timeZone'] as String),
     );
   }
 }
+

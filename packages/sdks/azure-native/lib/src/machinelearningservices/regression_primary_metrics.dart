@@ -17,3 +17,4 @@ enum RegressionPrimaryMetrics {
     throw ArgumentError('Unknown RegressionPrimaryMetrics value: $value');
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPrivateEndpointConnectionArgs {
   /// The name of the cluster.
   final pulumi.Input<String> clusterName;
-
   /// The name of the private endpoint connection.
   final pulumi.Input<String> privateEndpointConnectionName;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -37,12 +35,9 @@ class GetPrivateEndpointConnectionArgs {
   factory GetPrivateEndpointConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetPrivateEndpointConnectionArgs(
       clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
-      privateEndpointConnectionName: pulumi.Input.fromValue(
-        map['privateEndpointConnectionName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      privateEndpointConnectionName: pulumi.Input.fromValue(map['privateEndpointConnectionName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

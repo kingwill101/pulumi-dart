@@ -8,19 +8,20 @@ class RestorePlanRestoreConfigExcludedNamespaces {
 
   /// Creates a new [RestorePlanRestoreConfigExcludedNamespaces].
   /// [namespaces] A list of Kubernetes Namespaces.
-  RestorePlanRestoreConfigExcludedNamespaces({required this.namespaces});
+  RestorePlanRestoreConfigExcludedNamespaces({
+    required this.namespaces,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'namespaces': namespaces};
+    return <String, dynamic>{
+      'namespaces': namespaces,
+    };
   }
 
-  factory RestorePlanRestoreConfigExcludedNamespaces.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RestorePlanRestoreConfigExcludedNamespaces.fromMap(Map<String, dynamic> map) {
     return RestorePlanRestoreConfigExcludedNamespaces(
-      namespaces: pulumi.Input.fromValue(
-        (map['namespaces'] as List).cast<String>(),
-      ),
+      namespaces: pulumi.Input.fromValue((map['namespaces'] as List).cast<String>()),
     );
   }
 }
+

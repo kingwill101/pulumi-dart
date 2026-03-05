@@ -297,46 +297,35 @@ class AppGateway extends pulumi.CustomResource {
   /// A list of connections allocated for the Gateway.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> allocatedConnections;
-
   /// An arbitrary user-provided name for the AppGateway.
   late final pulumi.Output<String?> displayName;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// The type of hosting used by the AppGateway.
   /// Default value is `HOST_TYPE_UNSPECIFIED`.
   /// Possible values are: `HOST_TYPE_UNSPECIFIED`, `GCP_REGIONAL_MIG`.
   late final pulumi.Output<String?> hostType;
-
   /// Resource labels to represent user provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// ID of the AppGateway.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// The region of the AppGateway.
   late final pulumi.Output<String?> region;
-
   /// Represents the different states of a AppGateway.
   late final pulumi.Output<String> state;
-
   /// The type of network connectivity used by the AppGateway.
   /// Default value is `TYPE_UNSPECIFIED`.
   /// Possible values are: `TYPE_UNSPECIFIED`, `TCP_PROXY`.
   late final pulumi.Output<String?> type;
-
   /// Server-defined URI for this resource.
   late final pulumi.Output<String> uri;
 
@@ -349,14 +338,12 @@ class AppGateway extends pulumi.CustomResource {
     AppGatewayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:beyondcorp/appGateway:AppGateway',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    allocatedConnections = registerOutput<List<Map<String, dynamic>>>(
-      'allocatedConnections',
-    );
+          'gcp:beyondcorp/appGateway:AppGateway',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    allocatedConnections = registerOutput<List<Map<String, dynamic>>>('allocatedConnections');
     displayName = registerOutput<String?>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     hostType = registerOutput<String?>('hostType');
@@ -388,14 +375,12 @@ class AppGateway extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:beyondcorp/appGateway:AppGateway',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    allocatedConnections = registerOutput<List<Map<String, dynamic>>>(
-      'allocatedConnections',
-    );
+          'gcp:beyondcorp/appGateway:AppGateway',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    allocatedConnections = registerOutput<List<Map<String, dynamic>>>('allocatedConnections');
     displayName = registerOutput<String?>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     hostType = registerOutput<String?>('hostType');

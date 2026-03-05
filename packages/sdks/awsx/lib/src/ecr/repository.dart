@@ -8,10 +8,8 @@ import 'package:pulumi_aws/ecr.dart' as pulumi_aws_ecr;
 class Repository extends pulumi.ComponentResource {
   /// Underlying repository lifecycle policy
   late final pulumi.Output<pulumi_aws_ecr.LifecyclePolicy?> lifecyclePolicy;
-
   /// Underlying Repository resource
   late final pulumi.Output<pulumi_aws_ecr.Repository?> repository;
-
   /// The URL of the repository (in the form aws_account_id.dkr.ecr.region.amazonaws.com/repositoryName).
   late final pulumi.Output<String?> url;
 
@@ -24,15 +22,13 @@ class Repository extends pulumi.ComponentResource {
     RepositoryArgs? args,
     pulumi.ComponentResourceOptions? options,
   }) : super(
-         'awsx:ecr:Repository',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.ComponentResourceOptions(),
-         remote: true,
-       ) {
-    lifecyclePolicy = registerOutput<pulumi_aws_ecr.LifecyclePolicy?>(
-      'lifecyclePolicy',
-    );
+          'awsx:ecr:Repository',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.ComponentResourceOptions(),
+          remote: true,
+        ) {
+    lifecyclePolicy = registerOutput<pulumi_aws_ecr.LifecyclePolicy?>('lifecyclePolicy');
     repository = registerOutput<pulumi_aws_ecr.Repository?>('repository');
     url = registerOutput<String?>('url');
   }

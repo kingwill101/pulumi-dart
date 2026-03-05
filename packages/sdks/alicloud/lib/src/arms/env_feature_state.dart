@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnvFeatureState {
   /// The name of the resource.
   final pulumi.Input<String>? envFeatureName;
-
   /// The first ID of the resource.
   final pulumi.Input<String>? environmentId;
-
   /// Version information of the Feature. You can query Feature information by using ListEnvironmentFeatures.
   final pulumi.Input<String>? featureVersion;
-
   /// Namespace.
   final pulumi.Input<String>? namespace;
-
   /// Status.
   final pulumi.Input<String>? status;
 
@@ -45,31 +41,12 @@ class EnvFeatureState {
 
   factory EnvFeatureState.fromMap(Map<String, dynamic> map) {
     return EnvFeatureState(
-      envFeatureName: (() {
-        final guardedValue = map['envFeatureName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      environmentId: (() {
-        final guardedValue = map['environmentId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      featureVersion: (() {
-        final guardedValue = map['featureVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      namespace: (() {
-        final guardedValue = map['namespace'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      envFeatureName: (() { final guardedValue = map['envFeatureName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      environmentId: (() { final guardedValue = map['environmentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      featureVersion: (() { final guardedValue = map['featureVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      namespace: (() { final guardedValue = map['namespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

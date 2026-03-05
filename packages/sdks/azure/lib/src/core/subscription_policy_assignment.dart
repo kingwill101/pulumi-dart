@@ -261,45 +261,32 @@ import 'subscription_policy_assignment_state.dart';
 class SubscriptionPolicyAssignment extends pulumi.CustomResource {
   /// A description which should be used for this Policy Assignment.
   late final pulumi.Output<String?> description;
-
   /// The Display Name for this Policy Assignment.
   late final pulumi.Output<String?> displayName;
-
   /// Specifies if this Policy should be enforced or not? Defaults to `true`.
   late final pulumi.Output<bool?> enforce;
-
   /// An `identity` block as defined below.
   ///
   /// &gt; **Note:** The `location` field must also be specified when `identity` is specified.
   late final pulumi.Output<SubscriptionPolicyAssignmentIdentity?> identity;
-
   /// The Azure Region where the Policy Assignment should exist. Changing this forces a new Policy Assignment to be created.
   late final pulumi.Output<String> location;
-
   /// A JSON mapping of any Metadata for this Policy.
   late final pulumi.Output<String> metadata;
-
   /// The name which should be used for this Policy Assignment. Changing this forces a new Policy Assignment to be created. Cannot exceed 64 characters in length.
   late final pulumi.Output<String> name;
-
   /// One or more `non_compliance_message` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> nonComplianceMessages;
-
   /// Specifies a list of Resource Scopes (for example a Subscription, or a Resource Group) within this Management Group which are excluded from this Policy.
   late final pulumi.Output<List<String>?> notScopes;
-
   /// One or more `overrides` blocks as defined below. More detail about `overrides` and `resource_selectors` see [policy assignment structure](https://learn.microsoft.com/en-us/azure/governance/policy/concepts/assignment-structure)
   late final pulumi.Output<List<Map<String, dynamic>>?> overrides;
-
   /// A JSON mapping of any Parameters for this Policy.
   late final pulumi.Output<String?> parameters;
-
   /// The ID of the Policy Definition or Policy Definition Set. Changing this forces a new Policy Assignment to be created.
   late final pulumi.Output<String> policyDefinitionId;
-
   /// One or more `resource_selectors` blocks as defined below to filter polices by resource properties.
   late final pulumi.Output<List<Map<String, dynamic>>?> resourceSelectors;
-
   /// The ID of the Subscription where this Policy Assignment should be created. Changing this forces a new Policy Assignment to be created.
   late final pulumi.Output<String> subscriptionId;
 
@@ -312,37 +299,24 @@ class SubscriptionPolicyAssignment extends pulumi.CustomResource {
     SubscriptionPolicyAssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:core/subscriptionPolicyAssignment:SubscriptionPolicyAssignment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:core/subscriptionPolicyAssignment:SubscriptionPolicyAssignment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     enforce = registerOutput<bool?>('enforce');
-    identity = registerOutput<SubscriptionPolicyAssignmentIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SubscriptionPolicyAssignmentIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<SubscriptionPolicyAssignmentIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubscriptionPolicyAssignmentIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     metadata = registerOutput<String>('metadata');
     this.name = registerOutput<String>('name');
-    nonComplianceMessages = registerOutput<List<Map<String, dynamic>>?>(
-      'nonComplianceMessages',
-    );
+    nonComplianceMessages = registerOutput<List<Map<String, dynamic>>?>('nonComplianceMessages');
     notScopes = registerOutput<List<String>?>('notScopes');
     overrides = registerOutput<List<Map<String, dynamic>>?>('overrides');
     parameters = registerOutput<String?>('parameters');
     policyDefinitionId = registerOutput<String>('policyDefinitionId');
-    resourceSelectors = registerOutput<List<Map<String, dynamic>>?>(
-      'resourceSelectors',
-    );
+    resourceSelectors = registerOutput<List<Map<String, dynamic>>?>('resourceSelectors');
     subscriptionId = registerOutput<String>('subscriptionId');
   }
 
@@ -364,37 +338,24 @@ class SubscriptionPolicyAssignment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:core/subscriptionPolicyAssignment:SubscriptionPolicyAssignment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:core/subscriptionPolicyAssignment:SubscriptionPolicyAssignment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     enforce = registerOutput<bool?>('enforce');
-    identity = registerOutput<SubscriptionPolicyAssignmentIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SubscriptionPolicyAssignmentIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<SubscriptionPolicyAssignmentIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubscriptionPolicyAssignmentIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     metadata = registerOutput<String>('metadata');
     this.name = registerOutput<String>('name');
-    nonComplianceMessages = registerOutput<List<Map<String, dynamic>>?>(
-      'nonComplianceMessages',
-    );
+    nonComplianceMessages = registerOutput<List<Map<String, dynamic>>?>('nonComplianceMessages');
     notScopes = registerOutput<List<String>?>('notScopes');
     overrides = registerOutput<List<Map<String, dynamic>>?>('overrides');
     parameters = registerOutput<String?>('parameters');
     policyDefinitionId = registerOutput<String>('policyDefinitionId');
-    resourceSelectors = registerOutput<List<Map<String, dynamic>>?>(
-      'resourceSelectors',
-    );
+    resourceSelectors = registerOutput<List<Map<String, dynamic>>?>('resourceSelectors');
     subscriptionId = registerOutput<String>('subscriptionId');
   }
 }

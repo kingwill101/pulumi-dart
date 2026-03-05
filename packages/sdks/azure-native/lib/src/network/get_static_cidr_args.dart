@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetStaticCidrArgs {
   /// The name of the network manager.
   final pulumi.Input<String> networkManagerName;
-
   /// Pool resource name.
   final pulumi.Input<String> poolName;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
-
   /// StaticCidr resource name to retrieve.
   final pulumi.Input<String> staticCidrName;
 
@@ -42,14 +39,11 @@ class GetStaticCidrArgs {
 
   factory GetStaticCidrArgs.fromMap(Map<String, dynamic> map) {
     return GetStaticCidrArgs(
-      networkManagerName: pulumi.Input.fromValue(
-        map['networkManagerName'] as String,
-      ),
+      networkManagerName: pulumi.Input.fromValue(map['networkManagerName'] as String),
       poolName: pulumi.Input.fromValue(map['poolName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       staticCidrName: pulumi.Input.fromValue(map['staticCidrName'] as String),
     );
   }
 }
+

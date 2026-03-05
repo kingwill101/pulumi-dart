@@ -13,8 +13,7 @@ enum GoogleCloudMlV1HyperparameterSpecGoal {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GoogleCloudMlV1HyperparameterSpecGoal value: $value',
-    );
+    throw ArgumentError('Unknown GoogleCloudMlV1HyperparameterSpecGoal value: $value');
   }
 }
+

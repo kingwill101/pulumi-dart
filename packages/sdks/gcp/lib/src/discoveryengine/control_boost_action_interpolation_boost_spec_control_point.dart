@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ControlBoostActionInterpolationBoostSpecControlPoint {
   /// The attribute value of the control point.
   final pulumi.Input<String>? attributeValue;
-
   /// The value between -1 to 1 by which to boost the score if the attributeValue
   /// evaluates to the value specified above.
   final pulumi.Input<double>? boostAmount;
@@ -25,20 +24,11 @@ class ControlBoostActionInterpolationBoostSpecControlPoint {
     };
   }
 
-  factory ControlBoostActionInterpolationBoostSpecControlPoint.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ControlBoostActionInterpolationBoostSpecControlPoint.fromMap(Map<String, dynamic> map) {
     return ControlBoostActionInterpolationBoostSpecControlPoint(
-      attributeValue: (() {
-        final guardedValue = map['attributeValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      boostAmount: (() {
-        final guardedValue = map['boostAmount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      attributeValue: (() { final guardedValue = map['attributeValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      boostAmount: (() { final guardedValue = map['boostAmount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

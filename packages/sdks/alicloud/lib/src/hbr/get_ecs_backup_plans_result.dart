@@ -43,11 +43,7 @@ class GetEcsBackupPlansResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'plans':
-          pulumi.Input.encodeList<GetEcsBackupPlansPlan, Map<String, dynamic>>(
-            plans,
-            (value) => value.toMap(),
-          ),
+      'plans': pulumi.Input.encodeList<GetEcsBackupPlansPlan, Map<String, dynamic>>(plans, (value) => value.toMap()),
       'vaultId': ?vaultId,
     };
   }
@@ -56,33 +52,13 @@ class GetEcsBackupPlansResult {
     return GetEcsBackupPlansResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      instanceId: (() {
-        final guardedValue = map['instanceId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      instanceId: (() { final guardedValue = map['instanceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      plans: pulumi.Input.decodeList<GetEcsBackupPlansPlan>(
-        map['plans']!,
-        (value) => GetEcsBackupPlansPlan.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      vaultId: (() {
-        final guardedValue = map['vaultId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      plans: pulumi.Input.decodeList<GetEcsBackupPlansPlan>(map['plans']!, (value) => GetEcsBackupPlansPlan.fromMap((value as Map).cast<String, dynamic>())),
+      vaultId: (() { final guardedValue = map['vaultId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

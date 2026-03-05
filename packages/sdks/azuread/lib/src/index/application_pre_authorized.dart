@@ -324,10 +324,8 @@ import 'application_pre_authorized_state.dart';
 class ApplicationPreAuthorized extends pulumi.CustomResource {
   /// The resource ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
   late final pulumi.Output<String> applicationId;
-
   /// The client ID of the application being authorized. Changing this field forces a new resource to be created.
   late final pulumi.Output<String> authorizedClientId;
-
   /// A set of permission scope IDs required by the authorized application.
   late final pulumi.Output<List<String>> permissionIds;
 
@@ -340,11 +338,11 @@ class ApplicationPreAuthorized extends pulumi.CustomResource {
     ApplicationPreAuthorizedArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/applicationPreAuthorized:ApplicationPreAuthorized',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azuread:index/applicationPreAuthorized:ApplicationPreAuthorized',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationId = registerOutput<String>('applicationId');
     authorizedClientId = registerOutput<String>('authorizedClientId');
     permissionIds = registerOutput<List<String>>('permissionIds');
@@ -368,11 +366,11 @@ class ApplicationPreAuthorized extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/applicationPreAuthorized:ApplicationPreAuthorized',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azuread:index/applicationPreAuthorized:ApplicationPreAuthorized',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationId = registerOutput<String>('applicationId');
     authorizedClientId = registerOutput<String>('authorizedClientId');
     permissionIds = registerOutput<List<String>>('permissionIds');

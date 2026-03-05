@@ -4,14 +4,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EnterpriseCrmEventbusStatsDimensionsResponse {
   final pulumi.Input<String> clientId;
-
   /// Whether to include or exclude the enums matching the regex.
   final pulumi.Input<String> enumFilterType;
   final pulumi.Input<String> errorEnumString;
   final pulumi.Input<String> retryAttempt;
   final pulumi.Input<String> taskName;
   final pulumi.Input<String> taskNumber;
-
   /// Stats have been or will be aggregated on set fields for any semantically-meaningful combination.
   final pulumi.Input<String> triggerId;
   final pulumi.Input<String> warningEnumString;
@@ -57,9 +55,7 @@ class EnterpriseCrmEventbusStatsDimensionsResponse {
     };
   }
 
-  factory EnterpriseCrmEventbusStatsDimensionsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EnterpriseCrmEventbusStatsDimensionsResponse.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusStatsDimensionsResponse(
       clientId: pulumi.Input.fromValue(map['clientId'] as String),
       enumFilterType: pulumi.Input.fromValue(map['enumFilterType'] as String),
@@ -68,11 +64,10 @@ class EnterpriseCrmEventbusStatsDimensionsResponse {
       taskName: pulumi.Input.fromValue(map['taskName'] as String),
       taskNumber: pulumi.Input.fromValue(map['taskNumber'] as String),
       triggerId: pulumi.Input.fromValue(map['triggerId'] as String),
-      warningEnumString: pulumi.Input.fromValue(
-        map['warningEnumString'] as String,
-      ),
+      warningEnumString: pulumi.Input.fromValue(map['warningEnumString'] as String),
       workflowId: pulumi.Input.fromValue(map['workflowId'] as String),
       workflowName: pulumi.Input.fromValue(map['workflowName'] as String),
     );
   }
 }
+

@@ -15,3 +15,4 @@ enum CmkIdentityType {
     throw ArgumentError('Unknown CmkIdentityType value: $value');
   }
 }
+

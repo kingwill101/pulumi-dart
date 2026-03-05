@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCertificatesArgs {
   /// Specifies whether to include certificates which are not completely provisioned. Defaults to true.
   final pulumi.Input<bool>? includePending;
-
   /// Specifies the ID of the Key Vault instance to fetch certificate names from, available on the `azure.keyvault.KeyVault` Data Source / Resource.
   ///
   /// &gt; **Note:** The vault must be in the same subscription as the provider. If the vault is in another subscription, you must create an aliased provider for that subscription.
@@ -18,7 +17,10 @@ class GetCertificatesArgs {
   /// Creates a new [GetCertificatesArgs].
   /// [includePending] Specifies whether to include certificates which are not completely provisioned. Defaults to true.
   /// [keyVaultId] Specifies the ID of the Key Vault instance to fetch certificate names from, available on the `azure.keyvault.KeyVault` Data Source / Resource.
-  GetCertificatesArgs({this.includePending, required this.keyVaultId});
+  GetCertificatesArgs({
+    this.includePending,
+    required this.keyVaultId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,12 +31,9 @@ class GetCertificatesArgs {
 
   factory GetCertificatesArgs.fromMap(Map<String, dynamic> map) {
     return GetCertificatesArgs(
-      includePending: (() {
-        final guardedValue = map['includePending'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      includePending: (() { final guardedValue = map['includePending']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       keyVaultId: pulumi.Input.fromValue(map['keyVaultId'] as String),
     );
   }
 }
+

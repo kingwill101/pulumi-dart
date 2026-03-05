@@ -10,20 +10,16 @@ class CommonBandwithPackageAttachmentArgs {
   /// The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
   /// &gt; **NOTE:**  From version 1.261.0, If you want to cancel the maximum bandwidth configuration for the EIP, you can set `bandwidth_package_bandwidth` to `Cancelled`.
   final pulumi.Input<String>? bandwidthPackageBandwidth;
-
   /// The ID of the Internet Shared Bandwidth instance.
   final pulumi.Input<String> bandwidthPackageId;
-
   /// . Field `cancel_common_bandwidth_package_ip_bandwidth` has been deprecated from provider version 1.261.0. Replace with `bandwidth_package_bandwidth` = `"Cancelled"`.
   final pulumi.Input<bool>? cancelCommonBandwidthPackageIpBandwidth;
-
   /// The ID of the EIP that you want to query.
   ///
   /// You can specify up to 50 EIP IDs. Separate multiple IDs with commas (,).
   ///
   /// &gt; **NOTE:** If both `EipAddress` and `AllocationId` are specified, you can specify up to 50 EIP IDs for `AllocationId`, and specify up to 50 EIPs for `EipAddress`.
   final pulumi.Input<String> instanceId;
-
   /// The type of IP address. Set the value to `EIP` to associate EIPs with the Internet Shared Bandwidth instance.
   final pulumi.Input<String>? ipType;
 
@@ -45,36 +41,20 @@ class CommonBandwithPackageAttachmentArgs {
     return <String, dynamic>{
       'bandwidthPackageBandwidth': ?bandwidthPackageBandwidth,
       'bandwidthPackageId': bandwidthPackageId,
-      'cancelCommonBandwidthPackageIpBandwidth':
-          ?cancelCommonBandwidthPackageIpBandwidth,
+      'cancelCommonBandwidthPackageIpBandwidth': ?cancelCommonBandwidthPackageIpBandwidth,
       'instanceId': instanceId,
       'ipType': ?ipType,
     };
   }
 
-  factory CommonBandwithPackageAttachmentArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CommonBandwithPackageAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return CommonBandwithPackageAttachmentArgs(
-      bandwidthPackageBandwidth: (() {
-        final guardedValue = map['bandwidthPackageBandwidth'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      bandwidthPackageId: pulumi.Input.fromValue(
-        map['bandwidthPackageId'] as String,
-      ),
-      cancelCommonBandwidthPackageIpBandwidth: (() {
-        final guardedValue = map['cancelCommonBandwidthPackageIpBandwidth'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      bandwidthPackageBandwidth: (() { final guardedValue = map['bandwidthPackageBandwidth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      bandwidthPackageId: pulumi.Input.fromValue(map['bandwidthPackageId'] as String),
+      cancelCommonBandwidthPackageIpBandwidth: (() { final guardedValue = map['cancelCommonBandwidthPackageIpBandwidth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
-      ipType: (() {
-        final guardedValue = map['ipType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ipType: (() { final guardedValue = map['ipType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

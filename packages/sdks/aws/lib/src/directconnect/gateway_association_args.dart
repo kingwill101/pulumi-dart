@@ -13,22 +13,17 @@ class GatewayAssociationArgs {
   ///
   /// &gt; **NOTE:** If the `associated_gateway_id` is in another region, an alias in a new provider block for that region should be specified.
   final pulumi.Input<List<String>>? allowedPrefixes;
-
   /// The ID of the VGW or transit gateway with which to associate the Direct Connect gateway.
   /// Used for single account Direct Connect gateway associations.
   final pulumi.Input<String>? associatedGatewayId;
-
   /// The ID of the AWS account that owns the VGW or transit gateway with which to associate the Direct Connect gateway.
   /// Used for cross-account Direct Connect gateway associations.
   final pulumi.Input<String>? associatedGatewayOwnerAccountId;
-
   /// The ID of the Direct Connect gateway.
   final pulumi.Input<String> dxGatewayId;
-
   /// The ID of the Direct Connect gateway association proposal.
   /// Used for cross-account Direct Connect gateway associations.
   final pulumi.Input<String>? proposalId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -61,32 +56,13 @@ class GatewayAssociationArgs {
 
   factory GatewayAssociationArgs.fromMap(Map<String, dynamic> map) {
     return GatewayAssociationArgs(
-      allowedPrefixes: (() {
-        final guardedValue = map['allowedPrefixes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      associatedGatewayId: (() {
-        final guardedValue = map['associatedGatewayId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      associatedGatewayOwnerAccountId: (() {
-        final guardedValue = map['associatedGatewayOwnerAccountId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      allowedPrefixes: (() { final guardedValue = map['allowedPrefixes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      associatedGatewayId: (() { final guardedValue = map['associatedGatewayId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      associatedGatewayOwnerAccountId: (() { final guardedValue = map['associatedGatewayOwnerAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dxGatewayId: pulumi.Input.fromValue(map['dxGatewayId'] as String),
-      proposalId: (() {
-        final guardedValue = map['proposalId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      proposalId: (() { final guardedValue = map['proposalId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

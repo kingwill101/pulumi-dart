@@ -57,22 +57,15 @@ class GetCertificatesCertificate {
     return GetCertificatesCertificate(
       certificate: pulumi.Input.fromValue(map['certificate'] as String),
       created: pulumi.Input.fromValue(map['created'] as String),
-      domainNames: pulumi.Input.fromValue(
-        (map['domainNames'] as List).cast<String>(),
-      ),
+      domainNames: pulumi.Input.fromValue((map['domainNames'] as List).cast<String>()),
       fingerprint: pulumi.Input.fromValue(map['fingerprint'] as String),
       id: pulumi.Input.fromValue(map['id'] as int),
-      labels: pulumi.Input.fromValue(
-        (map['labels'] as Map).cast<String, String>(),
-      ),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      labels: pulumi.Input.fromValue((map['labels'] as Map).cast<String, String>()),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       notValidAfter: pulumi.Input.fromValue(map['notValidAfter'] as String),
       notValidBefore: pulumi.Input.fromValue(map['notValidBefore'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

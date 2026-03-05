@@ -21,12 +21,11 @@ class V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecif
     };
   }
 
-  factory V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationAudioSpecification.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationAudioSpecification.fromMap(Map<String, dynamic> map) {
     return V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationAudioSpecification(
       endTimeoutMs: pulumi.Input.fromValue(map['endTimeoutMs'] as int),
       maxLengthMs: pulumi.Input.fromValue(map['maxLengthMs'] as int),
     );
   }
 }
+

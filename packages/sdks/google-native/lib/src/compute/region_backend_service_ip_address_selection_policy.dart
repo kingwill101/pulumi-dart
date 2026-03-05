@@ -2,9 +2,7 @@
 enum RegionBackendServiceIpAddressSelectionPolicy {
   ipv4Only("IPV4_ONLY"),
   ipv6Only("IPV6_ONLY"),
-  ipAddressSelectionPolicyUnspecified(
-    "IP_ADDRESS_SELECTION_POLICY_UNSPECIFIED",
-  ),
+  ipAddressSelectionPolicyUnspecified("IP_ADDRESS_SELECTION_POLICY_UNSPECIFIED"),
   preferIpv6("PREFER_IPV6");
 
   const RegionBackendServiceIpAddressSelectionPolicy(this.wireValue);
@@ -16,8 +14,7 @@ enum RegionBackendServiceIpAddressSelectionPolicy {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown RegionBackendServiceIpAddressSelectionPolicy value: $value',
-    );
+    throw ArgumentError('Unknown RegionBackendServiceIpAddressSelectionPolicy value: $value');
   }
 }
+

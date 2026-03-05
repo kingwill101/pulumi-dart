@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LinuxWebAppSlotSiteConfigAutoHealSettingAction {
   /// Predefined action to be taken to an Auto Heal trigger. Possible values include: `Recycle`.
   final pulumi.Input<String> actionType;
-
   /// The minimum amount of time in `hh:mm:ss` the Linux Web App must have been running before the defined action will be run in the event of a trigger.
   final pulumi.Input<String>? minimumProcessExecutionTime;
 
@@ -24,16 +23,11 @@ class LinuxWebAppSlotSiteConfigAutoHealSettingAction {
     };
   }
 
-  factory LinuxWebAppSlotSiteConfigAutoHealSettingAction.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LinuxWebAppSlotSiteConfigAutoHealSettingAction.fromMap(Map<String, dynamic> map) {
     return LinuxWebAppSlotSiteConfigAutoHealSettingAction(
       actionType: pulumi.Input.fromValue(map['actionType'] as String),
-      minimumProcessExecutionTime: (() {
-        final guardedValue = map['minimumProcessExecutionTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      minimumProcessExecutionTime: (() { final guardedValue = map['minimumProcessExecutionTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

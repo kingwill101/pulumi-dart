@@ -10,27 +10,20 @@ import 'action_http_run_after.dart';
 class ActionHttpArgs {
   /// Specifies the HTTP Body that should be sent to the `uri` when this HTTP Action is triggered.
   final pulumi.Input<String>? body;
-
   /// Specifies a Map of Key-Value Pairs that should be sent to the `uri` when this HTTP Action is triggered.
   final pulumi.Input<Map<String, String>>? headers;
-
   /// Specifies the ID of the Logic App Workflow. Changing this forces a new resource to be created.
   final pulumi.Input<String> logicAppId;
-
   /// Specifies the HTTP Method which should be used for this HTTP Action. Possible values include `DELETE`, `GET`, `PATCH`, `POST` and `PUT`.
   final pulumi.Input<String> method;
-
   /// Specifies the name of the HTTP Action to be created within the Logic App Workflow. Changing this forces a new resource to be created.
   ///
   /// &gt; **NOTE:** This name must be unique across all Actions within the Logic App Workflow.
   final pulumi.Input<String>? name;
-
   /// Specifies a Map of Key-Value Pairs that should be sent to the `uri` when this HTTP Action is triggered.
   final pulumi.Input<Map<String, String>>? queries;
-
   /// Specifies the place of the HTTP Action in the Logic App Workflow. If not specified, the HTTP Action is right after the Trigger. A `run_after` block is as defined below.
   final pulumi.Input<List<ActionHttpRunAfter>>? runAfters;
-
   /// Specifies the URI which will be called when this HTTP Action is triggered.
   final pulumi.Input<String> uri;
 
@@ -62,63 +55,22 @@ class ActionHttpArgs {
       'method': method,
       'name': ?name,
       'queries': ?queries,
-      'runAfters':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ActionHttpRunAfter>,
-            List<Map<String, dynamic>>
-          >(
-            runAfters,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ActionHttpRunAfter,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'runAfters': ?pulumi.Input.mapOptionalInputValue<List<ActionHttpRunAfter>, List<Map<String, dynamic>>>(runAfters, (value) => pulumi.Input.encodeList<ActionHttpRunAfter, Map<String, dynamic>>(value, (value) => value.toMap())),
       'uri': uri,
     };
   }
 
   factory ActionHttpArgs.fromMap(Map<String, dynamic> map) {
     return ActionHttpArgs(
-      body: (() {
-        final guardedValue = map['body'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      headers: (() {
-        final guardedValue = map['headers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      body: (() { final guardedValue = map['body']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      headers: (() { final guardedValue = map['headers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       logicAppId: pulumi.Input.fromValue(map['logicAppId'] as String),
       method: pulumi.Input.fromValue(map['method'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      queries: (() {
-        final guardedValue = map['queries'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      runAfters: (() {
-        final guardedValue = map['runAfters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ActionHttpRunAfter>(
-            guardedValue,
-            (value) => ActionHttpRunAfter.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      queries: (() { final guardedValue = map['queries']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      runAfters: (() { final guardedValue = map['runAfters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ActionHttpRunAfter>(guardedValue, (value) => ActionHttpRunAfter.fromMap((value as Map).cast<String, dynamic>()))); })(),
       uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
+

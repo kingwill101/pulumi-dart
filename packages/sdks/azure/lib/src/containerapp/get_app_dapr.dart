@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAppDapr {
   /// The Dapr Application Identifier.
   final pulumi.Input<String> appId;
-
   /// The port which the application is listening on. This is the same as the `ingress` port.
   final pulumi.Input<int> appPort;
-
   /// The protocol for the app.
   final pulumi.Input<String> appProtocol;
 
@@ -38,3 +36,4 @@ class GetAppDapr {
     );
   }
 }
+

@@ -11,16 +11,12 @@ class PipelineRunRequestResponse {
   /// Specify an image by tag ('hello-world:latest').
   /// Specify an image by sha256-based manifest digest ('hello-world@sha256:abc123').
   final pulumi.Input<List<String>>? artifacts;
-
   /// The digest of the tar used to transfer the artifacts.
   final pulumi.Input<String>? catalogDigest;
-
   /// The resource ID of the pipeline to run.
   final pulumi.Input<String>? pipelineResourceId;
-
   /// The source properties of the pipeline run.
   final pulumi.Input<PipelineRunSourcePropertiesResponse>? source;
-
   /// The target properties of the pipeline run.
   final pulumi.Input<PipelineRunTargetPropertiesResponse>? target;
 
@@ -43,54 +39,19 @@ class PipelineRunRequestResponse {
       'artifacts': ?artifacts,
       'catalogDigest': ?catalogDigest,
       'pipelineResourceId': ?pipelineResourceId,
-      'source':
-          ?pulumi.Input.mapOptionalInputValue<
-            PipelineRunSourcePropertiesResponse,
-            Map<String, dynamic>
-          >(source, (value) => value.toMap()),
-      'target':
-          ?pulumi.Input.mapOptionalInputValue<
-            PipelineRunTargetPropertiesResponse,
-            Map<String, dynamic>
-          >(target, (value) => value.toMap()),
+      'source': ?pulumi.Input.mapOptionalInputValue<PipelineRunSourcePropertiesResponse, Map<String, dynamic>>(source, (value) => value.toMap()),
+      'target': ?pulumi.Input.mapOptionalInputValue<PipelineRunTargetPropertiesResponse, Map<String, dynamic>>(target, (value) => value.toMap()),
     };
   }
 
   factory PipelineRunRequestResponse.fromMap(Map<String, dynamic> map) {
     return PipelineRunRequestResponse(
-      artifacts: (() {
-        final guardedValue = map['artifacts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      catalogDigest: (() {
-        final guardedValue = map['catalogDigest'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pipelineResourceId: (() {
-        final guardedValue = map['pipelineResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      source: (() {
-        final guardedValue = map['source'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PipelineRunSourcePropertiesResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      target: (() {
-        final guardedValue = map['target'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PipelineRunTargetPropertiesResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      artifacts: (() { final guardedValue = map['artifacts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      catalogDigest: (() { final guardedValue = map['catalogDigest']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pipelineResourceId: (() { final guardedValue = map['pipelineResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PipelineRunSourcePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      target: (() { final guardedValue = map['target']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PipelineRunTargetPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

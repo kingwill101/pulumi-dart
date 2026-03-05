@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ModelReferenceResponse {
   /// The ID of the dataset containing this model.
   final pulumi.Input<String> datasetId;
-
   /// The ID of the model. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
   final pulumi.Input<String> modelId;
-
   /// The ID of the project containing this model.
   final pulumi.Input<String> project;
 
@@ -38,3 +36,4 @@ class ModelReferenceResponse {
     );
   }
 }
+

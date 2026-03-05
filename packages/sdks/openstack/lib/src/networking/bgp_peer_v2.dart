@@ -134,28 +134,22 @@ class BgpPeerV2 extends pulumi.CustomResource {
   /// or `md5`. Defaults to `none`. If set to not `none`, the `password` argument
   /// must also be provided. Changing this creates a new BGP peer.
   late final pulumi.Output<String?> authType;
-
   /// A name for the BGP peer.
   late final pulumi.Output<String> name;
-
   /// The password used for MD5 authentication. Must be set
   /// only when `auth_type` is not `none`.
   late final pulumi.Output<String?> password;
-
   /// The IP address of the BGP peer. Must be a valid IP
   /// address. Changing this creates a new BGP peer.
   late final pulumi.Output<String> peerIp;
-
   /// The region in which to obtain the V2 Networking client.
   /// A Networking client is needed to create a Neutron network. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new BGP
   /// peer.
   late final pulumi.Output<String> region;
-
   /// The AS number of the BGP peer. Changing this
   /// creates a new BGP peer.
   late final pulumi.Output<int> remoteAs;
-
   /// The tenant/project ID. Required if admin privileges
   /// are used. Changing this creates a new BGP peer.
   late final pulumi.Output<String> tenantId;
@@ -169,11 +163,11 @@ class BgpPeerV2 extends pulumi.CustomResource {
     BgpPeerV2Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:networking/bgpPeerV2:BgpPeerV2',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:networking/bgpPeerV2:BgpPeerV2',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     authType = registerOutput<String?>('authType');
     this.name = registerOutput<String>('name');
     password = registerOutput<String?>('password');
@@ -201,11 +195,11 @@ class BgpPeerV2 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:networking/bgpPeerV2:BgpPeerV2',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:networking/bgpPeerV2:BgpPeerV2',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     authType = registerOutput<String?>('authType');
     this.name = registerOutput<String>('name');
     password = registerOutput<String?>('password');

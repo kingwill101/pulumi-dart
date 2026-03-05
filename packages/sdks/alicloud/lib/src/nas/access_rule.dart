@@ -247,28 +247,20 @@ import 'access_rule_state.dart';
 class AccessRule extends pulumi.CustomResource {
   /// AccessGroupName.
   late final pulumi.Output<String> accessGroupName;
-
   /// The first ID of the resource.
   late final pulumi.Output<String> accessRuleId;
-
   /// filesystem type. include standard, extreme.
   late final pulumi.Output<String> fileSystemType;
-
   /// Ipv6SourceCidrIp.
   late final pulumi.Output<String?> ipv6SourceCidrIp;
-
   /// Priority.
   late final pulumi.Output<int?> priority;
-
   /// (Available since v1.256.0) The region ID.
   late final pulumi.Output<String> regionId;
-
   /// RWAccess.
   late final pulumi.Output<String> rwAccessType;
-
   /// SourceCidrIp.
   late final pulumi.Output<String?> sourceCidrIp;
-
   /// UserAccess.
   late final pulumi.Output<String> userAccessType;
 
@@ -281,11 +273,11 @@ class AccessRule extends pulumi.CustomResource {
     AccessRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:nas/accessRule:AccessRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:nas/accessRule:AccessRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessGroupName = registerOutput<String>('accessGroupName');
     accessRuleId = registerOutput<String>('accessRuleId');
     fileSystemType = registerOutput<String>('fileSystemType');
@@ -315,11 +307,11 @@ class AccessRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:nas/accessRule:AccessRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:nas/accessRule:AccessRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessGroupName = registerOutput<String>('accessGroupName');
     accessRuleId = registerOutput<String>('accessRuleId');
     fileSystemType = registerOutput<String>('fileSystemType');

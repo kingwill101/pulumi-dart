@@ -12,8 +12,7 @@ enum GoogleCloudRunV2EmptyDirVolumeSourceMedium {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GoogleCloudRunV2EmptyDirVolumeSourceMedium value: $value',
-    );
+    throw ArgumentError('Unknown GoogleCloudRunV2EmptyDirVolumeSourceMedium value: $value');
   }
 }
+

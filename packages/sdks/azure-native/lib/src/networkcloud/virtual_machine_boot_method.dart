@@ -15,3 +15,4 @@ enum VirtualMachineBootMethod {
     throw ArgumentError('Unknown VirtualMachineBootMethod value: $value');
   }
 }
+

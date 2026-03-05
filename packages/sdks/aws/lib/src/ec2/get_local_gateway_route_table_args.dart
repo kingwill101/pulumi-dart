@@ -9,22 +9,16 @@ import 'get_local_gateway_route_table_filter.dart';
 /// {@macro pulumi_ec2_get_local_gateway_route_table_get_local_gateway_route_table_args_doc}
 class GetLocalGatewayRouteTableArgs {
   final pulumi.Input<List<GetLocalGatewayRouteTableFilter>>? filters;
-
   /// ID of the specific local gateway route table to retrieve.
   final pulumi.Input<String>? localGatewayId;
-
   /// Local Gateway Route Table Id assigned to desired local gateway route table
   final pulumi.Input<String>? localGatewayRouteTableId;
-
   /// ARN of the Outpost the local gateway route table is associated with.
   final pulumi.Input<String>? outpostArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// State of the local gateway route table.
   final pulumi.Input<String>? state;
-
   /// Mapping of tags, each pair of which must exactly match
   /// a pair on the desired local gateway route table.
   ///
@@ -53,18 +47,7 @@ class GetLocalGatewayRouteTableArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GetLocalGatewayRouteTableFilter>,
-            List<Map<String, dynamic>>
-          >(
-            filters,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetLocalGatewayRouteTableFilter,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetLocalGatewayRouteTableFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetLocalGatewayRouteTableFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
       'localGatewayId': ?localGatewayId,
       'localGatewayRouteTableId': ?localGatewayRouteTableId,
       'outpostArn': ?outpostArn,
@@ -76,50 +59,14 @@ class GetLocalGatewayRouteTableArgs {
 
   factory GetLocalGatewayRouteTableArgs.fromMap(Map<String, dynamic> map) {
     return GetLocalGatewayRouteTableArgs(
-      filters: (() {
-        final guardedValue = map['filters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GetLocalGatewayRouteTableFilter>(
-            guardedValue,
-            (value) => GetLocalGatewayRouteTableFilter.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      localGatewayId: (() {
-        final guardedValue = map['localGatewayId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      localGatewayRouteTableId: (() {
-        final guardedValue = map['localGatewayRouteTableId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      outpostArn: (() {
-        final guardedValue = map['outpostArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetLocalGatewayRouteTableFilter>(guardedValue, (value) => GetLocalGatewayRouteTableFilter.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      localGatewayId: (() { final guardedValue = map['localGatewayId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      localGatewayRouteTableId: (() { final guardedValue = map['localGatewayRouteTableId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      outpostArn: (() { final guardedValue = map['outpostArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

@@ -10,29 +10,20 @@ class DataSourcesSpecResponseDataImports {
 
   /// Creates a new [DataSourcesSpecResponseDataImports].
   /// [eventHub] Definition of Event Hub configuration.
-  DataSourcesSpecResponseDataImports({this.eventHub});
+  DataSourcesSpecResponseDataImports({
+    this.eventHub,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'eventHub':
-          ?pulumi.Input.mapOptionalInputValue<
-            DataImportSourcesResponseEventHub,
-            Map<String, dynamic>
-          >(eventHub, (value) => value.toMap()),
+      'eventHub': ?pulumi.Input.mapOptionalInputValue<DataImportSourcesResponseEventHub, Map<String, dynamic>>(eventHub, (value) => value.toMap()),
     };
   }
 
   factory DataSourcesSpecResponseDataImports.fromMap(Map<String, dynamic> map) {
     return DataSourcesSpecResponseDataImports(
-      eventHub: (() {
-        final guardedValue = map['eventHub'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DataImportSourcesResponseEventHub.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      eventHub: (() { final guardedValue = map['eventHub']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DataImportSourcesResponseEventHub.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

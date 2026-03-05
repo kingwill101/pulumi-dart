@@ -1322,6 +1322,30 @@ func TestGeneratePackageWritesSchemaMetadataToPubspec(t *testing.T) {
 	assert.Contains(t, pubspec, "- sample-provider")
 }
 
+func TestGeneratePackageNormalizesPulumiHomepageMetadata(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	targetDir := t.TempDir()
+	schema := `{
+		"name": "sample",
+		"version": "1.2.3",
+		"homepage": "https://pulumi.io"
+	}`
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    schema,
+	})
+	require.NoError(t, err)
+
+	pubspecData, err := os.ReadFile(filepath.Join(targetDir, "pubspec.yaml"))
+	require.NoError(t, err)
+	pubspec := string(pubspecData)
+	assert.Contains(t, pubspec, "homepage: https://www.pulumi.com")
+	assert.NotContains(t, pubspec, "homepage: https://pulumi.io")
+}
+
 func TestGeneratePackageWritesDartLanguageDependenciesToPubspec(t *testing.T) {
 	t.Parallel()
 

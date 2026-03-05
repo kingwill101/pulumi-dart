@@ -8,28 +8,20 @@ import 'system_data_response.dart';
 class GetPipelineRunResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// How the pipeline run should be forced to recreate even if the pipeline run configuration has not changed.
   final String? forceUpdateTag;
-
   /// The resource ID.
   final String id;
-
   /// The name of the resource.
   final String name;
-
   /// The provisioning state of a pipeline run.
   final String provisioningState;
-
   /// The request parameters for a pipeline run.
   final PipelineRunRequestResponse? request;
-
   /// The response of a pipeline run.
   final PipelineRunResponseResponse response;
-
   /// Metadata pertaining to creation and last modification of the resource.
   final SystemDataResponse systemData;
-
   /// The type of the resource.
   final String type;
 
@@ -72,28 +64,15 @@ class GetPipelineRunResult {
   factory GetPipelineRunResult.fromMap(Map<String, dynamic> map) {
     return GetPipelineRunResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      forceUpdateTag: (() {
-        final guardedValue = map['forceUpdateTag'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      forceUpdateTag: (() { final guardedValue = map['forceUpdateTag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      request: (() {
-        final guardedValue = map['request'];
-        if (guardedValue == null) return null;
-        return PipelineRunRequestResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      response: PipelineRunResponseResponse.fromMap(
-        (map['response']! as Map).cast<String, dynamic>(),
-      ),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      request: (() { final guardedValue = map['request']; if (guardedValue == null) return null; return PipelineRunRequestResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      response: PipelineRunResponseResponse.fromMap((map['response']! as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

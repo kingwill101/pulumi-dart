@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApiBridgeProperties {
   /// The allowed source IP addresses or CIDR ranges for accessing the API Bridge
   final pulumi.Input<List<String>>? allowedAddressPrefixes;
-
   /// The activation state of the API Bridge for this Communications Gateway
   final pulumi.Input<String>? configureApiBridge;
 
   /// Creates a new [ApiBridgeProperties].
   /// [allowedAddressPrefixes] The allowed source IP addresses or CIDR ranges for accessing the API Bridge
   /// [configureApiBridge] The activation state of the API Bridge for this Communications Gateway
-  ApiBridgeProperties({this.allowedAddressPrefixes, this.configureApiBridge});
+  ApiBridgeProperties({
+    this.allowedAddressPrefixes,
+    this.configureApiBridge,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class ApiBridgeProperties {
 
   factory ApiBridgeProperties.fromMap(Map<String, dynamic> map) {
     return ApiBridgeProperties(
-      allowedAddressPrefixes: (() {
-        final guardedValue = map['allowedAddressPrefixes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      configureApiBridge: (() {
-        final guardedValue = map['configureApiBridge'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      allowedAddressPrefixes: (() { final guardedValue = map['allowedAddressPrefixes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      configureApiBridge: (() { final guardedValue = map['configureApiBridge']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

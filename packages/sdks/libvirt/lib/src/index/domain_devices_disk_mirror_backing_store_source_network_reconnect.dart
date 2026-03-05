@@ -13,14 +13,15 @@ class DomainDevicesDiskMirrorBackingStoreSourceNetworkReconnect {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'delay': delay};
+    return <String, dynamic>{
+      'delay': delay,
+    };
   }
 
-  factory DomainDevicesDiskMirrorBackingStoreSourceNetworkReconnect.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDevicesDiskMirrorBackingStoreSourceNetworkReconnect.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskMirrorBackingStoreSourceNetworkReconnect(
       delay: pulumi.Input.fromValue(map['delay'] as String),
     );
   }
 }
+

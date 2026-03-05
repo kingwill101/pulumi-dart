@@ -15,46 +15,32 @@ import 'xiaomi_credential_response.dart';
 class GetNotificationHubPnsCredentialsResult {
   /// Description of a NotificationHub AdmCredential.
   final AdmCredentialResponse? admCredential;
-
   /// Description of a NotificationHub ApnsCredential.
   final ApnsCredentialResponse? apnsCredential;
-
   /// Description of a NotificationHub BaiduCredential.
   final BaiduCredentialResponse? baiduCredential;
-
   /// Description of a NotificationHub BrowserCredential.
   final BrowserCredentialResponse? browserCredential;
-
   /// Description of a NotificationHub FcmV1Credential.
   final FcmV1CredentialResponse? fcmV1Credential;
-
   /// Description of a NotificationHub GcmCredential.
   final GcmCredentialResponse? gcmCredential;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// Deprecated - only for compatibility.
   final String? location;
-
   /// Description of a NotificationHub MpnsCredential.
   final MpnsCredentialResponse? mpnsCredential;
-
   /// The name of the resource
   final String name;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// Deprecated - only for compatibility.
   final Map<String, String>? tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
-
   /// Description of a NotificationHub WnsCredential.
   final WnsCredentialResponse? wnsCredential;
-
   /// Description of a NotificationHub XiaomiCredential.
   final XiaomiCredentialResponse? xiaomiCredential;
 
@@ -112,89 +98,24 @@ class GetNotificationHubPnsCredentialsResult {
     };
   }
 
-  factory GetNotificationHubPnsCredentialsResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetNotificationHubPnsCredentialsResult.fromMap(Map<String, dynamic> map) {
     return GetNotificationHubPnsCredentialsResult(
-      admCredential: (() {
-        final guardedValue = map['admCredential'];
-        if (guardedValue == null) return null;
-        return AdmCredentialResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      apnsCredential: (() {
-        final guardedValue = map['apnsCredential'];
-        if (guardedValue == null) return null;
-        return ApnsCredentialResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      baiduCredential: (() {
-        final guardedValue = map['baiduCredential'];
-        if (guardedValue == null) return null;
-        return BaiduCredentialResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      browserCredential: (() {
-        final guardedValue = map['browserCredential'];
-        if (guardedValue == null) return null;
-        return BrowserCredentialResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      fcmV1Credential: (() {
-        final guardedValue = map['fcmV1Credential'];
-        if (guardedValue == null) return null;
-        return FcmV1CredentialResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      gcmCredential: (() {
-        final guardedValue = map['gcmCredential'];
-        if (guardedValue == null) return null;
-        return GcmCredentialResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      admCredential: (() { final guardedValue = map['admCredential']; if (guardedValue == null) return null; return AdmCredentialResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      apnsCredential: (() { final guardedValue = map['apnsCredential']; if (guardedValue == null) return null; return ApnsCredentialResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      baiduCredential: (() { final guardedValue = map['baiduCredential']; if (guardedValue == null) return null; return BaiduCredentialResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      browserCredential: (() { final guardedValue = map['browserCredential']; if (guardedValue == null) return null; return BrowserCredentialResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      fcmV1Credential: (() { final guardedValue = map['fcmV1Credential']; if (guardedValue == null) return null; return FcmV1CredentialResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      gcmCredential: (() { final guardedValue = map['gcmCredential']; if (guardedValue == null) return null; return GcmCredentialResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: map['id'] as String,
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      mpnsCredential: (() {
-        final guardedValue = map['mpnsCredential'];
-        if (guardedValue == null) return null;
-        return MpnsCredentialResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      mpnsCredential: (() { final guardedValue = map['mpnsCredential']; if (guardedValue == null) return null; return MpnsCredentialResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       name: map['name'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
-      wnsCredential: (() {
-        final guardedValue = map['wnsCredential'];
-        if (guardedValue == null) return null;
-        return WnsCredentialResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      xiaomiCredential: (() {
-        final guardedValue = map['xiaomiCredential'];
-        if (guardedValue == null) return null;
-        return XiaomiCredentialResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      wnsCredential: (() { final guardedValue = map['wnsCredential']; if (guardedValue == null) return null; return WnsCredentialResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      xiaomiCredential: (() { final guardedValue = map['xiaomiCredential']; if (guardedValue == null) return null; return XiaomiCredentialResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }
 }
+

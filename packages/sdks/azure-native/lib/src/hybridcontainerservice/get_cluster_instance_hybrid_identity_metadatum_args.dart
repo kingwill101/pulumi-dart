@@ -22,13 +22,10 @@ class GetClusterInstanceHybridIdentityMetadatumArgs {
     };
   }
 
-  factory GetClusterInstanceHybridIdentityMetadatumArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetClusterInstanceHybridIdentityMetadatumArgs.fromMap(Map<String, dynamic> map) {
     return GetClusterInstanceHybridIdentityMetadatumArgs(
-      connectedClusterResourceUri: pulumi.Input.fromValue(
-        map['connectedClusterResourceUri'] as String,
-      ),
+      connectedClusterResourceUri: pulumi.Input.fromValue(map['connectedClusterResourceUri'] as String),
     );
   }
 }
+

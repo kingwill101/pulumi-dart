@@ -8,13 +8,9 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi {
   /// This should be in the format of Property=Setting. Appended to the defaults
   /// of `ACTION=INSTALL REBOOT=ReallySuppress`.
   final pulumi.Input<List<String>>? properties;
-
   /// The MSI package. Structure is
   /// documented below.
-  final pulumi.Input<
-    OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource
-  >
-  source;
+  final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource> source;
 
   /// Creates a new [OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi].
   /// [properties] Additional properties to use during installation.
@@ -27,28 +23,15 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'properties': ?properties,
-      'source':
-          pulumi.Input.mapInputValue<
-            OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource,
-            Map<String, dynamic>
-          >(source, (value) => value.toMap()),
+      'source': pulumi.Input.mapInputValue<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource, Map<String, dynamic>>(source, (value) => value.toMap()),
     };
   }
 
-  factory OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi.fromMap(Map<String, dynamic> map) {
     return OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi(
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      source: pulumi.Input.fromValue(
-        OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource.fromMap(
-          (map['source']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      source: pulumi.Input.fromValue(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource.fromMap((map['source']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

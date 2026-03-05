@@ -130,10 +130,8 @@ import 'replica_pair_drill_state.dart';
 class ReplicaPairDrill extends pulumi.CustomResource {
   /// Copy the ID of the pair. You can call DescribeDiskReplicaPairs to query the list of asynchronous replication pairs to obtain the replication pair ID.
   late final pulumi.Output<String> pairId;
-
   /// The first ID of the resource.
   late final pulumi.Output<String> replicaPairDrillId;
-
   /// Walkthrough status. _failed: Execution failed._failed: Cleanup failed.
   late final pulumi.Output<String> status;
 
@@ -146,11 +144,11 @@ class ReplicaPairDrill extends pulumi.CustomResource {
     ReplicaPairDrillArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ebs/replicaPairDrill:ReplicaPairDrill',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ebs/replicaPairDrill:ReplicaPairDrill',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     pairId = registerOutput<String>('pairId');
     replicaPairDrillId = registerOutput<String>('replicaPairDrillId');
     status = registerOutput<String>('status');
@@ -174,11 +172,11 @@ class ReplicaPairDrill extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ebs/replicaPairDrill:ReplicaPairDrill',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ebs/replicaPairDrill:ReplicaPairDrill',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     pairId = registerOutput<String>('pairId');
     replicaPairDrillId = registerOutput<String>('replicaPairDrillId');
     status = registerOutput<String>('status');

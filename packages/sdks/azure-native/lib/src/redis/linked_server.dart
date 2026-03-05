@@ -153,31 +153,22 @@ import 'system_data_response.dart';
 class LinkedServer extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The unchanging DNS name which will always point to current geo-primary cache among the linked redis caches for seamless Geo Failover experience.
   late final pulumi.Output<String> geoReplicatedPrimaryHostName;
-
   /// Fully qualified resourceId of the linked redis cache.
   late final pulumi.Output<String> linkedRedisCacheId;
-
   /// Location of the linked redis cache.
   late final pulumi.Output<String> linkedRedisCacheLocation;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The changing DNS name that resolves to the current geo-primary cache among the linked redis caches before or after the Geo Failover.
   late final pulumi.Output<String> primaryHostName;
-
   /// Terminal state of the link between primary and secondary redis cache.
   late final pulumi.Output<String> provisioningState;
-
   /// Role of the linked server.
   late final pulumi.Output<String> serverRole;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -190,33 +181,20 @@ class LinkedServer extends pulumi.CustomResource {
     LinkedServerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:redis:LinkedServer',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:redis:LinkedServer',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    geoReplicatedPrimaryHostName = registerOutput<String>(
-      'geoReplicatedPrimaryHostName',
-    );
+    geoReplicatedPrimaryHostName = registerOutput<String>('geoReplicatedPrimaryHostName');
     linkedRedisCacheId = registerOutput<String>('linkedRedisCacheId');
-    linkedRedisCacheLocation = registerOutput<String>(
-      'linkedRedisCacheLocation',
-    );
+    linkedRedisCacheLocation = registerOutput<String>('linkedRedisCacheLocation');
     this.name = registerOutput<String>('name');
     primaryHostName = registerOutput<String>('primaryHostName');
     provisioningState = registerOutput<String>('provisioningState');
     serverRole = registerOutput<String>('serverRole');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

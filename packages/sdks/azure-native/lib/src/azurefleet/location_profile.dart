@@ -7,7 +7,6 @@ import 'base_virtual_machine_profile.dart';
 class LocationProfile {
   /// The ARM location name of the additional region. If LocationProfile is specified, then location is required.
   final pulumi.Input<String> location;
-
   /// An override for computeProfile.baseVirtualMachineProfile specific to this region.
   /// This override is merged with the base virtual machine profile to define the final virtual machine profile for the resources deployed in this location.
   final pulumi.Input<BaseVirtualMachineProfile>? virtualMachineProfileOverride;
@@ -15,31 +14,23 @@ class LocationProfile {
   /// Creates a new [LocationProfile].
   /// [location] The ARM location name of the additional region. If LocationProfile is specified, then location is required.
   /// [virtualMachineProfileOverride] An override for computeProfile.baseVirtualMachineProfile specific to this region.
-  LocationProfile({required this.location, this.virtualMachineProfileOverride});
+  LocationProfile({
+    required this.location,
+    this.virtualMachineProfileOverride,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'location': location,
-      'virtualMachineProfileOverride':
-          ?pulumi.Input.mapOptionalInputValue<
-            BaseVirtualMachineProfile,
-            Map<String, dynamic>
-          >(virtualMachineProfileOverride, (value) => value.toMap()),
+      'virtualMachineProfileOverride': ?pulumi.Input.mapOptionalInputValue<BaseVirtualMachineProfile, Map<String, dynamic>>(virtualMachineProfileOverride, (value) => value.toMap()),
     };
   }
 
   factory LocationProfile.fromMap(Map<String, dynamic> map) {
     return LocationProfile(
       location: pulumi.Input.fromValue(map['location'] as String),
-      virtualMachineProfileOverride: (() {
-        final guardedValue = map['virtualMachineProfileOverride'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BaseVirtualMachineProfile.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      virtualMachineProfileOverride: (() { final guardedValue = map['virtualMachineProfileOverride']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BaseVirtualMachineProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

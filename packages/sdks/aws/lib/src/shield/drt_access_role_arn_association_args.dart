@@ -15,31 +15,23 @@ class DrtAccessRoleArnAssociationArgs {
   /// Creates a new [DrtAccessRoleArnAssociationArgs].
   /// [roleArn] The Amazon Resource Name (ARN) of the role the SRT will use to access your AWS account. Prior to making the AssociateDRTRole request, you must attach the `AWSShieldDRTAccessPolicy` managed policy to this role.
   /// [timeouts] Optional.
-  DrtAccessRoleArnAssociationArgs({required this.roleArn, this.timeouts});
+  DrtAccessRoleArnAssociationArgs({
+    required this.roleArn,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'roleArn': roleArn,
-      'timeouts':
-          ?pulumi.Input.mapOptionalInputValue<
-            DrtAccessRoleArnAssociationTimeouts,
-            Map<String, dynamic>
-          >(timeouts, (value) => value.toMap()),
+      'timeouts': ?pulumi.Input.mapOptionalInputValue<DrtAccessRoleArnAssociationTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
     };
   }
 
   factory DrtAccessRoleArnAssociationArgs.fromMap(Map<String, dynamic> map) {
     return DrtAccessRoleArnAssociationArgs(
       roleArn: pulumi.Input.fromValue(map['roleArn'] as String),
-      timeouts: (() {
-        final guardedValue = map['timeouts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DrtAccessRoleArnAssociationTimeouts.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      timeouts: (() { final guardedValue = map['timeouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DrtAccessRoleArnAssociationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

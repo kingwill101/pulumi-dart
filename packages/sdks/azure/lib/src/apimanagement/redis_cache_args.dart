@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RedisCacheArgs {
   /// The resource ID of the API Management Service from which to create this external cache. Changing this forces a new API Management Redis Cache to be created.
   final pulumi.Input<String> apiManagementId;
-
   /// The location where to use cache from. Possible values are `default` and valid Azure regions. Defaults to `default`.
   final pulumi.Input<String>? cacheLocation;
-
   /// The connection string to the Cache for Redis.
   final pulumi.Input<String> connectionString;
-
   /// The description of the API Management Redis Cache.
   final pulumi.Input<String>? description;
-
   /// The name which should be used for this API Management Redis Cache. Changing this forces a new API Management Redis Cache to be created.
   final pulumi.Input<String>? name;
-
   /// The resource ID of the Cache for Redis.
   final pulumi.Input<String>? redisCacheId;
 
@@ -55,29 +50,12 @@ class RedisCacheArgs {
   factory RedisCacheArgs.fromMap(Map<String, dynamic> map) {
     return RedisCacheArgs(
       apiManagementId: pulumi.Input.fromValue(map['apiManagementId'] as String),
-      cacheLocation: (() {
-        final guardedValue = map['cacheLocation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      connectionString: pulumi.Input.fromValue(
-        map['connectionString'] as String,
-      ),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      redisCacheId: (() {
-        final guardedValue = map['redisCacheId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      cacheLocation: (() { final guardedValue = map['cacheLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      connectionString: pulumi.Input.fromValue(map['connectionString'] as String),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      redisCacheId: (() { final guardedValue = map['redisCacheId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

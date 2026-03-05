@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NotificationSettingsResponse {
   /// The list of additional recipients
   final pulumi.Input<List<String>>? additionalRecipients;
-
   /// Should domain controller admins be notified
   final pulumi.Input<String>? notifyDcAdmins;
-
   /// Should global admins be notified
   final pulumi.Input<String>? notifyGlobalAdmins;
 
@@ -33,21 +31,10 @@ class NotificationSettingsResponse {
 
   factory NotificationSettingsResponse.fromMap(Map<String, dynamic> map) {
     return NotificationSettingsResponse(
-      additionalRecipients: (() {
-        final guardedValue = map['additionalRecipients'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      notifyDcAdmins: (() {
-        final guardedValue = map['notifyDcAdmins'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      notifyGlobalAdmins: (() {
-        final guardedValue = map['notifyGlobalAdmins'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      additionalRecipients: (() { final guardedValue = map['additionalRecipients']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      notifyDcAdmins: (() { final guardedValue = map['notifyDcAdmins']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      notifyGlobalAdmins: (() { final guardedValue = map['notifyGlobalAdmins']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

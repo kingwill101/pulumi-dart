@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DnsZonePeeringConfig {
   /// The name of the producer VPC network.
   final pulumi.Input<String> targetNetworkId;
-
   /// The ID of the project that contains the producer VPC network.
   final pulumi.Input<String> targetProjectId;
 
@@ -31,3 +30,4 @@ class DnsZonePeeringConfig {
     );
   }
 }
+

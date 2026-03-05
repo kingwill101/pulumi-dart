@@ -11,34 +11,25 @@ import 'data_store_document_processing_config.dart';
 class DataStoreArgs {
   /// Configuration data for advance site search.
   /// Structure is documented below.
-  final pulumi.Input<DataStoreAdvancedSiteSearchConfig>?
-  advancedSiteSearchConfig;
-
+  final pulumi.Input<DataStoreAdvancedSiteSearchConfig>? advancedSiteSearchConfig;
   /// The content config of the data store.
   /// Possible values are: `NO_CONTENT`, `CONTENT_REQUIRED`, `PUBLIC_WEBSITE`.
   final pulumi.Input<String> contentConfig;
-
   /// If true, an advanced data store for site search will be created. If the
   /// data store is not configured as site search (GENERIC vertical and
   /// PUBLIC_WEBSITE contentConfig), this flag will be ignored.
   final pulumi.Input<bool>? createAdvancedSiteSearch;
-
   /// The unique id of the data store.
   final pulumi.Input<String> dataStoreId;
-
   /// The display name of the data store. This field must be a UTF-8 encoded
   /// string with a length limit of 128 characters.
   final pulumi.Input<String> displayName;
-
   /// Configuration for Document understanding and enrichment.
   /// Structure is documented below.
-  final pulumi.Input<DataStoreDocumentProcessingConfig>?
-  documentProcessingConfig;
-
+  final pulumi.Input<DataStoreDocumentProcessingConfig>? documentProcessingConfig;
   /// The industry vertical that the data store registers.
   /// Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
   final pulumi.Input<String> industryVertical;
-
   /// KMS key resource name which will be used to encrypt resources:
   /// `/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`
   /// The KMS key to be used to protect this DataStore at creation time. Must be
@@ -46,15 +37,12 @@ class DataStoreArgs {
   /// If this field is set and processed successfully, the DataStore will be
   /// protected by the KMS key, as indicated in the cmek_config field.
   final pulumi.Input<String>? kmsKeyName;
-
   /// The geographic location where the data store should reside. The value can
   /// only be one of "global", "us" and "eu".
   final pulumi.Input<String> location;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// A boolean flag indicating whether to skip the default schema creation for
   /// the data store. Only enable this flag if you are certain that the default
   /// schema is incompatible with your use case.
@@ -63,7 +51,6 @@ class DataStoreArgs {
   /// This flag cannot be specified if `data_store.starting_schema` is
   /// specified.
   final pulumi.Input<bool>? skipDefaultSchemaCreation;
-
   /// The solutions that the data store enrolls.
   /// Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`, `SOLUTION_TYPE_GENERATIVE_CHAT`.
   final pulumi.Input<List<String>>? solutionTypes;
@@ -98,20 +85,12 @@ class DataStoreArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'advancedSiteSearchConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            DataStoreAdvancedSiteSearchConfig,
-            Map<String, dynamic>
-          >(advancedSiteSearchConfig, (value) => value.toMap()),
+      'advancedSiteSearchConfig': ?pulumi.Input.mapOptionalInputValue<DataStoreAdvancedSiteSearchConfig, Map<String, dynamic>>(advancedSiteSearchConfig, (value) => value.toMap()),
       'contentConfig': contentConfig,
       'createAdvancedSiteSearch': ?createAdvancedSiteSearch,
       'dataStoreId': dataStoreId,
       'displayName': displayName,
-      'documentProcessingConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            DataStoreDocumentProcessingConfig,
-            Map<String, dynamic>
-          >(documentProcessingConfig, (value) => value.toMap()),
+      'documentProcessingConfig': ?pulumi.Input.mapOptionalInputValue<DataStoreDocumentProcessingConfig, Map<String, dynamic>>(documentProcessingConfig, (value) => value.toMap()),
       'industryVertical': industryVertical,
       'kmsKeyName': ?kmsKeyName,
       'location': location,
@@ -123,56 +102,19 @@ class DataStoreArgs {
 
   factory DataStoreArgs.fromMap(Map<String, dynamic> map) {
     return DataStoreArgs(
-      advancedSiteSearchConfig: (() {
-        final guardedValue = map['advancedSiteSearchConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DataStoreAdvancedSiteSearchConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      advancedSiteSearchConfig: (() { final guardedValue = map['advancedSiteSearchConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DataStoreAdvancedSiteSearchConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       contentConfig: pulumi.Input.fromValue(map['contentConfig'] as String),
-      createAdvancedSiteSearch: (() {
-        final guardedValue = map['createAdvancedSiteSearch'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      createAdvancedSiteSearch: (() { final guardedValue = map['createAdvancedSiteSearch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       dataStoreId: pulumi.Input.fromValue(map['dataStoreId'] as String),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
-      documentProcessingConfig: (() {
-        final guardedValue = map['documentProcessingConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DataStoreDocumentProcessingConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      industryVertical: pulumi.Input.fromValue(
-        map['industryVertical'] as String,
-      ),
-      kmsKeyName: (() {
-        final guardedValue = map['kmsKeyName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      documentProcessingConfig: (() { final guardedValue = map['documentProcessingConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DataStoreDocumentProcessingConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      industryVertical: pulumi.Input.fromValue(map['industryVertical'] as String),
+      kmsKeyName: (() { final guardedValue = map['kmsKeyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      skipDefaultSchemaCreation: (() {
-        final guardedValue = map['skipDefaultSchemaCreation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      solutionTypes: (() {
-        final guardedValue = map['solutionTypes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      skipDefaultSchemaCreation: (() { final guardedValue = map['skipDefaultSchemaCreation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      solutionTypes: (() { final guardedValue = map['solutionTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

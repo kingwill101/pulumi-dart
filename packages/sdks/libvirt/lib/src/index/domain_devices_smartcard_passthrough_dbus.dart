@@ -8,21 +8,20 @@ class DomainDevicesSmartcardPassthroughDbus {
 
   /// Creates a new [DomainDevicesSmartcardPassthroughDbus].
   /// [channel] Specifies the channel used for the DBus source in the EGD backend.
-  DomainDevicesSmartcardPassthroughDbus({this.channel});
+  DomainDevicesSmartcardPassthroughDbus({
+    this.channel,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'channel': ?channel};
+    return <String, dynamic>{
+      'channel': ?channel,
+    };
   }
 
-  factory DomainDevicesSmartcardPassthroughDbus.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDevicesSmartcardPassthroughDbus.fromMap(Map<String, dynamic> map) {
     return DomainDevicesSmartcardPassthroughDbus(
-      channel: (() {
-        final guardedValue = map['channel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      channel: (() { final guardedValue = map['channel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

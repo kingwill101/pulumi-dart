@@ -136,10 +136,8 @@ import 'organization_configuration_state.dart';
 class OrganizationConfiguration extends pulumi.CustomResource {
   /// Configuration block for auto enabling. See below.
   late final pulumi.Output<OrganizationConfigurationAutoEnable> autoEnable;
-
   /// Whether your configuration reached the max account limit.
   late final pulumi.Output<bool> maxAccountLimitReached;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -152,21 +150,12 @@ class OrganizationConfiguration extends pulumi.CustomResource {
     OrganizationConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:inspector2/organizationConfiguration:OrganizationConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    autoEnable = registerOutput<OrganizationConfigurationAutoEnable>(
-      'autoEnable',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return OrganizationConfigurationAutoEnable.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'aws:inspector2/organizationConfiguration:OrganizationConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    autoEnable = registerOutput<OrganizationConfigurationAutoEnable>('autoEnable', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationConfigurationAutoEnable.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     maxAccountLimitReached = registerOutput<bool>('maxAccountLimitReached');
     region = registerOutput<String>('region');
   }
@@ -189,21 +178,12 @@ class OrganizationConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:inspector2/organizationConfiguration:OrganizationConfiguration',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    autoEnable = registerOutput<OrganizationConfigurationAutoEnable>(
-      'autoEnable',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return OrganizationConfigurationAutoEnable.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'aws:inspector2/organizationConfiguration:OrganizationConfiguration',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    autoEnable = registerOutput<OrganizationConfigurationAutoEnable>('autoEnable', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationConfigurationAutoEnable.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     maxAccountLimitReached = registerOutput<bool>('maxAccountLimitReached');
     region = registerOutput<String>('region');
   }

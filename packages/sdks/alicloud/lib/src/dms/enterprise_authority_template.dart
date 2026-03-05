@@ -173,16 +173,12 @@ import 'enterprise_authority_template_state.dart';
 class EnterpriseAuthorityTemplate extends pulumi.CustomResource {
   /// Permission template ID.
   late final pulumi.Output<int> authorityTemplateId;
-
   /// Permission Template name.
   late final pulumi.Output<String> authorityTemplateName;
-
   /// The creation time of the resource.
   late final pulumi.Output<String> createTime;
-
   /// Permission template description information.
   late final pulumi.Output<String?> description;
-
   /// Tenant ID.
   late final pulumi.Output<int> tid;
 
@@ -195,11 +191,11 @@ class EnterpriseAuthorityTemplate extends pulumi.CustomResource {
     EnterpriseAuthorityTemplateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dms/enterpriseAuthorityTemplate:EnterpriseAuthorityTemplate',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dms/enterpriseAuthorityTemplate:EnterpriseAuthorityTemplate',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     authorityTemplateId = registerOutput<int>('authorityTemplateId');
     authorityTemplateName = registerOutput<String>('authorityTemplateName');
     createTime = registerOutput<String>('createTime');
@@ -225,11 +221,11 @@ class EnterpriseAuthorityTemplate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dms/enterpriseAuthorityTemplate:EnterpriseAuthorityTemplate',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dms/enterpriseAuthorityTemplate:EnterpriseAuthorityTemplate',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     authorityTemplateId = registerOutput<int>('authorityTemplateId');
     authorityTemplateName = registerOutput<String>('authorityTemplateName');
     createTime = registerOutput<String>('createTime');

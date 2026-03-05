@@ -10,34 +10,20 @@ class ExportExecutionListResultResponse {
 
   /// Creates a new [ExportExecutionListResultResponse].
   /// [value] A list of export runs.
-  ExportExecutionListResultResponse({required this.value});
+  ExportExecutionListResultResponse({
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'value':
-          pulumi.Input.mapInputValue<
-            List<ExportRunResponse>,
-            List<Map<String, dynamic>>
-          >(
-            value,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ExportRunResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'value': pulumi.Input.mapInputValue<List<ExportRunResponse>, List<Map<String, dynamic>>>(value, (value) => pulumi.Input.encodeList<ExportRunResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ExportExecutionListResultResponse.fromMap(Map<String, dynamic> map) {
     return ExportExecutionListResultResponse(
-      value: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<ExportRunResponse>(
-          map['value']!,
-          (value) =>
-              ExportRunResponse.fromMap((value as Map).cast<String, dynamic>()),
-        ),
-      ),
+      value: pulumi.Input.fromValue(pulumi.Input.decodeList<ExportRunResponse>(map['value']!, (value) => ExportRunResponse.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

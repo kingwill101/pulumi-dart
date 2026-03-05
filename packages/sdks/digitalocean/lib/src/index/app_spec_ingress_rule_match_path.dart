@@ -8,19 +8,20 @@ class AppSpecIngressRuleMatchPath {
 
   /// Creates a new [AppSpecIngressRuleMatchPath].
   /// [prefix] Prefix-based match.
-  AppSpecIngressRuleMatchPath({this.prefix});
+  AppSpecIngressRuleMatchPath({
+    this.prefix,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'prefix': ?prefix};
+    return <String, dynamic>{
+      'prefix': ?prefix,
+    };
   }
 
   factory AppSpecIngressRuleMatchPath.fromMap(Map<String, dynamic> map) {
     return AppSpecIngressRuleMatchPath(
-      prefix: (() {
-        final guardedValue = map['prefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      prefix: (() { final guardedValue = map['prefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

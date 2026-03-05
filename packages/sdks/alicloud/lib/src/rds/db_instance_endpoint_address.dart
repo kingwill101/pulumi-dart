@@ -594,22 +594,16 @@ import 'db_instance_endpoint_address_state.dart';
 class DbInstanceEndpointAddress extends pulumi.CustomResource {
   /// The endpoint of the instance.
   late final pulumi.Output<String> connectionString;
-
   /// The prefix of the public endpoint.
   late final pulumi.Output<String> connectionStringPrefix;
-
   /// The Endpoint ID of the instance.
   late final pulumi.Output<String> dbInstanceEndpointId;
-
   /// The ID of the instance.
   late final pulumi.Output<String> dbInstanceId;
-
   /// The IP address of the endpoint.
   late final pulumi.Output<String> ipAddress;
-
   /// The type of the IP address.
   late final pulumi.Output<String> ipType;
-
   /// The port number of the public endpoint.
   late final pulumi.Output<String> port;
 
@@ -622,11 +616,11 @@ class DbInstanceEndpointAddress extends pulumi.CustomResource {
     DbInstanceEndpointAddressArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:rds/dbInstanceEndpointAddress:DbInstanceEndpointAddress',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:rds/dbInstanceEndpointAddress:DbInstanceEndpointAddress',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     connectionString = registerOutput<String>('connectionString');
     connectionStringPrefix = registerOutput<String>('connectionStringPrefix');
     dbInstanceEndpointId = registerOutput<String>('dbInstanceEndpointId');
@@ -654,11 +648,11 @@ class DbInstanceEndpointAddress extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:rds/dbInstanceEndpointAddress:DbInstanceEndpointAddress',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:rds/dbInstanceEndpointAddress:DbInstanceEndpointAddress',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     connectionString = registerOutput<String>('connectionString');
     connectionStringPrefix = registerOutput<String>('connectionStringPrefix');
     dbInstanceEndpointId = registerOutput<String>('dbInstanceEndpointId');

@@ -9,19 +9,20 @@ class ConnectionDraining {
 
   /// Creates a new [ConnectionDraining].
   /// [drainingTimeoutSec] Configures a duration timeout for existing requests on a removed backend instance. For supported load balancers and protocols, as described in Enabling connection draining.
-  ConnectionDraining({this.drainingTimeoutSec});
+  ConnectionDraining({
+    this.drainingTimeoutSec,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'drainingTimeoutSec': ?drainingTimeoutSec};
+    return <String, dynamic>{
+      'drainingTimeoutSec': ?drainingTimeoutSec,
+    };
   }
 
   factory ConnectionDraining.fromMap(Map<String, dynamic> map) {
     return ConnectionDraining(
-      drainingTimeoutSec: (() {
-        final guardedValue = map['drainingTimeoutSec'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      drainingTimeoutSec: (() { final guardedValue = map['drainingTimeoutSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

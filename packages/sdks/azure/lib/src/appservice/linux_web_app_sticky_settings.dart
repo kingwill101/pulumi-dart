@@ -5,14 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LinuxWebAppStickySettings {
   /// A list of `app_setting` names that the Linux Web App will not swap between Slots when a swap operation is triggered.
   final pulumi.Input<List<String>>? appSettingNames;
-
   /// A list of `connection_string` names that the Linux Web App will not swap between Slots when a swap operation is triggered.
   final pulumi.Input<List<String>>? connectionStringNames;
 
   /// Creates a new [LinuxWebAppStickySettings].
   /// [appSettingNames] A list of `app_setting` names that the Linux Web App will not swap between Slots when a swap operation is triggered.
   /// [connectionStringNames] A list of `connection_string` names that the Linux Web App will not swap between Slots when a swap operation is triggered.
-  LinuxWebAppStickySettings({this.appSettingNames, this.connectionStringNames});
+  LinuxWebAppStickySettings({
+    this.appSettingNames,
+    this.connectionStringNames,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -23,16 +25,9 @@ class LinuxWebAppStickySettings {
 
   factory LinuxWebAppStickySettings.fromMap(Map<String, dynamic> map) {
     return LinuxWebAppStickySettings(
-      appSettingNames: (() {
-        final guardedValue = map['appSettingNames'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      connectionStringNames: (() {
-        final guardedValue = map['connectionStringNames'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      appSettingNames: (() { final guardedValue = map['appSettingNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      connectionStringNames: (() { final guardedValue = map['connectionStringNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

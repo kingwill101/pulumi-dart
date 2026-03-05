@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IPAddressSpaceResponse {
   /// Address Space
   final pulumi.Input<String>? addressSpace;
-
   /// Resource Id
   final pulumi.Input<String>? resourceId;
 
   /// Creates a new [IPAddressSpaceResponse].
   /// [addressSpace] Address Space
   /// [resourceId] Resource Id
-  IPAddressSpaceResponse({this.addressSpace, this.resourceId});
+  IPAddressSpaceResponse({
+    this.addressSpace,
+    this.resourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class IPAddressSpaceResponse {
 
   factory IPAddressSpaceResponse.fromMap(Map<String, dynamic> map) {
     return IPAddressSpaceResponse(
-      addressSpace: (() {
-        final guardedValue = map['addressSpace'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceId: (() {
-        final guardedValue = map['resourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      addressSpace: (() { final guardedValue = map['addressSpace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

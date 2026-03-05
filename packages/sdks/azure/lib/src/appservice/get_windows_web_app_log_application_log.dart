@@ -5,9 +5,7 @@ import 'get_windows_web_app_log_application_log_azure_blob_storage.dart';
 
 class GetWindowsWebAppLogApplicationLog {
   /// A `azure_blob_storage` block as defined above.
-  final pulumi.Input<List<GetWindowsWebAppLogApplicationLogAzureBlobStorage>>
-  azureBlobStorages;
-
+  final pulumi.Input<List<GetWindowsWebAppLogApplicationLogAzureBlobStorage>> azureBlobStorages;
   /// The logging level.
   final pulumi.Input<String> fileSystemLevel;
 
@@ -21,35 +19,16 @@ class GetWindowsWebAppLogApplicationLog {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureBlobStorages':
-          pulumi.Input.mapInputValue<
-            List<GetWindowsWebAppLogApplicationLogAzureBlobStorage>,
-            List<Map<String, dynamic>>
-          >(
-            azureBlobStorages,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetWindowsWebAppLogApplicationLogAzureBlobStorage,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'azureBlobStorages': pulumi.Input.mapInputValue<List<GetWindowsWebAppLogApplicationLogAzureBlobStorage>, List<Map<String, dynamic>>>(azureBlobStorages, (value) => pulumi.Input.encodeList<GetWindowsWebAppLogApplicationLogAzureBlobStorage, Map<String, dynamic>>(value, (value) => value.toMap())),
       'fileSystemLevel': fileSystemLevel,
     };
   }
 
   factory GetWindowsWebAppLogApplicationLog.fromMap(Map<String, dynamic> map) {
     return GetWindowsWebAppLogApplicationLog(
-      azureBlobStorages: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GetWindowsWebAppLogApplicationLogAzureBlobStorage
-        >(
-          map['azureBlobStorages']!,
-          (value) => GetWindowsWebAppLogApplicationLogAzureBlobStorage.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      azureBlobStorages: pulumi.Input.fromValue(pulumi.Input.decodeList<GetWindowsWebAppLogApplicationLogAzureBlobStorage>(map['azureBlobStorages']!, (value) => GetWindowsWebAppLogApplicationLogAzureBlobStorage.fromMap((value as Map).cast<String, dynamic>()))),
       fileSystemLevel: pulumi.Input.fromValue(map['fileSystemLevel'] as String),
     );
   }
 }
+

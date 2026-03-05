@@ -975,33 +975,24 @@ import 'server_extended_auditing_policy_state.dart';
 class ServerExtendedAuditingPolicy extends pulumi.CustomResource {
   /// A list of Actions-Groups and Actions to audit.
   late final pulumi.Output<List<String>> auditActionsAndGroups;
-
   /// Whether to enable the extended auditing policy. Possible values are `true` and `false`. Defaults to `true`.
   ///
   /// &gt; **Note:** If `enabled` is `true`, `storage_endpoint` or `log_monitoring_enabled` are required.
   late final pulumi.Output<bool?> enabled;
-
   /// Enable audit events to Azure Monitor? To enable server audit events to Azure Monitor, please enable its main database audit events to Azure Monitor. Defaults to `true`.
   late final pulumi.Output<bool?> logMonitoringEnabled;
-
   /// Specifies condition of where clause when creating an audit.
   late final pulumi.Output<String?> predicateExpression;
-
   /// The number of days to retain logs for in the storage account. Defaults to `0`.
   late final pulumi.Output<int?> retentionInDays;
-
   /// The ID of the SQL Server to set the extended auditing policy. Changing this forces a new resource to be created.
   late final pulumi.Output<String> serverId;
-
   /// The access key to use for the auditing storage account.
   late final pulumi.Output<String?> storageAccountAccessKey;
-
   /// Is `storage_account_access_key` value the storage's secondary key?
   late final pulumi.Output<bool?> storageAccountAccessKeyIsSecondary;
-
   /// The ID of the Subscription containing the Storage Account.
   late final pulumi.Output<String?> storageAccountSubscriptionId;
-
   /// The blob storage endpoint (e.g. &lt;https://example.blob.core.windows.net&gt;). This blob storage will hold all extended auditing logs.
   late final pulumi.Output<String?> storageEndpoint;
 
@@ -1014,28 +1005,20 @@ class ServerExtendedAuditingPolicy extends pulumi.CustomResource {
     ServerExtendedAuditingPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:mssql/serverExtendedAuditingPolicy:ServerExtendedAuditingPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    auditActionsAndGroups = registerOutput<List<String>>(
-      'auditActionsAndGroups',
-    );
+          'azure:mssql/serverExtendedAuditingPolicy:ServerExtendedAuditingPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    auditActionsAndGroups = registerOutput<List<String>>('auditActionsAndGroups');
     enabled = registerOutput<bool?>('enabled');
     logMonitoringEnabled = registerOutput<bool?>('logMonitoringEnabled');
     predicateExpression = registerOutput<String?>('predicateExpression');
     retentionInDays = registerOutput<int?>('retentionInDays');
     serverId = registerOutput<String>('serverId');
-    storageAccountAccessKey = registerOutput<String?>(
-      'storageAccountAccessKey',
-    );
-    storageAccountAccessKeyIsSecondary = registerOutput<bool?>(
-      'storageAccountAccessKeyIsSecondary',
-    );
-    storageAccountSubscriptionId = registerOutput<String?>(
-      'storageAccountSubscriptionId',
-    );
+    storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey');
+    storageAccountAccessKeyIsSecondary = registerOutput<bool?>('storageAccountAccessKeyIsSecondary');
+    storageAccountSubscriptionId = registerOutput<String?>('storageAccountSubscriptionId');
     storageEndpoint = registerOutput<String?>('storageEndpoint');
   }
 
@@ -1057,28 +1040,20 @@ class ServerExtendedAuditingPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:mssql/serverExtendedAuditingPolicy:ServerExtendedAuditingPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    auditActionsAndGroups = registerOutput<List<String>>(
-      'auditActionsAndGroups',
-    );
+          'azure:mssql/serverExtendedAuditingPolicy:ServerExtendedAuditingPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    auditActionsAndGroups = registerOutput<List<String>>('auditActionsAndGroups');
     enabled = registerOutput<bool?>('enabled');
     logMonitoringEnabled = registerOutput<bool?>('logMonitoringEnabled');
     predicateExpression = registerOutput<String?>('predicateExpression');
     retentionInDays = registerOutput<int?>('retentionInDays');
     serverId = registerOutput<String>('serverId');
-    storageAccountAccessKey = registerOutput<String?>(
-      'storageAccountAccessKey',
-    );
-    storageAccountAccessKeyIsSecondary = registerOutput<bool?>(
-      'storageAccountAccessKeyIsSecondary',
-    );
-    storageAccountSubscriptionId = registerOutput<String?>(
-      'storageAccountSubscriptionId',
-    );
+    storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey');
+    storageAccountAccessKeyIsSecondary = registerOutput<bool?>('storageAccountAccessKeyIsSecondary');
+    storageAccountSubscriptionId = registerOutput<String?>('storageAccountSubscriptionId');
     storageEndpoint = registerOutput<String?>('storageEndpoint');
   }
 }

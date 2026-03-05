@@ -195,25 +195,18 @@ import 'virtual_machine_group_wsfc_domain_profile.dart';
 class VirtualMachineGroup extends pulumi.CustomResource {
   /// The Azure Region where the Microsoft SQL Virtual Machine Group should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The name which should be used for the Microsoft SQL Virtual Machine Group. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the Resource Group where the Microsoft SQL Virtual Machine Group should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The offer type of the marketplace image cluster to be used by the SQL Virtual Machine Group. Changing this forces a new resource to be created.
   late final pulumi.Output<String> sqlImageOffer;
-
   /// The sku type of the marketplace image cluster to be used by the SQL Virtual Machine Group. Possible values are `Developer` and `Enterprise`.
   late final pulumi.Output<String> sqlImageSku;
-
   /// A mapping of tags which should be assigned to the Microsoft SQL Virtual Machine Group.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A `wsfc_domain_profile` block as defined below.
-  late final pulumi.Output<VirtualMachineGroupWsfcDomainProfile>
-  wsfcDomainProfile;
+  late final pulumi.Output<VirtualMachineGroupWsfcDomainProfile> wsfcDomainProfile;
 
   /// Creates a new [VirtualMachineGroup].
   /// [name] The Pulumi resource name.
@@ -224,27 +217,18 @@ class VirtualMachineGroup extends pulumi.CustomResource {
     VirtualMachineGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:mssql/virtualMachineGroup:VirtualMachineGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:mssql/virtualMachineGroup:VirtualMachineGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sqlImageOffer = registerOutput<String>('sqlImageOffer');
     sqlImageSku = registerOutput<String>('sqlImageSku');
     tags = registerOutput<Map<String, String>?>('tags');
-    wsfcDomainProfile = registerOutput<VirtualMachineGroupWsfcDomainProfile>(
-      'wsfcDomainProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VirtualMachineGroupWsfcDomainProfile.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    wsfcDomainProfile = registerOutput<VirtualMachineGroupWsfcDomainProfile>('wsfcDomainProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineGroupWsfcDomainProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [VirtualMachineGroup] resource's state with the given [name] and [id].
@@ -265,26 +249,17 @@ class VirtualMachineGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:mssql/virtualMachineGroup:VirtualMachineGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:mssql/virtualMachineGroup:VirtualMachineGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sqlImageOffer = registerOutput<String>('sqlImageOffer');
     sqlImageSku = registerOutput<String>('sqlImageSku');
     tags = registerOutput<Map<String, String>?>('tags');
-    wsfcDomainProfile = registerOutput<VirtualMachineGroupWsfcDomainProfile>(
-      'wsfcDomainProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VirtualMachineGroupWsfcDomainProfile.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    wsfcDomainProfile = registerOutput<VirtualMachineGroupWsfcDomainProfile>('wsfcDomainProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineGroupWsfcDomainProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

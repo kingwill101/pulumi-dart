@@ -12,17 +12,20 @@ class GetGlobalRulestackArgs {
 
   /// Creates a new [GetGlobalRulestackArgs].
   /// [globalRulestackName] GlobalRulestack resource name
-  GetGlobalRulestackArgs({required this.globalRulestackName});
+  GetGlobalRulestackArgs({
+    required this.globalRulestackName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'globalRulestackName': globalRulestackName};
+    return <String, dynamic>{
+      'globalRulestackName': globalRulestackName,
+    };
   }
 
   factory GetGlobalRulestackArgs.fromMap(Map<String, dynamic> map) {
     return GetGlobalRulestackArgs(
-      globalRulestackName: pulumi.Input.fromValue(
-        map['globalRulestackName'] as String,
-      ),
+      globalRulestackName: pulumi.Input.fromValue(map['globalRulestackName'] as String),
     );
   }
 }
+

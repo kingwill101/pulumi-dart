@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLinkerDryrunArgs {
   /// The name of dryrun.
   final pulumi.Input<String> dryrunName;
-
   /// The fully qualified Azure Resource manager identifier of the resource to be connected.
   final pulumi.Input<String> resourceUri;
 
   /// Creates a new [GetLinkerDryrunArgs].
   /// [dryrunName] The name of dryrun.
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource to be connected.
-  GetLinkerDryrunArgs({required this.dryrunName, required this.resourceUri});
+  GetLinkerDryrunArgs({
+    required this.dryrunName,
+    required this.resourceUri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,3 +34,4 @@ class GetLinkerDryrunArgs {
     );
   }
 }
+

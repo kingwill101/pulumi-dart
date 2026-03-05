@@ -5,30 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTrailsTrail {
   /// Indicates whether the event is a read or a write event.
   final pulumi.Input<String> eventRw;
-
   /// The id of the ActionTrail Trail. It is the same as trail name.
   final pulumi.Input<String> id;
   final pulumi.Input<bool> isOrganizationTrail;
-
   /// The name of the specified OSS bucket.
   final pulumi.Input<String> ossBucketName;
-
   /// The prefix of the specified OSS bucket name.
   final pulumi.Input<String> ossKeyPrefix;
   final pulumi.Input<String> ossWriteRoleArn;
-
   /// The unique ARN of the Log Service project.
   final pulumi.Input<String> slsProjectArn;
-
   /// The unique ARN of the Log Service role.
   final pulumi.Input<String> slsWriteRoleArn;
-
   /// Filter the results by status of the ActionTrail Trail. Valid values: `Disable`, `Enable`, `Fresh`.
   final pulumi.Input<String> status;
-
   /// The name of the ActionTrail Trail.
   final pulumi.Input<String> trailName;
-
   /// The regions to which the trail is applied.
   final pulumi.Input<String> trailRegion;
 
@@ -78,9 +70,7 @@ class GetTrailsTrail {
     return GetTrailsTrail(
       eventRw: pulumi.Input.fromValue(map['eventRw'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
-      isOrganizationTrail: pulumi.Input.fromValue(
-        map['isOrganizationTrail'] as bool,
-      ),
+      isOrganizationTrail: pulumi.Input.fromValue(map['isOrganizationTrail'] as bool),
       ossBucketName: pulumi.Input.fromValue(map['ossBucketName'] as String),
       ossKeyPrefix: pulumi.Input.fromValue(map['ossKeyPrefix'] as String),
       ossWriteRoleArn: pulumi.Input.fromValue(map['ossWriteRoleArn'] as String),
@@ -92,3 +82,4 @@ class GetTrailsTrail {
     );
   }
 }
+

@@ -168,30 +168,22 @@ class Image extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** `data_disk` cannot be set together with `source_virtual_machine_id`.
   late final pulumi.Output<List<Map<String, dynamic>>?> dataDisks;
-
   /// The Hyper-V Generation Type of the Virtual Machine created from the image as `V1`, `V2`. Defaults to `V1`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> hyperVGeneration;
-
   /// Specified the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// Specifies the name of the image. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// One or more `os_disk` blocks as defined below. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** `os_disk` cannot be set together with `source_virtual_machine_id`.
   late final pulumi.Output<ImageOsDisk?> osDisk;
-
   /// The name of the resource group in which to create the image. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The Virtual Machine ID from which to create the image.
   late final pulumi.Output<String?> sourceVirtualMachineId;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Is zone resiliency enabled? Defaults to `false`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** `zone_resilient` can only be set to `true` if the image is stored in a region that supports availability zones.
@@ -203,27 +195,21 @@ class Image extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Image]. {@macro pulumi_compute_image_image_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Image(String name, {ImageArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure:compute/image:Image',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Image(
+    String name, {
+    ImageArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure:compute/image:Image',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dataDisks = registerOutput<List<Map<String, dynamic>>?>('dataDisks');
     hyperVGeneration = registerOutput<String?>('hyperVGeneration');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    osDisk = registerOutput<ImageOsDisk?>(
-      'osDisk',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ImageOsDisk.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    osDisk = registerOutput<ImageOsDisk?>('osDisk', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageOsDisk.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sourceVirtualMachineId = registerOutput<String?>('sourceVirtualMachineId');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -231,7 +217,11 @@ class Image extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Image] resource's state with the given [name] and [id].
-  static Image get(String name, pulumi.Input<String> id, {ImageState? state}) {
+  static Image get(
+    String name,
+    pulumi.Input<String> id, {
+    ImageState? state,
+  }) {
     return Image._get(
       name,
       state: state?.toMap(),
@@ -244,25 +234,16 @@ class Image extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:compute/image:Image',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:compute/image:Image',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dataDisks = registerOutput<List<Map<String, dynamic>>?>('dataDisks');
     hyperVGeneration = registerOutput<String?>('hyperVGeneration');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    osDisk = registerOutput<ImageOsDisk?>(
-      'osDisk',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ImageOsDisk.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    osDisk = registerOutput<ImageOsDisk?>('osDisk', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageOsDisk.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sourceVirtualMachineId = registerOutput<String?>('sourceVirtualMachineId');
     tags = registerOutput<Map<String, String>?>('tags');

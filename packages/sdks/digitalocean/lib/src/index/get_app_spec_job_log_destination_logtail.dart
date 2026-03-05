@@ -8,10 +8,14 @@ class GetAppSpecJobLogDestinationLogtail {
 
   /// Creates a new [GetAppSpecJobLogDestinationLogtail].
   /// [token] Logtail token.
-  GetAppSpecJobLogDestinationLogtail({required this.token});
+  GetAppSpecJobLogDestinationLogtail({
+    required this.token,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'token': token};
+    return <String, dynamic>{
+      'token': token,
+    };
   }
 
   factory GetAppSpecJobLogDestinationLogtail.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class GetAppSpecJobLogDestinationLogtail {
     );
   }
 }
+

@@ -6,19 +6,14 @@ import 'storage_classification_mapping_properties_response.dart';
 class GetReplicationStorageClassificationMappingResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Resource Id
   final String id;
-
   /// Resource Location
   final String? location;
-
   /// Resource Name
   final String name;
-
   /// Properties of the storage mapping object.
   final StorageClassificationMappingPropertiesResponse properties;
-
   /// Resource Type
   final String type;
 
@@ -49,22 +44,15 @@ class GetReplicationStorageClassificationMappingResult {
     };
   }
 
-  factory GetReplicationStorageClassificationMappingResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetReplicationStorageClassificationMappingResult.fromMap(Map<String, dynamic> map) {
     return GetReplicationStorageClassificationMappingResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
-      properties: StorageClassificationMappingPropertiesResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
+      properties: StorageClassificationMappingPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

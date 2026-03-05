@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KvNamespaceState {
   /// The description of the namespace.
   final pulumi.Input<String>? description;
-
   /// The name of the namespace.
   final pulumi.Input<String>? kvNamespace;
-
   /// The status of the namespace.
   final pulumi.Input<String>? status;
 
@@ -17,7 +15,11 @@ class KvNamespaceState {
   /// [description] The description of the namespace.
   /// [kvNamespace] The name of the namespace.
   /// [status] The status of the namespace.
-  KvNamespaceState({this.description, this.kvNamespace, this.status});
+  KvNamespaceState({
+    this.description,
+    this.kvNamespace,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class KvNamespaceState {
 
   factory KvNamespaceState.fromMap(Map<String, dynamic> map) {
     return KvNamespaceState(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kvNamespace: (() {
-        final guardedValue = map['kvNamespace'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kvNamespace: (() { final guardedValue = map['kvNamespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -188,35 +188,26 @@ import 'experience_state.dart';
 class Experience extends pulumi.CustomResource {
   /// ARN of the Experience.
   late final pulumi.Output<String> arn;
-
   /// Configuration information for your Amazon Kendra experience. The provider will only perform drift detection of its value when present in a configuration. Detailed below.
   ///
   /// &gt; **NOTE:** By default of the AWS Kendra API, updates to an existing `aws.kendra.Experience` resource (e.g. updating the `name`) will also update the `configuration.content_source_configuration.direct_put_content` parameter to `false` if not already provided.
   late final pulumi.Output<ExperienceConfiguration> configuration;
-
   /// A description for your Amazon Kendra experience.
   late final pulumi.Output<String?> description;
-
   /// Shows the endpoint URLs for your Amazon Kendra experiences. The URLs are unique and fully hosted by AWS.
   late final pulumi.Output<List<Map<String, dynamic>>> endpoints;
-
   /// The unique identifier of the experience.
   late final pulumi.Output<String> experienceId;
-
   /// The identifier of the index for your Amazon Kendra experience.
   late final pulumi.Output<String> indexId;
-
   /// A name for your Amazon Kendra experience.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The Amazon Resource Name (ARN) of a role with permission to access `Query API`, `QuerySuggestions API`, `SubmitFeedback API`, and `AWS SSO` that stores your user and group information. For more information, see [IAM roles for Amazon Kendra](https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html).
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> roleArn;
-
   /// The current processing status of your Amazon Kendra experience.
   late final pulumi.Output<String> status;
 
@@ -229,22 +220,13 @@ class Experience extends pulumi.CustomResource {
     ExperienceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:kendra/experience:Experience',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:kendra/experience:Experience',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    configuration = registerOutput<ExperienceConfiguration>(
-      'configuration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExperienceConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    configuration = registerOutput<ExperienceConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExperienceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     endpoints = registerOutput<List<Map<String, dynamic>>>('endpoints');
     experienceId = registerOutput<String>('experienceId');
@@ -273,22 +255,13 @@ class Experience extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:kendra/experience:Experience',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:kendra/experience:Experience',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    configuration = registerOutput<ExperienceConfiguration>(
-      'configuration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExperienceConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    configuration = registerOutput<ExperienceConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExperienceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     endpoints = registerOutput<List<Map<String, dynamic>>>('endpoints');
     experienceId = registerOutput<String>('experienceId');

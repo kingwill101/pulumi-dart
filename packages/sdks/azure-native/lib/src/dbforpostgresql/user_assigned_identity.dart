@@ -7,10 +7,8 @@ import 'user_identity.dart';
 class UserAssignedIdentity {
   /// Identifier of the object of the service principal associated to the user assigned managed identity.
   final pulumi.Input<String>? principalId;
-
   /// Types of identities associated with a server.
   final pulumi.Input<String> type;
-
   /// Map of user assigned managed identities.
   final pulumi.Input<Map<String, UserIdentity>>? userAssignedIdentities;
 
@@ -28,40 +26,16 @@ class UserAssignedIdentity {
     return <String, dynamic>{
       'principalId': ?principalId,
       'type': type,
-      'userAssignedIdentities':
-          ?pulumi.Input.mapOptionalInputValue<
-            Map<String, UserIdentity>,
-            Map<String, Map<String, dynamic>>
-          >(
-            userAssignedIdentities,
-            (value) =>
-                pulumi.Input.encodeMapValues<
-                  UserIdentity,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'userAssignedIdentities': ?pulumi.Input.mapOptionalInputValue<Map<String, UserIdentity>, Map<String, Map<String, dynamic>>>(userAssignedIdentities, (value) => pulumi.Input.encodeMapValues<UserIdentity, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory UserAssignedIdentity.fromMap(Map<String, dynamic> map) {
     return UserAssignedIdentity(
-      principalId: (() {
-        final guardedValue = map['principalId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      principalId: (() { final guardedValue = map['principalId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
-      userAssignedIdentities: (() {
-        final guardedValue = map['userAssignedIdentities'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeMapValues<UserIdentity>(
-            guardedValue,
-            (value) =>
-                UserIdentity.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
+      userAssignedIdentities: (() { final guardedValue = map['userAssignedIdentities']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<UserIdentity>(guardedValue, (value) => UserIdentity.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UsageMetricsResponse {
   /// Optional. Accelerator type being used, if any
   final pulumi.Input<String> acceleratorType;
-
   /// Optional. Accelerator usage in (milliAccelerator x seconds) (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
   final pulumi.Input<String> milliAcceleratorSeconds;
-
   /// Optional. DCU (Dataproc Compute Units) usage in (milliDCU x seconds) (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
   final pulumi.Input<String> milliDcuSeconds;
-
   /// Optional. Shuffle storage usage in (GB x seconds) (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
   final pulumi.Input<String> shuffleStorageGbSeconds;
 
@@ -40,13 +37,10 @@ class UsageMetricsResponse {
   factory UsageMetricsResponse.fromMap(Map<String, dynamic> map) {
     return UsageMetricsResponse(
       acceleratorType: pulumi.Input.fromValue(map['acceleratorType'] as String),
-      milliAcceleratorSeconds: pulumi.Input.fromValue(
-        map['milliAcceleratorSeconds'] as String,
-      ),
+      milliAcceleratorSeconds: pulumi.Input.fromValue(map['milliAcceleratorSeconds'] as String),
       milliDcuSeconds: pulumi.Input.fromValue(map['milliDcuSeconds'] as String),
-      shuffleStorageGbSeconds: pulumi.Input.fromValue(
-        map['shuffleStorageGbSeconds'] as String,
-      ),
+      shuffleStorageGbSeconds: pulumi.Input.fromValue(map['shuffleStorageGbSeconds'] as String),
     );
   }
 }
+

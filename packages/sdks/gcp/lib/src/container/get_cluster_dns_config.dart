@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClusterDnsConfig {
   /// Enable additive VPC scope DNS in a GKE cluster.
   final pulumi.Input<String> additiveVpcScopeDnsDomain;
-
   /// Which in-cluster DNS provider should be used.
   final pulumi.Input<String> clusterDns;
-
   /// The suffix used for all cluster service records.
   final pulumi.Input<String> clusterDnsDomain;
-
   /// The scope of access to cluster DNS records.
   final pulumi.Input<String> clusterDnsScope;
 
@@ -38,14 +35,11 @@ class GetClusterDnsConfig {
 
   factory GetClusterDnsConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterDnsConfig(
-      additiveVpcScopeDnsDomain: pulumi.Input.fromValue(
-        map['additiveVpcScopeDnsDomain'] as String,
-      ),
+      additiveVpcScopeDnsDomain: pulumi.Input.fromValue(map['additiveVpcScopeDnsDomain'] as String),
       clusterDns: pulumi.Input.fromValue(map['clusterDns'] as String),
-      clusterDnsDomain: pulumi.Input.fromValue(
-        map['clusterDnsDomain'] as String,
-      ),
+      clusterDnsDomain: pulumi.Input.fromValue(map['clusterDnsDomain'] as String),
       clusterDnsScope: pulumi.Input.fromValue(map['clusterDnsScope'] as String),
     );
   }
 }
+

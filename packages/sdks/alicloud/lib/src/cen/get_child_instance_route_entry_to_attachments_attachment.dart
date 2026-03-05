@@ -5,22 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetChildInstanceRouteEntryToAttachmentsAttachment {
   /// The ID of the CEN instance.
   final pulumi.Input<String> cenId;
-
   /// The first ID of the resource
   final pulumi.Input<String> childInstanceRouteTableId;
-
   /// DestinationCidrBlock
   final pulumi.Input<String> destinationCidrBlock;
-
   /// The ID of the resource. The value is formulated as `&lt;cen_id&gt;:&lt;child_instance_route_table_id&gt;:&lt;transit_router_attachment_id&gt;:&lt;destination_cidr_block&gt;`.
   final pulumi.Input<String> id;
-
   /// ServiceType
   final pulumi.Input<String> serviceType;
-
   /// The status of the resource
   final pulumi.Input<String> status;
-
   /// TransitRouterAttachmentId
   final pulumi.Input<String> transitRouterAttachmentId;
 
@@ -54,23 +48,16 @@ class GetChildInstanceRouteEntryToAttachmentsAttachment {
     };
   }
 
-  factory GetChildInstanceRouteEntryToAttachmentsAttachment.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetChildInstanceRouteEntryToAttachmentsAttachment.fromMap(Map<String, dynamic> map) {
     return GetChildInstanceRouteEntryToAttachmentsAttachment(
       cenId: pulumi.Input.fromValue(map['cenId'] as String),
-      childInstanceRouteTableId: pulumi.Input.fromValue(
-        map['childInstanceRouteTableId'] as String,
-      ),
-      destinationCidrBlock: pulumi.Input.fromValue(
-        map['destinationCidrBlock'] as String,
-      ),
+      childInstanceRouteTableId: pulumi.Input.fromValue(map['childInstanceRouteTableId'] as String),
+      destinationCidrBlock: pulumi.Input.fromValue(map['destinationCidrBlock'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
       serviceType: pulumi.Input.fromValue(map['serviceType'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
-      transitRouterAttachmentId: pulumi.Input.fromValue(
-        map['transitRouterAttachmentId'] as String,
-      ),
+      transitRouterAttachmentId: pulumi.Input.fromValue(map['transitRouterAttachmentId'] as String),
     );
   }
 }
+

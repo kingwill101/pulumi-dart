@@ -12,10 +12,14 @@ class GetProjectSettingsArgs {
 
   /// Creates a new [GetProjectSettingsArgs].
   /// [project] The ID of the project for which to retrieve settings.
-  GetProjectSettingsArgs({required this.project});
+  GetProjectSettingsArgs({
+    required this.project,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'project': project};
+    return <String, dynamic>{
+      'project': project,
+    };
   }
 
   factory GetProjectSettingsArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetProjectSettingsArgs {
     );
   }
 }
+

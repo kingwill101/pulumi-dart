@@ -9,17 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLBOutboundRuleArgs {
   /// The ID of the Load Balancer in which the Outbound Rule exists.
   final pulumi.Input<String> loadbalancerId;
-
   /// The name of this Load Balancer Outbound Rule.
   final pulumi.Input<String> name;
 
   /// Creates a new [GetLBOutboundRuleArgs].
   /// [loadbalancerId] The ID of the Load Balancer in which the Outbound Rule exists.
   /// [name] The name of this Load Balancer Outbound Rule.
-  GetLBOutboundRuleArgs({required this.loadbalancerId, required this.name});
+  GetLBOutboundRuleArgs({
+    required this.loadbalancerId,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'loadbalancerId': loadbalancerId, 'name': name};
+    return <String, dynamic>{
+      'loadbalancerId': loadbalancerId,
+      'name': name,
+    };
   }
 
   factory GetLBOutboundRuleArgs.fromMap(Map<String, dynamic> map) {
@@ -29,3 +34,4 @@ class GetLBOutboundRuleArgs {
     );
   }
 }
+

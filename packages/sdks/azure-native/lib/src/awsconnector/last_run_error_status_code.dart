@@ -15,3 +15,4 @@ enum LastRunErrorStatusCode {
     throw ArgumentError('Unknown LastRunErrorStatusCode value: $value');
   }
 }
+

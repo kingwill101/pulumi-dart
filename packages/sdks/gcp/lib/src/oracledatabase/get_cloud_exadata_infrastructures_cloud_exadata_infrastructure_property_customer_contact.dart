@@ -14,14 +14,15 @@ class GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyCustomerCo
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'email': email};
+    return <String, dynamic>{
+      'email': email,
+    };
   }
 
-  factory GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyCustomerContact.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyCustomerContact.fromMap(Map<String, dynamic> map) {
     return GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyCustomerContact(
       email: pulumi.Input.fromValue(map['email'] as String),
     );
   }
 }
+

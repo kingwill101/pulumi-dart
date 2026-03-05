@@ -1,51 +1,38 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getPublicIP.
 class GetPublicIPResult {
   /// The allocation method for this IP address. Possible values are `Static` or `Dynamic`.
   final String allocationMethod;
-
   /// The DDoS protection mode of the public IP.
   final String ddosProtectionMode;
-
   /// The ID of DDoS protection plan associated with the public IP.
   final String ddosProtectionPlanId;
-
   /// The label for the Domain Name.
   final String domainNameLabel;
-
   /// Fully qualified domain name of the A DNS record associated with the public IP. This is the concatenation of the domainNameLabel and the regionalized DNS zone.
   final String fqdn;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Specifies the timeout for the TCP idle connection.
   final int idleTimeoutInMinutes;
-
   /// The IP address value that was allocated.
   final String ipAddress;
-
   /// A mapping of tags to assigned to the resource.
   final Map<String, String> ipTags;
-
   /// The IP version being used, for example `IPv4` or `IPv6`.
   final String ipVersion;
-
   /// The region that this public ip exists.
   final String location;
   final String name;
   final String resourceGroupName;
-
   /// The fully qualified domain name that resolves to this public IP address.
   final String reverseFqdn;
-
   /// The SKU of the Public IP.
   final String sku;
-
   /// A mapping of tags to assigned to the resource.
   final Map<String, String> tags;
-
   /// A list of Availability Zones in which this Public IP is located.
   final List<String> zones;
 
@@ -131,3 +118,4 @@ class GetPublicIPResult {
     );
   }
 }
+

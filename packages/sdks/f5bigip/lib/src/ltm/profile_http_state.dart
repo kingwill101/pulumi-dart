@@ -8,89 +8,60 @@ import 'profile_http_http_strict_transport_security.dart';
 class ProfileHttpState {
   /// Enables or disables trusting the client IP address, and statistics from the client IP address, based on the request's XFF (X-forwarded-for) headers, if they exist.
   final pulumi.Input<String>? acceptXff;
-
   /// The application service to which the object belongs.
   final pulumi.Input<String>? appService;
-
   /// Specifies a quoted string for the basic authentication realm. The system sends this string to a client whenever authorization fails. The default value is `none`
   final pulumi.Input<String>? basicAuthRealm;
-
   /// Specifies the profile that you want to use as the parent profile. Your new profile inherits all settings and values from the parent profile specified.
   final pulumi.Input<String>? defaultsFrom;
-
   /// Specifies user-defined description.
   final pulumi.Input<String>? description;
-
   /// Type a passphrase for cookie encryption. Note: Since it's a sensitive entity idempotency will fail for it in the update call.
   final pulumi.Input<String>? encryptCookieSecret;
-
   /// Type the cookie names for the system to encrypt.
   final pulumi.Input<List<String>>? encryptCookies;
-
   /// See Enforcement below for more details.
   final pulumi.Input<List<ProfileHttpEnforcement>>? enforcements;
-
   /// Specifies an HTTP fallback host. HTTP redirection allows you to redirect HTTP traffic to another protocol identifier, host name, port number
   final pulumi.Input<String>? fallbackHost;
-
   /// Specifies one or more three-digit status codes that can be returned by an HTTP server,that should trigger a redirection to the fallback host.
   final pulumi.Input<List<String>>? fallbackStatusCodes;
-
   /// Specifies the header string that you want to erase from an HTTP request. Default is `none`.
   final pulumi.Input<String>? headErase;
-
   /// Specifies a quoted header string that you want to insert into an HTTP request.Default is `none`.
   final pulumi.Input<String>? headInsert;
-
   /// See Http_Strict_Transport_Security below for more details.
-  final pulumi.Input<List<ProfileHttpHttpStrictTransportSecurity>>?
-  httpStrictTransportSecurities;
-
+  final pulumi.Input<List<ProfileHttpHttpStrictTransportSecurity>>? httpStrictTransportSecurities;
   /// Specifies, when enabled, that the system inserts an X-Forwarded-For header in an HTTP request with the client IP address, to use with connection pooling. The default is `Disabled`.
   final pulumi.Input<String>? insertXforwardedFor;
-
   /// Specifies the linear white space (LWS) separator that the system inserts when a header exceeds the maximum width you specify in the LWS Maximum Columns setting.
   final pulumi.Input<String>? lwsSeparator;
-
   /// Specifies the linear white space (LWS) separator that the system inserts when a header exceeds the maximum width you specify in the LWS Maximum Columns setting.
   final pulumi.Input<int>? lwsWidth;
-
   /// Specifies the name of the http profile,name of Profile should be full path. Full path is the combination of the `partition + profile name`,For example `/Common/test-http-profile`.
   final pulumi.Input<String>? name;
-
   /// Enables the system to perform HTTP header transformations for the purpose of  keeping server-side connections open. This feature requires configuration of a OneConnect profile
   final pulumi.Input<String>? oneconnectTransformations;
-
   /// Specifies the proxy mode for this profile: reverse, explicit, or transparent. The default is `reverse`.
   final pulumi.Input<String>? proxyType;
-
   /// Specifies whether the system rewrites the URIs that are part of HTTP redirect (3XX) responses. The default is `none`.
   final pulumi.Input<String>? redirectRewrite;
-
   /// Specifies how the system handles HTTP content that is chunked by a client. The default is `preserve`.
   final pulumi.Input<String>? requestChunking;
-
   /// Specifies how the system handles HTTP content that is chunked by a server. The default is `selective`.
   final pulumi.Input<String>? responseChunking;
-
   /// Specifies headers that the BIG-IP system allows in an HTTP response.If you are specifying more than one header, separate the headers with a blank space.
   final pulumi.Input<List<String>>? responseHeadersPermitteds;
-
   /// Specifies the value of the Server header in responses that the BIG-IP itself generates. The default is BigIP. In order to remove it, "none" string is to be passed. If server_agent_name is commented (or not passed) during the update call, then no changes would be applied and previous value will persist. In order to put default value, we need to pass "BigIP" explicitly.
   final pulumi.Input<String>? serverAgentName;
-
   /// Displays the administrative partition within which this profile resides.
   final pulumi.Input<String>? tmPartition;
-
   /// Specifies the hostname to include into Via header
   final pulumi.Input<String>? viaHostName;
-
   /// Specifies whether to append, remove, or preserve a Via header in an HTTP request
   final pulumi.Input<String>? viaRequest;
-
   /// Specifies whether to append, remove, or preserve a Via header in an HTTP request
   final pulumi.Input<String>? viaResponse;
-
   /// Specifies alternative XFF headers instead of the default X-forwarded-for header.
   final pulumi.Input<List<String>>? xffAlternativeNames;
 
@@ -165,34 +136,12 @@ class ProfileHttpState {
       'description': ?description,
       'encryptCookieSecret': ?encryptCookieSecret,
       'encryptCookies': ?encryptCookies,
-      'enforcements':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ProfileHttpEnforcement>,
-            List<Map<String, dynamic>>
-          >(
-            enforcements,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ProfileHttpEnforcement,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'enforcements': ?pulumi.Input.mapOptionalInputValue<List<ProfileHttpEnforcement>, List<Map<String, dynamic>>>(enforcements, (value) => pulumi.Input.encodeList<ProfileHttpEnforcement, Map<String, dynamic>>(value, (value) => value.toMap())),
       'fallbackHost': ?fallbackHost,
       'fallbackStatusCodes': ?fallbackStatusCodes,
       'headErase': ?headErase,
       'headInsert': ?headInsert,
-      'httpStrictTransportSecurities':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ProfileHttpHttpStrictTransportSecurity>,
-            List<Map<String, dynamic>>
-          >(
-            httpStrictTransportSecurities,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ProfileHttpHttpStrictTransportSecurity,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'httpStrictTransportSecurities': ?pulumi.Input.mapOptionalInputValue<List<ProfileHttpHttpStrictTransportSecurity>, List<Map<String, dynamic>>>(httpStrictTransportSecurities, (value) => pulumi.Input.encodeList<ProfileHttpHttpStrictTransportSecurity, Map<String, dynamic>>(value, (value) => value.toMap())),
       'insertXforwardedFor': ?insertXforwardedFor,
       'lwsSeparator': ?lwsSeparator,
       'lwsWidth': ?lwsWidth,
@@ -214,165 +163,36 @@ class ProfileHttpState {
 
   factory ProfileHttpState.fromMap(Map<String, dynamic> map) {
     return ProfileHttpState(
-      acceptXff: (() {
-        final guardedValue = map['acceptXff'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      appService: (() {
-        final guardedValue = map['appService'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      basicAuthRealm: (() {
-        final guardedValue = map['basicAuthRealm'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      defaultsFrom: (() {
-        final guardedValue = map['defaultsFrom'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      encryptCookieSecret: (() {
-        final guardedValue = map['encryptCookieSecret'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      encryptCookies: (() {
-        final guardedValue = map['encryptCookies'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      enforcements: (() {
-        final guardedValue = map['enforcements'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ProfileHttpEnforcement>(
-            guardedValue,
-            (value) => ProfileHttpEnforcement.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      fallbackHost: (() {
-        final guardedValue = map['fallbackHost'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      fallbackStatusCodes: (() {
-        final guardedValue = map['fallbackStatusCodes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      headErase: (() {
-        final guardedValue = map['headErase'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      headInsert: (() {
-        final guardedValue = map['headInsert'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      httpStrictTransportSecurities: (() {
-        final guardedValue = map['httpStrictTransportSecurities'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ProfileHttpHttpStrictTransportSecurity>(
-            guardedValue,
-            (value) => ProfileHttpHttpStrictTransportSecurity.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      insertXforwardedFor: (() {
-        final guardedValue = map['insertXforwardedFor'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      lwsSeparator: (() {
-        final guardedValue = map['lwsSeparator'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      lwsWidth: (() {
-        final guardedValue = map['lwsWidth'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      oneconnectTransformations: (() {
-        final guardedValue = map['oneconnectTransformations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      proxyType: (() {
-        final guardedValue = map['proxyType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      redirectRewrite: (() {
-        final guardedValue = map['redirectRewrite'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      requestChunking: (() {
-        final guardedValue = map['requestChunking'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      responseChunking: (() {
-        final guardedValue = map['responseChunking'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      responseHeadersPermitteds: (() {
-        final guardedValue = map['responseHeadersPermitteds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      serverAgentName: (() {
-        final guardedValue = map['serverAgentName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tmPartition: (() {
-        final guardedValue = map['tmPartition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      viaHostName: (() {
-        final guardedValue = map['viaHostName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      viaRequest: (() {
-        final guardedValue = map['viaRequest'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      viaResponse: (() {
-        final guardedValue = map['viaResponse'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      xffAlternativeNames: (() {
-        final guardedValue = map['xffAlternativeNames'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      acceptXff: (() { final guardedValue = map['acceptXff']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      appService: (() { final guardedValue = map['appService']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      basicAuthRealm: (() { final guardedValue = map['basicAuthRealm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      defaultsFrom: (() { final guardedValue = map['defaultsFrom']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      encryptCookieSecret: (() { final guardedValue = map['encryptCookieSecret']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      encryptCookies: (() { final guardedValue = map['encryptCookies']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      enforcements: (() { final guardedValue = map['enforcements']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ProfileHttpEnforcement>(guardedValue, (value) => ProfileHttpEnforcement.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      fallbackHost: (() { final guardedValue = map['fallbackHost']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      fallbackStatusCodes: (() { final guardedValue = map['fallbackStatusCodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      headErase: (() { final guardedValue = map['headErase']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      headInsert: (() { final guardedValue = map['headInsert']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      httpStrictTransportSecurities: (() { final guardedValue = map['httpStrictTransportSecurities']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ProfileHttpHttpStrictTransportSecurity>(guardedValue, (value) => ProfileHttpHttpStrictTransportSecurity.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      insertXforwardedFor: (() { final guardedValue = map['insertXforwardedFor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      lwsSeparator: (() { final guardedValue = map['lwsSeparator']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      lwsWidth: (() { final guardedValue = map['lwsWidth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      oneconnectTransformations: (() { final guardedValue = map['oneconnectTransformations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      proxyType: (() { final guardedValue = map['proxyType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      redirectRewrite: (() { final guardedValue = map['redirectRewrite']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      requestChunking: (() { final guardedValue = map['requestChunking']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      responseChunking: (() { final guardedValue = map['responseChunking']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      responseHeadersPermitteds: (() { final guardedValue = map['responseHeadersPermitteds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      serverAgentName: (() { final guardedValue = map['serverAgentName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tmPartition: (() { final guardedValue = map['tmPartition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      viaHostName: (() { final guardedValue = map['viaHostName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      viaRequest: (() { final guardedValue = map['viaRequest']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      viaResponse: (() { final guardedValue = map['viaResponse']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      xffAlternativeNames: (() { final guardedValue = map['xffAlternativeNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

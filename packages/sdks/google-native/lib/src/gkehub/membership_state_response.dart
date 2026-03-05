@@ -9,10 +9,14 @@ class MembershipStateResponse {
 
   /// Creates a new [MembershipStateResponse].
   /// [code] The current state of the Membership resource.
-  MembershipStateResponse({required this.code});
+  MembershipStateResponse({
+    required this.code,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'code': code};
+    return <String, dynamic>{
+      'code': code,
+    };
   }
 
   factory MembershipStateResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class MembershipStateResponse {
     );
   }
 }
+

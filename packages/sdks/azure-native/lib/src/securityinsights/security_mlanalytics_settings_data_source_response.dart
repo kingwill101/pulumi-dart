@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecurityMLAnalyticsSettingsDataSourceResponse {
   /// The connector id that provides the following data types
   final pulumi.Input<String>? connectorId;
-
   /// The data types used by the security ml analytics settings
   final pulumi.Input<List<String>>? dataTypes;
 
@@ -25,20 +24,11 @@ class SecurityMLAnalyticsSettingsDataSourceResponse {
     };
   }
 
-  factory SecurityMLAnalyticsSettingsDataSourceResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SecurityMLAnalyticsSettingsDataSourceResponse.fromMap(Map<String, dynamic> map) {
     return SecurityMLAnalyticsSettingsDataSourceResponse(
-      connectorId: (() {
-        final guardedValue = map['connectorId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dataTypes: (() {
-        final guardedValue = map['dataTypes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      connectorId: (() { final guardedValue = map['connectorId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dataTypes: (() { final guardedValue = map['dataTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

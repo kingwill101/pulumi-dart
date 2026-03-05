@@ -9,52 +9,36 @@ import 'system_data_response.dart';
 class GetVirtualNetworkResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Gets the name of the corresponding resource in Kubernetes.
   final String customResourceName;
-
   /// Gets or sets the extended location.
   final ExtendedLocationResponse? extendedLocation;
-
   /// Gets or sets the Id.
   final String id;
-
   /// Gets or sets the inventory Item ID for the virtual network.
   final String? inventoryItemId;
-
   /// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
   final String? kind;
-
   /// Gets or sets the location.
   final String location;
-
   /// Gets or sets the vCenter Managed Object name for the virtual network.
   final String moName;
-
   /// Gets or sets the vCenter MoRef (Managed Object Reference) ID for the virtual network.
   final String? moRefId;
-
   /// Gets or sets the name.
   final String name;
-
   /// Gets the provisioning state.
   final String provisioningState;
-
   /// The resource status information.
   final List<ResourceStatusResponse> statuses;
-
   /// The system data.
   final SystemDataResponse systemData;
-
   /// Gets or sets the Resource tags.
   final Map<String, String>? tags;
-
   /// Gets or sets the type of the resource.
   final String type;
-
   /// Gets or sets a unique identifier for this resource.
   final String uuid;
-
   /// Gets or sets the ARM Id of the vCenter resource in which this template resides.
   final String? vCenterId;
 
@@ -109,11 +93,7 @@ class GetVirtualNetworkResult {
       'moRefId': ?moRefId,
       'name': name,
       'provisioningState': provisioningState,
-      'statuses':
-          pulumi.Input.encodeList<ResourceStatusResponse, Map<String, dynamic>>(
-            statuses,
-            (value) => value.toMap(),
-          ),
+      'statuses': pulumi.Input.encodeList<ResourceStatusResponse, Map<String, dynamic>>(statuses, (value) => value.toMap()),
       'systemData': systemData.toMap(),
       'tags': ?tags,
       'type': type,
@@ -126,54 +106,22 @@ class GetVirtualNetworkResult {
     return GetVirtualNetworkResult(
       azureApiVersion: map['azureApiVersion'] as String,
       customResourceName: map['customResourceName'] as String,
-      extendedLocation: (() {
-        final guardedValue = map['extendedLocation'];
-        if (guardedValue == null) return null;
-        return ExtendedLocationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: map['id'] as String,
-      inventoryItemId: (() {
-        final guardedValue = map['inventoryItemId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      inventoryItemId: (() { final guardedValue = map['inventoryItemId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: map['location'] as String,
       moName: map['moName'] as String,
-      moRefId: (() {
-        final guardedValue = map['moRefId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      moRefId: (() { final guardedValue = map['moRefId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      statuses: pulumi.Input.decodeList<ResourceStatusResponse>(
-        map['statuses']!,
-        (value) => ResourceStatusResponse.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      statuses: pulumi.Input.decodeList<ResourceStatusResponse>(map['statuses']!, (value) => ResourceStatusResponse.fromMap((value as Map).cast<String, dynamic>())),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
       uuid: map['uuid'] as String,
-      vCenterId: (() {
-        final guardedValue = map['vCenterId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      vCenterId: (() { final guardedValue = map['vCenterId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

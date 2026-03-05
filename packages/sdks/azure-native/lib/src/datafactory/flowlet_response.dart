@@ -10,28 +10,20 @@ import 'transformation_response.dart';
 class FlowletResponse {
   /// List of tags that can be used for describing the data flow.
   final pulumi.Input<List<dynamic>>? annotations;
-
   /// The description of the data flow.
   final pulumi.Input<String>? description;
-
   /// The folder that this data flow is in. If not specified, Data flow will appear at the root level.
   final pulumi.Input<DataFlowResponseFolder>? folder;
-
   /// Flowlet script.
   final pulumi.Input<String>? script;
-
   /// Flowlet script lines.
   final pulumi.Input<List<String>>? scriptLines;
-
   /// List of sinks in Flowlet.
   final pulumi.Input<List<DataFlowSinkResponse>>? sinks;
-
   /// List of sources in Flowlet.
   final pulumi.Input<List<DataFlowSourceResponse>>? sources;
-
   /// List of transformations in Flowlet.
   final pulumi.Input<List<TransformationResponse>>? transformations_;
-
   /// Type of data flow.
   /// Expected value is 'Flowlet'.
   final pulumi.Input<String> type;
@@ -62,121 +54,28 @@ class FlowletResponse {
     return <String, dynamic>{
       'annotations': ?annotations,
       'description': ?description,
-      'folder':
-          ?pulumi.Input.mapOptionalInputValue<
-            DataFlowResponseFolder,
-            Map<String, dynamic>
-          >(folder, (value) => value.toMap()),
+      'folder': ?pulumi.Input.mapOptionalInputValue<DataFlowResponseFolder, Map<String, dynamic>>(folder, (value) => value.toMap()),
       'script': ?script,
       'scriptLines': ?scriptLines,
-      'sinks':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<DataFlowSinkResponse>,
-            List<Map<String, dynamic>>
-          >(
-            sinks,
-            (value) =>
-                pulumi.Input.encodeList<
-                  DataFlowSinkResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'sources':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<DataFlowSourceResponse>,
-            List<Map<String, dynamic>>
-          >(
-            sources,
-            (value) =>
-                pulumi.Input.encodeList<
-                  DataFlowSourceResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'transformations':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<TransformationResponse>,
-            List<Map<String, dynamic>>
-          >(
-            transformations_,
-            (value) =>
-                pulumi.Input.encodeList<
-                  TransformationResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'sinks': ?pulumi.Input.mapOptionalInputValue<List<DataFlowSinkResponse>, List<Map<String, dynamic>>>(sinks, (value) => pulumi.Input.encodeList<DataFlowSinkResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'sources': ?pulumi.Input.mapOptionalInputValue<List<DataFlowSourceResponse>, List<Map<String, dynamic>>>(sources, (value) => pulumi.Input.encodeList<DataFlowSourceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'transformations': ?pulumi.Input.mapOptionalInputValue<List<TransformationResponse>, List<Map<String, dynamic>>>(transformations_, (value) => pulumi.Input.encodeList<TransformationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'type': type,
     };
   }
 
   factory FlowletResponse.fromMap(Map<String, dynamic> map) {
     return FlowletResponse(
-      annotations: (() {
-        final guardedValue = map['annotations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>());
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      folder: (() {
-        final guardedValue = map['folder'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DataFlowResponseFolder.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      script: (() {
-        final guardedValue = map['script'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      scriptLines: (() {
-        final guardedValue = map['scriptLines'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      sinks: (() {
-        final guardedValue = map['sinks'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<DataFlowSinkResponse>(
-            guardedValue,
-            (value) => DataFlowSinkResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      sources: (() {
-        final guardedValue = map['sources'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<DataFlowSourceResponse>(
-            guardedValue,
-            (value) => DataFlowSourceResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      transformations_: (() {
-        final guardedValue = map['transformations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<TransformationResponse>(
-            guardedValue,
-            (value) => TransformationResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      folder: (() { final guardedValue = map['folder']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DataFlowResponseFolder.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      script: (() { final guardedValue = map['script']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      scriptLines: (() { final guardedValue = map['scriptLines']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      sinks: (() { final guardedValue = map['sinks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DataFlowSinkResponse>(guardedValue, (value) => DataFlowSinkResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      sources: (() { final guardedValue = map['sources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DataFlowSourceResponse>(guardedValue, (value) => DataFlowSourceResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      transformations_: (() { final guardedValue = map['transformations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TransformationResponse>(guardedValue, (value) => TransformationResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

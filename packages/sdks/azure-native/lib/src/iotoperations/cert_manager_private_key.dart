@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CertManagerPrivateKey {
   /// algorithm for private key.
   final pulumi.Input<String> algorithm;
-
   /// cert-manager private key rotationPolicy.
   final pulumi.Input<String> rotationPolicy;
 
@@ -32,3 +31,4 @@ class CertManagerPrivateKey {
     );
   }
 }
+

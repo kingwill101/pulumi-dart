@@ -6,7 +6,6 @@ import 'get_mail_addresses_address.dart';
 /// Result data returned by getMailAddresses.
 class GetMailAddressesResult {
   final List<GetMailAddressesAddress> addresses;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -35,11 +34,7 @@ class GetMailAddressesResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'addresses':
-          pulumi.Input.encodeList<
-            GetMailAddressesAddress,
-            Map<String, dynamic>
-          >(addresses, (value) => value.toMap()),
+      'addresses': pulumi.Input.encodeList<GetMailAddressesAddress, Map<String, dynamic>>(addresses, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'keyWord': ?keyWord,
@@ -51,34 +46,14 @@ class GetMailAddressesResult {
 
   factory GetMailAddressesResult.fromMap(Map<String, dynamic> map) {
     return GetMailAddressesResult(
-      addresses: pulumi.Input.decodeList<GetMailAddressesAddress>(
-        map['addresses']!,
-        (value) => GetMailAddressesAddress.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      addresses: pulumi.Input.decodeList<GetMailAddressesAddress>(map['addresses']!, (value) => GetMailAddressesAddress.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      keyWord: (() {
-        final guardedValue = map['keyWord'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      sendtype: (() {
-        final guardedValue = map['sendtype'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      keyWord: (() { final guardedValue = map['keyWord']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sendtype: (() { final guardedValue = map['sendtype']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

@@ -10,27 +10,20 @@ class BinaryAuthorization {
 
   /// Creates a new [BinaryAuthorization].
   /// [evaluationMode] Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
-  BinaryAuthorization({this.evaluationMode});
+  BinaryAuthorization({
+    this.evaluationMode,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'evaluationMode':
-          ?pulumi.Input.mapOptionalInputValue<
-            BinaryAuthorizationEvaluationMode,
-            String
-          >(evaluationMode, (value) => value.wireValue),
+      'evaluationMode': ?pulumi.Input.mapOptionalInputValue<BinaryAuthorizationEvaluationMode, String>(evaluationMode, (value) => value.wireValue),
     };
   }
 
   factory BinaryAuthorization.fromMap(Map<String, dynamic> map) {
     return BinaryAuthorization(
-      evaluationMode: (() {
-        final guardedValue = map['evaluationMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BinaryAuthorizationEvaluationMode.fromValue(guardedValue as String),
-        );
-      })(),
+      evaluationMode: (() { final guardedValue = map['evaluationMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BinaryAuthorizationEvaluationMode.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

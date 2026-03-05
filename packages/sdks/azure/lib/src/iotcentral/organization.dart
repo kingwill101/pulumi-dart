@@ -272,13 +272,10 @@ import 'organization_state.dart';
 class Organization extends pulumi.CustomResource {
   /// Custom `display_name` for the organization.
   late final pulumi.Output<String> displayName;
-
   /// The application `id`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> iotcentralApplicationId;
-
   /// The ID of the organization. Changing this forces a new resource to be created.
   late final pulumi.Output<String> organizationId;
-
   /// The `organization_id` of the parent organization. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> parentOrganizationId;
 
@@ -291,11 +288,11 @@ class Organization extends pulumi.CustomResource {
     OrganizationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:iotcentral/organization:Organization',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:iotcentral/organization:Organization',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     displayName = registerOutput<String>('displayName');
     iotcentralApplicationId = registerOutput<String>('iotcentralApplicationId');
     organizationId = registerOutput<String>('organizationId');
@@ -320,11 +317,11 @@ class Organization extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:iotcentral/organization:Organization',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:iotcentral/organization:Organization',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     displayName = registerOutput<String>('displayName');
     iotcentralApplicationId = registerOutput<String>('iotcentralApplicationId');
     organizationId = registerOutput<String>('organizationId');

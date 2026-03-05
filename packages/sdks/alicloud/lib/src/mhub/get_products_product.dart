@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetProductsProduct {
   /// The ID of the Product.
   final pulumi.Input<String> id;
-
   /// The ID of the Product.
   final pulumi.Input<String> productId;
-
   /// The name of the Product.
   final pulumi.Input<String> productName;
 
@@ -38,3 +36,4 @@ class GetProductsProduct {
     );
   }
 }
+

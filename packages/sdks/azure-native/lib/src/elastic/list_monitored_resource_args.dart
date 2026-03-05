@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListMonitoredResourceArgs {
   /// Monitor resource name
   final pulumi.Input<String> monitorName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -31,9 +30,8 @@ class ListMonitoredResourceArgs {
   factory ListMonitoredResourceArgs.fromMap(Map<String, dynamic> map) {
     return ListMonitoredResourceArgs(
       monitorName: pulumi.Input.fromValue(map['monitorName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

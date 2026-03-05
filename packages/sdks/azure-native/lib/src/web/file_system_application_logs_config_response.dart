@@ -9,21 +9,20 @@ class FileSystemApplicationLogsConfigResponse {
 
   /// Creates a new [FileSystemApplicationLogsConfigResponse].
   /// [level] Log level.
-  FileSystemApplicationLogsConfigResponse({this.level});
+  FileSystemApplicationLogsConfigResponse({
+    this.level,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'level': ?level};
+    return <String, dynamic>{
+      'level': ?level,
+    };
   }
 
-  factory FileSystemApplicationLogsConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FileSystemApplicationLogsConfigResponse.fromMap(Map<String, dynamic> map) {
     return FileSystemApplicationLogsConfigResponse(
-      level: (() {
-        final guardedValue = map['level'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      level: (() { final guardedValue = map['level']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

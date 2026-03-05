@@ -15,3 +15,4 @@ enum SessionNetworkStatus {
     throw ArgumentError('Unknown SessionNetworkStatus value: $value');
   }
 }
+

@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDataCollectionEndpointArgs {
   /// Specifies the name of the Data Collection Endpoint.
   final pulumi.Input<String> name;
-
   /// Specifies the name of the resource group the Data Collection Endpoint is located in.
   final pulumi.Input<String> resourceGroupName;
 
@@ -31,9 +30,8 @@ class GetDataCollectionEndpointArgs {
   factory GetDataCollectionEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GetDataCollectionEndpointArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

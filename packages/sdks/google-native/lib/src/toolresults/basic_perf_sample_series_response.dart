@@ -30,9 +30,8 @@ class BasicPerfSampleSeriesResponse {
     return BasicPerfSampleSeriesResponse(
       perfMetricType: pulumi.Input.fromValue(map['perfMetricType'] as String),
       perfUnit: pulumi.Input.fromValue(map['perfUnit'] as String),
-      sampleSeriesLabel: pulumi.Input.fromValue(
-        map['sampleSeriesLabel'] as String,
-      ),
+      sampleSeriesLabel: pulumi.Input.fromValue(map['sampleSeriesLabel'] as String),
     );
   }
 }
+

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CopyCompletionErrorResponse {
   /// Indicates the error code if the background copy of a resource created via the CopyStart operation fails.
   final pulumi.Input<String> errorCode;
-
   /// Indicates the error message if the background copy of a resource created via the CopyStart operation fails.
   final pulumi.Input<String> errorMessage;
 
@@ -32,3 +31,4 @@ class CopyCompletionErrorResponse {
     );
   }
 }
+

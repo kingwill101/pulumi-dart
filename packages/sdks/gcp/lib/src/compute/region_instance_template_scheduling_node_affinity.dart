@@ -5,11 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegionInstanceTemplateSchedulingNodeAffinity {
   /// The key for the node affinity label.
   final pulumi.Input<String> key;
-
   /// The operator. Can be `IN` for node-affinities
   /// or `NOT_IN` for anti-affinities.
   final pulumi.Input<String> operator;
-
   /// Corresponds to the label values of a reservation resource.
   final pulumi.Input<List<String>> values;
 
@@ -31,9 +29,7 @@ class RegionInstanceTemplateSchedulingNodeAffinity {
     };
   }
 
-  factory RegionInstanceTemplateSchedulingNodeAffinity.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RegionInstanceTemplateSchedulingNodeAffinity.fromMap(Map<String, dynamic> map) {
     return RegionInstanceTemplateSchedulingNodeAffinity(
       key: pulumi.Input.fromValue(map['key'] as String),
       operator: pulumi.Input.fromValue(map['operator'] as String),
@@ -41,3 +37,4 @@ class RegionInstanceTemplateSchedulingNodeAffinity {
     );
   }
 }
+

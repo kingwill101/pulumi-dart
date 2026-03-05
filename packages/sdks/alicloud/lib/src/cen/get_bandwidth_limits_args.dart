@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBandwidthLimitsArgs {
   /// A list of CEN instances IDs.
   final pulumi.Input<List<String>>? instanceIds;
-
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
 
   /// Creates a new [GetBandwidthLimitsArgs].
   /// [instanceIds] A list of CEN instances IDs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetBandwidthLimitsArgs({this.instanceIds, this.outputFile});
+  GetBandwidthLimitsArgs({
+    this.instanceIds,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,16 +29,9 @@ class GetBandwidthLimitsArgs {
 
   factory GetBandwidthLimitsArgs.fromMap(Map<String, dynamic> map) {
     return GetBandwidthLimitsArgs(
-      instanceIds: (() {
-        final guardedValue = map['instanceIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      instanceIds: (() { final guardedValue = map['instanceIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

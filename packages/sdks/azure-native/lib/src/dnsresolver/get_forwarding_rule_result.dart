@@ -8,34 +8,24 @@ import 'target_dns_server_response.dart';
 class GetForwardingRuleResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The domain name for the forwarding rule.
   final String domainName;
-
   /// ETag of the forwarding rule.
   final String etag;
-
   /// The state of forwarding rule.
   final String? forwardingRuleState;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// Metadata attached to the forwarding rule.
   final Map<String, String>? metadata;
-
   /// The name of the resource
   final String name;
-
   /// The current provisioning state of the forwarding rule. This is a read-only property and any attempt to set this value will be ignored.
   final String provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// DNS servers to forward the DNS query to.
   final List<TargetDnsServerResponse> targetDnsServers;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -76,11 +66,7 @@ class GetForwardingRuleResult {
       'name': name,
       'provisioningState': provisioningState,
       'systemData': systemData.toMap(),
-      'targetDnsServers':
-          pulumi.Input.encodeList<
-            TargetDnsServerResponse,
-            Map<String, dynamic>
-          >(targetDnsServers, (value) => value.toMap()),
+      'targetDnsServers': pulumi.Input.encodeList<TargetDnsServerResponse, Map<String, dynamic>>(targetDnsServers, (value) => value.toMap()),
       'type': type,
     };
   }
@@ -90,29 +76,15 @@ class GetForwardingRuleResult {
       azureApiVersion: map['azureApiVersion'] as String,
       domainName: map['domainName'] as String,
       etag: map['etag'] as String,
-      forwardingRuleState: (() {
-        final guardedValue = map['forwardingRuleState'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      forwardingRuleState: (() { final guardedValue = map['forwardingRuleState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
-      metadata: (() {
-        final guardedValue = map['metadata'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      targetDnsServers: pulumi.Input.decodeList<TargetDnsServerResponse>(
-        map['targetDnsServers']!,
-        (value) => TargetDnsServerResponse.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      targetDnsServers: pulumi.Input.decodeList<TargetDnsServerResponse>(map['targetDnsServers']!, (value) => TargetDnsServerResponse.fromMap((value as Map).cast<String, dynamic>())),
       type: map['type'] as String,
     );
   }
 }
+

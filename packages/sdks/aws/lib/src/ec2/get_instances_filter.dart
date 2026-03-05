@@ -6,17 +6,22 @@ class GetInstancesFilter {
   /// Name of the filter.
   /// For a full reference of filter names, see [describe-instances in the AWS CLI reference][1].
   final pulumi.Input<String> name;
-
   /// One or more values to match.
   final pulumi.Input<List<String>> values;
 
   /// Creates a new [GetInstancesFilter].
   /// [name] Name of the filter.
   /// [values] One or more values to match.
-  GetInstancesFilter({required this.name, required this.values});
+  GetInstancesFilter({
+    required this.name,
+    required this.values,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'values': values};
+    return <String, dynamic>{
+      'name': name,
+      'values': values,
+    };
   }
 
   factory GetInstancesFilter.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class GetInstancesFilter {
     );
   }
 }
+

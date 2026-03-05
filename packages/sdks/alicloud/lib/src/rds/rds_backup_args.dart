@@ -9,23 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RdsBackupArgs {
   /// The type of backup that you want to perform. Default value: `Physical`. Valid values: `Logical`, `Physical` and `Snapshot`.
   final pulumi.Input<String>? backupMethod;
-
   /// The policy that you want to use for the backup task. Valid values:
   /// * **db**: specifies to perform a database-level backup.
   /// * **instance**: specifies to perform an instance-level backup.
   final pulumi.Input<String>? backupStrategy;
-
   /// The method that you want to use for the backup task. Default value: `Auto`. Valid values:
   /// * **Auto**: specifies to automatically perform a full or incremental backup.
   /// * **FullBackup**: specifies to perform a full backup.
   final pulumi.Input<String>? backupType;
-
   /// The db instance id.
   final pulumi.Input<String> dbInstanceId;
-
   /// The names of the databases whose data you want to back up. Separate the names of the databases with commas (,).
   final pulumi.Input<String>? dbName;
-
   /// Remove form state when resource cannot be deleted. Valid values: `true` and `false`.
   final pulumi.Input<bool>? removeFromState;
 
@@ -58,32 +53,13 @@ class RdsBackupArgs {
 
   factory RdsBackupArgs.fromMap(Map<String, dynamic> map) {
     return RdsBackupArgs(
-      backupMethod: (() {
-        final guardedValue = map['backupMethod'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      backupStrategy: (() {
-        final guardedValue = map['backupStrategy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      backupType: (() {
-        final guardedValue = map['backupType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      backupMethod: (() { final guardedValue = map['backupMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      backupStrategy: (() { final guardedValue = map['backupStrategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      backupType: (() { final guardedValue = map['backupType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dbInstanceId: pulumi.Input.fromValue(map['dbInstanceId'] as String),
-      dbName: (() {
-        final guardedValue = map['dbName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      removeFromState: (() {
-        final guardedValue = map['removeFromState'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      dbName: (() { final guardedValue = map['dbName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      removeFromState: (() { final guardedValue = map['removeFromState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

@@ -199,18 +199,14 @@ import 'dedicated_ip_pool_state.dart';
 class DedicatedIpPool extends pulumi.CustomResource {
   /// ARN of the Dedicated IP Pool.
   late final pulumi.Output<String> arn;
-
   /// Name of the dedicated IP pool.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> poolName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// IP pool scaling mode. Valid values: `STANDARD`, `MANAGED`. If omitted, the AWS API will default to a standard pool.
   late final pulumi.Output<String> scalingMode;
-
   /// A map of tags to assign to the pool. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
@@ -224,11 +220,11 @@ class DedicatedIpPool extends pulumi.CustomResource {
     DedicatedIpPoolArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:sesv2/dedicatedIpPool:DedicatedIpPool',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:sesv2/dedicatedIpPool:DedicatedIpPool',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     poolName = registerOutput<String>('poolName');
     region = registerOutput<String>('region');
@@ -255,11 +251,11 @@ class DedicatedIpPool extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:sesv2/dedicatedIpPool:DedicatedIpPool',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:sesv2/dedicatedIpPool:DedicatedIpPool',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     poolName = registerOutput<String>('poolName');
     region = registerOutput<String>('region');

@@ -10,35 +10,20 @@ class GetSapVirtualInstanceInvokeSapSupportedSkuResult {
 
   /// Creates a new [GetSapVirtualInstanceInvokeSapSupportedSkuResult].
   /// [supportedSkus] Gets the list of SAP supported SKUs.
-  GetSapVirtualInstanceInvokeSapSupportedSkuResult({this.supportedSkus});
+  GetSapVirtualInstanceInvokeSapSupportedSkuResult({
+    this.supportedSkus,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'supportedSkus': ?(() {
-        final guardedValue = supportedSkus;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          SAPSupportedSkuResponse,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'supportedSkus': ?(() { final guardedValue = supportedSkus; if (guardedValue == null) return null; return pulumi.Input.encodeList<SAPSupportedSkuResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
-  factory GetSapVirtualInstanceInvokeSapSupportedSkuResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetSapVirtualInstanceInvokeSapSupportedSkuResult.fromMap(Map<String, dynamic> map) {
     return GetSapVirtualInstanceInvokeSapSupportedSkuResult(
-      supportedSkus: (() {
-        final guardedValue = map['supportedSkus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<SAPSupportedSkuResponse>(
-          guardedValue,
-          (value) => SAPSupportedSkuResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      supportedSkus: (() { final guardedValue = map['supportedSkus']; if (guardedValue == null) return null; return pulumi.Input.decodeList<SAPSupportedSkuResponse>(guardedValue, (value) => SAPSupportedSkuResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

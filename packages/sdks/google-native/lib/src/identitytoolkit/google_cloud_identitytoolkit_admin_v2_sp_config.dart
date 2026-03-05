@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudIdentitytoolkitAdminV2SpConfig {
   /// Callback URI where responses from IDP are handled.
   final pulumi.Input<String>? callbackUri;
-
   /// Unique identifier for all SAML entities.
   final pulumi.Input<String>? spEntityId;
 
@@ -25,20 +24,11 @@ class GoogleCloudIdentitytoolkitAdminV2SpConfig {
     };
   }
 
-  factory GoogleCloudIdentitytoolkitAdminV2SpConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudIdentitytoolkitAdminV2SpConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIdentitytoolkitAdminV2SpConfig(
-      callbackUri: (() {
-        final guardedValue = map['callbackUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      spEntityId: (() {
-        final guardedValue = map['spEntityId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      callbackUri: (() { final guardedValue = map['callbackUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      spEntityId: (() { final guardedValue = map['spEntityId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

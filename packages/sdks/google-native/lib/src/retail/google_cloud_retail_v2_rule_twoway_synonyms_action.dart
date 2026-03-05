@@ -9,21 +9,20 @@ class GoogleCloudRetailV2RuleTwowaySynonymsAction {
 
   /// Creates a new [GoogleCloudRetailV2RuleTwowaySynonymsAction].
   /// [synonyms] Defines a set of synonyms. Can specify up to 100 synonyms. Must specify at least 2 synonyms.
-  GoogleCloudRetailV2RuleTwowaySynonymsAction({this.synonyms});
+  GoogleCloudRetailV2RuleTwowaySynonymsAction({
+    this.synonyms,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'synonyms': ?synonyms};
+    return <String, dynamic>{
+      'synonyms': ?synonyms,
+    };
   }
 
-  factory GoogleCloudRetailV2RuleTwowaySynonymsAction.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudRetailV2RuleTwowaySynonymsAction.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2RuleTwowaySynonymsAction(
-      synonyms: (() {
-        final guardedValue = map['synonyms'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      synonyms: (() { final guardedValue = map['synonyms']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

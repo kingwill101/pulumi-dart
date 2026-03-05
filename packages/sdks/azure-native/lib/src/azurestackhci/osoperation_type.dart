@@ -16,3 +16,4 @@ enum OSOperationType {
     throw ArgumentError('Unknown OSOperationType value: $value');
   }
 }
+

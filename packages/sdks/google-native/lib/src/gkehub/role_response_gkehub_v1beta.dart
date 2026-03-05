@@ -9,10 +9,14 @@ class RoleResponseGkehubV1beta {
 
   /// Creates a new [RoleResponseGkehubV1beta].
   /// [predefinedRole] predefined_role is the Kubernetes default role to use
-  RoleResponseGkehubV1beta({required this.predefinedRole});
+  RoleResponseGkehubV1beta({
+    required this.predefinedRole,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'predefinedRole': predefinedRole};
+    return <String, dynamic>{
+      'predefinedRole': predefinedRole,
+    };
   }
 
   factory RoleResponseGkehubV1beta.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class RoleResponseGkehubV1beta {
     );
   }
 }
+

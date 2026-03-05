@@ -162,42 +162,32 @@ import 'ai_logic_prompt_template_state.dart';
 class AiLogicPromptTemplate extends pulumi.CustomResource {
   /// Timestamp when the PromptTemplate was created.
   late final pulumi.Output<String> createTime;
-
   /// The display name of the PromptTemplate.
   late final pulumi.Output<String?> displayName;
-
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> location;
-
   /// Indicates if the PromptTemplate has been locked for mutations.  It is
   /// strongly recommended that PromptTemplates used in production Apps be
   /// locked to avoid accidental distruption to live apps.
   /// To modify a PromptTemplate that has been locked, a call to ModifyLock with
   /// lock=false is required first.
   late final pulumi.Output<bool> locked;
-
   /// The model name parsed from the template_string.
   late final pulumi.Output<String> model;
-
   /// Identifier. The resource name of the PromptTemplate.
   /// Format:
   /// projects/{project}/locations/{location}/templates/{prompt_template}
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Timestamp when the PromptTemplate state was last changed.
   late final pulumi.Output<String> stateChangeTime;
-
   /// The unique ID of the PromptTemplate, which is the final component of the
   /// PromptTemplate's resource name.
   late final pulumi.Output<String> templateId;
-
   /// The DotPrompt raw template string.
   late final pulumi.Output<String> templateString;
-
   /// Timestamp when the PromptTemplate was last updated.
   late final pulumi.Output<String> updateTime;
 
@@ -210,11 +200,11 @@ class AiLogicPromptTemplate extends pulumi.CustomResource {
     AiLogicPromptTemplateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:firebase/aiLogicPromptTemplate:AiLogicPromptTemplate',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:firebase/aiLogicPromptTemplate:AiLogicPromptTemplate',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String?>('displayName');
     location = registerOutput<String>('location');
@@ -246,11 +236,11 @@ class AiLogicPromptTemplate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:firebase/aiLogicPromptTemplate:AiLogicPromptTemplate',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:firebase/aiLogicPromptTemplate:AiLogicPromptTemplate',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String?>('displayName');
     location = registerOutput<String>('location');

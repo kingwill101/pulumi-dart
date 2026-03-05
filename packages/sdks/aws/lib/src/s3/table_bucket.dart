@@ -105,23 +105,16 @@ import 'table_bucket_state.dart';
 class TableBucket extends pulumi.CustomResource {
   /// ARN of the table bucket.
   late final pulumi.Output<String> arn;
-
   /// Date and time when the bucket was created.
   late final pulumi.Output<String> createdAt;
-
   /// A single table bucket encryption configuration object.
   /// See `encryption_configuration` below.
-  late final pulumi.Output<TableBucketEncryptionConfiguration?>
-  encryptionConfiguration;
-
+  late final pulumi.Output<TableBucketEncryptionConfiguration?> encryptionConfiguration;
   /// Whether all tables and namespaces within the table bucket should be deleted *when the table bucket is destroyed* so that the table bucket can be destroyed without error. These tables and namespaces are *not* recoverable. This only deletes tables and namespaces when the table bucket is destroyed, *not* when setting this parameter to `true`. Once this parameter is set to `true`, there must be a successful `pulumi up` run before a destroy is required to update this value in the resource state. Without a successful `pulumi up` after this parameter is set, this flag will have no effect. If setting this field in the same operation that would require replacing the table bucket or destroying the table bucket, this flag will not work. Additionally when importing a table bucket, a successful `pulumi up` is required to set this value in state before it will take effect on a destroy operation.
   late final pulumi.Output<bool> forceDestroy;
-
   /// A single table bucket maintenance configuration object.
   /// See `maintenance_configuration` below.
-  late final pulumi.Output<TableBucketMaintenanceConfiguration>
-  maintenanceConfiguration;
-
+  late final pulumi.Output<TableBucketMaintenanceConfiguration> maintenanceConfiguration;
   /// Name of the table bucket.
   /// Must be between 3 and 63 characters in length.
   /// Can consist of lowercase letters, numbers, and hyphens, and must begin and end with a lowercase letter or number.
@@ -129,16 +122,12 @@ class TableBucket extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
-
   /// Account ID of the account that owns the table bucket.
   late final pulumi.Output<String> ownerAccountId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -151,36 +140,16 @@ class TableBucket extends pulumi.CustomResource {
     TableBucketArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:s3tables/tableBucket:TableBucket',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:s3tables/tableBucket:TableBucket',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     createdAt = registerOutput<String>('createdAt');
-    encryptionConfiguration =
-        registerOutput<TableBucketEncryptionConfiguration?>(
-          'encryptionConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return TableBucketEncryptionConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    encryptionConfiguration = registerOutput<TableBucketEncryptionConfiguration?>('encryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableBucketEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     forceDestroy = registerOutput<bool>('forceDestroy');
-    maintenanceConfiguration =
-        registerOutput<TableBucketMaintenanceConfiguration>(
-          'maintenanceConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return TableBucketMaintenanceConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    maintenanceConfiguration = registerOutput<TableBucketMaintenanceConfiguration>('maintenanceConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableBucketMaintenanceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     ownerAccountId = registerOutput<String>('ownerAccountId');
     region = registerOutput<String>('region');
@@ -206,36 +175,16 @@ class TableBucket extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:s3tables/tableBucket:TableBucket',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:s3tables/tableBucket:TableBucket',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     createdAt = registerOutput<String>('createdAt');
-    encryptionConfiguration =
-        registerOutput<TableBucketEncryptionConfiguration?>(
-          'encryptionConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return TableBucketEncryptionConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    encryptionConfiguration = registerOutput<TableBucketEncryptionConfiguration?>('encryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableBucketEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     forceDestroy = registerOutput<bool>('forceDestroy');
-    maintenanceConfiguration =
-        registerOutput<TableBucketMaintenanceConfiguration>(
-          'maintenanceConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return TableBucketMaintenanceConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    maintenanceConfiguration = registerOutput<TableBucketMaintenanceConfiguration>('maintenanceConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableBucketMaintenanceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     ownerAccountId = registerOutput<String>('ownerAccountId');
     region = registerOutput<String>('region');

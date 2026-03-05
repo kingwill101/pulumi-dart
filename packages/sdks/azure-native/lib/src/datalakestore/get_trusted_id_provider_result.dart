@@ -1,19 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getTrustedIdProvider.
 class GetTrustedIdProviderResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The resource identifier.
   final String id;
-
   /// The URL of this trusted identity provider.
   final String idProvider;
-
   /// The resource name.
   final String name;
-
   /// The resource type.
   final String type;
 
@@ -51,3 +48,4 @@ class GetTrustedIdProviderResult {
     );
   }
 }
+

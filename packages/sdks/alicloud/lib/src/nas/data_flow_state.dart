@@ -6,33 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataFlowState {
   /// The ID of the Data flow.
   final pulumi.Input<String>? dataFlowId;
-
   /// The Description of the data flow. Restrictions:
   final pulumi.Input<String>? description;
-
   /// The dry run.
   final pulumi.Input<bool>? dryRun;
-
   /// The ID of the file system.
   final pulumi.Input<String>? fileSystemId;
-
   /// The ID of the Fileset.
   final pulumi.Input<String>? fsetId;
-
   /// The security protection type of the source storage. If the source storage must be accessed through security protection, specify the security protection type of the source storage. Value:
   /// - `NONE` (default): Indicates that the source storage does not need to be accessed through security protection.
   /// - `SSL`: Protects access through SSL certificates.
   final pulumi.Input<String>? sourceSecurityType;
-
   /// The access path of the source store. Format: `&lt;storage type&gt;://&lt;path&gt;`. Among them:
   /// - storage type: currently only OSS is supported.
   /// - path: the bucket name of OSS.
   /// - Only lowercase letters, numbers, and dashes (-) are supported and must start and end with lowercase letters or numbers.
   final pulumi.Input<String>? sourceStorage;
-
   /// The status of the Data flow. Valid values: `Running`, `Stopped`.
   final pulumi.Input<String>? status;
-
   /// The maximum transmission bandwidth of data flow, unit: `MB/s`. Valid values: `1200`, `1500`, `600`. **NOTE:** The transmission bandwidth of data flow must be less than the IO bandwidth of the file system.
   final pulumi.Input<int>? throughput;
 
@@ -74,51 +66,16 @@ class DataFlowState {
 
   factory DataFlowState.fromMap(Map<String, dynamic> map) {
     return DataFlowState(
-      dataFlowId: (() {
-        final guardedValue = map['dataFlowId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dryRun: (() {
-        final guardedValue = map['dryRun'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      fileSystemId: (() {
-        final guardedValue = map['fileSystemId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      fsetId: (() {
-        final guardedValue = map['fsetId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sourceSecurityType: (() {
-        final guardedValue = map['sourceSecurityType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sourceStorage: (() {
-        final guardedValue = map['sourceStorage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      throughput: (() {
-        final guardedValue = map['throughput'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      dataFlowId: (() { final guardedValue = map['dataFlowId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dryRun: (() { final guardedValue = map['dryRun']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      fileSystemId: (() { final guardedValue = map['fileSystemId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      fsetId: (() { final guardedValue = map['fsetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourceSecurityType: (() { final guardedValue = map['sourceSecurityType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourceStorage: (() { final guardedValue = map['sourceStorage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      throughput: (() { final guardedValue = map['throughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

@@ -496,13 +496,10 @@ import 'extension_provider_state.dart';
 class ExtensionProvider extends pulumi.CustomResource {
   /// The config of the Service Mesh Extension Provider. The `config` format is json.
   late final pulumi.Output<String> config;
-
   /// The name of the Service Mesh Extension Provider. It must be prefixed with `$type-`, for example `httpextauth-xxx`, `grpcextauth-xxx`.
   late final pulumi.Output<String> extensionProviderName;
-
   /// The ID of the Service Mesh.
   late final pulumi.Output<String> serviceMeshId;
-
   /// The type of the Service Mesh Extension Provider. Valid values: `httpextauth`, `grpcextauth`.
   late final pulumi.Output<String> type;
 
@@ -515,11 +512,11 @@ class ExtensionProvider extends pulumi.CustomResource {
     ExtensionProviderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:servicemesh/extensionProvider:ExtensionProvider',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:servicemesh/extensionProvider:ExtensionProvider',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     config = registerOutput<String>('config');
     extensionProviderName = registerOutput<String>('extensionProviderName');
     serviceMeshId = registerOutput<String>('serviceMeshId');
@@ -544,11 +541,11 @@ class ExtensionProvider extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:servicemesh/extensionProvider:ExtensionProvider',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:servicemesh/extensionProvider:ExtensionProvider',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     config = registerOutput<String>('config');
     extensionProviderName = registerOutput<String>('extensionProviderName');
     serviceMeshId = registerOutput<String>('serviceMeshId');

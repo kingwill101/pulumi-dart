@@ -330,33 +330,25 @@ import 'redirect_rule_state.dart';
 class RedirectRule extends pulumi.CustomResource {
   /// Config Id
   late final pulumi.Output<int> configId;
-
   /// Indicates whether the feature of retaining the query string is enabled. Valid values:
   ///
   /// - on
   /// - off
   late final pulumi.Output<String> reserveQueryString;
-
   /// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
   /// ● Match all incoming requests: value set to true
   /// ● Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
   late final pulumi.Output<String?> rule;
-
   /// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
   late final pulumi.Output<String?> ruleEnable;
-
   /// Rule name. When adding global configuration, this parameter does not need to be set.
   late final pulumi.Output<String?> ruleName;
-
   /// Order of rule execution. The smaller the value, the higher the priority for execution.
   late final pulumi.Output<int> sequence;
-
   /// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
   late final pulumi.Output<String> siteId;
-
   /// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
   late final pulumi.Output<int?> siteVersion;
-
   /// The response code that you want to use to indicate URL redirection. Valid values:
   ///
   /// - 301
@@ -365,10 +357,8 @@ class RedirectRule extends pulumi.CustomResource {
   /// - 307
   /// - 308
   late final pulumi.Output<String> statusCode;
-
   /// The destination URL to which requests are redirected.
   late final pulumi.Output<String> targetUrl;
-
   /// The redirection type. Value range:
   /// - static: static mode.
   /// - dynamic: dynamic mode.
@@ -383,11 +373,11 @@ class RedirectRule extends pulumi.CustomResource {
     RedirectRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/redirectRule:RedirectRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:esa/redirectRule:RedirectRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     configId = registerOutput<int>('configId');
     reserveQueryString = registerOutput<String>('reserveQueryString');
     rule = registerOutput<String?>('rule');
@@ -419,11 +409,11 @@ class RedirectRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/redirectRule:RedirectRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:esa/redirectRule:RedirectRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     configId = registerOutput<int>('configId');
     reserveQueryString = registerOutput<String>('reserveQueryString');
     rule = registerOutput<String?>('rule');

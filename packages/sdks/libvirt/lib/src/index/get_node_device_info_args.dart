@@ -12,10 +12,14 @@ class GetNodeDeviceInfoArgs {
 
   /// Creates a new [GetNodeDeviceInfoArgs].
   /// [name] Device name from `libvirt.getNodeDevices` data source (e.g., `pci_0000_00_1f_2`).
-  GetNodeDeviceInfoArgs({required this.name});
+  GetNodeDeviceInfoArgs({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory GetNodeDeviceInfoArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetNodeDeviceInfoArgs {
     );
   }
 }
+

@@ -5,33 +5,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetZoneRecordsRecord {
   /// The ID of the Private Zone Record.
   final pulumi.Input<String> id;
-
   /// The priority of the MX record.
   final pulumi.Input<int> priority;
-
   /// The ID of the Record.
   final pulumi.Input<String> recordId;
-
   /// The description of the Private Zone Record.
   final pulumi.Input<String> remark;
-
   /// The hostname of the Private Zone Record.
   final pulumi.Input<String> resourceRecord;
-
   /// The hostname of the Private Zone Record.
   final pulumi.Input<String> rr;
-
   /// The status of the Resolve record. Valid values:
   /// - `ENABLE`: Enable resolution.
   /// - `DISABLE`: Pause parsing.
   final pulumi.Input<String> status;
-
   /// The time to live (TTL) of the Private Zone Record.
   final pulumi.Input<int> ttl;
-
   /// The type of the Private Zone Record.
   final pulumi.Input<String> type;
-
   /// The value of the Private Zone Record.
   final pulumi.Input<String> value;
 
@@ -89,3 +80,4 @@ class GetZoneRecordsRecord {
     );
   }
 }
+

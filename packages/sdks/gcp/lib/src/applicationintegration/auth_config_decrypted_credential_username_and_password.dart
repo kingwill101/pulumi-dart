@@ -7,7 +7,6 @@ class AuthConfigDecryptedCredentialUsernameAndPassword {
   ///
   /// &lt;a name="nested_decrypted_credential_oauth2_authorization_code"&gt;&lt;/a&gt;The `oauth2_authorization_code` block supports:
   final pulumi.Input<String>? password;
-
   /// Username to be used.
   final pulumi.Input<String>? username;
 
@@ -20,23 +19,17 @@ class AuthConfigDecryptedCredentialUsernameAndPassword {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'password': ?password, 'username': ?username};
+    return <String, dynamic>{
+      'password': ?password,
+      'username': ?username,
+    };
   }
 
-  factory AuthConfigDecryptedCredentialUsernameAndPassword.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AuthConfigDecryptedCredentialUsernameAndPassword.fromMap(Map<String, dynamic> map) {
     return AuthConfigDecryptedCredentialUsernameAndPassword(
-      password: (() {
-        final guardedValue = map['password'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      username: (() {
-        final guardedValue = map['username'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      username: (() { final guardedValue = map['username']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

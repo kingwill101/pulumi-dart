@@ -1,19 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getVirtualNetworkRule.
 class GetVirtualNetworkRuleResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The resource identifier.
   final String id;
-
   /// The resource name.
   final String name;
-
   /// The resource identifier for the subnet.
   final String subnetId;
-
   /// The resource type.
   final String type;
 
@@ -51,3 +48,4 @@ class GetVirtualNetworkRuleResult {
     );
   }
 }
+

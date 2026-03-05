@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MatchingCriteriaResponse {
   /// The name of a CloudEvents attribute. Currently, only a subset of attributes can be specified. All triggers MUST provide a matching criteria for the 'type' attribute.
   final pulumi.Input<String> attribute;
-
   /// The value for the attribute.
   final pulumi.Input<String> value;
 
   /// Creates a new [MatchingCriteriaResponse].
   /// [attribute] The name of a CloudEvents attribute. Currently, only a subset of attributes can be specified. All triggers MUST provide a matching criteria for the 'type' attribute.
   /// [value] The value for the attribute.
-  MatchingCriteriaResponse({required this.attribute, required this.value});
+  MatchingCriteriaResponse({
+    required this.attribute,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'attribute': attribute, 'value': value};
+    return <String, dynamic>{
+      'attribute': attribute,
+      'value': value,
+    };
   }
 
   factory MatchingCriteriaResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class MatchingCriteriaResponse {
     );
   }
 }
+

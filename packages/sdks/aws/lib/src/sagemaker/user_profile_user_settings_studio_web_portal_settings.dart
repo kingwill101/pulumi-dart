@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserProfileUserSettingsStudioWebPortalSettings {
   /// The Applications supported in Studio that are hidden from the Studio left navigation pane.
   final pulumi.Input<List<String>>? hiddenAppTypes;
-
   /// The instance types you are hiding from the Studio user interface.
   final pulumi.Input<List<String>>? hiddenInstanceTypes;
-
   /// The machine learning tools that are hidden from the Studio left navigation pane.
   final pulumi.Input<List<String>>? hiddenMlTools;
 
@@ -30,25 +28,12 @@ class UserProfileUserSettingsStudioWebPortalSettings {
     };
   }
 
-  factory UserProfileUserSettingsStudioWebPortalSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory UserProfileUserSettingsStudioWebPortalSettings.fromMap(Map<String, dynamic> map) {
     return UserProfileUserSettingsStudioWebPortalSettings(
-      hiddenAppTypes: (() {
-        final guardedValue = map['hiddenAppTypes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      hiddenInstanceTypes: (() {
-        final guardedValue = map['hiddenInstanceTypes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      hiddenMlTools: (() {
-        final guardedValue = map['hiddenMlTools'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      hiddenAppTypes: (() { final guardedValue = map['hiddenAppTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      hiddenInstanceTypes: (() { final guardedValue = map['hiddenInstanceTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      hiddenMlTools: (() { final guardedValue = map['hiddenMlTools']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

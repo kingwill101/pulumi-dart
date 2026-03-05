@@ -5,11 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSet {
   /// The name of a Cloud Storage bucket.
   final pulumi.Input<String> bucketName;
-
   /// A list of regular expressions matching file paths to exclude. All files in the bucket that match at
   /// least one of these regular expressions will be excluded from the scan.
   final pulumi.Input<List<String>>? excludeRegexes;
-
   /// A list of regular expressions matching file paths to include. All files in the bucket
   /// that match at least one of these regular expressions will be included in the set of files,
   /// except for those that also match an item in excludeRegex. Leaving this field empty will
@@ -34,21 +32,12 @@ class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegex
     };
   }
 
-  factory PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSet.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSet.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSet(
       bucketName: pulumi.Input.fromValue(map['bucketName'] as String),
-      excludeRegexes: (() {
-        final guardedValue = map['excludeRegexes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      includeRegexes: (() {
-        final guardedValue = map['includeRegexes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      excludeRegexes: (() { final guardedValue = map['excludeRegexes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      includeRegexes: (() { final guardedValue = map['includeRegexes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

@@ -148,41 +148,28 @@ import 'user_args.dart';
 class User extends pulumi.CustomResource {
   /// The amount of usage quota time the user gets in addition to the lab usage quota.
   late final pulumi.Output<String?> additionalUsageQuota;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Display name of the user, for example user's full name.
   late final pulumi.Output<String> displayName;
-
   /// Email address of the user.
   late final pulumi.Output<String> email;
-
   /// Date and time when the invitation message was sent to the user.
   late final pulumi.Output<String> invitationSent;
-
   /// State of the invitation message for the user.
   late final pulumi.Output<String> invitationState;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Current provisioning state of the user resource.
   late final pulumi.Output<String> provisioningState;
-
   /// State of the user's registration within the lab.
   late final pulumi.Output<String> registrationState;
-
   /// Error details of last operation done on lab plan.
-  late final pulumi.Output<ResourceOperationErrorResponse>
-  resourceOperationError;
-
+  late final pulumi.Output<ResourceOperationErrorResponse> resourceOperationError;
   /// Metadata pertaining to creation and last modification of the user resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// How long the user has used their virtual machines in this lab.
   late final pulumi.Output<String> totalUsage;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -190,13 +177,16 @@ class User extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [User]. {@macro pulumi_labservices_user_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  User(String name, {UserArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:labservices:User',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  User(
+    String name, {
+    UserArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:labservices:User',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     additionalUsageQuota = registerOutput<String?>('additionalUsageQuota');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     displayName = registerOutput<String>('displayName');
@@ -206,26 +196,8 @@ class User extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     registrationState = registerOutput<String>('registrationState');
-    resourceOperationError = registerOutput<ResourceOperationErrorResponse>(
-      'resourceOperationError',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResourceOperationErrorResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    resourceOperationError = registerOutput<ResourceOperationErrorResponse>('resourceOperationError', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceOperationErrorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     totalUsage = registerOutput<String>('totalUsage');
     type = registerOutput<String>('type');
   }

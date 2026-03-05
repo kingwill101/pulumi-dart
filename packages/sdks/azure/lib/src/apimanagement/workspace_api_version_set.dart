@@ -265,22 +265,16 @@ import 'workspace_api_version_set_state.dart';
 class WorkspaceApiVersionSet extends pulumi.CustomResource {
   /// Specifies the ID of the API Management Workspace. Changing this forces a new resource to be created.
   late final pulumi.Output<String> apiManagementWorkspaceId;
-
   /// Specifies the description of the API Management Workspace API Version Set.
   late final pulumi.Output<String?> description;
-
   /// Specifies the display name of the API Management Workspace API Version Set.
   late final pulumi.Output<String> displayName;
-
   /// Specifies the name of the API Management Workspace API Version Set. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies the name of the header to read from inbound requests to determine the API version.
   late final pulumi.Output<String?> versionHeaderName;
-
   /// Specifies the name of the query string parameter to read from inbound requests to determine the API version.
   late final pulumi.Output<String?> versionQueryName;
-
   /// Specifies where in a request that the API Version should be read from. Possible values are `Header`, `Query` and `Segment`.
   late final pulumi.Output<String> versioningScheme;
 
@@ -293,14 +287,12 @@ class WorkspaceApiVersionSet extends pulumi.CustomResource {
     WorkspaceApiVersionSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/workspaceApiVersionSet:WorkspaceApiVersionSet',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    apiManagementWorkspaceId = registerOutput<String>(
-      'apiManagementWorkspaceId',
-    );
+          'azure:apimanagement/workspaceApiVersionSet:WorkspaceApiVersionSet',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    apiManagementWorkspaceId = registerOutput<String>('apiManagementWorkspaceId');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');
@@ -327,14 +319,12 @@ class WorkspaceApiVersionSet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/workspaceApiVersionSet:WorkspaceApiVersionSet',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    apiManagementWorkspaceId = registerOutput<String>(
-      'apiManagementWorkspaceId',
-    );
+          'azure:apimanagement/workspaceApiVersionSet:WorkspaceApiVersionSet',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    apiManagementWorkspaceId = registerOutput<String>('apiManagementWorkspaceId');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');

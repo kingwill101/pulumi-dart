@@ -9,21 +9,20 @@ class AccessPolicyAssignmentPropertiesResponseUser {
 
   /// Creates a new [AccessPolicyAssignmentPropertiesResponseUser].
   /// [objectId] The object ID of the user.
-  AccessPolicyAssignmentPropertiesResponseUser({this.objectId});
+  AccessPolicyAssignmentPropertiesResponseUser({
+    this.objectId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'objectId': ?objectId};
+    return <String, dynamic>{
+      'objectId': ?objectId,
+    };
   }
 
-  factory AccessPolicyAssignmentPropertiesResponseUser.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AccessPolicyAssignmentPropertiesResponseUser.fromMap(Map<String, dynamic> map) {
     return AccessPolicyAssignmentPropertiesResponseUser(
-      objectId: (() {
-        final guardedValue = map['objectId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      objectId: (() { final guardedValue = map['objectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

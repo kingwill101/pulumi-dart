@@ -11,7 +11,9 @@ class CxAgentTextToSpeechSettings {
 
   /// Creates a new [CxAgentTextToSpeechSettings].
   /// [synthesizeSpeechConfigs] Configuration of how speech should be synthesized, mapping from [language](https://cloud.google.com/dialogflow/cx/docs/reference/language) to [SynthesizeSpeechConfig](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents#synthesizespeechconfig).
-  CxAgentTextToSpeechSettings({this.synthesizeSpeechConfigs});
+  CxAgentTextToSpeechSettings({
+    this.synthesizeSpeechConfigs,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,11 +23,8 @@ class CxAgentTextToSpeechSettings {
 
   factory CxAgentTextToSpeechSettings.fromMap(Map<String, dynamic> map) {
     return CxAgentTextToSpeechSettings(
-      synthesizeSpeechConfigs: (() {
-        final guardedValue = map['synthesizeSpeechConfigs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      synthesizeSpeechConfigs: (() { final guardedValue = map['synthesizeSpeechConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

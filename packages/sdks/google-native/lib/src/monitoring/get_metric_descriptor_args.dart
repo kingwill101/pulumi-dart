@@ -13,7 +13,10 @@ class GetMetricDescriptorArgs {
   /// Creates a new [GetMetricDescriptorArgs].
   /// [metricDescriptorId] Required.
   /// [project] Optional.
-  GetMetricDescriptorArgs({required this.metricDescriptorId, this.project});
+  GetMetricDescriptorArgs({
+    required this.metricDescriptorId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,14 +27,9 @@ class GetMetricDescriptorArgs {
 
   factory GetMetricDescriptorArgs.fromMap(Map<String, dynamic> map) {
     return GetMetricDescriptorArgs(
-      metricDescriptorId: pulumi.Input.fromValue(
-        map['metricDescriptorId'] as String,
-      ),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      metricDescriptorId: pulumi.Input.fromValue(map['metricDescriptorId'] as String),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

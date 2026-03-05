@@ -7,25 +7,20 @@ class DocumentAiWarehouseLocationState {
   /// The access control mode for accessing the customer data.
   /// Possible values are: `ACL_MODE_DOCUMENT_LEVEL_ACCESS_CONTROL_GCI`, `ACL_MODE_DOCUMENT_LEVEL_ACCESS_CONTROL_BYOID`, `ACL_MODE_UNIVERSAL_ACCESS`.
   final pulumi.Input<String>? accessControlMode;
-
   /// The type of database used to store customer data.
   /// Possible values are: `DB_INFRA_SPANNER`, `DB_CLOUD_SQL_POSTGRES`.
   final pulumi.Input<String>? databaseType;
-
   /// The default role for the person who create a document.
   /// Possible values are: `DOCUMENT_ADMIN`, `DOCUMENT_EDITOR`, `DOCUMENT_VIEWER`.
   final pulumi.Input<String>? documentCreatorDefaultRole;
-
   /// The KMS key used for CMEK encryption. It is required that
   /// the kms key is in the same region as the endpoint. The
   /// same key will be used for all provisioned resources, if
   /// encryption is available. If the kmsKey is left empty, no
   /// encryption will be enforced.
   final pulumi.Input<String>? kmsKey;
-
   /// The location in which the instance is to be provisioned. It takes the form projects/{projectNumber}/locations/{location}.
   final pulumi.Input<String>? location;
-
   /// The unique identifier of the project.
   final pulumi.Input<String>? projectNumber;
 
@@ -58,36 +53,13 @@ class DocumentAiWarehouseLocationState {
 
   factory DocumentAiWarehouseLocationState.fromMap(Map<String, dynamic> map) {
     return DocumentAiWarehouseLocationState(
-      accessControlMode: (() {
-        final guardedValue = map['accessControlMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      databaseType: (() {
-        final guardedValue = map['databaseType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      documentCreatorDefaultRole: (() {
-        final guardedValue = map['documentCreatorDefaultRole'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kmsKey: (() {
-        final guardedValue = map['kmsKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      projectNumber: (() {
-        final guardedValue = map['projectNumber'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accessControlMode: (() { final guardedValue = map['accessControlMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      databaseType: (() { final guardedValue = map['databaseType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      documentCreatorDefaultRole: (() { final guardedValue = map['documentCreatorDefaultRole']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kmsKey: (() { final guardedValue = map['kmsKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      projectNumber: (() { final guardedValue = map['projectNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

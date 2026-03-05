@@ -21,3 +21,4 @@ enum JobLaunchStage {
     throw ArgumentError('Unknown JobLaunchStage value: $value');
   }
 }
+

@@ -251,19 +251,14 @@ import 'cluster_state.dart';
 class Cluster extends pulumi.CustomResource {
   /// The count of the Azure VMware Solution Cluster nodes.
   late final pulumi.Output<int> clusterNodeCount;
-
   /// A number that identifies this Cluster in its Azure VMware Solution Private Cloud.
   late final pulumi.Output<int> clusterNumber;
-
   /// A list of hosts in the Azure VMware Solution Cluster.
   late final pulumi.Output<List<String>> hosts;
-
   /// The name which should be used for this Azure VMware Solution Cluster. Changing this forces a new Azure VMware Solution Cluster to be created.
   late final pulumi.Output<String> name;
-
   /// The Cluster SKU to use. Possible values are `av20`, `av36`, `av36t`, `av36p`, `av48`, `av48t`, `av36pt`, `av52`, `av52t`, and `av64`. Changing this forces a new Azure VMware Solution Cluster to be created.
   late final pulumi.Output<String> skuName;
-
   /// The ID of the Azure VMware Solution Private Cloud in which to create this Cluster. Changing this forces a new Azure VMware Solution Cluster to be created.
   late final pulumi.Output<String> vmwareCloudId;
 
@@ -276,11 +271,11 @@ class Cluster extends pulumi.CustomResource {
     ClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:avs/cluster:Cluster',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:avs/cluster:Cluster',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterNodeCount = registerOutput<int>('clusterNodeCount');
     clusterNumber = registerOutput<int>('clusterNumber');
     hosts = registerOutput<List<String>>('hosts');
@@ -307,11 +302,11 @@ class Cluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:avs/cluster:Cluster',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:avs/cluster:Cluster',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterNodeCount = registerOutput<int>('clusterNodeCount');
     clusterNumber = registerOutput<int>('clusterNumber');
     hosts = registerOutput<List<String>>('hosts');

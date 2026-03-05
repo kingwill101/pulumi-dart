@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudApigeeV1EntityMetadataResponse {
   /// Time at which the API proxy was created, in milliseconds since epoch.
   final pulumi.Input<String> createdAt;
-
   /// Time at which the API proxy was most recently modified, in milliseconds since epoch.
   final pulumi.Input<String> lastModifiedAt;
-
   /// The type of entity described
   final pulumi.Input<String> subType;
 
@@ -31,9 +29,7 @@ class GoogleCloudApigeeV1EntityMetadataResponse {
     };
   }
 
-  factory GoogleCloudApigeeV1EntityMetadataResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudApigeeV1EntityMetadataResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1EntityMetadataResponse(
       createdAt: pulumi.Input.fromValue(map['createdAt'] as String),
       lastModifiedAt: pulumi.Input.fromValue(map['lastModifiedAt'] as String),
@@ -41,3 +37,4 @@ class GoogleCloudApigeeV1EntityMetadataResponse {
     );
   }
 }
+

@@ -7,10 +7,8 @@ import 'batch_processor.dart';
 class Processor {
   /// Batch processor configurations.
   final pulumi.Input<BatchProcessor>? batch;
-
   /// The name of processor.
   final pulumi.Input<String> name;
-
   /// The type of processor.
   final pulumi.Input<String> type;
 
@@ -18,15 +16,15 @@ class Processor {
   /// [batch] Batch processor configurations.
   /// [name] The name of processor.
   /// [type] The type of processor.
-  Processor({this.batch, required this.name, required this.type});
+  Processor({
+    this.batch,
+    required this.name,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'batch':
-          ?pulumi.Input.mapOptionalInputValue<
-            BatchProcessor,
-            Map<String, dynamic>
-          >(batch, (value) => value.toMap()),
+      'batch': ?pulumi.Input.mapOptionalInputValue<BatchProcessor, Map<String, dynamic>>(batch, (value) => value.toMap()),
       'name': name,
       'type': type,
     };
@@ -34,15 +32,10 @@ class Processor {
 
   factory Processor.fromMap(Map<String, dynamic> map) {
     return Processor(
-      batch: (() {
-        final guardedValue = map['batch'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BatchProcessor.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
+      batch: (() { final guardedValue = map['batch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BatchProcessor.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

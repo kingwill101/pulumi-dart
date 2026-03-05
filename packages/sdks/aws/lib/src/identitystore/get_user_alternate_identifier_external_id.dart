@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetUserAlternateIdentifierExternalId {
   /// The identifier issued to this resource by an external identity provider.
   final pulumi.Input<String> id;
-
   /// The issuer for an external identifier.
   final pulumi.Input<String> issuer;
 
@@ -18,15 +17,17 @@ class GetUserAlternateIdentifierExternalId {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id, 'issuer': issuer};
+    return <String, dynamic>{
+      'id': id,
+      'issuer': issuer,
+    };
   }
 
-  factory GetUserAlternateIdentifierExternalId.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetUserAlternateIdentifierExternalId.fromMap(Map<String, dynamic> map) {
     return GetUserAlternateIdentifierExternalId(
       id: pulumi.Input.fromValue(map['id'] as String),
       issuer: pulumi.Input.fromValue(map['issuer'] as String),
     );
   }
 }
+

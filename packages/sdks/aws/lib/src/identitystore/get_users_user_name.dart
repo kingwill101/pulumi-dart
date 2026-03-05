@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetUsersUserName {
   /// Family name of the user.
   final pulumi.Input<String> familyName;
-
   /// Name that is typically displayed when the name is shown for display.
   final pulumi.Input<String> formatted;
-
   /// Given name of the user.
   final pulumi.Input<String> givenName;
-
   /// Honorific prefix of the user.
   final pulumi.Input<String> honorificPrefix;
-
   /// Honorific suffix of the user.
   final pulumi.Input<String> honorificSuffix;
-
   /// Middle name of the user.
   final pulumi.Input<String> middleName;
 
@@ -59,3 +54,4 @@ class GetUsersUserName {
     );
   }
 }
+

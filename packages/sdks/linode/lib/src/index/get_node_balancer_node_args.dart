@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNodeBalancerNodeArgs {
   /// The ID of the config that contains the Node.
   final pulumi.Input<int> configId;
-
   /// The node's ID.
   final pulumi.Input<int> id;
-
   /// The ID of the NodeBalancer that contains the node.
   final pulumi.Input<int> nodebalancerId;
 
@@ -42,3 +40,4 @@ class GetNodeBalancerNodeArgs {
     );
   }
 }
+

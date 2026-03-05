@@ -10,45 +10,33 @@ class WorkforcePoolProviderScimTenantState {
   /// Format:
   /// https://iamscim.googleapis.com/{version}/{tenant_id}/
   final pulumi.Input<String>? baseUri;
-
   /// Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
   final pulumi.Input<Map<String, String>>? claimMapping;
-
   /// A user-specified description of the provider. Cannot exceed 256 characters.
   final pulumi.Input<String>? description;
-
   /// A user-specified display name for the scim tenant. Cannot exceed 32 characters.
   final pulumi.Input<String>? displayName;
-
   /// Deletes the SCIM tenant immediately. This operation cannot be undone.
   final pulumi.Input<bool>? hardDelete;
-
   /// The location for the resource.
   final pulumi.Input<String>? location;
-
   /// Identifier. The resource name of the scim tenant.
   /// Format: `locations/{location}/workforcePools/{workforce_pool}/providers/{workforce_pool_provider}/scimTenants/{scim_tenant_id}
   final pulumi.Input<String>? name;
-
   /// The ID of the provider.
   final pulumi.Input<String>? providerId;
-
   /// The timestamp that represents the time when the SCIM tenant is purged.
   final pulumi.Input<String>? purgeTime;
-
   /// The ID to use for the SCIM tenant, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-].
   final pulumi.Input<String>? scimTenantId;
-
   /// Service Agent created by SCIM Tenant API. SCIM tokens created under
   /// this tenant will be attached to this service agent.
   final pulumi.Input<String>? serviceAgent;
-
   /// The current state of the scim tenant.
   /// * ACTIVE: The scim tenant is active and may be used to validate authentication credentials.
   /// * DELETED: The scim tenant is soft-deleted. Soft-deleted scim tenants are permanently
   /// deleted after approximately 30 days.
   final pulumi.Input<String>? state;
-
   /// The ID of the workforce pool.
   final pulumi.Input<String>? workforcePoolId;
 
@@ -100,77 +88,22 @@ class WorkforcePoolProviderScimTenantState {
     };
   }
 
-  factory WorkforcePoolProviderScimTenantState.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WorkforcePoolProviderScimTenantState.fromMap(Map<String, dynamic> map) {
     return WorkforcePoolProviderScimTenantState(
-      baseUri: (() {
-        final guardedValue = map['baseUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      claimMapping: (() {
-        final guardedValue = map['claimMapping'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      hardDelete: (() {
-        final guardedValue = map['hardDelete'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      providerId: (() {
-        final guardedValue = map['providerId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      purgeTime: (() {
-        final guardedValue = map['purgeTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      scimTenantId: (() {
-        final guardedValue = map['scimTenantId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serviceAgent: (() {
-        final guardedValue = map['serviceAgent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      workforcePoolId: (() {
-        final guardedValue = map['workforcePoolId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      baseUri: (() { final guardedValue = map['baseUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      claimMapping: (() { final guardedValue = map['claimMapping']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      hardDelete: (() { final guardedValue = map['hardDelete']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      providerId: (() { final guardedValue = map['providerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      purgeTime: (() { final guardedValue = map['purgeTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      scimTenantId: (() { final guardedValue = map['scimTenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serviceAgent: (() { final guardedValue = map['serviceAgent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      workforcePoolId: (() { final guardedValue = map['workforcePoolId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

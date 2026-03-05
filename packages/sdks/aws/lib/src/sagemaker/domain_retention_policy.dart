@@ -8,19 +8,20 @@ class DomainRetentionPolicy {
 
   /// Creates a new [DomainRetentionPolicy].
   /// [homeEfsFileSystem] The retention policy for data stored on an Amazon Elastic File System (EFS) volume. Valid values are `Retain` or `Delete`.  Default value is `Retain`.
-  DomainRetentionPolicy({this.homeEfsFileSystem});
+  DomainRetentionPolicy({
+    this.homeEfsFileSystem,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'homeEfsFileSystem': ?homeEfsFileSystem};
+    return <String, dynamic>{
+      'homeEfsFileSystem': ?homeEfsFileSystem,
+    };
   }
 
   factory DomainRetentionPolicy.fromMap(Map<String, dynamic> map) {
     return DomainRetentionPolicy(
-      homeEfsFileSystem: (() {
-        final guardedValue = map['homeEfsFileSystem'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      homeEfsFileSystem: (() { final guardedValue = map['homeEfsFileSystem']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

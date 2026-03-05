@@ -12,13 +12,20 @@ class GetSshKeyArgs {
 
   /// Creates a new [GetSshKeyArgs].
   /// [name] The name of the ssh key.
-  GetSshKeyArgs({required this.name});
+  GetSshKeyArgs({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory GetSshKeyArgs.fromMap(Map<String, dynamic> map) {
-    return GetSshKeyArgs(name: pulumi.Input.fromValue(map['name'] as String));
+    return GetSshKeyArgs(
+      name: pulumi.Input.fromValue(map['name'] as String),
+    );
   }
 }
+

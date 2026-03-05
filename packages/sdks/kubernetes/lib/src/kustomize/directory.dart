@@ -187,12 +187,12 @@ class Directory extends pulumi.ComponentResource {
     DirectoryArgs? args,
     pulumi.ComponentResourceOptions? options,
   }) : super(
-         'kubernetes:kustomize/v2:Directory',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.ComponentResourceOptions(),
-         remote: true,
-       ) {
+          'kubernetes:kustomize/v2:Directory',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.ComponentResourceOptions(),
+          remote: true,
+        ) {
     resources = registerOutput<String?>('resources');
   }
 }

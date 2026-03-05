@@ -6,7 +6,6 @@ import 'get_ingresses_ingress.dart';
 /// Result data returned by getIngresses.
 class GetIngressesResult {
   final bool? enableDetails;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -35,11 +34,7 @@ class GetIngressesResult {
       'enableDetails': ?enableDetails,
       'id': id,
       'ids': ids,
-      'ingresses':
-          pulumi.Input.encodeList<GetIngressesIngress, Map<String, dynamic>>(
-            ingresses,
-            (value) => value.toMap(),
-          ),
+      'ingresses': pulumi.Input.encodeList<GetIngressesIngress, Map<String, dynamic>>(ingresses, (value) => value.toMap()),
       'namespaceId': namespaceId,
       'outputFile': ?outputFile,
     };
@@ -47,24 +42,13 @@ class GetIngressesResult {
 
   factory GetIngressesResult.fromMap(Map<String, dynamic> map) {
     return GetIngressesResult(
-      enableDetails: (() {
-        final guardedValue = map['enableDetails'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      enableDetails: (() { final guardedValue = map['enableDetails']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      ingresses: pulumi.Input.decodeList<GetIngressesIngress>(
-        map['ingresses']!,
-        (value) =>
-            GetIngressesIngress.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      ingresses: pulumi.Input.decodeList<GetIngressesIngress>(map['ingresses']!, (value) => GetIngressesIngress.fromMap((value as Map).cast<String, dynamic>())),
       namespaceId: map['namespaceId'] as String,
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

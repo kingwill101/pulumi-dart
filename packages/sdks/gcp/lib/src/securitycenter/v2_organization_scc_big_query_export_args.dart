@@ -9,15 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class V2OrganizationSccBigQueryExportArgs {
   /// This must be unique within the organization.
   final pulumi.Input<String> bigQueryExportId;
-
   /// The dataset to write findings' updates to.
   /// Its format is "projects/[projectId]/datasets/[bigquery_dataset_id]".
   /// BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
   final pulumi.Input<String>? dataset;
-
   /// The description of the notification config (max of 1024 characters).
   final pulumi.Input<String>? description;
-
   /// Expression that defines the filter to apply across create/update
   /// events of findings. The
   /// expression is a list of zero or more restrictions combined via
@@ -38,15 +35,12 @@ class V2OrganizationSccBigQueryExportArgs {
   /// [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
   /// for information on how to write a filter.
   final pulumi.Input<String>? filter;
-
   /// location Id is provided by organization. If not provided, Use global as default.
   final pulumi.Input<String>? location;
-
   /// The resource name of this export, in the format
   /// `organizations/{{organization}}/locations/{{location}}/bigQueryExports/{{big_query_export_id}}`.
   /// This field is provided in responses, and is ignored when provided in create requests.
   final pulumi.Input<String>? name;
-
   /// The organization whose Cloud Security Command Center the Big Query Export
   /// Config lives in.
   final pulumi.Input<String> organization;
@@ -81,39 +75,16 @@ class V2OrganizationSccBigQueryExportArgs {
     };
   }
 
-  factory V2OrganizationSccBigQueryExportArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2OrganizationSccBigQueryExportArgs.fromMap(Map<String, dynamic> map) {
     return V2OrganizationSccBigQueryExportArgs(
-      bigQueryExportId: pulumi.Input.fromValue(
-        map['bigQueryExportId'] as String,
-      ),
-      dataset: (() {
-        final guardedValue = map['dataset'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      filter: (() {
-        final guardedValue = map['filter'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      bigQueryExportId: pulumi.Input.fromValue(map['bigQueryExportId'] as String),
+      dataset: (() { final guardedValue = map['dataset']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       organization: pulumi.Input.fromValue(map['organization'] as String),
     );
   }
 }
+

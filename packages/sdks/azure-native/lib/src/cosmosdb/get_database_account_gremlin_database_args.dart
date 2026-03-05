@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDatabaseAccountGremlinDatabaseArgs {
   /// Cosmos DB database account name.
   final pulumi.Input<String> accountName;
-
   /// Cosmos DB database name.
   final pulumi.Input<String> databaseName;
-
   /// Name of an Azure resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,15 +32,12 @@ class GetDatabaseAccountGremlinDatabaseArgs {
     };
   }
 
-  factory GetDatabaseAccountGremlinDatabaseArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDatabaseAccountGremlinDatabaseArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabaseAccountGremlinDatabaseArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
       databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

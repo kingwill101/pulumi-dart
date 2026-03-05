@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccountLoginsLogin {
   /// When the login was initiated.
   final pulumi.Input<String> datetime;
-
   /// The unique ID of this login object.
   final pulumi.Input<int> id;
-
   /// The remote IP address that requested the login.
   final pulumi.Input<String> ip;
-
   /// True if the User that was logged into was a restricted User, false otherwise.
   final pulumi.Input<bool> restricted;
-
   /// Whether the login attempt succeeded or failed.
   final pulumi.Input<String> status;
-
   /// The username of the User that was logged into.
   final pulumi.Input<String> username;
 
@@ -59,3 +54,4 @@ class GetAccountLoginsLogin {
     );
   }
 }
+

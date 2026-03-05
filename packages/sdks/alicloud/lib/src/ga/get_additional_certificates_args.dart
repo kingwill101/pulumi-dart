@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAdditionalCertificatesArgs {
   /// The ID of the GA instance.
   final pulumi.Input<String> acceleratorId;
-
   /// A list of Additional Certificate IDs.
   final pulumi.Input<List<String>>? ids;
-
   /// The ID of the listener. Only HTTPS listeners support this parameter.
   final pulumi.Input<String> listenerId;
-
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
 
@@ -43,17 +40,10 @@ class GetAdditionalCertificatesArgs {
   factory GetAdditionalCertificatesArgs.fromMap(Map<String, dynamic> map) {
     return GetAdditionalCertificatesArgs(
       acceleratorId: pulumi.Input.fromValue(map['acceleratorId'] as String),
-      ids: (() {
-        final guardedValue = map['ids'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      ids: (() { final guardedValue = map['ids']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       listenerId: pulumi.Input.fromValue(map['listenerId'] as String),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

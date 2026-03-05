@@ -8,17 +8,20 @@ class FleetUpdateRunManagedClusterUpdateNodeImageSelection {
 
   /// Creates a new [FleetUpdateRunManagedClusterUpdateNodeImageSelection].
   /// [type] Specifies the node image upgrade type. Possible values are `Latest` and `Consistent`.
-  FleetUpdateRunManagedClusterUpdateNodeImageSelection({required this.type});
+  FleetUpdateRunManagedClusterUpdateNodeImageSelection({
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': type};
+    return <String, dynamic>{
+      'type': type,
+    };
   }
 
-  factory FleetUpdateRunManagedClusterUpdateNodeImageSelection.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FleetUpdateRunManagedClusterUpdateNodeImageSelection.fromMap(Map<String, dynamic> map) {
     return FleetUpdateRunManagedClusterUpdateNodeImageSelection(
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

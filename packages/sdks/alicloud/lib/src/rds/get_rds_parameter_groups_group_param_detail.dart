@@ -15,15 +15,17 @@ class GetRdsParameterGroupsGroupParamDetail {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'paramName': paramName, 'paramValue': paramValue};
+    return <String, dynamic>{
+      'paramName': paramName,
+      'paramValue': paramValue,
+    };
   }
 
-  factory GetRdsParameterGroupsGroupParamDetail.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetRdsParameterGroupsGroupParamDetail.fromMap(Map<String, dynamic> map) {
     return GetRdsParameterGroupsGroupParamDetail(
       paramName: pulumi.Input.fromValue(map['paramName'] as String),
       paramValue: pulumi.Input.fromValue(map['paramValue'] as String),
     );
   }
 }
+

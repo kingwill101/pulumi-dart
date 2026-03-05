@@ -12,22 +12,16 @@ import 'user_detail.dart';
 class OrganizationArgs {
   /// Link an existing Confluent organization
   final pulumi.Input<LinkOrganization>? linkOrganization;
-
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
-
   /// Confluent offer detail
   final pulumi.Input<OfferDetail> offerDetail;
-
   /// Organization resource name
   final pulumi.Input<String>? organizationName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// Subscriber detail
   final pulumi.Input<UserDetail> userDetail;
 
@@ -51,67 +45,26 @@ class OrganizationArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'linkOrganization':
-          ?pulumi.Input.mapOptionalInputValue<
-            LinkOrganization,
-            Map<String, dynamic>
-          >(linkOrganization, (value) => value.toMap()),
+      'linkOrganization': ?pulumi.Input.mapOptionalInputValue<LinkOrganization, Map<String, dynamic>>(linkOrganization, (value) => value.toMap()),
       'location': ?location,
-      'offerDetail':
-          pulumi.Input.mapInputValue<OfferDetail, Map<String, dynamic>>(
-            offerDetail,
-            (value) => value.toMap(),
-          ),
+      'offerDetail': pulumi.Input.mapInputValue<OfferDetail, Map<String, dynamic>>(offerDetail, (value) => value.toMap()),
       'organizationName': ?organizationName,
       'resourceGroupName': resourceGroupName,
       'tags': ?tags,
-      'userDetail':
-          pulumi.Input.mapInputValue<UserDetail, Map<String, dynamic>>(
-            userDetail,
-            (value) => value.toMap(),
-          ),
+      'userDetail': pulumi.Input.mapInputValue<UserDetail, Map<String, dynamic>>(userDetail, (value) => value.toMap()),
     };
   }
 
   factory OrganizationArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationArgs(
-      linkOrganization: (() {
-        final guardedValue = map['linkOrganization'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          LinkOrganization.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      offerDetail: pulumi.Input.fromValue(
-        OfferDetail.fromMap(
-          (map['offerDetail']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      organizationName: (() {
-        final guardedValue = map['organizationName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      userDetail: pulumi.Input.fromValue(
-        UserDetail.fromMap((map['userDetail']! as Map).cast<String, dynamic>()),
-      ),
+      linkOrganization: (() { final guardedValue = map['linkOrganization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LinkOrganization.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      offerDetail: pulumi.Input.fromValue(OfferDetail.fromMap((map['offerDetail']! as Map).cast<String, dynamic>())),
+      organizationName: (() { final guardedValue = map['organizationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      userDetail: pulumi.Input.fromValue(UserDetail.fromMap((map['userDetail']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

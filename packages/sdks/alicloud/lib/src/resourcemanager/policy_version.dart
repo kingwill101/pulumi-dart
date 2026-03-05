@@ -271,10 +271,8 @@ import 'policy_version_state.dart';
 class PolicyVersion extends pulumi.CustomResource {
   /// Specifies whether to set the policy version as the default version. Default to `false`.
   late final pulumi.Output<bool?> isDefaultVersion;
-
   /// The content of the policy. The content must be 1 to 2,048 characters in length.
   late final pulumi.Output<String> policyDocument;
-
   /// The name of the policy. Name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
   late final pulumi.Output<String> policyName;
 
@@ -287,11 +285,11 @@ class PolicyVersion extends pulumi.CustomResource {
     PolicyVersionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:resourcemanager/policyVersion:PolicyVersion',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:resourcemanager/policyVersion:PolicyVersion',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     isDefaultVersion = registerOutput<bool?>('isDefaultVersion');
     policyDocument = registerOutput<String>('policyDocument');
     policyName = registerOutput<String>('policyName');
@@ -315,11 +313,11 @@ class PolicyVersion extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:resourcemanager/policyVersion:PolicyVersion',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:resourcemanager/policyVersion:PolicyVersion',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     isDefaultVersion = registerOutput<bool?>('isDefaultVersion');
     policyDocument = registerOutput<String>('policyDocument');
     policyName = registerOutput<String>('policyName');

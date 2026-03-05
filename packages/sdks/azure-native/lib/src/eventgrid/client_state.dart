@@ -15,3 +15,4 @@ enum ClientState {
     throw ArgumentError('Unknown ClientState value: $value');
   }
 }
+

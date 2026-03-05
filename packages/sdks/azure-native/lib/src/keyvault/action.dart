@@ -9,27 +9,20 @@ class Action {
 
   /// Creates a new [Action].
   /// [type] The type of action.
-  Action({this.type});
+  Action({
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'type':
-          ?pulumi.Input.mapOptionalInputValue<
-            KeyRotationPolicyActionType,
-            String
-          >(type, (value) => value.wireValue),
+      'type': ?pulumi.Input.mapOptionalInputValue<KeyRotationPolicyActionType, String>(type, (value) => value.wireValue),
     };
   }
 
   factory Action.fromMap(Map<String, dynamic> map) {
     return Action(
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          KeyRotationPolicyActionType.fromValue(guardedValue as String),
-        );
-      })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(KeyRotationPolicyActionType.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

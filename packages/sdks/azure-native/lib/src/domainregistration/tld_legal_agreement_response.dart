@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TldLegalAgreementResponse {
   /// Unique identifier for the agreement.
   final pulumi.Input<String> agreementKey;
-
   /// Agreement details.
   final pulumi.Input<String> content;
-
   /// Agreement title.
   final pulumi.Input<String> title;
-
   /// URL where a copy of the agreement details is hosted.
   final pulumi.Input<String>? url;
 
@@ -42,11 +39,8 @@ class TldLegalAgreementResponse {
       agreementKey: pulumi.Input.fromValue(map['agreementKey'] as String),
       content: pulumi.Input.fromValue(map['content'] as String),
       title: pulumi.Input.fromValue(map['title'] as String),
-      url: (() {
-        final guardedValue = map['url'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      url: (() { final guardedValue = map['url']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

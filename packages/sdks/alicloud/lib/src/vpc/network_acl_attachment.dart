@@ -297,7 +297,6 @@ import 'network_acl_attachment_state.dart';
 class NetworkAclAttachment extends pulumi.CustomResource {
   /// The id of the network acl, the field can't be changed.
   late final pulumi.Output<String> networkAclId;
-
   /// List of the resources associated with the network acl. The details see Block Resources.
   late final pulumi.Output<List<Map<String, dynamic>>> resources;
 
@@ -310,11 +309,11 @@ class NetworkAclAttachment extends pulumi.CustomResource {
     NetworkAclAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/networkAclAttachment:NetworkAclAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpc/networkAclAttachment:NetworkAclAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     networkAclId = registerOutput<String>('networkAclId');
     resources = registerOutput<List<Map<String, dynamic>>>('resources');
   }
@@ -337,11 +336,11 @@ class NetworkAclAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/networkAclAttachment:NetworkAclAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpc/networkAclAttachment:NetworkAclAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     networkAclId = registerOutput<String>('networkAclId');
     resources = registerOutput<List<Map<String, dynamic>>>('resources');
   }

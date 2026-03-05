@@ -11,19 +11,14 @@ class JobScheduleArgs {
   ///
   /// &gt; **Note:** When `type` is set to `Once` and `enabled` is set to `true`, it's recommended to add `enabled` to `ignore_changes`. This is because Azure will set `enabled` to `false` once the job has executed.
   final pulumi.Input<bool>? enabled;
-
   /// The end time of the schedule. Must be in RFC3339 format.
   final pulumi.Input<String>? endTime;
-
   /// The interval between job executions. Must be in ISO8601 duration format.
   final pulumi.Input<String>? interval;
-
   /// The ID of the Elastic Job. Changing this forces a new Elastic Job Schedule to be created.
   final pulumi.Input<String> jobId;
-
   /// The start time of the schedule. Must be in RFC3339 format.
   final pulumi.Input<String>? startTime;
-
   /// The type of schedule. Possible values are `Once` and `Recurring`.
   final pulumi.Input<String> type;
 
@@ -56,28 +51,13 @@ class JobScheduleArgs {
 
   factory JobScheduleArgs.fromMap(Map<String, dynamic> map) {
     return JobScheduleArgs(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      endTime: (() {
-        final guardedValue = map['endTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      interval: (() {
-        final guardedValue = map['interval'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      endTime: (() { final guardedValue = map['endTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      interval: (() { final guardedValue = map['interval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       jobId: pulumi.Input.fromValue(map['jobId'] as String),
-      startTime: (() {
-        final guardedValue = map['startTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      startTime: (() { final guardedValue = map['startTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

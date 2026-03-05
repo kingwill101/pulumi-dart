@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TableEntityArgs {
   /// A map of key/value pairs that describe the entity to be inserted/merged in to the storage table.
   final pulumi.Input<Map<String, String>> entity;
-
   /// The key for the partition where the entity will be inserted/merged. Changing this forces a new resource to be created.
   final pulumi.Input<String> partitionKey;
-
   /// The key for the row where the entity will be inserted/merged. Changing this forces a new resource to be created.
   final pulumi.Input<String> rowKey;
-
   /// The Storage Share ID in which this file will be placed into.
   final pulumi.Input<String> storageTableId;
 
@@ -42,12 +39,11 @@ class TableEntityArgs {
 
   factory TableEntityArgs.fromMap(Map<String, dynamic> map) {
     return TableEntityArgs(
-      entity: pulumi.Input.fromValue(
-        (map['entity'] as Map).cast<String, String>(),
-      ),
+      entity: pulumi.Input.fromValue((map['entity'] as Map).cast<String, String>()),
       partitionKey: pulumi.Input.fromValue(map['partitionKey'] as String),
       rowKey: pulumi.Input.fromValue(map['rowKey'] as String),
       storageTableId: pulumi.Input.fromValue(map['storageTableId'] as String),
     );
   }
 }
+

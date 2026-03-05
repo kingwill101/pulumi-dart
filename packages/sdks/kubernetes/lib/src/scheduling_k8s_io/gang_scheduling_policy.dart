@@ -9,10 +9,14 @@ class GangSchedulingPolicy {
 
   /// Creates a new [GangSchedulingPolicy].
   /// [minCount] MinCount is the minimum number of pods that must be schedulable or scheduled at the same time for the scheduler to admit the entire group. It must be a positive integer.
-  GangSchedulingPolicy({required this.minCount});
+  GangSchedulingPolicy({
+    required this.minCount,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'minCount': minCount};
+    return <String, dynamic>{
+      'minCount': minCount,
+    };
   }
 
   factory GangSchedulingPolicy.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class GangSchedulingPolicy {
     );
   }
 }
+

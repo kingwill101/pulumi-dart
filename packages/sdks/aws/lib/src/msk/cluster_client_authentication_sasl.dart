@@ -9,24 +9,23 @@ class ClusterClientAuthenticationSasl {
   /// Creates a new [ClusterClientAuthenticationSasl].
   /// [iam] Optional.
   /// [scram] Optional.
-  ClusterClientAuthenticationSasl({this.iam, this.scram});
+  ClusterClientAuthenticationSasl({
+    this.iam,
+    this.scram,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'iam': ?iam, 'scram': ?scram};
+    return <String, dynamic>{
+      'iam': ?iam,
+      'scram': ?scram,
+    };
   }
 
   factory ClusterClientAuthenticationSasl.fromMap(Map<String, dynamic> map) {
     return ClusterClientAuthenticationSasl(
-      iam: (() {
-        final guardedValue = map['iam'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      scram: (() {
-        final guardedValue = map['scram'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      iam: (() { final guardedValue = map['iam']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      scram: (() { final guardedValue = map['scram']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

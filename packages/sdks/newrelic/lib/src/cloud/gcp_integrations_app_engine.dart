@@ -8,19 +8,20 @@ class GcpIntegrationsAppEngine {
 
   /// Creates a new [GcpIntegrationsAppEngine].
   /// [metricsPollingInterval] the data polling interval in seconds
-  GcpIntegrationsAppEngine({this.metricsPollingInterval});
+  GcpIntegrationsAppEngine({
+    this.metricsPollingInterval,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'metricsPollingInterval': ?metricsPollingInterval};
+    return <String, dynamic>{
+      'metricsPollingInterval': ?metricsPollingInterval,
+    };
   }
 
   factory GcpIntegrationsAppEngine.fromMap(Map<String, dynamic> map) {
     return GcpIntegrationsAppEngine(
-      metricsPollingInterval: (() {
-        final guardedValue = map['metricsPollingInterval'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      metricsPollingInterval: (() { final guardedValue = map['metricsPollingInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

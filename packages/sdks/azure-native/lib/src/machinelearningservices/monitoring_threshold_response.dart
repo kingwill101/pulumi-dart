@@ -8,19 +8,20 @@ class MonitoringThresholdResponse {
 
   /// Creates a new [MonitoringThresholdResponse].
   /// [value] The threshold value. If null, the set default is dependent on the metric type.
-  MonitoringThresholdResponse({this.value});
+  MonitoringThresholdResponse({
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': ?value};
+    return <String, dynamic>{
+      'value': ?value,
+    };
   }
 
   factory MonitoringThresholdResponse.fromMap(Map<String, dynamic> map) {
     return MonitoringThresholdResponse(
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

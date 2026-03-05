@@ -8,46 +8,29 @@ import 'scope_namespace.dart';
 class Scope {
   /// Specifies that the scope of the extension is Cluster
   final pulumi.Input<ScopeCluster>? cluster;
-
   /// Specifies that the scope of the extension is Namespace
   final pulumi.Input<ScopeNamespace>? namespace;
 
   /// Creates a new [Scope].
   /// [cluster] Specifies that the scope of the extension is Cluster
   /// [namespace] Specifies that the scope of the extension is Namespace
-  Scope({this.cluster, this.namespace});
+  Scope({
+    this.cluster,
+    this.namespace,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cluster':
-          ?pulumi.Input.mapOptionalInputValue<
-            ScopeCluster,
-            Map<String, dynamic>
-          >(cluster, (value) => value.toMap()),
-      'namespace':
-          ?pulumi.Input.mapOptionalInputValue<
-            ScopeNamespace,
-            Map<String, dynamic>
-          >(namespace, (value) => value.toMap()),
+      'cluster': ?pulumi.Input.mapOptionalInputValue<ScopeCluster, Map<String, dynamic>>(cluster, (value) => value.toMap()),
+      'namespace': ?pulumi.Input.mapOptionalInputValue<ScopeNamespace, Map<String, dynamic>>(namespace, (value) => value.toMap()),
     };
   }
 
   factory Scope.fromMap(Map<String, dynamic> map) {
     return Scope(
-      cluster: (() {
-        final guardedValue = map['cluster'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ScopeCluster.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      namespace: (() {
-        final guardedValue = map['namespace'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ScopeNamespace.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
+      cluster: (() { final guardedValue = map['cluster']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ScopeCluster.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      namespace: (() { final guardedValue = map['namespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ScopeNamespace.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

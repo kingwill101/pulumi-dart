@@ -9,19 +9,20 @@ class ScanStatusEnumValue {
 
   /// Creates a new [ScanStatusEnumValue].
   /// [value] Property value
-  ScanStatusEnumValue({this.value});
+  ScanStatusEnumValue({
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': ?value};
+    return <String, dynamic>{
+      'value': ?value,
+    };
   }
 
   factory ScanStatusEnumValue.fromMap(Map<String, dynamic> map) {
     return ScanStatusEnumValue(
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

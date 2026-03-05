@@ -16,3 +16,4 @@ enum DependencyCondition {
     throw ArgumentError('Unknown DependencyCondition value: $value');
   }
 }
+

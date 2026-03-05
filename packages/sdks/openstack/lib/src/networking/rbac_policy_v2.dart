@@ -169,24 +169,20 @@ class RbacPolicyV2 extends pulumi.CustomResource {
   /// Action for the RBAC policy. Can either be
   /// `access_as_external` or `access_as_shared`.
   late final pulumi.Output<String> action;
-
   /// The ID of the `object_type` resource. An
   /// `object_type` of `network` returns a network ID and an `object_type` of
   /// `qos_policy` returns a QoS ID.
   late final pulumi.Output<String> objectId;
-
   /// The type of the object that the RBAC policy
   /// affects. Can be one of the following: `address_scope`, `address_group`,
   /// `network`, `qos_policy`, `security_group`, `subnetpool` or `bgpvpn`.
   late final pulumi.Output<String> objectType;
   late final pulumi.Output<String> projectId;
-
   /// The region in which to obtain the V2 networking client.
   /// A networking client is needed to configure a routing entry on a subnet. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
   /// routing entry.
   late final pulumi.Output<String> region;
-
   /// The ID of the tenant to which the RBAC policy
   /// will be enforced.
   late final pulumi.Output<String> targetTenant;
@@ -200,11 +196,11 @@ class RbacPolicyV2 extends pulumi.CustomResource {
     RbacPolicyV2Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:networking/rbacPolicyV2:RbacPolicyV2',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:networking/rbacPolicyV2:RbacPolicyV2',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     action = registerOutput<String>('action');
     objectId = registerOutput<String>('objectId');
     objectType = registerOutput<String>('objectType');
@@ -231,11 +227,11 @@ class RbacPolicyV2 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:networking/rbacPolicyV2:RbacPolicyV2',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:networking/rbacPolicyV2:RbacPolicyV2',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     action = registerOutput<String>('action');
     objectId = registerOutput<String>('objectId');
     objectType = registerOutput<String>('objectType');

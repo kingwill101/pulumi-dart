@@ -18,3 +18,4 @@ enum RaiActionType {
     throw ArgumentError('Unknown RaiActionType value: $value');
   }
 }
+

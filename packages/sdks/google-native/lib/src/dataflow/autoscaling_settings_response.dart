@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AutoscalingSettingsResponse {
   /// The algorithm to use for autoscaling.
   final pulumi.Input<String> algorithm;
-
   /// The maximum number of workers to cap scaling at.
   final pulumi.Input<int> maxNumWorkers;
 
@@ -32,3 +31,4 @@ class AutoscalingSettingsResponse {
     );
   }
 }
+

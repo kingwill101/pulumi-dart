@@ -9,40 +9,28 @@ import 'sku_response.dart';
 class GetResourceResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Resource extended location.
   final ExtendedLocationResponse? extendedLocation;
-
   /// Resource ID
   final String id;
-
   /// The identity of the resource.
   final IdentityResponse? identity;
-
   /// The kind of the resource.
   final String? kind;
-
   /// Resource location
   final String? location;
-
   /// ID of the resource that manages this resource.
   final String? managedBy;
-
   /// Resource name
   final String name;
-
   /// The plan of the resource.
   final PlanResponse? plan;
-
   /// The resource properties.
   final dynamic properties;
-
   /// The SKU of the resource.
   final SkuResponse? sku;
-
   /// Resource tags
   final Map<String, String>? tags;
-
   /// Resource type
   final String type;
 
@@ -97,58 +85,19 @@ class GetResourceResult {
   factory GetResourceResult.fromMap(Map<String, dynamic> map) {
     return GetResourceResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      extendedLocation: (() {
-        final guardedValue = map['extendedLocation'];
-        if (guardedValue == null) return null;
-        return ExtendedLocationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: map['id'] as String,
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return IdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      managedBy: (() {
-        final guardedValue = map['managedBy'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return IdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      managedBy: (() { final guardedValue = map['managedBy']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
-      plan: (() {
-        final guardedValue = map['plan'];
-        if (guardedValue == null) return null;
-        return PlanResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      plan: (() { final guardedValue = map['plan']; if (guardedValue == null) return null; return PlanResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       properties: map['properties'],
-      sku: (() {
-        final guardedValue = map['sku'];
-        if (guardedValue == null) return null;
-        return SkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

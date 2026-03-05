@@ -9,10 +9,16 @@ class GetDomainGroupsGroup {
   /// Creates a new [GetDomainGroupsGroup].
   /// [groupId] Required.
   /// [groupName] Required.
-  GetDomainGroupsGroup({required this.groupId, required this.groupName});
+  GetDomainGroupsGroup({
+    required this.groupId,
+    required this.groupName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'groupId': groupId, 'groupName': groupName};
+    return <String, dynamic>{
+      'groupId': groupId,
+      'groupName': groupName,
+    };
   }
 
   factory GetDomainGroupsGroup.fromMap(Map<String, dynamic> map) {
@@ -22,3 +28,4 @@ class GetDomainGroupsGroup {
     );
   }
 }
+

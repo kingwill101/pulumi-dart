@@ -10,19 +10,14 @@ import 'collector_agent_properties_base.dart';
 class HypervCollectorsOperationArgs {
   /// Gets or sets the collector agent properties.
   final pulumi.Input<CollectorAgentPropertiesBase>? agentProperties;
-
   /// Gets the discovery site id.
   final pulumi.Input<String>? discoverySiteId;
-
   /// Hyper-V collector ARM name
   final pulumi.Input<String>? hypervCollectorName;
-
   /// Assessment Project Name
   final pulumi.Input<String> projectName;
-
   /// The status of the last operation.
   final pulumi.Input<String>? provisioningState;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -44,11 +39,7 @@ class HypervCollectorsOperationArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'agentProperties':
-          ?pulumi.Input.mapOptionalInputValue<
-            CollectorAgentPropertiesBase,
-            Map<String, dynamic>
-          >(agentProperties, (value) => value.toMap()),
+      'agentProperties': ?pulumi.Input.mapOptionalInputValue<CollectorAgentPropertiesBase, Map<String, dynamic>>(agentProperties, (value) => value.toMap()),
       'discoverySiteId': ?discoverySiteId,
       'hypervCollectorName': ?hypervCollectorName,
       'projectName': projectName,
@@ -59,34 +50,13 @@ class HypervCollectorsOperationArgs {
 
   factory HypervCollectorsOperationArgs.fromMap(Map<String, dynamic> map) {
     return HypervCollectorsOperationArgs(
-      agentProperties: (() {
-        final guardedValue = map['agentProperties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CollectorAgentPropertiesBase.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      discoverySiteId: (() {
-        final guardedValue = map['discoverySiteId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      hypervCollectorName: (() {
-        final guardedValue = map['hypervCollectorName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      agentProperties: (() { final guardedValue = map['agentProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CollectorAgentPropertiesBase.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      discoverySiteId: (() { final guardedValue = map['discoverySiteId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      hypervCollectorName: (() { final guardedValue = map['hypervCollectorName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       projectName: pulumi.Input.fromValue(map['projectName'] as String),
-      provisioningState: (() {
-        final guardedValue = map['provisioningState'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

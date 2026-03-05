@@ -1,28 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getNetworkSecurityPerimeter.
 class GetNetworkSecurityPerimeterResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Resource ID.
   final String id;
-
   /// Resource location.
   final String? location;
-
   /// Resource name.
   final String name;
-
   /// perimeter guid of the network security perimeter.
   final String perimeterGuid;
-
   /// The provisioning state of the scope assignment resource.
   final String provisioningState;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// Resource type.
   final String type;
 
@@ -63,20 +57,13 @@ class GetNetworkSecurityPerimeterResult {
     return GetNetworkSecurityPerimeterResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
       perimeterGuid: map['perimeterGuid'] as String,
       provisioningState: map['provisioningState'] as String,
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

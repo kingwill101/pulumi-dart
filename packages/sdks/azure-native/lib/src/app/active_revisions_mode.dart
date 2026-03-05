@@ -17,3 +17,4 @@ enum ActiveRevisionsMode {
     throw ArgumentError('Unknown ActiveRevisionsMode value: $value');
   }
 }
+

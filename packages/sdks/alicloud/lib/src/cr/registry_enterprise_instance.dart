@@ -205,34 +205,26 @@ import 'registry_enterprise_instance_state.dart';
 class RegistryEnterpriseInstance extends pulumi.CustomResource {
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
-
   /// . Field 'created_time' has been deprecated from provider version 1.235.0. New field 'create_time' instead.
   late final pulumi.Output<String> createdTime;
-
   /// Custom OSS Bucket name
   ///
   /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<String?> customOssBucket;
-
   /// Whether to use the default OSS Bucket. Value:
   late final pulumi.Output<String?> defaultOssBucket;
-
   /// Expiration Time
   late final pulumi.Output<String> endTime;
-
   /// The security scan engine used by the Enterprise Edition of Container Image Service. Value:
   /// - `ACR`: Uses the Trivy scan engine provided by default.
   /// - `SAS`: uses the enhanced cloud security scan engine.
   ///
   /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<String?> imageScanner;
-
   /// (Available since v1.240.0) Instance Network Access Endpoint List
   late final pulumi.Output<List<Map<String, dynamic>>> instanceEndpoints;
-
   /// InstanceName
   late final pulumi.Output<String> instanceName;
-
   /// The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
   /// - `Basic`: Basic instance
   /// - `Standard`: Standard instance
@@ -240,25 +232,19 @@ class RegistryEnterpriseInstance extends pulumi.CustomResource {
   ///
   /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<String> instanceType;
-
   /// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
   late final pulumi.Output<String?> kmsEncryptedPassword;
-
   /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
   late final pulumi.Output<Map<String, String>?> kmsEncryptionContext;
-
   /// The number of additional namespaces to purchase. The value is an integral multiple of `5`.
   ///
   /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<int?> namespaceQuota;
-
   /// Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
   late final pulumi.Output<String?> password;
-
   /// Payment type, value:
   /// - Subscription: Prepaid.
   late final pulumi.Output<String> paymentType;
-
   /// Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
   ///
   /// &gt; **NOTE:**  must be set when creating a prepaid instance.
@@ -266,33 +252,26 @@ class RegistryEnterpriseInstance extends pulumi.CustomResource {
   ///
   /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<int?> period;
-
   /// RegionId
   late final pulumi.Output<String> regionId;
-
   /// Automatic renewal cycle, in months.
   ///
   /// &gt; **NOTE:**  When `RenewalStatus` is set to `AutoRenewal`, it must be set.
   late final pulumi.Output<int?> renewPeriod;
-
   /// Automatic renewal status, value:
   /// - AutoRenewal: automatic renewal.
   /// - ManualRenewal: manual renewal.
   ///
   /// Default ManualRenewal.
   late final pulumi.Output<String> renewalStatus;
-
   /// The number of additional repositories to purchase. The value is an integral multiple of `1000`.
   ///
   /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<int?> repoQuota;
-
   /// The ID of the resource group
   late final pulumi.Output<String> resourceGroupId;
-
   /// Instance Status
   late final pulumi.Output<String> status;
-
   /// The number of VPC access controls.
   ///
   /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
@@ -310,26 +289,22 @@ class RegistryEnterpriseInstance extends pulumi.CustomResource {
     RegistryEnterpriseInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cr/registryEnterpriseInstance:RegistryEnterpriseInstance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cr/registryEnterpriseInstance:RegistryEnterpriseInstance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     createdTime = registerOutput<String>('createdTime');
     customOssBucket = registerOutput<String?>('customOssBucket');
     defaultOssBucket = registerOutput<String?>('defaultOssBucket');
     endTime = registerOutput<String>('endTime');
     imageScanner = registerOutput<String?>('imageScanner');
-    instanceEndpoints = registerOutput<List<Map<String, dynamic>>>(
-      'instanceEndpoints',
-    );
+    instanceEndpoints = registerOutput<List<Map<String, dynamic>>>('instanceEndpoints');
     instanceName = registerOutput<String>('instanceName');
     instanceType = registerOutput<String>('instanceType');
     kmsEncryptedPassword = registerOutput<String?>('kmsEncryptedPassword');
-    kmsEncryptionContext = registerOutput<Map<String, String>?>(
-      'kmsEncryptionContext',
-    );
+    kmsEncryptionContext = registerOutput<Map<String, String>?>('kmsEncryptionContext');
     namespaceQuota = registerOutput<int?>('namespaceQuota');
     password = registerOutput<String?>('password');
     paymentType = registerOutput<String>('paymentType');
@@ -361,26 +336,22 @@ class RegistryEnterpriseInstance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cr/registryEnterpriseInstance:RegistryEnterpriseInstance',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cr/registryEnterpriseInstance:RegistryEnterpriseInstance',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     createdTime = registerOutput<String>('createdTime');
     customOssBucket = registerOutput<String?>('customOssBucket');
     defaultOssBucket = registerOutput<String?>('defaultOssBucket');
     endTime = registerOutput<String>('endTime');
     imageScanner = registerOutput<String?>('imageScanner');
-    instanceEndpoints = registerOutput<List<Map<String, dynamic>>>(
-      'instanceEndpoints',
-    );
+    instanceEndpoints = registerOutput<List<Map<String, dynamic>>>('instanceEndpoints');
     instanceName = registerOutput<String>('instanceName');
     instanceType = registerOutput<String>('instanceType');
     kmsEncryptedPassword = registerOutput<String?>('kmsEncryptedPassword');
-    kmsEncryptionContext = registerOutput<Map<String, String>?>(
-      'kmsEncryptionContext',
-    );
+    kmsEncryptionContext = registerOutput<Map<String, String>?>('kmsEncryptionContext');
     namespaceQuota = registerOutput<int?>('namespaceQuota');
     password = registerOutput<String?>('password');
     paymentType = registerOutput<String>('paymentType');

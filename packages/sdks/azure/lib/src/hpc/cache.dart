@@ -288,62 +288,44 @@ import 'cache_state.dart';
 class Cache extends pulumi.CustomResource {
   /// Specifies whether the HPC Cache automatically rotates Encryption Key to the latest version.
   late final pulumi.Output<bool?> automaticallyRotateKeyToLatestEnabled;
-
   /// The size of the HPC Cache, in GB. Possible values are `3072`, `6144`, `12288`, `21623`, `24576`, `43246`, `49152` and `86491`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** The `21623`, `43246` and `86491` sizes are restricted to read only resources.
   late final pulumi.Output<int> cacheSizeInGb;
-
   /// A `default_access_policy` block as defined below.
   late final pulumi.Output<CacheDefaultAccessPolicy> defaultAccessPolicy;
-
   /// A `directory_active_directory` block as defined below.
-  late final pulumi.Output<CacheDirectoryActiveDirectory?>
-  directoryActiveDirectory;
-
+  late final pulumi.Output<CacheDirectoryActiveDirectory?> directoryActiveDirectory;
   /// A `directory_flat_file` block as defined below.
   late final pulumi.Output<CacheDirectoryFlatFile?> directoryFlatFile;
-
   /// A `directory_ldap` block as defined below.
   ///
   /// &gt; **Note:** Only one of `directory_active_directory`, `directory_flat_file` and `directory_ldap` can be set.
   late final pulumi.Output<CacheDirectoryLdap?> directoryLdap;
-
   /// A `dns` block as defined below.
   late final pulumi.Output<CacheDns?> dns;
-
   /// An `identity` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<CacheIdentity?> identity;
-
   /// The ID of the Key Vault Key which should be used to encrypt the data in this HPC Cache.
   late final pulumi.Output<String?> keyVaultKeyId;
-
   /// Specifies the supported Azure Region where the HPC Cache should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// A list of IP Addresses where the HPC Cache can be mounted.
   late final pulumi.Output<List<String>> mountAddresses;
-
   /// The IPv4 maximum transmission unit configured for the subnet of the HPC Cache. Possible values range from 576 - 1500. Defaults to `1500`.
   late final pulumi.Output<int?> mtu;
-
   /// The name of the HPC Cache. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The NTP server IP Address or FQDN for the HPC Cache. Defaults to `time.windows.com`.
   late final pulumi.Output<String?> ntpServer;
-
   /// The name of the Resource Group in which to create the HPC Cache. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The SKU of HPC Cache to use. Possible values are (ReadWrite) - `Standard_2G`, `Standard_4G` `Standard_8G` or (ReadOnly) - `Standard_L4_5G`, `Standard_L9G`, and `Standard_L16G`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** The read-only SKUs have restricted cache sizes. `Standard_L4_5G` must be set to `21623`. `Standard_L9G` to `43246` and `Standard_L16G` to `86491`.
   late final pulumi.Output<String> skuName;
-
   /// The ID of the Subnet for the HPC Cache. Changing this forces a new resource to be created.
   late final pulumi.Output<String> subnetId;
-
   /// A mapping of tags to assign to the HPC Cache.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -351,75 +333,24 @@ class Cache extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Cache]. {@macro pulumi_hpc_cache_cache_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Cache(String name, {CacheArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure:hpc/cache:Cache',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
-    automaticallyRotateKeyToLatestEnabled = registerOutput<bool?>(
-      'automaticallyRotateKeyToLatestEnabled',
-    );
+  Cache(
+    String name, {
+    CacheArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure:hpc/cache:Cache',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    automaticallyRotateKeyToLatestEnabled = registerOutput<bool?>('automaticallyRotateKeyToLatestEnabled');
     cacheSizeInGb = registerOutput<int>('cacheSizeInGb');
-    defaultAccessPolicy = registerOutput<CacheDefaultAccessPolicy>(
-      'defaultAccessPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CacheDefaultAccessPolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    directoryActiveDirectory = registerOutput<CacheDirectoryActiveDirectory?>(
-      'directoryActiveDirectory',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CacheDirectoryActiveDirectory.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    directoryFlatFile = registerOutput<CacheDirectoryFlatFile?>(
-      'directoryFlatFile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CacheDirectoryFlatFile.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    directoryLdap = registerOutput<CacheDirectoryLdap?>(
-      'directoryLdap',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CacheDirectoryLdap.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    dns = registerOutput<CacheDns?>(
-      'dns',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CacheDns.fromMap((guardedValue as Map).cast<String, dynamic>());
-      },
-    );
-    identity = registerOutput<CacheIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CacheIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    defaultAccessPolicy = registerOutput<CacheDefaultAccessPolicy>('defaultAccessPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CacheDefaultAccessPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    directoryActiveDirectory = registerOutput<CacheDirectoryActiveDirectory?>('directoryActiveDirectory', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CacheDirectoryActiveDirectory.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    directoryFlatFile = registerOutput<CacheDirectoryFlatFile?>('directoryFlatFile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CacheDirectoryFlatFile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    directoryLdap = registerOutput<CacheDirectoryLdap?>('directoryLdap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CacheDirectoryLdap.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dns = registerOutput<CacheDns?>('dns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CacheDns.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<CacheIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CacheIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     keyVaultKeyId = registerOutput<String?>('keyVaultKeyId');
     location = registerOutput<String>('location');
     mountAddresses = registerOutput<List<String>>('mountAddresses');
@@ -433,7 +364,11 @@ class Cache extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Cache] resource's state with the given [name] and [id].
-  static Cache get(String name, pulumi.Input<String> id, {CacheState? state}) {
+  static Cache get(
+    String name,
+    pulumi.Input<String> id, {
+    CacheState? state,
+  }) {
     return Cache._get(
       name,
       state: state?.toMap(),
@@ -446,73 +381,19 @@ class Cache extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:hpc/cache:Cache',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    automaticallyRotateKeyToLatestEnabled = registerOutput<bool?>(
-      'automaticallyRotateKeyToLatestEnabled',
-    );
+          'azure:hpc/cache:Cache',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    automaticallyRotateKeyToLatestEnabled = registerOutput<bool?>('automaticallyRotateKeyToLatestEnabled');
     cacheSizeInGb = registerOutput<int>('cacheSizeInGb');
-    defaultAccessPolicy = registerOutput<CacheDefaultAccessPolicy>(
-      'defaultAccessPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CacheDefaultAccessPolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    directoryActiveDirectory = registerOutput<CacheDirectoryActiveDirectory?>(
-      'directoryActiveDirectory',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CacheDirectoryActiveDirectory.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    directoryFlatFile = registerOutput<CacheDirectoryFlatFile?>(
-      'directoryFlatFile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CacheDirectoryFlatFile.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    directoryLdap = registerOutput<CacheDirectoryLdap?>(
-      'directoryLdap',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CacheDirectoryLdap.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    dns = registerOutput<CacheDns?>(
-      'dns',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CacheDns.fromMap((guardedValue as Map).cast<String, dynamic>());
-      },
-    );
-    identity = registerOutput<CacheIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CacheIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    defaultAccessPolicy = registerOutput<CacheDefaultAccessPolicy>('defaultAccessPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CacheDefaultAccessPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    directoryActiveDirectory = registerOutput<CacheDirectoryActiveDirectory?>('directoryActiveDirectory', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CacheDirectoryActiveDirectory.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    directoryFlatFile = registerOutput<CacheDirectoryFlatFile?>('directoryFlatFile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CacheDirectoryFlatFile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    directoryLdap = registerOutput<CacheDirectoryLdap?>('directoryLdap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CacheDirectoryLdap.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dns = registerOutput<CacheDns?>('dns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CacheDns.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<CacheIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CacheIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     keyVaultKeyId = registerOutput<String?>('keyVaultKeyId');
     location = registerOutput<String>('location');
     mountAddresses = registerOutput<List<String>>('mountAddresses');

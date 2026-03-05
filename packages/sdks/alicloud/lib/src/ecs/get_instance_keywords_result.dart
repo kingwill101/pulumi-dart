@@ -1,14 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getInstanceKeywords.
 class GetInstanceKeywordsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of keywords.
   final List<String> ids;
   final String key;
-
   /// An array that consists of reserved keywords.
   final List<String> keywords;
   final String? outputFile;
@@ -43,11 +42,8 @@ class GetInstanceKeywordsResult {
       ids: (map['ids'] as List).cast<String>(),
       key: map['key'] as String,
       keywords: (map['keywords'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

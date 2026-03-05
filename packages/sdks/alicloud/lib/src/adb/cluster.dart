@@ -298,26 +298,19 @@ class Cluster extends pulumi.CustomResource {
   /// Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
   late final pulumi.Output<int> autoRenewPeriod;
   late final pulumi.Output<String?> computeResource;
-
   /// (Available since v1.93.0) The connection string of the ADB cluster.
   late final pulumi.Output<String> connectionString;
-
   /// Cluster category. Value options: `Basic`, `Cluster`.
   late final pulumi.Output<String> dbClusterCategory;
   late final pulumi.Output<String?> dbClusterClass;
-
   /// Cluster version. Value options: `3.0`, Default to `3.0`.
   late final pulumi.Output<String?> dbClusterVersion;
-
   /// The db_node_class of cluster node.
   late final pulumi.Output<String> dbNodeClass;
-
   /// The db_node_count of cluster node.
   late final pulumi.Output<int> dbNodeCount;
-
   /// The db_node_storage of cluster node.
   late final pulumi.Output<int> dbNodeStorage;
-
   /// The description of cluster.
   late final pulumi.Output<String> description;
   late final pulumi.Output<bool?> diskEncryption;
@@ -327,33 +320,25 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<bool?> enableSsl;
   late final pulumi.Output<String> kernelVersion;
   late final pulumi.Output<String?> kmsId;
-
   /// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
   late final pulumi.Output<String> maintainTime;
   late final pulumi.Output<String> mode;
   late final pulumi.Output<String?> modifyType;
-
   /// Field `pay_type` has been deprecated. New field `payment_type` instead.
   late final pulumi.Output<String> payType;
-
   /// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
   late final pulumi.Output<String> paymentType;
-
   /// The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
   late final pulumi.Output<int?> period;
-
   /// (Available since v1.196.0) The connection port of the ADB cluster.
   late final pulumi.Output<String> port;
-
   /// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
   late final pulumi.Output<String> renewalStatus;
   late final pulumi.Output<String> resourceGroupId;
-
   /// List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
   late final pulumi.Output<List<String>> securityIps;
   late final pulumi.Output<String> status;
   late final pulumi.Output<int?> switchMode;
-
   /// A mapping of tags to assign to the resource.
   /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
   /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -361,10 +346,8 @@ class Cluster extends pulumi.CustomResource {
   /// &gt; **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~30 minutes. Please make full preparation before changing them.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<String> vpcId;
-
   /// The virtual switch ID to launch DB instances in one VPC.
   late final pulumi.Output<String?> vswitchId;
-
   /// The Zone to launch the DB cluster.
   late final pulumi.Output<String> zoneId;
 
@@ -377,11 +360,11 @@ class Cluster extends pulumi.CustomResource {
     ClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:adb/cluster:Cluster',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:adb/cluster:Cluster',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoRenewPeriod = registerOutput<int>('autoRenewPeriod');
     computeResource = registerOutput<String?>('computeResource');
     connectionString = registerOutput<String>('connectionString');
@@ -435,11 +418,11 @@ class Cluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:adb/cluster:Cluster',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:adb/cluster:Cluster',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoRenewPeriod = registerOutput<int>('autoRenewPeriod');
     computeResource = registerOutput<String?>('computeResource');
     connectionString = registerOutput<String>('connectionString');

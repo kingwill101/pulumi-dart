@@ -10,22 +10,16 @@ import 'permission.dart';
 class RoleDefinitionArgs {
   /// Role definition assignable scopes.
   final pulumi.Input<List<String>>? assignableScopes;
-
   /// The role definition description.
   final pulumi.Input<String>? description;
-
   /// Role definition permissions.
   final pulumi.Input<List<Permission>>? permissions;
-
   /// The ID of the role definition.
   final pulumi.Input<String>? roleDefinitionId;
-
   /// The role name.
   final pulumi.Input<String>? roleName;
-
   /// The role type.
   final pulumi.Input<String>? roleType;
-
   /// The scope of the operation or resource. Valid scopes are: subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
   final pulumi.Input<String> scope;
 
@@ -51,18 +45,7 @@ class RoleDefinitionArgs {
     return <String, dynamic>{
       'assignableScopes': ?assignableScopes,
       'description': ?description,
-      'permissions':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<Permission>,
-            List<Map<String, dynamic>>
-          >(
-            permissions,
-            (value) =>
-                pulumi.Input.encodeList<Permission, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'permissions': ?pulumi.Input.mapOptionalInputValue<List<Permission>, List<Map<String, dynamic>>>(permissions, (value) => pulumi.Input.encodeList<Permission, Map<String, dynamic>>(value, (value) => value.toMap())),
       'roleDefinitionId': ?roleDefinitionId,
       'roleName': ?roleName,
       'roleType': ?roleType,
@@ -72,43 +55,14 @@ class RoleDefinitionArgs {
 
   factory RoleDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return RoleDefinitionArgs(
-      assignableScopes: (() {
-        final guardedValue = map['assignableScopes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      permissions: (() {
-        final guardedValue = map['permissions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<Permission>(
-            guardedValue,
-            (value) =>
-                Permission.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      roleDefinitionId: (() {
-        final guardedValue = map['roleDefinitionId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      roleName: (() {
-        final guardedValue = map['roleName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      roleType: (() {
-        final guardedValue = map['roleType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      assignableScopes: (() { final guardedValue = map['assignableScopes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      permissions: (() { final guardedValue = map['permissions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Permission>(guardedValue, (value) => Permission.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      roleDefinitionId: (() { final guardedValue = map['roleDefinitionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      roleName: (() { final guardedValue = map['roleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      roleType: (() { final guardedValue = map['roleType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scope: pulumi.Input.fromValue(map['scope'] as String),
     );
   }
 }
+

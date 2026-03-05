@@ -7,7 +7,6 @@ import 'resource_az_status_response.dart';
 class GetManagedAzResiliencyStatusResult {
   /// List of Managed VM Sizes for Service Fabric Managed Clusters.
   final List<ResourceAzStatusResponse>? baseResourceStatus;
-
   /// URL to get the next set of Managed VM Sizes if there are any.
   final bool isClusterZoneResilient;
 
@@ -21,31 +20,16 @@ class GetManagedAzResiliencyStatusResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'baseResourceStatus': ?(() {
-        final guardedValue = baseResourceStatus;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          ResourceAzStatusResponse,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'baseResourceStatus': ?(() { final guardedValue = baseResourceStatus; if (guardedValue == null) return null; return pulumi.Input.encodeList<ResourceAzStatusResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'isClusterZoneResilient': isClusterZoneResilient,
     };
   }
 
   factory GetManagedAzResiliencyStatusResult.fromMap(Map<String, dynamic> map) {
     return GetManagedAzResiliencyStatusResult(
-      baseResourceStatus: (() {
-        final guardedValue = map['baseResourceStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<ResourceAzStatusResponse>(
-          guardedValue,
-          (value) => ResourceAzStatusResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      baseResourceStatus: (() { final guardedValue = map['baseResourceStatus']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceAzStatusResponse>(guardedValue, (value) => ResourceAzStatusResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       isClusterZoneResilient: map['isClusterZoneResilient'] as bool,
     );
   }
 }
+

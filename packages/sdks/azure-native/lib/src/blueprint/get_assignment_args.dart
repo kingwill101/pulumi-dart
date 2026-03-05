@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAssignmentArgs {
   /// Name of the blueprint assignment.
   final pulumi.Input<String> assignmentName;
-
   /// The scope of the resource. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}').
   final pulumi.Input<String> resourceScope;
 
@@ -35,3 +34,4 @@ class GetAssignmentArgs {
     );
   }
 }
+

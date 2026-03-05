@@ -9,19 +9,20 @@ class NamedResourcesStringSlicePatch {
 
   /// Creates a new [NamedResourcesStringSlicePatch].
   /// [strings] Strings is the slice of strings.
-  NamedResourcesStringSlicePatch({this.strings});
+  NamedResourcesStringSlicePatch({
+    this.strings,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'strings': ?strings};
+    return <String, dynamic>{
+      'strings': ?strings,
+    };
   }
 
   factory NamedResourcesStringSlicePatch.fromMap(Map<String, dynamic> map) {
     return NamedResourcesStringSlicePatch(
-      strings: (() {
-        final guardedValue = map['strings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      strings: (() { final guardedValue = map['strings']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

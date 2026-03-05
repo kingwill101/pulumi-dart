@@ -10,23 +10,18 @@ import 'multicloud_data_transfer_config_service.dart';
 class MulticloudDataTransferConfigArgs {
   /// A description of this resource.
   final pulumi.Input<String>? description;
-
   /// User-defined labels.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// The location of the multicloud data transfer config.
   final pulumi.Input<String> location;
-
   /// The name of the MulticloudDataTransferConfig resource.
   final pulumi.Input<String>? name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// Maps services to their current or planned states. Service names are keys,
   /// and the associated values describe the state of the service.
   /// Structure is documented below.
@@ -55,58 +50,19 @@ class MulticloudDataTransferConfigArgs {
       'location': location,
       'name': ?name,
       'project': ?project,
-      'services':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<MulticloudDataTransferConfigService>,
-            List<Map<String, dynamic>>
-          >(
-            services,
-            (value) =>
-                pulumi.Input.encodeList<
-                  MulticloudDataTransferConfigService,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'services': ?pulumi.Input.mapOptionalInputValue<List<MulticloudDataTransferConfigService>, List<Map<String, dynamic>>>(services, (value) => pulumi.Input.encodeList<MulticloudDataTransferConfigService, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory MulticloudDataTransferConfigArgs.fromMap(Map<String, dynamic> map) {
     return MulticloudDataTransferConfigArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      services: (() {
-        final guardedValue = map['services'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<MulticloudDataTransferConfigService>(
-            guardedValue,
-            (value) => MulticloudDataTransferConfigService.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      services: (() { final guardedValue = map['services']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<MulticloudDataTransferConfigService>(guardedValue, (value) => MulticloudDataTransferConfigService.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

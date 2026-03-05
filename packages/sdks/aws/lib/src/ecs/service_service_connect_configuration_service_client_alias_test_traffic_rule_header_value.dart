@@ -13,14 +13,15 @@ class ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeaderV
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'exact': exact};
+    return <String, dynamic>{
+      'exact': exact,
+    };
   }
 
-  factory ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeaderValue.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeaderValue.fromMap(Map<String, dynamic> map) {
     return ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeaderValue(
       exact: pulumi.Input.fromValue(map['exact'] as String),
     );
   }
 }
+

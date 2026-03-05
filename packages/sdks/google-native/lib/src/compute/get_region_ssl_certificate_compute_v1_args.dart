@@ -29,17 +29,12 @@ class GetRegionSslCertificateComputeV1Args {
     };
   }
 
-  factory GetRegionSslCertificateComputeV1Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetRegionSslCertificateComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetRegionSslCertificateComputeV1Args(
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: pulumi.Input.fromValue(map['region'] as String),
       sslCertificate: pulumi.Input.fromValue(map['sslCertificate'] as String),
     );
   }
 }
+

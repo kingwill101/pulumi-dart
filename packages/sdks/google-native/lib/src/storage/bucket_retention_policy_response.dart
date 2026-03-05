@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketRetentionPolicyResponse {
   /// Server-determined value that indicates the time from which policy was enforced and effective. This value is in RFC 3339 format.
   final pulumi.Input<String> effectiveTime;
-
   /// Once locked, an object retention policy cannot be modified.
   final pulumi.Input<bool> isLocked;
-
   /// The duration in seconds that objects need to be retained. Retention duration must be greater than zero and less than 100 years. Note that enforcement of retention periods less than a day is not guaranteed. Such periods should only be used for testing purposes.
   final pulumi.Input<String> retentionPeriod;
 
@@ -39,3 +37,4 @@ class BucketRetentionPolicyResponse {
     );
   }
 }
+

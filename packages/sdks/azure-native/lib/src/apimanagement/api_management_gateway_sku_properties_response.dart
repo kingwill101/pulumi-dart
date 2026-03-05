@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApiManagementGatewaySkuPropertiesResponse {
   /// Capacity of the SKU (number of deployed units of the SKU)
   final pulumi.Input<int>? capacity;
-
   /// Name of the Sku.
   final pulumi.Input<String> name;
 
@@ -19,19 +18,17 @@ class ApiManagementGatewaySkuPropertiesResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'capacity': ?capacity, 'name': name};
+    return <String, dynamic>{
+      'capacity': ?capacity,
+      'name': name,
+    };
   }
 
-  factory ApiManagementGatewaySkuPropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApiManagementGatewaySkuPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ApiManagementGatewaySkuPropertiesResponse(
-      capacity: (() {
-        final guardedValue = map['capacity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

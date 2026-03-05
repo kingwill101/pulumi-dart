@@ -250,16 +250,12 @@ import 'honeypot_preset_state.dart';
 class HoneypotPreset extends pulumi.CustomResource {
   /// Honeypot mirror name
   late final pulumi.Output<String> honeypotImageName;
-
   /// Unique ID of honeypot Template
   late final pulumi.Output<String> honeypotPresetId;
-
   /// Honeypot template custom parameters. See `meta` below.
   late final pulumi.Output<HoneypotPresetMeta> meta;
-
   /// Unique id of management node
   late final pulumi.Output<String> nodeId;
-
   /// Honeypot template custom name
   late final pulumi.Output<String> presetName;
 
@@ -272,23 +268,14 @@ class HoneypotPreset extends pulumi.CustomResource {
     HoneypotPresetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:threatdetection/honeypotPreset:HoneypotPreset',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:threatdetection/honeypotPreset:HoneypotPreset',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     honeypotImageName = registerOutput<String>('honeypotImageName');
     honeypotPresetId = registerOutput<String>('honeypotPresetId');
-    meta = registerOutput<HoneypotPresetMeta>(
-      'meta',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HoneypotPresetMeta.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    meta = registerOutput<HoneypotPresetMeta>('meta', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HoneypotPresetMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     nodeId = registerOutput<String>('nodeId');
     presetName = registerOutput<String>('presetName');
   }
@@ -311,23 +298,14 @@ class HoneypotPreset extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:threatdetection/honeypotPreset:HoneypotPreset',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:threatdetection/honeypotPreset:HoneypotPreset',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     honeypotImageName = registerOutput<String>('honeypotImageName');
     honeypotPresetId = registerOutput<String>('honeypotPresetId');
-    meta = registerOutput<HoneypotPresetMeta>(
-      'meta',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HoneypotPresetMeta.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    meta = registerOutput<HoneypotPresetMeta>('meta', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HoneypotPresetMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     nodeId = registerOutput<String>('nodeId');
     presetName = registerOutput<String>('presetName');
   }

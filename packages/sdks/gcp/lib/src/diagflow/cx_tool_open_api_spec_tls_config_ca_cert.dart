@@ -15,7 +15,6 @@ class CxToolOpenApiSpecTlsConfigCaCert {
   /// ```
   /// A base64-encoded string.
   final pulumi.Input<String> cert;
-
   /// The name of the allowed custom CA certificates. This can be used to disambiguate the custom CA certificates.
   final pulumi.Input<String> displayName;
 
@@ -28,7 +27,10 @@ class CxToolOpenApiSpecTlsConfigCaCert {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'cert': cert, 'displayName': displayName};
+    return <String, dynamic>{
+      'cert': cert,
+      'displayName': displayName,
+    };
   }
 
   factory CxToolOpenApiSpecTlsConfigCaCert.fromMap(Map<String, dynamic> map) {
@@ -38,3 +40,4 @@ class CxToolOpenApiSpecTlsConfigCaCert {
     );
   }
 }
+

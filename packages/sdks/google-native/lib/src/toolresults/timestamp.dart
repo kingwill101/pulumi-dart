@@ -6,31 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Timestamp {
   /// Non-negative fractions of a second at nanosecond resolution. Negative second values with fractions must still have non-negative nanos values that count forward in time. Must be from 0 to 999,999,999 inclusive.
   final pulumi.Input<int>? nanos;
-
   /// Represents seconds of UTC time since Unix epoch 1970-01-01T00:00:00Z. Must be from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59Z inclusive.
   final pulumi.Input<String>? seconds;
 
   /// Creates a new [Timestamp].
   /// [nanos] Non-negative fractions of a second at nanosecond resolution. Negative second values with fractions must still have non-negative nanos values that count forward in time. Must be from 0 to 999,999,999 inclusive.
   /// [seconds] Represents seconds of UTC time since Unix epoch 1970-01-01T00:00:00Z. Must be from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59Z inclusive.
-  Timestamp({this.nanos, this.seconds});
+  Timestamp({
+    this.nanos,
+    this.seconds,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'nanos': ?nanos, 'seconds': ?seconds};
+    return <String, dynamic>{
+      'nanos': ?nanos,
+      'seconds': ?seconds,
+    };
   }
 
   factory Timestamp.fromMap(Map<String, dynamic> map) {
     return Timestamp(
-      nanos: (() {
-        final guardedValue = map['nanos'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      seconds: (() {
-        final guardedValue = map['seconds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      nanos: (() { final guardedValue = map['nanos']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      seconds: (() { final guardedValue = map['seconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

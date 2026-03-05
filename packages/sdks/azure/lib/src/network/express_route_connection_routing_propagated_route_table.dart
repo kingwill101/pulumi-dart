@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExpressRouteConnectionRoutingPropagatedRouteTable {
   /// The list of labels to logically group route tables.
   final pulumi.Input<List<String>>? labels;
-
   /// A list of IDs of the Virtual Hub Route Table to propagate routes from Express Route Connection to the route table.
   final pulumi.Input<List<String>>? routeTableIds;
 
@@ -24,20 +23,11 @@ class ExpressRouteConnectionRoutingPropagatedRouteTable {
     };
   }
 
-  factory ExpressRouteConnectionRoutingPropagatedRouteTable.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ExpressRouteConnectionRoutingPropagatedRouteTable.fromMap(Map<String, dynamic> map) {
     return ExpressRouteConnectionRoutingPropagatedRouteTable(
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      routeTableIds: (() {
-        final guardedValue = map['routeTableIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      routeTableIds: (() { final guardedValue = map['routeTableIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

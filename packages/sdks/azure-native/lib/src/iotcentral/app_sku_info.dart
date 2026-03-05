@@ -9,13 +9,20 @@ class AppSkuInfo {
 
   /// Creates a new [AppSkuInfo].
   /// [name] The name of the SKU.
-  AppSkuInfo({required this.name});
+  AppSkuInfo({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory AppSkuInfo.fromMap(Map<String, dynamic> map) {
-    return AppSkuInfo(name: pulumi.Input.fromValue(map['name'] as String));
+    return AppSkuInfo(
+      name: pulumi.Input.fromValue(map['name'] as String),
+    );
   }
 }
+

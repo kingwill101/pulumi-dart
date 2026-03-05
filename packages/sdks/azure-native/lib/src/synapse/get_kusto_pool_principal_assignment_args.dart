@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetKustoPoolPrincipalAssignmentArgs {
   /// The name of the Kusto pool.
   final pulumi.Input<String> kustoPoolName;
-
   /// The name of the Kusto principalAssignment.
   final pulumi.Input<String> principalAssignmentName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -40,18 +37,13 @@ class GetKustoPoolPrincipalAssignmentArgs {
     };
   }
 
-  factory GetKustoPoolPrincipalAssignmentArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetKustoPoolPrincipalAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return GetKustoPoolPrincipalAssignmentArgs(
       kustoPoolName: pulumi.Input.fromValue(map['kustoPoolName'] as String),
-      principalAssignmentName: pulumi.Input.fromValue(
-        map['principalAssignmentName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      principalAssignmentName: pulumi.Input.fromValue(map['principalAssignmentName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
+

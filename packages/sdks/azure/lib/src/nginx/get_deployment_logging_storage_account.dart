@@ -4,7 +4,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDeploymentLoggingStorageAccount {
   final pulumi.Input<String> containerName;
-
   /// The name of this NGINX Deployment.
   final pulumi.Input<String> name;
 
@@ -17,7 +16,10 @@ class GetDeploymentLoggingStorageAccount {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'containerName': containerName, 'name': name};
+    return <String, dynamic>{
+      'containerName': containerName,
+      'name': name,
+    };
   }
 
   factory GetDeploymentLoggingStorageAccount.fromMap(Map<String, dynamic> map) {
@@ -27,3 +29,4 @@ class GetDeploymentLoggingStorageAccount {
     );
   }
 }
+

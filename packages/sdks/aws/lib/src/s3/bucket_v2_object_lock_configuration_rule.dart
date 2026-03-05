@@ -5,45 +5,24 @@ import 'bucket_v2_object_lock_configuration_rule_default_retention.dart';
 
 class BucketV2ObjectLockConfigurationRule {
   /// Default retention period that you want to apply to new objects placed in this bucket (documented below).
-  final pulumi.Input<List<BucketV2ObjectLockConfigurationRuleDefaultRetention>>
-  defaultRetentions;
+  final pulumi.Input<List<BucketV2ObjectLockConfigurationRuleDefaultRetention>> defaultRetentions;
 
   /// Creates a new [BucketV2ObjectLockConfigurationRule].
   /// [defaultRetentions] Default retention period that you want to apply to new objects placed in this bucket (documented below).
-  BucketV2ObjectLockConfigurationRule({required this.defaultRetentions});
+  BucketV2ObjectLockConfigurationRule({
+    required this.defaultRetentions,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'defaultRetentions':
-          pulumi.Input.mapInputValue<
-            List<BucketV2ObjectLockConfigurationRuleDefaultRetention>,
-            List<Map<String, dynamic>>
-          >(
-            defaultRetentions,
-            (value) =>
-                pulumi.Input.encodeList<
-                  BucketV2ObjectLockConfigurationRuleDefaultRetention,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'defaultRetentions': pulumi.Input.mapInputValue<List<BucketV2ObjectLockConfigurationRuleDefaultRetention>, List<Map<String, dynamic>>>(defaultRetentions, (value) => pulumi.Input.encodeList<BucketV2ObjectLockConfigurationRuleDefaultRetention, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory BucketV2ObjectLockConfigurationRule.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BucketV2ObjectLockConfigurationRule.fromMap(Map<String, dynamic> map) {
     return BucketV2ObjectLockConfigurationRule(
-      defaultRetentions: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          BucketV2ObjectLockConfigurationRuleDefaultRetention
-        >(
-          map['defaultRetentions']!,
-          (value) =>
-              BucketV2ObjectLockConfigurationRuleDefaultRetention.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
+      defaultRetentions: pulumi.Input.fromValue(pulumi.Input.decodeList<BucketV2ObjectLockConfigurationRuleDefaultRetention>(map['defaultRetentions']!, (value) => BucketV2ObjectLockConfigurationRuleDefaultRetention.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

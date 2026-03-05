@@ -17,3 +17,4 @@ enum UtilizationReportTimeFrame {
     throw ArgumentError('Unknown UtilizationReportTimeFrame value: $value');
   }
 }
+

@@ -15,3 +15,4 @@ enum ReplicationVaultType {
     throw ArgumentError('Unknown ReplicationVaultType value: $value');
   }
 }
+

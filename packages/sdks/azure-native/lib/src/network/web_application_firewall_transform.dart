@@ -17,8 +17,7 @@ enum WebApplicationFirewallTransform {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown WebApplicationFirewallTransform value: $value',
-    );
+    throw ArgumentError('Unknown WebApplicationFirewallTransform value: $value');
   }
 }
+

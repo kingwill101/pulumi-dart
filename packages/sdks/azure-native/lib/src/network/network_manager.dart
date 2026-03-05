@@ -185,38 +185,26 @@ import 'system_data_response.dart';
 class NetworkManager extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// A description of the network manager.
   late final pulumi.Output<String?> description;
-
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
-
   /// Resource location.
   late final pulumi.Output<String?> location;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// Scope Access.
   late final pulumi.Output<List<String>?> networkManagerScopeAccesses;
-
   /// Scope of Network Manager.
-  late final pulumi.Output<NetworkManagerPropertiesResponseNetworkManagerScopes>
-  networkManagerScopes;
-
+  late final pulumi.Output<NetworkManagerPropertiesResponseNetworkManagerScopes> networkManagerScopes;
   /// The provisioning state of the network manager resource.
   late final pulumi.Output<String> provisioningState;
-
   /// Unique identifier for this resource.
   late final pulumi.Output<String> resourceGuid;
-
   /// The system metadata related to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -229,42 +217,21 @@ class NetworkManager extends pulumi.CustomResource {
     NetworkManagerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:network:NetworkManager',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:network:NetworkManager',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     description = registerOutput<String?>('description');
     etag = registerOutput<String>('etag');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    networkManagerScopeAccesses = registerOutput<List<String>?>(
-      'networkManagerScopeAccesses',
-    );
-    networkManagerScopes =
-        registerOutput<NetworkManagerPropertiesResponseNetworkManagerScopes>(
-          'networkManagerScopes',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return NetworkManagerPropertiesResponseNetworkManagerScopes.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    networkManagerScopeAccesses = registerOutput<List<String>?>('networkManagerScopeAccesses');
+    networkManagerScopes = registerOutput<NetworkManagerPropertiesResponseNetworkManagerScopes>('networkManagerScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkManagerPropertiesResponseNetworkManagerScopes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningState = registerOutput<String>('provisioningState');
     resourceGuid = registerOutput<String>('resourceGuid');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

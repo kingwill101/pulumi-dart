@@ -250,19 +250,14 @@ import 'function_java_script_udfstate.dart';
 class FunctionJavaScriptUDF extends pulumi.CustomResource {
   /// One or more `input` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> inputs;
-
   /// The name of the JavaScript UDF Function. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// An `output` blocks as defined below.
   late final pulumi.Output<FunctionJavaScriptUDFOutput> output;
-
   /// The name of the Resource Group where the Stream Analytics Job exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The JavaScript of this UDF Function.
   late final pulumi.Output<String> script;
-
   /// The name of the Stream Analytics Job where this Function should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> streamAnalyticsJobName;
 
@@ -275,23 +270,14 @@ class FunctionJavaScriptUDF extends pulumi.CustomResource {
     FunctionJavaScriptUDFArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:streamanalytics/functionJavaScriptUDF:FunctionJavaScriptUDF',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:streamanalytics/functionJavaScriptUDF:FunctionJavaScriptUDF',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     inputs = registerOutput<List<Map<String, dynamic>>>('inputs');
     this.name = registerOutput<String>('name');
-    output = registerOutput<FunctionJavaScriptUDFOutput>(
-      'output',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FunctionJavaScriptUDFOutput.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    output = registerOutput<FunctionJavaScriptUDFOutput>('output', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionJavaScriptUDFOutput.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
     script = registerOutput<String>('script');
     streamAnalyticsJobName = registerOutput<String>('streamAnalyticsJobName');
@@ -315,23 +301,14 @@ class FunctionJavaScriptUDF extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:streamanalytics/functionJavaScriptUDF:FunctionJavaScriptUDF',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:streamanalytics/functionJavaScriptUDF:FunctionJavaScriptUDF',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     inputs = registerOutput<List<Map<String, dynamic>>>('inputs');
     this.name = registerOutput<String>('name');
-    output = registerOutput<FunctionJavaScriptUDFOutput>(
-      'output',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FunctionJavaScriptUDFOutput.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    output = registerOutput<FunctionJavaScriptUDFOutput>('output', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionJavaScriptUDFOutput.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
     script = registerOutput<String>('script');
     streamAnalyticsJobName = registerOutput<String>('streamAnalyticsJobName');

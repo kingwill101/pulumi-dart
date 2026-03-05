@@ -7,42 +7,29 @@ import 'key_properties_response.dart';
 class KeyVaultPropertiesResponse {
   /// Uri of KeyVault
   final pulumi.Input<String>? id;
-
   /// Identity of the secret that includes name and version.
   final pulumi.Input<KeyPropertiesResponse>? key;
 
   /// Creates a new [KeyVaultPropertiesResponse].
   /// [id] Uri of KeyVault
   /// [key] Identity of the secret that includes name and version.
-  KeyVaultPropertiesResponse({this.id, this.key});
+  KeyVaultPropertiesResponse({
+    this.id,
+    this.key,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': ?id,
-      'key':
-          ?pulumi.Input.mapOptionalInputValue<
-            KeyPropertiesResponse,
-            Map<String, dynamic>
-          >(key, (value) => value.toMap()),
+      'key': ?pulumi.Input.mapOptionalInputValue<KeyPropertiesResponse, Map<String, dynamic>>(key, (value) => value.toMap()),
     };
   }
 
   factory KeyVaultPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return KeyVaultPropertiesResponse(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      key: (() {
-        final guardedValue = map['key'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          KeyPropertiesResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(KeyPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

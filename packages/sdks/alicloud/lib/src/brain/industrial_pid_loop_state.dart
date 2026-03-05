@@ -6,25 +6,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IndustrialPidLoopState {
   /// The Pid Loop Configuration.
   final pulumi.Input<String>? pidLoopConfiguration;
-
   /// The dcs type of Pid Loop. Valid values: `standard`.
   final pulumi.Input<String>? pidLoopDcsType;
-
   /// The desc of Pid Loop.
   final pulumi.Input<String>? pidLoopDesc;
-
   /// Whether is crucial Pid Loop.
   final pulumi.Input<bool>? pidLoopIsCrucial;
-
   /// The name of Pid Loop.
   final pulumi.Input<String>? pidLoopName;
-
   /// The type of Pid Loop. Valid values: `0`, `1`, `2`, `3`, `4`, `5`.
   final pulumi.Input<String>? pidLoopType;
-
   /// The pid project id.
   final pulumi.Input<String>? pidProjectId;
-
   /// The status of Pid Loop.
   final pulumi.Input<String>? status;
 
@@ -63,46 +56,15 @@ class IndustrialPidLoopState {
 
   factory IndustrialPidLoopState.fromMap(Map<String, dynamic> map) {
     return IndustrialPidLoopState(
-      pidLoopConfiguration: (() {
-        final guardedValue = map['pidLoopConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pidLoopDcsType: (() {
-        final guardedValue = map['pidLoopDcsType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pidLoopDesc: (() {
-        final guardedValue = map['pidLoopDesc'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pidLoopIsCrucial: (() {
-        final guardedValue = map['pidLoopIsCrucial'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      pidLoopName: (() {
-        final guardedValue = map['pidLoopName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pidLoopType: (() {
-        final guardedValue = map['pidLoopType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pidProjectId: (() {
-        final guardedValue = map['pidProjectId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      pidLoopConfiguration: (() { final guardedValue = map['pidLoopConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pidLoopDcsType: (() { final guardedValue = map['pidLoopDcsType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pidLoopDesc: (() { final guardedValue = map['pidLoopDesc']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pidLoopIsCrucial: (() { final guardedValue = map['pidLoopIsCrucial']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      pidLoopName: (() { final guardedValue = map['pidLoopName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pidLoopType: (() { final guardedValue = map['pidLoopType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pidProjectId: (() { final guardedValue = map['pidProjectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

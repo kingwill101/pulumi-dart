@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AksNetworkingConfigurationResponse {
   /// An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address range specified in serviceCidr.
   final pulumi.Input<String>? dnsServiceIP;
-
   /// A CIDR notation IP range assigned to the Docker bridge network. It must not overlap with any Subnet IP ranges or the Kubernetes service address range.
   final pulumi.Input<String>? dockerBridgeCidr;
-
   /// A CIDR notation IP range from which to assign service cluster IPs. It must not overlap with any Subnet IP ranges.
   final pulumi.Input<String>? serviceCidr;
-
   /// Virtual network subnet resource ID the compute nodes belong to
   final pulumi.Input<String>? subnetId;
 
@@ -39,26 +36,11 @@ class AksNetworkingConfigurationResponse {
 
   factory AksNetworkingConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return AksNetworkingConfigurationResponse(
-      dnsServiceIP: (() {
-        final guardedValue = map['dnsServiceIP'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dockerBridgeCidr: (() {
-        final guardedValue = map['dockerBridgeCidr'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serviceCidr: (() {
-        final guardedValue = map['serviceCidr'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subnetId: (() {
-        final guardedValue = map['subnetId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dnsServiceIP: (() { final guardedValue = map['dnsServiceIP']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dockerBridgeCidr: (() { final guardedValue = map['dockerBridgeCidr']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serviceCidr: (() { final guardedValue = map['serviceCidr']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subnetId: (() { final guardedValue = map['subnetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

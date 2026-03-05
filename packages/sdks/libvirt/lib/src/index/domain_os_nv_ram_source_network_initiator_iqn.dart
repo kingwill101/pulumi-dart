@@ -8,21 +8,20 @@ class DomainOsNvRamSourceNetworkInitiatorIqn {
 
   /// Creates a new [DomainOsNvRamSourceNetworkInitiatorIqn].
   /// [name] Sets a name attribute for the iSCSI initiator's IQN for identification purposes.
-  DomainOsNvRamSourceNetworkInitiatorIqn({this.name});
+  DomainOsNvRamSourceNetworkInitiatorIqn({
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name};
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
-  factory DomainOsNvRamSourceNetworkInitiatorIqn.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainOsNvRamSourceNetworkInitiatorIqn.fromMap(Map<String, dynamic> map) {
     return DomainOsNvRamSourceNetworkInitiatorIqn(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -200,59 +200,46 @@ class MirroringDeploymentGroup extends pulumi.CustomResource {
   /// The list of endpoint groups that are connected to this resource.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> connectedEndpointGroups;
-
   /// The timestamp when the resource was created.
   /// See https://google.aip.dev/148#timestamps.
   late final pulumi.Output<String> createTime;
-
   /// User-provided description of the deployment group.
   /// Used as additional context for the deployment group.
   late final pulumi.Output<String?> description;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Labels are key/value pairs that help to organize and filter resources.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// The cloud location of the deployment group, currently restricted to `global`.
   late final pulumi.Output<String> location;
-
   /// The list of locations where the deployment group is present.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> locations;
-
   /// The ID to use for the new deployment group, which will become the final
   /// component of the deployment group's resource name.
   late final pulumi.Output<String> mirroringDeploymentGroupId;
-
   /// (Output)
   /// The connected endpoint group's resource name, for example:
   /// `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
   /// See https://google.aip.dev/124.
   late final pulumi.Output<String> name;
-
   /// The network that will be used for all child deployments, for example:
   /// `projects/{project}/global/networks/{network}`.
   /// See https://google.aip.dev/124.
   late final pulumi.Output<String> network;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// The current state of the resource does not match the user's intended state,
   /// and the system is working to reconcile them. This is part of the normal
   /// operation (e.g. adding a new deployment to the group)
   /// See https://google.aip.dev/128.
   late final pulumi.Output<bool> reconciling;
-
   /// (Output)
   /// The current state of the association in this location.
   /// Possible values:
@@ -260,7 +247,6 @@ class MirroringDeploymentGroup extends pulumi.CustomResource {
   /// ACTIVE
   /// OUT_OF_SYNC
   late final pulumi.Output<String> state;
-
   /// The timestamp when the resource was most recently updated.
   /// See https://google.aip.dev/148#timestamps.
   late final pulumi.Output<String> updateTime;
@@ -274,23 +260,19 @@ class MirroringDeploymentGroup extends pulumi.CustomResource {
     MirroringDeploymentGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:networksecurity/mirroringDeploymentGroup:MirroringDeploymentGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    connectedEndpointGroups = registerOutput<List<Map<String, dynamic>>>(
-      'connectedEndpointGroups',
-    );
+          'gcp:networksecurity/mirroringDeploymentGroup:MirroringDeploymentGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    connectedEndpointGroups = registerOutput<List<Map<String, dynamic>>>('connectedEndpointGroups');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
     locations = registerOutput<List<Map<String, dynamic>>>('locations');
-    mirroringDeploymentGroupId = registerOutput<String>(
-      'mirroringDeploymentGroupId',
-    );
+    mirroringDeploymentGroupId = registerOutput<String>('mirroringDeploymentGroupId');
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
     project = registerOutput<String>('project');
@@ -318,23 +300,19 @@ class MirroringDeploymentGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:networksecurity/mirroringDeploymentGroup:MirroringDeploymentGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    connectedEndpointGroups = registerOutput<List<Map<String, dynamic>>>(
-      'connectedEndpointGroups',
-    );
+          'gcp:networksecurity/mirroringDeploymentGroup:MirroringDeploymentGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    connectedEndpointGroups = registerOutput<List<Map<String, dynamic>>>('connectedEndpointGroups');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
     locations = registerOutput<List<Map<String, dynamic>>>('locations');
-    mirroringDeploymentGroupId = registerOutput<String>(
-      'mirroringDeploymentGroupId',
-    );
+    mirroringDeploymentGroupId = registerOutput<String>('mirroringDeploymentGroupId');
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
     project = registerOutput<String>('project');

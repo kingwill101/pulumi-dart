@@ -10,21 +10,16 @@ import 'entry_link_entry_reference.dart';
 class EntryLinkArgs {
   /// The id of the entry group this entry link is in.
   final pulumi.Input<String> entryGroupId;
-
   /// The id of the entry link to create.
   final pulumi.Input<String> entryLinkId;
-
   /// Relative resource name of the Entry Link Type used to create this Entry Link. For example:
   /// projects/dataplex-types/locations/global/entryLinkTypes/definition
   final pulumi.Input<String> entryLinkType;
-
   /// Specifies the Entries referenced in the Entry Link. There should be exactly two entry references.
   /// Structure is documented below.
   final pulumi.Input<List<EntryLinkEntryReference>> entryReferences;
-
   /// The location for the entry.
   final pulumi.Input<String> location;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -50,18 +45,7 @@ class EntryLinkArgs {
       'entryGroupId': entryGroupId,
       'entryLinkId': entryLinkId,
       'entryLinkType': entryLinkType,
-      'entryReferences':
-          pulumi.Input.mapInputValue<
-            List<EntryLinkEntryReference>,
-            List<Map<String, dynamic>>
-          >(
-            entryReferences,
-            (value) =>
-                pulumi.Input.encodeList<
-                  EntryLinkEntryReference,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'entryReferences': pulumi.Input.mapInputValue<List<EntryLinkEntryReference>, List<Map<String, dynamic>>>(entryReferences, (value) => pulumi.Input.encodeList<EntryLinkEntryReference, Map<String, dynamic>>(value, (value) => value.toMap())),
       'location': location,
       'project': ?project,
     };
@@ -72,20 +56,10 @@ class EntryLinkArgs {
       entryGroupId: pulumi.Input.fromValue(map['entryGroupId'] as String),
       entryLinkId: pulumi.Input.fromValue(map['entryLinkId'] as String),
       entryLinkType: pulumi.Input.fromValue(map['entryLinkType'] as String),
-      entryReferences: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<EntryLinkEntryReference>(
-          map['entryReferences']!,
-          (value) => EntryLinkEntryReference.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      entryReferences: pulumi.Input.fromValue(pulumi.Input.decodeList<EntryLinkEntryReference>(map['entryReferences']!, (value) => EntryLinkEntryReference.fromMap((value as Map).cast<String, dynamic>()))),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

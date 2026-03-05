@@ -159,30 +159,22 @@ import 'filter_state.dart';
 class Filter extends pulumi.CustomResource {
   /// Action to be applied to the findings that maatch the filter. Possible values are `NONE` and `SUPPRESS`
   late final pulumi.Output<String> action;
-
   /// ARN of the Filter.
   late final pulumi.Output<String> arn;
-
   /// Description
   late final pulumi.Output<String?> description;
-
   /// Details on the filter criteria. Documented below.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<List<Map<String, dynamic>>> filterCriterias;
-
   /// Name of the filter.
   late final pulumi.Output<String> name;
-
   /// Reason for creating the filter
   late final pulumi.Output<String?> reason;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -190,19 +182,20 @@ class Filter extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Filter]. {@macro pulumi_inspector2_filter_filter_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Filter(String name, {FilterArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:inspector2/filter:Filter',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Filter(
+    String name, {
+    FilterArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:inspector2/filter:Filter',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     action = registerOutput<String>('action');
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
-    filterCriterias = registerOutput<List<Map<String, dynamic>>>(
-      'filterCriterias',
-    );
+    filterCriterias = registerOutput<List<Map<String, dynamic>>>('filterCriterias');
     this.name = registerOutput<String>('name');
     reason = registerOutput<String?>('reason');
     region = registerOutput<String>('region');
@@ -228,17 +221,15 @@ class Filter extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:inspector2/filter:Filter',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:inspector2/filter:Filter',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     action = registerOutput<String>('action');
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
-    filterCriterias = registerOutput<List<Map<String, dynamic>>>(
-      'filterCriterias',
-    );
+    filterCriterias = registerOutput<List<Map<String, dynamic>>>('filterCriterias');
     this.name = registerOutput<String>('name');
     reason = registerOutput<String?>('reason');
     region = registerOutput<String>('region');

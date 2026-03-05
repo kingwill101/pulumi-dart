@@ -7,14 +7,11 @@ import 'get_resource_types_type.dart';
 class GetResourceTypesResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of Resource Type IDs.
   final List<String> ids;
   final String? outputFile;
-
   /// Product Code.
   final String product;
-
   /// A list of Resource Type Entries. Each element contains the following attributes:
   final List<GetResourceTypesType> types;
 
@@ -38,11 +35,7 @@ class GetResourceTypesResult {
       'ids': ids,
       'outputFile': ?outputFile,
       'product': product,
-      'types':
-          pulumi.Input.encodeList<GetResourceTypesType, Map<String, dynamic>>(
-            types,
-            (value) => value.toMap(),
-          ),
+      'types': pulumi.Input.encodeList<GetResourceTypesType, Map<String, dynamic>>(types, (value) => value.toMap()),
     };
   }
 
@@ -50,18 +43,10 @@ class GetResourceTypesResult {
     return GetResourceTypesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
       product: map['product'] as String,
-      types: pulumi.Input.decodeList<GetResourceTypesType>(
-        map['types']!,
-        (value) => GetResourceTypesType.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      types: pulumi.Input.decodeList<GetResourceTypesType>(map['types']!, (value) => GetResourceTypesType.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

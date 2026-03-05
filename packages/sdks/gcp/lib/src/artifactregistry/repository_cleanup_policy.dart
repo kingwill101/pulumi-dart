@@ -8,19 +8,15 @@ class RepositoryCleanupPolicy {
   /// Policy action.
   /// Possible values are: `DELETE`, `KEEP`.
   final pulumi.Input<String>? action;
-
   /// Policy condition for matching versions.
   /// Structure is documented below.
   final pulumi.Input<RepositoryCleanupPolicyCondition>? condition;
-
   /// The identifier for this object. Format specified above.
   final pulumi.Input<String> id;
-
   /// Policy condition for retaining a minimum number of versions. May only be
   /// specified with a Keep action.
   /// Structure is documented below.
-  final pulumi.Input<RepositoryCleanupPolicyMostRecentVersions>?
-  mostRecentVersions;
+  final pulumi.Input<RepositoryCleanupPolicyMostRecentVersions>? mostRecentVersions;
 
   /// Creates a new [RepositoryCleanupPolicy].
   /// [action] Policy action.
@@ -37,46 +33,19 @@ class RepositoryCleanupPolicy {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'action': ?action,
-      'condition':
-          ?pulumi.Input.mapOptionalInputValue<
-            RepositoryCleanupPolicyCondition,
-            Map<String, dynamic>
-          >(condition, (value) => value.toMap()),
+      'condition': ?pulumi.Input.mapOptionalInputValue<RepositoryCleanupPolicyCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
       'id': id,
-      'mostRecentVersions':
-          ?pulumi.Input.mapOptionalInputValue<
-            RepositoryCleanupPolicyMostRecentVersions,
-            Map<String, dynamic>
-          >(mostRecentVersions, (value) => value.toMap()),
+      'mostRecentVersions': ?pulumi.Input.mapOptionalInputValue<RepositoryCleanupPolicyMostRecentVersions, Map<String, dynamic>>(mostRecentVersions, (value) => value.toMap()),
     };
   }
 
   factory RepositoryCleanupPolicy.fromMap(Map<String, dynamic> map) {
     return RepositoryCleanupPolicy(
-      action: (() {
-        final guardedValue = map['action'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      condition: (() {
-        final guardedValue = map['condition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RepositoryCleanupPolicyCondition.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      condition: (() { final guardedValue = map['condition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RepositoryCleanupPolicyCondition.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       id: pulumi.Input.fromValue(map['id'] as String),
-      mostRecentVersions: (() {
-        final guardedValue = map['mostRecentVersions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RepositoryCleanupPolicyMostRecentVersions.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      mostRecentVersions: (() { final guardedValue = map['mostRecentVersions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RepositoryCleanupPolicyMostRecentVersions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

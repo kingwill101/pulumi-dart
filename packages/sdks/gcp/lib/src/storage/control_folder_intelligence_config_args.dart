@@ -10,11 +10,9 @@ import 'control_folder_intelligence_config_filter.dart';
 class ControlFolderIntelligenceConfigArgs {
   /// Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, TRIAL, DISABLED and STANDARD.
   final pulumi.Input<String>? editionConfig;
-
   /// Filter over location and bucket using include or exclude semantics. Resources that match the include or exclude filter are exclusively included or excluded from the Storage Intelligence plan.
   /// Structure is documented below.
   final pulumi.Input<ControlFolderIntelligenceConfigFilter>? filter;
-
   /// Identifier of the GCP Folder. For GCP Folder, this field can be folder number.
   final pulumi.Input<String>? name;
 
@@ -31,38 +29,17 @@ class ControlFolderIntelligenceConfigArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'editionConfig': ?editionConfig,
-      'filter':
-          ?pulumi.Input.mapOptionalInputValue<
-            ControlFolderIntelligenceConfigFilter,
-            Map<String, dynamic>
-          >(filter, (value) => value.toMap()),
+      'filter': ?pulumi.Input.mapOptionalInputValue<ControlFolderIntelligenceConfigFilter, Map<String, dynamic>>(filter, (value) => value.toMap()),
       'name': ?name,
     };
   }
 
-  factory ControlFolderIntelligenceConfigArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ControlFolderIntelligenceConfigArgs.fromMap(Map<String, dynamic> map) {
     return ControlFolderIntelligenceConfigArgs(
-      editionConfig: (() {
-        final guardedValue = map['editionConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      filter: (() {
-        final guardedValue = map['filter'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ControlFolderIntelligenceConfigFilter.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      editionConfig: (() { final guardedValue = map['editionConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ControlFolderIntelligenceConfigFilter.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

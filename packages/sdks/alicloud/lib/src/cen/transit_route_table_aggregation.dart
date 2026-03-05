@@ -229,7 +229,6 @@ import 'transit_route_table_aggregation_state.dart';
 class TransitRouteTableAggregation extends pulumi.CustomResource {
   /// The status of the resource
   late final pulumi.Output<String> status;
-
   /// The destination CIDR block of the aggregate route.
   ///
   /// &gt; **NOTE:**   The following CIDR blocks are not supported:
@@ -238,24 +237,18 @@ class TransitRouteTableAggregation extends pulumi.CustomResource {
   ///
   /// &gt; **NOTE:** *   Multicast CIDR blocks, including 224.0.0.1 to 239.255.255.254.
   late final pulumi.Output<String> transitRouteTableAggregationCidr;
-
   /// The list of propagation ranges of the aggregation route.
   ///
   /// &gt; **NOTE:**   You must specify at least one of the following attributes: Aggregation Scope and Aggregate Scope List. We recommend that you specify the latter. The elements in the two attributes cannot be duplicate.
   late final pulumi.Output<String?> transitRouteTableAggregationDescription;
-
   /// The name of the aggregate route.
   /// The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
   late final pulumi.Output<String?> transitRouteTableAggregationName;
-
   /// The scope of networks that you want to advertise the aggregate route.
   /// The valid value is `VPC`, which indicates that the aggregate route is advertised to all VPCs that have associated forwarding correlation with the Enterprise Edition transit router and have route synchronization enabled.
   late final pulumi.Output<String?> transitRouteTableAggregationScope;
-
   /// Aggregation Route Scopes
-  late final pulumi.Output<List<String>?>
-  transitRouteTableAggregationScopeLists;
-
+  late final pulumi.Output<List<String>?> transitRouteTableAggregationScopeLists;
   /// The list of route table IDs of the Enterprise Edition transit router.
   late final pulumi.Output<String> transitRouteTableId;
 
@@ -268,27 +261,17 @@ class TransitRouteTableAggregation extends pulumi.CustomResource {
     TransitRouteTableAggregationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cen/transitRouteTableAggregation:TransitRouteTableAggregation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cen/transitRouteTableAggregation:TransitRouteTableAggregation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     status = registerOutput<String>('status');
-    transitRouteTableAggregationCidr = registerOutput<String>(
-      'transitRouteTableAggregationCidr',
-    );
-    transitRouteTableAggregationDescription = registerOutput<String?>(
-      'transitRouteTableAggregationDescription',
-    );
-    transitRouteTableAggregationName = registerOutput<String?>(
-      'transitRouteTableAggregationName',
-    );
-    transitRouteTableAggregationScope = registerOutput<String?>(
-      'transitRouteTableAggregationScope',
-    );
-    transitRouteTableAggregationScopeLists = registerOutput<List<String>?>(
-      'transitRouteTableAggregationScopeLists',
-    );
+    transitRouteTableAggregationCidr = registerOutput<String>('transitRouteTableAggregationCidr');
+    transitRouteTableAggregationDescription = registerOutput<String?>('transitRouteTableAggregationDescription');
+    transitRouteTableAggregationName = registerOutput<String?>('transitRouteTableAggregationName');
+    transitRouteTableAggregationScope = registerOutput<String?>('transitRouteTableAggregationScope');
+    transitRouteTableAggregationScopeLists = registerOutput<List<String>?>('transitRouteTableAggregationScopeLists');
     transitRouteTableId = registerOutput<String>('transitRouteTableId');
   }
 
@@ -310,27 +293,17 @@ class TransitRouteTableAggregation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cen/transitRouteTableAggregation:TransitRouteTableAggregation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cen/transitRouteTableAggregation:TransitRouteTableAggregation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     status = registerOutput<String>('status');
-    transitRouteTableAggregationCidr = registerOutput<String>(
-      'transitRouteTableAggregationCidr',
-    );
-    transitRouteTableAggregationDescription = registerOutput<String?>(
-      'transitRouteTableAggregationDescription',
-    );
-    transitRouteTableAggregationName = registerOutput<String?>(
-      'transitRouteTableAggregationName',
-    );
-    transitRouteTableAggregationScope = registerOutput<String?>(
-      'transitRouteTableAggregationScope',
-    );
-    transitRouteTableAggregationScopeLists = registerOutput<List<String>?>(
-      'transitRouteTableAggregationScopeLists',
-    );
+    transitRouteTableAggregationCidr = registerOutput<String>('transitRouteTableAggregationCidr');
+    transitRouteTableAggregationDescription = registerOutput<String?>('transitRouteTableAggregationDescription');
+    transitRouteTableAggregationName = registerOutput<String?>('transitRouteTableAggregationName');
+    transitRouteTableAggregationScope = registerOutput<String?>('transitRouteTableAggregationScope');
+    transitRouteTableAggregationScopeLists = registerOutput<List<String>?>('transitRouteTableAggregationScopeLists');
     transitRouteTableId = registerOutput<String>('transitRouteTableId');
   }
 }

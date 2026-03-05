@@ -7,16 +7,12 @@ import 'domain_devices_audio_oss_output.dart';
 class DomainDevicesAudioOss {
   /// Sets the DSP policy for the OSS audio device.
   final pulumi.Input<double>? dspPolicy;
-
   /// Configures the exclusivity for the OSS audio device.
   final pulumi.Input<String>? exclusive;
-
   /// Configures the output settings for the OSS audio device.
   final pulumi.Input<DomainDevicesAudioOssInput>? input;
-
   /// Configures the output settings for the OSS audio device.
   final pulumi.Input<DomainDevicesAudioOssOutput>? output;
-
   /// Enables or disables mmap for the OSS audio device.
   final pulumi.Input<String>? tryMMap;
 
@@ -38,55 +34,20 @@ class DomainDevicesAudioOss {
     return <String, dynamic>{
       'dspPolicy': ?dspPolicy,
       'exclusive': ?exclusive,
-      'input':
-          ?pulumi.Input.mapOptionalInputValue<
-            DomainDevicesAudioOssInput,
-            Map<String, dynamic>
-          >(input, (value) => value.toMap()),
-      'output':
-          ?pulumi.Input.mapOptionalInputValue<
-            DomainDevicesAudioOssOutput,
-            Map<String, dynamic>
-          >(output, (value) => value.toMap()),
+      'input': ?pulumi.Input.mapOptionalInputValue<DomainDevicesAudioOssInput, Map<String, dynamic>>(input, (value) => value.toMap()),
+      'output': ?pulumi.Input.mapOptionalInputValue<DomainDevicesAudioOssOutput, Map<String, dynamic>>(output, (value) => value.toMap()),
       'tryMMap': ?tryMMap,
     };
   }
 
   factory DomainDevicesAudioOss.fromMap(Map<String, dynamic> map) {
     return DomainDevicesAudioOss(
-      dspPolicy: (() {
-        final guardedValue = map['dspPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      exclusive: (() {
-        final guardedValue = map['exclusive'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      input: (() {
-        final guardedValue = map['input'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DomainDevicesAudioOssInput.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      output: (() {
-        final guardedValue = map['output'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DomainDevicesAudioOssOutput.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      tryMMap: (() {
-        final guardedValue = map['tryMMap'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dspPolicy: (() { final guardedValue = map['dspPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      exclusive: (() { final guardedValue = map['exclusive']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      input: (() { final guardedValue = map['input']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesAudioOssInput.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      output: (() { final guardedValue = map['output']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesAudioOssOutput.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      tryMMap: (() { final guardedValue = map['tryMMap']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

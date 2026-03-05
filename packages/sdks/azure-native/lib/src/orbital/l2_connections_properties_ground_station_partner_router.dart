@@ -9,17 +9,20 @@ class L2ConnectionsPropertiesGroundStationPartnerRouter {
 
   /// Creates a new [L2ConnectionsPropertiesGroundStationPartnerRouter].
   /// [name] The unique name of the partner router that cross-connects with the Orbital Edge Router at the ground station site.
-  L2ConnectionsPropertiesGroundStationPartnerRouter({required this.name});
+  L2ConnectionsPropertiesGroundStationPartnerRouter({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
-  factory L2ConnectionsPropertiesGroundStationPartnerRouter.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory L2ConnectionsPropertiesGroundStationPartnerRouter.fromMap(Map<String, dynamic> map) {
     return L2ConnectionsPropertiesGroundStationPartnerRouter(
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

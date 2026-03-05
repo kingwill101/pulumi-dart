@@ -266,43 +266,30 @@ import 'hana_instance_state.dart';
 class HanaInstance extends pulumi.CustomResource {
   /// The alert settings. Valid value: `INHERITED`, which indicates that the backup client sends alert notifications in the same way as the backup vault.
   late final pulumi.Output<String> alertSetting;
-
   /// The IDs of ECS instances that host the SAP HANA instance to be registered. HBR installs backup clients on the specified ECS instances.
   late final pulumi.Output<List<String>?> ecsInstanceIds;
-
   /// The id of the Hana Instance.
   late final pulumi.Output<String> hanaInstanceId;
-
   /// The name of the SAP HANA instance.
   late final pulumi.Output<String?> hanaName;
-
   /// The private or internal IP address of the host where the primary node of the SAP HANA instance resides.
   late final pulumi.Output<String?> host;
-
   /// The instance number of the SAP HANA system.
   late final pulumi.Output<int?> instanceNumber;
-
   /// The password that is used to connect with the SAP HANA database.
   late final pulumi.Output<String?> password;
-
   /// The ID of the resource group.
   late final pulumi.Output<String> resourceGroupId;
-
   /// The security identifier (SID) of the SAP HANA database.
   late final pulumi.Output<String?> sid;
-
   /// The status of the resource.
   late final pulumi.Output<String> status;
-
   /// Specifies whether to connect with the SAP HANA database over Secure Sockets Layer (SSL).
   late final pulumi.Output<bool?> useSsl;
-
   /// The username of the SYSTEMDB database.
   late final pulumi.Output<String?> userName;
-
   /// Specifies whether to verify the SSL certificate of the SAP HANA database.
   late final pulumi.Output<bool?> validateCertificate;
-
   /// The ID of the backup vault.
   late final pulumi.Output<String> vaultId;
 
@@ -315,11 +302,11 @@ class HanaInstance extends pulumi.CustomResource {
     HanaInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:hbr/hanaInstance:HanaInstance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:hbr/hanaInstance:HanaInstance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alertSetting = registerOutput<String>('alertSetting');
     ecsInstanceIds = registerOutput<List<String>?>('ecsInstanceIds');
     hanaInstanceId = registerOutput<String>('hanaInstanceId');
@@ -354,11 +341,11 @@ class HanaInstance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:hbr/hanaInstance:HanaInstance',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:hbr/hanaInstance:HanaInstance',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alertSetting = registerOutput<String>('alertSetting');
     ecsInstanceIds = registerOutput<List<String>?>('ecsInstanceIds');
     hanaInstanceId = registerOutput<String>('hanaInstanceId');

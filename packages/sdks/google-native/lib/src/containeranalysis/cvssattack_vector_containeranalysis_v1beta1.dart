@@ -15,8 +15,7 @@ enum CVSSAttackVectorContaineranalysisV1beta1 {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown CVSSAttackVectorContaineranalysisV1beta1 value: $value',
-    );
+    throw ArgumentError('Unknown CVSSAttackVectorContaineranalysisV1beta1 value: $value');
   }
 }
+

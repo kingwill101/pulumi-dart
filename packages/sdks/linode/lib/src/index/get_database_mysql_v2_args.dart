@@ -12,10 +12,14 @@ class GetDatabaseMysqlV2Args {
 
   /// Creates a new [GetDatabaseMysqlV2Args].
   /// [id] The ID of the MySQL database.
-  GetDatabaseMysqlV2Args({required this.id});
+  GetDatabaseMysqlV2Args({
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id};
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
   factory GetDatabaseMysqlV2Args.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetDatabaseMysqlV2Args {
     );
   }
 }
+

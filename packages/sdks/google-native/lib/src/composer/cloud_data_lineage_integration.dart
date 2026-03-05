@@ -9,19 +9,20 @@ class CloudDataLineageIntegration {
 
   /// Creates a new [CloudDataLineageIntegration].
   /// [enabled] Optional. Whether or not Cloud Data Lineage integration is enabled.
-  CloudDataLineageIntegration({this.enabled});
+  CloudDataLineageIntegration({
+    this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': ?enabled};
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
   factory CloudDataLineageIntegration.fromMap(Map<String, dynamic> map) {
     return CloudDataLineageIntegration(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

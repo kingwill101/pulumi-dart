@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchemaPropertyItemsProperty {
   /// Description of the property.
   final pulumi.Input<String>? description;
-
   /// JSON-encoded schema definition for array items. Used for complex nested structures. Cannot be used with `properties_json`.
   final pulumi.Input<String>? itemsJson;
-
   /// Name of the property.
   final pulumi.Input<String> name;
-
   /// JSON-encoded schema definition for object properties. Used for complex nested structures. Cannot be used with `items_json`.
   final pulumi.Input<String>? propertiesJson;
-
   /// Whether this property is required. Defaults to `false`.
   final pulumi.Input<bool>? required;
-
   /// Data type of the property.
   final pulumi.Input<String> type;
 
@@ -48,32 +43,15 @@ class AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadO
     };
   }
 
-  factory AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchemaPropertyItemsProperty.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchemaPropertyItemsProperty.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchemaPropertyItemsProperty(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      itemsJson: (() {
-        final guardedValue = map['itemsJson'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      itemsJson: (() { final guardedValue = map['itemsJson']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      propertiesJson: (() {
-        final guardedValue = map['propertiesJson'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      required: (() {
-        final guardedValue = map['required'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      propertiesJson: (() { final guardedValue = map['propertiesJson']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      required: (() { final guardedValue = map['required']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

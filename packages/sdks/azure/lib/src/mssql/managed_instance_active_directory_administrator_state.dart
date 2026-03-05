@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedInstanceActiveDirectoryAdministratorState {
   /// When `true`, only permit logins from AAD users and administrators. When `false`, also allow local database users.
   final pulumi.Input<bool>? azureadAuthenticationOnly;
-
   /// The login name of the principal to set as the Managed Instance Administrator.
   final pulumi.Input<String>? loginUsername;
-
   /// The ID of the Azure SQL Managed Instance for which to set the administrator. Changing this forces a new resource to be created.
   final pulumi.Input<String>? managedInstanceId;
-
   /// The Object ID of the principal to set as the Managed Instance Administrator.
   final pulumi.Input<String>? objectId;
-
   /// The Azure Active Directory Tenant ID.
   final pulumi.Input<String>? tenantId;
 
@@ -43,35 +39,14 @@ class ManagedInstanceActiveDirectoryAdministratorState {
     };
   }
 
-  factory ManagedInstanceActiveDirectoryAdministratorState.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ManagedInstanceActiveDirectoryAdministratorState.fromMap(Map<String, dynamic> map) {
     return ManagedInstanceActiveDirectoryAdministratorState(
-      azureadAuthenticationOnly: (() {
-        final guardedValue = map['azureadAuthenticationOnly'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      loginUsername: (() {
-        final guardedValue = map['loginUsername'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      managedInstanceId: (() {
-        final guardedValue = map['managedInstanceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      objectId: (() {
-        final guardedValue = map['objectId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tenantId: (() {
-        final guardedValue = map['tenantId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      azureadAuthenticationOnly: (() { final guardedValue = map['azureadAuthenticationOnly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      loginUsername: (() { final guardedValue = map['loginUsername']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      managedInstanceId: (() { final guardedValue = map['managedInstanceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      objectId: (() { final guardedValue = map['objectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

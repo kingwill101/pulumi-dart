@@ -12,8 +12,7 @@ enum AzureADAuthenticationAsArmPolicyStatus {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown AzureADAuthenticationAsArmPolicyStatus value: $value',
-    );
+    throw ArgumentError('Unknown AzureADAuthenticationAsArmPolicyStatus value: $value');
   }
 }
+

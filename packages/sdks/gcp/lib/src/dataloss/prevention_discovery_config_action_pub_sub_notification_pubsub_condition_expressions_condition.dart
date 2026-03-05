@@ -6,7 +6,6 @@ class PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpression
   /// The minimum data risk score that triggers the condition.
   /// Possible values are: `HIGH`, `MEDIUM_OR_HIGH`.
   final pulumi.Input<String>? minimumRiskScore;
-
   /// The minimum sensitivity level that triggers the condition.
   /// Possible values are: `HIGH`, `MEDIUM_OR_HIGH`.
   final pulumi.Input<String>? minimumSensitivityScore;
@@ -26,20 +25,11 @@ class PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpression
     };
   }
 
-  factory PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsCondition.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsCondition.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsCondition(
-      minimumRiskScore: (() {
-        final guardedValue = map['minimumRiskScore'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      minimumSensitivityScore: (() {
-        final guardedValue = map['minimumSensitivityScore'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      minimumRiskScore: (() { final guardedValue = map['minimumRiskScore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      minimumSensitivityScore: (() { final guardedValue = map['minimumSensitivityScore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

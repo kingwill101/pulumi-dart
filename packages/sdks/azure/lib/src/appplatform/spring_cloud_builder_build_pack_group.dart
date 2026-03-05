@@ -5,27 +5,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SpringCloudBuilderBuildPackGroup {
   /// Specifies a list of the build pack's ID.
   final pulumi.Input<List<String>>? buildPackIds;
-
   /// The name which should be used for this build pack group.
   final pulumi.Input<String> name;
 
   /// Creates a new [SpringCloudBuilderBuildPackGroup].
   /// [buildPackIds] Specifies a list of the build pack's ID.
   /// [name] The name which should be used for this build pack group.
-  SpringCloudBuilderBuildPackGroup({this.buildPackIds, required this.name});
+  SpringCloudBuilderBuildPackGroup({
+    this.buildPackIds,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'buildPackIds': ?buildPackIds, 'name': name};
+    return <String, dynamic>{
+      'buildPackIds': ?buildPackIds,
+      'name': name,
+    };
   }
 
   factory SpringCloudBuilderBuildPackGroup.fromMap(Map<String, dynamic> map) {
     return SpringCloudBuilderBuildPackGroup(
-      buildPackIds: (() {
-        final guardedValue = map['buildPackIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      buildPackIds: (() { final guardedValue = map['buildPackIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

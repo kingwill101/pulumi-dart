@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetModelingArgs {
   /// The name of the RecommendationsService Account resource.
   final pulumi.Input<String> accountName;
-
   /// The name of the Modeling resource.
   final pulumi.Input<String> modelingName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -38,9 +36,8 @@ class GetModelingArgs {
     return GetModelingArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
       modelingName: pulumi.Input.fromValue(map['modelingName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

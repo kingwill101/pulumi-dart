@@ -14,17 +14,13 @@ enum GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem {
   const GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem(this.wireValue);
   final String wireValue;
 
-  static GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem fromValue(
-    String value,
-  ) {
-    for (final item
-        in GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem.values) {
+  static GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem fromValue(String value) {
+    for (final item in GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem value: $value',
-    );
+    throw ArgumentError('Unknown GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem value: $value');
   }
 }
+

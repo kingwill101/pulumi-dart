@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureMonitorWorkspaceResponseDefaultIngestionSettings {
   /// The Azure resource Id of the default data collection endpoint for this Azure Monitor Workspace.
   final pulumi.Input<String> dataCollectionEndpointResourceId;
-
   /// The Azure resource Id of the default data collection rule for this Azure Monitor Workspace.
   final pulumi.Input<String> dataCollectionRuleResourceId;
 
@@ -25,16 +24,11 @@ class AzureMonitorWorkspaceResponseDefaultIngestionSettings {
     };
   }
 
-  factory AzureMonitorWorkspaceResponseDefaultIngestionSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AzureMonitorWorkspaceResponseDefaultIngestionSettings.fromMap(Map<String, dynamic> map) {
     return AzureMonitorWorkspaceResponseDefaultIngestionSettings(
-      dataCollectionEndpointResourceId: pulumi.Input.fromValue(
-        map['dataCollectionEndpointResourceId'] as String,
-      ),
-      dataCollectionRuleResourceId: pulumi.Input.fromValue(
-        map['dataCollectionRuleResourceId'] as String,
-      ),
+      dataCollectionEndpointResourceId: pulumi.Input.fromValue(map['dataCollectionEndpointResourceId'] as String),
+      dataCollectionRuleResourceId: pulumi.Input.fromValue(map['dataCollectionRuleResourceId'] as String),
     );
   }
 }
+

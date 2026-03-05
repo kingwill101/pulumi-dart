@@ -12,10 +12,14 @@ class GetProjectArgs {
 
   /// Creates a new [GetProjectArgs].
   /// [filter] A string filter as defined in the [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects/list#query-parameters).
-  GetProjectArgs({required this.filter});
+  GetProjectArgs({
+    required this.filter,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'filter': filter};
+    return <String, dynamic>{
+      'filter': filter,
+    };
   }
 
   factory GetProjectArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetProjectArgs {
     );
   }
 }
+

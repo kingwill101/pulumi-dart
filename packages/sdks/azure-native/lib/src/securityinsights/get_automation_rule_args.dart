@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAutomationRuleArgs {
   /// Automation rule ID
   final pulumi.Input<String> automationRuleId;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -36,13 +34,10 @@ class GetAutomationRuleArgs {
 
   factory GetAutomationRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetAutomationRuleArgs(
-      automationRuleId: pulumi.Input.fromValue(
-        map['automationRuleId'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      automationRuleId: pulumi.Input.fromValue(map['automationRuleId'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
+

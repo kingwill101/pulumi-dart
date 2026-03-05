@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureActiveDirectoryAppResponse {
   /// Key used to authenticate to the Azure Active Directory Application
   final pulumi.Input<String>? appKey;
-
   /// Application ID of the Azure Active Directory Application
   final pulumi.Input<String>? applicationId;
-
   /// Ignore checking azure permissions on the AAD app
   final pulumi.Input<bool>? ignoreAzurePermissions;
-
   /// Tenant id of the customer
   final pulumi.Input<String>? tenantId;
 
@@ -39,26 +36,11 @@ class AzureActiveDirectoryAppResponse {
 
   factory AzureActiveDirectoryAppResponse.fromMap(Map<String, dynamic> map) {
     return AzureActiveDirectoryAppResponse(
-      appKey: (() {
-        final guardedValue = map['appKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      applicationId: (() {
-        final guardedValue = map['applicationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ignoreAzurePermissions: (() {
-        final guardedValue = map['ignoreAzurePermissions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      tenantId: (() {
-        final guardedValue = map['tenantId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      appKey: (() { final guardedValue = map['appKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      applicationId: (() { final guardedValue = map['applicationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ignoreAzurePermissions: (() { final guardedValue = map['ignoreAzurePermissions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

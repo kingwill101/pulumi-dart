@@ -10,26 +10,19 @@ import 'google_cloud_billing_budgets_v1beta1_threshold_rule_response.dart';
 class GetBudgetBillingbudgetsV1beta1Result {
   /// Optional. Rules to apply to notifications sent based on budget spend and thresholds.
   final GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponse allUpdatesRule;
-
   /// Budgeted amount.
   final GoogleCloudBillingBudgetsV1beta1BudgetAmountResponse amount;
-
   /// Optional. Filters that define which resources are used to compute the actual spend against the budget amount, such as projects, services, and the budget's time period, as well as other filters.
   final GoogleCloudBillingBudgetsV1beta1FilterResponse budgetFilter;
-
   /// User data for display name in UI. Validation: &lt;= 60 chars.
   final String displayName;
-
   /// Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes.
   final String etag;
-
   /// Resource name of the budget. The resource name implies the scope of a budget. Values are of the form `billingAccounts/{billingAccountId}/budgets/{budgetId}`.
   final String name;
   final String ownershipScope;
-
   /// Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget. Optional for `pubsubTopic` notifications. Required if using email notifications.
-  final List<GoogleCloudBillingBudgetsV1beta1ThresholdRuleResponse>
-  thresholdRules;
+  final List<GoogleCloudBillingBudgetsV1beta1ThresholdRuleResponse> thresholdRules;
 
   /// Creates a new [GetBudgetBillingbudgetsV1beta1Result].
   /// [allUpdatesRule] Optional. Rules to apply to notifications sent based on budget spend and thresholds.
@@ -60,42 +53,21 @@ class GetBudgetBillingbudgetsV1beta1Result {
       'etag': etag,
       'name': name,
       'ownershipScope': ownershipScope,
-      'thresholdRules':
-          pulumi.Input.encodeList<
-            GoogleCloudBillingBudgetsV1beta1ThresholdRuleResponse,
-            Map<String, dynamic>
-          >(thresholdRules, (value) => value.toMap()),
+      'thresholdRules': pulumi.Input.encodeList<GoogleCloudBillingBudgetsV1beta1ThresholdRuleResponse, Map<String, dynamic>>(thresholdRules, (value) => value.toMap()),
     };
   }
 
-  factory GetBudgetBillingbudgetsV1beta1Result.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetBudgetBillingbudgetsV1beta1Result.fromMap(Map<String, dynamic> map) {
     return GetBudgetBillingbudgetsV1beta1Result(
-      allUpdatesRule:
-          GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponse.fromMap(
-            (map['allUpdatesRule']! as Map).cast<String, dynamic>(),
-          ),
-      amount: GoogleCloudBillingBudgetsV1beta1BudgetAmountResponse.fromMap(
-        (map['amount']! as Map).cast<String, dynamic>(),
-      ),
-      budgetFilter: GoogleCloudBillingBudgetsV1beta1FilterResponse.fromMap(
-        (map['budgetFilter']! as Map).cast<String, dynamic>(),
-      ),
+      allUpdatesRule: GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponse.fromMap((map['allUpdatesRule']! as Map).cast<String, dynamic>()),
+      amount: GoogleCloudBillingBudgetsV1beta1BudgetAmountResponse.fromMap((map['amount']! as Map).cast<String, dynamic>()),
+      budgetFilter: GoogleCloudBillingBudgetsV1beta1FilterResponse.fromMap((map['budgetFilter']! as Map).cast<String, dynamic>()),
       displayName: map['displayName'] as String,
       etag: map['etag'] as String,
       name: map['name'] as String,
       ownershipScope: map['ownershipScope'] as String,
-      thresholdRules:
-          pulumi.Input.decodeList<
-            GoogleCloudBillingBudgetsV1beta1ThresholdRuleResponse
-          >(
-            map['thresholdRules']!,
-            (value) =>
-                GoogleCloudBillingBudgetsV1beta1ThresholdRuleResponse.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
+      thresholdRules: pulumi.Input.decodeList<GoogleCloudBillingBudgetsV1beta1ThresholdRuleResponse>(map['thresholdRules']!, (value) => GoogleCloudBillingBudgetsV1beta1ThresholdRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

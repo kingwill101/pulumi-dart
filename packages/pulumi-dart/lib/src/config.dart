@@ -69,6 +69,10 @@ extension ConfigStringParsing on String? {
 
 /// {@template pulumi.config_mixin.summary}
 /// Shared config parsing logic used by runtime settings.
+///
+/// This mixin reads Pulumi configuration from the environment variables set by
+/// the language host and normalizes keys into the `<namespace>:<key>` form used
+/// by the engine.
 /// {@endtemplate}
 ///
 mixin ConfigMixin {
@@ -81,6 +85,7 @@ mixin ConfigMixin {
   String get projectName;
   Map<String, String> get environment => Platform.environment;
 
+  /// Initializes parsed config and secret-key state from the environment.
   void initializeConfig() {
     _config = _parseConfig();
     _secretKeys = _parseConfigSecretKeys();
@@ -153,6 +158,16 @@ mixin ConfigMixin {
 ///
 /// Keys are resolved relative to the config bag name unless fully-qualified
 /// keys (`<namespace>:<key>`) are provided.
+///
+/// `Config()` defaults to the current Pulumi project name. `Config('pkg')`
+/// targets another namespace, which is useful for component packages that keep
+/// their own config bag.
+///
+/// Use:
+/// - [get] / [require] for strings
+/// - [getBoolean] / [requireBoolean] for booleans
+/// - [getNumber] / [requireNumber] for numeric values
+/// - object helpers when your config stores JSON payloads
 ///
 /// ## Example
 /// ```dart

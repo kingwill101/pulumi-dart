@@ -354,13 +354,10 @@ import 'bucket_website_state.dart';
 class BucketWebsiteOss extends pulumi.CustomResource {
   /// The name of the bucket
   late final pulumi.Output<String> bucket;
-
   /// The container that holds the error page configuration information. See `error_document` below.
   late final pulumi.Output<BucketWebsiteErrorDocument?> errorDocument;
-
   /// Static Website Default Home Page Configuration See `index_document` below.
   late final pulumi.Output<BucketWebsiteIndexDocument?> indexDocument;
-
   /// The container that holds the jump rule or the mirroring back-to-origin rule. See `routing_rules` below.
   late final pulumi.Output<BucketWebsiteRoutingRules?> routingRules;
 
@@ -373,42 +370,15 @@ class BucketWebsiteOss extends pulumi.CustomResource {
     BucketWebsiteArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:oss/bucketWebsite:BucketWebsite',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:oss/bucketWebsite:BucketWebsite',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
-    errorDocument = registerOutput<BucketWebsiteErrorDocument?>(
-      'errorDocument',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketWebsiteErrorDocument.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    indexDocument = registerOutput<BucketWebsiteIndexDocument?>(
-      'indexDocument',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketWebsiteIndexDocument.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    routingRules = registerOutput<BucketWebsiteRoutingRules?>(
-      'routingRules',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketWebsiteRoutingRules.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    errorDocument = registerOutput<BucketWebsiteErrorDocument?>('errorDocument', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketWebsiteErrorDocument.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    indexDocument = registerOutput<BucketWebsiteIndexDocument?>('indexDocument', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketWebsiteIndexDocument.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    routingRules = registerOutput<BucketWebsiteRoutingRules?>('routingRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketWebsiteRoutingRules.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [BucketWebsiteOss] resource's state with the given [name] and [id].
@@ -429,41 +399,14 @@ class BucketWebsiteOss extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:oss/bucketWebsite:BucketWebsite',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:oss/bucketWebsite:BucketWebsite',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
-    errorDocument = registerOutput<BucketWebsiteErrorDocument?>(
-      'errorDocument',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketWebsiteErrorDocument.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    indexDocument = registerOutput<BucketWebsiteIndexDocument?>(
-      'indexDocument',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketWebsiteIndexDocument.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    routingRules = registerOutput<BucketWebsiteRoutingRules?>(
-      'routingRules',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketWebsiteRoutingRules.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    errorDocument = registerOutput<BucketWebsiteErrorDocument?>('errorDocument', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketWebsiteErrorDocument.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    indexDocument = registerOutput<BucketWebsiteIndexDocument?>('indexDocument', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketWebsiteIndexDocument.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    routingRules = registerOutput<BucketWebsiteRoutingRules?>('routingRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketWebsiteRoutingRules.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

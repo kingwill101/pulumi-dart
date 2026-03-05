@@ -229,25 +229,18 @@ import 'image_event_operation_state.dart';
 class ImageEventOperation extends pulumi.CustomResource {
   /// The rule conditions. The value is in the JSON format. For more information, see [How to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-addimageeventoperation). **NOTE:** From version 1.255.0, `conditions` can be modified.
   late final pulumi.Output<String> conditions;
-
   /// The keyword of the alert item.
   late final pulumi.Output<String?> eventKey;
-
   /// The name of the alert item.
   late final pulumi.Output<String?> eventName;
-
   /// The alert type.
   late final pulumi.Output<String> eventType;
-
   /// The remarks.
   late final pulumi.Output<String?> note;
-
   /// The operation code.
   late final pulumi.Output<String> operationCode;
-
   /// The application scope of the rule.
   late final pulumi.Output<String> scenarios;
-
   /// The source of the whitelist. Valid values:
   late final pulumi.Output<String> source;
 
@@ -260,11 +253,11 @@ class ImageEventOperation extends pulumi.CustomResource {
     ImageEventOperationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:threatdetection/imageEventOperation:ImageEventOperation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:threatdetection/imageEventOperation:ImageEventOperation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     conditions = registerOutput<String>('conditions');
     eventKey = registerOutput<String?>('eventKey');
     eventName = registerOutput<String?>('eventName');
@@ -293,11 +286,11 @@ class ImageEventOperation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:threatdetection/imageEventOperation:ImageEventOperation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:threatdetection/imageEventOperation:ImageEventOperation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     conditions = registerOutput<String>('conditions');
     eventKey = registerOutput<String?>('eventKey');
     eventName = registerOutput<String?>('eventName');

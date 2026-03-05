@@ -13,18 +13,15 @@ class StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectField {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name};
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
-  factory StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectField.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectField.fromMap(Map<String, dynamic> map) {
     return StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectField(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

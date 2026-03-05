@@ -6,28 +6,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BundleState {
   /// The name of the bundle.
   final pulumi.Input<String>? bundleName;
-
   /// The description of the bundle.
   final pulumi.Input<String>? description;
-
   /// The desktop type. You can call `alicloud.eds.getDesktopTypes` to query desktop type.
   final pulumi.Input<String>? desktopType;
-
   /// The ID of the image.
   final pulumi.Input<String>? imageId;
-
   /// The language. Valid values: `zh-CN`, `zh-HK`, `en-US`, `ja-JP`.
   final pulumi.Input<String>? language;
-
   /// The root disk performance level. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
   final pulumi.Input<String>? rootDiskPerformanceLevel;
-
   /// The root disk size gib.
   final pulumi.Input<int>? rootDiskSizeGib;
-
   /// The user disk performance level. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
   final pulumi.Input<String>? userDiskPerformanceLevel;
-
   /// The size of the data disk. Currently, only one data disk can be set. Unit: GiB.
   /// - The size of the data disk that supports the setting corresponds to the specification. For more information, see [Overview of Desktop Specifications](https://help.aliyun.com/document_detail/188609.htm?spm=a2c4g.11186623.0.0.6406297bE0U5DG).
   /// - The data disk size (user_disk_size_gib) set in the template must be greater than the data disk size (data_disk_size) in the mirror.
@@ -71,51 +63,16 @@ class BundleState {
 
   factory BundleState.fromMap(Map<String, dynamic> map) {
     return BundleState(
-      bundleName: (() {
-        final guardedValue = map['bundleName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      desktopType: (() {
-        final guardedValue = map['desktopType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      imageId: (() {
-        final guardedValue = map['imageId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      language: (() {
-        final guardedValue = map['language'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      rootDiskPerformanceLevel: (() {
-        final guardedValue = map['rootDiskPerformanceLevel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      rootDiskSizeGib: (() {
-        final guardedValue = map['rootDiskSizeGib'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      userDiskPerformanceLevel: (() {
-        final guardedValue = map['userDiskPerformanceLevel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      userDiskSizeGibs: (() {
-        final guardedValue = map['userDiskSizeGibs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<int>());
-      })(),
+      bundleName: (() { final guardedValue = map['bundleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      desktopType: (() { final guardedValue = map['desktopType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      imageId: (() { final guardedValue = map['imageId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      language: (() { final guardedValue = map['language']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      rootDiskPerformanceLevel: (() { final guardedValue = map['rootDiskPerformanceLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      rootDiskSizeGib: (() { final guardedValue = map['rootDiskSizeGib']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      userDiskPerformanceLevel: (() { final guardedValue = map['userDiskPerformanceLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      userDiskSizeGibs: (() { final guardedValue = map['userDiskSizeGibs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<int>()); })(),
     );
   }
 }
+

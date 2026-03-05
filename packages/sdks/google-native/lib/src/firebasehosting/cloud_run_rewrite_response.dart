@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CloudRunRewriteResponse {
   /// Optional. User-provided region where the Cloud Run service is hosted. Defaults to `us-central1` if not supplied.
   final pulumi.Input<String> region;
-
   /// User-defined ID of the Cloud Run service.
   final pulumi.Input<String> serviceId;
-
   /// Optional. User-provided TrafficConfig tag to send traffic to. When omitted, traffic is sent to the service-wide URI
   final pulumi.Input<String> tag;
 
@@ -39,3 +37,4 @@ class CloudRunRewriteResponse {
     );
   }
 }
+

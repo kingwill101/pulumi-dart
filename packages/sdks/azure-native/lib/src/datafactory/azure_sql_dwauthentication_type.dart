@@ -17,3 +17,4 @@ enum AzureSqlDWAuthenticationType {
     throw ArgumentError('Unknown AzureSqlDWAuthenticationType value: $value');
   }
 }
+

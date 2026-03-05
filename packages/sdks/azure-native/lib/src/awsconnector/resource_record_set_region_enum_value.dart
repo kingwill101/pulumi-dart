@@ -9,19 +9,20 @@ class ResourceRecordSetRegionEnumValue {
 
   /// Creates a new [ResourceRecordSetRegionEnumValue].
   /// [value] Property value
-  ResourceRecordSetRegionEnumValue({this.value});
+  ResourceRecordSetRegionEnumValue({
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': ?value};
+    return <String, dynamic>{
+      'value': ?value,
+    };
   }
 
   factory ResourceRecordSetRegionEnumValue.fromMap(Map<String, dynamic> map) {
     return ResourceRecordSetRegionEnumValue(
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

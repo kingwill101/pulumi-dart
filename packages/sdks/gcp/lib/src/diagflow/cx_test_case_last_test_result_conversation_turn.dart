@@ -7,15 +7,10 @@ import 'cx_test_case_last_test_result_conversation_turn_virtual_agent_output.dar
 class CxTestCaseLastTestResultConversationTurn {
   /// The user input.
   /// Structure is documented below.
-  final pulumi.Input<CxTestCaseLastTestResultConversationTurnUserInput>?
-  userInput;
-
+  final pulumi.Input<CxTestCaseLastTestResultConversationTurnUserInput>? userInput;
   /// The virtual agent output.
   /// Structure is documented below.
-  final pulumi.Input<
-    CxTestCaseLastTestResultConversationTurnVirtualAgentOutput
-  >?
-  virtualAgentOutput;
+  final pulumi.Input<CxTestCaseLastTestResultConversationTurnVirtualAgentOutput>? virtualAgentOutput;
 
   /// Creates a new [CxTestCaseLastTestResultConversationTurn].
   /// [userInput] The user input.
@@ -27,41 +22,16 @@ class CxTestCaseLastTestResultConversationTurn {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'userInput':
-          ?pulumi.Input.mapOptionalInputValue<
-            CxTestCaseLastTestResultConversationTurnUserInput,
-            Map<String, dynamic>
-          >(userInput, (value) => value.toMap()),
-      'virtualAgentOutput':
-          ?pulumi.Input.mapOptionalInputValue<
-            CxTestCaseLastTestResultConversationTurnVirtualAgentOutput,
-            Map<String, dynamic>
-          >(virtualAgentOutput, (value) => value.toMap()),
+      'userInput': ?pulumi.Input.mapOptionalInputValue<CxTestCaseLastTestResultConversationTurnUserInput, Map<String, dynamic>>(userInput, (value) => value.toMap()),
+      'virtualAgentOutput': ?pulumi.Input.mapOptionalInputValue<CxTestCaseLastTestResultConversationTurnVirtualAgentOutput, Map<String, dynamic>>(virtualAgentOutput, (value) => value.toMap()),
     };
   }
 
-  factory CxTestCaseLastTestResultConversationTurn.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CxTestCaseLastTestResultConversationTurn.fromMap(Map<String, dynamic> map) {
     return CxTestCaseLastTestResultConversationTurn(
-      userInput: (() {
-        final guardedValue = map['userInput'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CxTestCaseLastTestResultConversationTurnUserInput.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      virtualAgentOutput: (() {
-        final guardedValue = map['virtualAgentOutput'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CxTestCaseLastTestResultConversationTurnVirtualAgentOutput.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      userInput: (() { final guardedValue = map['userInput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CxTestCaseLastTestResultConversationTurnUserInput.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      virtualAgentOutput: (() { final guardedValue = map['virtualAgentOutput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CxTestCaseLastTestResultConversationTurnVirtualAgentOutput.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

@@ -10,7 +10,6 @@ class GetTargetGroupResult {
   final bool connectionTermination;
   final String deregistrationDelay;
   final GetTargetGroupHealthCheck healthCheck;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final bool lambdaMultiValueHeadersEnabled;
@@ -119,18 +118,13 @@ class GetTargetGroupResult {
       arnSuffix: map['arnSuffix'] as String,
       connectionTermination: map['connectionTermination'] as bool,
       deregistrationDelay: map['deregistrationDelay'] as String,
-      healthCheck: GetTargetGroupHealthCheck.fromMap(
-        (map['healthCheck']! as Map).cast<String, dynamic>(),
-      ),
+      healthCheck: GetTargetGroupHealthCheck.fromMap((map['healthCheck']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
-      lambdaMultiValueHeadersEnabled:
-          map['lambdaMultiValueHeadersEnabled'] as bool,
+      lambdaMultiValueHeadersEnabled: map['lambdaMultiValueHeadersEnabled'] as bool,
       loadBalancerArns: (map['loadBalancerArns'] as List).cast<String>(),
       loadBalancingAlgorithmType: map['loadBalancingAlgorithmType'] as String,
-      loadBalancingAnomalyMitigation:
-          map['loadBalancingAnomalyMitigation'] as String,
-      loadBalancingCrossZoneEnabled:
-          map['loadBalancingCrossZoneEnabled'] as String,
+      loadBalancingAnomalyMitigation: map['loadBalancingAnomalyMitigation'] as String,
+      loadBalancingCrossZoneEnabled: map['loadBalancingCrossZoneEnabled'] as String,
       name: map['name'] as String,
       port: map['port'] as int,
       preserveClientIp: map['preserveClientIp'] as String,
@@ -139,9 +133,7 @@ class GetTargetGroupResult {
       proxyProtocolV2: map['proxyProtocolV2'] as bool,
       region: map['region'] as String,
       slowStart: map['slowStart'] as int,
-      stickiness: GetTargetGroupStickiness.fromMap(
-        (map['stickiness']! as Map).cast<String, dynamic>(),
-      ),
+      stickiness: GetTargetGroupStickiness.fromMap((map['stickiness']! as Map).cast<String, dynamic>()),
       tags: (map['tags'] as Map).cast<String, String>(),
       targetControlPort: map['targetControlPort'] as int,
       targetType: map['targetType'] as String,
@@ -149,3 +141,4 @@ class GetTargetGroupResult {
     );
   }
 }
+

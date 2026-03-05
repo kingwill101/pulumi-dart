@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecurityAssessmentPartnerData {
   /// Name of the company of the partner
   final pulumi.Input<String> partnerName;
-
   /// secret to authenticate the partner - write only
   final pulumi.Input<String> secret;
 
@@ -19,7 +18,10 @@ class SecurityAssessmentPartnerData {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'partnerName': partnerName, 'secret': secret};
+    return <String, dynamic>{
+      'partnerName': partnerName,
+      'secret': secret,
+    };
   }
 
   factory SecurityAssessmentPartnerData.fromMap(Map<String, dynamic> map) {
@@ -29,3 +31,4 @@ class SecurityAssessmentPartnerData {
     );
   }
 }
+

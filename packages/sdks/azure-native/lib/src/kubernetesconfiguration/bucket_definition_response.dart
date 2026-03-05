@@ -6,22 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketDefinitionResponse {
   /// Plaintext access key used to securely access the S3 bucket
   final pulumi.Input<String>? accessKey;
-
   /// The bucket name to sync from the url endpoint for the flux configuration.
   final pulumi.Input<String>? bucketName;
-
   /// Specify whether to use insecure communication when puling data from the S3 bucket.
   final pulumi.Input<bool>? insecure;
-
   /// Name of a local secret on the Kubernetes cluster to use as the authentication secret rather than the managed or user-provided configuration secrets.
   final pulumi.Input<String>? localAuthRef;
-
   /// The interval at which to re-reconcile the cluster bucket source with the remote.
   final pulumi.Input<double>? syncIntervalInSeconds;
-
   /// The maximum time to attempt to reconcile the cluster bucket source with the remote.
   final pulumi.Input<double>? timeoutInSeconds;
-
   /// The URL to sync for the flux configuration S3 bucket.
   final pulumi.Input<String>? url;
 
@@ -57,41 +51,14 @@ class BucketDefinitionResponse {
 
   factory BucketDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return BucketDefinitionResponse(
-      accessKey: (() {
-        final guardedValue = map['accessKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      bucketName: (() {
-        final guardedValue = map['bucketName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      insecure: (() {
-        final guardedValue = map['insecure'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      localAuthRef: (() {
-        final guardedValue = map['localAuthRef'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      syncIntervalInSeconds: (() {
-        final guardedValue = map['syncIntervalInSeconds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      timeoutInSeconds: (() {
-        final guardedValue = map['timeoutInSeconds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      url: (() {
-        final guardedValue = map['url'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accessKey: (() { final guardedValue = map['accessKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      bucketName: (() { final guardedValue = map['bucketName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      insecure: (() { final guardedValue = map['insecure']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      localAuthRef: (() { final guardedValue = map['localAuthRef']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      syncIntervalInSeconds: (() { final guardedValue = map['syncIntervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      timeoutInSeconds: (() { final guardedValue = map['timeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      url: (() { final guardedValue = map['url']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

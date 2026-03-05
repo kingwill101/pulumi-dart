@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccountsAccount {
   /// The description of the account.
   final pulumi.Input<String> accountDescription;
-
   /// The name of the account.
   final pulumi.Input<String> accountName;
-
   /// The role of the account. Valid values: `db`, `cs`, `mongos`, `logic`, `normal`.
   final pulumi.Input<String> characterType;
-
   /// The ID of the Account. The value formats as `&lt;instance_id&gt;:&lt;account_name&gt;`.
   final pulumi.Input<String> id;
-
   /// The id of the instance to which the account belongs.
   final pulumi.Input<String> instanceId;
-
   /// The status of the account. Valid values: `Unavailable`, `Available`.
   final pulumi.Input<String> status;
 
@@ -50,9 +45,7 @@ class GetAccountsAccount {
 
   factory GetAccountsAccount.fromMap(Map<String, dynamic> map) {
     return GetAccountsAccount(
-      accountDescription: pulumi.Input.fromValue(
-        map['accountDescription'] as String,
-      ),
+      accountDescription: pulumi.Input.fromValue(map['accountDescription'] as String),
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
       characterType: pulumi.Input.fromValue(map['characterType'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
@@ -61,3 +54,4 @@ class GetAccountsAccount {
     );
   }
 }
+

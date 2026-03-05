@@ -8,17 +8,20 @@ class ScopeTargetTargetIdentifierTargetId {
 
   /// Creates a new [ScopeTargetTargetIdentifierTargetId].
   /// [accountId] AWS account ID.
-  ScopeTargetTargetIdentifierTargetId({required this.accountId});
+  ScopeTargetTargetIdentifierTargetId({
+    required this.accountId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'accountId': accountId};
+    return <String, dynamic>{
+      'accountId': accountId,
+    };
   }
 
-  factory ScopeTargetTargetIdentifierTargetId.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ScopeTargetTargetIdentifierTargetId.fromMap(Map<String, dynamic> map) {
     return ScopeTargetTargetIdentifierTargetId(
       accountId: pulumi.Input.fromValue(map['accountId'] as String),
     );
   }
 }
+

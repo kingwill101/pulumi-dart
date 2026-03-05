@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkflowPropertiesResponse {
   /// Provisioning state of resource
   final pulumi.Input<String> provisioningState;
-
   /// Workflow template Id
   final pulumi.Input<String> workflowTemplateId;
 
@@ -27,12 +26,9 @@ class WorkflowPropertiesResponse {
 
   factory WorkflowPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return WorkflowPropertiesResponse(
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
-      workflowTemplateId: pulumi.Input.fromValue(
-        map['workflowTemplateId'] as String,
-      ),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
+      workflowTemplateId: pulumi.Input.fromValue(map['workflowTemplateId'] as String),
     );
   }
 }
+

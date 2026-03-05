@@ -9,19 +9,20 @@ class VmwareClusterUpgradePolicy {
 
   /// Creates a new [VmwareClusterUpgradePolicy].
   /// [controlPlaneOnly] Controls whether the upgrade applies to the control plane only.
-  VmwareClusterUpgradePolicy({this.controlPlaneOnly});
+  VmwareClusterUpgradePolicy({
+    this.controlPlaneOnly,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'controlPlaneOnly': ?controlPlaneOnly};
+    return <String, dynamic>{
+      'controlPlaneOnly': ?controlPlaneOnly,
+    };
   }
 
   factory VmwareClusterUpgradePolicy.fromMap(Map<String, dynamic> map) {
     return VmwareClusterUpgradePolicy(
-      controlPlaneOnly: (() {
-        final guardedValue = map['controlPlaneOnly'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      controlPlaneOnly: (() { final guardedValue = map['controlPlaneOnly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

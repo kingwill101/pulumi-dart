@@ -6,7 +6,6 @@ import 'get_database_instances_instance.dart';
 /// Result data returned by getDatabaseInstances.
 class GetDatabaseInstancesResult {
   final String? databaseVersion;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<GetDatabaseInstancesInstance> instances;
@@ -40,11 +39,7 @@ class GetDatabaseInstancesResult {
     return <String, dynamic>{
       'databaseVersion': ?databaseVersion,
       'id': id,
-      'instances':
-          pulumi.Input.encodeList<
-            GetDatabaseInstancesInstance,
-            Map<String, dynamic>
-          >(instances, (value) => value.toMap()),
+      'instances': pulumi.Input.encodeList<GetDatabaseInstancesInstance, Map<String, dynamic>>(instances, (value) => value.toMap()),
       'project': ?project,
       'region': ?region,
       'state': ?state,
@@ -55,43 +50,15 @@ class GetDatabaseInstancesResult {
 
   factory GetDatabaseInstancesResult.fromMap(Map<String, dynamic> map) {
     return GetDatabaseInstancesResult(
-      databaseVersion: (() {
-        final guardedValue = map['databaseVersion'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      databaseVersion: (() { final guardedValue = map['databaseVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
-      instances: pulumi.Input.decodeList<GetDatabaseInstancesInstance>(
-        map['instances']!,
-        (value) => GetDatabaseInstancesInstance.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      tier: (() {
-        final guardedValue = map['tier'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      zone: (() {
-        final guardedValue = map['zone'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      instances: pulumi.Input.decodeList<GetDatabaseInstancesInstance>(map['instances']!, (value) => GetDatabaseInstancesInstance.fromMap((value as Map).cast<String, dynamic>())),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tier: (() { final guardedValue = map['tier']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      zone: (() { final guardedValue = map['zone']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

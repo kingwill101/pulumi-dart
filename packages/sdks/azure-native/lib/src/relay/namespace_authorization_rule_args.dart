@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NamespaceAuthorizationRuleArgs {
   /// The authorization rule name.
   final pulumi.Input<String>? authorizationRuleName;
-
   /// The namespace name
   final pulumi.Input<String> namespaceName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The rights associated with the rule.
   final pulumi.Input<List<String>> rights;
 
@@ -42,16 +39,11 @@ class NamespaceAuthorizationRuleArgs {
 
   factory NamespaceAuthorizationRuleArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceAuthorizationRuleArgs(
-      authorizationRuleName: (() {
-        final guardedValue = map['authorizationRuleName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      authorizationRuleName: (() { final guardedValue = map['authorizationRuleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       rights: pulumi.Input.fromValue((map['rights'] as List).cast<String>()),
     );
   }
 }
+

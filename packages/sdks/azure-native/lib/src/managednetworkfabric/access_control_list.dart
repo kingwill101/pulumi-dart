@@ -614,50 +614,34 @@ import 'system_data_response.dart';
 class AccessControlList extends pulumi.CustomResource {
   /// Access Control List file URL.
   late final pulumi.Output<String?> aclsUrl;
-
   /// Administrative state of the resource.
   late final pulumi.Output<String> administrativeState;
-
   /// Switch configuration description.
   late final pulumi.Output<String?> annotation;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Configuration state of the resource.
   late final pulumi.Output<String> configurationState;
-
   /// Input method to configure Access Control List.
   late final pulumi.Output<String> configurationType;
-
   /// Default action that needs to be applied when no condition is matched. Example: Permit | Deny.
   late final pulumi.Output<String?> defaultAction;
-
   /// List of dynamic match configurations.
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  dynamicMatchConfigurations;
-
+  late final pulumi.Output<List<Map<String, dynamic>>?> dynamicMatchConfigurations;
   /// The last synced timestamp.
   late final pulumi.Output<String> lastSyncedTime;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// List of match configurations.
   late final pulumi.Output<List<Map<String, dynamic>>?> matchConfigurations;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -670,11 +654,11 @@ class AccessControlList extends pulumi.CustomResource {
     AccessControlListArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:managednetworkfabric:AccessControlList',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:managednetworkfabric:AccessControlList',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aclsUrl = registerOutput<String?>('aclsUrl');
     administrativeState = registerOutput<String>('administrativeState');
     annotation = registerOutput<String?>('annotation');
@@ -682,26 +666,13 @@ class AccessControlList extends pulumi.CustomResource {
     configurationState = registerOutput<String>('configurationState');
     configurationType = registerOutput<String>('configurationType');
     defaultAction = registerOutput<String?>('defaultAction');
-    dynamicMatchConfigurations = registerOutput<List<Map<String, dynamic>>?>(
-      'dynamicMatchConfigurations',
-    );
+    dynamicMatchConfigurations = registerOutput<List<Map<String, dynamic>>?>('dynamicMatchConfigurations');
     lastSyncedTime = registerOutput<String>('lastSyncedTime');
     location = registerOutput<String>('location');
-    matchConfigurations = registerOutput<List<Map<String, dynamic>>?>(
-      'matchConfigurations',
-    );
+    matchConfigurations = registerOutput<List<Map<String, dynamic>>?>('matchConfigurations');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

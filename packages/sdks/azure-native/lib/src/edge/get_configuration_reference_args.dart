@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConfigurationReferenceArgs {
   /// The name of the ConfigurationReference
   final pulumi.Input<String> configurationReferenceName;
-
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceUri;
 
@@ -30,10 +29,9 @@ class GetConfigurationReferenceArgs {
 
   factory GetConfigurationReferenceArgs.fromMap(Map<String, dynamic> map) {
     return GetConfigurationReferenceArgs(
-      configurationReferenceName: pulumi.Input.fromValue(
-        map['configurationReferenceName'] as String,
-      ),
+      configurationReferenceName: pulumi.Input.fromValue(map['configurationReferenceName'] as String),
       resourceUri: pulumi.Input.fromValue(map['resourceUri'] as String),
     );
   }
 }
+

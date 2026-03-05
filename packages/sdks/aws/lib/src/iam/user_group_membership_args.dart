@@ -9,17 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserGroupMembershipArgs {
   /// A list of IAM Groups to add the user to
   final pulumi.Input<List<String>> groups;
-
   /// The name of the IAM User to add to groups
   final pulumi.Input<String> user;
 
   /// Creates a new [UserGroupMembershipArgs].
   /// [groups] A list of IAM Groups to add the user to
   /// [user] The name of the IAM User to add to groups
-  UserGroupMembershipArgs({required this.groups, required this.user});
+  UserGroupMembershipArgs({
+    required this.groups,
+    required this.user,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'groups': groups, 'user': user};
+    return <String, dynamic>{
+      'groups': groups,
+      'user': user,
+    };
   }
 
   factory UserGroupMembershipArgs.fromMap(Map<String, dynamic> map) {
@@ -29,3 +34,4 @@ class UserGroupMembershipArgs {
     );
   }
 }
+

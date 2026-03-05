@@ -8,56 +8,39 @@ import 'upload_limit_schedule_response.dart';
 class GetAgentResult {
   /// The Agent status.
   final String agentStatus;
-
   /// The Agent version.
   final String agentVersion;
-
   /// The fully qualified resource ID of the Hybrid Compute resource for the Agent.
   final String arcResourceId;
-
   /// The VM UUID of the Hybrid Compute resource for the Agent.
   final String arcVmUuid;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// A description for the Agent.
   final String? description;
   final AgentPropertiesErrorDetailsResponse errorDetails;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// The last updated time of the Agent status.
   final String lastStatusUpdate;
-
   /// Local IP address reported by the Agent.
   final String localIPAddress;
-
   /// Available memory reported by the Agent, in MB.
   final double memoryInMB;
-
   /// The name of the resource
   final String name;
-
   /// Available compute cores reported by the Agent.
   final double numberOfCores;
-
   /// The provisioning state of this resource.
   final String provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The agent's local time zone represented in Windows format.
   final String timeZone;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
-
   /// The WAN-link upload limit schedule that applies to any Job Run the agent executes. Data plane operations (migrating files) are affected. Control plane operations ensure seamless migration functionality and are not limited by this schedule. The schedule is interpreted with the agent's local time.
   final UploadLimitScheduleResponse? uploadLimitSchedule;
-
   /// Uptime of the Agent in seconds.
   final double uptimeInSeconds;
 
@@ -134,14 +117,8 @@ class GetAgentResult {
       arcResourceId: map['arcResourceId'] as String,
       arcVmUuid: map['arcVmUuid'] as String,
       azureApiVersion: map['azureApiVersion'] as String,
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      errorDetails: AgentPropertiesErrorDetailsResponse.fromMap(
-        (map['errorDetails']! as Map).cast<String, dynamic>(),
-      ),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      errorDetails: AgentPropertiesErrorDetailsResponse.fromMap((map['errorDetails']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       lastStatusUpdate: map['lastStatusUpdate'] as String,
       localIPAddress: map['localIPAddress'] as String,
@@ -149,19 +126,12 @@ class GetAgentResult {
       name: map['name'] as String,
       numberOfCores: map['numberOfCores'] as double,
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       timeZone: map['timeZone'] as String,
       type: map['type'] as String,
-      uploadLimitSchedule: (() {
-        final guardedValue = map['uploadLimitSchedule'];
-        if (guardedValue == null) return null;
-        return UploadLimitScheduleResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      uploadLimitSchedule: (() { final guardedValue = map['uploadLimitSchedule']; if (guardedValue == null) return null; return UploadLimitScheduleResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       uptimeInSeconds: map['uptimeInSeconds'] as double,
     );
   }
 }
+

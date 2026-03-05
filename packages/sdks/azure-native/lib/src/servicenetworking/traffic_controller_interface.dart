@@ -152,38 +152,26 @@ import 'traffic_controller_interface_args.dart';
 class TrafficControllerInterface extends pulumi.CustomResource {
   /// Associations References List
   late final pulumi.Output<List<Map<String, dynamic>>> associations;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Configuration Endpoints.
   late final pulumi.Output<List<String>> configurationEndpoints;
-
   /// Frontends References List
   late final pulumi.Output<List<Map<String, dynamic>>> frontends;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The status of the last operation.
   late final pulumi.Output<String> provisioningState;
-
   /// Security Policies References List
   late final pulumi.Output<List<Map<String, dynamic>>> securityPolicies;
-
   /// Security Policy Configuration
-  late final pulumi.Output<SecurityPolicyConfigurationsResponse?>
-  securityPolicyConfigurations;
-
+  late final pulumi.Output<SecurityPolicyConfigurationsResponse?> securityPolicyConfigurations;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -196,44 +184,21 @@ class TrafficControllerInterface extends pulumi.CustomResource {
     TrafficControllerInterfaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:servicenetworking:TrafficControllerInterface',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:servicenetworking:TrafficControllerInterface',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     associations = registerOutput<List<Map<String, dynamic>>>('associations');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    configurationEndpoints = registerOutput<List<String>>(
-      'configurationEndpoints',
-    );
+    configurationEndpoints = registerOutput<List<String>>('configurationEndpoints');
     frontends = registerOutput<List<Map<String, dynamic>>>('frontends');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    securityPolicies = registerOutput<List<Map<String, dynamic>>>(
-      'securityPolicies',
-    );
-    securityPolicyConfigurations =
-        registerOutput<SecurityPolicyConfigurationsResponse?>(
-          'securityPolicyConfigurations',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SecurityPolicyConfigurationsResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    securityPolicies = registerOutput<List<Map<String, dynamic>>>('securityPolicies');
+    securityPolicyConfigurations = registerOutput<SecurityPolicyConfigurationsResponse?>('securityPolicyConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityPolicyConfigurationsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

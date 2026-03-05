@@ -12,8 +12,7 @@ enum TaskDefinitionPortMappingAppProtocol {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown TaskDefinitionPortMappingAppProtocol value: $value',
-    );
+    throw ArgumentError('Unknown TaskDefinitionPortMappingAppProtocol value: $value');
   }
 }
+

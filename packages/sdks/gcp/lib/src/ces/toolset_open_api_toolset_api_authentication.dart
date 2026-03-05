@@ -9,26 +9,16 @@ import 'toolset_open_api_toolset_api_authentication_service_account_auth_config.
 class ToolsetOpenApiToolsetApiAuthentication {
   /// Configurations for authentication with API key.
   /// Structure is documented below.
-  final pulumi.Input<ToolsetOpenApiToolsetApiAuthenticationApiKeyConfig>?
-  apiKeyConfig;
-
+  final pulumi.Input<ToolsetOpenApiToolsetApiAuthenticationApiKeyConfig>? apiKeyConfig;
   /// Configurations for authentication with a bearer token.
   /// Structure is documented below.
-  final pulumi.Input<ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig>?
-  bearerTokenConfig;
-
+  final pulumi.Input<ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig>? bearerTokenConfig;
   /// Configurations for authentication with OAuth.
   /// Structure is documented below.
-  final pulumi.Input<ToolsetOpenApiToolsetApiAuthenticationOauthConfig>?
-  oauthConfig;
-
+  final pulumi.Input<ToolsetOpenApiToolsetApiAuthenticationOauthConfig>? oauthConfig;
   /// Configurations for authentication using a custom service account.
   /// Structure is documented below.
-  final pulumi.Input<
-    ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfig
-  >?
-  serviceAccountAuthConfig;
-
+  final pulumi.Input<ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfig>? serviceAccountAuthConfig;
   /// Configurations for authentication with [ID
   /// token](https://cloud.google.com/docs/authentication/token-types#id) generated
   /// from service agent.
@@ -50,77 +40,22 @@ class ToolsetOpenApiToolsetApiAuthentication {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'apiKeyConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ToolsetOpenApiToolsetApiAuthenticationApiKeyConfig,
-            Map<String, dynamic>
-          >(apiKeyConfig, (value) => value.toMap()),
-      'bearerTokenConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig,
-            Map<String, dynamic>
-          >(bearerTokenConfig, (value) => value.toMap()),
-      'oauthConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ToolsetOpenApiToolsetApiAuthenticationOauthConfig,
-            Map<String, dynamic>
-          >(oauthConfig, (value) => value.toMap()),
-      'serviceAccountAuthConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfig,
-            Map<String, dynamic>
-          >(serviceAccountAuthConfig, (value) => value.toMap()),
+      'apiKeyConfig': ?pulumi.Input.mapOptionalInputValue<ToolsetOpenApiToolsetApiAuthenticationApiKeyConfig, Map<String, dynamic>>(apiKeyConfig, (value) => value.toMap()),
+      'bearerTokenConfig': ?pulumi.Input.mapOptionalInputValue<ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig, Map<String, dynamic>>(bearerTokenConfig, (value) => value.toMap()),
+      'oauthConfig': ?pulumi.Input.mapOptionalInputValue<ToolsetOpenApiToolsetApiAuthenticationOauthConfig, Map<String, dynamic>>(oauthConfig, (value) => value.toMap()),
+      'serviceAccountAuthConfig': ?pulumi.Input.mapOptionalInputValue<ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfig, Map<String, dynamic>>(serviceAccountAuthConfig, (value) => value.toMap()),
       'serviceAgentIdTokenAuthConfig': ?serviceAgentIdTokenAuthConfig,
     };
   }
 
-  factory ToolsetOpenApiToolsetApiAuthentication.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ToolsetOpenApiToolsetApiAuthentication.fromMap(Map<String, dynamic> map) {
     return ToolsetOpenApiToolsetApiAuthentication(
-      apiKeyConfig: (() {
-        final guardedValue = map['apiKeyConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ToolsetOpenApiToolsetApiAuthenticationApiKeyConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      bearerTokenConfig: (() {
-        final guardedValue = map['bearerTokenConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      oauthConfig: (() {
-        final guardedValue = map['oauthConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ToolsetOpenApiToolsetApiAuthenticationOauthConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      serviceAccountAuthConfig: (() {
-        final guardedValue = map['serviceAccountAuthConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      serviceAgentIdTokenAuthConfig: (() {
-        final guardedValue = map['serviceAgentIdTokenAuthConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      apiKeyConfig: (() { final guardedValue = map['apiKeyConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ToolsetOpenApiToolsetApiAuthenticationApiKeyConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      bearerTokenConfig: (() { final guardedValue = map['bearerTokenConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      oauthConfig: (() { final guardedValue = map['oauthConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ToolsetOpenApiToolsetApiAuthenticationOauthConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      serviceAccountAuthConfig: (() { final guardedValue = map['serviceAccountAuthConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      serviceAgentIdTokenAuthConfig: (() { final guardedValue = map['serviceAgentIdTokenAuthConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }
 }
+

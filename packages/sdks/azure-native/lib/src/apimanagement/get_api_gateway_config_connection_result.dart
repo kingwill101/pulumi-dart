@@ -1,31 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getApiGatewayConfigConnection.
 class GetApiGatewayConfigConnectionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The default hostname of the data-plane gateway.
   final String defaultHostname;
-
   /// ETag of the resource.
   final String etag;
-
   /// The hostnames of the data-plane gateway to which requests can be sent.
   final List<String>? hostnames;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// The name of the resource
   final String name;
-
   /// The current provisioning state of the API Management gateway config connection
   final String provisioningState;
-
   /// The link to the API Management service workspace.
   final String? sourceId;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -65,27 +58,18 @@ class GetApiGatewayConfigConnectionResult {
     };
   }
 
-  factory GetApiGatewayConfigConnectionResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetApiGatewayConfigConnectionResult.fromMap(Map<String, dynamic> map) {
     return GetApiGatewayConfigConnectionResult(
       azureApiVersion: map['azureApiVersion'] as String,
       defaultHostname: map['defaultHostname'] as String,
       etag: map['etag'] as String,
-      hostnames: (() {
-        final guardedValue = map['hostnames'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
+      hostnames: (() { final guardedValue = map['hostnames']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      sourceId: (() {
-        final guardedValue = map['sourceId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      sourceId: (() { final guardedValue = map['sourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       type: map['type'] as String,
     );
   }
 }
+

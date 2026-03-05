@@ -5,11 +5,7 @@ import 'cluster_monitoring_config_managed_prometheus_auto_monitoring_config.dart
 
 class ClusterMonitoringConfigManagedPrometheus {
   /// Configuration options for GKE Auto-Monitoring.
-  final pulumi.Input<
-    ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig
-  >?
-  autoMonitoringConfig;
-
+  final pulumi.Input<ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig>? autoMonitoringConfig;
   /// Whether or not the managed collection is enabled.
   final pulumi.Input<bool> enabled;
 
@@ -23,29 +19,16 @@ class ClusterMonitoringConfigManagedPrometheus {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoMonitoringConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig,
-            Map<String, dynamic>
-          >(autoMonitoringConfig, (value) => value.toMap()),
+      'autoMonitoringConfig': ?pulumi.Input.mapOptionalInputValue<ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig, Map<String, dynamic>>(autoMonitoringConfig, (value) => value.toMap()),
       'enabled': enabled,
     };
   }
 
-  factory ClusterMonitoringConfigManagedPrometheus.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterMonitoringConfigManagedPrometheus.fromMap(Map<String, dynamic> map) {
     return ClusterMonitoringConfigManagedPrometheus(
-      autoMonitoringConfig: (() {
-        final guardedValue = map['autoMonitoringConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      autoMonitoringConfig: (() { final guardedValue = map['autoMonitoringConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
+

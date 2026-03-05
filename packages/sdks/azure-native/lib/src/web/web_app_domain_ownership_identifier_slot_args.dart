@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WebAppDomainOwnershipIdentifierSlotArgs {
   /// Name of domain ownership identifier.
   final pulumi.Input<String>? domainOwnershipIdentifierName;
-
   /// Kind of resource.
   final pulumi.Input<String>? kind;
-
   /// Name of the app.
   final pulumi.Input<String> name;
-
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
-
   /// Name of the deployment slot. If a slot is not specified, the API will delete the binding for the production slot.
   final pulumi.Input<String> slot;
-
   /// String representation of the identity.
   final pulumi.Input<String>? value;
 
@@ -52,30 +47,15 @@ class WebAppDomainOwnershipIdentifierSlotArgs {
     };
   }
 
-  factory WebAppDomainOwnershipIdentifierSlotArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WebAppDomainOwnershipIdentifierSlotArgs.fromMap(Map<String, dynamic> map) {
     return WebAppDomainOwnershipIdentifierSlotArgs(
-      domainOwnershipIdentifierName: (() {
-        final guardedValue = map['domainOwnershipIdentifierName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      domainOwnershipIdentifierName: (() { final guardedValue = map['domainOwnershipIdentifierName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       slot: pulumi.Input.fromValue(map['slot'] as String),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

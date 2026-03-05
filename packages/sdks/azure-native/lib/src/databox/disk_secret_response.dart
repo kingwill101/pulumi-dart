@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DiskSecretResponse {
   /// Bit Locker key of the disk which can be used to unlock the disk to copy data.
   final pulumi.Input<String> bitLockerKey;
-
   /// Serial number of the assigned disk.
   final pulumi.Input<String> diskSerialNumber;
 
@@ -28,9 +27,8 @@ class DiskSecretResponse {
   factory DiskSecretResponse.fromMap(Map<String, dynamic> map) {
     return DiskSecretResponse(
       bitLockerKey: pulumi.Input.fromValue(map['bitLockerKey'] as String),
-      diskSerialNumber: pulumi.Input.fromValue(
-        map['diskSerialNumber'] as String,
-      ),
+      diskSerialNumber: pulumi.Input.fromValue(map['diskSerialNumber'] as String),
     );
   }
 }
+

@@ -5,24 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFunctionBuildConfigSourceRepoSource {
   /// Regex matching branches to build.
   final pulumi.Input<String> branchName;
-
   /// Regex matching tags to build.
   final pulumi.Input<String> commitSha;
-
   /// Directory, relative to the source root, in which to run the build.
   final pulumi.Input<String> dir;
-
   /// Only trigger a build if the revision regex does
   /// NOT match the revision regex.
   final pulumi.Input<bool> invertRegex;
-
   /// ID of the project that owns the Cloud Source Repository. If omitted, the
   /// project ID requesting the build is assumed.
   final pulumi.Input<String> projectId;
-
   /// Name of the Cloud Source Repository.
   final pulumi.Input<String> repoName;
-
   /// Regex matching tags to build.
   final pulumi.Input<String> tagName;
 
@@ -56,9 +50,7 @@ class GetFunctionBuildConfigSourceRepoSource {
     };
   }
 
-  factory GetFunctionBuildConfigSourceRepoSource.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetFunctionBuildConfigSourceRepoSource.fromMap(Map<String, dynamic> map) {
     return GetFunctionBuildConfigSourceRepoSource(
       branchName: pulumi.Input.fromValue(map['branchName'] as String),
       commitSha: pulumi.Input.fromValue(map['commitSha'] as String),
@@ -70,3 +62,4 @@ class GetFunctionBuildConfigSourceRepoSource {
     );
   }
 }
+

@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration {
   /// Matches a taint effect.
   final pulumi.Input<String> effect;
-
   /// Matches a taint key (not necessarily unique).
   final pulumi.Input<String> key;
-
   /// Matches a taint operator.
   final pulumi.Input<String> operator;
-
   /// Matches a taint value.
   final pulumi.Input<String> value;
 
@@ -36,9 +33,7 @@ class GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfi
     };
   }
 
-  factory GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration.fromMap(Map<String, dynamic> map) {
     return GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration(
       effect: pulumi.Input.fromValue(map['effect'] as String),
       key: pulumi.Input.fromValue(map['key'] as String),
@@ -47,3 +42,4 @@ class GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfi
     );
   }
 }
+

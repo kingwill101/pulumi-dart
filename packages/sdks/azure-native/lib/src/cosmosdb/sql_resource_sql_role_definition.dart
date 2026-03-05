@@ -216,19 +216,14 @@ import 'sql_resource_sql_role_definition_args.dart';
 class SqlResourceSqlRoleDefinition extends pulumi.CustomResource {
   /// A set of fully qualified Scopes at or below which Role Assignments may be created using this Role Definition. This will allow application of this Role Definition on the entire database account or any underlying Database / Collection. Must have at least one element. Scopes higher than Database account are not enforceable as assignable Scopes. Note that resources referenced in assignable Scopes need not exist.
   late final pulumi.Output<List<String>?> assignableScopes;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The name of the database account.
   late final pulumi.Output<String> name;
-
   /// The set of operations allowed through this Role Definition.
   late final pulumi.Output<List<Map<String, dynamic>>?> permissions;
-
   /// A user-friendly name for the Role Definition. Must be unique for the database account.
   late final pulumi.Output<String?> roleName;
-
   /// The type of Azure resource.
   late final pulumi.Output<String> type;
 
@@ -241,11 +236,11 @@ class SqlResourceSqlRoleDefinition extends pulumi.CustomResource {
     SqlResourceSqlRoleDefinitionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:cosmosdb:SqlResourceSqlRoleDefinition',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:cosmosdb:SqlResourceSqlRoleDefinition',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     assignableScopes = registerOutput<List<String>?>('assignableScopes');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');

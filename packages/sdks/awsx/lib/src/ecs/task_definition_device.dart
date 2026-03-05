@@ -11,7 +11,11 @@ class TaskDefinitionDevice {
   /// [containerPath] Optional.
   /// [hostPath] Optional.
   /// [permissions] Optional.
-  TaskDefinitionDevice({this.containerPath, this.hostPath, this.permissions});
+  TaskDefinitionDevice({
+    this.containerPath,
+    this.hostPath,
+    this.permissions,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -23,21 +27,10 @@ class TaskDefinitionDevice {
 
   factory TaskDefinitionDevice.fromMap(Map<String, dynamic> map) {
     return TaskDefinitionDevice(
-      containerPath: (() {
-        final guardedValue = map['containerPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      hostPath: (() {
-        final guardedValue = map['hostPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      permissions: (() {
-        final guardedValue = map['permissions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      containerPath: (() { final guardedValue = map['containerPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      hostPath: (() { final guardedValue = map['hostPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      permissions: (() { final guardedValue = map['permissions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

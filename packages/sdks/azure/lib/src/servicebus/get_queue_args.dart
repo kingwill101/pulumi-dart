@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetQueueArgs {
   /// The name of this Service Bus Queue.
   final pulumi.Input<String> name;
-
   /// The ID of the ServiceBus Namespace where the Service Bus Queue exists.
   final pulumi.Input<String>? namespaceId;
   final pulumi.Input<String>? namespaceName;
@@ -39,21 +38,10 @@ class GetQueueArgs {
   factory GetQueueArgs.fromMap(Map<String, dynamic> map) {
     return GetQueueArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      namespaceId: (() {
-        final guardedValue = map['namespaceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      namespaceName: (() {
-        final guardedValue = map['namespaceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: (() {
-        final guardedValue = map['resourceGroupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      namespaceId: (() { final guardedValue = map['namespaceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      namespaceName: (() { final guardedValue = map['namespaceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

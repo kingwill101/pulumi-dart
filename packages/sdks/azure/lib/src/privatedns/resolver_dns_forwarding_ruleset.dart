@@ -449,16 +449,12 @@ import 'resolver_dns_forwarding_ruleset_state.dart';
 class ResolverDnsForwardingRuleset extends pulumi.CustomResource {
   /// Specifies the Azure Region where the Private DNS Resolver Dns Forwarding Ruleset should exist. Changing this forces a new Private DNS Resolver Dns Forwarding Ruleset to be created.
   late final pulumi.Output<String> location;
-
   /// Specifies the name which should be used for this Private DNS Resolver Dns Forwarding Ruleset. Changing this forces a new Private DNS Resolver Dns Forwarding Ruleset to be created.
   late final pulumi.Output<String> name;
-
   /// The list of IDs of the Private DNS Resolver Outbound Endpoint that is linked to the Private DNS Resolver Dns Forwarding Ruleset.
   late final pulumi.Output<List<String>> privateDnsResolverOutboundEndpointIds;
-
   /// Specifies the name of the Resource Group where the Private DNS Resolver Dns Forwarding Ruleset should exist. Changing this forces a new Private DNS Resolver Dns Forwarding Ruleset to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags to assign to the Private DNS Resolver Dns Forwarding Ruleset.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -471,16 +467,14 @@ class ResolverDnsForwardingRuleset extends pulumi.CustomResource {
     ResolverDnsForwardingRulesetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:privatedns/resolverDnsForwardingRuleset:ResolverDnsForwardingRuleset',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:privatedns/resolverDnsForwardingRuleset:ResolverDnsForwardingRuleset',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    privateDnsResolverOutboundEndpointIds = registerOutput<List<String>>(
-      'privateDnsResolverOutboundEndpointIds',
-    );
+    privateDnsResolverOutboundEndpointIds = registerOutput<List<String>>('privateDnsResolverOutboundEndpointIds');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     tags = registerOutput<Map<String, String>?>('tags');
   }
@@ -503,16 +497,14 @@ class ResolverDnsForwardingRuleset extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:privatedns/resolverDnsForwardingRuleset:ResolverDnsForwardingRuleset',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:privatedns/resolverDnsForwardingRuleset:ResolverDnsForwardingRuleset',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    privateDnsResolverOutboundEndpointIds = registerOutput<List<String>>(
-      'privateDnsResolverOutboundEndpointIds',
-    );
+    privateDnsResolverOutboundEndpointIds = registerOutput<List<String>>('privateDnsResolverOutboundEndpointIds');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     tags = registerOutput<Map<String, String>?>('tags');
   }

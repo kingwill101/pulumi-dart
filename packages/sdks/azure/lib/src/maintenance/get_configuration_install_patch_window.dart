@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConfigurationInstallPatchWindow {
   /// List of Classification category of patches to be patched.
   final pulumi.Input<List<String>> classificationsToIncludes;
-
   /// List of KB numbers to be excluded from patching.
   final pulumi.Input<List<String>> kbNumbersToExcludes;
-
   /// List of KB numbers to be included for patching.
   final pulumi.Input<List<String>> kbNumbersToIncludes;
 
@@ -32,15 +30,10 @@ class GetConfigurationInstallPatchWindow {
 
   factory GetConfigurationInstallPatchWindow.fromMap(Map<String, dynamic> map) {
     return GetConfigurationInstallPatchWindow(
-      classificationsToIncludes: pulumi.Input.fromValue(
-        (map['classificationsToIncludes'] as List).cast<String>(),
-      ),
-      kbNumbersToExcludes: pulumi.Input.fromValue(
-        (map['kbNumbersToExcludes'] as List).cast<String>(),
-      ),
-      kbNumbersToIncludes: pulumi.Input.fromValue(
-        (map['kbNumbersToIncludes'] as List).cast<String>(),
-      ),
+      classificationsToIncludes: pulumi.Input.fromValue((map['classificationsToIncludes'] as List).cast<String>()),
+      kbNumbersToExcludes: pulumi.Input.fromValue((map['kbNumbersToExcludes'] as List).cast<String>()),
+      kbNumbersToIncludes: pulumi.Input.fromValue((map['kbNumbersToIncludes'] as List).cast<String>()),
     );
   }
 }
+

@@ -12,14 +12,15 @@ class GetNetworkInterfacesInterfaceAssociatedPublicIp {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'publicIpAddress': publicIpAddress};
+    return <String, dynamic>{
+      'publicIpAddress': publicIpAddress,
+    };
   }
 
-  factory GetNetworkInterfacesInterfaceAssociatedPublicIp.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetNetworkInterfacesInterfaceAssociatedPublicIp.fromMap(Map<String, dynamic> map) {
     return GetNetworkInterfacesInterfaceAssociatedPublicIp(
       publicIpAddress: pulumi.Input.fromValue(map['publicIpAddress'] as String),
     );
   }
 }
+

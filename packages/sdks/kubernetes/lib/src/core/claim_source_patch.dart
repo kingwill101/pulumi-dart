@@ -8,7 +8,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClaimSourcePatch {
   /// ResourceClaimName is the name of a ResourceClaim object in the same namespace as this pod.
   final pulumi.Input<String>? resourceClaimName;
-
   /// ResourceClaimTemplateName is the name of a ResourceClaimTemplate object in the same namespace as this pod.
   ///
   /// The template will be used to create a new ResourceClaim, which will be bound to this pod. When this pod is deleted, the ResourceClaim will also be deleted. The name of the ResourceClaim will be &lt;pod name&gt;-&lt;resource name&gt;, where &lt;resource name&gt; is the PodResourceClaim.Name. Pod validation will reject the pod if the concatenated name is not valid for a ResourceClaim (e.g. too long).
@@ -21,7 +20,10 @@ class ClaimSourcePatch {
   /// Creates a new [ClaimSourcePatch].
   /// [resourceClaimName] ResourceClaimName is the name of a ResourceClaim object in the same namespace as this pod.
   /// [resourceClaimTemplateName] ResourceClaimTemplateName is the name of a ResourceClaimTemplate object in the same namespace as this pod.
-  ClaimSourcePatch({this.resourceClaimName, this.resourceClaimTemplateName});
+  ClaimSourcePatch({
+    this.resourceClaimName,
+    this.resourceClaimTemplateName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,16 +34,9 @@ class ClaimSourcePatch {
 
   factory ClaimSourcePatch.fromMap(Map<String, dynamic> map) {
     return ClaimSourcePatch(
-      resourceClaimName: (() {
-        final guardedValue = map['resourceClaimName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceClaimTemplateName: (() {
-        final guardedValue = map['resourceClaimTemplateName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      resourceClaimName: (() { final guardedValue = map['resourceClaimName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceClaimTemplateName: (() { final guardedValue = map['resourceClaimTemplateName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

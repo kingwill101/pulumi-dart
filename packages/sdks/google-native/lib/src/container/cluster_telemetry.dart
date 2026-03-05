@@ -10,26 +10,20 @@ class ClusterTelemetry {
 
   /// Creates a new [ClusterTelemetry].
   /// [type] Type of the integration.
-  ClusterTelemetry({this.type});
+  ClusterTelemetry({
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'type': ?pulumi.Input.mapOptionalInputValue<ClusterTelemetryType, String>(
-        type,
-        (value) => value.wireValue,
-      ),
+      'type': ?pulumi.Input.mapOptionalInputValue<ClusterTelemetryType, String>(type, (value) => value.wireValue),
     };
   }
 
   factory ClusterTelemetry.fromMap(Map<String, dynamic> map) {
     return ClusterTelemetry(
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterTelemetryType.fromValue(guardedValue as String),
-        );
-      })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterTelemetryType.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

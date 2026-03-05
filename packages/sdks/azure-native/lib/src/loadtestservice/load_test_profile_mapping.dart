@@ -141,22 +141,16 @@ import 'system_data_response.dart';
 class LoadTestProfileMapping extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Mapped Azure Load Test resource Id.
   late final pulumi.Output<String?> azureLoadTestingResourceId;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Mapped source resource Id.
   late final pulumi.Output<String?> sourceResourceId;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Mapped Azure Load Test resource test-profile-id.
   late final pulumi.Output<String?> testProfileId;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -169,27 +163,16 @@ class LoadTestProfileMapping extends pulumi.CustomResource {
     LoadTestProfileMappingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:loadtestservice:LoadTestProfileMapping',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:loadtestservice:LoadTestProfileMapping',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    azureLoadTestingResourceId = registerOutput<String?>(
-      'azureLoadTestingResourceId',
-    );
+    azureLoadTestingResourceId = registerOutput<String?>('azureLoadTestingResourceId');
     this.name = registerOutput<String>('name');
     sourceResourceId = registerOutput<String?>('sourceResourceId');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     testProfileId = registerOutput<String?>('testProfileId');
     type = registerOutput<String>('type');
   }

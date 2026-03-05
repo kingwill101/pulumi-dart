@@ -9,17 +9,20 @@ class ConvertRowIdToColumnResponse {
 
   /// Creates a new [ConvertRowIdToColumnResponse].
   /// [onlyIfNoPrimaryKey] Only work on tables without primary key defined
-  ConvertRowIdToColumnResponse({required this.onlyIfNoPrimaryKey});
+  ConvertRowIdToColumnResponse({
+    required this.onlyIfNoPrimaryKey,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'onlyIfNoPrimaryKey': onlyIfNoPrimaryKey};
+    return <String, dynamic>{
+      'onlyIfNoPrimaryKey': onlyIfNoPrimaryKey,
+    };
   }
 
   factory ConvertRowIdToColumnResponse.fromMap(Map<String, dynamic> map) {
     return ConvertRowIdToColumnResponse(
-      onlyIfNoPrimaryKey: pulumi.Input.fromValue(
-        map['onlyIfNoPrimaryKey'] as bool,
-      ),
+      onlyIfNoPrimaryKey: pulumi.Input.fromValue(map['onlyIfNoPrimaryKey'] as bool),
     );
   }
 }
+

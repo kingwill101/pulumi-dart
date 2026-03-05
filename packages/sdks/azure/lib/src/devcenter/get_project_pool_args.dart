@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetProjectPoolArgs {
   /// The ID of the associated Dev Center Project.
   final pulumi.Input<String> devCenterProjectId;
-
   /// The name of this Dev Center Project Pool.
   final pulumi.Input<String> name;
 
   /// Creates a new [GetProjectPoolArgs].
   /// [devCenterProjectId] The ID of the associated Dev Center Project.
   /// [name] The name of this Dev Center Project Pool.
-  GetProjectPoolArgs({required this.devCenterProjectId, required this.name});
+  GetProjectPoolArgs({
+    required this.devCenterProjectId,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,10 +29,9 @@ class GetProjectPoolArgs {
 
   factory GetProjectPoolArgs.fromMap(Map<String, dynamic> map) {
     return GetProjectPoolArgs(
-      devCenterProjectId: pulumi.Input.fromValue(
-        map['devCenterProjectId'] as String,
-      ),
+      devCenterProjectId: pulumi.Input.fromValue(map['devCenterProjectId'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

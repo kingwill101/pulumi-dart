@@ -7,11 +7,8 @@ import 'cspm_monitor_gcp_offering_response_native_cloud_connection.dart';
 class CspmMonitorGcpOfferingResponse {
   /// The offering description.
   final pulumi.Input<String> description;
-
   /// The native cloud connection configuration
-  final pulumi.Input<CspmMonitorGcpOfferingResponseNativeCloudConnection>?
-  nativeCloudConnection;
-
+  final pulumi.Input<CspmMonitorGcpOfferingResponseNativeCloudConnection>? nativeCloudConnection;
   /// The type of the security offering.
   /// Expected value is 'CspmMonitorGcp'.
   final pulumi.Input<String> offeringType;
@@ -29,11 +26,7 @@ class CspmMonitorGcpOfferingResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': description,
-      'nativeCloudConnection':
-          ?pulumi.Input.mapOptionalInputValue<
-            CspmMonitorGcpOfferingResponseNativeCloudConnection,
-            Map<String, dynamic>
-          >(nativeCloudConnection, (value) => value.toMap()),
+      'nativeCloudConnection': ?pulumi.Input.mapOptionalInputValue<CspmMonitorGcpOfferingResponseNativeCloudConnection, Map<String, dynamic>>(nativeCloudConnection, (value) => value.toMap()),
       'offeringType': offeringType,
     };
   }
@@ -41,16 +34,9 @@ class CspmMonitorGcpOfferingResponse {
   factory CspmMonitorGcpOfferingResponse.fromMap(Map<String, dynamic> map) {
     return CspmMonitorGcpOfferingResponse(
       description: pulumi.Input.fromValue(map['description'] as String),
-      nativeCloudConnection: (() {
-        final guardedValue = map['nativeCloudConnection'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CspmMonitorGcpOfferingResponseNativeCloudConnection.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      nativeCloudConnection: (() { final guardedValue = map['nativeCloudConnection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CspmMonitorGcpOfferingResponseNativeCloudConnection.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       offeringType: pulumi.Input.fromValue(map['offeringType'] as String),
     );
   }
 }
+

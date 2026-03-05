@@ -7,44 +7,29 @@ import 'audit_log_config_log_type_deploymentmanager_v2beta.dart';
 class AuditLogConfigDeploymentmanagerV2beta {
   /// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
   final pulumi.Input<List<String>>? exemptedMembers;
-
   /// The log type that this config enables.
   final pulumi.Input<AuditLogConfigLogTypeDeploymentmanagerV2beta>? logType;
 
   /// Creates a new [AuditLogConfigDeploymentmanagerV2beta].
   /// [exemptedMembers] Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
   /// [logType] The log type that this config enables.
-  AuditLogConfigDeploymentmanagerV2beta({this.exemptedMembers, this.logType});
+  AuditLogConfigDeploymentmanagerV2beta({
+    this.exemptedMembers,
+    this.logType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'exemptedMembers': ?exemptedMembers,
-      'logType':
-          ?pulumi.Input.mapOptionalInputValue<
-            AuditLogConfigLogTypeDeploymentmanagerV2beta,
-            String
-          >(logType, (value) => value.wireValue),
+      'logType': ?pulumi.Input.mapOptionalInputValue<AuditLogConfigLogTypeDeploymentmanagerV2beta, String>(logType, (value) => value.wireValue),
     };
   }
 
-  factory AuditLogConfigDeploymentmanagerV2beta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AuditLogConfigDeploymentmanagerV2beta.fromMap(Map<String, dynamic> map) {
     return AuditLogConfigDeploymentmanagerV2beta(
-      exemptedMembers: (() {
-        final guardedValue = map['exemptedMembers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      logType: (() {
-        final guardedValue = map['logType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AuditLogConfigLogTypeDeploymentmanagerV2beta.fromValue(
-            guardedValue as String,
-          ),
-        );
-      })(),
+      exemptedMembers: (() { final guardedValue = map['exemptedMembers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      logType: (() { final guardedValue = map['logType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AuditLogConfigLogTypeDeploymentmanagerV2beta.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

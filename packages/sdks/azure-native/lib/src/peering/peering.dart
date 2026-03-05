@@ -929,34 +929,24 @@ import 'peering_sku_response.dart';
 class Peering extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The properties that define a direct peering.
   late final pulumi.Output<PeeringPropertiesDirectResponse?> direct;
-
   /// The properties that define an exchange peering.
   late final pulumi.Output<PeeringPropertiesExchangeResponse?> exchange;
-
   /// The kind of the peering.
   late final pulumi.Output<String> kind;
-
   /// The location of the resource.
   late final pulumi.Output<String> location;
-
   /// The name of the resource.
   late final pulumi.Output<String> name;
-
   /// The location of the peering.
   late final pulumi.Output<String?> peeringLocation;
-
   /// The provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The SKU that defines the tier and kind of the peering.
   late final pulumi.Output<PeeringSkuResponse> sku;
-
   /// The resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource.
   late final pulumi.Output<String> type;
 
@@ -969,47 +959,20 @@ class Peering extends pulumi.CustomResource {
     PeeringArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:peering:Peering',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:peering:Peering',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    direct = registerOutput<PeeringPropertiesDirectResponse?>(
-      'direct',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PeeringPropertiesDirectResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    exchange = registerOutput<PeeringPropertiesExchangeResponse?>(
-      'exchange',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PeeringPropertiesExchangeResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    direct = registerOutput<PeeringPropertiesDirectResponse?>('direct', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PeeringPropertiesDirectResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    exchange = registerOutput<PeeringPropertiesExchangeResponse?>('exchange', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PeeringPropertiesExchangeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kind = registerOutput<String>('kind');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     peeringLocation = registerOutput<String?>('peeringLocation');
     provisioningState = registerOutput<String>('provisioningState');
-    sku = registerOutput<PeeringSkuResponse>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PeeringSkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sku = registerOutput<PeeringSkuResponse>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PeeringSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

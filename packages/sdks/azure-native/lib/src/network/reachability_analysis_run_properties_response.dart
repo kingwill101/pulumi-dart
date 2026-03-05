@@ -8,13 +8,10 @@ class ReachabilityAnalysisRunPropertiesResponse {
   final pulumi.Input<String> analysisResult;
   final pulumi.Input<String>? description;
   final pulumi.Input<String> errorMessage;
-
   /// Intent information.
   final pulumi.Input<IntentContentResponse> intentContent;
-
   /// Id of the intent resource to run analysis on.
   final pulumi.Input<String> intentId;
-
   /// Provisioning states of a resource.
   final pulumi.Input<String> provisioningState;
 
@@ -39,36 +36,21 @@ class ReachabilityAnalysisRunPropertiesResponse {
       'analysisResult': analysisResult,
       'description': ?description,
       'errorMessage': errorMessage,
-      'intentContent':
-          pulumi.Input.mapInputValue<
-            IntentContentResponse,
-            Map<String, dynamic>
-          >(intentContent, (value) => value.toMap()),
+      'intentContent': pulumi.Input.mapInputValue<IntentContentResponse, Map<String, dynamic>>(intentContent, (value) => value.toMap()),
       'intentId': intentId,
       'provisioningState': provisioningState,
     };
   }
 
-  factory ReachabilityAnalysisRunPropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ReachabilityAnalysisRunPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ReachabilityAnalysisRunPropertiesResponse(
       analysisResult: pulumi.Input.fromValue(map['analysisResult'] as String),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       errorMessage: pulumi.Input.fromValue(map['errorMessage'] as String),
-      intentContent: pulumi.Input.fromValue(
-        IntentContentResponse.fromMap(
-          (map['intentContent']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      intentContent: pulumi.Input.fromValue(IntentContentResponse.fromMap((map['intentContent']! as Map).cast<String, dynamic>())),
       intentId: pulumi.Input.fromValue(map['intentId'] as String),
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
     );
   }
 }
+

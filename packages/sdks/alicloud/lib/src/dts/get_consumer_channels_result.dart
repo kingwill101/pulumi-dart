@@ -7,7 +7,6 @@ import 'get_consumer_channels_channel.dart';
 class GetConsumerChannelsResult {
   final List<GetConsumerChannelsChannel> channels;
   final String dtsInstanceId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -29,11 +28,7 @@ class GetConsumerChannelsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'channels':
-          pulumi.Input.encodeList<
-            GetConsumerChannelsChannel,
-            Map<String, dynamic>
-          >(channels, (value) => value.toMap()),
+      'channels': pulumi.Input.encodeList<GetConsumerChannelsChannel, Map<String, dynamic>>(channels, (value) => value.toMap()),
       'dtsInstanceId': dtsInstanceId,
       'id': id,
       'ids': ids,
@@ -43,20 +38,12 @@ class GetConsumerChannelsResult {
 
   factory GetConsumerChannelsResult.fromMap(Map<String, dynamic> map) {
     return GetConsumerChannelsResult(
-      channels: pulumi.Input.decodeList<GetConsumerChannelsChannel>(
-        map['channels']!,
-        (value) => GetConsumerChannelsChannel.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      channels: pulumi.Input.decodeList<GetConsumerChannelsChannel>(map['channels']!, (value) => GetConsumerChannelsChannel.fromMap((value as Map).cast<String, dynamic>())),
       dtsInstanceId: map['dtsInstanceId'] as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

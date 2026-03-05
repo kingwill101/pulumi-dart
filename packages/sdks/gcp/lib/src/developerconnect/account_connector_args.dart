@@ -13,24 +13,19 @@ class AccountConnectorArgs {
   /// to https://google.aip.dev/122#resource-id-segments Names must be unique
   /// per-project per-location.
   final pulumi.Input<String> accountConnectorId;
-
   /// Optional. Allows users to store small amounts of arbitrary data.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
-
   /// Optional. Labels as key value pairs
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// The location of the resource.
   final pulumi.Input<String> location;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// ProviderOAuthConfig is the OAuth config for a provider.
   /// Structure is documented below.
   final pulumi.Input<AccountConnectorProviderOauthConfig>? providerOauthConfig;
@@ -58,48 +53,19 @@ class AccountConnectorArgs {
       'labels': ?labels,
       'location': location,
       'project': ?project,
-      'providerOauthConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            AccountConnectorProviderOauthConfig,
-            Map<String, dynamic>
-          >(providerOauthConfig, (value) => value.toMap()),
+      'providerOauthConfig': ?pulumi.Input.mapOptionalInputValue<AccountConnectorProviderOauthConfig, Map<String, dynamic>>(providerOauthConfig, (value) => value.toMap()),
     };
   }
 
   factory AccountConnectorArgs.fromMap(Map<String, dynamic> map) {
     return AccountConnectorArgs(
-      accountConnectorId: pulumi.Input.fromValue(
-        map['accountConnectorId'] as String,
-      ),
-      annotations: (() {
-        final guardedValue = map['annotations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      accountConnectorId: pulumi.Input.fromValue(map['accountConnectorId'] as String),
+      annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      providerOauthConfig: (() {
-        final guardedValue = map['providerOauthConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AccountConnectorProviderOauthConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      providerOauthConfig: (() { final guardedValue = map['providerOauthConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AccountConnectorProviderOauthConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

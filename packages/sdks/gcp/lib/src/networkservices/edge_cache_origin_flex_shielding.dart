@@ -11,19 +11,20 @@ class EdgeCacheOriginFlexShielding {
 
   /// Creates a new [EdgeCacheOriginFlexShielding].
   /// [flexShieldingRegions] Whenever possible, content will be fetched from origin and cached in or
-  EdgeCacheOriginFlexShielding({this.flexShieldingRegions});
+  EdgeCacheOriginFlexShielding({
+    this.flexShieldingRegions,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'flexShieldingRegions': ?flexShieldingRegions};
+    return <String, dynamic>{
+      'flexShieldingRegions': ?flexShieldingRegions,
+    };
   }
 
   factory EdgeCacheOriginFlexShielding.fromMap(Map<String, dynamic> map) {
     return EdgeCacheOriginFlexShielding(
-      flexShieldingRegions: (() {
-        final guardedValue = map['flexShieldingRegions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      flexShieldingRegions: (() { final guardedValue = map['flexShieldingRegions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -21,12 +21,11 @@ class GetContactsRotationRecurrenceDailySetting {
     };
   }
 
-  factory GetContactsRotationRecurrenceDailySetting.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetContactsRotationRecurrenceDailySetting.fromMap(Map<String, dynamic> map) {
     return GetContactsRotationRecurrenceDailySetting(
       hourOfDay: pulumi.Input.fromValue(map['hourOfDay'] as int),
       minuteOfHour: pulumi.Input.fromValue(map['minuteOfHour'] as int),
     );
   }
 }
+

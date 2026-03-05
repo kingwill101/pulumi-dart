@@ -6,7 +6,6 @@ import 'virtual_machine_os_profile_linux_config_ssh_key.dart';
 class VirtualMachineOsProfileLinuxConfig {
   /// Specifies whether password authentication should be disabled. If set to `false`, an `admin_password` must be specified.
   final pulumi.Input<bool> disablePasswordAuthentication;
-
   /// One or more `ssh_keys` blocks as defined below. This field is required if `disable_password_authentication` is set to `true`.
   final pulumi.Input<List<VirtualMachineOsProfileLinuxConfigSshKey>>? sshKeys;
 
@@ -21,38 +20,15 @@ class VirtualMachineOsProfileLinuxConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'disablePasswordAuthentication': disablePasswordAuthentication,
-      'sshKeys':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<VirtualMachineOsProfileLinuxConfigSshKey>,
-            List<Map<String, dynamic>>
-          >(
-            sshKeys,
-            (value) =>
-                pulumi.Input.encodeList<
-                  VirtualMachineOsProfileLinuxConfigSshKey,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'sshKeys': ?pulumi.Input.mapOptionalInputValue<List<VirtualMachineOsProfileLinuxConfigSshKey>, List<Map<String, dynamic>>>(sshKeys, (value) => pulumi.Input.encodeList<VirtualMachineOsProfileLinuxConfigSshKey, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory VirtualMachineOsProfileLinuxConfig.fromMap(Map<String, dynamic> map) {
     return VirtualMachineOsProfileLinuxConfig(
-      disablePasswordAuthentication: pulumi.Input.fromValue(
-        map['disablePasswordAuthentication'] as bool,
-      ),
-      sshKeys: (() {
-        final guardedValue = map['sshKeys'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<VirtualMachineOsProfileLinuxConfigSshKey>(
-            guardedValue,
-            (value) => VirtualMachineOsProfileLinuxConfigSshKey.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      disablePasswordAuthentication: pulumi.Input.fromValue(map['disablePasswordAuthentication'] as bool),
+      sshKeys: (() { final guardedValue = map['sshKeys']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VirtualMachineOsProfileLinuxConfigSshKey>(guardedValue, (value) => VirtualMachineOsProfileLinuxConfigSshKey.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

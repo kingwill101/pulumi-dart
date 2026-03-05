@@ -18,13 +18,10 @@ class LabelingJobHumanTaskConfigAnnotationConsolidationConfig {
     };
   }
 
-  factory LabelingJobHumanTaskConfigAnnotationConsolidationConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LabelingJobHumanTaskConfigAnnotationConsolidationConfig.fromMap(Map<String, dynamic> map) {
     return LabelingJobHumanTaskConfigAnnotationConsolidationConfig(
-      annotationConsolidationLambdaArn: pulumi.Input.fromValue(
-        map['annotationConsolidationLambdaArn'] as String,
-      ),
+      annotationConsolidationLambdaArn: pulumi.Input.fromValue(map['annotationConsolidationLambdaArn'] as String),
     );
   }
 }
+

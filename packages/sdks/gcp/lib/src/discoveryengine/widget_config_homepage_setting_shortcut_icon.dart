@@ -8,21 +8,20 @@ class WidgetConfigHomepageSettingShortcutIcon {
 
   /// Creates a new [WidgetConfigHomepageSettingShortcutIcon].
   /// [url] Image URL.
-  WidgetConfigHomepageSettingShortcutIcon({this.url});
+  WidgetConfigHomepageSettingShortcutIcon({
+    this.url,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'url': ?url};
+    return <String, dynamic>{
+      'url': ?url,
+    };
   }
 
-  factory WidgetConfigHomepageSettingShortcutIcon.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WidgetConfigHomepageSettingShortcutIcon.fromMap(Map<String, dynamic> map) {
     return WidgetConfigHomepageSettingShortcutIcon(
-      url: (() {
-        final guardedValue = map['url'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      url: (() { final guardedValue = map['url']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

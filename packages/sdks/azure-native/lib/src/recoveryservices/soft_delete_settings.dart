@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Soft delete Settings of vault
 class SoftDeleteSettings {
   final pulumi.Input<String>? enhancedSecurityState;
-
   /// Soft delete retention period in days
   final pulumi.Input<int>? softDeleteRetentionPeriodInDays;
   final pulumi.Input<String>? softDeleteState;
@@ -30,21 +29,10 @@ class SoftDeleteSettings {
 
   factory SoftDeleteSettings.fromMap(Map<String, dynamic> map) {
     return SoftDeleteSettings(
-      enhancedSecurityState: (() {
-        final guardedValue = map['enhancedSecurityState'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      softDeleteRetentionPeriodInDays: (() {
-        final guardedValue = map['softDeleteRetentionPeriodInDays'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      softDeleteState: (() {
-        final guardedValue = map['softDeleteState'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      enhancedSecurityState: (() { final guardedValue = map['enhancedSecurityState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      softDeleteRetentionPeriodInDays: (() { final guardedValue = map['softDeleteRetentionPeriodInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      softDeleteState: (() { final guardedValue = map['softDeleteState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

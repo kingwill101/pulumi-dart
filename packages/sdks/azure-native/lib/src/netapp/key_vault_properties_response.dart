@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KeyVaultPropertiesResponse {
   /// The name of KeyVault key.
   final pulumi.Input<String> keyName;
-
   /// UUID v4 used to identify the Azure Key Vault configuration
   final pulumi.Input<String> keyVaultId;
-
   /// The resource ID of KeyVault.
   final pulumi.Input<String>? keyVaultResourceId;
-
   /// The Uri of KeyVault.
   final pulumi.Input<String> keyVaultUri;
-
   /// Status of the KeyVault connection.
   final pulumi.Input<String> status;
 
@@ -47,13 +43,10 @@ class KeyVaultPropertiesResponse {
     return KeyVaultPropertiesResponse(
       keyName: pulumi.Input.fromValue(map['keyName'] as String),
       keyVaultId: pulumi.Input.fromValue(map['keyVaultId'] as String),
-      keyVaultResourceId: (() {
-        final guardedValue = map['keyVaultResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      keyVaultResourceId: (() { final guardedValue = map['keyVaultResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       keyVaultUri: pulumi.Input.fromValue(map['keyVaultUri'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
+

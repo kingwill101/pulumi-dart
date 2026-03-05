@@ -242,82 +242,54 @@ import 'cluster_upgrade_policy.dart';
 class Cluster extends pulumi.CustomResource {
   /// A List of one or more features which should be enabled, such as `DnsService`.
   late final pulumi.Output<List<String>?> addOnFeatures;
-
   /// An `azure_active_directory` block as defined below.
   late final pulumi.Output<ClusterAzureActiveDirectory?> azureActiveDirectory;
-
   /// A `certificate` block as defined below. Conflicts with `certificate_common_names`.
   late final pulumi.Output<ClusterCertificate?> certificate;
-
   /// A `certificate_common_names` block as defined below. Conflicts with `certificate`.
-  late final pulumi.Output<ClusterCertificateCommonNames?>
-  certificateCommonNames;
-
+  late final pulumi.Output<ClusterCertificateCommonNames?> certificateCommonNames;
   /// A `client_certificate_common_name` block as defined below.
   ///
   /// &gt; **Note:** If Client Certificates are enabled then at a Certificate must be configured on the cluster.
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  clientCertificateCommonNames;
-
+  late final pulumi.Output<List<Map<String, dynamic>>?> clientCertificateCommonNames;
   /// One or more `client_certificate_thumbprint` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  clientCertificateThumbprints;
-
+  late final pulumi.Output<List<Map<String, dynamic>>?> clientCertificateThumbprints;
   /// Required if Upgrade Mode set to `Manual`, Specifies the Version of the Cluster Code of the cluster.
   late final pulumi.Output<String> clusterCodeVersion;
-
   /// The Cluster Endpoint for this Service Fabric Cluster.
   late final pulumi.Output<String> clusterEndpoint;
-
   /// A `diagnostics_config` block as defined below.
   late final pulumi.Output<ClusterDiagnosticsConfig?> diagnosticsConfig;
-
   /// One or more `fabric_settings` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> fabricSettings;
-
   /// Specifies the Azure Region where the Service Fabric Cluster should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// Specifies the Management Endpoint of the cluster such as `http://example.com`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> managementEndpoint;
-
   /// The name of the Service Fabric Cluster. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// One or more `node_type` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> nodeTypes;
-
   /// Specifies the Reliability Level of the Cluster. Possible values include `None`, `Bronze`, `Silver`, `Gold` and `Platinum`.
   ///
   /// &gt; **Note:** The Reliability Level of the Cluster depends on the number of nodes in the Cluster: `Platinum` requires at least 9 VM's, `Gold` requires at least 7 VM's, `Silver` requires at least 5 VM's, `Bronze` requires at least 3 VM's.
   late final pulumi.Output<String> reliabilityLevel;
-
   /// The name of the Resource Group in which the Service Fabric Cluster exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A `reverse_proxy_certificate` block as defined below. Conflicts with `reverse_proxy_certificate_common_names`.
-  late final pulumi.Output<ClusterReverseProxyCertificate?>
-  reverseProxyCertificate;
-
+  late final pulumi.Output<ClusterReverseProxyCertificate?> reverseProxyCertificate;
   /// A `reverse_proxy_certificate_common_names` block as defined below. Conflicts with `reverse_proxy_certificate`.
-  late final pulumi.Output<ClusterReverseProxyCertificateCommonNames?>
-  reverseProxyCertificateCommonNames;
-
+  late final pulumi.Output<ClusterReverseProxyCertificateCommonNames?> reverseProxyCertificateCommonNames;
   /// Specifies the logical grouping of VMs in upgrade domains. Possible values are `Hierarchical` or `Parallel`.
   late final pulumi.Output<String?> serviceFabricZonalUpgradeMode;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Specifies the Upgrade Mode of the cluster. Possible values are `Automatic` or `Manual`.
   late final pulumi.Output<String> upgradeMode;
-
   /// A `upgrade_policy` block as defined below.
   late final pulumi.Output<ClusterUpgradePolicy?> upgradePolicy;
-
   /// Specifies the Image expected for the Service Fabric Cluster, such as `Windows`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> vmImage;
-
   /// Specifies the upgrade mode for the virtual machine scale set updates that happen in all availability zones at once. Possible values are `Hierarchical` or `Parallel`.
   late final pulumi.Output<String?> vmssZonalUpgradeMode;
 
@@ -330,105 +302,33 @@ class Cluster extends pulumi.CustomResource {
     ClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:servicefabric/cluster:Cluster',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:servicefabric/cluster:Cluster',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     addOnFeatures = registerOutput<List<String>?>('addOnFeatures');
-    azureActiveDirectory = registerOutput<ClusterAzureActiveDirectory?>(
-      'azureActiveDirectory',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterAzureActiveDirectory.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    certificate = registerOutput<ClusterCertificate?>(
-      'certificate',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterCertificate.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    certificateCommonNames = registerOutput<ClusterCertificateCommonNames?>(
-      'certificateCommonNames',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterCertificateCommonNames.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    clientCertificateCommonNames = registerOutput<List<Map<String, dynamic>>?>(
-      'clientCertificateCommonNames',
-    );
-    clientCertificateThumbprints = registerOutput<List<Map<String, dynamic>>?>(
-      'clientCertificateThumbprints',
-    );
+    azureActiveDirectory = registerOutput<ClusterAzureActiveDirectory?>('azureActiveDirectory', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterAzureActiveDirectory.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    certificate = registerOutput<ClusterCertificate?>('certificate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterCertificate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    certificateCommonNames = registerOutput<ClusterCertificateCommonNames?>('certificateCommonNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterCertificateCommonNames.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    clientCertificateCommonNames = registerOutput<List<Map<String, dynamic>>?>('clientCertificateCommonNames');
+    clientCertificateThumbprints = registerOutput<List<Map<String, dynamic>>?>('clientCertificateThumbprints');
     clusterCodeVersion = registerOutput<String>('clusterCodeVersion');
     clusterEndpoint = registerOutput<String>('clusterEndpoint');
-    diagnosticsConfig = registerOutput<ClusterDiagnosticsConfig?>(
-      'diagnosticsConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterDiagnosticsConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    fabricSettings = registerOutput<List<Map<String, dynamic>>?>(
-      'fabricSettings',
-    );
+    diagnosticsConfig = registerOutput<ClusterDiagnosticsConfig?>('diagnosticsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterDiagnosticsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    fabricSettings = registerOutput<List<Map<String, dynamic>>?>('fabricSettings');
     location = registerOutput<String>('location');
     managementEndpoint = registerOutput<String>('managementEndpoint');
     this.name = registerOutput<String>('name');
     nodeTypes = registerOutput<List<Map<String, dynamic>>>('nodeTypes');
     reliabilityLevel = registerOutput<String>('reliabilityLevel');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    reverseProxyCertificate = registerOutput<ClusterReverseProxyCertificate?>(
-      'reverseProxyCertificate',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterReverseProxyCertificate.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    reverseProxyCertificateCommonNames =
-        registerOutput<ClusterReverseProxyCertificateCommonNames?>(
-          'reverseProxyCertificateCommonNames',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ClusterReverseProxyCertificateCommonNames.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    serviceFabricZonalUpgradeMode = registerOutput<String?>(
-      'serviceFabricZonalUpgradeMode',
-    );
+    reverseProxyCertificate = registerOutput<ClusterReverseProxyCertificate?>('reverseProxyCertificate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterReverseProxyCertificate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    reverseProxyCertificateCommonNames = registerOutput<ClusterReverseProxyCertificateCommonNames?>('reverseProxyCertificateCommonNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterReverseProxyCertificateCommonNames.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    serviceFabricZonalUpgradeMode = registerOutput<String?>('serviceFabricZonalUpgradeMode');
     tags = registerOutput<Map<String, String>?>('tags');
     upgradeMode = registerOutput<String>('upgradeMode');
-    upgradePolicy = registerOutput<ClusterUpgradePolicy?>(
-      'upgradePolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterUpgradePolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    upgradePolicy = registerOutput<ClusterUpgradePolicy?>('upgradePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterUpgradePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vmImage = registerOutput<String>('vmImage');
     vmssZonalUpgradeMode = registerOutput<String?>('vmssZonalUpgradeMode');
   }
@@ -451,105 +351,33 @@ class Cluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:servicefabric/cluster:Cluster',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:servicefabric/cluster:Cluster',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     addOnFeatures = registerOutput<List<String>?>('addOnFeatures');
-    azureActiveDirectory = registerOutput<ClusterAzureActiveDirectory?>(
-      'azureActiveDirectory',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterAzureActiveDirectory.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    certificate = registerOutput<ClusterCertificate?>(
-      'certificate',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterCertificate.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    certificateCommonNames = registerOutput<ClusterCertificateCommonNames?>(
-      'certificateCommonNames',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterCertificateCommonNames.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    clientCertificateCommonNames = registerOutput<List<Map<String, dynamic>>?>(
-      'clientCertificateCommonNames',
-    );
-    clientCertificateThumbprints = registerOutput<List<Map<String, dynamic>>?>(
-      'clientCertificateThumbprints',
-    );
+    azureActiveDirectory = registerOutput<ClusterAzureActiveDirectory?>('azureActiveDirectory', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterAzureActiveDirectory.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    certificate = registerOutput<ClusterCertificate?>('certificate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterCertificate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    certificateCommonNames = registerOutput<ClusterCertificateCommonNames?>('certificateCommonNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterCertificateCommonNames.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    clientCertificateCommonNames = registerOutput<List<Map<String, dynamic>>?>('clientCertificateCommonNames');
+    clientCertificateThumbprints = registerOutput<List<Map<String, dynamic>>?>('clientCertificateThumbprints');
     clusterCodeVersion = registerOutput<String>('clusterCodeVersion');
     clusterEndpoint = registerOutput<String>('clusterEndpoint');
-    diagnosticsConfig = registerOutput<ClusterDiagnosticsConfig?>(
-      'diagnosticsConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterDiagnosticsConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    fabricSettings = registerOutput<List<Map<String, dynamic>>?>(
-      'fabricSettings',
-    );
+    diagnosticsConfig = registerOutput<ClusterDiagnosticsConfig?>('diagnosticsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterDiagnosticsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    fabricSettings = registerOutput<List<Map<String, dynamic>>?>('fabricSettings');
     location = registerOutput<String>('location');
     managementEndpoint = registerOutput<String>('managementEndpoint');
     this.name = registerOutput<String>('name');
     nodeTypes = registerOutput<List<Map<String, dynamic>>>('nodeTypes');
     reliabilityLevel = registerOutput<String>('reliabilityLevel');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    reverseProxyCertificate = registerOutput<ClusterReverseProxyCertificate?>(
-      'reverseProxyCertificate',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterReverseProxyCertificate.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    reverseProxyCertificateCommonNames =
-        registerOutput<ClusterReverseProxyCertificateCommonNames?>(
-          'reverseProxyCertificateCommonNames',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ClusterReverseProxyCertificateCommonNames.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    serviceFabricZonalUpgradeMode = registerOutput<String?>(
-      'serviceFabricZonalUpgradeMode',
-    );
+    reverseProxyCertificate = registerOutput<ClusterReverseProxyCertificate?>('reverseProxyCertificate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterReverseProxyCertificate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    reverseProxyCertificateCommonNames = registerOutput<ClusterReverseProxyCertificateCommonNames?>('reverseProxyCertificateCommonNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterReverseProxyCertificateCommonNames.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    serviceFabricZonalUpgradeMode = registerOutput<String?>('serviceFabricZonalUpgradeMode');
     tags = registerOutput<Map<String, String>?>('tags');
     upgradeMode = registerOutput<String>('upgradeMode');
-    upgradePolicy = registerOutput<ClusterUpgradePolicy?>(
-      'upgradePolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterUpgradePolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    upgradePolicy = registerOutput<ClusterUpgradePolicy?>('upgradePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterUpgradePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vmImage = registerOutput<String>('vmImage');
     vmssZonalUpgradeMode = registerOutput<String?>('vmssZonalUpgradeMode');
   }

@@ -16,3 +16,4 @@ enum IssueModelModelType {
     throw ArgumentError('Unknown IssueModelModelType value: $value');
   }
 }
+

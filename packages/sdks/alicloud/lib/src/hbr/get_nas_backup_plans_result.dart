@@ -6,7 +6,6 @@ import 'get_nas_backup_plans_plan.dart';
 /// Result data returned by getNasBackupPlans.
 class GetNasBackupPlansResult {
   final String? fileSystemId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -44,46 +43,22 @@ class GetNasBackupPlansResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'plans':
-          pulumi.Input.encodeList<GetNasBackupPlansPlan, Map<String, dynamic>>(
-            plans,
-            (value) => value.toMap(),
-          ),
+      'plans': pulumi.Input.encodeList<GetNasBackupPlansPlan, Map<String, dynamic>>(plans, (value) => value.toMap()),
       'vaultId': ?vaultId,
     };
   }
 
   factory GetNasBackupPlansResult.fromMap(Map<String, dynamic> map) {
     return GetNasBackupPlansResult(
-      fileSystemId: (() {
-        final guardedValue = map['fileSystemId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      fileSystemId: (() { final guardedValue = map['fileSystemId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      plans: pulumi.Input.decodeList<GetNasBackupPlansPlan>(
-        map['plans']!,
-        (value) => GetNasBackupPlansPlan.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      vaultId: (() {
-        final guardedValue = map['vaultId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      plans: pulumi.Input.decodeList<GetNasBackupPlansPlan>(map['plans']!, (value) => GetNasBackupPlansPlan.fromMap((value as Map).cast<String, dynamic>())),
+      vaultId: (() { final guardedValue = map['vaultId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

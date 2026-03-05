@@ -175,25 +175,18 @@ import 'user_state.dart';
 class User extends pulumi.CustomResource {
   /// Access permissions string used for this user.
   late final pulumi.Output<String> accessString;
-
   /// ARN of the user.
   late final pulumi.Output<String> arn;
-
   /// Denotes the user's authentication properties. Detailed below.
   late final pulumi.Output<UserAuthenticationMode> authenticationMode;
-
   /// Minimum engine version supported for the user.
   late final pulumi.Output<String> minimumEngineVersion;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// Name of the MemoryDB user. Up to 40 characters.
   ///
   /// The following arguments are optional:
@@ -203,25 +196,19 @@ class User extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [User]. {@macro pulumi_memorydb_user_user_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  User(String name, {UserArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:memorydb/user:User',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  User(
+    String name, {
+    UserArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:memorydb/user:User',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessString = registerOutput<String>('accessString');
     arn = registerOutput<String>('arn');
-    authenticationMode = registerOutput<UserAuthenticationMode>(
-      'authenticationMode',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return UserAuthenticationMode.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    authenticationMode = registerOutput<UserAuthenticationMode>('authenticationMode', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserAuthenticationMode.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     minimumEngineVersion = registerOutput<String>('minimumEngineVersion');
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -230,7 +217,11 @@ class User extends pulumi.CustomResource {
   }
 
   /// Gets an existing [User] resource's state with the given [name] and [id].
-  static User get(String name, pulumi.Input<String> id, {UserState? state}) {
+  static User get(
+    String name,
+    pulumi.Input<String> id, {
+    UserState? state,
+  }) {
     return User._get(
       name,
       state: state?.toMap(),
@@ -243,23 +234,14 @@ class User extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:memorydb/user:User',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:memorydb/user:User',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessString = registerOutput<String>('accessString');
     arn = registerOutput<String>('arn');
-    authenticationMode = registerOutput<UserAuthenticationMode>(
-      'authenticationMode',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return UserAuthenticationMode.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    authenticationMode = registerOutput<UserAuthenticationMode>('authenticationMode', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserAuthenticationMode.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     minimumEngineVersion = registerOutput<String>('minimumEngineVersion');
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');

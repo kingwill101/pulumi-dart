@@ -7,30 +7,22 @@ import 'filter_filter_criteria.dart';
 class FilterState {
   /// Action to be applied to the findings that maatch the filter. Possible values are `NONE` and `SUPPRESS`
   final pulumi.Input<String>? action;
-
   /// ARN of the Filter.
   final pulumi.Input<String>? arn;
-
   /// Description
   final pulumi.Input<String>? description;
-
   /// Details on the filter criteria. Documented below.
   ///
   /// The following arguments are optional:
   final pulumi.Input<List<FilterFilterCriteria>>? filterCriterias;
-
   /// Name of the filter.
   final pulumi.Input<String>? name;
-
   /// Reason for creating the filter
   final pulumi.Input<String>? reason;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
@@ -61,18 +53,7 @@ class FilterState {
       'action': ?action,
       'arn': ?arn,
       'description': ?description,
-      'filterCriterias':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<FilterFilterCriteria>,
-            List<Map<String, dynamic>>
-          >(
-            filterCriterias,
-            (value) =>
-                pulumi.Input.encodeList<
-                  FilterFilterCriteria,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'filterCriterias': ?pulumi.Input.mapOptionalInputValue<List<FilterFilterCriteria>, List<Map<String, dynamic>>>(filterCriterias, (value) => pulumi.Input.encodeList<FilterFilterCriteria, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': ?name,
       'reason': ?reason,
       'region': ?region,
@@ -83,62 +64,16 @@ class FilterState {
 
   factory FilterState.fromMap(Map<String, dynamic> map) {
     return FilterState(
-      action: (() {
-        final guardedValue = map['action'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      arn: (() {
-        final guardedValue = map['arn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      filterCriterias: (() {
-        final guardedValue = map['filterCriterias'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<FilterFilterCriteria>(
-            guardedValue,
-            (value) => FilterFilterCriteria.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      reason: (() {
-        final guardedValue = map['reason'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      tagsAll: (() {
-        final guardedValue = map['tagsAll'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      filterCriterias: (() { final guardedValue = map['filterCriterias']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<FilterFilterCriteria>(guardedValue, (value) => FilterFilterCriteria.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      reason: (() { final guardedValue = map['reason']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

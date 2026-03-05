@@ -5,15 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectedRegistryNotification {
   /// The action of the artifact that wants to be subscribed for the Connected Registry. Possible values are `push`, `delete` and `*` (i.e. any).
   final pulumi.Input<String> action;
-
   /// The digest of the artifact that wants to be subscribed for the Connected Registry.
   ///
   /// &gt; **Note:** One of either `tag` or `digest` can be specified.
   final pulumi.Input<String>? digest;
-
   /// The name of the artifact that wants to be subscribed for the Connected Registry.
   final pulumi.Input<String> name;
-
   /// The tag of the artifact that wants to be subscribed for the Connected Registry.
   final pulumi.Input<String>? tag;
 
@@ -41,17 +38,10 @@ class ConnectedRegistryNotification {
   factory ConnectedRegistryNotification.fromMap(Map<String, dynamic> map) {
     return ConnectedRegistryNotification(
       action: pulumi.Input.fromValue(map['action'] as String),
-      digest: (() {
-        final guardedValue = map['digest'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      digest: (() { final guardedValue = map['digest']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      tag: (() {
-        final guardedValue = map['tag'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      tag: (() { final guardedValue = map['tag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

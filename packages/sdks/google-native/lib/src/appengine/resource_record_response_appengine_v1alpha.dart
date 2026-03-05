@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceRecordResponseAppengineV1alpha {
   /// Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
   final pulumi.Input<String> name;
-
   /// Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
   final pulumi.Input<String> rrdata;
-
   /// Resource record type. Example: AAAA.
   final pulumi.Input<String> type;
 
@@ -24,12 +22,14 @@ class ResourceRecordResponseAppengineV1alpha {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'rrdata': rrdata, 'type': type};
+    return <String, dynamic>{
+      'name': name,
+      'rrdata': rrdata,
+      'type': type,
+    };
   }
 
-  factory ResourceRecordResponseAppengineV1alpha.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResourceRecordResponseAppengineV1alpha.fromMap(Map<String, dynamic> map) {
     return ResourceRecordResponseAppengineV1alpha(
       name: pulumi.Input.fromValue(map['name'] as String),
       rrdata: pulumi.Input.fromValue(map['rrdata'] as String),
@@ -37,3 +37,4 @@ class ResourceRecordResponseAppengineV1alpha {
     );
   }
 }
+

@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTableTableConstraintForeignKeyReferencedTable {
   /// The dataset ID.
   final pulumi.Input<String> datasetId;
-
   /// The ID of the project containing this table.
   final pulumi.Input<String> projectId;
-
   /// The table ID.
   final pulumi.Input<String> tableId;
 
@@ -30,9 +28,7 @@ class GetTableTableConstraintForeignKeyReferencedTable {
     };
   }
 
-  factory GetTableTableConstraintForeignKeyReferencedTable.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetTableTableConstraintForeignKeyReferencedTable.fromMap(Map<String, dynamic> map) {
     return GetTableTableConstraintForeignKeyReferencedTable(
       datasetId: pulumi.Input.fromValue(map['datasetId'] as String),
       projectId: pulumi.Input.fromValue(map['projectId'] as String),
@@ -40,3 +36,4 @@ class GetTableTableConstraintForeignKeyReferencedTable {
     );
   }
 }
+

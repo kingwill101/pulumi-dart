@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDedicatedIpPoolDedicatedIp {
   /// IPv4 address.
   final pulumi.Input<String> ip;
-
   /// Indicates how complete the dedicated IP warm-up process is. When this value equals `1`, the address has completed the warm-up process and is ready for use.
   final pulumi.Input<int> warmupPercentage;
-
   /// The warm-up status of a dedicated IP address. Valid values: `IN_PROGRESS`, `DONE`.
   final pulumi.Input<String> warmupStatus;
 
@@ -38,3 +36,4 @@ class GetDedicatedIpPoolDedicatedIp {
     );
   }
 }
+

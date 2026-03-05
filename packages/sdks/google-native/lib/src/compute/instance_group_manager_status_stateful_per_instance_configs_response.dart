@@ -13,14 +13,15 @@ class InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'allEffective': allEffective};
+    return <String, dynamic>{
+      'allEffective': allEffective,
+    };
   }
 
-  factory InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse(
       allEffective: pulumi.Input.fromValue(map['allEffective'] as bool),
     );
   }
 }
+

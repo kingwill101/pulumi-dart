@@ -9,21 +9,20 @@ class IPConfigurationArmReferenceResponse {
 
   /// Creates a new [IPConfigurationArmReferenceResponse].
   /// [resourceId] The Azure Resource ID of an IPConfiguration resource
-  IPConfigurationArmReferenceResponse({this.resourceId});
+  IPConfigurationArmReferenceResponse({
+    this.resourceId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'resourceId': ?resourceId};
+    return <String, dynamic>{
+      'resourceId': ?resourceId,
+    };
   }
 
-  factory IPConfigurationArmReferenceResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory IPConfigurationArmReferenceResponse.fromMap(Map<String, dynamic> map) {
     return IPConfigurationArmReferenceResponse(
-      resourceId: (() {
-        final guardedValue = map['resourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

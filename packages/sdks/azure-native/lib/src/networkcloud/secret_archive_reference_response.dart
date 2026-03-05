@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecretArchiveReferenceResponse {
   /// The resource ID of the key vault containing the secret.
   final pulumi.Input<String> keyVaultId;
-
   /// The name of the secret in the key vault.
   final pulumi.Input<String> secretName;
-
   /// The version of the secret in the key vault.
   final pulumi.Input<String> secretVersion;
 
@@ -38,3 +36,4 @@ class SecretArchiveReferenceResponse {
     );
   }
 }
+

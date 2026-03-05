@@ -119,12 +119,10 @@ import 'source_control_token_state.dart';
 class SourceControlToken extends pulumi.CustomResource {
   /// The Access Token.
   late final pulumi.Output<String> token;
-
   /// The Access Token Secret.
   ///
   /// &gt; **Note:** The token used for deploying App Service needs the following permissions: `repo` and `workflow`.
   late final pulumi.Output<String?> tokenSecret;
-
   /// The Token type. Possible values include `Bitbucket`, `Dropbox`, `Github`, and `OneDrive`.
   late final pulumi.Output<String> type;
 
@@ -137,11 +135,11 @@ class SourceControlToken extends pulumi.CustomResource {
     SourceControlTokenArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appservice/sourceControlToken:SourceControlToken',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appservice/sourceControlToken:SourceControlToken',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     token = registerOutput<String>('token');
     tokenSecret = registerOutput<String?>('tokenSecret');
     type = registerOutput<String>('type');
@@ -165,11 +163,11 @@ class SourceControlToken extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appservice/sourceControlToken:SourceControlToken',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appservice/sourceControlToken:SourceControlToken',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     token = registerOutput<String>('token');
     tokenSecret = registerOutput<String?>('tokenSecret');
     type = registerOutput<String>('type');

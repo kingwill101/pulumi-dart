@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SkuSettingCapacityResponse {
   /// The default.
   final pulumi.Input<int>? default_;
-
   /// The maximum.
   final pulumi.Input<int>? maximum;
-
   /// The minimum.
   final pulumi.Input<int> minimum;
-
   /// The scale type.
   final pulumi.Input<String>? scaleType;
 
@@ -39,22 +36,11 @@ class SkuSettingCapacityResponse {
 
   factory SkuSettingCapacityResponse.fromMap(Map<String, dynamic> map) {
     return SkuSettingCapacityResponse(
-      default_: (() {
-        final guardedValue = map['default'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      maximum: (() {
-        final guardedValue = map['maximum'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      default_: (() { final guardedValue = map['default']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maximum: (() { final guardedValue = map['maximum']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       minimum: pulumi.Input.fromValue(map['minimum'] as int),
-      scaleType: (() {
-        final guardedValue = map['scaleType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      scaleType: (() { final guardedValue = map['scaleType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

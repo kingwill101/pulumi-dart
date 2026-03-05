@@ -7,19 +7,20 @@ class GetLaunchTemplateNetworkPerformanceOption {
 
   /// Creates a new [GetLaunchTemplateNetworkPerformanceOption].
   /// [bandwidthWeighting] Required.
-  GetLaunchTemplateNetworkPerformanceOption({required this.bandwidthWeighting});
+  GetLaunchTemplateNetworkPerformanceOption({
+    required this.bandwidthWeighting,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'bandwidthWeighting': bandwidthWeighting};
+    return <String, dynamic>{
+      'bandwidthWeighting': bandwidthWeighting,
+    };
   }
 
-  factory GetLaunchTemplateNetworkPerformanceOption.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetLaunchTemplateNetworkPerformanceOption.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplateNetworkPerformanceOption(
-      bandwidthWeighting: pulumi.Input.fromValue(
-        map['bandwidthWeighting'] as String,
-      ),
+      bandwidthWeighting: pulumi.Input.fromValue(map['bandwidthWeighting'] as String),
     );
   }
 }
+

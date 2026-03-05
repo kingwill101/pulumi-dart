@@ -10,16 +10,12 @@ import 'provisioning_state.dart';
 class GatewayApiEntityTagArgs {
   /// API identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String>? apiId;
-
   /// Gateway entity identifier. Must be unique in the current API Management service instance. Must not have value 'managed'
   final pulumi.Input<String> gatewayId;
-
   /// Provisioning state.
   final pulumi.Input<ProvisioningState>? provisioningState;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
 
@@ -41,11 +37,7 @@ class GatewayApiEntityTagArgs {
     return <String, dynamic>{
       'apiId': ?apiId,
       'gatewayId': gatewayId,
-      'provisioningState':
-          ?pulumi.Input.mapOptionalInputValue<ProvisioningState, String>(
-            provisioningState,
-            (value) => value.wireValue,
-          ),
+      'provisioningState': ?pulumi.Input.mapOptionalInputValue<ProvisioningState, String>(provisioningState, (value) => value.wireValue),
       'resourceGroupName': resourceGroupName,
       'serviceName': serviceName,
     };
@@ -53,23 +45,12 @@ class GatewayApiEntityTagArgs {
 
   factory GatewayApiEntityTagArgs.fromMap(Map<String, dynamic> map) {
     return GatewayApiEntityTagArgs(
-      apiId: (() {
-        final guardedValue = map['apiId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      apiId: (() { final guardedValue = map['apiId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       gatewayId: pulumi.Input.fromValue(map['gatewayId'] as String),
-      provisioningState: (() {
-        final guardedValue = map['provisioningState'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ProvisioningState.fromValue(guardedValue as String),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ProvisioningState.fromValue(guardedValue as String)); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
+

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SinglePackageChangeResponse {
   /// Optional. Sql code for package body
   final pulumi.Input<String> packageBody;
-
   /// Optional. Sql code for package description
   final pulumi.Input<String> packageDescription;
 
@@ -28,9 +27,8 @@ class SinglePackageChangeResponse {
   factory SinglePackageChangeResponse.fromMap(Map<String, dynamic> map) {
     return SinglePackageChangeResponse(
       packageBody: pulumi.Input.fromValue(map['packageBody'] as String),
-      packageDescription: pulumi.Input.fromValue(
-        map['packageDescription'] as String,
-      ),
+      packageDescription: pulumi.Input.fromValue(map['packageDescription'] as String),
     );
   }
 }
+

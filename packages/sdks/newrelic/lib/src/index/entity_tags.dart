@@ -343,7 +343,6 @@ import 'entity_tags_state.dart';
 class EntityTags extends pulumi.CustomResource {
   /// The guid of the entity to tag.
   late final pulumi.Output<String> guid;
-
   /// A nested block that describes an entity tag. See Nested tag blocks below for details.
   late final pulumi.Output<List<Map<String, dynamic>>> tags;
 
@@ -356,11 +355,11 @@ class EntityTags extends pulumi.CustomResource {
     EntityTagsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:index/entityTags:EntityTags',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:index/entityTags:EntityTags',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     guid = registerOutput<String>('guid');
     tags = registerOutput<List<Map<String, dynamic>>>('tags');
   }
@@ -383,11 +382,11 @@ class EntityTags extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:index/entityTags:EntityTags',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:index/entityTags:EntityTags',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     guid = registerOutput<String>('guid');
     tags = registerOutput<List<Map<String, dynamic>>>('tags');
   }

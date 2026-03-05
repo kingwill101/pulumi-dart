@@ -15,3 +15,4 @@ enum MigrateRolesAndPermissions {
     throw ArgumentError('Unknown MigrateRolesAndPermissions value: $value');
   }
 }
+

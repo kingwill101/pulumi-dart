@@ -16,7 +16,11 @@ class GetClusterIamPolicyArgs {
   /// [cluster] The name or relative resource id of the cluster to manage IAM policies for.
   /// [project] Optional.
   /// [region] Optional.
-  GetClusterIamPolicyArgs({required this.cluster, this.project, this.region});
+  GetClusterIamPolicyArgs({
+    required this.cluster,
+    this.project,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,16 +33,9 @@ class GetClusterIamPolicyArgs {
   factory GetClusterIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetClusterIamPolicyArgs(
       cluster: pulumi.Input.fromValue(map['cluster'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -9,20 +9,23 @@ class GetGenaiModelsSort {
   /// Creates a new [GetGenaiModelsSort].
   /// [direction] Optional.
   /// [key] Required.
-  GetGenaiModelsSort({this.direction, required this.key});
+  GetGenaiModelsSort({
+    this.direction,
+    required this.key,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'direction': ?direction, 'key': key};
+    return <String, dynamic>{
+      'direction': ?direction,
+      'key': key,
+    };
   }
 
   factory GetGenaiModelsSort.fromMap(Map<String, dynamic> map) {
     return GetGenaiModelsSort(
-      direction: (() {
-        final guardedValue = map['direction'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      direction: (() { final guardedValue = map['direction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       key: pulumi.Input.fromValue(map['key'] as String),
     );
   }
 }
+

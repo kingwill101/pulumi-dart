@@ -7,10 +7,8 @@ import 'position_response.dart';
 class StackTraceElementResponse {
   /// The source position information of the stack trace element.
   final pulumi.Input<PositionResponse> position;
-
   /// The routine where the error occurred.
   final pulumi.Input<String> routine;
-
   /// The step the error occurred at.
   final pulumi.Input<String> step;
 
@@ -26,11 +24,7 @@ class StackTraceElementResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'position':
-          pulumi.Input.mapInputValue<PositionResponse, Map<String, dynamic>>(
-            position,
-            (value) => value.toMap(),
-          ),
+      'position': pulumi.Input.mapInputValue<PositionResponse, Map<String, dynamic>>(position, (value) => value.toMap()),
       'routine': routine,
       'step': step,
     };
@@ -38,13 +32,10 @@ class StackTraceElementResponse {
 
   factory StackTraceElementResponse.fromMap(Map<String, dynamic> map) {
     return StackTraceElementResponse(
-      position: pulumi.Input.fromValue(
-        PositionResponse.fromMap(
-          (map['position']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      position: pulumi.Input.fromValue(PositionResponse.fromMap((map['position']! as Map).cast<String, dynamic>())),
       routine: pulumi.Input.fromValue(map['routine'] as String),
       step: pulumi.Input.fromValue(map['step'] as String),
     );
   }
 }
+

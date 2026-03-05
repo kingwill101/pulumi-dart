@@ -33,24 +33,13 @@ class GetNotebookRuntimeTemplateIamPolicyAiplatformV1beta1Args {
     };
   }
 
-  factory GetNotebookRuntimeTemplateIamPolicyAiplatformV1beta1Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetNotebookRuntimeTemplateIamPolicyAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetNotebookRuntimeTemplateIamPolicyAiplatformV1beta1Args(
       location: pulumi.Input.fromValue(map['location'] as String),
-      notebookRuntimeTemplateId: pulumi.Input.fromValue(
-        map['notebookRuntimeTemplateId'] as String,
-      ),
-      optionsRequestedPolicyVersion: (() {
-        final guardedValue = map['optionsRequestedPolicyVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      notebookRuntimeTemplateId: pulumi.Input.fromValue(map['notebookRuntimeTemplateId'] as String),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

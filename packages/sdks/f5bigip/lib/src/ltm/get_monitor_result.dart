@@ -1,45 +1,38 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getMonitor.
 class GetMonitorResult {
   /// Displays whether adaptive response time monitoring is enabled for this monitor.
   final String adaptive;
-
   /// Displays whether adaptive response time monitoring is enabled for this monitor.
   final int adaptiveLimit;
   final String base;
   final String chaseReferrals;
   final String database;
   final String defaultsFrom;
-
   /// id will be full path name of ltm monitor.
   final String destination;
   final String filename;
   final String filter;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Specifies, in seconds, the frequency at which the system issues the monitor check when either the resource is down or the status of the resource is unknown.
   final int interval;
-
   /// Displays the differentiated services code point (DSCP). DSCP is a 6-bit value in the Differentiated Services (DS) field of the IP header.
   final int ipDscp;
   final String mandatoryAttributes;
-
   /// Displays whether the system automatically changes the status of a resource to Enabled at the next successful monitor check.
   final String manualResume;
   final String mode;
   final String name;
   final String partition;
   final String receiveDisable;
-
   /// Instructs the system to mark the target resource down when the test is successful.
   final String reverse;
   final String security;
   final int timeUntilUp;
   final int timeout;
-
   /// Displays whether the monitor operates in transparent mode.
   final String transparent;
   final String username;
@@ -154,3 +147,4 @@ class GetMonitorResult {
     );
   }
 }
+

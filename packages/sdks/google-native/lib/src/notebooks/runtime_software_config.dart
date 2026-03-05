@@ -8,37 +8,26 @@ import 'runtime_software_config_post_startup_script_behavior.dart';
 class RuntimeSoftwareConfig {
   /// Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
   final pulumi.Input<String>? customGpuDriverPath;
-
   /// Bool indicating whether JupyterLab terminal will be available or not. Default: False
   final pulumi.Input<bool>? disableTerminal;
-
   /// Verifies core internal services are running. Default: True
   final pulumi.Input<bool>? enableHealthMonitoring;
-
   /// Runtime will automatically shutdown after idle_shutdown_time. Default: True
   final pulumi.Input<bool>? idleShutdown;
-
   /// Time in minutes to wait before shutting down runtime. Default: 180 minutes
   final pulumi.Input<int>? idleShutdownTimeout;
-
   /// Install Nvidia Driver automatically. Default: True
   final pulumi.Input<bool>? installGpuDriver;
-
   /// Optional. Use a list of container images to use as Kernels in the notebook instance.
   final pulumi.Input<List<ContainerImage>>? kernels;
-
   /// Bool indicating whether mixer client should be disabled. Default: False
   final pulumi.Input<bool>? mixerDisabled;
-
   /// Cron expression in UTC timezone, used to schedule instance auto upgrade. Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
   final pulumi.Input<String>? notebookUpgradeSchedule;
-
   /// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/file-name`).
   final pulumi.Input<String>? postStartupScript;
-
   /// Behavior for the post startup script.
-  final pulumi.Input<RuntimeSoftwareConfigPostStartupScriptBehavior>?
-  postStartupScriptBehavior;
+  final pulumi.Input<RuntimeSoftwareConfigPostStartupScriptBehavior>? postStartupScriptBehavior;
 
   /// Creates a new [RuntimeSoftwareConfig].
   /// [customGpuDriverPath] Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
@@ -74,96 +63,28 @@ class RuntimeSoftwareConfig {
       'idleShutdown': ?idleShutdown,
       'idleShutdownTimeout': ?idleShutdownTimeout,
       'installGpuDriver': ?installGpuDriver,
-      'kernels':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ContainerImage>,
-            List<Map<String, dynamic>>
-          >(
-            kernels,
-            (value) =>
-                pulumi.Input.encodeList<ContainerImage, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'kernels': ?pulumi.Input.mapOptionalInputValue<List<ContainerImage>, List<Map<String, dynamic>>>(kernels, (value) => pulumi.Input.encodeList<ContainerImage, Map<String, dynamic>>(value, (value) => value.toMap())),
       'mixerDisabled': ?mixerDisabled,
       'notebookUpgradeSchedule': ?notebookUpgradeSchedule,
       'postStartupScript': ?postStartupScript,
-      'postStartupScriptBehavior':
-          ?pulumi.Input.mapOptionalInputValue<
-            RuntimeSoftwareConfigPostStartupScriptBehavior,
-            String
-          >(postStartupScriptBehavior, (value) => value.wireValue),
+      'postStartupScriptBehavior': ?pulumi.Input.mapOptionalInputValue<RuntimeSoftwareConfigPostStartupScriptBehavior, String>(postStartupScriptBehavior, (value) => value.wireValue),
     };
   }
 
   factory RuntimeSoftwareConfig.fromMap(Map<String, dynamic> map) {
     return RuntimeSoftwareConfig(
-      customGpuDriverPath: (() {
-        final guardedValue = map['customGpuDriverPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      disableTerminal: (() {
-        final guardedValue = map['disableTerminal'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      enableHealthMonitoring: (() {
-        final guardedValue = map['enableHealthMonitoring'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      idleShutdown: (() {
-        final guardedValue = map['idleShutdown'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      idleShutdownTimeout: (() {
-        final guardedValue = map['idleShutdownTimeout'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      installGpuDriver: (() {
-        final guardedValue = map['installGpuDriver'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      kernels: (() {
-        final guardedValue = map['kernels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ContainerImage>(
-            guardedValue,
-            (value) =>
-                ContainerImage.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      mixerDisabled: (() {
-        final guardedValue = map['mixerDisabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      notebookUpgradeSchedule: (() {
-        final guardedValue = map['notebookUpgradeSchedule'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      postStartupScript: (() {
-        final guardedValue = map['postStartupScript'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      postStartupScriptBehavior: (() {
-        final guardedValue = map['postStartupScriptBehavior'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RuntimeSoftwareConfigPostStartupScriptBehavior.fromValue(
-            guardedValue as String,
-          ),
-        );
-      })(),
+      customGpuDriverPath: (() { final guardedValue = map['customGpuDriverPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      disableTerminal: (() { final guardedValue = map['disableTerminal']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enableHealthMonitoring: (() { final guardedValue = map['enableHealthMonitoring']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      idleShutdown: (() { final guardedValue = map['idleShutdown']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      idleShutdownTimeout: (() { final guardedValue = map['idleShutdownTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      installGpuDriver: (() { final guardedValue = map['installGpuDriver']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      kernels: (() { final guardedValue = map['kernels']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ContainerImage>(guardedValue, (value) => ContainerImage.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      mixerDisabled: (() { final guardedValue = map['mixerDisabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      notebookUpgradeSchedule: (() { final guardedValue = map['notebookUpgradeSchedule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      postStartupScript: (() { final guardedValue = map['postStartupScript']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      postStartupScriptBehavior: (() { final guardedValue = map['postStartupScriptBehavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RuntimeSoftwareConfigPostStartupScriptBehavior.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

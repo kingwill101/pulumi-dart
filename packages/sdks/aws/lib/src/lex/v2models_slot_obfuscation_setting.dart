@@ -8,17 +8,20 @@ class V2modelsSlotObfuscationSetting {
 
   /// Creates a new [V2modelsSlotObfuscationSetting].
   /// [obfuscationSettingType] Whether Amazon Lex obscures slot values in conversation logs. Valid values are `DefaultObfuscation` and `None`.
-  V2modelsSlotObfuscationSetting({required this.obfuscationSettingType});
+  V2modelsSlotObfuscationSetting({
+    required this.obfuscationSettingType,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'obfuscationSettingType': obfuscationSettingType};
+    return <String, dynamic>{
+      'obfuscationSettingType': obfuscationSettingType,
+    };
   }
 
   factory V2modelsSlotObfuscationSetting.fromMap(Map<String, dynamic> map) {
     return V2modelsSlotObfuscationSetting(
-      obfuscationSettingType: pulumi.Input.fromValue(
-        map['obfuscationSettingType'] as String,
-      ),
+      obfuscationSettingType: pulumi.Input.fromValue(map['obfuscationSettingType'] as String),
     );
   }
 }
+

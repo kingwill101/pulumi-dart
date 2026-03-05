@@ -404,47 +404,36 @@ class ReadOnlyInstance extends pulumi.CustomResource {
   /// - verify-ca
   /// - verify-full (supported only when the instance runs PostgreSQL 12 or later)
   late final pulumi.Output<String> acl;
-
   /// Whether to renewal a DB instance automatically or not. It is valid when instance_charge_type is `PrePaid`. Default to `false`.
   late final pulumi.Output<bool?> autoRenew;
-
   /// Auto-renewal period of an instance, in the unit of the month. It is valid when instance_charge_type is `PrePaid`. Valid value:[1~12], Default to 1.
   late final pulumi.Output<int?> autoRenewPeriod;
-
   /// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. It is valid only when `ssl_enabled  = 1`. Value range:
   /// - aliyun: a cloud certificate
   /// - custom: a custom certificate
   late final pulumi.Output<String> caType;
-
   /// The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
   late final pulumi.Output<String?> clientCaCert;
-
   /// Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. It is valid only when `ssl_enabled  = 1`. Valid values:
   /// - 1: enables the public key
   /// - 0: disables the public key
   late final pulumi.Output<int?> clientCaEnabled;
-
   /// The CRL that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCrlEnabled parameter to 1, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
   late final pulumi.Output<String?> clientCertRevocationList;
-
   /// Specifies whether to enable a certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
   /// - 1: enables the CRL
   /// - 0: disables the CRL
   late final pulumi.Output<int?> clientCrlEnabled;
-
   /// RDS database connection string.
   late final pulumi.Output<String> connectionString;
-
   /// The attribute of the IP address whitelist. By default, this parameter is empty.
   ///
   /// &gt; **NOTE:** The IP address whitelists that have the hidden attribute are not displayed in the ApsaraDB RDS console. These IP address whitelists are used to access Alibaba Cloud services, such as Data Transmission Service (DTS).
   late final pulumi.Output<String?> dbInstanceIpArrayAttribute;
-
   /// The name of the IP address whitelist. Default value: Default.
   ///
   /// &gt; **NOTE:** A maximum of 200 IP address whitelists can be configured for each instance.
   late final pulumi.Output<String?> dbInstanceIpArrayName;
-
   /// The storage type of the instance. Valid values:
   /// - local_ssd: specifies to use local SSDs. This value is recommended.
   /// - cloud_ssd: specifies to use standard SSDs.
@@ -452,63 +441,47 @@ class ReadOnlyInstance extends pulumi.CustomResource {
   /// - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
   /// - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
   late final pulumi.Output<String> dbInstanceStorageType;
-
   /// The switch of delete protection. Valid values:
   /// - true: delete protect.
   /// - false: no delete protect.
   late final pulumi.Output<bool?> deletionProtection;
-
   /// The instance configuration type. Valid values:
   /// - Up
   /// - Down
   /// - TempUpgrade
   /// - Serverless
   late final pulumi.Output<String?> direction;
-
   /// The method to change.  Default value: Immediate. Valid values:
   /// - Immediate: The change immediately takes effect.
   /// - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
   late final pulumi.Output<String?> effectiveTime;
-
   /// Database type.
   late final pulumi.Output<String> engine;
-
   /// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
   late final pulumi.Output<String> engineVersion;
-
   /// Set it to true to make some parameter efficient when modifying them. Default to false.
   late final pulumi.Output<bool?> forceRestart;
-
   /// Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. The interval between the two conversion operations must be greater than 15 minutes. Only when this parameter is `Postpaid`, the instance can be released.
   late final pulumi.Output<String?> instanceChargeType;
-
   /// The name of DB instance. It a string of 2 to 256 characters.
   late final pulumi.Output<String> instanceName;
-
   /// User-defined DB instance storage space. Value range: [5, 2000] for MySQL/SQL Server HA dual node edition. Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
   late final pulumi.Output<int> instanceStorage;
-
   /// DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
   late final pulumi.Output<String> instanceType;
-
   /// ID of the master instance.
   late final pulumi.Output<String> masterDbInstanceId;
-
   /// The method that is used to modify the IP address whitelist. Default value: Cover. Valid values:
   /// - Cover: Use the value of the SecurityIps parameter to overwrite the existing entries in the IP address whitelist.
   /// - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
   /// - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
   late final pulumi.Output<String?> modifyMode;
-
   /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
   late final pulumi.Output<List<Map<String, dynamic>>> parameters;
-
   /// The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
   late final pulumi.Output<int?> period;
-
   /// RDS database connection port.
   late final pulumi.Output<String> port;
-
   /// The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
   /// - cert
   /// - perfer
@@ -516,37 +489,28 @@ class ReadOnlyInstance extends pulumi.CustomResource {
   /// - verify-full (supported only when the instance runs PostgreSQL 12 or later)
   /// &gt; **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
   late final pulumi.Output<String> replicationAcl;
-
   /// The ID of resource group which the DB read-only instance belongs.
   late final pulumi.Output<String> resourceGroupId;
-
   /// The type of IP address in the IP address whitelist.
   late final pulumi.Output<String?> securityIpType;
-
   /// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
   late final pulumi.Output<List<String>> securityIps;
-
   /// The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
   late final pulumi.Output<String> serverCert;
-
   /// The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
   late final pulumi.Output<String> serverKey;
-
   /// Specifies whether to enable or disable SSL encryption. Valid values:
   /// - 1: enables SSL encryption
   /// - 0: disables SSL encryption
   late final pulumi.Output<int> sslEnabled;
-
   /// The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
   ///
   /// &gt; **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
   late final pulumi.Output<String?> switchTime;
-
   /// A mapping of tags to assign to the resource.
   /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
   /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgrade_db_instance_kernel_version = true`. You must specify the minor engine version in one of the following formats:
   /// - PostgreSQL: rds_postgres_&lt;Major engine version&gt;00_&lt;Minor engine version&gt;. Example: rds_postgres_1200_20200830.
   /// - MySQL: &lt;RDS edition&gt;_&lt;Minor engine version&gt;. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
@@ -557,28 +521,23 @@ class ReadOnlyInstance extends pulumi.CustomResource {
   ///
   /// &gt; **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
   late final pulumi.Output<String> targetMinorVersion;
-
   /// Whether to upgrade a minor version of the kernel. Valid values:
   /// - true: upgrade
   /// - false: not to upgrade
   late final pulumi.Output<bool?> upgradeDbInstanceKernelVersion;
-
   /// The method to update the minor engine version. Default value: Immediate. It is valid only when `upgrade_db_instance_kernel_version = true`. Valid values:
   /// - Immediate: The minor engine version is immediately updated.
   /// - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
   /// - SpecifyTime: The minor engine version is updated at the point in time you specify.
   late final pulumi.Output<String?> upgradeTime;
-
   /// The virtual switch ID to launch DB instances in one VPC.
   late final pulumi.Output<String?> vswitchId;
-
   /// The network type of the IP address whitelist. Default value: MIX. Valid values:
   /// - Classic: classic network in enhanced whitelist mode
   /// - VPC: virtual private cloud (VPC) in enhanced whitelist mode
   /// - MIX: standard whitelist mode
   /// &gt; **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
   late final pulumi.Output<String?> whitelistNetworkType;
-
   /// The Zone to launch the DB instance.
   late final pulumi.Output<String> zoneId;
 
@@ -591,25 +550,21 @@ class ReadOnlyInstance extends pulumi.CustomResource {
     ReadOnlyInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:rds/readOnlyInstance:ReadOnlyInstance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:rds/readOnlyInstance:ReadOnlyInstance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     acl = registerOutput<String>('acl');
     autoRenew = registerOutput<bool?>('autoRenew');
     autoRenewPeriod = registerOutput<int?>('autoRenewPeriod');
     caType = registerOutput<String>('caType');
     clientCaCert = registerOutput<String?>('clientCaCert');
     clientCaEnabled = registerOutput<int?>('clientCaEnabled');
-    clientCertRevocationList = registerOutput<String?>(
-      'clientCertRevocationList',
-    );
+    clientCertRevocationList = registerOutput<String?>('clientCertRevocationList');
     clientCrlEnabled = registerOutput<int?>('clientCrlEnabled');
     connectionString = registerOutput<String>('connectionString');
-    dbInstanceIpArrayAttribute = registerOutput<String?>(
-      'dbInstanceIpArrayAttribute',
-    );
+    dbInstanceIpArrayAttribute = registerOutput<String?>('dbInstanceIpArrayAttribute');
     dbInstanceIpArrayName = registerOutput<String?>('dbInstanceIpArrayName');
     dbInstanceStorageType = registerOutput<String>('dbInstanceStorageType');
     deletionProtection = registerOutput<bool?>('deletionProtection');
@@ -637,9 +592,7 @@ class ReadOnlyInstance extends pulumi.CustomResource {
     switchTime = registerOutput<String?>('switchTime');
     tags = registerOutput<Map<String, String>?>('tags');
     targetMinorVersion = registerOutput<String>('targetMinorVersion');
-    upgradeDbInstanceKernelVersion = registerOutput<bool?>(
-      'upgradeDbInstanceKernelVersion',
-    );
+    upgradeDbInstanceKernelVersion = registerOutput<bool?>('upgradeDbInstanceKernelVersion');
     upgradeTime = registerOutput<String?>('upgradeTime');
     vswitchId = registerOutput<String?>('vswitchId');
     whitelistNetworkType = registerOutput<String?>('whitelistNetworkType');
@@ -664,25 +617,21 @@ class ReadOnlyInstance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:rds/readOnlyInstance:ReadOnlyInstance',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:rds/readOnlyInstance:ReadOnlyInstance',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     acl = registerOutput<String>('acl');
     autoRenew = registerOutput<bool?>('autoRenew');
     autoRenewPeriod = registerOutput<int?>('autoRenewPeriod');
     caType = registerOutput<String>('caType');
     clientCaCert = registerOutput<String?>('clientCaCert');
     clientCaEnabled = registerOutput<int?>('clientCaEnabled');
-    clientCertRevocationList = registerOutput<String?>(
-      'clientCertRevocationList',
-    );
+    clientCertRevocationList = registerOutput<String?>('clientCertRevocationList');
     clientCrlEnabled = registerOutput<int?>('clientCrlEnabled');
     connectionString = registerOutput<String>('connectionString');
-    dbInstanceIpArrayAttribute = registerOutput<String?>(
-      'dbInstanceIpArrayAttribute',
-    );
+    dbInstanceIpArrayAttribute = registerOutput<String?>('dbInstanceIpArrayAttribute');
     dbInstanceIpArrayName = registerOutput<String?>('dbInstanceIpArrayName');
     dbInstanceStorageType = registerOutput<String>('dbInstanceStorageType');
     deletionProtection = registerOutput<bool?>('deletionProtection');
@@ -710,9 +659,7 @@ class ReadOnlyInstance extends pulumi.CustomResource {
     switchTime = registerOutput<String?>('switchTime');
     tags = registerOutput<Map<String, String>?>('tags');
     targetMinorVersion = registerOutput<String>('targetMinorVersion');
-    upgradeDbInstanceKernelVersion = registerOutput<bool?>(
-      'upgradeDbInstanceKernelVersion',
-    );
+    upgradeDbInstanceKernelVersion = registerOutput<bool?>('upgradeDbInstanceKernelVersion');
     upgradeTime = registerOutput<String?>('upgradeTime');
     vswitchId = registerOutput<String?>('vswitchId');
     whitelistNetworkType = registerOutput<String?>('whitelistNetworkType');

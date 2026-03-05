@@ -8,111 +8,74 @@ import 'private_endpoint_connection_response.dart';
 class BotPropertiesResponse {
   /// Contains resource all settings defined as key/value pairs.
   final pulumi.Input<Map<String, String>>? allSettings;
-
   /// The hint (e.g. keyVault secret resourceId) on how to fetch the app secret
   final pulumi.Input<String>? appPasswordHint;
-
   /// The CMK encryption status
   final pulumi.Input<String> cmekEncryptionStatus;
-
   /// The CMK Url
   final pulumi.Input<String>? cmekKeyVaultUrl;
-
   /// Collection of channels for which the bot is configured
   final pulumi.Input<List<String>> configuredChannels;
-
   /// The description of the bot
   final pulumi.Input<String>? description;
-
   /// The Application Insights key
   final pulumi.Input<String>? developerAppInsightKey;
-
   /// The Application Insights Api Key
   final pulumi.Input<String>? developerAppInsightsApiKey;
-
   /// The Application Insights App Id
   final pulumi.Input<String>? developerAppInsightsApplicationId;
-
   /// Opt-out of local authentication and ensure only MSI and AAD can be used exclusively for authentication.
   final pulumi.Input<bool>? disableLocalAuth;
-
   /// The Name of the bot
   final pulumi.Input<String> displayName;
-
   /// Collection of channels for which the bot is enabled
   final pulumi.Input<List<String>> enabledChannels;
-
   /// The bot's endpoint
   final pulumi.Input<String> endpoint;
-
   /// The bot's endpoint version
   final pulumi.Input<String> endpointVersion;
-
   /// The Icon Url of the bot
   final pulumi.Input<String>? iconUrl;
-
   /// Whether Cmek is enabled
   final pulumi.Input<bool>? isCmekEnabled;
-
   /// Whether the bot is developerAppInsightsApiKey set
   final pulumi.Input<bool> isDeveloperAppInsightsApiKeySet;
-
   /// Whether the bot is streaming supported
   final pulumi.Input<bool>? isStreamingSupported;
-
   /// Collection of LUIS App Ids
   final pulumi.Input<List<String>>? luisAppIds;
-
   /// The LUIS Key
   final pulumi.Input<String>? luisKey;
-
   /// The bot's manifest url
   final pulumi.Input<String>? manifestUrl;
-
   /// Token used to migrate non Azure bot to azure subscription
   final pulumi.Input<String> migrationToken;
-
   /// Microsoft App Id for the bot
   final pulumi.Input<String> msaAppId;
-
   /// Microsoft App Managed Identity Resource Id for the bot
   final pulumi.Input<String>? msaAppMSIResourceId;
-
   /// Microsoft App Tenant Id for the bot
   final pulumi.Input<String>? msaAppTenantId;
-
   /// Microsoft App Type for the bot
   final pulumi.Input<String>? msaAppType;
-
   /// List of Network Security Perimeter configurations for the bot
-  final pulumi.Input<List<NetworkSecurityPerimeterConfigurationResponse>>
-  networkSecurityPerimeterConfigurations;
-
+  final pulumi.Input<List<NetworkSecurityPerimeterConfigurationResponse>> networkSecurityPerimeterConfigurations;
   /// The hint to browser (e.g. protocol handler) on how to open the bot for authoring
   final pulumi.Input<String>? openWithHint;
-
   /// Contains resource parameters defined as key/value pairs.
   final pulumi.Input<Map<String, String>>? parameters;
-
   /// List of Private Endpoint Connections configured for the bot
-  final pulumi.Input<List<PrivateEndpointConnectionResponse>>
-  privateEndpointConnections;
-
+  final pulumi.Input<List<PrivateEndpointConnectionResponse>> privateEndpointConnections;
   /// Provisioning state of the resource
   final pulumi.Input<String> provisioningState;
-
   /// Whether the bot is in an isolated network
   final pulumi.Input<String>? publicNetworkAccess;
-
   /// Publishing credentials of the resource
   final pulumi.Input<String>? publishingCredentials;
-
   /// The channel schema transformation version for the bot
   final pulumi.Input<String>? schemaTransformationVersion;
-
   /// The storage resourceId for the bot
   final pulumi.Input<String>? storageResourceId;
-
   /// The Tenant Id for the bot
   final pulumi.Input<String>? tenantId;
 
@@ -220,32 +183,10 @@ class BotPropertiesResponse {
       'msaAppMSIResourceId': ?msaAppMSIResourceId,
       'msaAppTenantId': ?msaAppTenantId,
       'msaAppType': ?msaAppType,
-      'networkSecurityPerimeterConfigurations':
-          pulumi.Input.mapInputValue<
-            List<NetworkSecurityPerimeterConfigurationResponse>,
-            List<Map<String, dynamic>>
-          >(
-            networkSecurityPerimeterConfigurations,
-            (value) =>
-                pulumi.Input.encodeList<
-                  NetworkSecurityPerimeterConfigurationResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'networkSecurityPerimeterConfigurations': pulumi.Input.mapInputValue<List<NetworkSecurityPerimeterConfigurationResponse>, List<Map<String, dynamic>>>(networkSecurityPerimeterConfigurations, (value) => pulumi.Input.encodeList<NetworkSecurityPerimeterConfigurationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'openWithHint': ?openWithHint,
       'parameters': ?parameters,
-      'privateEndpointConnections':
-          pulumi.Input.mapInputValue<
-            List<PrivateEndpointConnectionResponse>,
-            List<Map<String, dynamic>>
-          >(
-            privateEndpointConnections,
-            (value) =>
-                pulumi.Input.encodeList<
-                  PrivateEndpointConnectionResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'privateEndpointConnections': pulumi.Input.mapInputValue<List<PrivateEndpointConnectionResponse>, List<Map<String, dynamic>>>(privateEndpointConnections, (value) => pulumi.Input.encodeList<PrivateEndpointConnectionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'provisioningState': provisioningState,
       'publicNetworkAccess': ?publicNetworkAccess,
       'publishingCredentials': ?publishingCredentials,
@@ -257,166 +198,43 @@ class BotPropertiesResponse {
 
   factory BotPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return BotPropertiesResponse(
-      allSettings: (() {
-        final guardedValue = map['allSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      appPasswordHint: (() {
-        final guardedValue = map['appPasswordHint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      cmekEncryptionStatus: pulumi.Input.fromValue(
-        map['cmekEncryptionStatus'] as String,
-      ),
-      cmekKeyVaultUrl: (() {
-        final guardedValue = map['cmekKeyVaultUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      configuredChannels: pulumi.Input.fromValue(
-        (map['configuredChannels'] as List).cast<String>(),
-      ),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      developerAppInsightKey: (() {
-        final guardedValue = map['developerAppInsightKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      developerAppInsightsApiKey: (() {
-        final guardedValue = map['developerAppInsightsApiKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      developerAppInsightsApplicationId: (() {
-        final guardedValue = map['developerAppInsightsApplicationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      disableLocalAuth: (() {
-        final guardedValue = map['disableLocalAuth'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      allSettings: (() { final guardedValue = map['allSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      appPasswordHint: (() { final guardedValue = map['appPasswordHint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      cmekEncryptionStatus: pulumi.Input.fromValue(map['cmekEncryptionStatus'] as String),
+      cmekKeyVaultUrl: (() { final guardedValue = map['cmekKeyVaultUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      configuredChannels: pulumi.Input.fromValue((map['configuredChannels'] as List).cast<String>()),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      developerAppInsightKey: (() { final guardedValue = map['developerAppInsightKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      developerAppInsightsApiKey: (() { final guardedValue = map['developerAppInsightsApiKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      developerAppInsightsApplicationId: (() { final guardedValue = map['developerAppInsightsApplicationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      disableLocalAuth: (() { final guardedValue = map['disableLocalAuth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
-      enabledChannels: pulumi.Input.fromValue(
-        (map['enabledChannels'] as List).cast<String>(),
-      ),
+      enabledChannels: pulumi.Input.fromValue((map['enabledChannels'] as List).cast<String>()),
       endpoint: pulumi.Input.fromValue(map['endpoint'] as String),
       endpointVersion: pulumi.Input.fromValue(map['endpointVersion'] as String),
-      iconUrl: (() {
-        final guardedValue = map['iconUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      isCmekEnabled: (() {
-        final guardedValue = map['isCmekEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      isDeveloperAppInsightsApiKeySet: pulumi.Input.fromValue(
-        map['isDeveloperAppInsightsApiKeySet'] as bool,
-      ),
-      isStreamingSupported: (() {
-        final guardedValue = map['isStreamingSupported'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      luisAppIds: (() {
-        final guardedValue = map['luisAppIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      luisKey: (() {
-        final guardedValue = map['luisKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      manifestUrl: (() {
-        final guardedValue = map['manifestUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      iconUrl: (() { final guardedValue = map['iconUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      isCmekEnabled: (() { final guardedValue = map['isCmekEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      isDeveloperAppInsightsApiKeySet: pulumi.Input.fromValue(map['isDeveloperAppInsightsApiKeySet'] as bool),
+      isStreamingSupported: (() { final guardedValue = map['isStreamingSupported']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      luisAppIds: (() { final guardedValue = map['luisAppIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      luisKey: (() { final guardedValue = map['luisKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      manifestUrl: (() { final guardedValue = map['manifestUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       migrationToken: pulumi.Input.fromValue(map['migrationToken'] as String),
       msaAppId: pulumi.Input.fromValue(map['msaAppId'] as String),
-      msaAppMSIResourceId: (() {
-        final guardedValue = map['msaAppMSIResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      msaAppTenantId: (() {
-        final guardedValue = map['msaAppTenantId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      msaAppType: (() {
-        final guardedValue = map['msaAppType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      networkSecurityPerimeterConfigurations: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<NetworkSecurityPerimeterConfigurationResponse>(
-          map['networkSecurityPerimeterConfigurations']!,
-          (value) => NetworkSecurityPerimeterConfigurationResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      openWithHint: (() {
-        final guardedValue = map['openWithHint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      parameters: (() {
-        final guardedValue = map['parameters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      privateEndpointConnections: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(
-          map['privateEndpointConnections']!,
-          (value) => PrivateEndpointConnectionResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
-      publicNetworkAccess: (() {
-        final guardedValue = map['publicNetworkAccess'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      publishingCredentials: (() {
-        final guardedValue = map['publishingCredentials'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      schemaTransformationVersion: (() {
-        final guardedValue = map['schemaTransformationVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      storageResourceId: (() {
-        final guardedValue = map['storageResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tenantId: (() {
-        final guardedValue = map['tenantId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      msaAppMSIResourceId: (() { final guardedValue = map['msaAppMSIResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      msaAppTenantId: (() { final guardedValue = map['msaAppTenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      msaAppType: (() { final guardedValue = map['msaAppType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      networkSecurityPerimeterConfigurations: pulumi.Input.fromValue(pulumi.Input.decodeList<NetworkSecurityPerimeterConfigurationResponse>(map['networkSecurityPerimeterConfigurations']!, (value) => NetworkSecurityPerimeterConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))),
+      openWithHint: (() { final guardedValue = map['openWithHint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      privateEndpointConnections: pulumi.Input.fromValue(pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(map['privateEndpointConnections']!, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>()))),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
+      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publishingCredentials: (() { final guardedValue = map['publishingCredentials']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      schemaTransformationVersion: (() { final guardedValue = map['schemaTransformationVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageResourceId: (() { final guardedValue = map['storageResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

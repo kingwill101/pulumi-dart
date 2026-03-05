@@ -6,12 +6,10 @@ class ConnectPeerConfigurationBgpConfiguration {
   /// Connect peer core network address.
   final pulumi.Input<String>? coreNetworkAddress;
   final pulumi.Input<int>? coreNetworkAsn;
-
   /// Connect peer address.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? peerAddress;
-
   /// Peer ASN. Supports 2-byte and 4-byte ASNs (1 to 4294967295).
   final pulumi.Input<String>? peerAsn;
 
@@ -36,30 +34,13 @@ class ConnectPeerConfigurationBgpConfiguration {
     };
   }
 
-  factory ConnectPeerConfigurationBgpConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConnectPeerConfigurationBgpConfiguration.fromMap(Map<String, dynamic> map) {
     return ConnectPeerConfigurationBgpConfiguration(
-      coreNetworkAddress: (() {
-        final guardedValue = map['coreNetworkAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      coreNetworkAsn: (() {
-        final guardedValue = map['coreNetworkAsn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      peerAddress: (() {
-        final guardedValue = map['peerAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      peerAsn: (() {
-        final guardedValue = map['peerAsn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      coreNetworkAddress: (() { final guardedValue = map['coreNetworkAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      coreNetworkAsn: (() { final guardedValue = map['coreNetworkAsn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      peerAddress: (() { final guardedValue = map['peerAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      peerAsn: (() { final guardedValue = map['peerAsn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

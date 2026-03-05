@@ -15,3 +15,4 @@ enum CapacityReservationPreference {
     throw ArgumentError('Unknown CapacityReservationPreference value: $value');
   }
 }
+

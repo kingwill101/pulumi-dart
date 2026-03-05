@@ -167,48 +167,34 @@ import 'system_data_response.dart';
 class PartnerTopic extends pulumi.CustomResource {
   /// Activation state of the partner topic.
   late final pulumi.Output<String?> activationState;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Event Type information from the corresponding event channel.
   late final pulumi.Output<EventTypeInfoResponse?> eventTypeInfo;
-
   /// Expiration time of the partner topic. If this timer expires while the partner topic is still never activated,
   /// the partner topic and corresponding event channel are deleted.
   late final pulumi.Output<String?> expirationTimeIfNotActivatedUtc;
-
   /// Identity information for the Partner Topic resource.
   late final pulumi.Output<IdentityInfoResponse?> identity;
-
   /// Location of the resource.
   late final pulumi.Output<String> location;
-
   /// Context or helpful message that can be used during the approval process by the subscriber.
   late final pulumi.Output<String?> messageForActivation;
-
   /// Name of the resource.
   late final pulumi.Output<String> name;
-
   /// The immutableId of the corresponding partner registration.
   late final pulumi.Output<String?> partnerRegistrationImmutableId;
-
   /// Friendly description about the topic. This can be set by the publisher/partner to show custom description for the customer partner topic.
   /// This will be helpful to remove any ambiguity of the origin of creation of the partner topic for the customer.
   late final pulumi.Output<String?> partnerTopicFriendlyDescription;
-
   /// Provisioning state of the partner topic.
   late final pulumi.Output<String> provisioningState;
-
   /// Source associated with this partner topic. This represents a unique partner resource.
   late final pulumi.Output<String?> source;
-
   /// The system metadata relating to the Event Grid resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Tags of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Type of the resource.
   late final pulumi.Output<String> type;
 
@@ -221,57 +207,24 @@ class PartnerTopic extends pulumi.CustomResource {
     PartnerTopicArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:eventgrid:PartnerTopic',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:eventgrid:PartnerTopic',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     activationState = registerOutput<String?>('activationState');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    eventTypeInfo = registerOutput<EventTypeInfoResponse?>(
-      'eventTypeInfo',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EventTypeInfoResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    expirationTimeIfNotActivatedUtc = registerOutput<String?>(
-      'expirationTimeIfNotActivatedUtc',
-    );
-    identity = registerOutput<IdentityInfoResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IdentityInfoResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    eventTypeInfo = registerOutput<EventTypeInfoResponse?>('eventTypeInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventTypeInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    expirationTimeIfNotActivatedUtc = registerOutput<String?>('expirationTimeIfNotActivatedUtc');
+    identity = registerOutput<IdentityInfoResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     messageForActivation = registerOutput<String?>('messageForActivation');
     this.name = registerOutput<String>('name');
-    partnerRegistrationImmutableId = registerOutput<String?>(
-      'partnerRegistrationImmutableId',
-    );
-    partnerTopicFriendlyDescription = registerOutput<String?>(
-      'partnerTopicFriendlyDescription',
-    );
+    partnerRegistrationImmutableId = registerOutput<String?>('partnerRegistrationImmutableId');
+    partnerTopicFriendlyDescription = registerOutput<String?>('partnerTopicFriendlyDescription');
     provisioningState = registerOutput<String>('provisioningState');
     source = registerOutput<String?>('source');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

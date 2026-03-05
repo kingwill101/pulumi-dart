@@ -10,13 +10,10 @@ import 'connected_environment_storage_properties.dart';
 class ConnectedEnvironmentsStorageArgs {
   /// Name of the Environment.
   final pulumi.Input<String> connectedEnvironmentName;
-
   /// Storage properties
   final pulumi.Input<ConnectedEnvironmentStorageProperties>? properties;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Name of the storage.
   final pulumi.Input<String>? storageName;
 
@@ -35,11 +32,7 @@ class ConnectedEnvironmentsStorageArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'connectedEnvironmentName': connectedEnvironmentName,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            ConnectedEnvironmentStorageProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<ConnectedEnvironmentStorageProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'storageName': ?storageName,
     };
@@ -47,26 +40,11 @@ class ConnectedEnvironmentsStorageArgs {
 
   factory ConnectedEnvironmentsStorageArgs.fromMap(Map<String, dynamic> map) {
     return ConnectedEnvironmentsStorageArgs(
-      connectedEnvironmentName: pulumi.Input.fromValue(
-        map['connectedEnvironmentName'] as String,
-      ),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ConnectedEnvironmentStorageProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      storageName: (() {
-        final guardedValue = map['storageName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      connectedEnvironmentName: pulumi.Input.fromValue(map['connectedEnvironmentName'] as String),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectedEnvironmentStorageProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      storageName: (() { final guardedValue = map['storageName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

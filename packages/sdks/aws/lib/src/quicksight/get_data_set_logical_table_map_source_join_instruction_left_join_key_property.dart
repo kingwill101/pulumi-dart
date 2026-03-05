@@ -12,14 +12,15 @@ class GetDataSetLogicalTableMapSourceJoinInstructionLeftJoinKeyProperty {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'uniqueKey': uniqueKey};
+    return <String, dynamic>{
+      'uniqueKey': uniqueKey,
+    };
   }
 
-  factory GetDataSetLogicalTableMapSourceJoinInstructionLeftJoinKeyProperty.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDataSetLogicalTableMapSourceJoinInstructionLeftJoinKeyProperty.fromMap(Map<String, dynamic> map) {
     return GetDataSetLogicalTableMapSourceJoinInstructionLeftJoinKeyProperty(
       uniqueKey: pulumi.Input.fromValue(map['uniqueKey'] as bool),
     );
   }
 }
+

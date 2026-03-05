@@ -7,10 +7,8 @@ import 'key_vault_properties_response.dart';
 class EncryptionResponse {
   /// Enumerates the possible value of keySource for Encryption
   final pulumi.Input<String>? keySource;
-
   /// Properties of KeyVault
   final pulumi.Input<List<KeyVaultPropertiesResponse>>? keyVaultProperties;
-
   /// Enable Infrastructure Encryption (Double Encryption)
   final pulumi.Input<bool>? requireInfrastructureEncryption;
 
@@ -27,46 +25,17 @@ class EncryptionResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'keySource': ?keySource,
-      'keyVaultProperties':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<KeyVaultPropertiesResponse>,
-            List<Map<String, dynamic>>
-          >(
-            keyVaultProperties,
-            (value) =>
-                pulumi.Input.encodeList<
-                  KeyVaultPropertiesResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'keyVaultProperties': ?pulumi.Input.mapOptionalInputValue<List<KeyVaultPropertiesResponse>, List<Map<String, dynamic>>>(keyVaultProperties, (value) => pulumi.Input.encodeList<KeyVaultPropertiesResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'requireInfrastructureEncryption': ?requireInfrastructureEncryption,
     };
   }
 
   factory EncryptionResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionResponse(
-      keySource: (() {
-        final guardedValue = map['keySource'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keyVaultProperties: (() {
-        final guardedValue = map['keyVaultProperties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<KeyVaultPropertiesResponse>(
-            guardedValue,
-            (value) => KeyVaultPropertiesResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      requireInfrastructureEncryption: (() {
-        final guardedValue = map['requireInfrastructureEncryption'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      keySource: (() { final guardedValue = map['keySource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyVaultProperties: (() { final guardedValue = map['keyVaultProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<KeyVaultPropertiesResponse>(guardedValue, (value) => KeyVaultPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      requireInfrastructureEncryption: (() { final guardedValue = map['requireInfrastructureEncryption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

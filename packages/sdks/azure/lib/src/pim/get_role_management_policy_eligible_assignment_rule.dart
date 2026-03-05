@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRoleManagementPolicyEligibleAssignmentRule {
   /// (Boolean) Must an assignment have an expiry date.
   final pulumi.Input<bool> expirationRequired;
-
   /// (String) The maximum length of time an assignment can be valid, as an ISO8601 duration.
   final pulumi.Input<String> expireAfter;
 
@@ -24,14 +23,11 @@ class GetRoleManagementPolicyEligibleAssignmentRule {
     };
   }
 
-  factory GetRoleManagementPolicyEligibleAssignmentRule.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetRoleManagementPolicyEligibleAssignmentRule.fromMap(Map<String, dynamic> map) {
     return GetRoleManagementPolicyEligibleAssignmentRule(
-      expirationRequired: pulumi.Input.fromValue(
-        map['expirationRequired'] as bool,
-      ),
+      expirationRequired: pulumi.Input.fromValue(map['expirationRequired'] as bool),
       expireAfter: pulumi.Input.fromValue(map['expireAfter'] as String),
     );
   }
 }
+

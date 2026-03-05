@@ -17,8 +17,7 @@ enum ForwardingRuleIpProtocolComputeBeta {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ForwardingRuleIpProtocolComputeBeta value: $value',
-    );
+    throw ArgumentError('Unknown ForwardingRuleIpProtocolComputeBeta value: $value');
   }
 }
+

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReportConfigGroupPreferenceSetAssignment {
   /// Name of the group.
   final pulumi.Input<String> group;
-
   /// Name of the Preference Set.
   final pulumi.Input<String> preferenceSet;
 
@@ -19,15 +18,17 @@ class ReportConfigGroupPreferenceSetAssignment {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'group': group, 'preferenceSet': preferenceSet};
+    return <String, dynamic>{
+      'group': group,
+      'preferenceSet': preferenceSet,
+    };
   }
 
-  factory ReportConfigGroupPreferenceSetAssignment.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ReportConfigGroupPreferenceSetAssignment.fromMap(Map<String, dynamic> map) {
     return ReportConfigGroupPreferenceSetAssignment(
       group: pulumi.Input.fromValue(map['group'] as String),
       preferenceSet: pulumi.Input.fromValue(map['preferenceSet'] as String),
     );
   }
 }
+

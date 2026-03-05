@@ -1,21 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getImage.
 class GetImageResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String imageDigest;
-
   /// Date and time, expressed as a unix timestamp, at which the current image was pushed to the repository.
   final int imagePushedAt;
-
   /// Size, in bytes, of the image in the repository.
   final int imageSizeInBytes;
   final String? imageTag;
-
   /// List of tags associated with this image.
   final List<String> imageTags;
-
   /// The URI for the specific image version specified by `image_tag` or `image_digest`.
   final String imageUri;
   final bool? mostRecent;
@@ -71,21 +68,14 @@ class GetImageResult {
       imageDigest: map['imageDigest'] as String,
       imagePushedAt: map['imagePushedAt'] as int,
       imageSizeInBytes: map['imageSizeInBytes'] as int,
-      imageTag: (() {
-        final guardedValue = map['imageTag'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      imageTag: (() { final guardedValue = map['imageTag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       imageTags: (map['imageTags'] as List).cast<String>(),
       imageUri: map['imageUri'] as String,
-      mostRecent: (() {
-        final guardedValue = map['mostRecent'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      mostRecent: (() { final guardedValue = map['mostRecent']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       region: map['region'] as String,
       registryId: map['registryId'] as String,
       repositoryName: map['repositoryName'] as String,
     );
   }
 }
+

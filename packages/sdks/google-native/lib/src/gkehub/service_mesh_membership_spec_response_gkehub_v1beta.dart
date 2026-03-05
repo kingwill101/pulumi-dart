@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceMeshMembershipSpecResponseGkehubV1beta {
   /// Deprecated: use `management` instead Enables automatic control plane management.
   final pulumi.Input<String> controlPlane;
-
   /// Enables automatic Service Mesh management.
   final pulumi.Input<String> management;
 
@@ -25,12 +24,11 @@ class ServiceMeshMembershipSpecResponseGkehubV1beta {
     };
   }
 
-  factory ServiceMeshMembershipSpecResponseGkehubV1beta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ServiceMeshMembershipSpecResponseGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return ServiceMeshMembershipSpecResponseGkehubV1beta(
       controlPlane: pulumi.Input.fromValue(map['controlPlane'] as String),
       management: pulumi.Input.fromValue(map['management'] as String),
     );
   }
 }
+

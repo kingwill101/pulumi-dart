@@ -1,15 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getHostingChannel.
 class GetHostingChannelResult {
   final String channelId;
   final Map<String, String> effectiveLabels;
   final String expireTime;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final Map<String, String> labels;
-
   /// The fully-qualified resource name for the channel, in the format: `sites/{{site_id}}/channels/{{channel_id}}`.
   final String name;
   final Map<String, String> pulumiLabels;
@@ -71,3 +70,4 @@ class GetHostingChannelResult {
     );
   }
 }
+

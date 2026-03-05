@@ -13,8 +13,7 @@ enum LoadBalancerRuleTransportProtocol {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown LoadBalancerRuleTransportProtocol value: $value',
-    );
+    throw ArgumentError('Unknown LoadBalancerRuleTransportProtocol value: $value');
   }
 }
+

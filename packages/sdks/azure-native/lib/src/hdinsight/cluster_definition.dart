@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterDefinition {
   /// The link to the blueprint.
   final pulumi.Input<String>? blueprint;
-
   /// The versions of different services in the cluster.
   final pulumi.Input<Map<String, String>>? componentVersion;
-
   /// The cluster configurations.
   final pulumi.Input<dynamic>? configurations;
-
   /// The type of cluster.
   final pulumi.Input<String>? kind;
 
@@ -39,28 +36,11 @@ class ClusterDefinition {
 
   factory ClusterDefinition.fromMap(Map<String, dynamic> map) {
     return ClusterDefinition(
-      blueprint: (() {
-        final guardedValue = map['blueprint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      componentVersion: (() {
-        final guardedValue = map['componentVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      configurations: (() {
-        final guardedValue = map['configurations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      blueprint: (() { final guardedValue = map['blueprint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      componentVersion: (() { final guardedValue = map['componentVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      configurations: (() { final guardedValue = map['configurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

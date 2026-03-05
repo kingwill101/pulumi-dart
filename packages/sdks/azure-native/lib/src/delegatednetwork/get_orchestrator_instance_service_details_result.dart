@@ -7,49 +7,34 @@ import 'orchestrator_identity_response.dart';
 class GetOrchestratorInstanceServiceDetailsResult {
   /// K8s APIServer url. Either one of apiServerEndpoint or privateLinkResourceId can be specified
   final String? apiServerEndpoint;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// RootCA certificate of kubernetes cluster base64 encoded
   final String? clusterRootCA;
-
   /// Properties of the controller.
   final ControllerDetailsResponse controllerDetails;
-
   /// An identifier that represents the resource.
   final String id;
-
   /// The identity of the orchestrator
   final OrchestratorIdentityResponse? identity;
-
   /// The kind of workbook. Choices are user and shared.
   final String kind;
-
   /// Location of the resource.
   final String? location;
-
   /// The name of the resource.
   final String name;
-
   /// AAD ID used with apiserver
   final String? orchestratorAppId;
-
   /// TenantID of server App ID
   final String? orchestratorTenantId;
-
   /// private link arm resource id. Either one of apiServerEndpoint or privateLinkResourceId can be specified
   final String? privateLinkResourceId;
-
   /// The current state of orchestratorInstance resource.
   final String provisioningState;
-
   /// Resource guid.
   final String resourceGuid;
-
   /// The resource tags.
   final Map<String, String>? tags;
-
   /// The type of resource.
   final String type;
 
@@ -110,62 +95,25 @@ class GetOrchestratorInstanceServiceDetailsResult {
     };
   }
 
-  factory GetOrchestratorInstanceServiceDetailsResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetOrchestratorInstanceServiceDetailsResult.fromMap(Map<String, dynamic> map) {
     return GetOrchestratorInstanceServiceDetailsResult(
-      apiServerEndpoint: (() {
-        final guardedValue = map['apiServerEndpoint'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      apiServerEndpoint: (() { final guardedValue = map['apiServerEndpoint']; if (guardedValue == null) return null; return guardedValue as String; })(),
       azureApiVersion: map['azureApiVersion'] as String,
-      clusterRootCA: (() {
-        final guardedValue = map['clusterRootCA'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      controllerDetails: ControllerDetailsResponse.fromMap(
-        (map['controllerDetails']! as Map).cast<String, dynamic>(),
-      ),
+      clusterRootCA: (() { final guardedValue = map['clusterRootCA']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      controllerDetails: ControllerDetailsResponse.fromMap((map['controllerDetails']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return OrchestratorIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return OrchestratorIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       kind: map['kind'] as String,
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
-      orchestratorAppId: (() {
-        final guardedValue = map['orchestratorAppId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      orchestratorTenantId: (() {
-        final guardedValue = map['orchestratorTenantId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      privateLinkResourceId: (() {
-        final guardedValue = map['privateLinkResourceId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      orchestratorAppId: (() { final guardedValue = map['orchestratorAppId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      orchestratorTenantId: (() { final guardedValue = map['orchestratorTenantId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      privateLinkResourceId: (() { final guardedValue = map['privateLinkResourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       provisioningState: map['provisioningState'] as String,
       resourceGuid: map['resourceGuid'] as String,
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

@@ -12,53 +12,38 @@ import 'system_data_response.dart';
 class GetEventSubscriptionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.
   /// Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering.
   final StorageBlobDeadLetterDestinationResponse? deadLetterDestination;
-
   /// The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.
   /// Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery / dead-lettering.
   final DeadLetterWithResourceIdentityResponse? deadLetterWithResourceIdentity;
-
   /// Information about the destination where events have to be delivered for the event subscription.
   /// Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery / dead-lettering.
   final DeliveryWithResourceIdentityResponse? deliveryWithResourceIdentity;
-
   /// Information about the destination where events have to be delivered for the event subscription.
   /// Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering.
   final AzureFunctionEventSubscriptionDestinationResponse? destination;
-
   /// The event delivery schema for the event subscription.
   final String? eventDeliverySchema;
-
   /// Expiration time of the event subscription.
   final String? expirationTimeUtc;
-
   /// Information about the filter for the event subscription.
   final EventSubscriptionFilterResponse? filter;
-
   /// Fully qualified identifier of the resource.
   final String id;
-
   /// List of user defined labels.
   final List<String>? labels;
-
   /// Name of the resource.
   final String name;
-
   /// Provisioning state of the event subscription.
   final String provisioningState;
-
   /// The retry policy for events. This can be used to configure maximum number of delivery attempts and time to live for events.
   final RetryPolicyResponse? retryPolicy;
-
   /// The system metadata relating to the Event Grid resource.
   final SystemDataResponse systemData;
-
   /// Name of the topic of the event subscription.
   final String topic;
-
   /// Type of the resource.
   final String type;
 
@@ -102,8 +87,7 @@ class GetEventSubscriptionResult {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
       'deadLetterDestination': ?deadLetterDestination?.toMap(),
-      'deadLetterWithResourceIdentity': ?deadLetterWithResourceIdentity
-          ?.toMap(),
+      'deadLetterWithResourceIdentity': ?deadLetterWithResourceIdentity?.toMap(),
       'deliveryWithResourceIdentity': ?deliveryWithResourceIdentity?.toMap(),
       'destination': ?destination?.toMap(),
       'eventDeliverySchema': ?eventDeliverySchema,
@@ -123,71 +107,22 @@ class GetEventSubscriptionResult {
   factory GetEventSubscriptionResult.fromMap(Map<String, dynamic> map) {
     return GetEventSubscriptionResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      deadLetterDestination: (() {
-        final guardedValue = map['deadLetterDestination'];
-        if (guardedValue == null) return null;
-        return StorageBlobDeadLetterDestinationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      deadLetterWithResourceIdentity: (() {
-        final guardedValue = map['deadLetterWithResourceIdentity'];
-        if (guardedValue == null) return null;
-        return DeadLetterWithResourceIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      deliveryWithResourceIdentity: (() {
-        final guardedValue = map['deliveryWithResourceIdentity'];
-        if (guardedValue == null) return null;
-        return DeliveryWithResourceIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      destination: (() {
-        final guardedValue = map['destination'];
-        if (guardedValue == null) return null;
-        return AzureFunctionEventSubscriptionDestinationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      eventDeliverySchema: (() {
-        final guardedValue = map['eventDeliverySchema'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      expirationTimeUtc: (() {
-        final guardedValue = map['expirationTimeUtc'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      filter: (() {
-        final guardedValue = map['filter'];
-        if (guardedValue == null) return null;
-        return EventSubscriptionFilterResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      deadLetterDestination: (() { final guardedValue = map['deadLetterDestination']; if (guardedValue == null) return null; return StorageBlobDeadLetterDestinationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      deadLetterWithResourceIdentity: (() { final guardedValue = map['deadLetterWithResourceIdentity']; if (guardedValue == null) return null; return DeadLetterWithResourceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      deliveryWithResourceIdentity: (() { final guardedValue = map['deliveryWithResourceIdentity']; if (guardedValue == null) return null; return DeliveryWithResourceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      destination: (() { final guardedValue = map['destination']; if (guardedValue == null) return null; return AzureFunctionEventSubscriptionDestinationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      eventDeliverySchema: (() { final guardedValue = map['eventDeliverySchema']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      expirationTimeUtc: (() { final guardedValue = map['expirationTimeUtc']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return EventSubscriptionFilterResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: map['id'] as String,
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      retryPolicy: (() {
-        final guardedValue = map['retryPolicy'];
-        if (guardedValue == null) return null;
-        return RetryPolicyResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      retryPolicy: (() { final guardedValue = map['retryPolicy']; if (guardedValue == null) return null; return RetryPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       topic: map['topic'] as String,
       type: map['type'] as String,
     );
   }
 }
+

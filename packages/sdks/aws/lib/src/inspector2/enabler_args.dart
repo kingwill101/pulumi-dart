@@ -10,10 +10,8 @@ class EnablerArgs {
   /// Set of account IDs.
   /// Can contain one of: the Organization's Administrator Account, or one or more Member Accounts.
   final pulumi.Input<List<String>> accountIds;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Type of resources to scan.
   /// Valid values are `EC2`, `ECR`, `LAMBDA`, `LAMBDA_CODE` and `CODE_REPOSITORY`.
   /// At least one item is required.
@@ -39,17 +37,10 @@ class EnablerArgs {
 
   factory EnablerArgs.fromMap(Map<String, dynamic> map) {
     return EnablerArgs(
-      accountIds: pulumi.Input.fromValue(
-        (map['accountIds'] as List).cast<String>(),
-      ),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceTypes: pulumi.Input.fromValue(
-        (map['resourceTypes'] as List).cast<String>(),
-      ),
+      accountIds: pulumi.Input.fromValue((map['accountIds'] as List).cast<String>()),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceTypes: pulumi.Input.fromValue((map['resourceTypes'] as List).cast<String>()),
     );
   }
 }
+

@@ -5,25 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPbrRouteEntriesEntry {
   /// The creation time of the VPN Pbr Route Entry.
   final pulumi.Input<String> createTime;
-
   /// The id of the vpn pbr route entry. The value formats as `&lt;vpn_gateway_id&gt;:&lt;next_hop&gt;:&lt;route_source&gt;:&lt;route_dest&gt;`.
   final pulumi.Input<String> id;
-
   /// The next hop of the policy-based route.
   final pulumi.Input<String> nextHop;
-
   /// The destination CIDR block of the policy-based route.
   final pulumi.Input<String> routeDest;
-
   /// The source CIDR block of the policy-based route.
   final pulumi.Input<String> routeSource;
-
   /// The status of the VPN Pbr Route Entry.
   final pulumi.Input<String> status;
-
   /// The ID of the VPN gateway.
   final pulumi.Input<String> vpnGatewayId;
-
   /// The weight of the policy-based route. Valid values: 0 and 100.
   final pulumi.Input<int> weight;
 
@@ -73,3 +66,4 @@ class GetPbrRouteEntriesEntry {
     );
   }
 }
+

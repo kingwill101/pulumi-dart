@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ImportRoutePolicyInformationResponse {
   /// Import IPv4 Route Policy Id.
   final pulumi.Input<String>? importIpv4RoutePolicyId;
-
   /// Import IPv6 Route Policy Id.
   final pulumi.Input<String>? importIpv6RoutePolicyId;
 
@@ -25,20 +24,11 @@ class ImportRoutePolicyInformationResponse {
     };
   }
 
-  factory ImportRoutePolicyInformationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ImportRoutePolicyInformationResponse.fromMap(Map<String, dynamic> map) {
     return ImportRoutePolicyInformationResponse(
-      importIpv4RoutePolicyId: (() {
-        final guardedValue = map['importIpv4RoutePolicyId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      importIpv6RoutePolicyId: (() {
-        final guardedValue = map['importIpv6RoutePolicyId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      importIpv4RoutePolicyId: (() { final guardedValue = map['importIpv4RoutePolicyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      importIpv6RoutePolicyId: (() { final guardedValue = map['importIpv6RoutePolicyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -12,8 +12,7 @@ enum PrivateLinkServiceNetworkPolicies {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown PrivateLinkServiceNetworkPolicies value: $value',
-    );
+    throw ArgumentError('Unknown PrivateLinkServiceNetworkPolicies value: $value');
   }
 }
+

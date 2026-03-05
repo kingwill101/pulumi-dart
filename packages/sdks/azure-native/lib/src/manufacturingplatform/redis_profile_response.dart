@@ -9,10 +9,14 @@ class RedisProfileResponse {
 
   /// Creates a new [RedisProfileResponse].
   /// [id] Resource Id of Azure Redis Cache Resource
-  RedisProfileResponse({required this.id});
+  RedisProfileResponse({
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id};
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
   factory RedisProfileResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class RedisProfileResponse {
     );
   }
 }
+

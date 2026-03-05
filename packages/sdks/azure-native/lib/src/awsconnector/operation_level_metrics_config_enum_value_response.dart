@@ -9,21 +9,20 @@ class OperationLevelMetricsConfigEnumValueResponse {
 
   /// Creates a new [OperationLevelMetricsConfigEnumValueResponse].
   /// [value] Property value
-  OperationLevelMetricsConfigEnumValueResponse({this.value});
+  OperationLevelMetricsConfigEnumValueResponse({
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': ?value};
+    return <String, dynamic>{
+      'value': ?value,
+    };
   }
 
-  factory OperationLevelMetricsConfigEnumValueResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OperationLevelMetricsConfigEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return OperationLevelMetricsConfigEnumValueResponse(
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

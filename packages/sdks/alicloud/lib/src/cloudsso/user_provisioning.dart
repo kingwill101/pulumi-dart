@@ -384,40 +384,28 @@ import 'user_provisioning_state.dart';
 class UserProvisioning extends pulumi.CustomResource {
   /// The creation time of the synchronization
   late final pulumi.Output<String> createTime;
-
   /// The processing policy for users who have been synchronized when deleting synchronization
   late final pulumi.Output<String> deletionStrategy;
-
   /// Description of User Synchronization
   late final pulumi.Output<String?> description;
-
   /// The ID of the directory to which the synchronization belongs
   late final pulumi.Output<String> directoryId;
-
   /// Processing Policy for Synchronization Conflicts
   late final pulumi.Output<String> duplicationStrategy;
-
   /// The ID of the CloudSSO user/group associated with the synchronization.
   late final pulumi.Output<String> principalId;
-
   /// The ID of the CloudSSO user/group associated with the synchronization.
   late final pulumi.Output<String> principalType;
-
   /// The status of the resource
   late final pulumi.Output<String> status;
-
   /// The ID of the destination associated with the synchronization.
   late final pulumi.Output<String> targetId;
-
   /// The target type associated with the synchronization
   late final pulumi.Output<String> targetType;
-
   /// The first ID of the resource
   late final pulumi.Output<String> userProvisioningId;
-
   /// User Provisioning statistics
-  late final pulumi.Output<List<Map<String, dynamic>>>
-  userProvisioningStatistics;
+  late final pulumi.Output<List<Map<String, dynamic>>> userProvisioningStatistics;
 
   /// Creates a new [UserProvisioning].
   /// [name] The Pulumi resource name.
@@ -428,11 +416,11 @@ class UserProvisioning extends pulumi.CustomResource {
     UserProvisioningArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudsso/userProvisioning:UserProvisioning',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudsso/userProvisioning:UserProvisioning',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     deletionStrategy = registerOutput<String>('deletionStrategy');
     description = registerOutput<String?>('description');
@@ -444,9 +432,7 @@ class UserProvisioning extends pulumi.CustomResource {
     targetId = registerOutput<String>('targetId');
     targetType = registerOutput<String>('targetType');
     userProvisioningId = registerOutput<String>('userProvisioningId');
-    userProvisioningStatistics = registerOutput<List<Map<String, dynamic>>>(
-      'userProvisioningStatistics',
-    );
+    userProvisioningStatistics = registerOutput<List<Map<String, dynamic>>>('userProvisioningStatistics');
   }
 
   /// Gets an existing [UserProvisioning] resource's state with the given [name] and [id].
@@ -467,11 +453,11 @@ class UserProvisioning extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudsso/userProvisioning:UserProvisioning',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudsso/userProvisioning:UserProvisioning',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     deletionStrategy = registerOutput<String>('deletionStrategy');
     description = registerOutput<String?>('description');
@@ -483,8 +469,6 @@ class UserProvisioning extends pulumi.CustomResource {
     targetId = registerOutput<String>('targetId');
     targetType = registerOutput<String>('targetType');
     userProvisioningId = registerOutput<String>('userProvisioningId');
-    userProvisioningStatistics = registerOutput<List<Map<String, dynamic>>>(
-      'userProvisioningStatistics',
-    );
+    userProvisioningStatistics = registerOutput<List<Map<String, dynamic>>>('userProvisioningStatistics');
   }
 }

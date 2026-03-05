@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NormalizedVertexResponse {
   /// X coordinate.
   final pulumi.Input<double> x;
-
   /// Y coordinate.
   final pulumi.Input<double> y;
 
   /// Creates a new [NormalizedVertexResponse].
   /// [x] X coordinate.
   /// [y] Y coordinate.
-  NormalizedVertexResponse({required this.x, required this.y});
+  NormalizedVertexResponse({
+    required this.x,
+    required this.y,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'x': x, 'y': y};
+    return <String, dynamic>{
+      'x': x,
+      'y': y,
+    };
   }
 
   factory NormalizedVertexResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class NormalizedVertexResponse {
     );
   }
 }
+

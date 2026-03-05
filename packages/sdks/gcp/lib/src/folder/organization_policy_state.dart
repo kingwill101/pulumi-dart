@@ -9,22 +9,17 @@ import 'organization_policy_restore_policy.dart';
 class OrganizationPolicyState {
   /// A boolean policy is a constraint that is either enforced or not. Structure is documented below.
   final pulumi.Input<OrganizationPolicyBooleanPolicy>? booleanPolicy;
-
   /// The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
   ///
   /// - - -
   final pulumi.Input<String>? constraint;
-
   /// (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
   final pulumi.Input<String>? etag;
-
   /// The resource name of the folder to set the policy for. Its format is folders/{folder_id}.
   final pulumi.Input<String>? folder;
-
   /// A policy that can define specific values that are allowed or denied for the given constraint. It
   /// can also be used to allow or deny all values. Structure is documented below.
   final pulumi.Input<OrganizationPolicyListPolicy>? listPolicy;
-
   /// A restore policy is a constraint to restore the default policy. Structure is documented below.
   ///
   /// &gt; **Note:** If none of [`boolean_policy`, `list_policy`, `restore_policy`] are defined the policy for a given constraint will
@@ -32,10 +27,8 @@ class OrganizationPolicyState {
   ///
   /// - - -
   final pulumi.Input<OrganizationPolicyRestorePolicy>? restorePolicy;
-
   /// (Computed) The timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds, representing when the variable was last updated. Example: "2016-10-09T12:33:37.578138407Z".
   final pulumi.Input<String>? updateTime;
-
   /// Version of the Policy. Default version is 0.
   final pulumi.Input<int>? version;
 
@@ -61,24 +54,12 @@ class OrganizationPolicyState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'booleanPolicy':
-          ?pulumi.Input.mapOptionalInputValue<
-            OrganizationPolicyBooleanPolicy,
-            Map<String, dynamic>
-          >(booleanPolicy, (value) => value.toMap()),
+      'booleanPolicy': ?pulumi.Input.mapOptionalInputValue<OrganizationPolicyBooleanPolicy, Map<String, dynamic>>(booleanPolicy, (value) => value.toMap()),
       'constraint': ?constraint,
       'etag': ?etag,
       'folder': ?folder,
-      'listPolicy':
-          ?pulumi.Input.mapOptionalInputValue<
-            OrganizationPolicyListPolicy,
-            Map<String, dynamic>
-          >(listPolicy, (value) => value.toMap()),
-      'restorePolicy':
-          ?pulumi.Input.mapOptionalInputValue<
-            OrganizationPolicyRestorePolicy,
-            Map<String, dynamic>
-          >(restorePolicy, (value) => value.toMap()),
+      'listPolicy': ?pulumi.Input.mapOptionalInputValue<OrganizationPolicyListPolicy, Map<String, dynamic>>(listPolicy, (value) => value.toMap()),
+      'restorePolicy': ?pulumi.Input.mapOptionalInputValue<OrganizationPolicyRestorePolicy, Map<String, dynamic>>(restorePolicy, (value) => value.toMap()),
       'updateTime': ?updateTime,
       'version': ?version,
     };
@@ -86,58 +67,15 @@ class OrganizationPolicyState {
 
   factory OrganizationPolicyState.fromMap(Map<String, dynamic> map) {
     return OrganizationPolicyState(
-      booleanPolicy: (() {
-        final guardedValue = map['booleanPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          OrganizationPolicyBooleanPolicy.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      constraint: (() {
-        final guardedValue = map['constraint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      etag: (() {
-        final guardedValue = map['etag'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      folder: (() {
-        final guardedValue = map['folder'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      listPolicy: (() {
-        final guardedValue = map['listPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          OrganizationPolicyListPolicy.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      restorePolicy: (() {
-        final guardedValue = map['restorePolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          OrganizationPolicyRestorePolicy.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      updateTime: (() {
-        final guardedValue = map['updateTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      booleanPolicy: (() { final guardedValue = map['booleanPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OrganizationPolicyBooleanPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      constraint: (() { final guardedValue = map['constraint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      folder: (() { final guardedValue = map['folder']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      listPolicy: (() { final guardedValue = map['listPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OrganizationPolicyListPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      restorePolicy: (() { final guardedValue = map['restorePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OrganizationPolicyRestorePolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkFirewallPolicyAssociationArgs {
   /// The target that the firewall policy is attached to.
   final pulumi.Input<String> attachmentTarget;
-
   /// The firewall policy of the resource.
   final pulumi.Input<String> firewallPolicy;
-
   /// The name for an association.
   final pulumi.Input<String>? name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -41,24 +38,13 @@ class NetworkFirewallPolicyAssociationArgs {
     };
   }
 
-  factory NetworkFirewallPolicyAssociationArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NetworkFirewallPolicyAssociationArgs.fromMap(Map<String, dynamic> map) {
     return NetworkFirewallPolicyAssociationArgs(
-      attachmentTarget: pulumi.Input.fromValue(
-        map['attachmentTarget'] as String,
-      ),
+      attachmentTarget: pulumi.Input.fromValue(map['attachmentTarget'] as String),
       firewallPolicy: pulumi.Input.fromValue(map['firewallPolicy'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

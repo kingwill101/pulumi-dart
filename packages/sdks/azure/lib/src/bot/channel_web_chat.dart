@@ -241,13 +241,10 @@ import 'channel_web_chat_state.dart';
 class ChannelWebChat extends pulumi.CustomResource {
   /// The name of the Bot Resource this channel will be associated with. Changing this forces a new resource to be created.
   late final pulumi.Output<String> botName;
-
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The name of the resource group where the Web Chat Channel should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A site represents a client application that you want to connect to your bot. One or more `site` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> sites;
 
@@ -260,11 +257,11 @@ class ChannelWebChat extends pulumi.CustomResource {
     ChannelWebChatArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:bot/channelWebChat:ChannelWebChat',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:bot/channelWebChat:ChannelWebChat',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     botName = registerOutput<String>('botName');
     location = registerOutput<String>('location');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -289,11 +286,11 @@ class ChannelWebChat extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:bot/channelWebChat:ChannelWebChat',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:bot/channelWebChat:ChannelWebChat',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     botName = registerOutput<String>('botName');
     location = registerOutput<String>('location');
     resourceGroupName = registerOutput<String>('resourceGroupName');

@@ -5,28 +5,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetProductAsEndUsersUser {
   /// Product creation time.According to ISO8601 standard, UTC time is used in the format: YYYY-MM-DDThh:mm:ssZ.
   final pulumi.Input<String> createTime;
-
   /// Product description.
   final pulumi.Input<String> description;
-
   /// Whether there is a default Startup option. Value:-true: There is a default Startup option, and there is no need to fill in the portfolio when starting the product or updating the instance.-false: there is no default Startup option. You must fill in the portfolio when starting the product or updating the instance. &gt; If the product is added to only one product portfolio, there will be a default Startup option. If the product is added to multiple product combinations, there will be multiple startup options at the same time, but there is no default Startup option at this time.
   final pulumi.Input<bool> hasDefaultLaunchOption;
-
   /// ID of product, Its value is the same as `product_id`.
   final pulumi.Input<String> id;
-
   /// Product ARN.
   final pulumi.Input<String> productArn;
-
   /// Product ID.
   final pulumi.Input<String> productId;
-
   /// Product name.
   final pulumi.Input<String> productName;
-
   /// Type of product.The value is Ros, which indicates the resource orchestration service (ROS).
   final pulumi.Input<String> productType;
-
   /// Product provider.
   final pulumi.Input<String> providerName;
 
@@ -70,9 +62,7 @@ class GetProductAsEndUsersUser {
     return GetProductAsEndUsersUser(
       createTime: pulumi.Input.fromValue(map['createTime'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
-      hasDefaultLaunchOption: pulumi.Input.fromValue(
-        map['hasDefaultLaunchOption'] as bool,
-      ),
+      hasDefaultLaunchOption: pulumi.Input.fromValue(map['hasDefaultLaunchOption'] as bool),
       id: pulumi.Input.fromValue(map['id'] as String),
       productArn: pulumi.Input.fromValue(map['productArn'] as String),
       productId: pulumi.Input.fromValue(map['productId'] as String),
@@ -82,3 +72,4 @@ class GetProductAsEndUsersUser {
     );
   }
 }
+

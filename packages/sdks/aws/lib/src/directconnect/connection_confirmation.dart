@@ -92,7 +92,6 @@ import 'connection_confirmation_state.dart';
 class ConnectionConfirmation extends pulumi.CustomResource {
   /// The ID of the hosted connection.
   late final pulumi.Output<String> connectionId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -105,11 +104,11 @@ class ConnectionConfirmation extends pulumi.CustomResource {
     ConnectionConfirmationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:directconnect/connectionConfirmation:ConnectionConfirmation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:directconnect/connectionConfirmation:ConnectionConfirmation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     connectionId = registerOutput<String>('connectionId');
     region = registerOutput<String>('region');
   }
@@ -132,11 +131,11 @@ class ConnectionConfirmation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:directconnect/connectionConfirmation:ConnectionConfirmation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:directconnect/connectionConfirmation:ConnectionConfirmation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     connectionId = registerOutput<String>('connectionId');
     region = registerOutput<String>('region');
   }

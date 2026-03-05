@@ -9,17 +9,20 @@ class ResourceSelectorResponse {
 
   /// Creates a new [ResourceSelectorResponse].
   /// [fullResourceName] The [full resource name] (https://cloud.google.com/asset-inventory/docs/resource-name-format) of a resource of [supported resource types](https://cloud.google.com/asset-inventory/docs/supported-asset-types#analyzable_asset_types).
-  ResourceSelectorResponse({required this.fullResourceName});
+  ResourceSelectorResponse({
+    required this.fullResourceName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'fullResourceName': fullResourceName};
+    return <String, dynamic>{
+      'fullResourceName': fullResourceName,
+    };
   }
 
   factory ResourceSelectorResponse.fromMap(Map<String, dynamic> map) {
     return ResourceSelectorResponse(
-      fullResourceName: pulumi.Input.fromValue(
-        map['fullResourceName'] as String,
-      ),
+      fullResourceName: pulumi.Input.fromValue(map['fullResourceName'] as String),
     );
   }
 }
+

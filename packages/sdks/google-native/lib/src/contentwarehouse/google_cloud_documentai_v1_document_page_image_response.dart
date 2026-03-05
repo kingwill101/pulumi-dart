@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDocumentaiV1DocumentPageImageResponse {
   /// Raw byte content of the image.
   final pulumi.Input<String> content;
-
   /// Height of the image in pixels.
   final pulumi.Input<int> height;
-
   /// Encoding [media type (MIME type)](https://www.iana.org/assignments/media-types/media-types.xhtml) for the image.
   final pulumi.Input<String> mimeType;
-
   /// Width of the image in pixels.
   final pulumi.Input<int> width;
 
@@ -37,9 +34,7 @@ class GoogleCloudDocumentaiV1DocumentPageImageResponse {
     };
   }
 
-  factory GoogleCloudDocumentaiV1DocumentPageImageResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDocumentaiV1DocumentPageImageResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentPageImageResponse(
       content: pulumi.Input.fromValue(map['content'] as String),
       height: pulumi.Input.fromValue(map['height'] as int),
@@ -48,3 +43,4 @@ class GoogleCloudDocumentaiV1DocumentPageImageResponse {
     );
   }
 }
+

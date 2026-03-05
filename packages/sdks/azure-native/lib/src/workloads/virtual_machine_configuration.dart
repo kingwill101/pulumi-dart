@@ -8,10 +8,8 @@ import 'osprofile.dart';
 class VirtualMachineConfiguration {
   /// The image reference.
   final pulumi.Input<ImageReference> imageReference;
-
   /// The OS profile.
   final pulumi.Input<OSProfile> osProfile;
-
   /// The virtual machine size.
   final pulumi.Input<String> vmSize;
 
@@ -27,30 +25,18 @@ class VirtualMachineConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'imageReference':
-          pulumi.Input.mapInputValue<ImageReference, Map<String, dynamic>>(
-            imageReference,
-            (value) => value.toMap(),
-          ),
-      'osProfile': pulumi.Input.mapInputValue<OSProfile, Map<String, dynamic>>(
-        osProfile,
-        (value) => value.toMap(),
-      ),
+      'imageReference': pulumi.Input.mapInputValue<ImageReference, Map<String, dynamic>>(imageReference, (value) => value.toMap()),
+      'osProfile': pulumi.Input.mapInputValue<OSProfile, Map<String, dynamic>>(osProfile, (value) => value.toMap()),
       'vmSize': vmSize,
     };
   }
 
   factory VirtualMachineConfiguration.fromMap(Map<String, dynamic> map) {
     return VirtualMachineConfiguration(
-      imageReference: pulumi.Input.fromValue(
-        ImageReference.fromMap(
-          (map['imageReference']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      osProfile: pulumi.Input.fromValue(
-        OSProfile.fromMap((map['osProfile']! as Map).cast<String, dynamic>()),
-      ),
+      imageReference: pulumi.Input.fromValue(ImageReference.fromMap((map['imageReference']! as Map).cast<String, dynamic>())),
+      osProfile: pulumi.Input.fromValue(OSProfile.fromMap((map['osProfile']! as Map).cast<String, dynamic>())),
       vmSize: pulumi.Input.fromValue(map['vmSize'] as String),
     );
   }
 }
+

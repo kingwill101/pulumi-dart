@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVirtualNetworkAllowedSubnet {
   /// Indicates if this subnet allows public IP addresses. Possible values are `Allow`, `Default` and `Deny`.
   final pulumi.Input<String> allowPublicIp;
-
   /// The name of the subnet.
   final pulumi.Input<String> labSubnetName;
-
   /// The resource identifier for the subnet.
   final pulumi.Input<String> resourceId;
 
@@ -38,3 +36,4 @@ class GetVirtualNetworkAllowedSubnet {
     );
   }
 }
+

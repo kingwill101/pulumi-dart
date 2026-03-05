@@ -15,3 +15,4 @@ enum Code {
     throw ArgumentError('Unknown Code value: $value');
   }
 }
+

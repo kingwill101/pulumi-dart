@@ -7,17 +7,13 @@ enum GoogleCloudAiplatformV1beta1StudySpecObservationNoise {
   const GoogleCloudAiplatformV1beta1StudySpecObservationNoise(this.wireValue);
   final String wireValue;
 
-  static GoogleCloudAiplatformV1beta1StudySpecObservationNoise fromValue(
-    String value,
-  ) {
-    for (final item
-        in GoogleCloudAiplatformV1beta1StudySpecObservationNoise.values) {
+  static GoogleCloudAiplatformV1beta1StudySpecObservationNoise fromValue(String value) {
+    for (final item in GoogleCloudAiplatformV1beta1StudySpecObservationNoise.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GoogleCloudAiplatformV1beta1StudySpecObservationNoise value: $value',
-    );
+    throw ArgumentError('Unknown GoogleCloudAiplatformV1beta1StudySpecObservationNoise value: $value');
   }
 }
+

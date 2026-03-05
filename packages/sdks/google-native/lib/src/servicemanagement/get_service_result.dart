@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getService.
 class GetServiceResult {
   /// ID of the project that produces and owns this service.
   final String producerProjectId;
-
   /// The name of the service. See the [overview](https://cloud.google.com/service-infrastructure/docs/overview) for naming requirements.
   final String serviceName;
 
@@ -30,3 +30,4 @@ class GetServiceResult {
     );
   }
 }
+

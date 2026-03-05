@@ -319,25 +319,18 @@ class Vault extends pulumi.CustomResource {
   /// The policy document. This is a JSON formatted string.
   /// The heredoc syntax or `file` function is helpful here. Use the [Glacier Developer Guide](https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-access-policy.html) for more information on Glacier Vault Policy
   late final pulumi.Output<String?> accessPolicy;
-
   /// The ARN of the vault.
   late final pulumi.Output<String> arn;
-
   /// The URI of the vault that was created.
   late final pulumi.Output<String> location;
-
   /// The name of the Vault. Names can be between 1 and 255 characters long and the valid characters are a-z, A-Z, 0-9, '_' (underscore), '-' (hyphen), and '.' (period).
   late final pulumi.Output<String> name;
-
   /// The notifications for the Vault. Fields documented below.
   late final pulumi.Output<VaultNotification?> notification;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -345,34 +338,32 @@ class Vault extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Vault]. {@macro pulumi_glacier_vault_vault_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Vault(String name, {VaultArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:glacier/vault:Vault',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Vault(
+    String name, {
+    VaultArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:glacier/vault:Vault',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessPolicy = registerOutput<String?>('accessPolicy');
     arn = registerOutput<String>('arn');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    notification = registerOutput<VaultNotification?>(
-      'notification',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VaultNotification.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    notification = registerOutput<VaultNotification?>('notification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VaultNotification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [Vault] resource's state with the given [name] and [id].
-  static Vault get(String name, pulumi.Input<String> id, {VaultState? state}) {
+  static Vault get(
+    String name,
+    pulumi.Input<String> id, {
+    VaultState? state,
+  }) {
     return Vault._get(
       name,
       state: state?.toMap(),
@@ -385,25 +376,16 @@ class Vault extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:glacier/vault:Vault',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:glacier/vault:Vault',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessPolicy = registerOutput<String?>('accessPolicy');
     arn = registerOutput<String>('arn');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    notification = registerOutput<VaultNotification?>(
-      'notification',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VaultNotification.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    notification = registerOutput<VaultNotification?>('notification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VaultNotification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');

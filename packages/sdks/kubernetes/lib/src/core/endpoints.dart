@@ -24,13 +24,10 @@ import 'endpoint_subset.dart';
 class Endpoints {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   final pulumi.Input<String>? apiVersion;
-
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   final pulumi.Input<String>? kind;
-
   /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   final pulumi.Input<ObjectMeta>? metadata;
-
   /// The set of all endpoints is the union of all subsets. Addresses are placed into subsets according to the IPs they share. A single address with multiple ports, some of which are ready and some of which are not (because they come from different containers) will result in the address being displayed in different subsets for the different ports. No address will appear in both Addresses and NotReadyAddresses in the same subset. Sets of addresses and ports that comprise a service.
   final pulumi.Input<List<EndpointSubset>>? subsets;
 
@@ -39,62 +36,29 @@ class Endpoints {
   /// [kind] Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   /// [metadata] Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   /// [subsets] The set of all endpoints is the union of all subsets. Addresses are placed into subsets according to the IPs they share. A single address with multiple ports, some of which are ready and some of which are not (because they come from different containers) will result in the address being displayed in different subsets for the different ports. No address will appear in both Addresses and NotReadyAddresses in the same subset. Sets of addresses and ports that comprise a service.
-  Endpoints({this.apiVersion, this.kind, this.metadata, this.subsets});
+  Endpoints({
+    this.apiVersion,
+    this.kind,
+    this.metadata,
+    this.subsets,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'apiVersion': ?apiVersion,
       'kind': ?kind,
-      'metadata':
-          ?pulumi.Input.mapOptionalInputValue<ObjectMeta, Map<String, dynamic>>(
-            metadata,
-            (value) => value.toMap(),
-          ),
-      'subsets':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<EndpointSubset>,
-            List<Map<String, dynamic>>
-          >(
-            subsets,
-            (value) =>
-                pulumi.Input.encodeList<EndpointSubset, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'metadata': ?pulumi.Input.mapOptionalInputValue<ObjectMeta, Map<String, dynamic>>(metadata, (value) => value.toMap()),
+      'subsets': ?pulumi.Input.mapOptionalInputValue<List<EndpointSubset>, List<Map<String, dynamic>>>(subsets, (value) => pulumi.Input.encodeList<EndpointSubset, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory Endpoints.fromMap(Map<String, dynamic> map) {
     return Endpoints(
-      apiVersion: (() {
-        final guardedValue = map['apiVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      metadata: (() {
-        final guardedValue = map['metadata'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      subsets: (() {
-        final guardedValue = map['subsets'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<EndpointSubset>(
-            guardedValue,
-            (value) =>
-                EndpointSubset.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
+      apiVersion: (() { final guardedValue = map['apiVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      subsets: (() { final guardedValue = map['subsets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EndpointSubset>(guardedValue, (value) => EndpointSubset.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

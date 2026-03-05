@@ -235,22 +235,16 @@ import 'certificate_issuer_state.dart';
 class CertificateIssuer extends pulumi.CustomResource {
   /// The account number with the third-party Certificate Issuer.
   late final pulumi.Output<String?> accountId;
-
   /// One or more `admin` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> admins;
-
   /// The ID of the Key Vault in which to create the Certificate Issuer. Changing this forces a new resource to be created.
   late final pulumi.Output<String> keyVaultId;
-
   /// The name which should be used for this Key Vault Certificate Issuer. Changing this forces a new Key Vault Certificate Issuer to be created.
   late final pulumi.Output<String> name;
-
   /// The ID of the organization as provided to the issuer.
   late final pulumi.Output<String?> orgId;
-
   /// The password associated with the account and organization ID at the third-party Certificate Issuer. If not specified, will not overwrite any previous value.
   late final pulumi.Output<String?> password;
-
   /// The name of the third-party Certificate Issuer. Possible values are: `DigiCert`, `GlobalSign`, `OneCertV2-PrivateCA`, `OneCertV2-PublicCA` and `SslAdminV2`.
   late final pulumi.Output<String> providerName;
 
@@ -263,11 +257,11 @@ class CertificateIssuer extends pulumi.CustomResource {
     CertificateIssuerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:keyvault/certificateIssuer:CertificateIssuer',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:keyvault/certificateIssuer:CertificateIssuer',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String?>('accountId');
     admins = registerOutput<List<Map<String, dynamic>>?>('admins');
     keyVaultId = registerOutput<String>('keyVaultId');
@@ -295,11 +289,11 @@ class CertificateIssuer extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:keyvault/certificateIssuer:CertificateIssuer',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:keyvault/certificateIssuer:CertificateIssuer',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String?>('accountId');
     admins = registerOutput<List<Map<String, dynamic>>?>('admins');
     keyVaultId = registerOutput<String>('keyVaultId');

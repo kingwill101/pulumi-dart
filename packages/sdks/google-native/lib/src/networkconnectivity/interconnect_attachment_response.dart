@@ -9,10 +9,14 @@ class InterconnectAttachmentResponse {
 
   /// Creates a new [InterconnectAttachmentResponse].
   /// [region] Optional. Cloud region to install this policy-based route on interconnect attachment. Use `all` to install it on all interconnect attachments.
-  InterconnectAttachmentResponse({required this.region});
+  InterconnectAttachmentResponse({
+    required this.region,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'region': region};
+    return <String, dynamic>{
+      'region': region,
+    };
   }
 
   factory InterconnectAttachmentResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class InterconnectAttachmentResponse {
     );
   }
 }
+

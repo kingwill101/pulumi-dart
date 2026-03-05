@@ -15,3 +15,4 @@ enum SignedRequestScope {
     throw ArgumentError('Unknown SignedRequestScope value: $value');
   }
 }
+

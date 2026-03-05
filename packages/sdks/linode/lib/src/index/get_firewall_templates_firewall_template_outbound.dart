@@ -41,9 +41,7 @@ class GetFirewallTemplatesFirewallTemplateOutbound {
     };
   }
 
-  factory GetFirewallTemplatesFirewallTemplateOutbound.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetFirewallTemplatesFirewallTemplateOutbound.fromMap(Map<String, dynamic> map) {
     return GetFirewallTemplatesFirewallTemplateOutbound(
       action: pulumi.Input.fromValue(map['action'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
@@ -55,3 +53,4 @@ class GetFirewallTemplatesFirewallTemplateOutbound {
     );
   }
 }
+

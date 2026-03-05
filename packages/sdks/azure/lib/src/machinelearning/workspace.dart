@@ -934,84 +934,60 @@ import 'workspace_state.dart';
 class Workspace extends pulumi.CustomResource {
   /// The ID of the Application Insights associated with this Machine Learning Workspace. Changing this forces a new resource to be created.
   late final pulumi.Output<String> applicationInsightsId;
-
   /// The ID of the container registry associated with this Machine Learning Workspace. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** The `admin_enabled` should be `true` in order to associate the Container Registry to this Machine Learning Workspace.
   late final pulumi.Output<String?> containerRegistryId;
-
   /// The description of this Machine Learning Workspace.
   late final pulumi.Output<String?> description;
-
   /// The url for the discovery service to identify regional endpoints for machine learning experimentation services.
   late final pulumi.Output<String> discoveryUrl;
-
   /// An `encryption` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<WorkspaceEncryption?> encryption;
-
   /// A `feature_store` block as defined below.
   late final pulumi.Output<WorkspaceFeatureStore?> featureStore;
-
   /// Display name for this Machine Learning Workspace.
   late final pulumi.Output<String?> friendlyName;
-
   /// Flag to signal High Business Impact (HBI) data in the workspace and reduce diagnostic data collected by the service. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> highBusinessImpact;
-
   /// An `identity` block as defined below.
   late final pulumi.Output<WorkspaceIdentity> identity;
-
   /// The compute name for image build of the Machine Learning Workspace.
   late final pulumi.Output<String?> imageBuildComputeName;
-
   /// The ID of key vault associated with this Machine Learning Workspace. Changing this forces a new resource to be created.
   late final pulumi.Output<String> keyVaultId;
-
   /// The type of the Workspace. Possible values are `Default`, `FeatureStore`. Defaults to `Default`
   late final pulumi.Output<String?> kind;
-
   /// Specifies the supported Azure location where the Machine Learning Workspace should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// A `managed_network` block as defined below.
   late final pulumi.Output<WorkspaceManagedNetwork> managedNetwork;
-
   /// Specifies the name of the Machine Learning Workspace. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The user assigned identity id that represents the workspace identity.
   late final pulumi.Output<String?> primaryUserAssignedIdentity;
-
   /// Enable public access when this Machine Learning Workspace is behind VNet. Defaults to `true`.
   ///
   /// &gt; **Note:** `public_access_behind_virtual_network_enabled` is deprecated and will be removed in favour of the property `public_network_access_enabled`.
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
-
   /// Specifies the name of the Resource Group in which the Machine Learning Workspace should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A `serverless_compute` block as defined below.
   late final pulumi.Output<WorkspaceServerlessCompute?> serverlessCompute;
-
   /// Whether to enable service-side encryption with customer-managed keys (CMK). Default to `false`. Changing this forces a new resource to be created.
   ///
   /// !&gt; **Note:** Setting `service_side_encryption_enabled` requires the `encryption` block to be set. When you use service-side encryption, Azure charges will continue to accrue during the soft delete retention period.
   late final pulumi.Output<bool?> serviceSideEncryptionEnabled;
-
   /// SKU/edition of the Machine Learning Workspace, possible values are `Free`, `Basic`, `Standard` and `Premium`. Defaults to `Basic`.
   late final pulumi.Output<String?> skuName;
-
   /// The ID of the Storage Account associated with this Machine Learning Workspace. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** The `account_tier` cannot be `Premium` in order to associate the Storage Account to this Machine Learning Workspace.
   late final pulumi.Output<String> storageAccountId;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Enable V1 API features, enabling `v1_legacy_mode` may prevent you from using features provided by the v2 API. Defaults to `false`.
   late final pulumi.Output<bool?> v1LegacyModeEnabled;
-
   /// The immutable id associated with this workspace.
   late final pulumi.Output<String> workspaceId;
 
@@ -1024,82 +1000,31 @@ class Workspace extends pulumi.CustomResource {
     WorkspaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:machinelearning/workspace:Workspace',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:machinelearning/workspace:Workspace',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationInsightsId = registerOutput<String>('applicationInsightsId');
     containerRegistryId = registerOutput<String?>('containerRegistryId');
     description = registerOutput<String?>('description');
     discoveryUrl = registerOutput<String>('discoveryUrl');
-    encryption = registerOutput<WorkspaceEncryption?>(
-      'encryption',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WorkspaceEncryption.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    featureStore = registerOutput<WorkspaceFeatureStore?>(
-      'featureStore',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WorkspaceFeatureStore.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    encryption = registerOutput<WorkspaceEncryption?>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    featureStore = registerOutput<WorkspaceFeatureStore?>('featureStore', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceFeatureStore.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     friendlyName = registerOutput<String?>('friendlyName');
     highBusinessImpact = registerOutput<bool?>('highBusinessImpact');
-    identity = registerOutput<WorkspaceIdentity>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WorkspaceIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<WorkspaceIdentity>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     imageBuildComputeName = registerOutput<String?>('imageBuildComputeName');
     keyVaultId = registerOutput<String>('keyVaultId');
     kind = registerOutput<String?>('kind');
     location = registerOutput<String>('location');
-    managedNetwork = registerOutput<WorkspaceManagedNetwork>(
-      'managedNetwork',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WorkspaceManagedNetwork.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    managedNetwork = registerOutput<WorkspaceManagedNetwork>('managedNetwork', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceManagedNetwork.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    primaryUserAssignedIdentity = registerOutput<String?>(
-      'primaryUserAssignedIdentity',
-    );
-    publicNetworkAccessEnabled = registerOutput<bool?>(
-      'publicNetworkAccessEnabled',
-    );
+    primaryUserAssignedIdentity = registerOutput<String?>('primaryUserAssignedIdentity');
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    serverlessCompute = registerOutput<WorkspaceServerlessCompute?>(
-      'serverlessCompute',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WorkspaceServerlessCompute.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    serviceSideEncryptionEnabled = registerOutput<bool?>(
-      'serviceSideEncryptionEnabled',
-    );
+    serverlessCompute = registerOutput<WorkspaceServerlessCompute?>('serverlessCompute', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceServerlessCompute.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    serviceSideEncryptionEnabled = registerOutput<bool?>('serviceSideEncryptionEnabled');
     skuName = registerOutput<String?>('skuName');
     storageAccountId = registerOutput<String>('storageAccountId');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -1125,82 +1050,31 @@ class Workspace extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:machinelearning/workspace:Workspace',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:machinelearning/workspace:Workspace',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationInsightsId = registerOutput<String>('applicationInsightsId');
     containerRegistryId = registerOutput<String?>('containerRegistryId');
     description = registerOutput<String?>('description');
     discoveryUrl = registerOutput<String>('discoveryUrl');
-    encryption = registerOutput<WorkspaceEncryption?>(
-      'encryption',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WorkspaceEncryption.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    featureStore = registerOutput<WorkspaceFeatureStore?>(
-      'featureStore',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WorkspaceFeatureStore.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    encryption = registerOutput<WorkspaceEncryption?>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    featureStore = registerOutput<WorkspaceFeatureStore?>('featureStore', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceFeatureStore.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     friendlyName = registerOutput<String?>('friendlyName');
     highBusinessImpact = registerOutput<bool?>('highBusinessImpact');
-    identity = registerOutput<WorkspaceIdentity>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WorkspaceIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<WorkspaceIdentity>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     imageBuildComputeName = registerOutput<String?>('imageBuildComputeName');
     keyVaultId = registerOutput<String>('keyVaultId');
     kind = registerOutput<String?>('kind');
     location = registerOutput<String>('location');
-    managedNetwork = registerOutput<WorkspaceManagedNetwork>(
-      'managedNetwork',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WorkspaceManagedNetwork.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    managedNetwork = registerOutput<WorkspaceManagedNetwork>('managedNetwork', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceManagedNetwork.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    primaryUserAssignedIdentity = registerOutput<String?>(
-      'primaryUserAssignedIdentity',
-    );
-    publicNetworkAccessEnabled = registerOutput<bool?>(
-      'publicNetworkAccessEnabled',
-    );
+    primaryUserAssignedIdentity = registerOutput<String?>('primaryUserAssignedIdentity');
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    serverlessCompute = registerOutput<WorkspaceServerlessCompute?>(
-      'serverlessCompute',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WorkspaceServerlessCompute.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    serviceSideEncryptionEnabled = registerOutput<bool?>(
-      'serviceSideEncryptionEnabled',
-    );
+    serverlessCompute = registerOutput<WorkspaceServerlessCompute?>('serverlessCompute', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceServerlessCompute.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    serviceSideEncryptionEnabled = registerOutput<bool?>('serviceSideEncryptionEnabled');
     skuName = registerOutput<String?>('skuName');
     storageAccountId = registerOutput<String>('storageAccountId');
     tags = registerOutput<Map<String, String>?>('tags');

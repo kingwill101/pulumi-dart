@@ -523,37 +523,27 @@ class ListenerRule extends pulumi.CustomResource {
   /// The action for the listener rule.
   /// See `action` Block for details.
   late final pulumi.Output<ListenerRuleAction> action;
-
   /// The ARN for the listener rule.
   late final pulumi.Output<String> arn;
-
   /// The ID or Amazon Resource Name (ARN) of the listener.
   late final pulumi.Output<String> listenerIdentifier;
-
   /// The rule match.
   /// See `match` Block
   late final pulumi.Output<ListenerRuleMatch> match;
-
   /// The name of the rule. The name must be unique within the listener. The valid characters are a-z, 0-9, and hyphens (-). You can't use a hyphen as the first or last character, or immediately after another hyphen.
   late final pulumi.Output<String> name;
-
   /// The priority assigned to the rule. Each rule for a specific listener must have a unique priority. The lower the priority number the higher the priority.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<int> priority;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Unique identifier for the listener rule.
   late final pulumi.Output<String> ruleId;
-
   /// The ID or Amazon Resource Identifier (ARN) of the service.
   late final pulumi.Output<String> serviceIdentifier;
-
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -566,33 +556,15 @@ class ListenerRule extends pulumi.CustomResource {
     ListenerRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:vpclattice/listenerRule:ListenerRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    action = registerOutput<ListenerRuleAction>(
-      'action',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ListenerRuleAction.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'aws:vpclattice/listenerRule:ListenerRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    action = registerOutput<ListenerRuleAction>('action', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ListenerRuleAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');
     listenerIdentifier = registerOutput<String>('listenerIdentifier');
-    match = registerOutput<ListenerRuleMatch>(
-      'match',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ListenerRuleMatch.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    match = registerOutput<ListenerRuleMatch>('match', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ListenerRuleMatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     priority = registerOutput<int>('priority');
     region = registerOutput<String>('region');
@@ -620,33 +592,15 @@ class ListenerRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:vpclattice/listenerRule:ListenerRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    action = registerOutput<ListenerRuleAction>(
-      'action',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ListenerRuleAction.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'aws:vpclattice/listenerRule:ListenerRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    action = registerOutput<ListenerRuleAction>('action', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ListenerRuleAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');
     listenerIdentifier = registerOutput<String>('listenerIdentifier');
-    match = registerOutput<ListenerRuleMatch>(
-      'match',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ListenerRuleMatch.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    match = registerOutput<ListenerRuleMatch>('match', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ListenerRuleMatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     priority = registerOutput<int>('priority');
     region = registerOutput<String>('region');

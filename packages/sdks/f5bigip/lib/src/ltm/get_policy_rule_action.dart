@@ -450,9 +450,7 @@ class GetPolicyRuleAction {
       cookieRewrite: pulumi.Input.fromValue(map['cookieRewrite'] as bool),
       decompress: pulumi.Input.fromValue(map['decompress'] as bool),
       defer: pulumi.Input.fromValue(map['defer'] as bool),
-      destinationAddress: pulumi.Input.fromValue(
-        map['destinationAddress'] as bool,
-      ),
+      destinationAddress: pulumi.Input.fromValue(map['destinationAddress'] as bool),
       disable: pulumi.Input.fromValue(map['disable'] as bool),
       domain: pulumi.Input.fromValue(map['domain'] as String),
       enable: pulumi.Input.fromValue(map['enable'] as bool),
@@ -461,11 +459,7 @@ class GetPolicyRuleAction {
       expression: pulumi.Input.fromValue(map['expression'] as String),
       extension: pulumi.Input.fromValue(map['extension'] as String),
       facility: pulumi.Input.fromValue(map['facility'] as String),
-      forward: (() {
-        final guardedValue = map['forward'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      forward: (() { final guardedValue = map['forward']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       fromProfile: pulumi.Input.fromValue(map['fromProfile'] as String),
       hash: pulumi.Input.fromValue(map['hash'] as bool),
       host: pulumi.Input.fromValue(map['host'] as String),
@@ -473,11 +467,7 @@ class GetPolicyRuleAction {
       httpBasicAuth: pulumi.Input.fromValue(map['httpBasicAuth'] as bool),
       httpCookie: pulumi.Input.fromValue(map['httpCookie'] as bool),
       httpHeader: pulumi.Input.fromValue(map['httpHeader'] as bool),
-      httpHost: (() {
-        final guardedValue = map['httpHost'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      httpHost: (() { final guardedValue = map['httpHost']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       httpReferer: pulumi.Input.fromValue(map['httpReferer'] as bool),
       httpReply: pulumi.Input.fromValue(map['httpReply'] as bool),
       httpSetCookie: pulumi.Input.fromValue(map['httpSetCookie'] as bool),
@@ -528,9 +518,7 @@ class GetPolicyRuleAction {
       snatpool: pulumi.Input.fromValue(map['snatpool'] as String),
       sourceAddress: pulumi.Input.fromValue(map['sourceAddress'] as bool),
       sslClientHello: pulumi.Input.fromValue(map['sslClientHello'] as bool),
-      sslServerHandshake: pulumi.Input.fromValue(
-        map['sslServerHandshake'] as bool,
-      ),
+      sslServerHandshake: pulumi.Input.fromValue(map['sslServerHandshake'] as bool),
       sslServerHello: pulumi.Input.fromValue(map['sslServerHello'] as bool),
       sslSessionId: pulumi.Input.fromValue(map['sslSessionId'] as bool),
       status: pulumi.Input.fromValue(map['status'] as int),
@@ -550,3 +538,4 @@ class GetPolicyRuleAction {
     );
   }
 }
+

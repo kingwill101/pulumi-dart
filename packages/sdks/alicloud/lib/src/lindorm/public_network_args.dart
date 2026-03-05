@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PublicNetworkArgs {
   /// Open or close the public connection. Value:
   final pulumi.Input<int>? enablePublicNetwork;
-
   /// Engine type, value:
   final pulumi.Input<String> engineType;
-
   /// Instance ID
   final pulumi.Input<String> instanceId;
 
@@ -36,13 +34,10 @@ class PublicNetworkArgs {
 
   factory PublicNetworkArgs.fromMap(Map<String, dynamic> map) {
     return PublicNetworkArgs(
-      enablePublicNetwork: (() {
-        final guardedValue = map['enablePublicNetwork'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      enablePublicNetwork: (() { final guardedValue = map['enablePublicNetwork']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       engineType: pulumi.Input.fromValue(map['engineType'] as String),
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
     );
   }
 }
+

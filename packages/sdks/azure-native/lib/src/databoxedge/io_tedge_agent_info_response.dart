@@ -7,10 +7,8 @@ import 'image_repository_credential_response.dart';
 class IoTEdgeAgentInfoResponse {
   /// Name of the IoT edge agent image.
   final pulumi.Input<String> imageName;
-
   /// Image repository details.
   final pulumi.Input<ImageRepositoryCredentialResponse>? imageRepository;
-
   /// Image Tag.
   final pulumi.Input<String> tag;
 
@@ -27,11 +25,7 @@ class IoTEdgeAgentInfoResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'imageName': imageName,
-      'imageRepository':
-          ?pulumi.Input.mapOptionalInputValue<
-            ImageRepositoryCredentialResponse,
-            Map<String, dynamic>
-          >(imageRepository, (value) => value.toMap()),
+      'imageRepository': ?pulumi.Input.mapOptionalInputValue<ImageRepositoryCredentialResponse, Map<String, dynamic>>(imageRepository, (value) => value.toMap()),
       'tag': tag,
     };
   }
@@ -39,16 +33,9 @@ class IoTEdgeAgentInfoResponse {
   factory IoTEdgeAgentInfoResponse.fromMap(Map<String, dynamic> map) {
     return IoTEdgeAgentInfoResponse(
       imageName: pulumi.Input.fromValue(map['imageName'] as String),
-      imageRepository: (() {
-        final guardedValue = map['imageRepository'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ImageRepositoryCredentialResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      imageRepository: (() { final guardedValue = map['imageRepository']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ImageRepositoryCredentialResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       tag: pulumi.Input.fromValue(map['tag'] as String),
     );
   }
 }
+

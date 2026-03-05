@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfigAccessConfig {
   /// Authentication type Lambda uses to access the schema registry.
   final pulumi.Input<String>? type;
-
   /// URI of the secret (Secrets Manager secret ARN) used to authenticate with the schema registry.
   final pulumi.Input<String>? uri;
 
@@ -18,23 +17,17 @@ class EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfigA
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': ?type, 'uri': ?uri};
+    return <String, dynamic>{
+      'type': ?type,
+      'uri': ?uri,
+    };
   }
 
-  factory EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfigAccessConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfigAccessConfig.fromMap(Map<String, dynamic> map) {
     return EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfigAccessConfig(
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      uri: (() {
-        final guardedValue = map['uri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      uri: (() { final guardedValue = map['uri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

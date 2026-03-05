@@ -4,11 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ReleaseBlueprint {
   final pulumi.Input<String>? engine;
-
   /// URI to a blueprint used by the Unit (required unless unitKind or release is
   /// set).
   final pulumi.Input<String>? package;
-
   /// (Output)
   /// Version metadata if present on the blueprint.
   final pulumi.Input<String>? version;
@@ -17,7 +15,11 @@ class ReleaseBlueprint {
   /// [engine] Optional.
   /// [package] URI to a blueprint used by the Unit (required unless unitKind or release is
   /// [version] (Output)
-  ReleaseBlueprint({this.engine, this.package, this.version});
+  ReleaseBlueprint({
+    this.engine,
+    this.package,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class ReleaseBlueprint {
 
   factory ReleaseBlueprint.fromMap(Map<String, dynamic> map) {
     return ReleaseBlueprint(
-      engine: (() {
-        final guardedValue = map['engine'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      package: (() {
-        final guardedValue = map['package'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      engine: (() { final guardedValue = map['engine']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      package: (() { final guardedValue = map['package']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

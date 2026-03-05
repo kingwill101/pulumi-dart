@@ -139,13 +139,10 @@ import 'project_state.dart';
 class Project extends pulumi.CustomResource {
   /// Comment of the datahub project. It cannot be longer than 255 characters.
   late final pulumi.Output<String?> comment;
-
   /// Create time of the datahub project. It is a human-readable string rather than 64-bits UTC.
   late final pulumi.Output<String> createTime;
-
   /// Last modify time of the datahub project. It is the same as *create_time* at the beginning. It is also a human-readable string rather than 64-bits UTC.
   late final pulumi.Output<String> lastModifyTime;
-
   /// The name of the datahub project. Its length is limited to 3-32 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
   late final pulumi.Output<String> name;
 
@@ -158,11 +155,11 @@ class Project extends pulumi.CustomResource {
     ProjectArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:datahub/project:Project',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:datahub/project:Project',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     comment = registerOutput<String?>('comment');
     createTime = registerOutput<String>('createTime');
     lastModifyTime = registerOutput<String>('lastModifyTime');
@@ -187,11 +184,11 @@ class Project extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:datahub/project:Project',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:datahub/project:Project',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     comment = registerOutput<String?>('comment');
     createTime = registerOutput<String>('createTime');
     lastModifyTime = registerOutput<String>('lastModifyTime');

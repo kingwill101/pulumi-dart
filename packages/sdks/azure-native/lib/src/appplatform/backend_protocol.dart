@@ -15,3 +15,4 @@ enum BackendProtocol {
     throw ArgumentError('Unknown BackendProtocol value: $value');
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VscMountPointArgs {
   /// Mount point alias prefix, which is used as the prefix for generating VSC mount point aliases.
   final pulumi.Input<String>? aliasPrefix;
-
   /// The description of the Mount point.  The length is 0 to 100 characters.
   final pulumi.Input<String>? description;
-
   /// The ID of the HDFS file system resource associated with the VSC mount point.
   final pulumi.Input<String> fileSystemId;
 
@@ -36,17 +34,10 @@ class VscMountPointArgs {
 
   factory VscMountPointArgs.fromMap(Map<String, dynamic> map) {
     return VscMountPointArgs(
-      aliasPrefix: (() {
-        final guardedValue = map['aliasPrefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      aliasPrefix: (() { final guardedValue = map['aliasPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       fileSystemId: pulumi.Input.fromValue(map['fileSystemId'] as String),
     );
   }
 }
+

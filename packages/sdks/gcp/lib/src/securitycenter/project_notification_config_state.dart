@@ -7,26 +7,20 @@ import 'project_notification_config_streaming_config.dart';
 class ProjectNotificationConfigState {
   /// This must be unique within the organization.
   final pulumi.Input<String>? configId;
-
   /// The description of the notification config (max of 1024 characters).
   final pulumi.Input<String>? description;
-
   /// The resource name of this notification config, in the format
   /// `projects/{{projectId}}/notificationConfigs/{{config_id}}`.
   final pulumi.Input<String>? name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The Pub/Sub topic to send notifications to. Its format is
   /// "projects/[project_id]/topics/[topic]".
   final pulumi.Input<String>? pubsubTopic;
-
   /// The service account that needs "pubsub.topics.publish" permission to
   /// publish to the Pub/Sub topic.
   final pulumi.Input<String>? serviceAccount;
-
   /// The config for triggering streaming-based notifications.
   /// Structure is documented below.
   final pulumi.Input<ProjectNotificationConfigStreamingConfig>? streamingConfig;
@@ -57,55 +51,20 @@ class ProjectNotificationConfigState {
       'project': ?project,
       'pubsubTopic': ?pubsubTopic,
       'serviceAccount': ?serviceAccount,
-      'streamingConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ProjectNotificationConfigStreamingConfig,
-            Map<String, dynamic>
-          >(streamingConfig, (value) => value.toMap()),
+      'streamingConfig': ?pulumi.Input.mapOptionalInputValue<ProjectNotificationConfigStreamingConfig, Map<String, dynamic>>(streamingConfig, (value) => value.toMap()),
     };
   }
 
   factory ProjectNotificationConfigState.fromMap(Map<String, dynamic> map) {
     return ProjectNotificationConfigState(
-      configId: (() {
-        final guardedValue = map['configId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pubsubTopic: (() {
-        final guardedValue = map['pubsubTopic'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serviceAccount: (() {
-        final guardedValue = map['serviceAccount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      streamingConfig: (() {
-        final guardedValue = map['streamingConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ProjectNotificationConfigStreamingConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      configId: (() { final guardedValue = map['configId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pubsubTopic: (() { final guardedValue = map['pubsubTopic']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serviceAccount: (() { final guardedValue = map['serviceAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      streamingConfig: (() { final guardedValue = map['streamingConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ProjectNotificationConfigStreamingConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LoadBalancerZoneShiftedAttachmentState {
   /// Network load balancer id
   final pulumi.Input<String>? loadBalancerId;
-
   /// Status
   final pulumi.Input<String>? status;
-
   /// The list of zones and vSwitch mappings
   final pulumi.Input<String>? vswitchId;
-
   /// ZoneId
   final pulumi.Input<String>? zoneId;
 
@@ -37,30 +34,13 @@ class LoadBalancerZoneShiftedAttachmentState {
     };
   }
 
-  factory LoadBalancerZoneShiftedAttachmentState.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LoadBalancerZoneShiftedAttachmentState.fromMap(Map<String, dynamic> map) {
     return LoadBalancerZoneShiftedAttachmentState(
-      loadBalancerId: (() {
-        final guardedValue = map['loadBalancerId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      vswitchId: (() {
-        final guardedValue = map['vswitchId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      zoneId: (() {
-        final guardedValue = map['zoneId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      loadBalancerId: (() { final guardedValue = map['loadBalancerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      vswitchId: (() { final guardedValue = map['vswitchId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      zoneId: (() { final guardedValue = map['zoneId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

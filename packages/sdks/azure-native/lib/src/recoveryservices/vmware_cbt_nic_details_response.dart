@@ -6,43 +6,30 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VMwareCbtNicDetailsResponse {
   /// A value indicating whether this is the primary NIC.
   final pulumi.Input<String>? isPrimaryNic;
-
   /// A value indicating whether this NIC is selected for migration.
   final pulumi.Input<String>? isSelectedForMigration;
-
   /// The NIC Id.
   final pulumi.Input<String> nicId;
-
   /// The source IP address.
   final pulumi.Input<String> sourceIPAddress;
-
   /// The source IP address type.
   final pulumi.Input<String> sourceIPAddressType;
-
   /// Source network Id.
   final pulumi.Input<String> sourceNetworkId;
-
   /// The target IP address.
   final pulumi.Input<String>? targetIPAddress;
-
   /// The target IP address type.
   final pulumi.Input<String>? targetIPAddressType;
-
   /// Target NIC name.
   final pulumi.Input<String>? targetNicName;
-
   /// Target subnet name.
   final pulumi.Input<String>? targetSubnetName;
-
   /// The test IP address.
   final pulumi.Input<String>? testIPAddress;
-
   /// The test IP address type.
   final pulumi.Input<String>? testIPAddressType;
-
   /// Source network Id.
   final pulumi.Input<String>? testNetworkId;
-
   /// Test subnet name.
   final pulumi.Input<String>? testSubnetName;
 
@@ -99,62 +86,21 @@ class VMwareCbtNicDetailsResponse {
 
   factory VMwareCbtNicDetailsResponse.fromMap(Map<String, dynamic> map) {
     return VMwareCbtNicDetailsResponse(
-      isPrimaryNic: (() {
-        final guardedValue = map['isPrimaryNic'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      isSelectedForMigration: (() {
-        final guardedValue = map['isSelectedForMigration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      isPrimaryNic: (() { final guardedValue = map['isPrimaryNic']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      isSelectedForMigration: (() { final guardedValue = map['isSelectedForMigration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       nicId: pulumi.Input.fromValue(map['nicId'] as String),
       sourceIPAddress: pulumi.Input.fromValue(map['sourceIPAddress'] as String),
-      sourceIPAddressType: pulumi.Input.fromValue(
-        map['sourceIPAddressType'] as String,
-      ),
+      sourceIPAddressType: pulumi.Input.fromValue(map['sourceIPAddressType'] as String),
       sourceNetworkId: pulumi.Input.fromValue(map['sourceNetworkId'] as String),
-      targetIPAddress: (() {
-        final guardedValue = map['targetIPAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      targetIPAddressType: (() {
-        final guardedValue = map['targetIPAddressType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      targetNicName: (() {
-        final guardedValue = map['targetNicName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      targetSubnetName: (() {
-        final guardedValue = map['targetSubnetName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      testIPAddress: (() {
-        final guardedValue = map['testIPAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      testIPAddressType: (() {
-        final guardedValue = map['testIPAddressType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      testNetworkId: (() {
-        final guardedValue = map['testNetworkId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      testSubnetName: (() {
-        final guardedValue = map['testSubnetName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      targetIPAddress: (() { final guardedValue = map['targetIPAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      targetIPAddressType: (() { final guardedValue = map['targetIPAddressType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      targetNicName: (() { final guardedValue = map['targetNicName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      targetSubnetName: (() { final guardedValue = map['targetSubnetName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      testIPAddress: (() { final guardedValue = map['testIPAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      testIPAddressType: (() { final guardedValue = map['testIPAddressType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      testNetworkId: (() { final guardedValue = map['testNetworkId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      testSubnetName: (() { final guardedValue = map['testSubnetName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

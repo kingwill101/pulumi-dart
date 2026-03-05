@@ -689,7 +689,6 @@ import 'application_security_group_association_state.dart';
 class ApplicationSecurityGroupAssociation extends pulumi.CustomResource {
   /// The id of application security group to associate. Changing this forces a new resource to be created.
   late final pulumi.Output<String> applicationSecurityGroupId;
-
   /// The id of private endpoint to associate. Changing this forces a new resource to be created.
   late final pulumi.Output<String> privateEndpointId;
 
@@ -702,14 +701,12 @@ class ApplicationSecurityGroupAssociation extends pulumi.CustomResource {
     ApplicationSecurityGroupAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:privatelink/applicationSecurityGroupAssociation:ApplicationSecurityGroupAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    applicationSecurityGroupId = registerOutput<String>(
-      'applicationSecurityGroupId',
-    );
+          'azure:privatelink/applicationSecurityGroupAssociation:ApplicationSecurityGroupAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    applicationSecurityGroupId = registerOutput<String>('applicationSecurityGroupId');
     privateEndpointId = registerOutput<String>('privateEndpointId');
   }
 
@@ -731,14 +728,12 @@ class ApplicationSecurityGroupAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:privatelink/applicationSecurityGroupAssociation:ApplicationSecurityGroupAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    applicationSecurityGroupId = registerOutput<String>(
-      'applicationSecurityGroupId',
-    );
+          'azure:privatelink/applicationSecurityGroupAssociation:ApplicationSecurityGroupAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    applicationSecurityGroupId = registerOutput<String>('applicationSecurityGroupId');
     privateEndpointId = registerOutput<String>('privateEndpointId');
   }
 }

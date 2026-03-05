@@ -7,29 +7,20 @@ import 'aws_elastic_load_balancing_v2_listener_properties_response.dart';
 class ElasticLoadBalancingV2ListenerPropertiesResponse {
   /// Amazon Resource Name (ARN)
   final pulumi.Input<String>? arn;
-
   /// AWS Account ID
   final pulumi.Input<String>? awsAccountId;
-
   /// AWS Properties
-  final pulumi.Input<AwsElasticLoadBalancingV2ListenerPropertiesResponse>?
-  awsProperties;
-
+  final pulumi.Input<AwsElasticLoadBalancingV2ListenerPropertiesResponse>? awsProperties;
   /// AWS Region
   final pulumi.Input<String>? awsRegion;
-
   /// AWS Source Schema
   final pulumi.Input<String>? awsSourceSchema;
-
   /// AWS Tags
   final pulumi.Input<Map<String, String>>? awsTags;
-
   /// The status of the last operation.
   final pulumi.Input<String> provisioningState;
-
   /// Public Cloud Connectors Resource ID
   final pulumi.Input<String>? publicCloudConnectorsResourceId;
-
   /// Public Cloud Resource Name
   final pulumi.Input<String>? publicCloudResourceName;
 
@@ -59,11 +50,7 @@ class ElasticLoadBalancingV2ListenerPropertiesResponse {
     return <String, dynamic>{
       'arn': ?arn,
       'awsAccountId': ?awsAccountId,
-      'awsProperties':
-          ?pulumi.Input.mapOptionalInputValue<
-            AwsElasticLoadBalancingV2ListenerPropertiesResponse,
-            Map<String, dynamic>
-          >(awsProperties, (value) => value.toMap()),
+      'awsProperties': ?pulumi.Input.mapOptionalInputValue<AwsElasticLoadBalancingV2ListenerPropertiesResponse, Map<String, dynamic>>(awsProperties, (value) => value.toMap()),
       'awsRegion': ?awsRegion,
       'awsSourceSchema': ?awsSourceSchema,
       'awsTags': ?awsTags,
@@ -73,59 +60,18 @@ class ElasticLoadBalancingV2ListenerPropertiesResponse {
     };
   }
 
-  factory ElasticLoadBalancingV2ListenerPropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ElasticLoadBalancingV2ListenerPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ElasticLoadBalancingV2ListenerPropertiesResponse(
-      arn: (() {
-        final guardedValue = map['arn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      awsAccountId: (() {
-        final guardedValue = map['awsAccountId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      awsProperties: (() {
-        final guardedValue = map['awsProperties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AwsElasticLoadBalancingV2ListenerPropertiesResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      awsRegion: (() {
-        final guardedValue = map['awsRegion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      awsSourceSchema: (() {
-        final guardedValue = map['awsSourceSchema'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      awsTags: (() {
-        final guardedValue = map['awsTags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
-      publicCloudConnectorsResourceId: (() {
-        final guardedValue = map['publicCloudConnectorsResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      publicCloudResourceName: (() {
-        final guardedValue = map['publicCloudResourceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      awsAccountId: (() { final guardedValue = map['awsAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      awsProperties: (() { final guardedValue = map['awsProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AwsElasticLoadBalancingV2ListenerPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      awsRegion: (() { final guardedValue = map['awsRegion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      awsSourceSchema: (() { final guardedValue = map['awsSourceSchema']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      awsTags: (() { final guardedValue = map['awsTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
+      publicCloudConnectorsResourceId: (() { final guardedValue = map['publicCloudConnectorsResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicCloudResourceName: (() { final guardedValue = map['publicCloudResourceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

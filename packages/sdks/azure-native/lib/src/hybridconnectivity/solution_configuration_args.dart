@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SolutionConfigurationArgs {
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceUri;
-
   /// Represent Solution Configuration Resource.
   final pulumi.Input<String>? solutionConfiguration;
-
   /// Solution settings
   final pulumi.Input<Map<String, String>>? solutionSettings;
-
   /// The type of the solution
   final pulumi.Input<String> solutionType;
 
@@ -43,19 +40,10 @@ class SolutionConfigurationArgs {
   factory SolutionConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return SolutionConfigurationArgs(
       resourceUri: pulumi.Input.fromValue(map['resourceUri'] as String),
-      solutionConfiguration: (() {
-        final guardedValue = map['solutionConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      solutionSettings: (() {
-        final guardedValue = map['solutionSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      solutionConfiguration: (() { final guardedValue = map['solutionConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      solutionSettings: (() { final guardedValue = map['solutionSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       solutionType: pulumi.Input.fromValue(map['solutionType'] as String),
     );
   }
 }
+

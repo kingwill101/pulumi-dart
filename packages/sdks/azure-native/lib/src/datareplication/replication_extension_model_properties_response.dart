@@ -6,11 +6,7 @@ import 'hyper_vto_az_stack_hcireplication_extension_model_custom_properties_resp
 /// Replication extension model properties.
 class ReplicationExtensionModelPropertiesResponse {
   /// Replication extension model custom properties.
-  final pulumi.Input<
-    HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponse
-  >
-  customProperties;
-
+  final pulumi.Input<HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponse> customProperties;
   /// Gets or sets the provisioning state of the replication extension.
   final pulumi.Input<String> provisioningState;
 
@@ -24,27 +20,16 @@ class ReplicationExtensionModelPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customProperties':
-          pulumi.Input.mapInputValue<
-            HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponse,
-            Map<String, dynamic>
-          >(customProperties, (value) => value.toMap()),
+      'customProperties': pulumi.Input.mapInputValue<HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponse, Map<String, dynamic>>(customProperties, (value) => value.toMap()),
       'provisioningState': provisioningState,
     };
   }
 
-  factory ReplicationExtensionModelPropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ReplicationExtensionModelPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ReplicationExtensionModelPropertiesResponse(
-      customProperties: pulumi.Input.fromValue(
-        HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponse.fromMap(
-          (map['customProperties']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
+      customProperties: pulumi.Input.fromValue(HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponse.fromMap((map['customProperties']! as Map).cast<String, dynamic>())),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
     );
   }
 }
+

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RestorePointCollectionSourcePropertiesResponse {
   /// Resource Id of the source resource used to create this restore point collection
   final pulumi.Input<String>? id;
-
   /// Location of the source resource used to create this restore point collection.
   final pulumi.Input<String> location;
 
@@ -19,19 +18,17 @@ class RestorePointCollectionSourcePropertiesResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': ?id, 'location': location};
+    return <String, dynamic>{
+      'id': ?id,
+      'location': location,
+    };
   }
 
-  factory RestorePointCollectionSourcePropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RestorePointCollectionSourcePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return RestorePointCollectionSourcePropertiesResponse(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
     );
   }
 }
+

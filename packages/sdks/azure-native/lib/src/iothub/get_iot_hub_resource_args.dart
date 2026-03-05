@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIotHubResourceArgs {
   /// The name of the resource group that contains the IoT hub.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the IoT hub.
   final pulumi.Input<String> resourceName;
 
@@ -30,10 +29,9 @@ class GetIotHubResourceArgs {
 
   factory GetIotHubResourceArgs.fromMap(Map<String, dynamic> map) {
     return GetIotHubResourceArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
+

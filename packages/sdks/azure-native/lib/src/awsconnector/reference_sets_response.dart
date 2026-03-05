@@ -10,39 +10,20 @@ class ReferenceSetsResponse {
 
   /// Creates a new [ReferenceSetsResponse].
   /// [ipSetReferences] Property ipSetReferences
-  ReferenceSetsResponse({this.ipSetReferences});
+  ReferenceSetsResponse({
+    this.ipSetReferences,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ipSetReferences':
-          ?pulumi.Input.mapOptionalInputValue<
-            Map<String, IPSetReferenceResponse>,
-            Map<String, Map<String, dynamic>>
-          >(
-            ipSetReferences,
-            (value) =>
-                pulumi.Input.encodeMapValues<
-                  IPSetReferenceResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'ipSetReferences': ?pulumi.Input.mapOptionalInputValue<Map<String, IPSetReferenceResponse>, Map<String, Map<String, dynamic>>>(ipSetReferences, (value) => pulumi.Input.encodeMapValues<IPSetReferenceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ReferenceSetsResponse.fromMap(Map<String, dynamic> map) {
     return ReferenceSetsResponse(
-      ipSetReferences: (() {
-        final guardedValue = map['ipSetReferences'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeMapValues<IPSetReferenceResponse>(
-            guardedValue,
-            (value) => IPSetReferenceResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      ipSetReferences: (() { final guardedValue = map['ipSetReferences']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<IPSetReferenceResponse>(guardedValue, (value) => IPSetReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

@@ -7,29 +7,20 @@ import 'lbfrontend_ipconfiguration_resource_settings.dart';
 /// Defines the load balancer resource settings.
 class LoadBalancerResourceSettings {
   /// Gets or sets the backend address pools of the load balancer.
-  final pulumi.Input<List<LBBackendAddressPoolResourceSettings>>?
-  backendAddressPools;
-
+  final pulumi.Input<List<LBBackendAddressPoolResourceSettings>>? backendAddressPools;
   /// Gets or sets the frontend IP configurations of the load balancer.
-  final pulumi.Input<List<LBFrontendIPConfigurationResourceSettings>>?
-  frontendIPConfigurations;
-
+  final pulumi.Input<List<LBFrontendIPConfigurationResourceSettings>>? frontendIPConfigurations;
   /// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
   /// Expected value is 'Microsoft.Network/loadBalancers'.
   final pulumi.Input<String> resourceType;
-
   /// Gets or sets load balancer sku (Basic/Standard).
   final pulumi.Input<String>? sku;
-
   /// Gets or sets the Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// Gets or sets the target resource group name.
   final pulumi.Input<String>? targetResourceGroupName;
-
   /// Gets or sets the target Resource name.
   final pulumi.Input<String>? targetResourceName;
-
   /// Gets or sets the csv list of zones common for all frontend IP configurations. Note this is given
   /// precedence only if frontend IP configurations settings are not present.
   final pulumi.Input<String>? zones;
@@ -56,30 +47,8 @@ class LoadBalancerResourceSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backendAddressPools':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<LBBackendAddressPoolResourceSettings>,
-            List<Map<String, dynamic>>
-          >(
-            backendAddressPools,
-            (value) =>
-                pulumi.Input.encodeList<
-                  LBBackendAddressPoolResourceSettings,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'frontendIPConfigurations':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<LBFrontendIPConfigurationResourceSettings>,
-            List<Map<String, dynamic>>
-          >(
-            frontendIPConfigurations,
-            (value) =>
-                pulumi.Input.encodeList<
-                  LBFrontendIPConfigurationResourceSettings,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'backendAddressPools': ?pulumi.Input.mapOptionalInputValue<List<LBBackendAddressPoolResourceSettings>, List<Map<String, dynamic>>>(backendAddressPools, (value) => pulumi.Input.encodeList<LBBackendAddressPoolResourceSettings, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'frontendIPConfigurations': ?pulumi.Input.mapOptionalInputValue<List<LBFrontendIPConfigurationResourceSettings>, List<Map<String, dynamic>>>(frontendIPConfigurations, (value) => pulumi.Input.encodeList<LBFrontendIPConfigurationResourceSettings, Map<String, dynamic>>(value, (value) => value.toMap())),
       'resourceType': resourceType,
       'sku': ?sku,
       'tags': ?tags,
@@ -91,58 +60,15 @@ class LoadBalancerResourceSettings {
 
   factory LoadBalancerResourceSettings.fromMap(Map<String, dynamic> map) {
     return LoadBalancerResourceSettings(
-      backendAddressPools: (() {
-        final guardedValue = map['backendAddressPools'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<LBBackendAddressPoolResourceSettings>(
-            guardedValue,
-            (value) => LBBackendAddressPoolResourceSettings.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      frontendIPConfigurations: (() {
-        final guardedValue = map['frontendIPConfigurations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<LBFrontendIPConfigurationResourceSettings>(
-            guardedValue,
-            (value) => LBFrontendIPConfigurationResourceSettings.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      backendAddressPools: (() { final guardedValue = map['backendAddressPools']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<LBBackendAddressPoolResourceSettings>(guardedValue, (value) => LBBackendAddressPoolResourceSettings.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      frontendIPConfigurations: (() { final guardedValue = map['frontendIPConfigurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<LBFrontendIPConfigurationResourceSettings>(guardedValue, (value) => LBFrontendIPConfigurationResourceSettings.fromMap((value as Map).cast<String, dynamic>()))); })(),
       resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
-      sku: (() {
-        final guardedValue = map['sku'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      targetResourceGroupName: (() {
-        final guardedValue = map['targetResourceGroupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      targetResourceName: (() {
-        final guardedValue = map['targetResourceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      zones: (() {
-        final guardedValue = map['zones'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      targetResourceGroupName: (() { final guardedValue = map['targetResourceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      targetResourceName: (() { final guardedValue = map['targetResourceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      zones: (() { final guardedValue = map['zones']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

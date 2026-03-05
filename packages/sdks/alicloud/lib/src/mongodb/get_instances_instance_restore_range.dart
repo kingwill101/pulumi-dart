@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstancesInstanceRestoreRange {
   /// The beginning of the recoverable time range.
   final pulumi.Input<String> restoreBeginTime;
-
   /// The end of the recoverable time range.
   final pulumi.Input<String> restoreEndTime;
-
   /// The restoration method.
   final pulumi.Input<String> restoreType;
 
@@ -32,11 +30,10 @@ class GetInstancesInstanceRestoreRange {
 
   factory GetInstancesInstanceRestoreRange.fromMap(Map<String, dynamic> map) {
     return GetInstancesInstanceRestoreRange(
-      restoreBeginTime: pulumi.Input.fromValue(
-        map['restoreBeginTime'] as String,
-      ),
+      restoreBeginTime: pulumi.Input.fromValue(map['restoreBeginTime'] as String),
       restoreEndTime: pulumi.Input.fromValue(map['restoreEndTime'] as String),
       restoreType: pulumi.Input.fromValue(map['restoreType'] as String),
     );
   }
 }
+

@@ -16,3 +16,4 @@ enum RdbFrequency {
     throw ArgumentError('Unknown RdbFrequency value: $value');
   }
 }
+

@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfoResponse {
   /// Average of non-null values in the scanned data. NaN, if the field has a NaN.
   final pulumi.Input<double> average;
-
   /// Maximum of non-null values in the scanned data. NaN, if the field has a NaN.
   final pulumi.Input<double> max;
-
   /// Minimum of non-null values in the scanned data. NaN, if the field has a NaN.
   final pulumi.Input<double> min;
-
   /// A quartile divides the number of data points into four parts, or quarters, of more-or-less equal size. Three main quartiles used are: The first quartile (Q1) splits off the lowest 25% of data from the highest 75%. It is also known as the lower or 25th empirical quartile, as 25% of the data is below this point. The second quartile (Q2) is the median of a data set. So, 50% of the data lies below this point. The third quartile (Q3) splits off the highest 25% of data from the lowest 75%. It is known as the upper or 75th empirical quartile, as 75% of the data lies below this point. Here, the quartiles is provided as an ordered list of quartile values for the scanned data, occurring in order Q1, median, Q3.
   final pulumi.Input<List<double>> quartiles;
-
   /// Standard deviation of non-null values in the scanned data. NaN, if the field has a NaN.
   final pulumi.Input<double> standardDeviation;
 
@@ -43,19 +39,14 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldIn
     };
   }
 
-  factory GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfoResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfoResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfoResponse(
       average: pulumi.Input.fromValue(map['average'] as double),
       max: pulumi.Input.fromValue(map['max'] as double),
       min: pulumi.Input.fromValue(map['min'] as double),
-      quartiles: pulumi.Input.fromValue(
-        (map['quartiles'] as List).cast<double>(),
-      ),
-      standardDeviation: pulumi.Input.fromValue(
-        map['standardDeviation'] as double,
-      ),
+      quartiles: pulumi.Input.fromValue((map['quartiles'] as List).cast<double>()),
+      standardDeviation: pulumi.Input.fromValue(map['standardDeviation'] as double),
     );
   }
 }
+

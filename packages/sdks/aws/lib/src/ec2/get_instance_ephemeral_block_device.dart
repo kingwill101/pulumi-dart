@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceEphemeralBlockDevice {
   /// Physical name of the device.
   final pulumi.Input<String> deviceName;
-
   /// Whether the specified device included in the device mapping was suppressed or not (Boolean).
   final pulumi.Input<bool>? noDevice;
-
   /// Virtual device name.
   final pulumi.Input<String>? virtualName;
 
@@ -33,16 +31,9 @@ class GetInstanceEphemeralBlockDevice {
   factory GetInstanceEphemeralBlockDevice.fromMap(Map<String, dynamic> map) {
     return GetInstanceEphemeralBlockDevice(
       deviceName: pulumi.Input.fromValue(map['deviceName'] as String),
-      noDevice: (() {
-        final guardedValue = map['noDevice'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      virtualName: (() {
-        final guardedValue = map['virtualName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      noDevice: (() { final guardedValue = map['noDevice']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      virtualName: (() { final guardedValue = map['virtualName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

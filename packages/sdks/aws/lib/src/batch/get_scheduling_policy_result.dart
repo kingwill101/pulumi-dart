@@ -7,14 +7,11 @@ import 'get_scheduling_policy_fair_share_policy.dart';
 class GetSchedulingPolicyResult {
   final String arn;
   final List<GetSchedulingPolicyFairSharePolicy> fairSharePolicies;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Name of the scheduling policy.
   final String name;
   final String region;
-
   /// Key-value map of resource tags
   final Map<String, String> tags;
 
@@ -37,11 +34,7 @@ class GetSchedulingPolicyResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'arn': arn,
-      'fairSharePolicies':
-          pulumi.Input.encodeList<
-            GetSchedulingPolicyFairSharePolicy,
-            Map<String, dynamic>
-          >(fairSharePolicies, (value) => value.toMap()),
+      'fairSharePolicies': pulumi.Input.encodeList<GetSchedulingPolicyFairSharePolicy, Map<String, dynamic>>(fairSharePolicies, (value) => value.toMap()),
       'id': id,
       'name': name,
       'region': region,
@@ -52,13 +45,7 @@ class GetSchedulingPolicyResult {
   factory GetSchedulingPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetSchedulingPolicyResult(
       arn: map['arn'] as String,
-      fairSharePolicies:
-          pulumi.Input.decodeList<GetSchedulingPolicyFairSharePolicy>(
-            map['fairSharePolicies']!,
-            (value) => GetSchedulingPolicyFairSharePolicy.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      fairSharePolicies: pulumi.Input.decodeList<GetSchedulingPolicyFairSharePolicy>(map['fairSharePolicies']!, (value) => GetSchedulingPolicyFairSharePolicy.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       name: map['name'] as String,
       region: map['region'] as String,
@@ -66,3 +53,4 @@ class GetSchedulingPolicyResult {
     );
   }
 }
+

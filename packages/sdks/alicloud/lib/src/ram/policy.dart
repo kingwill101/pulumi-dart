@@ -274,48 +274,34 @@ import 'policy_state.dart';
 class Policy extends pulumi.CustomResource {
   /// Number of attachments of the policy.
   late final pulumi.Output<int> attachmentCount;
-
   /// (Available since v1.246.0) The create time of the policy.
   late final pulumi.Output<String> createTime;
-
   /// The default version ID of the policy.
   late final pulumi.Output<String> defaultVersion;
-
   /// The description of the policy. It can be 1 to 1024 characters in length.
   late final pulumi.Output<String?> description;
-
   /// Field `document` has been deprecated from provider version 1.114.0. New field `policy_document` instead.
   late final pulumi.Output<String> document;
-
   /// Specifies whether to force delete the Policy. Default value: `false`. Valid values:
   late final pulumi.Output<bool?> force;
-
   /// Field `name` has been deprecated from provider version 1.114.0. New field `policy_name` instead.
   late final pulumi.Output<String> name;
-
   /// The content of the policy. The maximum length is 6144 bytes.
   late final pulumi.Output<String> policyDocument;
-
   /// The policy name. It can be 1 to 128 characters in length and can contain English letters, digits, and dashes (-).
   late final pulumi.Output<String> policyName;
-
   /// The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None. Valid values:
   /// - `None`: Turn off the rotation mechanism.
   /// - `DeleteOldestNonDefaultVersionWhenLimitExceeded`: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
   late final pulumi.Output<String?> rotateStrategy;
-
   /// Field `statement` has been deprecated from provider version 1.49.0. New field `document` instead. See `statement` below.
   late final pulumi.Output<List<Map<String, dynamic>>> statements;
-
   /// The list of tags on the policy.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the policy.
   late final pulumi.Output<String> type;
-
   /// Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
   late final pulumi.Output<String?> version;
-
   /// The ID of the default policy version.
   late final pulumi.Output<String> versionId;
 
@@ -323,13 +309,16 @@ class Policy extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Policy]. {@macro pulumi_ram_policy_policy_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Policy(String name, {PolicyArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:ram/policy:Policy',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Policy(
+    String name, {
+    PolicyArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:ram/policy:Policy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     attachmentCount = registerOutput<int>('attachmentCount');
     createTime = registerOutput<String>('createTime');
     defaultVersion = registerOutput<String>('defaultVersion');
@@ -365,11 +354,11 @@ class Policy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ram/policy:Policy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ram/policy:Policy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     attachmentCount = registerOutput<int>('attachmentCount');
     createTime = registerOutput<String>('createTime');
     defaultVersion = registerOutput<String>('defaultVersion');

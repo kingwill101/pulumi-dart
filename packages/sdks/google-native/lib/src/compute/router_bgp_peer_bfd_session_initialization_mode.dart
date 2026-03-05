@@ -13,8 +13,7 @@ enum RouterBgpPeerBfdSessionInitializationMode {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown RouterBgpPeerBfdSessionInitializationMode value: $value',
-    );
+    throw ArgumentError('Unknown RouterBgpPeerBfdSessionInitializationMode value: $value');
   }
 }
+

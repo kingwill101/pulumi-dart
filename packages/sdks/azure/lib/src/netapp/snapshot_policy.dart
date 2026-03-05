@@ -388,31 +388,22 @@ import 'snapshot_policy_weekly_schedule.dart';
 class SnapshotPolicy extends pulumi.CustomResource {
   /// The name of the NetApp Account in which the NetApp Snapshot Policy should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> accountName;
-
   /// Sets a daily snapshot schedule. A `daily_schedule` block as defined below.
   late final pulumi.Output<SnapshotPolicyDailySchedule?> dailySchedule;
-
   /// Defines that the NetApp Snapshot Policy is enabled or not.
   late final pulumi.Output<bool> enabled;
-
   /// Sets an hourly snapshot schedule. A `hourly_schedule` block as defined below.
   late final pulumi.Output<SnapshotPolicyHourlySchedule?> hourlySchedule;
-
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// Sets a monthly snapshot schedule. A `monthly_schedule` block as defined below.
   late final pulumi.Output<SnapshotPolicyMonthlySchedule?> monthlySchedule;
-
   /// The name of the NetApp Snapshot Policy. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the resource group where the NetApp Snapshot Policy should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Sets a weekly snapshot schedule. A `weekly_schedule` block as defined below.
   late final pulumi.Output<SnapshotPolicyWeeklySchedule?> weeklySchedule;
 
@@ -425,57 +416,21 @@ class SnapshotPolicy extends pulumi.CustomResource {
     SnapshotPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:netapp/snapshotPolicy:SnapshotPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:netapp/snapshotPolicy:SnapshotPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountName = registerOutput<String>('accountName');
-    dailySchedule = registerOutput<SnapshotPolicyDailySchedule?>(
-      'dailySchedule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SnapshotPolicyDailySchedule.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    dailySchedule = registerOutput<SnapshotPolicyDailySchedule?>('dailySchedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SnapshotPolicyDailySchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     enabled = registerOutput<bool>('enabled');
-    hourlySchedule = registerOutput<SnapshotPolicyHourlySchedule?>(
-      'hourlySchedule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SnapshotPolicyHourlySchedule.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    hourlySchedule = registerOutput<SnapshotPolicyHourlySchedule?>('hourlySchedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SnapshotPolicyHourlySchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
-    monthlySchedule = registerOutput<SnapshotPolicyMonthlySchedule?>(
-      'monthlySchedule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SnapshotPolicyMonthlySchedule.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    monthlySchedule = registerOutput<SnapshotPolicyMonthlySchedule?>('monthlySchedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SnapshotPolicyMonthlySchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     tags = registerOutput<Map<String, String>?>('tags');
-    weeklySchedule = registerOutput<SnapshotPolicyWeeklySchedule?>(
-      'weeklySchedule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SnapshotPolicyWeeklySchedule.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    weeklySchedule = registerOutput<SnapshotPolicyWeeklySchedule?>('weeklySchedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SnapshotPolicyWeeklySchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [SnapshotPolicy] resource's state with the given [name] and [id].
@@ -496,56 +451,20 @@ class SnapshotPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:netapp/snapshotPolicy:SnapshotPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:netapp/snapshotPolicy:SnapshotPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountName = registerOutput<String>('accountName');
-    dailySchedule = registerOutput<SnapshotPolicyDailySchedule?>(
-      'dailySchedule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SnapshotPolicyDailySchedule.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    dailySchedule = registerOutput<SnapshotPolicyDailySchedule?>('dailySchedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SnapshotPolicyDailySchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     enabled = registerOutput<bool>('enabled');
-    hourlySchedule = registerOutput<SnapshotPolicyHourlySchedule?>(
-      'hourlySchedule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SnapshotPolicyHourlySchedule.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    hourlySchedule = registerOutput<SnapshotPolicyHourlySchedule?>('hourlySchedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SnapshotPolicyHourlySchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
-    monthlySchedule = registerOutput<SnapshotPolicyMonthlySchedule?>(
-      'monthlySchedule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SnapshotPolicyMonthlySchedule.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    monthlySchedule = registerOutput<SnapshotPolicyMonthlySchedule?>('monthlySchedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SnapshotPolicyMonthlySchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     tags = registerOutput<Map<String, String>?>('tags');
-    weeklySchedule = registerOutput<SnapshotPolicyWeeklySchedule?>(
-      'weeklySchedule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SnapshotPolicyWeeklySchedule.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    weeklySchedule = registerOutput<SnapshotPolicyWeeklySchedule?>('weeklySchedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SnapshotPolicyWeeklySchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

@@ -6,43 +6,30 @@ import 'system_data_response.dart';
 class GetImageResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The image component id.
   final String componentId;
-
   /// The image description.
   final String description;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// Image as a UTF-8 encoded base 64 string on image create. This field contains the image URI on image reads.
   final String? image;
-
   /// Image ID
   final String? imageId;
-
   /// Image name
   final String imageName;
-
   /// The image type.
   final String imageType;
-
   /// The name of the resource
   final String name;
-
   /// The status of the last operation.
   final String provisioningState;
-
   /// Regional data boundary for an image
   final String? regionalDataBoundary;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
-
   /// Location the image
   final String uri;
 
@@ -103,30 +90,17 @@ class GetImageResult {
       componentId: map['componentId'] as String,
       description: map['description'] as String,
       id: map['id'] as String,
-      image: (() {
-        final guardedValue = map['image'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      imageId: (() {
-        final guardedValue = map['imageId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      image: (() { final guardedValue = map['image']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      imageId: (() { final guardedValue = map['imageId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       imageName: map['imageName'] as String,
       imageType: map['imageType'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      regionalDataBoundary: (() {
-        final guardedValue = map['regionalDataBoundary'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      regionalDataBoundary: (() { final guardedValue = map['regionalDataBoundary']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
       uri: map['uri'] as String,
     );
   }
 }
+

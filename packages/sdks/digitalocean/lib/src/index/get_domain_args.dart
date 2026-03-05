@@ -12,13 +12,20 @@ class GetDomainArgs {
 
   /// Creates a new [GetDomainArgs].
   /// [name] The name of the domain.
-  GetDomainArgs({required this.name});
+  GetDomainArgs({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory GetDomainArgs.fromMap(Map<String, dynamic> map) {
-    return GetDomainArgs(name: pulumi.Input.fromValue(map['name'] as String));
+    return GetDomainArgs(
+      name: pulumi.Input.fromValue(map['name'] as String),
+    );
   }
 }
+

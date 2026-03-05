@@ -11,8 +11,7 @@ enum SparkConfigurationReferenceType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown SparkConfigurationReferenceType value: $value',
-    );
+    throw ArgumentError('Unknown SparkConfigurationReferenceType value: $value');
   }
 }
+

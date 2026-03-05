@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RoutineReference {
   /// The ID of the dataset containing this routine.
   final pulumi.Input<String> datasetId;
-
   /// The ID of the project containing this routine.
   final pulumi.Input<String> project;
-
   /// The ID of the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
   final pulumi.Input<String> routineId;
 
@@ -38,3 +36,4 @@ class RoutineReference {
     );
   }
 }
+

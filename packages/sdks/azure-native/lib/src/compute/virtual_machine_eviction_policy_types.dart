@@ -12,8 +12,7 @@ enum VirtualMachineEvictionPolicyTypes {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown VirtualMachineEvictionPolicyTypes value: $value',
-    );
+    throw ArgumentError('Unknown VirtualMachineEvictionPolicyTypes value: $value');
   }
 }
+

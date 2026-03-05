@@ -789,44 +789,31 @@ class AgentAgentActionGroup extends pulumi.CustomResource {
   /// ARN of the Lambda function containing the business logic that is carried out upon invoking the action or custom control method for handling the information elicited from the user. See `action_group_executor` Block for details.
   ///
   /// The following arguments are optional:
-  late final pulumi.Output<AgentAgentActionGroupActionGroupExecutor?>
-  actionGroupExecutor;
-
+  late final pulumi.Output<AgentAgentActionGroupActionGroupExecutor?> actionGroupExecutor;
   /// Unique identifier of the action group.
   late final pulumi.Output<String> actionGroupId;
-
   /// Name of the action group.
   late final pulumi.Output<String> actionGroupName;
-
   /// Whether the action group is available for the agent to invoke or not when sending an [InvokeAgent](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_InvokeAgent.html) request. Valid values: `ENABLED`, `DISABLED`.
   late final pulumi.Output<String> actionGroupState;
-
   /// The unique identifier of the agent for which to create the action group.
   late final pulumi.Output<String> agentId;
-
   /// Version of the agent for which to create the action group. Valid values: `DRAFT`.
   late final pulumi.Output<String> agentVersion;
-
   /// Either details about the S3 object containing the OpenAPI schema for the action group or the JSON or YAML-formatted payload defining the schema. For more information, see [Action group OpenAPI schemas](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-api-schema.html). See `api_schema` Block for details.
   late final pulumi.Output<AgentAgentActionGroupApiSchema?> apiSchema;
-
   /// Description of the action group.
   late final pulumi.Output<String?> description;
-
   /// Describes the function schema for the action group.
   /// Each function represents an action in an action group.
   /// See `function_schema` Block for details.
   late final pulumi.Output<AgentAgentActionGroupFunctionSchema?> functionSchema;
-
   /// To allow your agent to request the user for additional information when trying to complete a task, set this argument to `AMAZON.UserInput`. You must leave the `description`, `api_schema`, and `action_group_executor` arguments blank for this action group. Valid values: `AMAZON.UserInput`.
   late final pulumi.Output<String?> parentActionGroupSignature;
-
   /// Whether or not to prepare the agent after creation or modification. Defaults to `true`.
   late final pulumi.Output<bool> prepareAgent;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Whether the in-use check is skipped when deleting the action group.
   late final pulumi.Output<bool> skipResourceInUseCheck;
   late final pulumi.Output<AgentAgentActionGroupTimeouts?> timeouts;
@@ -840,64 +827,25 @@ class AgentAgentActionGroup extends pulumi.CustomResource {
     AgentAgentActionGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:bedrock/agentAgentActionGroup:AgentAgentActionGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    actionGroupExecutor =
-        registerOutput<AgentAgentActionGroupActionGroupExecutor?>(
-          'actionGroupExecutor',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AgentAgentActionGroupActionGroupExecutor.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'aws:bedrock/agentAgentActionGroup:AgentAgentActionGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    actionGroupExecutor = registerOutput<AgentAgentActionGroupActionGroupExecutor?>('actionGroupExecutor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentAgentActionGroupActionGroupExecutor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     actionGroupId = registerOutput<String>('actionGroupId');
     actionGroupName = registerOutput<String>('actionGroupName');
     actionGroupState = registerOutput<String>('actionGroupState');
     agentId = registerOutput<String>('agentId');
     agentVersion = registerOutput<String>('agentVersion');
-    apiSchema = registerOutput<AgentAgentActionGroupApiSchema?>(
-      'apiSchema',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AgentAgentActionGroupApiSchema.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    apiSchema = registerOutput<AgentAgentActionGroupApiSchema?>('apiSchema', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentAgentActionGroupApiSchema.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
-    functionSchema = registerOutput<AgentAgentActionGroupFunctionSchema?>(
-      'functionSchema',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AgentAgentActionGroupFunctionSchema.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    parentActionGroupSignature = registerOutput<String?>(
-      'parentActionGroupSignature',
-    );
+    functionSchema = registerOutput<AgentAgentActionGroupFunctionSchema?>('functionSchema', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentAgentActionGroupFunctionSchema.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    parentActionGroupSignature = registerOutput<String?>('parentActionGroupSignature');
     prepareAgent = registerOutput<bool>('prepareAgent');
     region = registerOutput<String>('region');
     skipResourceInUseCheck = registerOutput<bool>('skipResourceInUseCheck');
-    timeouts = registerOutput<AgentAgentActionGroupTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AgentAgentActionGroupTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<AgentAgentActionGroupTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentAgentActionGroupTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [AgentAgentActionGroup] resource's state with the given [name] and [id].
@@ -918,63 +866,24 @@ class AgentAgentActionGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:bedrock/agentAgentActionGroup:AgentAgentActionGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    actionGroupExecutor =
-        registerOutput<AgentAgentActionGroupActionGroupExecutor?>(
-          'actionGroupExecutor',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AgentAgentActionGroupActionGroupExecutor.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'aws:bedrock/agentAgentActionGroup:AgentAgentActionGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    actionGroupExecutor = registerOutput<AgentAgentActionGroupActionGroupExecutor?>('actionGroupExecutor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentAgentActionGroupActionGroupExecutor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     actionGroupId = registerOutput<String>('actionGroupId');
     actionGroupName = registerOutput<String>('actionGroupName');
     actionGroupState = registerOutput<String>('actionGroupState');
     agentId = registerOutput<String>('agentId');
     agentVersion = registerOutput<String>('agentVersion');
-    apiSchema = registerOutput<AgentAgentActionGroupApiSchema?>(
-      'apiSchema',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AgentAgentActionGroupApiSchema.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    apiSchema = registerOutput<AgentAgentActionGroupApiSchema?>('apiSchema', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentAgentActionGroupApiSchema.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
-    functionSchema = registerOutput<AgentAgentActionGroupFunctionSchema?>(
-      'functionSchema',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AgentAgentActionGroupFunctionSchema.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    parentActionGroupSignature = registerOutput<String?>(
-      'parentActionGroupSignature',
-    );
+    functionSchema = registerOutput<AgentAgentActionGroupFunctionSchema?>('functionSchema', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentAgentActionGroupFunctionSchema.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    parentActionGroupSignature = registerOutput<String?>('parentActionGroupSignature');
     prepareAgent = registerOutput<bool>('prepareAgent');
     region = registerOutput<String>('region');
     skipResourceInUseCheck = registerOutput<bool>('skipResourceInUseCheck');
-    timeouts = registerOutput<AgentAgentActionGroupTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AgentAgentActionGroupTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<AgentAgentActionGroupTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentAgentActionGroupTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

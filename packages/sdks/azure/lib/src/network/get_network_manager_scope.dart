@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworkManagerScope {
   /// A list of management group IDs used a scope for the Network Manager.
   final pulumi.Input<List<String>> managementGroupIds;
-
   /// A list of subscription IDs used as the scope for the Network Manager.
   final pulumi.Input<List<String>> subscriptionIds;
 
@@ -26,12 +25,9 @@ class GetNetworkManagerScope {
 
   factory GetNetworkManagerScope.fromMap(Map<String, dynamic> map) {
     return GetNetworkManagerScope(
-      managementGroupIds: pulumi.Input.fromValue(
-        (map['managementGroupIds'] as List).cast<String>(),
-      ),
-      subscriptionIds: pulumi.Input.fromValue(
-        (map['subscriptionIds'] as List).cast<String>(),
-      ),
+      managementGroupIds: pulumi.Input.fromValue((map['managementGroupIds'] as List).cast<String>()),
+      subscriptionIds: pulumi.Input.fromValue((map['subscriptionIds'] as List).cast<String>()),
     );
   }
 }
+

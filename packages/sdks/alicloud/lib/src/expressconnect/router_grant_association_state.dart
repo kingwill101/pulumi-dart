@@ -6,21 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RouterGrantAssociationState {
   /// The ID of the associated Leased Line Gateway instance.
   final pulumi.Input<String>? ecrId;
-
   /// The ID of the Alibaba Cloud account (primary account) to which the leased line gateway instance is authorized.
   final pulumi.Input<int>? ecrOwnerAliUid;
-
   /// The ID of the network instance.
   final pulumi.Input<String>? instanceId;
-
   /// The ID of the region where the authorized network instance is located.
   final pulumi.Input<String>? instanceRegionId;
-
   /// The type of the network instance. Value:
   /// - `VBR`: the VBR instance.
   /// - `VPC`: VPC instance.
   final pulumi.Input<String>? instanceType;
-
   /// The status of the resource
   final pulumi.Input<String>? status;
 
@@ -53,36 +48,13 @@ class RouterGrantAssociationState {
 
   factory RouterGrantAssociationState.fromMap(Map<String, dynamic> map) {
     return RouterGrantAssociationState(
-      ecrId: (() {
-        final guardedValue = map['ecrId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ecrOwnerAliUid: (() {
-        final guardedValue = map['ecrOwnerAliUid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      instanceId: (() {
-        final guardedValue = map['instanceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      instanceRegionId: (() {
-        final guardedValue = map['instanceRegionId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      instanceType: (() {
-        final guardedValue = map['instanceType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ecrId: (() { final guardedValue = map['ecrId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ecrOwnerAliUid: (() { final guardedValue = map['ecrOwnerAliUid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      instanceId: (() { final guardedValue = map['instanceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      instanceRegionId: (() { final guardedValue = map['instanceRegionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      instanceType: (() { final guardedValue = map['instanceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

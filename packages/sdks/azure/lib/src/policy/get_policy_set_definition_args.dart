@@ -11,10 +11,8 @@ class GetPolicySetDefinitionArgs {
   ///
   /// **NOTE** As `display_name` is not unique errors may occur when there are multiple policy set definitions with same display name.
   final pulumi.Input<String>? displayName;
-
   /// Only retrieve Policy Set Definitions from this Management Group.
   final pulumi.Input<String>? managementGroupName;
-
   /// Specifies the name of the Policy Set Definition. Conflicts with `display_name`.
   final pulumi.Input<String>? name;
 
@@ -38,21 +36,10 @@ class GetPolicySetDefinitionArgs {
 
   factory GetPolicySetDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return GetPolicySetDefinitionArgs(
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      managementGroupName: (() {
-        final guardedValue = map['managementGroupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      managementGroupName: (() { final guardedValue = map['managementGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

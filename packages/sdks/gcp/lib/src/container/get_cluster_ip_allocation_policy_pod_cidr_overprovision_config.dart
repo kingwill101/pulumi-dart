@@ -12,14 +12,15 @@ class GetClusterIpAllocationPolicyPodCidrOverprovisionConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'disabled': disabled};
+    return <String, dynamic>{
+      'disabled': disabled,
+    };
   }
 
-  factory GetClusterIpAllocationPolicyPodCidrOverprovisionConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetClusterIpAllocationPolicyPodCidrOverprovisionConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterIpAllocationPolicyPodCidrOverprovisionConfig(
       disabled: pulumi.Input.fromValue(map['disabled'] as bool),
     );
   }
 }
+

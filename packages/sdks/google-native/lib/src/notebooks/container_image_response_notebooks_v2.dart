@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContainerImageResponseNotebooksV2 {
   /// The path to the container image repository. For example: `gcr.io/{project_id}/{image_name}`
   final pulumi.Input<String> repository;
-
   /// Optional. The tag of the container image. If not specified, this defaults to the latest tag.
   final pulumi.Input<String> tag;
 
@@ -19,7 +18,10 @@ class ContainerImageResponseNotebooksV2 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'repository': repository, 'tag': tag};
+    return <String, dynamic>{
+      'repository': repository,
+      'tag': tag,
+    };
   }
 
   factory ContainerImageResponseNotebooksV2.fromMap(Map<String, dynamic> map) {
@@ -29,3 +31,4 @@ class ContainerImageResponseNotebooksV2 {
     );
   }
 }
+

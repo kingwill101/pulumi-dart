@@ -6,25 +6,18 @@ import 'system_data_response.dart';
 class GetSmtpUsernameResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The application Id for the linked Entra Application.
   final String entraApplicationId;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// The name of the resource
   final String name;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The tenant of the linked Entra Application.
   final String tenantId;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
-
   /// The SMTP username. Could be free form or in the email address format.
   final String username;
 
@@ -67,12 +60,11 @@ class GetSmtpUsernameResult {
       entraApplicationId: map['entraApplicationId'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       tenantId: map['tenantId'] as String,
       type: map['type'] as String,
       username: map['username'] as String,
     );
   }
 }
+

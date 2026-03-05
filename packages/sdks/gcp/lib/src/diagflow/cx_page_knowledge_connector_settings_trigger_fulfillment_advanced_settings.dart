@@ -12,29 +12,18 @@ class CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings {
   /// * Page level
   /// * Parameter level
   /// Structure is documented below.
-  final pulumi.Input<
-    CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings
-  >?
-  dtmfSettings;
-
+  final pulumi.Input<CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings>? dtmfSettings;
   /// Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels:
   /// * Agent level
   /// Structure is documented below.
-  final pulumi.Input<
-    CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings
-  >?
-  loggingSettings;
-
+  final pulumi.Input<CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings>? loggingSettings;
   /// Settings for speech to text detection. Exposed at the following levels:
   /// * Agent level
   /// * Flow level
   /// * Page level
   /// * Parameter level
   /// Structure is documented below.
-  final pulumi.Input<
-    CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings
-  >?
-  speechSettings;
+  final pulumi.Input<CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings>? speechSettings;
 
   /// Creates a new [CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings].
   /// [dtmfSettings] Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
@@ -48,55 +37,18 @@ class CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dtmfSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings,
-            Map<String, dynamic>
-          >(dtmfSettings, (value) => value.toMap()),
-      'loggingSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings,
-            Map<String, dynamic>
-          >(loggingSettings, (value) => value.toMap()),
-      'speechSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings,
-            Map<String, dynamic>
-          >(speechSettings, (value) => value.toMap()),
+      'dtmfSettings': ?pulumi.Input.mapOptionalInputValue<CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings, Map<String, dynamic>>(dtmfSettings, (value) => value.toMap()),
+      'loggingSettings': ?pulumi.Input.mapOptionalInputValue<CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings, Map<String, dynamic>>(loggingSettings, (value) => value.toMap()),
+      'speechSettings': ?pulumi.Input.mapOptionalInputValue<CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings, Map<String, dynamic>>(speechSettings, (value) => value.toMap()),
     };
   }
 
-  factory CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings.fromMap(Map<String, dynamic> map) {
     return CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings(
-      dtmfSettings: (() {
-        final guardedValue = map['dtmfSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      loggingSettings: (() {
-        final guardedValue = map['loggingSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      speechSettings: (() {
-        final guardedValue = map['speechSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      dtmfSettings: (() { final guardedValue = map['dtmfSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      loggingSettings: (() { final guardedValue = map['loggingSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      speechSettings: (() { final guardedValue = map['speechSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

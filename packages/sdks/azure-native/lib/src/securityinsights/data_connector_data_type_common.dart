@@ -9,10 +9,14 @@ class DataConnectorDataTypeCommon {
 
   /// Creates a new [DataConnectorDataTypeCommon].
   /// [state] Describe whether this data type connection is enabled or not.
-  DataConnectorDataTypeCommon({required this.state});
+  DataConnectorDataTypeCommon({
+    required this.state,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'state': state};
+    return <String, dynamic>{
+      'state': state,
+    };
   }
 
   factory DataConnectorDataTypeCommon.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class DataConnectorDataTypeCommon {
     );
   }
 }
+

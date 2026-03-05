@@ -6,7 +6,6 @@ class AiIndexDeployedIndex {
   /// (Output)
   /// The ID of the DeployedIndex in the above IndexEndpoint.
   final pulumi.Input<String>? deployedIndexId;
-
   /// (Output)
   /// A resource name of the IndexEndpoint.
   final pulumi.Input<String>? indexEndpoint;
@@ -14,7 +13,10 @@ class AiIndexDeployedIndex {
   /// Creates a new [AiIndexDeployedIndex].
   /// [deployedIndexId] (Output)
   /// [indexEndpoint] (Output)
-  AiIndexDeployedIndex({this.deployedIndexId, this.indexEndpoint});
+  AiIndexDeployedIndex({
+    this.deployedIndexId,
+    this.indexEndpoint,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,16 +27,9 @@ class AiIndexDeployedIndex {
 
   factory AiIndexDeployedIndex.fromMap(Map<String, dynamic> map) {
     return AiIndexDeployedIndex(
-      deployedIndexId: (() {
-        final guardedValue = map['deployedIndexId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      indexEndpoint: (() {
-        final guardedValue = map['indexEndpoint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      deployedIndexId: (() { final guardedValue = map['deployedIndexId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      indexEndpoint: (() { final guardedValue = map['indexEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

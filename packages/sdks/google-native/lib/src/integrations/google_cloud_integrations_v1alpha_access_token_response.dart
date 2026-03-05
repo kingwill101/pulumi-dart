@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudIntegrationsV1alphaAccessTokenResponse {
   /// The access token encapsulating the security identity of a process or thread.
   final pulumi.Input<String> accessToken;
-
   /// The approximate time until the access token retrieved is valid.
   final pulumi.Input<String> accessTokenExpireTime;
-
   /// If the access token will expire, use the refresh token to obtain another access token.
   final pulumi.Input<String> refreshToken;
-
   /// The approximate time until the refresh token retrieved is valid.
   final pulumi.Input<String> refreshTokenExpireTime;
-
   /// Only support "bearer" token in v1 as bearer token is the predominant type used with OAuth 2.0.
   final pulumi.Input<String> tokenType;
 
@@ -43,19 +39,14 @@ class GoogleCloudIntegrationsV1alphaAccessTokenResponse {
     };
   }
 
-  factory GoogleCloudIntegrationsV1alphaAccessTokenResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudIntegrationsV1alphaAccessTokenResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaAccessTokenResponse(
       accessToken: pulumi.Input.fromValue(map['accessToken'] as String),
-      accessTokenExpireTime: pulumi.Input.fromValue(
-        map['accessTokenExpireTime'] as String,
-      ),
+      accessTokenExpireTime: pulumi.Input.fromValue(map['accessTokenExpireTime'] as String),
       refreshToken: pulumi.Input.fromValue(map['refreshToken'] as String),
-      refreshTokenExpireTime: pulumi.Input.fromValue(
-        map['refreshTokenExpireTime'] as String,
-      ),
+      refreshTokenExpireTime: pulumi.Input.fromValue(map['refreshTokenExpireTime'] as String),
       tokenType: pulumi.Input.fromValue(map['tokenType'] as String),
     );
   }
 }
+

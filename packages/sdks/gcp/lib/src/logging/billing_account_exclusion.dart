@@ -124,19 +124,15 @@ import 'billing_account_exclusion_state.dart';
 class BillingAccountExclusion extends pulumi.CustomResource {
   /// The billing account to create the exclusion for.
   late final pulumi.Output<String> billingAccount;
-
   /// A human-readable description.
   late final pulumi.Output<String?> description;
-
   /// Whether this exclusion rule should be disabled or not. This defaults to
   /// false.
   late final pulumi.Output<bool?> disabled;
-
   /// The filter to apply when excluding logs. Only log entries that match the filter are excluded.
   /// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced-filters) for information on how to
   /// write a filter.
   late final pulumi.Output<String> filter;
-
   /// The name of the logging exclusion.
   late final pulumi.Output<String> name;
 
@@ -149,11 +145,11 @@ class BillingAccountExclusion extends pulumi.CustomResource {
     BillingAccountExclusionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:logging/billingAccountExclusion:BillingAccountExclusion',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:logging/billingAccountExclusion:BillingAccountExclusion',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     billingAccount = registerOutput<String>('billingAccount');
     description = registerOutput<String?>('description');
     disabled = registerOutput<bool?>('disabled');
@@ -179,11 +175,11 @@ class BillingAccountExclusion extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:logging/billingAccountExclusion:BillingAccountExclusion',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:logging/billingAccountExclusion:BillingAccountExclusion',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     billingAccount = registerOutput<String>('billingAccount');
     description = registerOutput<String?>('description');
     disabled = registerOutput<bool?>('disabled');

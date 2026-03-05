@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValues {
   /// List of values allowed at this resource.
   final pulumi.Input<List<String>>? allowedValues;
-
   /// List of values denied at this resource.
   final pulumi.Input<List<String>>? deniedValues;
 
@@ -24,20 +23,11 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValues {
     };
   }
 
-  factory PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValues.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValues.fromMap(Map<String, dynamic> map) {
     return PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValues(
-      allowedValues: (() {
-        final guardedValue = map['allowedValues'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      deniedValues: (() {
-        final guardedValue = map['deniedValues'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      allowedValues: (() { final guardedValue = map['allowedValues']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      deniedValues: (() { final guardedValue = map['deniedValues']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

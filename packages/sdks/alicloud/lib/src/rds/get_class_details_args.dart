@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClassDetailsArgs {
   /// The code of the instance type.
   final pulumi.Input<String> classCode;
-
   /// The commodity code of the instance. Valid values:
   /// * **bards**: The instance is a pay-as-you-go primary instance. This value is available on the China site (aliyun.com).
   /// * **rds**: The instance is a subscription primary instance. This value is available on the China site (aliyun.com).
@@ -20,10 +19,8 @@ class GetClassDetailsArgs {
   /// * **rords_intl**: The instance is a pay-as-you-go read-only instance. This value is available on the International site (alibabacloud.com).
   /// * **rds_rordspre_public_intl**: The instance is a subscription read-only instance. This value is available on the International site (alibabacloud.com).
   final pulumi.Input<String> commodityCode;
-
   /// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB.
   final pulumi.Input<String> engine;
-
   /// Database version. Value options:
   /// - MySQL: [ 5.5、5.6、5.7、8.0 ]
   /// - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent ]
@@ -61,3 +58,4 @@ class GetClassDetailsArgs {
     );
   }
 }
+

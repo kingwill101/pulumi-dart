@@ -7,17 +7,13 @@ enum SessionEntityTypeEntityOverrideModeDialogflowV2beta1 {
   const SessionEntityTypeEntityOverrideModeDialogflowV2beta1(this.wireValue);
   final String wireValue;
 
-  static SessionEntityTypeEntityOverrideModeDialogflowV2beta1 fromValue(
-    String value,
-  ) {
-    for (final item
-        in SessionEntityTypeEntityOverrideModeDialogflowV2beta1.values) {
+  static SessionEntityTypeEntityOverrideModeDialogflowV2beta1 fromValue(String value) {
+    for (final item in SessionEntityTypeEntityOverrideModeDialogflowV2beta1.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown SessionEntityTypeEntityOverrideModeDialogflowV2beta1 value: $value',
-    );
+    throw ArgumentError('Unknown SessionEntityTypeEntityOverrideModeDialogflowV2beta1 value: $value');
   }
 }
+

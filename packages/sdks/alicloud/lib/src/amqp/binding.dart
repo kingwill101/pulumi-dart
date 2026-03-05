@@ -350,7 +350,6 @@ class Binding extends pulumi.CustomResource {
   /// - `x-match:any`: A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
   /// - &gt; **NOTE:** If the exchange type is not 'HEADERS', the `argument` should not been set, otherwise, there are always "forces replacement" changes.
   late final pulumi.Output<String> argument;
-
   /// The Binding Key.
   /// * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
   /// The binding key must be 1 to 255 characters in length.
@@ -358,19 +357,14 @@ class Binding extends pulumi.CustomResource {
   /// If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.).
   /// The binding key must be 1 to 255 characters in length.
   late final pulumi.Output<String> bindingKey;
-
   /// The type of the object that you want to bind to the source exchange. Valid values: `EXCHANGE`, `QUEUE`.
   late final pulumi.Output<String> bindingType;
-
   /// The name of the object that you want to bind to the source exchange.
   late final pulumi.Output<String> destinationName;
-
   /// The ID of the instance.
   late final pulumi.Output<String> instanceId;
-
   /// The name of the source exchange.
   late final pulumi.Output<String> sourceExchange;
-
   /// The name of the vhost.
   late final pulumi.Output<String> virtualHostName;
 
@@ -383,11 +377,11 @@ class Binding extends pulumi.CustomResource {
     BindingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:amqp/binding:Binding',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:amqp/binding:Binding',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     argument = registerOutput<String>('argument');
     bindingKey = registerOutput<String>('bindingKey');
     bindingType = registerOutput<String>('bindingType');
@@ -415,11 +409,11 @@ class Binding extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:amqp/binding:Binding',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:amqp/binding:Binding',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     argument = registerOutput<String>('argument');
     bindingKey = registerOutput<String>('bindingKey');
     bindingType = registerOutput<String>('bindingType');

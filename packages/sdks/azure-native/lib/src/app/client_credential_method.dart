@@ -14,3 +14,4 @@ enum ClientCredentialMethod {
     throw ArgumentError('Unknown ClientCredentialMethod value: $value');
   }
 }
+

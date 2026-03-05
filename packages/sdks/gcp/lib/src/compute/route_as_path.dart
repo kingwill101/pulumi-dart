@@ -6,7 +6,6 @@ class RouteAsPath {
   /// (Output)
   /// The AS numbers of the AS Path.
   final pulumi.Input<List<int>>? asLists;
-
   /// (Output)
   /// The type of the AS Path, which can be one of the following values:
   /// - 'AS_SET': unordered set of autonomous systems that the route in has traversed
@@ -18,7 +17,10 @@ class RouteAsPath {
   /// Creates a new [RouteAsPath].
   /// [asLists] (Output)
   /// [pathSegmentType] (Output)
-  RouteAsPath({this.asLists, this.pathSegmentType});
+  RouteAsPath({
+    this.asLists,
+    this.pathSegmentType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,16 +31,9 @@ class RouteAsPath {
 
   factory RouteAsPath.fromMap(Map<String, dynamic> map) {
     return RouteAsPath(
-      asLists: (() {
-        final guardedValue = map['asLists'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<int>());
-      })(),
-      pathSegmentType: (() {
-        final guardedValue = map['pathSegmentType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      asLists: (() { final guardedValue = map['asLists']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<int>()); })(),
+      pathSegmentType: (() { final guardedValue = map['pathSegmentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

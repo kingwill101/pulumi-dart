@@ -292,23 +292,17 @@ class VpcBlockPublicAccessExclusion extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> internetGatewayExclusionMode;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The Amazon Resource Name (ARN) the excluded resource.
   late final pulumi.Output<String> resourceArn;
-
   /// Id of the subnet to which this exclusion applies. Either this or the vpc_id needs to be provided.
   late final pulumi.Output<String?> subnetId;
-
   /// A map of tags to assign to the exclusion. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<VpcBlockPublicAccessExclusionTimeouts?> timeouts;
-
   /// Id of the VPC to which this exclusion applies. Either this or the subnet_id needs to be provided.
   late final pulumi.Output<String?> vpcId;
 
@@ -321,29 +315,18 @@ class VpcBlockPublicAccessExclusion extends pulumi.CustomResource {
     VpcBlockPublicAccessExclusionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/vpcBlockPublicAccessExclusion:VpcBlockPublicAccessExclusion',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    internetGatewayExclusionMode = registerOutput<String>(
-      'internetGatewayExclusionMode',
-    );
+          'aws:ec2/vpcBlockPublicAccessExclusion:VpcBlockPublicAccessExclusion',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    internetGatewayExclusionMode = registerOutput<String>('internetGatewayExclusionMode');
     region = registerOutput<String>('region');
     resourceArn = registerOutput<String>('resourceArn');
     subnetId = registerOutput<String?>('subnetId');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<VpcBlockPublicAccessExclusionTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VpcBlockPublicAccessExclusionTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<VpcBlockPublicAccessExclusionTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpcBlockPublicAccessExclusionTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vpcId = registerOutput<String?>('vpcId');
   }
 
@@ -365,29 +348,18 @@ class VpcBlockPublicAccessExclusion extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/vpcBlockPublicAccessExclusion:VpcBlockPublicAccessExclusion',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    internetGatewayExclusionMode = registerOutput<String>(
-      'internetGatewayExclusionMode',
-    );
+          'aws:ec2/vpcBlockPublicAccessExclusion:VpcBlockPublicAccessExclusion',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    internetGatewayExclusionMode = registerOutput<String>('internetGatewayExclusionMode');
     region = registerOutput<String>('region');
     resourceArn = registerOutput<String>('resourceArn');
     subnetId = registerOutput<String?>('subnetId');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<VpcBlockPublicAccessExclusionTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VpcBlockPublicAccessExclusionTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<VpcBlockPublicAccessExclusionTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpcBlockPublicAccessExclusionTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vpcId = registerOutput<String?>('vpcId');
   }
 }

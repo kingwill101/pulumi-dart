@@ -7,10 +7,8 @@ import 'metric_value_status.dart';
 class ContainerResourceMetricStatus {
   /// container is the name of the container in the pods of the scaling target
   final pulumi.Input<String> container;
-
   /// current contains the current value for the given metric
   final pulumi.Input<MetricValueStatus> current;
-
   /// name is the name of the resource in question.
   final pulumi.Input<String> name;
 
@@ -27,11 +25,7 @@ class ContainerResourceMetricStatus {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'container': container,
-      'current':
-          pulumi.Input.mapInputValue<MetricValueStatus, Map<String, dynamic>>(
-            current,
-            (value) => value.toMap(),
-          ),
+      'current': pulumi.Input.mapInputValue<MetricValueStatus, Map<String, dynamic>>(current, (value) => value.toMap()),
       'name': name,
     };
   }
@@ -39,12 +33,9 @@ class ContainerResourceMetricStatus {
   factory ContainerResourceMetricStatus.fromMap(Map<String, dynamic> map) {
     return ContainerResourceMetricStatus(
       container: pulumi.Input.fromValue(map['container'] as String),
-      current: pulumi.Input.fromValue(
-        MetricValueStatus.fromMap(
-          (map['current']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      current: pulumi.Input.fromValue(MetricValueStatus.fromMap((map['current']! as Map).cast<String, dynamic>())),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

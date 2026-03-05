@@ -7,10 +7,8 @@ class VMwareMigrateFabricModelCustomProperties {
   /// Gets or sets the instance type.
   /// Expected value is 'VMwareMigrate'.
   final pulumi.Input<String> instanceType;
-
   /// Gets or sets the ARM Id of the migration solution.
   final pulumi.Input<String> migrationSolutionId;
-
   /// Gets or sets the ARM Id of the VMware site.
   final pulumi.Input<String> vmwareSiteId;
 
@@ -32,15 +30,12 @@ class VMwareMigrateFabricModelCustomProperties {
     };
   }
 
-  factory VMwareMigrateFabricModelCustomProperties.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VMwareMigrateFabricModelCustomProperties.fromMap(Map<String, dynamic> map) {
     return VMwareMigrateFabricModelCustomProperties(
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
-      migrationSolutionId: pulumi.Input.fromValue(
-        map['migrationSolutionId'] as String,
-      ),
+      migrationSolutionId: pulumi.Input.fromValue(map['migrationSolutionId'] as String),
       vmwareSiteId: pulumi.Input.fromValue(map['vmwareSiteId'] as String),
     );
   }
 }
+

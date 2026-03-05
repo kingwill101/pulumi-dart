@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CreatorArgs {
   /// The Azure Region where the Azure Maps Creator should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
-
   /// The ID of the Azure Maps Creator. Changing this forces a new resource to be created.
   final pulumi.Input<String> mapsAccountId;
-
   /// The name of the Azure Maps Creator. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// The storage units to be allocated. Integer values from 1 to 100, inclusive.
   final pulumi.Input<int> storageUnits;
-
   /// A mapping of tags which should be assigned to the Azure Maps Creator.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -48,25 +44,12 @@ class CreatorArgs {
 
   factory CreatorArgs.fromMap(Map<String, dynamic> map) {
     return CreatorArgs(
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       mapsAccountId: pulumi.Input.fromValue(map['mapsAccountId'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       storageUnits: pulumi.Input.fromValue(map['storageUnits'] as int),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

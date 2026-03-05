@@ -391,37 +391,26 @@ import 'nacos_config_state.dart';
 class NacosConfig extends pulumi.CustomResource {
   /// The language type of the returned information. Valid values: `zh`, `en`.
   late final pulumi.Output<String?> acceptLanguage;
-
   /// The name of the application.
   late final pulumi.Output<String?> appName;
-
   /// The list of IP addresses where the beta release of the configuration is performed.
   late final pulumi.Output<String> betaIps;
-
   /// The content of the configuration.
   late final pulumi.Output<String> content;
-
   /// The ID of the data.
   late final pulumi.Output<String> dataId;
-
   /// The description of the configuration.
   late final pulumi.Output<String?> desc;
-
   /// The encryption key.
   late final pulumi.Output<String> encryptedDataKey;
-
   /// The ID of the group.
   late final pulumi.Output<String> group;
-
   /// The ID of the instance.
   late final pulumi.Output<String> instanceId;
-
   /// The id of Namespace. If you want to create a config under the `public` namespace, this parameter can be set to an empty string  *`""`* or just not set this parameter.
   late final pulumi.Output<String?> namespaceId;
-
   /// The tags of the configuration.
   late final pulumi.Output<String?> tags;
-
   /// The format of the configuration. Supported formats include TEXT, JSON, and XML.
   late final pulumi.Output<String> type;
 
@@ -434,11 +423,11 @@ class NacosConfig extends pulumi.CustomResource {
     NacosConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:mse/nacosConfig:NacosConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:mse/nacosConfig:NacosConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     acceptLanguage = registerOutput<String?>('acceptLanguage');
     appName = registerOutput<String?>('appName');
     betaIps = registerOutput<String>('betaIps');
@@ -471,11 +460,11 @@ class NacosConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:mse/nacosConfig:NacosConfig',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:mse/nacosConfig:NacosConfig',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     acceptLanguage = registerOutput<String?>('acceptLanguage');
     appName = registerOutput<String?>('appName');
     betaIps = registerOutput<String>('betaIps');

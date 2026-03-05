@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApiGatewayHostnameBindingArgs {
   /// The name of the API Management gateway.
   final pulumi.Input<String> gatewayName;
-
   /// Gateway hostname binding identifier. Must be unique in the scope of parent Gateway entity.
   final pulumi.Input<String> hostnameBindingName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -37,12 +35,9 @@ class GetApiGatewayHostnameBindingArgs {
   factory GetApiGatewayHostnameBindingArgs.fromMap(Map<String, dynamic> map) {
     return GetApiGatewayHostnameBindingArgs(
       gatewayName: pulumi.Input.fromValue(map['gatewayName'] as String),
-      hostnameBindingName: pulumi.Input.fromValue(
-        map['hostnameBindingName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      hostnameBindingName: pulumi.Input.fromValue(map['hostnameBindingName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

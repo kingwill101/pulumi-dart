@@ -675,62 +675,42 @@ import 'workflow_args.dart';
 class Workflow extends pulumi.CustomResource {
   /// The name of the app.
   late final pulumi.Output<String?> appName;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The version of the language image used for building the code in the generated dockerfile.
   late final pulumi.Output<String?> builderVersion;
-
   /// The mode of generation to be used for generating Dockerfiles.
   late final pulumi.Output<String?> dockerfileGenerationMode;
-
   /// The directory to output the generated Dockerfile to.
   late final pulumi.Output<String?> dockerfileOutputDirectory;
-
   /// The programming language used.
   late final pulumi.Output<String?> generationLanguage;
-
   /// Profile of a github workflow.
-  late final pulumi.Output<GitHubWorkflowProfileResponse?>
-  githubWorkflowProfile;
-
+  late final pulumi.Output<GitHubWorkflowProfileResponse?> githubWorkflowProfile;
   /// The name of the image to be generated.
   late final pulumi.Output<String?> imageName;
-
   /// The tag to apply to the generated image.
   late final pulumi.Output<String?> imageTag;
-
   /// The version of the language image used for execution in the generated dockerfile.
   late final pulumi.Output<String?> languageVersion;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The mode of generation to be used for generating Manifest.
   late final pulumi.Output<String?> manifestGenerationMode;
-
   /// The directory to output the generated manifests to.
   late final pulumi.Output<String?> manifestOutputDirectory;
-
   /// Determines the type of manifests to be generated.
   late final pulumi.Output<String?> manifestType;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The namespace to deploy the application to.
   late final pulumi.Output<String?> namespace;
-
   /// The port the application is exposed on.
   late final pulumi.Output<String?> port;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -743,53 +723,29 @@ class Workflow extends pulumi.CustomResource {
     WorkflowArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:devhub:Workflow',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:devhub:Workflow',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appName = registerOutput<String?>('appName');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     builderVersion = registerOutput<String?>('builderVersion');
-    dockerfileGenerationMode = registerOutput<String?>(
-      'dockerfileGenerationMode',
-    );
-    dockerfileOutputDirectory = registerOutput<String?>(
-      'dockerfileOutputDirectory',
-    );
+    dockerfileGenerationMode = registerOutput<String?>('dockerfileGenerationMode');
+    dockerfileOutputDirectory = registerOutput<String?>('dockerfileOutputDirectory');
     generationLanguage = registerOutput<String?>('generationLanguage');
-    githubWorkflowProfile = registerOutput<GitHubWorkflowProfileResponse?>(
-      'githubWorkflowProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GitHubWorkflowProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    githubWorkflowProfile = registerOutput<GitHubWorkflowProfileResponse?>('githubWorkflowProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GitHubWorkflowProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     imageName = registerOutput<String?>('imageName');
     imageTag = registerOutput<String?>('imageTag');
     languageVersion = registerOutput<String?>('languageVersion');
     location = registerOutput<String>('location');
     manifestGenerationMode = registerOutput<String?>('manifestGenerationMode');
-    manifestOutputDirectory = registerOutput<String?>(
-      'manifestOutputDirectory',
-    );
+    manifestOutputDirectory = registerOutput<String?>('manifestOutputDirectory');
     manifestType = registerOutput<String?>('manifestType');
     this.name = registerOutput<String>('name');
     namespace = registerOutput<String?>('namespace');
     port = registerOutput<String?>('port');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

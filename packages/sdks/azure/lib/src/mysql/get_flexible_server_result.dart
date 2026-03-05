@@ -9,58 +9,41 @@ import 'get_flexible_server_storage.dart';
 class GetFlexibleServerResult {
   /// The Administrator login of the MySQL Flexible Server.
   final String administratorLogin;
-
   /// The backup retention days of the MySQL Flexible Server.
   final int backupRetentionDays;
-
   /// The ID of the virtual network subnet the MySQL Flexible Server is created in.
   final String delegatedSubnetId;
-
   /// The fully qualified domain name of the MySQL Flexible Server.
   final String fqdn;
-
   /// Is geo redundant backup enabled?
   final bool geoRedundantBackupEnabled;
-
   /// A `high_availability` block for this MySQL Flexible Server as defined below.
   final List<GetFlexibleServerHighAvailability> highAvailabilities;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The Azure Region of the MySQL Flexible Server.
   final String location;
-
   /// A `maintenance_window` block for this MySQL Flexible Server as defined below.
   final List<GetFlexibleServerMaintenanceWindow> maintenanceWindows;
   final String name;
-
   /// The ID of the Private DNS zone of the MySQL Flexible Server.
   final String privateDnsZoneId;
-
   /// Is the public network access enabled?
   final bool publicNetworkAccessEnabled;
-
   /// The maximum number of replicas that a primary MySQL Flexible Server can have.
   final int replicaCapacity;
-
   /// The replication role of the MySQL Flexible Server.
   final String replicationRole;
   final String resourceGroupName;
   final String restorePointInTime;
-
   /// The SKU Name of the MySQL Flexible Server.
   final String skuName;
-
   /// A `storage` block for this MySQL Flexible Server as defined below.
   final List<GetFlexibleServerStorage> storages;
-
   /// A mapping of tags which are assigned to the MySQL Flexible Server.
   final Map<String, String> tags;
-
   /// The version of the MySQL Flexible Server.
   final String version;
-
   /// The Availability Zones where this MySQL Flexible Server is located.
   final String zone;
 
@@ -117,18 +100,10 @@ class GetFlexibleServerResult {
       'delegatedSubnetId': delegatedSubnetId,
       'fqdn': fqdn,
       'geoRedundantBackupEnabled': geoRedundantBackupEnabled,
-      'highAvailabilities':
-          pulumi.Input.encodeList<
-            GetFlexibleServerHighAvailability,
-            Map<String, dynamic>
-          >(highAvailabilities, (value) => value.toMap()),
+      'highAvailabilities': pulumi.Input.encodeList<GetFlexibleServerHighAvailability, Map<String, dynamic>>(highAvailabilities, (value) => value.toMap()),
       'id': id,
       'location': location,
-      'maintenanceWindows':
-          pulumi.Input.encodeList<
-            GetFlexibleServerMaintenanceWindow,
-            Map<String, dynamic>
-          >(maintenanceWindows, (value) => value.toMap()),
+      'maintenanceWindows': pulumi.Input.encodeList<GetFlexibleServerMaintenanceWindow, Map<String, dynamic>>(maintenanceWindows, (value) => value.toMap()),
       'name': name,
       'privateDnsZoneId': privateDnsZoneId,
       'publicNetworkAccessEnabled': publicNetworkAccessEnabled,
@@ -137,11 +112,7 @@ class GetFlexibleServerResult {
       'resourceGroupName': resourceGroupName,
       'restorePointInTime': restorePointInTime,
       'skuName': skuName,
-      'storages':
-          pulumi.Input.encodeList<
-            GetFlexibleServerStorage,
-            Map<String, dynamic>
-          >(storages, (value) => value.toMap()),
+      'storages': pulumi.Input.encodeList<GetFlexibleServerStorage, Map<String, dynamic>>(storages, (value) => value.toMap()),
       'tags': tags,
       'version': version,
       'zone': zone,
@@ -155,22 +126,10 @@ class GetFlexibleServerResult {
       delegatedSubnetId: map['delegatedSubnetId'] as String,
       fqdn: map['fqdn'] as String,
       geoRedundantBackupEnabled: map['geoRedundantBackupEnabled'] as bool,
-      highAvailabilities:
-          pulumi.Input.decodeList<GetFlexibleServerHighAvailability>(
-            map['highAvailabilities']!,
-            (value) => GetFlexibleServerHighAvailability.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      highAvailabilities: pulumi.Input.decodeList<GetFlexibleServerHighAvailability>(map['highAvailabilities']!, (value) => GetFlexibleServerHighAvailability.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       location: map['location'] as String,
-      maintenanceWindows:
-          pulumi.Input.decodeList<GetFlexibleServerMaintenanceWindow>(
-            map['maintenanceWindows']!,
-            (value) => GetFlexibleServerMaintenanceWindow.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      maintenanceWindows: pulumi.Input.decodeList<GetFlexibleServerMaintenanceWindow>(map['maintenanceWindows']!, (value) => GetFlexibleServerMaintenanceWindow.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       privateDnsZoneId: map['privateDnsZoneId'] as String,
       publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] as bool,
@@ -179,15 +138,11 @@ class GetFlexibleServerResult {
       resourceGroupName: map['resourceGroupName'] as String,
       restorePointInTime: map['restorePointInTime'] as String,
       skuName: map['skuName'] as String,
-      storages: pulumi.Input.decodeList<GetFlexibleServerStorage>(
-        map['storages']!,
-        (value) => GetFlexibleServerStorage.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      storages: pulumi.Input.decodeList<GetFlexibleServerStorage>(map['storages']!, (value) => GetFlexibleServerStorage.fromMap((value as Map).cast<String, dynamic>())),
       tags: (map['tags'] as Map).cast<String, String>(),
       version: map['version'] as String,
       zone: map['zone'] as String,
     );
   }
 }
+

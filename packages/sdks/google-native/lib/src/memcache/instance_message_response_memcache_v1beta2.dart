@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceMessageResponseMemcacheV1beta2 {
   /// A code that correspond to one type of user-facing message.
   final pulumi.Input<String> code;
-
   /// Message on memcached instance which will be exposed to users.
   final pulumi.Input<String> message;
 
@@ -18,15 +17,17 @@ class InstanceMessageResponseMemcacheV1beta2 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'code': code, 'message': message};
+    return <String, dynamic>{
+      'code': code,
+      'message': message,
+    };
   }
 
-  factory InstanceMessageResponseMemcacheV1beta2.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InstanceMessageResponseMemcacheV1beta2.fromMap(Map<String, dynamic> map) {
     return InstanceMessageResponseMemcacheV1beta2(
       code: pulumi.Input.fromValue(map['code'] as String),
       message: pulumi.Input.fromValue(map['message'] as String),
     );
   }
 }
+

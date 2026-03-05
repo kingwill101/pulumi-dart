@@ -250,13 +250,10 @@ import 'table_entity_state.dart';
 class TableEntity extends pulumi.CustomResource {
   /// A map of key/value pairs that describe the entity to be inserted/merged in to the storage table.
   late final pulumi.Output<Map<String, String>> entity;
-
   /// The key for the partition where the entity will be inserted/merged. Changing this forces a new resource to be created.
   late final pulumi.Output<String> partitionKey;
-
   /// The key for the row where the entity will be inserted/merged. Changing this forces a new resource to be created.
   late final pulumi.Output<String> rowKey;
-
   /// The Storage Share ID in which this file will be placed into.
   late final pulumi.Output<String> storageTableId;
 
@@ -269,11 +266,11 @@ class TableEntity extends pulumi.CustomResource {
     TableEntityArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:storage/tableEntity:TableEntity',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:storage/tableEntity:TableEntity',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     entity = registerOutput<Map<String, String>>('entity');
     partitionKey = registerOutput<String>('partitionKey');
     rowKey = registerOutput<String>('rowKey');
@@ -298,11 +295,11 @@ class TableEntity extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:storage/tableEntity:TableEntity',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:storage/tableEntity:TableEntity',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     entity = registerOutput<Map<String, String>>('entity');
     partitionKey = registerOutput<String>('partitionKey');
     rowKey = registerOutput<String>('rowKey');

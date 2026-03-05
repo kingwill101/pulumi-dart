@@ -7,10 +7,8 @@ import 'connect_to_source_oracle_sync_task_input.dart';
 class ConnectToSourceOracleSyncTaskProperties {
   /// Key value pairs of client data to attach meta data information to task
   final pulumi.Input<Map<String, String>>? clientData;
-
   /// Task input
   final pulumi.Input<ConnectToSourceOracleSyncTaskInput>? input;
-
   /// Task type.
   /// Expected value is 'ConnectToSource.Oracle.Sync'.
   final pulumi.Input<String> taskType;
@@ -28,36 +26,17 @@ class ConnectToSourceOracleSyncTaskProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'clientData': ?clientData,
-      'input':
-          ?pulumi.Input.mapOptionalInputValue<
-            ConnectToSourceOracleSyncTaskInput,
-            Map<String, dynamic>
-          >(input, (value) => value.toMap()),
+      'input': ?pulumi.Input.mapOptionalInputValue<ConnectToSourceOracleSyncTaskInput, Map<String, dynamic>>(input, (value) => value.toMap()),
       'taskType': taskType,
     };
   }
 
-  factory ConnectToSourceOracleSyncTaskProperties.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConnectToSourceOracleSyncTaskProperties.fromMap(Map<String, dynamic> map) {
     return ConnectToSourceOracleSyncTaskProperties(
-      clientData: (() {
-        final guardedValue = map['clientData'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      input: (() {
-        final guardedValue = map['input'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ConnectToSourceOracleSyncTaskInput.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      clientData: (() { final guardedValue = map['clientData']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      input: (() { final guardedValue = map['input']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectToSourceOracleSyncTaskInput.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       taskType: pulumi.Input.fromValue(map['taskType'] as String),
     );
   }
 }
+

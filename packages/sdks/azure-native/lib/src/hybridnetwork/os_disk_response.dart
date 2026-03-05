@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OsDiskResponse {
   /// Specifies the size of os disk in gigabytes. This is the fully expanded disk size needed of the VHD image on the ASE. This disk size should be greater than the size of the VHD provided in vhdUri.
   final pulumi.Input<int>? diskSizeGB;
-
   /// The VHD name.
   final pulumi.Input<String>? name;
-
   /// The OS type.
   final pulumi.Input<String>? osType;
 
@@ -17,7 +15,11 @@ class OsDiskResponse {
   /// [diskSizeGB] Specifies the size of os disk in gigabytes. This is the fully expanded disk size needed of the VHD image on the ASE. This disk size should be greater than the size of the VHD provided in vhdUri.
   /// [name] The VHD name.
   /// [osType] The OS type.
-  OsDiskResponse({this.diskSizeGB, this.name, this.osType});
+  OsDiskResponse({
+    this.diskSizeGB,
+    this.name,
+    this.osType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class OsDiskResponse {
 
   factory OsDiskResponse.fromMap(Map<String, dynamic> map) {
     return OsDiskResponse(
-      diskSizeGB: (() {
-        final guardedValue = map['diskSizeGB'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      osType: (() {
-        final guardedValue = map['osType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      diskSizeGB: (() { final guardedValue = map['diskSizeGB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      osType: (() { final guardedValue = map['osType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

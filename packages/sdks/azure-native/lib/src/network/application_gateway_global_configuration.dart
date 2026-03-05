@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationGatewayGlobalConfiguration {
   /// Enable request buffering.
   final pulumi.Input<bool>? enableRequestBuffering;
-
   /// Enable response buffering.
   final pulumi.Input<bool>? enableResponseBuffering;
 
@@ -25,20 +24,11 @@ class ApplicationGatewayGlobalConfiguration {
     };
   }
 
-  factory ApplicationGatewayGlobalConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApplicationGatewayGlobalConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayGlobalConfiguration(
-      enableRequestBuffering: (() {
-        final guardedValue = map['enableRequestBuffering'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      enableResponseBuffering: (() {
-        final guardedValue = map['enableResponseBuffering'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enableRequestBuffering: (() { final guardedValue = map['enableRequestBuffering']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enableResponseBuffering: (() { final guardedValue = map['enableResponseBuffering']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

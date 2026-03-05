@@ -338,13 +338,10 @@ import 'user_group_state.dart';
 class UserGroup extends pulumi.CustomResource {
   /// Specify the New Group of Remark Information. Supports up to 500 Characters.
   late final pulumi.Output<String?> comment;
-
   /// Specify the New Group of the Bastion Host of Instance Id.
   late final pulumi.Output<String> instanceId;
-
   /// The User Group self ID.
   late final pulumi.Output<String> userGroupId;
-
   /// Specify the New Group Name. Supports up to 128 Characters.
   late final pulumi.Output<String> userGroupName;
 
@@ -357,11 +354,11 @@ class UserGroup extends pulumi.CustomResource {
     UserGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:bastionhost/userGroup:UserGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:bastionhost/userGroup:UserGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     comment = registerOutput<String?>('comment');
     instanceId = registerOutput<String>('instanceId');
     userGroupId = registerOutput<String>('userGroupId');
@@ -386,11 +383,11 @@ class UserGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:bastionhost/userGroup:UserGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:bastionhost/userGroup:UserGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     comment = registerOutput<String?>('comment');
     instanceId = registerOutput<String>('instanceId');
     userGroupId = registerOutput<String>('userGroupId');

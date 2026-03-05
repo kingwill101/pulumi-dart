@@ -14,3 +14,4 @@ enum NGroupUpdateMode {
     throw ArgumentError('Unknown NGroupUpdateMode value: $value');
   }
 }
+

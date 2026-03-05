@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConditionsItemResponse {
   final pulumi.Input<String>? conditionName;
   final pulumi.Input<String>? type;
-
   /// These items are open-ended strings.
   final pulumi.Input<List<String>>? value;
 
@@ -14,7 +13,11 @@ class ConditionsItemResponse {
   /// [conditionName] Optional.
   /// [type] Optional.
   /// [value] These items are open-ended strings.
-  ConditionsItemResponse({this.conditionName, this.type, this.value});
+  ConditionsItemResponse({
+    this.conditionName,
+    this.type,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,21 +29,10 @@ class ConditionsItemResponse {
 
   factory ConditionsItemResponse.fromMap(Map<String, dynamic> map) {
     return ConditionsItemResponse(
-      conditionName: (() {
-        final guardedValue = map['conditionName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      conditionName: (() { final guardedValue = map['conditionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

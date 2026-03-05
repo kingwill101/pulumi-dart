@@ -8,17 +8,12 @@ import 'api_event_config_auth_provider_openid_connect_config.dart';
 class ApiEventConfigAuthProvider {
   /// Type of authentication provider. Valid values: `API_KEY`, `AWS_IAM`, `AMAZON_COGNITO_USER_POOLS`, `OPENID_CONNECT`, `AWS_LAMBDA`.
   final pulumi.Input<String> authType;
-
   /// Configuration for Cognito user pool authentication. Required when `auth_type` is `AMAZON_COGNITO_USER_POOLS`. See Cognito Config below.
   final pulumi.Input<ApiEventConfigAuthProviderCognitoConfig>? cognitoConfig;
-
   /// Configuration for Lambda authorization. Required when `auth_type` is `AWS_LAMBDA`. See Lambda Authorizer Config below.
-  final pulumi.Input<ApiEventConfigAuthProviderLambdaAuthorizerConfig>?
-  lambdaAuthorizerConfig;
-
+  final pulumi.Input<ApiEventConfigAuthProviderLambdaAuthorizerConfig>? lambdaAuthorizerConfig;
   /// Configuration for OpenID Connect. Required when `auth_type` is `OPENID_CONNECT`. See OpenID Connect Config below.
-  final pulumi.Input<ApiEventConfigAuthProviderOpenidConnectConfig>?
-  openidConnectConfig;
+  final pulumi.Input<ApiEventConfigAuthProviderOpenidConnectConfig>? openidConnectConfig;
 
   /// Creates a new [ApiEventConfigAuthProvider].
   /// [authType] Type of authentication provider. Valid values: `API_KEY`, `AWS_IAM`, `AMAZON_COGNITO_USER_POOLS`, `OPENID_CONNECT`, `AWS_LAMBDA`.
@@ -35,54 +30,19 @@ class ApiEventConfigAuthProvider {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'authType': authType,
-      'cognitoConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ApiEventConfigAuthProviderCognitoConfig,
-            Map<String, dynamic>
-          >(cognitoConfig, (value) => value.toMap()),
-      'lambdaAuthorizerConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ApiEventConfigAuthProviderLambdaAuthorizerConfig,
-            Map<String, dynamic>
-          >(lambdaAuthorizerConfig, (value) => value.toMap()),
-      'openidConnectConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ApiEventConfigAuthProviderOpenidConnectConfig,
-            Map<String, dynamic>
-          >(openidConnectConfig, (value) => value.toMap()),
+      'cognitoConfig': ?pulumi.Input.mapOptionalInputValue<ApiEventConfigAuthProviderCognitoConfig, Map<String, dynamic>>(cognitoConfig, (value) => value.toMap()),
+      'lambdaAuthorizerConfig': ?pulumi.Input.mapOptionalInputValue<ApiEventConfigAuthProviderLambdaAuthorizerConfig, Map<String, dynamic>>(lambdaAuthorizerConfig, (value) => value.toMap()),
+      'openidConnectConfig': ?pulumi.Input.mapOptionalInputValue<ApiEventConfigAuthProviderOpenidConnectConfig, Map<String, dynamic>>(openidConnectConfig, (value) => value.toMap()),
     };
   }
 
   factory ApiEventConfigAuthProvider.fromMap(Map<String, dynamic> map) {
     return ApiEventConfigAuthProvider(
       authType: pulumi.Input.fromValue(map['authType'] as String),
-      cognitoConfig: (() {
-        final guardedValue = map['cognitoConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ApiEventConfigAuthProviderCognitoConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      lambdaAuthorizerConfig: (() {
-        final guardedValue = map['lambdaAuthorizerConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ApiEventConfigAuthProviderLambdaAuthorizerConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      openidConnectConfig: (() {
-        final guardedValue = map['openidConnectConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ApiEventConfigAuthProviderOpenidConnectConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      cognitoConfig: (() { final guardedValue = map['cognitoConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ApiEventConfigAuthProviderCognitoConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      lambdaAuthorizerConfig: (() { final guardedValue = map['lambdaAuthorizerConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ApiEventConfigAuthProviderLambdaAuthorizerConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      openidConnectConfig: (() { final guardedValue = map['openidConnectConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ApiEventConfigAuthProviderOpenidConnectConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

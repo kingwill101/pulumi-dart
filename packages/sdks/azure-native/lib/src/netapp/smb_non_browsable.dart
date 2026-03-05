@@ -15,3 +15,4 @@ enum SmbNonBrowsable {
     throw ArgumentError('Unknown SmbNonBrowsable value: $value');
   }
 }
+

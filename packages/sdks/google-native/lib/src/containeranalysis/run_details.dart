@@ -14,65 +14,26 @@ class RunDetails {
   /// [builder] Optional.
   /// [byproducts] Optional.
   /// [metadata] Optional.
-  RunDetails({this.builder, this.byproducts, this.metadata});
+  RunDetails({
+    this.builder,
+    this.byproducts,
+    this.metadata,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'builder':
-          ?pulumi.Input.mapOptionalInputValue<
-            ProvenanceBuilder,
-            Map<String, dynamic>
-          >(builder, (value) => value.toMap()),
-      'byproducts':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ResourceDescriptor>,
-            List<Map<String, dynamic>>
-          >(
-            byproducts,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ResourceDescriptor,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'metadata':
-          ?pulumi.Input.mapOptionalInputValue<
-            BuildMetadata,
-            Map<String, dynamic>
-          >(metadata, (value) => value.toMap()),
+      'builder': ?pulumi.Input.mapOptionalInputValue<ProvenanceBuilder, Map<String, dynamic>>(builder, (value) => value.toMap()),
+      'byproducts': ?pulumi.Input.mapOptionalInputValue<List<ResourceDescriptor>, List<Map<String, dynamic>>>(byproducts, (value) => pulumi.Input.encodeList<ResourceDescriptor, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'metadata': ?pulumi.Input.mapOptionalInputValue<BuildMetadata, Map<String, dynamic>>(metadata, (value) => value.toMap()),
     };
   }
 
   factory RunDetails.fromMap(Map<String, dynamic> map) {
     return RunDetails(
-      builder: (() {
-        final guardedValue = map['builder'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ProvenanceBuilder.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      byproducts: (() {
-        final guardedValue = map['byproducts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ResourceDescriptor>(
-            guardedValue,
-            (value) => ResourceDescriptor.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      metadata: (() {
-        final guardedValue = map['metadata'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BuildMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
+      builder: (() { final guardedValue = map['builder']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ProvenanceBuilder.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      byproducts: (() { final guardedValue = map['byproducts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ResourceDescriptor>(guardedValue, (value) => ResourceDescriptor.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BuildMetadata.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

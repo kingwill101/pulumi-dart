@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRemoteWritesRemoteWrite {
   /// The ID of the Prometheus instance.
   final pulumi.Input<String> clusterId;
-
   /// The ID of the Remote Write. It formats as `&lt;cluster_id&gt;:&lt;remote_write_name&gt;`.
   final pulumi.Input<String> id;
-
   /// The name of the Remote Write configuration item.
   final pulumi.Input<String> remoteWriteName;
-
   /// The details of the Remote Write configuration item. The value is in the YAML format.
   final pulumi.Input<String> remoteWriteYaml;
 
@@ -45,3 +42,4 @@ class GetRemoteWritesRemoteWrite {
     );
   }
 }
+

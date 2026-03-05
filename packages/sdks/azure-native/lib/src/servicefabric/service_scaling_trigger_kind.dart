@@ -15,3 +15,4 @@ enum ServiceScalingTriggerKind {
     throw ArgumentError('Unknown ServiceScalingTriggerKind value: $value');
   }
 }
+

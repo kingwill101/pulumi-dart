@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SbeDeploymentPackageInfoResponse {
   /// SBE deployment validation code.
   final pulumi.Input<String> code;
-
   /// A detailed message that explains the SBE package validation result.
   final pulumi.Input<String> message;
-
   /// This represents discovered update results for matching updates and store it as SBE manifest.
   final pulumi.Input<String> sbeManifest;
 
@@ -39,3 +37,4 @@ class SbeDeploymentPackageInfoResponse {
     );
   }
 }
+

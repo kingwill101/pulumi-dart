@@ -33,11 +33,8 @@ class GetNodeTpuV2alpha1Args {
     return GetNodeTpuV2alpha1Args(
       location: pulumi.Input.fromValue(map['location'] as String),
       nodeId: pulumi.Input.fromValue(map['nodeId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

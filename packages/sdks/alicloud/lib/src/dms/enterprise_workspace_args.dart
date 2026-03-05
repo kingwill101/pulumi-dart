@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnterpriseWorkspaceArgs {
   /// The description of the Workspace.
   final pulumi.Input<String> description;
-
   /// The ID of the VPC.
   final pulumi.Input<String> vpcId;
-
   /// The name of the Workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -42,3 +40,4 @@ class EnterpriseWorkspaceArgs {
     );
   }
 }
+

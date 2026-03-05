@@ -8,22 +8,16 @@ enum RegionNetworkEndpointGroupNetworkEndpointTypeComputeBeta {
   privateServiceConnect("PRIVATE_SERVICE_CONNECT"),
   serverless("SERVERLESS");
 
-  const RegionNetworkEndpointGroupNetworkEndpointTypeComputeBeta(
-    this.wireValue,
-  );
+  const RegionNetworkEndpointGroupNetworkEndpointTypeComputeBeta(this.wireValue);
   final String wireValue;
 
-  static RegionNetworkEndpointGroupNetworkEndpointTypeComputeBeta fromValue(
-    String value,
-  ) {
-    for (final item
-        in RegionNetworkEndpointGroupNetworkEndpointTypeComputeBeta.values) {
+  static RegionNetworkEndpointGroupNetworkEndpointTypeComputeBeta fromValue(String value) {
+    for (final item in RegionNetworkEndpointGroupNetworkEndpointTypeComputeBeta.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown RegionNetworkEndpointGroupNetworkEndpointTypeComputeBeta value: $value',
-    );
+    throw ArgumentError('Unknown RegionNetworkEndpointGroupNetworkEndpointTypeComputeBeta value: $value');
   }
 }
+

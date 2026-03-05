@@ -9,10 +9,14 @@ class DevOpsAzureSkuResponse {
 
   /// Creates a new [DevOpsAzureSkuResponse].
   /// [name] The Azure SKU name of the machines in the pool.
-  DevOpsAzureSkuResponse({required this.name});
+  DevOpsAzureSkuResponse({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory DevOpsAzureSkuResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class DevOpsAzureSkuResponse {
     );
   }
 }
+

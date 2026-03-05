@@ -8,25 +8,19 @@ import 'workflow_invocation_args.dart';
 class WorkflowInvocation extends pulumi.CustomResource {
   /// Immutable. The name of the compilation result to use for this invocation. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
   late final pulumi.Output<String> compilationResult;
-
   /// Immutable. If left unset, a default InvocationConfig will be used.
   late final pulumi.Output<InvocationConfigResponse> invocationConfig;
-
   /// This workflow invocation's timing details.
   late final pulumi.Output<IntervalResponse> invocationTiming;
   late final pulumi.Output<String> location;
-
   /// The workflow invocation's name.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
   late final pulumi.Output<String> repositoryId;
-
   /// The resolved compilation result that was used to create this invocation. Will be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
   late final pulumi.Output<String> resolvedCompilationResult;
-
   /// This workflow invocation's current state.
   late final pulumi.Output<String> state;
-
   /// Immutable. The name of the workflow config to invoke. Must be in the format `projects/*/locations/*/repositories/*/workflowConfigs/*`.
   late final pulumi.Output<String> workflowConfig;
 
@@ -39,39 +33,19 @@ class WorkflowInvocation extends pulumi.CustomResource {
     WorkflowInvocationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'google-native:dataform/v1beta1:WorkflowInvocation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'google-native:dataform/v1beta1:WorkflowInvocation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     compilationResult = registerOutput<String>('compilationResult');
-    invocationConfig = registerOutput<InvocationConfigResponse>(
-      'invocationConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InvocationConfigResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    invocationTiming = registerOutput<IntervalResponse>(
-      'invocationTiming',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IntervalResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    invocationConfig = registerOutput<InvocationConfigResponse>('invocationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InvocationConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    invocationTiming = registerOutput<IntervalResponse>('invocationTiming', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntervalResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     repositoryId = registerOutput<String>('repositoryId');
-    resolvedCompilationResult = registerOutput<String>(
-      'resolvedCompilationResult',
-    );
+    resolvedCompilationResult = registerOutput<String>('resolvedCompilationResult');
     state = registerOutput<String>('state');
     workflowConfig = registerOutput<String>('workflowConfig');
   }

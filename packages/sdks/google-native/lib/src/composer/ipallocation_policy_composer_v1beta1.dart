@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IPAllocationPolicyComposerV1beta1 {
   /// Optional. The IP address range used to allocate IP addresses to pods in the cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. Specify `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both.
   final pulumi.Input<String>? clusterIpv4CidrBlock;
-
   /// Optional. The name of the cluster's secondary range used to allocate IP addresses to pods. Specify either `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
   final pulumi.Input<String>? clusterSecondaryRangeName;
-
   /// Optional. The IP address range of the services IP addresses in this cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. Specify `services_secondary_range_name` or `services_ipv4_cidr_block` but not both.
   final pulumi.Input<String>? servicesIpv4CidrBlock;
-
   /// Optional. The name of the services' secondary range used to allocate IP addresses to the cluster. Specify either `services_secondary_range_name` or `services_ipv4_cidr_block` but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
   final pulumi.Input<String>? servicesSecondaryRangeName;
-
   /// Optional. Whether or not to enable Alias IPs in the GKE cluster. If `true`, a VPC-native cluster is created. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use VPC-native GKE clusters.
   final pulumi.Input<bool>? useIpAliases;
 
@@ -45,31 +41,12 @@ class IPAllocationPolicyComposerV1beta1 {
 
   factory IPAllocationPolicyComposerV1beta1.fromMap(Map<String, dynamic> map) {
     return IPAllocationPolicyComposerV1beta1(
-      clusterIpv4CidrBlock: (() {
-        final guardedValue = map['clusterIpv4CidrBlock'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      clusterSecondaryRangeName: (() {
-        final guardedValue = map['clusterSecondaryRangeName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      servicesIpv4CidrBlock: (() {
-        final guardedValue = map['servicesIpv4CidrBlock'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      servicesSecondaryRangeName: (() {
-        final guardedValue = map['servicesSecondaryRangeName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      useIpAliases: (() {
-        final guardedValue = map['useIpAliases'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      clusterIpv4CidrBlock: (() { final guardedValue = map['clusterIpv4CidrBlock']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      clusterSecondaryRangeName: (() { final guardedValue = map['clusterSecondaryRangeName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      servicesIpv4CidrBlock: (() { final guardedValue = map['servicesIpv4CidrBlock']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      servicesSecondaryRangeName: (() { final guardedValue = map['servicesSecondaryRangeName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      useIpAliases: (() { final guardedValue = map['useIpAliases']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

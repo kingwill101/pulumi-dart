@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBrokerListenerArgs {
   /// Name of broker.
   final pulumi.Input<String> brokerName;
-
   /// Name of instance.
   final pulumi.Input<String> instanceName;
-
   /// Name of Instance broker listener resource
   final pulumi.Input<String> listenerName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -45,9 +42,8 @@ class GetBrokerListenerArgs {
       brokerName: pulumi.Input.fromValue(map['brokerName'] as String),
       instanceName: pulumi.Input.fromValue(map['instanceName'] as String),
       listenerName: pulumi.Input.fromValue(map['listenerName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

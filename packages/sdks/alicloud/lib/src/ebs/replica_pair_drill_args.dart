@@ -12,10 +12,14 @@ class ReplicaPairDrillArgs {
 
   /// Creates a new [ReplicaPairDrillArgs].
   /// [pairId] Copy the ID of the pair. You can call DescribeDiskReplicaPairs to query the list of asynchronous replication pairs to obtain the replication pair ID.
-  ReplicaPairDrillArgs({required this.pairId});
+  ReplicaPairDrillArgs({
+    required this.pairId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'pairId': pairId};
+    return <String, dynamic>{
+      'pairId': pairId,
+    };
   }
 
   factory ReplicaPairDrillArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class ReplicaPairDrillArgs {
     );
   }
 }
+

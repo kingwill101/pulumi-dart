@@ -11,10 +11,14 @@ class GetPartnerAttachmentServiceKeyArgs {
 
   /// Creates a new [GetPartnerAttachmentServiceKeyArgs].
   /// [attachmentId] Required.
-  GetPartnerAttachmentServiceKeyArgs({required this.attachmentId});
+  GetPartnerAttachmentServiceKeyArgs({
+    required this.attachmentId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'attachmentId': attachmentId};
+    return <String, dynamic>{
+      'attachmentId': attachmentId,
+    };
   }
 
   factory GetPartnerAttachmentServiceKeyArgs.fromMap(Map<String, dynamic> map) {
@@ -23,3 +27,4 @@ class GetPartnerAttachmentServiceKeyArgs {
     );
   }
 }
+

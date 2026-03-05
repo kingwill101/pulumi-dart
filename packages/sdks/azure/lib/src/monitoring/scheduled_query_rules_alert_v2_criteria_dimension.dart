@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScheduledQueryRulesAlertV2CriteriaDimension {
   /// Name of the dimension.
   final pulumi.Input<String> name;
-
   /// Operator for dimension values. Possible values are `Exclude`,and `Include`.
   final pulumi.Input<String> operator;
-
   /// List of dimension values. Use a wildcard `*` to collect all.
   final pulumi.Input<List<String>> values;
 
@@ -30,9 +28,7 @@ class ScheduledQueryRulesAlertV2CriteriaDimension {
     };
   }
 
-  factory ScheduledQueryRulesAlertV2CriteriaDimension.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ScheduledQueryRulesAlertV2CriteriaDimension.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryRulesAlertV2CriteriaDimension(
       name: pulumi.Input.fromValue(map['name'] as String),
       operator: pulumi.Input.fromValue(map['operator'] as String),
@@ -40,3 +36,4 @@ class ScheduledQueryRulesAlertV2CriteriaDimension {
     );
   }
 }
+

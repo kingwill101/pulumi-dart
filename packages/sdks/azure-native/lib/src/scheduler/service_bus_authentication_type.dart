@@ -15,3 +15,4 @@ enum ServiceBusAuthenticationType {
     throw ArgumentError('Unknown ServiceBusAuthenticationType value: $value');
   }
 }
+

@@ -13,59 +13,40 @@ import 'private_link_service_properties_response_visibility.dart';
 class GetPrivateLinkServiceResult {
   /// The alias of the private link service.
   final String alias;
-
   /// The auto-approval list of the private link service.
   final PrivateLinkServicePropertiesResponseAutoApproval? autoApproval;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The destination IP address of the private link service.
   final String? destinationIPAddress;
-
   /// Whether the private link service is enabled for proxy protocol or not.
   final bool? enableProxyProtocol;
-
   /// A unique read-only string that changes whenever the resource is updated.
   final String etag;
-
   /// The extended location of the load balancer.
   final ExtendedLocationResponse? extendedLocation;
-
   /// The list of Fqdn.
   final List<String>? fqdns;
-
   /// Resource ID.
   final String? id;
-
   /// An array of private link service IP configurations.
   final List<PrivateLinkServiceIpConfigurationResponse>? ipConfigurations;
-
   /// An array of references to the load balancer IP configurations.
-  final List<FrontendIPConfigurationResponse>?
-  loadBalancerFrontendIpConfigurations;
-
+  final List<FrontendIPConfigurationResponse>? loadBalancerFrontendIpConfigurations;
   /// Resource location.
   final String? location;
-
   /// Resource name.
   final String name;
-
   /// An array of references to the network interfaces created for this private link service.
   final List<NetworkInterfaceResponse> networkInterfaces;
-
   /// An array of list about connections to the private endpoint.
   final List<PrivateEndpointConnectionResponse> privateEndpointConnections;
-
   /// The provisioning state of the private link service resource.
   final String provisioningState;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// Resource type.
   final String type;
-
   /// The visibility list of the private link service.
   final PrivateLinkServicePropertiesResponseVisibility? visibility;
 
@@ -122,34 +103,12 @@ class GetPrivateLinkServiceResult {
       'extendedLocation': ?extendedLocation?.toMap(),
       'fqdns': ?fqdns,
       'id': ?id,
-      'ipConfigurations': ?(() {
-        final guardedValue = ipConfigurations;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          PrivateLinkServiceIpConfigurationResponse,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
-      'loadBalancerFrontendIpConfigurations': ?(() {
-        final guardedValue = loadBalancerFrontendIpConfigurations;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          FrontendIPConfigurationResponse,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'ipConfigurations': ?(() { final guardedValue = ipConfigurations; if (guardedValue == null) return null; return pulumi.Input.encodeList<PrivateLinkServiceIpConfigurationResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'loadBalancerFrontendIpConfigurations': ?(() { final guardedValue = loadBalancerFrontendIpConfigurations; if (guardedValue == null) return null; return pulumi.Input.encodeList<FrontendIPConfigurationResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'location': ?location,
       'name': name,
-      'networkInterfaces':
-          pulumi.Input.encodeList<
-            NetworkInterfaceResponse,
-            Map<String, dynamic>
-          >(networkInterfaces, (value) => value.toMap()),
-      'privateEndpointConnections':
-          pulumi.Input.encodeList<
-            PrivateEndpointConnectionResponse,
-            Map<String, dynamic>
-          >(privateEndpointConnections, (value) => value.toMap()),
+      'networkInterfaces': pulumi.Input.encodeList<NetworkInterfaceResponse, Map<String, dynamic>>(networkInterfaces, (value) => value.toMap()),
+      'privateEndpointConnections': pulumi.Input.encodeList<PrivateEndpointConnectionResponse, Map<String, dynamic>>(privateEndpointConnections, (value) => value.toMap()),
       'provisioningState': provisioningState,
       'tags': ?tags,
       'type': type,
@@ -160,96 +119,25 @@ class GetPrivateLinkServiceResult {
   factory GetPrivateLinkServiceResult.fromMap(Map<String, dynamic> map) {
     return GetPrivateLinkServiceResult(
       alias: map['alias'] as String,
-      autoApproval: (() {
-        final guardedValue = map['autoApproval'];
-        if (guardedValue == null) return null;
-        return PrivateLinkServicePropertiesResponseAutoApproval.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      autoApproval: (() { final guardedValue = map['autoApproval']; if (guardedValue == null) return null; return PrivateLinkServicePropertiesResponseAutoApproval.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       azureApiVersion: map['azureApiVersion'] as String,
-      destinationIPAddress: (() {
-        final guardedValue = map['destinationIPAddress'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      enableProxyProtocol: (() {
-        final guardedValue = map['enableProxyProtocol'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      destinationIPAddress: (() { final guardedValue = map['destinationIPAddress']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      enableProxyProtocol: (() { final guardedValue = map['enableProxyProtocol']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       etag: map['etag'] as String,
-      extendedLocation: (() {
-        final guardedValue = map['extendedLocation'];
-        if (guardedValue == null) return null;
-        return ExtendedLocationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      fqdns: (() {
-        final guardedValue = map['fqdns'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      ipConfigurations: (() {
-        final guardedValue = map['ipConfigurations'];
-        if (guardedValue == null) return null;
-        return pulumi
-            .Input.decodeList<PrivateLinkServiceIpConfigurationResponse>(
-          guardedValue,
-          (value) => PrivateLinkServiceIpConfigurationResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      loadBalancerFrontendIpConfigurations: (() {
-        final guardedValue = map['loadBalancerFrontendIpConfigurations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<FrontendIPConfigurationResponse>(
-          guardedValue,
-          (value) => FrontendIPConfigurationResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      fqdns: (() { final guardedValue = map['fqdns']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ipConfigurations: (() { final guardedValue = map['ipConfigurations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateLinkServiceIpConfigurationResponse>(guardedValue, (value) => PrivateLinkServiceIpConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      loadBalancerFrontendIpConfigurations: (() { final guardedValue = map['loadBalancerFrontendIpConfigurations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrontendIPConfigurationResponse>(guardedValue, (value) => FrontendIPConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
-      networkInterfaces: pulumi.Input.decodeList<NetworkInterfaceResponse>(
-        map['networkInterfaces']!,
-        (value) => NetworkInterfaceResponse.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      privateEndpointConnections:
-          pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(
-            map['privateEndpointConnections']!,
-            (value) => PrivateEndpointConnectionResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      networkInterfaces: pulumi.Input.decodeList<NetworkInterfaceResponse>(map['networkInterfaces']!, (value) => NetworkInterfaceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      privateEndpointConnections: pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(map['privateEndpointConnections']!, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
       provisioningState: map['provisioningState'] as String,
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
-      visibility: (() {
-        final guardedValue = map['visibility'];
-        if (guardedValue == null) return null;
-        return PrivateLinkServicePropertiesResponseVisibility.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      visibility: (() { final guardedValue = map['visibility']; if (guardedValue == null) return null; return PrivateLinkServicePropertiesResponseVisibility.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }
 }
+

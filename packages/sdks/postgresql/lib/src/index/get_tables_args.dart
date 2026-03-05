@@ -9,24 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTablesArgs {
   /// The PostgreSQL database which will be queried for table names.
   final pulumi.Input<String> database;
-
   /// List of expressions which will be pattern matched against table names in the query using the PostgreSQL ``LIKE ALL`` operators.
   final pulumi.Input<List<String>>? likeAllPatterns;
-
   /// List of expressions which will be pattern matched against table names in the query using the PostgreSQL ``LIKE ANY`` operators.
   final pulumi.Input<List<String>>? likeAnyPatterns;
-
   /// List of expressions which will be pattern matched against table names in the query using the PostgreSQL ``NOT LIKE ALL`` operators.
   final pulumi.Input<List<String>>? notLikeAllPatterns;
-
   /// Expression which will be pattern matched against table names in the query using the PostgreSQL ``~`` (regular expression match) operator.
   ///
   /// Note that all optional arguments can be used in conjunction.
   final pulumi.Input<String>? regexPattern;
-
   /// List of PostgreSQL schema(s) which will be queried for table names. Queries all schemas in the database by default.
   final pulumi.Input<List<String>>? schemas;
-
   /// List of PostgreSQL table types which will be queried for table names. Includes all table types by default (including views and temp tables). Use 'BASE TABLE' for normal tables only.
   final pulumi.Input<List<String>>? tableTypes;
 
@@ -63,36 +57,13 @@ class GetTablesArgs {
   factory GetTablesArgs.fromMap(Map<String, dynamic> map) {
     return GetTablesArgs(
       database: pulumi.Input.fromValue(map['database'] as String),
-      likeAllPatterns: (() {
-        final guardedValue = map['likeAllPatterns'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      likeAnyPatterns: (() {
-        final guardedValue = map['likeAnyPatterns'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      notLikeAllPatterns: (() {
-        final guardedValue = map['notLikeAllPatterns'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      regexPattern: (() {
-        final guardedValue = map['regexPattern'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      schemas: (() {
-        final guardedValue = map['schemas'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      tableTypes: (() {
-        final guardedValue = map['tableTypes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      likeAllPatterns: (() { final guardedValue = map['likeAllPatterns']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      likeAnyPatterns: (() { final guardedValue = map['likeAnyPatterns']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      notLikeAllPatterns: (() { final guardedValue = map['notLikeAllPatterns']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      regexPattern: (() { final guardedValue = map['regexPattern']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      schemas: (() { final guardedValue = map['schemas']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      tableTypes: (() { final guardedValue = map['tableTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

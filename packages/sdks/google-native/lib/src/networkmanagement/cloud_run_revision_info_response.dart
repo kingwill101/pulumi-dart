@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CloudRunRevisionInfoResponse {
   /// Name of a Cloud Run revision.
   final pulumi.Input<String> displayName;
-
   /// Location in which this revision is deployed.
   final pulumi.Input<String> location;
-
   /// URI of Cloud Run service this revision belongs to.
   final pulumi.Input<String> serviceUri;
-
   /// URI of a Cloud Run revision.
   final pulumi.Input<String> uri;
 
@@ -46,3 +43,4 @@ class CloudRunRevisionInfoResponse {
     );
   }
 }
+

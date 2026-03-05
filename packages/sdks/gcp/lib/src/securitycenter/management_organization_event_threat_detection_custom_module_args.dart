@@ -10,20 +10,15 @@ class ManagementOrganizationEventThreatDetectionCustomModuleArgs {
   /// Config for the module. For the resident module, its config value is defined at this level.
   /// For the inherited module, its config value is inherited from the ancestor module.
   final pulumi.Input<String>? config;
-
   /// The human readable name to be displayed for the module.
   final pulumi.Input<String>? displayName;
-
   /// The state of enablement for the module at the given level of the hierarchy.
   /// Possible values are: `ENABLED`, `DISABLED`.
   final pulumi.Input<String>? enablementState;
-
   /// Location ID of the parent organization. Only global is supported at the moment.
   final pulumi.Input<String>? location;
-
   /// Numerical ID of the parent organization.
   final pulumi.Input<String> organization;
-
   /// Immutable. Type for the module. e.g. CONFIGURABLE_BAD_IP.
   final pulumi.Input<String>? type;
 
@@ -54,36 +49,15 @@ class ManagementOrganizationEventThreatDetectionCustomModuleArgs {
     };
   }
 
-  factory ManagementOrganizationEventThreatDetectionCustomModuleArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ManagementOrganizationEventThreatDetectionCustomModuleArgs.fromMap(Map<String, dynamic> map) {
     return ManagementOrganizationEventThreatDetectionCustomModuleArgs(
-      config: (() {
-        final guardedValue = map['config'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      enablementState: (() {
-        final guardedValue = map['enablementState'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      config: (() { final guardedValue = map['config']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      enablementState: (() { final guardedValue = map['enablementState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       organization: pulumi.Input.fromValue(map['organization'] as String),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

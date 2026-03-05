@@ -7,49 +7,34 @@ import 'watchlist_user_info_response.dart';
 class GetWatchlistItemResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The time the watchlist item was created
   final String? created;
-
   /// Describes a user that created the watchlist item
   final WatchlistUserInfoResponse? createdBy;
-
   /// key-value pairs for a watchlist item entity mapping
   final dynamic entityMapping;
-
   /// Etag of the azure resource
   final String? etag;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// A flag that indicates if the watchlist item is deleted or not
   final bool? isDeleted;
-
   /// key-value pairs for a watchlist item
   final dynamic itemsKeyValue;
-
   /// The name of the resource
   final String name;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The tenantId to which the watchlist item belongs to
   final String? tenantId;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
-
   /// The last time the watchlist item was updated
   final String? updated;
-
   /// Describes a user that updated the watchlist item
   final WatchlistUserInfoResponse? updatedBy;
-
   /// The id (a Guid) of the watchlist item
   final String? watchlistItemId;
-
   /// The type of the watchlist item
   final String? watchlistItemType;
 
@@ -113,67 +98,22 @@ class GetWatchlistItemResult {
   factory GetWatchlistItemResult.fromMap(Map<String, dynamic> map) {
     return GetWatchlistItemResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      created: (() {
-        final guardedValue = map['created'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      createdBy: (() {
-        final guardedValue = map['createdBy'];
-        if (guardedValue == null) return null;
-        return WatchlistUserInfoResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      entityMapping: (() {
-        final guardedValue = map['entityMapping'];
-        if (guardedValue == null) return null;
-        return guardedValue;
-      })(),
-      etag: (() {
-        final guardedValue = map['etag'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      created: (() { final guardedValue = map['created']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      createdBy: (() { final guardedValue = map['createdBy']; if (guardedValue == null) return null; return WatchlistUserInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      entityMapping: (() { final guardedValue = map['entityMapping']; if (guardedValue == null) return null; return guardedValue; })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
-      isDeleted: (() {
-        final guardedValue = map['isDeleted'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      isDeleted: (() { final guardedValue = map['isDeleted']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       itemsKeyValue: map['itemsKeyValue'],
       name: map['name'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tenantId: (() {
-        final guardedValue = map['tenantId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       type: map['type'] as String,
-      updated: (() {
-        final guardedValue = map['updated'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      updatedBy: (() {
-        final guardedValue = map['updatedBy'];
-        if (guardedValue == null) return null;
-        return WatchlistUserInfoResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      watchlistItemId: (() {
-        final guardedValue = map['watchlistItemId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      watchlistItemType: (() {
-        final guardedValue = map['watchlistItemType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      updated: (() { final guardedValue = map['updated']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updatedBy: (() { final guardedValue = map['updatedBy']; if (guardedValue == null) return null; return WatchlistUserInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      watchlistItemId: (() { final guardedValue = map['watchlistItemId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      watchlistItemType: (() { final guardedValue = map['watchlistItemType']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

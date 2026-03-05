@@ -462,176 +462,120 @@ import 'application_update_strategy_v2.dart';
 class Application extends pulumi.CustomResource {
   /// The ARN of the RAM role required when pulling images across accounts. Only necessary if the image_url is pointing to an ACR EE instance.
   late final pulumi.Output<String> acrAssumeRoleArn;
-
   /// The ID of the ACR EE instance. Only necessary if the image_url is pointing to an ACR EE instance.
   late final pulumi.Output<String?> acrInstanceId;
-
   /// Application description information. No more than 1024 characters. **NOTE:** From version 1.211.0, `app_description` can be modified.
   late final pulumi.Output<String?> appDescription;
-
   /// Application Name. Combinations of numbers, letters, and dashes (-) are allowed. It must start with a letter and the maximum length is 36 characters.
   late final pulumi.Output<String> appName;
-
   /// The auto config. Valid values: `true`, `false`.
   late final pulumi.Output<bool?> autoConfig;
-
   /// The auto enable application scaling rule. Valid values: `true`, `false`.
   late final pulumi.Output<bool?> autoEnableApplicationScalingRule;
-
   /// The batch wait time.
   late final pulumi.Output<int> batchWaitTime;
-
   /// The change order desc.
   late final pulumi.Output<String?> changeOrderDesc;
-
   /// Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
   late final pulumi.Output<String?> command;
-
   /// Mirror startup command parameters. The parameters required for the above start command. For example: 1d. **NOTE:** Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.
   late final pulumi.Output<String> commandArgs;
-
   /// The parameters of the image startup command.
   late final pulumi.Output<List<String>> commandArgsV2s;
-
   /// ConfigMap mount description. **NOTE:** Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.
   late final pulumi.Output<String> configMapMountDesc;
-
   /// The description of the ConfigMap that is mounted to the application. A ConfigMap that is created on the ConfigMaps page of a namespace is used to inject configurations into containers. See `config_map_mount_desc_v2` below.
   late final pulumi.Output<List<Map<String, dynamic>>> configMapMountDescV2s;
-
   /// The CPU required for each instance, in millicores, cannot be 0. Valid values: `500`, `1000`, `2000`, `4000`, `8000`, `16000`, `32000`.
   late final pulumi.Output<int?> cpu;
-
   /// Custom host mapping in the container. For example: [{`hostName`:`samplehost`,`ip`:`127.0.0.1`}]. **NOTE:** Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.
   late final pulumi.Output<String> customHostAlias;
-
   /// The custom mapping between the hostname and IP address in the container. See `custom_host_alias_v2` below.
   late final pulumi.Output<List<Map<String, dynamic>>> customHostAliasV2s;
-
   /// The deploy. Valid values: `true`, `false`.
   late final pulumi.Output<bool?> deploy;
-
   /// The operating environment used by the Pandora application.
   late final pulumi.Output<String?> edasContainerVersion;
-
   /// The enable ahas. Valid values: `true`, `false`.
   late final pulumi.Output<String> enableAhas;
-
   /// The enable grey tag route. Default value: `false`. Valid values:
   late final pulumi.Output<bool> enableGreyTagRoute;
-
   /// Container environment variable parameters. For example,`	[{"name":"envtmp","value":"0"}]`. The value description is as follows:
   late final pulumi.Output<String> envs;
-
   /// The ID of the corresponding Secret.
   late final pulumi.Output<String?> imagePullSecrets;
-
   /// Mirror address. Only Image type applications can configure the mirror address.
   late final pulumi.Output<String?> imageUrl;
-
   /// The JAR package starts application parameters. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
   late final pulumi.Output<String?> jarStartArgs;
-
   /// The JAR package starts the application option. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
   late final pulumi.Output<String?> jarStartOptions;
-
   /// The JDK version that the deployment package depends on. Image type applications are not supported.
   late final pulumi.Output<String?> jdk;
-
   /// The logging configurations of ApsaraMQ for Kafka. See `kafka_configs` below.
   late final pulumi.Output<ApplicationKafkaConfigs?> kafkaConfigs;
-
   /// Container health check. Containers that fail the health check will be shut down and restored. Currently, only the method of issuing commands in the container is supported.
   /// **NOTE:** Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.
   late final pulumi.Output<String> liveness;
-
   /// The liveness check settings of the container. See `liveness_v2` below.
   late final pulumi.Output<ApplicationLivenessV2> livenessV2;
-
   /// The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU. Valid values: `1024`, `2048`, `4096`, `8192`, `12288`, `16384`, `24576`, `32768`, `65536`, `131072`.
   late final pulumi.Output<int?> memory;
-
   /// Select the Nacos registry. Valid values: `0`, `1`, `2`.
   late final pulumi.Output<String> microRegistration;
-
   /// Minimum Survival Instance Percentage. **NOTE:** When `min_ready_instances` and `min_ready_instance_ratio` are passed at the same time, and the value of `min_ready_instance_ratio` is not -1, the `min_ready_instance_ratio` parameter shall prevail. Assuming that `min_ready_instances` is 5 and `min_ready_instance_ratio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
   /// * `-1`: Initialization value, indicating that percentages are not used.
   /// * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
   late final pulumi.Output<int> minReadyInstanceRatio;
-
   /// The Minimum Available Instance. On the Change Had Promised during the Available Number of Instances to Be.
   late final pulumi.Output<int> minReadyInstances;
-
   /// SAE namespace ID. Only namespaces whose names are lowercase letters and dashes (-) are supported, and must start with a letter. The namespace can be obtained by calling the DescribeNamespaceList interface.
   late final pulumi.Output<String?> namespaceId;
-
   /// The configurations for mounting the NAS file system. See `nas_configs` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> nasConfigs;
-
   /// OSS AccessKey ID.
   late final pulumi.Output<String?> ossAkId;
-
   /// OSS  AccessKey Secret.
   late final pulumi.Output<String?> ossAkSecret;
-
   /// OSS mount description information. **NOTE:** Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.
   late final pulumi.Output<String> ossMountDescs;
-
   /// The description of the mounted Object Storage Service (OSS) bucket. See `oss_mount_descs_v2` below.
   late final pulumi.Output<List<Map<String, dynamic>>> ossMountDescsV2s;
-
   /// Application package type. Valid values: `FatJar`, `War`, `Image`, `PhpZip`, `IMAGE_PHP_5_4`, `IMAGE_PHP_5_4_ALPINE`, `IMAGE_PHP_5_5`, `IMAGE_PHP_5_5_ALPINE`, `IMAGE_PHP_5_6`, `IMAGE_PHP_5_6_ALPINE`, `IMAGE_PHP_7_0`, `IMAGE_PHP_7_0_ALPINE`, `IMAGE_PHP_7_1`, `IMAGE_PHP_7_1_ALPINE`, `IMAGE_PHP_7_2`, `IMAGE_PHP_7_2_ALPINE`, `IMAGE_PHP_7_3`, `IMAGE_PHP_7_3_ALPINE`, `PythonZip`.
   late final pulumi.Output<String> packageType;
-
   /// Deployment package address. Only FatJar or War type applications can configure the deployment package address.
   late final pulumi.Output<String?> packageUrl;
-
   /// The version number of the deployment package. Required when the Package Type is War and FatJar.
   late final pulumi.Output<String> packageVersion;
-
   /// The Php environment.
   late final pulumi.Output<String?> php;
-
   /// The PHP application monitors the mount path, and you need to ensure that the PHP server will load the configuration file of this path. You don't need to pay attention to the configuration content, SAE will automatically render the correct configuration file.
   late final pulumi.Output<String> phpArmsConfigLocation;
-
   /// PHP configuration file content.
   late final pulumi.Output<String?> phpConfig;
-
   /// PHP application startup configuration mount path, you need to ensure that the PHP server will start using this configuration file.
   late final pulumi.Output<String?> phpConfigLocation;
-
   /// Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}. **NOTE:** Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.
   late final pulumi.Output<String> postStart;
-
   /// The script that is run immediately after the container is started. See `post_start_v2` below.
   late final pulumi.Output<ApplicationPostStartV2> postStartV2;
-
   /// Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}. **NOTE:** Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.
   late final pulumi.Output<String> preStop;
-
   /// The script that is run before the container is stopped. See `pre_stop_v2` below.
   late final pulumi.Output<ApplicationPreStopV2> preStopV2;
-
   /// The programming language that is used to create the application. Valid values: `java`, `php`, `other`.
   late final pulumi.Output<String> programmingLanguage;
-
   /// The configurations of Kubernetes Service-based service registration and discovery. See `pvtz_discovery_svc` below.
   late final pulumi.Output<ApplicationPvtzDiscoverySvc?> pvtzDiscoverySvc;
-
   /// Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`exec`:{`command`:[`sh`,"-c","cat /home/admin/start.sh"]},`initialDelaySeconds`:30,`periodSeconds`:30,"timeoutSeconds ":2}. Valid values: `command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
   /// **NOTE:** Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.
   late final pulumi.Output<String> readiness;
-
   /// The readiness check settings of the container. If a container fails this health check multiple times, the container is stopped and then restarted. See `readiness_v2` below.
   late final pulumi.Output<ApplicationReadinessV2> readinessV2;
-
   /// Initial number of instances.
   late final pulumi.Output<int> replicas;
-
   /// Security group ID.
   late final pulumi.Output<String> securityGroupId;
-
   /// Configuration for log collection to SLS. Valid parameter descriptions are as follows:
   /// * `projectName`: Configures the project name on SLS.
   /// * `logDir`: Path to the logs.
@@ -645,41 +589,29 @@ class Application extends pulumi.CustomResource {
   ///
   /// **NOTE:** Projects that are automatically created with applications will be deleted along with the application deletion. Therefore, when selecting existing projects, you cannot choose projects automatically created by SAE.
   late final pulumi.Output<String?> slsConfigs;
-
   /// The status of the resource. Valid values: `RUNNING`, `STOPPED`, `UNKNOWN`.
   late final pulumi.Output<String> status;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Graceful offline timeout, the default is 30, the unit is seconds. The value range is 1~60. Valid values: [1,60].
   late final pulumi.Output<int> terminationGracePeriodSeconds;
-
   /// Time zone. Default value: `Asia/Shanghai`.
   late final pulumi.Output<String> timezone;
-
   /// Tomcat file configuration, set to "{}" means to delete the configuration:  useDefaultConfig: Whether to use a custom configuration, if it is true, it means that the custom configuration is not used; if it is false, it means that the custom configuration is used. If you do not use custom configuration, the following parameter configuration will not take effect.  contextInputType: Select the access path of the application.  war: No need to fill in the custom path, the access path of the application is the WAR package name. root: No need to fill in the custom path, the access path of the application is /. custom: You need to fill in the custom path in the custom path below. contextPath: custom path, this parameter only needs to be configured when the contextInputType type is custom.  httpPort: The port range is 1024~65535. Ports less than 1024 need Root permission to operate. Because the container is configured with Admin permissions, please fill in a port greater than 1024. If not configured, the default is 8080. maxThreads: Configure the number of connections in the connection pool, the default size is 400. uriEncoding: Tomcat encoding format, including UTF-8, ISO-8859-1, GBK and GB2312. If not set, the default is ISO-8859-1. useBodyEncoding: Whether to use BodyEncoding for URL. Valid values: `contextInputType`, `contextPath`, `httpPort`, `maxThreads`, `uriEncoding`, `useBodyEncoding`, `useDefaultConfig`.
   /// **NOTE:** Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.
   late final pulumi.Output<String> tomcatConfig;
-
   /// The Tomcat configuration. See `tomcat_config_v2` below.
   late final pulumi.Output<ApplicationTomcatConfigV2> tomcatConfigV2;
-
   /// The update strategy. **NOTE:** Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.
   late final pulumi.Output<String> updateStrategy;
-
   /// The release policy. See `update_strategy_v2` below.
   late final pulumi.Output<ApplicationUpdateStrategyV2> updateStrategyV2;
-
   /// The vpc id.
   late final pulumi.Output<String?> vpcId;
-
   /// The vswitch id. **NOTE:** From version 1.211.0, `vswitch_id` can be modified.
   late final pulumi.Output<String?> vswitchId;
-
   /// WAR package launch application option. Application default startup command: java $JAVA_OPTS $CATALINA_OPTS [-Options] org.apache.catalina.startup.Bootstrap "$@" start.
   late final pulumi.Output<String?> warStartOptions;
-
   /// The version of tomcat that the deployment package depends on. Image type applications are not supported.
   late final pulumi.Output<String?> webContainer;
 
@@ -692,33 +624,27 @@ class Application extends pulumi.CustomResource {
     ApplicationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:sae/application:Application',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:sae/application:Application',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     acrAssumeRoleArn = registerOutput<String>('acrAssumeRoleArn');
     acrInstanceId = registerOutput<String?>('acrInstanceId');
     appDescription = registerOutput<String?>('appDescription');
     appName = registerOutput<String>('appName');
     autoConfig = registerOutput<bool?>('autoConfig');
-    autoEnableApplicationScalingRule = registerOutput<bool?>(
-      'autoEnableApplicationScalingRule',
-    );
+    autoEnableApplicationScalingRule = registerOutput<bool?>('autoEnableApplicationScalingRule');
     batchWaitTime = registerOutput<int>('batchWaitTime');
     changeOrderDesc = registerOutput<String?>('changeOrderDesc');
     command = registerOutput<String?>('command');
     commandArgs = registerOutput<String>('commandArgs');
     commandArgsV2s = registerOutput<List<String>>('commandArgsV2s');
     configMapMountDesc = registerOutput<String>('configMapMountDesc');
-    configMapMountDescV2s = registerOutput<List<Map<String, dynamic>>>(
-      'configMapMountDescV2s',
-    );
+    configMapMountDescV2s = registerOutput<List<Map<String, dynamic>>>('configMapMountDescV2s');
     cpu = registerOutput<int?>('cpu');
     customHostAlias = registerOutput<String>('customHostAlias');
-    customHostAliasV2s = registerOutput<List<Map<String, dynamic>>>(
-      'customHostAliasV2s',
-    );
+    customHostAliasV2s = registerOutput<List<Map<String, dynamic>>>('customHostAliasV2s');
     deploy = registerOutput<bool?>('deploy');
     edasContainerVersion = registerOutput<String?>('edasContainerVersion');
     enableAhas = registerOutput<String>('enableAhas');
@@ -729,27 +655,9 @@ class Application extends pulumi.CustomResource {
     jarStartArgs = registerOutput<String?>('jarStartArgs');
     jarStartOptions = registerOutput<String?>('jarStartOptions');
     jdk = registerOutput<String?>('jdk');
-    kafkaConfigs = registerOutput<ApplicationKafkaConfigs?>(
-      'kafkaConfigs',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApplicationKafkaConfigs.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    kafkaConfigs = registerOutput<ApplicationKafkaConfigs?>('kafkaConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationKafkaConfigs.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     liveness = registerOutput<String>('liveness');
-    livenessV2 = registerOutput<ApplicationLivenessV2>(
-      'livenessV2',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApplicationLivenessV2.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    livenessV2 = registerOutput<ApplicationLivenessV2>('livenessV2', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationLivenessV2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     memory = registerOutput<int?>('memory');
     microRegistration = registerOutput<String>('microRegistration');
     minReadyInstanceRatio = registerOutput<int>('minReadyInstanceRatio');
@@ -759,9 +667,7 @@ class Application extends pulumi.CustomResource {
     ossAkId = registerOutput<String?>('ossAkId');
     ossAkSecret = registerOutput<String?>('ossAkSecret');
     ossMountDescs = registerOutput<String>('ossMountDescs');
-    ossMountDescsV2s = registerOutput<List<Map<String, dynamic>>>(
-      'ossMountDescsV2s',
-    );
+    ossMountDescsV2s = registerOutput<List<Map<String, dynamic>>>('ossMountDescsV2s');
     packageType = registerOutput<String>('packageType');
     packageUrl = registerOutput<String?>('packageUrl');
     packageVersion = registerOutput<String>('packageVersion');
@@ -770,80 +676,24 @@ class Application extends pulumi.CustomResource {
     phpConfig = registerOutput<String?>('phpConfig');
     phpConfigLocation = registerOutput<String?>('phpConfigLocation');
     postStart = registerOutput<String>('postStart');
-    postStartV2 = registerOutput<ApplicationPostStartV2>(
-      'postStartV2',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApplicationPostStartV2.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    postStartV2 = registerOutput<ApplicationPostStartV2>('postStartV2', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationPostStartV2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     preStop = registerOutput<String>('preStop');
-    preStopV2 = registerOutput<ApplicationPreStopV2>(
-      'preStopV2',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApplicationPreStopV2.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    preStopV2 = registerOutput<ApplicationPreStopV2>('preStopV2', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationPreStopV2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     programmingLanguage = registerOutput<String>('programmingLanguage');
-    pvtzDiscoverySvc = registerOutput<ApplicationPvtzDiscoverySvc?>(
-      'pvtzDiscoverySvc',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApplicationPvtzDiscoverySvc.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    pvtzDiscoverySvc = registerOutput<ApplicationPvtzDiscoverySvc?>('pvtzDiscoverySvc', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationPvtzDiscoverySvc.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     readiness = registerOutput<String>('readiness');
-    readinessV2 = registerOutput<ApplicationReadinessV2>(
-      'readinessV2',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApplicationReadinessV2.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    readinessV2 = registerOutput<ApplicationReadinessV2>('readinessV2', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationReadinessV2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     replicas = registerOutput<int>('replicas');
     securityGroupId = registerOutput<String>('securityGroupId');
     slsConfigs = registerOutput<String?>('slsConfigs');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
-    terminationGracePeriodSeconds = registerOutput<int>(
-      'terminationGracePeriodSeconds',
-    );
+    terminationGracePeriodSeconds = registerOutput<int>('terminationGracePeriodSeconds');
     timezone = registerOutput<String>('timezone');
     tomcatConfig = registerOutput<String>('tomcatConfig');
-    tomcatConfigV2 = registerOutput<ApplicationTomcatConfigV2>(
-      'tomcatConfigV2',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApplicationTomcatConfigV2.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    tomcatConfigV2 = registerOutput<ApplicationTomcatConfigV2>('tomcatConfigV2', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationTomcatConfigV2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updateStrategy = registerOutput<String>('updateStrategy');
-    updateStrategyV2 = registerOutput<ApplicationUpdateStrategyV2>(
-      'updateStrategyV2',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApplicationUpdateStrategyV2.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    updateStrategyV2 = registerOutput<ApplicationUpdateStrategyV2>('updateStrategyV2', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationUpdateStrategyV2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vpcId = registerOutput<String?>('vpcId');
     vswitchId = registerOutput<String?>('vswitchId');
     warStartOptions = registerOutput<String?>('warStartOptions');
@@ -868,33 +718,27 @@ class Application extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:sae/application:Application',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:sae/application:Application',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     acrAssumeRoleArn = registerOutput<String>('acrAssumeRoleArn');
     acrInstanceId = registerOutput<String?>('acrInstanceId');
     appDescription = registerOutput<String?>('appDescription');
     appName = registerOutput<String>('appName');
     autoConfig = registerOutput<bool?>('autoConfig');
-    autoEnableApplicationScalingRule = registerOutput<bool?>(
-      'autoEnableApplicationScalingRule',
-    );
+    autoEnableApplicationScalingRule = registerOutput<bool?>('autoEnableApplicationScalingRule');
     batchWaitTime = registerOutput<int>('batchWaitTime');
     changeOrderDesc = registerOutput<String?>('changeOrderDesc');
     command = registerOutput<String?>('command');
     commandArgs = registerOutput<String>('commandArgs');
     commandArgsV2s = registerOutput<List<String>>('commandArgsV2s');
     configMapMountDesc = registerOutput<String>('configMapMountDesc');
-    configMapMountDescV2s = registerOutput<List<Map<String, dynamic>>>(
-      'configMapMountDescV2s',
-    );
+    configMapMountDescV2s = registerOutput<List<Map<String, dynamic>>>('configMapMountDescV2s');
     cpu = registerOutput<int?>('cpu');
     customHostAlias = registerOutput<String>('customHostAlias');
-    customHostAliasV2s = registerOutput<List<Map<String, dynamic>>>(
-      'customHostAliasV2s',
-    );
+    customHostAliasV2s = registerOutput<List<Map<String, dynamic>>>('customHostAliasV2s');
     deploy = registerOutput<bool?>('deploy');
     edasContainerVersion = registerOutput<String?>('edasContainerVersion');
     enableAhas = registerOutput<String>('enableAhas');
@@ -905,27 +749,9 @@ class Application extends pulumi.CustomResource {
     jarStartArgs = registerOutput<String?>('jarStartArgs');
     jarStartOptions = registerOutput<String?>('jarStartOptions');
     jdk = registerOutput<String?>('jdk');
-    kafkaConfigs = registerOutput<ApplicationKafkaConfigs?>(
-      'kafkaConfigs',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApplicationKafkaConfigs.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    kafkaConfigs = registerOutput<ApplicationKafkaConfigs?>('kafkaConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationKafkaConfigs.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     liveness = registerOutput<String>('liveness');
-    livenessV2 = registerOutput<ApplicationLivenessV2>(
-      'livenessV2',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApplicationLivenessV2.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    livenessV2 = registerOutput<ApplicationLivenessV2>('livenessV2', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationLivenessV2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     memory = registerOutput<int?>('memory');
     microRegistration = registerOutput<String>('microRegistration');
     minReadyInstanceRatio = registerOutput<int>('minReadyInstanceRatio');
@@ -935,9 +761,7 @@ class Application extends pulumi.CustomResource {
     ossAkId = registerOutput<String?>('ossAkId');
     ossAkSecret = registerOutput<String?>('ossAkSecret');
     ossMountDescs = registerOutput<String>('ossMountDescs');
-    ossMountDescsV2s = registerOutput<List<Map<String, dynamic>>>(
-      'ossMountDescsV2s',
-    );
+    ossMountDescsV2s = registerOutput<List<Map<String, dynamic>>>('ossMountDescsV2s');
     packageType = registerOutput<String>('packageType');
     packageUrl = registerOutput<String?>('packageUrl');
     packageVersion = registerOutput<String>('packageVersion');
@@ -946,80 +770,24 @@ class Application extends pulumi.CustomResource {
     phpConfig = registerOutput<String?>('phpConfig');
     phpConfigLocation = registerOutput<String?>('phpConfigLocation');
     postStart = registerOutput<String>('postStart');
-    postStartV2 = registerOutput<ApplicationPostStartV2>(
-      'postStartV2',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApplicationPostStartV2.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    postStartV2 = registerOutput<ApplicationPostStartV2>('postStartV2', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationPostStartV2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     preStop = registerOutput<String>('preStop');
-    preStopV2 = registerOutput<ApplicationPreStopV2>(
-      'preStopV2',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApplicationPreStopV2.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    preStopV2 = registerOutput<ApplicationPreStopV2>('preStopV2', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationPreStopV2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     programmingLanguage = registerOutput<String>('programmingLanguage');
-    pvtzDiscoverySvc = registerOutput<ApplicationPvtzDiscoverySvc?>(
-      'pvtzDiscoverySvc',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApplicationPvtzDiscoverySvc.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    pvtzDiscoverySvc = registerOutput<ApplicationPvtzDiscoverySvc?>('pvtzDiscoverySvc', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationPvtzDiscoverySvc.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     readiness = registerOutput<String>('readiness');
-    readinessV2 = registerOutput<ApplicationReadinessV2>(
-      'readinessV2',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApplicationReadinessV2.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    readinessV2 = registerOutput<ApplicationReadinessV2>('readinessV2', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationReadinessV2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     replicas = registerOutput<int>('replicas');
     securityGroupId = registerOutput<String>('securityGroupId');
     slsConfigs = registerOutput<String?>('slsConfigs');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
-    terminationGracePeriodSeconds = registerOutput<int>(
-      'terminationGracePeriodSeconds',
-    );
+    terminationGracePeriodSeconds = registerOutput<int>('terminationGracePeriodSeconds');
     timezone = registerOutput<String>('timezone');
     tomcatConfig = registerOutput<String>('tomcatConfig');
-    tomcatConfigV2 = registerOutput<ApplicationTomcatConfigV2>(
-      'tomcatConfigV2',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApplicationTomcatConfigV2.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    tomcatConfigV2 = registerOutput<ApplicationTomcatConfigV2>('tomcatConfigV2', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationTomcatConfigV2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updateStrategy = registerOutput<String>('updateStrategy');
-    updateStrategyV2 = registerOutput<ApplicationUpdateStrategyV2>(
-      'updateStrategyV2',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApplicationUpdateStrategyV2.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    updateStrategyV2 = registerOutput<ApplicationUpdateStrategyV2>('updateStrategyV2', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationUpdateStrategyV2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vpcId = registerOutput<String?>('vpcId');
     vswitchId = registerOutput<String?>('vswitchId');
     warStartOptions = registerOutput<String?>('warStartOptions');

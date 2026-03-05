@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecretVersionResponseCloudfunctionsV2alpha {
   /// Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mount_path as '/etc/secrets' and path as `secret_foo` would mount the secret value file at `/etc/secrets/secret_foo`.
   final pulumi.Input<String> path;
-
   /// Version of the secret (version number or the string 'latest'). It is preferable to use `latest` version with secret volumes as secret value changes are reflected immediately.
   final pulumi.Input<String> version;
 
@@ -19,15 +18,17 @@ class SecretVersionResponseCloudfunctionsV2alpha {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'path': path, 'version': version};
+    return <String, dynamic>{
+      'path': path,
+      'version': version,
+    };
   }
 
-  factory SecretVersionResponseCloudfunctionsV2alpha.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SecretVersionResponseCloudfunctionsV2alpha.fromMap(Map<String, dynamic> map) {
     return SecretVersionResponseCloudfunctionsV2alpha(
       path: pulumi.Input.fromValue(map['path'] as String),
       version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
+

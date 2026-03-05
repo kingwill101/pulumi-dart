@@ -8,19 +8,14 @@ import 'subject_response.dart';
 class SubjectDescriptionResponse {
   /// The serial number encoded in lowercase hexadecimal.
   final pulumi.Input<String> hexSerialNumber;
-
   /// For convenience, the actual lifetime of an issued certificate.
   final pulumi.Input<String> lifetime;
-
   /// The time after which the certificate is expired. Per RFC 5280, the validity period for a certificate is the period of time from not_before_time through not_after_time, inclusive. Corresponds to 'not_before_time' + 'lifetime' - 1 second.
   final pulumi.Input<String> notAfterTime;
-
   /// The time at which the certificate becomes valid.
   final pulumi.Input<String> notBeforeTime;
-
   /// Contains distinguished name fields such as the common name, location and / organization.
   final pulumi.Input<SubjectResponse> subject;
-
   /// The subject alternative name fields.
   final pulumi.Input<SubjectAltNamesResponse> subjectAltName;
 
@@ -46,16 +41,8 @@ class SubjectDescriptionResponse {
       'lifetime': lifetime,
       'notAfterTime': notAfterTime,
       'notBeforeTime': notBeforeTime,
-      'subject':
-          pulumi.Input.mapInputValue<SubjectResponse, Map<String, dynamic>>(
-            subject,
-            (value) => value.toMap(),
-          ),
-      'subjectAltName':
-          pulumi.Input.mapInputValue<
-            SubjectAltNamesResponse,
-            Map<String, dynamic>
-          >(subjectAltName, (value) => value.toMap()),
+      'subject': pulumi.Input.mapInputValue<SubjectResponse, Map<String, dynamic>>(subject, (value) => value.toMap()),
+      'subjectAltName': pulumi.Input.mapInputValue<SubjectAltNamesResponse, Map<String, dynamic>>(subjectAltName, (value) => value.toMap()),
     };
   }
 
@@ -65,16 +52,9 @@ class SubjectDescriptionResponse {
       lifetime: pulumi.Input.fromValue(map['lifetime'] as String),
       notAfterTime: pulumi.Input.fromValue(map['notAfterTime'] as String),
       notBeforeTime: pulumi.Input.fromValue(map['notBeforeTime'] as String),
-      subject: pulumi.Input.fromValue(
-        SubjectResponse.fromMap(
-          (map['subject']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      subjectAltName: pulumi.Input.fromValue(
-        SubjectAltNamesResponse.fromMap(
-          (map['subjectAltName']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      subject: pulumi.Input.fromValue(SubjectResponse.fromMap((map['subject']! as Map).cast<String, dynamic>())),
+      subjectAltName: pulumi.Input.fromValue(SubjectAltNamesResponse.fromMap((map['subjectAltName']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

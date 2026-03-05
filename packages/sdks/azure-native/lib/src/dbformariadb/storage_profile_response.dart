@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StorageProfileResponse {
   /// Backup retention days for the server.
   final pulumi.Input<int>? backupRetentionDays;
-
   /// Enable Geo-redundant or not for server backup.
   final pulumi.Input<String>? geoRedundantBackup;
-
   /// Enable Storage Auto Grow.
   final pulumi.Input<String>? storageAutogrow;
-
   /// Max storage allowed for a server.
   final pulumi.Input<int>? storageMB;
 
@@ -39,26 +36,11 @@ class StorageProfileResponse {
 
   factory StorageProfileResponse.fromMap(Map<String, dynamic> map) {
     return StorageProfileResponse(
-      backupRetentionDays: (() {
-        final guardedValue = map['backupRetentionDays'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      geoRedundantBackup: (() {
-        final guardedValue = map['geoRedundantBackup'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      storageAutogrow: (() {
-        final guardedValue = map['storageAutogrow'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      storageMB: (() {
-        final guardedValue = map['storageMB'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      backupRetentionDays: (() { final guardedValue = map['backupRetentionDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      geoRedundantBackup: (() { final guardedValue = map['geoRedundantBackup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageAutogrow: (() { final guardedValue = map['storageAutogrow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageMB: (() { final guardedValue = map['storageMB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

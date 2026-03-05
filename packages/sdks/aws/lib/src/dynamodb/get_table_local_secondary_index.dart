@@ -33,11 +33,10 @@ class GetTableLocalSecondaryIndex {
   factory GetTableLocalSecondaryIndex.fromMap(Map<String, dynamic> map) {
     return GetTableLocalSecondaryIndex(
       name: pulumi.Input.fromValue(map['name'] as String),
-      nonKeyAttributes: pulumi.Input.fromValue(
-        (map['nonKeyAttributes'] as List).cast<String>(),
-      ),
+      nonKeyAttributes: pulumi.Input.fromValue((map['nonKeyAttributes'] as List).cast<String>()),
       projectionType: pulumi.Input.fromValue(map['projectionType'] as String),
       rangeKey: pulumi.Input.fromValue(map['rangeKey'] as String),
     );
   }
 }
+

@@ -14,14 +14,15 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyCustomerContact {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'email': email};
+    return <String, dynamic>{
+      'email': email,
+    };
   }
 
-  factory GetAutonomousDatabasesAutonomousDatabasePropertyCustomerContact.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetAutonomousDatabasesAutonomousDatabasePropertyCustomerContact.fromMap(Map<String, dynamic> map) {
     return GetAutonomousDatabasesAutonomousDatabasePropertyCustomerContact(
       email: pulumi.Input.fromValue(map['email'] as String),
     );
   }
 }
+

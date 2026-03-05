@@ -62,21 +62,20 @@ class JSONPatchAdmissionregistrationK8sIoV1beta1 {
 
   /// Creates a new [JSONPatchAdmissionregistrationK8sIoV1beta1].
   /// [expression] expression will be evaluated by CEL to create a [JSON patch](https://jsonpatch.com/). ref: https://github.com/google/cel-spec
-  JSONPatchAdmissionregistrationK8sIoV1beta1({this.expression});
+  JSONPatchAdmissionregistrationK8sIoV1beta1({
+    this.expression,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'expression': ?expression};
+    return <String, dynamic>{
+      'expression': ?expression,
+    };
   }
 
-  factory JSONPatchAdmissionregistrationK8sIoV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory JSONPatchAdmissionregistrationK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return JSONPatchAdmissionregistrationK8sIoV1beta1(
-      expression: (() {
-        final guardedValue = map['expression'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      expression: (() { final guardedValue = map['expression']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

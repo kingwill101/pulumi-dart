@@ -21,14 +21,11 @@ class GetControlControlMappingSourceSourceKeyword {
     };
   }
 
-  factory GetControlControlMappingSourceSourceKeyword.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetControlControlMappingSourceSourceKeyword.fromMap(Map<String, dynamic> map) {
     return GetControlControlMappingSourceSourceKeyword(
-      keywordInputType: pulumi.Input.fromValue(
-        map['keywordInputType'] as String,
-      ),
+      keywordInputType: pulumi.Input.fromValue(map['keywordInputType'] as String),
       keywordValue: pulumi.Input.fromValue(map['keywordValue'] as String),
     );
   }
 }
+

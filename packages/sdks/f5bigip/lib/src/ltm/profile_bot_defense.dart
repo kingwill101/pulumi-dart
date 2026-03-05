@@ -5,16 +5,12 @@ import 'profile_bot_defense_state.dart';
 class ProfileBotDefense extends pulumi.CustomResource {
   /// Specifies the profile from which this profile inherits settings. The default is the system-supplied `request-log` profile
   late final pulumi.Output<String?> defaultsFrom;
-
   /// User defined description for Bot Defense profile
   late final pulumi.Output<String> description;
-
   /// Select the enforcement mode, possible values are `transparent` and `blocking`.
   late final pulumi.Output<String> enforcementMode;
-
   /// Name of the Bot Defense profile
   late final pulumi.Output<String> name;
-
   /// Profile templates specify Mitigation and Verification Settings default values. possible ptions `balanced`,`relaxed` and `strict`
   late final pulumi.Output<String> template;
 
@@ -27,11 +23,11 @@ class ProfileBotDefense extends pulumi.CustomResource {
     ProfileBotDefenseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:ltm/profileBotDefense:ProfileBotDefense',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:ltm/profileBotDefense:ProfileBotDefense',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     defaultsFrom = registerOutput<String?>('defaultsFrom');
     description = registerOutput<String>('description');
     enforcementMode = registerOutput<String>('enforcementMode');
@@ -57,11 +53,11 @@ class ProfileBotDefense extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:ltm/profileBotDefense:ProfileBotDefense',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:ltm/profileBotDefense:ProfileBotDefense',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     defaultsFrom = registerOutput<String?>('defaultsFrom');
     description = registerOutput<String>('description');
     enforcementMode = registerOutput<String>('enforcementMode');

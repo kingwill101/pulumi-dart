@@ -16,3 +16,4 @@ enum VariableName {
     throw ArgumentError('Unknown VariableName value: $value');
   }
 }
+

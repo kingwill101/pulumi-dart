@@ -6,14 +6,11 @@ class AiReasoningEngineSpecPackageSpec {
   /// Optional. The Cloud Storage URI of the dependency files in tar.gz
   /// format.
   final pulumi.Input<String>? dependencyFilesGcsUri;
-
   /// Optional. The Cloud Storage URI of the pickled python object.
   final pulumi.Input<String>? pickleObjectGcsUri;
-
   /// Optional. The Python version. Currently support 3.8, 3.9, 3.10,
   /// 3.11, 3.12, 3.13. If not specified, default value is 3.10.
   final pulumi.Input<String>? pythonVersion;
-
   /// Optional. The Cloud Storage URI of the requirements.txtfile
   final pulumi.Input<String>? requirementsGcsUri;
 
@@ -40,26 +37,11 @@ class AiReasoningEngineSpecPackageSpec {
 
   factory AiReasoningEngineSpecPackageSpec.fromMap(Map<String, dynamic> map) {
     return AiReasoningEngineSpecPackageSpec(
-      dependencyFilesGcsUri: (() {
-        final guardedValue = map['dependencyFilesGcsUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pickleObjectGcsUri: (() {
-        final guardedValue = map['pickleObjectGcsUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pythonVersion: (() {
-        final guardedValue = map['pythonVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      requirementsGcsUri: (() {
-        final guardedValue = map['requirementsGcsUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dependencyFilesGcsUri: (() { final guardedValue = map['dependencyFilesGcsUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pickleObjectGcsUri: (() { final guardedValue = map['pickleObjectGcsUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pythonVersion: (() { final guardedValue = map['pythonVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      requirementsGcsUri: (() { final guardedValue = map['requirementsGcsUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

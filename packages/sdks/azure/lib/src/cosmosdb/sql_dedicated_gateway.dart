@@ -257,10 +257,8 @@ import 'sql_dedicated_gateway_state.dart';
 class SqlDedicatedGateway extends pulumi.CustomResource {
   /// The resource ID of the CosmosDB Account. Changing this forces a new resource to be created.
   late final pulumi.Output<String> cosmosdbAccountId;
-
   /// The instance count for the CosmosDB SQL Dedicated Gateway. Possible value is between `1` and `5`.
   late final pulumi.Output<int> instanceCount;
-
   /// The instance size for the CosmosDB SQL Dedicated Gateway. Changing this forces a new resource to be created. Possible values are `Cosmos.D4s`, `Cosmos.D8s` and `Cosmos.D16s`.
   late final pulumi.Output<String> instanceSize;
 
@@ -273,11 +271,11 @@ class SqlDedicatedGateway extends pulumi.CustomResource {
     SqlDedicatedGatewayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:cosmosdb/sqlDedicatedGateway:SqlDedicatedGateway',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:cosmosdb/sqlDedicatedGateway:SqlDedicatedGateway',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cosmosdbAccountId = registerOutput<String>('cosmosdbAccountId');
     instanceCount = registerOutput<int>('instanceCount');
     instanceSize = registerOutput<String>('instanceSize');
@@ -301,11 +299,11 @@ class SqlDedicatedGateway extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:cosmosdb/sqlDedicatedGateway:SqlDedicatedGateway',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:cosmosdb/sqlDedicatedGateway:SqlDedicatedGateway',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cosmosdbAccountId = registerOutput<String>('cosmosdbAccountId');
     instanceCount = registerOutput<int>('instanceCount');
     instanceSize = registerOutput<String>('instanceSize');

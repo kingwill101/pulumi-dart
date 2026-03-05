@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IntegrationAccountCertificateKeyVaultKey {
   /// The name of Key Vault Key.
   final pulumi.Input<String> keyName;
-
   /// The ID of the Key Vault.
   final pulumi.Input<String> keyVaultId;
-
   /// The version of Key Vault Key.
   final pulumi.Input<String>? keyVersion;
 
@@ -30,17 +28,12 @@ class IntegrationAccountCertificateKeyVaultKey {
     };
   }
 
-  factory IntegrationAccountCertificateKeyVaultKey.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory IntegrationAccountCertificateKeyVaultKey.fromMap(Map<String, dynamic> map) {
     return IntegrationAccountCertificateKeyVaultKey(
       keyName: pulumi.Input.fromValue(map['keyName'] as String),
       keyVaultId: pulumi.Input.fromValue(map['keyVaultId'] as String),
-      keyVersion: (() {
-        final guardedValue = map['keyVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      keyVersion: (() { final guardedValue = map['keyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

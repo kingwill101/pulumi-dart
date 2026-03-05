@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FilterFilterCriteriaCodeRepositoryProviderType {
   /// (Required) The comparison operator. Valid values: `EQUALS`.
   final pulumi.Input<String> comparison;
-
   /// (Required) The value to filter on.
   final pulumi.Input<String> value;
 
@@ -18,15 +17,17 @@ class FilterFilterCriteriaCodeRepositoryProviderType {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'comparison': comparison, 'value': value};
+    return <String, dynamic>{
+      'comparison': comparison,
+      'value': value,
+    };
   }
 
-  factory FilterFilterCriteriaCodeRepositoryProviderType.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FilterFilterCriteriaCodeRepositoryProviderType.fromMap(Map<String, dynamic> map) {
     return FilterFilterCriteriaCodeRepositoryProviderType(
       comparison: pulumi.Input.fromValue(map['comparison'] as String),
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
+

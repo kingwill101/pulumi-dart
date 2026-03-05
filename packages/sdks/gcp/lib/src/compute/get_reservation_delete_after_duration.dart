@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetReservationDeleteAfterDuration {
   /// Number of nanoseconds for the auto-delete duration.
   final pulumi.Input<int> nanos;
-
   /// Number of seconds for the auto-delete duration.
   final pulumi.Input<String> seconds;
 
@@ -18,7 +17,10 @@ class GetReservationDeleteAfterDuration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'nanos': nanos, 'seconds': seconds};
+    return <String, dynamic>{
+      'nanos': nanos,
+      'seconds': seconds,
+    };
   }
 
   factory GetReservationDeleteAfterDuration.fromMap(Map<String, dynamic> map) {
@@ -28,3 +30,4 @@ class GetReservationDeleteAfterDuration {
     );
   }
 }
+

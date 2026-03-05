@@ -14,8 +14,7 @@ enum RouterNatAutoNetworkTierComputeBeta {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown RouterNatAutoNetworkTierComputeBeta value: $value',
-    );
+    throw ArgumentError('Unknown RouterNatAutoNetworkTierComputeBeta value: $value');
   }
 }
+

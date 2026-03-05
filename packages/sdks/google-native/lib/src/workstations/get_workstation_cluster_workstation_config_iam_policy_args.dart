@@ -37,27 +37,14 @@ class GetWorkstationClusterWorkstationConfigIamPolicyArgs {
     };
   }
 
-  factory GetWorkstationClusterWorkstationConfigIamPolicyArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetWorkstationClusterWorkstationConfigIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkstationClusterWorkstationConfigIamPolicyArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
-      optionsRequestedPolicyVersion: (() {
-        final guardedValue = map['optionsRequestedPolicyVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      workstationClusterId: pulumi.Input.fromValue(
-        map['workstationClusterId'] as String,
-      ),
-      workstationConfigId: pulumi.Input.fromValue(
-        map['workstationConfigId'] as String,
-      ),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      workstationClusterId: pulumi.Input.fromValue(map['workstationClusterId'] as String),
+      workstationConfigId: pulumi.Input.fromValue(map['workstationConfigId'] as String),
     );
   }
 }
+

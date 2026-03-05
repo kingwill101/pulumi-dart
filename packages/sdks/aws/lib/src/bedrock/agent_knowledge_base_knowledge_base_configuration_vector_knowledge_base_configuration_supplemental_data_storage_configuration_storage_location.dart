@@ -5,11 +5,7 @@ import 'agent_knowledge_base_knowledge_base_configuration_vector_knowledge_base_
 
 class AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationSupplementalDataStorageConfigurationStorageLocation {
   /// Contains information about the Amazon S3 location for the extracted images.  See `s3_location` block for details.
-  final pulumi.Input<
-    AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationSupplementalDataStorageConfigurationStorageLocationS3Location
-  >?
-  s3Location;
-
+  final pulumi.Input<AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationSupplementalDataStorageConfigurationStorageLocationS3Location>? s3Location;
   /// Storage service used for this location. `S3` is the only valid value.
   final pulumi.Input<String> type;
 
@@ -23,29 +19,16 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurati
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      's3Location':
-          ?pulumi.Input.mapOptionalInputValue<
-            AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationSupplementalDataStorageConfigurationStorageLocationS3Location,
-            Map<String, dynamic>
-          >(s3Location, (value) => value.toMap()),
+      's3Location': ?pulumi.Input.mapOptionalInputValue<AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationSupplementalDataStorageConfigurationStorageLocationS3Location, Map<String, dynamic>>(s3Location, (value) => value.toMap()),
       'type': type,
     };
   }
 
-  factory AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationSupplementalDataStorageConfigurationStorageLocation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationSupplementalDataStorageConfigurationStorageLocation.fromMap(Map<String, dynamic> map) {
     return AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationSupplementalDataStorageConfigurationStorageLocation(
-      s3Location: (() {
-        final guardedValue = map['s3Location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationSupplementalDataStorageConfigurationStorageLocationS3Location.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      s3Location: (() { final guardedValue = map['s3Location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationSupplementalDataStorageConfigurationStorageLocationS3Location.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

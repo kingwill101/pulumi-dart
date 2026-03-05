@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LanguageModelInputDataConfig {
   /// IAM role with access to S3 bucket.
   final pulumi.Input<String> dataAccessRoleArn;
-
   /// S3 URI where training data is located.
   final pulumi.Input<String> s3Uri;
-
   /// S3 URI where tuning data is located.
   ///
   /// The following arguments are optional:
@@ -34,15 +32,10 @@ class LanguageModelInputDataConfig {
 
   factory LanguageModelInputDataConfig.fromMap(Map<String, dynamic> map) {
     return LanguageModelInputDataConfig(
-      dataAccessRoleArn: pulumi.Input.fromValue(
-        map['dataAccessRoleArn'] as String,
-      ),
+      dataAccessRoleArn: pulumi.Input.fromValue(map['dataAccessRoleArn'] as String),
       s3Uri: pulumi.Input.fromValue(map['s3Uri'] as String),
-      tuningDataS3Uri: (() {
-        final guardedValue = map['tuningDataS3Uri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      tuningDataS3Uri: (() { final guardedValue = map['tuningDataS3Uri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -262,34 +262,24 @@ import 'cluster_extension_state.dart';
 class ClusterExtension extends pulumi.CustomResource {
   /// Specifies the Cluster ID. Changing this forces a new Arc Kubernetes Cluster Extension to be created.
   late final pulumi.Output<String> clusterId;
-
   /// Configuration settings that are sensitive, as name-value pairs for configuring this extension.
   late final pulumi.Output<Map<String, String>?> configurationProtectedSettings;
-
   /// Configuration settings, as name-value pairs for configuring this extension.
   late final pulumi.Output<Map<String, String>?> configurationSettings;
-
   /// The current version of the extension.
   late final pulumi.Output<String> currentVersion;
-
   /// Specifies the type of extension. It must be one of the extension types registered with Microsoft.KubernetesConfiguration by the Extension publisher. For more information, please refer to [Available Extensions for Arc-enabled Kubernetes clusters](https://learn.microsoft.com/en-us/azure/azure-arc/kubernetes/extensions-release). Changing this forces a new Arc Kubernetes Cluster Extension to be created.
   late final pulumi.Output<String> extensionType;
-
   /// An `identity` block as defined below. Changing this forces a new Arc Kubernetes Cluster Extension to be created.
   late final pulumi.Output<ClusterExtensionIdentity> identity;
-
   /// Specifies the name which should be used for this Arc Kubernetes Cluster Extension. Changing this forces a new Arc Kubernetes Cluster Extension to be created.
   late final pulumi.Output<String> name;
-
   /// Namespace where the extension release must be placed for a cluster scoped extension. If this namespace does not exist, it will be created. Changing this forces a new Arc Kubernetes Cluster Extension to be created.
   late final pulumi.Output<String> releaseNamespace;
-
   /// The release train used by this extension. Possible values include but are not limited to `Stable`, `Preview`. Changing this forces a new Arc Kubernetes Cluster Extension to be created.
   late final pulumi.Output<String> releaseTrain;
-
   /// Namespace where the extension will be created for a namespace scoped extension. If this namespace does not exist, it will be created. Changing this forces a new Arc Kubernetes Cluster Extension to be created.
   late final pulumi.Output<String> targetNamespace;
-
   /// User-specified version that the extension should pin to. If it is not set, Azure will use the latest version and auto upgrade it. Changing this forces a new Arc Kubernetes Cluster Extension to be created.
   late final pulumi.Output<String?> version;
 
@@ -302,30 +292,17 @@ class ClusterExtension extends pulumi.CustomResource {
     ClusterExtensionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:arckubernetes/clusterExtension:ClusterExtension',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:arckubernetes/clusterExtension:ClusterExtension',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterId = registerOutput<String>('clusterId');
-    configurationProtectedSettings = registerOutput<Map<String, String>?>(
-      'configurationProtectedSettings',
-    );
-    configurationSettings = registerOutput<Map<String, String>?>(
-      'configurationSettings',
-    );
+    configurationProtectedSettings = registerOutput<Map<String, String>?>('configurationProtectedSettings');
+    configurationSettings = registerOutput<Map<String, String>?>('configurationSettings');
     currentVersion = registerOutput<String>('currentVersion');
     extensionType = registerOutput<String>('extensionType');
-    identity = registerOutput<ClusterExtensionIdentity>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterExtensionIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<ClusterExtensionIdentity>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterExtensionIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     releaseNamespace = registerOutput<String>('releaseNamespace');
     releaseTrain = registerOutput<String>('releaseTrain');
@@ -351,30 +328,17 @@ class ClusterExtension extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:arckubernetes/clusterExtension:ClusterExtension',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:arckubernetes/clusterExtension:ClusterExtension',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterId = registerOutput<String>('clusterId');
-    configurationProtectedSettings = registerOutput<Map<String, String>?>(
-      'configurationProtectedSettings',
-    );
-    configurationSettings = registerOutput<Map<String, String>?>(
-      'configurationSettings',
-    );
+    configurationProtectedSettings = registerOutput<Map<String, String>?>('configurationProtectedSettings');
+    configurationSettings = registerOutput<Map<String, String>?>('configurationSettings');
     currentVersion = registerOutput<String>('currentVersion');
     extensionType = registerOutput<String>('extensionType');
-    identity = registerOutput<ClusterExtensionIdentity>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterExtensionIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<ClusterExtensionIdentity>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterExtensionIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     releaseNamespace = registerOutput<String>('releaseNamespace');
     releaseTrain = registerOutput<String>('releaseTrain');

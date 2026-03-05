@@ -7,10 +7,8 @@ import 'event_endpoint_routing_config_failover_config_secondary.dart';
 class EventEndpointRoutingConfigFailoverConfig {
   /// Parameters used for the primary Region. Documented below.
   final pulumi.Input<EventEndpointRoutingConfigFailoverConfigPrimary> primary;
-
   /// Parameters used for the secondary Region, the Region that events are routed to when failover is triggered or event replication is enabled. Documented below.
-  final pulumi.Input<EventEndpointRoutingConfigFailoverConfigSecondary>
-  secondary;
+  final pulumi.Input<EventEndpointRoutingConfigFailoverConfigSecondary> secondary;
 
   /// Creates a new [EventEndpointRoutingConfigFailoverConfig].
   /// [primary] Parameters used for the primary Region. Documented below.
@@ -22,33 +20,16 @@ class EventEndpointRoutingConfigFailoverConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'primary':
-          pulumi.Input.mapInputValue<
-            EventEndpointRoutingConfigFailoverConfigPrimary,
-            Map<String, dynamic>
-          >(primary, (value) => value.toMap()),
-      'secondary':
-          pulumi.Input.mapInputValue<
-            EventEndpointRoutingConfigFailoverConfigSecondary,
-            Map<String, dynamic>
-          >(secondary, (value) => value.toMap()),
+      'primary': pulumi.Input.mapInputValue<EventEndpointRoutingConfigFailoverConfigPrimary, Map<String, dynamic>>(primary, (value) => value.toMap()),
+      'secondary': pulumi.Input.mapInputValue<EventEndpointRoutingConfigFailoverConfigSecondary, Map<String, dynamic>>(secondary, (value) => value.toMap()),
     };
   }
 
-  factory EventEndpointRoutingConfigFailoverConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EventEndpointRoutingConfigFailoverConfig.fromMap(Map<String, dynamic> map) {
     return EventEndpointRoutingConfigFailoverConfig(
-      primary: pulumi.Input.fromValue(
-        EventEndpointRoutingConfigFailoverConfigPrimary.fromMap(
-          (map['primary']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      secondary: pulumi.Input.fromValue(
-        EventEndpointRoutingConfigFailoverConfigSecondary.fromMap(
-          (map['secondary']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      primary: pulumi.Input.fromValue(EventEndpointRoutingConfigFailoverConfigPrimary.fromMap((map['primary']! as Map).cast<String, dynamic>())),
+      secondary: pulumi.Input.fromValue(EventEndpointRoutingConfigFailoverConfigSecondary.fromMap((map['secondary']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

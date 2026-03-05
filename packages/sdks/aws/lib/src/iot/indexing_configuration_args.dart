@@ -11,14 +11,10 @@ import 'indexing_configuration_thing_indexing_configuration.dart';
 class IndexingConfigurationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Thing group indexing configuration. See below.
-  final pulumi.Input<IndexingConfigurationThingGroupIndexingConfiguration>?
-  thingGroupIndexingConfiguration;
-
+  final pulumi.Input<IndexingConfigurationThingGroupIndexingConfiguration>? thingGroupIndexingConfiguration;
   /// Thing indexing configuration. See below.
-  final pulumi.Input<IndexingConfigurationThingIndexingConfiguration>?
-  thingIndexingConfiguration;
+  final pulumi.Input<IndexingConfigurationThingIndexingConfiguration>? thingIndexingConfiguration;
 
   /// Creates a new [IndexingConfigurationArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -33,44 +29,17 @@ class IndexingConfigurationArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'region': ?region,
-      'thingGroupIndexingConfiguration':
-          ?pulumi.Input.mapOptionalInputValue<
-            IndexingConfigurationThingGroupIndexingConfiguration,
-            Map<String, dynamic>
-          >(thingGroupIndexingConfiguration, (value) => value.toMap()),
-      'thingIndexingConfiguration':
-          ?pulumi.Input.mapOptionalInputValue<
-            IndexingConfigurationThingIndexingConfiguration,
-            Map<String, dynamic>
-          >(thingIndexingConfiguration, (value) => value.toMap()),
+      'thingGroupIndexingConfiguration': ?pulumi.Input.mapOptionalInputValue<IndexingConfigurationThingGroupIndexingConfiguration, Map<String, dynamic>>(thingGroupIndexingConfiguration, (value) => value.toMap()),
+      'thingIndexingConfiguration': ?pulumi.Input.mapOptionalInputValue<IndexingConfigurationThingIndexingConfiguration, Map<String, dynamic>>(thingIndexingConfiguration, (value) => value.toMap()),
     };
   }
 
   factory IndexingConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return IndexingConfigurationArgs(
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      thingGroupIndexingConfiguration: (() {
-        final guardedValue = map['thingGroupIndexingConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          IndexingConfigurationThingGroupIndexingConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      thingIndexingConfiguration: (() {
-        final guardedValue = map['thingIndexingConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          IndexingConfigurationThingIndexingConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      thingGroupIndexingConfiguration: (() { final guardedValue = map['thingGroupIndexingConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IndexingConfigurationThingGroupIndexingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      thingIndexingConfiguration: (() { final guardedValue = map['thingIndexingConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IndexingConfigurationThingIndexingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

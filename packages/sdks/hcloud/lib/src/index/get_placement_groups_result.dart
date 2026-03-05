@@ -8,7 +8,6 @@ class GetPlacementGroupsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final bool? mostRecent;
-
   /// (list) List of all matching placement groups. See `data.hcloud_placement_group` for schema.
   final List<GetPlacementGroupsPlacementGroup> placementGroups;
   final String? withSelector;
@@ -29,11 +28,7 @@ class GetPlacementGroupsResult {
     return <String, dynamic>{
       'id': id,
       'mostRecent': ?mostRecent,
-      'placementGroups':
-          pulumi.Input.encodeList<
-            GetPlacementGroupsPlacementGroup,
-            Map<String, dynamic>
-          >(placementGroups, (value) => value.toMap()),
+      'placementGroups': pulumi.Input.encodeList<GetPlacementGroupsPlacementGroup, Map<String, dynamic>>(placementGroups, (value) => value.toMap()),
       'withSelector': ?withSelector,
     };
   }
@@ -41,23 +36,10 @@ class GetPlacementGroupsResult {
   factory GetPlacementGroupsResult.fromMap(Map<String, dynamic> map) {
     return GetPlacementGroupsResult(
       id: map['id'] as String,
-      mostRecent: (() {
-        final guardedValue = map['mostRecent'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      placementGroups:
-          pulumi.Input.decodeList<GetPlacementGroupsPlacementGroup>(
-            map['placementGroups']!,
-            (value) => GetPlacementGroupsPlacementGroup.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-      withSelector: (() {
-        final guardedValue = map['withSelector'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      mostRecent: (() { final guardedValue = map['mostRecent']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      placementGroups: pulumi.Input.decodeList<GetPlacementGroupsPlacementGroup>(map['placementGroups']!, (value) => GetPlacementGroupsPlacementGroup.fromMap((value as Map).cast<String, dynamic>())),
+      withSelector: (() { final guardedValue = map['withSelector']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

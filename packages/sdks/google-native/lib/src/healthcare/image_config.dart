@@ -10,27 +10,20 @@ class ImageConfig {
 
   /// Creates a new [ImageConfig].
   /// [textRedactionMode] Determines how to redact text from image.
-  ImageConfig({this.textRedactionMode});
+  ImageConfig({
+    this.textRedactionMode,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'textRedactionMode':
-          ?pulumi.Input.mapOptionalInputValue<
-            ImageConfigTextRedactionMode,
-            String
-          >(textRedactionMode, (value) => value.wireValue),
+      'textRedactionMode': ?pulumi.Input.mapOptionalInputValue<ImageConfigTextRedactionMode, String>(textRedactionMode, (value) => value.wireValue),
     };
   }
 
   factory ImageConfig.fromMap(Map<String, dynamic> map) {
     return ImageConfig(
-      textRedactionMode: (() {
-        final guardedValue = map['textRedactionMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ImageConfigTextRedactionMode.fromValue(guardedValue as String),
-        );
-      })(),
+      textRedactionMode: (() { final guardedValue = map['textRedactionMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ImageConfigTextRedactionMode.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

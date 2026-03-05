@@ -351,82 +351,56 @@ import 'watchlist_user_info_response.dart';
 class Watchlist extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The content type of the raw content. Example : text/csv or text/tsv
   late final pulumi.Output<String?> contentType;
-
   /// The time the watchlist was created
   late final pulumi.Output<String?> created;
-
   /// Describes a user that created the watchlist
   late final pulumi.Output<WatchlistUserInfoResponse?> createdBy;
-
   /// The default duration of a watchlist (in ISO 8601 duration format)
   late final pulumi.Output<String?> defaultDuration;
-
   /// A description of the watchlist
   late final pulumi.Output<String?> description;
-
   /// The display name of the watchlist
   late final pulumi.Output<String> displayName;
-
   /// Etag of the azure resource
   late final pulumi.Output<String?> etag;
-
   /// A flag that indicates if the watchlist is deleted or not
   late final pulumi.Output<bool?> isDeleted;
-
   /// The search key is used to optimize query performance when using watchlists for joins with other data. For example, enable a column with IP addresses to be the designated SearchKey field, then use this field as the key field when joining to other event data by IP address.
   late final pulumi.Output<String> itemsSearchKey;
-
   /// List of labels relevant to this watchlist
   late final pulumi.Output<List<String>?> labels;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The number of lines in a csv/tsv content to skip before the header
   late final pulumi.Output<int?> numberOfLinesToSkip;
-
   /// The provider of the watchlist
   late final pulumi.Output<String> provider;
-
   /// Describes provisioning state
   late final pulumi.Output<String> provisioningState;
-
   /// The raw content that represents to watchlist items to create. In case of csv/tsv content type, it's the content of the file that will parsed by the endpoint
   late final pulumi.Output<String?> rawContent;
-
   /// The filename of the watchlist, called 'source'
   late final pulumi.Output<String?> source;
-
   /// The sourceType of the watchlist
   late final pulumi.Output<String?> sourceType;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The tenantId where the watchlist belongs to
   late final pulumi.Output<String?> tenantId;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// The last time the watchlist was updated
   late final pulumi.Output<String?> updated;
-
   /// Describes a user that updated the watchlist
   late final pulumi.Output<WatchlistUserInfoResponse?> updatedBy;
-
   /// The status of the Watchlist upload : New, InProgress or Complete. **Note** : When a Watchlist upload status is InProgress, the Watchlist cannot be deleted
   late final pulumi.Output<String?> uploadStatus;
-
   /// The alias of the watchlist
   late final pulumi.Output<String?> watchlistAlias;
-
   /// The id (a Guid) of the watchlist
   late final pulumi.Output<String?> watchlistId;
-
   /// The type of the watchlist
   late final pulumi.Output<String?> watchlistType;
 
@@ -439,24 +413,15 @@ class Watchlist extends pulumi.CustomResource {
     WatchlistArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:securityinsights:Watchlist',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:securityinsights:Watchlist',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     contentType = registerOutput<String?>('contentType');
     created = registerOutput<String?>('created');
-    createdBy = registerOutput<WatchlistUserInfoResponse?>(
-      'createdBy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WatchlistUserInfoResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    createdBy = registerOutput<WatchlistUserInfoResponse?>('createdBy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WatchlistUserInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     defaultDuration = registerOutput<String?>('defaultDuration');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
@@ -471,29 +436,11 @@ class Watchlist extends pulumi.CustomResource {
     rawContent = registerOutput<String?>('rawContent');
     source = registerOutput<String?>('source');
     sourceType = registerOutput<String?>('sourceType');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tenantId = registerOutput<String?>('tenantId');
     type = registerOutput<String>('type');
     updated = registerOutput<String?>('updated');
-    updatedBy = registerOutput<WatchlistUserInfoResponse?>(
-      'updatedBy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WatchlistUserInfoResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    updatedBy = registerOutput<WatchlistUserInfoResponse?>('updatedBy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WatchlistUserInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     uploadStatus = registerOutput<String?>('uploadStatus');
     watchlistAlias = registerOutput<String?>('watchlistAlias');
     watchlistId = registerOutput<String?>('watchlistId');

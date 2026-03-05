@@ -32,12 +32,9 @@ class GetTaxonomyArgs {
   factory GetTaxonomyArgs.fromMap(Map<String, dynamic> map) {
     return GetTaxonomyArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       taxonomyId: pulumi.Input.fromValue(map['taxonomyId'] as String),
     );
   }
 }
+

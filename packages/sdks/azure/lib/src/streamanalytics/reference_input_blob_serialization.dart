@@ -7,12 +7,10 @@ class ReferenceInputBlobSerialization {
   ///
   /// &gt; **Note:** This is required when `type` is set to `Csv` or `Json`.
   final pulumi.Input<String>? encoding;
-
   /// The delimiter that will be used to separate comma-separated value (CSV) records. Possible values are ` ` (space), `,` (comma), `	` (tab), `|` (pipe) and `;`.
   ///
   /// &gt; **Note:** This is required when `type` is set to `Csv`.
   final pulumi.Input<String>? fieldDelimiter;
-
   /// The serialization format used for the reference data. Possible values are `Avro`, `Csv` and `Json`.
   final pulumi.Input<String> type;
 
@@ -36,17 +34,10 @@ class ReferenceInputBlobSerialization {
 
   factory ReferenceInputBlobSerialization.fromMap(Map<String, dynamic> map) {
     return ReferenceInputBlobSerialization(
-      encoding: (() {
-        final guardedValue = map['encoding'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      fieldDelimiter: (() {
-        final guardedValue = map['fieldDelimiter'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      encoding: (() { final guardedValue = map['encoding']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      fieldDelimiter: (() { final guardedValue = map['fieldDelimiter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

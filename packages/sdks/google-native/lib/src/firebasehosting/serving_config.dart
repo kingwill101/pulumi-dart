@@ -12,22 +12,16 @@ import 'serving_config_trailing_slash_behavior.dart';
 class ServingConfig {
   /// How to handle well known App Association files.
   final pulumi.Input<ServingConfigAppAssociation>? appAssociation;
-
   /// Defines whether to drop the file extension from uploaded files.
   final pulumi.Input<bool>? cleanUrls;
-
   /// An array of objects, where each object specifies a URL pattern that, if matched to the request URL path, triggers Hosting to apply the specified custom response headers.
   final pulumi.Input<List<Header>>? headers;
-
   /// Optional. Defines i18n rewrite behavior.
   final pulumi.Input<I18nConfig>? i18n;
-
   /// An array of objects (called redirect rules), where each rule specifies a URL pattern that, if matched to the request URL path, triggers Hosting to respond with a redirect to the specified destination path.
   final pulumi.Input<List<Redirect>>? redirects;
-
   /// An array of objects (called rewrite rules), where each rule specifies a URL pattern that, if matched to the request URL path, triggers Hosting to respond as if the service were given the specified destination URL.
   final pulumi.Input<List<Rewrite>>? rewrites;
-
   /// Defines how to handle a trailing slash in the URL path.
   final pulumi.Input<ServingConfigTrailingSlashBehavior>? trailingSlashBehavior;
 
@@ -51,116 +45,26 @@ class ServingConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'appAssociation':
-          ?pulumi.Input.mapOptionalInputValue<
-            ServingConfigAppAssociation,
-            String
-          >(appAssociation, (value) => value.wireValue),
+      'appAssociation': ?pulumi.Input.mapOptionalInputValue<ServingConfigAppAssociation, String>(appAssociation, (value) => value.wireValue),
       'cleanUrls': ?cleanUrls,
-      'headers':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<Header>,
-            List<Map<String, dynamic>>
-          >(
-            headers,
-            (value) => pulumi.Input.encodeList<Header, Map<String, dynamic>>(
-              value,
-              (value) => value.toMap(),
-            ),
-          ),
-      'i18n':
-          ?pulumi.Input.mapOptionalInputValue<I18nConfig, Map<String, dynamic>>(
-            i18n,
-            (value) => value.toMap(),
-          ),
-      'redirects':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<Redirect>,
-            List<Map<String, dynamic>>
-          >(
-            redirects,
-            (value) => pulumi.Input.encodeList<Redirect, Map<String, dynamic>>(
-              value,
-              (value) => value.toMap(),
-            ),
-          ),
-      'rewrites':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<Rewrite>,
-            List<Map<String, dynamic>>
-          >(
-            rewrites,
-            (value) => pulumi.Input.encodeList<Rewrite, Map<String, dynamic>>(
-              value,
-              (value) => value.toMap(),
-            ),
-          ),
-      'trailingSlashBehavior':
-          ?pulumi.Input.mapOptionalInputValue<
-            ServingConfigTrailingSlashBehavior,
-            String
-          >(trailingSlashBehavior, (value) => value.wireValue),
+      'headers': ?pulumi.Input.mapOptionalInputValue<List<Header>, List<Map<String, dynamic>>>(headers, (value) => pulumi.Input.encodeList<Header, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'i18n': ?pulumi.Input.mapOptionalInputValue<I18nConfig, Map<String, dynamic>>(i18n, (value) => value.toMap()),
+      'redirects': ?pulumi.Input.mapOptionalInputValue<List<Redirect>, List<Map<String, dynamic>>>(redirects, (value) => pulumi.Input.encodeList<Redirect, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'rewrites': ?pulumi.Input.mapOptionalInputValue<List<Rewrite>, List<Map<String, dynamic>>>(rewrites, (value) => pulumi.Input.encodeList<Rewrite, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'trailingSlashBehavior': ?pulumi.Input.mapOptionalInputValue<ServingConfigTrailingSlashBehavior, String>(trailingSlashBehavior, (value) => value.wireValue),
     };
   }
 
   factory ServingConfig.fromMap(Map<String, dynamic> map) {
     return ServingConfig(
-      appAssociation: (() {
-        final guardedValue = map['appAssociation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ServingConfigAppAssociation.fromValue(guardedValue as String),
-        );
-      })(),
-      cleanUrls: (() {
-        final guardedValue = map['cleanUrls'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      headers: (() {
-        final guardedValue = map['headers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<Header>(
-            guardedValue,
-            (value) => Header.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      i18n: (() {
-        final guardedValue = map['i18n'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          I18nConfig.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      redirects: (() {
-        final guardedValue = map['redirects'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<Redirect>(
-            guardedValue,
-            (value) => Redirect.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      rewrites: (() {
-        final guardedValue = map['rewrites'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<Rewrite>(
-            guardedValue,
-            (value) => Rewrite.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      trailingSlashBehavior: (() {
-        final guardedValue = map['trailingSlashBehavior'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ServingConfigTrailingSlashBehavior.fromValue(guardedValue as String),
-        );
-      })(),
+      appAssociation: (() { final guardedValue = map['appAssociation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServingConfigAppAssociation.fromValue(guardedValue as String)); })(),
+      cleanUrls: (() { final guardedValue = map['cleanUrls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      headers: (() { final guardedValue = map['headers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Header>(guardedValue, (value) => Header.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      i18n: (() { final guardedValue = map['i18n']; if (guardedValue == null) return null; return pulumi.Input.fromValue(I18nConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      redirects: (() { final guardedValue = map['redirects']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Redirect>(guardedValue, (value) => Redirect.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      rewrites: (() { final guardedValue = map['rewrites']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Rewrite>(guardedValue, (value) => Rewrite.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      trailingSlashBehavior: (() { final guardedValue = map['trailingSlashBehavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServingConfigTrailingSlashBehavior.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

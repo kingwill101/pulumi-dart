@@ -4697,27 +4697,20 @@ class CxPage extends pulumi.CustomResource {
   /// Hierarchy: Agent-&gt;Flow-&gt;Page-&gt;Fulfillment/Parameter.
   /// Structure is documented below.
   late final pulumi.Output<CxPageAdvancedSettings?> advancedSettings;
-
   /// The human-readable name of the page, unique within the agent.
   late final pulumi.Output<String> displayName;
-
   /// The fulfillment to call when the session is entering the page.
   /// Structure is documented below.
   late final pulumi.Output<CxPageEntryFulfillment?> entryFulfillment;
-
   /// Handlers associated with the page to handle events such as webhook errors, no match or no input.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> eventHandlers;
-
   /// The form associated with the page, used for collecting parameters relevant to the page.
   /// Structure is documented below.
   late final pulumi.Output<CxPageForm?> form;
-
   /// Knowledge connector configuration.
   /// Structure is documented below.
-  late final pulumi.Output<CxPageKnowledgeConnectorSettings?>
-  knowledgeConnectorSettings;
-
+  late final pulumi.Output<CxPageKnowledgeConnectorSettings?> knowledgeConnectorSettings;
   /// The language of the following fields in page:
   /// Page.entry_fulfillment.messages
   /// Page.entry_fulfillment.conditional_cases
@@ -4731,21 +4724,17 @@ class CxPage extends pulumi.CustomResource {
   /// Page.transition_routes.trigger_fulfillment.conditional_cases
   /// If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
   late final pulumi.Output<String?> languageCode;
-
   /// The unique identifier of the page.
   /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;/pages/&lt;Page ID&gt;.
   late final pulumi.Output<String> name;
-
   /// The flow to create a page for.
   /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;.
   late final pulumi.Output<String?> parent;
-
   /// Ordered list of TransitionRouteGroups associated with the page. Transition route groups must be unique within a page.
   /// If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route &gt; page's transition route group &gt; flow's transition routes.
   /// If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence.
   /// Format:projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;/transitionRouteGroups/&lt;TransitionRouteGroup ID&gt;.
   late final pulumi.Output<List<String>?> transitionRouteGroups;
-
   /// A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow.
   /// When we are in a certain page, the TransitionRoutes are evalauted in the following order:
   /// TransitionRoutes defined in the page with intent specified.
@@ -4761,67 +4750,27 @@ class CxPage extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [CxPage]. {@macro pulumi_diagflow_cx_page_cx_page_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  CxPage(String name, {CxPageArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'gcp:diagflow/cxPage:CxPage',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
-    advancedSettings = registerOutput<CxPageAdvancedSettings?>(
-      'advancedSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CxPageAdvancedSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+  CxPage(
+    String name, {
+    CxPageArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'gcp:diagflow/cxPage:CxPage',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    advancedSettings = registerOutput<CxPageAdvancedSettings?>('advancedSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxPageAdvancedSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     displayName = registerOutput<String>('displayName');
-    entryFulfillment = registerOutput<CxPageEntryFulfillment?>(
-      'entryFulfillment',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CxPageEntryFulfillment.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    eventHandlers = registerOutput<List<Map<String, dynamic>>?>(
-      'eventHandlers',
-    );
-    form = registerOutput<CxPageForm?>(
-      'form',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CxPageForm.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    knowledgeConnectorSettings =
-        registerOutput<CxPageKnowledgeConnectorSettings?>(
-          'knowledgeConnectorSettings',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return CxPageKnowledgeConnectorSettings.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    entryFulfillment = registerOutput<CxPageEntryFulfillment?>('entryFulfillment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxPageEntryFulfillment.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    eventHandlers = registerOutput<List<Map<String, dynamic>>?>('eventHandlers');
+    form = registerOutput<CxPageForm?>('form', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxPageForm.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    knowledgeConnectorSettings = registerOutput<CxPageKnowledgeConnectorSettings?>('knowledgeConnectorSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxPageKnowledgeConnectorSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     languageCode = registerOutput<String?>('languageCode');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String?>('parent');
-    transitionRouteGroups = registerOutput<List<String>?>(
-      'transitionRouteGroups',
-    );
-    transitionRoutes = registerOutput<List<Map<String, dynamic>>?>(
-      'transitionRoutes',
-    );
+    transitionRouteGroups = registerOutput<List<String>?>('transitionRouteGroups');
+    transitionRoutes = registerOutput<List<Map<String, dynamic>>?>('transitionRoutes');
   }
 
   /// Gets an existing [CxPage] resource's state with the given [name] and [id].
@@ -4842,64 +4791,21 @@ class CxPage extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:diagflow/cxPage:CxPage',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    advancedSettings = registerOutput<CxPageAdvancedSettings?>(
-      'advancedSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CxPageAdvancedSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:diagflow/cxPage:CxPage',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    advancedSettings = registerOutput<CxPageAdvancedSettings?>('advancedSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxPageAdvancedSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     displayName = registerOutput<String>('displayName');
-    entryFulfillment = registerOutput<CxPageEntryFulfillment?>(
-      'entryFulfillment',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CxPageEntryFulfillment.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    eventHandlers = registerOutput<List<Map<String, dynamic>>?>(
-      'eventHandlers',
-    );
-    form = registerOutput<CxPageForm?>(
-      'form',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CxPageForm.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    knowledgeConnectorSettings =
-        registerOutput<CxPageKnowledgeConnectorSettings?>(
-          'knowledgeConnectorSettings',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return CxPageKnowledgeConnectorSettings.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    entryFulfillment = registerOutput<CxPageEntryFulfillment?>('entryFulfillment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxPageEntryFulfillment.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    eventHandlers = registerOutput<List<Map<String, dynamic>>?>('eventHandlers');
+    form = registerOutput<CxPageForm?>('form', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxPageForm.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    knowledgeConnectorSettings = registerOutput<CxPageKnowledgeConnectorSettings?>('knowledgeConnectorSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxPageKnowledgeConnectorSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     languageCode = registerOutput<String?>('languageCode');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String?>('parent');
-    transitionRouteGroups = registerOutput<List<String>?>(
-      'transitionRouteGroups',
-    );
-    transitionRoutes = registerOutput<List<Map<String, dynamic>>?>(
-      'transitionRoutes',
-    );
+    transitionRouteGroups = registerOutput<List<String>?>('transitionRouteGroups');
+    transitionRoutes = registerOutput<List<Map<String, dynamic>>?>('transitionRoutes');
   }
 }

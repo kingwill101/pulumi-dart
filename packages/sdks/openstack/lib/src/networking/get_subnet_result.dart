@@ -8,24 +8,19 @@ import 'get_subnet_host_route.dart';
 class GetSubnetResult {
   /// A set of string tags applied on the subnet.
   final List<String> allTags;
-
   /// Allocation pools of the subnet.
   final List<GetSubnetAllocationPool> allocationPools;
   final String cidr;
   final String description;
   final bool? dhcpEnabled;
-
   /// DNS Nameservers of the subnet.
   final List<String> dnsNameservers;
   final bool? dnsPublishFixedIp;
-
   /// Whether the subnet has DHCP enabled or not.
   final bool enableDhcp;
   final String gatewayIp;
-
   /// Host Routes of the subnet.
   final List<GetSubnetHostRoute> hostRoutes;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final int ipVersion;
@@ -33,11 +28,9 @@ class GetSubnetResult {
   final String ipv6RaMode;
   final String name;
   final String networkId;
-
   /// See Argument Reference above.
   final String region;
   final String segmentId;
-
   /// Service types of the subnet.
   final List<String> serviceTypes;
   final String subnetId;
@@ -98,11 +91,7 @@ class GetSubnetResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allTags': allTags,
-      'allocationPools':
-          pulumi.Input.encodeList<
-            GetSubnetAllocationPool,
-            Map<String, dynamic>
-          >(allocationPools, (value) => value.toMap()),
+      'allocationPools': pulumi.Input.encodeList<GetSubnetAllocationPool, Map<String, dynamic>>(allocationPools, (value) => value.toMap()),
       'cidr': cidr,
       'description': description,
       'dhcpEnabled': ?dhcpEnabled,
@@ -110,11 +99,7 @@ class GetSubnetResult {
       'dnsPublishFixedIp': ?dnsPublishFixedIp,
       'enableDhcp': enableDhcp,
       'gatewayIp': gatewayIp,
-      'hostRoutes':
-          pulumi.Input.encodeList<GetSubnetHostRoute, Map<String, dynamic>>(
-            hostRoutes,
-            (value) => value.toMap(),
-          ),
+      'hostRoutes': pulumi.Input.encodeList<GetSubnetHostRoute, Map<String, dynamic>>(hostRoutes, (value) => value.toMap()),
       'id': id,
       'ipVersion': ipVersion,
       'ipv6AddressMode': ipv6AddressMode,
@@ -134,32 +119,15 @@ class GetSubnetResult {
   factory GetSubnetResult.fromMap(Map<String, dynamic> map) {
     return GetSubnetResult(
       allTags: (map['allTags'] as List).cast<String>(),
-      allocationPools: pulumi.Input.decodeList<GetSubnetAllocationPool>(
-        map['allocationPools']!,
-        (value) => GetSubnetAllocationPool.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      allocationPools: pulumi.Input.decodeList<GetSubnetAllocationPool>(map['allocationPools']!, (value) => GetSubnetAllocationPool.fromMap((value as Map).cast<String, dynamic>())),
       cidr: map['cidr'] as String,
       description: map['description'] as String,
-      dhcpEnabled: (() {
-        final guardedValue = map['dhcpEnabled'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      dhcpEnabled: (() { final guardedValue = map['dhcpEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       dnsNameservers: (map['dnsNameservers'] as List).cast<String>(),
-      dnsPublishFixedIp: (() {
-        final guardedValue = map['dnsPublishFixedIp'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      dnsPublishFixedIp: (() { final guardedValue = map['dnsPublishFixedIp']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       enableDhcp: map['enableDhcp'] as bool,
       gatewayIp: map['gatewayIp'] as String,
-      hostRoutes: pulumi.Input.decodeList<GetSubnetHostRoute>(
-        map['hostRoutes']!,
-        (value) =>
-            GetSubnetHostRoute.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      hostRoutes: pulumi.Input.decodeList<GetSubnetHostRoute>(map['hostRoutes']!, (value) => GetSubnetHostRoute.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ipVersion: map['ipVersion'] as int,
       ipv6AddressMode: map['ipv6AddressMode'] as String,
@@ -171,12 +139,9 @@ class GetSubnetResult {
       serviceTypes: (map['serviceTypes'] as List).cast<String>(),
       subnetId: map['subnetId'] as String,
       subnetpoolId: map['subnetpoolId'] as String,
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       tenantId: map['tenantId'] as String,
     );
   }
 }
+

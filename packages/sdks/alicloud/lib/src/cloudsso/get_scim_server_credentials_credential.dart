@@ -5,25 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetScimServerCredentialsCredential {
   /// The CreateTime of the resource.
   final pulumi.Input<String> createTime;
-
   /// The CredentialId of the resource.
   final pulumi.Input<String> credentialId;
-
   /// The CredentialSecret of the resource.
   final pulumi.Input<String> credentialSecret;
-
   /// The CredentialType of the resource.
   final pulumi.Input<String> credentialType;
-
   /// The ID of the Directory.
   final pulumi.Input<String> directoryId;
-
   /// The ExpireTime of the resource.
   final pulumi.Input<String> expireTime;
-
   /// The ID of the SCIM Server Credential.
   final pulumi.Input<String> id;
-
   /// The Status of the resource. Valid values: `Disabled`, `Enabled`.
   final pulumi.Input<String> status;
 
@@ -64,9 +57,7 @@ class GetScimServerCredentialsCredential {
     return GetScimServerCredentialsCredential(
       createTime: pulumi.Input.fromValue(map['createTime'] as String),
       credentialId: pulumi.Input.fromValue(map['credentialId'] as String),
-      credentialSecret: pulumi.Input.fromValue(
-        map['credentialSecret'] as String,
-      ),
+      credentialSecret: pulumi.Input.fromValue(map['credentialSecret'] as String),
       credentialType: pulumi.Input.fromValue(map['credentialType'] as String),
       directoryId: pulumi.Input.fromValue(map['directoryId'] as String),
       expireTime: pulumi.Input.fromValue(map['expireTime'] as String),
@@ -75,3 +66,4 @@ class GetScimServerCredentialsCredential {
     );
   }
 }
+

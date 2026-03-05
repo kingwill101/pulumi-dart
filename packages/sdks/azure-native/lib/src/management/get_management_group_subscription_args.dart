@@ -12,10 +12,14 @@ class GetManagementGroupSubscriptionArgs {
 
   /// Creates a new [GetManagementGroupSubscriptionArgs].
   /// [groupId] Management Group ID.
-  GetManagementGroupSubscriptionArgs({required this.groupId});
+  GetManagementGroupSubscriptionArgs({
+    required this.groupId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'groupId': groupId};
+    return <String, dynamic>{
+      'groupId': groupId,
+    };
   }
 
   factory GetManagementGroupSubscriptionArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetManagementGroupSubscriptionArgs {
     );
   }
 }
+

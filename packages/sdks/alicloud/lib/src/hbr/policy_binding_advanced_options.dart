@@ -9,29 +9,20 @@ class PolicyBindingAdvancedOptions {
 
   /// Creates a new [PolicyBindingAdvancedOptions].
   /// [udmDetail] ECS Backup Advanced options See `udm_detail` below.
-  PolicyBindingAdvancedOptions({this.udmDetail});
+  PolicyBindingAdvancedOptions({
+    this.udmDetail,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'udmDetail':
-          ?pulumi.Input.mapOptionalInputValue<
-            PolicyBindingAdvancedOptionsUdmDetail,
-            Map<String, dynamic>
-          >(udmDetail, (value) => value.toMap()),
+      'udmDetail': ?pulumi.Input.mapOptionalInputValue<PolicyBindingAdvancedOptionsUdmDetail, Map<String, dynamic>>(udmDetail, (value) => value.toMap()),
     };
   }
 
   factory PolicyBindingAdvancedOptions.fromMap(Map<String, dynamic> map) {
     return PolicyBindingAdvancedOptions(
-      udmDetail: (() {
-        final guardedValue = map['udmDetail'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PolicyBindingAdvancedOptionsUdmDetail.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      udmDetail: (() { final guardedValue = map['udmDetail']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PolicyBindingAdvancedOptionsUdmDetail.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

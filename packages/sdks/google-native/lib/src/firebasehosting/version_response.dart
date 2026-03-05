@@ -8,37 +8,26 @@ import 'serving_config_response.dart';
 class VersionResponse {
   /// The configuration for the behavior of the site. This configuration exists in the [`firebase.json`](https://firebase.google.com/docs/cli/#the_firebasejson_file) file.
   final pulumi.Input<ServingConfigResponse> config;
-
   /// The time at which the version was created.
   final pulumi.Input<String> createTime;
-
   /// Identifies the user who created the version.
   final pulumi.Input<ActingUserResponse> createUser;
-
   /// The time at which the version was `DELETED`.
   final pulumi.Input<String> deleteTime;
-
   /// Identifies the user who `DELETED` the version.
   final pulumi.Input<ActingUserResponse> deleteUser;
-
   /// The total number of files associated with the version. This value is calculated after a version is `FINALIZED`.
   final pulumi.Input<String> fileCount;
-
   /// The time at which the version was `FINALIZED`.
   final pulumi.Input<String> finalizeTime;
-
   /// Identifies the user who `FINALIZED` the version.
   final pulumi.Input<ActingUserResponse> finalizeUser;
-
   /// The labels used for extra metadata and/or filtering.
   final pulumi.Input<Map<String, String>> labels;
-
   /// The fully-qualified resource name for the version, in the format: sites/ SITE_ID/versions/VERSION_ID This name is provided in the response body when you call [`CreateVersion`](sites.versions/create).
   final pulumi.Input<String> name;
-
   /// The deploy status of the version. For a successful deploy, call [`CreateVersion`](sites.versions/create) to make a new version (`CREATED` status), [upload all desired files](sites.versions/populateFiles) to the version, then [update](sites.versions/patch) the version to the `FINALIZED` status. Note that if you leave the version in the `CREATED` state for more than 12 hours, the system will automatically mark the version as `ABANDONED`. You can also change the status of a version to `DELETED` by calling [`DeleteVersion`](sites.versions/delete).
   final pulumi.Input<String> status;
-
   /// The total stored bytesize of the version. This value is calculated after a version is `FINALIZED`.
   final pulumi.Input<String> versionBytes;
 
@@ -72,30 +61,14 @@ class VersionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'config':
-          pulumi.Input.mapInputValue<
-            ServingConfigResponse,
-            Map<String, dynamic>
-          >(config, (value) => value.toMap()),
+      'config': pulumi.Input.mapInputValue<ServingConfigResponse, Map<String, dynamic>>(config, (value) => value.toMap()),
       'createTime': createTime,
-      'createUser':
-          pulumi.Input.mapInputValue<ActingUserResponse, Map<String, dynamic>>(
-            createUser,
-            (value) => value.toMap(),
-          ),
+      'createUser': pulumi.Input.mapInputValue<ActingUserResponse, Map<String, dynamic>>(createUser, (value) => value.toMap()),
       'deleteTime': deleteTime,
-      'deleteUser':
-          pulumi.Input.mapInputValue<ActingUserResponse, Map<String, dynamic>>(
-            deleteUser,
-            (value) => value.toMap(),
-          ),
+      'deleteUser': pulumi.Input.mapInputValue<ActingUserResponse, Map<String, dynamic>>(deleteUser, (value) => value.toMap()),
       'fileCount': fileCount,
       'finalizeTime': finalizeTime,
-      'finalizeUser':
-          pulumi.Input.mapInputValue<ActingUserResponse, Map<String, dynamic>>(
-            finalizeUser,
-            (value) => value.toMap(),
-          ),
+      'finalizeUser': pulumi.Input.mapInputValue<ActingUserResponse, Map<String, dynamic>>(finalizeUser, (value) => value.toMap()),
       'labels': labels,
       'name': name,
       'status': status,
@@ -105,36 +78,19 @@ class VersionResponse {
 
   factory VersionResponse.fromMap(Map<String, dynamic> map) {
     return VersionResponse(
-      config: pulumi.Input.fromValue(
-        ServingConfigResponse.fromMap(
-          (map['config']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      config: pulumi.Input.fromValue(ServingConfigResponse.fromMap((map['config']! as Map).cast<String, dynamic>())),
       createTime: pulumi.Input.fromValue(map['createTime'] as String),
-      createUser: pulumi.Input.fromValue(
-        ActingUserResponse.fromMap(
-          (map['createUser']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      createUser: pulumi.Input.fromValue(ActingUserResponse.fromMap((map['createUser']! as Map).cast<String, dynamic>())),
       deleteTime: pulumi.Input.fromValue(map['deleteTime'] as String),
-      deleteUser: pulumi.Input.fromValue(
-        ActingUserResponse.fromMap(
-          (map['deleteUser']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      deleteUser: pulumi.Input.fromValue(ActingUserResponse.fromMap((map['deleteUser']! as Map).cast<String, dynamic>())),
       fileCount: pulumi.Input.fromValue(map['fileCount'] as String),
       finalizeTime: pulumi.Input.fromValue(map['finalizeTime'] as String),
-      finalizeUser: pulumi.Input.fromValue(
-        ActingUserResponse.fromMap(
-          (map['finalizeUser']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      labels: pulumi.Input.fromValue(
-        (map['labels'] as Map).cast<String, String>(),
-      ),
+      finalizeUser: pulumi.Input.fromValue(ActingUserResponse.fromMap((map['finalizeUser']! as Map).cast<String, dynamic>())),
+      labels: pulumi.Input.fromValue((map['labels'] as Map).cast<String, String>()),
       name: pulumi.Input.fromValue(map['name'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
       versionBytes: pulumi.Input.fromValue(map['versionBytes'] as String),
     );
   }
 }
+

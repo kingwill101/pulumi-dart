@@ -123,11 +123,9 @@ import 'project_metadata_item_state.dart';
 class ProjectMetadataItem extends pulumi.CustomResource {
   /// The metadata key to set.
   late final pulumi.Output<String> key;
-
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The value to set for the given metadata key.
   ///
   /// - - -
@@ -142,11 +140,11 @@ class ProjectMetadataItem extends pulumi.CustomResource {
     ProjectMetadataItemArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:compute/projectMetadataItem:ProjectMetadataItem',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:compute/projectMetadataItem:ProjectMetadataItem',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     key = registerOutput<String>('key');
     project = registerOutput<String>('project');
     value = registerOutput<String>('value');
@@ -170,11 +168,11 @@ class ProjectMetadataItem extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:compute/projectMetadataItem:ProjectMetadataItem',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:compute/projectMetadataItem:ProjectMetadataItem',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     key = registerOutput<String>('key');
     project = registerOutput<String>('project');
     value = registerOutput<String>('value');

@@ -9,10 +9,14 @@ class CertificateAuthorityConfiguration {
 
   /// Creates a new [CertificateAuthorityConfiguration].
   /// [keyType] Crypto type: ECC.
-  CertificateAuthorityConfiguration({required this.keyType});
+  CertificateAuthorityConfiguration({
+    required this.keyType,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'keyType': keyType};
+    return <String, dynamic>{
+      'keyType': keyType,
+    };
   }
 
   factory CertificateAuthorityConfiguration.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class CertificateAuthorityConfiguration {
     );
   }
 }
+

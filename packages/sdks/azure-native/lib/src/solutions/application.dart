@@ -155,80 +155,54 @@ import 'system_data_response.dart';
 class Application extends pulumi.CustomResource {
   /// The fully qualified path of managed application definition Id.
   late final pulumi.Output<String?> applicationDefinitionId;
-
   /// The collection of managed application artifacts.
   late final pulumi.Output<List<Map<String, dynamic>>> artifacts;
-
   /// The  read-only authorizations property that is retrieved from the application package.
   late final pulumi.Output<List<Map<String, dynamic>>> authorizations;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The managed application billing details.
-  late final pulumi.Output<ApplicationBillingDetailsDefinitionResponse>
-  billingDetails;
-
+  late final pulumi.Output<ApplicationBillingDetailsDefinitionResponse> billingDetails;
   /// The client entity that created the JIT request.
   late final pulumi.Output<ApplicationClientDetailsResponse> createdBy;
-
   /// The read-only customer support property that is retrieved from the application package.
   late final pulumi.Output<ApplicationPackageContactResponse> customerSupport;
-
   /// The identity of the resource.
   late final pulumi.Output<IdentityResponse?> identity;
-
   /// The managed application Jit access policy.
   late final pulumi.Output<ApplicationJitAccessPolicyResponse?> jitAccessPolicy;
-
   /// The kind of the managed application. Allowed values are MarketPlace and ServiceCatalog.
   late final pulumi.Output<String> kind;
-
   /// Resource location
   late final pulumi.Output<String?> location;
-
   /// ID of the resource that manages this resource.
   late final pulumi.Output<String?> managedBy;
-
   /// The managed resource group Id.
   late final pulumi.Output<String?> managedResourceGroupId;
-
   /// The managed application management mode.
   late final pulumi.Output<String> managementMode;
-
   /// Resource name
   late final pulumi.Output<String> name;
-
   /// Name and value pairs that define the managed application outputs.
   late final pulumi.Output<dynamic> outputs;
-
   /// Name and value pairs that define the managed application parameters. It can be a JObject or a well formed JSON string.
   late final pulumi.Output<dynamic> parameters;
-
   /// The plan information.
   late final pulumi.Output<PlanResponse?> plan;
-
   /// The managed application provisioning state.
   late final pulumi.Output<String> provisioningState;
-
   /// The publisher tenant Id.
   late final pulumi.Output<String> publisherTenantId;
-
   /// The SKU of the resource.
   late final pulumi.Output<SkuResponse?> sku;
-
   /// The read-only support URLs property that is retrieved from the application package.
   late final pulumi.Output<ApplicationPackageSupportUrlsResponse> supportUrls;
-
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource type
   late final pulumi.Output<String> type;
-
   /// The client entity that last updated the JIT request.
   late final pulumi.Output<ApplicationClientDetailsResponse> updatedBy;
 
@@ -241,70 +215,20 @@ class Application extends pulumi.CustomResource {
     ApplicationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:solutions:Application',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    applicationDefinitionId = registerOutput<String?>(
-      'applicationDefinitionId',
-    );
+          'azure-native:solutions:Application',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    applicationDefinitionId = registerOutput<String?>('applicationDefinitionId');
     artifacts = registerOutput<List<Map<String, dynamic>>>('artifacts');
-    authorizations = registerOutput<List<Map<String, dynamic>>>(
-      'authorizations',
-    );
+    authorizations = registerOutput<List<Map<String, dynamic>>>('authorizations');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    billingDetails =
-        registerOutput<ApplicationBillingDetailsDefinitionResponse>(
-          'billingDetails',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ApplicationBillingDetailsDefinitionResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    createdBy = registerOutput<ApplicationClientDetailsResponse>(
-      'createdBy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApplicationClientDetailsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    customerSupport = registerOutput<ApplicationPackageContactResponse>(
-      'customerSupport',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApplicationPackageContactResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    identity = registerOutput<IdentityResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    jitAccessPolicy = registerOutput<ApplicationJitAccessPolicyResponse?>(
-      'jitAccessPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApplicationJitAccessPolicyResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    billingDetails = registerOutput<ApplicationBillingDetailsDefinitionResponse>('billingDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationBillingDetailsDefinitionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createdBy = registerOutput<ApplicationClientDetailsResponse>('createdBy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationClientDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    customerSupport = registerOutput<ApplicationPackageContactResponse>('customerSupport', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationPackageContactResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<IdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    jitAccessPolicy = registerOutput<ApplicationJitAccessPolicyResponse?>('jitAccessPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationJitAccessPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kind = registerOutput<String>('kind');
     location = registerOutput<String?>('location');
     managedBy = registerOutput<String?>('managedBy');
@@ -313,59 +237,14 @@ class Application extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     outputs = registerOutput<dynamic>('outputs');
     parameters = registerOutput<dynamic>('parameters');
-    plan = registerOutput<PlanResponse?>(
-      'plan',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PlanResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    plan = registerOutput<PlanResponse?>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PlanResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningState = registerOutput<String>('provisioningState');
     publisherTenantId = registerOutput<String>('publisherTenantId');
-    sku = registerOutput<SkuResponse?>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    supportUrls = registerOutput<ApplicationPackageSupportUrlsResponse>(
-      'supportUrls',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApplicationPackageSupportUrlsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    supportUrls = registerOutput<ApplicationPackageSupportUrlsResponse>('supportUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationPackageSupportUrlsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
-    updatedBy = registerOutput<ApplicationClientDetailsResponse>(
-      'updatedBy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApplicationClientDetailsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    updatedBy = registerOutput<ApplicationClientDetailsResponse>('updatedBy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationClientDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

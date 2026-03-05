@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGroupUser {
   /// User ARN.
   final pulumi.Input<String> arn;
-
   /// Path to the IAM user.
   final pulumi.Input<String> path;
-
   /// Stable and unique string identifying the IAM user.
   final pulumi.Input<String> userId;
-
   /// Name of the IAM user.
   final pulumi.Input<String> userName;
 
@@ -45,3 +42,4 @@ class GetGroupUser {
     );
   }
 }
+

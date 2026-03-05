@@ -9,34 +9,24 @@ class GetVolumeV3Result {
   /// display the Attachment ID, Instance ID, and the Device as the Instance
   /// sees it.
   final List<GetVolumeV3Attachment> attachments;
-
   /// Indicates if the volume is bootable.
   final String bootable;
-
   /// The OpenStack host on which the volume is located.
   final String host;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// See Argument Reference above.
   final Map<String, String> metadata;
-
   /// See Argument Reference above.
   final String name;
-
   /// See Argument Reference above.
   final String region;
-
   /// The size of the volume in GBs.
   final int size;
-
   /// The ID of the volume from which the current volume was created.
   final String sourceVolumeId;
-
   /// See Argument Reference above.
   final String status;
-
   /// The type of the volume.
   final String volumeType;
 
@@ -68,11 +58,7 @@ class GetVolumeV3Result {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attachments':
-          pulumi.Input.encodeList<GetVolumeV3Attachment, Map<String, dynamic>>(
-            attachments,
-            (value) => value.toMap(),
-          ),
+      'attachments': pulumi.Input.encodeList<GetVolumeV3Attachment, Map<String, dynamic>>(attachments, (value) => value.toMap()),
       'bootable': bootable,
       'host': host,
       'id': id,
@@ -88,12 +74,7 @@ class GetVolumeV3Result {
 
   factory GetVolumeV3Result.fromMap(Map<String, dynamic> map) {
     return GetVolumeV3Result(
-      attachments: pulumi.Input.decodeList<GetVolumeV3Attachment>(
-        map['attachments']!,
-        (value) => GetVolumeV3Attachment.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      attachments: pulumi.Input.decodeList<GetVolumeV3Attachment>(map['attachments']!, (value) => GetVolumeV3Attachment.fromMap((value as Map).cast<String, dynamic>())),
       bootable: map['bootable'] as String,
       host: map['host'] as String,
       id: map['id'] as String,
@@ -107,3 +88,4 @@ class GetVolumeV3Result {
     );
   }
 }
+

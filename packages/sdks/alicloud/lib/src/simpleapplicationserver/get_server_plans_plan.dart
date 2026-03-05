@@ -5,25 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServerPlansPlan {
   /// The peak bandwidth. Unit: Mbit/s.
   final pulumi.Input<int> bandwidth;
-
   /// The number of CPU cores.
   final pulumi.Input<int> core;
-
   /// The size of the enhanced SSD (ESSD). Unit: GB.
   final pulumi.Input<int> diskSize;
-
   /// The monthly data transfer quota. Unit: GB.
   final pulumi.Input<int> flow;
-
   /// The ID of the Instance Plan.
   final pulumi.Input<String> id;
-
   /// The memory size. Unit: GB.
   final pulumi.Input<double> memory;
-
   /// The ID of the Instance Plan.
   final pulumi.Input<String> planId;
-
   /// The platform of Plan supported.
   final pulumi.Input<String> supportPlatform;
 
@@ -73,3 +66,4 @@ class GetServerPlansPlan {
     );
   }
 }
+

@@ -40,16 +40,11 @@ class GetCryptoKeyVersionArgs {
   factory GetCryptoKeyVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetCryptoKeyVersionArgs(
       cryptoKeyId: pulumi.Input.fromValue(map['cryptoKeyId'] as String),
-      cryptoKeyVersionId: pulumi.Input.fromValue(
-        map['cryptoKeyVersionId'] as String,
-      ),
+      cryptoKeyVersionId: pulumi.Input.fromValue(map['cryptoKeyVersionId'] as String),
       keyRingId: pulumi.Input.fromValue(map['keyRingId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

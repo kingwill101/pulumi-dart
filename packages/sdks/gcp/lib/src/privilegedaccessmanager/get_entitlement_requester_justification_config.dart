@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEntitlementRequesterJustificationConfig {
   /// The justification is not mandatory but can be provided in any of the supported formats.
   final pulumi.Input<List<Map<String, dynamic>>> notMandatories;
-
   /// The requester has to provide a justification in the form of free flowing text.
   final pulumi.Input<List<Map<String, dynamic>>> unstructureds;
 
@@ -24,16 +23,11 @@ class GetEntitlementRequesterJustificationConfig {
     };
   }
 
-  factory GetEntitlementRequesterJustificationConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetEntitlementRequesterJustificationConfig.fromMap(Map<String, dynamic> map) {
     return GetEntitlementRequesterJustificationConfig(
-      notMandatories: pulumi.Input.fromValue(
-        (map['notMandatories'] as List).cast<Map<String, dynamic>>(),
-      ),
-      unstructureds: pulumi.Input.fromValue(
-        (map['unstructureds'] as List).cast<Map<String, dynamic>>(),
-      ),
+      notMandatories: pulumi.Input.fromValue((map['notMandatories'] as List).cast<Map<String, dynamic>>()),
+      unstructureds: pulumi.Input.fromValue((map['unstructureds'] as List).cast<Map<String, dynamic>>()),
     );
   }
 }
+

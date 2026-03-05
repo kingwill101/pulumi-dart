@@ -234,34 +234,24 @@ import 'server_state.dart';
 class Server extends pulumi.CustomResource {
   /// List of email addresses of admin users.
   late final pulumi.Output<List<String>?> adminUsers;
-
   /// URI and SAS token for a blob container to store backups.
   late final pulumi.Output<String?> backupBlobContainerUri;
-
   /// One or more `ipv4_firewall_rule` block(s) as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> ipv4FirewallRules;
-
   /// The Azure location where the Analysis Services Server exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The name of the Analysis Services Server. Only lowercase Alphanumeric characters allowed, starting with a letter. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Indicates if the Power BI service is allowed to access or not.
   late final pulumi.Output<bool?> powerBiServiceEnabled;
-
   /// Controls how the read-write server is used in the query pool. If this value is set to `All` then read-write servers are also used for queries. Otherwise with `ReadOnly` these servers do not participate in query operations. Defaults to `All`.
   late final pulumi.Output<String?> querypoolConnectionMode;
-
   /// The name of the Resource Group in which the Analysis Services Server should be exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The full name of the Analysis Services Server.
   late final pulumi.Output<String> serverFullName;
-
   /// SKU for the Analysis Services Server. Possible values are: `D1`, `B1`, `B2`, `S0`, `S1`, `S2`, `S4`, `S8`, `S9`, `S8v2` and `S9v2`.
   late final pulumi.Output<String> sku;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -269,24 +259,23 @@ class Server extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Server]. {@macro pulumi_analysisservices_server_server_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Server(String name, {ServerArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure:analysisservices/server:Server',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Server(
+    String name, {
+    ServerArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure:analysisservices/server:Server',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     adminUsers = registerOutput<List<String>?>('adminUsers');
     backupBlobContainerUri = registerOutput<String?>('backupBlobContainerUri');
-    ipv4FirewallRules = registerOutput<List<Map<String, dynamic>>?>(
-      'ipv4FirewallRules',
-    );
+    ipv4FirewallRules = registerOutput<List<Map<String, dynamic>>?>('ipv4FirewallRules');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     powerBiServiceEnabled = registerOutput<bool?>('powerBiServiceEnabled');
-    querypoolConnectionMode = registerOutput<String?>(
-      'querypoolConnectionMode',
-    );
+    querypoolConnectionMode = registerOutput<String?>('querypoolConnectionMode');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     serverFullName = registerOutput<String>('serverFullName');
     sku = registerOutput<String>('sku');
@@ -311,22 +300,18 @@ class Server extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:analysisservices/server:Server',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:analysisservices/server:Server',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     adminUsers = registerOutput<List<String>?>('adminUsers');
     backupBlobContainerUri = registerOutput<String?>('backupBlobContainerUri');
-    ipv4FirewallRules = registerOutput<List<Map<String, dynamic>>?>(
-      'ipv4FirewallRules',
-    );
+    ipv4FirewallRules = registerOutput<List<Map<String, dynamic>>?>('ipv4FirewallRules');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     powerBiServiceEnabled = registerOutput<bool?>('powerBiServiceEnabled');
-    querypoolConnectionMode = registerOutput<String?>(
-      'querypoolConnectionMode',
-    );
+    querypoolConnectionMode = registerOutput<String?>('querypoolConnectionMode');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     serverFullName = registerOutput<String>('serverFullName');
     sku = registerOutput<String>('sku');

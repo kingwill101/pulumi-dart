@@ -5,34 +5,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTemplatesTemplate {
   /// The ID of the change set.
   final pulumi.Input<String> changeSetId;
-
   /// The description of the template. The description can be up to 256 characters in length.
   final pulumi.Input<String> description;
-
   /// The ID of the Template.
   final pulumi.Input<String> id;
-
   /// Share Type.
   final pulumi.Input<String> shareType;
-
   /// The name of the stack group. The name must be unique in a region.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
   final pulumi.Input<String> stackGroupName;
-
   /// The ID of the stack.
   final pulumi.Input<String> stackId;
-
   /// Tags.
   final pulumi.Input<Map<String, String>> tags;
-
   /// The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.  If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.  You must specify one of the TemplateBody and TemplateURL parameters, but you cannot specify both of them.
   final pulumi.Input<String> templateBody;
-
   /// The ID of the template.
   final pulumi.Input<String> templateId;
-
   /// The name of the template.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
   final pulumi.Input<String> templateName;
-
   /// Template Version.
   final pulumi.Input<String> templateVersion;
 
@@ -94,3 +84,4 @@ class GetTemplatesTemplate {
     );
   }
 }
+

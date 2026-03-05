@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCapacityReservationArgs {
   /// The name of the capacity reservation group.
   final pulumi.Input<String> capacityReservationGroupName;
-
   /// The name of the capacity reservation.
   final pulumi.Input<String> capacityReservationName;
-
   /// The expand expression to apply on the operation. 'InstanceView' retrieves a snapshot of the runtime properties of the capacity reservation that is managed by the platform and can change outside of control plane operations.
   final pulumi.Input<String>? expand;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -42,20 +39,11 @@ class GetCapacityReservationArgs {
 
   factory GetCapacityReservationArgs.fromMap(Map<String, dynamic> map) {
     return GetCapacityReservationArgs(
-      capacityReservationGroupName: pulumi.Input.fromValue(
-        map['capacityReservationGroupName'] as String,
-      ),
-      capacityReservationName: pulumi.Input.fromValue(
-        map['capacityReservationName'] as String,
-      ),
-      expand: (() {
-        final guardedValue = map['expand'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      capacityReservationGroupName: pulumi.Input.fromValue(map['capacityReservationGroupName'] as String),
+      capacityReservationName: pulumi.Input.fromValue(map['capacityReservationName'] as String),
+      expand: (() { final guardedValue = map['expand']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

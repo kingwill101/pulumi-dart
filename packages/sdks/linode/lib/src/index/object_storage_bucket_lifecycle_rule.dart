@@ -11,22 +11,14 @@ class ObjectStorageBucketLifecycleRule {
   ///
   /// * `noncurrent_version_expiration` - (Optional) Specifies when non-current object versions expire.
   final pulumi.Input<int>? abortIncompleteMultipartUploadDays;
-
   /// Specifies whether the lifecycle rule is active.
   final pulumi.Input<bool> enabled;
-
   /// Specifies a period in the object's expire.
   final pulumi.Input<ObjectStorageBucketLifecycleRuleExpiration>? expiration;
-
   /// The unique identifier for the rule.
   final pulumi.Input<String>? id;
-
   /// Specifies when non-current object versions expire.
-  final pulumi.Input<
-    ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration
-  >?
-  noncurrentVersionExpiration;
-
+  final pulumi.Input<ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration>? noncurrentVersionExpiration;
   /// The object key prefix identifying one or more objects to which the rule applies.
   final pulumi.Input<String>? prefix;
 
@@ -50,57 +42,22 @@ class ObjectStorageBucketLifecycleRule {
     return <String, dynamic>{
       'abortIncompleteMultipartUploadDays': ?abortIncompleteMultipartUploadDays,
       'enabled': enabled,
-      'expiration':
-          ?pulumi.Input.mapOptionalInputValue<
-            ObjectStorageBucketLifecycleRuleExpiration,
-            Map<String, dynamic>
-          >(expiration, (value) => value.toMap()),
+      'expiration': ?pulumi.Input.mapOptionalInputValue<ObjectStorageBucketLifecycleRuleExpiration, Map<String, dynamic>>(expiration, (value) => value.toMap()),
       'id': ?id,
-      'noncurrentVersionExpiration':
-          ?pulumi.Input.mapOptionalInputValue<
-            ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration,
-            Map<String, dynamic>
-          >(noncurrentVersionExpiration, (value) => value.toMap()),
+      'noncurrentVersionExpiration': ?pulumi.Input.mapOptionalInputValue<ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration, Map<String, dynamic>>(noncurrentVersionExpiration, (value) => value.toMap()),
       'prefix': ?prefix,
     };
   }
 
   factory ObjectStorageBucketLifecycleRule.fromMap(Map<String, dynamic> map) {
     return ObjectStorageBucketLifecycleRule(
-      abortIncompleteMultipartUploadDays: (() {
-        final guardedValue = map['abortIncompleteMultipartUploadDays'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      abortIncompleteMultipartUploadDays: (() { final guardedValue = map['abortIncompleteMultipartUploadDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
-      expiration: (() {
-        final guardedValue = map['expiration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ObjectStorageBucketLifecycleRuleExpiration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      noncurrentVersionExpiration: (() {
-        final guardedValue = map['noncurrentVersionExpiration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      prefix: (() {
-        final guardedValue = map['prefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      expiration: (() { final guardedValue = map['expiration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ObjectStorageBucketLifecycleRuleExpiration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      noncurrentVersionExpiration: (() { final guardedValue = map['noncurrentVersionExpiration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      prefix: (() { final guardedValue = map['prefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

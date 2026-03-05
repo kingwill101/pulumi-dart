@@ -294,34 +294,24 @@ import 'vpc_dhcp_options_state.dart';
 class VpcDhcpOptions extends pulumi.CustomResource {
   /// The ARN of the DHCP Options Set.
   late final pulumi.Output<String> arn;
-
   /// the suffix domain name to use by default when resolving non Fully Qualified Domain Names. In other words, this is what ends up being the `search` value in the `/etc/resolv.conf` file.
   late final pulumi.Output<String?> domainName;
-
   /// List of name servers to configure in `/etc/resolv.conf`. If you want to use the default AWS nameservers you should set this to `AmazonProvidedDNS`.
   late final pulumi.Output<List<String>?> domainNameServers;
-
   /// How frequently, in seconds, a running instance with an IPv6 assigned to it goes through DHCPv6 lease renewal. Acceptable values are between 140 and 2147483647 (approximately 68 years). If no value is entered, the default lease time is 140 seconds. If you use long-term addressing for EC2 instances, you can increase the lease time and avoid frequent lease renewal requests. Lease renewal typically occurs when half of the lease time has elapsed.
   late final pulumi.Output<String?> ipv6AddressPreferredLeaseTime;
-
   /// List of NETBIOS name servers.
   late final pulumi.Output<List<String>?> netbiosNameServers;
-
   /// The NetBIOS node type (1, 2, 4, or 8). AWS recommends to specify 2 since broadcast and multicast are not supported in their network. For more information about these node types, see [RFC 2132](http://www.ietf.org/rfc/rfc2132.txt).
   late final pulumi.Output<String?> netbiosNodeType;
-
   /// List of NTP servers to configure.
   late final pulumi.Output<List<String>?> ntpServers;
-
   /// The ID of the AWS account that owns the DHCP options set.
   late final pulumi.Output<String> ownerId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -334,17 +324,15 @@ class VpcDhcpOptions extends pulumi.CustomResource {
     VpcDhcpOptionsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/vpcDhcpOptions:VpcDhcpOptions',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/vpcDhcpOptions:VpcDhcpOptions',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     domainName = registerOutput<String?>('domainName');
     domainNameServers = registerOutput<List<String>?>('domainNameServers');
-    ipv6AddressPreferredLeaseTime = registerOutput<String?>(
-      'ipv6AddressPreferredLeaseTime',
-    );
+    ipv6AddressPreferredLeaseTime = registerOutput<String?>('ipv6AddressPreferredLeaseTime');
     netbiosNameServers = registerOutput<List<String>?>('netbiosNameServers');
     netbiosNodeType = registerOutput<String?>('netbiosNodeType');
     ntpServers = registerOutput<List<String>?>('ntpServers');
@@ -372,17 +360,15 @@ class VpcDhcpOptions extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/vpcDhcpOptions:VpcDhcpOptions',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/vpcDhcpOptions:VpcDhcpOptions',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     domainName = registerOutput<String?>('domainName');
     domainNameServers = registerOutput<List<String>?>('domainNameServers');
-    ipv6AddressPreferredLeaseTime = registerOutput<String?>(
-      'ipv6AddressPreferredLeaseTime',
-    );
+    ipv6AddressPreferredLeaseTime = registerOutput<String?>('ipv6AddressPreferredLeaseTime');
     netbiosNameServers = registerOutput<List<String>?>('netbiosNameServers');
     netbiosNodeType = registerOutput<String?>('netbiosNodeType');
     ntpServers = registerOutput<List<String>?>('ntpServers');

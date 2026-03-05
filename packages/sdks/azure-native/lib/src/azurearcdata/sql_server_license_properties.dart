@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SqlServerLicenseProperties {
   /// The activation state of the license.
   final pulumi.Input<String> activationState;
-
   /// SQL Server license type.
   final pulumi.Input<String> billingPlan;
-
   /// This property represents the choice between SQL Server Core and ESU licenses.
   final pulumi.Input<String> licenseCategory;
-
   /// The number of total cores of the license covers.
   final pulumi.Input<int> physicalCores;
-
   /// The Azure scope to which the license will apply.
   final pulumi.Input<String> scopeType;
 
@@ -53,3 +49,4 @@ class SqlServerLicenseProperties {
     );
   }
 }
+

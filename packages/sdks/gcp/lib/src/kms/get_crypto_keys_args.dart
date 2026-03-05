@@ -16,27 +16,29 @@ class GetCryptoKeysArgs {
   ///
   /// [See the documentation about using filters](https://cloud.google.com/kms/docs/sorting-and-filtering)
   final pulumi.Input<String>? filter;
-
   /// The key ring that the keys belongs to. Format: 'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'.,
   final pulumi.Input<String> keyRing;
 
   /// Creates a new [GetCryptoKeysArgs].
   /// [filter] The filter argument is used to add a filter query parameter that limits which keys are retrieved by the data source: ?filter={{filter}}. When no value is provided there is no filtering.
   /// [keyRing] The key ring that the keys belongs to. Format: 'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'.,
-  GetCryptoKeysArgs({this.filter, required this.keyRing});
+  GetCryptoKeysArgs({
+    this.filter,
+    required this.keyRing,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'filter': ?filter, 'keyRing': keyRing};
+    return <String, dynamic>{
+      'filter': ?filter,
+      'keyRing': keyRing,
+    };
   }
 
   factory GetCryptoKeysArgs.fromMap(Map<String, dynamic> map) {
     return GetCryptoKeysArgs(
-      filter: (() {
-        final guardedValue = map['filter'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       keyRing: pulumi.Input.fromValue(map['keyRing'] as String),
     );
   }
 }
+

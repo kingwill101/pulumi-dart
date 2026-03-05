@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getTestResultVideoDownloadURL.
 class GetTestResultVideoDownloadURLResult {
   /// The download URL.
   final String downloadUrl;
-
   /// Expiry date of the download URL.
   final String expirationTime;
 
@@ -23,12 +23,11 @@ class GetTestResultVideoDownloadURLResult {
     };
   }
 
-  factory GetTestResultVideoDownloadURLResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetTestResultVideoDownloadURLResult.fromMap(Map<String, dynamic> map) {
     return GetTestResultVideoDownloadURLResult(
       downloadUrl: map['downloadUrl'] as String,
       expirationTime: map['expirationTime'] as String,
     );
   }
 }
+

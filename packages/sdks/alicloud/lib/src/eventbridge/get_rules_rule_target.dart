@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRulesRuleTarget {
   /// The endpoint.
   final pulumi.Input<String> endpoint;
-
   /// The id of target.
   final pulumi.Input<String> targetId;
-
   /// The type of target.
   final pulumi.Input<String> type;
 
@@ -38,3 +36,4 @@ class GetRulesRuleTarget {
     );
   }
 }
+

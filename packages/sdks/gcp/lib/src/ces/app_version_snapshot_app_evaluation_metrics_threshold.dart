@@ -7,12 +7,7 @@ class AppVersionSnapshotAppEvaluationMetricsThreshold {
   /// (Output)
   /// Settings for golden evaluations.
   /// Structure is documented below.
-  final pulumi.Input<
-    List<
-      AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThreshold
-    >
-  >?
-  goldenEvaluationMetricsThresholds;
+  final pulumi.Input<List<AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThreshold>>? goldenEvaluationMetricsThresholds;
 
   /// Creates a new [AppVersionSnapshotAppEvaluationMetricsThreshold].
   /// [goldenEvaluationMetricsThresholds] (Output)
@@ -22,42 +17,14 @@ class AppVersionSnapshotAppEvaluationMetricsThreshold {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'goldenEvaluationMetricsThresholds':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<
-              AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThreshold
-            >,
-            List<Map<String, dynamic>>
-          >(
-            goldenEvaluationMetricsThresholds,
-            (value) =>
-                pulumi.Input.encodeList<
-                  AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThreshold,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'goldenEvaluationMetricsThresholds': ?pulumi.Input.mapOptionalInputValue<List<AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThreshold>, List<Map<String, dynamic>>>(goldenEvaluationMetricsThresholds, (value) => pulumi.Input.encodeList<AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThreshold, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory AppVersionSnapshotAppEvaluationMetricsThreshold.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppVersionSnapshotAppEvaluationMetricsThreshold.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotAppEvaluationMetricsThreshold(
-      goldenEvaluationMetricsThresholds: (() {
-        final guardedValue = map['goldenEvaluationMetricsThresholds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThreshold
-          >(
-            guardedValue,
-            (value) =>
-                AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThreshold.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
+      goldenEvaluationMetricsThresholds: (() { final guardedValue = map['goldenEvaluationMetricsThresholds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThreshold>(guardedValue, (value) => AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThreshold.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

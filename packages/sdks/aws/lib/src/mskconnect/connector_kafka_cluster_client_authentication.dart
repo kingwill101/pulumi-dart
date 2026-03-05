@@ -8,21 +8,20 @@ class ConnectorKafkaClusterClientAuthentication {
 
   /// Creates a new [ConnectorKafkaClusterClientAuthentication].
   /// [authenticationType] The type of client authentication used to connect to the Apache Kafka cluster. Valid values: `IAM`, `NONE`. A value of `NONE` means that no client authentication is used. The default value is `NONE`.
-  ConnectorKafkaClusterClientAuthentication({this.authenticationType});
+  ConnectorKafkaClusterClientAuthentication({
+    this.authenticationType,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'authenticationType': ?authenticationType};
+    return <String, dynamic>{
+      'authenticationType': ?authenticationType,
+    };
   }
 
-  factory ConnectorKafkaClusterClientAuthentication.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConnectorKafkaClusterClientAuthentication.fromMap(Map<String, dynamic> map) {
     return ConnectorKafkaClusterClientAuthentication(
-      authenticationType: (() {
-        final guardedValue = map['authenticationType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      authenticationType: (() { final guardedValue = map['authenticationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PipeTargetParametersEcsTaskParametersOverridesInferenceAcceleratorOverride {
   /// The Elastic Inference accelerator device name to override for the task. This parameter must match a deviceName specified in the task definition.
   final pulumi.Input<String>? deviceName;
-
   /// The Elastic Inference accelerator type to use.
   final pulumi.Input<String>? deviceType;
 
@@ -24,20 +23,11 @@ class PipeTargetParametersEcsTaskParametersOverridesInferenceAcceleratorOverride
     };
   }
 
-  factory PipeTargetParametersEcsTaskParametersOverridesInferenceAcceleratorOverride.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PipeTargetParametersEcsTaskParametersOverridesInferenceAcceleratorOverride.fromMap(Map<String, dynamic> map) {
     return PipeTargetParametersEcsTaskParametersOverridesInferenceAcceleratorOverride(
-      deviceName: (() {
-        final guardedValue = map['deviceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      deviceType: (() {
-        final guardedValue = map['deviceType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      deviceName: (() { final guardedValue = map['deviceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deviceType: (() { final guardedValue = map['deviceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

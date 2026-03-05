@@ -259,67 +259,46 @@ import 'container_recipe_target_repository.dart';
 class ContainerRecipe extends pulumi.CustomResource {
   /// (Required) Amazon Resource Name (ARN) of the container recipe.
   late final pulumi.Output<String> arn;
-
   /// Ordered configuration block(s) with components for the container recipe. Detailed below.
   late final pulumi.Output<List<Map<String, dynamic>>> components;
-
   /// The type of the container to create. Valid values: `DOCKER`.
   late final pulumi.Output<String> containerType;
-
   /// Date the container recipe was created.
   late final pulumi.Output<String> dateCreated;
-
   /// The description of the container recipe.
   late final pulumi.Output<String?> description;
-
   /// The Dockerfile template used to build the image as an inline data blob.
   late final pulumi.Output<String> dockerfileTemplateData;
-
   /// The Amazon S3 URI for the Dockerfile that will be used to build the container image.
   late final pulumi.Output<String?> dockerfileTemplateUri;
-
   /// A flag that indicates if the target container is encrypted.
   late final pulumi.Output<bool> encrypted;
-
   /// Configuration block used to configure an instance for building and testing container images. Detailed below.
-  late final pulumi.Output<ContainerRecipeInstanceConfiguration?>
-  instanceConfiguration;
-
+  late final pulumi.Output<ContainerRecipeInstanceConfiguration?> instanceConfiguration;
   /// The KMS key used to encrypt the container image.
   late final pulumi.Output<String?> kmsKeyId;
-
   /// The name of the container recipe.
   late final pulumi.Output<String> name;
-
   /// Owner of the container recipe.
   late final pulumi.Output<String> owner;
-
   /// The base image for the container recipe.
   late final pulumi.Output<String> parentImage;
-
   /// Platform of the container recipe.
   late final pulumi.Output<String> platform;
-
   /// Specifies the operating system platform when you use a custom base image.
   late final pulumi.Output<String?> platformOverride;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Key-value map of resource tags for the container recipe. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// The destination repository for the container image. Detailed below.
   late final pulumi.Output<ContainerRecipeTargetRepository> targetRepository;
-
   /// Version of the container recipe.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> version;
-
   /// The working directory to be used during build and test workflows.
   late final pulumi.Output<String?> workingDirectory;
 
@@ -332,11 +311,11 @@ class ContainerRecipe extends pulumi.CustomResource {
     ContainerRecipeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:imagebuilder/containerRecipe:ContainerRecipe',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:imagebuilder/containerRecipe:ContainerRecipe',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     components = registerOutput<List<Map<String, dynamic>>>('components');
     containerType = registerOutput<String>('containerType');
@@ -345,17 +324,7 @@ class ContainerRecipe extends pulumi.CustomResource {
     dockerfileTemplateData = registerOutput<String>('dockerfileTemplateData');
     dockerfileTemplateUri = registerOutput<String?>('dockerfileTemplateUri');
     encrypted = registerOutput<bool>('encrypted');
-    instanceConfiguration =
-        registerOutput<ContainerRecipeInstanceConfiguration?>(
-          'instanceConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ContainerRecipeInstanceConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    instanceConfiguration = registerOutput<ContainerRecipeInstanceConfiguration?>('instanceConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerRecipeInstanceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kmsKeyId = registerOutput<String?>('kmsKeyId');
     this.name = registerOutput<String>('name');
     owner = registerOutput<String>('owner');
@@ -365,16 +334,7 @@ class ContainerRecipe extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    targetRepository = registerOutput<ContainerRecipeTargetRepository>(
-      'targetRepository',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ContainerRecipeTargetRepository.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    targetRepository = registerOutput<ContainerRecipeTargetRepository>('targetRepository', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerRecipeTargetRepository.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     version = registerOutput<String>('version');
     workingDirectory = registerOutput<String?>('workingDirectory');
   }
@@ -397,11 +357,11 @@ class ContainerRecipe extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:imagebuilder/containerRecipe:ContainerRecipe',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:imagebuilder/containerRecipe:ContainerRecipe',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     components = registerOutput<List<Map<String, dynamic>>>('components');
     containerType = registerOutput<String>('containerType');
@@ -410,17 +370,7 @@ class ContainerRecipe extends pulumi.CustomResource {
     dockerfileTemplateData = registerOutput<String>('dockerfileTemplateData');
     dockerfileTemplateUri = registerOutput<String?>('dockerfileTemplateUri');
     encrypted = registerOutput<bool>('encrypted');
-    instanceConfiguration =
-        registerOutput<ContainerRecipeInstanceConfiguration?>(
-          'instanceConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ContainerRecipeInstanceConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    instanceConfiguration = registerOutput<ContainerRecipeInstanceConfiguration?>('instanceConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerRecipeInstanceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kmsKeyId = registerOutput<String?>('kmsKeyId');
     this.name = registerOutput<String>('name');
     owner = registerOutput<String>('owner');
@@ -430,16 +380,7 @@ class ContainerRecipe extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    targetRepository = registerOutput<ContainerRecipeTargetRepository>(
-      'targetRepository',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ContainerRecipeTargetRepository.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    targetRepository = registerOutput<ContainerRecipeTargetRepository>('targetRepository', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerRecipeTargetRepository.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     version = registerOutput<String>('version');
     workingDirectory = registerOutput<String?>('workingDirectory');
   }

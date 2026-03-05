@@ -12,10 +12,14 @@ class GetAttestationAtSubscriptionArgs {
 
   /// Creates a new [GetAttestationAtSubscriptionArgs].
   /// [attestationName] The name of the attestation.
-  GetAttestationAtSubscriptionArgs({required this.attestationName});
+  GetAttestationAtSubscriptionArgs({
+    required this.attestationName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'attestationName': attestationName};
+    return <String, dynamic>{
+      'attestationName': attestationName,
+    };
   }
 
   factory GetAttestationAtSubscriptionArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetAttestationAtSubscriptionArgs {
     );
   }
 }
+

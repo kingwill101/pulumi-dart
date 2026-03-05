@@ -13,25 +13,18 @@ import 'yum_repository.dart';
 class RemoteRepositoryConfig {
   /// Specific settings for an Apt remote repository.
   final pulumi.Input<AptRepository>? aptRepository;
-
   /// The description of the remote source.
   final pulumi.Input<String>? description;
-
   /// Specific settings for a Docker remote repository.
   final pulumi.Input<DockerRepository>? dockerRepository;
-
   /// Specific settings for a Maven remote repository.
   final pulumi.Input<MavenRepository>? mavenRepository;
-
   /// Specific settings for an Npm remote repository.
   final pulumi.Input<NpmRepository>? npmRepository;
-
   /// Specific settings for a Python remote repository.
   final pulumi.Input<PythonRepository>? pythonRepository;
-
   /// Optional. The credentials used to access the remote repository.
   final pulumi.Input<UpstreamCredentials>? upstreamCredentials;
-
   /// Specific settings for a Yum remote repository.
   final pulumi.Input<YumRepository>? yumRepository;
 
@@ -57,109 +50,28 @@ class RemoteRepositoryConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'aptRepository':
-          ?pulumi.Input.mapOptionalInputValue<
-            AptRepository,
-            Map<String, dynamic>
-          >(aptRepository, (value) => value.toMap()),
+      'aptRepository': ?pulumi.Input.mapOptionalInputValue<AptRepository, Map<String, dynamic>>(aptRepository, (value) => value.toMap()),
       'description': ?description,
-      'dockerRepository':
-          ?pulumi.Input.mapOptionalInputValue<
-            DockerRepository,
-            Map<String, dynamic>
-          >(dockerRepository, (value) => value.toMap()),
-      'mavenRepository':
-          ?pulumi.Input.mapOptionalInputValue<
-            MavenRepository,
-            Map<String, dynamic>
-          >(mavenRepository, (value) => value.toMap()),
-      'npmRepository':
-          ?pulumi.Input.mapOptionalInputValue<
-            NpmRepository,
-            Map<String, dynamic>
-          >(npmRepository, (value) => value.toMap()),
-      'pythonRepository':
-          ?pulumi.Input.mapOptionalInputValue<
-            PythonRepository,
-            Map<String, dynamic>
-          >(pythonRepository, (value) => value.toMap()),
-      'upstreamCredentials':
-          ?pulumi.Input.mapOptionalInputValue<
-            UpstreamCredentials,
-            Map<String, dynamic>
-          >(upstreamCredentials, (value) => value.toMap()),
-      'yumRepository':
-          ?pulumi.Input.mapOptionalInputValue<
-            YumRepository,
-            Map<String, dynamic>
-          >(yumRepository, (value) => value.toMap()),
+      'dockerRepository': ?pulumi.Input.mapOptionalInputValue<DockerRepository, Map<String, dynamic>>(dockerRepository, (value) => value.toMap()),
+      'mavenRepository': ?pulumi.Input.mapOptionalInputValue<MavenRepository, Map<String, dynamic>>(mavenRepository, (value) => value.toMap()),
+      'npmRepository': ?pulumi.Input.mapOptionalInputValue<NpmRepository, Map<String, dynamic>>(npmRepository, (value) => value.toMap()),
+      'pythonRepository': ?pulumi.Input.mapOptionalInputValue<PythonRepository, Map<String, dynamic>>(pythonRepository, (value) => value.toMap()),
+      'upstreamCredentials': ?pulumi.Input.mapOptionalInputValue<UpstreamCredentials, Map<String, dynamic>>(upstreamCredentials, (value) => value.toMap()),
+      'yumRepository': ?pulumi.Input.mapOptionalInputValue<YumRepository, Map<String, dynamic>>(yumRepository, (value) => value.toMap()),
     };
   }
 
   factory RemoteRepositoryConfig.fromMap(Map<String, dynamic> map) {
     return RemoteRepositoryConfig(
-      aptRepository: (() {
-        final guardedValue = map['aptRepository'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AptRepository.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dockerRepository: (() {
-        final guardedValue = map['dockerRepository'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DockerRepository.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      mavenRepository: (() {
-        final guardedValue = map['mavenRepository'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          MavenRepository.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      npmRepository: (() {
-        final guardedValue = map['npmRepository'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          NpmRepository.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      pythonRepository: (() {
-        final guardedValue = map['pythonRepository'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PythonRepository.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      upstreamCredentials: (() {
-        final guardedValue = map['upstreamCredentials'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          UpstreamCredentials.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      yumRepository: (() {
-        final guardedValue = map['yumRepository'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          YumRepository.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
+      aptRepository: (() { final guardedValue = map['aptRepository']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AptRepository.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dockerRepository: (() { final guardedValue = map['dockerRepository']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DockerRepository.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      mavenRepository: (() { final guardedValue = map['mavenRepository']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MavenRepository.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      npmRepository: (() { final guardedValue = map['npmRepository']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NpmRepository.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      pythonRepository: (() { final guardedValue = map['pythonRepository']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PythonRepository.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      upstreamCredentials: (() { final guardedValue = map['upstreamCredentials']; if (guardedValue == null) return null; return pulumi.Input.fromValue(UpstreamCredentials.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      yumRepository: (() { final guardedValue = map['yumRepository']; if (guardedValue == null) return null; return pulumi.Input.fromValue(YumRepository.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

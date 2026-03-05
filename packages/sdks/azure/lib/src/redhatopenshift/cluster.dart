@@ -23,37 +23,26 @@ import 'cluster_worker_profile.dart';
 class Cluster extends pulumi.CustomResource {
   /// An `api_server_profile` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<ClusterApiServerProfile> apiServerProfile;
-
   /// A `cluster_profile` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<ClusterClusterProfile> clusterProfile;
-
   /// The Red Hat OpenShift cluster console URL.
   late final pulumi.Output<String> consoleUrl;
-
   /// An `ingress_profile` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<ClusterIngressProfile> ingressProfile;
-
   /// The location where the Azure Red Hat OpenShift Cluster should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// A `main_profile` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<ClusterMainProfile> mainProfile;
-
   /// The name of the Azure Red Hat OpenShift Cluster to create. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// A `network_profile` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<ClusterNetworkProfile> networkProfile;
-
   /// Specifies the Resource Group where the Azure Red Hat OpenShift Cluster should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A `service_principal` block as defined below.
   late final pulumi.Output<ClusterServicePrincipal> servicePrincipal;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A `worker_profile` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<ClusterWorkerProfile> workerProfile;
 
@@ -66,86 +55,23 @@ class Cluster extends pulumi.CustomResource {
     ClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:redhatopenshift/cluster:Cluster',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    apiServerProfile = registerOutput<ClusterApiServerProfile>(
-      'apiServerProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterApiServerProfile.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    clusterProfile = registerOutput<ClusterClusterProfile>(
-      'clusterProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterClusterProfile.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:redhatopenshift/cluster:Cluster',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    apiServerProfile = registerOutput<ClusterApiServerProfile>('apiServerProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterApiServerProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    clusterProfile = registerOutput<ClusterClusterProfile>('clusterProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterClusterProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     consoleUrl = registerOutput<String>('consoleUrl');
-    ingressProfile = registerOutput<ClusterIngressProfile>(
-      'ingressProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterIngressProfile.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    ingressProfile = registerOutput<ClusterIngressProfile>('ingressProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterIngressProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
-    mainProfile = registerOutput<ClusterMainProfile>(
-      'mainProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterMainProfile.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    mainProfile = registerOutput<ClusterMainProfile>('mainProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterMainProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    networkProfile = registerOutput<ClusterNetworkProfile>(
-      'networkProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterNetworkProfile.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    networkProfile = registerOutput<ClusterNetworkProfile>('networkProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterNetworkProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    servicePrincipal = registerOutput<ClusterServicePrincipal>(
-      'servicePrincipal',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterServicePrincipal.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    servicePrincipal = registerOutput<ClusterServicePrincipal>('servicePrincipal', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterServicePrincipal.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
-    workerProfile = registerOutput<ClusterWorkerProfile>(
-      'workerProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterWorkerProfile.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    workerProfile = registerOutput<ClusterWorkerProfile>('workerProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterWorkerProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [Cluster] resource's state with the given [name] and [id].
@@ -166,85 +92,22 @@ class Cluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:redhatopenshift/cluster:Cluster',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    apiServerProfile = registerOutput<ClusterApiServerProfile>(
-      'apiServerProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterApiServerProfile.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    clusterProfile = registerOutput<ClusterClusterProfile>(
-      'clusterProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterClusterProfile.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:redhatopenshift/cluster:Cluster',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    apiServerProfile = registerOutput<ClusterApiServerProfile>('apiServerProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterApiServerProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    clusterProfile = registerOutput<ClusterClusterProfile>('clusterProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterClusterProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     consoleUrl = registerOutput<String>('consoleUrl');
-    ingressProfile = registerOutput<ClusterIngressProfile>(
-      'ingressProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterIngressProfile.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    ingressProfile = registerOutput<ClusterIngressProfile>('ingressProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterIngressProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
-    mainProfile = registerOutput<ClusterMainProfile>(
-      'mainProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterMainProfile.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    mainProfile = registerOutput<ClusterMainProfile>('mainProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterMainProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    networkProfile = registerOutput<ClusterNetworkProfile>(
-      'networkProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterNetworkProfile.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    networkProfile = registerOutput<ClusterNetworkProfile>('networkProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterNetworkProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    servicePrincipal = registerOutput<ClusterServicePrincipal>(
-      'servicePrincipal',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterServicePrincipal.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    servicePrincipal = registerOutput<ClusterServicePrincipal>('servicePrincipal', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterServicePrincipal.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
-    workerProfile = registerOutput<ClusterWorkerProfile>(
-      'workerProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterWorkerProfile.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    workerProfile = registerOutput<ClusterWorkerProfile>('workerProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterWorkerProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

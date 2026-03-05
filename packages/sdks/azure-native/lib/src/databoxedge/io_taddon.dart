@@ -140,35 +140,25 @@ import 'system_data_response.dart';
 class IoTAddon extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Host OS supported by the IoT addon.
   late final pulumi.Output<String> hostPlatform;
-
   /// Platform where the runtime is hosted.
   late final pulumi.Output<String> hostPlatformType;
-
   /// IoT device metadata to which appliance needs to be connected.
   late final pulumi.Output<IoTDeviceInfoResponse> ioTDeviceDetails;
-
   /// IoT edge device to which the IoT Addon needs to be configured.
   late final pulumi.Output<IoTDeviceInfoResponse> ioTEdgeDeviceDetails;
-
   /// Addon type.
   /// Expected value is 'IotEdge'.
   late final pulumi.Output<String> kind;
-
   /// The object name.
   late final pulumi.Output<String> name;
-
   /// Addon Provisioning State
   late final pulumi.Output<String> provisioningState;
-
   /// Metadata pertaining to creation and last modification of Addon
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The hierarchical type of the object.
   late final pulumi.Output<String> type;
-
   /// Version of IoT running on the appliance.
   late final pulumi.Output<String> version;
 
@@ -181,47 +171,20 @@ class IoTAddon extends pulumi.CustomResource {
     IoTAddonArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:databoxedge:IoTAddon',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:databoxedge:IoTAddon',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     hostPlatform = registerOutput<String>('hostPlatform');
     hostPlatformType = registerOutput<String>('hostPlatformType');
-    ioTDeviceDetails = registerOutput<IoTDeviceInfoResponse>(
-      'ioTDeviceDetails',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IoTDeviceInfoResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    ioTEdgeDeviceDetails = registerOutput<IoTDeviceInfoResponse>(
-      'ioTEdgeDeviceDetails',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IoTDeviceInfoResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    ioTDeviceDetails = registerOutput<IoTDeviceInfoResponse>('ioTDeviceDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IoTDeviceInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ioTEdgeDeviceDetails = registerOutput<IoTDeviceInfoResponse>('ioTEdgeDeviceDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IoTDeviceInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     version = registerOutput<String>('version');
   }

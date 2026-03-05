@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworkSecurityPerimeterAssociationArgs {
   /// The name of the NSP association.
   final pulumi.Input<String> associationName;
-
   /// The name of the network security perimeter.
   final pulumi.Input<String> networkSecurityPerimeterName;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,17 +32,12 @@ class GetNetworkSecurityPerimeterAssociationArgs {
     };
   }
 
-  factory GetNetworkSecurityPerimeterAssociationArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetNetworkSecurityPerimeterAssociationArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkSecurityPerimeterAssociationArgs(
       associationName: pulumi.Input.fromValue(map['associationName'] as String),
-      networkSecurityPerimeterName: pulumi.Input.fromValue(
-        map['networkSecurityPerimeterName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      networkSecurityPerimeterName: pulumi.Input.fromValue(map['networkSecurityPerimeterName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

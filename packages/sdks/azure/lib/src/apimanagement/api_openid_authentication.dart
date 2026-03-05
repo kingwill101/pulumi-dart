@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApiOpenidAuthentication {
   /// How to send token to the server. A list of zero or more methods. Valid values are `authorizationHeader` and `query`.
   final pulumi.Input<List<String>>? bearerTokenSendingMethods;
-
   /// OpenID Connect provider identifier. The name of an OpenID Connect Provider.
   final pulumi.Input<String> openidProviderName;
 
@@ -26,14 +25,9 @@ class ApiOpenidAuthentication {
 
   factory ApiOpenidAuthentication.fromMap(Map<String, dynamic> map) {
     return ApiOpenidAuthentication(
-      bearerTokenSendingMethods: (() {
-        final guardedValue = map['bearerTokenSendingMethods'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      openidProviderName: pulumi.Input.fromValue(
-        map['openidProviderName'] as String,
-      ),
+      bearerTokenSendingMethods: (() { final guardedValue = map['bearerTokenSendingMethods']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      openidProviderName: pulumi.Input.fromValue(map['openidProviderName'] as String),
     );
   }
 }
+

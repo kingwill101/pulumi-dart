@@ -6,14 +6,11 @@ import 'cx_test_case_test_case_conversation_turn_user_input_input.dart';
 class CxTestCaseTestCaseConversationTurnUserInput {
   /// Whether sentiment analysis is enabled.
   final pulumi.Input<bool>? enableSentimentAnalysis;
-
   /// Parameters that need to be injected into the conversation during intent detection.
   final pulumi.Input<String>? injectedParameters;
-
   /// User input. Supports text input, event input, dtmf input in the test case.
   /// Structure is documented below.
   final pulumi.Input<CxTestCaseTestCaseConversationTurnUserInputInput>? input;
-
   /// If webhooks should be allowed to trigger in response to the user utterance. Often if parameters are injected, webhooks should not be enabled.
   final pulumi.Input<bool>? isWebhookEnabled;
 
@@ -33,43 +30,18 @@ class CxTestCaseTestCaseConversationTurnUserInput {
     return <String, dynamic>{
       'enableSentimentAnalysis': ?enableSentimentAnalysis,
       'injectedParameters': ?injectedParameters,
-      'input':
-          ?pulumi.Input.mapOptionalInputValue<
-            CxTestCaseTestCaseConversationTurnUserInputInput,
-            Map<String, dynamic>
-          >(input, (value) => value.toMap()),
+      'input': ?pulumi.Input.mapOptionalInputValue<CxTestCaseTestCaseConversationTurnUserInputInput, Map<String, dynamic>>(input, (value) => value.toMap()),
       'isWebhookEnabled': ?isWebhookEnabled,
     };
   }
 
-  factory CxTestCaseTestCaseConversationTurnUserInput.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CxTestCaseTestCaseConversationTurnUserInput.fromMap(Map<String, dynamic> map) {
     return CxTestCaseTestCaseConversationTurnUserInput(
-      enableSentimentAnalysis: (() {
-        final guardedValue = map['enableSentimentAnalysis'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      injectedParameters: (() {
-        final guardedValue = map['injectedParameters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      input: (() {
-        final guardedValue = map['input'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CxTestCaseTestCaseConversationTurnUserInputInput.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      isWebhookEnabled: (() {
-        final guardedValue = map['isWebhookEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enableSentimentAnalysis: (() { final guardedValue = map['enableSentimentAnalysis']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      injectedParameters: (() { final guardedValue = map['injectedParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      input: (() { final guardedValue = map['input']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CxTestCaseTestCaseConversationTurnUserInputInput.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      isWebhookEnabled: (() { final guardedValue = map['isWebhookEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

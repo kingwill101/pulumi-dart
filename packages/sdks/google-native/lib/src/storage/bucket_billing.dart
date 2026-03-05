@@ -9,19 +9,20 @@ class BucketBilling {
 
   /// Creates a new [BucketBilling].
   /// [requesterPays] When set to true, Requester Pays is enabled for this bucket.
-  BucketBilling({this.requesterPays});
+  BucketBilling({
+    this.requesterPays,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'requesterPays': ?requesterPays};
+    return <String, dynamic>{
+      'requesterPays': ?requesterPays,
+    };
   }
 
   factory BucketBilling.fromMap(Map<String, dynamic> map) {
     return BucketBilling(
-      requesterPays: (() {
-        final guardedValue = map['requesterPays'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      requesterPays: (() { final guardedValue = map['requesterPays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

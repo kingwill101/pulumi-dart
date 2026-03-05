@@ -254,22 +254,16 @@ import 'data_lake_gen2_path_state.dart';
 class DataLakeGen2Path extends pulumi.CustomResource {
   /// One or more `ace` blocks as defined below to specify the entries for the ACL for the path.
   late final pulumi.Output<List<Map<String, dynamic>>> aces;
-
   /// The name of the Data Lake Gen2 File System which should be created within the Storage Account. Must be unique within the storage account the queue is located. Changing this forces a new resource to be created.
   late final pulumi.Output<String> filesystemName;
-
   /// Specifies the Object ID of the Azure Active Directory Group to make the owning group. Possible values also include `$superuser`.
   late final pulumi.Output<String> group;
-
   /// Specifies the Object ID of the Azure Active Directory User to make the owning user. Possible values also include `$superuser`.
   late final pulumi.Output<String> owner;
-
   /// The path which should be created within the Data Lake Gen2 File System in the Storage Account. Changing this forces a new resource to be created.
   late final pulumi.Output<String> path;
-
   /// Specifies the type for path to create. Currently only `directory` is supported. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resource;
-
   /// Specifies the ID of the Storage Account in which the Data Lake Gen2 File System should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> storageAccountId;
 
@@ -282,11 +276,11 @@ class DataLakeGen2Path extends pulumi.CustomResource {
     DataLakeGen2PathArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:storage/dataLakeGen2Path:DataLakeGen2Path',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:storage/dataLakeGen2Path:DataLakeGen2Path',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aces = registerOutput<List<Map<String, dynamic>>>('aces');
     filesystemName = registerOutput<String>('filesystemName');
     group = registerOutput<String>('group');
@@ -314,11 +308,11 @@ class DataLakeGen2Path extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:storage/dataLakeGen2Path:DataLakeGen2Path',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:storage/dataLakeGen2Path:DataLakeGen2Path',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aces = registerOutput<List<Map<String, dynamic>>>('aces');
     filesystemName = registerOutput<String>('filesystemName');
     group = registerOutput<String>('group');

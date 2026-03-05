@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SynapseNotebookReferenceResponse {
   /// Reference notebook name. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> referenceName;
-
   /// Synapse notebook reference type.
   final pulumi.Input<String> type;
 
@@ -19,7 +18,10 @@ class SynapseNotebookReferenceResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'referenceName': referenceName, 'type': type};
+    return <String, dynamic>{
+      'referenceName': referenceName,
+      'type': type,
+    };
   }
 
   factory SynapseNotebookReferenceResponse.fromMap(Map<String, dynamic> map) {
@@ -29,3 +31,4 @@ class SynapseNotebookReferenceResponse {
     );
   }
 }
+

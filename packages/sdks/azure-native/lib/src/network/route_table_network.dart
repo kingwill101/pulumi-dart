@@ -289,34 +289,24 @@ import 'route_table_args.dart';
 class RouteTableNetwork extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Whether to disable the routes learned by BGP on that route table. True means disable.
   late final pulumi.Output<bool?> disableBgpRoutePropagation;
-
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
-
   /// Resource location.
   late final pulumi.Output<String?> location;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// The provisioning state of the route table resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The resource GUID property of the route table.
   late final pulumi.Output<String> resourceGuid;
-
   /// Collection of routes contained within a route table.
   late final pulumi.Output<List<Map<String, dynamic>>?> routes;
-
   /// A collection of references to subnets.
   late final pulumi.Output<List<Map<String, dynamic>>> subnets;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -329,15 +319,13 @@ class RouteTableNetwork extends pulumi.CustomResource {
     RouteTableArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:network:RouteTable',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:network:RouteTable',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    disableBgpRoutePropagation = registerOutput<bool?>(
-      'disableBgpRoutePropagation',
-    );
+    disableBgpRoutePropagation = registerOutput<bool?>('disableBgpRoutePropagation');
     etag = registerOutput<String>('etag');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');

@@ -12,8 +12,7 @@ enum ManagedServiceIdentitySelectorType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ManagedServiceIdentitySelectorType value: $value',
-    );
+    throw ArgumentError('Unknown ManagedServiceIdentitySelectorType value: $value');
   }
 }
+

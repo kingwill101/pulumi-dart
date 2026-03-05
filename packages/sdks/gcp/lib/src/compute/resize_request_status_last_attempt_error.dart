@@ -11,41 +11,20 @@ class ResizeRequestStatusLastAttemptError {
 
   /// Creates a new [ResizeRequestStatusLastAttemptError].
   /// [errors] (Output)
-  ResizeRequestStatusLastAttemptError({this.errors});
+  ResizeRequestStatusLastAttemptError({
+    this.errors,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'errors':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ResizeRequestStatusLastAttemptErrorError>,
-            List<Map<String, dynamic>>
-          >(
-            errors,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ResizeRequestStatusLastAttemptErrorError,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'errors': ?pulumi.Input.mapOptionalInputValue<List<ResizeRequestStatusLastAttemptErrorError>, List<Map<String, dynamic>>>(errors, (value) => pulumi.Input.encodeList<ResizeRequestStatusLastAttemptErrorError, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory ResizeRequestStatusLastAttemptError.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResizeRequestStatusLastAttemptError.fromMap(Map<String, dynamic> map) {
     return ResizeRequestStatusLastAttemptError(
-      errors: (() {
-        final guardedValue = map['errors'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ResizeRequestStatusLastAttemptErrorError>(
-            guardedValue,
-            (value) => ResizeRequestStatusLastAttemptErrorError.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      errors: (() { final guardedValue = map['errors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ResizeRequestStatusLastAttemptErrorError>(guardedValue, (value) => ResizeRequestStatusLastAttemptErrorError.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

@@ -5,28 +5,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLoadBalancersBalancerZoneMappingLoadBalancerAddress {
   /// IPv4 address.
   final pulumi.Input<String> address;
-
   /// The elastic IP address (EIP).
   final pulumi.Input<String> allocationId;
-
   /// The type of EIP.
   final pulumi.Input<String> eipType;
-
   /// The private IPv4 address.
   final pulumi.Input<String> intranetAddress;
-
   /// The health status of the private IPv4 address of the ALB instance.
   final pulumi.Input<String> intranetAddressHcStatus;
-
   /// The IPv4 link-local addresses.
   final pulumi.Input<List<String>> ipv4LocalAddresses;
-
   /// IPv6 address.
   final pulumi.Input<String> ipv6Address;
-
   /// The health status of the private IPv6 address of the ALB instance.
   final pulumi.Input<String> ipv6AddressHcStatus;
-
   /// The IPv6 link-local addresses.
   final pulumi.Input<List<String>> ipv6LocalAddresses;
 
@@ -66,27 +58,18 @@ class GetLoadBalancersBalancerZoneMappingLoadBalancerAddress {
     };
   }
 
-  factory GetLoadBalancersBalancerZoneMappingLoadBalancerAddress.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetLoadBalancersBalancerZoneMappingLoadBalancerAddress.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancersBalancerZoneMappingLoadBalancerAddress(
       address: pulumi.Input.fromValue(map['address'] as String),
       allocationId: pulumi.Input.fromValue(map['allocationId'] as String),
       eipType: pulumi.Input.fromValue(map['eipType'] as String),
       intranetAddress: pulumi.Input.fromValue(map['intranetAddress'] as String),
-      intranetAddressHcStatus: pulumi.Input.fromValue(
-        map['intranetAddressHcStatus'] as String,
-      ),
-      ipv4LocalAddresses: pulumi.Input.fromValue(
-        (map['ipv4LocalAddresses'] as List).cast<String>(),
-      ),
+      intranetAddressHcStatus: pulumi.Input.fromValue(map['intranetAddressHcStatus'] as String),
+      ipv4LocalAddresses: pulumi.Input.fromValue((map['ipv4LocalAddresses'] as List).cast<String>()),
       ipv6Address: pulumi.Input.fromValue(map['ipv6Address'] as String),
-      ipv6AddressHcStatus: pulumi.Input.fromValue(
-        map['ipv6AddressHcStatus'] as String,
-      ),
-      ipv6LocalAddresses: pulumi.Input.fromValue(
-        (map['ipv6LocalAddresses'] as List).cast<String>(),
-      ),
+      ipv6AddressHcStatus: pulumi.Input.fromValue(map['ipv6AddressHcStatus'] as String),
+      ipv6LocalAddresses: pulumi.Input.fromValue((map['ipv6LocalAddresses'] as List).cast<String>()),
     );
   }
 }
+

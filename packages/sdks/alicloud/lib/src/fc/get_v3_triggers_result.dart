@@ -6,18 +6,14 @@ import 'get_v3_triggers_trigger.dart';
 /// Result data returned by getV3Triggers.
 class GetV3TriggersResult {
   final String functionName;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of Trigger IDs.
   final List<String> ids;
   final String? nameRegex;
-
   /// A list of name of Triggers.
   final List<String> names;
   final String? outputFile;
-
   /// A list of Trigger Entries. Each element contains the following attributes:
   final List<GetV3TriggersTrigger> triggers;
 
@@ -47,11 +43,7 @@ class GetV3TriggersResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'triggers':
-          pulumi.Input.encodeList<GetV3TriggersTrigger, Map<String, dynamic>>(
-            triggers,
-            (value) => value.toMap(),
-          ),
+      'triggers': pulumi.Input.encodeList<GetV3TriggersTrigger, Map<String, dynamic>>(triggers, (value) => value.toMap()),
     };
   }
 
@@ -60,23 +52,11 @@ class GetV3TriggersResult {
       functionName: map['functionName'] as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      triggers: pulumi.Input.decodeList<GetV3TriggersTrigger>(
-        map['triggers']!,
-        (value) => GetV3TriggersTrigger.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      triggers: pulumi.Input.decodeList<GetV3TriggersTrigger>(map['triggers']!, (value) => GetV3TriggersTrigger.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

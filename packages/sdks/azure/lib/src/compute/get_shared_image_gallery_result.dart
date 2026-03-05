@@ -1,22 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getSharedImageGallery.
 class GetSharedImageGalleryResult {
   /// A description for the Shared Image Gallery.
   final String description;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of Shared Image names within this Shared Image Gallery.
   final List<String> imageNames;
   final String location;
   final String name;
   final String resourceGroupName;
-
   /// A mapping of tags which are assigned to the Shared Image Gallery.
   final Map<String, String> tags;
-
   /// The unique name assigned to the Shared Image Gallery.
   final String uniqueName;
 
@@ -66,3 +63,4 @@ class GetSharedImageGalleryResult {
     );
   }
 }
+

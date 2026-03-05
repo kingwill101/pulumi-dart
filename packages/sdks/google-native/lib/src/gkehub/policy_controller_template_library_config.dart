@@ -6,36 +6,24 @@ import 'policy_controller_template_library_config_installation.dart';
 /// The config specifying which default library templates to install.
 class PolicyControllerTemplateLibraryConfig {
   /// Configures the manner in which the template library is installed on the cluster.
-  final pulumi.Input<PolicyControllerTemplateLibraryConfigInstallation>?
-  installation;
+  final pulumi.Input<PolicyControllerTemplateLibraryConfigInstallation>? installation;
 
   /// Creates a new [PolicyControllerTemplateLibraryConfig].
   /// [installation] Configures the manner in which the template library is installed on the cluster.
-  PolicyControllerTemplateLibraryConfig({this.installation});
+  PolicyControllerTemplateLibraryConfig({
+    this.installation,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'installation':
-          ?pulumi.Input.mapOptionalInputValue<
-            PolicyControllerTemplateLibraryConfigInstallation,
-            String
-          >(installation, (value) => value.wireValue),
+      'installation': ?pulumi.Input.mapOptionalInputValue<PolicyControllerTemplateLibraryConfigInstallation, String>(installation, (value) => value.wireValue),
     };
   }
 
-  factory PolicyControllerTemplateLibraryConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PolicyControllerTemplateLibraryConfig.fromMap(Map<String, dynamic> map) {
     return PolicyControllerTemplateLibraryConfig(
-      installation: (() {
-        final guardedValue = map['installation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PolicyControllerTemplateLibraryConfigInstallation.fromValue(
-            guardedValue as String,
-          ),
-        );
-      })(),
+      installation: (() { final guardedValue = map['installation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PolicyControllerTemplateLibraryConfigInstallation.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

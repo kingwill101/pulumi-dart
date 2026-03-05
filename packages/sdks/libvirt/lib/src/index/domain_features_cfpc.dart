@@ -8,10 +8,14 @@ class DomainFeaturesCfpc {
 
   /// Creates a new [DomainFeaturesCfpc].
   /// [value] Sets the specific value associated with the CFPC feature.
-  DomainFeaturesCfpc({required this.value});
+  DomainFeaturesCfpc({
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': value};
+    return <String, dynamic>{
+      'value': value,
+    };
   }
 
   factory DomainFeaturesCfpc.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class DomainFeaturesCfpc {
     );
   }
 }
+

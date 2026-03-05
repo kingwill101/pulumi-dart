@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getApplication.
 class GetApplicationResult {
   /// A list of host IDs associated with the application.
   final List<String> hostIds;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of instance IDs associated with the application.
   final List<String> instanceIds;
   final String name;
@@ -42,3 +41,4 @@ class GetApplicationResult {
     );
   }
 }
+

@@ -323,26 +323,19 @@ import 'workspace_logger_args.dart';
 class WorkspaceLogger extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The name and SendRule connection string of the event hub for azureEventHub logger.
   /// Instrumentation key for applicationInsights logger.
   late final pulumi.Output<Map<String, String>?> credentials;
-
   /// Logger description.
   late final pulumi.Output<String?> description;
-
   /// Whether records are buffered in the logger before publishing. Default is assumed to be true.
   late final pulumi.Output<bool?> isBuffered;
-
   /// Logger type.
   late final pulumi.Output<String> loggerType;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Azure Resource Id of a log target (either Azure Event Hub resource or Azure Application Insights resource).
   late final pulumi.Output<String?> resourceId;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -355,11 +348,11 @@ class WorkspaceLogger extends pulumi.CustomResource {
     WorkspaceLoggerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:apimanagement:WorkspaceLogger',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:apimanagement:WorkspaceLogger',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     credentials = registerOutput<Map<String, String>?>('credentials');
     description = registerOutput<String?>('description');

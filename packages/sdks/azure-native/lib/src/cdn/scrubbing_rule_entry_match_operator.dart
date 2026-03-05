@@ -11,8 +11,7 @@ enum ScrubbingRuleEntryMatchOperator {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ScrubbingRuleEntryMatchOperator value: $value',
-    );
+    throw ArgumentError('Unknown ScrubbingRuleEntryMatchOperator value: $value');
   }
 }
+

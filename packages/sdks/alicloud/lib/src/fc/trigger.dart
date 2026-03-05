@@ -3841,34 +3841,24 @@ import 'trigger_state.dart';
 class Trigger extends pulumi.CustomResource {
   /// The config of Function Compute trigger.It is valid when `type` is not "mns_topic".See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
   late final pulumi.Output<String?> config;
-
   /// The config of Function Compute trigger when the type is "mns_topic".It is conflict with `config`.
   late final pulumi.Output<String?> configMns;
-
   /// The Function Compute function name.
   late final pulumi.Output<String> function;
-
   /// The date this resource was last modified.
   late final pulumi.Output<String> lastModified;
-
   /// The Function Compute trigger name. It is the only in one service and is conflict with "name_prefix".
   late final pulumi.Output<String> name;
-
   /// Setting a prefix to get a only trigger name. It is conflict with "name".
   late final pulumi.Output<String?> namePrefix;
-
   /// RAM role arn attached to the Function Compute trigger. Role used by the event source to call the function. The value format is "acs:ram::$account-id:role/$role-name". See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
   late final pulumi.Output<String?> role;
-
   /// The Function Compute service name.
   late final pulumi.Output<String> service;
-
   /// Event source resource address. See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
   late final pulumi.Output<String?> sourceArn;
-
   /// The Function Compute trigger ID.
   late final pulumi.Output<String> triggerId;
-
   /// The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mns_topic", "cdn_events", "eventbridge"].
   ///
   /// &gt; **NOTE:** Config does not support modification when type is mns_topic.
@@ -3885,11 +3875,11 @@ class Trigger extends pulumi.CustomResource {
     TriggerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:fc/trigger:Trigger',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:fc/trigger:Trigger',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     config = registerOutput<String?>('config');
     configMns = registerOutput<String?>('configMns');
     function = registerOutput<String>('function');
@@ -3921,11 +3911,11 @@ class Trigger extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:fc/trigger:Trigger',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:fc/trigger:Trigger',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     config = registerOutput<String?>('config');
     configMns = registerOutput<String?>('configMns');
     function = registerOutput<String>('function');

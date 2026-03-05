@@ -211,42 +211,29 @@ import 'system_data_response.dart';
 /// ```
 class CapacityDetails extends pulumi.CustomResource {
   /// A collection of Dedicated capacity administrators
-  late final pulumi.Output<DedicatedCapacityAdministratorsResponse?>
-  administration;
-
+  late final pulumi.Output<DedicatedCapacityAdministratorsResponse?> administration;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Capacity name
   late final pulumi.Output<String> friendlyName;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// Specifies the generation of the Power BI Embedded capacity. If no value is specified, the default value 'Gen2' is used. [Learn More](https://docs.microsoft.com/power-bi/developer/embedded/power-bi-embedded-generation-2)
   late final pulumi.Output<String?> mode;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The current deployment state of PowerBI Dedicated resource. The provisioningState is to indicate states for resource provisioning.
   late final pulumi.Output<String> provisioningState;
-
   /// The SKU of the PowerBI Dedicated capacity resource.
   late final pulumi.Output<CapacitySkuResponse> sku;
-
   /// The current state of PowerBI Dedicated resource. The state is to indicate more states outside of resource provisioning.
   late final pulumi.Output<String> state;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Tenant ID for the capacity. Used for creating Pro Plus capacity.
   late final pulumi.Output<String> tenantId;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -259,48 +246,21 @@ class CapacityDetails extends pulumi.CustomResource {
     CapacityDetailsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:powerbidedicated:CapacityDetails',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    administration = registerOutput<DedicatedCapacityAdministratorsResponse?>(
-      'administration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DedicatedCapacityAdministratorsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure-native:powerbidedicated:CapacityDetails',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    administration = registerOutput<DedicatedCapacityAdministratorsResponse?>('administration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DedicatedCapacityAdministratorsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     friendlyName = registerOutput<String>('friendlyName');
     location = registerOutput<String>('location');
     mode = registerOutput<String?>('mode');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    sku = registerOutput<CapacitySkuResponse>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CapacitySkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sku = registerOutput<CapacitySkuResponse>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CapacitySkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     state = registerOutput<String>('state');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tenantId = registerOutput<String>('tenantId');
     type = registerOutput<String>('type');

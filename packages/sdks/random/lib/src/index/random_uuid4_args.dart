@@ -12,21 +12,20 @@ class RandomUuid4Args {
 
   /// Creates a new [RandomUuid4Args].
   /// [keepers] Arbitrary map of values that, when changed, will trigger recreation of resource. See the main provider documentation for more information.
-  RandomUuid4Args({this.keepers});
+  RandomUuid4Args({
+    this.keepers,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'keepers': ?keepers};
+    return <String, dynamic>{
+      'keepers': ?keepers,
+    };
   }
 
   factory RandomUuid4Args.fromMap(Map<String, dynamic> map) {
     return RandomUuid4Args(
-      keepers: (() {
-        final guardedValue = map['keepers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      keepers: (() { final guardedValue = map['keepers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

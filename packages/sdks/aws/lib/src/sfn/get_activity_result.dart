@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getActivity.
 class GetActivityResult {
   final String arn;
-
   /// Date the activity was created.
   final String creationDate;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
@@ -46,3 +45,4 @@ class GetActivityResult {
     );
   }
 }
+

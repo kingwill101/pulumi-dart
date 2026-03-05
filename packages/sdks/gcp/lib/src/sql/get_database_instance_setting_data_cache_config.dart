@@ -8,17 +8,20 @@ class GetDatabaseInstanceSettingDataCacheConfig {
 
   /// Creates a new [GetDatabaseInstanceSettingDataCacheConfig].
   /// [dataCacheEnabled] Whether data cache is enabled for the instance.
-  GetDatabaseInstanceSettingDataCacheConfig({required this.dataCacheEnabled});
+  GetDatabaseInstanceSettingDataCacheConfig({
+    required this.dataCacheEnabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'dataCacheEnabled': dataCacheEnabled};
+    return <String, dynamic>{
+      'dataCacheEnabled': dataCacheEnabled,
+    };
   }
 
-  factory GetDatabaseInstanceSettingDataCacheConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDatabaseInstanceSettingDataCacheConfig.fromMap(Map<String, dynamic> map) {
     return GetDatabaseInstanceSettingDataCacheConfig(
       dataCacheEnabled: pulumi.Input.fromValue(map['dataCacheEnabled'] as bool),
     );
   }
 }
+

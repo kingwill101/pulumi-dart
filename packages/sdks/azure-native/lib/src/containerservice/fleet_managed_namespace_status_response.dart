@@ -7,7 +7,6 @@ import 'error_detail_response.dart';
 class FleetManagedNamespaceStatusResponse {
   /// The last operation error of the fleet managed namespace
   final pulumi.Input<ErrorDetailResponse> lastOperationError;
-
   /// The last operation ID for the fleet managed namespace
   final pulumi.Input<String> lastOperationId;
 
@@ -21,25 +20,16 @@ class FleetManagedNamespaceStatusResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'lastOperationError':
-          pulumi.Input.mapInputValue<ErrorDetailResponse, Map<String, dynamic>>(
-            lastOperationError,
-            (value) => value.toMap(),
-          ),
+      'lastOperationError': pulumi.Input.mapInputValue<ErrorDetailResponse, Map<String, dynamic>>(lastOperationError, (value) => value.toMap()),
       'lastOperationId': lastOperationId,
     };
   }
 
-  factory FleetManagedNamespaceStatusResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FleetManagedNamespaceStatusResponse.fromMap(Map<String, dynamic> map) {
     return FleetManagedNamespaceStatusResponse(
-      lastOperationError: pulumi.Input.fromValue(
-        ErrorDetailResponse.fromMap(
-          (map['lastOperationError']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      lastOperationError: pulumi.Input.fromValue(ErrorDetailResponse.fromMap((map['lastOperationError']! as Map).cast<String, dynamic>())),
       lastOperationId: pulumi.Input.fromValue(map['lastOperationId'] as String),
     );
   }
 }
+

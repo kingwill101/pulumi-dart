@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PortfolioArgs {
   /// The description of the portfolio
   final pulumi.Input<String>? description;
-
   /// The name of the portfolio
   final pulumi.Input<String> portfolioName;
-
   /// The provider name of the portfolio
   final pulumi.Input<String> providerName;
 
@@ -36,13 +34,10 @@ class PortfolioArgs {
 
   factory PortfolioArgs.fromMap(Map<String, dynamic> map) {
     return PortfolioArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       portfolioName: pulumi.Input.fromValue(map['portfolioName'] as String),
       providerName: pulumi.Input.fromValue(map['providerName'] as String),
     );
   }
 }
+

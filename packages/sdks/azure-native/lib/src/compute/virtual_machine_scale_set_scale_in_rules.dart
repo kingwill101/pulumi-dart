@@ -12,8 +12,7 @@ enum VirtualMachineScaleSetScaleInRules {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown VirtualMachineScaleSetScaleInRules value: $value',
-    );
+    throw ArgumentError('Unknown VirtualMachineScaleSetScaleInRules value: $value');
   }
 }
+

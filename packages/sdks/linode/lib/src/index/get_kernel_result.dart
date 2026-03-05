@@ -1,27 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getKernel.
 class GetKernelResult {
   /// The architecture of this Kernel.
   final String architecture;
   final String built;
-
   /// Whether or not this Kernel is deprecated.
   final bool deprecated;
   final String id;
-
   /// If this Kernel is suitable for KVM Linodes.
   final bool kvm;
-
   /// The friendly name of this Kernel.
   final String label;
-
   /// If this Kernel is suitable for paravirtualized operations.
   final bool pvops;
-
   /// Linux Kernel version
   final String version;
-
   /// If this Kernel is suitable for Xen Linodes.
   final bool xen;
 
@@ -75,3 +70,4 @@ class GetKernelResult {
     );
   }
 }
+

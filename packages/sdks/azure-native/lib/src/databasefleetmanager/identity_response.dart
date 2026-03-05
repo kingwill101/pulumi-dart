@@ -7,10 +7,8 @@ import 'database_identity_response.dart';
 class IdentityResponse {
   /// The federated client id for the SQL Database. It is used for cross tenant CMK scenario.
   final pulumi.Input<String>? federatedClientId;
-
   /// Identity type of the main principal.
   final pulumi.Input<String>? identityType;
-
   /// User identity ids
   final pulumi.Input<List<DatabaseIdentityResponse>>? userAssignedIdentities;
 
@@ -28,45 +26,16 @@ class IdentityResponse {
     return <String, dynamic>{
       'federatedClientId': ?federatedClientId,
       'identityType': ?identityType,
-      'userAssignedIdentities':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<DatabaseIdentityResponse>,
-            List<Map<String, dynamic>>
-          >(
-            userAssignedIdentities,
-            (value) =>
-                pulumi.Input.encodeList<
-                  DatabaseIdentityResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'userAssignedIdentities': ?pulumi.Input.mapOptionalInputValue<List<DatabaseIdentityResponse>, List<Map<String, dynamic>>>(userAssignedIdentities, (value) => pulumi.Input.encodeList<DatabaseIdentityResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory IdentityResponse.fromMap(Map<String, dynamic> map) {
     return IdentityResponse(
-      federatedClientId: (() {
-        final guardedValue = map['federatedClientId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      identityType: (() {
-        final guardedValue = map['identityType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      userAssignedIdentities: (() {
-        final guardedValue = map['userAssignedIdentities'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<DatabaseIdentityResponse>(
-            guardedValue,
-            (value) => DatabaseIdentityResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      federatedClientId: (() { final guardedValue = map['federatedClientId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      identityType: (() { final guardedValue = map['identityType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      userAssignedIdentities: (() { final guardedValue = map['userAssignedIdentities']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DatabaseIdentityResponse>(guardedValue, (value) => DatabaseIdentityResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

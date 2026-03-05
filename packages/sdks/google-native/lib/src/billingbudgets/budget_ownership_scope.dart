@@ -15,3 +15,4 @@ enum BudgetOwnershipScope {
     throw ArgumentError('Unknown BudgetOwnershipScope value: $value');
   }
 }
+

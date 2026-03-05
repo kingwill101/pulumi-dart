@@ -7,8 +7,7 @@ import 'get_genai_indexing_job_data_sources_indexed_data_source.dart';
 class GetGenaiIndexingJobDataSourcesResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-  final List<GetGenaiIndexingJobDataSourcesIndexedDataSource>
-  indexedDataSources;
+  final List<GetGenaiIndexingJobDataSourcesIndexedDataSource> indexedDataSources;
   final String indexingJobUuid;
 
   /// Creates a new [GetGenaiIndexingJobDataSourcesResult].
@@ -24,30 +23,17 @@ class GetGenaiIndexingJobDataSourcesResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'indexedDataSources':
-          pulumi.Input.encodeList<
-            GetGenaiIndexingJobDataSourcesIndexedDataSource,
-            Map<String, dynamic>
-          >(indexedDataSources, (value) => value.toMap()),
+      'indexedDataSources': pulumi.Input.encodeList<GetGenaiIndexingJobDataSourcesIndexedDataSource, Map<String, dynamic>>(indexedDataSources, (value) => value.toMap()),
       'indexingJobUuid': indexingJobUuid,
     };
   }
 
-  factory GetGenaiIndexingJobDataSourcesResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetGenaiIndexingJobDataSourcesResult.fromMap(Map<String, dynamic> map) {
     return GetGenaiIndexingJobDataSourcesResult(
       id: map['id'] as String,
-      indexedDataSources:
-          pulumi.Input.decodeList<
-            GetGenaiIndexingJobDataSourcesIndexedDataSource
-          >(
-            map['indexedDataSources']!,
-            (value) => GetGenaiIndexingJobDataSourcesIndexedDataSource.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      indexedDataSources: pulumi.Input.decodeList<GetGenaiIndexingJobDataSourcesIndexedDataSource>(map['indexedDataSources']!, (value) => GetGenaiIndexingJobDataSourcesIndexedDataSource.fromMap((value as Map).cast<String, dynamic>())),
       indexingJobUuid: map['indexingJobUuid'] as String,
     );
   }
 }
+

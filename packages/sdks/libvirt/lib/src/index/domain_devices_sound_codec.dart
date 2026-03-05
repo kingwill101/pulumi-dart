@@ -8,10 +8,14 @@ class DomainDevicesSoundCodec {
 
   /// Creates a new [DomainDevicesSoundCodec].
   /// [type] This field specifies the type of codec used in the sound device configuration for the domain.
-  DomainDevicesSoundCodec({required this.type});
+  DomainDevicesSoundCodec({
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': type};
+    return <String, dynamic>{
+      'type': type,
+    };
   }
 
   factory DomainDevicesSoundCodec.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class DomainDevicesSoundCodec {
     );
   }
 }
+

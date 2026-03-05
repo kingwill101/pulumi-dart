@@ -7,28 +7,20 @@ import 'dataset_response_sql_data_path.dart';
 class DatasetResponseDataPath {
   /// Additional Properties.
   final pulumi.Input<Map<String, dynamic>>? additionalProperties;
-
   /// Azure path for Azure Blob or File
   final pulumi.Input<String> azureFilePath;
-
   /// Data store Name
   final pulumi.Input<String> datastoreName;
-
   /// HTTP URL.
   final pulumi.Input<String> httpUrl;
-
   /// Specify the partition format of path. Defaults to None.
   final pulumi.Input<String> partitionFormat;
-
   /// Whether or not to ignore unmatched path.
   final pulumi.Input<bool> partitionFormatIgnoreError;
-
   /// List of files expanded from a file GLOB specified
   final pulumi.Input<List<String>> paths;
-
   /// Relative path in the data store
   final pulumi.Input<String> relativePath;
-
   /// Sql Query/Table/Stored Procedure details.
   final pulumi.Input<DatasetResponseSqlDataPath>? sqlDataPath;
 
@@ -64,41 +56,22 @@ class DatasetResponseDataPath {
       'partitionFormatIgnoreError': partitionFormatIgnoreError,
       'paths': paths,
       'relativePath': relativePath,
-      'sqlDataPath':
-          ?pulumi.Input.mapOptionalInputValue<
-            DatasetResponseSqlDataPath,
-            Map<String, dynamic>
-          >(sqlDataPath, (value) => value.toMap()),
+      'sqlDataPath': ?pulumi.Input.mapOptionalInputValue<DatasetResponseSqlDataPath, Map<String, dynamic>>(sqlDataPath, (value) => value.toMap()),
     };
   }
 
   factory DatasetResponseDataPath.fromMap(Map<String, dynamic> map) {
     return DatasetResponseDataPath(
-      additionalProperties: (() {
-        final guardedValue = map['additionalProperties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      additionalProperties: (() { final guardedValue = map['additionalProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
       azureFilePath: pulumi.Input.fromValue(map['azureFilePath'] as String),
       datastoreName: pulumi.Input.fromValue(map['datastoreName'] as String),
       httpUrl: pulumi.Input.fromValue(map['httpUrl'] as String),
       partitionFormat: pulumi.Input.fromValue(map['partitionFormat'] as String),
-      partitionFormatIgnoreError: pulumi.Input.fromValue(
-        map['partitionFormatIgnoreError'] as bool,
-      ),
+      partitionFormatIgnoreError: pulumi.Input.fromValue(map['partitionFormatIgnoreError'] as bool),
       paths: pulumi.Input.fromValue((map['paths'] as List).cast<String>()),
       relativePath: pulumi.Input.fromValue(map['relativePath'] as String),
-      sqlDataPath: (() {
-        final guardedValue = map['sqlDataPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DatasetResponseSqlDataPath.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      sqlDataPath: (() { final guardedValue = map['sqlDataPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatasetResponseSqlDataPath.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

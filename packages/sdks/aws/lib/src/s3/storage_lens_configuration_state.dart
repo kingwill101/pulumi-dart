@@ -7,23 +7,16 @@ import 'storage_lens_configuration_storage_lens_configuration.dart';
 class StorageLensConfigurationState {
   /// The AWS account ID for the S3 Storage Lens configuration. Defaults to automatically determined account ID of the AWS provider.
   final pulumi.Input<String>? accountId;
-
   /// Amazon Resource Name (ARN) of the S3 Storage Lens configuration.
   final pulumi.Input<String>? arn;
-
   /// The ID of the S3 Storage Lens configuration.
   final pulumi.Input<String>? configId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The S3 Storage Lens configuration. See Storage Lens Configuration below for more details.
-  final pulumi.Input<StorageLensConfigurationStorageLensConfiguration>?
-  storageLensConfiguration;
-
+  final pulumi.Input<StorageLensConfigurationStorageLensConfiguration>? storageLensConfiguration;
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
@@ -51,11 +44,7 @@ class StorageLensConfigurationState {
       'arn': ?arn,
       'configId': ?configId,
       'region': ?region,
-      'storageLensConfiguration':
-          ?pulumi.Input.mapOptionalInputValue<
-            StorageLensConfigurationStorageLensConfiguration,
-            Map<String, dynamic>
-          >(storageLensConfiguration, (value) => value.toMap()),
+      'storageLensConfiguration': ?pulumi.Input.mapOptionalInputValue<StorageLensConfigurationStorageLensConfiguration, Map<String, dynamic>>(storageLensConfiguration, (value) => value.toMap()),
       'tags': ?tags,
       'tagsAll': ?tagsAll,
     };
@@ -63,49 +52,14 @@ class StorageLensConfigurationState {
 
   factory StorageLensConfigurationState.fromMap(Map<String, dynamic> map) {
     return StorageLensConfigurationState(
-      accountId: (() {
-        final guardedValue = map['accountId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      arn: (() {
-        final guardedValue = map['arn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      configId: (() {
-        final guardedValue = map['configId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      storageLensConfiguration: (() {
-        final guardedValue = map['storageLensConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          StorageLensConfigurationStorageLensConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      tagsAll: (() {
-        final guardedValue = map['tagsAll'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      configId: (() { final guardedValue = map['configId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageLensConfiguration: (() { final guardedValue = map['storageLensConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StorageLensConfigurationStorageLensConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

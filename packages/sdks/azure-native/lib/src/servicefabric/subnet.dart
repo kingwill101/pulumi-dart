@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Subnet {
   /// Indicates wether to enable Ipv6 or not. If not provided, it will take the same configuration as the cluster.
   final pulumi.Input<bool>? enableIpv6;
-
   /// Subnet name.
   final pulumi.Input<String> name;
-
   /// Full resource id for the network security group.
   final pulumi.Input<String>? networkSecurityGroupId;
-
   /// Enable or Disable apply network policies on private end point in the subnet.
   final pulumi.Input<String>? privateEndpointNetworkPolicies;
-
   /// Enable or Disable apply network policies on private link service in the subnet.
   final pulumi.Input<String>? privateLinkServiceNetworkPolicies;
 
@@ -45,27 +41,12 @@ class Subnet {
 
   factory Subnet.fromMap(Map<String, dynamic> map) {
     return Subnet(
-      enableIpv6: (() {
-        final guardedValue = map['enableIpv6'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enableIpv6: (() { final guardedValue = map['enableIpv6']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      networkSecurityGroupId: (() {
-        final guardedValue = map['networkSecurityGroupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      privateEndpointNetworkPolicies: (() {
-        final guardedValue = map['privateEndpointNetworkPolicies'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      privateLinkServiceNetworkPolicies: (() {
-        final guardedValue = map['privateLinkServiceNetworkPolicies'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      networkSecurityGroupId: (() { final guardedValue = map['networkSecurityGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateEndpointNetworkPolicies: (() { final guardedValue = map['privateEndpointNetworkPolicies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateLinkServiceNetworkPolicies: (() { final guardedValue = map['privateLinkServiceNetworkPolicies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

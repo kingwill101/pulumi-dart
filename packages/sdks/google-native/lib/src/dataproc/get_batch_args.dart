@@ -15,7 +15,11 @@ class GetBatchArgs {
   /// [batchId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetBatchArgs({required this.batchId, required this.location, this.project});
+  GetBatchArgs({
+    required this.batchId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,11 +33,8 @@ class GetBatchArgs {
     return GetBatchArgs(
       batchId: pulumi.Input.fromValue(map['batchId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

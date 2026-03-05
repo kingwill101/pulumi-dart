@@ -9,25 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SystemGroupArgs {
   /// The space within the device status update of the callback, need to start with http:// or https:// at the beginning.
   final pulumi.Input<String>? callback;
-
   /// The description of Group.
   final pulumi.Input<String>? description;
-
   /// Whether to open Group.
   final pulumi.Input<bool>? enabled;
-
   /// The Group Name.
   final pulumi.Input<String> groupName;
-
   /// The use of the access protocol support gb28181, Real Time Messaging Protocol (rtmp). Valid values: `gb28181`, `rtmp`.
   final pulumi.Input<String> inProtocol;
-
   /// The playback protocol used by the space, multiple values are separated by commas (,). Valid values: `flv`,`hls`, `rtmp`.
   final pulumi.Input<String> outProtocol;
-
   /// The domain name of plan streaming used by the group.
   final pulumi.Input<String> playDomain;
-
   /// The domain name of push streaming used by the group.
   final pulumi.Input<String> pushDomain;
 
@@ -66,21 +59,9 @@ class SystemGroupArgs {
 
   factory SystemGroupArgs.fromMap(Map<String, dynamic> map) {
     return SystemGroupArgs(
-      callback: (() {
-        final guardedValue = map['callback'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      callback: (() { final guardedValue = map['callback']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       groupName: pulumi.Input.fromValue(map['groupName'] as String),
       inProtocol: pulumi.Input.fromValue(map['inProtocol'] as String),
       outProtocol: pulumi.Input.fromValue(map['outProtocol'] as String),
@@ -89,3 +70,4 @@ class SystemGroupArgs {
     );
   }
 }
+

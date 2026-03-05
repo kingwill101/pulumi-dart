@@ -13,14 +13,15 @@ class GameServerGroupAutoScalingPolicyTargetTrackingConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'targetValue': targetValue};
+    return <String, dynamic>{
+      'targetValue': targetValue,
+    };
   }
 
-  factory GameServerGroupAutoScalingPolicyTargetTrackingConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GameServerGroupAutoScalingPolicyTargetTrackingConfiguration.fromMap(Map<String, dynamic> map) {
     return GameServerGroupAutoScalingPolicyTargetTrackingConfiguration(
       targetValue: pulumi.Input.fromValue(map['targetValue'] as double),
     );
   }
 }
+

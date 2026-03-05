@@ -9,22 +9,16 @@ import 'san_for_cert_response.dart';
 class AutomaticCertMethodResponse {
   /// Lifetime of automatically-managed certificate.
   final pulumi.Input<String>? duration;
-
   /// cert-manager issuerRef.
   final pulumi.Input<CertManagerIssuerRefResponse> issuerRef;
-
   /// Cert Manager private key.
   final pulumi.Input<CertManagerPrivateKeyResponse>? privateKey;
-
   /// When to begin renewing automatically-managed certificate.
   final pulumi.Input<String>? renewBefore;
-
   /// Additional SANs to include in the certificate.
   final pulumi.Input<SanForCertResponse>? san;
-
   /// Secret for storing server certificate. Any existing data will be overwritten.
   final pulumi.Input<String>? secretName;
-
   /// Certificate K8S namespace. Omit to use default namespace.
   final pulumi.Input<String>? secretNamespace;
 
@@ -49,22 +43,10 @@ class AutomaticCertMethodResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'duration': ?duration,
-      'issuerRef':
-          pulumi.Input.mapInputValue<
-            CertManagerIssuerRefResponse,
-            Map<String, dynamic>
-          >(issuerRef, (value) => value.toMap()),
-      'privateKey':
-          ?pulumi.Input.mapOptionalInputValue<
-            CertManagerPrivateKeyResponse,
-            Map<String, dynamic>
-          >(privateKey, (value) => value.toMap()),
+      'issuerRef': pulumi.Input.mapInputValue<CertManagerIssuerRefResponse, Map<String, dynamic>>(issuerRef, (value) => value.toMap()),
+      'privateKey': ?pulumi.Input.mapOptionalInputValue<CertManagerPrivateKeyResponse, Map<String, dynamic>>(privateKey, (value) => value.toMap()),
       'renewBefore': ?renewBefore,
-      'san':
-          ?pulumi.Input.mapOptionalInputValue<
-            SanForCertResponse,
-            Map<String, dynamic>
-          >(san, (value) => value.toMap()),
+      'san': ?pulumi.Input.mapOptionalInputValue<SanForCertResponse, Map<String, dynamic>>(san, (value) => value.toMap()),
       'secretName': ?secretName,
       'secretNamespace': ?secretNamespace,
     };
@@ -72,49 +54,14 @@ class AutomaticCertMethodResponse {
 
   factory AutomaticCertMethodResponse.fromMap(Map<String, dynamic> map) {
     return AutomaticCertMethodResponse(
-      duration: (() {
-        final guardedValue = map['duration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      issuerRef: pulumi.Input.fromValue(
-        CertManagerIssuerRefResponse.fromMap(
-          (map['issuerRef']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      privateKey: (() {
-        final guardedValue = map['privateKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CertManagerPrivateKeyResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      renewBefore: (() {
-        final guardedValue = map['renewBefore'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      san: (() {
-        final guardedValue = map['san'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SanForCertResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      secretName: (() {
-        final guardedValue = map['secretName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      secretNamespace: (() {
-        final guardedValue = map['secretNamespace'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      duration: (() { final guardedValue = map['duration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      issuerRef: pulumi.Input.fromValue(CertManagerIssuerRefResponse.fromMap((map['issuerRef']! as Map).cast<String, dynamic>())),
+      privateKey: (() { final guardedValue = map['privateKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CertManagerPrivateKeyResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      renewBefore: (() { final guardedValue = map['renewBefore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      san: (() { final guardedValue = map['san']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SanForCertResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      secretName: (() { final guardedValue = map['secretName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      secretNamespace: (() { final guardedValue = map['secretNamespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

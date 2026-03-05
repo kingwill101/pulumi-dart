@@ -8,7 +8,9 @@ class TableReplicationRuleDestination {
 
   /// Creates a new [TableReplicationRuleDestination].
   /// [destinationTableBucketArn] ARN of destination table bucket to replicate source tables to.
-  TableReplicationRuleDestination({required this.destinationTableBucketArn});
+  TableReplicationRuleDestination({
+    required this.destinationTableBucketArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -18,9 +20,8 @@ class TableReplicationRuleDestination {
 
   factory TableReplicationRuleDestination.fromMap(Map<String, dynamic> map) {
     return TableReplicationRuleDestination(
-      destinationTableBucketArn: pulumi.Input.fromValue(
-        map['destinationTableBucketArn'] as String,
-      ),
+      destinationTableBucketArn: pulumi.Input.fromValue(map['destinationTableBucketArn'] as String),
     );
   }
 }
+

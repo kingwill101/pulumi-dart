@@ -142,7 +142,6 @@ import 'event_sources_config_state.dart';
 class EventSourcesConfig extends pulumi.CustomResource {
   /// Configuration information about the integration of DevOps Guru as the Consumer via EventBridge with another AWS Service. See `event_sources` below.
   late final pulumi.Output<List<Map<String, dynamic>>> eventSources;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -155,11 +154,11 @@ class EventSourcesConfig extends pulumi.CustomResource {
     EventSourcesConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:devopsguru/eventSourcesConfig:EventSourcesConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:devopsguru/eventSourcesConfig:EventSourcesConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     eventSources = registerOutput<List<Map<String, dynamic>>>('eventSources');
     region = registerOutput<String>('region');
   }
@@ -182,11 +181,11 @@ class EventSourcesConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:devopsguru/eventSourcesConfig:EventSourcesConfig',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:devopsguru/eventSourcesConfig:EventSourcesConfig',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     eventSources = registerOutput<List<Map<String, dynamic>>>('eventSources');
     region = registerOutput<String>('region');
   }

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworkFunctionDefinitionGroupArgs {
   /// The name of the network function definition group.
   final pulumi.Input<String> networkFunctionDefinitionGroupName;
-
   /// The name of the publisher.
   final pulumi.Input<String> publisherName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,17 +32,12 @@ class GetNetworkFunctionDefinitionGroupArgs {
     };
   }
 
-  factory GetNetworkFunctionDefinitionGroupArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetNetworkFunctionDefinitionGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkFunctionDefinitionGroupArgs(
-      networkFunctionDefinitionGroupName: pulumi.Input.fromValue(
-        map['networkFunctionDefinitionGroupName'] as String,
-      ),
+      networkFunctionDefinitionGroupName: pulumi.Input.fromValue(map['networkFunctionDefinitionGroupName'] as String),
       publisherName: pulumi.Input.fromValue(map['publisherName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

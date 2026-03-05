@@ -12,10 +12,14 @@ class GetContainerRegistryArgs {
 
   /// Creates a new [GetContainerRegistryArgs].
   /// [name] The name of the container registry.
-  GetContainerRegistryArgs({required this.name});
+  GetContainerRegistryArgs({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory GetContainerRegistryArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetContainerRegistryArgs {
     );
   }
 }
+

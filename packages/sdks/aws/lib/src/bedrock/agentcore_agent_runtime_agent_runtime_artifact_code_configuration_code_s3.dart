@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfigurationCodeS3 {
   /// Name of the Amazon S3 bucket.
   final pulumi.Input<String> bucket;
-
   /// Key of the object containing the ZIP file of the source code for the agent runtime in the Amazon S3 bucket.
   final pulumi.Input<String> prefix;
-
   /// Version ID of the Amazon S3 object. If not specified, the latest version of the object is used.
   final pulumi.Input<String>? versionId;
 
@@ -30,17 +28,12 @@ class AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfigurationCodeS3 {
     };
   }
 
-  factory AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfigurationCodeS3.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfigurationCodeS3.fromMap(Map<String, dynamic> map) {
     return AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfigurationCodeS3(
       bucket: pulumi.Input.fromValue(map['bucket'] as String),
       prefix: pulumi.Input.fromValue(map['prefix'] as String),
-      versionId: (() {
-        final guardedValue = map['versionId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      versionId: (() { final guardedValue = map['versionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

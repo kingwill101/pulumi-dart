@@ -6,19 +6,14 @@ import 'management_association_properties_response.dart';
 class GetManagementAssociationResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Resource ID.
   final String id;
-
   /// Resource location
   final String? location;
-
   /// Resource name.
   final String name;
-
   /// Properties for ManagementAssociation object supported by the OperationsManagement resource provider.
   final ManagementAssociationPropertiesResponse properties;
-
   /// Resource type.
   final String type;
 
@@ -53,16 +48,11 @@ class GetManagementAssociationResult {
     return GetManagementAssociationResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
-      properties: ManagementAssociationPropertiesResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
+      properties: ManagementAssociationPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

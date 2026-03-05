@@ -9,19 +9,20 @@ class ReplicaSecretmanagerV1beta1 {
 
   /// Creates a new [ReplicaSecretmanagerV1beta1].
   /// [location] The canonical IDs of the location to replicate data. For example: `"us-east1"`.
-  ReplicaSecretmanagerV1beta1({this.location});
+  ReplicaSecretmanagerV1beta1({
+    this.location,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'location': ?location};
+    return <String, dynamic>{
+      'location': ?location,
+    };
   }
 
   factory ReplicaSecretmanagerV1beta1.fromMap(Map<String, dynamic> map) {
     return ReplicaSecretmanagerV1beta1(
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

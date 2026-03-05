@@ -25,25 +25,12 @@ class EciScalingConfigurationInitContainerEnvironmentVar {
     };
   }
 
-  factory EciScalingConfigurationInitContainerEnvironmentVar.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EciScalingConfigurationInitContainerEnvironmentVar.fromMap(Map<String, dynamic> map) {
     return EciScalingConfigurationInitContainerEnvironmentVar(
-      fieldRefFieldPath: (() {
-        final guardedValue = map['fieldRefFieldPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      key: (() {
-        final guardedValue = map['key'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      fieldRefFieldPath: (() { final guardedValue = map['fieldRefFieldPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

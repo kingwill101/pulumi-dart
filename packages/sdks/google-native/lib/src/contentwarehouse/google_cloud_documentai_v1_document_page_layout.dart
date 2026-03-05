@@ -9,14 +9,10 @@ import 'google_cloud_documentai_v1_document_text_anchor.dart';
 class GoogleCloudDocumentaiV1DocumentPageLayout {
   /// The bounding polygon for the Layout.
   final pulumi.Input<GoogleCloudDocumentaiV1BoundingPoly>? boundingPoly;
-
   /// Confidence of the current Layout within context of the object this layout is for. e.g. confidence can be for a single token, a table, a visual element, etc. depending on context. Range `[0, 1]`.
   final pulumi.Input<double>? confidence;
-
   /// Detected orientation for the Layout.
-  final pulumi.Input<GoogleCloudDocumentaiV1DocumentPageLayoutOrientation>?
-  orientation;
-
+  final pulumi.Input<GoogleCloudDocumentaiV1DocumentPageLayoutOrientation>? orientation;
   /// Text anchor indexing into the Document.text.
   final pulumi.Input<GoogleCloudDocumentaiV1DocumentTextAnchor>? textAnchor;
 
@@ -34,61 +30,20 @@ class GoogleCloudDocumentaiV1DocumentPageLayout {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'boundingPoly':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudDocumentaiV1BoundingPoly,
-            Map<String, dynamic>
-          >(boundingPoly, (value) => value.toMap()),
+      'boundingPoly': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDocumentaiV1BoundingPoly, Map<String, dynamic>>(boundingPoly, (value) => value.toMap()),
       'confidence': ?confidence,
-      'orientation':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudDocumentaiV1DocumentPageLayoutOrientation,
-            String
-          >(orientation, (value) => value.wireValue),
-      'textAnchor':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudDocumentaiV1DocumentTextAnchor,
-            Map<String, dynamic>
-          >(textAnchor, (value) => value.toMap()),
+      'orientation': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDocumentaiV1DocumentPageLayoutOrientation, String>(orientation, (value) => value.wireValue),
+      'textAnchor': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDocumentaiV1DocumentTextAnchor, Map<String, dynamic>>(textAnchor, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudDocumentaiV1DocumentPageLayout.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDocumentaiV1DocumentPageLayout.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentPageLayout(
-      boundingPoly: (() {
-        final guardedValue = map['boundingPoly'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudDocumentaiV1BoundingPoly.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      confidence: (() {
-        final guardedValue = map['confidence'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      orientation: (() {
-        final guardedValue = map['orientation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudDocumentaiV1DocumentPageLayoutOrientation.fromValue(
-            guardedValue as String,
-          ),
-        );
-      })(),
-      textAnchor: (() {
-        final guardedValue = map['textAnchor'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudDocumentaiV1DocumentTextAnchor.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      boundingPoly: (() { final guardedValue = map['boundingPoly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudDocumentaiV1BoundingPoly.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      confidence: (() { final guardedValue = map['confidence']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      orientation: (() { final guardedValue = map['orientation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudDocumentaiV1DocumentPageLayoutOrientation.fromValue(guardedValue as String)); })(),
+      textAnchor: (() { final guardedValue = map['textAnchor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudDocumentaiV1DocumentTextAnchor.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

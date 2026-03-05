@@ -184,49 +184,34 @@ import 'system_data_response.dart';
 class DedicatedHost extends pulumi.CustomResource {
   /// Specifies whether the dedicated host should be replaced automatically in case of a failure. The value is defaulted to 'true' when not provided.
   late final pulumi.Output<bool?> autoReplaceOnFailure;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// A unique id generated and assigned to the dedicated host by the platform. Does not change throughout the lifetime of the host.
   late final pulumi.Output<String> hostId;
-
   /// The dedicated host instance view.
   late final pulumi.Output<DedicatedHostInstanceViewResponse> instanceView;
-
   /// Specifies the software license type that will be applied to the VMs deployed on the dedicated host. Possible values are: **None,** **Windows_Server_Hybrid,** **Windows_Server_Perpetual.** The default value is: **None.**
   late final pulumi.Output<String?> licenseType;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Fault domain of the dedicated host within a dedicated host group.
   late final pulumi.Output<int?> platformFaultDomain;
-
   /// The provisioning state, which only appears in the response.
   late final pulumi.Output<String> provisioningState;
-
   /// The date when the host was first provisioned.
   late final pulumi.Output<String> provisioningTime;
-
   /// SKU of the dedicated host for Hardware Generation and VM family. Only name is required to be set. List Microsoft.Compute SKUs for a list of possible values.
   late final pulumi.Output<SkuResponse> sku;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Specifies the time at which the Dedicated Host resource was created. Minimum api-version: 2021-11-01.
   late final pulumi.Output<String> timeCreated;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// A list of references to all virtual machines in the Dedicated Host.
   late final pulumi.Output<List<Map<String, dynamic>>> virtualMachines;
 
@@ -239,55 +224,26 @@ class DedicatedHost extends pulumi.CustomResource {
     DedicatedHostArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:compute:DedicatedHost',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:compute:DedicatedHost',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoReplaceOnFailure = registerOutput<bool?>('autoReplaceOnFailure');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     hostId = registerOutput<String>('hostId');
-    instanceView = registerOutput<DedicatedHostInstanceViewResponse>(
-      'instanceView',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DedicatedHostInstanceViewResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    instanceView = registerOutput<DedicatedHostInstanceViewResponse>('instanceView', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DedicatedHostInstanceViewResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     licenseType = registerOutput<String?>('licenseType');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     platformFaultDomain = registerOutput<int?>('platformFaultDomain');
     provisioningState = registerOutput<String>('provisioningState');
     provisioningTime = registerOutput<String>('provisioningTime');
-    sku = registerOutput<SkuResponse>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sku = registerOutput<SkuResponse>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     timeCreated = registerOutput<String>('timeCreated');
     type = registerOutput<String>('type');
-    virtualMachines = registerOutput<List<Map<String, dynamic>>>(
-      'virtualMachines',
-    );
+    virtualMachines = registerOutput<List<Map<String, dynamic>>>('virtualMachines');
   }
 }

@@ -13,8 +13,7 @@ enum UrlMapAuthFailActionAppengineV1beta {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown UrlMapAuthFailActionAppengineV1beta value: $value',
-    );
+    throw ArgumentError('Unknown UrlMapAuthFailActionAppengineV1beta value: $value');
   }
 }
+

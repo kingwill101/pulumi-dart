@@ -9,19 +9,20 @@ class PlatformTypeEnumValueResponse {
 
   /// Creates a new [PlatformTypeEnumValueResponse].
   /// [value] Property value
-  PlatformTypeEnumValueResponse({this.value});
+  PlatformTypeEnumValueResponse({
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': ?value};
+    return <String, dynamic>{
+      'value': ?value,
+    };
   }
 
   factory PlatformTypeEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return PlatformTypeEnumValueResponse(
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -797,10 +797,8 @@ import 'express_sync_share_attachment_state.dart';
 class ExpressSyncShareAttachment extends pulumi.CustomResource {
   /// The ID of the ExpressSync.
   late final pulumi.Output<String> expressSyncId;
-
   /// The ID of the Gateway.
   late final pulumi.Output<String> gatewayId;
-
   /// The name of the GatewayFileShare. **NOTE:** When GatewayFileShare is associated with a speed sync group, its reverse synchronization function will be turned off by default.
   late final pulumi.Output<String> shareName;
 
@@ -813,11 +811,11 @@ class ExpressSyncShareAttachment extends pulumi.CustomResource {
     ExpressSyncShareAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudstoragegateway/expressSyncShareAttachment:ExpressSyncShareAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudstoragegateway/expressSyncShareAttachment:ExpressSyncShareAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     expressSyncId = registerOutput<String>('expressSyncId');
     gatewayId = registerOutput<String>('gatewayId');
     shareName = registerOutput<String>('shareName');
@@ -841,11 +839,11 @@ class ExpressSyncShareAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudstoragegateway/expressSyncShareAttachment:ExpressSyncShareAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudstoragegateway/expressSyncShareAttachment:ExpressSyncShareAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     expressSyncId = registerOutput<String>('expressSyncId');
     gatewayId = registerOutput<String>('gatewayId');
     shareName = registerOutput<String>('shareName');

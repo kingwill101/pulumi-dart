@@ -20,3 +20,4 @@ enum DomainNameLabelScopeTypes {
     throw ArgumentError('Unknown DomainNameLabelScopeTypes value: $value');
   }
 }
+

@@ -142,30 +142,21 @@ import 'secondary_network_timeouts.dart';
 class SecondaryNetwork extends pulumi.CustomResource {
   /// ARN of the secondary network.
   late final pulumi.Output<String> arn;
-
   /// IPv4 CIDR block for the secondary network. The CIDR block size must be between `/12` and `/28`.
   late final pulumi.Output<String> ipv4CidrBlock;
-
   /// A list of IPv4 CIDR block associations for the secondary network.
-  late final pulumi.Output<List<Map<String, dynamic>>>
-  ipv4CidrBlockAssociations;
-
+  late final pulumi.Output<List<Map<String, dynamic>>> ipv4CidrBlockAssociations;
   /// Type of secondary network. Currently only `rdma` is supported.
   late final pulumi.Output<String> networkType;
   late final pulumi.Output<String> ownerId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// ID of the secondary network.
   late final pulumi.Output<String> secondaryNetworkId;
-
   /// State of the IPv4 CIDR block association.
   late final pulumi.Output<String> state;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<SecondaryNetworkTimeouts?> timeouts;
@@ -179,16 +170,14 @@ class SecondaryNetwork extends pulumi.CustomResource {
     SecondaryNetworkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/secondaryNetwork:SecondaryNetwork',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/secondaryNetwork:SecondaryNetwork',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     ipv4CidrBlock = registerOutput<String>('ipv4CidrBlock');
-    ipv4CidrBlockAssociations = registerOutput<List<Map<String, dynamic>>>(
-      'ipv4CidrBlockAssociations',
-    );
+    ipv4CidrBlockAssociations = registerOutput<List<Map<String, dynamic>>>('ipv4CidrBlockAssociations');
     networkType = registerOutput<String>('networkType');
     ownerId = registerOutput<String>('ownerId');
     region = registerOutput<String>('region');
@@ -196,16 +185,7 @@ class SecondaryNetwork extends pulumi.CustomResource {
     state = registerOutput<String>('state');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<SecondaryNetworkTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SecondaryNetworkTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<SecondaryNetworkTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecondaryNetworkTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [SecondaryNetwork] resource's state with the given [name] and [id].
@@ -226,16 +206,14 @@ class SecondaryNetwork extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/secondaryNetwork:SecondaryNetwork',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/secondaryNetwork:SecondaryNetwork',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     ipv4CidrBlock = registerOutput<String>('ipv4CidrBlock');
-    ipv4CidrBlockAssociations = registerOutput<List<Map<String, dynamic>>>(
-      'ipv4CidrBlockAssociations',
-    );
+    ipv4CidrBlockAssociations = registerOutput<List<Map<String, dynamic>>>('ipv4CidrBlockAssociations');
     networkType = registerOutput<String>('networkType');
     ownerId = registerOutput<String>('ownerId');
     region = registerOutput<String>('region');
@@ -243,15 +221,6 @@ class SecondaryNetwork extends pulumi.CustomResource {
     this.state = registerOutput<String>('state');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<SecondaryNetworkTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SecondaryNetworkTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<SecondaryNetworkTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecondaryNetworkTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

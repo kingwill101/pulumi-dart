@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceOciArtifactEntryResponse {
   /// The artifact digest.
   final pulumi.Input<String>? digest;
-
   /// The artifact name.
   final pulumi.Input<String>? imageName;
-
   /// The Azure Container Registry login server.
   final pulumi.Input<String>? loginServer;
 
@@ -33,21 +31,10 @@ class ServiceOciArtifactEntryResponse {
 
   factory ServiceOciArtifactEntryResponse.fromMap(Map<String, dynamic> map) {
     return ServiceOciArtifactEntryResponse(
-      digest: (() {
-        final guardedValue = map['digest'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      imageName: (() {
-        final guardedValue = map['imageName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      loginServer: (() {
-        final guardedValue = map['loginServer'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      digest: (() { final guardedValue = map['digest']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      imageName: (() { final guardedValue = map['imageName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      loginServer: (() { final guardedValue = map['loginServer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -14,7 +14,6 @@ class GetForwardingRuleResult {
   final String description;
   final Map<String, String> effectiveLabels;
   final int forwardingRuleId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String ipAddress;
@@ -38,8 +37,7 @@ class GetForwardingRuleResult {
   final bool recreateClosedPsc;
   final String? region;
   final String selfLink;
-  final List<GetForwardingRuleServiceDirectoryRegistration>
-  serviceDirectoryRegistrations;
+  final List<GetForwardingRuleServiceDirectoryRegistration> serviceDirectoryRegistrations;
   final String serviceLabel;
   final String serviceName;
   final List<String> sourceIpRanges;
@@ -157,11 +155,7 @@ class GetForwardingRuleResult {
       'recreateClosedPsc': recreateClosedPsc,
       'region': ?region,
       'selfLink': selfLink,
-      'serviceDirectoryRegistrations':
-          pulumi.Input.encodeList<
-            GetForwardingRuleServiceDirectoryRegistration,
-            Map<String, dynamic>
-          >(serviceDirectoryRegistrations, (value) => value.toMap()),
+      'serviceDirectoryRegistrations': pulumi.Input.encodeList<GetForwardingRuleServiceDirectoryRegistration, Map<String, dynamic>>(serviceDirectoryRegistrations, (value) => value.toMap()),
       'serviceLabel': serviceLabel,
       'serviceName': serviceName,
       'sourceIpRanges': sourceIpRanges,
@@ -196,29 +190,14 @@ class GetForwardingRuleResult {
       noAutomateDnsZone: map['noAutomateDnsZone'] as bool,
       portRange: map['portRange'] as String,
       ports: (map['ports'] as List).cast<String>(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
       pscConnectionId: map['pscConnectionId'] as String,
       pscConnectionStatus: map['pscConnectionStatus'] as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       recreateClosedPsc: map['recreateClosedPsc'] as bool,
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
       selfLink: map['selfLink'] as String,
-      serviceDirectoryRegistrations:
-          pulumi
-              .Input.decodeList<GetForwardingRuleServiceDirectoryRegistration>(
-            map['serviceDirectoryRegistrations']!,
-            (value) => GetForwardingRuleServiceDirectoryRegistration.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      serviceDirectoryRegistrations: pulumi.Input.decodeList<GetForwardingRuleServiceDirectoryRegistration>(map['serviceDirectoryRegistrations']!, (value) => GetForwardingRuleServiceDirectoryRegistration.fromMap((value as Map).cast<String, dynamic>())),
       serviceLabel: map['serviceLabel'] as String,
       serviceName: map['serviceName'] as String,
       sourceIpRanges: (map['sourceIpRanges'] as List).cast<String>(),
@@ -227,3 +206,4 @@ class GetForwardingRuleResult {
     );
   }
 }
+

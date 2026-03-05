@@ -191,31 +191,22 @@ import 'key_vault_key_reference_response.dart';
 class IntegrationAccountCertificate extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The changed time.
   late final pulumi.Output<String> changedTime;
-
   /// The created time.
   late final pulumi.Output<String> createdTime;
-
   /// The key details in the key vault.
   late final pulumi.Output<KeyVaultKeyReferenceResponse?> key;
-
   /// The resource location.
   late final pulumi.Output<String?> location;
-
   /// The metadata.
   late final pulumi.Output<dynamic> metadata;
-
   /// Gets the resource name.
   late final pulumi.Output<String> name;
-
   /// The public certificate.
   late final pulumi.Output<String?> publicCertificate;
-
   /// The resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Gets the resource type.
   late final pulumi.Output<String> type;
 
@@ -228,24 +219,15 @@ class IntegrationAccountCertificate extends pulumi.CustomResource {
     IntegrationAccountCertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:logic:IntegrationAccountCertificate',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:logic:IntegrationAccountCertificate',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     changedTime = registerOutput<String>('changedTime');
     createdTime = registerOutput<String>('createdTime');
-    key = registerOutput<KeyVaultKeyReferenceResponse?>(
-      'key',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return KeyVaultKeyReferenceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    key = registerOutput<KeyVaultKeyReferenceResponse?>('key', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KeyVaultKeyReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String?>('location');
     metadata = registerOutput<dynamic>('metadata');
     this.name = registerOutput<String>('name');

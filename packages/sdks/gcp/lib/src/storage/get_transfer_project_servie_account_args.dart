@@ -12,21 +12,20 @@ class GetTransferProjectServieAccountArgs {
 
   /// Creates a new [GetTransferProjectServieAccountArgs].
   /// [project] The project ID. If it is not provided, the provider project is used.
-  GetTransferProjectServieAccountArgs({this.project});
+  GetTransferProjectServieAccountArgs({
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'project': ?project};
+    return <String, dynamic>{
+      'project': ?project,
+    };
   }
 
-  factory GetTransferProjectServieAccountArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetTransferProjectServieAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetTransferProjectServieAccountArgs(
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

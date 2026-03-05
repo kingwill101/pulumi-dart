@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ChannelDestinationMultiplexSettings {
   /// The ID of the Multiplex that the encoder is providing output to.
   final pulumi.Input<String> multiplexId;
-
   /// The program name of the Multiplex program that the encoder is providing output to.
   final pulumi.Input<String> programName;
 
@@ -24,12 +23,11 @@ class ChannelDestinationMultiplexSettings {
     };
   }
 
-  factory ChannelDestinationMultiplexSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ChannelDestinationMultiplexSettings.fromMap(Map<String, dynamic> map) {
     return ChannelDestinationMultiplexSettings(
       multiplexId: pulumi.Input.fromValue(map['multiplexId'] as String),
       programName: pulumi.Input.fromValue(map['programName'] as String),
     );
   }
 }
+

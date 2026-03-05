@@ -9,19 +9,20 @@ class ResilientVMCreationPolicyResponse {
 
   /// Creates a new [ResilientVMCreationPolicyResponse].
   /// [enabled] Specifies whether resilient VM creation should be enabled on the virtual machine scale set. The default value is false.
-  ResilientVMCreationPolicyResponse({this.enabled});
+  ResilientVMCreationPolicyResponse({
+    this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': ?enabled};
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
   factory ResilientVMCreationPolicyResponse.fromMap(Map<String, dynamic> map) {
     return ResilientVMCreationPolicyResponse(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

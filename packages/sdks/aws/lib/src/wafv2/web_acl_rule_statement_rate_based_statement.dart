@@ -8,26 +8,18 @@ import 'web_acl_rule_statement_rate_based_statement_scope_down_statement.dart';
 class WebAclRuleStatementRateBasedStatement {
   /// Setting that indicates how to aggregate the request counts. Valid values include: `CONSTANT`, `CUSTOM_KEYS`, `FORWARDED_IP`, or `IP`. Default: `IP`.
   final pulumi.Input<String>? aggregateKeyType;
-
   /// Aggregate the request counts using one or more web request components as the aggregate keys. See `custom_key` below for details.
-  final pulumi.Input<List<WebAclRuleStatementRateBasedStatementCustomKey>>?
-  customKeys;
-
+  final pulumi.Input<List<WebAclRuleStatementRateBasedStatementCustomKey>>? customKeys;
   /// The amount of time, in seconds, that AWS WAF should include in its request counts, looking back from the current time. Valid values are `60`, `120`, `300`, and `600`. Defaults to `300` (5 minutes).
   ///
   /// **NOTE:** This setting doesn't determine how often AWS WAF checks the rate, but how far back it looks each time it checks. AWS WAF checks the rate about every 10 seconds.
   final pulumi.Input<int>? evaluationWindowSec;
-
   /// Configuration for inspecting IP addresses in an HTTP header that you specify, instead of using the IP address that's reported by the web request origin. If `aggregate_key_type` is set to `FORWARDED_IP`, this block is required. See `forwarded_ip_config` below for details.
-  final pulumi.Input<WebAclRuleStatementRateBasedStatementForwardedIpConfig>?
-  forwardedIpConfig;
-
+  final pulumi.Input<WebAclRuleStatementRateBasedStatementForwardedIpConfig>? forwardedIpConfig;
   /// Limit on requests during the specified evaluation window for a single aggregation instance.
   final pulumi.Input<int> limit;
-
   /// Optional nested statement that narrows the scope of the rate-based statement to matching web requests. This can be any nestable statement, and you can nest statements at any level below this scope-down statement. See `statement` above for details. If `aggregate_key_type` is set to `CONSTANT`, this block is required.
-  final pulumi.Input<WebAclRuleStatementRateBasedStatementScopeDownStatement>?
-  scopeDownStatement;
+  final pulumi.Input<WebAclRuleStatementRateBasedStatementScopeDownStatement>? scopeDownStatement;
 
   /// Creates a new [WebAclRuleStatementRateBasedStatement].
   /// [aggregateKeyType] Setting that indicates how to aggregate the request counts. Valid values include: `CONSTANT`, `CUSTOM_KEYS`, `FORWARDED_IP`, or `IP`. Default: `IP`.
@@ -48,79 +40,23 @@ class WebAclRuleStatementRateBasedStatement {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'aggregateKeyType': ?aggregateKeyType,
-      'customKeys':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<WebAclRuleStatementRateBasedStatementCustomKey>,
-            List<Map<String, dynamic>>
-          >(
-            customKeys,
-            (value) =>
-                pulumi.Input.encodeList<
-                  WebAclRuleStatementRateBasedStatementCustomKey,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'customKeys': ?pulumi.Input.mapOptionalInputValue<List<WebAclRuleStatementRateBasedStatementCustomKey>, List<Map<String, dynamic>>>(customKeys, (value) => pulumi.Input.encodeList<WebAclRuleStatementRateBasedStatementCustomKey, Map<String, dynamic>>(value, (value) => value.toMap())),
       'evaluationWindowSec': ?evaluationWindowSec,
-      'forwardedIpConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            WebAclRuleStatementRateBasedStatementForwardedIpConfig,
-            Map<String, dynamic>
-          >(forwardedIpConfig, (value) => value.toMap()),
+      'forwardedIpConfig': ?pulumi.Input.mapOptionalInputValue<WebAclRuleStatementRateBasedStatementForwardedIpConfig, Map<String, dynamic>>(forwardedIpConfig, (value) => value.toMap()),
       'limit': limit,
-      'scopeDownStatement':
-          ?pulumi.Input.mapOptionalInputValue<
-            WebAclRuleStatementRateBasedStatementScopeDownStatement,
-            Map<String, dynamic>
-          >(scopeDownStatement, (value) => value.toMap()),
+      'scopeDownStatement': ?pulumi.Input.mapOptionalInputValue<WebAclRuleStatementRateBasedStatementScopeDownStatement, Map<String, dynamic>>(scopeDownStatement, (value) => value.toMap()),
     };
   }
 
-  factory WebAclRuleStatementRateBasedStatement.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WebAclRuleStatementRateBasedStatement.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementRateBasedStatement(
-      aggregateKeyType: (() {
-        final guardedValue = map['aggregateKeyType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      customKeys: (() {
-        final guardedValue = map['customKeys'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi
-              .Input.decodeList<WebAclRuleStatementRateBasedStatementCustomKey>(
-            guardedValue,
-            (value) => WebAclRuleStatementRateBasedStatementCustomKey.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      evaluationWindowSec: (() {
-        final guardedValue = map['evaluationWindowSec'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      forwardedIpConfig: (() {
-        final guardedValue = map['forwardedIpConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          WebAclRuleStatementRateBasedStatementForwardedIpConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      aggregateKeyType: (() { final guardedValue = map['aggregateKeyType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      customKeys: (() { final guardedValue = map['customKeys']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WebAclRuleStatementRateBasedStatementCustomKey>(guardedValue, (value) => WebAclRuleStatementRateBasedStatementCustomKey.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      evaluationWindowSec: (() { final guardedValue = map['evaluationWindowSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      forwardedIpConfig: (() { final guardedValue = map['forwardedIpConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WebAclRuleStatementRateBasedStatementForwardedIpConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       limit: pulumi.Input.fromValue(map['limit'] as int),
-      scopeDownStatement: (() {
-        final guardedValue = map['scopeDownStatement'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          WebAclRuleStatementRateBasedStatementScopeDownStatement.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      scopeDownStatement: (() { final guardedValue = map['scopeDownStatement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WebAclRuleStatementRateBasedStatementScopeDownStatement.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

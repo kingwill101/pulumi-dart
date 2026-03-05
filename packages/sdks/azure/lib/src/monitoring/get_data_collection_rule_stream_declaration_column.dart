@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDataCollectionRuleStreamDeclarationColumn {
   /// Specifies the name of the Data Collection Rule.
   final pulumi.Input<String> name;
-
   /// cSpecifies the type of Managed Service Identity that should be configured on this Data Collection Rule. Possible values are `SystemAssigned` and `UserAssigned`.
   final pulumi.Input<String> type;
 
@@ -18,15 +17,17 @@ class GetDataCollectionRuleStreamDeclarationColumn {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'type': type};
+    return <String, dynamic>{
+      'name': name,
+      'type': type,
+    };
   }
 
-  factory GetDataCollectionRuleStreamDeclarationColumn.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDataCollectionRuleStreamDeclarationColumn.fromMap(Map<String, dynamic> map) {
     return GetDataCollectionRuleStreamDeclarationColumn(
       name: pulumi.Input.fromValue(map['name'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

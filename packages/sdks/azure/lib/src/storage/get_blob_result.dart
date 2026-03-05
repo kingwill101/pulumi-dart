@@ -1,31 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getBlob.
 class GetBlobResult {
   /// The access tier of the storage blob.
   final String accessTier;
-
   /// The MD5 sum of the blob contents.
   final String contentMd5;
-
   /// The content type of the storage blob.
   final String contentType;
-
   /// The encryption scope for this blob.
   final String encryptionScope;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A map of custom blob metadata.
   final Map<String, String> metadata;
   final String name;
   final String storageAccountName;
   final String storageContainerName;
-
   /// The type of the storage blob
   final String type;
-
   /// The URL of the storage blob.
   final String url;
 
@@ -87,3 +81,4 @@ class GetBlobResult {
     );
   }
 }
+

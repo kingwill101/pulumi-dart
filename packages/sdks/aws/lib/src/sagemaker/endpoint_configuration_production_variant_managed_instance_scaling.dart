@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EndpointConfigurationProductionVariantManagedInstanceScaling {
   /// Maximum number of instances that the endpoint can provision when it scales up to accommodate an increase in traffic.
   final pulumi.Input<int>? maxInstanceCount;
-
   /// Minimum number of instances that the endpoint must retain when it scales down to accommodate a decrease in traffic.
   final pulumi.Input<int>? minInstanceCount;
-
   /// Whether managed instance scaling is enabled. Valid values are `ENABLED` and `DISABLED`.
   final pulumi.Input<String>? status;
 
@@ -30,25 +28,12 @@ class EndpointConfigurationProductionVariantManagedInstanceScaling {
     };
   }
 
-  factory EndpointConfigurationProductionVariantManagedInstanceScaling.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EndpointConfigurationProductionVariantManagedInstanceScaling.fromMap(Map<String, dynamic> map) {
     return EndpointConfigurationProductionVariantManagedInstanceScaling(
-      maxInstanceCount: (() {
-        final guardedValue = map['maxInstanceCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      minInstanceCount: (() {
-        final guardedValue = map['minInstanceCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      maxInstanceCount: (() { final guardedValue = map['maxInstanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      minInstanceCount: (() { final guardedValue = map['minInstanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

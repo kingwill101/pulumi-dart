@@ -7,19 +7,14 @@ class LinuxFunctionAppBackupSchedule {
   ///
   /// &gt; **Note:** Not all intervals are supported on all Linux Function App SKUs. Please refer to the official documentation for appropriate values.
   final pulumi.Input<int> frequencyInterval;
-
   /// The unit of time for how often the backup should take place. Possible values include: `Day` and `Hour`.
   final pulumi.Input<String> frequencyUnit;
-
   /// Should the service keep at least one backup, regardless of age of backup. Defaults to `false`.
   final pulumi.Input<bool>? keepAtLeastOneBackup;
-
   /// The time the backup was last attempted.
   final pulumi.Input<String>? lastExecutionTime;
-
   /// After how many days backups should be deleted. Defaults to `30`.
   final pulumi.Input<int>? retentionPeriodDays;
-
   /// When the schedule should start working in RFC-3339 format.
   final pulumi.Input<String>? startTime;
 
@@ -52,30 +47,13 @@ class LinuxFunctionAppBackupSchedule {
 
   factory LinuxFunctionAppBackupSchedule.fromMap(Map<String, dynamic> map) {
     return LinuxFunctionAppBackupSchedule(
-      frequencyInterval: pulumi.Input.fromValue(
-        map['frequencyInterval'] as int,
-      ),
+      frequencyInterval: pulumi.Input.fromValue(map['frequencyInterval'] as int),
       frequencyUnit: pulumi.Input.fromValue(map['frequencyUnit'] as String),
-      keepAtLeastOneBackup: (() {
-        final guardedValue = map['keepAtLeastOneBackup'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      lastExecutionTime: (() {
-        final guardedValue = map['lastExecutionTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      retentionPeriodDays: (() {
-        final guardedValue = map['retentionPeriodDays'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      startTime: (() {
-        final guardedValue = map['startTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      keepAtLeastOneBackup: (() { final guardedValue = map['keepAtLeastOneBackup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      lastExecutionTime: (() { final guardedValue = map['lastExecutionTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      retentionPeriodDays: (() { final guardedValue = map['retentionPeriodDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      startTime: (() { final guardedValue = map['startTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

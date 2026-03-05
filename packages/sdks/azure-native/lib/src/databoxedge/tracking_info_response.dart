@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TrackingInfoResponse {
   /// Name of the carrier used in the delivery.
   final pulumi.Input<String>? carrierName;
-
   /// Serial number of the device being tracked.
   final pulumi.Input<String>? serialNumber;
-
   /// Tracking ID of the shipment.
   final pulumi.Input<String>? trackingId;
-
   /// Tracking URL of the shipment.
   final pulumi.Input<String>? trackingUrl;
 
@@ -39,26 +36,11 @@ class TrackingInfoResponse {
 
   factory TrackingInfoResponse.fromMap(Map<String, dynamic> map) {
     return TrackingInfoResponse(
-      carrierName: (() {
-        final guardedValue = map['carrierName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serialNumber: (() {
-        final guardedValue = map['serialNumber'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      trackingId: (() {
-        final guardedValue = map['trackingId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      trackingUrl: (() {
-        final guardedValue = map['trackingUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      carrierName: (() { final guardedValue = map['carrierName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serialNumber: (() { final guardedValue = map['serialNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      trackingId: (() { final guardedValue = map['trackingId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      trackingUrl: (() { final guardedValue = map['trackingUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

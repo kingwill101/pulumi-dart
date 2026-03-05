@@ -7,17 +7,13 @@ import 'get_data_centers_center.dart';
 class GetDataCentersResult {
   /// A list of Cassandra data centers. Its every element contains the following attributes:
   final List<GetDataCentersCenter> centers;
-
   /// The ID of the Cassandra cluster.
   final String clusterId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The list of Cassandra data center ids.
   final List<String> ids;
   final String? nameRegex;
-
   /// The name list of Cassandra data centers.
   final List<String> names;
   final String? outputFile;
@@ -42,11 +38,7 @@ class GetDataCentersResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'centers':
-          pulumi.Input.encodeList<GetDataCentersCenter, Map<String, dynamic>>(
-            centers,
-            (value) => value.toMap(),
-          ),
+      'centers': pulumi.Input.encodeList<GetDataCentersCenter, Map<String, dynamic>>(centers, (value) => value.toMap()),
       'clusterId': clusterId,
       'id': id,
       'ids': ids,
@@ -58,26 +50,14 @@ class GetDataCentersResult {
 
   factory GetDataCentersResult.fromMap(Map<String, dynamic> map) {
     return GetDataCentersResult(
-      centers: pulumi.Input.decodeList<GetDataCentersCenter>(
-        map['centers']!,
-        (value) => GetDataCentersCenter.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      centers: pulumi.Input.decodeList<GetDataCentersCenter>(map['centers']!, (value) => GetDataCentersCenter.fromMap((value as Map).cast<String, dynamic>())),
       clusterId: map['clusterId'] as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

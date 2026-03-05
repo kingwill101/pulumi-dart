@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClusterNodePoolNodeConfigReservationAffinity {
   /// Corresponds to the type of reservation consumption.
   final pulumi.Input<String> consumeReservationType;
-
   /// The label key of a reservation resource.
   final pulumi.Input<String> key;
-
   /// The label values of the reservation resource.
   final pulumi.Input<List<String>> values;
 
@@ -30,15 +28,12 @@ class GetClusterNodePoolNodeConfigReservationAffinity {
     };
   }
 
-  factory GetClusterNodePoolNodeConfigReservationAffinity.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetClusterNodePoolNodeConfigReservationAffinity.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolNodeConfigReservationAffinity(
-      consumeReservationType: pulumi.Input.fromValue(
-        map['consumeReservationType'] as String,
-      ),
+      consumeReservationType: pulumi.Input.fromValue(map['consumeReservationType'] as String),
       key: pulumi.Input.fromValue(map['key'] as String),
       values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
+

@@ -10,17 +10,20 @@ class VMwareClusterControlPlaneNodeAutoResizeConfig {
 
   /// Creates a new [VMwareClusterControlPlaneNodeAutoResizeConfig].
   /// [enabled] Whether to enable control plane node auto resizing.
-  VMwareClusterControlPlaneNodeAutoResizeConfig({required this.enabled});
+  VMwareClusterControlPlaneNodeAutoResizeConfig({
+    required this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled};
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
-  factory VMwareClusterControlPlaneNodeAutoResizeConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VMwareClusterControlPlaneNodeAutoResizeConfig.fromMap(Map<String, dynamic> map) {
     return VMwareClusterControlPlaneNodeAutoResizeConfig(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
+

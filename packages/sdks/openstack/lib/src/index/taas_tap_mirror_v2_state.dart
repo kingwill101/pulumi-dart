@@ -8,39 +8,31 @@ class TaasTapMirrorV2State {
   /// The human-readable description for the Tap Mirror.
   /// Changing this updates the description of the existing Tap Mirror.
   final pulumi.Input<String>? description;
-
   /// A block declaring the directions to be mirrored and their
   /// identifiers. One block has to be declared with at least one direction. Changing
   /// this creates a new Tap Mirror.
   final pulumi.Input<TaasTapMirrorV2Directions>? directions;
-
   /// The type of the mirroring, can be `gre` or `erspanv1`.
   /// Changing this creates a new Tap Mirror.
   final pulumi.Input<String>? mirrorType;
-
   /// The name of the Tap Mirror. Changing this updates the name of
   /// the existing Tap Mirror.
   final pulumi.Input<String>? name;
-
   /// The Port ID of the Tap Mirror, this will be the source of
   /// the mirrored traffic, and this traffic will be tunneled into the GRE or ERSPAN
   /// v1 tunnel. The tunnel itself is not starting from this port. Changing this
   /// creates a new Tap Mirror.
   final pulumi.Input<String>? portId;
-
   /// Id of the OpenStack project.
   final pulumi.Input<String>? projectId;
-
   /// The region in which to obtain the V2 Networking client.
   /// A Networking client is needed to create an endpoint group. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
   /// group.
   final pulumi.Input<String>? region;
-
   /// The remote IP of the Tap Mirror, this will be the remote
   /// end of the GRE or ERSPAN v1 tunnel. Changing this creates a new Tap Mirror.
   final pulumi.Input<String>? remoteIp;
-
   /// The owner of the Tap Mirror. Required if admin wants to
   /// create a Tap Mirror for another project. Changing this creates a new Tap Mirror.
   final pulumi.Input<String>? tenantId;
@@ -70,11 +62,7 @@ class TaasTapMirrorV2State {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': ?description,
-      'directions':
-          ?pulumi.Input.mapOptionalInputValue<
-            TaasTapMirrorV2Directions,
-            Map<String, dynamic>
-          >(directions, (value) => value.toMap()),
+      'directions': ?pulumi.Input.mapOptionalInputValue<TaasTapMirrorV2Directions, Map<String, dynamic>>(directions, (value) => value.toMap()),
       'mirrorType': ?mirrorType,
       'name': ?name,
       'portId': ?portId,
@@ -87,55 +75,16 @@ class TaasTapMirrorV2State {
 
   factory TaasTapMirrorV2State.fromMap(Map<String, dynamic> map) {
     return TaasTapMirrorV2State(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      directions: (() {
-        final guardedValue = map['directions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          TaasTapMirrorV2Directions.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      mirrorType: (() {
-        final guardedValue = map['mirrorType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      portId: (() {
-        final guardedValue = map['portId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      projectId: (() {
-        final guardedValue = map['projectId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      remoteIp: (() {
-        final guardedValue = map['remoteIp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tenantId: (() {
-        final guardedValue = map['tenantId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      directions: (() { final guardedValue = map['directions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TaasTapMirrorV2Directions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      mirrorType: (() { final guardedValue = map['mirrorType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      portId: (() { final guardedValue = map['portId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      projectId: (() { final guardedValue = map['projectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      remoteIp: (() { final guardedValue = map['remoteIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

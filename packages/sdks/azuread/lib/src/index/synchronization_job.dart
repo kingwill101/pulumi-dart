@@ -298,13 +298,10 @@ import 'synchronization_job_state.dart';
 class SynchronizationJob extends pulumi.CustomResource {
   /// Whether the provisioning job is enabled. Default state is `true`.
   late final pulumi.Output<bool?> enabled;
-
   /// A `schedule` list as documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> schedules;
-
   /// The ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
   late final pulumi.Output<String> servicePrincipalId;
-
   /// Identifier of the synchronization template this job is based on.
   late final pulumi.Output<String> templateId;
 
@@ -317,11 +314,11 @@ class SynchronizationJob extends pulumi.CustomResource {
     SynchronizationJobArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/synchronizationJob:SynchronizationJob',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azuread:index/synchronizationJob:SynchronizationJob',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     enabled = registerOutput<bool?>('enabled');
     schedules = registerOutput<List<Map<String, dynamic>>>('schedules');
     servicePrincipalId = registerOutput<String>('servicePrincipalId');
@@ -346,11 +343,11 @@ class SynchronizationJob extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/synchronizationJob:SynchronizationJob',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azuread:index/synchronizationJob:SynchronizationJob',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     enabled = registerOutput<bool?>('enabled');
     schedules = registerOutput<List<Map<String, dynamic>>>('schedules');
     servicePrincipalId = registerOutput<String>('servicePrincipalId');

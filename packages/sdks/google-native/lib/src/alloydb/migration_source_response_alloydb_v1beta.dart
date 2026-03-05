@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MigrationSourceResponseAlloydbV1beta {
   /// The host and port of the on-premises instance in host:port format
   final pulumi.Input<String> hostPort;
-
   /// Place holder for the external source identifier(e.g DMS job name) that created the cluster.
   final pulumi.Input<String> referenceId;
-
   /// Type of migration source.
   final pulumi.Input<String> sourceType;
 
@@ -31,9 +29,7 @@ class MigrationSourceResponseAlloydbV1beta {
     };
   }
 
-  factory MigrationSourceResponseAlloydbV1beta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MigrationSourceResponseAlloydbV1beta.fromMap(Map<String, dynamic> map) {
     return MigrationSourceResponseAlloydbV1beta(
       hostPort: pulumi.Input.fromValue(map['hostPort'] as String),
       referenceId: pulumi.Input.fromValue(map['referenceId'] as String),
@@ -41,3 +37,4 @@ class MigrationSourceResponseAlloydbV1beta {
     );
   }
 }
+

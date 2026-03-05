@@ -698,16 +698,12 @@ import 'configuration_state.dart';
 class Configuration extends pulumi.CustomResource {
   /// One or more `config_file` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> configFiles;
-
   /// The ID of the Nginx Deployment. Changing this forces a new Nginx Configuration to be created.
   late final pulumi.Output<String> nginxDeploymentId;
-
   /// Specifies the package data for this configuration.
   late final pulumi.Output<String?> packageData;
-
   /// One or more `protected_file` blocks with sensitive information as defined below. If specified `config_file` must also be specified.
   late final pulumi.Output<List<Map<String, dynamic>>?> protectedFiles;
-
   /// Specifies the root file path of this Nginx Configuration.
   late final pulumi.Output<String> rootFile;
 
@@ -720,17 +716,15 @@ class Configuration extends pulumi.CustomResource {
     ConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:nginx/configuration:Configuration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:nginx/configuration:Configuration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     configFiles = registerOutput<List<Map<String, dynamic>>?>('configFiles');
     nginxDeploymentId = registerOutput<String>('nginxDeploymentId');
     packageData = registerOutput<String?>('packageData');
-    protectedFiles = registerOutput<List<Map<String, dynamic>>?>(
-      'protectedFiles',
-    );
+    protectedFiles = registerOutput<List<Map<String, dynamic>>?>('protectedFiles');
     rootFile = registerOutput<String>('rootFile');
   }
 
@@ -752,17 +746,15 @@ class Configuration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:nginx/configuration:Configuration',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:nginx/configuration:Configuration',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     configFiles = registerOutput<List<Map<String, dynamic>>?>('configFiles');
     nginxDeploymentId = registerOutput<String>('nginxDeploymentId');
     packageData = registerOutput<String?>('packageData');
-    protectedFiles = registerOutput<List<Map<String, dynamic>>?>(
-      'protectedFiles',
-    );
+    protectedFiles = registerOutput<List<Map<String, dynamic>>?>('protectedFiles');
     rootFile = registerOutput<String>('rootFile');
   }
 }

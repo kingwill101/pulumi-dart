@@ -5,22 +5,16 @@ enum GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnaly
   mostRecentSnapshotStats("MOST_RECENT_SNAPSHOT_STATS"),
   previousImportFeaturesStats("PREVIOUS_IMPORT_FEATURES_STATS");
 
-  const GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisAnomalyDetectionBaseline(
-    this.wireValue,
-  );
+  const GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisAnomalyDetectionBaseline(this.wireValue);
   final String wireValue;
 
-  static GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisAnomalyDetectionBaseline
-  fromValue(String value) {
-    for (final item
-        in GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisAnomalyDetectionBaseline
-            .values) {
+  static GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisAnomalyDetectionBaseline fromValue(String value) {
+    for (final item in GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisAnomalyDetectionBaseline.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisAnomalyDetectionBaseline value: $value',
-    );
+    throw ArgumentError('Unknown GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisAnomalyDetectionBaseline value: $value');
   }
 }
+

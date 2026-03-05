@@ -7,28 +7,20 @@ import 'route_map_rule_response.dart';
 class GetRouteMapResult {
   /// List of connections which have this RoutMap associated for inbound traffic.
   final List<String>? associatedInboundConnections;
-
   /// List of connections which have this RoutMap associated for outbound traffic.
   final List<String>? associatedOutboundConnections;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// A unique read-only string that changes whenever the resource is updated.
   final String etag;
-
   /// Resource ID.
   final String id;
-
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   final String name;
-
   /// The provisioning state of the RouteMap resource.
   final String provisioningState;
-
   /// List of RouteMap rules to be applied.
   final List<RouteMapRuleResponse>? rules;
-
   /// Resource type.
   final String type;
 
@@ -63,46 +55,23 @@ class GetRouteMapResult {
       'id': id,
       'name': name,
       'provisioningState': provisioningState,
-      'rules': ?(() {
-        final guardedValue = rules;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          RouteMapRuleResponse,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'rules': ?(() { final guardedValue = rules; if (guardedValue == null) return null; return pulumi.Input.encodeList<RouteMapRuleResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'type': type,
     };
   }
 
   factory GetRouteMapResult.fromMap(Map<String, dynamic> map) {
     return GetRouteMapResult(
-      associatedInboundConnections: (() {
-        final guardedValue = map['associatedInboundConnections'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
-      associatedOutboundConnections: (() {
-        final guardedValue = map['associatedOutboundConnections'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
+      associatedInboundConnections: (() { final guardedValue = map['associatedInboundConnections']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      associatedOutboundConnections: (() { final guardedValue = map['associatedOutboundConnections']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       azureApiVersion: map['azureApiVersion'] as String,
       etag: map['etag'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      rules: (() {
-        final guardedValue = map['rules'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<RouteMapRuleResponse>(
-          guardedValue,
-          (value) => RouteMapRuleResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouteMapRuleResponse>(guardedValue, (value) => RouteMapRuleResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       type: map['type'] as String,
     );
   }
 }
+

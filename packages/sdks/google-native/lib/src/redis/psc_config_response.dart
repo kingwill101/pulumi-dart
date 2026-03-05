@@ -8,10 +8,14 @@ class PscConfigResponse {
 
   /// Creates a new [PscConfigResponse].
   /// [network] The network where the IP address of the discovery endpoint will be reserved, in the form of projects/{network_project}/global/networks/{network_id}.
-  PscConfigResponse({required this.network});
+  PscConfigResponse({
+    required this.network,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'network': network};
+    return <String, dynamic>{
+      'network': network,
+    };
   }
 
   factory PscConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class PscConfigResponse {
     );
   }
 }
+

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TemplateScratchSourceResource {
   /// The ID of the Source Resource.
   final pulumi.Input<String> resourceId;
-
   /// The type of the Source resource.
   final pulumi.Input<String> resourceType;
 
@@ -31,3 +30,4 @@ class TemplateScratchSourceResource {
     );
   }
 }
+

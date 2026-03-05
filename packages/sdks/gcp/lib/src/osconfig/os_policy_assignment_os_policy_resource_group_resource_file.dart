@@ -7,15 +7,11 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFile {
   /// A a file with this content. The size of the content
   /// is limited to 1024 characters.
   final pulumi.Input<String>? content;
-
   /// A remote or local source. Structure is
   /// documented below.
-  final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile>?
-  file;
-
+  final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile>? file;
   /// The absolute path of the file within the VM.
   final pulumi.Input<String> path;
-
   /// Consists of three octal digits which represent, in
   /// order, the permissions of the owner, group, and other users for the file
   /// (similarly to the numeric mode used in the linux chmod utility). Each digit
@@ -25,7 +21,6 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFile {
   /// some examples of permissions and their associated values: read, write, and
   /// execute: 7 read and execute: 5 read and write: 6 read only: 4
   final pulumi.Input<String>? permissions;
-
   /// Desired state of the file. Possible values are:
   /// `DESIRED_STATE_UNSPECIFIED`, `PRESENT`, `ABSENT`, `CONTENTS_MATCH`.
   final pulumi.Input<String> state;
@@ -47,42 +42,21 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFile {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'content': ?content,
-      'file':
-          ?pulumi.Input.mapOptionalInputValue<
-            OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile,
-            Map<String, dynamic>
-          >(file, (value) => value.toMap()),
+      'file': ?pulumi.Input.mapOptionalInputValue<OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile, Map<String, dynamic>>(file, (value) => value.toMap()),
       'path': path,
       'permissions': ?permissions,
       'state': state,
     };
   }
 
-  factory OsPolicyAssignmentOsPolicyResourceGroupResourceFile.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OsPolicyAssignmentOsPolicyResourceGroupResourceFile.fromMap(Map<String, dynamic> map) {
     return OsPolicyAssignmentOsPolicyResourceGroupResourceFile(
-      content: (() {
-        final guardedValue = map['content'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      file: (() {
-        final guardedValue = map['file'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      content: (() { final guardedValue = map['content']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      file: (() { final guardedValue = map['file']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       path: pulumi.Input.fromValue(map['path'] as String),
-      permissions: (() {
-        final guardedValue = map['permissions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      permissions: (() { final guardedValue = map['permissions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       state: pulumi.Input.fromValue(map['state'] as String),
     );
   }
 }
+

@@ -16,3 +16,4 @@ enum HiveThriftTransportProtocol {
     throw ArgumentError('Unknown HiveThriftTransportProtocol value: $value');
   }
 }
+

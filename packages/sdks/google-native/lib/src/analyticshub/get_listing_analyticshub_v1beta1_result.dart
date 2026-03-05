@@ -9,41 +9,28 @@ import 'restricted_export_config_response_analyticshub_v1beta1.dart';
 class GetListingAnalyticshubV1beta1Result {
   /// Shared dataset i.e. BigQuery dataset source.
   final BigQueryDatasetSourceResponseAnalyticshubV1beta1 bigqueryDataset;
-
   /// Optional. Categories of the listing. Up to two categories are allowed.
   final List<String> categories;
-
   /// Optional. Details of the data provider who owns the source data.
   final DataProviderResponseAnalyticshubV1beta1 dataProvider;
-
   /// Optional. Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF). Default value is an empty string. Max length: 2000 bytes.
   final String description;
-
   /// Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces. Default value is an empty string. Max length: 63 bytes.
   final String displayName;
-
   /// Optional. Documentation describing the listing.
   final String documentation;
-
   /// Optional. Base64 encoded image representing the listing. Max Size: 3.0MiB Expected image dimensions are 512x512 pixels, however the API only performs validation on size of the encoded data. Note: For byte fields, the contents of the field are base64-encoded (which increases the size of the data by 33-36%) when using JSON on the wire.
   final String icon;
-
   /// The resource name of the listing. e.g. `projects/myproject/locations/US/dataExchanges/123/listings/456`
   final String name;
-
   /// Optional. Email or URL of the primary point of contact of the listing. Max Length: 1000 bytes.
   final String primaryContact;
-
   /// Optional. Details of the publisher who owns the listing and who can share the source data.
   final PublisherResponseAnalyticshubV1beta1 publisher;
-
   /// Optional. Email or URL of the request access of the listing. Subscribers can use this reference to request access. Max Length: 1000 bytes.
   final String requestAccess;
-
   /// Optional. If set, restricted export configuration will be propagated and enforced on the linked dataset.
-  final RestrictedExportConfigResponseAnalyticshubV1beta1
-  restrictedExportConfig;
-
+  final RestrictedExportConfigResponseAnalyticshubV1beta1 restrictedExportConfig;
   /// Current state of the listing.
   final String state;
 
@@ -95,32 +82,22 @@ class GetListingAnalyticshubV1beta1Result {
     };
   }
 
-  factory GetListingAnalyticshubV1beta1Result.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetListingAnalyticshubV1beta1Result.fromMap(Map<String, dynamic> map) {
     return GetListingAnalyticshubV1beta1Result(
-      bigqueryDataset: BigQueryDatasetSourceResponseAnalyticshubV1beta1.fromMap(
-        (map['bigqueryDataset']! as Map).cast<String, dynamic>(),
-      ),
+      bigqueryDataset: BigQueryDatasetSourceResponseAnalyticshubV1beta1.fromMap((map['bigqueryDataset']! as Map).cast<String, dynamic>()),
       categories: (map['categories'] as List).cast<String>(),
-      dataProvider: DataProviderResponseAnalyticshubV1beta1.fromMap(
-        (map['dataProvider']! as Map).cast<String, dynamic>(),
-      ),
+      dataProvider: DataProviderResponseAnalyticshubV1beta1.fromMap((map['dataProvider']! as Map).cast<String, dynamic>()),
       description: map['description'] as String,
       displayName: map['displayName'] as String,
       documentation: map['documentation'] as String,
       icon: map['icon'] as String,
       name: map['name'] as String,
       primaryContact: map['primaryContact'] as String,
-      publisher: PublisherResponseAnalyticshubV1beta1.fromMap(
-        (map['publisher']! as Map).cast<String, dynamic>(),
-      ),
+      publisher: PublisherResponseAnalyticshubV1beta1.fromMap((map['publisher']! as Map).cast<String, dynamic>()),
       requestAccess: map['requestAccess'] as String,
-      restrictedExportConfig:
-          RestrictedExportConfigResponseAnalyticshubV1beta1.fromMap(
-            (map['restrictedExportConfig']! as Map).cast<String, dynamic>(),
-          ),
+      restrictedExportConfig: RestrictedExportConfigResponseAnalyticshubV1beta1.fromMap((map['restrictedExportConfig']! as Map).cast<String, dynamic>()),
       state: map['state'] as String,
     );
   }
 }
+

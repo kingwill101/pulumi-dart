@@ -116,28 +116,20 @@ import 'location_fsx_lustre_state.dart';
 class LocationFsxLustre extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the DataSync Location.
   late final pulumi.Output<String> arn;
-
   /// The time that the FSx for Lustre location was created.
   late final pulumi.Output<String> creationTime;
-
   /// The Amazon Resource Name (ARN) for the FSx for Lustre file system.
   late final pulumi.Output<String> fsxFilesystemArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The Amazon Resource Names (ARNs) of the security groups that are to use to configure the FSx for Lustre file system.
   late final pulumi.Output<List<String>> securityGroupArns;
-
   /// Subdirectory to perform actions as source or destination.
   late final pulumi.Output<String> subdirectory;
-
   /// Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// The URL of the FSx for Lustre location that was described.
   late final pulumi.Output<String> uri;
 
@@ -150,11 +142,11 @@ class LocationFsxLustre extends pulumi.CustomResource {
     LocationFsxLustreArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:datasync/locationFsxLustre:LocationFsxLustre',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:datasync/locationFsxLustre:LocationFsxLustre',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     creationTime = registerOutput<String>('creationTime');
     fsxFilesystemArn = registerOutput<String>('fsxFilesystemArn');
@@ -184,11 +176,11 @@ class LocationFsxLustre extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:datasync/locationFsxLustre:LocationFsxLustre',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:datasync/locationFsxLustre:LocationFsxLustre',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     creationTime = registerOutput<String>('creationTime');
     fsxFilesystemArn = registerOutput<String>('fsxFilesystemArn');

@@ -16,40 +16,28 @@ import 'web_app_host_name_binding_slot_args.dart';
 class WebAppHostNameBindingSlot extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Azure resource name.
   late final pulumi.Output<String?> azureResourceName;
-
   /// Azure resource type.
   late final pulumi.Output<String?> azureResourceType;
-
   /// Custom DNS record type.
   late final pulumi.Output<String?> customHostNameDnsRecordType;
-
   /// Fully qualified ARM domain resource URI.
   late final pulumi.Output<String?> domainId;
-
   /// Hostname type.
   late final pulumi.Output<String?> hostNameType;
-
   /// Kind of resource.
   late final pulumi.Output<String?> kind;
-
   /// Resource Name.
   late final pulumi.Output<String> name;
-
   /// App Service app name.
   late final pulumi.Output<String?> siteName;
-
   /// SSL type
   late final pulumi.Output<String?> sslState;
-
   /// SSL certificate thumbprint
   late final pulumi.Output<String?> thumbprint;
-
   /// Resource type.
   late final pulumi.Output<String> type;
-
   /// Virtual IP address assigned to the hostname if IP based SSL is enabled.
   late final pulumi.Output<String> virtualIP;
 
@@ -62,17 +50,15 @@ class WebAppHostNameBindingSlot extends pulumi.CustomResource {
     WebAppHostNameBindingSlotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:web:WebAppHostNameBindingSlot',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:web:WebAppHostNameBindingSlot',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     azureResourceName = registerOutput<String?>('azureResourceName');
     azureResourceType = registerOutput<String?>('azureResourceType');
-    customHostNameDnsRecordType = registerOutput<String?>(
-      'customHostNameDnsRecordType',
-    );
+    customHostNameDnsRecordType = registerOutput<String?>('customHostNameDnsRecordType');
     domainId = registerOutput<String?>('domainId');
     hostNameType = registerOutput<String?>('hostNameType');
     kind = registerOutput<String?>('kind');

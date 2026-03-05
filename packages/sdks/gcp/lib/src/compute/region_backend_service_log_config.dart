@@ -5,15 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegionBackendServiceLogConfig {
   /// Whether to enable logging for the load balancer traffic served by this backend service.
   final pulumi.Input<bool>? enable;
-
   /// Specifies the fields to include in logging. This field can only be specified if logging is enabled for this backend service.
   final pulumi.Input<List<String>>? optionalFields;
-
   /// Specifies the optional logging mode for the load balancer traffic.
   /// Supported values: INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM.
   /// Possible values are: `INCLUDE_ALL_OPTIONAL`, `EXCLUDE_ALL_OPTIONAL`, `CUSTOM`.
   final pulumi.Input<String>? optionalMode;
-
   /// This field can only be specified if logging is enabled for this backend service. The value of
   /// the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
   /// where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.
@@ -43,26 +40,11 @@ class RegionBackendServiceLogConfig {
 
   factory RegionBackendServiceLogConfig.fromMap(Map<String, dynamic> map) {
     return RegionBackendServiceLogConfig(
-      enable: (() {
-        final guardedValue = map['enable'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      optionalFields: (() {
-        final guardedValue = map['optionalFields'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      optionalMode: (() {
-        final guardedValue = map['optionalMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sampleRate: (() {
-        final guardedValue = map['sampleRate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      enable: (() { final guardedValue = map['enable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      optionalFields: (() { final guardedValue = map['optionalFields']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      optionalMode: (() { final guardedValue = map['optionalMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sampleRate: (() { final guardedValue = map['sampleRate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

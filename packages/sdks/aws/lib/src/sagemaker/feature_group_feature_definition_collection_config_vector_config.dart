@@ -7,21 +7,20 @@ class FeatureGroupFeatureDefinitionCollectionConfigVectorConfig {
 
   /// Creates a new [FeatureGroupFeatureDefinitionCollectionConfigVectorConfig].
   /// [dimension] Optional.
-  FeatureGroupFeatureDefinitionCollectionConfigVectorConfig({this.dimension});
+  FeatureGroupFeatureDefinitionCollectionConfigVectorConfig({
+    this.dimension,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'dimension': ?dimension};
+    return <String, dynamic>{
+      'dimension': ?dimension,
+    };
   }
 
-  factory FeatureGroupFeatureDefinitionCollectionConfigVectorConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FeatureGroupFeatureDefinitionCollectionConfigVectorConfig.fromMap(Map<String, dynamic> map) {
     return FeatureGroupFeatureDefinitionCollectionConfigVectorConfig(
-      dimension: (() {
-        final guardedValue = map['dimension'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      dimension: (() { final guardedValue = map['dimension']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

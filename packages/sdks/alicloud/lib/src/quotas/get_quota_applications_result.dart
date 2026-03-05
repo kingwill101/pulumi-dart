@@ -9,7 +9,6 @@ class GetQuotaApplicationsResult {
   final List<GetQuotaApplicationsApplication> applications;
   final List<GetQuotaApplicationsDimension>? dimensions;
   final bool? enableDetails;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -48,19 +47,8 @@ class GetQuotaApplicationsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'applications':
-          pulumi.Input.encodeList<
-            GetQuotaApplicationsApplication,
-            Map<String, dynamic>
-          >(applications, (value) => value.toMap()),
-      'dimensions': ?(() {
-        final guardedValue = dimensions;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          GetQuotaApplicationsDimension,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'applications': pulumi.Input.encodeList<GetQuotaApplicationsApplication, Map<String, dynamic>>(applications, (value) => value.toMap()),
+      'dimensions': ?(() { final guardedValue = dimensions; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetQuotaApplicationsDimension, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'enableDetails': ?enableDetails,
       'id': id,
       'ids': ids,
@@ -75,55 +63,18 @@ class GetQuotaApplicationsResult {
 
   factory GetQuotaApplicationsResult.fromMap(Map<String, dynamic> map) {
     return GetQuotaApplicationsResult(
-      applications: pulumi.Input.decodeList<GetQuotaApplicationsApplication>(
-        map['applications']!,
-        (value) => GetQuotaApplicationsApplication.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      dimensions: (() {
-        final guardedValue = map['dimensions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<GetQuotaApplicationsDimension>(
-          guardedValue,
-          (value) => GetQuotaApplicationsDimension.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      enableDetails: (() {
-        final guardedValue = map['enableDetails'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      applications: pulumi.Input.decodeList<GetQuotaApplicationsApplication>(map['applications']!, (value) => GetQuotaApplicationsApplication.fromMap((value as Map).cast<String, dynamic>())),
+      dimensions: (() { final guardedValue = map['dimensions']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetQuotaApplicationsDimension>(guardedValue, (value) => GetQuotaApplicationsDimension.fromMap((value as Map).cast<String, dynamic>())); })(),
+      enableDetails: (() { final guardedValue = map['enableDetails']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      keyWord: (() {
-        final guardedValue = map['keyWord'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      keyWord: (() { final guardedValue = map['keyWord']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
       productCode: map['productCode'] as String,
-      quotaActionCode: (() {
-        final guardedValue = map['quotaActionCode'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      quotaCategory: (() {
-        final guardedValue = map['quotaCategory'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      quotaActionCode: (() { final guardedValue = map['quotaActionCode']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      quotaCategory: (() { final guardedValue = map['quotaCategory']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

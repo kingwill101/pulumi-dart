@@ -9,10 +9,14 @@ class BigQueryDestinationResponse {
 
   /// Creates a new [BigQueryDestinationResponse].
   /// [datasetId] The ID of a BigQuery Dataset.
-  BigQueryDestinationResponse({required this.datasetId});
+  BigQueryDestinationResponse({
+    required this.datasetId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'datasetId': datasetId};
+    return <String, dynamic>{
+      'datasetId': datasetId,
+    };
   }
 
   factory BigQueryDestinationResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class BigQueryDestinationResponse {
     );
   }
 }
+

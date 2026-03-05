@@ -9,19 +9,20 @@ class AADAuthenticationSettingsResponse {
 
   /// Creates a new [AADAuthenticationSettingsResponse].
   /// [clientId] The client Id of the Managed Identity to query Microsoft Graph API. An empty string must be used for the system assigned Managed Identity
-  AADAuthenticationSettingsResponse({this.clientId});
+  AADAuthenticationSettingsResponse({
+    this.clientId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'clientId': ?clientId};
+    return <String, dynamic>{
+      'clientId': ?clientId,
+    };
   }
 
   factory AADAuthenticationSettingsResponse.fromMap(Map<String, dynamic> map) {
     return AADAuthenticationSettingsResponse(
-      clientId: (() {
-        final guardedValue = map['clientId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      clientId: (() { final guardedValue = map['clientId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -7,13 +7,10 @@ import 'google_cloud_orgpolicy_v2_policy_spec_policy_rule.dart';
 class GoogleCloudOrgpolicyV2PolicySpec {
   /// An opaque tag indicating the current version of the policy, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current policy to use when executing a read-modify-write loop. When the policy is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
   final pulumi.Input<String>? etag;
-
   /// Determines the inheritance behavior for this policy. If `inherit_from_parent` is true, policy rules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this policy becomes the new root for evaluation. This field can be set only for policies which configure list constraints.
   final pulumi.Input<bool>? inheritFromParent;
-
   /// Ignores policies set above this resource and restores the `constraint_default` enforcement behavior of the specific constraint at this resource. This field can be set in policies for either list or boolean constraints. If set, `rules` must be empty and `inherit_from_parent` must be set to false.
   final pulumi.Input<bool>? reset;
-
   /// In policies for boolean constraints, the following requirements apply: - There must be one and only one policy rule where condition is unset. - Boolean policy rules with conditions must set `enforced` to the opposite of the policy rule without a condition. - During policy evaluation, policy rules with conditions that are true for a target resource take precedence.
   final pulumi.Input<List<GoogleCloudOrgpolicyV2PolicySpecPolicyRule>>? rules;
 
@@ -34,50 +31,17 @@ class GoogleCloudOrgpolicyV2PolicySpec {
       'etag': ?etag,
       'inheritFromParent': ?inheritFromParent,
       'reset': ?reset,
-      'rules':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GoogleCloudOrgpolicyV2PolicySpecPolicyRule>,
-            List<Map<String, dynamic>>
-          >(
-            rules,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GoogleCloudOrgpolicyV2PolicySpecPolicyRule,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'rules': ?pulumi.Input.mapOptionalInputValue<List<GoogleCloudOrgpolicyV2PolicySpecPolicyRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<GoogleCloudOrgpolicyV2PolicySpecPolicyRule, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GoogleCloudOrgpolicyV2PolicySpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudOrgpolicyV2PolicySpec(
-      etag: (() {
-        final guardedValue = map['etag'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      inheritFromParent: (() {
-        final guardedValue = map['inheritFromParent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      reset: (() {
-        final guardedValue = map['reset'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      rules: (() {
-        final guardedValue = map['rules'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GoogleCloudOrgpolicyV2PolicySpecPolicyRule>(
-            guardedValue,
-            (value) => GoogleCloudOrgpolicyV2PolicySpecPolicyRule.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      inheritFromParent: (() { final guardedValue = map['inheritFromParent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      reset: (() { final guardedValue = map['reset']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudOrgpolicyV2PolicySpecPolicyRule>(guardedValue, (value) => GoogleCloudOrgpolicyV2PolicySpecPolicyRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

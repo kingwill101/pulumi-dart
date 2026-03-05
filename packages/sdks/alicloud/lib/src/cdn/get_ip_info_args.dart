@@ -12,13 +12,20 @@ class GetIpInfoArgs {
 
   /// Creates a new [GetIpInfoArgs].
   /// [ip] Specify IP address.
-  GetIpInfoArgs({required this.ip});
+  GetIpInfoArgs({
+    required this.ip,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'ip': ip};
+    return <String, dynamic>{
+      'ip': ip,
+    };
   }
 
   factory GetIpInfoArgs.fromMap(Map<String, dynamic> map) {
-    return GetIpInfoArgs(ip: pulumi.Input.fromValue(map['ip'] as String));
+    return GetIpInfoArgs(
+      ip: pulumi.Input.fromValue(map['ip'] as String),
+    );
   }
 }
+

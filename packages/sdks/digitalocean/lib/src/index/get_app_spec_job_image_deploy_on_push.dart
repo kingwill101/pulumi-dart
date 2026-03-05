@@ -8,19 +8,20 @@ class GetAppSpecJobImageDeployOnPush {
 
   /// Creates a new [GetAppSpecJobImageDeployOnPush].
   /// [enabled] Whether to automatically deploy images pushed to DOCR.
-  GetAppSpecJobImageDeployOnPush({this.enabled});
+  GetAppSpecJobImageDeployOnPush({
+    this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': ?enabled};
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
   factory GetAppSpecJobImageDeployOnPush.fromMap(Map<String, dynamic> map) {
     return GetAppSpecJobImageDeployOnPush(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

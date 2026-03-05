@@ -136,22 +136,16 @@ import 'alias_state.dart';
 class Alias extends pulumi.CustomResource {
   /// Alias ARN.
   late final pulumi.Output<String> arn;
-
   /// Description of the alias.
   late final pulumi.Output<String?> description;
-
   /// Name of the alias.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Specifies the fleet and/or routing type to use for the alias.
   late final pulumi.Output<AliasRoutingStrategy> routingStrategy;
-
   /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -159,33 +153,31 @@ class Alias extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Alias]. {@macro pulumi_gamelift_alias_alias_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Alias(String name, {AliasArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:gamelift/alias:Alias',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Alias(
+    String name, {
+    AliasArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:gamelift/alias:Alias',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    routingStrategy = registerOutput<AliasRoutingStrategy>(
-      'routingStrategy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AliasRoutingStrategy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    routingStrategy = registerOutput<AliasRoutingStrategy>('routingStrategy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AliasRoutingStrategy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [Alias] resource's state with the given [name] and [id].
-  static Alias get(String name, pulumi.Input<String> id, {AliasState? state}) {
+  static Alias get(
+    String name,
+    pulumi.Input<String> id, {
+    AliasState? state,
+  }) {
     return Alias._get(
       name,
       state: state?.toMap(),
@@ -198,25 +190,16 @@ class Alias extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:gamelift/alias:Alias',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:gamelift/alias:Alias',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    routingStrategy = registerOutput<AliasRoutingStrategy>(
-      'routingStrategy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AliasRoutingStrategy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    routingStrategy = registerOutput<AliasRoutingStrategy>('routingStrategy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AliasRoutingStrategy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }

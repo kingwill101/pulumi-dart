@@ -6,26 +6,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TransitRouterPrefixListAssociationState {
   /// The ID of the next hop. **NOTE:** If `next_hop` is set to `BlackHole`, you must set this parameter to `BlackHole`.
   final pulumi.Input<String>? nextHop;
-
   /// The type of the next hop. Valid values:
   /// - `BlackHole`: Specifies that all the CIDR blocks in the prefix list are blackhole routes. Packets destined for the CIDR blocks are dropped.
   /// - `VPC`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual private cloud (VPC) connection.
   /// - `VBR`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual border router (VBR) connection.
   /// - `TR`: Specifies that the next hop of the CIDR blocks in the prefix list is an inter-region connection.
   final pulumi.Input<String>? nextHopType;
-
   /// The ID of the Alibaba Cloud account to which the prefix list belongs.
   final pulumi.Input<int>? ownerUid;
-
   /// The ID of the prefix list.
   final pulumi.Input<String>? prefixListId;
-
   /// The status of the prefix list.
   final pulumi.Input<String>? status;
-
   /// The ID of the transit router.
   final pulumi.Input<String>? transitRouterId;
-
   /// The ID of the route table of the transit router.
   final pulumi.Input<String>? transitRouterTableId;
 
@@ -59,45 +53,16 @@ class TransitRouterPrefixListAssociationState {
     };
   }
 
-  factory TransitRouterPrefixListAssociationState.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory TransitRouterPrefixListAssociationState.fromMap(Map<String, dynamic> map) {
     return TransitRouterPrefixListAssociationState(
-      nextHop: (() {
-        final guardedValue = map['nextHop'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      nextHopType: (() {
-        final guardedValue = map['nextHopType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ownerUid: (() {
-        final guardedValue = map['ownerUid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      prefixListId: (() {
-        final guardedValue = map['prefixListId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      transitRouterId: (() {
-        final guardedValue = map['transitRouterId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      transitRouterTableId: (() {
-        final guardedValue = map['transitRouterTableId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      nextHop: (() { final guardedValue = map['nextHop']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nextHopType: (() { final guardedValue = map['nextHopType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ownerUid: (() { final guardedValue = map['ownerUid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      prefixListId: (() { final guardedValue = map['prefixListId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      transitRouterId: (() { final guardedValue = map['transitRouterId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      transitRouterTableId: (() { final guardedValue = map['transitRouterTableId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

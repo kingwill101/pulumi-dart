@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceClientNodeConfiguration {
   /// Number of disks in the Elasticsearch cluster coordination node
   final pulumi.Input<int>? amount;
-
   /// Elasticsearch cluster coordinates node disk size
   final pulumi.Input<int>? disk;
-
   /// Elasticsearch cluster coordination node disk type
   final pulumi.Input<String>? diskType;
-
   /// Elasticsearch cluster coordination node specification
   final pulumi.Input<String>? spec;
 
@@ -38,26 +35,11 @@ class InstanceClientNodeConfiguration {
 
   factory InstanceClientNodeConfiguration.fromMap(Map<String, dynamic> map) {
     return InstanceClientNodeConfiguration(
-      amount: (() {
-        final guardedValue = map['amount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      disk: (() {
-        final guardedValue = map['disk'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      diskType: (() {
-        final guardedValue = map['diskType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      spec: (() {
-        final guardedValue = map['spec'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      amount: (() { final guardedValue = map['amount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      disk: (() { final guardedValue = map['disk']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      diskType: (() { final guardedValue = map['diskType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      spec: (() { final guardedValue = map['spec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

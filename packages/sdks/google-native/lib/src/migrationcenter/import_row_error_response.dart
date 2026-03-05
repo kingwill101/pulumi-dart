@@ -7,13 +7,10 @@ import 'import_error_response.dart';
 class ImportRowErrorResponse {
   /// The list of errors detected in the row.
   final pulumi.Input<List<ImportErrorResponse>> errors;
-
   /// The row number where the error was detected.
   final pulumi.Input<int> rowNumber;
-
   /// The name of the VM in the row.
   final pulumi.Input<String> vmName;
-
   /// The VM UUID.
   final pulumi.Input<String> vmUuid;
 
@@ -31,18 +28,7 @@ class ImportRowErrorResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'errors':
-          pulumi.Input.mapInputValue<
-            List<ImportErrorResponse>,
-            List<Map<String, dynamic>>
-          >(
-            errors,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ImportErrorResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'errors': pulumi.Input.mapInputValue<List<ImportErrorResponse>, List<Map<String, dynamic>>>(errors, (value) => pulumi.Input.encodeList<ImportErrorResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'rowNumber': rowNumber,
       'vmName': vmName,
       'vmUuid': vmUuid,
@@ -51,17 +37,11 @@ class ImportRowErrorResponse {
 
   factory ImportRowErrorResponse.fromMap(Map<String, dynamic> map) {
     return ImportRowErrorResponse(
-      errors: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<ImportErrorResponse>(
-          map['errors']!,
-          (value) => ImportErrorResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      errors: pulumi.Input.fromValue(pulumi.Input.decodeList<ImportErrorResponse>(map['errors']!, (value) => ImportErrorResponse.fromMap((value as Map).cast<String, dynamic>()))),
       rowNumber: pulumi.Input.fromValue(map['rowNumber'] as int),
       vmName: pulumi.Input.fromValue(map['vmName'] as String),
       vmUuid: pulumi.Input.fromValue(map['vmUuid'] as String),
     );
   }
 }
+

@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureFileshareProtectedItemExtendedInfo {
   /// The oldest backup copy available for this item in the service.
   final pulumi.Input<String>? oldestRecoveryPoint;
-
   /// Indicates consistency of policy object and policy applied to this backup item.
   final pulumi.Input<String>? policyState;
-
   /// Number of available backup copies associated with this backup item.
   final pulumi.Input<int>? recoveryPointCount;
 
@@ -31,25 +29,12 @@ class AzureFileshareProtectedItemExtendedInfo {
     };
   }
 
-  factory AzureFileshareProtectedItemExtendedInfo.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AzureFileshareProtectedItemExtendedInfo.fromMap(Map<String, dynamic> map) {
     return AzureFileshareProtectedItemExtendedInfo(
-      oldestRecoveryPoint: (() {
-        final guardedValue = map['oldestRecoveryPoint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      policyState: (() {
-        final guardedValue = map['policyState'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      recoveryPointCount: (() {
-        final guardedValue = map['recoveryPointCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      oldestRecoveryPoint: (() { final guardedValue = map['oldestRecoveryPoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      policyState: (() { final guardedValue = map['policyState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      recoveryPointCount: (() { final guardedValue = map['recoveryPointCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

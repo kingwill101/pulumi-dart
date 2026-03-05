@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFirewallFirewallStatusTransitGatewayAttachmentSyncState {
   /// The unique identifier of the transit gateway attachment.
   final pulumi.Input<String> attachmentId;
-
   /// A message providing additional information about the current status.
   final pulumi.Input<String> statusMessage;
-
   /// The current status of the transit gateway attachment.
   final pulumi.Input<String> transitGatewayAttachmentStatus;
 
@@ -30,15 +28,12 @@ class GetFirewallFirewallStatusTransitGatewayAttachmentSyncState {
     };
   }
 
-  factory GetFirewallFirewallStatusTransitGatewayAttachmentSyncState.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetFirewallFirewallStatusTransitGatewayAttachmentSyncState.fromMap(Map<String, dynamic> map) {
     return GetFirewallFirewallStatusTransitGatewayAttachmentSyncState(
       attachmentId: pulumi.Input.fromValue(map['attachmentId'] as String),
       statusMessage: pulumi.Input.fromValue(map['statusMessage'] as String),
-      transitGatewayAttachmentStatus: pulumi.Input.fromValue(
-        map['transitGatewayAttachmentStatus'] as String,
-      ),
+      transitGatewayAttachmentStatus: pulumi.Input.fromValue(map['transitGatewayAttachmentStatus'] as String),
     );
   }
 }
+

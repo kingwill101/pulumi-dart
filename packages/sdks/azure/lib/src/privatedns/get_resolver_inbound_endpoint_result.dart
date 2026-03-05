@@ -7,15 +7,12 @@ import 'get_resolver_inbound_endpoint_ip_configuration.dart';
 class GetResolverInboundEndpointResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of `ip_configurations` block as defined below.
   final List<GetResolverInboundEndpointIpConfiguration> ipConfigurations;
-
   /// The Azure Region where the Private DNS Resolver Inbound Endpoint exists.
   final String location;
   final String name;
   final String privateDnsResolverId;
-
   /// The tags assigned to the Private DNS Resolver Inbound Endpoint.
   final Map<String, String> tags;
 
@@ -38,11 +35,7 @@ class GetResolverInboundEndpointResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'ipConfigurations':
-          pulumi.Input.encodeList<
-            GetResolverInboundEndpointIpConfiguration,
-            Map<String, dynamic>
-          >(ipConfigurations, (value) => value.toMap()),
+      'ipConfigurations': pulumi.Input.encodeList<GetResolverInboundEndpointIpConfiguration, Map<String, dynamic>>(ipConfigurations, (value) => value.toMap()),
       'location': location,
       'name': name,
       'privateDnsResolverId': privateDnsResolverId,
@@ -53,13 +46,7 @@ class GetResolverInboundEndpointResult {
   factory GetResolverInboundEndpointResult.fromMap(Map<String, dynamic> map) {
     return GetResolverInboundEndpointResult(
       id: map['id'] as String,
-      ipConfigurations:
-          pulumi.Input.decodeList<GetResolverInboundEndpointIpConfiguration>(
-            map['ipConfigurations']!,
-            (value) => GetResolverInboundEndpointIpConfiguration.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      ipConfigurations: pulumi.Input.decodeList<GetResolverInboundEndpointIpConfiguration>(map['ipConfigurations']!, (value) => GetResolverInboundEndpointIpConfiguration.fromMap((value as Map).cast<String, dynamic>())),
       location: map['location'] as String,
       name: map['name'] as String,
       privateDnsResolverId: map['privateDnsResolverId'] as String,
@@ -67,3 +54,4 @@ class GetResolverInboundEndpointResult {
     );
   }
 }
+

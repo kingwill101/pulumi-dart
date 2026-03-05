@@ -7,7 +7,6 @@ class GetDeploymentIdentity {
   final pulumi.Input<List<String>> identityIds;
   final pulumi.Input<String> principalId;
   final pulumi.Input<String> tenantId;
-
   /// Type of identity attached to the NGINX Deployment.
   final pulumi.Input<String> type;
 
@@ -34,12 +33,11 @@ class GetDeploymentIdentity {
 
   factory GetDeploymentIdentity.fromMap(Map<String, dynamic> map) {
     return GetDeploymentIdentity(
-      identityIds: pulumi.Input.fromValue(
-        (map['identityIds'] as List).cast<String>(),
-      ),
+      identityIds: pulumi.Input.fromValue((map['identityIds'] as List).cast<String>()),
       principalId: pulumi.Input.fromValue(map['principalId'] as String),
       tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

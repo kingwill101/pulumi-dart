@@ -7,10 +7,8 @@ import 'grpc_route_header_match_type.dart';
 class GrpcRouteHeaderMatch {
   /// The key of the header.
   final pulumi.Input<String> key;
-
   /// Optional. Specifies how to match against the value of the header. If not specified, a default value of EXACT is used.
   final pulumi.Input<GrpcRouteHeaderMatchType>? type;
-
   /// The value of the header.
   final pulumi.Input<String> value;
 
@@ -18,16 +16,16 @@ class GrpcRouteHeaderMatch {
   /// [key] The key of the header.
   /// [type] Optional. Specifies how to match against the value of the header. If not specified, a default value of EXACT is used.
   /// [value] The value of the header.
-  GrpcRouteHeaderMatch({required this.key, this.type, required this.value});
+  GrpcRouteHeaderMatch({
+    required this.key,
+    this.type,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'key': key,
-      'type':
-          ?pulumi.Input.mapOptionalInputValue<GrpcRouteHeaderMatchType, String>(
-            type,
-            (value) => value.wireValue,
-          ),
+      'type': ?pulumi.Input.mapOptionalInputValue<GrpcRouteHeaderMatchType, String>(type, (value) => value.wireValue),
       'value': value,
     };
   }
@@ -35,14 +33,9 @@ class GrpcRouteHeaderMatch {
   factory GrpcRouteHeaderMatch.fromMap(Map<String, dynamic> map) {
     return GrpcRouteHeaderMatch(
       key: pulumi.Input.fromValue(map['key'] as String),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GrpcRouteHeaderMatchType.fromValue(guardedValue as String),
-        );
-      })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GrpcRouteHeaderMatchType.fromValue(guardedValue as String)); })(),
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
+

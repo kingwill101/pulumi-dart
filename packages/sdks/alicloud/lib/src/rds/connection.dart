@@ -310,19 +310,14 @@ class Connection extends pulumi.CustomResource {
   ///
   /// &gt; **NOTE:** This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
   late final pulumi.Output<String> babelfishPort;
-
   /// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 40 characters. Default to &lt;instance_id&gt; + 'tf'.
   late final pulumi.Output<String> connectionPrefix;
-
   /// Connection instance string.
   late final pulumi.Output<String> connectionString;
-
   /// The Id of instance that can run database.
   late final pulumi.Output<String> instanceId;
-
   /// The ip address of connection string.
   late final pulumi.Output<String> ipAddress;
-
   /// Internet connection port. Valid value: [1000-5999]. Default to 3306.
   late final pulumi.Output<String?> port;
 
@@ -335,11 +330,11 @@ class Connection extends pulumi.CustomResource {
     ConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:rds/connection:Connection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:rds/connection:Connection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     babelfishPort = registerOutput<String>('babelfishPort');
     connectionPrefix = registerOutput<String>('connectionPrefix');
     connectionString = registerOutput<String>('connectionString');
@@ -366,11 +361,11 @@ class Connection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:rds/connection:Connection',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:rds/connection:Connection',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     babelfishPort = registerOutput<String>('babelfishPort');
     connectionPrefix = registerOutput<String>('connectionPrefix');
     connectionString = registerOutput<String>('connectionString');

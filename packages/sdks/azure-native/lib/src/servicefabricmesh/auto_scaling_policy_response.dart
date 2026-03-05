@@ -8,10 +8,8 @@ import 'average_load_scaling_trigger_response.dart';
 class AutoScalingPolicyResponse {
   /// The mechanism that is used to scale when auto scaling operation is invoked.
   final pulumi.Input<AddRemoveReplicaScalingMechanismResponse> mechanism;
-
   /// The name of the auto scaling policy.
   final pulumi.Input<String> name;
-
   /// Determines when auto scaling operation will be invoked.
   final pulumi.Input<AverageLoadScalingTriggerResponse> trigger;
 
@@ -27,33 +25,18 @@ class AutoScalingPolicyResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'mechanism':
-          pulumi.Input.mapInputValue<
-            AddRemoveReplicaScalingMechanismResponse,
-            Map<String, dynamic>
-          >(mechanism, (value) => value.toMap()),
+      'mechanism': pulumi.Input.mapInputValue<AddRemoveReplicaScalingMechanismResponse, Map<String, dynamic>>(mechanism, (value) => value.toMap()),
       'name': name,
-      'trigger':
-          pulumi.Input.mapInputValue<
-            AverageLoadScalingTriggerResponse,
-            Map<String, dynamic>
-          >(trigger, (value) => value.toMap()),
+      'trigger': pulumi.Input.mapInputValue<AverageLoadScalingTriggerResponse, Map<String, dynamic>>(trigger, (value) => value.toMap()),
     };
   }
 
   factory AutoScalingPolicyResponse.fromMap(Map<String, dynamic> map) {
     return AutoScalingPolicyResponse(
-      mechanism: pulumi.Input.fromValue(
-        AddRemoveReplicaScalingMechanismResponse.fromMap(
-          (map['mechanism']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      mechanism: pulumi.Input.fromValue(AddRemoveReplicaScalingMechanismResponse.fromMap((map['mechanism']! as Map).cast<String, dynamic>())),
       name: pulumi.Input.fromValue(map['name'] as String),
-      trigger: pulumi.Input.fromValue(
-        AverageLoadScalingTriggerResponse.fromMap(
-          (map['trigger']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      trigger: pulumi.Input.fromValue(AverageLoadScalingTriggerResponse.fromMap((map['trigger']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

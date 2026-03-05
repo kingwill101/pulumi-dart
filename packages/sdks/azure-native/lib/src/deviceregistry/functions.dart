@@ -109,8 +109,7 @@ Future<GetDiscoveredAssetResult> getDiscoveredAsset(
 /// Uses Azure REST API version 2024-09-01-preview.
 /// [args] Arguments passed to this invoke. {@macro pulumi_deviceregistry_get_discovered_asset_endpoint_profile_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDiscoveredAssetEndpointProfileResult>
-getDiscoveredAssetEndpointProfile(
+Future<GetDiscoveredAssetEndpointProfileResult> getDiscoveredAssetEndpointProfile(
   GetDiscoveredAssetEndpointProfileArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

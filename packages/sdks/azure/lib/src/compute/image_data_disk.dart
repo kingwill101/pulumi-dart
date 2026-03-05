@@ -5,22 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ImageDataDisk {
   /// Specifies the URI in Azure storage of the blob that you want to use to create the image.
   final pulumi.Input<String>? blobUri;
-
   /// Specifies the caching mode as `ReadWrite`, `ReadOnly`, or `None`. Defaults to `None`.
   final pulumi.Input<String>? caching;
-
   /// The ID of the Disk Encryption Set which should be used to encrypt this disk. Changing this forces a new resource to be created.
   final pulumi.Input<String>? diskEncryptionSetId;
-
   /// Specifies the logical unit number of the data disk.
   final pulumi.Input<int>? lun;
-
   /// Specifies the ID of the managed disk resource that you want to use to create the image. Changing this forces a new resource to be created.
   final pulumi.Input<String>? managedDiskId;
-
   /// Specifies the size of the image to be created. The target size can't be smaller than the source size.
   final pulumi.Input<int>? sizeGb;
-
   /// The type of Storage Disk to use. Possible values are `Premium_LRS`, `PremiumV2_LRS`, `Premium_ZRS`, `Standard_LRS`, `StandardSSD_LRS`, `StandardSSD_ZRS` and `UltraSSD_LRS`. Changing this forces a new resource to be created.
   final pulumi.Input<String> storageType;
 
@@ -56,37 +50,14 @@ class ImageDataDisk {
 
   factory ImageDataDisk.fromMap(Map<String, dynamic> map) {
     return ImageDataDisk(
-      blobUri: (() {
-        final guardedValue = map['blobUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      caching: (() {
-        final guardedValue = map['caching'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      diskEncryptionSetId: (() {
-        final guardedValue = map['diskEncryptionSetId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      lun: (() {
-        final guardedValue = map['lun'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      managedDiskId: (() {
-        final guardedValue = map['managedDiskId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sizeGb: (() {
-        final guardedValue = map['sizeGb'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      blobUri: (() { final guardedValue = map['blobUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      caching: (() { final guardedValue = map['caching']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      diskEncryptionSetId: (() { final guardedValue = map['diskEncryptionSetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      lun: (() { final guardedValue = map['lun']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      managedDiskId: (() { final guardedValue = map['managedDiskId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sizeGb: (() { final guardedValue = map['sizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       storageType: pulumi.Input.fromValue(map['storageType'] as String),
     );
   }
 }
+

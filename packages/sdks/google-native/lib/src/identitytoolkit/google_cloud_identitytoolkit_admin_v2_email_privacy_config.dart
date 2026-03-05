@@ -19,15 +19,10 @@ class GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig {
     };
   }
 
-  factory GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig(
-      enableImprovedEmailPrivacy: (() {
-        final guardedValue = map['enableImprovedEmailPrivacy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enableImprovedEmailPrivacy: (() { final guardedValue = map['enableImprovedEmailPrivacy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

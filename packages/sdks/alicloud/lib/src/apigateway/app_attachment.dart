@@ -417,13 +417,10 @@ import 'app_attachment_state.dart';
 class AppAttachment extends pulumi.CustomResource {
   /// The api_id that app apply to access.
   late final pulumi.Output<String> apiId;
-
   /// The app that apply to the authorization.
   late final pulumi.Output<String> appId;
-
   /// The group that the api belongs to.
   late final pulumi.Output<String> groupId;
-
   /// Stage that the app apply to access.
   late final pulumi.Output<String> stageName;
 
@@ -436,11 +433,11 @@ class AppAttachment extends pulumi.CustomResource {
     AppAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:apigateway/appAttachment:AppAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:apigateway/appAttachment:AppAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiId = registerOutput<String>('apiId');
     appId = registerOutput<String>('appId');
     groupId = registerOutput<String>('groupId');
@@ -465,11 +462,11 @@ class AppAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:apigateway/appAttachment:AppAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:apigateway/appAttachment:AppAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiId = registerOutput<String>('apiId');
     appId = registerOutput<String>('appId');
     groupId = registerOutput<String>('groupId');

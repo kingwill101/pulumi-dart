@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCassandraResourceCassandraViewArgs {
   /// Cosmos DB database account name.
   final pulumi.Input<String> accountName;
-
   /// Cosmos DB keyspace name.
   final pulumi.Input<String> keyspaceName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Cosmos DB view name.
   final pulumi.Input<String> viewName;
 
@@ -40,16 +37,13 @@ class GetCassandraResourceCassandraViewArgs {
     };
   }
 
-  factory GetCassandraResourceCassandraViewArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetCassandraResourceCassandraViewArgs.fromMap(Map<String, dynamic> map) {
     return GetCassandraResourceCassandraViewArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
       keyspaceName: pulumi.Input.fromValue(map['keyspaceName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       viewName: pulumi.Input.fromValue(map['viewName'] as String),
     );
   }
 }
+

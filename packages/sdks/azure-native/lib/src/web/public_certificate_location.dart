@@ -16,3 +16,4 @@ enum PublicCertificateLocation {
     throw ArgumentError('Unknown PublicCertificateLocation value: $value');
   }
 }
+

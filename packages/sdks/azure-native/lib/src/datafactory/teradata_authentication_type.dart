@@ -15,3 +15,4 @@ enum TeradataAuthenticationType {
     throw ArgumentError('Unknown TeradataAuthenticationType value: $value');
   }
 }
+

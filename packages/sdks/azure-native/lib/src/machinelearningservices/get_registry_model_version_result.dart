@@ -7,19 +7,14 @@ import 'system_data_response.dart';
 class GetRegistryModelVersionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// [Required] Additional attributes of the entity.
   final ModelVersionResponse modelVersionProperties;
-
   /// The name of the resource
   final String name;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -54,14 +49,11 @@ class GetRegistryModelVersionResult {
     return GetRegistryModelVersionResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      modelVersionProperties: ModelVersionResponse.fromMap(
-        (map['modelVersionProperties']! as Map).cast<String, dynamic>(),
-      ),
+      modelVersionProperties: ModelVersionResponse.fromMap((map['modelVersionProperties']! as Map).cast<String, dynamic>()),
       name: map['name'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

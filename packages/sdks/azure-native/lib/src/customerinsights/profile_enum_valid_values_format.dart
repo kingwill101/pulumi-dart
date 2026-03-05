@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProfileEnumValidValuesFormat {
   /// Localized names of the enum member.
   final pulumi.Input<Map<String, String>>? localizedValueNames;
-
   /// The integer value of the enum member.
   final pulumi.Input<int>? value;
 
   /// Creates a new [ProfileEnumValidValuesFormat].
   /// [localizedValueNames] Localized names of the enum member.
   /// [value] The integer value of the enum member.
-  ProfileEnumValidValuesFormat({this.localizedValueNames, this.value});
+  ProfileEnumValidValuesFormat({
+    this.localizedValueNames,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,18 +26,9 @@ class ProfileEnumValidValuesFormat {
 
   factory ProfileEnumValidValuesFormat.fromMap(Map<String, dynamic> map) {
     return ProfileEnumValidValuesFormat(
-      localizedValueNames: (() {
-        final guardedValue = map['localizedValueNames'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      localizedValueNames: (() { final guardedValue = map['localizedValueNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

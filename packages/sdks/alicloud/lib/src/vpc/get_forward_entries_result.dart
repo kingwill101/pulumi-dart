@@ -7,37 +7,27 @@ import 'get_forward_entries_entry.dart';
 class GetForwardEntriesResult {
   /// A list of Forward Entries. Each element contains the following attributes:
   final List<GetForwardEntriesEntry> entries;
-
   /// The public IP address.
   final String? externalIp;
-
   /// The public port.
   final String? externalPort;
-
   /// The name of forward entry.
   final String? forwardEntryName;
   final String forwardTableId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of Forward Entries IDs.
   final List<String> ids;
-
   /// The private IP address.
   final String? internalIp;
-
   /// The private port.
   final String? internalPort;
-
   /// The protocol type.
   final String? ipProtocol;
   final String? nameRegex;
-
   /// A list of Forward Entries names.
   final List<String> names;
   final String? outputFile;
-
   /// The status of forward entry.
   final String? status;
 
@@ -75,11 +65,7 @@ class GetForwardEntriesResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'entries':
-          pulumi.Input.encodeList<GetForwardEntriesEntry, Map<String, dynamic>>(
-            entries,
-            (value) => value.toMap(),
-          ),
+      'entries': pulumi.Input.encodeList<GetForwardEntriesEntry, Map<String, dynamic>>(entries, (value) => value.toMap()),
       'externalIp': ?externalIp,
       'externalPort': ?externalPort,
       'forwardEntryName': ?forwardEntryName,
@@ -98,61 +84,21 @@ class GetForwardEntriesResult {
 
   factory GetForwardEntriesResult.fromMap(Map<String, dynamic> map) {
     return GetForwardEntriesResult(
-      entries: pulumi.Input.decodeList<GetForwardEntriesEntry>(
-        map['entries']!,
-        (value) => GetForwardEntriesEntry.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      externalIp: (() {
-        final guardedValue = map['externalIp'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      externalPort: (() {
-        final guardedValue = map['externalPort'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      forwardEntryName: (() {
-        final guardedValue = map['forwardEntryName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      entries: pulumi.Input.decodeList<GetForwardEntriesEntry>(map['entries']!, (value) => GetForwardEntriesEntry.fromMap((value as Map).cast<String, dynamic>())),
+      externalIp: (() { final guardedValue = map['externalIp']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      externalPort: (() { final guardedValue = map['externalPort']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      forwardEntryName: (() { final guardedValue = map['forwardEntryName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       forwardTableId: map['forwardTableId'] as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      internalIp: (() {
-        final guardedValue = map['internalIp'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      internalPort: (() {
-        final guardedValue = map['internalPort'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      ipProtocol: (() {
-        final guardedValue = map['ipProtocol'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      internalIp: (() { final guardedValue = map['internalIp']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      internalPort: (() { final guardedValue = map['internalPort']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ipProtocol: (() { final guardedValue = map['ipProtocol']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

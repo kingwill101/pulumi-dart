@@ -16,3 +16,4 @@ enum HypothesisStatus {
     throw ArgumentError('Unknown HypothesisStatus value: $value');
   }
 }
+

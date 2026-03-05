@@ -16,3 +16,4 @@ enum ReferenceType {
     throw ArgumentError('Unknown ReferenceType value: $value');
   }
 }
+

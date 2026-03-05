@@ -36,13 +36,10 @@ class GetReleaseConfigArgs {
   factory GetReleaseConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetReleaseConfigArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       releaseConfigId: pulumi.Input.fromValue(map['releaseConfigId'] as String),
       repositoryId: pulumi.Input.fromValue(map['repositoryId'] as String),
     );
   }
 }
+

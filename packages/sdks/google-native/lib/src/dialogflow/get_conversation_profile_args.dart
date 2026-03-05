@@ -31,15 +31,10 @@ class GetConversationProfileArgs {
 
   factory GetConversationProfileArgs.fromMap(Map<String, dynamic> map) {
     return GetConversationProfileArgs(
-      conversationProfileId: pulumi.Input.fromValue(
-        map['conversationProfileId'] as String,
-      ),
+      conversationProfileId: pulumi.Input.fromValue(map['conversationProfileId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

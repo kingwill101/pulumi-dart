@@ -420,46 +420,32 @@ import 'system_data_response.dart';
 class ApiGateway extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Information regarding how the gateway should integrate with backend systems.
   late final pulumi.Output<BackendConfigurationResponse?> backend;
-
   /// Information regarding the Configuration API of the API Management gateway. This is only applicable for API gateway with Standard SKU.
   late final pulumi.Output<GatewayConfigurationApiResponse?> configurationApi;
-
   /// Creation UTC date of the API Management gateway.The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
   late final pulumi.Output<String> createdAtUtc;
-
   /// ETag of the resource.
   late final pulumi.Output<String> etag;
-
   /// Information regarding how the gateway should be exposed.
   late final pulumi.Output<FrontendConfigurationResponse?> frontend;
-
   /// Resource location.
   late final pulumi.Output<String> location;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// The current provisioning state of the API Management gateway which can be one of the following: Created/Activating/Succeeded/Updating/Failed/Stopped/Terminating/TerminationFailed/Deleted.
   late final pulumi.Output<String> provisioningState;
-
   /// SKU properties of the API Management gateway.
   late final pulumi.Output<ApiManagementGatewaySkuPropertiesResponse> sku;
-
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The provisioning state of the API Management gateway, which is targeted by the long running operation started on the gateway.
   late final pulumi.Output<String> targetProvisioningState;
-
   /// Resource type for API Management resource is set to Microsoft.ApiManagement.
   late final pulumi.Output<String> type;
-
   /// The type of VPN in which API Management gateway needs to be configured in.
   late final pulumi.Output<String?> virtualNetworkType;
 
@@ -472,67 +458,22 @@ class ApiGateway extends pulumi.CustomResource {
     ApiGatewayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:apimanagement:ApiGateway',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:apimanagement:ApiGateway',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    backend = registerOutput<BackendConfigurationResponse?>(
-      'backend',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BackendConfigurationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    configurationApi = registerOutput<GatewayConfigurationApiResponse?>(
-      'configurationApi',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GatewayConfigurationApiResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    backend = registerOutput<BackendConfigurationResponse?>('backend', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackendConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    configurationApi = registerOutput<GatewayConfigurationApiResponse?>('configurationApi', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GatewayConfigurationApiResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdAtUtc = registerOutput<String>('createdAtUtc');
     etag = registerOutput<String>('etag');
-    frontend = registerOutput<FrontendConfigurationResponse?>(
-      'frontend',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FrontendConfigurationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    frontend = registerOutput<FrontendConfigurationResponse?>('frontend', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FrontendConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    sku = registerOutput<ApiManagementGatewaySkuPropertiesResponse>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApiManagementGatewaySkuPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sku = registerOutput<ApiManagementGatewaySkuPropertiesResponse>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiManagementGatewaySkuPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     targetProvisioningState = registerOutput<String>('targetProvisioningState');
     type = registerOutput<String>('type');

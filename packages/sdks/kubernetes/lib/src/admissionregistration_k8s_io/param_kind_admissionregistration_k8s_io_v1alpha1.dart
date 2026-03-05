@@ -6,33 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ParamKindAdmissionregistrationK8sIoV1alpha1 {
   /// APIVersion is the API group version the resources belong to. In format of "group/version". Required.
   final pulumi.Input<String>? apiVersion;
-
   /// Kind is the API kind the resources belong to. Required.
   final pulumi.Input<String>? kind;
 
   /// Creates a new [ParamKindAdmissionregistrationK8sIoV1alpha1].
   /// [apiVersion] APIVersion is the API group version the resources belong to. In format of "group/version". Required.
   /// [kind] Kind is the API kind the resources belong to. Required.
-  ParamKindAdmissionregistrationK8sIoV1alpha1({this.apiVersion, this.kind});
+  ParamKindAdmissionregistrationK8sIoV1alpha1({
+    this.apiVersion,
+    this.kind,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'apiVersion': ?apiVersion, 'kind': ?kind};
+    return <String, dynamic>{
+      'apiVersion': ?apiVersion,
+      'kind': ?kind,
+    };
   }
 
-  factory ParamKindAdmissionregistrationK8sIoV1alpha1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ParamKindAdmissionregistrationK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
     return ParamKindAdmissionregistrationK8sIoV1alpha1(
-      apiVersion: (() {
-        final guardedValue = map['apiVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      apiVersion: (() { final guardedValue = map['apiVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworkVirtualApplianceConnectionArgs {
   /// The name of the NVA connection.
   final pulumi.Input<String> connectionName;
-
   /// The name of the Network Virtual Appliance.
   final pulumi.Input<String> networkVirtualApplianceName;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,17 +32,12 @@ class GetNetworkVirtualApplianceConnectionArgs {
     };
   }
 
-  factory GetNetworkVirtualApplianceConnectionArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetNetworkVirtualApplianceConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkVirtualApplianceConnectionArgs(
       connectionName: pulumi.Input.fromValue(map['connectionName'] as String),
-      networkVirtualApplianceName: pulumi.Input.fromValue(
-        map['networkVirtualApplianceName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      networkVirtualApplianceName: pulumi.Input.fromValue(map['networkVirtualApplianceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

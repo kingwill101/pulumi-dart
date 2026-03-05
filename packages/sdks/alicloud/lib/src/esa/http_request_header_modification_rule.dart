@@ -340,30 +340,22 @@ import 'http_request_header_modification_rule_state.dart';
 class HttpRequestHeaderModificationRule extends pulumi.CustomResource {
   /// Config Id
   late final pulumi.Output<int> configId;
-
   /// The configurations of modifying request headers. You can add, delete, or modify a request header. See `request_header_modification` below.
-  late final pulumi.Output<List<Map<String, dynamic>>>
-  requestHeaderModifications;
-
+  late final pulumi.Output<List<Map<String, dynamic>>> requestHeaderModifications;
   /// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
   /// - Match all incoming requests: value set to true
   /// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
   late final pulumi.Output<String?> rule;
-
   /// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
   /// - on: open.
   /// - off: close.
   late final pulumi.Output<String?> ruleEnable;
-
   /// Rule name. When adding global configuration, this parameter does not need to be set.
   late final pulumi.Output<String?> ruleName;
-
   /// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
   late final pulumi.Output<int> sequence;
-
   /// The site ID.
   late final pulumi.Output<String> siteId;
-
   /// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
   late final pulumi.Output<int?> siteVersion;
 
@@ -376,15 +368,13 @@ class HttpRequestHeaderModificationRule extends pulumi.CustomResource {
     HttpRequestHeaderModificationRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/httpRequestHeaderModificationRule:HttpRequestHeaderModificationRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:esa/httpRequestHeaderModificationRule:HttpRequestHeaderModificationRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     configId = registerOutput<int>('configId');
-    requestHeaderModifications = registerOutput<List<Map<String, dynamic>>>(
-      'requestHeaderModifications',
-    );
+    requestHeaderModifications = registerOutput<List<Map<String, dynamic>>>('requestHeaderModifications');
     rule = registerOutput<String?>('rule');
     ruleEnable = registerOutput<String?>('ruleEnable');
     ruleName = registerOutput<String?>('ruleName');
@@ -411,15 +401,13 @@ class HttpRequestHeaderModificationRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/httpRequestHeaderModificationRule:HttpRequestHeaderModificationRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:esa/httpRequestHeaderModificationRule:HttpRequestHeaderModificationRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     configId = registerOutput<int>('configId');
-    requestHeaderModifications = registerOutput<List<Map<String, dynamic>>>(
-      'requestHeaderModifications',
-    );
+    requestHeaderModifications = registerOutput<List<Map<String, dynamic>>>('requestHeaderModifications');
     rule = registerOutput<String?>('rule');
     ruleEnable = registerOutput<String?>('ruleEnable');
     ruleName = registerOutput<String?>('ruleName');

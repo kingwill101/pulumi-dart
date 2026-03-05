@@ -6,8 +6,7 @@ import 'resource_type_extension_options_resource_creation_begin_response.dart';
 /// The extension options.
 class ResourceTypeRegistrationPropertiesExtensionOptionsResponse {
   /// Resource creation begin.
-  final pulumi.Input<ResourceTypeExtensionOptionsResourceCreationBeginResponse>?
-  resourceCreationBegin;
+  final pulumi.Input<ResourceTypeExtensionOptionsResourceCreationBeginResponse>? resourceCreationBegin;
 
   /// Creates a new [ResourceTypeRegistrationPropertiesExtensionOptionsResponse].
   /// [resourceCreationBegin] Resource creation begin.
@@ -17,27 +16,14 @@ class ResourceTypeRegistrationPropertiesExtensionOptionsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'resourceCreationBegin':
-          ?pulumi.Input.mapOptionalInputValue<
-            ResourceTypeExtensionOptionsResourceCreationBeginResponse,
-            Map<String, dynamic>
-          >(resourceCreationBegin, (value) => value.toMap()),
+      'resourceCreationBegin': ?pulumi.Input.mapOptionalInputValue<ResourceTypeExtensionOptionsResourceCreationBeginResponse, Map<String, dynamic>>(resourceCreationBegin, (value) => value.toMap()),
     };
   }
 
-  factory ResourceTypeRegistrationPropertiesExtensionOptionsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResourceTypeRegistrationPropertiesExtensionOptionsResponse.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationPropertiesExtensionOptionsResponse(
-      resourceCreationBegin: (() {
-        final guardedValue = map['resourceCreationBegin'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ResourceTypeExtensionOptionsResourceCreationBeginResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      resourceCreationBegin: (() { final guardedValue = map['resourceCreationBegin']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceTypeExtensionOptionsResourceCreationBeginResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

@@ -9,21 +9,20 @@ class NodeToNodeEncryptionOptionsResponse {
 
   /// Creates a new [NodeToNodeEncryptionOptionsResponse].
   /// [enabled] &lt;p&gt;True to enable node-to-node encryption.&lt;/p&gt;
-  NodeToNodeEncryptionOptionsResponse({this.enabled});
+  NodeToNodeEncryptionOptionsResponse({
+    this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': ?enabled};
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
-  factory NodeToNodeEncryptionOptionsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NodeToNodeEncryptionOptionsResponse.fromMap(Map<String, dynamic> map) {
     return NodeToNodeEncryptionOptionsResponse(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

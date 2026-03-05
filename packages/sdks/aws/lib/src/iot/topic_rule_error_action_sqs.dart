@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TopicRuleErrorActionSqs {
   /// The URL of the Amazon SQS queue.
   final pulumi.Input<String> queueUrl;
-
   /// The ARN of the IAM role that grants access.
   final pulumi.Input<String> roleArn;
-
   /// Specifies whether to use Base64 encoding.
   final pulumi.Input<bool> useBase64;
 
@@ -38,3 +36,4 @@ class TopicRuleErrorActionSqs {
     );
   }
 }
+

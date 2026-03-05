@@ -15,3 +15,4 @@ enum Goal {
     throw ArgumentError('Unknown Goal value: $value');
   }
 }
+

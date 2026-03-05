@@ -13,16 +13,15 @@ class ServiceServiceConnectConfigurationServiceTlsIssuerCertAuthority {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'awsPcaAuthorityArn': awsPcaAuthorityArn};
+    return <String, dynamic>{
+      'awsPcaAuthorityArn': awsPcaAuthorityArn,
+    };
   }
 
-  factory ServiceServiceConnectConfigurationServiceTlsIssuerCertAuthority.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ServiceServiceConnectConfigurationServiceTlsIssuerCertAuthority.fromMap(Map<String, dynamic> map) {
     return ServiceServiceConnectConfigurationServiceTlsIssuerCertAuthority(
-      awsPcaAuthorityArn: pulumi.Input.fromValue(
-        map['awsPcaAuthorityArn'] as String,
-      ),
+      awsPcaAuthorityArn: pulumi.Input.fromValue(map['awsPcaAuthorityArn'] as String),
     );
   }
 }
+

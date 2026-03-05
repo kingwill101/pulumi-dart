@@ -15,15 +15,17 @@ class EnvironmentLastDeploymentFailureReason {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'code': code, 'message': message};
+    return <String, dynamic>{
+      'code': code,
+      'message': message,
+    };
   }
 
-  factory EnvironmentLastDeploymentFailureReason.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EnvironmentLastDeploymentFailureReason.fromMap(Map<String, dynamic> map) {
     return EnvironmentLastDeploymentFailureReason(
       code: pulumi.Input.fromValue(map['code'] as String),
       message: pulumi.Input.fromValue(map['message'] as String),
     );
   }
 }
+

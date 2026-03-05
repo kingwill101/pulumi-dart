@@ -16,3 +16,4 @@ enum IngressStartAtType {
     throw ArgumentError('Unknown IngressStartAtType value: $value');
   }
 }
+

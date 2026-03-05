@@ -11,35 +11,20 @@ class AutomationSourceRuleSet {
 
   /// Creates a new [AutomationSourceRuleSet].
   /// [rules] One or more `rule` blocks as defined below.
-  AutomationSourceRuleSet({required this.rules});
+  AutomationSourceRuleSet({
+    required this.rules,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'rules':
-          pulumi.Input.mapInputValue<
-            List<AutomationSourceRuleSetRule>,
-            List<Map<String, dynamic>>
-          >(
-            rules,
-            (value) =>
-                pulumi.Input.encodeList<
-                  AutomationSourceRuleSetRule,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'rules': pulumi.Input.mapInputValue<List<AutomationSourceRuleSetRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<AutomationSourceRuleSetRule, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AutomationSourceRuleSet.fromMap(Map<String, dynamic> map) {
     return AutomationSourceRuleSet(
-      rules: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<AutomationSourceRuleSetRule>(
-          map['rules']!,
-          (value) => AutomationSourceRuleSetRule.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      rules: pulumi.Input.fromValue(pulumi.Input.decodeList<AutomationSourceRuleSetRule>(map['rules']!, (value) => AutomationSourceRuleSetRule.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

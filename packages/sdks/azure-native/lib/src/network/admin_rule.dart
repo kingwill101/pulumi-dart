@@ -510,53 +510,37 @@ import 'system_data_response.dart';
 class AdminRule extends pulumi.CustomResource {
   /// Indicates the access allowed for this particular rule
   late final pulumi.Output<String> access;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// A description for this rule. Restricted to 140 chars.
   late final pulumi.Output<String?> description;
-
   /// The destination port ranges.
   late final pulumi.Output<List<String>?> destinationPortRanges;
-
   /// The destination address prefixes. CIDR or destination IP ranges.
   late final pulumi.Output<List<Map<String, dynamic>>?> destinations;
-
   /// Indicates if the traffic matched against the rule in inbound or outbound.
   late final pulumi.Output<String> direction;
-
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
-
   /// Whether the rule is custom or default.
   /// Expected value is 'Custom'.
   late final pulumi.Output<String> kind;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// The priority of the rule. The value can be between 1 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
   late final pulumi.Output<int> priority;
-
   /// Network protocol this rule applies to.
   late final pulumi.Output<String> protocol;
-
   /// The provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// Unique identifier for this resource.
   late final pulumi.Output<String> resourceGuid;
-
   /// The source port ranges.
   late final pulumi.Output<List<String>?> sourcePortRanges;
-
   /// The CIDR or source IP ranges.
   late final pulumi.Output<List<Map<String, dynamic>>?> sources;
-
   /// The system metadata related to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -569,17 +553,15 @@ class AdminRule extends pulumi.CustomResource {
     AdminRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:network:AdminRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:network:AdminRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     access = registerOutput<String>('access');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     description = registerOutput<String?>('description');
-    destinationPortRanges = registerOutput<List<String>?>(
-      'destinationPortRanges',
-    );
+    destinationPortRanges = registerOutput<List<String>?>('destinationPortRanges');
     destinations = registerOutput<List<Map<String, dynamic>>?>('destinations');
     direction = registerOutput<String>('direction');
     etag = registerOutput<String>('etag');
@@ -591,16 +573,7 @@ class AdminRule extends pulumi.CustomResource {
     resourceGuid = registerOutput<String>('resourceGuid');
     sourcePortRanges = registerOutput<List<String>?>('sourcePortRanges');
     sources = registerOutput<List<Map<String, dynamic>>?>('sources');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

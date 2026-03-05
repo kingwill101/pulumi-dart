@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TransitRouterGrantAttachmentArgs {
   /// The ID of the Cloud Enterprise Network (CEN) instance to which the transit router belongs.
   final pulumi.Input<String> cenId;
-
   /// The ID of the Alibaba Cloud account to which the CEN instance belongs.
   final pulumi.Input<String> cenOwnerId;
-
   /// The ID of the network instance.
   final pulumi.Input<String> instanceId;
-
   /// The type of the network instance. Valid values: `VPC`, `ExpressConnect`, `VPN`.
   final pulumi.Input<String> instanceType;
-
   /// The entity that pays the fees of the network instance. Valid values: `PayByResourceOwner`, `PayByCenOwner`.
   final pulumi.Input<String>? orderType;
 
@@ -52,11 +48,8 @@ class TransitRouterGrantAttachmentArgs {
       cenOwnerId: pulumi.Input.fromValue(map['cenOwnerId'] as String),
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
-      orderType: (() {
-        final guardedValue = map['orderType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      orderType: (() { final guardedValue = map['orderType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -7,10 +7,7 @@ class InstanceAutomatedBackupConfigFixedFrequencySchedule {
   /// The start time of every automated backup in UTC.
   /// It must be set to the start of an hour. This field is required.
   /// Structure is documented below.
-  final pulumi.Input<
-    InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime
-  >
-  startTime;
+  final pulumi.Input<InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime> startTime;
 
   /// Creates a new [InstanceAutomatedBackupConfigFixedFrequencySchedule].
   /// [startTime] The start time of every automated backup in UTC.
@@ -20,23 +17,14 @@ class InstanceAutomatedBackupConfigFixedFrequencySchedule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'startTime':
-          pulumi.Input.mapInputValue<
-            InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime,
-            Map<String, dynamic>
-          >(startTime, (value) => value.toMap()),
+      'startTime': pulumi.Input.mapInputValue<InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime, Map<String, dynamic>>(startTime, (value) => value.toMap()),
     };
   }
 
-  factory InstanceAutomatedBackupConfigFixedFrequencySchedule.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InstanceAutomatedBackupConfigFixedFrequencySchedule.fromMap(Map<String, dynamic> map) {
     return InstanceAutomatedBackupConfigFixedFrequencySchedule(
-      startTime: pulumi.Input.fromValue(
-        InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime.fromMap(
-          (map['startTime']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      startTime: pulumi.Input.fromValue(InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime.fromMap((map['startTime']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

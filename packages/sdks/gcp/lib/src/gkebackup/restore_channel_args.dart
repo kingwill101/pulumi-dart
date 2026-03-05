@@ -9,12 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RestoreChannelArgs {
   /// User specified descriptive string for this RestoreChannel.
   final pulumi.Input<String>? description;
-
   /// The project where Backups will be restored.
   /// The format is `projects/{project}`.
   /// {project} can be project number or project id.
   final pulumi.Input<String> destinationProject;
-
   /// Description: A set of custom labels supplied by the user.
   /// A list of key-&gt;value pairs.
   /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -22,13 +20,10 @@ class RestoreChannelArgs {
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// The region of the Restore Channel.
   final pulumi.Input<String> location;
-
   /// The full name of the RestoreChannel Resource.
   final pulumi.Input<String>? name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -62,32 +57,13 @@ class RestoreChannelArgs {
 
   factory RestoreChannelArgs.fromMap(Map<String, dynamic> map) {
     return RestoreChannelArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      destinationProject: pulumi.Input.fromValue(
-        map['destinationProject'] as String,
-      ),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      destinationProject: pulumi.Input.fromValue(map['destinationProject'] as String),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

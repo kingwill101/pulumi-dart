@@ -523,29 +523,21 @@ import 'tidata_connector_data_types_response.dart';
 class TIDataConnector extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The available data types for the connector.
   late final pulumi.Output<TIDataConnectorDataTypesResponse> dataTypes;
-
   /// Etag of the azure resource
   late final pulumi.Output<String?> etag;
-
   /// The kind of the data connector
   /// Expected value is 'ThreatIntelligence'.
   late final pulumi.Output<String> kind;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The tenant id to connect to, and get the data from.
   late final pulumi.Output<String> tenantId;
-
   /// The lookback period for the feed to be imported.
   late final pulumi.Output<String?> tipLookbackPeriod;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -558,35 +550,17 @@ class TIDataConnector extends pulumi.CustomResource {
     TIDataConnectorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:securityinsights:TIDataConnector',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:securityinsights:TIDataConnector',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    dataTypes = registerOutput<TIDataConnectorDataTypesResponse>(
-      'dataTypes',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TIDataConnectorDataTypesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    dataTypes = registerOutput<TIDataConnectorDataTypesResponse>('dataTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TIDataConnectorDataTypesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String?>('etag');
     kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tenantId = registerOutput<String>('tenantId');
     tipLookbackPeriod = registerOutput<String?>('tipLookbackPeriod');
     type = registerOutput<String>('type');

@@ -2210,29 +2210,20 @@ import 'output_args.dart';
 class OutputStreamanalytics extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Describes the data source that output will be written to. Required on PUT (CreateOrReplace) requests.
-  late final pulumi.Output<AzureDataLakeStoreOutputDataSourceResponse?>
-  datasource;
-
+  late final pulumi.Output<AzureDataLakeStoreOutputDataSourceResponse?> datasource;
   /// Describes conditions applicable to the Input, Output, or the job overall, that warrant customer attention.
   late final pulumi.Output<DiagnosticsResponse> diagnostics;
-
   /// The current entity tag for the output. This is an opaque string. You can use it to detect whether the resource has changed between requests. You can also use it in the If-Match or If-None-Match headers for write operations for optimistic concurrency.
   late final pulumi.Output<String> etag;
-
   /// Resource name
   late final pulumi.Output<String?> name;
-
   /// Describes how data from an input is serialized or how data is serialized when written to an output. Required on PUT (CreateOrReplace) requests.
   late final pulumi.Output<AvroSerializationResponse?> serialization;
-
   /// The size window to constrain a Stream Analytics output to.
   late final pulumi.Output<int?> sizeWindow;
-
   /// The time frame for filtering Stream Analytics job outputs.
   late final pulumi.Output<String?> timeWindow;
-
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -2245,44 +2236,17 @@ class OutputStreamanalytics extends pulumi.CustomResource {
     OutputArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:streamanalytics:Output',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:streamanalytics:Output',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    datasource = registerOutput<AzureDataLakeStoreOutputDataSourceResponse?>(
-      'datasource',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureDataLakeStoreOutputDataSourceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    diagnostics = registerOutput<DiagnosticsResponse>(
-      'diagnostics',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DiagnosticsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    datasource = registerOutput<AzureDataLakeStoreOutputDataSourceResponse?>('datasource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureDataLakeStoreOutputDataSourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    diagnostics = registerOutput<DiagnosticsResponse>('diagnostics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DiagnosticsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String?>('name');
-    serialization = registerOutput<AvroSerializationResponse?>(
-      'serialization',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AvroSerializationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    serialization = registerOutput<AvroSerializationResponse?>('serialization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AvroSerializationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sizeWindow = registerOutput<int?>('sizeWindow');
     timeWindow = registerOutput<String?>('timeWindow');
     type = registerOutput<String>('type');

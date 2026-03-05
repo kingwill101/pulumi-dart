@@ -10,13 +10,10 @@ import 'sql_db_elastic_pool_target_properties.dart';
 class TargetArgs {
   /// The resource-specific properties for this resource.
   final pulumi.Input<SqlDbElasticPoolTargetProperties>? properties;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The target resource name.
   final pulumi.Input<String>? targetName;
-
   /// The database watcher name.
   final pulumi.Input<String> watcherName;
 
@@ -34,11 +31,7 @@ class TargetArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            SqlDbElasticPoolTargetProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<SqlDbElasticPoolTargetProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'targetName': ?targetName,
       'watcherName': watcherName,
@@ -47,24 +40,11 @@ class TargetArgs {
 
   factory TargetArgs.fromMap(Map<String, dynamic> map) {
     return TargetArgs(
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SqlDbElasticPoolTargetProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      targetName: (() {
-        final guardedValue = map['targetName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SqlDbElasticPoolTargetProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      targetName: (() { final guardedValue = map['targetName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       watcherName: pulumi.Input.fromValue(map['watcherName'] as String),
     );
   }
 }
+

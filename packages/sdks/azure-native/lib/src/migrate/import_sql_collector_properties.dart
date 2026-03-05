@@ -9,19 +9,20 @@ class ImportSqlCollectorProperties {
 
   /// Creates a new [ImportSqlCollectorProperties].
   /// [discoverySiteId] The sql db extended details.
-  ImportSqlCollectorProperties({this.discoverySiteId});
+  ImportSqlCollectorProperties({
+    this.discoverySiteId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'discoverySiteId': ?discoverySiteId};
+    return <String, dynamic>{
+      'discoverySiteId': ?discoverySiteId,
+    };
   }
 
   factory ImportSqlCollectorProperties.fromMap(Map<String, dynamic> map) {
     return ImportSqlCollectorProperties(
-      discoverySiteId: (() {
-        final guardedValue = map['discoverySiteId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      discoverySiteId: (() { final guardedValue = map['discoverySiteId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

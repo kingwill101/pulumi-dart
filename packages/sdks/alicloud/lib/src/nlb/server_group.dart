@@ -352,39 +352,29 @@ import 'server_group_state.dart';
 class ServerGroup extends pulumi.CustomResource {
   /// The protocol version. Valid values:
   late final pulumi.Output<String> addressIpVersion;
-
   /// Specifies whether to enable all-port forwarding. Valid values:
   late final pulumi.Output<bool> anyPortEnabled;
-
   /// . Field 'connection_drain' has been deprecated from provider version 1.231.0. New field 'connection_drain_enabled' instead.
   late final pulumi.Output<bool> connectionDrain;
-
   /// Specifies whether to enable connection draining. Valid values:
   late final pulumi.Output<bool> connectionDrainEnabled;
-
   /// The timeout period of connection draining. Unit: seconds. Valid values: `10` to `900`.
   late final pulumi.Output<int> connectionDrainTimeout;
-
   /// Health check configuration information. See `health_check` below.
   late final pulumi.Output<ServerGroupHealthCheck> healthCheck;
-
   /// Specifies whether to enable client IP preservation. Valid values:
   late final pulumi.Output<bool> preserveClientIpEnabled;
-
   /// The protocol used to forward requests to the backend servers. Valid values:
   ///
   /// - `TCP` (default)
   /// - `UDP`
   /// - `TCPSSL`
   late final pulumi.Output<String> protocol;
-
   /// The ID of the region where the NLB instance is deployed.
   late final pulumi.Output<String> regionId;
-
   /// The ID of the new resource group.
   /// You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
   late final pulumi.Output<String> resourceGroupId;
-
   /// The scheduling algorithm. Valid values:
   ///
   /// - **Wrr:** The weighted round-robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights. This is the default value.
@@ -393,23 +383,18 @@ class ServerGroup extends pulumi.CustomResource {
   /// - **Tch:** Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
   /// - `Qch`: QUIC ID hashing. Requests that contain the same QUIC ID are forwarded to the same backend server.
   late final pulumi.Output<String> scheduler;
-
   /// The new name of the server group.
   /// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
   late final pulumi.Output<String> serverGroupName;
-
   /// The type of server group. Valid values:
   ///
   /// - `Instance`: allows you to add servers of the `Ecs`, `Eni`, or `Eci` type. This is the default value.
   /// - `Ip`: allows you to add servers by specifying IP addresses.
   late final pulumi.Output<String> serverGroupType;
-
   /// Server group status. Value:
   late final pulumi.Output<String> status;
-
   /// Label.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The ID of the virtual private cloud (VPC) to which the server group belongs.
   ///
   /// &gt; **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
@@ -427,26 +412,17 @@ class ServerGroup extends pulumi.CustomResource {
     ServerGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:nlb/serverGroup:ServerGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:nlb/serverGroup:ServerGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     addressIpVersion = registerOutput<String>('addressIpVersion');
     anyPortEnabled = registerOutput<bool>('anyPortEnabled');
     connectionDrain = registerOutput<bool>('connectionDrain');
     connectionDrainEnabled = registerOutput<bool>('connectionDrainEnabled');
     connectionDrainTimeout = registerOutput<int>('connectionDrainTimeout');
-    healthCheck = registerOutput<ServerGroupHealthCheck>(
-      'healthCheck',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServerGroupHealthCheck.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    healthCheck = registerOutput<ServerGroupHealthCheck>('healthCheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerGroupHealthCheck.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     preserveClientIpEnabled = registerOutput<bool>('preserveClientIpEnabled');
     protocol = registerOutput<String>('protocol');
     regionId = registerOutput<String>('regionId');
@@ -477,26 +453,17 @@ class ServerGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:nlb/serverGroup:ServerGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:nlb/serverGroup:ServerGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     addressIpVersion = registerOutput<String>('addressIpVersion');
     anyPortEnabled = registerOutput<bool>('anyPortEnabled');
     connectionDrain = registerOutput<bool>('connectionDrain');
     connectionDrainEnabled = registerOutput<bool>('connectionDrainEnabled');
     connectionDrainTimeout = registerOutput<int>('connectionDrainTimeout');
-    healthCheck = registerOutput<ServerGroupHealthCheck>(
-      'healthCheck',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServerGroupHealthCheck.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    healthCheck = registerOutput<ServerGroupHealthCheck>('healthCheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerGroupHealthCheck.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     preserveClientIpEnabled = registerOutput<bool>('preserveClientIpEnabled');
     protocol = registerOutput<String>('protocol');
     regionId = registerOutput<String>('regionId');

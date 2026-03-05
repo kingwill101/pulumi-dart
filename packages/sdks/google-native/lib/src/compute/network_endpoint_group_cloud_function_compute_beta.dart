@@ -6,33 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkEndpointGroupCloudFunctionComputeBeta {
   /// A user-defined name of the Cloud Function. The function name is case-sensitive and must be 1-63 characters long. Example value: "func1".
   final pulumi.Input<String>? function;
-
   /// A template to parse function field from a request URL. URL mask allows for routing to multiple Cloud Functions without having to create multiple Network Endpoint Groups and backend services. For example, request URLs " mydomain.com/function1" and "mydomain.com/function2" can be backed by the same Serverless NEG with URL mask "/&lt;function&gt;". The URL mask will parse them to { function = "function1" } and { function = "function2" } respectively.
   final pulumi.Input<String>? urlMask;
 
   /// Creates a new [NetworkEndpointGroupCloudFunctionComputeBeta].
   /// [function] A user-defined name of the Cloud Function. The function name is case-sensitive and must be 1-63 characters long. Example value: "func1".
   /// [urlMask] A template to parse function field from a request URL. URL mask allows for routing to multiple Cloud Functions without having to create multiple Network Endpoint Groups and backend services. For example, request URLs " mydomain.com/function1" and "mydomain.com/function2" can be backed by the same Serverless NEG with URL mask "/&lt;function&gt;". The URL mask will parse them to { function = "function1" } and { function = "function2" } respectively.
-  NetworkEndpointGroupCloudFunctionComputeBeta({this.function, this.urlMask});
+  NetworkEndpointGroupCloudFunctionComputeBeta({
+    this.function,
+    this.urlMask,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'function': ?function, 'urlMask': ?urlMask};
+    return <String, dynamic>{
+      'function': ?function,
+      'urlMask': ?urlMask,
+    };
   }
 
-  factory NetworkEndpointGroupCloudFunctionComputeBeta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NetworkEndpointGroupCloudFunctionComputeBeta.fromMap(Map<String, dynamic> map) {
     return NetworkEndpointGroupCloudFunctionComputeBeta(
-      function: (() {
-        final guardedValue = map['function'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      urlMask: (() {
-        final guardedValue = map['urlMask'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      function: (() { final guardedValue = map['function']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      urlMask: (() { final guardedValue = map['urlMask']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

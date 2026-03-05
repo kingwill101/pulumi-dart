@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SBOMStatusResponseContaineranalysisV1alpha1 {
   /// If there was an error generating an SBOM, this will indicate what that error was.
   final pulumi.Input<String> error;
-
   /// The progress of the SBOM generation.
   final pulumi.Input<String> sbomState;
 
@@ -19,15 +18,17 @@ class SBOMStatusResponseContaineranalysisV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'error': error, 'sbomState': sbomState};
+    return <String, dynamic>{
+      'error': error,
+      'sbomState': sbomState,
+    };
   }
 
-  factory SBOMStatusResponseContaineranalysisV1alpha1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SBOMStatusResponseContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return SBOMStatusResponseContaineranalysisV1alpha1(
       error: pulumi.Input.fromValue(map['error'] as String),
       sbomState: pulumi.Input.fromValue(map['sbomState'] as String),
     );
   }
 }
+

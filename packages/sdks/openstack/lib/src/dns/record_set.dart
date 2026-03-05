@@ -198,40 +198,31 @@ import 'record_set_state.dart';
 class RecordSet extends pulumi.CustomResource {
   /// A description of the  record set.
   late final pulumi.Output<String?> description;
-
   /// Disable wait for recordset to reach ACTIVE
   /// status. This argumen is disabled by default. If it is set to true, the recordset
   /// will be considered as created/updated/deleted if OpenStack request returned success.
   late final pulumi.Output<bool?> disableStatusCheck;
-
   /// The name of the record set. Note the `.` at the end of the name.
   /// Changing this creates a new DNS  record set.
   late final pulumi.Output<String> name;
-
   /// The ID of the project DNS zone is created
   /// for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
   /// user role in target project)
   late final pulumi.Output<String> projectId;
-
   /// An array of DNS records.
   late final pulumi.Output<List<String>> records;
-
   /// The region in which to obtain the V2 DNS client.
   /// If omitted, the `region` argument of the provider is used.
   /// Changing this creates a new DNS  record set.
   late final pulumi.Output<String> region;
-
   /// The time to live (TTL) of the record set.
   late final pulumi.Output<int> ttl;
-
   /// The type of record set. Examples: "A", "MX".
   /// Changing this creates a new DNS  record set.
   late final pulumi.Output<String> type;
-
   /// Map of additional options. Changing this creates a
   /// new record set.
   late final pulumi.Output<Map<String, String>?> valueSpecs;
-
   /// The ID of the zone in which to create the record set.
   /// Changing this creates a new DNS  record set.
   late final pulumi.Output<String> zoneId;
@@ -245,11 +236,11 @@ class RecordSet extends pulumi.CustomResource {
     RecordSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:dns/recordSet:RecordSet',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:dns/recordSet:RecordSet',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     disableStatusCheck = registerOutput<bool?>('disableStatusCheck');
     this.name = registerOutput<String>('name');
@@ -280,11 +271,11 @@ class RecordSet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:dns/recordSet:RecordSet',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:dns/recordSet:RecordSet',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     disableStatusCheck = registerOutput<bool?>('disableStatusCheck');
     this.name = registerOutput<String>('name');

@@ -10,22 +10,16 @@ import 'git_catalog.dart';
 class CatalogArgs {
   /// Properties for an Azure DevOps catalog type.
   final pulumi.Input<GitCatalog>? adoGit;
-
   /// The name of the Catalog.
   final pulumi.Input<String>? catalogName;
-
   /// The name of the devcenter.
   final pulumi.Input<String> devCenterName;
-
   /// Properties for a GitHub catalog type.
   final pulumi.Input<GitCatalog>? gitHub;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Indicates the type of sync that is configured for the catalog.
   final pulumi.Input<String>? syncType;
-
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -49,18 +43,10 @@ class CatalogArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'adoGit':
-          ?pulumi.Input.mapOptionalInputValue<GitCatalog, Map<String, dynamic>>(
-            adoGit,
-            (value) => value.toMap(),
-          ),
+      'adoGit': ?pulumi.Input.mapOptionalInputValue<GitCatalog, Map<String, dynamic>>(adoGit, (value) => value.toMap()),
       'catalogName': ?catalogName,
       'devCenterName': devCenterName,
-      'gitHub':
-          ?pulumi.Input.mapOptionalInputValue<GitCatalog, Map<String, dynamic>>(
-            gitHub,
-            (value) => value.toMap(),
-          ),
+      'gitHub': ?pulumi.Input.mapOptionalInputValue<GitCatalog, Map<String, dynamic>>(gitHub, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'syncType': ?syncType,
       'tags': ?tags,
@@ -69,41 +55,14 @@ class CatalogArgs {
 
   factory CatalogArgs.fromMap(Map<String, dynamic> map) {
     return CatalogArgs(
-      adoGit: (() {
-        final guardedValue = map['adoGit'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GitCatalog.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      catalogName: (() {
-        final guardedValue = map['catalogName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      adoGit: (() { final guardedValue = map['adoGit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GitCatalog.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      catalogName: (() { final guardedValue = map['catalogName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       devCenterName: pulumi.Input.fromValue(map['devCenterName'] as String),
-      gitHub: (() {
-        final guardedValue = map['gitHub'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GitCatalog.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      syncType: (() {
-        final guardedValue = map['syncType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      gitHub: (() { final guardedValue = map['gitHub']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GitCatalog.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      syncType: (() { final guardedValue = map['syncType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

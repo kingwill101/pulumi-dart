@@ -1,15 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getCertificate.
 class GetCertificateResult {
   final String certificate;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Name of ssl_certificate configured on bigip with full path
   final String name;
-
   /// Bigip partition in which ssl-certificate is configured
   final String partition;
 
@@ -43,3 +41,4 @@ class GetCertificateResult {
     );
   }
 }
+

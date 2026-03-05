@@ -242,27 +242,20 @@ import 'cross_account_attachment_state.dart';
 class CrossAccountAttachment extends pulumi.CustomResource {
   /// ARN of the Cross Account Attachment.
   late final pulumi.Output<String> arn;
-
   /// Creation Time when the Cross Account Attachment.
   late final pulumi.Output<String> createdTime;
-
   /// Last modified time of the Cross Account Attachment.
   late final pulumi.Output<String> lastModifiedTime;
-
   /// Name of the Cross Account Attachment.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
-
   /// List of AWS account IDs that are allowed to associate resources with the accelerator.
   late final pulumi.Output<List<String>?> principals;
-
   /// List of resources to be associated with the accelerator.
   late final pulumi.Output<List<Map<String, dynamic>>?> resources;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -275,11 +268,11 @@ class CrossAccountAttachment extends pulumi.CustomResource {
     CrossAccountAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:globalaccelerator/crossAccountAttachment:CrossAccountAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:globalaccelerator/crossAccountAttachment:CrossAccountAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     createdTime = registerOutput<String>('createdTime');
     lastModifiedTime = registerOutput<String>('lastModifiedTime');
@@ -308,11 +301,11 @@ class CrossAccountAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:globalaccelerator/crossAccountAttachment:CrossAccountAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:globalaccelerator/crossAccountAttachment:CrossAccountAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     createdTime = registerOutput<String>('createdTime');
     lastModifiedTime = registerOutput<String>('lastModifiedTime');

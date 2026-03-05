@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath {
   /// The number of occurrences of the defined `status_code` in the specified `interval` on which to trigger this rule.
   final pulumi.Input<int> count;
-
   /// The time interval in the form `hh:mm:ss`.
   final pulumi.Input<String> interval;
-
   /// The path to which this rule status code applies.
   final pulumi.Input<String> path;
-
   /// (Required) The threshold of time passed to qualify as a Slow Request in `hh:mm:ss`.
   final pulumi.Input<String> timeTaken;
 
@@ -36,9 +33,7 @@ class GetWindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath {
     };
   }
 
-  factory GetWindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetWindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath.fromMap(Map<String, dynamic> map) {
     return GetWindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath(
       count: pulumi.Input.fromValue(map['count'] as int),
       interval: pulumi.Input.fromValue(map['interval'] as String),
@@ -47,3 +42,4 @@ class GetWindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath {
     );
   }
 }
+

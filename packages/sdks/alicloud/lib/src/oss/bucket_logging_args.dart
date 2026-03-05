@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketLoggingArgs {
   /// The name of the bucket
   final pulumi.Input<String> bucket;
-
   /// Authorization role used for bucket logging
   final pulumi.Input<String>? loggingRole;
-
   /// The bucket that stores access logs.
   final pulumi.Input<String> targetBucket;
-
   /// The prefix of the saved log objects. This element can be left empty.
   final pulumi.Input<String>? targetPrefix;
 
@@ -43,17 +40,10 @@ class BucketLoggingArgs {
   factory BucketLoggingArgs.fromMap(Map<String, dynamic> map) {
     return BucketLoggingArgs(
       bucket: pulumi.Input.fromValue(map['bucket'] as String),
-      loggingRole: (() {
-        final guardedValue = map['loggingRole'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      loggingRole: (() { final guardedValue = map['loggingRole']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       targetBucket: pulumi.Input.fromValue(map['targetBucket'] as String),
-      targetPrefix: (() {
-        final guardedValue = map['targetPrefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      targetPrefix: (() { final guardedValue = map['targetPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

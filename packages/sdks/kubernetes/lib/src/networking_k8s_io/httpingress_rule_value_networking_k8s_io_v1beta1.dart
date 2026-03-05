@@ -10,37 +10,20 @@ class HTTPIngressRuleValueNetworkingK8sIoV1beta1 {
 
   /// Creates a new [HTTPIngressRuleValueNetworkingK8sIoV1beta1].
   /// [paths] A collection of paths that map requests to backends.
-  HTTPIngressRuleValueNetworkingK8sIoV1beta1({required this.paths});
+  HTTPIngressRuleValueNetworkingK8sIoV1beta1({
+    required this.paths,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'paths':
-          pulumi.Input.mapInputValue<
-            List<HTTPIngressPathNetworkingK8sIoV1beta1>,
-            List<Map<String, dynamic>>
-          >(
-            paths,
-            (value) =>
-                pulumi.Input.encodeList<
-                  HTTPIngressPathNetworkingK8sIoV1beta1,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'paths': pulumi.Input.mapInputValue<List<HTTPIngressPathNetworkingK8sIoV1beta1>, List<Map<String, dynamic>>>(paths, (value) => pulumi.Input.encodeList<HTTPIngressPathNetworkingK8sIoV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory HTTPIngressRuleValueNetworkingK8sIoV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory HTTPIngressRuleValueNetworkingK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return HTTPIngressRuleValueNetworkingK8sIoV1beta1(
-      paths: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<HTTPIngressPathNetworkingK8sIoV1beta1>(
-          map['paths']!,
-          (value) => HTTPIngressPathNetworkingK8sIoV1beta1.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      paths: pulumi.Input.fromValue(pulumi.Input.decodeList<HTTPIngressPathNetworkingK8sIoV1beta1>(map['paths']!, (value) => HTTPIngressPathNetworkingK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

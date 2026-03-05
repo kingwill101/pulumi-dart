@@ -8,13 +8,10 @@ import 'spring_cloud_builder_stack.dart';
 class SpringCloudBuilderState {
   /// One or more `build_pack_group` blocks as defined below.
   final pulumi.Input<List<SpringCloudBuilderBuildPackGroup>>? buildPackGroups;
-
   /// The name which should be used for this Spring Cloud Builder. Changing this forces a new Spring Cloud Builder to be created.
   final pulumi.Input<String>? name;
-
   /// The ID of the Spring Cloud Service. Changing this forces a new Spring Cloud Builder to be created.
   final pulumi.Input<String>? springCloudServiceId;
-
   /// A `stack` block as defined below.
   final pulumi.Input<SpringCloudBuilderStack>? stack;
 
@@ -32,61 +29,20 @@ class SpringCloudBuilderState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'buildPackGroups':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<SpringCloudBuilderBuildPackGroup>,
-            List<Map<String, dynamic>>
-          >(
-            buildPackGroups,
-            (value) =>
-                pulumi.Input.encodeList<
-                  SpringCloudBuilderBuildPackGroup,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'buildPackGroups': ?pulumi.Input.mapOptionalInputValue<List<SpringCloudBuilderBuildPackGroup>, List<Map<String, dynamic>>>(buildPackGroups, (value) => pulumi.Input.encodeList<SpringCloudBuilderBuildPackGroup, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': ?name,
       'springCloudServiceId': ?springCloudServiceId,
-      'stack':
-          ?pulumi.Input.mapOptionalInputValue<
-            SpringCloudBuilderStack,
-            Map<String, dynamic>
-          >(stack, (value) => value.toMap()),
+      'stack': ?pulumi.Input.mapOptionalInputValue<SpringCloudBuilderStack, Map<String, dynamic>>(stack, (value) => value.toMap()),
     };
   }
 
   factory SpringCloudBuilderState.fromMap(Map<String, dynamic> map) {
     return SpringCloudBuilderState(
-      buildPackGroups: (() {
-        final guardedValue = map['buildPackGroups'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<SpringCloudBuilderBuildPackGroup>(
-            guardedValue,
-            (value) => SpringCloudBuilderBuildPackGroup.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      springCloudServiceId: (() {
-        final guardedValue = map['springCloudServiceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      stack: (() {
-        final guardedValue = map['stack'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SpringCloudBuilderStack.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      buildPackGroups: (() { final guardedValue = map['buildPackGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SpringCloudBuilderBuildPackGroup>(guardedValue, (value) => SpringCloudBuilderBuildPackGroup.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      springCloudServiceId: (() { final guardedValue = map['springCloudServiceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      stack: (() { final guardedValue = map['stack']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SpringCloudBuilderStack.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

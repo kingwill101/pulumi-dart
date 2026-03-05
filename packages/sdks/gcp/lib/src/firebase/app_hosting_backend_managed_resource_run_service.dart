@@ -12,21 +12,20 @@ class AppHostingBackendManagedResourceRunService {
 
   /// Creates a new [AppHostingBackendManagedResourceRunService].
   /// [service] (Output)
-  AppHostingBackendManagedResourceRunService({this.service});
+  AppHostingBackendManagedResourceRunService({
+    this.service,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'service': ?service};
+    return <String, dynamic>{
+      'service': ?service,
+    };
   }
 
-  factory AppHostingBackendManagedResourceRunService.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppHostingBackendManagedResourceRunService.fromMap(Map<String, dynamic> map) {
     return AppHostingBackendManagedResourceRunService(
-      service: (() {
-        final guardedValue = map['service'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      service: (() { final guardedValue = map['service']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

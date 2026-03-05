@@ -5,31 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDesktopTypesType {
   /// The CPU cores.
   final pulumi.Input<String> cpuCount;
-
   /// The size of the data disk. Unit: GiB.
   final pulumi.Input<String> dataDiskSize;
-
   /// Specification ID.
   final pulumi.Input<String> desktopTypeId;
-
   /// The GPU cores.
   final pulumi.Input<double> gpuCount;
-
   /// The GPU video memory.
   final pulumi.Input<String> gpuSpec;
-
   /// The ID of the Desktop Type.
   final pulumi.Input<String> id;
-
   /// The Specification family.
   final pulumi.Input<String> instanceTypeFamily;
-
   /// The Memory size. Unit: MiB.
   final pulumi.Input<String> memorySize;
-
   /// The status of the resource.
   final pulumi.Input<String> status;
-
   /// The size of the system disk. Unit: GiB.
   final pulumi.Input<String> systemDiskSize;
 
@@ -80,12 +71,11 @@ class GetDesktopTypesType {
       gpuCount: pulumi.Input.fromValue(map['gpuCount'] as double),
       gpuSpec: pulumi.Input.fromValue(map['gpuSpec'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
-      instanceTypeFamily: pulumi.Input.fromValue(
-        map['instanceTypeFamily'] as String,
-      ),
+      instanceTypeFamily: pulumi.Input.fromValue(map['instanceTypeFamily'] as String),
       memorySize: pulumi.Input.fromValue(map['memorySize'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
       systemDiskSize: pulumi.Input.fromValue(map['systemDiskSize'] as String),
     );
   }
 }
+

@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTrafficManagerProfileArgs {
   /// Specifies the name of the Traffic Manager Profile.
   final pulumi.Input<String> name;
-
   /// Specifies the name of the resource group the Traffic Manager Profile is located in.
   final pulumi.Input<String> resourceGroupName;
-
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// Indicates whether Traffic View is enabled for the Traffic Manager profile.
   final pulumi.Input<bool>? trafficViewEnabled;
 
@@ -43,21 +40,10 @@ class GetTrafficManagerProfileArgs {
   factory GetTrafficManagerProfileArgs.fromMap(Map<String, dynamic> map) {
     return GetTrafficManagerProfileArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      trafficViewEnabled: (() {
-        final guardedValue = map['trafficViewEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      trafficViewEnabled: (() { final guardedValue = map['trafficViewEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

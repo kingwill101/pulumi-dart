@@ -12,19 +12,20 @@ class GroupArgs {
 
   /// Creates a new [GroupArgs].
   /// [name] Name of the domain group.
-  GroupArgs({this.name});
+  GroupArgs({
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name};
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
   factory GroupArgs.fromMap(Map<String, dynamic> map) {
     return GroupArgs(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

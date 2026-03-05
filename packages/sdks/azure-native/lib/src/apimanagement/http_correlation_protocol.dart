@@ -16,3 +16,4 @@ enum HttpCorrelationProtocol {
     throw ArgumentError('Unknown HttpCorrelationProtocol value: $value');
   }
 }
+

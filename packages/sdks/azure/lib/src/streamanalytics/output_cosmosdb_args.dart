@@ -9,25 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OutputCosmosdbArgs {
   /// The authentication mode for the CosmosDB database. Possible values are `ConnectionString` and `Msi`. Defaults to `ConnectionString`.
   final pulumi.Input<String>? authenticationMode;
-
   /// The name of the CosmosDB container.
   final pulumi.Input<String> containerName;
-
   /// The account key for the CosmosDB database.
   final pulumi.Input<String> cosmosdbAccountKey;
-
   /// The ID of the CosmosDB database.
   final pulumi.Input<String> cosmosdbSqlDatabaseId;
-
   /// The name of the field in output events used to specify the primary key which insert or update operations are based on.
   final pulumi.Input<String>? documentId;
-
   /// The name of the Stream Analytics Output. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// The name of the field in output events used to specify the key for partitioning output across collections. If `container_name` contains `{partition}` token, this property is required to be specified.
   final pulumi.Input<String>? partitionKey;
-
   /// The ID of the Stream Analytics Job. Changing this forces a new resource to be created.
   final pulumi.Input<String> streamAnalyticsJobId;
 
@@ -66,36 +59,15 @@ class OutputCosmosdbArgs {
 
   factory OutputCosmosdbArgs.fromMap(Map<String, dynamic> map) {
     return OutputCosmosdbArgs(
-      authenticationMode: (() {
-        final guardedValue = map['authenticationMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      authenticationMode: (() { final guardedValue = map['authenticationMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       containerName: pulumi.Input.fromValue(map['containerName'] as String),
-      cosmosdbAccountKey: pulumi.Input.fromValue(
-        map['cosmosdbAccountKey'] as String,
-      ),
-      cosmosdbSqlDatabaseId: pulumi.Input.fromValue(
-        map['cosmosdbSqlDatabaseId'] as String,
-      ),
-      documentId: (() {
-        final guardedValue = map['documentId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      partitionKey: (() {
-        final guardedValue = map['partitionKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      streamAnalyticsJobId: pulumi.Input.fromValue(
-        map['streamAnalyticsJobId'] as String,
-      ),
+      cosmosdbAccountKey: pulumi.Input.fromValue(map['cosmosdbAccountKey'] as String),
+      cosmosdbSqlDatabaseId: pulumi.Input.fromValue(map['cosmosdbSqlDatabaseId'] as String),
+      documentId: (() { final guardedValue = map['documentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      partitionKey: (() { final guardedValue = map['partitionKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      streamAnalyticsJobId: pulumi.Input.fromValue(map['streamAnalyticsJobId'] as String),
     );
   }
 }
+

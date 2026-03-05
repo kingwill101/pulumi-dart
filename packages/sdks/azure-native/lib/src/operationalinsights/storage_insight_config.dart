@@ -196,28 +196,20 @@ import 'storage_insight_status_response.dart';
 class StorageInsightConfig extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The names of the blob containers that the workspace should read
   late final pulumi.Output<List<String>?> containers;
-
   /// The ETag of the storage insight.
   late final pulumi.Output<String?> eTag;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The status of the storage insight
   late final pulumi.Output<StorageInsightStatusResponse> status;
-
   /// The storage account connection details
   late final pulumi.Output<StorageAccountResponse> storageAccount;
-
   /// The names of the Azure tables that the workspace should read
   late final pulumi.Output<List<String>?> tables;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -230,35 +222,17 @@ class StorageInsightConfig extends pulumi.CustomResource {
     StorageInsightConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:operationalinsights:StorageInsightConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:operationalinsights:StorageInsightConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     containers = registerOutput<List<String>?>('containers');
     eTag = registerOutput<String?>('eTag');
     this.name = registerOutput<String>('name');
-    status = registerOutput<StorageInsightStatusResponse>(
-      'status',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return StorageInsightStatusResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    storageAccount = registerOutput<StorageAccountResponse>(
-      'storageAccount',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return StorageAccountResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    status = registerOutput<StorageInsightStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StorageInsightStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    storageAccount = registerOutput<StorageAccountResponse>('storageAccount', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StorageAccountResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tables = registerOutput<List<String>?>('tables');
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');

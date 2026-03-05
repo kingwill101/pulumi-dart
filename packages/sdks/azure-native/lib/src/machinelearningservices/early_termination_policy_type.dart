@@ -16,3 +16,4 @@ enum EarlyTerminationPolicyType {
     throw ArgumentError('Unknown EarlyTerminationPolicyType value: $value');
   }
 }
+

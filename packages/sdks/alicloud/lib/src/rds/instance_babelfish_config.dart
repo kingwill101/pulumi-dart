@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceBabelfishConfig {
   /// specifies whether to enable the Babelfish for the instance. If you set this parameter to **true**, you enable Babelfish for the instance. If you leave this parameter empty, you disable Babelfish for the instance.
   final pulumi.Input<String> babelfishEnabled;
-
   /// The password of the administrator account. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. It must be 8 to 32 characters in length. The password can contain any of the following characters:! @ # $ % ^ & * () _ + - =
   final pulumi.Input<String> masterUserPassword;
-
   /// The name of the administrator account. The name can contain lowercase letters, digits, and underscores (_). It must start with a letter and end with a letter or digit. It can be up to 63 characters in length and cannot start with pg.
   final pulumi.Input<String> masterUsername;
-
   /// The migration mode of the instance. Valid values: **single-db** and **multi-db**.
   final pulumi.Input<String> migrationMode;
 
@@ -38,14 +35,11 @@ class InstanceBabelfishConfig {
 
   factory InstanceBabelfishConfig.fromMap(Map<String, dynamic> map) {
     return InstanceBabelfishConfig(
-      babelfishEnabled: pulumi.Input.fromValue(
-        map['babelfishEnabled'] as String,
-      ),
-      masterUserPassword: pulumi.Input.fromValue(
-        map['masterUserPassword'] as String,
-      ),
+      babelfishEnabled: pulumi.Input.fromValue(map['babelfishEnabled'] as String),
+      masterUserPassword: pulumi.Input.fromValue(map['masterUserPassword'] as String),
       masterUsername: pulumi.Input.fromValue(map['masterUsername'] as String),
       migrationMode: pulumi.Input.fromValue(map['migrationMode'] as String),
     );
   }
 }
+

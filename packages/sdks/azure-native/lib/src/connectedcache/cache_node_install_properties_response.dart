@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CacheNodeInstallPropertiesResponse {
   /// Mcc cache node resource Id.
   final pulumi.Input<String>? cacheNodeId;
-
   /// Mcc customer resource Id.
   final pulumi.Input<String>? customerId;
-
   /// Mcc primary account key. Internal to Mcc.
   final pulumi.Input<String> primaryAccountKey;
-
   /// Mcc Iot Central temporary device registration key, used once.
   final pulumi.Input<String> registrationKey;
-
   /// Mcc secondary account key. Internal to Mcc.
   final pulumi.Input<String> secondaryAccountKey;
 
@@ -45,23 +41,12 @@ class CacheNodeInstallPropertiesResponse {
 
   factory CacheNodeInstallPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return CacheNodeInstallPropertiesResponse(
-      cacheNodeId: (() {
-        final guardedValue = map['cacheNodeId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      customerId: (() {
-        final guardedValue = map['customerId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      primaryAccountKey: pulumi.Input.fromValue(
-        map['primaryAccountKey'] as String,
-      ),
+      cacheNodeId: (() { final guardedValue = map['cacheNodeId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      customerId: (() { final guardedValue = map['customerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      primaryAccountKey: pulumi.Input.fromValue(map['primaryAccountKey'] as String),
       registrationKey: pulumi.Input.fromValue(map['registrationKey'] as String),
-      secondaryAccountKey: pulumi.Input.fromValue(
-        map['secondaryAccountKey'] as String,
-      ),
+      secondaryAccountKey: pulumi.Input.fromValue(map['secondaryAccountKey'] as String),
     );
   }
 }
+

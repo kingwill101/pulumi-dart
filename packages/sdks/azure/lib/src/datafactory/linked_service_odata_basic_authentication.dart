@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LinkedServiceOdataBasicAuthentication {
   /// The password associated with the username, which can be used to authenticate to the OData endpoint.
   final pulumi.Input<String> password;
-
   /// The username which can be used to authenticate to the OData endpoint.
   final pulumi.Input<String> username;
 
@@ -18,15 +17,17 @@ class LinkedServiceOdataBasicAuthentication {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'password': password, 'username': username};
+    return <String, dynamic>{
+      'password': password,
+      'username': username,
+    };
   }
 
-  factory LinkedServiceOdataBasicAuthentication.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LinkedServiceOdataBasicAuthentication.fromMap(Map<String, dynamic> map) {
     return LinkedServiceOdataBasicAuthentication(
       password: pulumi.Input.fromValue(map['password'] as String),
       username: pulumi.Input.fromValue(map['username'] as String),
     );
   }
 }
+

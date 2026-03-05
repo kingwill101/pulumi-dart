@@ -9,19 +9,20 @@ class ServerAdministratorsResponse {
 
   /// Creates a new [ServerAdministratorsResponse].
   /// [members] An array of administrator user identities.
-  ServerAdministratorsResponse({this.members});
+  ServerAdministratorsResponse({
+    this.members,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'members': ?members};
+    return <String, dynamic>{
+      'members': ?members,
+    };
   }
 
   factory ServerAdministratorsResponse.fromMap(Map<String, dynamic> map) {
     return ServerAdministratorsResponse(
-      members: (() {
-        final guardedValue = map['members'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      members: (() { final guardedValue = map['members']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

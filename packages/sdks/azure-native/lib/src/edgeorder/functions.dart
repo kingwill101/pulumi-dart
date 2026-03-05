@@ -55,8 +55,7 @@ Future<GetOrderItemResult> getOrderItem(
 /// Other available API versions: 2022-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edgeorder [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_edgeorder_list_products_and_configuration_product_families_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListProductsAndConfigurationProductFamiliesResult>
-listProductsAndConfigurationProductFamilies(
+Future<ListProductsAndConfigurationProductFamiliesResult> listProductsAndConfigurationProductFamilies(
   ListProductsAndConfigurationProductFamiliesArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

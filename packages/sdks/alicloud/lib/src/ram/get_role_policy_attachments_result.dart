@@ -7,10 +7,8 @@ import 'get_role_policy_attachments_attachment.dart';
 class GetRolePolicyAttachmentsResult {
   /// A list of Role Policy Attachment Entries. Each element contains the following attributes:
   final List<GetRolePolicyAttachmentsAttachment> attachments;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of Role Policy Attachment IDs.
   final List<String> ids;
   final String? outputFile;
@@ -32,11 +30,7 @@ class GetRolePolicyAttachmentsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attachments':
-          pulumi.Input.encodeList<
-            GetRolePolicyAttachmentsAttachment,
-            Map<String, dynamic>
-          >(attachments, (value) => value.toMap()),
+      'attachments': pulumi.Input.encodeList<GetRolePolicyAttachmentsAttachment, Map<String, dynamic>>(attachments, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'outputFile': ?outputFile,
@@ -46,20 +40,12 @@ class GetRolePolicyAttachmentsResult {
 
   factory GetRolePolicyAttachmentsResult.fromMap(Map<String, dynamic> map) {
     return GetRolePolicyAttachmentsResult(
-      attachments: pulumi.Input.decodeList<GetRolePolicyAttachmentsAttachment>(
-        map['attachments']!,
-        (value) => GetRolePolicyAttachmentsAttachment.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      attachments: pulumi.Input.decodeList<GetRolePolicyAttachmentsAttachment>(map['attachments']!, (value) => GetRolePolicyAttachmentsAttachment.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
       roleName: map['roleName'] as String,
     );
   }
 }
+

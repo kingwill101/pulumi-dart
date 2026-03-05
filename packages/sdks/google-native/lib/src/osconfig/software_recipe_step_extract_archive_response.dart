@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SoftwareRecipeStepExtractArchiveResponse {
   /// The id of the relevant artifact in the recipe.
   final pulumi.Input<String> artifactId;
-
   /// Directory to extract archive to. Defaults to `/` on Linux or `C:\` on Windows.
   final pulumi.Input<String> destination;
-
   /// The type of the archive to extract.
   final pulumi.Input<String> type;
 
@@ -31,9 +29,7 @@ class SoftwareRecipeStepExtractArchiveResponse {
     };
   }
 
-  factory SoftwareRecipeStepExtractArchiveResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SoftwareRecipeStepExtractArchiveResponse.fromMap(Map<String, dynamic> map) {
     return SoftwareRecipeStepExtractArchiveResponse(
       artifactId: pulumi.Input.fromValue(map['artifactId'] as String),
       destination: pulumi.Input.fromValue(map['destination'] as String),
@@ -41,3 +37,4 @@ class SoftwareRecipeStepExtractArchiveResponse {
     );
   }
 }
+

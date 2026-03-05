@@ -6,26 +6,18 @@ import 'get_linux_function_app_site_config_scm_ip_restriction_header.dart';
 class GetLinuxFunctionAppSiteConfigScmIpRestriction {
   /// The action taken.
   final pulumi.Input<String> action;
-
   /// The description of the ip restriction rule.
   final pulumi.Input<String> description;
-
   /// A `headers` block as defined above.
-  final pulumi.Input<List<GetLinuxFunctionAppSiteConfigScmIpRestrictionHeader>>
-  headers;
-
+  final pulumi.Input<List<GetLinuxFunctionAppSiteConfigScmIpRestrictionHeader>> headers;
   /// The CIDR notation of the IP or IP Range matched.
   final pulumi.Input<String> ipAddress;
-
   /// The name which should be used for this Linux Function App.
   final pulumi.Input<String> name;
-
   /// The priority value of this `ip_restriction`.
   final pulumi.Input<int> priority;
-
   /// The Service Tag used for this IP Restriction.
   final pulumi.Input<String> serviceTag;
-
   /// The Virtual Network Subnet ID used for this IP Restriction.
   final pulumi.Input<String> virtualNetworkSubnetId;
 
@@ -53,18 +45,7 @@ class GetLinuxFunctionAppSiteConfigScmIpRestriction {
     return <String, dynamic>{
       'action': action,
       'description': description,
-      'headers':
-          pulumi.Input.mapInputValue<
-            List<GetLinuxFunctionAppSiteConfigScmIpRestrictionHeader>,
-            List<Map<String, dynamic>>
-          >(
-            headers,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetLinuxFunctionAppSiteConfigScmIpRestrictionHeader,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'headers': pulumi.Input.mapInputValue<List<GetLinuxFunctionAppSiteConfigScmIpRestrictionHeader>, List<Map<String, dynamic>>>(headers, (value) => pulumi.Input.encodeList<GetLinuxFunctionAppSiteConfigScmIpRestrictionHeader, Map<String, dynamic>>(value, (value) => value.toMap())),
       'ipAddress': ipAddress,
       'name': name,
       'priority': priority,
@@ -73,30 +54,17 @@ class GetLinuxFunctionAppSiteConfigScmIpRestriction {
     };
   }
 
-  factory GetLinuxFunctionAppSiteConfigScmIpRestriction.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetLinuxFunctionAppSiteConfigScmIpRestriction.fromMap(Map<String, dynamic> map) {
     return GetLinuxFunctionAppSiteConfigScmIpRestriction(
       action: pulumi.Input.fromValue(map['action'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
-      headers: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GetLinuxFunctionAppSiteConfigScmIpRestrictionHeader
-        >(
-          map['headers']!,
-          (value) =>
-              GetLinuxFunctionAppSiteConfigScmIpRestrictionHeader.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
+      headers: pulumi.Input.fromValue(pulumi.Input.decodeList<GetLinuxFunctionAppSiteConfigScmIpRestrictionHeader>(map['headers']!, (value) => GetLinuxFunctionAppSiteConfigScmIpRestrictionHeader.fromMap((value as Map).cast<String, dynamic>()))),
       ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       priority: pulumi.Input.fromValue(map['priority'] as int),
       serviceTag: pulumi.Input.fromValue(map['serviceTag'] as String),
-      virtualNetworkSubnetId: pulumi.Input.fromValue(
-        map['virtualNetworkSubnetId'] as String,
-      ),
+      virtualNetworkSubnetId: pulumi.Input.fromValue(map['virtualNetworkSubnetId'] as String),
     );
   }
 }
+

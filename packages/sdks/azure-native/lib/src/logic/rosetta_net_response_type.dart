@@ -16,3 +16,4 @@ enum RosettaNetResponseType {
     throw ArgumentError('Unknown RosettaNetResponseType value: $value');
   }
 }
+

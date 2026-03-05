@@ -9,10 +9,8 @@ import 'google_privacy_dlp_v2_quasi_id_field.dart';
 class GooglePrivacyDlpV2AuxiliaryTable {
   /// Quasi-identifier columns.
   final pulumi.Input<List<GooglePrivacyDlpV2QuasiIdField>> quasiIds;
-
   /// The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
   final pulumi.Input<GooglePrivacyDlpV2FieldId> relativeFrequency;
-
   /// Auxiliary table location.
   final pulumi.Input<GooglePrivacyDlpV2BigQueryTable> table;
 
@@ -28,51 +26,18 @@ class GooglePrivacyDlpV2AuxiliaryTable {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'quasiIds':
-          pulumi.Input.mapInputValue<
-            List<GooglePrivacyDlpV2QuasiIdField>,
-            List<Map<String, dynamic>>
-          >(
-            quasiIds,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GooglePrivacyDlpV2QuasiIdField,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'relativeFrequency':
-          pulumi.Input.mapInputValue<
-            GooglePrivacyDlpV2FieldId,
-            Map<String, dynamic>
-          >(relativeFrequency, (value) => value.toMap()),
-      'table':
-          pulumi.Input.mapInputValue<
-            GooglePrivacyDlpV2BigQueryTable,
-            Map<String, dynamic>
-          >(table, (value) => value.toMap()),
+      'quasiIds': pulumi.Input.mapInputValue<List<GooglePrivacyDlpV2QuasiIdField>, List<Map<String, dynamic>>>(quasiIds, (value) => pulumi.Input.encodeList<GooglePrivacyDlpV2QuasiIdField, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'relativeFrequency': pulumi.Input.mapInputValue<GooglePrivacyDlpV2FieldId, Map<String, dynamic>>(relativeFrequency, (value) => value.toMap()),
+      'table': pulumi.Input.mapInputValue<GooglePrivacyDlpV2BigQueryTable, Map<String, dynamic>>(table, (value) => value.toMap()),
     };
   }
 
   factory GooglePrivacyDlpV2AuxiliaryTable.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2AuxiliaryTable(
-      quasiIds: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GooglePrivacyDlpV2QuasiIdField>(
-          map['quasiIds']!,
-          (value) => GooglePrivacyDlpV2QuasiIdField.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      relativeFrequency: pulumi.Input.fromValue(
-        GooglePrivacyDlpV2FieldId.fromMap(
-          (map['relativeFrequency']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      table: pulumi.Input.fromValue(
-        GooglePrivacyDlpV2BigQueryTable.fromMap(
-          (map['table']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      quasiIds: pulumi.Input.fromValue(pulumi.Input.decodeList<GooglePrivacyDlpV2QuasiIdField>(map['quasiIds']!, (value) => GooglePrivacyDlpV2QuasiIdField.fromMap((value as Map).cast<String, dynamic>()))),
+      relativeFrequency: pulumi.Input.fromValue(GooglePrivacyDlpV2FieldId.fromMap((map['relativeFrequency']! as Map).cast<String, dynamic>())),
+      table: pulumi.Input.fromValue(GooglePrivacyDlpV2BigQueryTable.fromMap((map['table']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

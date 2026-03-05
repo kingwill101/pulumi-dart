@@ -435,16 +435,12 @@ import 'bgp_connection_state.dart';
 class BgpConnection extends pulumi.CustomResource {
   /// The name which should be used for this Virtual Hub Bgp Connection. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The peer autonomous system number for the Virtual Hub Bgp Connection. Changing this forces a new resource to be created.
   late final pulumi.Output<int> peerAsn;
-
   /// The peer IP address for the Virtual Hub Bgp Connection. Changing this forces a new resource to be created.
   late final pulumi.Output<String> peerIp;
-
   /// The ID of the Virtual Hub within which this Bgp connection should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> virtualHubId;
-
   /// The ID of virtual network connection.
   late final pulumi.Output<String?> virtualNetworkConnectionId;
 
@@ -457,18 +453,16 @@ class BgpConnection extends pulumi.CustomResource {
     BgpConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/bgpConnection:BgpConnection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/bgpConnection:BgpConnection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     peerAsn = registerOutput<int>('peerAsn');
     peerIp = registerOutput<String>('peerIp');
     virtualHubId = registerOutput<String>('virtualHubId');
-    virtualNetworkConnectionId = registerOutput<String?>(
-      'virtualNetworkConnectionId',
-    );
+    virtualNetworkConnectionId = registerOutput<String?>('virtualNetworkConnectionId');
   }
 
   /// Gets an existing [BgpConnection] resource's state with the given [name] and [id].
@@ -489,17 +483,15 @@ class BgpConnection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/bgpConnection:BgpConnection',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/bgpConnection:BgpConnection',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     peerAsn = registerOutput<int>('peerAsn');
     peerIp = registerOutput<String>('peerIp');
     virtualHubId = registerOutput<String>('virtualHubId');
-    virtualNetworkConnectionId = registerOutput<String?>(
-      'virtualNetworkConnectionId',
-    );
+    virtualNetworkConnectionId = registerOutput<String?>('virtualNetworkConnectionId');
   }
 }

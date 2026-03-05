@@ -468,34 +468,24 @@ import 'service_certificate_state.dart';
 class ServiceCertificate extends pulumi.CustomResource {
   /// The content of a non-SM certificate in PEM format.
   late final pulumi.Output<String?> cert;
-
   /// A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificate_name` can be modified.
   late final pulumi.Output<String> certificateName;
-
   /// The content of an SM encryption certificate in PEM format.
   late final pulumi.Output<String?> encryptCert;
-
   /// The private key of an SM encryption certificate in PEM format.
   late final pulumi.Output<String?> encryptPrivateKey;
-
   /// The private key of a non-SM certificate in PEM format.
   late final pulumi.Output<String?> key;
-
   /// Field `lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.
   late final pulumi.Output<String?> lang;
-
   /// Field `name` has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute `certificate_name` instead.
   late final pulumi.Output<String> name;
-
   /// The ID of the resource group.
   late final pulumi.Output<String> resourceGroupId;
-
   /// The content of an SM signing certificate in PEM format.
   late final pulumi.Output<String?> signCert;
-
   /// The private key of an SM signing certificate in PEM format.
   late final pulumi.Output<String?> signPrivateKey;
-
   /// The tag of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -508,11 +498,11 @@ class ServiceCertificate extends pulumi.CustomResource {
     ServiceCertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cas/serviceCertificate:ServiceCertificate',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cas/serviceCertificate:ServiceCertificate',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cert = registerOutput<String?>('cert');
     certificateName = registerOutput<String>('certificateName');
     encryptCert = registerOutput<String?>('encryptCert');
@@ -544,11 +534,11 @@ class ServiceCertificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cas/serviceCertificate:ServiceCertificate',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cas/serviceCertificate:ServiceCertificate',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cert = registerOutput<String?>('cert');
     certificateName = registerOutput<String>('certificateName');
     encryptCert = registerOutput<String?>('encryptCert');

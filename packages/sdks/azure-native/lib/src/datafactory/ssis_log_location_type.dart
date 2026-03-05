@@ -14,3 +14,4 @@ enum SsisLogLocationType {
     throw ArgumentError('Unknown SsisLogLocationType value: $value');
   }
 }
+

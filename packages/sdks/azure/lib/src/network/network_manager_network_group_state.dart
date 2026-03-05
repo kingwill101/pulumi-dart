@@ -6,15 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkManagerNetworkGroupState {
   /// A description of the Network Manager Network Group.
   final pulumi.Input<String>? description;
-
   /// The member type for the network group. Possible values are `Subnet` and `VirtualNetwork`. Defaults to `VirtualNetwork`.
   ///
   /// &gt; **Note:** `member_type` can be set to `Subnet` only if the parent Network Manager has `Routing` included in its `scope_accesses`.
   final pulumi.Input<String>? memberType;
-
   /// Specifies the name which should be used for this Network Manager Network Group. Changing this forces a new Network Manager Network Group to be created.
   final pulumi.Input<String>? name;
-
   /// Specifies the ID of the Network Manager. Changing this forces a new Network Manager Network Group to be created.
   final pulumi.Input<String>? networkManagerId;
 
@@ -41,26 +38,11 @@ class NetworkManagerNetworkGroupState {
 
   factory NetworkManagerNetworkGroupState.fromMap(Map<String, dynamic> map) {
     return NetworkManagerNetworkGroupState(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      memberType: (() {
-        final guardedValue = map['memberType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      networkManagerId: (() {
-        final guardedValue = map['networkManagerId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      memberType: (() { final guardedValue = map['memberType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      networkManagerId: (() { final guardedValue = map['networkManagerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

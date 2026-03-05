@@ -1230,29 +1230,19 @@ import 'replication_recovery_plan_state.dart';
 /// ```
 class ReplicationRecoveryPlan extends pulumi.CustomResource {
   /// An `azure_to_azure_settings` block as defined below.
-  late final pulumi.Output<ReplicationRecoveryPlanAzureToAzureSettings?>
-  azureToAzureSettings;
-
+  late final pulumi.Output<ReplicationRecoveryPlanAzureToAzureSettings?> azureToAzureSettings;
   /// One or more `boot_recovery_group` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> bootRecoveryGroups;
-
   /// One `failover_recovery_group` block as defined below.
-  late final pulumi.Output<ReplicationRecoveryPlanFailoverRecoveryGroup>
-  failoverRecoveryGroup;
-
+  late final pulumi.Output<ReplicationRecoveryPlanFailoverRecoveryGroup> failoverRecoveryGroup;
   /// The name of the Replication Plan. The name can contain only letters, numbers, and hyphens. It should start with a letter and end with a letter or a number. Can be a maximum of 63 characters. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The ID of the vault that should be updated. Changing this forces a new resource to be created.
   late final pulumi.Output<String> recoveryVaultId;
-
   /// One `shutdown_recovery_group` block as defined below.
-  late final pulumi.Output<ReplicationRecoveryPlanShutdownRecoveryGroup>
-  shutdownRecoveryGroup;
-
+  late final pulumi.Output<ReplicationRecoveryPlanShutdownRecoveryGroup> shutdownRecoveryGroup;
   /// ID of source fabric to be recovered from. Changing this forces a new Replication Plan to be created.
   late final pulumi.Output<String> sourceRecoveryFabricId;
-
   /// ID of target fabric to recover. Changing this forces a new Replication Plan to be created.
   late final pulumi.Output<String> targetRecoveryFabricId;
 
@@ -1265,49 +1255,17 @@ class ReplicationRecoveryPlan extends pulumi.CustomResource {
     ReplicationRecoveryPlanArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:siterecovery/replicationRecoveryPlan:ReplicationRecoveryPlan',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    azureToAzureSettings =
-        registerOutput<ReplicationRecoveryPlanAzureToAzureSettings?>(
-          'azureToAzureSettings',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ReplicationRecoveryPlanAzureToAzureSettings.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    bootRecoveryGroups = registerOutput<List<Map<String, dynamic>>>(
-      'bootRecoveryGroups',
-    );
-    failoverRecoveryGroup =
-        registerOutput<ReplicationRecoveryPlanFailoverRecoveryGroup>(
-          'failoverRecoveryGroup',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ReplicationRecoveryPlanFailoverRecoveryGroup.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'azure:siterecovery/replicationRecoveryPlan:ReplicationRecoveryPlan',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    azureToAzureSettings = registerOutput<ReplicationRecoveryPlanAzureToAzureSettings?>('azureToAzureSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicationRecoveryPlanAzureToAzureSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    bootRecoveryGroups = registerOutput<List<Map<String, dynamic>>>('bootRecoveryGroups');
+    failoverRecoveryGroup = registerOutput<ReplicationRecoveryPlanFailoverRecoveryGroup>('failoverRecoveryGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicationRecoveryPlanFailoverRecoveryGroup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     recoveryVaultId = registerOutput<String>('recoveryVaultId');
-    shutdownRecoveryGroup =
-        registerOutput<ReplicationRecoveryPlanShutdownRecoveryGroup>(
-          'shutdownRecoveryGroup',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ReplicationRecoveryPlanShutdownRecoveryGroup.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    shutdownRecoveryGroup = registerOutput<ReplicationRecoveryPlanShutdownRecoveryGroup>('shutdownRecoveryGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicationRecoveryPlanShutdownRecoveryGroup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sourceRecoveryFabricId = registerOutput<String>('sourceRecoveryFabricId');
     targetRecoveryFabricId = registerOutput<String>('targetRecoveryFabricId');
   }
@@ -1330,49 +1288,17 @@ class ReplicationRecoveryPlan extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:siterecovery/replicationRecoveryPlan:ReplicationRecoveryPlan',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    azureToAzureSettings =
-        registerOutput<ReplicationRecoveryPlanAzureToAzureSettings?>(
-          'azureToAzureSettings',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ReplicationRecoveryPlanAzureToAzureSettings.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    bootRecoveryGroups = registerOutput<List<Map<String, dynamic>>>(
-      'bootRecoveryGroups',
-    );
-    failoverRecoveryGroup =
-        registerOutput<ReplicationRecoveryPlanFailoverRecoveryGroup>(
-          'failoverRecoveryGroup',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ReplicationRecoveryPlanFailoverRecoveryGroup.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'azure:siterecovery/replicationRecoveryPlan:ReplicationRecoveryPlan',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    azureToAzureSettings = registerOutput<ReplicationRecoveryPlanAzureToAzureSettings?>('azureToAzureSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicationRecoveryPlanAzureToAzureSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    bootRecoveryGroups = registerOutput<List<Map<String, dynamic>>>('bootRecoveryGroups');
+    failoverRecoveryGroup = registerOutput<ReplicationRecoveryPlanFailoverRecoveryGroup>('failoverRecoveryGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicationRecoveryPlanFailoverRecoveryGroup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     recoveryVaultId = registerOutput<String>('recoveryVaultId');
-    shutdownRecoveryGroup =
-        registerOutput<ReplicationRecoveryPlanShutdownRecoveryGroup>(
-          'shutdownRecoveryGroup',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ReplicationRecoveryPlanShutdownRecoveryGroup.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    shutdownRecoveryGroup = registerOutput<ReplicationRecoveryPlanShutdownRecoveryGroup>('shutdownRecoveryGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicationRecoveryPlanShutdownRecoveryGroup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sourceRecoveryFabricId = registerOutput<String>('sourceRecoveryFabricId');
     targetRecoveryFabricId = registerOutput<String>('targetRecoveryFabricId');
   }

@@ -8,22 +8,16 @@ class GetDatasetBlobStorageResult {
   /// The name of the storage account container to be shared with the receiver.
   final String containerName;
   final String dataShareId;
-
   /// The name of the Data Share Dataset.
   final String displayName;
-
   /// The path of the file in the storage container to be shared with the receiver.
   final String filePath;
-
   /// The folder path of the file in the storage container to be shared with the receiver.
   final String folderPath;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The name of the storage account to be shared with the receiver.
   final String name;
-
   /// A `storage_account` block as defined below.
   final List<GetDatasetBlobStorageStorageAccount> storageAccounts;
 
@@ -56,11 +50,7 @@ class GetDatasetBlobStorageResult {
       'folderPath': folderPath,
       'id': id,
       'name': name,
-      'storageAccounts':
-          pulumi.Input.encodeList<
-            GetDatasetBlobStorageStorageAccount,
-            Map<String, dynamic>
-          >(storageAccounts, (value) => value.toMap()),
+      'storageAccounts': pulumi.Input.encodeList<GetDatasetBlobStorageStorageAccount, Map<String, dynamic>>(storageAccounts, (value) => value.toMap()),
     };
   }
 
@@ -73,13 +63,8 @@ class GetDatasetBlobStorageResult {
       folderPath: map['folderPath'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      storageAccounts:
-          pulumi.Input.decodeList<GetDatasetBlobStorageStorageAccount>(
-            map['storageAccounts']!,
-            (value) => GetDatasetBlobStorageStorageAccount.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      storageAccounts: pulumi.Input.decodeList<GetDatasetBlobStorageStorageAccount>(map['storageAccounts']!, (value) => GetDatasetBlobStorageStorageAccount.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

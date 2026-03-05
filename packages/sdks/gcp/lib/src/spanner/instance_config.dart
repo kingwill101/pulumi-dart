@@ -42,35 +42,27 @@ class InstanceConfig extends pulumi.CustomResource {
   /// Only set for user managed configurations.
   /// baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this configuration.
   late final pulumi.Output<String> baseConfig;
-
   /// Output only. Whether this instance config is a Google or User Managed Configuration.
   late final pulumi.Output<String> configType;
-
   /// The name of this instance configuration as it appears in UIs.
   late final pulumi.Output<String> displayName;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// An object containing a list of "key": value pairs.
   /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// A unique identifier for the instance configuration. Values are of the
   /// form projects/&lt;project&gt;/instanceConfigs/[a-z][-a-z0-9]*
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// The geographic placement of nodes in this instance configuration and their replication properties.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> replicas;
@@ -84,11 +76,11 @@ class InstanceConfig extends pulumi.CustomResource {
     InstanceConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:spanner/instanceConfig:InstanceConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:spanner/instanceConfig:InstanceConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     baseConfig = registerOutput<String>('baseConfig');
     configType = registerOutput<String>('configType');
     displayName = registerOutput<String>('displayName');
@@ -118,11 +110,11 @@ class InstanceConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:spanner/instanceConfig:InstanceConfig',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:spanner/instanceConfig:InstanceConfig',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     baseConfig = registerOutput<String>('baseConfig');
     configType = registerOutput<String>('configType');
     displayName = registerOutput<String>('displayName');

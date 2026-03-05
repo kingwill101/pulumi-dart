@@ -13,20 +13,23 @@ class GetSecretSecretmanagerV1beta1Args {
   /// Creates a new [GetSecretSecretmanagerV1beta1Args].
   /// [project] Optional.
   /// [secretId] Required.
-  GetSecretSecretmanagerV1beta1Args({this.project, required this.secretId});
+  GetSecretSecretmanagerV1beta1Args({
+    this.project,
+    required this.secretId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'project': ?project, 'secretId': secretId};
+    return <String, dynamic>{
+      'project': ?project,
+      'secretId': secretId,
+    };
   }
 
   factory GetSecretSecretmanagerV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetSecretSecretmanagerV1beta1Args(
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       secretId: pulumi.Input.fromValue(map['secretId'] as String),
     );
   }
 }
+

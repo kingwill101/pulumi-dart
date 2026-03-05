@@ -10,10 +10,8 @@ import 'trigger_trigger.dart';
 class TriggerArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The name for the repository. This needs to be less than 100 characters.
   final pulumi.Input<String> repositoryName;
-
   /// The name of the trigger.
   final pulumi.Input<List<TriggerTrigger>> triggers;
 
@@ -31,36 +29,16 @@ class TriggerArgs {
     return <String, dynamic>{
       'region': ?region,
       'repositoryName': repositoryName,
-      'triggers':
-          pulumi.Input.mapInputValue<
-            List<TriggerTrigger>,
-            List<Map<String, dynamic>>
-          >(
-            triggers,
-            (value) =>
-                pulumi.Input.encodeList<TriggerTrigger, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'triggers': pulumi.Input.mapInputValue<List<TriggerTrigger>, List<Map<String, dynamic>>>(triggers, (value) => pulumi.Input.encodeList<TriggerTrigger, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory TriggerArgs.fromMap(Map<String, dynamic> map) {
     return TriggerArgs(
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       repositoryName: pulumi.Input.fromValue(map['repositoryName'] as String),
-      triggers: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<TriggerTrigger>(
-          map['triggers']!,
-          (value) =>
-              TriggerTrigger.fromMap((value as Map).cast<String, dynamic>()),
-        ),
-      ),
+      triggers: pulumi.Input.fromValue(pulumi.Input.decodeList<TriggerTrigger>(map['triggers']!, (value) => TriggerTrigger.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

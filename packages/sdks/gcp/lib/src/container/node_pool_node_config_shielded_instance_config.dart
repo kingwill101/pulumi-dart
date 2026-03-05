@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NodePoolNodeConfigShieldedInstanceConfig {
   /// Defines whether the instance has integrity monitoring enabled.
   final pulumi.Input<bool>? enableIntegrityMonitoring;
-
   /// Defines whether the instance has Secure Boot enabled.
   final pulumi.Input<bool>? enableSecureBoot;
 
@@ -24,20 +23,11 @@ class NodePoolNodeConfigShieldedInstanceConfig {
     };
   }
 
-  factory NodePoolNodeConfigShieldedInstanceConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NodePoolNodeConfigShieldedInstanceConfig.fromMap(Map<String, dynamic> map) {
     return NodePoolNodeConfigShieldedInstanceConfig(
-      enableIntegrityMonitoring: (() {
-        final guardedValue = map['enableIntegrityMonitoring'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      enableSecureBoot: (() {
-        final guardedValue = map['enableSecureBoot'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enableIntegrityMonitoring: (() { final guardedValue = map['enableIntegrityMonitoring']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enableSecureBoot: (() { final guardedValue = map['enableSecureBoot']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

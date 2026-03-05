@@ -4,22 +4,16 @@ enum GoogleCloudRetailV2betaSearchRequestPersonalizationSpecMode {
   auto("AUTO"),
   disabled("DISABLED");
 
-  const GoogleCloudRetailV2betaSearchRequestPersonalizationSpecMode(
-    this.wireValue,
-  );
+  const GoogleCloudRetailV2betaSearchRequestPersonalizationSpecMode(this.wireValue);
   final String wireValue;
 
-  static GoogleCloudRetailV2betaSearchRequestPersonalizationSpecMode fromValue(
-    String value,
-  ) {
-    for (final item
-        in GoogleCloudRetailV2betaSearchRequestPersonalizationSpecMode.values) {
+  static GoogleCloudRetailV2betaSearchRequestPersonalizationSpecMode fromValue(String value) {
+    for (final item in GoogleCloudRetailV2betaSearchRequestPersonalizationSpecMode.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GoogleCloudRetailV2betaSearchRequestPersonalizationSpecMode value: $value',
-    );
+    throw ArgumentError('Unknown GoogleCloudRetailV2betaSearchRequestPersonalizationSpecMode value: $value');
   }
 }
+

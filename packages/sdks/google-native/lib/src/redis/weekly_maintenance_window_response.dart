@@ -7,10 +7,8 @@ import 'time_of_day_response.dart';
 class WeeklyMaintenanceWindowResponse {
   /// The day of week that maintenance updates occur.
   final pulumi.Input<String> day;
-
   /// Duration of the maintenance window. The current window is fixed at 1 hour.
   final pulumi.Input<String> duration;
-
   /// Start time of the window in UTC time.
   final pulumi.Input<TimeOfDayResponse> startTime;
 
@@ -28,11 +26,7 @@ class WeeklyMaintenanceWindowResponse {
     return <String, dynamic>{
       'day': day,
       'duration': duration,
-      'startTime':
-          pulumi.Input.mapInputValue<TimeOfDayResponse, Map<String, dynamic>>(
-            startTime,
-            (value) => value.toMap(),
-          ),
+      'startTime': pulumi.Input.mapInputValue<TimeOfDayResponse, Map<String, dynamic>>(startTime, (value) => value.toMap()),
     };
   }
 
@@ -40,11 +34,8 @@ class WeeklyMaintenanceWindowResponse {
     return WeeklyMaintenanceWindowResponse(
       day: pulumi.Input.fromValue(map['day'] as String),
       duration: pulumi.Input.fromValue(map['duration'] as String),
-      startTime: pulumi.Input.fromValue(
-        TimeOfDayResponse.fromMap(
-          (map['startTime']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      startTime: pulumi.Input.fromValue(TimeOfDayResponse.fromMap((map['startTime']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

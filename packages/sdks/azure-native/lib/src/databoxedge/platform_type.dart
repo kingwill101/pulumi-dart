@@ -15,3 +15,4 @@ enum PlatformType {
     throw ArgumentError('Unknown PlatformType value: $value');
   }
 }
+

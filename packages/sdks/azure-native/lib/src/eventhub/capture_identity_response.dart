@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CaptureIdentityResponse {
   /// Type of Azure Active Directory Managed Identity.
   final pulumi.Input<String>? type;
-
   /// ARM ID of Managed User Identity. This property is required is the type is UserAssignedIdentity. If type is SystemAssigned, then the System Assigned Identity Associated with the namespace will be used.
   final pulumi.Input<String>? userAssignedIdentity;
 
   /// Creates a new [CaptureIdentityResponse].
   /// [type] Type of Azure Active Directory Managed Identity.
   /// [userAssignedIdentity] ARM ID of Managed User Identity. This property is required is the type is UserAssignedIdentity. If type is SystemAssigned, then the System Assigned Identity Associated with the namespace will be used.
-  CaptureIdentityResponse({this.type, this.userAssignedIdentity});
+  CaptureIdentityResponse({
+    this.type,
+    this.userAssignedIdentity,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class CaptureIdentityResponse {
 
   factory CaptureIdentityResponse.fromMap(Map<String, dynamic> map) {
     return CaptureIdentityResponse(
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      userAssignedIdentity: (() {
-        final guardedValue = map['userAssignedIdentity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      userAssignedIdentity: (() { final guardedValue = map['userAssignedIdentity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

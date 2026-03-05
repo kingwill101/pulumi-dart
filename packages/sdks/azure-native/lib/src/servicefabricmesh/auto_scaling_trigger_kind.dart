@@ -14,3 +14,4 @@ enum AutoScalingTriggerKind {
     throw ArgumentError('Unknown AutoScalingTriggerKind value: $value');
   }
 }
+

@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FCVolumeSourcePatch {
   /// fsType is the filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
   final pulumi.Input<String>? fsType;
-
   /// lun is Optional: FC target lun number
   final pulumi.Input<int>? lun;
-
   /// readOnly is Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.
   final pulumi.Input<bool>? readOnly;
-
   /// targetWWNs is Optional: FC target worldwide names (WWNs)
   final pulumi.Input<List<String>>? targetWWNs;
-
   /// wwids Optional: FC volume world wide identifiers (wwids) Either wwids or combination of targetWWNs and lun must be set, but not both simultaneously.
   final pulumi.Input<List<String>>? wwids;
 
@@ -45,31 +41,12 @@ class FCVolumeSourcePatch {
 
   factory FCVolumeSourcePatch.fromMap(Map<String, dynamic> map) {
     return FCVolumeSourcePatch(
-      fsType: (() {
-        final guardedValue = map['fsType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      lun: (() {
-        final guardedValue = map['lun'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      readOnly: (() {
-        final guardedValue = map['readOnly'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      targetWWNs: (() {
-        final guardedValue = map['targetWWNs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      wwids: (() {
-        final guardedValue = map['wwids'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      fsType: (() { final guardedValue = map['fsType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      lun: (() { final guardedValue = map['lun']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      readOnly: (() { final guardedValue = map['readOnly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      targetWWNs: (() { final guardedValue = map['targetWWNs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      wwids: (() { final guardedValue = map['wwids']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

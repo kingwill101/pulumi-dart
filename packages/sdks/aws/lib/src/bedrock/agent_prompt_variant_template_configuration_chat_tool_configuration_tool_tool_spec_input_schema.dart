@@ -13,18 +13,15 @@ class AgentPromptVariantTemplateConfigurationChatToolConfigurationToolToolSpecIn
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'json': ?json};
+    return <String, dynamic>{
+      'json': ?json,
+    };
   }
 
-  factory AgentPromptVariantTemplateConfigurationChatToolConfigurationToolToolSpecInputSchema.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentPromptVariantTemplateConfigurationChatToolConfigurationToolToolSpecInputSchema.fromMap(Map<String, dynamic> map) {
     return AgentPromptVariantTemplateConfigurationChatToolConfigurationToolToolSpecInputSchema(
-      json: (() {
-        final guardedValue = map['json'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      json: (() { final guardedValue = map['json']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -666,28 +666,20 @@ import 'search_index_state.dart';
 class SearchIndex extends pulumi.CustomResource {
   /// The search index create time.
   late final pulumi.Output<int> createTime;
-
   /// The timestamp for sync phase.
   late final pulumi.Output<int> currentSyncTimestamp;
-
   /// The index id of the search index which could not be changed.
   late final pulumi.Output<String> indexId;
-
   /// The index name of the OTS Table. If changed, a new index would be created.
   late final pulumi.Output<String> indexName;
-
   /// The name of the OTS instance in which table will located.
   late final pulumi.Output<String> instanceName;
-
   /// The schema of the search index. If changed, a new index would be created. See `schema` below.
   late final pulumi.Output<List<Map<String, dynamic>>> schemas;
-
   /// The search index sync phase. possible values: `Full`, `Incr`.
   late final pulumi.Output<String> syncPhase;
-
   /// The name of the OTS table. If changed, a new table would be created.
   late final pulumi.Output<String> tableName;
-
   /// The index type of the OTS Table. Specifies the retention period of data in the search index. Unit: seconds. Default value: -1.
   /// If the retention period exceeds the TTL value, OTS automatically deletes expired data.
   late final pulumi.Output<int?> timeToLive;
@@ -701,11 +693,11 @@ class SearchIndex extends pulumi.CustomResource {
     SearchIndexArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ots/searchIndex:SearchIndex',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ots/searchIndex:SearchIndex',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<int>('createTime');
     currentSyncTimestamp = registerOutput<int>('currentSyncTimestamp');
     indexId = registerOutput<String>('indexId');
@@ -735,11 +727,11 @@ class SearchIndex extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ots/searchIndex:SearchIndex',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ots/searchIndex:SearchIndex',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<int>('createTime');
     currentSyncTimestamp = registerOutput<int>('currentSyncTimestamp');
     indexId = registerOutput<String>('indexId');

@@ -9,20 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IpamIpamPoolAllocationArgs {
   /// The allocated address segment.
   final pulumi.Input<String>? cidr;
-
   /// Create a custom reserved network segment from The IPAM address pool by entering a mask.
   ///
   /// &gt; **NOTE:**  Enter at least one of `Cidr` or **CidrMask.
   final pulumi.Input<int>? cidrMask;
-
   /// The description of the ipam pool alloctaion.
   /// It must be 1 to 256 characters in length and must start with an English letter or Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
   final pulumi.Input<String>? ipamPoolAllocationDescription;
-
   /// The name of the ipam pool allocation.
   /// It must be 1 to 128 characters in length and cannot start with 'http:// 'or 'https.
   final pulumi.Input<String>? ipamPoolAllocationName;
-
   /// The ID of the IPAM Pool.
   final pulumi.Input<String> ipamPoolId;
 
@@ -52,27 +48,12 @@ class IpamIpamPoolAllocationArgs {
 
   factory IpamIpamPoolAllocationArgs.fromMap(Map<String, dynamic> map) {
     return IpamIpamPoolAllocationArgs(
-      cidr: (() {
-        final guardedValue = map['cidr'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      cidrMask: (() {
-        final guardedValue = map['cidrMask'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      ipamPoolAllocationDescription: (() {
-        final guardedValue = map['ipamPoolAllocationDescription'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ipamPoolAllocationName: (() {
-        final guardedValue = map['ipamPoolAllocationName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      cidr: (() { final guardedValue = map['cidr']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      cidrMask: (() { final guardedValue = map['cidrMask']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      ipamPoolAllocationDescription: (() { final guardedValue = map['ipamPoolAllocationDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ipamPoolAllocationName: (() { final guardedValue = map['ipamPoolAllocationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipamPoolId: pulumi.Input.fromValue(map['ipamPoolId'] as String),
     );
   }
 }
+

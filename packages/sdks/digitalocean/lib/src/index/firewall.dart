@@ -497,33 +497,26 @@ class Firewall extends pulumi.CustomResource {
   /// A time value given in ISO8601 combined date and time format
   /// that represents when the Firewall was created.
   late final pulumi.Output<String> createdAt;
-
   /// The list of the IDs of the Droplets assigned
   /// to the Firewall (max. 10). If you want to assign more droplets to the
   /// Firewall, add Tags to them and use the `tags` argument below.
   late final pulumi.Output<List<int>?> dropletIds;
-
   /// The inbound access rule block for the Firewall.
   /// The `inbound_rule` block is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> inboundRules;
-
   /// The Firewall name
   late final pulumi.Output<String> name;
-
   /// The outbound access rule block for the Firewall.
   /// The `outbound_rule` block is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> outboundRules;
-
   /// An list of object containing the fields, "droplet_id",
   /// "removing", and "status".  It is provided to detail exactly which Droplets
   /// are having their security policies updated.  When empty, all changes
   /// have been successfully applied.
   late final pulumi.Output<List<Map<String, dynamic>>> pendingChanges;
-
   /// A status string indicating the current state of the Firewall.
   /// This can be "waiting", "succeeded", or "failed".
   late final pulumi.Output<String> status;
-
   /// The names of the Tags assigned to the Firewall (max. 5).
   late final pulumi.Output<List<String>?> tags;
 
@@ -536,21 +529,17 @@ class Firewall extends pulumi.CustomResource {
     FirewallArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/firewall:Firewall',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/firewall:Firewall',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createdAt = registerOutput<String>('createdAt');
     dropletIds = registerOutput<List<int>?>('dropletIds');
     inboundRules = registerOutput<List<Map<String, dynamic>>?>('inboundRules');
     this.name = registerOutput<String>('name');
-    outboundRules = registerOutput<List<Map<String, dynamic>>?>(
-      'outboundRules',
-    );
-    pendingChanges = registerOutput<List<Map<String, dynamic>>>(
-      'pendingChanges',
-    );
+    outboundRules = registerOutput<List<Map<String, dynamic>>?>('outboundRules');
+    pendingChanges = registerOutput<List<Map<String, dynamic>>>('pendingChanges');
     status = registerOutput<String>('status');
     tags = registerOutput<List<String>?>('tags');
   }
@@ -573,21 +562,17 @@ class Firewall extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/firewall:Firewall',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/firewall:Firewall',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createdAt = registerOutput<String>('createdAt');
     dropletIds = registerOutput<List<int>?>('dropletIds');
     inboundRules = registerOutput<List<Map<String, dynamic>>?>('inboundRules');
     this.name = registerOutput<String>('name');
-    outboundRules = registerOutput<List<Map<String, dynamic>>?>(
-      'outboundRules',
-    );
-    pendingChanges = registerOutput<List<Map<String, dynamic>>>(
-      'pendingChanges',
-    );
+    outboundRules = registerOutput<List<Map<String, dynamic>>?>('outboundRules');
+    pendingChanges = registerOutput<List<Map<String, dynamic>>>('pendingChanges');
     status = registerOutput<String>('status');
     tags = registerOutput<List<String>?>('tags');
   }

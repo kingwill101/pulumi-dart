@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getRemoteReference.
 class GetRemoteReferenceResult {
   /// The outputs displayed from Terraform state.
@@ -7,10 +8,14 @@ class GetRemoteReferenceResult {
 
   /// Creates a new [GetRemoteReferenceResult].
   /// [outputs] The outputs displayed from Terraform state.
-  GetRemoteReferenceResult({required this.outputs});
+  GetRemoteReferenceResult({
+    required this.outputs,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'outputs': outputs};
+    return <String, dynamic>{
+      'outputs': outputs,
+    };
   }
 
   factory GetRemoteReferenceResult.fromMap(Map<String, dynamic> map) {
@@ -19,3 +24,4 @@ class GetRemoteReferenceResult {
     );
   }
 }
+

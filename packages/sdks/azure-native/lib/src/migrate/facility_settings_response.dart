@@ -9,19 +9,20 @@ class FacilitySettingsResponse {
 
   /// Creates a new [FacilitySettingsResponse].
   /// [facilitiesCostPerKwh] The facilities cost.
-  FacilitySettingsResponse({this.facilitiesCostPerKwh});
+  FacilitySettingsResponse({
+    this.facilitiesCostPerKwh,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'facilitiesCostPerKwh': ?facilitiesCostPerKwh};
+    return <String, dynamic>{
+      'facilitiesCostPerKwh': ?facilitiesCostPerKwh,
+    };
   }
 
   factory FacilitySettingsResponse.fromMap(Map<String, dynamic> map) {
     return FacilitySettingsResponse(
-      facilitiesCostPerKwh: (() {
-        final guardedValue = map['facilitiesCostPerKwh'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      facilitiesCostPerKwh: (() { final guardedValue = map['facilitiesCostPerKwh']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

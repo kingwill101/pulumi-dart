@@ -20,3 +20,4 @@ enum EndpointMonitorStatus {
     throw ArgumentError('Unknown EndpointMonitorStatus value: $value');
   }
 }
+

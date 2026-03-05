@@ -16,3 +16,4 @@ enum RequiredNsgRules {
     throw ArgumentError('Unknown RequiredNsgRules value: $value');
   }
 }
+

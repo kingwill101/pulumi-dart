@@ -116,21 +116,16 @@ import 'site_state.dart';
 class Site extends pulumi.CustomResource {
   /// Site ARN.
   late final pulumi.Output<String> arn;
-
   /// Description of the Site.
   late final pulumi.Output<String?> description;
-
   /// ID of the Global Network to create the site in.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> globalNetworkId;
-
   /// Site location. See below.
   late final pulumi.Output<SiteLocation?> location;
-
   /// Key-value tags for the Site. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -138,32 +133,30 @@ class Site extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Site]. {@macro pulumi_networkmanager_site_site_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Site(String name, {SiteArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:networkmanager/site:Site',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Site(
+    String name, {
+    SiteArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:networkmanager/site:Site',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     globalNetworkId = registerOutput<String>('globalNetworkId');
-    location = registerOutput<SiteLocation?>(
-      'location',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SiteLocation.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    location = registerOutput<SiteLocation?>('location', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SiteLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [Site] resource's state with the given [name] and [id].
-  static Site get(String name, pulumi.Input<String> id, {SiteState? state}) {
+  static Site get(
+    String name,
+    pulumi.Input<String> id, {
+    SiteState? state,
+  }) {
     return Site._get(
       name,
       state: state?.toMap(),
@@ -176,24 +169,15 @@ class Site extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:networkmanager/site:Site',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:networkmanager/site:Site',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     globalNetworkId = registerOutput<String>('globalNetworkId');
-    location = registerOutput<SiteLocation?>(
-      'location',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SiteLocation.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    location = registerOutput<SiteLocation?>('location', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SiteLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }

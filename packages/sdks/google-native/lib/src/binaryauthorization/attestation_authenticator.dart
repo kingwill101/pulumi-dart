@@ -7,42 +7,29 @@ import 'pkix_public_key_set.dart';
 class AttestationAuthenticator {
   /// Optional. A user-provided name for this `AttestationAuthenticator`. This field has no effect on the policy evaluation behavior except to improve readability of messages in evaluation results.
   final pulumi.Input<String>? displayName;
-
   /// Optional. A set of raw PKIX SubjectPublicKeyInfo format public keys. If any public key in the set validates the attestation signature, then the signature is considered authenticated (i.e. any one key is sufficient to authenticate).
   final pulumi.Input<PkixPublicKeySet>? pkixPublicKeySet;
 
   /// Creates a new [AttestationAuthenticator].
   /// [displayName] Optional. A user-provided name for this `AttestationAuthenticator`. This field has no effect on the policy evaluation behavior except to improve readability of messages in evaluation results.
   /// [pkixPublicKeySet] Optional. A set of raw PKIX SubjectPublicKeyInfo format public keys. If any public key in the set validates the attestation signature, then the signature is considered authenticated (i.e. any one key is sufficient to authenticate).
-  AttestationAuthenticator({this.displayName, this.pkixPublicKeySet});
+  AttestationAuthenticator({
+    this.displayName,
+    this.pkixPublicKeySet,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'displayName': ?displayName,
-      'pkixPublicKeySet':
-          ?pulumi.Input.mapOptionalInputValue<
-            PkixPublicKeySet,
-            Map<String, dynamic>
-          >(pkixPublicKeySet, (value) => value.toMap()),
+      'pkixPublicKeySet': ?pulumi.Input.mapOptionalInputValue<PkixPublicKeySet, Map<String, dynamic>>(pkixPublicKeySet, (value) => value.toMap()),
     };
   }
 
   factory AttestationAuthenticator.fromMap(Map<String, dynamic> map) {
     return AttestationAuthenticator(
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pkixPublicKeySet: (() {
-        final guardedValue = map['pkixPublicKeySet'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PkixPublicKeySet.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pkixPublicKeySet: (() { final guardedValue = map['pkixPublicKeySet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PkixPublicKeySet.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

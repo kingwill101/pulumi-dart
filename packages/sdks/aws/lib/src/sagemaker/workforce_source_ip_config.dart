@@ -8,10 +8,14 @@ class WorkforceSourceIpConfig {
 
   /// Creates a new [WorkforceSourceIpConfig].
   /// [cidrs] A list of up to 10 CIDR values.
-  WorkforceSourceIpConfig({required this.cidrs});
+  WorkforceSourceIpConfig({
+    required this.cidrs,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'cidrs': cidrs};
+    return <String, dynamic>{
+      'cidrs': cidrs,
+    };
   }
 
   factory WorkforceSourceIpConfig.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class WorkforceSourceIpConfig {
     );
   }
 }
+

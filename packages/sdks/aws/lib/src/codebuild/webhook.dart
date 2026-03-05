@@ -528,35 +528,24 @@ import 'webhook_state.dart';
 class Webhook extends pulumi.CustomResource {
   /// A regular expression used to determine which branches get built. Default is all branches are built. We recommend using `filter_group` over `branch_filter`.
   late final pulumi.Output<String?> branchFilter;
-
   /// The type of build this webhook will trigger. Valid values for this parameter are: `BUILD`, `BUILD_BATCH`.
   late final pulumi.Output<String?> buildType;
-
   /// Information about the webhook's trigger. See filter_group for details.
   late final pulumi.Output<List<Map<String, dynamic>>?> filterGroups;
-
   /// If true, CodeBuild doesn't create a webhook in GitHub and instead returns `payload_url` and `secret` values for the webhook. The `payload_url` and `secret` values in the output can be used to manually create a webhook within GitHub.
   late final pulumi.Output<bool?> manualCreation;
-
   /// The CodeBuild endpoint where webhook events are sent.
   late final pulumi.Output<String> payloadUrl;
-
   /// The name of the build project.
   late final pulumi.Output<String> projectName;
-
   /// Defines comment-based approval requirements for triggering builds on pull requests. See pull_request_build_policy for details.
-  late final pulumi.Output<WebhookPullRequestBuildPolicy>
-  pullRequestBuildPolicy;
-
+  late final pulumi.Output<WebhookPullRequestBuildPolicy> pullRequestBuildPolicy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Scope configuration for global or organization webhooks. See scope_configuration for details.
   late final pulumi.Output<WebhookScopeConfiguration?> scopeConfiguration;
-
   /// The secret token of the associated repository. Not returned by the CodeBuild API for all source types.
   late final pulumi.Output<String> secret;
-
   /// The URL to the webhook.
   late final pulumi.Output<String> url;
 
@@ -569,38 +558,20 @@ class Webhook extends pulumi.CustomResource {
     WebhookArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:codebuild/webhook:Webhook',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:codebuild/webhook:Webhook',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     branchFilter = registerOutput<String?>('branchFilter');
     buildType = registerOutput<String?>('buildType');
     filterGroups = registerOutput<List<Map<String, dynamic>>?>('filterGroups');
     manualCreation = registerOutput<bool?>('manualCreation');
     payloadUrl = registerOutput<String>('payloadUrl');
     projectName = registerOutput<String>('projectName');
-    pullRequestBuildPolicy = registerOutput<WebhookPullRequestBuildPolicy>(
-      'pullRequestBuildPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WebhookPullRequestBuildPolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    pullRequestBuildPolicy = registerOutput<WebhookPullRequestBuildPolicy>('pullRequestBuildPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebhookPullRequestBuildPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    scopeConfiguration = registerOutput<WebhookScopeConfiguration?>(
-      'scopeConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WebhookScopeConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    scopeConfiguration = registerOutput<WebhookScopeConfiguration?>('scopeConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebhookScopeConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     secret = registerOutput<String>('secret');
     url = registerOutput<String>('url');
   }
@@ -623,38 +594,20 @@ class Webhook extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:codebuild/webhook:Webhook',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:codebuild/webhook:Webhook',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     branchFilter = registerOutput<String?>('branchFilter');
     buildType = registerOutput<String?>('buildType');
     filterGroups = registerOutput<List<Map<String, dynamic>>?>('filterGroups');
     manualCreation = registerOutput<bool?>('manualCreation');
     payloadUrl = registerOutput<String>('payloadUrl');
     projectName = registerOutput<String>('projectName');
-    pullRequestBuildPolicy = registerOutput<WebhookPullRequestBuildPolicy>(
-      'pullRequestBuildPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WebhookPullRequestBuildPolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    pullRequestBuildPolicy = registerOutput<WebhookPullRequestBuildPolicy>('pullRequestBuildPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebhookPullRequestBuildPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    scopeConfiguration = registerOutput<WebhookScopeConfiguration?>(
-      'scopeConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WebhookScopeConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    scopeConfiguration = registerOutput<WebhookScopeConfiguration?>('scopeConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebhookScopeConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     secret = registerOutput<String>('secret');
     url = registerOutput<String>('url');
   }

@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWindowsFunctionAppAuthSettingsV2FacebookV2 {
   /// The App ID of the Facebook app used for login.
   final pulumi.Input<String> appId;
-
   /// The app setting name that contains the `app_secret` value used for Facebook Login.
   final pulumi.Input<String> appSecretSettingName;
-
   /// The version of the Facebook API to be used while logging in.
   final pulumi.Input<String> graphApiVersion;
-
   /// The list of Login scopes that are requested as part of Microsoft Account authentication.
   final pulumi.Input<List<String>> loginScopes;
 
@@ -36,18 +33,13 @@ class GetWindowsFunctionAppAuthSettingsV2FacebookV2 {
     };
   }
 
-  factory GetWindowsFunctionAppAuthSettingsV2FacebookV2.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetWindowsFunctionAppAuthSettingsV2FacebookV2.fromMap(Map<String, dynamic> map) {
     return GetWindowsFunctionAppAuthSettingsV2FacebookV2(
       appId: pulumi.Input.fromValue(map['appId'] as String),
-      appSecretSettingName: pulumi.Input.fromValue(
-        map['appSecretSettingName'] as String,
-      ),
+      appSecretSettingName: pulumi.Input.fromValue(map['appSecretSettingName'] as String),
       graphApiVersion: pulumi.Input.fromValue(map['graphApiVersion'] as String),
-      loginScopes: pulumi.Input.fromValue(
-        (map['loginScopes'] as List).cast<String>(),
-      ),
+      loginScopes: pulumi.Input.fromValue((map['loginScopes'] as List).cast<String>()),
     );
   }
 }
+

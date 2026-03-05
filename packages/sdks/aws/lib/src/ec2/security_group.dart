@@ -1166,37 +1166,26 @@ import 'security_group_state.dart';
 class SecurityGroup extends pulumi.CustomResource {
   /// ARN of the security group.
   late final pulumi.Output<String> arn;
-
   /// Security group description. Defaults to `Managed by Pulumi`. Cannot be `""`. **NOTE**: This field maps to the AWS `GroupDescription` attribute, for which there is no Update API. If you'd like to classify your security groups in a way that can be updated, use `tags`.
   late final pulumi.Output<String> description;
-
   /// Configuration block for egress rules. Can be specified multiple times for each egress rule. Each egress block supports fields documented below. This argument is processed in attribute-as-blocks mode.
   late final pulumi.Output<List<Map<String, dynamic>>> egress;
-
   /// Configuration block for ingress rules. Can be specified multiple times for each ingress rule. Each ingress block supports fields documented below. This argument is processed in attribute-as-blocks mode.
   late final pulumi.Output<List<Map<String, dynamic>>> ingress;
-
   /// Name of the security group. If omitted, the provider will assign a random, unique name.
   late final pulumi.Output<String> name;
-
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   late final pulumi.Output<String> namePrefix;
-
   /// Owner ID.
   late final pulumi.Output<String> ownerId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Instruct the provider to revoke all of the Security Groups attached ingress and egress rules before deleting the rule itself. This is normally not needed, however certain AWS services such as Elastic Map Reduce may automatically add required rules to security groups used with the service, and those rules may contain a cyclic dependency that prevent the security groups from being destroyed without removing the dependency first. Default `false`.
   late final pulumi.Output<bool?> revokeRulesOnDelete;
-
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// VPC ID. Defaults to the region's default VPC.
   late final pulumi.Output<String> vpcId;
 
@@ -1209,11 +1198,11 @@ class SecurityGroup extends pulumi.CustomResource {
     SecurityGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/securityGroup:SecurityGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/securityGroup:SecurityGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String>('description');
     egress = registerOutput<List<Map<String, dynamic>>>('egress');
@@ -1246,11 +1235,11 @@ class SecurityGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/securityGroup:SecurityGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/securityGroup:SecurityGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String>('description');
     egress = registerOutput<List<Map<String, dynamic>>>('egress');

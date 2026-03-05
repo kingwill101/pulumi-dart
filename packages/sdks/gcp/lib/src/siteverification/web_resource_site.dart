@@ -6,7 +6,6 @@ class WebResourceSite {
   /// The site identifier. If the type is set to SITE, the identifier is a URL. If the type is
   /// set to INET_DOMAIN, the identifier is a domain name.
   final pulumi.Input<String> identifier;
-
   /// The type of resource to be verified.
   /// Possible values are: `INET_DOMAIN`, `SITE`.
   final pulumi.Input<String> type;
@@ -14,10 +13,16 @@ class WebResourceSite {
   /// Creates a new [WebResourceSite].
   /// [identifier] The site identifier. If the type is set to SITE, the identifier is a URL. If the type is
   /// [type] The type of resource to be verified.
-  WebResourceSite({required this.identifier, required this.type});
+  WebResourceSite({
+    required this.identifier,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'identifier': identifier, 'type': type};
+    return <String, dynamic>{
+      'identifier': identifier,
+      'type': type,
+    };
   }
 
   factory WebResourceSite.fromMap(Map<String, dynamic> map) {
@@ -27,3 +32,4 @@ class WebResourceSite {
     );
   }
 }
+

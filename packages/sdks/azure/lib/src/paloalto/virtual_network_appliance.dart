@@ -258,7 +258,6 @@ import 'virtual_network_appliance_state.dart';
 class VirtualNetworkAppliance extends pulumi.CustomResource {
   /// The name which should be used for this Palo Alto Local Network Virtual Appliance. Changing this forces a new Palo Alto Local Network Virtual Appliance to be created.
   late final pulumi.Output<String> name;
-
   /// The ID of the Virtual Hub to deploy this appliance onto. Changing this forces a new Palo Alto Local Network Virtual Appliance to be created.
   ///
   /// &gt; **Note:** THe Virtual Hub must be created with the tag `"hubSaaSPreview" = "true"` to be compatible with this resource.
@@ -273,11 +272,11 @@ class VirtualNetworkAppliance extends pulumi.CustomResource {
     VirtualNetworkApplianceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:paloalto/virtualNetworkAppliance:VirtualNetworkAppliance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:paloalto/virtualNetworkAppliance:VirtualNetworkAppliance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     virtualHubId = registerOutput<String>('virtualHubId');
   }
@@ -300,11 +299,11 @@ class VirtualNetworkAppliance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:paloalto/virtualNetworkAppliance:VirtualNetworkAppliance',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:paloalto/virtualNetworkAppliance:VirtualNetworkAppliance',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     virtualHubId = registerOutput<String>('virtualHubId');
   }

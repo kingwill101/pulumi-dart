@@ -200,7 +200,6 @@ import 'volume_attachment_state.dart';
 class VolumeAttachment extends pulumi.CustomResource {
   /// ID of the Droplet to attach the volume to.
   late final pulumi.Output<int> dropletId;
-
   /// ID of the Volume to be attached to the Droplet.
   late final pulumi.Output<String> volumeId;
 
@@ -213,11 +212,11 @@ class VolumeAttachment extends pulumi.CustomResource {
     VolumeAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/volumeAttachment:VolumeAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/volumeAttachment:VolumeAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dropletId = registerOutput<int>('dropletId');
     volumeId = registerOutput<String>('volumeId');
   }
@@ -240,11 +239,11 @@ class VolumeAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/volumeAttachment:VolumeAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/volumeAttachment:VolumeAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dropletId = registerOutput<int>('dropletId');
     volumeId = registerOutput<String>('volumeId');
   }

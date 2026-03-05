@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListWorkflowRunActionRepetitionExpressionTracesArgs {
   /// The workflow action name.
   final pulumi.Input<String> actionName;
-
   /// Site name.
   final pulumi.Input<String> name;
-
   /// The workflow repetition.
   final pulumi.Input<String> repetitionName;
-
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
-
   /// The workflow run name.
   final pulumi.Input<String> runName;
-
   /// The workflow name.
   final pulumi.Input<String> workflowName;
 
@@ -52,18 +47,15 @@ class ListWorkflowRunActionRepetitionExpressionTracesArgs {
     };
   }
 
-  factory ListWorkflowRunActionRepetitionExpressionTracesArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListWorkflowRunActionRepetitionExpressionTracesArgs.fromMap(Map<String, dynamic> map) {
     return ListWorkflowRunActionRepetitionExpressionTracesArgs(
       actionName: pulumi.Input.fromValue(map['actionName'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       repetitionName: pulumi.Input.fromValue(map['repetitionName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       runName: pulumi.Input.fromValue(map['runName'] as String),
       workflowName: pulumi.Input.fromValue(map['workflowName'] as String),
     );
   }
 }
+

@@ -11,14 +11,12 @@ class RegistrationManagementSettings {
   /// problems with the billing account or reported domain abuse. In such cases, check the issues field on the Registration. After
   /// the problem is resolved, the renewalMethod is automatically updated to preferredRenewalMethod in a few hours.
   final pulumi.Input<String>? preferredRenewalMethod;
-
   /// (Output)
   /// Output only. The actual renewal method for this Registration. When preferredRenewalMethod is set to AUTOMATIC_RENEWAL,
   /// the actual renewalMethod can be equal to RENEWAL_DISABLED—for example, when there are problems with the billing account
   /// or reported domain abuse. In such cases, check the issues field on the Registration. After the problem is resolved, the
   /// renewalMethod is automatically updated to preferredRenewalMethod in a few hours.
   final pulumi.Input<String>? renewalMethod;
-
   /// Controls whether the domain can be transferred to another registrar. Values are UNLOCKED or LOCKED.
   final pulumi.Input<String>? transferLockState;
 
@@ -42,21 +40,10 @@ class RegistrationManagementSettings {
 
   factory RegistrationManagementSettings.fromMap(Map<String, dynamic> map) {
     return RegistrationManagementSettings(
-      preferredRenewalMethod: (() {
-        final guardedValue = map['preferredRenewalMethod'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      renewalMethod: (() {
-        final guardedValue = map['renewalMethod'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      transferLockState: (() {
-        final guardedValue = map['transferLockState'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      preferredRenewalMethod: (() { final guardedValue = map['preferredRenewalMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      renewalMethod: (() { final guardedValue = map['renewalMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      transferLockState: (() { final guardedValue = map['transferLockState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

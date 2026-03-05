@@ -250,124 +250,82 @@ import 'virtual_machine_args.dart';
 class VirtualMachine extends pulumi.CustomResource {
   /// Indicates whether another user can take ownership of the virtual machine
   late final pulumi.Output<bool?> allowClaim;
-
   /// The applicable schedule for the virtual machine.
   late final pulumi.Output<ApplicableScheduleResponse> applicableSchedule;
-
   /// The artifact deployment status for the virtual machine.
-  late final pulumi.Output<ArtifactDeploymentStatusPropertiesResponse>
-  artifactDeploymentStatus;
-
+  late final pulumi.Output<ArtifactDeploymentStatusPropertiesResponse> artifactDeploymentStatus;
   /// The artifacts to be installed on the virtual machine.
   late final pulumi.Output<List<Map<String, dynamic>>?> artifacts;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The resource identifier (Microsoft.Compute) of the virtual machine.
   late final pulumi.Output<String> computeId;
-
   /// The compute virtual machine properties.
   late final pulumi.Output<ComputeVmPropertiesResponse> computeVm;
-
   /// The email address of creator of the virtual machine.
   late final pulumi.Output<String> createdByUser;
-
   /// The object identifier of the creator of the virtual machine.
   late final pulumi.Output<String> createdByUserId;
-
   /// The creation date of the virtual machine.
   late final pulumi.Output<String?> createdDate;
-
   /// The custom image identifier of the virtual machine.
   late final pulumi.Output<String?> customImageId;
-
   /// New or existing data disks to attach to the virtual machine after creation
   late final pulumi.Output<List<Map<String, dynamic>>?> dataDiskParameters;
-
   /// Indicates whether the virtual machine is to be created without a public IP address.
   late final pulumi.Output<bool?> disallowPublicIpAddress;
-
   /// The resource ID of the environment that contains this virtual machine, if any.
   late final pulumi.Output<String?> environmentId;
-
   /// The expiration date for VM.
   late final pulumi.Output<String?> expirationDate;
-
   /// The fully-qualified domain name of the virtual machine.
   late final pulumi.Output<String> fqdn;
-
   /// The Microsoft Azure Marketplace image reference of the virtual machine.
-  late final pulumi.Output<GalleryImageReferenceResponse?>
-  galleryImageReference;
-
+  late final pulumi.Output<GalleryImageReferenceResponse?> galleryImageReference;
   /// Indicates whether this virtual machine uses an SSH key for authentication.
   late final pulumi.Output<bool?> isAuthenticationWithSshKey;
-
   /// The lab subnet name of the virtual machine.
   late final pulumi.Output<String?> labSubnetName;
-
   /// The lab virtual network identifier of the virtual machine.
   late final pulumi.Output<String?> labVirtualNetworkId;
-
   /// Last known compute power state captured in DTL
   late final pulumi.Output<String> lastKnownPowerState;
-
   /// The location of the resource.
   late final pulumi.Output<String?> location;
-
   /// The name of the resource.
   late final pulumi.Output<String> name;
-
   /// The network interface properties.
-  late final pulumi.Output<NetworkInterfacePropertiesResponse?>
-  networkInterface;
-
+  late final pulumi.Output<NetworkInterfacePropertiesResponse?> networkInterface;
   /// The notes of the virtual machine.
   late final pulumi.Output<String?> notes;
-
   /// The OS type of the virtual machine.
   late final pulumi.Output<String> osType;
-
   /// The object identifier of the owner of the virtual machine.
   late final pulumi.Output<String?> ownerObjectId;
-
   /// The user principal name of the virtual machine owner.
   late final pulumi.Output<String?> ownerUserPrincipalName;
-
   /// The password of the virtual machine administrator.
   late final pulumi.Output<String?> password;
-
   /// The id of the plan associated with the virtual machine image
   late final pulumi.Output<String?> planId;
-
   /// The provisioning status of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// Virtual Machine schedules to be created
   late final pulumi.Output<List<Map<String, dynamic>>?> scheduleParameters;
-
   /// The size of the virtual machine.
   late final pulumi.Output<String?> size;
-
   /// The SSH key of the virtual machine administrator.
   late final pulumi.Output<String?> sshKey;
-
   /// Storage type to use for virtual machine (i.e. Standard, Premium).
   late final pulumi.Output<String?> storageType;
-
   /// The tags of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource.
   late final pulumi.Output<String> type;
-
   /// The unique immutable identifier of a resource (Guid).
   late final pulumi.Output<String> uniqueIdentifier;
-
   /// The user name of the virtual machine.
   late final pulumi.Output<String?> userName;
-
   /// Tells source of creation of lab virtual machine. Output property only.
   late final pulumi.Output<String> virtualMachineCreationSource;
 
@@ -380,85 +338,35 @@ class VirtualMachine extends pulumi.CustomResource {
     VirtualMachineArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:devtestlab:VirtualMachine',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:devtestlab:VirtualMachine',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allowClaim = registerOutput<bool?>('allowClaim');
-    applicableSchedule = registerOutput<ApplicableScheduleResponse>(
-      'applicableSchedule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApplicableScheduleResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    artifactDeploymentStatus =
-        registerOutput<ArtifactDeploymentStatusPropertiesResponse>(
-          'artifactDeploymentStatus',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ArtifactDeploymentStatusPropertiesResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    applicableSchedule = registerOutput<ApplicableScheduleResponse>('applicableSchedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicableScheduleResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    artifactDeploymentStatus = registerOutput<ArtifactDeploymentStatusPropertiesResponse>('artifactDeploymentStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ArtifactDeploymentStatusPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     artifacts = registerOutput<List<Map<String, dynamic>>?>('artifacts');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     computeId = registerOutput<String>('computeId');
-    computeVm = registerOutput<ComputeVmPropertiesResponse>(
-      'computeVm',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ComputeVmPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    computeVm = registerOutput<ComputeVmPropertiesResponse>('computeVm', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ComputeVmPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdByUser = registerOutput<String>('createdByUser');
     createdByUserId = registerOutput<String>('createdByUserId');
     createdDate = registerOutput<String?>('createdDate');
     customImageId = registerOutput<String?>('customImageId');
-    dataDiskParameters = registerOutput<List<Map<String, dynamic>>?>(
-      'dataDiskParameters',
-    );
+    dataDiskParameters = registerOutput<List<Map<String, dynamic>>?>('dataDiskParameters');
     disallowPublicIpAddress = registerOutput<bool?>('disallowPublicIpAddress');
     environmentId = registerOutput<String?>('environmentId');
     expirationDate = registerOutput<String?>('expirationDate');
     fqdn = registerOutput<String>('fqdn');
-    galleryImageReference = registerOutput<GalleryImageReferenceResponse?>(
-      'galleryImageReference',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GalleryImageReferenceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    isAuthenticationWithSshKey = registerOutput<bool?>(
-      'isAuthenticationWithSshKey',
-    );
+    galleryImageReference = registerOutput<GalleryImageReferenceResponse?>('galleryImageReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GalleryImageReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    isAuthenticationWithSshKey = registerOutput<bool?>('isAuthenticationWithSshKey');
     labSubnetName = registerOutput<String?>('labSubnetName');
     labVirtualNetworkId = registerOutput<String?>('labVirtualNetworkId');
     lastKnownPowerState = registerOutput<String>('lastKnownPowerState');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    networkInterface = registerOutput<NetworkInterfacePropertiesResponse?>(
-      'networkInterface',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NetworkInterfacePropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    networkInterface = registerOutput<NetworkInterfacePropertiesResponse?>('networkInterface', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkInterfacePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     notes = registerOutput<String?>('notes');
     osType = registerOutput<String>('osType');
     ownerObjectId = registerOutput<String?>('ownerObjectId');
@@ -466,9 +374,7 @@ class VirtualMachine extends pulumi.CustomResource {
     password = registerOutput<String?>('password');
     planId = registerOutput<String?>('planId');
     provisioningState = registerOutput<String>('provisioningState');
-    scheduleParameters = registerOutput<List<Map<String, dynamic>>?>(
-      'scheduleParameters',
-    );
+    scheduleParameters = registerOutput<List<Map<String, dynamic>>?>('scheduleParameters');
     size = registerOutput<String?>('size');
     sshKey = registerOutput<String?>('sshKey');
     storageType = registerOutput<String?>('storageType');
@@ -476,8 +382,6 @@ class VirtualMachine extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
     userName = registerOutput<String?>('userName');
-    virtualMachineCreationSource = registerOutput<String>(
-      'virtualMachineCreationSource',
-    );
+    virtualMachineCreationSource = registerOutput<String>('virtualMachineCreationSource');
   }
 }

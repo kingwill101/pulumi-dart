@@ -8,17 +8,20 @@ class PreventionStoredInfoTypeDictionaryCloudStoragePath {
 
   /// Creates a new [PreventionStoredInfoTypeDictionaryCloudStoragePath].
   /// [path] A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
-  PreventionStoredInfoTypeDictionaryCloudStoragePath({required this.path});
+  PreventionStoredInfoTypeDictionaryCloudStoragePath({
+    required this.path,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'path': path};
+    return <String, dynamic>{
+      'path': path,
+    };
   }
 
-  factory PreventionStoredInfoTypeDictionaryCloudStoragePath.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionStoredInfoTypeDictionaryCloudStoragePath.fromMap(Map<String, dynamic> map) {
     return PreventionStoredInfoTypeDictionaryCloudStoragePath(
       path: pulumi.Input.fromValue(map['path'] as String),
     );
   }
 }
+

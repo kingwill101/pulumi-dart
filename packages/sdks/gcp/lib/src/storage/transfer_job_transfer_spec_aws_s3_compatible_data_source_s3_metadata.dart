@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TransferJobTransferSpecAwsS3CompatibleDataSourceS3Metadata {
   /// Authentication and authorization method used by the storage service. When not specified, Transfer Service will attempt to determine right auth method to use.
   final pulumi.Input<String>? authMethod;
-
   /// The Listing API to use for discovering objects. When not specified, Transfer Service will attempt to determine the right API to use.
   final pulumi.Input<String>? listApi;
-
   /// The network protocol of the agent. When not specified, the default value of NetworkProtocol NETWORK_PROTOCOL_HTTPS is used.
   final pulumi.Input<String>? protocol;
-
   /// API request model used to call the storage service. When not specified, the default value of RequestModel REQUEST_MODEL_VIRTUAL_HOSTED_STYLE is used.
   final pulumi.Input<String>? requestModel;
 
@@ -36,30 +33,13 @@ class TransferJobTransferSpecAwsS3CompatibleDataSourceS3Metadata {
     };
   }
 
-  factory TransferJobTransferSpecAwsS3CompatibleDataSourceS3Metadata.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory TransferJobTransferSpecAwsS3CompatibleDataSourceS3Metadata.fromMap(Map<String, dynamic> map) {
     return TransferJobTransferSpecAwsS3CompatibleDataSourceS3Metadata(
-      authMethod: (() {
-        final guardedValue = map['authMethod'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      listApi: (() {
-        final guardedValue = map['listApi'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      protocol: (() {
-        final guardedValue = map['protocol'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      requestModel: (() {
-        final guardedValue = map['requestModel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      authMethod: (() { final guardedValue = map['authMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      listApi: (() { final guardedValue = map['listApi']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      requestModel: (() { final guardedValue = map['requestModel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

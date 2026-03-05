@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes string and array limits when writing to logs. When a limit is exceeded the *shortener_type* describes how to shorten the field. next_id: 6
 class EnterpriseCrmLoggingGwsFieldLimitsResponse {
   final pulumi.Input<String> logAction;
-
   /// To which type(s) of logs the limits apply.
   final pulumi.Input<List<String>> logType;
-
   /// maximum array size. If the array exceds this size, the field (list) is truncated.
   final pulumi.Input<int> maxArraySize;
-
   /// maximum string length. If the field exceeds this amount the field is shortened.
   final pulumi.Input<int> maxStringLength;
   final pulumi.Input<String> shortenerType;
@@ -40,9 +37,7 @@ class EnterpriseCrmLoggingGwsFieldLimitsResponse {
     };
   }
 
-  factory EnterpriseCrmLoggingGwsFieldLimitsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EnterpriseCrmLoggingGwsFieldLimitsResponse.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmLoggingGwsFieldLimitsResponse(
       logAction: pulumi.Input.fromValue(map['logAction'] as String),
       logType: pulumi.Input.fromValue((map['logType'] as List).cast<String>()),
@@ -52,3 +47,4 @@ class EnterpriseCrmLoggingGwsFieldLimitsResponse {
     );
   }
 }
+

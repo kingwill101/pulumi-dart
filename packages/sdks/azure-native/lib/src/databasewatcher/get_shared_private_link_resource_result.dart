@@ -6,34 +6,24 @@ import 'system_data_response.dart';
 class GetSharedPrivateLinkResourceResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The DNS zone segment to be included in the DNS name of the shared private link. Value is required for Azure Data Explorer clusters and SQL managed instances, and must be omitted for SQL logical servers and key vaults. The value is the second segment of the host FQDN name of the resource that the shared private link resource is for. For example: if the host name is 'adx-cluster-21187695.eastus.kusto.windows.net', then the value is 'eastus'; if the host name is 'sql-mi-23961134.767d5869f605.database.windows.net', then the value is '767d5869f605'.
   final String? dnsZone;
-
   /// The group id from the provider of resource the shared private link resource is for.
   final String groupId;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// The name of the resource
   final String name;
-
   /// The resource ID of the resource the shared private link resource is for.
   final String privateLinkResourceId;
-
   /// The provisioning state of the resource.
   final String provisioningState;
-
   /// The request message for requesting approval of the shared private link resource.
   final String requestMessage;
-
   /// Status of the shared private link resource. Can be Pending, Approved, Rejected or Disconnected.
   final String status;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -82,11 +72,7 @@ class GetSharedPrivateLinkResourceResult {
   factory GetSharedPrivateLinkResourceResult.fromMap(Map<String, dynamic> map) {
     return GetSharedPrivateLinkResourceResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      dnsZone: (() {
-        final guardedValue = map['dnsZone'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      dnsZone: (() { final guardedValue = map['dnsZone']; if (guardedValue == null) return null; return guardedValue as String; })(),
       groupId: map['groupId'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
@@ -94,10 +80,9 @@ class GetSharedPrivateLinkResourceResult {
       provisioningState: map['provisioningState'] as String,
       requestMessage: map['requestMessage'] as String,
       status: map['status'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

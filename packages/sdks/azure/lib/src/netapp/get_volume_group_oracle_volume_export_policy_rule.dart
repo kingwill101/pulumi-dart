@@ -5,22 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVolumeGroupOracleVolumeExportPolicyRule {
   /// A list of allowed clients IPv4 addresses.
   final pulumi.Input<String> allowedClients;
-
   /// Is the NFSv3 protocol enabled?
   final pulumi.Input<bool> nfsv3Enabled;
-
   /// Is the NFSv4.1 enabled?
   final pulumi.Input<bool> nfsv41Enabled;
-
   /// Is root access permitted to this volume?
   final pulumi.Input<bool> rootAccessEnabled;
-
   /// The index number of the rule.
   final pulumi.Input<int> ruleIndex;
-
   /// Is the file system on unix read only?.
   final pulumi.Input<bool> unixReadOnly;
-
   /// Is the file system on unix read and write?.
   final pulumi.Input<bool> unixReadWrite;
 
@@ -54,19 +48,16 @@ class GetVolumeGroupOracleVolumeExportPolicyRule {
     };
   }
 
-  factory GetVolumeGroupOracleVolumeExportPolicyRule.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetVolumeGroupOracleVolumeExportPolicyRule.fromMap(Map<String, dynamic> map) {
     return GetVolumeGroupOracleVolumeExportPolicyRule(
       allowedClients: pulumi.Input.fromValue(map['allowedClients'] as String),
       nfsv3Enabled: pulumi.Input.fromValue(map['nfsv3Enabled'] as bool),
       nfsv41Enabled: pulumi.Input.fromValue(map['nfsv41Enabled'] as bool),
-      rootAccessEnabled: pulumi.Input.fromValue(
-        map['rootAccessEnabled'] as bool,
-      ),
+      rootAccessEnabled: pulumi.Input.fromValue(map['rootAccessEnabled'] as bool),
       ruleIndex: pulumi.Input.fromValue(map['ruleIndex'] as int),
       unixReadOnly: pulumi.Input.fromValue(map['unixReadOnly'] as bool),
       unixReadWrite: pulumi.Input.fromValue(map['unixReadWrite'] as bool),
     );
   }
 }
+

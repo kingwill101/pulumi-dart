@@ -25,61 +25,40 @@ import 'system_data_response.dart';
 class AmlFilesystem extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Client information for the AML file system.
   late final pulumi.Output<AmlFilesystemClientInfoResponse> clientInfo;
-
   /// Specifies encryption settings of the AML file system.
-  late final pulumi.Output<AmlFilesystemEncryptionSettingsResponse?>
-  encryptionSettings;
-
+  late final pulumi.Output<AmlFilesystemEncryptionSettingsResponse?> encryptionSettings;
   /// Subnet used for managing the AML file system and for client-facing operations. This subnet should have at least a /24 subnet mask within the VNET's address space.
   late final pulumi.Output<String> filesystemSubnet;
-
   /// Health of the AML file system.
   late final pulumi.Output<AmlFilesystemHealthResponse> health;
-
   /// Hydration and archive settings and status
   late final pulumi.Output<AmlFilesystemResponseHsm?> hsm;
-
   /// The managed identity used by the AML file system, if configured.
   late final pulumi.Output<AmlFilesystemIdentityResponse?> identity;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// Start time of a 30-minute weekly maintenance window.
-  late final pulumi.Output<AmlFilesystemResponseMaintenanceWindow>
-  maintenanceWindow;
-
+  late final pulumi.Output<AmlFilesystemResponseMaintenanceWindow> maintenanceWindow;
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// ARM provisioning state.
   late final pulumi.Output<String> provisioningState;
-
   /// Specifies root squash settings of the AML file system.
-  late final pulumi.Output<AmlFilesystemRootSquashSettingsResponse?>
-  rootSquashSettings;
-
+  late final pulumi.Output<AmlFilesystemRootSquashSettingsResponse?> rootSquashSettings;
   /// SKU for the resource.
   late final pulumi.Output<SkuNameResponse?> sku;
-
   /// The size of the AML file system, in TiB. This might be rounded up.
   late final pulumi.Output<double> storageCapacityTiB;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Throughput provisioned in MB per sec, calculated as storageCapacityTiB * per-unit storage throughput
   late final pulumi.Output<int> throughputProvisionedMBps;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Availability zones for resources. This field should only contain a single element in the array.
   late final pulumi.Output<List<String>?> zones;
 
@@ -92,113 +71,28 @@ class AmlFilesystem extends pulumi.CustomResource {
     AmlFilesystemArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:storagecache:AmlFilesystem',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:storagecache:AmlFilesystem',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    clientInfo = registerOutput<AmlFilesystemClientInfoResponse>(
-      'clientInfo',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AmlFilesystemClientInfoResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    encryptionSettings =
-        registerOutput<AmlFilesystemEncryptionSettingsResponse?>(
-          'encryptionSettings',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AmlFilesystemEncryptionSettingsResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    clientInfo = registerOutput<AmlFilesystemClientInfoResponse>('clientInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AmlFilesystemClientInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    encryptionSettings = registerOutput<AmlFilesystemEncryptionSettingsResponse?>('encryptionSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AmlFilesystemEncryptionSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     filesystemSubnet = registerOutput<String>('filesystemSubnet');
-    health = registerOutput<AmlFilesystemHealthResponse>(
-      'health',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AmlFilesystemHealthResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    hsm = registerOutput<AmlFilesystemResponseHsm?>(
-      'hsm',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AmlFilesystemResponseHsm.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    identity = registerOutput<AmlFilesystemIdentityResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AmlFilesystemIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    health = registerOutput<AmlFilesystemHealthResponse>('health', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AmlFilesystemHealthResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    hsm = registerOutput<AmlFilesystemResponseHsm?>('hsm', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AmlFilesystemResponseHsm.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<AmlFilesystemIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AmlFilesystemIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
-    maintenanceWindow = registerOutput<AmlFilesystemResponseMaintenanceWindow>(
-      'maintenanceWindow',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AmlFilesystemResponseMaintenanceWindow.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    maintenanceWindow = registerOutput<AmlFilesystemResponseMaintenanceWindow>('maintenanceWindow', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AmlFilesystemResponseMaintenanceWindow.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    rootSquashSettings =
-        registerOutput<AmlFilesystemRootSquashSettingsResponse?>(
-          'rootSquashSettings',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AmlFilesystemRootSquashSettingsResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    sku = registerOutput<SkuNameResponse?>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SkuNameResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    rootSquashSettings = registerOutput<AmlFilesystemRootSquashSettingsResponse?>('rootSquashSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AmlFilesystemRootSquashSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sku = registerOutput<SkuNameResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuNameResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     storageCapacityTiB = registerOutput<double>('storageCapacityTiB');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
-    throughputProvisionedMBps = registerOutput<int>(
-      'throughputProvisionedMBps',
-    );
+    throughputProvisionedMBps = registerOutput<int>('throughputProvisionedMBps');
     type = registerOutput<String>('type');
     zones = registerOutput<List<String>?>('zones');
   }

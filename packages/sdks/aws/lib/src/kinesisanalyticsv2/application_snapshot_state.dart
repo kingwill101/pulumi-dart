@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationSnapshotState {
   /// The name of an existing  Kinesis Analytics v2 Application. Note that the application must be running for a snapshot to be created.
   final pulumi.Input<String>? applicationName;
-
   /// The current application version ID when the snapshot was created.
   final pulumi.Input<int>? applicationVersionId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The timestamp of the application snapshot.
   final pulumi.Input<String>? snapshotCreationTimestamp;
-
   /// The name of the application snapshot.
   final pulumi.Input<String>? snapshotName;
 
@@ -45,31 +41,12 @@ class ApplicationSnapshotState {
 
   factory ApplicationSnapshotState.fromMap(Map<String, dynamic> map) {
     return ApplicationSnapshotState(
-      applicationName: (() {
-        final guardedValue = map['applicationName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      applicationVersionId: (() {
-        final guardedValue = map['applicationVersionId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      snapshotCreationTimestamp: (() {
-        final guardedValue = map['snapshotCreationTimestamp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      snapshotName: (() {
-        final guardedValue = map['snapshotName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      applicationName: (() { final guardedValue = map['applicationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      applicationVersionId: (() { final guardedValue = map['applicationVersionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      snapshotCreationTimestamp: (() { final guardedValue = map['snapshotCreationTimestamp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      snapshotName: (() { final guardedValue = map['snapshotName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

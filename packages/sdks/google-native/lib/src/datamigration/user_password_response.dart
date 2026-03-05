@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserPasswordResponse {
   /// The initial password for the user.
   final pulumi.Input<String> password;
-
   /// Indicates if the initial_user.password field has been set.
   final pulumi.Input<bool> passwordSet;
-
   /// The database username.
   final pulumi.Input<String> user;
 
@@ -39,3 +37,4 @@ class UserPasswordResponse {
     );
   }
 }
+

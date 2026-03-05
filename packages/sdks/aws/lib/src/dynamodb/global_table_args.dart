@@ -10,10 +10,8 @@ import 'global_table_replica.dart';
 class GlobalTableArgs {
   /// The name of the global table. Must match underlying DynamoDB Table names in all regions.
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Underlying DynamoDB Table. At least 1 replica must be defined. See below.
   final pulumi.Input<List<GlobalTableReplica>> replicas;
 
@@ -21,47 +19,26 @@ class GlobalTableArgs {
   /// [name] The name of the global table. Must match underlying DynamoDB Table names in all regions.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [replicas] Underlying DynamoDB Table. At least 1 replica must be defined. See below.
-  GlobalTableArgs({this.name, this.region, required this.replicas});
+  GlobalTableArgs({
+    this.name,
+    this.region,
+    required this.replicas,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': ?name,
       'region': ?region,
-      'replicas':
-          pulumi.Input.mapInputValue<
-            List<GlobalTableReplica>,
-            List<Map<String, dynamic>>
-          >(
-            replicas,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GlobalTableReplica,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'replicas': pulumi.Input.mapInputValue<List<GlobalTableReplica>, List<Map<String, dynamic>>>(replicas, (value) => pulumi.Input.encodeList<GlobalTableReplica, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GlobalTableArgs.fromMap(Map<String, dynamic> map) {
     return GlobalTableArgs(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      replicas: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GlobalTableReplica>(
-          map['replicas']!,
-          (value) => GlobalTableReplica.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      replicas: pulumi.Input.fromValue(pulumi.Input.decodeList<GlobalTableReplica>(map['replicas']!, (value) => GlobalTableReplica.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

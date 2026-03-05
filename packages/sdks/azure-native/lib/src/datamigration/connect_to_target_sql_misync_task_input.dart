@@ -8,7 +8,6 @@ import 'mi_sql_connection_info.dart';
 class ConnectToTargetSqlMISyncTaskInput {
   /// Azure Active Directory Application the DMS (classic) instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
   final pulumi.Input<AzureActiveDirectoryApp> azureApp;
-
   /// Connection information for Azure SQL Database Managed Instance
   final pulumi.Input<MiSqlConnectionInfo> targetConnectionInfo;
 
@@ -22,31 +21,16 @@ class ConnectToTargetSqlMISyncTaskInput {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApp':
-          pulumi.Input.mapInputValue<
-            AzureActiveDirectoryApp,
-            Map<String, dynamic>
-          >(azureApp, (value) => value.toMap()),
-      'targetConnectionInfo':
-          pulumi.Input.mapInputValue<MiSqlConnectionInfo, Map<String, dynamic>>(
-            targetConnectionInfo,
-            (value) => value.toMap(),
-          ),
+      'azureApp': pulumi.Input.mapInputValue<AzureActiveDirectoryApp, Map<String, dynamic>>(azureApp, (value) => value.toMap()),
+      'targetConnectionInfo': pulumi.Input.mapInputValue<MiSqlConnectionInfo, Map<String, dynamic>>(targetConnectionInfo, (value) => value.toMap()),
     };
   }
 
   factory ConnectToTargetSqlMISyncTaskInput.fromMap(Map<String, dynamic> map) {
     return ConnectToTargetSqlMISyncTaskInput(
-      azureApp: pulumi.Input.fromValue(
-        AzureActiveDirectoryApp.fromMap(
-          (map['azureApp']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      targetConnectionInfo: pulumi.Input.fromValue(
-        MiSqlConnectionInfo.fromMap(
-          (map['targetConnectionInfo']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      azureApp: pulumi.Input.fromValue(AzureActiveDirectoryApp.fromMap((map['azureApp']! as Map).cast<String, dynamic>())),
+      targetConnectionInfo: pulumi.Input.fromValue(MiSqlConnectionInfo.fromMap((map['targetConnectionInfo']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

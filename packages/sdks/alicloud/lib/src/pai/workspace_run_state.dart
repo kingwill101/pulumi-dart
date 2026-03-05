@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkspaceRunState {
   /// The creation time of the resource
   final pulumi.Input<String>? createTime;
-
   /// Resource attribute field of the experiment ID to which Run belongs
   final pulumi.Input<String>? experimentId;
-
   /// The name of the resource
   final pulumi.Input<String>? runName;
-
   /// Attribute Resource field representing the source task ID
   final pulumi.Input<String>? sourceId;
-
   /// Resource attribute fields representing the source type
   final pulumi.Input<String>? sourceType;
 
@@ -45,31 +41,12 @@ class WorkspaceRunState {
 
   factory WorkspaceRunState.fromMap(Map<String, dynamic> map) {
     return WorkspaceRunState(
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      experimentId: (() {
-        final guardedValue = map['experimentId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      runName: (() {
-        final guardedValue = map['runName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sourceId: (() {
-        final guardedValue = map['sourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sourceType: (() {
-        final guardedValue = map['sourceType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      experimentId: (() { final guardedValue = map['experimentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      runName: (() { final guardedValue = map['runName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourceId: (() { final guardedValue = map['sourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourceType: (() { final guardedValue = map['sourceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

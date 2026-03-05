@@ -7,17 +7,20 @@ class GetRouteSpecHttpRouteMatchQueryParameterMatch {
 
   /// Creates a new [GetRouteSpecHttpRouteMatchQueryParameterMatch].
   /// [exact] Required.
-  GetRouteSpecHttpRouteMatchQueryParameterMatch({required this.exact});
+  GetRouteSpecHttpRouteMatchQueryParameterMatch({
+    required this.exact,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'exact': exact};
+    return <String, dynamic>{
+      'exact': exact,
+    };
   }
 
-  factory GetRouteSpecHttpRouteMatchQueryParameterMatch.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetRouteSpecHttpRouteMatchQueryParameterMatch.fromMap(Map<String, dynamic> map) {
     return GetRouteSpecHttpRouteMatchQueryParameterMatch(
       exact: pulumi.Input.fromValue(map['exact'] as String),
     );
   }
 }
+

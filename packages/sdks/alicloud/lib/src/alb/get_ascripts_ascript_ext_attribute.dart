@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAscriptsAscriptExtAttribute {
   /// The key of the extended attribute.
   final pulumi.Input<String> attributeKey;
-
   /// The value of the extended attribute.
   final pulumi.Input<String> attributeValue;
 
@@ -31,3 +30,4 @@ class GetAscriptsAscriptExtAttribute {
     );
   }
 }
+

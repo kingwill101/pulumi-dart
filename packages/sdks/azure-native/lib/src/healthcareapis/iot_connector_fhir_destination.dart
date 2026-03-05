@@ -309,28 +309,20 @@ import 'system_data_response.dart';
 class IotConnectorFhirDestination extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// An etag associated with the resource, used for optimistic concurrency when editing it.
   late final pulumi.Output<String?> etag;
-
   /// FHIR Mappings
   late final pulumi.Output<IotMappingPropertiesResponse> fhirMapping;
-
   /// Fully qualified resource id of the FHIR service to connect to.
   late final pulumi.Output<String> fhirServiceResourceId;
-
   /// The resource location.
   late final pulumi.Output<String?> location;
-
   /// The resource name.
   late final pulumi.Output<String> name;
-
   /// Determines how resource identity is resolved on the destination.
   late final pulumi.Output<String> resourceIdentityResolutionType;
-
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The resource type.
   late final pulumi.Output<String> type;
 
@@ -343,39 +335,19 @@ class IotConnectorFhirDestination extends pulumi.CustomResource {
     IotConnectorFhirDestinationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:healthcareapis:IotConnectorFhirDestination',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:healthcareapis:IotConnectorFhirDestination',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     etag = registerOutput<String?>('etag');
-    fhirMapping = registerOutput<IotMappingPropertiesResponse>(
-      'fhirMapping',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IotMappingPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    fhirMapping = registerOutput<IotMappingPropertiesResponse>('fhirMapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IotMappingPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     fhirServiceResourceId = registerOutput<String>('fhirServiceResourceId');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    resourceIdentityResolutionType = registerOutput<String>(
-      'resourceIdentityResolutionType',
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    resourceIdentityResolutionType = registerOutput<String>('resourceIdentityResolutionType');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

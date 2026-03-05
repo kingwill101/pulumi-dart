@@ -15,3 +15,4 @@ enum NodePlacementPolicyType {
     throw ArgumentError('Unknown NodePlacementPolicyType value: $value');
   }
 }
+

@@ -225,24 +225,18 @@ import 'data_lake_gen2_filesystem_state.dart';
 class DataLakeGen2Filesystem extends pulumi.CustomResource {
   /// One or more `ace` blocks as defined below to specify the entries for the ACL for the path.
   late final pulumi.Output<List<Map<String, dynamic>>> aces;
-
   /// The default encryption scope to use for this filesystem. Changing this forces a new resource to be created.
   late final pulumi.Output<String> defaultEncryptionScope;
-
   /// Specifies the Object ID of the Azure Active Directory Group to make the owning group of the root path (i.e. `/`). Possible values also include `$superuser`.
   ///
   /// &gt; **Note:** The Storage Account requires `account_kind` to be either `StorageV2` or `BlobStorage`. In addition, `is_hns_enabled` has to be set to `true`.
   late final pulumi.Output<String> group;
-
   /// The name of the Data Lake Gen2 File System which should be created within the Storage Account. Must be unique within the storage account the queue is located. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies the Object ID of the Azure Active Directory User to make the owning user of the root path (i.e. `/`). Possible values also include `$superuser`.
   late final pulumi.Output<String> owner;
-
   /// A mapping of Key to Base64-Encoded Values which should be assigned to this Data Lake Gen2 File System.
   late final pulumi.Output<Map<String, String>?> properties;
-
   /// Specifies the ID of the Storage Account in which the Data Lake Gen2 File System should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> storageAccountId;
 
@@ -255,11 +249,11 @@ class DataLakeGen2Filesystem extends pulumi.CustomResource {
     DataLakeGen2FilesystemArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:storage/dataLakeGen2Filesystem:DataLakeGen2Filesystem',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:storage/dataLakeGen2Filesystem:DataLakeGen2Filesystem',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aces = registerOutput<List<Map<String, dynamic>>>('aces');
     defaultEncryptionScope = registerOutput<String>('defaultEncryptionScope');
     group = registerOutput<String>('group');
@@ -287,11 +281,11 @@ class DataLakeGen2Filesystem extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:storage/dataLakeGen2Filesystem:DataLakeGen2Filesystem',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:storage/dataLakeGen2Filesystem:DataLakeGen2Filesystem',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aces = registerOutput<List<Map<String, dynamic>>>('aces');
     defaultEncryptionScope = registerOutput<String>('defaultEncryptionScope');
     group = registerOutput<String>('group');

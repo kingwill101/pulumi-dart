@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAlarmContactsArgs {
   /// The alarm notification method. Alarm notifications can be sent by using `Email` or `DingWebHook`.
   final pulumi.Input<String>? chanelType;
-
   /// The alarm notification target.
   final pulumi.Input<String>? chanelValue;
-
   /// A list of alarm contact IDs.
   final pulumi.Input<List<String>>? ids;
-
   /// A regex string to filter results by alarm contact name.
   final pulumi.Input<String>? nameRegex;
-
   /// File name where to save data source results (after running `pulumi preview`).
   ///
   /// &gt; **NOTE:** Specify at least one of the following alarm notification targets: phone number, email address, webhook URL of the DingTalk chatbot, and TradeManager ID.
@@ -50,31 +46,12 @@ class GetAlarmContactsArgs {
 
   factory GetAlarmContactsArgs.fromMap(Map<String, dynamic> map) {
     return GetAlarmContactsArgs(
-      chanelType: (() {
-        final guardedValue = map['chanelType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      chanelValue: (() {
-        final guardedValue = map['chanelValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ids: (() {
-        final guardedValue = map['ids'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      chanelType: (() { final guardedValue = map['chanelType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      chanelValue: (() { final guardedValue = map['chanelValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ids: (() { final guardedValue = map['ids']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

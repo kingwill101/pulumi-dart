@@ -9,19 +9,20 @@ class IosTestLoop {
 
   /// Creates a new [IosTestLoop].
   /// [bundleId] Bundle ID of the app.
-  IosTestLoop({this.bundleId});
+  IosTestLoop({
+    this.bundleId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'bundleId': ?bundleId};
+    return <String, dynamic>{
+      'bundleId': ?bundleId,
+    };
   }
 
   factory IosTestLoop.fromMap(Map<String, dynamic> map) {
     return IosTestLoop(
-      bundleId: (() {
-        final guardedValue = map['bundleId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      bundleId: (() { final guardedValue = map['bundleId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

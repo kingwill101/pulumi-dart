@@ -6,7 +6,6 @@ class TableMaintenanceConfigurationIcebergSnapshotManagementSettings {
   /// Snapshots older than this will be marked for deletiion.
   /// Must be at least `1`.
   final pulumi.Input<int> maxSnapshotAgeHours;
-
   /// Minimum number of snapshots to keep.
   /// Must be at least `1`.
   final pulumi.Input<int> minSnapshotsToKeep;
@@ -26,16 +25,11 @@ class TableMaintenanceConfigurationIcebergSnapshotManagementSettings {
     };
   }
 
-  factory TableMaintenanceConfigurationIcebergSnapshotManagementSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory TableMaintenanceConfigurationIcebergSnapshotManagementSettings.fromMap(Map<String, dynamic> map) {
     return TableMaintenanceConfigurationIcebergSnapshotManagementSettings(
-      maxSnapshotAgeHours: pulumi.Input.fromValue(
-        map['maxSnapshotAgeHours'] as int,
-      ),
-      minSnapshotsToKeep: pulumi.Input.fromValue(
-        map['minSnapshotsToKeep'] as int,
-      ),
+      maxSnapshotAgeHours: pulumi.Input.fromValue(map['maxSnapshotAgeHours'] as int),
+      minSnapshotsToKeep: pulumi.Input.fromValue(map['minSnapshotsToKeep'] as int),
     );
   }
 }
+

@@ -396,10 +396,8 @@ import 'remote_write_state.dart';
 class RemoteWrite extends pulumi.CustomResource {
   /// The ID of the Prometheus instance.
   late final pulumi.Output<String> clusterId;
-
   /// The name of the Remote Write configuration item.
   late final pulumi.Output<String> remoteWriteName;
-
   /// The details of the Remote Write configuration item. Specify the value in the YAML format.
   late final pulumi.Output<String> remoteWriteYaml;
 
@@ -412,11 +410,11 @@ class RemoteWrite extends pulumi.CustomResource {
     RemoteWriteArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:arms/remoteWrite:RemoteWrite',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:arms/remoteWrite:RemoteWrite',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterId = registerOutput<String>('clusterId');
     remoteWriteName = registerOutput<String>('remoteWriteName');
     remoteWriteYaml = registerOutput<String>('remoteWriteYaml');
@@ -440,11 +438,11 @@ class RemoteWrite extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:arms/remoteWrite:RemoteWrite',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:arms/remoteWrite:RemoteWrite',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterId = registerOutput<String>('clusterId');
     remoteWriteName = registerOutput<String>('remoteWriteName');
     remoteWriteYaml = registerOutput<String>('remoteWriteYaml');

@@ -9,22 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListShareSubscriptionSynchronizationDetailsArgs {
   /// The name of the share account.
   final pulumi.Input<String> accountName;
-
   /// Filters the results using OData syntax.
   final pulumi.Input<String>? filter;
-
   /// Sorts the results using OData syntax.
   final pulumi.Input<String>? orderby;
-
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the share subscription.
   final pulumi.Input<String> shareSubscriptionName;
-
   /// Continuation token
   final pulumi.Input<String>? skipToken;
-
   /// Synchronization id
   final pulumi.Input<String> synchronizationId;
 
@@ -58,35 +52,16 @@ class ListShareSubscriptionSynchronizationDetailsArgs {
     };
   }
 
-  factory ListShareSubscriptionSynchronizationDetailsArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListShareSubscriptionSynchronizationDetailsArgs.fromMap(Map<String, dynamic> map) {
     return ListShareSubscriptionSynchronizationDetailsArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
-      filter: (() {
-        final guardedValue = map['filter'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      orderby: (() {
-        final guardedValue = map['orderby'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      shareSubscriptionName: pulumi.Input.fromValue(
-        map['shareSubscriptionName'] as String,
-      ),
-      skipToken: (() {
-        final guardedValue = map['skipToken'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      synchronizationId: pulumi.Input.fromValue(
-        map['synchronizationId'] as String,
-      ),
+      filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      orderby: (() { final guardedValue = map['orderby']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      shareSubscriptionName: pulumi.Input.fromValue(map['shareSubscriptionName'] as String),
+      skipToken: (() { final guardedValue = map['skipToken']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      synchronizationId: pulumi.Input.fromValue(map['synchronizationId'] as String),
     );
   }
 }
+

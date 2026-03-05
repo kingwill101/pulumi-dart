@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceMigrationEligibilityResponse {
   /// Certain configurations make the UmN ineligible for an automatic migration. A manual migration is required.
   final pulumi.Input<List<String>> errors;
-
   /// Certain configurations will be defaulted during the migration.
   final pulumi.Input<List<String>> warnings;
 
@@ -19,17 +18,17 @@ class InstanceMigrationEligibilityResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'errors': errors, 'warnings': warnings};
+    return <String, dynamic>{
+      'errors': errors,
+      'warnings': warnings,
+    };
   }
 
-  factory InstanceMigrationEligibilityResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InstanceMigrationEligibilityResponse.fromMap(Map<String, dynamic> map) {
     return InstanceMigrationEligibilityResponse(
       errors: pulumi.Input.fromValue((map['errors'] as List).cast<String>()),
-      warnings: pulumi.Input.fromValue(
-        (map['warnings'] as List).cast<String>(),
-      ),
+      warnings: pulumi.Input.fromValue((map['warnings'] as List).cast<String>()),
     );
   }
 }
+

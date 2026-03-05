@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListStaticSiteConfiguredRolesArgs {
   /// Name of the static site.
   final pulumi.Input<String> name;
-
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
 
@@ -31,9 +30,8 @@ class ListStaticSiteConfiguredRolesArgs {
   factory ListStaticSiteConfiguredRolesArgs.fromMap(Map<String, dynamic> map) {
     return ListStaticSiteConfiguredRolesArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

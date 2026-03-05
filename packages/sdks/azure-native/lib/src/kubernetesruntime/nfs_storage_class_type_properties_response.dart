@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NfsStorageClassTypePropertiesResponse {
   /// Mounted folder permissions. Default is 0. If set as non-zero, driver will perform `chmod` after mount
   final pulumi.Input<String>? mountPermissions;
-
   /// The action to take when a NFS volume is deleted. Default is Delete
   final pulumi.Input<String>? onDelete;
-
   /// NFS Server
   final pulumi.Input<String> server;
-
   /// NFS share
   final pulumi.Input<String> share;
-
   /// Sub directory under share. If the sub directory doesn't exist, driver will create it
   final pulumi.Input<String>? subDir;
-
   /// Type of a storage class
   /// Expected value is 'NFS'.
   final pulumi.Input<String> type;
@@ -50,28 +45,15 @@ class NfsStorageClassTypePropertiesResponse {
     };
   }
 
-  factory NfsStorageClassTypePropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NfsStorageClassTypePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return NfsStorageClassTypePropertiesResponse(
-      mountPermissions: (() {
-        final guardedValue = map['mountPermissions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      onDelete: (() {
-        final guardedValue = map['onDelete'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      mountPermissions: (() { final guardedValue = map['mountPermissions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      onDelete: (() { final guardedValue = map['onDelete']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       server: pulumi.Input.fromValue(map['server'] as String),
       share: pulumi.Input.fromValue(map['share'] as String),
-      subDir: (() {
-        final guardedValue = map['subDir'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      subDir: (() { final guardedValue = map['subDir']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

@@ -316,11 +316,9 @@ class RouterRoutesV2 extends pulumi.CustomResource {
   /// omitted, the `region` argument of the provider is used. Changing this creates
   /// new routing entries.
   late final pulumi.Output<String> region;
-
   /// ID of the router these routing entries belong to.
   /// Changing this creates new routing entries.
   late final pulumi.Output<String> routerId;
-
   /// A set of routing entries to add to the router.
   late final pulumi.Output<List<Map<String, dynamic>>?> routes;
 
@@ -333,11 +331,11 @@ class RouterRoutesV2 extends pulumi.CustomResource {
     RouterRoutesV2Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:networking/routerRoutesV2:RouterRoutesV2',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:networking/routerRoutesV2:RouterRoutesV2',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     region = registerOutput<String>('region');
     routerId = registerOutput<String>('routerId');
     routes = registerOutput<List<Map<String, dynamic>>?>('routes');
@@ -361,11 +359,11 @@ class RouterRoutesV2 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:networking/routerRoutesV2:RouterRoutesV2',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:networking/routerRoutesV2:RouterRoutesV2',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     region = registerOutput<String>('region');
     routerId = registerOutput<String>('routerId');
     routes = registerOutput<List<Map<String, dynamic>>?>('routes');

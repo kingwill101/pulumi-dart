@@ -1,52 +1,39 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getService.
 class GetServiceResult {
   /// Is aad auth enabled for this SignalR service?
   final bool aadAuthEnabled;
-
   /// The FQDN of the SignalR service.
   final String hostname;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The publicly accessible IP of the SignalR service.
   final String ipAddress;
-
   /// Is local auth enable for this SignalR serviced?
   final bool localAuthEnabled;
-
   /// Specifies the supported Azure location where the SignalR service exists.
   final String location;
   final String name;
-
   /// The primary access key of the SignalR service.
   final String primaryAccessKey;
-
   /// The primary connection string of the SignalR service.
   final String primaryConnectionString;
-
   /// Is public network access enabled for this SignalR service?
   final bool publicNetworkAccessEnabled;
-
   /// The publicly accessible port of the SignalR service which is designed for browser/client use.
   final int publicPort;
   final String resourceGroupName;
-
   /// The secondary access key of the SignalR service.
   final String secondaryAccessKey;
-
   /// The secondary connection string of the SignalR service.
   final String secondaryConnectionString;
-
   /// The publicly accessible port of the SignalR service which is designed for customer server side use.
   final int serverPort;
-
   /// The serverless connection timeout of this SignalR service.
   final int serverlessConnectionTimeoutInSeconds;
   final Map<String, String> tags;
-
   /// Is tls client cert enabled for this SignalR service?
   final bool tlsClientCertEnabled;
 
@@ -107,8 +94,7 @@ class GetServiceResult {
       'secondaryAccessKey': secondaryAccessKey,
       'secondaryConnectionString': secondaryConnectionString,
       'serverPort': serverPort,
-      'serverlessConnectionTimeoutInSeconds':
-          serverlessConnectionTimeoutInSeconds,
+      'serverlessConnectionTimeoutInSeconds': serverlessConnectionTimeoutInSeconds,
       'tags': tags,
       'tlsClientCertEnabled': tlsClientCertEnabled,
     };
@@ -131,10 +117,10 @@ class GetServiceResult {
       secondaryAccessKey: map['secondaryAccessKey'] as String,
       secondaryConnectionString: map['secondaryConnectionString'] as String,
       serverPort: map['serverPort'] as int,
-      serverlessConnectionTimeoutInSeconds:
-          map['serverlessConnectionTimeoutInSeconds'] as int,
+      serverlessConnectionTimeoutInSeconds: map['serverlessConnectionTimeoutInSeconds'] as int,
       tags: (map['tags'] as Map).cast<String, String>(),
       tlsClientCertEnabled: map['tlsClientCertEnabled'] as bool,
     );
   }
 }
+

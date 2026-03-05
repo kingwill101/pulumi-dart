@@ -192,52 +192,36 @@ import 'system_data_response.dart';
 class MySQLServer extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// mysql server edition.
   late final pulumi.Output<String?> edition;
-
   /// The list of errors.
   late final pulumi.Output<List<Map<String, dynamic>>?> errors;
-
   /// The Server IP/host name.
   late final pulumi.Output<List<String>?> hostIp;
-
   /// The Server IP/host name.
   late final pulumi.Output<String> hostName;
-
   /// Resource labels.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// discovery Machine Id
   late final pulumi.Output<String?> machineId;
-
   /// The mysql server version.
   late final pulumi.Output<String?> mysqlVersion;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The number of database.
   late final pulumi.Output<double?> numberOfDatabase;
-
   /// MySQL Server port number
   late final pulumi.Output<String> portNumber;
-
   /// Gets or sets the provisioning state.
   late final pulumi.Output<String?> provisioningState;
-
   /// Time when mysql version support end.
   late final pulumi.Output<String?> supportEndIn;
-
   /// mysql version support status.
   late final pulumi.Output<String?> supportStatus;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -250,11 +234,11 @@ class MySQLServer extends pulumi.CustomResource {
     MySQLServerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:mysqldiscovery:MySQLServer',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:mysqldiscovery:MySQLServer',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     edition = registerOutput<String?>('edition');
     errors = registerOutput<List<Map<String, dynamic>>?>('errors');
@@ -269,16 +253,7 @@ class MySQLServer extends pulumi.CustomResource {
     provisioningState = registerOutput<String?>('provisioningState');
     supportEndIn = registerOutput<String?>('supportEndIn');
     supportStatus = registerOutput<String?>('supportStatus');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

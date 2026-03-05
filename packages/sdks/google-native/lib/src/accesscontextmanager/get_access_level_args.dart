@@ -31,13 +31,10 @@ class GetAccessLevelArgs {
 
   factory GetAccessLevelArgs.fromMap(Map<String, dynamic> map) {
     return GetAccessLevelArgs(
-      accessLevelFormat: (() {
-        final guardedValue = map['accessLevelFormat'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accessLevelFormat: (() { final guardedValue = map['accessLevelFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       accessLevelId: pulumi.Input.fromValue(map['accessLevelId'] as String),
       accessPolicyId: pulumi.Input.fromValue(map['accessPolicyId'] as String),
     );
   }
 }
+

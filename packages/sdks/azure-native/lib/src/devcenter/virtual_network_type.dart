@@ -15,3 +15,4 @@ enum VirtualNetworkType {
     throw ArgumentError('Unknown VirtualNetworkType value: $value');
   }
 }
+

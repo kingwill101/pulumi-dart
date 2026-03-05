@@ -9,29 +9,20 @@ class TableImportTableInputFormatOptions {
 
   /// Creates a new [TableImportTableInputFormatOptions].
   /// [csv] This block contains the processing options for the CSV file being imported:
-  TableImportTableInputFormatOptions({this.csv});
+  TableImportTableInputFormatOptions({
+    this.csv,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'csv':
-          ?pulumi.Input.mapOptionalInputValue<
-            TableImportTableInputFormatOptionsCsv,
-            Map<String, dynamic>
-          >(csv, (value) => value.toMap()),
+      'csv': ?pulumi.Input.mapOptionalInputValue<TableImportTableInputFormatOptionsCsv, Map<String, dynamic>>(csv, (value) => value.toMap()),
     };
   }
 
   factory TableImportTableInputFormatOptions.fromMap(Map<String, dynamic> map) {
     return TableImportTableInputFormatOptions(
-      csv: (() {
-        final guardedValue = map['csv'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          TableImportTableInputFormatOptionsCsv.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      csv: (() { final guardedValue = map['csv']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TableImportTableInputFormatOptionsCsv.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

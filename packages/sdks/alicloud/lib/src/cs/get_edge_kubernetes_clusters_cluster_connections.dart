@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEdgeKubernetesClustersClusterConnections {
   /// API Server Internet endpoint.
   final pulumi.Input<String> apiServerInternet;
-
   /// API Server Intranet endpoint.
   final pulumi.Input<String> apiServerIntranet;
 
@@ -24,16 +23,11 @@ class GetEdgeKubernetesClustersClusterConnections {
     };
   }
 
-  factory GetEdgeKubernetesClustersClusterConnections.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetEdgeKubernetesClustersClusterConnections.fromMap(Map<String, dynamic> map) {
     return GetEdgeKubernetesClustersClusterConnections(
-      apiServerInternet: pulumi.Input.fromValue(
-        map['apiServerInternet'] as String,
-      ),
-      apiServerIntranet: pulumi.Input.fromValue(
-        map['apiServerIntranet'] as String,
-      ),
+      apiServerInternet: pulumi.Input.fromValue(map['apiServerInternet'] as String),
+      apiServerIntranet: pulumi.Input.fromValue(map['apiServerIntranet'] as String),
     );
   }
 }
+

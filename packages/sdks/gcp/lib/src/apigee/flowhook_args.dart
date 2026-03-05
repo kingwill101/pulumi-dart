@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FlowhookArgs {
   /// Flag that specifies whether execution should continue if the flow hook throws an exception. Set to true to continue execution. Set to false to stop execution if the flow hook throws an exception. Defaults to true.
   final pulumi.Input<bool>? continueOnError;
-
   /// Description of the flow hook.
   final pulumi.Input<String>? description;
-
   /// The resource ID of the environment.
   final pulumi.Input<String> environment;
-
   /// Where in the API call flow the flow hook is invoked. Must be one of PreProxyFlowHook, PostProxyFlowHook, PreTargetFlowHook, or PostTargetFlowHook.
   final pulumi.Input<String> flowHookPoint;
-
   /// The Apigee Organization associated with the environment
   final pulumi.Input<String> orgId;
-
   /// Id of the Sharedflow attaching to a flowhook point.
   final pulumi.Input<String> sharedflow;
 
@@ -54,16 +49,8 @@ class FlowhookArgs {
 
   factory FlowhookArgs.fromMap(Map<String, dynamic> map) {
     return FlowhookArgs(
-      continueOnError: (() {
-        final guardedValue = map['continueOnError'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      continueOnError: (() { final guardedValue = map['continueOnError']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       environment: pulumi.Input.fromValue(map['environment'] as String),
       flowHookPoint: pulumi.Input.fromValue(map['flowHookPoint'] as String),
       orgId: pulumi.Input.fromValue(map['orgId'] as String),
@@ -71,3 +58,4 @@ class FlowhookArgs {
     );
   }
 }
+

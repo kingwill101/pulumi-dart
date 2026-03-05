@@ -17,64 +17,44 @@ import 'upgrade_settings_response_container_v1beta1.dart';
 class GetNodePoolContainerV1beta1Result {
   /// Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
   final NodePoolAutoscalingResponseContainerV1beta1 autoscaling;
-
   /// Enable best effort provisioning for nodes
   final BestEffortProvisioningResponseContainerV1beta1 bestEffortProvisioning;
-
   /// Which conditions caused the current node pool state.
   final List<StatusConditionResponseContainerV1beta1> conditions;
-
   /// The node configuration of the pool.
   final NodeConfigResponseContainerV1beta1 config;
-
   /// This checksum is computed by the server based on the value of node pool fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
   final String etag;
-
   /// The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
   final int initialNodeCount;
-
   /// [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool. During the node pool blue-green upgrade operation, the URLs contain both blue and green resources.
   final List<String> instanceGroupUrls;
-
   /// The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes should be located. If this value is unspecified during node pool creation, the [Cluster.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.FIELDS.locations) value will be used, instead. Warning: changing node pool locations will result in nodes being added and/or removed.
   final List<String> locations;
-
   /// NodeManagement configuration for this NodePool.
   final NodeManagementResponseContainerV1beta1 management;
-
   /// The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
   final MaxPodsConstraintResponseContainerV1beta1 maxPodsConstraint;
-
   /// The name of the node pool.
   final String name;
-
   /// Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
   final NodeNetworkConfigResponseContainerV1beta1 networkConfig;
-
   /// Specifies the node placement policy.
   final PlacementPolicyResponseContainerV1beta1 placementPolicy;
-
   /// [Output only] The pod CIDR block size per node in this node pool.
   final int podIpv4CidrSize;
-
   /// Specifies the configuration of queued provisioning.
   final QueuedProvisioningResponseContainerV1beta1 queuedProvisioning;
-
   /// [Output only] Server-defined URL for the resource.
   final String selfLink;
-
   /// [Output only] The status of the nodes in this pool instance.
   final String status;
-
   /// [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
   final String statusMessage;
-
   /// [Output only] Update info contains relevant information during a node pool update.
   final UpdateInfoResponseContainerV1beta1 updateInfo;
-
   /// Upgrade settings control disruption and speed of the upgrade.
   final UpgradeSettingsResponseContainerV1beta1 upgradeSettings;
-
   /// The version of Kubernetes running on this NodePool's nodes. If unspecified, it defaults as described [here](https://cloud.google.com/kubernetes-engine/versioning#specifying_node_version).
   final String version;
 
@@ -128,11 +108,7 @@ class GetNodePoolContainerV1beta1Result {
     return <String, dynamic>{
       'autoscaling': autoscaling.toMap(),
       'bestEffortProvisioning': bestEffortProvisioning.toMap(),
-      'conditions':
-          pulumi.Input.encodeList<
-            StatusConditionResponseContainerV1beta1,
-            Map<String, dynamic>
-          >(conditions, (value) => value.toMap()),
+      'conditions': pulumi.Input.encodeList<StatusConditionResponseContainerV1beta1, Map<String, dynamic>>(conditions, (value) => value.toMap()),
       'config': config.toMap(),
       'etag': etag,
       'initialNodeCount': initialNodeCount,
@@ -156,54 +132,28 @@ class GetNodePoolContainerV1beta1Result {
 
   factory GetNodePoolContainerV1beta1Result.fromMap(Map<String, dynamic> map) {
     return GetNodePoolContainerV1beta1Result(
-      autoscaling: NodePoolAutoscalingResponseContainerV1beta1.fromMap(
-        (map['autoscaling']! as Map).cast<String, dynamic>(),
-      ),
-      bestEffortProvisioning:
-          BestEffortProvisioningResponseContainerV1beta1.fromMap(
-            (map['bestEffortProvisioning']! as Map).cast<String, dynamic>(),
-          ),
-      conditions:
-          pulumi.Input.decodeList<StatusConditionResponseContainerV1beta1>(
-            map['conditions']!,
-            (value) => StatusConditionResponseContainerV1beta1.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-      config: NodeConfigResponseContainerV1beta1.fromMap(
-        (map['config']! as Map).cast<String, dynamic>(),
-      ),
+      autoscaling: NodePoolAutoscalingResponseContainerV1beta1.fromMap((map['autoscaling']! as Map).cast<String, dynamic>()),
+      bestEffortProvisioning: BestEffortProvisioningResponseContainerV1beta1.fromMap((map['bestEffortProvisioning']! as Map).cast<String, dynamic>()),
+      conditions: pulumi.Input.decodeList<StatusConditionResponseContainerV1beta1>(map['conditions']!, (value) => StatusConditionResponseContainerV1beta1.fromMap((value as Map).cast<String, dynamic>())),
+      config: NodeConfigResponseContainerV1beta1.fromMap((map['config']! as Map).cast<String, dynamic>()),
       etag: map['etag'] as String,
       initialNodeCount: map['initialNodeCount'] as int,
       instanceGroupUrls: (map['instanceGroupUrls'] as List).cast<String>(),
       locations: (map['locations'] as List).cast<String>(),
-      management: NodeManagementResponseContainerV1beta1.fromMap(
-        (map['management']! as Map).cast<String, dynamic>(),
-      ),
-      maxPodsConstraint: MaxPodsConstraintResponseContainerV1beta1.fromMap(
-        (map['maxPodsConstraint']! as Map).cast<String, dynamic>(),
-      ),
+      management: NodeManagementResponseContainerV1beta1.fromMap((map['management']! as Map).cast<String, dynamic>()),
+      maxPodsConstraint: MaxPodsConstraintResponseContainerV1beta1.fromMap((map['maxPodsConstraint']! as Map).cast<String, dynamic>()),
       name: map['name'] as String,
-      networkConfig: NodeNetworkConfigResponseContainerV1beta1.fromMap(
-        (map['networkConfig']! as Map).cast<String, dynamic>(),
-      ),
-      placementPolicy: PlacementPolicyResponseContainerV1beta1.fromMap(
-        (map['placementPolicy']! as Map).cast<String, dynamic>(),
-      ),
+      networkConfig: NodeNetworkConfigResponseContainerV1beta1.fromMap((map['networkConfig']! as Map).cast<String, dynamic>()),
+      placementPolicy: PlacementPolicyResponseContainerV1beta1.fromMap((map['placementPolicy']! as Map).cast<String, dynamic>()),
       podIpv4CidrSize: map['podIpv4CidrSize'] as int,
-      queuedProvisioning: QueuedProvisioningResponseContainerV1beta1.fromMap(
-        (map['queuedProvisioning']! as Map).cast<String, dynamic>(),
-      ),
+      queuedProvisioning: QueuedProvisioningResponseContainerV1beta1.fromMap((map['queuedProvisioning']! as Map).cast<String, dynamic>()),
       selfLink: map['selfLink'] as String,
       status: map['status'] as String,
       statusMessage: map['statusMessage'] as String,
-      updateInfo: UpdateInfoResponseContainerV1beta1.fromMap(
-        (map['updateInfo']! as Map).cast<String, dynamic>(),
-      ),
-      upgradeSettings: UpgradeSettingsResponseContainerV1beta1.fromMap(
-        (map['upgradeSettings']! as Map).cast<String, dynamic>(),
-      ),
+      updateInfo: UpdateInfoResponseContainerV1beta1.fromMap((map['updateInfo']! as Map).cast<String, dynamic>()),
+      upgradeSettings: UpgradeSettingsResponseContainerV1beta1.fromMap((map['upgradeSettings']! as Map).cast<String, dynamic>()),
       version: map['version'] as String,
     );
   }
 }
+

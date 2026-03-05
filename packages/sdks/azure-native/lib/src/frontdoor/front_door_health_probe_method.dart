@@ -15,3 +15,4 @@ enum FrontDoorHealthProbeMethod {
     throw ArgumentError('Unknown FrontDoorHealthProbeMethod value: $value');
   }
 }
+

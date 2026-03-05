@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EndpointsResponse {
   /// Endpoint FQDN for the HCX Cloud Manager
   final pulumi.Input<String> hcxCloudManager;
-
   /// Endpoint IP for the HCX Cloud Manager
   final pulumi.Input<String> hcxCloudManagerIp;
-
   /// Endpoint FQDN for the NSX-T Data Center manager
   final pulumi.Input<String> nsxtManager;
-
   /// Endpoint IP for the NSX-T Data Center manager
   final pulumi.Input<String> nsxtManagerIp;
-
   /// Endpoint IP for Virtual Center Server Appliance
   final pulumi.Input<String> vcenterIp;
-
   /// Endpoint FQDN for Virtual Center Server Appliance
   final pulumi.Input<String> vcsa;
 
@@ -52,9 +47,7 @@ class EndpointsResponse {
   factory EndpointsResponse.fromMap(Map<String, dynamic> map) {
     return EndpointsResponse(
       hcxCloudManager: pulumi.Input.fromValue(map['hcxCloudManager'] as String),
-      hcxCloudManagerIp: pulumi.Input.fromValue(
-        map['hcxCloudManagerIp'] as String,
-      ),
+      hcxCloudManagerIp: pulumi.Input.fromValue(map['hcxCloudManagerIp'] as String),
       nsxtManager: pulumi.Input.fromValue(map['nsxtManager'] as String),
       nsxtManagerIp: pulumi.Input.fromValue(map['nsxtManagerIp'] as String),
       vcenterIp: pulumi.Input.fromValue(map['vcenterIp'] as String),
@@ -62,3 +55,4 @@ class EndpointsResponse {
     );
   }
 }
+

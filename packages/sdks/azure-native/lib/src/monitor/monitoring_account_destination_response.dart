@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MonitoringAccountDestinationResponse {
   /// The immutable ID  of the account.
   final pulumi.Input<String> accountId;
-
   /// The resource ID of the monitoring account.
   final pulumi.Input<String>? accountResourceId;
-
   /// A friendly name for the destination.
   /// This name should be unique across all destinations (regardless of type) within the data collection rule.
   final pulumi.Input<String>? name;
@@ -32,21 +30,12 @@ class MonitoringAccountDestinationResponse {
     };
   }
 
-  factory MonitoringAccountDestinationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MonitoringAccountDestinationResponse.fromMap(Map<String, dynamic> map) {
     return MonitoringAccountDestinationResponse(
       accountId: pulumi.Input.fromValue(map['accountId'] as String),
-      accountResourceId: (() {
-        final guardedValue = map['accountResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accountResourceId: (() { final guardedValue = map['accountResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

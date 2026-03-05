@@ -9,10 +9,8 @@ import 'linear.dart';
 class BucketOptions {
   /// The explicit buckets.
   final pulumi.Input<Explicit>? explicitBuckets;
-
   /// The exponential buckets.
   final pulumi.Input<Exponential>? exponentialBuckets;
-
   /// The linear bucket.
   final pulumi.Input<Linear>? linearBuckets;
 
@@ -28,47 +26,18 @@ class BucketOptions {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'explicitBuckets':
-          ?pulumi.Input.mapOptionalInputValue<Explicit, Map<String, dynamic>>(
-            explicitBuckets,
-            (value) => value.toMap(),
-          ),
-      'exponentialBuckets':
-          ?pulumi.Input.mapOptionalInputValue<
-            Exponential,
-            Map<String, dynamic>
-          >(exponentialBuckets, (value) => value.toMap()),
-      'linearBuckets':
-          ?pulumi.Input.mapOptionalInputValue<Linear, Map<String, dynamic>>(
-            linearBuckets,
-            (value) => value.toMap(),
-          ),
+      'explicitBuckets': ?pulumi.Input.mapOptionalInputValue<Explicit, Map<String, dynamic>>(explicitBuckets, (value) => value.toMap()),
+      'exponentialBuckets': ?pulumi.Input.mapOptionalInputValue<Exponential, Map<String, dynamic>>(exponentialBuckets, (value) => value.toMap()),
+      'linearBuckets': ?pulumi.Input.mapOptionalInputValue<Linear, Map<String, dynamic>>(linearBuckets, (value) => value.toMap()),
     };
   }
 
   factory BucketOptions.fromMap(Map<String, dynamic> map) {
     return BucketOptions(
-      explicitBuckets: (() {
-        final guardedValue = map['explicitBuckets'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          Explicit.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      exponentialBuckets: (() {
-        final guardedValue = map['exponentialBuckets'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          Exponential.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      linearBuckets: (() {
-        final guardedValue = map['linearBuckets'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          Linear.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
+      explicitBuckets: (() { final guardedValue = map['explicitBuckets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Explicit.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      exponentialBuckets: (() { final guardedValue = map['exponentialBuckets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Exponential.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      linearBuckets: (() { final guardedValue = map['linearBuckets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Linear.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

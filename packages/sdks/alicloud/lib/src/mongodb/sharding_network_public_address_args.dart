@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ShardingNetworkPublicAddressArgs {
   /// The ID of the instance.
   final pulumi.Input<String> dbInstanceId;
-
   /// The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
   final pulumi.Input<String> nodeId;
 
@@ -22,7 +21,10 @@ class ShardingNetworkPublicAddressArgs {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'dbInstanceId': dbInstanceId, 'nodeId': nodeId};
+    return <String, dynamic>{
+      'dbInstanceId': dbInstanceId,
+      'nodeId': nodeId,
+    };
   }
 
   factory ShardingNetworkPublicAddressArgs.fromMap(Map<String, dynamic> map) {
@@ -32,3 +34,4 @@ class ShardingNetworkPublicAddressArgs {
     );
   }
 }
+

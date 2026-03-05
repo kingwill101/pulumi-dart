@@ -9,21 +9,20 @@ class NetworkServiceDesignGroupPropertiesFormat {
 
   /// Creates a new [NetworkServiceDesignGroupPropertiesFormat].
   /// [description] The network service design group description.
-  NetworkServiceDesignGroupPropertiesFormat({this.description});
+  NetworkServiceDesignGroupPropertiesFormat({
+    this.description,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'description': ?description};
+    return <String, dynamic>{
+      'description': ?description,
+    };
   }
 
-  factory NetworkServiceDesignGroupPropertiesFormat.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NetworkServiceDesignGroupPropertiesFormat.fromMap(Map<String, dynamic> map) {
     return NetworkServiceDesignGroupPropertiesFormat(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

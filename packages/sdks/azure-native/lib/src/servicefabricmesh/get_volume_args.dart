@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVolumeArgs {
   /// Azure resource group name
   final pulumi.Input<String> resourceGroupName;
-
   /// The identity of the volume.
   final pulumi.Input<String> volumeResourceName;
 
@@ -30,12 +29,9 @@ class GetVolumeArgs {
 
   factory GetVolumeArgs.fromMap(Map<String, dynamic> map) {
     return GetVolumeArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      volumeResourceName: pulumi.Input.fromValue(
-        map['volumeResourceName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      volumeResourceName: pulumi.Input.fromValue(map['volumeResourceName'] as String),
     );
   }
 }
+

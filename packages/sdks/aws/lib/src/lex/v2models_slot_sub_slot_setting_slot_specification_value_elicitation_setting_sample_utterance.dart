@@ -13,14 +13,15 @@ class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingSampleUt
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'utterance': utterance};
+    return <String, dynamic>{
+      'utterance': utterance,
+    };
   }
 
-  factory V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingSampleUtterance.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingSampleUtterance.fromMap(Map<String, dynamic> map) {
     return V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingSampleUtterance(
       utterance: pulumi.Input.fromValue(map['utterance'] as String),
     );
   }
 }
+

@@ -7,38 +7,29 @@ class ConnectionAuthConfigUserPassword {
   /// Password for Authentication.
   /// Structure is documented below.
   final pulumi.Input<ConnectionAuthConfigUserPasswordPassword>? password;
-
   /// Username for Authentication.
   final pulumi.Input<String> username;
 
   /// Creates a new [ConnectionAuthConfigUserPassword].
   /// [password] Password for Authentication.
   /// [username] Username for Authentication.
-  ConnectionAuthConfigUserPassword({this.password, required this.username});
+  ConnectionAuthConfigUserPassword({
+    this.password,
+    required this.username,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'password':
-          ?pulumi.Input.mapOptionalInputValue<
-            ConnectionAuthConfigUserPasswordPassword,
-            Map<String, dynamic>
-          >(password, (value) => value.toMap()),
+      'password': ?pulumi.Input.mapOptionalInputValue<ConnectionAuthConfigUserPasswordPassword, Map<String, dynamic>>(password, (value) => value.toMap()),
       'username': username,
     };
   }
 
   factory ConnectionAuthConfigUserPassword.fromMap(Map<String, dynamic> map) {
     return ConnectionAuthConfigUserPassword(
-      password: (() {
-        final guardedValue = map['password'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ConnectionAuthConfigUserPasswordPassword.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectionAuthConfigUserPasswordPassword.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       username: pulumi.Input.fromValue(map['username'] as String),
     );
   }
 }
+

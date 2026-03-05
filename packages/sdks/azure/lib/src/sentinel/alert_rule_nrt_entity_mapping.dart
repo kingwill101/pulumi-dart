@@ -6,7 +6,6 @@ import 'alert_rule_nrt_entity_mapping_field_mapping.dart';
 class AlertRuleNrtEntityMapping {
   /// The type of the entity. Possible values are `Account`, `AzureResource`, `CloudApplication`, `DNS`, `File`, `FileHash`, `Host`, `IP`, `Mailbox`, `MailCluster`, `MailMessage`, `Malware`, `Process`, `RegistryKey`, `RegistryValue`, `SecurityGroup`, `SubmissionMail`, `URL`.
   final pulumi.Input<String> entityType;
-
   /// A list of `field_mapping` blocks as defined below.
   final pulumi.Input<List<AlertRuleNrtEntityMappingFieldMapping>> fieldMappings;
 
@@ -21,32 +20,15 @@ class AlertRuleNrtEntityMapping {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'entityType': entityType,
-      'fieldMappings':
-          pulumi.Input.mapInputValue<
-            List<AlertRuleNrtEntityMappingFieldMapping>,
-            List<Map<String, dynamic>>
-          >(
-            fieldMappings,
-            (value) =>
-                pulumi.Input.encodeList<
-                  AlertRuleNrtEntityMappingFieldMapping,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'fieldMappings': pulumi.Input.mapInputValue<List<AlertRuleNrtEntityMappingFieldMapping>, List<Map<String, dynamic>>>(fieldMappings, (value) => pulumi.Input.encodeList<AlertRuleNrtEntityMappingFieldMapping, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AlertRuleNrtEntityMapping.fromMap(Map<String, dynamic> map) {
     return AlertRuleNrtEntityMapping(
       entityType: pulumi.Input.fromValue(map['entityType'] as String),
-      fieldMappings: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<AlertRuleNrtEntityMappingFieldMapping>(
-          map['fieldMappings']!,
-          (value) => AlertRuleNrtEntityMappingFieldMapping.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      fieldMappings: pulumi.Input.fromValue(pulumi.Input.decodeList<AlertRuleNrtEntityMappingFieldMapping>(map['fieldMappings']!, (value) => AlertRuleNrtEntityMappingFieldMapping.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

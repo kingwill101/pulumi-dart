@@ -7,13 +7,10 @@ import 'log_setup_response.dart';
 class LoggingResponse {
   /// The Amazon S3 bucket to store the access logs in, for example, ``myawslogbucket.s3.amazonaws.com``.
   final pulumi.Input<String>? bucket;
-
   /// &lt;p&gt;The cluster control plane logging configuration for your cluster.&lt;/p&gt;
   final pulumi.Input<List<LogSetupResponse>>? clusterLogging;
-
   /// Specifies whether you want CloudFront to include cookies in access logs, specify ``true`` for ``IncludeCookies``. If you choose to include cookies in logs, CloudFront logs all cookies regardless of how you configure the cache behaviors for this distribution. If you don't want to include cookies when you create a distribution or if you want to disable include cookies for an existing distribution, specify ``false`` for ``IncludeCookies``.
   final pulumi.Input<bool>? includeCookies;
-
   /// An optional string that you want CloudFront to prefix to the access log ``filenames`` for this distribution, for example, ``myprefix/``. If you want to enable logging, but you don't want to specify a prefix, you still must include an empty ``Prefix`` element in the ``Logging`` element.
   final pulumi.Input<String>? prefix;
 
@@ -32,18 +29,7 @@ class LoggingResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bucket': ?bucket,
-      'clusterLogging':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<LogSetupResponse>,
-            List<Map<String, dynamic>>
-          >(
-            clusterLogging,
-            (value) =>
-                pulumi.Input.encodeList<LogSetupResponse, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'clusterLogging': ?pulumi.Input.mapOptionalInputValue<List<LogSetupResponse>, List<Map<String, dynamic>>>(clusterLogging, (value) => pulumi.Input.encodeList<LogSetupResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'includeCookies': ?includeCookies,
       'prefix': ?prefix,
     };
@@ -51,33 +37,11 @@ class LoggingResponse {
 
   factory LoggingResponse.fromMap(Map<String, dynamic> map) {
     return LoggingResponse(
-      bucket: (() {
-        final guardedValue = map['bucket'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      clusterLogging: (() {
-        final guardedValue = map['clusterLogging'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<LogSetupResponse>(
-            guardedValue,
-            (value) => LogSetupResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      includeCookies: (() {
-        final guardedValue = map['includeCookies'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      prefix: (() {
-        final guardedValue = map['prefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      bucket: (() { final guardedValue = map['bucket']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      clusterLogging: (() { final guardedValue = map['clusterLogging']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<LogSetupResponse>(guardedValue, (value) => LogSetupResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      includeCookies: (() { final guardedValue = map['includeCookies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      prefix: (() { final guardedValue = map['prefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

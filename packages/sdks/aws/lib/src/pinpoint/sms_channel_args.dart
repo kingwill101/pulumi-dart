@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SmsChannelArgs {
   /// ID of the application.
   final pulumi.Input<String> applicationId;
-
   /// Whether the channel is enabled or disabled. By default, it is set to `true`.
   final pulumi.Input<bool>? enabled;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Identifier of the sender for your messages.
   final pulumi.Input<String>? senderId;
-
   /// Short Code registered with the phone provider.
   final pulumi.Input<String>? shortCode;
 
@@ -49,26 +45,11 @@ class SmsChannelArgs {
   factory SmsChannelArgs.fromMap(Map<String, dynamic> map) {
     return SmsChannelArgs(
       applicationId: pulumi.Input.fromValue(map['applicationId'] as String),
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      senderId: (() {
-        final guardedValue = map['senderId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      shortCode: (() {
-        final guardedValue = map['shortCode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      senderId: (() { final guardedValue = map['senderId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      shortCode: (() { final guardedValue = map['shortCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

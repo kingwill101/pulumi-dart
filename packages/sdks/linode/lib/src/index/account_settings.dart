@@ -111,22 +111,16 @@ import 'account_settings_state.dart';
 class AccountSettings extends pulumi.CustomResource {
   /// The account-wide backups default. If true, all Linodes created will automatically be enrolled in the Backups service. If false, Linodes will not be enrolled by default, but may still be enrolled on creation or later.
   late final pulumi.Output<bool> backupsEnabled;
-
   /// Type of interfaces for new Linode instances. Available values are `"legacy_config_only"`, `"legacy_config_default_but_linode_allowed"`, `"linode_default_but_legacy_config_allowed"`, and `"linode_only"`.
   late final pulumi.Output<String> interfacesForNewLinodes;
-
   /// The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
   late final pulumi.Output<String> longviewSubscription;
-
   /// The default maintenance policy for this account. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to `"linode/migrate"`. (**Note: v4beta only.**)
   late final pulumi.Output<String> maintenancePolicy;
-
   /// Enables monitoring for connectivity, response, and total request time.
   late final pulumi.Output<bool> managed;
-
   /// Enables network helper across all users by default for new Linodes and Linode Configs.
   late final pulumi.Output<bool> networkHelper;
-
   /// A string describing the status of this account's Object Storage service enrollment.
   late final pulumi.Output<String> objectStorage;
 
@@ -139,11 +133,11 @@ class AccountSettings extends pulumi.CustomResource {
     AccountSettingsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'linode:index/accountSettings:AccountSettings',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'linode:index/accountSettings:AccountSettings',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     backupsEnabled = registerOutput<bool>('backupsEnabled');
     interfacesForNewLinodes = registerOutput<String>('interfacesForNewLinodes');
     longviewSubscription = registerOutput<String>('longviewSubscription');
@@ -171,11 +165,11 @@ class AccountSettings extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'linode:index/accountSettings:AccountSettings',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'linode:index/accountSettings:AccountSettings',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     backupsEnabled = registerOutput<bool>('backupsEnabled');
     interfacesForNewLinodes = registerOutput<String>('interfacesForNewLinodes');
     longviewSubscription = registerOutput<String>('longviewSubscription');

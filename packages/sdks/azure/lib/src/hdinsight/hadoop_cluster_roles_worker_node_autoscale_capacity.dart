@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HadoopClusterRolesWorkerNodeAutoscaleCapacity {
   /// The maximum number of worker nodes to autoscale to based on the cluster's activity.
   final pulumi.Input<int> maxInstanceCount;
-
   /// The minimum number of worker nodes to autoscale to based on the cluster's activity.
   final pulumi.Input<int> minInstanceCount;
 
@@ -24,12 +23,11 @@ class HadoopClusterRolesWorkerNodeAutoscaleCapacity {
     };
   }
 
-  factory HadoopClusterRolesWorkerNodeAutoscaleCapacity.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory HadoopClusterRolesWorkerNodeAutoscaleCapacity.fromMap(Map<String, dynamic> map) {
     return HadoopClusterRolesWorkerNodeAutoscaleCapacity(
       maxInstanceCount: pulumi.Input.fromValue(map['maxInstanceCount'] as int),
       minInstanceCount: pulumi.Input.fromValue(map['minInstanceCount'] as int),
     );
   }
 }
+

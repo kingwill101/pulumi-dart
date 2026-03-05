@@ -226,61 +226,42 @@ import 'topic_args.dart';
 class Topic extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Data Residency Boundary of the resource.
   late final pulumi.Output<String?> dataResidencyBoundary;
-
   /// This boolean is used to enable or disable local auth. Default value is false. When the property is set to true, only AAD token will be used to authenticate if user is allowed to publish to the topic.
   late final pulumi.Output<bool?> disableLocalAuth;
-
   /// Endpoint for the topic.
   late final pulumi.Output<String> endpoint;
-
   /// Event Type Information for the user topic. This information is provided by the publisher and can be used by the
   /// subscriber to view different types of events that are published.
   late final pulumi.Output<EventTypeInfoResponse?> eventTypeInfo;
-
   /// Identity information for the resource.
   late final pulumi.Output<IdentityInfoResponse?> identity;
-
   /// This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled.
   late final pulumi.Output<List<Map<String, dynamic>>?> inboundIpRules;
-
   /// This determines the format that Event Grid should expect for incoming events published to the topic.
   late final pulumi.Output<String?> inputSchema;
-
   /// This enables publishing using custom event schemas. An InputSchemaMapping can be specified to map various properties of a source schema to various required properties of the EventGridEvent schema.
   late final pulumi.Output<JsonInputSchemaMappingResponse?> inputSchemaMapping;
-
   /// Location of the resource.
   late final pulumi.Output<String> location;
-
   /// Metric resource id for the topic.
   late final pulumi.Output<String> metricResourceId;
-
   /// Minimum TLS version of the publisher allowed to publish to this topic
   late final pulumi.Output<String?> minimumTlsVersionAllowed;
-
   /// Name of the resource.
   late final pulumi.Output<String> name;
-
   /// List of private endpoint connections.
-  late final pulumi.Output<List<Map<String, dynamic>>>
-  privateEndpointConnections;
-
+  late final pulumi.Output<List<Map<String, dynamic>>> privateEndpointConnections;
   /// Provisioning state of the topic.
   late final pulumi.Output<String> provisioningState;
-
   /// This determines if traffic is allowed over public network. By default it is enabled.
   /// You can further restrict to specific IPs by configuring &lt;seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.TopicProperties.InboundIpRules" /&gt;
   late final pulumi.Output<String?> publicNetworkAccess;
-
   /// The system metadata relating to the Event Grid resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Tags of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Type of the resource.
   late final pulumi.Output<String> type;
 
@@ -288,72 +269,33 @@ class Topic extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Topic]. {@macro pulumi_eventgrid_topic_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Topic(String name, {TopicArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:eventgrid:Topic',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Topic(
+    String name, {
+    TopicArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:eventgrid:Topic',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     dataResidencyBoundary = registerOutput<String?>('dataResidencyBoundary');
     disableLocalAuth = registerOutput<bool?>('disableLocalAuth');
     endpoint = registerOutput<String>('endpoint');
-    eventTypeInfo = registerOutput<EventTypeInfoResponse?>(
-      'eventTypeInfo',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EventTypeInfoResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    identity = registerOutput<IdentityInfoResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IdentityInfoResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    inboundIpRules = registerOutput<List<Map<String, dynamic>>?>(
-      'inboundIpRules',
-    );
+    eventTypeInfo = registerOutput<EventTypeInfoResponse?>('eventTypeInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventTypeInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<IdentityInfoResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    inboundIpRules = registerOutput<List<Map<String, dynamic>>?>('inboundIpRules');
     inputSchema = registerOutput<String?>('inputSchema');
-    inputSchemaMapping = registerOutput<JsonInputSchemaMappingResponse?>(
-      'inputSchemaMapping',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return JsonInputSchemaMappingResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    inputSchemaMapping = registerOutput<JsonInputSchemaMappingResponse?>('inputSchemaMapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JsonInputSchemaMappingResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     metricResourceId = registerOutput<String>('metricResourceId');
-    minimumTlsVersionAllowed = registerOutput<String?>(
-      'minimumTlsVersionAllowed',
-    );
+    minimumTlsVersionAllowed = registerOutput<String?>('minimumTlsVersionAllowed');
     this.name = registerOutput<String>('name');
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
-      'privateEndpointConnections',
-    );
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>('privateEndpointConnections');
     provisioningState = registerOutput<String>('provisioningState');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

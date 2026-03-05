@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServerGroupsGroupStickySessionConfig {
   /// the cookie that is configured on the server.
   final pulumi.Input<String> cookie;
-
   /// The timeout period of a cookie. The timeout period of a cookie.
   final pulumi.Input<int> cookieTimeout;
-
   /// Indicates whether sticky session is enabled.
   final pulumi.Input<bool> stickySessionEnabled;
-
   /// The method that is used to handle a cookie.
   final pulumi.Input<String> stickySessionType;
 
@@ -36,18 +33,13 @@ class GetServerGroupsGroupStickySessionConfig {
     };
   }
 
-  factory GetServerGroupsGroupStickySessionConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetServerGroupsGroupStickySessionConfig.fromMap(Map<String, dynamic> map) {
     return GetServerGroupsGroupStickySessionConfig(
       cookie: pulumi.Input.fromValue(map['cookie'] as String),
       cookieTimeout: pulumi.Input.fromValue(map['cookieTimeout'] as int),
-      stickySessionEnabled: pulumi.Input.fromValue(
-        map['stickySessionEnabled'] as bool,
-      ),
-      stickySessionType: pulumi.Input.fromValue(
-        map['stickySessionType'] as String,
-      ),
+      stickySessionEnabled: pulumi.Input.fromValue(map['stickySessionEnabled'] as bool),
+      stickySessionType: pulumi.Input.fromValue(map['stickySessionType'] as String),
     );
   }
 }
+

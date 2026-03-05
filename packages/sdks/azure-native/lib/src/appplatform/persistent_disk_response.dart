@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PersistentDiskResponse {
   /// Mount path of the persistent disk
   final pulumi.Input<String>? mountPath;
-
   /// Size of the persistent disk in GB
   final pulumi.Input<int>? sizeInGB;
-
   /// Size of the used persistent disk in GB
   final pulumi.Input<int> usedInGB;
 
@@ -33,17 +31,10 @@ class PersistentDiskResponse {
 
   factory PersistentDiskResponse.fromMap(Map<String, dynamic> map) {
     return PersistentDiskResponse(
-      mountPath: (() {
-        final guardedValue = map['mountPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sizeInGB: (() {
-        final guardedValue = map['sizeInGB'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      mountPath: (() { final guardedValue = map['mountPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sizeInGB: (() { final guardedValue = map['sizeInGB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       usedInGB: pulumi.Input.fromValue(map['usedInGB'] as int),
     );
   }
 }
+

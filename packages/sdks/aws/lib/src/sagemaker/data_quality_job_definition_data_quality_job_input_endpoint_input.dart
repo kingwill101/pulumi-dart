@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataQualityJobDefinitionDataQualityJobInputEndpointInput {
   /// An endpoint in customer's account which has `data_capture_config` enabled.
   final pulumi.Input<String> endpointName;
-
   /// Path to the filesystem where the endpoint data is available to the container. Defaults to `/opt/ml/processing/input`.
   final pulumi.Input<String>? localPath;
-
   /// Whether input data distributed in Amazon S3 is fully replicated or sharded by an S3 key. Defaults to `FullyReplicated`. Valid values are `FullyReplicated` or `ShardedByS3Key`
   final pulumi.Input<String>? s3DataDistributionType;
-
   /// Whether the `Pipe` or `File` is used as the input mode for transferring data for the monitoring job. `Pipe` mode is recommended for large datasets. `File` mode is useful for small files that fit in memory. Defaults to `File`.  Valid values are `Pipe` or `File`
   final pulumi.Input<String>? s3InputMode;
 
@@ -36,26 +33,13 @@ class DataQualityJobDefinitionDataQualityJobInputEndpointInput {
     };
   }
 
-  factory DataQualityJobDefinitionDataQualityJobInputEndpointInput.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DataQualityJobDefinitionDataQualityJobInputEndpointInput.fromMap(Map<String, dynamic> map) {
     return DataQualityJobDefinitionDataQualityJobInputEndpointInput(
       endpointName: pulumi.Input.fromValue(map['endpointName'] as String),
-      localPath: (() {
-        final guardedValue = map['localPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      s3DataDistributionType: (() {
-        final guardedValue = map['s3DataDistributionType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      s3InputMode: (() {
-        final guardedValue = map['s3InputMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      localPath: (() { final guardedValue = map['localPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      s3DataDistributionType: (() { final guardedValue = map['s3DataDistributionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      s3InputMode: (() { final guardedValue = map['s3InputMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

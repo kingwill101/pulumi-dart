@@ -33,22 +33,13 @@ class GetSpokeIamPolicyNetworkconnectivityV1alpha1Args {
     };
   }
 
-  factory GetSpokeIamPolicyNetworkconnectivityV1alpha1Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetSpokeIamPolicyNetworkconnectivityV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return GetSpokeIamPolicyNetworkconnectivityV1alpha1Args(
       location: pulumi.Input.fromValue(map['location'] as String),
-      optionsRequestedPolicyVersion: (() {
-        final guardedValue = map['optionsRequestedPolicyVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       spokeId: pulumi.Input.fromValue(map['spokeId'] as String),
     );
   }
 }
+

@@ -9,17 +9,20 @@ class PythonRepositoryResponse {
 
   /// Creates a new [PythonRepositoryResponse].
   /// [publicRepository] One of the publicly available Python repositories supported by Artifact Registry.
-  PythonRepositoryResponse({required this.publicRepository});
+  PythonRepositoryResponse({
+    required this.publicRepository,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'publicRepository': publicRepository};
+    return <String, dynamic>{
+      'publicRepository': publicRepository,
+    };
   }
 
   factory PythonRepositoryResponse.fromMap(Map<String, dynamic> map) {
     return PythonRepositoryResponse(
-      publicRepository: pulumi.Input.fromValue(
-        map['publicRepository'] as String,
-      ),
+      publicRepository: pulumi.Input.fromValue(map['publicRepository'] as String),
     );
   }
 }
+

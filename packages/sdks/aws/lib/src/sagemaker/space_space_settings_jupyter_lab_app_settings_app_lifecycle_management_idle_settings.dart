@@ -13,18 +13,15 @@ class SpaceSpaceSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings 
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'idleTimeoutInMinutes': ?idleTimeoutInMinutes};
+    return <String, dynamic>{
+      'idleTimeoutInMinutes': ?idleTimeoutInMinutes,
+    };
   }
 
-  factory SpaceSpaceSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SpaceSpaceSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings.fromMap(Map<String, dynamic> map) {
     return SpaceSpaceSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings(
-      idleTimeoutInMinutes: (() {
-        final guardedValue = map['idleTimeoutInMinutes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      idleTimeoutInMinutes: (() { final guardedValue = map['idleTimeoutInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

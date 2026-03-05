@@ -7,22 +7,16 @@ import 'password_validation_policy_complexity.dart';
 class PasswordValidationPolicy {
   /// The complexity of the password.
   final pulumi.Input<PasswordValidationPolicyComplexity>? complexity;
-
   /// Disallow credentials that have been previously compromised by a public data breach.
   final pulumi.Input<bool>? disallowCompromisedCredentials;
-
   /// Disallow username as a part of the password.
   final pulumi.Input<bool>? disallowUsernameSubstring;
-
   /// Whether the password policy is enabled or not.
   final pulumi.Input<bool>? enablePasswordPolicy;
-
   /// Minimum number of characters allowed.
   final pulumi.Input<int>? minLength;
-
   /// Minimum interval after which the password can be changed. This flag is only supported for PostgreSQL.
   final pulumi.Input<String>? passwordChangeInterval;
-
   /// Number of previous passwords that cannot be reused.
   final pulumi.Input<int>? reuseInterval;
 
@@ -46,11 +40,7 @@ class PasswordValidationPolicy {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'complexity':
-          ?pulumi.Input.mapOptionalInputValue<
-            PasswordValidationPolicyComplexity,
-            String
-          >(complexity, (value) => value.wireValue),
+      'complexity': ?pulumi.Input.mapOptionalInputValue<PasswordValidationPolicyComplexity, String>(complexity, (value) => value.wireValue),
       'disallowCompromisedCredentials': ?disallowCompromisedCredentials,
       'disallowUsernameSubstring': ?disallowUsernameSubstring,
       'enablePasswordPolicy': ?enablePasswordPolicy,
@@ -62,43 +52,14 @@ class PasswordValidationPolicy {
 
   factory PasswordValidationPolicy.fromMap(Map<String, dynamic> map) {
     return PasswordValidationPolicy(
-      complexity: (() {
-        final guardedValue = map['complexity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PasswordValidationPolicyComplexity.fromValue(guardedValue as String),
-        );
-      })(),
-      disallowCompromisedCredentials: (() {
-        final guardedValue = map['disallowCompromisedCredentials'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      disallowUsernameSubstring: (() {
-        final guardedValue = map['disallowUsernameSubstring'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      enablePasswordPolicy: (() {
-        final guardedValue = map['enablePasswordPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      minLength: (() {
-        final guardedValue = map['minLength'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      passwordChangeInterval: (() {
-        final guardedValue = map['passwordChangeInterval'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      reuseInterval: (() {
-        final guardedValue = map['reuseInterval'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      complexity: (() { final guardedValue = map['complexity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PasswordValidationPolicyComplexity.fromValue(guardedValue as String)); })(),
+      disallowCompromisedCredentials: (() { final guardedValue = map['disallowCompromisedCredentials']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      disallowUsernameSubstring: (() { final guardedValue = map['disallowUsernameSubstring']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enablePasswordPolicy: (() { final guardedValue = map['enablePasswordPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      minLength: (() { final guardedValue = map['minLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      passwordChangeInterval: (() { final guardedValue = map['passwordChangeInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      reuseInterval: (() { final guardedValue = map['reuseInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

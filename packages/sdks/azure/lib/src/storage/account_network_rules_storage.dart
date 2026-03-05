@@ -377,10 +377,8 @@ class AccountNetworkRulesStorage extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** User has to explicitly set `bypass` to empty slice (`[]`) to remove it.
   late final pulumi.Output<List<String>> bypasses;
-
   /// Specifies the default action of allow or deny when no other rules match. Valid options are `Deny` or `Allow`.
   late final pulumi.Output<String> defaultAction;
-
   /// List of public IP or IP ranges in CIDR Format. Only IPv4 addresses are allowed. Private IP address ranges (as defined in [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)) are not allowed.
   ///
   /// &gt; **Note:** Small address ranges using "/31" or "/32" prefix sizes are not supported. These ranges should be configured using individual IP address rules without prefix specified.
@@ -389,13 +387,10 @@ class AccountNetworkRulesStorage extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** User has to explicitly set `ip_rules` to empty slice (`[]`) to remove it.
   late final pulumi.Output<List<String>?> ipRules;
-
   /// One or more `private_link_access` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> privateLinkAccessRules;
-
   /// Specifies the ID of the storage account. Changing this forces a new resource to be created.
   late final pulumi.Output<String> storageAccountId;
-
   /// A list of virtual network subnet ids to secure the storage account.
   ///
   /// &gt; **Note:** User has to explicitly set `virtual_network_subnet_ids` to empty slice (`[]`) to remove it.
@@ -410,21 +405,17 @@ class AccountNetworkRulesStorage extends pulumi.CustomResource {
     AccountNetworkRulesArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:storage/accountNetworkRules:AccountNetworkRules',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:storage/accountNetworkRules:AccountNetworkRules',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bypasses = registerOutput<List<String>>('bypasses');
     defaultAction = registerOutput<String>('defaultAction');
     ipRules = registerOutput<List<String>?>('ipRules');
-    privateLinkAccessRules = registerOutput<List<Map<String, dynamic>>?>(
-      'privateLinkAccessRules',
-    );
+    privateLinkAccessRules = registerOutput<List<Map<String, dynamic>>?>('privateLinkAccessRules');
     storageAccountId = registerOutput<String>('storageAccountId');
-    virtualNetworkSubnetIds = registerOutput<List<String>?>(
-      'virtualNetworkSubnetIds',
-    );
+    virtualNetworkSubnetIds = registerOutput<List<String>?>('virtualNetworkSubnetIds');
   }
 
   /// Gets an existing [AccountNetworkRulesStorage] resource's state with the given [name] and [id].
@@ -445,20 +436,16 @@ class AccountNetworkRulesStorage extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:storage/accountNetworkRules:AccountNetworkRules',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:storage/accountNetworkRules:AccountNetworkRules',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bypasses = registerOutput<List<String>>('bypasses');
     defaultAction = registerOutput<String>('defaultAction');
     ipRules = registerOutput<List<String>?>('ipRules');
-    privateLinkAccessRules = registerOutput<List<Map<String, dynamic>>?>(
-      'privateLinkAccessRules',
-    );
+    privateLinkAccessRules = registerOutput<List<Map<String, dynamic>>?>('privateLinkAccessRules');
     storageAccountId = registerOutput<String>('storageAccountId');
-    virtualNetworkSubnetIds = registerOutput<List<String>?>(
-      'virtualNetworkSubnetIds',
-    );
+    virtualNetworkSubnetIds = registerOutput<List<String>?>('virtualNetworkSubnetIds');
   }
 }

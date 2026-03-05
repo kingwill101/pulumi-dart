@@ -151,7 +151,6 @@ import 'product_subscription_state.dart';
 class ProductSubscription extends pulumi.CustomResource {
   /// The ARN of a resource that represents your subscription to the product that generates the findings that you want to import into Security Hub.
   late final pulumi.Output<String> arn;
-
   /// The ARN of the product that generates findings that you want to import into Security Hub - see below.
   ///
   /// Amazon maintains a list of [Product integrations in AWS Security Hub](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-findings-providers.html) that changes over time. Any of the products on the linked [Available AWS service integrations](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-internal-providers.html) or [Available third-party partner product integrations](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-partner-providers.html) can be configured using `aws.securityhub.ProductSubscription`.
@@ -192,7 +191,6 @@ class ProductSubscription extends pulumi.CustomResource {
   /// * `arn:aws:securityhub:${var.region}::product/turbot/turbot`
   /// * `arn:aws:securityhub:${var.region}::product/twistlock/twistlock-enterprise`
   late final pulumi.Output<String> productArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -205,11 +203,11 @@ class ProductSubscription extends pulumi.CustomResource {
     ProductSubscriptionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:securityhub/productSubscription:ProductSubscription',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:securityhub/productSubscription:ProductSubscription',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     productArn = registerOutput<String>('productArn');
     region = registerOutput<String>('region');
@@ -233,11 +231,11 @@ class ProductSubscription extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:securityhub/productSubscription:ProductSubscription',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:securityhub/productSubscription:ProductSubscription',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     productArn = registerOutput<String>('productArn');
     region = registerOutput<String>('region');

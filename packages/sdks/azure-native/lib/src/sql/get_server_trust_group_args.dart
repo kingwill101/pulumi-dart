@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServerTrustGroupArgs {
   /// The name of the region where the resource is located.
   final pulumi.Input<String> locationName;
-
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the server trust group.
   final pulumi.Input<String> serverTrustGroupName;
 
@@ -37,12 +35,9 @@ class GetServerTrustGroupArgs {
   factory GetServerTrustGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetServerTrustGroupArgs(
       locationName: pulumi.Input.fromValue(map['locationName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      serverTrustGroupName: pulumi.Input.fromValue(
-        map['serverTrustGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      serverTrustGroupName: pulumi.Input.fromValue(map['serverTrustGroupName'] as String),
     );
   }
 }
+

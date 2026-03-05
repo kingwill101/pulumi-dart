@@ -136,26 +136,20 @@ import 'boundary_state.dart';
 class Boundary extends pulumi.CustomResource {
   /// Create time.
   late final pulumi.Output<String> createTime;
-
   /// Optional. The resource name of the CRM node being attached to the
   /// boundary.
   /// Format: `projects/{project-number}`
   late final pulumi.Output<String?> crmNode;
-
   /// The location for the Boundary resource. Must be global.
   late final pulumi.Output<String> location;
-
   /// Identifier. The resource name of the boundary.
   /// Format: "projects/{project}/locations/{{location}}/boundary"
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Boundary type.
   late final pulumi.Output<String> type;
-
   /// Update time.
   late final pulumi.Output<String> updateTime;
 
@@ -168,11 +162,11 @@ class Boundary extends pulumi.CustomResource {
     BoundaryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:apphub/boundary:Boundary',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:apphub/boundary:Boundary',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     crmNode = registerOutput<String?>('crmNode');
     location = registerOutput<String>('location');
@@ -200,11 +194,11 @@ class Boundary extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:apphub/boundary:Boundary',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:apphub/boundary:Boundary',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     crmNode = registerOutput<String?>('crmNode');
     location = registerOutput<String>('location');

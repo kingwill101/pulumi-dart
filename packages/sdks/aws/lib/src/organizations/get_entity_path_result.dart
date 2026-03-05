@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getEntityPath.
 class GetEntityPathResult {
   final String entityId;
-
   /// Entity path.
   final String entityPath;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
 
@@ -36,3 +35,4 @@ class GetEntityPathResult {
     );
   }
 }
+

@@ -15,7 +15,6 @@ class NodeState {
   ///
   /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   final pulumi.Input<String>? accountName;
-
   /// Account password, value description:
   /// - Consists of at least three of uppercase letters, lowercase letters, numbers, and special characters.
   /// - Oh-! @#$%^& *()_+-= is a special character.
@@ -26,50 +25,39 @@ class NodeState {
   ///
   /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   final pulumi.Input<String>? accountPassword;
-
   /// Whether to pay automatically. Value description:
   final pulumi.Input<bool>? autoPay;
-
   /// Additional parameters, business information.
   ///
   /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   final pulumi.Input<String>? businessInfo;
-
   /// The ID of the sharded cluster instance.
   final pulumi.Input<String>? dbInstanceId;
   final pulumi.Input<String>? effectiveTime;
-
   /// Request Source, value description:
   /// - `OpenApi`: The request source is OpenApi.
   final pulumi.Input<String>? fromApp;
-
   /// The specifications of the Shard node or Mongos node. For more information, see Instance Specifications.
   final pulumi.Input<String>? nodeClass;
-
   /// The first ID of the resource
   final pulumi.Input<String>? nodeId;
-
   /// The disk space of the Node. Unit: GB.
   ///
   /// Value range: `10` to `2000`, with a step size of 10GB.
   ///
   /// &gt; **NOTE:**  When the node type is `Shard`, you need to configure this parameter.
   final pulumi.Input<int>? nodeStorage;
-
   /// Node type, value description:
   final pulumi.Input<String>? nodeType;
   final pulumi.Input<String>? orderType;
-
   /// The number of read-only nodes in the Shard.
   ///
   /// Value range: `0` to `5` (integer). Default value: **0 * *.
   ///
   /// &gt; **NOTE:**  This parameter is currently only supported by China Station.
   final pulumi.Input<int>? readonlyReplicas;
-
   /// Whether to apply for the direct connection address of the Shard node. Value description:
   final pulumi.Input<bool>? shardDirect;
-
   /// Running status of node in sharded cluster
   final pulumi.Input<String>? status;
   final pulumi.Input<String>? switchTime;
@@ -133,86 +121,23 @@ class NodeState {
 
   factory NodeState.fromMap(Map<String, dynamic> map) {
     return NodeState(
-      accountName: (() {
-        final guardedValue = map['accountName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      accountPassword: (() {
-        final guardedValue = map['accountPassword'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      autoPay: (() {
-        final guardedValue = map['autoPay'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      businessInfo: (() {
-        final guardedValue = map['businessInfo'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dbInstanceId: (() {
-        final guardedValue = map['dbInstanceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      effectiveTime: (() {
-        final guardedValue = map['effectiveTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      fromApp: (() {
-        final guardedValue = map['fromApp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      nodeClass: (() {
-        final guardedValue = map['nodeClass'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      nodeId: (() {
-        final guardedValue = map['nodeId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      nodeStorage: (() {
-        final guardedValue = map['nodeStorage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      nodeType: (() {
-        final guardedValue = map['nodeType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      orderType: (() {
-        final guardedValue = map['orderType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      readonlyReplicas: (() {
-        final guardedValue = map['readonlyReplicas'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      shardDirect: (() {
-        final guardedValue = map['shardDirect'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      switchTime: (() {
-        final guardedValue = map['switchTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accountName: (() { final guardedValue = map['accountName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      accountPassword: (() { final guardedValue = map['accountPassword']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      autoPay: (() { final guardedValue = map['autoPay']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      businessInfo: (() { final guardedValue = map['businessInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dbInstanceId: (() { final guardedValue = map['dbInstanceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      effectiveTime: (() { final guardedValue = map['effectiveTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      fromApp: (() { final guardedValue = map['fromApp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nodeClass: (() { final guardedValue = map['nodeClass']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nodeId: (() { final guardedValue = map['nodeId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nodeStorage: (() { final guardedValue = map['nodeStorage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      nodeType: (() { final guardedValue = map['nodeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      orderType: (() { final guardedValue = map['orderType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      readonlyReplicas: (() { final guardedValue = map['readonlyReplicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      shardDirect: (() { final guardedValue = map['shardDirect']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      switchTime: (() { final guardedValue = map['switchTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

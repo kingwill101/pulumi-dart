@@ -170,18 +170,14 @@ import 'key_pair_state.dart';
 class KeyPair extends pulumi.CustomResource {
   late final pulumi.Output<String> createTime;
   late final pulumi.Output<String> fingerPrint;
-
   /// The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
   late final pulumi.Output<String?> keyFile;
-
   /// The key pair's name. It is the only in one Alicloud account.
   late final pulumi.Output<String> keyName;
   late final pulumi.Output<String?> keyNamePrefix;
   late final pulumi.Output<String> keyPairName;
-
   /// You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
   late final pulumi.Output<String?> publicKey;
-
   /// The Id of resource group which the key pair belongs.
   late final pulumi.Output<String> resourceGroupId;
   late final pulumi.Output<Map<String, String>?> tags;
@@ -195,11 +191,11 @@ class KeyPair extends pulumi.CustomResource {
     KeyPairArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ecs/keyPair:KeyPair',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ecs/keyPair:KeyPair',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     fingerPrint = registerOutput<String>('fingerPrint');
     keyFile = registerOutput<String?>('keyFile');
@@ -229,11 +225,11 @@ class KeyPair extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ecs/keyPair:KeyPair',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ecs/keyPair:KeyPair',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     fingerPrint = registerOutput<String>('fingerPrint');
     keyFile = registerOutput<String?>('keyFile');

@@ -11,8 +11,7 @@ enum ThreatIntelligenceResourceInnerKind {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ThreatIntelligenceResourceInnerKind value: $value',
-    );
+    throw ArgumentError('Unknown ThreatIntelligenceResourceInnerKind value: $value');
   }
 }
+

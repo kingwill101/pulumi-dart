@@ -13,7 +13,10 @@ class GetOrganizationRoleArgs {
   /// Creates a new [GetOrganizationRoleArgs].
   /// [organizationId] Required.
   /// [roleId] Required.
-  GetOrganizationRoleArgs({required this.organizationId, required this.roleId});
+  GetOrganizationRoleArgs({
+    required this.organizationId,
+    required this.roleId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,3 +32,4 @@ class GetOrganizationRoleArgs {
     );
   }
 }
+

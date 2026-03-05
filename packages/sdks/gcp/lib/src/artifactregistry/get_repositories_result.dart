@@ -10,7 +10,6 @@ class GetRepositoriesResult {
   final String location;
   final String? nameFilter;
   final String? project;
-
   /// A list of all retrieved Artifact Registry repositories. Structure is defined below.
   final List<GetRepositoriesRepository> repositories;
 
@@ -34,11 +33,7 @@ class GetRepositoriesResult {
       'location': location,
       'nameFilter': ?nameFilter,
       'project': ?project,
-      'repositories':
-          pulumi.Input.encodeList<
-            GetRepositoriesRepository,
-            Map<String, dynamic>
-          >(repositories, (value) => value.toMap()),
+      'repositories': pulumi.Input.encodeList<GetRepositoriesRepository, Map<String, dynamic>>(repositories, (value) => value.toMap()),
     };
   }
 
@@ -46,22 +41,10 @@ class GetRepositoriesResult {
     return GetRepositoriesResult(
       id: map['id'] as String,
       location: map['location'] as String,
-      nameFilter: (() {
-        final guardedValue = map['nameFilter'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      repositories: pulumi.Input.decodeList<GetRepositoriesRepository>(
-        map['repositories']!,
-        (value) => GetRepositoriesRepository.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      nameFilter: (() { final guardedValue = map['nameFilter']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      repositories: pulumi.Input.decodeList<GetRepositoriesRepository>(map['repositories']!, (value) => GetRepositoriesRepository.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -39,54 +39,27 @@ class EnterpriseCrmEventbusProtoValueTypeResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'booleanValue': booleanValue,
-      'doubleArray':
-          pulumi.Input.mapInputValue<
-            EnterpriseCrmEventbusProtoDoubleArrayResponse,
-            Map<String, dynamic>
-          >(doubleArray, (value) => value.toMap()),
+      'doubleArray': pulumi.Input.mapInputValue<EnterpriseCrmEventbusProtoDoubleArrayResponse, Map<String, dynamic>>(doubleArray, (value) => value.toMap()),
       'doubleValue': doubleValue,
-      'intArray':
-          pulumi.Input.mapInputValue<
-            EnterpriseCrmEventbusProtoIntArrayResponse,
-            Map<String, dynamic>
-          >(intArray, (value) => value.toMap()),
+      'intArray': pulumi.Input.mapInputValue<EnterpriseCrmEventbusProtoIntArrayResponse, Map<String, dynamic>>(intArray, (value) => value.toMap()),
       'intValue': intValue,
       'protoValue': protoValue,
-      'stringArray':
-          pulumi.Input.mapInputValue<
-            EnterpriseCrmEventbusProtoStringArrayResponse,
-            Map<String, dynamic>
-          >(stringArray, (value) => value.toMap()),
+      'stringArray': pulumi.Input.mapInputValue<EnterpriseCrmEventbusProtoStringArrayResponse, Map<String, dynamic>>(stringArray, (value) => value.toMap()),
       'stringValue': stringValue,
     };
   }
 
-  factory EnterpriseCrmEventbusProtoValueTypeResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EnterpriseCrmEventbusProtoValueTypeResponse.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoValueTypeResponse(
       booleanValue: pulumi.Input.fromValue(map['booleanValue'] as bool),
-      doubleArray: pulumi.Input.fromValue(
-        EnterpriseCrmEventbusProtoDoubleArrayResponse.fromMap(
-          (map['doubleArray']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      doubleArray: pulumi.Input.fromValue(EnterpriseCrmEventbusProtoDoubleArrayResponse.fromMap((map['doubleArray']! as Map).cast<String, dynamic>())),
       doubleValue: pulumi.Input.fromValue(map['doubleValue'] as double),
-      intArray: pulumi.Input.fromValue(
-        EnterpriseCrmEventbusProtoIntArrayResponse.fromMap(
-          (map['intArray']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      intArray: pulumi.Input.fromValue(EnterpriseCrmEventbusProtoIntArrayResponse.fromMap((map['intArray']! as Map).cast<String, dynamic>())),
       intValue: pulumi.Input.fromValue(map['intValue'] as String),
-      protoValue: pulumi.Input.fromValue(
-        (map['protoValue'] as Map).cast<String, String>(),
-      ),
-      stringArray: pulumi.Input.fromValue(
-        EnterpriseCrmEventbusProtoStringArrayResponse.fromMap(
-          (map['stringArray']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      protoValue: pulumi.Input.fromValue((map['protoValue'] as Map).cast<String, String>()),
+      stringArray: pulumi.Input.fromValue(EnterpriseCrmEventbusProtoStringArrayResponse.fromMap((map['stringArray']! as Map).cast<String, dynamic>())),
       stringValue: pulumi.Input.fromValue(map['stringValue'] as String),
     );
   }
 }
+

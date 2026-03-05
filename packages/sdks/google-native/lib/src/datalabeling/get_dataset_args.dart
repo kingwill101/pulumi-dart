@@ -13,20 +13,23 @@ class GetDatasetArgs {
   /// Creates a new [GetDatasetArgs].
   /// [datasetId] Required.
   /// [project] Optional.
-  GetDatasetArgs({required this.datasetId, this.project});
+  GetDatasetArgs({
+    required this.datasetId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'datasetId': datasetId, 'project': ?project};
+    return <String, dynamic>{
+      'datasetId': datasetId,
+      'project': ?project,
+    };
   }
 
   factory GetDatasetArgs.fromMap(Map<String, dynamic> map) {
     return GetDatasetArgs(
       datasetId: pulumi.Input.fromValue(map['datasetId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

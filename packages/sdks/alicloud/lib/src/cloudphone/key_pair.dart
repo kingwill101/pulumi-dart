@@ -279,7 +279,6 @@ import 'key_pair_state.dart';
 class KeyPair extends pulumi.CustomResource {
   /// ADB key pair name.
   late final pulumi.Output<String> keyPairName;
-
   /// The public key of the key pair.
   late final pulumi.Output<String?> publicKeyBody;
 
@@ -292,11 +291,11 @@ class KeyPair extends pulumi.CustomResource {
     KeyPairArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudphone/keyPair:KeyPair',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudphone/keyPair:KeyPair',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     keyPairName = registerOutput<String>('keyPairName');
     publicKeyBody = registerOutput<String?>('publicKeyBody');
   }
@@ -319,11 +318,11 @@ class KeyPair extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudphone/keyPair:KeyPair',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudphone/keyPair:KeyPair',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     keyPairName = registerOutput<String>('keyPairName');
     publicKeyBody = registerOutput<String?>('publicKeyBody');
   }

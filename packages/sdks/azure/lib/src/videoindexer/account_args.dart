@@ -11,22 +11,16 @@ import 'account_storage.dart';
 class AccountArgs {
   /// An `identity` block as defined below.
   final pulumi.Input<AccountIdentity> identity;
-
   /// The Azure location where the Video Indexer Account exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
-
   /// The name of the Video Indexer Account. Changing the name forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// The public network access for the Video Indexer Account. Possible values are `Enabled` and `Disabled`. Defaults to `Enabled`.
   final pulumi.Input<String>? publicNetworkAccess;
-
   /// The name of the Resource Group that the Video Indexer Account will be associated with. Changing the name forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
-
   /// A `storage` block as defined below.
   final pulumi.Input<AccountStorage> storage;
-
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -50,61 +44,26 @@ class AccountArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'identity':
-          pulumi.Input.mapInputValue<AccountIdentity, Map<String, dynamic>>(
-            identity,
-            (value) => value.toMap(),
-          ),
+      'identity': pulumi.Input.mapInputValue<AccountIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
       'location': ?location,
       'name': ?name,
       'publicNetworkAccess': ?publicNetworkAccess,
       'resourceGroupName': resourceGroupName,
-      'storage':
-          pulumi.Input.mapInputValue<AccountStorage, Map<String, dynamic>>(
-            storage,
-            (value) => value.toMap(),
-          ),
+      'storage': pulumi.Input.mapInputValue<AccountStorage, Map<String, dynamic>>(storage, (value) => value.toMap()),
       'tags': ?tags,
     };
   }
 
   factory AccountArgs.fromMap(Map<String, dynamic> map) {
     return AccountArgs(
-      identity: pulumi.Input.fromValue(
-        AccountIdentity.fromMap(
-          (map['identity']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      publicNetworkAccess: (() {
-        final guardedValue = map['publicNetworkAccess'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      storage: pulumi.Input.fromValue(
-        AccountStorage.fromMap(
-          (map['storage']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      identity: pulumi.Input.fromValue(AccountIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      storage: pulumi.Input.fromValue(AccountStorage.fromMap((map['storage']! as Map).cast<String, dynamic>())),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

@@ -18,3 +18,4 @@ enum ProfileMonitorStatus {
     throw ArgumentError('Unknown ProfileMonitorStatus value: $value');
   }
 }
+

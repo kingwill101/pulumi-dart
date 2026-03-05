@@ -5,22 +5,16 @@ enum GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy {
   forbidden("FORBIDDEN"),
   restricted("RESTRICTED");
 
-  const GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy(
-    this.wireValue,
-  );
+  const GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy(this.wireValue);
   final String wireValue;
 
-  static GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy
-  fromValue(String value) {
-    for (final item
-        in GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy
-            .values) {
+  static GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy fromValue(String value) {
+    for (final item in GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy value: $value',
-    );
+    throw ArgumentError('Unknown GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy value: $value');
   }
 }
+

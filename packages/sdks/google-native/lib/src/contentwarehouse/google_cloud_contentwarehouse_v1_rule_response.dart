@@ -7,16 +7,12 @@ import 'google_cloud_contentwarehouse_v1_action_response.dart';
 class GoogleCloudContentwarehouseV1RuleResponse {
   /// List of actions that are executed when the rule is satisfied.
   final pulumi.Input<List<GoogleCloudContentwarehouseV1ActionResponse>> actions;
-
   /// Represents the conditional expression to be evaluated. Expression should evaluate to a boolean result. When the condition is true actions are executed. Example: user_role = "hsbc_role_1" AND doc.salary &gt; 20000
   final pulumi.Input<String> condition;
-
   /// Short description of the rule and its context.
   final pulumi.Input<String> description;
-
   /// ID of the rule. It has to be unique across all the examples. This is managed internally.
   final pulumi.Input<String> ruleId;
-
   /// Identifies the trigger type for running the policy.
   final pulumi.Input<String> triggerType;
 
@@ -36,18 +32,7 @@ class GoogleCloudContentwarehouseV1RuleResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actions':
-          pulumi.Input.mapInputValue<
-            List<GoogleCloudContentwarehouseV1ActionResponse>,
-            List<Map<String, dynamic>>
-          >(
-            actions,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GoogleCloudContentwarehouseV1ActionResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'actions': pulumi.Input.mapInputValue<List<GoogleCloudContentwarehouseV1ActionResponse>, List<Map<String, dynamic>>>(actions, (value) => pulumi.Input.encodeList<GoogleCloudContentwarehouseV1ActionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'condition': condition,
       'description': description,
       'ruleId': ruleId,
@@ -55,18 +40,9 @@ class GoogleCloudContentwarehouseV1RuleResponse {
     };
   }
 
-  factory GoogleCloudContentwarehouseV1RuleResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudContentwarehouseV1RuleResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1RuleResponse(
-      actions: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GoogleCloudContentwarehouseV1ActionResponse>(
-          map['actions']!,
-          (value) => GoogleCloudContentwarehouseV1ActionResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      actions: pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudContentwarehouseV1ActionResponse>(map['actions']!, (value) => GoogleCloudContentwarehouseV1ActionResponse.fromMap((value as Map).cast<String, dynamic>()))),
       condition: pulumi.Input.fromValue(map['condition'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
       ruleId: pulumi.Input.fromValue(map['ruleId'] as String),
@@ -74,3 +50,4 @@ class GoogleCloudContentwarehouseV1RuleResponse {
     );
   }
 }
+

@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceAzStatusResponse {
   /// Zone resiliency status details for the resource.
   final pulumi.Input<String> details;
-
   /// VM Size name.
   final pulumi.Input<bool> isZoneResilient;
-
   /// VM Size properties.
   final pulumi.Input<String> resourceName;
-
   /// VM Size id.
   final pulumi.Input<String> resourceType;
 
@@ -46,3 +43,4 @@ class ResourceAzStatusResponse {
     );
   }
 }
+

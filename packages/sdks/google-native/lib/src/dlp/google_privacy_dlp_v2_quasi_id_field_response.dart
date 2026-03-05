@@ -7,7 +7,6 @@ import 'google_privacy_dlp_v2_field_id_response.dart';
 class GooglePrivacyDlpV2QuasiIdFieldResponse {
   /// A auxiliary field.
   final pulumi.Input<String> customTag;
-
   /// Identifies the column.
   final pulumi.Input<GooglePrivacyDlpV2FieldIdResponse> field;
 
@@ -22,24 +21,15 @@ class GooglePrivacyDlpV2QuasiIdFieldResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'customTag': customTag,
-      'field':
-          pulumi.Input.mapInputValue<
-            GooglePrivacyDlpV2FieldIdResponse,
-            Map<String, dynamic>
-          >(field, (value) => value.toMap()),
+      'field': pulumi.Input.mapInputValue<GooglePrivacyDlpV2FieldIdResponse, Map<String, dynamic>>(field, (value) => value.toMap()),
     };
   }
 
-  factory GooglePrivacyDlpV2QuasiIdFieldResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GooglePrivacyDlpV2QuasiIdFieldResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2QuasiIdFieldResponse(
       customTag: pulumi.Input.fromValue(map['customTag'] as String),
-      field: pulumi.Input.fromValue(
-        GooglePrivacyDlpV2FieldIdResponse.fromMap(
-          (map['field']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      field: pulumi.Input.fromValue(GooglePrivacyDlpV2FieldIdResponse.fromMap((map['field']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

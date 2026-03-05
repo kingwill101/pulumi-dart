@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EditAtomResponse {
   /// End time in seconds for the atom, relative to the input file timeline. When `end_time_offset` is not specified, the `inputs` are used until the end of the atom.
   final pulumi.Input<String> endTimeOffset;
-
   /// List of Input.key values identifying files that should be used in this atom. The listed `inputs` must have the same timeline.
   final pulumi.Input<List<String>> inputs;
-
   /// A unique key for this atom. Must be specified when using advanced mapping.
   final pulumi.Input<String> key;
-
   /// Start time in seconds for the atom, relative to the input file timeline. The default is `0s`.
   final pulumi.Input<String> startTimeOffset;
 
@@ -46,3 +43,4 @@ class EditAtomResponse {
     );
   }
 }
+

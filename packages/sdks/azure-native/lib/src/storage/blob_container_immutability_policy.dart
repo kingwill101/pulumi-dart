@@ -283,25 +283,18 @@ import 'blob_container_immutability_policy_args.dart';
 class BlobContainerImmutabilityPolicy extends pulumi.CustomResource {
   /// This property can only be changed for unlocked time-based retention policies. When enabled, new blocks can be written to an append blob while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted. This property cannot be changed with ExtendImmutabilityPolicy API.
   late final pulumi.Output<bool?> allowProtectedAppendWrites;
-
   /// This property can only be changed for unlocked time-based retention policies. When enabled, new blocks can be written to both 'Append and Bock Blobs' while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted. This property cannot be changed with ExtendImmutabilityPolicy API. The 'allowProtectedAppendWrites' and 'allowProtectedAppendWritesAll' properties are mutually exclusive.
   late final pulumi.Output<bool?> allowProtectedAppendWritesAll;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Resource Etag.
   late final pulumi.Output<String> etag;
-
   /// The immutability period for the blobs in the container since the policy creation, in days.
   late final pulumi.Output<int?> immutabilityPeriodSinceCreationInDays;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The ImmutabilityPolicy state of a blob container, possible values include: Locked and Unlocked.
   late final pulumi.Output<String> state;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -314,22 +307,16 @@ class BlobContainerImmutabilityPolicy extends pulumi.CustomResource {
     BlobContainerImmutabilityPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:storage:BlobContainerImmutabilityPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    allowProtectedAppendWrites = registerOutput<bool?>(
-      'allowProtectedAppendWrites',
-    );
-    allowProtectedAppendWritesAll = registerOutput<bool?>(
-      'allowProtectedAppendWritesAll',
-    );
+          'azure-native:storage:BlobContainerImmutabilityPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    allowProtectedAppendWrites = registerOutput<bool?>('allowProtectedAppendWrites');
+    allowProtectedAppendWritesAll = registerOutput<bool?>('allowProtectedAppendWritesAll');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     etag = registerOutput<String>('etag');
-    immutabilityPeriodSinceCreationInDays = registerOutput<int?>(
-      'immutabilityPeriodSinceCreationInDays',
-    );
+    immutabilityPeriodSinceCreationInDays = registerOutput<int?>('immutabilityPeriodSinceCreationInDays');
     this.name = registerOutput<String>('name');
     state = registerOutput<String>('state');
     type = registerOutput<String>('type');

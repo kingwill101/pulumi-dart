@@ -12,8 +12,7 @@ enum GoogleBigQueryAuthenticationType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GoogleBigQueryAuthenticationType value: $value',
-    );
+    throw ArgumentError('Unknown GoogleBigQueryAuthenticationType value: $value');
   }
 }
+

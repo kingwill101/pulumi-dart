@@ -7,10 +7,8 @@ import 'time_of_day_response_memcache_v1beta2.dart';
 class WeeklyMaintenanceWindowResponseMemcacheV1beta2 {
   /// Allows to define schedule that runs specified day of the week.
   final pulumi.Input<String> day;
-
   /// Duration of the time window.
   final pulumi.Input<String> duration;
-
   /// Start time of the window in UTC.
   final pulumi.Input<TimeOfDayResponseMemcacheV1beta2> startTime;
 
@@ -28,25 +26,16 @@ class WeeklyMaintenanceWindowResponseMemcacheV1beta2 {
     return <String, dynamic>{
       'day': day,
       'duration': duration,
-      'startTime':
-          pulumi.Input.mapInputValue<
-            TimeOfDayResponseMemcacheV1beta2,
-            Map<String, dynamic>
-          >(startTime, (value) => value.toMap()),
+      'startTime': pulumi.Input.mapInputValue<TimeOfDayResponseMemcacheV1beta2, Map<String, dynamic>>(startTime, (value) => value.toMap()),
     };
   }
 
-  factory WeeklyMaintenanceWindowResponseMemcacheV1beta2.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WeeklyMaintenanceWindowResponseMemcacheV1beta2.fromMap(Map<String, dynamic> map) {
     return WeeklyMaintenanceWindowResponseMemcacheV1beta2(
       day: pulumi.Input.fromValue(map['day'] as String),
       duration: pulumi.Input.fromValue(map['duration'] as String),
-      startTime: pulumi.Input.fromValue(
-        TimeOfDayResponseMemcacheV1beta2.fromMap(
-          (map['startTime']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      startTime: pulumi.Input.fromValue(TimeOfDayResponseMemcacheV1beta2.fromMap((map['startTime']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

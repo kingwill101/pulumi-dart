@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getOrderableDbInstance.
 class GetOrderableDbInstanceResult {
   /// Availability zones where the instance is available.
   final List<String> availabilityZones;
   final String? engine;
   final String engineVersion;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String instanceClass;
@@ -54,26 +54,15 @@ class GetOrderableDbInstanceResult {
   factory GetOrderableDbInstanceResult.fromMap(Map<String, dynamic> map) {
     return GetOrderableDbInstanceResult(
       availabilityZones: (map['availabilityZones'] as List).cast<String>(),
-      engine: (() {
-        final guardedValue = map['engine'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      engine: (() { final guardedValue = map['engine']; if (guardedValue == null) return null; return guardedValue as String; })(),
       engineVersion: map['engineVersion'] as String,
       id: map['id'] as String,
       instanceClass: map['instanceClass'] as String,
-      licenseModel: (() {
-        final guardedValue = map['licenseModel'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      preferredInstanceClasses: (() {
-        final guardedValue = map['preferredInstanceClasses'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
+      licenseModel: (() { final guardedValue = map['licenseModel']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      preferredInstanceClasses: (() { final guardedValue = map['preferredInstanceClasses']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       region: map['region'] as String,
       vpc: map['vpc'] as bool,
     );
   }
 }
+

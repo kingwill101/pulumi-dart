@@ -9,10 +9,14 @@ class ExpressRouteConnectionIdResponse {
 
   /// Creates a new [ExpressRouteConnectionIdResponse].
   /// [id] The ID of the ExpressRouteConnection.
-  ExpressRouteConnectionIdResponse({required this.id});
+  ExpressRouteConnectionIdResponse({
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id};
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
   factory ExpressRouteConnectionIdResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class ExpressRouteConnectionIdResponse {
     );
   }
 }
+

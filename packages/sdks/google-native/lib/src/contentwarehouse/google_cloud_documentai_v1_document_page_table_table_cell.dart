@@ -8,14 +8,10 @@ import 'google_cloud_documentai_v1_document_page_layout.dart';
 class GoogleCloudDocumentaiV1DocumentPageTableTableCell {
   /// How many columns this cell spans.
   final pulumi.Input<int>? colSpan;
-
   /// A list of detected languages together with confidence.
-  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>>?
-  detectedLanguages;
-
+  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>>? detectedLanguages;
   /// Layout for TableCell.
   final pulumi.Input<GoogleCloudDocumentaiV1DocumentPageLayout>? layout;
-
   /// How many rows this cell spans.
   final pulumi.Input<int>? rowSpan;
 
@@ -34,65 +30,19 @@ class GoogleCloudDocumentaiV1DocumentPageTableTableCell {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'colSpan': ?colSpan,
-      'detectedLanguages':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>,
-            List<Map<String, dynamic>>
-          >(
-            detectedLanguages,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GoogleCloudDocumentaiV1DocumentPageDetectedLanguage,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'layout':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudDocumentaiV1DocumentPageLayout,
-            Map<String, dynamic>
-          >(layout, (value) => value.toMap()),
+      'detectedLanguages': ?pulumi.Input.mapOptionalInputValue<List<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>, List<Map<String, dynamic>>>(detectedLanguages, (value) => pulumi.Input.encodeList<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'layout': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDocumentaiV1DocumentPageLayout, Map<String, dynamic>>(layout, (value) => value.toMap()),
       'rowSpan': ?rowSpan,
     };
   }
 
-  factory GoogleCloudDocumentaiV1DocumentPageTableTableCell.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDocumentaiV1DocumentPageTableTableCell.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentPageTableTableCell(
-      colSpan: (() {
-        final guardedValue = map['colSpan'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      detectedLanguages: (() {
-        final guardedValue = map['detectedLanguages'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            GoogleCloudDocumentaiV1DocumentPageDetectedLanguage
-          >(
-            guardedValue,
-            (value) =>
-                GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
-      layout: (() {
-        final guardedValue = map['layout'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudDocumentaiV1DocumentPageLayout.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      rowSpan: (() {
-        final guardedValue = map['rowSpan'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      colSpan: (() { final guardedValue = map['colSpan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      detectedLanguages: (() { final guardedValue = map['detectedLanguages']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>(guardedValue, (value) => GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      layout: (() { final guardedValue = map['layout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudDocumentaiV1DocumentPageLayout.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      rowSpan: (() { final guardedValue = map['rowSpan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

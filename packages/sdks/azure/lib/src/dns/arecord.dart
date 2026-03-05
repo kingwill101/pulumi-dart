@@ -444,27 +444,20 @@ import 'arecord_state.dart';
 class ARecord extends pulumi.CustomResource {
   /// The FQDN of the DNS A Record.
   late final pulumi.Output<String> fqdn;
-
   /// The name of the DNS A Record. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// List of IPv4 Addresses. Conflicts with `target_resource_id`.
   late final pulumi.Output<List<String>?> records;
-
   /// Specifies the resource group where the DNS Zone (parent resource) exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags to assign to the resource.
   ///
   /// &gt; **Note:** either `records` OR `target_resource_id` must be specified, but not both.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The Azure resource id of the target object. Conflicts with `records`.
   late final pulumi.Output<String?> targetResourceId;
-
   /// The Time To Live (TTL) of the DNS record in seconds.
   late final pulumi.Output<int> ttl;
-
   /// Specifies the DNS Zone where the resource exists. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** The `zone_name` should be the name of resource `azure.dns.Zone` instead of `azure.privatedns.Zone`.
@@ -479,11 +472,11 @@ class ARecord extends pulumi.CustomResource {
     ARecordArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:dns/aRecord:ARecord',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:dns/aRecord:ARecord',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     fqdn = registerOutput<String>('fqdn');
     this.name = registerOutput<String>('name');
     records = registerOutput<List<String>?>('records');
@@ -512,11 +505,11 @@ class ARecord extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:dns/aRecord:ARecord',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:dns/aRecord:ARecord',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     fqdn = registerOutput<String>('fqdn');
     this.name = registerOutput<String>('name');
     records = registerOutput<List<String>?>('records');

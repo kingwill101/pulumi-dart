@@ -5,25 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFoldersFolder {
   /// The timestamp of when the folder was created
   final pulumi.Input<String> createTime;
-
   /// The timestamp of when the folder was requested to be deleted (if applicable)
   final pulumi.Input<String> deleteTime;
-
   /// The display name of the folder
   final pulumi.Input<String> displayName;
-
   /// Entity tag identifier of the folder
   final pulumi.Input<String> etag;
-
   /// The id of the folder
   final pulumi.Input<String> name;
-
   /// The parent id of the folder
   final pulumi.Input<String> parent;
-
   /// The lifecycle state of the folder
   final pulumi.Input<String> state;
-
   /// The timestamp of when the folder was last modified
   final pulumi.Input<String> updateTime;
 
@@ -73,3 +66,4 @@ class GetFoldersFolder {
     );
   }
 }
+

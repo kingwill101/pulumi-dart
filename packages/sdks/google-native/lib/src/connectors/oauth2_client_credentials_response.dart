@@ -7,7 +7,6 @@ import 'secret_response.dart';
 class Oauth2ClientCredentialsResponse {
   /// The client identifier.
   final pulumi.Input<String> clientId;
-
   /// Secret version reference containing the client secret.
   final pulumi.Input<SecretResponse> clientSecret;
 
@@ -22,22 +21,15 @@ class Oauth2ClientCredentialsResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'clientId': clientId,
-      'clientSecret':
-          pulumi.Input.mapInputValue<SecretResponse, Map<String, dynamic>>(
-            clientSecret,
-            (value) => value.toMap(),
-          ),
+      'clientSecret': pulumi.Input.mapInputValue<SecretResponse, Map<String, dynamic>>(clientSecret, (value) => value.toMap()),
     };
   }
 
   factory Oauth2ClientCredentialsResponse.fromMap(Map<String, dynamic> map) {
     return Oauth2ClientCredentialsResponse(
       clientId: pulumi.Input.fromValue(map['clientId'] as String),
-      clientSecret: pulumi.Input.fromValue(
-        SecretResponse.fromMap(
-          (map['clientSecret']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      clientSecret: pulumi.Input.fromValue(SecretResponse.fromMap((map['clientSecret']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

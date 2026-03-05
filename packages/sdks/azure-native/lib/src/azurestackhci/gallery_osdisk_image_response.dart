@@ -9,10 +9,14 @@ class GalleryOSDiskImageResponse {
 
   /// Creates a new [GalleryOSDiskImageResponse].
   /// [sizeInMB] This property indicates the size of the VHD to be created.
-  GalleryOSDiskImageResponse({required this.sizeInMB});
+  GalleryOSDiskImageResponse({
+    required this.sizeInMB,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'sizeInMB': sizeInMB};
+    return <String, dynamic>{
+      'sizeInMB': sizeInMB,
+    };
   }
 
   factory GalleryOSDiskImageResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class GalleryOSDiskImageResponse {
     );
   }
 }
+

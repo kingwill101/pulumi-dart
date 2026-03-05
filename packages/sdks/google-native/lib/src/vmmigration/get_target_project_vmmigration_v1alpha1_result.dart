@@ -1,19 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getTargetProject.
 class GetTargetProjectVmmigrationV1alpha1Result {
   /// The time this target project resource was created (not related to when the Compute Engine project it points to was created).
   final String createTime;
-
   /// The target project's description.
   final String description;
-
   /// The name of the target project.
   final String name;
-
   /// The target project ID (number) or project name.
   final String project;
-
   /// The last time the target project resource was updated.
   final String updateTime;
 
@@ -41,9 +38,7 @@ class GetTargetProjectVmmigrationV1alpha1Result {
     };
   }
 
-  factory GetTargetProjectVmmigrationV1alpha1Result.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetTargetProjectVmmigrationV1alpha1Result.fromMap(Map<String, dynamic> map) {
     return GetTargetProjectVmmigrationV1alpha1Result(
       createTime: map['createTime'] as String,
       description: map['description'] as String,
@@ -53,3 +48,4 @@ class GetTargetProjectVmmigrationV1alpha1Result {
     );
   }
 }
+

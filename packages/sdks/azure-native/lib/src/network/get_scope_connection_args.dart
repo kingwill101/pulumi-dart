@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetScopeConnectionArgs {
   /// The name of the network manager.
   final pulumi.Input<String> networkManagerName;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
-
   /// Name for the cross-tenant connection.
   final pulumi.Input<String> scopeConnectionName;
 
@@ -36,15 +34,10 @@ class GetScopeConnectionArgs {
 
   factory GetScopeConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetScopeConnectionArgs(
-      networkManagerName: pulumi.Input.fromValue(
-        map['networkManagerName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      scopeConnectionName: pulumi.Input.fromValue(
-        map['scopeConnectionName'] as String,
-      ),
+      networkManagerName: pulumi.Input.fromValue(map['networkManagerName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      scopeConnectionName: pulumi.Input.fromValue(map['scopeConnectionName'] as String),
     );
   }
 }
+

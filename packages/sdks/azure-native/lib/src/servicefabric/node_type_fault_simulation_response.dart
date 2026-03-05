@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NodeTypeFaultSimulationResponse {
   /// Node type name.
   final pulumi.Input<String>? nodeTypeName;
-
   /// Current or latest asynchronous operation identifier on the node type.
   final pulumi.Input<String>? operationId;
-
   /// Current or latest asynchronous operation status on the node type
   final pulumi.Input<String> operationStatus;
-
   /// Fault simulation status
   final pulumi.Input<String>? status;
 
@@ -39,22 +36,11 @@ class NodeTypeFaultSimulationResponse {
 
   factory NodeTypeFaultSimulationResponse.fromMap(Map<String, dynamic> map) {
     return NodeTypeFaultSimulationResponse(
-      nodeTypeName: (() {
-        final guardedValue = map['nodeTypeName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      operationId: (() {
-        final guardedValue = map['operationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      nodeTypeName: (() { final guardedValue = map['nodeTypeName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      operationId: (() { final guardedValue = map['operationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       operationStatus: pulumi.Input.fromValue(map['operationStatus'] as String),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

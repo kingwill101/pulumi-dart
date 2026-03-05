@@ -18,3 +18,4 @@ enum MonitoringSignalType {
     throw ArgumentError('Unknown MonitoringSignalType value: $value');
   }
 }
+

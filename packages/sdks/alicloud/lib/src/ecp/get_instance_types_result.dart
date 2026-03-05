@@ -23,11 +23,7 @@ class GetInstanceTypesResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'instanceTypes':
-          pulumi.Input.encodeList<
-            GetInstanceTypesInstanceType,
-            Map<String, dynamic>
-          >(instanceTypes, (value) => value.toMap()),
+      'instanceTypes': pulumi.Input.encodeList<GetInstanceTypesInstanceType, Map<String, dynamic>>(instanceTypes, (value) => value.toMap()),
       'outputFile': ?outputFile,
     };
   }
@@ -35,17 +31,9 @@ class GetInstanceTypesResult {
   factory GetInstanceTypesResult.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypesResult(
       id: map['id'] as String,
-      instanceTypes: pulumi.Input.decodeList<GetInstanceTypesInstanceType>(
-        map['instanceTypes']!,
-        (value) => GetInstanceTypesInstanceType.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      instanceTypes: pulumi.Input.decodeList<GetInstanceTypesInstanceType>(map['instanceTypes']!, (value) => GetInstanceTypesInstanceType.fromMap((value as Map).cast<String, dynamic>())),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

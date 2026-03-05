@@ -13,7 +13,10 @@ class GetDatastoreArgs {
   /// Creates a new [GetDatastoreArgs].
   /// [datastoreId] Required.
   /// [organizationId] Required.
-  GetDatastoreArgs({required this.datastoreId, required this.organizationId});
+  GetDatastoreArgs({
+    required this.datastoreId,
+    required this.organizationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,3 +32,4 @@ class GetDatastoreArgs {
     );
   }
 }
+

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBucketsBucketLogging {
   /// Bucket for storing access logs.
   final pulumi.Input<String> targetBucket;
-
   /// Prefix of the saved access log file paths.
   final pulumi.Input<String> targetPrefix;
 
@@ -31,3 +30,4 @@ class GetBucketsBucketLogging {
     );
   }
 }
+

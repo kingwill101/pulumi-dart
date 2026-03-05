@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetImageOsDisk {
   /// the URI in Azure storage of the blob used to create the image.
   final pulumi.Input<String> blobUri;
-
   /// the caching mode for the Data Disk, such as `ReadWrite`, `ReadOnly`, or `None`.
   final pulumi.Input<String> caching;
-
   /// the ID of the Managed Disk used as the Data Disk Image.
   final pulumi.Input<String> managedDiskId;
-
   /// the State of the OS used in the Image, such as `Generalized`.
   final pulumi.Input<String> osState;
-
   /// the type of Operating System used on the OS Disk. such as `Linux` or `Windows`.
   final pulumi.Input<String> osType;
-
   /// the size of this Data Disk in GB.
   final pulumi.Input<int> sizeGb;
 
@@ -59,3 +54,4 @@ class GetImageOsDisk {
     );
   }
 }
+

@@ -6,17 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VMwareToAzStackHCIReplicationExtensionModelCustomProperties {
   /// Gets or sets the ARM Id of the target AzStackHCI fabric.
   final pulumi.Input<String> azStackHciFabricArmId;
-
   /// Gets or sets the instance type.
   /// Expected value is 'VMwareToAzStackHCI'.
   final pulumi.Input<String> instanceType;
-
   /// Gets or sets the storage account Id.
   final pulumi.Input<String>? storageAccountId;
-
   /// Gets or sets the Sas Secret of storage account.
   final pulumi.Input<String>? storageAccountSasSecretName;
-
   /// Gets or sets the ARM Id of the source VMware fabric.
   final pulumi.Input<String> vmwareFabricArmId;
 
@@ -44,27 +40,14 @@ class VMwareToAzStackHCIReplicationExtensionModelCustomProperties {
     };
   }
 
-  factory VMwareToAzStackHCIReplicationExtensionModelCustomProperties.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VMwareToAzStackHCIReplicationExtensionModelCustomProperties.fromMap(Map<String, dynamic> map) {
     return VMwareToAzStackHCIReplicationExtensionModelCustomProperties(
-      azStackHciFabricArmId: pulumi.Input.fromValue(
-        map['azStackHciFabricArmId'] as String,
-      ),
+      azStackHciFabricArmId: pulumi.Input.fromValue(map['azStackHciFabricArmId'] as String),
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
-      storageAccountId: (() {
-        final guardedValue = map['storageAccountId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      storageAccountSasSecretName: (() {
-        final guardedValue = map['storageAccountSasSecretName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      vmwareFabricArmId: pulumi.Input.fromValue(
-        map['vmwareFabricArmId'] as String,
-      ),
+      storageAccountId: (() { final guardedValue = map['storageAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageAccountSasSecretName: (() { final guardedValue = map['storageAccountSasSecretName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      vmwareFabricArmId: pulumi.Input.fromValue(map['vmwareFabricArmId'] as String),
     );
   }
 }
+

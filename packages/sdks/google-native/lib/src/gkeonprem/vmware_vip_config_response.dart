@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VmwareVipConfigResponse {
   /// The VIP which you previously set aside for the Kubernetes API of this cluster.
   final pulumi.Input<String> controlPlaneVip;
-
   /// The VIP which you previously set aside for ingress traffic into this cluster.
   final pulumi.Input<String> ingressVip;
 
@@ -32,3 +31,4 @@ class VmwareVipConfigResponse {
     );
   }
 }
+

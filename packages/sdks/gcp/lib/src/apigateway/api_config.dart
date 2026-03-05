@@ -39,55 +39,42 @@ import 'api_config_state.dart';
 class ApiConfig extends pulumi.CustomResource {
   /// The API to attach the config to.
   late final pulumi.Output<String> api;
-
   /// Identifier to assign to the API Config. Must be unique within scope of the parent resource(api).
   late final pulumi.Output<String> apiConfigId;
-
   /// Creates a unique name beginning with the
   /// specified prefix. If this and api_config_id are unspecified, a random value is chosen for the name.
   late final pulumi.Output<String> apiConfigIdPrefix;
-
   /// A user-visible name for the API.
   late final pulumi.Output<String> displayName;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Immutable. Gateway specific configuration.
   /// If not specified, backend authentication will be set to use OIDC authentication using the default compute service account
   /// Structure is documented below.
   late final pulumi.Output<ApiConfigGatewayConfig?> gatewayConfig;
-
   /// gRPC service definition files. If specified, openapiDocuments must not be included.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> grpcServices;
-
   /// Resource labels to represent user-provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
   /// If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> managedServiceConfigs;
-
   /// The resource name of the API Config.
   late final pulumi.Output<String> name;
-
   /// OpenAPI specification documents. If specified, grpcServices and managedServiceConfigs must not be included.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> openapiDocuments;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// The ID of the associated Service Config (https://cloud.google.com/service-infrastructure/docs/glossary#config).
   late final pulumi.Output<String> serviceConfigId;
 
@@ -100,35 +87,22 @@ class ApiConfig extends pulumi.CustomResource {
     ApiConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:apigateway/apiConfig:ApiConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:apigateway/apiConfig:ApiConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     api = registerOutput<String>('api');
     apiConfigId = registerOutput<String>('apiConfigId');
     apiConfigIdPrefix = registerOutput<String>('apiConfigIdPrefix');
     displayName = registerOutput<String>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    gatewayConfig = registerOutput<ApiConfigGatewayConfig?>(
-      'gatewayConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApiConfigGatewayConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    gatewayConfig = registerOutput<ApiConfigGatewayConfig?>('gatewayConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiConfigGatewayConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     grpcServices = registerOutput<List<Map<String, dynamic>>?>('grpcServices');
     labels = registerOutput<Map<String, String>?>('labels');
-    managedServiceConfigs = registerOutput<List<Map<String, dynamic>>?>(
-      'managedServiceConfigs',
-    );
+    managedServiceConfigs = registerOutput<List<Map<String, dynamic>>?>('managedServiceConfigs');
     this.name = registerOutput<String>('name');
-    openapiDocuments = registerOutput<List<Map<String, dynamic>>?>(
-      'openapiDocuments',
-    );
+    openapiDocuments = registerOutput<List<Map<String, dynamic>>?>('openapiDocuments');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     serviceConfigId = registerOutput<String>('serviceConfigId');
@@ -152,35 +126,22 @@ class ApiConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:apigateway/apiConfig:ApiConfig',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:apigateway/apiConfig:ApiConfig',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     api = registerOutput<String>('api');
     apiConfigId = registerOutput<String>('apiConfigId');
     apiConfigIdPrefix = registerOutput<String>('apiConfigIdPrefix');
     displayName = registerOutput<String>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    gatewayConfig = registerOutput<ApiConfigGatewayConfig?>(
-      'gatewayConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApiConfigGatewayConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    gatewayConfig = registerOutput<ApiConfigGatewayConfig?>('gatewayConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiConfigGatewayConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     grpcServices = registerOutput<List<Map<String, dynamic>>?>('grpcServices');
     labels = registerOutput<Map<String, String>?>('labels');
-    managedServiceConfigs = registerOutput<List<Map<String, dynamic>>?>(
-      'managedServiceConfigs',
-    );
+    managedServiceConfigs = registerOutput<List<Map<String, dynamic>>?>('managedServiceConfigs');
     this.name = registerOutput<String>('name');
-    openapiDocuments = registerOutput<List<Map<String, dynamic>>?>(
-      'openapiDocuments',
-    );
+    openapiDocuments = registerOutput<List<Map<String, dynamic>>?>('openapiDocuments');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     serviceConfigId = registerOutput<String>('serviceConfigId');

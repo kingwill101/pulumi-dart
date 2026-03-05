@@ -304,16 +304,12 @@ import 'mover_target_endpoint_state.dart';
 class MoverTargetEndpoint extends pulumi.CustomResource {
   /// Specifies a description for the Storage Mover Target Endpoint.
   late final pulumi.Output<String?> description;
-
   /// Specifies the name which should be used for this Storage Mover Target Endpoint. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies the ID of the storage account for this Storage Mover Target Endpoint. Changing this forces a new resource to be created.
   late final pulumi.Output<String> storageAccountId;
-
   /// Specifies the name of the storage blob container for this Storage Mover Target Endpoint. Changing this forces a new resource to be created.
   late final pulumi.Output<String> storageContainerName;
-
   /// Specifies the ID of the storage mover for this Storage Mover Target Endpoint. Changing this forces a new resource to be created.
   late final pulumi.Output<String> storageMoverId;
 
@@ -326,11 +322,11 @@ class MoverTargetEndpoint extends pulumi.CustomResource {
     MoverTargetEndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:storage/moverTargetEndpoint:MoverTargetEndpoint',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:storage/moverTargetEndpoint:MoverTargetEndpoint',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     storageAccountId = registerOutput<String>('storageAccountId');
@@ -356,11 +352,11 @@ class MoverTargetEndpoint extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:storage/moverTargetEndpoint:MoverTargetEndpoint',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:storage/moverTargetEndpoint:MoverTargetEndpoint',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     storageAccountId = registerOutput<String>('storageAccountId');

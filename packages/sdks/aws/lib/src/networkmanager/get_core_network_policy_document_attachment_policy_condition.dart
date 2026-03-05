@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCoreNetworkPolicyDocumentAttachmentPolicyCondition {
   /// string value
   final pulumi.Input<String>? key;
-
   /// Valid values include: `equals`, `not-equals`, `contains`, `begins-with`.
   final pulumi.Input<String>? operator;
-
   /// Must be `routing-policy-label`.
   final pulumi.Input<String> type;
-
   /// Routing policy label to match.
   final pulumi.Input<String>? value;
 
@@ -36,26 +33,13 @@ class GetCoreNetworkPolicyDocumentAttachmentPolicyCondition {
     };
   }
 
-  factory GetCoreNetworkPolicyDocumentAttachmentPolicyCondition.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetCoreNetworkPolicyDocumentAttachmentPolicyCondition.fromMap(Map<String, dynamic> map) {
     return GetCoreNetworkPolicyDocumentAttachmentPolicyCondition(
-      key: (() {
-        final guardedValue = map['key'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      operator: (() {
-        final guardedValue = map['operator'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      operator: (() { final guardedValue = map['operator']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

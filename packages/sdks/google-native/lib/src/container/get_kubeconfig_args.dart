@@ -12,10 +12,14 @@ class GetKubeconfigArgs {
 
   /// Creates a new [GetKubeconfigArgs].
   /// [self] Required.
-  GetKubeconfigArgs({required this.self});
+  GetKubeconfigArgs({
+    required this.self,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'__self__': self};
+    return <String, dynamic>{
+      '__self__': self,
+    };
   }
 
   factory GetKubeconfigArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetKubeconfigArgs {
     );
   }
 }
+

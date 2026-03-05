@@ -12,14 +12,15 @@ class GetBucketReplicationConfigurationRuleDestinationEncryptionConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'replicaKmsKeyId': replicaKmsKeyId};
+    return <String, dynamic>{
+      'replicaKmsKeyId': replicaKmsKeyId,
+    };
   }
 
-  factory GetBucketReplicationConfigurationRuleDestinationEncryptionConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetBucketReplicationConfigurationRuleDestinationEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return GetBucketReplicationConfigurationRuleDestinationEncryptionConfiguration(
       replicaKmsKeyId: pulumi.Input.fromValue(map['replicaKmsKeyId'] as String),
     );
   }
 }
+

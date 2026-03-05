@@ -5,30 +5,24 @@ import 'get_clusters_cluster_operation_policy_cluster_auto_upgrade.dart';
 
 class GetClustersClusterOperationPolicy {
   /// Cluster automatic upgrade.
-  final pulumi.Input<GetClustersClusterOperationPolicyClusterAutoUpgrade>
-  clusterAutoUpgrade;
+  final pulumi.Input<GetClustersClusterOperationPolicyClusterAutoUpgrade> clusterAutoUpgrade;
 
   /// Creates a new [GetClustersClusterOperationPolicy].
   /// [clusterAutoUpgrade] Cluster automatic upgrade.
-  GetClustersClusterOperationPolicy({required this.clusterAutoUpgrade});
+  GetClustersClusterOperationPolicy({
+    required this.clusterAutoUpgrade,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'clusterAutoUpgrade':
-          pulumi.Input.mapInputValue<
-            GetClustersClusterOperationPolicyClusterAutoUpgrade,
-            Map<String, dynamic>
-          >(clusterAutoUpgrade, (value) => value.toMap()),
+      'clusterAutoUpgrade': pulumi.Input.mapInputValue<GetClustersClusterOperationPolicyClusterAutoUpgrade, Map<String, dynamic>>(clusterAutoUpgrade, (value) => value.toMap()),
     };
   }
 
   factory GetClustersClusterOperationPolicy.fromMap(Map<String, dynamic> map) {
     return GetClustersClusterOperationPolicy(
-      clusterAutoUpgrade: pulumi.Input.fromValue(
-        GetClustersClusterOperationPolicyClusterAutoUpgrade.fromMap(
-          (map['clusterAutoUpgrade']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      clusterAutoUpgrade: pulumi.Input.fromValue(GetClustersClusterOperationPolicyClusterAutoUpgrade.fromMap((map['clusterAutoUpgrade']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

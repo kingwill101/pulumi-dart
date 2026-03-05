@@ -9,31 +9,20 @@ class EventSourceMappingDestinationConfig {
 
   /// Creates a new [EventSourceMappingDestinationConfig].
   /// [onFailure] Destination configuration for failed invocations. See below.
-  EventSourceMappingDestinationConfig({this.onFailure});
+  EventSourceMappingDestinationConfig({
+    this.onFailure,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'onFailure':
-          ?pulumi.Input.mapOptionalInputValue<
-            EventSourceMappingDestinationConfigOnFailure,
-            Map<String, dynamic>
-          >(onFailure, (value) => value.toMap()),
+      'onFailure': ?pulumi.Input.mapOptionalInputValue<EventSourceMappingDestinationConfigOnFailure, Map<String, dynamic>>(onFailure, (value) => value.toMap()),
     };
   }
 
-  factory EventSourceMappingDestinationConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EventSourceMappingDestinationConfig.fromMap(Map<String, dynamic> map) {
     return EventSourceMappingDestinationConfig(
-      onFailure: (() {
-        final guardedValue = map['onFailure'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          EventSourceMappingDestinationConfigOnFailure.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      onFailure: (() { final guardedValue = map['onFailure']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EventSourceMappingDestinationConfigOnFailure.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

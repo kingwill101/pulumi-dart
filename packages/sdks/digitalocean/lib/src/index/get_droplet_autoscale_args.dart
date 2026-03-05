@@ -9,31 +9,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDropletAutoscaleArgs {
   /// The ID of Droplet Autoscale pool.
   final pulumi.Input<String>? id;
-
   /// The name of Droplet Autoscale pool.
   final pulumi.Input<String>? name;
 
   /// Creates a new [GetDropletAutoscaleArgs].
   /// [id] The ID of Droplet Autoscale pool.
   /// [name] The name of Droplet Autoscale pool.
-  GetDropletAutoscaleArgs({this.id, this.name});
+  GetDropletAutoscaleArgs({
+    this.id,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': ?id, 'name': ?name};
+    return <String, dynamic>{
+      'id': ?id,
+      'name': ?name,
+    };
   }
 
   factory GetDropletAutoscaleArgs.fromMap(Map<String, dynamic> map) {
     return GetDropletAutoscaleArgs(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

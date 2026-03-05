@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMeshMembershipArgs {
   /// The name of the mesh membership.
   final pulumi.Input<String> meshMembershipName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the managed cluster resource.
   final pulumi.Input<String> resourceName;
 
@@ -36,13 +34,10 @@ class GetMeshMembershipArgs {
 
   factory GetMeshMembershipArgs.fromMap(Map<String, dynamic> map) {
     return GetMeshMembershipArgs(
-      meshMembershipName: pulumi.Input.fromValue(
-        map['meshMembershipName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      meshMembershipName: pulumi.Input.fromValue(map['meshMembershipName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
+

@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GatewayHostnameBindingKeyVaultLastStatusResponse {
   /// The last status of the Key Vault certificate fetch process.
   final pulumi.Input<String> code;
-
   /// The last time the Key Vault certificate fetch process was successful. Only when the fetch process has succeeded at least once and current state is failed.  The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
   final pulumi.Input<String> lastSuccessTimeStampUtc;
-
   /// The last time the Key Vault certificate fetch process was attempted. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
   final pulumi.Input<String> timeStampUtc;
 
@@ -30,15 +28,12 @@ class GatewayHostnameBindingKeyVaultLastStatusResponse {
     };
   }
 
-  factory GatewayHostnameBindingKeyVaultLastStatusResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GatewayHostnameBindingKeyVaultLastStatusResponse.fromMap(Map<String, dynamic> map) {
     return GatewayHostnameBindingKeyVaultLastStatusResponse(
       code: pulumi.Input.fromValue(map['code'] as String),
-      lastSuccessTimeStampUtc: pulumi.Input.fromValue(
-        map['lastSuccessTimeStampUtc'] as String,
-      ),
+      lastSuccessTimeStampUtc: pulumi.Input.fromValue(map['lastSuccessTimeStampUtc'] as String),
       timeStampUtc: pulumi.Input.fromValue(map['timeStampUtc'] as String),
     );
   }
 }
+

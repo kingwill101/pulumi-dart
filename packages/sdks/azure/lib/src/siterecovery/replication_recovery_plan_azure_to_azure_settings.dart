@@ -5,15 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReplicationRecoveryPlanAzureToAzureSettings {
   /// The Edge Zone within the Azure Region where the VM exists. Changing this forces a new Site Recovery Replication Recovery Plan to be created.
   final pulumi.Input<String>? primaryEdgeZone;
-
   /// The Availability Zone in which the VM is located. Changing this forces a new Site Recovery Replication Recovery Plan to be created.
   final pulumi.Input<String>? primaryZone;
-
   /// The Edge Zone within the Azure Region where the VM is recovered. Changing this forces a new Site Recovery Replication Recovery Plan to be created.
   ///
   /// &gt; **Note:** `primary_edge_zone` and `recovery_edge_zone` must be specified together.
   final pulumi.Input<String>? recoveryEdgeZone;
-
   /// The Availability Zone in which the VM is recovered. Changing this forces a new Site Recovery Replication Recovery Plan to be created.
   ///
   /// &gt; **Note:** `primary_zone` and `recovery_zone` must be specified together.
@@ -40,30 +37,13 @@ class ReplicationRecoveryPlanAzureToAzureSettings {
     };
   }
 
-  factory ReplicationRecoveryPlanAzureToAzureSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ReplicationRecoveryPlanAzureToAzureSettings.fromMap(Map<String, dynamic> map) {
     return ReplicationRecoveryPlanAzureToAzureSettings(
-      primaryEdgeZone: (() {
-        final guardedValue = map['primaryEdgeZone'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      primaryZone: (() {
-        final guardedValue = map['primaryZone'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      recoveryEdgeZone: (() {
-        final guardedValue = map['recoveryEdgeZone'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      recoveryZone: (() {
-        final guardedValue = map['recoveryZone'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      primaryEdgeZone: (() { final guardedValue = map['primaryEdgeZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      primaryZone: (() { final guardedValue = map['primaryZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      recoveryEdgeZone: (() { final guardedValue = map['recoveryEdgeZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      recoveryZone: (() { final guardedValue = map['recoveryZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

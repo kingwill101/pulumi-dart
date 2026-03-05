@@ -7,22 +7,16 @@ import 'tag_response.dart';
 class AwsIamServerCertificatePropertiesResponse {
   /// Amazon Resource Name (ARN) of the server certificate
   final pulumi.Input<String>? arn;
-
   /// Property certificateBody
   final pulumi.Input<String>? certificateBody;
-
   /// Property certificateChain
   final pulumi.Input<String>? certificateChain;
-
   /// Property path
   final pulumi.Input<String>? path;
-
   /// Property privateKey
   final pulumi.Input<String>? privateKey;
-
   /// Property serverCertificateName
   final pulumi.Input<String>? serverCertificateName;
-
   /// Property tags
   final pulumi.Input<List<TagResponse>>? tags;
 
@@ -52,66 +46,20 @@ class AwsIamServerCertificatePropertiesResponse {
       'path': ?path,
       'privateKey': ?privateKey,
       'serverCertificateName': ?serverCertificateName,
-      'tags':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<TagResponse>,
-            List<Map<String, dynamic>>
-          >(
-            tags,
-            (value) =>
-                pulumi.Input.encodeList<TagResponse, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'tags': ?pulumi.Input.mapOptionalInputValue<List<TagResponse>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<TagResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory AwsIamServerCertificatePropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AwsIamServerCertificatePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsIamServerCertificatePropertiesResponse(
-      arn: (() {
-        final guardedValue = map['arn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      certificateBody: (() {
-        final guardedValue = map['certificateBody'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      certificateChain: (() {
-        final guardedValue = map['certificateChain'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      path: (() {
-        final guardedValue = map['path'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      privateKey: (() {
-        final guardedValue = map['privateKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serverCertificateName: (() {
-        final guardedValue = map['serverCertificateName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<TagResponse>(
-            guardedValue,
-            (value) =>
-                TagResponse.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      certificateBody: (() { final guardedValue = map['certificateBody']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      certificateChain: (() { final guardedValue = map['certificateChain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateKey: (() { final guardedValue = map['privateKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serverCertificateName: (() { final guardedValue = map['serverCertificateName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TagResponse>(guardedValue, (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

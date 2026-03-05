@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SubscriberSubscriberIdentity {
   /// The AWS Regions where Security Lake is automatically enabled.
   final pulumi.Input<String> externalId;
-
   /// Provides encryption details of Amazon Security Lake object.
   final pulumi.Input<String> principal;
 
@@ -18,7 +17,10 @@ class SubscriberSubscriberIdentity {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'externalId': externalId, 'principal': principal};
+    return <String, dynamic>{
+      'externalId': externalId,
+      'principal': principal,
+    };
   }
 
   factory SubscriberSubscriberIdentity.fromMap(Map<String, dynamic> map) {
@@ -28,3 +30,4 @@ class SubscriberSubscriberIdentity {
     );
   }
 }
+

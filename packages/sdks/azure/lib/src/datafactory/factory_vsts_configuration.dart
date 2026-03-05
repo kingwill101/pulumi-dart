@@ -5,22 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FactoryVstsConfiguration {
   /// Specifies the VSTS account name.
   final pulumi.Input<String> accountName;
-
   /// Specifies the branch of the repository to get code from.
   final pulumi.Input<String> branchName;
-
   /// Specifies the name of the VSTS project.
   final pulumi.Input<String> projectName;
-
   /// Is automated publishing enabled? Defaults to `true`.
   final pulumi.Input<bool>? publishingEnabled;
-
   /// Specifies the name of the git repository.
   final pulumi.Input<String> repositoryName;
-
   /// Specifies the root folder within the repository. Set to `/` for the top level.
   final pulumi.Input<String> rootFolder;
-
   /// Specifies the Tenant ID associated with the VSTS account.
   final pulumi.Input<String> tenantId;
 
@@ -59,14 +53,11 @@ class FactoryVstsConfiguration {
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
       branchName: pulumi.Input.fromValue(map['branchName'] as String),
       projectName: pulumi.Input.fromValue(map['projectName'] as String),
-      publishingEnabled: (() {
-        final guardedValue = map['publishingEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      publishingEnabled: (() { final guardedValue = map['publishingEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       repositoryName: pulumi.Input.fromValue(map['repositoryName'] as String),
       rootFolder: pulumi.Input.fromValue(map['rootFolder'] as String),
       tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
     );
   }
 }
+

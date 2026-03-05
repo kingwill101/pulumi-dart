@@ -8,21 +8,20 @@ class ResourceDeploymentScriptAzureCliContainer {
 
   /// Creates a new [ResourceDeploymentScriptAzureCliContainer].
   /// [containerGroupName] Container group name, if not specified then the name will get auto-generated. For more information, please refer to the [Container Configuration](https://learn.microsoft.com/en-us/rest/api/resources/deployment-scripts/create?tabs=HTTP#containerconfiguration) documentation.
-  ResourceDeploymentScriptAzureCliContainer({this.containerGroupName});
+  ResourceDeploymentScriptAzureCliContainer({
+    this.containerGroupName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'containerGroupName': ?containerGroupName};
+    return <String, dynamic>{
+      'containerGroupName': ?containerGroupName,
+    };
   }
 
-  factory ResourceDeploymentScriptAzureCliContainer.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResourceDeploymentScriptAzureCliContainer.fromMap(Map<String, dynamic> map) {
     return ResourceDeploymentScriptAzureCliContainer(
-      containerGroupName: (() {
-        final guardedValue = map['containerGroupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      containerGroupName: (() { final guardedValue = map['containerGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JWTAuthenticatorValidationRuleResponse {
   /// The CEL expression used to validate the claim or attribute.
   final pulumi.Input<String> expression;
-
   /// The validation error message.
   final pulumi.Input<String>? message;
 
@@ -19,19 +18,17 @@ class JWTAuthenticatorValidationRuleResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'expression': expression, 'message': ?message};
+    return <String, dynamic>{
+      'expression': expression,
+      'message': ?message,
+    };
   }
 
-  factory JWTAuthenticatorValidationRuleResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory JWTAuthenticatorValidationRuleResponse.fromMap(Map<String, dynamic> map) {
     return JWTAuthenticatorValidationRuleResponse(
       expression: pulumi.Input.fromValue(map['expression'] as String),
-      message: (() {
-        final guardedValue = map['message'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      message: (() { final guardedValue = map['message']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

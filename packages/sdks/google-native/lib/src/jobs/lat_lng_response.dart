@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LatLngResponse {
   /// The latitude in degrees. It must be in the range [-90.0, +90.0].
   final pulumi.Input<double> latitude;
-
   /// The longitude in degrees. It must be in the range [-180.0, +180.0].
   final pulumi.Input<double> longitude;
 
   /// Creates a new [LatLngResponse].
   /// [latitude] The latitude in degrees. It must be in the range [-90.0, +90.0].
   /// [longitude] The longitude in degrees. It must be in the range [-180.0, +180.0].
-  LatLngResponse({required this.latitude, required this.longitude});
+  LatLngResponse({
+    required this.latitude,
+    required this.longitude,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'latitude': latitude, 'longitude': longitude};
+    return <String, dynamic>{
+      'latitude': latitude,
+      'longitude': longitude,
+    };
   }
 
   factory LatLngResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class LatLngResponse {
     );
   }
 }
+

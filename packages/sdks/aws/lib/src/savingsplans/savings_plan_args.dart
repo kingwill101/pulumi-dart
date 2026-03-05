@@ -12,17 +12,13 @@ class SavingsPlanArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> commitment;
-
   /// The time at which to purchase the Savings Plan, in UTC format (YYYY-MM-DDTHH:MM:SSZ). If not specified, the plan is purchased immediately. Plans with a future purchase time are placed in `queued` state and can be deleted before they become active.
   final pulumi.Input<String>? purchaseTime;
-
   /// The unique ID of a Savings Plan offering. You can find available offerings using the `aws savingsplans describe-savings-plans-offerings` CLI command.
   final pulumi.Input<String> savingsPlanOfferingId;
-
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<SavingsPlanTimeouts>? timeouts;
-
   /// The up-front payment amount.
   final pulumi.Input<String>? upfrontPaymentAmount;
 
@@ -48,11 +44,7 @@ class SavingsPlanArgs {
       'purchaseTime': ?purchaseTime,
       'savingsPlanOfferingId': savingsPlanOfferingId,
       'tags': ?tags,
-      'timeouts':
-          ?pulumi.Input.mapOptionalInputValue<
-            SavingsPlanTimeouts,
-            Map<String, dynamic>
-          >(timeouts, (value) => value.toMap()),
+      'timeouts': ?pulumi.Input.mapOptionalInputValue<SavingsPlanTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
       'upfrontPaymentAmount': ?upfrontPaymentAmount,
     };
   }
@@ -60,35 +52,12 @@ class SavingsPlanArgs {
   factory SavingsPlanArgs.fromMap(Map<String, dynamic> map) {
     return SavingsPlanArgs(
       commitment: pulumi.Input.fromValue(map['commitment'] as String),
-      purchaseTime: (() {
-        final guardedValue = map['purchaseTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      savingsPlanOfferingId: pulumi.Input.fromValue(
-        map['savingsPlanOfferingId'] as String,
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      timeouts: (() {
-        final guardedValue = map['timeouts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SavingsPlanTimeouts.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      upfrontPaymentAmount: (() {
-        final guardedValue = map['upfrontPaymentAmount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      purchaseTime: (() { final guardedValue = map['purchaseTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      savingsPlanOfferingId: pulumi.Input.fromValue(map['savingsPlanOfferingId'] as String),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      timeouts: (() { final guardedValue = map['timeouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SavingsPlanTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      upfrontPaymentAmount: (() { final guardedValue = map['upfrontPaymentAmount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

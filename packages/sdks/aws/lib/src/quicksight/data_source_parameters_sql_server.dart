@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataSourceParametersSqlServer {
   /// The database to which to connect.
   final pulumi.Input<String> database;
-
   /// The host to which to connect.
   final pulumi.Input<String> host;
-
   /// The warehouse to which to connect.
   final pulumi.Input<int> port;
 
@@ -23,7 +21,11 @@ class DataSourceParametersSqlServer {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'database': database, 'host': host, 'port': port};
+    return <String, dynamic>{
+      'database': database,
+      'host': host,
+      'port': port,
+    };
   }
 
   factory DataSourceParametersSqlServer.fromMap(Map<String, dynamic> map) {
@@ -34,3 +36,4 @@ class DataSourceParametersSqlServer {
     );
   }
 }
+

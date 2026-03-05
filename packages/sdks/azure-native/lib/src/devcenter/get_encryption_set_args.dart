@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEncryptionSetArgs {
   /// The name of the devcenter.
   final pulumi.Input<String> devCenterName;
-
   /// The name of the devcenter encryption set.
   final pulumi.Input<String> encryptionSetName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -37,12 +35,9 @@ class GetEncryptionSetArgs {
   factory GetEncryptionSetArgs.fromMap(Map<String, dynamic> map) {
     return GetEncryptionSetArgs(
       devCenterName: pulumi.Input.fromValue(map['devCenterName'] as String),
-      encryptionSetName: pulumi.Input.fromValue(
-        map['encryptionSetName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      encryptionSetName: pulumi.Input.fromValue(map['encryptionSetName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

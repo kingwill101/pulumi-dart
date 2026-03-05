@@ -10,38 +10,20 @@ class Context {
 
   /// Creates a new [Context].
   /// [rules] A list of RPC context rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
-  Context({this.rules});
+  Context({
+    this.rules,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'rules':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ContextRule>,
-            List<Map<String, dynamic>>
-          >(
-            rules,
-            (value) =>
-                pulumi.Input.encodeList<ContextRule, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'rules': ?pulumi.Input.mapOptionalInputValue<List<ContextRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<ContextRule, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory Context.fromMap(Map<String, dynamic> map) {
     return Context(
-      rules: (() {
-        final guardedValue = map['rules'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ContextRule>(
-            guardedValue,
-            (value) =>
-                ContextRule.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
+      rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ContextRule>(guardedValue, (value) => ContextRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

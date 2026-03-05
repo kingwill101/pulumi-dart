@@ -5,18 +5,13 @@ import 'google_devtools_remotebuildexecution_admin_v1alpha_feature_policy_respon
 /// Result data returned by getInstance.
 class GetInstanceResult {
   /// The policy to define whether or not RBE features can be used or how they can be used.
-  final GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse
-  featurePolicy;
-
+  final GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse featurePolicy;
   /// The location is a GCP region. Currently only `us-central1` is supported.
   final String location;
-
   /// Whether stack driver logging is enabled for the instance.
   final bool loggingEnabled;
-
   /// Instance resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`. Name should not be populated when creating an instance since it is provided in the `instance_id` field.
   final String name;
-
   /// State of the instance.
   final String state;
 
@@ -46,10 +41,7 @@ class GetInstanceResult {
 
   factory GetInstanceResult.fromMap(Map<String, dynamic> map) {
     return GetInstanceResult(
-      featurePolicy:
-          GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse.fromMap(
-            (map['featurePolicy']! as Map).cast<String, dynamic>(),
-          ),
+      featurePolicy: GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse.fromMap((map['featurePolicy']! as Map).cast<String, dynamic>()),
       location: map['location'] as String,
       loggingEnabled: map['loggingEnabled'] as bool,
       name: map['name'] as String,
@@ -57,3 +49,4 @@ class GetInstanceResult {
     );
   }
 }
+

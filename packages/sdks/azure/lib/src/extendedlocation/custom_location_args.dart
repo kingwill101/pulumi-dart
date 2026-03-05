@@ -10,28 +10,20 @@ import 'custom_location_authentication.dart';
 class CustomLocationArgs {
   /// An `authentication` block as defined below.
   final pulumi.Input<CustomLocationAuthentication>? authentication;
-
   /// Specifies the list of Cluster Extension IDs.
   final pulumi.Input<List<String>> clusterExtensionIds;
-
   /// Specifies the display name of the Custom Location.
   final pulumi.Input<String>? displayName;
-
   /// Specifies the host resource ID. Changing this forces a new resource to be created.
   final pulumi.Input<String> hostResourceId;
-
   /// Specifies the host type of the Custom Location. The only possible values is `KubernetesCluster`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? hostType;
-
   /// Specifies the Azure location where the Custom Location should exist. Changing this forces a new Custom Location to be created.
   final pulumi.Input<String>? location;
-
   /// Specifies the name which should be used for this Custom Location. Changing this forces a new Custom Location to be created.
   final pulumi.Input<String>? name;
-
   /// Specifies the namespace of the Custom Location. Changing this forces a new Custom Location to be created.
   final pulumi.Input<String> namespace;
-
   /// Specifies the name of the Resource Group where the Custom Location should exist. Changing this forces a new Custom Location to be created.
   final pulumi.Input<String> resourceGroupName;
 
@@ -59,11 +51,7 @@ class CustomLocationArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authentication':
-          ?pulumi.Input.mapOptionalInputValue<
-            CustomLocationAuthentication,
-            Map<String, dynamic>
-          >(authentication, (value) => value.toMap()),
+      'authentication': ?pulumi.Input.mapOptionalInputValue<CustomLocationAuthentication, Map<String, dynamic>>(authentication, (value) => value.toMap()),
       'clusterExtensionIds': clusterExtensionIds,
       'displayName': ?displayName,
       'hostResourceId': hostResourceId,
@@ -77,43 +65,16 @@ class CustomLocationArgs {
 
   factory CustomLocationArgs.fromMap(Map<String, dynamic> map) {
     return CustomLocationArgs(
-      authentication: (() {
-        final guardedValue = map['authentication'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CustomLocationAuthentication.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      clusterExtensionIds: pulumi.Input.fromValue(
-        (map['clusterExtensionIds'] as List).cast<String>(),
-      ),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      authentication: (() { final guardedValue = map['authentication']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CustomLocationAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      clusterExtensionIds: pulumi.Input.fromValue((map['clusterExtensionIds'] as List).cast<String>()),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       hostResourceId: pulumi.Input.fromValue(map['hostResourceId'] as String),
-      hostType: (() {
-        final guardedValue = map['hostType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      hostType: (() { final guardedValue = map['hostType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       namespace: pulumi.Input.fromValue(map['namespace'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

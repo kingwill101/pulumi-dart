@@ -8,10 +8,14 @@ class VpcIpamOperatingRegion {
 
   /// Creates a new [VpcIpamOperatingRegion].
   /// [regionName] The name of the Region you want to add to the IPAM.
-  VpcIpamOperatingRegion({required this.regionName});
+  VpcIpamOperatingRegion({
+    required this.regionName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'regionName': regionName};
+    return <String, dynamic>{
+      'regionName': regionName,
+    };
   }
 
   factory VpcIpamOperatingRegion.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class VpcIpamOperatingRegion {
     );
   }
 }
+

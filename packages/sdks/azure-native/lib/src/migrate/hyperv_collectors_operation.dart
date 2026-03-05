@@ -221,30 +221,21 @@ import 'system_data_response.dart';
 /// ```
 class HypervCollectorsOperation extends pulumi.CustomResource {
   /// Gets or sets the collector agent properties.
-  late final pulumi.Output<CollectorAgentPropertiesBaseResponse?>
-  agentProperties;
-
+  late final pulumi.Output<CollectorAgentPropertiesBaseResponse?> agentProperties;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Gets the Timestamp when collector was created.
   late final pulumi.Output<String> createdTimestamp;
-
   /// Gets the discovery site id.
   late final pulumi.Output<String?> discoverySiteId;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The status of the last operation.
   late final pulumi.Output<String?> provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Timestamp when collector was last updated.
   late final pulumi.Output<String> updatedTimestamp;
 
@@ -257,36 +248,18 @@ class HypervCollectorsOperation extends pulumi.CustomResource {
     HypervCollectorsOperationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:migrate:HypervCollectorsOperation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    agentProperties = registerOutput<CollectorAgentPropertiesBaseResponse?>(
-      'agentProperties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CollectorAgentPropertiesBaseResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure-native:migrate:HypervCollectorsOperation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    agentProperties = registerOutput<CollectorAgentPropertiesBaseResponse?>('agentProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CollectorAgentPropertiesBaseResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createdTimestamp = registerOutput<String>('createdTimestamp');
     discoverySiteId = registerOutput<String?>('discoverySiteId');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String?>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     updatedTimestamp = registerOutput<String>('updatedTimestamp');
   }

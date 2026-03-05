@@ -13,16 +13,15 @@ class AgentcoreAgentRuntimeWorkloadIdentityDetail {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'workloadIdentityArn': workloadIdentityArn};
+    return <String, dynamic>{
+      'workloadIdentityArn': workloadIdentityArn,
+    };
   }
 
-  factory AgentcoreAgentRuntimeWorkloadIdentityDetail.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentcoreAgentRuntimeWorkloadIdentityDetail.fromMap(Map<String, dynamic> map) {
     return AgentcoreAgentRuntimeWorkloadIdentityDetail(
-      workloadIdentityArn: pulumi.Input.fromValue(
-        map['workloadIdentityArn'] as String,
-      ),
+      workloadIdentityArn: pulumi.Input.fromValue(map['workloadIdentityArn'] as String),
     );
   }
 }
+

@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailContainerDetailResponse {
   /// The names of the previously failed CustomJob for the main container executions. The list includes the all attempts in chronological order.
   final pulumi.Input<List<String>> failedMainJobs;
-
   /// The names of the previously failed CustomJob for the pre-caching-check container executions. This job will be available if the PipelineJob.pipeline_spec specifies the `pre_caching_check` hook in the lifecycle events. The list includes the all attempts in chronological order.
   final pulumi.Input<List<String>> failedPreCachingCheckJobs;
-
   /// The name of the CustomJob for the main container execution.
   final pulumi.Input<String> mainJob;
-
   /// The name of the CustomJob for the pre-caching-check container execution. This job will be available if the PipelineJob.pipeline_spec specifies the `pre_caching_check` hook in the lifecycle events.
   final pulumi.Input<String> preCachingCheckJob;
 
@@ -37,20 +34,13 @@ class GoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailContainerDetailRespo
     };
   }
 
-  factory GoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailContainerDetailResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailContainerDetailResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailContainerDetailResponse(
-      failedMainJobs: pulumi.Input.fromValue(
-        (map['failedMainJobs'] as List).cast<String>(),
-      ),
-      failedPreCachingCheckJobs: pulumi.Input.fromValue(
-        (map['failedPreCachingCheckJobs'] as List).cast<String>(),
-      ),
+      failedMainJobs: pulumi.Input.fromValue((map['failedMainJobs'] as List).cast<String>()),
+      failedPreCachingCheckJobs: pulumi.Input.fromValue((map['failedPreCachingCheckJobs'] as List).cast<String>()),
       mainJob: pulumi.Input.fromValue(map['mainJob'] as String),
-      preCachingCheckJob: pulumi.Input.fromValue(
-        map['preCachingCheckJob'] as String,
-      ),
+      preCachingCheckJob: pulumi.Input.fromValue(map['preCachingCheckJob'] as String),
     );
   }
 }
+

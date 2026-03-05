@@ -260,34 +260,24 @@ import 'api_operation_state.dart';
 class ApiOperation extends pulumi.CustomResource {
   /// The Name of the API Management Service where the API exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> apiManagementName;
-
   /// The name of the API within the API Management Service where this API Operation should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> apiName;
-
   /// A description for this API Operation, which may include HTML formatting tags.
   late final pulumi.Output<String?> description;
-
   /// The Display Name for this API Management Operation.
   late final pulumi.Output<String> displayName;
-
   /// The HTTP Method used for this API Management Operation, like `GET`, `DELETE`, `PUT` or `POST` - but not limited to these values.
   late final pulumi.Output<String> method;
-
   /// A unique identifier for this API Operation. Changing this forces a new resource to be created.
   late final pulumi.Output<String> operationId;
-
   /// A `request` block as defined below.
   late final pulumi.Output<ApiOperationRequest> request;
-
   /// The Name of the Resource Group in which the API Management Service exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// One or more `response` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> responses;
-
   /// One or more `template_parameter` blocks as defined below. Required if `url_template` contains one or more parameters.
   late final pulumi.Output<List<Map<String, dynamic>>?> templateParameters;
-
   /// The relative URL Template identifying the target resource for this operation, which may include parameters.
   late final pulumi.Output<String> urlTemplate;
 
@@ -300,32 +290,21 @@ class ApiOperation extends pulumi.CustomResource {
     ApiOperationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/apiOperation:ApiOperation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:apimanagement/apiOperation:ApiOperation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     apiName = registerOutput<String>('apiName');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     method = registerOutput<String>('method');
     operationId = registerOutput<String>('operationId');
-    request = registerOutput<ApiOperationRequest>(
-      'request',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApiOperationRequest.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    request = registerOutput<ApiOperationRequest>('request', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiOperationRequest.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
     responses = registerOutput<List<Map<String, dynamic>>?>('responses');
-    templateParameters = registerOutput<List<Map<String, dynamic>>?>(
-      'templateParameters',
-    );
+    templateParameters = registerOutput<List<Map<String, dynamic>>?>('templateParameters');
     urlTemplate = registerOutput<String>('urlTemplate');
   }
 
@@ -347,32 +326,21 @@ class ApiOperation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/apiOperation:ApiOperation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:apimanagement/apiOperation:ApiOperation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     apiName = registerOutput<String>('apiName');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     method = registerOutput<String>('method');
     operationId = registerOutput<String>('operationId');
-    request = registerOutput<ApiOperationRequest>(
-      'request',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApiOperationRequest.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    request = registerOutput<ApiOperationRequest>('request', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiOperationRequest.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
     responses = registerOutput<List<Map<String, dynamic>>?>('responses');
-    templateParameters = registerOutput<List<Map<String, dynamic>>?>(
-      'templateParameters',
-    );
+    templateParameters = registerOutput<List<Map<String, dynamic>>?>('templateParameters');
     urlTemplate = registerOutput<String>('urlTemplate');
   }
 }

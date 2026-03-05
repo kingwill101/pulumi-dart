@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExpressSyncState {
   /// The name of the OSS Bucket.
   final pulumi.Input<String>? bucketName;
-
   /// The prefix of the OSS Bucket.
   final pulumi.Input<String>? bucketPrefix;
-
   /// The region of the OSS Bucket.
   final pulumi.Input<String>? bucketRegion;
-
   /// The description of the Express Sync. The length of the name is limited to `1` to `255` characters.
   final pulumi.Input<String>? description;
-
   /// The name of the ExpressSync. The length of the name is limited to `1` to `128` characters. It can contain uppercase and lowercase letters, Chinese characters, numbers, English periods (.), underscores (_), or hyphens (-), and must start with  letters.
   final pulumi.Input<String>? expressSyncName;
 
@@ -45,31 +41,12 @@ class ExpressSyncState {
 
   factory ExpressSyncState.fromMap(Map<String, dynamic> map) {
     return ExpressSyncState(
-      bucketName: (() {
-        final guardedValue = map['bucketName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      bucketPrefix: (() {
-        final guardedValue = map['bucketPrefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      bucketRegion: (() {
-        final guardedValue = map['bucketRegion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      expressSyncName: (() {
-        final guardedValue = map['expressSyncName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      bucketName: (() { final guardedValue = map['bucketName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      bucketPrefix: (() { final guardedValue = map['bucketPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      bucketRegion: (() { final guardedValue = map['bucketRegion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      expressSyncName: (() { final guardedValue = map['expressSyncName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -535,55 +535,38 @@ import 'access_strategy_state.dart';
 class AccessStrategy extends pulumi.CustomResource {
   /// The primary/secondary switchover policy for address pool groups. Valid values: `AUTO`, `DEFAULT`, `FAILOVER`.
   late final pulumi.Output<String> accessMode;
-
   /// The type of the primary address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
   late final pulumi.Output<String> defaultAddrPoolType;
-
   /// List of primary address pool collections. See `default_addr_pools` below for details.
   late final pulumi.Output<List<Map<String, dynamic>>> defaultAddrPools;
-
   /// Specifies whether to enable scheduling optimization for latency resolution for the primary address pool group. Valid values: `OPEN`, `CLOSE`.
   late final pulumi.Output<String?> defaultLatencyOptimization;
-
   /// The load balancing policy of the primary address pool group. Valid values: `ALL_RR`, `RATIO`. **NOTE:** The `default_lba_strategy` is required under the condition that `strategy_mode` is `GEO`.
   late final pulumi.Output<String?> defaultLbaStrategy;
-
   /// The maximum number of addresses returned by the primary address pool set. **NOTE:** The `default_max_return_addr_num` is required under the condition that `strategy_mode` is `LATENCY`.
   late final pulumi.Output<int?> defaultMaxReturnAddrNum;
-
   /// The minimum number of available addresses for the primary address pool set.
   late final pulumi.Output<int> defaultMinAvailableAddrNum;
-
   /// The type of the secondary address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
   late final pulumi.Output<String?> failoverAddrPoolType;
-
   /// List of backup address pool sets. See `failover_addr_pools` below for details.
   late final pulumi.Output<List<Map<String, dynamic>>?> failoverAddrPools;
-
   /// Specifies whether to enable scheduling optimization for latency resolution for the secondary address pool group. Valid values: `OPEN`, `CLOSE`.
   late final pulumi.Output<String?> failoverLatencyOptimization;
-
   /// The load balancing policy of the secondary address pool group. Valid values: `ALL_RR`, `RATIO`.
   late final pulumi.Output<String?> failoverLbaStrategy;
-
   /// The maximum number of returned addresses in the standby address pool.
   late final pulumi.Output<int?> failoverMaxReturnAddrNum;
-
   /// The minimum number of available addresses in the standby address pool.
   late final pulumi.Output<int?> failoverMinAvailableAddrNum;
-
   /// The Id of the associated instance.
   late final pulumi.Output<String> instanceId;
-
   /// The lang.
   late final pulumi.Output<String?> lang;
-
   /// The source regions. See `lines` below for details. **NOTE:** The `lines` is required under the condition that `strategy_mode` is `GEO`.
   late final pulumi.Output<List<Map<String, dynamic>>?> lines;
-
   /// The type of the access policy. Valid values: `GEO` or `LATENCY`. `GEO`: based on geographic location. `LATENCY`: Based on delay.
   late final pulumi.Output<String> strategyMode;
-
   /// The name of the access policy.
   late final pulumi.Output<String> strategyName;
 
@@ -596,36 +579,24 @@ class AccessStrategy extends pulumi.CustomResource {
     AccessStrategyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dns/accessStrategy:AccessStrategy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dns/accessStrategy:AccessStrategy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessMode = registerOutput<String>('accessMode');
     defaultAddrPoolType = registerOutput<String>('defaultAddrPoolType');
-    defaultAddrPools = registerOutput<List<Map<String, dynamic>>>(
-      'defaultAddrPools',
-    );
-    defaultLatencyOptimization = registerOutput<String?>(
-      'defaultLatencyOptimization',
-    );
+    defaultAddrPools = registerOutput<List<Map<String, dynamic>>>('defaultAddrPools');
+    defaultLatencyOptimization = registerOutput<String?>('defaultLatencyOptimization');
     defaultLbaStrategy = registerOutput<String?>('defaultLbaStrategy');
     defaultMaxReturnAddrNum = registerOutput<int?>('defaultMaxReturnAddrNum');
-    defaultMinAvailableAddrNum = registerOutput<int>(
-      'defaultMinAvailableAddrNum',
-    );
+    defaultMinAvailableAddrNum = registerOutput<int>('defaultMinAvailableAddrNum');
     failoverAddrPoolType = registerOutput<String?>('failoverAddrPoolType');
-    failoverAddrPools = registerOutput<List<Map<String, dynamic>>?>(
-      'failoverAddrPools',
-    );
-    failoverLatencyOptimization = registerOutput<String?>(
-      'failoverLatencyOptimization',
-    );
+    failoverAddrPools = registerOutput<List<Map<String, dynamic>>?>('failoverAddrPools');
+    failoverLatencyOptimization = registerOutput<String?>('failoverLatencyOptimization');
     failoverLbaStrategy = registerOutput<String?>('failoverLbaStrategy');
     failoverMaxReturnAddrNum = registerOutput<int?>('failoverMaxReturnAddrNum');
-    failoverMinAvailableAddrNum = registerOutput<int?>(
-      'failoverMinAvailableAddrNum',
-    );
+    failoverMinAvailableAddrNum = registerOutput<int?>('failoverMinAvailableAddrNum');
     instanceId = registerOutput<String>('instanceId');
     lang = registerOutput<String?>('lang');
     lines = registerOutput<List<Map<String, dynamic>>?>('lines');
@@ -651,36 +622,24 @@ class AccessStrategy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dns/accessStrategy:AccessStrategy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dns/accessStrategy:AccessStrategy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessMode = registerOutput<String>('accessMode');
     defaultAddrPoolType = registerOutput<String>('defaultAddrPoolType');
-    defaultAddrPools = registerOutput<List<Map<String, dynamic>>>(
-      'defaultAddrPools',
-    );
-    defaultLatencyOptimization = registerOutput<String?>(
-      'defaultLatencyOptimization',
-    );
+    defaultAddrPools = registerOutput<List<Map<String, dynamic>>>('defaultAddrPools');
+    defaultLatencyOptimization = registerOutput<String?>('defaultLatencyOptimization');
     defaultLbaStrategy = registerOutput<String?>('defaultLbaStrategy');
     defaultMaxReturnAddrNum = registerOutput<int?>('defaultMaxReturnAddrNum');
-    defaultMinAvailableAddrNum = registerOutput<int>(
-      'defaultMinAvailableAddrNum',
-    );
+    defaultMinAvailableAddrNum = registerOutput<int>('defaultMinAvailableAddrNum');
     failoverAddrPoolType = registerOutput<String?>('failoverAddrPoolType');
-    failoverAddrPools = registerOutput<List<Map<String, dynamic>>?>(
-      'failoverAddrPools',
-    );
-    failoverLatencyOptimization = registerOutput<String?>(
-      'failoverLatencyOptimization',
-    );
+    failoverAddrPools = registerOutput<List<Map<String, dynamic>>?>('failoverAddrPools');
+    failoverLatencyOptimization = registerOutput<String?>('failoverLatencyOptimization');
     failoverLbaStrategy = registerOutput<String?>('failoverLbaStrategy');
     failoverMaxReturnAddrNum = registerOutput<int?>('failoverMaxReturnAddrNum');
-    failoverMinAvailableAddrNum = registerOutput<int?>(
-      'failoverMinAvailableAddrNum',
-    );
+    failoverMinAvailableAddrNum = registerOutput<int?>('failoverMinAvailableAddrNum');
     instanceId = registerOutput<String>('instanceId');
     lang = registerOutput<String?>('lang');
     lines = registerOutput<List<Map<String, dynamic>>?>('lines');

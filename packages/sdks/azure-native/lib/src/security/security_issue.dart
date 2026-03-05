@@ -19,3 +19,4 @@ enum SecurityIssue {
     throw ArgumentError('Unknown SecurityIssue value: $value');
   }
 }
+

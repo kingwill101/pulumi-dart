@@ -549,82 +549,58 @@ import 'instance_to_connect_vpc_ip_block.dart';
 class Instance extends pulumi.CustomResource {
   /// (Available since v1.228.0) The CIDR blocks that can be accessed by the Vpc integration instance.
   late final pulumi.Output<String> connectCidrBlocks;
-
   /// Creation time.
   late final pulumi.Output<String> createTime;
-
   /// Indicates whether to delete the IP block that the VPC can access, conflict with `to_connect_vpc_ip_block`.
   late final pulumi.Output<String?> deleteVpcIpBlock;
-
   /// The time of the instance package. Valid values:
   /// - PricingCycle is **Month**, indicating monthly payment. The value range is **1** to **9**.
   /// - PricingCycle is **Year**, indicating annual payment. The value range is **1** to **3**.
   ///
   /// When the value of&gt; ChargeType is **PrePaid**, this parameter is available and must be passed in.
   late final pulumi.Output<int?> duration;
-
   /// Specifies whether IPv6 egress capability is enabled.
   late final pulumi.Output<bool?> egressIpv6Enable;
-
   /// Https policy.
   late final pulumi.Output<String> httpsPolicy;
-
   /// The VpcID which the client at.
   late final pulumi.Output<String?> ingressVpcId;
-
   /// The user ID that the VpcID of `ingress_vpc_id` belongs to.
   late final pulumi.Output<String?> ingressVpcOwnerId;
-
   /// The VSwitch ID that belongs to the Vpc of `ingress_vpc_id`. Required when `ingress_vpc_id` is set.
   late final pulumi.Output<String?> ingressVswitchId;
-
   /// The CIDR block for the instance deployment. Valid values are:
   /// - `192.168.0.0/16`.
   /// - `172.16.0.0/12`.
   late final pulumi.Output<String> instanceCidr;
-
   /// Instance name.
   late final pulumi.Output<String> instanceName;
-
   /// Instance spec.
   late final pulumi.Output<String> instanceSpec;
-
   /// The type of the instance. Valid values are:
   late final pulumi.Output<String> instanceType;
-
   /// Specifies whether IPv6 ingress capability is enabled.
   late final pulumi.Output<bool?> ipv6Enabled;
-
   /// The payment type of the resource.
   late final pulumi.Output<String> paymentType;
-
   /// The subscription instance is of the subscription year or month type. This parameter is required when the Payment type is PrePaid. The value range is as follows:
   late final pulumi.Output<String?> pricingCycle;
-
   /// Specifies whether to skip the WAIT_SWITCH status of instance when modifying instance spec. Works only when instance spec change.
   late final pulumi.Output<bool?> skipWaitSwitch;
-
   /// The status of the resource.
   late final pulumi.Output<String> status;
-
   /// Does ipv6 support.
   late final pulumi.Output<bool> supportIpv6;
-
   /// The additional IP block that the VPC integration instance can access, conflict with `delete_vpc_ip_block`. See `to_connect_vpc_ip_block` below.
   late final pulumi.Output<InstanceToConnectVpcIpBlock?> toConnectVpcIpBlock;
-
   /// User's VpcID.
   late final pulumi.Output<String?> userVpcId;
-
   /// Whether the slb of the Vpc supports.
   late final pulumi.Output<bool?> vpcSlbIntranetEnable;
-
   /// The zone where the instance is deployed.
   late final pulumi.Output<String> zoneId;
-
   /// Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `zone_vswitch_security_group` below.
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  zoneVswitchSecurityGroups;
+  late final pulumi.Output<List<Map<String, dynamic>>?> zoneVswitchSecurityGroups;
 
   /// Creates a new [Instance].
   /// [name] The Pulumi resource name.
@@ -635,11 +611,11 @@ class Instance extends pulumi.CustomResource {
     InstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:apigateway/instance:Instance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:apigateway/instance:Instance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     connectCidrBlocks = registerOutput<String>('connectCidrBlocks');
     createTime = registerOutput<String>('createTime');
     deleteVpcIpBlock = registerOutput<String?>('deleteVpcIpBlock');
@@ -659,22 +635,11 @@ class Instance extends pulumi.CustomResource {
     skipWaitSwitch = registerOutput<bool?>('skipWaitSwitch');
     status = registerOutput<String>('status');
     supportIpv6 = registerOutput<bool>('supportIpv6');
-    toConnectVpcIpBlock = registerOutput<InstanceToConnectVpcIpBlock?>(
-      'toConnectVpcIpBlock',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceToConnectVpcIpBlock.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    toConnectVpcIpBlock = registerOutput<InstanceToConnectVpcIpBlock?>('toConnectVpcIpBlock', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceToConnectVpcIpBlock.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     userVpcId = registerOutput<String?>('userVpcId');
     vpcSlbIntranetEnable = registerOutput<bool?>('vpcSlbIntranetEnable');
     zoneId = registerOutput<String>('zoneId');
-    zoneVswitchSecurityGroups = registerOutput<List<Map<String, dynamic>>?>(
-      'zoneVswitchSecurityGroups',
-    );
+    zoneVswitchSecurityGroups = registerOutput<List<Map<String, dynamic>>?>('zoneVswitchSecurityGroups');
   }
 
   /// Gets an existing [Instance] resource's state with the given [name] and [id].
@@ -695,11 +660,11 @@ class Instance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:apigateway/instance:Instance',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:apigateway/instance:Instance',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     connectCidrBlocks = registerOutput<String>('connectCidrBlocks');
     createTime = registerOutput<String>('createTime');
     deleteVpcIpBlock = registerOutput<String?>('deleteVpcIpBlock');
@@ -719,21 +684,10 @@ class Instance extends pulumi.CustomResource {
     skipWaitSwitch = registerOutput<bool?>('skipWaitSwitch');
     status = registerOutput<String>('status');
     supportIpv6 = registerOutput<bool>('supportIpv6');
-    toConnectVpcIpBlock = registerOutput<InstanceToConnectVpcIpBlock?>(
-      'toConnectVpcIpBlock',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceToConnectVpcIpBlock.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    toConnectVpcIpBlock = registerOutput<InstanceToConnectVpcIpBlock?>('toConnectVpcIpBlock', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceToConnectVpcIpBlock.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     userVpcId = registerOutput<String?>('userVpcId');
     vpcSlbIntranetEnable = registerOutput<bool?>('vpcSlbIntranetEnable');
     zoneId = registerOutput<String>('zoneId');
-    zoneVswitchSecurityGroups = registerOutput<List<Map<String, dynamic>>?>(
-      'zoneVswitchSecurityGroups',
-    );
+    zoneVswitchSecurityGroups = registerOutput<List<Map<String, dynamic>>?>('zoneVswitchSecurityGroups');
   }
 }

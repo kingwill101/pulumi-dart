@@ -233,47 +233,32 @@ import 'security_solution_state.dart';
 class SecuritySolution extends pulumi.CustomResource {
   /// A `additional_workspace` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> additionalWorkspaces;
-
   /// A list of disabled data sources for the Iot Security Solution. Possible value is `TwinData`.
   late final pulumi.Output<List<String>?> disabledDataSources;
-
   /// Specifies the Display Name for this Iot Security Solution.
   late final pulumi.Output<String> displayName;
-
   /// Is the Iot Security Solution enabled? Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
-
   /// A list of data which is to exported to analytic workspace. Valid values include `RawEvents`.
   late final pulumi.Output<List<String>?> eventsToExports;
-
   /// Specifies the IoT Hub resource IDs to which this Iot Security Solution is applied.
   late final pulumi.Output<List<String>> iothubIds;
-
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// Specifies the Log Analytics Workspace ID to which the security data will be sent.
   late final pulumi.Output<String?> logAnalyticsWorkspaceId;
-
   /// Should IP addressed be unmasked in the log? Defaults to `false`.
   late final pulumi.Output<bool?> logUnmaskedIpsEnabled;
-
   /// Specifies the name of the Iot Security Solution. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// An Azure Resource Graph query used to set the resources monitored.
   late final pulumi.Output<String> queryForResources;
-
   /// A list of subscription Ids on which the user defined resources query should be executed.
   late final pulumi.Output<List<String>> querySubscriptionIds;
-
   /// A `recommendations_enabled` block of options to enable or disable as defined below.
-  late final pulumi.Output<SecuritySolutionRecommendationsEnabled>
-  recommendationsEnabled;
-
+  late final pulumi.Output<SecuritySolutionRecommendationsEnabled> recommendationsEnabled;
   /// Specifies the name of the resource group in which to create the Iot Security Solution. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -286,38 +271,24 @@ class SecuritySolution extends pulumi.CustomResource {
     SecuritySolutionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:iot/securitySolution:SecuritySolution',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    additionalWorkspaces = registerOutput<List<Map<String, dynamic>>?>(
-      'additionalWorkspaces',
-    );
+          'azure:iot/securitySolution:SecuritySolution',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    additionalWorkspaces = registerOutput<List<Map<String, dynamic>>?>('additionalWorkspaces');
     disabledDataSources = registerOutput<List<String>?>('disabledDataSources');
     displayName = registerOutput<String>('displayName');
     enabled = registerOutput<bool?>('enabled');
     eventsToExports = registerOutput<List<String>?>('eventsToExports');
     iothubIds = registerOutput<List<String>>('iothubIds');
     location = registerOutput<String>('location');
-    logAnalyticsWorkspaceId = registerOutput<String?>(
-      'logAnalyticsWorkspaceId',
-    );
+    logAnalyticsWorkspaceId = registerOutput<String?>('logAnalyticsWorkspaceId');
     logUnmaskedIpsEnabled = registerOutput<bool?>('logUnmaskedIpsEnabled');
     this.name = registerOutput<String>('name');
     queryForResources = registerOutput<String>('queryForResources');
     querySubscriptionIds = registerOutput<List<String>>('querySubscriptionIds');
-    recommendationsEnabled =
-        registerOutput<SecuritySolutionRecommendationsEnabled>(
-          'recommendationsEnabled',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SecuritySolutionRecommendationsEnabled.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    recommendationsEnabled = registerOutput<SecuritySolutionRecommendationsEnabled>('recommendationsEnabled', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecuritySolutionRecommendationsEnabled.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
     tags = registerOutput<Map<String, String>?>('tags');
   }
@@ -340,38 +311,24 @@ class SecuritySolution extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:iot/securitySolution:SecuritySolution',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    additionalWorkspaces = registerOutput<List<Map<String, dynamic>>?>(
-      'additionalWorkspaces',
-    );
+          'azure:iot/securitySolution:SecuritySolution',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    additionalWorkspaces = registerOutput<List<Map<String, dynamic>>?>('additionalWorkspaces');
     disabledDataSources = registerOutput<List<String>?>('disabledDataSources');
     displayName = registerOutput<String>('displayName');
     enabled = registerOutput<bool?>('enabled');
     eventsToExports = registerOutput<List<String>?>('eventsToExports');
     iothubIds = registerOutput<List<String>>('iothubIds');
     location = registerOutput<String>('location');
-    logAnalyticsWorkspaceId = registerOutput<String?>(
-      'logAnalyticsWorkspaceId',
-    );
+    logAnalyticsWorkspaceId = registerOutput<String?>('logAnalyticsWorkspaceId');
     logUnmaskedIpsEnabled = registerOutput<bool?>('logUnmaskedIpsEnabled');
     this.name = registerOutput<String>('name');
     queryForResources = registerOutput<String>('queryForResources');
     querySubscriptionIds = registerOutput<List<String>>('querySubscriptionIds');
-    recommendationsEnabled =
-        registerOutput<SecuritySolutionRecommendationsEnabled>(
-          'recommendationsEnabled',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SecuritySolutionRecommendationsEnabled.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    recommendationsEnabled = registerOutput<SecuritySolutionRecommendationsEnabled>('recommendationsEnabled', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecuritySolutionRecommendationsEnabled.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
     tags = registerOutput<Map<String, String>?>('tags');
   }

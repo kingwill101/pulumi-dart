@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceGroupMemberRelationshipProperties {
   /// The relationship target resource id.
   final pulumi.Input<String> targetId;
-
   /// The relationship target tenant id.
   final pulumi.Input<String>? targetTenant;
 
@@ -25,16 +24,11 @@ class ServiceGroupMemberRelationshipProperties {
     };
   }
 
-  factory ServiceGroupMemberRelationshipProperties.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ServiceGroupMemberRelationshipProperties.fromMap(Map<String, dynamic> map) {
     return ServiceGroupMemberRelationshipProperties(
       targetId: pulumi.Input.fromValue(map['targetId'] as String),
-      targetTenant: (() {
-        final guardedValue = map['targetTenant'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      targetTenant: (() { final guardedValue = map['targetTenant']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

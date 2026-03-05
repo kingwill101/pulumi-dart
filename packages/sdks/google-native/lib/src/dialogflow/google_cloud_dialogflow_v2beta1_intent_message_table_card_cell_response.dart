@@ -14,14 +14,15 @@ class GoogleCloudDialogflowV2beta1IntentMessageTableCardCellResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'text': text};
+    return <String, dynamic>{
+      'text': text,
+    };
   }
 
-  factory GoogleCloudDialogflowV2beta1IntentMessageTableCardCellResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDialogflowV2beta1IntentMessageTableCardCellResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1IntentMessageTableCardCellResponse(
       text: pulumi.Input.fromValue(map['text'] as String),
     );
   }
 }
+

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KubernetesConfigurationPrivateLinkScopeProperties {
   /// Managed Cluster ARM ID for the private link scope  (Required)
   final pulumi.Input<String> clusterResourceId;
-
   /// Indicates whether machines associated with the private link scope can also use public Azure Arc service endpoints.
   final pulumi.Input<String>? publicNetworkAccess;
 
@@ -25,18 +24,11 @@ class KubernetesConfigurationPrivateLinkScopeProperties {
     };
   }
 
-  factory KubernetesConfigurationPrivateLinkScopeProperties.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory KubernetesConfigurationPrivateLinkScopeProperties.fromMap(Map<String, dynamic> map) {
     return KubernetesConfigurationPrivateLinkScopeProperties(
-      clusterResourceId: pulumi.Input.fromValue(
-        map['clusterResourceId'] as String,
-      ),
-      publicNetworkAccess: (() {
-        final guardedValue = map['publicNetworkAccess'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      clusterResourceId: pulumi.Input.fromValue(map['clusterResourceId'] as String),
+      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

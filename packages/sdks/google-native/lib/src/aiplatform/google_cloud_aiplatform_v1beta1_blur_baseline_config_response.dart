@@ -14,14 +14,15 @@ class GoogleCloudAiplatformV1beta1BlurBaselineConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'maxBlurSigma': maxBlurSigma};
+    return <String, dynamic>{
+      'maxBlurSigma': maxBlurSigma,
+    };
   }
 
-  factory GoogleCloudAiplatformV1beta1BlurBaselineConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudAiplatformV1beta1BlurBaselineConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1BlurBaselineConfigResponse(
       maxBlurSigma: pulumi.Input.fromValue(map['maxBlurSigma'] as double),
     );
   }
 }
+

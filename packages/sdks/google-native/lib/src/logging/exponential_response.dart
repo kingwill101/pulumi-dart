@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExponentialResponse {
   /// Must be greater than 1.
   final pulumi.Input<double> growthFactor;
-
   /// Must be greater than 0.
   final pulumi.Input<int> numFiniteBuckets;
-
   /// Must be greater than 0.
   final pulumi.Input<double> scale;
 
@@ -39,3 +37,4 @@ class ExponentialResponse {
     );
   }
 }
+

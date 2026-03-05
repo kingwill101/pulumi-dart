@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceIamPolicyArgs {
   /// The name of the instance.
   final pulumi.Input<String> instance;
-
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -17,20 +16,23 @@ class GetInstanceIamPolicyArgs {
   /// Creates a new [GetInstanceIamPolicyArgs].
   /// [instance] The name of the instance.
   /// [project] The ID of the project in which the resource belongs. If it
-  GetInstanceIamPolicyArgs({required this.instance, this.project});
+  GetInstanceIamPolicyArgs({
+    required this.instance,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'instance': instance, 'project': ?project};
+    return <String, dynamic>{
+      'instance': instance,
+      'project': ?project,
+    };
   }
 
   factory GetInstanceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceIamPolicyArgs(
       instance: pulumi.Input.fromValue(map['instance'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

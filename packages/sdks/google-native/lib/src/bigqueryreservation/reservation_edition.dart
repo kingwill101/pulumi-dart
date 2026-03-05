@@ -17,3 +17,4 @@ enum ReservationEdition {
     throw ArgumentError('Unknown ReservationEdition value: $value');
   }
 }
+

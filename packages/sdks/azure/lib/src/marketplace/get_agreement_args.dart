@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAgreementArgs {
   /// The Offer of the Marketplace Image.
   final pulumi.Input<String> offer;
-
   /// The Plan of the Marketplace Image.
   final pulumi.Input<String> plan;
-
   /// The Publisher of the Marketplace Image.
   final pulumi.Input<String> publisher;
 
@@ -42,3 +40,4 @@ class GetAgreementArgs {
     );
   }
 }
+

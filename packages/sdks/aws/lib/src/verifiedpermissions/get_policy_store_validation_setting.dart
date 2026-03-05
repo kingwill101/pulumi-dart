@@ -7,10 +7,14 @@ class GetPolicyStoreValidationSetting {
 
   /// Creates a new [GetPolicyStoreValidationSetting].
   /// [mode] Required.
-  GetPolicyStoreValidationSetting({required this.mode});
+  GetPolicyStoreValidationSetting({
+    required this.mode,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'mode': mode};
+    return <String, dynamic>{
+      'mode': mode,
+    };
   }
 
   factory GetPolicyStoreValidationSetting.fromMap(Map<String, dynamic> map) {
@@ -19,3 +23,4 @@ class GetPolicyStoreValidationSetting {
     );
   }
 }
+

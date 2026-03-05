@@ -1278,118 +1278,78 @@ import 'system_data_response.dart';
 class ServerGroupCluster extends pulumi.CustomResource {
   /// Indicates whether the cluster was created using AAD authentication.
   late final pulumi.Output<String> aadAuthEnabled;
-
   /// The administrator's login name of the servers in the cluster.
   late final pulumi.Output<String> administratorLogin;
-
   /// Authentication configuration of a cluster.
   late final pulumi.Output<ServerGroupClusterAuthConfigResponse?> authConfig;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The Citus extension version on all cluster servers.
   late final pulumi.Output<String?> citusVersion;
-
   /// If public access is enabled on coordinator.
   late final pulumi.Output<bool?> coordinatorEnablePublicIpAccess;
-
   /// The edition of a coordinator server (default: GeneralPurpose). Required for creation.
   late final pulumi.Output<String?> coordinatorServerEdition;
-
   /// The storage of a server in MB. Required for creation. See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
   late final pulumi.Output<int?> coordinatorStorageQuotaInMb;
-
   /// The vCores count of a server (max: 96). Required for creation. See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
   late final pulumi.Output<int?> coordinatorVCores;
-
   /// The data encryption properties of a cluster.
-  late final pulumi.Output<ServerGroupClusterDataEncryptionResponse?>
-  dataEncryption;
-
+  late final pulumi.Output<ServerGroupClusterDataEncryptionResponse?> dataEncryption;
   /// The database name of the cluster. Only one database per cluster is supported.
   late final pulumi.Output<String?> databaseName;
-
   /// The earliest restore point time (ISO8601 format) for the cluster.
   late final pulumi.Output<String> earliestRestoreTime;
-
   /// If cluster backup is stored in another Azure region in addition to the copy of the backup stored in the cluster's region. Enabled only at the time of cluster creation.
   late final pulumi.Output<bool?> enableGeoBackup;
-
   /// If high availability (HA) is enabled or not for the cluster.
   late final pulumi.Output<bool?> enableHa;
-
   /// If distributed tables are placed on coordinator or not. Should be set to 'true' on single node clusters. Requires shard rebalancing after value is changed.
   late final pulumi.Output<bool?> enableShardsOnCoordinator;
-
   /// Describes the identity of the cluster.
   late final pulumi.Output<IdentityPropertiesResponse?> identity;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// Maintenance window of a cluster.
-  late final pulumi.Output<ServerGroupClusterMaintenanceWindowResponse?>
-  maintenanceWindow;
-
+  late final pulumi.Output<ServerGroupClusterMaintenanceWindowResponse?> maintenanceWindow;
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Worker node count of the cluster. When node count is 0, it represents a single node configuration with the ability to create distributed tables on that node. 2 or more worker nodes represent multi-node configuration. Node count value cannot be 1. Required for creation.
   late final pulumi.Output<int?> nodeCount;
-
   /// If public access is enabled on worker nodes.
   late final pulumi.Output<bool?> nodeEnablePublicIpAccess;
-
   /// The edition of a node server (default: MemoryOptimized).
   late final pulumi.Output<String?> nodeServerEdition;
-
   /// The storage in MB on each worker node. See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
   late final pulumi.Output<int?> nodeStorageQuotaInMb;
-
   /// The compute in vCores on each worker node (max: 104). See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
   late final pulumi.Output<int?> nodeVCores;
-
   /// Indicates whether the cluster was created with a password or using AAD authentication.
   late final pulumi.Output<String> passwordEnabled;
-
   /// Date and time in UTC (ISO8601 format) for cluster restore.
   late final pulumi.Output<String?> pointInTimeUTC;
-
   /// The major PostgreSQL version on all cluster servers.
   late final pulumi.Output<String?> postgresqlVersion;
-
   /// Preferred primary availability zone (AZ) for all cluster servers.
   late final pulumi.Output<String?> preferredPrimaryZone;
-
   /// The private endpoint connections for a cluster.
-  late final pulumi.Output<List<Map<String, dynamic>>>
-  privateEndpointConnections;
-
+  late final pulumi.Output<List<Map<String, dynamic>>> privateEndpointConnections;
   /// Provisioning state of the cluster
   late final pulumi.Output<String> provisioningState;
-
   /// The array of read replica clusters.
   late final pulumi.Output<List<String>> readReplicas;
-
   /// The list of server names in the cluster
   late final pulumi.Output<List<Map<String, dynamic>>> serverNames;
-
   /// The Azure region of source cluster for read replica clusters.
   late final pulumi.Output<String?> sourceLocation;
-
   /// The resource id of source cluster for read replica clusters.
   late final pulumi.Output<String?> sourceResourceId;
-
   /// A state of a cluster/server that is visible to user.
   late final pulumi.Output<String> state;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -1402,79 +1362,32 @@ class ServerGroupCluster extends pulumi.CustomResource {
     ServerGroupClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:dbforpostgresql:ServerGroupCluster',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:dbforpostgresql:ServerGroupCluster',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aadAuthEnabled = registerOutput<String>('aadAuthEnabled');
     administratorLogin = registerOutput<String>('administratorLogin');
-    authConfig = registerOutput<ServerGroupClusterAuthConfigResponse?>(
-      'authConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServerGroupClusterAuthConfigResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    authConfig = registerOutput<ServerGroupClusterAuthConfigResponse?>('authConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerGroupClusterAuthConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     citusVersion = registerOutput<String?>('citusVersion');
-    coordinatorEnablePublicIpAccess = registerOutput<bool?>(
-      'coordinatorEnablePublicIpAccess',
-    );
-    coordinatorServerEdition = registerOutput<String?>(
-      'coordinatorServerEdition',
-    );
-    coordinatorStorageQuotaInMb = registerOutput<int?>(
-      'coordinatorStorageQuotaInMb',
-    );
+    coordinatorEnablePublicIpAccess = registerOutput<bool?>('coordinatorEnablePublicIpAccess');
+    coordinatorServerEdition = registerOutput<String?>('coordinatorServerEdition');
+    coordinatorStorageQuotaInMb = registerOutput<int?>('coordinatorStorageQuotaInMb');
     coordinatorVCores = registerOutput<int?>('coordinatorVCores');
-    dataEncryption = registerOutput<ServerGroupClusterDataEncryptionResponse?>(
-      'dataEncryption',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServerGroupClusterDataEncryptionResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    dataEncryption = registerOutput<ServerGroupClusterDataEncryptionResponse?>('dataEncryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerGroupClusterDataEncryptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     databaseName = registerOutput<String?>('databaseName');
     earliestRestoreTime = registerOutput<String>('earliestRestoreTime');
     enableGeoBackup = registerOutput<bool?>('enableGeoBackup');
     enableHa = registerOutput<bool?>('enableHa');
-    enableShardsOnCoordinator = registerOutput<bool?>(
-      'enableShardsOnCoordinator',
-    );
-    identity = registerOutput<IdentityPropertiesResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IdentityPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    enableShardsOnCoordinator = registerOutput<bool?>('enableShardsOnCoordinator');
+    identity = registerOutput<IdentityPropertiesResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
-    maintenanceWindow =
-        registerOutput<ServerGroupClusterMaintenanceWindowResponse?>(
-          'maintenanceWindow',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ServerGroupClusterMaintenanceWindowResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    maintenanceWindow = registerOutput<ServerGroupClusterMaintenanceWindowResponse?>('maintenanceWindow', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerGroupClusterMaintenanceWindowResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     nodeCount = registerOutput<int?>('nodeCount');
-    nodeEnablePublicIpAccess = registerOutput<bool?>(
-      'nodeEnablePublicIpAccess',
-    );
+    nodeEnablePublicIpAccess = registerOutput<bool?>('nodeEnablePublicIpAccess');
     nodeServerEdition = registerOutput<String?>('nodeServerEdition');
     nodeStorageQuotaInMb = registerOutput<int?>('nodeStorageQuotaInMb');
     nodeVCores = registerOutput<int?>('nodeVCores');
@@ -1482,25 +1395,14 @@ class ServerGroupCluster extends pulumi.CustomResource {
     pointInTimeUTC = registerOutput<String?>('pointInTimeUTC');
     postgresqlVersion = registerOutput<String?>('postgresqlVersion');
     preferredPrimaryZone = registerOutput<String?>('preferredPrimaryZone');
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
-      'privateEndpointConnections',
-    );
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>('privateEndpointConnections');
     provisioningState = registerOutput<String>('provisioningState');
     readReplicas = registerOutput<List<String>>('readReplicas');
     serverNames = registerOutput<List<Map<String, dynamic>>>('serverNames');
     sourceLocation = registerOutput<String?>('sourceLocation');
     sourceResourceId = registerOutput<String?>('sourceResourceId');
     state = registerOutput<String>('state');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworkFabricArgs {
   /// Name of the Network Fabric.
   final pulumi.Input<String> networkFabricName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetNetworkFabricArgs {
 
   factory GetNetworkFabricArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkFabricArgs(
-      networkFabricName: pulumi.Input.fromValue(
-        map['networkFabricName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      networkFabricName: pulumi.Input.fromValue(map['networkFabricName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

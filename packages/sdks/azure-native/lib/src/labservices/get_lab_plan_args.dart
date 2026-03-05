@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLabPlanArgs {
   /// The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
   final pulumi.Input<String> labPlanName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetLabPlanArgs].
   /// [labPlanName] The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetLabPlanArgs({required this.labPlanName, required this.resourceGroupName});
+  GetLabPlanArgs({
+    required this.labPlanName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,9 +30,8 @@ class GetLabPlanArgs {
   factory GetLabPlanArgs.fromMap(Map<String, dynamic> map) {
     return GetLabPlanArgs(
       labPlanName: pulumi.Input.fromValue(map['labPlanName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

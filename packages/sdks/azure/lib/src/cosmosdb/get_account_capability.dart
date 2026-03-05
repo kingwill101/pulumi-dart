@@ -8,10 +8,14 @@ class GetAccountCapability {
 
   /// Creates a new [GetAccountCapability].
   /// [name] Specifies the name of the CosmosDB Account.
-  GetAccountCapability({required this.name});
+  GetAccountCapability({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory GetAccountCapability.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class GetAccountCapability {
     );
   }
 }
+

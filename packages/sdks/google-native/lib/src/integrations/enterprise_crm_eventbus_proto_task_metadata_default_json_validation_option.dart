@@ -6,22 +6,16 @@ enum EnterpriseCrmEventbusProtoTaskMetadataDefaultJsonValidationOption {
   postExecution("POST_EXECUTION"),
   prePostExecution("PRE_POST_EXECUTION");
 
-  const EnterpriseCrmEventbusProtoTaskMetadataDefaultJsonValidationOption(
-    this.wireValue,
-  );
+  const EnterpriseCrmEventbusProtoTaskMetadataDefaultJsonValidationOption(this.wireValue);
   final String wireValue;
 
-  static EnterpriseCrmEventbusProtoTaskMetadataDefaultJsonValidationOption
-  fromValue(String value) {
-    for (final item
-        in EnterpriseCrmEventbusProtoTaskMetadataDefaultJsonValidationOption
-            .values) {
+  static EnterpriseCrmEventbusProtoTaskMetadataDefaultJsonValidationOption fromValue(String value) {
+    for (final item in EnterpriseCrmEventbusProtoTaskMetadataDefaultJsonValidationOption.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown EnterpriseCrmEventbusProtoTaskMetadataDefaultJsonValidationOption value: $value',
-    );
+    throw ArgumentError('Unknown EnterpriseCrmEventbusProtoTaskMetadataDefaultJsonValidationOption value: $value');
   }
 }
+

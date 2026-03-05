@@ -7,37 +7,26 @@ import 'recommended_action_response.dart';
 class GetDatabaseAdvisorResult {
   /// Gets the status of availability of this advisor to customers. Possible values are 'GA', 'PublicPreview', 'LimitedPublicPreview' and 'PrivatePreview'.
   final String advisorStatus;
-
   /// Gets the auto-execute status (whether to let the system execute the recommendations) of this advisor. Possible values are 'Enabled' and 'Disabled'
   final String autoExecuteStatus;
-
   /// Gets the resource from which current value of auto-execute status is inherited. Auto-execute status can be set on (and inherited from) different levels in the resource hierarchy. Possible values are 'Subscription', 'Server', 'ElasticPool', 'Database' and 'Default' (when status is not explicitly set on any level).
   final String autoExecuteStatusInheritedFrom;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Resource ID.
   final String id;
-
   /// Resource kind.
   final String kind;
-
   /// Gets the time when the current resource was analyzed for recommendations by this advisor.
   final String lastChecked;
-
   /// Resource location.
   final String location;
-
   /// Resource name.
   final String name;
-
   /// Gets that status of recommendations for this advisor and reason for not having any recommendations. Possible values include, but are not limited to, 'Ok' (Recommendations available),LowActivity (not enough workload to analyze), 'DbSeemsTuned' (Database is doing well), etc.
   final String recommendationsStatus;
-
   /// Gets the recommended actions for this advisor.
   final List<RecommendedActionResponse> recommendedActions;
-
   /// Resource type.
   final String type;
 
@@ -81,11 +70,7 @@ class GetDatabaseAdvisorResult {
       'location': location,
       'name': name,
       'recommendationsStatus': recommendationsStatus,
-      'recommendedActions':
-          pulumi.Input.encodeList<
-            RecommendedActionResponse,
-            Map<String, dynamic>
-          >(recommendedActions, (value) => value.toMap()),
+      'recommendedActions': pulumi.Input.encodeList<RecommendedActionResponse, Map<String, dynamic>>(recommendedActions, (value) => value.toMap()),
       'type': type,
     };
   }
@@ -94,8 +79,7 @@ class GetDatabaseAdvisorResult {
     return GetDatabaseAdvisorResult(
       advisorStatus: map['advisorStatus'] as String,
       autoExecuteStatus: map['autoExecuteStatus'] as String,
-      autoExecuteStatusInheritedFrom:
-          map['autoExecuteStatusInheritedFrom'] as String,
+      autoExecuteStatusInheritedFrom: map['autoExecuteStatusInheritedFrom'] as String,
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       kind: map['kind'] as String,
@@ -103,13 +87,9 @@ class GetDatabaseAdvisorResult {
       location: map['location'] as String,
       name: map['name'] as String,
       recommendationsStatus: map['recommendationsStatus'] as String,
-      recommendedActions: pulumi.Input.decodeList<RecommendedActionResponse>(
-        map['recommendedActions']!,
-        (value) => RecommendedActionResponse.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      recommendedActions: pulumi.Input.decodeList<RecommendedActionResponse>(map['recommendedActions']!, (value) => RecommendedActionResponse.fromMap((value as Map).cast<String, dynamic>())),
       type: map['type'] as String,
     );
   }
 }
+

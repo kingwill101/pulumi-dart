@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EncryptionPreferencesResponse {
   /// Defines secondary layer of software-based encryption enablement.
   final pulumi.Input<String>? doubleEncryption;
-
   /// Defines Hardware level encryption (Only for disk)
   final pulumi.Input<String>? hardwareEncryption;
 
@@ -27,16 +26,9 @@ class EncryptionPreferencesResponse {
 
   factory EncryptionPreferencesResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionPreferencesResponse(
-      doubleEncryption: (() {
-        final guardedValue = map['doubleEncryption'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      hardwareEncryption: (() {
-        final guardedValue = map['hardwareEncryption'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      doubleEncryption: (() { final guardedValue = map['doubleEncryption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      hardwareEncryption: (() { final guardedValue = map['hardwareEncryption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

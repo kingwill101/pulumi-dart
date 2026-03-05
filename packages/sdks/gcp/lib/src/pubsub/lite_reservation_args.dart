@@ -9,14 +9,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LiteReservationArgs {
   /// Name of the reservation.
   final pulumi.Input<String>? name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The region of the pubsub lite reservation.
   final pulumi.Input<String>? region;
-
   /// The reserved throughput capacity. Every unit of throughput capacity is
   /// equivalent to 1 MiB/s of published messages or 2 MiB/s of subscribed
   /// messages.
@@ -45,24 +42,11 @@ class LiteReservationArgs {
 
   factory LiteReservationArgs.fromMap(Map<String, dynamic> map) {
     return LiteReservationArgs(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      throughputCapacity: pulumi.Input.fromValue(
-        map['throughputCapacity'] as int,
-      ),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      throughputCapacity: pulumi.Input.fromValue(map['throughputCapacity'] as int),
     );
   }
 }
+

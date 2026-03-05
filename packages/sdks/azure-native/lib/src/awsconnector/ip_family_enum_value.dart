@@ -9,19 +9,20 @@ class IpFamilyEnumValue {
 
   /// Creates a new [IpFamilyEnumValue].
   /// [value] Property value
-  IpFamilyEnumValue({this.value});
+  IpFamilyEnumValue({
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': ?value};
+    return <String, dynamic>{
+      'value': ?value,
+    };
   }
 
   factory IpFamilyEnumValue.fromMap(Map<String, dynamic> map) {
     return IpFamilyEnumValue(
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

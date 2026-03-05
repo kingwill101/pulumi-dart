@@ -10,38 +10,20 @@ class OracleRdbms {
 
   /// Creates a new [OracleRdbms].
   /// [oracleSchemas] Oracle schemas/databases in the database server.
-  OracleRdbms({this.oracleSchemas});
+  OracleRdbms({
+    this.oracleSchemas,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'oracleSchemas':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<OracleSchema>,
-            List<Map<String, dynamic>>
-          >(
-            oracleSchemas,
-            (value) =>
-                pulumi.Input.encodeList<OracleSchema, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'oracleSchemas': ?pulumi.Input.mapOptionalInputValue<List<OracleSchema>, List<Map<String, dynamic>>>(oracleSchemas, (value) => pulumi.Input.encodeList<OracleSchema, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory OracleRdbms.fromMap(Map<String, dynamic> map) {
     return OracleRdbms(
-      oracleSchemas: (() {
-        final guardedValue = map['oracleSchemas'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<OracleSchema>(
-            guardedValue,
-            (value) =>
-                OracleSchema.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
+      oracleSchemas: (() { final guardedValue = map['oracleSchemas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<OracleSchema>(guardedValue, (value) => OracleSchema.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

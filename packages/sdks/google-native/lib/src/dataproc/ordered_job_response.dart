@@ -17,43 +17,30 @@ import 'trino_job_response.dart';
 class OrderedJobResponse {
   /// Optional. Job is a Flink job.
   final pulumi.Input<FlinkJobResponse> flinkJob;
-
   /// Optional. Job is a Hadoop job.
   final pulumi.Input<HadoopJobResponse> hadoopJob;
-
   /// Optional. Job is a Hive job.
   final pulumi.Input<HiveJobResponse> hiveJob;
-
   /// Optional. The labels to associate with this job.Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: \p{Ll}\p{Lo}{0,62}Label values must be between 1 and 63 characters long, and must conform to the following regular expression: \p{Ll}\p{Lo}\p{N}_-{0,63}No more than 32 labels can be associated with a given job.
   final pulumi.Input<Map<String, String>> labels;
-
   /// Optional. Job is a Pig job.
   final pulumi.Input<PigJobResponse> pigJob;
-
   /// Optional. The optional list of prerequisite job step_ids. If not specified, the job will start at the beginning of workflow.
   final pulumi.Input<List<String>> prerequisiteStepIds;
-
   /// Optional. Job is a Presto job.
   final pulumi.Input<PrestoJobResponse> prestoJob;
-
   /// Optional. Job is a PySpark job.
   final pulumi.Input<PySparkJobResponse> pysparkJob;
-
   /// Optional. Job scheduling configuration.
   final pulumi.Input<JobSchedulingResponse> scheduling;
-
   /// Optional. Job is a Spark job.
   final pulumi.Input<SparkJobResponse> sparkJob;
-
   /// Optional. Job is a SparkR job.
   final pulumi.Input<SparkRJobResponse> sparkRJob;
-
   /// Optional. Job is a SparkSql job.
   final pulumi.Input<SparkSqlJobResponse> sparkSqlJob;
-
   /// The step id. The id must be unique among all jobs within the template.The step id is used as prefix for job id, as job goog-dataproc-workflow-step-id label, and in prerequisiteStepIds field from other steps.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
   final pulumi.Input<String> stepId;
-
   /// Optional. Job is a Trino job.
   final pulumi.Input<TrinoJobResponse> trinoJob;
 
@@ -91,129 +78,40 @@ class OrderedJobResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'flinkJob':
-          pulumi.Input.mapInputValue<FlinkJobResponse, Map<String, dynamic>>(
-            flinkJob,
-            (value) => value.toMap(),
-          ),
-      'hadoopJob':
-          pulumi.Input.mapInputValue<HadoopJobResponse, Map<String, dynamic>>(
-            hadoopJob,
-            (value) => value.toMap(),
-          ),
-      'hiveJob':
-          pulumi.Input.mapInputValue<HiveJobResponse, Map<String, dynamic>>(
-            hiveJob,
-            (value) => value.toMap(),
-          ),
+      'flinkJob': pulumi.Input.mapInputValue<FlinkJobResponse, Map<String, dynamic>>(flinkJob, (value) => value.toMap()),
+      'hadoopJob': pulumi.Input.mapInputValue<HadoopJobResponse, Map<String, dynamic>>(hadoopJob, (value) => value.toMap()),
+      'hiveJob': pulumi.Input.mapInputValue<HiveJobResponse, Map<String, dynamic>>(hiveJob, (value) => value.toMap()),
       'labels': labels,
-      'pigJob':
-          pulumi.Input.mapInputValue<PigJobResponse, Map<String, dynamic>>(
-            pigJob,
-            (value) => value.toMap(),
-          ),
+      'pigJob': pulumi.Input.mapInputValue<PigJobResponse, Map<String, dynamic>>(pigJob, (value) => value.toMap()),
       'prerequisiteStepIds': prerequisiteStepIds,
-      'prestoJob':
-          pulumi.Input.mapInputValue<PrestoJobResponse, Map<String, dynamic>>(
-            prestoJob,
-            (value) => value.toMap(),
-          ),
-      'pysparkJob':
-          pulumi.Input.mapInputValue<PySparkJobResponse, Map<String, dynamic>>(
-            pysparkJob,
-            (value) => value.toMap(),
-          ),
-      'scheduling':
-          pulumi.Input.mapInputValue<
-            JobSchedulingResponse,
-            Map<String, dynamic>
-          >(scheduling, (value) => value.toMap()),
-      'sparkJob':
-          pulumi.Input.mapInputValue<SparkJobResponse, Map<String, dynamic>>(
-            sparkJob,
-            (value) => value.toMap(),
-          ),
-      'sparkRJob':
-          pulumi.Input.mapInputValue<SparkRJobResponse, Map<String, dynamic>>(
-            sparkRJob,
-            (value) => value.toMap(),
-          ),
-      'sparkSqlJob':
-          pulumi.Input.mapInputValue<SparkSqlJobResponse, Map<String, dynamic>>(
-            sparkSqlJob,
-            (value) => value.toMap(),
-          ),
+      'prestoJob': pulumi.Input.mapInputValue<PrestoJobResponse, Map<String, dynamic>>(prestoJob, (value) => value.toMap()),
+      'pysparkJob': pulumi.Input.mapInputValue<PySparkJobResponse, Map<String, dynamic>>(pysparkJob, (value) => value.toMap()),
+      'scheduling': pulumi.Input.mapInputValue<JobSchedulingResponse, Map<String, dynamic>>(scheduling, (value) => value.toMap()),
+      'sparkJob': pulumi.Input.mapInputValue<SparkJobResponse, Map<String, dynamic>>(sparkJob, (value) => value.toMap()),
+      'sparkRJob': pulumi.Input.mapInputValue<SparkRJobResponse, Map<String, dynamic>>(sparkRJob, (value) => value.toMap()),
+      'sparkSqlJob': pulumi.Input.mapInputValue<SparkSqlJobResponse, Map<String, dynamic>>(sparkSqlJob, (value) => value.toMap()),
       'stepId': stepId,
-      'trinoJob':
-          pulumi.Input.mapInputValue<TrinoJobResponse, Map<String, dynamic>>(
-            trinoJob,
-            (value) => value.toMap(),
-          ),
+      'trinoJob': pulumi.Input.mapInputValue<TrinoJobResponse, Map<String, dynamic>>(trinoJob, (value) => value.toMap()),
     };
   }
 
   factory OrderedJobResponse.fromMap(Map<String, dynamic> map) {
     return OrderedJobResponse(
-      flinkJob: pulumi.Input.fromValue(
-        FlinkJobResponse.fromMap(
-          (map['flinkJob']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      hadoopJob: pulumi.Input.fromValue(
-        HadoopJobResponse.fromMap(
-          (map['hadoopJob']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      hiveJob: pulumi.Input.fromValue(
-        HiveJobResponse.fromMap(
-          (map['hiveJob']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      labels: pulumi.Input.fromValue(
-        (map['labels'] as Map).cast<String, String>(),
-      ),
-      pigJob: pulumi.Input.fromValue(
-        PigJobResponse.fromMap((map['pigJob']! as Map).cast<String, dynamic>()),
-      ),
-      prerequisiteStepIds: pulumi.Input.fromValue(
-        (map['prerequisiteStepIds'] as List).cast<String>(),
-      ),
-      prestoJob: pulumi.Input.fromValue(
-        PrestoJobResponse.fromMap(
-          (map['prestoJob']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      pysparkJob: pulumi.Input.fromValue(
-        PySparkJobResponse.fromMap(
-          (map['pysparkJob']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      scheduling: pulumi.Input.fromValue(
-        JobSchedulingResponse.fromMap(
-          (map['scheduling']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      sparkJob: pulumi.Input.fromValue(
-        SparkJobResponse.fromMap(
-          (map['sparkJob']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      sparkRJob: pulumi.Input.fromValue(
-        SparkRJobResponse.fromMap(
-          (map['sparkRJob']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      sparkSqlJob: pulumi.Input.fromValue(
-        SparkSqlJobResponse.fromMap(
-          (map['sparkSqlJob']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      flinkJob: pulumi.Input.fromValue(FlinkJobResponse.fromMap((map['flinkJob']! as Map).cast<String, dynamic>())),
+      hadoopJob: pulumi.Input.fromValue(HadoopJobResponse.fromMap((map['hadoopJob']! as Map).cast<String, dynamic>())),
+      hiveJob: pulumi.Input.fromValue(HiveJobResponse.fromMap((map['hiveJob']! as Map).cast<String, dynamic>())),
+      labels: pulumi.Input.fromValue((map['labels'] as Map).cast<String, String>()),
+      pigJob: pulumi.Input.fromValue(PigJobResponse.fromMap((map['pigJob']! as Map).cast<String, dynamic>())),
+      prerequisiteStepIds: pulumi.Input.fromValue((map['prerequisiteStepIds'] as List).cast<String>()),
+      prestoJob: pulumi.Input.fromValue(PrestoJobResponse.fromMap((map['prestoJob']! as Map).cast<String, dynamic>())),
+      pysparkJob: pulumi.Input.fromValue(PySparkJobResponse.fromMap((map['pysparkJob']! as Map).cast<String, dynamic>())),
+      scheduling: pulumi.Input.fromValue(JobSchedulingResponse.fromMap((map['scheduling']! as Map).cast<String, dynamic>())),
+      sparkJob: pulumi.Input.fromValue(SparkJobResponse.fromMap((map['sparkJob']! as Map).cast<String, dynamic>())),
+      sparkRJob: pulumi.Input.fromValue(SparkRJobResponse.fromMap((map['sparkRJob']! as Map).cast<String, dynamic>())),
+      sparkSqlJob: pulumi.Input.fromValue(SparkSqlJobResponse.fromMap((map['sparkSqlJob']! as Map).cast<String, dynamic>())),
       stepId: pulumi.Input.fromValue(map['stepId'] as String),
-      trinoJob: pulumi.Input.fromValue(
-        TrinoJobResponse.fromMap(
-          (map['trinoJob']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      trinoJob: pulumi.Input.fromValue(TrinoJobResponse.fromMap((map['trinoJob']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

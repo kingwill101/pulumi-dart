@@ -7,10 +7,8 @@ import 'container_identity_info.dart';
 class GenericContainerExtendedInfo {
   /// Container identity information
   final pulumi.Input<ContainerIdentityInfo>? containerIdentityInfo;
-
   /// Public key of container cert
   final pulumi.Input<String>? rawCertData;
-
   /// Azure Backup Service Endpoints for the container
   final pulumi.Input<Map<String, String>>? serviceEndpoints;
 
@@ -26,11 +24,7 @@ class GenericContainerExtendedInfo {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'containerIdentityInfo':
-          ?pulumi.Input.mapOptionalInputValue<
-            ContainerIdentityInfo,
-            Map<String, dynamic>
-          >(containerIdentityInfo, (value) => value.toMap()),
+      'containerIdentityInfo': ?pulumi.Input.mapOptionalInputValue<ContainerIdentityInfo, Map<String, dynamic>>(containerIdentityInfo, (value) => value.toMap()),
       'rawCertData': ?rawCertData,
       'serviceEndpoints': ?serviceEndpoints,
     };
@@ -38,27 +32,10 @@ class GenericContainerExtendedInfo {
 
   factory GenericContainerExtendedInfo.fromMap(Map<String, dynamic> map) {
     return GenericContainerExtendedInfo(
-      containerIdentityInfo: (() {
-        final guardedValue = map['containerIdentityInfo'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ContainerIdentityInfo.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      rawCertData: (() {
-        final guardedValue = map['rawCertData'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serviceEndpoints: (() {
-        final guardedValue = map['serviceEndpoints'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      containerIdentityInfo: (() { final guardedValue = map['containerIdentityInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ContainerIdentityInfo.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      rawCertData: (() { final guardedValue = map['rawCertData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serviceEndpoints: (() { final guardedValue = map['serviceEndpoints']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

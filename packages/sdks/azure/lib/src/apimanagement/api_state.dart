@@ -12,83 +12,58 @@ import 'api_subscription_key_parameter_names.dart';
 class ApiState {
   /// The Name of the API Management Service where this API should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? apiManagementName;
-
   /// Type of API. Possible values are `graphql`, `http`, `soap`, and `websocket`. Defaults to `http`.
   final pulumi.Input<String>? apiType;
-
   /// A `contact` block as documented below.
   final pulumi.Input<ApiContact>? contact;
-
   /// A description of the API Management API, which may include HTML formatting tags.
   final pulumi.Input<String>? description;
-
   /// The display name of the API.
   final pulumi.Input<String>? displayName;
-
   /// A `import` block as documented below.
   ///
   /// &gt; **Note:** The `display_name`, `description`, `contact`, and `license` fields can be imported by the `import` block, which might cause a drift if these fields are set along with the `import` block.
   final pulumi.Input<ApiImport>? import;
-
   /// Is this the current API Revision?
   final pulumi.Input<bool>? isCurrent;
-
   /// Is this API Revision online/accessible via the Gateway?
   final pulumi.Input<bool>? isOnline;
-
   /// A `license` block as documented below.
   final pulumi.Input<ApiLicense>? license;
-
   /// The name of the API Management API. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// An `oauth2_authorization` block as documented below.
   final pulumi.Input<ApiOauth2Authorization>? oauth2Authorization;
-
   /// An `openid_authentication` block as documented below.
   final pulumi.Input<ApiOpenidAuthentication>? openidAuthentication;
-
   /// The Path for this API Management API, which is a relative URL which uniquely identifies this API and all of its resource paths within the API Management Service.
   final pulumi.Input<String>? path;
-
   /// A list of protocols the operations in this API can be invoked. Possible values are `http`, `https`, `ws`, and `wss`.
   ///
   /// &gt; **Note:** `display_name`, `path` and `protocols` are required when `source_api_id` is not set.
   final pulumi.Input<List<String>>? protocols;
-
   /// The Name of the Resource Group where the API Management API exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
-
   /// The Revision which used for this API. Changing this forces a new resource to be created.
   final pulumi.Input<String>? revision;
-
   /// The description of the API Revision of the API Management API.
   final pulumi.Input<String>? revisionDescription;
-
   /// Absolute URL of the backend service implementing this API.
   ///
   /// &gt; **Note:** The `service_url` is required when `api_type` is specified as `websocket`.
   final pulumi.Input<String>? serviceUrl;
-
   /// The API id of the source API, which could be in format `azurerm_api_management_api.example.id` or in format `azurerm_api_management_api.example.id;rev=1`
   final pulumi.Input<String>? sourceApiId;
-
   /// A `subscription_key_parameter_names` block as documented below.
-  final pulumi.Input<ApiSubscriptionKeyParameterNames>?
-  subscriptionKeyParameterNames;
-
+  final pulumi.Input<ApiSubscriptionKeyParameterNames>? subscriptionKeyParameterNames;
   /// Should this API require a subscription key? Defaults to `true`.
   final pulumi.Input<bool>? subscriptionRequired;
-
   /// Absolute URL of the Terms of Service for the API.
   final pulumi.Input<String>? termsOfServiceUrl;
-
   /// The Version number of this API, if this API is versioned.
   final pulumi.Input<String>? version;
-
   /// The description of the API Version of the API Management API.
   final pulumi.Input<String>? versionDescription;
-
   /// The ID of the Version Set which this API is associated with.
   ///
   /// &gt; **Note:** When `version` is set, `version_set_id` must also be specified
@@ -152,36 +127,16 @@ class ApiState {
     return <String, dynamic>{
       'apiManagementName': ?apiManagementName,
       'apiType': ?apiType,
-      'contact':
-          ?pulumi.Input.mapOptionalInputValue<ApiContact, Map<String, dynamic>>(
-            contact,
-            (value) => value.toMap(),
-          ),
+      'contact': ?pulumi.Input.mapOptionalInputValue<ApiContact, Map<String, dynamic>>(contact, (value) => value.toMap()),
       'description': ?description,
       'displayName': ?displayName,
-      'import':
-          ?pulumi.Input.mapOptionalInputValue<ApiImport, Map<String, dynamic>>(
-            import,
-            (value) => value.toMap(),
-          ),
+      'import': ?pulumi.Input.mapOptionalInputValue<ApiImport, Map<String, dynamic>>(import, (value) => value.toMap()),
       'isCurrent': ?isCurrent,
       'isOnline': ?isOnline,
-      'license':
-          ?pulumi.Input.mapOptionalInputValue<ApiLicense, Map<String, dynamic>>(
-            license,
-            (value) => value.toMap(),
-          ),
+      'license': ?pulumi.Input.mapOptionalInputValue<ApiLicense, Map<String, dynamic>>(license, (value) => value.toMap()),
       'name': ?name,
-      'oauth2Authorization':
-          ?pulumi.Input.mapOptionalInputValue<
-            ApiOauth2Authorization,
-            Map<String, dynamic>
-          >(oauth2Authorization, (value) => value.toMap()),
-      'openidAuthentication':
-          ?pulumi.Input.mapOptionalInputValue<
-            ApiOpenidAuthentication,
-            Map<String, dynamic>
-          >(openidAuthentication, (value) => value.toMap()),
+      'oauth2Authorization': ?pulumi.Input.mapOptionalInputValue<ApiOauth2Authorization, Map<String, dynamic>>(oauth2Authorization, (value) => value.toMap()),
+      'openidAuthentication': ?pulumi.Input.mapOptionalInputValue<ApiOpenidAuthentication, Map<String, dynamic>>(openidAuthentication, (value) => value.toMap()),
       'path': ?path,
       'protocols': ?protocols,
       'resourceGroupName': ?resourceGroupName,
@@ -189,11 +144,7 @@ class ApiState {
       'revisionDescription': ?revisionDescription,
       'serviceUrl': ?serviceUrl,
       'sourceApiId': ?sourceApiId,
-      'subscriptionKeyParameterNames':
-          ?pulumi.Input.mapOptionalInputValue<
-            ApiSubscriptionKeyParameterNames,
-            Map<String, dynamic>
-          >(subscriptionKeyParameterNames, (value) => value.toMap()),
+      'subscriptionKeyParameterNames': ?pulumi.Input.mapOptionalInputValue<ApiSubscriptionKeyParameterNames, Map<String, dynamic>>(subscriptionKeyParameterNames, (value) => value.toMap()),
       'subscriptionRequired': ?subscriptionRequired,
       'termsOfServiceUrl': ?termsOfServiceUrl,
       'version': ?version,
@@ -204,149 +155,32 @@ class ApiState {
 
   factory ApiState.fromMap(Map<String, dynamic> map) {
     return ApiState(
-      apiManagementName: (() {
-        final guardedValue = map['apiManagementName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      apiType: (() {
-        final guardedValue = map['apiType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      contact: (() {
-        final guardedValue = map['contact'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ApiContact.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      import: (() {
-        final guardedValue = map['import'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ApiImport.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      isCurrent: (() {
-        final guardedValue = map['isCurrent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      isOnline: (() {
-        final guardedValue = map['isOnline'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      license: (() {
-        final guardedValue = map['license'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ApiLicense.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      oauth2Authorization: (() {
-        final guardedValue = map['oauth2Authorization'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ApiOauth2Authorization.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      openidAuthentication: (() {
-        final guardedValue = map['openidAuthentication'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ApiOpenidAuthentication.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      path: (() {
-        final guardedValue = map['path'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      protocols: (() {
-        final guardedValue = map['protocols'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      resourceGroupName: (() {
-        final guardedValue = map['resourceGroupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      revision: (() {
-        final guardedValue = map['revision'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      revisionDescription: (() {
-        final guardedValue = map['revisionDescription'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serviceUrl: (() {
-        final guardedValue = map['serviceUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sourceApiId: (() {
-        final guardedValue = map['sourceApiId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subscriptionKeyParameterNames: (() {
-        final guardedValue = map['subscriptionKeyParameterNames'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ApiSubscriptionKeyParameterNames.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      subscriptionRequired: (() {
-        final guardedValue = map['subscriptionRequired'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      termsOfServiceUrl: (() {
-        final guardedValue = map['termsOfServiceUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      versionDescription: (() {
-        final guardedValue = map['versionDescription'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      versionSetId: (() {
-        final guardedValue = map['versionSetId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      apiManagementName: (() { final guardedValue = map['apiManagementName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      apiType: (() { final guardedValue = map['apiType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      contact: (() { final guardedValue = map['contact']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ApiContact.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      import: (() { final guardedValue = map['import']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ApiImport.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      isCurrent: (() { final guardedValue = map['isCurrent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      isOnline: (() { final guardedValue = map['isOnline']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      license: (() { final guardedValue = map['license']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ApiLicense.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      oauth2Authorization: (() { final guardedValue = map['oauth2Authorization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ApiOauth2Authorization.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      openidAuthentication: (() { final guardedValue = map['openidAuthentication']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ApiOpenidAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      protocols: (() { final guardedValue = map['protocols']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      revision: (() { final guardedValue = map['revision']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      revisionDescription: (() { final guardedValue = map['revisionDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serviceUrl: (() { final guardedValue = map['serviceUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourceApiId: (() { final guardedValue = map['sourceApiId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subscriptionKeyParameterNames: (() { final guardedValue = map['subscriptionKeyParameterNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ApiSubscriptionKeyParameterNames.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      subscriptionRequired: (() { final guardedValue = map['subscriptionRequired']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      termsOfServiceUrl: (() { final guardedValue = map['termsOfServiceUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      versionDescription: (() { final guardedValue = map['versionDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      versionSetId: (() { final guardedValue = map['versionSetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

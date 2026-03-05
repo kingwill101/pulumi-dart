@@ -10,7 +10,6 @@ class BackupPlanRetentionPolicy {
   /// Updating this field of a BackupPlan does not affect existing Backups.
   /// Backups created after a successful update will inherit this new value.
   final pulumi.Input<int>? backupDeleteLockDays;
-
   /// The default maximum age of a Backup created via this BackupPlan.
   /// This field MUST be an integer value &gt;= 0 and &lt;= 365. If specified,
   /// a Backup created under this BackupPlan will be automatically deleted
@@ -24,7 +23,6 @@ class BackupPlanRetentionPolicy {
   /// If rpo_config is defined, then this must be
   /// &lt;= 360 * targetRpoMinutes/(1440minutes/day)
   final pulumi.Input<int>? backupRetainDays;
-
   /// This flag denotes whether the retention policy of this BackupPlan is locked.
   /// If set to True, no further update is allowed on this policy, including
   /// the locked field itself.
@@ -50,21 +48,10 @@ class BackupPlanRetentionPolicy {
 
   factory BackupPlanRetentionPolicy.fromMap(Map<String, dynamic> map) {
     return BackupPlanRetentionPolicy(
-      backupDeleteLockDays: (() {
-        final guardedValue = map['backupDeleteLockDays'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      backupRetainDays: (() {
-        final guardedValue = map['backupRetainDays'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      locked: (() {
-        final guardedValue = map['locked'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      backupDeleteLockDays: (() { final guardedValue = map['backupDeleteLockDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      backupRetainDays: (() { final guardedValue = map['backupRetainDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      locked: (() { final guardedValue = map['locked']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClustersClusterOperationPolicyClusterAutoUpgrade {
   /// Cluster automatic upgrade frequency.
   final pulumi.Input<String> channel;
-
   /// Whether to enable cluster automatic upgrade.
   final pulumi.Input<bool> enabled;
 
@@ -18,15 +17,17 @@ class GetClustersClusterOperationPolicyClusterAutoUpgrade {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'channel': channel, 'enabled': enabled};
+    return <String, dynamic>{
+      'channel': channel,
+      'enabled': enabled,
+    };
   }
 
-  factory GetClustersClusterOperationPolicyClusterAutoUpgrade.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetClustersClusterOperationPolicyClusterAutoUpgrade.fromMap(Map<String, dynamic> map) {
     return GetClustersClusterOperationPolicyClusterAutoUpgrade(
       channel: pulumi.Input.fromValue(map['channel'] as String),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
+

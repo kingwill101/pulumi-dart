@@ -5,31 +5,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StreamProcessorOutputS3Destination {
   /// Name of the Amazon S3 bucket you want to associate with the streaming video project.
   final pulumi.Input<String>? bucket;
-
   /// The prefix value of the location within the bucket that you want the information to be published to.
   final pulumi.Input<String>? keyPrefix;
 
   /// Creates a new [StreamProcessorOutputS3Destination].
   /// [bucket] Name of the Amazon S3 bucket you want to associate with the streaming video project.
   /// [keyPrefix] The prefix value of the location within the bucket that you want the information to be published to.
-  StreamProcessorOutputS3Destination({this.bucket, this.keyPrefix});
+  StreamProcessorOutputS3Destination({
+    this.bucket,
+    this.keyPrefix,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'bucket': ?bucket, 'keyPrefix': ?keyPrefix};
+    return <String, dynamic>{
+      'bucket': ?bucket,
+      'keyPrefix': ?keyPrefix,
+    };
   }
 
   factory StreamProcessorOutputS3Destination.fromMap(Map<String, dynamic> map) {
     return StreamProcessorOutputS3Destination(
-      bucket: (() {
-        final guardedValue = map['bucket'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keyPrefix: (() {
-        final guardedValue = map['keyPrefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      bucket: (() { final guardedValue = map['bucket']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyPrefix: (() { final guardedValue = map['keyPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

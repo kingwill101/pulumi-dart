@@ -13,14 +13,15 @@ class ConfigurationSetEventDestinationEventDestinationSnsDestination {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'topicArn': topicArn};
+    return <String, dynamic>{
+      'topicArn': topicArn,
+    };
   }
 
-  factory ConfigurationSetEventDestinationEventDestinationSnsDestination.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConfigurationSetEventDestinationEventDestinationSnsDestination.fromMap(Map<String, dynamic> map) {
     return ConfigurationSetEventDestinationEventDestinationSnsDestination(
       topicArn: pulumi.Input.fromValue(map['topicArn'] as String),
     );
   }
 }
+

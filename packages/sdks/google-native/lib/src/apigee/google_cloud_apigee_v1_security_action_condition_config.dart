@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudApigeeV1SecurityActionConditionConfig {
   /// Optional. A list of Bot Reasons. Current options: Flooder, Brute Guessor, Static Content Scraper, OAuth Abuser, Robot Abuser, TorListRule, Advanced Anomaly Detection and Advanced API Scraper.
   final pulumi.Input<List<String>>? botReasons;
-
   /// Optional. A list of IP addresses. This could be either IPv4 or IPv6. Limited to 100 per action.
   final pulumi.Input<List<String>>? ipAddressRanges;
 
@@ -25,20 +24,11 @@ class GoogleCloudApigeeV1SecurityActionConditionConfig {
     };
   }
 
-  factory GoogleCloudApigeeV1SecurityActionConditionConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudApigeeV1SecurityActionConditionConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1SecurityActionConditionConfig(
-      botReasons: (() {
-        final guardedValue = map['botReasons'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      ipAddressRanges: (() {
-        final guardedValue = map['ipAddressRanges'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      botReasons: (() { final guardedValue = map['botReasons']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      ipAddressRanges: (() { final guardedValue = map['ipAddressRanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

@@ -484,22 +484,16 @@ import 'inter_region_traffic_qos_queue_state.dart';
 class InterRegionTrafficQosQueue extends pulumi.CustomResource {
   /// The guaranteed bandwidth value. If guaranteed by bandwidth is selected for TrafficQosPolicy, this value is valid.
   late final pulumi.Output<String?> bandwidth;
-
   /// The DSCP value of the traffic packet to be matched in the current queue, ranging from 0 to 63.
   late final pulumi.Output<List<int>> dscps;
-
   /// The description information of the traffic scheduling policy.
   late final pulumi.Output<String?> interRegionTrafficQosQueueDescription;
-
   /// The name of the traffic scheduling policy.
   late final pulumi.Output<String?> interRegionTrafficQosQueueName;
-
   /// The percentage of cross-region bandwidth that the current queue can use.
   late final pulumi.Output<int?> remainBandwidthPercent;
-
   /// The status of the traffic scheduling policy.
   late final pulumi.Output<String> status;
-
   /// The ID of the traffic scheduling policy.
   late final pulumi.Output<String> trafficQosPolicyId;
 
@@ -512,19 +506,15 @@ class InterRegionTrafficQosQueue extends pulumi.CustomResource {
     InterRegionTrafficQosQueueArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cen/interRegionTrafficQosQueue:InterRegionTrafficQosQueue',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cen/interRegionTrafficQosQueue:InterRegionTrafficQosQueue',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bandwidth = registerOutput<String?>('bandwidth');
     dscps = registerOutput<List<int>>('dscps');
-    interRegionTrafficQosQueueDescription = registerOutput<String?>(
-      'interRegionTrafficQosQueueDescription',
-    );
-    interRegionTrafficQosQueueName = registerOutput<String?>(
-      'interRegionTrafficQosQueueName',
-    );
+    interRegionTrafficQosQueueDescription = registerOutput<String?>('interRegionTrafficQosQueueDescription');
+    interRegionTrafficQosQueueName = registerOutput<String?>('interRegionTrafficQosQueueName');
     remainBandwidthPercent = registerOutput<int?>('remainBandwidthPercent');
     status = registerOutput<String>('status');
     trafficQosPolicyId = registerOutput<String>('trafficQosPolicyId');
@@ -548,19 +538,15 @@ class InterRegionTrafficQosQueue extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cen/interRegionTrafficQosQueue:InterRegionTrafficQosQueue',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cen/interRegionTrafficQosQueue:InterRegionTrafficQosQueue',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bandwidth = registerOutput<String?>('bandwidth');
     dscps = registerOutput<List<int>>('dscps');
-    interRegionTrafficQosQueueDescription = registerOutput<String?>(
-      'interRegionTrafficQosQueueDescription',
-    );
-    interRegionTrafficQosQueueName = registerOutput<String?>(
-      'interRegionTrafficQosQueueName',
-    );
+    interRegionTrafficQosQueueDescription = registerOutput<String?>('interRegionTrafficQosQueueDescription');
+    interRegionTrafficQosQueueName = registerOutput<String?>('interRegionTrafficQosQueueName');
     remainBandwidthPercent = registerOutput<int?>('remainBandwidthPercent');
     status = registerOutput<String>('status');
     trafficQosPolicyId = registerOutput<String>('trafficQosPolicyId');

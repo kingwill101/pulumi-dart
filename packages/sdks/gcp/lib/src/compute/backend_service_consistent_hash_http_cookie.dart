@@ -6,10 +6,8 @@ import 'backend_service_consistent_hash_http_cookie_ttl.dart';
 class BackendServiceConsistentHashHttpCookie {
   /// Name of the cookie.
   final pulumi.Input<String>? name;
-
   /// Path to set for the cookie.
   final pulumi.Input<String>? path;
-
   /// Lifetime of the cookie.
   /// Structure is documented below.
   final pulumi.Input<BackendServiceConsistentHashHttpCookieTtl>? ttl;
@@ -18,43 +16,26 @@ class BackendServiceConsistentHashHttpCookie {
   /// [name] Name of the cookie.
   /// [path] Path to set for the cookie.
   /// [ttl] Lifetime of the cookie.
-  BackendServiceConsistentHashHttpCookie({this.name, this.path, this.ttl});
+  BackendServiceConsistentHashHttpCookie({
+    this.name,
+    this.path,
+    this.ttl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': ?name,
       'path': ?path,
-      'ttl':
-          ?pulumi.Input.mapOptionalInputValue<
-            BackendServiceConsistentHashHttpCookieTtl,
-            Map<String, dynamic>
-          >(ttl, (value) => value.toMap()),
+      'ttl': ?pulumi.Input.mapOptionalInputValue<BackendServiceConsistentHashHttpCookieTtl, Map<String, dynamic>>(ttl, (value) => value.toMap()),
     };
   }
 
-  factory BackendServiceConsistentHashHttpCookie.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BackendServiceConsistentHashHttpCookie.fromMap(Map<String, dynamic> map) {
     return BackendServiceConsistentHashHttpCookie(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      path: (() {
-        final guardedValue = map['path'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ttl: (() {
-        final guardedValue = map['ttl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BackendServiceConsistentHashHttpCookieTtl.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BackendServiceConsistentHashHttpCookieTtl.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

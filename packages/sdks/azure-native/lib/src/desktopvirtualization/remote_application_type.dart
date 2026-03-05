@@ -15,3 +15,4 @@ enum RemoteApplicationType {
     throw ArgumentError('Unknown RemoteApplicationType value: $value');
   }
 }
+

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataflowEndpointFabricOneLakeNames {
   /// Lakehouse name.
   final pulumi.Input<String> lakehouseName;
-
   /// Workspace name.
   final pulumi.Input<String> workspaceName;
 
@@ -32,3 +31,4 @@ class DataflowEndpointFabricOneLakeNames {
     );
   }
 }
+

@@ -297,22 +297,16 @@ import 'workspace_certificate_args.dart';
 class WorkspaceCertificate extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Expiration date of the certificate. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
   late final pulumi.Output<String> expirationDate;
-
   /// KeyVault location details of the certificate.
   late final pulumi.Output<KeyVaultContractPropertiesResponse?> keyVault;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Subject attribute of the certificate.
   late final pulumi.Output<String> subject;
-
   /// Thumbprint of the certificate.
   late final pulumi.Output<String> thumbprint;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -325,23 +319,14 @@ class WorkspaceCertificate extends pulumi.CustomResource {
     WorkspaceCertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:apimanagement:WorkspaceCertificate',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:apimanagement:WorkspaceCertificate',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     expirationDate = registerOutput<String>('expirationDate');
-    keyVault = registerOutput<KeyVaultContractPropertiesResponse?>(
-      'keyVault',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return KeyVaultContractPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    keyVault = registerOutput<KeyVaultContractPropertiesResponse?>('keyVault', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KeyVaultContractPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     subject = registerOutput<String>('subject');
     thumbprint = registerOutput<String>('thumbprint');

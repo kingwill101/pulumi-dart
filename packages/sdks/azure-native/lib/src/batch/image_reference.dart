@@ -6,22 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ImageReference {
   /// This property is mutually exclusive with other properties and can be fetched from community gallery image GET call.
   final pulumi.Input<String>? communityGalleryImageId;
-
   /// This property is mutually exclusive with other properties. The Azure Compute Gallery Image must have replicas in the same region as the Azure Batch account. For information about the firewall settings for the Batch node agent to communicate with the Batch service see https://learn.microsoft.com/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
   final pulumi.Input<String>? id;
-
   /// For example, UbuntuServer or WindowsServer.
   final pulumi.Input<String>? offer;
-
   /// For example, Canonical or MicrosoftWindowsServer.
   final pulumi.Input<String>? publisher;
-
   /// This property is mutually exclusive with other properties and can be fetched from shared gallery image GET call.
   final pulumi.Input<String>? sharedGalleryImageId;
-
   /// For example, 18.04-LTS or 2022-datacenter.
   final pulumi.Input<String>? sku;
-
   /// A value of 'latest' can be specified to select the latest version of an image. If omitted, the default is 'latest'.
   final pulumi.Input<String>? version;
 
@@ -57,41 +51,14 @@ class ImageReference {
 
   factory ImageReference.fromMap(Map<String, dynamic> map) {
     return ImageReference(
-      communityGalleryImageId: (() {
-        final guardedValue = map['communityGalleryImageId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      offer: (() {
-        final guardedValue = map['offer'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      publisher: (() {
-        final guardedValue = map['publisher'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sharedGalleryImageId: (() {
-        final guardedValue = map['sharedGalleryImageId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sku: (() {
-        final guardedValue = map['sku'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      communityGalleryImageId: (() { final guardedValue = map['communityGalleryImageId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      offer: (() { final guardedValue = map['offer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publisher: (() { final guardedValue = map['publisher']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sharedGalleryImageId: (() { final guardedValue = map['sharedGalleryImageId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

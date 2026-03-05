@@ -236,11 +236,9 @@ import 'share_directory_state.dart';
 class ShareDirectory extends pulumi.CustomResource {
   /// A mapping of metadata to assign to this Directory.
   late final pulumi.Output<Map<String, String>?> metadata;
-
   /// The name (or path) of the Directory that should be created within this File Share. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> storageShareId;
-
   /// The Storage Share URL in which this file will be placed into. Changing this forces a new resource to be created.
   late final pulumi.Output<String> storageShareUrl;
 
@@ -253,11 +251,11 @@ class ShareDirectory extends pulumi.CustomResource {
     ShareDirectoryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:storage/shareDirectory:ShareDirectory',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:storage/shareDirectory:ShareDirectory',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     metadata = registerOutput<Map<String, String>?>('metadata');
     this.name = registerOutput<String>('name');
     storageShareId = registerOutput<String>('storageShareId');
@@ -282,11 +280,11 @@ class ShareDirectory extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:storage/shareDirectory:ShareDirectory',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:storage/shareDirectory:ShareDirectory',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     metadata = registerOutput<Map<String, String>?>('metadata');
     this.name = registerOutput<String>('name');
     storageShareId = registerOutput<String>('storageShareId');

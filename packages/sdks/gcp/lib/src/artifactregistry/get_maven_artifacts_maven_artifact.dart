@@ -5,25 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMavenArtifactsMavenArtifact {
   /// The name of the artifact to fetch.
   final pulumi.Input<String> artifactId;
-
   /// The time the artifact was created.
   final pulumi.Input<String> createTime;
-
   /// Group ID for the artifact.
   final pulumi.Input<String> groupId;
-
   /// The fully qualified name of the fetched artifact. Format:
   /// ```
   /// projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}/mavenArtifacts/{{group_id}}:{{artifact_id}}:{{version}}
   /// ```
   final pulumi.Input<String> name;
-
   /// URL to access the pom file of the artifact.
   final pulumi.Input<String> pomUri;
-
   /// The time the artifact was last updated.
   final pulumi.Input<String> updateTime;
-
   /// The version of the Maven artifact.
   final pulumi.Input<String> version;
 
@@ -69,3 +63,4 @@ class GetMavenArtifactsMavenArtifact {
     );
   }
 }
+

@@ -15,3 +15,4 @@ enum ImpalaThriftTransportProtocol {
     throw ArgumentError('Unknown ImpalaThriftTransportProtocol value: $value');
   }
 }
+

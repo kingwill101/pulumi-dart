@@ -146,13 +146,10 @@ import 'workspace_notification_recipient_user_args.dart';
 class WorkspaceNotificationRecipientUser extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// API Management UserId subscribed to notification.
   late final pulumi.Output<String?> userId;
 
@@ -165,11 +162,11 @@ class WorkspaceNotificationRecipientUser extends pulumi.CustomResource {
     WorkspaceNotificationRecipientUserArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:apimanagement:WorkspaceNotificationRecipientUser',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:apimanagement:WorkspaceNotificationRecipientUser',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
     type = registerOutput<String>('type');

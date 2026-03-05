@@ -13,3 +13,4 @@ enum StorageAccountAccessTier {
     throw ArgumentError('Unknown StorageAccountAccessTier value: $value');
   }
 }
+

@@ -10,10 +10,14 @@ class SasDatastoreCredentialsResponse {
 
   /// Creates a new [SasDatastoreCredentialsResponse].
   /// [credentialsType] Enum to determine the datastore credentials type.
-  SasDatastoreCredentialsResponse({required this.credentialsType});
+  SasDatastoreCredentialsResponse({
+    required this.credentialsType,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'credentialsType': credentialsType};
+    return <String, dynamic>{
+      'credentialsType': credentialsType,
+    };
   }
 
   factory SasDatastoreCredentialsResponse.fromMap(Map<String, dynamic> map) {
@@ -22,3 +26,4 @@ class SasDatastoreCredentialsResponse {
     );
   }
 }
+

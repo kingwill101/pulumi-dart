@@ -159,70 +159,52 @@ import 'instance_state.dart';
 class Instance extends pulumi.CustomResource {
   /// The number of CPU cores and the upper limit of memory used by the database file storage instance.
   late final pulumi.Output<String> advancedFeatures;
-
   /// Category of database file system.
   late final pulumi.Output<String> category;
-
   /// The creation time of the resource.
   late final pulumi.Output<String> createTime;
-
   /// Whether to delete the original snapshot after creating DBFS using the snapshot.
   late final pulumi.Output<bool?> deleteSnapshot;
-
   /// The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS. See `ecs_list` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> ecsLists;
-
   /// Whether to create DBFS in RAID mode. If created in RAID mode, the capacity is at least 66GB.Valid values: true or false. Default value: false.
   late final pulumi.Output<bool?> enableRaid;
-
   /// Whether to encrypt DBFS.Valid values: true or false. Default value: false.
   late final pulumi.Output<bool?> encryption;
-
   /// Database file system name.
   late final pulumi.Output<String> fsName;
-
   /// . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
   late final pulumi.Output<String> instanceName;
-
   /// Instance type. Value range:
   /// - dbfs.small
   /// - dbfs.medium
   /// - dbfs.large (default)
   late final pulumi.Output<String?> instanceType;
-
   /// The ID of the KMS key used by DBFS.
   late final pulumi.Output<String?> kmsKeyId;
-
   /// When you create a DBFS instance, set the performance level of the DBFS instance. Value range:
   /// - PL0: single disk maximum random read-write IOPS 10000
   /// - PL1: highest random read-write IOPS 50000 per disk (default)
   /// - PL2: single disk maximum random read-write IOPS 100000
   /// - PL3: single disk maximum random read-write IOPS 1 million.
   late final pulumi.Output<String> performanceLevel;
-
   /// Number of strips. Required when the EnableRaid parameter is true.Value range: Currently, only 8 stripes are supported.
   late final pulumi.Output<int?> raidStripeUnitNumber;
-
   /// Size of database file system, unit GiB.
   late final pulumi.Output<int> size;
-
   /// The ID of the snapshot used to create the DBFS instance.
   late final pulumi.Output<String> snapshotId;
-
   /// The status of the resource.
   late final pulumi.Output<String> status;
-
   /// A mapping of tags to assign to the resource.
   ///
   /// The following arguments will be discarded. Please use new fields as soon as possible:
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The usage scenario of DBFS. Value range:
   /// - MySQL 5.7
   /// - PostgreSQL
   /// - MongoDB.
   late final pulumi.Output<String?> usedScene;
-
   /// The ID of the zone to which the database file system belongs.
   late final pulumi.Output<String> zoneId;
 
@@ -235,11 +217,11 @@ class Instance extends pulumi.CustomResource {
     InstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:databasefilesystem/instance:Instance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:databasefilesystem/instance:Instance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     advancedFeatures = registerOutput<String>('advancedFeatures');
     category = registerOutput<String>('category');
     createTime = registerOutput<String>('createTime');
@@ -279,11 +261,11 @@ class Instance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:databasefilesystem/instance:Instance',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:databasefilesystem/instance:Instance',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     advancedFeatures = registerOutput<String>('advancedFeatures');
     category = registerOutput<String>('category');
     createTime = registerOutput<String>('createTime');

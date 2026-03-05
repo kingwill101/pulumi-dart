@@ -7,31 +7,16 @@ import 'access_package_assignment_policy_approval_settings_approval_stage_primar
 class AccessPackageAssignmentPolicyApprovalSettingsApprovalStage {
   /// If no action taken, forward to alternate approvers?
   final pulumi.Input<bool>? alternativeApprovalEnabled;
-
   /// If escalation is enabled and the primary approvers do not respond before the escalation time, the escalationApprovers are the users who will be asked to approve requests. This can be a collection of singleUser, groupMembers, requestorManager, internalSponsors and externalSponsors. When creating or updating a policy, if there are no escalation approvers, or escalation approvers are not required for the stage, the value of this property should be an empty collection
-  final pulumi.Input<
-    List<
-      AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover
-    >
-  >?
-  alternativeApprovers;
-
+  final pulumi.Input<List<AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover>>? alternativeApprovers;
   /// Decision must be made in how many days? If a request is not approved within this time period after it is made, it will be automatically rejected
   final pulumi.Input<int> approvalTimeoutInDays;
-
   /// Whether an approver must provide a justification for their decision. Justification is visible to other approvers and the requestor
   final pulumi.Input<bool>? approverJustificationRequired;
-
   /// Forward to alternate approver(s) after how many days?
   final pulumi.Input<int>? enableAlternativeApprovalInDays;
-
   /// The users who will be asked to approve requests. A collection of singleUser, groupMembers, requestorManager, internalSponsors and externalSponsors. When creating or updating a policy, include at least one userSet in this collection
-  final pulumi.Input<
-    List<
-      AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover
-    >
-  >?
-  primaryApprovers;
+  final pulumi.Input<List<AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover>>? primaryApprovers;
 
   /// Creates a new [AccessPackageAssignmentPolicyApprovalSettingsApprovalStage].
   /// [alternativeApprovalEnabled] If no action taken, forward to alternate approvers?
@@ -52,92 +37,23 @@ class AccessPackageAssignmentPolicyApprovalSettingsApprovalStage {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'alternativeApprovalEnabled': ?alternativeApprovalEnabled,
-      'alternativeApprovers':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<
-              AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover
-            >,
-            List<Map<String, dynamic>>
-          >(
-            alternativeApprovers,
-            (value) =>
-                pulumi.Input.encodeList<
-                  AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'alternativeApprovers': ?pulumi.Input.mapOptionalInputValue<List<AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover>, List<Map<String, dynamic>>>(alternativeApprovers, (value) => pulumi.Input.encodeList<AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover, Map<String, dynamic>>(value, (value) => value.toMap())),
       'approvalTimeoutInDays': approvalTimeoutInDays,
       'approverJustificationRequired': ?approverJustificationRequired,
       'enableAlternativeApprovalInDays': ?enableAlternativeApprovalInDays,
-      'primaryApprovers':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<
-              AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover
-            >,
-            List<Map<String, dynamic>>
-          >(
-            primaryApprovers,
-            (value) =>
-                pulumi.Input.encodeList<
-                  AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'primaryApprovers': ?pulumi.Input.mapOptionalInputValue<List<AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover>, List<Map<String, dynamic>>>(primaryApprovers, (value) => pulumi.Input.encodeList<AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory AccessPackageAssignmentPolicyApprovalSettingsApprovalStage.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AccessPackageAssignmentPolicyApprovalSettingsApprovalStage.fromMap(Map<String, dynamic> map) {
     return AccessPackageAssignmentPolicyApprovalSettingsApprovalStage(
-      alternativeApprovalEnabled: (() {
-        final guardedValue = map['alternativeApprovalEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      alternativeApprovers: (() {
-        final guardedValue = map['alternativeApprovers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover
-          >(
-            guardedValue,
-            (value) =>
-                AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
-      approvalTimeoutInDays: pulumi.Input.fromValue(
-        map['approvalTimeoutInDays'] as int,
-      ),
-      approverJustificationRequired: (() {
-        final guardedValue = map['approverJustificationRequired'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      enableAlternativeApprovalInDays: (() {
-        final guardedValue = map['enableAlternativeApprovalInDays'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      primaryApprovers: (() {
-        final guardedValue = map['primaryApprovers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover
-          >(
-            guardedValue,
-            (value) =>
-                AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
+      alternativeApprovalEnabled: (() { final guardedValue = map['alternativeApprovalEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      alternativeApprovers: (() { final guardedValue = map['alternativeApprovers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover>(guardedValue, (value) => AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      approvalTimeoutInDays: pulumi.Input.fromValue(map['approvalTimeoutInDays'] as int),
+      approverJustificationRequired: (() { final guardedValue = map['approverJustificationRequired']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enableAlternativeApprovalInDays: (() { final guardedValue = map['enableAlternativeApprovalInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      primaryApprovers: (() { final guardedValue = map['primaryApprovers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover>(guardedValue, (value) => AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

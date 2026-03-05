@@ -15,31 +15,23 @@ class GetDatabasePostgresqlV2Args {
   /// Creates a new [GetDatabasePostgresqlV2Args].
   /// [id] The ID of the PostgreSQL database.
   /// [updates] Optional.
-  GetDatabasePostgresqlV2Args({required this.id, this.updates});
+  GetDatabasePostgresqlV2Args({
+    required this.id,
+    this.updates,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'updates':
-          ?pulumi.Input.mapOptionalInputValue<
-            GetDatabasePostgresqlV2Updates,
-            Map<String, dynamic>
-          >(updates, (value) => value.toMap()),
+      'updates': ?pulumi.Input.mapOptionalInputValue<GetDatabasePostgresqlV2Updates, Map<String, dynamic>>(updates, (value) => value.toMap()),
     };
   }
 
   factory GetDatabasePostgresqlV2Args.fromMap(Map<String, dynamic> map) {
     return GetDatabasePostgresqlV2Args(
       id: pulumi.Input.fromValue(map['id'] as String),
-      updates: (() {
-        final guardedValue = map['updates'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GetDatabasePostgresqlV2Updates.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      updates: (() { final guardedValue = map['updates']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GetDatabasePostgresqlV2Updates.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

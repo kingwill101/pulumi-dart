@@ -1,31 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getSslCert.
 class GetSslCertResult {
   /// PEM representation.
   final String cert;
-
   /// Serial number, as extracted from the certificate.
   final String certSerialNumber;
-
   /// User supplied name. Constrained to [a-zA-Z.-_ ]+.
   final String commonName;
-
   /// The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`
   final String createTime;
-
   /// The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
   final String expirationTime;
-
   /// Name of the database instance.
   final String instance;
-
   /// This is always `sql#sslCert`.
   final String kind;
-
   /// The URI of this resource.
   final String selfLink;
-
   /// Sha1 Fingerprint.
   final String sha1Fingerprint;
 
@@ -79,3 +72,4 @@ class GetSslCertResult {
     );
   }
 }
+

@@ -305,40 +305,31 @@ class NetworkInterface extends pulumi.CustomResource {
   late final pulumi.Output<List<String>> ipv4Prefixes;
   late final pulumi.Output<int> ipv6AddressCount;
   late final pulumi.Output<List<String>> ipv6Addresses;
-
   /// (Available in 1.54.0+) The MAC address of an ENI.
   late final pulumi.Output<String> mac;
-
   /// Name of the ENI. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> networkInterfaceName;
   late final pulumi.Output<String> networkInterfaceTrafficMode;
   late final pulumi.Output<String> primaryIpAddress;
-
   /// The primary private IP of the ENI.
   late final pulumi.Output<String> privateIp;
   late final pulumi.Output<List<String>> privateIpAddresses;
-
   /// List of secondary private IPs to assign to the ENI. Don't use both private_ips and private_ips_count in the same ENI resource block.
   late final pulumi.Output<List<String>> privateIps;
-
   /// Number of secondary private IPs to assign to the ENI. Don't use both private_ips and private_ips_count in the same ENI resource block.
   late final pulumi.Output<int> privateIpsCount;
   late final pulumi.Output<int> queueNumber;
-
   /// The Id of resource group which the network interface belongs.
   late final pulumi.Output<String?> resourceGroupId;
   late final pulumi.Output<int> secondaryPrivateIpAddressCount;
   late final pulumi.Output<List<String>> securityGroupIds;
-
   /// A list of security group ids to associate with.
   late final pulumi.Output<List<String>> securityGroups;
   late final pulumi.Output<bool?> sourceDestCheck;
   late final pulumi.Output<String> status;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The VSwitch to create the ENI in.
   late final pulumi.Output<String> vswitchId;
 
@@ -351,11 +342,11 @@ class NetworkInterface extends pulumi.CustomResource {
     NetworkInterfaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/networkInterface:NetworkInterface',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpc/networkInterface:NetworkInterface',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     instanceType = registerOutput<String>('instanceType');
     ipv4PrefixCount = registerOutput<int>('ipv4PrefixCount');
@@ -365,9 +356,7 @@ class NetworkInterface extends pulumi.CustomResource {
     mac = registerOutput<String>('mac');
     this.name = registerOutput<String>('name');
     networkInterfaceName = registerOutput<String>('networkInterfaceName');
-    networkInterfaceTrafficMode = registerOutput<String>(
-      'networkInterfaceTrafficMode',
-    );
+    networkInterfaceTrafficMode = registerOutput<String>('networkInterfaceTrafficMode');
     primaryIpAddress = registerOutput<String>('primaryIpAddress');
     privateIp = registerOutput<String>('privateIp');
     privateIpAddresses = registerOutput<List<String>>('privateIpAddresses');
@@ -375,9 +364,7 @@ class NetworkInterface extends pulumi.CustomResource {
     privateIpsCount = registerOutput<int>('privateIpsCount');
     queueNumber = registerOutput<int>('queueNumber');
     resourceGroupId = registerOutput<String?>('resourceGroupId');
-    secondaryPrivateIpAddressCount = registerOutput<int>(
-      'secondaryPrivateIpAddressCount',
-    );
+    secondaryPrivateIpAddressCount = registerOutput<int>('secondaryPrivateIpAddressCount');
     securityGroupIds = registerOutput<List<String>>('securityGroupIds');
     securityGroups = registerOutput<List<String>>('securityGroups');
     sourceDestCheck = registerOutput<bool?>('sourceDestCheck');
@@ -404,11 +391,11 @@ class NetworkInterface extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/networkInterface:NetworkInterface',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpc/networkInterface:NetworkInterface',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     instanceType = registerOutput<String>('instanceType');
     ipv4PrefixCount = registerOutput<int>('ipv4PrefixCount');
@@ -418,9 +405,7 @@ class NetworkInterface extends pulumi.CustomResource {
     mac = registerOutput<String>('mac');
     this.name = registerOutput<String>('name');
     networkInterfaceName = registerOutput<String>('networkInterfaceName');
-    networkInterfaceTrafficMode = registerOutput<String>(
-      'networkInterfaceTrafficMode',
-    );
+    networkInterfaceTrafficMode = registerOutput<String>('networkInterfaceTrafficMode');
     primaryIpAddress = registerOutput<String>('primaryIpAddress');
     privateIp = registerOutput<String>('privateIp');
     privateIpAddresses = registerOutput<List<String>>('privateIpAddresses');
@@ -428,9 +413,7 @@ class NetworkInterface extends pulumi.CustomResource {
     privateIpsCount = registerOutput<int>('privateIpsCount');
     queueNumber = registerOutput<int>('queueNumber');
     resourceGroupId = registerOutput<String?>('resourceGroupId');
-    secondaryPrivateIpAddressCount = registerOutput<int>(
-      'secondaryPrivateIpAddressCount',
-    );
+    secondaryPrivateIpAddressCount = registerOutput<int>('secondaryPrivateIpAddressCount');
     securityGroupIds = registerOutput<List<String>>('securityGroupIds');
     securityGroups = registerOutput<List<String>>('securityGroups');
     sourceDestCheck = registerOutput<bool?>('sourceDestCheck');

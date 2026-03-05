@@ -9,15 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Ipv4CidrBlockArgs {
   /// The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
   final pulumi.Input<String>? ipv4IpamPoolId;
-
   /// Additional network segment information.
   final pulumi.Input<String>? secondaryCidrBlock;
-
   /// Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
   ///
   /// &gt; **NOTE:**  Specify the IPAM address pool to add an additional CIDR block to the VPC. Enter at least one of the SecondaryCidrBlock or SecondaryCidrMask parameters.
   final pulumi.Input<int>? secondaryCidrMask;
-
   /// The ID of the VPC.
   final pulumi.Input<String> vpcId;
 
@@ -44,22 +41,11 @@ class Ipv4CidrBlockArgs {
 
   factory Ipv4CidrBlockArgs.fromMap(Map<String, dynamic> map) {
     return Ipv4CidrBlockArgs(
-      ipv4IpamPoolId: (() {
-        final guardedValue = map['ipv4IpamPoolId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      secondaryCidrBlock: (() {
-        final guardedValue = map['secondaryCidrBlock'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      secondaryCidrMask: (() {
-        final guardedValue = map['secondaryCidrMask'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      ipv4IpamPoolId: (() { final guardedValue = map['ipv4IpamPoolId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      secondaryCidrBlock: (() { final guardedValue = map['secondaryCidrBlock']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      secondaryCidrMask: (() { final guardedValue = map['secondaryCidrMask']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
     );
   }
 }
+

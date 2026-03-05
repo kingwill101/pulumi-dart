@@ -5,14 +5,11 @@ import 'release_args.dart';
 class Release extends pulumi.CustomResource {
   /// Time the release was created.
   late final pulumi.Output<String> createTime;
-
   /// Format: `projects/{project_id}/releases/{release_id}`
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
-
   /// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
   late final pulumi.Output<String> rulesetName;
-
   /// Time the release was updated.
   late final pulumi.Output<String> updateTime;
 
@@ -25,11 +22,11 @@ class Release extends pulumi.CustomResource {
     ReleaseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'google-native:firebaserules/v1:Release',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'google-native:firebaserules/v1:Release',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

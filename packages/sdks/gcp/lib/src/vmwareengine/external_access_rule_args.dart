@@ -12,38 +12,28 @@ class ExternalAccessRuleArgs {
   /// The action that the external access rule performs.
   /// Possible values are: `ALLOW`, `DENY`.
   final pulumi.Input<String> action;
-
   /// User-provided description for the external access rule.
   final pulumi.Input<String>? description;
-
   /// If destination ranges are specified, the external access rule applies only to
   /// traffic that has a destination IP address in these ranges.
   /// Structure is documented below.
-  final pulumi.Input<List<ExternalAccessRuleDestinationIpRange>>
-  destinationIpRanges;
-
+  final pulumi.Input<List<ExternalAccessRuleDestinationIpRange>> destinationIpRanges;
   /// A list of destination ports to which the external access rule applies.
   final pulumi.Input<List<String>> destinationPorts;
-
   /// The IP protocol to which the external access rule applies.
   final pulumi.Input<String> ipProtocol;
-
   /// The ID of the external access rule.
   final pulumi.Input<String>? name;
-
   /// The resource name of the network policy.
   /// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
   /// For example: projects/my-project/locations/us-west1-a/networkPolicies/my-policy
   final pulumi.Input<String> parent;
-
   /// External access rule priority, which determines the external access rule to use when multiple rules apply.
   final pulumi.Input<int> priority;
-
   /// If source ranges are specified, the external access rule applies only to
   /// traffic that has a source IP address in these ranges.
   /// Structure is documented below.
   final pulumi.Input<List<ExternalAccessRuleSourceIpRange>> sourceIpRanges;
-
   /// A list of source ports to which the external access rule applies.
   final pulumi.Input<List<String>> sourcePorts;
 
@@ -75,35 +65,13 @@ class ExternalAccessRuleArgs {
     return <String, dynamic>{
       'action': action,
       'description': ?description,
-      'destinationIpRanges':
-          pulumi.Input.mapInputValue<
-            List<ExternalAccessRuleDestinationIpRange>,
-            List<Map<String, dynamic>>
-          >(
-            destinationIpRanges,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ExternalAccessRuleDestinationIpRange,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'destinationIpRanges': pulumi.Input.mapInputValue<List<ExternalAccessRuleDestinationIpRange>, List<Map<String, dynamic>>>(destinationIpRanges, (value) => pulumi.Input.encodeList<ExternalAccessRuleDestinationIpRange, Map<String, dynamic>>(value, (value) => value.toMap())),
       'destinationPorts': destinationPorts,
       'ipProtocol': ipProtocol,
       'name': ?name,
       'parent': parent,
       'priority': priority,
-      'sourceIpRanges':
-          pulumi.Input.mapInputValue<
-            List<ExternalAccessRuleSourceIpRange>,
-            List<Map<String, dynamic>>
-          >(
-            sourceIpRanges,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ExternalAccessRuleSourceIpRange,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'sourceIpRanges': pulumi.Input.mapInputValue<List<ExternalAccessRuleSourceIpRange>, List<Map<String, dynamic>>>(sourceIpRanges, (value) => pulumi.Input.encodeList<ExternalAccessRuleSourceIpRange, Map<String, dynamic>>(value, (value) => value.toMap())),
       'sourcePorts': sourcePorts,
     };
   }
@@ -111,41 +79,16 @@ class ExternalAccessRuleArgs {
   factory ExternalAccessRuleArgs.fromMap(Map<String, dynamic> map) {
     return ExternalAccessRuleArgs(
       action: pulumi.Input.fromValue(map['action'] as String),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      destinationIpRanges: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<ExternalAccessRuleDestinationIpRange>(
-          map['destinationIpRanges']!,
-          (value) => ExternalAccessRuleDestinationIpRange.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      destinationPorts: pulumi.Input.fromValue(
-        (map['destinationPorts'] as List).cast<String>(),
-      ),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      destinationIpRanges: pulumi.Input.fromValue(pulumi.Input.decodeList<ExternalAccessRuleDestinationIpRange>(map['destinationIpRanges']!, (value) => ExternalAccessRuleDestinationIpRange.fromMap((value as Map).cast<String, dynamic>()))),
+      destinationPorts: pulumi.Input.fromValue((map['destinationPorts'] as List).cast<String>()),
       ipProtocol: pulumi.Input.fromValue(map['ipProtocol'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       parent: pulumi.Input.fromValue(map['parent'] as String),
       priority: pulumi.Input.fromValue(map['priority'] as int),
-      sourceIpRanges: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<ExternalAccessRuleSourceIpRange>(
-          map['sourceIpRanges']!,
-          (value) => ExternalAccessRuleSourceIpRange.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      sourcePorts: pulumi.Input.fromValue(
-        (map['sourcePorts'] as List).cast<String>(),
-      ),
+      sourceIpRanges: pulumi.Input.fromValue(pulumi.Input.decodeList<ExternalAccessRuleSourceIpRange>(map['sourceIpRanges']!, (value) => ExternalAccessRuleSourceIpRange.fromMap((value as Map).cast<String, dynamic>()))),
+      sourcePorts: pulumi.Input.fromValue((map['sourcePorts'] as List).cast<String>()),
     );
   }
 }
+

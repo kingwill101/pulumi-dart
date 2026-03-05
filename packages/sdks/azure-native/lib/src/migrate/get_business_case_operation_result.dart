@@ -9,28 +9,20 @@ import 'system_data_response.dart';
 class GetBusinessCaseOperationResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// The name of the resource
   final String name;
-
   /// The status of the last operation.
   final String provisioningState;
-
   /// Gets the state of business case reports.
   final List<ReportDetailsResponse> reportStatusDetails;
-
   /// Business case settings.
   final SettingsResponse? settings;
-
   /// Business case state.
   final String state;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -62,11 +54,7 @@ class GetBusinessCaseOperationResult {
       'id': id,
       'name': name,
       'provisioningState': provisioningState,
-      'reportStatusDetails':
-          pulumi.Input.encodeList<ReportDetailsResponse, Map<String, dynamic>>(
-            reportStatusDetails,
-            (value) => value.toMap(),
-          ),
+      'reportStatusDetails': pulumi.Input.encodeList<ReportDetailsResponse, Map<String, dynamic>>(reportStatusDetails, (value) => value.toMap()),
       'settings': ?settings?.toMap(),
       'state': state,
       'systemData': systemData.toMap(),
@@ -80,24 +68,12 @@ class GetBusinessCaseOperationResult {
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      reportStatusDetails: pulumi.Input.decodeList<ReportDetailsResponse>(
-        map['reportStatusDetails']!,
-        (value) => ReportDetailsResponse.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      settings: (() {
-        final guardedValue = map['settings'];
-        if (guardedValue == null) return null;
-        return SettingsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      reportStatusDetails: pulumi.Input.decodeList<ReportDetailsResponse>(map['reportStatusDetails']!, (value) => ReportDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
+      settings: (() { final guardedValue = map['settings']; if (guardedValue == null) return null; return SettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       state: map['state'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

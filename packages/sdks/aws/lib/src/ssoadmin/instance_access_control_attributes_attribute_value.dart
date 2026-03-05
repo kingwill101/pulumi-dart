@@ -8,17 +8,20 @@ class InstanceAccessControlAttributesAttributeValue {
 
   /// Creates a new [InstanceAccessControlAttributesAttributeValue].
   /// [sources] The identity source to use when mapping a specified attribute to AWS SSO.
-  InstanceAccessControlAttributesAttributeValue({required this.sources});
+  InstanceAccessControlAttributesAttributeValue({
+    required this.sources,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'sources': sources};
+    return <String, dynamic>{
+      'sources': sources,
+    };
   }
 
-  factory InstanceAccessControlAttributesAttributeValue.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InstanceAccessControlAttributesAttributeValue.fromMap(Map<String, dynamic> map) {
     return InstanceAccessControlAttributesAttributeValue(
       sources: pulumi.Input.fromValue((map['sources'] as List).cast<String>()),
     );
   }
 }
+

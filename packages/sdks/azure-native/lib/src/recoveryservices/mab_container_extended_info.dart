@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MabContainerExtendedInfo {
   /// Type of backup items associated with this container.
   final pulumi.Input<String>? backupItemType;
-
   /// List of backup items associated with this container.
   final pulumi.Input<List<String>>? backupItems;
-
   /// Latest backup status of this container.
   final pulumi.Input<String>? lastBackupStatus;
-
   /// Time stamp when this container was refreshed.
   final pulumi.Input<String>? lastRefreshedAt;
-
   /// Backup policy associated with this container.
   final pulumi.Input<String>? policyName;
 
@@ -45,31 +41,12 @@ class MabContainerExtendedInfo {
 
   factory MabContainerExtendedInfo.fromMap(Map<String, dynamic> map) {
     return MabContainerExtendedInfo(
-      backupItemType: (() {
-        final guardedValue = map['backupItemType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      backupItems: (() {
-        final guardedValue = map['backupItems'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      lastBackupStatus: (() {
-        final guardedValue = map['lastBackupStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      lastRefreshedAt: (() {
-        final guardedValue = map['lastRefreshedAt'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      policyName: (() {
-        final guardedValue = map['policyName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      backupItemType: (() { final guardedValue = map['backupItemType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      backupItems: (() { final guardedValue = map['backupItems']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      lastBackupStatus: (() { final guardedValue = map['lastBackupStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      lastRefreshedAt: (() { final guardedValue = map['lastRefreshedAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      policyName: (() { final guardedValue = map['policyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

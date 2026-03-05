@@ -6,7 +6,6 @@ import 'get_virtual_hosts_host.dart';
 /// Result data returned by getVirtualHosts.
 class GetVirtualHostsResult {
   final List<GetVirtualHostsHost> hosts;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -35,11 +34,7 @@ class GetVirtualHostsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'hosts':
-          pulumi.Input.encodeList<GetVirtualHostsHost, Map<String, dynamic>>(
-            hosts,
-            (value) => value.toMap(),
-          ),
+      'hosts': pulumi.Input.encodeList<GetVirtualHostsHost, Map<String, dynamic>>(hosts, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'instanceId': instanceId,
@@ -51,25 +46,14 @@ class GetVirtualHostsResult {
 
   factory GetVirtualHostsResult.fromMap(Map<String, dynamic> map) {
     return GetVirtualHostsResult(
-      hosts: pulumi.Input.decodeList<GetVirtualHostsHost>(
-        map['hosts']!,
-        (value) =>
-            GetVirtualHostsHost.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      hosts: pulumi.Input.decodeList<GetVirtualHostsHost>(map['hosts']!, (value) => GetVirtualHostsHost.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       instanceId: map['instanceId'] as String,
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

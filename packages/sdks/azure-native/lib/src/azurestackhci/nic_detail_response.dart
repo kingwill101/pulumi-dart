@@ -6,28 +6,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NicDetailResponse {
   /// Adapter Name of NIC
   final pulumi.Input<String>? adapterName;
-
   /// Component Id of NIC
   final pulumi.Input<String>? componentId;
-
   /// Default Gateway of NIC
   final pulumi.Input<String>? defaultGateway;
-
   /// Default Isolation of Management NIC
   final pulumi.Input<String>? defaultIsolationId;
-
   /// DNS Servers for NIC
   final pulumi.Input<List<String>>? dnsServers;
-
   /// Driver Version of NIC
   final pulumi.Input<String>? driverVersion;
-
   /// Interface Description of NIC
   final pulumi.Input<String>? interfaceDescription;
-
   /// Subnet Mask of NIC
   final pulumi.Input<String>? ip4Address;
-
   /// Subnet Mask of NIC
   final pulumi.Input<String>? subnetMask;
 
@@ -69,51 +61,16 @@ class NicDetailResponse {
 
   factory NicDetailResponse.fromMap(Map<String, dynamic> map) {
     return NicDetailResponse(
-      adapterName: (() {
-        final guardedValue = map['adapterName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      componentId: (() {
-        final guardedValue = map['componentId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      defaultGateway: (() {
-        final guardedValue = map['defaultGateway'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      defaultIsolationId: (() {
-        final guardedValue = map['defaultIsolationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dnsServers: (() {
-        final guardedValue = map['dnsServers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      driverVersion: (() {
-        final guardedValue = map['driverVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      interfaceDescription: (() {
-        final guardedValue = map['interfaceDescription'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ip4Address: (() {
-        final guardedValue = map['ip4Address'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subnetMask: (() {
-        final guardedValue = map['subnetMask'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      adapterName: (() { final guardedValue = map['adapterName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      componentId: (() { final guardedValue = map['componentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      defaultGateway: (() { final guardedValue = map['defaultGateway']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      defaultIsolationId: (() { final guardedValue = map['defaultIsolationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dnsServers: (() { final guardedValue = map['dnsServers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      driverVersion: (() { final guardedValue = map['driverVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      interfaceDescription: (() { final guardedValue = map['interfaceDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ip4Address: (() { final guardedValue = map['ip4Address']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subnetMask: (() { final guardedValue = map['subnetMask']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

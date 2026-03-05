@@ -13,8 +13,7 @@ enum ServerSideEncryptionByDefaultSSEAlgorithm {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ServerSideEncryptionByDefaultSSEAlgorithm value: $value',
-    );
+    throw ArgumentError('Unknown ServerSideEncryptionByDefaultSSEAlgorithm value: $value');
   }
 }
+

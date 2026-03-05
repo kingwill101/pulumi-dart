@@ -9,21 +9,20 @@ class LogicalNetworkPropertiesDhcpOptions {
 
   /// Creates a new [LogicalNetworkPropertiesDhcpOptions].
   /// [dnsServers] The list of DNS servers IP addresses.
-  LogicalNetworkPropertiesDhcpOptions({this.dnsServers});
+  LogicalNetworkPropertiesDhcpOptions({
+    this.dnsServers,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'dnsServers': ?dnsServers};
+    return <String, dynamic>{
+      'dnsServers': ?dnsServers,
+    };
   }
 
-  factory LogicalNetworkPropertiesDhcpOptions.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LogicalNetworkPropertiesDhcpOptions.fromMap(Map<String, dynamic> map) {
     return LogicalNetworkPropertiesDhcpOptions(
-      dnsServers: (() {
-        final guardedValue = map['dnsServers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      dnsServers: (() { final guardedValue = map['dnsServers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

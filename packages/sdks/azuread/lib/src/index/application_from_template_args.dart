@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationFromTemplateArgs {
   /// The display name for the application.
   final pulumi.Input<String> displayName;
-
   /// Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
   final pulumi.Input<String> templateId;
 
@@ -35,3 +34,4 @@ class ApplicationFromTemplateArgs {
     );
   }
 }
+

@@ -17,8 +17,7 @@ enum GooglePrivacyDlpV2TimePartConfigPartToExtract {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GooglePrivacyDlpV2TimePartConfigPartToExtract value: $value',
-    );
+    throw ArgumentError('Unknown GooglePrivacyDlpV2TimePartConfigPartToExtract value: $value');
   }
 }
+

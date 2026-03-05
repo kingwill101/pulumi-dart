@@ -7,17 +7,13 @@ enum FleetObservabilityRoutingConfigModeGkehubV1alpha {
   const FleetObservabilityRoutingConfigModeGkehubV1alpha(this.wireValue);
   final String wireValue;
 
-  static FleetObservabilityRoutingConfigModeGkehubV1alpha fromValue(
-    String value,
-  ) {
-    for (final item
-        in FleetObservabilityRoutingConfigModeGkehubV1alpha.values) {
+  static FleetObservabilityRoutingConfigModeGkehubV1alpha fromValue(String value) {
+    for (final item in FleetObservabilityRoutingConfigModeGkehubV1alpha.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown FleetObservabilityRoutingConfigModeGkehubV1alpha value: $value',
-    );
+    throw ArgumentError('Unknown FleetObservabilityRoutingConfigModeGkehubV1alpha value: $value');
   }
 }
+

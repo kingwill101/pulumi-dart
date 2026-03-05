@@ -337,7 +337,6 @@ import 'protocol_service_state.dart';
 class ProtocolService extends pulumi.CustomResource {
   /// The time when the protocol server service was created. The UTC time.
   late final pulumi.Output<String> createTime;
-
   /// Description of the agreement service.
   ///
   /// Limitations:
@@ -346,33 +345,25 @@ class ProtocolService extends pulumi.CustomResource {
   /// - Can contain numbers, colons (:), underscores (_), or dashes (-).
   late final pulumi.Output<String?> description;
   late final pulumi.Output<bool?> dryRun;
-
   /// The ID of the file system.
   late final pulumi.Output<String> fileSystemId;
-
   /// Protocol Service ID
   late final pulumi.Output<String> protocolServiceId;
-
   /// The specification of the protocol machine cluster.
   /// - Value range: General、CL1、CL2
   /// - Default value: General
   late final pulumi.Output<String> protocolSpec;
-
   /// The throughput of the protocol service. Unit: MB/s.
   late final pulumi.Output<int> protocolThroughput;
-
   /// The protocol type supported by the protocol service.
   ///
   /// Value range:
   /// - NFS: Protocol Service supports NFS protocol access.
   late final pulumi.Output<String> protocolType;
-
   /// Agreement service status.
   late final pulumi.Output<String> status;
-
   /// The VpcId of the protocol service, which must be consistent with the VPC of the file system.
   late final pulumi.Output<String?> vpcId;
-
   /// The VSwitchId of the protocol service.
   late final pulumi.Output<String?> vswitchId;
 
@@ -385,11 +376,11 @@ class ProtocolService extends pulumi.CustomResource {
     ProtocolServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:nas/protocolService:ProtocolService',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:nas/protocolService:ProtocolService',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     dryRun = registerOutput<bool?>('dryRun');
@@ -421,11 +412,11 @@ class ProtocolService extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:nas/protocolService:ProtocolService',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:nas/protocolService:ProtocolService',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     dryRun = registerOutput<bool?>('dryRun');

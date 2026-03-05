@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSrvRecordRecord {
   /// Port the service is listening on.
   final pulumi.Input<int> port;
-
   /// Priority of the SRV record.
   final pulumi.Input<int> priority;
-
   /// FQDN of the service.
   final pulumi.Input<String> target;
-
   /// Weight of the SRV record.
   final pulumi.Input<int> weight;
 
@@ -45,3 +42,4 @@ class GetSrvRecordRecord {
     );
   }
 }
+

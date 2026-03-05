@@ -6,15 +6,8 @@ import 'job_template_job_template_data_configuration_overrides_application_confi
 class JobTemplateJobTemplateDataConfigurationOverridesApplicationConfiguration {
   /// The classification within a configuration.
   final pulumi.Input<String> classification;
-
   /// A list of additional configurations to apply within a configuration object.
-  final pulumi.Input<
-    List<
-      JobTemplateJobTemplateDataConfigurationOverridesApplicationConfigurationConfiguration
-    >
-  >?
-  configurations;
-
+  final pulumi.Input<List<JobTemplateJobTemplateDataConfigurationOverridesApplicationConfigurationConfiguration>>? configurations;
   /// A set of properties specified within a configuration classification.
   final pulumi.Input<Map<String, String>>? properties;
 
@@ -31,51 +24,17 @@ class JobTemplateJobTemplateDataConfigurationOverridesApplicationConfiguration {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'classification': classification,
-      'configurations':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<
-              JobTemplateJobTemplateDataConfigurationOverridesApplicationConfigurationConfiguration
-            >,
-            List<Map<String, dynamic>>
-          >(
-            configurations,
-            (value) =>
-                pulumi.Input.encodeList<
-                  JobTemplateJobTemplateDataConfigurationOverridesApplicationConfigurationConfiguration,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'configurations': ?pulumi.Input.mapOptionalInputValue<List<JobTemplateJobTemplateDataConfigurationOverridesApplicationConfigurationConfiguration>, List<Map<String, dynamic>>>(configurations, (value) => pulumi.Input.encodeList<JobTemplateJobTemplateDataConfigurationOverridesApplicationConfigurationConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
       'properties': ?properties,
     };
   }
 
-  factory JobTemplateJobTemplateDataConfigurationOverridesApplicationConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory JobTemplateJobTemplateDataConfigurationOverridesApplicationConfiguration.fromMap(Map<String, dynamic> map) {
     return JobTemplateJobTemplateDataConfigurationOverridesApplicationConfiguration(
       classification: pulumi.Input.fromValue(map['classification'] as String),
-      configurations: (() {
-        final guardedValue = map['configurations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            JobTemplateJobTemplateDataConfigurationOverridesApplicationConfigurationConfiguration
-          >(
-            guardedValue,
-            (value) =>
-                JobTemplateJobTemplateDataConfigurationOverridesApplicationConfigurationConfiguration.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      configurations: (() { final guardedValue = map['configurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<JobTemplateJobTemplateDataConfigurationOverridesApplicationConfigurationConfiguration>(guardedValue, (value) => JobTemplateJobTemplateDataConfigurationOverridesApplicationConfigurationConfiguration.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

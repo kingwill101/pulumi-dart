@@ -9,19 +9,20 @@ class AllowedFlexVolumePatch {
 
   /// Creates a new [AllowedFlexVolumePatch].
   /// [driver] driver is the name of the Flexvolume driver.
-  AllowedFlexVolumePatch({this.driver});
+  AllowedFlexVolumePatch({
+    this.driver,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'driver': ?driver};
+    return <String, dynamic>{
+      'driver': ?driver,
+    };
   }
 
   factory AllowedFlexVolumePatch.fromMap(Map<String, dynamic> map) {
     return AllowedFlexVolumePatch(
-      driver: (() {
-        final guardedValue = map['driver'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      driver: (() { final guardedValue = map['driver']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

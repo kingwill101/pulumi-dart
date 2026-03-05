@@ -6,31 +6,22 @@ import 'customer_metadata_response.dart';
 class GetMarkupRuleResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Customer information for the markup rule.
   final CustomerMetadataResponse customerDetails;
-
   /// The description of the markup rule.
   final String? description;
-
   /// eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
   final String? eTag;
-
   /// Ending date of the markup rule.
   final String? endDate;
-
   /// Resource Id.
   final String id;
-
   /// Resource name.
   final String name;
-
   /// The markup percentage of the rule.
   final double percentage;
-
   /// Starting date of the markup rule.
   final String startDate;
-
   /// Resource type.
   final String type;
 
@@ -76,24 +67,10 @@ class GetMarkupRuleResult {
   factory GetMarkupRuleResult.fromMap(Map<String, dynamic> map) {
     return GetMarkupRuleResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      customerDetails: CustomerMetadataResponse.fromMap(
-        (map['customerDetails']! as Map).cast<String, dynamic>(),
-      ),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      eTag: (() {
-        final guardedValue = map['eTag'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      endDate: (() {
-        final guardedValue = map['endDate'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      customerDetails: CustomerMetadataResponse.fromMap((map['customerDetails']! as Map).cast<String, dynamic>()),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      eTag: (() { final guardedValue = map['eTag']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      endDate: (() { final guardedValue = map['endDate']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       name: map['name'] as String,
       percentage: map['percentage'] as double,
@@ -102,3 +79,4 @@ class GetMarkupRuleResult {
     );
   }
 }
+

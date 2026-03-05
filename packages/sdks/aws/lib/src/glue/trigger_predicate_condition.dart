@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TriggerPredicateCondition {
   /// The condition crawl state. Currently, the values supported are `RUNNING`, `SUCCEEDED`, `CANCELLED`, and `FAILED`. If this is specified, `crawler_name` must also be specified. Conflicts with `state`.
   final pulumi.Input<String>? crawlState;
-
   /// The name of the crawler to watch. If this is specified, `crawl_state` must also be specified. Conflicts with `job_name`.
   final pulumi.Input<String>? crawlerName;
-
   /// The name of the job to watch. If this is specified, `state` must also be specified. Conflicts with `crawler_name`.
   final pulumi.Input<String>? jobName;
-
   /// A logical operator. Defaults to `EQUALS`.
   final pulumi.Input<String>? logicalOperator;
-
   /// The condition job state. Currently, the values supported are `SUCCEEDED`, `STOPPED`, `TIMEOUT` and `FAILED`. If this is specified, `job_name` must also be specified. Conflicts with `crawler_state`.
   final pulumi.Input<String>? state;
 
@@ -44,31 +40,12 @@ class TriggerPredicateCondition {
 
   factory TriggerPredicateCondition.fromMap(Map<String, dynamic> map) {
     return TriggerPredicateCondition(
-      crawlState: (() {
-        final guardedValue = map['crawlState'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      crawlerName: (() {
-        final guardedValue = map['crawlerName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      jobName: (() {
-        final guardedValue = map['jobName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      logicalOperator: (() {
-        final guardedValue = map['logicalOperator'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      crawlState: (() { final guardedValue = map['crawlState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      crawlerName: (() { final guardedValue = map['crawlerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      jobName: (() { final guardedValue = map['jobName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      logicalOperator: (() { final guardedValue = map['logicalOperator']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

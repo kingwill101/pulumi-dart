@@ -159,28 +159,20 @@ import 'user_assigned_identity_args.dart';
 class UserAssignedIdentity extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The id of the app associated with the identity. This is a random generated UUID by MSI.
   late final pulumi.Output<String> clientId;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The id of the service principal object associated with the created identity.
   late final pulumi.Output<String> principalId;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The id of the tenant which the identity belongs to.
   late final pulumi.Output<String> tenantId;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -193,26 +185,17 @@ class UserAssignedIdentity extends pulumi.CustomResource {
     UserAssignedIdentityArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:managedidentity:UserAssignedIdentity',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:managedidentity:UserAssignedIdentity',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     clientId = registerOutput<String>('clientId');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     principalId = registerOutput<String>('principalId');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tenantId = registerOutput<String>('tenantId');
     type = registerOutput<String>('type');

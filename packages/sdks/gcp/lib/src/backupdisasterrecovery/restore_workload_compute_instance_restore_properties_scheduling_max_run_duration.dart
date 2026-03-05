@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDuration {
   /// (Optional)
   final pulumi.Input<int>? nanos;
-
   /// (Optional)
   final pulumi.Input<int>? seconds;
 
@@ -18,23 +17,17 @@ class RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDuration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'nanos': ?nanos, 'seconds': ?seconds};
+    return <String, dynamic>{
+      'nanos': ?nanos,
+      'seconds': ?seconds,
+    };
   }
 
-  factory RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDuration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDuration.fromMap(Map<String, dynamic> map) {
     return RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDuration(
-      nanos: (() {
-        final guardedValue = map['nanos'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      seconds: (() {
-        final guardedValue = map['seconds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      nanos: (() { final guardedValue = map['nanos']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      seconds: (() { final guardedValue = map['seconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

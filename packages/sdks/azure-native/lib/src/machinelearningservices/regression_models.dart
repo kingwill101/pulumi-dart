@@ -23,3 +23,4 @@ enum RegressionModels {
     throw ArgumentError('Unknown RegressionModels value: $value');
   }
 }
+

@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListPrivateCloudAdminCredentialsArgs {
   /// Name of the private cloud
   final pulumi.Input<String> privateCloudName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -28,16 +27,11 @@ class ListPrivateCloudAdminCredentialsArgs {
     };
   }
 
-  factory ListPrivateCloudAdminCredentialsArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListPrivateCloudAdminCredentialsArgs.fromMap(Map<String, dynamic> map) {
     return ListPrivateCloudAdminCredentialsArgs(
-      privateCloudName: pulumi.Input.fromValue(
-        map['privateCloudName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      privateCloudName: pulumi.Input.fromValue(map['privateCloudName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

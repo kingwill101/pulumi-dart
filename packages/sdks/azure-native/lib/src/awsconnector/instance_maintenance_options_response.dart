@@ -10,29 +10,20 @@ class InstanceMaintenanceOptionsResponse {
 
   /// Creates a new [InstanceMaintenanceOptionsResponse].
   /// [autoRecovery] &lt;p&gt;Provides information on the current automatic recovery behavior of your instance.&lt;/p&gt;
-  InstanceMaintenanceOptionsResponse({this.autoRecovery});
+  InstanceMaintenanceOptionsResponse({
+    this.autoRecovery,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoRecovery':
-          ?pulumi.Input.mapOptionalInputValue<
-            InstanceAutoRecoveryStateEnumValueResponse,
-            Map<String, dynamic>
-          >(autoRecovery, (value) => value.toMap()),
+      'autoRecovery': ?pulumi.Input.mapOptionalInputValue<InstanceAutoRecoveryStateEnumValueResponse, Map<String, dynamic>>(autoRecovery, (value) => value.toMap()),
     };
   }
 
   factory InstanceMaintenanceOptionsResponse.fromMap(Map<String, dynamic> map) {
     return InstanceMaintenanceOptionsResponse(
-      autoRecovery: (() {
-        final guardedValue = map['autoRecovery'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          InstanceAutoRecoveryStateEnumValueResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      autoRecovery: (() { final guardedValue = map['autoRecovery']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceAutoRecoveryStateEnumValueResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

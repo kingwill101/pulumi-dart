@@ -249,13 +249,10 @@ import 'eventhub_namespace_disaster_recovery_config_state.dart';
 class EventhubNamespaceDisasterRecoveryConfig extends pulumi.CustomResource {
   /// Specifies the name of the Disaster Recovery Config. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies the name of the primary EventHub Namespace to replicate. Changing this forces a new resource to be created.
   late final pulumi.Output<String> namespaceName;
-
   /// The ID of the EventHub Namespace to replicate to.
   late final pulumi.Output<String> partnerNamespaceId;
-
   /// The name of the resource group in which the Disaster Recovery Config exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
 
@@ -268,11 +265,11 @@ class EventhubNamespaceDisasterRecoveryConfig extends pulumi.CustomResource {
     EventhubNamespaceDisasterRecoveryConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:eventhub/eventhubNamespaceDisasterRecoveryConfig:EventhubNamespaceDisasterRecoveryConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:eventhub/eventhubNamespaceDisasterRecoveryConfig:EventhubNamespaceDisasterRecoveryConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     namespaceName = registerOutput<String>('namespaceName');
     partnerNamespaceId = registerOutput<String>('partnerNamespaceId');
@@ -297,11 +294,11 @@ class EventhubNamespaceDisasterRecoveryConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:eventhub/eventhubNamespaceDisasterRecoveryConfig:EventhubNamespaceDisasterRecoveryConfig',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:eventhub/eventhubNamespaceDisasterRecoveryConfig:EventhubNamespaceDisasterRecoveryConfig',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     namespaceName = registerOutput<String>('namespaceName');
     partnerNamespaceId = registerOutput<String>('partnerNamespaceId');

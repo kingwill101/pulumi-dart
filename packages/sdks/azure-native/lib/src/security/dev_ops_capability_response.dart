@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DevOpsCapabilityResponse {
   /// Gets the name of the DevOps capability.
   final pulumi.Input<String> name;
-
   /// Gets the value of the DevOps capability.
   final pulumi.Input<String> value;
 
   /// Creates a new [DevOpsCapabilityResponse].
   /// [name] Gets the name of the DevOps capability.
   /// [value] Gets the value of the DevOps capability.
-  DevOpsCapabilityResponse({required this.name, required this.value});
+  DevOpsCapabilityResponse({
+    required this.name,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'value': value};
+    return <String, dynamic>{
+      'name': name,
+      'value': value,
+    };
   }
 
   factory DevOpsCapabilityResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class DevOpsCapabilityResponse {
     );
   }
 }
+

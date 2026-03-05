@@ -10,35 +10,24 @@ import 'system_data_response.dart';
 class GetOriginGroupResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Health probe settings to the origin that is used to determine the health of the origin.
   final HealthProbeParametersResponse? healthProbeSettings;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// The name of the resource
   final String name;
-
   /// The source of the content being delivered via CDN within given origin group.
   final List<ResourceReferenceResponse>? origins;
-
   /// Provisioning status of the origin group.
   final String provisioningState;
-
   /// Resource status of the origin group.
   final String resourceState;
-
   /// The JSON object that contains the properties to determine origin health using real requests/responses. This property is currently not supported.
-  final ResponseBasedOriginErrorDetectionParametersResponse?
-  responseBasedOriginErrorDetectionSettings;
-
+  final ResponseBasedOriginErrorDetectionParametersResponse? responseBasedOriginErrorDetectionSettings;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// Time in minutes to shift the traffic to the endpoint gradually when an unhealthy endpoint comes healthy or a new endpoint is added. Default is 10 mins. This property is currently not supported.
   final int? trafficRestorationTimeToHealedOrNewEndpointsInMinutes;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -74,21 +63,12 @@ class GetOriginGroupResult {
       'healthProbeSettings': ?healthProbeSettings?.toMap(),
       'id': id,
       'name': name,
-      'origins': ?(() {
-        final guardedValue = origins;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          ResourceReferenceResponse,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'origins': ?(() { final guardedValue = origins; if (guardedValue == null) return null; return pulumi.Input.encodeList<ResourceReferenceResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'provisioningState': provisioningState,
       'resourceState': resourceState,
-      'responseBasedOriginErrorDetectionSettings':
-          ?responseBasedOriginErrorDetectionSettings?.toMap(),
+      'responseBasedOriginErrorDetectionSettings': ?responseBasedOriginErrorDetectionSettings?.toMap(),
       'systemData': systemData.toMap(),
-      'trafficRestorationTimeToHealedOrNewEndpointsInMinutes':
-          ?trafficRestorationTimeToHealedOrNewEndpointsInMinutes,
+      'trafficRestorationTimeToHealedOrNewEndpointsInMinutes': ?trafficRestorationTimeToHealedOrNewEndpointsInMinutes,
       'type': type,
     };
   }
@@ -96,44 +76,17 @@ class GetOriginGroupResult {
   factory GetOriginGroupResult.fromMap(Map<String, dynamic> map) {
     return GetOriginGroupResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      healthProbeSettings: (() {
-        final guardedValue = map['healthProbeSettings'];
-        if (guardedValue == null) return null;
-        return HealthProbeParametersResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      healthProbeSettings: (() { final guardedValue = map['healthProbeSettings']; if (guardedValue == null) return null; return HealthProbeParametersResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: map['id'] as String,
       name: map['name'] as String,
-      origins: (() {
-        final guardedValue = map['origins'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<ResourceReferenceResponse>(
-          guardedValue,
-          (value) => ResourceReferenceResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      origins: (() { final guardedValue = map['origins']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceReferenceResponse>(guardedValue, (value) => ResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       provisioningState: map['provisioningState'] as String,
       resourceState: map['resourceState'] as String,
-      responseBasedOriginErrorDetectionSettings: (() {
-        final guardedValue = map['responseBasedOriginErrorDetectionSettings'];
-        if (guardedValue == null) return null;
-        return ResponseBasedOriginErrorDetectionParametersResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      trafficRestorationTimeToHealedOrNewEndpointsInMinutes: (() {
-        final guardedValue =
-            map['trafficRestorationTimeToHealedOrNewEndpointsInMinutes'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
+      responseBasedOriginErrorDetectionSettings: (() { final guardedValue = map['responseBasedOriginErrorDetectionSettings']; if (guardedValue == null) return null; return ResponseBasedOriginErrorDetectionParametersResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      trafficRestorationTimeToHealedOrNewEndpointsInMinutes: (() { final guardedValue = map['trafficRestorationTimeToHealedOrNewEndpointsInMinutes']; if (guardedValue == null) return null; return guardedValue as int; })(),
       type: map['type'] as String,
     );
   }
 }
+

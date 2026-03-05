@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SdkBugResponse {
   /// How severe the SDK bug is.
   final pulumi.Input<String> severity;
-
   /// Describes the impact of this SDK bug.
   final pulumi.Input<String> type;
-
   /// Link to more information on the bug.
   final pulumi.Input<String> uri;
 
@@ -24,7 +22,11 @@ class SdkBugResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'severity': severity, 'type': type, 'uri': uri};
+    return <String, dynamic>{
+      'severity': severity,
+      'type': type,
+      'uri': uri,
+    };
   }
 
   factory SdkBugResponse.fromMap(Map<String, dynamic> map) {
@@ -35,3 +37,4 @@ class SdkBugResponse {
     );
   }
 }
+

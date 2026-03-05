@@ -7,10 +7,8 @@ class AutoscalingPolicySecondaryWorkerConfig {
   /// secondary workers. Required for secondary workers if the minimum secondary instances is set.
   /// Bounds: [minInstances, ). Defaults to 0.
   final pulumi.Input<int>? maxInstances;
-
   /// Minimum number of instances for this group. Bounds: [0, maxInstances]. Defaults to 0.
   final pulumi.Input<int>? minInstances;
-
   /// Weight for the instance group, which is used to determine the fraction of total workers
   /// in the cluster from this instance group. For example, if primary workers have weight 2,
   /// and secondary workers have weight 1, the cluster will have approximately 2 primary workers
@@ -43,25 +41,12 @@ class AutoscalingPolicySecondaryWorkerConfig {
     };
   }
 
-  factory AutoscalingPolicySecondaryWorkerConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AutoscalingPolicySecondaryWorkerConfig.fromMap(Map<String, dynamic> map) {
     return AutoscalingPolicySecondaryWorkerConfig(
-      maxInstances: (() {
-        final guardedValue = map['maxInstances'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      minInstances: (() {
-        final guardedValue = map['minInstances'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      weight: (() {
-        final guardedValue = map['weight'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      maxInstances: (() { final guardedValue = map['maxInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      minInstances: (() { final guardedValue = map['minInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      weight: (() { final guardedValue = map['weight']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

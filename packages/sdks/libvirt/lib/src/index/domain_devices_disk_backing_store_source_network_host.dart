@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainDevicesDiskBackingStoreSourceNetworkHost {
   /// Defines the name of the iSCSI host for the source configuration.
   final pulumi.Input<String>? name;
-
   /// Specifies the port number for the iSCSI host connection.
   final pulumi.Input<String>? port;
-
   /// Sets the socket configuration for the iSCSI host connection.
   final pulumi.Input<String>? socket;
-
   /// Specifies the transport method used for the iSCSI host connection.
   final pulumi.Input<String>? transport;
 
@@ -36,30 +33,13 @@ class DomainDevicesDiskBackingStoreSourceNetworkHost {
     };
   }
 
-  factory DomainDevicesDiskBackingStoreSourceNetworkHost.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDevicesDiskBackingStoreSourceNetworkHost.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskBackingStoreSourceNetworkHost(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      port: (() {
-        final guardedValue = map['port'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      socket: (() {
-        final guardedValue = map['socket'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      transport: (() {
-        final guardedValue = map['transport'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      socket: (() { final guardedValue = map['socket']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      transport: (() { final guardedValue = map['transport']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

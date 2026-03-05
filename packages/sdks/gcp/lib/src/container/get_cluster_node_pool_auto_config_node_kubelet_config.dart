@@ -18,13 +18,10 @@ class GetClusterNodePoolAutoConfigNodeKubeletConfig {
     };
   }
 
-  factory GetClusterNodePoolAutoConfigNodeKubeletConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetClusterNodePoolAutoConfigNodeKubeletConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolAutoConfigNodeKubeletConfig(
-      insecureKubeletReadonlyPortEnabled: pulumi.Input.fromValue(
-        map['insecureKubeletReadonlyPortEnabled'] as String,
-      ),
+      insecureKubeletReadonlyPortEnabled: pulumi.Input.fromValue(map['insecureKubeletReadonlyPortEnabled'] as String),
     );
   }
 }
+

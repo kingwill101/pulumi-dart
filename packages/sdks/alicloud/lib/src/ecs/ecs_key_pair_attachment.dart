@@ -466,13 +466,10 @@ import 'ecs_key_pair_attachment_state.dart';
 class EcsKeyPairAttachment extends pulumi.CustomResource {
   /// Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
   late final pulumi.Output<bool?> force;
-
   /// The list of ECS instance's IDs.
   late final pulumi.Output<List<String>> instanceIds;
-
   /// New field 'key_pair_name' instead.
   late final pulumi.Output<String> keyName;
-
   /// The name of key pair used to bind.
   late final pulumi.Output<String> keyPairName;
 
@@ -485,11 +482,11 @@ class EcsKeyPairAttachment extends pulumi.CustomResource {
     EcsKeyPairAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ecs/ecsKeyPairAttachment:EcsKeyPairAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ecs/ecsKeyPairAttachment:EcsKeyPairAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     force = registerOutput<bool?>('force');
     instanceIds = registerOutput<List<String>>('instanceIds');
     keyName = registerOutput<String>('keyName');
@@ -514,11 +511,11 @@ class EcsKeyPairAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ecs/ecsKeyPairAttachment:EcsKeyPairAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ecs/ecsKeyPairAttachment:EcsKeyPairAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     force = registerOutput<bool?>('force');
     instanceIds = registerOutput<List<String>>('instanceIds');
     keyName = registerOutput<String>('keyName');

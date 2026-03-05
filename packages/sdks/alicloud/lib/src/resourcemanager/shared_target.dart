@@ -223,13 +223,10 @@ import 'shared_target_state.dart';
 class SharedTarget extends pulumi.CustomResource {
   /// (Available since v1.259.0) The time when the association of the entity was created.
   late final pulumi.Output<String> createTime;
-
   /// The ID of the resource share.
   late final pulumi.Output<String> resourceShareId;
-
   /// The status of shared target.
   late final pulumi.Output<String> status;
-
   /// The ID of the principal.
   late final pulumi.Output<String> targetId;
 
@@ -242,11 +239,11 @@ class SharedTarget extends pulumi.CustomResource {
     SharedTargetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:resourcemanager/sharedTarget:SharedTarget',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:resourcemanager/sharedTarget:SharedTarget',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     resourceShareId = registerOutput<String>('resourceShareId');
     status = registerOutput<String>('status');
@@ -271,11 +268,11 @@ class SharedTarget extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:resourcemanager/sharedTarget:SharedTarget',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:resourcemanager/sharedTarget:SharedTarget',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     resourceShareId = registerOutput<String>('resourceShareId');
     status = registerOutput<String>('status');

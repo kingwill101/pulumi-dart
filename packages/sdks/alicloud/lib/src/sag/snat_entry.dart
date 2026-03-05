@@ -147,10 +147,8 @@ import 'snat_entry_state.dart';
 class SnatEntry extends pulumi.CustomResource {
   /// The destination CIDR block.
   late final pulumi.Output<String> cidrBlock;
-
   /// The ID of the SAG instance.
   late final pulumi.Output<String> sagId;
-
   /// The public IP address.
   late final pulumi.Output<String> snatIp;
 
@@ -163,11 +161,11 @@ class SnatEntry extends pulumi.CustomResource {
     SnatEntryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:sag/snatEntry:SnatEntry',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:sag/snatEntry:SnatEntry',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cidrBlock = registerOutput<String>('cidrBlock');
     sagId = registerOutput<String>('sagId');
     snatIp = registerOutput<String>('snatIp');
@@ -191,11 +189,11 @@ class SnatEntry extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:sag/snatEntry:SnatEntry',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:sag/snatEntry:SnatEntry',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cidrBlock = registerOutput<String>('cidrBlock');
     sagId = registerOutput<String>('sagId');
     snatIp = registerOutput<String>('snatIp');

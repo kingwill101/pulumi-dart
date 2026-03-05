@@ -16,3 +16,4 @@ enum ImpalaAuthenticationType {
     throw ArgumentError('Unknown ImpalaAuthenticationType value: $value');
   }
 }
+

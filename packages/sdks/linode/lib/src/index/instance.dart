@@ -884,112 +884,79 @@ import 'instance_state.dart';
 class Instance extends pulumi.CustomResource {
   /// Configuration options for alert triggers on this Linode.
   late final pulumi.Output<InstanceAlerts> alerts;
-
   /// A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if 'image' is provided.
   late final pulumi.Output<List<String>?> authorizedKeys;
-
   /// A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
   late final pulumi.Output<List<String>?> authorizedUsers;
-
   /// A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive.
   late final pulumi.Output<int?> backupId;
-
   /// Information about this Linode's backups status.
   late final pulumi.Output<List<Map<String, dynamic>>> backups;
-
   /// If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.
   late final pulumi.Output<bool> backupsEnabled;
-
   /// The Label of the Instance Config that should be used to boot the Linode instance.
   late final pulumi.Output<String> bootConfigLabel;
-
   /// If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
   late final pulumi.Output<bool> booted;
-
   /// A list of capabilities of this Linode instance.
   late final pulumi.Output<List<String>> capabilities;
-
   /// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
   late final pulumi.Output<List<Map<String, dynamic>>> configs;
-
   /// The disk encryption policy for this instance. (`enabled`, `disabled`; default `enabled` in supported regions)
   ///
   /// * **NOTE: Disk encryption may not currently be available to all users.**
   late final pulumi.Output<String> diskEncryption;
   late final pulumi.Output<List<Map<String, dynamic>>> disks;
-
   /// The ID of the Firewall to attach to the instance upon creation. *Changing `firewall_id` forces the creation of a new Linode Instance.*
   late final pulumi.Output<int?> firewallId;
-
   /// A deprecated property denoting a group label for this Linode. We recommend using the `tags` attribute instead.
   late final pulumi.Output<String?> group;
-
   /// Whether this Instance was created with user-data.
   late final pulumi.Output<bool> hasUserData;
-
   /// The Linode’s host machine, as a UUID.
   late final pulumi.Output<String> hostUuid;
-
   /// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use.
   late final pulumi.Output<String?> image;
-
   /// Specifies the interface type for the Linode. If set to `linode`, Linode interfaces must be created using a separate resource before this Linode can be booted. (`linode`, `legacy_config`; default is determined by the account `interfaces_for_new_linodes` setting)
   ///
   /// * TODO(Linode Interfaces): Link to a usage example using the `linode_instance_interface` resource
   late final pulumi.Output<String> interfaceGeneration;
-
   /// An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces must be declared in the config block.
   late final pulumi.Output<List<Map<String, dynamic>>?> interfaces;
-
   /// A string containing the Linode's public IP address.
   late final pulumi.Output<String> ipAddress;
-
   /// A set of reserved IPv4 addresses to assign to this Linode on creation.
   ///
   /// * **NOTE: IP reservation is not currently available to all users.**
   late final pulumi.Output<List<String>> ipv4s;
-
   /// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
   late final pulumi.Output<String> ipv6;
-
   /// The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
   late final pulumi.Output<String> label;
-
   /// If applicable, the ID of the LKE cluster this instance is a part of.
   late final pulumi.Output<int> lkeClusterId;
-
   /// A list of locks applied to this Linode.
   late final pulumi.Output<List<String>> locks;
-
   /// The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)
   late final pulumi.Output<String> maintenancePolicy;
-
   /// Various fields related to the Linode Metadata service.
   late final pulumi.Output<List<Map<String, dynamic>>?> metadatas;
-
   /// The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
   late final pulumi.Output<String?> migrationType;
-
   /// Enables the Network Helper feature. The default value is determined by the network_helper setting in the account settings.
   ///
   /// * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
   late final pulumi.Output<bool?> networkHelper;
-
   /// Information about the Placement Group this Linode is assigned to.
   late final pulumi.Output<InstancePlacementGroup?> placementGroup;
-
   /// If true, changes to the Linode's assigned Placement Group will be ignored. This is necessary when using this resource in conjunction with the linode.PlacementGroupAssignment resource.
   late final pulumi.Output<bool?> placementGroupExternallyManaged;
-
   /// If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
   late final pulumi.Output<bool?> privateIp;
-
   /// This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
   late final pulumi.Output<String> privateIpAddress;
-
   /// This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` will trigger a migration of this Linode. Migration operations are typically long-running operations, so the update timeout should be adjusted accordingly.*.
   late final pulumi.Output<String> region;
-
   /// If true, changes in Linode type will attempt to upsize or downsize implicitly created disks. This must be false if explicit disks are defined. *This is an irreversible action as Linode disks cannot be automatically downsized.*
   ///
   /// * `alerts.0.cpu` - (Optional) The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.
@@ -1002,40 +969,30 @@ class Instance extends pulumi.CustomResource {
   ///
   /// * `alerts.0.io` - (Optional) The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
   late final pulumi.Output<bool?> resizeDisk;
-
   /// The password that will be initially assigned to the 'root' user account.
   late final pulumi.Output<String?> rootPass;
-
   /// A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
   ///
   /// * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
   ///
   /// * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
   late final pulumi.Output<List<String>> sharedIpv4s;
-
   /// Information about the resources available to this Linode.
   late final pulumi.Output<List<Map<String, dynamic>>> specs;
-
   /// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
   late final pulumi.Output<Map<String, String>?> stackscriptData;
-
   /// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.
   late final pulumi.Output<int?> stackscriptId;
-
   /// The status of the instance, indicating the current readiness state. (`running`, `offline`, ...)
   late final pulumi.Output<String> status;
-
   /// When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
   late final pulumi.Output<int> swapSize;
-
   /// A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
   late final pulumi.Output<List<String>> tags;
-
   /// The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `"g6-nanode-1"`, `"g6-standard-2"`, `"g6-highmem-16"`, `"g6-dedicated-16"`, etc. See all types [here](https://api.linode.com/v4/linode/types).
   ///
   /// - - -
   late final pulumi.Output<String?> type;
-
   /// The watchdog, named Lassie, is a Shutdown Watchdog that monitors your Linode and will reboot it if it powers off unexpectedly. It works by issuing a boot job when your Linode powers off without a shutdown job being responsible. To prevent a loop, Lassie will give up if there have been more than 5 boot jobs issued within 15 minutes.
   late final pulumi.Output<bool?> watchdogEnabled;
 
@@ -1048,21 +1005,12 @@ class Instance extends pulumi.CustomResource {
     InstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'linode:index/instance:Instance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    alerts = registerOutput<InstanceAlerts>(
-      'alerts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceAlerts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'linode:index/instance:Instance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    alerts = registerOutput<InstanceAlerts>('alerts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceAlerts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     authorizedKeys = registerOutput<List<String>?>('authorizedKeys');
     authorizedUsers = registerOutput<List<String>?>('authorizedUsers');
     backupId = registerOutput<int?>('backupId');
@@ -1091,19 +1039,8 @@ class Instance extends pulumi.CustomResource {
     metadatas = registerOutput<List<Map<String, dynamic>>?>('metadatas');
     migrationType = registerOutput<String?>('migrationType');
     networkHelper = registerOutput<bool?>('networkHelper');
-    placementGroup = registerOutput<InstancePlacementGroup?>(
-      'placementGroup',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstancePlacementGroup.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    placementGroupExternallyManaged = registerOutput<bool?>(
-      'placementGroupExternallyManaged',
-    );
+    placementGroup = registerOutput<InstancePlacementGroup?>('placementGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstancePlacementGroup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    placementGroupExternallyManaged = registerOutput<bool?>('placementGroupExternallyManaged');
     privateIp = registerOutput<bool?>('privateIp');
     privateIpAddress = registerOutput<String>('privateIpAddress');
     region = registerOutput<String>('region');
@@ -1138,21 +1075,12 @@ class Instance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'linode:index/instance:Instance',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    alerts = registerOutput<InstanceAlerts>(
-      'alerts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceAlerts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'linode:index/instance:Instance',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    alerts = registerOutput<InstanceAlerts>('alerts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceAlerts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     authorizedKeys = registerOutput<List<String>?>('authorizedKeys');
     authorizedUsers = registerOutput<List<String>?>('authorizedUsers');
     backupId = registerOutput<int?>('backupId');
@@ -1181,19 +1109,8 @@ class Instance extends pulumi.CustomResource {
     metadatas = registerOutput<List<Map<String, dynamic>>?>('metadatas');
     migrationType = registerOutput<String?>('migrationType');
     networkHelper = registerOutput<bool?>('networkHelper');
-    placementGroup = registerOutput<InstancePlacementGroup?>(
-      'placementGroup',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstancePlacementGroup.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    placementGroupExternallyManaged = registerOutput<bool?>(
-      'placementGroupExternallyManaged',
-    );
+    placementGroup = registerOutput<InstancePlacementGroup?>('placementGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstancePlacementGroup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    placementGroupExternallyManaged = registerOutput<bool?>('placementGroupExternallyManaged');
     privateIp = registerOutput<bool?>('privateIp');
     privateIpAddress = registerOutput<String>('privateIpAddress');
     region = registerOutput<String>('region');

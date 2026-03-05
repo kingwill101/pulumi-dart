@@ -12,10 +12,14 @@ class GetGuestAgentArgs {
 
   /// Creates a new [GetGuestAgentArgs].
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
-  GetGuestAgentArgs({required this.resourceUri});
+  GetGuestAgentArgs({
+    required this.resourceUri,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'resourceUri': resourceUri};
+    return <String, dynamic>{
+      'resourceUri': resourceUri,
+    };
   }
 
   factory GetGuestAgentArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetGuestAgentArgs {
     );
   }
 }
+

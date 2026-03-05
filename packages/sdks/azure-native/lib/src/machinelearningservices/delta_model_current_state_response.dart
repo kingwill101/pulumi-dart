@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeltaModelCurrentStateResponse {
   /// Gets or sets Count of instances with model.
   final pulumi.Input<int>? count;
-
   /// Gets or sets sample of instances with model.
   final pulumi.Input<String>? sampleInstanceID;
-
   /// Gets or sets status.
   final pulumi.Input<String>? status;
 
@@ -33,21 +31,10 @@ class DeltaModelCurrentStateResponse {
 
   factory DeltaModelCurrentStateResponse.fromMap(Map<String, dynamic> map) {
     return DeltaModelCurrentStateResponse(
-      count: (() {
-        final guardedValue = map['count'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      sampleInstanceID: (() {
-        final guardedValue = map['sampleInstanceID'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      sampleInstanceID: (() { final guardedValue = map['sampleInstanceID']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -812,85 +812,57 @@ import 'system_data_response.dart';
 class ScheduledAlertRule extends pulumi.CustomResource {
   /// The alert details override settings
   late final pulumi.Output<AlertDetailsOverrideResponse?> alertDetailsOverride;
-
   /// The Name of the alert rule template used to create this rule.
   late final pulumi.Output<String?> alertRuleTemplateName;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Dictionary of string key-value pairs of columns to be attached to the alert
   late final pulumi.Output<Map<String, String>?> customDetails;
-
   /// The description of the alert rule.
   late final pulumi.Output<String?> description;
-
   /// The display name for alerts created by this alert rule.
   late final pulumi.Output<String> displayName;
-
   /// Determines whether this alert rule is enabled or disabled.
   late final pulumi.Output<bool> enabled;
-
   /// Array of the entity mappings of the alert rule
   late final pulumi.Output<List<Map<String, dynamic>>?> entityMappings;
-
   /// Etag of the azure resource
   late final pulumi.Output<String?> etag;
-
   /// The event grouping settings.
-  late final pulumi.Output<EventGroupingSettingsResponse?>
-  eventGroupingSettings;
-
+  late final pulumi.Output<EventGroupingSettingsResponse?> eventGroupingSettings;
   /// The settings of the incidents that created from alerts triggered by this analytics rule
-  late final pulumi.Output<IncidentConfigurationResponse?>
-  incidentConfiguration;
-
+  late final pulumi.Output<IncidentConfigurationResponse?> incidentConfiguration;
   /// The kind of the alert rule
   /// Expected value is 'Scheduled'.
   late final pulumi.Output<String> kind;
-
   /// The last time that this alert rule has been modified.
   late final pulumi.Output<String> lastModifiedUtc;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The query that creates alerts for this rule.
   late final pulumi.Output<String> query;
-
   /// The frequency (in ISO 8601 duration format) for this alert rule to run.
   late final pulumi.Output<String> queryFrequency;
-
   /// The period (in ISO 8601 duration format) that this alert rule looks at.
   late final pulumi.Output<String> queryPeriod;
-
   /// The severity for alerts created by this alert rule.
   late final pulumi.Output<String> severity;
-
   /// The suppression (in ISO 8601 duration format) to wait since last time this alert rule been triggered.
   late final pulumi.Output<String> suppressionDuration;
-
   /// Determines whether the suppression for this alert rule is enabled or disabled.
   late final pulumi.Output<bool> suppressionEnabled;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The tactics of the alert rule
   late final pulumi.Output<List<String>?> tactics;
-
   /// The techniques of the alert rule
   late final pulumi.Output<List<String>?> techniques;
-
   /// The version of the alert rule template used to create this rule - in format &lt;a.b.c&gt;, where all are numbers, for example 0 &lt;1.0.2&gt;
   late final pulumi.Output<String?> templateVersion;
-
   /// The operation against the threshold that triggers alert rule.
   late final pulumi.Output<String> triggerOperator;
-
   /// The threshold triggers this alert rule.
   late final pulumi.Output<int> triggerThreshold;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -903,51 +875,22 @@ class ScheduledAlertRule extends pulumi.CustomResource {
     ScheduledAlertRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:securityinsights:ScheduledAlertRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    alertDetailsOverride = registerOutput<AlertDetailsOverrideResponse?>(
-      'alertDetailsOverride',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AlertDetailsOverrideResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure-native:securityinsights:ScheduledAlertRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    alertDetailsOverride = registerOutput<AlertDetailsOverrideResponse?>('alertDetailsOverride', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlertDetailsOverrideResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     alertRuleTemplateName = registerOutput<String?>('alertRuleTemplateName');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     customDetails = registerOutput<Map<String, String>?>('customDetails');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     enabled = registerOutput<bool>('enabled');
-    entityMappings = registerOutput<List<Map<String, dynamic>>?>(
-      'entityMappings',
-    );
+    entityMappings = registerOutput<List<Map<String, dynamic>>?>('entityMappings');
     etag = registerOutput<String?>('etag');
-    eventGroupingSettings = registerOutput<EventGroupingSettingsResponse?>(
-      'eventGroupingSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EventGroupingSettingsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    incidentConfiguration = registerOutput<IncidentConfigurationResponse?>(
-      'incidentConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IncidentConfigurationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    eventGroupingSettings = registerOutput<EventGroupingSettingsResponse?>('eventGroupingSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventGroupingSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    incidentConfiguration = registerOutput<IncidentConfigurationResponse?>('incidentConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IncidentConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kind = registerOutput<String>('kind');
     lastModifiedUtc = registerOutput<String>('lastModifiedUtc');
     this.name = registerOutput<String>('name');
@@ -957,16 +900,7 @@ class ScheduledAlertRule extends pulumi.CustomResource {
     severity = registerOutput<String>('severity');
     suppressionDuration = registerOutput<String>('suppressionDuration');
     suppressionEnabled = registerOutput<bool>('suppressionEnabled');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tactics = registerOutput<List<String>?>('tactics');
     techniques = registerOutput<List<String>?>('techniques');
     templateVersion = registerOutput<String?>('templateVersion');

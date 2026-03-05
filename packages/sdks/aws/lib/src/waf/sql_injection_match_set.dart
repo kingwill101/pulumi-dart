@@ -148,10 +148,8 @@ import 'sql_injection_match_set_state.dart';
 class SqlInjectionMatchSet extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the SQL injection match set.
   late final pulumi.Output<String> arn;
-
   /// The name or description of the SQL Injection Match Set.
   late final pulumi.Output<String> name;
-
   /// The parts of web requests that you want AWS WAF to inspect for malicious SQL code and, if you want AWS WAF to inspect a header, the name of the header.
   late final pulumi.Output<List<Map<String, dynamic>>?> sqlInjectionMatchTuples;
 
@@ -164,16 +162,14 @@ class SqlInjectionMatchSet extends pulumi.CustomResource {
     SqlInjectionMatchSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:waf/sqlInjectionMatchSet:SqlInjectionMatchSet',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:waf/sqlInjectionMatchSet:SqlInjectionMatchSet',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
-    sqlInjectionMatchTuples = registerOutput<List<Map<String, dynamic>>?>(
-      'sqlInjectionMatchTuples',
-    );
+    sqlInjectionMatchTuples = registerOutput<List<Map<String, dynamic>>?>('sqlInjectionMatchTuples');
   }
 
   /// Gets an existing [SqlInjectionMatchSet] resource's state with the given [name] and [id].
@@ -194,15 +190,13 @@ class SqlInjectionMatchSet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:waf/sqlInjectionMatchSet:SqlInjectionMatchSet',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:waf/sqlInjectionMatchSet:SqlInjectionMatchSet',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
-    sqlInjectionMatchTuples = registerOutput<List<Map<String, dynamic>>?>(
-      'sqlInjectionMatchTuples',
-    );
+    sqlInjectionMatchTuples = registerOutput<List<Map<String, dynamic>>?>('sqlInjectionMatchTuples');
   }
 }

@@ -11,18 +11,13 @@ import 'google_cloud_aiplatform_v1beta1_nas_job_spec.dart';
 class NasJobAiplatformV1beta1Args {
   /// The display name of the NasJob. The name can be up to 128 characters long and can consist of any UTF-8 characters.
   final pulumi.Input<String> displayName;
-
   /// Optional. Enable a separation of Custom model training and restricted image training for tenant project.
   final pulumi.Input<bool>? enableRestrictedImageTraining;
-
   /// Customer-managed encryption key options for a NasJob. If this is set, then all resources created by the NasJob will be encrypted with the provided encryption key.
-  final pulumi.Input<GoogleCloudAiplatformV1beta1EncryptionSpec>?
-  encryptionSpec;
-
+  final pulumi.Input<GoogleCloudAiplatformV1beta1EncryptionSpec>? encryptionSpec;
   /// The labels with user-defined metadata to organize NasJobs. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
   final pulumi.Input<Map<String, String>>? labels;
   final pulumi.Input<String>? location;
-
   /// The specification of a NasJob.
   final pulumi.Input<GoogleCloudAiplatformV1beta1NasJobSpec> nasJobSpec;
   final pulumi.Input<String>? project;
@@ -49,18 +44,10 @@ class NasJobAiplatformV1beta1Args {
     return <String, dynamic>{
       'displayName': displayName,
       'enableRestrictedImageTraining': ?enableRestrictedImageTraining,
-      'encryptionSpec':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudAiplatformV1beta1EncryptionSpec,
-            Map<String, dynamic>
-          >(encryptionSpec, (value) => value.toMap()),
+      'encryptionSpec': ?pulumi.Input.mapOptionalInputValue<GoogleCloudAiplatformV1beta1EncryptionSpec, Map<String, dynamic>>(encryptionSpec, (value) => value.toMap()),
       'labels': ?labels,
       'location': ?location,
-      'nasJobSpec':
-          pulumi.Input.mapInputValue<
-            GoogleCloudAiplatformV1beta1NasJobSpec,
-            Map<String, dynamic>
-          >(nasJobSpec, (value) => value.toMap()),
+      'nasJobSpec': pulumi.Input.mapInputValue<GoogleCloudAiplatformV1beta1NasJobSpec, Map<String, dynamic>>(nasJobSpec, (value) => value.toMap()),
       'project': ?project,
     };
   }
@@ -68,42 +55,13 @@ class NasJobAiplatformV1beta1Args {
   factory NasJobAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return NasJobAiplatformV1beta1Args(
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
-      enableRestrictedImageTraining: (() {
-        final guardedValue = map['enableRestrictedImageTraining'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      encryptionSpec: (() {
-        final guardedValue = map['encryptionSpec'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudAiplatformV1beta1EncryptionSpec.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      nasJobSpec: pulumi.Input.fromValue(
-        GoogleCloudAiplatformV1beta1NasJobSpec.fromMap(
-          (map['nasJobSpec']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      enableRestrictedImageTraining: (() { final guardedValue = map['enableRestrictedImageTraining']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      encryptionSpec: (() { final guardedValue = map['encryptionSpec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudAiplatformV1beta1EncryptionSpec.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nasJobSpec: pulumi.Input.fromValue(GoogleCloudAiplatformV1beta1NasJobSpec.fromMap((map['nasJobSpec']! as Map).cast<String, dynamic>())),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -15,3 +15,4 @@ enum SAPVirtualInstanceIdentityType {
     throw ArgumentError('Unknown SAPVirtualInstanceIdentityType value: $value');
   }
 }
+

@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListIotDpsResourceKeysArgs {
   /// The provisioning service name to get the shared access keys for.
   final pulumi.Input<String> provisioningServiceName;
-
   /// resource group name
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class ListIotDpsResourceKeysArgs {
 
   factory ListIotDpsResourceKeysArgs.fromMap(Map<String, dynamic> map) {
     return ListIotDpsResourceKeysArgs(
-      provisioningServiceName: pulumi.Input.fromValue(
-        map['provisioningServiceName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      provisioningServiceName: pulumi.Input.fromValue(map['provisioningServiceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

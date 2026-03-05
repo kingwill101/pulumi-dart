@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSAPAvailabilityZoneDetailsArgs {
   /// The geo-location where the SAP resources will be created.
   final pulumi.Input<String> appLocation;
-
   /// The database type. Eg: HANA, DB2, etc
   final pulumi.Input<String> databaseType;
-
   /// The name of Azure region.
   final pulumi.Input<String> location;
-
   /// Defines the SAP Product type.
   final pulumi.Input<String> sapProduct;
 
@@ -49,3 +46,4 @@ class GetSAPAvailabilityZoneDetailsArgs {
     );
   }
 }
+

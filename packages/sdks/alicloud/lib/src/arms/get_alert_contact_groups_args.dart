@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAlertContactGroupsArgs {
   /// The name of the resource.
   final pulumi.Input<String>? alertContactGroupName;
-
   /// The contact id.
   final pulumi.Input<String>? contactId;
-
   /// The contact name.
   final pulumi.Input<String>? contactName;
-
   /// A list of Alert Contact Group IDs.
   final pulumi.Input<List<String>>? ids;
-
   /// A regex string to filter results by Alert Contact Group name.
   final pulumi.Input<String>? nameRegex;
-
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
 
@@ -54,36 +49,13 @@ class GetAlertContactGroupsArgs {
 
   factory GetAlertContactGroupsArgs.fromMap(Map<String, dynamic> map) {
     return GetAlertContactGroupsArgs(
-      alertContactGroupName: (() {
-        final guardedValue = map['alertContactGroupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      contactId: (() {
-        final guardedValue = map['contactId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      contactName: (() {
-        final guardedValue = map['contactName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ids: (() {
-        final guardedValue = map['ids'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      alertContactGroupName: (() { final guardedValue = map['alertContactGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      contactId: (() { final guardedValue = map['contactId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      contactName: (() { final guardedValue = map['contactName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ids: (() { final guardedValue = map['ids']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

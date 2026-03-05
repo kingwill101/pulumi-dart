@@ -9,28 +9,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkloadNetworkDnsZoneArgs {
   /// Display name of the DNS Zone.
   final pulumi.Input<String>? displayName;
-
   /// DNS Server IP array of the DNS Zone.
   final pulumi.Input<List<String>>? dnsServerIps;
-
   /// Number of DNS Services using the DNS zone.
   final pulumi.Input<double>? dnsServices;
-
   /// ID of the DNS zone.
   final pulumi.Input<String>? dnsZoneId;
-
   /// Domain names of the DNS Zone.
   final pulumi.Input<List<String>>? domain;
-
   /// Name of the private cloud
   final pulumi.Input<String> privateCloudName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// NSX revision number.
   final pulumi.Input<double>? revision;
-
   /// Source IP of the DNS Zone.
   final pulumi.Input<String>? sourceIp;
 
@@ -72,47 +64,16 @@ class WorkloadNetworkDnsZoneArgs {
 
   factory WorkloadNetworkDnsZoneArgs.fromMap(Map<String, dynamic> map) {
     return WorkloadNetworkDnsZoneArgs(
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dnsServerIps: (() {
-        final guardedValue = map['dnsServerIps'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      dnsServices: (() {
-        final guardedValue = map['dnsServices'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      dnsZoneId: (() {
-        final guardedValue = map['dnsZoneId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      domain: (() {
-        final guardedValue = map['domain'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      privateCloudName: pulumi.Input.fromValue(
-        map['privateCloudName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      revision: (() {
-        final guardedValue = map['revision'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      sourceIp: (() {
-        final guardedValue = map['sourceIp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dnsServerIps: (() { final guardedValue = map['dnsServerIps']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      dnsServices: (() { final guardedValue = map['dnsServices']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      dnsZoneId: (() { final guardedValue = map['dnsZoneId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      domain: (() { final guardedValue = map['domain']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      privateCloudName: pulumi.Input.fromValue(map['privateCloudName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      revision: (() { final guardedValue = map['revision']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      sourceIp: (() { final guardedValue = map['sourceIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

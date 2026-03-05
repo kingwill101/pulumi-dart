@@ -6,11 +6,9 @@ import 'get_regions_region.dart';
 /// Result data returned by getRegions.
 class GetRegionsResult {
   final String accountId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> regionOptStatusContains;
-
   /// The regions for a given account
   final List<GetRegionsRegion> regions;
 
@@ -31,11 +29,7 @@ class GetRegionsResult {
       'accountId': accountId,
       'id': id,
       'regionOptStatusContains': regionOptStatusContains,
-      'regions':
-          pulumi.Input.encodeList<GetRegionsRegion, Map<String, dynamic>>(
-            regions,
-            (value) => value.toMap(),
-          ),
+      'regions': pulumi.Input.encodeList<GetRegionsRegion, Map<String, dynamic>>(regions, (value) => value.toMap()),
     };
   }
 
@@ -43,13 +37,9 @@ class GetRegionsResult {
     return GetRegionsResult(
       accountId: map['accountId'] as String,
       id: map['id'] as String,
-      regionOptStatusContains: (map['regionOptStatusContains'] as List)
-          .cast<String>(),
-      regions: pulumi.Input.decodeList<GetRegionsRegion>(
-        map['regions']!,
-        (value) =>
-            GetRegionsRegion.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      regionOptStatusContains: (map['regionOptStatusContains'] as List).cast<String>(),
+      regions: pulumi.Input.decodeList<GetRegionsRegion>(map['regions']!, (value) => GetRegionsRegion.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

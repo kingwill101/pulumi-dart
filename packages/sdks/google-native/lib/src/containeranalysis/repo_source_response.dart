@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RepoSourceResponse {
   /// Name of the branch to build.
   final pulumi.Input<String> branchName;
-
   /// Explicit commit SHA to build.
   final pulumi.Input<String> commitSha;
-
   /// ID of the project that owns the repo.
   final pulumi.Input<String> project;
-
   /// Name of the repo.
   final pulumi.Input<String> repoName;
-
   /// Name of the tag to build.
   final pulumi.Input<String> tagName;
 
@@ -53,3 +49,4 @@ class RepoSourceResponse {
     );
   }
 }
+

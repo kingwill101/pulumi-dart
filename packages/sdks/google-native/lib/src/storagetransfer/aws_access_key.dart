@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AwsAccessKey {
   /// AWS access key ID.
   final pulumi.Input<String> accessKeyId;
-
   /// AWS secret access key. This field is not returned in RPC responses.
   final pulumi.Input<String> secretAccessKey;
 
   /// Creates a new [AwsAccessKey].
   /// [accessKeyId] AWS access key ID.
   /// [secretAccessKey] AWS secret access key. This field is not returned in RPC responses.
-  AwsAccessKey({required this.accessKeyId, required this.secretAccessKey});
+  AwsAccessKey({
+    required this.accessKeyId,
+    required this.secretAccessKey,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,3 +31,4 @@ class AwsAccessKey {
     );
   }
 }
+

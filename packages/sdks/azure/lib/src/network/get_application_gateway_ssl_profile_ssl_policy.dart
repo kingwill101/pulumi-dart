@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApplicationGatewaySslProfileSslPolicy {
   /// A List of accepted cipher suites.
   final pulumi.Input<List<String>> cipherSuites;
-
   /// A list of SSL Protocols which are disabled on this Application Gateway.
   final pulumi.Input<List<String>> disabledProtocols;
-
   /// The minimum TLS version.
   final pulumi.Input<String> minProtocolVersion;
-
   /// The Name of the Policy.
   final pulumi.Input<String> policyName;
-
   /// The Type of the Policy.
   final pulumi.Input<String> policyType;
 
@@ -42,21 +38,14 @@ class GetApplicationGatewaySslProfileSslPolicy {
     };
   }
 
-  factory GetApplicationGatewaySslProfileSslPolicy.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetApplicationGatewaySslProfileSslPolicy.fromMap(Map<String, dynamic> map) {
     return GetApplicationGatewaySslProfileSslPolicy(
-      cipherSuites: pulumi.Input.fromValue(
-        (map['cipherSuites'] as List).cast<String>(),
-      ),
-      disabledProtocols: pulumi.Input.fromValue(
-        (map['disabledProtocols'] as List).cast<String>(),
-      ),
-      minProtocolVersion: pulumi.Input.fromValue(
-        map['minProtocolVersion'] as String,
-      ),
+      cipherSuites: pulumi.Input.fromValue((map['cipherSuites'] as List).cast<String>()),
+      disabledProtocols: pulumi.Input.fromValue((map['disabledProtocols'] as List).cast<String>()),
+      minProtocolVersion: pulumi.Input.fromValue(map['minProtocolVersion'] as String),
       policyName: pulumi.Input.fromValue(map['policyName'] as String),
       policyType: pulumi.Input.fromValue(map['policyType'] as String),
     );
   }
 }
+

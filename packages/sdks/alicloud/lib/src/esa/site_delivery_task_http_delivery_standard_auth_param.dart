@@ -25,25 +25,12 @@ class SiteDeliveryTaskHttpDeliveryStandardAuthParam {
     };
   }
 
-  factory SiteDeliveryTaskHttpDeliveryStandardAuthParam.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SiteDeliveryTaskHttpDeliveryStandardAuthParam.fromMap(Map<String, dynamic> map) {
     return SiteDeliveryTaskHttpDeliveryStandardAuthParam(
-      expiredTime: (() {
-        final guardedValue = map['expiredTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      privateKey: (() {
-        final guardedValue = map['privateKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      urlPath: (() {
-        final guardedValue = map['urlPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      expiredTime: (() { final guardedValue = map['expiredTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      privateKey: (() { final guardedValue = map['privateKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      urlPath: (() { final guardedValue = map['urlPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

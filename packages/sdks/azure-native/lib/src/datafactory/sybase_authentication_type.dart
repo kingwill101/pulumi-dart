@@ -15,3 +15,4 @@ enum SybaseAuthenticationType {
     throw ArgumentError('Unknown SybaseAuthenticationType value: $value');
   }
 }
+

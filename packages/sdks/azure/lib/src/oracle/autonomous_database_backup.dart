@@ -202,13 +202,10 @@ import 'autonomous_database_backup_state.dart';
 class AutonomousDatabaseBackup extends pulumi.CustomResource {
   /// The azureId of the Autonomous Database that this backup is for. Changing this forces a new resource to be created.
   late final pulumi.Output<String> autonomousDatabaseId;
-
   /// The display name of the Autonomous Database Backup. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// (Updatable) The number of days to retain the backup. Must be between 90 and 3650 days.
   late final pulumi.Output<int> retentionPeriodInDays;
-
   /// The type of backup to create.Currently, only `LongTerm` backup operations are supported through the Oracle database At azure service. Defaults to `LongTerm`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> type;
 
@@ -221,11 +218,11 @@ class AutonomousDatabaseBackup extends pulumi.CustomResource {
     AutonomousDatabaseBackupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:oracle/autonomousDatabaseBackup:AutonomousDatabaseBackup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:oracle/autonomousDatabaseBackup:AutonomousDatabaseBackup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autonomousDatabaseId = registerOutput<String>('autonomousDatabaseId');
     this.name = registerOutput<String>('name');
     retentionPeriodInDays = registerOutput<int>('retentionPeriodInDays');
@@ -250,11 +247,11 @@ class AutonomousDatabaseBackup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:oracle/autonomousDatabaseBackup:AutonomousDatabaseBackup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:oracle/autonomousDatabaseBackup:AutonomousDatabaseBackup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autonomousDatabaseId = registerOutput<String>('autonomousDatabaseId');
     this.name = registerOutput<String>('name');
     retentionPeriodInDays = registerOutput<int>('retentionPeriodInDays');

@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketMetadataConfigurationMetadataConfigurationDestination {
   /// ARN of the table bucket where the metadata configuration is stored.
   final pulumi.Input<String> tableBucketArn;
-
   /// Type of the table bucket where the metadata configuration is stored.
   final pulumi.Input<String> tableBucketType;
-
   /// Namespace in the table bucket where the metadata tables for the metadata configuration are stored.
   final pulumi.Input<String> tableNamespace;
 
@@ -30,9 +28,7 @@ class BucketMetadataConfigurationMetadataConfigurationDestination {
     };
   }
 
-  factory BucketMetadataConfigurationMetadataConfigurationDestination.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BucketMetadataConfigurationMetadataConfigurationDestination.fromMap(Map<String, dynamic> map) {
     return BucketMetadataConfigurationMetadataConfigurationDestination(
       tableBucketArn: pulumi.Input.fromValue(map['tableBucketArn'] as String),
       tableBucketType: pulumi.Input.fromValue(map['tableBucketType'] as String),
@@ -40,3 +36,4 @@ class BucketMetadataConfigurationMetadataConfigurationDestination {
     );
   }
 }
+

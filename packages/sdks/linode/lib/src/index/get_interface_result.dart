@@ -43,20 +43,13 @@ class GetInterfaceResult {
 
   factory GetInterfaceResult.fromMap(Map<String, dynamic> map) {
     return GetInterfaceResult(
-      defaultRoute: GetInterfaceDefaultRoute.fromMap(
-        (map['defaultRoute']! as Map).cast<String, dynamic>(),
-      ),
+      defaultRoute: GetInterfaceDefaultRoute.fromMap((map['defaultRoute']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       linodeId: map['linodeId'] as int,
-      public: GetInterfacePublic.fromMap(
-        (map['public']! as Map).cast<String, dynamic>(),
-      ),
-      vlan: GetInterfaceVlan.fromMap(
-        (map['vlan']! as Map).cast<String, dynamic>(),
-      ),
-      vpc: GetInterfaceVpc.fromMap(
-        (map['vpc']! as Map).cast<String, dynamic>(),
-      ),
+      public: GetInterfacePublic.fromMap((map['public']! as Map).cast<String, dynamic>()),
+      vlan: GetInterfaceVlan.fromMap((map['vlan']! as Map).cast<String, dynamic>()),
+      vpc: GetInterfaceVpc.fromMap((map['vpc']! as Map).cast<String, dynamic>()),
     );
   }
 }
+

@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkUtilizationResponseAppengineV1beta {
   /// Target bytes received per second.
   final pulumi.Input<int> targetReceivedBytesPerSecond;
-
   /// Target packets received per second.
   final pulumi.Input<int> targetReceivedPacketsPerSecond;
-
   /// Target bytes sent per second.
   final pulumi.Input<int> targetSentBytesPerSecond;
-
   /// Target packets sent per second.
   final pulumi.Input<int> targetSentPacketsPerSecond;
 
@@ -37,22 +34,13 @@ class NetworkUtilizationResponseAppengineV1beta {
     };
   }
 
-  factory NetworkUtilizationResponseAppengineV1beta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NetworkUtilizationResponseAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return NetworkUtilizationResponseAppengineV1beta(
-      targetReceivedBytesPerSecond: pulumi.Input.fromValue(
-        map['targetReceivedBytesPerSecond'] as int,
-      ),
-      targetReceivedPacketsPerSecond: pulumi.Input.fromValue(
-        map['targetReceivedPacketsPerSecond'] as int,
-      ),
-      targetSentBytesPerSecond: pulumi.Input.fromValue(
-        map['targetSentBytesPerSecond'] as int,
-      ),
-      targetSentPacketsPerSecond: pulumi.Input.fromValue(
-        map['targetSentPacketsPerSecond'] as int,
-      ),
+      targetReceivedBytesPerSecond: pulumi.Input.fromValue(map['targetReceivedBytesPerSecond'] as int),
+      targetReceivedPacketsPerSecond: pulumi.Input.fromValue(map['targetReceivedPacketsPerSecond'] as int),
+      targetSentBytesPerSecond: pulumi.Input.fromValue(map['targetSentBytesPerSecond'] as int),
+      targetSentPacketsPerSecond: pulumi.Input.fromValue(map['targetSentPacketsPerSecond'] as int),
     );
   }
 }
+

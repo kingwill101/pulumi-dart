@@ -2515,37 +2515,26 @@ import 'role_management_policy_args.dart';
 class RoleManagementPolicy extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The role management policy description.
   late final pulumi.Output<String?> description;
-
   /// The role management policy display name.
   late final pulumi.Output<String?> displayName;
-
   /// The readonly computed rule applied to the policy.
   late final pulumi.Output<List<Map<String, dynamic>>> effectiveRules;
-
   /// The role management policy is default policy.
   late final pulumi.Output<bool?> isOrganizationDefault;
-
   /// The name of the entity last modified it
   late final pulumi.Output<PrincipalResponse> lastModifiedBy;
-
   /// The last modified date time.
   late final pulumi.Output<String> lastModifiedDateTime;
-
   /// The role management policy name.
   late final pulumi.Output<String> name;
-
   /// Additional properties of scope
   late final pulumi.Output<PolicyPropertiesResponse> policyProperties;
-
   /// The rule applied to the policy.
   late final pulumi.Output<List<Map<String, dynamic>>?> rules;
-
   /// The role management policy scope.
   late final pulumi.Output<String?> scope;
-
   /// The role management policy type.
   late final pulumi.Output<String> type;
 
@@ -2558,40 +2547,20 @@ class RoleManagementPolicy extends pulumi.CustomResource {
     RoleManagementPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:authorization:RoleManagementPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:authorization:RoleManagementPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
-    effectiveRules = registerOutput<List<Map<String, dynamic>>>(
-      'effectiveRules',
-    );
+    effectiveRules = registerOutput<List<Map<String, dynamic>>>('effectiveRules');
     isOrganizationDefault = registerOutput<bool?>('isOrganizationDefault');
-    lastModifiedBy = registerOutput<PrincipalResponse>(
-      'lastModifiedBy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PrincipalResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    lastModifiedBy = registerOutput<PrincipalResponse>('lastModifiedBy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrincipalResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lastModifiedDateTime = registerOutput<String>('lastModifiedDateTime');
     this.name = registerOutput<String>('name');
-    policyProperties = registerOutput<PolicyPropertiesResponse>(
-      'policyProperties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PolicyPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    policyProperties = registerOutput<PolicyPropertiesResponse>('policyProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     rules = registerOutput<List<Map<String, dynamic>>?>('rules');
     scope = registerOutput<String?>('scope');
     type = registerOutput<String>('type');

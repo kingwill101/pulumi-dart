@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccountsAccountDatabasePrivilege {
   /// The type of permission for the account.
   final pulumi.Input<String> accountPrivilege;
-
   /// The specific permissions corresponding to the type of account permissions.
   final pulumi.Input<String> accountPrivilegeDetail;
-
   /// Database name.
   final pulumi.Input<String> dbName;
 
@@ -30,17 +28,12 @@ class GetAccountsAccountDatabasePrivilege {
     };
   }
 
-  factory GetAccountsAccountDatabasePrivilege.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetAccountsAccountDatabasePrivilege.fromMap(Map<String, dynamic> map) {
     return GetAccountsAccountDatabasePrivilege(
-      accountPrivilege: pulumi.Input.fromValue(
-        map['accountPrivilege'] as String,
-      ),
-      accountPrivilegeDetail: pulumi.Input.fromValue(
-        map['accountPrivilegeDetail'] as String,
-      ),
+      accountPrivilege: pulumi.Input.fromValue(map['accountPrivilege'] as String),
+      accountPrivilegeDetail: pulumi.Input.fromValue(map['accountPrivilegeDetail'] as String),
       dbName: pulumi.Input.fromValue(map['dbName'] as String),
     );
   }
 }
+

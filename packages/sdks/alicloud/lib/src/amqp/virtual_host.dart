@@ -261,7 +261,6 @@ import 'virtual_host_state.dart';
 class VirtualHost extends pulumi.CustomResource {
   /// InstanceId.
   late final pulumi.Output<String> instanceId;
-
   /// VirtualHostName.
   late final pulumi.Output<String> virtualHostName;
 
@@ -274,11 +273,11 @@ class VirtualHost extends pulumi.CustomResource {
     VirtualHostArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:amqp/virtualHost:VirtualHost',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:amqp/virtualHost:VirtualHost',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     instanceId = registerOutput<String>('instanceId');
     virtualHostName = registerOutput<String>('virtualHostName');
   }
@@ -301,11 +300,11 @@ class VirtualHost extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:amqp/virtualHost:VirtualHost',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:amqp/virtualHost:VirtualHost',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     instanceId = registerOutput<String>('instanceId');
     virtualHostName = registerOutput<String>('virtualHostName');
   }

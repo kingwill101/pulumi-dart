@@ -13,10 +13,16 @@ class GetFolderContactArgs {
   /// Creates a new [GetFolderContactArgs].
   /// [contactId] Required.
   /// [folderId] Required.
-  GetFolderContactArgs({required this.contactId, required this.folderId});
+  GetFolderContactArgs({
+    required this.contactId,
+    required this.folderId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'contactId': contactId, 'folderId': folderId};
+    return <String, dynamic>{
+      'contactId': contactId,
+      'folderId': folderId,
+    };
   }
 
   factory GetFolderContactArgs.fromMap(Map<String, dynamic> map) {
@@ -26,3 +32,4 @@ class GetFolderContactArgs {
     );
   }
 }
+

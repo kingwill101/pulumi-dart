@@ -652,16 +652,12 @@ import 'grey_tag_route_state.dart';
 class GreyTagRoute extends pulumi.CustomResource {
   /// The ID  of the SAE Application.
   late final pulumi.Output<String> appId;
-
   /// The description of GreyTagRoute.
   late final pulumi.Output<String?> description;
-
   /// The grayscale rule created for Dubbo Application. See `dubbo_rules` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> dubboRules;
-
   /// The name of GreyTagRoute.
   late final pulumi.Output<String> greyTagRouteName;
-
   /// The grayscale rule created for SpringCloud Application. See `sc_rules` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> scRules;
 
@@ -674,11 +670,11 @@ class GreyTagRoute extends pulumi.CustomResource {
     GreyTagRouteArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:sae/greyTagRoute:GreyTagRoute',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:sae/greyTagRoute:GreyTagRoute',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appId = registerOutput<String>('appId');
     description = registerOutput<String?>('description');
     dubboRules = registerOutput<List<Map<String, dynamic>>?>('dubboRules');
@@ -704,11 +700,11 @@ class GreyTagRoute extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:sae/greyTagRoute:GreyTagRoute',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:sae/greyTagRoute:GreyTagRoute',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appId = registerOutput<String>('appId');
     description = registerOutput<String?>('description');
     dubboRules = registerOutput<List<Map<String, dynamic>>?>('dubboRules');

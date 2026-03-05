@@ -213,31 +213,22 @@ import 'acl_rule_state.dart';
 class AclRule extends pulumi.CustomResource {
   /// The ID of the ACL.
   late final pulumi.Output<String> aclId;
-
   /// The description of the ACL rule. It must be 1 to 512 characters in length.
   late final pulumi.Output<String?> description;
-
   /// The destination address. It is an IPv4 address range in CIDR format. Default value: 0.0.0.0/0.
   late final pulumi.Output<String> destCidr;
-
   /// The range of the destination port. Valid value: 80/80.
   late final pulumi.Output<String> destPortRange;
-
   /// The direction of the ACL rule. Valid values: in|out.
   late final pulumi.Output<String> direction;
-
   /// The protocol used by the ACL rule. The value is not case sensitive.
   late final pulumi.Output<String> ipProtocol;
-
   /// The policy used by the ACL rule. Valid values: accept|drop.
   late final pulumi.Output<String> policy;
-
   /// The priority of the ACL rule. Value range: 1 to 100.
   late final pulumi.Output<int?> priority;
-
   /// The source address. It is an IPv4 address range in the CIDR format. Default value: 0.0.0.0/0.
   late final pulumi.Output<String> sourceCidr;
-
   /// The range of the source port. Valid value: 80/80.
   late final pulumi.Output<String> sourcePortRange;
 
@@ -250,11 +241,11 @@ class AclRule extends pulumi.CustomResource {
     AclRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:sag/aclRule:AclRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:sag/aclRule:AclRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aclId = registerOutput<String>('aclId');
     description = registerOutput<String?>('description');
     destCidr = registerOutput<String>('destCidr');
@@ -285,11 +276,11 @@ class AclRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:sag/aclRule:AclRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:sag/aclRule:AclRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aclId = registerOutput<String>('aclId');
     description = registerOutput<String?>('description');
     destCidr = registerOutput<String>('destCidr');

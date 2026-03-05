@@ -6,31 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PayloadFile {
   /// The file data.
   final pulumi.Input<String>? data;
-
   /// The file name.
   final pulumi.Input<String>? name;
 
   /// Creates a new [PayloadFile].
   /// [data] The file data.
   /// [name] The file name.
-  PayloadFile({this.data, this.name});
+  PayloadFile({
+    this.data,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'data': ?data, 'name': ?name};
+    return <String, dynamic>{
+      'data': ?data,
+      'name': ?name,
+    };
   }
 
   factory PayloadFile.fromMap(Map<String, dynamic> map) {
     return PayloadFile(
-      data: (() {
-        final guardedValue = map['data'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      data: (() { final guardedValue = map['data']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

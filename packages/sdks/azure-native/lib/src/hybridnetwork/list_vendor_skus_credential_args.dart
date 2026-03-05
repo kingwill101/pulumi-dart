@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListVendorSkusCredentialArgs {
   /// The name of the sku.
   final pulumi.Input<String> skuName;
-
   /// The name of the vendor.
   final pulumi.Input<String> vendorName;
 
@@ -22,7 +21,10 @@ class ListVendorSkusCredentialArgs {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'skuName': skuName, 'vendorName': vendorName};
+    return <String, dynamic>{
+      'skuName': skuName,
+      'vendorName': vendorName,
+    };
   }
 
   factory ListVendorSkusCredentialArgs.fromMap(Map<String, dynamic> map) {
@@ -32,3 +34,4 @@ class ListVendorSkusCredentialArgs {
     );
   }
 }
+

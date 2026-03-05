@@ -10,29 +10,20 @@ class HttpRouteRequestMirrorPolicy {
 
   /// Creates a new [HttpRouteRequestMirrorPolicy].
   /// [destination] The destination the requests will be mirrored to. The weight of the destination will be ignored.
-  HttpRouteRequestMirrorPolicy({this.destination});
+  HttpRouteRequestMirrorPolicy({
+    this.destination,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'destination':
-          ?pulumi.Input.mapOptionalInputValue<
-            HttpRouteDestination,
-            Map<String, dynamic>
-          >(destination, (value) => value.toMap()),
+      'destination': ?pulumi.Input.mapOptionalInputValue<HttpRouteDestination, Map<String, dynamic>>(destination, (value) => value.toMap()),
     };
   }
 
   factory HttpRouteRequestMirrorPolicy.fromMap(Map<String, dynamic> map) {
     return HttpRouteRequestMirrorPolicy(
-      destination: (() {
-        final guardedValue = map['destination'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          HttpRouteDestination.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      destination: (() { final guardedValue = map['destination']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HttpRouteDestination.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

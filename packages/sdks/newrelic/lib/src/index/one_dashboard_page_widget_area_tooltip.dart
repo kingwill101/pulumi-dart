@@ -8,10 +8,14 @@ class OneDashboardPageWidgetAreaTooltip {
 
   /// Creates a new [OneDashboardPageWidgetAreaTooltip].
   /// [mode] (Required) The tooltip display mode. Valid values are:
-  OneDashboardPageWidgetAreaTooltip({required this.mode});
+  OneDashboardPageWidgetAreaTooltip({
+    required this.mode,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'mode': mode};
+    return <String, dynamic>{
+      'mode': mode,
+    };
   }
 
   factory OneDashboardPageWidgetAreaTooltip.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class OneDashboardPageWidgetAreaTooltip {
     );
   }
 }
+

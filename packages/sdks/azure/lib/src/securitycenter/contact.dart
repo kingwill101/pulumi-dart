@@ -130,16 +130,12 @@ import 'contact_state.dart';
 class Contact extends pulumi.CustomResource {
   /// Whether to send security alerts notifications to the security contact.
   late final pulumi.Output<bool> alertNotifications;
-
   /// Whether to send security alerts notifications to subscription admins.
   late final pulumi.Output<bool> alertsToAdmins;
-
   /// The email of the Security Center Contact.
   late final pulumi.Output<String> email;
-
   /// The name of the Security Center Contact. Changing this forces a new Security Center Contact to be created.
   late final pulumi.Output<String> name;
-
   /// The phone number of the Security Center Contact.
   late final pulumi.Output<String?> phone;
 
@@ -152,11 +148,11 @@ class Contact extends pulumi.CustomResource {
     ContactArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:securitycenter/contact:Contact',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:securitycenter/contact:Contact',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alertNotifications = registerOutput<bool>('alertNotifications');
     alertsToAdmins = registerOutput<bool>('alertsToAdmins');
     email = registerOutput<String>('email');
@@ -182,11 +178,11 @@ class Contact extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:securitycenter/contact:Contact',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:securitycenter/contact:Contact',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alertNotifications = registerOutput<bool>('alertNotifications');
     alertsToAdmins = registerOutput<bool>('alertsToAdmins');
     email = registerOutput<String>('email');

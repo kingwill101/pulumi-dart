@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSaslAclsArgs {
   /// Get results for the specified resource name.
   final pulumi.Input<String> aclResourceName;
-
   /// Get results for the specified resource type.
   final pulumi.Input<String> aclResourceType;
-
   /// ID of the ALIKAFKA Instance that owns the sasl acls.
   final pulumi.Input<String> instanceId;
-
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
-
   /// Get results for the specified username.
   final pulumi.Input<String> username;
 
@@ -51,12 +47,9 @@ class GetSaslAclsArgs {
       aclResourceName: pulumi.Input.fromValue(map['aclResourceName'] as String),
       aclResourceType: pulumi.Input.fromValue(map['aclResourceType'] as String),
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       username: pulumi.Input.fromValue(map['username'] as String),
     );
   }
 }
+

@@ -7,36 +7,26 @@ import 'jmsresponse.dart';
 /// Creates a new EventSubscription in a given project,location and connection.
 class EventSubscription extends pulumi.CustomResource {
   late final pulumi.Output<String> connectionId;
-
   /// Created time.
   late final pulumi.Output<String> createTime;
-
   /// Optional. The destination to hit when we receive an event
   late final pulumi.Output<EventSubscriptionDestinationResponse> destinations;
-
   /// Required. Identifier to assign to the Event Subscription. Must be unique within scope of the parent resource.
   late final pulumi.Output<String> eventSubscriptionId;
-
   /// Optional. Event type id of the event of current EventSubscription.
   late final pulumi.Output<String> eventTypeId;
-
   /// Optional. JMS is the source for the event listener.
   late final pulumi.Output<JMSResponse> jms;
   late final pulumi.Output<String> location;
-
   /// Resource name of the EventSubscription. Format: projects/{project}/locations/{location}/connections/{connection}/eventSubscriptions/{event_subscription}
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
-
   /// Optional. Status indicates the status of the event subscription resource
   late final pulumi.Output<EventSubscriptionStatusResponse> status;
-
   /// Optional. name of the Subscriber for the current EventSubscription.
   late final pulumi.Output<String> subscriber;
-
   /// Optional. Link for Subscriber of the current EventSubscription.
   late final pulumi.Output<String> subscriberLink;
-
   /// Updated time.
   late final pulumi.Output<String> updateTime;
 
@@ -49,48 +39,21 @@ class EventSubscription extends pulumi.CustomResource {
     EventSubscriptionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'google-native:connectors/v1:EventSubscription',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'google-native:connectors/v1:EventSubscription',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     connectionId = registerOutput<String>('connectionId');
     createTime = registerOutput<String>('createTime');
-    destinations = registerOutput<EventSubscriptionDestinationResponse>(
-      'destinations',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EventSubscriptionDestinationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    destinations = registerOutput<EventSubscriptionDestinationResponse>('destinations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSubscriptionDestinationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     eventSubscriptionId = registerOutput<String>('eventSubscriptionId');
     eventTypeId = registerOutput<String>('eventTypeId');
-    jms = registerOutput<JMSResponse>(
-      'jms',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return JMSResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    jms = registerOutput<JMSResponse>('jms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JMSResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    status = registerOutput<EventSubscriptionStatusResponse>(
-      'status',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EventSubscriptionStatusResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    status = registerOutput<EventSubscriptionStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSubscriptionStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     subscriber = registerOutput<String>('subscriber');
     subscriberLink = registerOutput<String>('subscriberLink');
     updateTime = registerOutput<String>('updateTime');

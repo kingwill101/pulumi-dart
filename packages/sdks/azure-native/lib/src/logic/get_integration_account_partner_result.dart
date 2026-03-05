@@ -6,34 +6,24 @@ import 'partner_content_response.dart';
 class GetIntegrationAccountPartnerResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The changed time.
   final String changedTime;
-
   /// The partner content.
   final PartnerContentResponse content;
-
   /// The created time.
   final String createdTime;
-
   /// The resource id.
   final String id;
-
   /// The resource location.
   final String? location;
-
   /// The metadata.
   final dynamic metadata;
-
   /// Gets the resource name.
   final String name;
-
   /// The partner type.
   final String partnerType;
-
   /// The resource tags.
   final Map<String, String>? tags;
-
   /// Gets the resource type.
   final String type;
 
@@ -83,29 +73,16 @@ class GetIntegrationAccountPartnerResult {
     return GetIntegrationAccountPartnerResult(
       azureApiVersion: map['azureApiVersion'] as String,
       changedTime: map['changedTime'] as String,
-      content: PartnerContentResponse.fromMap(
-        (map['content']! as Map).cast<String, dynamic>(),
-      ),
+      content: PartnerContentResponse.fromMap((map['content']! as Map).cast<String, dynamic>()),
       createdTime: map['createdTime'] as String,
       id: map['id'] as String,
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      metadata: (() {
-        final guardedValue = map['metadata'];
-        if (guardedValue == null) return null;
-        return guardedValue;
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return guardedValue; })(),
       name: map['name'] as String,
       partnerType: map['partnerType'] as String,
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

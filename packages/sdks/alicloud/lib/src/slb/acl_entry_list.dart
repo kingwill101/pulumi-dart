@@ -9,24 +9,23 @@ class AclEntryList {
   /// Creates a new [AclEntryList].
   /// [comment] Optional.
   /// [entry] Optional.
-  AclEntryList({this.comment, this.entry});
+  AclEntryList({
+    this.comment,
+    this.entry,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'comment': ?comment, 'entry': ?entry};
+    return <String, dynamic>{
+      'comment': ?comment,
+      'entry': ?entry,
+    };
   }
 
   factory AclEntryList.fromMap(Map<String, dynamic> map) {
     return AclEntryList(
-      comment: (() {
-        final guardedValue = map['comment'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      entry: (() {
-        final guardedValue = map['entry'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      comment: (() { final guardedValue = map['comment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      entry: (() { final guardedValue = map['entry']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

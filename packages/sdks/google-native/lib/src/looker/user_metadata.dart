@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserMetadata {
   /// Optional. The number of additional developer users the instance owner has purchased.
   final pulumi.Input<int>? additionalDeveloperUserCount;
-
   /// Optional. The number of additional standard users the instance owner has purchased.
   final pulumi.Input<int>? additionalStandardUserCount;
-
   /// Optional. The number of additional viewer users the instance owner has purchased.
   final pulumi.Input<int>? additionalViewerUserCount;
 
@@ -33,21 +31,10 @@ class UserMetadata {
 
   factory UserMetadata.fromMap(Map<String, dynamic> map) {
     return UserMetadata(
-      additionalDeveloperUserCount: (() {
-        final guardedValue = map['additionalDeveloperUserCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      additionalStandardUserCount: (() {
-        final guardedValue = map['additionalStandardUserCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      additionalViewerUserCount: (() {
-        final guardedValue = map['additionalViewerUserCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      additionalDeveloperUserCount: (() { final guardedValue = map['additionalDeveloperUserCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      additionalStandardUserCount: (() { final guardedValue = map['additionalStandardUserCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      additionalViewerUserCount: (() { final guardedValue = map['additionalViewerUserCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

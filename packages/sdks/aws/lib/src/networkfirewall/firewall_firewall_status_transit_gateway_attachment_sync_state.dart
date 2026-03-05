@@ -8,21 +8,20 @@ class FirewallFirewallStatusTransitGatewayAttachmentSyncState {
 
   /// Creates a new [FirewallFirewallStatusTransitGatewayAttachmentSyncState].
   /// [attachmentId] The unique identifier of the transit gateway attachment.
-  FirewallFirewallStatusTransitGatewayAttachmentSyncState({this.attachmentId});
+  FirewallFirewallStatusTransitGatewayAttachmentSyncState({
+    this.attachmentId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'attachmentId': ?attachmentId};
+    return <String, dynamic>{
+      'attachmentId': ?attachmentId,
+    };
   }
 
-  factory FirewallFirewallStatusTransitGatewayAttachmentSyncState.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FirewallFirewallStatusTransitGatewayAttachmentSyncState.fromMap(Map<String, dynamic> map) {
     return FirewallFirewallStatusTransitGatewayAttachmentSyncState(
-      attachmentId: (() {
-        final guardedValue = map['attachmentId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      attachmentId: (() { final guardedValue = map['attachmentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

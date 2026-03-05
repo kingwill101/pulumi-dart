@@ -37,23 +37,14 @@ class GetServiceBackupIamPolicyMetastoreV1betaArgs {
     };
   }
 
-  factory GetServiceBackupIamPolicyMetastoreV1betaArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetServiceBackupIamPolicyMetastoreV1betaArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceBackupIamPolicyMetastoreV1betaArgs(
       backupId: pulumi.Input.fromValue(map['backupId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      optionsRequestedPolicyVersion: (() {
-        final guardedValue = map['optionsRequestedPolicyVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serviceId: pulumi.Input.fromValue(map['serviceId'] as String),
     );
   }
 }
+

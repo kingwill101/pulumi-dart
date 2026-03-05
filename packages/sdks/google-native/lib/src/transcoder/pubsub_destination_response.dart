@@ -9,10 +9,14 @@ class PubsubDestinationResponse {
 
   /// Creates a new [PubsubDestinationResponse].
   /// [topic] The name of the Pub/Sub topic to publish job completion notification to. For example: `projects/{project}/topics/{topic}`.
-  PubsubDestinationResponse({required this.topic});
+  PubsubDestinationResponse({
+    required this.topic,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'topic': topic};
+    return <String, dynamic>{
+      'topic': topic,
+    };
   }
 
   factory PubsubDestinationResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class PubsubDestinationResponse {
     );
   }
 }
+

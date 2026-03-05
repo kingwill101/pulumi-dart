@@ -8,16 +8,12 @@ import 'parameter_example_contract.dart';
 class RepresentationContract {
   /// Specifies a registered or custom content type for this representation, e.g. application/xml.
   final pulumi.Input<String> contentType;
-
   /// Exampled defined for the representation.
   final pulumi.Input<Map<String, ParameterExampleContract>>? examples;
-
   /// Collection of form parameters. Required if 'contentType' value is either 'application/x-www-form-urlencoded' or 'multipart/form-data'..
   final pulumi.Input<List<ParameterContract>>? formParameters;
-
   /// Schema identifier. Applicable only if 'contentType' value is neither 'application/x-www-form-urlencoded' nor 'multipart/form-data'.
   final pulumi.Input<String>? schemaId;
-
   /// Type name defined by the schema. Applicable only if 'contentType' value is neither 'application/x-www-form-urlencoded' nor 'multipart/form-data'.
   final pulumi.Input<String>? typeName;
 
@@ -38,30 +34,8 @@ class RepresentationContract {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'contentType': contentType,
-      'examples':
-          ?pulumi.Input.mapOptionalInputValue<
-            Map<String, ParameterExampleContract>,
-            Map<String, Map<String, dynamic>>
-          >(
-            examples,
-            (value) =>
-                pulumi.Input.encodeMapValues<
-                  ParameterExampleContract,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'formParameters':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ParameterContract>,
-            List<Map<String, dynamic>>
-          >(
-            formParameters,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ParameterContract,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'examples': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterExampleContract>, Map<String, Map<String, dynamic>>>(examples, (value) => pulumi.Input.encodeMapValues<ParameterExampleContract, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'formParameters': ?pulumi.Input.mapOptionalInputValue<List<ParameterContract>, List<Map<String, dynamic>>>(formParameters, (value) => pulumi.Input.encodeList<ParameterContract, Map<String, dynamic>>(value, (value) => value.toMap())),
       'schemaId': ?schemaId,
       'typeName': ?typeName,
     };
@@ -70,40 +44,11 @@ class RepresentationContract {
   factory RepresentationContract.fromMap(Map<String, dynamic> map) {
     return RepresentationContract(
       contentType: pulumi.Input.fromValue(map['contentType'] as String),
-      examples: (() {
-        final guardedValue = map['examples'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeMapValues<ParameterExampleContract>(
-            guardedValue,
-            (value) => ParameterExampleContract.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      formParameters: (() {
-        final guardedValue = map['formParameters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ParameterContract>(
-            guardedValue,
-            (value) => ParameterContract.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      schemaId: (() {
-        final guardedValue = map['schemaId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      typeName: (() {
-        final guardedValue = map['typeName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      examples: (() { final guardedValue = map['examples']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<ParameterExampleContract>(guardedValue, (value) => ParameterExampleContract.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      formParameters: (() { final guardedValue = map['formParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ParameterContract>(guardedValue, (value) => ParameterContract.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      schemaId: (() { final guardedValue = map['schemaId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      typeName: (() { final guardedValue = map['typeName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

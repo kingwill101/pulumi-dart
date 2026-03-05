@@ -163,19 +163,14 @@ import 'account_state.dart';
 class Account extends pulumi.CustomResource {
   /// The URI of the Trusted Signing Account which is used during signing files.
   late final pulumi.Output<String> accountUri;
-
   /// The Azure Region where the Trusted Signing Account should exist. Changing this forces a new Trusted Signing Account to be created.
   late final pulumi.Output<String> location;
-
   /// The name which should be used for this Trusted Signing Account. Changing this forces a new Trusted Signing Account to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the Resource Group where the Trusted Signing Account should exist. Changing this forces a new Trusted Signing Account to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The sku name of this Trusted Signing Account. Possible values are `Basic` and `Premium`.
   late final pulumi.Output<String> skuName;
-
   /// A mapping of tags which should be assigned to the Trusted Signing Account.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -188,11 +183,11 @@ class Account extends pulumi.CustomResource {
     AccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:trustedsigning/account:Account',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:trustedsigning/account:Account',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountUri = registerOutput<String>('accountUri');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -219,11 +214,11 @@ class Account extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:trustedsigning/account:Account',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:trustedsigning/account:Account',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountUri = registerOutput<String>('accountUri');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

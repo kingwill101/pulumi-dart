@@ -1,17 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getObjectStorageCluster.
 class GetObjectStorageClusterResult {
   /// The base URL for this cluster.
   final String domain;
   final String id;
-
   /// The region this cluster is located in. See all regions [here](https://api.linode.com/v4/regions).
   final String region;
-
   /// The base URL for this cluster used when hosting static sites.
   final String staticSiteDomain;
-
   /// This cluster's status. (`available`, `unavailable`)
   final String status;
 
@@ -49,3 +47,4 @@ class GetObjectStorageClusterResult {
     );
   }
 }
+

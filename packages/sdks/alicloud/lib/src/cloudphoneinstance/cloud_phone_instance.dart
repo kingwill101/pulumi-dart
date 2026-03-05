@@ -12,7 +12,6 @@ import 'cloud_phone_instance_state.dart';
 class CloudPhoneInstance extends pulumi.CustomResource {
   /// The ID of the instance group to which the instance belongs
   late final pulumi.Output<String?> androidInstanceGroupId;
-
   /// The instance name
   late final pulumi.Output<String?> androidInstanceName;
 
@@ -25,11 +24,11 @@ class CloudPhoneInstance extends pulumi.CustomResource {
     CloudPhoneInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudphoneinstance/cloudPhoneInstance:CloudPhoneInstance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudphoneinstance/cloudPhoneInstance:CloudPhoneInstance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     androidInstanceGroupId = registerOutput<String?>('androidInstanceGroupId');
     androidInstanceName = registerOutput<String?>('androidInstanceName');
   }
@@ -52,11 +51,11 @@ class CloudPhoneInstance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudphoneinstance/cloudPhoneInstance:CloudPhoneInstance',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudphoneinstance/cloudPhoneInstance:CloudPhoneInstance',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     androidInstanceGroupId = registerOutput<String?>('androidInstanceGroupId');
     androidInstanceName = registerOutput<String?>('androidInstanceName');
   }

@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RandomSamplingAlgorithmResponse {
   /// The specific type of random algorithm
   final pulumi.Input<String>? rule;
-
   /// Expected value is 'Random'.
   final pulumi.Input<String> samplingAlgorithmType;
-
   /// An optional integer to use as the seed for random number generation
   final pulumi.Input<int>? seed;
 
@@ -33,19 +31,10 @@ class RandomSamplingAlgorithmResponse {
 
   factory RandomSamplingAlgorithmResponse.fromMap(Map<String, dynamic> map) {
     return RandomSamplingAlgorithmResponse(
-      rule: (() {
-        final guardedValue = map['rule'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      samplingAlgorithmType: pulumi.Input.fromValue(
-        map['samplingAlgorithmType'] as String,
-      ),
-      seed: (() {
-        final guardedValue = map['seed'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      rule: (() { final guardedValue = map['rule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      samplingAlgorithmType: pulumi.Input.fromValue(map['samplingAlgorithmType'] as String),
+      seed: (() { final guardedValue = map['seed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

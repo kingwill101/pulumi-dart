@@ -7,19 +7,14 @@ import 'attribute_response_healthcare_v1beta1.dart';
 class GetUserDataMappingHealthcareV1beta1Result {
   /// Indicates the time when this mapping was archived.
   final String archiveTime;
-
   /// Indicates whether this mapping is archived.
   final bool archived;
-
   /// A unique identifier for the mapped resource.
   final String dataId;
-
   /// Resource name of the User data mapping, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/userDataMappings/{user_data_mapping_id}`.
   final String name;
-
   /// Attributes of the resource. Only explicitly set attributes are displayed here. Attribute definitions with defaults set implicitly apply to these User data mappings. Attributes listed here must be single valued, that is, exactly one value is specified for the field "values" in each Attribute.
   final List<AttributeResponseHealthcareV1beta1> resourceAttributes;
-
   /// User's UUID provided by the client.
   final String userId;
 
@@ -45,31 +40,20 @@ class GetUserDataMappingHealthcareV1beta1Result {
       'archived': archived,
       'dataId': dataId,
       'name': name,
-      'resourceAttributes':
-          pulumi.Input.encodeList<
-            AttributeResponseHealthcareV1beta1,
-            Map<String, dynamic>
-          >(resourceAttributes, (value) => value.toMap()),
+      'resourceAttributes': pulumi.Input.encodeList<AttributeResponseHealthcareV1beta1, Map<String, dynamic>>(resourceAttributes, (value) => value.toMap()),
       'userId': userId,
     };
   }
 
-  factory GetUserDataMappingHealthcareV1beta1Result.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetUserDataMappingHealthcareV1beta1Result.fromMap(Map<String, dynamic> map) {
     return GetUserDataMappingHealthcareV1beta1Result(
       archiveTime: map['archiveTime'] as String,
       archived: map['archived'] as bool,
       dataId: map['dataId'] as String,
       name: map['name'] as String,
-      resourceAttributes:
-          pulumi.Input.decodeList<AttributeResponseHealthcareV1beta1>(
-            map['resourceAttributes']!,
-            (value) => AttributeResponseHealthcareV1beta1.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      resourceAttributes: pulumi.Input.decodeList<AttributeResponseHealthcareV1beta1>(map['resourceAttributes']!, (value) => AttributeResponseHealthcareV1beta1.fromMap((value as Map).cast<String, dynamic>())),
       userId: map['userId'] as String,
     );
   }
 }
+

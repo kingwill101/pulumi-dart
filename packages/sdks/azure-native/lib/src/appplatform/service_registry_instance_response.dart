@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceRegistryInstanceResponse {
   /// Name of the Service Registry instance
   final pulumi.Input<String> name;
-
   /// Status of the Service Registry instance
   final pulumi.Input<String> status;
 
   /// Creates a new [ServiceRegistryInstanceResponse].
   /// [name] Name of the Service Registry instance
   /// [status] Status of the Service Registry instance
-  ServiceRegistryInstanceResponse({required this.name, required this.status});
+  ServiceRegistryInstanceResponse({
+    required this.name,
+    required this.status,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'status': status};
+    return <String, dynamic>{
+      'name': name,
+      'status': status,
+    };
   }
 
   factory ServiceRegistryInstanceResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class ServiceRegistryInstanceResponse {
     );
   }
 }
+

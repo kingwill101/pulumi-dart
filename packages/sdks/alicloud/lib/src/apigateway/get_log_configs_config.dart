@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLogConfigsConfig {
   /// The ID of the Log Config.
   final pulumi.Input<String> id;
-
   /// The type the of log.
   final pulumi.Input<String> logType;
-
   /// The region ID of the Log Config.
   final pulumi.Input<String> regionId;
-
   /// The name of the Log Store.
   final pulumi.Input<String> slsLogStore;
-
   /// The name of the Project.
   final pulumi.Input<String> slsProject;
 
@@ -52,3 +48,4 @@ class GetLogConfigsConfig {
     );
   }
 }
+

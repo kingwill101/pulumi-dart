@@ -11,10 +11,14 @@ class GetAccessPolicyIamPolicyArgs {
 
   /// Creates a new [GetAccessPolicyIamPolicyArgs].
   /// [accessPolicyId] Required.
-  GetAccessPolicyIamPolicyArgs({required this.accessPolicyId});
+  GetAccessPolicyIamPolicyArgs({
+    required this.accessPolicyId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'accessPolicyId': accessPolicyId};
+    return <String, dynamic>{
+      'accessPolicyId': accessPolicyId,
+    };
   }
 
   factory GetAccessPolicyIamPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -23,3 +27,4 @@ class GetAccessPolicyIamPolicyArgs {
     );
   }
 }
+

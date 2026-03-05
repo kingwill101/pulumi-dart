@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TpuConfigResponse {
   /// Whether Cloud TPU integration is enabled or not.
   final pulumi.Input<bool> enabled;
-
   /// IPv4 CIDR block reserved for Cloud TPU in the VPC.
   final pulumi.Input<String> ipv4CidrBlock;
-
   /// Whether to use service networking for Cloud TPU or not.
   final pulumi.Input<bool> useServiceNetworking;
 
@@ -35,9 +33,8 @@ class TpuConfigResponse {
     return TpuConfigResponse(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
       ipv4CidrBlock: pulumi.Input.fromValue(map['ipv4CidrBlock'] as String),
-      useServiceNetworking: pulumi.Input.fromValue(
-        map['useServiceNetworking'] as bool,
-      ),
+      useServiceNetworking: pulumi.Input.fromValue(map['useServiceNetworking'] as bool),
     );
   }
 }
+

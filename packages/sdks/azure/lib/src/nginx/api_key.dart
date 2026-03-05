@@ -500,16 +500,12 @@ import 'api_key_state.dart';
 class ApiKey extends pulumi.CustomResource {
   /// The RFC3339 formatted date-time after which this Dataplane API Key is no longer valid. The maximum value is now+2y.
   late final pulumi.Output<String> endDateTime;
-
   /// The first three characters of the secret text to help identify it in use.
   late final pulumi.Output<String> hint;
-
   /// The name of the NGINX Dataplane API Key. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The ID of the NGINX Deployment that the API key is associated with. Changing this forces a new resource to be created.
   late final pulumi.Output<String> nginxDeploymentId;
-
   /// The value used as the Dataplane API Key. The API key requirements can be found in the [NGINXaaS Documentation](https://docs.nginx.com/nginxaas/azure/quickstart/loadbalancer-kubernetes/#create-an-nginxaas-data-plane-api-key).
   late final pulumi.Output<String> secretText;
 
@@ -517,13 +513,16 @@ class ApiKey extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [ApiKey]. {@macro pulumi_nginx_api_key_api_key_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  ApiKey(String name, {ApiKeyArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure:nginx/apiKey:ApiKey',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  ApiKey(
+    String name, {
+    ApiKeyArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure:nginx/apiKey:ApiKey',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     endDateTime = registerOutput<String>('endDateTime');
     hint = registerOutput<String>('hint');
     this.name = registerOutput<String>('name');
@@ -549,11 +548,11 @@ class ApiKey extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:nginx/apiKey:ApiKey',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:nginx/apiKey:ApiKey',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     endDateTime = registerOutput<String>('endDateTime');
     hint = registerOutput<String>('hint');
     this.name = registerOutput<String>('name');

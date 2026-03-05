@@ -13,14 +13,15 @@ class ConnectionAuthConfigAdditionalVariableSecretValue {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'secretVersion': secretVersion};
+    return <String, dynamic>{
+      'secretVersion': secretVersion,
+    };
   }
 
-  factory ConnectionAuthConfigAdditionalVariableSecretValue.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConnectionAuthConfigAdditionalVariableSecretValue.fromMap(Map<String, dynamic> map) {
     return ConnectionAuthConfigAdditionalVariableSecretValue(
       secretVersion: pulumi.Input.fromValue(map['secretVersion'] as String),
     );
   }
 }
+

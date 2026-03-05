@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServicePlacementInvalidDomainPolicy {
   /// The name of the domain that should not be used for placement.
   final pulumi.Input<String> domainName;
-
   /// The type of placement policy for a service fabric service. Following are the possible values.
   /// Expected value is 'InvalidDomain'.
   final pulumi.Input<String> type;
@@ -20,15 +19,17 @@ class ServicePlacementInvalidDomainPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'domainName': domainName, 'type': type};
+    return <String, dynamic>{
+      'domainName': domainName,
+      'type': type,
+    };
   }
 
-  factory ServicePlacementInvalidDomainPolicy.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ServicePlacementInvalidDomainPolicy.fromMap(Map<String, dynamic> map) {
     return ServicePlacementInvalidDomainPolicy(
       domainName: pulumi.Input.fromValue(map['domainName'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

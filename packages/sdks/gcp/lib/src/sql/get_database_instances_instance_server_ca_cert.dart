@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDatabaseInstancesInstanceServerCaCert {
   /// The CA Certificate used to connect to the SQL Instance via SSL.
   final pulumi.Input<String> cert;
-
   /// The CN valid for the CA Cert.
   final pulumi.Input<String> commonName;
-
   /// Creation time of the CA Cert.
   final pulumi.Input<String> createTime;
-
   /// Expiration time of the CA Cert.
   final pulumi.Input<String> expirationTime;
-
   /// SHA Fingerprint of the CA Cert.
   final pulumi.Input<String> sha1Fingerprint;
 
@@ -42,9 +38,7 @@ class GetDatabaseInstancesInstanceServerCaCert {
     };
   }
 
-  factory GetDatabaseInstancesInstanceServerCaCert.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDatabaseInstancesInstanceServerCaCert.fromMap(Map<String, dynamic> map) {
     return GetDatabaseInstancesInstanceServerCaCert(
       cert: pulumi.Input.fromValue(map['cert'] as String),
       commonName: pulumi.Input.fromValue(map['commonName'] as String),
@@ -54,3 +48,4 @@ class GetDatabaseInstancesInstanceServerCaCert {
     );
   }
 }
+

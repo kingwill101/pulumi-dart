@@ -441,39 +441,29 @@ import 'metric_descriptor_state.dart';
 class MetricDescriptor extends pulumi.CustomResource {
   /// A detailed description of the metric, which can be used in documentation.
   late final pulumi.Output<String?> description;
-
   /// A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
   late final pulumi.Output<String?> displayName;
-
   /// The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> labels;
-
   /// The launch stage of the metric definition.
   /// Possible values are: `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
   late final pulumi.Output<String?> launchStage;
-
   /// Metadata which can be used to guide usage of the metric.
   /// Structure is documented below.
   late final pulumi.Output<MetricDescriptorMetadata?> metadata;
-
   /// Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metricKind and valueType might not be supported.
   /// Possible values are: `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, `CUMULATIVE`.
   late final pulumi.Output<String> metricKind;
-
   /// If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that is associated with this metric type can only be associated with one of the monitored resource types listed here. This field allows time series to be associated with the intersection of this metric type and the monitored resource types in this list.
   late final pulumi.Output<List<String>> monitoredResourceTypes;
-
   /// The resource name of the metric descriptor.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The metric type, including its DNS name prefix. The type is not URL-encoded. All service defined metrics must be prefixed with the service name, in the format of {service name}/{relative metric name}, such as cloudsql.googleapis.com/database/cpu/utilization. The relative metric name must have only upper and lower-case letters, digits, '/' and underscores '_' are allowed. Additionally, the maximum number of characters allowed for the relative_metric_name is 100. All user-defined metric types have the DNS name custom.googleapis.com, external.googleapis.com, or logging.googleapis.com/user/.
   late final pulumi.Output<String> type;
-
   /// The units in which the metric value is reported. It is only applicable if the
   /// valueType is INT64, DOUBLE, or DISTRIBUTION. The unit defines the representation of
   /// the stored metric values.
@@ -492,7 +482,6 @@ class MetricDescriptor extends pulumi.CustomResource {
   /// More info can be found in the API documentation
   /// (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
   late final pulumi.Output<String?> unit;
-
   /// Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
   /// Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
   late final pulumi.Output<String> valueType;
@@ -506,29 +495,18 @@ class MetricDescriptor extends pulumi.CustomResource {
     MetricDescriptorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:monitoring/metricDescriptor:MetricDescriptor',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:monitoring/metricDescriptor:MetricDescriptor',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     labels = registerOutput<List<Map<String, dynamic>>?>('labels');
     launchStage = registerOutput<String?>('launchStage');
-    metadata = registerOutput<MetricDescriptorMetadata?>(
-      'metadata',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MetricDescriptorMetadata.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    metadata = registerOutput<MetricDescriptorMetadata?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetricDescriptorMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     metricKind = registerOutput<String>('metricKind');
-    monitoredResourceTypes = registerOutput<List<String>>(
-      'monitoredResourceTypes',
-    );
+    monitoredResourceTypes = registerOutput<List<String>>('monitoredResourceTypes');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     type = registerOutput<String>('type');
@@ -554,29 +532,18 @@ class MetricDescriptor extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:monitoring/metricDescriptor:MetricDescriptor',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:monitoring/metricDescriptor:MetricDescriptor',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     labels = registerOutput<List<Map<String, dynamic>>?>('labels');
     launchStage = registerOutput<String?>('launchStage');
-    metadata = registerOutput<MetricDescriptorMetadata?>(
-      'metadata',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MetricDescriptorMetadata.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    metadata = registerOutput<MetricDescriptorMetadata?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetricDescriptorMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     metricKind = registerOutput<String>('metricKind');
-    monitoredResourceTypes = registerOutput<List<String>>(
-      'monitoredResourceTypes',
-    );
+    monitoredResourceTypes = registerOutput<List<String>>('monitoredResourceTypes');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     type = registerOutput<String>('type');

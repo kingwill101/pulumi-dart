@@ -301,22 +301,16 @@ import 'contact_channel_state.dart';
 class ContactChannel extends pulumi.CustomResource {
   /// Whether the contact channel is activated. The contact channel must be activated to use it to engage the contact. One of `ACTIVATED` or `NOT_ACTIVATED`.
   late final pulumi.Output<String> activationStatus;
-
   /// Amazon Resource Name (ARN) of the contact channel.
   late final pulumi.Output<String> arn;
-
   /// Amazon Resource Name (ARN) of the AWS SSM Contact that the contact channel belongs to.
   late final pulumi.Output<String> contactId;
-
   /// Block that contains contact engagement details. See details below.
   late final pulumi.Output<ContactChannelDeliveryAddress> deliveryAddress;
-
   /// Name of the contact channel. Must be between 1 and 255 characters, and may contain alphanumerics, underscores (`_`), hyphens (`-`), periods (`.`), and spaces.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Type of the contact channel. One of `SMS`, `VOICE` or `EMAIL`.
   late final pulumi.Output<String> type;
 
@@ -329,24 +323,15 @@ class ContactChannel extends pulumi.CustomResource {
     ContactChannelArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ssmcontacts/contactChannel:ContactChannel',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ssmcontacts/contactChannel:ContactChannel',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     activationStatus = registerOutput<String>('activationStatus');
     arn = registerOutput<String>('arn');
     contactId = registerOutput<String>('contactId');
-    deliveryAddress = registerOutput<ContactChannelDeliveryAddress>(
-      'deliveryAddress',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ContactChannelDeliveryAddress.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    deliveryAddress = registerOutput<ContactChannelDeliveryAddress>('deliveryAddress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContactChannelDeliveryAddress.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     type = registerOutput<String>('type');
@@ -370,24 +355,15 @@ class ContactChannel extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ssmcontacts/contactChannel:ContactChannel',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ssmcontacts/contactChannel:ContactChannel',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     activationStatus = registerOutput<String>('activationStatus');
     arn = registerOutput<String>('arn');
     contactId = registerOutput<String>('contactId');
-    deliveryAddress = registerOutput<ContactChannelDeliveryAddress>(
-      'deliveryAddress',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ContactChannelDeliveryAddress.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    deliveryAddress = registerOutput<ContactChannelDeliveryAddress>('deliveryAddress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContactChannelDeliveryAddress.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     type = registerOutput<String>('type');

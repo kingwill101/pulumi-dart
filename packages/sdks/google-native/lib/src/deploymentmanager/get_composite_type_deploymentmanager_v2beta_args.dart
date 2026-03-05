@@ -25,16 +25,11 @@ class GetCompositeTypeDeploymentmanagerV2betaArgs {
     };
   }
 
-  factory GetCompositeTypeDeploymentmanagerV2betaArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetCompositeTypeDeploymentmanagerV2betaArgs.fromMap(Map<String, dynamic> map) {
     return GetCompositeTypeDeploymentmanagerV2betaArgs(
       compositeType: pulumi.Input.fromValue(map['compositeType'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

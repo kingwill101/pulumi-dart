@@ -7,18 +7,10 @@ import 'prevention_discovery_config_target_cloud_sql_target_filter_database_reso
 class PreventionDiscoveryConfigTargetCloudSqlTargetFilter {
   /// A collection of resources for this filter to apply to.
   /// Structure is documented below.
-  final pulumi.Input<
-    PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollection
-  >?
-  collection;
-
+  final pulumi.Input<PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollection>? collection;
   /// The database resource to scan. Targets including this can only include one target (the target with this database resource reference).
   /// Structure is documented below.
-  final pulumi.Input<
-    PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReference
-  >?
-  databaseResourceReference;
-
+  final pulumi.Input<PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReference>? databaseResourceReference;
   /// Match discovery resources not covered by any other filter.
   final pulumi.Input<Map<String, dynamic>>? others;
 
@@ -34,49 +26,18 @@ class PreventionDiscoveryConfigTargetCloudSqlTargetFilter {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'collection':
-          ?pulumi.Input.mapOptionalInputValue<
-            PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollection,
-            Map<String, dynamic>
-          >(collection, (value) => value.toMap()),
-      'databaseResourceReference':
-          ?pulumi.Input.mapOptionalInputValue<
-            PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReference,
-            Map<String, dynamic>
-          >(databaseResourceReference, (value) => value.toMap()),
+      'collection': ?pulumi.Input.mapOptionalInputValue<PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollection, Map<String, dynamic>>(collection, (value) => value.toMap()),
+      'databaseResourceReference': ?pulumi.Input.mapOptionalInputValue<PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReference, Map<String, dynamic>>(databaseResourceReference, (value) => value.toMap()),
       'others': ?others,
     };
   }
 
-  factory PreventionDiscoveryConfigTargetCloudSqlTargetFilter.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionDiscoveryConfigTargetCloudSqlTargetFilter.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetCloudSqlTargetFilter(
-      collection: (() {
-        final guardedValue = map['collection'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollection.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      databaseResourceReference: (() {
-        final guardedValue = map['databaseResourceReference'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReference.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      others: (() {
-        final guardedValue = map['others'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      collection: (() { final guardedValue = map['collection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollection.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      databaseResourceReference: (() { final guardedValue = map['databaseResourceReference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      others: (() { final guardedValue = map['others']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }
 }
+

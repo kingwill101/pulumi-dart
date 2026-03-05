@@ -26,3 +26,4 @@ enum SubscriptionTransitioningState {
     throw ArgumentError('Unknown SubscriptionTransitioningState value: $value');
   }
 }
+

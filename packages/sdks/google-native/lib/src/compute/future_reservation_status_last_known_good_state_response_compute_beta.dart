@@ -7,17 +7,11 @@ import 'future_reservation_status_last_known_good_state_future_reservation_specs
 class FutureReservationStatusLastKnownGoodStateResponseComputeBeta {
   /// The description of the FutureReservation before an amendment was requested.
   final pulumi.Input<String> description;
-  final pulumi.Input<
-    FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponseComputeBeta
-  >
-  futureReservationSpecs;
-
+  final pulumi.Input<FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponseComputeBeta> futureReservationSpecs;
   /// The lock time of the FutureReservation before an amendment was requested.
   final pulumi.Input<String> lockTime;
-
   /// The name prefix of the Future Reservation before an amendment was requested.
   final pulumi.Input<String> namePrefix;
-
   /// The status of the last known good state for the Future Reservation.
   final pulumi.Input<String> procurementStatus;
 
@@ -38,32 +32,21 @@ class FutureReservationStatusLastKnownGoodStateResponseComputeBeta {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': description,
-      'futureReservationSpecs':
-          pulumi.Input.mapInputValue<
-            FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponseComputeBeta,
-            Map<String, dynamic>
-          >(futureReservationSpecs, (value) => value.toMap()),
+      'futureReservationSpecs': pulumi.Input.mapInputValue<FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponseComputeBeta, Map<String, dynamic>>(futureReservationSpecs, (value) => value.toMap()),
       'lockTime': lockTime,
       'namePrefix': namePrefix,
       'procurementStatus': procurementStatus,
     };
   }
 
-  factory FutureReservationStatusLastKnownGoodStateResponseComputeBeta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FutureReservationStatusLastKnownGoodStateResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return FutureReservationStatusLastKnownGoodStateResponseComputeBeta(
       description: pulumi.Input.fromValue(map['description'] as String),
-      futureReservationSpecs: pulumi.Input.fromValue(
-        FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponseComputeBeta.fromMap(
-          (map['futureReservationSpecs']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      futureReservationSpecs: pulumi.Input.fromValue(FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponseComputeBeta.fromMap((map['futureReservationSpecs']! as Map).cast<String, dynamic>())),
       lockTime: pulumi.Input.fromValue(map['lockTime'] as String),
       namePrefix: pulumi.Input.fromValue(map['namePrefix'] as String),
-      procurementStatus: pulumi.Input.fromValue(
-        map['procurementStatus'] as String,
-      ),
+      procurementStatus: pulumi.Input.fromValue(map['procurementStatus'] as String),
     );
   }
 }
+

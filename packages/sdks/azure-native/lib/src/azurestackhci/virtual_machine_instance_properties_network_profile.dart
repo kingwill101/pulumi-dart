@@ -10,41 +10,20 @@ class VirtualMachineInstancePropertiesNetworkProfile {
 
   /// Creates a new [VirtualMachineInstancePropertiesNetworkProfile].
   /// [networkInterfaces] NetworkInterfaces - list of network interfaces to be attached to the virtual machine instance
-  VirtualMachineInstancePropertiesNetworkProfile({this.networkInterfaces});
+  VirtualMachineInstancePropertiesNetworkProfile({
+    this.networkInterfaces,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'networkInterfaces':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<NetworkInterfaceArmReference>,
-            List<Map<String, dynamic>>
-          >(
-            networkInterfaces,
-            (value) =>
-                pulumi.Input.encodeList<
-                  NetworkInterfaceArmReference,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'networkInterfaces': ?pulumi.Input.mapOptionalInputValue<List<NetworkInterfaceArmReference>, List<Map<String, dynamic>>>(networkInterfaces, (value) => pulumi.Input.encodeList<NetworkInterfaceArmReference, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory VirtualMachineInstancePropertiesNetworkProfile.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VirtualMachineInstancePropertiesNetworkProfile.fromMap(Map<String, dynamic> map) {
     return VirtualMachineInstancePropertiesNetworkProfile(
-      networkInterfaces: (() {
-        final guardedValue = map['networkInterfaces'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<NetworkInterfaceArmReference>(
-            guardedValue,
-            (value) => NetworkInterfaceArmReference.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      networkInterfaces: (() { final guardedValue = map['networkInterfaces']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NetworkInterfaceArmReference>(guardedValue, (value) => NetworkInterfaceArmReference.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SystemTopicEventSubscriptionDeliveryProperty {
   /// The name of the header to send on to the destination.
   final pulumi.Input<String> headerName;
-
   /// Set to `true` if the `value` is a secret and should be protected, otherwise `false`. If `true` then this value won't be returned from Azure API calls.
   final pulumi.Input<bool>? secret;
-
   /// If the `type` is `Dynamic`, then provide the payload field to be used as the value. Valid source fields differ by subscription type.
   final pulumi.Input<String>? sourceField;
-
   /// Either `Static` or `Dynamic`.
   final pulumi.Input<String> type;
-
   /// If the `type` is `Static`, then provide the value to use.
   final pulumi.Input<String>? value;
 
@@ -42,27 +38,14 @@ class SystemTopicEventSubscriptionDeliveryProperty {
     };
   }
 
-  factory SystemTopicEventSubscriptionDeliveryProperty.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SystemTopicEventSubscriptionDeliveryProperty.fromMap(Map<String, dynamic> map) {
     return SystemTopicEventSubscriptionDeliveryProperty(
       headerName: pulumi.Input.fromValue(map['headerName'] as String),
-      secret: (() {
-        final guardedValue = map['secret'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      sourceField: (() {
-        final guardedValue = map['sourceField'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      secret: (() { final guardedValue = map['secret']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      sourceField: (() { final guardedValue = map['sourceField']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

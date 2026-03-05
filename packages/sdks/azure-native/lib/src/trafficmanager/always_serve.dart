@@ -15,3 +15,4 @@ enum AlwaysServe {
     throw ArgumentError('Unknown AlwaysServe value: $value');
   }
 }
+

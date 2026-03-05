@@ -182,7 +182,6 @@ import 'enrollment_status_state.dart';
 class EnrollmentStatus extends pulumi.CustomResource {
   /// Flag to enroll member accounts of the organization if the account is the management account. No drift detection is currently supported for this argument. Default value is `false`.
   late final pulumi.Output<bool> includeMemberAccounts;
-
   /// Status of enrollment. When the resource is present in Terraform, its status will always be `Active`.
   late final pulumi.Output<String> status;
 
@@ -195,11 +194,11 @@ class EnrollmentStatus extends pulumi.CustomResource {
     EnrollmentStatusArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:costoptimizationhub/enrollmentStatus:EnrollmentStatus',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:costoptimizationhub/enrollmentStatus:EnrollmentStatus',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     includeMemberAccounts = registerOutput<bool>('includeMemberAccounts');
     status = registerOutput<String>('status');
   }
@@ -222,11 +221,11 @@ class EnrollmentStatus extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:costoptimizationhub/enrollmentStatus:EnrollmentStatus',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:costoptimizationhub/enrollmentStatus:EnrollmentStatus',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     includeMemberAccounts = registerOutput<bool>('includeMemberAccounts');
     status = registerOutput<String>('status');
   }

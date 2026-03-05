@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StatisticalTimeSeriesFilterResponse {
   /// How many time series to output.
   final pulumi.Input<int> numTimeSeries;
-
   /// rankingMethod is applied to a set of time series, and then the produced value for each individual time series is used to compare a given time series to others. These are methods that cannot be applied stream-by-stream, but rather require the full context of a request to evaluate time series.
   final pulumi.Input<String> rankingMethod;
 
@@ -25,12 +24,11 @@ class StatisticalTimeSeriesFilterResponse {
     };
   }
 
-  factory StatisticalTimeSeriesFilterResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory StatisticalTimeSeriesFilterResponse.fromMap(Map<String, dynamic> map) {
     return StatisticalTimeSeriesFilterResponse(
       numTimeSeries: pulumi.Input.fromValue(map['numTimeSeries'] as int),
       rankingMethod: pulumi.Input.fromValue(map['rankingMethod'] as String),
     );
   }
 }
+

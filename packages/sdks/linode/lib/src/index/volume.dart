@@ -437,30 +437,22 @@ import 'volume_timeouts.dart';
 class Volume extends pulumi.CustomResource {
   /// Whether Block Storage Disk Encryption is enabled or disabled on this Volume.
   late final pulumi.Output<String> encryption;
-
   /// The full filesystem path for the Volume based on the Volume's label. The path is "/dev/disk/by-id/scsi-0Linode_Volume_" + the Volume label
   late final pulumi.Output<String> filesystemPath;
-
   /// The label of the Linode Volume
   late final pulumi.Output<String> label;
-
   /// The ID of a Linode Instance where the Volume should be attached.
   late final pulumi.Output<int> linodeId;
-
   /// The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). This field is optional for cloned volumes. *Changing `region` forces the creation of a new Linode Volume.*.
   ///
   /// - - -
   late final pulumi.Output<String> region;
-
   /// Size of the Volume in GB.
   late final pulumi.Output<int> size;
-
   /// The ID of a Linode Volume to clone. NOTE: Cloned volumes must be in the same region as the source volume.
   late final pulumi.Output<int?> sourceVolumeId;
-
   /// The status of the Linode Volume. (`creating`, `active`, `resizing`, `contact_support`)
   late final pulumi.Output<String> status;
-
   /// A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
   late final pulumi.Output<List<String>> tags;
   late final pulumi.Output<VolumeTimeouts?> timeouts;
@@ -469,13 +461,16 @@ class Volume extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Volume]. {@macro pulumi_index_volume_volume_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Volume(String name, {VolumeArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'linode:index/volume:Volume',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Volume(
+    String name, {
+    VolumeArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'linode:index/volume:Volume',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     encryption = registerOutput<String>('encryption');
     filesystemPath = registerOutput<String>('filesystemPath');
     label = registerOutput<String>('label');
@@ -485,16 +480,7 @@ class Volume extends pulumi.CustomResource {
     sourceVolumeId = registerOutput<int?>('sourceVolumeId');
     status = registerOutput<String>('status');
     tags = registerOutput<List<String>>('tags');
-    timeouts = registerOutput<VolumeTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VolumeTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<VolumeTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [Volume] resource's state with the given [name] and [id].
@@ -515,11 +501,11 @@ class Volume extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'linode:index/volume:Volume',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'linode:index/volume:Volume',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     encryption = registerOutput<String>('encryption');
     filesystemPath = registerOutput<String>('filesystemPath');
     label = registerOutput<String>('label');
@@ -529,15 +515,6 @@ class Volume extends pulumi.CustomResource {
     sourceVolumeId = registerOutput<int?>('sourceVolumeId');
     status = registerOutput<String>('status');
     tags = registerOutput<List<String>>('tags');
-    timeouts = registerOutput<VolumeTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VolumeTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<VolumeTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

@@ -9,19 +9,20 @@ class ProductPropertiesResponse {
 
   /// Creates a new [ProductPropertiesResponse].
   /// [version] The version.
-  ProductPropertiesResponse({this.version});
+  ProductPropertiesResponse({
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'version': ?version};
+    return <String, dynamic>{
+      'version': ?version,
+    };
   }
 
   factory ProductPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ProductPropertiesResponse(
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

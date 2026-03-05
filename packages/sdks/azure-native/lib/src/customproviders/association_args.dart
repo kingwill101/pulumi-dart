@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AssociationArgs {
   /// The name of the association.
   final pulumi.Input<String>? associationName;
-
   /// The scope of the association. The scope can be any valid REST resource instance. For example, use '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Compute/virtualMachines/{vm-name}' for a virtual machine resource.
   final pulumi.Input<String> scope;
-
   /// The REST resource instance of the target resource for this association.
   final pulumi.Input<String>? targetResourceId;
 
@@ -36,17 +34,10 @@ class AssociationArgs {
 
   factory AssociationArgs.fromMap(Map<String, dynamic> map) {
     return AssociationArgs(
-      associationName: (() {
-        final guardedValue = map['associationName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      associationName: (() { final guardedValue = map['associationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scope: pulumi.Input.fromValue(map['scope'] as String),
-      targetResourceId: (() {
-        final guardedValue = map['targetResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      targetResourceId: (() { final guardedValue = map['targetResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

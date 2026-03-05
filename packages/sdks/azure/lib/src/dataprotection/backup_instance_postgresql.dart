@@ -870,22 +870,16 @@ import 'backup_instance_postgresql_state.dart';
 class BackupInstancePostgresql extends pulumi.CustomResource {
   /// The ID of the Backup Policy.
   late final pulumi.Output<String> backupPolicyId;
-
   /// The ID or versionless ID of the key vault secret which stores the connection string of the database.
   late final pulumi.Output<String?> databaseCredentialKeyVaultSecretId;
-
   /// The ID of the source database. Changing this forces a new Backup Instance PostgreSQL to be created.
   late final pulumi.Output<String> databaseId;
-
   /// The location of the source database. Changing this forces a new Backup Instance PostgreSQL to be created.
   late final pulumi.Output<String> location;
-
   /// The name which should be used for this Backup Instance PostgreSQL. Changing this forces a new Backup Instance PostgreSQL to be created.
   late final pulumi.Output<String> name;
-
   /// The protection state of the Backup Instance PostgreSQL.
   late final pulumi.Output<String> protectionState;
-
   /// The ID of the Backup Vault within which the PostgreSQL Backup Instance should exist. Changing this forces a new Backup Instance PostgreSQL to be created.
   late final pulumi.Output<String> vaultId;
 
@@ -898,15 +892,13 @@ class BackupInstancePostgresql extends pulumi.CustomResource {
     BackupInstancePostgresqlArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:dataprotection/backupInstancePostgresql:BackupInstancePostgresql',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:dataprotection/backupInstancePostgresql:BackupInstancePostgresql',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     backupPolicyId = registerOutput<String>('backupPolicyId');
-    databaseCredentialKeyVaultSecretId = registerOutput<String?>(
-      'databaseCredentialKeyVaultSecretId',
-    );
+    databaseCredentialKeyVaultSecretId = registerOutput<String?>('databaseCredentialKeyVaultSecretId');
     databaseId = registerOutput<String>('databaseId');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -932,15 +924,13 @@ class BackupInstancePostgresql extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:dataprotection/backupInstancePostgresql:BackupInstancePostgresql',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:dataprotection/backupInstancePostgresql:BackupInstancePostgresql',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     backupPolicyId = registerOutput<String>('backupPolicyId');
-    databaseCredentialKeyVaultSecretId = registerOutput<String?>(
-      'databaseCredentialKeyVaultSecretId',
-    );
+    databaseCredentialKeyVaultSecretId = registerOutput<String?>('databaseCredentialKeyVaultSecretId');
     databaseId = registerOutput<String>('databaseId');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

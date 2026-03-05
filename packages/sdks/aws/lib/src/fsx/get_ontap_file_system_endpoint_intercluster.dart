@@ -16,17 +16,17 @@ class GetOntapFileSystemEndpointIntercluster {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'dnsName': dnsName, 'ipAddresses': ipAddresses};
+    return <String, dynamic>{
+      'dnsName': dnsName,
+      'ipAddresses': ipAddresses,
+    };
   }
 
-  factory GetOntapFileSystemEndpointIntercluster.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetOntapFileSystemEndpointIntercluster.fromMap(Map<String, dynamic> map) {
     return GetOntapFileSystemEndpointIntercluster(
       dnsName: pulumi.Input.fromValue(map['dnsName'] as String),
-      ipAddresses: pulumi.Input.fromValue(
-        (map['ipAddresses'] as List).cast<String>(),
-      ),
+      ipAddresses: pulumi.Input.fromValue((map['ipAddresses'] as List).cast<String>()),
     );
   }
 }
+

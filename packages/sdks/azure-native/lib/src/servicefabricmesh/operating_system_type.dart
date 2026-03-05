@@ -15,3 +15,4 @@ enum OperatingSystemType {
     throw ArgumentError('Unknown OperatingSystemType value: $value');
   }
 }
+

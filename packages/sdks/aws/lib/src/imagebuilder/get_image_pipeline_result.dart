@@ -8,58 +8,40 @@ import 'get_image_pipeline_schedule.dart';
 /// Result data returned by getImagePipeline.
 class GetImagePipelineResult {
   final String arn;
-
   /// ARN of the container recipe.
   final String containerRecipeArn;
-
   /// Date the image pipeline was created.
   final String dateCreated;
-
   /// Date the image pipeline was last run.
   final String dateLastRun;
-
   /// Date the image pipeline will run next.
   final String dateNextRun;
-
   /// Date the image pipeline was updated.
   final String dateUpdated;
-
   /// Description of the image pipeline.
   final String description;
-
   /// ARN of the Image Builder Distribution Configuration.
   final String distributionConfigurationArn;
-
   /// Whether additional information about the image being created is collected.
   final bool enhancedImageMetadataEnabled;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// ARN of the image recipe.
   final String imageRecipeArn;
-  final List<GetImagePipelineImageScanningConfiguration>
-  imageScanningConfigurations;
-
+  final List<GetImagePipelineImageScanningConfiguration> imageScanningConfigurations;
   /// List of an object with image tests configuration.
   final List<GetImagePipelineImageTestsConfiguration> imageTestsConfigurations;
-
   /// ARN of the Image Builder Infrastructure Configuration.
   final String infrastructureConfigurationArn;
-
   /// Name of the image pipeline.
   final String name;
-
   /// Platform of the image pipeline.
   final String platform;
   final String region;
-
   /// List of an object with schedule settings.
   final List<GetImagePipelineSchedule> schedules;
-
   /// Status of the image pipeline.
   final String status;
-
   /// Key-value map of resource tags for the image pipeline.
   final Map<String, String> tags;
 
@@ -120,25 +102,13 @@ class GetImagePipelineResult {
       'enhancedImageMetadataEnabled': enhancedImageMetadataEnabled,
       'id': id,
       'imageRecipeArn': imageRecipeArn,
-      'imageScanningConfigurations':
-          pulumi.Input.encodeList<
-            GetImagePipelineImageScanningConfiguration,
-            Map<String, dynamic>
-          >(imageScanningConfigurations, (value) => value.toMap()),
-      'imageTestsConfigurations':
-          pulumi.Input.encodeList<
-            GetImagePipelineImageTestsConfiguration,
-            Map<String, dynamic>
-          >(imageTestsConfigurations, (value) => value.toMap()),
+      'imageScanningConfigurations': pulumi.Input.encodeList<GetImagePipelineImageScanningConfiguration, Map<String, dynamic>>(imageScanningConfigurations, (value) => value.toMap()),
+      'imageTestsConfigurations': pulumi.Input.encodeList<GetImagePipelineImageTestsConfiguration, Map<String, dynamic>>(imageTestsConfigurations, (value) => value.toMap()),
       'infrastructureConfigurationArn': infrastructureConfigurationArn,
       'name': name,
       'platform': platform,
       'region': region,
-      'schedules':
-          pulumi.Input.encodeList<
-            GetImagePipelineSchedule,
-            Map<String, dynamic>
-          >(schedules, (value) => value.toMap()),
+      'schedules': pulumi.Input.encodeList<GetImagePipelineSchedule, Map<String, dynamic>>(schedules, (value) => value.toMap()),
       'status': status,
       'tags': tags,
     };
@@ -153,38 +123,20 @@ class GetImagePipelineResult {
       dateNextRun: map['dateNextRun'] as String,
       dateUpdated: map['dateUpdated'] as String,
       description: map['description'] as String,
-      distributionConfigurationArn:
-          map['distributionConfigurationArn'] as String,
+      distributionConfigurationArn: map['distributionConfigurationArn'] as String,
       enhancedImageMetadataEnabled: map['enhancedImageMetadataEnabled'] as bool,
       id: map['id'] as String,
       imageRecipeArn: map['imageRecipeArn'] as String,
-      imageScanningConfigurations:
-          pulumi.Input.decodeList<GetImagePipelineImageScanningConfiguration>(
-            map['imageScanningConfigurations']!,
-            (value) => GetImagePipelineImageScanningConfiguration.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-      imageTestsConfigurations:
-          pulumi.Input.decodeList<GetImagePipelineImageTestsConfiguration>(
-            map['imageTestsConfigurations']!,
-            (value) => GetImagePipelineImageTestsConfiguration.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-      infrastructureConfigurationArn:
-          map['infrastructureConfigurationArn'] as String,
+      imageScanningConfigurations: pulumi.Input.decodeList<GetImagePipelineImageScanningConfiguration>(map['imageScanningConfigurations']!, (value) => GetImagePipelineImageScanningConfiguration.fromMap((value as Map).cast<String, dynamic>())),
+      imageTestsConfigurations: pulumi.Input.decodeList<GetImagePipelineImageTestsConfiguration>(map['imageTestsConfigurations']!, (value) => GetImagePipelineImageTestsConfiguration.fromMap((value as Map).cast<String, dynamic>())),
+      infrastructureConfigurationArn: map['infrastructureConfigurationArn'] as String,
       name: map['name'] as String,
       platform: map['platform'] as String,
       region: map['region'] as String,
-      schedules: pulumi.Input.decodeList<GetImagePipelineSchedule>(
-        map['schedules']!,
-        (value) => GetImagePipelineSchedule.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      schedules: pulumi.Input.decodeList<GetImagePipelineSchedule>(map['schedules']!, (value) => GetImagePipelineSchedule.fromMap((value as Map).cast<String, dynamic>())),
       status: map['status'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

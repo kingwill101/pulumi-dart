@@ -266,14 +266,11 @@ class KeyvaluestoreKeysExclusive extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> keyValueStoreArn;
-
   /// Maximum resource key values pairs that will update in a single API request. AWS has a default quota of 50 keys or a 3 MB payload, whichever is reached first. Defaults to `50`.
   late final pulumi.Output<int> maxBatchSize;
-
   /// A list of all resource key value pairs associated with the KeyValueStore.
   /// See `resource_key_value_pair` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> resourceKeyValuePairs;
-
   /// Total size of the Key Value Store in bytes.
   late final pulumi.Output<int> totalSizeInBytes;
 
@@ -286,16 +283,14 @@ class KeyvaluestoreKeysExclusive extends pulumi.CustomResource {
     KeyvaluestoreKeysExclusiveArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cloudfront/keyvaluestoreKeysExclusive:KeyvaluestoreKeysExclusive',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cloudfront/keyvaluestoreKeysExclusive:KeyvaluestoreKeysExclusive',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     keyValueStoreArn = registerOutput<String>('keyValueStoreArn');
     maxBatchSize = registerOutput<int>('maxBatchSize');
-    resourceKeyValuePairs = registerOutput<List<Map<String, dynamic>>?>(
-      'resourceKeyValuePairs',
-    );
+    resourceKeyValuePairs = registerOutput<List<Map<String, dynamic>>?>('resourceKeyValuePairs');
     totalSizeInBytes = registerOutput<int>('totalSizeInBytes');
   }
 
@@ -317,16 +312,14 @@ class KeyvaluestoreKeysExclusive extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cloudfront/keyvaluestoreKeysExclusive:KeyvaluestoreKeysExclusive',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cloudfront/keyvaluestoreKeysExclusive:KeyvaluestoreKeysExclusive',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     keyValueStoreArn = registerOutput<String>('keyValueStoreArn');
     maxBatchSize = registerOutput<int>('maxBatchSize');
-    resourceKeyValuePairs = registerOutput<List<Map<String, dynamic>>?>(
-      'resourceKeyValuePairs',
-    );
+    resourceKeyValuePairs = registerOutput<List<Map<String, dynamic>>?>('resourceKeyValuePairs');
     totalSizeInBytes = registerOutput<int>('totalSizeInBytes');
   }
 }

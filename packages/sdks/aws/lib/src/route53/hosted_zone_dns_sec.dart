@@ -425,7 +425,6 @@ class HostedZoneDnsSec extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> hostedZoneId;
-
   /// Hosted Zone signing status. Valid values: `SIGNING`, `NOT_SIGNING`. Defaults to `SIGNING`.
   late final pulumi.Output<String?> signingStatus;
 
@@ -438,11 +437,11 @@ class HostedZoneDnsSec extends pulumi.CustomResource {
     HostedZoneDnsSecArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:route53/hostedZoneDnsSec:HostedZoneDnsSec',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:route53/hostedZoneDnsSec:HostedZoneDnsSec',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     hostedZoneId = registerOutput<String>('hostedZoneId');
     signingStatus = registerOutput<String?>('signingStatus');
   }
@@ -465,11 +464,11 @@ class HostedZoneDnsSec extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:route53/hostedZoneDnsSec:HostedZoneDnsSec',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:route53/hostedZoneDnsSec:HostedZoneDnsSec',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     hostedZoneId = registerOutput<String>('hostedZoneId');
     signingStatus = registerOutput<String?>('signingStatus');
   }

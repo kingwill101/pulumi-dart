@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DnsKeySpecResponse {
   /// String mnemonic specifying the DNSSEC algorithm of this key.
   final pulumi.Input<String> algorithm;
-
   /// Length of the keys in bits.
   final pulumi.Input<int> keyLength;
-
   /// Specifies whether this is a key signing key (KSK) or a zone signing key (ZSK). Key signing keys have the Secure Entry Point flag set and, when active, are only used to sign resource record sets of type DNSKEY. Zone signing keys do not have the Secure Entry Point flag set and are used to sign all other types of resource record sets.
   final pulumi.Input<String> keyType;
   final pulumi.Input<String> kind;
@@ -44,3 +42,4 @@ class DnsKeySpecResponse {
     );
   }
 }
+

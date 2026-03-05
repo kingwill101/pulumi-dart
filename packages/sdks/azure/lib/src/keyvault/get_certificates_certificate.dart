@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCertificatesCertificate {
   /// Whether this certificate is enabled.
   final pulumi.Input<bool> enabled;
-
   /// The ID of this certificate.
   final pulumi.Input<String> id;
-
   /// The name of certificate.
   final pulumi.Input<String> name;
-
   /// The tags of this certificate.
   final pulumi.Input<Map<String, String>> tags;
 
@@ -45,3 +42,4 @@ class GetCertificatesCertificate {
     );
   }
 }
+

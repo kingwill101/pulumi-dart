@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRegionalSecretArgs {
   /// The location of the regional secret. eg us-central1
   final pulumi.Input<String> location;
-
   /// The ID of the project in which the resource belongs.
   final pulumi.Input<String>? project;
-
   /// The name of the regional secret.
   final pulumi.Input<String> secretId;
 
@@ -37,12 +35,9 @@ class GetRegionalSecretArgs {
   factory GetRegionalSecretArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionalSecretArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       secretId: pulumi.Input.fromValue(map['secretId'] as String),
     );
   }
 }
+

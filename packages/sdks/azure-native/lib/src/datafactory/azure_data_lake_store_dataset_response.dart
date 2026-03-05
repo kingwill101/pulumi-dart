@@ -11,37 +11,26 @@ import 'parameter_specification_response.dart';
 class AzureDataLakeStoreDatasetResponse {
   /// List of tags that can be used for describing the Dataset.
   final pulumi.Input<List<dynamic>>? annotations;
-
   /// The data compression method used for the item(s) in the Azure Data Lake Store.
   final pulumi.Input<DatasetCompressionResponse>? compression;
-
   /// Dataset description.
   final pulumi.Input<String>? description;
-
   /// The name of the file in the Azure Data Lake Store. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? fileName;
-
   /// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
   final pulumi.Input<DatasetResponseFolder>? folder;
-
   /// Path to the folder in the Azure Data Lake Store. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? folderPath;
-
   /// The format of the Data Lake Store.
   final pulumi.Input<AvroFormatResponse>? format;
-
   /// Linked service reference.
   final pulumi.Input<LinkedServiceReferenceResponse> linkedServiceName;
-
   /// Parameters for dataset.
   final pulumi.Input<Map<String, ParameterSpecificationResponse>>? parameters;
-
   /// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
   final pulumi.Input<dynamic>? schema;
-
   /// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
   final pulumi.Input<dynamic>? structure;
-
   /// Type of dataset.
   /// Expected value is 'AzureDataLakeStoreFile'.
   final pulumi.Input<String> type;
@@ -77,41 +66,14 @@ class AzureDataLakeStoreDatasetResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'annotations': ?annotations,
-      'compression':
-          ?pulumi.Input.mapOptionalInputValue<
-            DatasetCompressionResponse,
-            Map<String, dynamic>
-          >(compression, (value) => value.toMap()),
+      'compression': ?pulumi.Input.mapOptionalInputValue<DatasetCompressionResponse, Map<String, dynamic>>(compression, (value) => value.toMap()),
       'description': ?description,
       'fileName': ?fileName,
-      'folder':
-          ?pulumi.Input.mapOptionalInputValue<
-            DatasetResponseFolder,
-            Map<String, dynamic>
-          >(folder, (value) => value.toMap()),
+      'folder': ?pulumi.Input.mapOptionalInputValue<DatasetResponseFolder, Map<String, dynamic>>(folder, (value) => value.toMap()),
       'folderPath': ?folderPath,
-      'format':
-          ?pulumi.Input.mapOptionalInputValue<
-            AvroFormatResponse,
-            Map<String, dynamic>
-          >(format, (value) => value.toMap()),
-      'linkedServiceName':
-          pulumi.Input.mapInputValue<
-            LinkedServiceReferenceResponse,
-            Map<String, dynamic>
-          >(linkedServiceName, (value) => value.toMap()),
-      'parameters':
-          ?pulumi.Input.mapOptionalInputValue<
-            Map<String, ParameterSpecificationResponse>,
-            Map<String, Map<String, dynamic>>
-          >(
-            parameters,
-            (value) =>
-                pulumi.Input.encodeMapValues<
-                  ParameterSpecificationResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'format': ?pulumi.Input.mapOptionalInputValue<AvroFormatResponse, Map<String, dynamic>>(format, (value) => value.toMap()),
+      'linkedServiceName': pulumi.Input.mapInputValue<LinkedServiceReferenceResponse, Map<String, dynamic>>(linkedServiceName, (value) => value.toMap()),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecificationResponse>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecificationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'schema': ?schema,
       'structure': ?structure,
       'type': type,
@@ -120,81 +82,19 @@ class AzureDataLakeStoreDatasetResponse {
 
   factory AzureDataLakeStoreDatasetResponse.fromMap(Map<String, dynamic> map) {
     return AzureDataLakeStoreDatasetResponse(
-      annotations: (() {
-        final guardedValue = map['annotations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>());
-      })(),
-      compression: (() {
-        final guardedValue = map['compression'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DatasetCompressionResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      fileName: (() {
-        final guardedValue = map['fileName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      folder: (() {
-        final guardedValue = map['folder'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DatasetResponseFolder.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      folderPath: (() {
-        final guardedValue = map['folderPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      format: (() {
-        final guardedValue = map['format'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AvroFormatResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      linkedServiceName: pulumi.Input.fromValue(
-        LinkedServiceReferenceResponse.fromMap(
-          (map['linkedServiceName']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      parameters: (() {
-        final guardedValue = map['parameters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(
-            guardedValue,
-            (value) => ParameterSpecificationResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      schema: (() {
-        final guardedValue = map['schema'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      structure: (() {
-        final guardedValue = map['structure'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
+      annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
+      compression: (() { final guardedValue = map['compression']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatasetCompressionResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      fileName: (() { final guardedValue = map['fileName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      folder: (() { final guardedValue = map['folder']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatasetResponseFolder.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      folderPath: (() { final guardedValue = map['folderPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      format: (() { final guardedValue = map['format']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AvroFormatResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      linkedServiceName: pulumi.Input.fromValue(LinkedServiceReferenceResponse.fromMap((map['linkedServiceName']! as Map).cast<String, dynamic>())),
+      parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(guardedValue, (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      schema: (() { final guardedValue = map['schema']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      structure: (() { final guardedValue = map['structure']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

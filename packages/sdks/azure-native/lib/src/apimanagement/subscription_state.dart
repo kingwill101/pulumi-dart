@@ -19,3 +19,4 @@ enum SubscriptionState {
     throw ArgumentError('Unknown SubscriptionState value: $value');
   }
 }
+

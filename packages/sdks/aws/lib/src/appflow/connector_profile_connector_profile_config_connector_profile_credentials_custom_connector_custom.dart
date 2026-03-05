@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorCustom {
   /// A map that holds custom authentication credentials.
   final pulumi.Input<Map<String, String>>? credentialsMap;
-
   /// The custom authentication type that the connector uses.
   final pulumi.Input<String> customAuthenticationType;
 
@@ -24,20 +23,11 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomCon
     };
   }
 
-  factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorCustom.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorCustom.fromMap(Map<String, dynamic> map) {
     return ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorCustom(
-      credentialsMap: (() {
-        final guardedValue = map['credentialsMap'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      customAuthenticationType: pulumi.Input.fromValue(
-        map['customAuthenticationType'] as String,
-      ),
+      credentialsMap: (() { final guardedValue = map['credentialsMap']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      customAuthenticationType: pulumi.Input.fromValue(map['customAuthenticationType'] as String),
     );
   }
 }
+

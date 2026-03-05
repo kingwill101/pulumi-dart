@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StaticRoutesConfigResponse {
   /// Boolean indicating whether static routes on this connection are automatically propagate to route tables which this connection propagates to.
   final pulumi.Input<bool> propagateStaticRoutes;
-
   /// Parameter determining whether NVA in spoke vnet is bypassed for traffic with destination in spoke.
   final pulumi.Input<String>? vnetLocalRouteOverrideCriteria;
 
@@ -27,14 +26,9 @@ class StaticRoutesConfigResponse {
 
   factory StaticRoutesConfigResponse.fromMap(Map<String, dynamic> map) {
     return StaticRoutesConfigResponse(
-      propagateStaticRoutes: pulumi.Input.fromValue(
-        map['propagateStaticRoutes'] as bool,
-      ),
-      vnetLocalRouteOverrideCriteria: (() {
-        final guardedValue = map['vnetLocalRouteOverrideCriteria'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      propagateStaticRoutes: pulumi.Input.fromValue(map['propagateStaticRoutes'] as bool),
+      vnetLocalRouteOverrideCriteria: (() { final guardedValue = map['vnetLocalRouteOverrideCriteria']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

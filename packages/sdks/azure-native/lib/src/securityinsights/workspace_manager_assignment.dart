@@ -187,28 +187,20 @@ import 'workspace_manager_assignment_args.dart';
 class WorkspaceManagerAssignment extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Resource Etag.
   late final pulumi.Output<String> etag;
-
   /// List of resources included in this workspace manager assignment
   late final pulumi.Output<List<Map<String, dynamic>>> items;
-
   /// The time the last job associated to this assignment ended at
   late final pulumi.Output<String> lastJobEndTime;
-
   /// State of the last job associated to this assignment
   late final pulumi.Output<String> lastJobProvisioningState;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The resource name of the workspace manager group targeted by the workspace manager assignment
   late final pulumi.Output<String> targetResourceName;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -221,29 +213,18 @@ class WorkspaceManagerAssignment extends pulumi.CustomResource {
     WorkspaceManagerAssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:securityinsights:WorkspaceManagerAssignment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:securityinsights:WorkspaceManagerAssignment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     etag = registerOutput<String>('etag');
     items = registerOutput<List<Map<String, dynamic>>>('items');
     lastJobEndTime = registerOutput<String>('lastJobEndTime');
-    lastJobProvisioningState = registerOutput<String>(
-      'lastJobProvisioningState',
-    );
+    lastJobProvisioningState = registerOutput<String>('lastJobProvisioningState');
     this.name = registerOutput<String>('name');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     targetResourceName = registerOutput<String>('targetResourceName');
     type = registerOutput<String>('type');
   }

@@ -234,21 +234,17 @@ class FirewallRule extends pulumi.CustomResource {
   /// The action to take if this rule matches.
   /// Possible values are: `UNSPECIFIED_ACTION`, `ALLOW`, `DENY`.
   late final pulumi.Output<String> action;
-
   /// An optional string description of this rule.
   late final pulumi.Output<String?> description;
-
   /// A positive integer that defines the order of rule evaluation.
   /// Rules with the lowest priority are evaluated first.
   /// A default rule at priority Int32.MaxValue matches all IPv4 and
   /// IPv6 traffic when no previous rule matches. Only the action of
   /// this rule can be modified by the user.
   late final pulumi.Output<int?> priority;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// IP address or range, defined using CIDR notation, of requests that this rule applies to.
   late final pulumi.Output<String> sourceRange;
 
@@ -261,11 +257,11 @@ class FirewallRule extends pulumi.CustomResource {
     FirewallRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:appengine/firewallRule:FirewallRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:appengine/firewallRule:FirewallRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     action = registerOutput<String>('action');
     description = registerOutput<String?>('description');
     priority = registerOutput<int?>('priority');
@@ -291,11 +287,11 @@ class FirewallRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:appengine/firewallRule:FirewallRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:appengine/firewallRule:FirewallRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     action = registerOutput<String>('action');
     description = registerOutput<String?>('description');
     priority = registerOutput<int?>('priority');

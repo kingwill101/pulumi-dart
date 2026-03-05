@@ -9,22 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DefaultPrivilegesArgs {
   /// The database to grant default privileges for this role.
   final pulumi.Input<String> database;
-
   /// The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, routine, type, schema).
   final pulumi.Input<String> objectType;
-
   /// Specifies the role that creates objects for which the default privileges will be applied.
   final pulumi.Input<String> owner;
-
   /// List of privileges (e.g., SELECT, INSERT, UPDATE, DELETE) to grant on new objects created by the owner. An empty list could be provided to revoke all default privileges for this role.
   final pulumi.Input<List<String>> privileges;
-
   /// The role that will automatically be granted the specified privileges on new objects created by the owner.
   final pulumi.Input<String> role;
-
   /// The database schema to set default privileges for this role.
   final pulumi.Input<String>? schema;
-
   /// Permit the grant recipient to grant it to others
   final pulumi.Input<bool>? withGrantOption;
 
@@ -63,20 +57,11 @@ class DefaultPrivilegesArgs {
       database: pulumi.Input.fromValue(map['database'] as String),
       objectType: pulumi.Input.fromValue(map['objectType'] as String),
       owner: pulumi.Input.fromValue(map['owner'] as String),
-      privileges: pulumi.Input.fromValue(
-        (map['privileges'] as List).cast<String>(),
-      ),
+      privileges: pulumi.Input.fromValue((map['privileges'] as List).cast<String>()),
       role: pulumi.Input.fromValue(map['role'] as String),
-      schema: (() {
-        final guardedValue = map['schema'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      withGrantOption: (() {
-        final guardedValue = map['withGrantOption'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      schema: (() { final guardedValue = map['schema']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      withGrantOption: (() { final guardedValue = map['withGrantOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

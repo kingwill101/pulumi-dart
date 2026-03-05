@@ -29,16 +29,13 @@ class AutonomousDatabaseLongTermBackupSchedule {
     };
   }
 
-  factory AutonomousDatabaseLongTermBackupSchedule.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AutonomousDatabaseLongTermBackupSchedule.fromMap(Map<String, dynamic> map) {
     return AutonomousDatabaseLongTermBackupSchedule(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
       repeatCadence: pulumi.Input.fromValue(map['repeatCadence'] as String),
-      retentionPeriodInDays: pulumi.Input.fromValue(
-        map['retentionPeriodInDays'] as int,
-      ),
+      retentionPeriodInDays: pulumi.Input.fromValue(map['retentionPeriodInDays'] as int),
       timeOfBackup: pulumi.Input.fromValue(map['timeOfBackup'] as String),
     );
   }
 }
+

@@ -13,14 +13,15 @@ class InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'onHealthCheck': onHealthCheck};
+    return <String, dynamic>{
+      'onHealthCheck': onHealthCheck,
+    };
   }
 
-  factory InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersResponse.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersResponse(
       onHealthCheck: pulumi.Input.fromValue(map['onHealthCheck'] as String),
     );
   }
 }
+

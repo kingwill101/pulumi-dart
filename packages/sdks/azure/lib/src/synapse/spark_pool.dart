@@ -470,39 +470,30 @@ import 'spark_pool_state.dart';
 class SparkPool extends pulumi.CustomResource {
   /// An `auto_pause` block as defined below.
   late final pulumi.Output<SparkPoolAutoPause?> autoPause;
-
   /// An `auto_scale` block as defined below. Exactly one of `node_count` or `auto_scale` must be specified.
   late final pulumi.Output<SparkPoolAutoScale?> autoScale;
-
   /// The cache size in the Spark Pool.
   late final pulumi.Output<int?> cacheSize;
-
   /// Indicates whether compute isolation is enabled or not. Defaults to `false`.
   late final pulumi.Output<bool?> computeIsolationEnabled;
   late final pulumi.Output<bool?> dynamicExecutorAllocationEnabled;
   late final pulumi.Output<SparkPoolLibraryRequirement?> libraryRequirement;
   late final pulumi.Output<int?> maxExecutors;
   late final pulumi.Output<int?> minExecutors;
-
   /// The name which should be used for this Synapse Spark Pool. Changing this forces a new Synapse Spark Pool to be created.
   late final pulumi.Output<String> name;
-
   /// The number of nodes in the Spark Pool. Exactly one of `node_count` or `auto_scale` must be specified.
   late final pulumi.Output<int> nodeCount;
-
   /// The level of node in the Spark Pool. Possible values are `Small`, `Medium`, `Large`, `None`, `XLarge`, `XXLarge` and `XXXLarge`.
   late final pulumi.Output<String> nodeSize;
-
   /// The kind of nodes that the Spark Pool provides. Possible values are `HardwareAcceleratedFPGA`, `HardwareAcceleratedGPU`, `MemoryOptimized`, and `None`.
   late final pulumi.Output<String> nodeSizeFamily;
   late final pulumi.Output<bool?> sessionLevelPackagesEnabled;
   late final pulumi.Output<SparkPoolSparkConfig?> sparkConfig;
   late final pulumi.Output<String?> sparkEventsFolder;
   late final pulumi.Output<String?> sparkLogFolder;
-
   /// The Apache Spark version. Possible values are `3.4` and `3.5`.
   late final pulumi.Output<String> sparkVersion;
-
   /// The ID of the Synapse Workspace where the Synapse Spark Pool should exist. Changing this forces a new Synapse Spark Pool to be created.
   late final pulumi.Output<String> synapseWorkspaceId;
   late final pulumi.Output<Map<String, String>?> tags;
@@ -516,65 +507,25 @@ class SparkPool extends pulumi.CustomResource {
     SparkPoolArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:synapse/sparkPool:SparkPool',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    autoPause = registerOutput<SparkPoolAutoPause?>(
-      'autoPause',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SparkPoolAutoPause.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    autoScale = registerOutput<SparkPoolAutoScale?>(
-      'autoScale',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SparkPoolAutoScale.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:synapse/sparkPool:SparkPool',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    autoPause = registerOutput<SparkPoolAutoPause?>('autoPause', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SparkPoolAutoPause.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    autoScale = registerOutput<SparkPoolAutoScale?>('autoScale', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SparkPoolAutoScale.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cacheSize = registerOutput<int?>('cacheSize');
     computeIsolationEnabled = registerOutput<bool?>('computeIsolationEnabled');
-    dynamicExecutorAllocationEnabled = registerOutput<bool?>(
-      'dynamicExecutorAllocationEnabled',
-    );
-    libraryRequirement = registerOutput<SparkPoolLibraryRequirement?>(
-      'libraryRequirement',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SparkPoolLibraryRequirement.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    dynamicExecutorAllocationEnabled = registerOutput<bool?>('dynamicExecutorAllocationEnabled');
+    libraryRequirement = registerOutput<SparkPoolLibraryRequirement?>('libraryRequirement', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SparkPoolLibraryRequirement.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     maxExecutors = registerOutput<int?>('maxExecutors');
     minExecutors = registerOutput<int?>('minExecutors');
     this.name = registerOutput<String>('name');
     nodeCount = registerOutput<int>('nodeCount');
     nodeSize = registerOutput<String>('nodeSize');
     nodeSizeFamily = registerOutput<String>('nodeSizeFamily');
-    sessionLevelPackagesEnabled = registerOutput<bool?>(
-      'sessionLevelPackagesEnabled',
-    );
-    sparkConfig = registerOutput<SparkPoolSparkConfig?>(
-      'sparkConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SparkPoolSparkConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sessionLevelPackagesEnabled = registerOutput<bool?>('sessionLevelPackagesEnabled');
+    sparkConfig = registerOutput<SparkPoolSparkConfig?>('sparkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SparkPoolSparkConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sparkEventsFolder = registerOutput<String?>('sparkEventsFolder');
     sparkLogFolder = registerOutput<String?>('sparkLogFolder');
     sparkVersion = registerOutput<String>('sparkVersion');
@@ -600,65 +551,25 @@ class SparkPool extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:synapse/sparkPool:SparkPool',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    autoPause = registerOutput<SparkPoolAutoPause?>(
-      'autoPause',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SparkPoolAutoPause.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    autoScale = registerOutput<SparkPoolAutoScale?>(
-      'autoScale',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SparkPoolAutoScale.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:synapse/sparkPool:SparkPool',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    autoPause = registerOutput<SparkPoolAutoPause?>('autoPause', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SparkPoolAutoPause.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    autoScale = registerOutput<SparkPoolAutoScale?>('autoScale', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SparkPoolAutoScale.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cacheSize = registerOutput<int?>('cacheSize');
     computeIsolationEnabled = registerOutput<bool?>('computeIsolationEnabled');
-    dynamicExecutorAllocationEnabled = registerOutput<bool?>(
-      'dynamicExecutorAllocationEnabled',
-    );
-    libraryRequirement = registerOutput<SparkPoolLibraryRequirement?>(
-      'libraryRequirement',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SparkPoolLibraryRequirement.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    dynamicExecutorAllocationEnabled = registerOutput<bool?>('dynamicExecutorAllocationEnabled');
+    libraryRequirement = registerOutput<SparkPoolLibraryRequirement?>('libraryRequirement', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SparkPoolLibraryRequirement.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     maxExecutors = registerOutput<int?>('maxExecutors');
     minExecutors = registerOutput<int?>('minExecutors');
     this.name = registerOutput<String>('name');
     nodeCount = registerOutput<int>('nodeCount');
     nodeSize = registerOutput<String>('nodeSize');
     nodeSizeFamily = registerOutput<String>('nodeSizeFamily');
-    sessionLevelPackagesEnabled = registerOutput<bool?>(
-      'sessionLevelPackagesEnabled',
-    );
-    sparkConfig = registerOutput<SparkPoolSparkConfig?>(
-      'sparkConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SparkPoolSparkConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sessionLevelPackagesEnabled = registerOutput<bool?>('sessionLevelPackagesEnabled');
+    sparkConfig = registerOutput<SparkPoolSparkConfig?>('sparkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SparkPoolSparkConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sparkEventsFolder = registerOutput<String?>('sparkEventsFolder');
     sparkLogFolder = registerOutput<String?>('sparkLogFolder');
     sparkVersion = registerOutput<String>('sparkVersion');

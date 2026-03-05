@@ -22,3 +22,4 @@ enum LegacyOperation {
     throw ArgumentError('Unknown LegacyOperation value: $value');
   }
 }
+

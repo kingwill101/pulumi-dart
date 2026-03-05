@@ -149,13 +149,10 @@ import 'custom_line_state.dart';
 class CustomLine extends pulumi.CustomResource {
   /// The name of the Custom Line.
   late final pulumi.Output<String> customLineName;
-
   /// The Domain name.
   late final pulumi.Output<String> domainName;
-
   /// The IP segment list. See `ip_segment_list` below for details.
   late final pulumi.Output<List<Map<String, dynamic>>> ipSegmentLists;
-
   /// The lang.
   late final pulumi.Output<String?> lang;
 
@@ -168,16 +165,14 @@ class CustomLine extends pulumi.CustomResource {
     CustomLineArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dns/customLine:CustomLine',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dns/customLine:CustomLine',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     customLineName = registerOutput<String>('customLineName');
     domainName = registerOutput<String>('domainName');
-    ipSegmentLists = registerOutput<List<Map<String, dynamic>>>(
-      'ipSegmentLists',
-    );
+    ipSegmentLists = registerOutput<List<Map<String, dynamic>>>('ipSegmentLists');
     lang = registerOutput<String?>('lang');
   }
 
@@ -199,16 +194,14 @@ class CustomLine extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dns/customLine:CustomLine',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dns/customLine:CustomLine',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     customLineName = registerOutput<String>('customLineName');
     domainName = registerOutput<String>('domainName');
-    ipSegmentLists = registerOutput<List<Map<String, dynamic>>>(
-      'ipSegmentLists',
-    );
+    ipSegmentLists = registerOutput<List<Map<String, dynamic>>>('ipSegmentLists');
     lang = registerOutput<String?>('lang');
   }
 }

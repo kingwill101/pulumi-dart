@@ -15,3 +15,4 @@ enum PrivateLinkState {
     throw ArgumentError('Unknown PrivateLinkState value: $value');
   }
 }
+

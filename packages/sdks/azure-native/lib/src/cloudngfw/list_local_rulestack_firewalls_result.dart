@@ -1,30 +1,33 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by listLocalRulestackFirewalls.
 class ListLocalRulestackFirewallsResult {
   /// next link
   final String? nextLink;
-
   /// firewalls list
   final List<String> value;
 
   /// Creates a new [ListLocalRulestackFirewallsResult].
   /// [nextLink] next link
   /// [value] firewalls list
-  ListLocalRulestackFirewallsResult({this.nextLink, required this.value});
+  ListLocalRulestackFirewallsResult({
+    this.nextLink,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'nextLink': ?nextLink, 'value': value};
+    return <String, dynamic>{
+      'nextLink': ?nextLink,
+      'value': value,
+    };
   }
 
   factory ListLocalRulestackFirewallsResult.fromMap(Map<String, dynamic> map) {
     return ListLocalRulestackFirewallsResult(
-      nextLink: (() {
-        final guardedValue = map['nextLink'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nextLink: (() { final guardedValue = map['nextLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
       value: (map['value'] as List).cast<String>(),
     );
   }
 }
+

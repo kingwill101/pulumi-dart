@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourcePolicyGroupPlacementPolicyResponseComputeBeta {
   /// The number of availability domains to spread instances across. If two instances are in different availability domain, they are not in the same low latency network.
   final pulumi.Input<int> availabilityDomainCount;
-
   /// Specifies network collocation
   final pulumi.Input<String> collocation;
-
   /// Specifies the number of max logical switches.
   final pulumi.Input<int> maxDistance;
-
   /// Specifies the number of slices in a multislice workload.
   final pulumi.Input<int> sliceCount;
-
   /// Specifies the shape of the TPU slice
   final pulumi.Input<String> tpuTopology;
-
   /// Number of VMs in this placement group. Google does not recommend that you use this field unless you use a compact policy and you want your policy to work only if it contains this exact number of VMs.
   final pulumi.Input<int> vmCount;
 
@@ -49,13 +44,9 @@ class ResourcePolicyGroupPlacementPolicyResponseComputeBeta {
     };
   }
 
-  factory ResourcePolicyGroupPlacementPolicyResponseComputeBeta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResourcePolicyGroupPlacementPolicyResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyGroupPlacementPolicyResponseComputeBeta(
-      availabilityDomainCount: pulumi.Input.fromValue(
-        map['availabilityDomainCount'] as int,
-      ),
+      availabilityDomainCount: pulumi.Input.fromValue(map['availabilityDomainCount'] as int),
       collocation: pulumi.Input.fromValue(map['collocation'] as String),
       maxDistance: pulumi.Input.fromValue(map['maxDistance'] as int),
       sliceCount: pulumi.Input.fromValue(map['sliceCount'] as int),
@@ -64,3 +55,4 @@ class ResourcePolicyGroupPlacementPolicyResponseComputeBeta {
     );
   }
 }
+

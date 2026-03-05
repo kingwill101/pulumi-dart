@@ -15,3 +15,4 @@ enum MultiSelect {
     throw ArgumentError('Unknown MultiSelect value: $value');
   }
 }
+

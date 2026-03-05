@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getProfileSupportedOptimizationTypes.
 class GetProfileSupportedOptimizationTypesResult {
   /// Supported optimization types for a profile.
@@ -17,12 +18,10 @@ class GetProfileSupportedOptimizationTypesResult {
     };
   }
 
-  factory GetProfileSupportedOptimizationTypesResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetProfileSupportedOptimizationTypesResult.fromMap(Map<String, dynamic> map) {
     return GetProfileSupportedOptimizationTypesResult(
-      supportedOptimizationTypes: (map['supportedOptimizationTypes'] as List)
-          .cast<String>(),
+      supportedOptimizationTypes: (map['supportedOptimizationTypes'] as List).cast<String>(),
     );
   }
 }
+

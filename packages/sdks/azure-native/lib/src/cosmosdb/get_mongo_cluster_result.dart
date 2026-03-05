@@ -8,43 +8,30 @@ import 'system_data_response.dart';
 class GetMongoClusterResult {
   /// The administrator's login for the mongo cluster.
   final String? administratorLogin;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// A status of the mongo cluster.
   final String clusterStatus;
-
   /// The default mongo connection string for the cluster.
   final String connectionString;
-
   /// Earliest restore timestamp in UTC ISO8601 format.
   final String earliestRestoreTime;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// The geo-location where the resource lives
   final String location;
-
   /// The name of the resource
   final String name;
-
   /// The list of node group specs in the cluster.
   final List<NodeGroupSpecResponse>? nodeGroupSpecs;
-
   /// A provisioning state of the mongo cluster.
   final String provisioningState;
-
   /// The Mongo DB server version. Defaults to the latest available version if not specified.
   final String? serverVersion;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -90,14 +77,7 @@ class GetMongoClusterResult {
       'id': id,
       'location': location,
       'name': name,
-      'nodeGroupSpecs': ?(() {
-        final guardedValue = nodeGroupSpecs;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          NodeGroupSpecResponse,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'nodeGroupSpecs': ?(() { final guardedValue = nodeGroupSpecs; if (guardedValue == null) return null; return pulumi.Input.encodeList<NodeGroupSpecResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'provisioningState': provisioningState,
       'serverVersion': ?serverVersion,
       'systemData': systemData.toMap(),
@@ -108,11 +88,7 @@ class GetMongoClusterResult {
 
   factory GetMongoClusterResult.fromMap(Map<String, dynamic> map) {
     return GetMongoClusterResult(
-      administratorLogin: (() {
-        final guardedValue = map['administratorLogin'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      administratorLogin: (() { final guardedValue = map['administratorLogin']; if (guardedValue == null) return null; return guardedValue as String; })(),
       azureApiVersion: map['azureApiVersion'] as String,
       clusterStatus: map['clusterStatus'] as String,
       connectionString: map['connectionString'] as String,
@@ -120,31 +96,13 @@ class GetMongoClusterResult {
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      nodeGroupSpecs: (() {
-        final guardedValue = map['nodeGroupSpecs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<NodeGroupSpecResponse>(
-          guardedValue,
-          (value) => NodeGroupSpecResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      nodeGroupSpecs: (() { final guardedValue = map['nodeGroupSpecs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<NodeGroupSpecResponse>(guardedValue, (value) => NodeGroupSpecResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       provisioningState: map['provisioningState'] as String,
-      serverVersion: (() {
-        final guardedValue = map['serverVersion'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      serverVersion: (() { final guardedValue = map['serverVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

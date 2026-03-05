@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProductApiArgs {
   /// The name of the API Management Service. Changing this forces a new resource to be created.
   final pulumi.Input<String> apiManagementName;
-
   /// The Name of the API Management API within the API Management Service. Changing this forces a new resource to be created.
   final pulumi.Input<String> apiName;
-
   /// The ID of the API Management Product within the API Management Service. Changing this forces a new resource to be created.
   final pulumi.Input<String> productId;
-
   /// The name of the Resource Group in which the API Management Service exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
 
@@ -42,14 +39,11 @@ class ProductApiArgs {
 
   factory ProductApiArgs.fromMap(Map<String, dynamic> map) {
     return ProductApiArgs(
-      apiManagementName: pulumi.Input.fromValue(
-        map['apiManagementName'] as String,
-      ),
+      apiManagementName: pulumi.Input.fromValue(map['apiManagementName'] as String),
       apiName: pulumi.Input.fromValue(map['apiName'] as String),
       productId: pulumi.Input.fromValue(map['productId'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

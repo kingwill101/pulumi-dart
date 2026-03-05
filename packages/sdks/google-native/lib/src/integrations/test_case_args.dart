@@ -12,47 +12,32 @@ import 'test_case_database_persistence_policy.dart';
 class TestCaseArgs {
   /// Auto-generated.
   final pulumi.Input<String>? createTime;
-
   /// Optional. The creator's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
   final pulumi.Input<String>? creatorEmail;
-
   /// Optional. Various policies for how to persist the test execution info including execution info, execution export info, execution metadata index and execution param index..
-  final pulumi.Input<TestCaseDatabasePersistencePolicy>?
-  databasePersistencePolicy;
-
+  final pulumi.Input<TestCaseDatabasePersistencePolicy>? databasePersistencePolicy;
   /// Optional. Description of the test case.
   final pulumi.Input<String>? description;
-
   /// The display name of test case.
   final pulumi.Input<String> displayName;
   final pulumi.Input<String> integrationId;
-
   /// The last modifer's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
   final pulumi.Input<String>? lastModifierEmail;
   final pulumi.Input<String>? location;
-
   /// Optional. The edit lock holder's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
   final pulumi.Input<String>? lockHolderEmail;
   final pulumi.Input<String>? project;
-
   /// Required. Required
   final pulumi.Input<String> testCaseId;
-
   /// Optional. Parameters that are expected to be passed to the test case when the test case is triggered. This gives the user the ability to provide default values. This should include all the output variables of the trigger as input variables.
-  final pulumi.Input<List<GoogleCloudIntegrationsV1alphaIntegrationParameter>>?
-  testInputParameters;
-
+  final pulumi.Input<List<GoogleCloudIntegrationsV1alphaIntegrationParameter>>? testInputParameters;
   /// Optional. However, the test case doesn't mock or assert anything without test_task_configs.
-  final pulumi.Input<List<GoogleCloudIntegrationsV1alphaTestTaskConfig>>?
-  testTaskConfigs;
-
+  final pulumi.Input<List<GoogleCloudIntegrationsV1alphaTestTaskConfig>>? testTaskConfigs;
   /// This defines the trigger ID in workflow which is considered to be executed as starting point of the test case
   final pulumi.Input<String> triggerId;
-
   /// Auto-generated.
   final pulumi.Input<String>? updateTime;
   final pulumi.Input<String> versionId;
-
   /// ID of the workflow with which this test case is associated
   final pulumi.Input<String>? workflowId;
 
@@ -98,11 +83,7 @@ class TestCaseArgs {
     return <String, dynamic>{
       'createTime': ?createTime,
       'creatorEmail': ?creatorEmail,
-      'databasePersistencePolicy':
-          ?pulumi.Input.mapOptionalInputValue<
-            TestCaseDatabasePersistencePolicy,
-            String
-          >(databasePersistencePolicy, (value) => value.wireValue),
+      'databasePersistencePolicy': ?pulumi.Input.mapOptionalInputValue<TestCaseDatabasePersistencePolicy, String>(databasePersistencePolicy, (value) => value.wireValue),
       'description': ?description,
       'displayName': displayName,
       'integrationId': integrationId,
@@ -111,30 +92,8 @@ class TestCaseArgs {
       'lockHolderEmail': ?lockHolderEmail,
       'project': ?project,
       'testCaseId': testCaseId,
-      'testInputParameters':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GoogleCloudIntegrationsV1alphaIntegrationParameter>,
-            List<Map<String, dynamic>>
-          >(
-            testInputParameters,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GoogleCloudIntegrationsV1alphaIntegrationParameter,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'testTaskConfigs':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GoogleCloudIntegrationsV1alphaTestTaskConfig>,
-            List<Map<String, dynamic>>
-          >(
-            testTaskConfigs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GoogleCloudIntegrationsV1alphaTestTaskConfig,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'testInputParameters': ?pulumi.Input.mapOptionalInputValue<List<GoogleCloudIntegrationsV1alphaIntegrationParameter>, List<Map<String, dynamic>>>(testInputParameters, (value) => pulumi.Input.encodeList<GoogleCloudIntegrationsV1alphaIntegrationParameter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'testTaskConfigs': ?pulumi.Input.mapOptionalInputValue<List<GoogleCloudIntegrationsV1alphaTestTaskConfig>, List<Map<String, dynamic>>>(testTaskConfigs, (value) => pulumi.Input.encodeList<GoogleCloudIntegrationsV1alphaTestTaskConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'triggerId': triggerId,
       'updateTime': ?updateTime,
       'versionId': versionId,
@@ -144,90 +103,24 @@ class TestCaseArgs {
 
   factory TestCaseArgs.fromMap(Map<String, dynamic> map) {
     return TestCaseArgs(
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      creatorEmail: (() {
-        final guardedValue = map['creatorEmail'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      databasePersistencePolicy: (() {
-        final guardedValue = map['databasePersistencePolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          TestCaseDatabasePersistencePolicy.fromValue(guardedValue as String),
-        );
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      creatorEmail: (() { final guardedValue = map['creatorEmail']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      databasePersistencePolicy: (() { final guardedValue = map['databasePersistencePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TestCaseDatabasePersistencePolicy.fromValue(guardedValue as String)); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       integrationId: pulumi.Input.fromValue(map['integrationId'] as String),
-      lastModifierEmail: (() {
-        final guardedValue = map['lastModifierEmail'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      lockHolderEmail: (() {
-        final guardedValue = map['lockHolderEmail'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      lastModifierEmail: (() { final guardedValue = map['lastModifierEmail']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      lockHolderEmail: (() { final guardedValue = map['lockHolderEmail']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       testCaseId: pulumi.Input.fromValue(map['testCaseId'] as String),
-      testInputParameters: (() {
-        final guardedValue = map['testInputParameters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            GoogleCloudIntegrationsV1alphaIntegrationParameter
-          >(
-            guardedValue,
-            (value) =>
-                GoogleCloudIntegrationsV1alphaIntegrationParameter.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
-      testTaskConfigs: (() {
-        final guardedValue = map['testTaskConfigs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GoogleCloudIntegrationsV1alphaTestTaskConfig>(
-            guardedValue,
-            (value) => GoogleCloudIntegrationsV1alphaTestTaskConfig.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      testInputParameters: (() { final guardedValue = map['testInputParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudIntegrationsV1alphaIntegrationParameter>(guardedValue, (value) => GoogleCloudIntegrationsV1alphaIntegrationParameter.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      testTaskConfigs: (() { final guardedValue = map['testTaskConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudIntegrationsV1alphaTestTaskConfig>(guardedValue, (value) => GoogleCloudIntegrationsV1alphaTestTaskConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
       triggerId: pulumi.Input.fromValue(map['triggerId'] as String),
-      updateTime: (() {
-        final guardedValue = map['updateTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       versionId: pulumi.Input.fromValue(map['versionId'] as String),
-      workflowId: (() {
-        final guardedValue = map['workflowId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      workflowId: (() { final guardedValue = map['workflowId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

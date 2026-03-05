@@ -8,10 +8,8 @@ import 'sql_file_share_response.dart';
 class SourceLocationResponse {
   /// Source Azure Blob.
   final pulumi.Input<AzureBlobResponse>? azureBlob;
-
   /// Source File share.
   final pulumi.Input<SqlFileShareResponse>? fileShare;
-
   /// Backup storage Type.
   final pulumi.Input<String> fileStorageType;
 
@@ -27,41 +25,18 @@ class SourceLocationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureBlob':
-          ?pulumi.Input.mapOptionalInputValue<
-            AzureBlobResponse,
-            Map<String, dynamic>
-          >(azureBlob, (value) => value.toMap()),
-      'fileShare':
-          ?pulumi.Input.mapOptionalInputValue<
-            SqlFileShareResponse,
-            Map<String, dynamic>
-          >(fileShare, (value) => value.toMap()),
+      'azureBlob': ?pulumi.Input.mapOptionalInputValue<AzureBlobResponse, Map<String, dynamic>>(azureBlob, (value) => value.toMap()),
+      'fileShare': ?pulumi.Input.mapOptionalInputValue<SqlFileShareResponse, Map<String, dynamic>>(fileShare, (value) => value.toMap()),
       'fileStorageType': fileStorageType,
     };
   }
 
   factory SourceLocationResponse.fromMap(Map<String, dynamic> map) {
     return SourceLocationResponse(
-      azureBlob: (() {
-        final guardedValue = map['azureBlob'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AzureBlobResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      fileShare: (() {
-        final guardedValue = map['fileShare'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SqlFileShareResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      azureBlob: (() { final guardedValue = map['azureBlob']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureBlobResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      fileShare: (() { final guardedValue = map['fileShare']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SqlFileShareResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       fileStorageType: pulumi.Input.fromValue(map['fileStorageType'] as String),
     );
   }
 }
+

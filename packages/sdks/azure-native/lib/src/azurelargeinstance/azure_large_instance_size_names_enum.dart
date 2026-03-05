@@ -55,8 +55,7 @@ enum AzureLargeInstanceSizeNamesEnum {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown AzureLargeInstanceSizeNamesEnum value: $value',
-    );
+    throw ArgumentError('Unknown AzureLargeInstanceSizeNamesEnum value: $value');
   }
 }
+

@@ -5,25 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetUsersUserAddress {
   /// Country that this address is in.
   final pulumi.Input<String> country;
-
   /// Name that is typically displayed when the name is shown for display.
   final pulumi.Input<String> formatted;
-
   /// Address locality.
   final pulumi.Input<String> locality;
-
   /// Postal code of the address.
   final pulumi.Input<String> postalCode;
-
   /// When `true`, this is the primary phone number associated with the user.
   final pulumi.Input<bool> primary;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String> region;
-
   /// Street of the address.
   final pulumi.Input<String> streetAddress;
-
   /// Type of phone number.
   final pulumi.Input<String> type;
 
@@ -73,3 +66,4 @@ class GetUsersUserAddress {
     );
   }
 }
+

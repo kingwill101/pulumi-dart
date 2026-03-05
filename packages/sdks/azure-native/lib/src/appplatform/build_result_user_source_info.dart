@@ -6,11 +6,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BuildResultUserSourceInfo {
   /// Resource id of an existing succeeded build result under the same Spring instance.
   final pulumi.Input<String>? buildResultId;
-
   /// Type of the source uploaded
   /// Expected value is 'BuildResult'.
   final pulumi.Input<String> type;
-
   /// Version of the source
   final pulumi.Input<String>? version;
 
@@ -34,17 +32,10 @@ class BuildResultUserSourceInfo {
 
   factory BuildResultUserSourceInfo.fromMap(Map<String, dynamic> map) {
     return BuildResultUserSourceInfo(
-      buildResultId: (() {
-        final guardedValue = map['buildResultId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      buildResultId: (() { final guardedValue = map['buildResultId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

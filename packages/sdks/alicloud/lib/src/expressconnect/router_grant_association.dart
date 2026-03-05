@@ -211,21 +211,16 @@ import 'router_grant_association_state.dart';
 class RouterGrantAssociation extends pulumi.CustomResource {
   /// The ID of the associated Leased Line Gateway instance.
   late final pulumi.Output<String> ecrId;
-
   /// The ID of the Alibaba Cloud account (primary account) to which the leased line gateway instance is authorized.
   late final pulumi.Output<int> ecrOwnerAliUid;
-
   /// The ID of the network instance.
   late final pulumi.Output<String> instanceId;
-
   /// The ID of the region where the authorized network instance is located.
   late final pulumi.Output<String> instanceRegionId;
-
   /// The type of the network instance. Value:
   /// - `VBR`: the VBR instance.
   /// - `VPC`: VPC instance.
   late final pulumi.Output<String> instanceType;
-
   /// The status of the resource
   late final pulumi.Output<String> status;
 
@@ -238,11 +233,11 @@ class RouterGrantAssociation extends pulumi.CustomResource {
     RouterGrantAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:expressconnect/routerGrantAssociation:RouterGrantAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:expressconnect/routerGrantAssociation:RouterGrantAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     ecrId = registerOutput<String>('ecrId');
     ecrOwnerAliUid = registerOutput<int>('ecrOwnerAliUid');
     instanceId = registerOutput<String>('instanceId');
@@ -269,11 +264,11 @@ class RouterGrantAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:expressconnect/routerGrantAssociation:RouterGrantAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:expressconnect/routerGrantAssociation:RouterGrantAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     ecrId = registerOutput<String>('ecrId');
     ecrOwnerAliUid = registerOutput<int>('ecrOwnerAliUid');
     instanceId = registerOutput<String>('instanceId');

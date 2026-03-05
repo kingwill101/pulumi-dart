@@ -7,27 +7,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectivityCriterion {
   /// Gets or sets the type of connectivity.
   final pulumi.Input<String> type;
-
   /// Gets or sets the queries for checking connectivity.
   final pulumi.Input<List<String>>? value;
 
   /// Creates a new [ConnectivityCriterion].
   /// [type] Gets or sets the type of connectivity.
   /// [value] Gets or sets the queries for checking connectivity.
-  ConnectivityCriterion({required this.type, this.value});
+  ConnectivityCriterion({
+    required this.type,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': type, 'value': ?value};
+    return <String, dynamic>{
+      'type': type,
+      'value': ?value,
+    };
   }
 
   factory ConnectivityCriterion.fromMap(Map<String, dynamic> map) {
     return ConnectivityCriterion(
       type: pulumi.Input.fromValue(map['type'] as String),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

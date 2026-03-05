@@ -16,3 +16,4 @@ enum DiagnosticLevel {
     throw ArgumentError('Unknown DiagnosticLevel value: $value');
   }
 }
+

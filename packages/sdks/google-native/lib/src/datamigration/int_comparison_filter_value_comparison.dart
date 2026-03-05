@@ -2,13 +2,9 @@
 enum IntComparisonFilterValueComparison {
   valueComparisonUnspecified("VALUE_COMPARISON_UNSPECIFIED"),
   valueComparisonIfValueSmallerThan("VALUE_COMPARISON_IF_VALUE_SMALLER_THAN"),
-  valueComparisonIfValueSmallerEqualThan(
-    "VALUE_COMPARISON_IF_VALUE_SMALLER_EQUAL_THAN",
-  ),
+  valueComparisonIfValueSmallerEqualThan("VALUE_COMPARISON_IF_VALUE_SMALLER_EQUAL_THAN"),
   valueComparisonIfValueLargerThan("VALUE_COMPARISON_IF_VALUE_LARGER_THAN"),
-  valueComparisonIfValueLargerEqualThan(
-    "VALUE_COMPARISON_IF_VALUE_LARGER_EQUAL_THAN",
-  );
+  valueComparisonIfValueLargerEqualThan("VALUE_COMPARISON_IF_VALUE_LARGER_EQUAL_THAN");
 
   const IntComparisonFilterValueComparison(this.wireValue);
   final String wireValue;
@@ -19,8 +15,7 @@ enum IntComparisonFilterValueComparison {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown IntComparisonFilterValueComparison value: $value',
-    );
+    throw ArgumentError('Unknown IntComparisonFilterValueComparison value: $value');
   }
 }
+

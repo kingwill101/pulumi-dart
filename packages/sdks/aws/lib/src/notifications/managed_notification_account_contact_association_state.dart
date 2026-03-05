@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedNotificationAccountContactAssociationState {
   /// A unique value of an Account Contact Type to associate with the ManagedNotificationConfiguration. Valid values: `ACCOUNT_PRIMARY`, `ACCOUNT_ALTERNATE_BILLING`, `ACCOUNT_ALTERNATE_OPERATIONS`, `ACCOUNT_ALTERNATE_SECURITY`.
   final pulumi.Input<String>? contactIdentifier;
-
   /// ARN of the managed notification configuration to associate the account contact with.
   final pulumi.Input<String>? managedNotificationConfigurationArn;
 
@@ -21,25 +20,15 @@ class ManagedNotificationAccountContactAssociationState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'contactIdentifier': ?contactIdentifier,
-      'managedNotificationConfigurationArn':
-          ?managedNotificationConfigurationArn,
+      'managedNotificationConfigurationArn': ?managedNotificationConfigurationArn,
     };
   }
 
-  factory ManagedNotificationAccountContactAssociationState.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ManagedNotificationAccountContactAssociationState.fromMap(Map<String, dynamic> map) {
     return ManagedNotificationAccountContactAssociationState(
-      contactIdentifier: (() {
-        final guardedValue = map['contactIdentifier'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      managedNotificationConfigurationArn: (() {
-        final guardedValue = map['managedNotificationConfigurationArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      contactIdentifier: (() { final guardedValue = map['contactIdentifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      managedNotificationConfigurationArn: (() { final guardedValue = map['managedNotificationConfigurationArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

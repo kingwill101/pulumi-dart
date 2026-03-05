@@ -18,3 +18,4 @@ enum MigrationStrategy {
     throw ArgumentError('Unknown MigrationStrategy value: $value');
   }
 }
+

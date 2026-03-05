@@ -6,13 +6,10 @@ import 'get_instances_instance.dart';
 /// Result data returned by getInstances.
 class GetInstancesResult {
   final String? domainType;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of instance IDs.
   final List<String> ids;
-
   /// A list of instances. Each element contains the following attributes:
   final List<GetInstancesInstance> instances;
   final String? lang;
@@ -42,11 +39,7 @@ class GetInstancesResult {
       'domainType': ?domainType,
       'id': id,
       'ids': ids,
-      'instances':
-          pulumi.Input.encodeList<GetInstancesInstance, Map<String, dynamic>>(
-            instances,
-            (value) => value.toMap(),
-          ),
+      'instances': pulumi.Input.encodeList<GetInstancesInstance, Map<String, dynamic>>(instances, (value) => value.toMap()),
       'lang': ?lang,
       'outputFile': ?outputFile,
       'userClientIp': ?userClientIp,
@@ -55,34 +48,14 @@ class GetInstancesResult {
 
   factory GetInstancesResult.fromMap(Map<String, dynamic> map) {
     return GetInstancesResult(
-      domainType: (() {
-        final guardedValue = map['domainType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      domainType: (() { final guardedValue = map['domainType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      instances: pulumi.Input.decodeList<GetInstancesInstance>(
-        map['instances']!,
-        (value) => GetInstancesInstance.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      lang: (() {
-        final guardedValue = map['lang'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      userClientIp: (() {
-        final guardedValue = map['userClientIp'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      instances: pulumi.Input.decodeList<GetInstancesInstance>(map['instances']!, (value) => GetInstancesInstance.fromMap((value as Map).cast<String, dynamic>())),
+      lang: (() { final guardedValue = map['lang']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      userClientIp: (() { final guardedValue = map['userClientIp']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

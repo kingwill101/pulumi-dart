@@ -8,10 +8,14 @@ class GetClusterGcsSource {
 
   /// Creates a new [GetClusterGcsSource].
   /// [uris] URIs of the GCS objects to import. Example: gs://bucket1/object1, gs://bucket2/folder2/object2
-  GetClusterGcsSource({required this.uris});
+  GetClusterGcsSource({
+    required this.uris,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'uris': uris};
+    return <String, dynamic>{
+      'uris': uris,
+    };
   }
 
   factory GetClusterGcsSource.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class GetClusterGcsSource {
     );
   }
 }
+

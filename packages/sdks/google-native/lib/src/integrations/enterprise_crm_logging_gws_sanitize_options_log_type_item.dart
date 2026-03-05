@@ -7,17 +7,13 @@ enum EnterpriseCrmLoggingGwsSanitizeOptionsLogTypeItem {
   const EnterpriseCrmLoggingGwsSanitizeOptionsLogTypeItem(this.wireValue);
   final String wireValue;
 
-  static EnterpriseCrmLoggingGwsSanitizeOptionsLogTypeItem fromValue(
-    String value,
-  ) {
-    for (final item
-        in EnterpriseCrmLoggingGwsSanitizeOptionsLogTypeItem.values) {
+  static EnterpriseCrmLoggingGwsSanitizeOptionsLogTypeItem fromValue(String value) {
+    for (final item in EnterpriseCrmLoggingGwsSanitizeOptionsLogTypeItem.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown EnterpriseCrmLoggingGwsSanitizeOptionsLogTypeItem value: $value',
-    );
+    throw ArgumentError('Unknown EnterpriseCrmLoggingGwsSanitizeOptionsLogTypeItem value: $value');
   }
 }
+

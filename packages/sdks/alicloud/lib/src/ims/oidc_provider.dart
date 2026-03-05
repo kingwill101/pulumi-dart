@@ -201,26 +201,19 @@ import 'oidc_provider_state.dart';
 class OidcProvider extends pulumi.CustomResource {
   /// ARN of OIDC identity provider.
   late final pulumi.Output<String> arn;
-
   /// Client ID.
   late final pulumi.Output<List<String>?> clientIds;
-
   /// Creation Time (UTC time).
   late final pulumi.Output<String> createTime;
-
   /// Description of OIDC identity provider.
   late final pulumi.Output<String?> description;
-
   /// The authentication fingerprint of the HTTPS CA certificate.
   late final pulumi.Output<List<String>?> fingerprints;
-
   /// The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.
   /// Unit: hours. Value range: 1~168.
   late final pulumi.Output<int> issuanceLimitTime;
-
   /// The issuer URL of the OIDC identity provider.
   late final pulumi.Output<String> issuerUrl;
-
   /// The name of the OIDC identity provider.
   late final pulumi.Output<String> oidcProviderName;
 
@@ -233,11 +226,11 @@ class OidcProvider extends pulumi.CustomResource {
     OidcProviderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ims/oidcProvider:OidcProvider',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ims/oidcProvider:OidcProvider',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     clientIds = registerOutput<List<String>?>('clientIds');
     createTime = registerOutput<String>('createTime');
@@ -266,11 +259,11 @@ class OidcProvider extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ims/oidcProvider:OidcProvider',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ims/oidcProvider:OidcProvider',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     clientIds = registerOutput<List<String>?>('clientIds');
     createTime = registerOutput<String>('createTime');

@@ -416,21 +416,14 @@ import 'multi_account_delivery_channel_state.dart';
 class MultiAccountDeliveryChannel extends pulumi.CustomResource {
   /// The description of the delivery channel.
   late final pulumi.Output<String> deliveryChannelDescription;
-
   /// The effective scope of the delivery channel. See `delivery_channel_filter` below.
-  late final pulumi.Output<MultiAccountDeliveryChannelDeliveryChannelFilter>
-  deliveryChannelFilter;
-
+  late final pulumi.Output<MultiAccountDeliveryChannelDeliveryChannelFilter> deliveryChannelFilter;
   /// The name of the delivery channel.
   late final pulumi.Output<String> multiAccountDeliveryChannelName;
-
   /// The configurations for delivery of resource configuration change events. See `resource_change_delivery` below.
-  late final pulumi.Output<MultiAccountDeliveryChannelResourceChangeDelivery?>
-  resourceChangeDelivery;
-
+  late final pulumi.Output<MultiAccountDeliveryChannelResourceChangeDelivery?> resourceChangeDelivery;
   /// The configurations for delivery of scheduled resource snapshots. See `resource_snapshot_delivery` below.
-  late final pulumi.Output<MultiAccountDeliveryChannelResourceSnapshotDelivery?>
-  resourceSnapshotDelivery;
+  late final pulumi.Output<MultiAccountDeliveryChannelResourceSnapshotDelivery?> resourceSnapshotDelivery;
 
   /// Creates a new [MultiAccountDeliveryChannel].
   /// [name] The Pulumi resource name.
@@ -441,50 +434,16 @@ class MultiAccountDeliveryChannel extends pulumi.CustomResource {
     MultiAccountDeliveryChannelArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:resourcemanager/multiAccountDeliveryChannel:MultiAccountDeliveryChannel',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    deliveryChannelDescription = registerOutput<String>(
-      'deliveryChannelDescription',
-    );
-    deliveryChannelFilter =
-        registerOutput<MultiAccountDeliveryChannelDeliveryChannelFilter>(
-          'deliveryChannelFilter',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return MultiAccountDeliveryChannelDeliveryChannelFilter.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    multiAccountDeliveryChannelName = registerOutput<String>(
-      'multiAccountDeliveryChannelName',
-    );
-    resourceChangeDelivery =
-        registerOutput<MultiAccountDeliveryChannelResourceChangeDelivery?>(
-          'resourceChangeDelivery',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return MultiAccountDeliveryChannelResourceChangeDelivery.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    resourceSnapshotDelivery =
-        registerOutput<MultiAccountDeliveryChannelResourceSnapshotDelivery?>(
-          'resourceSnapshotDelivery',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return MultiAccountDeliveryChannelResourceSnapshotDelivery.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'alicloud:resourcemanager/multiAccountDeliveryChannel:MultiAccountDeliveryChannel',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    deliveryChannelDescription = registerOutput<String>('deliveryChannelDescription');
+    deliveryChannelFilter = registerOutput<MultiAccountDeliveryChannelDeliveryChannelFilter>('deliveryChannelFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultiAccountDeliveryChannelDeliveryChannelFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    multiAccountDeliveryChannelName = registerOutput<String>('multiAccountDeliveryChannelName');
+    resourceChangeDelivery = registerOutput<MultiAccountDeliveryChannelResourceChangeDelivery?>('resourceChangeDelivery', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultiAccountDeliveryChannelResourceChangeDelivery.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resourceSnapshotDelivery = registerOutput<MultiAccountDeliveryChannelResourceSnapshotDelivery?>('resourceSnapshotDelivery', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultiAccountDeliveryChannelResourceSnapshotDelivery.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [MultiAccountDeliveryChannel] resource's state with the given [name] and [id].
@@ -505,49 +464,15 @@ class MultiAccountDeliveryChannel extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:resourcemanager/multiAccountDeliveryChannel:MultiAccountDeliveryChannel',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    deliveryChannelDescription = registerOutput<String>(
-      'deliveryChannelDescription',
-    );
-    deliveryChannelFilter =
-        registerOutput<MultiAccountDeliveryChannelDeliveryChannelFilter>(
-          'deliveryChannelFilter',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return MultiAccountDeliveryChannelDeliveryChannelFilter.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    multiAccountDeliveryChannelName = registerOutput<String>(
-      'multiAccountDeliveryChannelName',
-    );
-    resourceChangeDelivery =
-        registerOutput<MultiAccountDeliveryChannelResourceChangeDelivery?>(
-          'resourceChangeDelivery',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return MultiAccountDeliveryChannelResourceChangeDelivery.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    resourceSnapshotDelivery =
-        registerOutput<MultiAccountDeliveryChannelResourceSnapshotDelivery?>(
-          'resourceSnapshotDelivery',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return MultiAccountDeliveryChannelResourceSnapshotDelivery.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'alicloud:resourcemanager/multiAccountDeliveryChannel:MultiAccountDeliveryChannel',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    deliveryChannelDescription = registerOutput<String>('deliveryChannelDescription');
+    deliveryChannelFilter = registerOutput<MultiAccountDeliveryChannelDeliveryChannelFilter>('deliveryChannelFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultiAccountDeliveryChannelDeliveryChannelFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    multiAccountDeliveryChannelName = registerOutput<String>('multiAccountDeliveryChannelName');
+    resourceChangeDelivery = registerOutput<MultiAccountDeliveryChannelResourceChangeDelivery?>('resourceChangeDelivery', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultiAccountDeliveryChannelResourceChangeDelivery.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resourceSnapshotDelivery = registerOutput<MultiAccountDeliveryChannelResourceSnapshotDelivery?>('resourceSnapshotDelivery', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultiAccountDeliveryChannelResourceSnapshotDelivery.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

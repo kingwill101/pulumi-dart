@@ -404,58 +404,40 @@ import 'desktop_state.dart';
 class Desktop extends pulumi.CustomResource {
   /// The amount of the Desktop.
   late final pulumi.Output<int?> amount;
-
   /// The auto-pay of the Desktop whether to pay automatically. values: `true`, `false`.
   late final pulumi.Output<bool?> autoPay;
-
   /// The auto-renewal of the Desktop whether to renew automatically. It takes effect only when the parameter ChargeType is set to PrePaid. values: `true`, `false`.
   late final pulumi.Output<bool?> autoRenew;
-
   /// The bundle id of the Desktop.
   late final pulumi.Output<String> bundleId;
-
   /// The desktop name of the Desktop.
   late final pulumi.Output<String?> desktopName;
-
   /// The desktop type of the Desktop.
   late final pulumi.Output<String> desktopType;
-
   /// The desktop end user id of the Desktop.
   late final pulumi.Output<List<String>?> endUserIds;
-
   /// The hostname of the Desktop.
   late final pulumi.Output<String?> hostName;
-
   /// The ID of the Simple Office Site.
   late final pulumi.Output<String> officeSiteId;
-
   /// The payment type of the Desktop. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`.
   late final pulumi.Output<String> paymentType;
-
   /// The period of the Desktop.
   late final pulumi.Output<int?> period;
-
   /// The period unit of the Desktop.
   late final pulumi.Output<String?> periodUnit;
-
   /// The policy group id of the Desktop.
   late final pulumi.Output<String> policyGroupId;
-
   /// The root disk size gib of the Desktop.
   late final pulumi.Output<int?> rootDiskSizeGib;
-
   /// The status of the Desktop. Valid values: `Deleted`, `Expired`, `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`.
   late final pulumi.Output<String> status;
-
   /// The stopped mode of the Desktop.
   late final pulumi.Output<String> stoppedMode;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The user assign mode of the Desktop. Valid values: `ALL`, `PER_USER`. Default to `ALL`.
   late final pulumi.Output<String> userAssignMode;
-
   /// The user disk size gib of the Desktop.
   late final pulumi.Output<int?> userDiskSizeGib;
 
@@ -468,11 +450,11 @@ class Desktop extends pulumi.CustomResource {
     DesktopArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:eds/desktop:Desktop',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:eds/desktop:Desktop',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     amount = registerOutput<int?>('amount');
     autoPay = registerOutput<bool?>('autoPay');
     autoRenew = registerOutput<bool?>('autoRenew');
@@ -512,11 +494,11 @@ class Desktop extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:eds/desktop:Desktop',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:eds/desktop:Desktop',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     amount = registerOutput<int?>('amount');
     autoPay = registerOutput<bool?>('autoPay');
     autoRenew = registerOutput<bool?>('autoRenew');

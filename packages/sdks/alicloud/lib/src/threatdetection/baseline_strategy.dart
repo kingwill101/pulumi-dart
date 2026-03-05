@@ -149,34 +149,26 @@ import 'baseline_strategy_state.dart';
 class BaselineStrategy extends pulumi.CustomResource {
   /// The ID of the baseline check policy.
   late final pulumi.Output<String> baselineStrategyId;
-
   /// Policy name.
   late final pulumi.Output<String> baselineStrategyName;
-
   /// The type of policy. Value:
   /// * **common**: standard policy
   /// * **custom**: custom policy
   late final pulumi.Output<String> customType;
-
   /// The detection period of the policy.
   late final pulumi.Output<int> cycleDays;
-
   /// The detection period of the policy. Value:
   /// * **0**: 0:00~06:00
   /// * **6**: 6:00~12:00
   /// * **12**: 12:00~18:00
   /// * **18**: 18:00~24:00
   late final pulumi.Output<int> cycleStartTime;
-
   /// The baseline check policy execution end time.
   late final pulumi.Output<String> endTime;
-
   /// Detection item subtype.
   late final pulumi.Output<String> riskSubTypeName;
-
   /// The baseline check policy start time.
   late final pulumi.Output<String> startTime;
-
   /// The method of adding assets that take effect from the policy. Value:
   /// * **groupId**: Added by asset group.
   /// * **uuid**: Add by single asset.
@@ -191,11 +183,11 @@ class BaselineStrategy extends pulumi.CustomResource {
     BaselineStrategyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:threatdetection/baselineStrategy:BaselineStrategy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:threatdetection/baselineStrategy:BaselineStrategy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     baselineStrategyId = registerOutput<String>('baselineStrategyId');
     baselineStrategyName = registerOutput<String>('baselineStrategyName');
     customType = registerOutput<String>('customType');
@@ -225,11 +217,11 @@ class BaselineStrategy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:threatdetection/baselineStrategy:BaselineStrategy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:threatdetection/baselineStrategy:BaselineStrategy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     baselineStrategyId = registerOutput<String>('baselineStrategyId');
     baselineStrategyName = registerOutput<String>('baselineStrategyName');
     customType = registerOutput<String>('customType');

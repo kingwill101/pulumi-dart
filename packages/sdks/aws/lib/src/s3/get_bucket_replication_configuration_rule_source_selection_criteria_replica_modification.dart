@@ -12,14 +12,15 @@ class GetBucketReplicationConfigurationRuleSourceSelectionCriteriaReplicaModific
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'status': status};
+    return <String, dynamic>{
+      'status': status,
+    };
   }
 
-  factory GetBucketReplicationConfigurationRuleSourceSelectionCriteriaReplicaModification.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetBucketReplicationConfigurationRuleSourceSelectionCriteriaReplicaModification.fromMap(Map<String, dynamic> map) {
     return GetBucketReplicationConfigurationRuleSourceSelectionCriteriaReplicaModification(
       status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
+

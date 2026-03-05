@@ -5,37 +5,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSnapshotsSnapshot {
   /// The time when the snapshot was created.
   final pulumi.Input<String> createTime;
-
   /// The description of the snapshot.
   final pulumi.Input<String> description;
-
   /// The ID of the cloud desktop to which the snapshot belongs.
   final pulumi.Input<String> desktopId;
-
   /// The ID of the Snapshot.
   final pulumi.Input<String> id;
-
   /// The progress of creating the snapshot.
   final pulumi.Input<String> progress;
-
   /// The remaining time that is required to create the snapshot. Unit: seconds.
   final pulumi.Input<int> remainTime;
-
   /// The ID of the snapshot.
   final pulumi.Input<String> snapshotId;
-
   /// The name of the snapshot.
   final pulumi.Input<String> snapshotName;
-
   /// The type of the snapshot.
   final pulumi.Input<String> snapshotType;
-
   /// The capacity of the source disk. Unit: GiB.
   final pulumi.Input<String> sourceDiskSize;
-
   /// The type of the source disk.
   final pulumi.Input<String> sourceDiskType;
-
   /// The status of the snapshot.
   final pulumi.Input<String> status;
 
@@ -101,3 +90,4 @@ class GetSnapshotsSnapshot {
     );
   }
 }
+

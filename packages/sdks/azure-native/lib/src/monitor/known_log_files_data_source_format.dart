@@ -14,3 +14,4 @@ enum KnownLogFilesDataSourceFormat {
     throw ArgumentError('Unknown KnownLogFilesDataSourceFormat value: $value');
   }
 }
+

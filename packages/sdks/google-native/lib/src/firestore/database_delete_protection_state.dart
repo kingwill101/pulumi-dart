@@ -16,3 +16,4 @@ enum DatabaseDeleteProtectionState {
     throw ArgumentError('Unknown DatabaseDeleteProtectionState value: $value');
   }
 }
+

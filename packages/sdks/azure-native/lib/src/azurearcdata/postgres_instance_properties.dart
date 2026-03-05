@@ -7,16 +7,12 @@ import 'basic_login_information.dart';
 class PostgresInstanceProperties {
   /// The instance admin
   final pulumi.Input<String>? admin;
-
   /// Username and password for basic authentication.
   final pulumi.Input<BasicLoginInformation>? basicLoginInformation;
-
   /// The data controller id
   final pulumi.Input<String>? dataControllerId;
-
   /// The raw kubernetes information
   final pulumi.Input<dynamic>? k8sRaw;
-
   /// Last uploaded date from Kubernetes cluster. Defaults to current date time
   final pulumi.Input<String>? lastUploadedDate;
 
@@ -37,11 +33,7 @@ class PostgresInstanceProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'admin': ?admin,
-      'basicLoginInformation':
-          ?pulumi.Input.mapOptionalInputValue<
-            BasicLoginInformation,
-            Map<String, dynamic>
-          >(basicLoginInformation, (value) => value.toMap()),
+      'basicLoginInformation': ?pulumi.Input.mapOptionalInputValue<BasicLoginInformation, Map<String, dynamic>>(basicLoginInformation, (value) => value.toMap()),
       'dataControllerId': ?dataControllerId,
       'k8sRaw': ?k8sRaw,
       'lastUploadedDate': ?lastUploadedDate,
@@ -50,35 +42,12 @@ class PostgresInstanceProperties {
 
   factory PostgresInstanceProperties.fromMap(Map<String, dynamic> map) {
     return PostgresInstanceProperties(
-      admin: (() {
-        final guardedValue = map['admin'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      basicLoginInformation: (() {
-        final guardedValue = map['basicLoginInformation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BasicLoginInformation.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      dataControllerId: (() {
-        final guardedValue = map['dataControllerId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      k8sRaw: (() {
-        final guardedValue = map['k8sRaw'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      lastUploadedDate: (() {
-        final guardedValue = map['lastUploadedDate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      admin: (() { final guardedValue = map['admin']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      basicLoginInformation: (() { final guardedValue = map['basicLoginInformation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BasicLoginInformation.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      dataControllerId: (() { final guardedValue = map['dataControllerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      k8sRaw: (() { final guardedValue = map['k8sRaw']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      lastUploadedDate: (() { final guardedValue = map['lastUploadedDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DocumentNoteResponseContaineranalysisV1beta1 {
   /// Compliance with the SPDX specification includes populating the SPDX fields therein with data related to such fields ("SPDX-Metadata")
   final pulumi.Input<String> dataLicence;
-
   /// Provide a reference number that can be used to understand how to parse and interpret the rest of the file
   final pulumi.Input<String> spdxVersion;
 
@@ -25,12 +24,11 @@ class DocumentNoteResponseContaineranalysisV1beta1 {
     };
   }
 
-  factory DocumentNoteResponseContaineranalysisV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DocumentNoteResponseContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return DocumentNoteResponseContaineranalysisV1beta1(
       dataLicence: pulumi.Input.fromValue(map['dataLicence'] as String),
       spdxVersion: pulumi.Input.fromValue(map['spdxVersion'] as String),
     );
   }
 }
+

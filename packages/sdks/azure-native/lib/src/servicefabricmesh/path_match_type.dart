@@ -14,3 +14,4 @@ enum PathMatchType {
     throw ArgumentError('Unknown PathMatchType value: $value');
   }
 }
+

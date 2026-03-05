@@ -226,29 +226,22 @@ import 'api_version_set_state.dart';
 class ApiVersionSet extends pulumi.CustomResource {
   /// The name of the API Management Service in which the API Version Set should exist. May only contain alphanumeric characters and dashes up to 50 characters in length. Changing this forces a new resource to be created.
   late final pulumi.Output<String> apiManagementName;
-
   /// The description of API Version Set.
   late final pulumi.Output<String?> description;
-
   /// The display name of this API Version Set.
   late final pulumi.Output<String> displayName;
-
   /// The name of the API Version Set. May only contain alphanumeric characters and dashes up to 80 characters in length. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the Resource Group in which the parent API Management Service exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The name of the Header which should be read from Inbound Requests which defines the API Version.
   ///
   /// &gt; **Note:** This must be specified when `versioning_scheme` is set to `Header`.
   late final pulumi.Output<String?> versionHeaderName;
-
   /// The name of the Query String which should be read from Inbound Requests which defines the API Version.
   ///
   /// &gt; **Note:** This must be specified when `versioning_scheme` is set to `Query`.
   late final pulumi.Output<String?> versionQueryName;
-
   /// Specifies where in an Inbound HTTP Request that the API Version should be read from. Possible values are `Header`, `Query` and `Segment`.
   late final pulumi.Output<String> versioningScheme;
 
@@ -261,11 +254,11 @@ class ApiVersionSet extends pulumi.CustomResource {
     ApiVersionSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/apiVersionSet:ApiVersionSet',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:apimanagement/apiVersionSet:ApiVersionSet',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
@@ -294,11 +287,11 @@ class ApiVersionSet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:apimanagement/apiVersionSet:ApiVersionSet',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:apimanagement/apiVersionSet:ApiVersionSet',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');

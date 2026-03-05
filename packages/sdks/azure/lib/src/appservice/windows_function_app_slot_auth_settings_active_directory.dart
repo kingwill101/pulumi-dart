@@ -7,13 +7,10 @@ class WindowsFunctionAppSlotAuthSettingsActiveDirectory {
   ///
   /// &gt; **Note:** The `client_id` value is always considered an allowed audience.
   final pulumi.Input<List<String>>? allowedAudiences;
-
   /// The ID of the Client to use to authenticate with Azure Active Directory.
   final pulumi.Input<String> clientId;
-
   /// The Client Secret for the Client ID. Cannot be used with `client_secret_setting_name`.
   final pulumi.Input<String>? clientSecret;
-
   /// The App Setting name that contains the client secret of the Client. Cannot be used with `client_secret`.
   final pulumi.Input<String>? clientSecretSettingName;
 
@@ -38,26 +35,13 @@ class WindowsFunctionAppSlotAuthSettingsActiveDirectory {
     };
   }
 
-  factory WindowsFunctionAppSlotAuthSettingsActiveDirectory.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WindowsFunctionAppSlotAuthSettingsActiveDirectory.fromMap(Map<String, dynamic> map) {
     return WindowsFunctionAppSlotAuthSettingsActiveDirectory(
-      allowedAudiences: (() {
-        final guardedValue = map['allowedAudiences'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      allowedAudiences: (() { final guardedValue = map['allowedAudiences']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       clientId: pulumi.Input.fromValue(map['clientId'] as String),
-      clientSecret: (() {
-        final guardedValue = map['clientSecret'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      clientSecretSettingName: (() {
-        final guardedValue = map['clientSecretSettingName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      clientSecret: (() { final guardedValue = map['clientSecret']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      clientSecretSettingName: (() { final guardedValue = map['clientSecretSettingName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

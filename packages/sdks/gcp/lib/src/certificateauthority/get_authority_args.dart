@@ -11,13 +11,10 @@ class GetAuthorityArgs {
   ///
   /// - - -
   final pulumi.Input<String>? certificateAuthorityId;
-
   /// The location the certificate authority exists in.
   final pulumi.Input<String>? location;
-
   /// The name of the pool the certificate authority belongs to.
   final pulumi.Input<String>? pool;
-
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -45,26 +42,11 @@ class GetAuthorityArgs {
 
   factory GetAuthorityArgs.fromMap(Map<String, dynamic> map) {
     return GetAuthorityArgs(
-      certificateAuthorityId: (() {
-        final guardedValue = map['certificateAuthorityId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pool: (() {
-        final guardedValue = map['pool'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      certificateAuthorityId: (() { final guardedValue = map['certificateAuthorityId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pool: (() { final guardedValue = map['pool']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

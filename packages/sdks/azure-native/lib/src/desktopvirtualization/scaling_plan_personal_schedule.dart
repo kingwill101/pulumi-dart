@@ -400,91 +400,62 @@ import 'time_response.dart';
 class ScalingPlanPersonalSchedule extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Set of days of the week on which this schedule is active.
   late final pulumi.Output<List<String>?> daysOfWeek;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Action to be taken after a user disconnect during the off-peak period.
   late final pulumi.Output<String?> offPeakActionOnDisconnect;
-
   /// Action to be taken after a logoff during the off-peak period.
   late final pulumi.Output<String?> offPeakActionOnLogoff;
-
   /// The time in minutes to wait before performing the desired session handling action when a user disconnects during the off-peak period.
   late final pulumi.Output<int?> offPeakMinutesToWaitOnDisconnect;
-
   /// The time in minutes to wait before performing the desired session handling action when a user logs off during the off-peak period.
   late final pulumi.Output<int?> offPeakMinutesToWaitOnLogoff;
-
   /// Starting time for off-peak period.
   late final pulumi.Output<TimeResponse?> offPeakStartTime;
-
   /// The desired configuration of Start VM On Connect for the hostpool during the off-peak phase.
   late final pulumi.Output<String?> offPeakStartVMOnConnect;
-
   /// Action to be taken after a user disconnect during the peak period.
   late final pulumi.Output<String?> peakActionOnDisconnect;
-
   /// Action to be taken after a logoff during the peak period.
   late final pulumi.Output<String?> peakActionOnLogoff;
-
   /// The time in minutes to wait before performing the desired session handling action when a user disconnects during the peak period.
   late final pulumi.Output<int?> peakMinutesToWaitOnDisconnect;
-
   /// The time in minutes to wait before performing the desired session handling action when a user logs off during the peak period.
   late final pulumi.Output<int?> peakMinutesToWaitOnLogoff;
-
   /// Starting time for peak period.
   late final pulumi.Output<TimeResponse?> peakStartTime;
-
   /// The desired configuration of Start VM On Connect for the hostpool during the peak phase.
   late final pulumi.Output<String?> peakStartVMOnConnect;
-
   /// Action to be taken after a user disconnect during the ramp down period.
   late final pulumi.Output<String?> rampDownActionOnDisconnect;
-
   /// Action to be taken after a logoff during the ramp down period.
   late final pulumi.Output<String?> rampDownActionOnLogoff;
-
   /// The time in minutes to wait before performing the desired session handling action when a user disconnects during the ramp down period.
   late final pulumi.Output<int?> rampDownMinutesToWaitOnDisconnect;
-
   /// The time in minutes to wait before performing the desired session handling action when a user logs off during the ramp down period.
   late final pulumi.Output<int?> rampDownMinutesToWaitOnLogoff;
-
   /// Starting time for ramp down period.
   late final pulumi.Output<TimeResponse?> rampDownStartTime;
-
   /// The desired configuration of Start VM On Connect for the hostpool during the ramp down phase.
   late final pulumi.Output<String?> rampDownStartVMOnConnect;
-
   /// Action to be taken after a user disconnect during the ramp up period.
   late final pulumi.Output<String?> rampUpActionOnDisconnect;
-
   /// Action to be taken after a logoff during the ramp up period.
   late final pulumi.Output<String?> rampUpActionOnLogoff;
-
   /// The desired startup behavior during the ramp up period for personal vms in the hostpool.
   late final pulumi.Output<String?> rampUpAutoStartHosts;
-
   /// The time in minutes to wait before performing the desired session handling action when a user disconnects during the ramp up period.
   late final pulumi.Output<int?> rampUpMinutesToWaitOnDisconnect;
-
   /// The time in minutes to wait before performing the desired session handling action when a user logs off during the ramp up period.
   late final pulumi.Output<int?> rampUpMinutesToWaitOnLogoff;
-
   /// Starting time for ramp up period.
   late final pulumi.Output<TimeResponse?> rampUpStartTime;
-
   /// The desired configuration of Start VM On Connect for the hostpool during the ramp up phase. If this is disabled, session hosts must be turned on using rampUpAutoStartHosts or by turning them on manually.
   late final pulumi.Output<String?> rampUpStartVMOnConnect;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -497,111 +468,40 @@ class ScalingPlanPersonalSchedule extends pulumi.CustomResource {
     ScalingPlanPersonalScheduleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:desktopvirtualization:ScalingPlanPersonalSchedule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:desktopvirtualization:ScalingPlanPersonalSchedule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     daysOfWeek = registerOutput<List<String>?>('daysOfWeek');
     this.name = registerOutput<String>('name');
-    offPeakActionOnDisconnect = registerOutput<String?>(
-      'offPeakActionOnDisconnect',
-    );
+    offPeakActionOnDisconnect = registerOutput<String?>('offPeakActionOnDisconnect');
     offPeakActionOnLogoff = registerOutput<String?>('offPeakActionOnLogoff');
-    offPeakMinutesToWaitOnDisconnect = registerOutput<int?>(
-      'offPeakMinutesToWaitOnDisconnect',
-    );
-    offPeakMinutesToWaitOnLogoff = registerOutput<int?>(
-      'offPeakMinutesToWaitOnLogoff',
-    );
-    offPeakStartTime = registerOutput<TimeResponse?>(
-      'offPeakStartTime',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TimeResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    offPeakStartVMOnConnect = registerOutput<String?>(
-      'offPeakStartVMOnConnect',
-    );
+    offPeakMinutesToWaitOnDisconnect = registerOutput<int?>('offPeakMinutesToWaitOnDisconnect');
+    offPeakMinutesToWaitOnLogoff = registerOutput<int?>('offPeakMinutesToWaitOnLogoff');
+    offPeakStartTime = registerOutput<TimeResponse?>('offPeakStartTime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TimeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    offPeakStartVMOnConnect = registerOutput<String?>('offPeakStartVMOnConnect');
     peakActionOnDisconnect = registerOutput<String?>('peakActionOnDisconnect');
     peakActionOnLogoff = registerOutput<String?>('peakActionOnLogoff');
-    peakMinutesToWaitOnDisconnect = registerOutput<int?>(
-      'peakMinutesToWaitOnDisconnect',
-    );
-    peakMinutesToWaitOnLogoff = registerOutput<int?>(
-      'peakMinutesToWaitOnLogoff',
-    );
-    peakStartTime = registerOutput<TimeResponse?>(
-      'peakStartTime',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TimeResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    peakMinutesToWaitOnDisconnect = registerOutput<int?>('peakMinutesToWaitOnDisconnect');
+    peakMinutesToWaitOnLogoff = registerOutput<int?>('peakMinutesToWaitOnLogoff');
+    peakStartTime = registerOutput<TimeResponse?>('peakStartTime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TimeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     peakStartVMOnConnect = registerOutput<String?>('peakStartVMOnConnect');
-    rampDownActionOnDisconnect = registerOutput<String?>(
-      'rampDownActionOnDisconnect',
-    );
+    rampDownActionOnDisconnect = registerOutput<String?>('rampDownActionOnDisconnect');
     rampDownActionOnLogoff = registerOutput<String?>('rampDownActionOnLogoff');
-    rampDownMinutesToWaitOnDisconnect = registerOutput<int?>(
-      'rampDownMinutesToWaitOnDisconnect',
-    );
-    rampDownMinutesToWaitOnLogoff = registerOutput<int?>(
-      'rampDownMinutesToWaitOnLogoff',
-    );
-    rampDownStartTime = registerOutput<TimeResponse?>(
-      'rampDownStartTime',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TimeResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    rampDownStartVMOnConnect = registerOutput<String?>(
-      'rampDownStartVMOnConnect',
-    );
-    rampUpActionOnDisconnect = registerOutput<String?>(
-      'rampUpActionOnDisconnect',
-    );
+    rampDownMinutesToWaitOnDisconnect = registerOutput<int?>('rampDownMinutesToWaitOnDisconnect');
+    rampDownMinutesToWaitOnLogoff = registerOutput<int?>('rampDownMinutesToWaitOnLogoff');
+    rampDownStartTime = registerOutput<TimeResponse?>('rampDownStartTime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TimeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    rampDownStartVMOnConnect = registerOutput<String?>('rampDownStartVMOnConnect');
+    rampUpActionOnDisconnect = registerOutput<String?>('rampUpActionOnDisconnect');
     rampUpActionOnLogoff = registerOutput<String?>('rampUpActionOnLogoff');
     rampUpAutoStartHosts = registerOutput<String?>('rampUpAutoStartHosts');
-    rampUpMinutesToWaitOnDisconnect = registerOutput<int?>(
-      'rampUpMinutesToWaitOnDisconnect',
-    );
-    rampUpMinutesToWaitOnLogoff = registerOutput<int?>(
-      'rampUpMinutesToWaitOnLogoff',
-    );
-    rampUpStartTime = registerOutput<TimeResponse?>(
-      'rampUpStartTime',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TimeResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    rampUpMinutesToWaitOnDisconnect = registerOutput<int?>('rampUpMinutesToWaitOnDisconnect');
+    rampUpMinutesToWaitOnLogoff = registerOutput<int?>('rampUpMinutesToWaitOnLogoff');
+    rampUpStartTime = registerOutput<TimeResponse?>('rampUpStartTime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TimeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     rampUpStartVMOnConnect = registerOutput<String?>('rampUpStartVMOnConnect');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

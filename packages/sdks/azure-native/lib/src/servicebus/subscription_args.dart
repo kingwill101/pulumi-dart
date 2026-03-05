@@ -11,55 +11,38 @@ import 'sbclient_affine_properties.dart';
 class SubscriptionArgs {
   /// ISO 8061 timeSpan idle interval after which the topic is automatically deleted. The minimum duration is 5 minutes.
   final pulumi.Input<String>? autoDeleteOnIdle;
-
   /// Properties specific to client affine subscriptions.
   final pulumi.Input<SBClientAffineProperties>? clientAffineProperties;
-
   /// Value that indicates whether a subscription has dead letter support on filter evaluation exceptions.
   final pulumi.Input<bool>? deadLetteringOnFilterEvaluationExceptions;
-
   /// Value that indicates whether a subscription has dead letter support when a message expires.
   final pulumi.Input<bool>? deadLetteringOnMessageExpiration;
-
   /// ISO 8061 Default message timespan to live value. This is the duration after which the message expires, starting from when the message is sent to Service Bus. This is the default value used when TimeToLive is not set on a message itself.
   final pulumi.Input<String>? defaultMessageTimeToLive;
-
   /// ISO 8601 timeSpan structure that defines the duration of the duplicate detection history. The default value is 10 minutes.
   final pulumi.Input<String>? duplicateDetectionHistoryTimeWindow;
-
   /// Value that indicates whether server-side batched operations are enabled.
   final pulumi.Input<bool>? enableBatchedOperations;
-
   /// Queue/Topic name to forward the Dead Letter message
   final pulumi.Input<String>? forwardDeadLetteredMessagesTo;
-
   /// Queue/Topic name to forward the messages
   final pulumi.Input<String>? forwardTo;
-
   /// Value that indicates whether the subscription has an affinity to the client id.
   final pulumi.Input<bool>? isClientAffine;
-
   /// ISO 8061 lock duration timespan for the subscription. The default value is 1 minute.
   final pulumi.Input<String>? lockDuration;
-
   /// Number of maximum deliveries.
   final pulumi.Input<int>? maxDeliveryCount;
-
   /// The namespace name
   final pulumi.Input<String> namespaceName;
-
   /// Value indicating if a subscription supports the concept of sessions.
   final pulumi.Input<bool>? requiresSession;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Enumerates the possible values for the status of a messaging entity.
   final pulumi.Input<EntityStatus>? status;
-
   /// The subscription name.
   final pulumi.Input<String>? subscriptionName;
-
   /// The topic name.
   final pulumi.Input<String> topicName;
 
@@ -106,17 +89,11 @@ class SubscriptionArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'autoDeleteOnIdle': ?autoDeleteOnIdle,
-      'clientAffineProperties':
-          ?pulumi.Input.mapOptionalInputValue<
-            SBClientAffineProperties,
-            Map<String, dynamic>
-          >(clientAffineProperties, (value) => value.toMap()),
-      'deadLetteringOnFilterEvaluationExceptions':
-          ?deadLetteringOnFilterEvaluationExceptions,
+      'clientAffineProperties': ?pulumi.Input.mapOptionalInputValue<SBClientAffineProperties, Map<String, dynamic>>(clientAffineProperties, (value) => value.toMap()),
+      'deadLetteringOnFilterEvaluationExceptions': ?deadLetteringOnFilterEvaluationExceptions,
       'deadLetteringOnMessageExpiration': ?deadLetteringOnMessageExpiration,
       'defaultMessageTimeToLive': ?defaultMessageTimeToLive,
-      'duplicateDetectionHistoryTimeWindow':
-          ?duplicateDetectionHistoryTimeWindow,
+      'duplicateDetectionHistoryTimeWindow': ?duplicateDetectionHistoryTimeWindow,
       'enableBatchedOperations': ?enableBatchedOperations,
       'forwardDeadLetteredMessagesTo': ?forwardDeadLetteredMessagesTo,
       'forwardTo': ?forwardTo,
@@ -126,10 +103,7 @@ class SubscriptionArgs {
       'namespaceName': namespaceName,
       'requiresSession': ?requiresSession,
       'resourceGroupName': resourceGroupName,
-      'status': ?pulumi.Input.mapOptionalInputValue<EntityStatus, String>(
-        status,
-        (value) => value.wireValue,
-      ),
+      'status': ?pulumi.Input.mapOptionalInputValue<EntityStatus, String>(status, (value) => value.wireValue),
       'subscriptionName': ?subscriptionName,
       'topicName': topicName,
     };
@@ -137,92 +111,25 @@ class SubscriptionArgs {
 
   factory SubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return SubscriptionArgs(
-      autoDeleteOnIdle: (() {
-        final guardedValue = map['autoDeleteOnIdle'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      clientAffineProperties: (() {
-        final guardedValue = map['clientAffineProperties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SBClientAffineProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      deadLetteringOnFilterEvaluationExceptions: (() {
-        final guardedValue = map['deadLetteringOnFilterEvaluationExceptions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      deadLetteringOnMessageExpiration: (() {
-        final guardedValue = map['deadLetteringOnMessageExpiration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      defaultMessageTimeToLive: (() {
-        final guardedValue = map['defaultMessageTimeToLive'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      duplicateDetectionHistoryTimeWindow: (() {
-        final guardedValue = map['duplicateDetectionHistoryTimeWindow'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      enableBatchedOperations: (() {
-        final guardedValue = map['enableBatchedOperations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      forwardDeadLetteredMessagesTo: (() {
-        final guardedValue = map['forwardDeadLetteredMessagesTo'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      forwardTo: (() {
-        final guardedValue = map['forwardTo'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      isClientAffine: (() {
-        final guardedValue = map['isClientAffine'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      lockDuration: (() {
-        final guardedValue = map['lockDuration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      maxDeliveryCount: (() {
-        final guardedValue = map['maxDeliveryCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      autoDeleteOnIdle: (() { final guardedValue = map['autoDeleteOnIdle']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      clientAffineProperties: (() { final guardedValue = map['clientAffineProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SBClientAffineProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deadLetteringOnFilterEvaluationExceptions: (() { final guardedValue = map['deadLetteringOnFilterEvaluationExceptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      deadLetteringOnMessageExpiration: (() { final guardedValue = map['deadLetteringOnMessageExpiration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      defaultMessageTimeToLive: (() { final guardedValue = map['defaultMessageTimeToLive']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      duplicateDetectionHistoryTimeWindow: (() { final guardedValue = map['duplicateDetectionHistoryTimeWindow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      enableBatchedOperations: (() { final guardedValue = map['enableBatchedOperations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      forwardDeadLetteredMessagesTo: (() { final guardedValue = map['forwardDeadLetteredMessagesTo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      forwardTo: (() { final guardedValue = map['forwardTo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      isClientAffine: (() { final guardedValue = map['isClientAffine']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      lockDuration: (() { final guardedValue = map['lockDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      maxDeliveryCount: (() { final guardedValue = map['maxDeliveryCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
-      requiresSession: (() {
-        final guardedValue = map['requiresSession'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          EntityStatus.fromValue(guardedValue as String),
-        );
-      })(),
-      subscriptionName: (() {
-        final guardedValue = map['subscriptionName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      requiresSession: (() { final guardedValue = map['requiresSession']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EntityStatus.fromValue(guardedValue as String)); })(),
+      subscriptionName: (() { final guardedValue = map['subscriptionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       topicName: pulumi.Input.fromValue(map['topicName'] as String),
     );
   }
 }
+

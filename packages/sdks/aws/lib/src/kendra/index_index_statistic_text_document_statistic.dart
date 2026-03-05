@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IndexIndexStatisticTextDocumentStatistic {
   /// The total size, in bytes, of the indexed documents.
   final pulumi.Input<int>? indexedTextBytes;
-
   /// The number of text documents indexed.
   final pulumi.Input<int>? indexedTextDocumentsCount;
 
@@ -24,20 +23,11 @@ class IndexIndexStatisticTextDocumentStatistic {
     };
   }
 
-  factory IndexIndexStatisticTextDocumentStatistic.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory IndexIndexStatisticTextDocumentStatistic.fromMap(Map<String, dynamic> map) {
     return IndexIndexStatisticTextDocumentStatistic(
-      indexedTextBytes: (() {
-        final guardedValue = map['indexedTextBytes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      indexedTextDocumentsCount: (() {
-        final guardedValue = map['indexedTextDocumentsCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      indexedTextBytes: (() { final guardedValue = map['indexedTextBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      indexedTextDocumentsCount: (() { final guardedValue = map['indexedTextDocumentsCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

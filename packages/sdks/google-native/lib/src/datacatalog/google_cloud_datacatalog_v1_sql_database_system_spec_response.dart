@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDatacatalogV1SqlDatabaseSystemSpecResponse {
   /// Version of the database engine.
   final pulumi.Input<String> databaseVersion;
-
   /// Host of the SQL database enum InstanceHost { UNDEFINED = 0; SELF_HOSTED = 1; CLOUD_SQL = 2; AMAZON_RDS = 3; AZURE_SQL = 4; } Host of the enclousing database instance.
   final pulumi.Input<String> instanceHost;
-
   /// SQL Database Engine. enum SqlEngine { UNDEFINED = 0; MY_SQL = 1; POSTGRE_SQL = 2; SQL_SERVER = 3; } Engine of the enclosing database instance.
   final pulumi.Input<String> sqlEngine;
 
@@ -31,9 +29,7 @@ class GoogleCloudDatacatalogV1SqlDatabaseSystemSpecResponse {
     };
   }
 
-  factory GoogleCloudDatacatalogV1SqlDatabaseSystemSpecResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDatacatalogV1SqlDatabaseSystemSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1SqlDatabaseSystemSpecResponse(
       databaseVersion: pulumi.Input.fromValue(map['databaseVersion'] as String),
       instanceHost: pulumi.Input.fromValue(map['instanceHost'] as String),
@@ -41,3 +37,4 @@ class GoogleCloudDatacatalogV1SqlDatabaseSystemSpecResponse {
     );
   }
 }
+

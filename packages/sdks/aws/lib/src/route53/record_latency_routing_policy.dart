@@ -8,10 +8,14 @@ class RecordLatencyRoutingPolicy {
 
   /// Creates a new [RecordLatencyRoutingPolicy].
   /// [region] An AWS region from which to measure latency. See http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html#routing-policy-latency
-  RecordLatencyRoutingPolicy({required this.region});
+  RecordLatencyRoutingPolicy({
+    required this.region,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'region': region};
+    return <String, dynamic>{
+      'region': region,
+    };
   }
 
   factory RecordLatencyRoutingPolicy.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class RecordLatencyRoutingPolicy {
     );
   }
 }
+

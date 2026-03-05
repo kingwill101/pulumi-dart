@@ -41,15 +41,10 @@ class GetWorkloadIdentityPoolKeyArgs {
     return GetWorkloadIdentityPoolKeyArgs(
       keyId: pulumi.Input.fromValue(map['keyId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       providerId: pulumi.Input.fromValue(map['providerId'] as String),
-      workloadIdentityPoolId: pulumi.Input.fromValue(
-        map['workloadIdentityPoolId'] as String,
-      ),
+      workloadIdentityPoolId: pulumi.Input.fromValue(map['workloadIdentityPoolId'] as String),
     );
   }
 }
+

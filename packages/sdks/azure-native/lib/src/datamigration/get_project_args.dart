@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetProjectArgs {
   /// Name of the resource group
   final pulumi.Input<String> groupName;
-
   /// Name of the project
   final pulumi.Input<String> projectName;
-
   /// Name of the service
   final pulumi.Input<String> serviceName;
 
@@ -42,3 +40,4 @@ class GetProjectArgs {
     );
   }
 }
+

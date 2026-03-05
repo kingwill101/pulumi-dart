@@ -302,19 +302,14 @@ import 'public_certificate_state.dart';
 class PublicCertificate extends pulumi.CustomResource {
   /// The name of the App Service. Changing this forces a new App Service Public Certificate to be created.
   late final pulumi.Output<String> appServiceName;
-
   /// The base64-encoded contents of the certificate. Changing this forces a new App Service Public Certificate to be created.
   late final pulumi.Output<String> blob;
-
   /// The location of the certificate. Possible values are `CurrentUserMy`, `LocalMachineMy` and `Unknown`. Changing this forces a new App Service Public Certificate to be created.
   late final pulumi.Output<String> certificateLocation;
-
   /// The name of the public certificate. Changing this forces a new App Service Public Certificate to be created.
   late final pulumi.Output<String> certificateName;
-
   /// The name of the Resource Group where the App Service Public Certificate should exist. Changing this forces a new App Service Public Certificate to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The thumbprint of the public certificate.
   late final pulumi.Output<String> thumbprint;
 
@@ -327,11 +322,11 @@ class PublicCertificate extends pulumi.CustomResource {
     PublicCertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appservice/publicCertificate:PublicCertificate',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appservice/publicCertificate:PublicCertificate',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appServiceName = registerOutput<String>('appServiceName');
     blob = registerOutput<String>('blob');
     certificateLocation = registerOutput<String>('certificateLocation');
@@ -358,11 +353,11 @@ class PublicCertificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appservice/publicCertificate:PublicCertificate',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appservice/publicCertificate:PublicCertificate',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appServiceName = registerOutput<String>('appServiceName');
     blob = registerOutput<String>('blob');
     certificateLocation = registerOutput<String>('certificateLocation');

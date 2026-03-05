@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HoneypotPresetMeta {
   /// Burp counter.
   final pulumi.Input<String> burp;
-
   /// Social traceability.
   final pulumi.Input<bool>? portraitOption;
-
   /// Git countered.
   final pulumi.Input<String>? trojanGit;
 
@@ -16,7 +14,11 @@ class HoneypotPresetMeta {
   /// [burp] Burp counter.
   /// [portraitOption] Social traceability.
   /// [trojanGit] Git countered.
-  HoneypotPresetMeta({required this.burp, this.portraitOption, this.trojanGit});
+  HoneypotPresetMeta({
+    required this.burp,
+    this.portraitOption,
+    this.trojanGit,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,16 +31,9 @@ class HoneypotPresetMeta {
   factory HoneypotPresetMeta.fromMap(Map<String, dynamic> map) {
     return HoneypotPresetMeta(
       burp: pulumi.Input.fromValue(map['burp'] as String),
-      portraitOption: (() {
-        final guardedValue = map['portraitOption'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      trojanGit: (() {
-        final guardedValue = map['trojanGit'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      portraitOption: (() { final guardedValue = map['portraitOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      trojanGit: (() { final guardedValue = map['trojanGit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

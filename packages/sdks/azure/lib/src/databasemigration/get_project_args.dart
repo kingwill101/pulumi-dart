@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetProjectArgs {
   /// Name of the database migration project.
   final pulumi.Input<String> name;
-
   /// Name of the resource group where resource belongs to.
   final pulumi.Input<String> resourceGroupName;
-
   /// Name of the database migration service where resource belongs to.
   final pulumi.Input<String> serviceName;
 
@@ -37,10 +35,9 @@ class GetProjectArgs {
   factory GetProjectArgs.fromMap(Map<String, dynamic> map) {
     return GetProjectArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
+

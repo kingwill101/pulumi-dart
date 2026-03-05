@@ -15,7 +15,6 @@ class AppVersionSnapshotToolOpenApiToolTlsConfigCaCert {
   /// -out example.com.crt \
   /// -extfile &lt;(printf "\nsubjectAltName='DNS:www.example.com'")
   final pulumi.Input<String>? cert;
-
   /// The display name of the app version.
   final pulumi.Input<String>? displayName;
 
@@ -28,23 +27,17 @@ class AppVersionSnapshotToolOpenApiToolTlsConfigCaCert {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'cert': ?cert, 'displayName': ?displayName};
+    return <String, dynamic>{
+      'cert': ?cert,
+      'displayName': ?displayName,
+    };
   }
 
-  factory AppVersionSnapshotToolOpenApiToolTlsConfigCaCert.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppVersionSnapshotToolOpenApiToolTlsConfigCaCert.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolOpenApiToolTlsConfigCaCert(
-      cert: (() {
-        final guardedValue = map['cert'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      cert: (() { final guardedValue = map['cert']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

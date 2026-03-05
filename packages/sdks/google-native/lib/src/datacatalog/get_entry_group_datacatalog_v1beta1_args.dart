@@ -33,22 +33,13 @@ class GetEntryGroupDatacatalogV1beta1Args {
     };
   }
 
-  factory GetEntryGroupDatacatalogV1beta1Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetEntryGroupDatacatalogV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetEntryGroupDatacatalogV1beta1Args(
       entryGroupId: pulumi.Input.fromValue(map['entryGroupId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      readMask: (() {
-        final guardedValue = map['readMask'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      readMask: (() { final guardedValue = map['readMask']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

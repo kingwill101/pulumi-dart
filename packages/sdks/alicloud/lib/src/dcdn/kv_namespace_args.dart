@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KvNamespaceArgs {
   /// Namespace description information
   final pulumi.Input<String> description;
-
   /// Namespace name. The name can contain letters, digits, hyphens (-), and underscores (_).
   final pulumi.Input<String> namespace;
 
   /// Creates a new [KvNamespaceArgs].
   /// [description] Namespace description information
   /// [namespace] Namespace name. The name can contain letters, digits, hyphens (-), and underscores (_).
-  KvNamespaceArgs({required this.description, required this.namespace});
+  KvNamespaceArgs({
+    required this.description,
+    required this.namespace,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,3 +34,4 @@ class KvNamespaceArgs {
     );
   }
 }
+

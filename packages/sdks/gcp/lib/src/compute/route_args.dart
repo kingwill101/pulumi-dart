@@ -11,11 +11,9 @@ class RouteArgs {
   /// An optional description of this resource. Provide this property
   /// when you create the resource.
   final pulumi.Input<String>? description;
-
   /// The destination range of outgoing packets that this route applies to.
   /// Only IPv4 is supported.
   final pulumi.Input<String> destRange;
-
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
   /// RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -24,10 +22,8 @@ class RouteArgs {
   /// characters must be a dash, lowercase letter, or digit, except the
   /// last character, which cannot be a dash.
   final pulumi.Input<String>? name;
-
   /// The network that this route applies to.
   final pulumi.Input<String> network;
-
   /// URL to a gateway that should handle matching packets.
   /// Currently, you can only specify the internet gateway, using a full or
   /// partial valid URL:
@@ -36,7 +32,6 @@ class RouteArgs {
   /// * `global/gateways/default-internet-gateway`
   /// * The string `default-internet-gateway`.
   final pulumi.Input<String>? nextHopGateway;
-
   /// The IP address or URL to a forwarding rule of type
   /// loadBalancingScheme=INTERNAL that should handle matching
   /// packets.
@@ -51,7 +46,6 @@ class RouteArgs {
   /// Note that this can only be used when the destinationRange is
   /// a public (non-RFC 1918) IP CIDR range.
   final pulumi.Input<String>? nextHopIlb;
-
   /// URL to an instance that should handle matching packets.
   /// You can specify this as a full or partial URL. For example:
   /// * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance`
@@ -59,34 +53,27 @@ class RouteArgs {
   /// * `zones/zone/instances/instance`
   /// * Just the instance name, with the zone in `next_hop_instance_zone`.
   final pulumi.Input<String>? nextHopInstance;
-
   /// (Optional when `next_hop_instance` is
   /// specified)  The zone of the instance specified in
   /// `next_hop_instance`.  Omit if `next_hop_instance` is specified as
   /// a URL.
   final pulumi.Input<String>? nextHopInstanceZone;
-
   /// Network IP address of an instance that should handle matching packets.
   final pulumi.Input<String>? nextHopIp;
-
   /// URL to a VpnTunnel that should handle matching packets.
   final pulumi.Input<String>? nextHopVpnTunnel;
-
   /// Additional params passed with the request, but not persisted as part of resource payload
   /// Structure is documented below.
   final pulumi.Input<RouteParams>? params;
-
   /// The priority of this route. Priority is used to break ties in cases
   /// where there is more than one matching route of equal prefix length.
   /// In the case of two routes with equal prefix length, the one with the
   /// lowest-numbered priority value wins.
   /// Default value is 1000. Valid range is 0 through 65535.
   final pulumi.Input<int>? priority;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// A list of instance tags to which this route applies.
   final pulumi.Input<List<String>>? tags;
 
@@ -134,11 +121,7 @@ class RouteArgs {
       'nextHopInstanceZone': ?nextHopInstanceZone,
       'nextHopIp': ?nextHopIp,
       'nextHopVpnTunnel': ?nextHopVpnTunnel,
-      'params':
-          ?pulumi.Input.mapOptionalInputValue<
-            RouteParams,
-            Map<String, dynamic>
-          >(params, (value) => value.toMap()),
+      'params': ?pulumi.Input.mapOptionalInputValue<RouteParams, Map<String, dynamic>>(params, (value) => value.toMap()),
       'priority': ?priority,
       'project': ?project,
       'tags': ?tags,
@@ -147,70 +130,21 @@ class RouteArgs {
 
   factory RouteArgs.fromMap(Map<String, dynamic> map) {
     return RouteArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destRange: pulumi.Input.fromValue(map['destRange'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       network: pulumi.Input.fromValue(map['network'] as String),
-      nextHopGateway: (() {
-        final guardedValue = map['nextHopGateway'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      nextHopIlb: (() {
-        final guardedValue = map['nextHopIlb'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      nextHopInstance: (() {
-        final guardedValue = map['nextHopInstance'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      nextHopInstanceZone: (() {
-        final guardedValue = map['nextHopInstanceZone'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      nextHopIp: (() {
-        final guardedValue = map['nextHopIp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      nextHopVpnTunnel: (() {
-        final guardedValue = map['nextHopVpnTunnel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      params: (() {
-        final guardedValue = map['params'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RouteParams.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      priority: (() {
-        final guardedValue = map['priority'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      nextHopGateway: (() { final guardedValue = map['nextHopGateway']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nextHopIlb: (() { final guardedValue = map['nextHopIlb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nextHopInstance: (() { final guardedValue = map['nextHopInstance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nextHopInstanceZone: (() { final guardedValue = map['nextHopInstanceZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nextHopIp: (() { final guardedValue = map['nextHopIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nextHopVpnTunnel: (() { final guardedValue = map['nextHopVpnTunnel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      params: (() { final guardedValue = map['params']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RouteParams.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

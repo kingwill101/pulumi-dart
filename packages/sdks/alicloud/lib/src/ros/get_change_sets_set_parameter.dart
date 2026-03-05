@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetChangeSetsSetParameter {
   /// The parameters.
   final pulumi.Input<String> parameterKey;
-
   /// The parameters.
   final pulumi.Input<String> parameterValue;
 
@@ -31,3 +30,4 @@ class GetChangeSetsSetParameter {
     );
   }
 }
+

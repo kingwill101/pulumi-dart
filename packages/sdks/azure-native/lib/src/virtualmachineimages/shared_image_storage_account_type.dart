@@ -16,3 +16,4 @@ enum SharedImageStorageAccountType {
     throw ArgumentError('Unknown SharedImageStorageAccountType value: $value');
   }
 }
+

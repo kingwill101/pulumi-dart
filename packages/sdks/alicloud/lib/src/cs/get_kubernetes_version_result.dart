@@ -6,11 +6,9 @@ import 'get_kubernetes_version_metadata.dart';
 /// Result data returned by getKubernetesVersion.
 class GetKubernetesVersionResult {
   final String clusterType;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? kubernetesVersion;
-
   /// A list of metadata of kubernetes version.
   final List<GetKubernetesVersionMetadata> metadatas;
   final String? profile;
@@ -34,11 +32,7 @@ class GetKubernetesVersionResult {
       'clusterType': clusterType,
       'id': id,
       'kubernetesVersion': ?kubernetesVersion,
-      'metadatas':
-          pulumi.Input.encodeList<
-            GetKubernetesVersionMetadata,
-            Map<String, dynamic>
-          >(metadatas, (value) => value.toMap()),
+      'metadatas': pulumi.Input.encodeList<GetKubernetesVersionMetadata, Map<String, dynamic>>(metadatas, (value) => value.toMap()),
       'profile': ?profile,
     };
   }
@@ -47,22 +41,10 @@ class GetKubernetesVersionResult {
     return GetKubernetesVersionResult(
       clusterType: map['clusterType'] as String,
       id: map['id'] as String,
-      kubernetesVersion: (() {
-        final guardedValue = map['kubernetesVersion'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      metadatas: pulumi.Input.decodeList<GetKubernetesVersionMetadata>(
-        map['metadatas']!,
-        (value) => GetKubernetesVersionMetadata.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      profile: (() {
-        final guardedValue = map['profile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      kubernetesVersion: (() { final guardedValue = map['kubernetesVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      metadatas: pulumi.Input.decodeList<GetKubernetesVersionMetadata>(map['metadatas']!, (value) => GetKubernetesVersionMetadata.fromMap((value as Map).cast<String, dynamic>())),
+      profile: (() { final guardedValue = map['profile']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

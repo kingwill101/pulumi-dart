@@ -29,19 +29,12 @@ class GetRegionInstanceTemplateComputeV1Args {
     };
   }
 
-  factory GetRegionInstanceTemplateComputeV1Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetRegionInstanceTemplateComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetRegionInstanceTemplateComputeV1Args(
-      instanceTemplate: pulumi.Input.fromValue(
-        map['instanceTemplate'] as String,
-      ),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      instanceTemplate: pulumi.Input.fromValue(map['instanceTemplate'] as String),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: pulumi.Input.fromValue(map['region'] as String),
     );
   }
 }
+

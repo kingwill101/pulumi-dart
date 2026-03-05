@@ -7,40 +7,28 @@ import 'entity_parent_group_info_response.dart';
 class EntityInfoResponse {
   /// The friendly name of the management group.
   final pulumi.Input<String>? displayName;
-
   /// The fully qualified ID for the entity.  For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
   final pulumi.Input<String> id;
-
   /// The users specific permissions to this item.
   final pulumi.Input<String>? inheritedPermissions;
-
   /// The name of the entity. For example, 00000000-0000-0000-0000-000000000000
   final pulumi.Input<String> name;
-
   /// Number of children is the number of Groups that are exactly one level underneath the current Group.
   final pulumi.Input<int>? numberOfChildGroups;
-
   /// Number of children is the number of Groups and Subscriptions that are exactly one level underneath the current Group.
   final pulumi.Input<int>? numberOfChildren;
-
   /// Number of Descendants
   final pulumi.Input<int>? numberOfDescendants;
-
   /// (Optional) The ID of the parent management group.
   final pulumi.Input<EntityParentGroupInfoResponse>? parent;
-
   /// The parent display name chain from the root group to the immediate parent
   final pulumi.Input<List<String>>? parentDisplayNameChain;
-
   /// The parent name chain from the root group to the immediate parent
   final pulumi.Input<List<String>>? parentNameChain;
-
   /// The users specific permissions to this item.
   final pulumi.Input<String>? permissions;
-
   /// The AAD Tenant ID associated with the entity. For example, 00000000-0000-0000-0000-000000000000
   final pulumi.Input<String>? tenantId;
-
   /// The type of the resource. For example, Microsoft.Management/managementGroups
   final pulumi.Input<String> type;
 
@@ -83,11 +71,7 @@ class EntityInfoResponse {
       'numberOfChildGroups': ?numberOfChildGroups,
       'numberOfChildren': ?numberOfChildren,
       'numberOfDescendants': ?numberOfDescendants,
-      'parent':
-          ?pulumi.Input.mapOptionalInputValue<
-            EntityParentGroupInfoResponse,
-            Map<String, dynamic>
-          >(parent, (value) => value.toMap()),
+      'parent': ?pulumi.Input.mapOptionalInputValue<EntityParentGroupInfoResponse, Map<String, dynamic>>(parent, (value) => value.toMap()),
       'parentDisplayNameChain': ?parentDisplayNameChain,
       'parentNameChain': ?parentNameChain,
       'permissions': ?permissions,
@@ -98,63 +82,20 @@ class EntityInfoResponse {
 
   factory EntityInfoResponse.fromMap(Map<String, dynamic> map) {
     return EntityInfoResponse(
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       id: pulumi.Input.fromValue(map['id'] as String),
-      inheritedPermissions: (() {
-        final guardedValue = map['inheritedPermissions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      inheritedPermissions: (() { final guardedValue = map['inheritedPermissions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      numberOfChildGroups: (() {
-        final guardedValue = map['numberOfChildGroups'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      numberOfChildren: (() {
-        final guardedValue = map['numberOfChildren'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      numberOfDescendants: (() {
-        final guardedValue = map['numberOfDescendants'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      parent: (() {
-        final guardedValue = map['parent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          EntityParentGroupInfoResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      parentDisplayNameChain: (() {
-        final guardedValue = map['parentDisplayNameChain'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      parentNameChain: (() {
-        final guardedValue = map['parentNameChain'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      permissions: (() {
-        final guardedValue = map['permissions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tenantId: (() {
-        final guardedValue = map['tenantId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      numberOfChildGroups: (() { final guardedValue = map['numberOfChildGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      numberOfChildren: (() { final guardedValue = map['numberOfChildren']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      numberOfDescendants: (() { final guardedValue = map['numberOfDescendants']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      parent: (() { final guardedValue = map['parent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EntityParentGroupInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      parentDisplayNameChain: (() { final guardedValue = map['parentDisplayNameChain']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      parentNameChain: (() { final guardedValue = map['parentNameChain']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      permissions: (() { final guardedValue = map['permissions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

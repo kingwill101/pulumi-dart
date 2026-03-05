@@ -377,10 +377,8 @@ import 'configuration_policy_association_state.dart';
 class ConfigurationPolicyAssociation extends pulumi.CustomResource {
   /// The universally unique identifier (UUID) of the configuration policy.
   late final pulumi.Output<String> policyId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The identifier of the target account, organizational unit, or the root to associate with the specified configuration.
   late final pulumi.Output<String> targetId;
 
@@ -393,11 +391,11 @@ class ConfigurationPolicyAssociation extends pulumi.CustomResource {
     ConfigurationPolicyAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:securityhub/configurationPolicyAssociation:ConfigurationPolicyAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:securityhub/configurationPolicyAssociation:ConfigurationPolicyAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     policyId = registerOutput<String>('policyId');
     region = registerOutput<String>('region');
     targetId = registerOutput<String>('targetId');
@@ -421,11 +419,11 @@ class ConfigurationPolicyAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:securityhub/configurationPolicyAssociation:ConfigurationPolicyAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:securityhub/configurationPolicyAssociation:ConfigurationPolicyAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     policyId = registerOutput<String>('policyId');
     region = registerOutput<String>('region');
     targetId = registerOutput<String>('targetId');

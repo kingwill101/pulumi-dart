@@ -10,16 +10,12 @@ import 'migrate_project_properties.dart';
 class MigrateProjectsControllerMigrateProjectArgs {
   /// For optimistic concurrency control.
   final pulumi.Input<String>? eTag;
-
   /// Azure location in which project is created.
   final pulumi.Input<String>? location;
-
   /// Migrate project name.
   final pulumi.Input<String>? migrateProjectName;
-
   /// Properties of a migrate project.
   final pulumi.Input<MigrateProjectProperties>? properties;
-
   /// Name of the Azure Resource Group that project is part of.
   final pulumi.Input<String> resourceGroupName;
 
@@ -42,46 +38,19 @@ class MigrateProjectsControllerMigrateProjectArgs {
       'eTag': ?eTag,
       'location': ?location,
       'migrateProjectName': ?migrateProjectName,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            MigrateProjectProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<MigrateProjectProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
     };
   }
 
-  factory MigrateProjectsControllerMigrateProjectArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MigrateProjectsControllerMigrateProjectArgs.fromMap(Map<String, dynamic> map) {
     return MigrateProjectsControllerMigrateProjectArgs(
-      eTag: (() {
-        final guardedValue = map['eTag'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      migrateProjectName: (() {
-        final guardedValue = map['migrateProjectName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          MigrateProjectProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      eTag: (() { final guardedValue = map['eTag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      migrateProjectName: (() { final guardedValue = map['migrateProjectName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MigrateProjectProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

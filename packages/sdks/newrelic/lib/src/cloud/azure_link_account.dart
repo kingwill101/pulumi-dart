@@ -145,19 +145,14 @@ import 'azure_link_account_state.dart';
 class AzureLinkAccount extends pulumi.CustomResource {
   /// Account ID of the New Relic.
   late final pulumi.Output<String> accountId;
-
   /// Application ID of the App.
   late final pulumi.Output<String> applicationId;
-
   /// Secret Value of the client.
   late final pulumi.Output<String> clientSecret;
-
   /// The name of the application in New Relic APM.
   late final pulumi.Output<String> name;
-
   /// Subscription ID of the Azure cloud account.
   late final pulumi.Output<String> subscriptionId;
-
   /// Tenant ID of the Azure cloud account.
   late final pulumi.Output<String> tenantId;
 
@@ -170,11 +165,11 @@ class AzureLinkAccount extends pulumi.CustomResource {
     AzureLinkAccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:cloud/azureLinkAccount:AzureLinkAccount',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:cloud/azureLinkAccount:AzureLinkAccount',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     applicationId = registerOutput<String>('applicationId');
     clientSecret = registerOutput<String>('clientSecret');
@@ -201,11 +196,11 @@ class AzureLinkAccount extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:cloud/azureLinkAccount:AzureLinkAccount',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:cloud/azureLinkAccount:AzureLinkAccount',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     applicationId = registerOutput<String>('applicationId');
     clientSecret = registerOutput<String>('clientSecret');

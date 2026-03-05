@@ -10,10 +10,8 @@ import 'site_properties.dart';
 class SitesByServiceGroupArgs {
   /// The resource-specific properties for this resource.
   final pulumi.Input<SiteProperties>? properties;
-
   /// The name of the service group
   final pulumi.Input<String> servicegroupName;
-
   /// The name of the Site
   final pulumi.Input<String>? siteName;
 
@@ -29,11 +27,7 @@ class SitesByServiceGroupArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            SiteProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<SiteProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'servicegroupName': servicegroupName,
       'siteName': ?siteName,
     };
@@ -41,21 +35,10 @@ class SitesByServiceGroupArgs {
 
   factory SitesByServiceGroupArgs.fromMap(Map<String, dynamic> map) {
     return SitesByServiceGroupArgs(
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SiteProperties.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      servicegroupName: pulumi.Input.fromValue(
-        map['servicegroupName'] as String,
-      ),
-      siteName: (() {
-        final guardedValue = map['siteName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SiteProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      servicegroupName: pulumi.Input.fromValue(map['servicegroupName'] as String),
+      siteName: (() { final guardedValue = map['siteName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

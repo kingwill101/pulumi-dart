@@ -6,16 +6,12 @@ import 'user_defined_function_resource.dart';
 class ViewDefinition {
   /// [Required] A query that BigQuery executes when the view is referenced.
   final pulumi.Input<String>? query;
-
   /// True if the column names are explicitly specified. For example by using the 'CREATE VIEW v(c1, c2) AS ...' syntax. Can only be set using BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/
   final pulumi.Input<bool>? useExplicitColumnNames;
-
   /// Specifies whether to use BigQuery's legacy SQL for this view. The default value is true. If set to false, the view will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ Queries and views that reference this view must use the same flag value.
   final pulumi.Input<bool>? useLegacySql;
-
   /// Describes user-defined function resources used in the query.
-  final pulumi.Input<List<UserDefinedFunctionResource>>?
-  userDefinedFunctionResources;
+  final pulumi.Input<List<UserDefinedFunctionResource>>? userDefinedFunctionResources;
 
   /// Creates a new [ViewDefinition].
   /// [query] [Required] A query that BigQuery executes when the view is referenced.
@@ -34,50 +30,17 @@ class ViewDefinition {
       'query': ?query,
       'useExplicitColumnNames': ?useExplicitColumnNames,
       'useLegacySql': ?useLegacySql,
-      'userDefinedFunctionResources':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<UserDefinedFunctionResource>,
-            List<Map<String, dynamic>>
-          >(
-            userDefinedFunctionResources,
-            (value) =>
-                pulumi.Input.encodeList<
-                  UserDefinedFunctionResource,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'userDefinedFunctionResources': ?pulumi.Input.mapOptionalInputValue<List<UserDefinedFunctionResource>, List<Map<String, dynamic>>>(userDefinedFunctionResources, (value) => pulumi.Input.encodeList<UserDefinedFunctionResource, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ViewDefinition.fromMap(Map<String, dynamic> map) {
     return ViewDefinition(
-      query: (() {
-        final guardedValue = map['query'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      useExplicitColumnNames: (() {
-        final guardedValue = map['useExplicitColumnNames'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      useLegacySql: (() {
-        final guardedValue = map['useLegacySql'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      userDefinedFunctionResources: (() {
-        final guardedValue = map['userDefinedFunctionResources'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<UserDefinedFunctionResource>(
-            guardedValue,
-            (value) => UserDefinedFunctionResource.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      query: (() { final guardedValue = map['query']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      useExplicitColumnNames: (() { final guardedValue = map['useExplicitColumnNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      useLegacySql: (() { final guardedValue = map['useLegacySql']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      userDefinedFunctionResources: (() { final guardedValue = map['userDefinedFunctionResources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<UserDefinedFunctionResource>(guardedValue, (value) => UserDefinedFunctionResource.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

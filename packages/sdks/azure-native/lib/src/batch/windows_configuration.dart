@@ -9,19 +9,20 @@ class WindowsConfiguration {
 
   /// Creates a new [WindowsConfiguration].
   /// [enableAutomaticUpdates] If omitted, the default value is true.
-  WindowsConfiguration({this.enableAutomaticUpdates});
+  WindowsConfiguration({
+    this.enableAutomaticUpdates,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enableAutomaticUpdates': ?enableAutomaticUpdates};
+    return <String, dynamic>{
+      'enableAutomaticUpdates': ?enableAutomaticUpdates,
+    };
   }
 
   factory WindowsConfiguration.fromMap(Map<String, dynamic> map) {
     return WindowsConfiguration(
-      enableAutomaticUpdates: (() {
-        final guardedValue = map['enableAutomaticUpdates'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enableAutomaticUpdates: (() { final guardedValue = map['enableAutomaticUpdates']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

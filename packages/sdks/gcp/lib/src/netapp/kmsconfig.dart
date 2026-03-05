@@ -150,37 +150,28 @@ import 'kmsconfig_state.dart';
 class Kmsconfig extends pulumi.CustomResource {
   /// Resource name of the KMS key to use. Only regional keys are supported. Format: `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{key}}`.
   late final pulumi.Output<String> cryptoKeyName;
-
   /// Description for the CMEK policy.
   late final pulumi.Output<String?> description;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Access to the key needs to be granted. The instructions contain gcloud commands to run to grant access.
   /// To make the policy work, a CMEK policy check is required, which verifies key access.
   late final pulumi.Output<String> instructions;
-
   /// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// Name of the policy location. CMEK policies apply to the whole region.
   late final pulumi.Output<String> location;
-
   /// Name of the CMEK policy.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// The Service account which needs to have access to the  provided KMS key.
   late final pulumi.Output<String> serviceAccount;
 
@@ -193,11 +184,11 @@ class Kmsconfig extends pulumi.CustomResource {
     KmsconfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:netapp/kmsconfig:Kmsconfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:netapp/kmsconfig:Kmsconfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cryptoKeyName = registerOutput<String>('cryptoKeyName');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -228,11 +219,11 @@ class Kmsconfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:netapp/kmsconfig:Kmsconfig',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:netapp/kmsconfig:Kmsconfig',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cryptoKeyName = registerOutput<String>('cryptoKeyName');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');

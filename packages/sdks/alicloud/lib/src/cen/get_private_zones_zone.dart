@@ -5,22 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPrivateZonesZone {
   /// The access region. The access region is the region of the cloud resource that accesses the PrivateZone service through CEN.
   final pulumi.Input<String> accessRegionId;
-
   /// The ID of the CEN instance.
   final pulumi.Input<String> cenId;
-
   /// The service region. The service region is the target region of the PrivateZone service accessed through CEN.
   final pulumi.Input<String> hostRegionId;
-
   /// The VPC that belongs to the service region.
   final pulumi.Input<String> hostVpcId;
-
   /// The ID of the private zone. It formats as `&lt;cen_id&gt;:&lt;access_region_id&gt;`.
   final pulumi.Input<String> id;
-
   /// The DNS IP addresses of the PrivateZone service.
   final pulumi.Input<String> privateZoneDnsServers;
-
   /// The status of the PrivateZone service, including `Creating`, `Active` and `Deleting`.
   final pulumi.Input<String> status;
 
@@ -61,10 +55,9 @@ class GetPrivateZonesZone {
       hostRegionId: pulumi.Input.fromValue(map['hostRegionId'] as String),
       hostVpcId: pulumi.Input.fromValue(map['hostVpcId'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
-      privateZoneDnsServers: pulumi.Input.fromValue(
-        map['privateZoneDnsServers'] as String,
-      ),
+      privateZoneDnsServers: pulumi.Input.fromValue(map['privateZoneDnsServers'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
+

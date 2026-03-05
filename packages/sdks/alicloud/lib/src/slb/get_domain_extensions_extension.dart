@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDomainExtensionsExtension {
   /// The domain name.
   final pulumi.Input<String> domain;
-
   /// The ID of the domain extension.
   final pulumi.Input<String> id;
-
   /// The ID of the certificate used by the domain name.
   final pulumi.Input<String> serverCertificateId;
 
@@ -34,9 +32,8 @@ class GetDomainExtensionsExtension {
     return GetDomainExtensionsExtension(
       domain: pulumi.Input.fromValue(map['domain'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
-      serverCertificateId: pulumi.Input.fromValue(
-        map['serverCertificateId'] as String,
-      ),
+      serverCertificateId: pulumi.Input.fromValue(map['serverCertificateId'] as String),
     );
   }
 }
+

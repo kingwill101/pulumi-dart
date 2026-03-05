@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecretPasswordKeyVaultProperties {
   /// The Uri of KeyVault.
   final pulumi.Input<String> keyVaultUri;
-
   /// The name of KeyVault password secret.
   final pulumi.Input<String> secretName;
 
@@ -32,3 +31,4 @@ class SecretPasswordKeyVaultProperties {
     );
   }
 }
+

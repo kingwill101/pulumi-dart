@@ -9,15 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccessLogSubscriptionArgs {
   /// Amazon Resource Name (ARN) of the log destination.
   final pulumi.Input<String> destinationArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The ID or Amazon Resource Identifier (ARN) of the service network or service. You must use the ARN if the resources specified in the operation are in different accounts.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> resourceIdentifier;
-
   /// Type of log that monitors your Amazon VPC Lattice service networks. Valid values are: `SERVICE`, `RESOURCE`. Defaults to `SERVICE`.
   final pulumi.Input<String>? serviceNetworkLogType;
   final pulumi.Input<Map<String, String>>? tags;
@@ -49,26 +46,11 @@ class AccessLogSubscriptionArgs {
   factory AccessLogSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return AccessLogSubscriptionArgs(
       destinationArn: pulumi.Input.fromValue(map['destinationArn'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceIdentifier: pulumi.Input.fromValue(
-        map['resourceIdentifier'] as String,
-      ),
-      serviceNetworkLogType: (() {
-        final guardedValue = map['serviceNetworkLogType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceIdentifier: pulumi.Input.fromValue(map['resourceIdentifier'] as String),
+      serviceNetworkLogType: (() { final guardedValue = map['serviceNetworkLogType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

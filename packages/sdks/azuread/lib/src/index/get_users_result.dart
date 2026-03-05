@@ -7,24 +7,18 @@ import 'get_users_user.dart';
 class GetUsersResult {
   /// The employee identifiers assigned to the users by the organisation.
   final List<String> employeeIds;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final bool? ignoreMissing;
-
   /// The email aliases of the users.
   final List<String> mailNicknames;
-
   /// The SMTP email addresses of the users.
   final List<String> mails;
-
   /// The object IDs of the users.
   final List<String> objectIds;
   final bool? returnAll;
-
   /// The user principal names (UPNs) of the users.
   final List<String> userPrincipalNames;
-
   /// A list of users. Each `user` object provides the attributes documented below.
   final List<GetUsersUser> users;
 
@@ -60,10 +54,7 @@ class GetUsersResult {
       'objectIds': objectIds,
       'returnAll': ?returnAll,
       'userPrincipalNames': userPrincipalNames,
-      'users': pulumi.Input.encodeList<GetUsersUser, Map<String, dynamic>>(
-        users,
-        (value) => value.toMap(),
-      ),
+      'users': pulumi.Input.encodeList<GetUsersUser, Map<String, dynamic>>(users, (value) => value.toMap()),
     };
   }
 
@@ -71,24 +62,14 @@ class GetUsersResult {
     return GetUsersResult(
       employeeIds: (map['employeeIds'] as List).cast<String>(),
       id: map['id'] as String,
-      ignoreMissing: (() {
-        final guardedValue = map['ignoreMissing'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      ignoreMissing: (() { final guardedValue = map['ignoreMissing']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       mailNicknames: (map['mailNicknames'] as List).cast<String>(),
       mails: (map['mails'] as List).cast<String>(),
       objectIds: (map['objectIds'] as List).cast<String>(),
-      returnAll: (() {
-        final guardedValue = map['returnAll'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      returnAll: (() { final guardedValue = map['returnAll']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       userPrincipalNames: (map['userPrincipalNames'] as List).cast<String>(),
-      users: pulumi.Input.decodeList<GetUsersUser>(
-        map['users']!,
-        (value) => GetUsersUser.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      users: pulumi.Input.decodeList<GetUsersUser>(map['users']!, (value) => GetUsersUser.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

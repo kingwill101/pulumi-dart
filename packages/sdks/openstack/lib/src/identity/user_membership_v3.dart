@@ -271,12 +271,10 @@ class UserMembershipV3 extends pulumi.CustomResource {
   /// The UUID of group to which the user will be added.
   /// Changing this creates a new user membership.
   late final pulumi.Output<String> groupId;
-
   /// The region in which to obtain the V3 Identity client.
   /// If omitted, the `region` argument of the provider is used.
   /// Changing this creates a new user membership.
   late final pulumi.Output<String> region;
-
   /// The UUID of user to use. Changing this creates a new user membership.
   late final pulumi.Output<String> userId;
 
@@ -289,11 +287,11 @@ class UserMembershipV3 extends pulumi.CustomResource {
     UserMembershipV3Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:identity/userMembershipV3:UserMembershipV3',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:identity/userMembershipV3:UserMembershipV3',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     groupId = registerOutput<String>('groupId');
     region = registerOutput<String>('region');
     userId = registerOutput<String>('userId');
@@ -317,11 +315,11 @@ class UserMembershipV3 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:identity/userMembershipV3:UserMembershipV3',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:identity/userMembershipV3:UserMembershipV3',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     groupId = registerOutput<String>('groupId');
     region = registerOutput<String>('region');
     userId = registerOutput<String>('userId');

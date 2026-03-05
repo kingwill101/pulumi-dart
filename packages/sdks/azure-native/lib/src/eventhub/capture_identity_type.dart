@@ -15,3 +15,4 @@ enum CaptureIdentityType {
     throw ArgumentError('Unknown CaptureIdentityType value: $value');
   }
 }
+

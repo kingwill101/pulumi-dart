@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDocumentProcessorArgs {
   /// The name of document processor resource.
   final pulumi.Input<String> processorName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -31,9 +30,8 @@ class GetDocumentProcessorArgs {
   factory GetDocumentProcessorArgs.fromMap(Map<String, dynamic> map) {
     return GetDocumentProcessorArgs(
       processorName: pulumi.Input.fromValue(map['processorName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

@@ -11,8 +11,7 @@ enum EnhancedSecurityMonitoringValue {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown EnhancedSecurityMonitoringValue value: $value',
-    );
+    throw ArgumentError('Unknown EnhancedSecurityMonitoringValue value: $value');
   }
 }
+

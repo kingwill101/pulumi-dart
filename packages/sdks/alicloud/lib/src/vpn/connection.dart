@@ -846,67 +846,46 @@ class Connection extends pulumi.CustomResource {
   /// - **true**: Automatically configure routes.
   /// - **false**: does not automatically configure routes.
   late final pulumi.Output<bool?> autoConfigRoute;
-
   /// vpnBgp configuration. See `bgp_config` below.
   late final pulumi.Output<ConnectionBgpConfig> bgpConfig;
-
   /// The time when the IPsec-VPN connection was created.
   late final pulumi.Output<int> createTime;
-
   /// The ID of the customer gateway.
   late final pulumi.Output<String?> customerGatewayId;
-
   /// Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
   late final pulumi.Output<bool?> effectImmediately;
-
   /// Wether enable Dpd detection.
   late final pulumi.Output<bool> enableDpd;
-
   /// enable nat traversal.
   late final pulumi.Output<bool> enableNatTraversal;
-
   /// Enable tunnel bgp.
   late final pulumi.Output<bool> enableTunnelsBgp;
-
   /// Health Check information. See `health_check_config` below.
   late final pulumi.Output<ConnectionHealthCheckConfig> healthCheckConfig;
-
   /// The configuration of Phase 1 negotiations. See `ike_config` below.
   late final pulumi.Output<ConnectionIkeConfig> ikeConfig;
-
   /// IPsec configuration. See `ipsec_config` below.
   late final pulumi.Output<ConnectionIpsecConfig> ipsecConfig;
-
   /// The CIDR block of the VPC to be connected with the local data center. This parameter is used for phase-two negotiation.
   late final pulumi.Output<List<String>> localSubnets;
-
   /// . Field 'name' has been deprecated from provider version 1.216.0. New field 'vpn_connection_name' instead.
   late final pulumi.Output<String> name;
-
   /// The network type of the IPsec connection. Value:
   /// - **public**: public network, indicating that the IPsec connection establishes an encrypted communication channel through the public network.
   /// - **private**: private network, indicating that the IPsec connection establishes an encrypted communication channel through the private network.
   late final pulumi.Output<String?> networkType;
-
   /// The CIDR block of the local data center. This parameter is used for phase-two negotiation.
   late final pulumi.Output<List<String>> remoteSubnets;
-
   /// The ID of the resource group.
   late final pulumi.Output<String> resourceGroupId;
-
   /// The negotiation status of Tunnel.
   late final pulumi.Output<String> status;
-
   /// Tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The tunnel options of IPsec. See `tunnel_options_specification` below.
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  tunnelOptionsSpecifications;
-
+  late final pulumi.Output<List<Map<String, dynamic>>?> tunnelOptionsSpecifications;
   /// The name of the IPsec-VPN connection.
   late final pulumi.Output<String> vpnConnectionName;
-
   /// The ID of the VPN gateway.
   late final pulumi.Output<String> vpnGatewayId;
 
@@ -919,58 +898,22 @@ class Connection extends pulumi.CustomResource {
     ConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpn/connection:Connection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpn/connection:Connection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoConfigRoute = registerOutput<bool?>('autoConfigRoute');
-    bgpConfig = registerOutput<ConnectionBgpConfig>(
-      'bgpConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectionBgpConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    bgpConfig = registerOutput<ConnectionBgpConfig>('bgpConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionBgpConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<int>('createTime');
     customerGatewayId = registerOutput<String?>('customerGatewayId');
     effectImmediately = registerOutput<bool?>('effectImmediately');
     enableDpd = registerOutput<bool>('enableDpd');
     enableNatTraversal = registerOutput<bool>('enableNatTraversal');
     enableTunnelsBgp = registerOutput<bool>('enableTunnelsBgp');
-    healthCheckConfig = registerOutput<ConnectionHealthCheckConfig>(
-      'healthCheckConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectionHealthCheckConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    ikeConfig = registerOutput<ConnectionIkeConfig>(
-      'ikeConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectionIkeConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    ipsecConfig = registerOutput<ConnectionIpsecConfig>(
-      'ipsecConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectionIpsecConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    healthCheckConfig = registerOutput<ConnectionHealthCheckConfig>('healthCheckConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionHealthCheckConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ikeConfig = registerOutput<ConnectionIkeConfig>('ikeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionIkeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ipsecConfig = registerOutput<ConnectionIpsecConfig>('ipsecConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionIpsecConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     localSubnets = registerOutput<List<String>>('localSubnets');
     this.name = registerOutput<String>('name');
     networkType = registerOutput<String?>('networkType');
@@ -978,9 +921,7 @@ class Connection extends pulumi.CustomResource {
     resourceGroupId = registerOutput<String>('resourceGroupId');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
-    tunnelOptionsSpecifications = registerOutput<List<Map<String, dynamic>>?>(
-      'tunnelOptionsSpecifications',
-    );
+    tunnelOptionsSpecifications = registerOutput<List<Map<String, dynamic>>?>('tunnelOptionsSpecifications');
     vpnConnectionName = registerOutput<String>('vpnConnectionName');
     vpnGatewayId = registerOutput<String>('vpnGatewayId');
   }
@@ -1003,58 +944,22 @@ class Connection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpn/connection:Connection',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpn/connection:Connection',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoConfigRoute = registerOutput<bool?>('autoConfigRoute');
-    bgpConfig = registerOutput<ConnectionBgpConfig>(
-      'bgpConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectionBgpConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    bgpConfig = registerOutput<ConnectionBgpConfig>('bgpConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionBgpConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<int>('createTime');
     customerGatewayId = registerOutput<String?>('customerGatewayId');
     effectImmediately = registerOutput<bool?>('effectImmediately');
     enableDpd = registerOutput<bool>('enableDpd');
     enableNatTraversal = registerOutput<bool>('enableNatTraversal');
     enableTunnelsBgp = registerOutput<bool>('enableTunnelsBgp');
-    healthCheckConfig = registerOutput<ConnectionHealthCheckConfig>(
-      'healthCheckConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectionHealthCheckConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    ikeConfig = registerOutput<ConnectionIkeConfig>(
-      'ikeConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectionIkeConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    ipsecConfig = registerOutput<ConnectionIpsecConfig>(
-      'ipsecConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectionIpsecConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    healthCheckConfig = registerOutput<ConnectionHealthCheckConfig>('healthCheckConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionHealthCheckConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ikeConfig = registerOutput<ConnectionIkeConfig>('ikeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionIkeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ipsecConfig = registerOutput<ConnectionIpsecConfig>('ipsecConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionIpsecConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     localSubnets = registerOutput<List<String>>('localSubnets');
     this.name = registerOutput<String>('name');
     networkType = registerOutput<String?>('networkType');
@@ -1062,9 +967,7 @@ class Connection extends pulumi.CustomResource {
     resourceGroupId = registerOutput<String>('resourceGroupId');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
-    tunnelOptionsSpecifications = registerOutput<List<Map<String, dynamic>>?>(
-      'tunnelOptionsSpecifications',
-    );
+    tunnelOptionsSpecifications = registerOutput<List<Map<String, dynamic>>?>('tunnelOptionsSpecifications');
     vpnConnectionName = registerOutput<String>('vpnConnectionName');
     vpnGatewayId = registerOutput<String>('vpnGatewayId');
   }

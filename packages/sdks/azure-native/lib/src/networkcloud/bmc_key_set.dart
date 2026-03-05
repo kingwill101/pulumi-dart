@@ -314,52 +314,36 @@ import 'system_data_response.dart';
 class BmcKeySet extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The object ID of Azure Active Directory group that all users in the list must be in for access to be granted. Users that are not in the group will not have access.
   late final pulumi.Output<String> azureGroupId;
-
   /// The more detailed status of the key set.
   late final pulumi.Output<String> detailedStatus;
-
   /// The descriptive message about the current detailed status.
   late final pulumi.Output<String> detailedStatusMessage;
-
   /// Resource ETag.
   late final pulumi.Output<String> etag;
-
   /// The date and time after which the users in this key set will be removed from the baseboard management controllers.
   late final pulumi.Output<String> expiration;
-
   /// The extended location of the cluster associated with the resource.
   late final pulumi.Output<ExtendedLocationResponse> extendedLocation;
-
   /// The last time this key set was validated.
   late final pulumi.Output<String> lastValidation;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The access level allowed for the users in this key set.
   late final pulumi.Output<String> privilegeLevel;
-
   /// The provisioning state of the baseboard management controller key set.
   late final pulumi.Output<String> provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// The unique list of permitted users.
   late final pulumi.Output<List<Map<String, dynamic>>> userList;
-
   /// The status evaluation of each user.
   late final pulumi.Output<List<Map<String, dynamic>>> userListStatus;
 
@@ -372,47 +356,27 @@ class BmcKeySet extends pulumi.CustomResource {
     BmcKeySetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:networkcloud:BmcKeySet',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:networkcloud:BmcKeySet',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     azureGroupId = registerOutput<String>('azureGroupId');
     detailedStatus = registerOutput<String>('detailedStatus');
     detailedStatusMessage = registerOutput<String>('detailedStatusMessage');
     etag = registerOutput<String>('etag');
     expiration = registerOutput<String>('expiration');
-    extendedLocation = registerOutput<ExtendedLocationResponse>(
-      'extendedLocation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExtendedLocationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    extendedLocation = registerOutput<ExtendedLocationResponse>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lastValidation = registerOutput<String>('lastValidation');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     privilegeLevel = registerOutput<String>('privilegeLevel');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     userList = registerOutput<List<Map<String, dynamic>>>('userList');
-    userListStatus = registerOutput<List<Map<String, dynamic>>>(
-      'userListStatus',
-    );
+    userListStatus = registerOutput<List<Map<String, dynamic>>>('userListStatus');
   }
 }

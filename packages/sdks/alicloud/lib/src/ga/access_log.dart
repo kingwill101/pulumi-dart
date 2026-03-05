@@ -579,22 +579,16 @@ import 'access_log_state.dart';
 class AccessLog extends pulumi.CustomResource {
   /// The ID of the global acceleration instance.
   late final pulumi.Output<String> acceleratorId;
-
   /// The ID of the endpoint group instance.
   late final pulumi.Output<String> endpointGroupId;
-
   /// The ID of the listener.
   late final pulumi.Output<String> listenerId;
-
   /// The name of the Log Store.
   late final pulumi.Output<String> slsLogStoreName;
-
   /// The name of the Log Service project.
   late final pulumi.Output<String> slsProjectName;
-
   /// The region ID of the Log Service project.
   late final pulumi.Output<String> slsRegionId;
-
   /// Whether access log is enabled.
   late final pulumi.Output<String> status;
 
@@ -607,11 +601,11 @@ class AccessLog extends pulumi.CustomResource {
     AccessLogArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ga/accessLog:AccessLog',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ga/accessLog:AccessLog',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     acceleratorId = registerOutput<String>('acceleratorId');
     endpointGroupId = registerOutput<String>('endpointGroupId');
     listenerId = registerOutput<String>('listenerId');
@@ -639,11 +633,11 @@ class AccessLog extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ga/accessLog:AccessLog',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ga/accessLog:AccessLog',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     acceleratorId = registerOutput<String>('acceleratorId');
     endpointGroupId = registerOutput<String>('endpointGroupId');
     listenerId = registerOutput<String>('listenerId');

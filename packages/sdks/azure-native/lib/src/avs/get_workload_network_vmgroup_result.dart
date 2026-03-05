@@ -6,31 +6,22 @@ import 'system_data_response.dart';
 class GetWorkloadNetworkVMGroupResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Display name of the VM group.
   final String? displayName;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// Virtual machine members of this group.
   final List<String>? members;
-
   /// The name of the resource
   final String name;
-
   /// The provisioning state
   final String provisioningState;
-
   /// NSX revision number.
   final double? revision;
-
   /// VM Group status.
   final String status;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -76,29 +67,16 @@ class GetWorkloadNetworkVMGroupResult {
   factory GetWorkloadNetworkVMGroupResult.fromMap(Map<String, dynamic> map) {
     return GetWorkloadNetworkVMGroupResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
-      members: (() {
-        final guardedValue = map['members'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
+      members: (() { final guardedValue = map['members']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      revision: (() {
-        final guardedValue = map['revision'];
-        if (guardedValue == null) return null;
-        return guardedValue as double;
-      })(),
+      revision: (() { final guardedValue = map['revision']; if (guardedValue == null) return null; return guardedValue as double; })(),
       status: map['status'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

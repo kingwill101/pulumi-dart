@@ -16,3 +16,4 @@ enum ClusterPurpose {
     throw ArgumentError('Unknown ClusterPurpose value: $value');
   }
 }
+

@@ -9,24 +9,23 @@ class TaskDefinitionEnvironmentFile {
   /// Creates a new [TaskDefinitionEnvironmentFile].
   /// [type] Optional.
   /// [value] Optional.
-  TaskDefinitionEnvironmentFile({this.type, this.value});
+  TaskDefinitionEnvironmentFile({
+    this.type,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': ?type, 'value': ?value};
+    return <String, dynamic>{
+      'type': ?type,
+      'value': ?value,
+    };
   }
 
   factory TaskDefinitionEnvironmentFile.fromMap(Map<String, dynamic> map) {
     return TaskDefinitionEnvironmentFile(
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

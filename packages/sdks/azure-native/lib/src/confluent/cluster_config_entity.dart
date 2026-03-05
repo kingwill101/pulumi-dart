@@ -9,19 +9,20 @@ class ClusterConfigEntity {
 
   /// Creates a new [ClusterConfigEntity].
   /// [kind] The lifecycle phase of the cluster
-  ClusterConfigEntity({this.kind});
+  ClusterConfigEntity({
+    this.kind,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'kind': ?kind};
+    return <String, dynamic>{
+      'kind': ?kind,
+    };
   }
 
   factory ClusterConfigEntity.fromMap(Map<String, dynamic> map) {
     return ClusterConfigEntity(
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

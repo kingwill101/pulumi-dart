@@ -7,23 +7,17 @@ import 'get_route_table_route.dart';
 class GetRouteTableResult {
   /// Boolean flag which controls propagation of routes learned by BGP on that route table.
   final bool bgpRoutePropagationEnabled;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The Azure Region in which the Route Table exists.
   final String location;
-
   /// The name of the Route.
   final String name;
   final String resourceGroupName;
-
   /// One or more `route` blocks as documented below.
   final List<GetRouteTableRoute> routes;
-
   /// The collection of Subnets associated with this route table.
   final List<String> subnets;
-
   /// A mapping of tags assigned to the Route Table.
   final Map<String, String> tags;
 
@@ -54,11 +48,7 @@ class GetRouteTableResult {
       'location': location,
       'name': name,
       'resourceGroupName': resourceGroupName,
-      'routes':
-          pulumi.Input.encodeList<GetRouteTableRoute, Map<String, dynamic>>(
-            routes,
-            (value) => value.toMap(),
-          ),
+      'routes': pulumi.Input.encodeList<GetRouteTableRoute, Map<String, dynamic>>(routes, (value) => value.toMap()),
       'subnets': subnets,
       'tags': tags,
     };
@@ -71,13 +61,10 @@ class GetRouteTableResult {
       location: map['location'] as String,
       name: map['name'] as String,
       resourceGroupName: map['resourceGroupName'] as String,
-      routes: pulumi.Input.decodeList<GetRouteTableRoute>(
-        map['routes']!,
-        (value) =>
-            GetRouteTableRoute.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      routes: pulumi.Input.decodeList<GetRouteTableRoute>(map['routes']!, (value) => GetRouteTableRoute.fromMap((value as Map).cast<String, dynamic>())),
       subnets: (map['subnets'] as List).cast<String>(),
       tags: (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
+

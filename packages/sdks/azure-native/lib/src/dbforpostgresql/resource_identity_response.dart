@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceIdentityResponse {
   /// The Azure Active Directory principal id.
   final pulumi.Input<String> principalId;
-
   /// The Azure Active Directory tenant id.
   final pulumi.Input<String> tenantId;
-
   /// The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
   final pulumi.Input<String>? type;
 
@@ -35,11 +33,8 @@ class ResourceIdentityResponse {
     return ResourceIdentityResponse(
       principalId: pulumi.Input.fromValue(map['principalId'] as String),
       tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

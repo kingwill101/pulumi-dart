@@ -177,46 +177,32 @@ import 'system_data_response.dart';
 class Lab extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Default monetary cap for each student in this lab
   late final pulumi.Output<AmountResponse> budgetPerStudent;
-
   /// The type of currency being used for the value.
   late final pulumi.Output<String?> currency;
-
   /// Detail description of this lab
   late final pulumi.Output<String> description;
-
   /// Lab Display Name
   late final pulumi.Output<String> displayName;
-
   /// Lab creation date
   late final pulumi.Output<String> effectiveDate;
-
   /// Default expiration date for each student in this lab
   late final pulumi.Output<String> expirationDate;
-
   /// invitation code for redeemable lab
   late final pulumi.Output<String> invitationCode;
-
   /// the total number of students that can be accepted to the lab.
   late final pulumi.Output<double> maxStudentCount;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The status of this lab
   late final pulumi.Output<String> status;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Total budget
   late final pulumi.Output<AmountResponse> totalBudget;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Amount value.
   late final pulumi.Output<double?> value;
 
@@ -224,24 +210,18 @@ class Lab extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Lab]. {@macro pulumi_education_lab_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Lab(String name, {LabArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:education:Lab',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Lab(
+    String name, {
+    LabArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:education:Lab',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    budgetPerStudent = registerOutput<AmountResponse>(
-      'budgetPerStudent',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AmountResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    budgetPerStudent = registerOutput<AmountResponse>('budgetPerStudent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AmountResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     currency = registerOutput<String?>('currency');
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
@@ -251,26 +231,8 @@ class Lab extends pulumi.CustomResource {
     maxStudentCount = registerOutput<double>('maxStudentCount');
     this.name = registerOutput<String>('name');
     status = registerOutput<String>('status');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    totalBudget = registerOutput<AmountResponse>(
-      'totalBudget',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AmountResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    totalBudget = registerOutput<AmountResponse>('totalBudget', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AmountResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     value = registerOutput<double?>('value');
   }

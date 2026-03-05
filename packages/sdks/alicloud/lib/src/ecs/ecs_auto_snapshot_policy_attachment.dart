@@ -294,10 +294,8 @@ import 'ecs_auto_snapshot_policy_attachment_state.dart';
 class EcsAutoSnapshotPolicyAttachment extends pulumi.CustomResource {
   /// The ID of the automatic snapshot policy that is applied to the cloud disk.
   late final pulumi.Output<String> autoSnapshotPolicyId;
-
   /// The ID of the disk.
   late final pulumi.Output<String> diskId;
-
   /// (Available since v1.271.0) The ID of the region where the automatic snapshot policy and the cloud disk are located.
   late final pulumi.Output<String> regionId;
 
@@ -310,11 +308,11 @@ class EcsAutoSnapshotPolicyAttachment extends pulumi.CustomResource {
     EcsAutoSnapshotPolicyAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ecs/ecsAutoSnapshotPolicyAttachment:EcsAutoSnapshotPolicyAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ecs/ecsAutoSnapshotPolicyAttachment:EcsAutoSnapshotPolicyAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoSnapshotPolicyId = registerOutput<String>('autoSnapshotPolicyId');
     diskId = registerOutput<String>('diskId');
     regionId = registerOutput<String>('regionId');
@@ -338,11 +336,11 @@ class EcsAutoSnapshotPolicyAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ecs/ecsAutoSnapshotPolicyAttachment:EcsAutoSnapshotPolicyAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ecs/ecsAutoSnapshotPolicyAttachment:EcsAutoSnapshotPolicyAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoSnapshotPolicyId = registerOutput<String>('autoSnapshotPolicyId');
     diskId = registerOutput<String>('diskId');
     regionId = registerOutput<String>('regionId');

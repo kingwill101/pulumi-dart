@@ -499,44 +499,33 @@ class CloudExadataInfrastructure extends pulumi.CustomResource {
   /// characters in length. The value must start with a letter and end with
   /// a letter or a number.
   late final pulumi.Output<String> cloudExadataInfrastructureId;
-
   /// The date and time that the Exadata Infrastructure was created.
   late final pulumi.Output<String> createTime;
   late final pulumi.Output<bool?> deletionProtection;
-
   /// User friendly name for this resource.
   late final pulumi.Output<String?> displayName;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Entitlement ID of the private offer against which this infrastructure
   /// resource is provisioned.
   late final pulumi.Output<String> entitlementId;
-
   /// GCP location where Oracle Exadata is hosted.
   late final pulumi.Output<String> gcpOracleZone;
-
   /// Labels or tags associated with the resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// Resource ID segment making up resource `name`. See documentation for resource type `oracledatabase.googleapis.com/DbServer`.
   late final pulumi.Output<String> location;
-
   /// Identifier. The name of the Exadata Infrastructure resource with the following format:
   /// projects/{project}/locations/{region}/cloudExadataInfrastructures/{cloud_exadata_infrastructure}
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Various properties of Exadata Infrastructure.
   /// Structure is documented below.
   late final pulumi.Output<CloudExadataInfrastructureProperties?> properties;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
@@ -550,14 +539,12 @@ class CloudExadataInfrastructure extends pulumi.CustomResource {
     CloudExadataInfrastructureArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:oracledatabase/cloudExadataInfrastructure:CloudExadataInfrastructure',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    cloudExadataInfrastructureId = registerOutput<String>(
-      'cloudExadataInfrastructureId',
-    );
+          'gcp:oracledatabase/cloudExadataInfrastructure:CloudExadataInfrastructure',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    cloudExadataInfrastructureId = registerOutput<String>('cloudExadataInfrastructureId');
     createTime = registerOutput<String>('createTime');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     displayName = registerOutput<String?>('displayName');
@@ -568,16 +555,7 @@ class CloudExadataInfrastructure extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    properties = registerOutput<CloudExadataInfrastructureProperties?>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CloudExadataInfrastructureProperties.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<CloudExadataInfrastructureProperties?>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CloudExadataInfrastructureProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
   }
 
@@ -599,14 +577,12 @@ class CloudExadataInfrastructure extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:oracledatabase/cloudExadataInfrastructure:CloudExadataInfrastructure',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    cloudExadataInfrastructureId = registerOutput<String>(
-      'cloudExadataInfrastructureId',
-    );
+          'gcp:oracledatabase/cloudExadataInfrastructure:CloudExadataInfrastructure',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    cloudExadataInfrastructureId = registerOutput<String>('cloudExadataInfrastructureId');
     createTime = registerOutput<String>('createTime');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     displayName = registerOutput<String?>('displayName');
@@ -617,16 +593,7 @@ class CloudExadataInfrastructure extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    properties = registerOutput<CloudExadataInfrastructureProperties?>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CloudExadataInfrastructureProperties.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<CloudExadataInfrastructureProperties?>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CloudExadataInfrastructureProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
   }
 }

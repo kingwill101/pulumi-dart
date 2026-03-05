@@ -15,3 +15,4 @@ enum NicTypeInRequest {
     throw ArgumentError('Unknown NicTypeInRequest value: $value');
   }
 }
+

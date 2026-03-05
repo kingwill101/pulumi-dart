@@ -286,183 +286,128 @@ import 'instance_state.dart';
 class Instance extends pulumi.CustomResource {
   /// Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
   late final pulumi.Output<String?> accountPassword;
-
   /// Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
   late final pulumi.Output<bool?> autoRenew;
-
   /// The auto-renewal period. Unit: months. Valid values: `1` to `12`.
   /// &gt; **NOTE:** If `auto_renew` is set to `true`, `auto_renew_duration` must be set.
   late final pulumi.Output<int> autoRenewDuration;
-
   /// The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
   late final pulumi.Output<String> backupInterval;
-
   /// MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
   late final pulumi.Output<List<String>> backupPeriods;
-
   /// The retention period of full backups.
   late final pulumi.Output<int> backupRetentionPeriod;
-
   /// The backup retention policy configured for the instance. Valid values:
   late final pulumi.Output<int?> backupRetentionPolicyOnClusterDeletion;
-
   /// MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
   late final pulumi.Output<String> backupTime;
-
   /// The ID of the encryption key.
   late final pulumi.Output<String?> cloudDiskEncryptionKey;
-
   /// Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
   late final pulumi.Output<String> dbInstanceClass;
-
   /// Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
   late final pulumi.Output<bool?> dbInstanceReleaseProtection;
-
   /// User-defined DB instance storage space.Unit: GB. Value range:
   /// - Custom storage space.
   /// - 10-GB increments.
   late final pulumi.Output<int> dbInstanceStorage;
-
   /// The time when the changed configurations take effect. Valid values: `Immediately`, `MaintainTime`.
   late final pulumi.Output<String?> effectiveTime;
-
   /// Specifies whether to enable the log backup feature. Valid values:
   late final pulumi.Output<int> enableBackupLog;
-
   /// Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
   late final pulumi.Output<bool?> encrypted;
-
   /// The ID of the custom key.
   late final pulumi.Output<String> encryptionKey;
-
   /// The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
   late final pulumi.Output<String> encryptorName;
-
   /// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`. **NOTE:** From version 1.225.0, `engine_version` can be modified.
   late final pulumi.Output<String> engineVersion;
-
   /// Specifies whether to forcibly enable SSL encryption for connections. Valid values:
   late final pulumi.Output<String> forceEncryption;
-
   /// The list of Global Security Group Ids.
   late final pulumi.Output<List<String>?> globalSecurityGroupLists;
-
   /// Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values. From version 1.253.0, `hidden_zone_id` can be modified.
   late final pulumi.Output<String?> hiddenZoneId;
-
   /// The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
   late final pulumi.Output<String> instanceChargeType;
-
   /// (Available since v1.271.0) A list of instance keys.
   late final pulumi.Output<List<String>> keyIds;
-
   /// An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
   late final pulumi.Output<String?> kmsEncryptedPassword;
-
   /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
   late final pulumi.Output<Map<String, String>?> kmsEncryptionContext;
-
   /// The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `log_backup_retention_period` is valid only when `enable_backup_log` is set to `1`.
   late final pulumi.Output<int> logBackupRetentionPeriod;
-
   /// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
   /// &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
   late final pulumi.Output<String> maintainEndTime;
-
   /// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
   late final pulumi.Output<String> maintainStartTime;
-
   /// The name of DB instance. It must be 2 to 256 characters in length.
   late final pulumi.Output<String> name;
-
   /// The network type of the instance. Valid values: `VPC`.
   /// &gt; **NOTE:** From 2022.2.21, `network_type` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
   late final pulumi.Output<String> networkType;
-
   /// The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
   /// - `UPGRADE`: The specifications are upgraded.
   /// - `DOWNGRADE`: The specifications are downgraded.
   /// &gt; **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
   late final pulumi.Output<String?> orderType;
-
   /// Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
   late final pulumi.Output<List<Map<String, dynamic>>> parameters;
-
   /// The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
   late final pulumi.Output<int> period;
-
   /// The provisioned IOPS. Valid values: `0` to `50000`.
   late final pulumi.Output<int?> provisionedIops;
-
   /// The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
   late final pulumi.Output<int> readonlyReplicas;
-
   /// The name of the mongo replica set.
   late final pulumi.Output<String> replicaSetName;
-
   /// Replica set instance information.
   late final pulumi.Output<List<Map<String, dynamic>>> replicaSets;
-
   /// Number of replica set nodes. Valid values: `1`, `3`, `5`, `7`.
   late final pulumi.Output<int> replicationFactor;
-
   /// The ID of the Resource Group.
   late final pulumi.Output<String> resourceGroupId;
-
   /// The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
   /// &gt; **NOTE:** You must specify `src_db_instance_id` and `restore_time` only when you clone an instance based on a point in time.
   late final pulumi.Output<String?> restoreTime;
-
   /// Instance data backup retention days. Available since v1.42.0.
   late final pulumi.Output<int> retentionPeriod;
-
   /// The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
   late final pulumi.Output<String> roleArn;
-
   /// Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values. From version 1.253.0, `secondary_zone_id` can be modified.
   late final pulumi.Output<String?> secondaryZoneId;
-
   /// The Security Group ID of ECS.
   late final pulumi.Output<String?> securityGroupId;
-
   /// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
   late final pulumi.Output<List<String>> securityIpLists;
-
   /// The snapshot backup type. Default value: `Standard`. Valid values:
   /// - `Standard`: standard backup.
   /// - `Flash `: single-digit second backup.
   late final pulumi.Output<String> snapshotBackupType;
-
   /// The source instance ID.
   late final pulumi.Output<String?> srcDbInstanceId;
   late final pulumi.Output<String?> sslAction;
-
   /// Status of the SSL feature.
   late final pulumi.Output<String> sslStatus;
-
   /// The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
   late final pulumi.Output<String> storageEngine;
-
   /// The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `cloud_auto`, `local_ssd`. **NOTE:** From version 1.229.0, `storage_type` can be modified. However, `storage_type` can only be modified to `cloud_auto`.
   late final pulumi.Output<String> storageType;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The TDE(Transparent Data Encryption) status. Note: `tde_status` cannot be set to `disabled` after it is enabled, see [Transparent Data Encryption](https://www.alibabacloud.com/help/en/mongodb/user-guide/configure-tde-for-an-apsaradb-for-mongodb-instance) for more details.
   late final pulumi.Output<String> tdeStatus;
-
   /// The ID of the VPC. &gt; **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
   late final pulumi.Output<String> vpcId;
-
   /// The virtual switch ID to launch DB instances in one VPC.
   late final pulumi.Output<String> vswitchId;
-
   /// The Zone to launch the DB instance. it supports multiple zone.
   /// If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
   /// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud.getZones`.
   late final pulumi.Output<String> zoneId;
-
   /// (Available since v1.271.0) The information of nodes in the zone.
   late final pulumi.Output<List<Map<String, dynamic>>> zoneInfos;
 
@@ -475,26 +420,22 @@ class Instance extends pulumi.CustomResource {
     InstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:mongodb/instance:Instance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:mongodb/instance:Instance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountPassword = registerOutput<String?>('accountPassword');
     autoRenew = registerOutput<bool?>('autoRenew');
     autoRenewDuration = registerOutput<int>('autoRenewDuration');
     backupInterval = registerOutput<String>('backupInterval');
     backupPeriods = registerOutput<List<String>>('backupPeriods');
     backupRetentionPeriod = registerOutput<int>('backupRetentionPeriod');
-    backupRetentionPolicyOnClusterDeletion = registerOutput<int?>(
-      'backupRetentionPolicyOnClusterDeletion',
-    );
+    backupRetentionPolicyOnClusterDeletion = registerOutput<int?>('backupRetentionPolicyOnClusterDeletion');
     backupTime = registerOutput<String>('backupTime');
     cloudDiskEncryptionKey = registerOutput<String?>('cloudDiskEncryptionKey');
     dbInstanceClass = registerOutput<String>('dbInstanceClass');
-    dbInstanceReleaseProtection = registerOutput<bool?>(
-      'dbInstanceReleaseProtection',
-    );
+    dbInstanceReleaseProtection = registerOutput<bool?>('dbInstanceReleaseProtection');
     dbInstanceStorage = registerOutput<int>('dbInstanceStorage');
     effectiveTime = registerOutput<String?>('effectiveTime');
     enableBackupLog = registerOutput<int>('enableBackupLog');
@@ -503,16 +444,12 @@ class Instance extends pulumi.CustomResource {
     encryptorName = registerOutput<String>('encryptorName');
     engineVersion = registerOutput<String>('engineVersion');
     forceEncryption = registerOutput<String>('forceEncryption');
-    globalSecurityGroupLists = registerOutput<List<String>?>(
-      'globalSecurityGroupLists',
-    );
+    globalSecurityGroupLists = registerOutput<List<String>?>('globalSecurityGroupLists');
     hiddenZoneId = registerOutput<String?>('hiddenZoneId');
     instanceChargeType = registerOutput<String>('instanceChargeType');
     keyIds = registerOutput<List<String>>('keyIds');
     kmsEncryptedPassword = registerOutput<String?>('kmsEncryptedPassword');
-    kmsEncryptionContext = registerOutput<Map<String, String>?>(
-      'kmsEncryptionContext',
-    );
+    kmsEncryptionContext = registerOutput<Map<String, String>?>('kmsEncryptionContext');
     logBackupRetentionPeriod = registerOutput<int>('logBackupRetentionPeriod');
     maintainEndTime = registerOutput<String>('maintainEndTime');
     maintainStartTime = registerOutput<String>('maintainStartTime');
@@ -565,26 +502,22 @@ class Instance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:mongodb/instance:Instance',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:mongodb/instance:Instance',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountPassword = registerOutput<String?>('accountPassword');
     autoRenew = registerOutput<bool?>('autoRenew');
     autoRenewDuration = registerOutput<int>('autoRenewDuration');
     backupInterval = registerOutput<String>('backupInterval');
     backupPeriods = registerOutput<List<String>>('backupPeriods');
     backupRetentionPeriod = registerOutput<int>('backupRetentionPeriod');
-    backupRetentionPolicyOnClusterDeletion = registerOutput<int?>(
-      'backupRetentionPolicyOnClusterDeletion',
-    );
+    backupRetentionPolicyOnClusterDeletion = registerOutput<int?>('backupRetentionPolicyOnClusterDeletion');
     backupTime = registerOutput<String>('backupTime');
     cloudDiskEncryptionKey = registerOutput<String?>('cloudDiskEncryptionKey');
     dbInstanceClass = registerOutput<String>('dbInstanceClass');
-    dbInstanceReleaseProtection = registerOutput<bool?>(
-      'dbInstanceReleaseProtection',
-    );
+    dbInstanceReleaseProtection = registerOutput<bool?>('dbInstanceReleaseProtection');
     dbInstanceStorage = registerOutput<int>('dbInstanceStorage');
     effectiveTime = registerOutput<String?>('effectiveTime');
     enableBackupLog = registerOutput<int>('enableBackupLog');
@@ -593,16 +526,12 @@ class Instance extends pulumi.CustomResource {
     encryptorName = registerOutput<String>('encryptorName');
     engineVersion = registerOutput<String>('engineVersion');
     forceEncryption = registerOutput<String>('forceEncryption');
-    globalSecurityGroupLists = registerOutput<List<String>?>(
-      'globalSecurityGroupLists',
-    );
+    globalSecurityGroupLists = registerOutput<List<String>?>('globalSecurityGroupLists');
     hiddenZoneId = registerOutput<String?>('hiddenZoneId');
     instanceChargeType = registerOutput<String>('instanceChargeType');
     keyIds = registerOutput<List<String>>('keyIds');
     kmsEncryptedPassword = registerOutput<String?>('kmsEncryptedPassword');
-    kmsEncryptionContext = registerOutput<Map<String, String>?>(
-      'kmsEncryptionContext',
-    );
+    kmsEncryptionContext = registerOutput<Map<String, String>?>('kmsEncryptionContext');
     logBackupRetentionPeriod = registerOutput<int>('logBackupRetentionPeriod');
     maintainEndTime = registerOutput<String>('maintainEndTime');
     maintainStartTime = registerOutput<String>('maintainStartTime');

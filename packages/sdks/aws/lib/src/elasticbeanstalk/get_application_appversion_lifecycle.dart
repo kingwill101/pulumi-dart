@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApplicationAppversionLifecycle {
   /// Specifies whether delete a version's source bundle from S3 when the application version is deleted.
   final pulumi.Input<bool> deleteSourceFromS3;
-
   /// Number of days to retain an application version.
   final pulumi.Input<int> maxAgeInDays;
-
   /// Maximum number of application versions to retain.
   final pulumi.Input<int> maxCount;
-
   /// ARN of an IAM service role under which the application version is deleted.  Elastic Beanstalk must have permission to assume this role.
   final pulumi.Input<String> serviceRole;
 
@@ -38,12 +35,11 @@ class GetApplicationAppversionLifecycle {
 
   factory GetApplicationAppversionLifecycle.fromMap(Map<String, dynamic> map) {
     return GetApplicationAppversionLifecycle(
-      deleteSourceFromS3: pulumi.Input.fromValue(
-        map['deleteSourceFromS3'] as bool,
-      ),
+      deleteSourceFromS3: pulumi.Input.fromValue(map['deleteSourceFromS3'] as bool),
       maxAgeInDays: pulumi.Input.fromValue(map['maxAgeInDays'] as int),
       maxCount: pulumi.Input.fromValue(map['maxCount'] as int),
       serviceRole: pulumi.Input.fromValue(map['serviceRole'] as String),
     );
   }
 }
+

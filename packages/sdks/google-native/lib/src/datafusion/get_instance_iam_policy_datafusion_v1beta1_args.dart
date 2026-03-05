@@ -33,22 +33,13 @@ class GetInstanceIamPolicyDatafusionV1beta1Args {
     };
   }
 
-  factory GetInstanceIamPolicyDatafusionV1beta1Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetInstanceIamPolicyDatafusionV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetInstanceIamPolicyDatafusionV1beta1Args(
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      optionsRequestedPolicyVersion: (() {
-        final guardedValue = map['optionsRequestedPolicyVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -375,32 +375,23 @@ import 'hybrid_connection_state.dart';
 class HybridConnection extends pulumi.CustomResource {
   /// Specifies the name of the App Service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> appServiceName;
-
   /// The hostname of the endpoint.
   late final pulumi.Output<String> hostname;
-
   /// The name of the Relay Namespace.
   late final pulumi.Output<String> namespaceName;
-
   /// The port of the endpoint.
   late final pulumi.Output<int> port;
-
   /// The ID of the Service Bus Relay. Changing this forces a new resource to be created.
   late final pulumi.Output<String> relayId;
   late final pulumi.Output<String> relayName;
-
   /// The name of the resource group in which to create the App Service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The name of the Service Bus key which has Send permissions. Defaults to `RootManageSharedAccessKey`.
   late final pulumi.Output<String?> sendKeyName;
-
   /// The value of the Service Bus Primary Access key.
   late final pulumi.Output<String> sendKeyValue;
-
   /// The name of the Service Bus namespace.
   late final pulumi.Output<String> serviceBusNamespace;
-
   /// The suffix for the service bus endpoint.
   late final pulumi.Output<String> serviceBusSuffix;
 
@@ -413,11 +404,11 @@ class HybridConnection extends pulumi.CustomResource {
     HybridConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appservice/hybridConnection:HybridConnection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appservice/hybridConnection:HybridConnection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appServiceName = registerOutput<String>('appServiceName');
     hostname = registerOutput<String>('hostname');
     namespaceName = registerOutput<String>('namespaceName');
@@ -449,11 +440,11 @@ class HybridConnection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appservice/hybridConnection:HybridConnection',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appservice/hybridConnection:HybridConnection',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appServiceName = registerOutput<String>('appServiceName');
     hostname = registerOutput<String>('hostname');
     namespaceName = registerOutput<String>('namespaceName');

@@ -462,33 +462,23 @@ class InsightsReportConfig extends pulumi.CustomResource {
   /// Options for configuring the format of the inventory report CSV file.
   /// Structure is documented below.
   late final pulumi.Output<InsightsReportConfigCsvOptions?> csvOptions;
-
   /// The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
   late final pulumi.Output<String?> displayName;
-
   /// If set, all the inventory report details associated with this report configuration are deleted.
   late final pulumi.Output<bool?> forceDestroy;
-
   /// Options for configuring how inventory reports are generated.
   /// Structure is documented below.
-  late final pulumi.Output<InsightsReportConfigFrequencyOptions?>
-  frequencyOptions;
-
+  late final pulumi.Output<InsightsReportConfigFrequencyOptions?> frequencyOptions;
   /// The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
   /// must be in the same location.
   late final pulumi.Output<String> location;
-
   /// The UUID of the inventory report configuration.
   late final pulumi.Output<String> name;
-
   /// Options for including metadata in an inventory report.
   /// Structure is documented below.
-  late final pulumi.Output<InsightsReportConfigObjectMetadataReportOptions?>
-  objectMetadataReportOptions;
-
+  late final pulumi.Output<InsightsReportConfigObjectMetadataReportOptions?> objectMetadataReportOptions;
   /// An option for outputting inventory reports as parquet files.
   late final pulumi.Output<Map<String, dynamic>?> parquetOptions;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -502,46 +492,18 @@ class InsightsReportConfig extends pulumi.CustomResource {
     InsightsReportConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:storage/insightsReportConfig:InsightsReportConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    csvOptions = registerOutput<InsightsReportConfigCsvOptions?>(
-      'csvOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InsightsReportConfigCsvOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:storage/insightsReportConfig:InsightsReportConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    csvOptions = registerOutput<InsightsReportConfigCsvOptions?>('csvOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InsightsReportConfigCsvOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     displayName = registerOutput<String?>('displayName');
     forceDestroy = registerOutput<bool?>('forceDestroy');
-    frequencyOptions = registerOutput<InsightsReportConfigFrequencyOptions?>(
-      'frequencyOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InsightsReportConfigFrequencyOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    frequencyOptions = registerOutput<InsightsReportConfigFrequencyOptions?>('frequencyOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InsightsReportConfigFrequencyOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    objectMetadataReportOptions =
-        registerOutput<InsightsReportConfigObjectMetadataReportOptions?>(
-          'objectMetadataReportOptions',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return InsightsReportConfigObjectMetadataReportOptions.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    objectMetadataReportOptions = registerOutput<InsightsReportConfigObjectMetadataReportOptions?>('objectMetadataReportOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InsightsReportConfigObjectMetadataReportOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     parquetOptions = registerOutput<Map<String, dynamic>?>('parquetOptions');
     project = registerOutput<String>('project');
   }
@@ -564,46 +526,18 @@ class InsightsReportConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:storage/insightsReportConfig:InsightsReportConfig',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    csvOptions = registerOutput<InsightsReportConfigCsvOptions?>(
-      'csvOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InsightsReportConfigCsvOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:storage/insightsReportConfig:InsightsReportConfig',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    csvOptions = registerOutput<InsightsReportConfigCsvOptions?>('csvOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InsightsReportConfigCsvOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     displayName = registerOutput<String?>('displayName');
     forceDestroy = registerOutput<bool?>('forceDestroy');
-    frequencyOptions = registerOutput<InsightsReportConfigFrequencyOptions?>(
-      'frequencyOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InsightsReportConfigFrequencyOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    frequencyOptions = registerOutput<InsightsReportConfigFrequencyOptions?>('frequencyOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InsightsReportConfigFrequencyOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    objectMetadataReportOptions =
-        registerOutput<InsightsReportConfigObjectMetadataReportOptions?>(
-          'objectMetadataReportOptions',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return InsightsReportConfigObjectMetadataReportOptions.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    objectMetadataReportOptions = registerOutput<InsightsReportConfigObjectMetadataReportOptions?>('objectMetadataReportOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InsightsReportConfigObjectMetadataReportOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     parquetOptions = registerOutput<Map<String, dynamic>?>('parquetOptions');
     project = registerOutput<String>('project');
   }

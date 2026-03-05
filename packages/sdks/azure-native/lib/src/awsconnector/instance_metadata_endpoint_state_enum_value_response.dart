@@ -9,21 +9,20 @@ class InstanceMetadataEndpointStateEnumValueResponse {
 
   /// Creates a new [InstanceMetadataEndpointStateEnumValueResponse].
   /// [value] Property value
-  InstanceMetadataEndpointStateEnumValueResponse({this.value});
+  InstanceMetadataEndpointStateEnumValueResponse({
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': ?value};
+    return <String, dynamic>{
+      'value': ?value,
+    };
   }
 
-  factory InstanceMetadataEndpointStateEnumValueResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InstanceMetadataEndpointStateEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return InstanceMetadataEndpointStateEnumValueResponse(
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

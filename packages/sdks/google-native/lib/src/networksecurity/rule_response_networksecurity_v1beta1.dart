@@ -7,9 +7,7 @@ import 'source_response_networksecurity_v1beta1.dart';
 /// Specification of rules.
 class RuleResponseNetworksecurityV1beta1 {
   /// Optional. List of attributes for the traffic destination. All of the destinations must match. A destination is a match if a request matches all the specified hosts, ports, methods and headers. If not set, the action specified in the 'action' field will be applied without any rule checks for the destination.
-  final pulumi.Input<List<DestinationResponseNetworksecurityV1beta1>>
-  destinations;
-
+  final pulumi.Input<List<DestinationResponseNetworksecurityV1beta1>> destinations;
   /// Optional. List of attributes for the traffic source. All of the sources must match. A source is a match if both principals and ip_blocks match. If not set, the action specified in the 'action' field will be applied without any rule checks for the source.
   final pulumi.Input<List<SourceResponseNetworksecurityV1beta1>> sources;
 
@@ -23,51 +21,16 @@ class RuleResponseNetworksecurityV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'destinations':
-          pulumi.Input.mapInputValue<
-            List<DestinationResponseNetworksecurityV1beta1>,
-            List<Map<String, dynamic>>
-          >(
-            destinations,
-            (value) =>
-                pulumi.Input.encodeList<
-                  DestinationResponseNetworksecurityV1beta1,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'sources':
-          pulumi.Input.mapInputValue<
-            List<SourceResponseNetworksecurityV1beta1>,
-            List<Map<String, dynamic>>
-          >(
-            sources,
-            (value) =>
-                pulumi.Input.encodeList<
-                  SourceResponseNetworksecurityV1beta1,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'destinations': pulumi.Input.mapInputValue<List<DestinationResponseNetworksecurityV1beta1>, List<Map<String, dynamic>>>(destinations, (value) => pulumi.Input.encodeList<DestinationResponseNetworksecurityV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'sources': pulumi.Input.mapInputValue<List<SourceResponseNetworksecurityV1beta1>, List<Map<String, dynamic>>>(sources, (value) => pulumi.Input.encodeList<SourceResponseNetworksecurityV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory RuleResponseNetworksecurityV1beta1.fromMap(Map<String, dynamic> map) {
     return RuleResponseNetworksecurityV1beta1(
-      destinations: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<DestinationResponseNetworksecurityV1beta1>(
-          map['destinations']!,
-          (value) => DestinationResponseNetworksecurityV1beta1.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      sources: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<SourceResponseNetworksecurityV1beta1>(
-          map['sources']!,
-          (value) => SourceResponseNetworksecurityV1beta1.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      destinations: pulumi.Input.fromValue(pulumi.Input.decodeList<DestinationResponseNetworksecurityV1beta1>(map['destinations']!, (value) => DestinationResponseNetworksecurityV1beta1.fromMap((value as Map).cast<String, dynamic>()))),
+      sources: pulumi.Input.fromValue(pulumi.Input.decodeList<SourceResponseNetworksecurityV1beta1>(map['sources']!, (value) => SourceResponseNetworksecurityV1beta1.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

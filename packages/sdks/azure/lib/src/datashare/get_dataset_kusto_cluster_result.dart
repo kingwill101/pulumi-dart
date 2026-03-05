@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getDatasetKustoCluster.
 class GetDatasetKustoClusterResult {
   /// The name of the Data Share Dataset.
   final String displayName;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The resource ID of the Kusto Cluster to be shared with the receiver.
   final String kustoClusterId;
-
   /// The location of the Kusto Cluster.
   final String kustoClusterLocation;
   final String name;
@@ -54,3 +52,4 @@ class GetDatasetKustoClusterResult {
     );
   }
 }
+

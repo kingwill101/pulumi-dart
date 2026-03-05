@@ -5,17 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DistributionTenantParameter {
   /// Name of the distribution tenant.
   final pulumi.Input<String> name;
-
   /// Value of the parameter.
   final pulumi.Input<String> value;
 
   /// Creates a new [DistributionTenantParameter].
   /// [name] Name of the distribution tenant.
   /// [value] Value of the parameter.
-  DistributionTenantParameter({required this.name, required this.value});
+  DistributionTenantParameter({
+    required this.name,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'value': value};
+    return <String, dynamic>{
+      'name': name,
+      'value': value,
+    };
   }
 
   factory DistributionTenantParameter.fromMap(Map<String, dynamic> map) {
@@ -25,3 +30,4 @@ class DistributionTenantParameter {
     );
   }
 }
+

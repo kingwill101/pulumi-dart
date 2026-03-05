@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMonitorIdentity {
   final pulumi.Input<String> principalId;
   final pulumi.Input<String> tenantId;
-
   /// The type of identity used for the resource.
   final pulumi.Input<String> type;
 
@@ -35,3 +34,4 @@ class GetMonitorIdentity {
     );
   }
 }
+

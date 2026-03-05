@@ -7,16 +7,12 @@ import 'compute_recurrence_schedule.dart';
 class Recurrence {
   /// [Required] The frequency to trigger schedule.
   final pulumi.Input<String>? frequency;
-
   /// [Required] Specifies schedule interval in conjunction with frequency
   final pulumi.Input<int>? interval;
-
   /// [Required] The recurrence schedule.
   final pulumi.Input<ComputeRecurrenceSchedule>? schedule;
-
   /// The start time in yyyy-MM-ddTHH:mm:ss format.
   final pulumi.Input<String>? startTime;
-
   /// Specifies time zone in which the schedule runs.
   /// TimeZone should follow Windows time zone format. Refer: https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/default-time-zones?view=windows-11
   final pulumi.Input<String>? timeZone;
@@ -39,11 +35,7 @@ class Recurrence {
     return <String, dynamic>{
       'frequency': ?frequency,
       'interval': ?interval,
-      'schedule':
-          ?pulumi.Input.mapOptionalInputValue<
-            ComputeRecurrenceSchedule,
-            Map<String, dynamic>
-          >(schedule, (value) => value.toMap()),
+      'schedule': ?pulumi.Input.mapOptionalInputValue<ComputeRecurrenceSchedule, Map<String, dynamic>>(schedule, (value) => value.toMap()),
       'startTime': ?startTime,
       'timeZone': ?timeZone,
     };
@@ -51,35 +43,12 @@ class Recurrence {
 
   factory Recurrence.fromMap(Map<String, dynamic> map) {
     return Recurrence(
-      frequency: (() {
-        final guardedValue = map['frequency'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      interval: (() {
-        final guardedValue = map['interval'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      schedule: (() {
-        final guardedValue = map['schedule'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ComputeRecurrenceSchedule.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      startTime: (() {
-        final guardedValue = map['startTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      timeZone: (() {
-        final guardedValue = map['timeZone'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      frequency: (() { final guardedValue = map['frequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      interval: (() { final guardedValue = map['interval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      schedule: (() { final guardedValue = map['schedule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ComputeRecurrenceSchedule.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      startTime: (() { final guardedValue = map['startTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      timeZone: (() { final guardedValue = map['timeZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

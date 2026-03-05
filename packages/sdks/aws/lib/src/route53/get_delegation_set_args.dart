@@ -12,10 +12,14 @@ class GetDelegationSetArgs {
 
   /// Creates a new [GetDelegationSetArgs].
   /// [id] Delegation set ID.
-  GetDelegationSetArgs({required this.id});
+  GetDelegationSetArgs({
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id};
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
   factory GetDelegationSetArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetDelegationSetArgs {
     );
   }
 }
+

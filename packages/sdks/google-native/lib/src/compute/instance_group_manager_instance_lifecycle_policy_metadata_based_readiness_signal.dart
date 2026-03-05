@@ -13,18 +13,15 @@ class InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignal {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'timeoutSec': ?timeoutSec};
+    return <String, dynamic>{
+      'timeoutSec': ?timeoutSec,
+    };
   }
 
-  factory InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignal.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignal.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignal(
-      timeoutSec: (() {
-        final guardedValue = map['timeoutSec'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      timeoutSec: (() { final guardedValue = map['timeoutSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

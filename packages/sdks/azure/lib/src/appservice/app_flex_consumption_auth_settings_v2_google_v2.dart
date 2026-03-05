@@ -5,15 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppFlexConsumptionAuthSettingsV2GoogleV2 {
   /// Specifies a list of Allowed Audiences that should be requested as part of Google Sign-In authentication.
   final pulumi.Input<List<String>>? allowedAudiences;
-
   /// The OpenID Connect Client ID for the Google web application.
   final pulumi.Input<String> clientId;
-
   /// The app setting name that contains the `client_secret` value used for Google Login.
   ///
   /// !&gt; **Note:** A setting with this name must exist in `app_settings` to function correctly.
   final pulumi.Input<String> clientSecretSettingName;
-
   /// The list of OAuth 2.0 scopes that should be requested as part of Google Sign-In authentication.
   final pulumi.Input<List<String>>? loginScopes;
 
@@ -38,24 +35,13 @@ class AppFlexConsumptionAuthSettingsV2GoogleV2 {
     };
   }
 
-  factory AppFlexConsumptionAuthSettingsV2GoogleV2.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppFlexConsumptionAuthSettingsV2GoogleV2.fromMap(Map<String, dynamic> map) {
     return AppFlexConsumptionAuthSettingsV2GoogleV2(
-      allowedAudiences: (() {
-        final guardedValue = map['allowedAudiences'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      allowedAudiences: (() { final guardedValue = map['allowedAudiences']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       clientId: pulumi.Input.fromValue(map['clientId'] as String),
-      clientSecretSettingName: pulumi.Input.fromValue(
-        map['clientSecretSettingName'] as String,
-      ),
-      loginScopes: (() {
-        final guardedValue = map['loginScopes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      clientSecretSettingName: pulumi.Input.fromValue(map['clientSecretSettingName'] as String),
+      loginScopes: (() { final guardedValue = map['loginScopes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

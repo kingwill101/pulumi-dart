@@ -159,45 +159,34 @@ import 'gemini_gcp_enablement_setting_state.dart';
 class GeminiGcpEnablementSetting extends pulumi.CustomResource {
   /// Create time stamp.
   late final pulumi.Output<String> createTime;
-
   /// (Optional, Deprecated)
   /// Whether web grounding should be disabled.
   ///
   /// &gt; **Warning:** `disable_web_grounding` is deprecated. Use `web_grounding_type` instead.
   late final pulumi.Output<bool?> disableWebGrounding;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Whether customer data sharing should be enabled.
   late final pulumi.Output<bool?> enableCustomerDataSharing;
-
   /// Id of the Gemini Gcp Enablement setting.
   late final pulumi.Output<String> geminiGcpEnablementSettingId;
-
   /// Labels as key value pairs.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> location;
-
   /// Identifier. Name of the resource.
   /// Format:projects/{project}/locations/{location}/geminiGcpEnablementSettings/{geminiGcpEnablementSetting}
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// Update time stamp.
   late final pulumi.Output<String> updateTime;
-
   /// Web grounding type.
   /// Possible values:
   /// GROUNDING_WITH_GOOGLE_SEARCH
@@ -213,20 +202,16 @@ class GeminiGcpEnablementSetting extends pulumi.CustomResource {
     GeminiGcpEnablementSettingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:gemini/geminiGcpEnablementSetting:GeminiGcpEnablementSetting',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:gemini/geminiGcpEnablementSetting:GeminiGcpEnablementSetting',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     disableWebGrounding = registerOutput<bool?>('disableWebGrounding');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    enableCustomerDataSharing = registerOutput<bool?>(
-      'enableCustomerDataSharing',
-    );
-    geminiGcpEnablementSettingId = registerOutput<String>(
-      'geminiGcpEnablementSettingId',
-    );
+    enableCustomerDataSharing = registerOutput<bool?>('enableCustomerDataSharing');
+    geminiGcpEnablementSettingId = registerOutput<String>('geminiGcpEnablementSettingId');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -254,20 +239,16 @@ class GeminiGcpEnablementSetting extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:gemini/geminiGcpEnablementSetting:GeminiGcpEnablementSetting',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:gemini/geminiGcpEnablementSetting:GeminiGcpEnablementSetting',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     disableWebGrounding = registerOutput<bool?>('disableWebGrounding');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    enableCustomerDataSharing = registerOutput<bool?>(
-      'enableCustomerDataSharing',
-    );
-    geminiGcpEnablementSettingId = registerOutput<String>(
-      'geminiGcpEnablementSettingId',
-    );
+    enableCustomerDataSharing = registerOutput<bool?>('enableCustomerDataSharing');
+    geminiGcpEnablementSettingId = registerOutput<String>('geminiGcpEnablementSettingId');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

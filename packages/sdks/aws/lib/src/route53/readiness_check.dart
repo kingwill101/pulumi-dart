@@ -110,18 +110,14 @@ import 'readiness_check_state.dart';
 class ReadinessCheck extends pulumi.CustomResource {
   /// ARN of the readiness_check
   late final pulumi.Output<String> arn;
-
   /// Unique name describing the readiness check.
   late final pulumi.Output<String> readinessCheckName;
-
   /// Name describing the resource set that will be monitored for readiness.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> resourceSetName;
-
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -134,11 +130,11 @@ class ReadinessCheck extends pulumi.CustomResource {
     ReadinessCheckArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:route53recoveryreadiness/readinessCheck:ReadinessCheck',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:route53recoveryreadiness/readinessCheck:ReadinessCheck',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     readinessCheckName = registerOutput<String>('readinessCheckName');
     resourceSetName = registerOutput<String>('resourceSetName');
@@ -164,11 +160,11 @@ class ReadinessCheck extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:route53recoveryreadiness/readinessCheck:ReadinessCheck',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:route53recoveryreadiness/readinessCheck:ReadinessCheck',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     readinessCheckName = registerOutput<String>('readinessCheckName');
     resourceSetName = registerOutput<String>('resourceSetName');

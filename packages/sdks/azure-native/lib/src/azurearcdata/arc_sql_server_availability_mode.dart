@@ -15,3 +15,4 @@ enum ArcSqlServerAvailabilityMode {
     throw ArgumentError('Unknown ArcSqlServerAvailabilityMode value: $value');
   }
 }
+

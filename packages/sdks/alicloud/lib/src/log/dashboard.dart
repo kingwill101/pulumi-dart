@@ -443,17 +443,13 @@ import 'dashboard_state.dart';
 class Dashboard extends pulumi.CustomResource {
   /// Dashboard attribute.
   late final pulumi.Output<String> attribute;
-
   /// Configuration of charts in the dashboard.
   /// **Note:** From version 1.164.0, `char_list` can set parameter "action".
   late final pulumi.Output<String> charList;
-
   /// The name of the Log Dashboard.
   late final pulumi.Output<String> dashboardName;
-
   /// Dashboard alias.
   late final pulumi.Output<String?> displayName;
-
   /// The name of the log project. It is the only in one Alicloud account.
   late final pulumi.Output<String> projectName;
 
@@ -466,11 +462,11 @@ class Dashboard extends pulumi.CustomResource {
     DashboardArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:log/dashboard:Dashboard',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:log/dashboard:Dashboard',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     attribute = registerOutput<String>('attribute');
     charList = registerOutput<String>('charList');
     dashboardName = registerOutput<String>('dashboardName');
@@ -496,11 +492,11 @@ class Dashboard extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:log/dashboard:Dashboard',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:log/dashboard:Dashboard',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     attribute = registerOutput<String>('attribute');
     charList = registerOutput<String>('charList');
     dashboardName = registerOutput<String>('dashboardName');

@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBackupArgs {
   /// The ID of the Backup Vault of the Data Source in which the Backup belongs.
   final pulumi.Input<String> backupVaultId;
-
   /// The ID of the Data Source in which the Backup belongs.
   final pulumi.Input<String> dataSourceId;
-
   /// The location in which the Backup belongs.
   final pulumi.Input<String> location;
-
   /// The Google Cloud Project in which the Backup belongs.
   final pulumi.Input<String> project;
 
@@ -49,3 +46,4 @@ class GetBackupArgs {
     );
   }
 }
+

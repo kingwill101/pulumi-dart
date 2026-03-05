@@ -6,22 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DirectLineSpeechChannelPropertiesResponse {
   /// The cognitive service region with this channel registration.
   final pulumi.Input<String>? cognitiveServiceRegion;
-
   /// The cognitive service id with this channel registration.
   final pulumi.Input<String>? cognitiveServiceResourceId;
-
   /// The cognitive service subscription key to use with this channel registration.
   final pulumi.Input<String>? cognitiveServiceSubscriptionKey;
-
   /// Custom voice deployment id (optional).
   final pulumi.Input<String>? customSpeechModelId;
-
   /// Custom speech model id (optional).
   final pulumi.Input<String>? customVoiceDeploymentId;
-
   /// Make this a default bot for chosen cognitive service account.
   final pulumi.Input<bool>? isDefaultBotForCogSvcAccount;
-
   /// Whether this channel is enabled or not.
   final pulumi.Input<bool>? isEnabled;
 
@@ -55,45 +49,16 @@ class DirectLineSpeechChannelPropertiesResponse {
     };
   }
 
-  factory DirectLineSpeechChannelPropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DirectLineSpeechChannelPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DirectLineSpeechChannelPropertiesResponse(
-      cognitiveServiceRegion: (() {
-        final guardedValue = map['cognitiveServiceRegion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      cognitiveServiceResourceId: (() {
-        final guardedValue = map['cognitiveServiceResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      cognitiveServiceSubscriptionKey: (() {
-        final guardedValue = map['cognitiveServiceSubscriptionKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      customSpeechModelId: (() {
-        final guardedValue = map['customSpeechModelId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      customVoiceDeploymentId: (() {
-        final guardedValue = map['customVoiceDeploymentId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      isDefaultBotForCogSvcAccount: (() {
-        final guardedValue = map['isDefaultBotForCogSvcAccount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      isEnabled: (() {
-        final guardedValue = map['isEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      cognitiveServiceRegion: (() { final guardedValue = map['cognitiveServiceRegion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      cognitiveServiceResourceId: (() { final guardedValue = map['cognitiveServiceResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      cognitiveServiceSubscriptionKey: (() { final guardedValue = map['cognitiveServiceSubscriptionKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      customSpeechModelId: (() { final guardedValue = map['customSpeechModelId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      customVoiceDeploymentId: (() { final guardedValue = map['customVoiceDeploymentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      isDefaultBotForCogSvcAccount: (() { final guardedValue = map['isDefaultBotForCogSvcAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      isEnabled: (() { final guardedValue = map['isEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SingleClusterRoutingResponse {
   /// Whether or not `CheckAndMutateRow` and `ReadModifyWriteRow` requests are allowed by this app profile. It is unsafe to send these requests to the same table/row/column in multiple clusters.
   final pulumi.Input<bool> allowTransactionalWrites;
-
   /// The cluster to which read/write requests should be routed.
   final pulumi.Input<String> clusterId;
 
@@ -27,10 +26,9 @@ class SingleClusterRoutingResponse {
 
   factory SingleClusterRoutingResponse.fromMap(Map<String, dynamic> map) {
     return SingleClusterRoutingResponse(
-      allowTransactionalWrites: pulumi.Input.fromValue(
-        map['allowTransactionalWrites'] as bool,
-      ),
+      allowTransactionalWrites: pulumi.Input.fromValue(map['allowTransactionalWrites'] as bool),
       clusterId: pulumi.Input.fromValue(map['clusterId'] as String),
     );
   }
 }
+

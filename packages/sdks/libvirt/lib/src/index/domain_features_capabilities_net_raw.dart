@@ -8,19 +8,20 @@ class DomainFeaturesCapabilitiesNetRaw {
 
   /// Creates a new [DomainFeaturesCapabilitiesNetRaw].
   /// [state] Sets the state of the capability to wake from an alarm.
-  DomainFeaturesCapabilitiesNetRaw({this.state});
+  DomainFeaturesCapabilitiesNetRaw({
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'state': ?state};
+    return <String, dynamic>{
+      'state': ?state,
+    };
   }
 
   factory DomainFeaturesCapabilitiesNetRaw.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesCapabilitiesNetRaw(
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

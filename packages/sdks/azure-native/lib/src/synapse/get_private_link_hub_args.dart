@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPrivateLinkHubArgs {
   /// Name of the privateLinkHub
   final pulumi.Input<String> privateLinkHubName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetPrivateLinkHubArgs {
 
   factory GetPrivateLinkHubArgs.fromMap(Map<String, dynamic> map) {
     return GetPrivateLinkHubArgs(
-      privateLinkHubName: pulumi.Input.fromValue(
-        map['privateLinkHubName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      privateLinkHubName: pulumi.Input.fromValue(map['privateLinkHubName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

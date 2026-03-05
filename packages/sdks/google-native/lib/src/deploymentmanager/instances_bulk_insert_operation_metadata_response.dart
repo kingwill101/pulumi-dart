@@ -13,16 +13,15 @@ class InstancesBulkInsertOperationMetadataResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'perLocationStatus': perLocationStatus};
+    return <String, dynamic>{
+      'perLocationStatus': perLocationStatus,
+    };
   }
 
-  factory InstancesBulkInsertOperationMetadataResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InstancesBulkInsertOperationMetadataResponse.fromMap(Map<String, dynamic> map) {
     return InstancesBulkInsertOperationMetadataResponse(
-      perLocationStatus: pulumi.Input.fromValue(
-        (map['perLocationStatus'] as Map).cast<String, String>(),
-      ),
+      perLocationStatus: pulumi.Input.fromValue((map['perLocationStatus'] as Map).cast<String, String>()),
     );
   }
 }
+

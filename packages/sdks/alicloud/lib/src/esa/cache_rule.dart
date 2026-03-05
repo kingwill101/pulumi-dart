@@ -288,84 +288,58 @@ import 'cache_rule_state.dart';
 class CacheRule extends pulumi.CustomResource {
   /// Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
   late final pulumi.Output<String?> additionalCacheablePorts;
-
   /// Browser cache mode. Possible values:
   late final pulumi.Output<String?> browserCacheMode;
-
   /// Browser cache expiration time in seconds.
   late final pulumi.Output<String?> browserCacheTtl;
-
   /// Set the bypass cache mode. Possible values:
   late final pulumi.Output<String?> bypassCache;
-
   /// Cache deception protection. Used to defend against web cache deception attacks, only the cache content that passes the validation will be cached. Value range:
   late final pulumi.Output<String?> cacheDeceptionArmor;
-
   /// Cache retention eligibility. Used to control whether user requests bypass the cache retention node when returning to the origin. Possible values:
   late final pulumi.Output<String?> cacheReserveEligibility;
-
   /// Cache Rule Id.
   late final pulumi.Output<int> cacheRuleId;
-
   /// When generating the cache key, check if the cookie exists. If it does, add the cookie name (case-insensitive) to the cache key. Multiple cookie names are supported, separated by spaces.
   late final pulumi.Output<String?> checkPresenceCookie;
-
   /// When generating the cache key, check if the header exists. If it does, add the header name (case-insensitive) to the cache key. Multiple header names are supported, separated by spaces.
   late final pulumi.Output<String?> checkPresenceHeader;
-
   /// Edge cache mode. Possible values:
   late final pulumi.Output<String?> edgeCacheMode;
-
   /// Edge cache expiration time in seconds.
   late final pulumi.Output<String?> edgeCacheTtl;
-
   /// Status code cache expiration time in seconds.
   late final pulumi.Output<String?> edgeStatusCodeCacheTtl;
-
   /// When generating the cache key, add the specified cookie names and their values. Multiple values are supported, separated by spaces.
   late final pulumi.Output<String?> includeCookie;
-
   /// When generating the cache key, add the specified header names and their values. Multiple values are supported, separated by spaces.
   late final pulumi.Output<String?> includeHeader;
-
   /// Query strings to be reserved or excluded. Multiple values are supported, separated by spaces.
   late final pulumi.Output<String?> queryString;
-
   /// The processing mode for query strings when generating the cache key. Possible values:
   late final pulumi.Output<String?> queryStringMode;
-
   /// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
   /// - Match all incoming requests: value set to true.
   /// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\").
   late final pulumi.Output<String?> rule;
-
   /// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
   late final pulumi.Output<String?> ruleEnable;
-
   /// Rule name. When adding global configuration, this parameter does not need to be set.
   late final pulumi.Output<String?> ruleName;
-
   /// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
   late final pulumi.Output<int> sequence;
-
   /// Serve stale cache. When enabled, the node can still respond to user requests with expired cached files when the origin server is unavailable. Value range:
   late final pulumi.Output<String?> serveStale;
-
   /// The site ID, which can be obtained by calling the [ListSites] API.
   late final pulumi.Output<String> siteId;
-
   /// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
   late final pulumi.Output<int?> siteVersion;
-
   /// Query string sorting, disabled by default. Possible values:
   late final pulumi.Output<String?> sortQueryStringForCache;
-
   /// When generating the cache key, add the client device type. Possible values:
   late final pulumi.Output<String?> userDeviceType;
-
   /// When generating the cache key, add the client's geographic location. Possible values:
   late final pulumi.Output<String?> userGeo;
-
   /// When generating cache keys, include the client's language type. Possible values:
   late final pulumi.Output<String?> userLanguage;
 
@@ -378,21 +352,17 @@ class CacheRule extends pulumi.CustomResource {
     CacheRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/cacheRule:CacheRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    additionalCacheablePorts = registerOutput<String?>(
-      'additionalCacheablePorts',
-    );
+          'alicloud:esa/cacheRule:CacheRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    additionalCacheablePorts = registerOutput<String?>('additionalCacheablePorts');
     browserCacheMode = registerOutput<String?>('browserCacheMode');
     browserCacheTtl = registerOutput<String?>('browserCacheTtl');
     bypassCache = registerOutput<String?>('bypassCache');
     cacheDeceptionArmor = registerOutput<String?>('cacheDeceptionArmor');
-    cacheReserveEligibility = registerOutput<String?>(
-      'cacheReserveEligibility',
-    );
+    cacheReserveEligibility = registerOutput<String?>('cacheReserveEligibility');
     cacheRuleId = registerOutput<int>('cacheRuleId');
     checkPresenceCookie = registerOutput<String?>('checkPresenceCookie');
     checkPresenceHeader = registerOutput<String?>('checkPresenceHeader');
@@ -410,9 +380,7 @@ class CacheRule extends pulumi.CustomResource {
     serveStale = registerOutput<String?>('serveStale');
     siteId = registerOutput<String>('siteId');
     siteVersion = registerOutput<int?>('siteVersion');
-    sortQueryStringForCache = registerOutput<String?>(
-      'sortQueryStringForCache',
-    );
+    sortQueryStringForCache = registerOutput<String?>('sortQueryStringForCache');
     userDeviceType = registerOutput<String?>('userDeviceType');
     userGeo = registerOutput<String?>('userGeo');
     userLanguage = registerOutput<String?>('userLanguage');
@@ -436,21 +404,17 @@ class CacheRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/cacheRule:CacheRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    additionalCacheablePorts = registerOutput<String?>(
-      'additionalCacheablePorts',
-    );
+          'alicloud:esa/cacheRule:CacheRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    additionalCacheablePorts = registerOutput<String?>('additionalCacheablePorts');
     browserCacheMode = registerOutput<String?>('browserCacheMode');
     browserCacheTtl = registerOutput<String?>('browserCacheTtl');
     bypassCache = registerOutput<String?>('bypassCache');
     cacheDeceptionArmor = registerOutput<String?>('cacheDeceptionArmor');
-    cacheReserveEligibility = registerOutput<String?>(
-      'cacheReserveEligibility',
-    );
+    cacheReserveEligibility = registerOutput<String?>('cacheReserveEligibility');
     cacheRuleId = registerOutput<int>('cacheRuleId');
     checkPresenceCookie = registerOutput<String?>('checkPresenceCookie');
     checkPresenceHeader = registerOutput<String?>('checkPresenceHeader');
@@ -468,9 +432,7 @@ class CacheRule extends pulumi.CustomResource {
     serveStale = registerOutput<String?>('serveStale');
     siteId = registerOutput<String>('siteId');
     siteVersion = registerOutput<int?>('siteVersion');
-    sortQueryStringForCache = registerOutput<String?>(
-      'sortQueryStringForCache',
-    );
+    sortQueryStringForCache = registerOutput<String?>('sortQueryStringForCache');
     userDeviceType = registerOutput<String?>('userDeviceType');
     userGeo = registerOutput<String?>('userGeo');
     userLanguage = registerOutput<String?>('userLanguage');

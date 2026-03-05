@@ -103,71 +103,45 @@ class _EcsModuleNamespace {
   final EC2TaskDefinitionArgs = module_ecs.EC2TaskDefinitionArgs.new;
   final FargateService = module_ecs.FargateService.new;
   final FargateServiceArgs = module_ecs.FargateServiceArgs.new;
-  final FargateServiceTaskDefinition =
-      module_ecs.FargateServiceTaskDefinition.new;
-  final FargateServiceTaskDefinitionArgs =
-      module_ecs.FargateServiceTaskDefinition.new;
+  final FargateServiceTaskDefinition = module_ecs.FargateServiceTaskDefinition.new;
+  final FargateServiceTaskDefinitionArgs = module_ecs.FargateServiceTaskDefinition.new;
   final FargateTaskDefinition = module_ecs.FargateTaskDefinition.new;
   final FargateTaskDefinitionArgs = module_ecs.FargateTaskDefinitionArgs.new;
-  final TaskDefinitionContainerDefinition =
-      module_ecs.TaskDefinitionContainerDefinition.new;
-  final TaskDefinitionContainerDefinitionArgs =
-      module_ecs.TaskDefinitionContainerDefinition.new;
-  final TaskDefinitionContainerDependency =
-      module_ecs.TaskDefinitionContainerDependency.new;
-  final TaskDefinitionContainerDependencyArgs =
-      module_ecs.TaskDefinitionContainerDependency.new;
+  final TaskDefinitionContainerDefinition = module_ecs.TaskDefinitionContainerDefinition.new;
+  final TaskDefinitionContainerDefinitionArgs = module_ecs.TaskDefinitionContainerDefinition.new;
+  final TaskDefinitionContainerDependency = module_ecs.TaskDefinitionContainerDependency.new;
+  final TaskDefinitionContainerDependencyArgs = module_ecs.TaskDefinitionContainerDependency.new;
   final TaskDefinitionDevice = module_ecs.TaskDefinitionDevice.new;
   final TaskDefinitionDeviceArgs = module_ecs.TaskDefinitionDevice.new;
-  final TaskDefinitionEnvironmentFile =
-      module_ecs.TaskDefinitionEnvironmentFile.new;
-  final TaskDefinitionEnvironmentFileArgs =
-      module_ecs.TaskDefinitionEnvironmentFile.new;
-  final TaskDefinitionFirelensConfiguration =
-      module_ecs.TaskDefinitionFirelensConfiguration.new;
-  final TaskDefinitionFirelensConfigurationArgs =
-      module_ecs.TaskDefinitionFirelensConfiguration.new;
+  final TaskDefinitionEnvironmentFile = module_ecs.TaskDefinitionEnvironmentFile.new;
+  final TaskDefinitionEnvironmentFileArgs = module_ecs.TaskDefinitionEnvironmentFile.new;
+  final TaskDefinitionFirelensConfiguration = module_ecs.TaskDefinitionFirelensConfiguration.new;
+  final TaskDefinitionFirelensConfigurationArgs = module_ecs.TaskDefinitionFirelensConfiguration.new;
   final TaskDefinitionHealthCheck = module_ecs.TaskDefinitionHealthCheck.new;
-  final TaskDefinitionHealthCheckArgs =
-      module_ecs.TaskDefinitionHealthCheck.new;
+  final TaskDefinitionHealthCheckArgs = module_ecs.TaskDefinitionHealthCheck.new;
   final TaskDefinitionHostEntry = module_ecs.TaskDefinitionHostEntry.new;
   final TaskDefinitionHostEntryArgs = module_ecs.TaskDefinitionHostEntry.new;
-  final TaskDefinitionKernelCapabilities =
-      module_ecs.TaskDefinitionKernelCapabilities.new;
-  final TaskDefinitionKernelCapabilitiesArgs =
-      module_ecs.TaskDefinitionKernelCapabilities.new;
+  final TaskDefinitionKernelCapabilities = module_ecs.TaskDefinitionKernelCapabilities.new;
+  final TaskDefinitionKernelCapabilitiesArgs = module_ecs.TaskDefinitionKernelCapabilities.new;
   final TaskDefinitionKeyValuePair = module_ecs.TaskDefinitionKeyValuePair.new;
-  final TaskDefinitionKeyValuePairArgs =
-      module_ecs.TaskDefinitionKeyValuePair.new;
-  final TaskDefinitionLinuxParameters =
-      module_ecs.TaskDefinitionLinuxParameters.new;
-  final TaskDefinitionLinuxParametersArgs =
-      module_ecs.TaskDefinitionLinuxParameters.new;
-  final TaskDefinitionLogConfiguration =
-      module_ecs.TaskDefinitionLogConfiguration.new;
-  final TaskDefinitionLogConfigurationArgs =
-      module_ecs.TaskDefinitionLogConfiguration.new;
+  final TaskDefinitionKeyValuePairArgs = module_ecs.TaskDefinitionKeyValuePair.new;
+  final TaskDefinitionLinuxParameters = module_ecs.TaskDefinitionLinuxParameters.new;
+  final TaskDefinitionLinuxParametersArgs = module_ecs.TaskDefinitionLinuxParameters.new;
+  final TaskDefinitionLogConfiguration = module_ecs.TaskDefinitionLogConfiguration.new;
+  final TaskDefinitionLogConfigurationArgs = module_ecs.TaskDefinitionLogConfiguration.new;
   final TaskDefinitionMountPoint = module_ecs.TaskDefinitionMountPoint.new;
   final TaskDefinitionMountPointArgs = module_ecs.TaskDefinitionMountPoint.new;
   final TaskDefinitionPortMapping = module_ecs.TaskDefinitionPortMapping.new;
-  final TaskDefinitionPortMappingAppProtocol =
-      module_ecs.TaskDefinitionPortMappingAppProtocol.values;
-  final TaskDefinitionPortMappingArgs =
-      module_ecs.TaskDefinitionPortMapping.new;
-  final TaskDefinitionRepositoryCredentials =
-      module_ecs.TaskDefinitionRepositoryCredentials.new;
-  final TaskDefinitionRepositoryCredentialsArgs =
-      module_ecs.TaskDefinitionRepositoryCredentials.new;
-  final TaskDefinitionResourceRequirement =
-      module_ecs.TaskDefinitionResourceRequirement.new;
-  final TaskDefinitionResourceRequirementArgs =
-      module_ecs.TaskDefinitionResourceRequirement.new;
+  final TaskDefinitionPortMappingAppProtocol = module_ecs.TaskDefinitionPortMappingAppProtocol.values;
+  final TaskDefinitionPortMappingArgs = module_ecs.TaskDefinitionPortMapping.new;
+  final TaskDefinitionRepositoryCredentials = module_ecs.TaskDefinitionRepositoryCredentials.new;
+  final TaskDefinitionRepositoryCredentialsArgs = module_ecs.TaskDefinitionRepositoryCredentials.new;
+  final TaskDefinitionResourceRequirement = module_ecs.TaskDefinitionResourceRequirement.new;
+  final TaskDefinitionResourceRequirementArgs = module_ecs.TaskDefinitionResourceRequirement.new;
   final TaskDefinitionSecret = module_ecs.TaskDefinitionSecret.new;
   final TaskDefinitionSecretArgs = module_ecs.TaskDefinitionSecret.new;
-  final TaskDefinitionSystemControl =
-      module_ecs.TaskDefinitionSystemControl.new;
-  final TaskDefinitionSystemControlArgs =
-      module_ecs.TaskDefinitionSystemControl.new;
+  final TaskDefinitionSystemControl = module_ecs.TaskDefinitionSystemControl.new;
+  final TaskDefinitionSystemControlArgs = module_ecs.TaskDefinitionSystemControl.new;
   final TaskDefinitionTmpfs = module_ecs.TaskDefinitionTmpfs.new;
   final TaskDefinitionTmpfsArgs = module_ecs.TaskDefinitionTmpfs.new;
   final TaskDefinitionUlimit = module_ecs.TaskDefinitionUlimit.new;

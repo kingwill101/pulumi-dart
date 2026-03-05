@@ -9,31 +9,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRegionsArgs {
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
-
   /// A list of Disk Replica Group IDs.
   final pulumi.Input<String>? regionId;
 
   /// Creates a new [GetRegionsArgs].
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [regionId] A list of Disk Replica Group IDs.
-  GetRegionsArgs({this.outputFile, this.regionId});
+  GetRegionsArgs({
+    this.outputFile,
+    this.regionId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'outputFile': ?outputFile, 'regionId': ?regionId};
+    return <String, dynamic>{
+      'outputFile': ?outputFile,
+      'regionId': ?regionId,
+    };
   }
 
   factory GetRegionsArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionsArgs(
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      regionId: (() {
-        final guardedValue = map['regionId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      regionId: (() { final guardedValue = map['regionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

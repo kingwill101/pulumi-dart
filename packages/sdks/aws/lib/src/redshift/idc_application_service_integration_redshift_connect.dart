@@ -13,14 +13,15 @@ class IdcApplicationServiceIntegrationRedshiftConnect {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'authorization': authorization};
+    return <String, dynamic>{
+      'authorization': authorization,
+    };
   }
 
-  factory IdcApplicationServiceIntegrationRedshiftConnect.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory IdcApplicationServiceIntegrationRedshiftConnect.fromMap(Map<String, dynamic> map) {
     return IdcApplicationServiceIntegrationRedshiftConnect(
       authorization: pulumi.Input.fromValue(map['authorization'] as String),
     );
   }
 }
+

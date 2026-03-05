@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PackageValidationResultResponse {
   /// Error information.
   final pulumi.Input<List<String>> errors;
-
   /// Indicates whether the package passed the validation.
   final pulumi.Input<bool> isValid;
-
   /// Validation name.
   final pulumi.Input<String> validationName;
 
@@ -39,3 +37,4 @@ class PackageValidationResultResponse {
     );
   }
 }
+

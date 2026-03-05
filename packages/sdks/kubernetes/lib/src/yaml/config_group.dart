@@ -461,12 +461,12 @@ class ConfigGroup extends pulumi.ComponentResource {
     ConfigGroupArgs? args,
     pulumi.ComponentResourceOptions? options,
   }) : super(
-         'kubernetes:yaml/v2:ConfigGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.ComponentResourceOptions(),
-         remote: true,
-       ) {
+          'kubernetes:yaml/v2:ConfigGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.ComponentResourceOptions(),
+          remote: true,
+        ) {
     resources = registerOutput<List<Map<String, dynamic>>?>('resources');
   }
 }

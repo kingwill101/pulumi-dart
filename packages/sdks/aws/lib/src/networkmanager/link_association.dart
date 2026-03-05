@@ -116,10 +116,8 @@ import 'link_association_state.dart';
 class LinkAssociation extends pulumi.CustomResource {
   /// ID of the device.
   late final pulumi.Output<String> deviceId;
-
   /// ID of the global network.
   late final pulumi.Output<String> globalNetworkId;
-
   /// ID of the link.
   late final pulumi.Output<String> linkId;
 
@@ -132,11 +130,11 @@ class LinkAssociation extends pulumi.CustomResource {
     LinkAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:networkmanager/linkAssociation:LinkAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:networkmanager/linkAssociation:LinkAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     deviceId = registerOutput<String>('deviceId');
     globalNetworkId = registerOutput<String>('globalNetworkId');
     linkId = registerOutput<String>('linkId');
@@ -160,11 +158,11 @@ class LinkAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:networkmanager/linkAssociation:LinkAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:networkmanager/linkAssociation:LinkAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     deviceId = registerOutput<String>('deviceId');
     globalNetworkId = registerOutput<String>('globalNetworkId');
     linkId = registerOutput<String>('linkId');

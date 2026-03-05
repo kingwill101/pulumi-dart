@@ -8,19 +8,20 @@ class PipelineInputPayloadFormatProtobuf {
 
   /// Creates a new [PipelineInputPayloadFormatProtobuf].
   /// [schemaDefinition] The entire schema definition is stored in this field.
-  PipelineInputPayloadFormatProtobuf({this.schemaDefinition});
+  PipelineInputPayloadFormatProtobuf({
+    this.schemaDefinition,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'schemaDefinition': ?schemaDefinition};
+    return <String, dynamic>{
+      'schemaDefinition': ?schemaDefinition,
+    };
   }
 
   factory PipelineInputPayloadFormatProtobuf.fromMap(Map<String, dynamic> map) {
     return PipelineInputPayloadFormatProtobuf(
-      schemaDefinition: (() {
-        final guardedValue = map['schemaDefinition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      schemaDefinition: (() { final guardedValue = map['schemaDefinition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

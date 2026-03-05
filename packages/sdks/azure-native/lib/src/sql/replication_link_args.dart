@@ -10,13 +10,10 @@ class ReplicationLinkArgs {
   /// The name of the database.
   final pulumi.Input<String> databaseName;
   final pulumi.Input<String>? linkId;
-
   /// Link type (GEO, NAMED, STANDBY). Update operation does not support NAMED.
   final pulumi.Input<String>? linkType;
-
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the server.
   final pulumi.Input<String> serverName;
 
@@ -47,20 +44,11 @@ class ReplicationLinkArgs {
   factory ReplicationLinkArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationLinkArgs(
       databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
-      linkId: (() {
-        final guardedValue = map['linkId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      linkType: (() {
-        final guardedValue = map['linkType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      linkId: (() { final guardedValue = map['linkId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      linkType: (() { final guardedValue = map['linkType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serverName: pulumi.Input.fromValue(map['serverName'] as String),
     );
   }
 }
+

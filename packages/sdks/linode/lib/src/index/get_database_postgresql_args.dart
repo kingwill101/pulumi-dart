@@ -9,31 +9,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDatabasePostgresqlArgs {
   /// The ID of the PostgreSQL database. Deprecated: Use id instead.
   final pulumi.Input<int>? databaseId;
-
   /// The ID of the PostgreSQL database. Mutually exclusive with `database_id`.
   final pulumi.Input<int>? id;
 
   /// Creates a new [GetDatabasePostgresqlArgs].
   /// [databaseId] The ID of the PostgreSQL database. Deprecated: Use id instead.
   /// [id] The ID of the PostgreSQL database. Mutually exclusive with `database_id`.
-  GetDatabasePostgresqlArgs({this.databaseId, this.id});
+  GetDatabasePostgresqlArgs({
+    this.databaseId,
+    this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'databaseId': ?databaseId, 'id': ?id};
+    return <String, dynamic>{
+      'databaseId': ?databaseId,
+      'id': ?id,
+    };
   }
 
   factory GetDatabasePostgresqlArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabasePostgresqlArgs(
-      databaseId: (() {
-        final guardedValue = map['databaseId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      databaseId: (() { final guardedValue = map['databaseId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

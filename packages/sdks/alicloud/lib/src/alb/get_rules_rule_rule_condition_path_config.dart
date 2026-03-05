@@ -8,17 +8,20 @@ class GetRulesRuleRuleConditionPathConfig {
 
   /// Creates a new [GetRulesRuleRuleConditionPathConfig].
   /// [values] Add one or more IP addresses or IP address segments.
-  GetRulesRuleRuleConditionPathConfig({required this.values});
+  GetRulesRuleRuleConditionPathConfig({
+    required this.values,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'values': values};
+    return <String, dynamic>{
+      'values': values,
+    };
   }
 
-  factory GetRulesRuleRuleConditionPathConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetRulesRuleRuleConditionPathConfig.fromMap(Map<String, dynamic> map) {
     return GetRulesRuleRuleConditionPathConfig(
       values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
+

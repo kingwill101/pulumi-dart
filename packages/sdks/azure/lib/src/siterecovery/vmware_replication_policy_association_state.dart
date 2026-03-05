@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VmwareReplicationPolicyAssociationState {
   /// The name of the replication policy association. Changing this forces a new association to be created.
   final pulumi.Input<String>? name;
-
   /// The ID of the VMWare replication policy which to be associated. Changing this forces a new association to be created.
   final pulumi.Input<String>? policyId;
-
   /// The ID of the Recovery Service Vault to which the policy should be associated.
   /// Changing this forces a new association to be created.
   final pulumi.Input<String>? recoveryVaultId;
@@ -32,25 +30,12 @@ class VmwareReplicationPolicyAssociationState {
     };
   }
 
-  factory VmwareReplicationPolicyAssociationState.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VmwareReplicationPolicyAssociationState.fromMap(Map<String, dynamic> map) {
     return VmwareReplicationPolicyAssociationState(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      policyId: (() {
-        final guardedValue = map['policyId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      recoveryVaultId: (() {
-        final guardedValue = map['recoveryVaultId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      policyId: (() { final guardedValue = map['policyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      recoveryVaultId: (() { final guardedValue = map['recoveryVaultId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -212,10 +212,8 @@ import 'domain_topic_state.dart';
 class DomainTopic extends pulumi.CustomResource {
   /// Specifies the name of the EventGrid Domain. Changing this forces a new resource to be created.
   late final pulumi.Output<String> domainName;
-
   /// Specifies the name of the EventGrid Domain Topic resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the resource group in which the EventGrid Domain exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
 
@@ -228,11 +226,11 @@ class DomainTopic extends pulumi.CustomResource {
     DomainTopicArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:eventgrid/domainTopic:DomainTopic',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:eventgrid/domainTopic:DomainTopic',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     domainName = registerOutput<String>('domainName');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -256,11 +254,11 @@ class DomainTopic extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:eventgrid/domainTopic:DomainTopic',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:eventgrid/domainTopic:DomainTopic',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     domainName = registerOutput<String>('domainName');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');

@@ -8,19 +8,15 @@ class GetHoneypotProbesResult {
   /// Probe name.
   final String? displayName;
   final bool? enableDetails;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of Honeypot Probe IDs.
   final List<String> ids;
   final String? nameRegex;
   final String? outputFile;
   final String? probeStatus;
-
   /// Probe type, support `host_probe` and `vpc_black_hole_probe`.
   final String? probeType;
-
   /// A list of Honeypot Probe Entries. Each element contains the following attributes:
   final List<GetHoneypotProbesProbe> probes;
 
@@ -56,54 +52,22 @@ class GetHoneypotProbesResult {
       'outputFile': ?outputFile,
       'probeStatus': ?probeStatus,
       'probeType': ?probeType,
-      'probes':
-          pulumi.Input.encodeList<GetHoneypotProbesProbe, Map<String, dynamic>>(
-            probes,
-            (value) => value.toMap(),
-          ),
+      'probes': pulumi.Input.encodeList<GetHoneypotProbesProbe, Map<String, dynamic>>(probes, (value) => value.toMap()),
     };
   }
 
   factory GetHoneypotProbesResult.fromMap(Map<String, dynamic> map) {
     return GetHoneypotProbesResult(
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      enableDetails: (() {
-        final guardedValue = map['enableDetails'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      enableDetails: (() { final guardedValue = map['enableDetails']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      probeStatus: (() {
-        final guardedValue = map['probeStatus'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      probeType: (() {
-        final guardedValue = map['probeType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      probes: pulumi.Input.decodeList<GetHoneypotProbesProbe>(
-        map['probes']!,
-        (value) => GetHoneypotProbesProbe.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      probeStatus: (() { final guardedValue = map['probeStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      probeType: (() { final guardedValue = map['probeType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      probes: pulumi.Input.decodeList<GetHoneypotProbesProbe>(map['probes']!, (value) => GetHoneypotProbesProbe.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

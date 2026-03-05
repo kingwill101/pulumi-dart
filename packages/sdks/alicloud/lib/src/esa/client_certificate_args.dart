@@ -11,18 +11,14 @@ class ClientCertificateArgs {
   ///
   /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   final pulumi.Input<String>? csr;
-
   /// The private key algorithm type.
   ///
   /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   final pulumi.Input<String>? pkeyType;
-
   /// Site Id
   final pulumi.Input<String> siteId;
-
   /// The certificate status. Valid values: `revoked`, `active`.
   final pulumi.Input<String>? status;
-
   /// Certificate validity period.
   ///
   /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
@@ -54,23 +50,12 @@ class ClientCertificateArgs {
 
   factory ClientCertificateArgs.fromMap(Map<String, dynamic> map) {
     return ClientCertificateArgs(
-      csr: (() {
-        final guardedValue = map['csr'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pkeyType: (() {
-        final guardedValue = map['pkeyType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      csr: (() { final guardedValue = map['csr']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pkeyType: (() { final guardedValue = map['pkeyType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       siteId: pulumi.Input.fromValue(map['siteId'] as String),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       validityDays: pulumi.Input.fromValue(map['validityDays'] as String),
     );
   }
 }
+

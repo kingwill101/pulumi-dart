@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TrafficManagerExternalEndpointSubnet {
   /// The first IP Address in this subnet.
   final pulumi.Input<String> first;
-
   /// The last IP Address in this subnet.
   final pulumi.Input<String>? last;
-
   /// The block size (number of leading bits in the subnet mask).
   final pulumi.Input<int>? scope;
 
@@ -23,24 +21,19 @@ class TrafficManagerExternalEndpointSubnet {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'first': first, 'last': ?last, 'scope': ?scope};
+    return <String, dynamic>{
+      'first': first,
+      'last': ?last,
+      'scope': ?scope,
+    };
   }
 
-  factory TrafficManagerExternalEndpointSubnet.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory TrafficManagerExternalEndpointSubnet.fromMap(Map<String, dynamic> map) {
     return TrafficManagerExternalEndpointSubnet(
       first: pulumi.Input.fromValue(map['first'] as String),
-      last: (() {
-        final guardedValue = map['last'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      scope: (() {
-        final guardedValue = map['scope'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      last: (() { final guardedValue = map['last']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

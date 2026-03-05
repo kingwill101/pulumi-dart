@@ -11,48 +11,32 @@ import 'service_tree_info.dart';
 class ResourceTypeRegistrationPropertiesManagement {
   /// The authorization owners.
   final pulumi.Input<List<String>>? authorizationOwners;
-
   /// List of manifest owners for canary.
   final pulumi.Input<List<String>>? canaryManifestOwners;
-
   /// Options for error response messages.
-  final pulumi.Input<ResourceProviderManagementErrorResponseMessageOptions>?
-  errorResponseMessageOptions;
-
+  final pulumi.Input<ResourceProviderManagementErrorResponseMessageOptions>? errorResponseMessageOptions;
   /// Metadata for expedited rollout.
-  final pulumi.Input<ResourceProviderManagementExpeditedRolloutMetadata>?
-  expeditedRolloutMetadata;
-
+  final pulumi.Input<ResourceProviderManagementExpeditedRolloutMetadata>? expeditedRolloutMetadata;
   /// List of expedited rollout submitters.
   final pulumi.Input<List<String>>? expeditedRolloutSubmitters;
-
   /// The incident contact email.
   final pulumi.Input<String>? incidentContactEmail;
-
   /// The incident routing service.
   final pulumi.Input<String>? incidentRoutingService;
-
   /// The incident routing team.
   final pulumi.Input<String>? incidentRoutingTeam;
-
   /// The manifest owners.
   final pulumi.Input<List<String>>? manifestOwners;
-
   /// The profit center code for the subscription.
   final pulumi.Input<String>? pcCode;
-
   /// The profit center program id for the subscription.
   final pulumi.Input<String>? profitCenterProgramId;
-
   /// The resource access policy.
   final pulumi.Input<ResourceAccessPolicy>? resourceAccessPolicy;
-
   /// The resource access roles.
   final pulumi.Input<List<ResourceAccessRole>>? resourceAccessRoles;
-
   /// The schema owners.
   final pulumi.Input<List<String>>? schemaOwners;
-
   /// The service tree infos.
   final pulumi.Input<List<ServiceTreeInfo>>? serviceTreeInfos;
 
@@ -94,16 +78,8 @@ class ResourceTypeRegistrationPropertiesManagement {
     return <String, dynamic>{
       'authorizationOwners': ?authorizationOwners,
       'canaryManifestOwners': ?canaryManifestOwners,
-      'errorResponseMessageOptions':
-          ?pulumi.Input.mapOptionalInputValue<
-            ResourceProviderManagementErrorResponseMessageOptions,
-            Map<String, dynamic>
-          >(errorResponseMessageOptions, (value) => value.toMap()),
-      'expeditedRolloutMetadata':
-          ?pulumi.Input.mapOptionalInputValue<
-            ResourceProviderManagementExpeditedRolloutMetadata,
-            Map<String, dynamic>
-          >(expeditedRolloutMetadata, (value) => value.toMap()),
+      'errorResponseMessageOptions': ?pulumi.Input.mapOptionalInputValue<ResourceProviderManagementErrorResponseMessageOptions, Map<String, dynamic>>(errorResponseMessageOptions, (value) => value.toMap()),
+      'expeditedRolloutMetadata': ?pulumi.Input.mapOptionalInputValue<ResourceProviderManagementExpeditedRolloutMetadata, Map<String, dynamic>>(expeditedRolloutMetadata, (value) => value.toMap()),
       'expeditedRolloutSubmitters': ?expeditedRolloutSubmitters,
       'incidentContactEmail': ?incidentContactEmail,
       'incidentRoutingService': ?incidentRoutingService,
@@ -111,141 +87,31 @@ class ResourceTypeRegistrationPropertiesManagement {
       'manifestOwners': ?manifestOwners,
       'pcCode': ?pcCode,
       'profitCenterProgramId': ?profitCenterProgramId,
-      'resourceAccessPolicy':
-          ?pulumi.Input.mapOptionalInputValue<ResourceAccessPolicy, String>(
-            resourceAccessPolicy,
-            (value) => value.wireValue,
-          ),
-      'resourceAccessRoles':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ResourceAccessRole>,
-            List<Map<String, dynamic>>
-          >(
-            resourceAccessRoles,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ResourceAccessRole,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'resourceAccessPolicy': ?pulumi.Input.mapOptionalInputValue<ResourceAccessPolicy, String>(resourceAccessPolicy, (value) => value.wireValue),
+      'resourceAccessRoles': ?pulumi.Input.mapOptionalInputValue<List<ResourceAccessRole>, List<Map<String, dynamic>>>(resourceAccessRoles, (value) => pulumi.Input.encodeList<ResourceAccessRole, Map<String, dynamic>>(value, (value) => value.toMap())),
       'schemaOwners': ?schemaOwners,
-      'serviceTreeInfos':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ServiceTreeInfo>,
-            List<Map<String, dynamic>>
-          >(
-            serviceTreeInfos,
-            (value) =>
-                pulumi.Input.encodeList<ServiceTreeInfo, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'serviceTreeInfos': ?pulumi.Input.mapOptionalInputValue<List<ServiceTreeInfo>, List<Map<String, dynamic>>>(serviceTreeInfos, (value) => pulumi.Input.encodeList<ServiceTreeInfo, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory ResourceTypeRegistrationPropertiesManagement.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResourceTypeRegistrationPropertiesManagement.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationPropertiesManagement(
-      authorizationOwners: (() {
-        final guardedValue = map['authorizationOwners'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      canaryManifestOwners: (() {
-        final guardedValue = map['canaryManifestOwners'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      errorResponseMessageOptions: (() {
-        final guardedValue = map['errorResponseMessageOptions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ResourceProviderManagementErrorResponseMessageOptions.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      expeditedRolloutMetadata: (() {
-        final guardedValue = map['expeditedRolloutMetadata'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ResourceProviderManagementExpeditedRolloutMetadata.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      expeditedRolloutSubmitters: (() {
-        final guardedValue = map['expeditedRolloutSubmitters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      incidentContactEmail: (() {
-        final guardedValue = map['incidentContactEmail'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      incidentRoutingService: (() {
-        final guardedValue = map['incidentRoutingService'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      incidentRoutingTeam: (() {
-        final guardedValue = map['incidentRoutingTeam'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      manifestOwners: (() {
-        final guardedValue = map['manifestOwners'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      pcCode: (() {
-        final guardedValue = map['pcCode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      profitCenterProgramId: (() {
-        final guardedValue = map['profitCenterProgramId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceAccessPolicy: (() {
-        final guardedValue = map['resourceAccessPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ResourceAccessPolicy.fromValue(guardedValue as String),
-        );
-      })(),
-      resourceAccessRoles: (() {
-        final guardedValue = map['resourceAccessRoles'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ResourceAccessRole>(
-            guardedValue,
-            (value) => ResourceAccessRole.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      schemaOwners: (() {
-        final guardedValue = map['schemaOwners'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      serviceTreeInfos: (() {
-        final guardedValue = map['serviceTreeInfos'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ServiceTreeInfo>(
-            guardedValue,
-            (value) =>
-                ServiceTreeInfo.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
+      authorizationOwners: (() { final guardedValue = map['authorizationOwners']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      canaryManifestOwners: (() { final guardedValue = map['canaryManifestOwners']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      errorResponseMessageOptions: (() { final guardedValue = map['errorResponseMessageOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceProviderManagementErrorResponseMessageOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      expeditedRolloutMetadata: (() { final guardedValue = map['expeditedRolloutMetadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceProviderManagementExpeditedRolloutMetadata.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      expeditedRolloutSubmitters: (() { final guardedValue = map['expeditedRolloutSubmitters']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      incidentContactEmail: (() { final guardedValue = map['incidentContactEmail']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      incidentRoutingService: (() { final guardedValue = map['incidentRoutingService']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      incidentRoutingTeam: (() { final guardedValue = map['incidentRoutingTeam']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      manifestOwners: (() { final guardedValue = map['manifestOwners']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      pcCode: (() { final guardedValue = map['pcCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      profitCenterProgramId: (() { final guardedValue = map['profitCenterProgramId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceAccessPolicy: (() { final guardedValue = map['resourceAccessPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceAccessPolicy.fromValue(guardedValue as String)); })(),
+      resourceAccessRoles: (() { final guardedValue = map['resourceAccessRoles']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ResourceAccessRole>(guardedValue, (value) => ResourceAccessRole.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      schemaOwners: (() { final guardedValue = map['schemaOwners']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      serviceTreeInfos: (() { final guardedValue = map['serviceTreeInfos']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ServiceTreeInfo>(guardedValue, (value) => ServiceTreeInfo.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

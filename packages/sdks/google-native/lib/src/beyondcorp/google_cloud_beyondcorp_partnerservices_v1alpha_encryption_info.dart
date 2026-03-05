@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo {
   /// Optional. Service Account for encryption key.
   final pulumi.Input<String>? encryptionSaEmail;
-
   /// Optional. JWK in string.
   final pulumi.Input<String>? jwk;
 
@@ -25,20 +24,11 @@ class GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo {
     };
   }
 
-  factory GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo.fromMap(Map<String, dynamic> map) {
     return GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo(
-      encryptionSaEmail: (() {
-        final guardedValue = map['encryptionSaEmail'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      jwk: (() {
-        final guardedValue = map['jwk'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      encryptionSaEmail: (() { final guardedValue = map['encryptionSaEmail']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      jwk: (() { final guardedValue = map['jwk']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

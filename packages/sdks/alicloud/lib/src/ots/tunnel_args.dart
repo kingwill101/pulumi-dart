@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TunnelArgs {
   /// The name of the OTS instance in which table will located.
   final pulumi.Input<String> instanceName;
-
   /// The name of the OTS table. If changed, a new table would be created.
   final pulumi.Input<String> tableName;
-
   /// The name of the OTS tunnel. If changed, a new tunnel would be created.
   final pulumi.Input<String> tunnelName;
-
   /// The type of the OTS tunnel. Only `BaseAndStream`, `BaseData` or `Stream` is allowed.
   final pulumi.Input<String> tunnelType;
 
@@ -49,3 +46,4 @@ class TunnelArgs {
     );
   }
 }
+

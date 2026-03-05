@@ -9,19 +9,20 @@ class BlobStorageTokenStoreResponse {
 
   /// Creates a new [BlobStorageTokenStoreResponse].
   /// [sasUrlSettingName] The name of the app setting containing the SAS URL of the blob storage containing the tokens.
-  BlobStorageTokenStoreResponse({this.sasUrlSettingName});
+  BlobStorageTokenStoreResponse({
+    this.sasUrlSettingName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'sasUrlSettingName': ?sasUrlSettingName};
+    return <String, dynamic>{
+      'sasUrlSettingName': ?sasUrlSettingName,
+    };
   }
 
   factory BlobStorageTokenStoreResponse.fromMap(Map<String, dynamic> map) {
     return BlobStorageTokenStoreResponse(
-      sasUrlSettingName: (() {
-        final guardedValue = map['sasUrlSettingName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      sasUrlSettingName: (() { final guardedValue = map['sasUrlSettingName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

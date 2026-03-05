@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StageDetailsResponse {
   /// Display name of the resource stage.
   final pulumi.Input<String> displayName;
-
   /// Stage name.
   final pulumi.Input<String> stageName;
-
   /// Stage status.
   final pulumi.Input<String> stageStatus;
-
   /// Stage start time.
   final pulumi.Input<String> startTime;
 
@@ -46,3 +43,4 @@ class StageDetailsResponse {
     );
   }
 }
+

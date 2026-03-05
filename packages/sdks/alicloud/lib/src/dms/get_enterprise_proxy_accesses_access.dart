@@ -6,34 +6,24 @@ class GetEnterpriseProxyAccessesAccess {
   /// The authorized account of the security agent.
   final pulumi.Input<String> accessId;
   final pulumi.Input<String> accessSecret;
-
   /// The authorization time of the security access agent permission.
   final pulumi.Input<String> createTime;
-
   /// Security Protection authorization ID.
   final pulumi.Input<String> id;
-
   /// Database account.
   final pulumi.Input<String> indepAccount;
-
   /// The ID of the instance.
   final pulumi.Input<String> instanceId;
-
   /// The source information of the security access agent permission is enabled, and the return value is as follows:**Owner Authorization**: The UID of the owner in parentheses.**Work Order Authorization**: The ticket number in parentheses is the number of the user to apply for permission.
   final pulumi.Input<String> originInfo;
-
   /// Security Protection authorization ID. After the target user is authorized by the security protection agent, the system automatically generates a security protection authorization ID, which is globally unique.
   final pulumi.Input<String> proxyAccessId;
-
   /// The ID of the security agent.
   final pulumi.Input<String> proxyId;
-
   /// The user ID.
   final pulumi.Input<String> userId;
-
   /// User nickname.
   final pulumi.Input<String> userName;
-
   /// User UID.
   final pulumi.Input<String> userUid;
 
@@ -99,3 +89,4 @@ class GetEnterpriseProxyAccessesAccess {
     );
   }
 }
+

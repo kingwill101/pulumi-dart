@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AllocatedConnectionResponse {
   /// The ingress port of an allocated connection
   final pulumi.Input<int> ingressPort;
-
   /// The PSC uri of an allocated connection
   final pulumi.Input<String> pscUri;
 
@@ -19,7 +18,10 @@ class AllocatedConnectionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'ingressPort': ingressPort, 'pscUri': pscUri};
+    return <String, dynamic>{
+      'ingressPort': ingressPort,
+      'pscUri': pscUri,
+    };
   }
 
   factory AllocatedConnectionResponse.fromMap(Map<String, dynamic> map) {
@@ -29,3 +31,4 @@ class AllocatedConnectionResponse {
     );
   }
 }
+

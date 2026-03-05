@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FirewallRuleArgs {
   /// Alibaba Cloud simple application server instance ID.
   final pulumi.Input<String> instanceId;
-
   /// The port range. Valid values of port numbers: `1` to `65535`. Specify a port range in the format of `&lt;start port number&gt;/&lt;end port number&gt;`. Example: `1024/1055`, which indicates the port range of `1024` through `1055`.
   final pulumi.Input<String> port;
-
   /// The remarks of the firewall rule.
   final pulumi.Input<String>? remark;
-
   /// The transport layer protocol. Valid values: `Tcp`, `Udp`, `TcpAndUdp`.
   final pulumi.Input<String> ruleProtocol;
 
@@ -44,12 +41,9 @@ class FirewallRuleArgs {
     return FirewallRuleArgs(
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
       port: pulumi.Input.fromValue(map['port'] as String),
-      remark: (() {
-        final guardedValue = map['remark'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      remark: (() { final guardedValue = map['remark']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ruleProtocol: pulumi.Input.fromValue(map['ruleProtocol'] as String),
     );
   }
 }
+

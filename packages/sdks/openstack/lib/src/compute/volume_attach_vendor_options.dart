@@ -10,7 +10,9 @@ class VolumeAttachVendorOptions {
 
   /// Creates a new [VolumeAttachVendorOptions].
   /// [ignoreVolumeConfirmation] Boolean to control whether
-  VolumeAttachVendorOptions({this.ignoreVolumeConfirmation});
+  VolumeAttachVendorOptions({
+    this.ignoreVolumeConfirmation,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -20,11 +22,8 @@ class VolumeAttachVendorOptions {
 
   factory VolumeAttachVendorOptions.fromMap(Map<String, dynamic> map) {
     return VolumeAttachVendorOptions(
-      ignoreVolumeConfirmation: (() {
-        final guardedValue = map['ignoreVolumeConfirmation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      ignoreVolumeConfirmation: (() { final guardedValue = map['ignoreVolumeConfirmation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

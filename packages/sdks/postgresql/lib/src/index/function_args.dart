@@ -10,41 +10,30 @@ import 'function_arg.dart';
 class FunctionArgs {
   /// List of arguments for the function.
   final pulumi.Input<List<FunctionArg>>? args;
-
   /// Function body.
   /// This should be the body content within the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
   final pulumi.Input<String> body;
-
   /// The database where the function is located.
   /// If not specified, the function is created in the current database.
   final pulumi.Input<String>? database;
-
   /// True to automatically drop objects that depend on the function (such as
   /// operators or triggers), and in turn all objects that depend on those objects. Default is false.
   final pulumi.Input<bool>? dropCascade;
-
   /// The function programming language. Can be one of internal, sql, c, plpgsql. Default is plpgsql.
   final pulumi.Input<String>? language;
-
   /// The name of the function.
   final pulumi.Input<String>? name;
-
   /// Indicates if the function is parallel safe. Can be one of UNSAFE, RESTRICTED, or SAFE. Default is UNSAFE.
   final pulumi.Input<String>? parallel;
-
   /// Type that the function returns. It can be computed from the OUT arguments. Default is void.
   final pulumi.Input<String>? returns;
-
   /// The schema where the function is located.
   /// If not specified, the function is created in the current schema.
   final pulumi.Input<String>? schema;
-
   /// If the function should execute with the permissions of the owner, rather than the permissions of the caller. Default is false.
   final pulumi.Input<bool>? securityDefiner;
-
   /// If the function should always return NULL when any of the inputs is NULL. Default is false.
   final pulumi.Input<bool>? strict;
-
   /// Defines the volatility of the function. Can be one of VOLATILE, STABLE, or IMMUTABLE. Default is VOLATILE.
   final pulumi.Input<String>? volatility;
 
@@ -78,18 +67,7 @@ class FunctionArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'args':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<FunctionArg>,
-            List<Map<String, dynamic>>
-          >(
-            args,
-            (value) =>
-                pulumi.Input.encodeList<FunctionArg, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'args': ?pulumi.Input.mapOptionalInputValue<List<FunctionArg>, List<Map<String, dynamic>>>(args, (value) => pulumi.Input.encodeList<FunctionArg, Map<String, dynamic>>(value, (value) => value.toMap())),
       'body': body,
       'database': ?database,
       'dropCascade': ?dropCascade,
@@ -106,68 +84,19 @@ class FunctionArgs {
 
   factory FunctionArgs.fromMap(Map<String, dynamic> map) {
     return FunctionArgs(
-      args: (() {
-        final guardedValue = map['args'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<FunctionArg>(
-            guardedValue,
-            (value) =>
-                FunctionArg.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
+      args: (() { final guardedValue = map['args']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<FunctionArg>(guardedValue, (value) => FunctionArg.fromMap((value as Map).cast<String, dynamic>()))); })(),
       body: pulumi.Input.fromValue(map['body'] as String),
-      database: (() {
-        final guardedValue = map['database'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dropCascade: (() {
-        final guardedValue = map['dropCascade'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      language: (() {
-        final guardedValue = map['language'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      parallel: (() {
-        final guardedValue = map['parallel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      returns: (() {
-        final guardedValue = map['returns'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      schema: (() {
-        final guardedValue = map['schema'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      securityDefiner: (() {
-        final guardedValue = map['securityDefiner'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      strict: (() {
-        final guardedValue = map['strict'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      volatility: (() {
-        final guardedValue = map['volatility'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      database: (() { final guardedValue = map['database']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dropCascade: (() { final guardedValue = map['dropCascade']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      language: (() { final guardedValue = map['language']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      parallel: (() { final guardedValue = map['parallel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      returns: (() { final guardedValue = map['returns']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      schema: (() { final guardedValue = map['schema']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      securityDefiner: (() { final guardedValue = map['securityDefiner']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      strict: (() { final guardedValue = map['strict']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      volatility: (() { final guardedValue = map['volatility']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

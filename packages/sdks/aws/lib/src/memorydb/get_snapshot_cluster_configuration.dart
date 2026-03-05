@@ -5,43 +5,30 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSnapshotClusterConfiguration {
   /// Description for the cluster.
   final pulumi.Input<String> description;
-
   /// The engine that will run on cluster nodes.
   final pulumi.Input<String> engine;
-
   /// Version number of the engine used by the cluster.
   final pulumi.Input<String> engineVersion;
-
   /// The weekly time range during which maintenance on the cluster is performed.
   final pulumi.Input<String> maintenanceWindow;
-
   /// Name of the snapshot.
   final pulumi.Input<String> name;
-
   /// Compute and memory capacity of the nodes in the cluster.
   final pulumi.Input<String> nodeType;
-
   /// Number of shards in the cluster.
   final pulumi.Input<int> numShards;
-
   /// Name of the parameter group associated with the cluster.
   final pulumi.Input<String> parameterGroupName;
-
   /// Port number on which the cluster accepts connections.
   final pulumi.Input<int> port;
-
   /// Number of days for which MemoryDB retains automatic snapshots before deleting them.
   final pulumi.Input<int> snapshotRetentionLimit;
-
   /// The daily time range (in UTC) during which MemoryDB begins taking a daily snapshot of the shard.
   final pulumi.Input<String> snapshotWindow;
-
   /// Name of the subnet group used by the cluster.
   final pulumi.Input<String> subnetGroupName;
-
   /// ARN of the SNS topic to which cluster notifications are sent.
   final pulumi.Input<String> topicArn;
-
   /// The VPC in which the cluster exists.
   final pulumi.Input<String> vpcId;
 
@@ -101,19 +88,13 @@ class GetSnapshotClusterConfiguration {
       description: pulumi.Input.fromValue(map['description'] as String),
       engine: pulumi.Input.fromValue(map['engine'] as String),
       engineVersion: pulumi.Input.fromValue(map['engineVersion'] as String),
-      maintenanceWindow: pulumi.Input.fromValue(
-        map['maintenanceWindow'] as String,
-      ),
+      maintenanceWindow: pulumi.Input.fromValue(map['maintenanceWindow'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       nodeType: pulumi.Input.fromValue(map['nodeType'] as String),
       numShards: pulumi.Input.fromValue(map['numShards'] as int),
-      parameterGroupName: pulumi.Input.fromValue(
-        map['parameterGroupName'] as String,
-      ),
+      parameterGroupName: pulumi.Input.fromValue(map['parameterGroupName'] as String),
       port: pulumi.Input.fromValue(map['port'] as int),
-      snapshotRetentionLimit: pulumi.Input.fromValue(
-        map['snapshotRetentionLimit'] as int,
-      ),
+      snapshotRetentionLimit: pulumi.Input.fromValue(map['snapshotRetentionLimit'] as int),
       snapshotWindow: pulumi.Input.fromValue(map['snapshotWindow'] as String),
       subnetGroupName: pulumi.Input.fromValue(map['subnetGroupName'] as String),
       topicArn: pulumi.Input.fromValue(map['topicArn'] as String),
@@ -121,3 +102,4 @@ class GetSnapshotClusterConfiguration {
     );
   }
 }
+

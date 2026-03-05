@@ -8,23 +8,17 @@ class ResourceRecordSetResource extends pulumi.CustomResource {
   late final pulumi.Output<String?> clientOperationId;
   late final pulumi.Output<String> kind;
   late final pulumi.Output<String> managedZone;
-
   /// For example, www.example.com.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
-
   /// Configures dynamic query responses based on either the geo location of the querying user or a weighted round robin based routing policy. A valid ResourceRecordSet contains only rrdata (for static resolution) or a routing_policy (for dynamic resolution).
   late final pulumi.Output<RRSetRoutingPolicyResponseDnsV1beta2> routingPolicy;
-
   /// As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
   late final pulumi.Output<List<String>> rrdatas;
-
   /// As defined in RFC 4034 (section 3.2).
   late final pulumi.Output<List<String>> signatureRrdatas;
-
   /// Number of seconds that this ResourceRecordSet can be cached by resolvers.
   late final pulumi.Output<int> ttl;
-
   /// The identifier of a supported record type. See the list of Supported DNS record types.
   late final pulumi.Output<String> type;
 
@@ -37,26 +31,17 @@ class ResourceRecordSetResource extends pulumi.CustomResource {
     ResourceRecordSetDnsV1beta2Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'google-native:dns/v1beta2:ResourceRecordSet',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'google-native:dns/v1beta2:ResourceRecordSet',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clientOperationId = registerOutput<String?>('clientOperationId');
     kind = registerOutput<String>('kind');
     managedZone = registerOutput<String>('managedZone');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    routingPolicy = registerOutput<RRSetRoutingPolicyResponseDnsV1beta2>(
-      'routingPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RRSetRoutingPolicyResponseDnsV1beta2.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    routingPolicy = registerOutput<RRSetRoutingPolicyResponseDnsV1beta2>('routingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RRSetRoutingPolicyResponseDnsV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     rrdatas = registerOutput<List<String>>('rrdatas');
     signatureRrdatas = registerOutput<List<String>>('signatureRrdatas');
     ttl = registerOutput<int>('ttl');

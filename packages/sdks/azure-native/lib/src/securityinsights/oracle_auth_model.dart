@@ -6,17 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OracleAuthModel {
   /// Content of the PRM file
   final pulumi.Input<String> pemFile;
-
   /// Public Fingerprint
   final pulumi.Input<String> publicFingerprint;
-
   /// Oracle tenant ID
   final pulumi.Input<String> tenantId;
-
   /// Type of paging
   /// Expected value is 'Oracle'.
   final pulumi.Input<String> type;
-
   /// Oracle user ID
   final pulumi.Input<String> userId;
 
@@ -47,12 +43,11 @@ class OracleAuthModel {
   factory OracleAuthModel.fromMap(Map<String, dynamic> map) {
     return OracleAuthModel(
       pemFile: pulumi.Input.fromValue(map['pemFile'] as String),
-      publicFingerprint: pulumi.Input.fromValue(
-        map['publicFingerprint'] as String,
-      ),
+      publicFingerprint: pulumi.Input.fromValue(map['publicFingerprint'] as String),
       tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
       userId: pulumi.Input.fromValue(map['userId'] as String),
     );
   }
 }
+

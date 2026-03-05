@@ -6,16 +6,12 @@ import 'data_center_resource_response_properties.dart';
 class GetCassandraDataCenterResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The unique resource identifier of the database account.
   final String id;
-
   /// The name of the database account.
   final String name;
-
   /// Properties of a managed Cassandra data center.
   final DataCenterResourceResponseProperties properties;
-
   /// The type of Azure resource.
   final String type;
 
@@ -48,10 +44,9 @@ class GetCassandraDataCenterResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      properties: DataCenterResourceResponseProperties.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
+      properties: DataCenterResourceResponseProperties.fromMap((map['properties']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

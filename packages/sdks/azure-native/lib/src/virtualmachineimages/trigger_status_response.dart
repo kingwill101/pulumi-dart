@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TriggerStatusResponse {
   /// The status code.
   final pulumi.Input<String> code;
-
   /// The detailed status message, including for alerts and error messages.
   final pulumi.Input<String> message;
-
   /// The time of the status.
   final pulumi.Input<String> time;
 
@@ -24,7 +22,11 @@ class TriggerStatusResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'code': code, 'message': message, 'time': time};
+    return <String, dynamic>{
+      'code': code,
+      'message': message,
+      'time': time,
+    };
   }
 
   factory TriggerStatusResponse.fromMap(Map<String, dynamic> map) {
@@ -35,3 +37,4 @@ class TriggerStatusResponse {
     );
   }
 }
+

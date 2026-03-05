@@ -6,15 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UniformInt64RangePartitionScheme {
   /// The number of partitions.
   final pulumi.Input<int> count;
-
   /// The upper bound of the partition key range that
   /// should be split between the partition ‘Count’
   final pulumi.Input<double> highKey;
-
   /// The lower bound of the partition key range that
   /// should be split between the partition ‘Count’
   final pulumi.Input<double> lowKey;
-
   /// Enumerates the ways that a service can be partitioned.
   /// Expected value is 'UniformInt64Range'.
   final pulumi.Input<String> partitionScheme;
@@ -49,3 +46,4 @@ class UniformInt64RangePartitionScheme {
     );
   }
 }
+

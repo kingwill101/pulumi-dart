@@ -262,60 +262,42 @@ import 'alert_rule_nrt_state.dart';
 class AlertRuleNrt extends pulumi.CustomResource {
   /// An `alert_details_override` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> alertDetailsOverrides;
-
   /// The GUID of the alert rule template which is used for this Sentinel NRT Alert Rule. Changing this forces a new Sentinel NRT Alert Rule to be created.
   late final pulumi.Output<String?> alertRuleTemplateGuid;
-
   /// The version of the alert rule template which is used for this Sentinel NRT Alert Rule. Changing this forces a new Sentinel NRT Alert Rule to be created.
   late final pulumi.Output<String?> alertRuleTemplateVersion;
-
   /// A map of string key-value pairs of columns to be attached to this Sentinel NRT Alert Rule. The key will appear as the field name in alerts and the value is the event parameter you wish to surface in the alerts.
   late final pulumi.Output<Map<String, String>?> customDetails;
-
   /// The description of this Sentinel NRT Alert Rule.
   late final pulumi.Output<String?> description;
-
   /// The friendly name of this Sentinel NRT Alert Rule.
   late final pulumi.Output<String> displayName;
-
   /// Should the Sentinel NRT Alert Rule be enabled? Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
-
   /// A list of `entity_mapping` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> entityMappings;
-
   /// A `event_grouping` block as defined below.
   late final pulumi.Output<AlertRuleNrtEventGrouping> eventGrouping;
-
   /// A `incident` block as defined below.
   late final pulumi.Output<AlertRuleNrtIncident> incident;
-
   /// The ID of the Log Analytics Workspace this Sentinel NRT Alert Rule belongs to. Changing this forces a new Sentinel NRT Alert Rule to be created.
   late final pulumi.Output<String> logAnalyticsWorkspaceId;
-
   /// The name which should be used for this Sentinel NRT Alert Rule. Changing this forces a new Sentinel NRT Alert Rule to be created.
   late final pulumi.Output<String> name;
-
   /// The query of this Sentinel NRT Alert Rule.
   late final pulumi.Output<String> query;
-
   /// A list of `sentinel_entity_mapping` blocks as defined below.
   ///
   /// &gt; **Note:** `entity_mapping` and `sentinel_entity_mapping` together can't exceed 5.
   late final pulumi.Output<List<Map<String, dynamic>>?> sentinelEntityMappings;
-
   /// The alert severity of this Sentinel NRT Alert Rule. Possible values are `High`, `Medium`, `Low` and `Informational`.
   late final pulumi.Output<String> severity;
-
   /// If `suppression_enabled` is `true`, this is ISO 8601 timespan duration, which specifies the amount of time the query should stop running after alert is generated. Defaults to `PT5H`.
   late final pulumi.Output<String?> suppressionDuration;
-
   /// Should the Sentinel NRT Alert Rulea stop running query after alert is generated? Defaults to `false`.
   late final pulumi.Output<bool?> suppressionEnabled;
-
   /// A list of categories of attacks by which to classify the rule. Possible values are `Collection`, `CommandAndControl`, `CredentialAccess`, `DefenseEvasion`, `Discovery`, `Execution`, `Exfiltration`, `Impact`, `ImpairProcessControl`, `InhibitResponseFunction`, `InitialAccess`, `LateralMovement`, `Persistence`, `PreAttack`, `PrivilegeEscalation`, `Reconnaissance` and `ResourceDevelopment`.
   late final pulumi.Output<List<String>?> tactics;
-
   /// A list of techniques of attacks by which to classify the rule.
   late final pulumi.Output<List<String>?> techniques;
 
@@ -328,51 +310,25 @@ class AlertRuleNrt extends pulumi.CustomResource {
     AlertRuleNrtArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:sentinel/alertRuleNrt:AlertRuleNrt',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    alertDetailsOverrides = registerOutput<List<Map<String, dynamic>>?>(
-      'alertDetailsOverrides',
-    );
+          'azure:sentinel/alertRuleNrt:AlertRuleNrt',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    alertDetailsOverrides = registerOutput<List<Map<String, dynamic>>?>('alertDetailsOverrides');
     alertRuleTemplateGuid = registerOutput<String?>('alertRuleTemplateGuid');
-    alertRuleTemplateVersion = registerOutput<String?>(
-      'alertRuleTemplateVersion',
-    );
+    alertRuleTemplateVersion = registerOutput<String?>('alertRuleTemplateVersion');
     customDetails = registerOutput<Map<String, String>?>('customDetails');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     enabled = registerOutput<bool?>('enabled');
-    entityMappings = registerOutput<List<Map<String, dynamic>>?>(
-      'entityMappings',
-    );
-    eventGrouping = registerOutput<AlertRuleNrtEventGrouping>(
-      'eventGrouping',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AlertRuleNrtEventGrouping.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    incident = registerOutput<AlertRuleNrtIncident>(
-      'incident',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AlertRuleNrtIncident.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    entityMappings = registerOutput<List<Map<String, dynamic>>?>('entityMappings');
+    eventGrouping = registerOutput<AlertRuleNrtEventGrouping>('eventGrouping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlertRuleNrtEventGrouping.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    incident = registerOutput<AlertRuleNrtIncident>('incident', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlertRuleNrtIncident.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     this.name = registerOutput<String>('name');
     query = registerOutput<String>('query');
-    sentinelEntityMappings = registerOutput<List<Map<String, dynamic>>?>(
-      'sentinelEntityMappings',
-    );
+    sentinelEntityMappings = registerOutput<List<Map<String, dynamic>>?>('sentinelEntityMappings');
     severity = registerOutput<String>('severity');
     suppressionDuration = registerOutput<String?>('suppressionDuration');
     suppressionEnabled = registerOutput<bool?>('suppressionEnabled');
@@ -398,51 +354,25 @@ class AlertRuleNrt extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:sentinel/alertRuleNrt:AlertRuleNrt',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    alertDetailsOverrides = registerOutput<List<Map<String, dynamic>>?>(
-      'alertDetailsOverrides',
-    );
+          'azure:sentinel/alertRuleNrt:AlertRuleNrt',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    alertDetailsOverrides = registerOutput<List<Map<String, dynamic>>?>('alertDetailsOverrides');
     alertRuleTemplateGuid = registerOutput<String?>('alertRuleTemplateGuid');
-    alertRuleTemplateVersion = registerOutput<String?>(
-      'alertRuleTemplateVersion',
-    );
+    alertRuleTemplateVersion = registerOutput<String?>('alertRuleTemplateVersion');
     customDetails = registerOutput<Map<String, String>?>('customDetails');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     enabled = registerOutput<bool?>('enabled');
-    entityMappings = registerOutput<List<Map<String, dynamic>>?>(
-      'entityMappings',
-    );
-    eventGrouping = registerOutput<AlertRuleNrtEventGrouping>(
-      'eventGrouping',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AlertRuleNrtEventGrouping.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    incident = registerOutput<AlertRuleNrtIncident>(
-      'incident',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AlertRuleNrtIncident.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    entityMappings = registerOutput<List<Map<String, dynamic>>?>('entityMappings');
+    eventGrouping = registerOutput<AlertRuleNrtEventGrouping>('eventGrouping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlertRuleNrtEventGrouping.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    incident = registerOutput<AlertRuleNrtIncident>('incident', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlertRuleNrtIncident.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     this.name = registerOutput<String>('name');
     query = registerOutput<String>('query');
-    sentinelEntityMappings = registerOutput<List<Map<String, dynamic>>?>(
-      'sentinelEntityMappings',
-    );
+    sentinelEntityMappings = registerOutput<List<Map<String, dynamic>>?>('sentinelEntityMappings');
     severity = registerOutput<String>('severity');
     suppressionDuration = registerOutput<String?>('suppressionDuration');
     suppressionEnabled = registerOutput<bool?>('suppressionEnabled');

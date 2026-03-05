@@ -7,17 +7,13 @@ enum NodePoolAutoscalingLocationPolicyContainerV1beta1 {
   const NodePoolAutoscalingLocationPolicyContainerV1beta1(this.wireValue);
   final String wireValue;
 
-  static NodePoolAutoscalingLocationPolicyContainerV1beta1 fromValue(
-    String value,
-  ) {
-    for (final item
-        in NodePoolAutoscalingLocationPolicyContainerV1beta1.values) {
+  static NodePoolAutoscalingLocationPolicyContainerV1beta1 fromValue(String value) {
+    for (final item in NodePoolAutoscalingLocationPolicyContainerV1beta1.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown NodePoolAutoscalingLocationPolicyContainerV1beta1 value: $value',
-    );
+    throw ArgumentError('Unknown NodePoolAutoscalingLocationPolicyContainerV1beta1 value: $value');
   }
 }
+

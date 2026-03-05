@@ -106,7 +106,10 @@ import 'get_zones_result.dart';
 ///   currentAccountId: ${current.id}
 /// ```
 /// [options] Invoke options controlling this call.
-Future<GetAccountResult> getAccount({pulumi.InvokeOptions? options}) async {
+Future<GetAccountResult> getAccount(
+  {
+  pulumi.InvokeOptions? options,
+}) async {
   final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'alicloud:index/getAccount:getAccount',
@@ -208,7 +211,8 @@ Future<GetAccountResult> getAccount({pulumi.InvokeOptions? options}) async {
 ///   currentUserArn: ${current.id}
 /// ```
 /// [options] Invoke options controlling this call.
-Future<GetCallerIdentityResult> getCallerIdentity({
+Future<GetCallerIdentityResult> getCallerIdentity(
+  {
   pulumi.InvokeOptions? options,
 }) async {
   final deployment = pulumi.Deployment.instance;
@@ -482,8 +486,7 @@ Future<GetFileCrc64ChecksumResult> getFileCrc64Checksum(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_msc_sub_contact_verification_message_get_msc_sub_contact_verification_message_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetMscSubContactVerificationMessageResult>
-getMscSubContactVerificationMessage(
+Future<GetMscSubContactVerificationMessageResult> getMscSubContactVerificationMessage(
   GetMscSubContactVerificationMessageArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

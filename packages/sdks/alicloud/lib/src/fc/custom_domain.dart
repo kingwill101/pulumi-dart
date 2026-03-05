@@ -729,25 +729,18 @@ import 'custom_domain_state.dart';
 class CustomDomain extends pulumi.CustomResource {
   /// The account id.
   late final pulumi.Output<String> accountId;
-
   /// The api version of Function Compute.
   late final pulumi.Output<String> apiVersion;
-
   /// The configuration of HTTPS certificate.See `cert_config` below.
   late final pulumi.Output<CustomDomainCertConfig?> certConfig;
-
   /// The date this resource was created.
   late final pulumi.Output<String> createdTime;
-
   /// The custom domain name. For example, "example.com".
   late final pulumi.Output<String> domainName;
-
   /// The date this resource was last modified.
   late final pulumi.Output<String> lastModifiedTime;
-
   /// The protocol, `HTTP` or `HTTP,HTTPS`.
   late final pulumi.Output<String> protocol;
-
   /// The configuration of domain route, mapping the path and Function Compute function.See `route_config` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> routeConfigs;
 
@@ -760,23 +753,14 @@ class CustomDomain extends pulumi.CustomResource {
     CustomDomainArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:fc/customDomain:CustomDomain',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:fc/customDomain:CustomDomain',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     apiVersion = registerOutput<String>('apiVersion');
-    certConfig = registerOutput<CustomDomainCertConfig?>(
-      'certConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CustomDomainCertConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    certConfig = registerOutput<CustomDomainCertConfig?>('certConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomDomainCertConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdTime = registerOutput<String>('createdTime');
     domainName = registerOutput<String>('domainName');
     lastModifiedTime = registerOutput<String>('lastModifiedTime');
@@ -802,23 +786,14 @@ class CustomDomain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:fc/customDomain:CustomDomain',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:fc/customDomain:CustomDomain',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     apiVersion = registerOutput<String>('apiVersion');
-    certConfig = registerOutput<CustomDomainCertConfig?>(
-      'certConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CustomDomainCertConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    certConfig = registerOutput<CustomDomainCertConfig?>('certConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomDomainCertConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdTime = registerOutput<String>('createdTime');
     domainName = registerOutput<String>('domainName');
     lastModifiedTime = registerOutput<String>('lastModifiedTime');

@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PerfDataSettingsResponse {
   /// Gets percentile utilization for performance data.
   final pulumi.Input<String> percentile;
-
   /// Gets or sets perf data end time.
   final pulumi.Input<String>? perfDataEndTime;
-
   /// Gets or sets perf data start time.
   final pulumi.Input<String>? perfDataStartTime;
-
   /// Gets perf data time range.
   final pulumi.Input<String> timeRange;
 
@@ -40,17 +37,10 @@ class PerfDataSettingsResponse {
   factory PerfDataSettingsResponse.fromMap(Map<String, dynamic> map) {
     return PerfDataSettingsResponse(
       percentile: pulumi.Input.fromValue(map['percentile'] as String),
-      perfDataEndTime: (() {
-        final guardedValue = map['perfDataEndTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      perfDataStartTime: (() {
-        final guardedValue = map['perfDataStartTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      perfDataEndTime: (() { final guardedValue = map['perfDataEndTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      perfDataStartTime: (() { final guardedValue = map['perfDataStartTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       timeRange: pulumi.Input.fromValue(map['timeRange'] as String),
     );
   }
 }
+

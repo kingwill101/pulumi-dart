@@ -6,14 +6,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContainerRegistryBasicCredentials {
   /// The password of the Container Registry.
   final pulumi.Input<String> password;
-
   /// The login server of the Container Registry.
   final pulumi.Input<String> server;
-
   /// The credential type of the container registry credentials.
   /// Expected value is 'BasicAuth'.
   final pulumi.Input<String> type;
-
   /// The username of the Container Registry.
   final pulumi.Input<String> username;
 
@@ -47,3 +44,4 @@ class ContainerRegistryBasicCredentials {
     );
   }
 }
+

@@ -12,8 +12,7 @@ enum PasswordValidationPolicyComplexity {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown PasswordValidationPolicyComplexity value: $value',
-    );
+    throw ArgumentError('Unknown PasswordValidationPolicyComplexity value: $value');
   }
 }
+

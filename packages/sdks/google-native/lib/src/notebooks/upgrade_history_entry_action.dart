@@ -16,3 +16,4 @@ enum UpgradeHistoryEntryAction {
     throw ArgumentError('Unknown UpgradeHistoryEntryAction value: $value');
   }
 }
+

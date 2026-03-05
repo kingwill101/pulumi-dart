@@ -356,10 +356,8 @@ import 'query_log_state.dart';
 class QueryLog extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the Query Logging Config.
   late final pulumi.Output<String> arn;
-
   /// CloudWatch log group ARN to send query logs.
   late final pulumi.Output<String> cloudwatchLogGroupArn;
-
   /// Route53 hosted zone ID to enable query logs.
   late final pulumi.Output<String> zoneId;
 
@@ -372,11 +370,11 @@ class QueryLog extends pulumi.CustomResource {
     QueryLogArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:route53/queryLog:QueryLog',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:route53/queryLog:QueryLog',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     cloudwatchLogGroupArn = registerOutput<String>('cloudwatchLogGroupArn');
     zoneId = registerOutput<String>('zoneId');
@@ -400,11 +398,11 @@ class QueryLog extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:route53/queryLog:QueryLog',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:route53/queryLog:QueryLog',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     cloudwatchLogGroupArn = registerOutput<String>('cloudwatchLogGroupArn');
     zoneId = registerOutput<String>('zoneId');

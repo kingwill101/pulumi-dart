@@ -8,10 +8,14 @@ class ClusterRestoreBackupSource {
 
   /// Creates a new [ClusterRestoreBackupSource].
   /// [backupName] The name of the backup that this cluster is restored from.
-  ClusterRestoreBackupSource({required this.backupName});
+  ClusterRestoreBackupSource({
+    required this.backupName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'backupName': backupName};
+    return <String, dynamic>{
+      'backupName': backupName,
+    };
   }
 
   factory ClusterRestoreBackupSource.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class ClusterRestoreBackupSource {
     );
   }
 }
+

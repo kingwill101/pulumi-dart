@@ -9,18 +9,13 @@ import 'profile_container_network_interface.dart';
 /// {@macro pulumi_network_profile_profile_args_doc}
 class ProfileArgs {
   /// A `container_network_interface` block as documented below.
-  final pulumi.Input<ProfileContainerNetworkInterface>
-  containerNetworkInterface;
-
+  final pulumi.Input<ProfileContainerNetworkInterface> containerNetworkInterface;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
-
   /// Specifies the name of the Network Profile. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// The name of the resource group in which to create the resource. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
-
   /// A mapping of tags assigned to the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -40,11 +35,7 @@ class ProfileArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'containerNetworkInterface':
-          pulumi.Input.mapInputValue<
-            ProfileContainerNetworkInterface,
-            Map<String, dynamic>
-          >(containerNetworkInterface, (value) => value.toMap()),
+      'containerNetworkInterface': pulumi.Input.mapInputValue<ProfileContainerNetworkInterface, Map<String, dynamic>>(containerNetworkInterface, (value) => value.toMap()),
       'location': ?location,
       'name': ?name,
       'resourceGroupName': resourceGroupName,
@@ -54,31 +45,12 @@ class ProfileArgs {
 
   factory ProfileArgs.fromMap(Map<String, dynamic> map) {
     return ProfileArgs(
-      containerNetworkInterface: pulumi.Input.fromValue(
-        ProfileContainerNetworkInterface.fromMap(
-          (map['containerNetworkInterface']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      containerNetworkInterface: pulumi.Input.fromValue(ProfileContainerNetworkInterface.fromMap((map['containerNetworkInterface']! as Map).cast<String, dynamic>())),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

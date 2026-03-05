@@ -6,15 +6,10 @@ import 'three_tier_virtual_instance_three_tier_configuration_central_server_conf
 class ThreeTierVirtualInstanceThreeTierConfigurationCentralServerConfiguration {
   /// The number of instances for the Central Server. Possible values are at least `1`. Changing this forces a new resource to be created.
   final pulumi.Input<int> instanceCount;
-
   /// The resource ID of the Subnet for the Central Server. Changing this forces a new resource to be created.
   final pulumi.Input<String> subnetId;
-
   /// A `virtual_machine_configuration` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<
-    ThreeTierVirtualInstanceThreeTierConfigurationCentralServerConfigurationVirtualMachineConfiguration
-  >
-  virtualMachineConfiguration;
+  final pulumi.Input<ThreeTierVirtualInstanceThreeTierConfigurationCentralServerConfigurationVirtualMachineConfiguration> virtualMachineConfiguration;
 
   /// Creates a new [ThreeTierVirtualInstanceThreeTierConfigurationCentralServerConfiguration].
   /// [instanceCount] The number of instances for the Central Server. Possible values are at least `1`. Changing this forces a new resource to be created.
@@ -30,25 +25,16 @@ class ThreeTierVirtualInstanceThreeTierConfigurationCentralServerConfiguration {
     return <String, dynamic>{
       'instanceCount': instanceCount,
       'subnetId': subnetId,
-      'virtualMachineConfiguration':
-          pulumi.Input.mapInputValue<
-            ThreeTierVirtualInstanceThreeTierConfigurationCentralServerConfigurationVirtualMachineConfiguration,
-            Map<String, dynamic>
-          >(virtualMachineConfiguration, (value) => value.toMap()),
+      'virtualMachineConfiguration': pulumi.Input.mapInputValue<ThreeTierVirtualInstanceThreeTierConfigurationCentralServerConfigurationVirtualMachineConfiguration, Map<String, dynamic>>(virtualMachineConfiguration, (value) => value.toMap()),
     };
   }
 
-  factory ThreeTierVirtualInstanceThreeTierConfigurationCentralServerConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ThreeTierVirtualInstanceThreeTierConfigurationCentralServerConfiguration.fromMap(Map<String, dynamic> map) {
     return ThreeTierVirtualInstanceThreeTierConfigurationCentralServerConfiguration(
       instanceCount: pulumi.Input.fromValue(map['instanceCount'] as int),
       subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
-      virtualMachineConfiguration: pulumi.Input.fromValue(
-        ThreeTierVirtualInstanceThreeTierConfigurationCentralServerConfigurationVirtualMachineConfiguration.fromMap(
-          (map['virtualMachineConfiguration']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      virtualMachineConfiguration: pulumi.Input.fromValue(ThreeTierVirtualInstanceThreeTierConfigurationCentralServerConfigurationVirtualMachineConfiguration.fromMap((map['virtualMachineConfiguration']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

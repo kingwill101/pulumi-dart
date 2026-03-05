@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LinkedTemplateArtifact {
   /// A filesystem safe relative path of the artifact.
   final pulumi.Input<String> path;
-
   /// The Azure Resource Manager template.
   final pulumi.Input<dynamic> template;
 
   /// Creates a new [LinkedTemplateArtifact].
   /// [path] A filesystem safe relative path of the artifact.
   /// [template] The Azure Resource Manager template.
-  LinkedTemplateArtifact({required this.path, required this.template});
+  LinkedTemplateArtifact({
+    required this.path,
+    required this.template,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'path': path, 'template': template};
+    return <String, dynamic>{
+      'path': path,
+      'template': template,
+    };
   }
 
   factory LinkedTemplateArtifact.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class LinkedTemplateArtifact {
     );
   }
 }
+

@@ -218,46 +218,32 @@ import 'zonal_endpoint_state.dart';
 class ZonalEndpoint extends pulumi.CustomResource {
   /// Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. When creating a new custom endpoint, default to `Enable`.
   late final pulumi.Output<String> autoAddNewNodes;
-
   /// Prefix of the specified endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter.
   late final pulumi.Output<String> connectionPrefix;
-
   /// The Id of cluster that can run database.
   late final pulumi.Output<String> dbClusterId;
-
   /// referenced from the db_cluster_nodes_ids attribute of alicloud_polardb_zonal_db_cluster..
   late final pulumi.Output<Map<String, String>> dbClusterNodesIds;
-
   /// The name of the endpoint.
   late final pulumi.Output<String?> dbEndpointDescription;
-
   /// The ID of the cluster endpoint.
   late final pulumi.Output<String> dbEndpointId;
-
   /// The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
   late final pulumi.Output<Map<String, String>?> endpointConfig;
-
   /// Type of the endpoint. Valid values are `Custom`, `Cluster`, `Primary`, default to `Custom`. However when creating a new endpoint, it also only can be `Custom`.
   late final pulumi.Output<String> endpointType;
-
   /// The network type of the endpoint address.
   late final pulumi.Output<String> netType;
-
   /// Node id list for endpoint configuration.
   late final pulumi.Output<List<String>> nodes;
-
   /// The list of backend nodes for the endpoint, with the attribute values derived from the map key of db_cluster_nodes_ids.
   late final pulumi.Output<List<String>?> nodesKeys;
-
   /// Port of the specified endpoint. Valid values: 3000 to 5999.
   late final pulumi.Output<String> port;
-
   /// Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. When creating a new custom endpoint, default to `ReadOnly`.
   late final pulumi.Output<String?> readWriteMode;
-
   /// The ID of ENS VPC where to use the DB.
   late final pulumi.Output<String> vpcId;
-
   /// The ID of ENS virtual switch where to use the DB.
   late final pulumi.Output<String> vswitchId;
 
@@ -270,17 +256,15 @@ class ZonalEndpoint extends pulumi.CustomResource {
     ZonalEndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:polardb/zonalEndpoint:ZonalEndpoint',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:polardb/zonalEndpoint:ZonalEndpoint',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoAddNewNodes = registerOutput<String>('autoAddNewNodes');
     connectionPrefix = registerOutput<String>('connectionPrefix');
     dbClusterId = registerOutput<String>('dbClusterId');
-    dbClusterNodesIds = registerOutput<Map<String, String>>(
-      'dbClusterNodesIds',
-    );
+    dbClusterNodesIds = registerOutput<Map<String, String>>('dbClusterNodesIds');
     dbEndpointDescription = registerOutput<String?>('dbEndpointDescription');
     dbEndpointId = registerOutput<String>('dbEndpointId');
     endpointConfig = registerOutput<Map<String, String>?>('endpointConfig');
@@ -312,17 +296,15 @@ class ZonalEndpoint extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:polardb/zonalEndpoint:ZonalEndpoint',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:polardb/zonalEndpoint:ZonalEndpoint',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoAddNewNodes = registerOutput<String>('autoAddNewNodes');
     connectionPrefix = registerOutput<String>('connectionPrefix');
     dbClusterId = registerOutput<String>('dbClusterId');
-    dbClusterNodesIds = registerOutput<Map<String, String>>(
-      'dbClusterNodesIds',
-    );
+    dbClusterNodesIds = registerOutput<Map<String, String>>('dbClusterNodesIds');
     dbEndpointDescription = registerOutput<String?>('dbEndpointDescription');
     dbEndpointId = registerOutput<String>('dbEndpointId');
     endpointConfig = registerOutput<Map<String, String>?>('endpointConfig');

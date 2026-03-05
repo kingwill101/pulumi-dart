@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Smsvoicev2ConfigurationSetArgs {
   /// The default message type. Must either be "TRANSACTIONAL" or "PROMOTIONAL"
   final pulumi.Input<String>? defaultMessageType;
-
   /// The default sender ID to use for this configuration set.
   final pulumi.Input<String>? defaultSenderId;
-
   /// The name of the configuration set.
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -48,33 +44,12 @@ class Smsvoicev2ConfigurationSetArgs {
 
   factory Smsvoicev2ConfigurationSetArgs.fromMap(Map<String, dynamic> map) {
     return Smsvoicev2ConfigurationSetArgs(
-      defaultMessageType: (() {
-        final guardedValue = map['defaultMessageType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      defaultSenderId: (() {
-        final guardedValue = map['defaultSenderId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      defaultMessageType: (() { final guardedValue = map['defaultMessageType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      defaultSenderId: (() { final guardedValue = map['defaultSenderId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

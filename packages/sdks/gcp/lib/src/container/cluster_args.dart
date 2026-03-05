@@ -59,144 +59,106 @@ class ClusterArgs {
   /// The configuration for addons supported by GKE.
   /// Structure is documented below.
   final pulumi.Input<ClusterAddonsConfig>? addonsConfig;
-
   /// Enable NET_ADMIN for the cluster. Defaults to
   /// `false`. This field should only be enabled for Autopilot clusters (`enable_autopilot`
   /// set to `true`).
   final pulumi.Input<bool>? allowNetAdmin;
-
   /// Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
-  final pulumi.Input<ClusterAnonymousAuthenticationConfig>?
-  anonymousAuthenticationConfig;
-
+  final pulumi.Input<ClusterAnonymousAuthenticationConfig>? anonymousAuthenticationConfig;
   /// Configuration for the
   /// [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
   /// Structure is documented below.
-  final pulumi.Input<ClusterAuthenticatorGroupsConfig>?
-  authenticatorGroupsConfig;
-
+  final pulumi.Input<ClusterAuthenticatorGroupsConfig>? authenticatorGroupsConfig;
   /// Configuration options for the Binary
   /// Authorization feature. Structure is documented below.
   final pulumi.Input<ClusterBinaryAuthorization>? binaryAuthorization;
-
   /// Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
   /// automatically adjust the size of the cluster and create/delete node pools based
   /// on the current needs of the cluster's workload. See the
   /// [guide to using Node Auto-Provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)
   /// for more details. Structure is documented below.
   final pulumi.Input<ClusterClusterAutoscaling>? clusterAutoscaling;
-
   /// The IP address range of the Kubernetes pods
   /// in this cluster in CIDR notation (e.g. `10.96.0.0/14`). Leave blank to have one
   /// automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
   /// default a new cluster to routes-based, where `ip_allocation_policy` is not defined.
   final pulumi.Input<String>? clusterIpv4Cidr;
-
   /// Configuration for
   /// [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
   /// Structure is documented below.
   final pulumi.Input<ClusterClusterTelemetry>? clusterTelemetry;
-
   /// Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
   final pulumi.Input<ClusterConfidentialNodes>? confidentialNodes;
-
   /// Configuration for all of the cluster's control plane endpoints.
   /// Structure is documented below.
-  final pulumi.Input<ClusterControlPlaneEndpointsConfig>?
-  controlPlaneEndpointsConfig;
-
+  final pulumi.Input<ClusterControlPlaneEndpointsConfig>? controlPlaneEndpointsConfig;
   /// Configuration for the
   /// [Cost Allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
   /// Structure is documented below.
   final pulumi.Input<ClusterCostManagementConfig>? costManagementConfig;
-
   /// Structure is documented below.
   final pulumi.Input<ClusterDatabaseEncryption>? databaseEncryption;
-
   /// The desired datapath provider for this cluster. This is set to `LEGACY_DATAPATH` by default, which uses the IPTables-based kube-proxy implementation. Set to `ADVANCED_DATAPATH` to enable Dataplane v2.
   final pulumi.Input<String>? datapathProvider;
-
   /// The default maximum number of pods
   /// per node in this cluster. This doesn't work on "routes-based" clusters, clusters
   /// that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
   /// for more information.
   final pulumi.Input<int>? defaultMaxPodsPerNode;
-
   /// [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig). Structure is documented below
   final pulumi.Input<ClusterDefaultSnatStatus>? defaultSnatStatus;
   final pulumi.Input<bool>? deletionProtection;
-
   /// Description of the cluster.
   final pulumi.Input<String>? description;
-
   /// Disable L4 load balancer VPC firewalls to enable firewall policies.
   final pulumi.Input<bool>? disableL4LbFirewallReconciliation;
-
   /// Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
   final pulumi.Input<ClusterDnsConfig>? dnsConfig;
-
   /// Enable Autopilot for this cluster. Defaults to `false`.
   /// Note that when this option is enabled, certain features of Standard GKE are not available.
   /// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
   /// for available features.
   final pulumi.Input<bool>? enableAutopilot;
-
   /// Whether CiliumClusterWideNetworkPolicy is enabled on this cluster. Defaults to false.
   final pulumi.Input<bool>? enableCiliumClusterwideNetworkPolicy;
-
   /// Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
   final pulumi.Input<bool>? enableFqdnNetworkPolicy;
-
   /// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
   final pulumi.Input<bool>? enableIntranodeVisibility;
-
   /// Configuration for Kubernetes Beta APIs.
   /// Structure is documented below.
   final pulumi.Input<ClusterEnableK8sBetaApis>? enableK8sBetaApis;
-
   /// Whether to enable Kubernetes Alpha features for
   /// this cluster. Note that when this option is enabled, the cluster cannot be upgraded
   /// and will be automatically deleted after 30 days.
   final pulumi.Input<bool>? enableKubernetesAlpha;
-
   /// Whether L4ILB Subsetting is enabled for this cluster.
   final pulumi.Input<bool>? enableL4IlbSubsetting;
-
   /// Whether the ABAC authorizer is enabled for this cluster.
   /// When enabled, identities in the system, including service accounts, nodes, and controllers,
   /// will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
   /// Defaults to `false`
   final pulumi.Input<bool>? enableLegacyAbac;
-
   /// Whether multi-networking is enabled for this cluster.
   final pulumi.Input<bool>? enableMultiNetworking;
-
   /// Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
   final pulumi.Input<bool>? enableShieldedNodes;
-
   /// Whether to enable Cloud TPU resources in this cluster.
   /// See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
   final pulumi.Input<bool>? enableTpu;
-
   /// (DEPRECATED) Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below. Deprecated as GKE Enterprise features are now available without an Enterprise tier. See https://cloud.google.com/blog/products/containers-kubernetes/gke-gets-new-pricing-and-capabilities-on-10th-birthday for the announcement of this change.
   final pulumi.Input<ClusterEnterpriseConfig>? enterpriseConfig;
-
   /// Fleet configuration for the cluster. Structure is documented below.
   final pulumi.Input<ClusterFleet>? fleet;
-
   /// Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
   final pulumi.Input<ClusterGatewayApiConfig>? gatewayApiConfig;
-
   /// Configuration options for the auto-upgrade patch type feature, which provide more control over the speed of automatic upgrades of your GKE clusters.
   /// Structure is documented below.
   final pulumi.Input<ClusterGkeAutoUpgradeConfig>? gkeAutoUpgradeConfig;
-
   /// . Structure is documented below.
   final pulumi.Input<ClusterIdentityServiceConfig>? identityServiceConfig;
-
   /// Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
   final pulumi.Input<String>? inTransitEncryptionConfig;
-
   /// The number of nodes to create in this
   /// cluster's default node pool. In regional or multi-zonal clusters, this is the
   /// number of nodes per zone. Must be set if `node_pool` is not set. If you're using
@@ -204,12 +166,10 @@ class ClusterArgs {
   /// set this to a value of at least `1`, alongside setting
   /// `remove_default_node_pool` to `true`.
   final pulumi.Input<int>? initialNodeCount;
-
   /// Configuration of cluster IP allocation for
   /// VPC-native clusters. If this block is unset during creation, it will be set by the GKE backend.
   /// Structure is documented below.
   final pulumi.Input<ClusterIpAllocationPolicy>? ipAllocationPolicy;
-
   /// The location (region or zone) in which the cluster
   /// master will be created, as well as the default node location. If you specify a
   /// zone (such as `us-central1-a`), the cluster will be a zonal cluster with a
@@ -217,24 +177,18 @@ class ClusterArgs {
   /// cluster will be a regional cluster with multiple masters spread across zones in
   /// the region, and with default node locations in those zones as well
   final pulumi.Input<String>? location;
-
   /// Logging configuration for the cluster.
   /// Structure is documented below.
   final pulumi.Input<ClusterLoggingConfig>? loggingConfig;
-
   /// The logging service that the cluster should
   /// write logs to. Available options include `logging.googleapis.com`(Legacy Stackdriver),
   /// `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
   final pulumi.Input<String>? loggingService;
-
   /// The maintenance policy to use for the cluster. Structure is
   /// documented below.
   final pulumi.Input<ClusterMaintenancePolicy>? maintenancePolicy;
-
   /// Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
-  final pulumi.Input<ClusterManagedOpentelemetryConfig>?
-  managedOpentelemetryConfig;
-
+  final pulumi.Input<ClusterManagedOpentelemetryConfig>? managedOpentelemetryConfig;
   /// The authentication information for accessing the
   /// Kubernetes master. Some values in this block are only returned by the API if
   /// your service account has permission to get credentials for your GKE cluster. If
@@ -242,18 +196,14 @@ class ClusterArgs {
   /// `container.clusters.getCredentials` permission.
   /// Structure is documented below.
   final pulumi.Input<ClusterMasterAuth>? masterAuth;
-
   /// The desired
   /// configuration options for master authorized networks. Omit the
   /// nested `cidr_blocks` attribute to disallow external access (except
   /// the cluster node IPs, which GKE automatically whitelists).
   /// Structure is documented below.
-  final pulumi.Input<ClusterMasterAuthorizedNetworksConfig>?
-  masterAuthorizedNetworksConfig;
-
+  final pulumi.Input<ClusterMasterAuthorizedNetworksConfig>? masterAuthorizedNetworksConfig;
   /// Structure is documented below.
   final pulumi.Input<ClusterMeshCertificates>? meshCertificates;
-
   /// The minimum version of the master. GKE
   /// will auto-update the master to new versions, so this does not guarantee the
   /// current master version--use the read-only `master_version` field to obtain that.
@@ -268,11 +218,9 @@ class ClusterArgs {
   /// to the datasource. A region can have a different set of supported versions than its corresponding zones, and not all zones in a
   /// region are guaranteed to support the same version.
   final pulumi.Input<String>? minMasterVersion;
-
   /// Monitoring configuration for the cluster.
   /// Structure is documented below.
   final pulumi.Input<ClusterMonitoringConfig>? monitoringConfig;
-
   /// The monitoring service that the cluster
   /// should write metrics to.
   /// Automatically send metrics from pods in the cluster to the Google Cloud Monitoring API.
@@ -281,37 +229,30 @@ class ClusterArgs {
   /// `monitoring.googleapis.com`(Legacy Stackdriver), `monitoring.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Monitoring), and `none`.
   /// Defaults to `monitoring.googleapis.com/kubernetes`
   final pulumi.Input<String>? monitoringService;
-
   /// The name of the cluster, unique within the project and
   /// location.
   ///
   /// - - -
   final pulumi.Input<String>? name;
-
   /// The name or self_link of the Google Compute Engine
   /// network to which the cluster is connected. For Shared VPC, set this to the self link of the
   /// shared network.
   final pulumi.Input<String>? network;
-
   /// Network bandwidth tier configuration.
   final pulumi.Input<ClusterNetworkPerformanceConfig>? networkPerformanceConfig;
-
   /// Configuration options for the
   /// [NetworkPolicy](https://kubernetes.io/docs/concepts/services-networking/networkpolicies/)
   /// feature. Structure is documented below.
   final pulumi.Input<ClusterNetworkPolicy>? networkPolicy;
-
   /// Determines whether alias IPs or routes will be used for pod IPs in the cluster.
   /// Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases). Newly created clusters will default to `VPC_NATIVE`.
   final pulumi.Input<String>? networkingMode;
-
   /// Parameters used in creating the default node pool.
   /// Generally, this field should not be used at the same time as a
   /// `gcp.container.NodePool` or a `node_pool` block; this configuration
   /// manages the default node pool, which isn't recommended to be used.
   /// Structure is documented below.
   final pulumi.Input<ClusterNodeConfig>? nodeConfig;
-
   /// The list of zones in which the cluster's nodes
   /// are located. Nodes must be in the region of their regional cluster or in the
   /// same region as their cluster's zone for zonal clusters. If this is specified for
@@ -324,15 +265,12 @@ class ClusterArgs {
   /// in multiple zones in the region. For that reason, regional clusters should be
   /// preferred.
   final pulumi.Input<List<String>>? nodeLocations;
-
   /// Node pool configs that apply to auto-provisioned node pools in
   /// [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
   /// [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
   final pulumi.Input<ClusterNodePoolAutoConfig>? nodePoolAutoConfig;
-
   /// Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
   final pulumi.Input<ClusterNodePoolDefaults>? nodePoolDefaults;
-
   /// List of node pools associated with this cluster.
   /// See gcp.container.NodePool for schema.
   /// **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
@@ -340,7 +278,6 @@ class ClusterArgs {
   /// to say "these are the _only_ node pools associated with this cluster", use the
   /// gcp.container.NodePool resource instead of this property.
   final pulumi.Input<List<ClusterNodePool>>? nodePools;
-
   /// The Kubernetes version on the nodes. Must either be unset
   /// or set to the same value as `min_master_version` on create. Defaults to the default
   /// version set by GKE which is not necessarily the latest version. This only affects
@@ -350,38 +287,29 @@ class ClusterArgs {
   /// `version_prefix` field to approximate fuzzy versions.
   /// To update nodes in other node pools, use the `version` attribute on the node pool.
   final pulumi.Input<String>? nodeVersion;
-
   /// Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
   final pulumi.Input<ClusterNotificationConfig>? notificationConfig;
-
   /// Configuration for the
   /// Structure is documented below.
   final pulumi.Input<ClusterPodAutoscaling>? podAutoscaling;
-
   /// Configuration for the
   /// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
   /// Structure is documented below.
   final pulumi.Input<ClusterPodSecurityPolicyConfig>? podSecurityPolicyConfig;
-
   /// Configuration for [private clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters),
   /// clusters with private nodes. Structure is documented below.
   final pulumi.Input<ClusterPrivateClusterConfig>? privateClusterConfig;
-
   /// The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4).
   final pulumi.Input<String>? privateIpv6GoogleAccess;
-
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// Enable/Disable Protect API features for the cluster. Structure is documented below.
   final pulumi.Input<ClusterProtectConfig>? protectConfig;
-
   /// RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
   ///
   /// &lt;a name="nested_default_snat_status"&gt;&lt;/a&gt;The `default_snat_status` block supports
   final pulumi.Input<ClusterRbacBindingConfig>? rbacBindingConfig;
-
   /// Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
   /// feature, which provide more control over automatic upgrades of your GKE clusters.
   /// When updating this field, GKE imposes specific version requirements. See
@@ -392,58 +320,44 @@ class ClusterArgs {
   /// release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
   /// channel. Structure is documented below.
   final pulumi.Input<ClusterReleaseChannel>? releaseChannel;
-
   /// If `true`, deletes the default node
   /// pool upon cluster creation. If you're using `gcp.container.NodePool`
   /// resources with no default node pool, this should be set to `true`, alongside
   /// setting `initial_node_count` to at least `1`.
   final pulumi.Input<bool>? removeDefaultNodePool;
-
   /// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field 'effective_labels' for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? resourceLabels;
-
   /// Configuration for the
   /// [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
   /// Structure is documented below.
-  final pulumi.Input<ClusterResourceUsageExportConfig>?
-  resourceUsageExportConfig;
-
+  final pulumi.Input<ClusterResourceUsageExportConfig>? resourceUsageExportConfig;
   /// Configuration for the
   /// [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
   /// Structure is documented below.
   final pulumi.Input<ClusterSecretManagerConfig>? secretManagerConfig;
-
   /// Configuration for the
   /// [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
   /// Structure is documented below.
   final pulumi.Input<ClusterSecretSyncConfig>? secretSyncConfig;
-
   /// Enable/Disable Security Posture API features for the cluster. Structure is documented below.
   final pulumi.Input<ClusterSecurityPostureConfig>? securityPostureConfig;
-
   /// Structure is documented below.
   final pulumi.Input<ClusterServiceExternalIpsConfig>? serviceExternalIpsConfig;
-
   /// The name or self_link of the Google Compute Engine
   /// subnetwork in which the cluster's instances are launched.
   final pulumi.Input<String>? subnetwork;
-
   /// TPU configuration for the cluster.
   final pulumi.Input<ClusterTpuConfig>? tpuConfig;
-
   /// The custom keys configuration of the cluster Structure is documented below.
   final pulumi.Input<ClusterUserManagedKeysConfig>? userManagedKeysConfig;
-
   /// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
   /// Structure is documented below.
   final pulumi.Input<ClusterVerticalPodAutoscaling>? verticalPodAutoscaling;
-
   /// Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
   final pulumi.Input<ClusterWorkloadAltsConfig>? workloadAltsConfig;
-
   /// Workload Identity allows Kubernetes service accounts to act as a user-managed
   /// [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
   /// Structure is documented below.
@@ -619,905 +533,176 @@ class ClusterArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'addonsConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterAddonsConfig,
-            Map<String, dynamic>
-          >(addonsConfig, (value) => value.toMap()),
+      'addonsConfig': ?pulumi.Input.mapOptionalInputValue<ClusterAddonsConfig, Map<String, dynamic>>(addonsConfig, (value) => value.toMap()),
       'allowNetAdmin': ?allowNetAdmin,
-      'anonymousAuthenticationConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterAnonymousAuthenticationConfig,
-            Map<String, dynamic>
-          >(anonymousAuthenticationConfig, (value) => value.toMap()),
-      'authenticatorGroupsConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterAuthenticatorGroupsConfig,
-            Map<String, dynamic>
-          >(authenticatorGroupsConfig, (value) => value.toMap()),
-      'binaryAuthorization':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterBinaryAuthorization,
-            Map<String, dynamic>
-          >(binaryAuthorization, (value) => value.toMap()),
-      'clusterAutoscaling':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterClusterAutoscaling,
-            Map<String, dynamic>
-          >(clusterAutoscaling, (value) => value.toMap()),
+      'anonymousAuthenticationConfig': ?pulumi.Input.mapOptionalInputValue<ClusterAnonymousAuthenticationConfig, Map<String, dynamic>>(anonymousAuthenticationConfig, (value) => value.toMap()),
+      'authenticatorGroupsConfig': ?pulumi.Input.mapOptionalInputValue<ClusterAuthenticatorGroupsConfig, Map<String, dynamic>>(authenticatorGroupsConfig, (value) => value.toMap()),
+      'binaryAuthorization': ?pulumi.Input.mapOptionalInputValue<ClusterBinaryAuthorization, Map<String, dynamic>>(binaryAuthorization, (value) => value.toMap()),
+      'clusterAutoscaling': ?pulumi.Input.mapOptionalInputValue<ClusterClusterAutoscaling, Map<String, dynamic>>(clusterAutoscaling, (value) => value.toMap()),
       'clusterIpv4Cidr': ?clusterIpv4Cidr,
-      'clusterTelemetry':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterClusterTelemetry,
-            Map<String, dynamic>
-          >(clusterTelemetry, (value) => value.toMap()),
-      'confidentialNodes':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterConfidentialNodes,
-            Map<String, dynamic>
-          >(confidentialNodes, (value) => value.toMap()),
-      'controlPlaneEndpointsConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterControlPlaneEndpointsConfig,
-            Map<String, dynamic>
-          >(controlPlaneEndpointsConfig, (value) => value.toMap()),
-      'costManagementConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterCostManagementConfig,
-            Map<String, dynamic>
-          >(costManagementConfig, (value) => value.toMap()),
-      'databaseEncryption':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterDatabaseEncryption,
-            Map<String, dynamic>
-          >(databaseEncryption, (value) => value.toMap()),
+      'clusterTelemetry': ?pulumi.Input.mapOptionalInputValue<ClusterClusterTelemetry, Map<String, dynamic>>(clusterTelemetry, (value) => value.toMap()),
+      'confidentialNodes': ?pulumi.Input.mapOptionalInputValue<ClusterConfidentialNodes, Map<String, dynamic>>(confidentialNodes, (value) => value.toMap()),
+      'controlPlaneEndpointsConfig': ?pulumi.Input.mapOptionalInputValue<ClusterControlPlaneEndpointsConfig, Map<String, dynamic>>(controlPlaneEndpointsConfig, (value) => value.toMap()),
+      'costManagementConfig': ?pulumi.Input.mapOptionalInputValue<ClusterCostManagementConfig, Map<String, dynamic>>(costManagementConfig, (value) => value.toMap()),
+      'databaseEncryption': ?pulumi.Input.mapOptionalInputValue<ClusterDatabaseEncryption, Map<String, dynamic>>(databaseEncryption, (value) => value.toMap()),
       'datapathProvider': ?datapathProvider,
       'defaultMaxPodsPerNode': ?defaultMaxPodsPerNode,
-      'defaultSnatStatus':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterDefaultSnatStatus,
-            Map<String, dynamic>
-          >(defaultSnatStatus, (value) => value.toMap()),
+      'defaultSnatStatus': ?pulumi.Input.mapOptionalInputValue<ClusterDefaultSnatStatus, Map<String, dynamic>>(defaultSnatStatus, (value) => value.toMap()),
       'deletionProtection': ?deletionProtection,
       'description': ?description,
       'disableL4LbFirewallReconciliation': ?disableL4LbFirewallReconciliation,
-      'dnsConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterDnsConfig,
-            Map<String, dynamic>
-          >(dnsConfig, (value) => value.toMap()),
+      'dnsConfig': ?pulumi.Input.mapOptionalInputValue<ClusterDnsConfig, Map<String, dynamic>>(dnsConfig, (value) => value.toMap()),
       'enableAutopilot': ?enableAutopilot,
-      'enableCiliumClusterwideNetworkPolicy':
-          ?enableCiliumClusterwideNetworkPolicy,
+      'enableCiliumClusterwideNetworkPolicy': ?enableCiliumClusterwideNetworkPolicy,
       'enableFqdnNetworkPolicy': ?enableFqdnNetworkPolicy,
       'enableIntranodeVisibility': ?enableIntranodeVisibility,
-      'enableK8sBetaApis':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterEnableK8sBetaApis,
-            Map<String, dynamic>
-          >(enableK8sBetaApis, (value) => value.toMap()),
+      'enableK8sBetaApis': ?pulumi.Input.mapOptionalInputValue<ClusterEnableK8sBetaApis, Map<String, dynamic>>(enableK8sBetaApis, (value) => value.toMap()),
       'enableKubernetesAlpha': ?enableKubernetesAlpha,
       'enableL4IlbSubsetting': ?enableL4IlbSubsetting,
       'enableLegacyAbac': ?enableLegacyAbac,
       'enableMultiNetworking': ?enableMultiNetworking,
       'enableShieldedNodes': ?enableShieldedNodes,
       'enableTpu': ?enableTpu,
-      'enterpriseConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterEnterpriseConfig,
-            Map<String, dynamic>
-          >(enterpriseConfig, (value) => value.toMap()),
-      'fleet':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterFleet,
-            Map<String, dynamic>
-          >(fleet, (value) => value.toMap()),
-      'gatewayApiConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterGatewayApiConfig,
-            Map<String, dynamic>
-          >(gatewayApiConfig, (value) => value.toMap()),
-      'gkeAutoUpgradeConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterGkeAutoUpgradeConfig,
-            Map<String, dynamic>
-          >(gkeAutoUpgradeConfig, (value) => value.toMap()),
-      'identityServiceConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterIdentityServiceConfig,
-            Map<String, dynamic>
-          >(identityServiceConfig, (value) => value.toMap()),
+      'enterpriseConfig': ?pulumi.Input.mapOptionalInputValue<ClusterEnterpriseConfig, Map<String, dynamic>>(enterpriseConfig, (value) => value.toMap()),
+      'fleet': ?pulumi.Input.mapOptionalInputValue<ClusterFleet, Map<String, dynamic>>(fleet, (value) => value.toMap()),
+      'gatewayApiConfig': ?pulumi.Input.mapOptionalInputValue<ClusterGatewayApiConfig, Map<String, dynamic>>(gatewayApiConfig, (value) => value.toMap()),
+      'gkeAutoUpgradeConfig': ?pulumi.Input.mapOptionalInputValue<ClusterGkeAutoUpgradeConfig, Map<String, dynamic>>(gkeAutoUpgradeConfig, (value) => value.toMap()),
+      'identityServiceConfig': ?pulumi.Input.mapOptionalInputValue<ClusterIdentityServiceConfig, Map<String, dynamic>>(identityServiceConfig, (value) => value.toMap()),
       'inTransitEncryptionConfig': ?inTransitEncryptionConfig,
       'initialNodeCount': ?initialNodeCount,
-      'ipAllocationPolicy':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterIpAllocationPolicy,
-            Map<String, dynamic>
-          >(ipAllocationPolicy, (value) => value.toMap()),
+      'ipAllocationPolicy': ?pulumi.Input.mapOptionalInputValue<ClusterIpAllocationPolicy, Map<String, dynamic>>(ipAllocationPolicy, (value) => value.toMap()),
       'location': ?location,
-      'loggingConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterLoggingConfig,
-            Map<String, dynamic>
-          >(loggingConfig, (value) => value.toMap()),
+      'loggingConfig': ?pulumi.Input.mapOptionalInputValue<ClusterLoggingConfig, Map<String, dynamic>>(loggingConfig, (value) => value.toMap()),
       'loggingService': ?loggingService,
-      'maintenancePolicy':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterMaintenancePolicy,
-            Map<String, dynamic>
-          >(maintenancePolicy, (value) => value.toMap()),
-      'managedOpentelemetryConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterManagedOpentelemetryConfig,
-            Map<String, dynamic>
-          >(managedOpentelemetryConfig, (value) => value.toMap()),
-      'masterAuth':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterMasterAuth,
-            Map<String, dynamic>
-          >(masterAuth, (value) => value.toMap()),
-      'masterAuthorizedNetworksConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterMasterAuthorizedNetworksConfig,
-            Map<String, dynamic>
-          >(masterAuthorizedNetworksConfig, (value) => value.toMap()),
-      'meshCertificates':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterMeshCertificates,
-            Map<String, dynamic>
-          >(meshCertificates, (value) => value.toMap()),
+      'maintenancePolicy': ?pulumi.Input.mapOptionalInputValue<ClusterMaintenancePolicy, Map<String, dynamic>>(maintenancePolicy, (value) => value.toMap()),
+      'managedOpentelemetryConfig': ?pulumi.Input.mapOptionalInputValue<ClusterManagedOpentelemetryConfig, Map<String, dynamic>>(managedOpentelemetryConfig, (value) => value.toMap()),
+      'masterAuth': ?pulumi.Input.mapOptionalInputValue<ClusterMasterAuth, Map<String, dynamic>>(masterAuth, (value) => value.toMap()),
+      'masterAuthorizedNetworksConfig': ?pulumi.Input.mapOptionalInputValue<ClusterMasterAuthorizedNetworksConfig, Map<String, dynamic>>(masterAuthorizedNetworksConfig, (value) => value.toMap()),
+      'meshCertificates': ?pulumi.Input.mapOptionalInputValue<ClusterMeshCertificates, Map<String, dynamic>>(meshCertificates, (value) => value.toMap()),
       'minMasterVersion': ?minMasterVersion,
-      'monitoringConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterMonitoringConfig,
-            Map<String, dynamic>
-          >(monitoringConfig, (value) => value.toMap()),
+      'monitoringConfig': ?pulumi.Input.mapOptionalInputValue<ClusterMonitoringConfig, Map<String, dynamic>>(monitoringConfig, (value) => value.toMap()),
       'monitoringService': ?monitoringService,
       'name': ?name,
       'network': ?network,
-      'networkPerformanceConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterNetworkPerformanceConfig,
-            Map<String, dynamic>
-          >(networkPerformanceConfig, (value) => value.toMap()),
-      'networkPolicy':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterNetworkPolicy,
-            Map<String, dynamic>
-          >(networkPolicy, (value) => value.toMap()),
+      'networkPerformanceConfig': ?pulumi.Input.mapOptionalInputValue<ClusterNetworkPerformanceConfig, Map<String, dynamic>>(networkPerformanceConfig, (value) => value.toMap()),
+      'networkPolicy': ?pulumi.Input.mapOptionalInputValue<ClusterNetworkPolicy, Map<String, dynamic>>(networkPolicy, (value) => value.toMap()),
       'networkingMode': ?networkingMode,
-      'nodeConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterNodeConfig,
-            Map<String, dynamic>
-          >(nodeConfig, (value) => value.toMap()),
+      'nodeConfig': ?pulumi.Input.mapOptionalInputValue<ClusterNodeConfig, Map<String, dynamic>>(nodeConfig, (value) => value.toMap()),
       'nodeLocations': ?nodeLocations,
-      'nodePoolAutoConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterNodePoolAutoConfig,
-            Map<String, dynamic>
-          >(nodePoolAutoConfig, (value) => value.toMap()),
-      'nodePoolDefaults':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterNodePoolDefaults,
-            Map<String, dynamic>
-          >(nodePoolDefaults, (value) => value.toMap()),
-      'nodePools':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ClusterNodePool>,
-            List<Map<String, dynamic>>
-          >(
-            nodePools,
-            (value) =>
-                pulumi.Input.encodeList<ClusterNodePool, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'nodePoolAutoConfig': ?pulumi.Input.mapOptionalInputValue<ClusterNodePoolAutoConfig, Map<String, dynamic>>(nodePoolAutoConfig, (value) => value.toMap()),
+      'nodePoolDefaults': ?pulumi.Input.mapOptionalInputValue<ClusterNodePoolDefaults, Map<String, dynamic>>(nodePoolDefaults, (value) => value.toMap()),
+      'nodePools': ?pulumi.Input.mapOptionalInputValue<List<ClusterNodePool>, List<Map<String, dynamic>>>(nodePools, (value) => pulumi.Input.encodeList<ClusterNodePool, Map<String, dynamic>>(value, (value) => value.toMap())),
       'nodeVersion': ?nodeVersion,
-      'notificationConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterNotificationConfig,
-            Map<String, dynamic>
-          >(notificationConfig, (value) => value.toMap()),
-      'podAutoscaling':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterPodAutoscaling,
-            Map<String, dynamic>
-          >(podAutoscaling, (value) => value.toMap()),
-      'podSecurityPolicyConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterPodSecurityPolicyConfig,
-            Map<String, dynamic>
-          >(podSecurityPolicyConfig, (value) => value.toMap()),
-      'privateClusterConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterPrivateClusterConfig,
-            Map<String, dynamic>
-          >(privateClusterConfig, (value) => value.toMap()),
+      'notificationConfig': ?pulumi.Input.mapOptionalInputValue<ClusterNotificationConfig, Map<String, dynamic>>(notificationConfig, (value) => value.toMap()),
+      'podAutoscaling': ?pulumi.Input.mapOptionalInputValue<ClusterPodAutoscaling, Map<String, dynamic>>(podAutoscaling, (value) => value.toMap()),
+      'podSecurityPolicyConfig': ?pulumi.Input.mapOptionalInputValue<ClusterPodSecurityPolicyConfig, Map<String, dynamic>>(podSecurityPolicyConfig, (value) => value.toMap()),
+      'privateClusterConfig': ?pulumi.Input.mapOptionalInputValue<ClusterPrivateClusterConfig, Map<String, dynamic>>(privateClusterConfig, (value) => value.toMap()),
       'privateIpv6GoogleAccess': ?privateIpv6GoogleAccess,
       'project': ?project,
-      'protectConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterProtectConfig,
-            Map<String, dynamic>
-          >(protectConfig, (value) => value.toMap()),
-      'rbacBindingConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterRbacBindingConfig,
-            Map<String, dynamic>
-          >(rbacBindingConfig, (value) => value.toMap()),
-      'releaseChannel':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterReleaseChannel,
-            Map<String, dynamic>
-          >(releaseChannel, (value) => value.toMap()),
+      'protectConfig': ?pulumi.Input.mapOptionalInputValue<ClusterProtectConfig, Map<String, dynamic>>(protectConfig, (value) => value.toMap()),
+      'rbacBindingConfig': ?pulumi.Input.mapOptionalInputValue<ClusterRbacBindingConfig, Map<String, dynamic>>(rbacBindingConfig, (value) => value.toMap()),
+      'releaseChannel': ?pulumi.Input.mapOptionalInputValue<ClusterReleaseChannel, Map<String, dynamic>>(releaseChannel, (value) => value.toMap()),
       'removeDefaultNodePool': ?removeDefaultNodePool,
       'resourceLabels': ?resourceLabels,
-      'resourceUsageExportConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterResourceUsageExportConfig,
-            Map<String, dynamic>
-          >(resourceUsageExportConfig, (value) => value.toMap()),
-      'secretManagerConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterSecretManagerConfig,
-            Map<String, dynamic>
-          >(secretManagerConfig, (value) => value.toMap()),
-      'secretSyncConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterSecretSyncConfig,
-            Map<String, dynamic>
-          >(secretSyncConfig, (value) => value.toMap()),
-      'securityPostureConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterSecurityPostureConfig,
-            Map<String, dynamic>
-          >(securityPostureConfig, (value) => value.toMap()),
-      'serviceExternalIpsConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterServiceExternalIpsConfig,
-            Map<String, dynamic>
-          >(serviceExternalIpsConfig, (value) => value.toMap()),
+      'resourceUsageExportConfig': ?pulumi.Input.mapOptionalInputValue<ClusterResourceUsageExportConfig, Map<String, dynamic>>(resourceUsageExportConfig, (value) => value.toMap()),
+      'secretManagerConfig': ?pulumi.Input.mapOptionalInputValue<ClusterSecretManagerConfig, Map<String, dynamic>>(secretManagerConfig, (value) => value.toMap()),
+      'secretSyncConfig': ?pulumi.Input.mapOptionalInputValue<ClusterSecretSyncConfig, Map<String, dynamic>>(secretSyncConfig, (value) => value.toMap()),
+      'securityPostureConfig': ?pulumi.Input.mapOptionalInputValue<ClusterSecurityPostureConfig, Map<String, dynamic>>(securityPostureConfig, (value) => value.toMap()),
+      'serviceExternalIpsConfig': ?pulumi.Input.mapOptionalInputValue<ClusterServiceExternalIpsConfig, Map<String, dynamic>>(serviceExternalIpsConfig, (value) => value.toMap()),
       'subnetwork': ?subnetwork,
-      'tpuConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterTpuConfig,
-            Map<String, dynamic>
-          >(tpuConfig, (value) => value.toMap()),
-      'userManagedKeysConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterUserManagedKeysConfig,
-            Map<String, dynamic>
-          >(userManagedKeysConfig, (value) => value.toMap()),
-      'verticalPodAutoscaling':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterVerticalPodAutoscaling,
-            Map<String, dynamic>
-          >(verticalPodAutoscaling, (value) => value.toMap()),
-      'workloadAltsConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterWorkloadAltsConfig,
-            Map<String, dynamic>
-          >(workloadAltsConfig, (value) => value.toMap()),
-      'workloadIdentityConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterWorkloadIdentityConfig,
-            Map<String, dynamic>
-          >(workloadIdentityConfig, (value) => value.toMap()),
+      'tpuConfig': ?pulumi.Input.mapOptionalInputValue<ClusterTpuConfig, Map<String, dynamic>>(tpuConfig, (value) => value.toMap()),
+      'userManagedKeysConfig': ?pulumi.Input.mapOptionalInputValue<ClusterUserManagedKeysConfig, Map<String, dynamic>>(userManagedKeysConfig, (value) => value.toMap()),
+      'verticalPodAutoscaling': ?pulumi.Input.mapOptionalInputValue<ClusterVerticalPodAutoscaling, Map<String, dynamic>>(verticalPodAutoscaling, (value) => value.toMap()),
+      'workloadAltsConfig': ?pulumi.Input.mapOptionalInputValue<ClusterWorkloadAltsConfig, Map<String, dynamic>>(workloadAltsConfig, (value) => value.toMap()),
+      'workloadIdentityConfig': ?pulumi.Input.mapOptionalInputValue<ClusterWorkloadIdentityConfig, Map<String, dynamic>>(workloadIdentityConfig, (value) => value.toMap()),
     };
   }
 
   factory ClusterArgs.fromMap(Map<String, dynamic> map) {
     return ClusterArgs(
-      addonsConfig: (() {
-        final guardedValue = map['addonsConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterAddonsConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      allowNetAdmin: (() {
-        final guardedValue = map['allowNetAdmin'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      anonymousAuthenticationConfig: (() {
-        final guardedValue = map['anonymousAuthenticationConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterAnonymousAuthenticationConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      authenticatorGroupsConfig: (() {
-        final guardedValue = map['authenticatorGroupsConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterAuthenticatorGroupsConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      binaryAuthorization: (() {
-        final guardedValue = map['binaryAuthorization'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterBinaryAuthorization.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      clusterAutoscaling: (() {
-        final guardedValue = map['clusterAutoscaling'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterClusterAutoscaling.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      clusterIpv4Cidr: (() {
-        final guardedValue = map['clusterIpv4Cidr'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      clusterTelemetry: (() {
-        final guardedValue = map['clusterTelemetry'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterClusterTelemetry.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      confidentialNodes: (() {
-        final guardedValue = map['confidentialNodes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterConfidentialNodes.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      controlPlaneEndpointsConfig: (() {
-        final guardedValue = map['controlPlaneEndpointsConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterControlPlaneEndpointsConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      costManagementConfig: (() {
-        final guardedValue = map['costManagementConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterCostManagementConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      databaseEncryption: (() {
-        final guardedValue = map['databaseEncryption'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterDatabaseEncryption.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      datapathProvider: (() {
-        final guardedValue = map['datapathProvider'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      defaultMaxPodsPerNode: (() {
-        final guardedValue = map['defaultMaxPodsPerNode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      defaultSnatStatus: (() {
-        final guardedValue = map['defaultSnatStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterDefaultSnatStatus.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      deletionProtection: (() {
-        final guardedValue = map['deletionProtection'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      disableL4LbFirewallReconciliation: (() {
-        final guardedValue = map['disableL4LbFirewallReconciliation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      dnsConfig: (() {
-        final guardedValue = map['dnsConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterDnsConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      enableAutopilot: (() {
-        final guardedValue = map['enableAutopilot'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      enableCiliumClusterwideNetworkPolicy: (() {
-        final guardedValue = map['enableCiliumClusterwideNetworkPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      enableFqdnNetworkPolicy: (() {
-        final guardedValue = map['enableFqdnNetworkPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      enableIntranodeVisibility: (() {
-        final guardedValue = map['enableIntranodeVisibility'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      enableK8sBetaApis: (() {
-        final guardedValue = map['enableK8sBetaApis'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterEnableK8sBetaApis.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      enableKubernetesAlpha: (() {
-        final guardedValue = map['enableKubernetesAlpha'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      enableL4IlbSubsetting: (() {
-        final guardedValue = map['enableL4IlbSubsetting'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      enableLegacyAbac: (() {
-        final guardedValue = map['enableLegacyAbac'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      enableMultiNetworking: (() {
-        final guardedValue = map['enableMultiNetworking'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      enableShieldedNodes: (() {
-        final guardedValue = map['enableShieldedNodes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      enableTpu: (() {
-        final guardedValue = map['enableTpu'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      enterpriseConfig: (() {
-        final guardedValue = map['enterpriseConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterEnterpriseConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      fleet: (() {
-        final guardedValue = map['fleet'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterFleet.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      gatewayApiConfig: (() {
-        final guardedValue = map['gatewayApiConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterGatewayApiConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      gkeAutoUpgradeConfig: (() {
-        final guardedValue = map['gkeAutoUpgradeConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterGkeAutoUpgradeConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      identityServiceConfig: (() {
-        final guardedValue = map['identityServiceConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterIdentityServiceConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      inTransitEncryptionConfig: (() {
-        final guardedValue = map['inTransitEncryptionConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      initialNodeCount: (() {
-        final guardedValue = map['initialNodeCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      ipAllocationPolicy: (() {
-        final guardedValue = map['ipAllocationPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterIpAllocationPolicy.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      loggingConfig: (() {
-        final guardedValue = map['loggingConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterLoggingConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      loggingService: (() {
-        final guardedValue = map['loggingService'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      maintenancePolicy: (() {
-        final guardedValue = map['maintenancePolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterMaintenancePolicy.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      managedOpentelemetryConfig: (() {
-        final guardedValue = map['managedOpentelemetryConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterManagedOpentelemetryConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      masterAuth: (() {
-        final guardedValue = map['masterAuth'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterMasterAuth.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      masterAuthorizedNetworksConfig: (() {
-        final guardedValue = map['masterAuthorizedNetworksConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterMasterAuthorizedNetworksConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      meshCertificates: (() {
-        final guardedValue = map['meshCertificates'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterMeshCertificates.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      minMasterVersion: (() {
-        final guardedValue = map['minMasterVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      monitoringConfig: (() {
-        final guardedValue = map['monitoringConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterMonitoringConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      monitoringService: (() {
-        final guardedValue = map['monitoringService'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      network: (() {
-        final guardedValue = map['network'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      networkPerformanceConfig: (() {
-        final guardedValue = map['networkPerformanceConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterNetworkPerformanceConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      networkPolicy: (() {
-        final guardedValue = map['networkPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterNetworkPolicy.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      networkingMode: (() {
-        final guardedValue = map['networkingMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      nodeConfig: (() {
-        final guardedValue = map['nodeConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterNodeConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      nodeLocations: (() {
-        final guardedValue = map['nodeLocations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      nodePoolAutoConfig: (() {
-        final guardedValue = map['nodePoolAutoConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterNodePoolAutoConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      nodePoolDefaults: (() {
-        final guardedValue = map['nodePoolDefaults'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterNodePoolDefaults.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      nodePools: (() {
-        final guardedValue = map['nodePools'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ClusterNodePool>(
-            guardedValue,
-            (value) =>
-                ClusterNodePool.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      nodeVersion: (() {
-        final guardedValue = map['nodeVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      notificationConfig: (() {
-        final guardedValue = map['notificationConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterNotificationConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      podAutoscaling: (() {
-        final guardedValue = map['podAutoscaling'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterPodAutoscaling.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      podSecurityPolicyConfig: (() {
-        final guardedValue = map['podSecurityPolicyConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterPodSecurityPolicyConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      privateClusterConfig: (() {
-        final guardedValue = map['privateClusterConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterPrivateClusterConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      privateIpv6GoogleAccess: (() {
-        final guardedValue = map['privateIpv6GoogleAccess'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      protectConfig: (() {
-        final guardedValue = map['protectConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterProtectConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      rbacBindingConfig: (() {
-        final guardedValue = map['rbacBindingConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterRbacBindingConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      releaseChannel: (() {
-        final guardedValue = map['releaseChannel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterReleaseChannel.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      removeDefaultNodePool: (() {
-        final guardedValue = map['removeDefaultNodePool'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      resourceLabels: (() {
-        final guardedValue = map['resourceLabels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      resourceUsageExportConfig: (() {
-        final guardedValue = map['resourceUsageExportConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterResourceUsageExportConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      secretManagerConfig: (() {
-        final guardedValue = map['secretManagerConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterSecretManagerConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      secretSyncConfig: (() {
-        final guardedValue = map['secretSyncConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterSecretSyncConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      securityPostureConfig: (() {
-        final guardedValue = map['securityPostureConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterSecurityPostureConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      serviceExternalIpsConfig: (() {
-        final guardedValue = map['serviceExternalIpsConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterServiceExternalIpsConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      subnetwork: (() {
-        final guardedValue = map['subnetwork'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tpuConfig: (() {
-        final guardedValue = map['tpuConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterTpuConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      userManagedKeysConfig: (() {
-        final guardedValue = map['userManagedKeysConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterUserManagedKeysConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      verticalPodAutoscaling: (() {
-        final guardedValue = map['verticalPodAutoscaling'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterVerticalPodAutoscaling.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      workloadAltsConfig: (() {
-        final guardedValue = map['workloadAltsConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterWorkloadAltsConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      workloadIdentityConfig: (() {
-        final guardedValue = map['workloadIdentityConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterWorkloadIdentityConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      addonsConfig: (() { final guardedValue = map['addonsConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterAddonsConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      allowNetAdmin: (() { final guardedValue = map['allowNetAdmin']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      anonymousAuthenticationConfig: (() { final guardedValue = map['anonymousAuthenticationConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterAnonymousAuthenticationConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      authenticatorGroupsConfig: (() { final guardedValue = map['authenticatorGroupsConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterAuthenticatorGroupsConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      binaryAuthorization: (() { final guardedValue = map['binaryAuthorization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterBinaryAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      clusterAutoscaling: (() { final guardedValue = map['clusterAutoscaling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterClusterAutoscaling.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      clusterIpv4Cidr: (() { final guardedValue = map['clusterIpv4Cidr']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      clusterTelemetry: (() { final guardedValue = map['clusterTelemetry']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterClusterTelemetry.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      confidentialNodes: (() { final guardedValue = map['confidentialNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterConfidentialNodes.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      controlPlaneEndpointsConfig: (() { final guardedValue = map['controlPlaneEndpointsConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterControlPlaneEndpointsConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      costManagementConfig: (() { final guardedValue = map['costManagementConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterCostManagementConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      databaseEncryption: (() { final guardedValue = map['databaseEncryption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterDatabaseEncryption.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      datapathProvider: (() { final guardedValue = map['datapathProvider']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      defaultMaxPodsPerNode: (() { final guardedValue = map['defaultMaxPodsPerNode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      defaultSnatStatus: (() { final guardedValue = map['defaultSnatStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterDefaultSnatStatus.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deletionProtection: (() { final guardedValue = map['deletionProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      disableL4LbFirewallReconciliation: (() { final guardedValue = map['disableL4LbFirewallReconciliation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      dnsConfig: (() { final guardedValue = map['dnsConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterDnsConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      enableAutopilot: (() { final guardedValue = map['enableAutopilot']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enableCiliumClusterwideNetworkPolicy: (() { final guardedValue = map['enableCiliumClusterwideNetworkPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enableFqdnNetworkPolicy: (() { final guardedValue = map['enableFqdnNetworkPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enableIntranodeVisibility: (() { final guardedValue = map['enableIntranodeVisibility']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enableK8sBetaApis: (() { final guardedValue = map['enableK8sBetaApis']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterEnableK8sBetaApis.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      enableKubernetesAlpha: (() { final guardedValue = map['enableKubernetesAlpha']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enableL4IlbSubsetting: (() { final guardedValue = map['enableL4IlbSubsetting']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enableLegacyAbac: (() { final guardedValue = map['enableLegacyAbac']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enableMultiNetworking: (() { final guardedValue = map['enableMultiNetworking']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enableShieldedNodes: (() { final guardedValue = map['enableShieldedNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enableTpu: (() { final guardedValue = map['enableTpu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enterpriseConfig: (() { final guardedValue = map['enterpriseConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterEnterpriseConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      fleet: (() { final guardedValue = map['fleet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterFleet.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      gatewayApiConfig: (() { final guardedValue = map['gatewayApiConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterGatewayApiConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      gkeAutoUpgradeConfig: (() { final guardedValue = map['gkeAutoUpgradeConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterGkeAutoUpgradeConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      identityServiceConfig: (() { final guardedValue = map['identityServiceConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterIdentityServiceConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      inTransitEncryptionConfig: (() { final guardedValue = map['inTransitEncryptionConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      initialNodeCount: (() { final guardedValue = map['initialNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      ipAllocationPolicy: (() { final guardedValue = map['ipAllocationPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterIpAllocationPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      loggingConfig: (() { final guardedValue = map['loggingConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterLoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      loggingService: (() { final guardedValue = map['loggingService']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      maintenancePolicy: (() { final guardedValue = map['maintenancePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterMaintenancePolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      managedOpentelemetryConfig: (() { final guardedValue = map['managedOpentelemetryConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterManagedOpentelemetryConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      masterAuth: (() { final guardedValue = map['masterAuth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterMasterAuth.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      masterAuthorizedNetworksConfig: (() { final guardedValue = map['masterAuthorizedNetworksConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterMasterAuthorizedNetworksConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      meshCertificates: (() { final guardedValue = map['meshCertificates']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterMeshCertificates.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      minMasterVersion: (() { final guardedValue = map['minMasterVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      monitoringConfig: (() { final guardedValue = map['monitoringConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterMonitoringConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      monitoringService: (() { final guardedValue = map['monitoringService']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      networkPerformanceConfig: (() { final guardedValue = map['networkPerformanceConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterNetworkPerformanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      networkPolicy: (() { final guardedValue = map['networkPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterNetworkPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      networkingMode: (() { final guardedValue = map['networkingMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nodeConfig: (() { final guardedValue = map['nodeConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterNodeConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      nodeLocations: (() { final guardedValue = map['nodeLocations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      nodePoolAutoConfig: (() { final guardedValue = map['nodePoolAutoConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterNodePoolAutoConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      nodePoolDefaults: (() { final guardedValue = map['nodePoolDefaults']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterNodePoolDefaults.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      nodePools: (() { final guardedValue = map['nodePools']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ClusterNodePool>(guardedValue, (value) => ClusterNodePool.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      nodeVersion: (() { final guardedValue = map['nodeVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      notificationConfig: (() { final guardedValue = map['notificationConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterNotificationConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      podAutoscaling: (() { final guardedValue = map['podAutoscaling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterPodAutoscaling.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      podSecurityPolicyConfig: (() { final guardedValue = map['podSecurityPolicyConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterPodSecurityPolicyConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      privateClusterConfig: (() { final guardedValue = map['privateClusterConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterPrivateClusterConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      privateIpv6GoogleAccess: (() { final guardedValue = map['privateIpv6GoogleAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      protectConfig: (() { final guardedValue = map['protectConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterProtectConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      rbacBindingConfig: (() { final guardedValue = map['rbacBindingConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterRbacBindingConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      releaseChannel: (() { final guardedValue = map['releaseChannel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterReleaseChannel.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      removeDefaultNodePool: (() { final guardedValue = map['removeDefaultNodePool']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      resourceLabels: (() { final guardedValue = map['resourceLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      resourceUsageExportConfig: (() { final guardedValue = map['resourceUsageExportConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterResourceUsageExportConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      secretManagerConfig: (() { final guardedValue = map['secretManagerConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterSecretManagerConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      secretSyncConfig: (() { final guardedValue = map['secretSyncConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterSecretSyncConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      securityPostureConfig: (() { final guardedValue = map['securityPostureConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterSecurityPostureConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      serviceExternalIpsConfig: (() { final guardedValue = map['serviceExternalIpsConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterServiceExternalIpsConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      subnetwork: (() { final guardedValue = map['subnetwork']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tpuConfig: (() { final guardedValue = map['tpuConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterTpuConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      userManagedKeysConfig: (() { final guardedValue = map['userManagedKeysConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterUserManagedKeysConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      verticalPodAutoscaling: (() { final guardedValue = map['verticalPodAutoscaling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterVerticalPodAutoscaling.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      workloadAltsConfig: (() { final guardedValue = map['workloadAltsConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterWorkloadAltsConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      workloadIdentityConfig: (() { final guardedValue = map['workloadIdentityConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterWorkloadIdentityConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

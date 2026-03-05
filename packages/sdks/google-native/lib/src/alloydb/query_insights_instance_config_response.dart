@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class QueryInsightsInstanceConfigResponse {
   /// Number of query execution plans captured by Insights per minute for all queries combined. The default value is 5. Any integer between 0 and 20 is considered valid.
   final pulumi.Input<int> queryPlansPerMinute;
-
   /// Query string length. The default value is 1024. Any integer between 256 and 4500 is considered valid.
   final pulumi.Input<int> queryStringLength;
-
   /// Record application tags for an instance. This flag is turned "on" by default.
   final pulumi.Input<bool> recordApplicationTags;
-
   /// Record client address for an instance. Client address is PII information. This flag is turned "on" by default.
   final pulumi.Input<bool> recordClientAddress;
 
@@ -37,22 +34,13 @@ class QueryInsightsInstanceConfigResponse {
     };
   }
 
-  factory QueryInsightsInstanceConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory QueryInsightsInstanceConfigResponse.fromMap(Map<String, dynamic> map) {
     return QueryInsightsInstanceConfigResponse(
-      queryPlansPerMinute: pulumi.Input.fromValue(
-        map['queryPlansPerMinute'] as int,
-      ),
-      queryStringLength: pulumi.Input.fromValue(
-        map['queryStringLength'] as int,
-      ),
-      recordApplicationTags: pulumi.Input.fromValue(
-        map['recordApplicationTags'] as bool,
-      ),
-      recordClientAddress: pulumi.Input.fromValue(
-        map['recordClientAddress'] as bool,
-      ),
+      queryPlansPerMinute: pulumi.Input.fromValue(map['queryPlansPerMinute'] as int),
+      queryStringLength: pulumi.Input.fromValue(map['queryStringLength'] as int),
+      recordApplicationTags: pulumi.Input.fromValue(map['recordApplicationTags'] as bool),
+      recordClientAddress: pulumi.Input.fromValue(map['recordClientAddress'] as bool),
     );
   }
 }
+

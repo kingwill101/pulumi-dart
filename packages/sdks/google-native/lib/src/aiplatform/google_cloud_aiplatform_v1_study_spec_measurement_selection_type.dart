@@ -4,22 +4,16 @@ enum GoogleCloudAiplatformV1StudySpecMeasurementSelectionType {
   lastMeasurement("LAST_MEASUREMENT"),
   bestMeasurement("BEST_MEASUREMENT");
 
-  const GoogleCloudAiplatformV1StudySpecMeasurementSelectionType(
-    this.wireValue,
-  );
+  const GoogleCloudAiplatformV1StudySpecMeasurementSelectionType(this.wireValue);
   final String wireValue;
 
-  static GoogleCloudAiplatformV1StudySpecMeasurementSelectionType fromValue(
-    String value,
-  ) {
-    for (final item
-        in GoogleCloudAiplatformV1StudySpecMeasurementSelectionType.values) {
+  static GoogleCloudAiplatformV1StudySpecMeasurementSelectionType fromValue(String value) {
+    for (final item in GoogleCloudAiplatformV1StudySpecMeasurementSelectionType.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GoogleCloudAiplatformV1StudySpecMeasurementSelectionType value: $value',
-    );
+    throw ArgumentError('Unknown GoogleCloudAiplatformV1StudySpecMeasurementSelectionType value: $value');
   }
 }
+

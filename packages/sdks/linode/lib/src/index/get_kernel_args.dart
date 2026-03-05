@@ -12,13 +12,20 @@ class GetKernelArgs {
 
   /// Creates a new [GetKernelArgs].
   /// [id] The unique ID of this Kernel.
-  GetKernelArgs({required this.id});
+  GetKernelArgs({
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id};
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
   factory GetKernelArgs.fromMap(Map<String, dynamic> map) {
-    return GetKernelArgs(id: pulumi.Input.fromValue(map['id'] as String));
+    return GetKernelArgs(
+      id: pulumi.Input.fromValue(map['id'] as String),
+    );
   }
 }
+

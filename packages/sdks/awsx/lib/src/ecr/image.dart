@@ -15,12 +15,12 @@ class Image extends pulumi.ComponentResource {
     ImageArgs? args,
     pulumi.ComponentResourceOptions? options,
   }) : super(
-         'awsx:ecr:Image',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.ComponentResourceOptions(),
-         remote: true,
-       ) {
+          'awsx:ecr:Image',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.ComponentResourceOptions(),
+          remote: true,
+        ) {
     imageUri = registerOutput<String?>('imageUri');
   }
 }

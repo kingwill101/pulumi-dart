@@ -226,30 +226,22 @@ import 'quota_alarm_state.dart';
 class QuotaAlarm extends pulumi.CustomResource {
   /// The creation time of the resource.
   late final pulumi.Output<String> createTime;
-
   /// The Product Code.
   late final pulumi.Output<String> productCode;
-
   /// The Quota Action Code.
   late final pulumi.Output<String> quotaActionCode;
-
   /// The name of Quota Alarm.
   late final pulumi.Output<String> quotaAlarmName;
-
   /// The Quota Dimensions. See `quota_dimensions` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> quotaDimensions;
-
   /// The threshold of Quota Alarm.
   late final pulumi.Output<double?> threshold;
-
   /// The threshold percent of Quota Alarm.
   late final pulumi.Output<double?> thresholdPercent;
-
   /// Quota alarm type. Value:
   /// - used: Quota used alarm.
   /// - usable: alarm for the remaining available quota.
   late final pulumi.Output<String> thresholdType;
-
   /// The WebHook of Quota Alarm.
   late final pulumi.Output<String?> webHook;
 
@@ -262,18 +254,16 @@ class QuotaAlarm extends pulumi.CustomResource {
     QuotaAlarmArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:quotas/quotaAlarm:QuotaAlarm',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:quotas/quotaAlarm:QuotaAlarm',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     productCode = registerOutput<String>('productCode');
     quotaActionCode = registerOutput<String>('quotaActionCode');
     quotaAlarmName = registerOutput<String>('quotaAlarmName');
-    quotaDimensions = registerOutput<List<Map<String, dynamic>>?>(
-      'quotaDimensions',
-    );
+    quotaDimensions = registerOutput<List<Map<String, dynamic>>?>('quotaDimensions');
     threshold = registerOutput<double?>('threshold');
     thresholdPercent = registerOutput<double?>('thresholdPercent');
     thresholdType = registerOutput<String>('thresholdType');
@@ -298,18 +288,16 @@ class QuotaAlarm extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:quotas/quotaAlarm:QuotaAlarm',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:quotas/quotaAlarm:QuotaAlarm',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     productCode = registerOutput<String>('productCode');
     quotaActionCode = registerOutput<String>('quotaActionCode');
     quotaAlarmName = registerOutput<String>('quotaAlarmName');
-    quotaDimensions = registerOutput<List<Map<String, dynamic>>?>(
-      'quotaDimensions',
-    );
+    quotaDimensions = registerOutput<List<Map<String, dynamic>>?>('quotaDimensions');
     threshold = registerOutput<double?>('threshold');
     thresholdPercent = registerOutput<double?>('thresholdPercent');
     thresholdType = registerOutput<String>('thresholdType');

@@ -6,10 +6,8 @@ class ReleaseInputVariable {
   /// Name of a supported variable type. Supported types are STRING, INT, BOOL.
   /// Possible values are: `TYPE_UNSPECIFIED`, `STRING`, `INT`, `BOOL`.
   final pulumi.Input<String>? type;
-
   /// String encoded value for the variable.
   final pulumi.Input<String>? value;
-
   /// Name of the variable from actuation configs.
   final pulumi.Input<String> variable;
 
@@ -17,7 +15,11 @@ class ReleaseInputVariable {
   /// [type] Name of a supported variable type. Supported types are STRING, INT, BOOL.
   /// [value] String encoded value for the variable.
   /// [variable] Name of the variable from actuation configs.
-  ReleaseInputVariable({this.type, this.value, required this.variable});
+  ReleaseInputVariable({
+    this.type,
+    this.value,
+    required this.variable,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,17 +31,10 @@ class ReleaseInputVariable {
 
   factory ReleaseInputVariable.fromMap(Map<String, dynamic> map) {
     return ReleaseInputVariable(
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       variable: pulumi.Input.fromValue(map['variable'] as String),
     );
   }
 }
+

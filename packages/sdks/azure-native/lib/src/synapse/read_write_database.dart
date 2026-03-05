@@ -158,35 +158,25 @@ import 'system_data_response.dart';
 class ReadWriteDatabase extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The time the data should be kept in cache for fast queries in TimeSpan.
   late final pulumi.Output<String?> hotCachePeriod;
-
   /// Indicates whether the database is followed.
   late final pulumi.Output<bool> isFollowed;
-
   /// Kind of the database
   /// Expected value is 'ReadWrite'.
   late final pulumi.Output<String> kind;
-
   /// Resource location.
   late final pulumi.Output<String?> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The provisioned state of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The time the data should be kept before it stops being accessible to queries in TimeSpan.
   late final pulumi.Output<String?> softDeletePeriod;
-
   /// The statistics of the database.
   late final pulumi.Output<DatabaseStatisticsResponse> statistics;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -199,11 +189,11 @@ class ReadWriteDatabase extends pulumi.CustomResource {
     ReadWriteDatabaseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:synapse:ReadWriteDatabase',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:synapse:ReadWriteDatabase',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     hotCachePeriod = registerOutput<String?>('hotCachePeriod');
     isFollowed = registerOutput<bool>('isFollowed');
@@ -212,26 +202,8 @@ class ReadWriteDatabase extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     softDeletePeriod = registerOutput<String?>('softDeletePeriod');
-    statistics = registerOutput<DatabaseStatisticsResponse>(
-      'statistics',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DatabaseStatisticsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    statistics = registerOutput<DatabaseStatisticsResponse>('statistics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseStatisticsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

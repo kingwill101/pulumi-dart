@@ -29,17 +29,12 @@ class GetPipelineJobAiplatformV1beta1Args {
     };
   }
 
-  factory GetPipelineJobAiplatformV1beta1Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetPipelineJobAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetPipelineJobAiplatformV1beta1Args(
       location: pulumi.Input.fromValue(map['location'] as String),
       pipelineJobId: pulumi.Input.fromValue(map['pipelineJobId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

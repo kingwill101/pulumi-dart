@@ -8,22 +8,16 @@ import 'deployment_sku.dart';
 class DeploymentState {
   /// The ID of the Cognitive Services Account. Changing this forces a new resource to be created.
   final pulumi.Input<String>? cognitiveAccountId;
-
   /// Whether dynamic throttling is enabled.
   final pulumi.Input<bool>? dynamicThrottlingEnabled;
-
   /// A `model` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<DeploymentModel>? model;
-
   /// The name of the Cognitive Services Account Deployment. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// The name of RAI policy.
   final pulumi.Input<String>? raiPolicyName;
-
   /// A `sku` block as defined below.
   final pulumi.Input<DeploymentSku>? sku;
-
   /// Deployment model version upgrade option. Possible values are `OnceNewDefaultVersionAvailable`, `OnceCurrentVersionExpired`, and `NoAutoUpgrade`. Defaults to `OnceNewDefaultVersionAvailable`.
   final pulumi.Input<String>? versionUpgradeOption;
 
@@ -49,65 +43,24 @@ class DeploymentState {
     return <String, dynamic>{
       'cognitiveAccountId': ?cognitiveAccountId,
       'dynamicThrottlingEnabled': ?dynamicThrottlingEnabled,
-      'model':
-          ?pulumi.Input.mapOptionalInputValue<
-            DeploymentModel,
-            Map<String, dynamic>
-          >(model, (value) => value.toMap()),
+      'model': ?pulumi.Input.mapOptionalInputValue<DeploymentModel, Map<String, dynamic>>(model, (value) => value.toMap()),
       'name': ?name,
       'raiPolicyName': ?raiPolicyName,
-      'sku':
-          ?pulumi.Input.mapOptionalInputValue<
-            DeploymentSku,
-            Map<String, dynamic>
-          >(sku, (value) => value.toMap()),
+      'sku': ?pulumi.Input.mapOptionalInputValue<DeploymentSku, Map<String, dynamic>>(sku, (value) => value.toMap()),
       'versionUpgradeOption': ?versionUpgradeOption,
     };
   }
 
   factory DeploymentState.fromMap(Map<String, dynamic> map) {
     return DeploymentState(
-      cognitiveAccountId: (() {
-        final guardedValue = map['cognitiveAccountId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dynamicThrottlingEnabled: (() {
-        final guardedValue = map['dynamicThrottlingEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      model: (() {
-        final guardedValue = map['model'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DeploymentModel.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      raiPolicyName: (() {
-        final guardedValue = map['raiPolicyName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sku: (() {
-        final guardedValue = map['sku'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DeploymentSku.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      versionUpgradeOption: (() {
-        final guardedValue = map['versionUpgradeOption'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      cognitiveAccountId: (() { final guardedValue = map['cognitiveAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dynamicThrottlingEnabled: (() { final guardedValue = map['dynamicThrottlingEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      model: (() { final guardedValue = map['model']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DeploymentModel.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      raiPolicyName: (() { final guardedValue = map['raiPolicyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DeploymentSku.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      versionUpgradeOption: (() { final guardedValue = map['versionUpgradeOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

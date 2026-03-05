@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EventSeriesPatchEventsK8sIoV1beta1 {
   /// Number of occurrences in this series up to the last heartbeat time
   final pulumi.Input<int>? count;
-
   /// Time when last Event from the series was seen before last heartbeat.
   final pulumi.Input<String>? lastObservedTime;
-
   /// Information whether this series is ongoing or finished. Deprecated. Planned removal for 1.18
   final pulumi.Input<String>? state;
 
@@ -33,21 +31,10 @@ class EventSeriesPatchEventsK8sIoV1beta1 {
 
   factory EventSeriesPatchEventsK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return EventSeriesPatchEventsK8sIoV1beta1(
-      count: (() {
-        final guardedValue = map['count'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      lastObservedTime: (() {
-        final guardedValue = map['lastObservedTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      lastObservedTime: (() { final guardedValue = map['lastObservedTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

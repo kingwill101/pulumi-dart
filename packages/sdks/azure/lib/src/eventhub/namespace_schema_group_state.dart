@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NamespaceSchemaGroupState {
   /// Specifies the name of this schema group. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// Specifies the ID of the EventHub Namespace. Changing this forces a new resource to be created.
   final pulumi.Input<String>? namespaceId;
-
   /// Specifies the compatibility of this schema group. Possible values are `None`, `Backward`, `Forward`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? schemaCompatibility;
-
   /// Specifies the Type of this schema group. Possible values are `Avro`, `Unknown` and `Json`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** When `schema_type` is specified as `Json`, `schema_compatibility` must be set to `None`.
@@ -41,26 +38,11 @@ class NamespaceSchemaGroupState {
 
   factory NamespaceSchemaGroupState.fromMap(Map<String, dynamic> map) {
     return NamespaceSchemaGroupState(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      namespaceId: (() {
-        final guardedValue = map['namespaceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      schemaCompatibility: (() {
-        final guardedValue = map['schemaCompatibility'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      schemaType: (() {
-        final guardedValue = map['schemaType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      namespaceId: (() { final guardedValue = map['namespaceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      schemaCompatibility: (() { final guardedValue = map['schemaCompatibility']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      schemaType: (() { final guardedValue = map['schemaType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

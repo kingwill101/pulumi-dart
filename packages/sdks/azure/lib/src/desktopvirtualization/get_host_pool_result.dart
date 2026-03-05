@@ -7,45 +7,32 @@ import 'get_host_pool_scheduled_agent_update.dart';
 class GetHostPoolResult {
   /// The custom RDP properties string for the Virtual Desktop Host Pool.
   final String customRdpProperties;
-
   /// The description for the Virtual Desktop Host Pool.
   final String description;
-
   /// The friendly name for the Virtual Desktop Host Pool.
   final String friendlyName;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The type of load balancing performed by the Host Pool
   final String loadBalancerType;
-
   /// The location/region where the Virtual Desktop Host Pool is located.
   final String location;
-
   /// The maximum number of users that can have concurrent sessions on a session host.
   final int maximumSessionsAllowed;
   final String name;
-
   /// The type of personal desktop assignment in use by the Host Pool
   final String personalDesktopAssignmentType;
-
   /// The preferred Application Group type for the Virtual Desktop Host Pool.
   final String preferredAppGroupType;
   final String resourceGroupName;
-
   /// A `scheduled_agent_updates` block as defined below.
   final List<GetHostPoolScheduledAgentUpdate> scheduledAgentUpdates;
-
   /// Returns `true` if the Start VM on Connection Feature is enabled.
   final bool startVmOnConnect;
-
   /// A mapping of tags to assign to the resource.
   final Map<String, String> tags;
-
   /// The type of the Virtual Desktop Host Pool.
   final String type;
-
   /// Returns `true` if the Host Pool is in Validation mode.
   final bool validateEnvironment;
 
@@ -98,11 +85,7 @@ class GetHostPoolResult {
       'personalDesktopAssignmentType': personalDesktopAssignmentType,
       'preferredAppGroupType': preferredAppGroupType,
       'resourceGroupName': resourceGroupName,
-      'scheduledAgentUpdates':
-          pulumi.Input.encodeList<
-            GetHostPoolScheduledAgentUpdate,
-            Map<String, dynamic>
-          >(scheduledAgentUpdates, (value) => value.toMap()),
+      'scheduledAgentUpdates': pulumi.Input.encodeList<GetHostPoolScheduledAgentUpdate, Map<String, dynamic>>(scheduledAgentUpdates, (value) => value.toMap()),
       'startVmOnConnect': startVmOnConnect,
       'tags': tags,
       'type': type,
@@ -120,17 +103,10 @@ class GetHostPoolResult {
       location: map['location'] as String,
       maximumSessionsAllowed: map['maximumSessionsAllowed'] as int,
       name: map['name'] as String,
-      personalDesktopAssignmentType:
-          map['personalDesktopAssignmentType'] as String,
+      personalDesktopAssignmentType: map['personalDesktopAssignmentType'] as String,
       preferredAppGroupType: map['preferredAppGroupType'] as String,
       resourceGroupName: map['resourceGroupName'] as String,
-      scheduledAgentUpdates:
-          pulumi.Input.decodeList<GetHostPoolScheduledAgentUpdate>(
-            map['scheduledAgentUpdates']!,
-            (value) => GetHostPoolScheduledAgentUpdate.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      scheduledAgentUpdates: pulumi.Input.decodeList<GetHostPoolScheduledAgentUpdate>(map['scheduledAgentUpdates']!, (value) => GetHostPoolScheduledAgentUpdate.fromMap((value as Map).cast<String, dynamic>())),
       startVmOnConnect: map['startVmOnConnect'] as bool,
       tags: (map['tags'] as Map).cast<String, String>(),
       type: map['type'] as String,
@@ -138,3 +114,4 @@ class GetHostPoolResult {
     );
   }
 }
+

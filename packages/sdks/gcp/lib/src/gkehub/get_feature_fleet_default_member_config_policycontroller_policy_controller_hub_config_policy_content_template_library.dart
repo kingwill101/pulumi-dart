@@ -13,14 +13,15 @@ class GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfi
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'installation': installation};
+    return <String, dynamic>{
+      'installation': installation,
+    };
   }
 
-  factory GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary.fromMap(Map<String, dynamic> map) {
     return GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary(
       installation: pulumi.Input.fromValue(map['installation'] as String),
     );
   }
 }
+

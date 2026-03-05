@@ -15,18 +15,15 @@ class ClusterMaintenancePolicyWeeklyMaintenanceWindow {
   /// - SUNDAY: Sunday
   /// Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
   final pulumi.Input<String> day;
-
   /// (Output)
   /// Output only. Duration of the maintenance window.
   /// The current window is fixed at 1 hour.
   /// A duration in seconds with up to nine fractional digits,
   /// terminated by 's'. Example: "3.5s".
   final pulumi.Input<String>? duration;
-
   /// Required. Start time of the window in UTC time.
   /// Structure is documented below.
-  final pulumi.Input<ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTime>
-  startTime;
+  final pulumi.Input<ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTime> startTime;
 
   /// Creates a new [ClusterMaintenancePolicyWeeklyMaintenanceWindow].
   /// [day] Required. The day of week that maintenance updates occur.
@@ -42,29 +39,16 @@ class ClusterMaintenancePolicyWeeklyMaintenanceWindow {
     return <String, dynamic>{
       'day': day,
       'duration': ?duration,
-      'startTime':
-          pulumi.Input.mapInputValue<
-            ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTime,
-            Map<String, dynamic>
-          >(startTime, (value) => value.toMap()),
+      'startTime': pulumi.Input.mapInputValue<ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTime, Map<String, dynamic>>(startTime, (value) => value.toMap()),
     };
   }
 
-  factory ClusterMaintenancePolicyWeeklyMaintenanceWindow.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterMaintenancePolicyWeeklyMaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return ClusterMaintenancePolicyWeeklyMaintenanceWindow(
       day: pulumi.Input.fromValue(map['day'] as String),
-      duration: (() {
-        final guardedValue = map['duration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      startTime: pulumi.Input.fromValue(
-        ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTime.fromMap(
-          (map['startTime']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      duration: (() { final guardedValue = map['duration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      startTime: pulumi.Input.fromValue(ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTime.fromMap((map['startTime']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -305,70 +305,55 @@ import 'https_basic_configuration_state.dart';
 class HttpsBasicConfiguration extends pulumi.CustomResource {
   /// Custom cipher suite, indicating the specific encryption algorithm selected when CiphersuiteGroup is set to custom.
   late final pulumi.Output<String?> ciphersuite;
-
   /// Cipher suite group. Default is all cipher suites. Possible values:
   /// - all: All cipher suites.
   /// - strict: Strong cipher suites.
   /// - custom: Custom cipher suites.
   late final pulumi.Output<String?> ciphersuiteGroup;
-
   /// ConfigId of the configuration, which can be obtained by calling the [ListHttpsBasicConfigurations](https://www.alibabacloud.com/help/en/doc-detail/2867470.html) interface.
   late final pulumi.Output<int> configId;
-
   /// Indicates whether HTTP2 is enabled. Default is on. Possible values:
   /// - on: Enabled.
   /// - off: Disabled.
   late final pulumi.Output<String?> http2;
-
   /// Whether to enable HTTP3, which is enabled by default. The value can be:
   /// - on: Enabled.
   /// - off: Disabled.
   late final pulumi.Output<String?> http3;
-
   /// Whether to enable HTTPS. Default is enabled. Possible values:
   /// - on: Enable.
   /// - off: Disable.
   late final pulumi.Output<String?> https;
-
   /// Indicates whether OCSP is enabled. Default is off. Possible values:
   /// - on: Enabled.
   /// - off: Disabled.
   late final pulumi.Output<String?> ocspStapling;
-
   /// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
   /// -  Match all incoming requests: value set to true
   /// -  Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
   late final pulumi.Output<String?> rule;
-
   /// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
   /// - on: open.
   /// - off: close.
   late final pulumi.Output<String?> ruleEnable;
-
   /// Rule name. When adding global configuration, this parameter does not need to be set.
   late final pulumi.Output<String?> ruleName;
-
   /// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
   late final pulumi.Output<int> sequence;
-
   /// Site ID, which can be obtained by calling the ListSites interface.
   late final pulumi.Output<String> siteId;
-
   /// Whether to enable TLS1.0. Default is disabled. Possible values:
   /// - on: Enable.
   /// - off: Disable.
   late final pulumi.Output<String?> tls10;
-
   /// Whether to enable TLS1.1. Default is enabled. Possible values:
   /// - on: Enable.
   /// - off: Disable.
   late final pulumi.Output<String?> tls11;
-
   /// Whether to enable TLS1.2. Default is enabled. Possible values:
   /// - on: Enable.
   /// - off: Disable.
   late final pulumi.Output<String?> tls12;
-
   /// Whether to enable TLS1.3. Default is enabled. Possible values:
   /// - on: Enable.
   /// - off: Disable.
@@ -383,11 +368,11 @@ class HttpsBasicConfiguration extends pulumi.CustomResource {
     HttpsBasicConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/httpsBasicConfiguration:HttpsBasicConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:esa/httpsBasicConfiguration:HttpsBasicConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     ciphersuite = registerOutput<String?>('ciphersuite');
     ciphersuiteGroup = registerOutput<String?>('ciphersuiteGroup');
     configId = registerOutput<int>('configId');
@@ -424,11 +409,11 @@ class HttpsBasicConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/httpsBasicConfiguration:HttpsBasicConfiguration',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:esa/httpsBasicConfiguration:HttpsBasicConfiguration',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     ciphersuite = registerOutput<String?>('ciphersuite');
     ciphersuiteGroup = registerOutput<String?>('ciphersuiteGroup');
     configId = registerOutput<int>('configId');

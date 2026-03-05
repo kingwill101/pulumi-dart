@@ -439,57 +439,38 @@ import 'system_data_response.dart';
 class Monitor extends pulumi.CustomResource {
   /// The SAP monitor resources will be deployed in the SAP monitoring region. The subnet region should be same as the SAP monitoring region.
   late final pulumi.Output<String?> appLocation;
-
   /// App service plan configuration
-  late final pulumi.Output<AppServicePlanConfigurationResponse?>
-  appServicePlanConfiguration;
-
+  late final pulumi.Output<AppServicePlanConfigurationResponse?> appServicePlanConfiguration;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Defines the SAP monitor errors.
   late final pulumi.Output<ErrorDetailResponse> errors;
-
   /// The managed service identities assigned to this resource.
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The ARM ID of the Log Analytics Workspace that is used for SAP monitoring.
   late final pulumi.Output<String?> logAnalyticsWorkspaceArmId;
-
   /// Managed resource group configuration
-  late final pulumi.Output<ManagedResourceGroupConfigurationResponse?>
-  managedResourceGroupConfiguration;
-
+  late final pulumi.Output<ManagedResourceGroupConfigurationResponse?> managedResourceGroupConfiguration;
   /// The subnet which the SAP monitor will be deployed in
   late final pulumi.Output<String?> monitorSubnet;
-
   /// The ARM ID of the MSI used for SAP monitoring.
   late final pulumi.Output<String> msiArmId;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// State of provisioning of the SAP monitor.
   late final pulumi.Output<String> provisioningState;
-
   /// Sets the routing preference of the SAP monitor. By default only RFC1918 traffic is routed to the customer VNET.
   late final pulumi.Output<String?> routingPreference;
-
   /// The ARM ID of the Storage account used for SAP monitoring.
   late final pulumi.Output<String> storageAccountArmId;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Sets the preference for zone redundancy on resources created for the SAP monitor. By default resources will be created which do not support zone redundancy.
   late final pulumi.Output<String?> zoneRedundancyPreference;
 
@@ -502,79 +483,28 @@ class Monitor extends pulumi.CustomResource {
     MonitorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:workloads:Monitor',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:workloads:Monitor',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appLocation = registerOutput<String?>('appLocation');
-    appServicePlanConfiguration =
-        registerOutput<AppServicePlanConfigurationResponse?>(
-          'appServicePlanConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AppServicePlanConfigurationResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    appServicePlanConfiguration = registerOutput<AppServicePlanConfigurationResponse?>('appServicePlanConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppServicePlanConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    errors = registerOutput<ErrorDetailResponse>(
-      'errors',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ErrorDetailResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    identity = registerOutput<ManagedServiceIdentityResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ManagedServiceIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    errors = registerOutput<ErrorDetailResponse>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ErrorDetailResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
-    logAnalyticsWorkspaceArmId = registerOutput<String?>(
-      'logAnalyticsWorkspaceArmId',
-    );
-    managedResourceGroupConfiguration =
-        registerOutput<ManagedResourceGroupConfigurationResponse?>(
-          'managedResourceGroupConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ManagedResourceGroupConfigurationResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    logAnalyticsWorkspaceArmId = registerOutput<String?>('logAnalyticsWorkspaceArmId');
+    managedResourceGroupConfiguration = registerOutput<ManagedResourceGroupConfigurationResponse?>('managedResourceGroupConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedResourceGroupConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     monitorSubnet = registerOutput<String?>('monitorSubnet');
     msiArmId = registerOutput<String>('msiArmId');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     routingPreference = registerOutput<String?>('routingPreference');
     storageAccountArmId = registerOutput<String>('storageAccountArmId');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
-    zoneRedundancyPreference = registerOutput<String?>(
-      'zoneRedundancyPreference',
-    );
+    zoneRedundancyPreference = registerOutput<String?>('zoneRedundancyPreference');
   }
 }

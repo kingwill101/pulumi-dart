@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceGroupManagerStatefulDisk {
   /// A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the disk when the VM is deleted, but do not delete the disk. ON_PERMANENT_INSTANCE_DELETION will delete the stateful disk when the VM is permanently deleted from the instance group. The default is NEVER.
   final pulumi.Input<String> deleteRule;
-
   /// The device name of the disk to be attached.
   final pulumi.Input<String> deviceName;
 
@@ -24,12 +23,11 @@ class GetInstanceGroupManagerStatefulDisk {
     };
   }
 
-  factory GetInstanceGroupManagerStatefulDisk.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetInstanceGroupManagerStatefulDisk.fromMap(Map<String, dynamic> map) {
     return GetInstanceGroupManagerStatefulDisk(
       deleteRule: pulumi.Input.fromValue(map['deleteRule'] as String),
       deviceName: pulumi.Input.fromValue(map['deviceName'] as String),
     );
   }
 }
+

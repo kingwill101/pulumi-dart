@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExportDiskDetailsResponse {
   /// Path to backed up manifest, only returned if enableManifestBackup is true.
   final pulumi.Input<String> backupManifestCloudPath;
-
   /// The relative path of the manifest file on the disk.
   final pulumi.Input<String> manifestFile;
-
   /// The Base16-encoded MD5 hash of the manifest file on the disk.
   final pulumi.Input<String> manifestHash;
 
@@ -33,11 +31,10 @@ class ExportDiskDetailsResponse {
 
   factory ExportDiskDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ExportDiskDetailsResponse(
-      backupManifestCloudPath: pulumi.Input.fromValue(
-        map['backupManifestCloudPath'] as String,
-      ),
+      backupManifestCloudPath: pulumi.Input.fromValue(map['backupManifestCloudPath'] as String),
       manifestFile: pulumi.Input.fromValue(map['manifestFile'] as String),
       manifestHash: pulumi.Input.fromValue(map['manifestHash'] as String),
     );
   }
 }
+

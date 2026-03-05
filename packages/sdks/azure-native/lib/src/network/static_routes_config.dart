@@ -9,7 +9,9 @@ class StaticRoutesConfig {
 
   /// Creates a new [StaticRoutesConfig].
   /// [vnetLocalRouteOverrideCriteria] Parameter determining whether NVA in spoke vnet is bypassed for traffic with destination in spoke.
-  StaticRoutesConfig({this.vnetLocalRouteOverrideCriteria});
+  StaticRoutesConfig({
+    this.vnetLocalRouteOverrideCriteria,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,11 +21,8 @@ class StaticRoutesConfig {
 
   factory StaticRoutesConfig.fromMap(Map<String, dynamic> map) {
     return StaticRoutesConfig(
-      vnetLocalRouteOverrideCriteria: (() {
-        final guardedValue = map['vnetLocalRouteOverrideCriteria'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      vnetLocalRouteOverrideCriteria: (() { final guardedValue = map['vnetLocalRouteOverrideCriteria']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

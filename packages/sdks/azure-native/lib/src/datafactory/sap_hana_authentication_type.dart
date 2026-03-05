@@ -15,3 +15,4 @@ enum SapHanaAuthenticationType {
     throw ArgumentError('Unknown SapHanaAuthenticationType value: $value');
   }
 }
+

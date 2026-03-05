@@ -9,28 +9,13 @@ import 'google_cloud_aiplatform_v1_nas_job_spec_multi_trial_algorithm_spec_train
 /// The spec of multi-trial Neural Architecture Search (NAS).
 class GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpec {
   /// Metric specs for the NAS job. Validation for this field is done at `multi_trial_algorithm_spec` field.
-  final pulumi.Input<
-    GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMetricSpec
-  >?
-  metric;
-
+  final pulumi.Input<GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMetricSpec>? metric;
   /// The multi-trial Neural Architecture Search (NAS) algorithm type. Defaults to `REINFORCEMENT_LEARNING`.
-  final pulumi.Input<
-    GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithm
-  >?
-  multiTrialAlgorithm;
-
+  final pulumi.Input<GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithm>? multiTrialAlgorithm;
   /// Spec for search trials.
-  final pulumi.Input<
-    GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpec
-  >
-  searchTrialSpec;
-
+  final pulumi.Input<GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpec> searchTrialSpec;
   /// Spec for train trials. Top N [TrainTrialSpec.max_parallel_trial_count] search trials will be trained for every M [TrainTrialSpec.frequency] trials searched.
-  final pulumi.Input<
-    GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpec
-  >?
-  trainTrialSpec;
+  final pulumi.Input<GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpec>? trainTrialSpec;
 
   /// Creates a new [GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpec].
   /// [metric] Metric specs for the NAS job. Validation for this field is done at `multi_trial_algorithm_spec` field.
@@ -46,65 +31,20 @@ class GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpec {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'metric':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMetricSpec,
-            Map<String, dynamic>
-          >(metric, (value) => value.toMap()),
-      'multiTrialAlgorithm':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithm,
-            String
-          >(multiTrialAlgorithm, (value) => value.wireValue),
-      'searchTrialSpec':
-          pulumi.Input.mapInputValue<
-            GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpec,
-            Map<String, dynamic>
-          >(searchTrialSpec, (value) => value.toMap()),
-      'trainTrialSpec':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpec,
-            Map<String, dynamic>
-          >(trainTrialSpec, (value) => value.toMap()),
+      'metric': ?pulumi.Input.mapOptionalInputValue<GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMetricSpec, Map<String, dynamic>>(metric, (value) => value.toMap()),
+      'multiTrialAlgorithm': ?pulumi.Input.mapOptionalInputValue<GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithm, String>(multiTrialAlgorithm, (value) => value.wireValue),
+      'searchTrialSpec': pulumi.Input.mapInputValue<GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpec, Map<String, dynamic>>(searchTrialSpec, (value) => value.toMap()),
+      'trainTrialSpec': ?pulumi.Input.mapOptionalInputValue<GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpec, Map<String, dynamic>>(trainTrialSpec, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpec.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpec(
-      metric: (() {
-        final guardedValue = map['metric'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMetricSpec.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      multiTrialAlgorithm: (() {
-        final guardedValue = map['multiTrialAlgorithm'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithm.fromValue(
-            guardedValue as String,
-          ),
-        );
-      })(),
-      searchTrialSpec: pulumi.Input.fromValue(
-        GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpec.fromMap(
-          (map['searchTrialSpec']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      trainTrialSpec: (() {
-        final guardedValue = map['trainTrialSpec'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpec.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      metric: (() { final guardedValue = map['metric']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMetricSpec.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      multiTrialAlgorithm: (() { final guardedValue = map['multiTrialAlgorithm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithm.fromValue(guardedValue as String)); })(),
+      searchTrialSpec: pulumi.Input.fromValue(GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpec.fromMap((map['searchTrialSpec']! as Map).cast<String, dynamic>())),
+      trainTrialSpec: (() { final guardedValue = map['trainTrialSpec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpec.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

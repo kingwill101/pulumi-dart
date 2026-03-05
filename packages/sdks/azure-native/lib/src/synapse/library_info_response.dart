@@ -6,22 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LibraryInfoResponse {
   /// Storage blob container name.
   final pulumi.Input<String>? containerName;
-
   /// Creator Id of the library/package.
   final pulumi.Input<String> creatorId;
-
   /// Name of the library.
   final pulumi.Input<String>? name;
-
   /// Storage blob path of library.
   final pulumi.Input<String>? path;
-
   /// Provisioning status of the library/package.
   final pulumi.Input<String> provisioningStatus;
-
   /// Type of the library.
   final pulumi.Input<String>? type;
-
   /// The last update time of the library.
   final pulumi.Input<String> uploadedTimestamp;
 
@@ -57,33 +51,14 @@ class LibraryInfoResponse {
 
   factory LibraryInfoResponse.fromMap(Map<String, dynamic> map) {
     return LibraryInfoResponse(
-      containerName: (() {
-        final guardedValue = map['containerName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      containerName: (() { final guardedValue = map['containerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       creatorId: pulumi.Input.fromValue(map['creatorId'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      path: (() {
-        final guardedValue = map['path'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      provisioningStatus: pulumi.Input.fromValue(
-        map['provisioningStatus'] as String,
-      ),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      uploadedTimestamp: pulumi.Input.fromValue(
-        map['uploadedTimestamp'] as String,
-      ),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      provisioningStatus: pulumi.Input.fromValue(map['provisioningStatus'] as String),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      uploadedTimestamp: pulumi.Input.fromValue(map['uploadedTimestamp'] as String),
     );
   }
 }
+

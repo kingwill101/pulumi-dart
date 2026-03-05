@@ -8,10 +8,14 @@ class ListenerRuleActionFixedResponse {
 
   /// Creates a new [ListenerRuleActionFixedResponse].
   /// [statusCode] The HTTP response code.
-  ListenerRuleActionFixedResponse({required this.statusCode});
+  ListenerRuleActionFixedResponse({
+    required this.statusCode,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'statusCode': statusCode};
+    return <String, dynamic>{
+      'statusCode': statusCode,
+    };
   }
 
   factory ListenerRuleActionFixedResponse.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class ListenerRuleActionFixedResponse {
     );
   }
 }
+

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceMeshesMeshMeshConfigPilot {
   /// Whether to support the HTTP1.0.
   final pulumi.Input<bool> http10Enabled;
-
   /// The  percentage of the Link trace sampling.
   final pulumi.Input<double> traceSampling;
 
@@ -24,12 +23,11 @@ class GetServiceMeshesMeshMeshConfigPilot {
     };
   }
 
-  factory GetServiceMeshesMeshMeshConfigPilot.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetServiceMeshesMeshMeshConfigPilot.fromMap(Map<String, dynamic> map) {
     return GetServiceMeshesMeshMeshConfigPilot(
       http10Enabled: pulumi.Input.fromValue(map['http10Enabled'] as bool),
       traceSampling: pulumi.Input.fromValue(map['traceSampling'] as double),
     );
   }
 }
+

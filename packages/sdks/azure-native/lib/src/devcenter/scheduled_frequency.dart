@@ -14,3 +14,4 @@ enum ScheduledFrequency {
     throw ArgumentError('Unknown ScheduledFrequency value: $value');
   }
 }
+

@@ -6,51 +6,24 @@ import 'organization_custom_module_custom_config_custom_output_property.dart';
 class OrganizationCustomModuleCustomConfigCustomOutput {
   /// A list of custom output properties to add to the finding.
   /// Structure is documented below.
-  final pulumi.Input<
-    List<OrganizationCustomModuleCustomConfigCustomOutputProperty>
-  >?
-  properties;
+  final pulumi.Input<List<OrganizationCustomModuleCustomConfigCustomOutputProperty>>? properties;
 
   /// Creates a new [OrganizationCustomModuleCustomConfigCustomOutput].
   /// [properties] A list of custom output properties to add to the finding.
-  OrganizationCustomModuleCustomConfigCustomOutput({this.properties});
+  OrganizationCustomModuleCustomConfigCustomOutput({
+    this.properties,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<OrganizationCustomModuleCustomConfigCustomOutputProperty>,
-            List<Map<String, dynamic>>
-          >(
-            properties,
-            (value) =>
-                pulumi.Input.encodeList<
-                  OrganizationCustomModuleCustomConfigCustomOutputProperty,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'properties': ?pulumi.Input.mapOptionalInputValue<List<OrganizationCustomModuleCustomConfigCustomOutputProperty>, List<Map<String, dynamic>>>(properties, (value) => pulumi.Input.encodeList<OrganizationCustomModuleCustomConfigCustomOutputProperty, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory OrganizationCustomModuleCustomConfigCustomOutput.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OrganizationCustomModuleCustomConfigCustomOutput.fromMap(Map<String, dynamic> map) {
     return OrganizationCustomModuleCustomConfigCustomOutput(
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            OrganizationCustomModuleCustomConfigCustomOutputProperty
-          >(
-            guardedValue,
-            (value) =>
-                OrganizationCustomModuleCustomConfigCustomOutputProperty.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<OrganizationCustomModuleCustomConfigCustomOutputProperty>(guardedValue, (value) => OrganizationCustomModuleCustomConfigCustomOutputProperty.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

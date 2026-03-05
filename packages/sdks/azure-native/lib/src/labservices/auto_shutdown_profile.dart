@@ -8,19 +8,14 @@ import 'shutdown_on_idle_mode.dart';
 class AutoShutdownProfile {
   /// The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
   final pulumi.Input<String>? disconnectDelay;
-
   /// The amount of time a VM will idle before it is shutdown if this behavior is enabled.
   final pulumi.Input<String>? idleDelay;
-
   /// The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.
   final pulumi.Input<String>? noConnectDelay;
-
   /// Whether shutdown on disconnect is enabled
   final pulumi.Input<EnableState>? shutdownOnDisconnect;
-
   /// Whether a VM will get shutdown when it has idled for a period of time.
   final pulumi.Input<ShutdownOnIdleMode>? shutdownOnIdle;
-
   /// Whether a VM will get shutdown when it hasn't been connected to after a period of time.
   final pulumi.Input<EnableState>? shutdownWhenNotConnected;
 
@@ -45,62 +40,21 @@ class AutoShutdownProfile {
       'disconnectDelay': ?disconnectDelay,
       'idleDelay': ?idleDelay,
       'noConnectDelay': ?noConnectDelay,
-      'shutdownOnDisconnect':
-          ?pulumi.Input.mapOptionalInputValue<EnableState, String>(
-            shutdownOnDisconnect,
-            (value) => value.wireValue,
-          ),
-      'shutdownOnIdle':
-          ?pulumi.Input.mapOptionalInputValue<ShutdownOnIdleMode, String>(
-            shutdownOnIdle,
-            (value) => value.wireValue,
-          ),
-      'shutdownWhenNotConnected':
-          ?pulumi.Input.mapOptionalInputValue<EnableState, String>(
-            shutdownWhenNotConnected,
-            (value) => value.wireValue,
-          ),
+      'shutdownOnDisconnect': ?pulumi.Input.mapOptionalInputValue<EnableState, String>(shutdownOnDisconnect, (value) => value.wireValue),
+      'shutdownOnIdle': ?pulumi.Input.mapOptionalInputValue<ShutdownOnIdleMode, String>(shutdownOnIdle, (value) => value.wireValue),
+      'shutdownWhenNotConnected': ?pulumi.Input.mapOptionalInputValue<EnableState, String>(shutdownWhenNotConnected, (value) => value.wireValue),
     };
   }
 
   factory AutoShutdownProfile.fromMap(Map<String, dynamic> map) {
     return AutoShutdownProfile(
-      disconnectDelay: (() {
-        final guardedValue = map['disconnectDelay'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      idleDelay: (() {
-        final guardedValue = map['idleDelay'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      noConnectDelay: (() {
-        final guardedValue = map['noConnectDelay'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      shutdownOnDisconnect: (() {
-        final guardedValue = map['shutdownOnDisconnect'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          EnableState.fromValue(guardedValue as String),
-        );
-      })(),
-      shutdownOnIdle: (() {
-        final guardedValue = map['shutdownOnIdle'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ShutdownOnIdleMode.fromValue(guardedValue as String),
-        );
-      })(),
-      shutdownWhenNotConnected: (() {
-        final guardedValue = map['shutdownWhenNotConnected'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          EnableState.fromValue(guardedValue as String),
-        );
-      })(),
+      disconnectDelay: (() { final guardedValue = map['disconnectDelay']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      idleDelay: (() { final guardedValue = map['idleDelay']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      noConnectDelay: (() { final guardedValue = map['noConnectDelay']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      shutdownOnDisconnect: (() { final guardedValue = map['shutdownOnDisconnect']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EnableState.fromValue(guardedValue as String)); })(),
+      shutdownOnIdle: (() { final guardedValue = map['shutdownOnIdle']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ShutdownOnIdleMode.fromValue(guardedValue as String)); })(),
+      shutdownWhenNotConnected: (() { final guardedValue = map['shutdownWhenNotConnected']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EnableState.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

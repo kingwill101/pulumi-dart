@@ -16,3 +16,4 @@ enum IsolationMode {
     throw ArgumentError('Unknown IsolationMode value: $value');
   }
 }
+

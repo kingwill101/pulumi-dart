@@ -8,31 +8,22 @@ import 'policy_controller_policy_content_spec_response.dart';
 class PolicyControllerHubConfigResponse {
   /// Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
   final pulumi.Input<String> auditIntervalSeconds;
-
   /// The maximum number of audit violations to be stored in a constraint. If not set, the internal default (currently 20) will be used.
   final pulumi.Input<String> constraintViolationLimit;
-
   /// Map of deployment configs to deployments ("admission", "audit", "mutation').
   final pulumi.Input<Map<String, String>> deploymentConfigs;
-
   /// The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
   final pulumi.Input<List<String>> exemptableNamespaces;
-
   /// The install_spec represents the intended state specified by the latest request that mutated install_spec in the feature spec, not the lifecycle state of the feature observed by the Hub feature controller that is reported in the feature state.
   final pulumi.Input<String> installSpec;
-
   /// Logs all denies and dry run failures.
   final pulumi.Input<bool> logDeniesEnabled;
-
   /// Monitoring specifies the configuration of monitoring.
   final pulumi.Input<PolicyControllerMonitoringConfigResponse> monitoring;
-
   /// Enables the ability to mutate resources using Policy Controller.
   final pulumi.Input<bool> mutationEnabled;
-
   /// Specifies the desired policy content on the cluster
   final pulumi.Input<PolicyControllerPolicyContentSpecResponse> policyContent;
-
   /// Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
   final pulumi.Input<bool> referentialRulesEnabled;
 
@@ -68,51 +59,26 @@ class PolicyControllerHubConfigResponse {
       'exemptableNamespaces': exemptableNamespaces,
       'installSpec': installSpec,
       'logDeniesEnabled': logDeniesEnabled,
-      'monitoring':
-          pulumi.Input.mapInputValue<
-            PolicyControllerMonitoringConfigResponse,
-            Map<String, dynamic>
-          >(monitoring, (value) => value.toMap()),
+      'monitoring': pulumi.Input.mapInputValue<PolicyControllerMonitoringConfigResponse, Map<String, dynamic>>(monitoring, (value) => value.toMap()),
       'mutationEnabled': mutationEnabled,
-      'policyContent':
-          pulumi.Input.mapInputValue<
-            PolicyControllerPolicyContentSpecResponse,
-            Map<String, dynamic>
-          >(policyContent, (value) => value.toMap()),
+      'policyContent': pulumi.Input.mapInputValue<PolicyControllerPolicyContentSpecResponse, Map<String, dynamic>>(policyContent, (value) => value.toMap()),
       'referentialRulesEnabled': referentialRulesEnabled,
     };
   }
 
   factory PolicyControllerHubConfigResponse.fromMap(Map<String, dynamic> map) {
     return PolicyControllerHubConfigResponse(
-      auditIntervalSeconds: pulumi.Input.fromValue(
-        map['auditIntervalSeconds'] as String,
-      ),
-      constraintViolationLimit: pulumi.Input.fromValue(
-        map['constraintViolationLimit'] as String,
-      ),
-      deploymentConfigs: pulumi.Input.fromValue(
-        (map['deploymentConfigs'] as Map).cast<String, String>(),
-      ),
-      exemptableNamespaces: pulumi.Input.fromValue(
-        (map['exemptableNamespaces'] as List).cast<String>(),
-      ),
+      auditIntervalSeconds: pulumi.Input.fromValue(map['auditIntervalSeconds'] as String),
+      constraintViolationLimit: pulumi.Input.fromValue(map['constraintViolationLimit'] as String),
+      deploymentConfigs: pulumi.Input.fromValue((map['deploymentConfigs'] as Map).cast<String, String>()),
+      exemptableNamespaces: pulumi.Input.fromValue((map['exemptableNamespaces'] as List).cast<String>()),
       installSpec: pulumi.Input.fromValue(map['installSpec'] as String),
       logDeniesEnabled: pulumi.Input.fromValue(map['logDeniesEnabled'] as bool),
-      monitoring: pulumi.Input.fromValue(
-        PolicyControllerMonitoringConfigResponse.fromMap(
-          (map['monitoring']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      monitoring: pulumi.Input.fromValue(PolicyControllerMonitoringConfigResponse.fromMap((map['monitoring']! as Map).cast<String, dynamic>())),
       mutationEnabled: pulumi.Input.fromValue(map['mutationEnabled'] as bool),
-      policyContent: pulumi.Input.fromValue(
-        PolicyControllerPolicyContentSpecResponse.fromMap(
-          (map['policyContent']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      referentialRulesEnabled: pulumi.Input.fromValue(
-        map['referentialRulesEnabled'] as bool,
-      ),
+      policyContent: pulumi.Input.fromValue(PolicyControllerPolicyContentSpecResponse.fromMap((map['policyContent']! as Map).cast<String, dynamic>())),
+      referentialRulesEnabled: pulumi.Input.fromValue(map['referentialRulesEnabled'] as bool),
     );
   }
 }
+

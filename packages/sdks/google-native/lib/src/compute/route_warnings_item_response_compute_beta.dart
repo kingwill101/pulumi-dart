@@ -6,10 +6,8 @@ import 'route_warnings_item_data_item_response_compute_beta.dart';
 class RouteWarningsItemResponseComputeBeta {
   /// A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
   final pulumi.Input<String> code;
-
   /// Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" }
   final pulumi.Input<List<RouteWarningsItemDataItemResponseComputeBeta>> data;
-
   /// A human-readable description of the warning code.
   final pulumi.Input<String> message;
 
@@ -26,36 +24,17 @@ class RouteWarningsItemResponseComputeBeta {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'code': code,
-      'data':
-          pulumi.Input.mapInputValue<
-            List<RouteWarningsItemDataItemResponseComputeBeta>,
-            List<Map<String, dynamic>>
-          >(
-            data,
-            (value) =>
-                pulumi.Input.encodeList<
-                  RouteWarningsItemDataItemResponseComputeBeta,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'data': pulumi.Input.mapInputValue<List<RouteWarningsItemDataItemResponseComputeBeta>, List<Map<String, dynamic>>>(data, (value) => pulumi.Input.encodeList<RouteWarningsItemDataItemResponseComputeBeta, Map<String, dynamic>>(value, (value) => value.toMap())),
       'message': message,
     };
   }
 
-  factory RouteWarningsItemResponseComputeBeta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RouteWarningsItemResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return RouteWarningsItemResponseComputeBeta(
       code: pulumi.Input.fromValue(map['code'] as String),
-      data: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<RouteWarningsItemDataItemResponseComputeBeta>(
-          map['data']!,
-          (value) => RouteWarningsItemDataItemResponseComputeBeta.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      data: pulumi.Input.fromValue(pulumi.Input.decodeList<RouteWarningsItemDataItemResponseComputeBeta>(map['data']!, (value) => RouteWarningsItemDataItemResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>()))),
       message: pulumi.Input.fromValue(map['message'] as String),
     );
   }
 }
+

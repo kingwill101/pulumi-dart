@@ -9,7 +9,9 @@ class ApiPropertiesResponse {
 
   /// Creates a new [ApiPropertiesResponse].
   /// [apiFreshnessTimeInMinutes] Interval in minutes for which the weather data for the api needs to be refreshed.
-  ApiPropertiesResponse({this.apiFreshnessTimeInMinutes});
+  ApiPropertiesResponse({
+    this.apiFreshnessTimeInMinutes,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,11 +21,8 @@ class ApiPropertiesResponse {
 
   factory ApiPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ApiPropertiesResponse(
-      apiFreshnessTimeInMinutes: (() {
-        final guardedValue = map['apiFreshnessTimeInMinutes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      apiFreshnessTimeInMinutes: (() { final guardedValue = map['apiFreshnessTimeInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

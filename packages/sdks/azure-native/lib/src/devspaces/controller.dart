@@ -175,34 +175,24 @@ import 'sku_response.dart';
 class Controller extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// DNS name for accessing DataPlane services
   late final pulumi.Output<String> dataPlaneFqdn;
-
   /// DNS suffix for public endpoints running in the Azure Dev Spaces Controller.
   late final pulumi.Output<String> hostSuffix;
-
   /// Region where the Azure resource is located.
   late final pulumi.Output<String> location;
-
   /// The name of the resource.
   late final pulumi.Output<String> name;
-
   /// Provisioning state of the Azure Dev Spaces Controller.
   late final pulumi.Output<String> provisioningState;
-
   /// Model representing SKU for Azure Dev Spaces Controller.
   late final pulumi.Output<SkuResponse> sku;
-
   /// Tags for the Azure resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// DNS of the target container host's API server
   late final pulumi.Output<String> targetContainerHostApiServerFqdn;
-
   /// Resource ID of the target container host
   late final pulumi.Output<String> targetContainerHostResourceId;
-
   /// The type of the resource.
   late final pulumi.Output<String> type;
 
@@ -215,34 +205,21 @@ class Controller extends pulumi.CustomResource {
     ControllerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:devspaces:Controller',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:devspaces:Controller',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     dataPlaneFqdn = registerOutput<String>('dataPlaneFqdn');
     hostSuffix = registerOutput<String>('hostSuffix');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    sku = registerOutput<SkuResponse>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sku = registerOutput<SkuResponse>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
-    targetContainerHostApiServerFqdn = registerOutput<String>(
-      'targetContainerHostApiServerFqdn',
-    );
-    targetContainerHostResourceId = registerOutput<String>(
-      'targetContainerHostResourceId',
-    );
+    targetContainerHostApiServerFqdn = registerOutput<String>('targetContainerHostApiServerFqdn');
+    targetContainerHostResourceId = registerOutput<String>('targetContainerHostResourceId');
     type = registerOutput<String>('type');
   }
 }

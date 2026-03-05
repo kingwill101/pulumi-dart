@@ -270,13 +270,10 @@ import 'instance_state_state.dart';
 class InstanceState extends pulumi.CustomResource {
   /// Whether to request a forced stop when `state` is `stopped`. Otherwise (_i.e._, `state` is `running`), ignored. When an instance is forced to stop, it does not flush file system caches or file system metadata, and you must subsequently perform file system check and repair. Not recommended for Windows instances. Defaults to `false`.
   late final pulumi.Output<bool?> force;
-
   /// ID of the instance.
   late final pulumi.Output<String> instanceId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// State of the instance. Valid values are `stopped`, `running`.
   ///
   /// The following arguments are optional:
@@ -291,11 +288,11 @@ class InstanceState extends pulumi.CustomResource {
     InstanceStateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2transitgateway/instanceState:InstanceState',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2transitgateway/instanceState:InstanceState',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     force = registerOutput<bool?>('force');
     instanceId = registerOutput<String>('instanceId');
     region = registerOutput<String>('region');
@@ -320,11 +317,11 @@ class InstanceState extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2transitgateway/instanceState:InstanceState',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2transitgateway/instanceState:InstanceState',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     force = registerOutput<bool?>('force');
     instanceId = registerOutput<String>('instanceId');
     region = registerOutput<String>('region');

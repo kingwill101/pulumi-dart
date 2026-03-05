@@ -46,18 +46,7 @@ class GetRdsParameterGroupsGroup {
       'forceRestart': forceRestart,
       'id': id,
       'paramCounts': paramCounts,
-      'paramDetails':
-          pulumi.Input.mapInputValue<
-            List<GetRdsParameterGroupsGroupParamDetail>,
-            List<Map<String, dynamic>>
-          >(
-            paramDetails,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetRdsParameterGroupsGroupParamDetail,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'paramDetails': pulumi.Input.mapInputValue<List<GetRdsParameterGroupsGroupParamDetail>, List<Map<String, dynamic>>>(paramDetails, (value) => pulumi.Input.encodeList<GetRdsParameterGroupsGroupParamDetail, Map<String, dynamic>>(value, (value) => value.toMap())),
       'parameterGroupDesc': parameterGroupDesc,
       'parameterGroupId': parameterGroupId,
       'parameterGroupName': parameterGroupName,
@@ -72,26 +61,12 @@ class GetRdsParameterGroupsGroup {
       forceRestart: pulumi.Input.fromValue(map['forceRestart'] as int),
       id: pulumi.Input.fromValue(map['id'] as String),
       paramCounts: pulumi.Input.fromValue(map['paramCounts'] as int),
-      paramDetails: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetRdsParameterGroupsGroupParamDetail>(
-          map['paramDetails']!,
-          (value) => GetRdsParameterGroupsGroupParamDetail.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      parameterGroupDesc: pulumi.Input.fromValue(
-        map['parameterGroupDesc'] as String,
-      ),
-      parameterGroupId: pulumi.Input.fromValue(
-        map['parameterGroupId'] as String,
-      ),
-      parameterGroupName: pulumi.Input.fromValue(
-        map['parameterGroupName'] as String,
-      ),
-      parameterGroupType: pulumi.Input.fromValue(
-        map['parameterGroupType'] as int,
-      ),
+      paramDetails: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRdsParameterGroupsGroupParamDetail>(map['paramDetails']!, (value) => GetRdsParameterGroupsGroupParamDetail.fromMap((value as Map).cast<String, dynamic>()))),
+      parameterGroupDesc: pulumi.Input.fromValue(map['parameterGroupDesc'] as String),
+      parameterGroupId: pulumi.Input.fromValue(map['parameterGroupId'] as String),
+      parameterGroupName: pulumi.Input.fromValue(map['parameterGroupName'] as String),
+      parameterGroupType: pulumi.Input.fromValue(map['parameterGroupType'] as int),
     );
   }
 }
+

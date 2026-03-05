@@ -6,31 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SourceResponse {
   /// The IP or hostname and the port of the registry node that generated the event. Generally, this will be resolved by os.Hostname() along with the running port.
   final pulumi.Input<String>? addr;
-
   /// The running instance of an application. Changes after each restart.
   final pulumi.Input<String>? instanceID;
 
   /// Creates a new [SourceResponse].
   /// [addr] The IP or hostname and the port of the registry node that generated the event. Generally, this will be resolved by os.Hostname() along with the running port.
   /// [instanceID] The running instance of an application. Changes after each restart.
-  SourceResponse({this.addr, this.instanceID});
+  SourceResponse({
+    this.addr,
+    this.instanceID,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'addr': ?addr, 'instanceID': ?instanceID};
+    return <String, dynamic>{
+      'addr': ?addr,
+      'instanceID': ?instanceID,
+    };
   }
 
   factory SourceResponse.fromMap(Map<String, dynamic> map) {
     return SourceResponse(
-      addr: (() {
-        final guardedValue = map['addr'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      instanceID: (() {
-        final guardedValue = map['instanceID'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      addr: (() { final guardedValue = map['addr']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      instanceID: (() { final guardedValue = map['instanceID']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

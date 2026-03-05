@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGenaiAgentsAgentAnthropicApiKey {
   /// Timestamp when the API Key was created
   final pulumi.Input<String> createdAt;
-
   /// Created By user ID for the API Key
   final pulumi.Input<String>? createdBy;
-
   /// Deleted At timestamp for the API Key
   final pulumi.Input<String> deletedAt;
-
   /// Name of the API Key
   final pulumi.Input<String>? name;
-
   /// Updated At timestamp for the API Key
   final pulumi.Input<String> updatedAt;
-
   /// API Key value
   final pulumi.Input<String>? uuid;
 
@@ -51,23 +46,12 @@ class GetGenaiAgentsAgentAnthropicApiKey {
   factory GetGenaiAgentsAgentAnthropicApiKey.fromMap(Map<String, dynamic> map) {
     return GetGenaiAgentsAgentAnthropicApiKey(
       createdAt: pulumi.Input.fromValue(map['createdAt'] as String),
-      createdBy: (() {
-        final guardedValue = map['createdBy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      createdBy: (() { final guardedValue = map['createdBy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletedAt: pulumi.Input.fromValue(map['deletedAt'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       updatedAt: pulumi.Input.fromValue(map['updatedAt'] as String),
-      uuid: (() {
-        final guardedValue = map['uuid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      uuid: (() { final guardedValue = map['uuid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

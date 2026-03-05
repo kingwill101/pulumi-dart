@@ -10,27 +10,20 @@ class SelfSubjectReviewStatus {
 
   /// Creates a new [SelfSubjectReviewStatus].
   /// [userInfo] User attributes of the user making this request.
-  SelfSubjectReviewStatus({this.userInfo});
+  SelfSubjectReviewStatus({
+    this.userInfo,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'userInfo':
-          ?pulumi.Input.mapOptionalInputValue<UserInfo, Map<String, dynamic>>(
-            userInfo,
-            (value) => value.toMap(),
-          ),
+      'userInfo': ?pulumi.Input.mapOptionalInputValue<UserInfo, Map<String, dynamic>>(userInfo, (value) => value.toMap()),
     };
   }
 
   factory SelfSubjectReviewStatus.fromMap(Map<String, dynamic> map) {
     return SelfSubjectReviewStatus(
-      userInfo: (() {
-        final guardedValue = map['userInfo'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          UserInfo.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
+      userInfo: (() { final guardedValue = map['userInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(UserInfo.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

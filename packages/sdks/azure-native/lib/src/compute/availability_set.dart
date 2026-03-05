@@ -276,45 +276,30 @@ import 'virtual_machine_scale_set_migration_info_response.dart';
 class AvailabilitySet extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Fault Domain count.
   late final pulumi.Output<int?> platformFaultDomainCount;
-
   /// Update Domain count.
   late final pulumi.Output<int?> platformUpdateDomainCount;
-
   /// Specifies information about the proximity placement group that the availability set should be assigned to. Minimum api-version: 2018-04-01.
   late final pulumi.Output<SubResourceResponse?> proximityPlacementGroup;
-
   /// Specifies Redeploy, Reboot and ScheduledEventsAdditionalPublishingTargets Scheduled Event related configurations for the availability set.
-  late final pulumi.Output<ScheduledEventsPolicyResponse?>
-  scheduledEventsPolicy;
-
+  late final pulumi.Output<ScheduledEventsPolicyResponse?> scheduledEventsPolicy;
   /// Sku of the availability set, only name is required to be set. See AvailabilitySetSkuTypes for possible set of values. Use 'Aligned' for virtual machines with managed disks and 'Classic' for virtual machines with unmanaged disks. Default value is 'Classic'.
   late final pulumi.Output<SkuResponse?> sku;
-
   /// The resource status information.
   late final pulumi.Output<List<Map<String, dynamic>>> statuses;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Describes the migration properties on the Availability Set.
-  late final pulumi.Output<VirtualMachineScaleSetMigrationInfoResponse>
-  virtualMachineScaleSetMigrationInfo;
-
+  late final pulumi.Output<VirtualMachineScaleSetMigrationInfoResponse> virtualMachineScaleSetMigrationInfo;
   /// A list of references to all virtual machines in the availability set.
   late final pulumi.Output<List<Map<String, dynamic>>?> virtualMachines;
 
@@ -327,74 +312,24 @@ class AvailabilitySet extends pulumi.CustomResource {
     AvailabilitySetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:compute:AvailabilitySet',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:compute:AvailabilitySet',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     platformFaultDomainCount = registerOutput<int?>('platformFaultDomainCount');
-    platformUpdateDomainCount = registerOutput<int?>(
-      'platformUpdateDomainCount',
-    );
-    proximityPlacementGroup = registerOutput<SubResourceResponse?>(
-      'proximityPlacementGroup',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SubResourceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    scheduledEventsPolicy = registerOutput<ScheduledEventsPolicyResponse?>(
-      'scheduledEventsPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ScheduledEventsPolicyResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    sku = registerOutput<SkuResponse?>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    platformUpdateDomainCount = registerOutput<int?>('platformUpdateDomainCount');
+    proximityPlacementGroup = registerOutput<SubResourceResponse?>('proximityPlacementGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    scheduledEventsPolicy = registerOutput<ScheduledEventsPolicyResponse?>('scheduledEventsPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduledEventsPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
-    virtualMachineScaleSetMigrationInfo =
-        registerOutput<VirtualMachineScaleSetMigrationInfoResponse>(
-          'virtualMachineScaleSetMigrationInfo',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return VirtualMachineScaleSetMigrationInfoResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    virtualMachines = registerOutput<List<Map<String, dynamic>>?>(
-      'virtualMachines',
-    );
+    virtualMachineScaleSetMigrationInfo = registerOutput<VirtualMachineScaleSetMigrationInfoResponse>('virtualMachineScaleSetMigrationInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineScaleSetMigrationInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    virtualMachines = registerOutput<List<Map<String, dynamic>>?>('virtualMachines');
   }
 }

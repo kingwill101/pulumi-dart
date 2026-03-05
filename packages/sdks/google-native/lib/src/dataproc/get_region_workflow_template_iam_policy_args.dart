@@ -29,19 +29,12 @@ class GetRegionWorkflowTemplateIamPolicyArgs {
     };
   }
 
-  factory GetRegionWorkflowTemplateIamPolicyArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetRegionWorkflowTemplateIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionWorkflowTemplateIamPolicyArgs(
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       regionId: pulumi.Input.fromValue(map['regionId'] as String),
-      workflowTemplateId: pulumi.Input.fromValue(
-        map['workflowTemplateId'] as String,
-      ),
+      workflowTemplateId: pulumi.Input.fromValue(map['workflowTemplateId'] as String),
     );
   }
 }
+

@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSslVpnServersArgs {
   /// IDs of the SSL-VPN servers.
   final pulumi.Input<List<String>>? ids;
-
   /// A regex string of SSL-VPN server name.
   final pulumi.Input<String>? nameRegex;
-
   /// Save the result to the file.
   final pulumi.Input<String>? outputFile;
-
   /// Use the VPN gateway ID as the search key.
   final pulumi.Input<String>? vpnGatewayId;
 
@@ -42,26 +39,11 @@ class GetSslVpnServersArgs {
 
   factory GetSslVpnServersArgs.fromMap(Map<String, dynamic> map) {
     return GetSslVpnServersArgs(
-      ids: (() {
-        final guardedValue = map['ids'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      vpnGatewayId: (() {
-        final guardedValue = map['vpnGatewayId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ids: (() { final guardedValue = map['ids']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      vpnGatewayId: (() { final guardedValue = map['vpnGatewayId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CookiesMatchConditionParameters {
   /// The match value for the condition of the delivery rule
   final pulumi.Input<List<String>>? matchValues;
-
   /// Describes if this is negate condition or not
   final pulumi.Input<bool>? negateCondition;
-
   /// Describes operator to be matched
   final pulumi.Input<String> operator;
-
   /// Name of Cookies to be matched
   final pulumi.Input<String>? selector;
-
   /// List of transforms
   final pulumi.Input<List<String>>? transforms;
-
   /// Expected value is 'DeliveryRuleCookiesConditionParameters'.
   final pulumi.Input<String> typeName;
 
@@ -51,28 +46,13 @@ class CookiesMatchConditionParameters {
 
   factory CookiesMatchConditionParameters.fromMap(Map<String, dynamic> map) {
     return CookiesMatchConditionParameters(
-      matchValues: (() {
-        final guardedValue = map['matchValues'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      negateCondition: (() {
-        final guardedValue = map['negateCondition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      matchValues: (() { final guardedValue = map['matchValues']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      negateCondition: (() { final guardedValue = map['negateCondition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       operator: pulumi.Input.fromValue(map['operator'] as String),
-      selector: (() {
-        final guardedValue = map['selector'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      transforms: (() {
-        final guardedValue = map['transforms'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      selector: (() { final guardedValue = map['selector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      transforms: (() { final guardedValue = map['transforms']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       typeName: pulumi.Input.fromValue(map['typeName'] as String),
     );
   }
 }
+

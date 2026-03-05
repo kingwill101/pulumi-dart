@@ -8,10 +8,14 @@ class LoadBalancerIpamPools {
 
   /// Creates a new [LoadBalancerIpamPools].
   /// [ipv4IpamPoolId] The ID of the IPv4 IPAM pool.
-  LoadBalancerIpamPools({required this.ipv4IpamPoolId});
+  LoadBalancerIpamPools({
+    required this.ipv4IpamPoolId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'ipv4IpamPoolId': ipv4IpamPoolId};
+    return <String, dynamic>{
+      'ipv4IpamPoolId': ipv4IpamPoolId,
+    };
   }
 
   factory LoadBalancerIpamPools.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class LoadBalancerIpamPools {
     );
   }
 }
+

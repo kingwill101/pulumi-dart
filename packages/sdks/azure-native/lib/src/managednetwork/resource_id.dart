@@ -9,19 +9,20 @@ class ResourceId {
 
   /// Creates a new [ResourceId].
   /// [id] Resource Id
-  ResourceId({this.id});
+  ResourceId({
+    this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': ?id};
+    return <String, dynamic>{
+      'id': ?id,
+    };
   }
 
   factory ResourceId.fromMap(Map<String, dynamic> map) {
     return ResourceId(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

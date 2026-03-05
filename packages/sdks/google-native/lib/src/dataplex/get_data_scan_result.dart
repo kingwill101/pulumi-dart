@@ -12,49 +12,34 @@ import 'google_cloud_dataplex_v1_data_source_response.dart';
 class GetDataScanResult {
   /// The time when the scan was created.
   final String createTime;
-
   /// The data source for DataScan.
   final GoogleCloudDataplexV1DataSourceResponse data;
-
   /// The result of the data profile scan.
   final GoogleCloudDataplexV1DataProfileResultResponse dataProfileResult;
-
   /// DataProfileScan related setting.
   final GoogleCloudDataplexV1DataProfileSpecResponse dataProfileSpec;
-
   /// The result of the data quality scan.
   final GoogleCloudDataplexV1DataQualityResultResponse dataQualityResult;
-
   /// DataQualityScan related setting.
   final GoogleCloudDataplexV1DataQualitySpecResponse dataQualitySpec;
-
   /// Optional. Description of the scan. Must be between 1-1024 characters.
   final String description;
-
   /// Optional. User friendly display name. Must be between 1-256 characters.
   final String displayName;
-
   /// Optional. DataScan execution settings.If not specified, the fields in it will use their default values.
   final GoogleCloudDataplexV1DataScanExecutionSpecResponse executionSpec;
-
   /// Status of the data scan execution.
   final GoogleCloudDataplexV1DataScanExecutionStatusResponse executionStatus;
-
   /// Optional. User-defined labels for the scan.
   final Map<String, String> labels;
-
   /// The relative resource name of the scan, of the form: projects/{project}/locations/{location_id}/dataScans/{datascan_id}, where project refers to a project_id or project_number and location_id refers to a GCP region.
   final String name;
-
   /// Current state of the DataScan.
   final String state;
-
   /// The type of DataScan.
   final String type;
-
   /// System generated globally unique ID for the scan. This ID will be different if the scan is deleted and re-created with the same name.
   final String uid;
-
   /// The time when the scan was last updated.
   final String updateTime;
 
@@ -118,30 +103,15 @@ class GetDataScanResult {
   factory GetDataScanResult.fromMap(Map<String, dynamic> map) {
     return GetDataScanResult(
       createTime: map['createTime'] as String,
-      data: GoogleCloudDataplexV1DataSourceResponse.fromMap(
-        (map['data']! as Map).cast<String, dynamic>(),
-      ),
-      dataProfileResult: GoogleCloudDataplexV1DataProfileResultResponse.fromMap(
-        (map['dataProfileResult']! as Map).cast<String, dynamic>(),
-      ),
-      dataProfileSpec: GoogleCloudDataplexV1DataProfileSpecResponse.fromMap(
-        (map['dataProfileSpec']! as Map).cast<String, dynamic>(),
-      ),
-      dataQualityResult: GoogleCloudDataplexV1DataQualityResultResponse.fromMap(
-        (map['dataQualityResult']! as Map).cast<String, dynamic>(),
-      ),
-      dataQualitySpec: GoogleCloudDataplexV1DataQualitySpecResponse.fromMap(
-        (map['dataQualitySpec']! as Map).cast<String, dynamic>(),
-      ),
+      data: GoogleCloudDataplexV1DataSourceResponse.fromMap((map['data']! as Map).cast<String, dynamic>()),
+      dataProfileResult: GoogleCloudDataplexV1DataProfileResultResponse.fromMap((map['dataProfileResult']! as Map).cast<String, dynamic>()),
+      dataProfileSpec: GoogleCloudDataplexV1DataProfileSpecResponse.fromMap((map['dataProfileSpec']! as Map).cast<String, dynamic>()),
+      dataQualityResult: GoogleCloudDataplexV1DataQualityResultResponse.fromMap((map['dataQualityResult']! as Map).cast<String, dynamic>()),
+      dataQualitySpec: GoogleCloudDataplexV1DataQualitySpecResponse.fromMap((map['dataQualitySpec']! as Map).cast<String, dynamic>()),
       description: map['description'] as String,
       displayName: map['displayName'] as String,
-      executionSpec: GoogleCloudDataplexV1DataScanExecutionSpecResponse.fromMap(
-        (map['executionSpec']! as Map).cast<String, dynamic>(),
-      ),
-      executionStatus:
-          GoogleCloudDataplexV1DataScanExecutionStatusResponse.fromMap(
-            (map['executionStatus']! as Map).cast<String, dynamic>(),
-          ),
+      executionSpec: GoogleCloudDataplexV1DataScanExecutionSpecResponse.fromMap((map['executionSpec']! as Map).cast<String, dynamic>()),
+      executionStatus: GoogleCloudDataplexV1DataScanExecutionStatusResponse.fromMap((map['executionStatus']! as Map).cast<String, dynamic>()),
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
       state: map['state'] as String,
@@ -151,3 +121,4 @@ class GetDataScanResult {
     );
   }
 }
+

@@ -7,10 +7,8 @@ class AddonHcxPropertiesResponse {
   /// Addon type
   /// Expected value is 'HCX'.
   final pulumi.Input<String> addonType;
-
   /// The HCX offer, example VMware MaaS Cloud Provider (Enterprise)
   final pulumi.Input<String> offer;
-
   /// The state of the addon provisioning
   final pulumi.Input<String> provisioningState;
 
@@ -36,9 +34,8 @@ class AddonHcxPropertiesResponse {
     return AddonHcxPropertiesResponse(
       addonType: pulumi.Input.fromValue(map['addonType'] as String),
       offer: pulumi.Input.fromValue(map['offer'] as String),
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
     );
   }
 }
+

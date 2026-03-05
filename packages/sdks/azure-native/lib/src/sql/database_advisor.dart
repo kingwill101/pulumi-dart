@@ -146,34 +146,24 @@ import 'database_advisor_args.dart';
 class DatabaseAdvisor extends pulumi.CustomResource {
   /// Gets the status of availability of this advisor to customers. Possible values are 'GA', 'PublicPreview', 'LimitedPublicPreview' and 'PrivatePreview'.
   late final pulumi.Output<String> advisorStatus;
-
   /// Gets the auto-execute status (whether to let the system execute the recommendations) of this advisor. Possible values are 'Enabled' and 'Disabled'
   late final pulumi.Output<String> autoExecuteStatus;
-
   /// Gets the resource from which current value of auto-execute status is inherited. Auto-execute status can be set on (and inherited from) different levels in the resource hierarchy. Possible values are 'Subscription', 'Server', 'ElasticPool', 'Database' and 'Default' (when status is not explicitly set on any level).
   late final pulumi.Output<String> autoExecuteStatusInheritedFrom;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Resource kind.
   late final pulumi.Output<String> kind;
-
   /// Gets the time when the current resource was analyzed for recommendations by this advisor.
   late final pulumi.Output<String> lastChecked;
-
   /// Resource location.
   late final pulumi.Output<String> location;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// Gets that status of recommendations for this advisor and reason for not having any recommendations. Possible values include, but are not limited to, 'Ok' (Recommendations available),LowActivity (not enough workload to analyze), 'DbSeemsTuned' (Database is doing well), etc.
   late final pulumi.Output<String> recommendationsStatus;
-
   /// Gets the recommended actions for this advisor.
   late final pulumi.Output<List<Map<String, dynamic>>> recommendedActions;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -186,25 +176,21 @@ class DatabaseAdvisor extends pulumi.CustomResource {
     DatabaseAdvisorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:sql:DatabaseAdvisor',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:sql:DatabaseAdvisor',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     advisorStatus = registerOutput<String>('advisorStatus');
     autoExecuteStatus = registerOutput<String>('autoExecuteStatus');
-    autoExecuteStatusInheritedFrom = registerOutput<String>(
-      'autoExecuteStatusInheritedFrom',
-    );
+    autoExecuteStatusInheritedFrom = registerOutput<String>('autoExecuteStatusInheritedFrom');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     kind = registerOutput<String>('kind');
     lastChecked = registerOutput<String>('lastChecked');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     recommendationsStatus = registerOutput<String>('recommendationsStatus');
-    recommendedActions = registerOutput<List<Map<String, dynamic>>>(
-      'recommendedActions',
-    );
+    recommendedActions = registerOutput<List<Map<String, dynamic>>>('recommendedActions');
     type = registerOutput<String>('type');
   }
 }

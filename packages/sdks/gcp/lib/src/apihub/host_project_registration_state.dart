@@ -6,26 +6,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HostProjectRegistrationState {
   /// Output only. The time at which the host project registration was created.
   final pulumi.Input<String>? createTime;
-
   /// Required. Immutable. Google cloud project name in the format: "projects/abc" or "projects/123".
   /// As input, project name with either project id or number are accepted.
   /// As output, this field will contain project number.
   final pulumi.Input<String>? gcpProject;
-
   /// Required. The ID to use for the Host Project Registration, which will become the
   /// final component of the host project registration's resource name. The ID
   /// must be the same as the Google cloud project specified in the
   /// host_project_registration.gcp_project field.
   final pulumi.Input<String>? hostProjectRegistrationId;
-
   /// Part of `parent`. See documentation of `projectsId`.
   final pulumi.Input<String>? location;
-
   /// Identifier. The name of the host project registration.
   /// Format:
   /// "projects/{project}/locations/{location}/hostProjectRegistrations/{host_project_registration}".
   final pulumi.Input<String>? name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -59,36 +54,13 @@ class HostProjectRegistrationState {
 
   factory HostProjectRegistrationState.fromMap(Map<String, dynamic> map) {
     return HostProjectRegistrationState(
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      gcpProject: (() {
-        final guardedValue = map['gcpProject'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      hostProjectRegistrationId: (() {
-        final guardedValue = map['hostProjectRegistrationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      gcpProject: (() { final guardedValue = map['gcpProject']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      hostProjectRegistrationId: (() { final guardedValue = map['hostProjectRegistrationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

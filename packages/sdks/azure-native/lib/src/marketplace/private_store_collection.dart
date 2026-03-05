@@ -170,43 +170,30 @@ import 'system_data_response.dart';
 class PrivateStoreCollection extends pulumi.CustomResource {
   /// Indicating whether all subscriptions are selected (=true) or not (=false).
   late final pulumi.Output<bool?> allSubscriptions;
-
   /// Gets list of collection rules
   late final pulumi.Output<List<Map<String, dynamic>>> appliedRules;
-
   /// Indicating whether all items are approved for this collection (=true) or not (=false).
   late final pulumi.Output<bool> approveAllItems;
-
   /// Gets the modified date of all items approved.
   late final pulumi.Output<String> approveAllItemsModifiedAt;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Gets or sets the association with Commercial's Billing Account.
   late final pulumi.Output<String?> claim;
-
   /// Gets collection Id.
   late final pulumi.Output<String> collectionId;
-
   /// Gets or sets collection name.
   late final pulumi.Output<String?> collectionName;
-
   /// Indicating whether the collection is enabled or disabled.
   late final pulumi.Output<bool?> enabled;
-
   /// The name of the resource.
   late final pulumi.Output<String> name;
-
   /// Gets the number of offers associated with the collection.
   late final pulumi.Output<double> numberOfOffers;
-
   /// Gets or sets subscription ids list. Empty list indicates all subscriptions are selected, null indicates no update is done, explicit list indicates the explicit selected subscriptions. On insert, null is considered as bad request
   late final pulumi.Output<List<String>?> subscriptionsList;
-
   /// Metadata pertaining to creation and last modification of the resource
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource.
   late final pulumi.Output<String> type;
 
@@ -219,17 +206,15 @@ class PrivateStoreCollection extends pulumi.CustomResource {
     PrivateStoreCollectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:marketplace:PrivateStoreCollection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:marketplace:PrivateStoreCollection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allSubscriptions = registerOutput<bool?>('allSubscriptions');
     appliedRules = registerOutput<List<Map<String, dynamic>>>('appliedRules');
     approveAllItems = registerOutput<bool>('approveAllItems');
-    approveAllItemsModifiedAt = registerOutput<String>(
-      'approveAllItemsModifiedAt',
-    );
+    approveAllItemsModifiedAt = registerOutput<String>('approveAllItemsModifiedAt');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     claim = registerOutput<String?>('claim');
     collectionId = registerOutput<String>('collectionId');
@@ -238,16 +223,7 @@ class PrivateStoreCollection extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     numberOfOffers = registerOutput<double>('numberOfOffers');
     subscriptionsList = registerOutput<List<String>?>('subscriptionsList');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

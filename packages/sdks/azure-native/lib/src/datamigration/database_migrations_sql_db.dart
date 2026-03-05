@@ -541,10 +541,8 @@ class DatabaseMigrationsSqlDb extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   late final pulumi.Output<String> name;
-
   /// Database Migration Resource properties for SQL database.
   late final pulumi.Output<DatabaseMigrationPropertiesSqlDbResponse> properties;
-
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
   late final pulumi.Output<String> type;
@@ -558,33 +556,15 @@ class DatabaseMigrationsSqlDb extends pulumi.CustomResource {
     DatabaseMigrationsSqlDbArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:datamigration:DatabaseMigrationsSqlDb',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:datamigration:DatabaseMigrationsSqlDb',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<DatabaseMigrationPropertiesSqlDbResponse>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DatabaseMigrationPropertiesSqlDbResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<DatabaseMigrationPropertiesSqlDbResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseMigrationPropertiesSqlDbResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

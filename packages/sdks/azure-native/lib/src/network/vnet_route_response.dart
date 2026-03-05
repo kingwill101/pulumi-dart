@@ -9,10 +9,8 @@ import 'sub_resource_response.dart';
 class VnetRouteResponse {
   /// The list of references to HubBgpConnection objects.
   final pulumi.Input<List<SubResourceResponse>> bgpConnections;
-
   /// List of all Static Routes.
   final pulumi.Input<List<StaticRouteResponse>>? staticRoutes;
-
   /// Configuration for static routes on this HubVnetConnection.
   final pulumi.Input<StaticRoutesConfigResponse>? staticRoutesConfig;
 
@@ -28,69 +26,18 @@ class VnetRouteResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bgpConnections':
-          pulumi.Input.mapInputValue<
-            List<SubResourceResponse>,
-            List<Map<String, dynamic>>
-          >(
-            bgpConnections,
-            (value) =>
-                pulumi.Input.encodeList<
-                  SubResourceResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'staticRoutes':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<StaticRouteResponse>,
-            List<Map<String, dynamic>>
-          >(
-            staticRoutes,
-            (value) =>
-                pulumi.Input.encodeList<
-                  StaticRouteResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'staticRoutesConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            StaticRoutesConfigResponse,
-            Map<String, dynamic>
-          >(staticRoutesConfig, (value) => value.toMap()),
+      'bgpConnections': pulumi.Input.mapInputValue<List<SubResourceResponse>, List<Map<String, dynamic>>>(bgpConnections, (value) => pulumi.Input.encodeList<SubResourceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'staticRoutes': ?pulumi.Input.mapOptionalInputValue<List<StaticRouteResponse>, List<Map<String, dynamic>>>(staticRoutes, (value) => pulumi.Input.encodeList<StaticRouteResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'staticRoutesConfig': ?pulumi.Input.mapOptionalInputValue<StaticRoutesConfigResponse, Map<String, dynamic>>(staticRoutesConfig, (value) => value.toMap()),
     };
   }
 
   factory VnetRouteResponse.fromMap(Map<String, dynamic> map) {
     return VnetRouteResponse(
-      bgpConnections: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<SubResourceResponse>(
-          map['bgpConnections']!,
-          (value) => SubResourceResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      staticRoutes: (() {
-        final guardedValue = map['staticRoutes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<StaticRouteResponse>(
-            guardedValue,
-            (value) => StaticRouteResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      staticRoutesConfig: (() {
-        final guardedValue = map['staticRoutesConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          StaticRoutesConfigResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      bgpConnections: pulumi.Input.fromValue(pulumi.Input.decodeList<SubResourceResponse>(map['bgpConnections']!, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>()))),
+      staticRoutes: (() { final guardedValue = map['staticRoutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<StaticRouteResponse>(guardedValue, (value) => StaticRouteResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      staticRoutesConfig: (() { final guardedValue = map['staticRoutesConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StaticRoutesConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

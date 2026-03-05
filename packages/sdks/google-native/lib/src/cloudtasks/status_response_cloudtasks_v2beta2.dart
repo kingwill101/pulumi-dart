@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StatusResponseCloudtasksV2beta2 {
   /// The status code, which should be an enum value of google.rpc.Code.
   final pulumi.Input<int> code;
-
   /// A list of messages that carry the error details. There is a common set of message types for APIs to use.
   final pulumi.Input<List<Map<String, String>>> details;
-
   /// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
   final pulumi.Input<String> message;
 
@@ -34,10 +32,9 @@ class StatusResponseCloudtasksV2beta2 {
   factory StatusResponseCloudtasksV2beta2.fromMap(Map<String, dynamic> map) {
     return StatusResponseCloudtasksV2beta2(
       code: pulumi.Input.fromValue(map['code'] as int),
-      details: pulumi.Input.fromValue(
-        (map['details'] as List).cast<Map<String, String>>(),
-      ),
+      details: pulumi.Input.fromValue((map['details'] as List).cast<Map<String, String>>()),
       message: pulumi.Input.fromValue(map['message'] as String),
     );
   }
 }
+

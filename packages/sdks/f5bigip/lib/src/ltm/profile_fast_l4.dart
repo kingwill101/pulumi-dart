@@ -155,46 +155,32 @@ import 'profile_fast_l4_state.dart';
 class ProfileFastL4 extends pulumi.CustomResource {
   /// Specifies late binding client timeout in seconds. This setting specifies the number of seconds allowed for a client to transmit enough data to select a server when late binding is enabled. If it expires timeout-recovery mode will dictate what action to take.
   late final pulumi.Output<int> clientTimeout;
-
   /// Specifies the profile that you want to use as the parent profile. Your new profile inherits all settings and values from the parent profile specified.
   late final pulumi.Output<String> defaultsFrom;
-
   /// Enables or disables late binding explicit flow migration that allows iRules to control when flows move from software to hardware. Explicit flow migration is disabled by default hence BIG-IP automatically migrates flows from software to hardware.
   late final pulumi.Output<String> explicitflowMigration;
-
   /// Enables or disables hardware SYN cookie support when PVA10 is present on the system. Note that when you set the hardware syncookie option to enabled, you may also want to set the following bigdb database variables using the "/sys modify db" command, based on your requirements: pva.SynCookies.Full.ConnectionThreshold (default: 500000), pva.SynCookies.Assist.ConnectionThreshold (default: 500000) pva.SynCookies.ClientWindow (default: 0). The default value is disabled.
   late final pulumi.Output<String> hardwareSyncookie;
-
   /// Specifies an idle timeout in seconds. This setting specifies the number of seconds that a connection is idle before the connection is eligible for deletion.When you specify an idle timeout for the Fast L4 profile, the value must be greater than the bigdb database variable Pva.Scrub time in msec for it to work properly.The default value is 300 seconds.
   late final pulumi.Output<String> idleTimeout;
-
   /// Specifies an IP ToS number for the client side. This option specifies the Type of Service level that the traffic management system assigns to IP packets when sending them to clients. The default value is 65535 (pass-through), which indicates, do not modify.
   late final pulumi.Output<String> iptosToclient;
-
   /// Specifies an IP ToS number for the server side. This setting specifies the Type of Service level that the traffic management system assigns to IP packets when sending them to servers. The default value is 65535 (pass-through), which indicates, do not modify.
   late final pulumi.Output<String> iptosToserver;
-
   /// Specifies the keep alive probe interval, in seconds. The default value is disabled (0 seconds).
   late final pulumi.Output<String> keepaliveInterval;
-
   /// Enables intelligent selection of a back-end server or pool, using an iRule to make the selection. The default is `disabled`.
   late final pulumi.Output<String> lateBinding;
-
   /// Specifies, when checked (enabled), that the system closes a loosely-initiated connection when the system receives the first FIN packet from either the client or the server. The default is disabled.
   late final pulumi.Output<String> looseClose;
-
   /// Specifies, when checked (enabled), that the system initializes a connection when it receives any TCP packet, rather that requiring a SYN packet for connection initiation. The default is disabled. We recommend that if you enable the Loose Initiation option, you also enable the Loose Close option.
   late final pulumi.Output<String> looseInitiation;
-
   /// Name of the LTM fastL4 Profile.The full path is the combination of the `partition + name` of the resource (For example `/Common/my-fastl4profile`) or  `partition + directory + name` of the resource  (example: `/Common/test/my-fastl4profile`)
   late final pulumi.Output<String> name;
-
   /// name of partition
   late final pulumi.Output<String> partition;
-
   /// Specifies the amount of data the BIG-IP system can accept without acknowledging the server. The default is 0 (zero).
   late final pulumi.Output<int> receiveWindowsize;
-
   /// Specifies the acceptable duration for a TCP handshake, that is, the maximum idle time between a client synchronization (SYN) and a client acknowledgment (ACK).The default is `5 seconds`.
   late final pulumi.Output<String> tcpHandshakeTimeout;
 
@@ -207,11 +193,11 @@ class ProfileFastL4 extends pulumi.CustomResource {
     ProfileFastL4Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:ltm/profileFastL4:ProfileFastL4',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:ltm/profileFastL4:ProfileFastL4',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clientTimeout = registerOutput<int>('clientTimeout');
     defaultsFrom = registerOutput<String>('defaultsFrom');
     explicitflowMigration = registerOutput<String>('explicitflowMigration');
@@ -247,11 +233,11 @@ class ProfileFastL4 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:ltm/profileFastL4:ProfileFastL4',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:ltm/profileFastL4:ProfileFastL4',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clientTimeout = registerOutput<int>('clientTimeout');
     defaultsFrom = registerOutput<String>('defaultsFrom');
     explicitflowMigration = registerOutput<String>('explicitflowMigration');

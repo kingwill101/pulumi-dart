@@ -6,37 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceTypeSchemaResponseResources {
   /// Resource limits for this instance type
   final pulumi.Input<Map<String, String>>? limits;
-
   /// Resource requests for this instance type
   final pulumi.Input<Map<String, String>>? requests;
 
   /// Creates a new [InstanceTypeSchemaResponseResources].
   /// [limits] Resource limits for this instance type
   /// [requests] Resource requests for this instance type
-  InstanceTypeSchemaResponseResources({this.limits, this.requests});
+  InstanceTypeSchemaResponseResources({
+    this.limits,
+    this.requests,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'limits': ?limits, 'requests': ?requests};
+    return <String, dynamic>{
+      'limits': ?limits,
+      'requests': ?requests,
+    };
   }
 
-  factory InstanceTypeSchemaResponseResources.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InstanceTypeSchemaResponseResources.fromMap(Map<String, dynamic> map) {
     return InstanceTypeSchemaResponseResources(
-      limits: (() {
-        final guardedValue = map['limits'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      requests: (() {
-        final guardedValue = map['requests'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      limits: (() { final guardedValue = map['limits']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      requests: (() { final guardedValue = map['requests']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

@@ -19,13 +19,10 @@ class GceConfidentialInstanceConfigResponseWorkstationsV1beta {
     };
   }
 
-  factory GceConfidentialInstanceConfigResponseWorkstationsV1beta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GceConfidentialInstanceConfigResponseWorkstationsV1beta.fromMap(Map<String, dynamic> map) {
     return GceConfidentialInstanceConfigResponseWorkstationsV1beta(
-      enableConfidentialCompute: pulumi.Input.fromValue(
-        map['enableConfidentialCompute'] as bool,
-      ),
+      enableConfidentialCompute: pulumi.Input.fromValue(map['enableConfidentialCompute'] as bool),
     );
   }
 }
+

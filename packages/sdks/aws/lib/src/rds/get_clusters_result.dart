@@ -7,11 +7,9 @@ import 'get_clusters_filter.dart';
 class GetClustersResult {
   /// Set of cluster ARNs of the matched RDS clusters.
   final List<String> clusterArns;
-
   /// Set of ARNs of cluster identifiers of the matched RDS clusters.
   final List<String> clusterIdentifiers;
   final List<GetClustersFilter>? filters;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
@@ -34,14 +32,7 @@ class GetClustersResult {
     return <String, dynamic>{
       'clusterArns': clusterArns,
       'clusterIdentifiers': clusterIdentifiers,
-      'filters': ?(() {
-        final guardedValue = filters;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<GetClustersFilter, Map<String, dynamic>>(
-          guardedValue,
-          (value) => value.toMap(),
-        );
-      })(),
+      'filters': ?(() { final guardedValue = filters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClustersFilter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'id': id,
       'region': region,
     };
@@ -51,17 +42,10 @@ class GetClustersResult {
     return GetClustersResult(
       clusterArns: (map['clusterArns'] as List).cast<String>(),
       clusterIdentifiers: (map['clusterIdentifiers'] as List).cast<String>(),
-      filters: (() {
-        final guardedValue = map['filters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<GetClustersFilter>(
-          guardedValue,
-          (value) =>
-              GetClustersFilter.fromMap((value as Map).cast<String, dynamic>()),
-        );
-      })(),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClustersFilter>(guardedValue, (value) => GetClustersFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
       id: map['id'] as String,
       region: map['region'] as String,
     );
   }
 }
+

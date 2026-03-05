@@ -8,36 +8,26 @@ class ScheduledScalingRuleState {
   ///
   /// &gt; **NOTE:** The parameter value must be at least 15 minutes.
   final pulumi.Input<int>? durationMinutes;
-
   /// Enables or disables the scheduled task policy. Valid values:
   final pulumi.Input<bool>? enable;
-
   /// The time when the scheduled policy starts to execute.
   final pulumi.Input<int>? firstScheduledTime;
-
   /// The instance ID.
   final pulumi.Input<String>? instanceId;
-
   /// When `schedule_type` is `repeat`, the parameter is required. Valid values:
   /// -`Daily`: Daily scheduled task.
   /// -`Weekly`: Weekly scheduled task.
   final pulumi.Input<String>? repeatType;
-
   /// The scheduled elastic reserved production specification (unit: MB/s).
   final pulumi.Input<int>? reservedPubFlow;
-
   /// The scheduled elastic reserved consumption specification (unit: MB/s).
   final pulumi.Input<int>? reservedSubFlow;
-
   /// The name of the scheduled policy rule.
   final pulumi.Input<String>? ruleName;
-
   /// The schedule type. Valid values:
   final pulumi.Input<String>? scheduleType;
-
   /// The time zone (Coordinated Universal Time).
   final pulumi.Input<String>? timeZone;
-
   /// The weekly types. Supports execution on multiple days. When `repeat_type` is set to `Weekly`, you need to input this parameter. Valid values: `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday`.
   final pulumi.Input<List<String>>? weeklyTypes;
 
@@ -85,61 +75,18 @@ class ScheduledScalingRuleState {
 
   factory ScheduledScalingRuleState.fromMap(Map<String, dynamic> map) {
     return ScheduledScalingRuleState(
-      durationMinutes: (() {
-        final guardedValue = map['durationMinutes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      enable: (() {
-        final guardedValue = map['enable'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      firstScheduledTime: (() {
-        final guardedValue = map['firstScheduledTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      instanceId: (() {
-        final guardedValue = map['instanceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      repeatType: (() {
-        final guardedValue = map['repeatType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      reservedPubFlow: (() {
-        final guardedValue = map['reservedPubFlow'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      reservedSubFlow: (() {
-        final guardedValue = map['reservedSubFlow'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      ruleName: (() {
-        final guardedValue = map['ruleName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      scheduleType: (() {
-        final guardedValue = map['scheduleType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      timeZone: (() {
-        final guardedValue = map['timeZone'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      weeklyTypes: (() {
-        final guardedValue = map['weeklyTypes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      durationMinutes: (() { final guardedValue = map['durationMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      enable: (() { final guardedValue = map['enable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      firstScheduledTime: (() { final guardedValue = map['firstScheduledTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      instanceId: (() { final guardedValue = map['instanceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      repeatType: (() { final guardedValue = map['repeatType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      reservedPubFlow: (() { final guardedValue = map['reservedPubFlow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      reservedSubFlow: (() { final guardedValue = map['reservedSubFlow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      ruleName: (() { final guardedValue = map['ruleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      scheduleType: (() { final guardedValue = map['scheduleType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      timeZone: (() { final guardedValue = map['timeZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      weeklyTypes: (() { final guardedValue = map['weeklyTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

@@ -12,8 +12,7 @@ enum VirtualMachinePlacementHintType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown VirtualMachinePlacementHintType value: $value',
-    );
+    throw ArgumentError('Unknown VirtualMachinePlacementHintType value: $value');
   }
 }
+

@@ -13,8 +13,7 @@ enum StateStoreResourceDefinitionMethods {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown StateStoreResourceDefinitionMethods value: $value',
-    );
+    throw ArgumentError('Unknown StateStoreResourceDefinitionMethods value: $value');
   }
 }
+

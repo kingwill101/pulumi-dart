@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualMachinePublicIPAddressDnsSettingsConfigurationResponse {
   /// The Domain name label prefix of the PublicIPAddress resources that will be created. The generated name label is the concatenation of the domain name label and vm network profile unique ID.
   final pulumi.Input<String> domainNameLabel;
-
   /// The Domain name label scope of the PublicIPAddress resources that will be created. The generated name label is the concatenation of the hashed domain name label with policy according to the domain name label scope and vm network profile unique ID.
   final pulumi.Input<String>? domainNameLabelScope;
 
@@ -25,16 +24,11 @@ class VirtualMachinePublicIPAddressDnsSettingsConfigurationResponse {
     };
   }
 
-  factory VirtualMachinePublicIPAddressDnsSettingsConfigurationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VirtualMachinePublicIPAddressDnsSettingsConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachinePublicIPAddressDnsSettingsConfigurationResponse(
       domainNameLabel: pulumi.Input.fromValue(map['domainNameLabel'] as String),
-      domainNameLabelScope: (() {
-        final guardedValue = map['domainNameLabelScope'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      domainNameLabelScope: (() { final guardedValue = map['domainNameLabelScope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

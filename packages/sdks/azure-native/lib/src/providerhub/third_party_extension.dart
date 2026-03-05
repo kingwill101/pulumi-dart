@@ -8,19 +8,20 @@ class ThirdPartyExtension {
 
   /// Creates a new [ThirdPartyExtension].
   /// [name] Name of third party extension.
-  ThirdPartyExtension({this.name});
+  ThirdPartyExtension({
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name};
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
   factory ThirdPartyExtension.fromMap(Map<String, dynamic> map) {
     return ThirdPartyExtension(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

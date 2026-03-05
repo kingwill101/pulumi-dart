@@ -233,31 +233,21 @@ import 'remediation_eta_response.dart';
 /// ```
 class GovernanceAssignment extends pulumi.CustomResource {
   /// The additional data for the governance assignment - e.g. links to ticket (optional), see example
-  late final pulumi.Output<GovernanceAssignmentAdditionalDataResponse?>
-  additionalData;
-
+  late final pulumi.Output<GovernanceAssignmentAdditionalDataResponse?> additionalData;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The email notifications settings for the governance rule, states whether to disable notifications for mangers and owners
-  late final pulumi.Output<GovernanceEmailNotificationResponse?>
-  governanceEmailNotification;
-
+  late final pulumi.Output<GovernanceEmailNotificationResponse?> governanceEmailNotification;
   /// Defines whether there is a grace period on the governance assignment
   late final pulumi.Output<bool?> isGracePeriod;
-
   /// Resource name
   late final pulumi.Output<String> name;
-
   /// The Owner for the governance assignment - e.g. user@contoso.com - see example
   late final pulumi.Output<String?> owner;
-
   /// The remediation due-date - after this date Secure Score will be affected (in case of  active grace-period)
   late final pulumi.Output<String> remediationDueDate;
-
   /// The ETA (estimated time of arrival) for remediation (optional), see example
   late final pulumi.Output<RemediationEtaResponse?> remediationEta;
-
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -270,48 +260,19 @@ class GovernanceAssignment extends pulumi.CustomResource {
     GovernanceAssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:security:GovernanceAssignment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    additionalData =
-        registerOutput<GovernanceAssignmentAdditionalDataResponse?>(
-          'additionalData',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return GovernanceAssignmentAdditionalDataResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'azure-native:security:GovernanceAssignment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    additionalData = registerOutput<GovernanceAssignmentAdditionalDataResponse?>('additionalData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GovernanceAssignmentAdditionalDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    governanceEmailNotification =
-        registerOutput<GovernanceEmailNotificationResponse?>(
-          'governanceEmailNotification',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return GovernanceEmailNotificationResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    governanceEmailNotification = registerOutput<GovernanceEmailNotificationResponse?>('governanceEmailNotification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GovernanceEmailNotificationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     isGracePeriod = registerOutput<bool?>('isGracePeriod');
     this.name = registerOutput<String>('name');
     owner = registerOutput<String?>('owner');
     remediationDueDate = registerOutput<String>('remediationDueDate');
-    remediationEta = registerOutput<RemediationEtaResponse?>(
-      'remediationEta',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RemediationEtaResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    remediationEta = registerOutput<RemediationEtaResponse?>('remediationEta', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RemediationEtaResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

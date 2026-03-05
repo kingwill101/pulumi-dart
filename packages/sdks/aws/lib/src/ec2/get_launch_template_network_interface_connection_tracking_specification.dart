@@ -25,15 +25,12 @@ class GetLaunchTemplateNetworkInterfaceConnectionTrackingSpecification {
     };
   }
 
-  factory GetLaunchTemplateNetworkInterfaceConnectionTrackingSpecification.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetLaunchTemplateNetworkInterfaceConnectionTrackingSpecification.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplateNetworkInterfaceConnectionTrackingSpecification(
-      tcpEstablishedTimeout: pulumi.Input.fromValue(
-        map['tcpEstablishedTimeout'] as int,
-      ),
+      tcpEstablishedTimeout: pulumi.Input.fromValue(map['tcpEstablishedTimeout'] as int),
       udpStreamTimeout: pulumi.Input.fromValue(map['udpStreamTimeout'] as int),
       udpTimeout: pulumi.Input.fromValue(map['udpTimeout'] as int),
     );
   }
 }
+

@@ -9,19 +9,20 @@ class DelegationProperties {
 
   /// Creates a new [DelegationProperties].
   /// [serviceName] The service name to which the NVA is delegated.
-  DelegationProperties({this.serviceName});
+  DelegationProperties({
+    this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'serviceName': ?serviceName};
+    return <String, dynamic>{
+      'serviceName': ?serviceName,
+    };
   }
 
   factory DelegationProperties.fromMap(Map<String, dynamic> map) {
     return DelegationProperties(
-      serviceName: (() {
-        final guardedValue = map['serviceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      serviceName: (() { final guardedValue = map['serviceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

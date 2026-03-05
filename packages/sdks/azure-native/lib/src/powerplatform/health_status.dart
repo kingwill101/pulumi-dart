@@ -17,3 +17,4 @@ enum HealthStatus {
     throw ArgumentError('Unknown HealthStatus value: $value');
   }
 }
+

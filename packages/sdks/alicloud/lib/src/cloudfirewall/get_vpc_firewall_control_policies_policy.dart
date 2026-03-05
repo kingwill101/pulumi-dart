@@ -5,75 +5,52 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVpcFirewallControlPoliciesPolicy {
   /// The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
   final pulumi.Input<String> aclAction;
-
   /// Access control over VPC firewalls strategy unique identifier.
   final pulumi.Input<String> aclUuid;
-
   /// Policy specifies the application ID.
   final pulumi.Input<String> applicationId;
-
   /// Access control over VPC firewalls policies support the application types.
   final pulumi.Input<String> applicationName;
-
   /// Access control over VPC firewalls description of the strategy information.
   final pulumi.Input<String> description;
-
   /// Access control over VPC firewalls strategy access traffic of the destination port.
   final pulumi.Input<String> destPort;
-
   /// Access control policy in the access traffic of the destination port address book name.
   final pulumi.Input<String> destPortGroup;
-
   /// Port Address Book port list.
   final pulumi.Input<List<String>> destPortGroupPorts;
-
   /// Access control over VPC firewalls strategy access traffic of the destination port type.
   final pulumi.Input<String> destPortType;
-
   /// Access control over VPC firewalls strategy the destination address in.
   final pulumi.Input<String> destination;
-
   /// Destination address book defined in the address list.
   final pulumi.Input<List<String>> destinationGroupCidrs;
-
   /// The destination address book type in the access control policy. Value: `ip`, `domain`.
   final pulumi.Input<String> destinationGroupType;
-
   /// Access control over VPC firewalls strategy in the destination address of the type.
   final pulumi.Input<String> destinationType;
-
   /// Control strategy of hits per second.
   final pulumi.Input<int> hitTimes;
-
   /// The ID of the Cloud Firewall Vpc Firewall Control Policy.
   final pulumi.Input<String> id;
-
   /// The UID of the member account of the current Alibaba cloud account.
   final pulumi.Input<String> memberUid;
-
   /// Access control over VPC firewalls policies will go into effect of priority. The priority value starts from 1, the smaller the priority number, the higher the priority. -1 represents the lowest priority.
   final pulumi.Input<int> order;
-
   /// Access control over VPC firewalls strategy access traffic of the protocol type.
   final pulumi.Input<String> proto;
-
   /// The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
   /// - **true**: Enable access control policies
   /// - **false**: does not enable access control policies.
   final pulumi.Input<bool> release;
-
   /// Access control over VPC firewalls strategy in the source address.
   final pulumi.Input<String> source;
-
   /// SOURCE address of the address list.
   final pulumi.Input<List<String>> sourceGroupCidrs;
-
   /// The source address type in the access control policy. Unique value: **ip**. The IP address book contains one or more IP address segments.
   final pulumi.Input<String> sourceGroupType;
-
   /// Access control over VPC firewalls policy source address type.
   final pulumi.Input<String> sourceType;
-
   /// The ID of the VPC firewall instance. Value:
   /// - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
   /// - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
@@ -160,9 +137,7 @@ class GetVpcFirewallControlPoliciesPolicy {
     };
   }
 
-  factory GetVpcFirewallControlPoliciesPolicy.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetVpcFirewallControlPoliciesPolicy.fromMap(Map<String, dynamic> map) {
     return GetVpcFirewallControlPoliciesPolicy(
       aclAction: pulumi.Input.fromValue(map['aclAction'] as String),
       aclUuid: pulumi.Input.fromValue(map['aclUuid'] as String),
@@ -171,17 +146,11 @@ class GetVpcFirewallControlPoliciesPolicy {
       description: pulumi.Input.fromValue(map['description'] as String),
       destPort: pulumi.Input.fromValue(map['destPort'] as String),
       destPortGroup: pulumi.Input.fromValue(map['destPortGroup'] as String),
-      destPortGroupPorts: pulumi.Input.fromValue(
-        (map['destPortGroupPorts'] as List).cast<String>(),
-      ),
+      destPortGroupPorts: pulumi.Input.fromValue((map['destPortGroupPorts'] as List).cast<String>()),
       destPortType: pulumi.Input.fromValue(map['destPortType'] as String),
       destination: pulumi.Input.fromValue(map['destination'] as String),
-      destinationGroupCidrs: pulumi.Input.fromValue(
-        (map['destinationGroupCidrs'] as List).cast<String>(),
-      ),
-      destinationGroupType: pulumi.Input.fromValue(
-        map['destinationGroupType'] as String,
-      ),
+      destinationGroupCidrs: pulumi.Input.fromValue((map['destinationGroupCidrs'] as List).cast<String>()),
+      destinationGroupType: pulumi.Input.fromValue(map['destinationGroupType'] as String),
       destinationType: pulumi.Input.fromValue(map['destinationType'] as String),
       hitTimes: pulumi.Input.fromValue(map['hitTimes'] as int),
       id: pulumi.Input.fromValue(map['id'] as String),
@@ -190,12 +159,11 @@ class GetVpcFirewallControlPoliciesPolicy {
       proto: pulumi.Input.fromValue(map['proto'] as String),
       release: pulumi.Input.fromValue(map['release'] as bool),
       source: pulumi.Input.fromValue(map['source'] as String),
-      sourceGroupCidrs: pulumi.Input.fromValue(
-        (map['sourceGroupCidrs'] as List).cast<String>(),
-      ),
+      sourceGroupCidrs: pulumi.Input.fromValue((map['sourceGroupCidrs'] as List).cast<String>()),
       sourceGroupType: pulumi.Input.fromValue(map['sourceGroupType'] as String),
       sourceType: pulumi.Input.fromValue(map['sourceType'] as String),
       vpcFirewallId: pulumi.Input.fromValue(map['vpcFirewallId'] as String),
     );
   }
 }
+

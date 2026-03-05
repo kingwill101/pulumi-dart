@@ -15,3 +15,4 @@ enum CreditExpirationPolicy {
     throw ArgumentError('Unknown CreditExpirationPolicy value: $value');
   }
 }
+

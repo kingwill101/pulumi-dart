@@ -10,29 +10,22 @@ import 'account_identity.dart';
 class AccountArgs {
   /// An `identity` block as defined below.
   final pulumi.Input<AccountIdentity> identity;
-
   /// The Azure Region where the Purview Account should exist. Changing this forces a new Purview Account to be created.
   final pulumi.Input<String>? location;
-
   /// Whether the Purview Account should create a managed Event Hub Namespace. Defaults to `true`.
   ///
   /// &gt; **Note:** `managed_event_hub_enabled` must be `false` in order to use a Kafka Configuration with the Purview Account.
   final pulumi.Input<bool>? managedEventHubEnabled;
-
   /// The name which should be used for the new Resource Group where Purview Account creates the managed resources. Changing this forces a new Purview Account to be created.
   ///
   /// &gt; **Note:** `managed_resource_group_name` must be a new Resource Group.
   final pulumi.Input<String>? managedResourceGroupName;
-
   /// The name which should be used for this Purview Account. Changing this forces a new Purview Account to be created.
   final pulumi.Input<String>? name;
-
   /// Should the Purview Account be visible to the public network? Defaults to `true`.
   final pulumi.Input<bool>? publicNetworkEnabled;
-
   /// The name of the Resource Group where the Purview Account should exist. Changing this forces a new Purview Account to be created.
   final pulumi.Input<String> resourceGroupName;
-
   /// A mapping of tags which should be assigned to the Purview Account.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -58,11 +51,7 @@ class AccountArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'identity':
-          pulumi.Input.mapInputValue<AccountIdentity, Map<String, dynamic>>(
-            identity,
-            (value) => value.toMap(),
-          ),
+      'identity': pulumi.Input.mapInputValue<AccountIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
       'location': ?location,
       'managedEventHubEnabled': ?managedEventHubEnabled,
       'managedResourceGroupName': ?managedResourceGroupName,
@@ -75,46 +64,15 @@ class AccountArgs {
 
   factory AccountArgs.fromMap(Map<String, dynamic> map) {
     return AccountArgs(
-      identity: pulumi.Input.fromValue(
-        AccountIdentity.fromMap(
-          (map['identity']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      managedEventHubEnabled: (() {
-        final guardedValue = map['managedEventHubEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      managedResourceGroupName: (() {
-        final guardedValue = map['managedResourceGroupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      publicNetworkEnabled: (() {
-        final guardedValue = map['publicNetworkEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      identity: pulumi.Input.fromValue(AccountIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      managedEventHubEnabled: (() { final guardedValue = map['managedEventHubEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      managedResourceGroupName: (() { final guardedValue = map['managedResourceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicNetworkEnabled: (() { final guardedValue = map['publicNetworkEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWebAppHostNameBindingSlotArgs {
   /// Hostname in the hostname binding.
   final pulumi.Input<String> hostName;
-
   /// Name of the app.
   final pulumi.Input<String> name;
-
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
-
   /// Name of the deployment slot. If a slot is not specified, the API the named binding for the production slot.
   final pulumi.Input<String> slot;
 
@@ -44,10 +41,9 @@ class GetWebAppHostNameBindingSlotArgs {
     return GetWebAppHostNameBindingSlotArgs(
       hostName: pulumi.Input.fromValue(map['hostName'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       slot: pulumi.Input.fromValue(map['slot'] as String),
     );
   }
 }
+

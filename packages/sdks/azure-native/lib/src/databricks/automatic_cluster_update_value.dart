@@ -14,3 +14,4 @@ enum AutomaticClusterUpdateValue {
     throw ArgumentError('Unknown AutomaticClusterUpdateValue value: $value');
   }
 }
+

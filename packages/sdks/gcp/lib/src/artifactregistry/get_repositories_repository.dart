@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRepositoriesRepository {
   /// The time when the repository was created.
   final pulumi.Input<String> createTime;
-
   /// The user-provided description of the repository.
   final pulumi.Input<String> description;
-
   /// The format of packages that are stored in the repository. Supported formats can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
   final pulumi.Input<String> format;
-
   /// An identifier for the resource with format `projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}`
   final pulumi.Input<String> id;
-
   /// The last part of the repository name, for example: `"repo1"`
   final pulumi.Input<String> repositoryId;
-
   /// The time when the repository was last updated.
   final pulumi.Input<String> updateTime;
 
@@ -59,3 +54,4 @@ class GetRepositoriesRepository {
     );
   }
 }
+

@@ -169,47 +169,33 @@ import 'system_data_response.dart';
 class EventHubDataConnection extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The event hub messages compression type
   late final pulumi.Output<String?> compression;
-
   /// The event hub consumer group.
   late final pulumi.Output<String> consumerGroup;
-
   /// The data format of the message. Optionally the data format can be added to each message.
   late final pulumi.Output<String?> dataFormat;
-
   /// The resource ID of the event hub to be used to create a data connection.
   late final pulumi.Output<String> eventHubResourceId;
-
   /// System properties of the event hub
   late final pulumi.Output<List<String>?> eventSystemProperties;
-
   /// Kind of the endpoint for the data connection
   /// Expected value is 'EventHub'.
   late final pulumi.Output<String> kind;
-
   /// Resource location.
   late final pulumi.Output<String?> location;
-
   /// The resource ID of a managed identity (system or user assigned) to be used to authenticate with event hub.
   late final pulumi.Output<String?> managedIdentityResourceId;
-
   /// The mapping rule to be used to ingest the data. Optionally the mapping information can be added to each message.
   late final pulumi.Output<String?> mappingRuleName;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The provisioned state of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The table where the data should be ingested. Optionally the table information can be added to each message.
   late final pulumi.Output<String?> tableName;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -222,37 +208,24 @@ class EventHubDataConnection extends pulumi.CustomResource {
     EventHubDataConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:synapse:EventHubDataConnection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:synapse:EventHubDataConnection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     compression = registerOutput<String?>('compression');
     consumerGroup = registerOutput<String>('consumerGroup');
     dataFormat = registerOutput<String?>('dataFormat');
     eventHubResourceId = registerOutput<String>('eventHubResourceId');
-    eventSystemProperties = registerOutput<List<String>?>(
-      'eventSystemProperties',
-    );
+    eventSystemProperties = registerOutput<List<String>?>('eventSystemProperties');
     kind = registerOutput<String>('kind');
     location = registerOutput<String?>('location');
-    managedIdentityResourceId = registerOutput<String?>(
-      'managedIdentityResourceId',
-    );
+    managedIdentityResourceId = registerOutput<String?>('managedIdentityResourceId');
     mappingRuleName = registerOutput<String?>('mappingRuleName');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tableName = registerOutput<String?>('tableName');
     type = registerOutput<String>('type');
   }

@@ -15,3 +15,4 @@ enum CompositePathSortOrder {
     throw ArgumentError('Unknown CompositePathSortOrder value: $value');
   }
 }
+

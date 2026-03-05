@@ -20,3 +20,4 @@ enum RoleTypes {
     throw ArgumentError('Unknown RoleTypes value: $value');
   }
 }
+

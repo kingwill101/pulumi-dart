@@ -7,7 +7,6 @@ import 'drt_access_log_bucket_association_timeouts.dart';
 class DrtAccessLogBucketAssociationState {
   /// The Amazon S3 bucket that contains the logs that you want to share.
   final pulumi.Input<String>? logBucket;
-
   /// The ID of the Role Arn association used for allowing Shield DRT Access.
   final pulumi.Input<String>? roleArnAssociationId;
   final pulumi.Input<DrtAccessLogBucketAssociationTimeouts>? timeouts;
@@ -26,35 +25,16 @@ class DrtAccessLogBucketAssociationState {
     return <String, dynamic>{
       'logBucket': ?logBucket,
       'roleArnAssociationId': ?roleArnAssociationId,
-      'timeouts':
-          ?pulumi.Input.mapOptionalInputValue<
-            DrtAccessLogBucketAssociationTimeouts,
-            Map<String, dynamic>
-          >(timeouts, (value) => value.toMap()),
+      'timeouts': ?pulumi.Input.mapOptionalInputValue<DrtAccessLogBucketAssociationTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
     };
   }
 
   factory DrtAccessLogBucketAssociationState.fromMap(Map<String, dynamic> map) {
     return DrtAccessLogBucketAssociationState(
-      logBucket: (() {
-        final guardedValue = map['logBucket'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      roleArnAssociationId: (() {
-        final guardedValue = map['roleArnAssociationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      timeouts: (() {
-        final guardedValue = map['timeouts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DrtAccessLogBucketAssociationTimeouts.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      logBucket: (() { final guardedValue = map['logBucket']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      roleArnAssociationId: (() { final guardedValue = map['roleArnAssociationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      timeouts: (() { final guardedValue = map['timeouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DrtAccessLogBucketAssociationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

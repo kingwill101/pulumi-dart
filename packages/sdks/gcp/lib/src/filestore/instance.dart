@@ -876,71 +876,54 @@ import 'instance_state.dart';
 class Instance extends pulumi.CustomResource {
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> createTime;
-
   /// Indicates whether the instance is protected against deletion.
   late final pulumi.Output<bool?> deletionProtectionEnabled;
-
   /// The reason for enabling deletion protection.
   late final pulumi.Output<String?> deletionProtectionReason;
-
   /// A description of the instance.
   late final pulumi.Output<String?> description;
-
   /// Directory Services configuration.
   /// Should only be set if protocol is "NFS_V4_1".
   /// Structure is documented below.
   late final pulumi.Output<InstanceDirectoryServices?> directoryServices;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Output only fields for replication configuration.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> effectiveReplications;
-
   /// Server-specified ETag for the instance resource to prevent
   /// simultaneous updates from overwriting each other.
   late final pulumi.Output<String> etag;
-
   /// File system shares on the instance. For this version, only a
   /// single file share is supported.
   /// Structure is documented below.
   late final pulumi.Output<InstanceFileShares> fileShares;
-
   /// Replication configuration, once set, this cannot be updated.
   /// Additionally this should be specified on the replica instance only, indicating the active as the peer_instance
   /// Structure is documented below.
   late final pulumi.Output<InstanceInitialReplication?> initialReplication;
-
   /// KMS key name used for data encryption.
   late final pulumi.Output<String?> kmsKeyName;
-
   /// Resource labels to represent user-provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
   late final pulumi.Output<String> location;
-
   /// The resource name of the instance.
   late final pulumi.Output<String> name;
-
   /// VPC networks to which the instance is connected. For this version,
   /// only a single network is supported.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> networks;
-
   /// Performance configuration for the instance. If not provided,
   /// the default performance settings will be used.
   /// Structure is documented below.
   late final pulumi.Output<InstancePerformanceConfig?> performanceConfig;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Either NFSv3, for using NFS version 3 as file sharing protocol,
   /// or NFSv4.1, for using NFS version 4.1 as file sharing protocol.
   /// NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE.
@@ -948,11 +931,9 @@ class Instance extends pulumi.CustomResource {
   /// Default value is `NFS_V3`.
   /// Possible values are: `NFS_V3`, `NFS_V4_1`.
   late final pulumi.Output<String?> protocol;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// A map of resource manager tags. Resource manager tag keys
   /// and values have the same definition as resource manager
   /// tags. Keys must be in the format tagKeys/{tag_key_id},
@@ -963,11 +944,9 @@ class Instance extends pulumi.CustomResource {
   /// will trigger recreation. To apply tags to an existing
   /// resource, see the `gcp.tags.TagValue` resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The service tier of the instance.
   /// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
   late final pulumi.Output<String> tier;
-
   /// (Optional, Deprecated)
   /// The name of the Filestore zone of the instance.
   ///
@@ -983,69 +962,27 @@ class Instance extends pulumi.CustomResource {
     InstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:filestore/instance:Instance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:filestore/instance:Instance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
-    deletionProtectionEnabled = registerOutput<bool?>(
-      'deletionProtectionEnabled',
-    );
-    deletionProtectionReason = registerOutput<String?>(
-      'deletionProtectionReason',
-    );
+    deletionProtectionEnabled = registerOutput<bool?>('deletionProtectionEnabled');
+    deletionProtectionReason = registerOutput<String?>('deletionProtectionReason');
     description = registerOutput<String?>('description');
-    directoryServices = registerOutput<InstanceDirectoryServices?>(
-      'directoryServices',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceDirectoryServices.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    directoryServices = registerOutput<InstanceDirectoryServices?>('directoryServices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceDirectoryServices.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    effectiveReplications = registerOutput<List<Map<String, dynamic>>>(
-      'effectiveReplications',
-    );
+    effectiveReplications = registerOutput<List<Map<String, dynamic>>>('effectiveReplications');
     etag = registerOutput<String>('etag');
-    fileShares = registerOutput<InstanceFileShares>(
-      'fileShares',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceFileShares.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    initialReplication = registerOutput<InstanceInitialReplication?>(
-      'initialReplication',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceInitialReplication.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    fileShares = registerOutput<InstanceFileShares>('fileShares', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceFileShares.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    initialReplication = registerOutput<InstanceInitialReplication?>('initialReplication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceInitialReplication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kmsKeyName = registerOutput<String?>('kmsKeyName');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     networks = registerOutput<List<Map<String, dynamic>>>('networks');
-    performanceConfig = registerOutput<InstancePerformanceConfig?>(
-      'performanceConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstancePerformanceConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    performanceConfig = registerOutput<InstancePerformanceConfig?>('performanceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstancePerformanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     protocol = registerOutput<String?>('protocol');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
@@ -1072,69 +1009,27 @@ class Instance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:filestore/instance:Instance',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:filestore/instance:Instance',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
-    deletionProtectionEnabled = registerOutput<bool?>(
-      'deletionProtectionEnabled',
-    );
-    deletionProtectionReason = registerOutput<String?>(
-      'deletionProtectionReason',
-    );
+    deletionProtectionEnabled = registerOutput<bool?>('deletionProtectionEnabled');
+    deletionProtectionReason = registerOutput<String?>('deletionProtectionReason');
     description = registerOutput<String?>('description');
-    directoryServices = registerOutput<InstanceDirectoryServices?>(
-      'directoryServices',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceDirectoryServices.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    directoryServices = registerOutput<InstanceDirectoryServices?>('directoryServices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceDirectoryServices.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    effectiveReplications = registerOutput<List<Map<String, dynamic>>>(
-      'effectiveReplications',
-    );
+    effectiveReplications = registerOutput<List<Map<String, dynamic>>>('effectiveReplications');
     etag = registerOutput<String>('etag');
-    fileShares = registerOutput<InstanceFileShares>(
-      'fileShares',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceFileShares.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    initialReplication = registerOutput<InstanceInitialReplication?>(
-      'initialReplication',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceInitialReplication.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    fileShares = registerOutput<InstanceFileShares>('fileShares', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceFileShares.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    initialReplication = registerOutput<InstanceInitialReplication?>('initialReplication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceInitialReplication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kmsKeyName = registerOutput<String?>('kmsKeyName');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     networks = registerOutput<List<Map<String, dynamic>>>('networks');
-    performanceConfig = registerOutput<InstancePerformanceConfig?>(
-      'performanceConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstancePerformanceConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    performanceConfig = registerOutput<InstancePerformanceConfig?>('performanceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstancePerformanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     protocol = registerOutput<String?>('protocol');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');

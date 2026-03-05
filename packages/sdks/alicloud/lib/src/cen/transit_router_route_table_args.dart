@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TransitRouterRouteTableArgs {
   /// The dry run.
   final pulumi.Input<bool>? dryRun;
-
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// The ID of the transit router.
   final pulumi.Input<String> transitRouterId;
-
   /// The description of the transit router route table.
   final pulumi.Input<String>? transitRouterRouteTableDescription;
-
   /// The name of the transit router route table.
   final pulumi.Input<String>? transitRouterRouteTableName;
 
@@ -48,29 +44,12 @@ class TransitRouterRouteTableArgs {
 
   factory TransitRouterRouteTableArgs.fromMap(Map<String, dynamic> map) {
     return TransitRouterRouteTableArgs(
-      dryRun: (() {
-        final guardedValue = map['dryRun'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      dryRun: (() { final guardedValue = map['dryRun']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       transitRouterId: pulumi.Input.fromValue(map['transitRouterId'] as String),
-      transitRouterRouteTableDescription: (() {
-        final guardedValue = map['transitRouterRouteTableDescription'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      transitRouterRouteTableName: (() {
-        final guardedValue = map['transitRouterRouteTableName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      transitRouterRouteTableDescription: (() { final guardedValue = map['transitRouterRouteTableDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      transitRouterRouteTableName: (() { final guardedValue = map['transitRouterRouteTableName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

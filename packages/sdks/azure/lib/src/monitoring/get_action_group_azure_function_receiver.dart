@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetActionGroupAzureFunctionReceiver {
   /// The Azure resource ID of the function app.
   final pulumi.Input<String> functionAppResourceId;
-
   /// The function name in the function app.
   final pulumi.Input<String> functionName;
-
   /// The HTTP trigger url where HTTP request sent to.
   final pulumi.Input<String> httpTriggerUrl;
-
   /// Specifies the name of the Action Group.
   final pulumi.Input<String> name;
-
   /// Indicates whether to use common alert schema.
   final pulumi.Input<bool> useCommonAlertSchema;
 
@@ -42,19 +38,14 @@ class GetActionGroupAzureFunctionReceiver {
     };
   }
 
-  factory GetActionGroupAzureFunctionReceiver.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetActionGroupAzureFunctionReceiver.fromMap(Map<String, dynamic> map) {
     return GetActionGroupAzureFunctionReceiver(
-      functionAppResourceId: pulumi.Input.fromValue(
-        map['functionAppResourceId'] as String,
-      ),
+      functionAppResourceId: pulumi.Input.fromValue(map['functionAppResourceId'] as String),
       functionName: pulumi.Input.fromValue(map['functionName'] as String),
       httpTriggerUrl: pulumi.Input.fromValue(map['httpTriggerUrl'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      useCommonAlertSchema: pulumi.Input.fromValue(
-        map['useCommonAlertSchema'] as bool,
-      ),
+      useCommonAlertSchema: pulumi.Input.fromValue(map['useCommonAlertSchema'] as bool),
     );
   }
 }
+

@@ -14,3 +14,4 @@ enum NotificationDeliveryMechanism {
     throw ArgumentError('Unknown NotificationDeliveryMechanism value: $value');
   }
 }
+

@@ -15,3 +15,4 @@ enum StreamDestinationTarget {
     throw ArgumentError('Unknown StreamDestinationTarget value: $value');
   }
 }
+

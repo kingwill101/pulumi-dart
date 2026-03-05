@@ -146,19 +146,14 @@ import 'ip_firewall_rule_args.dart';
 class IpFirewallRule extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The end IP address of the firewall rule. Must be IPv4 format. Must be greater than or equal to startIpAddress
   late final pulumi.Output<String?> endIpAddress;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Resource provisioning state
   late final pulumi.Output<String> provisioningState;
-
   /// The start IP address of the firewall rule. Must be IPv4 format
   late final pulumi.Output<String?> startIpAddress;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -171,11 +166,11 @@ class IpFirewallRule extends pulumi.CustomResource {
     IpFirewallRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:synapse:IpFirewallRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:synapse:IpFirewallRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     endIpAddress = registerOutput<String?>('endIpAddress');
     this.name = registerOutput<String>('name');

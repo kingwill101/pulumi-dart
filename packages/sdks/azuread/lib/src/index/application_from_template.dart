@@ -192,19 +192,14 @@ import 'application_from_template_state.dart';
 class ApplicationFromTemplate extends pulumi.CustomResource {
   /// The resource ID for the application.
   late final pulumi.Output<String> applicationId;
-
   /// The object ID for the application.
   late final pulumi.Output<String> applicationObjectId;
-
   /// The display name for the application.
   late final pulumi.Output<String> displayName;
-
   /// The resource ID for the service principal.
   late final pulumi.Output<String> servicePrincipalId;
-
   /// The object ID for the service principal.
   late final pulumi.Output<String> servicePrincipalObjectId;
-
   /// Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
   late final pulumi.Output<String> templateId;
 
@@ -217,18 +212,16 @@ class ApplicationFromTemplate extends pulumi.CustomResource {
     ApplicationFromTemplateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/applicationFromTemplate:ApplicationFromTemplate',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azuread:index/applicationFromTemplate:ApplicationFromTemplate',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationId = registerOutput<String>('applicationId');
     applicationObjectId = registerOutput<String>('applicationObjectId');
     displayName = registerOutput<String>('displayName');
     servicePrincipalId = registerOutput<String>('servicePrincipalId');
-    servicePrincipalObjectId = registerOutput<String>(
-      'servicePrincipalObjectId',
-    );
+    servicePrincipalObjectId = registerOutput<String>('servicePrincipalObjectId');
     templateId = registerOutput<String>('templateId');
   }
 
@@ -250,18 +243,16 @@ class ApplicationFromTemplate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/applicationFromTemplate:ApplicationFromTemplate',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azuread:index/applicationFromTemplate:ApplicationFromTemplate',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationId = registerOutput<String>('applicationId');
     applicationObjectId = registerOutput<String>('applicationObjectId');
     displayName = registerOutput<String>('displayName');
     servicePrincipalId = registerOutput<String>('servicePrincipalId');
-    servicePrincipalObjectId = registerOutput<String>(
-      'servicePrincipalObjectId',
-    );
+    servicePrincipalObjectId = registerOutput<String>('servicePrincipalObjectId');
     templateId = registerOutput<String>('templateId');
   }
 }

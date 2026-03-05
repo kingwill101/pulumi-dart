@@ -9,19 +9,20 @@ class HighAvailabilityProperties {
 
   /// Creates a new [HighAvailabilityProperties].
   /// [targetMode] The target high availability mode requested for the cluster.
-  HighAvailabilityProperties({this.targetMode});
+  HighAvailabilityProperties({
+    this.targetMode,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'targetMode': ?targetMode};
+    return <String, dynamic>{
+      'targetMode': ?targetMode,
+    };
   }
 
   factory HighAvailabilityProperties.fromMap(Map<String, dynamic> map) {
     return HighAvailabilityProperties(
-      targetMode: (() {
-        final guardedValue = map['targetMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      targetMode: (() { final guardedValue = map['targetMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -124,27 +124,20 @@ import 'assessment_delegation_state.dart';
 class AssessmentDelegation extends pulumi.CustomResource {
   /// Identifier for the assessment.
   late final pulumi.Output<String> assessmentId;
-
   /// Comment describing the delegation request.
   late final pulumi.Output<String?> comment;
-
   /// Assessment control set name. This value is the control set name used during assessment creation (not the AWS-generated ID). The `_id` suffix on this attribute has been preserved to be consistent with the underlying AWS API.
   late final pulumi.Output<String> controlSetId;
-
   /// Unique identifier for the delegation.
   late final pulumi.Output<String> delegationId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Amazon Resource Name (ARN) of the IAM role.
   late final pulumi.Output<String> roleArn;
-
   /// Type of customer persona. For assessment delegation, type must always be `RESOURCE_OWNER`.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> roleType;
-
   /// Status of the delegation.
   late final pulumi.Output<String> status;
 
@@ -157,11 +150,11 @@ class AssessmentDelegation extends pulumi.CustomResource {
     AssessmentDelegationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:auditmanager/assessmentDelegation:AssessmentDelegation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:auditmanager/assessmentDelegation:AssessmentDelegation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     assessmentId = registerOutput<String>('assessmentId');
     comment = registerOutput<String?>('comment');
     controlSetId = registerOutput<String>('controlSetId');
@@ -190,11 +183,11 @@ class AssessmentDelegation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:auditmanager/assessmentDelegation:AssessmentDelegation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:auditmanager/assessmentDelegation:AssessmentDelegation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     assessmentId = registerOutput<String>('assessmentId');
     comment = registerOutput<String?>('comment');
     controlSetId = registerOutput<String>('controlSetId');

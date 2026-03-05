@@ -33,24 +33,13 @@ class GetCertificateTemplateIamPolicyArgs {
     };
   }
 
-  factory GetCertificateTemplateIamPolicyArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetCertificateTemplateIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetCertificateTemplateIamPolicyArgs(
-      certificateTemplateId: pulumi.Input.fromValue(
-        map['certificateTemplateId'] as String,
-      ),
+      certificateTemplateId: pulumi.Input.fromValue(map['certificateTemplateId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      optionsRequestedPolicyVersion: (() {
-        final guardedValue = map['optionsRequestedPolicyVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -568,45 +568,32 @@ import 'task_task_report_config.dart';
 class Task extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the DataSync Task.
   late final pulumi.Output<String> arn;
-
   /// Amazon Resource Name (ARN) of the CloudWatch Log Group that is used to monitor and log events in the sync task.
   late final pulumi.Output<String?> cloudwatchLogGroupArn;
-
   /// Amazon Resource Name (ARN) of destination DataSync Location.
   late final pulumi.Output<String> destinationLocationArn;
-
   /// Filter rules that determines which files to exclude from a task.
   late final pulumi.Output<TaskExcludes?> excludes;
-
   /// Filter rules that determines which files to include in a task.
   late final pulumi.Output<TaskIncludes?> includes;
-
   /// Name of the DataSync Task.
   late final pulumi.Output<String> name;
-
   /// Configuration block containing option that controls the default behavior when you start an execution of this DataSync Task. For each individual task execution, you can override these options by specifying an overriding configuration in those executions.
   late final pulumi.Output<TaskOptions?> options;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Specifies a schedule used to periodically transfer files from a source to a destination location.
   late final pulumi.Output<TaskSchedule?> schedule;
-
   /// Amazon Resource Name (ARN) of source DataSync Location.
   late final pulumi.Output<String> sourceLocationArn;
-
   /// Key-value pairs of resource tags to assign to the DataSync Task. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// One of the following task modes for your data transfer:
   /// * `BASIC` (default) - Transfer files or objects between Amazon Web Services storage and on-premises, edge, or other cloud storage.
   /// * `ENHANCED` - Transfer virtually unlimited numbers of objects with enhanced metrics, more detailed logs, and higher performance than Basic mode. Currently available for transfers between Amazon S3 locations.
   late final pulumi.Output<String> taskMode;
-
   /// Configuration block containing the configuration of a DataSync Task Report. See `task_report_config` below.
   late final pulumi.Output<TaskTaskReportConfig?> taskReportConfig;
 
@@ -614,76 +601,38 @@ class Task extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Task]. {@macro pulumi_datasync_task_task_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Task(String name, {TaskArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:datasync/task:Task',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Task(
+    String name, {
+    TaskArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:datasync/task:Task',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     cloudwatchLogGroupArn = registerOutput<String?>('cloudwatchLogGroupArn');
     destinationLocationArn = registerOutput<String>('destinationLocationArn');
-    excludes = registerOutput<TaskExcludes?>(
-      'excludes',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TaskExcludes.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    includes = registerOutput<TaskIncludes?>(
-      'includes',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TaskIncludes.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    excludes = registerOutput<TaskExcludes?>('excludes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskExcludes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    includes = registerOutput<TaskIncludes?>('includes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskIncludes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    this.options = registerOutput<TaskOptions?>(
-      'options',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TaskOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    this.options = registerOutput<TaskOptions?>('options', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    schedule = registerOutput<TaskSchedule?>(
-      'schedule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TaskSchedule.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    schedule = registerOutput<TaskSchedule?>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sourceLocationArn = registerOutput<String>('sourceLocationArn');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     taskMode = registerOutput<String>('taskMode');
-    taskReportConfig = registerOutput<TaskTaskReportConfig?>(
-      'taskReportConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TaskTaskReportConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    taskReportConfig = registerOutput<TaskTaskReportConfig?>('taskReportConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskTaskReportConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [Task] resource's state with the given [name] and [id].
-  static Task get(String name, pulumi.Input<String> id, {TaskState? state}) {
+  static Task get(
+    String name,
+    pulumi.Input<String> id, {
+    TaskState? state,
+  }) {
     return Task._get(
       name,
       state: state?.toMap(),
@@ -696,69 +645,24 @@ class Task extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:datasync/task:Task',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:datasync/task:Task',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     cloudwatchLogGroupArn = registerOutput<String?>('cloudwatchLogGroupArn');
     destinationLocationArn = registerOutput<String>('destinationLocationArn');
-    excludes = registerOutput<TaskExcludes?>(
-      'excludes',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TaskExcludes.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    includes = registerOutput<TaskIncludes?>(
-      'includes',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TaskIncludes.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    excludes = registerOutput<TaskExcludes?>('excludes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskExcludes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    includes = registerOutput<TaskIncludes?>('includes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskIncludes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    this.options = registerOutput<TaskOptions?>(
-      'options',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TaskOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    this.options = registerOutput<TaskOptions?>('options', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    schedule = registerOutput<TaskSchedule?>(
-      'schedule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TaskSchedule.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    schedule = registerOutput<TaskSchedule?>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sourceLocationArn = registerOutput<String>('sourceLocationArn');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     taskMode = registerOutput<String>('taskMode');
-    taskReportConfig = registerOutput<TaskTaskReportConfig?>(
-      'taskReportConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TaskTaskReportConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    taskReportConfig = registerOutput<TaskTaskReportConfig?>('taskReportConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskTaskReportConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

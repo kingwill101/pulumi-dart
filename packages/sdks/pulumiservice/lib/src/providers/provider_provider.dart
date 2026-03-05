@@ -4,7 +4,6 @@ import 'provider_args.dart';
 class ProviderProvider extends pulumi.ProviderResource {
   /// Access Token to authenticate with Pulumi Cloud.
   late final pulumi.Output<String?> accessToken;
-
   /// Optional override of Pulumi Cloud API endpoint.
   late final pulumi.Output<String?> apiUrl;
 
@@ -17,11 +16,11 @@ class ProviderProvider extends pulumi.ProviderResource {
     ProviderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'pulumiservice',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'pulumiservice',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessToken = registerOutput<String?>('accessToken');
     apiUrl = registerOutput<String?>('apiUrl');
   }

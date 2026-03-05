@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getSapVirtualInstanceInvokeSizingRecommendations.
 class GetSapVirtualInstanceInvokeSizingRecommendationsResult {
   /// The deployment type. Eg: SingleServer/ThreeTier
@@ -12,14 +13,15 @@ class GetSapVirtualInstanceInvokeSizingRecommendationsResult {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'deploymentType': deploymentType};
+    return <String, dynamic>{
+      'deploymentType': deploymentType,
+    };
   }
 
-  factory GetSapVirtualInstanceInvokeSizingRecommendationsResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetSapVirtualInstanceInvokeSizingRecommendationsResult.fromMap(Map<String, dynamic> map) {
     return GetSapVirtualInstanceInvokeSizingRecommendationsResult(
       deploymentType: map['deploymentType'] as String,
     );
   }
 }
+

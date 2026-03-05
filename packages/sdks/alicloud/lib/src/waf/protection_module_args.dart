@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProtectionModuleArgs {
   /// The Protection Module. Valid values: `ac_cc`, `antifraud`, `dld`, `normalized`, `waf`.
   final pulumi.Input<String> defenseType;
-
   /// The domain name that is added to WAF.
   final pulumi.Input<String> domain;
-
   /// The ID of the WAF instance.
   final pulumi.Input<String> instanceId;
-
   /// The protection mode of the specified protection module. **NOTE:** The value of the Mode parameter varies based on the value of the `defense_type` parameter.
   /// * The `defense_type` is `waf`. `0`: block mode. `1`: warn mode.
   /// * The `defense_type` is `dld`. `0`: warn mode. `1`: block mode.
@@ -23,7 +20,6 @@ class ProtectionModuleArgs {
   /// * The `defense_type` is `antifraud`. `0`: warn mode. `1`: block mode. `2`: strict interception mode.
   /// * The `defense_type` is `normalized`. `0`: warn mode. `1`: block mode.
   final pulumi.Input<int> mode;
-
   /// The status of the resource. Valid values: `0`, `1`.
   final pulumi.Input<int>? status;
 
@@ -57,11 +53,8 @@ class ProtectionModuleArgs {
       domain: pulumi.Input.fromValue(map['domain'] as String),
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
       mode: pulumi.Input.fromValue(map['mode'] as int),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

@@ -231,24 +231,18 @@ import 'dev_box_definition_state.dart';
 class DevBoxDefinition extends pulumi.CustomResource {
   /// The ID of the associated Dev Center. Changing this forces a new resource to be created.
   late final pulumi.Output<String> devCenterId;
-
   /// Whether the Dev Boxes created with this definition are capable of hibernation. Defaults to `false`.
   ///
   /// &gt; **Note:** Not all images are capable of supporting hibernation, for more information see https://aka.ms/devbox/hibernate.
   late final pulumi.Output<bool?> hibernateSupportEnabled;
-
   /// The ID of the image for the Dev Center Dev Box Definition.
   late final pulumi.Output<String> imageReferenceId;
-
   /// The Azure Region where the Dev Center Dev Box Definition should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// Specifies the name of this Dev Center Dev Box Definition. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the SKU for the Dev Center Dev Box Definition.
   late final pulumi.Output<String> skuName;
-
   /// A mapping of tags which should be assigned to the Dev Center Dev Box Definition.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -261,11 +255,11 @@ class DevBoxDefinition extends pulumi.CustomResource {
     DevBoxDefinitionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:devcenter/devBoxDefinition:DevBoxDefinition',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:devcenter/devBoxDefinition:DevBoxDefinition',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     devCenterId = registerOutput<String>('devCenterId');
     hibernateSupportEnabled = registerOutput<bool?>('hibernateSupportEnabled');
     imageReferenceId = registerOutput<String>('imageReferenceId');
@@ -293,11 +287,11 @@ class DevBoxDefinition extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:devcenter/devBoxDefinition:DevBoxDefinition',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:devcenter/devBoxDefinition:DevBoxDefinition',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     devCenterId = registerOutput<String>('devCenterId');
     hibernateSupportEnabled = registerOutput<bool?>('hibernateSupportEnabled');
     imageReferenceId = registerOutput<String>('imageReferenceId');

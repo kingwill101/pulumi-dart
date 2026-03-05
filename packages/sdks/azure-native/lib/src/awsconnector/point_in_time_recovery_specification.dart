@@ -9,7 +9,9 @@ class PointInTimeRecoverySpecification {
 
   /// Creates a new [PointInTimeRecoverySpecification].
   /// [pointInTimeRecoveryEnabled] Indicates whether point in time recovery is enabled (true) or disabled (false) on the table.
-  PointInTimeRecoverySpecification({this.pointInTimeRecoveryEnabled});
+  PointInTimeRecoverySpecification({
+    this.pointInTimeRecoveryEnabled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,11 +21,8 @@ class PointInTimeRecoverySpecification {
 
   factory PointInTimeRecoverySpecification.fromMap(Map<String, dynamic> map) {
     return PointInTimeRecoverySpecification(
-      pointInTimeRecoveryEnabled: (() {
-        final guardedValue = map['pointInTimeRecoveryEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      pointInTimeRecoveryEnabled: (() { final guardedValue = map['pointInTimeRecoveryEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

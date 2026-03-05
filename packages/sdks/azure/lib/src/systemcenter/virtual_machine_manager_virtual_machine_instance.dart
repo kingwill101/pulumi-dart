@@ -499,45 +499,29 @@ import 'virtual_machine_manager_virtual_machine_instance_state.dart';
 /// ```sh
 /// $ pulumi import azure:systemcenter/virtualMachineManagerVirtualMachineInstance:VirtualMachineManagerVirtualMachineInstance example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resGroup1/providers/Microsoft.HybridCompute/machines/machine1/providers/Microsoft.ScVmm/virtualMachineInstances/default
 /// ```
-class VirtualMachineManagerVirtualMachineInstance
-    extends pulumi.CustomResource {
+class VirtualMachineManagerVirtualMachineInstance extends pulumi.CustomResource {
   /// The ID of the Custom Location for the System Center Virtual Machine Manager Virtual Machine Instance. Changing this forces a new resource to be created.
   late final pulumi.Output<String> customLocationId;
-
   /// A `hardware` block as defined below. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** This resource will be restarted while updating `hardware`.
-  late final pulumi.Output<VirtualMachineManagerVirtualMachineInstanceHardware?>
-  hardware;
-
+  late final pulumi.Output<VirtualMachineManagerVirtualMachineInstanceHardware?> hardware;
   /// An `infrastructure` block as defined below.
-  late final pulumi.Output<
-    VirtualMachineManagerVirtualMachineInstanceInfrastructure
-  >
-  infrastructure;
-
+  late final pulumi.Output<VirtualMachineManagerVirtualMachineInstanceInfrastructure> infrastructure;
   /// A `network_interface` block as defined below.
   ///
   /// &gt; **Note:** This resource will be restarted while updating `network_interface`.
   late final pulumi.Output<List<Map<String, dynamic>>?> networkInterfaces;
-
   /// An `operating_system` block as defined below. Changing this forces a new resource to be created.
-  late final pulumi.Output<
-    VirtualMachineManagerVirtualMachineInstanceOperatingSystem?
-  >
-  operatingSystem;
-
+  late final pulumi.Output<VirtualMachineManagerVirtualMachineInstanceOperatingSystem?> operatingSystem;
   /// The ID of the Hybrid Compute Machine where this System Center Virtual Machine Manager Virtual Machine Instance is stored. Changing this forces a new resource to be created.
   late final pulumi.Output<String> scopedResourceId;
-
   /// A `storage_disk` block as defined below.
   ///
   /// &gt; **Note:** This resource will be restarted while updating `storage_disk`.
   late final pulumi.Output<List<Map<String, dynamic>>?> storageDisks;
-
   /// A list of IDs of System Center Virtual Machine Manager Availability Set.
-  late final pulumi.Output<List<String>?>
-  systemCenterVirtualMachineManagerAvailabilitySetIds;
+  late final pulumi.Output<List<String>?> systemCenterVirtualMachineManagerAvailabilitySetIds;
 
   /// Creates a new [VirtualMachineManagerVirtualMachineInstance].
   /// [name] The Pulumi resource name.
@@ -548,58 +532,19 @@ class VirtualMachineManagerVirtualMachineInstance
     VirtualMachineManagerVirtualMachineInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:systemcenter/virtualMachineManagerVirtualMachineInstance:VirtualMachineManagerVirtualMachineInstance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:systemcenter/virtualMachineManagerVirtualMachineInstance:VirtualMachineManagerVirtualMachineInstance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     customLocationId = registerOutput<String>('customLocationId');
-    hardware =
-        registerOutput<VirtualMachineManagerVirtualMachineInstanceHardware?>(
-          'hardware',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return VirtualMachineManagerVirtualMachineInstanceHardware.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    infrastructure =
-        registerOutput<
-          VirtualMachineManagerVirtualMachineInstanceInfrastructure
-        >(
-          'infrastructure',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return VirtualMachineManagerVirtualMachineInstanceInfrastructure.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    networkInterfaces = registerOutput<List<Map<String, dynamic>>?>(
-      'networkInterfaces',
-    );
-    operatingSystem =
-        registerOutput<
-          VirtualMachineManagerVirtualMachineInstanceOperatingSystem?
-        >(
-          'operatingSystem',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return VirtualMachineManagerVirtualMachineInstanceOperatingSystem.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    hardware = registerOutput<VirtualMachineManagerVirtualMachineInstanceHardware?>('hardware', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineManagerVirtualMachineInstanceHardware.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    infrastructure = registerOutput<VirtualMachineManagerVirtualMachineInstanceInfrastructure>('infrastructure', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineManagerVirtualMachineInstanceInfrastructure.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    networkInterfaces = registerOutput<List<Map<String, dynamic>>?>('networkInterfaces');
+    operatingSystem = registerOutput<VirtualMachineManagerVirtualMachineInstanceOperatingSystem?>('operatingSystem', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineManagerVirtualMachineInstanceOperatingSystem.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     scopedResourceId = registerOutput<String>('scopedResourceId');
     storageDisks = registerOutput<List<Map<String, dynamic>>?>('storageDisks');
-    systemCenterVirtualMachineManagerAvailabilitySetIds =
-        registerOutput<List<String>?>(
-          'systemCenterVirtualMachineManagerAvailabilitySetIds',
-        );
+    systemCenterVirtualMachineManagerAvailabilitySetIds = registerOutput<List<String>?>('systemCenterVirtualMachineManagerAvailabilitySetIds');
   }
 
   /// Gets an existing [VirtualMachineManagerVirtualMachineInstance] resource's state with the given [name] and [id].
@@ -620,57 +565,18 @@ class VirtualMachineManagerVirtualMachineInstance
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:systemcenter/virtualMachineManagerVirtualMachineInstance:VirtualMachineManagerVirtualMachineInstance',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:systemcenter/virtualMachineManagerVirtualMachineInstance:VirtualMachineManagerVirtualMachineInstance',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     customLocationId = registerOutput<String>('customLocationId');
-    hardware =
-        registerOutput<VirtualMachineManagerVirtualMachineInstanceHardware?>(
-          'hardware',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return VirtualMachineManagerVirtualMachineInstanceHardware.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    infrastructure =
-        registerOutput<
-          VirtualMachineManagerVirtualMachineInstanceInfrastructure
-        >(
-          'infrastructure',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return VirtualMachineManagerVirtualMachineInstanceInfrastructure.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    networkInterfaces = registerOutput<List<Map<String, dynamic>>?>(
-      'networkInterfaces',
-    );
-    operatingSystem =
-        registerOutput<
-          VirtualMachineManagerVirtualMachineInstanceOperatingSystem?
-        >(
-          'operatingSystem',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return VirtualMachineManagerVirtualMachineInstanceOperatingSystem.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    hardware = registerOutput<VirtualMachineManagerVirtualMachineInstanceHardware?>('hardware', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineManagerVirtualMachineInstanceHardware.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    infrastructure = registerOutput<VirtualMachineManagerVirtualMachineInstanceInfrastructure>('infrastructure', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineManagerVirtualMachineInstanceInfrastructure.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    networkInterfaces = registerOutput<List<Map<String, dynamic>>?>('networkInterfaces');
+    operatingSystem = registerOutput<VirtualMachineManagerVirtualMachineInstanceOperatingSystem?>('operatingSystem', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineManagerVirtualMachineInstanceOperatingSystem.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     scopedResourceId = registerOutput<String>('scopedResourceId');
     storageDisks = registerOutput<List<Map<String, dynamic>>?>('storageDisks');
-    systemCenterVirtualMachineManagerAvailabilitySetIds =
-        registerOutput<List<String>?>(
-          'systemCenterVirtualMachineManagerAvailabilitySetIds',
-        );
+    systemCenterVirtualMachineManagerAvailabilitySetIds = registerOutput<List<String>?>('systemCenterVirtualMachineManagerAvailabilitySetIds');
   }
 }

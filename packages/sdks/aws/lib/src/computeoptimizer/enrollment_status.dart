@@ -102,13 +102,10 @@ import 'enrollment_status_timeouts.dart';
 class EnrollmentStatus extends pulumi.CustomResource {
   /// Whether to enroll member accounts of the organization if the account is the management account of an organization. Default is `false`.
   late final pulumi.Output<bool> includeMemberAccounts;
-
   /// The count of organization member accounts that are opted in to the service, if your account is an organization management account.
   late final pulumi.Output<int> numberOfMemberAccountsOptedIn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The enrollment status of the account. Valid values: `Active`, `Inactive`.
   late final pulumi.Output<String> status;
   late final pulumi.Output<EnrollmentStatusTimeouts?> timeouts;
@@ -122,27 +119,16 @@ class EnrollmentStatus extends pulumi.CustomResource {
     EnrollmentStatusArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:computeoptimizer/enrollmentStatus:EnrollmentStatus',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:computeoptimizer/enrollmentStatus:EnrollmentStatus',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     includeMemberAccounts = registerOutput<bool>('includeMemberAccounts');
-    numberOfMemberAccountsOptedIn = registerOutput<int>(
-      'numberOfMemberAccountsOptedIn',
-    );
+    numberOfMemberAccountsOptedIn = registerOutput<int>('numberOfMemberAccountsOptedIn');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
-    timeouts = registerOutput<EnrollmentStatusTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EnrollmentStatusTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<EnrollmentStatusTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnrollmentStatusTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [EnrollmentStatus] resource's state with the given [name] and [id].
@@ -163,26 +149,15 @@ class EnrollmentStatus extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:computeoptimizer/enrollmentStatus:EnrollmentStatus',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:computeoptimizer/enrollmentStatus:EnrollmentStatus',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     includeMemberAccounts = registerOutput<bool>('includeMemberAccounts');
-    numberOfMemberAccountsOptedIn = registerOutput<int>(
-      'numberOfMemberAccountsOptedIn',
-    );
+    numberOfMemberAccountsOptedIn = registerOutput<int>('numberOfMemberAccountsOptedIn');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
-    timeouts = registerOutput<EnrollmentStatusTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EnrollmentStatusTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<EnrollmentStatusTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnrollmentStatusTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

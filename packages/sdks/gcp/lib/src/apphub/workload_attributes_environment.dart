@@ -9,10 +9,14 @@ class WorkloadAttributesEnvironment {
 
   /// Creates a new [WorkloadAttributesEnvironment].
   /// [type] Environment type.
-  WorkloadAttributesEnvironment({required this.type});
+  WorkloadAttributesEnvironment({
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': type};
+    return <String, dynamic>{
+      'type': type,
+    };
   }
 
   factory WorkloadAttributesEnvironment.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class WorkloadAttributesEnvironment {
     );
   }
 }
+

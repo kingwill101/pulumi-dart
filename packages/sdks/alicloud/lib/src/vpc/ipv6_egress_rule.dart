@@ -587,22 +587,16 @@ import 'ipv6_egress_rule_state.dart';
 class Ipv6EgressRule extends pulumi.CustomResource {
   /// The description of the egress-only rule. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
   late final pulumi.Output<String?> description;
-
   /// The ID of the IPv6 address to which you want to apply the egress-only rule.
   late final pulumi.Output<String> instanceId;
-
   /// The type of instance to which you want to apply the egress-only rule. Valid values: `Ipv6Address`. `Ipv6Address` (default): an IPv6 address.
   late final pulumi.Output<String> instanceType;
-
   /// The ID of the IPv6 EgressRule.
   late final pulumi.Output<String> ipv6EgressRuleId;
-
   /// The name of the egress-only rule. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
   late final pulumi.Output<String?> ipv6EgressRuleName;
-
   /// The ID of the IPv6 gateway.
   late final pulumi.Output<String> ipv6GatewayId;
-
   /// The status of the resource.
   late final pulumi.Output<String> status;
 
@@ -615,11 +609,11 @@ class Ipv6EgressRule extends pulumi.CustomResource {
     Ipv6EgressRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/ipv6EgressRule:Ipv6EgressRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpc/ipv6EgressRule:Ipv6EgressRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     instanceId = registerOutput<String>('instanceId');
     instanceType = registerOutput<String>('instanceType');
@@ -647,11 +641,11 @@ class Ipv6EgressRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/ipv6EgressRule:Ipv6EgressRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpc/ipv6EgressRule:Ipv6EgressRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     instanceId = registerOutput<String>('instanceId');
     instanceType = registerOutput<String>('instanceType');

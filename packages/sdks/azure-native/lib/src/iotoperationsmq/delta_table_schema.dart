@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeltaTableSchema {
   /// Delta table format supported.
   final pulumi.Input<String> format;
-
   /// Delta table schema mapping.
   final pulumi.Input<String> mapping;
-
   /// Delta table schema name.
   final pulumi.Input<String> name;
-
   /// Delta table schema optional.
   final pulumi.Input<bool> optional;
 
@@ -46,3 +43,4 @@ class DeltaTableSchema {
     );
   }
 }
+

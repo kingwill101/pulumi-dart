@@ -279,16 +279,12 @@ import 'cache_access_policy_assignment_state.dart';
 class CacheAccessPolicyAssignment extends pulumi.CustomResource {
   /// The name of the Access Policy to be assigned. Changing this forces a new Redis Cache Access Policy Assignment to be created.
   late final pulumi.Output<String> accessPolicyName;
-
   /// The name of the Redis Cache Access Policy Assignment. Changing this forces a new Redis Cache Access Policy Assignment to be created.
   late final pulumi.Output<String> name;
-
   /// The principal ID to be assigned the Access Policy. Changing this forces a new Redis Cache Access Policy Assignment to be created.
   late final pulumi.Output<String> objectId;
-
   /// The alias of the principal ID. User-friendly name for object ID. Also represents username for token based authentication. Changing this forces a new Redis Cache Access Policy Assignment to be created.
   late final pulumi.Output<String> objectIdAlias;
-
   /// The ID of the Redis Cache. Changing this forces a new Redis Cache Access Policy Assignment to be created.
   late final pulumi.Output<String> redisCacheId;
 
@@ -301,11 +297,11 @@ class CacheAccessPolicyAssignment extends pulumi.CustomResource {
     CacheAccessPolicyAssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:redis/cacheAccessPolicyAssignment:CacheAccessPolicyAssignment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:redis/cacheAccessPolicyAssignment:CacheAccessPolicyAssignment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessPolicyName = registerOutput<String>('accessPolicyName');
     this.name = registerOutput<String>('name');
     objectId = registerOutput<String>('objectId');
@@ -331,11 +327,11 @@ class CacheAccessPolicyAssignment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:redis/cacheAccessPolicyAssignment:CacheAccessPolicyAssignment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:redis/cacheAccessPolicyAssignment:CacheAccessPolicyAssignment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessPolicyName = registerOutput<String>('accessPolicyName');
     this.name = registerOutput<String>('name');
     objectId = registerOutput<String>('objectId');

@@ -21,14 +21,11 @@ class GetDeploymentWebApplicationFirewallStatusAttackSignaturesPackage {
     };
   }
 
-  factory GetDeploymentWebApplicationFirewallStatusAttackSignaturesPackage.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDeploymentWebApplicationFirewallStatusAttackSignaturesPackage.fromMap(Map<String, dynamic> map) {
     return GetDeploymentWebApplicationFirewallStatusAttackSignaturesPackage(
-      revisionDatetime: pulumi.Input.fromValue(
-        map['revisionDatetime'] as String,
-      ),
+      revisionDatetime: pulumi.Input.fromValue(map['revisionDatetime'] as String),
       version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
+

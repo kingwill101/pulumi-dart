@@ -214,21 +214,16 @@ import 'data_connector_office365_state.dart';
 class DataConnectorOffice365 extends pulumi.CustomResource {
   /// Should the Exchange data connector be enabled? Defaults to `true`.
   late final pulumi.Output<bool?> exchangeEnabled;
-
   /// The ID of the Log Analytics Workspace that this Office 365 Data Connector resides in. Changing this forces a new Office 365 Data Connector to be created.
   late final pulumi.Output<String> logAnalyticsWorkspaceId;
-
   /// The name which should be used for this Office 365 Data Connector. Changing this forces a new Office 365 Data Connector to be created.
   late final pulumi.Output<String> name;
-
   /// Should the SharePoint data connector be enabled? Defaults to `true`.
   late final pulumi.Output<bool?> sharepointEnabled;
-
   /// Should the Microsoft Teams data connector be enabled? Defaults to `true`.
   ///
   /// &gt; **Note:** At least one of `exchange_enabled`, `sharedpoint_enabled` and `teams_enabled` has to be specified.
   late final pulumi.Output<bool?> teamsEnabled;
-
   /// The ID of the Tenant that this Office 365 Data Connector connects to. Changing this forces a new Office 365 Data Connector to be created.
   ///
   /// &gt; **Note:** Currently, only the same tenant as the running account is allowed. Cross-tenant scenario is not supported yet.
@@ -243,11 +238,11 @@ class DataConnectorOffice365 extends pulumi.CustomResource {
     DataConnectorOffice365Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:sentinel/dataConnectorOffice365:DataConnectorOffice365',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:sentinel/dataConnectorOffice365:DataConnectorOffice365',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     exchangeEnabled = registerOutput<bool?>('exchangeEnabled');
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     this.name = registerOutput<String>('name');
@@ -274,11 +269,11 @@ class DataConnectorOffice365 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:sentinel/dataConnectorOffice365:DataConnectorOffice365',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:sentinel/dataConnectorOffice365:DataConnectorOffice365',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     exchangeEnabled = registerOutput<bool?>('exchangeEnabled');
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     this.name = registerOutput<String>('name');

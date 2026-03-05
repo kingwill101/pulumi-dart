@@ -162,45 +162,34 @@ import 'host_group_state.dart';
 class HostGroup extends pulumi.CustomResource {
   /// Create time of the host group. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
   late final pulumi.Output<String> createTime;
-
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// The list of hosts associated with the host group
   late final pulumi.Output<List<String>> hosts;
-
   /// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// Location (region) of the Host Group.
   late final pulumi.Output<String> location;
-
   /// The resource name of the Host Group. Needs to be unique per location.
   late final pulumi.Output<String> name;
-
   /// The OS type of the host group. It indicates the type of operating system
   /// used by all of the hosts in the HostGroup. All hosts in a HostGroup must be
   /// of the same OS type. This can be set only when creating a HostGroup.
   /// Possible values are: `LINUX`, `WINDOWS`, `ESXI`.
   late final pulumi.Output<String> osType;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// The state of the Host Group.
   late final pulumi.Output<String> state;
-
   /// Type of the host group.
   /// Possible values are: `ISCSI_INITIATOR`.
   late final pulumi.Output<String> type;
@@ -214,11 +203,11 @@ class HostGroup extends pulumi.CustomResource {
     HostGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:netapp/hostGroup:HostGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:netapp/hostGroup:HostGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -251,11 +240,11 @@ class HostGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:netapp/hostGroup:HostGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:netapp/hostGroup:HostGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');

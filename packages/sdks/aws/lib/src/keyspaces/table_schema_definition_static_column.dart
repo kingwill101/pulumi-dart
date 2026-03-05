@@ -8,10 +8,14 @@ class TableSchemaDefinitionStaticColumn {
 
   /// Creates a new [TableSchemaDefinitionStaticColumn].
   /// [name] The name of the static column.
-  TableSchemaDefinitionStaticColumn({required this.name});
+  TableSchemaDefinitionStaticColumn({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory TableSchemaDefinitionStaticColumn.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class TableSchemaDefinitionStaticColumn {
     );
   }
 }
+

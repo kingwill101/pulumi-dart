@@ -14,3 +14,4 @@ enum LifecyclePolicyActionType {
     throw ArgumentError('Unknown LifecyclePolicyActionType value: $value');
   }
 }
+

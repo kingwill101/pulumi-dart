@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceCosmosDbConfigurationInfoResponse {
   /// The URI of the customer-managed key for the backing database.
   final pulumi.Input<String>? keyVaultKeyUri;
-
   /// The provisioned throughput for the backing database.
   final pulumi.Input<double>? offerThroughput;
 
@@ -25,20 +24,11 @@ class ServiceCosmosDbConfigurationInfoResponse {
     };
   }
 
-  factory ServiceCosmosDbConfigurationInfoResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ServiceCosmosDbConfigurationInfoResponse.fromMap(Map<String, dynamic> map) {
     return ServiceCosmosDbConfigurationInfoResponse(
-      keyVaultKeyUri: (() {
-        final guardedValue = map['keyVaultKeyUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      offerThroughput: (() {
-        final guardedValue = map['offerThroughput'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      keyVaultKeyUri: (() { final guardedValue = map['keyVaultKeyUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      offerThroughput: (() { final guardedValue = map['offerThroughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

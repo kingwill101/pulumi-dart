@@ -10,29 +10,20 @@ class DeviceSelector {
 
   /// Creates a new [DeviceSelector].
   /// [cel] CEL contains a CEL expression for selecting a device.
-  DeviceSelector({this.cel});
+  DeviceSelector({
+    this.cel,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cel':
-          ?pulumi.Input.mapOptionalInputValue<
-            CELDeviceSelector,
-            Map<String, dynamic>
-          >(cel, (value) => value.toMap()),
+      'cel': ?pulumi.Input.mapOptionalInputValue<CELDeviceSelector, Map<String, dynamic>>(cel, (value) => value.toMap()),
     };
   }
 
   factory DeviceSelector.fromMap(Map<String, dynamic> map) {
     return DeviceSelector(
-      cel: (() {
-        final guardedValue = map['cel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CELDeviceSelector.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      cel: (() { final guardedValue = map['cel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CELDeviceSelector.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

@@ -230,43 +230,30 @@ import 'system_data_response.dart';
 class Order extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The contact details.
   late final pulumi.Output<ContactDetailsResponse> contactInformation;
-
   /// Current status of the order.
   late final pulumi.Output<OrderStatusResponse> currentStatus;
-
   /// Tracking information for the package delivered to the customer whether it has an original or a replacement device.
   late final pulumi.Output<List<Map<String, dynamic>>> deliveryTrackingInfo;
-
   /// It specify the order api version.
   late final pulumi.Output<String> kind;
-
   /// The object name.
   late final pulumi.Output<String> name;
-
   /// List of status changes in the order.
   late final pulumi.Output<List<Map<String, dynamic>>> orderHistory;
-
   /// It specify the order resource id.
   late final pulumi.Output<String> orderId;
-
   /// Tracking information for the package returned from the customer whether it has an original or a replacement device.
   late final pulumi.Output<List<Map<String, dynamic>>> returnTrackingInfo;
-
   /// Serial number of the device.
   late final pulumi.Output<String> serialNumber;
-
   /// ShipmentType of the order
   late final pulumi.Output<String?> shipmentType;
-
   /// The shipping address.
   late final pulumi.Output<AddressResponse?> shippingAddress;
-
   /// Metadata pertaining to creation and last modification of Order
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The hierarchical type of the object.
   late final pulumi.Output<String> type;
 
@@ -274,66 +261,29 @@ class Order extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Order]. {@macro pulumi_databoxedge_order_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Order(String name, {OrderArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:databoxedge:Order',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Order(
+    String name, {
+    OrderArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:databoxedge:Order',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    contactInformation = registerOutput<ContactDetailsResponse>(
-      'contactInformation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ContactDetailsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    currentStatus = registerOutput<OrderStatusResponse>(
-      'currentStatus',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return OrderStatusResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    deliveryTrackingInfo = registerOutput<List<Map<String, dynamic>>>(
-      'deliveryTrackingInfo',
-    );
+    contactInformation = registerOutput<ContactDetailsResponse>('contactInformation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContactDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    currentStatus = registerOutput<OrderStatusResponse>('currentStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrderStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deliveryTrackingInfo = registerOutput<List<Map<String, dynamic>>>('deliveryTrackingInfo');
     kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
     orderHistory = registerOutput<List<Map<String, dynamic>>>('orderHistory');
     orderId = registerOutput<String>('orderId');
-    returnTrackingInfo = registerOutput<List<Map<String, dynamic>>>(
-      'returnTrackingInfo',
-    );
+    returnTrackingInfo = registerOutput<List<Map<String, dynamic>>>('returnTrackingInfo');
     serialNumber = registerOutput<String>('serialNumber');
     shipmentType = registerOutput<String?>('shipmentType');
-    shippingAddress = registerOutput<AddressResponse?>(
-      'shippingAddress',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AddressResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    shippingAddress = registerOutput<AddressResponse?>('shippingAddress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AddressResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

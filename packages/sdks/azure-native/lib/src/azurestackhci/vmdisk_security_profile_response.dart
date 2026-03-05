@@ -9,19 +9,20 @@ class VMDiskSecurityProfileResponse {
 
   /// Creates a new [VMDiskSecurityProfileResponse].
   /// [securityEncryptionType] Specifies the EncryptionType of the managed disk. It is set to NonPersistedTPM for not persisting firmware state in the VMGuestState blob. NOTE: It can be set for only Confidential VMs.
-  VMDiskSecurityProfileResponse({this.securityEncryptionType});
+  VMDiskSecurityProfileResponse({
+    this.securityEncryptionType,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'securityEncryptionType': ?securityEncryptionType};
+    return <String, dynamic>{
+      'securityEncryptionType': ?securityEncryptionType,
+    };
   }
 
   factory VMDiskSecurityProfileResponse.fromMap(Map<String, dynamic> map) {
     return VMDiskSecurityProfileResponse(
-      securityEncryptionType: (() {
-        final guardedValue = map['securityEncryptionType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      securityEncryptionType: (() { final guardedValue = map['securityEncryptionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

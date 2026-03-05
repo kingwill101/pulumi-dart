@@ -177,45 +177,32 @@ import 'file_system_state.dart';
 class FileSystem extends pulumi.CustomResource {
   /// The creation time of the file system instance.
   late final pulumi.Output<String> createTime;
-
   /// Redundancy mode of the file system. Value:
   /// - LRS (default): Local redundancy.
   /// - ZRS: Same-City redundancy. When ZRS is selected, zoneId is a string consisting of multiple zones that are expected to be redundant in the same city, for example,  'zoneId1,zoneId2 '.
   late final pulumi.Output<String?> dataRedundancyType;
-
   /// Dedicated cluster id, which is used to support scenarios such as group cloud migration.
   late final pulumi.Output<String?> dedicatedClusterId;
-
   /// The description of the file system resource. No more than 32 characters in length.
   late final pulumi.Output<String?> description;
-
   /// The file system name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
   late final pulumi.Output<String> fileSystemName;
-
   /// Save set sequence number, the user selects the content of the specified sequence number in the Save set.
   late final pulumi.Output<int?> partitionNumber;
-
   /// The protocol type. Value: `HDFS`, `PANGU`.
   late final pulumi.Output<String> protocolType;
-
   /// Provisioned throughput. This parameter is required when ThroughputMode is set to Provisioned. Unit: MB/s Value range: 1~5120.
   late final pulumi.Output<int?> provisionedThroughputInMiBps;
-
   /// (Available since v1.242.0) The region ID of the File System.
   late final pulumi.Output<String> regionId;
-
   /// File system capacity.  When the actual amount of data stored reaches the capacity of the file system, data cannot be written.  Unit: GiB.
   late final pulumi.Output<int> spaceCapacity;
-
   /// Save set identity, used to select a user-specified save set.
   late final pulumi.Output<String?> storageSetName;
-
   /// The storage media type. Value: STANDARD (default): STANDARD PERFORMANCE: PERFORMANCE type.
   late final pulumi.Output<String> storageType;
-
   /// The throughput mode. Value: Standard (default): Standard throughput Provisioned: preset throughput.
   late final pulumi.Output<String> throughputMode;
-
   /// Zone Id, which is used to create file system resources to the specified zone.
   late final pulumi.Output<String?> zoneId;
 
@@ -228,11 +215,11 @@ class FileSystem extends pulumi.CustomResource {
     FileSystemArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dfs/fileSystem:FileSystem',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dfs/fileSystem:FileSystem',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     dataRedundancyType = registerOutput<String?>('dataRedundancyType');
     dedicatedClusterId = registerOutput<String?>('dedicatedClusterId');
@@ -240,9 +227,7 @@ class FileSystem extends pulumi.CustomResource {
     fileSystemName = registerOutput<String>('fileSystemName');
     partitionNumber = registerOutput<int?>('partitionNumber');
     protocolType = registerOutput<String>('protocolType');
-    provisionedThroughputInMiBps = registerOutput<int?>(
-      'provisionedThroughputInMiBps',
-    );
+    provisionedThroughputInMiBps = registerOutput<int?>('provisionedThroughputInMiBps');
     regionId = registerOutput<String>('regionId');
     spaceCapacity = registerOutput<int>('spaceCapacity');
     storageSetName = registerOutput<String?>('storageSetName');
@@ -269,11 +254,11 @@ class FileSystem extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dfs/fileSystem:FileSystem',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dfs/fileSystem:FileSystem',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     dataRedundancyType = registerOutput<String?>('dataRedundancyType');
     dedicatedClusterId = registerOutput<String?>('dedicatedClusterId');
@@ -281,9 +266,7 @@ class FileSystem extends pulumi.CustomResource {
     fileSystemName = registerOutput<String>('fileSystemName');
     partitionNumber = registerOutput<int?>('partitionNumber');
     protocolType = registerOutput<String>('protocolType');
-    provisionedThroughputInMiBps = registerOutput<int?>(
-      'provisionedThroughputInMiBps',
-    );
+    provisionedThroughputInMiBps = registerOutput<int?>('provisionedThroughputInMiBps');
     regionId = registerOutput<String>('regionId');
     spaceCapacity = registerOutput<int>('spaceCapacity');
     storageSetName = registerOutput<String?>('storageSetName');

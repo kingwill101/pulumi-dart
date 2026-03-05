@@ -234,36 +234,24 @@ import 'system_data_response.dart';
 class CapacityReservationGroup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// A list of all capacity reservation resource ids that belong to capacity reservation group.
   late final pulumi.Output<List<Map<String, dynamic>>> capacityReservations;
-
   /// The capacity reservation group instance view which has the list of instance views for all the capacity reservations that belong to the capacity reservation group.
-  late final pulumi.Output<CapacityReservationGroupInstanceViewResponse>
-  instanceView;
-
+  late final pulumi.Output<CapacityReservationGroupInstanceViewResponse> instanceView;
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Specifies the settings to enable sharing across subscriptions for the capacity reservation group resource. The capacity reservation group resource can generally be shared across subscriptions belonging to a single Azure AAD tenant or across AAD tenants if there is a trust relationship established between the tenants.  Block capacity reservation does not support sharing across subscriptions. **Note:** Minimum api-version: 2023-09-01. Please refer to https://aka.ms/computereservationsharing for more details.
   late final pulumi.Output<ResourceSharingProfileResponse?> sharingProfile;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// A list of references to all virtual machines associated to the capacity reservation group.
-  late final pulumi.Output<List<Map<String, dynamic>>>
-  virtualMachinesAssociated;
-
+  late final pulumi.Output<List<Map<String, dynamic>>> virtualMachinesAssociated;
   /// The availability zones.
   late final pulumi.Output<List<String>?> zones;
 
@@ -276,52 +264,21 @@ class CapacityReservationGroup extends pulumi.CustomResource {
     CapacityReservationGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:compute:CapacityReservationGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:compute:CapacityReservationGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    capacityReservations = registerOutput<List<Map<String, dynamic>>>(
-      'capacityReservations',
-    );
-    instanceView = registerOutput<CapacityReservationGroupInstanceViewResponse>(
-      'instanceView',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CapacityReservationGroupInstanceViewResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    capacityReservations = registerOutput<List<Map<String, dynamic>>>('capacityReservations');
+    instanceView = registerOutput<CapacityReservationGroupInstanceViewResponse>('instanceView', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CapacityReservationGroupInstanceViewResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    sharingProfile = registerOutput<ResourceSharingProfileResponse?>(
-      'sharingProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResourceSharingProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sharingProfile = registerOutput<ResourceSharingProfileResponse?>('sharingProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceSharingProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
-    virtualMachinesAssociated = registerOutput<List<Map<String, dynamic>>>(
-      'virtualMachinesAssociated',
-    );
+    virtualMachinesAssociated = registerOutput<List<Map<String, dynamic>>>('virtualMachinesAssociated');
     zones = registerOutput<List<String>?>('zones');
   }
 }

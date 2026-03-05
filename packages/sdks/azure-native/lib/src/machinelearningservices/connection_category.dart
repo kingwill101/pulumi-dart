@@ -118,3 +118,4 @@ enum ConnectionCategory {
     throw ArgumentError('Unknown ConnectionCategory value: $value');
   }
 }
+

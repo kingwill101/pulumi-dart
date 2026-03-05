@@ -245,48 +245,38 @@ class Unit extends pulumi.CustomResource {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
-
   /// A set of conditions which indicate the various conditions this resource can
   /// have.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> conditions;
-
   /// The timestamp when the resource was created.
   late final pulumi.Output<String> createTime;
-
   /// Set of dependencies for this unit. Maximum 10.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> dependencies;
-
   /// List of Units that depend on this unit. Unit can only be deprovisioned if
   /// this list is empty. Maximum 1000.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> dependents;
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Indicates the current input variables deployed by the unit
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> inputVariables;
-
   /// The labels on the resource, which can be used for categorization.
   /// similar to Kubernetes resource labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> location;
-
   /// Captures requested directives for performing future maintenance on the
   /// unit. This includes a request for the unit to skip maintenance for a period
   /// of time and remain pinned to its current release as well as controls for
   /// postponing maintenance scheduled in future.
   /// Structure is documented below.
   late final pulumi.Output<UnitMaintenance?> maintenance;
-
   /// Indicates whether the Unit life cycle is controlled
   /// by the user or by the system.
   /// Immutable once created.
@@ -294,33 +284,25 @@ class Unit extends pulumi.CustomResource {
   /// MANAGEMENT_MODE_USER
   /// MANAGEMENT_MODE_SYSTEM
   late final pulumi.Output<String?> managementMode;
-
   /// Identifier. The resource name (full URI of the resource) following the standard naming
   /// scheme:
   /// "projects/{project}/locations/{location}/units/{unit}"
   late final pulumi.Output<String> name;
-
   /// List of concurrent UnitOperations that are operating on this Unit.
   late final pulumi.Output<List<String>> ongoingOperations;
   late final pulumi.Output<List<Map<String, dynamic>>> outputVariables;
-
   /// List of pending (wait to be executed) UnitOperations for this unit.
   late final pulumi.Output<List<String>> pendingOperations;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// The current Release object for this Unit.
   late final pulumi.Output<String> release;
-
   /// List of scheduled UnitOperations for this unit.
   late final pulumi.Output<List<String>> scheduledOperations;
-
   /// Current lifecycle state of the resource (e.g. if it's being
   /// created or ready to use).
   /// Possible values:
@@ -331,35 +313,28 @@ class Unit extends pulumi.CustomResource {
   /// UNIT_STATE_READY
   /// UNIT_STATE_ERROR
   late final pulumi.Output<String> state;
-
   /// If set, indicates the time when the system will start removing the unit.
   late final pulumi.Output<String> systemCleanupAt;
-
   /// Indicates the system managed state of the unit.
   /// Possible values:
   /// SYSTEM_MANAGED_STATE_ACTIVE
   /// SYSTEM_MANAGED_STATE_INACTIVE
   /// SYSTEM_MANAGED_STATE_DECOMMISSIONED
   late final pulumi.Output<String> systemManagedState;
-
   /// Reference to the Saas Tenant resource this unit belongs to. This for
   /// example informs the maintenance policies to use for scheduling future
   /// updates on a unit. (optional and immutable once created)
   late final pulumi.Output<String?> tenant;
-
   /// The unique identifier of the resource. UID is unique in the time
   /// and space for this resource within the scope of the service. It is
   /// typically generated by the server on successful creation of a resource
   /// and must not be changed. UID is used to uniquely identify resources
   /// with resource name reuses. This should be a UUID4.
   late final pulumi.Output<String> uid;
-
   /// The ID value for the new unit.
   late final pulumi.Output<String> unitId;
-
   /// Reference to the UnitKind this Unit belongs to. Immutable once set.
   late final pulumi.Output<String?> unitKind;
-
   /// The timestamp when the resource was last updated. Any
   /// change to the resource made by users must refresh this value.
   /// Changes to a resource made by the service should refresh this value.
@@ -369,43 +344,31 @@ class Unit extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Unit]. {@macro pulumi_saasruntime_unit_unit_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Unit(String name, {UnitArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'gcp:saasruntime/unit:Unit',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Unit(
+    String name, {
+    UnitArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'gcp:saasruntime/unit:Unit',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     annotations = registerOutput<Map<String, String>?>('annotations');
     conditions = registerOutput<List<Map<String, dynamic>>>('conditions');
     createTime = registerOutput<String>('createTime');
     dependencies = registerOutput<List<Map<String, dynamic>>>('dependencies');
     dependents = registerOutput<List<Map<String, dynamic>>>('dependents');
-    effectiveAnnotations = registerOutput<Map<String, String>>(
-      'effectiveAnnotations',
-    );
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    inputVariables = registerOutput<List<Map<String, dynamic>>>(
-      'inputVariables',
-    );
+    inputVariables = registerOutput<List<Map<String, dynamic>>>('inputVariables');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
-    maintenance = registerOutput<UnitMaintenance?>(
-      'maintenance',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return UnitMaintenance.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    maintenance = registerOutput<UnitMaintenance?>('maintenance', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UnitMaintenance.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     managementMode = registerOutput<String?>('managementMode');
     this.name = registerOutput<String>('name');
     ongoingOperations = registerOutput<List<String>>('ongoingOperations');
-    outputVariables = registerOutput<List<Map<String, dynamic>>>(
-      'outputVariables',
-    );
+    outputVariables = registerOutput<List<Map<String, dynamic>>>('outputVariables');
     pendingOperations = registerOutput<List<String>>('pendingOperations');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
@@ -422,7 +385,11 @@ class Unit extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Unit] resource's state with the given [name] and [id].
-  static Unit get(String name, pulumi.Input<String> id, {UnitState? state}) {
+  static Unit get(
+    String name,
+    pulumi.Input<String> id, {
+    UnitState? state,
+  }) {
     return Unit._get(
       name,
       state: state?.toMap(),
@@ -435,41 +402,26 @@ class Unit extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:saasruntime/unit:Unit',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:saasruntime/unit:Unit',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     annotations = registerOutput<Map<String, String>?>('annotations');
     conditions = registerOutput<List<Map<String, dynamic>>>('conditions');
     createTime = registerOutput<String>('createTime');
     dependencies = registerOutput<List<Map<String, dynamic>>>('dependencies');
     dependents = registerOutput<List<Map<String, dynamic>>>('dependents');
-    effectiveAnnotations = registerOutput<Map<String, String>>(
-      'effectiveAnnotations',
-    );
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    inputVariables = registerOutput<List<Map<String, dynamic>>>(
-      'inputVariables',
-    );
+    inputVariables = registerOutput<List<Map<String, dynamic>>>('inputVariables');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
-    maintenance = registerOutput<UnitMaintenance?>(
-      'maintenance',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return UnitMaintenance.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    maintenance = registerOutput<UnitMaintenance?>('maintenance', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UnitMaintenance.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     managementMode = registerOutput<String?>('managementMode');
     this.name = registerOutput<String>('name');
     ongoingOperations = registerOutput<List<String>>('ongoingOperations');
-    outputVariables = registerOutput<List<Map<String, dynamic>>>(
-      'outputVariables',
-    );
+    outputVariables = registerOutput<List<Map<String, dynamic>>>('outputVariables');
     pendingOperations = registerOutput<List<String>>('pendingOperations');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');

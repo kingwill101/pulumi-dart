@@ -190,16 +190,12 @@ import 'bucket_metadata_configuration_timeouts.dart';
 class BucketMetadataConfiguration extends pulumi.CustomResource {
   /// General purpose bucket that you want to create the metadata configuration for.
   late final pulumi.Output<String> bucket;
-
   /// Account ID of the expected bucket owner.
   late final pulumi.Output<String?> expectedBucketOwner;
-
   /// Metadata configuration. See `metadata_configuration` Block for details.
   ///
   /// The following arguments are optional:
-  late final pulumi.Output<BucketMetadataConfigurationMetadataConfiguration>
-  metadataConfiguration;
-
+  late final pulumi.Output<BucketMetadataConfigurationMetadataConfiguration> metadataConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   late final pulumi.Output<BucketMetadataConfigurationTimeouts?> timeouts;
@@ -213,35 +209,16 @@ class BucketMetadataConfiguration extends pulumi.CustomResource {
     BucketMetadataConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:s3/bucketMetadataConfiguration:BucketMetadataConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:s3/bucketMetadataConfiguration:BucketMetadataConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
     expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
-    metadataConfiguration =
-        registerOutput<BucketMetadataConfigurationMetadataConfiguration>(
-          'metadataConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return BucketMetadataConfigurationMetadataConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    metadataConfiguration = registerOutput<BucketMetadataConfigurationMetadataConfiguration>('metadataConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketMetadataConfigurationMetadataConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    timeouts = registerOutput<BucketMetadataConfigurationTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketMetadataConfigurationTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<BucketMetadataConfigurationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketMetadataConfigurationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [BucketMetadataConfiguration] resource's state with the given [name] and [id].
@@ -262,34 +239,15 @@ class BucketMetadataConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:s3/bucketMetadataConfiguration:BucketMetadataConfiguration',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:s3/bucketMetadataConfiguration:BucketMetadataConfiguration',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
     expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
-    metadataConfiguration =
-        registerOutput<BucketMetadataConfigurationMetadataConfiguration>(
-          'metadataConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return BucketMetadataConfigurationMetadataConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    metadataConfiguration = registerOutput<BucketMetadataConfigurationMetadataConfiguration>('metadataConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketMetadataConfigurationMetadataConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    timeouts = registerOutput<BucketMetadataConfigurationTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketMetadataConfigurationTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<BucketMetadataConfigurationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketMetadataConfigurationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

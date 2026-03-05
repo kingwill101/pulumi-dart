@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListenerRuleMatchHttpMatchHeaderMatchMatch {
   /// Specifies a contains type match.
   final pulumi.Input<String>? contains;
-
   /// Specifies an exact type match.
   final pulumi.Input<String>? exact;
-
   /// Specifies a prefix type match.
   /// Matches the value with the prefix.
   final pulumi.Input<String>? prefix;
@@ -31,25 +29,12 @@ class ListenerRuleMatchHttpMatchHeaderMatchMatch {
     };
   }
 
-  factory ListenerRuleMatchHttpMatchHeaderMatchMatch.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListenerRuleMatchHttpMatchHeaderMatchMatch.fromMap(Map<String, dynamic> map) {
     return ListenerRuleMatchHttpMatchHeaderMatchMatch(
-      contains: (() {
-        final guardedValue = map['contains'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      exact: (() {
-        final guardedValue = map['exact'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      prefix: (() {
-        final guardedValue = map['prefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      contains: (() { final guardedValue = map['contains']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      exact: (() { final guardedValue = map['exact']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      prefix: (() { final guardedValue = map['prefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

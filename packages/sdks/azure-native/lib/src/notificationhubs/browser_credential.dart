@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BrowserCredential {
   /// Gets or sets web push subject.
   final pulumi.Input<String> subject;
-
   /// Gets or sets VAPID private key.
   final pulumi.Input<String> vapidPrivateKey;
-
   /// Gets or sets VAPID public key.
   final pulumi.Input<String> vapidPublicKey;
 
@@ -39,3 +37,4 @@ class BrowserCredential {
     );
   }
 }
+

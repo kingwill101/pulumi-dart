@@ -8,17 +8,20 @@ class UptimeCheckConfigHttpCheckPingConfig {
 
   /// Creates a new [UptimeCheckConfigHttpCheckPingConfig].
   /// [pingsCount] Number of ICMP pings. A maximum of 3 ICMP pings is currently supported.
-  UptimeCheckConfigHttpCheckPingConfig({required this.pingsCount});
+  UptimeCheckConfigHttpCheckPingConfig({
+    required this.pingsCount,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'pingsCount': pingsCount};
+    return <String, dynamic>{
+      'pingsCount': pingsCount,
+    };
   }
 
-  factory UptimeCheckConfigHttpCheckPingConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory UptimeCheckConfigHttpCheckPingConfig.fromMap(Map<String, dynamic> map) {
     return UptimeCheckConfigHttpCheckPingConfig(
       pingsCount: pulumi.Input.fromValue(map['pingsCount'] as int),
     );
   }
 }
+

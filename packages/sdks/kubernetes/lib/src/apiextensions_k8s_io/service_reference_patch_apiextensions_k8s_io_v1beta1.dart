@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceReferencePatchApiextensionsK8sIoV1beta1 {
   /// name is the name of the service. Required
   final pulumi.Input<String>? name;
-
   /// namespace is the namespace of the service. Required
   final pulumi.Input<String>? namespace;
-
   /// path is an optional URL path at which the webhook will be contacted.
   final pulumi.Input<String>? path;
-
   /// port is an optional service port at which the webhook will be contacted. `port` should be a valid port number (1-65535, inclusive). Defaults to 443 for backward compatibility.
   final pulumi.Input<int>? port;
 
@@ -37,30 +34,13 @@ class ServiceReferencePatchApiextensionsK8sIoV1beta1 {
     };
   }
 
-  factory ServiceReferencePatchApiextensionsK8sIoV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ServiceReferencePatchApiextensionsK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return ServiceReferencePatchApiextensionsK8sIoV1beta1(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      namespace: (() {
-        final guardedValue = map['namespace'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      path: (() {
-        final guardedValue = map['path'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      port: (() {
-        final guardedValue = map['port'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      namespace: (() { final guardedValue = map['namespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

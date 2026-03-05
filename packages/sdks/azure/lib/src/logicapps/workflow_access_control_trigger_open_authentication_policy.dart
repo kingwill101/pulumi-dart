@@ -5,11 +5,7 @@ import 'workflow_access_control_trigger_open_authentication_policy_claim.dart';
 
 class WorkflowAccessControlTriggerOpenAuthenticationPolicy {
   /// A `claim` block as defined below.
-  final pulumi.Input<
-    List<WorkflowAccessControlTriggerOpenAuthenticationPolicyClaim>
-  >
-  claims;
-
+  final pulumi.Input<List<WorkflowAccessControlTriggerOpenAuthenticationPolicyClaim>> claims;
   /// The OAuth policy name for the Logic App Workflow.
   final pulumi.Input<String> name;
 
@@ -23,38 +19,16 @@ class WorkflowAccessControlTriggerOpenAuthenticationPolicy {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'claims':
-          pulumi.Input.mapInputValue<
-            List<WorkflowAccessControlTriggerOpenAuthenticationPolicyClaim>,
-            List<Map<String, dynamic>>
-          >(
-            claims,
-            (value) =>
-                pulumi.Input.encodeList<
-                  WorkflowAccessControlTriggerOpenAuthenticationPolicyClaim,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'claims': pulumi.Input.mapInputValue<List<WorkflowAccessControlTriggerOpenAuthenticationPolicyClaim>, List<Map<String, dynamic>>>(claims, (value) => pulumi.Input.encodeList<WorkflowAccessControlTriggerOpenAuthenticationPolicyClaim, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
     };
   }
 
-  factory WorkflowAccessControlTriggerOpenAuthenticationPolicy.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WorkflowAccessControlTriggerOpenAuthenticationPolicy.fromMap(Map<String, dynamic> map) {
     return WorkflowAccessControlTriggerOpenAuthenticationPolicy(
-      claims: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          WorkflowAccessControlTriggerOpenAuthenticationPolicyClaim
-        >(
-          map['claims']!,
-          (value) =>
-              WorkflowAccessControlTriggerOpenAuthenticationPolicyClaim.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
+      claims: pulumi.Input.fromValue(pulumi.Input.decodeList<WorkflowAccessControlTriggerOpenAuthenticationPolicyClaim>(map['claims']!, (value) => WorkflowAccessControlTriggerOpenAuthenticationPolicyClaim.fromMap((value as Map).cast<String, dynamic>()))),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

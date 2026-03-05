@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LabelingJobLabelCounter {
   /// Total number of objects that could not be labeled due to an error.
   final pulumi.Input<int> failedNonRetryableError;
-
   /// Total number of objects labeled by a human worker.
   final pulumi.Input<int> humanLabeled;
-
   /// Total number of objects labeled by automated data labeling.
   final pulumi.Input<int> machineLabeled;
-
   /// Total number of objects labeled.
   final pulumi.Input<int> totalLabeled;
-
   /// Total number of objects not yet labeled.
   final pulumi.Input<int> unlabeled;
 
@@ -44,9 +40,7 @@ class LabelingJobLabelCounter {
 
   factory LabelingJobLabelCounter.fromMap(Map<String, dynamic> map) {
     return LabelingJobLabelCounter(
-      failedNonRetryableError: pulumi.Input.fromValue(
-        map['failedNonRetryableError'] as int,
-      ),
+      failedNonRetryableError: pulumi.Input.fromValue(map['failedNonRetryableError'] as int),
       humanLabeled: pulumi.Input.fromValue(map['humanLabeled'] as int),
       machineLabeled: pulumi.Input.fromValue(map['machineLabeled'] as int),
       totalLabeled: pulumi.Input.fromValue(map['totalLabeled'] as int),
@@ -54,3 +48,4 @@ class LabelingJobLabelCounter {
     );
   }
 }
+

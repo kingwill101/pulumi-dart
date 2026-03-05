@@ -5,9 +5,7 @@ import 'get_domain_cluster_config_node_option_node_config.dart';
 
 class GetDomainClusterConfigNodeOption {
   /// Sizing of a node type.
-  final pulumi.Input<List<GetDomainClusterConfigNodeOptionNodeConfig>>
-  nodeConfigs;
-
+  final pulumi.Input<List<GetDomainClusterConfigNodeOptionNodeConfig>> nodeConfigs;
   /// Type of node this configuration describes.
   final pulumi.Input<String> nodeType;
 
@@ -21,33 +19,16 @@ class GetDomainClusterConfigNodeOption {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'nodeConfigs':
-          pulumi.Input.mapInputValue<
-            List<GetDomainClusterConfigNodeOptionNodeConfig>,
-            List<Map<String, dynamic>>
-          >(
-            nodeConfigs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetDomainClusterConfigNodeOptionNodeConfig,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'nodeConfigs': pulumi.Input.mapInputValue<List<GetDomainClusterConfigNodeOptionNodeConfig>, List<Map<String, dynamic>>>(nodeConfigs, (value) => pulumi.Input.encodeList<GetDomainClusterConfigNodeOptionNodeConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'nodeType': nodeType,
     };
   }
 
   factory GetDomainClusterConfigNodeOption.fromMap(Map<String, dynamic> map) {
     return GetDomainClusterConfigNodeOption(
-      nodeConfigs: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetDomainClusterConfigNodeOptionNodeConfig>(
-          map['nodeConfigs']!,
-          (value) => GetDomainClusterConfigNodeOptionNodeConfig.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      nodeConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetDomainClusterConfigNodeOptionNodeConfig>(map['nodeConfigs']!, (value) => GetDomainClusterConfigNodeOptionNodeConfig.fromMap((value as Map).cast<String, dynamic>()))),
       nodeType: pulumi.Input.fromValue(map['nodeType'] as String),
     );
   }
 }
+

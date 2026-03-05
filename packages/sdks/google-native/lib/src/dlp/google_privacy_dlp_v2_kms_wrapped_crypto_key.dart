@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GooglePrivacyDlpV2KmsWrappedCryptoKey {
   /// The resource name of the KMS CryptoKey to use for unwrapping.
   final pulumi.Input<String> cryptoKeyName;
-
   /// The wrapped data crypto key.
   final pulumi.Input<String> wrappedKey;
 
@@ -25,12 +24,11 @@ class GooglePrivacyDlpV2KmsWrappedCryptoKey {
     };
   }
 
-  factory GooglePrivacyDlpV2KmsWrappedCryptoKey.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GooglePrivacyDlpV2KmsWrappedCryptoKey.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2KmsWrappedCryptoKey(
       cryptoKeyName: pulumi.Input.fromValue(map['cryptoKeyName'] as String),
       wrappedKey: pulumi.Input.fromValue(map['wrappedKey'] as String),
     );
   }
 }
+

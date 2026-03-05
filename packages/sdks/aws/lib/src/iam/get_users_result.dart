@@ -1,14 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getUsers.
 class GetUsersResult {
   /// Set of ARNs of the matched IAM users.
   final List<String> arns;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? nameRegex;
-
   /// Set of Names of the matched IAM users.
   final List<String> names;
   final String? pathPrefix;
@@ -41,17 +40,10 @@ class GetUsersResult {
     return GetUsersResult(
       arns: (map['arns'] as List).cast<String>(),
       id: map['id'] as String,
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      pathPrefix: (() {
-        final guardedValue = map['pathPrefix'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      pathPrefix: (() { final guardedValue = map['pathPrefix']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

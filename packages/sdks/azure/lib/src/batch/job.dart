@@ -290,19 +290,14 @@ import 'job_state.dart';
 class Job extends pulumi.CustomResource {
   /// The ID of the Batch Pool. Changing this forces a new Batch Job to be created.
   late final pulumi.Output<String> batchPoolId;
-
   /// Specifies a map of common environment settings applied to this Batch Job. Changing this forces a new Batch Job to be created.
   late final pulumi.Output<Map<String, String>?> commonEnvironmentProperties;
-
   /// The display name of this Batch Job. Changing this forces a new Batch Job to be created.
   late final pulumi.Output<String?> displayName;
-
   /// The name which should be used for this Batch Job. Changing this forces a new Batch Job to be created.
   late final pulumi.Output<String> name;
-
   /// The priority of this Batch Job, possible values can range from -1000 (lowest) to 1000 (highest). Defaults to `0`.
   late final pulumi.Output<int?> priority;
-
   /// The number of retries to each Batch Task belongs to this Batch Job. If this is set to `0`, the Batch service does not retry Tasks. If this is set to `-1`, the Batch service retries Batch Tasks without limit.
   late final pulumi.Output<int?> taskRetryMaximum;
 
@@ -310,17 +305,18 @@ class Job extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Job]. {@macro pulumi_batch_job_job_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Job(String name, {JobArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure:batch/job:Job',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Job(
+    String name, {
+    JobArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure:batch/job:Job',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     batchPoolId = registerOutput<String>('batchPoolId');
-    commonEnvironmentProperties = registerOutput<Map<String, String>?>(
-      'commonEnvironmentProperties',
-    );
+    commonEnvironmentProperties = registerOutput<Map<String, String>?>('commonEnvironmentProperties');
     displayName = registerOutput<String?>('displayName');
     this.name = registerOutput<String>('name');
     priority = registerOutput<int?>('priority');
@@ -328,7 +324,11 @@ class Job extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Job] resource's state with the given [name] and [id].
-  static Job get(String name, pulumi.Input<String> id, {JobState? state}) {
+  static Job get(
+    String name,
+    pulumi.Input<String> id, {
+    JobState? state,
+  }) {
     return Job._get(
       name,
       state: state?.toMap(),
@@ -341,15 +341,13 @@ class Job extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:batch/job:Job',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:batch/job:Job',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     batchPoolId = registerOutput<String>('batchPoolId');
-    commonEnvironmentProperties = registerOutput<Map<String, String>?>(
-      'commonEnvironmentProperties',
-    );
+    commonEnvironmentProperties = registerOutput<Map<String, String>?>('commonEnvironmentProperties');
     displayName = registerOutput<String?>('displayName');
     this.name = registerOutput<String>('name');
     priority = registerOutput<int?>('priority');

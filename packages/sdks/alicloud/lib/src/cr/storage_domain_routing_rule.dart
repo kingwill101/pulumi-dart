@@ -234,13 +234,10 @@ import 'storage_domain_routing_rule_state.dart';
 class StorageDomainRoutingRule extends pulumi.CustomResource {
   /// The creation time of the resource.
   late final pulumi.Output<int> createTime;
-
   /// The ID of the Container Registry Instance.
   late final pulumi.Output<String> instanceId;
-
   /// Domain name routing entry See `routes` below.
   late final pulumi.Output<List<Map<String, dynamic>>> routes;
-
   /// The ID of the Rule.
   late final pulumi.Output<String> ruleId;
 
@@ -253,11 +250,11 @@ class StorageDomainRoutingRule extends pulumi.CustomResource {
     StorageDomainRoutingRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cr/storageDomainRoutingRule:StorageDomainRoutingRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cr/storageDomainRoutingRule:StorageDomainRoutingRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<int>('createTime');
     instanceId = registerOutput<String>('instanceId');
     routes = registerOutput<List<Map<String, dynamic>>>('routes');
@@ -282,11 +279,11 @@ class StorageDomainRoutingRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cr/storageDomainRoutingRule:StorageDomainRoutingRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cr/storageDomainRoutingRule:StorageDomainRoutingRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<int>('createTime');
     instanceId = registerOutput<String>('instanceId');
     routes = registerOutput<List<Map<String, dynamic>>>('routes');

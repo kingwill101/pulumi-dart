@@ -13,8 +13,7 @@ enum LbTrafficExtensionLoadBalancingScheme {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown LbTrafficExtensionLoadBalancingScheme value: $value',
-    );
+    throw ArgumentError('Unknown LbTrafficExtensionLoadBalancingScheme value: $value');
   }
 }
+

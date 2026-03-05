@@ -5,43 +5,30 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClusterInstancesInstance {
   /// The emr cluster node group whether auto renew when payment type is 'Subscription'.
   final pulumi.Input<bool> autoRenew;
-
   /// The emr cluster node group auto renew duration when payment type is 'Subscription'.
   final pulumi.Input<int> autoRenewDuration;
-
   /// The emr cluster node group auto renew duration unit when payment type is 'Subscription'.
   final pulumi.Input<String> autoRenewDurationUnit;
-
   /// The creation time of the resource.
   final pulumi.Input<String> createTime;
-
   /// The expire time of the resource.
   final pulumi.Input<String> expireTime;
-
   /// The emr cluster ecs instance ID.
   final pulumi.Input<String> instanceId;
-
   /// The emr cluster ecs instance name.
   final pulumi.Input<String> instanceName;
-
   /// The emr cluster ecs instance state.
   final pulumi.Input<String> instanceState;
-
   /// The emr cluster ecs instance type.
   final pulumi.Input<String> instanceType;
-
   /// The emr cluster node group ID.
   final pulumi.Input<String> nodeGroupId;
-
   /// The emr cluster node group type.
   final pulumi.Input<String> nodeGroupType;
-
   /// The emr cluster ecs instance private ip.
   final pulumi.Input<String> privateIp;
-
   /// The emr cluster ecs instance public ip.
   final pulumi.Input<String> publicIp;
-
   /// The emr cluster node group zone ID.
   final pulumi.Input<String> zoneId;
 
@@ -99,12 +86,8 @@ class GetClusterInstancesInstance {
   factory GetClusterInstancesInstance.fromMap(Map<String, dynamic> map) {
     return GetClusterInstancesInstance(
       autoRenew: pulumi.Input.fromValue(map['autoRenew'] as bool),
-      autoRenewDuration: pulumi.Input.fromValue(
-        map['autoRenewDuration'] as int,
-      ),
-      autoRenewDurationUnit: pulumi.Input.fromValue(
-        map['autoRenewDurationUnit'] as String,
-      ),
+      autoRenewDuration: pulumi.Input.fromValue(map['autoRenewDuration'] as int),
+      autoRenewDurationUnit: pulumi.Input.fromValue(map['autoRenewDurationUnit'] as String),
       createTime: pulumi.Input.fromValue(map['createTime'] as String),
       expireTime: pulumi.Input.fromValue(map['expireTime'] as String),
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
@@ -119,3 +102,4 @@ class GetClusterInstancesInstance {
     );
   }
 }
+

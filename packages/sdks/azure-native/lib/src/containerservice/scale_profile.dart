@@ -10,39 +10,20 @@ class ScaleProfile {
 
   /// Creates a new [ScaleProfile].
   /// [manual] Specifications on how to scale the VirtualMachines agent pool to a fixed size.
-  ScaleProfile({this.manual});
+  ScaleProfile({
+    this.manual,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'manual':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ManualScaleProfile>,
-            List<Map<String, dynamic>>
-          >(
-            manual,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ManualScaleProfile,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'manual': ?pulumi.Input.mapOptionalInputValue<List<ManualScaleProfile>, List<Map<String, dynamic>>>(manual, (value) => pulumi.Input.encodeList<ManualScaleProfile, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ScaleProfile.fromMap(Map<String, dynamic> map) {
     return ScaleProfile(
-      manual: (() {
-        final guardedValue = map['manual'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ManualScaleProfile>(
-            guardedValue,
-            (value) => ManualScaleProfile.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      manual: (() { final guardedValue = map['manual']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ManualScaleProfile>(guardedValue, (value) => ManualScaleProfile.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

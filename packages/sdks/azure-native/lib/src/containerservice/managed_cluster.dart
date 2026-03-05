@@ -11197,192 +11197,116 @@ import 'user_assigned_identity_response.dart';
 class ManagedCluster extends pulumi.CustomResource {
   /// The Azure Active Directory configuration.
   late final pulumi.Output<ManagedClusterAADProfileResponse?> aadProfile;
-
   /// The profile of managed cluster add-on.
-  late final pulumi.Output<Map<String, ManagedClusterAddonProfileResponse>?>
-  addonProfiles;
-
+  late final pulumi.Output<Map<String, ManagedClusterAddonProfileResponse>?> addonProfiles;
   /// The agent pool properties.
   late final pulumi.Output<List<Map<String, dynamic>>?> agentPoolProfiles;
-
   /// AI toolchain operator settings that apply to the whole cluster.
-  late final pulumi.Output<ManagedClusterAIToolchainOperatorProfileResponse?>
-  aiToolchainOperatorProfile;
-
+  late final pulumi.Output<ManagedClusterAIToolchainOperatorProfileResponse?> aiToolchainOperatorProfile;
   /// The access profile for managed cluster API server.
-  late final pulumi.Output<ManagedClusterAPIServerAccessProfileResponse?>
-  apiServerAccessProfile;
-
+  late final pulumi.Output<ManagedClusterAPIServerAccessProfileResponse?> apiServerAccessProfile;
   /// Parameters to be applied to the cluster-autoscaler when enabled
-  late final pulumi.Output<ManagedClusterPropertiesResponseAutoScalerProfile?>
-  autoScalerProfile;
-
+  late final pulumi.Output<ManagedClusterPropertiesResponseAutoScalerProfile?> autoScalerProfile;
   /// The auto upgrade configuration.
-  late final pulumi.Output<ManagedClusterAutoUpgradeProfileResponse?>
-  autoUpgradeProfile;
-
+  late final pulumi.Output<ManagedClusterAutoUpgradeProfileResponse?> autoUpgradeProfile;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Azure Monitor addon profiles for monitoring the managed cluster.
-  late final pulumi.Output<ManagedClusterAzureMonitorProfileResponse?>
-  azureMonitorProfile;
-
+  late final pulumi.Output<ManagedClusterAzureMonitorProfileResponse?> azureMonitorProfile;
   /// The special FQDN used by the Azure Portal to access the Managed Cluster. This FQDN is for use only by the Azure Portal and should not be used by other clients. The Azure Portal requires certain Cross-Origin Resource Sharing (CORS) headers to be sent in some responses, which Kubernetes APIServer doesn't handle by default. This special FQDN supports CORS, allowing the Azure Portal to function properly.
   late final pulumi.Output<String> azurePortalFQDN;
-
   /// Profile of the cluster bootstrap configuration.
-  late final pulumi.Output<ManagedClusterBootstrapProfileResponse?>
-  bootstrapProfile;
-
+  late final pulumi.Output<ManagedClusterBootstrapProfileResponse?> bootstrapProfile;
   /// The version of Kubernetes the Managed Cluster is running. If kubernetesVersion was a fully specified version &lt;major.minor.patch&gt;, this field will be exactly equal to it. If kubernetesVersion was &lt;major.minor&gt;, this field will contain the full &lt;major.minor.patch&gt; version being used.
   late final pulumi.Output<String> currentKubernetesVersion;
-
   /// If local accounts should be disabled on the Managed Cluster. If set to true, getting static credentials will be disabled for this cluster. This must only be used on Managed Clusters that are AAD enabled. For more details see [disable local accounts](https://docs.microsoft.com/azure/aks/managed-aad#disable-local-accounts-preview).
   late final pulumi.Output<bool?> disableLocalAccounts;
-
   /// The Resource ID of the disk encryption set to use for enabling encryption at rest. This is of the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskEncryptionSets/{encryptionSetName}'
   late final pulumi.Output<String?> diskEncryptionSetID;
-
   /// The DNS prefix of the Managed Cluster. This cannot be updated once the Managed Cluster has been created.
   late final pulumi.Output<String?> dnsPrefix;
-
   /// Unique read-only string used to implement optimistic concurrency. The eTag value will change when the resource is updated. Specify an if-match or if-none-match header with the eTag value for a subsequent request to enable optimistic concurrency per the normal eTag convention.
   late final pulumi.Output<String> eTag;
-
   /// Whether to enable Kubernetes Role-Based Access Control.
   late final pulumi.Output<bool?> enableRBAC;
-
   /// The extended location of the Virtual Machine.
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
-
   /// The FQDN of the master pool.
   late final pulumi.Output<String> fqdn;
-
   /// The FQDN subdomain of the private cluster with custom private dns zone. This cannot be updated once the Managed Cluster has been created.
   late final pulumi.Output<String?> fqdnSubdomain;
-
   /// Configurations for provisioning the cluster with HTTP proxy servers.
-  late final pulumi.Output<ManagedClusterHTTPProxyConfigResponse?>
-  httpProxyConfig;
-
+  late final pulumi.Output<ManagedClusterHTTPProxyConfigResponse?> httpProxyConfig;
   /// The identity of the managed cluster, if configured.
   late final pulumi.Output<ManagedClusterIdentityResponse?> identity;
-
   /// The user identity associated with the managed cluster. This identity will be used by the kubelet. Only one user assigned identity is allowed. The only accepted key is "kubeletidentity", with value of "resourceId": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}".
-  late final pulumi.Output<Map<String, UserAssignedIdentityResponse>?>
-  identityProfile;
-
+  late final pulumi.Output<Map<String, UserAssignedIdentityResponse>?> identityProfile;
   /// Ingress profile for the managed cluster.
-  late final pulumi.Output<ManagedClusterIngressProfileResponse?>
-  ingressProfile;
-
+  late final pulumi.Output<ManagedClusterIngressProfileResponse?> ingressProfile;
   /// This is primarily used to expose different UI experiences in the portal for different kinds
   late final pulumi.Output<String?> kind;
-
   /// The version of Kubernetes specified by the user. Both patch version &lt;major.minor.patch&gt; (e.g. 1.20.13) and &lt;major.minor&gt; (e.g. 1.20) are supported. When &lt;major.minor&gt; is specified, the latest supported GA patch version is chosen automatically. Updating the cluster with the same &lt;major.minor&gt; once it has been created (e.g. 1.14.x -&gt; 1.14) will not trigger an upgrade, even if a newer patch version is available. When you upgrade a supported AKS cluster, Kubernetes minor versions cannot be skipped. All upgrades must be performed sequentially by major version number. For example, upgrades between 1.14.x -&gt; 1.15.x or 1.15.x -&gt; 1.16.x are allowed, however 1.14.x -&gt; 1.16.x is not allowed. See [upgrading an AKS cluster](https://docs.microsoft.com/azure/aks/upgrade-cluster) for more details.
   late final pulumi.Output<String?> kubernetesVersion;
-
   /// The profile for Linux VMs in the Managed Cluster.
   late final pulumi.Output<ContainerServiceLinuxProfileResponse?> linuxProfile;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The max number of agent pools for the managed cluster.
   late final pulumi.Output<int> maxAgentPools;
-
   /// Optional cluster metrics configuration.
-  late final pulumi.Output<ManagedClusterMetricsProfileResponse?>
-  metricsProfile;
-
+  late final pulumi.Output<ManagedClusterMetricsProfileResponse?> metricsProfile;
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The network configuration profile.
-  late final pulumi.Output<ContainerServiceNetworkProfileResponse?>
-  networkProfile;
-
+  late final pulumi.Output<ContainerServiceNetworkProfileResponse?> networkProfile;
   /// Node provisioning settings that apply to the whole cluster.
-  late final pulumi.Output<ManagedClusterNodeProvisioningProfileResponse?>
-  nodeProvisioningProfile;
-
+  late final pulumi.Output<ManagedClusterNodeProvisioningProfileResponse?> nodeProvisioningProfile;
   /// The name of the resource group containing agent pool nodes.
   late final pulumi.Output<String?> nodeResourceGroup;
-
   /// Profile of the node resource group configuration.
-  late final pulumi.Output<ManagedClusterNodeResourceGroupProfileResponse?>
-  nodeResourceGroupProfile;
-
+  late final pulumi.Output<ManagedClusterNodeResourceGroupProfileResponse?> nodeResourceGroupProfile;
   /// The OIDC issuer profile of the Managed Cluster.
-  late final pulumi.Output<ManagedClusterOIDCIssuerProfileResponse?>
-  oidcIssuerProfile;
-
+  late final pulumi.Output<ManagedClusterOIDCIssuerProfileResponse?> oidcIssuerProfile;
   /// The pod identity profile of the Managed Cluster. See [use AAD pod identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity) for more details on AAD pod identity integration.
-  late final pulumi.Output<ManagedClusterPodIdentityProfileResponse?>
-  podIdentityProfile;
-
+  late final pulumi.Output<ManagedClusterPodIdentityProfileResponse?> podIdentityProfile;
   /// The Power State of the cluster.
   late final pulumi.Output<PowerStateResponse> powerState;
-
   /// The FQDN of private cluster.
   late final pulumi.Output<String> privateFQDN;
-
   /// Private link resources associated with the cluster.
   late final pulumi.Output<List<Map<String, dynamic>>?> privateLinkResources;
-
   /// The current provisioning state.
   late final pulumi.Output<String> provisioningState;
-
   /// PublicNetworkAccess of the managedCluster. Allow or deny public network access for AKS
   late final pulumi.Output<String?> publicNetworkAccess;
-
   /// The resourceUID uniquely identifies ManagedClusters that reuse ARM ResourceIds (i.e: create, delete, create sequence)
   late final pulumi.Output<String> resourceUID;
-
   /// Security profile for the managed cluster.
-  late final pulumi.Output<ManagedClusterSecurityProfileResponse?>
-  securityProfile;
-
+  late final pulumi.Output<ManagedClusterSecurityProfileResponse?> securityProfile;
   /// Service mesh profile for a managed cluster.
   late final pulumi.Output<ServiceMeshProfileResponse?> serviceMeshProfile;
-
   /// Information about a service principal identity for the cluster to use for manipulating Azure APIs.
-  late final pulumi.Output<ManagedClusterServicePrincipalProfileResponse?>
-  servicePrincipalProfile;
-
+  late final pulumi.Output<ManagedClusterServicePrincipalProfileResponse?> servicePrincipalProfile;
   /// The managed cluster SKU.
   late final pulumi.Output<ManagedClusterSKUResponse?> sku;
-
   /// Contains read-only information about the Managed Cluster.
   late final pulumi.Output<ManagedClusterStatusResponse?> status;
-
   /// Storage profile for the managed cluster.
-  late final pulumi.Output<ManagedClusterStorageProfileResponse?>
-  storageProfile;
-
+  late final pulumi.Output<ManagedClusterStorageProfileResponse?> storageProfile;
   /// The support plan for the Managed Cluster. If unspecified, the default is 'KubernetesOfficial'.
   late final pulumi.Output<String?> supportPlan;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Settings for upgrading a cluster.
   late final pulumi.Output<ClusterUpgradeSettingsResponse?> upgradeSettings;
-
   /// The profile for Windows VMs in the Managed Cluster.
-  late final pulumi.Output<ManagedClusterWindowsProfileResponse?>
-  windowsProfile;
-
+  late final pulumi.Output<ManagedClusterWindowsProfileResponse?> windowsProfile;
   /// Workload Auto-scaler profile for the managed cluster.
-  late final pulumi.Output<ManagedClusterWorkloadAutoScalerProfileResponse?>
-  workloadAutoScalerProfile;
+  late final pulumi.Output<ManagedClusterWorkloadAutoScalerProfileResponse?> workloadAutoScalerProfile;
 
   /// Creates a new [ManagedCluster].
   /// [name] The Pulumi resource name.
@@ -11393,371 +11317,66 @@ class ManagedCluster extends pulumi.CustomResource {
     ManagedClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:containerservice:ManagedCluster',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    aadProfile = registerOutput<ManagedClusterAADProfileResponse?>(
-      'aadProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ManagedClusterAADProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    addonProfiles =
-        registerOutput<Map<String, ManagedClusterAddonProfileResponse>?>(
-          'addonProfiles',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return pulumi
-                .Input.decodeMapValues<ManagedClusterAddonProfileResponse>(
-              guardedValue,
-              (value) => ManagedClusterAddonProfileResponse.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            );
-          },
-        );
-    agentPoolProfiles = registerOutput<List<Map<String, dynamic>>?>(
-      'agentPoolProfiles',
-    );
-    aiToolchainOperatorProfile =
-        registerOutput<ManagedClusterAIToolchainOperatorProfileResponse?>(
-          'aiToolchainOperatorProfile',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ManagedClusterAIToolchainOperatorProfileResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    apiServerAccessProfile =
-        registerOutput<ManagedClusterAPIServerAccessProfileResponse?>(
-          'apiServerAccessProfile',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ManagedClusterAPIServerAccessProfileResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    autoScalerProfile =
-        registerOutput<ManagedClusterPropertiesResponseAutoScalerProfile?>(
-          'autoScalerProfile',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ManagedClusterPropertiesResponseAutoScalerProfile.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    autoUpgradeProfile =
-        registerOutput<ManagedClusterAutoUpgradeProfileResponse?>(
-          'autoUpgradeProfile',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ManagedClusterAutoUpgradeProfileResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'azure-native:containerservice:ManagedCluster',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    aadProfile = registerOutput<ManagedClusterAADProfileResponse?>('aadProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedClusterAADProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    addonProfiles = registerOutput<Map<String, ManagedClusterAddonProfileResponse>?>('addonProfiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<ManagedClusterAddonProfileResponse>(guardedValue, (value) => ManagedClusterAddonProfileResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    agentPoolProfiles = registerOutput<List<Map<String, dynamic>>?>('agentPoolProfiles');
+    aiToolchainOperatorProfile = registerOutput<ManagedClusterAIToolchainOperatorProfileResponse?>('aiToolchainOperatorProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedClusterAIToolchainOperatorProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    apiServerAccessProfile = registerOutput<ManagedClusterAPIServerAccessProfileResponse?>('apiServerAccessProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedClusterAPIServerAccessProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    autoScalerProfile = registerOutput<ManagedClusterPropertiesResponseAutoScalerProfile?>('autoScalerProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedClusterPropertiesResponseAutoScalerProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    autoUpgradeProfile = registerOutput<ManagedClusterAutoUpgradeProfileResponse?>('autoUpgradeProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedClusterAutoUpgradeProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    azureMonitorProfile =
-        registerOutput<ManagedClusterAzureMonitorProfileResponse?>(
-          'azureMonitorProfile',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ManagedClusterAzureMonitorProfileResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    azureMonitorProfile = registerOutput<ManagedClusterAzureMonitorProfileResponse?>('azureMonitorProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedClusterAzureMonitorProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azurePortalFQDN = registerOutput<String>('azurePortalFQDN');
-    bootstrapProfile = registerOutput<ManagedClusterBootstrapProfileResponse?>(
-      'bootstrapProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ManagedClusterBootstrapProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    currentKubernetesVersion = registerOutput<String>(
-      'currentKubernetesVersion',
-    );
+    bootstrapProfile = registerOutput<ManagedClusterBootstrapProfileResponse?>('bootstrapProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedClusterBootstrapProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    currentKubernetesVersion = registerOutput<String>('currentKubernetesVersion');
     disableLocalAccounts = registerOutput<bool?>('disableLocalAccounts');
     diskEncryptionSetID = registerOutput<String?>('diskEncryptionSetID');
     dnsPrefix = registerOutput<String?>('dnsPrefix');
     eTag = registerOutput<String>('eTag');
     enableRBAC = registerOutput<bool?>('enableRBAC');
-    extendedLocation = registerOutput<ExtendedLocationResponse?>(
-      'extendedLocation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExtendedLocationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     fqdn = registerOutput<String>('fqdn');
     fqdnSubdomain = registerOutput<String?>('fqdnSubdomain');
-    httpProxyConfig = registerOutput<ManagedClusterHTTPProxyConfigResponse?>(
-      'httpProxyConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ManagedClusterHTTPProxyConfigResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    identity = registerOutput<ManagedClusterIdentityResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ManagedClusterIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    identityProfile =
-        registerOutput<Map<String, UserAssignedIdentityResponse>?>(
-          'identityProfile',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return pulumi.Input.decodeMapValues<UserAssignedIdentityResponse>(
-              guardedValue,
-              (value) => UserAssignedIdentityResponse.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            );
-          },
-        );
-    ingressProfile = registerOutput<ManagedClusterIngressProfileResponse?>(
-      'ingressProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ManagedClusterIngressProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    httpProxyConfig = registerOutput<ManagedClusterHTTPProxyConfigResponse?>('httpProxyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedClusterHTTPProxyConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<ManagedClusterIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedClusterIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identityProfile = registerOutput<Map<String, UserAssignedIdentityResponse>?>('identityProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<UserAssignedIdentityResponse>(guardedValue, (value) => UserAssignedIdentityResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    ingressProfile = registerOutput<ManagedClusterIngressProfileResponse?>('ingressProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedClusterIngressProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kind = registerOutput<String?>('kind');
     kubernetesVersion = registerOutput<String?>('kubernetesVersion');
-    linuxProfile = registerOutput<ContainerServiceLinuxProfileResponse?>(
-      'linuxProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ContainerServiceLinuxProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    linuxProfile = registerOutput<ContainerServiceLinuxProfileResponse?>('linuxProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerServiceLinuxProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     maxAgentPools = registerOutput<int>('maxAgentPools');
-    metricsProfile = registerOutput<ManagedClusterMetricsProfileResponse?>(
-      'metricsProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ManagedClusterMetricsProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    metricsProfile = registerOutput<ManagedClusterMetricsProfileResponse?>('metricsProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedClusterMetricsProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    networkProfile = registerOutput<ContainerServiceNetworkProfileResponse?>(
-      'networkProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ContainerServiceNetworkProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    nodeProvisioningProfile =
-        registerOutput<ManagedClusterNodeProvisioningProfileResponse?>(
-          'nodeProvisioningProfile',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ManagedClusterNodeProvisioningProfileResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    networkProfile = registerOutput<ContainerServiceNetworkProfileResponse?>('networkProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerServiceNetworkProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    nodeProvisioningProfile = registerOutput<ManagedClusterNodeProvisioningProfileResponse?>('nodeProvisioningProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedClusterNodeProvisioningProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     nodeResourceGroup = registerOutput<String?>('nodeResourceGroup');
-    nodeResourceGroupProfile =
-        registerOutput<ManagedClusterNodeResourceGroupProfileResponse?>(
-          'nodeResourceGroupProfile',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ManagedClusterNodeResourceGroupProfileResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    oidcIssuerProfile =
-        registerOutput<ManagedClusterOIDCIssuerProfileResponse?>(
-          'oidcIssuerProfile',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ManagedClusterOIDCIssuerProfileResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    podIdentityProfile =
-        registerOutput<ManagedClusterPodIdentityProfileResponse?>(
-          'podIdentityProfile',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ManagedClusterPodIdentityProfileResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    powerState = registerOutput<PowerStateResponse>(
-      'powerState',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PowerStateResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    nodeResourceGroupProfile = registerOutput<ManagedClusterNodeResourceGroupProfileResponse?>('nodeResourceGroupProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedClusterNodeResourceGroupProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    oidcIssuerProfile = registerOutput<ManagedClusterOIDCIssuerProfileResponse?>('oidcIssuerProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedClusterOIDCIssuerProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    podIdentityProfile = registerOutput<ManagedClusterPodIdentityProfileResponse?>('podIdentityProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedClusterPodIdentityProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    powerState = registerOutput<PowerStateResponse>('powerState', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PowerStateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     privateFQDN = registerOutput<String>('privateFQDN');
-    privateLinkResources = registerOutput<List<Map<String, dynamic>>?>(
-      'privateLinkResources',
-    );
+    privateLinkResources = registerOutput<List<Map<String, dynamic>>?>('privateLinkResources');
     provisioningState = registerOutput<String>('provisioningState');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     resourceUID = registerOutput<String>('resourceUID');
-    securityProfile = registerOutput<ManagedClusterSecurityProfileResponse?>(
-      'securityProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ManagedClusterSecurityProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    serviceMeshProfile = registerOutput<ServiceMeshProfileResponse?>(
-      'serviceMeshProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceMeshProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    servicePrincipalProfile =
-        registerOutput<ManagedClusterServicePrincipalProfileResponse?>(
-          'servicePrincipalProfile',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ManagedClusterServicePrincipalProfileResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    sku = registerOutput<ManagedClusterSKUResponse?>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ManagedClusterSKUResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    status = registerOutput<ManagedClusterStatusResponse?>(
-      'status',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ManagedClusterStatusResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    storageProfile = registerOutput<ManagedClusterStorageProfileResponse?>(
-      'storageProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ManagedClusterStorageProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    securityProfile = registerOutput<ManagedClusterSecurityProfileResponse?>('securityProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedClusterSecurityProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    serviceMeshProfile = registerOutput<ServiceMeshProfileResponse?>('serviceMeshProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceMeshProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    servicePrincipalProfile = registerOutput<ManagedClusterServicePrincipalProfileResponse?>('servicePrincipalProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedClusterServicePrincipalProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sku = registerOutput<ManagedClusterSKUResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedClusterSKUResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<ManagedClusterStatusResponse?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedClusterStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    storageProfile = registerOutput<ManagedClusterStorageProfileResponse?>('storageProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedClusterStorageProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     supportPlan = registerOutput<String?>('supportPlan');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
-    upgradeSettings = registerOutput<ClusterUpgradeSettingsResponse?>(
-      'upgradeSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterUpgradeSettingsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    windowsProfile = registerOutput<ManagedClusterWindowsProfileResponse?>(
-      'windowsProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ManagedClusterWindowsProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    workloadAutoScalerProfile =
-        registerOutput<ManagedClusterWorkloadAutoScalerProfileResponse?>(
-          'workloadAutoScalerProfile',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ManagedClusterWorkloadAutoScalerProfileResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    upgradeSettings = registerOutput<ClusterUpgradeSettingsResponse?>('upgradeSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterUpgradeSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    windowsProfile = registerOutput<ManagedClusterWindowsProfileResponse?>('windowsProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedClusterWindowsProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    workloadAutoScalerProfile = registerOutput<ManagedClusterWorkloadAutoScalerProfileResponse?>('workloadAutoScalerProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedClusterWorkloadAutoScalerProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

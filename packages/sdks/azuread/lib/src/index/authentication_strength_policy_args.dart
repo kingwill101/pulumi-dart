@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AuthenticationStrengthPolicyArgs {
   /// List of allowed authentication methods for this authentication strength policy.
   final pulumi.Input<List<String>> allowedCombinations;
-
   /// The description for this authentication strength policy.
   final pulumi.Input<String>? description;
-
   /// The friendly name for this authentication strength policy.
   final pulumi.Input<String> displayName;
 
@@ -36,15 +34,10 @@ class AuthenticationStrengthPolicyArgs {
 
   factory AuthenticationStrengthPolicyArgs.fromMap(Map<String, dynamic> map) {
     return AuthenticationStrengthPolicyArgs(
-      allowedCombinations: pulumi.Input.fromValue(
-        (map['allowedCombinations'] as List).cast<String>(),
-      ),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      allowedCombinations: pulumi.Input.fromValue((map['allowedCombinations'] as List).cast<String>()),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
     );
   }
 }
+

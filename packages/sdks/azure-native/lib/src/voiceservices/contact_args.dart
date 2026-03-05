@@ -9,25 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContactArgs {
   /// Unique identifier for this deployment
   final pulumi.Input<String> communicationsGatewayName;
-
   /// Full name of contact
   final pulumi.Input<String>? contactName;
-
   /// Email address of contact
   final pulumi.Input<String> email;
-
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
-
   /// Telephone number of contact
   final pulumi.Input<String> phoneNumber;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Job title of contact
   final pulumi.Input<String> role;
-
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -66,32 +59,15 @@ class ContactArgs {
 
   factory ContactArgs.fromMap(Map<String, dynamic> map) {
     return ContactArgs(
-      communicationsGatewayName: pulumi.Input.fromValue(
-        map['communicationsGatewayName'] as String,
-      ),
-      contactName: (() {
-        final guardedValue = map['contactName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      communicationsGatewayName: pulumi.Input.fromValue(map['communicationsGatewayName'] as String),
+      contactName: (() { final guardedValue = map['contactName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       email: pulumi.Input.fromValue(map['email'] as String),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       phoneNumber: pulumi.Input.fromValue(map['phoneNumber'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       role: pulumi.Input.fromValue(map['role'] as String),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

@@ -12,10 +12,14 @@ class GetApplicationArgs {
 
   /// Creates a new [GetApplicationArgs].
   /// [name] The name of the application in New Relic.
-  GetApplicationArgs({required this.name});
+  GetApplicationArgs({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory GetApplicationArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetApplicationArgs {
     );
   }
 }
+

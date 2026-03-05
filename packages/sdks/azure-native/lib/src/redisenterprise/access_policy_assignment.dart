@@ -166,19 +166,14 @@ import 'access_policy_assignment_properties_response_user.dart';
 class AccessPolicyAssignment extends pulumi.CustomResource {
   /// Name of access policy under specific access policy assignment. Only "default" policy is supported for now.
   late final pulumi.Output<String> accessPolicyName;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Current provisioning status of the access policy assignment.
   late final pulumi.Output<String> provisioningState;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// The user associated with the access policy.
   late final pulumi.Output<AccessPolicyAssignmentPropertiesResponseUser> user;
 
@@ -191,25 +186,16 @@ class AccessPolicyAssignment extends pulumi.CustomResource {
     AccessPolicyAssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:redisenterprise:AccessPolicyAssignment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:redisenterprise:AccessPolicyAssignment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessPolicyName = registerOutput<String>('accessPolicyName');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     type = registerOutput<String>('type');
-    user = registerOutput<AccessPolicyAssignmentPropertiesResponseUser>(
-      'user',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccessPolicyAssignmentPropertiesResponseUser.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    user = registerOutput<AccessPolicyAssignmentPropertiesResponseUser>('user', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessPolicyAssignmentPropertiesResponseUser.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

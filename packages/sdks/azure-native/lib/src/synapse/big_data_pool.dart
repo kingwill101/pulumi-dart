@@ -284,75 +284,50 @@ import 'spark_config_properties_response.dart';
 class BigDataPool extends pulumi.CustomResource {
   /// Auto-pausing properties
   late final pulumi.Output<AutoPausePropertiesResponse?> autoPause;
-
   /// Auto-scaling properties
   late final pulumi.Output<AutoScalePropertiesResponse?> autoScale;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The cache size
   late final pulumi.Output<int?> cacheSize;
-
   /// The time when the Big Data pool was created.
   late final pulumi.Output<String> creationDate;
-
   /// List of custom libraries/packages associated with the spark pool.
   late final pulumi.Output<List<Map<String, dynamic>>?> customLibraries;
-
   /// The default folder where Spark logs will be written.
   late final pulumi.Output<String?> defaultSparkLogFolder;
-
   /// Dynamic Executor Allocation
-  late final pulumi.Output<DynamicExecutorAllocationResponse?>
-  dynamicExecutorAllocation;
-
+  late final pulumi.Output<DynamicExecutorAllocationResponse?> dynamicExecutorAllocation;
   /// Whether autotune is required or not.
   late final pulumi.Output<bool?> isAutotuneEnabled;
-
   /// Whether compute isolation is required or not.
   late final pulumi.Output<bool?> isComputeIsolationEnabled;
-
   /// The time when the Big Data pool was updated successfully.
   late final pulumi.Output<String> lastSucceededTimestamp;
-
   /// Library version requirements
   late final pulumi.Output<LibraryRequirementsResponse?> libraryRequirements;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The number of nodes in the Big Data pool.
   late final pulumi.Output<int?> nodeCount;
-
   /// The level of compute power that each node in the Big Data pool has.
   late final pulumi.Output<String?> nodeSize;
-
   /// The kind of nodes that the Big Data pool provides.
   late final pulumi.Output<String?> nodeSizeFamily;
-
   /// The state of the Big Data pool.
   late final pulumi.Output<String?> provisioningState;
-
   /// Whether session level packages enabled.
   late final pulumi.Output<bool?> sessionLevelPackagesEnabled;
-
   /// Spark configuration file to specify additional properties
-  late final pulumi.Output<SparkConfigPropertiesResponse?>
-  sparkConfigProperties;
-
+  late final pulumi.Output<SparkConfigPropertiesResponse?> sparkConfigProperties;
   /// The Spark events folder
   late final pulumi.Output<String?> sparkEventsFolder;
-
   /// The Apache Spark version.
   late final pulumi.Output<String?> sparkVersion;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -365,83 +340,31 @@ class BigDataPool extends pulumi.CustomResource {
     BigDataPoolArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:synapse:BigDataPool',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    autoPause = registerOutput<AutoPausePropertiesResponse?>(
-      'autoPause',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AutoPausePropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    autoScale = registerOutput<AutoScalePropertiesResponse?>(
-      'autoScale',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AutoScalePropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure-native:synapse:BigDataPool',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    autoPause = registerOutput<AutoPausePropertiesResponse?>('autoPause', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutoPausePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    autoScale = registerOutput<AutoScalePropertiesResponse?>('autoScale', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutoScalePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     cacheSize = registerOutput<int?>('cacheSize');
     creationDate = registerOutput<String>('creationDate');
-    customLibraries = registerOutput<List<Map<String, dynamic>>?>(
-      'customLibraries',
-    );
+    customLibraries = registerOutput<List<Map<String, dynamic>>?>('customLibraries');
     defaultSparkLogFolder = registerOutput<String?>('defaultSparkLogFolder');
-    dynamicExecutorAllocation =
-        registerOutput<DynamicExecutorAllocationResponse?>(
-          'dynamicExecutorAllocation',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return DynamicExecutorAllocationResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    dynamicExecutorAllocation = registerOutput<DynamicExecutorAllocationResponse?>('dynamicExecutorAllocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DynamicExecutorAllocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     isAutotuneEnabled = registerOutput<bool?>('isAutotuneEnabled');
-    isComputeIsolationEnabled = registerOutput<bool?>(
-      'isComputeIsolationEnabled',
-    );
+    isComputeIsolationEnabled = registerOutput<bool?>('isComputeIsolationEnabled');
     lastSucceededTimestamp = registerOutput<String>('lastSucceededTimestamp');
-    libraryRequirements = registerOutput<LibraryRequirementsResponse?>(
-      'libraryRequirements',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LibraryRequirementsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    libraryRequirements = registerOutput<LibraryRequirementsResponse?>('libraryRequirements', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LibraryRequirementsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     nodeCount = registerOutput<int?>('nodeCount');
     nodeSize = registerOutput<String?>('nodeSize');
     nodeSizeFamily = registerOutput<String?>('nodeSizeFamily');
     provisioningState = registerOutput<String?>('provisioningState');
-    sessionLevelPackagesEnabled = registerOutput<bool?>(
-      'sessionLevelPackagesEnabled',
-    );
-    sparkConfigProperties = registerOutput<SparkConfigPropertiesResponse?>(
-      'sparkConfigProperties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SparkConfigPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sessionLevelPackagesEnabled = registerOutput<bool?>('sessionLevelPackagesEnabled');
+    sparkConfigProperties = registerOutput<SparkConfigPropertiesResponse?>('sparkConfigProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SparkConfigPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sparkEventsFolder = registerOutput<String?>('sparkEventsFolder');
     sparkVersion = registerOutput<String?>('sparkVersion');
     tags = registerOutput<Map<String, String>?>('tags');

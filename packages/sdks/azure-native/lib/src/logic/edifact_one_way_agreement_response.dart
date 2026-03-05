@@ -8,10 +8,8 @@ import 'edifact_protocol_settings_response.dart';
 class EdifactOneWayAgreementResponse {
   /// The EDIFACT protocol settings.
   final pulumi.Input<EdifactProtocolSettingsResponse> protocolSettings;
-
   /// The receiver business identity
   final pulumi.Input<BusinessIdentityResponse> receiverBusinessIdentity;
-
   /// The sender business identity
   final pulumi.Input<BusinessIdentityResponse> senderBusinessIdentity;
 
@@ -27,41 +25,18 @@ class EdifactOneWayAgreementResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'protocolSettings':
-          pulumi.Input.mapInputValue<
-            EdifactProtocolSettingsResponse,
-            Map<String, dynamic>
-          >(protocolSettings, (value) => value.toMap()),
-      'receiverBusinessIdentity':
-          pulumi.Input.mapInputValue<
-            BusinessIdentityResponse,
-            Map<String, dynamic>
-          >(receiverBusinessIdentity, (value) => value.toMap()),
-      'senderBusinessIdentity':
-          pulumi.Input.mapInputValue<
-            BusinessIdentityResponse,
-            Map<String, dynamic>
-          >(senderBusinessIdentity, (value) => value.toMap()),
+      'protocolSettings': pulumi.Input.mapInputValue<EdifactProtocolSettingsResponse, Map<String, dynamic>>(protocolSettings, (value) => value.toMap()),
+      'receiverBusinessIdentity': pulumi.Input.mapInputValue<BusinessIdentityResponse, Map<String, dynamic>>(receiverBusinessIdentity, (value) => value.toMap()),
+      'senderBusinessIdentity': pulumi.Input.mapInputValue<BusinessIdentityResponse, Map<String, dynamic>>(senderBusinessIdentity, (value) => value.toMap()),
     };
   }
 
   factory EdifactOneWayAgreementResponse.fromMap(Map<String, dynamic> map) {
     return EdifactOneWayAgreementResponse(
-      protocolSettings: pulumi.Input.fromValue(
-        EdifactProtocolSettingsResponse.fromMap(
-          (map['protocolSettings']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      receiverBusinessIdentity: pulumi.Input.fromValue(
-        BusinessIdentityResponse.fromMap(
-          (map['receiverBusinessIdentity']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      senderBusinessIdentity: pulumi.Input.fromValue(
-        BusinessIdentityResponse.fromMap(
-          (map['senderBusinessIdentity']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      protocolSettings: pulumi.Input.fromValue(EdifactProtocolSettingsResponse.fromMap((map['protocolSettings']! as Map).cast<String, dynamic>())),
+      receiverBusinessIdentity: pulumi.Input.fromValue(BusinessIdentityResponse.fromMap((map['receiverBusinessIdentity']! as Map).cast<String, dynamic>())),
+      senderBusinessIdentity: pulumi.Input.fromValue(BusinessIdentityResponse.fromMap((map['senderBusinessIdentity']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

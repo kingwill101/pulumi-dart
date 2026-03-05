@@ -15,3 +15,4 @@ enum RecoveryPlanActionLocation {
     throw ArgumentError('Unknown RecoveryPlanActionLocation value: $value');
   }
 }
+

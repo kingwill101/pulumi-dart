@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponse {
   /// The name of the header to set.
   final pulumi.Input<String> headerName;
-
   /// The value to set the named header to.
   final pulumi.Input<String> headerValue;
 
@@ -24,12 +23,11 @@ class SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponse {
     };
   }
 
-  factory SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponse.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponse(
       headerName: pulumi.Input.fromValue(map['headerName'] as String),
       headerValue: pulumi.Input.fromValue(map['headerValue'] as String),
     );
   }
 }
+

@@ -261,10 +261,8 @@ import 'registry_policy_state.dart';
 class RegistryPolicy extends pulumi.CustomResource {
   /// The policy document. This is a JSON formatted string.
   late final pulumi.Output<String> policy;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The registry ID where the registry was created.
   late final pulumi.Output<String> registryId;
 
@@ -277,11 +275,11 @@ class RegistryPolicy extends pulumi.CustomResource {
     RegistryPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ecr/registryPolicy:RegistryPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ecr/registryPolicy:RegistryPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');
     registryId = registerOutput<String>('registryId');
@@ -305,11 +303,11 @@ class RegistryPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ecr/registryPolicy:RegistryPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ecr/registryPolicy:RegistryPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');
     registryId = registerOutput<String>('registryId');

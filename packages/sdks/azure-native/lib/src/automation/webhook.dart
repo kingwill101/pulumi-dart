@@ -179,46 +179,32 @@ import 'webhook_args.dart';
 class Webhook extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Gets or sets the creation time.
   late final pulumi.Output<String?> creationTime;
-
   /// Gets or sets the description.
   late final pulumi.Output<String?> description;
-
   /// Gets or sets the expiry time.
   late final pulumi.Output<String?> expiryTime;
-
   /// Gets or sets the value of the enabled flag of the webhook.
   late final pulumi.Output<bool?> isEnabled;
-
   /// Gets or sets the last invoked time.
   late final pulumi.Output<String?> lastInvokedTime;
-
   /// Details of the user who last modified the Webhook
   late final pulumi.Output<String?> lastModifiedBy;
-
   /// Gets or sets the last modified time.
   late final pulumi.Output<String?> lastModifiedTime;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Gets or sets the parameters of the job that is created when the webhook calls the runbook it is associated with.
   late final pulumi.Output<Map<String, String>?> parameters;
-
   /// Gets or sets the name of the hybrid worker group the webhook job will run on.
   late final pulumi.Output<String?> runOn;
-
   /// Gets or sets the runbook the webhook is associated with.
   late final pulumi.Output<RunbookAssociationPropertyResponse?> runbook;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Gets or sets the webhook uri.
   late final pulumi.Output<String?> uri;
 
@@ -231,11 +217,11 @@ class Webhook extends pulumi.CustomResource {
     WebhookArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:automation:Webhook',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:automation:Webhook',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     creationTime = registerOutput<String?>('creationTime');
     description = registerOutput<String?>('description');
@@ -247,26 +233,8 @@ class Webhook extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     parameters = registerOutput<Map<String, String>?>('parameters');
     runOn = registerOutput<String?>('runOn');
-    runbook = registerOutput<RunbookAssociationPropertyResponse?>(
-      'runbook',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RunbookAssociationPropertyResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    runbook = registerOutput<RunbookAssociationPropertyResponse?>('runbook', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RunbookAssociationPropertyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     uri = registerOutput<String?>('uri');
   }

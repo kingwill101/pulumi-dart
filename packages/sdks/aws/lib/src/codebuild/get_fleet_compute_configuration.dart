@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFleetComputeConfiguration {
   /// Amount of disk space of the instance type included in the fleet.
   final pulumi.Input<int> disk;
-
   /// EC2 instance type in the fleet.
   final pulumi.Input<String> instanceType;
-
   /// Machine type of the instance type included in the fleet.
   final pulumi.Input<String> machineType;
-
   /// Amount of memory of the instance type included in the fleet.
   final pulumi.Input<int> memory;
-
   /// Number of vCPUs of the instance type included in the fleet.
   final pulumi.Input<int> vcpu;
 
@@ -52,3 +48,4 @@ class GetFleetComputeConfiguration {
     );
   }
 }
+

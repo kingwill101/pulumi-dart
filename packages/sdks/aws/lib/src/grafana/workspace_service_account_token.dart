@@ -157,28 +157,20 @@ import 'workspace_service_account_token_state.dart';
 class WorkspaceServiceAccountToken extends pulumi.CustomResource {
   /// Specifies when the service account token was created.
   late final pulumi.Output<String> createdAt;
-
   /// Specifies when the service account token will expire.
   late final pulumi.Output<String> expiresAt;
-
   /// The key for the service account token. Used when making calls to the Grafana HTTP APIs to authenticate and authorize the requests.
   late final pulumi.Output<String> key;
-
   /// A name for the token to create. The name must be unique within the workspace.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Sets how long the token will be valid, in seconds. You can set the time up to 30 days in the future.
   late final pulumi.Output<int> secondsToLive;
-
   /// The ID of the service account for which to create a token.
   late final pulumi.Output<String> serviceAccountId;
-
   /// Identifier of the service account token in the given Grafana workspace.
   late final pulumi.Output<String> serviceAccountTokenId;
-
   /// The Grafana workspace with which the service account token is associated.
   late final pulumi.Output<String> workspaceId;
 
@@ -191,11 +183,11 @@ class WorkspaceServiceAccountToken extends pulumi.CustomResource {
     WorkspaceServiceAccountTokenArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:grafana/workspaceServiceAccountToken:WorkspaceServiceAccountToken',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:grafana/workspaceServiceAccountToken:WorkspaceServiceAccountToken',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createdAt = registerOutput<String>('createdAt');
     expiresAt = registerOutput<String>('expiresAt');
     key = registerOutput<String>('key');
@@ -225,11 +217,11 @@ class WorkspaceServiceAccountToken extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:grafana/workspaceServiceAccountToken:WorkspaceServiceAccountToken',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:grafana/workspaceServiceAccountToken:WorkspaceServiceAccountToken',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createdAt = registerOutput<String>('createdAt');
     expiresAt = registerOutput<String>('expiresAt');
     key = registerOutput<String>('key');

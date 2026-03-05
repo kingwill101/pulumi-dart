@@ -404,62 +404,44 @@ import 'metric_alert_state.dart';
 class MetricAlert extends pulumi.CustomResource {
   /// One or more `action` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> actions;
-
   /// A `application_insights_web_test_location_availability_criteria` block as defined below.
   ///
   /// &gt; **Note:** One of either `criteria`, `dynamic_criteria` or `application_insights_web_test_location_availability_criteria` must be specified.
-  late final pulumi.Output<
-    MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteria?
-  >
-  applicationInsightsWebTestLocationAvailabilityCriteria;
-
+  late final pulumi.Output<MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteria?> applicationInsightsWebTestLocationAvailabilityCriteria;
   /// Should the alerts in this Metric Alert be auto resolved? Defaults to `true`.
   late final pulumi.Output<bool?> autoMitigate;
-
   /// One or more (static) `criteria` blocks as defined below.
   ///
   /// &gt; **Note:** One of either `criteria`, `dynamic_criteria` or `application_insights_web_test_location_availability_criteria` must be specified.
   late final pulumi.Output<List<Map<String, dynamic>>?> criterias;
-
   /// The description of this Metric Alert.
   late final pulumi.Output<String?> description;
-
   /// A `dynamic_criteria` block as defined below.
   ///
   /// &gt; **Note:** One of either `criteria`, `dynamic_criteria` or `application_insights_web_test_location_availability_criteria` must be specified.
   late final pulumi.Output<MetricAlertDynamicCriteria?> dynamicCriteria;
-
   /// Should this Metric Alert be enabled? Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
-
   /// The evaluation frequency of this Metric Alert, represented in ISO 8601 duration format. Possible values are `PT1M`, `PT5M`, `PT15M`, `PT30M` and `PT1H`. Defaults to `PT1M`.
   late final pulumi.Output<String?> frequency;
-
   /// The name of the Metric Alert. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the resource group in which to create the Metric Alert instance. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A set of strings of resource IDs at which the metric criteria should be applied.
   late final pulumi.Output<List<String>> scopes;
-
   /// The severity of this Metric Alert. Possible values are `0`, `1`, `2`, `3` and `4`. Defaults to `3`.
   late final pulumi.Output<int?> severity;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The location of the target resource.
   ///
   /// &gt; **Note:** This is Required when using a Subscription as scope, a Resource Group as scope or Multiple Scopes.
   late final pulumi.Output<String> targetResourceLocation;
-
   /// The resource type (e.g. `Microsoft.Compute/virtualMachines`) of the target resource.
   ///
   /// &gt; **Note:** This is Required when using a Subscription as scope, a Resource Group as scope or Multiple Scopes.
   late final pulumi.Output<String> targetResourceType;
-
   /// The period of time that is used to monitor alert activity, represented in ISO 8601 duration format. This value must be greater than `frequency`. Possible values are `PT1M`, `PT5M`, `PT15M`, `PT30M`, `PT1H`, `PT6H`, `PT12H` and `P1D`. Defaults to `PT5M`.
   late final pulumi.Output<String?> windowSize;
 
@@ -472,38 +454,17 @@ class MetricAlert extends pulumi.CustomResource {
     MetricAlertArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:monitoring/metricAlert:MetricAlert',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:monitoring/metricAlert:MetricAlert',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     actions = registerOutput<List<Map<String, dynamic>>?>('actions');
-    applicationInsightsWebTestLocationAvailabilityCriteria =
-        registerOutput<
-          MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteria?
-        >(
-          'applicationInsightsWebTestLocationAvailabilityCriteria',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteria.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    applicationInsightsWebTestLocationAvailabilityCriteria = registerOutput<MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteria?>('applicationInsightsWebTestLocationAvailabilityCriteria', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteria.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     autoMitigate = registerOutput<bool?>('autoMitigate');
     criterias = registerOutput<List<Map<String, dynamic>>?>('criterias');
     description = registerOutput<String?>('description');
-    dynamicCriteria = registerOutput<MetricAlertDynamicCriteria?>(
-      'dynamicCriteria',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MetricAlertDynamicCriteria.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    dynamicCriteria = registerOutput<MetricAlertDynamicCriteria?>('dynamicCriteria', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetricAlertDynamicCriteria.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     enabled = registerOutput<bool?>('enabled');
     frequency = registerOutput<String?>('frequency');
     this.name = registerOutput<String>('name');
@@ -534,38 +495,17 @@ class MetricAlert extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:monitoring/metricAlert:MetricAlert',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:monitoring/metricAlert:MetricAlert',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     actions = registerOutput<List<Map<String, dynamic>>?>('actions');
-    applicationInsightsWebTestLocationAvailabilityCriteria =
-        registerOutput<
-          MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteria?
-        >(
-          'applicationInsightsWebTestLocationAvailabilityCriteria',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteria.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    applicationInsightsWebTestLocationAvailabilityCriteria = registerOutput<MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteria?>('applicationInsightsWebTestLocationAvailabilityCriteria', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteria.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     autoMitigate = registerOutput<bool?>('autoMitigate');
     criterias = registerOutput<List<Map<String, dynamic>>?>('criterias');
     description = registerOutput<String?>('description');
-    dynamicCriteria = registerOutput<MetricAlertDynamicCriteria?>(
-      'dynamicCriteria',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MetricAlertDynamicCriteria.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    dynamicCriteria = registerOutput<MetricAlertDynamicCriteria?>('dynamicCriteria', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetricAlertDynamicCriteria.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     enabled = registerOutput<bool?>('enabled');
     frequency = registerOutput<String?>('frequency');
     this.name = registerOutput<String>('name');

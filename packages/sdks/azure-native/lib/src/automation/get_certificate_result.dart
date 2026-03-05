@@ -1,34 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getCertificate.
 class GetCertificateResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Gets the creation time.
   final String creationTime;
-
   /// Gets or sets the description.
   final String? description;
-
   /// Gets the expiry time of the certificate.
   final String expiryTime;
-
   /// Fully qualified resource Id for the resource
   final String id;
-
   /// Gets the is exportable flag of the certificate.
   final bool isExportable;
-
   /// Gets the last modified time.
   final String lastModifiedTime;
-
   /// The name of the resource
   final String name;
-
   /// Gets the thumbprint of the certificate.
   final String thumbprint;
-
   /// The type of the resource.
   final String type;
 
@@ -75,11 +67,7 @@ class GetCertificateResult {
     return GetCertificateResult(
       azureApiVersion: map['azureApiVersion'] as String,
       creationTime: map['creationTime'] as String,
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       expiryTime: map['expiryTime'] as String,
       id: map['id'] as String,
       isExportable: map['isExportable'] as bool,
@@ -90,3 +78,4 @@ class GetCertificateResult {
     );
   }
 }
+

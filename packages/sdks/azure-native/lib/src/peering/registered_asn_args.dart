@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegisteredAsnArgs {
   /// The customer's ASN from which traffic originates.
   final pulumi.Input<int>? asn;
-
   /// The name of the peering.
   final pulumi.Input<String> peeringName;
-
   /// The name of the ASN.
   final pulumi.Input<String>? registeredAsnName;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -42,20 +39,11 @@ class RegisteredAsnArgs {
 
   factory RegisteredAsnArgs.fromMap(Map<String, dynamic> map) {
     return RegisteredAsnArgs(
-      asn: (() {
-        final guardedValue = map['asn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      asn: (() { final guardedValue = map['asn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       peeringName: pulumi.Input.fromValue(map['peeringName'] as String),
-      registeredAsnName: (() {
-        final guardedValue = map['registeredAsnName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      registeredAsnName: (() { final guardedValue = map['registeredAsnName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

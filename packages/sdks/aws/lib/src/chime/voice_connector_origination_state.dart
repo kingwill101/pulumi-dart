@@ -7,13 +7,10 @@ import 'voice_connector_origination_route.dart';
 class VoiceConnectorOriginationState {
   /// When origination settings are disabled, inbound calls are not enabled for your Amazon Chime Voice Connector.
   final pulumi.Input<bool>? disabled;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Set of call distribution properties defined for your SIP hosts. See route below for more details. Minimum of 1. Maximum of 20.
   final pulumi.Input<List<VoiceConnectorOriginationRoute>>? routes;
-
   /// The Amazon Chime Voice Connector ID.
   final pulumi.Input<String>? voiceConnectorId;
 
@@ -33,51 +30,18 @@ class VoiceConnectorOriginationState {
     return <String, dynamic>{
       'disabled': ?disabled,
       'region': ?region,
-      'routes':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<VoiceConnectorOriginationRoute>,
-            List<Map<String, dynamic>>
-          >(
-            routes,
-            (value) =>
-                pulumi.Input.encodeList<
-                  VoiceConnectorOriginationRoute,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'routes': ?pulumi.Input.mapOptionalInputValue<List<VoiceConnectorOriginationRoute>, List<Map<String, dynamic>>>(routes, (value) => pulumi.Input.encodeList<VoiceConnectorOriginationRoute, Map<String, dynamic>>(value, (value) => value.toMap())),
       'voiceConnectorId': ?voiceConnectorId,
     };
   }
 
   factory VoiceConnectorOriginationState.fromMap(Map<String, dynamic> map) {
     return VoiceConnectorOriginationState(
-      disabled: (() {
-        final guardedValue = map['disabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      routes: (() {
-        final guardedValue = map['routes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<VoiceConnectorOriginationRoute>(
-            guardedValue,
-            (value) => VoiceConnectorOriginationRoute.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      voiceConnectorId: (() {
-        final guardedValue = map['voiceConnectorId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      routes: (() { final guardedValue = map['routes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VoiceConnectorOriginationRoute>(guardedValue, (value) => VoiceConnectorOriginationRoute.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      voiceConnectorId: (() { final guardedValue = map['voiceConnectorId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

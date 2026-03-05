@@ -970,155 +970,118 @@ class Instance extends pulumi.CustomResource {
   /// machineType you have selected.
   /// Structure is documented below.
   late final pulumi.Output<InstanceAcceleratorConfig?> acceleratorConfig;
-
   /// The size of the boot disk in GB attached to this instance,
   /// up to a maximum of 64000 GB (64 TB). The minimum recommended value is 100 GB.
   /// If not specified, this defaults to 100.
   late final pulumi.Output<int?> bootDiskSizeGb;
-
   /// Possible disk types for notebook instances.
   /// Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
   late final pulumi.Output<String?> bootDiskType;
-
   /// Use a container image to start the notebook instance.
   /// Structure is documented below.
   late final pulumi.Output<InstanceContainerImage?> containerImage;
-
   /// Instance creation time
   late final pulumi.Output<String> createTime;
-
   /// Specify a custom Cloud Storage path where the GPU driver is stored.
   /// If not specified, we'll automatically choose from official GPU drivers.
   late final pulumi.Output<String?> customGpuDriverPath;
-
   /// The size of the data disk in GB attached to this instance,
   /// up to a maximum of 64000 GB (64 TB).
   /// You can choose the size of the data disk based on how big your notebooks and data are.
   /// If not specified, this defaults to 100.
   late final pulumi.Output<int?> dataDiskSizeGb;
-
   /// Possible disk types for notebook instances.
   /// Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
   late final pulumi.Output<String?> dataDiskType;
-
   /// Desired state of the Notebook Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
   late final pulumi.Output<String?> desiredState;
-
   /// Disk encryption method used on the boot and data disks, defaults to GMEK.
   /// Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
   late final pulumi.Output<String> diskEncryption;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Whether the end user authorizes Google Cloud to install GPU driver
   /// on this instance. If this field is empty or set to false, the GPU driver
   /// won't be installed. Only applicable to instances with GPUs.
   late final pulumi.Output<bool?> installGpuDriver;
-
   /// The list of owners of this instance after creation.
   /// Format: alias@example.com.
   /// Currently supports one owner only.
   /// If not specified, all of the service account users of
   /// your VM instance's service account can use the instance.
   late final pulumi.Output<List<String>?> instanceOwners;
-
   /// The KMS key used to encrypt the disks, only applicable if diskEncryption is CMEK.
   /// Format: projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}
   late final pulumi.Output<String?> kmsKey;
-
   /// Labels to apply to this instance. These can be later modified by the setLabels method.
   /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// A reference to the zone where the machine resides.
   late final pulumi.Output<String> location;
-
   /// A reference to a machine type which defines VM kind.
   late final pulumi.Output<String> machineType;
-
   /// Custom metadata to apply to this instance.
   /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   late final pulumi.Output<Map<String, String>?> metadata;
-
   /// The name specified for the Notebook instance.
   late final pulumi.Output<String> name;
-
   /// The name of the VPC that this instance is in.
   /// Format: projects/{project_id}/global/networks/{network_id}
   late final pulumi.Output<String> network;
-
   /// The type of vNIC driver.
   /// Possible values are: `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, `GVNIC`.
   late final pulumi.Output<String?> nicType;
-
   /// The notebook instance will not register with the proxy..
   late final pulumi.Output<bool?> noProxyAccess;
-
   /// No public IP will be assigned to this instance.
   late final pulumi.Output<bool?> noPublicIp;
-
   /// If true, the data disk will not be auto deleted when deleting the instance.
   late final pulumi.Output<bool?> noRemoveDataDisk;
-
   /// Path to a Bash script that automatically runs after a
   /// notebook instance fully boots up. The path must be a URL
   /// or Cloud Storage path (gs://path-to-file/file-name).
   late final pulumi.Output<String?> postStartupScript;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The proxy endpoint that is used to access the Jupyter notebook.
   /// Only returned when the resource is in a `PROVISIONED` state. If
   /// needed you can utilize `pulumi up -refresh-only` to await
   /// the population of this value.
   late final pulumi.Output<String> proxyUri;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// Reservation Affinity for consuming Zonal reservation.
   /// Structure is documented below.
   late final pulumi.Output<InstanceReservationAffinity?> reservationAffinity;
-
   /// The service account on this instance, giving access to other
   /// Google Cloud services. You can use any service account within
   /// the same project, but you must have the service account user
   /// permission to use the instance. If not specified,
   /// the Compute Engine default service account is used.
   late final pulumi.Output<String> serviceAccount;
-
   /// Optional. The URIs of service account scopes to be included in Compute Engine instances.
   /// If not specified, the following scopes are defined:
   /// - https://www.googleapis.com/auth/cloud-platform
   /// - https://www.googleapis.com/auth/userinfo.email
   late final pulumi.Output<List<String>> serviceAccountScopes;
-
   /// A set of Shielded Instance options. Check [Images using supported Shielded VM features]
   /// Not all combinations are valid
   /// Structure is documented below.
-  late final pulumi.Output<InstanceShieldedInstanceConfig>
-  shieldedInstanceConfig;
-
+  late final pulumi.Output<InstanceShieldedInstanceConfig> shieldedInstanceConfig;
   /// The state of this instance.
   late final pulumi.Output<String> state;
-
   /// The name of the subnet that this instance is in.
   /// Format: projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}
   late final pulumi.Output<String> subnet;
-
   /// The Compute Engine tags to add to instance.
   late final pulumi.Output<List<String>> tags;
-
   /// Instance update time.
   late final pulumi.Output<String> updateTime;
-
   /// Use a Compute Engine VM image to start the notebook instance.
   /// Structure is documented below.
   late final pulumi.Output<InstanceVmImage?> vmImage;
@@ -1132,33 +1095,15 @@ class Instance extends pulumi.CustomResource {
     InstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:notebooks/instance:Instance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    acceleratorConfig = registerOutput<InstanceAcceleratorConfig?>(
-      'acceleratorConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceAcceleratorConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:notebooks/instance:Instance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    acceleratorConfig = registerOutput<InstanceAcceleratorConfig?>('acceleratorConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceAcceleratorConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     bootDiskSizeGb = registerOutput<int?>('bootDiskSizeGb');
     bootDiskType = registerOutput<String?>('bootDiskType');
-    containerImage = registerOutput<InstanceContainerImage?>(
-      'containerImage',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceContainerImage.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    containerImage = registerOutput<InstanceContainerImage?>('containerImage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceContainerImage.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     customGpuDriverPath = registerOutput<String?>('customGpuDriverPath');
     dataDiskSizeGb = registerOutput<int?>('dataDiskSizeGb');
@@ -1183,42 +1128,15 @@ class Instance extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     proxyUri = registerOutput<String>('proxyUri');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    reservationAffinity = registerOutput<InstanceReservationAffinity?>(
-      'reservationAffinity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceReservationAffinity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    reservationAffinity = registerOutput<InstanceReservationAffinity?>('reservationAffinity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceReservationAffinity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     serviceAccount = registerOutput<String>('serviceAccount');
     serviceAccountScopes = registerOutput<List<String>>('serviceAccountScopes');
-    shieldedInstanceConfig = registerOutput<InstanceShieldedInstanceConfig>(
-      'shieldedInstanceConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceShieldedInstanceConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    shieldedInstanceConfig = registerOutput<InstanceShieldedInstanceConfig>('shieldedInstanceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceShieldedInstanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     state = registerOutput<String>('state');
     subnet = registerOutput<String>('subnet');
     tags = registerOutput<List<String>>('tags');
     updateTime = registerOutput<String>('updateTime');
-    vmImage = registerOutput<InstanceVmImage?>(
-      'vmImage',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceVmImage.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    vmImage = registerOutput<InstanceVmImage?>('vmImage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceVmImage.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [Instance] resource's state with the given [name] and [id].
@@ -1239,33 +1157,15 @@ class Instance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:notebooks/instance:Instance',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    acceleratorConfig = registerOutput<InstanceAcceleratorConfig?>(
-      'acceleratorConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceAcceleratorConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:notebooks/instance:Instance',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    acceleratorConfig = registerOutput<InstanceAcceleratorConfig?>('acceleratorConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceAcceleratorConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     bootDiskSizeGb = registerOutput<int?>('bootDiskSizeGb');
     bootDiskType = registerOutput<String?>('bootDiskType');
-    containerImage = registerOutput<InstanceContainerImage?>(
-      'containerImage',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceContainerImage.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    containerImage = registerOutput<InstanceContainerImage?>('containerImage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceContainerImage.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     customGpuDriverPath = registerOutput<String?>('customGpuDriverPath');
     dataDiskSizeGb = registerOutput<int?>('dataDiskSizeGb');
@@ -1290,41 +1190,14 @@ class Instance extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     proxyUri = registerOutput<String>('proxyUri');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    reservationAffinity = registerOutput<InstanceReservationAffinity?>(
-      'reservationAffinity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceReservationAffinity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    reservationAffinity = registerOutput<InstanceReservationAffinity?>('reservationAffinity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceReservationAffinity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     serviceAccount = registerOutput<String>('serviceAccount');
     serviceAccountScopes = registerOutput<List<String>>('serviceAccountScopes');
-    shieldedInstanceConfig = registerOutput<InstanceShieldedInstanceConfig>(
-      'shieldedInstanceConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceShieldedInstanceConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    shieldedInstanceConfig = registerOutput<InstanceShieldedInstanceConfig>('shieldedInstanceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceShieldedInstanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.state = registerOutput<String>('state');
     subnet = registerOutput<String>('subnet');
     tags = registerOutput<List<String>>('tags');
     updateTime = registerOutput<String>('updateTime');
-    vmImage = registerOutput<InstanceVmImage?>(
-      'vmImage',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceVmImage.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    vmImage = registerOutput<InstanceVmImage?>('vmImage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceVmImage.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

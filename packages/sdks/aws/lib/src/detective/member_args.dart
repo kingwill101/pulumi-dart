@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MemberArgs {
   /// AWS account ID for the account.
   final pulumi.Input<String> accountId;
-
   /// If set to true, then the root user of the invited account will _not_ receive an email notification. This notification is in addition to an alert that the root user receives in AWS Personal Health Dashboard. By default, this is set to `false`.
   final pulumi.Input<bool>? disableEmailNotification;
-
   /// Email address for the account.
   final pulumi.Input<String> emailAddress;
-
   /// ARN of the behavior graph to invite the member accounts to contribute their data to.
   final pulumi.Input<String> graphArn;
-
   /// A custom message to include in the invitation. Amazon Detective adds this message to the standard content that it sends for an invitation.
   final pulumi.Input<String>? message;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -55,23 +50,12 @@ class MemberArgs {
   factory MemberArgs.fromMap(Map<String, dynamic> map) {
     return MemberArgs(
       accountId: pulumi.Input.fromValue(map['accountId'] as String),
-      disableEmailNotification: (() {
-        final guardedValue = map['disableEmailNotification'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      disableEmailNotification: (() { final guardedValue = map['disableEmailNotification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       emailAddress: pulumi.Input.fromValue(map['emailAddress'] as String),
       graphArn: pulumi.Input.fromValue(map['graphArn'] as String),
-      message: (() {
-        final guardedValue = map['message'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      message: (() { final guardedValue = map['message']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

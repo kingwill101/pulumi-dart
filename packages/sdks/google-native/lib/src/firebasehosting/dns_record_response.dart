@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DnsRecordResponse {
   /// The domain name the record pertains to, e.g. `foo.bar.com.`.
   final pulumi.Input<String> domainName;
-
   /// The data of the record. The meaning of the value depends on record type: - A and AAAA: IP addresses for the domain name. - CNAME: Another domain to check for records. - TXT: Arbitrary text strings associated with the domain name. Hosting uses TXT records to determine which Firebase projects have permission to act on the domain name's behalf. - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
   final pulumi.Input<String> rdata;
-
   /// An enum that indicates the a required action for this record.
   final pulumi.Input<String> requiredAction;
-
   /// The record's type, which determines what data the record contains.
   final pulumi.Input<String> type;
 
@@ -46,3 +43,4 @@ class DnsRecordResponse {
     );
   }
 }
+

@@ -15,3 +15,4 @@ enum WebhookBuildType {
     throw ArgumentError('Unknown WebhookBuildType value: $value');
   }
 }
+

@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AgentcoreGatewayTargetCredentialProviderConfigurationOauth {
   /// Map of custom parameters to include in OAuth requests.
   final pulumi.Input<Map<String, String>>? customParameters;
-
   /// ARN of the OIDC provider for OAuth authentication.
   final pulumi.Input<String> providerArn;
-
   /// Set of OAuth scopes to request.
   final pulumi.Input<List<String>> scopes;
 
@@ -30,19 +28,12 @@ class AgentcoreGatewayTargetCredentialProviderConfigurationOauth {
     };
   }
 
-  factory AgentcoreGatewayTargetCredentialProviderConfigurationOauth.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentcoreGatewayTargetCredentialProviderConfigurationOauth.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayTargetCredentialProviderConfigurationOauth(
-      customParameters: (() {
-        final guardedValue = map['customParameters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      customParameters: (() { final guardedValue = map['customParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       providerArn: pulumi.Input.fromValue(map['providerArn'] as String),
       scopes: pulumi.Input.fromValue((map['scopes'] as List).cast<String>()),
     );
   }
 }
+

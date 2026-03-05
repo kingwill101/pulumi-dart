@@ -9,19 +9,20 @@ class ForNodePatch {
 
   /// Creates a new [ForNodePatch].
   /// [name] name represents the name of the node.
-  ForNodePatch({this.name});
+  ForNodePatch({
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name};
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
   factory ForNodePatch.fromMap(Map<String, dynamic> map) {
     return ForNodePatch(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

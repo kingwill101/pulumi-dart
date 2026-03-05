@@ -6,20 +6,11 @@ import 'source_control_slot_github_action_configuration_container_configuration.
 
 class SourceControlSlotGithubActionConfiguration {
   /// A `code_configuration` block as detailed below. Changing this forces a new resource to be created.
-  final pulumi.Input<
-    SourceControlSlotGithubActionConfigurationCodeConfiguration
-  >?
-  codeConfiguration;
-
+  final pulumi.Input<SourceControlSlotGithubActionConfigurationCodeConfiguration>? codeConfiguration;
   /// A `container_configuration` block as detailed below.
-  final pulumi.Input<
-    SourceControlSlotGithubActionConfigurationContainerConfiguration
-  >?
-  containerConfiguration;
-
+  final pulumi.Input<SourceControlSlotGithubActionConfigurationContainerConfiguration>? containerConfiguration;
   /// Should the service generate the GitHub Action Workflow file. Defaults to `true` Changing this forces a new resource to be created.
   final pulumi.Input<bool>? generateWorkflowFile;
-
   /// Denotes this action uses a Linux base image.
   final pulumi.Input<bool>? linuxAction;
 
@@ -37,53 +28,20 @@ class SourceControlSlotGithubActionConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'codeConfiguration':
-          ?pulumi.Input.mapOptionalInputValue<
-            SourceControlSlotGithubActionConfigurationCodeConfiguration,
-            Map<String, dynamic>
-          >(codeConfiguration, (value) => value.toMap()),
-      'containerConfiguration':
-          ?pulumi.Input.mapOptionalInputValue<
-            SourceControlSlotGithubActionConfigurationContainerConfiguration,
-            Map<String, dynamic>
-          >(containerConfiguration, (value) => value.toMap()),
+      'codeConfiguration': ?pulumi.Input.mapOptionalInputValue<SourceControlSlotGithubActionConfigurationCodeConfiguration, Map<String, dynamic>>(codeConfiguration, (value) => value.toMap()),
+      'containerConfiguration': ?pulumi.Input.mapOptionalInputValue<SourceControlSlotGithubActionConfigurationContainerConfiguration, Map<String, dynamic>>(containerConfiguration, (value) => value.toMap()),
       'generateWorkflowFile': ?generateWorkflowFile,
       'linuxAction': ?linuxAction,
     };
   }
 
-  factory SourceControlSlotGithubActionConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SourceControlSlotGithubActionConfiguration.fromMap(Map<String, dynamic> map) {
     return SourceControlSlotGithubActionConfiguration(
-      codeConfiguration: (() {
-        final guardedValue = map['codeConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SourceControlSlotGithubActionConfigurationCodeConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      containerConfiguration: (() {
-        final guardedValue = map['containerConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SourceControlSlotGithubActionConfigurationContainerConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      generateWorkflowFile: (() {
-        final guardedValue = map['generateWorkflowFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      linuxAction: (() {
-        final guardedValue = map['linuxAction'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      codeConfiguration: (() { final guardedValue = map['codeConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SourceControlSlotGithubActionConfigurationCodeConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      containerConfiguration: (() { final guardedValue = map['containerConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SourceControlSlotGithubActionConfigurationContainerConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      generateWorkflowFile: (() { final guardedValue = map['generateWorkflowFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      linuxAction: (() { final guardedValue = map['linuxAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

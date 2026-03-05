@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationGatewayFirewallDisabledRuleGroupResponse {
   /// The name of the rule group that will be disabled.
   final pulumi.Input<String> ruleGroupName;
-
   /// The list of rules that will be disabled. If null, all rules of the rule group will be disabled.
   final pulumi.Input<List<int>>? rules;
 
@@ -19,19 +18,17 @@ class ApplicationGatewayFirewallDisabledRuleGroupResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'ruleGroupName': ruleGroupName, 'rules': ?rules};
+    return <String, dynamic>{
+      'ruleGroupName': ruleGroupName,
+      'rules': ?rules,
+    };
   }
 
-  factory ApplicationGatewayFirewallDisabledRuleGroupResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApplicationGatewayFirewallDisabledRuleGroupResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayFirewallDisabledRuleGroupResponse(
       ruleGroupName: pulumi.Input.fromValue(map['ruleGroupName'] as String),
-      rules: (() {
-        final guardedValue = map['rules'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<int>());
-      })(),
+      rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<int>()); })(),
     );
   }
 }
+

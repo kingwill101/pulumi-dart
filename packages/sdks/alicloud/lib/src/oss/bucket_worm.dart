@@ -12,18 +12,14 @@ import 'bucket_worm_state.dart';
 class BucketWorm extends pulumi.CustomResource {
   /// The name of the bucket
   late final pulumi.Output<String> bucket;
-
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
-
   /// The specified number of days to retain the Object.
   late final pulumi.Output<int?> retentionPeriodInDays;
-
   /// The status of the compliance retention policy. Optional values:
   /// - `InProgress`: After a compliance retention policy is created, the policy is in the InProgress status by default, and the validity period of this status is 24 hours.
   /// - `Locked`: The compliance retention policy is Locked.
   late final pulumi.Output<String> status;
-
   /// The ID of the retention policy.
   late final pulumi.Output<String> wormId;
 
@@ -36,11 +32,11 @@ class BucketWorm extends pulumi.CustomResource {
     BucketWormArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:oss/bucketWorm:BucketWorm',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:oss/bucketWorm:BucketWorm',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
     createTime = registerOutput<String>('createTime');
     retentionPeriodInDays = registerOutput<int?>('retentionPeriodInDays');
@@ -66,11 +62,11 @@ class BucketWorm extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:oss/bucketWorm:BucketWorm',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:oss/bucketWorm:BucketWorm',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
     createTime = registerOutput<String>('createTime');
     retentionPeriodInDays = registerOutput<int?>('retentionPeriodInDays');

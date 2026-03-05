@@ -11,7 +11,6 @@ class ClusterClusterConfigWorkerConfigAccelerator {
   ///
   /// - - -
   final pulumi.Input<int> acceleratorCount;
-
   /// The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
   final pulumi.Input<String> acceleratorType;
 
@@ -30,12 +29,11 @@ class ClusterClusterConfigWorkerConfigAccelerator {
     };
   }
 
-  factory ClusterClusterConfigWorkerConfigAccelerator.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterClusterConfigWorkerConfigAccelerator.fromMap(Map<String, dynamic> map) {
     return ClusterClusterConfigWorkerConfigAccelerator(
       acceleratorCount: pulumi.Input.fromValue(map['acceleratorCount'] as int),
       acceleratorType: pulumi.Input.fromValue(map['acceleratorType'] as String),
     );
   }
 }
+

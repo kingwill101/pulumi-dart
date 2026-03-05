@@ -16,3 +16,4 @@ enum FolderSinkOutputVersionFormat {
     throw ArgumentError('Unknown FolderSinkOutputVersionFormat value: $value');
   }
 }
+

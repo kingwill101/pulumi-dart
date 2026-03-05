@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBudgetSubscriptionFilterTag {
   /// The name of this Consumption Budget.
   final pulumi.Input<String> name;
-
   /// The operator to used for comparison.
   final pulumi.Input<String> operator;
-
   /// A list of values for the tag.
   final pulumi.Input<List<String>> values;
 
@@ -38,3 +36,4 @@ class GetBudgetSubscriptionFilterTag {
     );
   }
 }
+

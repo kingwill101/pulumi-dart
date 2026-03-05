@@ -231,40 +231,28 @@ import 'system_data_response.dart';
 class ConnectivityConfiguration extends pulumi.CustomResource {
   /// Groups for configuration
   late final pulumi.Output<List<Map<String, dynamic>>> appliesToGroups;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Connectivity topology type.
   late final pulumi.Output<String> connectivityTopology;
-
   /// Flag if need to remove current existing peerings.
   late final pulumi.Output<String?> deleteExistingPeering;
-
   /// A description of the connectivity configuration.
   late final pulumi.Output<String?> description;
-
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
-
   /// List of hubItems
   late final pulumi.Output<List<Map<String, dynamic>>?> hubs;
-
   /// Flag if global mesh is supported.
   late final pulumi.Output<String?> isGlobal;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// The provisioning state of the connectivity configuration resource.
   late final pulumi.Output<String> provisioningState;
-
   /// Unique identifier for this resource.
   late final pulumi.Output<String> resourceGuid;
-
   /// The system metadata related to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -277,14 +265,12 @@ class ConnectivityConfiguration extends pulumi.CustomResource {
     ConnectivityConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:network:ConnectivityConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    appliesToGroups = registerOutput<List<Map<String, dynamic>>>(
-      'appliesToGroups',
-    );
+          'azure-native:network:ConnectivityConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    appliesToGroups = registerOutput<List<Map<String, dynamic>>>('appliesToGroups');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     connectivityTopology = registerOutput<String>('connectivityTopology');
     deleteExistingPeering = registerOutput<String?>('deleteExistingPeering');
@@ -295,16 +281,7 @@ class ConnectivityConfiguration extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     resourceGuid = registerOutput<String>('resourceGuid');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

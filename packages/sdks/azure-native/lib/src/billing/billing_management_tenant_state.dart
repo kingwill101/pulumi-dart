@@ -17,3 +17,4 @@ enum BillingManagementTenantState {
     throw ArgumentError('Unknown BillingManagementTenantState value: $value');
   }
 }
+

@@ -8,25 +8,18 @@ class GetSecretResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
   final String deploymentStatus;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// The name of the resource
   final String name;
-
   /// object which contains secret parameters
   final AzureFirstPartyManagedCertificateParametersResponse? parameters;
-
   /// The name of the profile which holds the secret.
   final String profileName;
-
   /// Provisioning status
   final String provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -72,19 +65,12 @@ class GetSecretResult {
       deploymentStatus: map['deploymentStatus'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      parameters: (() {
-        final guardedValue = map['parameters'];
-        if (guardedValue == null) return null;
-        return AzureFirstPartyManagedCertificateParametersResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return AzureFirstPartyManagedCertificateParametersResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       profileName: map['profileName'] as String,
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

@@ -350,36 +350,26 @@ import 'output_servicebus_topic_state.dart';
 class OutputServicebusTopic extends pulumi.CustomResource {
   /// The authentication mode for the Stream Output. Possible values are `Msi` and `ConnectionString`. Defaults to `ConnectionString`.
   late final pulumi.Output<String?> authenticationMode;
-
   /// The name of the Stream Output. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// A list of property columns to add to the Service Bus Topic output.
   late final pulumi.Output<List<String>?> propertyColumns;
-
   /// The name of the Resource Group where the Stream Analytics Job exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A `serialization` block as defined below.
   late final pulumi.Output<OutputServicebusTopicSerialization> serialization;
-
   /// The namespace that is associated with the desired Event Hub, Service Bus Topic, Service Bus Topic, etc.
   late final pulumi.Output<String> servicebusNamespace;
-
   /// The shared access policy key for the specified shared access policy. Required if `authentication_mode` is `ConnectionString`.
   late final pulumi.Output<String?> sharedAccessPolicyKey;
-
   /// The shared access policy name for the Event Hub, Service Bus Queue, Service Bus Topic, etc. Required if `authentication_mode` is `ConnectionString`.
   late final pulumi.Output<String?> sharedAccessPolicyName;
-
   /// The name of the Stream Analytics Job. Changing this forces a new resource to be created.
   late final pulumi.Output<String> streamAnalyticsJobName;
-
   /// A key-value pair of system property columns that will be attached to the outgoing messages for the Service Bus Topic Output.
   ///
   /// &gt; **Note:** The acceptable keys are `ContentType`, `CorrelationId`, `Label`, `MessageId`, `PartitionKey`, `ReplyTo`, `ReplyToSessionId`, `ScheduledEnqueueTimeUtc`, `SessionId`, `TimeToLive` and `To`.
   late final pulumi.Output<Map<String, String>?> systemPropertyColumns;
-
   /// The name of the Service Bus Topic.
   late final pulumi.Output<String> topicName;
 
@@ -392,32 +382,21 @@ class OutputServicebusTopic extends pulumi.CustomResource {
     OutputServicebusTopicArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:streamanalytics/outputServicebusTopic:OutputServicebusTopic',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:streamanalytics/outputServicebusTopic:OutputServicebusTopic',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     authenticationMode = registerOutput<String?>('authenticationMode');
     this.name = registerOutput<String>('name');
     propertyColumns = registerOutput<List<String>?>('propertyColumns');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    serialization = registerOutput<OutputServicebusTopicSerialization>(
-      'serialization',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return OutputServicebusTopicSerialization.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    serialization = registerOutput<OutputServicebusTopicSerialization>('serialization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OutputServicebusTopicSerialization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     servicebusNamespace = registerOutput<String>('servicebusNamespace');
     sharedAccessPolicyKey = registerOutput<String?>('sharedAccessPolicyKey');
     sharedAccessPolicyName = registerOutput<String?>('sharedAccessPolicyName');
     streamAnalyticsJobName = registerOutput<String>('streamAnalyticsJobName');
-    systemPropertyColumns = registerOutput<Map<String, String>?>(
-      'systemPropertyColumns',
-    );
+    systemPropertyColumns = registerOutput<Map<String, String>?>('systemPropertyColumns');
     topicName = registerOutput<String>('topicName');
   }
 
@@ -439,32 +418,21 @@ class OutputServicebusTopic extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:streamanalytics/outputServicebusTopic:OutputServicebusTopic',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:streamanalytics/outputServicebusTopic:OutputServicebusTopic',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     authenticationMode = registerOutput<String?>('authenticationMode');
     this.name = registerOutput<String>('name');
     propertyColumns = registerOutput<List<String>?>('propertyColumns');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    serialization = registerOutput<OutputServicebusTopicSerialization>(
-      'serialization',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return OutputServicebusTopicSerialization.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    serialization = registerOutput<OutputServicebusTopicSerialization>('serialization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OutputServicebusTopicSerialization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     servicebusNamespace = registerOutput<String>('servicebusNamespace');
     sharedAccessPolicyKey = registerOutput<String?>('sharedAccessPolicyKey');
     sharedAccessPolicyName = registerOutput<String?>('sharedAccessPolicyName');
     streamAnalyticsJobName = registerOutput<String>('streamAnalyticsJobName');
-    systemPropertyColumns = registerOutput<Map<String, String>?>(
-      'systemPropertyColumns',
-    );
+    systemPropertyColumns = registerOutput<Map<String, String>?>('systemPropertyColumns');
     topicName = registerOutput<String>('topicName');
   }
 }

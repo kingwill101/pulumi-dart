@@ -8,19 +8,20 @@ class NetworkForwardInterface {
 
   /// Creates a new [NetworkForwardInterface].
   /// [dev] Specifies the device for the forwarding interface.
-  NetworkForwardInterface({this.dev});
+  NetworkForwardInterface({
+    this.dev,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'dev': ?dev};
+    return <String, dynamic>{
+      'dev': ?dev,
+    };
   }
 
   factory NetworkForwardInterface.fromMap(Map<String, dynamic> map) {
     return NetworkForwardInterface(
-      dev: (() {
-        final guardedValue = map['dev'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dev: (() { final guardedValue = map['dev']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

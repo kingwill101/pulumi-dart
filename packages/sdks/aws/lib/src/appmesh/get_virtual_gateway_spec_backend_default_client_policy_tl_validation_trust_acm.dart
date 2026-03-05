@@ -17,13 +17,10 @@ class GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationTrustAcm {
     };
   }
 
-  factory GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationTrustAcm.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationTrustAcm.fromMap(Map<String, dynamic> map) {
     return GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationTrustAcm(
-      certificateAuthorityArns: pulumi.Input.fromValue(
-        (map['certificateAuthorityArns'] as List).cast<String>(),
-      ),
+      certificateAuthorityArns: pulumi.Input.fromValue((map['certificateAuthorityArns'] as List).cast<String>()),
     );
   }
 }
+

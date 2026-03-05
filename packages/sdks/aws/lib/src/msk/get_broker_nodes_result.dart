@@ -6,7 +6,6 @@ import 'get_broker_nodes_node_info_list.dart';
 /// Result data returned by getBrokerNodes.
 class GetBrokerNodesResult {
   final String clusterArn;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<GetBrokerNodesNodeInfoList> nodeInfoLists;
@@ -28,11 +27,7 @@ class GetBrokerNodesResult {
     return <String, dynamic>{
       'clusterArn': clusterArn,
       'id': id,
-      'nodeInfoLists':
-          pulumi.Input.encodeList<
-            GetBrokerNodesNodeInfoList,
-            Map<String, dynamic>
-          >(nodeInfoLists, (value) => value.toMap()),
+      'nodeInfoLists': pulumi.Input.encodeList<GetBrokerNodesNodeInfoList, Map<String, dynamic>>(nodeInfoLists, (value) => value.toMap()),
       'region': region,
     };
   }
@@ -41,13 +36,9 @@ class GetBrokerNodesResult {
     return GetBrokerNodesResult(
       clusterArn: map['clusterArn'] as String,
       id: map['id'] as String,
-      nodeInfoLists: pulumi.Input.decodeList<GetBrokerNodesNodeInfoList>(
-        map['nodeInfoLists']!,
-        (value) => GetBrokerNodesNodeInfoList.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      nodeInfoLists: pulumi.Input.decodeList<GetBrokerNodesNodeInfoList>(map['nodeInfoLists']!, (value) => GetBrokerNodesNodeInfoList.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
     );
   }
 }
+

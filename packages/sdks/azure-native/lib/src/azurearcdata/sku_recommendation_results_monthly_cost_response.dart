@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SkuRecommendationResultsMonthlyCostResponse {
   /// Represents the Cost of Compute.
   final pulumi.Input<double>? computeCost;
-
   /// Represents the Cost of Storage.
   final pulumi.Input<double>? storageCost;
-
   /// Represents the Total Cost.
   final pulumi.Input<double>? totalCost;
 
@@ -31,25 +29,12 @@ class SkuRecommendationResultsMonthlyCostResponse {
     };
   }
 
-  factory SkuRecommendationResultsMonthlyCostResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SkuRecommendationResultsMonthlyCostResponse.fromMap(Map<String, dynamic> map) {
     return SkuRecommendationResultsMonthlyCostResponse(
-      computeCost: (() {
-        final guardedValue = map['computeCost'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      storageCost: (() {
-        final guardedValue = map['storageCost'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      totalCost: (() {
-        final guardedValue = map['totalCost'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      computeCost: (() { final guardedValue = map['computeCost']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      storageCost: (() { final guardedValue = map['storageCost']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      totalCost: (() { final guardedValue = map['totalCost']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

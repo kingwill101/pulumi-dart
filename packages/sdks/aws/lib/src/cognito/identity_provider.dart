@@ -209,22 +209,16 @@ import 'identity_provider_state.dart';
 class IdentityProvider extends pulumi.CustomResource {
   /// The map of attribute mapping of user pool attributes. [AttributeMapping in AWS API documentation](https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_CreateIdentityProvider.html#CognitoUserPools-CreateIdentityProvider-request-AttributeMapping)
   late final pulumi.Output<Map<String, String>> attributeMapping;
-
   /// The list of identity providers.
   late final pulumi.Output<List<String>?> idpIdentifiers;
-
   /// The map of identity details, such as access token
   late final pulumi.Output<Map<String, String>> providerDetails;
-
   /// The provider name
   late final pulumi.Output<String> providerName;
-
   /// The provider type.  [See AWS API for valid values](https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_CreateIdentityProvider.html#CognitoUserPools-CreateIdentityProvider-request-ProviderType)
   late final pulumi.Output<String> providerType;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The user pool id
   late final pulumi.Output<String> userPoolId;
 
@@ -237,11 +231,11 @@ class IdentityProvider extends pulumi.CustomResource {
     IdentityProviderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cognito/identityProvider:IdentityProvider',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cognito/identityProvider:IdentityProvider',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     attributeMapping = registerOutput<Map<String, String>>('attributeMapping');
     idpIdentifiers = registerOutput<List<String>?>('idpIdentifiers');
     providerDetails = registerOutput<Map<String, String>>('providerDetails');
@@ -269,11 +263,11 @@ class IdentityProvider extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cognito/identityProvider:IdentityProvider',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cognito/identityProvider:IdentityProvider',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     attributeMapping = registerOutput<Map<String, String>>('attributeMapping');
     idpIdentifiers = registerOutput<List<String>?>('idpIdentifiers');
     providerDetails = registerOutput<Map<String, String>>('providerDetails');

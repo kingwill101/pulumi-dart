@@ -7,12 +7,10 @@ class ToolPythonFunction {
   /// The description of the Python function, parsed from the python code's
   /// docstring.
   final pulumi.Input<String>? description;
-
   /// The name of the Python function to execute. Must match a Python function
   /// name defined in the python code. Case sensitive. If the name is not
   /// provided, the first function defined in the python code will be used.
   final pulumi.Input<String>? name;
-
   /// The Python code to execute for the tool.
   final pulumi.Input<String>? pythonCode;
 
@@ -20,7 +18,11 @@ class ToolPythonFunction {
   /// [description] (Output)
   /// [name] The name of the Python function to execute. Must match a Python function
   /// [pythonCode] The Python code to execute for the tool.
-  ToolPythonFunction({this.description, this.name, this.pythonCode});
+  ToolPythonFunction({
+    this.description,
+    this.name,
+    this.pythonCode,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,21 +34,10 @@ class ToolPythonFunction {
 
   factory ToolPythonFunction.fromMap(Map<String, dynamic> map) {
     return ToolPythonFunction(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pythonCode: (() {
-        final guardedValue = map['pythonCode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pythonCode: (() { final guardedValue = map['pythonCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

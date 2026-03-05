@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SuppressionListArgs {
   /// The name of the Domains resource.
   final pulumi.Input<String> domainName;
-
   /// The name of the EmailService resource.
   final pulumi.Input<String> emailServiceName;
-
   /// The the name of the suppression list. This value must match one of the valid sender usernames of the sending domain.
   final pulumi.Input<String>? listName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the suppression list.
   final pulumi.Input<String>? suppressionListName;
 
@@ -49,22 +45,11 @@ class SuppressionListArgs {
   factory SuppressionListArgs.fromMap(Map<String, dynamic> map) {
     return SuppressionListArgs(
       domainName: pulumi.Input.fromValue(map['domainName'] as String),
-      emailServiceName: pulumi.Input.fromValue(
-        map['emailServiceName'] as String,
-      ),
-      listName: (() {
-        final guardedValue = map['listName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      suppressionListName: (() {
-        final guardedValue = map['suppressionListName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      emailServiceName: pulumi.Input.fromValue(map['emailServiceName'] as String),
+      listName: (() { final guardedValue = map['listName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      suppressionListName: (() { final guardedValue = map['suppressionListName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetB2CTenantArgs {
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
-
   /// The initial domain name of the Azure AD B2C tenant.
   final pulumi.Input<String> resourceName;
 
@@ -30,10 +29,9 @@ class GetB2CTenantArgs {
 
   factory GetB2CTenantArgs.fromMap(Map<String, dynamic> map) {
     return GetB2CTenantArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
+

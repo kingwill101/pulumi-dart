@@ -14,3 +14,4 @@ enum ResourcePropertiesObjectType {
     throw ArgumentError('Unknown ResourcePropertiesObjectType value: $value');
   }
 }
+

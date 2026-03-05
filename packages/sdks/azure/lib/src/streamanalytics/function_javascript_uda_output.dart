@@ -8,10 +8,14 @@ class FunctionJavascriptUdaOutput {
 
   /// Creates a new [FunctionJavascriptUdaOutput].
   /// [type] The output data type from this JavaScript Function. Possible values include `any`, `array`, `bigint`, `datetime`, `float`, `nvarchar(max)` and `record`.
-  FunctionJavascriptUdaOutput({required this.type});
+  FunctionJavascriptUdaOutput({
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': type};
+    return <String, dynamic>{
+      'type': type,
+    };
   }
 
   factory FunctionJavascriptUdaOutput.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class FunctionJavascriptUdaOutput {
     );
   }
 }
+

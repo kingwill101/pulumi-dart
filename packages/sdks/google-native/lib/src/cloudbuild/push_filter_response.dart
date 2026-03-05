@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PushFilterResponse {
   /// Regexes matching branches to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
   final pulumi.Input<String> branch;
-
   /// When true, only trigger a build if the revision regex does NOT match the git_ref regex.
   final pulumi.Input<bool> invertRegex;
-
   /// Regexes matching tags to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
   final pulumi.Input<String> tag;
 
@@ -39,3 +37,4 @@ class PushFilterResponse {
     );
   }
 }
+

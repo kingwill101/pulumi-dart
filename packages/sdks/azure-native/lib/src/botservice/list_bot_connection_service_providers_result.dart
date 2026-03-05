@@ -7,41 +7,29 @@ import 'service_provider_response.dart';
 class ListBotConnectionServiceProvidersResult {
   /// The link used to get the next page of bot service providers.
   final String? nextLink;
-
   /// Gets the list of bot service providers and their properties.
   final List<ServiceProviderResponse> value;
 
   /// Creates a new [ListBotConnectionServiceProvidersResult].
   /// [nextLink] The link used to get the next page of bot service providers.
   /// [value] Gets the list of bot service providers and their properties.
-  ListBotConnectionServiceProvidersResult({this.nextLink, required this.value});
+  ListBotConnectionServiceProvidersResult({
+    this.nextLink,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nextLink': ?nextLink,
-      'value':
-          pulumi.Input.encodeList<
-            ServiceProviderResponse,
-            Map<String, dynamic>
-          >(value, (value) => value.toMap()),
+      'value': pulumi.Input.encodeList<ServiceProviderResponse, Map<String, dynamic>>(value, (value) => value.toMap()),
     };
   }
 
-  factory ListBotConnectionServiceProvidersResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListBotConnectionServiceProvidersResult.fromMap(Map<String, dynamic> map) {
     return ListBotConnectionServiceProvidersResult(
-      nextLink: (() {
-        final guardedValue = map['nextLink'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      value: pulumi.Input.decodeList<ServiceProviderResponse>(
-        map['value']!,
-        (value) => ServiceProviderResponse.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      nextLink: (() { final guardedValue = map['nextLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      value: pulumi.Input.decodeList<ServiceProviderResponse>(map['value']!, (value) => ServiceProviderResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

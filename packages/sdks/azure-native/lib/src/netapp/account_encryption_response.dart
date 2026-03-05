@@ -8,10 +8,8 @@ import 'key_vault_properties_response.dart';
 class AccountEncryptionResponse {
   /// Identity used to authenticate to KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
   final pulumi.Input<EncryptionIdentityResponse>? identity;
-
   /// The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.NetApp, Microsoft.KeyVault
   final pulumi.Input<String>? keySource;
-
   /// Properties provided by KeVault. Applicable if keySource is 'Microsoft.KeyVault'.
   final pulumi.Input<KeyVaultPropertiesResponse>? keyVaultProperties;
 
@@ -27,45 +25,18 @@ class AccountEncryptionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'identity':
-          ?pulumi.Input.mapOptionalInputValue<
-            EncryptionIdentityResponse,
-            Map<String, dynamic>
-          >(identity, (value) => value.toMap()),
+      'identity': ?pulumi.Input.mapOptionalInputValue<EncryptionIdentityResponse, Map<String, dynamic>>(identity, (value) => value.toMap()),
       'keySource': ?keySource,
-      'keyVaultProperties':
-          ?pulumi.Input.mapOptionalInputValue<
-            KeyVaultPropertiesResponse,
-            Map<String, dynamic>
-          >(keyVaultProperties, (value) => value.toMap()),
+      'keyVaultProperties': ?pulumi.Input.mapOptionalInputValue<KeyVaultPropertiesResponse, Map<String, dynamic>>(keyVaultProperties, (value) => value.toMap()),
     };
   }
 
   factory AccountEncryptionResponse.fromMap(Map<String, dynamic> map) {
     return AccountEncryptionResponse(
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          EncryptionIdentityResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      keySource: (() {
-        final guardedValue = map['keySource'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keyVaultProperties: (() {
-        final guardedValue = map['keyVaultProperties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          KeyVaultPropertiesResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EncryptionIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      keySource: (() { final guardedValue = map['keySource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyVaultProperties: (() { final guardedValue = map['keyVaultProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(KeyVaultPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

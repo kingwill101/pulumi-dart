@@ -9,25 +9,18 @@ import 'static_files_handler_response.dart';
 class UrlMapResponse {
   /// Uses API Endpoints to handle requests.
   final pulumi.Input<ApiEndpointHandlerResponse> apiEndpoint;
-
   /// Action to take when users access resources that require authentication. Defaults to redirect.
   final pulumi.Input<String> authFailAction;
-
   /// Level of login required to access this resource. Not supported for Node.js in the App Engine standard environment.
   final pulumi.Input<String> login;
-
   /// 30x code to use when performing redirects for the secure field. Defaults to 302.
   final pulumi.Input<String> redirectHttpResponseCode;
-
   /// Executes a script to handle the requests that match this URL pattern. Only the auto value is supported for Node.js in the App Engine standard environment, for example "script": "auto".
   final pulumi.Input<ScriptHandlerResponse> script;
-
   /// Security (HTTPS) enforcement for this URL.
   final pulumi.Input<String> securityLevel;
-
   /// Returns the contents of a file, such as an image, as the response.
   final pulumi.Input<StaticFilesHandlerResponse> staticFiles;
-
   /// URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped, but should not contain groupings. All URLs that begin with this prefix are handled by this handler, using the portion of the URL after the prefix as part of the file path.
   final pulumi.Input<String> urlRegex;
 
@@ -53,53 +46,28 @@ class UrlMapResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'apiEndpoint':
-          pulumi.Input.mapInputValue<
-            ApiEndpointHandlerResponse,
-            Map<String, dynamic>
-          >(apiEndpoint, (value) => value.toMap()),
+      'apiEndpoint': pulumi.Input.mapInputValue<ApiEndpointHandlerResponse, Map<String, dynamic>>(apiEndpoint, (value) => value.toMap()),
       'authFailAction': authFailAction,
       'login': login,
       'redirectHttpResponseCode': redirectHttpResponseCode,
-      'script':
-          pulumi.Input.mapInputValue<
-            ScriptHandlerResponse,
-            Map<String, dynamic>
-          >(script, (value) => value.toMap()),
+      'script': pulumi.Input.mapInputValue<ScriptHandlerResponse, Map<String, dynamic>>(script, (value) => value.toMap()),
       'securityLevel': securityLevel,
-      'staticFiles':
-          pulumi.Input.mapInputValue<
-            StaticFilesHandlerResponse,
-            Map<String, dynamic>
-          >(staticFiles, (value) => value.toMap()),
+      'staticFiles': pulumi.Input.mapInputValue<StaticFilesHandlerResponse, Map<String, dynamic>>(staticFiles, (value) => value.toMap()),
       'urlRegex': urlRegex,
     };
   }
 
   factory UrlMapResponse.fromMap(Map<String, dynamic> map) {
     return UrlMapResponse(
-      apiEndpoint: pulumi.Input.fromValue(
-        ApiEndpointHandlerResponse.fromMap(
-          (map['apiEndpoint']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      apiEndpoint: pulumi.Input.fromValue(ApiEndpointHandlerResponse.fromMap((map['apiEndpoint']! as Map).cast<String, dynamic>())),
       authFailAction: pulumi.Input.fromValue(map['authFailAction'] as String),
       login: pulumi.Input.fromValue(map['login'] as String),
-      redirectHttpResponseCode: pulumi.Input.fromValue(
-        map['redirectHttpResponseCode'] as String,
-      ),
-      script: pulumi.Input.fromValue(
-        ScriptHandlerResponse.fromMap(
-          (map['script']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      redirectHttpResponseCode: pulumi.Input.fromValue(map['redirectHttpResponseCode'] as String),
+      script: pulumi.Input.fromValue(ScriptHandlerResponse.fromMap((map['script']! as Map).cast<String, dynamic>())),
       securityLevel: pulumi.Input.fromValue(map['securityLevel'] as String),
-      staticFiles: pulumi.Input.fromValue(
-        StaticFilesHandlerResponse.fromMap(
-          (map['staticFiles']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      staticFiles: pulumi.Input.fromValue(StaticFilesHandlerResponse.fromMap((map['staticFiles']! as Map).cast<String, dynamic>())),
       urlRegex: pulumi.Input.fromValue(map['urlRegex'] as String),
     );
   }
 }
+

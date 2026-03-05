@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SubscriptionCostManagementViewDatasetGrouping {
   /// The name of the column to group.
   final pulumi.Input<String> name;
-
   /// The type of the column. Possible values are `Dimension` and `TagKey`.
   final pulumi.Input<String> type;
 
@@ -18,15 +17,17 @@ class SubscriptionCostManagementViewDatasetGrouping {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'type': type};
+    return <String, dynamic>{
+      'name': name,
+      'type': type,
+    };
   }
 
-  factory SubscriptionCostManagementViewDatasetGrouping.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SubscriptionCostManagementViewDatasetGrouping.fromMap(Map<String, dynamic> map) {
     return SubscriptionCostManagementViewDatasetGrouping(
       name: pulumi.Input.fromValue(map['name'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

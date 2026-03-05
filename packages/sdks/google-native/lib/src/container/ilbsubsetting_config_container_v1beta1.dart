@@ -9,21 +9,20 @@ class ILBSubsettingConfigContainerV1beta1 {
 
   /// Creates a new [ILBSubsettingConfigContainerV1beta1].
   /// [enabled] Enables l4 ILB subsetting for this cluster
-  ILBSubsettingConfigContainerV1beta1({this.enabled});
+  ILBSubsettingConfigContainerV1beta1({
+    this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': ?enabled};
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
-  factory ILBSubsettingConfigContainerV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ILBSubsettingConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return ILBSubsettingConfigContainerV1beta1(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

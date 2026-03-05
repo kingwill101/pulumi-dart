@@ -157,16 +157,12 @@ import 'linked_storage_account_args.dart';
 class LinkedStorageAccount extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Linked storage accounts type.
   late final pulumi.Output<String> dataSourceType;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Linked storage accounts resources ids.
   late final pulumi.Output<List<String>?> storageAccountIds;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -179,11 +175,11 @@ class LinkedStorageAccount extends pulumi.CustomResource {
     LinkedStorageAccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:operationalinsights:LinkedStorageAccount',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:operationalinsights:LinkedStorageAccount',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     dataSourceType = registerOutput<String>('dataSourceType');
     this.name = registerOutput<String>('name');

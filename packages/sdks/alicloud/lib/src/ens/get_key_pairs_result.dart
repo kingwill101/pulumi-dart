@@ -43,10 +43,7 @@ class GetKeyPairsResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'pairs': pulumi.Input.encodeList<GetKeyPairsPair, Map<String, dynamic>>(
-        pairs,
-        (value) => value.toMap(),
-      ),
+      'pairs': pulumi.Input.encodeList<GetKeyPairsPair, Map<String, dynamic>>(pairs, (value) => value.toMap()),
       'version': version,
     };
   }
@@ -55,28 +52,13 @@ class GetKeyPairsResult {
     return GetKeyPairsResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      keyPairName: (() {
-        final guardedValue = map['keyPairName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      keyPairName: (() { final guardedValue = map['keyPairName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      pairs: pulumi.Input.decodeList<GetKeyPairsPair>(
-        map['pairs']!,
-        (value) =>
-            GetKeyPairsPair.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      pairs: pulumi.Input.decodeList<GetKeyPairsPair>(map['pairs']!, (value) => GetKeyPairsPair.fromMap((value as Map).cast<String, dynamic>())),
       version: map['version'] as String,
     );
   }
 }
+

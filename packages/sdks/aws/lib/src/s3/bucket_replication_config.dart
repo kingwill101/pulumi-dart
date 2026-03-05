@@ -1988,13 +1988,10 @@ import 'bucket_replication_config_state.dart';
 class BucketReplicationConfig extends pulumi.CustomResource {
   /// Name of the source S3 bucket you want Amazon S3 to monitor.
   late final pulumi.Output<String> bucket;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// ARN of the IAM role for Amazon S3 to assume when replicating the objects.
   late final pulumi.Output<String> role;
-
   /// List of configuration blocks describing the rules managing the replication. See below.
   ///
   /// &gt; **NOTE:** Replication to multiple destination buckets requires that `priority` is specified in the `rule` object. If the corresponding rule requires no filter, an empty configuration block `filter {}` must be specified.
@@ -2004,7 +2001,6 @@ class BucketReplicationConfig extends pulumi.CustomResource {
   /// &gt; **NOTE:** The `existing_object_replication` parameter is not supported by Amazon S3 at this time and should not be included in your `rule` configurations. Specifying this parameter will result in `MalformedXML` errors.
   /// To replicate existing objects, please refer to the [Replicating existing objects with S3 Batch Replication](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-batch-replication-batch.html) documentation in the Amazon S3 User Guide.
   late final pulumi.Output<List<Map<String, dynamic>>> rules;
-
   /// Token to allow replication to be enabled on an Object Lock-enabled bucket. You must contact AWS support for the bucket's "Object Lock token".
   /// For more details, see [Using S3 Object Lock with replication](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock-managing.html#object-lock-managing-replication).
   late final pulumi.Output<String?> token;
@@ -2018,11 +2014,11 @@ class BucketReplicationConfig extends pulumi.CustomResource {
     BucketReplicationConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:s3/bucketReplicationConfig:BucketReplicationConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:s3/bucketReplicationConfig:BucketReplicationConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
     region = registerOutput<String>('region');
     role = registerOutput<String>('role');
@@ -2048,11 +2044,11 @@ class BucketReplicationConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:s3/bucketReplicationConfig:BucketReplicationConfig',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:s3/bucketReplicationConfig:BucketReplicationConfig',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
     region = registerOutput<String>('region');
     role = registerOutput<String>('role');

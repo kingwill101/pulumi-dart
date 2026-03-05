@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MccIssueResponse {
   /// Mcc cache node issue detail string.
   final pulumi.Input<String> detailString;
-
   /// Mcc cache node issue related help link.
   final pulumi.Input<String> helpLink;
-
   /// Mcc cache node issue end date.
   final pulumi.Input<String> issueEndDate;
-
   /// Mcc cache node issue start date.
   final pulumi.Input<String> issueStartDate;
-
   /// Mcc cache node issue type.
   final pulumi.Input<String> mccIssueType;
-
   /// Mcc cache node issues toastString.
   final pulumi.Input<String> toastString;
 
@@ -60,3 +55,4 @@ class MccIssueResponse {
     );
   }
 }
+

@@ -158,31 +158,22 @@ import 'connection_monitor_test_args.dart';
 class ConnectionMonitorTest extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The Connection Monitor test destination
   late final pulumi.Output<String?> destination;
-
   /// The Connection Monitor test destination port
   late final pulumi.Output<int?> destinationPort;
-
   /// The flag that indicates if the Connection Monitor test is successful or not.
   late final pulumi.Output<bool> isTestSuccessful;
-
   /// The name of the resource.
   late final pulumi.Output<String> name;
-
   /// The path representing the Connection Monitor test.
   late final pulumi.Output<List<String>> path;
-
   /// The provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The Connection Monitor test source agent
   late final pulumi.Output<String?> sourceAgent;
-
   /// The Connection Monitor test frequency in seconds
   late final pulumi.Output<int?> testFrequencyInSec;
-
   /// The type of the resource.
   late final pulumi.Output<String> type;
 
@@ -195,11 +186,11 @@ class ConnectionMonitorTest extends pulumi.CustomResource {
     ConnectionMonitorTestArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:peering:ConnectionMonitorTest',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:peering:ConnectionMonitorTest',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     destination = registerOutput<String?>('destination');
     destinationPort = registerOutput<int?>('destinationPort');

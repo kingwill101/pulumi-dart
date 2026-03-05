@@ -16,3 +16,4 @@ enum UpgradeMode {
     throw ArgumentError('Unknown UpgradeMode value: $value');
   }
 }
+

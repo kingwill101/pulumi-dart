@@ -292,25 +292,18 @@ import 'trust_store_timeouts.dart';
 class TrustStore extends pulumi.CustomResource {
   /// ARN of the trust store.
   late final pulumi.Output<String> arn;
-
   /// Configuration block for the CA certificates bundle source. See `ca_certificates_bundle_source` below.
   ///
   /// The following arguments are optional:
-  late final pulumi.Output<TrustStoreCaCertificatesBundleSource>
-  caCertificatesBundleSource;
-
+  late final pulumi.Output<TrustStoreCaCertificatesBundleSource> caCertificatesBundleSource;
   /// ETag of the trust store.
   late final pulumi.Output<String> etag;
-
   /// Name of the trust store. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Number of CA certificates in the trust store.
   late final pulumi.Output<int> numberOfCaCertificates;
-
   /// Key-value tags for the place index. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<TrustStoreTimeouts?> timeouts;
@@ -324,38 +317,19 @@ class TrustStore extends pulumi.CustomResource {
     TrustStoreArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cloudfront/trustStore:TrustStore',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cloudfront/trustStore:TrustStore',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    caCertificatesBundleSource =
-        registerOutput<TrustStoreCaCertificatesBundleSource>(
-          'caCertificatesBundleSource',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return TrustStoreCaCertificatesBundleSource.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    caCertificatesBundleSource = registerOutput<TrustStoreCaCertificatesBundleSource>('caCertificatesBundleSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrustStoreCaCertificatesBundleSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
     numberOfCaCertificates = registerOutput<int>('numberOfCaCertificates');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<TrustStoreTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TrustStoreTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<TrustStoreTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrustStoreTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [TrustStore] resource's state with the given [name] and [id].
@@ -376,37 +350,18 @@ class TrustStore extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cloudfront/trustStore:TrustStore',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cloudfront/trustStore:TrustStore',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    caCertificatesBundleSource =
-        registerOutput<TrustStoreCaCertificatesBundleSource>(
-          'caCertificatesBundleSource',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return TrustStoreCaCertificatesBundleSource.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    caCertificatesBundleSource = registerOutput<TrustStoreCaCertificatesBundleSource>('caCertificatesBundleSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrustStoreCaCertificatesBundleSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
     numberOfCaCertificates = registerOutput<int>('numberOfCaCertificates');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<TrustStoreTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TrustStoreTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<TrustStoreTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrustStoreTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

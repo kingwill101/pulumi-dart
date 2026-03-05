@@ -10,25 +10,20 @@ class PrivateEndpointConnection {
 
   /// Creates a new [PrivateEndpointConnection].
   /// [properties] The connection properties.
-  PrivateEndpointConnection({required this.properties});
+  PrivateEndpointConnection({
+    required this.properties,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'properties':
-          pulumi.Input.mapInputValue<
-            ConnectionProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': pulumi.Input.mapInputValue<ConnectionProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
     };
   }
 
   factory PrivateEndpointConnection.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointConnection(
-      properties: pulumi.Input.fromValue(
-        ConnectionProperties.fromMap(
-          (map['properties']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      properties: pulumi.Input.fromValue(ConnectionProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

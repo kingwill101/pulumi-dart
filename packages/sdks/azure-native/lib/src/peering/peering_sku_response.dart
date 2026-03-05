@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PeeringSkuResponse {
   /// The family of the peering SKU.
   final pulumi.Input<String> family;
-
   /// The name of the peering SKU.
   final pulumi.Input<String>? name;
-
   /// The size of the peering SKU.
   final pulumi.Input<String> size;
-
   /// The tier of the peering SKU.
   final pulumi.Input<String> tier;
 
@@ -40,13 +37,10 @@ class PeeringSkuResponse {
   factory PeeringSkuResponse.fromMap(Map<String, dynamic> map) {
     return PeeringSkuResponse(
       family: pulumi.Input.fromValue(map['family'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       size: pulumi.Input.fromValue(map['size'] as String),
       tier: pulumi.Input.fromValue(map['tier'] as String),
     );
   }
 }
+

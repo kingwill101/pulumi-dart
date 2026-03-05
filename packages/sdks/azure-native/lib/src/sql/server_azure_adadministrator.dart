@@ -158,25 +158,18 @@ import 'server_azure_adadministrator_args.dart';
 class ServerAzureADAdministrator extends pulumi.CustomResource {
   /// Type of the sever administrator.
   late final pulumi.Output<String?> administratorType;
-
   /// Azure Active Directory only Authentication enabled.
   late final pulumi.Output<bool> azureADOnlyAuthentication;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Login name of the server administrator.
   late final pulumi.Output<String> login;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// SID (object ID) of the server administrator.
   late final pulumi.Output<String> sid;
-
   /// Tenant ID of the administrator.
   late final pulumi.Output<String?> tenantId;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -189,15 +182,13 @@ class ServerAzureADAdministrator extends pulumi.CustomResource {
     ServerAzureADAdministratorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:sql:ServerAzureADAdministrator',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:sql:ServerAzureADAdministrator',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     administratorType = registerOutput<String?>('administratorType');
-    azureADOnlyAuthentication = registerOutput<bool>(
-      'azureADOnlyAuthentication',
-    );
+    azureADOnlyAuthentication = registerOutput<bool>('azureADOnlyAuthentication');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     login = registerOutput<String>('login');
     this.name = registerOutput<String>('name');

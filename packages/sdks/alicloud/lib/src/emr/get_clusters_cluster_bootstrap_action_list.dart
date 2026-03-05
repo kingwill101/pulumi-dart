@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClustersClusterBootstrapActionList {
   /// Parameters of the boot operation.
   final pulumi.Input<String> arg;
-
   /// The name of the boot operation.
   final pulumi.Input<String> name;
-
   /// Boot operation script path.
   final pulumi.Input<String> path;
 
@@ -23,12 +21,14 @@ class GetClustersClusterBootstrapActionList {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'arg': arg, 'name': name, 'path': path};
+    return <String, dynamic>{
+      'arg': arg,
+      'name': name,
+      'path': path,
+    };
   }
 
-  factory GetClustersClusterBootstrapActionList.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetClustersClusterBootstrapActionList.fromMap(Map<String, dynamic> map) {
     return GetClustersClusterBootstrapActionList(
       arg: pulumi.Input.fromValue(map['arg'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
@@ -36,3 +36,4 @@ class GetClustersClusterBootstrapActionList {
     );
   }
 }
+

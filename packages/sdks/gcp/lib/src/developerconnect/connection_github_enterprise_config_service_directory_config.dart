@@ -15,14 +15,15 @@ class ConnectionGithubEnterpriseConfigServiceDirectoryConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'service': service};
+    return <String, dynamic>{
+      'service': service,
+    };
   }
 
-  factory ConnectionGithubEnterpriseConfigServiceDirectoryConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConnectionGithubEnterpriseConfigServiceDirectoryConfig.fromMap(Map<String, dynamic> map) {
     return ConnectionGithubEnterpriseConfigServiceDirectoryConfig(
       service: pulumi.Input.fromValue(map['service'] as String),
     );
   }
 }
+

@@ -16,3 +16,4 @@ enum Regionality {
     throw ArgumentError('Unknown Regionality value: $value');
   }
 }
+

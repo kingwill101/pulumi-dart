@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AutoScalePropertiesResponse {
   /// Whether automatic scaling is enabled for the Big Data pool.
   final pulumi.Input<bool>? enabled;
-
   /// The maximum number of nodes the Big Data pool can support.
   final pulumi.Input<int>? maxNodeCount;
-
   /// The minimum number of nodes the Big Data pool can support.
   final pulumi.Input<int>? minNodeCount;
 
@@ -33,21 +31,10 @@ class AutoScalePropertiesResponse {
 
   factory AutoScalePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AutoScalePropertiesResponse(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      maxNodeCount: (() {
-        final guardedValue = map['maxNodeCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      minNodeCount: (() {
-        final guardedValue = map['minNodeCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      maxNodeCount: (() { final guardedValue = map['maxNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      minNodeCount: (() { final guardedValue = map['minNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

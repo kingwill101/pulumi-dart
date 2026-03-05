@@ -9,19 +9,20 @@ class HardwareProfileResponse {
 
   /// Creates a new [HardwareProfileResponse].
   /// [vmSize] The size of the VM
-  HardwareProfileResponse({this.vmSize});
+  HardwareProfileResponse({
+    this.vmSize,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'vmSize': ?vmSize};
+    return <String, dynamic>{
+      'vmSize': ?vmSize,
+    };
   }
 
   factory HardwareProfileResponse.fromMap(Map<String, dynamic> map) {
     return HardwareProfileResponse(
-      vmSize: (() {
-        final guardedValue = map['vmSize'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      vmSize: (() { final guardedValue = map['vmSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -196,34 +196,24 @@ import 'load_balancer_state.dart';
 class LoadBalancer extends pulumi.CustomResource {
   /// Configuration of the algorithm the Load Balancer use.
   late final pulumi.Output<LoadBalancerAlgorithm> algorithm;
-
   /// Enable or disable delete protection. See "Delete Protection" in the Provider Docs for details.
   late final pulumi.Output<bool?> deleteProtection;
-
   /// (string) IPv4 Address of the Load Balancer.
   late final pulumi.Output<String> ipv4;
-
   /// (string) IPv6 Address of the Load Balancer.
   late final pulumi.Output<String> ipv6;
-
   /// User-defined labels (key-value pairs) should be created with.
   late final pulumi.Output<Map<String, String>> labels;
-
   /// Type of the Load Balancer.
   late final pulumi.Output<String> loadBalancerType;
-
   /// The location name of the Load Balancer. Require when no network_zone is set. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-locations-are-there) for more details about locations.
   late final pulumi.Output<String> location;
-
   /// Name of the Load Balancer.
   late final pulumi.Output<String> name;
-
   /// (int) ID of the first private network that this Load Balancer is connected to.
   late final pulumi.Output<int> networkId;
-
   /// (string) IP of the Load Balancer in the first private network that it is connected to.
   late final pulumi.Output<String> networkIp;
-
   /// The Network Zone of the Load Balancer. Require when no location is set.
   late final pulumi.Output<String> networkZone;
   late final pulumi.Output<List<Map<String, dynamic>>> targets;
@@ -237,21 +227,12 @@ class LoadBalancer extends pulumi.CustomResource {
     LoadBalancerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'hcloud:index/loadBalancer:LoadBalancer',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    algorithm = registerOutput<LoadBalancerAlgorithm>(
-      'algorithm',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LoadBalancerAlgorithm.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'hcloud:index/loadBalancer:LoadBalancer',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    algorithm = registerOutput<LoadBalancerAlgorithm>('algorithm', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerAlgorithm.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deleteProtection = registerOutput<bool?>('deleteProtection');
     ipv4 = registerOutput<String>('ipv4');
     ipv6 = registerOutput<String>('ipv6');
@@ -283,21 +264,12 @@ class LoadBalancer extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'hcloud:index/loadBalancer:LoadBalancer',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    algorithm = registerOutput<LoadBalancerAlgorithm>(
-      'algorithm',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LoadBalancerAlgorithm.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'hcloud:index/loadBalancer:LoadBalancer',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    algorithm = registerOutput<LoadBalancerAlgorithm>('algorithm', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerAlgorithm.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deleteProtection = registerOutput<bool?>('deleteProtection');
     ipv4 = registerOutput<String>('ipv4');
     ipv6 = registerOutput<String>('ipv6');

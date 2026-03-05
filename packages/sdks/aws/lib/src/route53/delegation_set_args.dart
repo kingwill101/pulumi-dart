@@ -13,19 +13,20 @@ class DelegationSetArgs {
 
   /// Creates a new [DelegationSetArgs].
   /// [referenceName] This is a reference name used in Caller Reference
-  DelegationSetArgs({this.referenceName});
+  DelegationSetArgs({
+    this.referenceName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'referenceName': ?referenceName};
+    return <String, dynamic>{
+      'referenceName': ?referenceName,
+    };
   }
 
   factory DelegationSetArgs.fromMap(Map<String, dynamic> map) {
     return DelegationSetArgs(
-      referenceName: (() {
-        final guardedValue = map['referenceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      referenceName: (() { final guardedValue = map['referenceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

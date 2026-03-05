@@ -8,52 +8,29 @@ import 'google_cloud_aiplatform_v1beta1_presets_query.dart';
 class GoogleCloudAiplatformV1beta1Presets {
   /// The modality of the uploaded model, which automatically configures the distance measurement and feature normalization for the underlying example index and queries. If your model does not precisely fit one of these types, it is okay to choose the closest type.
   final pulumi.Input<GoogleCloudAiplatformV1beta1PresetsModality>? modality;
-
   /// Preset option controlling parameters for speed-precision trade-off when querying for examples. If omitted, defaults to `PRECISE`.
   final pulumi.Input<GoogleCloudAiplatformV1beta1PresetsQuery>? query;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1Presets].
   /// [modality] The modality of the uploaded model, which automatically configures the distance measurement and feature normalization for the underlying example index and queries. If your model does not precisely fit one of these types, it is okay to choose the closest type.
   /// [query] Preset option controlling parameters for speed-precision trade-off when querying for examples. If omitted, defaults to `PRECISE`.
-  GoogleCloudAiplatformV1beta1Presets({this.modality, this.query});
+  GoogleCloudAiplatformV1beta1Presets({
+    this.modality,
+    this.query,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'modality':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudAiplatformV1beta1PresetsModality,
-            String
-          >(modality, (value) => value.wireValue),
-      'query':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudAiplatformV1beta1PresetsQuery,
-            String
-          >(query, (value) => value.wireValue),
+      'modality': ?pulumi.Input.mapOptionalInputValue<GoogleCloudAiplatformV1beta1PresetsModality, String>(modality, (value) => value.wireValue),
+      'query': ?pulumi.Input.mapOptionalInputValue<GoogleCloudAiplatformV1beta1PresetsQuery, String>(query, (value) => value.wireValue),
     };
   }
 
-  factory GoogleCloudAiplatformV1beta1Presets.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudAiplatformV1beta1Presets.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1Presets(
-      modality: (() {
-        final guardedValue = map['modality'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudAiplatformV1beta1PresetsModality.fromValue(
-            guardedValue as String,
-          ),
-        );
-      })(),
-      query: (() {
-        final guardedValue = map['query'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudAiplatformV1beta1PresetsQuery.fromValue(
-            guardedValue as String,
-          ),
-        );
-      })(),
+      modality: (() { final guardedValue = map['modality']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudAiplatformV1beta1PresetsModality.fromValue(guardedValue as String)); })(),
+      query: (() { final guardedValue = map['query']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudAiplatformV1beta1PresetsQuery.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

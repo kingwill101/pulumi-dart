@@ -12,14 +12,15 @@ class GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostType {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'placeHolder': placeHolder};
+    return <String, dynamic>{
+      'placeHolder': placeHolder,
+    };
   }
 
-  factory GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostType.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostType.fromMap(Map<String, dynamic> map) {
     return GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostType(
       placeHolder: pulumi.Input.fromValue(map['placeHolder'] as String),
     );
   }
 }
+

@@ -7,22 +7,16 @@ import 'tag_response.dart';
 class AwsEc2VPCPeeringConnectionPropertiesResponse {
   /// Property id
   final pulumi.Input<String>? id;
-
   /// The AWS account ID of the owner of the accepter VPC.
   final pulumi.Input<String>? peerOwnerId;
-
   /// The Region code for the accepter VPC, if the accepter VPC is located in a Region other than the Region in which you make the request.
   final pulumi.Input<String>? peerRegion;
-
   /// The Amazon Resource Name (ARN) of the VPC peer role for the peering connection in another AWS account.
   final pulumi.Input<String>? peerRoleArn;
-
   /// The ID of the VPC with which you are creating the VPC peering connection. You must specify this parameter in the request.
   final pulumi.Input<String>? peerVpcId;
-
   /// Property tags
   final pulumi.Input<List<TagResponse>>? tags;
-
   /// The ID of the VPC.
   final pulumi.Input<String>? vpcId;
 
@@ -51,67 +45,21 @@ class AwsEc2VPCPeeringConnectionPropertiesResponse {
       'peerRegion': ?peerRegion,
       'peerRoleArn': ?peerRoleArn,
       'peerVpcId': ?peerVpcId,
-      'tags':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<TagResponse>,
-            List<Map<String, dynamic>>
-          >(
-            tags,
-            (value) =>
-                pulumi.Input.encodeList<TagResponse, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'tags': ?pulumi.Input.mapOptionalInputValue<List<TagResponse>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<TagResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'vpcId': ?vpcId,
     };
   }
 
-  factory AwsEc2VPCPeeringConnectionPropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AwsEc2VPCPeeringConnectionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsEc2VPCPeeringConnectionPropertiesResponse(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      peerOwnerId: (() {
-        final guardedValue = map['peerOwnerId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      peerRegion: (() {
-        final guardedValue = map['peerRegion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      peerRoleArn: (() {
-        final guardedValue = map['peerRoleArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      peerVpcId: (() {
-        final guardedValue = map['peerVpcId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<TagResponse>(
-            guardedValue,
-            (value) =>
-                TagResponse.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      vpcId: (() {
-        final guardedValue = map['vpcId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      peerOwnerId: (() { final guardedValue = map['peerOwnerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      peerRegion: (() { final guardedValue = map['peerRegion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      peerRoleArn: (() { final guardedValue = map['peerRoleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      peerVpcId: (() { final guardedValue = map['peerVpcId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TagResponse>(guardedValue, (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      vpcId: (() { final guardedValue = map['vpcId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

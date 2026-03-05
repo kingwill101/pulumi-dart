@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectedPartnerResourcePropertiesResponse {
   /// The azure resource Id of the deployment.
   final pulumi.Input<String>? azureResourceId;
-
   /// The location of the deployment.
   final pulumi.Input<String>? location;
-
   /// Elastic deployment name
   final pulumi.Input<String>? partnerDeploymentName;
-
   /// Deployment URL of the elasticsearch in Elastic cloud deployment.
   final pulumi.Input<String>? partnerDeploymentUri;
 
@@ -37,30 +34,13 @@ class ConnectedPartnerResourcePropertiesResponse {
     };
   }
 
-  factory ConnectedPartnerResourcePropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConnectedPartnerResourcePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ConnectedPartnerResourcePropertiesResponse(
-      azureResourceId: (() {
-        final guardedValue = map['azureResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      partnerDeploymentName: (() {
-        final guardedValue = map['partnerDeploymentName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      partnerDeploymentUri: (() {
-        final guardedValue = map['partnerDeploymentUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      azureResourceId: (() { final guardedValue = map['azureResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      partnerDeploymentName: (() { final guardedValue = map['partnerDeploymentName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      partnerDeploymentUri: (() { final guardedValue = map['partnerDeploymentUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

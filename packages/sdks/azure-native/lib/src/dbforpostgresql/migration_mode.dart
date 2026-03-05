@@ -15,3 +15,4 @@ enum MigrationMode {
     throw ArgumentError('Unknown MigrationMode value: $value');
   }
 }
+

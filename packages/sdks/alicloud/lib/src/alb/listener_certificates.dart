@@ -8,19 +8,20 @@ class ListenerCertificates {
 
   /// Creates a new [ListenerCertificates].
   /// [certificateId] The ID of the certificate. Currently, only server certificates are supported.
-  ListenerCertificates({this.certificateId});
+  ListenerCertificates({
+    this.certificateId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'certificateId': ?certificateId};
+    return <String, dynamic>{
+      'certificateId': ?certificateId,
+    };
   }
 
   factory ListenerCertificates.fromMap(Map<String, dynamic> map) {
     return ListenerCertificates(
-      certificateId: (() {
-        final guardedValue = map['certificateId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      certificateId: (() { final guardedValue = map['certificateId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

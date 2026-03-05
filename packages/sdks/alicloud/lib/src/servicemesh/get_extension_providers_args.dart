@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetExtensionProvidersArgs {
   /// A list of Service Mesh Extension Provider IDs.
   final pulumi.Input<List<String>>? ids;
-
   /// A regex string to filter results by Service Mesh Extension Provider name.
   final pulumi.Input<String>? nameRegex;
-
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
-
   /// The ID of the Service Mesh.
   final pulumi.Input<String> serviceMeshId;
-
   /// The type of the Service Mesh Extension Provider. Valid values: `httpextauth`, `grpcextauth`.
   final pulumi.Input<String> type;
 
@@ -48,23 +44,12 @@ class GetExtensionProvidersArgs {
 
   factory GetExtensionProvidersArgs.fromMap(Map<String, dynamic> map) {
     return GetExtensionProvidersArgs(
-      ids: (() {
-        final guardedValue = map['ids'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ids: (() { final guardedValue = map['ids']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serviceMeshId: pulumi.Input.fromValue(map['serviceMeshId'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetImportCollectorArgs {
   /// Unique name of a Import collector within a project.
   final pulumi.Input<String> importCollectorName;
-
   /// Name of the Azure Migrate project.
   final pulumi.Input<String> projectName;
-
   /// Name of the Azure Resource Group that project is part of.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,13 +34,10 @@ class GetImportCollectorArgs {
 
   factory GetImportCollectorArgs.fromMap(Map<String, dynamic> map) {
     return GetImportCollectorArgs(
-      importCollectorName: pulumi.Input.fromValue(
-        map['importCollectorName'] as String,
-      ),
+      importCollectorName: pulumi.Input.fromValue(map['importCollectorName'] as String),
       projectName: pulumi.Input.fromValue(map['projectName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

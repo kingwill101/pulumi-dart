@@ -142,22 +142,16 @@ import 'device_security_group_args.dart';
 class DeviceSecurityGroup extends pulumi.CustomResource {
   /// The allow-list custom alert rules.
   late final pulumi.Output<List<Map<String, dynamic>>?> allowlistRules;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The deny-list custom alert rules.
   late final pulumi.Output<List<Map<String, dynamic>>?> denylistRules;
-
   /// Resource name
   late final pulumi.Output<String> name;
-
   /// The list of custom alert threshold rules.
   late final pulumi.Output<List<Map<String, dynamic>>?> thresholdRules;
-
   /// The list of custom alert time-window rules.
   late final pulumi.Output<List<Map<String, dynamic>>?> timeWindowRules;
-
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -170,25 +164,17 @@ class DeviceSecurityGroup extends pulumi.CustomResource {
     DeviceSecurityGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:security:DeviceSecurityGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    allowlistRules = registerOutput<List<Map<String, dynamic>>?>(
-      'allowlistRules',
-    );
+          'azure-native:security:DeviceSecurityGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    allowlistRules = registerOutput<List<Map<String, dynamic>>?>('allowlistRules');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    denylistRules = registerOutput<List<Map<String, dynamic>>?>(
-      'denylistRules',
-    );
+    denylistRules = registerOutput<List<Map<String, dynamic>>?>('denylistRules');
     this.name = registerOutput<String>('name');
-    thresholdRules = registerOutput<List<Map<String, dynamic>>?>(
-      'thresholdRules',
-    );
-    timeWindowRules = registerOutput<List<Map<String, dynamic>>?>(
-      'timeWindowRules',
-    );
+    thresholdRules = registerOutput<List<Map<String, dynamic>>?>('thresholdRules');
+    timeWindowRules = registerOutput<List<Map<String, dynamic>>?>('timeWindowRules');
     type = registerOutput<String>('type');
   }
 }

@@ -9,15 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ObjectACLArgs {
   /// The name of the bucket the object is stored in.
   final pulumi.Input<String> bucket;
-
   /// The name of the object to apply the acl to.
   ///
   /// - - -
   final pulumi.Input<String> object_;
-
   /// The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `role_entity` is not.
   final pulumi.Input<String>? predefinedAcl;
-
   /// List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
   /// Must be set if `predefined_acl` is not.
   final pulumi.Input<List<String>>? roleEntities;
@@ -47,16 +44,9 @@ class ObjectACLArgs {
     return ObjectACLArgs(
       bucket: pulumi.Input.fromValue(map['bucket'] as String),
       object_: pulumi.Input.fromValue(map['object'] as String),
-      predefinedAcl: (() {
-        final guardedValue = map['predefinedAcl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      roleEntities: (() {
-        final guardedValue = map['roleEntities'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      predefinedAcl: (() { final guardedValue = map['predefinedAcl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      roleEntities: (() { final guardedValue = map['roleEntities']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

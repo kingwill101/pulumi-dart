@@ -11,32 +11,22 @@ import 'managed_service_identity.dart';
 class ClusterManagerArgs {
   /// The resource ID of the Log Analytics workspace that is used for the logs collection.
   final pulumi.Input<String>? analyticsWorkspaceId;
-
   /// Field deprecated, this value will no longer influence the cluster manager allocation process and will be removed in a future version. The Azure availability zones within the region that will be used to support the cluster manager resource.
   final pulumi.Input<List<String>>? availabilityZones;
-
   /// The name of the cluster manager.
   final pulumi.Input<String>? clusterManagerName;
-
   /// The resource ID of the fabric controller that has one to one mapping with the cluster manager.
   final pulumi.Input<String> fabricControllerId;
-
   /// The identity of the cluster manager.
   final pulumi.Input<ManagedServiceIdentity>? identity;
-
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
-
   /// The configuration of the managed resource group associated with the resource.
-  final pulumi.Input<ManagedResourceGroupConfiguration>?
-  managedResourceGroupConfiguration;
-
+  final pulumi.Input<ManagedResourceGroupConfiguration>? managedResourceGroupConfiguration;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// Field deprecated, this value will no longer influence the cluster manager allocation process and will be removed in a future version. The size of the Azure virtual machines to use for hosting the cluster manager resource.
   final pulumi.Input<String>? vmSize;
 
@@ -70,17 +60,9 @@ class ClusterManagerArgs {
       'availabilityZones': ?availabilityZones,
       'clusterManagerName': ?clusterManagerName,
       'fabricControllerId': fabricControllerId,
-      'identity':
-          ?pulumi.Input.mapOptionalInputValue<
-            ManagedServiceIdentity,
-            Map<String, dynamic>
-          >(identity, (value) => value.toMap()),
+      'identity': ?pulumi.Input.mapOptionalInputValue<ManagedServiceIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
       'location': ?location,
-      'managedResourceGroupConfiguration':
-          ?pulumi.Input.mapOptionalInputValue<
-            ManagedResourceGroupConfiguration,
-            Map<String, dynamic>
-          >(managedResourceGroupConfiguration, (value) => value.toMap()),
+      'managedResourceGroupConfiguration': ?pulumi.Input.mapOptionalInputValue<ManagedResourceGroupConfiguration, Map<String, dynamic>>(managedResourceGroupConfiguration, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'tags': ?tags,
       'vmSize': ?vmSize,
@@ -89,62 +71,17 @@ class ClusterManagerArgs {
 
   factory ClusterManagerArgs.fromMap(Map<String, dynamic> map) {
     return ClusterManagerArgs(
-      analyticsWorkspaceId: (() {
-        final guardedValue = map['analyticsWorkspaceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      availabilityZones: (() {
-        final guardedValue = map['availabilityZones'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      clusterManagerName: (() {
-        final guardedValue = map['clusterManagerName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      fabricControllerId: pulumi.Input.fromValue(
-        map['fabricControllerId'] as String,
-      ),
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ManagedServiceIdentity.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      managedResourceGroupConfiguration: (() {
-        final guardedValue = map['managedResourceGroupConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ManagedResourceGroupConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      vmSize: (() {
-        final guardedValue = map['vmSize'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      analyticsWorkspaceId: (() { final guardedValue = map['analyticsWorkspaceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      availabilityZones: (() { final guardedValue = map['availabilityZones']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      clusterManagerName: (() { final guardedValue = map['clusterManagerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      fabricControllerId: pulumi.Input.fromValue(map['fabricControllerId'] as String),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedServiceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      managedResourceGroupConfiguration: (() { final guardedValue = map['managedResourceGroupConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedResourceGroupConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      vmSize: (() { final guardedValue = map['vmSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -15,3 +15,4 @@ enum ProtocolType {
     throw ArgumentError('Unknown ProtocolType value: $value');
   }
 }
+

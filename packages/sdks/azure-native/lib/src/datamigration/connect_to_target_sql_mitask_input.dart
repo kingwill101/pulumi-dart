@@ -7,13 +7,10 @@ import 'sql_connection_info.dart';
 class ConnectToTargetSqlMITaskInput {
   /// Flag for whether to collect agent jobs from target SQL MI server.
   final pulumi.Input<bool>? collectAgentJobs;
-
   /// Flag for whether to collect logins from target SQL MI server.
   final pulumi.Input<bool>? collectLogins;
-
   /// Connection information for target SQL Server
   final pulumi.Input<SqlConnectionInfo> targetConnectionInfo;
-
   /// Flag for whether to validate SSIS catalog is reachable on the target SQL MI server.
   final pulumi.Input<bool>? validateSsisCatalogOnly;
 
@@ -33,37 +30,18 @@ class ConnectToTargetSqlMITaskInput {
     return <String, dynamic>{
       'collectAgentJobs': ?collectAgentJobs,
       'collectLogins': ?collectLogins,
-      'targetConnectionInfo':
-          pulumi.Input.mapInputValue<SqlConnectionInfo, Map<String, dynamic>>(
-            targetConnectionInfo,
-            (value) => value.toMap(),
-          ),
+      'targetConnectionInfo': pulumi.Input.mapInputValue<SqlConnectionInfo, Map<String, dynamic>>(targetConnectionInfo, (value) => value.toMap()),
       'validateSsisCatalogOnly': ?validateSsisCatalogOnly,
     };
   }
 
   factory ConnectToTargetSqlMITaskInput.fromMap(Map<String, dynamic> map) {
     return ConnectToTargetSqlMITaskInput(
-      collectAgentJobs: (() {
-        final guardedValue = map['collectAgentJobs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      collectLogins: (() {
-        final guardedValue = map['collectLogins'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      targetConnectionInfo: pulumi.Input.fromValue(
-        SqlConnectionInfo.fromMap(
-          (map['targetConnectionInfo']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      validateSsisCatalogOnly: (() {
-        final guardedValue = map['validateSsisCatalogOnly'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      collectAgentJobs: (() { final guardedValue = map['collectAgentJobs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      collectLogins: (() { final guardedValue = map['collectLogins']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      targetConnectionInfo: pulumi.Input.fromValue(SqlConnectionInfo.fromMap((map['targetConnectionInfo']! as Map).cast<String, dynamic>())),
+      validateSsisCatalogOnly: (() { final guardedValue = map['validateSsisCatalogOnly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

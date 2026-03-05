@@ -15,3 +15,4 @@ enum MetricsStatus {
     throw ArgumentError('Unknown MetricsStatus value: $value');
   }
 }
+

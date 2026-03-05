@@ -101,10 +101,8 @@ import 'email_identity_state.dart';
 class EmailIdentity extends pulumi.CustomResource {
   /// The ARN of the email identity.
   late final pulumi.Output<String> arn;
-
   /// The email address to assign to SES.
   late final pulumi.Output<String> email;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -117,11 +115,11 @@ class EmailIdentity extends pulumi.CustomResource {
     EmailIdentityArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ses/emailIdentity:EmailIdentity',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ses/emailIdentity:EmailIdentity',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     email = registerOutput<String>('email');
     region = registerOutput<String>('region');
@@ -145,11 +143,11 @@ class EmailIdentity extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ses/emailIdentity:EmailIdentity',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ses/emailIdentity:EmailIdentity',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     email = registerOutput<String>('email');
     region = registerOutput<String>('region');

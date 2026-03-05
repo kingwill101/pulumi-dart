@@ -9,19 +9,20 @@ class LabelingJobInstructions {
 
   /// Creates a new [LabelingJobInstructions].
   /// [uri] The link to a page with detailed labeling instructions for labelers.
-  LabelingJobInstructions({this.uri});
+  LabelingJobInstructions({
+    this.uri,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'uri': ?uri};
+    return <String, dynamic>{
+      'uri': ?uri,
+    };
   }
 
   factory LabelingJobInstructions.fromMap(Map<String, dynamic> map) {
     return LabelingJobInstructions(
-      uri: (() {
-        final guardedValue = map['uri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      uri: (() { final guardedValue = map['uri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

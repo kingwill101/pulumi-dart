@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DnsRecordResponse {
   /// Name of the DNS record.
   final pulumi.Input<String> name;
-
   /// Represents an expiry time in seconds to represent how long this entry can be cached by the resolver, default = 3600sec.
   final pulumi.Input<int> ttl;
-
   /// Type of the DNS record. Example: TXT
   final pulumi.Input<String> type;
-
   /// Value of the DNS record.
   final pulumi.Input<String> value;
 
@@ -46,3 +43,4 @@ class DnsRecordResponse {
     );
   }
 }
+

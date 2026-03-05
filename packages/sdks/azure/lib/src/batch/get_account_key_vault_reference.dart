@@ -5,17 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccountKeyVaultReference {
   /// The Azure identifier of the Azure KeyVault reference.
   final pulumi.Input<String> id;
-
   /// The HTTPS URL of the Azure KeyVault reference.
   final pulumi.Input<String> url;
 
   /// Creates a new [GetAccountKeyVaultReference].
   /// [id] The Azure identifier of the Azure KeyVault reference.
   /// [url] The HTTPS URL of the Azure KeyVault reference.
-  GetAccountKeyVaultReference({required this.id, required this.url});
+  GetAccountKeyVaultReference({
+    required this.id,
+    required this.url,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id, 'url': url};
+    return <String, dynamic>{
+      'id': id,
+      'url': url,
+    };
   }
 
   factory GetAccountKeyVaultReference.fromMap(Map<String, dynamic> map) {
@@ -25,3 +30,4 @@ class GetAccountKeyVaultReference {
     );
   }
 }
+

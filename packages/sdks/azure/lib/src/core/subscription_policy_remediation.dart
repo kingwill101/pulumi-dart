@@ -268,28 +268,20 @@ import 'subscription_policy_remediation_state.dart';
 class SubscriptionPolicyRemediation extends pulumi.CustomResource {
   /// A number between 0.0 to 1.0 representing the percentage failure threshold. The remediation will fail if the percentage of failed remediation operations (i.e. failed deployments) exceeds this threshold.
   late final pulumi.Output<double?> failurePercentage;
-
   /// A list of the resource locations that will be remediated.
   late final pulumi.Output<List<String>?> locationFilters;
-
   /// The name of the Policy Remediation. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Determines how many resources to remediate at any given time. Can be used to increase or reduce the pace of the remediation. If not provided, the default parallel deployments value is used.
   late final pulumi.Output<int?> parallelDeployments;
-
   /// The ID of the Policy Assignment that should be remediated.
   late final pulumi.Output<String> policyAssignmentId;
-
   /// The unique ID for the policy definition reference within the policy set definition that should be remediated. Required when the policy assignment being remediated assigns a policy set definition.
   late final pulumi.Output<String?> policyDefinitionReferenceId;
-
   /// Determines the max number of resources that can be remediated by the remediation job. If not provided, the default resource count is used.
   late final pulumi.Output<int?> resourceCount;
-
   /// The way that resources to remediate are discovered. Possible values are `ExistingNonCompliant`, `ReEvaluateCompliance`. Defaults to `ExistingNonCompliant`.
   late final pulumi.Output<String?> resourceDiscoveryMode;
-
   /// The Subscription ID at which the Policy Remediation should be applied. Changing this forces a new resource to be created.
   late final pulumi.Output<String> subscriptionId;
 
@@ -302,19 +294,17 @@ class SubscriptionPolicyRemediation extends pulumi.CustomResource {
     SubscriptionPolicyRemediationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:core/subscriptionPolicyRemediation:SubscriptionPolicyRemediation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:core/subscriptionPolicyRemediation:SubscriptionPolicyRemediation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     failurePercentage = registerOutput<double?>('failurePercentage');
     locationFilters = registerOutput<List<String>?>('locationFilters');
     this.name = registerOutput<String>('name');
     parallelDeployments = registerOutput<int?>('parallelDeployments');
     policyAssignmentId = registerOutput<String>('policyAssignmentId');
-    policyDefinitionReferenceId = registerOutput<String?>(
-      'policyDefinitionReferenceId',
-    );
+    policyDefinitionReferenceId = registerOutput<String?>('policyDefinitionReferenceId');
     resourceCount = registerOutput<int?>('resourceCount');
     resourceDiscoveryMode = registerOutput<String?>('resourceDiscoveryMode');
     subscriptionId = registerOutput<String>('subscriptionId');
@@ -338,19 +328,17 @@ class SubscriptionPolicyRemediation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:core/subscriptionPolicyRemediation:SubscriptionPolicyRemediation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:core/subscriptionPolicyRemediation:SubscriptionPolicyRemediation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     failurePercentage = registerOutput<double?>('failurePercentage');
     locationFilters = registerOutput<List<String>?>('locationFilters');
     this.name = registerOutput<String>('name');
     parallelDeployments = registerOutput<int?>('parallelDeployments');
     policyAssignmentId = registerOutput<String>('policyAssignmentId');
-    policyDefinitionReferenceId = registerOutput<String?>(
-      'policyDefinitionReferenceId',
-    );
+    policyDefinitionReferenceId = registerOutput<String?>('policyDefinitionReferenceId');
     resourceCount = registerOutput<int?>('resourceCount');
     resourceDiscoveryMode = registerOutput<String?>('resourceDiscoveryMode');
     subscriptionId = registerOutput<String>('subscriptionId');

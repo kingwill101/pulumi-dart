@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccessStrategiesStrategyLine {
   /// The code of the source region group.
   final pulumi.Input<String> groupCode;
-
   /// The name of the source region group.
   final pulumi.Input<String> groupName;
-
   /// The line code of the source region.
   final pulumi.Input<String> lineCode;
-
   /// The line name of the source region.
   final pulumi.Input<String> lineName;
 
@@ -45,3 +42,4 @@ class GetAccessStrategiesStrategyLine {
     );
   }
 }
+

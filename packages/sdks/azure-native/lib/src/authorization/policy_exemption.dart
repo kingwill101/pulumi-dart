@@ -416,40 +416,28 @@ import 'system_data_response.dart';
 class PolicyExemption extends pulumi.CustomResource {
   /// The option whether validate the exemption is at or under the assignment scope.
   late final pulumi.Output<String?> assignmentScopeValidation;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The description of the policy exemption.
   late final pulumi.Output<String?> description;
-
   /// The display name of the policy exemption.
   late final pulumi.Output<String?> displayName;
-
   /// The policy exemption category. Possible values are Waiver and Mitigated.
   late final pulumi.Output<String> exemptionCategory;
-
   /// The expiration date and time (in UTC ISO 8601 format yyyy-MM-ddTHH:mm:ssZ) of the policy exemption.
   late final pulumi.Output<String?> expiresOn;
-
   /// The policy exemption metadata. Metadata is an open ended object and is typically a collection of key value pairs.
   late final pulumi.Output<dynamic> metadata;
-
   /// The name of the policy exemption.
   late final pulumi.Output<String> name;
-
   /// The ID of the policy assignment that is being exempted.
   late final pulumi.Output<String> policyAssignmentId;
-
   /// The policy definition reference ID list when the associated policy assignment is an assignment of a policy set definition.
   late final pulumi.Output<List<String>?> policyDefinitionReferenceIds;
-
   /// The resource selector list to filter policies by resource properties.
   late final pulumi.Output<List<Map<String, dynamic>>?> resourceSelectors;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource (Microsoft.Authorization/policyExemptions).
   late final pulumi.Output<String> type;
 
@@ -462,14 +450,12 @@ class PolicyExemption extends pulumi.CustomResource {
     PolicyExemptionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:authorization:PolicyExemption',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    assignmentScopeValidation = registerOutput<String?>(
-      'assignmentScopeValidation',
-    );
+          'azure-native:authorization:PolicyExemption',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    assignmentScopeValidation = registerOutput<String?>('assignmentScopeValidation');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
@@ -478,22 +464,9 @@ class PolicyExemption extends pulumi.CustomResource {
     metadata = registerOutput<dynamic>('metadata');
     this.name = registerOutput<String>('name');
     policyAssignmentId = registerOutput<String>('policyAssignmentId');
-    policyDefinitionReferenceIds = registerOutput<List<String>?>(
-      'policyDefinitionReferenceIds',
-    );
-    resourceSelectors = registerOutput<List<Map<String, dynamic>>?>(
-      'resourceSelectors',
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    policyDefinitionReferenceIds = registerOutput<List<String>?>('policyDefinitionReferenceIds');
+    resourceSelectors = registerOutput<List<Map<String, dynamic>>?>('resourceSelectors');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

@@ -16,3 +16,4 @@ enum B2CResourceSKUName {
     throw ArgumentError('Unknown B2CResourceSKUName value: $value');
   }
 }
+

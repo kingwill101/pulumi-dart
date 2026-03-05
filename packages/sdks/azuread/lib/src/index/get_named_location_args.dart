@@ -12,10 +12,14 @@ class GetNamedLocationArgs {
 
   /// Creates a new [GetNamedLocationArgs].
   /// [displayName] Specifies the display named of the named location to look up.
-  GetNamedLocationArgs({required this.displayName});
+  GetNamedLocationArgs({
+    required this.displayName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'displayName': displayName};
+    return <String, dynamic>{
+      'displayName': displayName,
+    };
   }
 
   factory GetNamedLocationArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetNamedLocationArgs {
     );
   }
 }
+

@@ -432,10 +432,8 @@ import 'host_attachment_state.dart';
 class HostAttachment extends pulumi.CustomResource {
   /// Specifies the added to the host group ID.
   late final pulumi.Output<String> hostGroupId;
-
   /// Specified to be part of a host group of host ID.
   late final pulumi.Output<String> hostId;
-
   /// The bastion host instance id.
   late final pulumi.Output<String> instanceId;
 
@@ -448,11 +446,11 @@ class HostAttachment extends pulumi.CustomResource {
     HostAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:bastionhost/hostAttachment:HostAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:bastionhost/hostAttachment:HostAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     hostGroupId = registerOutput<String>('hostGroupId');
     hostId = registerOutput<String>('hostId');
     instanceId = registerOutput<String>('instanceId');
@@ -476,11 +474,11 @@ class HostAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:bastionhost/hostAttachment:HostAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:bastionhost/hostAttachment:HostAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     hostGroupId = registerOutput<String>('hostGroupId');
     hostId = registerOutput<String>('hostId');
     instanceId = registerOutput<String>('instanceId');

@@ -7,24 +7,17 @@ import 'high_availability_software_configuration.dart';
 class ServiceInitiatedSoftwareConfiguration {
   /// The URL to the SAP Build of Materials(BOM) file.
   final pulumi.Input<String> bomUrl;
-
   /// Gets or sets the HA software configuration.
-  final pulumi.Input<HighAvailabilitySoftwareConfiguration>?
-  highAvailabilitySoftwareConfiguration;
-
+  final pulumi.Input<HighAvailabilitySoftwareConfiguration>? highAvailabilitySoftwareConfiguration;
   /// The SAP bits storage account id.
   final pulumi.Input<String> sapBitsStorageAccountId;
-
   /// The FQDN to set for the SAP system during install.
   final pulumi.Input<String> sapFqdn;
-
   /// The SAP software installation Type.
   /// Expected value is 'ServiceInitiated'.
   final pulumi.Input<String> softwareInstallationType;
-
   /// The software version to install.
   final pulumi.Input<String> softwareVersion;
-
   /// The SSH private key.
   final pulumi.Input<String> sshPrivateKey;
 
@@ -49,11 +42,7 @@ class ServiceInitiatedSoftwareConfiguration {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bomUrl': bomUrl,
-      'highAvailabilitySoftwareConfiguration':
-          ?pulumi.Input.mapOptionalInputValue<
-            HighAvailabilitySoftwareConfiguration,
-            Map<String, dynamic>
-          >(highAvailabilitySoftwareConfiguration, (value) => value.toMap()),
+      'highAvailabilitySoftwareConfiguration': ?pulumi.Input.mapOptionalInputValue<HighAvailabilitySoftwareConfiguration, Map<String, dynamic>>(highAvailabilitySoftwareConfiguration, (value) => value.toMap()),
       'sapBitsStorageAccountId': sapBitsStorageAccountId,
       'sapFqdn': sapFqdn,
       'softwareInstallationType': softwareInstallationType,
@@ -62,29 +51,16 @@ class ServiceInitiatedSoftwareConfiguration {
     };
   }
 
-  factory ServiceInitiatedSoftwareConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ServiceInitiatedSoftwareConfiguration.fromMap(Map<String, dynamic> map) {
     return ServiceInitiatedSoftwareConfiguration(
       bomUrl: pulumi.Input.fromValue(map['bomUrl'] as String),
-      highAvailabilitySoftwareConfiguration: (() {
-        final guardedValue = map['highAvailabilitySoftwareConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          HighAvailabilitySoftwareConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      sapBitsStorageAccountId: pulumi.Input.fromValue(
-        map['sapBitsStorageAccountId'] as String,
-      ),
+      highAvailabilitySoftwareConfiguration: (() { final guardedValue = map['highAvailabilitySoftwareConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HighAvailabilitySoftwareConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      sapBitsStorageAccountId: pulumi.Input.fromValue(map['sapBitsStorageAccountId'] as String),
       sapFqdn: pulumi.Input.fromValue(map['sapFqdn'] as String),
-      softwareInstallationType: pulumi.Input.fromValue(
-        map['softwareInstallationType'] as String,
-      ),
+      softwareInstallationType: pulumi.Input.fromValue(map['softwareInstallationType'] as String),
       softwareVersion: pulumi.Input.fromValue(map['softwareVersion'] as String),
       sshPrivateKey: pulumi.Input.fromValue(map['sshPrivateKey'] as String),
     );
   }
 }
+

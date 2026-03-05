@@ -10,37 +10,20 @@ class GoogleCloudContentwarehouseV1DateTimeArrayResponse {
 
   /// Creates a new [GoogleCloudContentwarehouseV1DateTimeArrayResponse].
   /// [values] List of datetime values. Both OffsetDateTime and ZonedDateTime are supported.
-  GoogleCloudContentwarehouseV1DateTimeArrayResponse({required this.values});
+  GoogleCloudContentwarehouseV1DateTimeArrayResponse({
+    required this.values,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'values':
-          pulumi.Input.mapInputValue<
-            List<GoogleTypeDateTimeResponse>,
-            List<Map<String, dynamic>>
-          >(
-            values,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GoogleTypeDateTimeResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'values': pulumi.Input.mapInputValue<List<GoogleTypeDateTimeResponse>, List<Map<String, dynamic>>>(values, (value) => pulumi.Input.encodeList<GoogleTypeDateTimeResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory GoogleCloudContentwarehouseV1DateTimeArrayResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudContentwarehouseV1DateTimeArrayResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1DateTimeArrayResponse(
-      values: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GoogleTypeDateTimeResponse>(
-          map['values']!,
-          (value) => GoogleTypeDateTimeResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      values: pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleTypeDateTimeResponse>(map['values']!, (value) => GoogleTypeDateTimeResponse.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

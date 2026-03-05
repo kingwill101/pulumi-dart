@@ -18,3 +18,4 @@ enum DnsServiceLogLevelEnum {
     throw ArgumentError('Unknown DnsServiceLogLevelEnum value: $value');
   }
 }
+

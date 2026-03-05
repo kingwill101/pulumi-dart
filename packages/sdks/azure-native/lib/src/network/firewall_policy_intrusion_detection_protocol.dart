@@ -14,8 +14,7 @@ enum FirewallPolicyIntrusionDetectionProtocol {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown FirewallPolicyIntrusionDetectionProtocol value: $value',
-    );
+    throw ArgumentError('Unknown FirewallPolicyIntrusionDetectionProtocol value: $value');
   }
 }
+

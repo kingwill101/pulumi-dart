@@ -20,24 +20,15 @@ class GetLoadBalancerTypesResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'loadBalancerTypes':
-          pulumi.Input.encodeList<
-            GetLoadBalancerTypesLoadBalancerType,
-            Map<String, dynamic>
-          >(loadBalancerTypes, (value) => value.toMap()),
+      'loadBalancerTypes': pulumi.Input.encodeList<GetLoadBalancerTypesLoadBalancerType, Map<String, dynamic>>(loadBalancerTypes, (value) => value.toMap()),
     };
   }
 
   factory GetLoadBalancerTypesResult.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancerTypesResult(
       id: map['id'] as String,
-      loadBalancerTypes:
-          pulumi.Input.decodeList<GetLoadBalancerTypesLoadBalancerType>(
-            map['loadBalancerTypes']!,
-            (value) => GetLoadBalancerTypesLoadBalancerType.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      loadBalancerTypes: pulumi.Input.decodeList<GetLoadBalancerTypesLoadBalancerType>(map['loadBalancerTypes']!, (value) => GetLoadBalancerTypesLoadBalancerType.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

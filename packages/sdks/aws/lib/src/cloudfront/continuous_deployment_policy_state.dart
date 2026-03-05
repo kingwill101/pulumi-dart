@@ -8,20 +8,14 @@ import 'continuous_deployment_policy_traffic_config.dart';
 class ContinuousDeploymentPolicyState {
   /// The continuous deployment policy ARN.
   final pulumi.Input<String>? arn;
-
   /// Whether this continuous deployment policy is enabled.
   final pulumi.Input<bool>? enabled;
-
   /// Current version of the continuous distribution policy.
   final pulumi.Input<String>? etag;
-
   /// Date and time the continuous deployment policy was last modified.
   final pulumi.Input<String>? lastModifiedTime;
-
   /// CloudFront domain name of the staging distribution. See `staging_distribution_dns_names`.
-  final pulumi.Input<ContinuousDeploymentPolicyStagingDistributionDnsNames>?
-  stagingDistributionDnsNames;
-
+  final pulumi.Input<ContinuousDeploymentPolicyStagingDistributionDnsNames>? stagingDistributionDnsNames;
   /// Parameters for routing production traffic from primary to staging distributions. See `traffic_config`.
   final pulumi.Input<ContinuousDeploymentPolicyTrafficConfig>? trafficConfig;
 
@@ -47,59 +41,20 @@ class ContinuousDeploymentPolicyState {
       'enabled': ?enabled,
       'etag': ?etag,
       'lastModifiedTime': ?lastModifiedTime,
-      'stagingDistributionDnsNames':
-          ?pulumi.Input.mapOptionalInputValue<
-            ContinuousDeploymentPolicyStagingDistributionDnsNames,
-            Map<String, dynamic>
-          >(stagingDistributionDnsNames, (value) => value.toMap()),
-      'trafficConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ContinuousDeploymentPolicyTrafficConfig,
-            Map<String, dynamic>
-          >(trafficConfig, (value) => value.toMap()),
+      'stagingDistributionDnsNames': ?pulumi.Input.mapOptionalInputValue<ContinuousDeploymentPolicyStagingDistributionDnsNames, Map<String, dynamic>>(stagingDistributionDnsNames, (value) => value.toMap()),
+      'trafficConfig': ?pulumi.Input.mapOptionalInputValue<ContinuousDeploymentPolicyTrafficConfig, Map<String, dynamic>>(trafficConfig, (value) => value.toMap()),
     };
   }
 
   factory ContinuousDeploymentPolicyState.fromMap(Map<String, dynamic> map) {
     return ContinuousDeploymentPolicyState(
-      arn: (() {
-        final guardedValue = map['arn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      etag: (() {
-        final guardedValue = map['etag'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      lastModifiedTime: (() {
-        final guardedValue = map['lastModifiedTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      stagingDistributionDnsNames: (() {
-        final guardedValue = map['stagingDistributionDnsNames'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ContinuousDeploymentPolicyStagingDistributionDnsNames.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      trafficConfig: (() {
-        final guardedValue = map['trafficConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ContinuousDeploymentPolicyTrafficConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      lastModifiedTime: (() { final guardedValue = map['lastModifiedTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      stagingDistributionDnsNames: (() { final guardedValue = map['stagingDistributionDnsNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ContinuousDeploymentPolicyStagingDistributionDnsNames.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      trafficConfig: (() { final guardedValue = map['trafficConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ContinuousDeploymentPolicyTrafficConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

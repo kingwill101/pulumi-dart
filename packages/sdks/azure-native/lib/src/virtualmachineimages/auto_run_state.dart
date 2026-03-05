@@ -15,3 +15,4 @@ enum AutoRunState {
     throw ArgumentError('Unknown AutoRunState value: $value');
   }
 }
+

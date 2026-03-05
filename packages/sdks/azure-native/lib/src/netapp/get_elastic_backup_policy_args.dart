@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetElasticBackupPolicyArgs {
   /// The name of the ElasticAccount
   final pulumi.Input<String> accountName;
-
   /// The name of the ElasticBackupPolicy
   final pulumi.Input<String> backupPolicyName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -37,12 +35,9 @@ class GetElasticBackupPolicyArgs {
   factory GetElasticBackupPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetElasticBackupPolicyArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
-      backupPolicyName: pulumi.Input.fromValue(
-        map['backupPolicyName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      backupPolicyName: pulumi.Input.fromValue(map['backupPolicyName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

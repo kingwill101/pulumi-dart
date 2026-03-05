@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GovernanceEmailNotification {
   /// Exclude manager from weekly email notification.
   final pulumi.Input<bool>? disableManagerEmailNotification;
-
   /// Exclude  owner from weekly email notification.
   final pulumi.Input<bool>? disableOwnerEmailNotification;
 
@@ -27,16 +26,9 @@ class GovernanceEmailNotification {
 
   factory GovernanceEmailNotification.fromMap(Map<String, dynamic> map) {
     return GovernanceEmailNotification(
-      disableManagerEmailNotification: (() {
-        final guardedValue = map['disableManagerEmailNotification'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      disableOwnerEmailNotification: (() {
-        final guardedValue = map['disableOwnerEmailNotification'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      disableManagerEmailNotification: (() { final guardedValue = map['disableManagerEmailNotification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      disableOwnerEmailNotification: (() { final guardedValue = map['disableOwnerEmailNotification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

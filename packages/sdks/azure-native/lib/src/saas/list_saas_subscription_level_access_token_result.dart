@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by listSaasSubscriptionLevelAccessToken.
 class ListSaasSubscriptionLevelAccessTokenResult {
   /// The Publisher Offer Base Uri
   final String? publisherOfferBaseUri;
-
   /// The generated token
   final String? token;
 
@@ -23,20 +23,11 @@ class ListSaasSubscriptionLevelAccessTokenResult {
     };
   }
 
-  factory ListSaasSubscriptionLevelAccessTokenResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListSaasSubscriptionLevelAccessTokenResult.fromMap(Map<String, dynamic> map) {
     return ListSaasSubscriptionLevelAccessTokenResult(
-      publisherOfferBaseUri: (() {
-        final guardedValue = map['publisherOfferBaseUri'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      token: (() {
-        final guardedValue = map['token'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      publisherOfferBaseUri: (() { final guardedValue = map['publisherOfferBaseUri']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      token: (() { final guardedValue = map['token']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

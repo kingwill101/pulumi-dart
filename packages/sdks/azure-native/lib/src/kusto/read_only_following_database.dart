@@ -272,51 +272,35 @@ import 'table_level_sharing_properties_response.dart';
 class ReadOnlyFollowingDatabase extends pulumi.CustomResource {
   /// The name of the attached database configuration cluster
   late final pulumi.Output<String> attachedDatabaseConfigurationName;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The origin of the following setup.
   late final pulumi.Output<String> databaseShareOrigin;
-
   /// The time the data should be kept in cache for fast queries in TimeSpan.
   late final pulumi.Output<String?> hotCachePeriod;
-
   /// Kind of the database
   /// Expected value is 'ReadOnlyFollowing'.
   late final pulumi.Output<String> kind;
-
   /// The name of the leader cluster
   late final pulumi.Output<String> leaderClusterResourceId;
-
   /// Resource location.
   late final pulumi.Output<String?> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The original database name, before databaseNameOverride or databaseNamePrefix where applied.
   late final pulumi.Output<String> originalDatabaseName;
-
   /// The principals modification kind of the database
   late final pulumi.Output<String> principalsModificationKind;
-
   /// The provisioned state of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The time the data should be kept before it stops being accessible to queries in TimeSpan.
   late final pulumi.Output<String> softDeletePeriod;
-
   /// The statistics of the database.
   late final pulumi.Output<DatabaseStatisticsResponse> statistics;
-
   /// The database suspension details. If the database is suspended, this object contains information related to the database's suspension state.
   late final pulumi.Output<SuspensionDetailsResponse> suspensionDetails;
-
   /// Table level sharing specifications
-  late final pulumi.Output<TableLevelSharingPropertiesResponse>
-  tableLevelSharingProperties;
-
+  late final pulumi.Output<TableLevelSharingPropertiesResponse> tableLevelSharingProperties;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -329,14 +313,12 @@ class ReadOnlyFollowingDatabase extends pulumi.CustomResource {
     ReadOnlyFollowingDatabaseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:kusto:ReadOnlyFollowingDatabase',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    attachedDatabaseConfigurationName = registerOutput<String>(
-      'attachedDatabaseConfigurationName',
-    );
+          'azure-native:kusto:ReadOnlyFollowingDatabase',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    attachedDatabaseConfigurationName = registerOutput<String>('attachedDatabaseConfigurationName');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     databaseShareOrigin = registerOutput<String>('databaseShareOrigin');
     hotCachePeriod = registerOutput<String?>('hotCachePeriod');
@@ -345,42 +327,12 @@ class ReadOnlyFollowingDatabase extends pulumi.CustomResource {
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     originalDatabaseName = registerOutput<String>('originalDatabaseName');
-    principalsModificationKind = registerOutput<String>(
-      'principalsModificationKind',
-    );
+    principalsModificationKind = registerOutput<String>('principalsModificationKind');
     provisioningState = registerOutput<String>('provisioningState');
     softDeletePeriod = registerOutput<String>('softDeletePeriod');
-    statistics = registerOutput<DatabaseStatisticsResponse>(
-      'statistics',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DatabaseStatisticsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    suspensionDetails = registerOutput<SuspensionDetailsResponse>(
-      'suspensionDetails',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SuspensionDetailsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    tableLevelSharingProperties =
-        registerOutput<TableLevelSharingPropertiesResponse>(
-          'tableLevelSharingProperties',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return TableLevelSharingPropertiesResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    statistics = registerOutput<DatabaseStatisticsResponse>('statistics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseStatisticsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    suspensionDetails = registerOutput<SuspensionDetailsResponse>('suspensionDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SuspensionDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tableLevelSharingProperties = registerOutput<TableLevelSharingPropertiesResponse>('tableLevelSharingProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableLevelSharingPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

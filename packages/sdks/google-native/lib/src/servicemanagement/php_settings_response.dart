@@ -10,25 +10,20 @@ class PhpSettingsResponse {
 
   /// Creates a new [PhpSettingsResponse].
   /// [common] Some settings.
-  PhpSettingsResponse({required this.common});
+  PhpSettingsResponse({
+    required this.common,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'common':
-          pulumi.Input.mapInputValue<
-            CommonLanguageSettingsResponse,
-            Map<String, dynamic>
-          >(common, (value) => value.toMap()),
+      'common': pulumi.Input.mapInputValue<CommonLanguageSettingsResponse, Map<String, dynamic>>(common, (value) => value.toMap()),
     };
   }
 
   factory PhpSettingsResponse.fromMap(Map<String, dynamic> map) {
     return PhpSettingsResponse(
-      common: pulumi.Input.fromValue(
-        CommonLanguageSettingsResponse.fromMap(
-          (map['common']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      common: pulumi.Input.fromValue(CommonLanguageSettingsResponse.fromMap((map['common']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

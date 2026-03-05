@@ -8,13 +8,10 @@ import 'subject.dart';
 class SbomReferenceIntotoPayload {
   /// Additional parameters of the Predicate. Includes the actual data about the SBOM.
   final pulumi.Input<SbomReferenceIntotoPredicate>? predicate;
-
   /// URI identifying the type of the Predicate.
   final pulumi.Input<String>? predicateType;
-
   /// Set of software artifacts that the attestation applies to. Each element represents a single software artifact.
   final pulumi.Input<List<Subject>>? subject;
-
   /// Identifier for the schema of the Statement.
   final pulumi.Input<String>? type;
 
@@ -32,58 +29,20 @@ class SbomReferenceIntotoPayload {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'predicate':
-          ?pulumi.Input.mapOptionalInputValue<
-            SbomReferenceIntotoPredicate,
-            Map<String, dynamic>
-          >(predicate, (value) => value.toMap()),
+      'predicate': ?pulumi.Input.mapOptionalInputValue<SbomReferenceIntotoPredicate, Map<String, dynamic>>(predicate, (value) => value.toMap()),
       'predicateType': ?predicateType,
-      'subject':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<Subject>,
-            List<Map<String, dynamic>>
-          >(
-            subject,
-            (value) => pulumi.Input.encodeList<Subject, Map<String, dynamic>>(
-              value,
-              (value) => value.toMap(),
-            ),
-          ),
+      'subject': ?pulumi.Input.mapOptionalInputValue<List<Subject>, List<Map<String, dynamic>>>(subject, (value) => pulumi.Input.encodeList<Subject, Map<String, dynamic>>(value, (value) => value.toMap())),
       'type': ?type,
     };
   }
 
   factory SbomReferenceIntotoPayload.fromMap(Map<String, dynamic> map) {
     return SbomReferenceIntotoPayload(
-      predicate: (() {
-        final guardedValue = map['predicate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SbomReferenceIntotoPredicate.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      predicateType: (() {
-        final guardedValue = map['predicateType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subject: (() {
-        final guardedValue = map['subject'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<Subject>(
-            guardedValue,
-            (value) => Subject.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      predicate: (() { final guardedValue = map['predicate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SbomReferenceIntotoPredicate.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      predicateType: (() { final guardedValue = map['predicateType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subject: (() { final guardedValue = map['subject']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Subject>(guardedValue, (value) => Subject.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

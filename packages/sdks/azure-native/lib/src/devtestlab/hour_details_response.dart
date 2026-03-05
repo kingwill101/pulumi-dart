@@ -9,19 +9,20 @@ class HourDetailsResponse {
 
   /// Creates a new [HourDetailsResponse].
   /// [minute] Minutes of the hour the schedule will run.
-  HourDetailsResponse({this.minute});
+  HourDetailsResponse({
+    this.minute,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'minute': ?minute};
+    return <String, dynamic>{
+      'minute': ?minute,
+    };
   }
 
   factory HourDetailsResponse.fromMap(Map<String, dynamic> map) {
     return HourDetailsResponse(
-      minute: (() {
-        final guardedValue = map['minute'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      minute: (() { final guardedValue = map['minute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

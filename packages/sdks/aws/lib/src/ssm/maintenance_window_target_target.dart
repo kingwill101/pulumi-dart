@@ -9,10 +9,16 @@ class MaintenanceWindowTargetTarget {
   /// Creates a new [MaintenanceWindowTargetTarget].
   /// [key] Required.
   /// [values] Required.
-  MaintenanceWindowTargetTarget({required this.key, required this.values});
+  MaintenanceWindowTargetTarget({
+    required this.key,
+    required this.values,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': key, 'values': values};
+    return <String, dynamic>{
+      'key': key,
+      'values': values,
+    };
   }
 
   factory MaintenanceWindowTargetTarget.fromMap(Map<String, dynamic> map) {
@@ -22,3 +28,4 @@ class MaintenanceWindowTargetTarget {
     );
   }
 }
+

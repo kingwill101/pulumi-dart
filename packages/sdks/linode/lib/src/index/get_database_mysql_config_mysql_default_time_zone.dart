@@ -41,9 +41,7 @@ class GetDatabaseMysqlConfigMysqlDefaultTimeZone {
     };
   }
 
-  factory GetDatabaseMysqlConfigMysqlDefaultTimeZone.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDatabaseMysqlConfigMysqlDefaultTimeZone.fromMap(Map<String, dynamic> map) {
     return GetDatabaseMysqlConfigMysqlDefaultTimeZone(
       description: pulumi.Input.fromValue(map['description'] as String),
       example: pulumi.Input.fromValue(map['example'] as String),
@@ -55,3 +53,4 @@ class GetDatabaseMysqlConfigMysqlDefaultTimeZone {
     );
   }
 }
+

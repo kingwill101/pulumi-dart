@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVirtualHubConnectionArgs {
   /// The name of the Connection which should be retrieved.
   final pulumi.Input<String> name;
-
   /// The Name of the Resource Group where the Virtual Hub Connection exists.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the Virtual Hub where this Connection exists.
   final pulumi.Input<String> virtualHubName;
 
@@ -37,10 +35,9 @@ class GetVirtualHubConnectionArgs {
   factory GetVirtualHubConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualHubConnectionArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       virtualHubName: pulumi.Input.fromValue(map['virtualHubName'] as String),
     );
   }
 }
+

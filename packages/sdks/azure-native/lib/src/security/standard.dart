@@ -203,43 +203,30 @@ import 'system_data_response.dart';
 class Standard extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// category of the standard provided
   late final pulumi.Output<String?> category;
-
   /// List of component objects containing component unique keys (such as assessment keys) to apply to standard scope.  Currently only supports assessment keys.
   late final pulumi.Output<List<Map<String, dynamic>>?> components;
-
   /// description of the standard
   late final pulumi.Output<String?> description;
-
   /// display name of the standard, equivalent to the standardId
   late final pulumi.Output<String?> displayName;
-
   /// Entity tag is used for comparing two or more entities from the same requested resource.
   late final pulumi.Output<String?> etag;
-
   /// Kind of the resource
   late final pulumi.Output<String?> kind;
-
   /// Location where the resource is stored
   late final pulumi.Output<String?> location;
-
   /// Resource name
   late final pulumi.Output<String> name;
-
   /// standard type (Custom or BuiltIn only currently)
   late final pulumi.Output<String> standardType;
-
   /// List of all standard supported clouds.
   late final pulumi.Output<List<String>?> supportedClouds;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// A list of key value pairs that describe the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -252,11 +239,11 @@ class Standard extends pulumi.CustomResource {
     StandardArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:security:Standard',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:security:Standard',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     category = registerOutput<String?>('category');
     components = registerOutput<List<Map<String, dynamic>>?>('components');
@@ -268,16 +255,7 @@ class Standard extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     standardType = registerOutput<String>('standardType');
     supportedClouds = registerOutput<List<String>?>('supportedClouds');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

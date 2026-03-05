@@ -15,3 +15,4 @@ enum AffinityType {
     throw ArgumentError('Unknown AffinityType value: $value');
   }
 }
+

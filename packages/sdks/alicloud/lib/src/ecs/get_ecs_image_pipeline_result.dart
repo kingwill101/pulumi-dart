@@ -46,11 +46,7 @@ class GetEcsImagePipelineResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'pipelines':
-          pulumi.Input.encodeList<
-            GetEcsImagePipelinePipeline,
-            Map<String, dynamic>
-          >(pipelines, (value) => value.toMap()),
+      'pipelines': pulumi.Input.encodeList<GetEcsImagePipelinePipeline, Map<String, dynamic>>(pipelines, (value) => value.toMap()),
       'resourceGroupId': ?resourceGroupId,
       'tags': ?tags,
     };
@@ -60,38 +56,14 @@ class GetEcsImagePipelineResult {
     return GetEcsImagePipelineResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      pipelines: pulumi.Input.decodeList<GetEcsImagePipelinePipeline>(
-        map['pipelines']!,
-        (value) => GetEcsImagePipelinePipeline.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      resourceGroupId: (() {
-        final guardedValue = map['resourceGroupId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      pipelines: pulumi.Input.decodeList<GetEcsImagePipelinePipeline>(map['pipelines']!, (value) => GetEcsImagePipelinePipeline.fromMap((value as Map).cast<String, dynamic>())),
+      resourceGroupId: (() { final guardedValue = map['resourceGroupId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }
 }
+

@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MongoDbShardKeyField {
   /// The name of the field
   final pulumi.Input<String> name;
-
   /// The field ordering
   final pulumi.Input<String> order;
 
   /// Creates a new [MongoDbShardKeyField].
   /// [name] The name of the field
   /// [order] The field ordering
-  MongoDbShardKeyField({required this.name, required this.order});
+  MongoDbShardKeyField({
+    required this.name,
+    required this.order,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'order': order};
+    return <String, dynamic>{
+      'name': name,
+      'order': order,
+    };
   }
 
   factory MongoDbShardKeyField.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class MongoDbShardKeyField {
     );
   }
 }
+

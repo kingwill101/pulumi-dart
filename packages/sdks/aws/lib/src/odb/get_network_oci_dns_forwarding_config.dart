@@ -24,9 +24,8 @@ class GetNetworkOciDnsForwardingConfig {
   factory GetNetworkOciDnsForwardingConfig.fromMap(Map<String, dynamic> map) {
     return GetNetworkOciDnsForwardingConfig(
       domainName: pulumi.Input.fromValue(map['domainName'] as String),
-      ociDnsListenerIp: pulumi.Input.fromValue(
-        map['ociDnsListenerIp'] as String,
-      ),
+      ociDnsListenerIp: pulumi.Input.fromValue(map['ociDnsListenerIp'] as String),
     );
   }
 }
+

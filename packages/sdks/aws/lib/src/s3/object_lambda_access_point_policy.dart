@@ -353,16 +353,12 @@ import 'object_lambda_access_point_policy_state.dart';
 class ObjectLambdaAccessPointPolicy extends pulumi.CustomResource {
   /// The AWS account ID for the account that owns the Object Lambda Access Point. Defaults to automatically determined account ID of the AWS provider.
   late final pulumi.Output<String> accountId;
-
   /// Indicates whether this access point currently has a policy that allows public access.
   late final pulumi.Output<bool> hasPublicAccessPolicy;
-
   /// The name of the Object Lambda Access Point.
   late final pulumi.Output<String> name;
-
   /// The Object Lambda Access Point resource policy document.
   late final pulumi.Output<String> policy;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -375,11 +371,11 @@ class ObjectLambdaAccessPointPolicy extends pulumi.CustomResource {
     ObjectLambdaAccessPointPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:s3control/objectLambdaAccessPointPolicy:ObjectLambdaAccessPointPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:s3control/objectLambdaAccessPointPolicy:ObjectLambdaAccessPointPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     hasPublicAccessPolicy = registerOutput<bool>('hasPublicAccessPolicy');
     this.name = registerOutput<String>('name');
@@ -405,11 +401,11 @@ class ObjectLambdaAccessPointPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:s3control/objectLambdaAccessPointPolicy:ObjectLambdaAccessPointPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:s3control/objectLambdaAccessPointPolicy:ObjectLambdaAccessPointPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     hasPublicAccessPolicy = registerOutput<bool>('hasPublicAccessPolicy');
     this.name = registerOutput<String>('name');

@@ -155,26 +155,18 @@ import 'resource_reference_response.dart';
 class IntegrationAccount extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The integration service environment.
-  late final pulumi.Output<ResourceReferenceResponse?>
-  integrationServiceEnvironment;
-
+  late final pulumi.Output<ResourceReferenceResponse?> integrationServiceEnvironment;
   /// The resource location.
   late final pulumi.Output<String?> location;
-
   /// Gets the resource name.
   late final pulumi.Output<String> name;
-
   /// The sku.
   late final pulumi.Output<IntegrationAccountSkuResponse?> sku;
-
   /// The workflow state.
   late final pulumi.Output<String?> state;
-
   /// The resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Gets the resource type.
   late final pulumi.Output<String> type;
 
@@ -187,34 +179,16 @@ class IntegrationAccount extends pulumi.CustomResource {
     IntegrationAccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:logic:IntegrationAccount',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:logic:IntegrationAccount',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    integrationServiceEnvironment = registerOutput<ResourceReferenceResponse?>(
-      'integrationServiceEnvironment',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResourceReferenceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    integrationServiceEnvironment = registerOutput<ResourceReferenceResponse?>('integrationServiceEnvironment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    sku = registerOutput<IntegrationAccountSkuResponse?>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IntegrationAccountSkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sku = registerOutput<IntegrationAccountSkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntegrationAccountSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     state = registerOutput<String?>('state');
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');

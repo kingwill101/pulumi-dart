@@ -22,3 +22,4 @@ enum CreditStatus {
     throw ArgumentError('Unknown CreditStatus value: $value');
   }
 }
+

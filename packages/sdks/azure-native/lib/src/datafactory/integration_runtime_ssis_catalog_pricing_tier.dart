@@ -14,8 +14,7 @@ enum IntegrationRuntimeSsisCatalogPricingTier {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown IntegrationRuntimeSsisCatalogPricingTier value: $value',
-    );
+    throw ArgumentError('Unknown IntegrationRuntimeSsisCatalogPricingTier value: $value');
   }
 }
+

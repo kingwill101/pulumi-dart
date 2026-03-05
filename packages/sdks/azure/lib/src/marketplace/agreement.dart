@@ -122,14 +122,11 @@ import 'agreement_state.dart';
 /// ```
 class Agreement extends pulumi.CustomResource {
   late final pulumi.Output<String> licenseTextLink;
-
   /// The Offer of the Marketplace Image. Changing this forces a new resource to be created.
   late final pulumi.Output<String> offer;
-
   /// The Plan of the Marketplace Image. Changing this forces a new resource to be created.
   late final pulumi.Output<String> plan;
   late final pulumi.Output<String> privacyPolicyLink;
-
   /// The Publisher of the Marketplace Image. Changing this forces a new resource to be created.
   late final pulumi.Output<String> publisher;
 
@@ -142,11 +139,11 @@ class Agreement extends pulumi.CustomResource {
     AgreementArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:marketplace/agreement:Agreement',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:marketplace/agreement:Agreement',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     licenseTextLink = registerOutput<String>('licenseTextLink');
     offer = registerOutput<String>('offer');
     plan = registerOutput<String>('plan');
@@ -172,11 +169,11 @@ class Agreement extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:marketplace/agreement:Agreement',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:marketplace/agreement:Agreement',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     licenseTextLink = registerOutput<String>('licenseTextLink');
     offer = registerOutput<String>('offer');
     plan = registerOutput<String>('plan');

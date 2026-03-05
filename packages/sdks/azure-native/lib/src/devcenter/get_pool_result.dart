@@ -9,61 +9,42 @@ import 'system_data_response.dart';
 class GetPoolResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Indicates the number of provisioned Dev Boxes in this pool.
   final int devBoxCount;
-
   /// Name of a Dev Box definition in parent Project of this Pool
   final String devBoxDefinitionName;
-
   /// The display name of the pool.
   final String? displayName;
-
   /// Overall health status of the Pool. Indicates whether or not the Pool is available to create Dev Boxes.
   final String healthStatus;
-
   /// Details on the Pool health status to help diagnose issues. This is only populated when the pool status indicates the pool is in a non-healthy state
   final List<HealthStatusDetailResponse> healthStatusDetails;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// Specifies the license type indicating the caller has already acquired licenses for the Dev Boxes that will be created.
   final String licenseType;
-
   /// Indicates whether owners of Dev Boxes in this pool are added as local administrators on the Dev Box.
   final String localAdministrator;
-
   /// The geo-location where the resource lives
   final String location;
-
   /// The regions of the managed virtual network (required when managedNetworkType is Managed).
   final List<String>? managedVirtualNetworkRegions;
-
   /// The name of the resource
   final String name;
-
   /// Name of a Network Connection in parent Project of this Pool
   final String networkConnectionName;
-
   /// The provisioning state of the resource.
   final String provisioningState;
-
   /// Indicates whether Dev Boxes in this pool are created with single sign on enabled. The also requires that single sign on be enabled on the tenant.
   final String? singleSignOnStatus;
-
   /// Stop on disconnect configuration settings for Dev Boxes created in this pool.
   final StopOnDisconnectConfigurationResponse? stopOnDisconnect;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
-
   /// Indicates whether the pool uses a Virtual Network managed by Microsoft or a customer provided network.
   final String? virtualNetworkType;
 
@@ -118,11 +99,7 @@ class GetPoolResult {
       'devBoxDefinitionName': devBoxDefinitionName,
       'displayName': ?displayName,
       'healthStatus': healthStatus,
-      'healthStatusDetails':
-          pulumi.Input.encodeList<
-            HealthStatusDetailResponse,
-            Map<String, dynamic>
-          >(healthStatusDetails, (value) => value.toMap()),
+      'healthStatusDetails': pulumi.Input.encodeList<HealthStatusDetailResponse, Map<String, dynamic>>(healthStatusDetails, (value) => value.toMap()),
       'id': id,
       'licenseType': licenseType,
       'localAdministrator': localAdministrator,
@@ -145,56 +122,24 @@ class GetPoolResult {
       azureApiVersion: map['azureApiVersion'] as String,
       devBoxCount: map['devBoxCount'] as int,
       devBoxDefinitionName: map['devBoxDefinitionName'] as String,
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       healthStatus: map['healthStatus'] as String,
-      healthStatusDetails: pulumi.Input.decodeList<HealthStatusDetailResponse>(
-        map['healthStatusDetails']!,
-        (value) => HealthStatusDetailResponse.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      healthStatusDetails: pulumi.Input.decodeList<HealthStatusDetailResponse>(map['healthStatusDetails']!, (value) => HealthStatusDetailResponse.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       licenseType: map['licenseType'] as String,
       localAdministrator: map['localAdministrator'] as String,
       location: map['location'] as String,
-      managedVirtualNetworkRegions: (() {
-        final guardedValue = map['managedVirtualNetworkRegions'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
+      managedVirtualNetworkRegions: (() { final guardedValue = map['managedVirtualNetworkRegions']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       name: map['name'] as String,
       networkConnectionName: map['networkConnectionName'] as String,
       provisioningState: map['provisioningState'] as String,
-      singleSignOnStatus: (() {
-        final guardedValue = map['singleSignOnStatus'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      stopOnDisconnect: (() {
-        final guardedValue = map['stopOnDisconnect'];
-        if (guardedValue == null) return null;
-        return StopOnDisconnectConfigurationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      singleSignOnStatus: (() { final guardedValue = map['singleSignOnStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      stopOnDisconnect: (() { final guardedValue = map['stopOnDisconnect']; if (guardedValue == null) return null; return StopOnDisconnectConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
-      virtualNetworkType: (() {
-        final guardedValue = map['virtualNetworkType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      virtualNetworkType: (() { final guardedValue = map['virtualNetworkType']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

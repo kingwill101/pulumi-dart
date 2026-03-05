@@ -15,12 +15,12 @@ class ClusterCreationRoleProvider extends pulumi.ComponentResource {
     ClusterCreationRoleProviderArgs? args,
     pulumi.ComponentResourceOptions? options,
   }) : super(
-         'eks:index:ClusterCreationRoleProvider',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.ComponentResourceOptions(),
-         remote: true,
-       ) {
+          'eks:index:ClusterCreationRoleProvider',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.ComponentResourceOptions(),
+          remote: true,
+        ) {
     role = registerOutput<pulumi_aws_iam.Role?>('role');
   }
 }

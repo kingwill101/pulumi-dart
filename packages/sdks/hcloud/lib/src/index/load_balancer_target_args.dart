@@ -10,23 +10,18 @@ class LoadBalancerTargetArgs {
   /// IP address for an IP Target. Required if
   /// `type` is `ip`.
   final pulumi.Input<String>? ip;
-
   /// Label Selector selecting targets
   /// for this Load Balancer. Required if `type` is `label_selector`.
   final pulumi.Input<String>? labelSelector;
-
   /// ID of the Load Balancer to which
   /// the target gets attached.
   final pulumi.Input<int> loadBalancerId;
-
   /// ID of the server which should be a
   /// target for this Load Balancer. Required if `type` is `server`
   final pulumi.Input<int>? serverId;
-
   /// Type of the target. Possible values
   /// `server`, `label_selector`, `ip`.
   final pulumi.Input<String> type;
-
   /// use the private IP to connect to
   /// Load Balancer targets. Only allowed if type is `server` or
   /// `label_selector`.
@@ -61,28 +56,13 @@ class LoadBalancerTargetArgs {
 
   factory LoadBalancerTargetArgs.fromMap(Map<String, dynamic> map) {
     return LoadBalancerTargetArgs(
-      ip: (() {
-        final guardedValue = map['ip'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      labelSelector: (() {
-        final guardedValue = map['labelSelector'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ip: (() { final guardedValue = map['ip']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      labelSelector: (() { final guardedValue = map['labelSelector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       loadBalancerId: pulumi.Input.fromValue(map['loadBalancerId'] as int),
-      serverId: (() {
-        final guardedValue = map['serverId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      serverId: (() { final guardedValue = map['serverId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
-      usePrivateIp: (() {
-        final guardedValue = map['usePrivateIp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      usePrivateIp: (() { final guardedValue = map['usePrivateIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

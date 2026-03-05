@@ -319,31 +319,22 @@ import 'volume_args.dart';
 class Volume extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// State of the operation on the resource.
   late final pulumi.Output<SourceCreationDataResponse?> creationData;
-
   /// Parent resource information.
   late final pulumi.Output<ManagedByInfoResponse?> managedBy;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// State of the operation on the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// Volume size.
   late final pulumi.Output<double> sizeGiB;
-
   /// Storage target information
   late final pulumi.Output<IscsiTargetInfoResponse> storageTarget;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Unique Id of the volume in GUID format
   late final pulumi.Output<String> volumeId;
 
@@ -351,57 +342,24 @@ class Volume extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Volume]. {@macro pulumi_elasticsan_volume_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Volume(String name, {VolumeArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:elasticsan:Volume',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Volume(
+    String name, {
+    VolumeArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:elasticsan:Volume',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    creationData = registerOutput<SourceCreationDataResponse?>(
-      'creationData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SourceCreationDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    managedBy = registerOutput<ManagedByInfoResponse?>(
-      'managedBy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ManagedByInfoResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    creationData = registerOutput<SourceCreationDataResponse?>('creationData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SourceCreationDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    managedBy = registerOutput<ManagedByInfoResponse?>('managedBy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedByInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     sizeGiB = registerOutput<double>('sizeGiB');
-    storageTarget = registerOutput<IscsiTargetInfoResponse>(
-      'storageTarget',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IscsiTargetInfoResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    storageTarget = registerOutput<IscsiTargetInfoResponse>('storageTarget', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IscsiTargetInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     volumeId = registerOutput<String>('volumeId');
   }

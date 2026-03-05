@@ -13,7 +13,10 @@ class GetApiProductArgs {
   /// Creates a new [GetApiProductArgs].
   /// [apiproductId] Required.
   /// [organizationId] Required.
-  GetApiProductArgs({required this.apiproductId, required this.organizationId});
+  GetApiProductArgs({
+    required this.apiproductId,
+    required this.organizationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,3 +32,4 @@ class GetApiProductArgs {
     );
   }
 }
+

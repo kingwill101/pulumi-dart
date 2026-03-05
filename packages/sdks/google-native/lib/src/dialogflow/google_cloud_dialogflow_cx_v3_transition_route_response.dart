@@ -7,25 +7,18 @@ import 'google_cloud_dialogflow_cx_v3_fulfillment_response.dart';
 class GoogleCloudDialogflowCxV3TransitionRouteResponse {
   /// The condition to evaluate against form parameters or session parameters. See the [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition). At least one of `intent` or `condition` must be specified. When both `intent` and `condition` are specified, the transition can only happen when both are fulfilled.
   final pulumi.Input<String> condition;
-
   /// Optional. The description of the transition route. The maximum length is 500 characters.
   final pulumi.Input<String> description;
-
   /// The unique identifier of an Intent. Format: `projects//locations//agents//intents/`. Indicates that the transition can only happen when the given intent is matched. At least one of `intent` or `condition` must be specified. When both `intent` and `condition` are specified, the transition can only happen when both are fulfilled.
   final pulumi.Input<String> intent;
-
   /// The unique identifier of this transition route.
   final pulumi.Input<String> name;
-
   /// The target flow to transition to. Format: `projects//locations//agents//flows/`.
   final pulumi.Input<String> targetFlow;
-
   /// The target page to transition to. Format: `projects//locations//agents//flows//pages/`.
   final pulumi.Input<String> targetPage;
-
   /// The fulfillment to call when the condition is satisfied. At least one of `trigger_fulfillment` and `target` must be specified. When both are defined, `trigger_fulfillment` is executed first.
-  final pulumi.Input<GoogleCloudDialogflowCxV3FulfillmentResponse>
-  triggerFulfillment;
+  final pulumi.Input<GoogleCloudDialogflowCxV3FulfillmentResponse> triggerFulfillment;
 
   /// Creates a new [GoogleCloudDialogflowCxV3TransitionRouteResponse].
   /// [condition] The condition to evaluate against form parameters or session parameters. See the [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition). At least one of `intent` or `condition` must be specified. When both `intent` and `condition` are specified, the transition can only happen when both are fulfilled.
@@ -53,17 +46,11 @@ class GoogleCloudDialogflowCxV3TransitionRouteResponse {
       'name': name,
       'targetFlow': targetFlow,
       'targetPage': targetPage,
-      'triggerFulfillment':
-          pulumi.Input.mapInputValue<
-            GoogleCloudDialogflowCxV3FulfillmentResponse,
-            Map<String, dynamic>
-          >(triggerFulfillment, (value) => value.toMap()),
+      'triggerFulfillment': pulumi.Input.mapInputValue<GoogleCloudDialogflowCxV3FulfillmentResponse, Map<String, dynamic>>(triggerFulfillment, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudDialogflowCxV3TransitionRouteResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDialogflowCxV3TransitionRouteResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3TransitionRouteResponse(
       condition: pulumi.Input.fromValue(map['condition'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
@@ -71,11 +58,8 @@ class GoogleCloudDialogflowCxV3TransitionRouteResponse {
       name: pulumi.Input.fromValue(map['name'] as String),
       targetFlow: pulumi.Input.fromValue(map['targetFlow'] as String),
       targetPage: pulumi.Input.fromValue(map['targetPage'] as String),
-      triggerFulfillment: pulumi.Input.fromValue(
-        GoogleCloudDialogflowCxV3FulfillmentResponse.fromMap(
-          (map['triggerFulfillment']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      triggerFulfillment: pulumi.Input.fromValue(GoogleCloudDialogflowCxV3FulfillmentResponse.fromMap((map['triggerFulfillment']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

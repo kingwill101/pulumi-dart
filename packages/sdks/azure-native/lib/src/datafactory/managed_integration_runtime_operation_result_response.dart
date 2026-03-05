@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedIntegrationRuntimeOperationResultResponse {
   /// The activity id for the operation request.
   final pulumi.Input<String> activityId;
-
   /// The error code.
   final pulumi.Input<String> errorCode;
-
   /// Managed integration runtime error parameters.
   final pulumi.Input<List<String>> parameters;
-
   /// The operation result.
   final pulumi.Input<String> result;
-
   /// The start time of the operation.
   final pulumi.Input<String> startTime;
-
   /// The operation type. Could be start or stop.
   final pulumi.Input<String> type;
 
@@ -49,18 +44,15 @@ class ManagedIntegrationRuntimeOperationResultResponse {
     };
   }
 
-  factory ManagedIntegrationRuntimeOperationResultResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ManagedIntegrationRuntimeOperationResultResponse.fromMap(Map<String, dynamic> map) {
     return ManagedIntegrationRuntimeOperationResultResponse(
       activityId: pulumi.Input.fromValue(map['activityId'] as String),
       errorCode: pulumi.Input.fromValue(map['errorCode'] as String),
-      parameters: pulumi.Input.fromValue(
-        (map['parameters'] as List).cast<String>(),
-      ),
+      parameters: pulumi.Input.fromValue((map['parameters'] as List).cast<String>()),
       result: pulumi.Input.fromValue(map['result'] as String),
       startTime: pulumi.Input.fromValue(map['startTime'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

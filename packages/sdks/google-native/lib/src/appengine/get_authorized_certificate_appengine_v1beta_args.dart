@@ -29,19 +29,12 @@ class GetAuthorizedCertificateAppengineV1betaArgs {
     };
   }
 
-  factory GetAuthorizedCertificateAppengineV1betaArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetAuthorizedCertificateAppengineV1betaArgs.fromMap(Map<String, dynamic> map) {
     return GetAuthorizedCertificateAppengineV1betaArgs(
       appId: pulumi.Input.fromValue(map['appId'] as String),
-      authorizedCertificateId: pulumi.Input.fromValue(
-        map['authorizedCertificateId'] as String,
-      ),
-      view: (() {
-        final guardedValue = map['view'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      authorizedCertificateId: pulumi.Input.fromValue(map['authorizedCertificateId'] as String),
+      view: (() { final guardedValue = map['view']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

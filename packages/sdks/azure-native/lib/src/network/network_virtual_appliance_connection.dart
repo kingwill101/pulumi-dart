@@ -311,13 +311,10 @@ import 'network_virtual_appliance_connection_properties_response.dart';
 class NetworkVirtualApplianceConnection extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The name of the resource.
   late final pulumi.Output<String?> name;
-
   /// Properties of the express route connection.
-  late final pulumi.Output<NetworkVirtualApplianceConnectionPropertiesResponse>
-  properties;
+  late final pulumi.Output<NetworkVirtualApplianceConnectionPropertiesResponse> properties;
 
   /// Creates a new [NetworkVirtualApplianceConnection].
   /// [name] The Pulumi resource name.
@@ -328,23 +325,13 @@ class NetworkVirtualApplianceConnection extends pulumi.CustomResource {
     NetworkVirtualApplianceConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:network:NetworkVirtualApplianceConnection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:network:NetworkVirtualApplianceConnection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String?>('name');
-    properties =
-        registerOutput<NetworkVirtualApplianceConnectionPropertiesResponse>(
-          'properties',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return NetworkVirtualApplianceConnectionPropertiesResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    properties = registerOutput<NetworkVirtualApplianceConnectionPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkVirtualApplianceConnectionPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

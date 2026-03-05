@@ -9,28 +9,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedInstanceLongTermRetentionPolicyArgs {
   /// The BackupStorageAccessTier for the LTR backups
   final pulumi.Input<String>? backupStorageAccessTier;
-
   /// The name of the database.
   final pulumi.Input<String> databaseName;
-
   /// The name of the managed instance.
   final pulumi.Input<String> managedInstanceName;
-
   /// The monthly retention policy for an LTR backup in an ISO 8601 format.
   final pulumi.Input<String>? monthlyRetention;
-
   /// The policy name. Should always be Default.
   final pulumi.Input<String>? policyName;
-
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
-
   /// The week of year to take the yearly backup in an ISO 8601 format.
   final pulumi.Input<int>? weekOfYear;
-
   /// The weekly retention policy for an LTR backup in an ISO 8601 format.
   final pulumi.Input<String>? weeklyRetention;
-
   /// The yearly retention policy for an LTR backup in an ISO 8601 format.
   final pulumi.Input<String>? yearlyRetention;
 
@@ -70,47 +62,18 @@ class ManagedInstanceLongTermRetentionPolicyArgs {
     };
   }
 
-  factory ManagedInstanceLongTermRetentionPolicyArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ManagedInstanceLongTermRetentionPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ManagedInstanceLongTermRetentionPolicyArgs(
-      backupStorageAccessTier: (() {
-        final guardedValue = map['backupStorageAccessTier'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      backupStorageAccessTier: (() { final guardedValue = map['backupStorageAccessTier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
-      managedInstanceName: pulumi.Input.fromValue(
-        map['managedInstanceName'] as String,
-      ),
-      monthlyRetention: (() {
-        final guardedValue = map['monthlyRetention'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      policyName: (() {
-        final guardedValue = map['policyName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      weekOfYear: (() {
-        final guardedValue = map['weekOfYear'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      weeklyRetention: (() {
-        final guardedValue = map['weeklyRetention'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      yearlyRetention: (() {
-        final guardedValue = map['yearlyRetention'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      managedInstanceName: pulumi.Input.fromValue(map['managedInstanceName'] as String),
+      monthlyRetention: (() { final guardedValue = map['monthlyRetention']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      policyName: (() { final guardedValue = map['policyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      weekOfYear: (() { final guardedValue = map['weekOfYear']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      weeklyRetention: (() { final guardedValue = map['weeklyRetention']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      yearlyRetention: (() { final guardedValue = map['yearlyRetention']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

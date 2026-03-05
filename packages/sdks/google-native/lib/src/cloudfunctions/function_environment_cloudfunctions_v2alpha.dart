@@ -13,8 +13,7 @@ enum FunctionEnvironmentCloudfunctionsV2alpha {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown FunctionEnvironmentCloudfunctionsV2alpha value: $value',
-    );
+    throw ArgumentError('Unknown FunctionEnvironmentCloudfunctionsV2alpha value: $value');
   }
 }
+

@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MountPointMapResponse {
   /// Mount point for the share.
   final pulumi.Input<String> mountPoint;
-
   /// Mounting type.
   final pulumi.Input<String> mountType;
-
   /// ID of the role to which share is mounted.
   final pulumi.Input<String> roleId;
-
   /// Role type.
   final pulumi.Input<String> roleType;
-
   /// ID of the share mounted to the role VM.
   final pulumi.Input<String> shareId;
 
@@ -53,3 +49,4 @@ class MountPointMapResponse {
     );
   }
 }
+

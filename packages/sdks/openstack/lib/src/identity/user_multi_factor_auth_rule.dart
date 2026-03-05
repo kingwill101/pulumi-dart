@@ -9,10 +9,14 @@ class UserMultiFactorAuthRule {
 
   /// Creates a new [UserMultiFactorAuthRule].
   /// [rules] A list of authentication plugins that the user must
-  UserMultiFactorAuthRule({required this.rules});
+  UserMultiFactorAuthRule({
+    required this.rules,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'rules': rules};
+    return <String, dynamic>{
+      'rules': rules,
+    };
   }
 
   factory UserMultiFactorAuthRule.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class UserMultiFactorAuthRule {
     );
   }
 }
+

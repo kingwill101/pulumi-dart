@@ -7,14 +7,9 @@ class AiEndpointWithModelGardenDeploymentDeployConfig {
   /// A description of resources that are dedicated to a DeployedModel or
   /// DeployedIndex, and that need a higher degree of manual configuration.
   /// Structure is documented below.
-  final pulumi.Input<
-    AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources
-  >?
-  dedicatedResources;
-
+  final pulumi.Input<AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources>? dedicatedResources;
   /// If true, enable the QMT fast tryout feature for this model if possible.
   final pulumi.Input<bool>? fastTryoutEnabled;
-
   /// System labels for Model Garden deployments.
   /// These labels are managed by Google and for tracking purposes only.
   final pulumi.Input<Map<String, String>>? systemLabels;
@@ -31,41 +26,18 @@ class AiEndpointWithModelGardenDeploymentDeployConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dedicatedResources':
-          ?pulumi.Input.mapOptionalInputValue<
-            AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources,
-            Map<String, dynamic>
-          >(dedicatedResources, (value) => value.toMap()),
+      'dedicatedResources': ?pulumi.Input.mapOptionalInputValue<AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources, Map<String, dynamic>>(dedicatedResources, (value) => value.toMap()),
       'fastTryoutEnabled': ?fastTryoutEnabled,
       'systemLabels': ?systemLabels,
     };
   }
 
-  factory AiEndpointWithModelGardenDeploymentDeployConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AiEndpointWithModelGardenDeploymentDeployConfig.fromMap(Map<String, dynamic> map) {
     return AiEndpointWithModelGardenDeploymentDeployConfig(
-      dedicatedResources: (() {
-        final guardedValue = map['dedicatedResources'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      fastTryoutEnabled: (() {
-        final guardedValue = map['fastTryoutEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      systemLabels: (() {
-        final guardedValue = map['systemLabels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      dedicatedResources: (() { final guardedValue = map['dedicatedResources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      fastTryoutEnabled: (() { final guardedValue = map['fastTryoutEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      systemLabels: (() { final guardedValue = map['systemLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

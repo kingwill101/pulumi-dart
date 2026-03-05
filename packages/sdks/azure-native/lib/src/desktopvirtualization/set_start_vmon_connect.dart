@@ -15,3 +15,4 @@ enum SetStartVMOnConnect {
     throw ArgumentError('Unknown SetStartVMOnConnect value: $value');
   }
 }
+

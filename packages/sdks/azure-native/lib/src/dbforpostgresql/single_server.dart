@@ -820,68 +820,46 @@ import 'storage_profile_response.dart';
 class SingleServer extends pulumi.CustomResource {
   /// The administrator's login name of a server. Can only be specified when the server is being created (and is required for creation).
   late final pulumi.Output<String?> administratorLogin;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Status showing whether the server data encryption is enabled with customer-managed keys.
   late final pulumi.Output<String> byokEnforcement;
-
   /// Earliest restore point creation time (ISO8601 format)
   late final pulumi.Output<String?> earliestRestoreDate;
-
   /// The fully qualified domain name of a server.
   late final pulumi.Output<String?> fullyQualifiedDomainName;
-
   /// The Azure Active Directory identity of the server.
   late final pulumi.Output<ResourceIdentityResponse?> identity;
-
   /// Status showing whether the server enabled infrastructure encryption.
   late final pulumi.Output<String?> infrastructureEncryption;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The master server id of a replica server.
   late final pulumi.Output<String?> masterServerId;
-
   /// Enforce a minimal Tls version for the server.
   late final pulumi.Output<String?> minimalTlsVersion;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// List of private endpoint connections on a server
-  late final pulumi.Output<List<Map<String, dynamic>>>
-  privateEndpointConnections;
-
+  late final pulumi.Output<List<Map<String, dynamic>>> privateEndpointConnections;
   /// Whether or not public network access is allowed for this server. Value is optional but if passed in, must be 'Enabled' or 'Disabled'
   late final pulumi.Output<String?> publicNetworkAccess;
-
   /// The maximum number of replicas that a master server can have.
   late final pulumi.Output<int?> replicaCapacity;
-
   /// The replication role of the server.
   late final pulumi.Output<String?> replicationRole;
-
   /// The SKU (pricing tier) of the server.
   late final pulumi.Output<SingleServerSkuResponse?> sku;
-
   /// Enable ssl enforcement or not when connect to server.
   late final pulumi.Output<String?> sslEnforcement;
-
   /// Storage profile of a server.
   late final pulumi.Output<StorageProfileResponse?> storageProfile;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// A state of a server that is visible to user.
   late final pulumi.Output<String?> userVisibleState;
-
   /// Server version.
   late final pulumi.Output<String?> version;
 
@@ -894,62 +872,29 @@ class SingleServer extends pulumi.CustomResource {
     SingleServerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:dbforpostgresql:SingleServer',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:dbforpostgresql:SingleServer',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     administratorLogin = registerOutput<String?>('administratorLogin');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     byokEnforcement = registerOutput<String>('byokEnforcement');
     earliestRestoreDate = registerOutput<String?>('earliestRestoreDate');
-    fullyQualifiedDomainName = registerOutput<String?>(
-      'fullyQualifiedDomainName',
-    );
-    identity = registerOutput<ResourceIdentityResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResourceIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    infrastructureEncryption = registerOutput<String?>(
-      'infrastructureEncryption',
-    );
+    fullyQualifiedDomainName = registerOutput<String?>('fullyQualifiedDomainName');
+    identity = registerOutput<ResourceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    infrastructureEncryption = registerOutput<String?>('infrastructureEncryption');
     location = registerOutput<String>('location');
     masterServerId = registerOutput<String?>('masterServerId');
     minimalTlsVersion = registerOutput<String?>('minimalTlsVersion');
     this.name = registerOutput<String>('name');
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
-      'privateEndpointConnections',
-    );
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>('privateEndpointConnections');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     replicaCapacity = registerOutput<int?>('replicaCapacity');
     replicationRole = registerOutput<String?>('replicationRole');
-    sku = registerOutput<SingleServerSkuResponse?>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SingleServerSkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sku = registerOutput<SingleServerSkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SingleServerSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sslEnforcement = registerOutput<String?>('sslEnforcement');
-    storageProfile = registerOutput<StorageProfileResponse?>(
-      'storageProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return StorageProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    storageProfile = registerOutput<StorageProfileResponse?>('storageProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StorageProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     userVisibleState = registerOutput<String?>('userVisibleState');

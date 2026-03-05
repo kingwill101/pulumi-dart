@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTriggerArgs {
   /// The factory name.
   final pulumi.Input<String> factoryName;
-
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
-
   /// The trigger name.
   final pulumi.Input<String> triggerName;
 
@@ -37,10 +35,9 @@ class GetTriggerArgs {
   factory GetTriggerArgs.fromMap(Map<String, dynamic> map) {
     return GetTriggerArgs(
       factoryName: pulumi.Input.fromValue(map['factoryName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       triggerName: pulumi.Input.fromValue(map['triggerName'] as String),
     );
   }
 }
+

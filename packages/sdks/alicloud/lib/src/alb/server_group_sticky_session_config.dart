@@ -9,7 +9,6 @@ class ServerGroupStickySessionConfig {
   ///
   /// &gt; **NOTE:**  This parameter takes effect when the `StickySessionEnabled` parameter is set to `true` and the `StickySessionType` parameter is set to `Server`.
   final pulumi.Input<String>? cookie;
-
   /// The maximum amount of time to wait before the session cookie expires. Unit: seconds.
   ///
   /// Valid values: `1` to `86400`.
@@ -18,10 +17,8 @@ class ServerGroupStickySessionConfig {
   ///
   /// &gt; **NOTE:**   This parameter takes effect only when `StickySessionEnabled` is set to `true` and `StickySessionType` is set to `Insert`.
   final pulumi.Input<int>? cookieTimeout;
-
   /// Specifies whether to enable session persistence. Valid values:
   final pulumi.Input<bool>? stickySessionEnabled;
-
   /// The method that is used to handle a cookie. Valid values:
   ///
   /// *   `Insert`: inserts a cookie.
@@ -58,26 +55,11 @@ class ServerGroupStickySessionConfig {
 
   factory ServerGroupStickySessionConfig.fromMap(Map<String, dynamic> map) {
     return ServerGroupStickySessionConfig(
-      cookie: (() {
-        final guardedValue = map['cookie'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      cookieTimeout: (() {
-        final guardedValue = map['cookieTimeout'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      stickySessionEnabled: (() {
-        final guardedValue = map['stickySessionEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      stickySessionType: (() {
-        final guardedValue = map['stickySessionType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      cookie: (() { final guardedValue = map['cookie']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      cookieTimeout: (() { final guardedValue = map['cookieTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      stickySessionEnabled: (() { final guardedValue = map['stickySessionEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      stickySessionType: (() { final guardedValue = map['stickySessionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

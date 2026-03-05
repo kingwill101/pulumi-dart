@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LabelSelectorRequirementPatch {
   /// key is the label key that the selector applies to.
   final pulumi.Input<String>? key;
-
   /// operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
   final pulumi.Input<String>? operator;
-
   /// values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.
   final pulumi.Input<List<String>>? values;
 
@@ -17,7 +15,11 @@ class LabelSelectorRequirementPatch {
   /// [key] key is the label key that the selector applies to.
   /// [operator] operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
   /// [values] values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.
-  LabelSelectorRequirementPatch({this.key, this.operator, this.values});
+  LabelSelectorRequirementPatch({
+    this.key,
+    this.operator,
+    this.values,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class LabelSelectorRequirementPatch {
 
   factory LabelSelectorRequirementPatch.fromMap(Map<String, dynamic> map) {
     return LabelSelectorRequirementPatch(
-      key: (() {
-        final guardedValue = map['key'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      operator: (() {
-        final guardedValue = map['operator'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      values: (() {
-        final guardedValue = map['values'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      operator: (() { final guardedValue = map['operator']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      values: (() { final guardedValue = map['values']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

@@ -14,16 +14,15 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoffResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'metadata': metadata};
+    return <String, dynamic>{
+      'metadata': metadata,
+    };
   }
 
-  factory GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoffResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoffResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoffResponse(
-      metadata: pulumi.Input.fromValue(
-        (map['metadata'] as Map).cast<String, String>(),
-      ),
+      metadata: pulumi.Input.fromValue((map['metadata'] as Map).cast<String, String>()),
     );
   }
 }
+

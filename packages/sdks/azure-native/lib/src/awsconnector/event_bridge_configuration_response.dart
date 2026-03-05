@@ -9,19 +9,20 @@ class EventBridgeConfigurationResponse {
 
   /// Creates a new [EventBridgeConfigurationResponse].
   /// [eventBridgeEnabled] Enables delivery of events to Amazon EventBridge.
-  EventBridgeConfigurationResponse({this.eventBridgeEnabled});
+  EventBridgeConfigurationResponse({
+    this.eventBridgeEnabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'eventBridgeEnabled': ?eventBridgeEnabled};
+    return <String, dynamic>{
+      'eventBridgeEnabled': ?eventBridgeEnabled,
+    };
   }
 
   factory EventBridgeConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return EventBridgeConfigurationResponse(
-      eventBridgeEnabled: (() {
-        final guardedValue = map['eventBridgeEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      eventBridgeEnabled: (() { final guardedValue = map['eventBridgeEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

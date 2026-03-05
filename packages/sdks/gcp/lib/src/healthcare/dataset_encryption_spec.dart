@@ -11,19 +11,20 @@ class DatasetEncryptionSpec {
 
   /// Creates a new [DatasetEncryptionSpec].
   /// [kmsKeyName] KMS encryption key that is used to secure this dataset and its sub-resources. The key used for
-  DatasetEncryptionSpec({this.kmsKeyName});
+  DatasetEncryptionSpec({
+    this.kmsKeyName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'kmsKeyName': ?kmsKeyName};
+    return <String, dynamic>{
+      'kmsKeyName': ?kmsKeyName,
+    };
   }
 
   factory DatasetEncryptionSpec.fromMap(Map<String, dynamic> map) {
     return DatasetEncryptionSpec(
-      kmsKeyName: (() {
-        final guardedValue = map['kmsKeyName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      kmsKeyName: (() { final guardedValue = map['kmsKeyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

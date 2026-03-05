@@ -12,18 +12,15 @@ class WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteria {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'matchType': ?matchType};
+    return <String, dynamic>{
+      'matchType': ?matchType,
+    };
   }
 
-  factory WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteria.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteria.fromMap(Map<String, dynamic> map) {
     return WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteria(
-      matchType: (() {
-        final guardedValue = map['matchType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      matchType: (() { final guardedValue = map['matchType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

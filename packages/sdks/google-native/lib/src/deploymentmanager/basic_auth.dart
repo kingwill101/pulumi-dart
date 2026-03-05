@@ -10,24 +10,23 @@ class BasicAuth {
   /// Creates a new [BasicAuth].
   /// [password] Optional.
   /// [user] Optional.
-  BasicAuth({this.password, this.user});
+  BasicAuth({
+    this.password,
+    this.user,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'password': ?password, 'user': ?user};
+    return <String, dynamic>{
+      'password': ?password,
+      'user': ?user,
+    };
   }
 
   factory BasicAuth.fromMap(Map<String, dynamic> map) {
     return BasicAuth(
-      password: (() {
-        final guardedValue = map['password'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      user: (() {
-        final guardedValue = map['user'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      user: (() { final guardedValue = map['user']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

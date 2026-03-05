@@ -8,10 +8,8 @@ class RegistryEndpointSystemAssignedIdentityAuthentication {
   /// The authentication method.
   /// Expected value is 'SystemAssignedManagedIdentity'.
   final pulumi.Input<String> method;
-
   /// System assigned managed identity properties
-  final pulumi.Input<RegistryEndpointSystemAssignedManagedIdentitySettings>
-  systemAssignedManagedIdentitySettings;
+  final pulumi.Input<RegistryEndpointSystemAssignedManagedIdentitySettings> systemAssignedManagedIdentitySettings;
 
   /// Creates a new [RegistryEndpointSystemAssignedIdentityAuthentication].
   /// [method] The authentication method.
@@ -24,25 +22,15 @@ class RegistryEndpointSystemAssignedIdentityAuthentication {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'method': method,
-      'systemAssignedManagedIdentitySettings':
-          pulumi.Input.mapInputValue<
-            RegistryEndpointSystemAssignedManagedIdentitySettings,
-            Map<String, dynamic>
-          >(systemAssignedManagedIdentitySettings, (value) => value.toMap()),
+      'systemAssignedManagedIdentitySettings': pulumi.Input.mapInputValue<RegistryEndpointSystemAssignedManagedIdentitySettings, Map<String, dynamic>>(systemAssignedManagedIdentitySettings, (value) => value.toMap()),
     };
   }
 
-  factory RegistryEndpointSystemAssignedIdentityAuthentication.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RegistryEndpointSystemAssignedIdentityAuthentication.fromMap(Map<String, dynamic> map) {
     return RegistryEndpointSystemAssignedIdentityAuthentication(
       method: pulumi.Input.fromValue(map['method'] as String),
-      systemAssignedManagedIdentitySettings: pulumi.Input.fromValue(
-        RegistryEndpointSystemAssignedManagedIdentitySettings.fromMap(
-          (map['systemAssignedManagedIdentitySettings']! as Map)
-              .cast<String, dynamic>(),
-        ),
-      ),
+      systemAssignedManagedIdentitySettings: pulumi.Input.fromValue(RegistryEndpointSystemAssignedManagedIdentitySettings.fromMap((map['systemAssignedManagedIdentitySettings']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

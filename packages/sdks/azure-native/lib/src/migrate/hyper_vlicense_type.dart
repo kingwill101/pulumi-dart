@@ -16,3 +16,4 @@ enum HyperVLicenseType {
     throw ArgumentError('Unknown HyperVLicenseType value: $value');
   }
 }
+

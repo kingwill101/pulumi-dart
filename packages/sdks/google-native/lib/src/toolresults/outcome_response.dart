@@ -10,16 +10,12 @@ import 'success_detail_response.dart';
 class OutcomeResponse {
   /// More information about a FAILURE outcome. Returns INVALID_ARGUMENT if this field is set but the summary is not FAILURE. Optional
   final pulumi.Input<FailureDetailResponse> failureDetail;
-
   /// More information about an INCONCLUSIVE outcome. Returns INVALID_ARGUMENT if this field is set but the summary is not INCONCLUSIVE. Optional
   final pulumi.Input<InconclusiveDetailResponse> inconclusiveDetail;
-
   /// More information about a SKIPPED outcome. Returns INVALID_ARGUMENT if this field is set but the summary is not SKIPPED. Optional
   final pulumi.Input<SkippedDetailResponse> skippedDetail;
-
   /// More information about a SUCCESS outcome. Returns INVALID_ARGUMENT if this field is set but the summary is not SUCCESS. Optional
   final pulumi.Input<SuccessDetailResponse> successDetail;
-
   /// The simplest way to interpret a result. Required
   final pulumi.Input<String> summary;
 
@@ -39,53 +35,22 @@ class OutcomeResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'failureDetail':
-          pulumi.Input.mapInputValue<
-            FailureDetailResponse,
-            Map<String, dynamic>
-          >(failureDetail, (value) => value.toMap()),
-      'inconclusiveDetail':
-          pulumi.Input.mapInputValue<
-            InconclusiveDetailResponse,
-            Map<String, dynamic>
-          >(inconclusiveDetail, (value) => value.toMap()),
-      'skippedDetail':
-          pulumi.Input.mapInputValue<
-            SkippedDetailResponse,
-            Map<String, dynamic>
-          >(skippedDetail, (value) => value.toMap()),
-      'successDetail':
-          pulumi.Input.mapInputValue<
-            SuccessDetailResponse,
-            Map<String, dynamic>
-          >(successDetail, (value) => value.toMap()),
+      'failureDetail': pulumi.Input.mapInputValue<FailureDetailResponse, Map<String, dynamic>>(failureDetail, (value) => value.toMap()),
+      'inconclusiveDetail': pulumi.Input.mapInputValue<InconclusiveDetailResponse, Map<String, dynamic>>(inconclusiveDetail, (value) => value.toMap()),
+      'skippedDetail': pulumi.Input.mapInputValue<SkippedDetailResponse, Map<String, dynamic>>(skippedDetail, (value) => value.toMap()),
+      'successDetail': pulumi.Input.mapInputValue<SuccessDetailResponse, Map<String, dynamic>>(successDetail, (value) => value.toMap()),
       'summary': summary,
     };
   }
 
   factory OutcomeResponse.fromMap(Map<String, dynamic> map) {
     return OutcomeResponse(
-      failureDetail: pulumi.Input.fromValue(
-        FailureDetailResponse.fromMap(
-          (map['failureDetail']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      inconclusiveDetail: pulumi.Input.fromValue(
-        InconclusiveDetailResponse.fromMap(
-          (map['inconclusiveDetail']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      skippedDetail: pulumi.Input.fromValue(
-        SkippedDetailResponse.fromMap(
-          (map['skippedDetail']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      successDetail: pulumi.Input.fromValue(
-        SuccessDetailResponse.fromMap(
-          (map['successDetail']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      failureDetail: pulumi.Input.fromValue(FailureDetailResponse.fromMap((map['failureDetail']! as Map).cast<String, dynamic>())),
+      inconclusiveDetail: pulumi.Input.fromValue(InconclusiveDetailResponse.fromMap((map['inconclusiveDetail']! as Map).cast<String, dynamic>())),
+      skippedDetail: pulumi.Input.fromValue(SkippedDetailResponse.fromMap((map['skippedDetail']! as Map).cast<String, dynamic>())),
+      successDetail: pulumi.Input.fromValue(SuccessDetailResponse.fromMap((map['successDetail']! as Map).cast<String, dynamic>())),
       summary: pulumi.Input.fromValue(map['summary'] as String),
     );
   }
 }
+

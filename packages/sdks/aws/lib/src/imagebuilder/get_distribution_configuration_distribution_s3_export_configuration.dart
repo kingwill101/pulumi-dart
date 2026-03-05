@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDistributionConfigurationDistributionS3ExportConfiguration {
   /// The disk image format of the exported image (`RAW`, `VHD`, or `VMDK`)
   final pulumi.Input<String> diskImageFormat;
-
   /// The name of the IAM role to use for exporting.
   final pulumi.Input<String> roleName;
-
   /// The name of the S3 bucket to store the exported image in.
   final pulumi.Input<String> s3Bucket;
-
   /// The prefix for the exported image.
   final pulumi.Input<String> s3Prefix;
 
@@ -36,9 +33,7 @@ class GetDistributionConfigurationDistributionS3ExportConfiguration {
     };
   }
 
-  factory GetDistributionConfigurationDistributionS3ExportConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDistributionConfigurationDistributionS3ExportConfiguration.fromMap(Map<String, dynamic> map) {
     return GetDistributionConfigurationDistributionS3ExportConfiguration(
       diskImageFormat: pulumi.Input.fromValue(map['diskImageFormat'] as String),
       roleName: pulumi.Input.fromValue(map['roleName'] as String),
@@ -47,3 +42,4 @@ class GetDistributionConfigurationDistributionS3ExportConfiguration {
     );
   }
 }
+

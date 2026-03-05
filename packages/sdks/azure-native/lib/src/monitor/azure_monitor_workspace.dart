@@ -137,44 +137,28 @@ import 'system_data_response.dart';
 class AzureMonitorWorkspace extends pulumi.CustomResource {
   /// The immutable Id of the Azure Monitor Workspace. This property is read-only.
   late final pulumi.Output<String> accountId;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The Data Collection Rule and Endpoint used for ingestion by default.
-  late final pulumi.Output<
-    AzureMonitorWorkspaceResponseDefaultIngestionSettings
-  >
-  defaultIngestionSettings;
-
+  late final pulumi.Output<AzureMonitorWorkspaceResponseDefaultIngestionSettings> defaultIngestionSettings;
   /// Resource entity tag (ETag)
   late final pulumi.Output<String> etag;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// Properties related to the metrics container in the Azure Monitor Workspace
   late final pulumi.Output<AzureMonitorWorkspaceResponseMetrics> metrics;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// List of private endpoint connections
-  late final pulumi.Output<List<Map<String, dynamic>>>
-  privateEndpointConnections;
-
+  late final pulumi.Output<List<Map<String, dynamic>>> privateEndpointConnections;
   /// The provisioning state of the Azure Monitor Workspace. Set to Succeeded if everything is healthy.
   late final pulumi.Output<String> provisioningState;
-
   /// Gets or sets allow or disallow public network access to Azure Monitor Workspace
   late final pulumi.Output<String?> publicNetworkAccess;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -187,52 +171,22 @@ class AzureMonitorWorkspace extends pulumi.CustomResource {
     AzureMonitorWorkspaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:monitor:AzureMonitorWorkspace',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:monitor:AzureMonitorWorkspace',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    defaultIngestionSettings =
-        registerOutput<AzureMonitorWorkspaceResponseDefaultIngestionSettings>(
-          'defaultIngestionSettings',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AzureMonitorWorkspaceResponseDefaultIngestionSettings.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    defaultIngestionSettings = registerOutput<AzureMonitorWorkspaceResponseDefaultIngestionSettings>('defaultIngestionSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureMonitorWorkspaceResponseDefaultIngestionSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
-    metrics = registerOutput<AzureMonitorWorkspaceResponseMetrics>(
-      'metrics',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureMonitorWorkspaceResponseMetrics.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    metrics = registerOutput<AzureMonitorWorkspaceResponseMetrics>('metrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureMonitorWorkspaceResponseMetrics.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
-      'privateEndpointConnections',
-    );
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>('privateEndpointConnections');
     provisioningState = registerOutput<String>('provisioningState');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

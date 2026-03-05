@@ -6,31 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UpgradeHistoryEntryResponse {
   /// Action. Rolloback or Upgrade.
   final pulumi.Input<String> action;
-
   /// The container image before this instance upgrade.
   final pulumi.Input<String> containerImage;
-
   /// The time that this instance upgrade history entry is created.
   final pulumi.Input<String> createTime;
-
   /// The framework of this notebook instance.
   final pulumi.Input<String> framework;
-
   /// The snapshot of the boot disk of this notebook instance before upgrade.
   final pulumi.Input<String> snapshot;
-
   /// The state of this instance upgrade history entry.
   final pulumi.Input<String> state;
-
   /// Target VM Image. Format: `ainotebooks-vm/project/image-name/name`.
   final pulumi.Input<String> targetImage;
-
   /// Target VM Version, like m63.
   final pulumi.Input<String> targetVersion;
-
   /// The version of the notebook instance before this upgrade.
   final pulumi.Input<String> version;
-
   /// The VM image before this instance upgrade.
   final pulumi.Input<String> vmImage;
 
@@ -88,3 +79,4 @@ class UpgradeHistoryEntryResponse {
     );
   }
 }
+

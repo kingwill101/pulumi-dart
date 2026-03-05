@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IndustrialPidOrganizationState {
   /// The ID of parent pid organization.
   final pulumi.Input<String>? parentPidOrganizationId;
-
   /// The name of pid organization.
   final pulumi.Input<String>? pidOrganizationName;
 
@@ -27,16 +26,9 @@ class IndustrialPidOrganizationState {
 
   factory IndustrialPidOrganizationState.fromMap(Map<String, dynamic> map) {
     return IndustrialPidOrganizationState(
-      parentPidOrganizationId: (() {
-        final guardedValue = map['parentPidOrganizationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pidOrganizationName: (() {
-        final guardedValue = map['pidOrganizationName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      parentPidOrganizationId: (() { final guardedValue = map['parentPidOrganizationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pidOrganizationName: (() { final guardedValue = map['pidOrganizationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

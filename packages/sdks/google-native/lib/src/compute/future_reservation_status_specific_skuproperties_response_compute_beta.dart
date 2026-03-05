@@ -19,13 +19,10 @@ class FutureReservationStatusSpecificSKUPropertiesResponseComputeBeta {
     };
   }
 
-  factory FutureReservationStatusSpecificSKUPropertiesResponseComputeBeta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FutureReservationStatusSpecificSKUPropertiesResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return FutureReservationStatusSpecificSKUPropertiesResponseComputeBeta(
-      sourceInstanceTemplateId: pulumi.Input.fromValue(
-        map['sourceInstanceTemplateId'] as String,
-      ),
+      sourceInstanceTemplateId: pulumi.Input.fromValue(map['sourceInstanceTemplateId'] as String),
     );
   }
 }
+

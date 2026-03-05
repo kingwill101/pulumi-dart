@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSecurityRuleArgs {
   /// The name of the network security group.
   final pulumi.Input<String> networkSecurityGroupName;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the security rule.
   final pulumi.Input<String> securityRuleName;
 
@@ -36,15 +34,10 @@ class GetSecurityRuleArgs {
 
   factory GetSecurityRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetSecurityRuleArgs(
-      networkSecurityGroupName: pulumi.Input.fromValue(
-        map['networkSecurityGroupName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      securityRuleName: pulumi.Input.fromValue(
-        map['securityRuleName'] as String,
-      ),
+      networkSecurityGroupName: pulumi.Input.fromValue(map['networkSecurityGroupName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      securityRuleName: pulumi.Input.fromValue(map['securityRuleName'] as String),
     );
   }
 }
+

@@ -6,17 +6,11 @@ import 'application_scoped_volume_creation_parameters_service_fabric_volume_disk
 /// Describes a volume whose lifetime is scoped to the application's lifetime.
 class ApplicationScopedVolumeResponse {
   /// Describes parameters for creating application-scoped volumes.
-  final pulumi.Input<
-    ApplicationScopedVolumeCreationParametersServiceFabricVolumeDiskResponse
-  >
-  creationParameters;
-
+  final pulumi.Input<ApplicationScopedVolumeCreationParametersServiceFabricVolumeDiskResponse> creationParameters;
   /// The path within the container at which the volume should be mounted. Only valid path characters are allowed.
   final pulumi.Input<String> destinationPath;
-
   /// Name of the volume being referenced.
   final pulumi.Input<String> name;
-
   /// The flag indicating whether the volume is read only. Default is 'false'.
   final pulumi.Input<bool>? readOnly;
 
@@ -34,11 +28,7 @@ class ApplicationScopedVolumeResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'creationParameters':
-          pulumi.Input.mapInputValue<
-            ApplicationScopedVolumeCreationParametersServiceFabricVolumeDiskResponse,
-            Map<String, dynamic>
-          >(creationParameters, (value) => value.toMap()),
+      'creationParameters': pulumi.Input.mapInputValue<ApplicationScopedVolumeCreationParametersServiceFabricVolumeDiskResponse, Map<String, dynamic>>(creationParameters, (value) => value.toMap()),
       'destinationPath': destinationPath,
       'name': name,
       'readOnly': ?readOnly,
@@ -47,18 +37,11 @@ class ApplicationScopedVolumeResponse {
 
   factory ApplicationScopedVolumeResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationScopedVolumeResponse(
-      creationParameters: pulumi.Input.fromValue(
-        ApplicationScopedVolumeCreationParametersServiceFabricVolumeDiskResponse.fromMap(
-          (map['creationParameters']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      creationParameters: pulumi.Input.fromValue(ApplicationScopedVolumeCreationParametersServiceFabricVolumeDiskResponse.fromMap((map['creationParameters']! as Map).cast<String, dynamic>())),
       destinationPath: pulumi.Input.fromValue(map['destinationPath'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      readOnly: (() {
-        final guardedValue = map['readOnly'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      readOnly: (() { final guardedValue = map['readOnly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

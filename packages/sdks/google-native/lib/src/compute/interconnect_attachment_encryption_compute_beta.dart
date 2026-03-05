@@ -12,8 +12,7 @@ enum InterconnectAttachmentEncryptionComputeBeta {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown InterconnectAttachmentEncryptionComputeBeta value: $value',
-    );
+    throw ArgumentError('Unknown InterconnectAttachmentEncryptionComputeBeta value: $value');
   }
 }
+

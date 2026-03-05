@@ -6,34 +6,29 @@ import 'load_test_encryption_identity.dart';
 class LoadTestEncryption {
   /// An `identity` block as defined below. Changing this forces a new Load Test to be created.
   final pulumi.Input<LoadTestEncryptionIdentity> identity;
-
   /// The URI specifying the Key vault and key to be used to encrypt data in this resource. The URI should include the key version. Changing this forces a new Load Test to be created.
   final pulumi.Input<String> keyUrl;
 
   /// Creates a new [LoadTestEncryption].
   /// [identity] An `identity` block as defined below. Changing this forces a new Load Test to be created.
   /// [keyUrl] The URI specifying the Key vault and key to be used to encrypt data in this resource. The URI should include the key version. Changing this forces a new Load Test to be created.
-  LoadTestEncryption({required this.identity, required this.keyUrl});
+  LoadTestEncryption({
+    required this.identity,
+    required this.keyUrl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'identity':
-          pulumi.Input.mapInputValue<
-            LoadTestEncryptionIdentity,
-            Map<String, dynamic>
-          >(identity, (value) => value.toMap()),
+      'identity': pulumi.Input.mapInputValue<LoadTestEncryptionIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
       'keyUrl': keyUrl,
     };
   }
 
   factory LoadTestEncryption.fromMap(Map<String, dynamic> map) {
     return LoadTestEncryption(
-      identity: pulumi.Input.fromValue(
-        LoadTestEncryptionIdentity.fromMap(
-          (map['identity']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      identity: pulumi.Input.fromValue(LoadTestEncryptionIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())),
       keyUrl: pulumi.Input.fromValue(map['keyUrl'] as String),
     );
   }
 }
+

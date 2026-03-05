@@ -16,33 +16,14 @@ class ValidateOracleAzureDbPostgreSqlSyncTaskOutputResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'validationErrors':
-          pulumi.Input.mapInputValue<
-            List<ReportableExceptionResponse>,
-            List<Map<String, dynamic>>
-          >(
-            validationErrors,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ReportableExceptionResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'validationErrors': pulumi.Input.mapInputValue<List<ReportableExceptionResponse>, List<Map<String, dynamic>>>(validationErrors, (value) => pulumi.Input.encodeList<ReportableExceptionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory ValidateOracleAzureDbPostgreSqlSyncTaskOutputResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ValidateOracleAzureDbPostgreSqlSyncTaskOutputResponse.fromMap(Map<String, dynamic> map) {
     return ValidateOracleAzureDbPostgreSqlSyncTaskOutputResponse(
-      validationErrors: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<ReportableExceptionResponse>(
-          map['validationErrors']!,
-          (value) => ReportableExceptionResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      validationErrors: pulumi.Input.fromValue(pulumi.Input.decodeList<ReportableExceptionResponse>(map['validationErrors']!, (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

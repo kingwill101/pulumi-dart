@@ -360,22 +360,16 @@ import 'external_data_service_state.dart';
 class ExternalDataService extends pulumi.CustomResource {
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
-
   /// Instance ID
   late final pulumi.Output<String> dbInstanceId;
-
   /// Service Description
   late final pulumi.Output<String?> serviceDescription;
-
   /// Service ID
   late final pulumi.Output<int> serviceId;
-
   /// Service Name
   late final pulumi.Output<String> serviceName;
-
   /// Service Specifications
   late final pulumi.Output<String> serviceSpec;
-
   /// The status of the resource
   late final pulumi.Output<String> status;
 
@@ -388,11 +382,11 @@ class ExternalDataService extends pulumi.CustomResource {
     ExternalDataServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:gpdb/externalDataService:ExternalDataService',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:gpdb/externalDataService:ExternalDataService',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     dbInstanceId = registerOutput<String>('dbInstanceId');
     serviceDescription = registerOutput<String?>('serviceDescription');
@@ -420,11 +414,11 @@ class ExternalDataService extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:gpdb/externalDataService:ExternalDataService',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:gpdb/externalDataService:ExternalDataService',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     dbInstanceId = registerOutput<String>('dbInstanceId');
     serviceDescription = registerOutput<String?>('serviceDescription');

@@ -12,8 +12,7 @@ enum BatchDeploymentConfigurationType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown BatchDeploymentConfigurationType value: $value',
-    );
+    throw ArgumentError('Unknown BatchDeploymentConfigurationType value: $value');
   }
 }
+

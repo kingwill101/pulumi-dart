@@ -15,31 +15,22 @@ import 'hci_marketplace_gallery_image_state.dart';
 class HciMarketplaceGalleryImage extends pulumi.CustomResource {
   /// The ID of the Custom Location where the Azure Stack HCI Marketplace Gallery Image should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> customLocationId;
-
   /// The hypervisor generation of the Azure Stack HCI Marketplace Gallery Image. Possible values are `V1` and `V2`. Changing this forces a new Azure Stack HCI Marketplace Gallery Image to be created.
   late final pulumi.Output<String> hypervGeneration;
-
   /// An `identifier` block as defined below. Changing this forces a new Azure Stack HCI Marketplace Gallery Image to be created.
   late final pulumi.Output<HciMarketplaceGalleryImageIdentifier> identifier;
-
   /// The Azure Region where the Azure Stack HCI Marketplace Gallery Image should exist. Changing this forces a new Azure Stack HCI Marketplace Gallery Image to be created.
   late final pulumi.Output<String> location;
-
   /// The name which should be used for this Azure Stack HCI Marketplace Gallery Image. Changing this forces a new Azure Stack HCI Marketplace Gallery Image to be created.
   late final pulumi.Output<String> name;
-
   /// The Operating System type of the Azure Stack HCI Marketplace Gallery Image. Possible values are `Windows` and `Linux`. Changing this forces a new Azure Stack HCI Marketplace Gallery Image to be created.
   late final pulumi.Output<String> osType;
-
   /// The name of the Resource Group where the Azure Stack HCI Marketplace Gallery Image should exist. Changing this forces a new Azure Stack HCI Marketplace Gallery Image to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The ID of the Azure Stack HCI Storage Path used for this Marketplace Gallery Image. Changing this forces a new Azure Stack HCI Virtual Hard Disk to be created.
   late final pulumi.Output<String?> storagePathId;
-
   /// A mapping of tags which should be assigned to the Azure Stack HCI Marketplace Gallery Image.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The version of the Azure Stack HCI Marketplace Gallery Image. Changing this forces a new Azure Stack HCI Marketplace Gallery Image to be created.
   late final pulumi.Output<String> version;
 
@@ -52,23 +43,14 @@ class HciMarketplaceGalleryImage extends pulumi.CustomResource {
     HciMarketplaceGalleryImageArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:stack/hciMarketplaceGalleryImage:HciMarketplaceGalleryImage',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:stack/hciMarketplaceGalleryImage:HciMarketplaceGalleryImage',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     customLocationId = registerOutput<String>('customLocationId');
     hypervGeneration = registerOutput<String>('hypervGeneration');
-    identifier = registerOutput<HciMarketplaceGalleryImageIdentifier>(
-      'identifier',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HciMarketplaceGalleryImageIdentifier.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identifier = registerOutput<HciMarketplaceGalleryImageIdentifier>('identifier', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HciMarketplaceGalleryImageIdentifier.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     osType = registerOutput<String>('osType');
@@ -96,23 +78,14 @@ class HciMarketplaceGalleryImage extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:stack/hciMarketplaceGalleryImage:HciMarketplaceGalleryImage',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:stack/hciMarketplaceGalleryImage:HciMarketplaceGalleryImage',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     customLocationId = registerOutput<String>('customLocationId');
     hypervGeneration = registerOutput<String>('hypervGeneration');
-    identifier = registerOutput<HciMarketplaceGalleryImageIdentifier>(
-      'identifier',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HciMarketplaceGalleryImageIdentifier.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identifier = registerOutput<HciMarketplaceGalleryImageIdentifier>('identifier', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HciMarketplaceGalleryImageIdentifier.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     osType = registerOutput<String>('osType');

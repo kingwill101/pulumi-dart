@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAlertRuleTemplateNrtTemplate {
   /// The description of this Sentinel Scheduled Alert Rule Template.
   final pulumi.Input<String> description;
-
   /// The query of this Sentinel Scheduled Alert Rule Template.
   final pulumi.Input<String> query;
-
   /// The alert severity of this Sentinel Scheduled Alert Rule Template.
   final pulumi.Input<String> severity;
-
   /// A list of categories of attacks by which to classify the rule.
   final pulumi.Input<List<String>> tactics;
 
@@ -45,3 +42,4 @@ class GetAlertRuleTemplateNrtTemplate {
     );
   }
 }
+

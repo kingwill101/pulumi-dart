@@ -9,21 +9,20 @@ class RegionalSecretVersionCustomerManagedEncryption {
 
   /// Creates a new [RegionalSecretVersionCustomerManagedEncryption].
   /// [kmsKeyVersionName] (Output)
-  RegionalSecretVersionCustomerManagedEncryption({this.kmsKeyVersionName});
+  RegionalSecretVersionCustomerManagedEncryption({
+    this.kmsKeyVersionName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'kmsKeyVersionName': ?kmsKeyVersionName};
+    return <String, dynamic>{
+      'kmsKeyVersionName': ?kmsKeyVersionName,
+    };
   }
 
-  factory RegionalSecretVersionCustomerManagedEncryption.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RegionalSecretVersionCustomerManagedEncryption.fromMap(Map<String, dynamic> map) {
     return RegionalSecretVersionCustomerManagedEncryption(
-      kmsKeyVersionName: (() {
-        final guardedValue = map['kmsKeyVersionName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      kmsKeyVersionName: (() { final guardedValue = map['kmsKeyVersionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -161,31 +161,22 @@ import 'device_group_state.dart';
 class DeviceGroup extends pulumi.CustomResource {
   /// Specifies if the device-group will automatically sync configuration data to its members
   late final pulumi.Output<String?> autoSync;
-
   /// Description of Device group
   late final pulumi.Output<String?> description;
-
   /// Name of the device to be included in device group, this need to be configured before using devicegroup resource
   late final pulumi.Output<List<Map<String, dynamic>>?> devices;
-
   /// Specifies if the device-group will perform a full-load upon sync
   late final pulumi.Output<String?> fullLoadOnSync;
-
   /// Specifies the maximum size (in KB) to devote to incremental config sync cached transactions. The default is 1024 KB.
   late final pulumi.Output<int?> incrementalConfig;
-
   /// Is the name of the device Group
   late final pulumi.Output<String?> name;
-
   /// Specifies if the device-group will use a network connection for failover
   late final pulumi.Output<String?> networkFailover;
-
   /// Device administrative partition
   late final pulumi.Output<String?> partition;
-
   /// Specifies whether the configuration should be saved upon auto-sync.
   late final pulumi.Output<String?> saveOnAutoSync;
-
   /// Specifies if the device-group will be used for failover or resource syncing
   late final pulumi.Output<String?> type;
 
@@ -198,11 +189,11 @@ class DeviceGroup extends pulumi.CustomResource {
     DeviceGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:cm/deviceGroup:DeviceGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:cm/deviceGroup:DeviceGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoSync = registerOutput<String?>('autoSync');
     description = registerOutput<String?>('description');
     devices = registerOutput<List<Map<String, dynamic>>?>('devices');
@@ -233,11 +224,11 @@ class DeviceGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:cm/deviceGroup:DeviceGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:cm/deviceGroup:DeviceGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoSync = registerOutput<String?>('autoSync');
     description = registerOutput<String?>('description');
     devices = registerOutput<List<Map<String, dynamic>>?>('devices');

@@ -9,8 +9,7 @@ class ArcConfigurationResponse {
   final pulumi.Input<String>? artifactStorageMountPath;
   final pulumi.Input<String>? artifactStorageNodeName;
   final pulumi.Input<String>? artifactsStorageType;
-  final pulumi.Input<FrontEndConfigurationResponse>?
-  frontEndServiceConfiguration;
+  final pulumi.Input<FrontEndConfigurationResponse>? frontEndServiceConfiguration;
 
   /// Creates a new [ArcConfigurationResponse].
   /// [artifactStorageAccessMode] Optional.
@@ -35,50 +34,19 @@ class ArcConfigurationResponse {
       'artifactStorageMountPath': ?artifactStorageMountPath,
       'artifactStorageNodeName': ?artifactStorageNodeName,
       'artifactsStorageType': ?artifactsStorageType,
-      'frontEndServiceConfiguration':
-          ?pulumi.Input.mapOptionalInputValue<
-            FrontEndConfigurationResponse,
-            Map<String, dynamic>
-          >(frontEndServiceConfiguration, (value) => value.toMap()),
+      'frontEndServiceConfiguration': ?pulumi.Input.mapOptionalInputValue<FrontEndConfigurationResponse, Map<String, dynamic>>(frontEndServiceConfiguration, (value) => value.toMap()),
     };
   }
 
   factory ArcConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ArcConfigurationResponse(
-      artifactStorageAccessMode: (() {
-        final guardedValue = map['artifactStorageAccessMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      artifactStorageClassName: (() {
-        final guardedValue = map['artifactStorageClassName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      artifactStorageMountPath: (() {
-        final guardedValue = map['artifactStorageMountPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      artifactStorageNodeName: (() {
-        final guardedValue = map['artifactStorageNodeName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      artifactsStorageType: (() {
-        final guardedValue = map['artifactsStorageType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      frontEndServiceConfiguration: (() {
-        final guardedValue = map['frontEndServiceConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FrontEndConfigurationResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      artifactStorageAccessMode: (() { final guardedValue = map['artifactStorageAccessMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      artifactStorageClassName: (() { final guardedValue = map['artifactStorageClassName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      artifactStorageMountPath: (() { final guardedValue = map['artifactStorageMountPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      artifactStorageNodeName: (() { final guardedValue = map['artifactStorageNodeName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      artifactsStorageType: (() { final guardedValue = map['artifactsStorageType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      frontEndServiceConfiguration: (() { final guardedValue = map['frontEndServiceConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FrontEndConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

@@ -16,3 +16,4 @@ enum AutoTrackingConfiguration {
     throw ArgumentError('Unknown AutoTrackingConfiguration value: $value');
   }
 }
+

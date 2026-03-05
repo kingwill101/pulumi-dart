@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSinkExclusion {
   /// A description of this exclusion.
   final pulumi.Input<String> description;
-
   /// Whether this exclusion is disabled and it does not exclude any log entries.
   final pulumi.Input<bool> disabled;
-
   /// An advanced logs filter that matches the log entries to be excluded.
   final pulumi.Input<String> filter;
-
   /// A client-assigned identifier, such as `load-balancer-exclusion`.
   final pulumi.Input<String> name;
 
@@ -45,3 +42,4 @@ class GetSinkExclusion {
     );
   }
 }
+

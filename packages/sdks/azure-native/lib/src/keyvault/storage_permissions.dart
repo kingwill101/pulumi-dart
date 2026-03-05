@@ -27,3 +27,4 @@ enum StoragePermissions {
     throw ArgumentError('Unknown StoragePermissions value: $value');
   }
 }
+

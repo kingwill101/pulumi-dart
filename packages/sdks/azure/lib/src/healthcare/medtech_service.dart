@@ -358,28 +358,20 @@ import 'medtech_service_state.dart';
 class MedtechService extends pulumi.CustomResource {
   /// Specifies the Device Mappings of the Med Tech Service.
   late final pulumi.Output<String> deviceMappingJson;
-
   /// Specifies the Consumer Group of the Event Hub to connect to.
   late final pulumi.Output<String> eventhubConsumerGroupName;
-
   /// Specifies the name of the Event Hub to connect to.
   late final pulumi.Output<String> eventhubName;
-
   /// Specifies the namespace name of the Event Hub to connect to.
   late final pulumi.Output<String> eventhubNamespaceName;
-
   /// An `identity` block as defined below.
   late final pulumi.Output<MedtechServiceIdentity?> identity;
-
   /// Specifies the Azure Region where the Healthcare Med Tech Service should be created. Changing this forces a new Healthcare Med Tech Service to be created.
   late final pulumi.Output<String> location;
-
   /// Specifies the name of the Healthcare Med Tech Service. Changing this forces a new Healthcare Med Tech Service to be created.
   late final pulumi.Output<String> name;
-
   /// A mapping of tags to assign to the Healthcare Med Tech Service.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Specifies the id of the Healthcare Workspace where the Healthcare Med Tech Service should exist. Changing this forces a new Healthcare Med Tech Service to be created.
   late final pulumi.Output<String> workspaceId;
 
@@ -392,27 +384,16 @@ class MedtechService extends pulumi.CustomResource {
     MedtechServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:healthcare/medtechService:MedtechService',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:healthcare/medtechService:MedtechService',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     deviceMappingJson = registerOutput<String>('deviceMappingJson');
-    eventhubConsumerGroupName = registerOutput<String>(
-      'eventhubConsumerGroupName',
-    );
+    eventhubConsumerGroupName = registerOutput<String>('eventhubConsumerGroupName');
     eventhubName = registerOutput<String>('eventhubName');
     eventhubNamespaceName = registerOutput<String>('eventhubNamespaceName');
-    identity = registerOutput<MedtechServiceIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MedtechServiceIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<MedtechServiceIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MedtechServiceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -437,27 +418,16 @@ class MedtechService extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:healthcare/medtechService:MedtechService',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:healthcare/medtechService:MedtechService',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     deviceMappingJson = registerOutput<String>('deviceMappingJson');
-    eventhubConsumerGroupName = registerOutput<String>(
-      'eventhubConsumerGroupName',
-    );
+    eventhubConsumerGroupName = registerOutput<String>('eventhubConsumerGroupName');
     eventhubName = registerOutput<String>('eventhubName');
     eventhubNamespaceName = registerOutput<String>('eventhubNamespaceName');
-    identity = registerOutput<MedtechServiceIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MedtechServiceIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<MedtechServiceIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MedtechServiceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     tags = registerOutput<Map<String, String>?>('tags');

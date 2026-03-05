@@ -31,15 +31,10 @@ class GetHyperparameterTuningJobArgs {
 
   factory GetHyperparameterTuningJobArgs.fromMap(Map<String, dynamic> map) {
     return GetHyperparameterTuningJobArgs(
-      hyperparameterTuningJobId: pulumi.Input.fromValue(
-        map['hyperparameterTuningJobId'] as String,
-      ),
+      hyperparameterTuningJobId: pulumi.Input.fromValue(map['hyperparameterTuningJobId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

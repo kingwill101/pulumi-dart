@@ -9,10 +9,14 @@ class StackTraceResponse {
 
   /// Creates a new [StackTraceResponse].
   /// [exception] The stack trace message. Required
-  StackTraceResponse({required this.exception});
+  StackTraceResponse({
+    required this.exception,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'exception': exception};
+    return <String, dynamic>{
+      'exception': exception,
+    };
   }
 
   factory StackTraceResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class StackTraceResponse {
     );
   }
 }
+

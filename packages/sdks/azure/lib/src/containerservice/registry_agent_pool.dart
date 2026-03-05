@@ -208,25 +208,18 @@ import 'registry_agent_pool_state.dart';
 class RegistryAgentPool extends pulumi.CustomResource {
   /// Name of Azure Container Registry to create an Agent Pool for. Changing this forces a new Azure Container Registry Agent Pool to be created.
   late final pulumi.Output<String> containerRegistryName;
-
   /// VMSS instance count. Defaults to `1`.
   late final pulumi.Output<int?> instanceCount;
-
   /// The Azure Region where the Azure Container Registry Agent Pool should exist. Changing this forces a new Azure Container Registry Agent Pool to be created.
   late final pulumi.Output<String> location;
-
   /// The name which should be used for this Azure Container Registry Agent Pool. Changing this forces a new Azure Container Registry Agent Pool to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the Resource Group where the Azure Container Registry Agent Pool should exist. Changing this forces a new Azure Container Registry Agent Pool to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags which should be assigned to the Azure Container Registry Agent Pool.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Sets the VM your agent pool will run on. Valid values are: `S1` (2 vCPUs, 3 GiB RAM), `S2` (4 vCPUs, 8 GiB RAM), `S3` (8 vCPUs, 16 GiB RAM) or `I6` (64 vCPUs, 216 GiB RAM, Isolated). Defaults to `S1`. Changing this forces a new Azure Container Registry Agent Pool to be created.
   late final pulumi.Output<String?> tier;
-
   /// The ID of the Virtual Network Subnet Resource where the agent machines will be running. Changing this forces a new Azure Container Registry Agent Pool to be created.
   late final pulumi.Output<String?> virtualNetworkSubnetId;
 
@@ -239,11 +232,11 @@ class RegistryAgentPool extends pulumi.CustomResource {
     RegistryAgentPoolArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:containerservice/registryAgentPool:RegistryAgentPool',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:containerservice/registryAgentPool:RegistryAgentPool',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     containerRegistryName = registerOutput<String>('containerRegistryName');
     instanceCount = registerOutput<int?>('instanceCount');
     location = registerOutput<String>('location');
@@ -272,11 +265,11 @@ class RegistryAgentPool extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:containerservice/registryAgentPool:RegistryAgentPool',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:containerservice/registryAgentPool:RegistryAgentPool',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     containerRegistryName = registerOutput<String>('containerRegistryName');
     instanceCount = registerOutput<int?>('instanceCount');
     location = registerOutput<String>('location');

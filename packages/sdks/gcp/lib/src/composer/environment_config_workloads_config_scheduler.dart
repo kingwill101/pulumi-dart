@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnvironmentConfigWorkloadsConfigScheduler {
   /// The number of schedulers.
   final pulumi.Input<int>? count;
-
   /// CPU request and limit for a single Airflow scheduler replica
   final pulumi.Input<double>? cpu;
-
   /// Memory (GB) request and limit for a single Airflow scheduler replica.
   final pulumi.Input<double>? memoryGb;
-
   /// Storage (GB) request and limit for a single Airflow scheduler replica.
   final pulumi.Input<double>? storageGb;
 
@@ -36,30 +33,13 @@ class EnvironmentConfigWorkloadsConfigScheduler {
     };
   }
 
-  factory EnvironmentConfigWorkloadsConfigScheduler.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EnvironmentConfigWorkloadsConfigScheduler.fromMap(Map<String, dynamic> map) {
     return EnvironmentConfigWorkloadsConfigScheduler(
-      count: (() {
-        final guardedValue = map['count'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      cpu: (() {
-        final guardedValue = map['cpu'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      memoryGb: (() {
-        final guardedValue = map['memoryGb'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      storageGb: (() {
-        final guardedValue = map['storageGb'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      cpu: (() { final guardedValue = map['cpu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      memoryGb: (() { final guardedValue = map['memoryGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      storageGb: (() { final guardedValue = map['storageGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

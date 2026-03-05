@@ -257,10 +257,8 @@ import 'bucket_user_defined_log_fields_state.dart';
 class BucketUserDefinedLogFields extends pulumi.CustomResource {
   /// The name of the bucket.
   late final pulumi.Output<String> bucket;
-
   /// Container for custom request header configuration information.
   late final pulumi.Output<List<String>?> headerSets;
-
   /// Container for custom request parameters configuration information.
   late final pulumi.Output<List<String>?> paramSets;
 
@@ -273,11 +271,11 @@ class BucketUserDefinedLogFields extends pulumi.CustomResource {
     BucketUserDefinedLogFieldsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:oss/bucketUserDefinedLogFields:BucketUserDefinedLogFields',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:oss/bucketUserDefinedLogFields:BucketUserDefinedLogFields',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
     headerSets = registerOutput<List<String>?>('headerSets');
     paramSets = registerOutput<List<String>?>('paramSets');
@@ -301,11 +299,11 @@ class BucketUserDefinedLogFields extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:oss/bucketUserDefinedLogFields:BucketUserDefinedLogFields',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:oss/bucketUserDefinedLogFields:BucketUserDefinedLogFields',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
     headerSets = registerOutput<List<String>?>('headerSets');
     paramSets = registerOutput<List<String>?>('paramSets');

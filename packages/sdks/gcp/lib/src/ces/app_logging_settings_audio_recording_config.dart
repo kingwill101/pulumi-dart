@@ -9,7 +9,6 @@ class AppLoggingSettingsAudioRecordingConfig {
   /// you should grant `storage.objects.create` permission to the CES service
   /// agent `service-@gcp-sa-ces.iam.gserviceaccount.com`.
   final pulumi.Input<String>? gcsBucket;
-
   /// The Cloud Storage path prefix for audio recordings.
   /// This prefix can include the following placeholders, which will be
   /// dynamically substituted at serving time:
@@ -25,7 +24,10 @@ class AppLoggingSettingsAudioRecordingConfig {
   /// Creates a new [AppLoggingSettingsAudioRecordingConfig].
   /// [gcsBucket] The [Cloud Storage](https://cloud.google.com/storage) bucket to store the
   /// [gcsPathPrefix] The Cloud Storage path prefix for audio recordings.
-  AppLoggingSettingsAudioRecordingConfig({this.gcsBucket, this.gcsPathPrefix});
+  AppLoggingSettingsAudioRecordingConfig({
+    this.gcsBucket,
+    this.gcsPathPrefix,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,20 +36,11 @@ class AppLoggingSettingsAudioRecordingConfig {
     };
   }
 
-  factory AppLoggingSettingsAudioRecordingConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppLoggingSettingsAudioRecordingConfig.fromMap(Map<String, dynamic> map) {
     return AppLoggingSettingsAudioRecordingConfig(
-      gcsBucket: (() {
-        final guardedValue = map['gcsBucket'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      gcsPathPrefix: (() {
-        final guardedValue = map['gcsPathPrefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      gcsBucket: (() { final guardedValue = map['gcsBucket']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      gcsPathPrefix: (() { final guardedValue = map['gcsPathPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

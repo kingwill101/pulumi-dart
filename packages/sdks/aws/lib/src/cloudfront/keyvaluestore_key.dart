@@ -165,13 +165,10 @@ import 'keyvaluestore_key_state.dart';
 class KeyvaluestoreKey extends pulumi.CustomResource {
   /// Key to put.
   late final pulumi.Output<String> key;
-
   /// Amazon Resource Name (ARN) of the Key Value Store.
   late final pulumi.Output<String> keyValueStoreArn;
-
   /// Total size of the Key Value Store in bytes.
   late final pulumi.Output<int> totalSizeInBytes;
-
   /// Value to put.
   late final pulumi.Output<String> value;
 
@@ -184,11 +181,11 @@ class KeyvaluestoreKey extends pulumi.CustomResource {
     KeyvaluestoreKeyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cloudfront/keyvaluestoreKey:KeyvaluestoreKey',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cloudfront/keyvaluestoreKey:KeyvaluestoreKey',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     key = registerOutput<String>('key');
     keyValueStoreArn = registerOutput<String>('keyValueStoreArn');
     totalSizeInBytes = registerOutput<int>('totalSizeInBytes');
@@ -213,11 +210,11 @@ class KeyvaluestoreKey extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cloudfront/keyvaluestoreKey:KeyvaluestoreKey',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cloudfront/keyvaluestoreKey:KeyvaluestoreKey',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     key = registerOutput<String>('key');
     keyValueStoreArn = registerOutput<String>('keyValueStoreArn');
     totalSizeInBytes = registerOutput<int>('totalSizeInBytes');

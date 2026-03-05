@@ -27,13 +27,10 @@ class Hl7StoreIamBindingCondition {
 
   factory Hl7StoreIamBindingCondition.fromMap(Map<String, dynamic> map) {
     return Hl7StoreIamBindingCondition(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       expression: pulumi.Input.fromValue(map['expression'] as String),
       title: pulumi.Input.fromValue(map['title'] as String),
     );
   }
 }
+

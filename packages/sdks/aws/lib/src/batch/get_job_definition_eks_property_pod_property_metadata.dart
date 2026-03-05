@@ -8,19 +8,20 @@ class GetJobDefinitionEksPropertyPodPropertyMetadata {
 
   /// Creates a new [GetJobDefinitionEksPropertyPodPropertyMetadata].
   /// [labels] Key-value pairs used to identify, sort, and organize cube resources.
-  GetJobDefinitionEksPropertyPodPropertyMetadata({required this.labels});
+  GetJobDefinitionEksPropertyPodPropertyMetadata({
+    required this.labels,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'labels': labels};
+    return <String, dynamic>{
+      'labels': labels,
+    };
   }
 
-  factory GetJobDefinitionEksPropertyPodPropertyMetadata.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetJobDefinitionEksPropertyPodPropertyMetadata.fromMap(Map<String, dynamic> map) {
     return GetJobDefinitionEksPropertyPodPropertyMetadata(
-      labels: pulumi.Input.fromValue(
-        (map['labels'] as Map).cast<String, String>(),
-      ),
+      labels: pulumi.Input.fromValue((map['labels'] as Map).cast<String, String>()),
     );
   }
 }
+

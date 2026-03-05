@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PlanStageTargetChannelTargetInfo {
   /// The Amazon Resource Name (ARN) of the contact channel.
   final pulumi.Input<String> contactChannelId;
-
   /// The number of minutes to wait before retrying to send engagement if the engagement initially failed.
   final pulumi.Input<int>? retryIntervalInMinutes;
 
@@ -26,14 +25,9 @@ class PlanStageTargetChannelTargetInfo {
 
   factory PlanStageTargetChannelTargetInfo.fromMap(Map<String, dynamic> map) {
     return PlanStageTargetChannelTargetInfo(
-      contactChannelId: pulumi.Input.fromValue(
-        map['contactChannelId'] as String,
-      ),
-      retryIntervalInMinutes: (() {
-        final guardedValue = map['retryIntervalInMinutes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      contactChannelId: pulumi.Input.fromValue(map['contactChannelId'] as String),
+      retryIntervalInMinutes: (() { final guardedValue = map['retryIntervalInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

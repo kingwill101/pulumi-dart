@@ -15,3 +15,4 @@ enum ApiBridgeActivationState {
     throw ArgumentError('Unknown ApiBridgeActivationState value: $value');
   }
 }
+

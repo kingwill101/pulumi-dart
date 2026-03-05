@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectedRepository {
   /// Directory, relative to the source root, in which to run the build.
   final pulumi.Input<String>? dir;
-
   /// Name of the Google Cloud Build repository, formatted as `projects/*/locations/*/connections/*/repositories/*`.
   final pulumi.Input<String> repository;
-
   /// The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git ref.
   final pulumi.Input<String>? revision;
 
@@ -17,7 +15,11 @@ class ConnectedRepository {
   /// [dir] Directory, relative to the source root, in which to run the build.
   /// [repository] Name of the Google Cloud Build repository, formatted as `projects/*/locations/*/connections/*/repositories/*`.
   /// [revision] The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git ref.
-  ConnectedRepository({this.dir, required this.repository, this.revision});
+  ConnectedRepository({
+    this.dir,
+    required this.repository,
+    this.revision,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,17 +31,10 @@ class ConnectedRepository {
 
   factory ConnectedRepository.fromMap(Map<String, dynamic> map) {
     return ConnectedRepository(
-      dir: (() {
-        final guardedValue = map['dir'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dir: (() { final guardedValue = map['dir']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       repository: pulumi.Input.fromValue(map['repository'] as String),
-      revision: (() {
-        final guardedValue = map['revision'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      revision: (() { final guardedValue = map['revision']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

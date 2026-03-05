@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNodebalancerConfigsNodebalancerConfigNodeStatus {
   /// The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
   final pulumi.Input<int> down;
-
   /// The number of backends considered to be 'UP' and healthy, and that are serving requests.
   final pulumi.Input<int> up;
 
@@ -18,15 +17,17 @@ class GetNodebalancerConfigsNodebalancerConfigNodeStatus {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'down': down, 'up': up};
+    return <String, dynamic>{
+      'down': down,
+      'up': up,
+    };
   }
 
-  factory GetNodebalancerConfigsNodebalancerConfigNodeStatus.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetNodebalancerConfigsNodebalancerConfigNodeStatus.fromMap(Map<String, dynamic> map) {
     return GetNodebalancerConfigsNodebalancerConfigNodeStatus(
       down: pulumi.Input.fromValue(map['down'] as int),
       up: pulumi.Input.fromValue(map['up'] as int),
     );
   }
 }
+

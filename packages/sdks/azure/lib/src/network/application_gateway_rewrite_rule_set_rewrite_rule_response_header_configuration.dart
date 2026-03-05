@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationGatewayRewriteRuleSetRewriteRuleResponseHeaderConfiguration {
   /// Header name of the header configuration.
   final pulumi.Input<String> headerName;
-
   /// Header value of the header configuration. To delete a response header set this property to an empty string.
   final pulumi.Input<String> headerValue;
 
@@ -24,12 +23,11 @@ class ApplicationGatewayRewriteRuleSetRewriteRuleResponseHeaderConfiguration {
     };
   }
 
-  factory ApplicationGatewayRewriteRuleSetRewriteRuleResponseHeaderConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApplicationGatewayRewriteRuleSetRewriteRuleResponseHeaderConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayRewriteRuleSetRewriteRuleResponseHeaderConfiguration(
       headerName: pulumi.Input.fromValue(map['headerName'] as String),
       headerValue: pulumi.Input.fromValue(map['headerValue'] as String),
     );
   }
 }
+

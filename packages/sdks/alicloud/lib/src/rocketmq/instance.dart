@@ -179,25 +179,18 @@ import 'instance_state.dart';
 class Instance extends pulumi.CustomResource {
   /// Two instances on a single account in the same region cannot have the same name. The length must be 3 to 64 characters. Chinese characters, English letters digits and hyphen are allowed.
   late final pulumi.Output<String> instanceName;
-
   /// The status of instance. 1 represents the platinum edition instance is in deployment. 2 represents the postpaid edition instance are overdue. 5 represents the postpaid or platinum edition instance is in service. 7 represents the platinum version instance is in upgrade and the service is available.
   late final pulumi.Output<int> instanceStatus;
-
   /// The edition of instance. 1 represents the postPaid edition, and 2 represents the platinum edition.
   late final pulumi.Output<int> instanceType;
-
   /// Replaced by `instance_name` after version 1.97.0.
   late final pulumi.Output<String> name;
-
   /// Platinum edition instance expiration time.
   late final pulumi.Output<String> releaseTime;
-
   /// This attribute is a concise description of instance. The length cannot exceed 128.
   late final pulumi.Output<String?> remark;
-
   /// The status of instance. 1 represents the platinum edition instance is in deployment. 2 represents the postpaid edition instance are overdue. 5 represents the postpaid or platinum edition instance is in service. 7 represents the platinum version instance is in upgrade and the service is available.
   late final pulumi.Output<int> status;
-
   /// A mapping of tags to assign to the resource.
   /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
   /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -212,11 +205,11 @@ class Instance extends pulumi.CustomResource {
     InstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:rocketmq/instance:Instance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:rocketmq/instance:Instance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     instanceName = registerOutput<String>('instanceName');
     instanceStatus = registerOutput<int>('instanceStatus');
     instanceType = registerOutput<int>('instanceType');
@@ -245,11 +238,11 @@ class Instance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:rocketmq/instance:Instance',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:rocketmq/instance:Instance',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     instanceName = registerOutput<String>('instanceName');
     instanceStatus = registerOutput<int>('instanceStatus');
     instanceType = registerOutput<int>('instanceType');

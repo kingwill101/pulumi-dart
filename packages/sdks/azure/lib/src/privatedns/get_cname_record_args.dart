@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCnameRecordArgs {
   /// The name of the Private DNS CNAME Record.
   final pulumi.Input<String> name;
-
   /// Specifies the resource group where the Private DNS Zone (parent resource) exists.
   final pulumi.Input<String> resourceGroupName;
-
   /// Specifies the Private DNS Zone where the resource exists.
   final pulumi.Input<String> zoneName;
 
@@ -37,10 +35,9 @@ class GetCnameRecordArgs {
   factory GetCnameRecordArgs.fromMap(Map<String, dynamic> map) {
     return GetCnameRecordArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       zoneName: pulumi.Input.fromValue(map['zoneName'] as String),
     );
   }
 }
+

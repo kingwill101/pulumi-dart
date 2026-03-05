@@ -6,22 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReadinessCheckAppengineV1beta {
   /// A maximum time limit on application initialization, measured from moment the application successfully replies to a healthcheck until it is ready to serve traffic.
   final pulumi.Input<String>? appStartTimeout;
-
   /// Interval between health checks.
   final pulumi.Input<String>? checkInterval;
-
   /// Number of consecutive failed checks required before removing traffic.
   final pulumi.Input<int>? failureThreshold;
-
   /// Host header to send when performing a HTTP Readiness check. Example: "myapp.appspot.com"
   final pulumi.Input<String>? host;
-
   /// The request path.
   final pulumi.Input<String>? path;
-
   /// Number of consecutive successful checks required before receiving traffic.
   final pulumi.Input<int>? successThreshold;
-
   /// Time before the check is considered failed.
   final pulumi.Input<String>? timeout;
 
@@ -57,41 +51,14 @@ class ReadinessCheckAppengineV1beta {
 
   factory ReadinessCheckAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return ReadinessCheckAppengineV1beta(
-      appStartTimeout: (() {
-        final guardedValue = map['appStartTimeout'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      checkInterval: (() {
-        final guardedValue = map['checkInterval'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      failureThreshold: (() {
-        final guardedValue = map['failureThreshold'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      host: (() {
-        final guardedValue = map['host'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      path: (() {
-        final guardedValue = map['path'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      successThreshold: (() {
-        final guardedValue = map['successThreshold'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      timeout: (() {
-        final guardedValue = map['timeout'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      appStartTimeout: (() { final guardedValue = map['appStartTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      checkInterval: (() { final guardedValue = map['checkInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      failureThreshold: (() { final guardedValue = map['failureThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      host: (() { final guardedValue = map['host']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      successThreshold: (() { final guardedValue = map['successThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

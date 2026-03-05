@@ -19,13 +19,10 @@ class MetastoreConfigResponseDataprocV1beta2 {
     };
   }
 
-  factory MetastoreConfigResponseDataprocV1beta2.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MetastoreConfigResponseDataprocV1beta2.fromMap(Map<String, dynamic> map) {
     return MetastoreConfigResponseDataprocV1beta2(
-      dataprocMetastoreService: pulumi.Input.fromValue(
-        map['dataprocMetastoreService'] as String,
-      ),
+      dataprocMetastoreService: pulumi.Input.fromValue(map['dataprocMetastoreService'] as String),
     );
   }
 }
+

@@ -9,10 +9,14 @@ class ServiceAttributesCriticality {
 
   /// Creates a new [ServiceAttributesCriticality].
   /// [type] Criticality type.
-  ServiceAttributesCriticality({required this.type});
+  ServiceAttributesCriticality({
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': type};
+    return <String, dynamic>{
+      'type': type,
+    };
   }
 
   factory ServiceAttributesCriticality.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class ServiceAttributesCriticality {
     );
   }
 }
+

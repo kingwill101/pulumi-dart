@@ -5,10 +5,7 @@ import 'get_data_set_logical_table_map_data_transform_tag_column_operation_tag.d
 
 class GetDataSetLogicalTableMapDataTransformTagColumnOperation {
   final pulumi.Input<String> columnName;
-  final pulumi.Input<
-    List<GetDataSetLogicalTableMapDataTransformTagColumnOperationTag>
-  >
-  tags;
+  final pulumi.Input<List<GetDataSetLogicalTableMapDataTransformTagColumnOperationTag>> tags;
 
   /// Creates a new [GetDataSetLogicalTableMapDataTransformTagColumnOperation].
   /// [columnName] Required.
@@ -21,37 +18,15 @@ class GetDataSetLogicalTableMapDataTransformTagColumnOperation {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'columnName': columnName,
-      'tags':
-          pulumi.Input.mapInputValue<
-            List<GetDataSetLogicalTableMapDataTransformTagColumnOperationTag>,
-            List<Map<String, dynamic>>
-          >(
-            tags,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetDataSetLogicalTableMapDataTransformTagColumnOperationTag,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'tags': pulumi.Input.mapInputValue<List<GetDataSetLogicalTableMapDataTransformTagColumnOperationTag>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<GetDataSetLogicalTableMapDataTransformTagColumnOperationTag, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory GetDataSetLogicalTableMapDataTransformTagColumnOperation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDataSetLogicalTableMapDataTransformTagColumnOperation.fromMap(Map<String, dynamic> map) {
     return GetDataSetLogicalTableMapDataTransformTagColumnOperation(
       columnName: pulumi.Input.fromValue(map['columnName'] as String),
-      tags: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GetDataSetLogicalTableMapDataTransformTagColumnOperationTag
-        >(
-          map['tags']!,
-          (value) =>
-              GetDataSetLogicalTableMapDataTransformTagColumnOperationTag.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
+      tags: pulumi.Input.fromValue(pulumi.Input.decodeList<GetDataSetLogicalTableMapDataTransformTagColumnOperationTag>(map['tags']!, (value) => GetDataSetLogicalTableMapDataTransformTagColumnOperationTag.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

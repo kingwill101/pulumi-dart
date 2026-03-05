@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataStoreInfoBaseResponse {
   /// type of datastore; Operational/Vault/Archive
   final pulumi.Input<String> dataStoreType;
-
   /// Type of Datasource object, used to initialize the right inherited type
   final pulumi.Input<String> objectType;
 
@@ -32,3 +31,4 @@ class DataStoreInfoBaseResponse {
     );
   }
 }
+

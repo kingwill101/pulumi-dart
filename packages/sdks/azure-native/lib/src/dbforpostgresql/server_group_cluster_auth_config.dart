@@ -10,7 +10,10 @@ class ServerGroupClusterAuthConfig {
   /// Creates a new [ServerGroupClusterAuthConfig].
   /// [activeDirectoryAuth] Optional.
   /// [passwordAuth] Optional.
-  ServerGroupClusterAuthConfig({this.activeDirectoryAuth, this.passwordAuth});
+  ServerGroupClusterAuthConfig({
+    this.activeDirectoryAuth,
+    this.passwordAuth,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,16 +24,9 @@ class ServerGroupClusterAuthConfig {
 
   factory ServerGroupClusterAuthConfig.fromMap(Map<String, dynamic> map) {
     return ServerGroupClusterAuthConfig(
-      activeDirectoryAuth: (() {
-        final guardedValue = map['activeDirectoryAuth'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      passwordAuth: (() {
-        final guardedValue = map['passwordAuth'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      activeDirectoryAuth: (() { final guardedValue = map['activeDirectoryAuth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      passwordAuth: (() { final guardedValue = map['passwordAuth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -33,11 +33,8 @@ class GetNfsShareArgs {
     return GetNfsShareArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
       nfsShareId: pulumi.Input.fromValue(map['nfsShareId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

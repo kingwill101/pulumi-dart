@@ -13,38 +13,20 @@ class JsonWebKeySet {
 
   /// Creates a new [JsonWebKeySet].
   /// [keys] The value of the "keys" parameter is an array of JWK values.  By
-  JsonWebKeySet({this.keys});
+  JsonWebKeySet({
+    this.keys,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'keys':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<JsonWebKey>,
-            List<Map<String, dynamic>>
-          >(
-            keys,
-            (value) =>
-                pulumi.Input.encodeList<JsonWebKey, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'keys': ?pulumi.Input.mapOptionalInputValue<List<JsonWebKey>, List<Map<String, dynamic>>>(keys, (value) => pulumi.Input.encodeList<JsonWebKey, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory JsonWebKeySet.fromMap(Map<String, dynamic> map) {
     return JsonWebKeySet(
-      keys: (() {
-        final guardedValue = map['keys'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<JsonWebKey>(
-            guardedValue,
-            (value) =>
-                JsonWebKey.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
+      keys: (() { final guardedValue = map['keys']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<JsonWebKey>(guardedValue, (value) => JsonWebKey.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

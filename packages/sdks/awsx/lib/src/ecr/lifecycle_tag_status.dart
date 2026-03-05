@@ -15,3 +15,4 @@ enum LifecycleTagStatus {
     throw ArgumentError('Unknown LifecycleTagStatus value: $value');
   }
 }
+

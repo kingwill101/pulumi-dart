@@ -10,39 +10,20 @@ class CorsRulesResponse {
 
   /// Creates a new [CorsRulesResponse].
   /// [corsRules] The List of CORS rules. You can include up to five CorsRule elements in the request.
-  CorsRulesResponse({this.corsRules});
+  CorsRulesResponse({
+    this.corsRules,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'corsRules':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<CorsRuleResponse>,
-            List<Map<String, dynamic>>
-          >(
-            corsRules,
-            (value) =>
-                pulumi.Input.encodeList<CorsRuleResponse, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'corsRules': ?pulumi.Input.mapOptionalInputValue<List<CorsRuleResponse>, List<Map<String, dynamic>>>(corsRules, (value) => pulumi.Input.encodeList<CorsRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory CorsRulesResponse.fromMap(Map<String, dynamic> map) {
     return CorsRulesResponse(
-      corsRules: (() {
-        final guardedValue = map['corsRules'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<CorsRuleResponse>(
-            guardedValue,
-            (value) => CorsRuleResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      corsRules: (() { final guardedValue = map['corsRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CorsRuleResponse>(guardedValue, (value) => CorsRuleResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

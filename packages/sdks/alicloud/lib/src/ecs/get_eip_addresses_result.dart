@@ -13,7 +13,6 @@ class GetEipAddressesResult {
   final bool? dryRun;
   final List<GetEipAddressesEip> eips;
   final bool? enableDetails;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -82,18 +81,11 @@ class GetEipAddressesResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'addressName': ?addressName,
-      'addresses':
-          pulumi.Input.encodeList<GetEipAddressesAddress, Map<String, dynamic>>(
-            addresses,
-            (value) => value.toMap(),
-          ),
+      'addresses': pulumi.Input.encodeList<GetEipAddressesAddress, Map<String, dynamic>>(addresses, (value) => value.toMap()),
       'associatedInstanceId': ?associatedInstanceId,
       'associatedInstanceType': ?associatedInstanceType,
       'dryRun': ?dryRun,
-      'eips': pulumi.Input.encodeList<GetEipAddressesEip, Map<String, dynamic>>(
-        eips,
-        (value) => value.toMap(),
-      ),
+      'eips': pulumi.Input.encodeList<GetEipAddressesEip, Map<String, dynamic>>(eips, (value) => value.toMap()),
       'enableDetails': ?enableDetails,
       'id': id,
       'ids': ids,
@@ -115,105 +107,29 @@ class GetEipAddressesResult {
 
   factory GetEipAddressesResult.fromMap(Map<String, dynamic> map) {
     return GetEipAddressesResult(
-      addressName: (() {
-        final guardedValue = map['addressName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      addresses: pulumi.Input.decodeList<GetEipAddressesAddress>(
-        map['addresses']!,
-        (value) => GetEipAddressesAddress.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      associatedInstanceId: (() {
-        final guardedValue = map['associatedInstanceId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      associatedInstanceType: (() {
-        final guardedValue = map['associatedInstanceType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      dryRun: (() {
-        final guardedValue = map['dryRun'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      eips: pulumi.Input.decodeList<GetEipAddressesEip>(
-        map['eips']!,
-        (value) =>
-            GetEipAddressesEip.fromMap((value as Map).cast<String, dynamic>()),
-      ),
-      enableDetails: (() {
-        final guardedValue = map['enableDetails'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      addressName: (() { final guardedValue = map['addressName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      addresses: pulumi.Input.decodeList<GetEipAddressesAddress>(map['addresses']!, (value) => GetEipAddressesAddress.fromMap((value as Map).cast<String, dynamic>())),
+      associatedInstanceId: (() { final guardedValue = map['associatedInstanceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      associatedInstanceType: (() { final guardedValue = map['associatedInstanceType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      dryRun: (() { final guardedValue = map['dryRun']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      eips: pulumi.Input.decodeList<GetEipAddressesEip>(map['eips']!, (value) => GetEipAddressesEip.fromMap((value as Map).cast<String, dynamic>())),
+      enableDetails: (() { final guardedValue = map['enableDetails']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      includeReservationData: (() {
-        final guardedValue = map['includeReservationData'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      ipAddress: (() {
-        final guardedValue = map['ipAddress'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      ipAddresses: (() {
-        final guardedValue = map['ipAddresses'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
-      isp: (() {
-        final guardedValue = map['isp'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      lockReason: (() {
-        final guardedValue = map['lockReason'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      includeReservationData: (() { final guardedValue = map['includeReservationData']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ipAddresses: (() { final guardedValue = map['ipAddresses']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      isp: (() { final guardedValue = map['isp']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      lockReason: (() { final guardedValue = map['lockReason']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      paymentType: (() {
-        final guardedValue = map['paymentType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      resourceGroupId: (() {
-        final guardedValue = map['resourceGroupId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      segmentInstanceId: (() {
-        final guardedValue = map['segmentInstanceId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      paymentType: (() { final guardedValue = map['paymentType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceGroupId: (() { final guardedValue = map['resourceGroupId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      segmentInstanceId: (() { final guardedValue = map['segmentInstanceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }
 }
+

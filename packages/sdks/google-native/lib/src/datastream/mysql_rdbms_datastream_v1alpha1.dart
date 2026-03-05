@@ -10,39 +10,20 @@ class MysqlRdbmsDatastreamV1alpha1 {
 
   /// Creates a new [MysqlRdbmsDatastreamV1alpha1].
   /// [mysqlDatabases] Mysql databases on the server
-  MysqlRdbmsDatastreamV1alpha1({this.mysqlDatabases});
+  MysqlRdbmsDatastreamV1alpha1({
+    this.mysqlDatabases,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'mysqlDatabases':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<MysqlDatabaseDatastreamV1alpha1>,
-            List<Map<String, dynamic>>
-          >(
-            mysqlDatabases,
-            (value) =>
-                pulumi.Input.encodeList<
-                  MysqlDatabaseDatastreamV1alpha1,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'mysqlDatabases': ?pulumi.Input.mapOptionalInputValue<List<MysqlDatabaseDatastreamV1alpha1>, List<Map<String, dynamic>>>(mysqlDatabases, (value) => pulumi.Input.encodeList<MysqlDatabaseDatastreamV1alpha1, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory MysqlRdbmsDatastreamV1alpha1.fromMap(Map<String, dynamic> map) {
     return MysqlRdbmsDatastreamV1alpha1(
-      mysqlDatabases: (() {
-        final guardedValue = map['mysqlDatabases'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<MysqlDatabaseDatastreamV1alpha1>(
-            guardedValue,
-            (value) => MysqlDatabaseDatastreamV1alpha1.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      mysqlDatabases: (() { final guardedValue = map['mysqlDatabases']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<MysqlDatabaseDatastreamV1alpha1>(guardedValue, (value) => MysqlDatabaseDatastreamV1alpha1.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

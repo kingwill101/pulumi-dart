@@ -7,42 +7,30 @@ import 'policy_binding_advanced_options.dart';
 class PolicyBindingState {
   /// Backup Advanced Options See `advanced_options` below.
   final pulumi.Input<PolicyBindingAdvancedOptions>? advancedOptions;
-
   /// The creation time of the resource
   final pulumi.Input<String>? createTime;
-
   /// Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the name of the cross-account authorization role of the data source, and the management account uses this role to access the data source.
   final pulumi.Input<String>? crossAccountRoleName;
-
   /// Cross-account type, supported
   final pulumi.Input<String>? crossAccountType;
-
   /// Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the ID of the actual account to which the data source belongs.
   final pulumi.Input<int>? crossAccountUserId;
-
   /// The data source ID.
   final pulumi.Input<String>? dataSourceId;
-
   /// Whether the policy is effective for the data source.
   /// - true: Pause
   /// - false: not paused
   final pulumi.Input<bool>? disabled;
-
   /// This parameter is required only when the value of SourceType is ECS_FILE or File. Indicates a file type that does not need to be backed up. All files of this type are not backed up. A maximum of 255 characters is supported.
   final pulumi.Input<String>? exclude;
-
   /// This parameter is required only when the value of SourceType is ECS_FILE or File. Indicates the file types to be backed up, and all files of these types are backed up. A maximum of 255 characters is supported.
   final pulumi.Input<String>? include;
-
   /// Resource Description
   final pulumi.Input<String>? policyBindingDescription;
-
   /// The policy ID.
   final pulumi.Input<String>? policyId;
-
   /// When SourceType is OSS, a prefix is specified to be backed up. If it is not specified, the entire root directory of the Bucket is backed up.
   final pulumi.Input<String>? source;
-
   /// Data source type, value range:
   /// - `UDM_ECS`: indicates the ECS instance backup.
   /// - `OSS`: indicates an OSS backup.
@@ -51,7 +39,6 @@ class PolicyBindingState {
   /// - `File`: indicates a local File backup.
   /// - `OTS`: indicates the Tablestore backup.
   final pulumi.Input<String>? sourceType;
-
   /// This parameter is required only when the value of SourceType is ECS_FILE or File. Indicates backup flow control. The format is {start}{end}{bandwidth}. Multiple flow control configurations use partitioning, and no overlap in configuration time is allowed. start: start hour. end: end of hour. bandwidth: limit rate, in KB/s.
   final pulumi.Input<String>? speedLimit;
 
@@ -89,11 +76,7 @@ class PolicyBindingState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'advancedOptions':
-          ?pulumi.Input.mapOptionalInputValue<
-            PolicyBindingAdvancedOptions,
-            Map<String, dynamic>
-          >(advancedOptions, (value) => value.toMap()),
+      'advancedOptions': ?pulumi.Input.mapOptionalInputValue<PolicyBindingAdvancedOptions, Map<String, dynamic>>(advancedOptions, (value) => value.toMap()),
       'createTime': ?createTime,
       'crossAccountRoleName': ?crossAccountRoleName,
       'crossAccountType': ?crossAccountType,
@@ -112,80 +95,21 @@ class PolicyBindingState {
 
   factory PolicyBindingState.fromMap(Map<String, dynamic> map) {
     return PolicyBindingState(
-      advancedOptions: (() {
-        final guardedValue = map['advancedOptions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PolicyBindingAdvancedOptions.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      crossAccountRoleName: (() {
-        final guardedValue = map['crossAccountRoleName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      crossAccountType: (() {
-        final guardedValue = map['crossAccountType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      crossAccountUserId: (() {
-        final guardedValue = map['crossAccountUserId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      dataSourceId: (() {
-        final guardedValue = map['dataSourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      disabled: (() {
-        final guardedValue = map['disabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      exclude: (() {
-        final guardedValue = map['exclude'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      include: (() {
-        final guardedValue = map['include'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      policyBindingDescription: (() {
-        final guardedValue = map['policyBindingDescription'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      policyId: (() {
-        final guardedValue = map['policyId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      source: (() {
-        final guardedValue = map['source'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sourceType: (() {
-        final guardedValue = map['sourceType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      speedLimit: (() {
-        final guardedValue = map['speedLimit'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      advancedOptions: (() { final guardedValue = map['advancedOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PolicyBindingAdvancedOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      crossAccountRoleName: (() { final guardedValue = map['crossAccountRoleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      crossAccountType: (() { final guardedValue = map['crossAccountType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      crossAccountUserId: (() { final guardedValue = map['crossAccountUserId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      dataSourceId: (() { final guardedValue = map['dataSourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      exclude: (() { final guardedValue = map['exclude']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      include: (() { final guardedValue = map['include']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      policyBindingDescription: (() { final guardedValue = map['policyBindingDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      policyId: (() { final guardedValue = map['policyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourceType: (() { final guardedValue = map['sourceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      speedLimit: (() { final guardedValue = map['speedLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

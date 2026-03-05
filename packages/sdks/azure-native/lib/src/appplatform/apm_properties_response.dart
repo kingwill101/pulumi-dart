@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApmPropertiesResponse {
   /// Non-sensitive properties for the APM
   final pulumi.Input<Map<String, String>>? properties;
-
   /// State of the APM.
   final pulumi.Input<String> provisioningState;
-
   /// APM Type
   final pulumi.Input<String> type;
 
@@ -33,17 +31,10 @@ class ApmPropertiesResponse {
 
   factory ApmPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ApmPropertiesResponse(
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

@@ -6,22 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationProperties {
   /// Description of the application.
   final pulumi.Input<String>? applicationDescription;
-
   /// The category that describes the application.
   final pulumi.Input<String>? applicationType;
-
   /// Legal name of the organization owning the application.
   final pulumi.Input<String>? legalName;
-
   /// Name of the application.
   final pulumi.Input<String>? name;
-
   /// A description of the organization owning the application.
   final pulumi.Input<String>? organizationDescription;
-
   /// Email address of the Privacy contact or Data Protection officer of the organization.
   final pulumi.Input<String>? privacyContactEmailAddress;
-
   /// Unique Tax Number for the user's organization in the country/region the APC Gateway is being purchased.
   final pulumi.Input<String>? taxNumber;
 
@@ -57,41 +51,14 @@ class ApplicationProperties {
 
   factory ApplicationProperties.fromMap(Map<String, dynamic> map) {
     return ApplicationProperties(
-      applicationDescription: (() {
-        final guardedValue = map['applicationDescription'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      applicationType: (() {
-        final guardedValue = map['applicationType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      legalName: (() {
-        final guardedValue = map['legalName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      organizationDescription: (() {
-        final guardedValue = map['organizationDescription'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      privacyContactEmailAddress: (() {
-        final guardedValue = map['privacyContactEmailAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      taxNumber: (() {
-        final guardedValue = map['taxNumber'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      applicationDescription: (() { final guardedValue = map['applicationDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      applicationType: (() { final guardedValue = map['applicationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      legalName: (() { final guardedValue = map['legalName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      organizationDescription: (() { final guardedValue = map['organizationDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privacyContactEmailAddress: (() { final guardedValue = map['privacyContactEmailAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      taxNumber: (() { final guardedValue = map['taxNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

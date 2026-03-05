@@ -398,30 +398,22 @@ import 'endpoint_eventhub_state.dart';
 class EndpointEventhub extends pulumi.CustomResource {
   /// Type used to authenticate against the Event Hub endpoint. Possible values are `keyBased` and `identityBased`. Defaults to `keyBased`.
   late final pulumi.Output<String?> authenticationType;
-
   /// The connection string for the endpoint. This attribute can only be specified and is mandatory when `authentication_type` is `keyBased`.
   late final pulumi.Output<String?> connectionString;
-
   /// URI of the Event Hubs Namespace endpoint. This attribute can only be specified and is mandatory when `authentication_type` is `identityBased`.
   late final pulumi.Output<String?> endpointUri;
-
   /// Name of the Event Hub. This attribute can only be specified and is mandatory when `authentication_type` is `identityBased`.
   late final pulumi.Output<String?> entityPath;
-
   /// ID of the User Managed Identity used to authenticate against the Event Hub endpoint.
   ///
   /// &gt; **Note:** `identity_id` can only be specified when `authentication_type` is `identityBased`. It must be one of the `identity_ids` of the Iot Hub. If not specified when `authentication_type` is `identityBased`, System Assigned Managed Identity of the Iot Hub will be used.
   late final pulumi.Output<String?> identityId;
-
   /// The IoTHub ID for the endpoint. Changing this forces a new resource to be created.
   late final pulumi.Output<String> iothubId;
-
   /// The name of the endpoint. The name must be unique across endpoint types. The following names are reserved: `events`, `operationsMonitoringEvents`, `fileNotifications` and `$default`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the resource group under which the Event Hub has been created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The subscription ID for the endpoint.
   ///
   /// &gt; **Note:** When `subscription_id` isn't specified it will be set to the subscription ID of the IoT Hub resource.
@@ -436,11 +428,11 @@ class EndpointEventhub extends pulumi.CustomResource {
     EndpointEventhubArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:iot/endpointEventhub:EndpointEventhub',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:iot/endpointEventhub:EndpointEventhub',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     authenticationType = registerOutput<String?>('authenticationType');
     connectionString = registerOutput<String?>('connectionString');
     endpointUri = registerOutput<String?>('endpointUri');
@@ -470,11 +462,11 @@ class EndpointEventhub extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:iot/endpointEventhub:EndpointEventhub',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:iot/endpointEventhub:EndpointEventhub',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     authenticationType = registerOutput<String?>('authenticationType');
     connectionString = registerOutput<String?>('connectionString');
     endpointUri = registerOutput<String?>('endpointUri');

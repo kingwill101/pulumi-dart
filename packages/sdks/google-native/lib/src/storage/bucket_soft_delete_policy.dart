@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketSoftDeletePolicy {
   /// Server-determined value that indicates the time from which the policy, or one with a greater retention, was effective. This value is in RFC 3339 format.
   final pulumi.Input<String>? effectiveTime;
-
   /// The duration in seconds that soft-deleted objects in the bucket will be retained and cannot be permanently deleted.
   final pulumi.Input<String>? retentionDurationSeconds;
 
   /// Creates a new [BucketSoftDeletePolicy].
   /// [effectiveTime] Server-determined value that indicates the time from which the policy, or one with a greater retention, was effective. This value is in RFC 3339 format.
   /// [retentionDurationSeconds] The duration in seconds that soft-deleted objects in the bucket will be retained and cannot be permanently deleted.
-  BucketSoftDeletePolicy({this.effectiveTime, this.retentionDurationSeconds});
+  BucketSoftDeletePolicy({
+    this.effectiveTime,
+    this.retentionDurationSeconds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class BucketSoftDeletePolicy {
 
   factory BucketSoftDeletePolicy.fromMap(Map<String, dynamic> map) {
     return BucketSoftDeletePolicy(
-      effectiveTime: (() {
-        final guardedValue = map['effectiveTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      retentionDurationSeconds: (() {
-        final guardedValue = map['retentionDurationSeconds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      effectiveTime: (() { final guardedValue = map['effectiveTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      retentionDurationSeconds: (() { final guardedValue = map['retentionDurationSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

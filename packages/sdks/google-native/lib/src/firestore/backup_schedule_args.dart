@@ -12,10 +12,8 @@ class BackupScheduleArgs {
   final pulumi.Input<Map<String, dynamic>>? dailyRecurrence;
   final pulumi.Input<String> databaseId;
   final pulumi.Input<String>? project;
-
   /// At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
   final pulumi.Input<String>? retention;
-
   /// For a schedule that runs weekly on a specific day and time.
   final pulumi.Input<GoogleFirestoreAdminV1WeeklyRecurrence>? weeklyRecurrence;
 
@@ -39,43 +37,18 @@ class BackupScheduleArgs {
       'databaseId': databaseId,
       'project': ?project,
       'retention': ?retention,
-      'weeklyRecurrence':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleFirestoreAdminV1WeeklyRecurrence,
-            Map<String, dynamic>
-          >(weeklyRecurrence, (value) => value.toMap()),
+      'weeklyRecurrence': ?pulumi.Input.mapOptionalInputValue<GoogleFirestoreAdminV1WeeklyRecurrence, Map<String, dynamic>>(weeklyRecurrence, (value) => value.toMap()),
     };
   }
 
   factory BackupScheduleArgs.fromMap(Map<String, dynamic> map) {
     return BackupScheduleArgs(
-      dailyRecurrence: (() {
-        final guardedValue = map['dailyRecurrence'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      dailyRecurrence: (() { final guardedValue = map['dailyRecurrence']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
       databaseId: pulumi.Input.fromValue(map['databaseId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      retention: (() {
-        final guardedValue = map['retention'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      weeklyRecurrence: (() {
-        final guardedValue = map['weeklyRecurrence'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleFirestoreAdminV1WeeklyRecurrence.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      retention: (() { final guardedValue = map['retention']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      weeklyRecurrence: (() { final guardedValue = map['weeklyRecurrence']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleFirestoreAdminV1WeeklyRecurrence.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

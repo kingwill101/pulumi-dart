@@ -7,7 +7,9 @@ class FeaturesTemplateDeployment {
 
   /// Creates a new [FeaturesTemplateDeployment].
   /// [deleteNestedItemsDuringDeletion] Required.
-  FeaturesTemplateDeployment({required this.deleteNestedItemsDuringDeletion});
+  FeaturesTemplateDeployment({
+    required this.deleteNestedItemsDuringDeletion,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -17,9 +19,8 @@ class FeaturesTemplateDeployment {
 
   factory FeaturesTemplateDeployment.fromMap(Map<String, dynamic> map) {
     return FeaturesTemplateDeployment(
-      deleteNestedItemsDuringDeletion: pulumi.Input.fromValue(
-        map['deleteNestedItemsDuringDeletion'] as bool,
-      ),
+      deleteNestedItemsDuringDeletion: pulumi.Input.fromValue(map['deleteNestedItemsDuringDeletion'] as bool),
     );
   }
 }
+

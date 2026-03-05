@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceAttachmentConsumerProjectLimitResponseComputeV1 {
   /// The value of the limit to set.
   final pulumi.Input<int> connectionLimit;
-
   /// The network URL for the network to set the limit for.
   final pulumi.Input<String> networkUrl;
-
   /// The project id or number for the project to set the limit for.
   final pulumi.Input<String> projectIdOrNum;
 
@@ -30,9 +28,7 @@ class ServiceAttachmentConsumerProjectLimitResponseComputeV1 {
     };
   }
 
-  factory ServiceAttachmentConsumerProjectLimitResponseComputeV1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ServiceAttachmentConsumerProjectLimitResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return ServiceAttachmentConsumerProjectLimitResponseComputeV1(
       connectionLimit: pulumi.Input.fromValue(map['connectionLimit'] as int),
       networkUrl: pulumi.Input.fromValue(map['networkUrl'] as String),
@@ -40,3 +36,4 @@ class ServiceAttachmentConsumerProjectLimitResponseComputeV1 {
     );
   }
 }
+

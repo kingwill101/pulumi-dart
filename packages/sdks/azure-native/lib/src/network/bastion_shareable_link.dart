@@ -10,22 +10,20 @@ class BastionShareableLink {
 
   /// Creates a new [BastionShareableLink].
   /// [vm] Reference of the virtual machine resource.
-  BastionShareableLink({required this.vm});
+  BastionShareableLink({
+    required this.vm,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'vm': pulumi.Input.mapInputValue<VM, Map<String, dynamic>>(
-        vm,
-        (value) => value.toMap(),
-      ),
+      'vm': pulumi.Input.mapInputValue<VM, Map<String, dynamic>>(vm, (value) => value.toMap()),
     };
   }
 
   factory BastionShareableLink.fromMap(Map<String, dynamic> map) {
     return BastionShareableLink(
-      vm: pulumi.Input.fromValue(
-        VM.fromMap((map['vm']! as Map).cast<String, dynamic>()),
-      ),
+      vm: pulumi.Input.fromValue(VM.fromMap((map['vm']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -8,19 +8,20 @@ class DomainFeaturesHyperVFrequencies {
 
   /// Creates a new [DomainFeaturesHyperVFrequencies].
   /// [state] Configures the state of the PS/2 feature, indicating if it is enabled or not.
-  DomainFeaturesHyperVFrequencies({this.state});
+  DomainFeaturesHyperVFrequencies({
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'state': ?state};
+    return <String, dynamic>{
+      'state': ?state,
+    };
   }
 
   factory DomainFeaturesHyperVFrequencies.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesHyperVFrequencies(
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

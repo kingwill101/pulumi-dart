@@ -2101,17 +2101,13 @@ import 'bucket_lifecycle_configuration_v2_timeouts.dart';
 class BucketLifecycleConfigurationV2 extends pulumi.CustomResource {
   /// Name of the source S3 bucket you want Amazon S3 to monitor.
   late final pulumi.Output<String> bucket;
-
   /// Account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP 403 (Access Denied) error.
   late final pulumi.Output<String> expectedBucketOwner;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// List of configuration blocks describing the rules managing the replication. See below.
   late final pulumi.Output<List<Map<String, dynamic>>?> rules;
   late final pulumi.Output<BucketLifecycleConfigurationV2Timeouts?> timeouts;
-
   /// The default minimum object size behavior applied to the lifecycle configuration. Valid values: `all_storage_classes_128K` (default), `varies_by_storage_class`. To customize the minimum object size for any transition you can add a `filter` that specifies a custom `object_size_greater_than` or `object_size_less_than` value. Custom filters always take precedence over the default transition behavior.
   late final pulumi.Output<String> transitionDefaultMinimumObjectSize;
 
@@ -2124,28 +2120,17 @@ class BucketLifecycleConfigurationV2 extends pulumi.CustomResource {
     BucketLifecycleConfigurationV2Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:s3/bucketLifecycleConfigurationV2:BucketLifecycleConfigurationV2',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:s3/bucketLifecycleConfigurationV2:BucketLifecycleConfigurationV2',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
     expectedBucketOwner = registerOutput<String>('expectedBucketOwner');
     region = registerOutput<String>('region');
     rules = registerOutput<List<Map<String, dynamic>>?>('rules');
-    timeouts = registerOutput<BucketLifecycleConfigurationV2Timeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketLifecycleConfigurationV2Timeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    transitionDefaultMinimumObjectSize = registerOutput<String>(
-      'transitionDefaultMinimumObjectSize',
-    );
+    timeouts = registerOutput<BucketLifecycleConfigurationV2Timeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketLifecycleConfigurationV2Timeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    transitionDefaultMinimumObjectSize = registerOutput<String>('transitionDefaultMinimumObjectSize');
   }
 
   /// Gets an existing [BucketLifecycleConfigurationV2] resource's state with the given [name] and [id].
@@ -2166,27 +2151,16 @@ class BucketLifecycleConfigurationV2 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:s3/bucketLifecycleConfigurationV2:BucketLifecycleConfigurationV2',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:s3/bucketLifecycleConfigurationV2:BucketLifecycleConfigurationV2',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
     expectedBucketOwner = registerOutput<String>('expectedBucketOwner');
     region = registerOutput<String>('region');
     rules = registerOutput<List<Map<String, dynamic>>?>('rules');
-    timeouts = registerOutput<BucketLifecycleConfigurationV2Timeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketLifecycleConfigurationV2Timeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    transitionDefaultMinimumObjectSize = registerOutput<String>(
-      'transitionDefaultMinimumObjectSize',
-    );
+    timeouts = registerOutput<BucketLifecycleConfigurationV2Timeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketLifecycleConfigurationV2Timeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    transitionDefaultMinimumObjectSize = registerOutput<String>('transitionDefaultMinimumObjectSize');
   }
 }

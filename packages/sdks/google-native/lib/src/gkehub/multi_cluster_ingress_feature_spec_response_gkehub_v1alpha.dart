@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MultiClusterIngressFeatureSpecResponseGkehubV1alpha {
   /// Deprecated: This field will be ignored and should not be set. Customer's billing structure.
   final pulumi.Input<String> billing;
-
   /// Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
   final pulumi.Input<String> configMembership;
 
@@ -25,14 +24,11 @@ class MultiClusterIngressFeatureSpecResponseGkehubV1alpha {
     };
   }
 
-  factory MultiClusterIngressFeatureSpecResponseGkehubV1alpha.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MultiClusterIngressFeatureSpecResponseGkehubV1alpha.fromMap(Map<String, dynamic> map) {
     return MultiClusterIngressFeatureSpecResponseGkehubV1alpha(
       billing: pulumi.Input.fromValue(map['billing'] as String),
-      configMembership: pulumi.Input.fromValue(
-        map['configMembership'] as String,
-      ),
+      configMembership: pulumi.Input.fromValue(map['configMembership'] as String),
     );
   }
 }
+

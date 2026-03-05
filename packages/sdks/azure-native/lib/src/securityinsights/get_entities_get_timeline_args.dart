@@ -9,22 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEntitiesGetTimelineArgs {
   /// The end timeline date, so the results returned are before this date.
   final pulumi.Input<String> endTime;
-
   /// entity ID
   final pulumi.Input<String> entityId;
-
   /// Array of timeline Item kinds.
   final pulumi.Input<List<String>>? kinds;
-
   /// The number of bucket for timeline queries aggregation.
   final pulumi.Input<int>? numberOfBucket;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The start timeline date, so the results returned are after this date.
   final pulumi.Input<String> startTime;
-
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -62,21 +56,12 @@ class GetEntitiesGetTimelineArgs {
     return GetEntitiesGetTimelineArgs(
       endTime: pulumi.Input.fromValue(map['endTime'] as String),
       entityId: pulumi.Input.fromValue(map['entityId'] as String),
-      kinds: (() {
-        final guardedValue = map['kinds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      numberOfBucket: (() {
-        final guardedValue = map['numberOfBucket'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      kinds: (() { final guardedValue = map['kinds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      numberOfBucket: (() { final guardedValue = map['numberOfBucket']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       startTime: pulumi.Input.fromValue(map['startTime'] as String),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
+

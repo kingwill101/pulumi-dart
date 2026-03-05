@@ -699,48 +699,32 @@ import 'system_data_response.dart';
 class KafkaConnector extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The client id prefix of the dynamically generated client ids.
   late final pulumi.Output<String?> clientIdPrefix;
-
   /// Extended Location
   late final pulumi.Output<ExtendedLocationPropertyResponse> extendedLocation;
-
   /// The details of KafkaConnector Docker Image.
   late final pulumi.Output<ContainerImageResponse?> image;
-
   /// The number of KafkaConnector pods to spin up.
   late final pulumi.Output<int?> instances;
-
   /// The details for connecting with Remote Kafka Broker.
-  late final pulumi.Output<KafkaRemoteBrokerConnectionSpecResponse>
-  kafkaConnection;
-
+  late final pulumi.Output<KafkaRemoteBrokerConnectionSpecResponse> kafkaConnection;
   /// The details for connecting with Local Broker.
-  late final pulumi.Output<LocalBrokerConnectionSpecResponse?>
-  localBrokerConnection;
-
+  late final pulumi.Output<LocalBrokerConnectionSpecResponse?> localBrokerConnection;
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The log level of the Bridge Connector instances.
   late final pulumi.Output<String?> logLevel;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The Node Tolerations for the Bridge Connector pods.
   late final pulumi.Output<NodeTolerationsResponse?> nodeTolerations;
-
   /// The status of the last operation.
   late final pulumi.Output<String> provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -753,78 +737,24 @@ class KafkaConnector extends pulumi.CustomResource {
     KafkaConnectorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:iotoperationsmq:KafkaConnector',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:iotoperationsmq:KafkaConnector',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     clientIdPrefix = registerOutput<String?>('clientIdPrefix');
-    extendedLocation = registerOutput<ExtendedLocationPropertyResponse>(
-      'extendedLocation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExtendedLocationPropertyResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    image = registerOutput<ContainerImageResponse?>(
-      'image',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ContainerImageResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    extendedLocation = registerOutput<ExtendedLocationPropertyResponse>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationPropertyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    image = registerOutput<ContainerImageResponse?>('image', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerImageResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     instances = registerOutput<int?>('instances');
-    kafkaConnection = registerOutput<KafkaRemoteBrokerConnectionSpecResponse>(
-      'kafkaConnection',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return KafkaRemoteBrokerConnectionSpecResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    localBrokerConnection = registerOutput<LocalBrokerConnectionSpecResponse?>(
-      'localBrokerConnection',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LocalBrokerConnectionSpecResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    kafkaConnection = registerOutput<KafkaRemoteBrokerConnectionSpecResponse>('kafkaConnection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KafkaRemoteBrokerConnectionSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    localBrokerConnection = registerOutput<LocalBrokerConnectionSpecResponse?>('localBrokerConnection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LocalBrokerConnectionSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     logLevel = registerOutput<String?>('logLevel');
     this.name = registerOutput<String>('name');
-    nodeTolerations = registerOutput<NodeTolerationsResponse?>(
-      'nodeTolerations',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NodeTolerationsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    nodeTolerations = registerOutput<NodeTolerationsResponse?>('nodeTolerations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeTolerationsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

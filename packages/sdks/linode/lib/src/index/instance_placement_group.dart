@@ -4,16 +4,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstancePlacementGroup {
   final pulumi.Input<bool>? compliantOnly;
-
   /// The ID of the Placement Group.
   final pulumi.Input<int> id;
-
   /// The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
   final pulumi.Input<String>? label;
-
   /// Whether the Placement Group enforces strict compliance.
   final pulumi.Input<String>? placementGroupPolicy;
-
   /// The placement group type enforced by the Placement Group.
   final pulumi.Input<String>? placementGroupType;
 
@@ -43,27 +39,12 @@ class InstancePlacementGroup {
 
   factory InstancePlacementGroup.fromMap(Map<String, dynamic> map) {
     return InstancePlacementGroup(
-      compliantOnly: (() {
-        final guardedValue = map['compliantOnly'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      compliantOnly: (() { final guardedValue = map['compliantOnly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       id: pulumi.Input.fromValue(map['id'] as int),
-      label: (() {
-        final guardedValue = map['label'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      placementGroupPolicy: (() {
-        final guardedValue = map['placementGroupPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      placementGroupType: (() {
-        final guardedValue = map['placementGroupType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      label: (() { final guardedValue = map['label']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      placementGroupPolicy: (() { final guardedValue = map['placementGroupPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      placementGroupType: (() { final guardedValue = map['placementGroupType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

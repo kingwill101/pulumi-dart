@@ -674,115 +674,78 @@ import 'backup_plan_state.dart';
 class BackupPlan extends pulumi.CustomResource {
   /// The ID of the backup gateway. This parameter is required when the `source_endpoint_instance_type` is `Agent`.
   late final pulumi.Output<String> backupGatewayId;
-
   /// The backup log interval seconds.
   late final pulumi.Output<int?> backupLogIntervalSeconds;
-
   /// Backup method. Valid values: `duplication`, `logical`, `physical`.
   late final pulumi.Output<String> backupMethod;
-
   /// The backup object.
   late final pulumi.Output<String> backupObjects;
-
   /// Full backup cycle, Valid values: `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday`. supports the selection of multiple fetch values, separated by English commas (,).
   late final pulumi.Output<String> backupPeriod;
-
   /// The name of the resource.
   late final pulumi.Output<String> backupPlanName;
-
   /// The backup rate limit.
   late final pulumi.Output<String?> backupRateLimit;
-
   /// The retention time of backup data. Valid values: 0 to 1825. Default value: 730 days.
   late final pulumi.Output<int> backupRetentionPeriod;
-
   /// The backup speed limit.
   late final pulumi.Output<String?> backupSpeedLimit;
-
   /// The start time of full Backup. The format is `&lt;I&gt; HH:mm&lt;/I&gt;` Z(UTC time).
   late final pulumi.Output<String> backupStartTime;
-
   /// Built-in storage type, Valid values: `system`.
   late final pulumi.Output<String> backupStorageType;
-
   /// The backup strategy type. Valid values: `simple`, `manual`.
   late final pulumi.Output<String?> backupStrategyType;
-
   /// The UID that is backed up across Alibaba cloud accounts.
   late final pulumi.Output<String> crossAliyunId;
-
   /// The name of the RAM role that is backed up across Alibaba cloud accounts.
   late final pulumi.Output<String> crossRoleName;
-
   /// The database region.
   late final pulumi.Output<String?> databaseRegion;
-
   /// Database type. Valid values: `DRDS`, `FIle`, `MSSQL`, `MariaDB`, `MongoDB`, `MySQL`, `Oracle`, `PPAS`, `PostgreSQL`, `Redis`.
   late final pulumi.Output<String> databaseType;
-
   /// The storage time for conversion to archive cold standby is 365 days by default.
   late final pulumi.Output<int> duplicationArchivePeriod;
-
   /// The storage time is converted to low-frequency access. The default time is 180 days.
   late final pulumi.Output<int> duplicationInfrequentAccessPeriod;
-
   /// Whether to enable incremental log Backup.
   late final pulumi.Output<bool> enableBackupLog;
-
   /// The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`.
   late final pulumi.Output<String> instanceClass;
-
   /// The instance type. Valid values: `RDS`, `PolarDB`, `DDS`, `Kvstore`, `Other`.
   late final pulumi.Output<String?> instanceType;
-
   /// The OSS Bucket name. The system automatically generates a new name by default.
   late final pulumi.Output<String> ossBucketName;
-
   /// The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`.
   late final pulumi.Output<String> paymentType;
-
   /// Specify that the prepaid instance is of the package year or monthly type. Valid values: `Month`, `Year`.
   late final pulumi.Output<String?> period;
-
   /// The ID of the resource group.
   late final pulumi.Output<String> resourceGroupId;
-
   /// The name of the database. This parameter is required when the `database_type` is `PostgreSQL` or `MongoDB`.
   late final pulumi.Output<String> sourceEndpointDatabaseName;
-
   /// The ID of the database instance. This parameter is required when the `source_endpoint_instance_type` is `RDS`, `ECS`, `DDS`, or `Express`.
   late final pulumi.Output<String> sourceEndpointInstanceId;
-
   /// The location of the database. Valid values: `RDS`, `ECS`, `Express`, `Agent`, `DDS`, `Other`.
   late final pulumi.Output<String> sourceEndpointInstanceType;
-
   /// The source endpoint ip.
   late final pulumi.Output<String?> sourceEndpointIp;
-
   /// Oracle SID name. This parameter is required when the `database_type` is `Oracle`.
   late final pulumi.Output<String?> sourceEndpointOracleSid;
-
   /// The source endpoint password.  This parameter is not required when the `database_type` is `Redis`, or when the `source_endpoint_instance_type` is `Agent` and the `database_type` is `MSSQL`. This parameter is required in other scenarios.
   late final pulumi.Output<String?> sourceEndpointPassword;
-
   /// The source endpoint port.
   late final pulumi.Output<int?> sourceEndpointPort;
-
   /// The region of the database. This parameter is required when the `source_endpoint_instance_type` is `RDS`, `ECS`, `DDS`, `Express`, or `Agent`.
   late final pulumi.Output<String> sourceEndpointRegion;
-
   /// Oracle SID name. This parameter is required when the `database_type` is `Oracle`.
   late final pulumi.Output<String> sourceEndpointSid;
-
   /// The source endpoint username. This parameter is not required when the `database_type` is `Redis`, or when the `source_endpoint_instance_type` is `Agent` and the `database_type` is `MSSQL`. This parameter is required in other scenarios.
   late final pulumi.Output<String> sourceEndpointUserName;
-
   /// The status of the resource. Valid values: `pause`, `running`.
   late final pulumi.Output<String> status;
-
   /// The storage region.
   late final pulumi.Output<String?> storageRegion;
-
   /// Specify purchase duration. When the parameter `period` is `Year`, the `used_time` value is 1 to 9. When the parameter `period` is `Month`, the `used_time` value is 1 to 11.
   late final pulumi.Output<int?> usedTime;
 
@@ -795,11 +758,11 @@ class BackupPlan extends pulumi.CustomResource {
     BackupPlanArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dbs/backupPlan:BackupPlan',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dbs/backupPlan:BackupPlan',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     backupGatewayId = registerOutput<String>('backupGatewayId');
     backupLogIntervalSeconds = registerOutput<int?>('backupLogIntervalSeconds');
     backupMethod = registerOutput<String>('backupMethod');
@@ -817,9 +780,7 @@ class BackupPlan extends pulumi.CustomResource {
     databaseRegion = registerOutput<String?>('databaseRegion');
     databaseType = registerOutput<String>('databaseType');
     duplicationArchivePeriod = registerOutput<int>('duplicationArchivePeriod');
-    duplicationInfrequentAccessPeriod = registerOutput<int>(
-      'duplicationInfrequentAccessPeriod',
-    );
+    duplicationInfrequentAccessPeriod = registerOutput<int>('duplicationInfrequentAccessPeriod');
     enableBackupLog = registerOutput<bool>('enableBackupLog');
     instanceClass = registerOutput<String>('instanceClass');
     instanceType = registerOutput<String?>('instanceType');
@@ -827,19 +788,11 @@ class BackupPlan extends pulumi.CustomResource {
     paymentType = registerOutput<String>('paymentType');
     period = registerOutput<String?>('period');
     resourceGroupId = registerOutput<String>('resourceGroupId');
-    sourceEndpointDatabaseName = registerOutput<String>(
-      'sourceEndpointDatabaseName',
-    );
-    sourceEndpointInstanceId = registerOutput<String>(
-      'sourceEndpointInstanceId',
-    );
-    sourceEndpointInstanceType = registerOutput<String>(
-      'sourceEndpointInstanceType',
-    );
+    sourceEndpointDatabaseName = registerOutput<String>('sourceEndpointDatabaseName');
+    sourceEndpointInstanceId = registerOutput<String>('sourceEndpointInstanceId');
+    sourceEndpointInstanceType = registerOutput<String>('sourceEndpointInstanceType');
     sourceEndpointIp = registerOutput<String?>('sourceEndpointIp');
-    sourceEndpointOracleSid = registerOutput<String?>(
-      'sourceEndpointOracleSid',
-    );
+    sourceEndpointOracleSid = registerOutput<String?>('sourceEndpointOracleSid');
     sourceEndpointPassword = registerOutput<String?>('sourceEndpointPassword');
     sourceEndpointPort = registerOutput<int?>('sourceEndpointPort');
     sourceEndpointRegion = registerOutput<String>('sourceEndpointRegion');
@@ -868,11 +821,11 @@ class BackupPlan extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dbs/backupPlan:BackupPlan',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dbs/backupPlan:BackupPlan',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     backupGatewayId = registerOutput<String>('backupGatewayId');
     backupLogIntervalSeconds = registerOutput<int?>('backupLogIntervalSeconds');
     backupMethod = registerOutput<String>('backupMethod');
@@ -890,9 +843,7 @@ class BackupPlan extends pulumi.CustomResource {
     databaseRegion = registerOutput<String?>('databaseRegion');
     databaseType = registerOutput<String>('databaseType');
     duplicationArchivePeriod = registerOutput<int>('duplicationArchivePeriod');
-    duplicationInfrequentAccessPeriod = registerOutput<int>(
-      'duplicationInfrequentAccessPeriod',
-    );
+    duplicationInfrequentAccessPeriod = registerOutput<int>('duplicationInfrequentAccessPeriod');
     enableBackupLog = registerOutput<bool>('enableBackupLog');
     instanceClass = registerOutput<String>('instanceClass');
     instanceType = registerOutput<String?>('instanceType');
@@ -900,19 +851,11 @@ class BackupPlan extends pulumi.CustomResource {
     paymentType = registerOutput<String>('paymentType');
     period = registerOutput<String?>('period');
     resourceGroupId = registerOutput<String>('resourceGroupId');
-    sourceEndpointDatabaseName = registerOutput<String>(
-      'sourceEndpointDatabaseName',
-    );
-    sourceEndpointInstanceId = registerOutput<String>(
-      'sourceEndpointInstanceId',
-    );
-    sourceEndpointInstanceType = registerOutput<String>(
-      'sourceEndpointInstanceType',
-    );
+    sourceEndpointDatabaseName = registerOutput<String>('sourceEndpointDatabaseName');
+    sourceEndpointInstanceId = registerOutput<String>('sourceEndpointInstanceId');
+    sourceEndpointInstanceType = registerOutput<String>('sourceEndpointInstanceType');
     sourceEndpointIp = registerOutput<String?>('sourceEndpointIp');
-    sourceEndpointOracleSid = registerOutput<String?>(
-      'sourceEndpointOracleSid',
-    );
+    sourceEndpointOracleSid = registerOutput<String?>('sourceEndpointOracleSid');
     sourceEndpointPassword = registerOutput<String?>('sourceEndpointPassword');
     sourceEndpointPort = registerOutput<int?>('sourceEndpointPort');
     sourceEndpointRegion = registerOutput<String>('sourceEndpointRegion');

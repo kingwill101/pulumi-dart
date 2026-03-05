@@ -11,49 +11,34 @@ import 'purview_configuration_response.dart';
 class GetFactoryResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Time the factory was created in ISO8601 format.
   final String createTime;
-
   /// Etag identifies change in the resource.
   final String eTag;
-
   /// Properties to enable Customer Managed Key for the factory.
   final EncryptionConfigurationResponse? encryption;
-
   /// List of parameters for factory.
   final Map<String, GlobalParameterSpecificationResponse>? globalParameters;
-
   /// The resource identifier.
   final String id;
-
   /// Managed service identity of the factory.
   final FactoryIdentityResponse? identity;
-
   /// The resource location.
   final String? location;
-
   /// The resource name.
   final String name;
-
   /// Factory provisioning state, example Succeeded.
   final String provisioningState;
-
   /// Whether or not public network access is allowed for the data factory.
   final String? publicNetworkAccess;
-
   /// Purview information of the factory.
   final PurviewConfigurationResponse? purviewConfiguration;
-
   /// Git repo information of the factory.
   final FactoryGitHubConfigurationResponse? repoConfiguration;
-
   /// The resource tags.
   final Map<String, String>? tags;
-
   /// The resource type.
   final String type;
-
   /// Version of the factory.
   final String version;
 
@@ -99,14 +84,7 @@ class GetFactoryResult {
       'createTime': createTime,
       'eTag': eTag,
       'encryption': ?encryption?.toMap(),
-      'globalParameters': ?(() {
-        final guardedValue = globalParameters;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeMapValues<
-          GlobalParameterSpecificationResponse,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'globalParameters': ?(() { final guardedValue = globalParameters; if (guardedValue == null) return null; return pulumi.Input.encodeMapValues<GlobalParameterSpecificationResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'id': id,
       'identity': ?identity?.toMap(),
       'location': ?location,
@@ -126,65 +104,20 @@ class GetFactoryResult {
       azureApiVersion: map['azureApiVersion'] as String,
       createTime: map['createTime'] as String,
       eTag: map['eTag'] as String,
-      encryption: (() {
-        final guardedValue = map['encryption'];
-        if (guardedValue == null) return null;
-        return EncryptionConfigurationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      globalParameters: (() {
-        final guardedValue = map['globalParameters'];
-        if (guardedValue == null) return null;
-        return pulumi
-            .Input.decodeMapValues<GlobalParameterSpecificationResponse>(
-          guardedValue,
-          (value) => GlobalParameterSpecificationResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      encryption: (() { final guardedValue = map['encryption']; if (guardedValue == null) return null; return EncryptionConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      globalParameters: (() { final guardedValue = map['globalParameters']; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<GlobalParameterSpecificationResponse>(guardedValue, (value) => GlobalParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       id: map['id'] as String,
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return FactoryIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return FactoryIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      publicNetworkAccess: (() {
-        final guardedValue = map['publicNetworkAccess'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      purviewConfiguration: (() {
-        final guardedValue = map['purviewConfiguration'];
-        if (guardedValue == null) return null;
-        return PurviewConfigurationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      repoConfiguration: (() {
-        final guardedValue = map['repoConfiguration'];
-        if (guardedValue == null) return null;
-        return FactoryGitHubConfigurationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      purviewConfiguration: (() { final guardedValue = map['purviewConfiguration']; if (guardedValue == null) return null; return PurviewConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      repoConfiguration: (() { final guardedValue = map['repoConfiguration']; if (guardedValue == null) return null; return FactoryGitHubConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
       version: map['version'] as String,
     );
   }
 }
+

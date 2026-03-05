@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ImageRegistryCredentialResponse {
   /// The identity for the private registry.
   final pulumi.Input<String>? identity;
-
   /// The identity URL for the private registry.
   final pulumi.Input<String>? identityUrl;
-
   /// The password for the private registry.
   final pulumi.Input<String>? password;
-
   /// The reference for the private registry password.
   final pulumi.Input<String>? passwordReference;
-
   /// The Docker image registry server without a protocol such as "http" and "https".
   final pulumi.Input<String> server;
-
   /// The username for the private registry.
   final pulumi.Input<String>? username;
 
@@ -51,32 +46,13 @@ class ImageRegistryCredentialResponse {
 
   factory ImageRegistryCredentialResponse.fromMap(Map<String, dynamic> map) {
     return ImageRegistryCredentialResponse(
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      identityUrl: (() {
-        final guardedValue = map['identityUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      password: (() {
-        final guardedValue = map['password'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      passwordReference: (() {
-        final guardedValue = map['passwordReference'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      identityUrl: (() { final guardedValue = map['identityUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      passwordReference: (() { final guardedValue = map['passwordReference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       server: pulumi.Input.fromValue(map['server'] as String),
-      username: (() {
-        final guardedValue = map['username'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      username: (() { final guardedValue = map['username']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -10,13 +10,10 @@ import 'ospolicy_resource_repository_resource_response.dart';
 class OSPolicyResourceResponse {
   /// Exec resource
   final pulumi.Input<OSPolicyResourceExecResourceResponse> exec;
-
   /// File resource
   final pulumi.Input<OSPolicyResourceFileResourceResponse> file;
-
   /// Package resource
   final pulumi.Input<OSPolicyResourcePackageResourceResponse> pkg;
-
   /// Package repository resource
   final pulumi.Input<OSPolicyResourceRepositoryResourceResponse> repository;
 
@@ -34,51 +31,20 @@ class OSPolicyResourceResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'exec':
-          pulumi.Input.mapInputValue<
-            OSPolicyResourceExecResourceResponse,
-            Map<String, dynamic>
-          >(exec, (value) => value.toMap()),
-      'file':
-          pulumi.Input.mapInputValue<
-            OSPolicyResourceFileResourceResponse,
-            Map<String, dynamic>
-          >(file, (value) => value.toMap()),
-      'pkg':
-          pulumi.Input.mapInputValue<
-            OSPolicyResourcePackageResourceResponse,
-            Map<String, dynamic>
-          >(pkg, (value) => value.toMap()),
-      'repository':
-          pulumi.Input.mapInputValue<
-            OSPolicyResourceRepositoryResourceResponse,
-            Map<String, dynamic>
-          >(repository, (value) => value.toMap()),
+      'exec': pulumi.Input.mapInputValue<OSPolicyResourceExecResourceResponse, Map<String, dynamic>>(exec, (value) => value.toMap()),
+      'file': pulumi.Input.mapInputValue<OSPolicyResourceFileResourceResponse, Map<String, dynamic>>(file, (value) => value.toMap()),
+      'pkg': pulumi.Input.mapInputValue<OSPolicyResourcePackageResourceResponse, Map<String, dynamic>>(pkg, (value) => value.toMap()),
+      'repository': pulumi.Input.mapInputValue<OSPolicyResourceRepositoryResourceResponse, Map<String, dynamic>>(repository, (value) => value.toMap()),
     };
   }
 
   factory OSPolicyResourceResponse.fromMap(Map<String, dynamic> map) {
     return OSPolicyResourceResponse(
-      exec: pulumi.Input.fromValue(
-        OSPolicyResourceExecResourceResponse.fromMap(
-          (map['exec']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      file: pulumi.Input.fromValue(
-        OSPolicyResourceFileResourceResponse.fromMap(
-          (map['file']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      pkg: pulumi.Input.fromValue(
-        OSPolicyResourcePackageResourceResponse.fromMap(
-          (map['pkg']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      repository: pulumi.Input.fromValue(
-        OSPolicyResourceRepositoryResourceResponse.fromMap(
-          (map['repository']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      exec: pulumi.Input.fromValue(OSPolicyResourceExecResourceResponse.fromMap((map['exec']! as Map).cast<String, dynamic>())),
+      file: pulumi.Input.fromValue(OSPolicyResourceFileResourceResponse.fromMap((map['file']! as Map).cast<String, dynamic>())),
+      pkg: pulumi.Input.fromValue(OSPolicyResourcePackageResourceResponse.fromMap((map['pkg']! as Map).cast<String, dynamic>())),
+      repository: pulumi.Input.fromValue(OSPolicyResourceRepositoryResourceResponse.fromMap((map['repository']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

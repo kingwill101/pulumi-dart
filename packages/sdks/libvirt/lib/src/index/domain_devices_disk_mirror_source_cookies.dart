@@ -9,41 +9,20 @@ class DomainDevicesDiskMirrorSourceCookies {
 
   /// Creates a new [DomainDevicesDiskMirrorSourceCookies].
   /// [cookies] Configures cookies for the backing store source, allowing additional parameters for storage.
-  DomainDevicesDiskMirrorSourceCookies({this.cookies});
+  DomainDevicesDiskMirrorSourceCookies({
+    this.cookies,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cookies':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<DomainDevicesDiskMirrorSourceCookiesCookie>,
-            List<Map<String, dynamic>>
-          >(
-            cookies,
-            (value) =>
-                pulumi.Input.encodeList<
-                  DomainDevicesDiskMirrorSourceCookiesCookie,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'cookies': ?pulumi.Input.mapOptionalInputValue<List<DomainDevicesDiskMirrorSourceCookiesCookie>, List<Map<String, dynamic>>>(cookies, (value) => pulumi.Input.encodeList<DomainDevicesDiskMirrorSourceCookiesCookie, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory DomainDevicesDiskMirrorSourceCookies.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDevicesDiskMirrorSourceCookies.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskMirrorSourceCookies(
-      cookies: (() {
-        final guardedValue = map['cookies'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<DomainDevicesDiskMirrorSourceCookiesCookie>(
-            guardedValue,
-            (value) => DomainDevicesDiskMirrorSourceCookiesCookie.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      cookies: (() { final guardedValue = map['cookies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DomainDevicesDiskMirrorSourceCookiesCookie>(guardedValue, (value) => DomainDevicesDiskMirrorSourceCookiesCookie.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

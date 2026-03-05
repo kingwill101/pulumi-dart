@@ -1,18 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getPipeline.
 class GetPipelineResult {
   /// Description of Pipeline.
   final String description;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Name of Pipeline.
   final String name;
   final String pipelineId;
   final String region;
-
   /// Map of tags assigned to the resource.
   final Map<String, String> tags;
 
@@ -54,3 +52,4 @@ class GetPipelineResult {
     );
   }
 }
+

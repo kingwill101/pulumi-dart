@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IdentityNotificationTopicArgs {
   /// The identity for which the Amazon SNS topic will be set. You can specify an identity by using its name or by using its Amazon Resource Name (ARN).
   final pulumi.Input<String> identity;
-
   /// Whether SES should include original email headers in SNS notifications of this type. `false` by default.
   final pulumi.Input<bool>? includeOriginalHeaders;
-
   /// The type of notifications that will be published to the specified Amazon SNS topic. Valid Values: `Bounce`, `Complaint` or `Delivery`.
   final pulumi.Input<String> notificationType;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The Amazon Resource Name (ARN) of the Amazon SNS topic. Can be set to `""` (an empty string) to disable publishing.
   final pulumi.Input<String>? topicArn;
 
@@ -49,24 +45,11 @@ class IdentityNotificationTopicArgs {
   factory IdentityNotificationTopicArgs.fromMap(Map<String, dynamic> map) {
     return IdentityNotificationTopicArgs(
       identity: pulumi.Input.fromValue(map['identity'] as String),
-      includeOriginalHeaders: (() {
-        final guardedValue = map['includeOriginalHeaders'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      notificationType: pulumi.Input.fromValue(
-        map['notificationType'] as String,
-      ),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      topicArn: (() {
-        final guardedValue = map['topicArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      includeOriginalHeaders: (() { final guardedValue = map['includeOriginalHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      notificationType: pulumi.Input.fromValue(map['notificationType'] as String),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      topicArn: (() { final guardedValue = map['topicArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

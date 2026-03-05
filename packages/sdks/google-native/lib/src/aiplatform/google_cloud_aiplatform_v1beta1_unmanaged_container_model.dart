@@ -8,14 +8,10 @@ import 'google_cloud_aiplatform_v1beta1_predict_schemata.dart';
 class GoogleCloudAiplatformV1beta1UnmanagedContainerModel {
   /// The path to the directory containing the Model artifact and any of its supporting files.
   final pulumi.Input<String>? artifactUri;
-
   /// Input only. The specification of the container that is to be used when deploying this Model.
-  final pulumi.Input<GoogleCloudAiplatformV1beta1ModelContainerSpec>?
-  containerSpec;
-
+  final pulumi.Input<GoogleCloudAiplatformV1beta1ModelContainerSpec>? containerSpec;
   /// Contains the schemata used in Model's predictions and explanations
-  final pulumi.Input<GoogleCloudAiplatformV1beta1PredictSchemata>?
-  predictSchemata;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1PredictSchemata>? predictSchemata;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1UnmanagedContainerModel].
   /// [artifactUri] The path to the directory containing the Model artifact and any of its supporting files.
@@ -30,46 +26,17 @@ class GoogleCloudAiplatformV1beta1UnmanagedContainerModel {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'artifactUri': ?artifactUri,
-      'containerSpec':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudAiplatformV1beta1ModelContainerSpec,
-            Map<String, dynamic>
-          >(containerSpec, (value) => value.toMap()),
-      'predictSchemata':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudAiplatformV1beta1PredictSchemata,
-            Map<String, dynamic>
-          >(predictSchemata, (value) => value.toMap()),
+      'containerSpec': ?pulumi.Input.mapOptionalInputValue<GoogleCloudAiplatformV1beta1ModelContainerSpec, Map<String, dynamic>>(containerSpec, (value) => value.toMap()),
+      'predictSchemata': ?pulumi.Input.mapOptionalInputValue<GoogleCloudAiplatformV1beta1PredictSchemata, Map<String, dynamic>>(predictSchemata, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudAiplatformV1beta1UnmanagedContainerModel.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudAiplatformV1beta1UnmanagedContainerModel.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1UnmanagedContainerModel(
-      artifactUri: (() {
-        final guardedValue = map['artifactUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      containerSpec: (() {
-        final guardedValue = map['containerSpec'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudAiplatformV1beta1ModelContainerSpec.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      predictSchemata: (() {
-        final guardedValue = map['predictSchemata'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudAiplatformV1beta1PredictSchemata.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      artifactUri: (() { final guardedValue = map['artifactUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      containerSpec: (() { final guardedValue = map['containerSpec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudAiplatformV1beta1ModelContainerSpec.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      predictSchemata: (() { final guardedValue = map['predictSchemata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudAiplatformV1beta1PredictSchemata.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

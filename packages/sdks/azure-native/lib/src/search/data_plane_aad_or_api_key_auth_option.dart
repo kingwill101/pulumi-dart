@@ -10,27 +10,20 @@ class DataPlaneAadOrApiKeyAuthOption {
 
   /// Creates a new [DataPlaneAadOrApiKeyAuthOption].
   /// [aadAuthFailureMode] Describes what response the data plane API of a search service would send for requests that failed authentication.
-  DataPlaneAadOrApiKeyAuthOption({this.aadAuthFailureMode});
+  DataPlaneAadOrApiKeyAuthOption({
+    this.aadAuthFailureMode,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'aadAuthFailureMode':
-          ?pulumi.Input.mapOptionalInputValue<AadAuthFailureMode, String>(
-            aadAuthFailureMode,
-            (value) => value.wireValue,
-          ),
+      'aadAuthFailureMode': ?pulumi.Input.mapOptionalInputValue<AadAuthFailureMode, String>(aadAuthFailureMode, (value) => value.wireValue),
     };
   }
 
   factory DataPlaneAadOrApiKeyAuthOption.fromMap(Map<String, dynamic> map) {
     return DataPlaneAadOrApiKeyAuthOption(
-      aadAuthFailureMode: (() {
-        final guardedValue = map['aadAuthFailureMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AadAuthFailureMode.fromValue(guardedValue as String),
-        );
-      })(),
+      aadAuthFailureMode: (() { final guardedValue = map['aadAuthFailureMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AadAuthFailureMode.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

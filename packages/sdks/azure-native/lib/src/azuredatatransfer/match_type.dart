@@ -15,3 +15,4 @@ enum MatchType {
     throw ArgumentError('Unknown MatchType value: $value');
   }
 }
+

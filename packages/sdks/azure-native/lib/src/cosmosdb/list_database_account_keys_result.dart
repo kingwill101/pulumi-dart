@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by listDatabaseAccountKeys.
 class ListDatabaseAccountKeysResult {
   /// Base 64 encoded value of the primary read-write key.
   final String primaryMasterKey;
-
   /// Base 64 encoded value of the primary read-only key.
   final String primaryReadonlyMasterKey;
-
   /// Base 64 encoded value of the secondary read-write key.
   final String secondaryMasterKey;
-
   /// Base 64 encoded value of the secondary read-only key.
   final String secondaryReadonlyMasterKey;
 
@@ -44,3 +42,4 @@ class ListDatabaseAccountKeysResult {
     );
   }
 }
+

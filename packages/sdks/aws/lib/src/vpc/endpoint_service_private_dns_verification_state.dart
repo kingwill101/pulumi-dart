@@ -7,13 +7,11 @@ import 'endpoint_service_private_dns_verification_timeouts.dart';
 class EndpointServicePrivateDnsVerificationState {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// ID of the endpoint service.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? serviceId;
   final pulumi.Input<EndpointServicePrivateDnsVerificationTimeouts>? timeouts;
-
   /// Whether to wait until the endpoint service returns a `Verified` status for the configured private DNS name.
   final pulumi.Input<bool>? waitForVerification;
 
@@ -33,43 +31,18 @@ class EndpointServicePrivateDnsVerificationState {
     return <String, dynamic>{
       'region': ?region,
       'serviceId': ?serviceId,
-      'timeouts':
-          ?pulumi.Input.mapOptionalInputValue<
-            EndpointServicePrivateDnsVerificationTimeouts,
-            Map<String, dynamic>
-          >(timeouts, (value) => value.toMap()),
+      'timeouts': ?pulumi.Input.mapOptionalInputValue<EndpointServicePrivateDnsVerificationTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
       'waitForVerification': ?waitForVerification,
     };
   }
 
-  factory EndpointServicePrivateDnsVerificationState.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EndpointServicePrivateDnsVerificationState.fromMap(Map<String, dynamic> map) {
     return EndpointServicePrivateDnsVerificationState(
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serviceId: (() {
-        final guardedValue = map['serviceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      timeouts: (() {
-        final guardedValue = map['timeouts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          EndpointServicePrivateDnsVerificationTimeouts.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      waitForVerification: (() {
-        final guardedValue = map['waitForVerification'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serviceId: (() { final guardedValue = map['serviceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      timeouts: (() { final guardedValue = map['timeouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EndpointServicePrivateDnsVerificationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      waitForVerification: (() { final guardedValue = map['waitForVerification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

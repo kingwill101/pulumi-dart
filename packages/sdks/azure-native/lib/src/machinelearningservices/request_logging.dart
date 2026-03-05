@@ -8,19 +8,20 @@ class RequestLogging {
 
   /// Creates a new [RequestLogging].
   /// [captureHeaders] For payload logging, we only collect payload by default. If customers also want to collect the specified headers, they can set them in captureHeaders so that backend will collect those headers along with payload.
-  RequestLogging({this.captureHeaders});
+  RequestLogging({
+    this.captureHeaders,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'captureHeaders': ?captureHeaders};
+    return <String, dynamic>{
+      'captureHeaders': ?captureHeaders,
+    };
   }
 
   factory RequestLogging.fromMap(Map<String, dynamic> map) {
     return RequestLogging(
-      captureHeaders: (() {
-        final guardedValue = map['captureHeaders'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      captureHeaders: (() { final guardedValue = map['captureHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

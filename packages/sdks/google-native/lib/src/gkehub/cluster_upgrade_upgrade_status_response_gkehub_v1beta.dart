@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterUpgradeUpgradeStatusResponseGkehubV1beta {
   /// Status code of the upgrade.
   final pulumi.Input<String> code;
-
   /// Reason for this status.
   final pulumi.Input<String> reason;
-
   /// Last timestamp the status was updated.
   final pulumi.Input<String> updateTime;
 
@@ -31,9 +29,7 @@ class ClusterUpgradeUpgradeStatusResponseGkehubV1beta {
     };
   }
 
-  factory ClusterUpgradeUpgradeStatusResponseGkehubV1beta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterUpgradeUpgradeStatusResponseGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return ClusterUpgradeUpgradeStatusResponseGkehubV1beta(
       code: pulumi.Input.fromValue(map['code'] as String),
       reason: pulumi.Input.fromValue(map['reason'] as String),
@@ -41,3 +37,4 @@ class ClusterUpgradeUpgradeStatusResponseGkehubV1beta {
     );
   }
 }
+

@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum {
   /// The location of the repository directory.
   final pulumi.Input<String> baseUrl;
-
   /// The display name of the repository.
   final pulumi.Input<String>? displayName;
-
   /// URIs of GPG keys.
   final pulumi.Input<List<String>>? gpgKeys;
-
   /// A one word, unique name for this repository. This is the
   /// `repo id` in the yum config file and also the `display_name` if
   /// `display_name` is omitted. This id is also used as the unique identifier
@@ -39,22 +36,13 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum {
     };
   }
 
-  factory OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum.fromMap(Map<String, dynamic> map) {
     return OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum(
       baseUrl: pulumi.Input.fromValue(map['baseUrl'] as String),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      gpgKeys: (() {
-        final guardedValue = map['gpgKeys'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      gpgKeys: (() { final guardedValue = map['gpgKeys']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       id: pulumi.Input.fromValue(map['id'] as String),
     );
   }
 }
+

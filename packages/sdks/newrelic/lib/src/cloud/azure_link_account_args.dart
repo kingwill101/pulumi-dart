@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureLinkAccountArgs {
   /// Account ID of the New Relic.
   final pulumi.Input<String>? accountId;
-
   /// Application ID of the App.
   final pulumi.Input<String> applicationId;
-
   /// Secret Value of the client.
   final pulumi.Input<String> clientSecret;
-
   /// The name of the application in New Relic APM.
   final pulumi.Input<String>? name;
-
   /// Subscription ID of the Azure cloud account.
   final pulumi.Input<String> subscriptionId;
-
   /// Tenant ID of the Azure cloud account.
   final pulumi.Input<String> tenantId;
 
@@ -54,20 +49,13 @@ class AzureLinkAccountArgs {
 
   factory AzureLinkAccountArgs.fromMap(Map<String, dynamic> map) {
     return AzureLinkAccountArgs(
-      accountId: (() {
-        final guardedValue = map['accountId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       applicationId: pulumi.Input.fromValue(map['applicationId'] as String),
       clientSecret: pulumi.Input.fromValue(map['clientSecret'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       subscriptionId: pulumi.Input.fromValue(map['subscriptionId'] as String),
       tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
     );
   }
 }
+

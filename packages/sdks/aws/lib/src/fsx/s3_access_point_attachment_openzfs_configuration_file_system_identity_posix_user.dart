@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentityPosixUser {
   /// GID of the file system user.
   final pulumi.Input<int> gid;
-
   /// List of secondary GIDs for the file system user..
   final pulumi.Input<List<int>>? secondaryGids;
-
   /// UID of the file system user.
   final pulumi.Input<int> uid;
 
@@ -30,17 +28,12 @@ class S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentityPosixUser {
     };
   }
 
-  factory S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentityPosixUser.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentityPosixUser.fromMap(Map<String, dynamic> map) {
     return S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentityPosixUser(
       gid: pulumi.Input.fromValue(map['gid'] as int),
-      secondaryGids: (() {
-        final guardedValue = map['secondaryGids'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<int>());
-      })(),
+      secondaryGids: (() { final guardedValue = map['secondaryGids']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<int>()); })(),
       uid: pulumi.Input.fromValue(map['uid'] as int),
     );
   }
 }
+

@@ -6,7 +6,6 @@ class GetNetworkManagedServiceKmsAccess {
   final pulumi.Input<String> domainName;
   final pulumi.Input<List<String>> ipv4Addresses;
   final pulumi.Input<String> kmsPolicyDocument;
-
   /// The status of the network resource.
   final pulumi.Input<String> status;
 
@@ -34,13 +33,10 @@ class GetNetworkManagedServiceKmsAccess {
   factory GetNetworkManagedServiceKmsAccess.fromMap(Map<String, dynamic> map) {
     return GetNetworkManagedServiceKmsAccess(
       domainName: pulumi.Input.fromValue(map['domainName'] as String),
-      ipv4Addresses: pulumi.Input.fromValue(
-        (map['ipv4Addresses'] as List).cast<String>(),
-      ),
-      kmsPolicyDocument: pulumi.Input.fromValue(
-        map['kmsPolicyDocument'] as String,
-      ),
+      ipv4Addresses: pulumi.Input.fromValue((map['ipv4Addresses'] as List).cast<String>()),
+      kmsPolicyDocument: pulumi.Input.fromValue(map['kmsPolicyDocument'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
+

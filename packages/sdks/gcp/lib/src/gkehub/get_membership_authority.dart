@@ -7,10 +7,14 @@ class GetMembershipAuthority {
 
   /// Creates a new [GetMembershipAuthority].
   /// [issuer] Required.
-  GetMembershipAuthority({required this.issuer});
+  GetMembershipAuthority({
+    required this.issuer,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'issuer': issuer};
+    return <String, dynamic>{
+      'issuer': issuer,
+    };
   }
 
   factory GetMembershipAuthority.fromMap(Map<String, dynamic> map) {
@@ -19,3 +23,4 @@ class GetMembershipAuthority {
     );
   }
 }
+

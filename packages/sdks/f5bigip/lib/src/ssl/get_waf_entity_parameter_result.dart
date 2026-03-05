@@ -12,7 +12,6 @@ class GetWafEntityParameterResult {
   final String? dataType;
   final String? description;
   final bool? enableRegularExpression;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final bool? isBase64;
@@ -122,126 +121,33 @@ class GetWafEntityParameterResult {
 
   factory GetWafEntityParameterResult.fromMap(Map<String, dynamic> map) {
     return GetWafEntityParameterResult(
-      allowEmptyType: (() {
-        final guardedValue = map['allowEmptyType'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      allowRepeatedParameterName: (() {
-        final guardedValue = map['allowRepeatedParameterName'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      attackSignaturesCheck: (() {
-        final guardedValue = map['attackSignaturesCheck'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      checkMaxValueLength: (() {
-        final guardedValue = map['checkMaxValueLength'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      checkMinValueLength: (() {
-        final guardedValue = map['checkMinValueLength'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      dataType: (() {
-        final guardedValue = map['dataType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      enableRegularExpression: (() {
-        final guardedValue = map['enableRegularExpression'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      allowEmptyType: (() { final guardedValue = map['allowEmptyType']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      allowRepeatedParameterName: (() { final guardedValue = map['allowRepeatedParameterName']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      attackSignaturesCheck: (() { final guardedValue = map['attackSignaturesCheck']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      checkMaxValueLength: (() { final guardedValue = map['checkMaxValueLength']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      checkMinValueLength: (() { final guardedValue = map['checkMinValueLength']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      dataType: (() { final guardedValue = map['dataType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      enableRegularExpression: (() { final guardedValue = map['enableRegularExpression']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       id: map['id'] as String,
-      isBase64: (() {
-        final guardedValue = map['isBase64'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      isCookie: (() {
-        final guardedValue = map['isCookie'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      isHeader: (() {
-        final guardedValue = map['isHeader'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      isBase64: (() { final guardedValue = map['isBase64']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      isCookie: (() { final guardedValue = map['isCookie']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      isHeader: (() { final guardedValue = map['isHeader']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       json: map['json'] as String,
-      level: (() {
-        final guardedValue = map['level'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      mandatory: (() {
-        final guardedValue = map['mandatory'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      maxValueLength: (() {
-        final guardedValue = map['maxValueLength'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      metacharsOnParameterValueCheck: (() {
-        final guardedValue = map['metacharsOnParameterValueCheck'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      minValueLength: (() {
-        final guardedValue = map['minValueLength'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
+      level: (() { final guardedValue = map['level']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      mandatory: (() { final guardedValue = map['mandatory']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      maxValueLength: (() { final guardedValue = map['maxValueLength']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      metacharsOnParameterValueCheck: (() { final guardedValue = map['metacharsOnParameterValueCheck']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      minValueLength: (() { final guardedValue = map['minValueLength']; if (guardedValue == null) return null; return guardedValue as int; })(),
       name: map['name'] as String,
-      parameterLocation: (() {
-        final guardedValue = map['parameterLocation'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      performStaging: (() {
-        final guardedValue = map['performStaging'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      sensitiveParameter: (() {
-        final guardedValue = map['sensitiveParameter'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      signatureOverridesDisables: (() {
-        final guardedValue = map['signatureOverridesDisables'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<int>();
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      url: (() {
-        final guardedValue = map['url'];
-        if (guardedValue == null) return null;
-        return GetWafEntityParameterUrl.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      valueType: (() {
-        final guardedValue = map['valueType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      parameterLocation: (() { final guardedValue = map['parameterLocation']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      performStaging: (() { final guardedValue = map['performStaging']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      sensitiveParameter: (() { final guardedValue = map['sensitiveParameter']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      signatureOverridesDisables: (() { final guardedValue = map['signatureOverridesDisables']; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      url: (() { final guardedValue = map['url']; if (guardedValue == null) return null; return GetWafEntityParameterUrl.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      valueType: (() { final guardedValue = map['valueType']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

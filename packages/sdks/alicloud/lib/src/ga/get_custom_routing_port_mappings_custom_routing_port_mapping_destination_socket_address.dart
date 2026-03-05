@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddress {
   /// The service IP address of the backend instance.
   final pulumi.Input<String> ipAddress;
-
   /// The service port of the backend instance.
   final pulumi.Input<int> port;
 
@@ -18,15 +17,17 @@ class GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddre
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'ipAddress': ipAddress, 'port': port};
+    return <String, dynamic>{
+      'ipAddress': ipAddress,
+      'port': port,
+    };
   }
 
-  factory GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddress.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddress.fromMap(Map<String, dynamic> map) {
     return GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddress(
       ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
       port: pulumi.Input.fromValue(map['port'] as int),
     );
   }
 }
+

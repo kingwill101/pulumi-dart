@@ -9,46 +9,32 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServerEndpointArgs {
   /// Cloud Tiering.
   final pulumi.Input<String>? cloudTiering;
-
   /// Friendly Name
   final pulumi.Input<String>? friendlyName;
-
   /// Policy for how namespace and files are recalled during FastDr.
   final pulumi.Input<String>? initialDownloadPolicy;
-
   /// Policy for how the initial upload sync session is performed.
   final pulumi.Input<String>? initialUploadPolicy;
-
   /// Policy for enabling follow-the-sun business models: link local cache to cloud behavior to pre-populate before local access.
   final pulumi.Input<String>? localCacheMode;
-
   /// Offline data transfer
   final pulumi.Input<String>? offlineDataTransfer;
-
   /// Offline data transfer share name
   final pulumi.Input<String>? offlineDataTransferShareName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Name of Server Endpoint object.
   final pulumi.Input<String>? serverEndpointName;
-
   /// Server Local path.
   final pulumi.Input<String>? serverLocalPath;
-
   /// Server Resource Id.
   final pulumi.Input<String>? serverResourceId;
-
   /// Name of Storage Sync Service resource.
   final pulumi.Input<String> storageSyncServiceName;
-
   /// Name of Sync Group resource.
   final pulumi.Input<String> syncGroupName;
-
   /// Tier files older than days.
   final pulumi.Input<int>? tierFilesOlderThanDays;
-
   /// Level of free space to be maintained by Cloud Tiering if it is enabled.
   final pulumi.Input<int>? volumeFreeSpacePercent;
 
@@ -108,73 +94,22 @@ class ServerEndpointArgs {
 
   factory ServerEndpointArgs.fromMap(Map<String, dynamic> map) {
     return ServerEndpointArgs(
-      cloudTiering: (() {
-        final guardedValue = map['cloudTiering'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      friendlyName: (() {
-        final guardedValue = map['friendlyName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      initialDownloadPolicy: (() {
-        final guardedValue = map['initialDownloadPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      initialUploadPolicy: (() {
-        final guardedValue = map['initialUploadPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      localCacheMode: (() {
-        final guardedValue = map['localCacheMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      offlineDataTransfer: (() {
-        final guardedValue = map['offlineDataTransfer'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      offlineDataTransferShareName: (() {
-        final guardedValue = map['offlineDataTransferShareName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      serverEndpointName: (() {
-        final guardedValue = map['serverEndpointName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serverLocalPath: (() {
-        final guardedValue = map['serverLocalPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serverResourceId: (() {
-        final guardedValue = map['serverResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      storageSyncServiceName: pulumi.Input.fromValue(
-        map['storageSyncServiceName'] as String,
-      ),
+      cloudTiering: (() { final guardedValue = map['cloudTiering']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      friendlyName: (() { final guardedValue = map['friendlyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      initialDownloadPolicy: (() { final guardedValue = map['initialDownloadPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      initialUploadPolicy: (() { final guardedValue = map['initialUploadPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      localCacheMode: (() { final guardedValue = map['localCacheMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      offlineDataTransfer: (() { final guardedValue = map['offlineDataTransfer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      offlineDataTransferShareName: (() { final guardedValue = map['offlineDataTransferShareName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      serverEndpointName: (() { final guardedValue = map['serverEndpointName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serverLocalPath: (() { final guardedValue = map['serverLocalPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serverResourceId: (() { final guardedValue = map['serverResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageSyncServiceName: pulumi.Input.fromValue(map['storageSyncServiceName'] as String),
       syncGroupName: pulumi.Input.fromValue(map['syncGroupName'] as String),
-      tierFilesOlderThanDays: (() {
-        final guardedValue = map['tierFilesOlderThanDays'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      volumeFreeSpacePercent: (() {
-        final guardedValue = map['volumeFreeSpacePercent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      tierFilesOlderThanDays: (() { final guardedValue = map['tierFilesOlderThanDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      volumeFreeSpacePercent: (() { final guardedValue = map['volumeFreeSpacePercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

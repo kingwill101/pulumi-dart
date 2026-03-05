@@ -706,53 +706,36 @@ import 'action_group_state.dart';
 class ActionGroup extends pulumi.CustomResource {
   /// One or more `arm_role_receiver` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> armRoleReceivers;
-
   /// One or more `automation_runbook_receiver` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  automationRunbookReceivers;
-
+  late final pulumi.Output<List<Map<String, dynamic>>?> automationRunbookReceivers;
   /// One or more `azure_app_push_receiver` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> azureAppPushReceivers;
-
   /// One or more `azure_function_receiver` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> azureFunctionReceivers;
-
   /// One or more `email_receiver` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> emailReceivers;
-
   /// Whether this action group is enabled. If an action group is not enabled, then none of its receivers will receive communications. Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
-
   /// One or more `event_hub_receiver` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> eventHubReceivers;
-
   /// One or more `itsm_receiver` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> itsmReceivers;
-
   /// The Azure Region where the Action Group should exist. Changing this forces a new Action Group to be created. Defaults to `global`.
   late final pulumi.Output<String> location;
-
   /// One or more `logic_app_receiver` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> logicAppReceivers;
-
   /// The name of the Action Group. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the resource group in which to create the Action Group instance. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The short name of the action group. This will be used in SMS messages.
   late final pulumi.Output<String> shortName;
-
   /// One or more `sms_receiver` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> smsReceivers;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// One or more `voice_receiver` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> voiceReceivers;
-
   /// One or more `webhook_receiver` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> webhookReceivers;
 
@@ -765,48 +748,28 @@ class ActionGroup extends pulumi.CustomResource {
     ActionGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:monitoring/actionGroup:ActionGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    armRoleReceivers = registerOutput<List<Map<String, dynamic>>?>(
-      'armRoleReceivers',
-    );
-    automationRunbookReceivers = registerOutput<List<Map<String, dynamic>>?>(
-      'automationRunbookReceivers',
-    );
-    azureAppPushReceivers = registerOutput<List<Map<String, dynamic>>?>(
-      'azureAppPushReceivers',
-    );
-    azureFunctionReceivers = registerOutput<List<Map<String, dynamic>>?>(
-      'azureFunctionReceivers',
-    );
-    emailReceivers = registerOutput<List<Map<String, dynamic>>?>(
-      'emailReceivers',
-    );
+          'azure:monitoring/actionGroup:ActionGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    armRoleReceivers = registerOutput<List<Map<String, dynamic>>?>('armRoleReceivers');
+    automationRunbookReceivers = registerOutput<List<Map<String, dynamic>>?>('automationRunbookReceivers');
+    azureAppPushReceivers = registerOutput<List<Map<String, dynamic>>?>('azureAppPushReceivers');
+    azureFunctionReceivers = registerOutput<List<Map<String, dynamic>>?>('azureFunctionReceivers');
+    emailReceivers = registerOutput<List<Map<String, dynamic>>?>('emailReceivers');
     enabled = registerOutput<bool?>('enabled');
-    eventHubReceivers = registerOutput<List<Map<String, dynamic>>?>(
-      'eventHubReceivers',
-    );
-    itsmReceivers = registerOutput<List<Map<String, dynamic>>?>(
-      'itsmReceivers',
-    );
+    eventHubReceivers = registerOutput<List<Map<String, dynamic>>?>('eventHubReceivers');
+    itsmReceivers = registerOutput<List<Map<String, dynamic>>?>('itsmReceivers');
     location = registerOutput<String>('location');
-    logicAppReceivers = registerOutput<List<Map<String, dynamic>>?>(
-      'logicAppReceivers',
-    );
+    logicAppReceivers = registerOutput<List<Map<String, dynamic>>?>('logicAppReceivers');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     shortName = registerOutput<String>('shortName');
     smsReceivers = registerOutput<List<Map<String, dynamic>>?>('smsReceivers');
     tags = registerOutput<Map<String, String>?>('tags');
-    voiceReceivers = registerOutput<List<Map<String, dynamic>>?>(
-      'voiceReceivers',
-    );
-    webhookReceivers = registerOutput<List<Map<String, dynamic>>?>(
-      'webhookReceivers',
-    );
+    voiceReceivers = registerOutput<List<Map<String, dynamic>>?>('voiceReceivers');
+    webhookReceivers = registerOutput<List<Map<String, dynamic>>?>('webhookReceivers');
   }
 
   /// Gets an existing [ActionGroup] resource's state with the given [name] and [id].
@@ -827,47 +790,27 @@ class ActionGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:monitoring/actionGroup:ActionGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    armRoleReceivers = registerOutput<List<Map<String, dynamic>>?>(
-      'armRoleReceivers',
-    );
-    automationRunbookReceivers = registerOutput<List<Map<String, dynamic>>?>(
-      'automationRunbookReceivers',
-    );
-    azureAppPushReceivers = registerOutput<List<Map<String, dynamic>>?>(
-      'azureAppPushReceivers',
-    );
-    azureFunctionReceivers = registerOutput<List<Map<String, dynamic>>?>(
-      'azureFunctionReceivers',
-    );
-    emailReceivers = registerOutput<List<Map<String, dynamic>>?>(
-      'emailReceivers',
-    );
+          'azure:monitoring/actionGroup:ActionGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    armRoleReceivers = registerOutput<List<Map<String, dynamic>>?>('armRoleReceivers');
+    automationRunbookReceivers = registerOutput<List<Map<String, dynamic>>?>('automationRunbookReceivers');
+    azureAppPushReceivers = registerOutput<List<Map<String, dynamic>>?>('azureAppPushReceivers');
+    azureFunctionReceivers = registerOutput<List<Map<String, dynamic>>?>('azureFunctionReceivers');
+    emailReceivers = registerOutput<List<Map<String, dynamic>>?>('emailReceivers');
     enabled = registerOutput<bool?>('enabled');
-    eventHubReceivers = registerOutput<List<Map<String, dynamic>>?>(
-      'eventHubReceivers',
-    );
-    itsmReceivers = registerOutput<List<Map<String, dynamic>>?>(
-      'itsmReceivers',
-    );
+    eventHubReceivers = registerOutput<List<Map<String, dynamic>>?>('eventHubReceivers');
+    itsmReceivers = registerOutput<List<Map<String, dynamic>>?>('itsmReceivers');
     location = registerOutput<String>('location');
-    logicAppReceivers = registerOutput<List<Map<String, dynamic>>?>(
-      'logicAppReceivers',
-    );
+    logicAppReceivers = registerOutput<List<Map<String, dynamic>>?>('logicAppReceivers');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     shortName = registerOutput<String>('shortName');
     smsReceivers = registerOutput<List<Map<String, dynamic>>?>('smsReceivers');
     tags = registerOutput<Map<String, String>?>('tags');
-    voiceReceivers = registerOutput<List<Map<String, dynamic>>?>(
-      'voiceReceivers',
-    );
-    webhookReceivers = registerOutput<List<Map<String, dynamic>>?>(
-      'webhookReceivers',
-    );
+    voiceReceivers = registerOutput<List<Map<String, dynamic>>?>('voiceReceivers');
+    webhookReceivers = registerOutput<List<Map<String, dynamic>>?>('webhookReceivers');
   }
 }

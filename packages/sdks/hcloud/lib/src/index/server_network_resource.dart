@@ -243,19 +243,14 @@ import 'server_network_state.dart';
 class ServerNetworkResource extends pulumi.CustomResource {
   /// Additional IPs to assign to the Server.
   late final pulumi.Output<List<String>> aliasIps;
-
   /// IP to assign to the Server.
   late final pulumi.Output<String> ip;
-
   /// MAC address of the Server on the Network.
   late final pulumi.Output<String> macAddress;
-
   /// ID of the Network to attach the Server to. Using `subnet_id` is preferred. Required if `subnet_id` is not set. If `subnet_id` or `ip` are not set, the Server will be attached to the last subnet (ordered by `ip_range`).
   late final pulumi.Output<int> networkId;
-
   /// ID of the Server.
   late final pulumi.Output<int> serverId;
-
   /// ID of the Subnet to attach the Server to. Required if `network_id` is not set.
   late final pulumi.Output<String?> subnetId;
 
@@ -268,11 +263,11 @@ class ServerNetworkResource extends pulumi.CustomResource {
     ServerNetworkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'hcloud:index/serverNetwork:ServerNetwork',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'hcloud:index/serverNetwork:ServerNetwork',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aliasIps = registerOutput<List<String>>('aliasIps');
     ip = registerOutput<String>('ip');
     macAddress = registerOutput<String>('macAddress');
@@ -299,11 +294,11 @@ class ServerNetworkResource extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'hcloud:index/serverNetwork:ServerNetwork',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'hcloud:index/serverNetwork:ServerNetwork',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aliasIps = registerOutput<List<String>>('aliasIps');
     ip = registerOutput<String>('ip');
     macAddress = registerOutput<String>('macAddress');

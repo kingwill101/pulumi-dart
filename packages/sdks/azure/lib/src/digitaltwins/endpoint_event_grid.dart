@@ -248,19 +248,14 @@ import 'endpoint_event_grid_state.dart';
 class EndpointEventGrid extends pulumi.CustomResource {
   /// The storage secret of the dead-lettering, whose format is `https://&lt;storageAccountname&gt;.blob.core.windows.net/&lt;containerName&gt;?&lt;SASToken&gt;`. When an endpoint can't deliver an event within a certain time period or after trying to deliver the event a certain number of times, it can send the undelivered event to a storage account.
   late final pulumi.Output<String?> deadLetterStorageSecret;
-
   /// The resource ID of the Digital Twins Instance. Changing this forces a new Digital Twins Eventgrid Endpoint to be created.
   late final pulumi.Output<String> digitalTwinsId;
-
   /// The endpoint of the Event Grid Topic.
   late final pulumi.Output<String> eventgridTopicEndpoint;
-
   /// The primary access key of the Event Grid Topic.
   late final pulumi.Output<String> eventgridTopicPrimaryAccessKey;
-
   /// The secondary access key of the Event Grid Topic.
   late final pulumi.Output<String> eventgridTopicSecondaryAccessKey;
-
   /// The name which should be used for this Digital Twins Eventgrid Endpoint. Changing this forces a new Digital Twins Eventgrid Endpoint to be created.
   late final pulumi.Output<String> name;
 
@@ -273,22 +268,16 @@ class EndpointEventGrid extends pulumi.CustomResource {
     EndpointEventGridArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:digitaltwins/endpointEventGrid:EndpointEventGrid',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    deadLetterStorageSecret = registerOutput<String?>(
-      'deadLetterStorageSecret',
-    );
+          'azure:digitaltwins/endpointEventGrid:EndpointEventGrid',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    deadLetterStorageSecret = registerOutput<String?>('deadLetterStorageSecret');
     digitalTwinsId = registerOutput<String>('digitalTwinsId');
     eventgridTopicEndpoint = registerOutput<String>('eventgridTopicEndpoint');
-    eventgridTopicPrimaryAccessKey = registerOutput<String>(
-      'eventgridTopicPrimaryAccessKey',
-    );
-    eventgridTopicSecondaryAccessKey = registerOutput<String>(
-      'eventgridTopicSecondaryAccessKey',
-    );
+    eventgridTopicPrimaryAccessKey = registerOutput<String>('eventgridTopicPrimaryAccessKey');
+    eventgridTopicSecondaryAccessKey = registerOutput<String>('eventgridTopicSecondaryAccessKey');
     this.name = registerOutput<String>('name');
   }
 
@@ -310,22 +299,16 @@ class EndpointEventGrid extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:digitaltwins/endpointEventGrid:EndpointEventGrid',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    deadLetterStorageSecret = registerOutput<String?>(
-      'deadLetterStorageSecret',
-    );
+          'azure:digitaltwins/endpointEventGrid:EndpointEventGrid',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    deadLetterStorageSecret = registerOutput<String?>('deadLetterStorageSecret');
     digitalTwinsId = registerOutput<String>('digitalTwinsId');
     eventgridTopicEndpoint = registerOutput<String>('eventgridTopicEndpoint');
-    eventgridTopicPrimaryAccessKey = registerOutput<String>(
-      'eventgridTopicPrimaryAccessKey',
-    );
-    eventgridTopicSecondaryAccessKey = registerOutput<String>(
-      'eventgridTopicSecondaryAccessKey',
-    );
+    eventgridTopicPrimaryAccessKey = registerOutput<String>('eventgridTopicPrimaryAccessKey');
+    eventgridTopicSecondaryAccessKey = registerOutput<String>('eventgridTopicSecondaryAccessKey');
     this.name = registerOutput<String>('name');
   }
 }

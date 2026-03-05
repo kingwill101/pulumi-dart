@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class V2modelsBotMember {
   /// (Required) - Alias ID of a bot that is a member of this network of bots.
   final pulumi.Input<String> aliasId;
-
   /// (Required) - Alias name of a bot that is a member of this network of bots.
   final pulumi.Input<String> aliasName;
-
   /// (Required) - Unique ID of a bot that is a member of this network of bots.
   final pulumi.Input<String> id;
-
   /// Name of the bot. The bot name must be unique in the account that creates the bot. Type String. Length Constraints: Minimum length of 1. Maximum length of 100.
   final pulumi.Input<String> name;
-
   /// (Required) - Version of a bot that is a member of this network of bots.
   final pulumi.Input<String> version;
 
@@ -52,3 +48,4 @@ class V2modelsBotMember {
     );
   }
 }
+

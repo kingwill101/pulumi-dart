@@ -265,23 +265,16 @@ import 'system_data_response.dart';
 class PrivateLinkScope extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Resource location
   late final pulumi.Output<String> location;
-
   /// Azure resource name
   late final pulumi.Output<String> name;
-
   /// Properties that define a Azure Arc PrivateLinkScope resource.
-  late final pulumi.Output<HybridComputePrivateLinkScopePropertiesResponse>
-  properties;
-
+  late final pulumi.Output<HybridComputePrivateLinkScopePropertiesResponse> properties;
   /// The system meta data relating to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Azure resource type
   late final pulumi.Output<String> type;
 
@@ -294,35 +287,16 @@ class PrivateLinkScope extends pulumi.CustomResource {
     PrivateLinkScopeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:hybridcompute:PrivateLinkScope',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:hybridcompute:PrivateLinkScope',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    properties =
-        registerOutput<HybridComputePrivateLinkScopePropertiesResponse>(
-          'properties',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return HybridComputePrivateLinkScopePropertiesResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<HybridComputePrivateLinkScopePropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HybridComputePrivateLinkScopePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

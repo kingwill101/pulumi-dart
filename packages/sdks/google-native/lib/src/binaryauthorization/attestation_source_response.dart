@@ -15,16 +15,14 @@ class AttestationSourceResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'containerAnalysisAttestationProjects':
-          containerAnalysisAttestationProjects,
+      'containerAnalysisAttestationProjects': containerAnalysisAttestationProjects,
     };
   }
 
   factory AttestationSourceResponse.fromMap(Map<String, dynamic> map) {
     return AttestationSourceResponse(
-      containerAnalysisAttestationProjects: pulumi.Input.fromValue(
-        (map['containerAnalysisAttestationProjects'] as List).cast<String>(),
-      ),
+      containerAnalysisAttestationProjects: pulumi.Input.fromValue((map['containerAnalysisAttestationProjects'] as List).cast<String>()),
     );
   }
 }
+

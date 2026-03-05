@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigResponse {
   /// The name of the field to target. Currently supported values: `watch-percentage`, `watch-time`.
   final pulumi.Input<String> targetField;
-
   /// The threshold to be applied to the target (e.g., 0.5).
   final pulumi.Input<double> targetFieldValueFloat;
 
@@ -25,14 +24,11 @@ class GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOpti
     };
   }
 
-  factory GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigResponse(
       targetField: pulumi.Input.fromValue(map['targetField'] as String),
-      targetFieldValueFloat: pulumi.Input.fromValue(
-        map['targetFieldValueFloat'] as double,
-      ),
+      targetFieldValueFloat: pulumi.Input.fromValue(map['targetFieldValueFloat'] as double),
     );
   }
 }
+

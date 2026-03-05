@@ -9,10 +9,16 @@ class GetDevEnvironmentIde {
   /// Creates a new [GetDevEnvironmentIde].
   /// [name] Required.
   /// [runtime] Required.
-  GetDevEnvironmentIde({required this.name, required this.runtime});
+  GetDevEnvironmentIde({
+    required this.name,
+    required this.runtime,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'runtime': runtime};
+    return <String, dynamic>{
+      'name': name,
+      'runtime': runtime,
+    };
   }
 
   factory GetDevEnvironmentIde.fromMap(Map<String, dynamic> map) {
@@ -22,3 +28,4 @@ class GetDevEnvironmentIde {
     );
   }
 }
+

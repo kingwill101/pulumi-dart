@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSecurityOperatorArgs {
   /// name of the pricing configuration
   final pulumi.Input<String> pricingName;
-
   /// name of the securityOperator
   final pulumi.Input<String> securityOperatorName;
 
@@ -31,9 +30,8 @@ class GetSecurityOperatorArgs {
   factory GetSecurityOperatorArgs.fromMap(Map<String, dynamic> map) {
     return GetSecurityOperatorArgs(
       pricingName: pulumi.Input.fromValue(map['pricingName'] as String),
-      securityOperatorName: pulumi.Input.fromValue(
-        map['securityOperatorName'] as String,
-      ),
+      securityOperatorName: pulumi.Input.fromValue(map['securityOperatorName'] as String),
     );
   }
 }
+

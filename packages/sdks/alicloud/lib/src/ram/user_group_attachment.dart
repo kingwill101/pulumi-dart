@@ -237,7 +237,6 @@ import 'user_group_attachment_state.dart';
 class UserGroupAttachment extends pulumi.CustomResource {
   /// The name of group.
   late final pulumi.Output<String> groupName;
-
   /// The name of user.
   late final pulumi.Output<String> userName;
 
@@ -250,11 +249,11 @@ class UserGroupAttachment extends pulumi.CustomResource {
     UserGroupAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ram/userGroupAttachment:UserGroupAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ram/userGroupAttachment:UserGroupAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     groupName = registerOutput<String>('groupName');
     userName = registerOutput<String>('userName');
   }
@@ -277,11 +276,11 @@ class UserGroupAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ram/userGroupAttachment:UserGroupAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ram/userGroupAttachment:UserGroupAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     groupName = registerOutput<String>('groupName');
     userName = registerOutput<String>('userName');
   }

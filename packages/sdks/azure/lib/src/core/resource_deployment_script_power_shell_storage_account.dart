@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceDeploymentScriptPowerShellStorageAccount {
   /// Specifies the storage account access key.
   final pulumi.Input<String> key;
-
   /// Specifies the storage account name.
   final pulumi.Input<String> name;
 
@@ -18,15 +17,17 @@ class ResourceDeploymentScriptPowerShellStorageAccount {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': key, 'name': name};
+    return <String, dynamic>{
+      'key': key,
+      'name': name,
+    };
   }
 
-  factory ResourceDeploymentScriptPowerShellStorageAccount.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResourceDeploymentScriptPowerShellStorageAccount.fromMap(Map<String, dynamic> map) {
     return ResourceDeploymentScriptPowerShellStorageAccount(
       key: pulumi.Input.fromValue(map['key'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

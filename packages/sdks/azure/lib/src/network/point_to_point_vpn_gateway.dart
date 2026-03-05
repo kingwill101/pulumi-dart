@@ -516,31 +516,22 @@ import 'point_to_point_vpn_gateway_state.dart';
 class PointToPointVpnGateway extends pulumi.CustomResource {
   /// A `connection_configuration` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> connectionConfigurations;
-
   /// A list of IP Addresses of DNS Servers for the Point-to-Site VPN Gateway.
   late final pulumi.Output<List<String>?> dnsServers;
-
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// Specifies the name of the Point-to-Site VPN Gateway. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the resource group in which to create the Point-to-Site VPN Gateway. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// Is the Routing Preference for the Public IP Interface of the VPN Gateway enabled? Defaults to `false`. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> routingPreferenceInternetEnabled;
-
   /// The [Scale Unit](https://docs.microsoft.com/azure/virtual-wan/virtual-wan-faq#what-is-a-virtual-wan-gateway-scale-unit) for this Point-to-Site VPN Gateway.
   late final pulumi.Output<int> scaleUnit;
-
   /// A mapping of tags to assign to the Point-to-Site VPN Gateway.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The ID of the Virtual Hub where this Point-to-Site VPN Gateway should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> virtualHubId;
-
   /// The ID of the VPN Server Configuration which this Point-to-Site VPN Gateway should use. Changing this forces a new resource to be created.
   late final pulumi.Output<String> vpnServerConfigurationId;
 
@@ -553,27 +544,21 @@ class PointToPointVpnGateway extends pulumi.CustomResource {
     PointToPointVpnGatewayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/pointToPointVpnGateway:PointToPointVpnGateway',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    connectionConfigurations = registerOutput<List<Map<String, dynamic>>>(
-      'connectionConfigurations',
-    );
+          'azure:network/pointToPointVpnGateway:PointToPointVpnGateway',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    connectionConfigurations = registerOutput<List<Map<String, dynamic>>>('connectionConfigurations');
     dnsServers = registerOutput<List<String>?>('dnsServers');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    routingPreferenceInternetEnabled = registerOutput<bool?>(
-      'routingPreferenceInternetEnabled',
-    );
+    routingPreferenceInternetEnabled = registerOutput<bool?>('routingPreferenceInternetEnabled');
     scaleUnit = registerOutput<int>('scaleUnit');
     tags = registerOutput<Map<String, String>?>('tags');
     virtualHubId = registerOutput<String>('virtualHubId');
-    vpnServerConfigurationId = registerOutput<String>(
-      'vpnServerConfigurationId',
-    );
+    vpnServerConfigurationId = registerOutput<String>('vpnServerConfigurationId');
   }
 
   /// Gets an existing [PointToPointVpnGateway] resource's state with the given [name] and [id].
@@ -594,26 +579,20 @@ class PointToPointVpnGateway extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/pointToPointVpnGateway:PointToPointVpnGateway',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    connectionConfigurations = registerOutput<List<Map<String, dynamic>>>(
-      'connectionConfigurations',
-    );
+          'azure:network/pointToPointVpnGateway:PointToPointVpnGateway',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    connectionConfigurations = registerOutput<List<Map<String, dynamic>>>('connectionConfigurations');
     dnsServers = registerOutput<List<String>?>('dnsServers');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    routingPreferenceInternetEnabled = registerOutput<bool?>(
-      'routingPreferenceInternetEnabled',
-    );
+    routingPreferenceInternetEnabled = registerOutput<bool?>('routingPreferenceInternetEnabled');
     scaleUnit = registerOutput<int>('scaleUnit');
     tags = registerOutput<Map<String, String>?>('tags');
     virtualHubId = registerOutput<String>('virtualHubId');
-    vpnServerConfigurationId = registerOutput<String>(
-      'vpnServerConfigurationId',
-    );
+    vpnServerConfigurationId = registerOutput<String>('vpnServerConfigurationId');
   }
 }

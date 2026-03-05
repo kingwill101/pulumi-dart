@@ -7,28 +7,20 @@ import 'destination_config_response.dart';
 class GetCustomConnectorVersionResult {
   /// Configuration for establishing the authentication to the connector destination.
   final AuthConfigResponse authConfig;
-
   /// Created time.
   final String createTime;
-
   /// Configuration of the customConnector's destination.
   final DestinationConfigResponse destinationConfig;
-
   /// Optional. Whether to enable backend destination config. This is the backend server that the connector connects to.
   final bool enableBackendDestinationConfig;
-
   /// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
   final Map<String, String> labels;
-
   /// Identifier. Resource name of the Version. Format: projects/{project}/locations/{location}/customConnectors/{custom_connector}/customConnectorVersions/{custom_connector_version}
   final String name;
-
   /// Optional. Location of the custom connector spec.
   final String specLocation;
-
   /// Type of the customConnector.
   final String type;
-
   /// Updated time.
   final String updateTime;
 
@@ -70,15 +62,10 @@ class GetCustomConnectorVersionResult {
 
   factory GetCustomConnectorVersionResult.fromMap(Map<String, dynamic> map) {
     return GetCustomConnectorVersionResult(
-      authConfig: AuthConfigResponse.fromMap(
-        (map['authConfig']! as Map).cast<String, dynamic>(),
-      ),
+      authConfig: AuthConfigResponse.fromMap((map['authConfig']! as Map).cast<String, dynamic>()),
       createTime: map['createTime'] as String,
-      destinationConfig: DestinationConfigResponse.fromMap(
-        (map['destinationConfig']! as Map).cast<String, dynamic>(),
-      ),
-      enableBackendDestinationConfig:
-          map['enableBackendDestinationConfig'] as bool,
+      destinationConfig: DestinationConfigResponse.fromMap((map['destinationConfig']! as Map).cast<String, dynamic>()),
+      enableBackendDestinationConfig: map['enableBackendDestinationConfig'] as bool,
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
       specLocation: map['specLocation'] as String,
@@ -87,3 +74,4 @@ class GetCustomConnectorVersionResult {
     );
   }
 }
+

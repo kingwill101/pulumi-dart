@@ -5,31 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDropletAutoscaleDropletTemplate {
   /// Droplet image
   final pulumi.Input<String> image;
-
   /// Enable droplet IPv6
   final pulumi.Input<bool> ipv6;
-
   /// Droplet project ID
   final pulumi.Input<String> projectId;
-
   /// Droplet region
   final pulumi.Input<String> region;
-
   /// Droplet size
   final pulumi.Input<String> size;
-
   /// Droplet SSH keys
   final pulumi.Input<List<String>> sshKeys;
-
   /// Droplet tags
   final pulumi.Input<List<String>> tags;
-
   /// Droplet user data
   final pulumi.Input<String> userData;
-
   /// Droplet VPC UUID
   final pulumi.Input<String> vpcUuid;
-
   /// Enable droplet agent
   final pulumi.Input<bool> withDropletAgent;
 
@@ -87,3 +78,4 @@ class GetDropletAutoscaleDropletTemplate {
     );
   }
 }
+

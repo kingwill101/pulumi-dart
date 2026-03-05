@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWorkspaceIdentity {
   /// A list of User Assigned Identity IDs assigned to this Machine Learning Workspace.
   final pulumi.Input<List<String>> identityIds;
-
   /// The Principal ID of the System Assigned Managed Identity assigned to this Machine Learning Workspace.
   final pulumi.Input<String> principalId;
-
   /// The Tenant ID of the System Assigned Managed Identity assigned to this Machine Learning Workspace.
   final pulumi.Input<String> tenantId;
-
   /// The Type of Managed Identity assigned to this Machine Learning Workspace.
   final pulumi.Input<String> type;
 
@@ -38,12 +35,11 @@ class GetWorkspaceIdentity {
 
   factory GetWorkspaceIdentity.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceIdentity(
-      identityIds: pulumi.Input.fromValue(
-        (map['identityIds'] as List).cast<String>(),
-      ),
+      identityIds: pulumi.Input.fromValue((map['identityIds'] as List).cast<String>()),
       principalId: pulumi.Input.fromValue(map['principalId'] as String),
       tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

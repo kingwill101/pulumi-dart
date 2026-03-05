@@ -10,25 +10,20 @@ class BrokerAuthorizationProperties {
 
   /// Creates a new [BrokerAuthorizationProperties].
   /// [authorizationPolicies] The list of authorization policies supported by the Authorization Resource.
-  BrokerAuthorizationProperties({required this.authorizationPolicies});
+  BrokerAuthorizationProperties({
+    required this.authorizationPolicies,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authorizationPolicies':
-          pulumi.Input.mapInputValue<AuthorizationConfig, Map<String, dynamic>>(
-            authorizationPolicies,
-            (value) => value.toMap(),
-          ),
+      'authorizationPolicies': pulumi.Input.mapInputValue<AuthorizationConfig, Map<String, dynamic>>(authorizationPolicies, (value) => value.toMap()),
     };
   }
 
   factory BrokerAuthorizationProperties.fromMap(Map<String, dynamic> map) {
     return BrokerAuthorizationProperties(
-      authorizationPolicies: pulumi.Input.fromValue(
-        AuthorizationConfig.fromMap(
-          (map['authorizationPolicies']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      authorizationPolicies: pulumi.Input.fromValue(AuthorizationConfig.fromMap((map['authorizationPolicies']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

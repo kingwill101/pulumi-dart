@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ShortUrlArgs {
   /// Short chain service use validity period. Valid values: `30`, `60`, `90`. The unit is days, and the maximum validity period is 90 days.
   final pulumi.Input<int> effectiveDays;
-
   /// The name of the resource.
   final pulumi.Input<String> shortUrlName;
-
   /// The original link address.
   final pulumi.Input<String> sourceUrl;
 
@@ -42,3 +40,4 @@ class ShortUrlArgs {
     );
   }
 }
+

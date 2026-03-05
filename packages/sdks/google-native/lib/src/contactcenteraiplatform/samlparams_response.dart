@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SAMLParamsResponse {
   /// SAML certificate
   final pulumi.Input<String> certificate;
-
   /// IdP field that maps to the user’s email address
   final pulumi.Input<String> emailMapping;
-
   /// Entity id URL
   final pulumi.Input<String> entityId;
-
   /// Single sign-on URL
   final pulumi.Input<String> ssoUri;
-
   /// Email address of the first admin users.
   final pulumi.Input<String> userEmail;
 
@@ -53,3 +49,4 @@ class SAMLParamsResponse {
     );
   }
 }
+

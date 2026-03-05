@@ -9,19 +9,20 @@ class NodeToNodeEncryptionOptions {
 
   /// Creates a new [NodeToNodeEncryptionOptions].
   /// [enabled] &lt;p&gt;True to enable node-to-node encryption.&lt;/p&gt;
-  NodeToNodeEncryptionOptions({this.enabled});
+  NodeToNodeEncryptionOptions({
+    this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': ?enabled};
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
   factory NodeToNodeEncryptionOptions.fromMap(Map<String, dynamic> map) {
     return NodeToNodeEncryptionOptions(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

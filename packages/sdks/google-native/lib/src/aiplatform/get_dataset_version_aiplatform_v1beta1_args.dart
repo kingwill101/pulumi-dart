@@ -37,25 +37,14 @@ class GetDatasetVersionAiplatformV1beta1Args {
     };
   }
 
-  factory GetDatasetVersionAiplatformV1beta1Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDatasetVersionAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetDatasetVersionAiplatformV1beta1Args(
       datasetId: pulumi.Input.fromValue(map['datasetId'] as String),
-      datasetVersionId: pulumi.Input.fromValue(
-        map['datasetVersionId'] as String,
-      ),
+      datasetVersionId: pulumi.Input.fromValue(map['datasetVersionId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      readMask: (() {
-        final guardedValue = map['readMask'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      readMask: (() { final guardedValue = map['readMask']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

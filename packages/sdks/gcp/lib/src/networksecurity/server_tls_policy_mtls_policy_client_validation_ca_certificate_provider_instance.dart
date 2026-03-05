@@ -13,14 +13,15 @@ class ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'pluginInstance': pluginInstance};
+    return <String, dynamic>{
+      'pluginInstance': pluginInstance,
+    };
   }
 
-  factory ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance.fromMap(Map<String, dynamic> map) {
     return ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance(
       pluginInstance: pulumi.Input.fromValue(map['pluginInstance'] as String),
     );
   }
 }
+

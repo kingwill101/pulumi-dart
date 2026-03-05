@@ -10,27 +10,20 @@ class SecurityProfile {
 
   /// Creates a new [SecurityProfile].
   /// [uefiSettings] Specifies the security settings like secure boot used while creating the virtual machine.
-  SecurityProfile({this.uefiSettings});
+  SecurityProfile({
+    this.uefiSettings,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'uefiSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            UefiSettings,
-            Map<String, dynamic>
-          >(uefiSettings, (value) => value.toMap()),
+      'uefiSettings': ?pulumi.Input.mapOptionalInputValue<UefiSettings, Map<String, dynamic>>(uefiSettings, (value) => value.toMap()),
     };
   }
 
   factory SecurityProfile.fromMap(Map<String, dynamic> map) {
     return SecurityProfile(
-      uefiSettings: (() {
-        final guardedValue = map['uefiSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          UefiSettings.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
+      uefiSettings: (() { final guardedValue = map['uefiSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(UefiSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

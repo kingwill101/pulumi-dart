@@ -14,3 +14,4 @@ enum RebalanceStrategy {
     throw ArgumentError('Unknown RebalanceStrategy value: $value');
   }
 }
+

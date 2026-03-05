@@ -15,48 +15,31 @@ import 'google_cloud_dialogflow_v2_synthesize_speech_config.dart';
 /// {@macro pulumi_dialogflow_v2_conversation_profile_args_doc}
 class ConversationProfileArgs {
   /// Configuration for an automated agent to use with this profile.
-  final pulumi.Input<GoogleCloudDialogflowV2AutomatedAgentConfig>?
-  automatedAgentConfig;
-
+  final pulumi.Input<GoogleCloudDialogflowV2AutomatedAgentConfig>? automatedAgentConfig;
   /// Human readable name for this profile. Max length 1024 bytes.
   final pulumi.Input<String> displayName;
-
   /// Configuration for agent assistance to use with this profile.
-  final pulumi.Input<GoogleCloudDialogflowV2HumanAgentAssistantConfig>?
-  humanAgentAssistantConfig;
-
+  final pulumi.Input<GoogleCloudDialogflowV2HumanAgentAssistantConfig>? humanAgentAssistantConfig;
   /// Configuration for connecting to a live agent. Currently, this feature is not general available, please contact Google to get access.
-  final pulumi.Input<GoogleCloudDialogflowV2HumanAgentHandoffConfig>?
-  humanAgentHandoffConfig;
-
+  final pulumi.Input<GoogleCloudDialogflowV2HumanAgentHandoffConfig>? humanAgentHandoffConfig;
   /// Language code for the conversation profile. If not specified, the language is en-US. Language at ConversationProfile should be set for all non en-US languages. This should be a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. Example: "en-US".
   final pulumi.Input<String>? languageCode;
   final pulumi.Input<String>? location;
-
   /// Configuration for logging conversation lifecycle events.
   final pulumi.Input<GoogleCloudDialogflowV2LoggingConfig>? loggingConfig;
-
   /// The unique identifier of this conversation profile. Format: `projects//locations//conversationProfiles/`.
   final pulumi.Input<String>? name;
-
   /// Configuration for publishing new message events. Event will be sent in format of ConversationEvent
-  final pulumi.Input<GoogleCloudDialogflowV2NotificationConfig>?
-  newMessageEventNotificationConfig;
-
+  final pulumi.Input<GoogleCloudDialogflowV2NotificationConfig>? newMessageEventNotificationConfig;
   /// Configuration for publishing conversation lifecycle events.
-  final pulumi.Input<GoogleCloudDialogflowV2NotificationConfig>?
-  notificationConfig;
+  final pulumi.Input<GoogleCloudDialogflowV2NotificationConfig>? notificationConfig;
   final pulumi.Input<String>? project;
-
   /// Name of the CX SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
   final pulumi.Input<String>? securitySettings;
-
   /// Settings for speech transcription.
   final pulumi.Input<GoogleCloudDialogflowV2SpeechToTextConfig>? sttConfig;
-
   /// The time zone of this conversational profile from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris. Defaults to America/New_York.
   final pulumi.Input<String>? timeZone;
-
   /// Configuration for Text-to-Speech synthesization. Used by Phone Gateway to specify synthesization options. If agent defines synthesization options as well, agent settings overrides the option here.
   final pulumi.Input<GoogleCloudDialogflowV2SynthesizeSpeechConfig>? ttsConfig;
 
@@ -96,161 +79,42 @@ class ConversationProfileArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'automatedAgentConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudDialogflowV2AutomatedAgentConfig,
-            Map<String, dynamic>
-          >(automatedAgentConfig, (value) => value.toMap()),
+      'automatedAgentConfig': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowV2AutomatedAgentConfig, Map<String, dynamic>>(automatedAgentConfig, (value) => value.toMap()),
       'displayName': displayName,
-      'humanAgentAssistantConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudDialogflowV2HumanAgentAssistantConfig,
-            Map<String, dynamic>
-          >(humanAgentAssistantConfig, (value) => value.toMap()),
-      'humanAgentHandoffConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudDialogflowV2HumanAgentHandoffConfig,
-            Map<String, dynamic>
-          >(humanAgentHandoffConfig, (value) => value.toMap()),
+      'humanAgentAssistantConfig': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowV2HumanAgentAssistantConfig, Map<String, dynamic>>(humanAgentAssistantConfig, (value) => value.toMap()),
+      'humanAgentHandoffConfig': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowV2HumanAgentHandoffConfig, Map<String, dynamic>>(humanAgentHandoffConfig, (value) => value.toMap()),
       'languageCode': ?languageCode,
       'location': ?location,
-      'loggingConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudDialogflowV2LoggingConfig,
-            Map<String, dynamic>
-          >(loggingConfig, (value) => value.toMap()),
+      'loggingConfig': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowV2LoggingConfig, Map<String, dynamic>>(loggingConfig, (value) => value.toMap()),
       'name': ?name,
-      'newMessageEventNotificationConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudDialogflowV2NotificationConfig,
-            Map<String, dynamic>
-          >(newMessageEventNotificationConfig, (value) => value.toMap()),
-      'notificationConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudDialogflowV2NotificationConfig,
-            Map<String, dynamic>
-          >(notificationConfig, (value) => value.toMap()),
+      'newMessageEventNotificationConfig': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowV2NotificationConfig, Map<String, dynamic>>(newMessageEventNotificationConfig, (value) => value.toMap()),
+      'notificationConfig': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowV2NotificationConfig, Map<String, dynamic>>(notificationConfig, (value) => value.toMap()),
       'project': ?project,
       'securitySettings': ?securitySettings,
-      'sttConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudDialogflowV2SpeechToTextConfig,
-            Map<String, dynamic>
-          >(sttConfig, (value) => value.toMap()),
+      'sttConfig': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowV2SpeechToTextConfig, Map<String, dynamic>>(sttConfig, (value) => value.toMap()),
       'timeZone': ?timeZone,
-      'ttsConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudDialogflowV2SynthesizeSpeechConfig,
-            Map<String, dynamic>
-          >(ttsConfig, (value) => value.toMap()),
+      'ttsConfig': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowV2SynthesizeSpeechConfig, Map<String, dynamic>>(ttsConfig, (value) => value.toMap()),
     };
   }
 
   factory ConversationProfileArgs.fromMap(Map<String, dynamic> map) {
     return ConversationProfileArgs(
-      automatedAgentConfig: (() {
-        final guardedValue = map['automatedAgentConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudDialogflowV2AutomatedAgentConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      automatedAgentConfig: (() { final guardedValue = map['automatedAgentConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudDialogflowV2AutomatedAgentConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
-      humanAgentAssistantConfig: (() {
-        final guardedValue = map['humanAgentAssistantConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudDialogflowV2HumanAgentAssistantConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      humanAgentHandoffConfig: (() {
-        final guardedValue = map['humanAgentHandoffConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudDialogflowV2HumanAgentHandoffConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      languageCode: (() {
-        final guardedValue = map['languageCode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      loggingConfig: (() {
-        final guardedValue = map['loggingConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudDialogflowV2LoggingConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      newMessageEventNotificationConfig: (() {
-        final guardedValue = map['newMessageEventNotificationConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudDialogflowV2NotificationConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      notificationConfig: (() {
-        final guardedValue = map['notificationConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudDialogflowV2NotificationConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      securitySettings: (() {
-        final guardedValue = map['securitySettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sttConfig: (() {
-        final guardedValue = map['sttConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudDialogflowV2SpeechToTextConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      timeZone: (() {
-        final guardedValue = map['timeZone'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ttsConfig: (() {
-        final guardedValue = map['ttsConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudDialogflowV2SynthesizeSpeechConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      humanAgentAssistantConfig: (() { final guardedValue = map['humanAgentAssistantConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudDialogflowV2HumanAgentAssistantConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      humanAgentHandoffConfig: (() { final guardedValue = map['humanAgentHandoffConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudDialogflowV2HumanAgentHandoffConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      languageCode: (() { final guardedValue = map['languageCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      loggingConfig: (() { final guardedValue = map['loggingConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudDialogflowV2LoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      newMessageEventNotificationConfig: (() { final guardedValue = map['newMessageEventNotificationConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudDialogflowV2NotificationConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      notificationConfig: (() { final guardedValue = map['notificationConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudDialogflowV2NotificationConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      securitySettings: (() { final guardedValue = map['securitySettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sttConfig: (() { final guardedValue = map['sttConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudDialogflowV2SpeechToTextConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      timeZone: (() { final guardedValue = map['timeZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ttsConfig: (() { final guardedValue = map['ttsConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudDialogflowV2SynthesizeSpeechConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

@@ -8,14 +8,12 @@ class InstancePersistenceConfig {
   /// - RDB: RDB based Persistence is enabled.
   /// Possible values are: `DISABLED`, `RDB`.
   final pulumi.Input<String>? persistenceMode;
-
   /// (Output)
   /// Output only. The next time that a snapshot attempt is scheduled to occur.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
   /// to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   final pulumi.Input<String>? rdbNextSnapshotTime;
-
   /// Optional. Available snapshot periods for scheduling.
   /// - ONE_HOUR:	Snapshot every 1 hour.
   /// - SIX_HOURS:	Snapshot every 6 hours.
@@ -23,7 +21,6 @@ class InstancePersistenceConfig {
   /// - TWENTY_FOUR_HOURS:	Snapshot every 24 hours.
   /// Possible values are: `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, `TWENTY_FOUR_HOURS`.
   final pulumi.Input<String>? rdbSnapshotPeriod;
-
   /// Optional. Date and time that the first snapshot was/will be attempted,
   /// and to which future snapshots will be aligned. If not provided,
   /// the current time will be used.
@@ -55,26 +52,11 @@ class InstancePersistenceConfig {
 
   factory InstancePersistenceConfig.fromMap(Map<String, dynamic> map) {
     return InstancePersistenceConfig(
-      persistenceMode: (() {
-        final guardedValue = map['persistenceMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      rdbNextSnapshotTime: (() {
-        final guardedValue = map['rdbNextSnapshotTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      rdbSnapshotPeriod: (() {
-        final guardedValue = map['rdbSnapshotPeriod'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      rdbSnapshotStartTime: (() {
-        final guardedValue = map['rdbSnapshotStartTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      persistenceMode: (() { final guardedValue = map['persistenceMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      rdbNextSnapshotTime: (() { final guardedValue = map['rdbNextSnapshotTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      rdbSnapshotPeriod: (() { final guardedValue = map['rdbSnapshotPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      rdbSnapshotStartTime: (() { final guardedValue = map['rdbSnapshotStartTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

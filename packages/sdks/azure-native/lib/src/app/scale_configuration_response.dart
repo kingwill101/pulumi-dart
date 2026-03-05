@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScaleConfigurationResponse {
   /// The maximum count of sessions at the same time.
   final pulumi.Input<int>? maxConcurrentSessions;
-
   /// The minimum count of ready session instances.
   final pulumi.Input<int>? readySessionInstances;
 
@@ -27,16 +26,9 @@ class ScaleConfigurationResponse {
 
   factory ScaleConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ScaleConfigurationResponse(
-      maxConcurrentSessions: (() {
-        final guardedValue = map['maxConcurrentSessions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      readySessionInstances: (() {
-        final guardedValue = map['readySessionInstances'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      maxConcurrentSessions: (() { final guardedValue = map['maxConcurrentSessions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      readySessionInstances: (() { final guardedValue = map['readySessionInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

@@ -15,7 +15,11 @@ class GetApiArgs {
   /// [apiId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetApiArgs({required this.apiId, required this.location, this.project});
+  GetApiArgs({
+    required this.apiId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,11 +33,8 @@ class GetApiArgs {
     return GetApiArgs(
       apiId: pulumi.Input.fromValue(map['apiId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

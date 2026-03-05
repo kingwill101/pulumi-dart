@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SpringCloudGatewayCustomDomainState {
   /// The name which should be used for this Spring Cloud Gateway Custom Domain. Changing this forces a new Spring Cloud Gateway Custom Domain to be created.
   final pulumi.Input<String>? name;
-
   /// The ID of the Spring Cloud Gateway. Changing this forces a new Spring Cloud Gateway Custom Domain to be created.
   final pulumi.Input<String>? springCloudGatewayId;
-
   /// Specifies the thumbprint of the Spring Cloud Certificate that binds to the Spring Cloud Gateway Custom Domain.
   final pulumi.Input<String>? thumbprint;
 
@@ -31,25 +29,12 @@ class SpringCloudGatewayCustomDomainState {
     };
   }
 
-  factory SpringCloudGatewayCustomDomainState.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SpringCloudGatewayCustomDomainState.fromMap(Map<String, dynamic> map) {
     return SpringCloudGatewayCustomDomainState(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      springCloudGatewayId: (() {
-        final guardedValue = map['springCloudGatewayId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      thumbprint: (() {
-        final guardedValue = map['thumbprint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      springCloudGatewayId: (() { final guardedValue = map['springCloudGatewayId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      thumbprint: (() { final guardedValue = map['thumbprint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

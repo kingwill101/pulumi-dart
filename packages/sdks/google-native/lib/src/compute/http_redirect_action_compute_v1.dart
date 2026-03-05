@@ -7,20 +7,14 @@ import 'http_redirect_action_redirect_response_code_compute_v1.dart';
 class HttpRedirectActionComputeV1 {
   /// The host that is used in the redirect response instead of the one that was supplied in the request. The value must be from 1 to 255 characters.
   final pulumi.Input<String>? hostRedirect;
-
   /// If set to true, the URL scheme in the redirected request is set to HTTPS. If set to false, the URL scheme of the redirected request remains the same as that of the request. This must only be set for URL maps used in TargetHttpProxys. Setting this true for TargetHttpsProxy is not permitted. The default is set to false.
   final pulumi.Input<bool>? httpsRedirect;
-
   /// The path that is used in the redirect response instead of the one that was supplied in the request. pathRedirect cannot be supplied together with prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the original request is used for the redirect. The value must be from 1 to 1024 characters.
   final pulumi.Input<String>? pathRedirect;
-
   /// The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch, retaining the remaining portion of the URL before redirecting the request. prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or neither. If neither is supplied, the path of the original request is used for the redirect. The value must be from 1 to 1024 characters.
   final pulumi.Input<String>? prefixRedirect;
-
   /// The HTTP Status code to use for this RedirectAction. Supported values are: - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301. - FOUND, which corresponds to 302. - SEE_OTHER which corresponds to 303. - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method is retained. - PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method is retained.
-  final pulumi.Input<HttpRedirectActionRedirectResponseCodeComputeV1>?
-  redirectResponseCode;
-
+  final pulumi.Input<HttpRedirectActionRedirectResponseCodeComputeV1>? redirectResponseCode;
   /// If set to true, any accompanying query portion of the original URL is removed before redirecting the request. If set to false, the query portion of the original URL is retained. The default is set to false.
   final pulumi.Input<bool>? stripQuery;
 
@@ -46,51 +40,20 @@ class HttpRedirectActionComputeV1 {
       'httpsRedirect': ?httpsRedirect,
       'pathRedirect': ?pathRedirect,
       'prefixRedirect': ?prefixRedirect,
-      'redirectResponseCode':
-          ?pulumi.Input.mapOptionalInputValue<
-            HttpRedirectActionRedirectResponseCodeComputeV1,
-            String
-          >(redirectResponseCode, (value) => value.wireValue),
+      'redirectResponseCode': ?pulumi.Input.mapOptionalInputValue<HttpRedirectActionRedirectResponseCodeComputeV1, String>(redirectResponseCode, (value) => value.wireValue),
       'stripQuery': ?stripQuery,
     };
   }
 
   factory HttpRedirectActionComputeV1.fromMap(Map<String, dynamic> map) {
     return HttpRedirectActionComputeV1(
-      hostRedirect: (() {
-        final guardedValue = map['hostRedirect'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      httpsRedirect: (() {
-        final guardedValue = map['httpsRedirect'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      pathRedirect: (() {
-        final guardedValue = map['pathRedirect'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      prefixRedirect: (() {
-        final guardedValue = map['prefixRedirect'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      redirectResponseCode: (() {
-        final guardedValue = map['redirectResponseCode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          HttpRedirectActionRedirectResponseCodeComputeV1.fromValue(
-            guardedValue as String,
-          ),
-        );
-      })(),
-      stripQuery: (() {
-        final guardedValue = map['stripQuery'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      hostRedirect: (() { final guardedValue = map['hostRedirect']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      httpsRedirect: (() { final guardedValue = map['httpsRedirect']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      pathRedirect: (() { final guardedValue = map['pathRedirect']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      prefixRedirect: (() { final guardedValue = map['prefixRedirect']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      redirectResponseCode: (() { final guardedValue = map['redirectResponseCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HttpRedirectActionRedirectResponseCodeComputeV1.fromValue(guardedValue as String)); })(),
+      stripQuery: (() { final guardedValue = map['stripQuery']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

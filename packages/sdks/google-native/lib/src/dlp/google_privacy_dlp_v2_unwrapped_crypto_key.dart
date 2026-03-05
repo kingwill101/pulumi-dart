@@ -9,17 +9,20 @@ class GooglePrivacyDlpV2UnwrappedCryptoKey {
 
   /// Creates a new [GooglePrivacyDlpV2UnwrappedCryptoKey].
   /// [key] A 128/192/256 bit key.
-  GooglePrivacyDlpV2UnwrappedCryptoKey({required this.key});
+  GooglePrivacyDlpV2UnwrappedCryptoKey({
+    required this.key,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': key};
+    return <String, dynamic>{
+      'key': key,
+    };
   }
 
-  factory GooglePrivacyDlpV2UnwrappedCryptoKey.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GooglePrivacyDlpV2UnwrappedCryptoKey.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2UnwrappedCryptoKey(
       key: pulumi.Input.fromValue(map['key'] as String),
     );
   }
 }
+

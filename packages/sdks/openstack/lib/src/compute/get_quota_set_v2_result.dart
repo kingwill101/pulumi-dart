@@ -1,55 +1,40 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getQuotaSetV2.
 class GetQuotaSetV2Result {
   /// The number of allowed server cores.
   final int cores;
-
   /// The number of allowed fixed IP addresses. Available until version 2.35.
   final int fixedIps;
-
   /// The number of allowed floating IP addresses. Available until version 2.35.
   final int floatingIps;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The number of allowed bytes of content for each injected file. Available until version 2.56.
   final int injectedFileContentBytes;
-
   /// The number of allowed bytes for each injected file path. Available until version 2.56.
   final int injectedFilePathBytes;
-
   /// The number of allowed injected files. Available until version 2.56.
   final int injectedFiles;
-
   /// The number of allowed servers.
   final int instances;
-
   /// The number of allowed key pairs for each user.
   final int keyPairs;
-
   /// The number of allowed metadata items for each server.
   final int metadataItems;
-
   /// See Argument Reference above.
   final String projectId;
-
   /// The amount of allowed server RAM, in MiB.
   final int ram;
-
   /// See Argument Reference above.
   final String region;
-
   /// The number of allowed rules for each security group. Available until version 2.35.
   final int securityGroupRules;
-
   /// The number of allowed security groups. Available until version 2.35.
   final int securityGroups;
-
   /// The number of allowed members for each server group.
   final int serverGroupMembers;
-
   /// The number of allowed server groups.
   final int serverGroups;
 
@@ -135,3 +120,4 @@ class GetQuotaSetV2Result {
     );
   }
 }
+

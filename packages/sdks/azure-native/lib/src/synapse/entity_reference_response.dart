@@ -6,31 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EntityReferenceResponse {
   /// The name of this referenced entity.
   final pulumi.Input<String>? referenceName;
-
   /// The type of this referenced entity.
   final pulumi.Input<String>? type;
 
   /// Creates a new [EntityReferenceResponse].
   /// [referenceName] The name of this referenced entity.
   /// [type] The type of this referenced entity.
-  EntityReferenceResponse({this.referenceName, this.type});
+  EntityReferenceResponse({
+    this.referenceName,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'referenceName': ?referenceName, 'type': ?type};
+    return <String, dynamic>{
+      'referenceName': ?referenceName,
+      'type': ?type,
+    };
   }
 
   factory EntityReferenceResponse.fromMap(Map<String, dynamic> map) {
     return EntityReferenceResponse(
-      referenceName: (() {
-        final guardedValue = map['referenceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      referenceName: (() { final guardedValue = map['referenceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

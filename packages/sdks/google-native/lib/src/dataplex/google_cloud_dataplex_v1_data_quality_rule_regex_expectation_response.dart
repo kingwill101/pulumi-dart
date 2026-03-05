@@ -14,14 +14,15 @@ class GoogleCloudDataplexV1DataQualityRuleRegexExpectationResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'regex': regex};
+    return <String, dynamic>{
+      'regex': regex,
+    };
   }
 
-  factory GoogleCloudDataplexV1DataQualityRuleRegexExpectationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDataplexV1DataQualityRuleRegexExpectationResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1DataQualityRuleRegexExpectationResponse(
       regex: pulumi.Input.fromValue(map['regex'] as String),
     );
   }
 }
+

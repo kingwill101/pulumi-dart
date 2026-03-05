@@ -18,3 +18,4 @@ enum NetworkInterfaceStatus {
     throw ArgumentError('Unknown NetworkInterfaceStatus value: $value');
   }
 }
+

@@ -8,13 +8,10 @@ import 'vmdisk_security_profile_response.dart';
 class ManagedDiskParametersResponse {
   /// Specifies the customer managed disk encryption set resource id for the managed disk.
   final pulumi.Input<DiskEncryptionSetParametersResponse>? diskEncryptionSet;
-
   /// Resource Id
   final pulumi.Input<String>? id;
-
   /// Specifies the security profile for the managed disk.
   final pulumi.Input<VMDiskSecurityProfileResponse>? securityProfile;
-
   /// Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS can only be used with data disks, it cannot be used with OS Disk.
   final pulumi.Input<String>? storageAccountType;
 
@@ -32,51 +29,20 @@ class ManagedDiskParametersResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'diskEncryptionSet':
-          ?pulumi.Input.mapOptionalInputValue<
-            DiskEncryptionSetParametersResponse,
-            Map<String, dynamic>
-          >(diskEncryptionSet, (value) => value.toMap()),
+      'diskEncryptionSet': ?pulumi.Input.mapOptionalInputValue<DiskEncryptionSetParametersResponse, Map<String, dynamic>>(diskEncryptionSet, (value) => value.toMap()),
       'id': ?id,
-      'securityProfile':
-          ?pulumi.Input.mapOptionalInputValue<
-            VMDiskSecurityProfileResponse,
-            Map<String, dynamic>
-          >(securityProfile, (value) => value.toMap()),
+      'securityProfile': ?pulumi.Input.mapOptionalInputValue<VMDiskSecurityProfileResponse, Map<String, dynamic>>(securityProfile, (value) => value.toMap()),
       'storageAccountType': ?storageAccountType,
     };
   }
 
   factory ManagedDiskParametersResponse.fromMap(Map<String, dynamic> map) {
     return ManagedDiskParametersResponse(
-      diskEncryptionSet: (() {
-        final guardedValue = map['diskEncryptionSet'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DiskEncryptionSetParametersResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      securityProfile: (() {
-        final guardedValue = map['securityProfile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          VMDiskSecurityProfileResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      storageAccountType: (() {
-        final guardedValue = map['storageAccountType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      diskEncryptionSet: (() { final guardedValue = map['diskEncryptionSet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DiskEncryptionSetParametersResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      securityProfile: (() { final guardedValue = map['securityProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VMDiskSecurityProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      storageAccountType: (() { final guardedValue = map['storageAccountType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

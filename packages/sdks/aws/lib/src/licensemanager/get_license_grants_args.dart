@@ -10,52 +10,29 @@ import 'get_license_grants_filter.dart';
 class GetLicenseGrantsArgs {
   /// Custom filter block as described below.
   final pulumi.Input<List<GetLicenseGrantsFilter>>? filters;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
   /// Creates a new [GetLicenseGrantsArgs].
   /// [filters] Custom filter block as described below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetLicenseGrantsArgs({this.filters, this.region});
+  GetLicenseGrantsArgs({
+    this.filters,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GetLicenseGrantsFilter>,
-            List<Map<String, dynamic>>
-          >(
-            filters,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetLicenseGrantsFilter,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetLicenseGrantsFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetLicenseGrantsFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
       'region': ?region,
     };
   }
 
   factory GetLicenseGrantsArgs.fromMap(Map<String, dynamic> map) {
     return GetLicenseGrantsArgs(
-      filters: (() {
-        final guardedValue = map['filters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GetLicenseGrantsFilter>(
-            guardedValue,
-            (value) => GetLicenseGrantsFilter.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetLicenseGrantsFilter>(guardedValue, (value) => GetLicenseGrantsFilter.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

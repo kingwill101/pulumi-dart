@@ -18,15 +18,10 @@ class ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig {
     };
   }
 
-  factory ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig.fromMap(Map<String, dynamic> map) {
     return ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig(
-      dataprocMetastoreService: (() {
-        final guardedValue = map['dataprocMetastoreService'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dataprocMetastoreService: (() { final guardedValue = map['dataprocMetastoreService']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

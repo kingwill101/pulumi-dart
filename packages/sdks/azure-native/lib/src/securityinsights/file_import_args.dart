@@ -10,22 +10,16 @@ import 'file_metadata.dart';
 class FileImportArgs {
   /// The content type of this file.
   final pulumi.Input<String> contentType;
-
   /// File import ID
   final pulumi.Input<String>? fileImportId;
-
   /// Represents the imported file.
   final pulumi.Input<FileMetadata> importFile;
-
   /// Describes how to ingest the records in the file.
   final pulumi.Input<String> ingestionMode;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The source for the data in the file.
   final pulumi.Input<String> source;
-
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -51,11 +45,7 @@ class FileImportArgs {
     return <String, dynamic>{
       'contentType': contentType,
       'fileImportId': ?fileImportId,
-      'importFile':
-          pulumi.Input.mapInputValue<FileMetadata, Map<String, dynamic>>(
-            importFile,
-            (value) => value.toMap(),
-          ),
+      'importFile': pulumi.Input.mapInputValue<FileMetadata, Map<String, dynamic>>(importFile, (value) => value.toMap()),
       'ingestionMode': ingestionMode,
       'resourceGroupName': resourceGroupName,
       'source': source,
@@ -66,22 +56,13 @@ class FileImportArgs {
   factory FileImportArgs.fromMap(Map<String, dynamic> map) {
     return FileImportArgs(
       contentType: pulumi.Input.fromValue(map['contentType'] as String),
-      fileImportId: (() {
-        final guardedValue = map['fileImportId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      importFile: pulumi.Input.fromValue(
-        FileMetadata.fromMap(
-          (map['importFile']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      fileImportId: (() { final guardedValue = map['fileImportId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      importFile: pulumi.Input.fromValue(FileMetadata.fromMap((map['importFile']! as Map).cast<String, dynamic>())),
       ingestionMode: pulumi.Input.fromValue(map['ingestionMode'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       source: pulumi.Input.fromValue(map['source'] as String),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
+

@@ -8,13 +8,8 @@ import 'target_readiness_response.dart';
 class DataBaseMigrationAssessmentResponse {
   /// The time when Migration Assessment Report upload was last performed.
   final pulumi.Input<String> assessmentUploadTime;
-
   /// Issues and warnings impacting the migration of Database to particular Azure Migration Target.
-  final pulumi.Input<
-    List<DataBaseMigrationAssessmentResponseDatabaseAssessments>
-  >
-  databaseAssessments;
-
+  final pulumi.Input<List<DataBaseMigrationAssessmentResponseDatabaseAssessments>> databaseAssessments;
   /// The target readiness for migration for this database.
   final pulumi.Input<TargetReadinessResponse> targetReadiness;
 
@@ -31,49 +26,17 @@ class DataBaseMigrationAssessmentResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'assessmentUploadTime': assessmentUploadTime,
-      'databaseAssessments':
-          pulumi.Input.mapInputValue<
-            List<DataBaseMigrationAssessmentResponseDatabaseAssessments>,
-            List<Map<String, dynamic>>
-          >(
-            databaseAssessments,
-            (value) =>
-                pulumi.Input.encodeList<
-                  DataBaseMigrationAssessmentResponseDatabaseAssessments,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'targetReadiness':
-          pulumi.Input.mapInputValue<
-            TargetReadinessResponse,
-            Map<String, dynamic>
-          >(targetReadiness, (value) => value.toMap()),
+      'databaseAssessments': pulumi.Input.mapInputValue<List<DataBaseMigrationAssessmentResponseDatabaseAssessments>, List<Map<String, dynamic>>>(databaseAssessments, (value) => pulumi.Input.encodeList<DataBaseMigrationAssessmentResponseDatabaseAssessments, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'targetReadiness': pulumi.Input.mapInputValue<TargetReadinessResponse, Map<String, dynamic>>(targetReadiness, (value) => value.toMap()),
     };
   }
 
-  factory DataBaseMigrationAssessmentResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DataBaseMigrationAssessmentResponse.fromMap(Map<String, dynamic> map) {
     return DataBaseMigrationAssessmentResponse(
-      assessmentUploadTime: pulumi.Input.fromValue(
-        map['assessmentUploadTime'] as String,
-      ),
-      databaseAssessments: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          DataBaseMigrationAssessmentResponseDatabaseAssessments
-        >(
-          map['databaseAssessments']!,
-          (value) =>
-              DataBaseMigrationAssessmentResponseDatabaseAssessments.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
-      targetReadiness: pulumi.Input.fromValue(
-        TargetReadinessResponse.fromMap(
-          (map['targetReadiness']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      assessmentUploadTime: pulumi.Input.fromValue(map['assessmentUploadTime'] as String),
+      databaseAssessments: pulumi.Input.fromValue(pulumi.Input.decodeList<DataBaseMigrationAssessmentResponseDatabaseAssessments>(map['databaseAssessments']!, (value) => DataBaseMigrationAssessmentResponseDatabaseAssessments.fromMap((value as Map).cast<String, dynamic>()))),
+      targetReadiness: pulumi.Input.fromValue(TargetReadinessResponse.fromMap((map['targetReadiness']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

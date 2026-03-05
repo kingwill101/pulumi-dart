@@ -688,26 +688,17 @@ import 'network_manager_verifier_workspace_reachability_analysis_intent_state.da
 /// ```sh
 /// $ pulumi import azure:network/networkManagerVerifierWorkspaceReachabilityAnalysisIntent:NetworkManagerVerifierWorkspaceReachabilityAnalysisIntent example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Network/networkManagers/manager1/verifierWorkspaces/workspace1/reachabilityAnalysisIntents/intent1
 /// ```
-class NetworkManagerVerifierWorkspaceReachabilityAnalysisIntent
-    extends pulumi.CustomResource {
+class NetworkManagerVerifierWorkspaceReachabilityAnalysisIntent extends pulumi.CustomResource {
   /// The description of the resource. Changing this forces a new Network Manager Verifier Workspace Reachability Analysis Intent to be created.
   late final pulumi.Output<String?> description;
-
   /// The ID of the destination resource. The value can be the ID of either Public internet, Cosmos DB, Storage Account, SQL Server, Virtual machines, or Subnet. Changing this forces a new Network Manager Verifier Workspace Reachability Analysis Intent to be created.
   late final pulumi.Output<String> destinationResourceId;
-
   /// An `ip_traffic` block as defined below. Changing this forces a new Network Manager Verifier Workspace Reachability Analysis Intent to be created.
-  late final pulumi.Output<
-    NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentIpTraffic
-  >
-  ipTraffic;
-
+  late final pulumi.Output<NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentIpTraffic> ipTraffic;
   /// The name which should be used for this Network Manager Verifier Workspace Reachability Analysis Intent. Changing this forces a new Network Manager Verifier Workspace Reachability Analysis Intent to be created.
   late final pulumi.Output<String> name;
-
   /// The ID of the source resource. The value can be the ID of either Public internet, Virtual machines, or Subnet. Changing this forces a new Network Manager Verifier Workspace Reachability Analysis Intent to be created.
   late final pulumi.Output<String> sourceResourceId;
-
   /// The ID of the Network Manager Verifier Workspace. Changing this forces a new Network Manager Verifier Workspace Reachability Analysis Intent to be created.
   late final pulumi.Output<String> verifierWorkspaceId;
 
@@ -720,26 +711,14 @@ class NetworkManagerVerifierWorkspaceReachabilityAnalysisIntent
     NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/networkManagerVerifierWorkspaceReachabilityAnalysisIntent:NetworkManagerVerifierWorkspaceReachabilityAnalysisIntent',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/networkManagerVerifierWorkspaceReachabilityAnalysisIntent:NetworkManagerVerifierWorkspaceReachabilityAnalysisIntent',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     destinationResourceId = registerOutput<String>('destinationResourceId');
-    ipTraffic =
-        registerOutput<
-          NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentIpTraffic
-        >(
-          'ipTraffic',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentIpTraffic.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    ipTraffic = registerOutput<NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentIpTraffic>('ipTraffic', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentIpTraffic.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     sourceResourceId = registerOutput<String>('sourceResourceId');
     verifierWorkspaceId = registerOutput<String>('verifierWorkspaceId');
@@ -763,26 +742,14 @@ class NetworkManagerVerifierWorkspaceReachabilityAnalysisIntent
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/networkManagerVerifierWorkspaceReachabilityAnalysisIntent:NetworkManagerVerifierWorkspaceReachabilityAnalysisIntent',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/networkManagerVerifierWorkspaceReachabilityAnalysisIntent:NetworkManagerVerifierWorkspaceReachabilityAnalysisIntent',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     destinationResourceId = registerOutput<String>('destinationResourceId');
-    ipTraffic =
-        registerOutput<
-          NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentIpTraffic
-        >(
-          'ipTraffic',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentIpTraffic.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    ipTraffic = registerOutput<NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentIpTraffic>('ipTraffic', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentIpTraffic.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     sourceResourceId = registerOutput<String>('sourceResourceId');
     verifierWorkspaceId = registerOutput<String>('verifierWorkspaceId');

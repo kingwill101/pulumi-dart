@@ -37,9 +37,7 @@ class GetDatabaseMysqlConfigMysqlInnodbFlushNeighbors {
     };
   }
 
-  factory GetDatabaseMysqlConfigMysqlInnodbFlushNeighbors.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDatabaseMysqlConfigMysqlInnodbFlushNeighbors.fromMap(Map<String, dynamic> map) {
     return GetDatabaseMysqlConfigMysqlInnodbFlushNeighbors(
       description: pulumi.Input.fromValue(map['description'] as String),
       example: pulumi.Input.fromValue(map['example'] as int),
@@ -50,3 +48,4 @@ class GetDatabaseMysqlConfigMysqlInnodbFlushNeighbors {
     );
   }
 }
+

@@ -12,8 +12,7 @@ enum GoogleCloudDataplexV1SchemaPartitionStyle {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GoogleCloudDataplexV1SchemaPartitionStyle value: $value',
-    );
+    throw ArgumentError('Unknown GoogleCloudDataplexV1SchemaPartitionStyle value: $value');
   }
 }
+

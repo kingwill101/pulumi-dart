@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDataCollectionRuleAssociationArgs {
   /// The name of the association. The name is case insensitive.
   final pulumi.Input<String> associationName;
-
   /// The identifier of the resource.
   final pulumi.Input<String> resourceUri;
 
@@ -28,12 +27,11 @@ class GetDataCollectionRuleAssociationArgs {
     };
   }
 
-  factory GetDataCollectionRuleAssociationArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDataCollectionRuleAssociationArgs.fromMap(Map<String, dynamic> map) {
     return GetDataCollectionRuleAssociationArgs(
       associationName: pulumi.Input.fromValue(map['associationName'] as String),
       resourceUri: pulumi.Input.fromValue(map['resourceUri'] as String),
     );
   }
 }
+

@@ -424,16 +424,12 @@ import 'ecs_network_interface_permission_state.dart';
 class EcsNetworkInterfacePermission extends pulumi.CustomResource {
   /// Alibaba Cloud Partner (Certified ISV) account ID or individual user ID.
   late final pulumi.Output<String> accountId;
-
   /// Whether to force deletion of Network Interface Permission. Default value: `true`.
   late final pulumi.Output<bool?> force;
-
   /// The ID of the network interface.
   late final pulumi.Output<String> networkInterfaceId;
-
   /// The permissions of the Network Interface. Valid values: `InstanceAttach`. `InstanceAttach`: Allows authorized users to mount your ENI to the other ECS instance. The ECS instance must be in the same zone as the ENI.
   late final pulumi.Output<String> permission;
-
   /// The Status of the Network Interface Permissions. Valid values: `Pending`, `Granted`, `Revoking`, `Revoked`.
   late final pulumi.Output<String> status;
 
@@ -446,11 +442,11 @@ class EcsNetworkInterfacePermission extends pulumi.CustomResource {
     EcsNetworkInterfacePermissionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ecs/ecsNetworkInterfacePermission:EcsNetworkInterfacePermission',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ecs/ecsNetworkInterfacePermission:EcsNetworkInterfacePermission',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     force = registerOutput<bool?>('force');
     networkInterfaceId = registerOutput<String>('networkInterfaceId');
@@ -476,11 +472,11 @@ class EcsNetworkInterfacePermission extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ecs/ecsNetworkInterfacePermission:EcsNetworkInterfacePermission',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ecs/ecsNetworkInterfacePermission:EcsNetworkInterfacePermission',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     force = registerOutput<bool?>('force');
     networkInterfaceId = registerOutput<String>('networkInterfaceId');

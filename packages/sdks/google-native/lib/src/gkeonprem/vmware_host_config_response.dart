@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VmwareHostConfigResponse {
   /// DNS search domains.
   final pulumi.Input<List<String>> dnsSearchDomains;
-
   /// DNS servers.
   final pulumi.Input<List<String>> dnsServers;
-
   /// NTP servers.
   final pulumi.Input<List<String>> ntpServers;
 
@@ -33,15 +31,10 @@ class VmwareHostConfigResponse {
 
   factory VmwareHostConfigResponse.fromMap(Map<String, dynamic> map) {
     return VmwareHostConfigResponse(
-      dnsSearchDomains: pulumi.Input.fromValue(
-        (map['dnsSearchDomains'] as List).cast<String>(),
-      ),
-      dnsServers: pulumi.Input.fromValue(
-        (map['dnsServers'] as List).cast<String>(),
-      ),
-      ntpServers: pulumi.Input.fromValue(
-        (map['ntpServers'] as List).cast<String>(),
-      ),
+      dnsSearchDomains: pulumi.Input.fromValue((map['dnsSearchDomains'] as List).cast<String>()),
+      dnsServers: pulumi.Input.fromValue((map['dnsServers'] as List).cast<String>()),
+      ntpServers: pulumi.Input.fromValue((map['ntpServers'] as List).cast<String>()),
     );
   }
 }
+

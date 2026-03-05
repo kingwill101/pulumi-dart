@@ -9,25 +9,20 @@ class RoutingRuleAction {
 
   /// Creates a new [RoutingRuleAction].
   /// [invokeApi] Configuration to invoke a stage of a target API. Only REST APIs are supported. See below.
-  RoutingRuleAction({required this.invokeApi});
+  RoutingRuleAction({
+    required this.invokeApi,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'invokeApi':
-          pulumi.Input.mapInputValue<
-            RoutingRuleActionInvokeApi,
-            Map<String, dynamic>
-          >(invokeApi, (value) => value.toMap()),
+      'invokeApi': pulumi.Input.mapInputValue<RoutingRuleActionInvokeApi, Map<String, dynamic>>(invokeApi, (value) => value.toMap()),
     };
   }
 
   factory RoutingRuleAction.fromMap(Map<String, dynamic> map) {
     return RoutingRuleAction(
-      invokeApi: pulumi.Input.fromValue(
-        RoutingRuleActionInvokeApi.fromMap(
-          (map['invokeApi']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      invokeApi: pulumi.Input.fromValue(RoutingRuleActionInvokeApi.fromMap((map['invokeApi']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

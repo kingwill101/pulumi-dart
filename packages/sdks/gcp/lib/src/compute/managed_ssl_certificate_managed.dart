@@ -9,10 +9,14 @@ class ManagedSslCertificateManaged {
 
   /// Creates a new [ManagedSslCertificateManaged].
   /// [domains] Domains for which a managed SSL certificate will be valid.  Currently,
-  ManagedSslCertificateManaged({required this.domains});
+  ManagedSslCertificateManaged({
+    required this.domains,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'domains': domains};
+    return <String, dynamic>{
+      'domains': domains,
+    };
   }
 
   factory ManagedSslCertificateManaged.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class ManagedSslCertificateManaged {
     );
   }
 }
+

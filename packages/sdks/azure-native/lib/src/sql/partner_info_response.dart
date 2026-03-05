@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PartnerInfoResponse {
   /// Resource identifier of the partner server.
   final pulumi.Input<String> id;
-
   /// Geo location of the partner server.
   final pulumi.Input<String> location;
-
   /// Replication role of the partner server.
   final pulumi.Input<String> replicationRole;
 
@@ -39,3 +37,4 @@ class PartnerInfoResponse {
     );
   }
 }
+

@@ -8,10 +8,14 @@ class ClusterNodeConfigGvnic {
 
   /// Creates a new [ClusterNodeConfigGvnic].
   /// [enabled] Whether or not the Google Virtual NIC (gVNIC) is enabled
-  ClusterNodeConfigGvnic({required this.enabled});
+  ClusterNodeConfigGvnic({
+    required this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled};
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
   factory ClusterNodeConfigGvnic.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class ClusterNodeConfigGvnic {
     );
   }
 }
+

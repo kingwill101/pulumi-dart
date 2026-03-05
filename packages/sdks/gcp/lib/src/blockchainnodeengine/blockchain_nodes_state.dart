@@ -8,45 +8,34 @@ import 'blockchain_nodes_ethereum_details.dart';
 class BlockchainNodesState {
   /// ID of the requesting object.
   final pulumi.Input<String>? blockchainNodeId;
-
   /// User-provided key-value pairs
   /// Possible values are: `ETHEREUM`.
   final pulumi.Input<String>? blockchainType;
-
   /// The connection information through which to interact with a blockchain node.
   /// Structure is documented below.
   final pulumi.Input<List<BlockchainNodesConnectionInfo>>? connectionInfos;
-
   /// The timestamp at which the blockchain node was first created.
   final pulumi.Input<String>? createTime;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
-
   /// User-provided key-value pairs
   /// Structure is documented below.
   final pulumi.Input<BlockchainNodesEthereumDetails>? ethereumDetails;
-
   /// User-provided key-value pairs
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// Location of Blockchain Node being created.
   final pulumi.Input<String>? location;
-
   /// The fully qualified name of the blockchain node. e.g. projects/my-project/locations/us-central1/blockchainNodes/my-node.
   final pulumi.Input<String>? name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   final pulumi.Input<Map<String, String>>? pulumiLabels;
-
   /// The timestamp at which the blockchain node was last updated.
   final pulumi.Input<String>? updateTime;
 
@@ -82,25 +71,10 @@ class BlockchainNodesState {
     return <String, dynamic>{
       'blockchainNodeId': ?blockchainNodeId,
       'blockchainType': ?blockchainType,
-      'connectionInfos':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<BlockchainNodesConnectionInfo>,
-            List<Map<String, dynamic>>
-          >(
-            connectionInfos,
-            (value) =>
-                pulumi.Input.encodeList<
-                  BlockchainNodesConnectionInfo,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'connectionInfos': ?pulumi.Input.mapOptionalInputValue<List<BlockchainNodesConnectionInfo>, List<Map<String, dynamic>>>(connectionInfos, (value) => pulumi.Input.encodeList<BlockchainNodesConnectionInfo, Map<String, dynamic>>(value, (value) => value.toMap())),
       'createTime': ?createTime,
       'effectiveLabels': ?effectiveLabels,
-      'ethereumDetails':
-          ?pulumi.Input.mapOptionalInputValue<
-            BlockchainNodesEthereumDetails,
-            Map<String, dynamic>
-          >(ethereumDetails, (value) => value.toMap()),
+      'ethereumDetails': ?pulumi.Input.mapOptionalInputValue<BlockchainNodesEthereumDetails, Map<String, dynamic>>(ethereumDetails, (value) => value.toMap()),
       'labels': ?labels,
       'location': ?location,
       'name': ?name,
@@ -112,83 +86,19 @@ class BlockchainNodesState {
 
   factory BlockchainNodesState.fromMap(Map<String, dynamic> map) {
     return BlockchainNodesState(
-      blockchainNodeId: (() {
-        final guardedValue = map['blockchainNodeId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      blockchainType: (() {
-        final guardedValue = map['blockchainType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      connectionInfos: (() {
-        final guardedValue = map['connectionInfos'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<BlockchainNodesConnectionInfo>(
-            guardedValue,
-            (value) => BlockchainNodesConnectionInfo.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      effectiveLabels: (() {
-        final guardedValue = map['effectiveLabels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      ethereumDetails: (() {
-        final guardedValue = map['ethereumDetails'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BlockchainNodesEthereumDetails.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pulumiLabels: (() {
-        final guardedValue = map['pulumiLabels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      updateTime: (() {
-        final guardedValue = map['updateTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      blockchainNodeId: (() { final guardedValue = map['blockchainNodeId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      blockchainType: (() { final guardedValue = map['blockchainType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      connectionInfos: (() { final guardedValue = map['connectionInfos']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<BlockchainNodesConnectionInfo>(guardedValue, (value) => BlockchainNodesConnectionInfo.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      ethereumDetails: (() { final guardedValue = map['ethereumDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BlockchainNodesEthereumDetails.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

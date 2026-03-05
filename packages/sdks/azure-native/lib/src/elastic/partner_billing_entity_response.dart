@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PartnerBillingEntityResponse {
   /// The Elastic Organization Id.
   final pulumi.Input<String>? id;
-
   /// The Elastic Organization Name.
   final pulumi.Input<String>? name;
-
   /// Link to the elastic organization page
   final pulumi.Input<String>? partnerEntityUri;
 
@@ -17,7 +15,11 @@ class PartnerBillingEntityResponse {
   /// [id] The Elastic Organization Id.
   /// [name] The Elastic Organization Name.
   /// [partnerEntityUri] Link to the elastic organization page
-  PartnerBillingEntityResponse({this.id, this.name, this.partnerEntityUri});
+  PartnerBillingEntityResponse({
+    this.id,
+    this.name,
+    this.partnerEntityUri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class PartnerBillingEntityResponse {
 
   factory PartnerBillingEntityResponse.fromMap(Map<String, dynamic> map) {
     return PartnerBillingEntityResponse(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      partnerEntityUri: (() {
-        final guardedValue = map['partnerEntityUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      partnerEntityUri: (() { final guardedValue = map['partnerEntityUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

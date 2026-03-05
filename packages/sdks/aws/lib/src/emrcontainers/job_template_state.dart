@@ -7,22 +7,16 @@ import 'job_template_job_template_data.dart';
 class JobTemplateState {
   /// ARN of the job template.
   final pulumi.Input<String>? arn;
-
   /// The job template data which holds values of StartJobRun API request.
   final pulumi.Input<JobTemplateJobTemplateData>? jobTemplateData;
-
   /// The KMS key ARN used to encrypt the job template.
   final pulumi.Input<String>? kmsKeyArn;
-
   /// The specified name of the job template.
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
@@ -47,11 +41,7 @@ class JobTemplateState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'arn': ?arn,
-      'jobTemplateData':
-          ?pulumi.Input.mapOptionalInputValue<
-            JobTemplateJobTemplateData,
-            Map<String, dynamic>
-          >(jobTemplateData, (value) => value.toMap()),
+      'jobTemplateData': ?pulumi.Input.mapOptionalInputValue<JobTemplateJobTemplateData, Map<String, dynamic>>(jobTemplateData, (value) => value.toMap()),
       'kmsKeyArn': ?kmsKeyArn,
       'name': ?name,
       'region': ?region,
@@ -62,49 +52,14 @@ class JobTemplateState {
 
   factory JobTemplateState.fromMap(Map<String, dynamic> map) {
     return JobTemplateState(
-      arn: (() {
-        final guardedValue = map['arn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      jobTemplateData: (() {
-        final guardedValue = map['jobTemplateData'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          JobTemplateJobTemplateData.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      kmsKeyArn: (() {
-        final guardedValue = map['kmsKeyArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      tagsAll: (() {
-        final guardedValue = map['tagsAll'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      jobTemplateData: (() { final guardedValue = map['jobTemplateData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JobTemplateJobTemplateData.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      kmsKeyArn: (() { final guardedValue = map['kmsKeyArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

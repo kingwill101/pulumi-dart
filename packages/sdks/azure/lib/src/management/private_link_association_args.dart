@@ -11,13 +11,10 @@ class PrivateLinkAssociationArgs {
   ///
   /// &gt; **Note:** For now, `management_group_id` must be the ID of [Root Management Group](https://learn.microsoft.com/en-us/azure/governance/management-groups/overview#root-management-group-for-each-directory).
   final pulumi.Input<String> managementGroupId;
-
   /// Specifies the name of this Private Link Association, which should be a UUID. If `name` is not provided, a UUID will be generated, you should use the `ignore_changes` attribute to ignore changes to this field. Changing this forces a new Private Link Association to be created.
   final pulumi.Input<String>? name;
-
   /// Whether public network access is allowed. Changing this forces a new Private Link Association to be created.
   final pulumi.Input<bool> publicNetworkAccessEnabled;
-
   /// The Resource ID of Resource Management Private Link. Changing this forces a new Private Link Association to be created.
   final pulumi.Input<String> resourceManagementPrivateLinkId;
 
@@ -44,20 +41,11 @@ class PrivateLinkAssociationArgs {
 
   factory PrivateLinkAssociationArgs.fromMap(Map<String, dynamic> map) {
     return PrivateLinkAssociationArgs(
-      managementGroupId: pulumi.Input.fromValue(
-        map['managementGroupId'] as String,
-      ),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      publicNetworkAccessEnabled: pulumi.Input.fromValue(
-        map['publicNetworkAccessEnabled'] as bool,
-      ),
-      resourceManagementPrivateLinkId: pulumi.Input.fromValue(
-        map['resourceManagementPrivateLinkId'] as String,
-      ),
+      managementGroupId: pulumi.Input.fromValue(map['managementGroupId'] as String),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicNetworkAccessEnabled: pulumi.Input.fromValue(map['publicNetworkAccessEnabled'] as bool),
+      resourceManagementPrivateLinkId: pulumi.Input.fromValue(map['resourceManagementPrivateLinkId'] as String),
     );
   }
 }
+

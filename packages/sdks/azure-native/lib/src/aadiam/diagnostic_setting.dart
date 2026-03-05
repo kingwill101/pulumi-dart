@@ -199,28 +199,20 @@ import 'diagnostic_setting_args.dart';
 class DiagnosticSetting extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The resource Id for the event hub authorization rule.
   late final pulumi.Output<String?> eventHubAuthorizationRuleId;
-
   /// The name of the event hub. If none is specified, the default event hub will be selected.
   late final pulumi.Output<String?> eventHubName;
-
   /// The list of logs settings.
   late final pulumi.Output<List<Map<String, dynamic>>?> logs;
-
   /// Azure resource name
   late final pulumi.Output<String> name;
-
   /// The service bus rule Id of the diagnostic setting. This is here to maintain backwards compatibility.
   late final pulumi.Output<String?> serviceBusRuleId;
-
   /// The resource ID of the storage account to which you would like to send Diagnostic Logs.
   late final pulumi.Output<String?> storageAccountId;
-
   /// Azure resource type
   late final pulumi.Output<String> type;
-
   /// The workspace ID (resource ID of a Log Analytics workspace) for a Log Analytics workspace to which you would like to send Diagnostic Logs. Example: /subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2
   late final pulumi.Output<String?> workspaceId;
 
@@ -233,15 +225,13 @@ class DiagnosticSetting extends pulumi.CustomResource {
     DiagnosticSettingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:aadiam:DiagnosticSetting',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:aadiam:DiagnosticSetting',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    eventHubAuthorizationRuleId = registerOutput<String?>(
-      'eventHubAuthorizationRuleId',
-    );
+    eventHubAuthorizationRuleId = registerOutput<String?>('eventHubAuthorizationRuleId');
     eventHubName = registerOutput<String?>('eventHubName');
     logs = registerOutput<List<Map<String, dynamic>>?>('logs');
     this.name = registerOutput<String>('name');

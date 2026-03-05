@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FleetComputeConfiguration {
   /// Amount of disk space of the instance type included in the fleet.
   final pulumi.Input<int>? disk;
-
   /// EC2 instance type to be launched in the fleet. Specify only if `compute_type` is set to `CUSTOM_INSTANCE_TYPE`. See [Supported instance families](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html#environment-reserved-capacity.instance-types).
   final pulumi.Input<String>? instanceType;
-
   /// Machine type of the instance type included in the fleet. Valid values: `GENERAL`, `NVME`. Specify only if `compute_type` is set to `ATTRIBUTE_BASED_COMPUTE`.
   final pulumi.Input<String>? machineType;
-
   /// Amount of memory of the instance type included in the fleet. Specify only if `compute_type` is set to `ATTRIBUTE_BASED_COMPUTE`.
   final pulumi.Input<int>? memory;
-
   /// Number of vCPUs of the instance type included in the fleet. Specify only if `compute_type` is set to `ATTRIBUTE_BASED_COMPUTE`.
   final pulumi.Input<int>? vcpu;
 
@@ -44,31 +40,12 @@ class FleetComputeConfiguration {
 
   factory FleetComputeConfiguration.fromMap(Map<String, dynamic> map) {
     return FleetComputeConfiguration(
-      disk: (() {
-        final guardedValue = map['disk'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      instanceType: (() {
-        final guardedValue = map['instanceType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      machineType: (() {
-        final guardedValue = map['machineType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      memory: (() {
-        final guardedValue = map['memory'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      vcpu: (() {
-        final guardedValue = map['vcpu'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      disk: (() { final guardedValue = map['disk']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      instanceType: (() { final guardedValue = map['instanceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      machineType: (() { final guardedValue = map['machineType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      memory: (() { final guardedValue = map['memory']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      vcpu: (() { final guardedValue = map['vcpu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

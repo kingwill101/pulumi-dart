@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReadinessCheckResponse {
   /// Optional. Path to which the request should be sent.
   final pulumi.Input<String> path;
-
   /// Optional. Port to which the request should be sent.
   final pulumi.Input<int> port;
 
   /// Creates a new [ReadinessCheckResponse].
   /// [path] Optional. Path to which the request should be sent.
   /// [port] Optional. Port to which the request should be sent.
-  ReadinessCheckResponse({required this.path, required this.port});
+  ReadinessCheckResponse({
+    required this.path,
+    required this.port,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'path': path, 'port': port};
+    return <String, dynamic>{
+      'path': path,
+      'port': port,
+    };
   }
 
   factory ReadinessCheckResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class ReadinessCheckResponse {
     );
   }
 }
+

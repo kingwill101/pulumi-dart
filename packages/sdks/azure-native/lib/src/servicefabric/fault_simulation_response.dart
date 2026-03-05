@@ -7,16 +7,12 @@ import 'fault_simulation_details_response.dart';
 class FaultSimulationResponse {
   /// Fault simulation details
   final pulumi.Input<FaultSimulationDetailsResponse>? details;
-
   /// The end time of the fault simulation.
   final pulumi.Input<String>? endTime;
-
   /// unique identifier for the fault simulation.
   final pulumi.Input<String>? simulationId;
-
   /// The start time of the fault simulation.
   final pulumi.Input<String>? startTime;
-
   /// Fault simulation status
   final pulumi.Input<String>? status;
 
@@ -36,11 +32,7 @@ class FaultSimulationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'details':
-          ?pulumi.Input.mapOptionalInputValue<
-            FaultSimulationDetailsResponse,
-            Map<String, dynamic>
-          >(details, (value) => value.toMap()),
+      'details': ?pulumi.Input.mapOptionalInputValue<FaultSimulationDetailsResponse, Map<String, dynamic>>(details, (value) => value.toMap()),
       'endTime': ?endTime,
       'simulationId': ?simulationId,
       'startTime': ?startTime,
@@ -50,35 +42,12 @@ class FaultSimulationResponse {
 
   factory FaultSimulationResponse.fromMap(Map<String, dynamic> map) {
     return FaultSimulationResponse(
-      details: (() {
-        final guardedValue = map['details'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FaultSimulationDetailsResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      endTime: (() {
-        final guardedValue = map['endTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      simulationId: (() {
-        final guardedValue = map['simulationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      startTime: (() {
-        final guardedValue = map['startTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      details: (() { final guardedValue = map['details']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FaultSimulationDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      endTime: (() { final guardedValue = map['endTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      simulationId: (() { final guardedValue = map['simulationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      startTime: (() { final guardedValue = map['startTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

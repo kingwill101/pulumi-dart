@@ -6,34 +6,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SslKeyCertState {
   /// The content of the cert.
   final pulumi.Input<String>? certContent;
-
   /// full path of the SSL certificate on the BIGIP.
   final pulumi.Input<String>? certFullPath;
-
   /// Specifies the type of monitoring used.
   final pulumi.Input<String>? certMonitoringType;
-
   /// Name of the SSL certificate to be Imported on to BIGIP.
   final pulumi.Input<String>? certName;
-
   /// Specifies the OCSP responder.
   final pulumi.Input<String>? certOcsp;
-
   /// Specifies the issuer certificate.
   final pulumi.Input<String>? issuerCert;
-
   /// The content of the key.
   final pulumi.Input<String>? keyContent;
-
   /// full path of the SSL key on the BIGIP.
   final pulumi.Input<String>? keyFullPath;
-
   /// Name of the SSL key to be Imported on to BIGIP.
   final pulumi.Input<String>? keyName;
-
   /// Partition on to SSL certificate and key to be imported.
   final pulumi.Input<String>? partition;
-
   /// Passphrase on the SSL key.
   final pulumi.Input<String>? passphrase;
 
@@ -81,61 +71,18 @@ class SslKeyCertState {
 
   factory SslKeyCertState.fromMap(Map<String, dynamic> map) {
     return SslKeyCertState(
-      certContent: (() {
-        final guardedValue = map['certContent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      certFullPath: (() {
-        final guardedValue = map['certFullPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      certMonitoringType: (() {
-        final guardedValue = map['certMonitoringType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      certName: (() {
-        final guardedValue = map['certName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      certOcsp: (() {
-        final guardedValue = map['certOcsp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      issuerCert: (() {
-        final guardedValue = map['issuerCert'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keyContent: (() {
-        final guardedValue = map['keyContent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keyFullPath: (() {
-        final guardedValue = map['keyFullPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keyName: (() {
-        final guardedValue = map['keyName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      partition: (() {
-        final guardedValue = map['partition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      passphrase: (() {
-        final guardedValue = map['passphrase'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      certContent: (() { final guardedValue = map['certContent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      certFullPath: (() { final guardedValue = map['certFullPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      certMonitoringType: (() { final guardedValue = map['certMonitoringType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      certName: (() { final guardedValue = map['certName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      certOcsp: (() { final guardedValue = map['certOcsp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      issuerCert: (() { final guardedValue = map['issuerCert']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyContent: (() { final guardedValue = map['keyContent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyFullPath: (() { final guardedValue = map['keyFullPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyName: (() { final guardedValue = map['keyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      partition: (() { final guardedValue = map['partition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      passphrase: (() { final guardedValue = map['passphrase']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

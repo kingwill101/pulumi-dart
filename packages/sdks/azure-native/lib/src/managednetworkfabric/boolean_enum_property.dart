@@ -15,3 +15,4 @@ enum BooleanEnumProperty {
     throw ArgumentError('Unknown BooleanEnumProperty value: $value');
   }
 }
+

@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetStandardAssignmentArgs {
   /// The identifier of the resource.
   final pulumi.Input<String> resourceId;
-
   /// The standard assignments assignment key - unique key for the standard assignment
   final pulumi.Input<String> standardAssignmentName;
 
@@ -31,9 +30,8 @@ class GetStandardAssignmentArgs {
   factory GetStandardAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return GetStandardAssignmentArgs(
       resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
-      standardAssignmentName: pulumi.Input.fromValue(
-        map['standardAssignmentName'] as String,
-      ),
+      standardAssignmentName: pulumi.Input.fromValue(map['standardAssignmentName'] as String),
     );
   }
 }
+

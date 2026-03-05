@@ -9,14 +9,11 @@ class GetAutoSnapshotPoliciesResult {
   final String id;
   final List<String> ids;
   final String? nameRegex;
-
   /// A list of Auto Snapshot Policy names.
   final List<String> names;
   final String? outputFile;
-
   /// A list of Auto Snapshot Policies. Each element contains the following attributes:
   final List<GetAutoSnapshotPoliciesPolicy> policies;
-
   /// The status of the automatic snapshot policy.
   final String? status;
 
@@ -45,11 +42,7 @@ class GetAutoSnapshotPoliciesResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'policies':
-          pulumi.Input.encodeList<
-            GetAutoSnapshotPoliciesPolicy,
-            Map<String, dynamic>
-          >(policies, (value) => value.toMap()),
+      'policies': pulumi.Input.encodeList<GetAutoSnapshotPoliciesPolicy, Map<String, dynamic>>(policies, (value) => value.toMap()),
       'status': ?status,
     };
   }
@@ -58,28 +51,12 @@ class GetAutoSnapshotPoliciesResult {
     return GetAutoSnapshotPoliciesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      policies: pulumi.Input.decodeList<GetAutoSnapshotPoliciesPolicy>(
-        map['policies']!,
-        (value) => GetAutoSnapshotPoliciesPolicy.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      policies: pulumi.Input.decodeList<GetAutoSnapshotPoliciesPolicy>(map['policies']!, (value) => GetAutoSnapshotPoliciesPolicy.fromMap((value as Map).cast<String, dynamic>())),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

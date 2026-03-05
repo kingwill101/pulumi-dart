@@ -9,21 +9,20 @@ class CxFlowTransitionRouteTriggerFulfillmentConditionalCase {
 
   /// Creates a new [CxFlowTransitionRouteTriggerFulfillmentConditionalCase].
   /// [cases] A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
-  CxFlowTransitionRouteTriggerFulfillmentConditionalCase({this.cases});
+  CxFlowTransitionRouteTriggerFulfillmentConditionalCase({
+    this.cases,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'cases': ?cases};
+    return <String, dynamic>{
+      'cases': ?cases,
+    };
   }
 
-  factory CxFlowTransitionRouteTriggerFulfillmentConditionalCase.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CxFlowTransitionRouteTriggerFulfillmentConditionalCase.fromMap(Map<String, dynamic> map) {
     return CxFlowTransitionRouteTriggerFulfillmentConditionalCase(
-      cases: (() {
-        final guardedValue = map['cases'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      cases: (() { final guardedValue = map['cases']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLedgerArgs {
   /// Name of the Confidential Ledger
   final pulumi.Input<String> ledgerName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetLedgerArgs].
   /// [ledgerName] Name of the Confidential Ledger
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetLedgerArgs({required this.ledgerName, required this.resourceGroupName});
+  GetLedgerArgs({
+    required this.ledgerName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,9 +30,8 @@ class GetLedgerArgs {
   factory GetLedgerArgs.fromMap(Map<String, dynamic> map) {
     return GetLedgerArgs(
       ledgerName: pulumi.Input.fromValue(map['ledgerName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

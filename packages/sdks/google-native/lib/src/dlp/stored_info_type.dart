@@ -6,13 +6,10 @@ import 'stored_info_type_args.dart';
 /// Auto-naming is currently not supported for this resource.
 class StoredInfoType extends pulumi.CustomResource {
   /// Current version of the stored info type.
-  late final pulumi.Output<GooglePrivacyDlpV2StoredInfoTypeVersionResponse>
-  currentVersion;
+  late final pulumi.Output<GooglePrivacyDlpV2StoredInfoTypeVersionResponse> currentVersion;
   late final pulumi.Output<String> location;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// Pending versions of the stored info type. Empty if no versions are pending.
   late final pulumi.Output<List<Map<String, dynamic>>> pendingVersions;
   late final pulumi.Output<String> project;
@@ -26,27 +23,15 @@ class StoredInfoType extends pulumi.CustomResource {
     StoredInfoTypeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'google-native:dlp/v2:StoredInfoType',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    currentVersion =
-        registerOutput<GooglePrivacyDlpV2StoredInfoTypeVersionResponse>(
-          'currentVersion',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return GooglePrivacyDlpV2StoredInfoTypeVersionResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'google-native:dlp/v2:StoredInfoType',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    currentVersion = registerOutput<GooglePrivacyDlpV2StoredInfoTypeVersionResponse>('currentVersion', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GooglePrivacyDlpV2StoredInfoTypeVersionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    pendingVersions = registerOutput<List<Map<String, dynamic>>>(
-      'pendingVersions',
-    );
+    pendingVersions = registerOutput<List<Map<String, dynamic>>>('pendingVersions');
     project = registerOutput<String>('project');
   }
 }

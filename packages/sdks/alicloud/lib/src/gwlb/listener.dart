@@ -677,24 +677,18 @@ import 'listener_state.dart';
 class Listener extends pulumi.CustomResource {
   /// Specifies whether to perform a dry run, without performing the actual request. Valid values:
   late final pulumi.Output<bool?> dryRun;
-
   /// The description of the listener.
   ///
   /// The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
   late final pulumi.Output<String?> listenerDescription;
-
   /// The GWLB instance ID.
   late final pulumi.Output<String> loadBalancerId;
-
   /// The region ID.
   late final pulumi.Output<String> regionId;
-
   /// The server group ID.
   late final pulumi.Output<String> serverGroupId;
-
   /// The status of the listener.
   late final pulumi.Output<String> status;
-
   /// The tags. You can specify at most 20 tags in each call.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -707,11 +701,11 @@ class Listener extends pulumi.CustomResource {
     ListenerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:gwlb/listener:Listener',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:gwlb/listener:Listener',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dryRun = registerOutput<bool?>('dryRun');
     listenerDescription = registerOutput<String?>('listenerDescription');
     loadBalancerId = registerOutput<String>('loadBalancerId');
@@ -739,11 +733,11 @@ class Listener extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:gwlb/listener:Listener',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:gwlb/listener:Listener',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dryRun = registerOutput<bool?>('dryRun');
     listenerDescription = registerOutput<String?>('listenerDescription');
     loadBalancerId = registerOutput<String>('loadBalancerId');

@@ -10,10 +10,14 @@ class FulfillmentFeature {
 
   /// Creates a new [FulfillmentFeature].
   /// [type] The type of the feature that enabled for fulfillment.
-  FulfillmentFeature({required this.type});
+  FulfillmentFeature({
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': type};
+    return <String, dynamic>{
+      'type': type,
+    };
   }
 
   factory FulfillmentFeature.fromMap(Map<String, dynamic> map) {
@@ -22,3 +26,4 @@ class FulfillmentFeature {
     );
   }
 }
+

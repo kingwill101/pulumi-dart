@@ -8,7 +8,6 @@ class OriginGroupOverrideActionResponse {
   /// The name of the action for the delivery rule.
   /// Expected value is 'OriginGroupOverride'.
   final pulumi.Input<String> name;
-
   /// Defines the parameters for the action.
   final pulumi.Input<OriginGroupOverrideActionParametersResponse> parameters;
 
@@ -23,22 +22,15 @@ class OriginGroupOverrideActionResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'parameters':
-          pulumi.Input.mapInputValue<
-            OriginGroupOverrideActionParametersResponse,
-            Map<String, dynamic>
-          >(parameters, (value) => value.toMap()),
+      'parameters': pulumi.Input.mapInputValue<OriginGroupOverrideActionParametersResponse, Map<String, dynamic>>(parameters, (value) => value.toMap()),
     };
   }
 
   factory OriginGroupOverrideActionResponse.fromMap(Map<String, dynamic> map) {
     return OriginGroupOverrideActionResponse(
       name: pulumi.Input.fromValue(map['name'] as String),
-      parameters: pulumi.Input.fromValue(
-        OriginGroupOverrideActionParametersResponse.fromMap(
-          (map['parameters']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      parameters: pulumi.Input.fromValue(OriginGroupOverrideActionParametersResponse.fromMap((map['parameters']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

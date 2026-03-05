@@ -9,25 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AgreementArgs {
   /// The IAM Role which provides read and write access to the parent directory of the file location mentioned in the StartFileTransfer request.
   final pulumi.Input<String> accessRole;
-
   /// The landing directory for the files transferred by using the AS2 protocol.
   final pulumi.Input<String> baseDirectory;
-
   /// The Optional description of the transdfer.
   final pulumi.Input<String>? description;
-
   /// The unique identifier for the AS2 local profile.
   final pulumi.Input<String> localProfileId;
-
   /// The unique identifier for the AS2 partner profile.
   final pulumi.Input<String> partnerProfileId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The unique server identifier for the server instance. This is the specific server the agreement uses.
   final pulumi.Input<String> serverId;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -68,28 +61,13 @@ class AgreementArgs {
     return AgreementArgs(
       accessRole: pulumi.Input.fromValue(map['accessRole'] as String),
       baseDirectory: pulumi.Input.fromValue(map['baseDirectory'] as String),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       localProfileId: pulumi.Input.fromValue(map['localProfileId'] as String),
-      partnerProfileId: pulumi.Input.fromValue(
-        map['partnerProfileId'] as String,
-      ),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      partnerProfileId: pulumi.Input.fromValue(map['partnerProfileId'] as String),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serverId: pulumi.Input.fromValue(map['serverId'] as String),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

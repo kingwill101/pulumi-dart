@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetQueryPackArgs {
   /// The name of the Log Analytics QueryPack resource.
   final pulumi.Input<String> queryPackName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -31,9 +30,8 @@ class GetQueryPackArgs {
   factory GetQueryPackArgs.fromMap(Map<String, dynamic> map) {
     return GetQueryPackArgs(
       queryPackName: pulumi.Input.fromValue(map['queryPackName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

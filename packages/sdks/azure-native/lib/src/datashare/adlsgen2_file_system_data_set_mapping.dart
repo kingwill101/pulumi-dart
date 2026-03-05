@@ -615,38 +615,27 @@ import 'system_data_response.dart';
 class ADLSGen2FileSystemDataSetMapping extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The id of the source data set.
   late final pulumi.Output<String> dataSetId;
-
   /// Gets the status of the data set mapping.
   late final pulumi.Output<String> dataSetMappingStatus;
-
   /// The file system name.
   late final pulumi.Output<String> fileSystem;
-
   /// Kind of data set mapping.
   /// Expected value is 'AdlsGen2FileSystem'.
   late final pulumi.Output<String> kind;
-
   /// Name of the azure resource
   late final pulumi.Output<String> name;
-
   /// Provisioning state of the data set mapping.
   late final pulumi.Output<String> provisioningState;
-
   /// Resource group of storage account.
   late final pulumi.Output<String> resourceGroup;
-
   /// Storage account name of the source data set.
   late final pulumi.Output<String> storageAccountName;
-
   /// Subscription id of storage account.
   late final pulumi.Output<String> subscriptionId;
-
   /// System Data of the Azure resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Type of the azure resource
   late final pulumi.Output<String> type;
 
@@ -659,11 +648,11 @@ class ADLSGen2FileSystemDataSetMapping extends pulumi.CustomResource {
     ADLSGen2FileSystemDataSetMappingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:datashare:ADLSGen2FileSystemDataSetMapping',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:datashare:ADLSGen2FileSystemDataSetMapping',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     dataSetId = registerOutput<String>('dataSetId');
     dataSetMappingStatus = registerOutput<String>('dataSetMappingStatus');
@@ -674,16 +663,7 @@ class ADLSGen2FileSystemDataSetMapping extends pulumi.CustomResource {
     resourceGroup = registerOutput<String>('resourceGroup');
     storageAccountName = registerOutput<String>('storageAccountName');
     subscriptionId = registerOutput<String>('subscriptionId');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

@@ -612,13 +612,10 @@ import 'cost_allocation_rule_properties_response.dart';
 class CostAllocationRule extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Name of the rule. This is a read only value.
   late final pulumi.Output<String> name;
-
   /// Cost allocation rule properties
   late final pulumi.Output<CostAllocationRulePropertiesResponse> properties;
-
   /// Resource type of the rule. This is a read only value of Microsoft.CostManagement/CostAllocationRule.
   late final pulumi.Output<String> type;
 
@@ -631,23 +628,14 @@ class CostAllocationRule extends pulumi.CustomResource {
     CostAllocationRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:costmanagement:CostAllocationRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:costmanagement:CostAllocationRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<CostAllocationRulePropertiesResponse>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CostAllocationRulePropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<CostAllocationRulePropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CostAllocationRulePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

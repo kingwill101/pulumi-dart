@@ -1,54 +1,40 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getKey.
 class GetKeyResult {
   /// The EC Curve name of this Key Vault Key.
   final String curve;
-
   /// The RSA public exponent of this Key Vault Key.
   final String e;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of JSON web key operations assigned to this Key Vault Key
   final List<String> keyOpts;
-
   /// Specifies the Size of this Key Vault Key.
   final int keySize;
-
   /// Specifies the Key Type of this Key Vault Key
   final String keyType;
   final String keyVaultId;
-
   /// The RSA modulus of this Key Vault Key.
   final String n;
   final String name;
-
   /// The OpenSSH encoded public key of this Key Vault Key.
   final String publicKeyOpenssh;
-
   /// The PEM encoded public key of this Key Vault Key.
   final String publicKeyPem;
-
   /// The (Versioned) ID for this Key Vault Key. This property points to a specific version of a Key Vault Key, as such using this won't auto-rotate values if used in other Azure Services.
   final String resourceId;
-
   /// The Versionless ID of the Key Vault Key. This property allows other Azure Services (that support it) to auto-rotate their value when the Key Vault Key is updated.
   final String resourceVersionlessId;
-
   /// A mapping of tags assigned to this Key Vault Key.
   final Map<String, String> tags;
-
   /// The current version of the Key Vault Key.
   final String version;
-
   /// The Base ID of the Key Vault Key.
   final String versionlessId;
-
   /// The EC X component of this Key Vault Key.
   final String x;
-
   /// The EC Y component of this Key Vault Key.
   final String y;
 
@@ -138,3 +124,4 @@ class GetKeyResult {
     );
   }
 }
+

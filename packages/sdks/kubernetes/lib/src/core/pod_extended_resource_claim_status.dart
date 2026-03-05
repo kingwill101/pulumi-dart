@@ -7,7 +7,6 @@ import 'container_extended_resource_request.dart';
 class PodExtendedResourceClaimStatus {
   /// RequestMappings identifies the mapping of &lt;container, extended resource backed by DRA&gt; to  device request in the generated ResourceClaim.
   final pulumi.Input<List<ContainerExtendedResourceRequest>> requestMappings;
-
   /// ResourceClaimName is the name of the ResourceClaim that was generated for the Pod in the namespace of the Pod.
   final pulumi.Input<String> resourceClaimName;
 
@@ -21,35 +20,16 @@ class PodExtendedResourceClaimStatus {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'requestMappings':
-          pulumi.Input.mapInputValue<
-            List<ContainerExtendedResourceRequest>,
-            List<Map<String, dynamic>>
-          >(
-            requestMappings,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ContainerExtendedResourceRequest,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'requestMappings': pulumi.Input.mapInputValue<List<ContainerExtendedResourceRequest>, List<Map<String, dynamic>>>(requestMappings, (value) => pulumi.Input.encodeList<ContainerExtendedResourceRequest, Map<String, dynamic>>(value, (value) => value.toMap())),
       'resourceClaimName': resourceClaimName,
     };
   }
 
   factory PodExtendedResourceClaimStatus.fromMap(Map<String, dynamic> map) {
     return PodExtendedResourceClaimStatus(
-      requestMappings: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<ContainerExtendedResourceRequest>(
-          map['requestMappings']!,
-          (value) => ContainerExtendedResourceRequest.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      resourceClaimName: pulumi.Input.fromValue(
-        map['resourceClaimName'] as String,
-      ),
+      requestMappings: pulumi.Input.fromValue(pulumi.Input.decodeList<ContainerExtendedResourceRequest>(map['requestMappings']!, (value) => ContainerExtendedResourceRequest.fromMap((value as Map).cast<String, dynamic>()))),
+      resourceClaimName: pulumi.Input.fromValue(map['resourceClaimName'] as String),
     );
   }
 }
+

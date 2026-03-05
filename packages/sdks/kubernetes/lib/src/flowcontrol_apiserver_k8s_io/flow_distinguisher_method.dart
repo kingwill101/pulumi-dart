@@ -9,10 +9,14 @@ class FlowDistinguisherMethod {
 
   /// Creates a new [FlowDistinguisherMethod].
   /// [type] `type` is the type of flow distinguisher method The supported types are "ByUser" and "ByNamespace". Required.
-  FlowDistinguisherMethod({required this.type});
+  FlowDistinguisherMethod({
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': type};
+    return <String, dynamic>{
+      'type': type,
+    };
   }
 
   factory FlowDistinguisherMethod.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class FlowDistinguisherMethod {
     );
   }
 }
+

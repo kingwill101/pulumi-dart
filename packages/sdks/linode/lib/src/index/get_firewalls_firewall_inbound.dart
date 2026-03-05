@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFirewallsFirewallInbound {
   /// Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).
   final pulumi.Input<String> action;
-
   /// A list of IPv4 addresses or networks in IP/mask format.
   final pulumi.Input<List<String>> ipv4s;
-
   /// A list of IPv6 addresses or networks in IP/mask format.
   final pulumi.Input<List<String>> ipv6s;
-
   /// The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
   final pulumi.Input<String> label;
-
   /// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
   final pulumi.Input<String> ports;
-
   /// The network protocol this rule controls. (TCP, UDP, ICMP)
   final pulumi.Input<String> protocol;
 
@@ -59,3 +54,4 @@ class GetFirewallsFirewallInbound {
     );
   }
 }
+

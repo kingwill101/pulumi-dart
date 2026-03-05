@@ -650,25 +650,18 @@ import 'database_user_state.dart';
 class DatabaseUser extends pulumi.CustomResource {
   /// Access certificate for TLS client authentication. (Kafka only)
   late final pulumi.Output<String> accessCert;
-
   /// Access key for TLS client authentication. (Kafka only)
   late final pulumi.Output<String> accessKey;
-
   /// The ID of the original source database cluster.
   late final pulumi.Output<String> clusterId;
-
   /// The authentication method to use for connections to the MySQL user account. The valid values are `mysql_native_password` or `caching_sha2_password` (this is the default).
   late final pulumi.Output<String?> mysqlAuthPlugin;
-
   /// The name for the database user.
   late final pulumi.Output<String> name;
-
   /// Password for the database user.
   late final pulumi.Output<String> password;
-
   /// Role for the database user. The value will be either "primary" or "normal".
   late final pulumi.Output<String> role;
-
   /// Contains optional settings for the user.
   /// The `settings` block is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> settings;
@@ -682,11 +675,11 @@ class DatabaseUser extends pulumi.CustomResource {
     DatabaseUserArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/databaseUser:DatabaseUser',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/databaseUser:DatabaseUser',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessCert = registerOutput<String>('accessCert');
     accessKey = registerOutput<String>('accessKey');
     clusterId = registerOutput<String>('clusterId');
@@ -715,11 +708,11 @@ class DatabaseUser extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/databaseUser:DatabaseUser',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/databaseUser:DatabaseUser',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessCert = registerOutput<String>('accessCert');
     accessKey = registerOutput<String>('accessKey');
     clusterId = registerOutput<String>('clusterId');

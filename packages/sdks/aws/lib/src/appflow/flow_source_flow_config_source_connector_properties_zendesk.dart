@@ -7,17 +7,20 @@ class FlowSourceFlowConfigSourceConnectorPropertiesZendesk {
 
   /// Creates a new [FlowSourceFlowConfigSourceConnectorPropertiesZendesk].
   /// [object_] Required.
-  FlowSourceFlowConfigSourceConnectorPropertiesZendesk({required this.object_});
+  FlowSourceFlowConfigSourceConnectorPropertiesZendesk({
+    required this.object_,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'object': object_};
+    return <String, dynamic>{
+      'object': object_,
+    };
   }
 
-  factory FlowSourceFlowConfigSourceConnectorPropertiesZendesk.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FlowSourceFlowConfigSourceConnectorPropertiesZendesk.fromMap(Map<String, dynamic> map) {
     return FlowSourceFlowConfigSourceConnectorPropertiesZendesk(
       object_: pulumi.Input.fromValue(map['object'] as String),
     );
   }
 }
+

@@ -14,10 +14,14 @@ class GetSecretsArgs {
 
   /// Creates a new [GetSecretsArgs].
   /// [keyVaultId] Specifies the ID of the Key Vault instance to fetch secret names from, available on the `azure.keyvault.KeyVault` Data Source / Resource.
-  GetSecretsArgs({required this.keyVaultId});
+  GetSecretsArgs({
+    required this.keyVaultId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'keyVaultId': keyVaultId};
+    return <String, dynamic>{
+      'keyVaultId': keyVaultId,
+    };
   }
 
   factory GetSecretsArgs.fromMap(Map<String, dynamic> map) {
@@ -26,3 +30,4 @@ class GetSecretsArgs {
     );
   }
 }
+

@@ -5,15 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CooDomainPreciseAccessRuleCondition {
   /// Matching content.
   final pulumi.Input<String> content;
-
   /// Matching field.
   final pulumi.Input<String> field;
-
   /// Custom HTTP header field name.
   ///
   /// &gt; **NOTE:**  Valid only when `Field` is `header`.
   final pulumi.Input<String>? headerName;
-
   /// Matching method.
   final pulumi.Input<String> matchMethod;
 
@@ -38,18 +35,13 @@ class CooDomainPreciseAccessRuleCondition {
     };
   }
 
-  factory CooDomainPreciseAccessRuleCondition.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CooDomainPreciseAccessRuleCondition.fromMap(Map<String, dynamic> map) {
     return CooDomainPreciseAccessRuleCondition(
       content: pulumi.Input.fromValue(map['content'] as String),
       field: pulumi.Input.fromValue(map['field'] as String),
-      headerName: (() {
-        final guardedValue = map['headerName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      headerName: (() { final guardedValue = map['headerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       matchMethod: pulumi.Input.fromValue(map['matchMethod'] as String),
     );
   }
 }
+

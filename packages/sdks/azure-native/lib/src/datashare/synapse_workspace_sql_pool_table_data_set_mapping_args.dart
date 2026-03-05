@@ -9,23 +9,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SynapseWorkspaceSqlPoolTableDataSetMappingArgs {
   /// The name of the share account.
   final pulumi.Input<String> accountName;
-
   /// The id of the source data set.
   final pulumi.Input<String> dataSetId;
-
   /// The name of the data set mapping to be created.
   final pulumi.Input<String>? dataSetMappingName;
-
   /// Kind of data set mapping.
   /// Expected value is 'SynapseWorkspaceSqlPoolTable'.
   final pulumi.Input<String> kind;
-
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the share subscription which will hold the data set sink.
   final pulumi.Input<String> shareSubscriptionName;
-
   /// Resource id of the Synapse Workspace SQL Pool Table
   final pulumi.Input<String> synapseWorkspaceSqlPoolTableResourceId;
 
@@ -55,32 +49,20 @@ class SynapseWorkspaceSqlPoolTableDataSetMappingArgs {
       'kind': kind,
       'resourceGroupName': resourceGroupName,
       'shareSubscriptionName': shareSubscriptionName,
-      'synapseWorkspaceSqlPoolTableResourceId':
-          synapseWorkspaceSqlPoolTableResourceId,
+      'synapseWorkspaceSqlPoolTableResourceId': synapseWorkspaceSqlPoolTableResourceId,
     };
   }
 
-  factory SynapseWorkspaceSqlPoolTableDataSetMappingArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SynapseWorkspaceSqlPoolTableDataSetMappingArgs.fromMap(Map<String, dynamic> map) {
     return SynapseWorkspaceSqlPoolTableDataSetMappingArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
       dataSetId: pulumi.Input.fromValue(map['dataSetId'] as String),
-      dataSetMappingName: (() {
-        final guardedValue = map['dataSetMappingName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dataSetMappingName: (() { final guardedValue = map['dataSetMappingName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kind: pulumi.Input.fromValue(map['kind'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      shareSubscriptionName: pulumi.Input.fromValue(
-        map['shareSubscriptionName'] as String,
-      ),
-      synapseWorkspaceSqlPoolTableResourceId: pulumi.Input.fromValue(
-        map['synapseWorkspaceSqlPoolTableResourceId'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      shareSubscriptionName: pulumi.Input.fromValue(map['shareSubscriptionName'] as String),
+      synapseWorkspaceSqlPoolTableResourceId: pulumi.Input.fromValue(map['synapseWorkspaceSqlPoolTableResourceId'] as String),
     );
   }
 }
+

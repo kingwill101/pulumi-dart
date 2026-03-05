@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JobRegistry {
   /// A Managed Identity to use to authenticate with Azure Container Registry.
   final pulumi.Input<String>? identity;
-
   /// The name of the Secret that contains the registry login password.
   final pulumi.Input<String>? passwordSecretName;
-
   /// The URL of the Azure Container Registry server.
   final pulumi.Input<String> server;
-
   /// The username to use to authenticate with Azure Container Registry.
   final pulumi.Input<String>? username;
 
@@ -38,22 +35,11 @@ class JobRegistry {
 
   factory JobRegistry.fromMap(Map<String, dynamic> map) {
     return JobRegistry(
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      passwordSecretName: (() {
-        final guardedValue = map['passwordSecretName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      passwordSecretName: (() { final guardedValue = map['passwordSecretName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       server: pulumi.Input.fromValue(map['server'] as String),
-      username: (() {
-        final guardedValue = map['username'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      username: (() { final guardedValue = map['username']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

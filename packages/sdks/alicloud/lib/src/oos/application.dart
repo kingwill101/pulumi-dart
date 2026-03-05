@@ -220,13 +220,10 @@ import 'application_state.dart';
 class Application extends pulumi.CustomResource {
   /// The name of the application.
   late final pulumi.Output<String> applicationName;
-
   /// Application group description information.
   late final pulumi.Output<String?> description;
-
   /// The ID of the resource group.
   late final pulumi.Output<String> resourceGroupId;
-
   /// The tag of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -239,11 +236,11 @@ class Application extends pulumi.CustomResource {
     ApplicationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:oos/application:Application',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:oos/application:Application',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationName = registerOutput<String>('applicationName');
     description = registerOutput<String?>('description');
     resourceGroupId = registerOutput<String>('resourceGroupId');
@@ -268,11 +265,11 @@ class Application extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:oos/application:Application',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:oos/application:Application',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationName = registerOutput<String>('applicationName');
     description = registerOutput<String?>('description');
     resourceGroupId = registerOutput<String>('resourceGroupId');

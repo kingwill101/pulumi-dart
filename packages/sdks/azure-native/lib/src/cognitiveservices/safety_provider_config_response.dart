@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SafetyProviderConfigResponse {
   /// If blocking would occur.
   final pulumi.Input<bool>? blocking;
-
   /// Name of RAI Safety Provider.
   final pulumi.Input<String>? safetyProviderName;
-
   /// Content source to apply the Content Filters.
   final pulumi.Input<String>? source;
 
@@ -33,21 +31,10 @@ class SafetyProviderConfigResponse {
 
   factory SafetyProviderConfigResponse.fromMap(Map<String, dynamic> map) {
     return SafetyProviderConfigResponse(
-      blocking: (() {
-        final guardedValue = map['blocking'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      safetyProviderName: (() {
-        final guardedValue = map['safetyProviderName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      source: (() {
-        final guardedValue = map['source'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      blocking: (() { final guardedValue = map['blocking']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      safetyProviderName: (() { final guardedValue = map['safetyProviderName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

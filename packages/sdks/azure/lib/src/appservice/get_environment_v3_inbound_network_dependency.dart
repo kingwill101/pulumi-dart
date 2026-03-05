@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEnvironmentV3InboundNetworkDependency {
   /// A short description of the purpose of the network traffic.
   final pulumi.Input<String> description;
-
   /// A list of IP addresses that network traffic will originate from in CIDR notation.
   final pulumi.Input<List<String>> ipAddresses;
-
   /// The ports that network traffic will arrive to the App Service Environment V3 on.
   final pulumi.Input<List<String>> ports;
 
@@ -30,15 +28,12 @@ class GetEnvironmentV3InboundNetworkDependency {
     };
   }
 
-  factory GetEnvironmentV3InboundNetworkDependency.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetEnvironmentV3InboundNetworkDependency.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentV3InboundNetworkDependency(
       description: pulumi.Input.fromValue(map['description'] as String),
-      ipAddresses: pulumi.Input.fromValue(
-        (map['ipAddresses'] as List).cast<String>(),
-      ),
+      ipAddresses: pulumi.Input.fromValue((map['ipAddresses'] as List).cast<String>()),
       ports: pulumi.Input.fromValue((map['ports'] as List).cast<String>()),
     );
   }
 }
+

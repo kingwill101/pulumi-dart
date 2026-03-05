@@ -6,21 +6,16 @@ import 'get_alert_robots_robot.dart';
 /// Result data returned by getAlertRobots.
 class GetAlertRobotsResult {
   final String? alertRobotName;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of Alert Robot IDs.
   final List<String> ids;
   final String? nameRegex;
-
   /// A list of Alert Robot names.
   final List<String> names;
   final String? outputFile;
-
   /// The type of the robot.
   final String? robotType;
-
   /// A list of Arms Alert Robots. Each element contains the following attributes:
   final List<GetAlertRobotsRobot> robots;
 
@@ -53,44 +48,21 @@ class GetAlertRobotsResult {
       'names': names,
       'outputFile': ?outputFile,
       'robotType': ?robotType,
-      'robots':
-          pulumi.Input.encodeList<GetAlertRobotsRobot, Map<String, dynamic>>(
-            robots,
-            (value) => value.toMap(),
-          ),
+      'robots': pulumi.Input.encodeList<GetAlertRobotsRobot, Map<String, dynamic>>(robots, (value) => value.toMap()),
     };
   }
 
   factory GetAlertRobotsResult.fromMap(Map<String, dynamic> map) {
     return GetAlertRobotsResult(
-      alertRobotName: (() {
-        final guardedValue = map['alertRobotName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      alertRobotName: (() { final guardedValue = map['alertRobotName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      robotType: (() {
-        final guardedValue = map['robotType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      robots: pulumi.Input.decodeList<GetAlertRobotsRobot>(
-        map['robots']!,
-        (value) =>
-            GetAlertRobotsRobot.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      robotType: (() { final guardedValue = map['robotType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      robots: pulumi.Input.decodeList<GetAlertRobotsRobot>(map['robots']!, (value) => GetAlertRobotsRobot.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

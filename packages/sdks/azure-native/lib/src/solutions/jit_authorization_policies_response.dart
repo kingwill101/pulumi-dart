@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JitAuthorizationPoliciesResponse {
   /// The the principal id that will be granted JIT access.
   final pulumi.Input<String> principalId;
-
   /// The role definition id that will be granted to the Principal.
   final pulumi.Input<String> roleDefinitionId;
 
@@ -28,9 +27,8 @@ class JitAuthorizationPoliciesResponse {
   factory JitAuthorizationPoliciesResponse.fromMap(Map<String, dynamic> map) {
     return JitAuthorizationPoliciesResponse(
       principalId: pulumi.Input.fromValue(map['principalId'] as String),
-      roleDefinitionId: pulumi.Input.fromValue(
-        map['roleDefinitionId'] as String,
-      ),
+      roleDefinitionId: pulumi.Input.fromValue(map['roleDefinitionId'] as String),
     );
   }
 }
+

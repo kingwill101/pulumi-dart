@@ -6,11 +6,8 @@ import 'application_provider_authorization_response.dart';
 
 class AuthorizedApplicationPropertiesResponse {
   /// The authorizations that determine the level of data access permissions on the specified resource types.
-  final pulumi.Input<List<ApplicationDataAuthorizationResponse>>?
-  dataAuthorizations;
-  final pulumi.Input<ApplicationProviderAuthorizationResponse>?
-  providerAuthorization;
-
+  final pulumi.Input<List<ApplicationDataAuthorizationResponse>>? dataAuthorizations;
+  final pulumi.Input<ApplicationProviderAuthorizationResponse>? providerAuthorization;
   /// The provisioning state.
   final pulumi.Input<String> provisioningState;
 
@@ -26,55 +23,18 @@ class AuthorizedApplicationPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataAuthorizations':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ApplicationDataAuthorizationResponse>,
-            List<Map<String, dynamic>>
-          >(
-            dataAuthorizations,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ApplicationDataAuthorizationResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'providerAuthorization':
-          ?pulumi.Input.mapOptionalInputValue<
-            ApplicationProviderAuthorizationResponse,
-            Map<String, dynamic>
-          >(providerAuthorization, (value) => value.toMap()),
+      'dataAuthorizations': ?pulumi.Input.mapOptionalInputValue<List<ApplicationDataAuthorizationResponse>, List<Map<String, dynamic>>>(dataAuthorizations, (value) => pulumi.Input.encodeList<ApplicationDataAuthorizationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'providerAuthorization': ?pulumi.Input.mapOptionalInputValue<ApplicationProviderAuthorizationResponse, Map<String, dynamic>>(providerAuthorization, (value) => value.toMap()),
       'provisioningState': provisioningState,
     };
   }
 
-  factory AuthorizedApplicationPropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AuthorizedApplicationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AuthorizedApplicationPropertiesResponse(
-      dataAuthorizations: (() {
-        final guardedValue = map['dataAuthorizations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ApplicationDataAuthorizationResponse>(
-            guardedValue,
-            (value) => ApplicationDataAuthorizationResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      providerAuthorization: (() {
-        final guardedValue = map['providerAuthorization'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ApplicationProviderAuthorizationResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
+      dataAuthorizations: (() { final guardedValue = map['dataAuthorizations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ApplicationDataAuthorizationResponse>(guardedValue, (value) => ApplicationDataAuthorizationResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      providerAuthorization: (() { final guardedValue = map['providerAuthorization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ApplicationProviderAuthorizationResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
     );
   }
 }
+

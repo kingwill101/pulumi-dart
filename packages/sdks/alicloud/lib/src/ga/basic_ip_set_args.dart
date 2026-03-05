@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BasicIpSetArgs {
   /// The ID of the acceleration region.
   final pulumi.Input<String> accelerateRegionId;
-
   /// The ID of the basic GA instance.
   final pulumi.Input<String> acceleratorId;
-
   /// The bandwidth of the acceleration region. Unit: Mbit/s.
   final pulumi.Input<int>? bandwidth;
-
   /// The line type of the elastic IP address (EIP) in the acceleration region. Default value: `BGP`. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`.
   final pulumi.Input<String>? ispType;
 
@@ -42,20 +39,11 @@ class BasicIpSetArgs {
 
   factory BasicIpSetArgs.fromMap(Map<String, dynamic> map) {
     return BasicIpSetArgs(
-      accelerateRegionId: pulumi.Input.fromValue(
-        map['accelerateRegionId'] as String,
-      ),
+      accelerateRegionId: pulumi.Input.fromValue(map['accelerateRegionId'] as String),
       acceleratorId: pulumi.Input.fromValue(map['acceleratorId'] as String),
-      bandwidth: (() {
-        final guardedValue = map['bandwidth'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      ispType: (() {
-        final guardedValue = map['ispType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      bandwidth: (() { final guardedValue = map['bandwidth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      ispType: (() { final guardedValue = map['ispType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

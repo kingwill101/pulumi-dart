@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BudgetSubscriptionFilterTag {
   /// The name of the tag to use for the filter.
   final pulumi.Input<String> name;
-
   /// The operator to use for comparison. The allowed values are `In`. Defaults to `In`.
   final pulumi.Input<String>? operator;
-
   /// Specifies a list of values for the tag.
   final pulumi.Input<List<String>> values;
 
@@ -33,12 +31,9 @@ class BudgetSubscriptionFilterTag {
   factory BudgetSubscriptionFilterTag.fromMap(Map<String, dynamic> map) {
     return BudgetSubscriptionFilterTag(
       name: pulumi.Input.fromValue(map['name'] as String),
-      operator: (() {
-        final guardedValue = map['operator'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      operator: (() { final guardedValue = map['operator']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
+

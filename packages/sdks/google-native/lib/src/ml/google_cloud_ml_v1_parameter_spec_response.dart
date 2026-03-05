@@ -6,22 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudMlV1ParameterSpecResponse {
   /// Required if type is `CATEGORICAL`. The list of possible categories.
   final pulumi.Input<List<String>> categoricalValues;
-
   /// Required if type is `DISCRETE`. A list of feasible points. The list should be in strictly increasing order. For instance, this parameter might have possible settings of 1.5, 2.5, and 4.0. This list should not contain more than 1,000 values.
   final pulumi.Input<List<double>> discreteValues;
-
   /// Required if type is `DOUBLE` or `INTEGER`. This field should be unset if type is `CATEGORICAL`. This value should be integers if type is `INTEGER`.
   final pulumi.Input<double> maxValue;
-
   /// Required if type is `DOUBLE` or `INTEGER`. This field should be unset if type is `CATEGORICAL`. This value should be integers if type is INTEGER.
   final pulumi.Input<double> minValue;
-
   /// The parameter name must be unique amongst all ParameterConfigs in a HyperparameterSpec message. E.g., "learning_rate".
   final pulumi.Input<String> parameterName;
-
   /// Optional. How the parameter should be scaled to the hypercube. Leave unset for categorical parameters. Some kind of scaling is strongly recommended for real or integral parameters (e.g., `UNIT_LINEAR_SCALE`).
   final pulumi.Input<String> scaleType;
-
   /// The type of the parameter.
   final pulumi.Input<String> type;
 
@@ -55,16 +49,10 @@ class GoogleCloudMlV1ParameterSpecResponse {
     };
   }
 
-  factory GoogleCloudMlV1ParameterSpecResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudMlV1ParameterSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1ParameterSpecResponse(
-      categoricalValues: pulumi.Input.fromValue(
-        (map['categoricalValues'] as List).cast<String>(),
-      ),
-      discreteValues: pulumi.Input.fromValue(
-        (map['discreteValues'] as List).cast<double>(),
-      ),
+      categoricalValues: pulumi.Input.fromValue((map['categoricalValues'] as List).cast<String>()),
+      discreteValues: pulumi.Input.fromValue((map['discreteValues'] as List).cast<double>()),
       maxValue: pulumi.Input.fromValue(map['maxValue'] as double),
       minValue: pulumi.Input.fromValue(map['minValue'] as double),
       parameterName: pulumi.Input.fromValue(map['parameterName'] as String),
@@ -73,3 +61,4 @@ class GoogleCloudMlV1ParameterSpecResponse {
     );
   }
 }
+

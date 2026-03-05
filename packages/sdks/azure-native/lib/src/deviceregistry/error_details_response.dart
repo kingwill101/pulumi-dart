@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ErrorDetailsResponse {
   /// Multi-part error code for classification and root causing of errors (ex: 400.200.100.432).
   final pulumi.Input<String> code;
-
   /// Unique identifier for the transaction to aid in debugging.
   final pulumi.Input<String> correlationId;
-
   /// Human-readable helpful detailed text context for debugging (ex: “The following mechanisms are supported...”).
   final pulumi.Input<String> info;
-
   /// Human-readable helpful error message to provide additional context for error (ex: “Authentication method not supported”).
   final pulumi.Input<String> message;
 
@@ -46,3 +43,4 @@ class ErrorDetailsResponse {
     );
   }
 }
+

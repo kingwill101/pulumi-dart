@@ -631,27 +631,20 @@ import 'volume_state.dart';
 class Volume extends pulumi.CustomResource {
   /// A `create_source` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<VolumeCreateSource?> createSource;
-
   /// Specifies the name of this Elastic SAN Volume. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies the size of the Elastic SAN Volume in GiB. The size should be within the remaining capacity of the parent Elastic SAN. Possible values are between `1` and `65536` (16 TiB).
   ///
   /// &gt; **Note:** The size can only be increased. If `create_source` is specified, then the size must be equal to or greater than the source's size.
   late final pulumi.Output<int> sizeInGib;
-
   /// The iSCSI Target IQN of the Elastic SAN Volume.
   late final pulumi.Output<String> targetIqn;
-
   /// The iSCSI Target Portal Host Name of the Elastic SAN Volume.
   late final pulumi.Output<String> targetPortalHostname;
-
   /// The iSCSI Target Portal Port of the Elastic SAN Volume.
   late final pulumi.Output<int> targetPortalPort;
-
   /// Specifies the Volume Group ID within which this Elastic SAN Volume should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> volumeGroupId;
-
   /// The UUID of the Elastic SAN Volume.
   late final pulumi.Output<String> volumeId;
 
@@ -659,23 +652,17 @@ class Volume extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Volume]. {@macro pulumi_elasticsan_volume_volume_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Volume(String name, {VolumeArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure:elasticsan/volume:Volume',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
-    createSource = registerOutput<VolumeCreateSource?>(
-      'createSource',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VolumeCreateSource.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+  Volume(
+    String name, {
+    VolumeArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure:elasticsan/volume:Volume',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    createSource = registerOutput<VolumeCreateSource?>('createSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeCreateSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     sizeInGib = registerOutput<int>('sizeInGib');
     targetIqn = registerOutput<String>('targetIqn');
@@ -703,21 +690,12 @@ class Volume extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:elasticsan/volume:Volume',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    createSource = registerOutput<VolumeCreateSource?>(
-      'createSource',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VolumeCreateSource.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:elasticsan/volume:Volume',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    createSource = registerOutput<VolumeCreateSource?>('createSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeCreateSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     sizeInGib = registerOutput<int>('sizeInGib');
     targetIqn = registerOutput<String>('targetIqn');

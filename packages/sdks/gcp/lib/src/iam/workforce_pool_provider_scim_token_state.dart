@@ -6,31 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkforcePoolProviderScimTokenState {
   /// A user-specified display name for the scim token. Cannot exceed 32 characters.
   final pulumi.Input<String>? displayName;
-
   /// The location for the resource.
   final pulumi.Input<String>? location;
-
   /// Identifier. The resource name of the scim token.
   /// Format: `locations/{location}/workforcePools/{workforce_pool}/providers/{workforce_pool_provider}/scimTenants/{scim_tenant_id}/tokens/{scim_token_id}`
   final pulumi.Input<String>? name;
-
   /// The ID of the Provider.
   final pulumi.Input<String>? providerId;
-
   /// The ID of the SCIM Tenant.
   final pulumi.Input<String>? scimTenantId;
-
   /// The ID to use for the SCIM Token, which becomes the final component of the resource name. This value should be 4-32 characters and follow the pattern: `(a-z)`.
   final pulumi.Input<String>? scimTokenId;
-
   /// The token string provided to the IdP for authentication and will be set only during creation.
   final pulumi.Input<String>? securityToken;
-
   /// The current state of the scim token.
   /// * ACTIVE: The token is active and may be used to provision users and groups.
   /// * DELETED: The token is soft-deleted. Soft-deleted tokens are permanently deleted after approximately 30 days.
   final pulumi.Input<String>? state;
-
   /// The ID of the Workforce Pool.
   final pulumi.Input<String>? workforcePoolId;
 
@@ -70,55 +62,18 @@ class WorkforcePoolProviderScimTokenState {
     };
   }
 
-  factory WorkforcePoolProviderScimTokenState.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WorkforcePoolProviderScimTokenState.fromMap(Map<String, dynamic> map) {
     return WorkforcePoolProviderScimTokenState(
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      providerId: (() {
-        final guardedValue = map['providerId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      scimTenantId: (() {
-        final guardedValue = map['scimTenantId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      scimTokenId: (() {
-        final guardedValue = map['scimTokenId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      securityToken: (() {
-        final guardedValue = map['securityToken'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      workforcePoolId: (() {
-        final guardedValue = map['workforcePoolId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      providerId: (() { final guardedValue = map['providerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      scimTenantId: (() { final guardedValue = map['scimTenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      scimTokenId: (() { final guardedValue = map['scimTokenId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      securityToken: (() { final guardedValue = map['securityToken']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      workforcePoolId: (() { final guardedValue = map['workforcePoolId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

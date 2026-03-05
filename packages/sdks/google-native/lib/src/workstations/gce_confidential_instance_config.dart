@@ -9,7 +9,9 @@ class GceConfidentialInstanceConfig {
 
   /// Creates a new [GceConfidentialInstanceConfig].
   /// [enableConfidentialCompute] Optional. Whether the instance has confidential compute enabled.
-  GceConfidentialInstanceConfig({this.enableConfidentialCompute});
+  GceConfidentialInstanceConfig({
+    this.enableConfidentialCompute,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,11 +21,8 @@ class GceConfidentialInstanceConfig {
 
   factory GceConfidentialInstanceConfig.fromMap(Map<String, dynamic> map) {
     return GceConfidentialInstanceConfig(
-      enableConfidentialCompute: (() {
-        final guardedValue = map['enableConfidentialCompute'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enableConfidentialCompute: (() { final guardedValue = map['enableConfidentialCompute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

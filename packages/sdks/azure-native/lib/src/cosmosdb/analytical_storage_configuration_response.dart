@@ -9,21 +9,20 @@ class AnalyticalStorageConfigurationResponse {
 
   /// Creates a new [AnalyticalStorageConfigurationResponse].
   /// [schemaType] Describes the types of schema for analytical storage.
-  AnalyticalStorageConfigurationResponse({this.schemaType});
+  AnalyticalStorageConfigurationResponse({
+    this.schemaType,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'schemaType': ?schemaType};
+    return <String, dynamic>{
+      'schemaType': ?schemaType,
+    };
   }
 
-  factory AnalyticalStorageConfigurationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AnalyticalStorageConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return AnalyticalStorageConfigurationResponse(
-      schemaType: (() {
-        final guardedValue = map['schemaType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      schemaType: (() { final guardedValue = map['schemaType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

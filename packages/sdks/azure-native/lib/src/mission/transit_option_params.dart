@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TransitOptionParams {
   /// Transit Option Params remoteVirtualNetworkId.
   final pulumi.Input<String>? remoteVirtualNetworkId;
-
   /// Transit Option Params scaleUnits.
   final pulumi.Input<double>? scaleUnits;
 
   /// Creates a new [TransitOptionParams].
   /// [remoteVirtualNetworkId] Transit Option Params remoteVirtualNetworkId.
   /// [scaleUnits] Transit Option Params scaleUnits.
-  TransitOptionParams({this.remoteVirtualNetworkId, this.scaleUnits});
+  TransitOptionParams({
+    this.remoteVirtualNetworkId,
+    this.scaleUnits,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class TransitOptionParams {
 
   factory TransitOptionParams.fromMap(Map<String, dynamic> map) {
     return TransitOptionParams(
-      remoteVirtualNetworkId: (() {
-        final guardedValue = map['remoteVirtualNetworkId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      scaleUnits: (() {
-        final guardedValue = map['scaleUnits'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      remoteVirtualNetworkId: (() { final guardedValue = map['remoteVirtualNetworkId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      scaleUnits: (() { final guardedValue = map['scaleUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

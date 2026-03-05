@@ -8,10 +8,14 @@ class SigningProfileSigningMaterial {
 
   /// Creates a new [SigningProfileSigningMaterial].
   /// [certificateArn] The Amazon Resource Name (ARN) of the certificates that is used to sign your code.
-  SigningProfileSigningMaterial({required this.certificateArn});
+  SigningProfileSigningMaterial({
+    required this.certificateArn,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'certificateArn': certificateArn};
+    return <String, dynamic>{
+      'certificateArn': certificateArn,
+    };
   }
 
   factory SigningProfileSigningMaterial.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class SigningProfileSigningMaterial {
     );
   }
 }
+

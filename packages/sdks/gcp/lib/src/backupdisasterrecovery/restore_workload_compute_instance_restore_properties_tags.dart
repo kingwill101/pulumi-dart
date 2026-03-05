@@ -8,21 +8,20 @@ class RestoreWorkloadComputeInstanceRestorePropertiesTags {
 
   /// Creates a new [RestoreWorkloadComputeInstanceRestorePropertiesTags].
   /// [items] (Optional)
-  RestoreWorkloadComputeInstanceRestorePropertiesTags({this.items});
+  RestoreWorkloadComputeInstanceRestorePropertiesTags({
+    this.items,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'items': ?items};
+    return <String, dynamic>{
+      'items': ?items,
+    };
   }
 
-  factory RestoreWorkloadComputeInstanceRestorePropertiesTags.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RestoreWorkloadComputeInstanceRestorePropertiesTags.fromMap(Map<String, dynamic> map) {
     return RestoreWorkloadComputeInstanceRestorePropertiesTags(
-      items: (() {
-        final guardedValue = map['items'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      items: (() { final guardedValue = map['items']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

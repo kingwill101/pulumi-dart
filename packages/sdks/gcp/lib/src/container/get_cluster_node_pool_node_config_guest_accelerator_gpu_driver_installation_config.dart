@@ -13,16 +13,15 @@ class GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'gpuDriverVersion': gpuDriverVersion};
+    return <String, dynamic>{
+      'gpuDriverVersion': gpuDriverVersion,
+    };
   }
 
-  factory GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig(
-      gpuDriverVersion: pulumi.Input.fromValue(
-        map['gpuDriverVersion'] as String,
-      ),
+      gpuDriverVersion: pulumi.Input.fromValue(map['gpuDriverVersion'] as String),
     );
   }
 }
+

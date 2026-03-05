@@ -18,15 +18,10 @@ class AssistantGenerationConfigSystemInstruction {
     };
   }
 
-  factory AssistantGenerationConfigSystemInstruction.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AssistantGenerationConfigSystemInstruction.fromMap(Map<String, dynamic> map) {
     return AssistantGenerationConfigSystemInstruction(
-      additionalSystemInstruction: (() {
-        final guardedValue = map['additionalSystemInstruction'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      additionalSystemInstruction: (() { final guardedValue = map['additionalSystemInstruction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -140,7 +140,6 @@ import 'trail_deprecated_state.dart';
 class TrailDeprecated extends pulumi.CustomResource {
   late final pulumi.Output<String> createTime;
   late final pulumi.Output<String?> dataEventTrailRegion;
-
   /// Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
   late final pulumi.Output<String> eventRw;
   late final pulumi.Output<String?> eventSelectors;
@@ -148,24 +147,18 @@ class TrailDeprecated extends pulumi.CustomResource {
   late final pulumi.Output<String?> maxComputeProjectArn;
   late final pulumi.Output<String> maxComputeWriteRoleArn;
   late final pulumi.Output<String?> mnsTopicArn;
-
   /// The name of the trail to be created, which must be unique for an account.
   late final pulumi.Output<String> name;
-
   /// The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
   late final pulumi.Output<String?> ossBucketName;
-
   /// The prefix of the specified OSS bucket name. This parameter can be left empty.
   late final pulumi.Output<String?> ossKeyPrefix;
   late final pulumi.Output<String?> ossWriteRoleArn;
   late final pulumi.Output<String> regionId;
-
   /// The RAM role in ActionTrail permitted by the user.
   late final pulumi.Output<String?> roleName;
-
   /// The unique ARN of the Log Service project.
   late final pulumi.Output<String?> slsProjectArn;
-
   /// The unique ARN of the Log Service role.
   ///
   /// &gt; **NOTE:** `sls_project_arn` and `sls_write_role_arn` should be set or not set at the same time when actiontrail delivers logs.
@@ -183,11 +176,11 @@ class TrailDeprecated extends pulumi.CustomResource {
     TrailDeprecatedArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:actiontrail/trailDeprecated:TrailDeprecated',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:actiontrail/trailDeprecated:TrailDeprecated',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     dataEventTrailRegion = registerOutput<String?>('dataEventTrailRegion');
     eventRw = registerOutput<String>('eventRw');
@@ -227,11 +220,11 @@ class TrailDeprecated extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:actiontrail/trailDeprecated:TrailDeprecated',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:actiontrail/trailDeprecated:TrailDeprecated',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     dataEventTrailRegion = registerOutput<String?>('dataEventTrailRegion');
     eventRw = registerOutput<String>('eventRw');

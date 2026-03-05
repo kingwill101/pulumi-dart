@@ -9,29 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceGroupTemplateDeploymentArgs {
   /// The Debug Level which should be used for this Resource Group Template Deployment. Possible values are `none`, `requestContent`, `responseContent` and `requestContent, responseContent`.
   final pulumi.Input<String>? debugLevel;
-
   /// The Deployment Mode for this Resource Group Template Deployment. Possible values are `Complete` (where resources in the Resource Group not specified in the ARM Template will be destroyed) and `Incremental` (where resources are additive only).
   ///
   /// &gt; **Note:** If `deployment_mode` is set to `Complete` then resources within this Resource Group which are not defined in the ARM Template will be deleted.
   final pulumi.Input<String> deploymentMode;
-
   /// The name which should be used for this Resource Group Template Deployment. Changing this forces a new Resource Group Template Deployment to be created.
   final pulumi.Input<String>? name;
-
   /// The contents of the ARM Template parameters file - containing a JSON list of parameters.
   ///
   /// &gt; An example of how to pass variables into an ARM Template can be seen in the example.
   final pulumi.Input<String>? parametersContent;
-
   /// The name of the Resource Group where the Resource Group Template Deployment should exist. Changing this forces a new Resource Group Template Deployment to be created.
   final pulumi.Input<String> resourceGroupName;
-
   /// A mapping of tags which should be assigned to the Resource Group Template Deployment.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// The contents of the ARM Template which should be deployed into this Resource Group. Cannot be specified with `template_spec_version_id`.
   final pulumi.Input<String>? templateContent;
-
   /// The ID of the Template Spec Version to deploy. Cannot be specified with `template_content`.
   final pulumi.Input<String>? templateSpecVersionId;
 
@@ -68,46 +61,17 @@ class ResourceGroupTemplateDeploymentArgs {
     };
   }
 
-  factory ResourceGroupTemplateDeploymentArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResourceGroupTemplateDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return ResourceGroupTemplateDeploymentArgs(
-      debugLevel: (() {
-        final guardedValue = map['debugLevel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      debugLevel: (() { final guardedValue = map['debugLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deploymentMode: pulumi.Input.fromValue(map['deploymentMode'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      parametersContent: (() {
-        final guardedValue = map['parametersContent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      templateContent: (() {
-        final guardedValue = map['templateContent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      templateSpecVersionId: (() {
-        final guardedValue = map['templateSpecVersionId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      parametersContent: (() { final guardedValue = map['parametersContent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      templateContent: (() { final guardedValue = map['templateContent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      templateSpecVersionId: (() { final guardedValue = map['templateSpecVersionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

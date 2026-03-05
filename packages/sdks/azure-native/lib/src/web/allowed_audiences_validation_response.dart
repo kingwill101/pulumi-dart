@@ -9,19 +9,20 @@ class AllowedAudiencesValidationResponse {
 
   /// Creates a new [AllowedAudiencesValidationResponse].
   /// [allowedAudiences] The configuration settings of the allowed list of audiences from which to validate the JWT token.
-  AllowedAudiencesValidationResponse({this.allowedAudiences});
+  AllowedAudiencesValidationResponse({
+    this.allowedAudiences,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'allowedAudiences': ?allowedAudiences};
+    return <String, dynamic>{
+      'allowedAudiences': ?allowedAudiences,
+    };
   }
 
   factory AllowedAudiencesValidationResponse.fromMap(Map<String, dynamic> map) {
     return AllowedAudiencesValidationResponse(
-      allowedAudiences: (() {
-        final guardedValue = map['allowedAudiences'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      allowedAudiences: (() { final guardedValue = map['allowedAudiences']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

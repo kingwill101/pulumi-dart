@@ -301,10 +301,8 @@ import 'global_database_network_state.dart';
 class GlobalDatabaseNetwork extends pulumi.CustomResource {
   /// The ID of the primary cluster.
   late final pulumi.Output<String> dbClusterId;
-
   /// The description of the Global Database Network.
   late final pulumi.Output<String> description;
-
   /// The status of the Global Database Network.
   late final pulumi.Output<String> status;
 
@@ -317,11 +315,11 @@ class GlobalDatabaseNetwork extends pulumi.CustomResource {
     GlobalDatabaseNetworkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:polardb/globalDatabaseNetwork:GlobalDatabaseNetwork',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:polardb/globalDatabaseNetwork:GlobalDatabaseNetwork',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dbClusterId = registerOutput<String>('dbClusterId');
     description = registerOutput<String>('description');
     status = registerOutput<String>('status');
@@ -345,11 +343,11 @@ class GlobalDatabaseNetwork extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:polardb/globalDatabaseNetwork:GlobalDatabaseNetwork',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:polardb/globalDatabaseNetwork:GlobalDatabaseNetwork',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dbClusterId = registerOutput<String>('dbClusterId');
     description = registerOutput<String>('description');
     status = registerOutput<String>('status');

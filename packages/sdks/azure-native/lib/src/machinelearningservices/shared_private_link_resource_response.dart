@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SharedPrivateLinkResourceResponse {
   /// The private link resource group id.
   final pulumi.Input<String>? groupId;
-
   /// Unique name of the private link.
   final pulumi.Input<String>? name;
-
   /// The resource id that private link links to.
   final pulumi.Input<String>? privateLinkResourceId;
-
   /// Request message.
   final pulumi.Input<String>? requestMessage;
-
   /// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
   final pulumi.Input<String>? status;
 
@@ -44,31 +40,12 @@ class SharedPrivateLinkResourceResponse {
 
   factory SharedPrivateLinkResourceResponse.fromMap(Map<String, dynamic> map) {
     return SharedPrivateLinkResourceResponse(
-      groupId: (() {
-        final guardedValue = map['groupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      privateLinkResourceId: (() {
-        final guardedValue = map['privateLinkResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      requestMessage: (() {
-        final guardedValue = map['requestMessage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      groupId: (() { final guardedValue = map['groupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateLinkResourceId: (() { final guardedValue = map['privateLinkResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      requestMessage: (() { final guardedValue = map['requestMessage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDispatchRulesRuleNotifyRuleNotifyObject {
   /// The name of the contact or contact group.
   final pulumi.Input<String> name;
-
   /// The ID of the contact or contact group.
   final pulumi.Input<String> notifyObjectId;
-
   /// The type of the alert contact.
   final pulumi.Input<String> notifyType;
 
@@ -30,9 +28,7 @@ class GetDispatchRulesRuleNotifyRuleNotifyObject {
     };
   }
 
-  factory GetDispatchRulesRuleNotifyRuleNotifyObject.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDispatchRulesRuleNotifyRuleNotifyObject.fromMap(Map<String, dynamic> map) {
     return GetDispatchRulesRuleNotifyRuleNotifyObject(
       name: pulumi.Input.fromValue(map['name'] as String),
       notifyObjectId: pulumi.Input.fromValue(map['notifyObjectId'] as String),
@@ -40,3 +36,4 @@ class GetDispatchRulesRuleNotifyRuleNotifyObject {
     );
   }
 }
+

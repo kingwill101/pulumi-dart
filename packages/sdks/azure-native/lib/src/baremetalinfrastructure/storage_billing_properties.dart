@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StorageBillingProperties {
   /// the SKU type that is provisioned
   final pulumi.Input<String>? azureBareMetalStorageInstanceSize;
-
   /// the billing mode for the storage instance
   final pulumi.Input<String>? billingMode;
 
@@ -27,16 +26,9 @@ class StorageBillingProperties {
 
   factory StorageBillingProperties.fromMap(Map<String, dynamic> map) {
     return StorageBillingProperties(
-      azureBareMetalStorageInstanceSize: (() {
-        final guardedValue = map['azureBareMetalStorageInstanceSize'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      billingMode: (() {
-        final guardedValue = map['billingMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      azureBareMetalStorageInstanceSize: (() { final guardedValue = map['azureBareMetalStorageInstanceSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      billingMode: (() { final guardedValue = map['billingMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

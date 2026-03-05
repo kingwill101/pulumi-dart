@@ -5,22 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetReposRepoTag {
   /// Digest of this image.
   final pulumi.Input<String> digest;
-
   /// Create time of this image, unix time in nanoseconds.
   final pulumi.Input<int> imageCreate;
-
   /// Id of this image.
   final pulumi.Input<String> imageId;
-
   /// Status of this image, in bytes.
   final pulumi.Input<int> imageSize;
-
   /// Last update time of this image, unix time in nanoseconds.
   final pulumi.Input<int> imageUpdate;
-
   /// Status of this image.
   final pulumi.Input<String> status;
-
   /// Tag of this image.
   final pulumi.Input<String> tag;
 
@@ -66,3 +60,4 @@ class GetReposRepoTag {
     );
   }
 }
+

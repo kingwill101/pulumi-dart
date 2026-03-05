@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SymptomResponse {
   /// Timestamp when the Symptom is created.
   final pulumi.Input<String> createTime;
-
   /// Detailed information of the current Symptom.
   final pulumi.Input<String> details;
-
   /// Type of the Symptom.
   final pulumi.Input<String> symptomType;
-
   /// A string used to uniquely distinguish a worker within a TPU node.
   final pulumi.Input<String> workerId;
 
@@ -46,3 +43,4 @@ class SymptomResponse {
     );
   }
 }
+

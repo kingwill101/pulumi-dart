@@ -125,10 +125,8 @@ import 'vul_whitelist_state.dart';
 class VulWhitelist extends pulumi.CustomResource {
   /// Reason for adding whitelist.
   late final pulumi.Output<String?> reason;
-
   /// Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
   late final pulumi.Output<String?> targetInfo;
-
   /// Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
   late final pulumi.Output<String> whitelist;
 
@@ -141,11 +139,11 @@ class VulWhitelist extends pulumi.CustomResource {
     VulWhitelistArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:threatdetection/vulWhitelist:VulWhitelist',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:threatdetection/vulWhitelist:VulWhitelist',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     reason = registerOutput<String?>('reason');
     targetInfo = registerOutput<String?>('targetInfo');
     whitelist = registerOutput<String>('whitelist');
@@ -169,11 +167,11 @@ class VulWhitelist extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:threatdetection/vulWhitelist:VulWhitelist',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:threatdetection/vulWhitelist:VulWhitelist',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     reason = registerOutput<String?>('reason');
     targetInfo = registerOutput<String?>('targetInfo');
     whitelist = registerOutput<String>('whitelist');

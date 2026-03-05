@@ -318,55 +318,38 @@ import 'app_template.dart';
 class App extends pulumi.CustomResource {
   /// The ID of the Container App Environment within which this Container App should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> containerAppEnvironmentId;
-
   /// The ID of the Custom Domain Verification for this Container App.
   late final pulumi.Output<String> customDomainVerificationId;
-
   /// A `dapr` block as detailed below.
   late final pulumi.Output<AppDapr?> dapr;
-
   /// An `identity` block as detailed below.
   late final pulumi.Output<AppIdentity?> identity;
-
   /// An `ingress` block as detailed below.
   late final pulumi.Output<AppIngress?> ingress;
-
   /// The FQDN of the Latest Revision of the Container App.
   late final pulumi.Output<String> latestRevisionFqdn;
-
   /// The name of the latest Container Revision.
   late final pulumi.Output<String> latestRevisionName;
-
   /// The location this Container App is deployed in. This is the same as the Environment in which it is deployed.
   late final pulumi.Output<String> location;
-
   /// The maximum of inactive revisions allowed for this Container App.
   late final pulumi.Output<int?> maxInactiveRevisions;
-
   /// The name for this Container App. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// A list of the Public IP Addresses which the Container App uses for outbound network access.
   late final pulumi.Output<List<String>> outboundIpAddresses;
-
   /// A `registry` block as detailed below.
   late final pulumi.Output<List<Map<String, dynamic>>?> registries;
-
   /// The name of the resource group in which the Container App Environment is to be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The revisions operational mode for the Container App. Possible values include `Single` and `Multiple`. In `Single` mode, a single revision is in operation at any given time. In `Multiple` mode, more than one revision can be active at a time and can be configured with load distribution via the `traffic_weight` block in the `ingress` configuration.
   late final pulumi.Output<String> revisionMode;
-
   /// One or more `secret` block as detailed below.
   late final pulumi.Output<List<Map<String, dynamic>>?> secrets;
-
   /// A mapping of tags to assign to the Container App.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A `template` block as detailed below.
   late final pulumi.Output<AppTemplate> template;
-
   /// The name of the Workload Profile in the Container App Environment to place this Container App.
   ///
   /// &gt; **Note:** Omit this value to use the default `Consumption` Workload Profile.
@@ -376,47 +359,21 @@ class App extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [App]. {@macro pulumi_containerapp_app_app_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  App(String name, {AppArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure:containerapp/app:App',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
-    containerAppEnvironmentId = registerOutput<String>(
-      'containerAppEnvironmentId',
-    );
-    customDomainVerificationId = registerOutput<String>(
-      'customDomainVerificationId',
-    );
-    dapr = registerOutput<AppDapr?>(
-      'dapr',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AppDapr.fromMap((guardedValue as Map).cast<String, dynamic>());
-      },
-    );
-    identity = registerOutput<AppIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AppIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    ingress = registerOutput<AppIngress?>(
-      'ingress',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AppIngress.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+  App(
+    String name, {
+    AppArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure:containerapp/app:App',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    containerAppEnvironmentId = registerOutput<String>('containerAppEnvironmentId');
+    customDomainVerificationId = registerOutput<String>('customDomainVerificationId');
+    dapr = registerOutput<AppDapr?>('dapr', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppDapr.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<AppIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ingress = registerOutput<AppIngress?>('ingress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppIngress.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     latestRevisionFqdn = registerOutput<String>('latestRevisionFqdn');
     latestRevisionName = registerOutput<String>('latestRevisionName');
     location = registerOutput<String>('location');
@@ -428,21 +385,16 @@ class App extends pulumi.CustomResource {
     revisionMode = registerOutput<String>('revisionMode');
     secrets = registerOutput<List<Map<String, dynamic>>?>('secrets');
     tags = registerOutput<Map<String, String>?>('tags');
-    template = registerOutput<AppTemplate>(
-      'template',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AppTemplate.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    template = registerOutput<AppTemplate>('template', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     workloadProfileName = registerOutput<String?>('workloadProfileName');
   }
 
   /// Gets an existing [App] resource's state with the given [name] and [id].
-  static App get(String name, pulumi.Input<String> id, {AppState? state}) {
+  static App get(
+    String name,
+    pulumi.Input<String> id, {
+    AppState? state,
+  }) {
     return App._get(
       name,
       state: state?.toMap(),
@@ -455,45 +407,16 @@ class App extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:containerapp/app:App',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    containerAppEnvironmentId = registerOutput<String>(
-      'containerAppEnvironmentId',
-    );
-    customDomainVerificationId = registerOutput<String>(
-      'customDomainVerificationId',
-    );
-    dapr = registerOutput<AppDapr?>(
-      'dapr',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AppDapr.fromMap((guardedValue as Map).cast<String, dynamic>());
-      },
-    );
-    identity = registerOutput<AppIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AppIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    ingress = registerOutput<AppIngress?>(
-      'ingress',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AppIngress.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:containerapp/app:App',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    containerAppEnvironmentId = registerOutput<String>('containerAppEnvironmentId');
+    customDomainVerificationId = registerOutput<String>('customDomainVerificationId');
+    dapr = registerOutput<AppDapr?>('dapr', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppDapr.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<AppIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ingress = registerOutput<AppIngress?>('ingress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppIngress.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     latestRevisionFqdn = registerOutput<String>('latestRevisionFqdn');
     latestRevisionName = registerOutput<String>('latestRevisionName');
     location = registerOutput<String>('location');
@@ -505,16 +428,7 @@ class App extends pulumi.CustomResource {
     revisionMode = registerOutput<String>('revisionMode');
     secrets = registerOutput<List<Map<String, dynamic>>?>('secrets');
     tags = registerOutput<Map<String, String>?>('tags');
-    template = registerOutput<AppTemplate>(
-      'template',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AppTemplate.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    template = registerOutput<AppTemplate>('template', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     workloadProfileName = registerOutput<String?>('workloadProfileName');
   }
 }

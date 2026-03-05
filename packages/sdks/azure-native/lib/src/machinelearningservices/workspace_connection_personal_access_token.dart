@@ -7,21 +7,20 @@ class WorkspaceConnectionPersonalAccessToken {
 
   /// Creates a new [WorkspaceConnectionPersonalAccessToken].
   /// [pat] Optional.
-  WorkspaceConnectionPersonalAccessToken({this.pat});
+  WorkspaceConnectionPersonalAccessToken({
+    this.pat,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'pat': ?pat};
+    return <String, dynamic>{
+      'pat': ?pat,
+    };
   }
 
-  factory WorkspaceConnectionPersonalAccessToken.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WorkspaceConnectionPersonalAccessToken.fromMap(Map<String, dynamic> map) {
     return WorkspaceConnectionPersonalAccessToken(
-      pat: (() {
-        final guardedValue = map['pat'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      pat: (() { final guardedValue = map['pat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

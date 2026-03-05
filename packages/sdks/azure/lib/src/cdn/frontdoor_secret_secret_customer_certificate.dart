@@ -7,7 +7,6 @@ class FrontdoorSecretSecretCustomerCertificate {
   ///
   /// &gt; **Note:** If you would like to use the **latest version** of the Key Vault Certificate use the Key Vault Certificates `versionless_id` attribute as the `key_vault_certificate_id` fields value(e.g. `key_vault_certificate_id = azurerm_key_vault_certificate.example.versionless_id`).
   final pulumi.Input<String> keyVaultCertificateId;
-
   /// One or more `subject alternative names` contained within the key vault certificate.
   final pulumi.Input<List<String>>? subjectAlternativeNames;
 
@@ -26,18 +25,11 @@ class FrontdoorSecretSecretCustomerCertificate {
     };
   }
 
-  factory FrontdoorSecretSecretCustomerCertificate.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FrontdoorSecretSecretCustomerCertificate.fromMap(Map<String, dynamic> map) {
     return FrontdoorSecretSecretCustomerCertificate(
-      keyVaultCertificateId: pulumi.Input.fromValue(
-        map['keyVaultCertificateId'] as String,
-      ),
-      subjectAlternativeNames: (() {
-        final guardedValue = map['subjectAlternativeNames'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      keyVaultCertificateId: pulumi.Input.fromValue(map['keyVaultCertificateId'] as String),
+      subjectAlternativeNames: (() { final guardedValue = map['subjectAlternativeNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

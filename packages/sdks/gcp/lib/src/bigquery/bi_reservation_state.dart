@@ -7,21 +7,16 @@ import 'bi_reservation_preferred_table.dart';
 class BiReservationState {
   /// LOCATION_DESCRIPTION
   final pulumi.Input<String>? location;
-
   /// The resource name of the singleton BI reservation. Reservation names have the form `projects/{projectId}/locations/{locationId}/biReservation`.
   final pulumi.Input<String>? name;
-
   /// Preferred tables to use BI capacity for.
   /// Structure is documented below.
   final pulumi.Input<List<BiReservationPreferredTable>>? preferredTables;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// Size of a reservation, in bytes.
   final pulumi.Input<int>? size;
-
   /// The last update timestamp of a reservation.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   final pulumi.Input<String>? updateTime;
@@ -46,18 +41,7 @@ class BiReservationState {
     return <String, dynamic>{
       'location': ?location,
       'name': ?name,
-      'preferredTables':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<BiReservationPreferredTable>,
-            List<Map<String, dynamic>>
-          >(
-            preferredTables,
-            (value) =>
-                pulumi.Input.encodeList<
-                  BiReservationPreferredTable,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'preferredTables': ?pulumi.Input.mapOptionalInputValue<List<BiReservationPreferredTable>, List<Map<String, dynamic>>>(preferredTables, (value) => pulumi.Input.encodeList<BiReservationPreferredTable, Map<String, dynamic>>(value, (value) => value.toMap())),
       'project': ?project,
       'size': ?size,
       'updateTime': ?updateTime,
@@ -66,43 +50,13 @@ class BiReservationState {
 
   factory BiReservationState.fromMap(Map<String, dynamic> map) {
     return BiReservationState(
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      preferredTables: (() {
-        final guardedValue = map['preferredTables'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<BiReservationPreferredTable>(
-            guardedValue,
-            (value) => BiReservationPreferredTable.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      size: (() {
-        final guardedValue = map['size'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      updateTime: (() {
-        final guardedValue = map['updateTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      preferredTables: (() { final guardedValue = map['preferredTables']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<BiReservationPreferredTable>(guardedValue, (value) => BiReservationPreferredTable.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

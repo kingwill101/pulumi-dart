@@ -9,19 +9,20 @@ class NfsProtocolProperties {
 
   /// Creates a new [NfsProtocolProperties].
   /// [rootSquash] Root squash defines how root users on clients are mapped to the NFS share.
-  NfsProtocolProperties({this.rootSquash});
+  NfsProtocolProperties({
+    this.rootSquash,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'rootSquash': ?rootSquash};
+    return <String, dynamic>{
+      'rootSquash': ?rootSquash,
+    };
   }
 
   factory NfsProtocolProperties.fromMap(Map<String, dynamic> map) {
     return NfsProtocolProperties(
-      rootSquash: (() {
-        final guardedValue = map['rootSquash'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      rootSquash: (() { final guardedValue = map['rootSquash']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

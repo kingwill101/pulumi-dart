@@ -217,30 +217,22 @@ import 'table_replica_state.dart';
 class TableReplicaDynamodb extends pulumi.CustomResource {
   /// ARN of the table replica.
   late final pulumi.Output<String> arn;
-
   /// Whether deletion protection is enabled (true) or disabled (false) on the table replica.
   late final pulumi.Output<bool> deletionProtectionEnabled;
-
   /// ARN of the _main_ or global table which this resource will replicate.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> globalTableArn;
-
   /// ARN of the CMK that should be used for the AWS KMS encryption. This argument should only be used if the key is different from the default KMS-managed DynamoDB key, `alias/aws/dynamodb`. **Note:** This attribute will _not_ be populated with the ARN of _default_ keys.
   late final pulumi.Output<String> kmsKeyArn;
-
   /// Whether to enable Point In Time Recovery for the table replica. Default is `false`.
   late final pulumi.Output<bool?> pointInTimeRecovery;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Storage class of the table replica. Valid values are `STANDARD` and `STANDARD_INFREQUENT_ACCESS`. If not used, the table replica will use the same class as the global table.
   late final pulumi.Output<String?> tableClassOverride;
-
   /// Map of tags to populate on the created table. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -253,15 +245,13 @@ class TableReplicaDynamodb extends pulumi.CustomResource {
     TableReplicaArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:dynamodb/tableReplica:TableReplica',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:dynamodb/tableReplica:TableReplica',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    deletionProtectionEnabled = registerOutput<bool>(
-      'deletionProtectionEnabled',
-    );
+    deletionProtectionEnabled = registerOutput<bool>('deletionProtectionEnabled');
     globalTableArn = registerOutput<String>('globalTableArn');
     kmsKeyArn = registerOutput<String>('kmsKeyArn');
     pointInTimeRecovery = registerOutput<bool?>('pointInTimeRecovery');
@@ -289,15 +279,13 @@ class TableReplicaDynamodb extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:dynamodb/tableReplica:TableReplica',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:dynamodb/tableReplica:TableReplica',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    deletionProtectionEnabled = registerOutput<bool>(
-      'deletionProtectionEnabled',
-    );
+    deletionProtectionEnabled = registerOutput<bool>('deletionProtectionEnabled');
     globalTableArn = registerOutput<String>('globalTableArn');
     kmsKeyArn = registerOutput<String>('kmsKeyArn');
     pointInTimeRecovery = registerOutput<bool?>('pointInTimeRecovery');

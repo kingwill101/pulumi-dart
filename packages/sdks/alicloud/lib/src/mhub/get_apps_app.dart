@@ -5,31 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAppsApp {
   /// Application AppKey, which uniquely identifies an application when requested by the interface
   final pulumi.Input<String> appKey;
-
   /// The Name of the App.
   final pulumi.Input<String> appName;
-
   /// iOS application ID. Required when creating an iOS app. **NOTE:** Either `bundle_id` or `package_name` must be set.
   final pulumi.Input<String> bundleId;
-
   /// The CreateTime of the App.
   final pulumi.Input<String> createTime;
-
   /// Base64 string of picture.
   final pulumi.Input<String> encodedIcon;
-
   /// The ID of the App.
   final pulumi.Input<String> id;
-
   /// The Industry ID of the app. For information about Industry and how to use it, MHUB[Industry](https://help.aliyun.com/document_detail/201638.html).
   final pulumi.Input<String> industryId;
-
   /// Android App package name.  **NOTE:** Either `bundle_id` or `package_name` must be set.
   final pulumi.Input<String> packageName;
-
   /// The ID of the Product.
   final pulumi.Input<String> productId;
-
   /// The type of the App. Valid values: `Android` and `iOS`.
   final pulumi.Input<String> type;
 
@@ -87,3 +78,4 @@ class GetAppsApp {
     );
   }
 }
+

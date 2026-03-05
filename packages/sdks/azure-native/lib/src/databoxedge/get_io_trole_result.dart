@@ -11,44 +11,31 @@ import 'system_data_response.dart';
 class GetIoTRoleResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Resource allocation
   final ComputeResourceResponse? computeResource;
-
   /// Host OS supported by the IoT role.
   final String hostPlatform;
-
   /// Platform where the Iot runtime is hosted.
   final String hostPlatformType;
-
   /// The path ID that uniquely identifies the object.
   final String id;
-
   /// IoT device metadata to which data box edge device needs to be connected.
   final IoTDeviceInfoResponse ioTDeviceDetails;
-
   /// Iot edge agent details to download the agent and bootstrap iot runtime.
   final IoTEdgeAgentInfoResponse? ioTEdgeAgentInfo;
-
   /// IoT edge device to which the IoT role needs to be configured.
   final IoTDeviceInfoResponse ioTEdgeDeviceDetails;
-
   /// Role type.
   /// Expected value is 'IOT'.
   final String kind;
-
   /// The object name.
   final String name;
-
   /// Role status.
   final String roleStatus;
-
   /// Mount points of shares in role(s).
   final List<MountPointMapResponse>? shareMappings;
-
   /// Metadata pertaining to creation and last modification of Role
   final SystemDataResponse systemData;
-
   /// The hierarchical type of the object.
   final String type;
 
@@ -97,14 +84,7 @@ class GetIoTRoleResult {
       'kind': kind,
       'name': name,
       'roleStatus': roleStatus,
-      'shareMappings': ?(() {
-        final guardedValue = shareMappings;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          MountPointMapResponse,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'shareMappings': ?(() { final guardedValue = shareMappings; if (guardedValue == null) return null; return pulumi.Input.encodeList<MountPointMapResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'systemData': systemData.toMap(),
       'type': type,
     };
@@ -113,46 +93,20 @@ class GetIoTRoleResult {
   factory GetIoTRoleResult.fromMap(Map<String, dynamic> map) {
     return GetIoTRoleResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      computeResource: (() {
-        final guardedValue = map['computeResource'];
-        if (guardedValue == null) return null;
-        return ComputeResourceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      computeResource: (() { final guardedValue = map['computeResource']; if (guardedValue == null) return null; return ComputeResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       hostPlatform: map['hostPlatform'] as String,
       hostPlatformType: map['hostPlatformType'] as String,
       id: map['id'] as String,
-      ioTDeviceDetails: IoTDeviceInfoResponse.fromMap(
-        (map['ioTDeviceDetails']! as Map).cast<String, dynamic>(),
-      ),
-      ioTEdgeAgentInfo: (() {
-        final guardedValue = map['ioTEdgeAgentInfo'];
-        if (guardedValue == null) return null;
-        return IoTEdgeAgentInfoResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      ioTEdgeDeviceDetails: IoTDeviceInfoResponse.fromMap(
-        (map['ioTEdgeDeviceDetails']! as Map).cast<String, dynamic>(),
-      ),
+      ioTDeviceDetails: IoTDeviceInfoResponse.fromMap((map['ioTDeviceDetails']! as Map).cast<String, dynamic>()),
+      ioTEdgeAgentInfo: (() { final guardedValue = map['ioTEdgeAgentInfo']; if (guardedValue == null) return null; return IoTEdgeAgentInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      ioTEdgeDeviceDetails: IoTDeviceInfoResponse.fromMap((map['ioTEdgeDeviceDetails']! as Map).cast<String, dynamic>()),
       kind: map['kind'] as String,
       name: map['name'] as String,
       roleStatus: map['roleStatus'] as String,
-      shareMappings: (() {
-        final guardedValue = map['shareMappings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<MountPointMapResponse>(
-          guardedValue,
-          (value) => MountPointMapResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      shareMappings: (() { final guardedValue = map['shareMappings']; if (guardedValue == null) return null; return pulumi.Input.decodeList<MountPointMapResponse>(guardedValue, (value) => MountPointMapResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

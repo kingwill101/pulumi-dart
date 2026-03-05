@@ -166,17 +166,12 @@ import 'storage_classification_mapping_properties_response.dart';
 class ReplicationStorageClassificationMapping extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Resource Location
   late final pulumi.Output<String?> location;
-
   /// Resource Name
   late final pulumi.Output<String> name;
-
   /// Properties of the storage mapping object.
-  late final pulumi.Output<StorageClassificationMappingPropertiesResponse>
-  properties;
-
+  late final pulumi.Output<StorageClassificationMappingPropertiesResponse> properties;
   /// Resource Type
   late final pulumi.Output<String> type;
 
@@ -189,24 +184,15 @@ class ReplicationStorageClassificationMapping extends pulumi.CustomResource {
     ReplicationStorageClassificationMappingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:recoveryservices:ReplicationStorageClassificationMapping',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:recoveryservices:ReplicationStorageClassificationMapping',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<StorageClassificationMappingPropertiesResponse>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return StorageClassificationMappingPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<StorageClassificationMappingPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StorageClassificationMappingPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

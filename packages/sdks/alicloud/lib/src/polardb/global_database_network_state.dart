@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GlobalDatabaseNetworkState {
   /// The ID of the primary cluster.
   final pulumi.Input<String>? dbClusterId;
-
   /// The description of the Global Database Network.
   final pulumi.Input<String>? description;
-
   /// The status of the Global Database Network.
   final pulumi.Input<String>? status;
 
@@ -17,7 +15,11 @@ class GlobalDatabaseNetworkState {
   /// [dbClusterId] The ID of the primary cluster.
   /// [description] The description of the Global Database Network.
   /// [status] The status of the Global Database Network.
-  GlobalDatabaseNetworkState({this.dbClusterId, this.description, this.status});
+  GlobalDatabaseNetworkState({
+    this.dbClusterId,
+    this.description,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class GlobalDatabaseNetworkState {
 
   factory GlobalDatabaseNetworkState.fromMap(Map<String, dynamic> map) {
     return GlobalDatabaseNetworkState(
-      dbClusterId: (() {
-        final guardedValue = map['dbClusterId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dbClusterId: (() { final guardedValue = map['dbClusterId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

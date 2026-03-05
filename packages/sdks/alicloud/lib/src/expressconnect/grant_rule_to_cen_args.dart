@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GrantRuleToCenArgs {
   /// The ID of the CEN instance to which you want to grant permissions.
   final pulumi.Input<String> cenId;
-
   /// The user ID (UID) of the Alibaba Cloud account to which the CEN instance belongs.
   final pulumi.Input<String> cenOwnerId;
-
   /// The ID of the VBR.
   final pulumi.Input<String> instanceId;
 
@@ -42,3 +40,4 @@ class GrantRuleToCenArgs {
     );
   }
 }
+

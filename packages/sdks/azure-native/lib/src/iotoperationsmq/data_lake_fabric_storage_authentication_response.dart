@@ -6,8 +6,7 @@ import 'managed_identity_authentication_response.dart';
 /// DataLake Fabric Storage authentication details.
 class DataLakeFabricStorageAuthenticationResponse {
   /// Configuration for managed identity authentication.
-  final pulumi.Input<ManagedIdentityAuthenticationResponse>
-  systemAssignedManagedIdentity;
+  final pulumi.Input<ManagedIdentityAuthenticationResponse> systemAssignedManagedIdentity;
 
   /// Creates a new [DataLakeFabricStorageAuthenticationResponse].
   /// [systemAssignedManagedIdentity] Configuration for managed identity authentication.
@@ -17,24 +16,14 @@ class DataLakeFabricStorageAuthenticationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'systemAssignedManagedIdentity':
-          pulumi.Input.mapInputValue<
-            ManagedIdentityAuthenticationResponse,
-            Map<String, dynamic>
-          >(systemAssignedManagedIdentity, (value) => value.toMap()),
+      'systemAssignedManagedIdentity': pulumi.Input.mapInputValue<ManagedIdentityAuthenticationResponse, Map<String, dynamic>>(systemAssignedManagedIdentity, (value) => value.toMap()),
     };
   }
 
-  factory DataLakeFabricStorageAuthenticationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DataLakeFabricStorageAuthenticationResponse.fromMap(Map<String, dynamic> map) {
     return DataLakeFabricStorageAuthenticationResponse(
-      systemAssignedManagedIdentity: pulumi.Input.fromValue(
-        ManagedIdentityAuthenticationResponse.fromMap(
-          (map['systemAssignedManagedIdentity']! as Map)
-              .cast<String, dynamic>(),
-        ),
-      ),
+      systemAssignedManagedIdentity: pulumi.Input.fromValue(ManagedIdentityAuthenticationResponse.fromMap((map['systemAssignedManagedIdentity']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

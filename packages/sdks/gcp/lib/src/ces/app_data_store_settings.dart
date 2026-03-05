@@ -14,39 +14,20 @@ class AppDataStoreSettings {
 
   /// Creates a new [AppDataStoreSettings].
   /// [engines] (Output)
-  AppDataStoreSettings({this.engines});
+  AppDataStoreSettings({
+    this.engines,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'engines':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<AppDataStoreSettingsEngine>,
-            List<Map<String, dynamic>>
-          >(
-            engines,
-            (value) =>
-                pulumi.Input.encodeList<
-                  AppDataStoreSettingsEngine,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'engines': ?pulumi.Input.mapOptionalInputValue<List<AppDataStoreSettingsEngine>, List<Map<String, dynamic>>>(engines, (value) => pulumi.Input.encodeList<AppDataStoreSettingsEngine, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AppDataStoreSettings.fromMap(Map<String, dynamic> map) {
     return AppDataStoreSettings(
-      engines: (() {
-        final guardedValue = map['engines'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<AppDataStoreSettingsEngine>(
-            guardedValue,
-            (value) => AppDataStoreSettingsEngine.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      engines: (() { final guardedValue = map['engines']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppDataStoreSettingsEngine>(guardedValue, (value) => AppDataStoreSettingsEngine.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

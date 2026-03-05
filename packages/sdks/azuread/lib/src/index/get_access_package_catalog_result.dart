@@ -1,18 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getAccessPackageCatalog.
 class GetAccessPackageCatalogResult {
   /// The description of the access package catalog.
   final String description;
   final String displayName;
-
   /// Whether the access packages in this catalog can be requested by users outside the tenant.
   final bool externallyVisible;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String objectId;
-
   /// Whether the access packages in this catalog are available for management.
   final bool published;
 
@@ -54,3 +52,4 @@ class GetAccessPackageCatalogResult {
     );
   }
 }
+

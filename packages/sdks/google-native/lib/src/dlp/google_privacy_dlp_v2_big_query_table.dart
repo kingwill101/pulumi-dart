@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GooglePrivacyDlpV2BigQueryTable {
   /// Dataset ID of the table.
   final pulumi.Input<String>? datasetId;
-
   /// The Google Cloud Platform project ID of the project containing the table. If omitted, project ID is inferred from the API call.
   final pulumi.Input<String>? project;
-
   /// Name of the table.
   final pulumi.Input<String>? tableId;
 
@@ -17,7 +15,11 @@ class GooglePrivacyDlpV2BigQueryTable {
   /// [datasetId] Dataset ID of the table.
   /// [project] The Google Cloud Platform project ID of the project containing the table. If omitted, project ID is inferred from the API call.
   /// [tableId] Name of the table.
-  GooglePrivacyDlpV2BigQueryTable({this.datasetId, this.project, this.tableId});
+  GooglePrivacyDlpV2BigQueryTable({
+    this.datasetId,
+    this.project,
+    this.tableId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class GooglePrivacyDlpV2BigQueryTable {
 
   factory GooglePrivacyDlpV2BigQueryTable.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2BigQueryTable(
-      datasetId: (() {
-        final guardedValue = map['datasetId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tableId: (() {
-        final guardedValue = map['tableId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      datasetId: (() { final guardedValue = map['datasetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tableId: (() { final guardedValue = map['tableId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

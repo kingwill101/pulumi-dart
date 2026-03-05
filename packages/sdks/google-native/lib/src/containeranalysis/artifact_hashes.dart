@@ -8,19 +8,20 @@ class ArtifactHashes {
 
   /// Creates a new [ArtifactHashes].
   /// [sha256] Optional.
-  ArtifactHashes({this.sha256});
+  ArtifactHashes({
+    this.sha256,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'sha256': ?sha256};
+    return <String, dynamic>{
+      'sha256': ?sha256,
+    };
   }
 
   factory ArtifactHashes.fromMap(Map<String, dynamic> map) {
     return ArtifactHashes(
-      sha256: (() {
-        final guardedValue = map['sha256'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      sha256: (() { final guardedValue = map['sha256']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

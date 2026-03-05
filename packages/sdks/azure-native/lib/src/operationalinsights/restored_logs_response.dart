@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RestoredLogsResponse {
   /// Search results table async operation id.
   final pulumi.Input<String> azureAsyncOperationId;
-
   /// The timestamp to end the restore by (UTC).
   final pulumi.Input<String>? endRestoreTime;
-
   /// The table to restore data from.
   final pulumi.Input<String>? sourceTable;
-
   /// The timestamp to start the restore from (UTC).
   final pulumi.Input<String>? startRestoreTime;
 
@@ -39,24 +36,11 @@ class RestoredLogsResponse {
 
   factory RestoredLogsResponse.fromMap(Map<String, dynamic> map) {
     return RestoredLogsResponse(
-      azureAsyncOperationId: pulumi.Input.fromValue(
-        map['azureAsyncOperationId'] as String,
-      ),
-      endRestoreTime: (() {
-        final guardedValue = map['endRestoreTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sourceTable: (() {
-        final guardedValue = map['sourceTable'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      startRestoreTime: (() {
-        final guardedValue = map['startRestoreTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      azureAsyncOperationId: pulumi.Input.fromValue(map['azureAsyncOperationId'] as String),
+      endRestoreTime: (() { final guardedValue = map['endRestoreTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourceTable: (() { final guardedValue = map['sourceTable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      startRestoreTime: (() { final guardedValue = map['startRestoreTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

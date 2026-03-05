@@ -14,37 +14,25 @@ import 'agent_flow_definition_node_configuration_storage.dart';
 class AgentFlowDefinitionNodeConfiguration {
   /// Contains configurations for an agent node in your flow. Invokes an alias of an agent and returns the response. See Agent Node Configuration for more information.
   final pulumi.Input<AgentFlowDefinitionNodeConfigurationAgent>? agent;
-
   /// Contains configurations for a collector node in your flow. Collects an iteration of inputs and consolidates them into an array of outputs. This object has no fields.
   final pulumi.Input<Map<String, dynamic>>? collector;
   final pulumi.Input<AgentFlowDefinitionNodeConfigurationCondition>? condition;
-
   /// Contains configurations for an inline code node in your flow. See Inline Code Node Configuration for more information.
-  final pulumi.Input<AgentFlowDefinitionNodeConfigurationInlineCode>?
-  inlineCode;
+  final pulumi.Input<AgentFlowDefinitionNodeConfigurationInlineCode>? inlineCode;
   final pulumi.Input<Map<String, dynamic>>? input;
-
   /// Contains configurations for an iterator node in your flow. Takes an input that is an array and iteratively sends each item of the array as an output to the following node. The size of the array is also returned in the output. The output flow node at the end of the flow iteration will return a response for each member of the array. To return only one response, you can include a collector node downstream from the iterator node. This object has no fields.
   final pulumi.Input<Map<String, dynamic>>? iterator;
-
   /// Contains configurations for a knowledge base node in your flow. Queries a knowledge base and returns the retrieved results or generated response. See Knowledge Base Node Configuration for more information.
-  final pulumi.Input<AgentFlowDefinitionNodeConfigurationKnowledgeBase>?
-  knowledgeBase;
-
+  final pulumi.Input<AgentFlowDefinitionNodeConfigurationKnowledgeBase>? knowledgeBase;
   /// Contains configurations for a Lambda function node in your flow. Invokes a Lambda function. See Lambda Function Node Configuration for more information.
-  final pulumi.Input<AgentFlowDefinitionNodeConfigurationLambdaFunction>?
-  lambdaFunction;
-
+  final pulumi.Input<AgentFlowDefinitionNodeConfigurationLambdaFunction>? lambdaFunction;
   /// Contains configurations for a Lex node in your flow. Invokes an Amazon Lex bot to identify the intent of the input and return the intent as the output. See Lex Node Configuration for more information.
   final pulumi.Input<AgentFlowDefinitionNodeConfigurationLex>? lex;
   final pulumi.Input<Map<String, dynamic>>? output;
-
   /// Contains configurations for a prompt node in your flow. Runs a prompt and generates the model response as the output. You can use a prompt from Prompt management or you can configure one in this node. See Prompt Node Configuration for more information.
   final pulumi.Input<AgentFlowDefinitionNodeConfigurationPrompt>? prompt;
-
   /// Contains configurations for a Retrieval node in your flow. Retrieves data from an Amazon S3 location and returns it as the output. See Retrieval Node Configuration for more information.
   final pulumi.Input<AgentFlowDefinitionNodeConfigurationRetrieval>? retrieval;
-
   /// Contains configurations for a Storage node in your flow. Stores an input in an Amazon S3 location. See Storage Node Configuration for more information.
   final pulumi.Input<AgentFlowDefinitionNodeConfigurationStorage>? storage;
 
@@ -80,171 +68,38 @@ class AgentFlowDefinitionNodeConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'agent':
-          ?pulumi.Input.mapOptionalInputValue<
-            AgentFlowDefinitionNodeConfigurationAgent,
-            Map<String, dynamic>
-          >(agent, (value) => value.toMap()),
+      'agent': ?pulumi.Input.mapOptionalInputValue<AgentFlowDefinitionNodeConfigurationAgent, Map<String, dynamic>>(agent, (value) => value.toMap()),
       'collector': ?collector,
-      'condition':
-          ?pulumi.Input.mapOptionalInputValue<
-            AgentFlowDefinitionNodeConfigurationCondition,
-            Map<String, dynamic>
-          >(condition, (value) => value.toMap()),
-      'inlineCode':
-          ?pulumi.Input.mapOptionalInputValue<
-            AgentFlowDefinitionNodeConfigurationInlineCode,
-            Map<String, dynamic>
-          >(inlineCode, (value) => value.toMap()),
+      'condition': ?pulumi.Input.mapOptionalInputValue<AgentFlowDefinitionNodeConfigurationCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
+      'inlineCode': ?pulumi.Input.mapOptionalInputValue<AgentFlowDefinitionNodeConfigurationInlineCode, Map<String, dynamic>>(inlineCode, (value) => value.toMap()),
       'input': ?input,
       'iterator': ?iterator,
-      'knowledgeBase':
-          ?pulumi.Input.mapOptionalInputValue<
-            AgentFlowDefinitionNodeConfigurationKnowledgeBase,
-            Map<String, dynamic>
-          >(knowledgeBase, (value) => value.toMap()),
-      'lambdaFunction':
-          ?pulumi.Input.mapOptionalInputValue<
-            AgentFlowDefinitionNodeConfigurationLambdaFunction,
-            Map<String, dynamic>
-          >(lambdaFunction, (value) => value.toMap()),
-      'lex':
-          ?pulumi.Input.mapOptionalInputValue<
-            AgentFlowDefinitionNodeConfigurationLex,
-            Map<String, dynamic>
-          >(lex, (value) => value.toMap()),
+      'knowledgeBase': ?pulumi.Input.mapOptionalInputValue<AgentFlowDefinitionNodeConfigurationKnowledgeBase, Map<String, dynamic>>(knowledgeBase, (value) => value.toMap()),
+      'lambdaFunction': ?pulumi.Input.mapOptionalInputValue<AgentFlowDefinitionNodeConfigurationLambdaFunction, Map<String, dynamic>>(lambdaFunction, (value) => value.toMap()),
+      'lex': ?pulumi.Input.mapOptionalInputValue<AgentFlowDefinitionNodeConfigurationLex, Map<String, dynamic>>(lex, (value) => value.toMap()),
       'output': ?output,
-      'prompt':
-          ?pulumi.Input.mapOptionalInputValue<
-            AgentFlowDefinitionNodeConfigurationPrompt,
-            Map<String, dynamic>
-          >(prompt, (value) => value.toMap()),
-      'retrieval':
-          ?pulumi.Input.mapOptionalInputValue<
-            AgentFlowDefinitionNodeConfigurationRetrieval,
-            Map<String, dynamic>
-          >(retrieval, (value) => value.toMap()),
-      'storage':
-          ?pulumi.Input.mapOptionalInputValue<
-            AgentFlowDefinitionNodeConfigurationStorage,
-            Map<String, dynamic>
-          >(storage, (value) => value.toMap()),
+      'prompt': ?pulumi.Input.mapOptionalInputValue<AgentFlowDefinitionNodeConfigurationPrompt, Map<String, dynamic>>(prompt, (value) => value.toMap()),
+      'retrieval': ?pulumi.Input.mapOptionalInputValue<AgentFlowDefinitionNodeConfigurationRetrieval, Map<String, dynamic>>(retrieval, (value) => value.toMap()),
+      'storage': ?pulumi.Input.mapOptionalInputValue<AgentFlowDefinitionNodeConfigurationStorage, Map<String, dynamic>>(storage, (value) => value.toMap()),
     };
   }
 
-  factory AgentFlowDefinitionNodeConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentFlowDefinitionNodeConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentFlowDefinitionNodeConfiguration(
-      agent: (() {
-        final guardedValue = map['agent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AgentFlowDefinitionNodeConfigurationAgent.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      collector: (() {
-        final guardedValue = map['collector'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      condition: (() {
-        final guardedValue = map['condition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AgentFlowDefinitionNodeConfigurationCondition.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      inlineCode: (() {
-        final guardedValue = map['inlineCode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AgentFlowDefinitionNodeConfigurationInlineCode.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      input: (() {
-        final guardedValue = map['input'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      iterator: (() {
-        final guardedValue = map['iterator'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      knowledgeBase: (() {
-        final guardedValue = map['knowledgeBase'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AgentFlowDefinitionNodeConfigurationKnowledgeBase.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      lambdaFunction: (() {
-        final guardedValue = map['lambdaFunction'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AgentFlowDefinitionNodeConfigurationLambdaFunction.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      lex: (() {
-        final guardedValue = map['lex'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AgentFlowDefinitionNodeConfigurationLex.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      output: (() {
-        final guardedValue = map['output'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      prompt: (() {
-        final guardedValue = map['prompt'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AgentFlowDefinitionNodeConfigurationPrompt.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      retrieval: (() {
-        final guardedValue = map['retrieval'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AgentFlowDefinitionNodeConfigurationRetrieval.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      storage: (() {
-        final guardedValue = map['storage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AgentFlowDefinitionNodeConfigurationStorage.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      agent: (() { final guardedValue = map['agent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentFlowDefinitionNodeConfigurationAgent.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      collector: (() { final guardedValue = map['collector']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
+      condition: (() { final guardedValue = map['condition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentFlowDefinitionNodeConfigurationCondition.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      inlineCode: (() { final guardedValue = map['inlineCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentFlowDefinitionNodeConfigurationInlineCode.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      input: (() { final guardedValue = map['input']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
+      iterator: (() { final guardedValue = map['iterator']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
+      knowledgeBase: (() { final guardedValue = map['knowledgeBase']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentFlowDefinitionNodeConfigurationKnowledgeBase.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      lambdaFunction: (() { final guardedValue = map['lambdaFunction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentFlowDefinitionNodeConfigurationLambdaFunction.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      lex: (() { final guardedValue = map['lex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentFlowDefinitionNodeConfigurationLex.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      output: (() { final guardedValue = map['output']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
+      prompt: (() { final guardedValue = map['prompt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentFlowDefinitionNodeConfigurationPrompt.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      retrieval: (() { final guardedValue = map['retrieval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentFlowDefinitionNodeConfigurationRetrieval.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      storage: (() { final guardedValue = map['storage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentFlowDefinitionNodeConfigurationStorage.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

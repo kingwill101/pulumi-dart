@@ -11,21 +11,20 @@ class FloorsettingFilterConfigMaliciousUriFilterSettings {
 
   /// Creates a new [FloorsettingFilterConfigMaliciousUriFilterSettings].
   /// [filterEnforcement] Tells whether the Malicious URI filter is enabled or disabled.
-  FloorsettingFilterConfigMaliciousUriFilterSettings({this.filterEnforcement});
+  FloorsettingFilterConfigMaliciousUriFilterSettings({
+    this.filterEnforcement,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'filterEnforcement': ?filterEnforcement};
+    return <String, dynamic>{
+      'filterEnforcement': ?filterEnforcement,
+    };
   }
 
-  factory FloorsettingFilterConfigMaliciousUriFilterSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FloorsettingFilterConfigMaliciousUriFilterSettings.fromMap(Map<String, dynamic> map) {
     return FloorsettingFilterConfigMaliciousUriFilterSettings(
-      filterEnforcement: (() {
-        final guardedValue = map['filterEnforcement'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      filterEnforcement: (() { final guardedValue = map['filterEnforcement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

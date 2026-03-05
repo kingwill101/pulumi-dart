@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccessModeSettingsExclusionResponse {
   /// Specifies the access mode of ingestion through the specified private endpoint connection in the exclusion.
   final pulumi.Input<String>? ingestionAccessMode;
-
   /// The private endpoint connection name associated to the private endpoint on which we want to apply the specific access mode settings.
   final pulumi.Input<String>? privateEndpointConnectionName;
-
   /// Specifies the access mode of queries through the specified private endpoint connection in the exclusion.
   final pulumi.Input<String>? queryAccessMode;
 
@@ -31,25 +29,12 @@ class AccessModeSettingsExclusionResponse {
     };
   }
 
-  factory AccessModeSettingsExclusionResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AccessModeSettingsExclusionResponse.fromMap(Map<String, dynamic> map) {
     return AccessModeSettingsExclusionResponse(
-      ingestionAccessMode: (() {
-        final guardedValue = map['ingestionAccessMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      privateEndpointConnectionName: (() {
-        final guardedValue = map['privateEndpointConnectionName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      queryAccessMode: (() {
-        final guardedValue = map['queryAccessMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ingestionAccessMode: (() { final guardedValue = map['ingestionAccessMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateEndpointConnectionName: (() { final guardedValue = map['privateEndpointConnectionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      queryAccessMode: (() { final guardedValue = map['queryAccessMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

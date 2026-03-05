@@ -9,10 +9,14 @@ class GetClusterGkeAutoUpgradeConfig {
 
   /// Creates a new [GetClusterGkeAutoUpgradeConfig].
   /// [patchMode] The selected auto-upgrade patch type. Accepted values are:
-  GetClusterGkeAutoUpgradeConfig({required this.patchMode});
+  GetClusterGkeAutoUpgradeConfig({
+    required this.patchMode,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'patchMode': patchMode};
+    return <String, dynamic>{
+      'patchMode': patchMode,
+    };
   }
 
   factory GetClusterGkeAutoUpgradeConfig.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class GetClusterGkeAutoUpgradeConfig {
     );
   }
 }
+

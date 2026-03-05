@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInsightsErrorKindResponse {
   /// the error message
   final pulumi.Input<String> errorMessage;
-
   /// the query kind
   final pulumi.Input<String> kind;
-
   /// the query id
   final pulumi.Input<String>? queryId;
 
@@ -35,11 +33,8 @@ class GetInsightsErrorKindResponse {
     return GetInsightsErrorKindResponse(
       errorMessage: pulumi.Input.fromValue(map['errorMessage'] as String),
       kind: pulumi.Input.fromValue(map['kind'] as String),
-      queryId: (() {
-        final guardedValue = map['queryId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      queryId: (() { final guardedValue = map['queryId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

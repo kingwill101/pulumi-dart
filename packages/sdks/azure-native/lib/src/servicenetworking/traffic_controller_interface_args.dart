@@ -10,17 +10,12 @@ import 'security_policy_configurations.dart';
 class TrafficControllerInterfaceArgs {
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Security Policy Configuration
-  final pulumi.Input<SecurityPolicyConfigurations>?
-  securityPolicyConfigurations;
-
+  final pulumi.Input<SecurityPolicyConfigurations>? securityPolicyConfigurations;
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// traffic controller name for path
   final pulumi.Input<String>? trafficControllerName;
 
@@ -42,11 +37,7 @@ class TrafficControllerInterfaceArgs {
     return <String, dynamic>{
       'location': ?location,
       'resourceGroupName': resourceGroupName,
-      'securityPolicyConfigurations':
-          ?pulumi.Input.mapOptionalInputValue<
-            SecurityPolicyConfigurations,
-            Map<String, dynamic>
-          >(securityPolicyConfigurations, (value) => value.toMap()),
+      'securityPolicyConfigurations': ?pulumi.Input.mapOptionalInputValue<SecurityPolicyConfigurations, Map<String, dynamic>>(securityPolicyConfigurations, (value) => value.toMap()),
       'tags': ?tags,
       'trafficControllerName': ?trafficControllerName,
     };
@@ -54,35 +45,12 @@ class TrafficControllerInterfaceArgs {
 
   factory TrafficControllerInterfaceArgs.fromMap(Map<String, dynamic> map) {
     return TrafficControllerInterfaceArgs(
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      securityPolicyConfigurations: (() {
-        final guardedValue = map['securityPolicyConfigurations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SecurityPolicyConfigurations.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      trafficControllerName: (() {
-        final guardedValue = map['trafficControllerName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      securityPolicyConfigurations: (() { final guardedValue = map['securityPolicyConfigurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SecurityPolicyConfigurations.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      trafficControllerName: (() { final guardedValue = map['trafficControllerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

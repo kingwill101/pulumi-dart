@@ -10,31 +10,20 @@ class IngressStatusPatchNetworkingK8sIoV1beta1 {
 
   /// Creates a new [IngressStatusPatchNetworkingK8sIoV1beta1].
   /// [loadBalancer] LoadBalancer contains the current status of the load-balancer.
-  IngressStatusPatchNetworkingK8sIoV1beta1({this.loadBalancer});
+  IngressStatusPatchNetworkingK8sIoV1beta1({
+    this.loadBalancer,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'loadBalancer':
-          ?pulumi.Input.mapOptionalInputValue<
-            LoadBalancerStatusPatch,
-            Map<String, dynamic>
-          >(loadBalancer, (value) => value.toMap()),
+      'loadBalancer': ?pulumi.Input.mapOptionalInputValue<LoadBalancerStatusPatch, Map<String, dynamic>>(loadBalancer, (value) => value.toMap()),
     };
   }
 
-  factory IngressStatusPatchNetworkingK8sIoV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory IngressStatusPatchNetworkingK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return IngressStatusPatchNetworkingK8sIoV1beta1(
-      loadBalancer: (() {
-        final guardedValue = map['loadBalancer'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          LoadBalancerStatusPatch.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      loadBalancer: (() { final guardedValue = map['loadBalancer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LoadBalancerStatusPatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

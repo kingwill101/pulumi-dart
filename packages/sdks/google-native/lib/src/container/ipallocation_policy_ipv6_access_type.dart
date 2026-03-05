@@ -13,8 +13,7 @@ enum IPAllocationPolicyIpv6AccessType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown IPAllocationPolicyIpv6AccessType value: $value',
-    );
+    throw ArgumentError('Unknown IPAllocationPolicyIpv6AccessType value: $value');
   }
 }
+

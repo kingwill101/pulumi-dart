@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkloadMetadataConfigResponseContainerV1beta1 {
   /// Mode is the configuration for how to expose metadata to workloads running on the node pool.
   final pulumi.Input<String> mode;
-
   /// NodeMetadata is the configuration for how to expose metadata to the workloads running on the node.
   final pulumi.Input<String> nodeMetadata;
 
@@ -19,15 +18,17 @@ class WorkloadMetadataConfigResponseContainerV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'mode': mode, 'nodeMetadata': nodeMetadata};
+    return <String, dynamic>{
+      'mode': mode,
+      'nodeMetadata': nodeMetadata,
+    };
   }
 
-  factory WorkloadMetadataConfigResponseContainerV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WorkloadMetadataConfigResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return WorkloadMetadataConfigResponseContainerV1beta1(
       mode: pulumi.Input.fromValue(map['mode'] as String),
       nodeMetadata: pulumi.Input.fromValue(map['nodeMetadata'] as String),
     );
   }
 }
+

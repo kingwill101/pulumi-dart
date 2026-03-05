@@ -16,3 +16,4 @@ enum VariableType {
     throw ArgumentError('Unknown VariableType value: $value');
   }
 }
+

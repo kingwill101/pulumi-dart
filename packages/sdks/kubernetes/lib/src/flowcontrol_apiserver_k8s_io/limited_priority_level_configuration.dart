@@ -13,15 +13,12 @@ class LimitedPriorityLevelConfiguration {
   ///
   /// The value of this field can be more than 100, implying that this priority level can borrow a number of seats that is greater than its own nominal concurrency limit (NominalCL). When this field is left `nil`, the limit is effectively infinite.
   final pulumi.Input<int>? borrowingLimitPercent;
-
   /// `lendablePercent` prescribes the fraction of the level's NominalCL that can be borrowed by other priority levels. The value of this field must be between 0 and 100, inclusive, and it defaults to 0. The number of seats that other levels can borrow from this level, known as this level's LendableConcurrencyLimit (LendableCL), is defined as follows.
   ///
   /// LendableCL(i) = round( NominalCL(i) * lendablePercent(i)/100.0 )
   final pulumi.Input<int>? lendablePercent;
-
   /// `limitResponse` indicates what to do with requests that can not be executed right now
   final pulumi.Input<LimitResponse>? limitResponse;
-
   /// `nominalConcurrencyShares` (NCS) contributes to the computation of the NominalConcurrencyLimit (NominalCL) of this level. This is the number of execution seats available at this priority level. This is used both for requests dispatched from this priority level as well as requests dispatched from other priority levels borrowing seats from this level. The server's concurrency limit (ServerCL) is divided among the Limited priority levels in proportion to their NCS values:
   ///
   /// NominalCL(i)  = ceil( ServerCL * NCS(i) / sum_ncs ) sum_ncs = sum[priority level k] NCS(k)
@@ -49,39 +46,18 @@ class LimitedPriorityLevelConfiguration {
     return <String, dynamic>{
       'borrowingLimitPercent': ?borrowingLimitPercent,
       'lendablePercent': ?lendablePercent,
-      'limitResponse':
-          ?pulumi.Input.mapOptionalInputValue<
-            LimitResponse,
-            Map<String, dynamic>
-          >(limitResponse, (value) => value.toMap()),
+      'limitResponse': ?pulumi.Input.mapOptionalInputValue<LimitResponse, Map<String, dynamic>>(limitResponse, (value) => value.toMap()),
       'nominalConcurrencyShares': ?nominalConcurrencyShares,
     };
   }
 
   factory LimitedPriorityLevelConfiguration.fromMap(Map<String, dynamic> map) {
     return LimitedPriorityLevelConfiguration(
-      borrowingLimitPercent: (() {
-        final guardedValue = map['borrowingLimitPercent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      lendablePercent: (() {
-        final guardedValue = map['lendablePercent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      limitResponse: (() {
-        final guardedValue = map['limitResponse'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          LimitResponse.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      nominalConcurrencyShares: (() {
-        final guardedValue = map['nominalConcurrencyShares'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      borrowingLimitPercent: (() { final guardedValue = map['borrowingLimitPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      lendablePercent: (() { final guardedValue = map['lendablePercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      limitResponse: (() { final guardedValue = map['limitResponse']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LimitResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      nominalConcurrencyShares: (() { final guardedValue = map['nominalConcurrencyShares']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

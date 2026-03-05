@@ -7,10 +7,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
   /// Replace each input value with a given value.
   /// The `new_value` block must only contain one argument. For example when replacing the contents of a string-type field, only `string_value` should be set.
   /// Structure is documented below.
-  final pulumi.Input<
-    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue
-  >
-  newValue;
+  final pulumi.Input<PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue> newValue;
 
   /// Creates a new [PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig].
   /// [newValue] Replace each input value with a given value.
@@ -20,23 +17,14 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'newValue':
-          pulumi.Input.mapInputValue<
-            PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue,
-            Map<String, dynamic>
-          >(newValue, (value) => value.toMap()),
+      'newValue': pulumi.Input.mapInputValue<PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue, Map<String, dynamic>>(newValue, (value) => value.toMap()),
     };
   }
 
-  factory PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig.fromMap(Map<String, dynamic> map) {
     return PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig(
-      newValue: pulumi.Input.fromValue(
-        PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue.fromMap(
-          (map['newValue']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      newValue: pulumi.Input.fromValue(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue.fromMap((map['newValue']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

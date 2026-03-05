@@ -19,13 +19,10 @@ class VirtualizationSoftwareSettingsResponse {
     };
   }
 
-  factory VirtualizationSoftwareSettingsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VirtualizationSoftwareSettingsResponse.fromMap(Map<String, dynamic> map) {
     return VirtualizationSoftwareSettingsResponse(
-      vMwareCloudFoundationLicenseCost: pulumi.Input.fromValue(
-        map['vMwareCloudFoundationLicenseCost'] as double,
-      ),
+      vMwareCloudFoundationLicenseCost: pulumi.Input.fromValue(map['vMwareCloudFoundationLicenseCost'] as double),
     );
   }
 }
+

@@ -10,19 +10,14 @@ import 'replication_protection_cluster_properties.dart';
 class ReplicationProtectionClusterArgs {
   /// Fabric name.
   final pulumi.Input<String> fabricName;
-
   /// The custom data.
   final pulumi.Input<ReplicationProtectionClusterProperties>? properties;
-
   /// Protection container name.
   final pulumi.Input<String> protectionContainerName;
-
   /// Replication protection cluster name.
   final pulumi.Input<String>? replicationProtectionClusterName;
-
   /// The name of the resource group where the recovery services vault is present.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the recovery services vault.
   final pulumi.Input<String> resourceName;
 
@@ -45,11 +40,7 @@ class ReplicationProtectionClusterArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'fabricName': fabricName,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            ReplicationProtectionClusterProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<ReplicationProtectionClusterProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'protectionContainerName': protectionContainerName,
       'replicationProtectionClusterName': ?replicationProtectionClusterName,
       'resourceGroupName': resourceGroupName,
@@ -60,27 +51,12 @@ class ReplicationProtectionClusterArgs {
   factory ReplicationProtectionClusterArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationProtectionClusterArgs(
       fabricName: pulumi.Input.fromValue(map['fabricName'] as String),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ReplicationProtectionClusterProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      protectionContainerName: pulumi.Input.fromValue(
-        map['protectionContainerName'] as String,
-      ),
-      replicationProtectionClusterName: (() {
-        final guardedValue = map['replicationProtectionClusterName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ReplicationProtectionClusterProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      protectionContainerName: pulumi.Input.fromValue(map['protectionContainerName'] as String),
+      replicationProtectionClusterName: (() { final guardedValue = map['replicationProtectionClusterName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
+

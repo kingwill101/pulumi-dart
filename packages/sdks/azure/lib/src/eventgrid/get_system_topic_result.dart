@@ -7,24 +7,19 @@ import 'get_system_topic_identity.dart';
 class GetSystemTopicResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// An `identity` block as defined below, which contains the Managed Service Identity information for this Event Grid System Topic.
   final List<GetSystemTopicIdentity> identities;
   final String location;
   final String metricArmResourceId;
-
   /// The Metric Resource ID of the Event Grid System Topic.
   final String metricResourceId;
   final String name;
   final String resourceGroupName;
   final String sourceArmResourceId;
-
   /// The ID of the Event Grid System Topic ARM Source.
   final String sourceResourceId;
-
   /// A mapping of tags which are assigned to the Event Grid System Topic.
   final Map<String, String> tags;
-
   /// The Topic Type of the Event Grid System Topic.
   final String topicType;
 
@@ -57,11 +52,7 @@ class GetSystemTopicResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'identities':
-          pulumi.Input.encodeList<GetSystemTopicIdentity, Map<String, dynamic>>(
-            identities,
-            (value) => value.toMap(),
-          ),
+      'identities': pulumi.Input.encodeList<GetSystemTopicIdentity, Map<String, dynamic>>(identities, (value) => value.toMap()),
       'location': location,
       'metricArmResourceId': metricArmResourceId,
       'metricResourceId': metricResourceId,
@@ -77,12 +68,7 @@ class GetSystemTopicResult {
   factory GetSystemTopicResult.fromMap(Map<String, dynamic> map) {
     return GetSystemTopicResult(
       id: map['id'] as String,
-      identities: pulumi.Input.decodeList<GetSystemTopicIdentity>(
-        map['identities']!,
-        (value) => GetSystemTopicIdentity.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      identities: pulumi.Input.decodeList<GetSystemTopicIdentity>(map['identities']!, (value) => GetSystemTopicIdentity.fromMap((value as Map).cast<String, dynamic>())),
       location: map['location'] as String,
       metricArmResourceId: map['metricArmResourceId'] as String,
       metricResourceId: map['metricResourceId'] as String,
@@ -95,3 +81,4 @@ class GetSystemTopicResult {
     );
   }
 }
+

@@ -6,25 +6,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EndpointInfoResponseNetworkmanagementV1beta1 {
   /// Destination IP address.
   final pulumi.Input<String> destinationIp;
-
   /// URI of the network where this packet is sent to.
   final pulumi.Input<String> destinationNetworkUri;
-
   /// Destination port. Only valid when protocol is TCP or UDP.
   final pulumi.Input<int> destinationPort;
-
   /// IP protocol in string format, for example: "TCP", "UDP", "ICMP".
   final pulumi.Input<String> protocol;
-
   /// URI of the source telemetry agent this packet originates from.
   final pulumi.Input<String> sourceAgentUri;
-
   /// Source IP address.
   final pulumi.Input<String> sourceIp;
-
   /// URI of the network where this packet originates from.
   final pulumi.Input<String> sourceNetworkUri;
-
   /// Source port. Only valid when protocol is TCP or UDP.
   final pulumi.Input<int> sourcePort;
 
@@ -61,22 +54,17 @@ class EndpointInfoResponseNetworkmanagementV1beta1 {
     };
   }
 
-  factory EndpointInfoResponseNetworkmanagementV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EndpointInfoResponseNetworkmanagementV1beta1.fromMap(Map<String, dynamic> map) {
     return EndpointInfoResponseNetworkmanagementV1beta1(
       destinationIp: pulumi.Input.fromValue(map['destinationIp'] as String),
-      destinationNetworkUri: pulumi.Input.fromValue(
-        map['destinationNetworkUri'] as String,
-      ),
+      destinationNetworkUri: pulumi.Input.fromValue(map['destinationNetworkUri'] as String),
       destinationPort: pulumi.Input.fromValue(map['destinationPort'] as int),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
       sourceAgentUri: pulumi.Input.fromValue(map['sourceAgentUri'] as String),
       sourceIp: pulumi.Input.fromValue(map['sourceIp'] as String),
-      sourceNetworkUri: pulumi.Input.fromValue(
-        map['sourceNetworkUri'] as String,
-      ),
+      sourceNetworkUri: pulumi.Input.fromValue(map['sourceNetworkUri'] as String),
       sourcePort: pulumi.Input.fromValue(map['sourcePort'] as int),
     );
   }
 }
+

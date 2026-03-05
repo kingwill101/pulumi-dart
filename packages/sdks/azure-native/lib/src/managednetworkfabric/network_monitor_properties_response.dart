@@ -8,19 +8,14 @@ import 'last_operation_properties_response.dart';
 class NetworkMonitorPropertiesResponse {
   /// Administrative state of the resource.
   final pulumi.Input<String> administrativeState;
-
   /// Switch configuration description.
   final pulumi.Input<String>? annotation;
-
   /// BMP Configurations for the Network Fabric.
   final pulumi.Input<BmpConfigurationPropertiesResponse>? bmpConfiguration;
-
   /// Configuration state of the resource.
   final pulumi.Input<String> configurationState;
-
   /// Details of the last operation performed on the resource
   final pulumi.Input<LastOperationPropertiesResponse> lastOperation;
-
   /// Provides you the latest status of the NetworkMonitor resource
   final pulumi.Input<String> provisioningState;
 
@@ -44,51 +39,22 @@ class NetworkMonitorPropertiesResponse {
     return <String, dynamic>{
       'administrativeState': administrativeState,
       'annotation': ?annotation,
-      'bmpConfiguration':
-          ?pulumi.Input.mapOptionalInputValue<
-            BmpConfigurationPropertiesResponse,
-            Map<String, dynamic>
-          >(bmpConfiguration, (value) => value.toMap()),
+      'bmpConfiguration': ?pulumi.Input.mapOptionalInputValue<BmpConfigurationPropertiesResponse, Map<String, dynamic>>(bmpConfiguration, (value) => value.toMap()),
       'configurationState': configurationState,
-      'lastOperation':
-          pulumi.Input.mapInputValue<
-            LastOperationPropertiesResponse,
-            Map<String, dynamic>
-          >(lastOperation, (value) => value.toMap()),
+      'lastOperation': pulumi.Input.mapInputValue<LastOperationPropertiesResponse, Map<String, dynamic>>(lastOperation, (value) => value.toMap()),
       'provisioningState': provisioningState,
     };
   }
 
   factory NetworkMonitorPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return NetworkMonitorPropertiesResponse(
-      administrativeState: pulumi.Input.fromValue(
-        map['administrativeState'] as String,
-      ),
-      annotation: (() {
-        final guardedValue = map['annotation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      bmpConfiguration: (() {
-        final guardedValue = map['bmpConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BmpConfigurationPropertiesResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      configurationState: pulumi.Input.fromValue(
-        map['configurationState'] as String,
-      ),
-      lastOperation: pulumi.Input.fromValue(
-        LastOperationPropertiesResponse.fromMap(
-          (map['lastOperation']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
+      administrativeState: pulumi.Input.fromValue(map['administrativeState'] as String),
+      annotation: (() { final guardedValue = map['annotation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      bmpConfiguration: (() { final guardedValue = map['bmpConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BmpConfigurationPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      configurationState: pulumi.Input.fromValue(map['configurationState'] as String),
+      lastOperation: pulumi.Input.fromValue(LastOperationPropertiesResponse.fromMap((map['lastOperation']! as Map).cast<String, dynamic>())),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
     );
   }
 }
+

@@ -8,18 +8,13 @@ import 'user_assigned_identity_response.dart';
 class ManagedClusterPodIdentityResponse {
   /// The binding selector to use for the AzureIdentityBinding resource.
   final pulumi.Input<String>? bindingSelector;
-
   /// The user assigned identity details.
   final pulumi.Input<UserAssignedIdentityResponse> identity;
-
   /// The name of the pod identity.
   final pulumi.Input<String> name;
-
   /// The namespace of the pod identity.
   final pulumi.Input<String> namespace;
-  final pulumi.Input<ManagedClusterPodIdentityResponseProvisioningInfo>
-  provisioningInfo;
-
+  final pulumi.Input<ManagedClusterPodIdentityResponseProvisioningInfo> provisioningInfo;
   /// The current provisioning state of the pod identity.
   final pulumi.Input<String> provisioningState;
 
@@ -42,44 +37,23 @@ class ManagedClusterPodIdentityResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bindingSelector': ?bindingSelector,
-      'identity':
-          pulumi.Input.mapInputValue<
-            UserAssignedIdentityResponse,
-            Map<String, dynamic>
-          >(identity, (value) => value.toMap()),
+      'identity': pulumi.Input.mapInputValue<UserAssignedIdentityResponse, Map<String, dynamic>>(identity, (value) => value.toMap()),
       'name': name,
       'namespace': namespace,
-      'provisioningInfo':
-          pulumi.Input.mapInputValue<
-            ManagedClusterPodIdentityResponseProvisioningInfo,
-            Map<String, dynamic>
-          >(provisioningInfo, (value) => value.toMap()),
+      'provisioningInfo': pulumi.Input.mapInputValue<ManagedClusterPodIdentityResponseProvisioningInfo, Map<String, dynamic>>(provisioningInfo, (value) => value.toMap()),
       'provisioningState': provisioningState,
     };
   }
 
   factory ManagedClusterPodIdentityResponse.fromMap(Map<String, dynamic> map) {
     return ManagedClusterPodIdentityResponse(
-      bindingSelector: (() {
-        final guardedValue = map['bindingSelector'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      identity: pulumi.Input.fromValue(
-        UserAssignedIdentityResponse.fromMap(
-          (map['identity']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      bindingSelector: (() { final guardedValue = map['bindingSelector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      identity: pulumi.Input.fromValue(UserAssignedIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>())),
       name: pulumi.Input.fromValue(map['name'] as String),
       namespace: pulumi.Input.fromValue(map['namespace'] as String),
-      provisioningInfo: pulumi.Input.fromValue(
-        ManagedClusterPodIdentityResponseProvisioningInfo.fromMap(
-          (map['provisioningInfo']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
+      provisioningInfo: pulumi.Input.fromValue(ManagedClusterPodIdentityResponseProvisioningInfo.fromMap((map['provisioningInfo']! as Map).cast<String, dynamic>())),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
     );
   }
 }
+

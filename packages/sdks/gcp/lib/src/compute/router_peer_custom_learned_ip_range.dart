@@ -9,10 +9,14 @@ class RouterPeerCustomLearnedIpRange {
 
   /// Creates a new [RouterPeerCustomLearnedIpRange].
   /// [range] The IP range to learn. The value must be a
-  RouterPeerCustomLearnedIpRange({required this.range});
+  RouterPeerCustomLearnedIpRange({
+    required this.range,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'range': range};
+    return <String, dynamic>{
+      'range': range,
+    };
   }
 
   factory RouterPeerCustomLearnedIpRange.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class RouterPeerCustomLearnedIpRange {
     );
   }
 }
+

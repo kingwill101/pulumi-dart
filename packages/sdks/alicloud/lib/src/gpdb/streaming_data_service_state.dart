@@ -6,22 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StreamingDataServiceState {
   /// Create time
   final pulumi.Input<String>? createTime;
-
   /// The ID of the associated instance.
   final pulumi.Input<String>? dbInstanceId;
-
   /// The description of the service.
   final pulumi.Input<String>? serviceDescription;
-
   /// Service ID
   final pulumi.Input<String>? serviceId;
-
   /// Service Name
   final pulumi.Input<String>? serviceName;
-
   /// Resource Specifications
   final pulumi.Input<String>? serviceSpec;
-
   /// The status of the resource
   final pulumi.Input<String>? status;
 
@@ -57,41 +51,14 @@ class StreamingDataServiceState {
 
   factory StreamingDataServiceState.fromMap(Map<String, dynamic> map) {
     return StreamingDataServiceState(
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dbInstanceId: (() {
-        final guardedValue = map['dbInstanceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serviceDescription: (() {
-        final guardedValue = map['serviceDescription'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serviceId: (() {
-        final guardedValue = map['serviceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serviceName: (() {
-        final guardedValue = map['serviceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serviceSpec: (() {
-        final guardedValue = map['serviceSpec'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dbInstanceId: (() { final guardedValue = map['dbInstanceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serviceDescription: (() { final guardedValue = map['serviceDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serviceId: (() { final guardedValue = map['serviceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serviceName: (() { final guardedValue = map['serviceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serviceSpec: (() { final guardedValue = map['serviceSpec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

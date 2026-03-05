@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConnectorDryrunArgs {
   /// The name of dryrun.
   final pulumi.Input<String> dryrunName;
-
   /// The name of Azure region.
   final pulumi.Input<String> location;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The ID of the target subscription.
   final pulumi.Input<String>? subscriptionId;
 
@@ -44,14 +41,9 @@ class GetConnectorDryrunArgs {
     return GetConnectorDryrunArgs(
       dryrunName: pulumi.Input.fromValue(map['dryrunName'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      subscriptionId: (() {
-        final guardedValue = map['subscriptionId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      subscriptionId: (() { final guardedValue = map['subscriptionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

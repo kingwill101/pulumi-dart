@@ -1052,7 +1052,6 @@ import 'package:pulumi_aws/eks.dart' as pulumi_aws_eks;
 class ManagedNodeGroup extends pulumi.ComponentResource {
   /// The AWS managed node group.
   late final pulumi.Output<pulumi_aws_eks.NodeGroup?> nodeGroup;
-
   /// The name of the placement group created for the managed node group.
   late final pulumi.Output<String?> placementGroupName;
 
@@ -1065,12 +1064,12 @@ class ManagedNodeGroup extends pulumi.ComponentResource {
     ManagedNodeGroupArgs? args,
     pulumi.ComponentResourceOptions? options,
   }) : super(
-         'eks:index:ManagedNodeGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.ComponentResourceOptions(),
-         remote: true,
-       ) {
+          'eks:index:ManagedNodeGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.ComponentResourceOptions(),
+          remote: true,
+        ) {
     nodeGroup = registerOutput<pulumi_aws_eks.NodeGroup?>('nodeGroup');
     placementGroupName = registerOutput<String?>('placementGroupName');
   }

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InsightsConfigArtifactConfigGoogleArtifactRegistry {
   /// The name of the artifact registry package.
   final pulumi.Input<String> artifactRegistryPackage;
-
   /// The host project of Artifact Registry.
   final pulumi.Input<String> projectId;
 
@@ -24,14 +23,11 @@ class InsightsConfigArtifactConfigGoogleArtifactRegistry {
     };
   }
 
-  factory InsightsConfigArtifactConfigGoogleArtifactRegistry.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InsightsConfigArtifactConfigGoogleArtifactRegistry.fromMap(Map<String, dynamic> map) {
     return InsightsConfigArtifactConfigGoogleArtifactRegistry(
-      artifactRegistryPackage: pulumi.Input.fromValue(
-        map['artifactRegistryPackage'] as String,
-      ),
+      artifactRegistryPackage: pulumi.Input.fromValue(map['artifactRegistryPackage'] as String),
       projectId: pulumi.Input.fromValue(map['projectId'] as String),
     );
   }
 }
+

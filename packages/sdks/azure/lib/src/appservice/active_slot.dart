@@ -185,10 +185,8 @@ import 'active_slot_state.dart';
 class ActiveSlot extends pulumi.CustomResource {
   /// The name of the App Service within which the Slot exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> appServiceName;
-
   /// The name of the App Service Slot which should be promoted to the Production Slot within the App Service.
   late final pulumi.Output<String> appServiceSlotName;
-
   /// The name of the resource group in which the App Service exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
 
@@ -201,11 +199,11 @@ class ActiveSlot extends pulumi.CustomResource {
     ActiveSlotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appservice/activeSlot:ActiveSlot',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appservice/activeSlot:ActiveSlot',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appServiceName = registerOutput<String>('appServiceName');
     appServiceSlotName = registerOutput<String>('appServiceSlotName');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -229,11 +227,11 @@ class ActiveSlot extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appservice/activeSlot:ActiveSlot',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appservice/activeSlot:ActiveSlot',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appServiceName = registerOutput<String>('appServiceName');
     appServiceSlotName = registerOutput<String>('appServiceSlotName');
     resourceGroupName = registerOutput<String>('resourceGroupName');

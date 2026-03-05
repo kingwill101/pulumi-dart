@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetProductProductSkusPackageVersion {
   /// The package name of this product sku package.
   final pulumi.Input<String> packageName;
-
   /// The package version of this product sku package. Currently, the API products can return package_version, but others can not for ensure.
   final pulumi.Input<String> packageVersion;
 
@@ -24,12 +23,11 @@ class GetProductProductSkusPackageVersion {
     };
   }
 
-  factory GetProductProductSkusPackageVersion.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetProductProductSkusPackageVersion.fromMap(Map<String, dynamic> map) {
     return GetProductProductSkusPackageVersion(
       packageName: pulumi.Input.fromValue(map['packageName'] as String),
       packageVersion: pulumi.Input.fromValue(map['packageVersion'] as String),
     );
   }
 }
+

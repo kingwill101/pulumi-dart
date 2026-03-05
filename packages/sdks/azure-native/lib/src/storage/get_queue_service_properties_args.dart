@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetQueueServicePropertiesArgs {
   /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
   final pulumi.Input<String> accountName;
-
   /// The name of the Queue Service within the specified storage account. Queue Service Name must be 'default'
   final pulumi.Input<String> queueServiceName;
-
   /// The name of the resource group within the user's subscription. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -37,12 +35,9 @@ class GetQueueServicePropertiesArgs {
   factory GetQueueServicePropertiesArgs.fromMap(Map<String, dynamic> map) {
     return GetQueueServicePropertiesArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
-      queueServiceName: pulumi.Input.fromValue(
-        map['queueServiceName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      queueServiceName: pulumi.Input.fromValue(map['queueServiceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

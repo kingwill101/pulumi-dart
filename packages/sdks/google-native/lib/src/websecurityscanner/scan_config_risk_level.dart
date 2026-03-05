@@ -16,3 +16,4 @@ enum ScanConfigRiskLevel {
     throw ArgumentError('Unknown ScanConfigRiskLevel value: $value');
   }
 }
+

@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ValidationErrorResponse {
   /// A list of descriptions of the error.
   final pulumi.Input<List<String>> errorMessages;
-
   /// The number of the record that has the error.
   final pulumi.Input<int>? recordIndex;
 
   /// Creates a new [ValidationErrorResponse].
   /// [errorMessages] A list of descriptions of the error.
   /// [recordIndex] The number of the record that has the error.
-  ValidationErrorResponse({required this.errorMessages, this.recordIndex});
+  ValidationErrorResponse({
+    required this.errorMessages,
+    this.recordIndex,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,14 +26,9 @@ class ValidationErrorResponse {
 
   factory ValidationErrorResponse.fromMap(Map<String, dynamic> map) {
     return ValidationErrorResponse(
-      errorMessages: pulumi.Input.fromValue(
-        (map['errorMessages'] as List).cast<String>(),
-      ),
-      recordIndex: (() {
-        final guardedValue = map['recordIndex'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      errorMessages: pulumi.Input.fromValue((map['errorMessages'] as List).cast<String>()),
+      recordIndex: (() { final guardedValue = map['recordIndex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

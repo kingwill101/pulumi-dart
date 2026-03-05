@@ -8,19 +8,20 @@ class InstanceMetadata {
 
   /// Creates a new [InstanceMetadata].
   /// [userData] The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
-  InstanceMetadata({this.userData});
+  InstanceMetadata({
+    this.userData,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'userData': ?userData};
+    return <String, dynamic>{
+      'userData': ?userData,
+    };
   }
 
   factory InstanceMetadata.fromMap(Map<String, dynamic> map) {
     return InstanceMetadata(
-      userData: (() {
-        final guardedValue = map['userData'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      userData: (() { final guardedValue = map['userData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

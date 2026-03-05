@@ -6,22 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FlowState {
   /// The definition of the flow. It must comply with the Flow Definition Language (FDL) syntax.
   final pulumi.Input<String>? definition;
-
   /// The description of the flow.
   final pulumi.Input<String>? description;
-
   /// The unique ID of the flow.
   final pulumi.Input<String>? flowId;
-
   /// The time when the flow was last modified.
   final pulumi.Input<String>? lastModifiedTime;
-
   /// The name of the flow. The name must be unique in an Alibaba Cloud account.
   final pulumi.Input<String>? name;
-
   /// The ARN of the specified RAM role that Serverless Workflow uses to assume the role when Serverless Workflow executes a flow.
   final pulumi.Input<String>? roleArn;
-
   /// The type of the flow. Valid values are `FDL` or `DEFAULT`.
   final pulumi.Input<String>? type;
 
@@ -57,41 +51,14 @@ class FlowState {
 
   factory FlowState.fromMap(Map<String, dynamic> map) {
     return FlowState(
-      definition: (() {
-        final guardedValue = map['definition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      flowId: (() {
-        final guardedValue = map['flowId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      lastModifiedTime: (() {
-        final guardedValue = map['lastModifiedTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      roleArn: (() {
-        final guardedValue = map['roleArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      definition: (() { final guardedValue = map['definition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      flowId: (() { final guardedValue = map['flowId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      lastModifiedTime: (() { final guardedValue = map['lastModifiedTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      roleArn: (() { final guardedValue = map['roleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

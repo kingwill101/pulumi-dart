@@ -9,10 +9,14 @@ class MeshMembershipProperties {
 
   /// Creates a new [MeshMembershipProperties].
   /// [managedMeshID] The ARM resource id for the managed mesh member. This is of the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppLink/applinks/{appLinkName}/appLinkMembers/{appLinkMemberName}'. Visit https://aka.ms/applink for more information.
-  MeshMembershipProperties({required this.managedMeshID});
+  MeshMembershipProperties({
+    required this.managedMeshID,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'managedMeshID': managedMeshID};
+    return <String, dynamic>{
+      'managedMeshID': managedMeshID,
+    };
   }
 
   factory MeshMembershipProperties.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class MeshMembershipProperties {
     );
   }
 }
+

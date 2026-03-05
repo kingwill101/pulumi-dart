@@ -18,3 +18,4 @@ enum DataSetPlotType {
     throw ArgumentError('Unknown DataSetPlotType value: $value');
   }
 }
+

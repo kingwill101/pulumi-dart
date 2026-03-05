@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BasicAuthenticationResponse {
   /// The password to use when authenticating with the HTTP server.
   final pulumi.Input<String> password;
-
   /// The username to use when authenticating with the HTTP server.
   final pulumi.Input<String> username;
 
   /// Creates a new [BasicAuthenticationResponse].
   /// [password] The password to use when authenticating with the HTTP server.
   /// [username] The username to use when authenticating with the HTTP server.
-  BasicAuthenticationResponse({required this.password, required this.username});
+  BasicAuthenticationResponse({
+    required this.password,
+    required this.username,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'password': password, 'username': username};
+    return <String, dynamic>{
+      'password': password,
+      'username': username,
+    };
   }
 
   factory BasicAuthenticationResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class BasicAuthenticationResponse {
     );
   }
 }
+

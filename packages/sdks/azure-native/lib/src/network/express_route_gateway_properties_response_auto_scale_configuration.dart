@@ -10,31 +10,20 @@ class ExpressRouteGatewayPropertiesResponseAutoScaleConfiguration {
 
   /// Creates a new [ExpressRouteGatewayPropertiesResponseAutoScaleConfiguration].
   /// [bounds] Minimum and maximum number of scale units to deploy.
-  ExpressRouteGatewayPropertiesResponseAutoScaleConfiguration({this.bounds});
+  ExpressRouteGatewayPropertiesResponseAutoScaleConfiguration({
+    this.bounds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bounds':
-          ?pulumi.Input.mapOptionalInputValue<
-            ExpressRouteGatewayPropertiesResponseBounds,
-            Map<String, dynamic>
-          >(bounds, (value) => value.toMap()),
+      'bounds': ?pulumi.Input.mapOptionalInputValue<ExpressRouteGatewayPropertiesResponseBounds, Map<String, dynamic>>(bounds, (value) => value.toMap()),
     };
   }
 
-  factory ExpressRouteGatewayPropertiesResponseAutoScaleConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ExpressRouteGatewayPropertiesResponseAutoScaleConfiguration.fromMap(Map<String, dynamic> map) {
     return ExpressRouteGatewayPropertiesResponseAutoScaleConfiguration(
-      bounds: (() {
-        final guardedValue = map['bounds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ExpressRouteGatewayPropertiesResponseBounds.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      bounds: (() { final guardedValue = map['bounds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExpressRouteGatewayPropertiesResponseBounds.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

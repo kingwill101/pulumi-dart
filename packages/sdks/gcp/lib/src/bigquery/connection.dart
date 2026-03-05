@@ -1935,39 +1935,29 @@ class Connection extends pulumi.CustomResource {
   /// Connection properties specific to Amazon Web Services.
   /// Structure is documented below.
   late final pulumi.Output<ConnectionAws?> aws;
-
   /// Container for connection properties specific to Azure.
   /// Structure is documented below.
   late final pulumi.Output<ConnectionAzure?> azure;
-
   /// Container for connection properties for delegation of access to GCP resources.
   /// Structure is documented below.
   late final pulumi.Output<ConnectionCloudResource?> cloudResource;
-
   /// Connection properties specific to Cloud Spanner
   /// Structure is documented below.
   late final pulumi.Output<ConnectionCloudSpanner?> cloudSpanner;
-
   /// Connection properties specific to the Cloud SQL.
   /// Structure is documented below.
   late final pulumi.Output<ConnectionCloudSql?> cloudSql;
-
   /// Optional connection id that should be assigned to the created connection.
   late final pulumi.Output<String> connectionId;
-
   /// A descriptive description for the connection
   late final pulumi.Output<String?> description;
-
   /// A descriptive name for the connection
   late final pulumi.Output<String?> friendlyName;
-
   /// True if the connection has credential assigned.
   late final pulumi.Output<bool> hasCredential;
-
   /// Optional. The Cloud KMS key that is used for encryption.
   /// Example: projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
   late final pulumi.Output<String?> kmsKeyName;
-
   /// The geographic location where the connection should reside.
   /// Cloud SQL instance must be in the same location as the connection
   /// with following exceptions: Cloud SQL us-central1 maps to BigQuery US, Cloud SQL europe-west1 maps to BigQuery EU.
@@ -1976,15 +1966,12 @@ class Connection extends pulumi.CustomResource {
   /// AWS allowed regions are aws-us-east-1
   /// Azure allowed regions are azure-eastus2
   late final pulumi.Output<String?> location;
-
   /// The resource name of the connection in the form of:
   /// "projects/{project_id}/locations/{location_id}/connections/{connectionId}"
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Container for connection properties to execute stored procedures for Apache Spark. resources.
   /// Structure is documented below.
   late final pulumi.Output<ConnectionSpark?> spark;
@@ -1998,61 +1985,16 @@ class Connection extends pulumi.CustomResource {
     ConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:bigquery/connection:Connection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    aws = registerOutput<ConnectionAws?>(
-      'aws',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectionAws.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    azure = registerOutput<ConnectionAzure?>(
-      'azure',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectionAzure.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    cloudResource = registerOutput<ConnectionCloudResource?>(
-      'cloudResource',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectionCloudResource.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    cloudSpanner = registerOutput<ConnectionCloudSpanner?>(
-      'cloudSpanner',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectionCloudSpanner.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    cloudSql = registerOutput<ConnectionCloudSql?>(
-      'cloudSql',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectionCloudSql.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:bigquery/connection:Connection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    aws = registerOutput<ConnectionAws?>('aws', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionAws.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azure = registerOutput<ConnectionAzure?>('azure', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionAzure.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cloudResource = registerOutput<ConnectionCloudResource?>('cloudResource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionCloudResource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cloudSpanner = registerOutput<ConnectionCloudSpanner?>('cloudSpanner', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionCloudSpanner.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cloudSql = registerOutput<ConnectionCloudSql?>('cloudSql', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionCloudSql.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     connectionId = registerOutput<String>('connectionId');
     description = registerOutput<String?>('description');
     friendlyName = registerOutput<String?>('friendlyName');
@@ -2061,16 +2003,7 @@ class Connection extends pulumi.CustomResource {
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    spark = registerOutput<ConnectionSpark?>(
-      'spark',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectionSpark.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    spark = registerOutput<ConnectionSpark?>('spark', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionSpark.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [Connection] resource's state with the given [name] and [id].
@@ -2091,61 +2024,16 @@ class Connection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:bigquery/connection:Connection',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    aws = registerOutput<ConnectionAws?>(
-      'aws',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectionAws.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    azure = registerOutput<ConnectionAzure?>(
-      'azure',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectionAzure.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    cloudResource = registerOutput<ConnectionCloudResource?>(
-      'cloudResource',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectionCloudResource.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    cloudSpanner = registerOutput<ConnectionCloudSpanner?>(
-      'cloudSpanner',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectionCloudSpanner.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    cloudSql = registerOutput<ConnectionCloudSql?>(
-      'cloudSql',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectionCloudSql.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:bigquery/connection:Connection',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    aws = registerOutput<ConnectionAws?>('aws', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionAws.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azure = registerOutput<ConnectionAzure?>('azure', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionAzure.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cloudResource = registerOutput<ConnectionCloudResource?>('cloudResource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionCloudResource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cloudSpanner = registerOutput<ConnectionCloudSpanner?>('cloudSpanner', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionCloudSpanner.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cloudSql = registerOutput<ConnectionCloudSql?>('cloudSql', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionCloudSql.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     connectionId = registerOutput<String>('connectionId');
     description = registerOutput<String?>('description');
     friendlyName = registerOutput<String?>('friendlyName');
@@ -2154,15 +2042,6 @@ class Connection extends pulumi.CustomResource {
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    spark = registerOutput<ConnectionSpark?>(
-      'spark',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectionSpark.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    spark = registerOutput<ConnectionSpark?>('spark', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionSpark.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

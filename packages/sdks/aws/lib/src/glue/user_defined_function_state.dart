@@ -7,31 +7,22 @@ import 'user_defined_function_resource_uri.dart';
 class UserDefinedFunctionState {
   /// The ARN of the Glue User Defined Function.
   final pulumi.Input<String>? arn;
-
   /// ID of the Glue Catalog to create the function in. If omitted, this defaults to the AWS Account ID.
   final pulumi.Input<String>? catalogId;
-
   /// The Java class that contains the function code.
   final pulumi.Input<String>? className;
-
   /// The time at which the function was created.
   final pulumi.Input<String>? createTime;
-
   /// The name of the Database to create the Function.
   final pulumi.Input<String>? databaseName;
-
   /// The name of the function.
   final pulumi.Input<String>? name;
-
   /// The owner of the function.
   final pulumi.Input<String>? ownerName;
-
   /// The owner type. can be one of `USER`, `ROLE`, and `GROUP`.
   final pulumi.Input<String>? ownerType;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The configuration block for Resource URIs. See resource uris below for more details.
   final pulumi.Input<List<UserDefinedFunctionResourceUri>>? resourceUris;
 
@@ -70,80 +61,23 @@ class UserDefinedFunctionState {
       'ownerName': ?ownerName,
       'ownerType': ?ownerType,
       'region': ?region,
-      'resourceUris':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<UserDefinedFunctionResourceUri>,
-            List<Map<String, dynamic>>
-          >(
-            resourceUris,
-            (value) =>
-                pulumi.Input.encodeList<
-                  UserDefinedFunctionResourceUri,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'resourceUris': ?pulumi.Input.mapOptionalInputValue<List<UserDefinedFunctionResourceUri>, List<Map<String, dynamic>>>(resourceUris, (value) => pulumi.Input.encodeList<UserDefinedFunctionResourceUri, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory UserDefinedFunctionState.fromMap(Map<String, dynamic> map) {
     return UserDefinedFunctionState(
-      arn: (() {
-        final guardedValue = map['arn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      catalogId: (() {
-        final guardedValue = map['catalogId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      className: (() {
-        final guardedValue = map['className'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      databaseName: (() {
-        final guardedValue = map['databaseName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ownerName: (() {
-        final guardedValue = map['ownerName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ownerType: (() {
-        final guardedValue = map['ownerType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceUris: (() {
-        final guardedValue = map['resourceUris'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<UserDefinedFunctionResourceUri>(
-            guardedValue,
-            (value) => UserDefinedFunctionResourceUri.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      catalogId: (() { final guardedValue = map['catalogId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      className: (() { final guardedValue = map['className']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      databaseName: (() { final guardedValue = map['databaseName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ownerName: (() { final guardedValue = map['ownerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ownerType: (() { final guardedValue = map['ownerType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceUris: (() { final guardedValue = map['resourceUris']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<UserDefinedFunctionResourceUri>(guardedValue, (value) => UserDefinedFunctionResourceUri.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

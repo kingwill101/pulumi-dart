@@ -9,17 +9,13 @@ enum TlsInspectionPolicyMinTlsVersionNetworksecurityV1beta1 {
   const TlsInspectionPolicyMinTlsVersionNetworksecurityV1beta1(this.wireValue);
   final String wireValue;
 
-  static TlsInspectionPolicyMinTlsVersionNetworksecurityV1beta1 fromValue(
-    String value,
-  ) {
-    for (final item
-        in TlsInspectionPolicyMinTlsVersionNetworksecurityV1beta1.values) {
+  static TlsInspectionPolicyMinTlsVersionNetworksecurityV1beta1 fromValue(String value) {
+    for (final item in TlsInspectionPolicyMinTlsVersionNetworksecurityV1beta1.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown TlsInspectionPolicyMinTlsVersionNetworksecurityV1beta1 value: $value',
-    );
+    throw ArgumentError('Unknown TlsInspectionPolicyMinTlsVersionNetworksecurityV1beta1 value: $value');
   }
 }
+

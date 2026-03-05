@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRegionalSecretsArgs {
   /// Filter string, adhering to the rules in [List-operation filtering](https://cloud.google.com/secret-manager/docs/filtering). List only secrets matching the filter. If filter is empty, all regional secrets are listed from the specified location.
   final pulumi.Input<String>? filter;
-
   /// The location of the regional secret.
   final pulumi.Input<String> location;
-
   /// The ID of the project.
   final pulumi.Input<String>? project;
 
@@ -20,7 +18,11 @@ class GetRegionalSecretsArgs {
   /// [filter] Filter string, adhering to the rules in [List-operation filtering](https://cloud.google.com/secret-manager/docs/filtering). List only secrets matching the filter. If filter is empty, all regional secrets are listed from the specified location.
   /// [location] The location of the regional secret.
   /// [project] The ID of the project.
-  GetRegionalSecretsArgs({this.filter, required this.location, this.project});
+  GetRegionalSecretsArgs({
+    this.filter,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,17 +34,10 @@ class GetRegionalSecretsArgs {
 
   factory GetRegionalSecretsArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionalSecretsArgs(
-      filter: (() {
-        final guardedValue = map['filter'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

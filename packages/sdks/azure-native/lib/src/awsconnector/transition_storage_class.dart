@@ -19,3 +19,4 @@ enum TransitionStorageClass {
     throw ArgumentError('Unknown TransitionStorageClass value: $value');
   }
 }
+

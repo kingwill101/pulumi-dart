@@ -6,22 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HealthAlertResponse {
   /// Health Alert Id
   final pulumi.Input<String> id;
-
   /// Health Alert Issue
   final pulumi.Input<String> issue;
-
   /// Health Alert Last Detected DateTime
   final pulumi.Input<String> lastDetected;
-
   /// Health Alert Name
   final pulumi.Input<String> name;
-
   /// Health Alert Raised DateTime
   final pulumi.Input<String> raised;
-
   /// Health Alert TSG Link
   final pulumi.Input<String> resolutionUri;
-
   /// Health Alert Severity
   final pulumi.Input<String> severity;
 
@@ -67,3 +61,4 @@ class HealthAlertResponse {
     );
   }
 }
+

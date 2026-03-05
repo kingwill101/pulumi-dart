@@ -6,12 +6,9 @@ import 'private_endpoint_connection_response.dart';
 /// Workspaces resource specific properties.
 class WorkspaceResponseProperties {
   /// The list of private endpoint connections that are set up for this resource.
-  final pulumi.Input<List<PrivateEndpointConnectionResponse>>
-  privateEndpointConnections;
-
+  final pulumi.Input<List<PrivateEndpointConnectionResponse>> privateEndpointConnections;
   /// The provisioning state.
   final pulumi.Input<String> provisioningState;
-
   /// Control permission for data plane traffic coming from public networks while private endpoint is enabled.
   final pulumi.Input<String> publicNetworkAccess;
 
@@ -27,18 +24,7 @@ class WorkspaceResponseProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'privateEndpointConnections':
-          pulumi.Input.mapInputValue<
-            List<PrivateEndpointConnectionResponse>,
-            List<Map<String, dynamic>>
-          >(
-            privateEndpointConnections,
-            (value) =>
-                pulumi.Input.encodeList<
-                  PrivateEndpointConnectionResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'privateEndpointConnections': pulumi.Input.mapInputValue<List<PrivateEndpointConnectionResponse>, List<Map<String, dynamic>>>(privateEndpointConnections, (value) => pulumi.Input.encodeList<PrivateEndpointConnectionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'provisioningState': provisioningState,
       'publicNetworkAccess': publicNetworkAccess,
     };
@@ -46,20 +32,10 @@ class WorkspaceResponseProperties {
 
   factory WorkspaceResponseProperties.fromMap(Map<String, dynamic> map) {
     return WorkspaceResponseProperties(
-      privateEndpointConnections: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(
-          map['privateEndpointConnections']!,
-          (value) => PrivateEndpointConnectionResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
-      publicNetworkAccess: pulumi.Input.fromValue(
-        map['publicNetworkAccess'] as String,
-      ),
+      privateEndpointConnections: pulumi.Input.fromValue(pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(map['privateEndpointConnections']!, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>()))),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
+      publicNetworkAccess: pulumi.Input.fromValue(map['publicNetworkAccess'] as String),
     );
   }
 }
+

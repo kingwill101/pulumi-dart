@@ -16,3 +16,4 @@ enum StateStoreResourceKeyTypes {
     throw ArgumentError('Unknown StateStoreResourceKeyTypes value: $value');
   }
 }
+

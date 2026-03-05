@@ -7,7 +7,6 @@ import 'repo_response.dart';
 class ListSourceControlRepositoriesResult {
   /// URL to fetch the next set of repositories.
   final String nextLink;
-
   /// Array of repositories.
   final List<RepoResponse> value;
 
@@ -22,22 +21,15 @@ class ListSourceControlRepositoriesResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nextLink': nextLink,
-      'value': pulumi.Input.encodeList<RepoResponse, Map<String, dynamic>>(
-        value,
-        (value) => value.toMap(),
-      ),
+      'value': pulumi.Input.encodeList<RepoResponse, Map<String, dynamic>>(value, (value) => value.toMap()),
     };
   }
 
-  factory ListSourceControlRepositoriesResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListSourceControlRepositoriesResult.fromMap(Map<String, dynamic> map) {
     return ListSourceControlRepositoriesResult(
       nextLink: map['nextLink'] as String,
-      value: pulumi.Input.decodeList<RepoResponse>(
-        map['value']!,
-        (value) => RepoResponse.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      value: pulumi.Input.decodeList<RepoResponse>(map['value']!, (value) => RepoResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

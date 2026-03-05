@@ -13,8 +13,7 @@ enum PostgreSqlFlexibleServerHighAvailabilityMode {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown PostgreSqlFlexibleServerHighAvailabilityMode value: $value',
-    );
+    throw ArgumentError('Unknown PostgreSqlFlexibleServerHighAvailabilityMode value: $value');
   }
 }
+

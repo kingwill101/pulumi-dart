@@ -617,39 +617,26 @@ import 'system_data_response.dart';
 class BusinessProcess extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The business process mapping.
-  late final pulumi.Output<Map<String, BusinessProcessMappingItemResponse>?>
-  businessProcessMapping;
-
+  late final pulumi.Output<Map<String, BusinessProcessMappingItemResponse>?> businessProcessMapping;
   /// The business process stages.
-  late final pulumi.Output<Map<String, BusinessProcessStageResponse>?>
-  businessProcessStages;
-
+  late final pulumi.Output<Map<String, BusinessProcessStageResponse>?> businessProcessStages;
   /// The description of the business process.
   late final pulumi.Output<String?> description;
-
   /// The business process identifier.
   late final pulumi.Output<BusinessProcessIdentifierResponse?> identifier;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The status of the last operation.
   late final pulumi.Output<String> provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The table name of the business process.
   late final pulumi.Output<String?> tableName;
-
   /// The tracking data store reference name.
   late final pulumi.Output<String?> trackingDataStoreReferenceName;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// The version of the business process.
   late final pulumi.Output<String> version;
 
@@ -662,68 +649,21 @@ class BusinessProcess extends pulumi.CustomResource {
     BusinessProcessArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:integrationspaces:BusinessProcess',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:integrationspaces:BusinessProcess',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    businessProcessMapping =
-        registerOutput<Map<String, BusinessProcessMappingItemResponse>?>(
-          'businessProcessMapping',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return pulumi
-                .Input.decodeMapValues<BusinessProcessMappingItemResponse>(
-              guardedValue,
-              (value) => BusinessProcessMappingItemResponse.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            );
-          },
-        );
-    businessProcessStages =
-        registerOutput<Map<String, BusinessProcessStageResponse>?>(
-          'businessProcessStages',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return pulumi.Input.decodeMapValues<BusinessProcessStageResponse>(
-              guardedValue,
-              (value) => BusinessProcessStageResponse.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-            );
-          },
-        );
+    businessProcessMapping = registerOutput<Map<String, BusinessProcessMappingItemResponse>?>('businessProcessMapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<BusinessProcessMappingItemResponse>(guardedValue, (value) => BusinessProcessMappingItemResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    businessProcessStages = registerOutput<Map<String, BusinessProcessStageResponse>?>('businessProcessStages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<BusinessProcessStageResponse>(guardedValue, (value) => BusinessProcessStageResponse.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');
-    identifier = registerOutput<BusinessProcessIdentifierResponse?>(
-      'identifier',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BusinessProcessIdentifierResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identifier = registerOutput<BusinessProcessIdentifierResponse?>('identifier', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BusinessProcessIdentifierResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tableName = registerOutput<String?>('tableName');
-    trackingDataStoreReferenceName = registerOutput<String?>(
-      'trackingDataStoreReferenceName',
-    );
+    trackingDataStoreReferenceName = registerOutput<String?>('trackingDataStoreReferenceName');
     type = registerOutput<String>('type');
     version = registerOutput<String>('version');
   }

@@ -165,13 +165,8 @@ import 'data_catalog_encryption_settings_state.dart';
 class DataCatalogEncryptionSettings extends pulumi.CustomResource {
   /// The ID of the Data Catalog to set the security configuration for. If none is provided, the AWS account ID is used by default.
   late final pulumi.Output<String> catalogId;
-
   /// The security configuration to set. see Data Catalog Encryption Settings.
-  late final pulumi.Output<
-    DataCatalogEncryptionSettingsDataCatalogEncryptionSettings
-  >
-  dataCatalogEncryptionSettings;
-
+  late final pulumi.Output<DataCatalogEncryptionSettingsDataCatalogEncryptionSettings> dataCatalogEncryptionSettings;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -184,25 +179,13 @@ class DataCatalogEncryptionSettings extends pulumi.CustomResource {
     DataCatalogEncryptionSettingsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:glue/dataCatalogEncryptionSettings:DataCatalogEncryptionSettings',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:glue/dataCatalogEncryptionSettings:DataCatalogEncryptionSettings',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     catalogId = registerOutput<String>('catalogId');
-    dataCatalogEncryptionSettings =
-        registerOutput<
-          DataCatalogEncryptionSettingsDataCatalogEncryptionSettings
-        >(
-          'dataCatalogEncryptionSettings',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return DataCatalogEncryptionSettingsDataCatalogEncryptionSettings.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    dataCatalogEncryptionSettings = registerOutput<DataCatalogEncryptionSettingsDataCatalogEncryptionSettings>('dataCatalogEncryptionSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataCatalogEncryptionSettingsDataCatalogEncryptionSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
   }
 
@@ -224,25 +207,13 @@ class DataCatalogEncryptionSettings extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:glue/dataCatalogEncryptionSettings:DataCatalogEncryptionSettings',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:glue/dataCatalogEncryptionSettings:DataCatalogEncryptionSettings',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     catalogId = registerOutput<String>('catalogId');
-    dataCatalogEncryptionSettings =
-        registerOutput<
-          DataCatalogEncryptionSettingsDataCatalogEncryptionSettings
-        >(
-          'dataCatalogEncryptionSettings',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return DataCatalogEncryptionSettingsDataCatalogEncryptionSettings.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    dataCatalogEncryptionSettings = registerOutput<DataCatalogEncryptionSettingsDataCatalogEncryptionSettings>('dataCatalogEncryptionSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataCatalogEncryptionSettingsDataCatalogEncryptionSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
   }
 }

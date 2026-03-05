@@ -33,24 +33,13 @@ class GetConnectionProfileIamPolicyDatamigrationV1beta1Args {
     };
   }
 
-  factory GetConnectionProfileIamPolicyDatamigrationV1beta1Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetConnectionProfileIamPolicyDatamigrationV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetConnectionProfileIamPolicyDatamigrationV1beta1Args(
-      connectionProfileId: pulumi.Input.fromValue(
-        map['connectionProfileId'] as String,
-      ),
+      connectionProfileId: pulumi.Input.fromValue(map['connectionProfileId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      optionsRequestedPolicyVersion: (() {
-        final guardedValue = map['optionsRequestedPolicyVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

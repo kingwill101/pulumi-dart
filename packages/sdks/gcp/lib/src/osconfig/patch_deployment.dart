@@ -1694,34 +1694,26 @@ class PatchDeployment extends pulumi.CustomResource {
   /// Time the patch deployment was created. Timestamp is in RFC3339 text format.
   /// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> createTime;
-
   /// Description of the patch deployment. Length of the description is limited to 1024 characters.
   late final pulumi.Output<String?> description;
-
   /// Duration of the patch. After the duration ends, the patch times out.
   /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
   late final pulumi.Output<String?> duration;
-
   /// VM instances to patch.
   /// Structure is documented below.
   late final pulumi.Output<PatchDeploymentInstanceFilter> instanceFilter;
-
   /// The last time a patch job was started by this deployment. Timestamp is in RFC3339 text format.
   /// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> lastExecuteTime;
-
   /// Unique name for the patch deployment resource in a project.
   /// The patch deployment name is in the form: projects/{project_id}/patchDeployments/{patchDeploymentId}.
   late final pulumi.Output<String> name;
-
   /// Schedule a one-time execution.
   /// Structure is documented below.
   late final pulumi.Output<PatchDeploymentOneTimeSchedule?> oneTimeSchedule;
-
   /// Patch configuration that is applied.
   /// Structure is documented below.
   late final pulumi.Output<PatchDeploymentPatchConfig?> patchConfig;
-
   /// A name for the patch deployment in the project. When creating a name the following rules apply:
   /// * Must contain only lowercase letters, numbers, and hyphens.
   /// * Must start with a letter.
@@ -1729,19 +1721,15 @@ class PatchDeployment extends pulumi.CustomResource {
   /// * Must end with a number or a letter.
   /// * Must be unique within the project.
   late final pulumi.Output<String> patchDeploymentId;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Schedule recurring executions.
   /// Structure is documented below.
   late final pulumi.Output<PatchDeploymentRecurringSchedule?> recurringSchedule;
-
   /// Rollout strategy of the patch job.
   /// Structure is documented below.
   late final pulumi.Output<PatchDeploymentRollout?> rollout;
-
   /// Time the patch deployment was last updated. Timestamp is in RFC3339 text format.
   /// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> updateTime;
@@ -1755,68 +1743,23 @@ class PatchDeployment extends pulumi.CustomResource {
     PatchDeploymentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:osconfig/patchDeployment:PatchDeployment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:osconfig/patchDeployment:PatchDeployment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     duration = registerOutput<String?>('duration');
-    instanceFilter = registerOutput<PatchDeploymentInstanceFilter>(
-      'instanceFilter',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PatchDeploymentInstanceFilter.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    instanceFilter = registerOutput<PatchDeploymentInstanceFilter>('instanceFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PatchDeploymentInstanceFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lastExecuteTime = registerOutput<String>('lastExecuteTime');
     this.name = registerOutput<String>('name');
-    oneTimeSchedule = registerOutput<PatchDeploymentOneTimeSchedule?>(
-      'oneTimeSchedule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PatchDeploymentOneTimeSchedule.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    patchConfig = registerOutput<PatchDeploymentPatchConfig?>(
-      'patchConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PatchDeploymentPatchConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    oneTimeSchedule = registerOutput<PatchDeploymentOneTimeSchedule?>('oneTimeSchedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PatchDeploymentOneTimeSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    patchConfig = registerOutput<PatchDeploymentPatchConfig?>('patchConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PatchDeploymentPatchConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     patchDeploymentId = registerOutput<String>('patchDeploymentId');
     project = registerOutput<String>('project');
-    recurringSchedule = registerOutput<PatchDeploymentRecurringSchedule?>(
-      'recurringSchedule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PatchDeploymentRecurringSchedule.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    rollout = registerOutput<PatchDeploymentRollout?>(
-      'rollout',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PatchDeploymentRollout.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    recurringSchedule = registerOutput<PatchDeploymentRecurringSchedule?>('recurringSchedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PatchDeploymentRecurringSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    rollout = registerOutput<PatchDeploymentRollout?>('rollout', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PatchDeploymentRollout.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updateTime = registerOutput<String>('updateTime');
   }
 
@@ -1838,68 +1781,23 @@ class PatchDeployment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:osconfig/patchDeployment:PatchDeployment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:osconfig/patchDeployment:PatchDeployment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     duration = registerOutput<String?>('duration');
-    instanceFilter = registerOutput<PatchDeploymentInstanceFilter>(
-      'instanceFilter',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PatchDeploymentInstanceFilter.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    instanceFilter = registerOutput<PatchDeploymentInstanceFilter>('instanceFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PatchDeploymentInstanceFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lastExecuteTime = registerOutput<String>('lastExecuteTime');
     this.name = registerOutput<String>('name');
-    oneTimeSchedule = registerOutput<PatchDeploymentOneTimeSchedule?>(
-      'oneTimeSchedule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PatchDeploymentOneTimeSchedule.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    patchConfig = registerOutput<PatchDeploymentPatchConfig?>(
-      'patchConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PatchDeploymentPatchConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    oneTimeSchedule = registerOutput<PatchDeploymentOneTimeSchedule?>('oneTimeSchedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PatchDeploymentOneTimeSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    patchConfig = registerOutput<PatchDeploymentPatchConfig?>('patchConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PatchDeploymentPatchConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     patchDeploymentId = registerOutput<String>('patchDeploymentId');
     project = registerOutput<String>('project');
-    recurringSchedule = registerOutput<PatchDeploymentRecurringSchedule?>(
-      'recurringSchedule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PatchDeploymentRecurringSchedule.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    rollout = registerOutput<PatchDeploymentRollout?>(
-      'rollout',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PatchDeploymentRollout.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    recurringSchedule = registerOutput<PatchDeploymentRecurringSchedule?>('recurringSchedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PatchDeploymentRecurringSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    rollout = registerOutput<PatchDeploymentRollout?>('rollout', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PatchDeploymentRollout.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updateTime = registerOutput<String>('updateTime');
   }
 }

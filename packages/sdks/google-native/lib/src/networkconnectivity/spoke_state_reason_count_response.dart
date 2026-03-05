@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SpokeStateReasonCountResponse {
   /// The total number of spokes that are inactive for a particular reason and associated with a given hub.
   final pulumi.Input<String> count;
-
   /// The reason that a spoke is inactive.
   final pulumi.Input<String> stateReasonCode;
 
@@ -32,3 +31,4 @@ class SpokeStateReasonCountResponse {
     );
   }
 }
+

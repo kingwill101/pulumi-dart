@@ -14,8 +14,7 @@ enum SubscriptionReregistrationResult {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown SubscriptionReregistrationResult value: $value',
-    );
+    throw ArgumentError('Unknown SubscriptionReregistrationResult value: $value');
   }
 }
+

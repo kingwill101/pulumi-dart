@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LiftrBaseUserDetails {
   /// Email address of the user
   final pulumi.Input<String>? emailAddress;
-
   /// First name of the user
   final pulumi.Input<String>? firstName;
-
   /// Last name of the user
   final pulumi.Input<String>? lastName;
-
   /// User's phone number
   final pulumi.Input<String>? phoneNumber;
-
   /// User's principal name
   final pulumi.Input<String>? upn;
 
@@ -45,31 +41,12 @@ class LiftrBaseUserDetails {
 
   factory LiftrBaseUserDetails.fromMap(Map<String, dynamic> map) {
     return LiftrBaseUserDetails(
-      emailAddress: (() {
-        final guardedValue = map['emailAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      firstName: (() {
-        final guardedValue = map['firstName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      lastName: (() {
-        final guardedValue = map['lastName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      phoneNumber: (() {
-        final guardedValue = map['phoneNumber'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      upn: (() {
-        final guardedValue = map['upn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      emailAddress: (() { final guardedValue = map['emailAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      firstName: (() { final guardedValue = map['firstName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      lastName: (() { final guardedValue = map['lastName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      phoneNumber: (() { final guardedValue = map['phoneNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      upn: (() { final guardedValue = map['upn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

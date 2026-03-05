@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PublicKeyResponse {
   /// The format of the public key.
   final pulumi.Input<String> format;
-
   /// A public key. The padding and encoding must match with the `KeyFormat` value specified for the `format` field.
   final pulumi.Input<String> key;
 
   /// Creates a new [PublicKeyResponse].
   /// [format] The format of the public key.
   /// [key] A public key. The padding and encoding must match with the `KeyFormat` value specified for the `format` field.
-  PublicKeyResponse({required this.format, required this.key});
+  PublicKeyResponse({
+    required this.format,
+    required this.key,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'format': format, 'key': key};
+    return <String, dynamic>{
+      'format': format,
+      'key': key,
+    };
   }
 
   factory PublicKeyResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class PublicKeyResponse {
     );
   }
 }
+

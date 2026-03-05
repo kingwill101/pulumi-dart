@@ -12,8 +12,7 @@ enum LoadBalancerBackendAddressAdminState {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown LoadBalancerBackendAddressAdminState value: $value',
-    );
+    throw ArgumentError('Unknown LoadBalancerBackendAddressAdminState value: $value');
   }
 }
+

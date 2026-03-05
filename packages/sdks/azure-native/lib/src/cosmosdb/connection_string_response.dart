@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectionStringResponse {
   /// Value of the connection string
   final pulumi.Input<String> connectionString;
-
   /// Description of the connection string
   final pulumi.Input<String> description;
 
@@ -27,10 +26,9 @@ class ConnectionStringResponse {
 
   factory ConnectionStringResponse.fromMap(Map<String, dynamic> map) {
     return ConnectionStringResponse(
-      connectionString: pulumi.Input.fromValue(
-        map['connectionString'] as String,
-      ),
+      connectionString: pulumi.Input.fromValue(map['connectionString'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
     );
   }
 }
+

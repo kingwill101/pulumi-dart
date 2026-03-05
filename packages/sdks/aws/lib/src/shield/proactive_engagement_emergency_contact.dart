@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProactiveEngagementEmergencyContact {
   /// Additional notes regarding the contact.
   final pulumi.Input<String>? contactNotes;
-
   /// A valid email address that will be used for this contact.
   final pulumi.Input<String> emailAddress;
-
   /// A phone number, starting with `+` and up to 15 digits that will be used for this contact.
   final pulumi.Input<String>? phoneNumber;
 
@@ -30,21 +28,12 @@ class ProactiveEngagementEmergencyContact {
     };
   }
 
-  factory ProactiveEngagementEmergencyContact.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ProactiveEngagementEmergencyContact.fromMap(Map<String, dynamic> map) {
     return ProactiveEngagementEmergencyContact(
-      contactNotes: (() {
-        final guardedValue = map['contactNotes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      contactNotes: (() { final guardedValue = map['contactNotes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       emailAddress: pulumi.Input.fromValue(map['emailAddress'] as String),
-      phoneNumber: (() {
-        final guardedValue = map['phoneNumber'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      phoneNumber: (() { final guardedValue = map['phoneNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

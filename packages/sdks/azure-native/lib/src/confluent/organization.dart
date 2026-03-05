@@ -276,37 +276,26 @@ import 'user_detail_response.dart';
 class Organization extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The creation time of the resource.
   late final pulumi.Output<String> createdTime;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Confluent offer detail
   late final pulumi.Output<OfferDetailResponse> offerDetail;
-
   /// Id of the Confluent organization.
   late final pulumi.Output<String> organizationId;
-
   /// Provision states for confluent RP
   late final pulumi.Output<String> provisioningState;
-
   /// SSO url for the Confluent organization.
   late final pulumi.Output<String> ssoUrl;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Subscriber detail
   late final pulumi.Output<UserDetailResponse> userDetail;
 
@@ -319,49 +308,22 @@ class Organization extends pulumi.CustomResource {
     OrganizationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:confluent:Organization',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:confluent:Organization',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createdTime = registerOutput<String>('createdTime');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    offerDetail = registerOutput<OfferDetailResponse>(
-      'offerDetail',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return OfferDetailResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    offerDetail = registerOutput<OfferDetailResponse>('offerDetail', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OfferDetailResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     organizationId = registerOutput<String>('organizationId');
     provisioningState = registerOutput<String>('provisioningState');
     ssoUrl = registerOutput<String>('ssoUrl');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
-    userDetail = registerOutput<UserDetailResponse>(
-      'userDetail',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return UserDetailResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    userDetail = registerOutput<UserDetailResponse>('userDetail', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserDetailResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

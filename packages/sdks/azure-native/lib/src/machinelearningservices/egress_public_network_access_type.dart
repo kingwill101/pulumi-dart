@@ -15,3 +15,4 @@ enum EgressPublicNetworkAccessType {
     throw ArgumentError('Unknown EgressPublicNetworkAccessType value: $value');
   }
 }
+

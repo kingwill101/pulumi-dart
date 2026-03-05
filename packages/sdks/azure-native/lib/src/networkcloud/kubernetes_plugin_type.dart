@@ -18,3 +18,4 @@ enum KubernetesPluginType {
     throw ArgumentError('Unknown KubernetesPluginType value: $value');
   }
 }
+

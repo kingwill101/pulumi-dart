@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegistryEndpointTrustedSigningKeySecretResponse {
   /// The name of the secret.
   final pulumi.Input<String> secretRef;
-
   /// RegistryEndpointTrustedSigningKeyType values
   /// Expected value is 'Secret'.
   final pulumi.Input<String> type;
@@ -20,15 +19,17 @@ class RegistryEndpointTrustedSigningKeySecretResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'secretRef': secretRef, 'type': type};
+    return <String, dynamic>{
+      'secretRef': secretRef,
+      'type': type,
+    };
   }
 
-  factory RegistryEndpointTrustedSigningKeySecretResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RegistryEndpointTrustedSigningKeySecretResponse.fromMap(Map<String, dynamic> map) {
     return RegistryEndpointTrustedSigningKeySecretResponse(
       secretRef: pulumi.Input.fromValue(map['secretRef'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

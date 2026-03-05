@@ -149,7 +149,6 @@ import 'transit_gateway_registration_state.dart';
 class TransitGatewayRegistration extends pulumi.CustomResource {
   /// ID of the Global Network to register to.
   late final pulumi.Output<String> globalNetworkId;
-
   /// ARN of the Transit Gateway to register.
   late final pulumi.Output<String> transitGatewayArn;
 
@@ -162,11 +161,11 @@ class TransitGatewayRegistration extends pulumi.CustomResource {
     TransitGatewayRegistrationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:networkmanager/transitGatewayRegistration:TransitGatewayRegistration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:networkmanager/transitGatewayRegistration:TransitGatewayRegistration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     globalNetworkId = registerOutput<String>('globalNetworkId');
     transitGatewayArn = registerOutput<String>('transitGatewayArn');
   }
@@ -189,11 +188,11 @@ class TransitGatewayRegistration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:networkmanager/transitGatewayRegistration:TransitGatewayRegistration',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:networkmanager/transitGatewayRegistration:TransitGatewayRegistration',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     globalNetworkId = registerOutput<String>('globalNetworkId');
     transitGatewayArn = registerOutput<String>('transitGatewayArn');
   }

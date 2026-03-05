@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AwsSnsSubscriptionProperties {
   /// &lt;p&gt;The subscription's endpoint (format depends on the protocol).&lt;/p&gt;
   final pulumi.Input<String>? endpoint;
-
   /// &lt;p&gt;The subscription's owner.&lt;/p&gt;
   final pulumi.Input<String>? owner;
-
   /// &lt;p&gt;The subscription's protocol.&lt;/p&gt;
   final pulumi.Input<String>? protocol;
-
   /// &lt;p&gt;The subscription's ARN.&lt;/p&gt;
   final pulumi.Input<String>? subscriptionArn;
-
   /// &lt;p&gt;The ARN of the subscription's topic.&lt;/p&gt;
   final pulumi.Input<String>? topicArn;
 
@@ -45,31 +41,12 @@ class AwsSnsSubscriptionProperties {
 
   factory AwsSnsSubscriptionProperties.fromMap(Map<String, dynamic> map) {
     return AwsSnsSubscriptionProperties(
-      endpoint: (() {
-        final guardedValue = map['endpoint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      owner: (() {
-        final guardedValue = map['owner'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      protocol: (() {
-        final guardedValue = map['protocol'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subscriptionArn: (() {
-        final guardedValue = map['subscriptionArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      topicArn: (() {
-        final guardedValue = map['topicArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      endpoint: (() { final guardedValue = map['endpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      owner: (() { final guardedValue = map['owner']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subscriptionArn: (() { final guardedValue = map['subscriptionArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      topicArn: (() { final guardedValue = map['topicArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

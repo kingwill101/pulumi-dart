@@ -11,24 +11,16 @@ class _IndexModuleNamespace {
   final BuilderVersion = module_index.BuilderVersion.values;
   final BuildxBuilder = module_index.BuildxBuilder.new;
   final BuildxBuilderArgs = module_index.BuildxBuilderArgs.new;
-  final BuildxBuilderDockerContainer =
-      module_index.BuildxBuilderDockerContainer.new;
-  final BuildxBuilderDockerContainerArgs =
-      module_index.BuildxBuilderDockerContainer.new;
+  final BuildxBuilderDockerContainer = module_index.BuildxBuilderDockerContainer.new;
+  final BuildxBuilderDockerContainerArgs = module_index.BuildxBuilderDockerContainer.new;
   final BuildxBuilderKubernetes = module_index.BuildxBuilderKubernetes.new;
   final BuildxBuilderKubernetesArgs = module_index.BuildxBuilderKubernetes.new;
-  final BuildxBuilderKubernetesLimits =
-      module_index.BuildxBuilderKubernetesLimits.new;
-  final BuildxBuilderKubernetesLimitsArgs =
-      module_index.BuildxBuilderKubernetesLimits.new;
-  final BuildxBuilderKubernetesQemu =
-      module_index.BuildxBuilderKubernetesQemu.new;
-  final BuildxBuilderKubernetesQemuArgs =
-      module_index.BuildxBuilderKubernetesQemu.new;
-  final BuildxBuilderKubernetesRequests =
-      module_index.BuildxBuilderKubernetesRequests.new;
-  final BuildxBuilderKubernetesRequestsArgs =
-      module_index.BuildxBuilderKubernetesRequests.new;
+  final BuildxBuilderKubernetesLimits = module_index.BuildxBuilderKubernetesLimits.new;
+  final BuildxBuilderKubernetesLimitsArgs = module_index.BuildxBuilderKubernetesLimits.new;
+  final BuildxBuilderKubernetesQemu = module_index.BuildxBuilderKubernetesQemu.new;
+  final BuildxBuilderKubernetesQemuArgs = module_index.BuildxBuilderKubernetesQemu.new;
+  final BuildxBuilderKubernetesRequests = module_index.BuildxBuilderKubernetesRequests.new;
+  final BuildxBuilderKubernetesRequestsArgs = module_index.BuildxBuilderKubernetesRequests.new;
   final BuildxBuilderRemote = module_index.BuildxBuilderRemote.new;
   final BuildxBuilderRemoteArgs = module_index.BuildxBuilderRemote.new;
   final BuildxBuilderState = module_index.BuildxBuilderState.new;
@@ -50,25 +42,17 @@ class _IndexModuleNamespace {
   final ContainerMount = module_index.ContainerMount.new;
   final ContainerMountArgs = module_index.ContainerMount.new;
   final ContainerMountBindOptions = module_index.ContainerMountBindOptions.new;
-  final ContainerMountBindOptionsArgs =
-      module_index.ContainerMountBindOptions.new;
-  final ContainerMountTmpfsOptions =
-      module_index.ContainerMountTmpfsOptions.new;
-  final ContainerMountTmpfsOptionsArgs =
-      module_index.ContainerMountTmpfsOptions.new;
-  final ContainerMountVolumeOptions =
-      module_index.ContainerMountVolumeOptions.new;
-  final ContainerMountVolumeOptionsArgs =
-      module_index.ContainerMountVolumeOptions.new;
-  final ContainerMountVolumeOptionsLabel =
-      module_index.ContainerMountVolumeOptionsLabel.new;
-  final ContainerMountVolumeOptionsLabelArgs =
-      module_index.ContainerMountVolumeOptionsLabel.new;
+  final ContainerMountBindOptionsArgs = module_index.ContainerMountBindOptions.new;
+  final ContainerMountTmpfsOptions = module_index.ContainerMountTmpfsOptions.new;
+  final ContainerMountTmpfsOptionsArgs = module_index.ContainerMountTmpfsOptions.new;
+  final ContainerMountVolumeOptions = module_index.ContainerMountVolumeOptions.new;
+  final ContainerMountVolumeOptionsArgs = module_index.ContainerMountVolumeOptions.new;
+  final ContainerMountVolumeOptionsLabel = module_index.ContainerMountVolumeOptionsLabel.new;
+  final ContainerMountVolumeOptionsLabelArgs = module_index.ContainerMountVolumeOptionsLabel.new;
   final ContainerNetworkData = module_index.ContainerNetworkData.new;
   final ContainerNetworkDataArgs = module_index.ContainerNetworkData.new;
   final ContainerNetworksAdvanced = module_index.ContainerNetworksAdvanced.new;
-  final ContainerNetworksAdvancedArgs =
-      module_index.ContainerNetworksAdvanced.new;
+  final ContainerNetworksAdvancedArgs = module_index.ContainerNetworksAdvanced.new;
   final ContainerPort = module_index.ContainerPort.new;
   final ContainerPortArgs = module_index.ContainerPort.new;
   final ContainerState = module_index.ContainerState.new;
@@ -93,20 +77,13 @@ class _IndexModuleNamespace {
   final GetPluginResult = module_index.GetPluginResult.new;
   final GetPluginResultArgs = module_index.GetPluginResult.new;
   final GetRegistryImageArgs = module_index.GetRegistryImageArgs.new;
-  final GetRegistryImageManifestsArgs =
-      module_index.GetRegistryImageManifestsArgs.new;
-  final GetRegistryImageManifestsAuthConfig =
-      module_index.GetRegistryImageManifestsAuthConfig.new;
-  final GetRegistryImageManifestsAuthConfigArgs =
-      module_index.GetRegistryImageManifestsAuthConfig.new;
-  final GetRegistryImageManifestsManifest =
-      module_index.GetRegistryImageManifestsManifest.new;
-  final GetRegistryImageManifestsManifestArgs =
-      module_index.GetRegistryImageManifestsManifest.new;
-  final GetRegistryImageManifestsResult =
-      module_index.GetRegistryImageManifestsResult.new;
-  final GetRegistryImageManifestsResultArgs =
-      module_index.GetRegistryImageManifestsResult.new;
+  final GetRegistryImageManifestsArgs = module_index.GetRegistryImageManifestsArgs.new;
+  final GetRegistryImageManifestsAuthConfig = module_index.GetRegistryImageManifestsAuthConfig.new;
+  final GetRegistryImageManifestsAuthConfigArgs = module_index.GetRegistryImageManifestsAuthConfig.new;
+  final GetRegistryImageManifestsManifest = module_index.GetRegistryImageManifestsManifest.new;
+  final GetRegistryImageManifestsManifestArgs = module_index.GetRegistryImageManifestsManifest.new;
+  final GetRegistryImageManifestsResult = module_index.GetRegistryImageManifestsResult.new;
+  final GetRegistryImageManifestsResultArgs = module_index.GetRegistryImageManifestsResult.new;
   final GetRegistryImageResult = module_index.GetRegistryImageResult.new;
   final GetRegistryImageResultArgs = module_index.GetRegistryImageResult.new;
   final GetRemoteImageArgs = module_index.GetRemoteImageArgs.new;
@@ -138,26 +115,20 @@ class _IndexModuleNamespace {
   final RegistryImageAuthConfigArgs = module_index.RegistryImageAuthConfig.new;
   final RegistryImageBuild = module_index.RegistryImageBuild.new;
   final RegistryImageBuildArgs = module_index.RegistryImageBuild.new;
-  final RegistryImageBuildAuthConfig =
-      module_index.RegistryImageBuildAuthConfig.new;
-  final RegistryImageBuildAuthConfigArgs =
-      module_index.RegistryImageBuildAuthConfig.new;
+  final RegistryImageBuildAuthConfig = module_index.RegistryImageBuildAuthConfig.new;
+  final RegistryImageBuildAuthConfigArgs = module_index.RegistryImageBuildAuthConfig.new;
   final RegistryImageBuildSecret = module_index.RegistryImageBuildSecret.new;
-  final RegistryImageBuildSecretArgs =
-      module_index.RegistryImageBuildSecret.new;
+  final RegistryImageBuildSecretArgs = module_index.RegistryImageBuildSecret.new;
   final RegistryImageBuildUlimit = module_index.RegistryImageBuildUlimit.new;
-  final RegistryImageBuildUlimitArgs =
-      module_index.RegistryImageBuildUlimit.new;
+  final RegistryImageBuildUlimitArgs = module_index.RegistryImageBuildUlimit.new;
   final RegistryImageState = module_index.RegistryImageState.new;
   final RegistryImageStateArgs = module_index.RegistryImageState.new;
   final RemoteImage = module_index.RemoteImage.new;
   final RemoteImageArgs = module_index.RemoteImageArgs.new;
   final RemoteImageBuild = module_index.RemoteImageBuild.new;
   final RemoteImageBuildArgs = module_index.RemoteImageBuild.new;
-  final RemoteImageBuildAuthConfig =
-      module_index.RemoteImageBuildAuthConfig.new;
-  final RemoteImageBuildAuthConfigArgs =
-      module_index.RemoteImageBuildAuthConfig.new;
+  final RemoteImageBuildAuthConfig = module_index.RemoteImageBuildAuthConfig.new;
+  final RemoteImageBuildAuthConfigArgs = module_index.RemoteImageBuildAuthConfig.new;
   final RemoteImageBuildSecret = module_index.RemoteImageBuildSecret.new;
   final RemoteImageBuildSecretArgs = module_index.RemoteImageBuildSecret.new;
   final RemoteImageBuildUlimit = module_index.RemoteImageBuildUlimit.new;
@@ -196,99 +167,54 @@ class _IndexModuleNamespace {
   final ServiceStateArgs = module_index.ServiceState.new;
   final ServiceTaskSpec = module_index.ServiceTaskSpec.new;
   final ServiceTaskSpecArgs = module_index.ServiceTaskSpec.new;
-  final ServiceTaskSpecContainerSpec =
-      module_index.ServiceTaskSpecContainerSpec.new;
-  final ServiceTaskSpecContainerSpecArgs =
-      module_index.ServiceTaskSpecContainerSpec.new;
-  final ServiceTaskSpecContainerSpecConfig =
-      module_index.ServiceTaskSpecContainerSpecConfig.new;
-  final ServiceTaskSpecContainerSpecConfigArgs =
-      module_index.ServiceTaskSpecContainerSpecConfig.new;
-  final ServiceTaskSpecContainerSpecDnsConfig =
-      module_index.ServiceTaskSpecContainerSpecDnsConfig.new;
-  final ServiceTaskSpecContainerSpecDnsConfigArgs =
-      module_index.ServiceTaskSpecContainerSpecDnsConfig.new;
-  final ServiceTaskSpecContainerSpecHealthcheck =
-      module_index.ServiceTaskSpecContainerSpecHealthcheck.new;
-  final ServiceTaskSpecContainerSpecHealthcheckArgs =
-      module_index.ServiceTaskSpecContainerSpecHealthcheck.new;
-  final ServiceTaskSpecContainerSpecHost =
-      module_index.ServiceTaskSpecContainerSpecHost.new;
-  final ServiceTaskSpecContainerSpecHostArgs =
-      module_index.ServiceTaskSpecContainerSpecHost.new;
-  final ServiceTaskSpecContainerSpecLabel =
-      module_index.ServiceTaskSpecContainerSpecLabel.new;
-  final ServiceTaskSpecContainerSpecLabelArgs =
-      module_index.ServiceTaskSpecContainerSpecLabel.new;
-  final ServiceTaskSpecContainerSpecMount =
-      module_index.ServiceTaskSpecContainerSpecMount.new;
-  final ServiceTaskSpecContainerSpecMountArgs =
-      module_index.ServiceTaskSpecContainerSpecMount.new;
-  final ServiceTaskSpecContainerSpecMountBindOptions =
-      module_index.ServiceTaskSpecContainerSpecMountBindOptions.new;
-  final ServiceTaskSpecContainerSpecMountBindOptionsArgs =
-      module_index.ServiceTaskSpecContainerSpecMountBindOptions.new;
-  final ServiceTaskSpecContainerSpecMountTmpfsOptions =
-      module_index.ServiceTaskSpecContainerSpecMountTmpfsOptions.new;
-  final ServiceTaskSpecContainerSpecMountTmpfsOptionsArgs =
-      module_index.ServiceTaskSpecContainerSpecMountTmpfsOptions.new;
-  final ServiceTaskSpecContainerSpecMountVolumeOptions =
-      module_index.ServiceTaskSpecContainerSpecMountVolumeOptions.new;
-  final ServiceTaskSpecContainerSpecMountVolumeOptionsArgs =
-      module_index.ServiceTaskSpecContainerSpecMountVolumeOptions.new;
-  final ServiceTaskSpecContainerSpecMountVolumeOptionsLabel =
-      module_index.ServiceTaskSpecContainerSpecMountVolumeOptionsLabel.new;
-  final ServiceTaskSpecContainerSpecMountVolumeOptionsLabelArgs =
-      module_index.ServiceTaskSpecContainerSpecMountVolumeOptionsLabel.new;
-  final ServiceTaskSpecContainerSpecPrivileges =
-      module_index.ServiceTaskSpecContainerSpecPrivileges.new;
-  final ServiceTaskSpecContainerSpecPrivilegesArgs =
-      module_index.ServiceTaskSpecContainerSpecPrivileges.new;
-  final ServiceTaskSpecContainerSpecPrivilegesCredentialSpec =
-      module_index.ServiceTaskSpecContainerSpecPrivilegesCredentialSpec.new;
-  final ServiceTaskSpecContainerSpecPrivilegesCredentialSpecArgs =
-      module_index.ServiceTaskSpecContainerSpecPrivilegesCredentialSpec.new;
-  final ServiceTaskSpecContainerSpecPrivilegesSeLinuxContext =
-      module_index.ServiceTaskSpecContainerSpecPrivilegesSeLinuxContext.new;
-  final ServiceTaskSpecContainerSpecPrivilegesSeLinuxContextArgs =
-      module_index.ServiceTaskSpecContainerSpecPrivilegesSeLinuxContext.new;
-  final ServiceTaskSpecContainerSpecSecret =
-      module_index.ServiceTaskSpecContainerSpecSecret.new;
-  final ServiceTaskSpecContainerSpecSecretArgs =
-      module_index.ServiceTaskSpecContainerSpecSecret.new;
+  final ServiceTaskSpecContainerSpec = module_index.ServiceTaskSpecContainerSpec.new;
+  final ServiceTaskSpecContainerSpecArgs = module_index.ServiceTaskSpecContainerSpec.new;
+  final ServiceTaskSpecContainerSpecConfig = module_index.ServiceTaskSpecContainerSpecConfig.new;
+  final ServiceTaskSpecContainerSpecConfigArgs = module_index.ServiceTaskSpecContainerSpecConfig.new;
+  final ServiceTaskSpecContainerSpecDnsConfig = module_index.ServiceTaskSpecContainerSpecDnsConfig.new;
+  final ServiceTaskSpecContainerSpecDnsConfigArgs = module_index.ServiceTaskSpecContainerSpecDnsConfig.new;
+  final ServiceTaskSpecContainerSpecHealthcheck = module_index.ServiceTaskSpecContainerSpecHealthcheck.new;
+  final ServiceTaskSpecContainerSpecHealthcheckArgs = module_index.ServiceTaskSpecContainerSpecHealthcheck.new;
+  final ServiceTaskSpecContainerSpecHost = module_index.ServiceTaskSpecContainerSpecHost.new;
+  final ServiceTaskSpecContainerSpecHostArgs = module_index.ServiceTaskSpecContainerSpecHost.new;
+  final ServiceTaskSpecContainerSpecLabel = module_index.ServiceTaskSpecContainerSpecLabel.new;
+  final ServiceTaskSpecContainerSpecLabelArgs = module_index.ServiceTaskSpecContainerSpecLabel.new;
+  final ServiceTaskSpecContainerSpecMount = module_index.ServiceTaskSpecContainerSpecMount.new;
+  final ServiceTaskSpecContainerSpecMountArgs = module_index.ServiceTaskSpecContainerSpecMount.new;
+  final ServiceTaskSpecContainerSpecMountBindOptions = module_index.ServiceTaskSpecContainerSpecMountBindOptions.new;
+  final ServiceTaskSpecContainerSpecMountBindOptionsArgs = module_index.ServiceTaskSpecContainerSpecMountBindOptions.new;
+  final ServiceTaskSpecContainerSpecMountTmpfsOptions = module_index.ServiceTaskSpecContainerSpecMountTmpfsOptions.new;
+  final ServiceTaskSpecContainerSpecMountTmpfsOptionsArgs = module_index.ServiceTaskSpecContainerSpecMountTmpfsOptions.new;
+  final ServiceTaskSpecContainerSpecMountVolumeOptions = module_index.ServiceTaskSpecContainerSpecMountVolumeOptions.new;
+  final ServiceTaskSpecContainerSpecMountVolumeOptionsArgs = module_index.ServiceTaskSpecContainerSpecMountVolumeOptions.new;
+  final ServiceTaskSpecContainerSpecMountVolumeOptionsLabel = module_index.ServiceTaskSpecContainerSpecMountVolumeOptionsLabel.new;
+  final ServiceTaskSpecContainerSpecMountVolumeOptionsLabelArgs = module_index.ServiceTaskSpecContainerSpecMountVolumeOptionsLabel.new;
+  final ServiceTaskSpecContainerSpecPrivileges = module_index.ServiceTaskSpecContainerSpecPrivileges.new;
+  final ServiceTaskSpecContainerSpecPrivilegesArgs = module_index.ServiceTaskSpecContainerSpecPrivileges.new;
+  final ServiceTaskSpecContainerSpecPrivilegesCredentialSpec = module_index.ServiceTaskSpecContainerSpecPrivilegesCredentialSpec.new;
+  final ServiceTaskSpecContainerSpecPrivilegesCredentialSpecArgs = module_index.ServiceTaskSpecContainerSpecPrivilegesCredentialSpec.new;
+  final ServiceTaskSpecContainerSpecPrivilegesSeLinuxContext = module_index.ServiceTaskSpecContainerSpecPrivilegesSeLinuxContext.new;
+  final ServiceTaskSpecContainerSpecPrivilegesSeLinuxContextArgs = module_index.ServiceTaskSpecContainerSpecPrivilegesSeLinuxContext.new;
+  final ServiceTaskSpecContainerSpecSecret = module_index.ServiceTaskSpecContainerSpecSecret.new;
+  final ServiceTaskSpecContainerSpecSecretArgs = module_index.ServiceTaskSpecContainerSpecSecret.new;
   final ServiceTaskSpecLogDriver = module_index.ServiceTaskSpecLogDriver.new;
-  final ServiceTaskSpecLogDriverArgs =
-      module_index.ServiceTaskSpecLogDriver.new;
-  final ServiceTaskSpecNetworksAdvanced =
-      module_index.ServiceTaskSpecNetworksAdvanced.new;
-  final ServiceTaskSpecNetworksAdvancedArgs =
-      module_index.ServiceTaskSpecNetworksAdvanced.new;
+  final ServiceTaskSpecLogDriverArgs = module_index.ServiceTaskSpecLogDriver.new;
+  final ServiceTaskSpecNetworksAdvanced = module_index.ServiceTaskSpecNetworksAdvanced.new;
+  final ServiceTaskSpecNetworksAdvancedArgs = module_index.ServiceTaskSpecNetworksAdvanced.new;
   final ServiceTaskSpecPlacement = module_index.ServiceTaskSpecPlacement.new;
-  final ServiceTaskSpecPlacementArgs =
-      module_index.ServiceTaskSpecPlacement.new;
-  final ServiceTaskSpecPlacementPlatform =
-      module_index.ServiceTaskSpecPlacementPlatform.new;
-  final ServiceTaskSpecPlacementPlatformArgs =
-      module_index.ServiceTaskSpecPlacementPlatform.new;
+  final ServiceTaskSpecPlacementArgs = module_index.ServiceTaskSpecPlacement.new;
+  final ServiceTaskSpecPlacementPlatform = module_index.ServiceTaskSpecPlacementPlatform.new;
+  final ServiceTaskSpecPlacementPlatformArgs = module_index.ServiceTaskSpecPlacementPlatform.new;
   final ServiceTaskSpecResources = module_index.ServiceTaskSpecResources.new;
-  final ServiceTaskSpecResourcesArgs =
-      module_index.ServiceTaskSpecResources.new;
-  final ServiceTaskSpecResourcesLimits =
-      module_index.ServiceTaskSpecResourcesLimits.new;
-  final ServiceTaskSpecResourcesLimitsArgs =
-      module_index.ServiceTaskSpecResourcesLimits.new;
-  final ServiceTaskSpecResourcesReservation =
-      module_index.ServiceTaskSpecResourcesReservation.new;
-  final ServiceTaskSpecResourcesReservationArgs =
-      module_index.ServiceTaskSpecResourcesReservation.new;
-  final ServiceTaskSpecResourcesReservationGenericResources =
-      module_index.ServiceTaskSpecResourcesReservationGenericResources.new;
-  final ServiceTaskSpecResourcesReservationGenericResourcesArgs =
-      module_index.ServiceTaskSpecResourcesReservationGenericResources.new;
-  final ServiceTaskSpecRestartPolicy =
-      module_index.ServiceTaskSpecRestartPolicy.new;
-  final ServiceTaskSpecRestartPolicyArgs =
-      module_index.ServiceTaskSpecRestartPolicy.new;
+  final ServiceTaskSpecResourcesArgs = module_index.ServiceTaskSpecResources.new;
+  final ServiceTaskSpecResourcesLimits = module_index.ServiceTaskSpecResourcesLimits.new;
+  final ServiceTaskSpecResourcesLimitsArgs = module_index.ServiceTaskSpecResourcesLimits.new;
+  final ServiceTaskSpecResourcesReservation = module_index.ServiceTaskSpecResourcesReservation.new;
+  final ServiceTaskSpecResourcesReservationArgs = module_index.ServiceTaskSpecResourcesReservation.new;
+  final ServiceTaskSpecResourcesReservationGenericResources = module_index.ServiceTaskSpecResourcesReservationGenericResources.new;
+  final ServiceTaskSpecResourcesReservationGenericResourcesArgs = module_index.ServiceTaskSpecResourcesReservationGenericResources.new;
+  final ServiceTaskSpecRestartPolicy = module_index.ServiceTaskSpecRestartPolicy.new;
+  final ServiceTaskSpecRestartPolicyArgs = module_index.ServiceTaskSpecRestartPolicy.new;
   final ServiceUpdateConfig = module_index.ServiceUpdateConfig.new;
   final ServiceUpdateConfigArgs = module_index.ServiceUpdateConfig.new;
   final Tag = module_index.Tag.new;
@@ -316,10 +242,8 @@ class _ProvidersModuleNamespace {
   final Docker = module_providers.ProviderProvider.new;
   final DockerArgs = module_providers.ProviderArgs.new;
   final ProviderArgs = module_providers.ProviderArgs.new;
-  final ProviderTerraformConfigResult =
-      module_providers.ProviderTerraformConfigResult.new;
-  final ProviderTerraformConfigResultArgs =
-      module_providers.ProviderTerraformConfigResult.new;
+  final ProviderTerraformConfigResult = module_providers.ProviderTerraformConfigResult.new;
+  final ProviderTerraformConfigResultArgs = module_providers.ProviderTerraformConfigResult.new;
   final TerraformConfigArgs = module_providers.TerraformConfigArgs.new;
   final TerraformConfigResult = module_providers.TerraformConfigResult.new;
   final TerraformConfigResultArgs = module_providers.TerraformConfigResult.new;

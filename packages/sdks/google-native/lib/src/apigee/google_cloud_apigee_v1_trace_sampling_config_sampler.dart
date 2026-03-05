@@ -13,8 +13,7 @@ enum GoogleCloudApigeeV1TraceSamplingConfigSampler {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GoogleCloudApigeeV1TraceSamplingConfigSampler value: $value',
-    );
+    throw ArgumentError('Unknown GoogleCloudApigeeV1TraceSamplingConfigSampler value: $value');
   }
 }
+

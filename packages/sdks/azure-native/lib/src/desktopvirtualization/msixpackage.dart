@@ -285,46 +285,32 @@ import 'system_data_response.dart';
 class MSIXPackage extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// User friendly Name to be displayed in the portal.
   late final pulumi.Output<String?> displayName;
-
   /// VHD/CIM image path on Network Share.
   late final pulumi.Output<String?> imagePath;
-
   /// Make this version of the package the active one across the hostpool.
   late final pulumi.Output<bool?> isActive;
-
   /// Specifies how to register Package in feed.
   late final pulumi.Output<bool?> isRegularRegistration;
-
   /// Date Package was last updated, found in the appxmanifest.xml.
   late final pulumi.Output<String?> lastUpdated;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// List of package applications.
   late final pulumi.Output<List<Map<String, dynamic>>?> packageApplications;
-
   /// List of package dependencies.
   late final pulumi.Output<List<Map<String, dynamic>>?> packageDependencies;
-
   /// Package Family Name from appxmanifest.xml. Contains Package Name and Publisher name.
   late final pulumi.Output<String?> packageFamilyName;
-
   /// Package Name from appxmanifest.xml.
   late final pulumi.Output<String?> packageName;
-
   /// Relative Path to the package inside the image.
   late final pulumi.Output<String?> packageRelativePath;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Package version found in the appxmanifest.xml.
   late final pulumi.Output<String?> version;
 
@@ -337,11 +323,11 @@ class MSIXPackage extends pulumi.CustomResource {
     MSIXPackageArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:desktopvirtualization:MSIXPackage',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:desktopvirtualization:MSIXPackage',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     displayName = registerOutput<String?>('displayName');
     imagePath = registerOutput<String?>('imagePath');
@@ -349,25 +335,12 @@ class MSIXPackage extends pulumi.CustomResource {
     isRegularRegistration = registerOutput<bool?>('isRegularRegistration');
     lastUpdated = registerOutput<String?>('lastUpdated');
     this.name = registerOutput<String>('name');
-    packageApplications = registerOutput<List<Map<String, dynamic>>?>(
-      'packageApplications',
-    );
-    packageDependencies = registerOutput<List<Map<String, dynamic>>?>(
-      'packageDependencies',
-    );
+    packageApplications = registerOutput<List<Map<String, dynamic>>?>('packageApplications');
+    packageDependencies = registerOutput<List<Map<String, dynamic>>?>('packageDependencies');
     packageFamilyName = registerOutput<String?>('packageFamilyName');
     packageName = registerOutput<String?>('packageName');
     packageRelativePath = registerOutput<String?>('packageRelativePath');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     version = registerOutput<String?>('version');
   }

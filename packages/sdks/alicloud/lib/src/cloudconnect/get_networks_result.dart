@@ -7,14 +7,11 @@ import 'get_networks_network.dart';
 class GetNetworksResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of CCN instances IDs.
   final List<String> ids;
   final String? nameRegex;
-
   /// A list of CCN instances names.
   final List<String> names;
-
   /// A list of CCN instances. Each element contains the following attributes:
   final List<GetNetworksNetwork> networks;
   final String? outputFile;
@@ -41,11 +38,7 @@ class GetNetworksResult {
       'ids': ids,
       'nameRegex': ?nameRegex,
       'names': names,
-      'networks':
-          pulumi.Input.encodeList<GetNetworksNetwork, Map<String, dynamic>>(
-            networks,
-            (value) => value.toMap(),
-          ),
+      'networks': pulumi.Input.encodeList<GetNetworksNetwork, Map<String, dynamic>>(networks, (value) => value.toMap()),
       'outputFile': ?outputFile,
     };
   }
@@ -54,22 +47,11 @@ class GetNetworksResult {
     return GetNetworksResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      networks: pulumi.Input.decodeList<GetNetworksNetwork>(
-        map['networks']!,
-        (value) =>
-            GetNetworksNetwork.fromMap((value as Map).cast<String, dynamic>()),
-      ),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      networks: pulumi.Input.decodeList<GetNetworksNetwork>(map['networks']!, (value) => GetNetworksNetwork.fromMap((value as Map).cast<String, dynamic>())),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

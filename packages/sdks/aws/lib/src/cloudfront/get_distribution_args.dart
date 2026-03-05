@@ -14,22 +14,23 @@ class GetDistributionArgs {
   /// Creates a new [GetDistributionArgs].
   /// [id] Identifier for the distribution. For example: `EDFDVBD632BHDS5`.
   /// [tags] Optional.
-  GetDistributionArgs({required this.id, this.tags});
+  GetDistributionArgs({
+    required this.id,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id, 'tags': ?tags};
+    return <String, dynamic>{
+      'id': id,
+      'tags': ?tags,
+    };
   }
 
   factory GetDistributionArgs.fromMap(Map<String, dynamic> map) {
     return GetDistributionArgs(
       id: pulumi.Input.fromValue(map['id'] as String),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

@@ -6,22 +6,16 @@ import 'system_data_response.dart';
 class GetFirewallRuleResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// IP address defining the end of the range of addresses of a firewall rule. Must be expressed in IPv4 format.
   final String endIpAddress;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// The name of the resource
   final String name;
-
   /// IP address defining the start of the range of addresses of a firewall rule. Must be expressed in IPv4 format.
   final String startIpAddress;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -62,10 +56,9 @@ class GetFirewallRuleResult {
       id: map['id'] as String,
       name: map['name'] as String,
       startIpAddress: map['startIpAddress'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

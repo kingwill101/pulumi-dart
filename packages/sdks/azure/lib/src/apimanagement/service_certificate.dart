@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceCertificate {
   /// The password for the certificate.
   final pulumi.Input<String>? certificatePassword;
-
   /// The Base64 Encoded PFX or Base64 Encoded X.509 Certificate.
   final pulumi.Input<String> encodedCertificate;
-
   /// The expiration date of the certificate in RFC3339 format: `2000-01-02T03:04:05Z`.
   final pulumi.Input<String>? expiry;
-
   /// The name of the Certificate Store where this certificate should be stored. Possible values are `CertificateAuthority` and `Root`.
   final pulumi.Input<String> storeName;
-
   /// The subject of the certificate.
   final pulumi.Input<String>? subject;
-
   /// The thumbprint of the certificate.
   final pulumi.Input<String>? thumbprint;
 
@@ -50,30 +45,13 @@ class ServiceCertificate {
 
   factory ServiceCertificate.fromMap(Map<String, dynamic> map) {
     return ServiceCertificate(
-      certificatePassword: (() {
-        final guardedValue = map['certificatePassword'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      encodedCertificate: pulumi.Input.fromValue(
-        map['encodedCertificate'] as String,
-      ),
-      expiry: (() {
-        final guardedValue = map['expiry'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      certificatePassword: (() { final guardedValue = map['certificatePassword']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      encodedCertificate: pulumi.Input.fromValue(map['encodedCertificate'] as String),
+      expiry: (() { final guardedValue = map['expiry']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       storeName: pulumi.Input.fromValue(map['storeName'] as String),
-      subject: (() {
-        final guardedValue = map['subject'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      thumbprint: (() {
-        final guardedValue = map['thumbprint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      subject: (() { final guardedValue = map['subject']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      thumbprint: (() { final guardedValue = map['thumbprint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

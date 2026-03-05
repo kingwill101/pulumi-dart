@@ -7,54 +7,29 @@ import 'label_selector_requirement_patch.dart';
 class LabelSelectorPatch {
   /// matchExpressions is a list of label selector requirements. The requirements are ANDed.
   final pulumi.Input<List<LabelSelectorRequirementPatch>>? matchExpressions;
-
   /// matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
   final pulumi.Input<Map<String, String>>? matchLabels;
 
   /// Creates a new [LabelSelectorPatch].
   /// [matchExpressions] matchExpressions is a list of label selector requirements. The requirements are ANDed.
   /// [matchLabels] matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
-  LabelSelectorPatch({this.matchExpressions, this.matchLabels});
+  LabelSelectorPatch({
+    this.matchExpressions,
+    this.matchLabels,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'matchExpressions':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<LabelSelectorRequirementPatch>,
-            List<Map<String, dynamic>>
-          >(
-            matchExpressions,
-            (value) =>
-                pulumi.Input.encodeList<
-                  LabelSelectorRequirementPatch,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'matchExpressions': ?pulumi.Input.mapOptionalInputValue<List<LabelSelectorRequirementPatch>, List<Map<String, dynamic>>>(matchExpressions, (value) => pulumi.Input.encodeList<LabelSelectorRequirementPatch, Map<String, dynamic>>(value, (value) => value.toMap())),
       'matchLabels': ?matchLabels,
     };
   }
 
   factory LabelSelectorPatch.fromMap(Map<String, dynamic> map) {
     return LabelSelectorPatch(
-      matchExpressions: (() {
-        final guardedValue = map['matchExpressions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<LabelSelectorRequirementPatch>(
-            guardedValue,
-            (value) => LabelSelectorRequirementPatch.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      matchLabels: (() {
-        final guardedValue = map['matchLabels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      matchExpressions: (() { final guardedValue = map['matchExpressions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<LabelSelectorRequirementPatch>(guardedValue, (value) => LabelSelectorRequirementPatch.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      matchLabels: (() { final guardedValue = map['matchLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

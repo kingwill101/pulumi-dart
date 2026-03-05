@@ -424,7 +424,6 @@ import 'kubernetes_permission_state.dart';
 class KubernetesPermission extends pulumi.CustomResource {
   /// A list of user permission. See `permissions` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> permissions;
-
   /// The ID of the Ram user, and it can also be the id of the Ram Role. If you use Ram Role id, you need to set `is_ram_role` to `true` during authorization.
   late final pulumi.Output<String> uid;
 
@@ -437,11 +436,11 @@ class KubernetesPermission extends pulumi.CustomResource {
     KubernetesPermissionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cs/kubernetesPermission:KubernetesPermission',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cs/kubernetesPermission:KubernetesPermission',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     permissions = registerOutput<List<Map<String, dynamic>>?>('permissions');
     uid = registerOutput<String>('uid');
   }
@@ -464,11 +463,11 @@ class KubernetesPermission extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cs/kubernetesPermission:KubernetesPermission',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cs/kubernetesPermission:KubernetesPermission',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     permissions = registerOutput<List<Map<String, dynamic>>?>('permissions');
     uid = registerOutput<String>('uid');
   }

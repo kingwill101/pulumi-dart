@@ -9,19 +9,20 @@ class Ipv4PrefixSpecificationResponse {
 
   /// Creates a new [Ipv4PrefixSpecificationResponse].
   /// [ipv4Prefix] Property ipv4Prefix
-  Ipv4PrefixSpecificationResponse({this.ipv4Prefix});
+  Ipv4PrefixSpecificationResponse({
+    this.ipv4Prefix,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'ipv4Prefix': ?ipv4Prefix};
+    return <String, dynamic>{
+      'ipv4Prefix': ?ipv4Prefix,
+    };
   }
 
   factory Ipv4PrefixSpecificationResponse.fromMap(Map<String, dynamic> map) {
     return Ipv4PrefixSpecificationResponse(
-      ipv4Prefix: (() {
-        final guardedValue = map['ipv4Prefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ipv4Prefix: (() { final guardedValue = map['ipv4Prefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

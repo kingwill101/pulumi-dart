@@ -11,60 +11,43 @@ class AiFeatureOnlineStoreState {
   /// Settings for Cloud Bigtable instance that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore.
   /// Structure is documented below.
   final pulumi.Input<AiFeatureOnlineStoreBigtable>? bigtable;
-
   /// The timestamp of when the feature online store was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   final pulumi.Input<String>? createTime;
-
   /// The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to be set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
   /// Structure is documented below.
-  final pulumi.Input<AiFeatureOnlineStoreDedicatedServingEndpoint>?
-  dedicatedServingEndpoint;
-
+  final pulumi.Input<AiFeatureOnlineStoreDedicatedServingEndpoint>? dedicatedServingEndpoint;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
-
   /// The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
   /// Structure is documented below.
   ///
   /// &gt; **Warning:** `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
-  final pulumi.Input<AiFeatureOnlineStoreEmbeddingManagement>?
-  embeddingManagement;
-
+  final pulumi.Input<AiFeatureOnlineStoreEmbeddingManagement>? embeddingManagement;
   /// If set, both of the online and offline data storage will be secured by this key.
   /// Structure is documented below.
   final pulumi.Input<AiFeatureOnlineStoreEncryptionSpec>? encryptionSpec;
-
   /// Used to perform consistent read-modify-write updates.
   final pulumi.Input<String>? etag;
-
   /// If set to true, any FeatureViews and Features for this FeatureOnlineStore will also be deleted.
   final pulumi.Input<bool>? forceDestroy;
-
   /// The labels with user-defined metadata to organize your feature online stores.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// The resource name of the Feature Online Store. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
   final pulumi.Input<String>? name;
-
   /// Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
   final pulumi.Input<Map<String, dynamic>>? optimized;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   final pulumi.Input<Map<String, String>>? pulumiLabels;
-
   /// The region of feature online store. eg us-central1
   final pulumi.Input<String>? region;
-
   /// The state of the Feature Online Store. See the possible states in [this link](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featureOnlineStores#state).
   final pulumi.Input<String>? state;
-
   /// The timestamp of when the feature online store was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   final pulumi.Input<String>? updateTime;
 
@@ -106,28 +89,12 @@ class AiFeatureOnlineStoreState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bigtable':
-          ?pulumi.Input.mapOptionalInputValue<
-            AiFeatureOnlineStoreBigtable,
-            Map<String, dynamic>
-          >(bigtable, (value) => value.toMap()),
+      'bigtable': ?pulumi.Input.mapOptionalInputValue<AiFeatureOnlineStoreBigtable, Map<String, dynamic>>(bigtable, (value) => value.toMap()),
       'createTime': ?createTime,
-      'dedicatedServingEndpoint':
-          ?pulumi.Input.mapOptionalInputValue<
-            AiFeatureOnlineStoreDedicatedServingEndpoint,
-            Map<String, dynamic>
-          >(dedicatedServingEndpoint, (value) => value.toMap()),
+      'dedicatedServingEndpoint': ?pulumi.Input.mapOptionalInputValue<AiFeatureOnlineStoreDedicatedServingEndpoint, Map<String, dynamic>>(dedicatedServingEndpoint, (value) => value.toMap()),
       'effectiveLabels': ?effectiveLabels,
-      'embeddingManagement':
-          ?pulumi.Input.mapOptionalInputValue<
-            AiFeatureOnlineStoreEmbeddingManagement,
-            Map<String, dynamic>
-          >(embeddingManagement, (value) => value.toMap()),
-      'encryptionSpec':
-          ?pulumi.Input.mapOptionalInputValue<
-            AiFeatureOnlineStoreEncryptionSpec,
-            Map<String, dynamic>
-          >(encryptionSpec, (value) => value.toMap()),
+      'embeddingManagement': ?pulumi.Input.mapOptionalInputValue<AiFeatureOnlineStoreEmbeddingManagement, Map<String, dynamic>>(embeddingManagement, (value) => value.toMap()),
+      'encryptionSpec': ?pulumi.Input.mapOptionalInputValue<AiFeatureOnlineStoreEncryptionSpec, Map<String, dynamic>>(encryptionSpec, (value) => value.toMap()),
       'etag': ?etag,
       'forceDestroy': ?forceDestroy,
       'labels': ?labels,
@@ -143,110 +110,23 @@ class AiFeatureOnlineStoreState {
 
   factory AiFeatureOnlineStoreState.fromMap(Map<String, dynamic> map) {
     return AiFeatureOnlineStoreState(
-      bigtable: (() {
-        final guardedValue = map['bigtable'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AiFeatureOnlineStoreBigtable.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dedicatedServingEndpoint: (() {
-        final guardedValue = map['dedicatedServingEndpoint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AiFeatureOnlineStoreDedicatedServingEndpoint.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      effectiveLabels: (() {
-        final guardedValue = map['effectiveLabels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      embeddingManagement: (() {
-        final guardedValue = map['embeddingManagement'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AiFeatureOnlineStoreEmbeddingManagement.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      encryptionSpec: (() {
-        final guardedValue = map['encryptionSpec'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AiFeatureOnlineStoreEncryptionSpec.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      etag: (() {
-        final guardedValue = map['etag'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      forceDestroy: (() {
-        final guardedValue = map['forceDestroy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      optimized: (() {
-        final guardedValue = map['optimized'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pulumiLabels: (() {
-        final guardedValue = map['pulumiLabels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      updateTime: (() {
-        final guardedValue = map['updateTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      bigtable: (() { final guardedValue = map['bigtable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AiFeatureOnlineStoreBigtable.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dedicatedServingEndpoint: (() { final guardedValue = map['dedicatedServingEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AiFeatureOnlineStoreDedicatedServingEndpoint.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      embeddingManagement: (() { final guardedValue = map['embeddingManagement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AiFeatureOnlineStoreEmbeddingManagement.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      encryptionSpec: (() { final guardedValue = map['encryptionSpec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AiFeatureOnlineStoreEncryptionSpec.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      forceDestroy: (() { final guardedValue = map['forceDestroy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      optimized: (() { final guardedValue = map['optimized']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

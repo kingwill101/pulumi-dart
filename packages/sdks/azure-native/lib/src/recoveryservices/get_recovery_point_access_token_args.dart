@@ -10,31 +10,22 @@ import 'aadproperties.dart';
 class GetRecoveryPointAccessTokenArgs {
   /// Name of the container.
   final pulumi.Input<String> containerName;
-
   /// Optional ETag.
   final pulumi.Input<String>? eTag;
-
   /// Fabric name associated with the container.
   final pulumi.Input<String> fabricName;
-
   /// Resource location.
   final pulumi.Input<String>? location;
-
   /// AADPropertiesResource properties
   final pulumi.Input<AADProperties>? properties;
-
   /// Name of the Protected Item.
   final pulumi.Input<String> protectedItemName;
-
   /// Recovery Point Id
   final pulumi.Input<String> recoveryPointId;
-
   /// The name of the resource group where the recovery services vault is present.
   final pulumi.Input<String> resourceGroupName;
-
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// The name of the recovery services vault.
   final pulumi.Input<String> vaultName;
 
@@ -68,11 +59,7 @@ class GetRecoveryPointAccessTokenArgs {
       'eTag': ?eTag,
       'fabricName': fabricName,
       'location': ?location,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            AADProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<AADProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'protectedItemName': protectedItemName,
       'recoveryPointId': recoveryPointId,
       'resourceGroupName': resourceGroupName,
@@ -84,39 +71,16 @@ class GetRecoveryPointAccessTokenArgs {
   factory GetRecoveryPointAccessTokenArgs.fromMap(Map<String, dynamic> map) {
     return GetRecoveryPointAccessTokenArgs(
       containerName: pulumi.Input.fromValue(map['containerName'] as String),
-      eTag: (() {
-        final guardedValue = map['eTag'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      eTag: (() { final guardedValue = map['eTag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       fabricName: pulumi.Input.fromValue(map['fabricName'] as String),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AADProperties.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      protectedItemName: pulumi.Input.fromValue(
-        map['protectedItemName'] as String,
-      ),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AADProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      protectedItemName: pulumi.Input.fromValue(map['protectedItemName'] as String),
       recoveryPointId: pulumi.Input.fromValue(map['recoveryPointId'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       vaultName: pulumi.Input.fromValue(map['vaultName'] as String),
     );
   }
 }
+

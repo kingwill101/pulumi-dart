@@ -10,47 +10,33 @@ import 'web_activity_authentication_response.dart';
 class WebHookActivityResponse {
   /// Authentication method used for calling the endpoint.
   final pulumi.Input<WebActivityAuthenticationResponse>? authentication;
-
   /// Represents the payload that will be sent to the endpoint. Required for POST/PUT method, not allowed for GET method Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? body;
-
   /// Activity depends on condition.
   final pulumi.Input<List<ActivityDependencyResponse>>? dependsOn;
-
   /// Activity description.
   final pulumi.Input<String>? description;
-
   /// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
   final pulumi.Input<Map<String, dynamic>>? headers;
-
   /// Rest API method for target endpoint.
   final pulumi.Input<String> method;
-
   /// Activity name.
   final pulumi.Input<String> name;
-
   /// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
   final pulumi.Input<String>? onInactiveMarkAs;
-
   /// Activity policy.
   final pulumi.Input<SecureInputOutputPolicyResponse>? policy;
-
   /// When set to true, statusCode, output and error in callback request body will be consumed by activity. The activity can be marked as failed by setting statusCode &gt;= 400 in callback request. Default is false. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? reportStatusOnCallBack;
-
   /// Activity state. This is an optional property and if not provided, the state will be Active by default.
   final pulumi.Input<String>? state;
-
   /// The timeout within which the webhook should be called back. If there is no value specified, it defaults to 10 minutes. Type: string. Pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
   final pulumi.Input<String>? timeout;
-
   /// Type of activity.
   /// Expected value is 'WebHook'.
   final pulumi.Input<String> type;
-
   /// WebHook activity target endpoint and path. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> url;
-
   /// Activity user properties.
   final pulumi.Input<List<UserPropertyResponse>>? userProperties;
 
@@ -90,139 +76,42 @@ class WebHookActivityResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authentication':
-          ?pulumi.Input.mapOptionalInputValue<
-            WebActivityAuthenticationResponse,
-            Map<String, dynamic>
-          >(authentication, (value) => value.toMap()),
+      'authentication': ?pulumi.Input.mapOptionalInputValue<WebActivityAuthenticationResponse, Map<String, dynamic>>(authentication, (value) => value.toMap()),
       'body': ?body,
-      'dependsOn':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ActivityDependencyResponse>,
-            List<Map<String, dynamic>>
-          >(
-            dependsOn,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ActivityDependencyResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'dependsOn': ?pulumi.Input.mapOptionalInputValue<List<ActivityDependencyResponse>, List<Map<String, dynamic>>>(dependsOn, (value) => pulumi.Input.encodeList<ActivityDependencyResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'description': ?description,
       'headers': ?headers,
       'method': method,
       'name': name,
       'onInactiveMarkAs': ?onInactiveMarkAs,
-      'policy':
-          ?pulumi.Input.mapOptionalInputValue<
-            SecureInputOutputPolicyResponse,
-            Map<String, dynamic>
-          >(policy, (value) => value.toMap()),
+      'policy': ?pulumi.Input.mapOptionalInputValue<SecureInputOutputPolicyResponse, Map<String, dynamic>>(policy, (value) => value.toMap()),
       'reportStatusOnCallBack': ?reportStatusOnCallBack,
       'state': ?state,
       'timeout': ?timeout,
       'type': type,
       'url': url,
-      'userProperties':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<UserPropertyResponse>,
-            List<Map<String, dynamic>>
-          >(
-            userProperties,
-            (value) =>
-                pulumi.Input.encodeList<
-                  UserPropertyResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'userProperties': ?pulumi.Input.mapOptionalInputValue<List<UserPropertyResponse>, List<Map<String, dynamic>>>(userProperties, (value) => pulumi.Input.encodeList<UserPropertyResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory WebHookActivityResponse.fromMap(Map<String, dynamic> map) {
     return WebHookActivityResponse(
-      authentication: (() {
-        final guardedValue = map['authentication'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          WebActivityAuthenticationResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      body: (() {
-        final guardedValue = map['body'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      dependsOn: (() {
-        final guardedValue = map['dependsOn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ActivityDependencyResponse>(
-            guardedValue,
-            (value) => ActivityDependencyResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      headers: (() {
-        final guardedValue = map['headers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      authentication: (() { final guardedValue = map['authentication']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WebActivityAuthenticationResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      body: (() { final guardedValue = map['body']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      dependsOn: (() { final guardedValue = map['dependsOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ActivityDependencyResponse>(guardedValue, (value) => ActivityDependencyResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      headers: (() { final guardedValue = map['headers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
       method: pulumi.Input.fromValue(map['method'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      onInactiveMarkAs: (() {
-        final guardedValue = map['onInactiveMarkAs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      policy: (() {
-        final guardedValue = map['policy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SecureInputOutputPolicyResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      reportStatusOnCallBack: (() {
-        final guardedValue = map['reportStatusOnCallBack'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      timeout: (() {
-        final guardedValue = map['timeout'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      onInactiveMarkAs: (() { final guardedValue = map['onInactiveMarkAs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      policy: (() { final guardedValue = map['policy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SecureInputOutputPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      reportStatusOnCallBack: (() { final guardedValue = map['reportStatusOnCallBack']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
       url: pulumi.Input.fromValue(map['url']),
-      userProperties: (() {
-        final guardedValue = map['userProperties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<UserPropertyResponse>(
-            guardedValue,
-            (value) => UserPropertyResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      userProperties: (() { final guardedValue = map['userProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<UserPropertyResponse>(guardedValue, (value) => UserPropertyResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

@@ -10,35 +10,20 @@ class AuthorizationConfigResponse {
 
   /// Creates a new [AuthorizationConfigResponse].
   /// [policies] List of RbacPolicies.
-  AuthorizationConfigResponse({required this.policies});
+  AuthorizationConfigResponse({
+    required this.policies,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'policies':
-          pulumi.Input.mapInputValue<
-            List<RbacPolicyResponse>,
-            List<Map<String, dynamic>>
-          >(
-            policies,
-            (value) =>
-                pulumi.Input.encodeList<
-                  RbacPolicyResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'policies': pulumi.Input.mapInputValue<List<RbacPolicyResponse>, List<Map<String, dynamic>>>(policies, (value) => pulumi.Input.encodeList<RbacPolicyResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AuthorizationConfigResponse.fromMap(Map<String, dynamic> map) {
     return AuthorizationConfigResponse(
-      policies: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<RbacPolicyResponse>(
-          map['policies']!,
-          (value) => RbacPolicyResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      policies: pulumi.Input.fromValue(pulumi.Input.decodeList<RbacPolicyResponse>(map['policies']!, (value) => RbacPolicyResponse.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

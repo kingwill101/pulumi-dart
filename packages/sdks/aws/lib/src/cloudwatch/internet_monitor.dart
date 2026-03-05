@@ -103,38 +103,26 @@ import 'internet_monitor_state.dart';
 class InternetMonitor extends pulumi.CustomResource {
   /// ARN of the Monitor.
   late final pulumi.Output<String> arn;
-
   /// Health event thresholds. A health event threshold percentage, for performance and availability, determines when Internet Monitor creates a health event when there's an internet issue that affects your application end users. See Health Events Config below.
-  late final pulumi.Output<InternetMonitorHealthEventsConfig?>
-  healthEventsConfig;
-
+  late final pulumi.Output<InternetMonitorHealthEventsConfig?> healthEventsConfig;
   /// Publish internet measurements for Internet Monitor to an Amazon S3 bucket in addition to CloudWatch Logs.
-  late final pulumi.Output<InternetMonitorInternetMeasurementsLogDelivery?>
-  internetMeasurementsLogDelivery;
-
+  late final pulumi.Output<InternetMonitorInternetMeasurementsLogDelivery?> internetMeasurementsLogDelivery;
   /// The maximum number of city-networks to monitor for your resources. A city-network is the location (city) where clients access your application resources from and the network or ASN, such as an internet service provider (ISP), that clients access the resources through. This limit helps control billing costs.
   late final pulumi.Output<int?> maxCityNetworksToMonitor;
-
   /// The name of the monitor.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> monitorName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The resources to include in a monitor, which you provide as a set of Amazon Resource Names (ARNs).
   late final pulumi.Output<List<String>?> resources;
-
   /// The status for a monitor. The accepted values for Status with the UpdateMonitor API call are the following: `ACTIVE` and `INACTIVE`.
   late final pulumi.Output<String?> status;
-
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// The percentage of the internet-facing traffic for your application that you want to monitor with this monitor.
   late final pulumi.Output<int?> trafficPercentageToMonitor;
 
@@ -147,33 +135,14 @@ class InternetMonitor extends pulumi.CustomResource {
     InternetMonitorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cloudwatch/internetMonitor:InternetMonitor',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cloudwatch/internetMonitor:InternetMonitor',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    healthEventsConfig = registerOutput<InternetMonitorHealthEventsConfig?>(
-      'healthEventsConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InternetMonitorHealthEventsConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    internetMeasurementsLogDelivery =
-        registerOutput<InternetMonitorInternetMeasurementsLogDelivery?>(
-          'internetMeasurementsLogDelivery',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return InternetMonitorInternetMeasurementsLogDelivery.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    healthEventsConfig = registerOutput<InternetMonitorHealthEventsConfig?>('healthEventsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InternetMonitorHealthEventsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    internetMeasurementsLogDelivery = registerOutput<InternetMonitorInternetMeasurementsLogDelivery?>('internetMeasurementsLogDelivery', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InternetMonitorInternetMeasurementsLogDelivery.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     maxCityNetworksToMonitor = registerOutput<int?>('maxCityNetworksToMonitor');
     monitorName = registerOutput<String>('monitorName');
     region = registerOutput<String>('region');
@@ -181,9 +150,7 @@ class InternetMonitor extends pulumi.CustomResource {
     status = registerOutput<String?>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    trafficPercentageToMonitor = registerOutput<int?>(
-      'trafficPercentageToMonitor',
-    );
+    trafficPercentageToMonitor = registerOutput<int?>('trafficPercentageToMonitor');
   }
 
   /// Gets an existing [InternetMonitor] resource's state with the given [name] and [id].
@@ -204,33 +171,14 @@ class InternetMonitor extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cloudwatch/internetMonitor:InternetMonitor',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cloudwatch/internetMonitor:InternetMonitor',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    healthEventsConfig = registerOutput<InternetMonitorHealthEventsConfig?>(
-      'healthEventsConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InternetMonitorHealthEventsConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    internetMeasurementsLogDelivery =
-        registerOutput<InternetMonitorInternetMeasurementsLogDelivery?>(
-          'internetMeasurementsLogDelivery',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return InternetMonitorInternetMeasurementsLogDelivery.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    healthEventsConfig = registerOutput<InternetMonitorHealthEventsConfig?>('healthEventsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InternetMonitorHealthEventsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    internetMeasurementsLogDelivery = registerOutput<InternetMonitorInternetMeasurementsLogDelivery?>('internetMeasurementsLogDelivery', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InternetMonitorInternetMeasurementsLogDelivery.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     maxCityNetworksToMonitor = registerOutput<int?>('maxCityNetworksToMonitor');
     monitorName = registerOutput<String>('monitorName');
     region = registerOutput<String>('region');
@@ -238,8 +186,6 @@ class InternetMonitor extends pulumi.CustomResource {
     status = registerOutput<String?>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    trafficPercentageToMonitor = registerOutput<int?>(
-      'trafficPercentageToMonitor',
-    );
+    trafficPercentageToMonitor = registerOutput<int?>('trafficPercentageToMonitor');
   }
 }

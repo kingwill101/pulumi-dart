@@ -32,14 +32,9 @@ class GetChannelPartnerLinkArgs {
   factory GetChannelPartnerLinkArgs.fromMap(Map<String, dynamic> map) {
     return GetChannelPartnerLinkArgs(
       accountId: pulumi.Input.fromValue(map['accountId'] as String),
-      channelPartnerLinkId: pulumi.Input.fromValue(
-        map['channelPartnerLinkId'] as String,
-      ),
-      view: (() {
-        final guardedValue = map['view'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      channelPartnerLinkId: pulumi.Input.fromValue(map['channelPartnerLinkId'] as String),
+      view: (() { final guardedValue = map['view']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

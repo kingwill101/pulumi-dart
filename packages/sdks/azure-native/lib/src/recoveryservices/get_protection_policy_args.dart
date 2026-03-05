@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetProtectionPolicyArgs {
   /// Backup policy information to be fetched.
   final pulumi.Input<String> policyName;
-
   /// The name of the resource group where the recovery services vault is present.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the recovery services vault.
   final pulumi.Input<String> vaultName;
 
@@ -37,10 +35,9 @@ class GetProtectionPolicyArgs {
   factory GetProtectionPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetProtectionPolicyArgs(
       policyName: pulumi.Input.fromValue(map['policyName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       vaultName: pulumi.Input.fromValue(map['vaultName'] as String),
     );
   }
 }
+

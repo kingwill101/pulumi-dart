@@ -9,10 +9,14 @@ class ReleaseReadyConditionResponse {
 
   /// Creates a new [ReleaseReadyConditionResponse].
   /// [status] True if the Release is in a valid state. Otherwise at least one condition in `ReleaseCondition` is in an invalid state. Iterate over those conditions and see which condition(s) has status = false to find out what is wrong with the Release.
-  ReleaseReadyConditionResponse({required this.status});
+  ReleaseReadyConditionResponse({
+    required this.status,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'status': status};
+    return <String, dynamic>{
+      'status': status,
+    };
   }
 
   factory ReleaseReadyConditionResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class ReleaseReadyConditionResponse {
     );
   }
 }
+

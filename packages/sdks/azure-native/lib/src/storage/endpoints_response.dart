@@ -8,27 +8,18 @@ import 'storage_account_microsoft_endpoints_response.dart';
 class EndpointsResponse {
   /// Gets the blob endpoint.
   final pulumi.Input<String> blob;
-
   /// Gets the dfs endpoint.
   final pulumi.Input<String> dfs;
-
   /// Gets the file endpoint.
   final pulumi.Input<String> file;
-
   /// Gets the internet routing storage endpoints
-  final pulumi.Input<StorageAccountInternetEndpointsResponse>?
-  internetEndpoints;
-
+  final pulumi.Input<StorageAccountInternetEndpointsResponse>? internetEndpoints;
   /// Gets the microsoft routing storage endpoints.
-  final pulumi.Input<StorageAccountMicrosoftEndpointsResponse>?
-  microsoftEndpoints;
-
+  final pulumi.Input<StorageAccountMicrosoftEndpointsResponse>? microsoftEndpoints;
   /// Gets the queue endpoint.
   final pulumi.Input<String> queue;
-
   /// Gets the table endpoint.
   final pulumi.Input<String> table;
-
   /// Gets the web endpoint.
   final pulumi.Input<String> web;
 
@@ -57,16 +48,8 @@ class EndpointsResponse {
       'blob': blob,
       'dfs': dfs,
       'file': file,
-      'internetEndpoints':
-          ?pulumi.Input.mapOptionalInputValue<
-            StorageAccountInternetEndpointsResponse,
-            Map<String, dynamic>
-          >(internetEndpoints, (value) => value.toMap()),
-      'microsoftEndpoints':
-          ?pulumi.Input.mapOptionalInputValue<
-            StorageAccountMicrosoftEndpointsResponse,
-            Map<String, dynamic>
-          >(microsoftEndpoints, (value) => value.toMap()),
+      'internetEndpoints': ?pulumi.Input.mapOptionalInputValue<StorageAccountInternetEndpointsResponse, Map<String, dynamic>>(internetEndpoints, (value) => value.toMap()),
+      'microsoftEndpoints': ?pulumi.Input.mapOptionalInputValue<StorageAccountMicrosoftEndpointsResponse, Map<String, dynamic>>(microsoftEndpoints, (value) => value.toMap()),
       'queue': queue,
       'table': table,
       'web': web,
@@ -78,27 +61,12 @@ class EndpointsResponse {
       blob: pulumi.Input.fromValue(map['blob'] as String),
       dfs: pulumi.Input.fromValue(map['dfs'] as String),
       file: pulumi.Input.fromValue(map['file'] as String),
-      internetEndpoints: (() {
-        final guardedValue = map['internetEndpoints'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          StorageAccountInternetEndpointsResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      microsoftEndpoints: (() {
-        final guardedValue = map['microsoftEndpoints'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          StorageAccountMicrosoftEndpointsResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      internetEndpoints: (() { final guardedValue = map['internetEndpoints']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StorageAccountInternetEndpointsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      microsoftEndpoints: (() { final guardedValue = map['microsoftEndpoints']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StorageAccountMicrosoftEndpointsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       queue: pulumi.Input.fromValue(map['queue'] as String),
       table: pulumi.Input.fromValue(map['table'] as String),
       web: pulumi.Input.fromValue(map['web'] as String),
     );
   }
 }
+

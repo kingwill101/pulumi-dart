@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetHoneypotPresetsPresetMeta {
   /// Burp counter.
   final pulumi.Input<String> burp;
-
   /// Social traceability.
   final pulumi.Input<bool> portraitOption;
-
   /// Git countered.
   final pulumi.Input<String> trojanGit;
 
@@ -38,3 +36,4 @@ class GetHoneypotPresetsPresetMeta {
     );
   }
 }
+

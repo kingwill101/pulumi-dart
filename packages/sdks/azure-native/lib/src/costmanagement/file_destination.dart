@@ -9,19 +9,20 @@ class FileDestination {
 
   /// Creates a new [FileDestination].
   /// [fileFormats] Destination of the view data. Currently only CSV format is supported.
-  FileDestination({this.fileFormats});
+  FileDestination({
+    this.fileFormats,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'fileFormats': ?fileFormats};
+    return <String, dynamic>{
+      'fileFormats': ?fileFormats,
+    };
   }
 
   factory FileDestination.fromMap(Map<String, dynamic> map) {
     return FileDestination(
-      fileFormats: (() {
-        final guardedValue = map['fileFormats'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      fileFormats: (() { final guardedValue = map['fileFormats']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

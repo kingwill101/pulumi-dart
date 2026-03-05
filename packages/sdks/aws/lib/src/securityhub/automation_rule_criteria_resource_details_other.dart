@@ -4,7 +4,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AutomationRuleCriteriaResourceDetailsOther {
   final pulumi.Input<String> comparison;
-
   /// The key of the map filter.
   final pulumi.Input<String> key;
   final pulumi.Input<String> value;
@@ -27,9 +26,7 @@ class AutomationRuleCriteriaResourceDetailsOther {
     };
   }
 
-  factory AutomationRuleCriteriaResourceDetailsOther.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AutomationRuleCriteriaResourceDetailsOther.fromMap(Map<String, dynamic> map) {
     return AutomationRuleCriteriaResourceDetailsOther(
       comparison: pulumi.Input.fromValue(map['comparison'] as String),
       key: pulumi.Input.fromValue(map['key'] as String),
@@ -37,3 +34,4 @@ class AutomationRuleCriteriaResourceDetailsOther {
     );
   }
 }
+

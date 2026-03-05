@@ -8,10 +8,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_cloudngfw_get_post_rule_counters_args_doc}
 class GetPostRuleCountersArgs {
   final pulumi.Input<String>? firewallName;
-
   /// GlobalRulestack resource name
   final pulumi.Input<String> globalRulestackName;
-
   /// Post Rule priority
   final pulumi.Input<String> priority;
 
@@ -35,15 +33,10 @@ class GetPostRuleCountersArgs {
 
   factory GetPostRuleCountersArgs.fromMap(Map<String, dynamic> map) {
     return GetPostRuleCountersArgs(
-      firewallName: (() {
-        final guardedValue = map['firewallName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      globalRulestackName: pulumi.Input.fromValue(
-        map['globalRulestackName'] as String,
-      ),
+      firewallName: (() { final guardedValue = map['firewallName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      globalRulestackName: pulumi.Input.fromValue(map['globalRulestackName'] as String),
       priority: pulumi.Input.fromValue(map['priority'] as String),
     );
   }
 }
+

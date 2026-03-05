@@ -12,10 +12,8 @@ class GetDropletsArgs {
   /// Filter the results.
   /// The `filter` block is documented below.
   final pulumi.Input<List<GetDropletsFilter>>? filters;
-
   /// A boolean value specifying whether or not to list GPU Droplets
   final pulumi.Input<bool>? gpus;
-
   /// Sort the results.
   /// The `sort` block is documented below.
   final pulumi.Input<List<GetDropletsSort>>? sorts;
@@ -24,68 +22,26 @@ class GetDropletsArgs {
   /// [filters] Filter the results.
   /// [gpus] A boolean value specifying whether or not to list GPU Droplets
   /// [sorts] Sort the results.
-  GetDropletsArgs({this.filters, this.gpus, this.sorts});
+  GetDropletsArgs({
+    this.filters,
+    this.gpus,
+    this.sorts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GetDropletsFilter>,
-            List<Map<String, dynamic>>
-          >(
-            filters,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetDropletsFilter,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetDropletsFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetDropletsFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
       'gpus': ?gpus,
-      'sorts':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GetDropletsSort>,
-            List<Map<String, dynamic>>
-          >(
-            sorts,
-            (value) =>
-                pulumi.Input.encodeList<GetDropletsSort, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'sorts': ?pulumi.Input.mapOptionalInputValue<List<GetDropletsSort>, List<Map<String, dynamic>>>(sorts, (value) => pulumi.Input.encodeList<GetDropletsSort, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetDropletsArgs.fromMap(Map<String, dynamic> map) {
     return GetDropletsArgs(
-      filters: (() {
-        final guardedValue = map['filters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GetDropletsFilter>(
-            guardedValue,
-            (value) => GetDropletsFilter.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      gpus: (() {
-        final guardedValue = map['gpus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      sorts: (() {
-        final guardedValue = map['sorts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GetDropletsSort>(
-            guardedValue,
-            (value) =>
-                GetDropletsSort.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetDropletsFilter>(guardedValue, (value) => GetDropletsFilter.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      gpus: (() { final guardedValue = map['gpus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      sorts: (() { final guardedValue = map['sorts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetDropletsSort>(guardedValue, (value) => GetDropletsSort.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

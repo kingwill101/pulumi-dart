@@ -10,35 +10,20 @@ class DiscoveredOutboundEndpoints {
 
   /// Creates a new [DiscoveredOutboundEndpoints].
   /// [assigned] Endpoints the device can connect to.
-  DiscoveredOutboundEndpoints({required this.assigned});
+  DiscoveredOutboundEndpoints({
+    required this.assigned,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'assigned':
-          pulumi.Input.mapInputValue<
-            Map<String, DeviceMessagingEndpoint>,
-            Map<String, Map<String, dynamic>>
-          >(
-            assigned,
-            (value) =>
-                pulumi.Input.encodeMapValues<
-                  DeviceMessagingEndpoint,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'assigned': pulumi.Input.mapInputValue<Map<String, DeviceMessagingEndpoint>, Map<String, Map<String, dynamic>>>(assigned, (value) => pulumi.Input.encodeMapValues<DeviceMessagingEndpoint, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DiscoveredOutboundEndpoints.fromMap(Map<String, dynamic> map) {
     return DiscoveredOutboundEndpoints(
-      assigned: pulumi.Input.fromValue(
-        pulumi.Input.decodeMapValues<DeviceMessagingEndpoint>(
-          map['assigned']!,
-          (value) => DeviceMessagingEndpoint.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      assigned: pulumi.Input.fromValue(pulumi.Input.decodeMapValues<DeviceMessagingEndpoint>(map['assigned']!, (value) => DeviceMessagingEndpoint.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

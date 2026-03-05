@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApiImportWsdlSelector {
   /// The name of endpoint (port) to import from WSDL.
   final pulumi.Input<String> endpointName;
-
   /// The name of service to import from WSDL.
   final pulumi.Input<String> serviceName;
 
@@ -31,3 +30,4 @@ class ApiImportWsdlSelector {
     );
   }
 }
+

@@ -12,8 +12,7 @@ enum DeploymentStacksDeleteDetachEnum {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown DeploymentStacksDeleteDetachEnum value: $value',
-    );
+    throw ArgumentError('Unknown DeploymentStacksDeleteDetachEnum value: $value');
   }
 }
+

@@ -19,7 +19,10 @@ class GetProviderNoteIamPolicyArgs {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'noteId': noteId, 'providerId': providerId};
+    return <String, dynamic>{
+      'noteId': noteId,
+      'providerId': providerId,
+    };
   }
 
   factory GetProviderNoteIamPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -29,3 +32,4 @@ class GetProviderNoteIamPolicyArgs {
     );
   }
 }
+

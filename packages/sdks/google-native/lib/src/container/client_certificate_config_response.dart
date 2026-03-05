@@ -9,17 +9,20 @@ class ClientCertificateConfigResponse {
 
   /// Creates a new [ClientCertificateConfigResponse].
   /// [issueClientCertificate] Issue a client certificate.
-  ClientCertificateConfigResponse({required this.issueClientCertificate});
+  ClientCertificateConfigResponse({
+    required this.issueClientCertificate,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'issueClientCertificate': issueClientCertificate};
+    return <String, dynamic>{
+      'issueClientCertificate': issueClientCertificate,
+    };
   }
 
   factory ClientCertificateConfigResponse.fromMap(Map<String, dynamic> map) {
     return ClientCertificateConfigResponse(
-      issueClientCertificate: pulumi.Input.fromValue(
-        map['issueClientCertificate'] as bool,
-      ),
+      issueClientCertificate: pulumi.Input.fromValue(map['issueClientCertificate'] as bool),
     );
   }
 }
+

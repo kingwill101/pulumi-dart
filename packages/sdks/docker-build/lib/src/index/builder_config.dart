@@ -13,19 +13,20 @@ class BuilderConfig {
 
   /// Creates a new [BuilderConfig].
   /// [name] Name of an existing buildx builder to use.
-  BuilderConfig({this.name});
+  BuilderConfig({
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name};
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
   factory BuilderConfig.fromMap(Map<String, dynamic> map) {
     return BuilderConfig(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

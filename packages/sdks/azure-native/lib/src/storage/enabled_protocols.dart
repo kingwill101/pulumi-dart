@@ -15,3 +15,4 @@ enum EnabledProtocols {
     throw ArgumentError('Unknown EnabledProtocols value: $value');
   }
 }
+

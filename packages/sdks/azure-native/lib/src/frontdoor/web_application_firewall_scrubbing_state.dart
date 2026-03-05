@@ -12,8 +12,7 @@ enum WebApplicationFirewallScrubbingState {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown WebApplicationFirewallScrubbingState value: $value',
-    );
+    throw ArgumentError('Unknown WebApplicationFirewallScrubbingState value: $value');
   }
 }
+

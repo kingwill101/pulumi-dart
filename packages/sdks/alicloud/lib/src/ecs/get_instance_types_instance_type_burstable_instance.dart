@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceTypesInstanceTypeBurstableInstance {
   /// The compute performance benchmark CPU credit of a burstable instance.
   final pulumi.Input<String> baselineCredit;
-
   /// The initial CPU credit of a burstable instance.
   final pulumi.Input<String> initialCredit;
 
@@ -24,12 +23,11 @@ class GetInstanceTypesInstanceTypeBurstableInstance {
     };
   }
 
-  factory GetInstanceTypesInstanceTypeBurstableInstance.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetInstanceTypesInstanceTypeBurstableInstance.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypesInstanceTypeBurstableInstance(
       baselineCredit: pulumi.Input.fromValue(map['baselineCredit'] as String),
       initialCredit: pulumi.Input.fromValue(map['initialCredit'] as String),
     );
   }
 }
+

@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TaskProperties {
   /// Task Description
   final pulumi.Input<String>? description;
-
   /// Task Dislay Name
   final pulumi.Input<String> displayName;
-
   /// Task Scope
   final pulumi.Input<String> scope;
-
   /// associated Wave Id
   final pulumi.Input<String> scopeId;
-
   /// Task Stage
   final pulumi.Input<String>? stage;
-
   /// Task Status
   final pulumi.Input<String> status;
 
@@ -51,20 +46,13 @@ class TaskProperties {
 
   factory TaskProperties.fromMap(Map<String, dynamic> map) {
     return TaskProperties(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       scope: pulumi.Input.fromValue(map['scope'] as String),
       scopeId: pulumi.Input.fromValue(map['scopeId'] as String),
-      stage: (() {
-        final guardedValue = map['stage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      stage: (() { final guardedValue = map['stage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
+

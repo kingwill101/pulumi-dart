@@ -9,17 +9,20 @@ class DSSEHintResponse {
 
   /// Creates a new [DSSEHintResponse].
   /// [humanReadableName] The human readable name of this attestation authority, for example "cloudbuild-prod".
-  DSSEHintResponse({required this.humanReadableName});
+  DSSEHintResponse({
+    required this.humanReadableName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'humanReadableName': humanReadableName};
+    return <String, dynamic>{
+      'humanReadableName': humanReadableName,
+    };
   }
 
   factory DSSEHintResponse.fromMap(Map<String, dynamic> map) {
     return DSSEHintResponse(
-      humanReadableName: pulumi.Input.fromValue(
-        map['humanReadableName'] as String,
-      ),
+      humanReadableName: pulumi.Input.fromValue(map['humanReadableName'] as String),
     );
   }
 }
+

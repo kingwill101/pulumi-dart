@@ -7,12 +7,10 @@ import 'resource_claim_parameters_reference.dart';
 class ResourceClaimSpecResourceK8sIoV1alpha1 {
   /// Allocation can start immediately or when a Pod wants to use the resource. "WaitForFirstConsumer" is the default.
   final pulumi.Input<String>? allocationMode;
-
   /// ParametersRef references a separate object with arbitrary parameters that will be used by the driver when allocating a resource for the claim.
   ///
   /// The object must be in the same namespace as the ResourceClaim.
   final pulumi.Input<ResourceClaimParametersReference>? parametersRef;
-
   /// ResourceClassName references the driver and additional parameters via the name of a ResourceClass that was created as part of the driver deployment.
   final pulumi.Input<String> resourceClassName;
 
@@ -29,36 +27,17 @@ class ResourceClaimSpecResourceK8sIoV1alpha1 {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allocationMode': ?allocationMode,
-      'parametersRef':
-          ?pulumi.Input.mapOptionalInputValue<
-            ResourceClaimParametersReference,
-            Map<String, dynamic>
-          >(parametersRef, (value) => value.toMap()),
+      'parametersRef': ?pulumi.Input.mapOptionalInputValue<ResourceClaimParametersReference, Map<String, dynamic>>(parametersRef, (value) => value.toMap()),
       'resourceClassName': resourceClassName,
     };
   }
 
-  factory ResourceClaimSpecResourceK8sIoV1alpha1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResourceClaimSpecResourceK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
     return ResourceClaimSpecResourceK8sIoV1alpha1(
-      allocationMode: (() {
-        final guardedValue = map['allocationMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      parametersRef: (() {
-        final guardedValue = map['parametersRef'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ResourceClaimParametersReference.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      resourceClassName: pulumi.Input.fromValue(
-        map['resourceClassName'] as String,
-      ),
+      allocationMode: (() { final guardedValue = map['allocationMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      parametersRef: (() { final guardedValue = map['parametersRef']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceClaimParametersReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceClassName: pulumi.Input.fromValue(map['resourceClassName'] as String),
     );
   }
 }
+

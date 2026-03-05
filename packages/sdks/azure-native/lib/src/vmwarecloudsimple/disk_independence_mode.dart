@@ -16,3 +16,4 @@ enum DiskIndependenceMode {
     throw ArgumentError('Unknown DiskIndependenceMode value: $value');
   }
 }
+

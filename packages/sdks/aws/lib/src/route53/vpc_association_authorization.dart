@@ -270,10 +270,8 @@ import 'vpc_association_authorization_state.dart';
 class VpcAssociationAuthorization extends pulumi.CustomResource {
   /// The VPC to authorize for association with the private hosted zone.
   late final pulumi.Output<String> vpcId;
-
   /// The VPC's region. Defaults to the region of the AWS provider.
   late final pulumi.Output<String> vpcRegion;
-
   /// The ID of the private hosted zone that you want to authorize associating a VPC with.
   late final pulumi.Output<String> zoneId;
 
@@ -286,11 +284,11 @@ class VpcAssociationAuthorization extends pulumi.CustomResource {
     VpcAssociationAuthorizationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:route53/vpcAssociationAuthorization:VpcAssociationAuthorization',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:route53/vpcAssociationAuthorization:VpcAssociationAuthorization',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     vpcId = registerOutput<String>('vpcId');
     vpcRegion = registerOutput<String>('vpcRegion');
     zoneId = registerOutput<String>('zoneId');
@@ -314,11 +312,11 @@ class VpcAssociationAuthorization extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:route53/vpcAssociationAuthorization:VpcAssociationAuthorization',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:route53/vpcAssociationAuthorization:VpcAssociationAuthorization',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     vpcId = registerOutput<String>('vpcId');
     vpcRegion = registerOutput<String>('vpcRegion');
     zoneId = registerOutput<String>('zoneId');

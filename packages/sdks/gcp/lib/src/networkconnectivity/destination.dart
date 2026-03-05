@@ -238,60 +238,46 @@ import 'destination_state.dart';
 class Destination extends pulumi.CustomResource {
   /// Time when the `Destination` resource was created.
   late final pulumi.Output<String> createTime;
-
   /// A description of this resource.
   late final pulumi.Output<String?> description;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// The list of DestinationEndpoint resources configured for the IP prefix.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> endpoints;
-
   /// The etag is computed by the server, and might be sent with update and
   /// delete requests so that the client has an up-to-date value before
   /// proceeding.
   late final pulumi.Output<String> etag;
-
   /// The IP prefix that represents your workload on another CSP.
   late final pulumi.Output<String> ipPrefix;
-
   /// User-defined labels.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// The location of the destination.
   late final pulumi.Output<String> location;
-
   /// The multicloud data transfer config of the destination.
   late final pulumi.Output<String> multicloudDataTransferConfig;
-
   /// The name of the destination.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// The timeline of the expected `Destination` states or the current rest
   /// state. If a state change is expected, the value is `ADDING`,
   /// `DELETING` or `SUSPENDING`, depending on the action specified.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> stateTimelines;
-
   /// The Google-generated unique ID for the `Destination` resource.
   /// This value is unique across all `Destination` resources.
   /// If a resource is deleted and another with the same name is
   /// created, the new resource is assigned a different and unique ID.
   late final pulumi.Output<String> uid;
-
   /// Time when the `Destination` resource was updated.
   late final pulumi.Output<String> updateTime;
 
@@ -304,11 +290,11 @@ class Destination extends pulumi.CustomResource {
     DestinationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:networkconnectivity/destination:Destination',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:networkconnectivity/destination:Destination',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -317,15 +303,11 @@ class Destination extends pulumi.CustomResource {
     ipPrefix = registerOutput<String>('ipPrefix');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
-    multicloudDataTransferConfig = registerOutput<String>(
-      'multicloudDataTransferConfig',
-    );
+    multicloudDataTransferConfig = registerOutput<String>('multicloudDataTransferConfig');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    stateTimelines = registerOutput<List<Map<String, dynamic>>>(
-      'stateTimelines',
-    );
+    stateTimelines = registerOutput<List<Map<String, dynamic>>>('stateTimelines');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }
@@ -348,11 +330,11 @@ class Destination extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:networkconnectivity/destination:Destination',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:networkconnectivity/destination:Destination',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -361,15 +343,11 @@ class Destination extends pulumi.CustomResource {
     ipPrefix = registerOutput<String>('ipPrefix');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
-    multicloudDataTransferConfig = registerOutput<String>(
-      'multicloudDataTransferConfig',
-    );
+    multicloudDataTransferConfig = registerOutput<String>('multicloudDataTransferConfig');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    stateTimelines = registerOutput<List<Map<String, dynamic>>>(
-      'stateTimelines',
-    );
+    stateTimelines = registerOutput<List<Map<String, dynamic>>>('stateTimelines');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }

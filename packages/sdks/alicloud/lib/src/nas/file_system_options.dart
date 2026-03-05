@@ -12,19 +12,20 @@ class FileSystemOptions {
 
   /// Creates a new [FileSystemOptions].
   /// [enableOplock] Whether to enable the OpLock function. Value:
-  FileSystemOptions({this.enableOplock});
+  FileSystemOptions({
+    this.enableOplock,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enableOplock': ?enableOplock};
+    return <String, dynamic>{
+      'enableOplock': ?enableOplock,
+    };
   }
 
   factory FileSystemOptions.fromMap(Map<String, dynamic> map) {
     return FileSystemOptions(
-      enableOplock: (() {
-        final guardedValue = map['enableOplock'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enableOplock: (() { final guardedValue = map['enableOplock']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

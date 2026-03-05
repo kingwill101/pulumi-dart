@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEndpointAssociationsAssociationPrivateDnsEntry {
   /// DNS name.
   final pulumi.Input<String> dnsName;
-
   /// ID of the private hosted zone.
   final pulumi.Input<String> hostedZoneId;
 
@@ -18,15 +17,17 @@ class GetEndpointAssociationsAssociationPrivateDnsEntry {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'dnsName': dnsName, 'hostedZoneId': hostedZoneId};
+    return <String, dynamic>{
+      'dnsName': dnsName,
+      'hostedZoneId': hostedZoneId,
+    };
   }
 
-  factory GetEndpointAssociationsAssociationPrivateDnsEntry.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetEndpointAssociationsAssociationPrivateDnsEntry.fromMap(Map<String, dynamic> map) {
     return GetEndpointAssociationsAssociationPrivateDnsEntry(
       dnsName: pulumi.Input.fromValue(map['dnsName'] as String),
       hostedZoneId: pulumi.Input.fromValue(map['hostedZoneId'] as String),
     );
   }
 }
+

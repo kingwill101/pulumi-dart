@@ -16,3 +16,4 @@ enum DecryptionRuleTypeEnum {
     throw ArgumentError('Unknown DecryptionRuleTypeEnum value: $value');
   }
 }
+

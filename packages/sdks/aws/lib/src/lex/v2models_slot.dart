@@ -644,44 +644,32 @@ import 'v2models_slot_value_elicitation_setting.dart';
 class V2modelsSlot extends pulumi.CustomResource {
   /// Identifier of the bot associated with the slot.
   late final pulumi.Output<String> botId;
-
   /// Version of the bot associated with the slot.
   late final pulumi.Output<String> botVersion;
-
   /// Description of the slot.
   late final pulumi.Output<String?> description;
-
   /// Identifier of the intent that contains the slot.
   late final pulumi.Output<String> intentId;
-
   /// Identifier of the language and locale that the slot will be used in.
   late final pulumi.Output<String> localeId;
-
   /// Whether the slot returns multiple values in one response.
   /// See the `multiple_values_setting` argument reference below.
   late final pulumi.Output<List<Map<String, dynamic>>?> multipleValuesSettings;
-
   /// Name of the slot.
   late final pulumi.Output<String> name;
-
   /// Determines how slot values are used in Amazon CloudWatch logs.
   /// See the `obfuscation_setting` argument reference below.
   late final pulumi.Output<List<Map<String, dynamic>>?> obfuscationSettings;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Unique identifier associated with the slot.
   late final pulumi.Output<String> slotId;
-
   /// Unique identifier for the slot type associated with this slot.
   late final pulumi.Output<String> slotTypeId;
-
   /// Specifications for the constituent sub slots and the expression for the composite slot.
   /// See the `sub_slot_setting` argument reference below.
   late final pulumi.Output<List<Map<String, dynamic>>?> subSlotSettings;
   late final pulumi.Output<V2modelsSlotTimeouts?> timeouts;
-
   /// Prompts that Amazon Lex sends to the user to elicit a response that provides the value for the slot.
   /// If you configure this block without `prompt_specification.*.prompt_attempts_specification`, AWS will provide default `prompt_attempts_specification` blocks for the initial prompt (map key `Initial`) and each retry attempt (map keys `Retry1`, `Retry2`, etc.).
   /// This will cause Terraform to report differences.
@@ -689,8 +677,7 @@ class V2modelsSlot extends pulumi.CustomResource {
   /// See the `value_elicitation_setting` argument reference below.
   ///
   /// The following arguments are optional:
-  late final pulumi.Output<V2modelsSlotValueElicitationSetting>
-  valueElicitationSetting;
+  late final pulumi.Output<V2modelsSlotValueElicitationSetting> valueElicitationSetting;
 
   /// Creates a new [V2modelsSlot].
   /// [name] The Pulumi resource name.
@@ -701,50 +688,25 @@ class V2modelsSlot extends pulumi.CustomResource {
     V2modelsSlotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:lex/v2modelsSlot:V2modelsSlot',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:lex/v2modelsSlot:V2modelsSlot',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     botId = registerOutput<String>('botId');
     botVersion = registerOutput<String>('botVersion');
     description = registerOutput<String?>('description');
     intentId = registerOutput<String>('intentId');
     localeId = registerOutput<String>('localeId');
-    multipleValuesSettings = registerOutput<List<Map<String, dynamic>>?>(
-      'multipleValuesSettings',
-    );
+    multipleValuesSettings = registerOutput<List<Map<String, dynamic>>?>('multipleValuesSettings');
     this.name = registerOutput<String>('name');
-    obfuscationSettings = registerOutput<List<Map<String, dynamic>>?>(
-      'obfuscationSettings',
-    );
+    obfuscationSettings = registerOutput<List<Map<String, dynamic>>?>('obfuscationSettings');
     region = registerOutput<String>('region');
     slotId = registerOutput<String>('slotId');
     slotTypeId = registerOutput<String>('slotTypeId');
-    subSlotSettings = registerOutput<List<Map<String, dynamic>>?>(
-      'subSlotSettings',
-    );
-    timeouts = registerOutput<V2modelsSlotTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return V2modelsSlotTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    valueElicitationSetting =
-        registerOutput<V2modelsSlotValueElicitationSetting>(
-          'valueElicitationSetting',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return V2modelsSlotValueElicitationSetting.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    subSlotSettings = registerOutput<List<Map<String, dynamic>>?>('subSlotSettings');
+    timeouts = registerOutput<V2modelsSlotTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2modelsSlotTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    valueElicitationSetting = registerOutput<V2modelsSlotValueElicitationSetting>('valueElicitationSetting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2modelsSlotValueElicitationSetting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [V2modelsSlot] resource's state with the given [name] and [id].
@@ -765,49 +727,24 @@ class V2modelsSlot extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:lex/v2modelsSlot:V2modelsSlot',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:lex/v2modelsSlot:V2modelsSlot',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     botId = registerOutput<String>('botId');
     botVersion = registerOutput<String>('botVersion');
     description = registerOutput<String?>('description');
     intentId = registerOutput<String>('intentId');
     localeId = registerOutput<String>('localeId');
-    multipleValuesSettings = registerOutput<List<Map<String, dynamic>>?>(
-      'multipleValuesSettings',
-    );
+    multipleValuesSettings = registerOutput<List<Map<String, dynamic>>?>('multipleValuesSettings');
     this.name = registerOutput<String>('name');
-    obfuscationSettings = registerOutput<List<Map<String, dynamic>>?>(
-      'obfuscationSettings',
-    );
+    obfuscationSettings = registerOutput<List<Map<String, dynamic>>?>('obfuscationSettings');
     region = registerOutput<String>('region');
     slotId = registerOutput<String>('slotId');
     slotTypeId = registerOutput<String>('slotTypeId');
-    subSlotSettings = registerOutput<List<Map<String, dynamic>>?>(
-      'subSlotSettings',
-    );
-    timeouts = registerOutput<V2modelsSlotTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return V2modelsSlotTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    valueElicitationSetting =
-        registerOutput<V2modelsSlotValueElicitationSetting>(
-          'valueElicitationSetting',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return V2modelsSlotValueElicitationSetting.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    subSlotSettings = registerOutput<List<Map<String, dynamic>>?>('subSlotSettings');
+    timeouts = registerOutput<V2modelsSlotTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2modelsSlotTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    valueElicitationSetting = registerOutput<V2modelsSlotValueElicitationSetting>('valueElicitationSetting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2modelsSlotValueElicitationSetting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

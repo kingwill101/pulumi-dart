@@ -13,8 +13,7 @@ enum PublicAdvertisedPrefixPdpScopeComputeBeta {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown PublicAdvertisedPrefixPdpScopeComputeBeta value: $value',
-    );
+    throw ArgumentError('Unknown PublicAdvertisedPrefixPdpScopeComputeBeta value: $value');
   }
 }
+

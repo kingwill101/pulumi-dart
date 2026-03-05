@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RetentionPolicyDetailsResponse {
   /// The orchestration state to which this policy applies. If omitted, the policy applies to all purgeable orchestration states.
   final pulumi.Input<String>? orchestrationState;
-
   /// The retention period in days after which the orchestration will be purged automatically
   final pulumi.Input<int> retentionPeriodInDays;
 
@@ -27,14 +26,9 @@ class RetentionPolicyDetailsResponse {
 
   factory RetentionPolicyDetailsResponse.fromMap(Map<String, dynamic> map) {
     return RetentionPolicyDetailsResponse(
-      orchestrationState: (() {
-        final guardedValue = map['orchestrationState'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      retentionPeriodInDays: pulumi.Input.fromValue(
-        map['retentionPeriodInDays'] as int,
-      ),
+      orchestrationState: (() { final guardedValue = map['orchestrationState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      retentionPeriodInDays: pulumi.Input.fromValue(map['retentionPeriodInDays'] as int),
     );
   }
 }
+

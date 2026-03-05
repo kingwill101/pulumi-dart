@@ -8,19 +8,14 @@ import 'analytics_configuration_storage_class_analysis.dart';
 class AnalyticsConfigurationState {
   /// Name of the bucket this analytics configuration is associated with.
   final pulumi.Input<String>? bucket;
-
   /// Object filtering that accepts a prefix, tags, or a logical AND of prefix and tags (documented below).
   final pulumi.Input<AnalyticsConfigurationFilter>? filter;
-
   /// Unique identifier of the analytics configuration for the bucket.
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Configuration for the analytics data export (documented below).
-  final pulumi.Input<AnalyticsConfigurationStorageClassAnalysis>?
-  storageClassAnalysis;
+  final pulumi.Input<AnalyticsConfigurationStorageClassAnalysis>? storageClassAnalysis;
 
   /// Creates a new [AnalyticsConfigurationState].
   /// [bucket] Name of the bucket this analytics configuration is associated with.
@@ -39,56 +34,21 @@ class AnalyticsConfigurationState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bucket': ?bucket,
-      'filter':
-          ?pulumi.Input.mapOptionalInputValue<
-            AnalyticsConfigurationFilter,
-            Map<String, dynamic>
-          >(filter, (value) => value.toMap()),
+      'filter': ?pulumi.Input.mapOptionalInputValue<AnalyticsConfigurationFilter, Map<String, dynamic>>(filter, (value) => value.toMap()),
       'name': ?name,
       'region': ?region,
-      'storageClassAnalysis':
-          ?pulumi.Input.mapOptionalInputValue<
-            AnalyticsConfigurationStorageClassAnalysis,
-            Map<String, dynamic>
-          >(storageClassAnalysis, (value) => value.toMap()),
+      'storageClassAnalysis': ?pulumi.Input.mapOptionalInputValue<AnalyticsConfigurationStorageClassAnalysis, Map<String, dynamic>>(storageClassAnalysis, (value) => value.toMap()),
     };
   }
 
   factory AnalyticsConfigurationState.fromMap(Map<String, dynamic> map) {
     return AnalyticsConfigurationState(
-      bucket: (() {
-        final guardedValue = map['bucket'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      filter: (() {
-        final guardedValue = map['filter'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AnalyticsConfigurationFilter.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      storageClassAnalysis: (() {
-        final guardedValue = map['storageClassAnalysis'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AnalyticsConfigurationStorageClassAnalysis.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      bucket: (() { final guardedValue = map['bucket']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AnalyticsConfigurationFilter.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageClassAnalysis: (() { final guardedValue = map['storageClassAnalysis']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AnalyticsConfigurationStorageClassAnalysis.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

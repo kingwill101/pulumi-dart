@@ -33,11 +33,8 @@ class GetMeshNetworkservicesV1beta1Args {
     return GetMeshNetworkservicesV1beta1Args(
       location: pulumi.Input.fromValue(map['location'] as String),
       meshId: pulumi.Input.fromValue(map['meshId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

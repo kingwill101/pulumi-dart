@@ -9,37 +9,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReferenceInputMssqlArgs {
   /// The MS SQL database name where the reference data exists.
   final pulumi.Input<String> database;
-
   /// The query used to retrieve incremental changes in the reference data from the MS SQL database. Cannot be set when `refresh_type` is `Static`.
   final pulumi.Input<String>? deltaSnapshotQuery;
-
   /// The query used to retrieve the reference data from the MS SQL database.
   final pulumi.Input<String> fullSnapshotQuery;
-
   /// The name of the Reference Input MS SQL data. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// The password to connect to the MS SQL database.
   final pulumi.Input<String> password;
-
   /// The frequency in `hh:mm:ss` with which the reference data should be retrieved from the MS SQL database e.g. `00:20:00` for every 20 minutes. Must be set when `refresh_type` is `RefreshPeriodicallyWithFull` or `RefreshPeriodicallyWithDelta`.
   final pulumi.Input<String>? refreshIntervalDuration;
-
   /// Defines whether and how the reference data should be refreshed. Accepted values are `Static`, `RefreshPeriodicallyWithFull` and `RefreshPeriodicallyWithDelta`.
   final pulumi.Input<String> refreshType;
-
   /// The name of the Resource Group where the Stream Analytics Job should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
-
   /// The fully qualified domain name of the MS SQL server.
   final pulumi.Input<String> server;
-
   /// The name of the Stream Analytics Job. Changing this forces a new resource to be created.
   final pulumi.Input<String> streamAnalyticsJobName;
-
   /// The name of the table in the Azure SQL database.
   final pulumi.Input<String>? table;
-
   /// The username to connect to the MS SQL database.
   final pulumi.Input<String> username;
 
@@ -91,39 +80,18 @@ class ReferenceInputMssqlArgs {
   factory ReferenceInputMssqlArgs.fromMap(Map<String, dynamic> map) {
     return ReferenceInputMssqlArgs(
       database: pulumi.Input.fromValue(map['database'] as String),
-      deltaSnapshotQuery: (() {
-        final guardedValue = map['deltaSnapshotQuery'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      fullSnapshotQuery: pulumi.Input.fromValue(
-        map['fullSnapshotQuery'] as String,
-      ),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      deltaSnapshotQuery: (() { final guardedValue = map['deltaSnapshotQuery']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      fullSnapshotQuery: pulumi.Input.fromValue(map['fullSnapshotQuery'] as String),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       password: pulumi.Input.fromValue(map['password'] as String),
-      refreshIntervalDuration: (() {
-        final guardedValue = map['refreshIntervalDuration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      refreshIntervalDuration: (() { final guardedValue = map['refreshIntervalDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       refreshType: pulumi.Input.fromValue(map['refreshType'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       server: pulumi.Input.fromValue(map['server'] as String),
-      streamAnalyticsJobName: pulumi.Input.fromValue(
-        map['streamAnalyticsJobName'] as String,
-      ),
-      table: (() {
-        final guardedValue = map['table'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      streamAnalyticsJobName: pulumi.Input.fromValue(map['streamAnalyticsJobName'] as String),
+      table: (() { final guardedValue = map['table']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       username: pulumi.Input.fromValue(map['username'] as String),
     );
   }
 }
+

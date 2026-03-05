@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AttachedNetworkByDevCenterArgs {
   /// The name of the attached NetworkConnection.
   final pulumi.Input<String>? attachedNetworkConnectionName;
-
   /// The name of the devcenter.
   final pulumi.Input<String> devCenterName;
-
   /// The resource ID of the NetworkConnection you want to attach.
   final pulumi.Input<String> networkConnectionId;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -42,18 +39,11 @@ class AttachedNetworkByDevCenterArgs {
 
   factory AttachedNetworkByDevCenterArgs.fromMap(Map<String, dynamic> map) {
     return AttachedNetworkByDevCenterArgs(
-      attachedNetworkConnectionName: (() {
-        final guardedValue = map['attachedNetworkConnectionName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      attachedNetworkConnectionName: (() { final guardedValue = map['attachedNetworkConnectionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       devCenterName: pulumi.Input.fromValue(map['devCenterName'] as String),
-      networkConnectionId: pulumi.Input.fromValue(
-        map['networkConnectionId'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      networkConnectionId: pulumi.Input.fromValue(map['networkConnectionId'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

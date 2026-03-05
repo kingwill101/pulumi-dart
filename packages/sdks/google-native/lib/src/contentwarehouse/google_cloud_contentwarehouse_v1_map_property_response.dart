@@ -9,19 +9,20 @@ class GoogleCloudContentwarehouseV1MapPropertyResponse {
 
   /// Creates a new [GoogleCloudContentwarehouseV1MapPropertyResponse].
   /// [fields] Unordered map of dynamically typed values.
-  GoogleCloudContentwarehouseV1MapPropertyResponse({required this.fields});
+  GoogleCloudContentwarehouseV1MapPropertyResponse({
+    required this.fields,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'fields': fields};
+    return <String, dynamic>{
+      'fields': fields,
+    };
   }
 
-  factory GoogleCloudContentwarehouseV1MapPropertyResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudContentwarehouseV1MapPropertyResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1MapPropertyResponse(
-      fields: pulumi.Input.fromValue(
-        (map['fields'] as Map).cast<String, String>(),
-      ),
+      fields: pulumi.Input.fromValue((map['fields'] as Map).cast<String, String>()),
     );
   }
 }
+

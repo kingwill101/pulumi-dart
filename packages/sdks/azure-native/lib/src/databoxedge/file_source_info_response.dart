@@ -9,10 +9,14 @@ class FileSourceInfoResponse {
 
   /// Creates a new [FileSourceInfoResponse].
   /// [shareId] File share ID.
-  FileSourceInfoResponse({required this.shareId});
+  FileSourceInfoResponse({
+    required this.shareId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'shareId': shareId};
+    return <String, dynamic>{
+      'shareId': shareId,
+    };
   }
 
   factory FileSourceInfoResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class FileSourceInfoResponse {
     );
   }
 }
+

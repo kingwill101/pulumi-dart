@@ -1280,31 +1280,22 @@ import 'anomaly_subscription_threshold_expression.dart';
 class AnomalySubscription extends pulumi.CustomResource {
   /// The unique identifier for the AWS account in which the anomaly subscription ought to be created.
   late final pulumi.Output<String> accountId;
-
   /// ARN of the anomaly subscription.
   late final pulumi.Output<String> arn;
-
   /// The frequency that anomaly reports are sent. Valid Values: `DAILY` | `IMMEDIATE` | `WEEKLY`.
   late final pulumi.Output<String> frequency;
-
   /// A list of cost anomaly monitors.
   late final pulumi.Output<List<String>> monitorArnLists;
-
   /// The name for the subscription.
   late final pulumi.Output<String> name;
-
   /// A subscriber configuration. Multiple subscribers can be defined.
   late final pulumi.Output<List<Map<String, dynamic>>> subscribers;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// An Expression object used to specify the anomalies that you want to generate alerts for. See Threshold Expression.
-  late final pulumi.Output<AnomalySubscriptionThresholdExpression>
-  thresholdExpression;
+  late final pulumi.Output<AnomalySubscriptionThresholdExpression> thresholdExpression;
 
   /// Creates a new [AnomalySubscription].
   /// [name] The Pulumi resource name.
@@ -1315,11 +1306,11 @@ class AnomalySubscription extends pulumi.CustomResource {
     AnomalySubscriptionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:costexplorer/anomalySubscription:AnomalySubscription',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:costexplorer/anomalySubscription:AnomalySubscription',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     arn = registerOutput<String>('arn');
     frequency = registerOutput<String>('frequency');
@@ -1328,17 +1319,7 @@ class AnomalySubscription extends pulumi.CustomResource {
     subscribers = registerOutput<List<Map<String, dynamic>>>('subscribers');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    thresholdExpression =
-        registerOutput<AnomalySubscriptionThresholdExpression>(
-          'thresholdExpression',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AnomalySubscriptionThresholdExpression.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    thresholdExpression = registerOutput<AnomalySubscriptionThresholdExpression>('thresholdExpression', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnomalySubscriptionThresholdExpression.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [AnomalySubscription] resource's state with the given [name] and [id].
@@ -1359,11 +1340,11 @@ class AnomalySubscription extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:costexplorer/anomalySubscription:AnomalySubscription',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:costexplorer/anomalySubscription:AnomalySubscription',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     arn = registerOutput<String>('arn');
     frequency = registerOutput<String>('frequency');
@@ -1372,16 +1353,6 @@ class AnomalySubscription extends pulumi.CustomResource {
     subscribers = registerOutput<List<Map<String, dynamic>>>('subscribers');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    thresholdExpression =
-        registerOutput<AnomalySubscriptionThresholdExpression>(
-          'thresholdExpression',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AnomalySubscriptionThresholdExpression.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    thresholdExpression = registerOutput<AnomalySubscriptionThresholdExpression>('thresholdExpression', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnomalySubscriptionThresholdExpression.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

@@ -422,28 +422,20 @@ import 'sub_resource_response.dart';
 class HubVirtualNetworkConnection extends pulumi.CustomResource {
   /// Deprecated: VirtualHub to RemoteVnet transit to enabled or not.
   late final pulumi.Output<bool?> allowHubToRemoteVnetTransit;
-
   /// Deprecated: Allow RemoteVnet to use Virtual Hub's gateways.
   late final pulumi.Output<bool?> allowRemoteVnetToUseHubVnetGateways;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Enable internet security.
   late final pulumi.Output<bool?> enableInternetSecurity;
-
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
-
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   late final pulumi.Output<String?> name;
-
   /// The provisioning state of the hub virtual network connection resource.
   late final pulumi.Output<String> provisioningState;
-
   /// Reference to the remote virtual network.
   late final pulumi.Output<SubResourceResponse?> remoteVirtualNetwork;
-
   /// The Routing Configuration indicating the associated and propagated route tables on this connection.
   late final pulumi.Output<RoutingConfigurationResponse?> routingConfiguration;
 
@@ -456,41 +448,19 @@ class HubVirtualNetworkConnection extends pulumi.CustomResource {
     HubVirtualNetworkConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:network:HubVirtualNetworkConnection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    allowHubToRemoteVnetTransit = registerOutput<bool?>(
-      'allowHubToRemoteVnetTransit',
-    );
-    allowRemoteVnetToUseHubVnetGateways = registerOutput<bool?>(
-      'allowRemoteVnetToUseHubVnetGateways',
-    );
+          'azure-native:network:HubVirtualNetworkConnection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    allowHubToRemoteVnetTransit = registerOutput<bool?>('allowHubToRemoteVnetTransit');
+    allowRemoteVnetToUseHubVnetGateways = registerOutput<bool?>('allowRemoteVnetToUseHubVnetGateways');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     enableInternetSecurity = registerOutput<bool?>('enableInternetSecurity');
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String?>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    remoteVirtualNetwork = registerOutput<SubResourceResponse?>(
-      'remoteVirtualNetwork',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SubResourceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    routingConfiguration = registerOutput<RoutingConfigurationResponse?>(
-      'routingConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RoutingConfigurationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    remoteVirtualNetwork = registerOutput<SubResourceResponse?>('remoteVirtualNetwork', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    routingConfiguration = registerOutput<RoutingConfigurationResponse?>('routingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RoutingConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

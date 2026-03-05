@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FeatureGroupOfflineStoreConfigDataCatalogConfig {
   /// The name of the Glue table catalog.
   final pulumi.Input<String>? catalog;
-
   /// The name of the Glue table database.
   final pulumi.Input<String>? database;
-
   /// The name of the Glue table.
   final pulumi.Input<String>? tableName;
 
@@ -30,25 +28,12 @@ class FeatureGroupOfflineStoreConfigDataCatalogConfig {
     };
   }
 
-  factory FeatureGroupOfflineStoreConfigDataCatalogConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FeatureGroupOfflineStoreConfigDataCatalogConfig.fromMap(Map<String, dynamic> map) {
     return FeatureGroupOfflineStoreConfigDataCatalogConfig(
-      catalog: (() {
-        final guardedValue = map['catalog'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      database: (() {
-        final guardedValue = map['database'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tableName: (() {
-        final guardedValue = map['tableName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      catalog: (() { final guardedValue = map['catalog']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      database: (() { final guardedValue = map['database']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tableName: (() { final guardedValue = map['tableName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

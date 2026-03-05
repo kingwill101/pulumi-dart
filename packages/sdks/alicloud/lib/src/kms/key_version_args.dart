@@ -14,10 +14,14 @@ class KeyVersionArgs {
 
   /// Creates a new [KeyVersionArgs].
   /// [keyId] The id of the master key (CMK).
-  KeyVersionArgs({required this.keyId});
+  KeyVersionArgs({
+    required this.keyId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'keyId': keyId};
+    return <String, dynamic>{
+      'keyId': keyId,
+    };
   }
 
   factory KeyVersionArgs.fromMap(Map<String, dynamic> map) {
@@ -26,3 +30,4 @@ class KeyVersionArgs {
     );
   }
 }
+

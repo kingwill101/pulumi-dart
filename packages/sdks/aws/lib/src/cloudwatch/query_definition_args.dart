@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class QueryDefinitionArgs {
   /// Specific log groups to use with the query.
   final pulumi.Input<List<String>>? logGroupNames;
-
   /// The name of the query.
   final pulumi.Input<String>? name;
-
   /// The query to save. You can read more about CloudWatch Logs Query Syntax in the [documentation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html).
   final pulumi.Input<String> queryString;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -42,22 +39,11 @@ class QueryDefinitionArgs {
 
   factory QueryDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return QueryDefinitionArgs(
-      logGroupNames: (() {
-        final guardedValue = map['logGroupNames'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      logGroupNames: (() { final guardedValue = map['logGroupNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       queryString: pulumi.Input.fromValue(map['queryString'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

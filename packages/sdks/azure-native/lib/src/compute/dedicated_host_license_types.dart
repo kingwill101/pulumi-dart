@@ -16,3 +16,4 @@ enum DedicatedHostLicenseTypes {
     throw ArgumentError('Unknown DedicatedHostLicenseTypes value: $value');
   }
 }
+

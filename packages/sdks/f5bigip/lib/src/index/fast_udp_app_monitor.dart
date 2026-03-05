@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FastUdpAppMonitor {
   /// The presence of this optional string is required in the response, if specified it confirms availability.
   final pulumi.Input<String>? expectedResponse;
-
   /// Set the time between health checks,in seconds for FAST-Generated Pool Monitor.
   final pulumi.Input<int>? interval;
-
   /// Optional data to be sent during each health check.
   final pulumi.Input<String>? sendString;
 
@@ -16,7 +14,11 @@ class FastUdpAppMonitor {
   /// [expectedResponse] The presence of this optional string is required in the response, if specified it confirms availability.
   /// [interval] Set the time between health checks,in seconds for FAST-Generated Pool Monitor.
   /// [sendString] Optional data to be sent during each health check.
-  FastUdpAppMonitor({this.expectedResponse, this.interval, this.sendString});
+  FastUdpAppMonitor({
+    this.expectedResponse,
+    this.interval,
+    this.sendString,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,21 +30,10 @@ class FastUdpAppMonitor {
 
   factory FastUdpAppMonitor.fromMap(Map<String, dynamic> map) {
     return FastUdpAppMonitor(
-      expectedResponse: (() {
-        final guardedValue = map['expectedResponse'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      interval: (() {
-        final guardedValue = map['interval'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      sendString: (() {
-        final guardedValue = map['sendString'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      expectedResponse: (() { final guardedValue = map['expectedResponse']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      interval: (() { final guardedValue = map['interval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      sendString: (() { final guardedValue = map['sendString']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

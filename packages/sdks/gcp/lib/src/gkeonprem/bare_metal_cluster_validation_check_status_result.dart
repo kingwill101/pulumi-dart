@@ -6,18 +6,14 @@ class BareMetalClusterValidationCheckStatusResult {
   /// (Output)
   /// The category of the validation.
   final pulumi.Input<String>? category;
-
   /// A human readable description of this Bare Metal User Cluster.
   final pulumi.Input<String>? description;
-
   /// (Output)
   /// Detailed failure information, which might be unformatted.
   final pulumi.Input<String>? details;
-
   /// (Output)
   /// Options used for the validation check.
   final pulumi.Input<String>? options;
-
   /// (Output)
   /// A human-readable message of the check failure.
   final pulumi.Input<String>? reason;
@@ -46,35 +42,14 @@ class BareMetalClusterValidationCheckStatusResult {
     };
   }
 
-  factory BareMetalClusterValidationCheckStatusResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BareMetalClusterValidationCheckStatusResult.fromMap(Map<String, dynamic> map) {
     return BareMetalClusterValidationCheckStatusResult(
-      category: (() {
-        final guardedValue = map['category'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      details: (() {
-        final guardedValue = map['details'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      options: (() {
-        final guardedValue = map['options'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      reason: (() {
-        final guardedValue = map['reason'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      category: (() { final guardedValue = map['category']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      details: (() { final guardedValue = map['details']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      options: (() { final guardedValue = map['options']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      reason: (() { final guardedValue = map['reason']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

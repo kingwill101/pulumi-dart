@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ObjectAccessControlArgs {
   /// The name of the bucket.
   final pulumi.Input<String> bucket;
-
   /// The entity holding the permission, in one of the following forms:
   /// * user-{{userId}}
   /// * user-{{email}} (such as "user-liz@example.com")
@@ -20,10 +19,8 @@ class ObjectAccessControlArgs {
   /// * allUsers
   /// * allAuthenticatedUsers
   final pulumi.Input<String> entity;
-
   /// The name of the object to apply the access control to.
   final pulumi.Input<String> object_;
-
   /// The access permission for the entity.
   /// Possible values are: `OWNER`, `READER`.
   final pulumi.Input<String> role;
@@ -58,3 +55,4 @@ class ObjectAccessControlArgs {
     );
   }
 }
+

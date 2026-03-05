@@ -7,7 +7,6 @@ class InstanceInitialReplication {
   /// The replication role.
   /// Structure is documented below.
   final pulumi.Input<List<InstanceInitialReplicationReplica>>? replicas;
-
   /// The replication role.
   /// Default value is `STANDBY`.
   /// Possible values are: `ROLE_UNSPECIFIED`, `ACTIVE`, `STANDBY`.
@@ -16,45 +15,23 @@ class InstanceInitialReplication {
   /// Creates a new [InstanceInitialReplication].
   /// [replicas] The replication role.
   /// [role] The replication role.
-  InstanceInitialReplication({this.replicas, this.role});
+  InstanceInitialReplication({
+    this.replicas,
+    this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'replicas':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<InstanceInitialReplicationReplica>,
-            List<Map<String, dynamic>>
-          >(
-            replicas,
-            (value) =>
-                pulumi.Input.encodeList<
-                  InstanceInitialReplicationReplica,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'replicas': ?pulumi.Input.mapOptionalInputValue<List<InstanceInitialReplicationReplica>, List<Map<String, dynamic>>>(replicas, (value) => pulumi.Input.encodeList<InstanceInitialReplicationReplica, Map<String, dynamic>>(value, (value) => value.toMap())),
       'role': ?role,
     };
   }
 
   factory InstanceInitialReplication.fromMap(Map<String, dynamic> map) {
     return InstanceInitialReplication(
-      replicas: (() {
-        final guardedValue = map['replicas'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<InstanceInitialReplicationReplica>(
-            guardedValue,
-            (value) => InstanceInitialReplicationReplica.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      role: (() {
-        final guardedValue = map['role'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      replicas: (() { final guardedValue = map['replicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InstanceInitialReplicationReplica>(guardedValue, (value) => InstanceInitialReplicationReplica.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      role: (() { final guardedValue = map['role']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

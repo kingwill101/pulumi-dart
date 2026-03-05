@@ -3,9 +3,7 @@ enum State {
   valueHasPrerequisite("HasPrerequisite"),
   valueObsolete("Obsolete"),
   valueReady("Ready"),
-  valueNotApplicableBecauseAnotherUpdateIsInProgress(
-    "NotApplicableBecauseAnotherUpdateIsInProgress",
-  ),
+  valueNotApplicableBecauseAnotherUpdateIsInProgress("NotApplicableBecauseAnotherUpdateIsInProgress"),
   valuePreparing("Preparing"),
   valueInstalling("Installing"),
   valueInstalled("Installed"),
@@ -34,3 +32,4 @@ enum State {
     throw ArgumentError('Unknown State value: $value');
   }
 }
+

@@ -12,8 +12,7 @@ enum RegionTargetTcpProxyProxyHeaderComputeV1 {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown RegionTargetTcpProxyProxyHeaderComputeV1 value: $value',
-    );
+    throw ArgumentError('Unknown RegionTargetTcpProxyProxyHeaderComputeV1 value: $value');
   }
 }
+

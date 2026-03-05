@@ -274,10 +274,8 @@ import 'log_config_state.dart';
 class LogConfig extends pulumi.CustomResource {
   /// The type the of log. Valid values: `PROVIDER`.
   late final pulumi.Output<String> logType;
-
   /// The name of the Log Store.
   late final pulumi.Output<String> slsLogStore;
-
   /// The name of the Project.
   late final pulumi.Output<String> slsProject;
 
@@ -290,11 +288,11 @@ class LogConfig extends pulumi.CustomResource {
     LogConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:apigateway/logConfig:LogConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:apigateway/logConfig:LogConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     logType = registerOutput<String>('logType');
     slsLogStore = registerOutput<String>('slsLogStore');
     slsProject = registerOutput<String>('slsProject');
@@ -318,11 +316,11 @@ class LogConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:apigateway/logConfig:LogConfig',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:apigateway/logConfig:LogConfig',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     logType = registerOutput<String>('logType');
     slsLogStore = registerOutput<String>('slsLogStore');
     slsProject = registerOutput<String>('slsProject');

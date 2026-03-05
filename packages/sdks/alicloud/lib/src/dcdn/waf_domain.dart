@@ -258,7 +258,6 @@ import 'waf_domain_state.dart';
 class WafDomain extends pulumi.CustomResource {
   /// The client ip tag.
   late final pulumi.Output<String?> clientIpTag;
-
   /// The accelerated domain name.
   late final pulumi.Output<String> domainName;
 
@@ -271,11 +270,11 @@ class WafDomain extends pulumi.CustomResource {
     WafDomainArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dcdn/wafDomain:WafDomain',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dcdn/wafDomain:WafDomain',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clientIpTag = registerOutput<String?>('clientIpTag');
     domainName = registerOutput<String>('domainName');
   }
@@ -298,11 +297,11 @@ class WafDomain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dcdn/wafDomain:WafDomain',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dcdn/wafDomain:WafDomain',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clientIpTag = registerOutput<String?>('clientIpTag');
     domainName = registerOutput<String>('domainName');
   }

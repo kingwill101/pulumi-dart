@@ -9,10 +9,14 @@ class SoftwareRecipeStepInstallRpm {
 
   /// Creates a new [SoftwareRecipeStepInstallRpm].
   /// [artifactId] The id of the relevant artifact in the recipe.
-  SoftwareRecipeStepInstallRpm({required this.artifactId});
+  SoftwareRecipeStepInstallRpm({
+    required this.artifactId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'artifactId': artifactId};
+    return <String, dynamic>{
+      'artifactId': artifactId,
+    };
   }
 
   factory SoftwareRecipeStepInstallRpm.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class SoftwareRecipeStepInstallRpm {
     );
   }
 }
+

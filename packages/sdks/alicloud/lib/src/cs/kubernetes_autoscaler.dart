@@ -5,19 +5,14 @@ import 'kubernetes_autoscaler_state.dart';
 class KubernetesAutoscaler extends pulumi.CustomResource {
   /// The id of kubernetes cluster.
   late final pulumi.Output<String> clusterId;
-
   /// The cool_down_duration option of cluster-autoscaler.
   late final pulumi.Output<String> coolDownDuration;
-
   /// The defer_scale_in_duration option of cluster-autoscaler.
   late final pulumi.Output<String> deferScaleInDuration;
-
   /// The list of the node pools. See `nodepools` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> nodepools;
-
   /// Enable autoscaler access to alibabacloud service by ecs ramrole token. default: false
   late final pulumi.Output<bool?> useEcsRamRoleToken;
-
   /// The utilization option of cluster-autoscaler.
   late final pulumi.Output<String> utilization;
 
@@ -30,11 +25,11 @@ class KubernetesAutoscaler extends pulumi.CustomResource {
     KubernetesAutoscalerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cs/kubernetesAutoscaler:KubernetesAutoscaler',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cs/kubernetesAutoscaler:KubernetesAutoscaler',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterId = registerOutput<String>('clusterId');
     coolDownDuration = registerOutput<String>('coolDownDuration');
     deferScaleInDuration = registerOutput<String>('deferScaleInDuration');
@@ -61,11 +56,11 @@ class KubernetesAutoscaler extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cs/kubernetesAutoscaler:KubernetesAutoscaler',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cs/kubernetesAutoscaler:KubernetesAutoscaler',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterId = registerOutput<String>('clusterId');
     coolDownDuration = registerOutput<String>('coolDownDuration');
     deferScaleInDuration = registerOutput<String>('deferScaleInDuration');

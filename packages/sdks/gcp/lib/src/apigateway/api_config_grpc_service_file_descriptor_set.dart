@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApiConfigGrpcServiceFileDescriptorSet {
   /// Base64 encoded content of the file.
   final pulumi.Input<String> contents;
-
   /// The file path (full or relative path). This is typically the path of the file when it is uploaded.
   final pulumi.Input<String> path;
 
@@ -18,15 +17,17 @@ class ApiConfigGrpcServiceFileDescriptorSet {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'contents': contents, 'path': path};
+    return <String, dynamic>{
+      'contents': contents,
+      'path': path,
+    };
   }
 
-  factory ApiConfigGrpcServiceFileDescriptorSet.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApiConfigGrpcServiceFileDescriptorSet.fromMap(Map<String, dynamic> map) {
     return ApiConfigGrpcServiceFileDescriptorSet(
       contents: pulumi.Input.fromValue(map['contents'] as String),
       path: pulumi.Input.fromValue(map['path'] as String),
     );
   }
 }
+

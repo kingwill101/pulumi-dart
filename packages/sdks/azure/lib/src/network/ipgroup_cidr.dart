@@ -198,7 +198,6 @@ class IPGroupCIDR extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** The AzureRM Terraform provider provides cidr support via this standalone resource and in-line within azure.network.IPGroup using the `cidrs` property. You cannot use both methods simultaneously. If cidrs are set via this resource then `ignore_changes` should be used in the resource `azure.network.IPGroupCIDR` configuration.
   late final pulumi.Output<String> cidr;
-
   /// The ID of the destination IP Group.
   /// Changing this forces a new IP Group CIDR to be created.
   late final pulumi.Output<String> ipGroupId;
@@ -212,11 +211,11 @@ class IPGroupCIDR extends pulumi.CustomResource {
     IPGroupCIDRArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/iPGroupCIDR:IPGroupCIDR',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/iPGroupCIDR:IPGroupCIDR',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cidr = registerOutput<String>('cidr');
     ipGroupId = registerOutput<String>('ipGroupId');
   }
@@ -239,11 +238,11 @@ class IPGroupCIDR extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/iPGroupCIDR:IPGroupCIDR',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/iPGroupCIDR:IPGroupCIDR',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cidr = registerOutput<String>('cidr');
     ipGroupId = registerOutput<String>('ipGroupId');
   }

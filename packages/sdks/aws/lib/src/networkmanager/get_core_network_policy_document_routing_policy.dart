@@ -6,21 +6,14 @@ import 'get_core_network_policy_document_routing_policy_routing_policy_rule.dart
 class GetCoreNetworkPolicyDocumentRoutingPolicy {
   /// Description of the routing policy.
   final pulumi.Input<String>? routingPolicyDescription;
-
   /// Direction of the routing policy. Valid values: `inbound`, `outbound`.
   final pulumi.Input<String> routingPolicyDirection;
-
   /// Name of the routing policy. Must be 1-100 alphanumeric characters.
   final pulumi.Input<String> routingPolicyName;
-
   /// Priority number for the routing policy. Must be between 1 and 9999. Lower numbers are evaluated first.
   final pulumi.Input<int> routingPolicyNumber;
-
   /// List of routing policy rules. Each rule defines match conditions and actions. Detailed below.
-  final pulumi.Input<
-    List<GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRule>
-  >
-  routingPolicyRules;
+  final pulumi.Input<List<GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRule>> routingPolicyRules;
 
   /// Creates a new [GetCoreNetworkPolicyDocumentRoutingPolicy].
   /// [routingPolicyDescription] Description of the routing policy.
@@ -42,50 +35,18 @@ class GetCoreNetworkPolicyDocumentRoutingPolicy {
       'routingPolicyDirection': routingPolicyDirection,
       'routingPolicyName': routingPolicyName,
       'routingPolicyNumber': routingPolicyNumber,
-      'routingPolicyRules':
-          pulumi.Input.mapInputValue<
-            List<GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRule>,
-            List<Map<String, dynamic>>
-          >(
-            routingPolicyRules,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRule,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'routingPolicyRules': pulumi.Input.mapInputValue<List<GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRule>, List<Map<String, dynamic>>>(routingPolicyRules, (value) => pulumi.Input.encodeList<GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRule, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory GetCoreNetworkPolicyDocumentRoutingPolicy.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetCoreNetworkPolicyDocumentRoutingPolicy.fromMap(Map<String, dynamic> map) {
     return GetCoreNetworkPolicyDocumentRoutingPolicy(
-      routingPolicyDescription: (() {
-        final guardedValue = map['routingPolicyDescription'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      routingPolicyDirection: pulumi.Input.fromValue(
-        map['routingPolicyDirection'] as String,
-      ),
-      routingPolicyName: pulumi.Input.fromValue(
-        map['routingPolicyName'] as String,
-      ),
-      routingPolicyNumber: pulumi.Input.fromValue(
-        map['routingPolicyNumber'] as int,
-      ),
-      routingPolicyRules: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRule
-        >(
-          map['routingPolicyRules']!,
-          (value) =>
-              GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRule.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
+      routingPolicyDescription: (() { final guardedValue = map['routingPolicyDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      routingPolicyDirection: pulumi.Input.fromValue(map['routingPolicyDirection'] as String),
+      routingPolicyName: pulumi.Input.fromValue(map['routingPolicyName'] as String),
+      routingPolicyNumber: pulumi.Input.fromValue(map['routingPolicyNumber'] as int),
+      routingPolicyRules: pulumi.Input.fromValue(pulumi.Input.decodeList<GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRule>(map['routingPolicyRules']!, (value) => GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRule.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

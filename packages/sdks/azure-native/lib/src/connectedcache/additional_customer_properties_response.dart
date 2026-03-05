@@ -6,94 +6,64 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AdditionalCustomerPropertiesResponse {
   /// Customer resource Asn (autonomous system number).
   final pulumi.Input<String>? customerAsn;
-
   /// Customer resource estimated Asn peering peak in Gbps.
   final pulumi.Input<double> customerAsnEstimatedEgressPeekGbps;
-
   /// Customer resource contact email.
   final pulumi.Input<String>? customerEmail;
-
   /// Customer resource entitlement expiration date string.
   final pulumi.Input<String>? customerEntitlementExpiration;
-
   /// Customer resource entitlement Sku Guid.
   final pulumi.Input<String>? customerEntitlementSkuGuid;
-
   /// Customer resource entitlement Sku Id.
   final pulumi.Input<String>? customerEntitlementSkuId;
-
   /// Customer resource entitlement Sku name.
   final pulumi.Input<String>? customerEntitlementSkuName;
-
   /// Customer resource owner organization name.
   final pulumi.Input<String> customerOrgName;
-
   /// Customer resource average egress in Mbps.
   final pulumi.Input<double> customerPropertiesOverviewAverageEgressMbps;
-
   /// Customer resource average cache miss throughput in Mbps.
   final pulumi.Input<double> customerPropertiesOverviewAverageMissMbps;
-
   /// Customer resource cache efficiency.
   final pulumi.Input<double> customerPropertiesOverviewCacheEfficiency;
-
   /// Customer resource total healthy cache nodes.
   final pulumi.Input<int> customerPropertiesOverviewCacheNodesHealthyCount;
-
   /// Customer resource total unhealthy cache nodes.
   final pulumi.Input<int> customerPropertiesOverviewCacheNodesUnhealthyCount;
-
   /// Customer resource maximum egress in Mbps.
   final pulumi.Input<double> customerPropertiesOverviewEgressMbpsMax;
-
   /// Customer resource peak egress timestamp.
   final pulumi.Input<String> customerPropertiesOverviewEgressMbpsMaxDateTime;
-
   /// Customer resource maximum cache miss throughput in Mbps.
   final pulumi.Input<double> customerPropertiesOverviewMissMbpsMax;
-
   /// Customer resource peak cache miss throughput timestamp.
   final pulumi.Input<String> customerPropertiesOverviewMissMbpsMaxDateTime;
-
   /// Customer resource transit Asn (autonomous system number).
   final pulumi.Input<String>? customerTransitAsn;
-
   /// Customer resource transit state.
   final pulumi.Input<String>? customerTransitState;
-
   /// Optional property #1 of Mcc response object.
   final pulumi.Input<String>? optionalProperty1;
-
   /// Optional property #2 of Mcc response object.
   final pulumi.Input<String>? optionalProperty2;
-
   /// Optional property #3 of Mcc response object.
   final pulumi.Input<String>? optionalProperty3;
-
   /// Optional property #4 of Mcc response object.
   final pulumi.Input<String>? optionalProperty4;
-
   /// Optional property #5 of Mcc response object.
   final pulumi.Input<String>? optionalProperty5;
-
   /// Customer resource last PeeringDB update timestamp.
   final pulumi.Input<String> peeringDbLastUpdateDate;
-
   /// Customer resource last PeeringDB update timestamp.
   final pulumi.Input<String> peeringDbLastUpdateTime;
-
   /// Customer resource signup phase status code as integer.
   final pulumi.Input<int> signupPhaseStatusCode;
-
   /// Customer resource signup phase status as string text.
   final pulumi.Input<String> signupPhaseStatusText;
-
   /// Customer resource signup status as boolean.
   final pulumi.Input<bool> signupStatus;
-
   /// Customer resource signup status as integer code.
   final pulumi.Input<int> signupStatusCode;
-
   /// Customer resource signup status as string text.
   final pulumi.Input<String> signupStatusText;
 
@@ -173,24 +143,15 @@ class AdditionalCustomerPropertiesResponse {
       'customerEntitlementSkuId': ?customerEntitlementSkuId,
       'customerEntitlementSkuName': ?customerEntitlementSkuName,
       'customerOrgName': customerOrgName,
-      'customerPropertiesOverviewAverageEgressMbps':
-          customerPropertiesOverviewAverageEgressMbps,
-      'customerPropertiesOverviewAverageMissMbps':
-          customerPropertiesOverviewAverageMissMbps,
-      'customerPropertiesOverviewCacheEfficiency':
-          customerPropertiesOverviewCacheEfficiency,
-      'customerPropertiesOverviewCacheNodesHealthyCount':
-          customerPropertiesOverviewCacheNodesHealthyCount,
-      'customerPropertiesOverviewCacheNodesUnhealthyCount':
-          customerPropertiesOverviewCacheNodesUnhealthyCount,
-      'customerPropertiesOverviewEgressMbpsMax':
-          customerPropertiesOverviewEgressMbpsMax,
-      'customerPropertiesOverviewEgressMbpsMaxDateTime':
-          customerPropertiesOverviewEgressMbpsMaxDateTime,
-      'customerPropertiesOverviewMissMbpsMax':
-          customerPropertiesOverviewMissMbpsMax,
-      'customerPropertiesOverviewMissMbpsMaxDateTime':
-          customerPropertiesOverviewMissMbpsMaxDateTime,
+      'customerPropertiesOverviewAverageEgressMbps': customerPropertiesOverviewAverageEgressMbps,
+      'customerPropertiesOverviewAverageMissMbps': customerPropertiesOverviewAverageMissMbps,
+      'customerPropertiesOverviewCacheEfficiency': customerPropertiesOverviewCacheEfficiency,
+      'customerPropertiesOverviewCacheNodesHealthyCount': customerPropertiesOverviewCacheNodesHealthyCount,
+      'customerPropertiesOverviewCacheNodesUnhealthyCount': customerPropertiesOverviewCacheNodesUnhealthyCount,
+      'customerPropertiesOverviewEgressMbpsMax': customerPropertiesOverviewEgressMbpsMax,
+      'customerPropertiesOverviewEgressMbpsMaxDateTime': customerPropertiesOverviewEgressMbpsMaxDateTime,
+      'customerPropertiesOverviewMissMbpsMax': customerPropertiesOverviewMissMbpsMax,
+      'customerPropertiesOverviewMissMbpsMaxDateTime': customerPropertiesOverviewMissMbpsMaxDateTime,
       'customerTransitAsn': ?customerTransitAsn,
       'customerTransitState': ?customerTransitState,
       'optionalProperty1': ?optionalProperty1,
@@ -208,124 +169,40 @@ class AdditionalCustomerPropertiesResponse {
     };
   }
 
-  factory AdditionalCustomerPropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AdditionalCustomerPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AdditionalCustomerPropertiesResponse(
-      customerAsn: (() {
-        final guardedValue = map['customerAsn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      customerAsnEstimatedEgressPeekGbps: pulumi.Input.fromValue(
-        map['customerAsnEstimatedEgressPeekGbps'] as double,
-      ),
-      customerEmail: (() {
-        final guardedValue = map['customerEmail'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      customerEntitlementExpiration: (() {
-        final guardedValue = map['customerEntitlementExpiration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      customerEntitlementSkuGuid: (() {
-        final guardedValue = map['customerEntitlementSkuGuid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      customerEntitlementSkuId: (() {
-        final guardedValue = map['customerEntitlementSkuId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      customerEntitlementSkuName: (() {
-        final guardedValue = map['customerEntitlementSkuName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      customerAsn: (() { final guardedValue = map['customerAsn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      customerAsnEstimatedEgressPeekGbps: pulumi.Input.fromValue(map['customerAsnEstimatedEgressPeekGbps'] as double),
+      customerEmail: (() { final guardedValue = map['customerEmail']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      customerEntitlementExpiration: (() { final guardedValue = map['customerEntitlementExpiration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      customerEntitlementSkuGuid: (() { final guardedValue = map['customerEntitlementSkuGuid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      customerEntitlementSkuId: (() { final guardedValue = map['customerEntitlementSkuId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      customerEntitlementSkuName: (() { final guardedValue = map['customerEntitlementSkuName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       customerOrgName: pulumi.Input.fromValue(map['customerOrgName'] as String),
-      customerPropertiesOverviewAverageEgressMbps: pulumi.Input.fromValue(
-        map['customerPropertiesOverviewAverageEgressMbps'] as double,
-      ),
-      customerPropertiesOverviewAverageMissMbps: pulumi.Input.fromValue(
-        map['customerPropertiesOverviewAverageMissMbps'] as double,
-      ),
-      customerPropertiesOverviewCacheEfficiency: pulumi.Input.fromValue(
-        map['customerPropertiesOverviewCacheEfficiency'] as double,
-      ),
-      customerPropertiesOverviewCacheNodesHealthyCount: pulumi.Input.fromValue(
-        map['customerPropertiesOverviewCacheNodesHealthyCount'] as int,
-      ),
-      customerPropertiesOverviewCacheNodesUnhealthyCount:
-          pulumi.Input.fromValue(
-            map['customerPropertiesOverviewCacheNodesUnhealthyCount'] as int,
-          ),
-      customerPropertiesOverviewEgressMbpsMax: pulumi.Input.fromValue(
-        map['customerPropertiesOverviewEgressMbpsMax'] as double,
-      ),
-      customerPropertiesOverviewEgressMbpsMaxDateTime: pulumi.Input.fromValue(
-        map['customerPropertiesOverviewEgressMbpsMaxDateTime'] as String,
-      ),
-      customerPropertiesOverviewMissMbpsMax: pulumi.Input.fromValue(
-        map['customerPropertiesOverviewMissMbpsMax'] as double,
-      ),
-      customerPropertiesOverviewMissMbpsMaxDateTime: pulumi.Input.fromValue(
-        map['customerPropertiesOverviewMissMbpsMaxDateTime'] as String,
-      ),
-      customerTransitAsn: (() {
-        final guardedValue = map['customerTransitAsn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      customerTransitState: (() {
-        final guardedValue = map['customerTransitState'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      optionalProperty1: (() {
-        final guardedValue = map['optionalProperty1'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      optionalProperty2: (() {
-        final guardedValue = map['optionalProperty2'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      optionalProperty3: (() {
-        final guardedValue = map['optionalProperty3'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      optionalProperty4: (() {
-        final guardedValue = map['optionalProperty4'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      optionalProperty5: (() {
-        final guardedValue = map['optionalProperty5'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      peeringDbLastUpdateDate: pulumi.Input.fromValue(
-        map['peeringDbLastUpdateDate'] as String,
-      ),
-      peeringDbLastUpdateTime: pulumi.Input.fromValue(
-        map['peeringDbLastUpdateTime'] as String,
-      ),
-      signupPhaseStatusCode: pulumi.Input.fromValue(
-        map['signupPhaseStatusCode'] as int,
-      ),
-      signupPhaseStatusText: pulumi.Input.fromValue(
-        map['signupPhaseStatusText'] as String,
-      ),
+      customerPropertiesOverviewAverageEgressMbps: pulumi.Input.fromValue(map['customerPropertiesOverviewAverageEgressMbps'] as double),
+      customerPropertiesOverviewAverageMissMbps: pulumi.Input.fromValue(map['customerPropertiesOverviewAverageMissMbps'] as double),
+      customerPropertiesOverviewCacheEfficiency: pulumi.Input.fromValue(map['customerPropertiesOverviewCacheEfficiency'] as double),
+      customerPropertiesOverviewCacheNodesHealthyCount: pulumi.Input.fromValue(map['customerPropertiesOverviewCacheNodesHealthyCount'] as int),
+      customerPropertiesOverviewCacheNodesUnhealthyCount: pulumi.Input.fromValue(map['customerPropertiesOverviewCacheNodesUnhealthyCount'] as int),
+      customerPropertiesOverviewEgressMbpsMax: pulumi.Input.fromValue(map['customerPropertiesOverviewEgressMbpsMax'] as double),
+      customerPropertiesOverviewEgressMbpsMaxDateTime: pulumi.Input.fromValue(map['customerPropertiesOverviewEgressMbpsMaxDateTime'] as String),
+      customerPropertiesOverviewMissMbpsMax: pulumi.Input.fromValue(map['customerPropertiesOverviewMissMbpsMax'] as double),
+      customerPropertiesOverviewMissMbpsMaxDateTime: pulumi.Input.fromValue(map['customerPropertiesOverviewMissMbpsMaxDateTime'] as String),
+      customerTransitAsn: (() { final guardedValue = map['customerTransitAsn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      customerTransitState: (() { final guardedValue = map['customerTransitState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      optionalProperty1: (() { final guardedValue = map['optionalProperty1']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      optionalProperty2: (() { final guardedValue = map['optionalProperty2']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      optionalProperty3: (() { final guardedValue = map['optionalProperty3']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      optionalProperty4: (() { final guardedValue = map['optionalProperty4']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      optionalProperty5: (() { final guardedValue = map['optionalProperty5']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      peeringDbLastUpdateDate: pulumi.Input.fromValue(map['peeringDbLastUpdateDate'] as String),
+      peeringDbLastUpdateTime: pulumi.Input.fromValue(map['peeringDbLastUpdateTime'] as String),
+      signupPhaseStatusCode: pulumi.Input.fromValue(map['signupPhaseStatusCode'] as int),
+      signupPhaseStatusText: pulumi.Input.fromValue(map['signupPhaseStatusText'] as String),
       signupStatus: pulumi.Input.fromValue(map['signupStatus'] as bool),
       signupStatusCode: pulumi.Input.fromValue(map['signupStatusCode'] as int),
-      signupStatusText: pulumi.Input.fromValue(
-        map['signupStatusText'] as String,
-      ),
+      signupStatusText: pulumi.Input.fromValue(map['signupStatusText'] as String),
     );
   }
 }
+

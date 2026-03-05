@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainDevicesInterfaceVirtualPortParamsVepa8021qbg {
   /// Sets the instance ID for the VEPA8021QBG virtual port parameters.
   final pulumi.Input<String>? instanceId;
-
   /// Specifies the manager ID for the VEPA8021QBG virtual port parameters.
   final pulumi.Input<double>? managerId;
-
   /// Sets the type ID for the VEPA8021QBG virtual port parameters.
   final pulumi.Input<double>? typeId;
-
   /// Indicates the version of the type ID for the VEPA8021QBG virtual port parameters.
   final pulumi.Input<double>? typeIdVersion;
 
@@ -36,30 +33,13 @@ class DomainDevicesInterfaceVirtualPortParamsVepa8021qbg {
     };
   }
 
-  factory DomainDevicesInterfaceVirtualPortParamsVepa8021qbg.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDevicesInterfaceVirtualPortParamsVepa8021qbg.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceVirtualPortParamsVepa8021qbg(
-      instanceId: (() {
-        final guardedValue = map['instanceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      managerId: (() {
-        final guardedValue = map['managerId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      typeId: (() {
-        final guardedValue = map['typeId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      typeIdVersion: (() {
-        final guardedValue = map['typeIdVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      instanceId: (() { final guardedValue = map['instanceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      managerId: (() { final guardedValue = map['managerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      typeId: (() { final guardedValue = map['typeId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      typeIdVersion: (() { final guardedValue = map['typeIdVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

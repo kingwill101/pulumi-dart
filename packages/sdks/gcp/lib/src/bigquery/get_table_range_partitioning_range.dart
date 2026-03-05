@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTableRangePartitioningRange {
   /// End of the range partitioning, exclusive.
   final pulumi.Input<int> end;
-
   /// The width of each range within the partition.
   final pulumi.Input<int> interval;
-
   /// Start of the range partitioning, inclusive.
   final pulumi.Input<int> start;
 
@@ -23,7 +21,11 @@ class GetTableRangePartitioningRange {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'end': end, 'interval': interval, 'start': start};
+    return <String, dynamic>{
+      'end': end,
+      'interval': interval,
+      'start': start,
+    };
   }
 
   factory GetTableRangePartitioningRange.fromMap(Map<String, dynamic> map) {
@@ -34,3 +36,4 @@ class GetTableRangePartitioningRange {
     );
   }
 }
+

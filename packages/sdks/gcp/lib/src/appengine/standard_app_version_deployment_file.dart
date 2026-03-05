@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StandardAppVersionDeploymentFile {
   /// The identifier for this object. Format specified above.
   final pulumi.Input<String> name;
-
   /// SHA1 checksum of the file
   final pulumi.Input<String>? sha1Sum;
-
   /// Source URL
   final pulumi.Input<String> sourceUrl;
 
@@ -33,12 +31,9 @@ class StandardAppVersionDeploymentFile {
   factory StandardAppVersionDeploymentFile.fromMap(Map<String, dynamic> map) {
     return StandardAppVersionDeploymentFile(
       name: pulumi.Input.fromValue(map['name'] as String),
-      sha1Sum: (() {
-        final guardedValue = map['sha1Sum'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      sha1Sum: (() { final guardedValue = map['sha1Sum']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sourceUrl: pulumi.Input.fromValue(map['sourceUrl'] as String),
     );
   }
 }
+

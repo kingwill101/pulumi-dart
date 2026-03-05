@@ -6,15 +6,12 @@ class WorkforcePoolProviderKeyKeyData {
   /// (Output)
   /// The format of the key.
   final pulumi.Input<String>? format;
-
   /// (Output)
   /// The key data. The format of the key is represented by the format field.
   final pulumi.Input<String>? key;
-
   /// The specifications for the key.
   /// Possible values are: `RSA_2048`, `RSA_3072`, `RSA_4096`.
   final pulumi.Input<String> keySpec;
-
   /// (Output)
   /// Latest timestamp when this key is valid. Attempts to use this key after this time will fail.
   /// Only present if the key data represents a X.509 certificate.
@@ -22,7 +19,6 @@ class WorkforcePoolProviderKeyKeyData {
   /// Offsets other than "Z" are also accepted.
   /// Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
   final pulumi.Input<String>? notAfterTime;
-
   /// (Output)
   /// Earliest timestamp when this key is valid. Attempts to use this key before this time will fail.
   /// Only present if the key data represents a X.509 certificate.
@@ -57,27 +53,12 @@ class WorkforcePoolProviderKeyKeyData {
 
   factory WorkforcePoolProviderKeyKeyData.fromMap(Map<String, dynamic> map) {
     return WorkforcePoolProviderKeyKeyData(
-      format: (() {
-        final guardedValue = map['format'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      key: (() {
-        final guardedValue = map['key'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      format: (() { final guardedValue = map['format']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       keySpec: pulumi.Input.fromValue(map['keySpec'] as String),
-      notAfterTime: (() {
-        final guardedValue = map['notAfterTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      notBeforeTime: (() {
-        final guardedValue = map['notBeforeTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      notAfterTime: (() { final guardedValue = map['notAfterTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      notBeforeTime: (() { final guardedValue = map['notBeforeTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

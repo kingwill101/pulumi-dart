@@ -16,3 +16,4 @@ enum DataStoreSolutionTypesItem {
     throw ArgumentError('Unknown DataStoreSolutionTypesItem value: $value');
   }
 }
+

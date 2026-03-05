@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VoiceConnectorGroupConnector {
   /// The priority associated with the Amazon Chime Voice Connector, with 1 being the highest priority. Higher priority Amazon Chime Voice Connectors are attempted first.
   final pulumi.Input<int> priority;
-
   /// The Amazon Chime Voice Connector ID.
   final pulumi.Input<String> voiceConnectorId;
 
@@ -27,9 +26,8 @@ class VoiceConnectorGroupConnector {
   factory VoiceConnectorGroupConnector.fromMap(Map<String, dynamic> map) {
     return VoiceConnectorGroupConnector(
       priority: pulumi.Input.fromValue(map['priority'] as int),
-      voiceConnectorId: pulumi.Input.fromValue(
-        map['voiceConnectorId'] as String,
-      ),
+      voiceConnectorId: pulumi.Input.fromValue(map['voiceConnectorId'] as String),
     );
   }
 }
+

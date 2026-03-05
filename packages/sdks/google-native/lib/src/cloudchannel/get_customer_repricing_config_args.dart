@@ -33,9 +33,8 @@ class GetCustomerRepricingConfigArgs {
     return GetCustomerRepricingConfigArgs(
       accountId: pulumi.Input.fromValue(map['accountId'] as String),
       customerId: pulumi.Input.fromValue(map['customerId'] as String),
-      customerRepricingConfigId: pulumi.Input.fromValue(
-        map['customerRepricingConfigId'] as String,
-      ),
+      customerRepricingConfigId: pulumi.Input.fromValue(map['customerRepricingConfigId'] as String),
     );
   }
 }
+

@@ -327,64 +327,47 @@ import 'load_balancer_state.dart';
 class LoadBalancer extends pulumi.CustomResource {
   /// Specify the IP address of the private network for the SLB instance, which must be in the destination CIDR block of the correspond ing switch.
   late final pulumi.Output<String> address;
-
   /// The IP version of the SLB instance to be created, which can be set to ipv4 or ipv6 . Default to "ipv4". Now, only internet instance support ipv6 address.
   late final pulumi.Output<String?> addressIpVersion;
-
   /// The network type of the SLB instance. Valid values: ["internet", "intranet"]. If load balancer launched in VPC, this value must be "intranet".
   /// - internet: After an Internet SLB instance is created, the system allocates a public IP address so that the instance can forward requests from the Internet.
   /// - intranet: After an intranet SLB instance is created, the system allocates an intranet IP address so that the instance can only forward intranet requests.
   late final pulumi.Output<String> addressType;
-
   /// Valid
   /// value is between 1 and 1000, If argument "internet_charge_type" is "paybytraffic", then this value will be ignore.
   late final pulumi.Output<int?> bandwidth;
-
   /// Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.
   late final pulumi.Output<String?> deleteProtection;
-
   /// The billing method of the load balancer. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
   late final pulumi.Output<String> instanceChargeType;
-
   /// Valid
   /// values are `PayByBandwidth`, `PayByTraffic`. If this value is "PayByBandwidth", then argument "internet" must be "true". Default is "PayByTraffic". If load balancer launched in VPC, this value must be "PayByTraffic".
   /// Before version 1.10.1, the valid values are "paybybandwidth" and "paybytraffic".
   late final pulumi.Output<String?> internetChargeType;
   late final pulumi.Output<String> loadBalancerName;
-
   /// The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance. Launching "Performance-guaranteed" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`.
   late final pulumi.Output<String> loadBalancerSpec;
-
   /// The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
   late final pulumi.Output<String> masterZoneId;
-
   /// The reason of modification protection. It's effective when `modification_protection_status` is `ConsoleProtection`.
   late final pulumi.Output<String?> modificationProtectionReason;
-
   /// The status of modification protection. Valid values: `ConsoleProtection` and `NonProtection`. Default value: `NonProtection`.
   late final pulumi.Output<String> modificationProtectionStatus;
-
   /// Field `name` has been deprecated from provider version 1.123.1 New field `load_balancer_name` instead.
   late final pulumi.Output<String> name;
-
   /// The billing method of the load balancer. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
   late final pulumi.Output<String> paymentType;
-
   /// The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36].
   /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
   late final pulumi.Output<int?> period;
-
   /// The Id of resource group which the SLB belongs.
   late final pulumi.Output<String> resourceGroupId;
-
   /// The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
   late final pulumi.Output<String> slaveZoneId;
-
   /// The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
   /// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/en/slb/product-overview/announcements-and-updates)" instance, it is must be specified and it valid values are: "slb.s1.small", "slb.s2.small", "slb.s2.medium",
   /// "slb.s3.small", "slb.s3.medium", "slb.s3.large" and "slb.s4.large".
   late final pulumi.Output<String> specification;
-
   /// The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
   ///
   /// &gt; **NOTE:** A "Shared-Performance" instance can be changed to "Performance-guaranteed", but the change is irreversible.
@@ -393,10 +376,8 @@ class LoadBalancer extends pulumi.CustomResource {
   ///
   /// &gt; **NOTE:** Currently, the alibaba cloud international account does not support creating a PrePaid SLB instance.
   late final pulumi.Output<String> status;
-
   /// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
   late final pulumi.Output<Map<String, String>> tags;
-
   /// The vSwitch ID to launch in. If `address_type` is internet, it will be ignore.
   late final pulumi.Output<String?> vswitchId;
 
@@ -409,11 +390,11 @@ class LoadBalancer extends pulumi.CustomResource {
     LoadBalancerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:slb/loadBalancer:LoadBalancer',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:slb/loadBalancer:LoadBalancer',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     address = registerOutput<String>('address');
     addressIpVersion = registerOutput<String?>('addressIpVersion');
     addressType = registerOutput<String>('addressType');
@@ -424,12 +405,8 @@ class LoadBalancer extends pulumi.CustomResource {
     loadBalancerName = registerOutput<String>('loadBalancerName');
     loadBalancerSpec = registerOutput<String>('loadBalancerSpec');
     masterZoneId = registerOutput<String>('masterZoneId');
-    modificationProtectionReason = registerOutput<String?>(
-      'modificationProtectionReason',
-    );
-    modificationProtectionStatus = registerOutput<String>(
-      'modificationProtectionStatus',
-    );
+    modificationProtectionReason = registerOutput<String?>('modificationProtectionReason');
+    modificationProtectionStatus = registerOutput<String>('modificationProtectionStatus');
     this.name = registerOutput<String>('name');
     paymentType = registerOutput<String>('paymentType');
     period = registerOutput<int?>('period');
@@ -459,11 +436,11 @@ class LoadBalancer extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:slb/loadBalancer:LoadBalancer',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:slb/loadBalancer:LoadBalancer',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     address = registerOutput<String>('address');
     addressIpVersion = registerOutput<String?>('addressIpVersion');
     addressType = registerOutput<String>('addressType');
@@ -474,12 +451,8 @@ class LoadBalancer extends pulumi.CustomResource {
     loadBalancerName = registerOutput<String>('loadBalancerName');
     loadBalancerSpec = registerOutput<String>('loadBalancerSpec');
     masterZoneId = registerOutput<String>('masterZoneId');
-    modificationProtectionReason = registerOutput<String?>(
-      'modificationProtectionReason',
-    );
-    modificationProtectionStatus = registerOutput<String>(
-      'modificationProtectionStatus',
-    );
+    modificationProtectionReason = registerOutput<String?>('modificationProtectionReason');
+    modificationProtectionStatus = registerOutput<String>('modificationProtectionStatus');
     this.name = registerOutput<String>('name');
     paymentType = registerOutput<String>('paymentType');
     period = registerOutput<int?>('period');

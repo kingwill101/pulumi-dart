@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OSPolicyResourceRepositoryResourceYumRepositoryResponseOsconfigV1alpha {
   /// The location of the repository directory.
   final pulumi.Input<String> baseUrl;
-
   /// The display name of the repository.
   final pulumi.Input<String> displayName;
-
   /// URIs of GPG keys.
   final pulumi.Input<List<String>> gpgKeys;
 
@@ -31,9 +29,7 @@ class OSPolicyResourceRepositoryResourceYumRepositoryResponseOsconfigV1alpha {
     };
   }
 
-  factory OSPolicyResourceRepositoryResourceYumRepositoryResponseOsconfigV1alpha.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OSPolicyResourceRepositoryResourceYumRepositoryResponseOsconfigV1alpha.fromMap(Map<String, dynamic> map) {
     return OSPolicyResourceRepositoryResourceYumRepositoryResponseOsconfigV1alpha(
       baseUrl: pulumi.Input.fromValue(map['baseUrl'] as String),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
@@ -41,3 +37,4 @@ class OSPolicyResourceRepositoryResourceYumRepositoryResponseOsconfigV1alpha {
     );
   }
 }
+

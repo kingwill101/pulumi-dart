@@ -16,7 +16,11 @@ class GetJobIamPolicyArgs {
   /// [jobId] The name or relative resource id of the job to manage IAM policies for.
   /// [project] Optional.
   /// [region] Optional.
-  GetJobIamPolicyArgs({required this.jobId, this.project, this.region});
+  GetJobIamPolicyArgs({
+    required this.jobId,
+    this.project,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,16 +33,9 @@ class GetJobIamPolicyArgs {
   factory GetJobIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetJobIamPolicyArgs(
       jobId: pulumi.Input.fromValue(map['jobId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

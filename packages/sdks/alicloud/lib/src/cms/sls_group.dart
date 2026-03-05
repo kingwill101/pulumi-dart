@@ -392,10 +392,8 @@ import 'sls_group_state.dart';
 class SlsGroup extends pulumi.CustomResource {
   /// The Config of the Sls Group. You can specify up to 25 Config. See `sls_group_config` below.
   late final pulumi.Output<List<Map<String, dynamic>>> slsGroupConfigs;
-
   /// The Description of the Sls Group.
   late final pulumi.Output<String?> slsGroupDescription;
-
   /// The name of the resource. The name must be `2` to `32` characters in length, and can contain letters, digits and underscores (_). It must start with a letter.
   late final pulumi.Output<String> slsGroupName;
 
@@ -408,14 +406,12 @@ class SlsGroup extends pulumi.CustomResource {
     SlsGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cms/slsGroup:SlsGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    slsGroupConfigs = registerOutput<List<Map<String, dynamic>>>(
-      'slsGroupConfigs',
-    );
+          'alicloud:cms/slsGroup:SlsGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    slsGroupConfigs = registerOutput<List<Map<String, dynamic>>>('slsGroupConfigs');
     slsGroupDescription = registerOutput<String?>('slsGroupDescription');
     slsGroupName = registerOutput<String>('slsGroupName');
   }
@@ -438,14 +434,12 @@ class SlsGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cms/slsGroup:SlsGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    slsGroupConfigs = registerOutput<List<Map<String, dynamic>>>(
-      'slsGroupConfigs',
-    );
+          'alicloud:cms/slsGroup:SlsGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    slsGroupConfigs = registerOutput<List<Map<String, dynamic>>>('slsGroupConfigs');
     slsGroupDescription = registerOutput<String?>('slsGroupDescription');
     slsGroupName = registerOutput<String>('slsGroupName');
   }

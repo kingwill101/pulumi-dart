@@ -473,43 +473,30 @@ import 'ecs_snapshot_state.dart';
 class EcsSnapshot extends pulumi.CustomResource {
   /// The category of the snapshot. Valid values:
   late final pulumi.Output<String> category;
-
   /// (Available since v1.239.0) The time when the snapshot was created.
   late final pulumi.Output<String> createTime;
-
   /// The description of the snapshot.
   late final pulumi.Output<String?> description;
-
   /// The ID of the disk.
   late final pulumi.Output<String> diskId;
-
   /// Specifies whether to force delete the snapshot that has been used to create disks. Valid values:
   late final pulumi.Output<bool?> force;
-
   /// Field `instant_access` has been deprecated from provider version 1.231.0.
   late final pulumi.Output<bool?> instantAccess;
-
   /// Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.
   late final pulumi.Output<int?> instantAccessRetentionDays;
-
   /// Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.
   late final pulumi.Output<String> name;
-
   /// (Available since v1.239.0) The region ID of the snapshot.
   late final pulumi.Output<String> regionId;
-
   /// The ID of the resource group. **NOTE:** From version 1.239.0, `resource_group_id` can be modified.
   late final pulumi.Output<String?> resourceGroupId;
-
   /// The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retention_days` can be modified.
   late final pulumi.Output<int?> retentionDays;
-
   /// The name of the snapshot.
   late final pulumi.Output<String> snapshotName;
-
   /// The status of the Snapshot.
   late final pulumi.Output<String> status;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -522,20 +509,18 @@ class EcsSnapshot extends pulumi.CustomResource {
     EcsSnapshotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ecs/ecsSnapshot:EcsSnapshot',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ecs/ecsSnapshot:EcsSnapshot',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     category = registerOutput<String>('category');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     diskId = registerOutput<String>('diskId');
     force = registerOutput<bool?>('force');
     instantAccess = registerOutput<bool?>('instantAccess');
-    instantAccessRetentionDays = registerOutput<int?>(
-      'instantAccessRetentionDays',
-    );
+    instantAccessRetentionDays = registerOutput<int?>('instantAccessRetentionDays');
     this.name = registerOutput<String>('name');
     regionId = registerOutput<String>('regionId');
     resourceGroupId = registerOutput<String?>('resourceGroupId');
@@ -563,20 +548,18 @@ class EcsSnapshot extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ecs/ecsSnapshot:EcsSnapshot',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ecs/ecsSnapshot:EcsSnapshot',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     category = registerOutput<String>('category');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     diskId = registerOutput<String>('diskId');
     force = registerOutput<bool?>('force');
     instantAccess = registerOutput<bool?>('instantAccess');
-    instantAccessRetentionDays = registerOutput<int?>(
-      'instantAccessRetentionDays',
-    );
+    instantAccessRetentionDays = registerOutput<int?>('instantAccessRetentionDays');
     this.name = registerOutput<String>('name');
     regionId = registerOutput<String>('regionId');
     resourceGroupId = registerOutput<String?>('resourceGroupId');

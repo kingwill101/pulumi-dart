@@ -7,23 +7,18 @@ import 'get_public_ipv4_pool_pool_address_range.dart';
 class GetPublicIpv4PoolResult {
   /// Description of the pool, if any.
   final String description;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Name of the location from which the address pool is advertised.
   /// * pool_address_ranges` - List of Address Ranges in the Pool; each address range record contains:
   final String networkBorderGroup;
   final List<GetPublicIpv4PoolPoolAddressRange> poolAddressRanges;
   final String poolId;
   final String region;
-
   /// Any tags for the address pool.
   final Map<String, String> tags;
-
   /// Total number of addresses in the pool.
   final int totalAddressCount;
-
   /// Total number of available addresses in the pool.
   final int totalAvailableAddressCount;
 
@@ -54,11 +49,7 @@ class GetPublicIpv4PoolResult {
       'description': description,
       'id': id,
       'networkBorderGroup': networkBorderGroup,
-      'poolAddressRanges':
-          pulumi.Input.encodeList<
-            GetPublicIpv4PoolPoolAddressRange,
-            Map<String, dynamic>
-          >(poolAddressRanges, (value) => value.toMap()),
+      'poolAddressRanges': pulumi.Input.encodeList<GetPublicIpv4PoolPoolAddressRange, Map<String, dynamic>>(poolAddressRanges, (value) => value.toMap()),
       'poolId': poolId,
       'region': region,
       'tags': tags,
@@ -72,13 +63,7 @@ class GetPublicIpv4PoolResult {
       description: map['description'] as String,
       id: map['id'] as String,
       networkBorderGroup: map['networkBorderGroup'] as String,
-      poolAddressRanges:
-          pulumi.Input.decodeList<GetPublicIpv4PoolPoolAddressRange>(
-            map['poolAddressRanges']!,
-            (value) => GetPublicIpv4PoolPoolAddressRange.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      poolAddressRanges: pulumi.Input.decodeList<GetPublicIpv4PoolPoolAddressRange>(map['poolAddressRanges']!, (value) => GetPublicIpv4PoolPoolAddressRange.fromMap((value as Map).cast<String, dynamic>())),
       poolId: map['poolId'] as String,
       region: map['region'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
@@ -87,3 +72,4 @@ class GetPublicIpv4PoolResult {
     );
   }
 }
+

@@ -149,42 +149,32 @@ import 'template_template_metadata.dart';
 class Template extends pulumi.CustomResource {
   /// Create time stamp
   late final pulumi.Output<String> createTime;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Filters configuration.
   /// Structure is documented below.
   late final pulumi.Output<TemplateFilterConfig> filterConfig;
-
   /// Labels as key value pairs
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> location;
-
   /// Identifier. name of resource
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// Id of the requesting object
   /// If auto-generating Id server-side, remove this field and
   /// template_id from the method_signature of Create RPC
   late final pulumi.Output<String> templateId;
-
   /// Message describing TemplateMetadata
   /// Structure is documented below.
   late final pulumi.Output<TemplateTemplateMetadata?> templateMetadata;
-
   /// Update time stamp
   late final pulumi.Output<String> updateTime;
 
@@ -197,39 +187,21 @@ class Template extends pulumi.CustomResource {
     TemplateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:modelarmor/template:Template',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:modelarmor/template:Template',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    filterConfig = registerOutput<TemplateFilterConfig>(
-      'filterConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TemplateFilterConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    filterConfig = registerOutput<TemplateFilterConfig>('filterConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TemplateFilterConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     templateId = registerOutput<String>('templateId');
-    templateMetadata = registerOutput<TemplateTemplateMetadata?>(
-      'templateMetadata',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TemplateTemplateMetadata.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    templateMetadata = registerOutput<TemplateTemplateMetadata?>('templateMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TemplateTemplateMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updateTime = registerOutput<String>('updateTime');
   }
 
@@ -251,39 +223,21 @@ class Template extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:modelarmor/template:Template',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:modelarmor/template:Template',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    filterConfig = registerOutput<TemplateFilterConfig>(
-      'filterConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TemplateFilterConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    filterConfig = registerOutput<TemplateFilterConfig>('filterConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TemplateFilterConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     templateId = registerOutput<String>('templateId');
-    templateMetadata = registerOutput<TemplateTemplateMetadata?>(
-      'templateMetadata',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TemplateTemplateMetadata.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    templateMetadata = registerOutput<TemplateTemplateMetadata?>('templateMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TemplateTemplateMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updateTime = registerOutput<String>('updateTime');
   }
 }

@@ -13,8 +13,7 @@ enum OwnershipControlsRuleObjectOwnership {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown OwnershipControlsRuleObjectOwnership value: $value',
-    );
+    throw ArgumentError('Unknown OwnershipControlsRuleObjectOwnership value: $value');
   }
 }
+

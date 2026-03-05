@@ -293,26 +293,20 @@ import 'transit_router_prefix_list_association_state.dart';
 class TransitRouterPrefixListAssociation extends pulumi.CustomResource {
   /// The ID of the next hop. **NOTE:** If `next_hop` is set to `BlackHole`, you must set this parameter to `BlackHole`.
   late final pulumi.Output<String> nextHop;
-
   /// The type of the next hop. Valid values:
   /// - `BlackHole`: Specifies that all the CIDR blocks in the prefix list are blackhole routes. Packets destined for the CIDR blocks are dropped.
   /// - `VPC`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual private cloud (VPC) connection.
   /// - `VBR`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual border router (VBR) connection.
   /// - `TR`: Specifies that the next hop of the CIDR blocks in the prefix list is an inter-region connection.
   late final pulumi.Output<String> nextHopType;
-
   /// The ID of the Alibaba Cloud account to which the prefix list belongs.
   late final pulumi.Output<int> ownerUid;
-
   /// The ID of the prefix list.
   late final pulumi.Output<String> prefixListId;
-
   /// The status of the prefix list.
   late final pulumi.Output<String> status;
-
   /// The ID of the transit router.
   late final pulumi.Output<String> transitRouterId;
-
   /// The ID of the route table of the transit router.
   late final pulumi.Output<String> transitRouterTableId;
 
@@ -325,11 +319,11 @@ class TransitRouterPrefixListAssociation extends pulumi.CustomResource {
     TransitRouterPrefixListAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cen/transitRouterPrefixListAssociation:TransitRouterPrefixListAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cen/transitRouterPrefixListAssociation:TransitRouterPrefixListAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     nextHop = registerOutput<String>('nextHop');
     nextHopType = registerOutput<String>('nextHopType');
     ownerUid = registerOutput<int>('ownerUid');
@@ -357,11 +351,11 @@ class TransitRouterPrefixListAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cen/transitRouterPrefixListAssociation:TransitRouterPrefixListAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cen/transitRouterPrefixListAssociation:TransitRouterPrefixListAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     nextHop = registerOutput<String>('nextHop');
     nextHopType = registerOutput<String>('nextHopType');
     ownerUid = registerOutput<int>('ownerUid');

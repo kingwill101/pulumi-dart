@@ -9,17 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVpcSubnetArgs {
   /// The unique id of this VPC subnet.
   final pulumi.Input<String> id;
-
   /// The id of the parent VPC for this VPC Subnet.
   final pulumi.Input<int> vpcId;
 
   /// Creates a new [GetVpcSubnetArgs].
   /// [id] The unique id of this VPC subnet.
   /// [vpcId] The id of the parent VPC for this VPC Subnet.
-  GetVpcSubnetArgs({required this.id, required this.vpcId});
+  GetVpcSubnetArgs({
+    required this.id,
+    required this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id, 'vpcId': vpcId};
+    return <String, dynamic>{
+      'id': id,
+      'vpcId': vpcId,
+    };
   }
 
   factory GetVpcSubnetArgs.fromMap(Map<String, dynamic> map) {
@@ -29,3 +34,4 @@ class GetVpcSubnetArgs {
     );
   }
 }
+

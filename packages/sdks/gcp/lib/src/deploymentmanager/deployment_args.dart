@@ -17,7 +17,6 @@ class DeploymentArgs {
   /// Default value is `CREATE_OR_ACQUIRE`.
   /// Possible values are: `ACQUIRE`, `CREATE_OR_ACQUIRE`.
   final pulumi.Input<String>? createPolicy;
-
   /// Set the policy to use for deleting new resources on update/delete.
   /// Valid values are `DELETE` (default) or `ABANDON`. If `DELETE`,
   /// resource is deleted after removal from Deployment Manager. If
@@ -27,17 +26,13 @@ class DeploymentArgs {
   /// Default value is `DELETE`.
   /// Possible values are: `ABANDON`, `DELETE`.
   final pulumi.Input<String>? deletePolicy;
-
   /// Optional user-provided description of deployment.
   final pulumi.Input<String>? description;
-
   /// Key-value pairs to apply to this labels.
   /// Structure is documented below.
   final pulumi.Input<List<DeploymentLabel>>? labels;
-
   /// Unique name for the deployment
   final pulumi.Input<String>? name;
-
   /// If set to true, a deployment is created with "shell" resources
   /// that are not actually instantiated. This allows you to preview a
   /// deployment. It can be updated to false to actually deploy
@@ -47,11 +42,9 @@ class DeploymentArgs {
   /// the provider will force-recreate deployments if either preview is updated
   /// to true or if other fields are updated while preview is true.
   final pulumi.Input<bool>? preview;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// Parameters that define your deployment, including the deployment
   /// configuration and relevant templates.
   /// Structure is documented below.
@@ -82,77 +75,25 @@ class DeploymentArgs {
       'createPolicy': ?createPolicy,
       'deletePolicy': ?deletePolicy,
       'description': ?description,
-      'labels':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<DeploymentLabel>,
-            List<Map<String, dynamic>>
-          >(
-            labels,
-            (value) =>
-                pulumi.Input.encodeList<DeploymentLabel, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'labels': ?pulumi.Input.mapOptionalInputValue<List<DeploymentLabel>, List<Map<String, dynamic>>>(labels, (value) => pulumi.Input.encodeList<DeploymentLabel, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': ?name,
       'preview': ?preview,
       'project': ?project,
-      'target':
-          pulumi.Input.mapInputValue<DeploymentTarget, Map<String, dynamic>>(
-            target,
-            (value) => value.toMap(),
-          ),
+      'target': pulumi.Input.mapInputValue<DeploymentTarget, Map<String, dynamic>>(target, (value) => value.toMap()),
     };
   }
 
   factory DeploymentArgs.fromMap(Map<String, dynamic> map) {
     return DeploymentArgs(
-      createPolicy: (() {
-        final guardedValue = map['createPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      deletePolicy: (() {
-        final guardedValue = map['deletePolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<DeploymentLabel>(
-            guardedValue,
-            (value) =>
-                DeploymentLabel.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      preview: (() {
-        final guardedValue = map['preview'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      target: pulumi.Input.fromValue(
-        DeploymentTarget.fromMap(
-          (map['target']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      createPolicy: (() { final guardedValue = map['createPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletePolicy: (() { final guardedValue = map['deletePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DeploymentLabel>(guardedValue, (value) => DeploymentLabel.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      preview: (() { final guardedValue = map['preview']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      target: pulumi.Input.fromValue(DeploymentTarget.fromMap((map['target']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

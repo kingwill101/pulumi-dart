@@ -9,26 +9,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConsumerQuotaOverrideArgs {
   /// If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.
   final pulumi.Input<Map<String, String>>? dimensions;
-
   /// If the new quota would decrease the existing quota by more than 10%, the request is rejected.
   /// If `force` is `true`, that safety check is ignored.
   final pulumi.Input<bool>? force;
-
   /// The limit on the metric, e.g. `/project/region`.
   /// &gt; Make sure that `limit` is in a format that doesn't start with `1/` or contain curly braces.
   /// E.g. use `/project/user` instead of `1/{project}/{user}`.
   final pulumi.Input<String> limit;
-
   /// The metric that should be limited, e.g. `compute.googleapis.com/cpus`.
   final pulumi.Input<String> metric;
-
   /// The overriding quota limit value. Can be any nonnegative integer, or -1 (unlimited quota).
   final pulumi.Input<String> overrideValue;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The service that the metrics belong to, e.g. `compute.googleapis.com`.
   final pulumi.Input<String> service;
 
@@ -64,27 +58,14 @@ class ConsumerQuotaOverrideArgs {
 
   factory ConsumerQuotaOverrideArgs.fromMap(Map<String, dynamic> map) {
     return ConsumerQuotaOverrideArgs(
-      dimensions: (() {
-        final guardedValue = map['dimensions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      force: (() {
-        final guardedValue = map['force'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      dimensions: (() { final guardedValue = map['dimensions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      force: (() { final guardedValue = map['force']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       limit: pulumi.Input.fromValue(map['limit'] as String),
       metric: pulumi.Input.fromValue(map['metric'] as String),
       overrideValue: pulumi.Input.fromValue(map['overrideValue'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       service: pulumi.Input.fromValue(map['service'] as String),
     );
   }
 }
+

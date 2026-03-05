@@ -6,31 +6,22 @@ import 'sub_resource_response.dart';
 class GetVirtualHubBgpConnectionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The current state of the VirtualHub to Peer.
   final String connectionState;
-
   /// A unique read-only string that changes whenever the resource is updated.
   final String etag;
-
   /// The reference to the HubVirtualNetworkConnection resource.
   final SubResourceResponse? hubVirtualNetworkConnection;
-
   /// Resource ID.
   final String? id;
-
   /// Name of the connection.
   final String? name;
-
   /// Peer ASN.
   final double? peerAsn;
-
   /// Peer IP.
   final String? peerIp;
-
   /// The provisioning state of the resource.
   final String provisioningState;
-
   /// Connection type.
   final String type;
 
@@ -78,35 +69,14 @@ class GetVirtualHubBgpConnectionResult {
       azureApiVersion: map['azureApiVersion'] as String,
       connectionState: map['connectionState'] as String,
       etag: map['etag'] as String,
-      hubVirtualNetworkConnection: (() {
-        final guardedValue = map['hubVirtualNetworkConnection'];
-        if (guardedValue == null) return null;
-        return SubResourceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      peerAsn: (() {
-        final guardedValue = map['peerAsn'];
-        if (guardedValue == null) return null;
-        return guardedValue as double;
-      })(),
-      peerIp: (() {
-        final guardedValue = map['peerIp'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      hubVirtualNetworkConnection: (() { final guardedValue = map['hubVirtualNetworkConnection']; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      peerAsn: (() { final guardedValue = map['peerAsn']; if (guardedValue == null) return null; return guardedValue as double; })(),
+      peerIp: (() { final guardedValue = map['peerIp']; if (guardedValue == null) return null; return guardedValue as String; })(),
       provisioningState: map['provisioningState'] as String,
       type: map['type'] as String,
     );
   }
 }
+

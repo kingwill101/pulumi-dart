@@ -15,3 +15,4 @@ enum DnsEndpointType {
     throw ArgumentError('Unknown DnsEndpointType value: $value');
   }
 }
+

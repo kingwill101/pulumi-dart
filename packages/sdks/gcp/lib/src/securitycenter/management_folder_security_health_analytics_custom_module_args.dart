@@ -10,25 +10,18 @@ import 'management_folder_security_health_analytics_custom_module_custom_config.
 class ManagementFolderSecurityHealthAnalyticsCustomModuleArgs {
   /// The user specified custom configuration for the module.
   /// Structure is documented below.
-  final pulumi.Input<
-    ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfig
-  >?
-  customConfig;
-
+  final pulumi.Input<ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfig>? customConfig;
   /// The display name of the Security Health Analytics custom module. This
   /// display name becomes the finding category for all findings that are
   /// returned by this custom module. The display name must be between 1 and
   /// 128 characters, start with a lowercase letter, and contain alphanumeric
   /// characters or underscores only.
   final pulumi.Input<String>? displayName;
-
   /// The enablement state of the custom module.
   /// Possible values are: `ENABLED`, `DISABLED`.
   final pulumi.Input<String>? enablementState;
-
   /// Numerical ID of the parent folder.
   final pulumi.Input<String> folder;
-
   /// Location ID of the parent organization. If not provided, 'global' will be used as the default location.
   final pulumi.Input<String>? location;
 
@@ -48,11 +41,7 @@ class ManagementFolderSecurityHealthAnalyticsCustomModuleArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfig,
-            Map<String, dynamic>
-          >(customConfig, (value) => value.toMap()),
+      'customConfig': ?pulumi.Input.mapOptionalInputValue<ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfig, Map<String, dynamic>>(customConfig, (value) => value.toMap()),
       'displayName': ?displayName,
       'enablementState': ?enablementState,
       'folder': folder,
@@ -60,35 +49,14 @@ class ManagementFolderSecurityHealthAnalyticsCustomModuleArgs {
     };
   }
 
-  factory ManagementFolderSecurityHealthAnalyticsCustomModuleArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ManagementFolderSecurityHealthAnalyticsCustomModuleArgs.fromMap(Map<String, dynamic> map) {
     return ManagementFolderSecurityHealthAnalyticsCustomModuleArgs(
-      customConfig: (() {
-        final guardedValue = map['customConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      enablementState: (() {
-        final guardedValue = map['enablementState'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      customConfig: (() { final guardedValue = map['customConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      enablementState: (() { final guardedValue = map['enablementState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       folder: pulumi.Input.fromValue(map['folder'] as String),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

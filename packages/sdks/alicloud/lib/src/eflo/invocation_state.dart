@@ -11,24 +11,19 @@ class InvocationState {
   /// - Custom parameter names can a-zA-Z0-9 a combination of-_. Other characters are not supported. Parameter names are not case-sensitive.
   /// - A single custom parameter name cannot exceed 64 bytes.
   final pulumi.Input<String>? commandContent;
-
   /// Command ID
   final pulumi.Input<String>? commandId;
-
   /// The encoding of the script content. Value range:
   /// - PlainText: no encoding, using PlainText transmission.
   /// - Base64:Base64 encoding.
   ///
   /// Default value: PlainText. If you fill it randomly or wrongly, the value will be treated as a PlainText.
   final pulumi.Input<String>? contentEncoding;
-
   /// The command description.
   final pulumi.Input<String>? description;
-
   /// Whether custom parameters are included in the command.
   /// Default value: false.
   final pulumi.Input<bool>? enableParameter;
-
   /// The execution time of the scheduled execution command. Currently, three scheduled execution methods are supported: fixed interval execution (based on Rate expression), only once at a specified time, and timed execution based on clock (based on Cron expression).
   /// - Fixed time interval execution: Based on the Rate expression, the command is executed at the set time interval. Time intervals can be selected by seconds (s), minutes (m), hours (h), and days (d), which is suitable for scenarios where tasks are executed at fixed time intervals. The format is rate( ). If the execution is performed every 5 minutes, the format is rate(5m). Executing with a fixed time interval has the following limitations:
   /// - The set time interval is no more than 7 days and no less than 60 seconds, and must be greater than the timeout period of the scheduled task.
@@ -43,16 +38,12 @@ class InvocationState {
   ///
   /// For example, in China/Shanghai time, the command will be executed once every day at 10:15 am in 2022 in the format 0 15 10? * * 2022 Asia/Shanghai; In the eastern 8th District time, it will be executed every half hour from 10:00 a.m. to 11:30 a.m. every day in 2022, in the format of 0 0/30 10-11 * *? 2022 GMT +8:00; In UTC time, starting from 2022, it will be executed every 5 minutes from 14:00 P.M. to 14:55 p. M. Every two years in October, in the format of 0 0/5 14*10? 2022/2 UTC.
   final pulumi.Input<String>? frequency;
-
   /// The bootstrapper for script execution. The length cannot exceed 1KB.
   final pulumi.Input<String>? launcher;
-
   /// The command name.
   final pulumi.Input<String>? name;
-
   /// A list of nodes.
   final pulumi.Input<List<String>>? nodeIdLists;
-
   /// When the command contains custom parameters, the key-value pair of the custom parameters passed in when the command is executed. For example, if the command content is 'echo {{name}}', the key-value pair'{"name":"Jack"}'can be passed through the 'Parameter' parameter'. The custom parameter will automatically replace the variable value 'name' to get a new command that actually executes 'echo Jack '.
   ///
   /// The number of custom parameters ranges from 0 to 10, and you need to pay attention:
@@ -63,7 +54,6 @@ class InvocationState {
   ///
   /// The default value is empty, which means that the parameter is unset and the custom parameter is disabled.
   final pulumi.Input<Map<String, String>>? parameters;
-
   /// Sets the way the command is executed. Value range:
   /// - Once: Execute the command immediately.
   /// - Period: executes the command regularly. When the value of this parameter is 'Period', the 'Frequency' parameter must also be specified.
@@ -74,19 +64,15 @@ class InvocationState {
   /// - When the'frequency' parameter is not specified, the default value is'once '.
   /// - When the'frequency' parameter is specified, regardless of whether the parameter value has been set or not, it will be processed according to'period.
   final pulumi.Input<String>? repeatMode;
-
   /// The mode when the task is stopped (manually stopped or execution time-out interrupted). Possible values:
   /// Process: Stops the current script Process.
   /// ProcessTree: Stops the current process tree (the script process and the collection of all child processes it created)
   final pulumi.Input<String>? terminationMode;
-
   /// The timeout period for command execution. Unit: seconds. A timeout occurs when a command cannot be run due to a process, a missing module, or a missing cloud assistant Agent. After the timeout, the command process is forcibly terminated. Default value: 60.
   final pulumi.Input<int>? timeout;
-
   /// The name of the user who executed the command in the instance. The length must not exceed 255 characters.
   /// The instance of the Linux system. By default, the root user runs commands.
   final pulumi.Input<String>? username;
-
   /// You can customize the command execution path. The default path is as follows:
   /// Linux instance: the execution path is in the/home directory of the root user by default.
   final pulumi.Input<String>? workingDir;
@@ -147,83 +133,22 @@ class InvocationState {
 
   factory InvocationState.fromMap(Map<String, dynamic> map) {
     return InvocationState(
-      commandContent: (() {
-        final guardedValue = map['commandContent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      commandId: (() {
-        final guardedValue = map['commandId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      contentEncoding: (() {
-        final guardedValue = map['contentEncoding'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      enableParameter: (() {
-        final guardedValue = map['enableParameter'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      frequency: (() {
-        final guardedValue = map['frequency'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      launcher: (() {
-        final guardedValue = map['launcher'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      nodeIdLists: (() {
-        final guardedValue = map['nodeIdLists'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      parameters: (() {
-        final guardedValue = map['parameters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      repeatMode: (() {
-        final guardedValue = map['repeatMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      terminationMode: (() {
-        final guardedValue = map['terminationMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      timeout: (() {
-        final guardedValue = map['timeout'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      username: (() {
-        final guardedValue = map['username'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      workingDir: (() {
-        final guardedValue = map['workingDir'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      commandContent: (() { final guardedValue = map['commandContent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      commandId: (() { final guardedValue = map['commandId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      contentEncoding: (() { final guardedValue = map['contentEncoding']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      enableParameter: (() { final guardedValue = map['enableParameter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      frequency: (() { final guardedValue = map['frequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      launcher: (() { final guardedValue = map['launcher']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nodeIdLists: (() { final guardedValue = map['nodeIdLists']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      repeatMode: (() { final guardedValue = map['repeatMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      terminationMode: (() { final guardedValue = map['terminationMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      username: (() { final guardedValue = map['username']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      workingDir: (() { final guardedValue = map['workingDir']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

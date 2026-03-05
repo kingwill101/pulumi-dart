@@ -12,35 +12,23 @@ class UpdateProfile {
   /// Creates a new [UpdateProfile].
   /// [rollingUpdateProfile] This profile allows the customers to customize the rolling update.
   /// [updateMode] Optional.
-  UpdateProfile({this.rollingUpdateProfile, this.updateMode});
+  UpdateProfile({
+    this.rollingUpdateProfile,
+    this.updateMode,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'rollingUpdateProfile':
-          ?pulumi.Input.mapOptionalInputValue<
-            UpdateProfileRollingUpdateProfile,
-            Map<String, dynamic>
-          >(rollingUpdateProfile, (value) => value.toMap()),
+      'rollingUpdateProfile': ?pulumi.Input.mapOptionalInputValue<UpdateProfileRollingUpdateProfile, Map<String, dynamic>>(rollingUpdateProfile, (value) => value.toMap()),
       'updateMode': ?updateMode,
     };
   }
 
   factory UpdateProfile.fromMap(Map<String, dynamic> map) {
     return UpdateProfile(
-      rollingUpdateProfile: (() {
-        final guardedValue = map['rollingUpdateProfile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          UpdateProfileRollingUpdateProfile.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      updateMode: (() {
-        final guardedValue = map['updateMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      rollingUpdateProfile: (() { final guardedValue = map['rollingUpdateProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(UpdateProfileRollingUpdateProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      updateMode: (() { final guardedValue = map['updateMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -1,40 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getSubscription.
 class GetSubscriptionResult {
   /// The idle interval after which the Subscription is automatically deleted.
   final String autoDeleteOnIdle;
-
   /// Whether batched operations are enabled.
   final bool batchedOperationsEnabled;
-
   /// Does the ServiceBus Subscription have dead letter support on filter evaluation exceptions?
   final bool deadLetteringOnFilterEvaluationError;
-
   /// Does the Service Bus Subscription have dead letter support when a message expires?
   final bool deadLetteringOnMessageExpiration;
-
   /// The Default message timespan to live. This is the duration after which the message expires, starting from when the message is sent to Service Bus. This is the default value used when TimeToLive is not set on a message itself.
   final String defaultMessageTtl;
   final bool enableBatchedOperations;
-
   /// The name of a Queue or Topic to automatically forward Dead Letter messages to.
   final String forwardDeadLetteredMessagesTo;
-
   /// The name of a ServiceBus Queue or ServiceBus Topic where messages are automatically forwarded.
   final String forwardTo;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The lock duration for the subscription.
   final String lockDuration;
-
   /// The maximum number of deliveries.
   final int maxDeliveryCount;
   final String name;
   final String? namespaceName;
-
   /// Whether this ServiceBus Subscription supports session.
   final bool requiresSession;
   final String? resourceGroupName;
@@ -83,8 +74,7 @@ class GetSubscriptionResult {
     return <String, dynamic>{
       'autoDeleteOnIdle': autoDeleteOnIdle,
       'batchedOperationsEnabled': batchedOperationsEnabled,
-      'deadLetteringOnFilterEvaluationError':
-          deadLetteringOnFilterEvaluationError,
+      'deadLetteringOnFilterEvaluationError': deadLetteringOnFilterEvaluationError,
       'deadLetteringOnMessageExpiration': deadLetteringOnMessageExpiration,
       'defaultMessageTtl': defaultMessageTtl,
       'enableBatchedOperations': enableBatchedOperations,
@@ -106,40 +96,22 @@ class GetSubscriptionResult {
     return GetSubscriptionResult(
       autoDeleteOnIdle: map['autoDeleteOnIdle'] as String,
       batchedOperationsEnabled: map['batchedOperationsEnabled'] as bool,
-      deadLetteringOnFilterEvaluationError:
-          map['deadLetteringOnFilterEvaluationError'] as bool,
-      deadLetteringOnMessageExpiration:
-          map['deadLetteringOnMessageExpiration'] as bool,
+      deadLetteringOnFilterEvaluationError: map['deadLetteringOnFilterEvaluationError'] as bool,
+      deadLetteringOnMessageExpiration: map['deadLetteringOnMessageExpiration'] as bool,
       defaultMessageTtl: map['defaultMessageTtl'] as String,
       enableBatchedOperations: map['enableBatchedOperations'] as bool,
-      forwardDeadLetteredMessagesTo:
-          map['forwardDeadLetteredMessagesTo'] as String,
+      forwardDeadLetteredMessagesTo: map['forwardDeadLetteredMessagesTo'] as String,
       forwardTo: map['forwardTo'] as String,
       id: map['id'] as String,
       lockDuration: map['lockDuration'] as String,
       maxDeliveryCount: map['maxDeliveryCount'] as int,
       name: map['name'] as String,
-      namespaceName: (() {
-        final guardedValue = map['namespaceName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      namespaceName: (() { final guardedValue = map['namespaceName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       requiresSession: map['requiresSession'] as bool,
-      resourceGroupName: (() {
-        final guardedValue = map['resourceGroupName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      topicId: (() {
-        final guardedValue = map['topicId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      topicName: (() {
-        final guardedValue = map['topicName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      topicId: (() { final guardedValue = map['topicId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      topicName: (() { final guardedValue = map['topicName']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

@@ -8,17 +8,20 @@ class GetBackendAddressPoolBackendIpConfiguration {
 
   /// Creates a new [GetBackendAddressPoolBackendIpConfiguration].
   /// [id] The ID of the Backend Address Pool.
-  GetBackendAddressPoolBackendIpConfiguration({required this.id});
+  GetBackendAddressPoolBackendIpConfiguration({
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id};
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
-  factory GetBackendAddressPoolBackendIpConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetBackendAddressPoolBackendIpConfiguration.fromMap(Map<String, dynamic> map) {
     return GetBackendAddressPoolBackendIpConfiguration(
       id: pulumi.Input.fromValue(map['id'] as String),
     );
   }
 }
+

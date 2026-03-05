@@ -11,34 +11,24 @@ import 'task_group_response.dart';
 class GetJobResult {
   /// Compute resource allocation for all TaskGroups in the Job.
   final AllocationPolicyResponse allocationPolicy;
-
   /// When the Job was created.
   final String createTime;
-
   /// Labels for the Job. Labels could be user provided or system generated. For example, "labels": { "department": "finance", "environment": "test" } You can assign up to 64 labels. [Google Compute Engine label restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) apply. Label names that start with "goog-" or "google-" are reserved.
   final Map<String, String> labels;
-
   /// Log preservation policy for the Job.
   final LogsPolicyResponse logsPolicy;
-
   /// Job name. For example: "projects/123456/locations/us-central1/jobs/job01".
   final String name;
-
   /// Notification configurations.
   final List<JobNotificationResponse> notifications;
-
   /// Priority of the Job. The valid value range is [0, 100). Default value is 0. Higher value indicates higher priority. A job with higher priority value is more likely to run earlier if all other requirements are satisfied.
   final String priority;
-
   /// Job status. It is read only for users.
   final JobStatusResponse status;
-
   /// TaskGroups in the Job. Only one TaskGroup is supported now.
   final List<TaskGroupResponse> taskGroups;
-
   /// A system generated unique ID (in UUID4 format) for the Job.
   final String uid;
-
   /// The last time the Job was updated.
   final String updateTime;
 
@@ -75,18 +65,10 @@ class GetJobResult {
       'labels': labels,
       'logsPolicy': logsPolicy.toMap(),
       'name': name,
-      'notifications':
-          pulumi.Input.encodeList<
-            JobNotificationResponse,
-            Map<String, dynamic>
-          >(notifications, (value) => value.toMap()),
+      'notifications': pulumi.Input.encodeList<JobNotificationResponse, Map<String, dynamic>>(notifications, (value) => value.toMap()),
       'priority': priority,
       'status': status.toMap(),
-      'taskGroups':
-          pulumi.Input.encodeList<TaskGroupResponse, Map<String, dynamic>>(
-            taskGroups,
-            (value) => value.toMap(),
-          ),
+      'taskGroups': pulumi.Input.encodeList<TaskGroupResponse, Map<String, dynamic>>(taskGroups, (value) => value.toMap()),
       'uid': uid,
       'updateTime': updateTime,
     };
@@ -94,32 +76,18 @@ class GetJobResult {
 
   factory GetJobResult.fromMap(Map<String, dynamic> map) {
     return GetJobResult(
-      allocationPolicy: AllocationPolicyResponse.fromMap(
-        (map['allocationPolicy']! as Map).cast<String, dynamic>(),
-      ),
+      allocationPolicy: AllocationPolicyResponse.fromMap((map['allocationPolicy']! as Map).cast<String, dynamic>()),
       createTime: map['createTime'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
-      logsPolicy: LogsPolicyResponse.fromMap(
-        (map['logsPolicy']! as Map).cast<String, dynamic>(),
-      ),
+      logsPolicy: LogsPolicyResponse.fromMap((map['logsPolicy']! as Map).cast<String, dynamic>()),
       name: map['name'] as String,
-      notifications: pulumi.Input.decodeList<JobNotificationResponse>(
-        map['notifications']!,
-        (value) => JobNotificationResponse.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      notifications: pulumi.Input.decodeList<JobNotificationResponse>(map['notifications']!, (value) => JobNotificationResponse.fromMap((value as Map).cast<String, dynamic>())),
       priority: map['priority'] as String,
-      status: JobStatusResponse.fromMap(
-        (map['status']! as Map).cast<String, dynamic>(),
-      ),
-      taskGroups: pulumi.Input.decodeList<TaskGroupResponse>(
-        map['taskGroups']!,
-        (value) =>
-            TaskGroupResponse.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      status: JobStatusResponse.fromMap((map['status']! as Map).cast<String, dynamic>()),
+      taskGroups: pulumi.Input.decodeList<TaskGroupResponse>(map['taskGroups']!, (value) => TaskGroupResponse.fromMap((value as Map).cast<String, dynamic>())),
       uid: map['uid'] as String,
       updateTime: map['updateTime'] as String,
     );
   }
 }
+

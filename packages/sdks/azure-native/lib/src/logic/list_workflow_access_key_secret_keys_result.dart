@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by listWorkflowAccessKeySecretKeys.
 class ListWorkflowAccessKeySecretKeysResult {
   /// Gets the primary secret key.
   final String primarySecretKey;
-
   /// Gets the secondary secret key.
   final String secondarySecretKey;
 
@@ -23,12 +23,11 @@ class ListWorkflowAccessKeySecretKeysResult {
     };
   }
 
-  factory ListWorkflowAccessKeySecretKeysResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListWorkflowAccessKeySecretKeysResult.fromMap(Map<String, dynamic> map) {
     return ListWorkflowAccessKeySecretKeysResult(
       primarySecretKey: map['primarySecretKey'] as String,
       secondarySecretKey: map['secondarySecretKey'] as String,
     );
   }
 }
+

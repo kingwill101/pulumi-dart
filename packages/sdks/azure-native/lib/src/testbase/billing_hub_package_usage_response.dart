@@ -10,8 +10,7 @@ class BillingHubPackageUsageResponse {
   final pulumi.Input<double>? totalCharges;
   final pulumi.Input<double>? totalUsedBillableHours;
   final pulumi.Input<double>? totalUsedFreeHours;
-  final pulumi.Input<List<BillingHubUsageGroupedByUpdateTypeResponse>>?
-  usageEntriesGroupedByUpdateType;
+  final pulumi.Input<List<BillingHubUsageGroupedByUpdateTypeResponse>>? usageEntriesGroupedByUpdateType;
 
   /// Creates a new [BillingHubPackageUsageResponse].
   /// [applicationName] Optional.
@@ -39,65 +38,20 @@ class BillingHubPackageUsageResponse {
       'totalCharges': ?totalCharges,
       'totalUsedBillableHours': ?totalUsedBillableHours,
       'totalUsedFreeHours': ?totalUsedFreeHours,
-      'usageEntriesGroupedByUpdateType':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<BillingHubUsageGroupedByUpdateTypeResponse>,
-            List<Map<String, dynamic>>
-          >(
-            usageEntriesGroupedByUpdateType,
-            (value) =>
-                pulumi.Input.encodeList<
-                  BillingHubUsageGroupedByUpdateTypeResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'usageEntriesGroupedByUpdateType': ?pulumi.Input.mapOptionalInputValue<List<BillingHubUsageGroupedByUpdateTypeResponse>, List<Map<String, dynamic>>>(usageEntriesGroupedByUpdateType, (value) => pulumi.Input.encodeList<BillingHubUsageGroupedByUpdateTypeResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory BillingHubPackageUsageResponse.fromMap(Map<String, dynamic> map) {
     return BillingHubPackageUsageResponse(
-      applicationName: (() {
-        final guardedValue = map['applicationName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      applicationVersion: (() {
-        final guardedValue = map['applicationVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      azureResourceUri: (() {
-        final guardedValue = map['azureResourceUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      totalCharges: (() {
-        final guardedValue = map['totalCharges'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      totalUsedBillableHours: (() {
-        final guardedValue = map['totalUsedBillableHours'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      totalUsedFreeHours: (() {
-        final guardedValue = map['totalUsedFreeHours'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      usageEntriesGroupedByUpdateType: (() {
-        final guardedValue = map['usageEntriesGroupedByUpdateType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<BillingHubUsageGroupedByUpdateTypeResponse>(
-            guardedValue,
-            (value) => BillingHubUsageGroupedByUpdateTypeResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      applicationName: (() { final guardedValue = map['applicationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      applicationVersion: (() { final guardedValue = map['applicationVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      azureResourceUri: (() { final guardedValue = map['azureResourceUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      totalCharges: (() { final guardedValue = map['totalCharges']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      totalUsedBillableHours: (() { final guardedValue = map['totalUsedBillableHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      totalUsedFreeHours: (() { final guardedValue = map['totalUsedFreeHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      usageEntriesGroupedByUpdateType: (() { final guardedValue = map['usageEntriesGroupedByUpdateType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<BillingHubUsageGroupedByUpdateTypeResponse>(guardedValue, (value) => BillingHubUsageGroupedByUpdateTypeResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

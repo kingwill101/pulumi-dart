@@ -16,3 +16,4 @@ enum SchedulingMaintenanceInterval {
     throw ArgumentError('Unknown SchedulingMaintenanceInterval value: $value');
   }
 }
+

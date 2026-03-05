@@ -575,27 +575,20 @@ import 'job_status.dart';
 class Job extends pulumi.CustomResource {
   /// deploymentId
   late final pulumi.Output<String?> deploymentId;
-
   /// The first ID of the resource
   late final pulumi.Output<String> jobId;
-
   /// Local variables See `local_variables` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> localVariables;
-
   /// namespace
   late final pulumi.Output<String> namespace;
-
   /// workspace
   late final pulumi.Output<String> resourceId;
-
   /// Resource Queue for Job Run
   ///
   /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<String?> resourceQueueName;
-
   /// Restore strategy See `restore_strategy` below.
   late final pulumi.Output<JobRestoreStrategy?> restoreStrategy;
-
   /// job status See `status` below.
   late final pulumi.Output<JobStatus> status;
   late final pulumi.Output<String?> stopStrategy;
@@ -604,44 +597,33 @@ class Job extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Job]. {@macro pulumi_realtimecompute_job_job_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Job(String name, {JobArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:realtimecompute/job:Job',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Job(
+    String name, {
+    JobArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:realtimecompute/job:Job',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     deploymentId = registerOutput<String?>('deploymentId');
     jobId = registerOutput<String>('jobId');
-    localVariables = registerOutput<List<Map<String, dynamic>>?>(
-      'localVariables',
-    );
+    localVariables = registerOutput<List<Map<String, dynamic>>?>('localVariables');
     namespace = registerOutput<String>('namespace');
     resourceId = registerOutput<String>('resourceId');
     resourceQueueName = registerOutput<String?>('resourceQueueName');
-    restoreStrategy = registerOutput<JobRestoreStrategy?>(
-      'restoreStrategy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return JobRestoreStrategy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    status = registerOutput<JobStatus>(
-      'status',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return JobStatus.fromMap((guardedValue as Map).cast<String, dynamic>());
-      },
-    );
+    restoreStrategy = registerOutput<JobRestoreStrategy?>('restoreStrategy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobRestoreStrategy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<JobStatus>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobStatus.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     stopStrategy = registerOutput<String?>('stopStrategy');
   }
 
   /// Gets an existing [Job] resource's state with the given [name] and [id].
-  static Job get(String name, pulumi.Input<String> id, {JobState? state}) {
+  static Job get(
+    String name,
+    pulumi.Input<String> id, {
+    JobState? state,
+  }) {
     return Job._get(
       name,
       state: state?.toMap(),
@@ -654,37 +636,19 @@ class Job extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:realtimecompute/job:Job',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:realtimecompute/job:Job',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     deploymentId = registerOutput<String?>('deploymentId');
     jobId = registerOutput<String>('jobId');
-    localVariables = registerOutput<List<Map<String, dynamic>>?>(
-      'localVariables',
-    );
+    localVariables = registerOutput<List<Map<String, dynamic>>?>('localVariables');
     namespace = registerOutput<String>('namespace');
     resourceId = registerOutput<String>('resourceId');
     resourceQueueName = registerOutput<String?>('resourceQueueName');
-    restoreStrategy = registerOutput<JobRestoreStrategy?>(
-      'restoreStrategy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return JobRestoreStrategy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    status = registerOutput<JobStatus>(
-      'status',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return JobStatus.fromMap((guardedValue as Map).cast<String, dynamic>());
-      },
-    );
+    restoreStrategy = registerOutput<JobRestoreStrategy?>('restoreStrategy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobRestoreStrategy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<JobStatus>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobStatus.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     stopStrategy = registerOutput<String?>('stopStrategy');
   }
 }

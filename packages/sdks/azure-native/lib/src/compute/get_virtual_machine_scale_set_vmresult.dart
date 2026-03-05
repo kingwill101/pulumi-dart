@@ -22,101 +22,68 @@ import 'virtual_machine_scale_set_vmprotection_policy_response.dart';
 class GetVirtualMachineScaleSetVMResult {
   /// Specifies additional capabilities enabled or disabled on the virtual machine in the scale set. For instance: whether the virtual machine has the capability to support attaching managed data disks with UltraSSD_LRS storage account type.
   final AdditionalCapabilitiesResponse? additionalCapabilities;
-
   /// Specifies information about the availability set that the virtual machine should be assigned to. Virtual machines specified in the same availability set are allocated to different nodes to maximize availability. For more information about availability sets, see [Availability sets overview](https://docs.microsoft.com/azure/virtual-machines/availability-set-overview). For more information on Azure planned maintenance, see [Maintenance and updates for Virtual Machines in Azure](https://docs.microsoft.com/azure/virtual-machines/maintenance-and-updates). Currently, a VM can only be added to availability set at creation time. An existing VM cannot be added to an availability set.
   final SubResourceResponse? availabilitySet;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Specifies the boot diagnostic settings state. Minimum api-version: 2015-06-15.
   final DiagnosticsProfileResponse? diagnosticsProfile;
-
   /// Etag is property returned in Update/Get response of the VMSS VM, so that customer can supply it in the header to ensure optimistic updates.
   final String etag;
-
   /// Specifies the hardware settings for the virtual machine.
   final HardwareProfileResponse? hardwareProfile;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// The identity of the virtual machine, if configured.
   final VirtualMachineIdentityResponse? identity;
-
   /// The virtual machine instance ID.
   final String instanceId;
-
   /// The virtual machine instance view.
   final VirtualMachineScaleSetVMInstanceViewResponse instanceView;
-
   /// Specifies whether the latest model has been applied to the virtual machine.
   final bool latestModelApplied;
-
   /// Specifies that the image or disk that is being used was licensed on-premises. &lt;br&gt;&lt;br&gt; Possible values for Windows Server operating system are: &lt;br&gt;&lt;br&gt; Windows_Client &lt;br&gt;&lt;br&gt; Windows_Server &lt;br&gt;&lt;br&gt; Possible values for Linux Server operating system are: &lt;br&gt;&lt;br&gt; RHEL_BYOS (for RHEL) &lt;br&gt;&lt;br&gt; SLES_BYOS (for SUSE) &lt;br&gt;&lt;br&gt; For more information, see [Azure Hybrid Use Benefit for Windows Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) &lt;br&gt;&lt;br&gt; [Azure Hybrid Use Benefit for Linux Server](https://docs.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux) &lt;br&gt;&lt;br&gt; Minimum api-version: 2015-06-15
   final String? licenseType;
-
   /// The geo-location where the resource lives
   final String location;
-
   /// Specifies whether the model applied to the virtual machine is the model of the virtual machine scale set or the customized model for the virtual machine.
   final String modelDefinitionApplied;
-
   /// The name of the resource
   final String name;
-
   /// Specifies the network interfaces of the virtual machine.
   final NetworkProfileResponse? networkProfile;
-
   /// Specifies the network profile configuration of the virtual machine.
-  final VirtualMachineScaleSetVMNetworkProfileConfigurationResponse?
-  networkProfileConfiguration;
-
+  final VirtualMachineScaleSetVMNetworkProfileConfigurationResponse? networkProfileConfiguration;
   /// Specifies the operating system settings for the virtual machine.
   final OSProfileResponse? osProfile;
-
   /// Specifies information about the marketplace image used to create the virtual machine. This element is only used for marketplace images. Before you can use a marketplace image from an API, you must enable the image for programmatic use.  In the Azure portal, find the marketplace image that you want to use and then click **Want to deploy programmatically, Get Started -&gt;**. Enter any required information and then click **Save**.
   final PlanResponse? plan;
-
   /// Specifies the protection policy of the virtual machine.
   final VirtualMachineScaleSetVMProtectionPolicyResponse? protectionPolicy;
-
   /// The provisioning state, which only appears in the response.
   final String provisioningState;
-
   /// Specifies the resilient VM deletion status for the virtual machine.
   final String? resilientVMDeletionStatus;
-
   /// The virtual machine child extension resources.
   final List<VirtualMachineExtensionResponse> resources;
-
   /// Specifies the Security related profile settings for the virtual machine.
   final SecurityProfileResponse? securityProfile;
-
   /// The virtual machine SKU.
   final SkuResponse sku;
-
   /// Specifies the storage settings for the virtual machine disks.
   final StorageProfileResponse? storageProfile;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// Specifies the time at which the Virtual Machine resource was created. Minimum api-version: 2021-11-01.
   final String timeCreated;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
-
   /// UserData for the VM, which must be base-64 encoded. Customer should not pass any secrets in here. Minimum api-version: 2021-03-01
   final String? userData;
-
   /// Azure VM unique ID.
   final String vmId;
-
   /// The virtual machine zones.
   final List<String> zones;
 
@@ -214,11 +181,7 @@ class GetVirtualMachineScaleSetVMResult {
       'protectionPolicy': ?protectionPolicy?.toMap(),
       'provisioningState': provisioningState,
       'resilientVMDeletionStatus': ?resilientVMDeletionStatus,
-      'resources':
-          pulumi.Input.encodeList<
-            VirtualMachineExtensionResponse,
-            Map<String, dynamic>
-          >(resources, (value) => value.toMap()),
+      'resources': pulumi.Input.encodeList<VirtualMachineExtensionResponse, Map<String, dynamic>>(resources, (value) => value.toMap()),
       'securityProfile': ?securityProfile?.toMap(),
       'sku': sku.toMap(),
       'storageProfile': ?storageProfile?.toMap(),
@@ -234,136 +197,40 @@ class GetVirtualMachineScaleSetVMResult {
 
   factory GetVirtualMachineScaleSetVMResult.fromMap(Map<String, dynamic> map) {
     return GetVirtualMachineScaleSetVMResult(
-      additionalCapabilities: (() {
-        final guardedValue = map['additionalCapabilities'];
-        if (guardedValue == null) return null;
-        return AdditionalCapabilitiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      availabilitySet: (() {
-        final guardedValue = map['availabilitySet'];
-        if (guardedValue == null) return null;
-        return SubResourceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      additionalCapabilities: (() { final guardedValue = map['additionalCapabilities']; if (guardedValue == null) return null; return AdditionalCapabilitiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      availabilitySet: (() { final guardedValue = map['availabilitySet']; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       azureApiVersion: map['azureApiVersion'] as String,
-      diagnosticsProfile: (() {
-        final guardedValue = map['diagnosticsProfile'];
-        if (guardedValue == null) return null;
-        return DiagnosticsProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      diagnosticsProfile: (() { final guardedValue = map['diagnosticsProfile']; if (guardedValue == null) return null; return DiagnosticsProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       etag: map['etag'] as String,
-      hardwareProfile: (() {
-        final guardedValue = map['hardwareProfile'];
-        if (guardedValue == null) return null;
-        return HardwareProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      hardwareProfile: (() { final guardedValue = map['hardwareProfile']; if (guardedValue == null) return null; return HardwareProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: map['id'] as String,
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return VirtualMachineIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return VirtualMachineIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       instanceId: map['instanceId'] as String,
-      instanceView: VirtualMachineScaleSetVMInstanceViewResponse.fromMap(
-        (map['instanceView']! as Map).cast<String, dynamic>(),
-      ),
+      instanceView: VirtualMachineScaleSetVMInstanceViewResponse.fromMap((map['instanceView']! as Map).cast<String, dynamic>()),
       latestModelApplied: map['latestModelApplied'] as bool,
-      licenseType: (() {
-        final guardedValue = map['licenseType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      licenseType: (() { final guardedValue = map['licenseType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: map['location'] as String,
       modelDefinitionApplied: map['modelDefinitionApplied'] as String,
       name: map['name'] as String,
-      networkProfile: (() {
-        final guardedValue = map['networkProfile'];
-        if (guardedValue == null) return null;
-        return NetworkProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      networkProfileConfiguration: (() {
-        final guardedValue = map['networkProfileConfiguration'];
-        if (guardedValue == null) return null;
-        return VirtualMachineScaleSetVMNetworkProfileConfigurationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      osProfile: (() {
-        final guardedValue = map['osProfile'];
-        if (guardedValue == null) return null;
-        return OSProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      plan: (() {
-        final guardedValue = map['plan'];
-        if (guardedValue == null) return null;
-        return PlanResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      protectionPolicy: (() {
-        final guardedValue = map['protectionPolicy'];
-        if (guardedValue == null) return null;
-        return VirtualMachineScaleSetVMProtectionPolicyResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      networkProfile: (() { final guardedValue = map['networkProfile']; if (guardedValue == null) return null; return NetworkProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      networkProfileConfiguration: (() { final guardedValue = map['networkProfileConfiguration']; if (guardedValue == null) return null; return VirtualMachineScaleSetVMNetworkProfileConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      osProfile: (() { final guardedValue = map['osProfile']; if (guardedValue == null) return null; return OSProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      plan: (() { final guardedValue = map['plan']; if (guardedValue == null) return null; return PlanResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      protectionPolicy: (() { final guardedValue = map['protectionPolicy']; if (guardedValue == null) return null; return VirtualMachineScaleSetVMProtectionPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       provisioningState: map['provisioningState'] as String,
-      resilientVMDeletionStatus: (() {
-        final guardedValue = map['resilientVMDeletionStatus'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      resources: pulumi.Input.decodeList<VirtualMachineExtensionResponse>(
-        map['resources']!,
-        (value) => VirtualMachineExtensionResponse.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      securityProfile: (() {
-        final guardedValue = map['securityProfile'];
-        if (guardedValue == null) return null;
-        return SecurityProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      resilientVMDeletionStatus: (() { final guardedValue = map['resilientVMDeletionStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resources: pulumi.Input.decodeList<VirtualMachineExtensionResponse>(map['resources']!, (value) => VirtualMachineExtensionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      securityProfile: (() { final guardedValue = map['securityProfile']; if (guardedValue == null) return null; return SecurityProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       sku: SkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
-      storageProfile: (() {
-        final guardedValue = map['storageProfile'];
-        if (guardedValue == null) return null;
-        return StorageProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      storageProfile: (() { final guardedValue = map['storageProfile']; if (guardedValue == null) return null; return StorageProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       timeCreated: map['timeCreated'] as String,
       type: map['type'] as String,
-      userData: (() {
-        final guardedValue = map['userData'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      userData: (() { final guardedValue = map['userData']; if (guardedValue == null) return null; return guardedValue as String; })(),
       vmId: map['vmId'] as String,
       zones: (map['zones'] as List).cast<String>(),
     );
   }
 }
+

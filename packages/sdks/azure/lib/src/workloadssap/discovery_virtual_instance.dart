@@ -215,34 +215,24 @@ import 'discovery_virtual_instance_state.dart';
 class DiscoveryVirtualInstance extends pulumi.CustomResource {
   /// The ID of the Virtual Machine of the Central Server. Changing this forces a new resource to be created.
   late final pulumi.Output<String> centralServerVirtualMachineId;
-
   /// The environment type for the SAP Discovery Virtual Instance. Possible values are `NonProd` and `Prod`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> environment;
-
   /// An `identity` block as defined below.
   late final pulumi.Output<DiscoveryVirtualInstanceIdentity?> identity;
-
   /// The Azure Region where the SAP Discovery Virtual Instance should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The name of the managed Resource Group for the SAP Discovery Virtual Instance. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> managedResourceGroupName;
-
   /// The network access type for managed resources. Possible values are `Private` and `Public`. Defaults to `Public`.
   late final pulumi.Output<String?> managedResourcesNetworkAccessType;
-
   /// The name of the custom Storage Account created by the service in the managed Resource Group. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> managedStorageAccountName;
-
   /// Specifies the name of the SAP Discovery Virtual Instance. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the Resource Group where the SAP Discovery Virtual Instance should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The SAP Product type for the SAP Discovery Virtual Instance. Possible values are `ECC`, `Other` and `S4HANA`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> sapProduct;
-
   /// A mapping of tags which should be assigned to the SAP Discovery Virtual Instance.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -255,35 +245,18 @@ class DiscoveryVirtualInstance extends pulumi.CustomResource {
     DiscoveryVirtualInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:workloadssap/discoveryVirtualInstance:DiscoveryVirtualInstance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    centralServerVirtualMachineId = registerOutput<String>(
-      'centralServerVirtualMachineId',
-    );
+          'azure:workloadssap/discoveryVirtualInstance:DiscoveryVirtualInstance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    centralServerVirtualMachineId = registerOutput<String>('centralServerVirtualMachineId');
     environment = registerOutput<String>('environment');
-    identity = registerOutput<DiscoveryVirtualInstanceIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DiscoveryVirtualInstanceIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<DiscoveryVirtualInstanceIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DiscoveryVirtualInstanceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
-    managedResourceGroupName = registerOutput<String?>(
-      'managedResourceGroupName',
-    );
-    managedResourcesNetworkAccessType = registerOutput<String?>(
-      'managedResourcesNetworkAccessType',
-    );
-    managedStorageAccountName = registerOutput<String?>(
-      'managedStorageAccountName',
-    );
+    managedResourceGroupName = registerOutput<String?>('managedResourceGroupName');
+    managedResourcesNetworkAccessType = registerOutput<String?>('managedResourcesNetworkAccessType');
+    managedStorageAccountName = registerOutput<String?>('managedStorageAccountName');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sapProduct = registerOutput<String>('sapProduct');
@@ -308,35 +281,18 @@ class DiscoveryVirtualInstance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:workloadssap/discoveryVirtualInstance:DiscoveryVirtualInstance',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    centralServerVirtualMachineId = registerOutput<String>(
-      'centralServerVirtualMachineId',
-    );
+          'azure:workloadssap/discoveryVirtualInstance:DiscoveryVirtualInstance',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    centralServerVirtualMachineId = registerOutput<String>('centralServerVirtualMachineId');
     environment = registerOutput<String>('environment');
-    identity = registerOutput<DiscoveryVirtualInstanceIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DiscoveryVirtualInstanceIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<DiscoveryVirtualInstanceIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DiscoveryVirtualInstanceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
-    managedResourceGroupName = registerOutput<String?>(
-      'managedResourceGroupName',
-    );
-    managedResourcesNetworkAccessType = registerOutput<String?>(
-      'managedResourcesNetworkAccessType',
-    );
-    managedStorageAccountName = registerOutput<String?>(
-      'managedStorageAccountName',
-    );
+    managedResourceGroupName = registerOutput<String?>('managedResourceGroupName');
+    managedResourcesNetworkAccessType = registerOutput<String?>('managedResourcesNetworkAccessType');
+    managedStorageAccountName = registerOutput<String?>('managedStorageAccountName');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sapProduct = registerOutput<String>('sapProduct');

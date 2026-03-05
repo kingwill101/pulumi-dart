@@ -12,17 +12,20 @@ class GetSubscriptionDiagnosticSettingArgs {
 
   /// Creates a new [GetSubscriptionDiagnosticSettingArgs].
   /// [name] The name of the diagnostic setting.
-  GetSubscriptionDiagnosticSettingArgs({required this.name});
+  GetSubscriptionDiagnosticSettingArgs({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
-  factory GetSubscriptionDiagnosticSettingArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetSubscriptionDiagnosticSettingArgs.fromMap(Map<String, dynamic> map) {
     return GetSubscriptionDiagnosticSettingArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

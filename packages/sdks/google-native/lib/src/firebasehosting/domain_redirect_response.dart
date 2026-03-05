@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainRedirectResponse {
   /// The domain name to redirect to.
   final pulumi.Input<String> domainName;
-
   /// The redirect status code.
   final pulumi.Input<String> type;
 
   /// Creates a new [DomainRedirectResponse].
   /// [domainName] The domain name to redirect to.
   /// [type] The redirect status code.
-  DomainRedirectResponse({required this.domainName, required this.type});
+  DomainRedirectResponse({
+    required this.domainName,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'domainName': domainName, 'type': type};
+    return <String, dynamic>{
+      'domainName': domainName,
+      'type': type,
+    };
   }
 
   factory DomainRedirectResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class DomainRedirectResponse {
     );
   }
 }
+

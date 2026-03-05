@@ -7,10 +7,14 @@ class WebAclRuleOverrideAction {
 
   /// Creates a new [WebAclRuleOverrideAction].
   /// [type] Required.
-  WebAclRuleOverrideAction({required this.type});
+  WebAclRuleOverrideAction({
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': type};
+    return <String, dynamic>{
+      'type': type,
+    };
   }
 
   factory WebAclRuleOverrideAction.fromMap(Map<String, dynamic> map) {
@@ -19,3 +23,4 @@ class WebAclRuleOverrideAction {
     );
   }
 }
+

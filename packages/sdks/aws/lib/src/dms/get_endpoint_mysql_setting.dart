@@ -55,28 +55,17 @@ class GetEndpointMysqlSetting {
 
   factory GetEndpointMysqlSetting.fromMap(Map<String, dynamic> map) {
     return GetEndpointMysqlSetting(
-      afterConnectScript: pulumi.Input.fromValue(
-        map['afterConnectScript'] as String,
-      ),
-      authenticationMethod: pulumi.Input.fromValue(
-        map['authenticationMethod'] as String,
-      ),
-      cleanSourceMetadataOnMismatch: pulumi.Input.fromValue(
-        map['cleanSourceMetadataOnMismatch'] as bool,
-      ),
-      eventsPollInterval: pulumi.Input.fromValue(
-        map['eventsPollInterval'] as int,
-      ),
+      afterConnectScript: pulumi.Input.fromValue(map['afterConnectScript'] as String),
+      authenticationMethod: pulumi.Input.fromValue(map['authenticationMethod'] as String),
+      cleanSourceMetadataOnMismatch: pulumi.Input.fromValue(map['cleanSourceMetadataOnMismatch'] as bool),
+      eventsPollInterval: pulumi.Input.fromValue(map['eventsPollInterval'] as int),
       executeTimeout: pulumi.Input.fromValue(map['executeTimeout'] as int),
       maxFileSize: pulumi.Input.fromValue(map['maxFileSize'] as int),
-      parallelLoadThreads: pulumi.Input.fromValue(
-        map['parallelLoadThreads'] as int,
-      ),
+      parallelLoadThreads: pulumi.Input.fromValue(map['parallelLoadThreads'] as int),
       serverTimezone: pulumi.Input.fromValue(map['serverTimezone'] as String),
-      serviceAccessRoleArn: pulumi.Input.fromValue(
-        map['serviceAccessRoleArn'] as String,
-      ),
+      serviceAccessRoleArn: pulumi.Input.fromValue(map['serviceAccessRoleArn'] as String),
       targetDbType: pulumi.Input.fromValue(map['targetDbType'] as String),
     );
   }
 }
+

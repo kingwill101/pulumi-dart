@@ -21,6 +21,12 @@ import 'deployment.dart';
 /// Subclasses typically initialize output fields and return them from
 /// [getOutputProperties].
 ///
+/// In normal Pulumi Dart programs:
+/// - define a subclass of [Stack]
+/// - create resources in the constructor
+/// - expose exported values via [getOutputProperties]
+/// - run the program with `Deployment.run` or `Deployment.runOrThrow`
+///
 /// ## Example
 /// ```dart
 /// import 'package:pulumi/pulumi.dart';
@@ -54,6 +60,7 @@ import 'deployment.dart';
 abstract class Stack extends ComponentResource {
   static Resource? root;
 
+  /// Pulumi type token used for the root stack component.
   static const String rootPulumiStackTypeName = 'pulumi:pulumi:Stack';
 
   bool _outputsRegistered = false;
@@ -70,6 +77,9 @@ abstract class Stack extends ComponentResource {
   }
 
   /// Registers stack outputs discovered from [getOutputProperties].
+  ///
+  /// The runtime calls into stack output registration during deployment. Most
+  /// user code should not call this directly.
   void registerPropertyOutputs() {
     if (_outputsRegistered) {
       return;
@@ -164,7 +174,10 @@ abstract class Stack extends ComponentResource {
 /// );
 /// ```
 class StackOptions {
+  /// Legacy synchronous resource transformations applied to stack children.
   final List<ResourceTransformation>? resourceTransformations;
+
+  /// Async resource transforms applied to stack children.
   final List<ResourceTransform>? resourceTransforms;
 
   StackOptions({this.resourceTransformations, this.resourceTransforms});
@@ -174,7 +187,10 @@ class StackOptions {
 ///
 /// The name becomes the output key visible in `pulumi stack output`.
 class OutputProperty {
+  /// Exported output name.
   final String name;
+
+  /// Output value to export from the stack.
   final Output<Object?> value;
 
   OutputProperty(this.name, this.value);

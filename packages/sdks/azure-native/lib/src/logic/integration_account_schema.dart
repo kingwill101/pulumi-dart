@@ -963,46 +963,32 @@ import 'integration_account_schema_args.dart';
 class IntegrationAccountSchema extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The changed time.
   late final pulumi.Output<String> changedTime;
-
   /// The content.
   late final pulumi.Output<String?> content;
-
   /// The content link.
   late final pulumi.Output<ContentLinkResponse> contentLink;
-
   /// The content type.
   late final pulumi.Output<String?> contentType;
-
   /// The created time.
   late final pulumi.Output<String> createdTime;
-
   /// The document name.
   late final pulumi.Output<String?> documentName;
-
   /// The file name.
   late final pulumi.Output<String?> fileName;
-
   /// The resource location.
   late final pulumi.Output<String?> location;
-
   /// The metadata.
   late final pulumi.Output<dynamic> metadata;
-
   /// Gets the resource name.
   late final pulumi.Output<String> name;
-
   /// The schema type.
   late final pulumi.Output<String> schemaType;
-
   /// The resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The target namespace of the schema.
   late final pulumi.Output<String?> targetNamespace;
-
   /// Gets the resource type.
   late final pulumi.Output<String> type;
 
@@ -1015,24 +1001,15 @@ class IntegrationAccountSchema extends pulumi.CustomResource {
     IntegrationAccountSchemaArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:logic:IntegrationAccountSchema',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:logic:IntegrationAccountSchema',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     changedTime = registerOutput<String>('changedTime');
     content = registerOutput<String?>('content');
-    contentLink = registerOutput<ContentLinkResponse>(
-      'contentLink',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ContentLinkResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    contentLink = registerOutput<ContentLinkResponse>('contentLink', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContentLinkResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     contentType = registerOutput<String?>('contentType');
     createdTime = registerOutput<String>('createdTime');
     documentName = registerOutput<String?>('documentName');

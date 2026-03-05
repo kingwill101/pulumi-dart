@@ -9,31 +9,22 @@ import 'system_data_response.dart';
 class GetEdgeActionResult {
   /// A list of attachments for the edge action
   final List<EdgeActionAttachmentResponse> attachments;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// The geo-location where the resource lives
   final String location;
-
   /// The name of the resource
   final String name;
-
   /// The provisioning state of the edge action
   final String provisioningState;
-
   /// The sku type of the edge action
   final SkuTypeResponse sku;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -63,11 +54,7 @@ class GetEdgeActionResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attachments':
-          pulumi.Input.encodeList<
-            EdgeActionAttachmentResponse,
-            Map<String, dynamic>
-          >(attachments, (value) => value.toMap()),
+      'attachments': pulumi.Input.encodeList<EdgeActionAttachmentResponse, Map<String, dynamic>>(attachments, (value) => value.toMap()),
       'azureApiVersion': azureApiVersion,
       'id': id,
       'location': location,
@@ -82,29 +69,17 @@ class GetEdgeActionResult {
 
   factory GetEdgeActionResult.fromMap(Map<String, dynamic> map) {
     return GetEdgeActionResult(
-      attachments: pulumi.Input.decodeList<EdgeActionAttachmentResponse>(
-        map['attachments']!,
-        (value) => EdgeActionAttachmentResponse.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      attachments: pulumi.Input.decodeList<EdgeActionAttachmentResponse>(map['attachments']!, (value) => EdgeActionAttachmentResponse.fromMap((value as Map).cast<String, dynamic>())),
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      sku: SkuTypeResponse.fromMap(
-        (map['sku']! as Map).cast<String, dynamic>(),
-      ),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      sku: SkuTypeResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

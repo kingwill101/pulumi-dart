@@ -8,14 +8,11 @@ import 'role_management_policy_rule_target_response.dart';
 class RoleManagementPolicyPimOnlyModeRuleResponse {
   /// The id of the rule.
   final pulumi.Input<String>? id;
-
   /// The PIM Only Mode settings
   final pulumi.Input<PIMOnlyModeSettingsResponse>? pimOnlyModeSettings;
-
   /// The type of rule
   /// Expected value is 'RoleManagementPolicyPimOnlyModeRule'.
   final pulumi.Input<String> ruleType;
-
   /// The target of the current rule.
   final pulumi.Input<RoleManagementPolicyRuleTargetResponse>? target;
 
@@ -34,48 +31,19 @@ class RoleManagementPolicyPimOnlyModeRuleResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': ?id,
-      'pimOnlyModeSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            PIMOnlyModeSettingsResponse,
-            Map<String, dynamic>
-          >(pimOnlyModeSettings, (value) => value.toMap()),
+      'pimOnlyModeSettings': ?pulumi.Input.mapOptionalInputValue<PIMOnlyModeSettingsResponse, Map<String, dynamic>>(pimOnlyModeSettings, (value) => value.toMap()),
       'ruleType': ruleType,
-      'target':
-          ?pulumi.Input.mapOptionalInputValue<
-            RoleManagementPolicyRuleTargetResponse,
-            Map<String, dynamic>
-          >(target, (value) => value.toMap()),
+      'target': ?pulumi.Input.mapOptionalInputValue<RoleManagementPolicyRuleTargetResponse, Map<String, dynamic>>(target, (value) => value.toMap()),
     };
   }
 
-  factory RoleManagementPolicyPimOnlyModeRuleResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RoleManagementPolicyPimOnlyModeRuleResponse.fromMap(Map<String, dynamic> map) {
     return RoleManagementPolicyPimOnlyModeRuleResponse(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      pimOnlyModeSettings: (() {
-        final guardedValue = map['pimOnlyModeSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PIMOnlyModeSettingsResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pimOnlyModeSettings: (() { final guardedValue = map['pimOnlyModeSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PIMOnlyModeSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       ruleType: pulumi.Input.fromValue(map['ruleType'] as String),
-      target: (() {
-        final guardedValue = map['target'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RoleManagementPolicyRuleTargetResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      target: (() { final guardedValue = map['target']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RoleManagementPolicyRuleTargetResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

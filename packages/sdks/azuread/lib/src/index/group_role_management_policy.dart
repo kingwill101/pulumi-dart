@@ -306,30 +306,19 @@ import 'group_role_management_policy_state.dart';
 /// Because these policies are created automatically by Entra ID, they will auto-import on first use.
 class GroupRoleManagementPolicy extends pulumi.CustomResource {
   /// An `activation_rules` block as defined below.
-  late final pulumi.Output<GroupRoleManagementPolicyActivationRules>
-  activationRules;
-
+  late final pulumi.Output<GroupRoleManagementPolicyActivationRules> activationRules;
   /// An `active_assignment_rules` block as defined below.
-  late final pulumi.Output<GroupRoleManagementPolicyActiveAssignmentRules>
-  activeAssignmentRules;
-
+  late final pulumi.Output<GroupRoleManagementPolicyActiveAssignmentRules> activeAssignmentRules;
   /// (String) The description of this policy.
   late final pulumi.Output<String> description;
-
   /// (String) The display name of this policy.
   late final pulumi.Output<String> displayName;
-
   /// An `eligible_assignment_rules` block as defined below.
-  late final pulumi.Output<GroupRoleManagementPolicyEligibleAssignmentRules>
-  eligibleAssignmentRules;
-
+  late final pulumi.Output<GroupRoleManagementPolicyEligibleAssignmentRules> eligibleAssignmentRules;
   /// The ID of the Azure AD group for which the policy applies.
   late final pulumi.Output<String> groupId;
-
   /// A `notification_rules` block as defined below.
-  late final pulumi.Output<GroupRoleManagementPolicyNotificationRules>
-  notificationRules;
-
+  late final pulumi.Output<GroupRoleManagementPolicyNotificationRules> notificationRules;
   /// The type of assignment this policy coveres. Can be either `member` or `owner`.
   late final pulumi.Output<String> roleId;
 
@@ -342,57 +331,18 @@ class GroupRoleManagementPolicy extends pulumi.CustomResource {
     GroupRoleManagementPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/groupRoleManagementPolicy:GroupRoleManagementPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    activationRules = registerOutput<GroupRoleManagementPolicyActivationRules>(
-      'activationRules',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GroupRoleManagementPolicyActivationRules.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    activeAssignmentRules =
-        registerOutput<GroupRoleManagementPolicyActiveAssignmentRules>(
-          'activeAssignmentRules',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return GroupRoleManagementPolicyActiveAssignmentRules.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'azuread:index/groupRoleManagementPolicy:GroupRoleManagementPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    activationRules = registerOutput<GroupRoleManagementPolicyActivationRules>('activationRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupRoleManagementPolicyActivationRules.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    activeAssignmentRules = registerOutput<GroupRoleManagementPolicyActiveAssignmentRules>('activeAssignmentRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupRoleManagementPolicyActiveAssignmentRules.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
-    eligibleAssignmentRules =
-        registerOutput<GroupRoleManagementPolicyEligibleAssignmentRules>(
-          'eligibleAssignmentRules',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return GroupRoleManagementPolicyEligibleAssignmentRules.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    eligibleAssignmentRules = registerOutput<GroupRoleManagementPolicyEligibleAssignmentRules>('eligibleAssignmentRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupRoleManagementPolicyEligibleAssignmentRules.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     groupId = registerOutput<String>('groupId');
-    notificationRules =
-        registerOutput<GroupRoleManagementPolicyNotificationRules>(
-          'notificationRules',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return GroupRoleManagementPolicyNotificationRules.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    notificationRules = registerOutput<GroupRoleManagementPolicyNotificationRules>('notificationRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupRoleManagementPolicyNotificationRules.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     roleId = registerOutput<String>('roleId');
   }
 
@@ -414,57 +364,18 @@ class GroupRoleManagementPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/groupRoleManagementPolicy:GroupRoleManagementPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    activationRules = registerOutput<GroupRoleManagementPolicyActivationRules>(
-      'activationRules',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GroupRoleManagementPolicyActivationRules.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    activeAssignmentRules =
-        registerOutput<GroupRoleManagementPolicyActiveAssignmentRules>(
-          'activeAssignmentRules',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return GroupRoleManagementPolicyActiveAssignmentRules.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'azuread:index/groupRoleManagementPolicy:GroupRoleManagementPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    activationRules = registerOutput<GroupRoleManagementPolicyActivationRules>('activationRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupRoleManagementPolicyActivationRules.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    activeAssignmentRules = registerOutput<GroupRoleManagementPolicyActiveAssignmentRules>('activeAssignmentRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupRoleManagementPolicyActiveAssignmentRules.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
-    eligibleAssignmentRules =
-        registerOutput<GroupRoleManagementPolicyEligibleAssignmentRules>(
-          'eligibleAssignmentRules',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return GroupRoleManagementPolicyEligibleAssignmentRules.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    eligibleAssignmentRules = registerOutput<GroupRoleManagementPolicyEligibleAssignmentRules>('eligibleAssignmentRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupRoleManagementPolicyEligibleAssignmentRules.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     groupId = registerOutput<String>('groupId');
-    notificationRules =
-        registerOutput<GroupRoleManagementPolicyNotificationRules>(
-          'notificationRules',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return GroupRoleManagementPolicyNotificationRules.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    notificationRules = registerOutput<GroupRoleManagementPolicyNotificationRules>('notificationRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupRoleManagementPolicyNotificationRules.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     roleId = registerOutput<String>('roleId');
   }
 }

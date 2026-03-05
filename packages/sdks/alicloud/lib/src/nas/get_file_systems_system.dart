@@ -5,47 +5,36 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFileSystemsSystem {
   /// (Optional, Available in v1.140.0+) The capacity of the file system.
   final pulumi.Input<int> capacity;
-
   /// Time of creation.
   final pulumi.Input<String> createTime;
-
   /// Description of the FileSystem.
   final pulumi.Input<String> description;
-
   /// (Optional, Available in v1.121.2+) Whether the file system is encrypted.
   /// * Valid values:
   final pulumi.Input<int> encryptType;
-
   /// The type of the file system.
   /// Valid values:
   /// `standard` (Default),
   /// `extreme`.
   final pulumi.Input<String> fileSystemType;
-
   /// ID of the FileSystem.
   final pulumi.Input<String> id;
-
   /// (Optional, Available in v1.140.0+) The id of the KMS key.
   final pulumi.Input<String> kmsKeyId;
-
   /// MeteredSize of the FileSystem.
   final pulumi.Input<int> meteredSize;
-
   /// The protocol type of the file system.
   /// Valid values:
   /// `NFS`,
   /// `SMB` (Available when the `file_system_type` is `standard`).
   final pulumi.Input<String> protocolType;
-
   /// ID of the region where the FileSystem is located.
   final pulumi.Input<String> regionId;
-
   /// The storage type of the file system.
   /// * Valid values:
   /// * `Performance` (Available when the `file_system_type` is `standard`)
   /// * `Capacity` (Available when the `file_system_type` is `standard`)
   final pulumi.Input<String> storageType;
-
   /// (Optional, Available in v1.140.0+) The id of the zone. Each region consists of multiple isolated locations known as zones. Each zone has an independent power supply and network.
   final pulumi.Input<String> zoneId;
 
@@ -111,3 +100,4 @@ class GetFileSystemsSystem {
     );
   }
 }
+

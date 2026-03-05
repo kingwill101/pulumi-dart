@@ -158,13 +158,10 @@ import 'access_group_state.dart';
 class AccessGroup extends pulumi.CustomResource {
   /// The permission group name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
   late final pulumi.Output<String> accessGroupName;
-
   /// The creation time of the permission group resource.
   late final pulumi.Output<String> createTime;
-
   /// The permission group description.  No more than 32 characters in length.
   late final pulumi.Output<String?> description;
-
   /// The permission group type. Only VPC (VPC) is supported.
   late final pulumi.Output<String> networkType;
 
@@ -177,11 +174,11 @@ class AccessGroup extends pulumi.CustomResource {
     AccessGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dfs/accessGroup:AccessGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dfs/accessGroup:AccessGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessGroupName = registerOutput<String>('accessGroupName');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
@@ -206,11 +203,11 @@ class AccessGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dfs/accessGroup:AccessGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dfs/accessGroup:AccessGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessGroupName = registerOutput<String>('accessGroupName');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');

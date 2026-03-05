@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualNetworkProfileResponse {
   /// Resource id of the Virtual Network.
   final pulumi.Input<String> id;
-
   /// Name of the Virtual Network (read-only).
   final pulumi.Input<String> name;
-
   /// Subnet within the Virtual Network.
   final pulumi.Input<String>? subnet;
-
   /// Resource type of the Virtual Network (read-only).
   final pulumi.Input<String> type;
 
@@ -41,12 +38,9 @@ class VirtualNetworkProfileResponse {
     return VirtualNetworkProfileResponse(
       id: pulumi.Input.fromValue(map['id'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      subnet: (() {
-        final guardedValue = map['subnet'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      subnet: (() { final guardedValue = map['subnet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

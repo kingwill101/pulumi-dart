@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FlexibleServerActiveDirectoryAdministratoryArgs {
   /// The resource ID of the identity used for AAD Authentication.
   final pulumi.Input<String> identityId;
-
   /// The login name of the principal to set as the server administrator
   final pulumi.Input<String> login;
-
   /// The ID of the principal to set as the server administrator. For a managed identity this should be the Client ID of the identity.
   final pulumi.Input<String> objectId;
-
   /// The resource ID of the MySQL Flexible Server. Changing this forces a new resource to be created.
   final pulumi.Input<String> serverId;
-
   /// The Azure Tenant ID.
   final pulumi.Input<String> tenantId;
 
@@ -46,9 +42,7 @@ class FlexibleServerActiveDirectoryAdministratoryArgs {
     };
   }
 
-  factory FlexibleServerActiveDirectoryAdministratoryArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FlexibleServerActiveDirectoryAdministratoryArgs.fromMap(Map<String, dynamic> map) {
     return FlexibleServerActiveDirectoryAdministratoryArgs(
       identityId: pulumi.Input.fromValue(map['identityId'] as String),
       login: pulumi.Input.fromValue(map['login'] as String),
@@ -58,3 +52,4 @@ class FlexibleServerActiveDirectoryAdministratoryArgs {
     );
   }
 }
+

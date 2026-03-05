@@ -14,3 +14,4 @@ enum CacheMode {
     throw ArgumentError('Unknown CacheMode value: $value');
   }
 }
+

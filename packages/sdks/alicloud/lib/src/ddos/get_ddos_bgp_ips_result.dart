@@ -43,10 +43,7 @@ class GetDdosBgpIpsResult {
       'id': id,
       'ids': ids,
       'instanceId': instanceId,
-      'ips': pulumi.Input.encodeList<GetDdosBgpIpsIp, Map<String, dynamic>>(
-        ips,
-        (value) => value.toMap(),
-      ),
+      'ips': pulumi.Input.encodeList<GetDdosBgpIpsIp, Map<String, dynamic>>(ips, (value) => value.toMap()),
       'outputFile': ?outputFile,
       'pageNumber': ?pageNumber,
       'pageSize': ?pageSize,
@@ -60,36 +57,13 @@ class GetDdosBgpIpsResult {
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       instanceId: map['instanceId'] as String,
-      ips: pulumi.Input.decodeList<GetDdosBgpIpsIp>(
-        map['ips']!,
-        (value) =>
-            GetDdosBgpIpsIp.fromMap((value as Map).cast<String, dynamic>()),
-      ),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      pageNumber: (() {
-        final guardedValue = map['pageNumber'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      pageSize: (() {
-        final guardedValue = map['pageSize'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      productName: (() {
-        final guardedValue = map['productName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      ips: pulumi.Input.decodeList<GetDdosBgpIpsIp>(map['ips']!, (value) => GetDdosBgpIpsIp.fromMap((value as Map).cast<String, dynamic>())),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      pageNumber: (() { final guardedValue = map['pageNumber']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      pageSize: (() { final guardedValue = map['pageSize']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      productName: (() { final guardedValue = map['productName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

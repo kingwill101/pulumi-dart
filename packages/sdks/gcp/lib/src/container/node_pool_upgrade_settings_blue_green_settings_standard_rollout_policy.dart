@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy {
   /// Number of blue nodes to drain in a batch.
   final pulumi.Input<int>? batchNodeCount;
-
   /// Percentage of the blue pool nodes to drain in a batch.
   final pulumi.Input<double>? batchPercentage;
-
   /// Soak time after each batch gets drained.
   final pulumi.Input<String>? batchSoakDuration;
 
@@ -30,25 +28,12 @@ class NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy {
     };
   }
 
-  factory NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy.fromMap(Map<String, dynamic> map) {
     return NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy(
-      batchNodeCount: (() {
-        final guardedValue = map['batchNodeCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      batchPercentage: (() {
-        final guardedValue = map['batchPercentage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      batchSoakDuration: (() {
-        final guardedValue = map['batchSoakDuration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      batchNodeCount: (() { final guardedValue = map['batchNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      batchPercentage: (() { final guardedValue = map['batchPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      batchSoakDuration: (() { final guardedValue = map['batchSoakDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

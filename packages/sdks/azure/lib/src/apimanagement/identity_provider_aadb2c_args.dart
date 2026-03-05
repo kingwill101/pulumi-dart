@@ -9,37 +9,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IdentityProviderAadb2cArgs {
   /// The allowed AAD tenant, usually your B2C tenant domain.
   final pulumi.Input<String> allowedTenant;
-
   /// The Name of the API Management Service where this AAD Identity Provider should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> apiManagementName;
-
   /// OpenID Connect discovery endpoint hostname, usually your b2clogin.com domain.
   final pulumi.Input<String> authority;
-
   /// Client ID of the Application in your B2C tenant.
   final pulumi.Input<String> clientId;
-
   /// The client library to be used in the Azure AD B2C Identity Provider.
   final pulumi.Input<String>? clientLibrary;
-
   /// Client secret of the Application in your B2C tenant.
   final pulumi.Input<String> clientSecret;
-
   /// Password reset Policy Name.
   final pulumi.Input<String>? passwordResetPolicy;
-
   /// Profile editing Policy Name.
   final pulumi.Input<String>? profileEditingPolicy;
-
   /// The Name of the Resource Group where the API Management Service exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
-
   /// Signin Policy Name.
   final pulumi.Input<String> signinPolicy;
-
   /// The tenant to use instead of Common when logging into Active Directory, usually your B2C tenant domain.
   final pulumi.Input<String> signinTenant;
-
   /// Signup Policy Name.
   final pulumi.Input<String> signupPolicy;
 
@@ -91,33 +80,18 @@ class IdentityProviderAadb2cArgs {
   factory IdentityProviderAadb2cArgs.fromMap(Map<String, dynamic> map) {
     return IdentityProviderAadb2cArgs(
       allowedTenant: pulumi.Input.fromValue(map['allowedTenant'] as String),
-      apiManagementName: pulumi.Input.fromValue(
-        map['apiManagementName'] as String,
-      ),
+      apiManagementName: pulumi.Input.fromValue(map['apiManagementName'] as String),
       authority: pulumi.Input.fromValue(map['authority'] as String),
       clientId: pulumi.Input.fromValue(map['clientId'] as String),
-      clientLibrary: (() {
-        final guardedValue = map['clientLibrary'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      clientLibrary: (() { final guardedValue = map['clientLibrary']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       clientSecret: pulumi.Input.fromValue(map['clientSecret'] as String),
-      passwordResetPolicy: (() {
-        final guardedValue = map['passwordResetPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      profileEditingPolicy: (() {
-        final guardedValue = map['profileEditingPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      passwordResetPolicy: (() { final guardedValue = map['passwordResetPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      profileEditingPolicy: (() { final guardedValue = map['profileEditingPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       signinPolicy: pulumi.Input.fromValue(map['signinPolicy'] as String),
       signinTenant: pulumi.Input.fromValue(map['signinTenant'] as String),
       signupPolicy: pulumi.Input.fromValue(map['signupPolicy'] as String),
     );
   }
 }
+

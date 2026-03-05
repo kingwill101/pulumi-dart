@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetStorageTaskArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the storage task within the specified resource group. Storage task names must be between 3 and 18 characters in length and use numbers and lower-case letters only.
   final pulumi.Input<String> storageTaskName;
 
@@ -30,10 +29,9 @@ class GetStorageTaskArgs {
 
   factory GetStorageTaskArgs.fromMap(Map<String, dynamic> map) {
     return GetStorageTaskArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       storageTaskName: pulumi.Input.fromValue(map['storageTaskName'] as String),
     );
   }
 }
+

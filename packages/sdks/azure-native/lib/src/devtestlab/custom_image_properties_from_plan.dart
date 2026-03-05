@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomImagePropertiesFromPlan {
   /// The id of the plan, equivalent to name of the plan
   final pulumi.Input<String>? id;
-
   /// The offer for the plan from the marketplace image the custom image is derived from
   final pulumi.Input<String>? offer;
-
   /// The publisher for the plan from the marketplace image the custom image is derived from
   final pulumi.Input<String>? publisher;
 
@@ -17,7 +15,11 @@ class CustomImagePropertiesFromPlan {
   /// [id] The id of the plan, equivalent to name of the plan
   /// [offer] The offer for the plan from the marketplace image the custom image is derived from
   /// [publisher] The publisher for the plan from the marketplace image the custom image is derived from
-  CustomImagePropertiesFromPlan({this.id, this.offer, this.publisher});
+  CustomImagePropertiesFromPlan({
+    this.id,
+    this.offer,
+    this.publisher,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class CustomImagePropertiesFromPlan {
 
   factory CustomImagePropertiesFromPlan.fromMap(Map<String, dynamic> map) {
     return CustomImagePropertiesFromPlan(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      offer: (() {
-        final guardedValue = map['offer'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      publisher: (() {
-        final guardedValue = map['publisher'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      offer: (() { final guardedValue = map['offer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publisher: (() { final guardedValue = map['publisher']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

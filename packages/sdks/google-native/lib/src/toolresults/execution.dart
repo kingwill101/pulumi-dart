@@ -11,30 +11,22 @@ import 'timestamp_response.dart';
 class Execution extends pulumi.CustomResource {
   /// The time when the Execution status transitioned to COMPLETE. This value will be set automatically when state transitions to COMPLETE. - In response: set if the execution state is COMPLETE. - In create/update request: never set
   late final pulumi.Output<TimestampResponse> completionTime;
-
   /// The time when the Execution was created. This value will be set automatically when CreateExecution is called. - In response: always set - In create/update request: never set
   late final pulumi.Output<TimestampResponse> creationTime;
-
   /// The dimensions along which different steps in this execution may vary. This must remain fixed over the life of the execution. Returns INVALID_ARGUMENT if this field is set in an update request. Returns INVALID_ARGUMENT if the same name occurs in more than one dimension_definition. Returns INVALID_ARGUMENT if the size of the list is over 100. - In response: present if set by create - In create request: optional - In update request: never set
   late final pulumi.Output<List<Map<String, dynamic>>> dimensionDefinitions;
-
   /// A unique identifier within a History for this Execution. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response always set - In create/update request: never set
   late final pulumi.Output<String> executionId;
   late final pulumi.Output<String> historyId;
-
   /// Classify the result, for example into SUCCESS or FAILURE - In response: present if set by create/update request - In create/update request: optional
   late final pulumi.Output<OutcomeResponse> outcome;
   late final pulumi.Output<String> project;
-
   /// A unique request ID for server to detect duplicated requests. For example, a UUID. Optional, but strongly recommended.
   late final pulumi.Output<String?> requestId;
-
   /// Lightweight information about execution request. - In response: present if set by create - In create: optional - In update: optional
   late final pulumi.Output<SpecificationResponse> specification;
-
   /// The initial state is IN_PROGRESS. The only legal state transitions is from IN_PROGRESS to COMPLETE. A PRECONDITION_FAILED will be returned if an invalid transition is requested. The state can only be set to COMPLETE once. A FAILED_PRECONDITION will be returned if the state is set to COMPLETE multiple times. If the state is set to COMPLETE, all the in-progress steps within the execution will be set as COMPLETE. If the outcome of the step is not set, the outcome will be set to INCONCLUSIVE. - In response always set - In create/update request: optional
   late final pulumi.Output<String> state;
-
   /// TestExecution Matrix ID that the TestExecutionService uses. - In response: present if set by create - In create: optional - In update: never set
   late final pulumi.Output<String> testExecutionMatrixId;
 
@@ -47,58 +39,20 @@ class Execution extends pulumi.CustomResource {
     ExecutionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'google-native:toolresults/v1beta3:Execution',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    completionTime = registerOutput<TimestampResponse>(
-      'completionTime',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TimestampResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    creationTime = registerOutput<TimestampResponse>(
-      'creationTime',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TimestampResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    dimensionDefinitions = registerOutput<List<Map<String, dynamic>>>(
-      'dimensionDefinitions',
-    );
+          'google-native:toolresults/v1beta3:Execution',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    completionTime = registerOutput<TimestampResponse>('completionTime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TimestampResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    creationTime = registerOutput<TimestampResponse>('creationTime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TimestampResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dimensionDefinitions = registerOutput<List<Map<String, dynamic>>>('dimensionDefinitions');
     executionId = registerOutput<String>('executionId');
     historyId = registerOutput<String>('historyId');
-    outcome = registerOutput<OutcomeResponse>(
-      'outcome',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return OutcomeResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    outcome = registerOutput<OutcomeResponse>('outcome', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OutcomeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     requestId = registerOutput<String?>('requestId');
-    specification = registerOutput<SpecificationResponse>(
-      'specification',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SpecificationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    specification = registerOutput<SpecificationResponse>('specification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpecificationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     state = registerOutput<String>('state');
     testExecutionMatrixId = registerOutput<String>('testExecutionMatrixId');
   }

@@ -13,20 +13,23 @@ class GetFirewallArgs {
   /// Creates a new [GetFirewallArgs].
   /// [firewall] Required.
   /// [project] Optional.
-  GetFirewallArgs({required this.firewall, this.project});
+  GetFirewallArgs({
+    required this.firewall,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'firewall': firewall, 'project': ?project};
+    return <String, dynamic>{
+      'firewall': firewall,
+      'project': ?project,
+    };
   }
 
   factory GetFirewallArgs.fromMap(Map<String, dynamic> map) {
     return GetFirewallArgs(
       firewall: pulumi.Input.fromValue(map['firewall'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

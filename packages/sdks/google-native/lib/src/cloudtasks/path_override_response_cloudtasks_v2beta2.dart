@@ -9,17 +9,20 @@ class PathOverrideResponseCloudtasksV2beta2 {
 
   /// Creates a new [PathOverrideResponseCloudtasksV2beta2].
   /// [path] The URI path (e.g., /users/1234). Default is an empty string.
-  PathOverrideResponseCloudtasksV2beta2({required this.path});
+  PathOverrideResponseCloudtasksV2beta2({
+    required this.path,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'path': path};
+    return <String, dynamic>{
+      'path': path,
+    };
   }
 
-  factory PathOverrideResponseCloudtasksV2beta2.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PathOverrideResponseCloudtasksV2beta2.fromMap(Map<String, dynamic> map) {
     return PathOverrideResponseCloudtasksV2beta2(
       path: pulumi.Input.fromValue(map['path'] as String),
     );
   }
 }
+

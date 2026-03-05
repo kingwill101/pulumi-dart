@@ -9,19 +9,20 @@ class StorageProperties {
 
   /// Creates a new [StorageProperties].
   /// [sizeGb] The size of the data disk assigned to each server.
-  StorageProperties({this.sizeGb});
+  StorageProperties({
+    this.sizeGb,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'sizeGb': ?sizeGb};
+    return <String, dynamic>{
+      'sizeGb': ?sizeGb,
+    };
   }
 
   factory StorageProperties.fromMap(Map<String, dynamic> map) {
     return StorageProperties(
-      sizeGb: (() {
-        final guardedValue = map['sizeGb'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      sizeGb: (() { final guardedValue = map['sizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

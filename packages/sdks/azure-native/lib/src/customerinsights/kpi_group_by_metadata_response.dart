@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KpiGroupByMetadataResponse {
   /// The display name.
   final pulumi.Input<Map<String, String>>? displayName;
-
   /// The name of the field.
   final pulumi.Input<String>? fieldName;
-
   /// The type of the field.
   final pulumi.Input<String>? fieldType;
 
@@ -33,23 +31,10 @@ class KpiGroupByMetadataResponse {
 
   factory KpiGroupByMetadataResponse.fromMap(Map<String, dynamic> map) {
     return KpiGroupByMetadataResponse(
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      fieldName: (() {
-        final guardedValue = map['fieldName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      fieldType: (() {
-        final guardedValue = map['fieldType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      fieldName: (() { final guardedValue = map['fieldName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      fieldType: (() { final guardedValue = map['fieldType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIndexDocumentMetadataConfigurationUpdateSearch {
   /// Determines whether the field is returned in the query response. The default is `true`.
   final pulumi.Input<bool> displayable;
-
   /// Whether the field can be used to create search facets, a count of results for each value in the field. The default is `false`.
   final pulumi.Input<bool> facetable;
-
   /// Determines whether the field is used in the search. If the Searchable field is true, you can use relevance tuning to manually tune how Amazon Kendra weights the field in the search. The default is `true` for `string` fields and `false` for `number` and `date` fields.
   final pulumi.Input<bool> searchable;
-
   /// Determines whether the field can be used to sort the results of a query. If you specify sorting on a field that does not have Sortable set to true, Amazon Kendra returns an exception. The default is `false`.
   final pulumi.Input<bool> sortable;
 
@@ -36,9 +33,7 @@ class GetIndexDocumentMetadataConfigurationUpdateSearch {
     };
   }
 
-  factory GetIndexDocumentMetadataConfigurationUpdateSearch.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetIndexDocumentMetadataConfigurationUpdateSearch.fromMap(Map<String, dynamic> map) {
     return GetIndexDocumentMetadataConfigurationUpdateSearch(
       displayable: pulumi.Input.fromValue(map['displayable'] as bool),
       facetable: pulumi.Input.fromValue(map['facetable'] as bool),
@@ -47,3 +42,4 @@ class GetIndexDocumentMetadataConfigurationUpdateSearch {
     );
   }
 }
+

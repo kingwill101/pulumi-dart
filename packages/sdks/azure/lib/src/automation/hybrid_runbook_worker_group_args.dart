@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HybridRunbookWorkerGroupArgs {
   /// The name of the Automation Account in which the Runbook Worker Group is created. Changing this forces a new resource to be created.
   final pulumi.Input<String> automationAccountName;
-
   /// The name of resource type `azure.automation.Credential` to use for hybrid worker.
   final pulumi.Input<String>? credentialName;
-
   /// The name which should be used for this Automation Account Runbook Worker Group. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// The name of the Resource Group where the Automation should exist. Changing this forces a new Automation to be created.
   final pulumi.Input<String> resourceGroupName;
 
@@ -42,22 +39,11 @@ class HybridRunbookWorkerGroupArgs {
 
   factory HybridRunbookWorkerGroupArgs.fromMap(Map<String, dynamic> map) {
     return HybridRunbookWorkerGroupArgs(
-      automationAccountName: pulumi.Input.fromValue(
-        map['automationAccountName'] as String,
-      ),
-      credentialName: (() {
-        final guardedValue = map['credentialName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      automationAccountName: pulumi.Input.fromValue(map['automationAccountName'] as String),
+      credentialName: (() { final guardedValue = map['credentialName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

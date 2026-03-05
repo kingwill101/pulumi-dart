@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SiteReferencePropertiesResponse {
   /// Provisioning State
   final pulumi.Input<String> provisioningState;
-
   /// Azure Resource ID for Site
   final pulumi.Input<String> siteId;
 
@@ -27,10 +26,9 @@ class SiteReferencePropertiesResponse {
 
   factory SiteReferencePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SiteReferencePropertiesResponse(
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
       siteId: pulumi.Input.fromValue(map['siteId'] as String),
     );
   }
 }
+

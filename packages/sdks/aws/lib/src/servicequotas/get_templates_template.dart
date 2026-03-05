@@ -5,25 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTemplatesTemplate {
   /// Indicates whether the quota is global.
   final pulumi.Input<bool> globalQuota;
-
   /// Quota identifier.
   final pulumi.Input<String> quotaCode;
-
   /// Quota name.
   final pulumi.Input<String> quotaName;
-
   /// AWS Region to which the quota increases apply. Use `aws.getRegion` instead.
   final pulumi.Input<String> region;
-
   /// Service identifier.
   final pulumi.Input<String> serviceCode;
-
   /// Service name.
   final pulumi.Input<String> serviceName;
-
   /// Unit of measurement.
   final pulumi.Input<String> unit;
-
   /// The new, increased value for the quota.
   final pulumi.Input<double> value;
 
@@ -73,3 +66,4 @@ class GetTemplatesTemplate {
     );
   }
 }
+

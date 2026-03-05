@@ -6,11 +6,7 @@ import 'azure_core_network_function_arm_template_application_response.dart';
 /// Azure virtual network function template.
 class AzureCoreNetworkFunctionTemplateResponse {
   /// Network function applications.
-  final pulumi.Input<
-    List<AzureCoreNetworkFunctionArmTemplateApplicationResponse>
-  >?
-  networkFunctionApplications;
-
+  final pulumi.Input<List<AzureCoreNetworkFunctionArmTemplateApplicationResponse>>? networkFunctionApplications;
   /// The network function type.
   /// Expected value is 'AzureCore'.
   final pulumi.Input<String> nfviType;
@@ -25,42 +21,16 @@ class AzureCoreNetworkFunctionTemplateResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'networkFunctionApplications':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<AzureCoreNetworkFunctionArmTemplateApplicationResponse>,
-            List<Map<String, dynamic>>
-          >(
-            networkFunctionApplications,
-            (value) =>
-                pulumi.Input.encodeList<
-                  AzureCoreNetworkFunctionArmTemplateApplicationResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'networkFunctionApplications': ?pulumi.Input.mapOptionalInputValue<List<AzureCoreNetworkFunctionArmTemplateApplicationResponse>, List<Map<String, dynamic>>>(networkFunctionApplications, (value) => pulumi.Input.encodeList<AzureCoreNetworkFunctionArmTemplateApplicationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'nfviType': nfviType,
     };
   }
 
-  factory AzureCoreNetworkFunctionTemplateResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AzureCoreNetworkFunctionTemplateResponse.fromMap(Map<String, dynamic> map) {
     return AzureCoreNetworkFunctionTemplateResponse(
-      networkFunctionApplications: (() {
-        final guardedValue = map['networkFunctionApplications'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            AzureCoreNetworkFunctionArmTemplateApplicationResponse
-          >(
-            guardedValue,
-            (value) =>
-                AzureCoreNetworkFunctionArmTemplateApplicationResponse.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
+      networkFunctionApplications: (() { final guardedValue = map['networkFunctionApplications']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AzureCoreNetworkFunctionArmTemplateApplicationResponse>(guardedValue, (value) => AzureCoreNetworkFunctionArmTemplateApplicationResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       nfviType: pulumi.Input.fromValue(map['nfviType'] as String),
     );
   }
 }
+

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualMachineBootDiagnostics {
   /// Should Boot Diagnostics be enabled for this Virtual Machine?
   final pulumi.Input<bool> enabled;
-
   /// The Storage Account's Blob Endpoint which should hold the virtual machine's diagnostic files.
   ///
   /// &gt; **NOTE:** This needs to be the root of a Storage Account and not a Storage Container.
@@ -20,7 +19,10 @@ class VirtualMachineBootDiagnostics {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled, 'storageUri': storageUri};
+    return <String, dynamic>{
+      'enabled': enabled,
+      'storageUri': storageUri,
+    };
   }
 
   factory VirtualMachineBootDiagnostics.fromMap(Map<String, dynamic> map) {
@@ -30,3 +32,4 @@ class VirtualMachineBootDiagnostics {
     );
   }
 }
+

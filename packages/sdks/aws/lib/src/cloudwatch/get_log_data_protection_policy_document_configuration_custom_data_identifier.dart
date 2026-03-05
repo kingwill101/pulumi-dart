@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLogDataProtectionPolicyDocumentConfigurationCustomDataIdentifier {
   /// Name of the custom data idenfitier
   final pulumi.Input<String> name;
-
   /// Regular expression to match sensitive data
   final pulumi.Input<String> regex;
 
@@ -18,15 +17,17 @@ class GetLogDataProtectionPolicyDocumentConfigurationCustomDataIdentifier {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'regex': regex};
+    return <String, dynamic>{
+      'name': name,
+      'regex': regex,
+    };
   }
 
-  factory GetLogDataProtectionPolicyDocumentConfigurationCustomDataIdentifier.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetLogDataProtectionPolicyDocumentConfigurationCustomDataIdentifier.fromMap(Map<String, dynamic> map) {
     return GetLogDataProtectionPolicyDocumentConfigurationCustomDataIdentifier(
       name: pulumi.Input.fromValue(map['name'] as String),
       regex: pulumi.Input.fromValue(map['regex'] as String),
     );
   }
 }
+

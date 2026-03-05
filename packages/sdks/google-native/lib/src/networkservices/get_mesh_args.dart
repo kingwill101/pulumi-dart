@@ -15,7 +15,11 @@ class GetMeshArgs {
   /// [location] Required.
   /// [meshId] Required.
   /// [project] Optional.
-  GetMeshArgs({required this.location, required this.meshId, this.project});
+  GetMeshArgs({
+    required this.location,
+    required this.meshId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,11 +33,8 @@ class GetMeshArgs {
     return GetMeshArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
       meshId: pulumi.Input.fromValue(map['meshId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

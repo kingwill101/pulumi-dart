@@ -10,13 +10,10 @@ import 'amazon_mwslinked_service.dart';
 class LinkedServiceArgs {
   /// The factory name.
   final pulumi.Input<String> factoryName;
-
   /// The linked service name.
   final pulumi.Input<String>? linkedServiceName;
-
   /// Properties of linked service.
   final pulumi.Input<AmazonMWSLinkedService> properties;
-
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,11 +33,7 @@ class LinkedServiceArgs {
     return <String, dynamic>{
       'factoryName': factoryName,
       'linkedServiceName': ?linkedServiceName,
-      'properties':
-          pulumi.Input.mapInputValue<
-            AmazonMWSLinkedService,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': pulumi.Input.mapInputValue<AmazonMWSLinkedService, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
     };
   }
@@ -48,19 +41,10 @@ class LinkedServiceArgs {
   factory LinkedServiceArgs.fromMap(Map<String, dynamic> map) {
     return LinkedServiceArgs(
       factoryName: pulumi.Input.fromValue(map['factoryName'] as String),
-      linkedServiceName: (() {
-        final guardedValue = map['linkedServiceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      properties: pulumi.Input.fromValue(
-        AmazonMWSLinkedService.fromMap(
-          (map['properties']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      linkedServiceName: (() { final guardedValue = map['linkedServiceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      properties: pulumi.Input.fromValue(AmazonMWSLinkedService.fromMap((map['properties']! as Map).cast<String, dynamic>())),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

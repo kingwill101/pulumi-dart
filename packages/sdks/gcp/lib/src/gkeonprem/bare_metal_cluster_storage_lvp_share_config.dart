@@ -7,7 +7,6 @@ class BareMetalClusterStorageLvpShareConfig {
   /// Defines the machine path and storage class for the LVP Share.
   /// Structure is documented below.
   final pulumi.Input<BareMetalClusterStorageLvpShareConfigLvpConfig> lvpConfig;
-
   /// The number of subdirectories to create under path.
   final pulumi.Input<int>? sharedPathPvCount;
 
@@ -21,29 +20,16 @@ class BareMetalClusterStorageLvpShareConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'lvpConfig':
-          pulumi.Input.mapInputValue<
-            BareMetalClusterStorageLvpShareConfigLvpConfig,
-            Map<String, dynamic>
-          >(lvpConfig, (value) => value.toMap()),
+      'lvpConfig': pulumi.Input.mapInputValue<BareMetalClusterStorageLvpShareConfigLvpConfig, Map<String, dynamic>>(lvpConfig, (value) => value.toMap()),
       'sharedPathPvCount': ?sharedPathPvCount,
     };
   }
 
-  factory BareMetalClusterStorageLvpShareConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BareMetalClusterStorageLvpShareConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalClusterStorageLvpShareConfig(
-      lvpConfig: pulumi.Input.fromValue(
-        BareMetalClusterStorageLvpShareConfigLvpConfig.fromMap(
-          (map['lvpConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      sharedPathPvCount: (() {
-        final guardedValue = map['sharedPathPvCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      lvpConfig: pulumi.Input.fromValue(BareMetalClusterStorageLvpShareConfigLvpConfig.fromMap((map['lvpConfig']! as Map).cast<String, dynamic>())),
+      sharedPathPvCount: (() { final guardedValue = map['sharedPathPvCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

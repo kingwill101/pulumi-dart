@@ -395,43 +395,30 @@ import 'site_monitor_state.dart';
 class SiteMonitor extends pulumi.CustomResource {
   /// The URL or IP address monitored by the site monitoring task.
   late final pulumi.Output<String> address;
-
   /// The type of the detection point. Default value: `PC`. Valid values: `PC`, `MOBILE`.
   late final pulumi.Output<String> agentGroup;
-
   /// Field `alert_ids` has been deprecated from provider version 1.262.0.
   late final pulumi.Output<List<String>?> alertIds;
-
   /// (Deprecated since v1.262.0) Field `create_time` has been deprecated from provider version 1.262.0.
   late final pulumi.Output<String> createTime;
-
   /// Custom probing period. Only a certain period of time from Monday to Sunday can be selected for detection. See `custom_schedule` below.
   late final pulumi.Output<SiteMonitorCustomSchedule?> customSchedule;
-
   /// The monitoring interval of the site monitoring task. Unit: minutes. Valid values: `1`, `5`, `15`, `30` and `60`. Default value: `1`. **NOTE:** From version 1.207.0, `interval` can be set to `30`, `60`.
   late final pulumi.Output<String> interval;
-
   /// The detection points in a JSON array. For example, `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring. See `isp_cities` below.
   late final pulumi.Output<List<Map<String, dynamic>>> ispCities;
-
   /// The extended options of the protocol that is used by the site monitoring task. See `option_json` below.
   late final pulumi.Output<SiteMonitorOptionJson> optionJson;
-
   /// Field `options_json` has been deprecated from provider version 1.262.0. New field `option_json` instead.
   late final pulumi.Output<String> optionsJson;
-
   /// The status of the site monitoring task. Valid values:
   late final pulumi.Output<String> status;
-
   /// The name of the site monitoring task. The name must be 4 to 100 characters in length. The name can contain the following types of characters: letters, digits, and underscores.
   late final pulumi.Output<String> taskName;
-
   /// (Deprecated since v1.262.0) Field `task_state` has been deprecated from provider version 1.262.0. New field `status` instead.
   late final pulumi.Output<String> taskState;
-
   /// The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, PING, TCP, UDP, DNS, SMTP, POP3, and FTP.
   late final pulumi.Output<String> taskType;
-
   /// (Deprecated since v1.262.0) Field `update_time` has been deprecated from provider version 1.262.0.
   late final pulumi.Output<String> updateTime;
 
@@ -444,37 +431,19 @@ class SiteMonitor extends pulumi.CustomResource {
     SiteMonitorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cms/siteMonitor:SiteMonitor',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cms/siteMonitor:SiteMonitor',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     address = registerOutput<String>('address');
     agentGroup = registerOutput<String>('agentGroup');
     alertIds = registerOutput<List<String>?>('alertIds');
     createTime = registerOutput<String>('createTime');
-    customSchedule = registerOutput<SiteMonitorCustomSchedule?>(
-      'customSchedule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SiteMonitorCustomSchedule.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    customSchedule = registerOutput<SiteMonitorCustomSchedule?>('customSchedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SiteMonitorCustomSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     interval = registerOutput<String>('interval');
     ispCities = registerOutput<List<Map<String, dynamic>>>('ispCities');
-    optionJson = registerOutput<SiteMonitorOptionJson>(
-      'optionJson',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SiteMonitorOptionJson.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    optionJson = registerOutput<SiteMonitorOptionJson>('optionJson', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SiteMonitorOptionJson.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     optionsJson = registerOutput<String>('optionsJson');
     status = registerOutput<String>('status');
     taskName = registerOutput<String>('taskName');
@@ -501,37 +470,19 @@ class SiteMonitor extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cms/siteMonitor:SiteMonitor',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cms/siteMonitor:SiteMonitor',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     address = registerOutput<String>('address');
     agentGroup = registerOutput<String>('agentGroup');
     alertIds = registerOutput<List<String>?>('alertIds');
     createTime = registerOutput<String>('createTime');
-    customSchedule = registerOutput<SiteMonitorCustomSchedule?>(
-      'customSchedule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SiteMonitorCustomSchedule.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    customSchedule = registerOutput<SiteMonitorCustomSchedule?>('customSchedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SiteMonitorCustomSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     interval = registerOutput<String>('interval');
     ispCities = registerOutput<List<Map<String, dynamic>>>('ispCities');
-    optionJson = registerOutput<SiteMonitorOptionJson>(
-      'optionJson',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SiteMonitorOptionJson.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    optionJson = registerOutput<SiteMonitorOptionJson>('optionJson', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SiteMonitorOptionJson.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     optionsJson = registerOutput<String>('optionsJson');
     status = registerOutput<String>('status');
     taskName = registerOutput<String>('taskName');

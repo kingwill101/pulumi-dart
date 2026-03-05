@@ -21,18 +21,11 @@ class FlowSourceFlowConfigSourceConnectorPropertiesCustomConnector {
     };
   }
 
-  factory FlowSourceFlowConfigSourceConnectorPropertiesCustomConnector.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FlowSourceFlowConfigSourceConnectorPropertiesCustomConnector.fromMap(Map<String, dynamic> map) {
     return FlowSourceFlowConfigSourceConnectorPropertiesCustomConnector(
-      customProperties: (() {
-        final guardedValue = map['customProperties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      customProperties: (() { final guardedValue = map['customProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       entityName: pulumi.Input.fromValue(map['entityName'] as String),
     );
   }
 }
+

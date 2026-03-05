@@ -10,27 +10,20 @@ class MaintenanceExclusionOptions {
 
   /// Creates a new [MaintenanceExclusionOptions].
   /// [scope] Scope specifies the upgrade scope which upgrades are blocked by the exclusion.
-  MaintenanceExclusionOptions({this.scope});
+  MaintenanceExclusionOptions({
+    this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'scope':
-          ?pulumi.Input.mapOptionalInputValue<
-            MaintenanceExclusionOptionsScope,
-            String
-          >(scope, (value) => value.wireValue),
+      'scope': ?pulumi.Input.mapOptionalInputValue<MaintenanceExclusionOptionsScope, String>(scope, (value) => value.wireValue),
     };
   }
 
   factory MaintenanceExclusionOptions.fromMap(Map<String, dynamic> map) {
     return MaintenanceExclusionOptions(
-      scope: (() {
-        final guardedValue = map['scope'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          MaintenanceExclusionOptionsScope.fromValue(guardedValue as String),
-        );
-      })(),
+      scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MaintenanceExclusionOptionsScope.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

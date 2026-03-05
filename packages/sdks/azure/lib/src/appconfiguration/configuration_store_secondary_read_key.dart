@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConfigurationStoreSecondaryReadKey {
   /// The Connection String for this Access Key - consisting of the Endpoint, ID, and Secret.
   final pulumi.Input<String>? connectionString;
-
   /// The ID of the Access Key.
   final pulumi.Input<String>? id;
-
   /// The Secret of the Access Key.
   final pulumi.Input<String>? secret;
 
@@ -32,21 +30,10 @@ class ConfigurationStoreSecondaryReadKey {
 
   factory ConfigurationStoreSecondaryReadKey.fromMap(Map<String, dynamic> map) {
     return ConfigurationStoreSecondaryReadKey(
-      connectionString: (() {
-        final guardedValue = map['connectionString'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      secret: (() {
-        final guardedValue = map['secret'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      connectionString: (() { final guardedValue = map['connectionString']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      secret: (() { final guardedValue = map['secret']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

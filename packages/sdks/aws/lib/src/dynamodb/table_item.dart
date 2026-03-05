@@ -233,16 +233,12 @@ import 'table_item_state.dart';
 class TableItem extends pulumi.CustomResource {
   /// Hash key to use for lookups and identification of the item
   late final pulumi.Output<String> hashKey;
-
   /// JSON representation of a map of attribute name/value pairs, one for each attribute. Only the primary key attributes are required; you can optionally provide other attribute name-value pairs for the item.
   late final pulumi.Output<String> item;
-
   /// Range key to use for lookups and identification of the item. Required if there is range key defined in the table.
   late final pulumi.Output<String?> rangeKey;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Name or ARN of the table to contain the item.
   ///
   /// &gt; **Note:** Names included in `item` are represented internally with everything but letters removed. There is the possibility of collisions if two names, once filtered, are the same. For example, the names `your-name-here` and `yournamehere` will overlap and cause an error.
@@ -257,11 +253,11 @@ class TableItem extends pulumi.CustomResource {
     TableItemArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:dynamodb/tableItem:TableItem',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:dynamodb/tableItem:TableItem',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     hashKey = registerOutput<String>('hashKey');
     item = registerOutput<String>('item');
     rangeKey = registerOutput<String?>('rangeKey');
@@ -287,11 +283,11 @@ class TableItem extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:dynamodb/tableItem:TableItem',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:dynamodb/tableItem:TableItem',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     hashKey = registerOutput<String>('hashKey');
     item = registerOutput<String>('item');
     rangeKey = registerOutput<String?>('rangeKey');

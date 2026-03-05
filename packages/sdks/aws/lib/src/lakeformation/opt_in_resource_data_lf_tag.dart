@@ -28,13 +28,10 @@ class OptInResourceDataLfTag {
 
   factory OptInResourceDataLfTag.fromMap(Map<String, dynamic> map) {
     return OptInResourceDataLfTag(
-      catalogId: (() {
-        final guardedValue = map['catalogId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      catalogId: (() { final guardedValue = map['catalogId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       key: pulumi.Input.fromValue(map['key'] as String),
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
+

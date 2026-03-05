@@ -9,10 +9,14 @@ class ClusterPodSecurityPolicyConfig {
 
   /// Creates a new [ClusterPodSecurityPolicyConfig].
   /// [enabled] Enable the PodSecurityPolicy controller for this cluster.
-  ClusterPodSecurityPolicyConfig({required this.enabled});
+  ClusterPodSecurityPolicyConfig({
+    required this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled};
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
   factory ClusterPodSecurityPolicyConfig.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class ClusterPodSecurityPolicyConfig {
     );
   }
 }
+

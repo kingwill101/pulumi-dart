@@ -205,10 +205,8 @@ import 'ssh_key_state.dart';
 class SshKey extends pulumi.CustomResource {
   /// The fingerprint of the SSH key
   late final pulumi.Output<String> fingerprint;
-
   /// The name of the SSH key for identification
   late final pulumi.Output<String> name;
-
   /// The public key. If this is a file, it
   /// can be read using the file interpolation function
   late final pulumi.Output<String> publicKey;
@@ -217,13 +215,16 @@ class SshKey extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [SshKey]. {@macro pulumi_index_ssh_key_ssh_key_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  SshKey(String name, {SshKeyArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'digitalocean:index/sshKey:SshKey',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  SshKey(
+    String name, {
+    SshKeyArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'digitalocean:index/sshKey:SshKey',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     fingerprint = registerOutput<String>('fingerprint');
     this.name = registerOutput<String>('name');
     publicKey = registerOutput<String>('publicKey');
@@ -247,11 +248,11 @@ class SshKey extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/sshKey:SshKey',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/sshKey:SshKey',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     fingerprint = registerOutput<String>('fingerprint');
     this.name = registerOutput<String>('name');
     publicKey = registerOutput<String>('publicKey');

@@ -11,18 +11,15 @@ class QueueRetryConfig {
   /// the default.
   /// -1 indicates unlimited attempts.
   final pulumi.Input<int>? maxAttempts;
-
   /// A task will be scheduled for retry between minBackoff and
   /// maxBackoff duration after it fails, if the queue's RetryConfig
   /// specifies that the task should be retried.
   final pulumi.Input<String>? maxBackoff;
-
   /// The time between retries will double maxDoublings times.
   /// A task's retry interval starts at minBackoff, then doubles maxDoublings times,
   /// then increases linearly, and finally retries retries at intervals of maxBackoff
   /// up to maxAttempts times.
   final pulumi.Input<int>? maxDoublings;
-
   /// If positive, maxRetryDuration specifies the time limit for
   /// retrying a failed task, measured from when the task was first
   /// attempted. Once maxRetryDuration time has passed and the task has
@@ -30,7 +27,6 @@ class QueueRetryConfig {
   /// made and the task will be deleted.
   /// If zero, then the task age is unlimited.
   final pulumi.Input<String>? maxRetryDuration;
-
   /// A task will be scheduled for retry between minBackoff and
   /// maxBackoff duration after it fails, if the queue's RetryConfig
   /// specifies that the task should be retried.
@@ -62,31 +58,12 @@ class QueueRetryConfig {
 
   factory QueueRetryConfig.fromMap(Map<String, dynamic> map) {
     return QueueRetryConfig(
-      maxAttempts: (() {
-        final guardedValue = map['maxAttempts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      maxBackoff: (() {
-        final guardedValue = map['maxBackoff'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      maxDoublings: (() {
-        final guardedValue = map['maxDoublings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      maxRetryDuration: (() {
-        final guardedValue = map['maxRetryDuration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      minBackoff: (() {
-        final guardedValue = map['minBackoff'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      maxAttempts: (() { final guardedValue = map['maxAttempts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxBackoff: (() { final guardedValue = map['maxBackoff']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      maxDoublings: (() { final guardedValue = map['maxDoublings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxRetryDuration: (() { final guardedValue = map['maxRetryDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      minBackoff: (() { final guardedValue = map['minBackoff']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

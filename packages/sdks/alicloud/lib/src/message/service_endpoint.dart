@@ -12,7 +12,6 @@ import 'service_endpoint_state.dart';
 class ServiceEndpoint extends pulumi.CustomResource {
   /// Specifies whether the endpoint is enabled. Valid values:
   late final pulumi.Output<bool> endpointEnabled;
-
   /// Access point type. Value:
   /// - public: indicates a public access point. (Currently only public is supported)
   late final pulumi.Output<String> endpointType;
@@ -26,11 +25,11 @@ class ServiceEndpoint extends pulumi.CustomResource {
     ServiceEndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:message/serviceEndpoint:ServiceEndpoint',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:message/serviceEndpoint:ServiceEndpoint',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     endpointEnabled = registerOutput<bool>('endpointEnabled');
     endpointType = registerOutput<String>('endpointType');
   }
@@ -53,11 +52,11 @@ class ServiceEndpoint extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:message/serviceEndpoint:ServiceEndpoint',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:message/serviceEndpoint:ServiceEndpoint',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     endpointEnabled = registerOutput<bool>('endpointEnabled');
     endpointType = registerOutput<String>('endpointType');
   }

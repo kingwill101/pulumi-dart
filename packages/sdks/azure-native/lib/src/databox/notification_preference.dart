@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NotificationPreference {
   /// Notification is required or not.
   final pulumi.Input<bool> sendNotification;
-
   /// Name of the stage.
   final pulumi.Input<String> stageName;
 
@@ -32,3 +31,4 @@ class NotificationPreference {
     );
   }
 }
+

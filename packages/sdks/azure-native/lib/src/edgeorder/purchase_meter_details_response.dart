@@ -7,19 +7,14 @@ class PurchaseMeterDetailsResponse {
   /// Represents billing type.
   /// Expected value is 'Purchase'.
   final pulumi.Input<String> billingType;
-
   /// Charging type.
   final pulumi.Input<String> chargingType;
-
   /// Billing unit applicable for Pav2 billing.
   final pulumi.Input<double> multiplier;
-
   /// Product Id.
   final pulumi.Input<String> productId;
-
   /// Sku Id.
   final pulumi.Input<String> skuId;
-
   /// Term Id.
   final pulumi.Input<String> termId;
 
@@ -61,3 +56,4 @@ class PurchaseMeterDetailsResponse {
     );
   }
 }
+

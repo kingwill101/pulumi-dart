@@ -9,17 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketArchiveDirectReadArgs {
   /// The name of the bucket
   final pulumi.Input<String> bucket;
-
   /// Specifies whether to enable real-time access of Archive objects for a bucket. Valid values: true and false.
   final pulumi.Input<bool> enabled;
 
   /// Creates a new [BucketArchiveDirectReadArgs].
   /// [bucket] The name of the bucket
   /// [enabled] Specifies whether to enable real-time access of Archive objects for a bucket. Valid values: true and false.
-  BucketArchiveDirectReadArgs({required this.bucket, required this.enabled});
+  BucketArchiveDirectReadArgs({
+    required this.bucket,
+    required this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'bucket': bucket, 'enabled': enabled};
+    return <String, dynamic>{
+      'bucket': bucket,
+      'enabled': enabled,
+    };
   }
 
   factory BucketArchiveDirectReadArgs.fromMap(Map<String, dynamic> map) {
@@ -29,3 +34,4 @@ class BucketArchiveDirectReadArgs {
     );
   }
 }
+

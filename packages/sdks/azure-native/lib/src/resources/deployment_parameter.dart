@@ -7,13 +7,10 @@ import 'key_vault_parameter_reference.dart';
 class DeploymentParameter {
   /// Input expression to the parameter.
   final pulumi.Input<String>? expression;
-
   /// Azure Key Vault parameter reference.
   final pulumi.Input<KeyVaultParameterReference>? reference;
-
   /// Type of the value.
   final pulumi.Input<String>? type;
-
   /// Input value to the parameter.
   final pulumi.Input<dynamic>? value;
 
@@ -22,16 +19,17 @@ class DeploymentParameter {
   /// [reference] Azure Key Vault parameter reference.
   /// [type] Type of the value.
   /// [value] Input value to the parameter.
-  DeploymentParameter({this.expression, this.reference, this.type, this.value});
+  DeploymentParameter({
+    this.expression,
+    this.reference,
+    this.type,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'expression': ?expression,
-      'reference':
-          ?pulumi.Input.mapOptionalInputValue<
-            KeyVaultParameterReference,
-            Map<String, dynamic>
-          >(reference, (value) => value.toMap()),
+      'reference': ?pulumi.Input.mapOptionalInputValue<KeyVaultParameterReference, Map<String, dynamic>>(reference, (value) => value.toMap()),
       'type': ?type,
       'value': ?value,
     };
@@ -39,30 +37,11 @@ class DeploymentParameter {
 
   factory DeploymentParameter.fromMap(Map<String, dynamic> map) {
     return DeploymentParameter(
-      expression: (() {
-        final guardedValue = map['expression'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      reference: (() {
-        final guardedValue = map['reference'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          KeyVaultParameterReference.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
+      expression: (() { final guardedValue = map['expression']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      reference: (() { final guardedValue = map['reference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(KeyVaultParameterReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }
+

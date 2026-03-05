@@ -5,43 +5,30 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSnapshotsSnapshot {
   /// The type of the Snapshot.
   final pulumi.Input<String> category;
-
   /// The creation time of the snapshot.
   final pulumi.Input<String> createTime;
-
   /// The description of the snapshot.
   final pulumi.Input<String> description;
-
   /// The ID of the Snapshot.
   final pulumi.Input<String> id;
-
   /// The ID of the database file system.
   final pulumi.Input<String> instanceId;
-
   /// The last modification time of the snapshot.
   final pulumi.Input<String> lastModifiedTime;
-
   /// The progress of the snapshot.
   final pulumi.Input<String> progress;
-
   /// The remaining completion time of the snapshot being created, in seconds.
   final pulumi.Input<int> remainTime;
-
   /// The retention days of the snapshot.
   final pulumi.Input<int> retentionDays;
-
   /// The ID of the snapshot.
   final pulumi.Input<String> snapshotId;
-
   /// The name of the snapshot.
   final pulumi.Input<String> snapshotName;
-
   /// The creation of the snapshot.
   final pulumi.Input<String> snapshotType;
-
   /// Source database file system capacity.
   final pulumi.Input<int> sourceFsSize;
-
   /// The status of the snapshot. Possible values: `progressing`, `accomplished`, `failed`.
   final pulumi.Input<String> status;
 
@@ -103,9 +90,7 @@ class GetSnapshotsSnapshot {
       description: pulumi.Input.fromValue(map['description'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
-      lastModifiedTime: pulumi.Input.fromValue(
-        map['lastModifiedTime'] as String,
-      ),
+      lastModifiedTime: pulumi.Input.fromValue(map['lastModifiedTime'] as String),
       progress: pulumi.Input.fromValue(map['progress'] as String),
       remainTime: pulumi.Input.fromValue(map['remainTime'] as int),
       retentionDays: pulumi.Input.fromValue(map['retentionDays'] as int),
@@ -117,3 +102,4 @@ class GetSnapshotsSnapshot {
     );
   }
 }
+

@@ -14,3 +14,4 @@ enum TriggerReferenceType {
     throw ArgumentError('Unknown TriggerReferenceType value: $value');
   }
 }
+

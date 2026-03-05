@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceUiProxyConnAddr {
   /// The Phoenix address.
   final pulumi.Input<String>? connAddr;
-
   /// The number of the port over which Phoenix connects to the instance.
   final pulumi.Input<String>? connAddrPort;
-
   /// The type of the network. Valid values:
   final pulumi.Input<String>? netType;
 
@@ -16,7 +14,11 @@ class InstanceUiProxyConnAddr {
   /// [connAddr] The Phoenix address.
   /// [connAddrPort] The number of the port over which Phoenix connects to the instance.
   /// [netType] The type of the network. Valid values:
-  InstanceUiProxyConnAddr({this.connAddr, this.connAddrPort, this.netType});
+  InstanceUiProxyConnAddr({
+    this.connAddr,
+    this.connAddrPort,
+    this.netType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,21 +30,10 @@ class InstanceUiProxyConnAddr {
 
   factory InstanceUiProxyConnAddr.fromMap(Map<String, dynamic> map) {
     return InstanceUiProxyConnAddr(
-      connAddr: (() {
-        final guardedValue = map['connAddr'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      connAddrPort: (() {
-        final guardedValue = map['connAddrPort'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      netType: (() {
-        final guardedValue = map['netType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      connAddr: (() { final guardedValue = map['connAddr']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      connAddrPort: (() { final guardedValue = map['connAddrPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      netType: (() { final guardedValue = map['netType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

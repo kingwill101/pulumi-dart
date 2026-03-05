@@ -600,41 +600,30 @@ import 'compute_instance_state.dart';
 class ComputeInstance extends pulumi.CustomResource {
   /// A `assign_to_user` block as defined below. A user explicitly assigned to a personal compute instance. Changing this forces a new Machine Learning Compute Instance to be created.
   late final pulumi.Output<ComputeInstanceAssignToUser?> assignToUser;
-
   /// The Compute Instance Authorization type. Possible values include: `personal`. Changing this forces a new Machine Learning Compute Instance to be created.
   late final pulumi.Output<String?> authorizationType;
-
   /// The description of the Machine Learning Compute Instance. Changing this forces a new Machine Learning Compute Instance to be created.
   late final pulumi.Output<String?> description;
-
   /// An `identity` block as defined below. Changing this forces a new Machine Learning Compute Instance to be created.
   late final pulumi.Output<ComputeInstanceIdentity?> identity;
-
   /// Whether local authentication methods is enabled. Defaults to `true`. Changing this forces a new Machine Learning Compute Instance to be created.
   late final pulumi.Output<bool?> localAuthEnabled;
-
   /// The ID of the Machine Learning Workspace. Changing this forces a new Machine Learning Compute Instance to be created.
   late final pulumi.Output<String> machineLearningWorkspaceId;
-
   /// The name which should be used for this Machine Learning Compute Instance. Changing this forces a new Machine Learning Compute Instance to be created.
   late final pulumi.Output<String> name;
-
   /// Whether the compute instance will have a public ip. Defaults to `true`. Changing this forces a new Machine Learning Compute Cluster to be created.
   ///
   /// &gt; **Note:** The property `subnet_resource_id` becomes required if `node_public_ip_enabled` is set to `false`, and the instance's workspace is not using a managed network (i.e. the workspace's outbound isolation mode is `Disabled`).
   late final pulumi.Output<bool?> nodePublicIpEnabled;
-
   /// A `ssh` block as defined below. Specifies policy and settings for SSH access. Changing this forces a new Machine Learning Compute Instance to be created.
   late final pulumi.Output<ComputeInstanceSsh?> ssh;
-
   /// Virtual network subnet resource ID the compute nodes belong to. Changing this forces a new Machine Learning Compute Instance to be created.
   ///
   /// &gt; **Note:** The property `subnet_resource_id` can be set only if the instance's workspace is not using Azure-managed networking.
   late final pulumi.Output<String?> subnetResourceId;
-
   /// A mapping of tags which should be assigned to the Machine Learning Compute Instance. Changing this forces a new Machine Learning Compute Instance to be created.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The Virtual Machine Size. Changing this forces a new Machine Learning Compute Instance to be created.
   late final pulumi.Output<String> virtualMachineSize;
 
@@ -647,49 +636,20 @@ class ComputeInstance extends pulumi.CustomResource {
     ComputeInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:machinelearning/computeInstance:ComputeInstance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    assignToUser = registerOutput<ComputeInstanceAssignToUser?>(
-      'assignToUser',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ComputeInstanceAssignToUser.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:machinelearning/computeInstance:ComputeInstance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    assignToUser = registerOutput<ComputeInstanceAssignToUser?>('assignToUser', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ComputeInstanceAssignToUser.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     authorizationType = registerOutput<String?>('authorizationType');
     description = registerOutput<String?>('description');
-    identity = registerOutput<ComputeInstanceIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ComputeInstanceIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<ComputeInstanceIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ComputeInstanceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
-    machineLearningWorkspaceId = registerOutput<String>(
-      'machineLearningWorkspaceId',
-    );
+    machineLearningWorkspaceId = registerOutput<String>('machineLearningWorkspaceId');
     this.name = registerOutput<String>('name');
     nodePublicIpEnabled = registerOutput<bool?>('nodePublicIpEnabled');
-    ssh = registerOutput<ComputeInstanceSsh?>(
-      'ssh',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ComputeInstanceSsh.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    ssh = registerOutput<ComputeInstanceSsh?>('ssh', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ComputeInstanceSsh.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     subnetResourceId = registerOutput<String?>('subnetResourceId');
     tags = registerOutput<Map<String, String>?>('tags');
     virtualMachineSize = registerOutput<String>('virtualMachineSize');
@@ -713,49 +673,20 @@ class ComputeInstance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:machinelearning/computeInstance:ComputeInstance',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    assignToUser = registerOutput<ComputeInstanceAssignToUser?>(
-      'assignToUser',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ComputeInstanceAssignToUser.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:machinelearning/computeInstance:ComputeInstance',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    assignToUser = registerOutput<ComputeInstanceAssignToUser?>('assignToUser', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ComputeInstanceAssignToUser.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     authorizationType = registerOutput<String?>('authorizationType');
     description = registerOutput<String?>('description');
-    identity = registerOutput<ComputeInstanceIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ComputeInstanceIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<ComputeInstanceIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ComputeInstanceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
-    machineLearningWorkspaceId = registerOutput<String>(
-      'machineLearningWorkspaceId',
-    );
+    machineLearningWorkspaceId = registerOutput<String>('machineLearningWorkspaceId');
     this.name = registerOutput<String>('name');
     nodePublicIpEnabled = registerOutput<bool?>('nodePublicIpEnabled');
-    ssh = registerOutput<ComputeInstanceSsh?>(
-      'ssh',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ComputeInstanceSsh.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    ssh = registerOutput<ComputeInstanceSsh?>('ssh', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ComputeInstanceSsh.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     subnetResourceId = registerOutput<String?>('subnetResourceId');
     tags = registerOutput<Map<String, String>?>('tags');
     virtualMachineSize = registerOutput<String>('virtualMachineSize');

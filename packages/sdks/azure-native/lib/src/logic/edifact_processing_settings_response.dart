@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EdifactProcessingSettingsResponse {
   /// The value indicating whether to create empty xml tags for trailing separators.
   final pulumi.Input<bool> createEmptyXmlTagsForTrailingSeparators;
-
   /// The value indicating whether to mask security information.
   final pulumi.Input<bool> maskSecurityInfo;
-
   /// The value indicating whether to preserve interchange.
   final pulumi.Input<bool> preserveInterchange;
-
   /// The value indicating whether to suspend interchange on error.
   final pulumi.Input<bool> suspendInterchangeOnError;
-
   /// The value indicating whether to use dot as decimal separator.
   final pulumi.Input<bool> useDotAsDecimalSeparator;
 
@@ -35,8 +31,7 @@ class EdifactProcessingSettingsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createEmptyXmlTagsForTrailingSeparators':
-          createEmptyXmlTagsForTrailingSeparators,
+      'createEmptyXmlTagsForTrailingSeparators': createEmptyXmlTagsForTrailingSeparators,
       'maskSecurityInfo': maskSecurityInfo,
       'preserveInterchange': preserveInterchange,
       'suspendInterchangeOnError': suspendInterchangeOnError,
@@ -46,19 +41,12 @@ class EdifactProcessingSettingsResponse {
 
   factory EdifactProcessingSettingsResponse.fromMap(Map<String, dynamic> map) {
     return EdifactProcessingSettingsResponse(
-      createEmptyXmlTagsForTrailingSeparators: pulumi.Input.fromValue(
-        map['createEmptyXmlTagsForTrailingSeparators'] as bool,
-      ),
+      createEmptyXmlTagsForTrailingSeparators: pulumi.Input.fromValue(map['createEmptyXmlTagsForTrailingSeparators'] as bool),
       maskSecurityInfo: pulumi.Input.fromValue(map['maskSecurityInfo'] as bool),
-      preserveInterchange: pulumi.Input.fromValue(
-        map['preserveInterchange'] as bool,
-      ),
-      suspendInterchangeOnError: pulumi.Input.fromValue(
-        map['suspendInterchangeOnError'] as bool,
-      ),
-      useDotAsDecimalSeparator: pulumi.Input.fromValue(
-        map['useDotAsDecimalSeparator'] as bool,
-      ),
+      preserveInterchange: pulumi.Input.fromValue(map['preserveInterchange'] as bool),
+      suspendInterchangeOnError: pulumi.Input.fromValue(map['suspendInterchangeOnError'] as bool),
+      useDotAsDecimalSeparator: pulumi.Input.fromValue(map['useDotAsDecimalSeparator'] as bool),
     );
   }
 }
+

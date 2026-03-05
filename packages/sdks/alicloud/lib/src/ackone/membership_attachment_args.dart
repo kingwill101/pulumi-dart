@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MembershipAttachmentArgs {
   /// The ID of the cluster to which the membership is being attached.
   final pulumi.Input<String> clusterId;
-
   /// The ID of the member being attached to the cluster.
   final pulumi.Input<String> subClusterId;
 
@@ -35,3 +34,4 @@ class MembershipAttachmentArgs {
     );
   }
 }
+

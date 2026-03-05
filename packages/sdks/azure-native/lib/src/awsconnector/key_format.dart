@@ -15,3 +15,4 @@ enum KeyFormat {
     throw ArgumentError('Unknown KeyFormat value: $value');
   }
 }
+

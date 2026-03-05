@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRelationshipLinkArgs {
   /// The name of the hub.
   final pulumi.Input<String> hubName;
-
   /// The name of the relationship link.
   final pulumi.Input<String> relationshipLinkName;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -37,12 +35,9 @@ class GetRelationshipLinkArgs {
   factory GetRelationshipLinkArgs.fromMap(Map<String, dynamic> map) {
     return GetRelationshipLinkArgs(
       hubName: pulumi.Input.fromValue(map['hubName'] as String),
-      relationshipLinkName: pulumi.Input.fromValue(
-        map['relationshipLinkName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      relationshipLinkName: pulumi.Input.fromValue(map['relationshipLinkName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

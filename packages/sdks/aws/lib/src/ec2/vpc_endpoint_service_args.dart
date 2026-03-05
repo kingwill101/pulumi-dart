@@ -9,28 +9,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpcEndpointServiceArgs {
   /// Whether or not VPC endpoint connection requests to the service must be accepted by the service owner - `true` or `false`.
   final pulumi.Input<bool> acceptanceRequired;
-
   /// The ARNs of one or more principals allowed to discover the endpoint service.
   final pulumi.Input<List<String>>? allowedPrincipals;
-
   /// Amazon Resource Names (ARNs) of one or more Gateway Load Balancers for the endpoint service.
   final pulumi.Input<List<String>>? gatewayLoadBalancerArns;
-
   /// Amazon Resource Names (ARNs) of one or more Network Load Balancers for the endpoint service.
   final pulumi.Input<List<String>>? networkLoadBalancerArns;
-
   /// The private DNS name for the service.
   final pulumi.Input<String>? privateDnsName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The supported IP address types. The possible values are `ipv4` and `ipv6`.
   final pulumi.Input<List<String>>? supportedIpAddressTypes;
-
   /// The set of regions from which service consumers can access the service.
   final pulumi.Input<List<String>>? supportedRegions;
-
   /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -72,51 +64,16 @@ class VpcEndpointServiceArgs {
 
   factory VpcEndpointServiceArgs.fromMap(Map<String, dynamic> map) {
     return VpcEndpointServiceArgs(
-      acceptanceRequired: pulumi.Input.fromValue(
-        map['acceptanceRequired'] as bool,
-      ),
-      allowedPrincipals: (() {
-        final guardedValue = map['allowedPrincipals'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      gatewayLoadBalancerArns: (() {
-        final guardedValue = map['gatewayLoadBalancerArns'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      networkLoadBalancerArns: (() {
-        final guardedValue = map['networkLoadBalancerArns'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      privateDnsName: (() {
-        final guardedValue = map['privateDnsName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      supportedIpAddressTypes: (() {
-        final guardedValue = map['supportedIpAddressTypes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      supportedRegions: (() {
-        final guardedValue = map['supportedRegions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      acceptanceRequired: pulumi.Input.fromValue(map['acceptanceRequired'] as bool),
+      allowedPrincipals: (() { final guardedValue = map['allowedPrincipals']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      gatewayLoadBalancerArns: (() { final guardedValue = map['gatewayLoadBalancerArns']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      networkLoadBalancerArns: (() { final guardedValue = map['networkLoadBalancerArns']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      privateDnsName: (() { final guardedValue = map['privateDnsName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      supportedIpAddressTypes: (() { final guardedValue = map['supportedIpAddressTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      supportedRegions: (() { final guardedValue = map['supportedRegions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

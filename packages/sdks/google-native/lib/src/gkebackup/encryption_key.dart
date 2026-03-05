@@ -9,19 +9,20 @@ class EncryptionKey {
 
   /// Creates a new [EncryptionKey].
   /// [gcpKmsEncryptionKey] Optional. Google Cloud KMS encryption key. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
-  EncryptionKey({this.gcpKmsEncryptionKey});
+  EncryptionKey({
+    this.gcpKmsEncryptionKey,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'gcpKmsEncryptionKey': ?gcpKmsEncryptionKey};
+    return <String, dynamic>{
+      'gcpKmsEncryptionKey': ?gcpKmsEncryptionKey,
+    };
   }
 
   factory EncryptionKey.fromMap(Map<String, dynamic> map) {
     return EncryptionKey(
-      gcpKmsEncryptionKey: (() {
-        final guardedValue = map['gcpKmsEncryptionKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      gcpKmsEncryptionKey: (() { final guardedValue = map['gcpKmsEncryptionKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

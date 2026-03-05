@@ -40,8 +40,7 @@ class PostgresqlConfig {
     return raw;
   }
 
-  bool get awsRdsIamProviderRoleArnIsSecret =>
-      _isSecret('awsRdsIamProviderRoleArn');
+  bool get awsRdsIamProviderRoleArnIsSecret => _isSecret('awsRdsIamProviderRoleArn');
 
   /// AWS region to use for IAM auth
   String? get awsRdsIamRegion {
@@ -69,13 +68,7 @@ class PostgresqlConfig {
   /// SSL client certificate if required by the database.
   Clientcert? get clientcert {
     final raw = _raw('clientcert');
-    return (() {
-      final guardedValue = raw;
-      if (guardedValue == null) return null;
-      return Clientcert.fromMap(
-        (jsonDecode(guardedValue) as Map).cast<String, dynamic>(),
-      );
-    })();
+    return (() { final guardedValue = raw; if (guardedValue == null) return null; return Clientcert.fromMap((jsonDecode(guardedValue) as Map).cast<String, dynamic>()); })();
   }
 
   bool get clientcertIsSecret => _isSecret('clientcert');
@@ -118,8 +111,7 @@ class PostgresqlConfig {
     return raw;
   }
 
-  bool get gcpIamImpersonateServiceAccountIsSecret =>
-      _isSecret('gcpIamImpersonateServiceAccount');
+  bool get gcpIamImpersonateServiceAccountIsSecret => _isSecret('gcpIamImpersonateServiceAccount');
 
   /// Name of PostgreSQL server address to connect to
   String? get host {
@@ -198,6 +190,8 @@ class PostgresqlConfig {
   }
 
   bool get usernameIsSecret => _isSecret('username');
+
 }
 
 final config = PostgresqlConfig();
+

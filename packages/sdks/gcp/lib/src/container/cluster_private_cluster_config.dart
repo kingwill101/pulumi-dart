@@ -9,19 +9,15 @@ class ClusterPrivateClusterConfig {
   /// is disabled. When `false`, either endpoint can be used. This field only applies
   /// to private clusters, when `enable_private_nodes` is `true`.
   final pulumi.Input<bool>? enablePrivateEndpoint;
-
   /// Enables the private cluster feature,
   /// creating a private endpoint on the cluster. In a private cluster, nodes only
   /// have RFC 1918 private addresses and communicate with the master's private
   /// endpoint via private networking.
   final pulumi.Input<bool>? enablePrivateNodes;
-
   /// Controls cluster master global
   /// access settings. If unset, the provider will no longer manage this field and will
   /// not modify the previously-set value. Structure is documented below.
-  final pulumi.Input<ClusterPrivateClusterConfigMasterGlobalAccessConfig>?
-  masterGlobalAccessConfig;
-
+  final pulumi.Input<ClusterPrivateClusterConfigMasterGlobalAccessConfig>? masterGlobalAccessConfig;
   /// The IP range in CIDR notation to use for
   /// the hosted master network. This range will be used for assigning private IP
   /// addresses to the cluster master(s) and the ILB VIP. This range must not overlap
@@ -30,16 +26,12 @@ class ClusterPrivateClusterConfig {
   /// for more details. This field only applies to private clusters, when
   /// `enable_private_nodes` is `true`.
   final pulumi.Input<String>? masterIpv4CidrBlock;
-
   /// The name of the peering between this cluster and the Google owned VPC.
   final pulumi.Input<String>? peeringName;
-
   /// The internal IP address of this cluster's master endpoint.
   final pulumi.Input<String>? privateEndpoint;
-
   /// Subnetwork in cluster's network where master's endpoint will be provisioned.
   final pulumi.Input<String>? privateEndpointSubnetwork;
-
   /// The external IP address of this cluster's master endpoint.
   ///
   /// !&gt; The Google provider is unable to validate certain configurations of
@@ -71,11 +63,7 @@ class ClusterPrivateClusterConfig {
     return <String, dynamic>{
       'enablePrivateEndpoint': ?enablePrivateEndpoint,
       'enablePrivateNodes': ?enablePrivateNodes,
-      'masterGlobalAccessConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterPrivateClusterConfigMasterGlobalAccessConfig,
-            Map<String, dynamic>
-          >(masterGlobalAccessConfig, (value) => value.toMap()),
+      'masterGlobalAccessConfig': ?pulumi.Input.mapOptionalInputValue<ClusterPrivateClusterConfigMasterGlobalAccessConfig, Map<String, dynamic>>(masterGlobalAccessConfig, (value) => value.toMap()),
       'masterIpv4CidrBlock': ?masterIpv4CidrBlock,
       'peeringName': ?peeringName,
       'privateEndpoint': ?privateEndpoint,
@@ -86,50 +74,15 @@ class ClusterPrivateClusterConfig {
 
   factory ClusterPrivateClusterConfig.fromMap(Map<String, dynamic> map) {
     return ClusterPrivateClusterConfig(
-      enablePrivateEndpoint: (() {
-        final guardedValue = map['enablePrivateEndpoint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      enablePrivateNodes: (() {
-        final guardedValue = map['enablePrivateNodes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      masterGlobalAccessConfig: (() {
-        final guardedValue = map['masterGlobalAccessConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterPrivateClusterConfigMasterGlobalAccessConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      masterIpv4CidrBlock: (() {
-        final guardedValue = map['masterIpv4CidrBlock'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      peeringName: (() {
-        final guardedValue = map['peeringName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      privateEndpoint: (() {
-        final guardedValue = map['privateEndpoint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      privateEndpointSubnetwork: (() {
-        final guardedValue = map['privateEndpointSubnetwork'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      publicEndpoint: (() {
-        final guardedValue = map['publicEndpoint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      enablePrivateEndpoint: (() { final guardedValue = map['enablePrivateEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enablePrivateNodes: (() { final guardedValue = map['enablePrivateNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      masterGlobalAccessConfig: (() { final guardedValue = map['masterGlobalAccessConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterPrivateClusterConfigMasterGlobalAccessConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      masterIpv4CidrBlock: (() { final guardedValue = map['masterIpv4CidrBlock']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      peeringName: (() { final guardedValue = map['peeringName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateEndpoint: (() { final guardedValue = map['privateEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateEndpointSubnetwork: (() { final guardedValue = map['privateEndpointSubnetwork']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicEndpoint: (() { final guardedValue = map['publicEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -8,10 +8,14 @@ class DomainFeaturesMsrs {
 
   /// Creates a new [DomainFeaturesMsrs].
   /// [unknown] Indicates whether unknown MSRs are allowed to be accessed by the guest.
-  DomainFeaturesMsrs({required this.unknown});
+  DomainFeaturesMsrs({
+    required this.unknown,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'unknown': unknown};
+    return <String, dynamic>{
+      'unknown': unknown,
+    };
   }
 
   factory DomainFeaturesMsrs.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class DomainFeaturesMsrs {
     );
   }
 }
+

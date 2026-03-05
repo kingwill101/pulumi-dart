@@ -11,17 +11,13 @@ import 'configuration_datastore.dart';
 class ConfigurationArgs {
   /// An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
   final pulumi.Input<List<ConfigurationConfiguration>>? configurations;
-
   /// An array of database engine type and version. The datastore
   /// object structure is documented below. Changing this creates resource.
   final pulumi.Input<ConfigurationDatastore> datastore;
-
   /// Description of the resource.
   final pulumi.Input<String> description;
-
   /// A unique name for the resource.
   final pulumi.Input<String>? name;
-
   /// The region in which to create the db instance. Changing this
   /// creates a new instance.
   final pulumi.Input<String>? region;
@@ -42,23 +38,8 @@ class ConfigurationArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configurations':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ConfigurationConfiguration>,
-            List<Map<String, dynamic>>
-          >(
-            configurations,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ConfigurationConfiguration,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'datastore':
-          pulumi.Input.mapInputValue<
-            ConfigurationDatastore,
-            Map<String, dynamic>
-          >(datastore, (value) => value.toMap()),
+      'configurations': ?pulumi.Input.mapOptionalInputValue<List<ConfigurationConfiguration>, List<Map<String, dynamic>>>(configurations, (value) => pulumi.Input.encodeList<ConfigurationConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'datastore': pulumi.Input.mapInputValue<ConfigurationDatastore, Map<String, dynamic>>(datastore, (value) => value.toMap()),
       'description': description,
       'name': ?name,
       'region': ?region,
@@ -67,34 +48,12 @@ class ConfigurationArgs {
 
   factory ConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return ConfigurationArgs(
-      configurations: (() {
-        final guardedValue = map['configurations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ConfigurationConfiguration>(
-            guardedValue,
-            (value) => ConfigurationConfiguration.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      datastore: pulumi.Input.fromValue(
-        ConfigurationDatastore.fromMap(
-          (map['datastore']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      configurations: (() { final guardedValue = map['configurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ConfigurationConfiguration>(guardedValue, (value) => ConfigurationConfiguration.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      datastore: pulumi.Input.fromValue(ConfigurationDatastore.fromMap((map['datastore']! as Map).cast<String, dynamic>())),
       description: pulumi.Input.fromValue(map['description'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -577,81 +577,57 @@ import 'image_timeouts.dart';
 class Image extends pulumi.CustomResource {
   /// The capabilities of this Image.
   late final pulumi.Output<List<String>> capabilities;
-
   /// Whether this image supports cloud-init.
   late final pulumi.Output<bool> cloudInit;
-
   /// When this Image was created.
   late final pulumi.Output<String> created;
-
   /// The name of the User who created this Image.
   late final pulumi.Output<String> createdBy;
-
   /// Whether or not this Image is deprecated. Will only be True for deprecated public Images.
   late final pulumi.Output<bool> deprecated;
-
   /// A detailed description of this Image.
   late final pulumi.Output<String?> description;
-
   /// The ID of the Linode Disk that this Image will be created from.
   late final pulumi.Output<int?> diskId;
-
   /// Only Images created automatically (from a deleted Linode; type=automatic) will expire.
   late final pulumi.Output<String> expiry;
-
   /// The MD5 hash of the file to be uploaded. This is used to trigger file updates.
   late final pulumi.Output<String?> fileHash;
-
   /// The path of the image file to be uploaded.
   late final pulumi.Output<String?> filePath;
-
   /// Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
   late final pulumi.Output<ImageImageSharing> imageSharing;
-
   /// True if the Image is public.
   late final pulumi.Output<bool> isPublic;
-
   /// True if the Image is shared. (**Note: v4beta only and may not currently be available to all users.**)
   late final pulumi.Output<bool> isShared;
-
   /// A short description of the Image. Labels cannot contain special characters.
   late final pulumi.Output<String> label;
-
   /// The ID of the Linode that this Image will be created from.
   ///
   /// - - -
   ///
   /// &gt; **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
   late final pulumi.Output<int?> linodeId;
-
   /// The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
   late final pulumi.Output<String?> region;
-
   /// A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
   late final pulumi.Output<List<String>?> replicaRegions;
-
   /// A list of image replications region and corresponding status.
   late final pulumi.Output<List<Map<String, dynamic>>> replications;
-
   /// The minimum size this Image needs to deploy. Size is in MB.
   late final pulumi.Output<int> size;
-
   /// The status of an image replica.
   late final pulumi.Output<String> status;
-
   /// A list of customized tags.
   late final pulumi.Output<List<String>> tags;
   late final pulumi.Output<ImageTimeouts?> timeouts;
-
   /// The total size of the image in all available regions.
   late final pulumi.Output<int> totalSize;
-
   /// How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from a deleted Linode.
   late final pulumi.Output<String> type;
-
   /// The upstream distribution vendor. Nil for private Images.
   late final pulumi.Output<String> vendor;
-
   /// Whether to wait for all image replications become `available`. Default to false.
   ///
   /// - - -
@@ -661,13 +637,16 @@ class Image extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Image]. {@macro pulumi_index_image_image_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Image(String name, {ImageArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'linode:index/image:Image',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Image(
+    String name, {
+    ImageArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'linode:index/image:Image',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     capabilities = registerOutput<List<String>>('capabilities');
     cloudInit = registerOutput<bool>('cloudInit');
     created = registerOutput<String>('created');
@@ -678,16 +657,7 @@ class Image extends pulumi.CustomResource {
     expiry = registerOutput<String>('expiry');
     fileHash = registerOutput<String?>('fileHash');
     filePath = registerOutput<String?>('filePath');
-    imageSharing = registerOutput<ImageImageSharing>(
-      'imageSharing',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ImageImageSharing.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    imageSharing = registerOutput<ImageImageSharing>('imageSharing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageImageSharing.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     isPublic = registerOutput<bool>('isPublic');
     isShared = registerOutput<bool>('isShared');
     label = registerOutput<String>('label');
@@ -698,16 +668,7 @@ class Image extends pulumi.CustomResource {
     size = registerOutput<int>('size');
     status = registerOutput<String>('status');
     tags = registerOutput<List<String>>('tags');
-    timeouts = registerOutput<ImageTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ImageTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<ImageTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     totalSize = registerOutput<int>('totalSize');
     type = registerOutput<String>('type');
     vendor = registerOutput<String>('vendor');
@@ -715,7 +676,11 @@ class Image extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Image] resource's state with the given [name] and [id].
-  static Image get(String name, pulumi.Input<String> id, {ImageState? state}) {
+  static Image get(
+    String name,
+    pulumi.Input<String> id, {
+    ImageState? state,
+  }) {
     return Image._get(
       name,
       state: state?.toMap(),
@@ -728,11 +693,11 @@ class Image extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'linode:index/image:Image',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'linode:index/image:Image',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     capabilities = registerOutput<List<String>>('capabilities');
     cloudInit = registerOutput<bool>('cloudInit');
     created = registerOutput<String>('created');
@@ -743,16 +708,7 @@ class Image extends pulumi.CustomResource {
     expiry = registerOutput<String>('expiry');
     fileHash = registerOutput<String?>('fileHash');
     filePath = registerOutput<String?>('filePath');
-    imageSharing = registerOutput<ImageImageSharing>(
-      'imageSharing',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ImageImageSharing.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    imageSharing = registerOutput<ImageImageSharing>('imageSharing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageImageSharing.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     isPublic = registerOutput<bool>('isPublic');
     isShared = registerOutput<bool>('isShared');
     label = registerOutput<String>('label');
@@ -763,16 +719,7 @@ class Image extends pulumi.CustomResource {
     size = registerOutput<int>('size');
     status = registerOutput<String>('status');
     tags = registerOutput<List<String>>('tags');
-    timeouts = registerOutput<ImageTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ImageTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<ImageTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     totalSize = registerOutput<int>('totalSize');
     type = registerOutput<String>('type');
     vendor = registerOutput<String>('vendor');

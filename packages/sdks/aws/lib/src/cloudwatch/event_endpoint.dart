@@ -243,28 +243,20 @@ import 'event_endpoint_state.dart';
 class EventEndpoint extends pulumi.CustomResource {
   /// The ARN of the endpoint that was created.
   late final pulumi.Output<String> arn;
-
   /// A description of the global endpoint.
   late final pulumi.Output<String?> description;
-
   /// The URL of the endpoint that was created.
   late final pulumi.Output<String> endpointUrl;
-
   /// The event buses to use. The names of the event buses must be identical in each Region. Exactly two event buses are required. Documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> eventBuses;
-
   /// The name of the global endpoint.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Parameters used for replication. Documented below.
   late final pulumi.Output<EventEndpointReplicationConfig?> replicationConfig;
-
   /// The ARN of the IAM role used for replication between event buses.
   late final pulumi.Output<String?> roleArn;
-
   /// Parameters used for routing, including the health check and secondary Region. Documented below.
   late final pulumi.Output<EventEndpointRoutingConfig> routingConfig;
 
@@ -277,38 +269,20 @@ class EventEndpoint extends pulumi.CustomResource {
     EventEndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cloudwatch/eventEndpoint:EventEndpoint',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cloudwatch/eventEndpoint:EventEndpoint',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     endpointUrl = registerOutput<String>('endpointUrl');
     eventBuses = registerOutput<List<Map<String, dynamic>>>('eventBuses');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    replicationConfig = registerOutput<EventEndpointReplicationConfig?>(
-      'replicationConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EventEndpointReplicationConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    replicationConfig = registerOutput<EventEndpointReplicationConfig?>('replicationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventEndpointReplicationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     roleArn = registerOutput<String?>('roleArn');
-    routingConfig = registerOutput<EventEndpointRoutingConfig>(
-      'routingConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EventEndpointRoutingConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    routingConfig = registerOutput<EventEndpointRoutingConfig>('routingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventEndpointRoutingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [EventEndpoint] resource's state with the given [name] and [id].
@@ -329,37 +303,19 @@ class EventEndpoint extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cloudwatch/eventEndpoint:EventEndpoint',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cloudwatch/eventEndpoint:EventEndpoint',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     endpointUrl = registerOutput<String>('endpointUrl');
     eventBuses = registerOutput<List<Map<String, dynamic>>>('eventBuses');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    replicationConfig = registerOutput<EventEndpointReplicationConfig?>(
-      'replicationConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EventEndpointReplicationConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    replicationConfig = registerOutput<EventEndpointReplicationConfig?>('replicationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventEndpointReplicationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     roleArn = registerOutput<String?>('roleArn');
-    routingConfig = registerOutput<EventEndpointRoutingConfig>(
-      'routingConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EventEndpointRoutingConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    routingConfig = registerOutput<EventEndpointRoutingConfig>('routingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventEndpointRoutingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

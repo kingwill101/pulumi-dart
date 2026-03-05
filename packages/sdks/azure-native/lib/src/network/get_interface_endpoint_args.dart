@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInterfaceEndpointArgs {
   /// Expands referenced resources.
   final pulumi.Input<String>? expand;
-
   /// The name of the interface endpoint.
   final pulumi.Input<String> interfaceEndpointName;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,17 +34,10 @@ class GetInterfaceEndpointArgs {
 
   factory GetInterfaceEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GetInterfaceEndpointArgs(
-      expand: (() {
-        final guardedValue = map['expand'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      interfaceEndpointName: pulumi.Input.fromValue(
-        map['interfaceEndpointName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      expand: (() { final guardedValue = map['expand']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      interfaceEndpointName: pulumi.Input.fromValue(map['interfaceEndpointName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

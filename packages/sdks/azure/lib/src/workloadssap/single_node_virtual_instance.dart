@@ -969,38 +969,26 @@ import 'single_node_virtual_instance_state.dart';
 class SingleNodeVirtualInstance extends pulumi.CustomResource {
   /// The Geo-Location where the SAP system is to be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> appLocation;
-
   /// The environment type for the SAP Single Node Virtual Instance. Possible values are `NonProd` and `Prod`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> environment;
-
   /// An `identity` block as defined below.
   late final pulumi.Output<SingleNodeVirtualInstanceIdentity?> identity;
-
   /// The Azure Region where the SAP Single Node Virtual Instance should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The name of the managed Resource Group for the SAP Single Node Virtual Instance. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> managedResourceGroupName;
-
   /// The network access type for managed resources. Possible values are `Private` and `Public`. Defaults to `Public`.
   late final pulumi.Output<String?> managedResourcesNetworkAccessType;
-
   /// Specifies the name of this SAP Single Node Virtual Instance. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the Resource Group where the SAP Single Node Virtual Instance should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The fully qualified domain name for the SAP system. Changing this forces a new resource to be created.
   late final pulumi.Output<String> sapFqdn;
-
   /// The SAP Product type for the SAP Single Node Virtual Instance. Possible values are `ECC`, `Other` and `S4HANA`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> sapProduct;
-
   /// A `single_server_configuration` block as defined below. Changing this forces a new resource to be created.
-  late final pulumi.Output<SingleNodeVirtualInstanceSingleServerConfiguration>
-  singleServerConfiguration;
-
+  late final pulumi.Output<SingleNodeVirtualInstanceSingleServerConfiguration> singleServerConfiguration;
   /// A mapping of tags which should be assigned to the SAP Single Node Virtual Instance.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -1013,45 +1001,22 @@ class SingleNodeVirtualInstance extends pulumi.CustomResource {
     SingleNodeVirtualInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:workloadssap/singleNodeVirtualInstance:SingleNodeVirtualInstance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:workloadssap/singleNodeVirtualInstance:SingleNodeVirtualInstance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appLocation = registerOutput<String>('appLocation');
     environment = registerOutput<String>('environment');
-    identity = registerOutput<SingleNodeVirtualInstanceIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SingleNodeVirtualInstanceIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<SingleNodeVirtualInstanceIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SingleNodeVirtualInstanceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
-    managedResourceGroupName = registerOutput<String?>(
-      'managedResourceGroupName',
-    );
-    managedResourcesNetworkAccessType = registerOutput<String?>(
-      'managedResourcesNetworkAccessType',
-    );
+    managedResourceGroupName = registerOutput<String?>('managedResourceGroupName');
+    managedResourcesNetworkAccessType = registerOutput<String?>('managedResourcesNetworkAccessType');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sapFqdn = registerOutput<String>('sapFqdn');
     sapProduct = registerOutput<String>('sapProduct');
-    singleServerConfiguration =
-        registerOutput<SingleNodeVirtualInstanceSingleServerConfiguration>(
-          'singleServerConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SingleNodeVirtualInstanceSingleServerConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    singleServerConfiguration = registerOutput<SingleNodeVirtualInstanceSingleServerConfiguration>('singleServerConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SingleNodeVirtualInstanceSingleServerConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
   }
 
@@ -1073,45 +1038,22 @@ class SingleNodeVirtualInstance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:workloadssap/singleNodeVirtualInstance:SingleNodeVirtualInstance',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:workloadssap/singleNodeVirtualInstance:SingleNodeVirtualInstance',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appLocation = registerOutput<String>('appLocation');
     environment = registerOutput<String>('environment');
-    identity = registerOutput<SingleNodeVirtualInstanceIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SingleNodeVirtualInstanceIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<SingleNodeVirtualInstanceIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SingleNodeVirtualInstanceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
-    managedResourceGroupName = registerOutput<String?>(
-      'managedResourceGroupName',
-    );
-    managedResourcesNetworkAccessType = registerOutput<String?>(
-      'managedResourcesNetworkAccessType',
-    );
+    managedResourceGroupName = registerOutput<String?>('managedResourceGroupName');
+    managedResourcesNetworkAccessType = registerOutput<String?>('managedResourcesNetworkAccessType');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sapFqdn = registerOutput<String>('sapFqdn');
     sapProduct = registerOutput<String>('sapProduct');
-    singleServerConfiguration =
-        registerOutput<SingleNodeVirtualInstanceSingleServerConfiguration>(
-          'singleServerConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SingleNodeVirtualInstanceSingleServerConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    singleServerConfiguration = registerOutput<SingleNodeVirtualInstanceSingleServerConfiguration>('singleServerConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SingleNodeVirtualInstanceSingleServerConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
   }
 }

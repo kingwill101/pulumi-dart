@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleFirestoreAdminV1beta1IndexFieldResponse {
   /// The path of the field. Must match the field path specification described by google.firestore.v1beta1.Document.fields. Special field path `__name__` may be used by itself or at the end of a path. `__type__` may be used only at the end of path.
   final pulumi.Input<String> fieldPath;
-
   /// The field's mode.
   final pulumi.Input<String> mode;
 
@@ -19,15 +18,17 @@ class GoogleFirestoreAdminV1beta1IndexFieldResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'fieldPath': fieldPath, 'mode': mode};
+    return <String, dynamic>{
+      'fieldPath': fieldPath,
+      'mode': mode,
+    };
   }
 
-  factory GoogleFirestoreAdminV1beta1IndexFieldResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleFirestoreAdminV1beta1IndexFieldResponse.fromMap(Map<String, dynamic> map) {
     return GoogleFirestoreAdminV1beta1IndexFieldResponse(
       fieldPath: pulumi.Input.fromValue(map['fieldPath'] as String),
       mode: pulumi.Input.fromValue(map['mode'] as String),
     );
   }
 }
+

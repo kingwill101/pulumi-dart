@@ -31,13 +31,10 @@ class GetReservationArgs {
 
   factory GetReservationArgs.fromMap(Map<String, dynamic> map) {
     return GetReservationArgs(
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       reservation: pulumi.Input.fromValue(map['reservation'] as String),
       zone: pulumi.Input.fromValue(map['zone'] as String),
     );
   }
 }
+

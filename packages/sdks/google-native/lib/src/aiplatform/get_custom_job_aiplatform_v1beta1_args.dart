@@ -33,11 +33,8 @@ class GetCustomJobAiplatformV1beta1Args {
     return GetCustomJobAiplatformV1beta1Args(
       customJobId: pulumi.Input.fromValue(map['customJobId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

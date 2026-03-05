@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RandomShuffleArgs {
   /// The list of strings to shuffle.
   final pulumi.Input<List<String>> inputs;
-
   /// Arbitrary map of values that, when changed, will trigger recreation of resource. See the main provider documentation for more information.
   final pulumi.Input<Map<String, String>>? keepers;
-
   /// The number of results to return. Defaults to the number of items in the `input` list. If fewer items are requested, some elements will be excluded from the result. If more items are requested, items will be repeated in the result but not more frequently than the number of items in the input list.
   final pulumi.Input<int>? resultCount;
-
   /// Arbitrary string with which to seed the random number generator, in order to produce less-volatile permutations of the list.
   final pulumi.Input<String>? seed;
 
@@ -43,23 +40,10 @@ class RandomShuffleArgs {
   factory RandomShuffleArgs.fromMap(Map<String, dynamic> map) {
     return RandomShuffleArgs(
       inputs: pulumi.Input.fromValue((map['inputs'] as List).cast<String>()),
-      keepers: (() {
-        final guardedValue = map['keepers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      resultCount: (() {
-        final guardedValue = map['resultCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      seed: (() {
-        final guardedValue = map['seed'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      keepers: (() { final guardedValue = map['keepers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      resultCount: (() { final guardedValue = map['resultCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      seed: (() { final guardedValue = map['seed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

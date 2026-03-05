@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ACRPropertiesResponse {
   /// Gets or sets the azure container registry name.
   final pulumi.Input<String>? registryName;
-
   /// Gets or sets the resource group of the resource.
   final pulumi.Input<String>? resourceGroup;
-
   /// Gets or sets the subscription id of the resource.
   final pulumi.Input<String>? subscriptionId;
-
   /// Gets or sets the tenant id.
   final pulumi.Input<String>? tenantId;
 
@@ -39,26 +36,11 @@ class ACRPropertiesResponse {
 
   factory ACRPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ACRPropertiesResponse(
-      registryName: (() {
-        final guardedValue = map['registryName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroup: (() {
-        final guardedValue = map['resourceGroup'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subscriptionId: (() {
-        final guardedValue = map['subscriptionId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tenantId: (() {
-        final guardedValue = map['tenantId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      registryName: (() { final guardedValue = map['registryName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroup: (() { final guardedValue = map['resourceGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subscriptionId: (() { final guardedValue = map['subscriptionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

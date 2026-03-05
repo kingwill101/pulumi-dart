@@ -24,16 +24,9 @@ class ResourceGuardOperationDetail {
 
   factory ResourceGuardOperationDetail.fromMap(Map<String, dynamic> map) {
     return ResourceGuardOperationDetail(
-      defaultResourceRequest: (() {
-        final guardedValue = map['defaultResourceRequest'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      vaultCriticalOperation: (() {
-        final guardedValue = map['vaultCriticalOperation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      defaultResourceRequest: (() { final guardedValue = map['defaultResourceRequest']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      vaultCriticalOperation: (() { final guardedValue = map['vaultCriticalOperation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

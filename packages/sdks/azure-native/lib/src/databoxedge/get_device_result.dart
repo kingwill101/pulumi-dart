@@ -11,88 +11,60 @@ import 'system_data_response.dart';
 class GetDeviceResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Type of compute roles configured.
   final List<String> configuredRoleTypes;
-
   /// The Data Box Edge/Gateway device culture.
   final String culture;
-
   /// The status of the Data Box Edge/Gateway device.
   final String dataBoxEdgeDeviceStatus;
-
   /// The details of data-residency related properties for this resource
   final DataResidencyResponse? dataResidency;
-
   /// The Description of the Data Box Edge/Gateway device.
   final String description;
-
   /// The device software version number of the device (eg: 1.2.18105.6).
   final String deviceHcsVersion;
-
   /// The Data Box Edge/Gateway device local capacity in MB.
   final double deviceLocalCapacity;
-
   /// The Data Box Edge/Gateway device model.
   final String deviceModel;
-
   /// The Data Box Edge/Gateway device software version.
   final String deviceSoftwareVersion;
-
   /// The type of the Data Box Edge/Gateway device.
   final String deviceType;
-
   /// The details of Edge Profile for this resource
   final EdgeProfileResponse edgeProfile;
-
   /// The etag for the devices.
   final String? etag;
-
   /// The Data Box Edge/Gateway device name.
   final String friendlyName;
-
   /// The path ID that uniquely identifies the object.
   final String id;
-
   /// Msi identity of the resource
   final ResourceIdentityResponse? identity;
-
   /// The kind of the device.
   final String kind;
-
   /// Kubernetes Workload Profile
   final String kubernetesWorkloadProfile;
-
   /// The location of the device. This is a supported and registered Azure geographical region (for example, West US, East US, or Southeast Asia). The geographical region of a device cannot be changed once it is created, but if an identical geographical region is specified on update, the request will succeed.
   final String location;
-
   /// The description of the Data Box Edge/Gateway device model.
   final String modelDescription;
-
   /// The object name.
   final String name;
-
   /// The number of nodes in the cluster.
   final int nodeCount;
-
   /// The details of the move operation on this resource.
   final ResourceMoveDetailsResponse resourceMoveDetails;
-
   /// The Serial Number of Data Box Edge/Gateway device.
   final String serialNumber;
-
   /// The SKU type.
   final SkuResponse? sku;
-
   /// DataBoxEdge Resource
   final SystemDataResponse systemData;
-
   /// The list of tags that describe the device. These tags can be used to view and group this device (across resource groups).
   final Map<String, String>? tags;
-
   /// The Data Box Edge/Gateway device timezone.
   final String timeZone;
-
   /// The hierarchical type of the object.
   final String type;
 
@@ -198,63 +170,32 @@ class GetDeviceResult {
       configuredRoleTypes: (map['configuredRoleTypes'] as List).cast<String>(),
       culture: map['culture'] as String,
       dataBoxEdgeDeviceStatus: map['dataBoxEdgeDeviceStatus'] as String,
-      dataResidency: (() {
-        final guardedValue = map['dataResidency'];
-        if (guardedValue == null) return null;
-        return DataResidencyResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      dataResidency: (() { final guardedValue = map['dataResidency']; if (guardedValue == null) return null; return DataResidencyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       description: map['description'] as String,
       deviceHcsVersion: map['deviceHcsVersion'] as String,
       deviceLocalCapacity: map['deviceLocalCapacity'] as double,
       deviceModel: map['deviceModel'] as String,
       deviceSoftwareVersion: map['deviceSoftwareVersion'] as String,
       deviceType: map['deviceType'] as String,
-      edgeProfile: EdgeProfileResponse.fromMap(
-        (map['edgeProfile']! as Map).cast<String, dynamic>(),
-      ),
-      etag: (() {
-        final guardedValue = map['etag'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      edgeProfile: EdgeProfileResponse.fromMap((map['edgeProfile']! as Map).cast<String, dynamic>()),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       friendlyName: map['friendlyName'] as String,
       id: map['id'] as String,
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return ResourceIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return ResourceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       kind: map['kind'] as String,
       kubernetesWorkloadProfile: map['kubernetesWorkloadProfile'] as String,
       location: map['location'] as String,
       modelDescription: map['modelDescription'] as String,
       name: map['name'] as String,
       nodeCount: map['nodeCount'] as int,
-      resourceMoveDetails: ResourceMoveDetailsResponse.fromMap(
-        (map['resourceMoveDetails']! as Map).cast<String, dynamic>(),
-      ),
+      resourceMoveDetails: ResourceMoveDetailsResponse.fromMap((map['resourceMoveDetails']! as Map).cast<String, dynamic>()),
       serialNumber: map['serialNumber'] as String,
-      sku: (() {
-        final guardedValue = map['sku'];
-        if (guardedValue == null) return null;
-        return SkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       timeZone: map['timeZone'] as String,
       type: map['type'] as String,
     );
   }
 }
+

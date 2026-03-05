@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getSshPublicKey.
 class GetSshPublicKeyResult {
   /// An expiration time in microseconds since epoch.
   final String expirationTimeUsec;
-
   /// The SHA-256 fingerprint of the SSH public key.
   final String fingerprint;
-
   /// Public key text in SSH format, defined by RFC4253 section 6.6.
   final String key;
-
   /// The canonical resource name.
   final String name;
 
@@ -44,3 +42,4 @@ class GetSshPublicKeyResult {
     );
   }
 }
+

@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceRestoreParameters {
   /// The id of the restorable database account from which the restore has to be initiated. For example: /subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{restorableDatabaseAccountName}
   final pulumi.Input<String>? restoreSource;
-
   /// Time to which the account has to be restored (ISO-8601 format).
   final pulumi.Input<String>? restoreTimestampInUtc;
-
   /// Specifies whether the restored account will have Time-To-Live disabled upon the successful restore.
   final pulumi.Input<bool>? restoreWithTtlDisabled;
 
@@ -33,21 +31,10 @@ class ResourceRestoreParameters {
 
   factory ResourceRestoreParameters.fromMap(Map<String, dynamic> map) {
     return ResourceRestoreParameters(
-      restoreSource: (() {
-        final guardedValue = map['restoreSource'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      restoreTimestampInUtc: (() {
-        final guardedValue = map['restoreTimestampInUtc'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      restoreWithTtlDisabled: (() {
-        final guardedValue = map['restoreWithTtlDisabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      restoreSource: (() { final guardedValue = map['restoreSource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      restoreTimestampInUtc: (() { final guardedValue = map['restoreTimestampInUtc']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      restoreWithTtlDisabled: (() { final guardedValue = map['restoreWithTtlDisabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

@@ -165,27 +165,20 @@ import 'cache_reserve_instance_state.dart';
 class CacheReserveInstance extends pulumi.CustomResource {
   /// Automatic payment.
   late final pulumi.Output<bool?> autoPay;
-
   /// Whether to auto-renew:
   late final pulumi.Output<bool?> autoRenew;
-
   /// Cache holding area
   /// - `HK`: Hong Kong, China
   /// - `CN`: Mainland China
   late final pulumi.Output<String?> crRegion;
-
   /// Instance purchase time.
   late final pulumi.Output<String> createTime;
-
   /// Specifies whether to enable auto payment.
   late final pulumi.Output<String> paymentType;
-
   /// Purchase period (unit: month).
   late final pulumi.Output<int?> period;
-
   /// Cache retention specification (unit: GB).
   late final pulumi.Output<int?> quotaGb;
-
   /// The status of the cache reserve instance. , it is unavailable.
   late final pulumi.Output<String> status;
 
@@ -198,11 +191,11 @@ class CacheReserveInstance extends pulumi.CustomResource {
     CacheReserveInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/cacheReserveInstance:CacheReserveInstance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:esa/cacheReserveInstance:CacheReserveInstance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoPay = registerOutput<bool?>('autoPay');
     autoRenew = registerOutput<bool?>('autoRenew');
     crRegion = registerOutput<String?>('crRegion');
@@ -231,11 +224,11 @@ class CacheReserveInstance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/cacheReserveInstance:CacheReserveInstance',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:esa/cacheReserveInstance:CacheReserveInstance',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoPay = registerOutput<bool?>('autoPay');
     autoRenew = registerOutput<bool?>('autoRenew');
     crRegion = registerOutput<String?>('crRegion');

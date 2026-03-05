@@ -9,25 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StaticSiteDatabaseConnectionArgs {
   /// If present, the identity is used in conjunction with connection string to connect to the database. Use of the system-assigned managed identity is indicated with the string 'SystemAssigned', while use of a user-assigned managed identity is indicated with the resource id of the managed identity resource.
   final pulumi.Input<String>? connectionIdentity;
-
   /// The connection string to use to connect to the database.
   final pulumi.Input<String>? connectionString;
-
   /// Name of the database connection.
   final pulumi.Input<String>? databaseConnectionName;
-
   /// Kind of resource.
   final pulumi.Input<String>? kind;
-
   /// Name of the static site
   final pulumi.Input<String> name;
-
   /// The region of the database resource.
   final pulumi.Input<String> region;
-
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
-
   /// The resource id of the database.
   final pulumi.Input<String> resourceId;
 
@@ -66,32 +59,15 @@ class StaticSiteDatabaseConnectionArgs {
 
   factory StaticSiteDatabaseConnectionArgs.fromMap(Map<String, dynamic> map) {
     return StaticSiteDatabaseConnectionArgs(
-      connectionIdentity: (() {
-        final guardedValue = map['connectionIdentity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      connectionString: (() {
-        final guardedValue = map['connectionString'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      databaseConnectionName: (() {
-        final guardedValue = map['databaseConnectionName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      connectionIdentity: (() { final guardedValue = map['connectionIdentity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      connectionString: (() { final guardedValue = map['connectionString']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      databaseConnectionName: (() { final guardedValue = map['databaseConnectionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       region: pulumi.Input.fromValue(map['region'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
     );
   }
 }
+

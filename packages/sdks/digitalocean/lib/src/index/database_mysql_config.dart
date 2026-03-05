@@ -176,85 +176,58 @@ import 'database_mysql_config_state.dart';
 class DatabaseMysqlConfig extends pulumi.CustomResource {
   /// The hour of day (in UTC) when backup for the service starts. New backup only starts if previous backup has already completed.
   late final pulumi.Output<int> backupHour;
-
   /// The minute of the backup hour when backup for the service starts. New backup only starts if previous backup has already completed.
   late final pulumi.Output<int> backupMinute;
-
   /// The minimum amount of time, in seconds, to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default, for example if using the MySQL Debezium Kafka connector.
   late final pulumi.Output<int> binlogRetentionPeriod;
-
   /// The ID of the target MySQL cluster.
   late final pulumi.Output<String> clusterId;
-
   /// The number of seconds that the mysqld server waits for a connect packet before responding with bad handshake.
   late final pulumi.Output<int> connectTimeout;
-
   /// Default server time zone, in the form of an offset from UTC (from -12:00 to +12:00), a time zone name (EST), or `SYSTEM` to use the MySQL server default.
   late final pulumi.Output<String> defaultTimeZone;
-
   /// The maximum permitted result length, in bytes, for the `GROUP_CONCAT()` function.
   late final pulumi.Output<int> groupConcatMaxLen;
-
   /// The time, in seconds, before cached statistics expire.
   late final pulumi.Output<int> informationSchemaStatsExpiry;
-
   /// The minimum length of words that an InnoDB FULLTEXT index stores.
   late final pulumi.Output<int> innodbFtMinTokenSize;
-
   /// The InnoDB FULLTEXT index stopword list for all InnoDB tables.
   late final pulumi.Output<String> innodbFtServerStopwordTable;
-
   /// The time, in seconds, that an InnoDB transaction waits for a row lock. before giving up.
   late final pulumi.Output<int> innodbLockWaitTimeout;
-
   /// The size of the buffer, in bytes, that InnoDB uses to write to the log files. on disk.
   late final pulumi.Output<int> innodbLogBufferSize;
-
   /// The upper limit, in bytes, of the size of the temporary log files used during online DDL operations for InnoDB tables.
   late final pulumi.Output<int> innodbOnlineAlterLogMaxSize;
-
   /// When enabled, records information about all deadlocks in InnoDB user transactions in the error log. Disabled by default.
   late final pulumi.Output<bool> innodbPrintAllDeadlocks;
-
   /// When enabled, transaction timeouts cause InnoDB to abort and roll back the entire transaction.
   late final pulumi.Output<bool> innodbRollbackOnTimeout;
-
   /// The time, in seconds, the server waits for activity on an interactive. connection before closing it.
   late final pulumi.Output<int> interactiveTimeout;
-
   /// The storage engine for in-memory internal temporary tables. Supported values are: `TempTable`, `MEMORY`.
   late final pulumi.Output<String> internalTmpMemStorageEngine;
-
   /// The time, in seconds, for a query to take to execute before being captured by `slow_query_logs`. Default is `10` seconds.
   late final pulumi.Output<double> longQueryTime;
-
   /// The size of the largest message, in bytes, that can be received by the server. Default is `67108864` (64M).
   late final pulumi.Output<int> maxAllowedPacket;
-
   /// The maximum size, in bytes, of internal in-memory tables. Also set `tmp_table_size`. Default is `16777216` (16M)
   late final pulumi.Output<int> maxHeapTableSize;
-
   /// The time, in seconds, to wait for more data from an existing connection. aborting the read.
   late final pulumi.Output<int> netReadTimeout;
-
   /// The number of seconds to wait for a block to be written to a connection before aborting the write.
   late final pulumi.Output<int> netWriteTimeout;
-
   /// When enabled, captures slow queries. When disabled, also truncates the mysql.slow_log table. Default is false.
   late final pulumi.Output<bool> slowQueryLog;
-
   /// The sort buffer size, in bytes, for `ORDER BY` optimization. Default is `262144`. (256K).
   late final pulumi.Output<int> sortBufferSize;
-
   /// Global SQL mode. If empty, uses MySQL server defaults. Must only include uppercase alphabetic characters, underscores, and commas.
   late final pulumi.Output<String> sqlMode;
-
   /// Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them.
   late final pulumi.Output<bool> sqlRequirePrimaryKey;
-
   /// The maximum size, in bytes, of internal in-memory tables. Also set `max_heap_table_size`. Default is `16777216` (16M).
   late final pulumi.Output<int> tmpTableSize;
-
   /// The number of seconds the server waits for activity on a noninteractive connection before closing it.
   late final pulumi.Output<int> waitTimeout;
 
@@ -267,11 +240,11 @@ class DatabaseMysqlConfig extends pulumi.CustomResource {
     DatabaseMysqlConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/databaseMysqlConfig:DatabaseMysqlConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/databaseMysqlConfig:DatabaseMysqlConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     backupHour = registerOutput<int>('backupHour');
     backupMinute = registerOutput<int>('backupMinute');
     binlogRetentionPeriod = registerOutput<int>('binlogRetentionPeriod');
@@ -279,24 +252,16 @@ class DatabaseMysqlConfig extends pulumi.CustomResource {
     connectTimeout = registerOutput<int>('connectTimeout');
     defaultTimeZone = registerOutput<String>('defaultTimeZone');
     groupConcatMaxLen = registerOutput<int>('groupConcatMaxLen');
-    informationSchemaStatsExpiry = registerOutput<int>(
-      'informationSchemaStatsExpiry',
-    );
+    informationSchemaStatsExpiry = registerOutput<int>('informationSchemaStatsExpiry');
     innodbFtMinTokenSize = registerOutput<int>('innodbFtMinTokenSize');
-    innodbFtServerStopwordTable = registerOutput<String>(
-      'innodbFtServerStopwordTable',
-    );
+    innodbFtServerStopwordTable = registerOutput<String>('innodbFtServerStopwordTable');
     innodbLockWaitTimeout = registerOutput<int>('innodbLockWaitTimeout');
     innodbLogBufferSize = registerOutput<int>('innodbLogBufferSize');
-    innodbOnlineAlterLogMaxSize = registerOutput<int>(
-      'innodbOnlineAlterLogMaxSize',
-    );
+    innodbOnlineAlterLogMaxSize = registerOutput<int>('innodbOnlineAlterLogMaxSize');
     innodbPrintAllDeadlocks = registerOutput<bool>('innodbPrintAllDeadlocks');
     innodbRollbackOnTimeout = registerOutput<bool>('innodbRollbackOnTimeout');
     interactiveTimeout = registerOutput<int>('interactiveTimeout');
-    internalTmpMemStorageEngine = registerOutput<String>(
-      'internalTmpMemStorageEngine',
-    );
+    internalTmpMemStorageEngine = registerOutput<String>('internalTmpMemStorageEngine');
     longQueryTime = registerOutput<double>('longQueryTime');
     maxAllowedPacket = registerOutput<int>('maxAllowedPacket');
     maxHeapTableSize = registerOutput<int>('maxHeapTableSize');
@@ -328,11 +293,11 @@ class DatabaseMysqlConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/databaseMysqlConfig:DatabaseMysqlConfig',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/databaseMysqlConfig:DatabaseMysqlConfig',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     backupHour = registerOutput<int>('backupHour');
     backupMinute = registerOutput<int>('backupMinute');
     binlogRetentionPeriod = registerOutput<int>('binlogRetentionPeriod');
@@ -340,24 +305,16 @@ class DatabaseMysqlConfig extends pulumi.CustomResource {
     connectTimeout = registerOutput<int>('connectTimeout');
     defaultTimeZone = registerOutput<String>('defaultTimeZone');
     groupConcatMaxLen = registerOutput<int>('groupConcatMaxLen');
-    informationSchemaStatsExpiry = registerOutput<int>(
-      'informationSchemaStatsExpiry',
-    );
+    informationSchemaStatsExpiry = registerOutput<int>('informationSchemaStatsExpiry');
     innodbFtMinTokenSize = registerOutput<int>('innodbFtMinTokenSize');
-    innodbFtServerStopwordTable = registerOutput<String>(
-      'innodbFtServerStopwordTable',
-    );
+    innodbFtServerStopwordTable = registerOutput<String>('innodbFtServerStopwordTable');
     innodbLockWaitTimeout = registerOutput<int>('innodbLockWaitTimeout');
     innodbLogBufferSize = registerOutput<int>('innodbLogBufferSize');
-    innodbOnlineAlterLogMaxSize = registerOutput<int>(
-      'innodbOnlineAlterLogMaxSize',
-    );
+    innodbOnlineAlterLogMaxSize = registerOutput<int>('innodbOnlineAlterLogMaxSize');
     innodbPrintAllDeadlocks = registerOutput<bool>('innodbPrintAllDeadlocks');
     innodbRollbackOnTimeout = registerOutput<bool>('innodbRollbackOnTimeout');
     interactiveTimeout = registerOutput<int>('interactiveTimeout');
-    internalTmpMemStorageEngine = registerOutput<String>(
-      'internalTmpMemStorageEngine',
-    );
+    internalTmpMemStorageEngine = registerOutput<String>('internalTmpMemStorageEngine');
     longQueryTime = registerOutput<double>('longQueryTime');
     maxAllowedPacket = registerOutput<int>('maxAllowedPacket');
     maxHeapTableSize = registerOutput<int>('maxHeapTableSize');

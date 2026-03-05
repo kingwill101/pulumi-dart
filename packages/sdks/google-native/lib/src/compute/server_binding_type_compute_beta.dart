@@ -15,3 +15,4 @@ enum ServerBindingTypeComputeBeta {
     throw ArgumentError('Unknown ServerBindingTypeComputeBeta value: $value');
   }
 }
+

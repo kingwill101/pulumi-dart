@@ -6,14 +6,8 @@ import 'plan_workflow_step_arc_routing_control_config_region_and_routing_control
 class PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControl {
   /// AWS region.
   final pulumi.Input<String> region;
-
   /// List of routing controls. See Routing Control below.
-  final pulumi.Input<
-    List<
-      PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControlRoutingControl
-    >
-  >?
-  routingControls;
+  final pulumi.Input<List<PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControlRoutingControl>>? routingControls;
 
   /// Creates a new [PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControl].
   /// [region] AWS region.
@@ -26,43 +20,15 @@ class PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControl {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'region': region,
-      'routingControls':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<
-              PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControlRoutingControl
-            >,
-            List<Map<String, dynamic>>
-          >(
-            routingControls,
-            (value) =>
-                pulumi.Input.encodeList<
-                  PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControlRoutingControl,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'routingControls': ?pulumi.Input.mapOptionalInputValue<List<PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControlRoutingControl>, List<Map<String, dynamic>>>(routingControls, (value) => pulumi.Input.encodeList<PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControlRoutingControl, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControl.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControl.fromMap(Map<String, dynamic> map) {
     return PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControl(
       region: pulumi.Input.fromValue(map['region'] as String),
-      routingControls: (() {
-        final guardedValue = map['routingControls'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControlRoutingControl
-          >(
-            guardedValue,
-            (value) =>
-                PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControlRoutingControl.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
+      routingControls: (() { final guardedValue = map['routingControls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControlRoutingControl>(guardedValue, (value) => PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControlRoutingControl.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

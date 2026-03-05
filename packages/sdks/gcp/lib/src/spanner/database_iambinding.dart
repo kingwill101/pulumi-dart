@@ -1405,16 +1405,12 @@ class DatabaseIAMBinding extends pulumi.CustomResource {
   /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
   /// Structure is documented below.
   late final pulumi.Output<DatabaseIAMBindingCondition?> condition;
-
   /// The name of the Spanner database.
   late final pulumi.Output<String> database;
-
   /// (Computed) The etag of the database's IAM policy.
   late final pulumi.Output<String> etag;
-
   /// The name of the Spanner instance the database belongs to.
   late final pulumi.Output<String> instance;
-
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -1424,11 +1420,9 @@ class DatabaseIAMBinding extends pulumi.CustomResource {
   /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
   late final pulumi.Output<List<String>> members;
-
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The role that should be applied. Only one
   /// `gcp.spanner.DatabaseIAMBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -1443,21 +1437,12 @@ class DatabaseIAMBinding extends pulumi.CustomResource {
     DatabaseIAMBindingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:spanner/databaseIAMBinding:DatabaseIAMBinding',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    condition = registerOutput<DatabaseIAMBindingCondition?>(
-      'condition',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DatabaseIAMBindingCondition.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:spanner/databaseIAMBinding:DatabaseIAMBinding',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    condition = registerOutput<DatabaseIAMBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseIAMBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     database = registerOutput<String>('database');
     etag = registerOutput<String>('etag');
     instance = registerOutput<String>('instance');
@@ -1484,21 +1469,12 @@ class DatabaseIAMBinding extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:spanner/databaseIAMBinding:DatabaseIAMBinding',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    condition = registerOutput<DatabaseIAMBindingCondition?>(
-      'condition',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DatabaseIAMBindingCondition.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:spanner/databaseIAMBinding:DatabaseIAMBinding',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    condition = registerOutput<DatabaseIAMBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseIAMBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     database = registerOutput<String>('database');
     etag = registerOutput<String>('etag');
     instance = registerOutput<String>('instance');

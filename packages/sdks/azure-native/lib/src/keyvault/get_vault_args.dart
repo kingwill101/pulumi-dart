@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVaultArgs {
   /// The name of the Resource Group to which the vault belongs.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the vault.
   final pulumi.Input<String> vaultName;
 
   /// Creates a new [GetVaultArgs].
   /// [resourceGroupName] The name of the Resource Group to which the vault belongs.
   /// [vaultName] The name of the vault.
-  GetVaultArgs({required this.resourceGroupName, required this.vaultName});
+  GetVaultArgs({
+    required this.resourceGroupName,
+    required this.vaultName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,10 +29,9 @@ class GetVaultArgs {
 
   factory GetVaultArgs.fromMap(Map<String, dynamic> map) {
     return GetVaultArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       vaultName: pulumi.Input.fromValue(map['vaultName'] as String),
     );
   }
 }
+

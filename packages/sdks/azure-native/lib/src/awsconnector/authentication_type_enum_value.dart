@@ -9,19 +9,20 @@ class AuthenticationTypeEnumValue {
 
   /// Creates a new [AuthenticationTypeEnumValue].
   /// [value] Property value
-  AuthenticationTypeEnumValue({this.value});
+  AuthenticationTypeEnumValue({
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': ?value};
+    return <String, dynamic>{
+      'value': ?value,
+    };
   }
 
   factory AuthenticationTypeEnumValue.fromMap(Map<String, dynamic> map) {
     return AuthenticationTypeEnumValue(
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

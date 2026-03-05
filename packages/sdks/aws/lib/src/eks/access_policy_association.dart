@@ -148,22 +148,16 @@ import 'access_policy_association_state.dart';
 class AccessPolicyAssociation extends pulumi.CustomResource {
   /// The configuration block to determine the scope of the access. See `access_scope` Block below.
   late final pulumi.Output<AccessPolicyAssociationAccessScope> accessScope;
-
   /// Date and time in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) that the policy was associated.
   late final pulumi.Output<String> associatedAt;
-
   /// Name of the EKS Cluster.
   late final pulumi.Output<String> clusterName;
-
   /// Date and time in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) that the policy was updated.
   late final pulumi.Output<String> modifiedAt;
-
   /// The ARN of the access policy that you're associating.
   late final pulumi.Output<String> policyArn;
-
   /// The IAM Principal ARN which requires Authentication access to the EKS cluster.
   late final pulumi.Output<String> principalArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -176,21 +170,12 @@ class AccessPolicyAssociation extends pulumi.CustomResource {
     AccessPolicyAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:eks/accessPolicyAssociation:AccessPolicyAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    accessScope = registerOutput<AccessPolicyAssociationAccessScope>(
-      'accessScope',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccessPolicyAssociationAccessScope.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'aws:eks/accessPolicyAssociation:AccessPolicyAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    accessScope = registerOutput<AccessPolicyAssociationAccessScope>('accessScope', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessPolicyAssociationAccessScope.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     associatedAt = registerOutput<String>('associatedAt');
     clusterName = registerOutput<String>('clusterName');
     modifiedAt = registerOutput<String>('modifiedAt');
@@ -217,21 +202,12 @@ class AccessPolicyAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:eks/accessPolicyAssociation:AccessPolicyAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    accessScope = registerOutput<AccessPolicyAssociationAccessScope>(
-      'accessScope',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AccessPolicyAssociationAccessScope.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'aws:eks/accessPolicyAssociation:AccessPolicyAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    accessScope = registerOutput<AccessPolicyAssociationAccessScope>('accessScope', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessPolicyAssociationAccessScope.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     associatedAt = registerOutput<String>('associatedAt');
     clusterName = registerOutput<String>('clusterName');
     modifiedAt = registerOutput<String>('modifiedAt');

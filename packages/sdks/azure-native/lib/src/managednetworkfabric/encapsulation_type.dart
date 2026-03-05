@@ -15,3 +15,4 @@ enum EncapsulationType {
     throw ArgumentError('Unknown EncapsulationType value: $value');
   }
 }
+

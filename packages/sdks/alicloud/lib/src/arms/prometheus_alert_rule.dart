@@ -240,37 +240,26 @@ import 'prometheus_alert_rule_state.dart';
 class PrometheusAlertRule extends pulumi.CustomResource {
   /// The annotations of the alert rule. See `annotations` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> annotations;
-
   /// The ID of the cluster.
   late final pulumi.Output<String> clusterId;
-
   /// The ID of the notification policy. This parameter is required when the `notify_type` parameter is set to `DISPATCH_RULE`.
   late final pulumi.Output<String?> dispatchRuleId;
-
   /// The duration of the alert.
   late final pulumi.Output<String> duration;
-
   /// The alert rule expression that follows the PromQL syntax.
   late final pulumi.Output<String> expression;
-
   /// The labels of the resource. See `labels` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> labels;
-
   /// The message of the alert notification.
   late final pulumi.Output<String> message;
-
   /// The method of sending the alert notification. Valid values: `ALERT_MANAGER`, `DISPATCH_RULE`.
   late final pulumi.Output<String?> notifyType;
-
   /// The first ID of the resource.
   late final pulumi.Output<int> prometheusAlertRuleId;
-
   /// The name of the resource.
   late final pulumi.Output<String> prometheusAlertRuleName;
-
   /// The status of the resource. Valid values: `0`, `1`.
   late final pulumi.Output<int> status;
-
   /// The type of the alert rule.
   late final pulumi.Output<String> type;
 
@@ -283,11 +272,11 @@ class PrometheusAlertRule extends pulumi.CustomResource {
     PrometheusAlertRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:arms/prometheusAlertRule:PrometheusAlertRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:arms/prometheusAlertRule:PrometheusAlertRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     annotations = registerOutput<List<Map<String, dynamic>>?>('annotations');
     clusterId = registerOutput<String>('clusterId');
     dispatchRuleId = registerOutput<String?>('dispatchRuleId');
@@ -320,11 +309,11 @@ class PrometheusAlertRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:arms/prometheusAlertRule:PrometheusAlertRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:arms/prometheusAlertRule:PrometheusAlertRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     annotations = registerOutput<List<Map<String, dynamic>>?>('annotations');
     clusterId = registerOutput<String>('clusterId');
     dispatchRuleId = registerOutput<String?>('dispatchRuleId');

@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceReferenceResponse {
   /// The unique identifier of the Compute Engine instance.
   final pulumi.Input<String> instanceId;
-
   /// The user-friendly name of the Compute Engine instance.
   final pulumi.Input<String> instanceName;
-
   /// The public ECIES key used for sharing data with this instance.
   final pulumi.Input<String> publicEciesKey;
-
   /// The public RSA key used for sharing data with this instance.
   final pulumi.Input<String> publicKey;
 
@@ -46,3 +43,4 @@ class InstanceReferenceResponse {
     );
   }
 }
+

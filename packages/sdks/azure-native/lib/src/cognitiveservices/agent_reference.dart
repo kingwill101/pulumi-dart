@@ -6,31 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AgentReference {
   /// Gets the agent's unique identifier within the organization (subscription).
   final pulumi.Input<String>? agentId;
-
   /// Gets the agent's name (unique within the project/app).
   final pulumi.Input<String>? agentName;
 
   /// Creates a new [AgentReference].
   /// [agentId] Gets the agent's unique identifier within the organization (subscription).
   /// [agentName] Gets the agent's name (unique within the project/app).
-  AgentReference({this.agentId, this.agentName});
+  AgentReference({
+    this.agentId,
+    this.agentName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'agentId': ?agentId, 'agentName': ?agentName};
+    return <String, dynamic>{
+      'agentId': ?agentId,
+      'agentName': ?agentName,
+    };
   }
 
   factory AgentReference.fromMap(Map<String, dynamic> map) {
     return AgentReference(
-      agentId: (() {
-        final guardedValue = map['agentId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      agentName: (() {
-        final guardedValue = map['agentName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      agentId: (() { final guardedValue = map['agentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      agentName: (() { final guardedValue = map['agentName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

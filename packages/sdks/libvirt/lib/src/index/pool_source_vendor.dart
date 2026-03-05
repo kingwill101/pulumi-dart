@@ -8,10 +8,14 @@ class PoolSourceVendor {
 
   /// Creates a new [PoolSourceVendor].
   /// [name] Configures the name attribute for the vendor related to the storage source.
-  PoolSourceVendor({required this.name});
+  PoolSourceVendor({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory PoolSourceVendor.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class PoolSourceVendor {
     );
   }
 }
+

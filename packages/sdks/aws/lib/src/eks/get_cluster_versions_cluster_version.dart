@@ -6,28 +6,20 @@ class GetClusterVersionsClusterVersion {
   /// Type of clusters to filter by.
   /// Currently, the only valid value is `eks`.
   final pulumi.Input<String> clusterType;
-
   /// Kubernetes version supported by EKS.
   final pulumi.Input<String> clusterVersion;
-
   /// Default eks platform version for the cluster version.
   final pulumi.Input<String> defaultPlatformVersion;
-
   /// Default Kubernetes version for the cluster version.
   final pulumi.Input<bool> defaultVersion;
-
   /// End of extended support date for the cluster version.
   final pulumi.Input<String> endOfExtendedSupportDate;
-
   /// End of standard support date for the cluster version.
   final pulumi.Input<String> endOfStandardSupportDate;
-
   /// Kubernetes patch version for the cluster version.
   final pulumi.Input<String> kubernetesPatchVersion;
-
   /// Release date of the cluster version.
   final pulumi.Input<String> releaseDate;
-
   /// Status of the EKS cluster versions to list.
   /// Valid values are `STANDARD_SUPPORT` or `UNSUPPORTED` or `EXTENDED_SUPPORT`.
   final pulumi.Input<String> versionStatus;
@@ -72,21 +64,14 @@ class GetClusterVersionsClusterVersion {
     return GetClusterVersionsClusterVersion(
       clusterType: pulumi.Input.fromValue(map['clusterType'] as String),
       clusterVersion: pulumi.Input.fromValue(map['clusterVersion'] as String),
-      defaultPlatformVersion: pulumi.Input.fromValue(
-        map['defaultPlatformVersion'] as String,
-      ),
+      defaultPlatformVersion: pulumi.Input.fromValue(map['defaultPlatformVersion'] as String),
       defaultVersion: pulumi.Input.fromValue(map['defaultVersion'] as bool),
-      endOfExtendedSupportDate: pulumi.Input.fromValue(
-        map['endOfExtendedSupportDate'] as String,
-      ),
-      endOfStandardSupportDate: pulumi.Input.fromValue(
-        map['endOfStandardSupportDate'] as String,
-      ),
-      kubernetesPatchVersion: pulumi.Input.fromValue(
-        map['kubernetesPatchVersion'] as String,
-      ),
+      endOfExtendedSupportDate: pulumi.Input.fromValue(map['endOfExtendedSupportDate'] as String),
+      endOfStandardSupportDate: pulumi.Input.fromValue(map['endOfStandardSupportDate'] as String),
+      kubernetesPatchVersion: pulumi.Input.fromValue(map['kubernetesPatchVersion'] as String),
       releaseDate: pulumi.Input.fromValue(map['releaseDate'] as String),
       versionStatus: pulumi.Input.fromValue(map['versionStatus'] as String),
     );
   }
 }
+

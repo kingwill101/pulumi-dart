@@ -7,11 +7,8 @@ import 'custom_rollout_properties_status_response.dart';
 class CustomRolloutPropertiesResponse {
   /// The provisioned state of the resource.
   final pulumi.Input<String> provisioningState;
-
   /// The specification.
-  final pulumi.Input<CustomRolloutPropertiesSpecificationResponse>
-  specification;
-
+  final pulumi.Input<CustomRolloutPropertiesSpecificationResponse> specification;
   /// The status.
   final pulumi.Input<CustomRolloutPropertiesStatusResponse>? status;
 
@@ -28,38 +25,17 @@ class CustomRolloutPropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'provisioningState': provisioningState,
-      'specification':
-          pulumi.Input.mapInputValue<
-            CustomRolloutPropertiesSpecificationResponse,
-            Map<String, dynamic>
-          >(specification, (value) => value.toMap()),
-      'status':
-          ?pulumi.Input.mapOptionalInputValue<
-            CustomRolloutPropertiesStatusResponse,
-            Map<String, dynamic>
-          >(status, (value) => value.toMap()),
+      'specification': pulumi.Input.mapInputValue<CustomRolloutPropertiesSpecificationResponse, Map<String, dynamic>>(specification, (value) => value.toMap()),
+      'status': ?pulumi.Input.mapOptionalInputValue<CustomRolloutPropertiesStatusResponse, Map<String, dynamic>>(status, (value) => value.toMap()),
     };
   }
 
   factory CustomRolloutPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return CustomRolloutPropertiesResponse(
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
-      specification: pulumi.Input.fromValue(
-        CustomRolloutPropertiesSpecificationResponse.fromMap(
-          (map['specification']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CustomRolloutPropertiesStatusResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
+      specification: pulumi.Input.fromValue(CustomRolloutPropertiesSpecificationResponse.fromMap((map['specification']! as Map).cast<String, dynamic>())),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CustomRolloutPropertiesStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

@@ -18,3 +18,4 @@ enum JavaComponentType {
     throw ArgumentError('Unknown JavaComponentType value: $value');
   }
 }
+

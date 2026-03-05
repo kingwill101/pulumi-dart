@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeepCreatedCustomDomainResponse {
   /// The host name of the custom domain. Must be a domain name.
   final pulumi.Input<String> hostName;
-
   /// Custom domain name.
   final pulumi.Input<String> name;
-
   /// Special validation or data may be required when delivering CDN to some regions due to local compliance reasons. E.g. ICP license number of a custom domain is required to deliver content in China.
   final pulumi.Input<String>? validationData;
 
@@ -35,11 +33,8 @@ class DeepCreatedCustomDomainResponse {
     return DeepCreatedCustomDomainResponse(
       hostName: pulumi.Input.fromValue(map['hostName'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      validationData: (() {
-        final guardedValue = map['validationData'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      validationData: (() { final guardedValue = map['validationData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

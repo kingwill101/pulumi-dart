@@ -5,31 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TopicRuleErrorActionDynamodb {
   /// The hash key name.
   final pulumi.Input<String> hashKeyField;
-
   /// The hash key type. Valid values are "STRING" or "NUMBER".
   final pulumi.Input<String>? hashKeyType;
-
   /// The hash key value.
   final pulumi.Input<String> hashKeyValue;
-
   /// The operation. Valid values are "INSERT", "UPDATE", or "DELETE".
   final pulumi.Input<String>? operation;
-
   /// The action payload.
   final pulumi.Input<String>? payloadField;
-
   /// The range key name.
   final pulumi.Input<String>? rangeKeyField;
-
   /// The range key type. Valid values are "STRING" or "NUMBER".
   final pulumi.Input<String>? rangeKeyType;
-
   /// The range key value.
   final pulumi.Input<String>? rangeKeyValue;
-
   /// The ARN of the IAM role that grants access to the DynamoDB table.
   final pulumi.Input<String> roleArn;
-
   /// The name of the DynamoDB table.
   final pulumi.Input<String> tableName;
 
@@ -75,39 +66,16 @@ class TopicRuleErrorActionDynamodb {
   factory TopicRuleErrorActionDynamodb.fromMap(Map<String, dynamic> map) {
     return TopicRuleErrorActionDynamodb(
       hashKeyField: pulumi.Input.fromValue(map['hashKeyField'] as String),
-      hashKeyType: (() {
-        final guardedValue = map['hashKeyType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      hashKeyType: (() { final guardedValue = map['hashKeyType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       hashKeyValue: pulumi.Input.fromValue(map['hashKeyValue'] as String),
-      operation: (() {
-        final guardedValue = map['operation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      payloadField: (() {
-        final guardedValue = map['payloadField'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      rangeKeyField: (() {
-        final guardedValue = map['rangeKeyField'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      rangeKeyType: (() {
-        final guardedValue = map['rangeKeyType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      rangeKeyValue: (() {
-        final guardedValue = map['rangeKeyValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      operation: (() { final guardedValue = map['operation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      payloadField: (() { final guardedValue = map['payloadField']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      rangeKeyField: (() { final guardedValue = map['rangeKeyField']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      rangeKeyType: (() { final guardedValue = map['rangeKeyType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      rangeKeyValue: (() { final guardedValue = map['rangeKeyValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       roleArn: pulumi.Input.fromValue(map['roleArn'] as String),
       tableName: pulumi.Input.fromValue(map['tableName'] as String),
     );
   }
 }
+

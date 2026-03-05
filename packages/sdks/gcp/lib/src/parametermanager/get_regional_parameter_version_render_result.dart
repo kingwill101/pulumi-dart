@@ -1,24 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getRegionalParameterVersionRender.
 class GetRegionalParameterVersionRenderResult {
   /// The current state of the Regional Parameter Version.
   final bool disabled;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String location;
-
   /// The resource name of the RegionalParameterVersion. Format:
   /// `projects/{{project}}/locations/{{location}}/parameters/{{parameter_id}}/versions/{{parameter_version_id}}`
   final String name;
   final String parameter;
-
   /// The Parameter data.
   final String parameterData;
   final String parameterVersionId;
   final String project;
-
   /// The Rendered Parameter Data specifies that if you use `__REF__()` to reference a secret and the format is JSON or YAML, the placeholder `__REF__()` will be replaced with the actual secret value. However, if the format is UNFORMATTED, it will stay the same as the original `parameter_data`.
   final String renderedParameterData;
 
@@ -58,9 +55,7 @@ class GetRegionalParameterVersionRenderResult {
     };
   }
 
-  factory GetRegionalParameterVersionRenderResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetRegionalParameterVersionRenderResult.fromMap(Map<String, dynamic> map) {
     return GetRegionalParameterVersionRenderResult(
       disabled: map['disabled'] as bool,
       id: map['id'] as String,
@@ -74,3 +69,4 @@ class GetRegionalParameterVersionRenderResult {
     );
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVolumeGroupOracleArgs {
   /// Name of the account where the application volume group belong to.
   final pulumi.Input<String> accountName;
-
   /// The name of this Application Volume Group for Oracle application.
   final pulumi.Input<String> name;
-
   /// The name of the Resource Group where the Application Volume Group exists.
   final pulumi.Input<String> resourceGroupName;
 
@@ -38,9 +36,8 @@ class GetVolumeGroupOracleArgs {
     return GetVolumeGroupOracleArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

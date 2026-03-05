@@ -21,3 +21,4 @@ enum JobComparator {
     throw ArgumentError('Unknown JobComparator value: $value');
   }
 }
+

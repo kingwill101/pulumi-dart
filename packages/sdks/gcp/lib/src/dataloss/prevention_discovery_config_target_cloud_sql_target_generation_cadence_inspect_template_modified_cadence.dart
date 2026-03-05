@@ -14,14 +14,15 @@ class PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceInspectTempl
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'frequency': frequency};
+    return <String, dynamic>{
+      'frequency': frequency,
+    };
   }
 
-  factory PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceInspectTemplateModifiedCadence.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceInspectTemplateModifiedCadence.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceInspectTemplateModifiedCadence(
       frequency: pulumi.Input.fromValue(map['frequency'] as String),
     );
   }
 }
+

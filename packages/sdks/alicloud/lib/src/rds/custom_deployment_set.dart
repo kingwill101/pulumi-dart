@@ -159,27 +159,22 @@ import 'custom_deployment_set_state.dart';
 class CustomDeploymentSet extends pulumi.CustomResource {
   /// The name of the resource
   late final pulumi.Output<String?> customDeploymentSetName;
-
   /// Deployment set description information. It must be 2 to 256 characters in length and cannot start with http:// or https.
   late final pulumi.Output<String?> description;
-
   /// Set the number of groups for the deployment set group high availability policy. Value range: 1~7.
   ///
   /// Default value: 3
   ///
   /// &gt; **NOTE:**  This parameter takes effect only when 'Strategy = AvailabilityGroup.
   late final pulumi.Output<int?> groupCount;
-
   /// After the instance in the deployment set is down and migrated, there is no emergency solution for the scattered instance inventory. Value range:
   /// - `CancelMembershipAndStart`: removes the instance from the deployment set and starts the instance immediately after the instance is down and migrated.
   /// - `KeepStopped`: The deployment set of the instance is maintained. The instance remains in the stopped state.
   ///
   /// Default value: CancelMembershipAndStart.
   late final pulumi.Output<String?> onUnableToRedeployFailedInstance;
-
   /// The status of the resource
   late final pulumi.Output<String> status;
-
   /// Deployment strategy. Value range:
   /// - `Availability`: High Availability policy.
   /// - `AvailabilityGroup`: the high availability policy of the deployment set group.
@@ -197,19 +192,15 @@ class CustomDeploymentSet extends pulumi.CustomResource {
     CustomDeploymentSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:rds/customDeploymentSet:CustomDeploymentSet',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    customDeploymentSetName = registerOutput<String?>(
-      'customDeploymentSetName',
-    );
+          'alicloud:rds/customDeploymentSet:CustomDeploymentSet',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    customDeploymentSetName = registerOutput<String?>('customDeploymentSetName');
     description = registerOutput<String?>('description');
     groupCount = registerOutput<int?>('groupCount');
-    onUnableToRedeployFailedInstance = registerOutput<String?>(
-      'onUnableToRedeployFailedInstance',
-    );
+    onUnableToRedeployFailedInstance = registerOutput<String?>('onUnableToRedeployFailedInstance');
     status = registerOutput<String>('status');
     strategy = registerOutput<String>('strategy');
   }
@@ -232,19 +223,15 @@ class CustomDeploymentSet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:rds/customDeploymentSet:CustomDeploymentSet',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    customDeploymentSetName = registerOutput<String?>(
-      'customDeploymentSetName',
-    );
+          'alicloud:rds/customDeploymentSet:CustomDeploymentSet',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    customDeploymentSetName = registerOutput<String?>('customDeploymentSetName');
     description = registerOutput<String?>('description');
     groupCount = registerOutput<int?>('groupCount');
-    onUnableToRedeployFailedInstance = registerOutput<String?>(
-      'onUnableToRedeployFailedInstance',
-    );
+    onUnableToRedeployFailedInstance = registerOutput<String?>('onUnableToRedeployFailedInstance');
     status = registerOutput<String>('status');
     strategy = registerOutput<String>('strategy');
   }

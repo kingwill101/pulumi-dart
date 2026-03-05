@@ -137,23 +137,17 @@ class ByoipPrefix extends pulumi.CustomResource {
   /// A boolean indicating whether the prefix should be advertised.
   /// Defaults to `false`.
   late final pulumi.Output<bool?> advertised;
-
   /// The reason for failure if the status is "failed".
   late final pulumi.Output<String> failureReason;
-
   /// The CIDR notation of the prefix (e.g., "192.0.2.0/24").
   late final pulumi.Output<String> prefix;
-
   /// The DigitalOcean region where the prefix will be deployed.
   late final pulumi.Output<String> region;
-
   /// The cryptographic signature proving ownership of the prefix.
   /// This is required during creation but can be omitted in subsequent updates.
   late final pulumi.Output<String?> signature;
-
   /// The current status of the BYOIP prefix (e.g., "verified", "pending", "failed").
   late final pulumi.Output<String> status;
-
   /// The UUID of the BYOIP prefix.
   late final pulumi.Output<String> uuid;
 
@@ -166,11 +160,11 @@ class ByoipPrefix extends pulumi.CustomResource {
     ByoipPrefixArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/byoipPrefix:ByoipPrefix',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/byoipPrefix:ByoipPrefix',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     advertised = registerOutput<bool?>('advertised');
     failureReason = registerOutput<String>('failureReason');
     prefix = registerOutput<String>('prefix');
@@ -198,11 +192,11 @@ class ByoipPrefix extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/byoipPrefix:ByoipPrefix',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/byoipPrefix:ByoipPrefix',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     advertised = registerOutput<bool?>('advertised');
     failureReason = registerOutput<String>('failureReason');
     prefix = registerOutput<String>('prefix');

@@ -9,19 +9,20 @@ class BareMetalOsEnvironmentConfigResponse {
 
   /// Creates a new [BareMetalOsEnvironmentConfigResponse].
   /// [packageRepoExcluded] Whether the package repo should not be included when initializing bare metal machines.
-  BareMetalOsEnvironmentConfigResponse({required this.packageRepoExcluded});
+  BareMetalOsEnvironmentConfigResponse({
+    required this.packageRepoExcluded,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'packageRepoExcluded': packageRepoExcluded};
+    return <String, dynamic>{
+      'packageRepoExcluded': packageRepoExcluded,
+    };
   }
 
-  factory BareMetalOsEnvironmentConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BareMetalOsEnvironmentConfigResponse.fromMap(Map<String, dynamic> map) {
     return BareMetalOsEnvironmentConfigResponse(
-      packageRepoExcluded: pulumi.Input.fromValue(
-        map['packageRepoExcluded'] as bool,
-      ),
+      packageRepoExcluded: pulumi.Input.fromValue(map['packageRepoExcluded'] as bool),
     );
   }
 }
+

@@ -8,22 +8,16 @@ import 'log_config_response.dart';
 class RuleResponse {
   /// Required
   final pulumi.Input<String> action;
-
   /// Additional restrictions that must be met. All conditions must pass for the rule to match.
   final pulumi.Input<List<ConditionResponse>> conditions;
-
   /// Human-readable description of the rule.
   final pulumi.Input<String> description;
-
   /// If one or more 'in' clauses are specified, the rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is in at least one of these entries.
   final pulumi.Input<List<String>> in_;
-
   /// The config returned to callers of CheckPolicy for any entries that match the LOG action.
   final pulumi.Input<List<LogConfigResponse>> logConfig;
-
   /// If one or more 'not_in' clauses are specified, the rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is in none of the entries. The format for in and not_in entries can be found at in the Local IAM documentation (see go/local-iam#features).
   final pulumi.Input<List<String>> notIn;
-
   /// A permission is a string of form '..' (e.g., 'storage.buckets.list'). A value of '*' matches all permissions, and a verb part of '*' (e.g., 'storage.buckets.*') matches all verbs.
   final pulumi.Input<List<String>> permissions;
 
@@ -48,32 +42,10 @@ class RuleResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'action': action,
-      'conditions':
-          pulumi.Input.mapInputValue<
-            List<ConditionResponse>,
-            List<Map<String, dynamic>>
-          >(
-            conditions,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ConditionResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'conditions': pulumi.Input.mapInputValue<List<ConditionResponse>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<ConditionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'description': description,
       'in': in_,
-      'logConfig':
-          pulumi.Input.mapInputValue<
-            List<LogConfigResponse>,
-            List<Map<String, dynamic>>
-          >(
-            logConfig,
-            (value) =>
-                pulumi.Input.encodeList<
-                  LogConfigResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'logConfig': pulumi.Input.mapInputValue<List<LogConfigResponse>, List<Map<String, dynamic>>>(logConfig, (value) => pulumi.Input.encodeList<LogConfigResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'notIn': notIn,
       'permissions': permissions,
     };
@@ -82,26 +54,13 @@ class RuleResponse {
   factory RuleResponse.fromMap(Map<String, dynamic> map) {
     return RuleResponse(
       action: pulumi.Input.fromValue(map['action'] as String),
-      conditions: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<ConditionResponse>(
-          map['conditions']!,
-          (value) =>
-              ConditionResponse.fromMap((value as Map).cast<String, dynamic>()),
-        ),
-      ),
+      conditions: pulumi.Input.fromValue(pulumi.Input.decodeList<ConditionResponse>(map['conditions']!, (value) => ConditionResponse.fromMap((value as Map).cast<String, dynamic>()))),
       description: pulumi.Input.fromValue(map['description'] as String),
       in_: pulumi.Input.fromValue((map['in'] as List).cast<String>()),
-      logConfig: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<LogConfigResponse>(
-          map['logConfig']!,
-          (value) =>
-              LogConfigResponse.fromMap((value as Map).cast<String, dynamic>()),
-        ),
-      ),
+      logConfig: pulumi.Input.fromValue(pulumi.Input.decodeList<LogConfigResponse>(map['logConfig']!, (value) => LogConfigResponse.fromMap((value as Map).cast<String, dynamic>()))),
       notIn: pulumi.Input.fromValue((map['notIn'] as List).cast<String>()),
-      permissions: pulumi.Input.fromValue(
-        (map['permissions'] as List).cast<String>(),
-      ),
+      permissions: pulumi.Input.fromValue((map['permissions'] as List).cast<String>()),
     );
   }
 }
+

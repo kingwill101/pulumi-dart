@@ -9,19 +9,20 @@ class AgentPropertiesResponse {
 
   /// Creates a new [AgentPropertiesResponse].
   /// [cpu] The CPU configuration in terms of number of cores required for the run.
-  AgentPropertiesResponse({this.cpu});
+  AgentPropertiesResponse({
+    this.cpu,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'cpu': ?cpu};
+    return <String, dynamic>{
+      'cpu': ?cpu,
+    };
   }
 
   factory AgentPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AgentPropertiesResponse(
-      cpu: (() {
-        final guardedValue = map['cpu'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      cpu: (() { final guardedValue = map['cpu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

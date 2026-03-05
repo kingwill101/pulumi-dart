@@ -13,20 +13,23 @@ class GetRoleArgs {
   /// Creates a new [GetRoleArgs].
   /// [project] Optional.
   /// [roleId] Required.
-  GetRoleArgs({this.project, required this.roleId});
+  GetRoleArgs({
+    this.project,
+    required this.roleId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'project': ?project, 'roleId': roleId};
+    return <String, dynamic>{
+      'project': ?project,
+      'roleId': roleId,
+    };
   }
 
   factory GetRoleArgs.fromMap(Map<String, dynamic> map) {
     return GetRoleArgs(
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       roleId: pulumi.Input.fromValue(map['roleId'] as String),
     );
   }
 }
+

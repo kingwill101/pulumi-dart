@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceGatewayArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the service gateway.
   final pulumi.Input<String> serviceGatewayName;
 
@@ -30,12 +29,9 @@ class GetServiceGatewayArgs {
 
   factory GetServiceGatewayArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceGatewayArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      serviceGatewayName: pulumi.Input.fromValue(
-        map['serviceGatewayName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      serviceGatewayName: pulumi.Input.fromValue(map['serviceGatewayName'] as String),
     );
   }
 }
+

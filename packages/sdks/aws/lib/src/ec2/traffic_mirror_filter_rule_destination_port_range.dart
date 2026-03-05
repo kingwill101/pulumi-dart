@@ -5,33 +5,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TrafficMirrorFilterRuleDestinationPortRange {
   /// Starting port of the range
   final pulumi.Input<int>? fromPort;
-
   /// Ending port of the range
   final pulumi.Input<int>? toPort;
 
   /// Creates a new [TrafficMirrorFilterRuleDestinationPortRange].
   /// [fromPort] Starting port of the range
   /// [toPort] Ending port of the range
-  TrafficMirrorFilterRuleDestinationPortRange({this.fromPort, this.toPort});
+  TrafficMirrorFilterRuleDestinationPortRange({
+    this.fromPort,
+    this.toPort,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'fromPort': ?fromPort, 'toPort': ?toPort};
+    return <String, dynamic>{
+      'fromPort': ?fromPort,
+      'toPort': ?toPort,
+    };
   }
 
-  factory TrafficMirrorFilterRuleDestinationPortRange.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory TrafficMirrorFilterRuleDestinationPortRange.fromMap(Map<String, dynamic> map) {
     return TrafficMirrorFilterRuleDestinationPortRange(
-      fromPort: (() {
-        final guardedValue = map['fromPort'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      toPort: (() {
-        final guardedValue = map['toPort'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      fromPort: (() { final guardedValue = map['fromPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      toPort: (() { final guardedValue = map['toPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

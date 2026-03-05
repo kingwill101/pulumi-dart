@@ -14,3 +14,4 @@ enum SynchronizationSettingKind {
     throw ArgumentError('Unknown SynchronizationSettingKind value: $value');
   }
 }
+

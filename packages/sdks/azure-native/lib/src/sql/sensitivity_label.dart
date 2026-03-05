@@ -195,38 +195,27 @@ class SensitivityLabel extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   late final pulumi.Output<String?> clientClassificationSource;
-
   /// The column name.
   late final pulumi.Output<String> columnName;
-
   /// The information type.
   late final pulumi.Output<String?> informationType;
-
   /// The information type ID.
   late final pulumi.Output<String?> informationTypeId;
-
   /// Is sensitivity recommendation disabled. Applicable for recommended sensitivity label only. Specifies whether the sensitivity recommendation on this column is disabled (dismissed) or not.
   late final pulumi.Output<bool> isDisabled;
-
   /// The label ID.
   late final pulumi.Output<String?> labelId;
-
   /// The label name.
   late final pulumi.Output<String?> labelName;
-
   /// Resource that manages the sensitivity label.
   late final pulumi.Output<String> managedBy;
-
   /// Resource name.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String?> rank;
-
   /// The schema name.
   late final pulumi.Output<String> schemaName;
-
   /// The table name.
   late final pulumi.Output<String> tableName;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -239,15 +228,13 @@ class SensitivityLabel extends pulumi.CustomResource {
     SensitivityLabelArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:sql:SensitivityLabel',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:sql:SensitivityLabel',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    clientClassificationSource = registerOutput<String?>(
-      'clientClassificationSource',
-    );
+    clientClassificationSource = registerOutput<String?>('clientClassificationSource');
     columnName = registerOutput<String>('columnName');
     informationType = registerOutput<String?>('informationType');
     informationTypeId = registerOutput<String?>('informationTypeId');

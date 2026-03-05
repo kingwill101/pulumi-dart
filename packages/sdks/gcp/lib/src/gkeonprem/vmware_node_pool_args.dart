@@ -21,31 +21,23 @@ class VMwareNodePoolArgs {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
-
   /// The node configuration of the node pool.
   /// Structure is documented below.
   final pulumi.Input<VMwareNodePoolConfig> config;
-
   /// The display name for the node pool.
   final pulumi.Input<String>? displayName;
-
   /// The location of the resource.
   final pulumi.Input<String> location;
-
   /// The vmware node pool name.
   final pulumi.Input<String>? name;
-
   /// Node Pool autoscaling config for the node pool.
   /// Structure is documented below.
   final pulumi.Input<VMwareNodePoolNodePoolAutoscaling>? nodePoolAutoscaling;
-
   /// Anthos version for the node pool. Defaults to the user cluster version.
   final pulumi.Input<String>? onPremVersion;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The cluster this node pool belongs to.
   final pulumi.Input<String> vmwareCluster;
 
@@ -74,19 +66,11 @@ class VMwareNodePoolArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'annotations': ?annotations,
-      'config':
-          pulumi.Input.mapInputValue<
-            VMwareNodePoolConfig,
-            Map<String, dynamic>
-          >(config, (value) => value.toMap()),
+      'config': pulumi.Input.mapInputValue<VMwareNodePoolConfig, Map<String, dynamic>>(config, (value) => value.toMap()),
       'displayName': ?displayName,
       'location': location,
       'name': ?name,
-      'nodePoolAutoscaling':
-          ?pulumi.Input.mapOptionalInputValue<
-            VMwareNodePoolNodePoolAutoscaling,
-            Map<String, dynamic>
-          >(nodePoolAutoscaling, (value) => value.toMap()),
+      'nodePoolAutoscaling': ?pulumi.Input.mapOptionalInputValue<VMwareNodePoolNodePoolAutoscaling, Map<String, dynamic>>(nodePoolAutoscaling, (value) => value.toMap()),
       'onPremVersion': ?onPremVersion,
       'project': ?project,
       'vmwareCluster': vmwareCluster,
@@ -95,49 +79,16 @@ class VMwareNodePoolArgs {
 
   factory VMwareNodePoolArgs.fromMap(Map<String, dynamic> map) {
     return VMwareNodePoolArgs(
-      annotations: (() {
-        final guardedValue = map['annotations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      config: pulumi.Input.fromValue(
-        VMwareNodePoolConfig.fromMap(
-          (map['config']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      config: pulumi.Input.fromValue(VMwareNodePoolConfig.fromMap((map['config']! as Map).cast<String, dynamic>())),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      nodePoolAutoscaling: (() {
-        final guardedValue = map['nodePoolAutoscaling'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          VMwareNodePoolNodePoolAutoscaling.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      onPremVersion: (() {
-        final guardedValue = map['onPremVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nodePoolAutoscaling: (() { final guardedValue = map['nodePoolAutoscaling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VMwareNodePoolNodePoolAutoscaling.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      onPremVersion: (() { final guardedValue = map['onPremVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vmwareCluster: pulumi.Input.fromValue(map['vmwareCluster'] as String),
     );
   }
 }
+

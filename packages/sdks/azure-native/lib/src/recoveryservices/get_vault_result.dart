@@ -9,34 +9,24 @@ import 'vault_properties_response.dart';
 class GetVaultResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Optional ETag.
   final String? etag;
-
   /// Resource Id represents the complete path to the resource.
   final String id;
-
   /// Identity for the resource.
   final IdentityDataResponse? identity;
-
   /// Resource location.
   final String location;
-
   /// Resource name associated with the resource.
   final String name;
-
   /// Properties of the vault.
   final VaultPropertiesResponse properties;
-
   /// Identifies the unique system identifier for each Azure resource.
   final SkuResponse? sku;
-
   /// Metadata pertaining to creation and last modification of the resource.
   final SystemDataResponse systemData;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
   final String type;
 
@@ -85,40 +75,17 @@ class GetVaultResult {
   factory GetVaultResult.fromMap(Map<String, dynamic> map) {
     return GetVaultResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      etag: (() {
-        final guardedValue = map['etag'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return IdentityDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return IdentityDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       location: map['location'] as String,
       name: map['name'] as String,
-      properties: VaultPropertiesResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
-      sku: (() {
-        final guardedValue = map['sku'];
-        if (guardedValue == null) return null;
-        return SkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      properties: VaultPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
+      sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

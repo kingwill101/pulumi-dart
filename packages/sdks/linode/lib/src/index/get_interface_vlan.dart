@@ -5,14 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInterfaceVlan {
   /// The IPAM (IP Address Management) address of the VLAN interface.
   final pulumi.Input<String> ipamAddress;
-
   /// The label of the VLAN.
   final pulumi.Input<String> vlanLabel;
 
   /// Creates a new [GetInterfaceVlan].
   /// [ipamAddress] The IPAM (IP Address Management) address of the VLAN interface.
   /// [vlanLabel] The label of the VLAN.
-  GetInterfaceVlan({required this.ipamAddress, required this.vlanLabel});
+  GetInterfaceVlan({
+    required this.ipamAddress,
+    required this.vlanLabel,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,3 +30,4 @@ class GetInterfaceVlan {
     );
   }
 }
+

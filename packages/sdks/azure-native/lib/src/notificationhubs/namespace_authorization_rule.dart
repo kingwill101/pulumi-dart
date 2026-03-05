@@ -158,44 +158,32 @@ import 'system_data_response.dart';
 class NamespaceAuthorizationRule extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Gets a string that describes the claim type
   late final pulumi.Output<String> claimType;
-
   /// Gets a string that describes the claim value
   late final pulumi.Output<String> claimValue;
-
   /// Gets the created time for this rule
   late final pulumi.Output<String> createdTime;
-
   /// Gets a string that describes the authorization rule.
   late final pulumi.Output<String> keyName;
   late final pulumi.Output<String?> location;
-
   /// Gets the last modified time for this rule
   late final pulumi.Output<String> modifiedTime;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Gets a base64-encoded 256-bit primary key for signing and
   /// validating the SAS token.
   late final pulumi.Output<String?> primaryKey;
-
   /// Gets the revision number for the rule
   late final pulumi.Output<int> revision;
-
   /// Gets or sets the rights associated with the rule.
   late final pulumi.Output<List<String>> rights;
-
   /// Gets a base64-encoded 256-bit primary key for signing and
   /// validating the SAS token.
   late final pulumi.Output<String?> secondaryKey;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -208,11 +196,11 @@ class NamespaceAuthorizationRule extends pulumi.CustomResource {
     NamespaceAuthorizationRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:notificationhubs:NamespaceAuthorizationRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:notificationhubs:NamespaceAuthorizationRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     claimType = registerOutput<String>('claimType');
     claimValue = registerOutput<String>('claimValue');
@@ -225,16 +213,7 @@ class NamespaceAuthorizationRule extends pulumi.CustomResource {
     revision = registerOutput<int>('revision');
     rights = registerOutput<List<String>>('rights');
     secondaryKey = registerOutput<String?>('secondaryKey');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

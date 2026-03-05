@@ -188,17 +188,12 @@ import 'replication_protection_container_mapping_args.dart';
 class ReplicationProtectionContainerMapping extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Resource Location
   late final pulumi.Output<String?> location;
-
   /// Resource Name
   late final pulumi.Output<String> name;
-
   /// The custom data.
-  late final pulumi.Output<ProtectionContainerMappingPropertiesResponse>
-  properties;
-
+  late final pulumi.Output<ProtectionContainerMappingPropertiesResponse> properties;
   /// Resource Type
   late final pulumi.Output<String> type;
 
@@ -211,24 +206,15 @@ class ReplicationProtectionContainerMapping extends pulumi.CustomResource {
     ReplicationProtectionContainerMappingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:recoveryservices:ReplicationProtectionContainerMapping',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:recoveryservices:ReplicationProtectionContainerMapping',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<ProtectionContainerMappingPropertiesResponse>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ProtectionContainerMappingPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<ProtectionContainerMappingPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProtectionContainerMappingPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

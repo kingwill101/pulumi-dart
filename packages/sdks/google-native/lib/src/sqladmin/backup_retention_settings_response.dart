@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackupRetentionSettingsResponse {
   /// Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retention_unit is 'COUNT', we will retain this many backups.
   final pulumi.Input<int> retainedBackups;
-
   /// The unit that 'retained_backups' represents.
   final pulumi.Input<String> retentionUnit;
 
@@ -32,3 +31,4 @@ class BackupRetentionSettingsResponse {
     );
   }
 }
+

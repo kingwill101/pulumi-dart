@@ -14,8 +14,7 @@ enum RecurringScheduleFrequencyOsconfigV1beta {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown RecurringScheduleFrequencyOsconfigV1beta value: $value',
-    );
+    throw ArgumentError('Unknown RecurringScheduleFrequencyOsconfigV1beta value: $value');
   }
 }
+

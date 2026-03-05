@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AnalyticsApplicationInputsKinesisFirehose {
   /// The ARN of the Kinesis Firehose delivery stream.
   final pulumi.Input<String> resourceArn;
-
   /// The ARN of the IAM Role used to access the stream.
   final pulumi.Input<String> roleArn;
 
@@ -18,15 +17,17 @@ class AnalyticsApplicationInputsKinesisFirehose {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'resourceArn': resourceArn, 'roleArn': roleArn};
+    return <String, dynamic>{
+      'resourceArn': resourceArn,
+      'roleArn': roleArn,
+    };
   }
 
-  factory AnalyticsApplicationInputsKinesisFirehose.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AnalyticsApplicationInputsKinesisFirehose.fromMap(Map<String, dynamic> map) {
     return AnalyticsApplicationInputsKinesisFirehose(
       resourceArn: pulumi.Input.fromValue(map['resourceArn'] as String),
       roleArn: pulumi.Input.fromValue(map['roleArn'] as String),
     );
   }
 }
+

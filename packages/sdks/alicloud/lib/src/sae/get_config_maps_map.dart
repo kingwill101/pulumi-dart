@@ -5,22 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConfigMapsMap {
   /// The first ID of the resource.
   final pulumi.Input<String> configMapId;
-
   /// The Creation Time of the ConfigMap.
   final pulumi.Input<String> createTime;
-
   /// ConfigMap instance data. The value's format is a `json` string
   final pulumi.Input<String> data;
-
   /// The Description of Config Map.
   final pulumi.Input<String> description;
-
   /// The ID of the Config Map.
   final pulumi.Input<String> id;
-
   /// ConfigMap instance name.
   final pulumi.Input<String> name;
-
   /// The NamespaceId of Config Maps.
   final pulumi.Input<String> namespaceId;
 
@@ -66,3 +60,4 @@ class GetConfigMapsMap {
     );
   }
 }
+

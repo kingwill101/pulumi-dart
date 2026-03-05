@@ -221,16 +221,12 @@ import 'physical_connection_state.dart';
 class PhysicalConnection extends pulumi.CustomResource {
   /// The access point ID of the Express Connect circuit.
   late final pulumi.Output<String> accessPointId;
-
   /// The maximum bandwidth of the hosted connection.
   late final pulumi.Output<String> bandwidth;
-
   /// The circuit code of the Express Connect circuit.
   late final pulumi.Output<String?> circuitCode;
-
   /// The description of the Express Connect circuit.
   late final pulumi.Output<String?> description;
-
   /// The connectivity provider of the Express Connect circuit. Valid values:
   /// - `CT`: China Telecom.
   /// - `CU`: China Unicom.
@@ -239,21 +235,16 @@ class PhysicalConnection extends pulumi.CustomResource {
   /// - `Equinix`: Equinix.
   /// - `Other`: Other connectivity providers outside the Chinese mainland.
   late final pulumi.Output<String> lineOperator;
-
   /// The ID of the order that is placed. **Note:** `order_id` takes effect only if `status` is set to `Enabled`.
   late final pulumi.Output<String> orderId;
-
   /// The geographical location of the data center.
   late final pulumi.Output<String> peerLocation;
-
   /// The subscription duration. Valid values:
   /// - If `pricing_cycle` is set to `Month`. Valid values: `1` to `9`.
   /// - If `pricing_cycle` is set to `Year`. Valid values: `1` to `5`.
   late final pulumi.Output<int?> period;
-
   /// The name of the Express Connect circuit.
   late final pulumi.Output<String?> physicalConnectionName;
-
   /// The port type of the Express Connect circuit. Valid values:
   /// - `100Base-T`: 100 Mbit/s copper Ethernet port.
   /// - `1000Base-T`: 1000 Mbit/s copper Ethernet port.
@@ -264,17 +255,13 @@ class PhysicalConnection extends pulumi.CustomResource {
   /// - `100GBase-LR`: 100000 Mbit/s single-mode optical port.
   /// &gt; **NOTE:** From version 1.185.0, `port_type` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `port_type` cannot be modified.
   late final pulumi.Output<String?> portType;
-
   /// The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
   /// &gt; **NOTE:** `period` and `pricing_cycle` are valid only when `status` is set to `Enabled`.
   late final pulumi.Output<String?> pricingCycle;
-
   /// The ID of the redundant Express Connect circuit. **NOTE:** From version 1.230.1, `redundant_physical_connection_id` cannot be modified.
   late final pulumi.Output<String?> redundantPhysicalConnectionId;
-
   /// The status of the Express Connect circuit. Valid values: `Confirmed`, `Enabled`, `Canceled`, `Terminated`. **NOTE:** From version 1.230.1, `status` can be set to `Confirmed`. If you want to set `status` to `Enabled`, `period` must be set.
   late final pulumi.Output<String> status;
-
   /// The type of Express Connect circuit. Default value: `VPC`. Valid values: `VPC`.
   late final pulumi.Output<String> type;
 
@@ -287,11 +274,11 @@ class PhysicalConnection extends pulumi.CustomResource {
     PhysicalConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:expressconnect/physicalConnection:PhysicalConnection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:expressconnect/physicalConnection:PhysicalConnection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessPointId = registerOutput<String>('accessPointId');
     bandwidth = registerOutput<String>('bandwidth');
     circuitCode = registerOutput<String?>('circuitCode');
@@ -303,9 +290,7 @@ class PhysicalConnection extends pulumi.CustomResource {
     physicalConnectionName = registerOutput<String?>('physicalConnectionName');
     portType = registerOutput<String?>('portType');
     pricingCycle = registerOutput<String?>('pricingCycle');
-    redundantPhysicalConnectionId = registerOutput<String?>(
-      'redundantPhysicalConnectionId',
-    );
+    redundantPhysicalConnectionId = registerOutput<String?>('redundantPhysicalConnectionId');
     status = registerOutput<String>('status');
     type = registerOutput<String>('type');
   }
@@ -328,11 +313,11 @@ class PhysicalConnection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:expressconnect/physicalConnection:PhysicalConnection',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:expressconnect/physicalConnection:PhysicalConnection',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessPointId = registerOutput<String>('accessPointId');
     bandwidth = registerOutput<String>('bandwidth');
     circuitCode = registerOutput<String?>('circuitCode');
@@ -344,9 +329,7 @@ class PhysicalConnection extends pulumi.CustomResource {
     physicalConnectionName = registerOutput<String?>('physicalConnectionName');
     portType = registerOutput<String?>('portType');
     pricingCycle = registerOutput<String?>('pricingCycle');
-    redundantPhysicalConnectionId = registerOutput<String?>(
-      'redundantPhysicalConnectionId',
-    );
+    redundantPhysicalConnectionId = registerOutput<String?>('redundantPhysicalConnectionId');
     status = registerOutput<String>('status');
     type = registerOutput<String>('type');
   }

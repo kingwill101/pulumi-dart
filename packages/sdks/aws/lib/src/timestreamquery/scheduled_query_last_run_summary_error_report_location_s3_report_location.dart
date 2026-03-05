@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScheduledQueryLastRunSummaryErrorReportLocationS3ReportLocation {
   /// S3 bucket name.
   final pulumi.Input<String>? bucketName;
-
   /// S3 key.
   final pulumi.Input<String>? objectKey;
 
@@ -24,20 +23,11 @@ class ScheduledQueryLastRunSummaryErrorReportLocationS3ReportLocation {
     };
   }
 
-  factory ScheduledQueryLastRunSummaryErrorReportLocationS3ReportLocation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ScheduledQueryLastRunSummaryErrorReportLocationS3ReportLocation.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryLastRunSummaryErrorReportLocationS3ReportLocation(
-      bucketName: (() {
-        final guardedValue = map['bucketName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      objectKey: (() {
-        final guardedValue = map['objectKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      bucketName: (() { final guardedValue = map['bucketName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      objectKey: (() { final guardedValue = map['objectKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

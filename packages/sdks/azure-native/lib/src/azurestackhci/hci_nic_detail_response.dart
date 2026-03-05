@@ -6,46 +6,32 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HciNicDetailResponse {
   /// Adapter Name of NIC
   final pulumi.Input<String> adapterName;
-
   /// Component Id of NIC
   final pulumi.Input<String> componentId;
-
   /// Default Gateway of NIC
   final pulumi.Input<String> defaultGateway;
-
   /// Default Isolation of Management NIC
   final pulumi.Input<String> defaultIsolationId;
-
   /// DNS Servers for NIC
   final pulumi.Input<List<String>> dnsServers;
-
   /// Driver Version of NIC
   final pulumi.Input<String> driverVersion;
-
   /// Interface Description of NIC
   final pulumi.Input<String> interfaceDescription;
-
   /// Subnet Mask of NIC
   final pulumi.Input<String> ip4Address;
-
   /// MAC address information of NIC.
   final pulumi.Input<String> macAddress;
-
   /// The status of NIC, up, disconnected.
   final pulumi.Input<String> nicStatus;
-
   /// The type of NIC, physical, virtual, management.
   final pulumi.Input<String> nicType;
-
   /// The slot attached to the NIC.
   final pulumi.Input<String> slot;
-
   /// Subnet Mask of NIC
   final pulumi.Input<String> subnetMask;
-
   /// The switch attached to the NIC, if any.
   final pulumi.Input<String> switchName;
-
   /// The VLAN ID of the physical NIC.
   final pulumi.Input<String> vlanId;
 
@@ -108,16 +94,10 @@ class HciNicDetailResponse {
       adapterName: pulumi.Input.fromValue(map['adapterName'] as String),
       componentId: pulumi.Input.fromValue(map['componentId'] as String),
       defaultGateway: pulumi.Input.fromValue(map['defaultGateway'] as String),
-      defaultIsolationId: pulumi.Input.fromValue(
-        map['defaultIsolationId'] as String,
-      ),
-      dnsServers: pulumi.Input.fromValue(
-        (map['dnsServers'] as List).cast<String>(),
-      ),
+      defaultIsolationId: pulumi.Input.fromValue(map['defaultIsolationId'] as String),
+      dnsServers: pulumi.Input.fromValue((map['dnsServers'] as List).cast<String>()),
       driverVersion: pulumi.Input.fromValue(map['driverVersion'] as String),
-      interfaceDescription: pulumi.Input.fromValue(
-        map['interfaceDescription'] as String,
-      ),
+      interfaceDescription: pulumi.Input.fromValue(map['interfaceDescription'] as String),
       ip4Address: pulumi.Input.fromValue(map['ip4Address'] as String),
       macAddress: pulumi.Input.fromValue(map['macAddress'] as String),
       nicStatus: pulumi.Input.fromValue(map['nicStatus'] as String),
@@ -129,3 +109,4 @@ class HciNicDetailResponse {
     );
   }
 }
+

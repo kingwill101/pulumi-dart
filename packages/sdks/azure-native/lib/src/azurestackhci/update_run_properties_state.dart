@@ -17,3 +17,4 @@ enum UpdateRunPropertiesState {
     throw ArgumentError('Unknown UpdateRunPropertiesState value: $value');
   }
 }
+

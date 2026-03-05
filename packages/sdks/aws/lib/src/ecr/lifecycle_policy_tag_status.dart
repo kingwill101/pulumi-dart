@@ -16,3 +16,4 @@ enum LifecyclePolicyTagStatus {
     throw ArgumentError('Unknown LifecyclePolicyTagStatus value: $value');
   }
 }
+

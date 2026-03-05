@@ -9,7 +9,6 @@ class AttachedClusterAuthorization {
   /// For more info on RBAC, see
   /// https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
   final pulumi.Input<List<String>>? adminGroups;
-
   /// Users that can perform operations as a cluster admin. A managed
   /// ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole
   /// to the users. Up to ten admin users can be provided.
@@ -20,7 +19,10 @@ class AttachedClusterAuthorization {
   /// Creates a new [AttachedClusterAuthorization].
   /// [adminGroups] Groups that can perform operations as a cluster admin. A managed
   /// [adminUsers] Users that can perform operations as a cluster admin. A managed
-  AttachedClusterAuthorization({this.adminGroups, this.adminUsers});
+  AttachedClusterAuthorization({
+    this.adminGroups,
+    this.adminUsers,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,16 +33,9 @@ class AttachedClusterAuthorization {
 
   factory AttachedClusterAuthorization.fromMap(Map<String, dynamic> map) {
     return AttachedClusterAuthorization(
-      adminGroups: (() {
-        final guardedValue = map['adminGroups'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      adminUsers: (() {
-        final guardedValue = map['adminUsers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      adminGroups: (() { final guardedValue = map['adminGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      adminUsers: (() { final guardedValue = map['adminUsers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

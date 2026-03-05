@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPolicyFileshareArgs {
   /// Specifies the name of the File Share Backup Policy.
   final pulumi.Input<String> name;
-
   /// Specifies the name of the Recovery Services Vault.
   final pulumi.Input<String> recoveryVaultName;
-
   /// The name of the resource group in which the File Share Backup Policy resides.
   final pulumi.Input<String> resourceGroupName;
 
@@ -37,12 +35,9 @@ class GetPolicyFileshareArgs {
   factory GetPolicyFileshareArgs.fromMap(Map<String, dynamic> map) {
     return GetPolicyFileshareArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      recoveryVaultName: pulumi.Input.fromValue(
-        map['recoveryVaultName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      recoveryVaultName: pulumi.Input.fromValue(map['recoveryVaultName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

@@ -9,19 +9,20 @@ class StreamGovernanceConfig {
 
   /// Creates a new [StreamGovernanceConfig].
   /// [package] Stream governance configuration
-  StreamGovernanceConfig({this.package});
+  StreamGovernanceConfig({
+    this.package,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'package': ?package};
+    return <String, dynamic>{
+      'package': ?package,
+    };
   }
 
   factory StreamGovernanceConfig.fromMap(Map<String, dynamic> map) {
     return StreamGovernanceConfig(
-      package: (() {
-        final guardedValue = map['package'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      package: (() { final guardedValue = map['package']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

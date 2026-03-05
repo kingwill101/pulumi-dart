@@ -5,46 +5,32 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTemplatesTemplate {
   /// The category of template.
   final pulumi.Input<String> category;
-
   /// The creator of the template.
   final pulumi.Input<String> createdBy;
-
   /// The template whose creation time is less than or equal to the specified time. The format is: YYYY-MM-DDThh:mm::ssZ.
   final pulumi.Input<String> createdDate;
-
   /// Description of the OOS Template.
   final pulumi.Input<String> description;
-
   /// Is it triggered successfully.
   final pulumi.Input<bool> hasTrigger;
-
   /// ID of the OOS Template. The value is same as template_name.
   final pulumi.Input<String> id;
-
   /// The sharing type of the template. Valid values: `Private`, `Public`.
   final pulumi.Input<String> shareType;
-
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>> tags;
-
   /// The format of the template. Valid values: `JSON`, `YAML`.
   final pulumi.Input<String> templateFormat;
-
   /// ID of the OOS Template resource.
   final pulumi.Input<String> templateId;
-
   /// Name of the OOS Template.
   final pulumi.Input<String> templateName;
-
   /// The type of OOS Template.
   final pulumi.Input<String> templateType;
-
   /// Version of the OOS Template.
   final pulumi.Input<String> templateVersion;
-
   /// The user who updated the template.
   final pulumi.Input<String> updatedBy;
-
   /// The time when the template was updated.
   final pulumi.Input<String> updatedDate;
 
@@ -122,3 +108,4 @@ class GetTemplatesTemplate {
     );
   }
 }
+

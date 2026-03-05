@@ -4,7 +4,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLkeTypesTypeRegionPrice {
   final pulumi.Input<double> hourly;
-
   /// The ID representing the Kubernetes type.
   final pulumi.Input<String> id;
   final pulumi.Input<double> monthly;
@@ -20,7 +19,11 @@ class GetLkeTypesTypeRegionPrice {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'hourly': hourly, 'id': id, 'monthly': monthly};
+    return <String, dynamic>{
+      'hourly': hourly,
+      'id': id,
+      'monthly': monthly,
+    };
   }
 
   factory GetLkeTypesTypeRegionPrice.fromMap(Map<String, dynamic> map) {
@@ -31,3 +34,4 @@ class GetLkeTypesTypeRegionPrice {
     );
   }
 }
+

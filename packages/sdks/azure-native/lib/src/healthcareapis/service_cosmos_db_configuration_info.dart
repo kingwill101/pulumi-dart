@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceCosmosDbConfigurationInfo {
   /// The multi-tenant application id used to enable CMK access for services in a data sovereign region.
   final pulumi.Input<String>? crossTenantCmkApplicationId;
-
   /// The URI of the customer-managed key for the backing database.
   final pulumi.Input<String>? keyVaultKeyUri;
-
   /// The provisioned throughput for the backing database.
   final pulumi.Input<int>? offerThroughput;
 
@@ -33,21 +31,10 @@ class ServiceCosmosDbConfigurationInfo {
 
   factory ServiceCosmosDbConfigurationInfo.fromMap(Map<String, dynamic> map) {
     return ServiceCosmosDbConfigurationInfo(
-      crossTenantCmkApplicationId: (() {
-        final guardedValue = map['crossTenantCmkApplicationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keyVaultKeyUri: (() {
-        final guardedValue = map['keyVaultKeyUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      offerThroughput: (() {
-        final guardedValue = map['offerThroughput'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      crossTenantCmkApplicationId: (() { final guardedValue = map['crossTenantCmkApplicationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyVaultKeyUri: (() { final guardedValue = map['keyVaultKeyUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      offerThroughput: (() { final guardedValue = map['offerThroughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

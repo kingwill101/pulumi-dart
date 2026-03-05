@@ -18,3 +18,4 @@ enum JobTargetType {
     throw ArgumentError('Unknown JobTargetType value: $value');
   }
 }
+

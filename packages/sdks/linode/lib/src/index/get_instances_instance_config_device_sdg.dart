@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstancesInstanceConfigDeviceSdg {
   /// The Disk ID of the associated `disk_label`, if used
   final pulumi.Input<int> diskId;
-
   /// The `label` of the `disk` to map to this `device` slot.
   final pulumi.Input<String>? diskLabel;
-
   /// The Volume ID to map to this `device` slot.
   final pulumi.Input<int>? volumeId;
 
@@ -30,21 +28,12 @@ class GetInstancesInstanceConfigDeviceSdg {
     };
   }
 
-  factory GetInstancesInstanceConfigDeviceSdg.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetInstancesInstanceConfigDeviceSdg.fromMap(Map<String, dynamic> map) {
     return GetInstancesInstanceConfigDeviceSdg(
       diskId: pulumi.Input.fromValue(map['diskId'] as int),
-      diskLabel: (() {
-        final guardedValue = map['diskLabel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      volumeId: (() {
-        final guardedValue = map['volumeId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      diskLabel: (() { final guardedValue = map['diskLabel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      volumeId: (() { final guardedValue = map['volumeId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

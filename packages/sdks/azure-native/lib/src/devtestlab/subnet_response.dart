@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SubnetResponse {
   /// The permission policy of the subnet for allowing public IP addresses (i.e. Allow, Deny)).
   final pulumi.Input<String>? allowPublicIp;
-
   /// The name of the subnet as seen in the lab.
   final pulumi.Input<String>? labSubnetName;
-
   /// The resource ID of the subnet.
   final pulumi.Input<String>? resourceId;
 
@@ -17,7 +15,11 @@ class SubnetResponse {
   /// [allowPublicIp] The permission policy of the subnet for allowing public IP addresses (i.e. Allow, Deny)).
   /// [labSubnetName] The name of the subnet as seen in the lab.
   /// [resourceId] The resource ID of the subnet.
-  SubnetResponse({this.allowPublicIp, this.labSubnetName, this.resourceId});
+  SubnetResponse({
+    this.allowPublicIp,
+    this.labSubnetName,
+    this.resourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class SubnetResponse {
 
   factory SubnetResponse.fromMap(Map<String, dynamic> map) {
     return SubnetResponse(
-      allowPublicIp: (() {
-        final guardedValue = map['allowPublicIp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      labSubnetName: (() {
-        final guardedValue = map['labSubnetName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceId: (() {
-        final guardedValue = map['resourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      allowPublicIp: (() { final guardedValue = map['allowPublicIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      labSubnetName: (() { final guardedValue = map['labSubnetName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

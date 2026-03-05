@@ -111,13 +111,10 @@ class CustomDomain extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** Please ensure the custom domain name is included in the Subject Alternative Names of the selected Web PubSub Custom Certificate.
   late final pulumi.Output<String> domainName;
-
   /// Specifies the name of the Web PubSub Custom Domain. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies the Web PubSub Custom Certificate ID of the Web PubSub Custom Domain. Changing this forces a new resource to be created.
   late final pulumi.Output<String> webPubsubCustomCertificateId;
-
   /// Specifies the Web PubSub ID of the Web PubSub Custom Domain. Changing this forces a new resource to be created.
   late final pulumi.Output<String> webPubsubId;
 
@@ -130,16 +127,14 @@ class CustomDomain extends pulumi.CustomResource {
     CustomDomainArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:webpubsub/customDomain:CustomDomain',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:webpubsub/customDomain:CustomDomain',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     domainName = registerOutput<String>('domainName');
     this.name = registerOutput<String>('name');
-    webPubsubCustomCertificateId = registerOutput<String>(
-      'webPubsubCustomCertificateId',
-    );
+    webPubsubCustomCertificateId = registerOutput<String>('webPubsubCustomCertificateId');
     webPubsubId = registerOutput<String>('webPubsubId');
   }
 
@@ -161,16 +156,14 @@ class CustomDomain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:webpubsub/customDomain:CustomDomain',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:webpubsub/customDomain:CustomDomain',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     domainName = registerOutput<String>('domainName');
     this.name = registerOutput<String>('name');
-    webPubsubCustomCertificateId = registerOutput<String>(
-      'webPubsubCustomCertificateId',
-    );
+    webPubsubCustomCertificateId = registerOutput<String>('webPubsubCustomCertificateId');
     webPubsubId = registerOutput<String>('webPubsubId');
   }
 }

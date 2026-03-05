@@ -6,7 +6,6 @@ class RegionNetworkFirewallPolicyWithRulesRuleMatchSrcSecureTag {
   /// Name of the secure tag, created with TagManager's TagValue API.
   /// @pattern tagValues/[0-9]+
   final pulumi.Input<String>? name;
-
   /// (Output)
   /// [Output Only] State of the secure tag, either `EFFECTIVE` or
   /// `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
@@ -22,23 +21,17 @@ class RegionNetworkFirewallPolicyWithRulesRuleMatchSrcSecureTag {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name, 'state': ?state};
+    return <String, dynamic>{
+      'name': ?name,
+      'state': ?state,
+    };
   }
 
-  factory RegionNetworkFirewallPolicyWithRulesRuleMatchSrcSecureTag.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RegionNetworkFirewallPolicyWithRulesRuleMatchSrcSecureTag.fromMap(Map<String, dynamic> map) {
     return RegionNetworkFirewallPolicyWithRulesRuleMatchSrcSecureTag(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

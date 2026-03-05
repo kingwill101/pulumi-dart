@@ -9,10 +9,14 @@ class FederatedPrincipal {
 
   /// Creates a new [FederatedPrincipal].
   /// [federated] The federated principal identifier.
-  FederatedPrincipal({required this.federated});
+  FederatedPrincipal({
+    required this.federated,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'Federated': federated};
+    return <String, dynamic>{
+      'Federated': federated,
+    };
   }
 
   factory FederatedPrincipal.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class FederatedPrincipal {
     );
   }
 }
+

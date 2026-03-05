@@ -15,3 +15,4 @@ enum IPPoolTypeEnum {
     throw ArgumentError('Unknown IPPoolTypeEnum value: $value');
   }
 }
+

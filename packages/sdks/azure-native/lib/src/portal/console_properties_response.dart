@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConsolePropertiesResponse {
   /// The operating system type of the cloud shell.
   final pulumi.Input<String> osType;
-
   /// Provisioning state of the console.
   final pulumi.Input<String> provisioningState;
-
   /// Uri of the console.
   final pulumi.Input<String> uri;
 
@@ -34,10 +32,9 @@ class ConsolePropertiesResponse {
   factory ConsolePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ConsolePropertiesResponse(
       osType: pulumi.Input.fromValue(map['osType'] as String),
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
       uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
+

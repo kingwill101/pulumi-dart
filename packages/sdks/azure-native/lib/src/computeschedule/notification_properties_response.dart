@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NotificationPropertiesResponse {
   /// Where the notification should be sent. For email, it should follow email format.
   final pulumi.Input<String> destination;
-
   /// Tells if the notification is enabled or not.
   final pulumi.Input<bool>? disabled;
-
   /// The language the notification should be sent on.
   final pulumi.Input<String> language;
-
   /// Type of notification to be sent.
   final pulumi.Input<String> type;
 
@@ -40,13 +37,10 @@ class NotificationPropertiesResponse {
   factory NotificationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return NotificationPropertiesResponse(
       destination: pulumi.Input.fromValue(map['destination'] as String),
-      disabled: (() {
-        final guardedValue = map['disabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       language: pulumi.Input.fromValue(map['language'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

@@ -258,7 +258,6 @@ import 'virtual_network_dns_servers_state.dart';
 class VirtualNetworkDnsServers extends pulumi.CustomResource {
   /// List of IP addresses of DNS servers
   late final pulumi.Output<List<String>?> dnsServers;
-
   /// The ID of the Virtual Network that should be linked to the DNS Zone. Changing this forces a new resource to be created.
   late final pulumi.Output<String> virtualNetworkId;
 
@@ -271,11 +270,11 @@ class VirtualNetworkDnsServers extends pulumi.CustomResource {
     VirtualNetworkDnsServersArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/virtualNetworkDnsServers:VirtualNetworkDnsServers',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/virtualNetworkDnsServers:VirtualNetworkDnsServers',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dnsServers = registerOutput<List<String>?>('dnsServers');
     virtualNetworkId = registerOutput<String>('virtualNetworkId');
   }
@@ -298,11 +297,11 @@ class VirtualNetworkDnsServers extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/virtualNetworkDnsServers:VirtualNetworkDnsServers',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/virtualNetworkDnsServers:VirtualNetworkDnsServers',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dnsServers = registerOutput<List<String>?>('dnsServers');
     virtualNetworkId = registerOutput<String>('virtualNetworkId');
   }

@@ -8,16 +8,12 @@ class AverageLoadScalingTrigger {
   /// Enumerates the triggers for auto scaling.
   /// Expected value is 'AverageLoad'.
   final pulumi.Input<String> kind;
-
   /// Lower load threshold (if average load is below this threshold, service will scale down).
   final pulumi.Input<double> lowerLoadThreshold;
-
   /// Description of the metric that is used for scaling.
   final pulumi.Input<AutoScalingResourceMetric> metric;
-
   /// Scale interval that indicates how often will this trigger be checked.
   final pulumi.Input<int> scaleIntervalInSeconds;
-
   /// Upper load threshold (if average load is above this threshold, service will scale up).
   final pulumi.Input<double> upperLoadThreshold;
 
@@ -39,11 +35,7 @@ class AverageLoadScalingTrigger {
     return <String, dynamic>{
       'kind': kind,
       'lowerLoadThreshold': lowerLoadThreshold,
-      'metric':
-          pulumi.Input.mapInputValue<
-            AutoScalingResourceMetric,
-            Map<String, dynamic>
-          >(metric, (value) => value.toMap()),
+      'metric': pulumi.Input.mapInputValue<AutoScalingResourceMetric, Map<String, dynamic>>(metric, (value) => value.toMap()),
       'scaleIntervalInSeconds': scaleIntervalInSeconds,
       'upperLoadThreshold': upperLoadThreshold,
     };
@@ -52,20 +44,11 @@ class AverageLoadScalingTrigger {
   factory AverageLoadScalingTrigger.fromMap(Map<String, dynamic> map) {
     return AverageLoadScalingTrigger(
       kind: pulumi.Input.fromValue(map['kind'] as String),
-      lowerLoadThreshold: pulumi.Input.fromValue(
-        map['lowerLoadThreshold'] as double,
-      ),
-      metric: pulumi.Input.fromValue(
-        AutoScalingResourceMetric.fromMap(
-          (map['metric']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      scaleIntervalInSeconds: pulumi.Input.fromValue(
-        map['scaleIntervalInSeconds'] as int,
-      ),
-      upperLoadThreshold: pulumi.Input.fromValue(
-        map['upperLoadThreshold'] as double,
-      ),
+      lowerLoadThreshold: pulumi.Input.fromValue(map['lowerLoadThreshold'] as double),
+      metric: pulumi.Input.fromValue(AutoScalingResourceMetric.fromMap((map['metric']! as Map).cast<String, dynamic>())),
+      scaleIntervalInSeconds: pulumi.Input.fromValue(map['scaleIntervalInSeconds'] as int),
+      upperLoadThreshold: pulumi.Input.fromValue(map['upperLoadThreshold'] as double),
     );
   }
 }
+

@@ -9,17 +9,20 @@ class AppSvcContainerSettings {
 
   /// Creates a new [AppSvcContainerSettings].
   /// [isolationRequired] Gets or sets the isolation required.
-  AppSvcContainerSettings({required this.isolationRequired});
+  AppSvcContainerSettings({
+    required this.isolationRequired,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'isolationRequired': isolationRequired};
+    return <String, dynamic>{
+      'isolationRequired': isolationRequired,
+    };
   }
 
   factory AppSvcContainerSettings.fromMap(Map<String, dynamic> map) {
     return AppSvcContainerSettings(
-      isolationRequired: pulumi.Input.fromValue(
-        map['isolationRequired'] as bool,
-      ),
+      isolationRequired: pulumi.Input.fromValue(map['isolationRequired'] as bool),
     );
   }
 }
+

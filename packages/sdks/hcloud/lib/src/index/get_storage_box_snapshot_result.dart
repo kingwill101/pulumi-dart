@@ -6,25 +6,18 @@ import 'get_storage_box_snapshot_stats.dart';
 class GetStorageBoxSnapshotResult {
   /// Description of the Storage Box Snapshot.
   final String description;
-
   /// ID of the Storage Box Snapshot.
   final int id;
-
   /// Whether the Storage Box Snapshot was created automatically.
   final bool isAutomatic;
-
   /// User-defined [labels](https://docs.hetzner.cloud/reference/cloud#labels) (key-value pairs) for the resource.
   final Map<String, String> labels;
-
   /// Name of the Storage Box Snapshot.
   final String name;
-
   /// Statistics of the Storage Box Snapshot.
   final GetStorageBoxSnapshotStats stats;
-
   /// ID of the Storage Box.
   final int storageBoxId;
-
   /// Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/hetzner#label-selector).
   final String? withSelector;
 
@@ -68,15 +61,10 @@ class GetStorageBoxSnapshotResult {
       isAutomatic: map['isAutomatic'] as bool,
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
-      stats: GetStorageBoxSnapshotStats.fromMap(
-        (map['stats']! as Map).cast<String, dynamic>(),
-      ),
+      stats: GetStorageBoxSnapshotStats.fromMap((map['stats']! as Map).cast<String, dynamic>()),
       storageBoxId: map['storageBoxId'] as int,
-      withSelector: (() {
-        final guardedValue = map['withSelector'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      withSelector: (() { final guardedValue = map['withSelector']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

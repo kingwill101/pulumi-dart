@@ -8,7 +8,6 @@ import 'google_privacy_dlp_v2_partition_id_response.dart';
 class GooglePrivacyDlpV2DatastoreOptionsResponse {
   /// The kind to process.
   final pulumi.Input<GooglePrivacyDlpV2KindExpressionResponse> kind;
-
   /// A partition ID identifies a grouping of entities. The grouping is always by project and namespace, however the namespace ID may be empty.
   final pulumi.Input<GooglePrivacyDlpV2PartitionIdResponse> partitionId;
 
@@ -22,33 +21,16 @@ class GooglePrivacyDlpV2DatastoreOptionsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'kind':
-          pulumi.Input.mapInputValue<
-            GooglePrivacyDlpV2KindExpressionResponse,
-            Map<String, dynamic>
-          >(kind, (value) => value.toMap()),
-      'partitionId':
-          pulumi.Input.mapInputValue<
-            GooglePrivacyDlpV2PartitionIdResponse,
-            Map<String, dynamic>
-          >(partitionId, (value) => value.toMap()),
+      'kind': pulumi.Input.mapInputValue<GooglePrivacyDlpV2KindExpressionResponse, Map<String, dynamic>>(kind, (value) => value.toMap()),
+      'partitionId': pulumi.Input.mapInputValue<GooglePrivacyDlpV2PartitionIdResponse, Map<String, dynamic>>(partitionId, (value) => value.toMap()),
     };
   }
 
-  factory GooglePrivacyDlpV2DatastoreOptionsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GooglePrivacyDlpV2DatastoreOptionsResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2DatastoreOptionsResponse(
-      kind: pulumi.Input.fromValue(
-        GooglePrivacyDlpV2KindExpressionResponse.fromMap(
-          (map['kind']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      partitionId: pulumi.Input.fromValue(
-        GooglePrivacyDlpV2PartitionIdResponse.fromMap(
-          (map['partitionId']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      kind: pulumi.Input.fromValue(GooglePrivacyDlpV2KindExpressionResponse.fromMap((map['kind']! as Map).cast<String, dynamic>())),
+      partitionId: pulumi.Input.fromValue(GooglePrivacyDlpV2PartitionIdResponse.fromMap((map['partitionId']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

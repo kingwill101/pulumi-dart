@@ -130,13 +130,10 @@ class FastApplication extends pulumi.CustomResource {
   ///
   /// * `FAST documentation` - https://clouddocs.f5.com/products/extensions/f5-appsvcs-templates/latest/
   late final pulumi.Output<String> application;
-
   /// Path/Filename of Declarative FAST JSON which is a json file used with builtin ```file``` function
   late final pulumi.Output<String> fastJson;
-
   /// Name of installed FAST template used to create FAST application. This parameter is required when creating new resource.
   late final pulumi.Output<String?> template;
-
   /// A FAST tenant name on which you want to manage application.
   late final pulumi.Output<String> tenant;
 
@@ -149,11 +146,11 @@ class FastApplication extends pulumi.CustomResource {
     FastApplicationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:index/fastApplication:FastApplication',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:index/fastApplication:FastApplication',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     application = registerOutput<String>('application');
     fastJson = registerOutput<String>('fastJson');
     template = registerOutput<String?>('template');
@@ -178,11 +175,11 @@ class FastApplication extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:index/fastApplication:FastApplication',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:index/fastApplication:FastApplication',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     application = registerOutput<String>('application');
     fastJson = registerOutput<String>('fastJson');
     template = registerOutput<String?>('template');

@@ -15,3 +15,4 @@ enum RedirectAllRequestsToProtocol {
     throw ArgumentError('Unknown RedirectAllRequestsToProtocol value: $value');
   }
 }
+

@@ -15,3 +15,4 @@ enum AgentPoolSSHAccess {
     throw ArgumentError('Unknown AgentPoolSSHAccess value: $value');
   }
 }
+

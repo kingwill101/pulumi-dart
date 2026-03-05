@@ -179,37 +179,26 @@ import 'system_data_response.dart';
 class FluidRelayServer extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// All encryption configuration for a resource.
   late final pulumi.Output<EncryptionPropertiesResponse?> encryption;
-
   /// The Fluid Relay Service endpoints for this server.
   late final pulumi.Output<FluidRelayEndpointsResponse> fluidRelayEndpoints;
-
   /// The Fluid tenantId for this server
   late final pulumi.Output<String> frsTenantId;
-
   /// The type of identity used for the resource.
   late final pulumi.Output<IdentityResponse?> identity;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Provision states for FluidRelay RP
   late final pulumi.Output<String?> provisioningState;
-
   /// Sku of the storage associated with the resource
   late final pulumi.Output<String?> storagesku;
-
   /// System meta data for this resource, including creation and modification information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -222,57 +211,21 @@ class FluidRelayServer extends pulumi.CustomResource {
     FluidRelayServerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:fluidrelay:FluidRelayServer',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:fluidrelay:FluidRelayServer',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    encryption = registerOutput<EncryptionPropertiesResponse?>(
-      'encryption',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EncryptionPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    fluidRelayEndpoints = registerOutput<FluidRelayEndpointsResponse>(
-      'fluidRelayEndpoints',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FluidRelayEndpointsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    encryption = registerOutput<EncryptionPropertiesResponse?>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    fluidRelayEndpoints = registerOutput<FluidRelayEndpointsResponse>('fluidRelayEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FluidRelayEndpointsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     frsTenantId = registerOutput<String>('frsTenantId');
-    identity = registerOutput<IdentityResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<IdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String?>('provisioningState');
     storagesku = registerOutput<String?>('storagesku');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

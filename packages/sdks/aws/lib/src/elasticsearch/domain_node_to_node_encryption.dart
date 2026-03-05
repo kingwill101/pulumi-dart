@@ -8,10 +8,14 @@ class DomainNodeToNodeEncryption {
 
   /// Creates a new [DomainNodeToNodeEncryption].
   /// [enabled] Whether to enable node-to-node encryption. If the `node_to_node_encryption` block is not provided then this defaults to `false`. Enabling node-to-node encryption of a new domain requires an `elasticsearch_version` of `6.0` or greater.
-  DomainNodeToNodeEncryption({required this.enabled});
+  DomainNodeToNodeEncryption({
+    required this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled};
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
   factory DomainNodeToNodeEncryption.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class DomainNodeToNodeEncryption {
     );
   }
 }
+

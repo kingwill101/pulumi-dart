@@ -12,19 +12,20 @@ class ClusterPersistenceConfigAofConfig {
 
   /// Creates a new [ClusterPersistenceConfigAofConfig].
   /// [appendFsync] Optional. Available fsync modes.
-  ClusterPersistenceConfigAofConfig({this.appendFsync});
+  ClusterPersistenceConfigAofConfig({
+    this.appendFsync,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'appendFsync': ?appendFsync};
+    return <String, dynamic>{
+      'appendFsync': ?appendFsync,
+    };
   }
 
   factory ClusterPersistenceConfigAofConfig.fromMap(Map<String, dynamic> map) {
     return ClusterPersistenceConfigAofConfig(
-      appendFsync: (() {
-        final guardedValue = map['appendFsync'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      appendFsync: (() { final guardedValue = map['appendFsync']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

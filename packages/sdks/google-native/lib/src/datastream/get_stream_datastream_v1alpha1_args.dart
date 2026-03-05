@@ -32,12 +32,9 @@ class GetStreamDatastreamV1alpha1Args {
   factory GetStreamDatastreamV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return GetStreamDatastreamV1alpha1Args(
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       streamId: pulumi.Input.fromValue(map['streamId'] as String),
     );
   }
 }
+

@@ -8,17 +8,20 @@ class GetDeploymentFrontendPublic {
 
   /// Creates a new [GetDeploymentFrontendPublic].
   /// [ipAddresses] The list of Public IP Resource IDs for this NGINX Deployment.
-  GetDeploymentFrontendPublic({required this.ipAddresses});
+  GetDeploymentFrontendPublic({
+    required this.ipAddresses,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'ipAddresses': ipAddresses};
+    return <String, dynamic>{
+      'ipAddresses': ipAddresses,
+    };
   }
 
   factory GetDeploymentFrontendPublic.fromMap(Map<String, dynamic> map) {
     return GetDeploymentFrontendPublic(
-      ipAddresses: pulumi.Input.fromValue(
-        (map['ipAddresses'] as List).cast<String>(),
-      ),
+      ipAddresses: pulumi.Input.fromValue((map['ipAddresses'] as List).cast<String>()),
     );
   }
 }
+

@@ -1,28 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getGeoBackupPolicy.
 class GetGeoBackupPolicyResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Resource ID.
   final String id;
-
   /// Kind of geo backup policy.  This is metadata used for the Azure portal experience.
   final String kind;
-
   /// Backup policy location.
   final String location;
-
   /// Resource name.
   final String name;
-
   /// The state of the geo backup policy.
   final String state;
-
   /// The storage type of the geo backup policy.
   final String storageType;
-
   /// Resource type.
   final String type;
 
@@ -72,3 +66,4 @@ class GetGeoBackupPolicyResult {
     );
   }
 }
+

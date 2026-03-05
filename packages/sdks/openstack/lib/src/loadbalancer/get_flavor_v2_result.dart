@@ -1,22 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getFlavorV2.
 class GetFlavorV2Result {
   /// The description of the flavor.
   final String description;
-
   /// Is the flavor enabled.
   final bool enabled;
-
   /// The ID of the flavor.
   final String flavorId;
-
   /// The ID of the flavor profile.
   final String flavorProfileId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The name of the flavor.
   final String name;
   final String region;
@@ -63,3 +59,4 @@ class GetFlavorV2Result {
     );
   }
 }
+

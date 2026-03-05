@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VulWhitelistState {
   /// Reason for adding whitelist.
   final pulumi.Input<String>? reason;
-
   /// Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
   final pulumi.Input<String>? targetInfo;
-
   /// Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
   final pulumi.Input<String>? whitelist;
 
@@ -17,7 +15,11 @@ class VulWhitelistState {
   /// [reason] Reason for adding whitelist.
   /// [targetInfo] Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
   /// [whitelist] Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
-  VulWhitelistState({this.reason, this.targetInfo, this.whitelist});
+  VulWhitelistState({
+    this.reason,
+    this.targetInfo,
+    this.whitelist,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class VulWhitelistState {
 
   factory VulWhitelistState.fromMap(Map<String, dynamic> map) {
     return VulWhitelistState(
-      reason: (() {
-        final guardedValue = map['reason'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      targetInfo: (() {
-        final guardedValue = map['targetInfo'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      whitelist: (() {
-        final guardedValue = map['whitelist'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      reason: (() { final guardedValue = map['reason']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      targetInfo: (() { final guardedValue = map['targetInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      whitelist: (() { final guardedValue = map['whitelist']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

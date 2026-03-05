@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureMonitorInformationResponse {
   /// ID of Data Collection Rule (DCR) associated with this service.
   final pulumi.Input<String> dcrId;
-
   /// Indicates whether the service is enabled.
   final pulumi.Input<String> enablementStatus;
 
@@ -28,9 +27,8 @@ class AzureMonitorInformationResponse {
   factory AzureMonitorInformationResponse.fromMap(Map<String, dynamic> map) {
     return AzureMonitorInformationResponse(
       dcrId: pulumi.Input.fromValue(map['dcrId'] as String),
-      enablementStatus: pulumi.Input.fromValue(
-        map['enablementStatus'] as String,
-      ),
+      enablementStatus: pulumi.Input.fromValue(map['enablementStatus'] as String),
     );
   }
 }
+

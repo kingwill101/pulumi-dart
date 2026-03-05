@@ -16,3 +16,4 @@ enum EndpointAuthMode {
     throw ArgumentError('Unknown EndpointAuthMode value: $value');
   }
 }
+

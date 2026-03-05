@@ -6,33 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationGatewayProbeHealthResponseMatch {
   /// Body that must be contained in the health response. Default value is empty.
   final pulumi.Input<String>? body;
-
   /// Allowed ranges of healthy status codes. Default range of healthy status codes is 200-399.
   final pulumi.Input<List<String>>? statusCodes;
 
   /// Creates a new [ApplicationGatewayProbeHealthResponseMatch].
   /// [body] Body that must be contained in the health response. Default value is empty.
   /// [statusCodes] Allowed ranges of healthy status codes. Default range of healthy status codes is 200-399.
-  ApplicationGatewayProbeHealthResponseMatch({this.body, this.statusCodes});
+  ApplicationGatewayProbeHealthResponseMatch({
+    this.body,
+    this.statusCodes,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'body': ?body, 'statusCodes': ?statusCodes};
+    return <String, dynamic>{
+      'body': ?body,
+      'statusCodes': ?statusCodes,
+    };
   }
 
-  factory ApplicationGatewayProbeHealthResponseMatch.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApplicationGatewayProbeHealthResponseMatch.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayProbeHealthResponseMatch(
-      body: (() {
-        final guardedValue = map['body'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      statusCodes: (() {
-        final guardedValue = map['statusCodes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      body: (() { final guardedValue = map['body']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      statusCodes: (() { final guardedValue = map['statusCodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

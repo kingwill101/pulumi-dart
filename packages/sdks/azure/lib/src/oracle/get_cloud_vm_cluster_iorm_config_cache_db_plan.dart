@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCloudVmClusterIormConfigCacheDbPlan {
   /// The database name. For the default `DbPlan`, the `dbName` is `default`.
   final pulumi.Input<String> dbName;
-
   /// The flash cache limit for this database. This value is internally configured based on the share value assigned to the database.
   final pulumi.Input<String> flashCacheLimit;
-
   /// The relative priority of this database.
   final pulumi.Input<int> share;
 
@@ -30,9 +28,7 @@ class GetCloudVmClusterIormConfigCacheDbPlan {
     };
   }
 
-  factory GetCloudVmClusterIormConfigCacheDbPlan.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetCloudVmClusterIormConfigCacheDbPlan.fromMap(Map<String, dynamic> map) {
     return GetCloudVmClusterIormConfigCacheDbPlan(
       dbName: pulumi.Input.fromValue(map['dbName'] as String),
       flashCacheLimit: pulumi.Input.fromValue(map['flashCacheLimit'] as String),
@@ -40,3 +36,4 @@ class GetCloudVmClusterIormConfigCacheDbPlan {
     );
   }
 }
+

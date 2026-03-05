@@ -17,3 +17,4 @@ enum EventSerializationType {
     throw ArgumentError('Unknown EventSerializationType value: $value');
   }
 }
+

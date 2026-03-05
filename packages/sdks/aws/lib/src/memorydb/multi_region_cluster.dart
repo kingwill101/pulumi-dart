@@ -194,44 +194,32 @@ import 'multi_region_cluster_timeouts.dart';
 class MultiRegionCluster extends pulumi.CustomResource {
   /// The ARN of the multi-region cluster.
   late final pulumi.Output<String> arn;
-
   /// description for the multi-region cluster.
   late final pulumi.Output<String?> description;
-
   /// The name of the engine to be used for the multi-region cluster. Valid values are `redis` and `valkey`.
   late final pulumi.Output<String> engine;
-
   /// The version of the engine to be used for the multi-region cluster. Downgrades are not supported.
   late final pulumi.Output<String> engineVersion;
-
   /// The name of the multi-region cluster.
   late final pulumi.Output<String> multiRegionClusterName;
-
   /// A suffix to be added to the multi-region cluster name. An AWS generated prefix is automatically applied to the multi-region cluster name when it is created.
   late final pulumi.Output<String> multiRegionClusterNameSuffix;
-
   /// The name of the multi-region parameter group to be associated with the cluster.
   late final pulumi.Output<String> multiRegionParameterGroupName;
-
   /// The node type to be used for the multi-region cluster.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> nodeType;
-
   /// The number of shards for the multi-region cluster.
   late final pulumi.Output<int> numShards;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   late final pulumi.Output<String> status;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<MultiRegionClusterTimeouts?> timeouts;
-
   /// A flag to enable in-transit encryption on the cluster.
   late final pulumi.Output<bool> tlsEnabled;
   late final pulumi.Output<String?> updateStrategy;
@@ -245,38 +233,25 @@ class MultiRegionCluster extends pulumi.CustomResource {
     MultiRegionClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:memorydb/multiRegionCluster:MultiRegionCluster',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:memorydb/multiRegionCluster:MultiRegionCluster',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     engine = registerOutput<String>('engine');
     engineVersion = registerOutput<String>('engineVersion');
     multiRegionClusterName = registerOutput<String>('multiRegionClusterName');
-    multiRegionClusterNameSuffix = registerOutput<String>(
-      'multiRegionClusterNameSuffix',
-    );
-    multiRegionParameterGroupName = registerOutput<String>(
-      'multiRegionParameterGroupName',
-    );
+    multiRegionClusterNameSuffix = registerOutput<String>('multiRegionClusterNameSuffix');
+    multiRegionParameterGroupName = registerOutput<String>('multiRegionParameterGroupName');
     nodeType = registerOutput<String>('nodeType');
     numShards = registerOutput<int>('numShards');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<MultiRegionClusterTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MultiRegionClusterTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<MultiRegionClusterTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultiRegionClusterTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tlsEnabled = registerOutput<bool>('tlsEnabled');
     updateStrategy = registerOutput<String?>('updateStrategy');
   }
@@ -299,38 +274,25 @@ class MultiRegionCluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:memorydb/multiRegionCluster:MultiRegionCluster',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:memorydb/multiRegionCluster:MultiRegionCluster',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     engine = registerOutput<String>('engine');
     engineVersion = registerOutput<String>('engineVersion');
     multiRegionClusterName = registerOutput<String>('multiRegionClusterName');
-    multiRegionClusterNameSuffix = registerOutput<String>(
-      'multiRegionClusterNameSuffix',
-    );
-    multiRegionParameterGroupName = registerOutput<String>(
-      'multiRegionParameterGroupName',
-    );
+    multiRegionClusterNameSuffix = registerOutput<String>('multiRegionClusterNameSuffix');
+    multiRegionParameterGroupName = registerOutput<String>('multiRegionParameterGroupName');
     nodeType = registerOutput<String>('nodeType');
     numShards = registerOutput<int>('numShards');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<MultiRegionClusterTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MultiRegionClusterTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<MultiRegionClusterTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultiRegionClusterTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tlsEnabled = registerOutput<bool>('tlsEnabled');
     updateStrategy = registerOutput<String?>('updateStrategy');
   }

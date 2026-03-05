@@ -6,7 +6,6 @@ import 'incident_properties_action_response.dart';
 /// Describes an automation rule action to modify an object's properties
 class AutomationRuleModifyPropertiesActionResponse {
   final pulumi.Input<IncidentPropertiesActionResponse>? actionConfiguration;
-
   /// The type of the automation rule action.
   /// Expected value is 'ModifyProperties'.
   final pulumi.Input<String> actionType;
@@ -24,31 +23,18 @@ class AutomationRuleModifyPropertiesActionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actionConfiguration':
-          ?pulumi.Input.mapOptionalInputValue<
-            IncidentPropertiesActionResponse,
-            Map<String, dynamic>
-          >(actionConfiguration, (value) => value.toMap()),
+      'actionConfiguration': ?pulumi.Input.mapOptionalInputValue<IncidentPropertiesActionResponse, Map<String, dynamic>>(actionConfiguration, (value) => value.toMap()),
       'actionType': actionType,
       'order': order,
     };
   }
 
-  factory AutomationRuleModifyPropertiesActionResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AutomationRuleModifyPropertiesActionResponse.fromMap(Map<String, dynamic> map) {
     return AutomationRuleModifyPropertiesActionResponse(
-      actionConfiguration: (() {
-        final guardedValue = map['actionConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          IncidentPropertiesActionResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      actionConfiguration: (() { final guardedValue = map['actionConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IncidentPropertiesActionResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       actionType: pulumi.Input.fromValue(map['actionType'] as String),
       order: pulumi.Input.fromValue(map['order'] as int),
     );
   }
 }
+

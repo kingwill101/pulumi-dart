@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VmwareDiskDetailsResponse {
   /// The ordinal number of the disk.
   final pulumi.Input<int> diskNumber;
-
   /// The disk label.
   final pulumi.Input<String> label;
-
   /// Size in GB.
   final pulumi.Input<String> sizeGb;
 
@@ -39,3 +37,4 @@ class VmwareDiskDetailsResponse {
     );
   }
 }
+

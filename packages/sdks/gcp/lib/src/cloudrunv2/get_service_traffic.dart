@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceTraffic {
   /// Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
   final pulumi.Input<int> percent;
-
   /// Revision to which to send this portion of traffic, if traffic allocation is by revision.
   final pulumi.Input<String> revision;
-
   /// Indicates a string to be part of the URI to exclusively reference this target.
   final pulumi.Input<String> tag;
-
   /// The allocation type for this traffic target. Possible values: ["TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST", "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION"]
   final pulumi.Input<String> type;
 
@@ -45,3 +42,4 @@ class GetServiceTraffic {
     );
   }
 }
+

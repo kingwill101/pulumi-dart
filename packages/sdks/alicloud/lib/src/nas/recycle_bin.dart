@@ -198,10 +198,8 @@ import 'recycle_bin_state.dart';
 class RecycleBin extends pulumi.CustomResource {
   /// The ID of the file system for which you want to enable the recycle bin feature.
   late final pulumi.Output<String> fileSystemId;
-
   /// The period for which the files in the recycle bin are retained. Unit: days. Valid values: `1` to `180`.
   late final pulumi.Output<int> reservedDays;
-
   /// The status of the recycle bin.
   late final pulumi.Output<String> status;
 
@@ -214,11 +212,11 @@ class RecycleBin extends pulumi.CustomResource {
     RecycleBinArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:nas/recycleBin:RecycleBin',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:nas/recycleBin:RecycleBin',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     fileSystemId = registerOutput<String>('fileSystemId');
     reservedDays = registerOutput<int>('reservedDays');
     status = registerOutput<String>('status');
@@ -242,11 +240,11 @@ class RecycleBin extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:nas/recycleBin:RecycleBin',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:nas/recycleBin:RecycleBin',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     fileSystemId = registerOutput<String>('fileSystemId');
     reservedDays = registerOutput<int>('reservedDays');
     status = registerOutput<String>('status');

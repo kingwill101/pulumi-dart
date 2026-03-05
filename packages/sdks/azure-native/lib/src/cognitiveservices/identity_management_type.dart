@@ -16,3 +16,4 @@ enum IdentityManagementType {
     throw ArgumentError('Unknown IdentityManagementType value: $value');
   }
 }
+

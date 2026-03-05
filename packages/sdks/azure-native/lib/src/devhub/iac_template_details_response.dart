@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IacTemplateDetailsResponse {
   /// Count of the product
   final pulumi.Input<int>? count;
-
   /// Naming convention of this product
   final pulumi.Input<String>? namingConvention;
-
   /// The name of the products.
   final pulumi.Input<String>? productName;
 
@@ -32,21 +30,10 @@ class IacTemplateDetailsResponse {
 
   factory IacTemplateDetailsResponse.fromMap(Map<String, dynamic> map) {
     return IacTemplateDetailsResponse(
-      count: (() {
-        final guardedValue = map['count'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      namingConvention: (() {
-        final guardedValue = map['namingConvention'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      productName: (() {
-        final guardedValue = map['productName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      namingConvention: (() { final guardedValue = map['namingConvention']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      productName: (() { final guardedValue = map['productName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -233,55 +233,38 @@ import 'user_info_response.dart';
 class Bookmark extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The time the bookmark was created
   late final pulumi.Output<String?> created;
-
   /// Describes a user that created the bookmark
   late final pulumi.Output<UserInfoResponse?> createdBy;
-
   /// The display name of the bookmark
   late final pulumi.Output<String> displayName;
-
   /// Etag of the azure resource
   late final pulumi.Output<String?> etag;
-
   /// The bookmark event time
   late final pulumi.Output<String?> eventTime;
-
   /// Describes an incident that relates to bookmark
   late final pulumi.Output<IncidentInfoResponse?> incidentInfo;
-
   /// List of labels relevant to this bookmark
   late final pulumi.Output<List<String>?> labels;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The notes of the bookmark
   late final pulumi.Output<String?> notes;
-
   /// The query of the bookmark.
   late final pulumi.Output<String> query;
-
   /// The end time for the query
   late final pulumi.Output<String?> queryEndTime;
-
   /// The query result of the bookmark.
   late final pulumi.Output<String?> queryResult;
-
   /// The start time for the query
   late final pulumi.Output<String?> queryStartTime;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// The last time the bookmark was updated
   late final pulumi.Output<String?> updated;
-
   /// Describes a user that updated the bookmark
   late final pulumi.Output<UserInfoResponse?> updatedBy;
 
@@ -294,36 +277,18 @@ class Bookmark extends pulumi.CustomResource {
     BookmarkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:securityinsights:Bookmark',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:securityinsights:Bookmark',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     created = registerOutput<String?>('created');
-    createdBy = registerOutput<UserInfoResponse?>(
-      'createdBy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return UserInfoResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    createdBy = registerOutput<UserInfoResponse?>('createdBy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     displayName = registerOutput<String>('displayName');
     etag = registerOutput<String?>('etag');
     eventTime = registerOutput<String?>('eventTime');
-    incidentInfo = registerOutput<IncidentInfoResponse?>(
-      'incidentInfo',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IncidentInfoResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    incidentInfo = registerOutput<IncidentInfoResponse?>('incidentInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IncidentInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     labels = registerOutput<List<String>?>('labels');
     this.name = registerOutput<String>('name');
     notes = registerOutput<String?>('notes');
@@ -331,27 +296,9 @@ class Bookmark extends pulumi.CustomResource {
     queryEndTime = registerOutput<String?>('queryEndTime');
     queryResult = registerOutput<String?>('queryResult');
     queryStartTime = registerOutput<String?>('queryStartTime');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     updated = registerOutput<String?>('updated');
-    updatedBy = registerOutput<UserInfoResponse?>(
-      'updatedBy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return UserInfoResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    updatedBy = registerOutput<UserInfoResponse?>('updatedBy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

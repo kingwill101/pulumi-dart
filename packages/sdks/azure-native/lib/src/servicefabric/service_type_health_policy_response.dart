@@ -11,7 +11,6 @@ class ServiceTypeHealthPolicyResponse {
   /// The percentage is calculated by dividing the number of unhealthy partitions over the total number of partitions in the service.
   /// The computation rounds up to tolerate one failure on small numbers of partitions.
   final pulumi.Input<int> maxPercentUnhealthyPartitionsPerService;
-
   /// The maximum allowed percentage of unhealthy replicas per partition.
   ///
   /// The percentage represents the maximum tolerated percentage of replicas that can be unhealthy before the partition is considered in error.
@@ -19,7 +18,6 @@ class ServiceTypeHealthPolicyResponse {
   /// The percentage is calculated by dividing the number of unhealthy replicas over the total number of replicas in the partition.
   /// The computation rounds up to tolerate one failure on small numbers of replicas.
   final pulumi.Input<int> maxPercentUnhealthyReplicasPerPartition;
-
   /// The maximum allowed percentage of unhealthy services.
   ///
   /// The percentage represents the maximum tolerated percentage of services that can be unhealthy before the application is considered in error.
@@ -40,25 +38,18 @@ class ServiceTypeHealthPolicyResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'maxPercentUnhealthyPartitionsPerService':
-          maxPercentUnhealthyPartitionsPerService,
-      'maxPercentUnhealthyReplicasPerPartition':
-          maxPercentUnhealthyReplicasPerPartition,
+      'maxPercentUnhealthyPartitionsPerService': maxPercentUnhealthyPartitionsPerService,
+      'maxPercentUnhealthyReplicasPerPartition': maxPercentUnhealthyReplicasPerPartition,
       'maxPercentUnhealthyServices': maxPercentUnhealthyServices,
     };
   }
 
   factory ServiceTypeHealthPolicyResponse.fromMap(Map<String, dynamic> map) {
     return ServiceTypeHealthPolicyResponse(
-      maxPercentUnhealthyPartitionsPerService: pulumi.Input.fromValue(
-        map['maxPercentUnhealthyPartitionsPerService'] as int,
-      ),
-      maxPercentUnhealthyReplicasPerPartition: pulumi.Input.fromValue(
-        map['maxPercentUnhealthyReplicasPerPartition'] as int,
-      ),
-      maxPercentUnhealthyServices: pulumi.Input.fromValue(
-        map['maxPercentUnhealthyServices'] as int,
-      ),
+      maxPercentUnhealthyPartitionsPerService: pulumi.Input.fromValue(map['maxPercentUnhealthyPartitionsPerService'] as int),
+      maxPercentUnhealthyReplicasPerPartition: pulumi.Input.fromValue(map['maxPercentUnhealthyReplicasPerPartition'] as int),
+      maxPercentUnhealthyServices: pulumi.Input.fromValue(map['maxPercentUnhealthyServices'] as int),
     );
   }
 }
+

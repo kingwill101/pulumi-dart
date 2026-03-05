@@ -220,19 +220,14 @@ import 'credential_state.dart';
 class Credential extends pulumi.CustomResource {
   /// The name of the automation account in which the Credential is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> automationAccountName;
-
   /// The description associated with this Automation Credential.
   late final pulumi.Output<String?> description;
-
   /// Specifies the name of the Credential. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The password associated with this Automation Credential.
   late final pulumi.Output<String> password;
-
   /// The name of the resource group in which the Credential is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The username associated with this Automation Credential.
   late final pulumi.Output<String> username;
 
@@ -245,11 +240,11 @@ class Credential extends pulumi.CustomResource {
     CredentialArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:automation/credential:Credential',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:automation/credential:Credential',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     automationAccountName = registerOutput<String>('automationAccountName');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
@@ -276,11 +271,11 @@ class Credential extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:automation/credential:Credential',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:automation/credential:Credential',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     automationAccountName = registerOutput<String>('automationAccountName');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');

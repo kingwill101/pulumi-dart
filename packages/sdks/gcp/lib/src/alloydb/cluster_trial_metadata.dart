@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterTrialMetadata {
   /// End time of the trial cluster.
   final pulumi.Input<String>? endTime;
-
   /// Grace end time of the trial cluster.
   final pulumi.Input<String>? graceEndTime;
-
   /// Start time of the trial cluster.
   final pulumi.Input<String>? startTime;
-
   /// Upgrade time of the trial cluster to standard cluster.
   final pulumi.Input<String>? upgradeTime;
 
@@ -38,26 +35,11 @@ class ClusterTrialMetadata {
 
   factory ClusterTrialMetadata.fromMap(Map<String, dynamic> map) {
     return ClusterTrialMetadata(
-      endTime: (() {
-        final guardedValue = map['endTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      graceEndTime: (() {
-        final guardedValue = map['graceEndTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      startTime: (() {
-        final guardedValue = map['startTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      upgradeTime: (() {
-        final guardedValue = map['upgradeTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      endTime: (() { final guardedValue = map['endTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      graceEndTime: (() { final guardedValue = map['graceEndTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      startTime: (() { final guardedValue = map['startTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      upgradeTime: (() { final guardedValue = map['upgradeTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

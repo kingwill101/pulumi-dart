@@ -19,13 +19,10 @@ class DataflowEndpointLocalStorageResponse {
     };
   }
 
-  factory DataflowEndpointLocalStorageResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DataflowEndpointLocalStorageResponse.fromMap(Map<String, dynamic> map) {
     return DataflowEndpointLocalStorageResponse(
-      persistentVolumeClaimRef: pulumi.Input.fromValue(
-        map['persistentVolumeClaimRef'] as String,
-      ),
+      persistentVolumeClaimRef: pulumi.Input.fromValue(map['persistentVolumeClaimRef'] as String),
     );
   }
 }
+

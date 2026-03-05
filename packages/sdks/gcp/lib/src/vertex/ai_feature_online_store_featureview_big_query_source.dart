@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AiFeatureOnlineStoreFeatureviewBigQuerySource {
   /// Columns to construct entityId / row keys. Start by supporting 1 only.
   final pulumi.Input<List<String>> entityIdColumns;
-
   /// The BigQuery view URI that will be materialized on each sync trigger based on FeatureView.SyncConfig.
   final pulumi.Input<String> uri;
 
@@ -18,17 +17,17 @@ class AiFeatureOnlineStoreFeatureviewBigQuerySource {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'entityIdColumns': entityIdColumns, 'uri': uri};
+    return <String, dynamic>{
+      'entityIdColumns': entityIdColumns,
+      'uri': uri,
+    };
   }
 
-  factory AiFeatureOnlineStoreFeatureviewBigQuerySource.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AiFeatureOnlineStoreFeatureviewBigQuerySource.fromMap(Map<String, dynamic> map) {
     return AiFeatureOnlineStoreFeatureviewBigQuerySource(
-      entityIdColumns: pulumi.Input.fromValue(
-        (map['entityIdColumns'] as List).cast<String>(),
-      ),
+      entityIdColumns: pulumi.Input.fromValue((map['entityIdColumns'] as List).cast<String>()),
       uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
+

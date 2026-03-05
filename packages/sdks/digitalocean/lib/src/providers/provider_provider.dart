@@ -9,16 +9,12 @@ import 'provider_terraform_config_result.dart';
 class ProviderProvider extends pulumi.ProviderResource {
   /// The URL to use for the DigitalOcean API.
   late final pulumi.Output<String?> apiEndpoint;
-
   /// The access key ID for Spaces API operations.
   late final pulumi.Output<String?> spacesAccessId;
-
   /// The URL to use for the DigitalOcean Spaces API.
   late final pulumi.Output<String?> spacesEndpoint;
-
   /// The secret access key for Spaces API operations.
   late final pulumi.Output<String?> spacesSecretKey;
-
   /// The token key for API operations.
   late final pulumi.Output<String?> token;
 
@@ -31,11 +27,11 @@ class ProviderProvider extends pulumi.ProviderResource {
     ProviderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiEndpoint = registerOutput<String?>('apiEndpoint');
     spacesAccessId = registerOutput<String?>('spacesAccessId');
     spacesEndpoint = registerOutput<String?>('spacesEndpoint');

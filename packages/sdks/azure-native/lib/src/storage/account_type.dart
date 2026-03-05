@@ -15,3 +15,4 @@ enum AccountType {
     throw ArgumentError('Unknown AccountType value: $value');
   }
 }
+

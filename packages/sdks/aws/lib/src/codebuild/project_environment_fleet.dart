@@ -8,19 +8,20 @@ class ProjectEnvironmentFleet {
 
   /// Creates a new [ProjectEnvironmentFleet].
   /// [fleetArn] Compute fleet ARN for the build project.
-  ProjectEnvironmentFleet({this.fleetArn});
+  ProjectEnvironmentFleet({
+    this.fleetArn,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'fleetArn': ?fleetArn};
+    return <String, dynamic>{
+      'fleetArn': ?fleetArn,
+    };
   }
 
   factory ProjectEnvironmentFleet.fromMap(Map<String, dynamic> map) {
     return ProjectEnvironmentFleet(
-      fleetArn: (() {
-        final guardedValue = map['fleetArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      fleetArn: (() { final guardedValue = map['fleetArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

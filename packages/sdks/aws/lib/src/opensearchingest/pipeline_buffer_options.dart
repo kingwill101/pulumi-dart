@@ -8,7 +8,9 @@ class PipelineBufferOptions {
 
   /// Creates a new [PipelineBufferOptions].
   /// [persistentBufferEnabled] Whether persistent buffering should be enabled.
-  PipelineBufferOptions({required this.persistentBufferEnabled});
+  PipelineBufferOptions({
+    required this.persistentBufferEnabled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -18,9 +20,8 @@ class PipelineBufferOptions {
 
   factory PipelineBufferOptions.fromMap(Map<String, dynamic> map) {
     return PipelineBufferOptions(
-      persistentBufferEnabled: pulumi.Input.fromValue(
-        map['persistentBufferEnabled'] as bool,
-      ),
+      persistentBufferEnabled: pulumi.Input.fromValue(map['persistentBufferEnabled'] as bool),
     );
   }
 }
+

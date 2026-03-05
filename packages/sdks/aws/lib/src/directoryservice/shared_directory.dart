@@ -178,19 +178,14 @@ import 'shared_directory_target.dart';
 class SharedDirectory extends pulumi.CustomResource {
   /// Identifier of the Managed Microsoft AD directory that you want to share with other accounts.
   late final pulumi.Output<String> directoryId;
-
   /// Method used when sharing a directory. Valid values are `ORGANIZATIONS` and `HANDSHAKE`. Default is `HANDSHAKE`.
   late final pulumi.Output<String?> method;
-
   /// Message sent by the directory owner to the directory consumer to help the directory consumer administrator determine whether to approve or reject the share invitation.
   late final pulumi.Output<String?> notes;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Identifier of the directory that is stored in the directory consumer account that corresponds to the shared directory in the owner account.
   late final pulumi.Output<String> sharedDirectoryId;
-
   /// Identifier for the directory consumer account with whom the directory is to be shared. See below.
   ///
   /// The following arguments are optional:
@@ -205,26 +200,17 @@ class SharedDirectory extends pulumi.CustomResource {
     SharedDirectoryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:directoryservice/sharedDirectory:SharedDirectory',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:directoryservice/sharedDirectory:SharedDirectory',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     directoryId = registerOutput<String>('directoryId');
     method = registerOutput<String?>('method');
     notes = registerOutput<String?>('notes');
     region = registerOutput<String>('region');
     sharedDirectoryId = registerOutput<String>('sharedDirectoryId');
-    target = registerOutput<SharedDirectoryTarget>(
-      'target',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SharedDirectoryTarget.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    target = registerOutput<SharedDirectoryTarget>('target', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SharedDirectoryTarget.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [SharedDirectory] resource's state with the given [name] and [id].
@@ -245,25 +231,16 @@ class SharedDirectory extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:directoryservice/sharedDirectory:SharedDirectory',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:directoryservice/sharedDirectory:SharedDirectory',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     directoryId = registerOutput<String>('directoryId');
     method = registerOutput<String?>('method');
     notes = registerOutput<String?>('notes');
     region = registerOutput<String>('region');
     sharedDirectoryId = registerOutput<String>('sharedDirectoryId');
-    target = registerOutput<SharedDirectoryTarget>(
-      'target',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SharedDirectoryTarget.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    target = registerOutput<SharedDirectoryTarget>('target', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SharedDirectoryTarget.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

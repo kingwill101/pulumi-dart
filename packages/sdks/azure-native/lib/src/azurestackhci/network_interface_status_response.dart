@@ -7,13 +7,10 @@ import 'network_interface_status_provisioning_status_response.dart';
 class NetworkInterfaceStatusResponse {
   /// NetworkInterface provisioning error code
   final pulumi.Input<String>? errorCode;
-
   /// Descriptive error message
   final pulumi.Input<String>? errorMessage;
-
   /// Network interface provisioning status
-  final pulumi.Input<NetworkInterfaceStatusProvisioningStatusResponse>?
-  provisioningStatus;
+  final pulumi.Input<NetworkInterfaceStatusProvisioningStatusResponse>? provisioningStatus;
 
   /// Creates a new [NetworkInterfaceStatusResponse].
   /// [errorCode] NetworkInterface provisioning error code
@@ -29,35 +26,16 @@ class NetworkInterfaceStatusResponse {
     return <String, dynamic>{
       'errorCode': ?errorCode,
       'errorMessage': ?errorMessage,
-      'provisioningStatus':
-          ?pulumi.Input.mapOptionalInputValue<
-            NetworkInterfaceStatusProvisioningStatusResponse,
-            Map<String, dynamic>
-          >(provisioningStatus, (value) => value.toMap()),
+      'provisioningStatus': ?pulumi.Input.mapOptionalInputValue<NetworkInterfaceStatusProvisioningStatusResponse, Map<String, dynamic>>(provisioningStatus, (value) => value.toMap()),
     };
   }
 
   factory NetworkInterfaceStatusResponse.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceStatusResponse(
-      errorCode: (() {
-        final guardedValue = map['errorCode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      errorMessage: (() {
-        final guardedValue = map['errorMessage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      provisioningStatus: (() {
-        final guardedValue = map['provisioningStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          NetworkInterfaceStatusProvisioningStatusResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      errorCode: (() { final guardedValue = map['errorCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      errorMessage: (() { final guardedValue = map['errorMessage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      provisioningStatus: (() { final guardedValue = map['provisioningStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkInterfaceStatusProvisioningStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

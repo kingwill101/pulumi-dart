@@ -304,7 +304,6 @@ class ProjectsPolicyBinding extends pulumi.CustomResource {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
-
   /// Represents a textual expression in the Common Expression Language
   /// (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of
   /// CEL are documented at https://github.com/google/cel-spec.
@@ -330,48 +329,35 @@ class ProjectsPolicyBinding extends pulumi.CustomResource {
   /// additional information.
   /// Structure is documented below.
   late final pulumi.Output<ProjectsPolicyBindingCondition?> condition;
-
   /// Output only. The time when the policy binding was created.
   late final pulumi.Output<String> createTime;
-
   /// Optional. The description of the policy binding. Must be less than or equal to 63 characters.
   late final pulumi.Output<String?> displayName;
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
-
   /// Optional. The etag for the policy binding. If this is provided on update, it must match the server's etag.
   late final pulumi.Output<String> etag;
-
   /// The location of the Policy Binding
   late final pulumi.Output<String> location;
-
   /// The name of the policy binding in the format `{binding_parent/locations/{location}/policyBindings/{policy_binding_id}`
   late final pulumi.Output<String> name;
-
   /// Required. Immutable. The resource name of the policy to be bound. The binding parent and policy must belong to the same Organization (or Project).
   late final pulumi.Output<String> policy;
-
   /// The Policy Binding ID.
   late final pulumi.Output<String> policyBindingId;
-
   /// Immutable. The kind of the policy to attach in this binding. This
   /// field must be one of the following:  - Left empty (will be automatically set
   /// to the policy kind) - The input policy kind   Possible values:  POLICY_KIND_UNSPECIFIED PRINCIPAL_ACCESS_BOUNDARY ACCESS
   late final pulumi.Output<String?> policyKind;
-
   /// Output only. The globally unique ID of the policy to be bound.
   late final pulumi.Output<String> policyUid;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
   /// Structure is documented below.
   late final pulumi.Output<ProjectsPolicyBindingTarget> target;
-
   /// Output only. The globally unique ID of the policy binding. Assigned when the policy binding is created.
   late final pulumi.Output<String> uid;
-
   /// Output only. The time when the policy binding was most recently updated.
   late final pulumi.Output<String> updateTime;
 
@@ -384,27 +370,16 @@ class ProjectsPolicyBinding extends pulumi.CustomResource {
     ProjectsPolicyBindingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:iam/projectsPolicyBinding:ProjectsPolicyBinding',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:iam/projectsPolicyBinding:ProjectsPolicyBinding',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     annotations = registerOutput<Map<String, String>?>('annotations');
-    condition = registerOutput<ProjectsPolicyBindingCondition?>(
-      'condition',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ProjectsPolicyBindingCondition.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    condition = registerOutput<ProjectsPolicyBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectsPolicyBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String?>('displayName');
-    effectiveAnnotations = registerOutput<Map<String, String>>(
-      'effectiveAnnotations',
-    );
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -413,16 +388,7 @@ class ProjectsPolicyBinding extends pulumi.CustomResource {
     policyKind = registerOutput<String?>('policyKind');
     policyUid = registerOutput<String>('policyUid');
     project = registerOutput<String>('project');
-    target = registerOutput<ProjectsPolicyBindingTarget>(
-      'target',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ProjectsPolicyBindingTarget.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    target = registerOutput<ProjectsPolicyBindingTarget>('target', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectsPolicyBindingTarget.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }
@@ -445,27 +411,16 @@ class ProjectsPolicyBinding extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:iam/projectsPolicyBinding:ProjectsPolicyBinding',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:iam/projectsPolicyBinding:ProjectsPolicyBinding',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     annotations = registerOutput<Map<String, String>?>('annotations');
-    condition = registerOutput<ProjectsPolicyBindingCondition?>(
-      'condition',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ProjectsPolicyBindingCondition.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    condition = registerOutput<ProjectsPolicyBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectsPolicyBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String?>('displayName');
-    effectiveAnnotations = registerOutput<Map<String, String>>(
-      'effectiveAnnotations',
-    );
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -474,16 +429,7 @@ class ProjectsPolicyBinding extends pulumi.CustomResource {
     policyKind = registerOutput<String?>('policyKind');
     policyUid = registerOutput<String>('policyUid');
     project = registerOutput<String>('project');
-    target = registerOutput<ProjectsPolicyBindingTarget>(
-      'target',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ProjectsPolicyBindingTarget.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    target = registerOutput<ProjectsPolicyBindingTarget>('target', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectsPolicyBindingTarget.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }

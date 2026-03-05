@@ -475,59 +475,41 @@ import 'guardrail_word_policy_config.dart';
 class Guardrail extends pulumi.CustomResource {
   /// Message to return when the guardrail blocks a prompt.
   late final pulumi.Output<String> blockedInputMessaging;
-
   /// Message to return when the guardrail blocks a model response.
   late final pulumi.Output<String> blockedOutputsMessaging;
-
   /// Content policy config for a guardrail. See Content Policy Config for more information.
   late final pulumi.Output<GuardrailContentPolicyConfig?> contentPolicyConfig;
-
   /// Contextual grounding policy config for a guardrail. See Contextual Grounding Policy Config for more information.
-  late final pulumi.Output<GuardrailContextualGroundingPolicyConfig?>
-  contextualGroundingPolicyConfig;
-
+  late final pulumi.Output<GuardrailContextualGroundingPolicyConfig?> contextualGroundingPolicyConfig;
   /// Unix epoch timestamp in seconds for when the Guardrail was created.
   late final pulumi.Output<String> createdAt;
   late final pulumi.Output<GuardrailCrossRegionConfig?> crossRegionConfig;
-
   /// Description of the guardrail or its version.
   late final pulumi.Output<String> description;
-
   /// ARN of the Guardrail.
   late final pulumi.Output<String> guardrailArn;
-
   /// ID of the Guardrail.
   late final pulumi.Output<String> guardrailId;
-
   /// The KMS key with which the guardrail was encrypted at rest.
   late final pulumi.Output<String?> kmsKeyArn;
-
   /// Name of the guardrail.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Sensitive information policy config for a guardrail. See Sensitive Information Policy Config for more information.
-  late final pulumi.Output<GuardrailSensitiveInformationPolicyConfig?>
-  sensitiveInformationPolicyConfig;
-
+  late final pulumi.Output<GuardrailSensitiveInformationPolicyConfig?> sensitiveInformationPolicyConfig;
   /// Status of the Bedrock Guardrail. One of `READY`, `FAILED`.
   late final pulumi.Output<String> status;
-
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<GuardrailTimeouts?> timeouts;
-
   /// Topic policy config for a guardrail. See Topic Policy Config for more information.
   late final pulumi.Output<GuardrailTopicPolicyConfig?> topicPolicyConfig;
-
   /// Version of the Guardrail.
   late final pulumi.Output<String> version;
-
   /// Word policy config for a guardrail. See Word Policy Config for more information.
   late final pulumi.Output<GuardrailWordPolicyConfig?> wordPolicyConfig;
 
@@ -540,96 +522,31 @@ class Guardrail extends pulumi.CustomResource {
     GuardrailArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:bedrock/guardrail:Guardrail',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:bedrock/guardrail:Guardrail',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     blockedInputMessaging = registerOutput<String>('blockedInputMessaging');
     blockedOutputsMessaging = registerOutput<String>('blockedOutputsMessaging');
-    contentPolicyConfig = registerOutput<GuardrailContentPolicyConfig?>(
-      'contentPolicyConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GuardrailContentPolicyConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    contextualGroundingPolicyConfig =
-        registerOutput<GuardrailContextualGroundingPolicyConfig?>(
-          'contextualGroundingPolicyConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return GuardrailContextualGroundingPolicyConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    contentPolicyConfig = registerOutput<GuardrailContentPolicyConfig?>('contentPolicyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailContentPolicyConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    contextualGroundingPolicyConfig = registerOutput<GuardrailContextualGroundingPolicyConfig?>('contextualGroundingPolicyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailContextualGroundingPolicyConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdAt = registerOutput<String>('createdAt');
-    crossRegionConfig = registerOutput<GuardrailCrossRegionConfig?>(
-      'crossRegionConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GuardrailCrossRegionConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    crossRegionConfig = registerOutput<GuardrailCrossRegionConfig?>('crossRegionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailCrossRegionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String>('description');
     guardrailArn = registerOutput<String>('guardrailArn');
     guardrailId = registerOutput<String>('guardrailId');
     kmsKeyArn = registerOutput<String?>('kmsKeyArn');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    sensitiveInformationPolicyConfig =
-        registerOutput<GuardrailSensitiveInformationPolicyConfig?>(
-          'sensitiveInformationPolicyConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return GuardrailSensitiveInformationPolicyConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    sensitiveInformationPolicyConfig = registerOutput<GuardrailSensitiveInformationPolicyConfig?>('sensitiveInformationPolicyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailSensitiveInformationPolicyConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<GuardrailTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GuardrailTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    topicPolicyConfig = registerOutput<GuardrailTopicPolicyConfig?>(
-      'topicPolicyConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GuardrailTopicPolicyConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<GuardrailTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    topicPolicyConfig = registerOutput<GuardrailTopicPolicyConfig?>('topicPolicyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailTopicPolicyConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     version = registerOutput<String>('version');
-    wordPolicyConfig = registerOutput<GuardrailWordPolicyConfig?>(
-      'wordPolicyConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GuardrailWordPolicyConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    wordPolicyConfig = registerOutput<GuardrailWordPolicyConfig?>('wordPolicyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailWordPolicyConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [Guardrail] resource's state with the given [name] and [id].
@@ -650,95 +567,30 @@ class Guardrail extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:bedrock/guardrail:Guardrail',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:bedrock/guardrail:Guardrail',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     blockedInputMessaging = registerOutput<String>('blockedInputMessaging');
     blockedOutputsMessaging = registerOutput<String>('blockedOutputsMessaging');
-    contentPolicyConfig = registerOutput<GuardrailContentPolicyConfig?>(
-      'contentPolicyConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GuardrailContentPolicyConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    contextualGroundingPolicyConfig =
-        registerOutput<GuardrailContextualGroundingPolicyConfig?>(
-          'contextualGroundingPolicyConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return GuardrailContextualGroundingPolicyConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    contentPolicyConfig = registerOutput<GuardrailContentPolicyConfig?>('contentPolicyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailContentPolicyConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    contextualGroundingPolicyConfig = registerOutput<GuardrailContextualGroundingPolicyConfig?>('contextualGroundingPolicyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailContextualGroundingPolicyConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdAt = registerOutput<String>('createdAt');
-    crossRegionConfig = registerOutput<GuardrailCrossRegionConfig?>(
-      'crossRegionConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GuardrailCrossRegionConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    crossRegionConfig = registerOutput<GuardrailCrossRegionConfig?>('crossRegionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailCrossRegionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String>('description');
     guardrailArn = registerOutput<String>('guardrailArn');
     guardrailId = registerOutput<String>('guardrailId');
     kmsKeyArn = registerOutput<String?>('kmsKeyArn');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    sensitiveInformationPolicyConfig =
-        registerOutput<GuardrailSensitiveInformationPolicyConfig?>(
-          'sensitiveInformationPolicyConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return GuardrailSensitiveInformationPolicyConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    sensitiveInformationPolicyConfig = registerOutput<GuardrailSensitiveInformationPolicyConfig?>('sensitiveInformationPolicyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailSensitiveInformationPolicyConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<GuardrailTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GuardrailTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    topicPolicyConfig = registerOutput<GuardrailTopicPolicyConfig?>(
-      'topicPolicyConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GuardrailTopicPolicyConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<GuardrailTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    topicPolicyConfig = registerOutput<GuardrailTopicPolicyConfig?>('topicPolicyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailTopicPolicyConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     version = registerOutput<String>('version');
-    wordPolicyConfig = registerOutput<GuardrailWordPolicyConfig?>(
-      'wordPolicyConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GuardrailWordPolicyConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    wordPolicyConfig = registerOutput<GuardrailWordPolicyConfig?>('wordPolicyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailWordPolicyConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

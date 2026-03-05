@@ -8,19 +8,20 @@ class ClusterApplication {
 
   /// Creates a new [ClusterApplication].
   /// [tag] The tag of the software.
-  ClusterApplication({this.tag});
+  ClusterApplication({
+    this.tag,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'tag': ?tag};
+    return <String, dynamic>{
+      'tag': ?tag,
+    };
   }
 
   factory ClusterApplication.fromMap(Map<String, dynamic> map) {
     return ClusterApplication(
-      tag: (() {
-        final guardedValue = map['tag'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      tag: (() { final guardedValue = map['tag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

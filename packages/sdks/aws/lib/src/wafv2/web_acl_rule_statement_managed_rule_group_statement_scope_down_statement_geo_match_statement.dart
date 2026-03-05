@@ -6,12 +6,8 @@ import 'web_acl_rule_statement_managed_rule_group_statement_scope_down_statement
 class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementGeoMatchStatement {
   /// Array of two-character country codes, for example, [ "US", "CN" ], from the alpha-2 country ISO codes of the `ISO 3166` international standard. See the [documentation](https://docs.aws.amazon.com/waf/latest/APIReference/API_GeoMatchStatement.html) for valid values.
   final pulumi.Input<List<String>> countryCodes;
-
   /// Configuration for inspecting IP addresses in an HTTP header that you specify, instead of using the IP address that's reported by the web request origin. See `forwarded_ip_config` below for details.
-  final pulumi.Input<
-    WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementGeoMatchStatementForwardedIpConfig
-  >?
-  forwardedIpConfig;
+  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementGeoMatchStatementForwardedIpConfig>? forwardedIpConfig;
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementGeoMatchStatement].
   /// [countryCodes] Array of two-character country codes, for example, [ "US", "CN" ], from the alpha-2 country ISO codes of the `ISO 3166` international standard. See the [documentation](https://docs.aws.amazon.com/waf/latest/APIReference/API_GeoMatchStatement.html) for valid values.
@@ -24,30 +20,15 @@ class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementGeoMatchStat
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'countryCodes': countryCodes,
-      'forwardedIpConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementGeoMatchStatementForwardedIpConfig,
-            Map<String, dynamic>
-          >(forwardedIpConfig, (value) => value.toMap()),
+      'forwardedIpConfig': ?pulumi.Input.mapOptionalInputValue<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementGeoMatchStatementForwardedIpConfig, Map<String, dynamic>>(forwardedIpConfig, (value) => value.toMap()),
     };
   }
 
-  factory WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementGeoMatchStatement.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementGeoMatchStatement.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementGeoMatchStatement(
-      countryCodes: pulumi.Input.fromValue(
-        (map['countryCodes'] as List).cast<String>(),
-      ),
-      forwardedIpConfig: (() {
-        final guardedValue = map['forwardedIpConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementGeoMatchStatementForwardedIpConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      countryCodes: pulumi.Input.fromValue((map['countryCodes'] as List).cast<String>()),
+      forwardedIpConfig: (() { final guardedValue = map['forwardedIpConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementGeoMatchStatementForwardedIpConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

@@ -7,31 +7,22 @@ import 'intake_vlan_attachment_response.dart';
 class NetworkConfigResponse {
   /// Interconnect bandwidth. Set only when type is CLIENT.
   final pulumi.Input<String> bandwidth;
-
   /// CIDR range of the network.
   final pulumi.Input<String> cidr;
-
   /// The GCP service of the network. Available gcp_service are in https://cloud.google.com/bare-metal/docs/bms-planning.
   final pulumi.Input<String> gcpService;
-
   /// The JumboFramesEnabled option for customer to set.
   final pulumi.Input<bool> jumboFramesEnabled;
-
   /// The name of the network config.
   final pulumi.Input<String> name;
-
   /// Service CIDR, if any.
   final pulumi.Input<String> serviceCidr;
-
   /// The type of this network, either Client or Private.
   final pulumi.Input<String> type;
-
   /// User note field, it can be used by customers to add additional information for the BMS Ops team .
   final pulumi.Input<String> userNote;
-
   /// List of VLAN attachments. As of now there are always 2 attachments, but it is going to change in the future (multi vlan).
   final pulumi.Input<List<IntakeVlanAttachmentResponse>> vlanAttachments;
-
   /// Whether the VLAN attachment pair is located in the same project.
   final pulumi.Input<bool> vlanSameProject;
 
@@ -69,18 +60,7 @@ class NetworkConfigResponse {
       'serviceCidr': serviceCidr,
       'type': type,
       'userNote': userNote,
-      'vlanAttachments':
-          pulumi.Input.mapInputValue<
-            List<IntakeVlanAttachmentResponse>,
-            List<Map<String, dynamic>>
-          >(
-            vlanAttachments,
-            (value) =>
-                pulumi.Input.encodeList<
-                  IntakeVlanAttachmentResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'vlanAttachments': pulumi.Input.mapInputValue<List<IntakeVlanAttachmentResponse>, List<Map<String, dynamic>>>(vlanAttachments, (value) => pulumi.Input.encodeList<IntakeVlanAttachmentResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'vlanSameProject': vlanSameProject,
     };
   }
@@ -90,22 +70,14 @@ class NetworkConfigResponse {
       bandwidth: pulumi.Input.fromValue(map['bandwidth'] as String),
       cidr: pulumi.Input.fromValue(map['cidr'] as String),
       gcpService: pulumi.Input.fromValue(map['gcpService'] as String),
-      jumboFramesEnabled: pulumi.Input.fromValue(
-        map['jumboFramesEnabled'] as bool,
-      ),
+      jumboFramesEnabled: pulumi.Input.fromValue(map['jumboFramesEnabled'] as bool),
       name: pulumi.Input.fromValue(map['name'] as String),
       serviceCidr: pulumi.Input.fromValue(map['serviceCidr'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
       userNote: pulumi.Input.fromValue(map['userNote'] as String),
-      vlanAttachments: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<IntakeVlanAttachmentResponse>(
-          map['vlanAttachments']!,
-          (value) => IntakeVlanAttachmentResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      vlanAttachments: pulumi.Input.fromValue(pulumi.Input.decodeList<IntakeVlanAttachmentResponse>(map['vlanAttachments']!, (value) => IntakeVlanAttachmentResponse.fromMap((value as Map).cast<String, dynamic>()))),
       vlanSameProject: pulumi.Input.fromValue(map['vlanSameProject'] as bool),
     );
   }
 }
+

@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StorageSpacesPropertiesResponseHciStorageProfile {
   /// Resource group in MOC(Microsoft On-premises Cloud)
   final pulumi.Input<String>? mocGroup;
-
   /// Location in MOC(Microsoft On-premises Cloud)
   final pulumi.Input<String>? mocLocation;
-
   /// Name of the storage container in MOC(Microsoft On-premises Cloud)
   final pulumi.Input<String>? mocStorageContainer;
 
@@ -30,25 +28,12 @@ class StorageSpacesPropertiesResponseHciStorageProfile {
     };
   }
 
-  factory StorageSpacesPropertiesResponseHciStorageProfile.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory StorageSpacesPropertiesResponseHciStorageProfile.fromMap(Map<String, dynamic> map) {
     return StorageSpacesPropertiesResponseHciStorageProfile(
-      mocGroup: (() {
-        final guardedValue = map['mocGroup'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      mocLocation: (() {
-        final guardedValue = map['mocLocation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      mocStorageContainer: (() {
-        final guardedValue = map['mocStorageContainer'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      mocGroup: (() { final guardedValue = map['mocGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      mocLocation: (() { final guardedValue = map['mocLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      mocStorageContainer: (() { final guardedValue = map['mocStorageContainer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

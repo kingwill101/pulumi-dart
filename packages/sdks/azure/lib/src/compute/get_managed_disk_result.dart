@@ -6,57 +6,40 @@ import 'get_managed_disk_encryption_setting.dart';
 /// Result data returned by getManagedDisk.
 class GetManagedDiskResult {
   final String createOption;
-
   /// The ID of the disk access resource for using private endpoints on disks.
   final String diskAccessId;
-
   /// The ID of the Disk Encryption Set used to encrypt this Managed Disk.
   final String diskEncryptionSetId;
-
   /// The number of IOPS allowed for this disk, where one operation can transfer between 4k and 256k bytes.
   final int diskIopsReadWrite;
-
   /// The bandwidth allowed for this disk.
   final int diskMbpsReadWrite;
-
   /// The size of the Managed Disk in gigabytes.
   final int diskSizeGb;
-
   /// A `encryption_settings` block as defined below.
   final List<GetManagedDiskEncryptionSetting> encryptionSettings;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The ID of the source image used for creating this Managed Disk.
   final String imageReferenceId;
-
   /// The Azure location of the Managed Disk.
   final String location;
   final String name;
-
   /// Policy for accessing the disk via network.
   final String networkAccessPolicy;
-
   /// The operating system used for this Managed Disk.
   final String osType;
   final String resourceGroupName;
-
   /// The ID of an existing Managed Disk which this Disk was created from.
   final String sourceResourceId;
-
   /// The Source URI for this Managed Disk.
   final String sourceUri;
-
   /// The ID of the Storage Account where the `source_uri` is located.
   final String storageAccountId;
-
   /// The storage account type for the Managed Disk.
   final String storageAccountType;
-
   /// A mapping of tags assigned to the resource.
   final Map<String, String> tags;
-
   /// A list of Availability Zones where the Managed Disk exists.
   final List<String> zones;
 
@@ -112,11 +95,7 @@ class GetManagedDiskResult {
       'diskIopsReadWrite': diskIopsReadWrite,
       'diskMbpsReadWrite': diskMbpsReadWrite,
       'diskSizeGb': diskSizeGb,
-      'encryptionSettings':
-          pulumi.Input.encodeList<
-            GetManagedDiskEncryptionSetting,
-            Map<String, dynamic>
-          >(encryptionSettings, (value) => value.toMap()),
+      'encryptionSettings': pulumi.Input.encodeList<GetManagedDiskEncryptionSetting, Map<String, dynamic>>(encryptionSettings, (value) => value.toMap()),
       'id': id,
       'imageReferenceId': imageReferenceId,
       'location': location,
@@ -141,13 +120,7 @@ class GetManagedDiskResult {
       diskIopsReadWrite: map['diskIopsReadWrite'] as int,
       diskMbpsReadWrite: map['diskMbpsReadWrite'] as int,
       diskSizeGb: map['diskSizeGb'] as int,
-      encryptionSettings:
-          pulumi.Input.decodeList<GetManagedDiskEncryptionSetting>(
-            map['encryptionSettings']!,
-            (value) => GetManagedDiskEncryptionSetting.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      encryptionSettings: pulumi.Input.decodeList<GetManagedDiskEncryptionSetting>(map['encryptionSettings']!, (value) => GetManagedDiskEncryptionSetting.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       imageReferenceId: map['imageReferenceId'] as String,
       location: map['location'] as String,
@@ -164,3 +137,4 @@ class GetManagedDiskResult {
     );
   }
 }
+

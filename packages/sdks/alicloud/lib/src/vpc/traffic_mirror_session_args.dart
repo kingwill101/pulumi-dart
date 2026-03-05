@@ -11,40 +11,28 @@ class TrafficMirrorSessionArgs {
   /// - **true**: sends a check request and does not create a mirror session. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
   /// - **false** (default): Sends a normal request and directly creates a mirror session after checking.
   final pulumi.Input<bool>? dryRun;
-
   /// Specifies whether to enable traffic mirror sessions. default to `false`.
   final pulumi.Input<bool>? enabled;
-
   /// Maximum Transmission Unit (MTU).
   final pulumi.Input<int>? packetLength;
-
   /// The priority of the traffic mirror session. Valid values: `1` to `32766`. A smaller value indicates a higher priority. You cannot specify the same priority for traffic mirror sessions that are created in the same region with the same Alibaba Cloud account.
   final pulumi.Input<int> priority;
-
   /// The ID of the resource group.
   final pulumi.Input<String>? resourceGroupId;
-
   /// The tags of this resource.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// The ID of the filter.
   final pulumi.Input<String> trafficMirrorFilterId;
-
   /// The description of the traffic mirror session. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
   final pulumi.Input<String>? trafficMirrorSessionDescription;
-
   /// The name of the traffic mirror session. The name must be `2` to `128` characters in length and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
   final pulumi.Input<String>? trafficMirrorSessionName;
-
   /// The ID of the image source instance. Currently, the Eni is supported as the image source. The default value of N is 1, that is, only one mirror source can be added to a mirror session.
   final pulumi.Input<List<String>> trafficMirrorSourceIds;
-
   /// The ID of the mirror destination. You can specify only an ENI or a Server Load Balancer (SLB) instance as a mirror destination.
   final pulumi.Input<String> trafficMirrorTargetId;
-
   /// The type of the mirror destination. Valid values: `NetworkInterface` or `SLB`. `NetworkInterface`: an ENI. `SLB`: an internal-facing SLB instance.
   final pulumi.Input<String> trafficMirrorTargetType;
-
   /// The VXLAN network identifier (VNI) that is used to distinguish different mirrored traffic. Valid values: `0` to `16777215`. You can specify VNIs for the traffic mirror destination to identify mirrored traffic from different sessions. If you do not specify a VNI, the system randomly allocates a VNI. If you want the system to randomly allocate a VNI, ignore this parameter.
   final pulumi.Input<int>? virtualNetworkId;
 
@@ -98,61 +86,20 @@ class TrafficMirrorSessionArgs {
 
   factory TrafficMirrorSessionArgs.fromMap(Map<String, dynamic> map) {
     return TrafficMirrorSessionArgs(
-      dryRun: (() {
-        final guardedValue = map['dryRun'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      packetLength: (() {
-        final guardedValue = map['packetLength'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      dryRun: (() { final guardedValue = map['dryRun']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      packetLength: (() { final guardedValue = map['packetLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       priority: pulumi.Input.fromValue(map['priority'] as int),
-      resourceGroupId: (() {
-        final guardedValue = map['resourceGroupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      trafficMirrorFilterId: pulumi.Input.fromValue(
-        map['trafficMirrorFilterId'] as String,
-      ),
-      trafficMirrorSessionDescription: (() {
-        final guardedValue = map['trafficMirrorSessionDescription'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      trafficMirrorSessionName: (() {
-        final guardedValue = map['trafficMirrorSessionName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      trafficMirrorSourceIds: pulumi.Input.fromValue(
-        (map['trafficMirrorSourceIds'] as List).cast<String>(),
-      ),
-      trafficMirrorTargetId: pulumi.Input.fromValue(
-        map['trafficMirrorTargetId'] as String,
-      ),
-      trafficMirrorTargetType: pulumi.Input.fromValue(
-        map['trafficMirrorTargetType'] as String,
-      ),
-      virtualNetworkId: (() {
-        final guardedValue = map['virtualNetworkId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      resourceGroupId: (() { final guardedValue = map['resourceGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      trafficMirrorFilterId: pulumi.Input.fromValue(map['trafficMirrorFilterId'] as String),
+      trafficMirrorSessionDescription: (() { final guardedValue = map['trafficMirrorSessionDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      trafficMirrorSessionName: (() { final guardedValue = map['trafficMirrorSessionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      trafficMirrorSourceIds: pulumi.Input.fromValue((map['trafficMirrorSourceIds'] as List).cast<String>()),
+      trafficMirrorTargetId: pulumi.Input.fromValue(map['trafficMirrorTargetId'] as String),
+      trafficMirrorTargetType: pulumi.Input.fromValue(map['trafficMirrorTargetType'] as String),
+      virtualNetworkId: (() { final guardedValue = map['virtualNetworkId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

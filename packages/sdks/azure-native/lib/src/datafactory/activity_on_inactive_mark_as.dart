@@ -16,3 +16,4 @@ enum ActivityOnInactiveMarkAs {
     throw ArgumentError('Unknown ActivityOnInactiveMarkAs value: $value');
   }
 }
+

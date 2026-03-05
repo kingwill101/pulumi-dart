@@ -37,9 +37,7 @@ class GetDatabaseMysqlConfigMysqlNetWriteTimeout {
     };
   }
 
-  factory GetDatabaseMysqlConfigMysqlNetWriteTimeout.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDatabaseMysqlConfigMysqlNetWriteTimeout.fromMap(Map<String, dynamic> map) {
     return GetDatabaseMysqlConfigMysqlNetWriteTimeout(
       description: pulumi.Input.fromValue(map['description'] as String),
       example: pulumi.Input.fromValue(map['example'] as int),
@@ -50,3 +48,4 @@ class GetDatabaseMysqlConfigMysqlNetWriteTimeout {
     );
   }
 }
+

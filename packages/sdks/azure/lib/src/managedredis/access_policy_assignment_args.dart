@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccessPolicyAssignmentArgs {
   /// The ID of the Managed Redis instance. Changing this forces a new Access Policy Assignment to be created.
   final pulumi.Input<String> managedRedisId;
-
   /// The object ID of the Azure Active Directory user, group, service principal, or managed identity to assign the access policy to. Changing this forces a new Access Policy Assignment to be created.
   ///
   /// &gt; **Note:** Access Policy Assignments are created on the `default` database of the Managed Redis instance.
@@ -37,3 +36,4 @@ class AccessPolicyAssignmentArgs {
     );
   }
 }
+

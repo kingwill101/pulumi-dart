@@ -8,10 +8,14 @@ class EventIntegrationEventFilter {
 
   /// Creates a new [EventIntegrationEventFilter].
   /// [source] Source of the events.
-  EventIntegrationEventFilter({required this.source});
+  EventIntegrationEventFilter({
+    required this.source,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'source': source};
+    return <String, dynamic>{
+      'source': source,
+    };
   }
 
   factory EventIntegrationEventFilter.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class EventIntegrationEventFilter {
     );
   }
 }
+

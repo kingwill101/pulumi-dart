@@ -12,19 +12,20 @@ class GetViewsArgs {
 
   /// Creates a new [GetViewsArgs].
   /// [billingViewTypes] List of billing view types to retrieve. Valid values are `PRIMARY`, `BILLING_GROUP`, `CUSTOM`.
-  GetViewsArgs({this.billingViewTypes});
+  GetViewsArgs({
+    this.billingViewTypes,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'billingViewTypes': ?billingViewTypes};
+    return <String, dynamic>{
+      'billingViewTypes': ?billingViewTypes,
+    };
   }
 
   factory GetViewsArgs.fromMap(Map<String, dynamic> map) {
     return GetViewsArgs(
-      billingViewTypes: (() {
-        final guardedValue = map['billingViewTypes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      billingViewTypes: (() { final guardedValue = map['billingViewTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

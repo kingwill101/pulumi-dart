@@ -6,31 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Phrase {
   /// Hint Boost. Overrides the boost set at the phrase set level. Positive value will increase the probability that a specific phrase will be recognized over other similar sounding phrases. The higher the boost, the higher the chance of false positive recognition as well. Negative boost will simply be ignored. Though `boost` can accept a wide range of positive values, most use cases are best served with values between 0 and 20. We recommend using a binary search approach to finding the optimal value for your use case as well as adding phrases both with and without boost to your requests.
   final pulumi.Input<double>? boost;
-
   /// The phrase itself.
   final pulumi.Input<String>? value;
 
   /// Creates a new [Phrase].
   /// [boost] Hint Boost. Overrides the boost set at the phrase set level. Positive value will increase the probability that a specific phrase will be recognized over other similar sounding phrases. The higher the boost, the higher the chance of false positive recognition as well. Negative boost will simply be ignored. Though `boost` can accept a wide range of positive values, most use cases are best served with values between 0 and 20. We recommend using a binary search approach to finding the optimal value for your use case as well as adding phrases both with and without boost to your requests.
   /// [value] The phrase itself.
-  Phrase({this.boost, this.value});
+  Phrase({
+    this.boost,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'boost': ?boost, 'value': ?value};
+    return <String, dynamic>{
+      'boost': ?boost,
+      'value': ?value,
+    };
   }
 
   factory Phrase.fromMap(Map<String, dynamic> map) {
     return Phrase(
-      boost: (() {
-        final guardedValue = map['boost'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      boost: (() { final guardedValue = map['boost']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

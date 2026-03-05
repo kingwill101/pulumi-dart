@@ -253,18 +253,14 @@ class VolumeTypeV3 extends pulumi.CustomResource {
   /// Human-readable description of the port. Changing
   /// this updates the `description` of an existing volume type.
   late final pulumi.Output<String> description;
-
   /// Key/Value pairs of metadata for the volume type.
   late final pulumi.Output<Map<String, String>> extraSpecs;
-
   /// Whether the volume type is public. Changing
   /// this updates the `is_public` of an existing volume type.
   late final pulumi.Output<bool> isPublic;
-
   /// Name of the volume type.  Changing this
   /// updates the `name` of an existing volume type.
   late final pulumi.Output<String> name;
-
   /// The region in which to create the volume. If
   /// omitted, the `region` argument of the provider is used. Changing this
   /// creates a new quotaset.
@@ -279,11 +275,11 @@ class VolumeTypeV3 extends pulumi.CustomResource {
     VolumeTypeV3Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:blockstorage/volumeTypeV3:VolumeTypeV3',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:blockstorage/volumeTypeV3:VolumeTypeV3',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String>('description');
     extraSpecs = registerOutput<Map<String, String>>('extraSpecs');
     isPublic = registerOutput<bool>('isPublic');
@@ -309,11 +305,11 @@ class VolumeTypeV3 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:blockstorage/volumeTypeV3:VolumeTypeV3',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:blockstorage/volumeTypeV3:VolumeTypeV3',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String>('description');
     extraSpecs = registerOutput<Map<String, String>>('extraSpecs');
     isPublic = registerOutput<bool>('isPublic');

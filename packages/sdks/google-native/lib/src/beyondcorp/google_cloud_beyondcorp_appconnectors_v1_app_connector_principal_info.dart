@@ -6,10 +6,7 @@ import 'google_cloud_beyondcorp_appconnectors_v1_app_connector_principal_info_se
 /// PrincipalInfo represents an Identity oneof.
 class GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo {
   /// A GCP service account.
-  final pulumi.Input<
-    GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount
-  >?
-  serviceAccount;
+  final pulumi.Input<GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount>? serviceAccount;
 
   /// Creates a new [GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo].
   /// [serviceAccount] A GCP service account.
@@ -19,27 +16,14 @@ class GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'serviceAccount':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount,
-            Map<String, dynamic>
-          >(serviceAccount, (value) => value.toMap()),
+      'serviceAccount': ?pulumi.Input.mapOptionalInputValue<GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount, Map<String, dynamic>>(serviceAccount, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo.fromMap(Map<String, dynamic> map) {
     return GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo(
-      serviceAccount: (() {
-        final guardedValue = map['serviceAccount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      serviceAccount: (() { final guardedValue = map['serviceAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

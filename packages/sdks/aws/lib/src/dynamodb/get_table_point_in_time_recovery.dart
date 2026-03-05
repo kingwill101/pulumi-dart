@@ -24,9 +24,8 @@ class GetTablePointInTimeRecovery {
   factory GetTablePointInTimeRecovery.fromMap(Map<String, dynamic> map) {
     return GetTablePointInTimeRecovery(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
-      recoveryPeriodInDays: pulumi.Input.fromValue(
-        map['recoveryPeriodInDays'] as int,
-      ),
+      recoveryPeriodInDays: pulumi.Input.fromValue(map['recoveryPeriodInDays'] as int),
     );
   }
 }
+

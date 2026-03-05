@@ -12,8 +12,7 @@ enum ContainerizedNetworkFunctionNFVIType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ContainerizedNetworkFunctionNFVIType value: $value',
-    );
+    throw ArgumentError('Unknown ContainerizedNetworkFunctionNFVIType value: $value');
   }
 }
+

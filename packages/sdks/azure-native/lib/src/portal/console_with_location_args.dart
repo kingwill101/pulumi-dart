@@ -9,27 +9,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConsoleWithLocationArgs {
   /// The name of the console
   final pulumi.Input<String>? consoleName;
-
   /// The provider location
   final pulumi.Input<String> location;
 
   /// Creates a new [ConsoleWithLocationArgs].
   /// [consoleName] The name of the console
   /// [location] The provider location
-  ConsoleWithLocationArgs({this.consoleName, required this.location});
+  ConsoleWithLocationArgs({
+    this.consoleName,
+    required this.location,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'consoleName': ?consoleName, 'location': location};
+    return <String, dynamic>{
+      'consoleName': ?consoleName,
+      'location': location,
+    };
   }
 
   factory ConsoleWithLocationArgs.fromMap(Map<String, dynamic> map) {
     return ConsoleWithLocationArgs(
-      consoleName: (() {
-        final guardedValue = map['consoleName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      consoleName: (() { final guardedValue = map['consoleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
     );
   }
 }
+

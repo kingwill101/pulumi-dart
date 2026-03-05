@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CertificateTemplateResponse {
   /// The Major version of the template. Example: 100.
   final pulumi.Input<int> majorVersion;
-
   /// The minor version of the template. Example: 12.
   final pulumi.Input<int> minorVersion;
 
@@ -32,3 +31,4 @@ class CertificateTemplateResponse {
     );
   }
 }
+

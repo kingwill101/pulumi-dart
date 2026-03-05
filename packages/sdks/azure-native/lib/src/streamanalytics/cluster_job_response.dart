@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterJobResponse {
   /// Resource ID of the streaming job.
   final pulumi.Input<String> id;
-
   /// The current execution state of the streaming job.
   final pulumi.Input<String> jobState;
-
   /// The number of streaming units that are used by the streaming job.
   final pulumi.Input<int> streamingUnits;
 
@@ -39,3 +37,4 @@ class ClusterJobResponse {
     );
   }
 }
+

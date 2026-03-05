@@ -10,27 +10,20 @@ class HttpConfig {
 
   /// Creates a new [HttpConfig].
   /// [httpEnabledState] If enabled, allows devices to use DeviceService via the HTTP protocol. Otherwise, any requests to DeviceService will fail for this registry.
-  HttpConfig({this.httpEnabledState});
+  HttpConfig({
+    this.httpEnabledState,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'httpEnabledState':
-          ?pulumi.Input.mapOptionalInputValue<
-            HttpConfigHttpEnabledState,
-            String
-          >(httpEnabledState, (value) => value.wireValue),
+      'httpEnabledState': ?pulumi.Input.mapOptionalInputValue<HttpConfigHttpEnabledState, String>(httpEnabledState, (value) => value.wireValue),
     };
   }
 
   factory HttpConfig.fromMap(Map<String, dynamic> map) {
     return HttpConfig(
-      httpEnabledState: (() {
-        final guardedValue = map['httpEnabledState'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          HttpConfigHttpEnabledState.fromValue(guardedValue as String),
-        );
-      })(),
+      httpEnabledState: (() { final guardedValue = map['httpEnabledState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HttpConfigHttpEnabledState.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

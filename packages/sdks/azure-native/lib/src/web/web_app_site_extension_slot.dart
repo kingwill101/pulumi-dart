@@ -16,71 +16,49 @@ import 'web_app_site_extension_slot_args.dart';
 class WebAppSiteExtensionSlot extends pulumi.CustomResource {
   /// List of authors.
   late final pulumi.Output<List<String>?> authors;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Site Extension comment.
   late final pulumi.Output<String?> comment;
-
   /// Detailed description.
   late final pulumi.Output<String?> description;
-
   /// Count of downloads.
   late final pulumi.Output<int?> downloadCount;
-
   /// Site extension ID.
   late final pulumi.Output<String?> extensionId;
-
   /// Site extension type.
   late final pulumi.Output<String?> extensionType;
-
   /// Extension URL.
   late final pulumi.Output<String?> extensionUrl;
-
   /// Feed URL.
   late final pulumi.Output<String?> feedUrl;
-
   /// Icon URL.
   late final pulumi.Output<String?> iconUrl;
-
   /// Installed timestamp.
   late final pulumi.Output<String?> installedDateTime;
-
   /// Installer command line parameters.
   late final pulumi.Output<String?> installerCommandLineParams;
-
   /// Kind of resource.
   late final pulumi.Output<String?> kind;
-
   /// License URL.
   late final pulumi.Output<String?> licenseUrl;
-
   /// &lt;code&gt;true&lt;/code&gt; if the local version is the latest version; &lt;code&gt;false&lt;/code&gt; otherwise.
   late final pulumi.Output<bool?> localIsLatestVersion;
-
   /// Local path.
   late final pulumi.Output<String?> localPath;
-
   /// Resource Name.
   late final pulumi.Output<String> name;
-
   /// Project URL.
   late final pulumi.Output<String?> projectUrl;
-
   /// Provisioning state.
   late final pulumi.Output<String?> provisioningState;
-
   /// Published timestamp.
   late final pulumi.Output<String?> publishedDateTime;
-
   /// Summary description.
   late final pulumi.Output<String?> summary;
   late final pulumi.Output<String?> title;
-
   /// Resource type.
   late final pulumi.Output<String> type;
-
   /// Version information.
   late final pulumi.Output<String?> version;
 
@@ -93,11 +71,11 @@ class WebAppSiteExtensionSlot extends pulumi.CustomResource {
     WebAppSiteExtensionSlotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:web:WebAppSiteExtensionSlot',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:web:WebAppSiteExtensionSlot',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     authors = registerOutput<List<String>?>('authors');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     comment = registerOutput<String?>('comment');
@@ -109,9 +87,7 @@ class WebAppSiteExtensionSlot extends pulumi.CustomResource {
     feedUrl = registerOutput<String?>('feedUrl');
     iconUrl = registerOutput<String?>('iconUrl');
     installedDateTime = registerOutput<String?>('installedDateTime');
-    installerCommandLineParams = registerOutput<String?>(
-      'installerCommandLineParams',
-    );
+    installerCommandLineParams = registerOutput<String?>('installerCommandLineParams');
     kind = registerOutput<String?>('kind');
     licenseUrl = registerOutput<String?>('licenseUrl');
     localIsLatestVersion = registerOutput<bool?>('localIsLatestVersion');

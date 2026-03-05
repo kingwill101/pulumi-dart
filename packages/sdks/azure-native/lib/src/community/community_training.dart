@@ -263,47 +263,32 @@ import 'system_data_response.dart';
 class CommunityTraining extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// To indicate whether the Community Training instance has Disaster Recovery enabled
   late final pulumi.Output<bool> disasterRecoveryEnabled;
-
   /// The identity configuration of the Community Training resource
-  late final pulumi.Output<IdentityConfigurationPropertiesResponse>
-  identityConfiguration;
-
+  late final pulumi.Output<IdentityConfigurationPropertiesResponse> identityConfiguration;
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The email address of the portal admin
   late final pulumi.Output<String> portalAdminEmailAddress;
-
   /// The portal name (website name) of the Community Training instance
   late final pulumi.Output<String> portalName;
-
   /// The email address of the portal owner. Will be used as the primary contact
   late final pulumi.Output<String> portalOwnerEmailAddress;
-
   /// The organization name of the portal owner
   late final pulumi.Output<String> portalOwnerOrganizationName;
-
   /// The status of the last operation.
   late final pulumi.Output<String> provisioningState;
-
   /// The SKU (Stock Keeping Unit) assigned to this resource.
   late final pulumi.Output<SkuResponse?> sku;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// To indicate whether the Community Training instance has Zone Redundancy enabled
   late final pulumi.Output<bool> zoneRedundancyEnabled;
 
@@ -316,53 +301,23 @@ class CommunityTraining extends pulumi.CustomResource {
     CommunityTrainingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:community:CommunityTraining',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:community:CommunityTraining',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     disasterRecoveryEnabled = registerOutput<bool>('disasterRecoveryEnabled');
-    identityConfiguration =
-        registerOutput<IdentityConfigurationPropertiesResponse>(
-          'identityConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return IdentityConfigurationPropertiesResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    identityConfiguration = registerOutput<IdentityConfigurationPropertiesResponse>('identityConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityConfigurationPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     portalAdminEmailAddress = registerOutput<String>('portalAdminEmailAddress');
     portalName = registerOutput<String>('portalName');
     portalOwnerEmailAddress = registerOutput<String>('portalOwnerEmailAddress');
-    portalOwnerOrganizationName = registerOutput<String>(
-      'portalOwnerOrganizationName',
-    );
+    portalOwnerOrganizationName = registerOutput<String>('portalOwnerOrganizationName');
     provisioningState = registerOutput<String>('provisioningState');
-    sku = registerOutput<SkuResponse?>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     zoneRedundancyEnabled = registerOutput<bool>('zoneRedundancyEnabled');

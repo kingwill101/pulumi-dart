@@ -14,14 +14,15 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'audioUri': audioUri};
+    return <String, dynamic>{
+      'audioUri': audioUri,
+    };
   }
 
-  factory GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio(
       audioUri: pulumi.Input.fromValue(map['audioUri'] as String),
     );
   }
 }
+

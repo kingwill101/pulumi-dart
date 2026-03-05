@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataConnectorAwsCloudTrailArgs {
   /// The ARN of the AWS CloudTrail role, which is connected to this AWS CloudTrail Data Connector.
   final pulumi.Input<String> awsRoleArn;
-
   /// The ID of the Log Analytics Workspace that this AWS CloudTrail Data Connector resides in. Changing this forces a new AWS CloudTrail Data Connector to be created.
   final pulumi.Input<String> logAnalyticsWorkspaceId;
-
   /// The name which should be used for this AWS CloudTrail Data Connector. Changing this forces a new AWS CloudTrail Data Connector to be created.
   final pulumi.Input<String>? name;
 
@@ -37,14 +35,9 @@ class DataConnectorAwsCloudTrailArgs {
   factory DataConnectorAwsCloudTrailArgs.fromMap(Map<String, dynamic> map) {
     return DataConnectorAwsCloudTrailArgs(
       awsRoleArn: pulumi.Input.fromValue(map['awsRoleArn'] as String),
-      logAnalyticsWorkspaceId: pulumi.Input.fromValue(
-        map['logAnalyticsWorkspaceId'] as String,
-      ),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      logAnalyticsWorkspaceId: pulumi.Input.fromValue(map['logAnalyticsWorkspaceId'] as String),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

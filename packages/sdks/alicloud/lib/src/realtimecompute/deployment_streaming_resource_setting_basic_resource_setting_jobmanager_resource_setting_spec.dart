@@ -15,23 +15,17 @@ class DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSe
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'cpu': ?cpu, 'memory': ?memory};
+    return <String, dynamic>{
+      'cpu': ?cpu,
+      'memory': ?memory,
+    };
   }
 
-  factory DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec.fromMap(Map<String, dynamic> map) {
     return DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec(
-      cpu: (() {
-        final guardedValue = map['cpu'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      memory: (() {
-        final guardedValue = map['memory'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      cpu: (() { final guardedValue = map['cpu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      memory: (() { final guardedValue = map['memory']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

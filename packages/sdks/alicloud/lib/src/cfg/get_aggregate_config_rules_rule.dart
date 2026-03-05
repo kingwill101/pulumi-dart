@@ -6,73 +6,50 @@ import 'get_aggregate_config_rules_rule_compliance.dart';
 class GetAggregateConfigRulesRule {
   /// The Aliyun User ID.
   final pulumi.Input<String> accountId;
-
   /// The config rule name.
   final pulumi.Input<String> aggregateConfigRuleName;
-
   /// The ID of aggregator.
   final pulumi.Input<String> aggregatorId;
-
   /// The ID of Compliance Package.
   final pulumi.Input<String> compliancePackId;
-
   /// The Compliance information.
   final pulumi.Input<List<GetAggregateConfigRulesRuleCompliance>> compliances;
-
   /// The config rule arn.
   final pulumi.Input<String> configRuleArn;
-
   /// The ID of the rule.
   final pulumi.Input<String> configRuleId;
-
   /// The trigger types of config rules.
   final pulumi.Input<String> configRuleTriggerTypes;
-
   /// The description of the rule.
   final pulumi.Input<String> description;
-
   /// Event source of the Config Rule.
   final pulumi.Input<String> eventSource;
-
   /// The id of the resources to be evaluated against the rule.
   final pulumi.Input<String> excludeResourceIdsScope;
-
   /// The ID of the Aggregate Config Rule.
   final pulumi.Input<String> id;
-
   /// The settings of the input parameters for the rule.
   final pulumi.Input<Map<String, String>> inputParameters;
-
   /// The frequency of the compliance evaluations.
   final pulumi.Input<String> maximumExecutionFrequency;
-
   /// The timestamp when the rule was last modified.
   final pulumi.Input<String> modifiedTimestamp;
-
   /// The scope of resource region ids.
   final pulumi.Input<String> regionIdsScope;
-
   /// The scope of resource group ids.
   final pulumi.Input<String> resourceGroupIdsScope;
-
   /// The types of resources evaluated by the rule.
   final pulumi.Input<List<String>> resourceTypesScopes;
-
   /// The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
   final pulumi.Input<int> riskLevel;
-
   /// The identifier of the managed rule or the arn of the custom function.
   final pulumi.Input<String> sourceIdentifier;
-
   /// The source owner of the Config Rule.
   final pulumi.Input<String> sourceOwner;
-
   /// The state of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
   final pulumi.Input<String> status;
-
   /// The scope of tay key.
   final pulumi.Input<String> tagKeyScope;
-
   /// The scope of tay value.
   final pulumi.Input<String> tagValueScope;
 
@@ -134,18 +111,7 @@ class GetAggregateConfigRulesRule {
       'aggregateConfigRuleName': aggregateConfigRuleName,
       'aggregatorId': aggregatorId,
       'compliancePackId': compliancePackId,
-      'compliances':
-          pulumi.Input.mapInputValue<
-            List<GetAggregateConfigRulesRuleCompliance>,
-            List<Map<String, dynamic>>
-          >(
-            compliances,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetAggregateConfigRulesRuleCompliance,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'compliances': pulumi.Input.mapInputValue<List<GetAggregateConfigRulesRuleCompliance>, List<Map<String, dynamic>>>(compliances, (value) => pulumi.Input.encodeList<GetAggregateConfigRulesRuleCompliance, Map<String, dynamic>>(value, (value) => value.toMap())),
       'configRuleArn': configRuleArn,
       'configRuleId': configRuleId,
       'configRuleTriggerTypes': configRuleTriggerTypes,
@@ -171,52 +137,25 @@ class GetAggregateConfigRulesRule {
   factory GetAggregateConfigRulesRule.fromMap(Map<String, dynamic> map) {
     return GetAggregateConfigRulesRule(
       accountId: pulumi.Input.fromValue(map['accountId'] as String),
-      aggregateConfigRuleName: pulumi.Input.fromValue(
-        map['aggregateConfigRuleName'] as String,
-      ),
+      aggregateConfigRuleName: pulumi.Input.fromValue(map['aggregateConfigRuleName'] as String),
       aggregatorId: pulumi.Input.fromValue(map['aggregatorId'] as String),
-      compliancePackId: pulumi.Input.fromValue(
-        map['compliancePackId'] as String,
-      ),
-      compliances: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetAggregateConfigRulesRuleCompliance>(
-          map['compliances']!,
-          (value) => GetAggregateConfigRulesRuleCompliance.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      compliancePackId: pulumi.Input.fromValue(map['compliancePackId'] as String),
+      compliances: pulumi.Input.fromValue(pulumi.Input.decodeList<GetAggregateConfigRulesRuleCompliance>(map['compliances']!, (value) => GetAggregateConfigRulesRuleCompliance.fromMap((value as Map).cast<String, dynamic>()))),
       configRuleArn: pulumi.Input.fromValue(map['configRuleArn'] as String),
       configRuleId: pulumi.Input.fromValue(map['configRuleId'] as String),
-      configRuleTriggerTypes: pulumi.Input.fromValue(
-        map['configRuleTriggerTypes'] as String,
-      ),
+      configRuleTriggerTypes: pulumi.Input.fromValue(map['configRuleTriggerTypes'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
       eventSource: pulumi.Input.fromValue(map['eventSource'] as String),
-      excludeResourceIdsScope: pulumi.Input.fromValue(
-        map['excludeResourceIdsScope'] as String,
-      ),
+      excludeResourceIdsScope: pulumi.Input.fromValue(map['excludeResourceIdsScope'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
-      inputParameters: pulumi.Input.fromValue(
-        (map['inputParameters'] as Map).cast<String, String>(),
-      ),
-      maximumExecutionFrequency: pulumi.Input.fromValue(
-        map['maximumExecutionFrequency'] as String,
-      ),
-      modifiedTimestamp: pulumi.Input.fromValue(
-        map['modifiedTimestamp'] as String,
-      ),
+      inputParameters: pulumi.Input.fromValue((map['inputParameters'] as Map).cast<String, String>()),
+      maximumExecutionFrequency: pulumi.Input.fromValue(map['maximumExecutionFrequency'] as String),
+      modifiedTimestamp: pulumi.Input.fromValue(map['modifiedTimestamp'] as String),
       regionIdsScope: pulumi.Input.fromValue(map['regionIdsScope'] as String),
-      resourceGroupIdsScope: pulumi.Input.fromValue(
-        map['resourceGroupIdsScope'] as String,
-      ),
-      resourceTypesScopes: pulumi.Input.fromValue(
-        (map['resourceTypesScopes'] as List).cast<String>(),
-      ),
+      resourceGroupIdsScope: pulumi.Input.fromValue(map['resourceGroupIdsScope'] as String),
+      resourceTypesScopes: pulumi.Input.fromValue((map['resourceTypesScopes'] as List).cast<String>()),
       riskLevel: pulumi.Input.fromValue(map['riskLevel'] as int),
-      sourceIdentifier: pulumi.Input.fromValue(
-        map['sourceIdentifier'] as String,
-      ),
+      sourceIdentifier: pulumi.Input.fromValue(map['sourceIdentifier'] as String),
       sourceOwner: pulumi.Input.fromValue(map['sourceOwner'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
       tagKeyScope: pulumi.Input.fromValue(map['tagKeyScope'] as String),
@@ -224,3 +163,4 @@ class GetAggregateConfigRulesRule {
     );
   }
 }
+

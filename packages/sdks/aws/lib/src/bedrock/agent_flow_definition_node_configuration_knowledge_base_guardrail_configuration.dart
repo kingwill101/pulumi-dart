@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AgentFlowDefinitionNodeConfigurationKnowledgeBaseGuardrailConfiguration {
   /// The unique identifier of the guardrail.
   final pulumi.Input<String> guardrailIdentifier;
-
   /// The version of the guardrail.
   final pulumi.Input<String> guardrailVersion;
 
@@ -24,16 +23,11 @@ class AgentFlowDefinitionNodeConfigurationKnowledgeBaseGuardrailConfiguration {
     };
   }
 
-  factory AgentFlowDefinitionNodeConfigurationKnowledgeBaseGuardrailConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentFlowDefinitionNodeConfigurationKnowledgeBaseGuardrailConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentFlowDefinitionNodeConfigurationKnowledgeBaseGuardrailConfiguration(
-      guardrailIdentifier: pulumi.Input.fromValue(
-        map['guardrailIdentifier'] as String,
-      ),
-      guardrailVersion: pulumi.Input.fromValue(
-        map['guardrailVersion'] as String,
-      ),
+      guardrailIdentifier: pulumi.Input.fromValue(map['guardrailIdentifier'] as String),
+      guardrailVersion: pulumi.Input.fromValue(map['guardrailVersion'] as String),
     );
   }
 }
+

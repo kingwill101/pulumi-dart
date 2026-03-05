@@ -6,34 +6,24 @@ import 'applicable_schedule_response.dart';
 class GetServiceFabricResult {
   /// The applicable schedule for the virtual machine.
   final ApplicableScheduleResponse applicableSchedule;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The resource id of the environment under which the service fabric resource is present
   final String? environmentId;
-
   /// The backing service fabric resource's id
   final String? externalServiceFabricId;
-
   /// The identifier of the resource.
   final String id;
-
   /// The location of the resource.
   final String? location;
-
   /// The name of the resource.
   final String name;
-
   /// The provisioning status of the resource.
   final String provisioningState;
-
   /// The tags of the resource.
   final Map<String, String>? tags;
-
   /// The type of the resource.
   final String type;
-
   /// The unique immutable identifier of a resource (Guid).
   final String uniqueIdentifier;
 
@@ -81,35 +71,18 @@ class GetServiceFabricResult {
 
   factory GetServiceFabricResult.fromMap(Map<String, dynamic> map) {
     return GetServiceFabricResult(
-      applicableSchedule: ApplicableScheduleResponse.fromMap(
-        (map['applicableSchedule']! as Map).cast<String, dynamic>(),
-      ),
+      applicableSchedule: ApplicableScheduleResponse.fromMap((map['applicableSchedule']! as Map).cast<String, dynamic>()),
       azureApiVersion: map['azureApiVersion'] as String,
-      environmentId: (() {
-        final guardedValue = map['environmentId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      externalServiceFabricId: (() {
-        final guardedValue = map['externalServiceFabricId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      environmentId: (() { final guardedValue = map['environmentId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      externalServiceFabricId: (() { final guardedValue = map['externalServiceFabricId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
       uniqueIdentifier: map['uniqueIdentifier'] as String,
     );
   }
 }
+

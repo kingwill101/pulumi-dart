@@ -12,8 +12,7 @@ enum EnforceCertificateNameCheckEnabledState {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown EnforceCertificateNameCheckEnabledState value: $value',
-    );
+    throw ArgumentError('Unknown EnforceCertificateNameCheckEnabledState value: $value');
   }
 }
+

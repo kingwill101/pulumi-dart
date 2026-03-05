@@ -8,10 +8,14 @@ class DomainDevicesInterfaceModel {
 
   /// Creates a new [DomainDevicesInterfaceModel].
   /// [type] Sets the specific type of the network interface model.
-  DomainDevicesInterfaceModel({required this.type});
+  DomainDevicesInterfaceModel({
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': type};
+    return <String, dynamic>{
+      'type': type,
+    };
   }
 
   factory DomainDevicesInterfaceModel.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class DomainDevicesInterfaceModel {
     );
   }
 }
+

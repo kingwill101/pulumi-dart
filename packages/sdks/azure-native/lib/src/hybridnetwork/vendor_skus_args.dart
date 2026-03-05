@@ -10,28 +10,20 @@ import 'network_function_template.dart';
 class VendorSkusArgs {
   /// The sku deployment mode.
   final pulumi.Input<String>? deploymentMode;
-
   /// The parameters for the managed application to be supplied by the vendor.
   final pulumi.Input<dynamic>? managedApplicationParameters;
-
   /// The template for the managed application deployment.
   final pulumi.Input<dynamic>? managedApplicationTemplate;
-
   /// The template definition of the network function.
   final pulumi.Input<NetworkFunctionTemplate>? networkFunctionTemplate;
-
   /// The network function type.
   final pulumi.Input<String>? networkFunctionType;
-
   /// Indicates if the vendor sku is in preview mode.
   final pulumi.Input<bool>? preview;
-
   /// The name of the sku.
   final pulumi.Input<String>? skuName;
-
   /// The sku type.
   final pulumi.Input<String>? skuType;
-
   /// The name of the vendor.
   final pulumi.Input<String> vendorName;
 
@@ -62,11 +54,7 @@ class VendorSkusArgs {
       'deploymentMode': ?deploymentMode,
       'managedApplicationParameters': ?managedApplicationParameters,
       'managedApplicationTemplate': ?managedApplicationTemplate,
-      'networkFunctionTemplate':
-          ?pulumi.Input.mapOptionalInputValue<
-            NetworkFunctionTemplate,
-            Map<String, dynamic>
-          >(networkFunctionTemplate, (value) => value.toMap()),
+      'networkFunctionTemplate': ?pulumi.Input.mapOptionalInputValue<NetworkFunctionTemplate, Map<String, dynamic>>(networkFunctionTemplate, (value) => value.toMap()),
       'networkFunctionType': ?networkFunctionType,
       'preview': ?preview,
       'skuName': ?skuName,
@@ -77,51 +65,16 @@ class VendorSkusArgs {
 
   factory VendorSkusArgs.fromMap(Map<String, dynamic> map) {
     return VendorSkusArgs(
-      deploymentMode: (() {
-        final guardedValue = map['deploymentMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      managedApplicationParameters: (() {
-        final guardedValue = map['managedApplicationParameters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      managedApplicationTemplate: (() {
-        final guardedValue = map['managedApplicationTemplate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      networkFunctionTemplate: (() {
-        final guardedValue = map['networkFunctionTemplate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          NetworkFunctionTemplate.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      networkFunctionType: (() {
-        final guardedValue = map['networkFunctionType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      preview: (() {
-        final guardedValue = map['preview'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      skuName: (() {
-        final guardedValue = map['skuName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      skuType: (() {
-        final guardedValue = map['skuType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      deploymentMode: (() { final guardedValue = map['deploymentMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      managedApplicationParameters: (() { final guardedValue = map['managedApplicationParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      managedApplicationTemplate: (() { final guardedValue = map['managedApplicationTemplate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      networkFunctionTemplate: (() { final guardedValue = map['networkFunctionTemplate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkFunctionTemplate.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      networkFunctionType: (() { final guardedValue = map['networkFunctionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      preview: (() { final guardedValue = map['preview']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      skuName: (() { final guardedValue = map['skuName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      skuType: (() { final guardedValue = map['skuType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vendorName: pulumi.Input.fromValue(map['vendorName'] as String),
     );
   }
 }
+

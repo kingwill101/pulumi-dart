@@ -5,22 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceAttachmentsAttachment {
   /// The domain of the instance attachment.
   final pulumi.Input<String> domain;
-
   /// The access endpoint of the instance attachment.
   final pulumi.Input<String> endpoint;
-
   /// The resource ID, the value is same as "instance_name".
   final pulumi.Input<String> id;
-
   /// The name of OTS instance.
   final pulumi.Input<String> instanceName;
-
   /// The region of the instance attachment.
   final pulumi.Input<String> region;
-
   /// The ID of attaching VPC to instance.
   final pulumi.Input<String> vpcId;
-
   /// The name of attaching VPC to instance.
   final pulumi.Input<String> vpcName;
 
@@ -66,3 +60,4 @@ class GetInstanceAttachmentsAttachment {
     );
   }
 }
+

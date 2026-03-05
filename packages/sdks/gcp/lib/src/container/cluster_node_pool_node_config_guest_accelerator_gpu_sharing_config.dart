@@ -8,7 +8,6 @@ class ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig {
   /// * `"TIME_SHARING"`: Allow multiple containers to have [time-shared](https://cloud.google.com/kubernetes-engine/docs/concepts/timesharing-gpus) access to a single GPU device.
   /// * `"MPS"`: Enable co-operative multi-process CUDA workloads to run concurrently on a single GPU device with [MPS](https://cloud.google.com/kubernetes-engine/docs/how-to/nvidia-mps-gpus)
   final pulumi.Input<String> gpuSharingStrategy;
-
   /// The maximum number of containers that can share a GPU.
   final pulumi.Input<int> maxSharedClientsPerGpu;
 
@@ -27,16 +26,11 @@ class ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig {
     };
   }
 
-  factory ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig.fromMap(Map<String, dynamic> map) {
     return ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig(
-      gpuSharingStrategy: pulumi.Input.fromValue(
-        map['gpuSharingStrategy'] as String,
-      ),
-      maxSharedClientsPerGpu: pulumi.Input.fromValue(
-        map['maxSharedClientsPerGpu'] as int,
-      ),
+      gpuSharingStrategy: pulumi.Input.fromValue(map['gpuSharingStrategy'] as String),
+      maxSharedClientsPerGpu: pulumi.Input.fromValue(map['maxSharedClientsPerGpu'] as int),
     );
   }
 }
+

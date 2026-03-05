@@ -8,10 +8,14 @@ class FlexibleAppVersionEntrypoint {
 
   /// Creates a new [FlexibleAppVersionEntrypoint].
   /// [shell] The format should be a shell command that can be fed to bash -c.
-  FlexibleAppVersionEntrypoint({required this.shell});
+  FlexibleAppVersionEntrypoint({
+    required this.shell,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'shell': shell};
+    return <String, dynamic>{
+      'shell': shell,
+    };
   }
 
   factory FlexibleAppVersionEntrypoint.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class FlexibleAppVersionEntrypoint {
     );
   }
 }
+

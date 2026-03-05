@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackupPolicyBlobStorageRetentionRuleLifeCycle {
   /// The type of data store. The only possible value is `VaultStore`. Changing this forces a new Backup Policy Blob Storage to be created.
   final pulumi.Input<String> dataStoreType;
-
   /// The retention duration up to which the backups are to be retained in the data stores. It should follow `ISO 8601` duration format. Changing this forces a new Backup Policy Blob Storage to be created.
   final pulumi.Input<String> duration;
 
@@ -24,12 +23,11 @@ class BackupPolicyBlobStorageRetentionRuleLifeCycle {
     };
   }
 
-  factory BackupPolicyBlobStorageRetentionRuleLifeCycle.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BackupPolicyBlobStorageRetentionRuleLifeCycle.fromMap(Map<String, dynamic> map) {
     return BackupPolicyBlobStorageRetentionRuleLifeCycle(
       dataStoreType: pulumi.Input.fromValue(map['dataStoreType'] as String),
       duration: pulumi.Input.fromValue(map['duration'] as String),
     );
   }
 }
+

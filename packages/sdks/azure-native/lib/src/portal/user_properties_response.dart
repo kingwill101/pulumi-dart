@@ -8,16 +8,12 @@ import 'terminal_settings_response.dart';
 class UserPropertiesResponse {
   /// The preferred location of the cloud shell.
   final pulumi.Input<String> preferredLocation;
-
   /// The operating system type of the cloud shell. Deprecated, use preferredShellType.
   final pulumi.Input<String> preferredOsType;
-
   /// The shell type of the cloud shell.
   final pulumi.Input<String> preferredShellType;
-
   /// The storage profile of the user settings.
   final pulumi.Input<StorageProfileResponse> storageProfile;
-
   /// Settings for terminal appearance.
   final pulumi.Input<TerminalSettingsResponse> terminalSettings;
 
@@ -40,38 +36,19 @@ class UserPropertiesResponse {
       'preferredLocation': preferredLocation,
       'preferredOsType': preferredOsType,
       'preferredShellType': preferredShellType,
-      'storageProfile':
-          pulumi.Input.mapInputValue<
-            StorageProfileResponse,
-            Map<String, dynamic>
-          >(storageProfile, (value) => value.toMap()),
-      'terminalSettings':
-          pulumi.Input.mapInputValue<
-            TerminalSettingsResponse,
-            Map<String, dynamic>
-          >(terminalSettings, (value) => value.toMap()),
+      'storageProfile': pulumi.Input.mapInputValue<StorageProfileResponse, Map<String, dynamic>>(storageProfile, (value) => value.toMap()),
+      'terminalSettings': pulumi.Input.mapInputValue<TerminalSettingsResponse, Map<String, dynamic>>(terminalSettings, (value) => value.toMap()),
     };
   }
 
   factory UserPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return UserPropertiesResponse(
-      preferredLocation: pulumi.Input.fromValue(
-        map['preferredLocation'] as String,
-      ),
+      preferredLocation: pulumi.Input.fromValue(map['preferredLocation'] as String),
       preferredOsType: pulumi.Input.fromValue(map['preferredOsType'] as String),
-      preferredShellType: pulumi.Input.fromValue(
-        map['preferredShellType'] as String,
-      ),
-      storageProfile: pulumi.Input.fromValue(
-        StorageProfileResponse.fromMap(
-          (map['storageProfile']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      terminalSettings: pulumi.Input.fromValue(
-        TerminalSettingsResponse.fromMap(
-          (map['terminalSettings']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      preferredShellType: pulumi.Input.fromValue(map['preferredShellType'] as String),
+      storageProfile: pulumi.Input.fromValue(StorageProfileResponse.fromMap((map['storageProfile']! as Map).cast<String, dynamic>())),
+      terminalSettings: pulumi.Input.fromValue(TerminalSettingsResponse.fromMap((map['terminalSettings']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

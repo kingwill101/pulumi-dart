@@ -14,3 +14,4 @@ enum PasswordAuth {
     throw ArgumentError('Unknown PasswordAuth value: $value');
   }
 }
+

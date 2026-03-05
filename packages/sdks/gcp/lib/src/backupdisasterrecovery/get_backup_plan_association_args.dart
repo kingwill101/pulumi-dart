@@ -11,7 +11,6 @@ class GetBackupPlanAssociationArgs {
   ///
   /// - - -
   final pulumi.Input<String> backupPlanAssociationId;
-
   /// The location in which the Backupplan association resource belongs.
   final pulumi.Input<String> location;
   final pulumi.Input<String>? project;
@@ -36,15 +35,10 @@ class GetBackupPlanAssociationArgs {
 
   factory GetBackupPlanAssociationArgs.fromMap(Map<String, dynamic> map) {
     return GetBackupPlanAssociationArgs(
-      backupPlanAssociationId: pulumi.Input.fromValue(
-        map['backupPlanAssociationId'] as String,
-      ),
+      backupPlanAssociationId: pulumi.Input.fromValue(map['backupPlanAssociationId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

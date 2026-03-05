@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AssignmentDedicatedHostState {
   /// Specifies the Dedicated Host ID to which the Maintenance Configuration will be assigned. Changing this forces a new resource to be created.
   final pulumi.Input<String>? dedicatedHostId;
-
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
-
   /// Specifies the ID of the Maintenance Configuration Resource. Changing this forces a new resource to be created.
   final pulumi.Input<String>? maintenanceConfigurationId;
 
@@ -33,21 +31,10 @@ class AssignmentDedicatedHostState {
 
   factory AssignmentDedicatedHostState.fromMap(Map<String, dynamic> map) {
     return AssignmentDedicatedHostState(
-      dedicatedHostId: (() {
-        final guardedValue = map['dedicatedHostId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      maintenanceConfigurationId: (() {
-        final guardedValue = map['maintenanceConfigurationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dedicatedHostId: (() { final guardedValue = map['dedicatedHostId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      maintenanceConfigurationId: (() { final guardedValue = map['maintenanceConfigurationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSavedSearchArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The id of the saved search.
   final pulumi.Input<String> savedSearchId;
-
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -36,11 +34,10 @@ class GetSavedSearchArgs {
 
   factory GetSavedSearchArgs.fromMap(Map<String, dynamic> map) {
     return GetSavedSearchArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       savedSearchId: pulumi.Input.fromValue(map['savedSearchId'] as String),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
+

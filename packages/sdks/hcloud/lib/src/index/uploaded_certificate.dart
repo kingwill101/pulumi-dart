@@ -203,29 +203,21 @@ import 'uploaded_certificate_state.dart';
 class UploadedCertificate extends pulumi.CustomResource {
   /// PEM encoded TLS certificate.
   late final pulumi.Output<String> certificate;
-
   /// (string) Point in time when the Certificate was created at Hetzner Cloud (in ISO-8601 format).
   late final pulumi.Output<String> created;
-
   /// (list) Domains and subdomains covered by the certificate.
   late final pulumi.Output<List<String>> domainNames;
-
   /// (string) Fingerprint of the certificate.
   late final pulumi.Output<String> fingerprint;
-
   /// User-defined labels (key-value pairs) the
   /// certificate should be created with.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// Name of the Certificate.
   late final pulumi.Output<String> name;
-
   /// (string) Point in time when the Certificate stops being valid (in ISO-8601 format).
   late final pulumi.Output<String> notValidAfter;
-
   /// (string) Point in time when the Certificate becomes valid (in ISO-8601 format).
   late final pulumi.Output<String> notValidBefore;
-
   /// PEM encoded private key belonging to the certificate.
   late final pulumi.Output<String> privateKey;
   late final pulumi.Output<String> type;
@@ -239,11 +231,11 @@ class UploadedCertificate extends pulumi.CustomResource {
     UploadedCertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'hcloud:index/uploadedCertificate:UploadedCertificate',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'hcloud:index/uploadedCertificate:UploadedCertificate',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     certificate = registerOutput<String>('certificate');
     created = registerOutput<String>('created');
     domainNames = registerOutput<List<String>>('domainNames');
@@ -274,11 +266,11 @@ class UploadedCertificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'hcloud:index/uploadedCertificate:UploadedCertificate',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'hcloud:index/uploadedCertificate:UploadedCertificate',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     certificate = registerOutput<String>('certificate');
     created = registerOutput<String>('created');
     domainNames = registerOutput<List<String>>('domainNames');

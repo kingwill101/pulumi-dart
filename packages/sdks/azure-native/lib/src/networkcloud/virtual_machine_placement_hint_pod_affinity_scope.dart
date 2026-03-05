@@ -12,8 +12,7 @@ enum VirtualMachinePlacementHintPodAffinityScope {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown VirtualMachinePlacementHintPodAffinityScope value: $value',
-    );
+    throw ArgumentError('Unknown VirtualMachinePlacementHintPodAffinityScope value: $value');
   }
 }
+

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RelationshipTypeFieldMappingResponse {
   /// Specifies the fieldName in profile.
   final pulumi.Input<String> profileFieldName;
-
   /// Specifies the KeyProperty (from StrongId) of the related profile.
   final pulumi.Input<String> relatedProfileKeyProperty;
 
@@ -25,16 +24,11 @@ class RelationshipTypeFieldMappingResponse {
     };
   }
 
-  factory RelationshipTypeFieldMappingResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RelationshipTypeFieldMappingResponse.fromMap(Map<String, dynamic> map) {
     return RelationshipTypeFieldMappingResponse(
-      profileFieldName: pulumi.Input.fromValue(
-        map['profileFieldName'] as String,
-      ),
-      relatedProfileKeyProperty: pulumi.Input.fromValue(
-        map['relatedProfileKeyProperty'] as String,
-      ),
+      profileFieldName: pulumi.Input.fromValue(map['profileFieldName'] as String),
+      relatedProfileKeyProperty: pulumi.Input.fromValue(map['relatedProfileKeyProperty'] as String),
     );
   }
 }
+

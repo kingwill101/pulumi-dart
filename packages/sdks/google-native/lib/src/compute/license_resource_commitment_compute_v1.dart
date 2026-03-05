@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LicenseResourceCommitmentComputeV1 {
   /// The number of licenses purchased.
   final pulumi.Input<String>? amount;
-
   /// Specifies the core range of the instance for which this license applies.
   final pulumi.Input<String>? coresPerLicense;
-
   /// Any applicable license URI.
   final pulumi.Input<String>? license;
 
@@ -33,21 +31,10 @@ class LicenseResourceCommitmentComputeV1 {
 
   factory LicenseResourceCommitmentComputeV1.fromMap(Map<String, dynamic> map) {
     return LicenseResourceCommitmentComputeV1(
-      amount: (() {
-        final guardedValue = map['amount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      coresPerLicense: (() {
-        final guardedValue = map['coresPerLicense'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      license: (() {
-        final guardedValue = map['license'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      amount: (() { final guardedValue = map['amount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      coresPerLicense: (() { final guardedValue = map['coresPerLicense']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      license: (() { final guardedValue = map['license']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

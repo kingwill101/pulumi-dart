@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceHybridDoubleWritesHybridDoubleWrite {
   /// The ID of the Hybrid Double Write. It formats as `&lt;source_namespace&gt;:&lt;source_user_id&gt;`.
   final pulumi.Input<String> id;
-
   /// Target Namespace.
   final pulumi.Input<String> namespace;
-
   /// Source Namespace.
   final pulumi.Input<String> sourceNamespace;
-
   /// Source UserId.
   final pulumi.Input<String> sourceUserId;
-
   /// Target UserId.
   final pulumi.Input<String> userId;
 
@@ -42,9 +38,7 @@ class GetServiceHybridDoubleWritesHybridDoubleWrite {
     };
   }
 
-  factory GetServiceHybridDoubleWritesHybridDoubleWrite.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetServiceHybridDoubleWritesHybridDoubleWrite.fromMap(Map<String, dynamic> map) {
     return GetServiceHybridDoubleWritesHybridDoubleWrite(
       id: pulumi.Input.fromValue(map['id'] as String),
       namespace: pulumi.Input.fromValue(map['namespace'] as String),
@@ -54,3 +48,4 @@ class GetServiceHybridDoubleWritesHybridDoubleWrite {
     );
   }
 }
+

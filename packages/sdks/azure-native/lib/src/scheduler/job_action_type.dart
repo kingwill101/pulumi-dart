@@ -18,3 +18,4 @@ enum JobActionType {
     throw ArgumentError('Unknown JobActionType value: $value');
   }
 }
+

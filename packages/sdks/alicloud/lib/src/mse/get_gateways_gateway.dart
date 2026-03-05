@@ -6,34 +6,24 @@ import 'get_gateways_gateway_slb_list.dart';
 class GetGatewaysGateway {
   /// The backup vswitch id.
   final pulumi.Input<String> backupVswitchId;
-
   /// The name of the Gateway.
   final pulumi.Input<String> gatewayName;
-
   /// Gateway unique identification.
   final pulumi.Input<String> gatewayUniqueId;
-
   /// The ID of the Gateway.
   final pulumi.Input<String> id;
-
   /// The payment type of the resource.
   final pulumi.Input<String> paymentType;
-
   /// Number of Gateway Nodes.
   final pulumi.Input<String> replica;
-
   /// A list of gateway Slb.
   final pulumi.Input<List<GetGatewaysGatewaySlbList>> slbLists;
-
   /// Gateway Node Specifications.
   final pulumi.Input<String> spec;
-
   /// The status of the gateway.
   final pulumi.Input<String> status;
-
   /// The ID of the vpc.
   final pulumi.Input<String> vpcId;
-
   /// The ID of the vswitch.
   final pulumi.Input<String> vswitchId;
 
@@ -71,18 +61,7 @@ class GetGatewaysGateway {
       'id': id,
       'paymentType': paymentType,
       'replica': replica,
-      'slbLists':
-          pulumi.Input.mapInputValue<
-            List<GetGatewaysGatewaySlbList>,
-            List<Map<String, dynamic>>
-          >(
-            slbLists,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetGatewaysGatewaySlbList,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'slbLists': pulumi.Input.mapInputValue<List<GetGatewaysGatewaySlbList>, List<Map<String, dynamic>>>(slbLists, (value) => pulumi.Input.encodeList<GetGatewaysGatewaySlbList, Map<String, dynamic>>(value, (value) => value.toMap())),
       'spec': spec,
       'status': status,
       'vpcId': vpcId,
@@ -98,14 +77,7 @@ class GetGatewaysGateway {
       id: pulumi.Input.fromValue(map['id'] as String),
       paymentType: pulumi.Input.fromValue(map['paymentType'] as String),
       replica: pulumi.Input.fromValue(map['replica'] as String),
-      slbLists: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetGatewaysGatewaySlbList>(
-          map['slbLists']!,
-          (value) => GetGatewaysGatewaySlbList.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      slbLists: pulumi.Input.fromValue(pulumi.Input.decodeList<GetGatewaysGatewaySlbList>(map['slbLists']!, (value) => GetGatewaysGatewaySlbList.fromMap((value as Map).cast<String, dynamic>()))),
       spec: pulumi.Input.fromValue(map['spec'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
       vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
@@ -113,3 +85,4 @@ class GetGatewaysGateway {
     );
   }
 }
+

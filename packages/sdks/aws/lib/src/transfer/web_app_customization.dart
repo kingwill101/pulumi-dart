@@ -16,16 +16,12 @@ import 'web_app_customization_state.dart';
 class WebAppCustomization extends pulumi.CustomResource {
   /// Base64-encoded string representing the favicon image. Terraform will detect drift only if this argument is specified. To remove the favicon, recreate the resource.
   late final pulumi.Output<String> faviconFile;
-
   /// Base64-encoded string representing the logo image. Terraform will detect drift only if this argument is specified. To remove the logo, recreate the resource.
   late final pulumi.Output<String> logoFile;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Title of the web app. Must be between 1 and 100 characters in length (an empty string is not allowed). To remove the title, omit this argument from your configuration.
   late final pulumi.Output<String?> title;
-
   /// The identifier of the web app to be customized.
   ///
   /// The following arguments are optional:
@@ -40,11 +36,11 @@ class WebAppCustomization extends pulumi.CustomResource {
     WebAppCustomizationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:transfer/webAppCustomization:WebAppCustomization',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:transfer/webAppCustomization:WebAppCustomization',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     faviconFile = registerOutput<String>('faviconFile');
     logoFile = registerOutput<String>('logoFile');
     region = registerOutput<String>('region');
@@ -70,11 +66,11 @@ class WebAppCustomization extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:transfer/webAppCustomization:WebAppCustomization',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:transfer/webAppCustomization:WebAppCustomization',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     faviconFile = registerOutput<String>('faviconFile');
     logoFile = registerOutput<String>('logoFile');
     region = registerOutput<String>('region');

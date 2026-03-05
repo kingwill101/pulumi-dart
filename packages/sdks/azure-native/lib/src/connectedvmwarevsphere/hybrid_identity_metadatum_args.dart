@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HybridIdentityMetadatumArgs {
   /// Name of the hybridIdentityMetadata.
   final pulumi.Input<String>? metadataName;
-
   /// Gets or sets the Public Key.
   final pulumi.Input<String>? publicKey;
-
   /// The Resource Group Name.
   final pulumi.Input<String> resourceGroupName;
-
   /// Name of the vm.
   final pulumi.Input<String> virtualMachineName;
-
   /// Gets or sets the Vm Id.
   final pulumi.Input<String>? vmId;
 
@@ -48,27 +44,12 @@ class HybridIdentityMetadatumArgs {
 
   factory HybridIdentityMetadatumArgs.fromMap(Map<String, dynamic> map) {
     return HybridIdentityMetadatumArgs(
-      metadataName: (() {
-        final guardedValue = map['metadataName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      publicKey: (() {
-        final guardedValue = map['publicKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      virtualMachineName: pulumi.Input.fromValue(
-        map['virtualMachineName'] as String,
-      ),
-      vmId: (() {
-        final guardedValue = map['vmId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      metadataName: (() { final guardedValue = map['metadataName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicKey: (() { final guardedValue = map['publicKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      virtualMachineName: pulumi.Input.fromValue(map['virtualMachineName'] as String),
+      vmId: (() { final guardedValue = map['vmId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

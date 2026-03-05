@@ -8,19 +8,20 @@ class ProviderMonitorSettingPropertiesResponse {
 
   /// Creates a new [ProviderMonitorSettingPropertiesResponse].
   /// [provisioningState] The provisioning state.
-  ProviderMonitorSettingPropertiesResponse({required this.provisioningState});
+  ProviderMonitorSettingPropertiesResponse({
+    required this.provisioningState,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'provisioningState': provisioningState};
+    return <String, dynamic>{
+      'provisioningState': provisioningState,
+    };
   }
 
-  factory ProviderMonitorSettingPropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ProviderMonitorSettingPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ProviderMonitorSettingPropertiesResponse(
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
     );
   }
 }
+

@@ -191,41 +191,28 @@ import 'system_data_response.dart';
 class ProximityPlacementGroup extends pulumi.CustomResource {
   /// A list of references to all availability sets in the proximity placement group.
   late final pulumi.Output<List<Map<String, dynamic>>> availabilitySets;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Describes colocation status of the Proximity Placement Group.
   late final pulumi.Output<InstanceViewStatusResponse?> colocationStatus;
-
   /// Specifies the user intent of the proximity placement group.
-  late final pulumi.Output<ProximityPlacementGroupPropertiesIntentResponse?>
-  intent;
-
+  late final pulumi.Output<ProximityPlacementGroupPropertiesIntentResponse?> intent;
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Specifies the type of the proximity placement group. Possible values are: **Standard** : Co-locate resources within an Azure region or Availability Zone. **Ultra** : For future use.
   late final pulumi.Output<String?> proximityPlacementGroupType;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// A list of references to all virtual machine scale sets in the proximity placement group.
   late final pulumi.Output<List<Map<String, dynamic>>> virtualMachineScaleSets;
-
   /// A list of references to all virtual machines in the proximity placement group.
   late final pulumi.Output<List<Map<String, dynamic>>> virtualMachines;
-
   /// The availability zones.
   late final pulumi.Output<List<String>?> zones;
 
@@ -238,58 +225,23 @@ class ProximityPlacementGroup extends pulumi.CustomResource {
     ProximityPlacementGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:compute:ProximityPlacementGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    availabilitySets = registerOutput<List<Map<String, dynamic>>>(
-      'availabilitySets',
-    );
+          'azure-native:compute:ProximityPlacementGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    availabilitySets = registerOutput<List<Map<String, dynamic>>>('availabilitySets');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    colocationStatus = registerOutput<InstanceViewStatusResponse?>(
-      'colocationStatus',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceViewStatusResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    intent = registerOutput<ProximityPlacementGroupPropertiesIntentResponse?>(
-      'intent',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ProximityPlacementGroupPropertiesIntentResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    colocationStatus = registerOutput<InstanceViewStatusResponse?>('colocationStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceViewStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    intent = registerOutput<ProximityPlacementGroupPropertiesIntentResponse?>('intent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProximityPlacementGroupPropertiesIntentResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    proximityPlacementGroupType = registerOutput<String?>(
-      'proximityPlacementGroupType',
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    proximityPlacementGroupType = registerOutput<String?>('proximityPlacementGroupType');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
-    virtualMachineScaleSets = registerOutput<List<Map<String, dynamic>>>(
-      'virtualMachineScaleSets',
-    );
-    virtualMachines = registerOutput<List<Map<String, dynamic>>>(
-      'virtualMachines',
-    );
+    virtualMachineScaleSets = registerOutput<List<Map<String, dynamic>>>('virtualMachineScaleSets');
+    virtualMachines = registerOutput<List<Map<String, dynamic>>>('virtualMachines');
     zones = registerOutput<List<String>?>('zones');
   }
 }

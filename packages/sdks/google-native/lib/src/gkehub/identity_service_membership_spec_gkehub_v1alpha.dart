@@ -10,41 +10,20 @@ class IdentityServiceMembershipSpecGkehubV1alpha {
 
   /// Creates a new [IdentityServiceMembershipSpecGkehubV1alpha].
   /// [authMethods] A member may support multiple auth methods.
-  IdentityServiceMembershipSpecGkehubV1alpha({this.authMethods});
+  IdentityServiceMembershipSpecGkehubV1alpha({
+    this.authMethods,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authMethods':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<IdentityServiceAuthMethodGkehubV1alpha>,
-            List<Map<String, dynamic>>
-          >(
-            authMethods,
-            (value) =>
-                pulumi.Input.encodeList<
-                  IdentityServiceAuthMethodGkehubV1alpha,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'authMethods': ?pulumi.Input.mapOptionalInputValue<List<IdentityServiceAuthMethodGkehubV1alpha>, List<Map<String, dynamic>>>(authMethods, (value) => pulumi.Input.encodeList<IdentityServiceAuthMethodGkehubV1alpha, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory IdentityServiceMembershipSpecGkehubV1alpha.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory IdentityServiceMembershipSpecGkehubV1alpha.fromMap(Map<String, dynamic> map) {
     return IdentityServiceMembershipSpecGkehubV1alpha(
-      authMethods: (() {
-        final guardedValue = map['authMethods'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<IdentityServiceAuthMethodGkehubV1alpha>(
-            guardedValue,
-            (value) => IdentityServiceAuthMethodGkehubV1alpha.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      authMethods: (() { final guardedValue = map['authMethods']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<IdentityServiceAuthMethodGkehubV1alpha>(guardedValue, (value) => IdentityServiceAuthMethodGkehubV1alpha.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

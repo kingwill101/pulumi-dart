@@ -19,3 +19,4 @@ enum IPAddressAllocationMethod {
     throw ArgumentError('Unknown IPAddressAllocationMethod value: $value');
   }
 }
+

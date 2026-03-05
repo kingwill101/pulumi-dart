@@ -7,19 +7,16 @@ class InstanceTemplateDiskSourceSnapshotEncryptionKey {
   /// stored in Google Cloud KMS. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
   /// may be set.
   final pulumi.Input<String>? kmsKeySelfLink;
-
   /// The service account being used for the
   /// encryption request for the given KMS key. If absent, the Compute Engine
   /// default service account is used.
   final pulumi.Input<String>? kmsKeyServiceAccount;
-
   /// A 256-bit [customer-supplied encryption key]
   /// (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
   /// encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
   /// to decrypt this snapshot. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
   /// may be set.
   final pulumi.Input<String>? rawKey;
-
   /// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
   /// (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt this snapshot. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
   /// may be set.
@@ -46,30 +43,13 @@ class InstanceTemplateDiskSourceSnapshotEncryptionKey {
     };
   }
 
-  factory InstanceTemplateDiskSourceSnapshotEncryptionKey.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InstanceTemplateDiskSourceSnapshotEncryptionKey.fromMap(Map<String, dynamic> map) {
     return InstanceTemplateDiskSourceSnapshotEncryptionKey(
-      kmsKeySelfLink: (() {
-        final guardedValue = map['kmsKeySelfLink'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kmsKeyServiceAccount: (() {
-        final guardedValue = map['kmsKeyServiceAccount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      rawKey: (() {
-        final guardedValue = map['rawKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      rsaEncryptedKey: (() {
-        final guardedValue = map['rsaEncryptedKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      kmsKeySelfLink: (() { final guardedValue = map['kmsKeySelfLink']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kmsKeyServiceAccount: (() { final guardedValue = map['kmsKeyServiceAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      rawKey: (() { final guardedValue = map['rawKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      rsaEncryptedKey: (() { final guardedValue = map['rsaEncryptedKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

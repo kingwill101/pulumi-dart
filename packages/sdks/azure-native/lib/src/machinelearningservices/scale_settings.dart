@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScaleSettings {
   /// Max number of nodes to use
   final pulumi.Input<int> maxNodeCount;
-
   /// Min number of nodes to use
   final pulumi.Input<int>? minNodeCount;
-
   /// Node Idle Time before scaling down amlCompute. This string needs to be in the RFC Format.
   final pulumi.Input<String>? nodeIdleTimeBeforeScaleDown;
 
@@ -34,16 +32,9 @@ class ScaleSettings {
   factory ScaleSettings.fromMap(Map<String, dynamic> map) {
     return ScaleSettings(
       maxNodeCount: pulumi.Input.fromValue(map['maxNodeCount'] as int),
-      minNodeCount: (() {
-        final guardedValue = map['minNodeCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      nodeIdleTimeBeforeScaleDown: (() {
-        final guardedValue = map['nodeIdleTimeBeforeScaleDown'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      minNodeCount: (() { final guardedValue = map['minNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      nodeIdleTimeBeforeScaleDown: (() { final guardedValue = map['nodeIdleTimeBeforeScaleDown']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

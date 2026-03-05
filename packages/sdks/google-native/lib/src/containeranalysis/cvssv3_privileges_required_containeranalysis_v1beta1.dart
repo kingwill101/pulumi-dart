@@ -7,17 +7,13 @@ enum CVSSv3PrivilegesRequiredContaineranalysisV1beta1 {
   const CVSSv3PrivilegesRequiredContaineranalysisV1beta1(this.wireValue);
   final String wireValue;
 
-  static CVSSv3PrivilegesRequiredContaineranalysisV1beta1 fromValue(
-    String value,
-  ) {
-    for (final item
-        in CVSSv3PrivilegesRequiredContaineranalysisV1beta1.values) {
+  static CVSSv3PrivilegesRequiredContaineranalysisV1beta1 fromValue(String value) {
+    for (final item in CVSSv3PrivilegesRequiredContaineranalysisV1beta1.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown CVSSv3PrivilegesRequiredContaineranalysisV1beta1 value: $value',
-    );
+    throw ArgumentError('Unknown CVSSv3PrivilegesRequiredContaineranalysisV1beta1 value: $value');
   }
 }
+

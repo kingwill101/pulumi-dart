@@ -678,7 +678,6 @@ import 'data_cells_filter_timeouts.dart';
 class DataCellsFilter extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Information about the data cells filter. See Table Data below for details.
   late final pulumi.Output<DataCellsFilterTableData> tableData;
   late final pulumi.Output<DataCellsFilterTimeouts?> timeouts;
@@ -692,32 +691,14 @@ class DataCellsFilter extends pulumi.CustomResource {
     DataCellsFilterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:lakeformation/dataCellsFilter:DataCellsFilter',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:lakeformation/dataCellsFilter:DataCellsFilter',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     region = registerOutput<String>('region');
-    tableData = registerOutput<DataCellsFilterTableData>(
-      'tableData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DataCellsFilterTableData.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    timeouts = registerOutput<DataCellsFilterTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DataCellsFilterTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    tableData = registerOutput<DataCellsFilterTableData>('tableData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataCellsFilterTableData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    timeouts = registerOutput<DataCellsFilterTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataCellsFilterTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [DataCellsFilter] resource's state with the given [name] and [id].
@@ -738,31 +719,13 @@ class DataCellsFilter extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:lakeformation/dataCellsFilter:DataCellsFilter',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:lakeformation/dataCellsFilter:DataCellsFilter',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     region = registerOutput<String>('region');
-    tableData = registerOutput<DataCellsFilterTableData>(
-      'tableData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DataCellsFilterTableData.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    timeouts = registerOutput<DataCellsFilterTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DataCellsFilterTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    tableData = registerOutput<DataCellsFilterTableData>('tableData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataCellsFilterTableData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    timeouts = registerOutput<DataCellsFilterTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataCellsFilterTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

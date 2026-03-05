@@ -323,37 +323,26 @@ import 'database_threat_detection_policy_args.dart';
 class DatabaseThreatDetectionPolicy extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Specifies the semicolon-separated list of alerts that are disabled, or empty string to disable no alerts. Possible values: Sql_Injection; Sql_Injection_Vulnerability; Access_Anomaly; Data_Exfiltration; Unsafe_Action.
   late final pulumi.Output<String?> disabledAlerts;
-
   /// Specifies that the alert is sent to the account administrators.
   late final pulumi.Output<String?> emailAccountAdmins;
-
   /// Specifies the semicolon-separated list of e-mail addresses to which the alert is sent.
   late final pulumi.Output<String?> emailAddresses;
-
   /// Resource kind.
   late final pulumi.Output<String> kind;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String?> location;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// Specifies the number of days to keep in the Threat Detection audit logs.
   late final pulumi.Output<int?> retentionDays;
-
   /// Specifies the state of the policy. If state is Enabled, storageEndpoint and storageAccountAccessKey are required.
   late final pulumi.Output<String> state;
-
   /// Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net). This blob storage will hold all Threat Detection audit logs. If state is Enabled, storageEndpoint is required.
   late final pulumi.Output<String?> storageEndpoint;
-
   /// Resource type.
   late final pulumi.Output<String> type;
-
   /// Specifies whether to use the default server policy.
   late final pulumi.Output<String?> useServerDefault;
 
@@ -366,11 +355,11 @@ class DatabaseThreatDetectionPolicy extends pulumi.CustomResource {
     DatabaseThreatDetectionPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:sql:DatabaseThreatDetectionPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:sql:DatabaseThreatDetectionPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     disabledAlerts = registerOutput<String?>('disabledAlerts');
     emailAccountAdmins = registerOutput<String?>('emailAccountAdmins');

@@ -6,18 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PolicyFragmentState {
   /// The id of the API Management Service. Changing this forces a new Api Management Policy Fragment to be created.
   final pulumi.Input<String>? apiManagementId;
-
   /// The description for the Policy Fragment.
   final pulumi.Input<String>? description;
-
   /// The format of the Policy Fragment. Possible values are `xml` or `rawxml`. Default is `xml`.
   ///
   /// &gt; **Note:** The `value` property will be updated to reflect the corresponding format when `format` is updated.
   final pulumi.Input<String>? format;
-
   /// The name which should be used for this Api Management Policy Fragment. Changing this forces a new Api Management Policy Fragment to be created.
   final pulumi.Input<String>? name;
-
   /// The value of the Policy Fragment.
   ///
   /// &gt; **Note:** Be aware of the two format possibilities. If the `value` is not applied and continues to cause a diff the format could be wrong.
@@ -49,31 +45,12 @@ class PolicyFragmentState {
 
   factory PolicyFragmentState.fromMap(Map<String, dynamic> map) {
     return PolicyFragmentState(
-      apiManagementId: (() {
-        final guardedValue = map['apiManagementId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      format: (() {
-        final guardedValue = map['format'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      apiManagementId: (() { final guardedValue = map['apiManagementId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      format: (() { final guardedValue = map['format']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

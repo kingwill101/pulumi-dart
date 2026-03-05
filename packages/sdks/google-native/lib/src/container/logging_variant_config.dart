@@ -10,27 +10,20 @@ class LoggingVariantConfig {
 
   /// Creates a new [LoggingVariantConfig].
   /// [variant] Logging variant deployed on nodes.
-  LoggingVariantConfig({this.variant});
+  LoggingVariantConfig({
+    this.variant,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'variant':
-          ?pulumi.Input.mapOptionalInputValue<
-            LoggingVariantConfigVariant,
-            String
-          >(variant, (value) => value.wireValue),
+      'variant': ?pulumi.Input.mapOptionalInputValue<LoggingVariantConfigVariant, String>(variant, (value) => value.wireValue),
     };
   }
 
   factory LoggingVariantConfig.fromMap(Map<String, dynamic> map) {
     return LoggingVariantConfig(
-      variant: (() {
-        final guardedValue = map['variant'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          LoggingVariantConfigVariant.fromValue(guardedValue as String),
-        );
-      })(),
+      variant: (() { final guardedValue = map['variant']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LoggingVariantConfigVariant.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

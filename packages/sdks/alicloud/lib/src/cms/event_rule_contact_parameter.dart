@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EventRuleContactParameter {
   /// The name of the alert contact group.
   final pulumi.Input<String>? contactGroupName;
-
   /// The ID of the recipient that receives alert notifications.
   final pulumi.Input<String>? contactParametersId;
-
   /// The alert level and the corresponding notification methods.
   final pulumi.Input<String>? level;
 
@@ -32,21 +30,10 @@ class EventRuleContactParameter {
 
   factory EventRuleContactParameter.fromMap(Map<String, dynamic> map) {
     return EventRuleContactParameter(
-      contactGroupName: (() {
-        final guardedValue = map['contactGroupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      contactParametersId: (() {
-        final guardedValue = map['contactParametersId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      level: (() {
-        final guardedValue = map['level'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      contactGroupName: (() { final guardedValue = map['contactGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      contactParametersId: (() { final guardedValue = map['contactParametersId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      level: (() { final guardedValue = map['level']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -224,53 +224,39 @@ class VolumeAttach extends pulumi.CustomResource {
   /// (`ro`) or Read-Write (`rw`). Only values of `ro` and `rw` are accepted.
   /// If left unspecified, the Block Storage API will apply a default of `rw`.
   late final pulumi.Output<String?> attachMode;
-
   /// This is a map of key/value pairs that contain the connection
   /// information. You will want to pass this information to a provisioner
   /// script to finalize the connection. See below for more information.
   late final pulumi.Output<Map<String, String>> data;
-
   /// The device to tell the Block Storage service this
   /// volume will be attached as. This is purely for informational purposes.
   /// You can specify `auto` or a device such as `/dev/vdc`.
   late final pulumi.Output<String?> device;
-
   /// The storage driver that the volume is based on.
   late final pulumi.Output<String> driverVolumeType;
-
   /// The host to attach the volume to.
   late final pulumi.Output<String> hostName;
-
   /// The iSCSI initiator string to make the connection.
   late final pulumi.Output<String?> initiator;
-
   /// The IP address of the `host_name` above.
   late final pulumi.Output<String?> ipAddress;
-
   /// A mount point base name for shared storage.
   late final pulumi.Output<String> mountPointBase;
-
   /// Whether to connect to this volume via multipath.
   late final pulumi.Output<bool?> multipath;
-
   /// The iSCSI initiator OS type.
   late final pulumi.Output<String?> osType;
-
   /// The iSCSI initiator platform.
   late final pulumi.Output<String?> platform;
-
   /// The region in which to obtain the V3 Block Storage
   /// client. A Block Storage client is needed to create a volume attachment.
   /// If omitted, the `region` argument of the provider is used. Changing this
   /// creates a new volume attachment.
   late final pulumi.Output<String> region;
-
   /// The ID of the Volume to attach to an Instance.
   late final pulumi.Output<String> volumeId;
-
   /// A wwnn name. Used for Fibre Channel connections.
   late final pulumi.Output<String?> wwnn;
-
   /// An array of wwpn strings. Used for Fibre Channel
   /// connections.
   late final pulumi.Output<List<String>?> wwpns;
@@ -284,11 +270,11 @@ class VolumeAttach extends pulumi.CustomResource {
     VolumeAttachArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:blockstorage/volumeAttach:VolumeAttach',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:blockstorage/volumeAttach:VolumeAttach',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     attachMode = registerOutput<String?>('attachMode');
     data = registerOutput<Map<String, String>>('data');
     device = registerOutput<String?>('device');
@@ -324,11 +310,11 @@ class VolumeAttach extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:blockstorage/volumeAttach:VolumeAttach',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:blockstorage/volumeAttach:VolumeAttach',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     attachMode = registerOutput<String?>('attachMode');
     data = registerOutput<Map<String, String>>('data');
     device = registerOutput<String?>('device');

@@ -417,21 +417,16 @@ import 'customer_managed_policy_attachments_exclusive_timeouts.dart';
 /// ```
 class CustomerManagedPolicyAttachmentsExclusive extends pulumi.CustomResource {
   /// Specifies the names and paths of the customer managed policies to attach. See Customer Managed Policy Reference below.
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  customerManagedPolicyReferences;
-
+  late final pulumi.Output<List<Map<String, dynamic>>?> customerManagedPolicyReferences;
   /// ARN of the SSO Instance.
   late final pulumi.Output<String> instanceArn;
-
   /// ARN of the Permission Set.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> permissionSetArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  late final pulumi.Output<CustomerManagedPolicyAttachmentsExclusiveTimeouts?>
-  timeouts;
+  late final pulumi.Output<CustomerManagedPolicyAttachmentsExclusiveTimeouts?> timeouts;
 
   /// Creates a new [CustomerManagedPolicyAttachmentsExclusive].
   /// [name] The Pulumi resource name.
@@ -442,29 +437,16 @@ class CustomerManagedPolicyAttachmentsExclusive extends pulumi.CustomResource {
     CustomerManagedPolicyAttachmentsExclusiveArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ssoadmin/customerManagedPolicyAttachmentsExclusive:CustomerManagedPolicyAttachmentsExclusive',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    customerManagedPolicyReferences =
-        registerOutput<List<Map<String, dynamic>>?>(
-          'customerManagedPolicyReferences',
-        );
+          'aws:ssoadmin/customerManagedPolicyAttachmentsExclusive:CustomerManagedPolicyAttachmentsExclusive',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    customerManagedPolicyReferences = registerOutput<List<Map<String, dynamic>>?>('customerManagedPolicyReferences');
     instanceArn = registerOutput<String>('instanceArn');
     permissionSetArn = registerOutput<String>('permissionSetArn');
     region = registerOutput<String>('region');
-    timeouts =
-        registerOutput<CustomerManagedPolicyAttachmentsExclusiveTimeouts?>(
-          'timeouts',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return CustomerManagedPolicyAttachmentsExclusiveTimeouts.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    timeouts = registerOutput<CustomerManagedPolicyAttachmentsExclusiveTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomerManagedPolicyAttachmentsExclusiveTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [CustomerManagedPolicyAttachmentsExclusive] resource's state with the given [name] and [id].
@@ -485,28 +467,15 @@ class CustomerManagedPolicyAttachmentsExclusive extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ssoadmin/customerManagedPolicyAttachmentsExclusive:CustomerManagedPolicyAttachmentsExclusive',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    customerManagedPolicyReferences =
-        registerOutput<List<Map<String, dynamic>>?>(
-          'customerManagedPolicyReferences',
-        );
+          'aws:ssoadmin/customerManagedPolicyAttachmentsExclusive:CustomerManagedPolicyAttachmentsExclusive',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    customerManagedPolicyReferences = registerOutput<List<Map<String, dynamic>>?>('customerManagedPolicyReferences');
     instanceArn = registerOutput<String>('instanceArn');
     permissionSetArn = registerOutput<String>('permissionSetArn');
     region = registerOutput<String>('region');
-    timeouts =
-        registerOutput<CustomerManagedPolicyAttachmentsExclusiveTimeouts?>(
-          'timeouts',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return CustomerManagedPolicyAttachmentsExclusiveTimeouts.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    timeouts = registerOutput<CustomerManagedPolicyAttachmentsExclusiveTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomerManagedPolicyAttachmentsExclusiveTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

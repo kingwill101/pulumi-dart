@@ -29,9 +29,7 @@ class GetFolderReplayPolicysimulatorV1beta1Args {
     };
   }
 
-  factory GetFolderReplayPolicysimulatorV1beta1Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetFolderReplayPolicysimulatorV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetFolderReplayPolicysimulatorV1beta1Args(
       folderId: pulumi.Input.fromValue(map['folderId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
@@ -39,3 +37,4 @@ class GetFolderReplayPolicysimulatorV1beta1Args {
     );
   }
 }
+

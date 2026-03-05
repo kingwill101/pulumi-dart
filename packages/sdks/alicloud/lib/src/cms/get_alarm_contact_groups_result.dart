@@ -6,7 +6,6 @@ import 'get_alarm_contact_groups_group.dart';
 /// Result data returned by getAlarmContactGroups.
 class GetAlarmContactGroupsResult {
   final List<GetAlarmContactGroupsGroup> groups;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -32,11 +31,7 @@ class GetAlarmContactGroupsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'groups':
-          pulumi.Input.encodeList<
-            GetAlarmContactGroupsGroup,
-            Map<String, dynamic>
-          >(groups, (value) => value.toMap()),
+      'groups': pulumi.Input.encodeList<GetAlarmContactGroupsGroup, Map<String, dynamic>>(groups, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'nameRegex': ?nameRegex,
@@ -47,25 +42,13 @@ class GetAlarmContactGroupsResult {
 
   factory GetAlarmContactGroupsResult.fromMap(Map<String, dynamic> map) {
     return GetAlarmContactGroupsResult(
-      groups: pulumi.Input.decodeList<GetAlarmContactGroupsGroup>(
-        map['groups']!,
-        (value) => GetAlarmContactGroupsGroup.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      groups: pulumi.Input.decodeList<GetAlarmContactGroupsGroup>(map['groups']!, (value) => GetAlarmContactGroupsGroup.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

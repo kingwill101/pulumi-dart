@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApplicationAppRole {
   /// Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in a standalone scenario). Possible values are `User` or `Application`, or both.
   final pulumi.Input<List<String>> allowedMemberTypes;
-
   /// Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
   final pulumi.Input<String> description;
-
   /// Specifies the display name of the application.
   final pulumi.Input<String> displayName;
-
   /// Determines if the app role is enabled.
   final pulumi.Input<bool> enabled;
-
   /// The unique identifier for an app role or OAuth2 permission scope published by the resource application.
   final pulumi.Input<String> id;
-
   /// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
   final pulumi.Input<String> value;
 
@@ -50,9 +45,7 @@ class GetApplicationAppRole {
 
   factory GetApplicationAppRole.fromMap(Map<String, dynamic> map) {
     return GetApplicationAppRole(
-      allowedMemberTypes: pulumi.Input.fromValue(
-        (map['allowedMemberTypes'] as List).cast<String>(),
-      ),
+      allowedMemberTypes: pulumi.Input.fromValue((map['allowedMemberTypes'] as List).cast<String>()),
       description: pulumi.Input.fromValue(map['description'] as String),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
@@ -61,3 +54,4 @@ class GetApplicationAppRole {
     );
   }
 }
+

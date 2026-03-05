@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNamespaceAuthorizationRuleArgs {
   /// The authorization rule name.
   final pulumi.Input<String> authorizationRuleName;
-
   /// The namespace name
   final pulumi.Input<String> namespaceName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,13 +34,10 @@ class GetNamespaceAuthorizationRuleArgs {
 
   factory GetNamespaceAuthorizationRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetNamespaceAuthorizationRuleArgs(
-      authorizationRuleName: pulumi.Input.fromValue(
-        map['authorizationRuleName'] as String,
-      ),
+      authorizationRuleName: pulumi.Input.fromValue(map['authorizationRuleName'] as String),
       namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

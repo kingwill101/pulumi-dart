@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFirewallsFirewallDevice {
   /// The ID of the underlying entity this device references (i.e. the Linode's ID).
   final pulumi.Input<int> entityId;
-
   /// The unique ID assigned to this Firewall.
   final pulumi.Input<int> id;
-
   /// The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
   final pulumi.Input<String> label;
-
   /// The type of Firewall Device.
   final pulumi.Input<String> type;
-
   /// The URL of the underlying entity this device references.
   final pulumi.Input<String> url;
 
@@ -52,3 +48,4 @@ class GetFirewallsFirewallDevice {
     );
   }
 }
+

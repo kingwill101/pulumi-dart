@@ -104,13 +104,10 @@ import 'vpc_block_public_access_options_timeouts.dart';
 class VpcBlockPublicAccessOptions extends pulumi.CustomResource {
   /// The AWS account id to which these options apply.
   late final pulumi.Output<String> awsAccountId;
-
   /// The AWS region to which these options apply.
   late final pulumi.Output<String> awsRegion;
-
   /// Block mode. Needs to be one of `block-bidirectional`, `block-ingress`, `off`. If this resource is deleted, then this value will be set to `off` in the AWS account and region.
   late final pulumi.Output<String> internetGatewayBlockMode;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   late final pulumi.Output<VpcBlockPublicAccessOptionsTimeouts?> timeouts;
@@ -124,27 +121,16 @@ class VpcBlockPublicAccessOptions extends pulumi.CustomResource {
     VpcBlockPublicAccessOptionsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/vpcBlockPublicAccessOptions:VpcBlockPublicAccessOptions',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/vpcBlockPublicAccessOptions:VpcBlockPublicAccessOptions',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     awsAccountId = registerOutput<String>('awsAccountId');
     awsRegion = registerOutput<String>('awsRegion');
-    internetGatewayBlockMode = registerOutput<String>(
-      'internetGatewayBlockMode',
-    );
+    internetGatewayBlockMode = registerOutput<String>('internetGatewayBlockMode');
     region = registerOutput<String>('region');
-    timeouts = registerOutput<VpcBlockPublicAccessOptionsTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VpcBlockPublicAccessOptionsTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<VpcBlockPublicAccessOptionsTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpcBlockPublicAccessOptionsTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [VpcBlockPublicAccessOptions] resource's state with the given [name] and [id].
@@ -165,26 +151,15 @@ class VpcBlockPublicAccessOptions extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/vpcBlockPublicAccessOptions:VpcBlockPublicAccessOptions',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/vpcBlockPublicAccessOptions:VpcBlockPublicAccessOptions',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     awsAccountId = registerOutput<String>('awsAccountId');
     awsRegion = registerOutput<String>('awsRegion');
-    internetGatewayBlockMode = registerOutput<String>(
-      'internetGatewayBlockMode',
-    );
+    internetGatewayBlockMode = registerOutput<String>('internetGatewayBlockMode');
     region = registerOutput<String>('region');
-    timeouts = registerOutput<VpcBlockPublicAccessOptionsTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VpcBlockPublicAccessOptionsTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<VpcBlockPublicAccessOptionsTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpcBlockPublicAccessOptionsTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

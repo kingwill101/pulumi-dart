@@ -18,3 +18,4 @@ enum CredentialsType {
     throw ArgumentError('Unknown CredentialsType value: $value');
   }
 }
+

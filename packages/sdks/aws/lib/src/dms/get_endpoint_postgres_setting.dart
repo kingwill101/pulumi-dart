@@ -87,42 +87,25 @@ class GetEndpointPostgresSetting {
 
   factory GetEndpointPostgresSetting.fromMap(Map<String, dynamic> map) {
     return GetEndpointPostgresSetting(
-      afterConnectScript: pulumi.Input.fromValue(
-        map['afterConnectScript'] as String,
-      ),
-      authenticationMethod: pulumi.Input.fromValue(
-        map['authenticationMethod'] as String,
-      ),
-      babelfishDatabaseName: pulumi.Input.fromValue(
-        map['babelfishDatabaseName'] as String,
-      ),
+      afterConnectScript: pulumi.Input.fromValue(map['afterConnectScript'] as String),
+      authenticationMethod: pulumi.Input.fromValue(map['authenticationMethod'] as String),
+      babelfishDatabaseName: pulumi.Input.fromValue(map['babelfishDatabaseName'] as String),
       captureDdls: pulumi.Input.fromValue(map['captureDdls'] as bool),
       databaseMode: pulumi.Input.fromValue(map['databaseMode'] as String),
-      ddlArtifactsSchema: pulumi.Input.fromValue(
-        map['ddlArtifactsSchema'] as String,
-      ),
+      ddlArtifactsSchema: pulumi.Input.fromValue(map['ddlArtifactsSchema'] as String),
       executeTimeout: pulumi.Input.fromValue(map['executeTimeout'] as int),
-      failTasksOnLobTruncation: pulumi.Input.fromValue(
-        map['failTasksOnLobTruncation'] as bool,
-      ),
+      failTasksOnLobTruncation: pulumi.Input.fromValue(map['failTasksOnLobTruncation'] as bool),
       heartbeatEnable: pulumi.Input.fromValue(map['heartbeatEnable'] as bool),
-      heartbeatFrequency: pulumi.Input.fromValue(
-        map['heartbeatFrequency'] as int,
-      ),
+      heartbeatFrequency: pulumi.Input.fromValue(map['heartbeatFrequency'] as int),
       heartbeatSchema: pulumi.Input.fromValue(map['heartbeatSchema'] as String),
-      mapBooleanAsBoolean: pulumi.Input.fromValue(
-        map['mapBooleanAsBoolean'] as bool,
-      ),
+      mapBooleanAsBoolean: pulumi.Input.fromValue(map['mapBooleanAsBoolean'] as bool),
       mapJsonbAsClob: pulumi.Input.fromValue(map['mapJsonbAsClob'] as bool),
-      mapLongVarcharAs: pulumi.Input.fromValue(
-        map['mapLongVarcharAs'] as String,
-      ),
+      mapLongVarcharAs: pulumi.Input.fromValue(map['mapLongVarcharAs'] as String),
       maxFileSize: pulumi.Input.fromValue(map['maxFileSize'] as int),
       pluginName: pulumi.Input.fromValue(map['pluginName'] as String),
-      serviceAccessRoleArn: pulumi.Input.fromValue(
-        map['serviceAccessRoleArn'] as String,
-      ),
+      serviceAccessRoleArn: pulumi.Input.fromValue(map['serviceAccessRoleArn'] as String),
       slotName: pulumi.Input.fromValue(map['slotName'] as String),
     );
   }
 }
+

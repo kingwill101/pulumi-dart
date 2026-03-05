@@ -1,36 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getRegistry.
 class GetRegistryResult {
   /// Is the Administrator account enabled for this Container Registry.
   final bool adminEnabled;
-
   /// The Password associated with the Container Registry Admin account - if the admin account is enabled.
   final String adminPassword;
-
   /// The Username associated with the Container Registry Admin account - if the admin account is enabled.
   final String adminUsername;
-
   /// Whether dedicated data endpoints for this Container Registry are enabled?
   final bool dataEndpointEnabled;
-
   /// A set of data endpoint hostnames associated with the container registry if data endpoints are enabled.
   final List<String> dataEndpointHostNames;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The Azure Region in which this Container Registry exists.
   final String location;
-
   /// The URL that can be used to log into the container registry.
   final String loginServer;
   final String name;
   final String resourceGroupName;
-
   /// The SKU of this Container Registry, such as `Basic`.
   final String sku;
-
   /// A map of tags assigned to the Container Registry.
   final Map<String, String> tags;
 
@@ -85,8 +77,7 @@ class GetRegistryResult {
       adminPassword: map['adminPassword'] as String,
       adminUsername: map['adminUsername'] as String,
       dataEndpointEnabled: map['dataEndpointEnabled'] as bool,
-      dataEndpointHostNames: (map['dataEndpointHostNames'] as List)
-          .cast<String>(),
+      dataEndpointHostNames: (map['dataEndpointHostNames'] as List).cast<String>(),
       id: map['id'] as String,
       location: map['location'] as String,
       loginServer: map['loginServer'] as String,
@@ -97,3 +88,4 @@ class GetRegistryResult {
     );
   }
 }
+

@@ -13,18 +13,15 @@ class OutboundConnectionConnectionPropertiesCrossClusterSearch {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'skipUnavailable': ?skipUnavailable};
+    return <String, dynamic>{
+      'skipUnavailable': ?skipUnavailable,
+    };
   }
 
-  factory OutboundConnectionConnectionPropertiesCrossClusterSearch.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OutboundConnectionConnectionPropertiesCrossClusterSearch.fromMap(Map<String, dynamic> map) {
     return OutboundConnectionConnectionPropertiesCrossClusterSearch(
-      skipUnavailable: (() {
-        final guardedValue = map['skipUnavailable'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      skipUnavailable: (() { final guardedValue = map['skipUnavailable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

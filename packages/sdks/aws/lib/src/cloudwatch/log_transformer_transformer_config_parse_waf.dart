@@ -8,21 +8,20 @@ class LogTransformerTransformerConfigParseWaf {
 
   /// Creates a new [LogTransformerTransformerConfigParseWaf].
   /// [source] Specifies the source field to be parsed. The only allowed value is `@message`. If omitted, the whole log message is processed.
-  LogTransformerTransformerConfigParseWaf({this.source});
+  LogTransformerTransformerConfigParseWaf({
+    this.source,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'source': ?source};
+    return <String, dynamic>{
+      'source': ?source,
+    };
   }
 
-  factory LogTransformerTransformerConfigParseWaf.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LogTransformerTransformerConfigParseWaf.fromMap(Map<String, dynamic> map) {
     return LogTransformerTransformerConfigParseWaf(
-      source: (() {
-        final guardedValue = map['source'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

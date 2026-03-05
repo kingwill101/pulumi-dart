@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceNetworkingIpv6Global {
   /// The network prefix.
   final pulumi.Input<int> prefix;
-
   /// The IPv6 range of addresses in this pool.
   final pulumi.Input<String> range;
-
   /// (Filterable) The Region this address resides in.
   final pulumi.Input<String> region;
-
   /// (Nullable) The last address in this block of IPv6 addresses.
   final pulumi.Input<String> routeTarget;
 
@@ -45,3 +42,4 @@ class GetInstanceNetworkingIpv6Global {
     );
   }
 }
+

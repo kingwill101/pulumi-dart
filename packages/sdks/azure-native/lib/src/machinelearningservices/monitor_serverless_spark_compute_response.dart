@@ -7,14 +7,11 @@ import 'aml_token_compute_identity_response.dart';
 class MonitorServerlessSparkComputeResponse {
   /// [Required] The identity scheme leveraged to by the spark jobs running on serverless Spark.
   final pulumi.Input<AmlTokenComputeIdentityResponse> computeIdentity;
-
   /// Monitor compute type enum.
   /// Expected value is 'ServerlessSpark'.
   final pulumi.Input<String> computeType;
-
   /// [Required] The instance type running the Spark job.
   final pulumi.Input<String> instanceType;
-
   /// [Required] The Spark runtime version.
   final pulumi.Input<String> runtimeVersion;
 
@@ -32,29 +29,20 @@ class MonitorServerlessSparkComputeResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'computeIdentity':
-          pulumi.Input.mapInputValue<
-            AmlTokenComputeIdentityResponse,
-            Map<String, dynamic>
-          >(computeIdentity, (value) => value.toMap()),
+      'computeIdentity': pulumi.Input.mapInputValue<AmlTokenComputeIdentityResponse, Map<String, dynamic>>(computeIdentity, (value) => value.toMap()),
       'computeType': computeType,
       'instanceType': instanceType,
       'runtimeVersion': runtimeVersion,
     };
   }
 
-  factory MonitorServerlessSparkComputeResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MonitorServerlessSparkComputeResponse.fromMap(Map<String, dynamic> map) {
     return MonitorServerlessSparkComputeResponse(
-      computeIdentity: pulumi.Input.fromValue(
-        AmlTokenComputeIdentityResponse.fromMap(
-          (map['computeIdentity']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      computeIdentity: pulumi.Input.fromValue(AmlTokenComputeIdentityResponse.fromMap((map['computeIdentity']! as Map).cast<String, dynamic>())),
       computeType: pulumi.Input.fromValue(map['computeType'] as String),
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
       runtimeVersion: pulumi.Input.fromValue(map['runtimeVersion'] as String),
     );
   }
 }
+

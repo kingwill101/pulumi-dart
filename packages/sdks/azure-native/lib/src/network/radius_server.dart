@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RadiusServer {
   /// The address of this radius server.
   final pulumi.Input<String> radiusServerAddress;
-
   /// The initial score assigned to this radius server.
   final pulumi.Input<double>? radiusServerScore;
-
   /// The secret used for this radius server.
   final pulumi.Input<String>? radiusServerSecret;
 
@@ -33,19 +31,10 @@ class RadiusServer {
 
   factory RadiusServer.fromMap(Map<String, dynamic> map) {
     return RadiusServer(
-      radiusServerAddress: pulumi.Input.fromValue(
-        map['radiusServerAddress'] as String,
-      ),
-      radiusServerScore: (() {
-        final guardedValue = map['radiusServerScore'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      radiusServerSecret: (() {
-        final guardedValue = map['radiusServerSecret'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      radiusServerAddress: pulumi.Input.fromValue(map['radiusServerAddress'] as String),
+      radiusServerScore: (() { final guardedValue = map['radiusServerScore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      radiusServerSecret: (() { final guardedValue = map['radiusServerSecret']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

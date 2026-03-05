@@ -7,23 +7,17 @@ class ByoipPrefixState {
   /// A boolean indicating whether the prefix should be advertised.
   /// Defaults to `false`.
   final pulumi.Input<bool>? advertised;
-
   /// The reason for failure if the status is "failed".
   final pulumi.Input<String>? failureReason;
-
   /// The CIDR notation of the prefix (e.g., "192.0.2.0/24").
   final pulumi.Input<String>? prefix;
-
   /// The DigitalOcean region where the prefix will be deployed.
   final pulumi.Input<String>? region;
-
   /// The cryptographic signature proving ownership of the prefix.
   /// This is required during creation but can be omitted in subsequent updates.
   final pulumi.Input<String>? signature;
-
   /// The current status of the BYOIP prefix (e.g., "verified", "pending", "failed").
   final pulumi.Input<String>? status;
-
   /// The UUID of the BYOIP prefix.
   final pulumi.Input<String>? uuid;
 
@@ -59,41 +53,14 @@ class ByoipPrefixState {
 
   factory ByoipPrefixState.fromMap(Map<String, dynamic> map) {
     return ByoipPrefixState(
-      advertised: (() {
-        final guardedValue = map['advertised'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      failureReason: (() {
-        final guardedValue = map['failureReason'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      prefix: (() {
-        final guardedValue = map['prefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      signature: (() {
-        final guardedValue = map['signature'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      uuid: (() {
-        final guardedValue = map['uuid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      advertised: (() { final guardedValue = map['advertised']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      failureReason: (() { final guardedValue = map['failureReason']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      prefix: (() { final guardedValue = map['prefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      signature: (() { final guardedValue = map['signature']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      uuid: (() { final guardedValue = map['uuid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

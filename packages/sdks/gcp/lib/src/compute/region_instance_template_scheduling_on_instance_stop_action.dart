@@ -8,21 +8,20 @@ class RegionInstanceTemplateSchedulingOnInstanceStopAction {
 
   /// Creates a new [RegionInstanceTemplateSchedulingOnInstanceStopAction].
   /// [discardLocalSsd] If true, the contents of any attached Local SSD disks will be discarded.
-  RegionInstanceTemplateSchedulingOnInstanceStopAction({this.discardLocalSsd});
+  RegionInstanceTemplateSchedulingOnInstanceStopAction({
+    this.discardLocalSsd,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'discardLocalSsd': ?discardLocalSsd};
+    return <String, dynamic>{
+      'discardLocalSsd': ?discardLocalSsd,
+    };
   }
 
-  factory RegionInstanceTemplateSchedulingOnInstanceStopAction.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RegionInstanceTemplateSchedulingOnInstanceStopAction.fromMap(Map<String, dynamic> map) {
     return RegionInstanceTemplateSchedulingOnInstanceStopAction(
-      discardLocalSsd: (() {
-        final guardedValue = map['discardLocalSsd'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      discardLocalSsd: (() { final guardedValue = map['discardLocalSsd']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

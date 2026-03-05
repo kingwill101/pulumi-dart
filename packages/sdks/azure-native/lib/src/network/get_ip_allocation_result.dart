@@ -6,43 +6,30 @@ import 'sub_resource_response.dart';
 class GetIpAllocationResult {
   /// IpAllocation tags.
   final Map<String, String>? allocationTags;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// A unique read-only string that changes whenever the resource is updated.
   final String etag;
-
   /// Resource ID.
   final String? id;
-
   /// The IPAM allocation ID.
   final String? ipamAllocationId;
-
   /// Resource location.
   final String? location;
-
   /// Resource name.
   final String name;
-
   /// The address prefix for the IpAllocation.
   final String? prefix;
-
   /// The address prefix length for the IpAllocation.
   final int? prefixLength;
-
   /// The address prefix Type for the IpAllocation.
   final String? prefixType;
-
   /// The Subnet that using the prefix of this IpAllocation resource.
   final SubResourceResponse subnet;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// Resource type.
   final String type;
-
   /// The VirtualNetwork that using the prefix of this IpAllocation resource.
   final SubResourceResponse virtualNetwork;
 
@@ -99,56 +86,21 @@ class GetIpAllocationResult {
 
   factory GetIpAllocationResult.fromMap(Map<String, dynamic> map) {
     return GetIpAllocationResult(
-      allocationTags: (() {
-        final guardedValue = map['allocationTags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      allocationTags: (() { final guardedValue = map['allocationTags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       azureApiVersion: map['azureApiVersion'] as String,
       etag: map['etag'] as String,
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      ipamAllocationId: (() {
-        final guardedValue = map['ipamAllocationId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ipamAllocationId: (() { final guardedValue = map['ipamAllocationId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
-      prefix: (() {
-        final guardedValue = map['prefix'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      prefixLength: (() {
-        final guardedValue = map['prefixLength'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      prefixType: (() {
-        final guardedValue = map['prefixType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      subnet: SubResourceResponse.fromMap(
-        (map['subnet']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      prefix: (() { final guardedValue = map['prefix']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      prefixLength: (() { final guardedValue = map['prefixLength']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      prefixType: (() { final guardedValue = map['prefixType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      subnet: SubResourceResponse.fromMap((map['subnet']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
-      virtualNetwork: SubResourceResponse.fromMap(
-        (map['virtualNetwork']! as Map).cast<String, dynamic>(),
-      ),
+      virtualNetwork: SubResourceResponse.fromMap((map['virtualNetwork']! as Map).cast<String, dynamic>()),
     );
   }
 }
+

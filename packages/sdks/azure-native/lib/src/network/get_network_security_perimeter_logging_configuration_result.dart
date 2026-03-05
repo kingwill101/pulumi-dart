@@ -6,19 +6,14 @@ import 'nsp_logging_configuration_properties_response.dart';
 class GetNetworkSecurityPerimeterLoggingConfigurationResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// A unique read-only string that changes whenever the resource is updated.
   final String etag;
-
   /// Resource ID.
   final String id;
-
   /// Resource name.
   final String name;
-
   /// Properties of the NSP logging configuration.
   final NspLoggingConfigurationPropertiesResponse properties;
-
   /// Resource type.
   final String type;
 
@@ -49,18 +44,15 @@ class GetNetworkSecurityPerimeterLoggingConfigurationResult {
     };
   }
 
-  factory GetNetworkSecurityPerimeterLoggingConfigurationResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetNetworkSecurityPerimeterLoggingConfigurationResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkSecurityPerimeterLoggingConfigurationResult(
       azureApiVersion: map['azureApiVersion'] as String,
       etag: map['etag'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      properties: NspLoggingConfigurationPropertiesResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
+      properties: NspLoggingConfigurationPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

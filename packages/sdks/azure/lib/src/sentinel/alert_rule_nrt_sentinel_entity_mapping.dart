@@ -8,10 +8,14 @@ class AlertRuleNrtSentinelEntityMapping {
 
   /// Creates a new [AlertRuleNrtSentinelEntityMapping].
   /// [columnName] The column name to be mapped to the identifier.
-  AlertRuleNrtSentinelEntityMapping({required this.columnName});
+  AlertRuleNrtSentinelEntityMapping({
+    required this.columnName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'columnName': columnName};
+    return <String, dynamic>{
+      'columnName': columnName,
+    };
   }
 
   factory AlertRuleNrtSentinelEntityMapping.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class AlertRuleNrtSentinelEntityMapping {
     );
   }
 }
+

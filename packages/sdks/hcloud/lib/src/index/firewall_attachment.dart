@@ -733,11 +733,9 @@ class FirewallAttachment extends pulumi.CustomResource {
   /// ID of the firewall the resources
   /// should be attached to.
   late final pulumi.Output<int> firewallId;
-
   /// List of label selectors used to
   /// select resources to attach to the firewall.
   late final pulumi.Output<List<String>?> labelSelectors;
-
   /// List of Server IDs to attach to the
   /// firewall.
   late final pulumi.Output<List<int>?> serverIds;
@@ -751,11 +749,11 @@ class FirewallAttachment extends pulumi.CustomResource {
     FirewallAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'hcloud:index/firewallAttachment:FirewallAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'hcloud:index/firewallAttachment:FirewallAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     firewallId = registerOutput<int>('firewallId');
     labelSelectors = registerOutput<List<String>?>('labelSelectors');
     serverIds = registerOutput<List<int>?>('serverIds');
@@ -779,11 +777,11 @@ class FirewallAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'hcloud:index/firewallAttachment:FirewallAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'hcloud:index/firewallAttachment:FirewallAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     firewallId = registerOutput<int>('firewallId');
     labelSelectors = registerOutput<List<String>?>('labelSelectors');
     serverIds = registerOutput<List<int>?>('serverIds');

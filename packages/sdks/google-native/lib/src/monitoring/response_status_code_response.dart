@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResponseStatusCodeResponse {
   /// A class of status codes to accept.
   final pulumi.Input<String> statusClass;
-
   /// A status code to accept.
   final pulumi.Input<int> statusValue;
 
@@ -32,3 +31,4 @@ class ResponseStatusCodeResponse {
     );
   }
 }
+

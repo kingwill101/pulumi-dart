@@ -271,10 +271,8 @@ import 'spring_cloud_api_portal_custom_domain_state.dart';
 class SpringCloudApiPortalCustomDomain extends pulumi.CustomResource {
   /// The name which should be used for this Spring Cloud API Portal Domain. Changing this forces a new Spring Cloud API Portal Domain to be created.
   late final pulumi.Output<String> name;
-
   /// The ID of the Spring Cloud API Portal. Changing this forces a new Spring Cloud API Portal Domain to be created.
   late final pulumi.Output<String> springCloudApiPortalId;
-
   /// Specifies the thumbprint of the Spring Cloud Certificate that binds to the Spring Cloud API Portal Domain.
   late final pulumi.Output<String?> thumbprint;
 
@@ -287,11 +285,11 @@ class SpringCloudApiPortalCustomDomain extends pulumi.CustomResource {
     SpringCloudApiPortalCustomDomainArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appplatform/springCloudApiPortalCustomDomain:SpringCloudApiPortalCustomDomain',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appplatform/springCloudApiPortalCustomDomain:SpringCloudApiPortalCustomDomain',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     springCloudApiPortalId = registerOutput<String>('springCloudApiPortalId');
     thumbprint = registerOutput<String?>('thumbprint');
@@ -315,11 +313,11 @@ class SpringCloudApiPortalCustomDomain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appplatform/springCloudApiPortalCustomDomain:SpringCloudApiPortalCustomDomain',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appplatform/springCloudApiPortalCustomDomain:SpringCloudApiPortalCustomDomain',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     springCloudApiPortalId = registerOutput<String>('springCloudApiPortalId');
     thumbprint = registerOutput<String?>('thumbprint');

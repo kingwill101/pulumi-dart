@@ -33,11 +33,8 @@ class GetMembershipGkehubV1alphaArgs {
     return GetMembershipGkehubV1alphaArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
       membershipId: pulumi.Input.fromValue(map['membershipId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

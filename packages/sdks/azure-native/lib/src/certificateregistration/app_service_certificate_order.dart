@@ -226,82 +226,55 @@ import 'certificate_order_contact_response.dart';
 /// ```
 class AppServiceCertificateOrder extends pulumi.CustomResource {
   /// Reasons why App Service Certificate is not renewable at the current moment.
-  late final pulumi.Output<List<String>>
-  appServiceCertificateNotRenewableReasons;
-
+  late final pulumi.Output<List<String>> appServiceCertificateNotRenewableReasons;
   /// &lt;code&gt;true&lt;/code&gt; if the certificate should be automatically renewed when it expires; otherwise, &lt;code&gt;false&lt;/code&gt;.
   late final pulumi.Output<bool?> autoRenew;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// State of the Key Vault secret.
-  late final pulumi.Output<Map<String, AppServiceCertificateResponse>?>
-  certificates;
-
+  late final pulumi.Output<Map<String, AppServiceCertificateResponse>?> certificates;
   /// Contact info
   late final pulumi.Output<CertificateOrderContactResponse> contact;
-
   /// Last CSR that was created for this order.
   late final pulumi.Output<String?> csr;
-
   /// Certificate distinguished name.
   late final pulumi.Output<String?> distinguishedName;
-
   /// Domain verification token.
   late final pulumi.Output<String> domainVerificationToken;
-
   /// Certificate expiration time.
   late final pulumi.Output<String> expirationTime;
-
   /// Intermediate certificate.
   late final pulumi.Output<CertificateDetailsResponse> intermediate;
-
   /// &lt;code&gt;true&lt;/code&gt; if private key is external; otherwise, &lt;code&gt;false&lt;/code&gt;.
   late final pulumi.Output<bool> isPrivateKeyExternal;
-
   /// Certificate key size.
   late final pulumi.Output<int?> keySize;
-
   /// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
   late final pulumi.Output<String?> kind;
-
   /// Certificate last issuance time.
   late final pulumi.Output<String> lastCertificateIssuanceTime;
-
   /// Resource Location.
   late final pulumi.Output<String> location;
-
   /// Resource Name.
   late final pulumi.Output<String> name;
-
   /// Time stamp when the certificate would be auto renewed next
   late final pulumi.Output<String> nextAutoRenewalTimeStamp;
-
   /// Certificate product type.
   late final pulumi.Output<String> productType;
-
   /// Status of certificate order.
   late final pulumi.Output<String> provisioningState;
-
   /// Root certificate.
   late final pulumi.Output<CertificateDetailsResponse> root;
-
   /// Current serial number of the certificate.
   late final pulumi.Output<String> serialNumber;
-
   /// Signed certificate.
   late final pulumi.Output<CertificateDetailsResponse> signedCertificate;
-
   /// Current order status.
   late final pulumi.Output<String> status;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource type.
   late final pulumi.Output<String> type;
-
   /// Duration in years (must be 1).
   late final pulumi.Output<int?> validityInYears;
 
@@ -314,87 +287,33 @@ class AppServiceCertificateOrder extends pulumi.CustomResource {
     AppServiceCertificateOrderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:certificateregistration:AppServiceCertificateOrder',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    appServiceCertificateNotRenewableReasons = registerOutput<List<String>>(
-      'appServiceCertificateNotRenewableReasons',
-    );
+          'azure-native:certificateregistration:AppServiceCertificateOrder',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    appServiceCertificateNotRenewableReasons = registerOutput<List<String>>('appServiceCertificateNotRenewableReasons');
     autoRenew = registerOutput<bool?>('autoRenew');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    certificates = registerOutput<Map<String, AppServiceCertificateResponse>?>(
-      'certificates',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeMapValues<AppServiceCertificateResponse>(
-          guardedValue,
-          (value) => AppServiceCertificateResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      },
-    );
-    contact = registerOutput<CertificateOrderContactResponse>(
-      'contact',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CertificateOrderContactResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    certificates = registerOutput<Map<String, AppServiceCertificateResponse>?>('certificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<AppServiceCertificateResponse>(guardedValue, (value) => AppServiceCertificateResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    contact = registerOutput<CertificateOrderContactResponse>('contact', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateOrderContactResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     csr = registerOutput<String?>('csr');
     distinguishedName = registerOutput<String?>('distinguishedName');
     domainVerificationToken = registerOutput<String>('domainVerificationToken');
     expirationTime = registerOutput<String>('expirationTime');
-    intermediate = registerOutput<CertificateDetailsResponse>(
-      'intermediate',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CertificateDetailsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    intermediate = registerOutput<CertificateDetailsResponse>('intermediate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     isPrivateKeyExternal = registerOutput<bool>('isPrivateKeyExternal');
     keySize = registerOutput<int?>('keySize');
     kind = registerOutput<String?>('kind');
-    lastCertificateIssuanceTime = registerOutput<String>(
-      'lastCertificateIssuanceTime',
-    );
+    lastCertificateIssuanceTime = registerOutput<String>('lastCertificateIssuanceTime');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    nextAutoRenewalTimeStamp = registerOutput<String>(
-      'nextAutoRenewalTimeStamp',
-    );
+    nextAutoRenewalTimeStamp = registerOutput<String>('nextAutoRenewalTimeStamp');
     productType = registerOutput<String>('productType');
     provisioningState = registerOutput<String>('provisioningState');
-    root = registerOutput<CertificateDetailsResponse>(
-      'root',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CertificateDetailsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    root = registerOutput<CertificateDetailsResponse>('root', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     serialNumber = registerOutput<String>('serialNumber');
-    signedCertificate = registerOutput<CertificateDetailsResponse>(
-      'signedCertificate',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CertificateDetailsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    signedCertificate = registerOutput<CertificateDetailsResponse>('signedCertificate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');

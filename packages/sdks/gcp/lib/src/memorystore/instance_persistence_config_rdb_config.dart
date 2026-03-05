@@ -10,7 +10,6 @@ class InstancePersistenceConfigRdbConfig {
   /// TWELVE_HOURS
   /// TWENTY_FOUR_HOURS
   final pulumi.Input<String>? rdbSnapshotPeriod;
-
   /// Optional. Time that the first snapshot was/will be attempted, and to which future
   /// snapshots will be aligned. If not provided, the current time will be
   /// used.
@@ -33,16 +32,9 @@ class InstancePersistenceConfigRdbConfig {
 
   factory InstancePersistenceConfigRdbConfig.fromMap(Map<String, dynamic> map) {
     return InstancePersistenceConfigRdbConfig(
-      rdbSnapshotPeriod: (() {
-        final guardedValue = map['rdbSnapshotPeriod'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      rdbSnapshotStartTime: (() {
-        final guardedValue = map['rdbSnapshotStartTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      rdbSnapshotPeriod: (() { final guardedValue = map['rdbSnapshotPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      rdbSnapshotStartTime: (() { final guardedValue = map['rdbSnapshotStartTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

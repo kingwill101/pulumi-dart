@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NoncurrentVersionTransitionResponse {
   /// Specifies how many noncurrent versions S3 will retain. If there are this many more recent noncurrent versions, S3 will take the associated action. For more information about noncurrent versions, see [Lifecycle configuration elements](https://docs.aws.amazon.com/AmazonS3/latest/userguide/intro-lifecycle-rules.html) in the *Amazon S3 User Guide*.
   final pulumi.Input<int>? newerNoncurrentVersions;
-
   /// The class of storage used to store the object.
   final pulumi.Input<String>? storageClass;
-
   /// Specifies the number of days an object is noncurrent before Amazon S3 can perform the associated action. For information about the noncurrent days calculations, see [How Amazon S3 Calculates How Long an Object Has Been Noncurrent](https://docs.aws.amazon.com/AmazonS3/latest/dev/intro-lifecycle-rules.html#non-current-days-calculations) in the *Amazon S3 User Guide*.
   final pulumi.Input<int>? transitionInDays;
 
@@ -31,25 +29,12 @@ class NoncurrentVersionTransitionResponse {
     };
   }
 
-  factory NoncurrentVersionTransitionResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NoncurrentVersionTransitionResponse.fromMap(Map<String, dynamic> map) {
     return NoncurrentVersionTransitionResponse(
-      newerNoncurrentVersions: (() {
-        final guardedValue = map['newerNoncurrentVersions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      storageClass: (() {
-        final guardedValue = map['storageClass'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      transitionInDays: (() {
-        final guardedValue = map['transitionInDays'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      newerNoncurrentVersions: (() { final guardedValue = map['newerNoncurrentVersions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      storageClass: (() { final guardedValue = map['storageClass']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      transitionInDays: (() { final guardedValue = map['transitionInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

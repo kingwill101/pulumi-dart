@@ -16,3 +16,4 @@ enum WarehouseAuthenticationType {
     throw ArgumentError('Unknown WarehouseAuthenticationType value: $value');
   }
 }
+

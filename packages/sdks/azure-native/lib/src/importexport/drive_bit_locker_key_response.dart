@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DriveBitLockerKeyResponse {
   /// BitLocker recovery key or password
   final pulumi.Input<String>? bitLockerKey;
-
   /// Drive ID
   final pulumi.Input<String>? driveId;
 
   /// Creates a new [DriveBitLockerKeyResponse].
   /// [bitLockerKey] BitLocker recovery key or password
   /// [driveId] Drive ID
-  DriveBitLockerKeyResponse({this.bitLockerKey, this.driveId});
+  DriveBitLockerKeyResponse({
+    this.bitLockerKey,
+    this.driveId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class DriveBitLockerKeyResponse {
 
   factory DriveBitLockerKeyResponse.fromMap(Map<String, dynamic> map) {
     return DriveBitLockerKeyResponse(
-      bitLockerKey: (() {
-        final guardedValue = map['bitLockerKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      driveId: (() {
-        final guardedValue = map['driveId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      bitLockerKey: (() { final guardedValue = map['bitLockerKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      driveId: (() { final guardedValue = map['driveId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

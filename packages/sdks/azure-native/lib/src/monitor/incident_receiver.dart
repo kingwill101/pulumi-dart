@@ -7,13 +7,10 @@ import 'incident_service_connection.dart';
 class IncidentReceiver {
   /// The incident service connection
   final pulumi.Input<IncidentServiceConnection> connection;
-
   /// The incident management service type
   final pulumi.Input<String> incidentManagementService;
-
   /// Field mappings for the incident service
   final pulumi.Input<Map<String, String>> mappings;
-
   /// The name of the Incident receiver. Names must be unique across all receivers within an action group.
   final pulumi.Input<String> name;
 
@@ -31,11 +28,7 @@ class IncidentReceiver {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connection':
-          pulumi.Input.mapInputValue<
-            IncidentServiceConnection,
-            Map<String, dynamic>
-          >(connection, (value) => value.toMap()),
+      'connection': pulumi.Input.mapInputValue<IncidentServiceConnection, Map<String, dynamic>>(connection, (value) => value.toMap()),
       'incidentManagementService': incidentManagementService,
       'mappings': mappings,
       'name': name,
@@ -44,18 +37,11 @@ class IncidentReceiver {
 
   factory IncidentReceiver.fromMap(Map<String, dynamic> map) {
     return IncidentReceiver(
-      connection: pulumi.Input.fromValue(
-        IncidentServiceConnection.fromMap(
-          (map['connection']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      incidentManagementService: pulumi.Input.fromValue(
-        map['incidentManagementService'] as String,
-      ),
-      mappings: pulumi.Input.fromValue(
-        (map['mappings'] as Map).cast<String, String>(),
-      ),
+      connection: pulumi.Input.fromValue(IncidentServiceConnection.fromMap((map['connection']! as Map).cast<String, dynamic>())),
+      incidentManagementService: pulumi.Input.fromValue(map['incidentManagementService'] as String),
+      mappings: pulumi.Input.fromValue((map['mappings'] as Map).cast<String, String>()),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

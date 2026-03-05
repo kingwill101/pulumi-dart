@@ -392,13 +392,10 @@ import 'vpc_security_group_rules_exclusive_state.dart';
 class VpcSecurityGroupRulesExclusive extends pulumi.CustomResource {
   /// Egress rule IDs.
   late final pulumi.Output<List<String>> egressRuleIds;
-
   /// Ingress rule IDs.
   late final pulumi.Output<List<String>> ingressRuleIds;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// ID of the security group.
   late final pulumi.Output<String> securityGroupId;
 
@@ -411,11 +408,11 @@ class VpcSecurityGroupRulesExclusive extends pulumi.CustomResource {
     VpcSecurityGroupRulesExclusiveArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/vpcSecurityGroupRulesExclusive:VpcSecurityGroupRulesExclusive',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/vpcSecurityGroupRulesExclusive:VpcSecurityGroupRulesExclusive',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     egressRuleIds = registerOutput<List<String>>('egressRuleIds');
     ingressRuleIds = registerOutput<List<String>>('ingressRuleIds');
     region = registerOutput<String>('region');
@@ -440,11 +437,11 @@ class VpcSecurityGroupRulesExclusive extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/vpcSecurityGroupRulesExclusive:VpcSecurityGroupRulesExclusive',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/vpcSecurityGroupRulesExclusive:VpcSecurityGroupRulesExclusive',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     egressRuleIds = registerOutput<List<String>>('egressRuleIds');
     ingressRuleIds = registerOutput<List<String>>('ingressRuleIds');
     region = registerOutput<String>('region');

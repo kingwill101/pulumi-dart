@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetHybridRunbookWorkerArgs {
   /// The name of the automation account.
   final pulumi.Input<String> automationAccountName;
-
   /// The hybrid runbook worker group name
   final pulumi.Input<String> hybridRunbookWorkerGroupName;
-
   /// The hybrid runbook worker id
   final pulumi.Input<String> hybridRunbookWorkerId;
-
   /// Name of an Azure Resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -42,18 +39,11 @@ class GetHybridRunbookWorkerArgs {
 
   factory GetHybridRunbookWorkerArgs.fromMap(Map<String, dynamic> map) {
     return GetHybridRunbookWorkerArgs(
-      automationAccountName: pulumi.Input.fromValue(
-        map['automationAccountName'] as String,
-      ),
-      hybridRunbookWorkerGroupName: pulumi.Input.fromValue(
-        map['hybridRunbookWorkerGroupName'] as String,
-      ),
-      hybridRunbookWorkerId: pulumi.Input.fromValue(
-        map['hybridRunbookWorkerId'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      automationAccountName: pulumi.Input.fromValue(map['automationAccountName'] as String),
+      hybridRunbookWorkerGroupName: pulumi.Input.fromValue(map['hybridRunbookWorkerGroupName'] as String),
+      hybridRunbookWorkerId: pulumi.Input.fromValue(map['hybridRunbookWorkerId'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

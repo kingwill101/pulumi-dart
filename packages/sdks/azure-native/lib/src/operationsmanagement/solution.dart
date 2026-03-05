@@ -236,22 +236,16 @@ import 'solution_properties_response.dart';
 class Solution extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Resource location
   late final pulumi.Output<String?> location;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// Plan for solution object supported by the OperationsManagement resource provider.
   late final pulumi.Output<SolutionPlanResponse?> plan;
-
   /// Properties for solution object supported by the OperationsManagement resource provider.
   late final pulumi.Output<SolutionPropertiesResponse> properties;
-
   /// Resource tags
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -264,34 +258,16 @@ class Solution extends pulumi.CustomResource {
     SolutionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:operationsmanagement:Solution',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:operationsmanagement:Solution',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    plan = registerOutput<SolutionPlanResponse?>(
-      'plan',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SolutionPlanResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    properties = registerOutput<SolutionPropertiesResponse>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SolutionPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    plan = registerOutput<SolutionPlanResponse?>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SolutionPlanResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    properties = registerOutput<SolutionPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SolutionPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

@@ -114,16 +114,12 @@ import 'role_membership_state.dart';
 class RoleMembership extends pulumi.CustomResource {
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
   late final pulumi.Output<String> awsAccountId;
-
   /// Name of the group to be added to the role.
   late final pulumi.Output<String> memberName;
-
   /// Name of the namespace. Defaults to `default`.
   late final pulumi.Output<String> namespace;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Role to add the group to. Valid values are `ADMIN`, `AUTHOR`, `READER`, `ADMIN_PRO`, `AUTHOR_PRO`, and `READER_PRO`.
   ///
   /// The following arguments are optional:
@@ -138,11 +134,11 @@ class RoleMembership extends pulumi.CustomResource {
     RoleMembershipArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:quicksight/roleMembership:RoleMembership',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:quicksight/roleMembership:RoleMembership',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     awsAccountId = registerOutput<String>('awsAccountId');
     memberName = registerOutput<String>('memberName');
     namespace = registerOutput<String>('namespace');
@@ -168,11 +164,11 @@ class RoleMembership extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:quicksight/roleMembership:RoleMembership',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:quicksight/roleMembership:RoleMembership',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     awsAccountId = registerOutput<String>('awsAccountId');
     memberName = registerOutput<String>('memberName');
     namespace = registerOutput<String>('namespace');

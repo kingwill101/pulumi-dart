@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KeyVaultProperties {
   /// The name of key used to encrypt data.
   final pulumi.Input<String>? keyName;
-
   /// The key version of the key used to encrypt data.
   final pulumi.Input<String>? keyVersion;
-
   /// The URI of the key vault key used to encrypt data.
   final pulumi.Input<String>? keyvaultUri;
 
@@ -17,7 +15,11 @@ class KeyVaultProperties {
   /// [keyName] The name of key used to encrypt data.
   /// [keyVersion] The key version of the key used to encrypt data.
   /// [keyvaultUri] The URI of the key vault key used to encrypt data.
-  KeyVaultProperties({this.keyName, this.keyVersion, this.keyvaultUri});
+  KeyVaultProperties({
+    this.keyName,
+    this.keyVersion,
+    this.keyvaultUri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class KeyVaultProperties {
 
   factory KeyVaultProperties.fromMap(Map<String, dynamic> map) {
     return KeyVaultProperties(
-      keyName: (() {
-        final guardedValue = map['keyName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keyVersion: (() {
-        final guardedValue = map['keyVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keyvaultUri: (() {
-        final guardedValue = map['keyvaultUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      keyName: (() { final guardedValue = map['keyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyVersion: (() { final guardedValue = map['keyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyvaultUri: (() { final guardedValue = map['keyvaultUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

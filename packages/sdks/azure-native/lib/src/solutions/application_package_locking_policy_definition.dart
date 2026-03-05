@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationPackageLockingPolicyDefinition {
   /// The deny assignment excluded actions.
   final pulumi.Input<List<String>>? allowedActions;
-
   /// The deny assignment excluded data actions.
   final pulumi.Input<List<String>>? allowedDataActions;
 
@@ -25,20 +24,11 @@ class ApplicationPackageLockingPolicyDefinition {
     };
   }
 
-  factory ApplicationPackageLockingPolicyDefinition.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApplicationPackageLockingPolicyDefinition.fromMap(Map<String, dynamic> map) {
     return ApplicationPackageLockingPolicyDefinition(
-      allowedActions: (() {
-        final guardedValue = map['allowedActions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      allowedDataActions: (() {
-        final guardedValue = map['allowedDataActions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      allowedActions: (() { final guardedValue = map['allowedActions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      allowedDataActions: (() { final guardedValue = map['allowedDataActions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

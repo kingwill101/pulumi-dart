@@ -9,10 +9,14 @@ class ApprovalConfigResponse {
 
   /// Creates a new [ApprovalConfigResponse].
   /// [approvalRequired] Whether or not approval is needed. If this is set on a build, it will become pending when created, and will need to be explicitly approved to start.
-  ApprovalConfigResponse({required this.approvalRequired});
+  ApprovalConfigResponse({
+    required this.approvalRequired,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'approvalRequired': approvalRequired};
+    return <String, dynamic>{
+      'approvalRequired': approvalRequired,
+    };
   }
 
   factory ApprovalConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class ApprovalConfigResponse {
     );
   }
 }
+

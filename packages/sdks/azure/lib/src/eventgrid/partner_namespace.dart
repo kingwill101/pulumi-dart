@@ -196,31 +196,22 @@ import 'partner_namespace_state.dart';
 class PartnerNamespace extends pulumi.CustomResource {
   /// The endpoint for the Event Grid Partner Namespace.
   late final pulumi.Output<String> endpoint;
-
   /// One or more `inbound_ip_rule` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> inboundIpRules;
-
   /// Whether local authentication methods are enabled for the Event Grid Partner Namespace. Defaults to `true`.
   late final pulumi.Output<bool?> localAuthenticationEnabled;
-
   /// Specifies the Azure Region where the Event Grid Partner Namespace exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The name which should be used for this Event Grid Partner Namespace. Changing this forces a new Event Grid Partner Namespace to be created.
   late final pulumi.Output<String> name;
-
   /// The resource Id of the Event Grid Partner Registration that this namespace is associated with. Changing this forces a new Event Grid Partner Namespace to be created.
   late final pulumi.Output<String> partnerRegistrationId;
-
   /// The partner topic routing mode. Possible values are `ChannelNameHeader` and `SourceEventAttribute`. Defaults to `ChannelNameHeader`. Changing this forces a new Event Grid Partner Namespace to be created.
   late final pulumi.Output<String?> partnerTopicRoutingMode;
-
   /// Whether or not public network access is allowed for this server. Possible values are `Enabled` and `Disabled`. Defaults to `Enabled`.
   late final pulumi.Output<String?> publicNetworkAccess;
-
   /// The name of the Resource Group where the Event Grid Partner Namespace should exist. Changing this forces a new Event Grid Partner Namespace to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags which should be assigned to the Event Grid Partner Namespace.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -233,24 +224,18 @@ class PartnerNamespace extends pulumi.CustomResource {
     PartnerNamespaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:eventgrid/partnerNamespace:PartnerNamespace',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:eventgrid/partnerNamespace:PartnerNamespace',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     endpoint = registerOutput<String>('endpoint');
-    inboundIpRules = registerOutput<List<Map<String, dynamic>>?>(
-      'inboundIpRules',
-    );
-    localAuthenticationEnabled = registerOutput<bool?>(
-      'localAuthenticationEnabled',
-    );
+    inboundIpRules = registerOutput<List<Map<String, dynamic>>?>('inboundIpRules');
+    localAuthenticationEnabled = registerOutput<bool?>('localAuthenticationEnabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     partnerRegistrationId = registerOutput<String>('partnerRegistrationId');
-    partnerTopicRoutingMode = registerOutput<String?>(
-      'partnerTopicRoutingMode',
-    );
+    partnerTopicRoutingMode = registerOutput<String?>('partnerTopicRoutingMode');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -274,24 +259,18 @@ class PartnerNamespace extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:eventgrid/partnerNamespace:PartnerNamespace',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:eventgrid/partnerNamespace:PartnerNamespace',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     endpoint = registerOutput<String>('endpoint');
-    inboundIpRules = registerOutput<List<Map<String, dynamic>>?>(
-      'inboundIpRules',
-    );
-    localAuthenticationEnabled = registerOutput<bool?>(
-      'localAuthenticationEnabled',
-    );
+    inboundIpRules = registerOutput<List<Map<String, dynamic>>?>('inboundIpRules');
+    localAuthenticationEnabled = registerOutput<bool?>('localAuthenticationEnabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     partnerRegistrationId = registerOutput<String>('partnerRegistrationId');
-    partnerTopicRoutingMode = registerOutput<String?>(
-      'partnerTopicRoutingMode',
-    );
+    partnerTopicRoutingMode = registerOutput<String?>('partnerTopicRoutingMode');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     tags = registerOutput<Map<String, String>?>('tags');

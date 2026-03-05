@@ -164,13 +164,10 @@ import 'model_state.dart';
 class Model extends pulumi.CustomResource {
   /// The description of the model.
   late final pulumi.Output<String?> description;
-
   /// The group of the model belongs to.
   late final pulumi.Output<String> groupId;
-
   /// The name of the model.
   late final pulumi.Output<String> modelName;
-
   /// The schema of the model.
   late final pulumi.Output<String> schema;
 
@@ -178,13 +175,16 @@ class Model extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Model]. {@macro pulumi_apigateway_model_model_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Model(String name, {ModelArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:apigateway/model:Model',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Model(
+    String name, {
+    ModelArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:apigateway/model:Model',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     groupId = registerOutput<String>('groupId');
     modelName = registerOutput<String>('modelName');
@@ -192,7 +192,11 @@ class Model extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Model] resource's state with the given [name] and [id].
-  static Model get(String name, pulumi.Input<String> id, {ModelState? state}) {
+  static Model get(
+    String name,
+    pulumi.Input<String> id, {
+    ModelState? state,
+  }) {
     return Model._get(
       name,
       state: state?.toMap(),
@@ -205,11 +209,11 @@ class Model extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:apigateway/model:Model',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:apigateway/model:Model',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     groupId = registerOutput<String>('groupId');
     modelName = registerOutput<String>('modelName');

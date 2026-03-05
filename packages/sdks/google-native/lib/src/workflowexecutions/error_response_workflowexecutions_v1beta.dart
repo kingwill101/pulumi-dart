@@ -7,10 +7,8 @@ import 'stack_trace_response_workflowexecutions_v1beta.dart';
 class ErrorResponseWorkflowexecutionsV1beta {
   /// Human-readable stack trace string.
   final pulumi.Input<String> context;
-
   /// Error message and data returned represented as a JSON string.
   final pulumi.Input<String> payload;
-
   /// Stack trace with detailed information of where error was generated.
   final pulumi.Input<StackTraceResponseWorkflowexecutionsV1beta> stackTrace;
 
@@ -28,25 +26,16 @@ class ErrorResponseWorkflowexecutionsV1beta {
     return <String, dynamic>{
       'context': context,
       'payload': payload,
-      'stackTrace':
-          pulumi.Input.mapInputValue<
-            StackTraceResponseWorkflowexecutionsV1beta,
-            Map<String, dynamic>
-          >(stackTrace, (value) => value.toMap()),
+      'stackTrace': pulumi.Input.mapInputValue<StackTraceResponseWorkflowexecutionsV1beta, Map<String, dynamic>>(stackTrace, (value) => value.toMap()),
     };
   }
 
-  factory ErrorResponseWorkflowexecutionsV1beta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ErrorResponseWorkflowexecutionsV1beta.fromMap(Map<String, dynamic> map) {
     return ErrorResponseWorkflowexecutionsV1beta(
       context: pulumi.Input.fromValue(map['context'] as String),
       payload: pulumi.Input.fromValue(map['payload'] as String),
-      stackTrace: pulumi.Input.fromValue(
-        StackTraceResponseWorkflowexecutionsV1beta.fromMap(
-          (map['stackTrace']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      stackTrace: pulumi.Input.fromValue(StackTraceResponseWorkflowexecutionsV1beta.fromMap((map['stackTrace']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

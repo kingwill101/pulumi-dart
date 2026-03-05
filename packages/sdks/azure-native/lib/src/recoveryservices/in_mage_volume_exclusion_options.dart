@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InMageVolumeExclusionOptions {
   /// The value indicating whether to exclude multi volume disk or not. If a disk has multiple volumes and one of the volume has label matching with VolumeLabel this disk will be excluded from replication if OnlyExcludeIfSingleVolume is false.
   final pulumi.Input<String>? onlyExcludeIfSingleVolume;
-
   /// The volume label. The disk having any volume with this label will be excluded from replication.
   final pulumi.Input<String>? volumeLabel;
 
@@ -27,16 +26,9 @@ class InMageVolumeExclusionOptions {
 
   factory InMageVolumeExclusionOptions.fromMap(Map<String, dynamic> map) {
     return InMageVolumeExclusionOptions(
-      onlyExcludeIfSingleVolume: (() {
-        final guardedValue = map['onlyExcludeIfSingleVolume'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      volumeLabel: (() {
-        final guardedValue = map['volumeLabel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      onlyExcludeIfSingleVolume: (() { final guardedValue = map['onlyExcludeIfSingleVolume']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      volumeLabel: (() { final guardedValue = map['volumeLabel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

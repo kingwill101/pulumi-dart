@@ -9,10 +9,14 @@ class SecurityContextResponse {
 
   /// Creates a new [SecurityContextResponse].
   /// [runAsUser] The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
-  SecurityContextResponse({required this.runAsUser});
+  SecurityContextResponse({
+    required this.runAsUser,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'runAsUser': runAsUser};
+    return <String, dynamic>{
+      'runAsUser': runAsUser,
+    };
   }
 
   factory SecurityContextResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class SecurityContextResponse {
     );
   }
 }
+

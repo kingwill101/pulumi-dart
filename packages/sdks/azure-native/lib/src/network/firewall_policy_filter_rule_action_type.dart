@@ -12,8 +12,7 @@ enum FirewallPolicyFilterRuleActionType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown FirewallPolicyFilterRuleActionType value: $value',
-    );
+    throw ArgumentError('Unknown FirewallPolicyFilterRuleActionType value: $value');
   }
 }
+

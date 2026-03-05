@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TaskHubPropertiesResponse {
   /// URL of the durable task scheduler dashboard
   final pulumi.Input<String> dashboardUrl;
-
   /// The status of the last operation
   final pulumi.Input<String> provisioningState;
 
@@ -28,9 +27,8 @@ class TaskHubPropertiesResponse {
   factory TaskHubPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return TaskHubPropertiesResponse(
       dashboardUrl: pulumi.Input.fromValue(map['dashboardUrl'] as String),
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
     );
   }
 }
+

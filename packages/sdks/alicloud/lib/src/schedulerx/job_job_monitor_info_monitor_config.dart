@@ -5,23 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JobJobMonitorInfoMonitorConfig {
   /// Enable failure alarm
   final pulumi.Input<bool>? failEnable;
-
   /// Whether no available Machine alarm is on
   final pulumi.Input<bool>? missWorkerEnable;
-
   /// Alarm sending form
   /// - sms: sms alarm
   /// - phone: phone alarm
   /// - mail: mail alarm
   /// - webhook:webhook alarm
   final pulumi.Input<String>? sendChannel;
-
   /// Timeout threshold, unit s, default 7200.
   final pulumi.Input<int>? timeout;
-
   /// Time-out alarm switch. The values are as follows:
   final pulumi.Input<bool>? timeoutEnable;
-
   /// The trigger switch is terminated by timeout and is turned off by default.
   final pulumi.Input<bool>? timeoutKillEnable;
 
@@ -54,36 +49,13 @@ class JobJobMonitorInfoMonitorConfig {
 
   factory JobJobMonitorInfoMonitorConfig.fromMap(Map<String, dynamic> map) {
     return JobJobMonitorInfoMonitorConfig(
-      failEnable: (() {
-        final guardedValue = map['failEnable'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      missWorkerEnable: (() {
-        final guardedValue = map['missWorkerEnable'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      sendChannel: (() {
-        final guardedValue = map['sendChannel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      timeout: (() {
-        final guardedValue = map['timeout'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      timeoutEnable: (() {
-        final guardedValue = map['timeoutEnable'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      timeoutKillEnable: (() {
-        final guardedValue = map['timeoutKillEnable'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      failEnable: (() { final guardedValue = map['failEnable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      missWorkerEnable: (() { final guardedValue = map['missWorkerEnable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      sendChannel: (() { final guardedValue = map['sendChannel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      timeoutEnable: (() { final guardedValue = map['timeoutEnable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      timeoutKillEnable: (() { final guardedValue = map['timeoutKillEnable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

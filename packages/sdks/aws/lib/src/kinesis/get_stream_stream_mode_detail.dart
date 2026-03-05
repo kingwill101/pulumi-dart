@@ -8,10 +8,14 @@ class GetStreamStreamModeDetail {
 
   /// Creates a new [GetStreamStreamModeDetail].
   /// [streamMode] Capacity mode of the stream. Either `ON_DEMAND` or `PROVISIONED`.
-  GetStreamStreamModeDetail({required this.streamMode});
+  GetStreamStreamModeDetail({
+    required this.streamMode,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'streamMode': streamMode};
+    return <String, dynamic>{
+      'streamMode': streamMode,
+    };
   }
 
   factory GetStreamStreamModeDetail.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class GetStreamStreamModeDetail {
     );
   }
 }
+

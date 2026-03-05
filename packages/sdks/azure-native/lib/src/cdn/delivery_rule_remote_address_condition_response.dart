@@ -8,7 +8,6 @@ class DeliveryRuleRemoteAddressConditionResponse {
   /// Request variable to compare with.
   /// Expected value is 'RemoteAddress'.
   final pulumi.Input<String> name;
-
   /// Defines the parameters for the condition.
   final pulumi.Input<RemoteAddressMatchConditionParametersResponse> parameters;
 
@@ -23,24 +22,15 @@ class DeliveryRuleRemoteAddressConditionResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'parameters':
-          pulumi.Input.mapInputValue<
-            RemoteAddressMatchConditionParametersResponse,
-            Map<String, dynamic>
-          >(parameters, (value) => value.toMap()),
+      'parameters': pulumi.Input.mapInputValue<RemoteAddressMatchConditionParametersResponse, Map<String, dynamic>>(parameters, (value) => value.toMap()),
     };
   }
 
-  factory DeliveryRuleRemoteAddressConditionResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DeliveryRuleRemoteAddressConditionResponse.fromMap(Map<String, dynamic> map) {
     return DeliveryRuleRemoteAddressConditionResponse(
       name: pulumi.Input.fromValue(map['name'] as String),
-      parameters: pulumi.Input.fromValue(
-        RemoteAddressMatchConditionParametersResponse.fromMap(
-          (map['parameters']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      parameters: pulumi.Input.fromValue(RemoteAddressMatchConditionParametersResponse.fromMap((map['parameters']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

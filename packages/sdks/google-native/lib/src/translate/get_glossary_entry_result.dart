@@ -7,13 +7,10 @@ import 'glossary_terms_set_response.dart';
 class GetGlossaryEntryResult {
   /// Describes the glossary entry.
   final String description;
-
   /// The resource name of the entry. Format: "projects/*/locations/*/glossaries/*/glossaryEntries/*"
   final String name;
-
   /// Used for an unidirectional glossary.
   final GlossaryTermsPairResponse termsPair;
-
   /// Used for an equivalent term sets glossary.
   final GlossaryTermsSetResponse termsSet;
 
@@ -42,12 +39,9 @@ class GetGlossaryEntryResult {
     return GetGlossaryEntryResult(
       description: map['description'] as String,
       name: map['name'] as String,
-      termsPair: GlossaryTermsPairResponse.fromMap(
-        (map['termsPair']! as Map).cast<String, dynamic>(),
-      ),
-      termsSet: GlossaryTermsSetResponse.fromMap(
-        (map['termsSet']! as Map).cast<String, dynamic>(),
-      ),
+      termsPair: GlossaryTermsPairResponse.fromMap((map['termsPair']! as Map).cast<String, dynamic>()),
+      termsSet: GlossaryTermsSetResponse.fromMap((map['termsSet']! as Map).cast<String, dynamic>()),
     );
   }
 }
+

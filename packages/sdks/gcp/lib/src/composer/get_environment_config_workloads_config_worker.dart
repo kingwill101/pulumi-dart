@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEnvironmentConfigWorkloadsConfigWorker {
   /// CPU request and limit for a single Airflow worker replica.
   final pulumi.Input<double> cpu;
-
   /// Maximum number of workers for autoscaling.
   final pulumi.Input<int> maxCount;
-
   /// Memory (GB) request and limit for a single Airflow worker replica.
   final pulumi.Input<double> memoryGb;
-
   /// Minimum number of workers for autoscaling.
   final pulumi.Input<int> minCount;
-
   /// Storage (GB) request and limit for a single Airflow worker replica.
   final pulumi.Input<double> storageGb;
 
@@ -42,9 +38,7 @@ class GetEnvironmentConfigWorkloadsConfigWorker {
     };
   }
 
-  factory GetEnvironmentConfigWorkloadsConfigWorker.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetEnvironmentConfigWorkloadsConfigWorker.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentConfigWorkloadsConfigWorker(
       cpu: pulumi.Input.fromValue(map['cpu'] as double),
       maxCount: pulumi.Input.fromValue(map['maxCount'] as int),
@@ -54,3 +48,4 @@ class GetEnvironmentConfigWorkloadsConfigWorker {
     );
   }
 }
+

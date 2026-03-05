@@ -8,17 +8,20 @@ class GetRulesRuleRuleActionTrafficLimitConfig {
 
   /// Creates a new [GetRulesRuleRuleActionTrafficLimitConfig].
   /// [qps] The Number of requests per second.
-  GetRulesRuleRuleActionTrafficLimitConfig({required this.qps});
+  GetRulesRuleRuleActionTrafficLimitConfig({
+    required this.qps,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'qps': qps};
+    return <String, dynamic>{
+      'qps': qps,
+    };
   }
 
-  factory GetRulesRuleRuleActionTrafficLimitConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetRulesRuleRuleActionTrafficLimitConfig.fromMap(Map<String, dynamic> map) {
     return GetRulesRuleRuleActionTrafficLimitConfig(
       qps: pulumi.Input.fromValue(map['qps'] as int),
     );
   }
 }
+

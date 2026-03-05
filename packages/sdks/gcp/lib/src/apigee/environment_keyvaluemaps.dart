@@ -483,7 +483,6 @@ class EnvironmentKeyvaluemaps extends pulumi.CustomResource {
   /// The Apigee environment group associated with the Apigee environment,
   /// in the format `organizations/{{org_name}}/environments/{{env_name}}`.
   late final pulumi.Output<String> envId;
-
   /// Required. ID of the key value map.
   late final pulumi.Output<String> name;
 
@@ -496,11 +495,11 @@ class EnvironmentKeyvaluemaps extends pulumi.CustomResource {
     EnvironmentKeyvaluemapsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:apigee/environmentKeyvaluemaps:EnvironmentKeyvaluemaps',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:apigee/environmentKeyvaluemaps:EnvironmentKeyvaluemaps',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     envId = registerOutput<String>('envId');
     this.name = registerOutput<String>('name');
   }
@@ -523,11 +522,11 @@ class EnvironmentKeyvaluemaps extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:apigee/environmentKeyvaluemaps:EnvironmentKeyvaluemaps',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:apigee/environmentKeyvaluemaps:EnvironmentKeyvaluemaps',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     envId = registerOutput<String>('envId');
     this.name = registerOutput<String>('name');
   }

@@ -15,3 +15,4 @@ enum AppGatewayHostType {
     throw ArgumentError('Unknown AppGatewayHostType value: $value');
   }
 }
+

@@ -46,11 +46,7 @@ class GetTlsCipherPoliciesResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'policies':
-          pulumi.Input.encodeList<
-            GetTlsCipherPoliciesPolicy,
-            Map<String, dynamic>
-          >(policies, (value) => value.toMap()),
+      'policies': pulumi.Input.encodeList<GetTlsCipherPoliciesPolicy, Map<String, dynamic>>(policies, (value) => value.toMap()),
       'status': ?status,
       'tlsCipherPolicyName': ?tlsCipherPolicyName,
     };
@@ -60,38 +56,14 @@ class GetTlsCipherPoliciesResult {
     return GetTlsCipherPoliciesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      includeListener: (() {
-        final guardedValue = map['includeListener'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      includeListener: (() { final guardedValue = map['includeListener']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      policies: pulumi.Input.decodeList<GetTlsCipherPoliciesPolicy>(
-        map['policies']!,
-        (value) => GetTlsCipherPoliciesPolicy.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      tlsCipherPolicyName: (() {
-        final guardedValue = map['tlsCipherPolicyName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      policies: pulumi.Input.decodeList<GetTlsCipherPoliciesPolicy>(map['policies']!, (value) => GetTlsCipherPoliciesPolicy.fromMap((value as Map).cast<String, dynamic>())),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tlsCipherPolicyName: (() { final guardedValue = map['tlsCipherPolicyName']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

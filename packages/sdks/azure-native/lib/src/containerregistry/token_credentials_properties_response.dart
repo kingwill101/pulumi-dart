@@ -12,63 +12,23 @@ class TokenCredentialsPropertiesResponse {
   /// Creates a new [TokenCredentialsPropertiesResponse].
   /// [certificates] Optional.
   /// [passwords] Optional.
-  TokenCredentialsPropertiesResponse({this.certificates, this.passwords});
+  TokenCredentialsPropertiesResponse({
+    this.certificates,
+    this.passwords,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certificates':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<TokenCertificateResponse>,
-            List<Map<String, dynamic>>
-          >(
-            certificates,
-            (value) =>
-                pulumi.Input.encodeList<
-                  TokenCertificateResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'passwords':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<TokenPasswordResponse>,
-            List<Map<String, dynamic>>
-          >(
-            passwords,
-            (value) =>
-                pulumi.Input.encodeList<
-                  TokenPasswordResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'certificates': ?pulumi.Input.mapOptionalInputValue<List<TokenCertificateResponse>, List<Map<String, dynamic>>>(certificates, (value) => pulumi.Input.encodeList<TokenCertificateResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'passwords': ?pulumi.Input.mapOptionalInputValue<List<TokenPasswordResponse>, List<Map<String, dynamic>>>(passwords, (value) => pulumi.Input.encodeList<TokenPasswordResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory TokenCredentialsPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return TokenCredentialsPropertiesResponse(
-      certificates: (() {
-        final guardedValue = map['certificates'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<TokenCertificateResponse>(
-            guardedValue,
-            (value) => TokenCertificateResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      passwords: (() {
-        final guardedValue = map['passwords'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<TokenPasswordResponse>(
-            guardedValue,
-            (value) => TokenPasswordResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      certificates: (() { final guardedValue = map['certificates']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TokenCertificateResponse>(guardedValue, (value) => TokenCertificateResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      passwords: (() { final guardedValue = map['passwords']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TokenPasswordResponse>(guardedValue, (value) => TokenPasswordResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

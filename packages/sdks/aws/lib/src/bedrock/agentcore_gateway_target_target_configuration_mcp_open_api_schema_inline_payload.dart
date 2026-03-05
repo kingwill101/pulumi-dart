@@ -13,14 +13,15 @@ class AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchemaInlinePayload {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'payload': payload};
+    return <String, dynamic>{
+      'payload': payload,
+    };
   }
 
-  factory AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchemaInlinePayload.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchemaInlinePayload.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchemaInlinePayload(
       payload: pulumi.Input.fromValue(map['payload'] as String),
     );
   }
 }
+

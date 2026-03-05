@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDnsResolverArgs {
   /// The name of the DNS resolver.
   final pulumi.Input<String> dnsResolverName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -31,9 +30,8 @@ class GetDnsResolverArgs {
   factory GetDnsResolverArgs.fromMap(Map<String, dynamic> map) {
     return GetDnsResolverArgs(
       dnsResolverName: pulumi.Input.fromValue(map['dnsResolverName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

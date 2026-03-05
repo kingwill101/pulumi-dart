@@ -459,36 +459,25 @@ import 'service_state.dart';
 class Service extends pulumi.CustomResource {
   /// The ARN of the service.
   late final pulumi.Output<String> arn;
-
   /// The description of the service.
   late final pulumi.Output<String?> description;
-
   /// A complex type that contains information about the resource record sets that you want Amazon Route 53 to create when you register an instance. See `dns_config` Block for details.
   late final pulumi.Output<ServiceDnsConfig?> dnsConfig;
-
   /// A boolean that indicates all instances should be deleted from the service so that the service can be destroyed without error. These instances are not recoverable. Defaults to `false`.
   late final pulumi.Output<bool?> forceDestroy;
-
   /// A complex type that contains settings for an optional health check. Only for Public DNS namespaces. See `health_check_config` Block for details.
   late final pulumi.Output<ServiceHealthCheckConfig?> healthCheckConfig;
-
   /// Please use `health_check_config` instead. See `health_check_custom_config` Block for details.
-  late final pulumi.Output<ServiceHealthCheckCustomConfig?>
-  healthCheckCustomConfig;
-
+  late final pulumi.Output<ServiceHealthCheckCustomConfig?> healthCheckCustomConfig;
   /// The name of the service.
   late final pulumi.Output<String> name;
-
   /// The ID of the namespace that you want to use to create the service.
   late final pulumi.Output<String> namespaceId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// A map of tags to assign to the service. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// If present, specifies that the service instances are only discoverable using the `DiscoverInstances` API operation. No DNS records is registered for the service instances. The only valid value is `HTTP`.
   late final pulumi.Output<String> type;
 
@@ -501,44 +490,17 @@ class Service extends pulumi.CustomResource {
     ServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:servicediscovery/service:Service',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:servicediscovery/service:Service',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
-    dnsConfig = registerOutput<ServiceDnsConfig?>(
-      'dnsConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceDnsConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    dnsConfig = registerOutput<ServiceDnsConfig?>('dnsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceDnsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     forceDestroy = registerOutput<bool?>('forceDestroy');
-    healthCheckConfig = registerOutput<ServiceHealthCheckConfig?>(
-      'healthCheckConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceHealthCheckConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    healthCheckCustomConfig = registerOutput<ServiceHealthCheckCustomConfig?>(
-      'healthCheckCustomConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceHealthCheckCustomConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    healthCheckConfig = registerOutput<ServiceHealthCheckConfig?>('healthCheckConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceHealthCheckConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    healthCheckCustomConfig = registerOutput<ServiceHealthCheckCustomConfig?>('healthCheckCustomConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceHealthCheckCustomConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     namespaceId = registerOutput<String>('namespaceId');
     region = registerOutput<String>('region');
@@ -565,44 +527,17 @@ class Service extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:servicediscovery/service:Service',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:servicediscovery/service:Service',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
-    dnsConfig = registerOutput<ServiceDnsConfig?>(
-      'dnsConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceDnsConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    dnsConfig = registerOutput<ServiceDnsConfig?>('dnsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceDnsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     forceDestroy = registerOutput<bool?>('forceDestroy');
-    healthCheckConfig = registerOutput<ServiceHealthCheckConfig?>(
-      'healthCheckConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceHealthCheckConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    healthCheckCustomConfig = registerOutput<ServiceHealthCheckCustomConfig?>(
-      'healthCheckCustomConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceHealthCheckCustomConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    healthCheckConfig = registerOutput<ServiceHealthCheckConfig?>('healthCheckConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceHealthCheckConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    healthCheckCustomConfig = registerOutput<ServiceHealthCheckCustomConfig?>('healthCheckCustomConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceHealthCheckCustomConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     namespaceId = registerOutput<String>('namespaceId');
     region = registerOutput<String>('region');

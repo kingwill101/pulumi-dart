@@ -7,10 +7,8 @@ class GatewayLocalResponseCachePerRouteProperties {
   /// The type of the response cache.
   /// Expected value is 'LocalCachePerRoute'.
   final pulumi.Input<String> responseCacheType;
-
   /// Maximum size of cache (10MB, 900KB, 1GB...) to determine if the cache needs to evict some entries.
   final pulumi.Input<String>? size;
-
   /// Time before a cached entry is expired (300s, 5m, 1h...)
   final pulumi.Input<String>? timeToLive;
 
@@ -32,23 +30,12 @@ class GatewayLocalResponseCachePerRouteProperties {
     };
   }
 
-  factory GatewayLocalResponseCachePerRouteProperties.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GatewayLocalResponseCachePerRouteProperties.fromMap(Map<String, dynamic> map) {
     return GatewayLocalResponseCachePerRouteProperties(
-      responseCacheType: pulumi.Input.fromValue(
-        map['responseCacheType'] as String,
-      ),
-      size: (() {
-        final guardedValue = map['size'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      timeToLive: (() {
-        final guardedValue = map['timeToLive'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      responseCacheType: pulumi.Input.fromValue(map['responseCacheType'] as String),
+      size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      timeToLive: (() { final guardedValue = map['timeToLive']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServicePrincipalArgs {
   /// The client ID of the application associated with this service principal.
   final pulumi.Input<String>? clientId;
-
   /// The display name of the application associated with this service principal.
   final pulumi.Input<String>? displayName;
-
   /// The object ID of the service principal.
   ///
   /// &gt; One of `client_id`, `display_name` or `object_id` must be specified.
@@ -22,7 +20,11 @@ class GetServicePrincipalArgs {
   /// [clientId] The client ID of the application associated with this service principal.
   /// [displayName] The display name of the application associated with this service principal.
   /// [objectId] The object ID of the service principal.
-  GetServicePrincipalArgs({this.clientId, this.displayName, this.objectId});
+  GetServicePrincipalArgs({
+    this.clientId,
+    this.displayName,
+    this.objectId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,21 +36,10 @@ class GetServicePrincipalArgs {
 
   factory GetServicePrincipalArgs.fromMap(Map<String, dynamic> map) {
     return GetServicePrincipalArgs(
-      clientId: (() {
-        final guardedValue = map['clientId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      objectId: (() {
-        final guardedValue = map['objectId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      clientId: (() { final guardedValue = map['clientId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      objectId: (() { final guardedValue = map['objectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

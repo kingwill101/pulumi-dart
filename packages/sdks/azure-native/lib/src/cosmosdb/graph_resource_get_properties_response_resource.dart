@@ -8,17 +8,20 @@ class GraphResourceGetPropertiesResponseResource {
 
   /// Creates a new [GraphResourceGetPropertiesResponseResource].
   /// [id] Name of the Cosmos DB Graph
-  GraphResourceGetPropertiesResponseResource({required this.id});
+  GraphResourceGetPropertiesResponseResource({
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id};
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
-  factory GraphResourceGetPropertiesResponseResource.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GraphResourceGetPropertiesResponseResource.fromMap(Map<String, dynamic> map) {
     return GraphResourceGetPropertiesResponseResource(
       id: pulumi.Input.fromValue(map['id'] as String),
     );
   }
 }
+

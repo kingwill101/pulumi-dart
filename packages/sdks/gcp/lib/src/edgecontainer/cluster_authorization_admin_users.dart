@@ -8,10 +8,14 @@ class ClusterAuthorizationAdminUsers {
 
   /// Creates a new [ClusterAuthorizationAdminUsers].
   /// [username] An active Google username.
-  ClusterAuthorizationAdminUsers({required this.username});
+  ClusterAuthorizationAdminUsers({
+    required this.username,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'username': username};
+    return <String, dynamic>{
+      'username': username,
+    };
   }
 
   factory ClusterAuthorizationAdminUsers.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class ClusterAuthorizationAdminUsers {
     );
   }
 }
+

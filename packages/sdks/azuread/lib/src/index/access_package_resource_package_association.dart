@@ -264,10 +264,8 @@ import 'access_package_resource_package_association_state.dart';
 class AccessPackageResourcePackageAssociation extends pulumi.CustomResource {
   /// The ID of access package this resource association is configured to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> accessPackageId;
-
   /// The role of access type to the specified resource. Valid values are `Member`, or `Owner` The default is `Member`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> accessType;
-
   /// The ID of the catalog association from the `azuread.AccessPackageResourceCatalogAssociation` resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> catalogResourceAssociationId;
 
@@ -280,16 +278,14 @@ class AccessPackageResourcePackageAssociation extends pulumi.CustomResource {
     AccessPackageResourcePackageAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/accessPackageResourcePackageAssociation:AccessPackageResourcePackageAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azuread:index/accessPackageResourcePackageAssociation:AccessPackageResourcePackageAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessPackageId = registerOutput<String>('accessPackageId');
     accessType = registerOutput<String?>('accessType');
-    catalogResourceAssociationId = registerOutput<String>(
-      'catalogResourceAssociationId',
-    );
+    catalogResourceAssociationId = registerOutput<String>('catalogResourceAssociationId');
   }
 
   /// Gets an existing [AccessPackageResourcePackageAssociation] resource's state with the given [name] and [id].
@@ -310,15 +306,13 @@ class AccessPackageResourcePackageAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/accessPackageResourcePackageAssociation:AccessPackageResourcePackageAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azuread:index/accessPackageResourcePackageAssociation:AccessPackageResourcePackageAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessPackageId = registerOutput<String>('accessPackageId');
     accessType = registerOutput<String?>('accessType');
-    catalogResourceAssociationId = registerOutput<String>(
-      'catalogResourceAssociationId',
-    );
+    catalogResourceAssociationId = registerOutput<String>('catalogResourceAssociationId');
   }
 }

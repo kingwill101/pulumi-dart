@@ -8,10 +8,14 @@ class GetLoadBalancerGlbSettingCdn {
 
   /// Creates a new [GetLoadBalancerGlbSettingCdn].
   /// [isEnabled] cache enable flag
-  GetLoadBalancerGlbSettingCdn({required this.isEnabled});
+  GetLoadBalancerGlbSettingCdn({
+    required this.isEnabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'isEnabled': isEnabled};
+    return <String, dynamic>{
+      'isEnabled': isEnabled,
+    };
   }
 
   factory GetLoadBalancerGlbSettingCdn.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class GetLoadBalancerGlbSettingCdn {
     );
   }
 }
+

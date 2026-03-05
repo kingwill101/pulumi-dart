@@ -272,10 +272,8 @@ import 'instance_acl_attachment_state.dart';
 class InstanceAclAttachment extends pulumi.CustomResource {
   /// The ID of the ACL to attach.
   late final pulumi.Output<String> aclId;
-
   /// The type of the ACL. Valid values: `white`, `black`.
   late final pulumi.Output<String> aclType;
-
   /// The ID of the API Gateway instance that the ACL will be attached to.
   late final pulumi.Output<String> instanceId;
 
@@ -288,11 +286,11 @@ class InstanceAclAttachment extends pulumi.CustomResource {
     InstanceAclAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:apigateway/instanceAclAttachment:InstanceAclAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:apigateway/instanceAclAttachment:InstanceAclAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aclId = registerOutput<String>('aclId');
     aclType = registerOutput<String>('aclType');
     instanceId = registerOutput<String>('instanceId');
@@ -316,11 +314,11 @@ class InstanceAclAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:apigateway/instanceAclAttachment:InstanceAclAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:apigateway/instanceAclAttachment:InstanceAclAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aclId = registerOutput<String>('aclId');
     aclType = registerOutput<String>('aclType');
     instanceId = registerOutput<String>('instanceId');

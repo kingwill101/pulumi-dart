@@ -263,35 +263,25 @@ import 'configuration_feature_state.dart';
 class ConfigurationFeature extends pulumi.CustomResource {
   /// Specifies the id of the App Configuration. Changing this forces a new resource to be created.
   late final pulumi.Output<String> configurationStoreId;
-
   /// The description of the App Configuration Feature.
   late final pulumi.Output<String?> description;
-
   /// The status of the App Configuration Feature. By default, this is set to false.
   late final pulumi.Output<bool?> enabled;
   late final pulumi.Output<String> etag;
-
   /// The key of the App Configuration Feature. The value for `name` will be used if this is unspecified. Changing this forces a new resource to be created.
   late final pulumi.Output<String> key;
-
   /// The label of the App Configuration Feature. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> label;
-
   /// Should this App Configuration Feature be Locked to prevent changes?
   late final pulumi.Output<bool?> locked;
-
   /// The name of the App Configuration Feature. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// A number representing the value of the percentage required to enable this feature.
   late final pulumi.Output<double?> percentageFilterValue;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A `targeting_filter` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> targetingFilters;
-
   /// A `timewindow_filter` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> timewindowFilters;
 
@@ -304,11 +294,11 @@ class ConfigurationFeature extends pulumi.CustomResource {
     ConfigurationFeatureArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appconfiguration/configurationFeature:ConfigurationFeature',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appconfiguration/configurationFeature:ConfigurationFeature',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     configurationStoreId = registerOutput<String>('configurationStoreId');
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool?>('enabled');
@@ -319,12 +309,8 @@ class ConfigurationFeature extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     percentageFilterValue = registerOutput<double?>('percentageFilterValue');
     tags = registerOutput<Map<String, String>?>('tags');
-    targetingFilters = registerOutput<List<Map<String, dynamic>>?>(
-      'targetingFilters',
-    );
-    timewindowFilters = registerOutput<List<Map<String, dynamic>>?>(
-      'timewindowFilters',
-    );
+    targetingFilters = registerOutput<List<Map<String, dynamic>>?>('targetingFilters');
+    timewindowFilters = registerOutput<List<Map<String, dynamic>>?>('timewindowFilters');
   }
 
   /// Gets an existing [ConfigurationFeature] resource's state with the given [name] and [id].
@@ -345,11 +331,11 @@ class ConfigurationFeature extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appconfiguration/configurationFeature:ConfigurationFeature',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appconfiguration/configurationFeature:ConfigurationFeature',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     configurationStoreId = registerOutput<String>('configurationStoreId');
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool?>('enabled');
@@ -360,11 +346,7 @@ class ConfigurationFeature extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     percentageFilterValue = registerOutput<double?>('percentageFilterValue');
     tags = registerOutput<Map<String, String>?>('tags');
-    targetingFilters = registerOutput<List<Map<String, dynamic>>?>(
-      'targetingFilters',
-    );
-    timewindowFilters = registerOutput<List<Map<String, dynamic>>?>(
-      'timewindowFilters',
-    );
+    targetingFilters = registerOutput<List<Map<String, dynamic>>?>('targetingFilters');
+    timewindowFilters = registerOutput<List<Map<String, dynamic>>?>('timewindowFilters');
   }
 }

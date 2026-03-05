@@ -9,21 +9,20 @@ class DefenderForServersGcpOfferingConfiguration {
 
   /// Creates a new [DefenderForServersGcpOfferingConfiguration].
   /// [type] The Vulnerability Assessment solution to be provisioned. Can be either 'TVM' or 'Qualys'
-  DefenderForServersGcpOfferingConfiguration({this.type});
+  DefenderForServersGcpOfferingConfiguration({
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': ?type};
+    return <String, dynamic>{
+      'type': ?type,
+    };
   }
 
-  factory DefenderForServersGcpOfferingConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DefenderForServersGcpOfferingConfiguration.fromMap(Map<String, dynamic> map) {
     return DefenderForServersGcpOfferingConfiguration(
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

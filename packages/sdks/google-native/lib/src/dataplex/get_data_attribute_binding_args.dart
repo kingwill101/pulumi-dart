@@ -31,15 +31,10 @@ class GetDataAttributeBindingArgs {
 
   factory GetDataAttributeBindingArgs.fromMap(Map<String, dynamic> map) {
     return GetDataAttributeBindingArgs(
-      dataAttributeBindingId: pulumi.Input.fromValue(
-        map['dataAttributeBindingId'] as String,
-      ),
+      dataAttributeBindingId: pulumi.Input.fromValue(map['dataAttributeBindingId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HttpRouteProvisioningErrorsResponse {
   /// Description or error message
   final pulumi.Input<String> message;
-
   /// Timestamp error occured at
   final pulumi.Input<String> timestamp;
 
@@ -19,15 +18,17 @@ class HttpRouteProvisioningErrorsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'message': message, 'timestamp': timestamp};
+    return <String, dynamic>{
+      'message': message,
+      'timestamp': timestamp,
+    };
   }
 
-  factory HttpRouteProvisioningErrorsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory HttpRouteProvisioningErrorsResponse.fromMap(Map<String, dynamic> map) {
     return HttpRouteProvisioningErrorsResponse(
       message: pulumi.Input.fromValue(map['message'] as String),
       timestamp: pulumi.Input.fromValue(map['timestamp'] as String),
     );
   }
 }
+

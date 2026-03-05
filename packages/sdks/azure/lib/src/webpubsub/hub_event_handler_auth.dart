@@ -10,17 +10,20 @@ class HubEventHandlerAuth {
 
   /// Creates a new [HubEventHandlerAuth].
   /// [managedIdentityId] Specify the identity ID of the target resource.
-  HubEventHandlerAuth({required this.managedIdentityId});
+  HubEventHandlerAuth({
+    required this.managedIdentityId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'managedIdentityId': managedIdentityId};
+    return <String, dynamic>{
+      'managedIdentityId': managedIdentityId,
+    };
   }
 
   factory HubEventHandlerAuth.fromMap(Map<String, dynamic> map) {
     return HubEventHandlerAuth(
-      managedIdentityId: pulumi.Input.fromValue(
-        map['managedIdentityId'] as String,
-      ),
+      managedIdentityId: pulumi.Input.fromValue(map['managedIdentityId'] as String),
     );
   }
 }
+

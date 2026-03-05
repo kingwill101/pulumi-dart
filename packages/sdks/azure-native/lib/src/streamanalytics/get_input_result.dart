@@ -6,16 +6,12 @@ import 'reference_input_properties_response.dart';
 class GetInputResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Resource Id
   final String id;
-
   /// Resource name
   final String? name;
-
   /// The properties that are associated with an input. Required on PUT (CreateOrReplace) requests.
   final ReferenceInputPropertiesResponse properties;
-
   /// Resource type
   final String type;
 
@@ -47,15 +43,10 @@ class GetInputResult {
     return GetInputResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      properties: ReferenceInputPropertiesResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      properties: ReferenceInputPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

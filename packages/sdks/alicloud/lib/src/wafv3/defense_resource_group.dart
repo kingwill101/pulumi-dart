@@ -459,13 +459,10 @@ import 'defense_resource_group_state.dart';
 class DefenseResourceGroup extends pulumi.CustomResource {
   /// The description of the protected object group.
   late final pulumi.Output<String?> description;
-
   /// The name of the protected object group. The name must be 1 to 255 characters long and can contain Chinese characters, letters, digits, underscores (_), periods (.), and hyphens (-)
   late final pulumi.Output<String> groupName;
-
   /// The ID of the WAF instance.
   late final pulumi.Output<String> instanceId;
-
   /// The names of the protected objects that are added to the protected object group.
   late final pulumi.Output<List<String>?> resourceLists;
 
@@ -478,11 +475,11 @@ class DefenseResourceGroup extends pulumi.CustomResource {
     DefenseResourceGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:wafv3/defenseResourceGroup:DefenseResourceGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:wafv3/defenseResourceGroup:DefenseResourceGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     groupName = registerOutput<String>('groupName');
     instanceId = registerOutput<String>('instanceId');
@@ -507,11 +504,11 @@ class DefenseResourceGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:wafv3/defenseResourceGroup:DefenseResourceGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:wafv3/defenseResourceGroup:DefenseResourceGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     groupName = registerOutput<String>('groupName');
     instanceId = registerOutput<String>('instanceId');

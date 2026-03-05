@@ -6,10 +6,8 @@ import 'bigtable_column_family.dart';
 class BigtableOptions {
   /// [Optional] List of column families to expose in the table schema along with their types. This list restricts the column families that can be referenced in queries and specifies their value types. You can use this list to do type conversions - see the 'type' field for more details. If you leave this list empty, all column families are present in the table schema and their values are read as BYTES. During a query only the column families referenced in that query are read from Bigtable.
   final pulumi.Input<List<BigtableColumnFamily>>? columnFamilies;
-
   /// [Optional] If field is true, then the column families that are not specified in columnFamilies list are not exposed in the table schema. Otherwise, they are read with BYTES type values. The default value is false.
   final pulumi.Input<bool>? ignoreUnspecifiedColumnFamilies;
-
   /// [Optional] If field is true, then the rowkey column families will be read and converted to string. Otherwise they are read with BYTES type values and users need to manually cast them with CAST if necessary. The default value is false.
   final pulumi.Input<bool>? readRowkeyAsString;
 
@@ -25,18 +23,7 @@ class BigtableOptions {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'columnFamilies':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<BigtableColumnFamily>,
-            List<Map<String, dynamic>>
-          >(
-            columnFamilies,
-            (value) =>
-                pulumi.Input.encodeList<
-                  BigtableColumnFamily,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'columnFamilies': ?pulumi.Input.mapOptionalInputValue<List<BigtableColumnFamily>, List<Map<String, dynamic>>>(columnFamilies, (value) => pulumi.Input.encodeList<BigtableColumnFamily, Map<String, dynamic>>(value, (value) => value.toMap())),
       'ignoreUnspecifiedColumnFamilies': ?ignoreUnspecifiedColumnFamilies,
       'readRowkeyAsString': ?readRowkeyAsString,
     };
@@ -44,28 +31,10 @@ class BigtableOptions {
 
   factory BigtableOptions.fromMap(Map<String, dynamic> map) {
     return BigtableOptions(
-      columnFamilies: (() {
-        final guardedValue = map['columnFamilies'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<BigtableColumnFamily>(
-            guardedValue,
-            (value) => BigtableColumnFamily.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      ignoreUnspecifiedColumnFamilies: (() {
-        final guardedValue = map['ignoreUnspecifiedColumnFamilies'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      readRowkeyAsString: (() {
-        final guardedValue = map['readRowkeyAsString'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      columnFamilies: (() { final guardedValue = map['columnFamilies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<BigtableColumnFamily>(guardedValue, (value) => BigtableColumnFamily.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      ignoreUnspecifiedColumnFamilies: (() { final guardedValue = map['ignoreUnspecifiedColumnFamilies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      readRowkeyAsString: (() { final guardedValue = map['readRowkeyAsString']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

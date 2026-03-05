@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CatalogTableStorageDescriptorSkewedInfo {
   /// List of names of columns that contain skewed values.
   final pulumi.Input<List<String>>? skewedColumnNames;
-
   /// List of values that appear so frequently as to be considered skewed.
   final pulumi.Input<Map<String, String>>? skewedColumnValueLocationMaps;
-
   /// Map of skewed values to the columns that contain them.
   final pulumi.Input<List<String>>? skewedColumnValues;
 
@@ -30,27 +28,12 @@ class CatalogTableStorageDescriptorSkewedInfo {
     };
   }
 
-  factory CatalogTableStorageDescriptorSkewedInfo.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CatalogTableStorageDescriptorSkewedInfo.fromMap(Map<String, dynamic> map) {
     return CatalogTableStorageDescriptorSkewedInfo(
-      skewedColumnNames: (() {
-        final guardedValue = map['skewedColumnNames'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      skewedColumnValueLocationMaps: (() {
-        final guardedValue = map['skewedColumnValueLocationMaps'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      skewedColumnValues: (() {
-        final guardedValue = map['skewedColumnValues'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      skewedColumnNames: (() { final guardedValue = map['skewedColumnNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      skewedColumnValueLocationMaps: (() { final guardedValue = map['skewedColumnValueLocationMaps']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      skewedColumnValues: (() { final guardedValue = map['skewedColumnValues']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

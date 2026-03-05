@@ -9,21 +9,20 @@ class ManagedClusterSecurityProfileWorkloadIdentityResponse {
 
   /// Creates a new [ManagedClusterSecurityProfileWorkloadIdentityResponse].
   /// [enabled] Whether to enable workload identity.
-  ManagedClusterSecurityProfileWorkloadIdentityResponse({this.enabled});
+  ManagedClusterSecurityProfileWorkloadIdentityResponse({
+    this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': ?enabled};
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
-  factory ManagedClusterSecurityProfileWorkloadIdentityResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ManagedClusterSecurityProfileWorkloadIdentityResponse.fromMap(Map<String, dynamic> map) {
     return ManagedClusterSecurityProfileWorkloadIdentityResponse(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

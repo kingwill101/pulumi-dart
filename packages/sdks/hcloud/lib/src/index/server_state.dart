@@ -8,87 +8,61 @@ import 'server_public_net.dart';
 class ServerState {
   /// Enable the use of deprecated images (default: false). **Note** Deprecated images will be removed after three months. Using them is then no longer possible.
   final pulumi.Input<bool>? allowDeprecatedImages;
-
   /// (string) The backup window of the server, if enabled.
   final pulumi.Input<String>? backupWindow;
-
   /// Enable or disable backups.
   final pulumi.Input<bool>? backups;
-
   /// The datacenter name to create the server in. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-datacenters-are-there) for more details about datacenters.
   final pulumi.Input<String>? datacenter;
-
   /// Enable or disable delete protection (Needs to be the same as `rebuild_protection`). See "Delete Protection" in the Provider Docs for details.
   final pulumi.Input<bool>? deleteProtection;
-
   /// Firewall IDs the server should be attached to on creation.
   final pulumi.Input<List<int>>? firewallIds;
-
   /// Ignores any updates
   /// to the `firewall_ids` argument which were received from the server.
   /// This should not be used in normal cases. See the documentation of the
   /// `hcloud.FirewallAttachment` resource for a reason to use this
   /// argument.
   final pulumi.Input<bool>? ignoreRemoteFirewallIds;
-
   /// Name or ID of the image the server is created from. **Note** the `image` property is only required when using the resource to create servers. As the Hetzner Cloud API may return servers without an image ID set it is not marked as required in the Terraform Provider itself. Thus, users will get an error from the underlying client library if they forget to set the property and try to create a server.
   final pulumi.Input<String>? image;
-
   /// (string) The IPv4 address.
   final pulumi.Input<String>? ipv4Address;
-
   /// (string) The first IPv6 address of the assigned network.
   final pulumi.Input<String>? ipv6Address;
-
   /// (string) The IPv6 network.
   final pulumi.Input<String>? ipv6Network;
-
   /// ID or Name of an ISO image to mount.
   final pulumi.Input<String>? iso;
-
   /// If true, do not upgrade the disk. This allows downgrading the server type later.
   final pulumi.Input<bool>? keepDisk;
-
   /// User-defined labels (key-value pairs) should be created with.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// The location name to create the server in. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-locations-are-there) for more details about locations.
   final pulumi.Input<String>? location;
-
   /// Name of the server to create (must be unique per project and a valid hostname as per RFC 1123).
   final pulumi.Input<String>? name;
-
   /// Network the server should be attached to on creation. (Can be specified multiple times)
   final pulumi.Input<List<ServerNetwork>>? networks;
-
   /// Placement Group ID the server added to on creation.
   final pulumi.Input<int>? placementGroupId;
-
   /// (int) The size of the primary disk in GB.
   final pulumi.Input<int>? primaryDiskSize;
-
   /// In this block you can either enable / disable ipv4 and ipv6 or link existing primary IPs (checkout the examples).
   /// If this block is not defined, two primary (ipv4 & ipv6) ips getting auto generated.
   final pulumi.Input<List<ServerPublicNet>>? publicNets;
-
   /// Enable or disable rebuild protection (Needs to be the same as `delete_protection`).
   final pulumi.Input<bool>? rebuildProtection;
-
   /// Enable and boot in to the specified rescue system. This enables simple installation of custom operating systems. `linux64` or `linux32`
   final pulumi.Input<String>? rescue;
-
   /// Name of the server type this server should be created with.
   final pulumi.Input<String>? serverType;
-
   /// Whether to try shutting the server down gracefully before deleting it.
   final pulumi.Input<bool>? shutdownBeforeDeletion;
-
   /// SSH key IDs or names which should be injected into the server at creation time. Once the server is created, you can not update the list of SSH Keys. If you do change this, you will be prompted to destroy and recreate the server. You can avoid this by setting lifecycle.ignore_changes to `[ ssh_keys ]`.
   final pulumi.Input<List<String>>? sshKeys;
-
   /// (string) The status of the server.
   final pulumi.Input<String>? status;
-
   /// Cloud-Init user data to use during server creation
   final pulumi.Input<String>? userData;
 
@@ -168,32 +142,10 @@ class ServerState {
       'labels': ?labels,
       'location': ?location,
       'name': ?name,
-      'networks':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ServerNetwork>,
-            List<Map<String, dynamic>>
-          >(
-            networks,
-            (value) =>
-                pulumi.Input.encodeList<ServerNetwork, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'networks': ?pulumi.Input.mapOptionalInputValue<List<ServerNetwork>, List<Map<String, dynamic>>>(networks, (value) => pulumi.Input.encodeList<ServerNetwork, Map<String, dynamic>>(value, (value) => value.toMap())),
       'placementGroupId': ?placementGroupId,
       'primaryDiskSize': ?primaryDiskSize,
-      'publicNets':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ServerPublicNet>,
-            List<Map<String, dynamic>>
-          >(
-            publicNets,
-            (value) =>
-                pulumi.Input.encodeList<ServerPublicNet, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'publicNets': ?pulumi.Input.mapOptionalInputValue<List<ServerPublicNet>, List<Map<String, dynamic>>>(publicNets, (value) => pulumi.Input.encodeList<ServerPublicNet, Map<String, dynamic>>(value, (value) => value.toMap())),
       'rebuildProtection': ?rebuildProtection,
       'rescue': ?rescue,
       'serverType': ?serverType,
@@ -206,155 +158,34 @@ class ServerState {
 
   factory ServerState.fromMap(Map<String, dynamic> map) {
     return ServerState(
-      allowDeprecatedImages: (() {
-        final guardedValue = map['allowDeprecatedImages'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      backupWindow: (() {
-        final guardedValue = map['backupWindow'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      backups: (() {
-        final guardedValue = map['backups'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      datacenter: (() {
-        final guardedValue = map['datacenter'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      deleteProtection: (() {
-        final guardedValue = map['deleteProtection'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      firewallIds: (() {
-        final guardedValue = map['firewallIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<int>());
-      })(),
-      ignoreRemoteFirewallIds: (() {
-        final guardedValue = map['ignoreRemoteFirewallIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      image: (() {
-        final guardedValue = map['image'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ipv4Address: (() {
-        final guardedValue = map['ipv4Address'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ipv6Address: (() {
-        final guardedValue = map['ipv6Address'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ipv6Network: (() {
-        final guardedValue = map['ipv6Network'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      iso: (() {
-        final guardedValue = map['iso'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keepDisk: (() {
-        final guardedValue = map['keepDisk'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      networks: (() {
-        final guardedValue = map['networks'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ServerNetwork>(
-            guardedValue,
-            (value) =>
-                ServerNetwork.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      placementGroupId: (() {
-        final guardedValue = map['placementGroupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      primaryDiskSize: (() {
-        final guardedValue = map['primaryDiskSize'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      publicNets: (() {
-        final guardedValue = map['publicNets'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ServerPublicNet>(
-            guardedValue,
-            (value) =>
-                ServerPublicNet.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      rebuildProtection: (() {
-        final guardedValue = map['rebuildProtection'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      rescue: (() {
-        final guardedValue = map['rescue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serverType: (() {
-        final guardedValue = map['serverType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      shutdownBeforeDeletion: (() {
-        final guardedValue = map['shutdownBeforeDeletion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      sshKeys: (() {
-        final guardedValue = map['sshKeys'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      userData: (() {
-        final guardedValue = map['userData'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      allowDeprecatedImages: (() { final guardedValue = map['allowDeprecatedImages']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      backupWindow: (() { final guardedValue = map['backupWindow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      backups: (() { final guardedValue = map['backups']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      datacenter: (() { final guardedValue = map['datacenter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deleteProtection: (() { final guardedValue = map['deleteProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      firewallIds: (() { final guardedValue = map['firewallIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<int>()); })(),
+      ignoreRemoteFirewallIds: (() { final guardedValue = map['ignoreRemoteFirewallIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      image: (() { final guardedValue = map['image']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ipv4Address: (() { final guardedValue = map['ipv4Address']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ipv6Address: (() { final guardedValue = map['ipv6Address']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ipv6Network: (() { final guardedValue = map['ipv6Network']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      iso: (() { final guardedValue = map['iso']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keepDisk: (() { final guardedValue = map['keepDisk']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      networks: (() { final guardedValue = map['networks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ServerNetwork>(guardedValue, (value) => ServerNetwork.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      placementGroupId: (() { final guardedValue = map['placementGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      primaryDiskSize: (() { final guardedValue = map['primaryDiskSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      publicNets: (() { final guardedValue = map['publicNets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ServerPublicNet>(guardedValue, (value) => ServerPublicNet.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      rebuildProtection: (() { final guardedValue = map['rebuildProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      rescue: (() { final guardedValue = map['rescue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serverType: (() { final guardedValue = map['serverType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      shutdownBeforeDeletion: (() { final guardedValue = map['shutdownBeforeDeletion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      sshKeys: (() { final guardedValue = map['sshKeys']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      userData: (() { final guardedValue = map['userData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

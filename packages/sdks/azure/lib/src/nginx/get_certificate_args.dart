@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCertificateArgs {
   /// The name of the NGINX Certificate.
   final pulumi.Input<String> name;
-
   /// The ID of the NGINX Deployment that the certificate is associated with.
   final pulumi.Input<String> nginxDeploymentId;
 
   /// Creates a new [GetCertificateArgs].
   /// [name] The name of the NGINX Certificate.
   /// [nginxDeploymentId] The ID of the NGINX Deployment that the certificate is associated with.
-  GetCertificateArgs({required this.name, required this.nginxDeploymentId});
+  GetCertificateArgs({
+    required this.name,
+    required this.nginxDeploymentId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,9 +30,8 @@ class GetCertificateArgs {
   factory GetCertificateArgs.fromMap(Map<String, dynamic> map) {
     return GetCertificateArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      nginxDeploymentId: pulumi.Input.fromValue(
-        map['nginxDeploymentId'] as String,
-      ),
+      nginxDeploymentId: pulumi.Input.fromValue(map['nginxDeploymentId'] as String),
     );
   }
 }
+

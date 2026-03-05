@@ -212,25 +212,18 @@ import 'system_data_response.dart';
 class PartnerConfiguration extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Location of the resource.
   late final pulumi.Output<String?> location;
-
   /// Name of the resource.
   late final pulumi.Output<String> name;
-
   /// The details of authorized partners.
   late final pulumi.Output<PartnerAuthorizationResponse?> partnerAuthorization;
-
   /// Provisioning state of the partner configuration.
   late final pulumi.Output<String?> provisioningState;
-
   /// The system metadata relating to the Event Grid resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Tags of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Type of the resource.
   late final pulumi.Output<String> type;
 
@@ -243,35 +236,17 @@ class PartnerConfiguration extends pulumi.CustomResource {
     PartnerConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:eventgrid:PartnerConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:eventgrid:PartnerConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    partnerAuthorization = registerOutput<PartnerAuthorizationResponse?>(
-      'partnerAuthorization',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PartnerAuthorizationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    partnerAuthorization = registerOutput<PartnerAuthorizationResponse?>('partnerAuthorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PartnerAuthorizationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningState = registerOutput<String?>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

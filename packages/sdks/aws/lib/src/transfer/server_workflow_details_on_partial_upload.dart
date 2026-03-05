@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServerWorkflowDetailsOnPartialUpload {
   /// Includes the necessary permissions for S3, EFS, and Lambda operations that Transfer can assume, so that all workflow steps can operate on the required resources.
   final pulumi.Input<String> executionRole;
-
   /// A unique identifier for the workflow.
   final pulumi.Input<String> workflowId;
 
@@ -24,12 +23,11 @@ class ServerWorkflowDetailsOnPartialUpload {
     };
   }
 
-  factory ServerWorkflowDetailsOnPartialUpload.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ServerWorkflowDetailsOnPartialUpload.fromMap(Map<String, dynamic> map) {
     return ServerWorkflowDetailsOnPartialUpload(
       executionRole: pulumi.Input.fromValue(map['executionRole'] as String),
       workflowId: pulumi.Input.fromValue(map['workflowId'] as String),
     );
   }
 }
+

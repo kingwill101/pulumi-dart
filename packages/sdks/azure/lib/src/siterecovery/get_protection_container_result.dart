@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getProtectionContainer.
 class GetProtectionContainerResult {
   /// The provider-assigned unique ID for this managed resource.
@@ -43,3 +44,4 @@ class GetProtectionContainerResult {
     );
   }
 }
+

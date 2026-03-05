@@ -5,14 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketSoftDeletePolicy {
   /// Server-determined value that indicates the time from which the policy, or one with a greater retention, was effective. This value is in RFC 3339 format.
   final pulumi.Input<String>? effectiveTime;
-
   /// The duration in seconds that soft-deleted objects in the bucket will be retained and cannot be permanently deleted. Default value is 604800. The value must be in between 604800(7 days) and 7776000(90 days). **Note**: To disable the soft delete policy on a bucket, This field must be set to 0.
   final pulumi.Input<int>? retentionDurationSeconds;
 
   /// Creates a new [BucketSoftDeletePolicy].
   /// [effectiveTime] Server-determined value that indicates the time from which the policy, or one with a greater retention, was effective. This value is in RFC 3339 format.
   /// [retentionDurationSeconds] The duration in seconds that soft-deleted objects in the bucket will be retained and cannot be permanently deleted. Default value is 604800. The value must be in between 604800(7 days) and 7776000(90 days). **Note**: To disable the soft delete policy on a bucket, This field must be set to 0.
-  BucketSoftDeletePolicy({this.effectiveTime, this.retentionDurationSeconds});
+  BucketSoftDeletePolicy({
+    this.effectiveTime,
+    this.retentionDurationSeconds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -23,16 +25,9 @@ class BucketSoftDeletePolicy {
 
   factory BucketSoftDeletePolicy.fromMap(Map<String, dynamic> map) {
     return BucketSoftDeletePolicy(
-      effectiveTime: (() {
-        final guardedValue = map['effectiveTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      retentionDurationSeconds: (() {
-        final guardedValue = map['retentionDurationSeconds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      effectiveTime: (() { final guardedValue = map['effectiveTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      retentionDurationSeconds: (() { final guardedValue = map['retentionDurationSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

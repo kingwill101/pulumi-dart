@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetImagePipelineSchedule {
   /// Condition when the pipeline should trigger a new image build.
   final pulumi.Input<String> pipelineExecutionStartCondition;
-
   /// Cron expression of how often the pipeline start condition is evaluated.
   final pulumi.Input<String> scheduleExpression;
 
@@ -26,12 +25,9 @@ class GetImagePipelineSchedule {
 
   factory GetImagePipelineSchedule.fromMap(Map<String, dynamic> map) {
     return GetImagePipelineSchedule(
-      pipelineExecutionStartCondition: pulumi.Input.fromValue(
-        map['pipelineExecutionStartCondition'] as String,
-      ),
-      scheduleExpression: pulumi.Input.fromValue(
-        map['scheduleExpression'] as String,
-      ),
+      pipelineExecutionStartCondition: pulumi.Input.fromValue(map['pipelineExecutionStartCondition'] as String),
+      scheduleExpression: pulumi.Input.fromValue(map['scheduleExpression'] as String),
     );
   }
 }
+

@@ -395,16 +395,12 @@ import 'integration_runtime_self_hosted_state.dart';
 class IntegrationRuntimeSelfHosted extends pulumi.CustomResource {
   /// The primary integration runtime authentication key.
   late final pulumi.Output<String> authorizationKeyPrimary;
-
   /// The secondary integration runtime authentication key.
   late final pulumi.Output<String> authorizationKeySecondary;
-
   /// Integration runtime description.
   late final pulumi.Output<String?> description;
-
   /// The name which should be used for this Synapse Self-hosted Integration Runtime. Changing this forces a new Synapse Self-hosted Integration Runtime to be created.
   late final pulumi.Output<String> name;
-
   /// The Synapse Workspace ID in which to associate the Integration Runtime with. Changing this forces a new Synapse Self-hosted Integration Runtime to be created.
   late final pulumi.Output<String> synapseWorkspaceId;
 
@@ -417,15 +413,13 @@ class IntegrationRuntimeSelfHosted extends pulumi.CustomResource {
     IntegrationRuntimeSelfHostedArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:synapse/integrationRuntimeSelfHosted:IntegrationRuntimeSelfHosted',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:synapse/integrationRuntimeSelfHosted:IntegrationRuntimeSelfHosted',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     authorizationKeyPrimary = registerOutput<String>('authorizationKeyPrimary');
-    authorizationKeySecondary = registerOutput<String>(
-      'authorizationKeySecondary',
-    );
+    authorizationKeySecondary = registerOutput<String>('authorizationKeySecondary');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     synapseWorkspaceId = registerOutput<String>('synapseWorkspaceId');
@@ -449,15 +443,13 @@ class IntegrationRuntimeSelfHosted extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:synapse/integrationRuntimeSelfHosted:IntegrationRuntimeSelfHosted',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:synapse/integrationRuntimeSelfHosted:IntegrationRuntimeSelfHosted',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     authorizationKeyPrimary = registerOutput<String>('authorizationKeyPrimary');
-    authorizationKeySecondary = registerOutput<String>(
-      'authorizationKeySecondary',
-    );
+    authorizationKeySecondary = registerOutput<String>('authorizationKeySecondary');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     synapseWorkspaceId = registerOutput<String>('synapseWorkspaceId');

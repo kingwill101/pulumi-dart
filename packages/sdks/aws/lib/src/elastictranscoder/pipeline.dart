@@ -171,38 +171,26 @@ import 'pipeline_thumbnail_config.dart';
 class Pipeline extends pulumi.CustomResource {
   /// The ARN of the Elastictranscoder pipeline.
   late final pulumi.Output<String> arn;
-
   /// The AWS Key Management Service (AWS KMS) key that you want to use with this pipeline.
   late final pulumi.Output<String?> awsKmsKeyArn;
-
   /// The ContentConfig object specifies information about the Amazon S3 bucket in which you want Elastic Transcoder to save transcoded files and playlists. (documented below)
   late final pulumi.Output<PipelineContentConfig> contentConfig;
-
   /// The permissions for the `content_config` object. (documented below)
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  contentConfigPermissions;
-
+  late final pulumi.Output<List<Map<String, dynamic>>?> contentConfigPermissions;
   /// The Amazon S3 bucket in which you saved the media files that you want to transcode and the graphics that you want to use as watermarks.
   late final pulumi.Output<String> inputBucket;
-
   /// The name of the pipeline. Maximum 40 characters
   late final pulumi.Output<String> name;
-
   /// The Amazon Simple Notification Service (Amazon SNS) topic that you want to notify to report job status. (documented below)
   late final pulumi.Output<PipelineNotifications?> notifications;
-
   /// The Amazon S3 bucket in which you want Elastic Transcoder to save the transcoded files.
   late final pulumi.Output<String> outputBucket;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The IAM Amazon Resource Name (ARN) for the role that you want Elastic Transcoder to use to transcode jobs for this pipeline.
   late final pulumi.Output<String> role;
-
   /// The ThumbnailConfig object specifies information about the Amazon S3 bucket in which you want Elastic Transcoder to save thumbnail files. (documented below)
   late final pulumi.Output<PipelineThumbnailConfig> thumbnailConfig;
-
   /// The permissions for the `thumbnail_config` object. (documented below)
   ///
   /// See ["Create Pipeline"](http://docs.aws.amazon.com/elastictranscoder/latest/developerguide/create-pipeline.html) in the AWS docs for reference.
@@ -213,8 +201,7 @@ class Pipeline extends pulumi.CustomResource {
   /// you specify values for `content_config`, you must also specify values for
   /// `thumbnail_config`. If you specify values for `content_config` and
   /// `thumbnail_config`, omit the `output_bucket` object.
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  thumbnailConfigPermissions;
+  late final pulumi.Output<List<Map<String, dynamic>>?> thumbnailConfigPermissions;
 
   /// Creates a new [Pipeline].
   /// [name] The Pulumi resource name.
@@ -225,54 +212,23 @@ class Pipeline extends pulumi.CustomResource {
     PipelineArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:elastictranscoder/pipeline:Pipeline',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:elastictranscoder/pipeline:Pipeline',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     awsKmsKeyArn = registerOutput<String?>('awsKmsKeyArn');
-    contentConfig = registerOutput<PipelineContentConfig>(
-      'contentConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PipelineContentConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    contentConfigPermissions = registerOutput<List<Map<String, dynamic>>?>(
-      'contentConfigPermissions',
-    );
+    contentConfig = registerOutput<PipelineContentConfig>('contentConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineContentConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    contentConfigPermissions = registerOutput<List<Map<String, dynamic>>?>('contentConfigPermissions');
     inputBucket = registerOutput<String>('inputBucket');
     this.name = registerOutput<String>('name');
-    notifications = registerOutput<PipelineNotifications?>(
-      'notifications',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PipelineNotifications.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    notifications = registerOutput<PipelineNotifications?>('notifications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineNotifications.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     outputBucket = registerOutput<String>('outputBucket');
     region = registerOutput<String>('region');
     role = registerOutput<String>('role');
-    thumbnailConfig = registerOutput<PipelineThumbnailConfig>(
-      'thumbnailConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PipelineThumbnailConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    thumbnailConfigPermissions = registerOutput<List<Map<String, dynamic>>?>(
-      'thumbnailConfigPermissions',
-    );
+    thumbnailConfig = registerOutput<PipelineThumbnailConfig>('thumbnailConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineThumbnailConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    thumbnailConfigPermissions = registerOutput<List<Map<String, dynamic>>?>('thumbnailConfigPermissions');
   }
 
   /// Gets an existing [Pipeline] resource's state with the given [name] and [id].
@@ -293,53 +249,22 @@ class Pipeline extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:elastictranscoder/pipeline:Pipeline',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:elastictranscoder/pipeline:Pipeline',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     awsKmsKeyArn = registerOutput<String?>('awsKmsKeyArn');
-    contentConfig = registerOutput<PipelineContentConfig>(
-      'contentConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PipelineContentConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    contentConfigPermissions = registerOutput<List<Map<String, dynamic>>?>(
-      'contentConfigPermissions',
-    );
+    contentConfig = registerOutput<PipelineContentConfig>('contentConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineContentConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    contentConfigPermissions = registerOutput<List<Map<String, dynamic>>?>('contentConfigPermissions');
     inputBucket = registerOutput<String>('inputBucket');
     this.name = registerOutput<String>('name');
-    notifications = registerOutput<PipelineNotifications?>(
-      'notifications',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PipelineNotifications.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    notifications = registerOutput<PipelineNotifications?>('notifications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineNotifications.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     outputBucket = registerOutput<String>('outputBucket');
     region = registerOutput<String>('region');
     role = registerOutput<String>('role');
-    thumbnailConfig = registerOutput<PipelineThumbnailConfig>(
-      'thumbnailConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PipelineThumbnailConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    thumbnailConfigPermissions = registerOutput<List<Map<String, dynamic>>?>(
-      'thumbnailConfigPermissions',
-    );
+    thumbnailConfig = registerOutput<PipelineThumbnailConfig>('thumbnailConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineThumbnailConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    thumbnailConfigPermissions = registerOutput<List<Map<String, dynamic>>?>('thumbnailConfigPermissions');
   }
 }

@@ -11,19 +11,14 @@ import 'sku.dart';
 class CustomizedAcceleratorArgs {
   /// The name of the application accelerator.
   final pulumi.Input<String> applicationAcceleratorName;
-
   /// The name of the customized accelerator.
   final pulumi.Input<String>? customizedAcceleratorName;
-
   /// Customized accelerator properties payload
   final pulumi.Input<CustomizedAcceleratorProperties>? properties;
-
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the Service resource.
   final pulumi.Input<String> serviceName;
-
   /// Sku of the customized accelerator resource
   final pulumi.Input<Sku>? sku;
 
@@ -47,50 +42,22 @@ class CustomizedAcceleratorArgs {
     return <String, dynamic>{
       'applicationAcceleratorName': applicationAcceleratorName,
       'customizedAcceleratorName': ?customizedAcceleratorName,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            CustomizedAcceleratorProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<CustomizedAcceleratorProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'serviceName': serviceName,
-      'sku': ?pulumi.Input.mapOptionalInputValue<Sku, Map<String, dynamic>>(
-        sku,
-        (value) => value.toMap(),
-      ),
+      'sku': ?pulumi.Input.mapOptionalInputValue<Sku, Map<String, dynamic>>(sku, (value) => value.toMap()),
     };
   }
 
   factory CustomizedAcceleratorArgs.fromMap(Map<String, dynamic> map) {
     return CustomizedAcceleratorArgs(
-      applicationAcceleratorName: pulumi.Input.fromValue(
-        map['applicationAcceleratorName'] as String,
-      ),
-      customizedAcceleratorName: (() {
-        final guardedValue = map['customizedAcceleratorName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CustomizedAcceleratorProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      applicationAcceleratorName: pulumi.Input.fromValue(map['applicationAcceleratorName'] as String),
+      customizedAcceleratorName: (() { final guardedValue = map['customizedAcceleratorName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CustomizedAcceleratorProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
-      sku: (() {
-        final guardedValue = map['sku'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          Sku.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
+      sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Sku.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

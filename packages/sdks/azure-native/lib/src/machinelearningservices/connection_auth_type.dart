@@ -25,3 +25,4 @@ enum ConnectionAuthType {
     throw ArgumentError('Unknown ConnectionAuthType value: $value');
   }
 }
+

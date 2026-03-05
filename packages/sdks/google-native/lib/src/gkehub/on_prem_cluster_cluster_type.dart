@@ -18,3 +18,4 @@ enum OnPremClusterClusterType {
     throw ArgumentError('Unknown OnPremClusterClusterType value: $value');
   }
 }
+

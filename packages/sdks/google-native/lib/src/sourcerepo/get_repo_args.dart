@@ -13,20 +13,23 @@ class GetRepoArgs {
   /// Creates a new [GetRepoArgs].
   /// [project] Optional.
   /// [repoId] Required.
-  GetRepoArgs({this.project, required this.repoId});
+  GetRepoArgs({
+    this.project,
+    required this.repoId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'project': ?project, 'repoId': repoId};
+    return <String, dynamic>{
+      'project': ?project,
+      'repoId': repoId,
+    };
   }
 
   factory GetRepoArgs.fromMap(Map<String, dynamic> map) {
     return GetRepoArgs(
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       repoId: pulumi.Input.fromValue(map['repoId'] as String),
     );
   }
 }
+

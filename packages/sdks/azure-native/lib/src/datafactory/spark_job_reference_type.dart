@@ -14,3 +14,4 @@ enum SparkJobReferenceType {
     throw ArgumentError('Unknown SparkJobReferenceType value: $value');
   }
 }
+

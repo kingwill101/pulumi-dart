@@ -6,13 +6,9 @@ import 'posture_policy_set_policy_constraint_org_policy_constraint_policy_rule.d
 class PosturePolicySetPolicyConstraintOrgPolicyConstraint {
   /// Organization policy canned constraint Id
   final pulumi.Input<String> cannedConstraintId;
-
   /// Definition of policy rules
   /// Structure is documented below.
-  final pulumi.Input<
-    List<PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRule>
-  >
-  policyRules;
+  final pulumi.Input<List<PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRule>> policyRules;
 
   /// Creates a new [PosturePolicySetPolicyConstraintOrgPolicyConstraint].
   /// [cannedConstraintId] Organization policy canned constraint Id
@@ -25,39 +21,15 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraint {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'cannedConstraintId': cannedConstraintId,
-      'policyRules':
-          pulumi.Input.mapInputValue<
-            List<PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRule>,
-            List<Map<String, dynamic>>
-          >(
-            policyRules,
-            (value) =>
-                pulumi.Input.encodeList<
-                  PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRule,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'policyRules': pulumi.Input.mapInputValue<List<PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRule>, List<Map<String, dynamic>>>(policyRules, (value) => pulumi.Input.encodeList<PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRule, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory PosturePolicySetPolicyConstraintOrgPolicyConstraint.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PosturePolicySetPolicyConstraintOrgPolicyConstraint.fromMap(Map<String, dynamic> map) {
     return PosturePolicySetPolicyConstraintOrgPolicyConstraint(
-      cannedConstraintId: pulumi.Input.fromValue(
-        map['cannedConstraintId'] as String,
-      ),
-      policyRules: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRule
-        >(
-          map['policyRules']!,
-          (value) =>
-              PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRule.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
+      cannedConstraintId: pulumi.Input.fromValue(map['cannedConstraintId'] as String),
+      policyRules: pulumi.Input.fromValue(pulumi.Input.decodeList<PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRule>(map['policyRules']!, (value) => PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRule.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

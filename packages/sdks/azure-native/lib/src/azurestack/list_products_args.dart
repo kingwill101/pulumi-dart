@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListProductsArgs {
   /// Name of the product.
   final pulumi.Input<String> productName;
-
   /// Name of the Azure Stack registration.
   final pulumi.Input<String> registrationName;
-
   /// Name of the resource group.
   final pulumi.Input<String> resourceGroup;
 
@@ -37,10 +35,9 @@ class ListProductsArgs {
   factory ListProductsArgs.fromMap(Map<String, dynamic> map) {
     return ListProductsArgs(
       productName: pulumi.Input.fromValue(map['productName'] as String),
-      registrationName: pulumi.Input.fromValue(
-        map['registrationName'] as String,
-      ),
+      registrationName: pulumi.Input.fromValue(map['registrationName'] as String),
       resourceGroup: pulumi.Input.fromValue(map['resourceGroup'] as String),
     );
   }
 }
+

@@ -13,119 +13,80 @@ import 'system_data_response.dart';
 class GetServerGroupClusterResult {
   /// Indicates whether the cluster was created using AAD authentication.
   final String aadAuthEnabled;
-
   /// The administrator's login name of the servers in the cluster.
   final String administratorLogin;
-
   /// Authentication configuration of a cluster.
   final ServerGroupClusterAuthConfigResponse? authConfig;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The Citus extension version on all cluster servers.
   final String? citusVersion;
-
   /// If public access is enabled on coordinator.
   final bool? coordinatorEnablePublicIpAccess;
-
   /// The edition of a coordinator server (default: GeneralPurpose). Required for creation.
   final String? coordinatorServerEdition;
-
   /// The storage of a server in MB. Required for creation. See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
   final int? coordinatorStorageQuotaInMb;
-
   /// The vCores count of a server (max: 96). Required for creation. See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
   final int? coordinatorVCores;
-
   /// The data encryption properties of a cluster.
   final ServerGroupClusterDataEncryptionResponse? dataEncryption;
-
   /// The database name of the cluster. Only one database per cluster is supported.
   final String? databaseName;
-
   /// The earliest restore point time (ISO8601 format) for the cluster.
   final String earliestRestoreTime;
-
   /// If cluster backup is stored in another Azure region in addition to the copy of the backup stored in the cluster's region. Enabled only at the time of cluster creation.
   final bool? enableGeoBackup;
-
   /// If high availability (HA) is enabled or not for the cluster.
   final bool? enableHa;
-
   /// If distributed tables are placed on coordinator or not. Should be set to 'true' on single node clusters. Requires shard rebalancing after value is changed.
   final bool? enableShardsOnCoordinator;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// Describes the identity of the cluster.
   final IdentityPropertiesResponse? identity;
-
   /// The geo-location where the resource lives
   final String location;
-
   /// Maintenance window of a cluster.
   final ServerGroupClusterMaintenanceWindowResponse? maintenanceWindow;
-
   /// The name of the resource
   final String name;
-
   /// Worker node count of the cluster. When node count is 0, it represents a single node configuration with the ability to create distributed tables on that node. 2 or more worker nodes represent multi-node configuration. Node count value cannot be 1. Required for creation.
   final int? nodeCount;
-
   /// If public access is enabled on worker nodes.
   final bool? nodeEnablePublicIpAccess;
-
   /// The edition of a node server (default: MemoryOptimized).
   final String? nodeServerEdition;
-
   /// The storage in MB on each worker node. See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
   final int? nodeStorageQuotaInMb;
-
   /// The compute in vCores on each worker node (max: 104). See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
   final int? nodeVCores;
-
   /// Indicates whether the cluster was created with a password or using AAD authentication.
   final String passwordEnabled;
-
   /// Date and time in UTC (ISO8601 format) for cluster restore.
   final String? pointInTimeUTC;
-
   /// The major PostgreSQL version on all cluster servers.
   final String? postgresqlVersion;
-
   /// Preferred primary availability zone (AZ) for all cluster servers.
   final String? preferredPrimaryZone;
-
   /// The private endpoint connections for a cluster.
-  final List<SimplePrivateEndpointConnectionResponse>
-  privateEndpointConnections;
-
+  final List<SimplePrivateEndpointConnectionResponse> privateEndpointConnections;
   /// Provisioning state of the cluster
   final String provisioningState;
-
   /// The array of read replica clusters.
   final List<String> readReplicas;
-
   /// The list of server names in the cluster
   final List<ServerNameItemResponse> serverNames;
-
   /// The Azure region of source cluster for read replica clusters.
   final String? sourceLocation;
-
   /// The resource id of source cluster for read replica clusters.
   final String? sourceResourceId;
-
   /// A state of a cluster/server that is visible to user.
   final String state;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -242,18 +203,10 @@ class GetServerGroupClusterResult {
       'pointInTimeUTC': ?pointInTimeUTC,
       'postgresqlVersion': ?postgresqlVersion,
       'preferredPrimaryZone': ?preferredPrimaryZone,
-      'privateEndpointConnections':
-          pulumi.Input.encodeList<
-            SimplePrivateEndpointConnectionResponse,
-            Map<String, dynamic>
-          >(privateEndpointConnections, (value) => value.toMap()),
+      'privateEndpointConnections': pulumi.Input.encodeList<SimplePrivateEndpointConnectionResponse, Map<String, dynamic>>(privateEndpointConnections, (value) => value.toMap()),
       'provisioningState': provisioningState,
       'readReplicas': readReplicas,
-      'serverNames':
-          pulumi.Input.encodeList<ServerNameItemResponse, Map<String, dynamic>>(
-            serverNames,
-            (value) => value.toMap(),
-          ),
+      'serverNames': pulumi.Input.encodeList<ServerNameItemResponse, Map<String, dynamic>>(serverNames, (value) => value.toMap()),
       'sourceLocation': ?sourceLocation,
       'sourceResourceId': ?sourceResourceId,
       'state': state,
@@ -267,160 +220,44 @@ class GetServerGroupClusterResult {
     return GetServerGroupClusterResult(
       aadAuthEnabled: map['aadAuthEnabled'] as String,
       administratorLogin: map['administratorLogin'] as String,
-      authConfig: (() {
-        final guardedValue = map['authConfig'];
-        if (guardedValue == null) return null;
-        return ServerGroupClusterAuthConfigResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      authConfig: (() { final guardedValue = map['authConfig']; if (guardedValue == null) return null; return ServerGroupClusterAuthConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       azureApiVersion: map['azureApiVersion'] as String,
-      citusVersion: (() {
-        final guardedValue = map['citusVersion'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      coordinatorEnablePublicIpAccess: (() {
-        final guardedValue = map['coordinatorEnablePublicIpAccess'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      coordinatorServerEdition: (() {
-        final guardedValue = map['coordinatorServerEdition'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      coordinatorStorageQuotaInMb: (() {
-        final guardedValue = map['coordinatorStorageQuotaInMb'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      coordinatorVCores: (() {
-        final guardedValue = map['coordinatorVCores'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      dataEncryption: (() {
-        final guardedValue = map['dataEncryption'];
-        if (guardedValue == null) return null;
-        return ServerGroupClusterDataEncryptionResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      databaseName: (() {
-        final guardedValue = map['databaseName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      citusVersion: (() { final guardedValue = map['citusVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      coordinatorEnablePublicIpAccess: (() { final guardedValue = map['coordinatorEnablePublicIpAccess']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      coordinatorServerEdition: (() { final guardedValue = map['coordinatorServerEdition']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      coordinatorStorageQuotaInMb: (() { final guardedValue = map['coordinatorStorageQuotaInMb']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      coordinatorVCores: (() { final guardedValue = map['coordinatorVCores']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      dataEncryption: (() { final guardedValue = map['dataEncryption']; if (guardedValue == null) return null; return ServerGroupClusterDataEncryptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      databaseName: (() { final guardedValue = map['databaseName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       earliestRestoreTime: map['earliestRestoreTime'] as String,
-      enableGeoBackup: (() {
-        final guardedValue = map['enableGeoBackup'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      enableHa: (() {
-        final guardedValue = map['enableHa'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      enableShardsOnCoordinator: (() {
-        final guardedValue = map['enableShardsOnCoordinator'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      enableGeoBackup: (() { final guardedValue = map['enableGeoBackup']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      enableHa: (() { final guardedValue = map['enableHa']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      enableShardsOnCoordinator: (() { final guardedValue = map['enableShardsOnCoordinator']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       id: map['id'] as String,
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return IdentityPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return IdentityPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       location: map['location'] as String,
-      maintenanceWindow: (() {
-        final guardedValue = map['maintenanceWindow'];
-        if (guardedValue == null) return null;
-        return ServerGroupClusterMaintenanceWindowResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      maintenanceWindow: (() { final guardedValue = map['maintenanceWindow']; if (guardedValue == null) return null; return ServerGroupClusterMaintenanceWindowResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       name: map['name'] as String,
-      nodeCount: (() {
-        final guardedValue = map['nodeCount'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      nodeEnablePublicIpAccess: (() {
-        final guardedValue = map['nodeEnablePublicIpAccess'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      nodeServerEdition: (() {
-        final guardedValue = map['nodeServerEdition'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      nodeStorageQuotaInMb: (() {
-        final guardedValue = map['nodeStorageQuotaInMb'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      nodeVCores: (() {
-        final guardedValue = map['nodeVCores'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
+      nodeCount: (() { final guardedValue = map['nodeCount']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      nodeEnablePublicIpAccess: (() { final guardedValue = map['nodeEnablePublicIpAccess']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      nodeServerEdition: (() { final guardedValue = map['nodeServerEdition']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      nodeStorageQuotaInMb: (() { final guardedValue = map['nodeStorageQuotaInMb']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      nodeVCores: (() { final guardedValue = map['nodeVCores']; if (guardedValue == null) return null; return guardedValue as int; })(),
       passwordEnabled: map['passwordEnabled'] as String,
-      pointInTimeUTC: (() {
-        final guardedValue = map['pointInTimeUTC'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      postgresqlVersion: (() {
-        final guardedValue = map['postgresqlVersion'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      preferredPrimaryZone: (() {
-        final guardedValue = map['preferredPrimaryZone'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      privateEndpointConnections:
-          pulumi.Input.decodeList<SimplePrivateEndpointConnectionResponse>(
-            map['privateEndpointConnections']!,
-            (value) => SimplePrivateEndpointConnectionResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      pointInTimeUTC: (() { final guardedValue = map['pointInTimeUTC']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      postgresqlVersion: (() { final guardedValue = map['postgresqlVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      preferredPrimaryZone: (() { final guardedValue = map['preferredPrimaryZone']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      privateEndpointConnections: pulumi.Input.decodeList<SimplePrivateEndpointConnectionResponse>(map['privateEndpointConnections']!, (value) => SimplePrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
       provisioningState: map['provisioningState'] as String,
       readReplicas: (map['readReplicas'] as List).cast<String>(),
-      serverNames: pulumi.Input.decodeList<ServerNameItemResponse>(
-        map['serverNames']!,
-        (value) => ServerNameItemResponse.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      sourceLocation: (() {
-        final guardedValue = map['sourceLocation'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      sourceResourceId: (() {
-        final guardedValue = map['sourceResourceId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      serverNames: pulumi.Input.decodeList<ServerNameItemResponse>(map['serverNames']!, (value) => ServerNameItemResponse.fromMap((value as Map).cast<String, dynamic>())),
+      sourceLocation: (() { final guardedValue = map['sourceLocation']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sourceResourceId: (() { final guardedValue = map['sourceResourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       state: map['state'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

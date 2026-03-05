@@ -5,31 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRoleAssignmentsRoleAssignment {
   /// The condition that limits the resource the role can be assigned to.
   final pulumi.Input<String> condition;
-
   /// The version of the condition.
   final pulumi.Input<String> conditionVersion;
-
   /// The ID of the delegated managed identity resource.
   final pulumi.Input<String> delegatedManagedIdentityResourceId;
-
   /// The description for this Role Assignment.
   final pulumi.Input<String> description;
-
   /// The principal ID to filter the list of Role Assignments against.
   final pulumi.Input<String> principalId;
-
   /// The type of the `principal_id`.
   final pulumi.Input<String> principalType;
-
   /// The ID of the Role Assignment.
   final pulumi.Input<String> roleAssignmentId;
-
   /// The name of the Role Assignment.
   final pulumi.Input<String> roleAssignmentName;
-
   /// The scope of the Role Assignment.
   final pulumi.Input<String> roleAssignmentScope;
-
   /// The ID of the Role Definition.
   final pulumi.Input<String> roleDefinitionId;
 
@@ -75,27 +66,16 @@ class GetRoleAssignmentsRoleAssignment {
   factory GetRoleAssignmentsRoleAssignment.fromMap(Map<String, dynamic> map) {
     return GetRoleAssignmentsRoleAssignment(
       condition: pulumi.Input.fromValue(map['condition'] as String),
-      conditionVersion: pulumi.Input.fromValue(
-        map['conditionVersion'] as String,
-      ),
-      delegatedManagedIdentityResourceId: pulumi.Input.fromValue(
-        map['delegatedManagedIdentityResourceId'] as String,
-      ),
+      conditionVersion: pulumi.Input.fromValue(map['conditionVersion'] as String),
+      delegatedManagedIdentityResourceId: pulumi.Input.fromValue(map['delegatedManagedIdentityResourceId'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
       principalId: pulumi.Input.fromValue(map['principalId'] as String),
       principalType: pulumi.Input.fromValue(map['principalType'] as String),
-      roleAssignmentId: pulumi.Input.fromValue(
-        map['roleAssignmentId'] as String,
-      ),
-      roleAssignmentName: pulumi.Input.fromValue(
-        map['roleAssignmentName'] as String,
-      ),
-      roleAssignmentScope: pulumi.Input.fromValue(
-        map['roleAssignmentScope'] as String,
-      ),
-      roleDefinitionId: pulumi.Input.fromValue(
-        map['roleDefinitionId'] as String,
-      ),
+      roleAssignmentId: pulumi.Input.fromValue(map['roleAssignmentId'] as String),
+      roleAssignmentName: pulumi.Input.fromValue(map['roleAssignmentName'] as String),
+      roleAssignmentScope: pulumi.Input.fromValue(map['roleAssignmentScope'] as String),
+      roleDefinitionId: pulumi.Input.fromValue(map['roleDefinitionId'] as String),
     );
   }
 }
+

@@ -15,3 +15,4 @@ enum EvictionPolicy {
     throw ArgumentError('Unknown EvictionPolicy value: $value');
   }
 }
+

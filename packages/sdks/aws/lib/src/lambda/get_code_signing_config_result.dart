@@ -9,19 +9,14 @@ class GetCodeSigningConfigResult {
   /// List of allowed publishers as signing profiles for this code signing configuration. See below.
   final List<GetCodeSigningConfigAllowedPublisher> allowedPublishers;
   final String arn;
-
   /// Unique identifier for the code signing configuration.
   final String configId;
-
   /// Code signing configuration description.
   final String description;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// Date and time that the code signing configuration was last modified.
   final String lastModified;
-
   /// List of code signing policies that control the validation failure action for signature mismatch or expiry. See below.
   final List<GetCodeSigningConfigPolicy> policies;
   final String region;
@@ -48,46 +43,28 @@ class GetCodeSigningConfigResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allowedPublishers':
-          pulumi.Input.encodeList<
-            GetCodeSigningConfigAllowedPublisher,
-            Map<String, dynamic>
-          >(allowedPublishers, (value) => value.toMap()),
+      'allowedPublishers': pulumi.Input.encodeList<GetCodeSigningConfigAllowedPublisher, Map<String, dynamic>>(allowedPublishers, (value) => value.toMap()),
       'arn': arn,
       'configId': configId,
       'description': description,
       'id': id,
       'lastModified': lastModified,
-      'policies':
-          pulumi.Input.encodeList<
-            GetCodeSigningConfigPolicy,
-            Map<String, dynamic>
-          >(policies, (value) => value.toMap()),
+      'policies': pulumi.Input.encodeList<GetCodeSigningConfigPolicy, Map<String, dynamic>>(policies, (value) => value.toMap()),
       'region': region,
     };
   }
 
   factory GetCodeSigningConfigResult.fromMap(Map<String, dynamic> map) {
     return GetCodeSigningConfigResult(
-      allowedPublishers:
-          pulumi.Input.decodeList<GetCodeSigningConfigAllowedPublisher>(
-            map['allowedPublishers']!,
-            (value) => GetCodeSigningConfigAllowedPublisher.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      allowedPublishers: pulumi.Input.decodeList<GetCodeSigningConfigAllowedPublisher>(map['allowedPublishers']!, (value) => GetCodeSigningConfigAllowedPublisher.fromMap((value as Map).cast<String, dynamic>())),
       arn: map['arn'] as String,
       configId: map['configId'] as String,
       description: map['description'] as String,
       id: map['id'] as String,
       lastModified: map['lastModified'] as String,
-      policies: pulumi.Input.decodeList<GetCodeSigningConfigPolicy>(
-        map['policies']!,
-        (value) => GetCodeSigningConfigPolicy.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      policies: pulumi.Input.decodeList<GetCodeSigningConfigPolicy>(map['policies']!, (value) => GetCodeSigningConfigPolicy.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
     );
   }
 }
+

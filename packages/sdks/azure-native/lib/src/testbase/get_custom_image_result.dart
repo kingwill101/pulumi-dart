@@ -7,55 +7,38 @@ import 'system_data_response.dart';
 class GetCustomImageResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The UTC timestamp when the custom image was published.
   final String creationTime;
-
   /// Image definition name.
   final String definitionName;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// The name of the resource
   final String name;
-
   /// This property indicates the size of the VHD to be created.
   final double osDiskImageSizeInGB;
-
   /// Product of the custom image.
   final String product;
-
   /// The provisioning state of the resource.
   final String provisioningState;
-
   /// Release of the custom image OS.
   final String release;
-
   /// The release version date of the release of the custom image OS.
   final String releaseVersionDate;
-
   /// Custom image source type.
   final String source;
-
   /// Status of the custom image.
   final String status;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
-
   /// The validation result of the custom image.
   final ImageValidationResultsResponse validationResults;
-
   /// Image version name.
   final String versionName;
-
   /// The file name of the associated VHD resource.
   final String vhdFileName;
-
   /// The Id of the associated VHD resource.
   final String? vhdId;
 
@@ -136,20 +119,13 @@ class GetCustomImageResult {
       releaseVersionDate: map['releaseVersionDate'] as String,
       source: map['source'] as String,
       status: map['status'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
-      validationResults: ImageValidationResultsResponse.fromMap(
-        (map['validationResults']! as Map).cast<String, dynamic>(),
-      ),
+      validationResults: ImageValidationResultsResponse.fromMap((map['validationResults']! as Map).cast<String, dynamic>()),
       versionName: map['versionName'] as String,
       vhdFileName: map['vhdFileName'] as String,
-      vhdId: (() {
-        final guardedValue = map['vhdId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      vhdId: (() { final guardedValue = map['vhdId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

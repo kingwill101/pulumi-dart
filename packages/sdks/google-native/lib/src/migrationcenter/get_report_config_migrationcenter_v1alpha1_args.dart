@@ -29,17 +29,12 @@ class GetReportConfigMigrationcenterV1alpha1Args {
     };
   }
 
-  factory GetReportConfigMigrationcenterV1alpha1Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetReportConfigMigrationcenterV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return GetReportConfigMigrationcenterV1alpha1Args(
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       reportConfigId: pulumi.Input.fromValue(map['reportConfigId'] as String),
     );
   }
 }
+

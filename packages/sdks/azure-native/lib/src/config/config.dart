@@ -20,11 +20,7 @@ class AzureNativeConfig {
   /// Any additional Tenant IDs which should be used for authentication.
   List<String>? get auxiliaryTenantIds {
     final raw = _raw('auxiliaryTenantIds');
-    return (() {
-      final guardedValue = raw;
-      if (guardedValue == null) return null;
-      return (jsonDecode(guardedValue) as List).cast<String>();
-    })();
+    return (() { final guardedValue = raw; if (guardedValue == null) return null; return (jsonDecode(guardedValue) as List).cast<String>(); })();
   }
 
   bool get auxiliaryTenantIdsIsSecret => _isSecret('auxiliaryTenantIds');
@@ -35,8 +31,7 @@ class AzureNativeConfig {
     return raw;
   }
 
-  bool get clientCertificatePasswordIsSecret =>
-      _isSecret('clientCertificatePassword');
+  bool get clientCertificatePasswordIsSecret => _isSecret('clientCertificatePassword');
 
   /// The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service Principal using a Client Certificate.
   String? get clientCertificatePath {
@@ -68,8 +63,7 @@ class AzureNativeConfig {
     return (raw).toBool();
   }
 
-  bool get disableInstanceDiscoveryIsSecret =>
-      _isSecret('disableInstanceDiscovery');
+  bool get disableInstanceDiscoveryIsSecret => _isSecret('disableInstanceDiscovery');
 
   /// This will disable the Pulumi Partner ID which is used if a custom `partnerId` isn't specified.
   bool? get disablePulumiPartnerId {
@@ -77,8 +71,7 @@ class AzureNativeConfig {
     return (raw).toBool();
   }
 
-  bool get disablePulumiPartnerIdIsSecret =>
-      _isSecret('disablePulumiPartnerId');
+  bool get disablePulumiPartnerIdIsSecret => _isSecret('disablePulumiPartnerId');
 
   /// The Cloud Environment which should be used. Possible values are public, usgovernment, and china. Defaults to public. Not used when metadataHost is specified or when ARM_METADATA_HOSTNAME is set.
   String? get environment {
@@ -174,8 +167,7 @@ class AzureNativeConfig {
     return (raw).toBool();
   }
 
-  bool get useDefaultAzureCredentialIsSecret =>
-      _isSecret('useDefaultAzureCredential');
+  bool get useDefaultAzureCredentialIsSecret => _isSecret('useDefaultAzureCredential');
 
   /// Allow Managed Service Identity be used for Authentication.
   bool? get useMsi {
@@ -192,6 +184,8 @@ class AzureNativeConfig {
   }
 
   bool get useOidcIsSecret => _isSecret('useOidc');
+
 }
 
 final config = AzureNativeConfig();
+

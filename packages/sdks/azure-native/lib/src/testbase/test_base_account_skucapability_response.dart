@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TestBaseAccountSKUCapabilityResponse {
   /// An invariant to describe the feature, such as 'SLA'.
   final pulumi.Input<String> name;
-
   /// An invariant if the feature is measured by quantity, such as 99.9%.
   final pulumi.Input<String> value;
 
@@ -19,15 +18,17 @@ class TestBaseAccountSKUCapabilityResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'value': value};
+    return <String, dynamic>{
+      'name': name,
+      'value': value,
+    };
   }
 
-  factory TestBaseAccountSKUCapabilityResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory TestBaseAccountSKUCapabilityResponse.fromMap(Map<String, dynamic> map) {
     return TestBaseAccountSKUCapabilityResponse(
       name: pulumi.Input.fromValue(map['name'] as String),
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
+

@@ -9,29 +9,20 @@ class ScraperDestination {
 
   /// Creates a new [ScraperDestination].
   /// [amp] Configuration block for an Amazon Managed Prometheus workspace destination. See `amp`.
-  ScraperDestination({this.amp});
+  ScraperDestination({
+    this.amp,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'amp':
-          ?pulumi.Input.mapOptionalInputValue<
-            ScraperDestinationAmp,
-            Map<String, dynamic>
-          >(amp, (value) => value.toMap()),
+      'amp': ?pulumi.Input.mapOptionalInputValue<ScraperDestinationAmp, Map<String, dynamic>>(amp, (value) => value.toMap()),
     };
   }
 
   factory ScraperDestination.fromMap(Map<String, dynamic> map) {
     return ScraperDestination(
-      amp: (() {
-        final guardedValue = map['amp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ScraperDestinationAmp.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      amp: (() { final guardedValue = map['amp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ScraperDestinationAmp.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

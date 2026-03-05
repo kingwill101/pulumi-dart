@@ -7,10 +7,14 @@ class GetFrameworkControlSetControl {
 
   /// Creates a new [GetFrameworkControlSetControl].
   /// [id] Required.
-  GetFrameworkControlSetControl({required this.id});
+  GetFrameworkControlSetControl({
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id};
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
   factory GetFrameworkControlSetControl.fromMap(Map<String, dynamic> map) {
@@ -19,3 +23,4 @@ class GetFrameworkControlSetControl {
     );
   }
 }
+

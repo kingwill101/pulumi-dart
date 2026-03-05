@@ -12,8 +12,7 @@ enum InstanceGroupManagerTargetSizeUnit {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown InstanceGroupManagerTargetSizeUnit value: $value',
-    );
+    throw ArgumentError('Unknown InstanceGroupManagerTargetSizeUnit value: $value');
   }
 }
+

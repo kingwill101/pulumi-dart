@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getFileCrc64Checksum.
 class GetFileCrc64ChecksumResult {
   /// the file checksum of crc64.
   final String checksum;
   final String filename;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? outputFile;
@@ -36,11 +36,8 @@ class GetFileCrc64ChecksumResult {
       checksum: map['checksum'] as String,
       filename: map['filename'] as String,
       id: map['id'] as String,
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

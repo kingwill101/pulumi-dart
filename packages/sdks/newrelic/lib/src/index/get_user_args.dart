@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetUserArgs {
   /// The ID of the authentication domain the user to be searched for belongs to.
   final pulumi.Input<String> authenticationDomainId;
-
   /// The email ID of the user to search for.
   ///
   /// It should be noted that either `name` or `email_id` must be specified in order to retrieve a matching user.
@@ -18,7 +17,6 @@ class GetUserArgs {
   ///
   /// &gt; **NOTE** The ID of an authentication domain can be retrieved using its name, via the data source `newrelic.getAuthenticationDomain`, as shown in the example above. Head over to the documentation of this data source for more details and examples.
   final pulumi.Input<String>? emailId;
-
   /// The name of the user to search for.
   final pulumi.Input<String>? name;
 
@@ -26,7 +24,11 @@ class GetUserArgs {
   /// [authenticationDomainId] The ID of the authentication domain the user to be searched for belongs to.
   /// [emailId] The email ID of the user to search for.
   /// [name] The name of the user to search for.
-  GetUserArgs({required this.authenticationDomainId, this.emailId, this.name});
+  GetUserArgs({
+    required this.authenticationDomainId,
+    this.emailId,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,19 +40,10 @@ class GetUserArgs {
 
   factory GetUserArgs.fromMap(Map<String, dynamic> map) {
     return GetUserArgs(
-      authenticationDomainId: pulumi.Input.fromValue(
-        map['authenticationDomainId'] as String,
-      ),
-      emailId: (() {
-        final guardedValue = map['emailId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      authenticationDomainId: pulumi.Input.fromValue(map['authenticationDomainId'] as String),
+      emailId: (() { final guardedValue = map['emailId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

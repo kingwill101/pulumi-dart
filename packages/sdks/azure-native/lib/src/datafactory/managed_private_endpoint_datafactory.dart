@@ -168,16 +168,12 @@ import 'managed_private_endpoint_response.dart';
 class ManagedPrivateEndpointDatafactory extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Etag identifies change in the resource.
   late final pulumi.Output<String> etag;
-
   /// The resource name.
   late final pulumi.Output<String> name;
-
   /// Managed private endpoint properties.
   late final pulumi.Output<ManagedPrivateEndpointResponse> properties;
-
   /// The resource type.
   late final pulumi.Output<String> type;
 
@@ -190,24 +186,15 @@ class ManagedPrivateEndpointDatafactory extends pulumi.CustomResource {
     ManagedPrivateEndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:datafactory:ManagedPrivateEndpoint',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:datafactory:ManagedPrivateEndpoint',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<ManagedPrivateEndpointResponse>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ManagedPrivateEndpointResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<ManagedPrivateEndpointResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedPrivateEndpointResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

@@ -16,3 +16,4 @@ enum RepositoryAccessKind {
     throw ArgumentError('Unknown RepositoryAccessKind value: $value');
   }
 }
+

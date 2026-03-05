@@ -7,23 +7,18 @@ class SubscriptionBigqueryConfig {
   /// are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync
   /// and any messages with extra fields are not written and remain in the subscription's backlog.
   final pulumi.Input<bool>? dropUnknownFields;
-
   /// The service account to use to write to BigQuery. If not specified, the Pub/Sub
   /// [service agent](https://cloud.google.com/iam/docs/service-agents),
   /// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
   final pulumi.Input<String>? serviceAccountEmail;
-
   /// The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
   final pulumi.Input<String> table;
-
   /// When true, use the BigQuery table's schema as the columns to write to in BigQuery. Messages
   /// must be published in JSON format. Only one of use_topic_schema and use_table_schema can be set.
   final pulumi.Input<bool>? useTableSchema;
-
   /// When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
   /// Only one of use_topic_schema and use_table_schema can be set.
   final pulumi.Input<bool>? useTopicSchema;
-
   /// When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to additional columns in the table.
   /// The subscription name, messageId, and publishTime fields are put in their own columns while all other message properties (other than data) are written to a JSON object in the attributes column.
   final pulumi.Input<bool>? writeMetadata;
@@ -57,32 +52,13 @@ class SubscriptionBigqueryConfig {
 
   factory SubscriptionBigqueryConfig.fromMap(Map<String, dynamic> map) {
     return SubscriptionBigqueryConfig(
-      dropUnknownFields: (() {
-        final guardedValue = map['dropUnknownFields'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      serviceAccountEmail: (() {
-        final guardedValue = map['serviceAccountEmail'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dropUnknownFields: (() { final guardedValue = map['dropUnknownFields']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      serviceAccountEmail: (() { final guardedValue = map['serviceAccountEmail']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       table: pulumi.Input.fromValue(map['table'] as String),
-      useTableSchema: (() {
-        final guardedValue = map['useTableSchema'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      useTopicSchema: (() {
-        final guardedValue = map['useTopicSchema'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      writeMetadata: (() {
-        final guardedValue = map['writeMetadata'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      useTableSchema: (() { final guardedValue = map['useTableSchema']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      useTopicSchema: (() { final guardedValue = map['useTopicSchema']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      writeMetadata: (() { final guardedValue = map['writeMetadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

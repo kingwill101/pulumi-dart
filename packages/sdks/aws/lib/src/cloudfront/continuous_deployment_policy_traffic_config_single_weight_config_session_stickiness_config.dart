@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContinuousDeploymentPolicyTrafficConfigSingleWeightConfigSessionStickinessConfig {
   /// The amount of time in seconds after which sessions will cease if no requests are received. Valid values are `300` - `3600` (5–60 minutes). The value must be less than or equal to `maximum_ttl`.
   final pulumi.Input<int> idleTtl;
-
   /// The maximum amount of time in seconds to consider requests from the viewer as being part of the same session. Valid values are `300` - `3600` (5–60 minutes). The value must be greater than or equal to `idle_ttl`.
   final pulumi.Input<int> maximumTtl;
 
@@ -18,15 +17,17 @@ class ContinuousDeploymentPolicyTrafficConfigSingleWeightConfigSessionStickiness
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'idleTtl': idleTtl, 'maximumTtl': maximumTtl};
+    return <String, dynamic>{
+      'idleTtl': idleTtl,
+      'maximumTtl': maximumTtl,
+    };
   }
 
-  factory ContinuousDeploymentPolicyTrafficConfigSingleWeightConfigSessionStickinessConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ContinuousDeploymentPolicyTrafficConfigSingleWeightConfigSessionStickinessConfig.fromMap(Map<String, dynamic> map) {
     return ContinuousDeploymentPolicyTrafficConfigSingleWeightConfigSessionStickinessConfig(
       idleTtl: pulumi.Input.fromValue(map['idleTtl'] as int),
       maximumTtl: pulumi.Input.fromValue(map['maximumTtl'] as int),
     );
   }
 }
+

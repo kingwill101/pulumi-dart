@@ -7,16 +7,12 @@ import 'cloud_sql_settings_response.dart';
 class CloudSqlConnectionProfileResponse {
   /// The Cloud SQL database instance's additional (outgoing) public IP. Used when the Cloud SQL database availability type is REGIONAL (i.e. multiple zones / highly available).
   final pulumi.Input<String> additionalPublicIp;
-
   /// The Cloud SQL instance ID that this connection profile is associated with.
   final pulumi.Input<String> cloudSqlId;
-
   /// The Cloud SQL database instance's private IP.
   final pulumi.Input<String> privateIp;
-
   /// The Cloud SQL database instance's public IP.
   final pulumi.Input<String> publicIp;
-
   /// Immutable. Metadata used to create the destination Cloud SQL database.
   final pulumi.Input<CloudSqlSettingsResponse> settings;
 
@@ -40,27 +36,18 @@ class CloudSqlConnectionProfileResponse {
       'cloudSqlId': cloudSqlId,
       'privateIp': privateIp,
       'publicIp': publicIp,
-      'settings':
-          pulumi.Input.mapInputValue<
-            CloudSqlSettingsResponse,
-            Map<String, dynamic>
-          >(settings, (value) => value.toMap()),
+      'settings': pulumi.Input.mapInputValue<CloudSqlSettingsResponse, Map<String, dynamic>>(settings, (value) => value.toMap()),
     };
   }
 
   factory CloudSqlConnectionProfileResponse.fromMap(Map<String, dynamic> map) {
     return CloudSqlConnectionProfileResponse(
-      additionalPublicIp: pulumi.Input.fromValue(
-        map['additionalPublicIp'] as String,
-      ),
+      additionalPublicIp: pulumi.Input.fromValue(map['additionalPublicIp'] as String),
       cloudSqlId: pulumi.Input.fromValue(map['cloudSqlId'] as String),
       privateIp: pulumi.Input.fromValue(map['privateIp'] as String),
       publicIp: pulumi.Input.fromValue(map['publicIp'] as String),
-      settings: pulumi.Input.fromValue(
-        CloudSqlSettingsResponse.fromMap(
-          (map['settings']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      settings: pulumi.Input.fromValue(CloudSqlSettingsResponse.fromMap((map['settings']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -7,38 +7,28 @@ import 'instance_config_interface_ipv6.dart';
 class InstanceConfigInterface {
   /// Whether this interface is currently booted and active.
   final pulumi.Input<bool>? active;
-
   /// The ID of the interface.
   final pulumi.Input<int>? id;
-
   /// IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
   final pulumi.Input<List<String>>? ipRanges;
-
   /// This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
   final pulumi.Input<String>? ipamAddress;
-
   /// The IPv4 configuration of the VPC interface.This attribute is only allowed for VPC interfaces.
   final pulumi.Input<InstanceConfigInterfaceIpv4>? ipv4;
-
   /// The IPv6 configuration of the VPC interface. This attribute is only allowed for VPC interfaces.
   final pulumi.Input<InstanceConfigInterfaceIpv6>? ipv6;
-
   /// The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
   final pulumi.Input<String>? label;
-
   /// Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
   ///
   /// * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
   ///
   /// * `ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
   final pulumi.Input<bool>? primary;
-
   /// The type of interface. (`public`, `vlan`, `vpc`)
   final pulumi.Input<String> purpose;
-
   /// The name of the VPC Subnet to join. This field is only allowed and required for interfaces with the `vpc` purpose.
   final pulumi.Input<int>? subnetId;
-
   /// The ID of VPC which this interface is attached to.
   final pulumi.Input<int>? vpcId;
 
@@ -74,16 +64,8 @@ class InstanceConfigInterface {
       'id': ?id,
       'ipRanges': ?ipRanges,
       'ipamAddress': ?ipamAddress,
-      'ipv4':
-          ?pulumi.Input.mapOptionalInputValue<
-            InstanceConfigInterfaceIpv4,
-            Map<String, dynamic>
-          >(ipv4, (value) => value.toMap()),
-      'ipv6':
-          ?pulumi.Input.mapOptionalInputValue<
-            InstanceConfigInterfaceIpv6,
-            Map<String, dynamic>
-          >(ipv6, (value) => value.toMap()),
+      'ipv4': ?pulumi.Input.mapOptionalInputValue<InstanceConfigInterfaceIpv4, Map<String, dynamic>>(ipv4, (value) => value.toMap()),
+      'ipv6': ?pulumi.Input.mapOptionalInputValue<InstanceConfigInterfaceIpv6, Map<String, dynamic>>(ipv6, (value) => value.toMap()),
       'label': ?label,
       'primary': ?primary,
       'purpose': purpose,
@@ -94,65 +76,18 @@ class InstanceConfigInterface {
 
   factory InstanceConfigInterface.fromMap(Map<String, dynamic> map) {
     return InstanceConfigInterface(
-      active: (() {
-        final guardedValue = map['active'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      ipRanges: (() {
-        final guardedValue = map['ipRanges'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      ipamAddress: (() {
-        final guardedValue = map['ipamAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ipv4: (() {
-        final guardedValue = map['ipv4'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          InstanceConfigInterfaceIpv4.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      ipv6: (() {
-        final guardedValue = map['ipv6'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          InstanceConfigInterfaceIpv6.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      label: (() {
-        final guardedValue = map['label'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      primary: (() {
-        final guardedValue = map['primary'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      active: (() { final guardedValue = map['active']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      ipRanges: (() { final guardedValue = map['ipRanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      ipamAddress: (() { final guardedValue = map['ipamAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ipv4: (() { final guardedValue = map['ipv4']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceConfigInterfaceIpv4.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      ipv6: (() { final guardedValue = map['ipv6']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceConfigInterfaceIpv6.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      label: (() { final guardedValue = map['label']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      primary: (() { final guardedValue = map['primary']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       purpose: pulumi.Input.fromValue(map['purpose'] as String),
-      subnetId: (() {
-        final guardedValue = map['subnetId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      vpcId: (() {
-        final guardedValue = map['vpcId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      subnetId: (() { final guardedValue = map['subnetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      vpcId: (() { final guardedValue = map['vpcId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

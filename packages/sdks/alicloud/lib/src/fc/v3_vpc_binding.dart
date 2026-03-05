@@ -268,7 +268,6 @@ import 'v3_vpc_binding_state.dart';
 class V3VpcBinding extends pulumi.CustomResource {
   /// Function Name
   late final pulumi.Output<String> functionName;
-
   /// VPC instance ID
   late final pulumi.Output<String> vpcId;
 
@@ -281,11 +280,11 @@ class V3VpcBinding extends pulumi.CustomResource {
     V3VpcBindingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:fc/v3VpcBinding:V3VpcBinding',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:fc/v3VpcBinding:V3VpcBinding',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     functionName = registerOutput<String>('functionName');
     vpcId = registerOutput<String>('vpcId');
   }
@@ -308,11 +307,11 @@ class V3VpcBinding extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:fc/v3VpcBinding:V3VpcBinding',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:fc/v3VpcBinding:V3VpcBinding',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     functionName = registerOutput<String>('functionName');
     vpcId = registerOutput<String>('vpcId');
   }

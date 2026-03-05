@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnvironmentIdentifier {
   /// The environment name.
   final pulumi.Input<String> name;
-
   /// The organization name.
   final pulumi.Input<String> organization;
-
   /// The project name.
   final pulumi.Input<String> project;
 
@@ -38,3 +36,4 @@ class EnvironmentIdentifier {
     );
   }
 }
+

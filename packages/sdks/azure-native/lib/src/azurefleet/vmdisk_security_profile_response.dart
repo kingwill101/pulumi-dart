@@ -10,7 +10,6 @@ class VMDiskSecurityProfileResponse {
   /// disk that is used for Customer Managed Key encrypted ConfidentialVM OS Disk and
   /// VMGuest blob.
   final pulumi.Input<DiskEncryptionSetParametersResponse>? diskEncryptionSet;
-
   /// Specifies the EncryptionType of the managed disk. It is set to
   /// DiskWithVMGuestState for encryption of the managed disk along with VMGuestState
   /// blob, VMGuestStateOnly for encryption of just the VMGuestState blob, and
@@ -28,31 +27,16 @@ class VMDiskSecurityProfileResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'diskEncryptionSet':
-          ?pulumi.Input.mapOptionalInputValue<
-            DiskEncryptionSetParametersResponse,
-            Map<String, dynamic>
-          >(diskEncryptionSet, (value) => value.toMap()),
+      'diskEncryptionSet': ?pulumi.Input.mapOptionalInputValue<DiskEncryptionSetParametersResponse, Map<String, dynamic>>(diskEncryptionSet, (value) => value.toMap()),
       'securityEncryptionType': ?securityEncryptionType,
     };
   }
 
   factory VMDiskSecurityProfileResponse.fromMap(Map<String, dynamic> map) {
     return VMDiskSecurityProfileResponse(
-      diskEncryptionSet: (() {
-        final guardedValue = map['diskEncryptionSet'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DiskEncryptionSetParametersResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      securityEncryptionType: (() {
-        final guardedValue = map['securityEncryptionType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      diskEncryptionSet: (() { final guardedValue = map['diskEncryptionSet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DiskEncryptionSetParametersResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      securityEncryptionType: (() { final guardedValue = map['securityEncryptionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

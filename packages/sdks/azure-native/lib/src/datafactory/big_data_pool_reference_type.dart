@@ -14,3 +14,4 @@ enum BigDataPoolReferenceType {
     throw ArgumentError('Unknown BigDataPoolReferenceType value: $value');
   }
 }
+

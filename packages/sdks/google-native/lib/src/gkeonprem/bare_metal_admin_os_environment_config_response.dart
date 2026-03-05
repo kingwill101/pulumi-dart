@@ -14,16 +14,15 @@ class BareMetalAdminOsEnvironmentConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'packageRepoExcluded': packageRepoExcluded};
+    return <String, dynamic>{
+      'packageRepoExcluded': packageRepoExcluded,
+    };
   }
 
-  factory BareMetalAdminOsEnvironmentConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BareMetalAdminOsEnvironmentConfigResponse.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminOsEnvironmentConfigResponse(
-      packageRepoExcluded: pulumi.Input.fromValue(
-        map['packageRepoExcluded'] as bool,
-      ),
+      packageRepoExcluded: pulumi.Input.fromValue(map['packageRepoExcluded'] as bool),
     );
   }
 }
+

@@ -8,19 +8,20 @@ class DatadogLogsAgentResponse {
 
   /// Creates a new [DatadogLogsAgentResponse].
   /// [transport] The transport.
-  DatadogLogsAgentResponse({this.transport});
+  DatadogLogsAgentResponse({
+    this.transport,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'transport': ?transport};
+    return <String, dynamic>{
+      'transport': ?transport,
+    };
   }
 
   factory DatadogLogsAgentResponse.fromMap(Map<String, dynamic> map) {
     return DatadogLogsAgentResponse(
-      transport: (() {
-        final guardedValue = map['transport'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      transport: (() { final guardedValue = map['transport']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

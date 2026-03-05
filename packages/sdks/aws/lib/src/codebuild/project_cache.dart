@@ -5,15 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProjectCache {
   /// Namespace that determines the scope in which a cache is shared across multiple projects.
   final pulumi.Input<String>? cacheNamespace;
-
   /// Location where the AWS CodeBuild project stores cached resources. For
   /// type `S3`, the value must be a valid S3 bucket name/prefix.
   final pulumi.Input<String>? location;
-
   /// Specifies settings that AWS CodeBuild uses to store and reuse build
   /// dependencies. Valid values:  `LOCAL_SOURCE_CACHE`, `LOCAL_DOCKER_LAYER_CACHE`, `LOCAL_CUSTOM_CACHE`.
   final pulumi.Input<List<String>>? modes;
-
   /// Type of storage that will be used for the AWS CodeBuild project cache. Valid values: `NO_CACHE`,
   /// `LOCAL`, `S3`. Defaults to `NO_CACHE`.
   final pulumi.Input<String>? type;
@@ -23,7 +20,12 @@ class ProjectCache {
   /// [location] Location where the AWS CodeBuild project stores cached resources. For
   /// [modes] Specifies settings that AWS CodeBuild uses to store and reuse build
   /// [type] Type of storage that will be used for the AWS CodeBuild project cache. Valid values: `NO_CACHE`,
-  ProjectCache({this.cacheNamespace, this.location, this.modes, this.type});
+  ProjectCache({
+    this.cacheNamespace,
+    this.location,
+    this.modes,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,26 +38,11 @@ class ProjectCache {
 
   factory ProjectCache.fromMap(Map<String, dynamic> map) {
     return ProjectCache(
-      cacheNamespace: (() {
-        final guardedValue = map['cacheNamespace'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      modes: (() {
-        final guardedValue = map['modes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      cacheNamespace: (() { final guardedValue = map['cacheNamespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      modes: (() { final guardedValue = map['modes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

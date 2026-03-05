@@ -9,19 +9,20 @@ class DSSEHintResponseContaineranalysisV1alpha1 {
 
   /// Creates a new [DSSEHintResponseContaineranalysisV1alpha1].
   /// [humanReadableName] The human readable name of this attestation authority, for example "cloudbuild-prod".
-  DSSEHintResponseContaineranalysisV1alpha1({required this.humanReadableName});
+  DSSEHintResponseContaineranalysisV1alpha1({
+    required this.humanReadableName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'humanReadableName': humanReadableName};
+    return <String, dynamic>{
+      'humanReadableName': humanReadableName,
+    };
   }
 
-  factory DSSEHintResponseContaineranalysisV1alpha1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DSSEHintResponseContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return DSSEHintResponseContaineranalysisV1alpha1(
-      humanReadableName: pulumi.Input.fromValue(
-        map['humanReadableName'] as String,
-      ),
+      humanReadableName: pulumi.Input.fromValue(map['humanReadableName'] as String),
     );
   }
 }
+

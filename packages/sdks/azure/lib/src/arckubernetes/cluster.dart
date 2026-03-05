@@ -227,40 +227,28 @@ import 'cluster_state.dart';
 class Cluster extends pulumi.CustomResource {
   /// Specifies the base64-encoded public certificate used by the agent to do the initial handshake to the backend services in Azure. Changing this forces a new Arc Kubernetes Cluster to be created.
   late final pulumi.Output<String> agentPublicKeyCertificate;
-
   /// Version of the agent running on the cluster resource.
   late final pulumi.Output<String> agentVersion;
-
   /// The distribution running on this Arc Kubernetes Cluster.
   late final pulumi.Output<String> distribution;
-
   /// An `identity` block as defined below. Changing this forces a new Arc Kubernetes Cluster to be created.
   late final pulumi.Output<ClusterIdentity> identity;
-
   /// The infrastructure on which the Arc Kubernetes Cluster is running on.
   late final pulumi.Output<String> infrastructure;
-
   /// The Kubernetes version of the cluster resource.
   late final pulumi.Output<String> kubernetesVersion;
-
   /// Specifies the Azure Region where the Arc Kubernetes Cluster should exist. Changing this forces a new Arc Kubernetes Cluster to be created.
   late final pulumi.Output<String> location;
-
   /// Specifies the name which should be used for this Arc Kubernetes Cluster. Changing this forces a new Arc Kubernetes Cluster to be created.
   late final pulumi.Output<String> name;
-
   /// The cluster offering.
   late final pulumi.Output<String> offering;
-
   /// Specifies the name of the Resource Group where the Arc Kubernetes Cluster should exist. Changing this forces a new Arc Kubernetes Cluster to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags which should be assigned to the Arc Kubernetes Cluster.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Number of CPU cores present in the cluster resource.
   late final pulumi.Output<int> totalCoreCount;
-
   /// Number of nodes present in the cluster resource.
   late final pulumi.Output<int> totalNodeCount;
 
@@ -273,26 +261,15 @@ class Cluster extends pulumi.CustomResource {
     ClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:arckubernetes/cluster:Cluster',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    agentPublicKeyCertificate = registerOutput<String>(
-      'agentPublicKeyCertificate',
-    );
+          'azure:arckubernetes/cluster:Cluster',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    agentPublicKeyCertificate = registerOutput<String>('agentPublicKeyCertificate');
     agentVersion = registerOutput<String>('agentVersion');
     distribution = registerOutput<String>('distribution');
-    identity = registerOutput<ClusterIdentity>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<ClusterIdentity>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     infrastructure = registerOutput<String>('infrastructure');
     kubernetesVersion = registerOutput<String>('kubernetesVersion');
     location = registerOutput<String>('location');
@@ -322,26 +299,15 @@ class Cluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:arckubernetes/cluster:Cluster',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    agentPublicKeyCertificate = registerOutput<String>(
-      'agentPublicKeyCertificate',
-    );
+          'azure:arckubernetes/cluster:Cluster',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    agentPublicKeyCertificate = registerOutput<String>('agentPublicKeyCertificate');
     agentVersion = registerOutput<String>('agentVersion');
     distribution = registerOutput<String>('distribution');
-    identity = registerOutput<ClusterIdentity>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<ClusterIdentity>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     infrastructure = registerOutput<String>('infrastructure');
     kubernetesVersion = registerOutput<String>('kubernetesVersion');
     location = registerOutput<String>('location');

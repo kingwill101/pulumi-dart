@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AclAttachmentArgs {
   /// The ID of an ACL.
   final pulumi.Input<String> aclId;
-
   /// The type of the ACL. Valid values:
   final pulumi.Input<String> aclType;
-
   /// The dry run.
   final pulumi.Input<bool>? dryRun;
-
   /// The ID of the listener.
   final pulumi.Input<String> listenerId;
 
@@ -44,12 +41,9 @@ class AclAttachmentArgs {
     return AclAttachmentArgs(
       aclId: pulumi.Input.fromValue(map['aclId'] as String),
       aclType: pulumi.Input.fromValue(map['aclType'] as String),
-      dryRun: (() {
-        final guardedValue = map['dryRun'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      dryRun: (() { final guardedValue = map['dryRun']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       listenerId: pulumi.Input.fromValue(map['listenerId'] as String),
     );
   }
 }
+

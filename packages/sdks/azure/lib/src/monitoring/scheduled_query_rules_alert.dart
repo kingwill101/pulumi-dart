@@ -619,53 +619,37 @@ import 'scheduled_query_rules_alert_trigger.dart';
 class ScheduledQueryRulesAlert extends pulumi.CustomResource {
   /// An `action` block as defined below.
   late final pulumi.Output<ScheduledQueryRulesAlertAction> action;
-
   /// List of Resource IDs referred into query.
   late final pulumi.Output<List<String>?> authorizedResourceIds;
-
   /// Should the alerts in this Metric Alert be auto resolved? Defaults to `false`.
   /// &gt; **Note:** `auto_mitigation_enabled` and `throttling` are mutually exclusive and cannot both be set.
   late final pulumi.Output<bool?> autoMitigationEnabled;
-
   /// The resource URI over which log search query is to be run. Changing this forces a new resource to be created.
   late final pulumi.Output<String> dataSourceId;
-
   /// The description of the scheduled query rule.
   late final pulumi.Output<String?> description;
-
   /// Whether this scheduled query rule is enabled. Default is `true`.
   late final pulumi.Output<bool?> enabled;
-
   /// Frequency (in minutes) at which rule condition should be evaluated. Values must be between 5 and 1440 (inclusive).
   late final pulumi.Output<int> frequency;
-
   /// Specifies the Azure Region where the resource should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The name of the scheduled query rule. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Log search query.
   late final pulumi.Output<String> query;
-
   /// The type of query results. Possible values are `ResultCount` and `Number`. Default is `ResultCount`. If set to `ResultCount`, `query` must include an `AggregatedValue` column of a numeric type, for example, `Heartbeat | summarize AggregatedValue = count() by bin(TimeGenerated, 5m)`.
   late final pulumi.Output<String?> queryType;
-
   /// The name of the resource group in which to create the scheduled query rule instance. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// Severity of the alert. Possible values include: 0, 1, 2, 3, or 4.
   late final pulumi.Output<int?> severity;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Time (in minutes) for which Alerts should be throttled or suppressed. Values must be between 0 and 10000 (inclusive).
   late final pulumi.Output<int?> throttling;
-
   /// Time window for which data needs to be fetched for query (must be greater than or equal to `frequency`). Values must be between 5 and 2880 (inclusive).
   late final pulumi.Output<int> timeWindow;
-
   /// A `trigger` block as defined below.
   late final pulumi.Output<ScheduledQueryRulesAlertTrigger> trigger;
 
@@ -678,24 +662,13 @@ class ScheduledQueryRulesAlert extends pulumi.CustomResource {
     ScheduledQueryRulesAlertArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:monitoring/scheduledQueryRulesAlert:ScheduledQueryRulesAlert',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    action = registerOutput<ScheduledQueryRulesAlertAction>(
-      'action',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ScheduledQueryRulesAlertAction.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    authorizedResourceIds = registerOutput<List<String>?>(
-      'authorizedResourceIds',
-    );
+          'azure:monitoring/scheduledQueryRulesAlert:ScheduledQueryRulesAlert',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    action = registerOutput<ScheduledQueryRulesAlertAction>('action', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduledQueryRulesAlertAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    authorizedResourceIds = registerOutput<List<String>?>('authorizedResourceIds');
     autoMitigationEnabled = registerOutput<bool?>('autoMitigationEnabled');
     dataSourceId = registerOutput<String>('dataSourceId');
     description = registerOutput<String?>('description');
@@ -710,16 +683,7 @@ class ScheduledQueryRulesAlert extends pulumi.CustomResource {
     tags = registerOutput<Map<String, String>?>('tags');
     throttling = registerOutput<int?>('throttling');
     timeWindow = registerOutput<int>('timeWindow');
-    trigger = registerOutput<ScheduledQueryRulesAlertTrigger>(
-      'trigger',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ScheduledQueryRulesAlertTrigger.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    trigger = registerOutput<ScheduledQueryRulesAlertTrigger>('trigger', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduledQueryRulesAlertTrigger.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [ScheduledQueryRulesAlert] resource's state with the given [name] and [id].
@@ -740,24 +704,13 @@ class ScheduledQueryRulesAlert extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:monitoring/scheduledQueryRulesAlert:ScheduledQueryRulesAlert',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    action = registerOutput<ScheduledQueryRulesAlertAction>(
-      'action',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ScheduledQueryRulesAlertAction.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    authorizedResourceIds = registerOutput<List<String>?>(
-      'authorizedResourceIds',
-    );
+          'azure:monitoring/scheduledQueryRulesAlert:ScheduledQueryRulesAlert',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    action = registerOutput<ScheduledQueryRulesAlertAction>('action', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduledQueryRulesAlertAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    authorizedResourceIds = registerOutput<List<String>?>('authorizedResourceIds');
     autoMitigationEnabled = registerOutput<bool?>('autoMitigationEnabled');
     dataSourceId = registerOutput<String>('dataSourceId');
     description = registerOutput<String?>('description');
@@ -772,15 +725,6 @@ class ScheduledQueryRulesAlert extends pulumi.CustomResource {
     tags = registerOutput<Map<String, String>?>('tags');
     throttling = registerOutput<int?>('throttling');
     timeWindow = registerOutput<int>('timeWindow');
-    trigger = registerOutput<ScheduledQueryRulesAlertTrigger>(
-      'trigger',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ScheduledQueryRulesAlertTrigger.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    trigger = registerOutput<ScheduledQueryRulesAlertTrigger>('trigger', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduledQueryRulesAlertTrigger.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

@@ -1,14 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getVcenterCredentials.
 class GetVcenterCredentialsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String parent;
-
   /// The password of the Vcenter Credential.
   final String password;
-
   /// The username of the Vcenter Credential.
   final String username;
 
@@ -42,3 +41,4 @@ class GetVcenterCredentialsResult {
     );
   }
 }
+

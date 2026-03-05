@@ -8,10 +8,14 @@ class AllFeatures {
 
   /// Creates a new [AllFeatures].
   /// [filterType] Expected value is 'AllFeatures'.
-  AllFeatures({required this.filterType});
+  AllFeatures({
+    required this.filterType,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'filterType': filterType};
+    return <String, dynamic>{
+      'filterType': filterType,
+    };
   }
 
   factory AllFeatures.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class AllFeatures {
     );
   }
 }
+

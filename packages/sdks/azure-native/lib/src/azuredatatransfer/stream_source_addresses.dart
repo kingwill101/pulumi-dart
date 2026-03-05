@@ -9,19 +9,20 @@ class StreamSourceAddresses {
 
   /// Creates a new [StreamSourceAddresses].
   /// [sourceAddresses] A source IP address or CIDR range
-  StreamSourceAddresses({this.sourceAddresses});
+  StreamSourceAddresses({
+    this.sourceAddresses,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'sourceAddresses': ?sourceAddresses};
+    return <String, dynamic>{
+      'sourceAddresses': ?sourceAddresses,
+    };
   }
 
   factory StreamSourceAddresses.fromMap(Map<String, dynamic> map) {
     return StreamSourceAddresses(
-      sourceAddresses: (() {
-        final guardedValue = map['sourceAddresses'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      sourceAddresses: (() { final guardedValue = map['sourceAddresses']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

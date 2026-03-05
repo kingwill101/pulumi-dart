@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudIdentitytoolkitAdminV2CodeFlowConfigResponse {
   /// Key ID for the private key.
   final pulumi.Input<String> keyId;
-
   /// Private key used for signing the client secret JWT.
   final pulumi.Input<String> privateKey;
-
   /// Apple Developer Team ID.
   final pulumi.Input<String> teamId;
 
@@ -31,9 +29,7 @@ class GoogleCloudIdentitytoolkitAdminV2CodeFlowConfigResponse {
     };
   }
 
-  factory GoogleCloudIdentitytoolkitAdminV2CodeFlowConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudIdentitytoolkitAdminV2CodeFlowConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIdentitytoolkitAdminV2CodeFlowConfigResponse(
       keyId: pulumi.Input.fromValue(map['keyId'] as String),
       privateKey: pulumi.Input.fromValue(map['privateKey'] as String),
@@ -41,3 +37,4 @@ class GoogleCloudIdentitytoolkitAdminV2CodeFlowConfigResponse {
     );
   }
 }
+

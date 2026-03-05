@@ -13,16 +13,15 @@ class WebAclRuleStatementByteMatchStatementFieldToMatchJa4Fingerprint {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'fallbackBehavior': fallbackBehavior};
+    return <String, dynamic>{
+      'fallbackBehavior': fallbackBehavior,
+    };
   }
 
-  factory WebAclRuleStatementByteMatchStatementFieldToMatchJa4Fingerprint.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WebAclRuleStatementByteMatchStatementFieldToMatchJa4Fingerprint.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementByteMatchStatementFieldToMatchJa4Fingerprint(
-      fallbackBehavior: pulumi.Input.fromValue(
-        map['fallbackBehavior'] as String,
-      ),
+      fallbackBehavior: pulumi.Input.fromValue(map['fallbackBehavior'] as String),
     );
   }
 }
+

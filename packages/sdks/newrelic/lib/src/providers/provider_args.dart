@@ -18,7 +18,6 @@ class ProviderArgs {
   final pulumi.Input<String>? insightsInsertUrl;
   final pulumi.Input<String>? insightsQueryUrl;
   final pulumi.Input<String>? nerdgraphApiUrl;
-
   /// The data center for which your New Relic account is configured. Only one region per provider block is permitted.
   final pulumi.Input<String>? region;
   final pulumi.Input<String>? syntheticsApiUrl;
@@ -73,71 +72,20 @@ class ProviderArgs {
 
   factory ProviderArgs.fromMap(Map<String, dynamic> map) {
     return ProviderArgs(
-      accountId: (() {
-        final guardedValue = map['accountId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      adminApiKey: (() {
-        final guardedValue = map['adminApiKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      apiKey: (() {
-        final guardedValue = map['apiKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      apiUrl: (() {
-        final guardedValue = map['apiUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      cacertFile: (() {
-        final guardedValue = map['cacertFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      infrastructureApiUrl: (() {
-        final guardedValue = map['infrastructureApiUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      insecureSkipVerify: (() {
-        final guardedValue = map['insecureSkipVerify'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      insightsInsertKey: (() {
-        final guardedValue = map['insightsInsertKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      insightsInsertUrl: (() {
-        final guardedValue = map['insightsInsertUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      insightsQueryUrl: (() {
-        final guardedValue = map['insightsQueryUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      nerdgraphApiUrl: (() {
-        final guardedValue = map['nerdgraphApiUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      syntheticsApiUrl: (() {
-        final guardedValue = map['syntheticsApiUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      adminApiKey: (() { final guardedValue = map['adminApiKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      apiKey: (() { final guardedValue = map['apiKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      apiUrl: (() { final guardedValue = map['apiUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      cacertFile: (() { final guardedValue = map['cacertFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      infrastructureApiUrl: (() { final guardedValue = map['infrastructureApiUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      insecureSkipVerify: (() { final guardedValue = map['insecureSkipVerify']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      insightsInsertKey: (() { final guardedValue = map['insightsInsertKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      insightsInsertUrl: (() { final guardedValue = map['insightsInsertUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      insightsQueryUrl: (() { final guardedValue = map['insightsQueryUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nerdgraphApiUrl: (() { final guardedValue = map['nerdgraphApiUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      syntheticsApiUrl: (() { final guardedValue = map['syntheticsApiUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

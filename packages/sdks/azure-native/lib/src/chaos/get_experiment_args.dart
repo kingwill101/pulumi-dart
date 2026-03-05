@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetExperimentArgs {
   /// String that represents a Experiment resource name.
   final pulumi.Input<String> experimentName;
-
   /// String that represents an Azure resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -31,9 +30,8 @@ class GetExperimentArgs {
   factory GetExperimentArgs.fromMap(Map<String, dynamic> map) {
     return GetExperimentArgs(
       experimentName: pulumi.Input.fromValue(map['experimentName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

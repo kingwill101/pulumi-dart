@@ -7,19 +7,14 @@ import 'subnet_response.dart';
 class IPConfigurationProfileResponse {
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
-
   /// Resource ID.
   final pulumi.Input<String>? id;
-
   /// The name of the resource. This name can be used to access the resource.
   final pulumi.Input<String>? name;
-
   /// The provisioning state of the IP configuration profile resource.
   final pulumi.Input<String> provisioningState;
-
   /// The reference to the subnet resource to create a container network interface ip configuration.
   final pulumi.Input<SubnetResponse>? subnet;
-
   /// Sub Resource type.
   final pulumi.Input<String> type;
 
@@ -45,11 +40,7 @@ class IPConfigurationProfileResponse {
       'id': ?id,
       'name': ?name,
       'provisioningState': provisioningState,
-      'subnet':
-          ?pulumi.Input.mapOptionalInputValue<
-            SubnetResponse,
-            Map<String, dynamic>
-          >(subnet, (value) => value.toMap()),
+      'subnet': ?pulumi.Input.mapOptionalInputValue<SubnetResponse, Map<String, dynamic>>(subnet, (value) => value.toMap()),
       'type': type,
     };
   }
@@ -57,27 +48,12 @@ class IPConfigurationProfileResponse {
   factory IPConfigurationProfileResponse.fromMap(Map<String, dynamic> map) {
     return IPConfigurationProfileResponse(
       etag: pulumi.Input.fromValue(map['etag'] as String),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
-      subnet: (() {
-        final guardedValue = map['subnet'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SubnetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
+      subnet: (() { final guardedValue = map['subnet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubnetResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

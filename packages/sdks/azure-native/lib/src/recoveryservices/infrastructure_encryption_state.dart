@@ -15,3 +15,4 @@ enum InfrastructureEncryptionState {
     throw ArgumentError('Unknown InfrastructureEncryptionState value: $value');
   }
 }
+

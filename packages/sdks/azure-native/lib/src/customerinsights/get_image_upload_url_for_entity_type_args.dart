@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetImageUploadUrlForEntityTypeArgs {
   /// Type of entity. Can be Profile or Interaction.
   final pulumi.Input<String>? entityType;
-
   /// Name of the entity type.
   final pulumi.Input<String>? entityTypeName;
-
   /// The name of the hub.
   final pulumi.Input<String> hubName;
-
   /// Relative path of the image.
   final pulumi.Input<String>? relativePath;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -48,25 +44,12 @@ class GetImageUploadUrlForEntityTypeArgs {
 
   factory GetImageUploadUrlForEntityTypeArgs.fromMap(Map<String, dynamic> map) {
     return GetImageUploadUrlForEntityTypeArgs(
-      entityType: (() {
-        final guardedValue = map['entityType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      entityTypeName: (() {
-        final guardedValue = map['entityTypeName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      entityType: (() { final guardedValue = map['entityType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      entityTypeName: (() { final guardedValue = map['entityTypeName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       hubName: pulumi.Input.fromValue(map['hubName'] as String),
-      relativePath: (() {
-        final guardedValue = map['relativePath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      relativePath: (() { final guardedValue = map['relativePath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BusinessProcessIdentifierResponse {
   /// The property name of the business process identifier.
   final pulumi.Input<String>? propertyName;
-
   /// The property type of the business process identifier.
   final pulumi.Input<String>? propertyType;
 
   /// Creates a new [BusinessProcessIdentifierResponse].
   /// [propertyName] The property name of the business process identifier.
   /// [propertyType] The property type of the business process identifier.
-  BusinessProcessIdentifierResponse({this.propertyName, this.propertyType});
+  BusinessProcessIdentifierResponse({
+    this.propertyName,
+    this.propertyType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class BusinessProcessIdentifierResponse {
 
   factory BusinessProcessIdentifierResponse.fromMap(Map<String, dynamic> map) {
     return BusinessProcessIdentifierResponse(
-      propertyName: (() {
-        final guardedValue = map['propertyName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      propertyType: (() {
-        final guardedValue = map['propertyType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      propertyName: (() { final guardedValue = map['propertyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      propertyType: (() { final guardedValue = map['propertyType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

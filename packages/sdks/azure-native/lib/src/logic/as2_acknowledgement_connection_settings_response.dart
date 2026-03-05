@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AS2AcknowledgementConnectionSettingsResponse {
   /// Indicates whether to ignore mismatch in certificate name.
   final pulumi.Input<bool> ignoreCertificateNameMismatch;
-
   /// Indicates whether to keep the connection alive.
   final pulumi.Input<bool> keepHttpConnectionAlive;
-
   /// Indicates whether to support HTTP status code 'CONTINUE'.
   final pulumi.Input<bool> supportHttpStatusCodeContinue;
-
   /// Indicates whether to unfold the HTTP headers.
   final pulumi.Input<bool> unfoldHttpHeaders;
 
@@ -37,22 +34,13 @@ class AS2AcknowledgementConnectionSettingsResponse {
     };
   }
 
-  factory AS2AcknowledgementConnectionSettingsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AS2AcknowledgementConnectionSettingsResponse.fromMap(Map<String, dynamic> map) {
     return AS2AcknowledgementConnectionSettingsResponse(
-      ignoreCertificateNameMismatch: pulumi.Input.fromValue(
-        map['ignoreCertificateNameMismatch'] as bool,
-      ),
-      keepHttpConnectionAlive: pulumi.Input.fromValue(
-        map['keepHttpConnectionAlive'] as bool,
-      ),
-      supportHttpStatusCodeContinue: pulumi.Input.fromValue(
-        map['supportHttpStatusCodeContinue'] as bool,
-      ),
-      unfoldHttpHeaders: pulumi.Input.fromValue(
-        map['unfoldHttpHeaders'] as bool,
-      ),
+      ignoreCertificateNameMismatch: pulumi.Input.fromValue(map['ignoreCertificateNameMismatch'] as bool),
+      keepHttpConnectionAlive: pulumi.Input.fromValue(map['keepHttpConnectionAlive'] as bool),
+      supportHttpStatusCodeContinue: pulumi.Input.fromValue(map['supportHttpStatusCodeContinue'] as bool),
+      unfoldHttpHeaders: pulumi.Input.fromValue(map['unfoldHttpHeaders'] as bool),
     );
   }
 }
+

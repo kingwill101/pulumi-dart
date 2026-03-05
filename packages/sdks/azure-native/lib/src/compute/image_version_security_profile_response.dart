@@ -10,31 +10,20 @@ class ImageVersionSecurityProfileResponse {
 
   /// Creates a new [ImageVersionSecurityProfileResponse].
   /// [uefiSettings] Contains UEFI settings for the image version.
-  ImageVersionSecurityProfileResponse({this.uefiSettings});
+  ImageVersionSecurityProfileResponse({
+    this.uefiSettings,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'uefiSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            GalleryImageVersionUefiSettingsResponse,
-            Map<String, dynamic>
-          >(uefiSettings, (value) => value.toMap()),
+      'uefiSettings': ?pulumi.Input.mapOptionalInputValue<GalleryImageVersionUefiSettingsResponse, Map<String, dynamic>>(uefiSettings, (value) => value.toMap()),
     };
   }
 
-  factory ImageVersionSecurityProfileResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ImageVersionSecurityProfileResponse.fromMap(Map<String, dynamic> map) {
     return ImageVersionSecurityProfileResponse(
-      uefiSettings: (() {
-        final guardedValue = map['uefiSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GalleryImageVersionUefiSettingsResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      uefiSettings: (() { final guardedValue = map['uefiSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GalleryImageVersionUefiSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

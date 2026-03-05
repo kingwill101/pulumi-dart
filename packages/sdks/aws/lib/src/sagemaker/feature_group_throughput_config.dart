@@ -27,21 +27,10 @@ class FeatureGroupThroughputConfig {
 
   factory FeatureGroupThroughputConfig.fromMap(Map<String, dynamic> map) {
     return FeatureGroupThroughputConfig(
-      provisionedReadCapacityUnits: (() {
-        final guardedValue = map['provisionedReadCapacityUnits'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      provisionedWriteCapacityUnits: (() {
-        final guardedValue = map['provisionedWriteCapacityUnits'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      throughputMode: (() {
-        final guardedValue = map['throughputMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      provisionedReadCapacityUnits: (() { final guardedValue = map['provisionedReadCapacityUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      provisionedWriteCapacityUnits: (() { final guardedValue = map['provisionedWriteCapacityUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      throughputMode: (() { final guardedValue = map['throughputMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

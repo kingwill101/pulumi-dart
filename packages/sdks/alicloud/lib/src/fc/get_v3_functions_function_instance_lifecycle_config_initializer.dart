@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetV3FunctionsFunctionInstanceLifecycleConfigInitializer {
   /// Lifecycle Initialization Phase Callback Instructions.
   final pulumi.Input<List<String>> commands;
-
   /// The execution entry of the callback method, which is similar to the request handler.
   final pulumi.Input<String> handler;
-
   /// The maximum running time of the function, in seconds.
   final pulumi.Input<int> timeout;
 
@@ -30,15 +28,12 @@ class GetV3FunctionsFunctionInstanceLifecycleConfigInitializer {
     };
   }
 
-  factory GetV3FunctionsFunctionInstanceLifecycleConfigInitializer.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetV3FunctionsFunctionInstanceLifecycleConfigInitializer.fromMap(Map<String, dynamic> map) {
     return GetV3FunctionsFunctionInstanceLifecycleConfigInitializer(
-      commands: pulumi.Input.fromValue(
-        (map['commands'] as List).cast<String>(),
-      ),
+      commands: pulumi.Input.fromValue((map['commands'] as List).cast<String>()),
       handler: pulumi.Input.fromValue(map['handler'] as String),
       timeout: pulumi.Input.fromValue(map['timeout'] as int),
     );
   }
 }
+

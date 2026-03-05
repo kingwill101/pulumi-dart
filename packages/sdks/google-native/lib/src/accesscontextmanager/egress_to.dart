@@ -7,10 +7,8 @@ import 'api_operation.dart';
 class EgressTo {
   /// A list of external resources that are allowed to be accessed. Only AWS and Azure resources are supported. For Amazon S3, the supported format is s3://BUCKET_NAME. For Azure Storage, the supported format is azure://myaccount.blob.core.windows.net/CONTAINER_NAME. A request matches if it contains an external resource in this list (Example: s3://bucket/path). Currently '*' is not allowed.
   final pulumi.Input<List<String>>? externalResources;
-
   /// A list of ApiOperations allowed to be performed by the sources specified in the corresponding EgressFrom. A request matches if it uses an operation/service in this list.
   final pulumi.Input<List<ApiOperation>>? operations;
-
   /// A list of resources, currently only projects in the form `projects/`, that are allowed to be accessed by sources defined in the corresponding EgressFrom. A request matches if it contains a resource in this list. If `*` is specified for `resources`, then this EgressTo rule will authorize access to all resources outside the perimeter.
   final pulumi.Input<List<String>>? resources;
 
@@ -18,50 +16,26 @@ class EgressTo {
   /// [externalResources] A list of external resources that are allowed to be accessed. Only AWS and Azure resources are supported. For Amazon S3, the supported format is s3://BUCKET_NAME. For Azure Storage, the supported format is azure://myaccount.blob.core.windows.net/CONTAINER_NAME. A request matches if it contains an external resource in this list (Example: s3://bucket/path). Currently '*' is not allowed.
   /// [operations] A list of ApiOperations allowed to be performed by the sources specified in the corresponding EgressFrom. A request matches if it uses an operation/service in this list.
   /// [resources] A list of resources, currently only projects in the form `projects/`, that are allowed to be accessed by sources defined in the corresponding EgressFrom. A request matches if it contains a resource in this list. If `*` is specified for `resources`, then this EgressTo rule will authorize access to all resources outside the perimeter.
-  EgressTo({this.externalResources, this.operations, this.resources});
+  EgressTo({
+    this.externalResources,
+    this.operations,
+    this.resources,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'externalResources': ?externalResources,
-      'operations':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ApiOperation>,
-            List<Map<String, dynamic>>
-          >(
-            operations,
-            (value) =>
-                pulumi.Input.encodeList<ApiOperation, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'operations': ?pulumi.Input.mapOptionalInputValue<List<ApiOperation>, List<Map<String, dynamic>>>(operations, (value) => pulumi.Input.encodeList<ApiOperation, Map<String, dynamic>>(value, (value) => value.toMap())),
       'resources': ?resources,
     };
   }
 
   factory EgressTo.fromMap(Map<String, dynamic> map) {
     return EgressTo(
-      externalResources: (() {
-        final guardedValue = map['externalResources'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      operations: (() {
-        final guardedValue = map['operations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ApiOperation>(
-            guardedValue,
-            (value) =>
-                ApiOperation.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      resources: (() {
-        final guardedValue = map['resources'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      externalResources: (() { final guardedValue = map['externalResources']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      operations: (() { final guardedValue = map['operations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ApiOperation>(guardedValue, (value) => ApiOperation.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      resources: (() { final guardedValue = map['resources']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

@@ -281,56 +281,39 @@ import 'replication_configuration_template_timeouts.dart';
 class ReplicationConfigurationTemplate extends pulumi.CustomResource {
   /// Replication configuration template ARN.
   late final pulumi.Output<String> arn;
-
   /// Whether to associate the default Elastic Disaster Recovery Security group with the Replication Configuration Template.
   late final pulumi.Output<bool> associateDefaultSecurityGroup;
-
   /// Whether to allow the AWS replication agent to automatically replicate newly added disks.
   late final pulumi.Output<bool> autoReplicateNewDisks;
-
   /// Configure bandwidth throttling for the outbound data transfer rate of the Source Server in Mbps.
   late final pulumi.Output<int> bandwidthThrottling;
-
   /// Whether to create a Public IP for the Recovery Instance by default.
   late final pulumi.Output<bool> createPublicIp;
-
   /// Data plane routing mechanism that will be used for replication. Valid values are `PUBLIC_IP` and `PRIVATE_IP`.
   late final pulumi.Output<String> dataPlaneRouting;
-
   /// Staging Disk EBS volume type to be used during replication. Valid values are `GP2`, `GP3`, `ST1`, or `AUTO`.
   late final pulumi.Output<String> defaultLargeStagingDiskType;
-
   /// Type of EBS encryption to be used during replication. Valid values are `DEFAULT` and `CUSTOM`.
   late final pulumi.Output<String> ebsEncryption;
-
   /// ARN of the EBS encryption key to be used during replication.
   late final pulumi.Output<String?> ebsEncryptionKeyArn;
-
   /// Configuration block for Point in time (PIT) policy to manage snapshots taken during replication. See below.
   late final pulumi.Output<List<Map<String, dynamic>>?> pitPolicies;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Instance type to be used for the replication server.
   late final pulumi.Output<String> replicationServerInstanceType;
-
   /// Security group IDs that will be used by the replication server.
   late final pulumi.Output<List<String>> replicationServersSecurityGroupsIds;
-
   /// Subnet to be used by the replication staging area.
   late final pulumi.Output<String> stagingAreaSubnetId;
-
   /// Set of tags to be associated with all resources created in the replication staging area: EC2 replication server, EBS volumes, EBS snapshots, etc.
   late final pulumi.Output<Map<String, String>> stagingAreaTags;
-
   /// Set of tags to be associated with the Replication Configuration Template resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<ReplicationConfigurationTemplateTimeouts?> timeouts;
-
   /// Whether to use a dedicated Replication Server in the replication staging area.
   ///
   /// The following arguments are optional:
@@ -345,49 +328,30 @@ class ReplicationConfigurationTemplate extends pulumi.CustomResource {
     ReplicationConfigurationTemplateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:drs/replicationConfigurationTemplate:ReplicationConfigurationTemplate',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:drs/replicationConfigurationTemplate:ReplicationConfigurationTemplate',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    associateDefaultSecurityGroup = registerOutput<bool>(
-      'associateDefaultSecurityGroup',
-    );
+    associateDefaultSecurityGroup = registerOutput<bool>('associateDefaultSecurityGroup');
     autoReplicateNewDisks = registerOutput<bool>('autoReplicateNewDisks');
     bandwidthThrottling = registerOutput<int>('bandwidthThrottling');
     createPublicIp = registerOutput<bool>('createPublicIp');
     dataPlaneRouting = registerOutput<String>('dataPlaneRouting');
-    defaultLargeStagingDiskType = registerOutput<String>(
-      'defaultLargeStagingDiskType',
-    );
+    defaultLargeStagingDiskType = registerOutput<String>('defaultLargeStagingDiskType');
     ebsEncryption = registerOutput<String>('ebsEncryption');
     ebsEncryptionKeyArn = registerOutput<String?>('ebsEncryptionKeyArn');
     pitPolicies = registerOutput<List<Map<String, dynamic>>?>('pitPolicies');
     region = registerOutput<String>('region');
-    replicationServerInstanceType = registerOutput<String>(
-      'replicationServerInstanceType',
-    );
-    replicationServersSecurityGroupsIds = registerOutput<List<String>>(
-      'replicationServersSecurityGroupsIds',
-    );
+    replicationServerInstanceType = registerOutput<String>('replicationServerInstanceType');
+    replicationServersSecurityGroupsIds = registerOutput<List<String>>('replicationServersSecurityGroupsIds');
     stagingAreaSubnetId = registerOutput<String>('stagingAreaSubnetId');
     stagingAreaTags = registerOutput<Map<String, String>>('stagingAreaTags');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ReplicationConfigurationTemplateTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ReplicationConfigurationTemplateTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    useDedicatedReplicationServer = registerOutput<bool>(
-      'useDedicatedReplicationServer',
-    );
+    timeouts = registerOutput<ReplicationConfigurationTemplateTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicationConfigurationTemplateTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    useDedicatedReplicationServer = registerOutput<bool>('useDedicatedReplicationServer');
   }
 
   /// Gets an existing [ReplicationConfigurationTemplate] resource's state with the given [name] and [id].
@@ -408,48 +372,29 @@ class ReplicationConfigurationTemplate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:drs/replicationConfigurationTemplate:ReplicationConfigurationTemplate',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:drs/replicationConfigurationTemplate:ReplicationConfigurationTemplate',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    associateDefaultSecurityGroup = registerOutput<bool>(
-      'associateDefaultSecurityGroup',
-    );
+    associateDefaultSecurityGroup = registerOutput<bool>('associateDefaultSecurityGroup');
     autoReplicateNewDisks = registerOutput<bool>('autoReplicateNewDisks');
     bandwidthThrottling = registerOutput<int>('bandwidthThrottling');
     createPublicIp = registerOutput<bool>('createPublicIp');
     dataPlaneRouting = registerOutput<String>('dataPlaneRouting');
-    defaultLargeStagingDiskType = registerOutput<String>(
-      'defaultLargeStagingDiskType',
-    );
+    defaultLargeStagingDiskType = registerOutput<String>('defaultLargeStagingDiskType');
     ebsEncryption = registerOutput<String>('ebsEncryption');
     ebsEncryptionKeyArn = registerOutput<String?>('ebsEncryptionKeyArn');
     pitPolicies = registerOutput<List<Map<String, dynamic>>?>('pitPolicies');
     region = registerOutput<String>('region');
-    replicationServerInstanceType = registerOutput<String>(
-      'replicationServerInstanceType',
-    );
-    replicationServersSecurityGroupsIds = registerOutput<List<String>>(
-      'replicationServersSecurityGroupsIds',
-    );
+    replicationServerInstanceType = registerOutput<String>('replicationServerInstanceType');
+    replicationServersSecurityGroupsIds = registerOutput<List<String>>('replicationServersSecurityGroupsIds');
     stagingAreaSubnetId = registerOutput<String>('stagingAreaSubnetId');
     stagingAreaTags = registerOutput<Map<String, String>>('stagingAreaTags');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ReplicationConfigurationTemplateTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ReplicationConfigurationTemplateTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    useDedicatedReplicationServer = registerOutput<bool>(
-      'useDedicatedReplicationServer',
-    );
+    timeouts = registerOutput<ReplicationConfigurationTemplateTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicationConfigurationTemplateTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    useDedicatedReplicationServer = registerOutput<bool>('useDedicatedReplicationServer');
   }
 }

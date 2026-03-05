@@ -5,34 +5,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTopicsTopic {
   /// whether the current topic is kafka compact topic or not.
   final pulumi.Input<bool> compactTopic;
-
   /// Time of creation.
   final pulumi.Input<String> createTime;
-
   /// The ID of the topic, It is formatted to `&lt;instance_id&gt;:&lt;topic&gt;`.
   final pulumi.Input<String> id;
-
   /// ID of the instance.
   final pulumi.Input<String> instanceId;
-
   /// whether the current topic is kafka local topic or not.
   final pulumi.Input<bool> localTopic;
-
   /// Partition number of the topic.
   final pulumi.Input<int> partitionNum;
-
   /// Remark of the topic.
   final pulumi.Input<String> remark;
-
   /// The current status code of the topic. There are three values to describe the topic status: 0 stands for the topic is in service, 1 stands for freezing and 2 stands for pause.
   final pulumi.Input<int> status;
-
   /// The status_name of the topic.
   final pulumi.Input<String> statusName;
-
   /// A mapping of tags to assign to the topic.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// A topic to filter results by the topic name.
   final pulumi.Input<String> topic;
 
@@ -89,14 +79,9 @@ class GetTopicsTopic {
       remark: pulumi.Input.fromValue(map['remark'] as String),
       status: pulumi.Input.fromValue(map['status'] as int),
       statusName: pulumi.Input.fromValue(map['statusName'] as String),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       topic: pulumi.Input.fromValue(map['topic'] as String),
     );
   }
 }
+

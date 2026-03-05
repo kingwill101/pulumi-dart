@@ -358,13 +358,10 @@ import 'network_manager_static_member_state.dart';
 class NetworkManagerStaticMember extends pulumi.CustomResource {
   /// Specifies the name which should be used for this Network Manager Static Member. Changing this forces a new Network Manager Static Member to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies the ID of the Network Manager Group. Changing this forces a new Network Manager Static Member to be created.
   late final pulumi.Output<String> networkGroupId;
-
   /// The region of the Network Manager Static Member.
   late final pulumi.Output<String> region;
-
   /// Specifies the Resource ID of the Virtual Network or Subnet used as the Static Member. Changing this forces a new Network Manager Static Member to be created.
   ///
   /// &gt; **Note:** Subnet is supported only if the Network Manager has added `Routing` to `scope_accesses` and the Network Group has set `Subnet` as the `member_type` value.
@@ -379,11 +376,11 @@ class NetworkManagerStaticMember extends pulumi.CustomResource {
     NetworkManagerStaticMemberArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/networkManagerStaticMember:NetworkManagerStaticMember',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/networkManagerStaticMember:NetworkManagerStaticMember',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     networkGroupId = registerOutput<String>('networkGroupId');
     region = registerOutput<String>('region');
@@ -408,11 +405,11 @@ class NetworkManagerStaticMember extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/networkManagerStaticMember:NetworkManagerStaticMember',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/networkManagerStaticMember:NetworkManagerStaticMember',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     this.name = registerOutput<String>('name');
     networkGroupId = registerOutput<String>('networkGroupId');
     region = registerOutput<String>('region');

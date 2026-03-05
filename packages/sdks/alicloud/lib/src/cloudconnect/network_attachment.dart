@@ -199,7 +199,6 @@ import 'network_attachment_state.dart';
 class NetworkAttachment extends pulumi.CustomResource {
   /// The ID of the CCN instance.
   late final pulumi.Output<String> ccnId;
-
   /// The ID of the Smart Access Gateway instance.
   late final pulumi.Output<String> sagId;
 
@@ -212,11 +211,11 @@ class NetworkAttachment extends pulumi.CustomResource {
     NetworkAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudconnect/networkAttachment:NetworkAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudconnect/networkAttachment:NetworkAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     ccnId = registerOutput<String>('ccnId');
     sagId = registerOutput<String>('sagId');
   }
@@ -239,11 +238,11 @@ class NetworkAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudconnect/networkAttachment:NetworkAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudconnect/networkAttachment:NetworkAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     ccnId = registerOutput<String>('ccnId');
     sagId = registerOutput<String>('sagId');
   }

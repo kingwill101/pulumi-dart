@@ -8,10 +8,14 @@ class GdcServiceInstanceGdceCluster {
 
   /// Creates a new [GdcServiceInstanceGdceCluster].
   /// [gdceCluster] Gdce cluster resource id.
-  GdcServiceInstanceGdceCluster({required this.gdceCluster});
+  GdcServiceInstanceGdceCluster({
+    required this.gdceCluster,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'gdceCluster': gdceCluster};
+    return <String, dynamic>{
+      'gdceCluster': gdceCluster,
+    };
   }
 
   factory GdcServiceInstanceGdceCluster.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class GdcServiceInstanceGdceCluster {
     );
   }
 }
+

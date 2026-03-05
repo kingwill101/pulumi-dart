@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MonitorUser {
   /// Specifies the user Email. Changing this forces a new Azure Native New Relic Monitor to be created.
   final pulumi.Input<String> email;
-
   /// Specifies the first name. Changing this forces a new Azure Native New Relic Monitor to be created.
   final pulumi.Input<String> firstName;
-
   /// Specifies the last name. Changing this forces a new Azure Native New Relic Monitor to be created.
   final pulumi.Input<String> lastName;
-
   /// Specifies the contact phone number. Changing this forces a new Azure Native New Relic Monitor to be created.
   final pulumi.Input<String> phoneNumber;
 
@@ -45,3 +42,4 @@ class MonitorUser {
     );
   }
 }
+

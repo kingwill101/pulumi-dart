@@ -666,72 +666,49 @@ import 'system_data_response.dart';
 class AzureCliScript extends pulumi.CustomResource {
   /// Command line arguments to pass to the script. Arguments are separated by spaces. ex: -Name blue* -Location 'West US 2'
   late final pulumi.Output<String?> arguments;
-
   /// Azure CLI module version to be used.
   late final pulumi.Output<String> azCliVersion;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The clean up preference when the script execution gets in a terminal state. Default setting is 'Always'.
   late final pulumi.Output<String?> cleanupPreference;
-
   /// Container settings.
   late final pulumi.Output<ContainerConfigurationResponse?> containerSettings;
-
   /// The environment variables to pass over to the script.
   late final pulumi.Output<List<Map<String, dynamic>>?> environmentVariables;
-
   /// Gets or sets how the deployment script should be forced to execute even if the script resource has not changed. Can be current time stamp or a GUID.
   late final pulumi.Output<String?> forceUpdateTag;
-
   /// Optional property. Managed identity to be used for this deployment script. Currently, only user-assigned MSI is supported.
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
-
   /// Type of the script.
   /// Expected value is 'AzureCLI'.
   late final pulumi.Output<String> kind;
-
   /// The location of the ACI and the storage account for the deployment script.
   late final pulumi.Output<String> location;
-
   /// Name of this resource.
   late final pulumi.Output<String> name;
-
   /// List of script outputs.
   late final pulumi.Output<Map<String, dynamic>> outputs;
-
   /// Uri for the script. This is the entry point for the external script.
   late final pulumi.Output<String?> primaryScriptUri;
-
   /// State of the script execution. This only appears in the response.
   late final pulumi.Output<String> provisioningState;
-
   /// Interval for which the service retains the script resource after it reaches a terminal state. Resource will be deleted when this duration expires. Duration is based on ISO 8601 pattern (for example P1D means one day).
   late final pulumi.Output<String> retentionInterval;
-
   /// Script body.
   late final pulumi.Output<String?> scriptContent;
-
   /// Contains the results of script execution.
   late final pulumi.Output<ScriptStatusResponse> status;
-
   /// Storage Account settings.
-  late final pulumi.Output<StorageAccountConfigurationResponse?>
-  storageAccountSettings;
-
+  late final pulumi.Output<StorageAccountConfigurationResponse?> storageAccountSettings;
   /// Supporting files for the external script.
   late final pulumi.Output<List<String>?> supportingScriptUris;
-
   /// The system metadata related to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Maximum allowed script execution time specified in ISO 8601 format. Default value is P1D
   late final pulumi.Output<String?> timeout;
-
   /// Type of this resource.
   late final pulumi.Output<String> type;
 
@@ -744,39 +721,19 @@ class AzureCliScript extends pulumi.CustomResource {
     AzureCliScriptArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:resources:AzureCliScript',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:resources:AzureCliScript',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arguments = registerOutput<String?>('arguments');
     azCliVersion = registerOutput<String>('azCliVersion');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     cleanupPreference = registerOutput<String?>('cleanupPreference');
-    containerSettings = registerOutput<ContainerConfigurationResponse?>(
-      'containerSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ContainerConfigurationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    environmentVariables = registerOutput<List<Map<String, dynamic>>?>(
-      'environmentVariables',
-    );
+    containerSettings = registerOutput<ContainerConfigurationResponse?>('containerSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    environmentVariables = registerOutput<List<Map<String, dynamic>>?>('environmentVariables');
     forceUpdateTag = registerOutput<String?>('forceUpdateTag');
-    identity = registerOutput<ManagedServiceIdentityResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ManagedServiceIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kind = registerOutput<String>('kind');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -785,40 +742,10 @@ class AzureCliScript extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     retentionInterval = registerOutput<String>('retentionInterval');
     scriptContent = registerOutput<String?>('scriptContent');
-    status = registerOutput<ScriptStatusResponse>(
-      'status',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ScriptStatusResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    storageAccountSettings =
-        registerOutput<StorageAccountConfigurationResponse?>(
-          'storageAccountSettings',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return StorageAccountConfigurationResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    supportingScriptUris = registerOutput<List<String>?>(
-      'supportingScriptUris',
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    status = registerOutput<ScriptStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScriptStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    storageAccountSettings = registerOutput<StorageAccountConfigurationResponse?>('storageAccountSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StorageAccountConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    supportingScriptUris = registerOutput<List<String>?>('supportingScriptUris');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     timeout = registerOutput<String?>('timeout');
     type = registerOutput<String>('type');

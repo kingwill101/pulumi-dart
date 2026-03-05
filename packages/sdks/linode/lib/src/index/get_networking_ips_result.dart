@@ -28,20 +28,9 @@ class GetNetworkingIpsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?(() {
-        final guardedValue = filters;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          GetNetworkingIpsFilter,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'filters': ?(() { final guardedValue = filters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetNetworkingIpsFilter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'id': id,
-      'ipAddresses':
-          pulumi.Input.encodeList<
-            GetNetworkingIpsIpAddress,
-            Map<String, dynamic>
-          >(ipAddresses, (value) => value.toMap()),
+      'ipAddresses': pulumi.Input.encodeList<GetNetworkingIpsIpAddress, Map<String, dynamic>>(ipAddresses, (value) => value.toMap()),
       'order': ?order,
       'orderBy': ?orderBy,
     };
@@ -49,33 +38,12 @@ class GetNetworkingIpsResult {
 
   factory GetNetworkingIpsResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkingIpsResult(
-      filters: (() {
-        final guardedValue = map['filters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<GetNetworkingIpsFilter>(
-          guardedValue,
-          (value) => GetNetworkingIpsFilter.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetNetworkingIpsFilter>(guardedValue, (value) => GetNetworkingIpsFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
       id: map['id'] as String,
-      ipAddresses: pulumi.Input.decodeList<GetNetworkingIpsIpAddress>(
-        map['ipAddresses']!,
-        (value) => GetNetworkingIpsIpAddress.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      order: (() {
-        final guardedValue = map['order'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      orderBy: (() {
-        final guardedValue = map['orderBy'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      ipAddresses: pulumi.Input.decodeList<GetNetworkingIpsIpAddress>(map['ipAddresses']!, (value) => GetNetworkingIpsIpAddress.fromMap((value as Map).cast<String, dynamic>())),
+      order: (() { final guardedValue = map['order']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      orderBy: (() { final guardedValue = map['orderBy']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

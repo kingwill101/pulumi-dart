@@ -454,36 +454,26 @@ class ScheduledScalingRule extends pulumi.CustomResource {
   ///
   /// &gt; **NOTE:** The parameter value must be at least 15 minutes.
   late final pulumi.Output<int> durationMinutes;
-
   /// Enables or disables the scheduled task policy. Valid values:
   late final pulumi.Output<bool?> enable;
-
   /// The time when the scheduled policy starts to execute.
   late final pulumi.Output<int> firstScheduledTime;
-
   /// The instance ID.
   late final pulumi.Output<String> instanceId;
-
   /// When `schedule_type` is `repeat`, the parameter is required. Valid values:
   /// -`Daily`: Daily scheduled task.
   /// -`Weekly`: Weekly scheduled task.
   late final pulumi.Output<String?> repeatType;
-
   /// The scheduled elastic reserved production specification (unit: MB/s).
   late final pulumi.Output<int> reservedPubFlow;
-
   /// The scheduled elastic reserved consumption specification (unit: MB/s).
   late final pulumi.Output<int> reservedSubFlow;
-
   /// The name of the scheduled policy rule.
   late final pulumi.Output<String> ruleName;
-
   /// The schedule type. Valid values:
   late final pulumi.Output<String> scheduleType;
-
   /// The time zone (Coordinated Universal Time).
   late final pulumi.Output<String> timeZone;
-
   /// The weekly types. Supports execution on multiple days. When `repeat_type` is set to `Weekly`, you need to input this parameter. Valid values: `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday`.
   late final pulumi.Output<List<String>?> weeklyTypes;
 
@@ -496,11 +486,11 @@ class ScheduledScalingRule extends pulumi.CustomResource {
     ScheduledScalingRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:alikafka/scheduledScalingRule:ScheduledScalingRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:alikafka/scheduledScalingRule:ScheduledScalingRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     durationMinutes = registerOutput<int>('durationMinutes');
     enable = registerOutput<bool?>('enable');
     firstScheduledTime = registerOutput<int>('firstScheduledTime');
@@ -532,11 +522,11 @@ class ScheduledScalingRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:alikafka/scheduledScalingRule:ScheduledScalingRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:alikafka/scheduledScalingRule:ScheduledScalingRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     durationMinutes = registerOutput<int>('durationMinutes');
     enable = registerOutput<bool?>('enable');
     firstScheduledTime = registerOutput<int>('firstScheduledTime');

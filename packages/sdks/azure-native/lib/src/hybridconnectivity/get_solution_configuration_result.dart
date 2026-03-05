@@ -6,34 +6,24 @@ import 'system_data_response.dart';
 class GetSolutionConfigurationResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// The last time resources were inventoried
   final String lastSyncTime;
-
   /// The name of the resource
   final String name;
-
   /// The resource provisioning state.
   final String provisioningState;
-
   /// Solution settings
   final Map<String, String>? solutionSettings;
-
   /// The type of the solution
   final String solutionType;
-
   /// The status of solution configurations
   final String status;
-
   /// The detailed message of status details
   final String statusDetails;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -86,18 +76,13 @@ class GetSolutionConfigurationResult {
       lastSyncTime: map['lastSyncTime'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      solutionSettings: (() {
-        final guardedValue = map['solutionSettings'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      solutionSettings: (() { final guardedValue = map['solutionSettings']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       solutionType: map['solutionType'] as String,
       status: map['status'] as String,
       statusDetails: map['statusDetails'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

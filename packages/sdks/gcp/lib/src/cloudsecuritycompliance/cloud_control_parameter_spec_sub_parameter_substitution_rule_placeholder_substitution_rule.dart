@@ -13,18 +13,15 @@ class CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstituti
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'attribute': ?attribute};
+    return <String, dynamic>{
+      'attribute': ?attribute,
+    };
   }
 
-  factory CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRule.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRule.fromMap(Map<String, dynamic> map) {
     return CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRule(
-      attribute: (() {
-        final guardedValue = map['attribute'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      attribute: (() { final guardedValue = map['attribute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

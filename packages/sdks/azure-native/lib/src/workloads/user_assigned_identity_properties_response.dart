@@ -10,7 +10,10 @@ class UserAssignedIdentityPropertiesResponse {
   /// Creates a new [UserAssignedIdentityPropertiesResponse].
   /// [clientId] Optional.
   /// [principalId] Optional.
-  UserAssignedIdentityPropertiesResponse({this.clientId, this.principalId});
+  UserAssignedIdentityPropertiesResponse({
+    this.clientId,
+    this.principalId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,20 +22,11 @@ class UserAssignedIdentityPropertiesResponse {
     };
   }
 
-  factory UserAssignedIdentityPropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory UserAssignedIdentityPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return UserAssignedIdentityPropertiesResponse(
-      clientId: (() {
-        final guardedValue = map['clientId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      principalId: (() {
-        final guardedValue = map['principalId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      clientId: (() { final guardedValue = map['clientId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      principalId: (() { final guardedValue = map['principalId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

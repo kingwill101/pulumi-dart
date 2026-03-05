@@ -38,7 +38,6 @@ class ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions {
   /// }
   /// ```
   final pulumi.Input<String>? endTimeBehavior;
-
   /// The scope of automatic upgrades to restrict in the exclusion window. One of: **NO_UPGRADES | NO_MINOR_UPGRADES | NO_MINOR_OR_NODE_UPGRADES**
   final pulumi.Input<String> scope;
 
@@ -57,16 +56,11 @@ class ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions {
     };
   }
 
-  factory ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions.fromMap(Map<String, dynamic> map) {
     return ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions(
-      endTimeBehavior: (() {
-        final guardedValue = map['endTimeBehavior'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      endTimeBehavior: (() { final guardedValue = map['endTimeBehavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scope: pulumi.Input.fromValue(map['scope'] as String),
     );
   }
 }
+

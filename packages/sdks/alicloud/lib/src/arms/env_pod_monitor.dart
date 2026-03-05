@@ -826,19 +826,14 @@ import 'env_pod_monitor_state.dart';
 class EnvPodMonitor extends pulumi.CustomResource {
   /// Language environment, default is Chinese zh | en.
   late final pulumi.Output<String?> aliyunLang;
-
   /// Yaml configuration string.
   late final pulumi.Output<String> configYaml;
-
   /// The name of the resource.
   late final pulumi.Output<String> envPodMonitorName;
-
   /// Environment id.
   late final pulumi.Output<String> environmentId;
-
   /// Resource namespace.
   late final pulumi.Output<String> namespace;
-
   /// PodMonitor status.
   late final pulumi.Output<String> status;
 
@@ -851,11 +846,11 @@ class EnvPodMonitor extends pulumi.CustomResource {
     EnvPodMonitorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:arms/envPodMonitor:EnvPodMonitor',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:arms/envPodMonitor:EnvPodMonitor',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aliyunLang = registerOutput<String?>('aliyunLang');
     configYaml = registerOutput<String>('configYaml');
     envPodMonitorName = registerOutput<String>('envPodMonitorName');
@@ -882,11 +877,11 @@ class EnvPodMonitor extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:arms/envPodMonitor:EnvPodMonitor',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:arms/envPodMonitor:EnvPodMonitor',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aliyunLang = registerOutput<String?>('aliyunLang');
     configYaml = registerOutput<String>('configYaml');
     envPodMonitorName = registerOutput<String>('envPodMonitorName');

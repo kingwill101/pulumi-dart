@@ -13,18 +13,15 @@ class AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockData
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'parsingModality': ?parsingModality};
+    return <String, dynamic>{
+      'parsingModality': ?parsingModality,
+    };
   }
 
-  factory AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockDataAutomationConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockDataAutomationConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockDataAutomationConfiguration(
-      parsingModality: (() {
-        final guardedValue = map['parsingModality'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      parsingModality: (() { final guardedValue = map['parsingModality']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

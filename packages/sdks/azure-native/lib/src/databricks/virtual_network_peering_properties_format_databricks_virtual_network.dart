@@ -9,21 +9,20 @@ class VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetwork {
 
   /// Creates a new [VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetwork].
   /// [id] The Id of the databricks virtual network.
-  VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetwork({this.id});
+  VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetwork({
+    this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': ?id};
+    return <String, dynamic>{
+      'id': ?id,
+    };
   }
 
-  factory VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetwork.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetwork.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetwork(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

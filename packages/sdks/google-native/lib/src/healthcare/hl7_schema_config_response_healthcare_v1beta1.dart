@@ -7,7 +7,6 @@ import 'version_source_response_healthcare_v1beta1.dart';
 class Hl7SchemaConfigResponseHealthcareV1beta1 {
   /// Map from each HL7v2 message type and trigger event pair, such as ADT_A04, to its schema configuration root group.
   final pulumi.Input<Map<String, String>> messageSchemaConfigs;
-
   /// Each VersionSource is tested and only if they all match is the schema used for the message.
   final pulumi.Input<List<VersionSourceResponseHealthcareV1beta1>> version;
 
@@ -22,36 +21,15 @@ class Hl7SchemaConfigResponseHealthcareV1beta1 {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'messageSchemaConfigs': messageSchemaConfigs,
-      'version':
-          pulumi.Input.mapInputValue<
-            List<VersionSourceResponseHealthcareV1beta1>,
-            List<Map<String, dynamic>>
-          >(
-            version,
-            (value) =>
-                pulumi.Input.encodeList<
-                  VersionSourceResponseHealthcareV1beta1,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'version': pulumi.Input.mapInputValue<List<VersionSourceResponseHealthcareV1beta1>, List<Map<String, dynamic>>>(version, (value) => pulumi.Input.encodeList<VersionSourceResponseHealthcareV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory Hl7SchemaConfigResponseHealthcareV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory Hl7SchemaConfigResponseHealthcareV1beta1.fromMap(Map<String, dynamic> map) {
     return Hl7SchemaConfigResponseHealthcareV1beta1(
-      messageSchemaConfigs: pulumi.Input.fromValue(
-        (map['messageSchemaConfigs'] as Map).cast<String, String>(),
-      ),
-      version: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<VersionSourceResponseHealthcareV1beta1>(
-          map['version']!,
-          (value) => VersionSourceResponseHealthcareV1beta1.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      messageSchemaConfigs: pulumi.Input.fromValue((map['messageSchemaConfigs'] as Map).cast<String, String>()),
+      version: pulumi.Input.fromValue(pulumi.Input.decodeList<VersionSourceResponseHealthcareV1beta1>(map['version']!, (value) => VersionSourceResponseHealthcareV1beta1.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

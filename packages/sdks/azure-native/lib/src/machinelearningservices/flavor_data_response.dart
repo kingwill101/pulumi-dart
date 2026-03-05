@@ -8,21 +8,20 @@ class FlavorDataResponse {
 
   /// Creates a new [FlavorDataResponse].
   /// [data] Model flavor-specific data.
-  FlavorDataResponse({this.data});
+  FlavorDataResponse({
+    this.data,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'data': ?data};
+    return <String, dynamic>{
+      'data': ?data,
+    };
   }
 
   factory FlavorDataResponse.fromMap(Map<String, dynamic> map) {
     return FlavorDataResponse(
-      data: (() {
-        final guardedValue = map['data'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      data: (() { final guardedValue = map['data']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

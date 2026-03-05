@@ -319,31 +319,22 @@ import 'vpn_server_configuration_state.dart';
 /// $ pulumi import azure:network/vpnServerConfiguration:VpnServerConfiguration config1 /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.Network/vpnServerConfigurations/config1
 /// ```
 class VpnServerConfiguration extends pulumi.CustomResource {
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  azureActiveDirectoryAuthentications;
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  clientRevokedCertificates;
+  late final pulumi.Output<List<Map<String, dynamic>>?> azureActiveDirectoryAuthentications;
+  late final pulumi.Output<List<Map<String, dynamic>>?> clientRevokedCertificates;
   late final pulumi.Output<List<Map<String, dynamic>>?> clientRootCertificates;
-
   /// A `ipsec_policy` block as defined below.
   late final pulumi.Output<VpnServerConfigurationIpsecPolicy?> ipsecPolicy;
-
   /// The Azure location where this VPN Server Configuration should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The Name which should be used for this VPN Server Configuration. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
   late final pulumi.Output<VpnServerConfigurationRadius?> radius;
-
   /// The Name of the Resource Group in which this VPN Server Configuration should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A list of Authentication Types applicable for this VPN Server Configuration. Possible values are `AAD` (Azure Active Directory), `Certificate` and `Radius`.
   late final pulumi.Output<List<String>> vpnAuthenticationTypes;
-
   /// A list of VPN Protocols to use for this Server Configuration. Possible values are `IkeV2` and `OpenVPN`.
   late final pulumi.Output<List<String>> vpnProtocols;
 
@@ -356,48 +347,21 @@ class VpnServerConfiguration extends pulumi.CustomResource {
     VpnServerConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/vpnServerConfiguration:VpnServerConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    azureActiveDirectoryAuthentications =
-        registerOutput<List<Map<String, dynamic>>?>(
-          'azureActiveDirectoryAuthentications',
-        );
-    clientRevokedCertificates = registerOutput<List<Map<String, dynamic>>?>(
-      'clientRevokedCertificates',
-    );
-    clientRootCertificates = registerOutput<List<Map<String, dynamic>>?>(
-      'clientRootCertificates',
-    );
-    ipsecPolicy = registerOutput<VpnServerConfigurationIpsecPolicy?>(
-      'ipsecPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VpnServerConfigurationIpsecPolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:network/vpnServerConfiguration:VpnServerConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    azureActiveDirectoryAuthentications = registerOutput<List<Map<String, dynamic>>?>('azureActiveDirectoryAuthentications');
+    clientRevokedCertificates = registerOutput<List<Map<String, dynamic>>?>('clientRevokedCertificates');
+    clientRootCertificates = registerOutput<List<Map<String, dynamic>>?>('clientRootCertificates');
+    ipsecPolicy = registerOutput<VpnServerConfigurationIpsecPolicy?>('ipsecPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpnServerConfigurationIpsecPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    radius = registerOutput<VpnServerConfigurationRadius?>(
-      'radius',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VpnServerConfigurationRadius.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    radius = registerOutput<VpnServerConfigurationRadius?>('radius', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpnServerConfigurationRadius.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
     tags = registerOutput<Map<String, String>?>('tags');
-    vpnAuthenticationTypes = registerOutput<List<String>>(
-      'vpnAuthenticationTypes',
-    );
+    vpnAuthenticationTypes = registerOutput<List<String>>('vpnAuthenticationTypes');
     vpnProtocols = registerOutput<List<String>>('vpnProtocols');
   }
 
@@ -419,48 +383,21 @@ class VpnServerConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/vpnServerConfiguration:VpnServerConfiguration',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    azureActiveDirectoryAuthentications =
-        registerOutput<List<Map<String, dynamic>>?>(
-          'azureActiveDirectoryAuthentications',
-        );
-    clientRevokedCertificates = registerOutput<List<Map<String, dynamic>>?>(
-      'clientRevokedCertificates',
-    );
-    clientRootCertificates = registerOutput<List<Map<String, dynamic>>?>(
-      'clientRootCertificates',
-    );
-    ipsecPolicy = registerOutput<VpnServerConfigurationIpsecPolicy?>(
-      'ipsecPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VpnServerConfigurationIpsecPolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:network/vpnServerConfiguration:VpnServerConfiguration',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    azureActiveDirectoryAuthentications = registerOutput<List<Map<String, dynamic>>?>('azureActiveDirectoryAuthentications');
+    clientRevokedCertificates = registerOutput<List<Map<String, dynamic>>?>('clientRevokedCertificates');
+    clientRootCertificates = registerOutput<List<Map<String, dynamic>>?>('clientRootCertificates');
+    ipsecPolicy = registerOutput<VpnServerConfigurationIpsecPolicy?>('ipsecPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpnServerConfigurationIpsecPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    radius = registerOutput<VpnServerConfigurationRadius?>(
-      'radius',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VpnServerConfigurationRadius.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    radius = registerOutput<VpnServerConfigurationRadius?>('radius', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpnServerConfigurationRadius.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
     tags = registerOutput<Map<String, String>?>('tags');
-    vpnAuthenticationTypes = registerOutput<List<String>>(
-      'vpnAuthenticationTypes',
-    );
+    vpnAuthenticationTypes = registerOutput<List<String>>('vpnAuthenticationTypes');
     vpnProtocols = registerOutput<List<String>>('vpnProtocols');
   }
 }

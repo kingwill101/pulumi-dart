@@ -277,16 +277,12 @@ import 'registry_scope_map_state.dart';
 class RegistryScopeMap extends pulumi.CustomResource {
   /// A list of actions to attach to the scope map (e.g. `repo/content/read`, `repo2/content/delete`).
   late final pulumi.Output<List<String>> actions;
-
   /// The name of the Container Registry. Changing this forces a new resource to be created.
   late final pulumi.Output<String> containerRegistryName;
-
   /// The description of the Container Registry.
   late final pulumi.Output<String?> description;
-
   /// Specifies the name of the scope map. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the resource group in which to create the Container Registry token. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
 
@@ -299,11 +295,11 @@ class RegistryScopeMap extends pulumi.CustomResource {
     RegistryScopeMapArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:containerservice/registryScopeMap:RegistryScopeMap',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:containerservice/registryScopeMap:RegistryScopeMap',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     actions = registerOutput<List<String>>('actions');
     containerRegistryName = registerOutput<String>('containerRegistryName');
     description = registerOutput<String?>('description');
@@ -329,11 +325,11 @@ class RegistryScopeMap extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:containerservice/registryScopeMap:RegistryScopeMap',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:containerservice/registryScopeMap:RegistryScopeMap',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     actions = registerOutput<List<String>>('actions');
     containerRegistryName = registerOutput<String>('containerRegistryName');
     description = registerOutput<String?>('description');

@@ -6,31 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SkypeChannelProperties {
   /// Calling web hook for Skype channel
   final pulumi.Input<String>? callingWebHook;
-
   /// Enable calling for Skype channel
   final pulumi.Input<bool>? enableCalling;
-
   /// Enable groups for Skype channel
   final pulumi.Input<bool>? enableGroups;
-
   /// Enable media cards for Skype channel
   final pulumi.Input<bool>? enableMediaCards;
-
   /// Enable messaging for Skype channel
   final pulumi.Input<bool>? enableMessaging;
-
   /// Enable screen sharing for Skype channel
   final pulumi.Input<bool>? enableScreenSharing;
-
   /// Enable video for Skype channel
   final pulumi.Input<bool>? enableVideo;
-
   /// Group mode for Skype channel
   final pulumi.Input<String>? groupsMode;
-
   /// Incoming call route for Skype channel
   final pulumi.Input<String>? incomingCallRoute;
-
   /// Whether this channel is enabled for the bot
   final pulumi.Input<bool> isEnabled;
 
@@ -75,52 +66,17 @@ class SkypeChannelProperties {
 
   factory SkypeChannelProperties.fromMap(Map<String, dynamic> map) {
     return SkypeChannelProperties(
-      callingWebHook: (() {
-        final guardedValue = map['callingWebHook'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      enableCalling: (() {
-        final guardedValue = map['enableCalling'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      enableGroups: (() {
-        final guardedValue = map['enableGroups'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      enableMediaCards: (() {
-        final guardedValue = map['enableMediaCards'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      enableMessaging: (() {
-        final guardedValue = map['enableMessaging'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      enableScreenSharing: (() {
-        final guardedValue = map['enableScreenSharing'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      enableVideo: (() {
-        final guardedValue = map['enableVideo'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      groupsMode: (() {
-        final guardedValue = map['groupsMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      incomingCallRoute: (() {
-        final guardedValue = map['incomingCallRoute'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      callingWebHook: (() { final guardedValue = map['callingWebHook']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      enableCalling: (() { final guardedValue = map['enableCalling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enableGroups: (() { final guardedValue = map['enableGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enableMediaCards: (() { final guardedValue = map['enableMediaCards']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enableMessaging: (() { final guardedValue = map['enableMessaging']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enableScreenSharing: (() { final guardedValue = map['enableScreenSharing']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enableVideo: (() { final guardedValue = map['enableVideo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      groupsMode: (() { final guardedValue = map['groupsMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      incomingCallRoute: (() { final guardedValue = map['incomingCallRoute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       isEnabled: pulumi.Input.fromValue(map['isEnabled'] as bool),
     );
   }
 }
+

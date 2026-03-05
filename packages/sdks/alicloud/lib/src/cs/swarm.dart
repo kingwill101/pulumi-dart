@@ -27,13 +27,16 @@ class Swarm extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Swarm]. {@macro pulumi_cs_swarm_swarm_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Swarm(String name, {SwarmArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:cs/swarm:Swarm',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Swarm(
+    String name, {
+    SwarmArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:cs/swarm:Swarm',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     agentVersion = registerOutput<String>('agentVersion');
     cidrBlock = registerOutput<String>('cidrBlock');
     diskCategory = registerOutput<String?>('diskCategory');
@@ -56,7 +59,11 @@ class Swarm extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Swarm] resource's state with the given [name] and [id].
-  static Swarm get(String name, pulumi.Input<String> id, {SwarmState? state}) {
+  static Swarm get(
+    String name,
+    pulumi.Input<String> id, {
+    SwarmState? state,
+  }) {
     return Swarm._get(
       name,
       state: state?.toMap(),
@@ -69,11 +76,11 @@ class Swarm extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cs/swarm:Swarm',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cs/swarm:Swarm',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     agentVersion = registerOutput<String>('agentVersion');
     cidrBlock = registerOutput<String>('cidrBlock');
     diskCategory = registerOutput<String?>('diskCategory');

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedIdentityAuthenticationResponse {
   /// Token audience.
   final pulumi.Input<String> audience;
-
   /// Arc Extension name.
   final pulumi.Input<String>? extensionName;
 
@@ -25,16 +24,11 @@ class ManagedIdentityAuthenticationResponse {
     };
   }
 
-  factory ManagedIdentityAuthenticationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ManagedIdentityAuthenticationResponse.fromMap(Map<String, dynamic> map) {
     return ManagedIdentityAuthenticationResponse(
       audience: pulumi.Input.fromValue(map['audience'] as String),
-      extensionName: (() {
-        final guardedValue = map['extensionName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      extensionName: (() { final guardedValue = map['extensionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

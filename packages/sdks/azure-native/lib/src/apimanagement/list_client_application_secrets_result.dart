@@ -9,21 +9,20 @@ class ListClientApplicationSecretsResult {
 
   /// Creates a new [ListClientApplicationSecretsResult].
   /// [entra] Microsoft EntraID client application secrets
-  ListClientApplicationSecretsResult({this.entra});
+  ListClientApplicationSecretsResult({
+    this.entra,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'entra': ?entra?.toMap()};
+    return <String, dynamic>{
+      'entra': ?entra?.toMap(),
+    };
   }
 
   factory ListClientApplicationSecretsResult.fromMap(Map<String, dynamic> map) {
     return ListClientApplicationSecretsResult(
-      entra: (() {
-        final guardedValue = map['entra'];
-        if (guardedValue == null) return null;
-        return ClientApplicationSecretsContractResponseEntra.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      entra: (() { final guardedValue = map['entra']; if (guardedValue == null) return null; return ClientApplicationSecretsContractResponseEntra.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }
 }
+

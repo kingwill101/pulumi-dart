@@ -31,15 +31,10 @@ class GetAutoscalingPolicyArgs {
 
   factory GetAutoscalingPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetAutoscalingPolicyArgs(
-      autoscalingPolicyId: pulumi.Input.fromValue(
-        map['autoscalingPolicyId'] as String,
-      ),
+      autoscalingPolicyId: pulumi.Input.fromValue(map['autoscalingPolicyId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

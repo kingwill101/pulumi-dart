@@ -9,17 +9,20 @@ class NamespacesResponse {
 
   /// Creates a new [NamespacesResponse].
   /// [namespaces] Optional. A list of Kubernetes Namespaces
-  NamespacesResponse({required this.namespaces});
+  NamespacesResponse({
+    required this.namespaces,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'namespaces': namespaces};
+    return <String, dynamic>{
+      'namespaces': namespaces,
+    };
   }
 
   factory NamespacesResponse.fromMap(Map<String, dynamic> map) {
     return NamespacesResponse(
-      namespaces: pulumi.Input.fromValue(
-        (map['namespaces'] as List).cast<String>(),
-      ),
+      namespaces: pulumi.Input.fromValue((map['namespaces'] as List).cast<String>()),
     );
   }
 }
+

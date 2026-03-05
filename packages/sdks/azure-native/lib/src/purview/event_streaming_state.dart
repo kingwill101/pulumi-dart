@@ -15,3 +15,4 @@ enum EventStreamingState {
     throw ArgumentError('Unknown EventStreamingState value: $value');
   }
 }
+

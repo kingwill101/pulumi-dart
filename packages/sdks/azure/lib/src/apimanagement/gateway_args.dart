@@ -10,13 +10,10 @@ import 'gateway_location_data.dart';
 class GatewayArgs {
   /// The ID of the API Management Resource in which the gateway will be created. Changing this forces a new API Management Gateway resource to be created.
   final pulumi.Input<String> apiManagementId;
-
   /// The description of the API Management Gateway.
   final pulumi.Input<String>? description;
-
   /// A `location_data` block as documented below.
   final pulumi.Input<GatewayLocationData> locationData;
-
   /// The name which should be used for the API Management Gateway. Changing this forces a new API Management Gateway to be created.
   final pulumi.Input<String>? name;
 
@@ -36,11 +33,7 @@ class GatewayArgs {
     return <String, dynamic>{
       'apiManagementId': apiManagementId,
       'description': ?description,
-      'locationData':
-          pulumi.Input.mapInputValue<GatewayLocationData, Map<String, dynamic>>(
-            locationData,
-            (value) => value.toMap(),
-          ),
+      'locationData': pulumi.Input.mapInputValue<GatewayLocationData, Map<String, dynamic>>(locationData, (value) => value.toMap()),
       'name': ?name,
     };
   }
@@ -48,21 +41,10 @@ class GatewayArgs {
   factory GatewayArgs.fromMap(Map<String, dynamic> map) {
     return GatewayArgs(
       apiManagementId: pulumi.Input.fromValue(map['apiManagementId'] as String),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      locationData: pulumi.Input.fromValue(
-        GatewayLocationData.fromMap(
-          (map['locationData']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      locationData: pulumi.Input.fromValue(GatewayLocationData.fromMap((map['locationData']! as Map).cast<String, dynamic>())),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

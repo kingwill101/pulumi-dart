@@ -222,13 +222,10 @@ import 'module_state.dart';
 class Module extends pulumi.CustomResource {
   /// The name of the automation account in which the Module is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> automationAccountName;
-
   /// A `module_link` block as defined below.
   late final pulumi.Output<ModuleModuleLink> moduleLink;
-
   /// Specifies the name of the Module. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the resource group in which the Module is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
 
@@ -236,24 +233,18 @@ class Module extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Module]. {@macro pulumi_automation_module_module_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Module(String name, {ModuleArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure:automation/module:Module',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Module(
+    String name, {
+    ModuleArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure:automation/module:Module',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     automationAccountName = registerOutput<String>('automationAccountName');
-    moduleLink = registerOutput<ModuleModuleLink>(
-      'moduleLink',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ModuleModuleLink.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    moduleLink = registerOutput<ModuleModuleLink>('moduleLink', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ModuleModuleLink.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
   }
@@ -276,22 +267,13 @@ class Module extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:automation/module:Module',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:automation/module:Module',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     automationAccountName = registerOutput<String>('automationAccountName');
-    moduleLink = registerOutput<ModuleModuleLink>(
-      'moduleLink',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ModuleModuleLink.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    moduleLink = registerOutput<ModuleModuleLink>('moduleLink', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ModuleModuleLink.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
   }

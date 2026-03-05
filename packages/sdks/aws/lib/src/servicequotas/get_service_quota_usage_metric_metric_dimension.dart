@@ -29,9 +29,7 @@ class GetServiceQuotaUsageMetricMetricDimension {
     };
   }
 
-  factory GetServiceQuotaUsageMetricMetricDimension.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetServiceQuotaUsageMetricMetricDimension.fromMap(Map<String, dynamic> map) {
     return GetServiceQuotaUsageMetricMetricDimension(
       class_: pulumi.Input.fromValue(map['class'] as String),
       resource: pulumi.Input.fromValue(map['resource'] as String),
@@ -40,3 +38,4 @@ class GetServiceQuotaUsageMetricMetricDimension {
     );
   }
 }
+

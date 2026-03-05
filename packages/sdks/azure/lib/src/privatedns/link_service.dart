@@ -527,38 +527,26 @@ import 'link_service_state.dart';
 class LinkService extends pulumi.CustomResource {
   /// A globally unique DNS Name for your Private Link Service. You can use this alias to request a connection to your Private Link Service.
   late final pulumi.Output<String> alias;
-
   /// A list of Subscription UUID/GUID's that will be automatically be able to use this Private Link Service.
   late final pulumi.Output<List<String>?> autoApprovalSubscriptionIds;
-
   /// The destination IP address of the Private Link Service.
   late final pulumi.Output<String?> destinationIpAddress;
-
   /// Should the Private Link Service support the Proxy Protocol?
   late final pulumi.Output<bool?> enableProxyProtocol;
-
   /// List of FQDNs allowed for the Private Link Service.
   late final pulumi.Output<List<String>?> fqdns;
-
   /// A list of Frontend IP Configuration IDs from a Standard Load Balancer, where traffic from the Private Link Service should be routed. You can use Load Balancer Rules to direct this traffic to appropriate backend pools where your applications are running. Changing this forces a new resource to be created.
-  late final pulumi.Output<List<String>?>
-  loadBalancerFrontendIpConfigurationIds;
-
+  late final pulumi.Output<List<String>?> loadBalancerFrontendIpConfigurationIds;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// Specifies the name of this Private Link Service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// One or more (up to 8) `nat_ip_configuration` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>> natIpConfigurations;
-
   /// The name of the Resource Group where the Private Link Service should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A list of Subscription UUID/GUID's that will be able to see this Private Link Service.
   ///
   /// &gt; **Note:** If no Subscription IDs are specified then Azure allows every Subscription to see this Private Link Service.
@@ -573,31 +561,23 @@ class LinkService extends pulumi.CustomResource {
     LinkServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:privatedns/linkService:LinkService',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:privatedns/linkService:LinkService',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alias = registerOutput<String>('alias');
-    autoApprovalSubscriptionIds = registerOutput<List<String>?>(
-      'autoApprovalSubscriptionIds',
-    );
+    autoApprovalSubscriptionIds = registerOutput<List<String>?>('autoApprovalSubscriptionIds');
     destinationIpAddress = registerOutput<String?>('destinationIpAddress');
     enableProxyProtocol = registerOutput<bool?>('enableProxyProtocol');
     fqdns = registerOutput<List<String>?>('fqdns');
-    loadBalancerFrontendIpConfigurationIds = registerOutput<List<String>?>(
-      'loadBalancerFrontendIpConfigurationIds',
-    );
+    loadBalancerFrontendIpConfigurationIds = registerOutput<List<String>?>('loadBalancerFrontendIpConfigurationIds');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    natIpConfigurations = registerOutput<List<Map<String, dynamic>>>(
-      'natIpConfigurations',
-    );
+    natIpConfigurations = registerOutput<List<Map<String, dynamic>>>('natIpConfigurations');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     tags = registerOutput<Map<String, String>?>('tags');
-    visibilitySubscriptionIds = registerOutput<List<String>?>(
-      'visibilitySubscriptionIds',
-    );
+    visibilitySubscriptionIds = registerOutput<List<String>?>('visibilitySubscriptionIds');
   }
 
   /// Gets an existing [LinkService] resource's state with the given [name] and [id].
@@ -618,30 +598,22 @@ class LinkService extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:privatedns/linkService:LinkService',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:privatedns/linkService:LinkService',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alias = registerOutput<String>('alias');
-    autoApprovalSubscriptionIds = registerOutput<List<String>?>(
-      'autoApprovalSubscriptionIds',
-    );
+    autoApprovalSubscriptionIds = registerOutput<List<String>?>('autoApprovalSubscriptionIds');
     destinationIpAddress = registerOutput<String?>('destinationIpAddress');
     enableProxyProtocol = registerOutput<bool?>('enableProxyProtocol');
     fqdns = registerOutput<List<String>?>('fqdns');
-    loadBalancerFrontendIpConfigurationIds = registerOutput<List<String>?>(
-      'loadBalancerFrontendIpConfigurationIds',
-    );
+    loadBalancerFrontendIpConfigurationIds = registerOutput<List<String>?>('loadBalancerFrontendIpConfigurationIds');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    natIpConfigurations = registerOutput<List<Map<String, dynamic>>>(
-      'natIpConfigurations',
-    );
+    natIpConfigurations = registerOutput<List<Map<String, dynamic>>>('natIpConfigurations');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     tags = registerOutput<Map<String, String>?>('tags');
-    visibilitySubscriptionIds = registerOutput<List<String>?>(
-      'visibilitySubscriptionIds',
-    );
+    visibilitySubscriptionIds = registerOutput<List<String>?>('visibilitySubscriptionIds');
   }
 }

@@ -12,22 +12,16 @@ import 'sql_managed_instance_sku.dart';
 class SqlManagedInstanceArgs {
   /// The extendedLocation of the resource.
   final pulumi.Input<ExtendedLocation>? extendedLocation;
-
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
-
   /// null
   final pulumi.Input<SqlManagedInstanceProperties> properties;
-
   /// The name of the Azure resource group
   final pulumi.Input<String> resourceGroupName;
-
   /// Resource sku.
   final pulumi.Input<SqlManagedInstanceSku>? sku;
-
   /// Name of SQL Managed Instance
   final pulumi.Input<String>? sqlManagedInstanceName;
-
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -51,23 +45,11 @@ class SqlManagedInstanceArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'extendedLocation':
-          ?pulumi.Input.mapOptionalInputValue<
-            ExtendedLocation,
-            Map<String, dynamic>
-          >(extendedLocation, (value) => value.toMap()),
+      'extendedLocation': ?pulumi.Input.mapOptionalInputValue<ExtendedLocation, Map<String, dynamic>>(extendedLocation, (value) => value.toMap()),
       'location': ?location,
-      'properties':
-          pulumi.Input.mapInputValue<
-            SqlManagedInstanceProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': pulumi.Input.mapInputValue<SqlManagedInstanceProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
-      'sku':
-          ?pulumi.Input.mapOptionalInputValue<
-            SqlManagedInstanceSku,
-            Map<String, dynamic>
-          >(sku, (value) => value.toMap()),
+      'sku': ?pulumi.Input.mapOptionalInputValue<SqlManagedInstanceSku, Map<String, dynamic>>(sku, (value) => value.toMap()),
       'sqlManagedInstanceName': ?sqlManagedInstanceName,
       'tags': ?tags,
     };
@@ -75,49 +57,14 @@ class SqlManagedInstanceArgs {
 
   factory SqlManagedInstanceArgs.fromMap(Map<String, dynamic> map) {
     return SqlManagedInstanceArgs(
-      extendedLocation: (() {
-        final guardedValue = map['extendedLocation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ExtendedLocation.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      properties: pulumi.Input.fromValue(
-        SqlManagedInstanceProperties.fromMap(
-          (map['properties']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      sku: (() {
-        final guardedValue = map['sku'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SqlManagedInstanceSku.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      sqlManagedInstanceName: (() {
-        final guardedValue = map['sqlManagedInstanceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExtendedLocation.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      properties: pulumi.Input.fromValue(SqlManagedInstanceProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SqlManagedInstanceSku.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      sqlManagedInstanceName: (() { final guardedValue = map['sqlManagedInstanceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

@@ -9,19 +9,20 @@ class TableFieldSchemaCategories {
 
   /// Creates a new [TableFieldSchemaCategories].
   /// [names] A list of category resource names. For example, "projects/1/taxonomies/2/categories/3". At most 5 categories are allowed.
-  TableFieldSchemaCategories({this.names});
+  TableFieldSchemaCategories({
+    this.names,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'names': ?names};
+    return <String, dynamic>{
+      'names': ?names,
+    };
   }
 
   factory TableFieldSchemaCategories.fromMap(Map<String, dynamic> map) {
     return TableFieldSchemaCategories(
-      names: (() {
-        final guardedValue = map['names'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      names: (() { final guardedValue = map['names']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

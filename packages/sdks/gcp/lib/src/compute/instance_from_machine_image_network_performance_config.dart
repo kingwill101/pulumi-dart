@@ -18,13 +18,10 @@ class InstanceFromMachineImageNetworkPerformanceConfig {
     };
   }
 
-  factory InstanceFromMachineImageNetworkPerformanceConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InstanceFromMachineImageNetworkPerformanceConfig.fromMap(Map<String, dynamic> map) {
     return InstanceFromMachineImageNetworkPerformanceConfig(
-      totalEgressBandwidthTier: pulumi.Input.fromValue(
-        map['totalEgressBandwidthTier'] as String,
-      ),
+      totalEgressBandwidthTier: pulumi.Input.fromValue(map['totalEgressBandwidthTier'] as String),
     );
   }
 }
+

@@ -759,16 +759,12 @@ import 'certificate_state.dart';
 class Certificate extends pulumi.CustomResource {
   /// Specify the path to the certificate file of this certificate.
   late final pulumi.Output<String> certificateVirtualPath;
-
   /// Specify the ID of the Key Vault Secret for this certificate.
   late final pulumi.Output<String> keyVaultSecretId;
-
   /// Specify the path to the key file of this certificate.
   late final pulumi.Output<String> keyVirtualPath;
-
   /// The name which should be used for this NGINX Certificate. Changing this forces a new NGINX Certificate to be created.
   late final pulumi.Output<String> name;
-
   /// The ID of the NGINX Deployment that this Certificate should be associated with. Changing this forces a new NGINX Certificate to be created.
   late final pulumi.Output<String> nginxDeploymentId;
 
@@ -781,11 +777,11 @@ class Certificate extends pulumi.CustomResource {
     CertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:nginx/certificate:Certificate',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:nginx/certificate:Certificate',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     certificateVirtualPath = registerOutput<String>('certificateVirtualPath');
     keyVaultSecretId = registerOutput<String>('keyVaultSecretId');
     keyVirtualPath = registerOutput<String>('keyVirtualPath');
@@ -811,11 +807,11 @@ class Certificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:nginx/certificate:Certificate',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:nginx/certificate:Certificate',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     certificateVirtualPath = registerOutput<String>('certificateVirtualPath');
     keyVaultSecretId = registerOutput<String>('keyVaultSecretId');
     keyVirtualPath = registerOutput<String>('keyVirtualPath');

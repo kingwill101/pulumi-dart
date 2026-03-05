@@ -418,25 +418,20 @@ import 'server_group_state.dart';
 class ServerGroup extends pulumi.CustomResource {
   /// The instances that are part of this server group.
   late final pulumi.Output<List<String>> members;
-
   /// A unique name for the server group. Changing this creates
   /// a new server group.
   late final pulumi.Output<String> name;
-
   /// A list of exactly one policy name to associate with
   /// the server group. See the Policies section for more information. Changing this
   /// creates a new server group.
   late final pulumi.Output<String?> policies;
-
   /// The region in which to obtain the V2 Compute client.
   /// If omitted, the `region` argument of the provider is used. Changing
   /// this creates a new server group.
   late final pulumi.Output<String> region;
-
   /// The rules which are applied to specified `policy`. Currently,
   /// only the `max_server_per_host` rule is supported for the `anti-affinity` policy.
   late final pulumi.Output<ServerGroupRules> rules;
-
   /// Map of additional options.
   late final pulumi.Output<Map<String, String>?> valueSpecs;
 
@@ -449,25 +444,16 @@ class ServerGroup extends pulumi.CustomResource {
     ServerGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:compute/serverGroup:ServerGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:compute/serverGroup:ServerGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     members = registerOutput<List<String>>('members');
     this.name = registerOutput<String>('name');
     policies = registerOutput<String?>('policies');
     region = registerOutput<String>('region');
-    rules = registerOutput<ServerGroupRules>(
-      'rules',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServerGroupRules.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    rules = registerOutput<ServerGroupRules>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerGroupRules.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     valueSpecs = registerOutput<Map<String, String>?>('valueSpecs');
   }
 
@@ -489,25 +475,16 @@ class ServerGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:compute/serverGroup:ServerGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:compute/serverGroup:ServerGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     members = registerOutput<List<String>>('members');
     this.name = registerOutput<String>('name');
     policies = registerOutput<String?>('policies');
     region = registerOutput<String>('region');
-    rules = registerOutput<ServerGroupRules>(
-      'rules',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServerGroupRules.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    rules = registerOutput<ServerGroupRules>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerGroupRules.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     valueSpecs = registerOutput<Map<String, String>?>('valueSpecs');
   }
 }

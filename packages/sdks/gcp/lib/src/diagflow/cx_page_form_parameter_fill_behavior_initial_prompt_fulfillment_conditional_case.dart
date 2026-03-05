@@ -14,18 +14,15 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCase {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'cases': ?cases};
+    return <String, dynamic>{
+      'cases': ?cases,
+    };
   }
 
-  factory CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCase.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCase.fromMap(Map<String, dynamic> map) {
     return CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCase(
-      cases: (() {
-        final guardedValue = map['cases'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      cases: (() { final guardedValue = map['cases']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

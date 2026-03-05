@@ -7,25 +7,18 @@ import 'system_data_response.dart';
 class GetMigrateProjectsControllerMigrateProjectResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// For optimistic concurrency control.
   final String? eTag;
-
   /// Path reference to this project /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{projectName}
   final String id;
-
   /// Azure location in which project is created.
   final String? location;
-
   /// Name of the project.
   final String name;
-
   /// Properties of a migrate project.
   final MigrateProjectPropertiesResponse properties;
-
   /// Metadata pertaining to creation and last modification of the resource.
   final SystemDataResponse systemData;
-
   /// Type of the object = [Microsoft.Migrate/migrateProjects].
   final String type;
 
@@ -62,30 +55,17 @@ class GetMigrateProjectsControllerMigrateProjectResult {
     };
   }
 
-  factory GetMigrateProjectsControllerMigrateProjectResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetMigrateProjectsControllerMigrateProjectResult.fromMap(Map<String, dynamic> map) {
     return GetMigrateProjectsControllerMigrateProjectResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      eTag: (() {
-        final guardedValue = map['eTag'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      eTag: (() { final guardedValue = map['eTag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
-      properties: MigrateProjectPropertiesResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      properties: MigrateProjectPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

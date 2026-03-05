@@ -9,16 +9,12 @@ import 'application_appversion_lifecycle.dart';
 /// {@macro pulumi_elasticbeanstalk_application_application_args_doc}
 class ApplicationArgs {
   final pulumi.Input<ApplicationAppversionLifecycle>? appversionLifecycle;
-
   /// Short description of the application
   final pulumi.Input<String>? description;
-
   /// The name of the application, must be unique within your account
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Key-value map of tags for the Elastic Beanstalk Application. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -38,11 +34,7 @@ class ApplicationArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'appversionLifecycle':
-          ?pulumi.Input.mapOptionalInputValue<
-            ApplicationAppversionLifecycle,
-            Map<String, dynamic>
-          >(appversionLifecycle, (value) => value.toMap()),
+      'appversionLifecycle': ?pulumi.Input.mapOptionalInputValue<ApplicationAppversionLifecycle, Map<String, dynamic>>(appversionLifecycle, (value) => value.toMap()),
       'description': ?description,
       'name': ?name,
       'region': ?region,
@@ -52,37 +44,12 @@ class ApplicationArgs {
 
   factory ApplicationArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationArgs(
-      appversionLifecycle: (() {
-        final guardedValue = map['appversionLifecycle'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ApplicationAppversionLifecycle.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      appversionLifecycle: (() { final guardedValue = map['appversionLifecycle']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ApplicationAppversionLifecycle.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

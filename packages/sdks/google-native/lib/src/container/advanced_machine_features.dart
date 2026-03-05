@@ -9,19 +9,20 @@ class AdvancedMachineFeatures {
 
   /// Creates a new [AdvancedMachineFeatures].
   /// [threadsPerCore] The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
-  AdvancedMachineFeatures({this.threadsPerCore});
+  AdvancedMachineFeatures({
+    this.threadsPerCore,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'threadsPerCore': ?threadsPerCore};
+    return <String, dynamic>{
+      'threadsPerCore': ?threadsPerCore,
+    };
   }
 
   factory AdvancedMachineFeatures.fromMap(Map<String, dynamic> map) {
     return AdvancedMachineFeatures(
-      threadsPerCore: (() {
-        final guardedValue = map['threadsPerCore'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      threadsPerCore: (() { final guardedValue = map['threadsPerCore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDatabasesDatabasePrivateNetwork {
   /// If true, clients outside of the VPC can connect to the database using a public IP address.
   final pulumi.Input<bool> publicAccess;
-
   /// The ID of the VPC subnet to restrict access to this database using.
   final pulumi.Input<int> subnetId;
-
   /// The ID of the virtual private cloud (VPC) to restrict access to this database using.
   final pulumi.Input<int> vpcId;
 
@@ -38,3 +36,4 @@ class GetDatabasesDatabasePrivateNetwork {
     );
   }
 }
+

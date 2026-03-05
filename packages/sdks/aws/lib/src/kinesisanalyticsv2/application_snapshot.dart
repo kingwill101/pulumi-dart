@@ -111,16 +111,12 @@ import 'application_snapshot_state.dart';
 class ApplicationSnapshot extends pulumi.CustomResource {
   /// The name of an existing  Kinesis Analytics v2 Application. Note that the application must be running for a snapshot to be created.
   late final pulumi.Output<String> applicationName;
-
   /// The current application version ID when the snapshot was created.
   late final pulumi.Output<int> applicationVersionId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The timestamp of the application snapshot.
   late final pulumi.Output<String> snapshotCreationTimestamp;
-
   /// The name of the application snapshot.
   late final pulumi.Output<String> snapshotName;
 
@@ -133,17 +129,15 @@ class ApplicationSnapshot extends pulumi.CustomResource {
     ApplicationSnapshotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:kinesisanalyticsv2/applicationSnapshot:ApplicationSnapshot',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:kinesisanalyticsv2/applicationSnapshot:ApplicationSnapshot',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationName = registerOutput<String>('applicationName');
     applicationVersionId = registerOutput<int>('applicationVersionId');
     region = registerOutput<String>('region');
-    snapshotCreationTimestamp = registerOutput<String>(
-      'snapshotCreationTimestamp',
-    );
+    snapshotCreationTimestamp = registerOutput<String>('snapshotCreationTimestamp');
     snapshotName = registerOutput<String>('snapshotName');
   }
 
@@ -165,17 +159,15 @@ class ApplicationSnapshot extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:kinesisanalyticsv2/applicationSnapshot:ApplicationSnapshot',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:kinesisanalyticsv2/applicationSnapshot:ApplicationSnapshot',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationName = registerOutput<String>('applicationName');
     applicationVersionId = registerOutput<int>('applicationVersionId');
     region = registerOutput<String>('region');
-    snapshotCreationTimestamp = registerOutput<String>(
-      'snapshotCreationTimestamp',
-    );
+    snapshotCreationTimestamp = registerOutput<String>('snapshotCreationTimestamp');
     snapshotName = registerOutput<String>('snapshotName');
   }
 }

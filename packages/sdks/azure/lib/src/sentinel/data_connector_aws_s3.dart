@@ -238,16 +238,12 @@ import 'data_connector_aws_s3_state.dart';
 class DataConnectorAwsS3 extends pulumi.CustomResource {
   /// The ARN of the AWS role, which is connected to this AWS CloudTrail Data Connector. See the [Azure document](https://docs.microsoft.com/azure/sentinel/connect-aws?tabs=s3#create-an-aws-assumed-role-and-grant-access-to-the-aws-sentinel-account) for details.
   late final pulumi.Output<String> awsRoleArn;
-
   /// The name of the Log Analytics table that will store the ingested data.
   late final pulumi.Output<String> destinationTable;
-
   /// The ID of the Log Analytics Workspace that this AWS S3 Data Connector resides in. Changing this forces a new AWS S3 Data Connector to be created.
   late final pulumi.Output<String> logAnalyticsWorkspaceId;
-
   /// The name which should be used for this AWS S3 Data Connector. Changing this forces a new AWS S3 Data Connector to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies a list of AWS SQS urls for the AWS S3 Data Connector.
   late final pulumi.Output<List<String>> sqsUrls;
 
@@ -260,11 +256,11 @@ class DataConnectorAwsS3 extends pulumi.CustomResource {
     DataConnectorAwsS3Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:sentinel/dataConnectorAwsS3:DataConnectorAwsS3',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:sentinel/dataConnectorAwsS3:DataConnectorAwsS3',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     awsRoleArn = registerOutput<String>('awsRoleArn');
     destinationTable = registerOutput<String>('destinationTable');
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
@@ -290,11 +286,11 @@ class DataConnectorAwsS3 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:sentinel/dataConnectorAwsS3:DataConnectorAwsS3',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:sentinel/dataConnectorAwsS3:DataConnectorAwsS3',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     awsRoleArn = registerOutput<String>('awsRoleArn');
     destinationTable = registerOutput<String>('destinationTable');
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudRecaptchaenterpriseV1WafSettingsResponse {
   /// The WAF feature for which this key is enabled.
   final pulumi.Input<String> wafFeature;
-
   /// The WAF service that uses this key.
   final pulumi.Input<String> wafService;
 
@@ -25,12 +24,11 @@ class GoogleCloudRecaptchaenterpriseV1WafSettingsResponse {
     };
   }
 
-  factory GoogleCloudRecaptchaenterpriseV1WafSettingsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudRecaptchaenterpriseV1WafSettingsResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRecaptchaenterpriseV1WafSettingsResponse(
       wafFeature: pulumi.Input.fromValue(map['wafFeature'] as String),
       wafService: pulumi.Input.fromValue(map['wafService'] as String),
     );
   }
 }
+

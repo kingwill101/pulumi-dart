@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TCPSocketActionResponse {
   /// Not supported by Cloud Run.
   final pulumi.Input<String> host;
-
   /// Port number to access on the container. Number must be in the range 1 to 65535.
   final pulumi.Input<int> port;
 
   /// Creates a new [TCPSocketActionResponse].
   /// [host] Not supported by Cloud Run.
   /// [port] Port number to access on the container. Number must be in the range 1 to 65535.
-  TCPSocketActionResponse({required this.host, required this.port});
+  TCPSocketActionResponse({
+    required this.host,
+    required this.port,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'host': host, 'port': port};
+    return <String, dynamic>{
+      'host': host,
+      'port': port,
+    };
   }
 
   factory TCPSocketActionResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class TCPSocketActionResponse {
     );
   }
 }
+

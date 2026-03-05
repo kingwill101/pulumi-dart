@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StackSetInstanceDeploymentTargets {
   /// Limit deployment targets to individual accounts or include additional accounts with provided OUs. Valid values: `INTERSECTION`, `DIFFERENCE`, `UNION`, `NONE`.
   final pulumi.Input<String>? accountFilterType;
-
   /// List of accounts to deploy stack set updates.
   final pulumi.Input<List<String>>? accounts;
-
   /// S3 URL of the file containing the list of accounts.
   final pulumi.Input<String>? accountsUrl;
-
   /// Organization root ID or organizational unit (OU) IDs to which StackSets deploys.
   final pulumi.Input<List<String>>? organizationalUnitIds;
 
@@ -38,26 +35,11 @@ class StackSetInstanceDeploymentTargets {
 
   factory StackSetInstanceDeploymentTargets.fromMap(Map<String, dynamic> map) {
     return StackSetInstanceDeploymentTargets(
-      accountFilterType: (() {
-        final guardedValue = map['accountFilterType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      accounts: (() {
-        final guardedValue = map['accounts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      accountsUrl: (() {
-        final guardedValue = map['accountsUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      organizationalUnitIds: (() {
-        final guardedValue = map['organizationalUnitIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      accountFilterType: (() { final guardedValue = map['accountFilterType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      accounts: (() { final guardedValue = map['accounts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      accountsUrl: (() { final guardedValue = map['accountsUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      organizationalUnitIds: (() { final guardedValue = map['organizationalUnitIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

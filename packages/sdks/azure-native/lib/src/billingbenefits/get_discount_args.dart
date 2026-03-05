@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDiscountArgs {
   /// Name of the discount
   final pulumi.Input<String> discountName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -31,9 +30,8 @@ class GetDiscountArgs {
   factory GetDiscountArgs.fromMap(Map<String, dynamic> map) {
     return GetDiscountArgs(
       discountName: pulumi.Input.fromValue(map['discountName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

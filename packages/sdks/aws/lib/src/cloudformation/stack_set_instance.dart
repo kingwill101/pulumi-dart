@@ -583,39 +583,26 @@ import 'stack_set_instance_state.dart';
 class StackSetInstance extends pulumi.CustomResource {
   /// Target AWS Account ID to create a Stack based on the StackSet. Defaults to current account.
   late final pulumi.Output<String> accountId;
-
   /// Specifies whether you are acting as an account administrator in the organization's management account or as a delegated administrator in a member account. Valid values: `SELF` (default), `DELEGATED_ADMIN`.
   late final pulumi.Output<String?> callAs;
-
   /// AWS Organizations accounts to which StackSets deploys. StackSets doesn't deploy stack instances to the organization management account, even if the organization management account is in your organization or in an OU in your organization. Drift detection is not possible for this argument. See deployment_targets below.
-  late final pulumi.Output<StackSetInstanceDeploymentTargets?>
-  deploymentTargets;
-
+  late final pulumi.Output<StackSetInstanceDeploymentTargets?> deploymentTargets;
   /// Preferences for how AWS CloudFormation performs a stack set operation.
-  late final pulumi.Output<StackSetInstanceOperationPreferences?>
-  operationPreferences;
-
+  late final pulumi.Output<StackSetInstanceOperationPreferences?> operationPreferences;
   /// Organizational unit ID in which the stack is deployed.
   late final pulumi.Output<String> organizationalUnitId;
-
   /// Key-value map of input parameters to override from the StackSet for this Instance.
   late final pulumi.Output<Map<String, String>?> parameterOverrides;
-
   /// Target AWS Region to create a Stack based on the StackSet. Defaults to current region. Use `stack_set_instance_region` instead.
   late final pulumi.Output<String> region;
-
   /// During resource destroy, remove Instance from StackSet while keeping the Stack and its associated resources. Must be enabled in the state _before_ destroy operation to take effect. You cannot reassociate a retained Stack or add an existing, saved Stack to a new StackSet. Defaults to `false`.
   late final pulumi.Output<bool?> retainStack;
-
   /// Stack identifier.
   late final pulumi.Output<String> stackId;
-
   /// List of stack instances created from an organizational unit deployment target. This will only be populated when `deployment_targets` is set. See `stack_instance_summaries`.
   late final pulumi.Output<List<Map<String, dynamic>>> stackInstanceSummaries;
-
   /// Target AWS Region to create a Stack based on the StackSet. Defaults to current region.
   late final pulumi.Output<String> stackSetInstanceRegion;
-
   /// Name of the StackSet.
   late final pulumi.Output<String> stackSetName;
 
@@ -628,44 +615,21 @@ class StackSetInstance extends pulumi.CustomResource {
     StackSetInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cloudformation/stackSetInstance:StackSetInstance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cloudformation/stackSetInstance:StackSetInstance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     callAs = registerOutput<String?>('callAs');
-    deploymentTargets = registerOutput<StackSetInstanceDeploymentTargets?>(
-      'deploymentTargets',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return StackSetInstanceDeploymentTargets.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    operationPreferences =
-        registerOutput<StackSetInstanceOperationPreferences?>(
-          'operationPreferences',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return StackSetInstanceOperationPreferences.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    deploymentTargets = registerOutput<StackSetInstanceDeploymentTargets?>('deploymentTargets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StackSetInstanceDeploymentTargets.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    operationPreferences = registerOutput<StackSetInstanceOperationPreferences?>('operationPreferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StackSetInstanceOperationPreferences.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     organizationalUnitId = registerOutput<String>('organizationalUnitId');
-    parameterOverrides = registerOutput<Map<String, String>?>(
-      'parameterOverrides',
-    );
+    parameterOverrides = registerOutput<Map<String, String>?>('parameterOverrides');
     region = registerOutput<String>('region');
     retainStack = registerOutput<bool?>('retainStack');
     stackId = registerOutput<String>('stackId');
-    stackInstanceSummaries = registerOutput<List<Map<String, dynamic>>>(
-      'stackInstanceSummaries',
-    );
+    stackInstanceSummaries = registerOutput<List<Map<String, dynamic>>>('stackInstanceSummaries');
     stackSetInstanceRegion = registerOutput<String>('stackSetInstanceRegion');
     stackSetName = registerOutput<String>('stackSetName');
   }
@@ -688,44 +652,21 @@ class StackSetInstance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cloudformation/stackSetInstance:StackSetInstance',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cloudformation/stackSetInstance:StackSetInstance',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     callAs = registerOutput<String?>('callAs');
-    deploymentTargets = registerOutput<StackSetInstanceDeploymentTargets?>(
-      'deploymentTargets',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return StackSetInstanceDeploymentTargets.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    operationPreferences =
-        registerOutput<StackSetInstanceOperationPreferences?>(
-          'operationPreferences',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return StackSetInstanceOperationPreferences.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    deploymentTargets = registerOutput<StackSetInstanceDeploymentTargets?>('deploymentTargets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StackSetInstanceDeploymentTargets.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    operationPreferences = registerOutput<StackSetInstanceOperationPreferences?>('operationPreferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StackSetInstanceOperationPreferences.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     organizationalUnitId = registerOutput<String>('organizationalUnitId');
-    parameterOverrides = registerOutput<Map<String, String>?>(
-      'parameterOverrides',
-    );
+    parameterOverrides = registerOutput<Map<String, String>?>('parameterOverrides');
     region = registerOutput<String>('region');
     retainStack = registerOutput<bool?>('retainStack');
     stackId = registerOutput<String>('stackId');
-    stackInstanceSummaries = registerOutput<List<Map<String, dynamic>>>(
-      'stackInstanceSummaries',
-    );
+    stackInstanceSummaries = registerOutput<List<Map<String, dynamic>>>('stackInstanceSummaries');
     stackSetInstanceRegion = registerOutput<String>('stackSetInstanceRegion');
     stackSetName = registerOutput<String>('stackSetName');
   }

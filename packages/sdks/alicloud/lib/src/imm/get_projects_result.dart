@@ -28,11 +28,7 @@ class GetProjectsResult {
       'id': id,
       'ids': ids,
       'outputFile': ?outputFile,
-      'projects':
-          pulumi.Input.encodeList<GetProjectsProject, Map<String, dynamic>>(
-            projects,
-            (value) => value.toMap(),
-          ),
+      'projects': pulumi.Input.encodeList<GetProjectsProject, Map<String, dynamic>>(projects, (value) => value.toMap()),
     };
   }
 
@@ -40,16 +36,9 @@ class GetProjectsResult {
     return GetProjectsResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      projects: pulumi.Input.decodeList<GetProjectsProject>(
-        map['projects']!,
-        (value) =>
-            GetProjectsProject.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      projects: pulumi.Input.decodeList<GetProjectsProject>(map['projects']!, (value) => GetProjectsProject.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

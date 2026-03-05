@@ -8,19 +8,20 @@ class SystraceSetup {
 
   /// Creates a new [SystraceSetup].
   /// [durationSeconds] Systrace duration in seconds. Should be between 1 and 30 seconds. 0 disables systrace.
-  SystraceSetup({this.durationSeconds});
+  SystraceSetup({
+    this.durationSeconds,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'durationSeconds': ?durationSeconds};
+    return <String, dynamic>{
+      'durationSeconds': ?durationSeconds,
+    };
   }
 
   factory SystraceSetup.fromMap(Map<String, dynamic> map) {
     return SystraceSetup(
-      durationSeconds: (() {
-        final guardedValue = map['durationSeconds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      durationSeconds: (() { final guardedValue = map['durationSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

@@ -16,3 +16,4 @@ enum RuleCacheBehavior {
     throw ArgumentError('Unknown RuleCacheBehavior value: $value');
   }
 }
+

@@ -15,3 +15,4 @@ enum LimitCpuForMigration {
     throw ArgumentError('Unknown LimitCpuForMigration value: $value');
   }
 }
+

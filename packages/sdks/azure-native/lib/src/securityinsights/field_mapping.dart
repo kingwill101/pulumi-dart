@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FieldMapping {
   /// the column name to be mapped to the identifier
   final pulumi.Input<String>? columnName;
-
   /// the V3 identifier of the entity
   final pulumi.Input<String>? identifier;
 
   /// Creates a new [FieldMapping].
   /// [columnName] the column name to be mapped to the identifier
   /// [identifier] the V3 identifier of the entity
-  FieldMapping({this.columnName, this.identifier});
+  FieldMapping({
+    this.columnName,
+    this.identifier,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class FieldMapping {
 
   factory FieldMapping.fromMap(Map<String, dynamic> map) {
     return FieldMapping(
-      columnName: (() {
-        final guardedValue = map['columnName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      identifier: (() {
-        final guardedValue = map['identifier'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      columnName: (() { final guardedValue = map['columnName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      identifier: (() { final guardedValue = map['identifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -1,24 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getDps.
 class GetDpsResult {
   /// The allocation policy of the IoT Device Provisioning Service.
   final String allocationPolicy;
-
   /// The device endpoint of the IoT Device Provisioning Service.
   final String deviceProvisioningHostName;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The unique identifier of the IoT Device Provisioning Service.
   final String idScope;
-
   /// Specifies the supported Azure location where the IoT Device Provisioning Service exists.
   final String location;
   final String name;
   final String resourceGroupName;
-
   /// The service endpoint of the IoT Device Provisioning Service.
   final String serviceOperationsHostName;
   final Map<String, String>? tags;
@@ -69,11 +65,8 @@ class GetDpsResult {
       name: map['name'] as String,
       resourceGroupName: map['resourceGroupName'] as String,
       serviceOperationsHostName: map['serviceOperationsHostName'] as String,
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }
 }
+

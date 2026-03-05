@@ -368,27 +368,20 @@ import 'hci_network_interface_state.dart';
 class HciNetworkInterface extends pulumi.CustomResource {
   /// The ID of the Custom Location where the Azure Stack HCI Network Interface should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> customLocationId;
-
   /// A list of IPv4 addresses of DNS servers available to VMs deployed in the Network Interface. Changing this forces a new resource to be created.
   late final pulumi.Output<List<String>?> dnsServers;
-
   /// An `ip_configuration` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<HciNetworkInterfaceIpConfiguration> ipConfiguration;
-
   /// The Azure Region where the Azure Stack HCI Network Interface should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The MAC address of the Network Interface. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** If `mac_address` is not specified, it will be assigned by the server. If you experience a diff you may need to add this to `ignore_changes`.
   late final pulumi.Output<String?> macAddress;
-
   /// The name which should be used for this Azure Stack HCI Network Interface. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the Resource Group where the Azure Stack HCI Network Interface should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags which should be assigned to the Azure Stack HCI Network Interface.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -401,23 +394,14 @@ class HciNetworkInterface extends pulumi.CustomResource {
     HciNetworkInterfaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:stack/hciNetworkInterface:HciNetworkInterface',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:stack/hciNetworkInterface:HciNetworkInterface',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     customLocationId = registerOutput<String>('customLocationId');
     dnsServers = registerOutput<List<String>?>('dnsServers');
-    ipConfiguration = registerOutput<HciNetworkInterfaceIpConfiguration>(
-      'ipConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HciNetworkInterfaceIpConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    ipConfiguration = registerOutput<HciNetworkInterfaceIpConfiguration>('ipConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HciNetworkInterfaceIpConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     macAddress = registerOutput<String?>('macAddress');
     this.name = registerOutput<String>('name');
@@ -443,23 +427,14 @@ class HciNetworkInterface extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:stack/hciNetworkInterface:HciNetworkInterface',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:stack/hciNetworkInterface:HciNetworkInterface',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     customLocationId = registerOutput<String>('customLocationId');
     dnsServers = registerOutput<List<String>?>('dnsServers');
-    ipConfiguration = registerOutput<HciNetworkInterfaceIpConfiguration>(
-      'ipConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return HciNetworkInterfaceIpConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    ipConfiguration = registerOutput<HciNetworkInterfaceIpConfiguration>('ipConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HciNetworkInterfaceIpConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     macAddress = registerOutput<String?>('macAddress');
     this.name = registerOutput<String>('name');

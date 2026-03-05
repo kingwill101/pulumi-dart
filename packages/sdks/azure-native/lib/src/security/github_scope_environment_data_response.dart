@@ -10,10 +10,14 @@ class GithubScopeEnvironmentDataResponse {
 
   /// Creates a new [GithubScopeEnvironmentDataResponse].
   /// [environmentType] The type of the environment data.
-  GithubScopeEnvironmentDataResponse({required this.environmentType});
+  GithubScopeEnvironmentDataResponse({
+    required this.environmentType,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'environmentType': environmentType};
+    return <String, dynamic>{
+      'environmentType': environmentType,
+    };
   }
 
   factory GithubScopeEnvironmentDataResponse.fromMap(Map<String, dynamic> map) {
@@ -22,3 +26,4 @@ class GithubScopeEnvironmentDataResponse {
     );
   }
 }
+

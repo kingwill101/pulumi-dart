@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SSHKeyResponse {
   /// Certificate associated with the public key if the key is signed.
   final pulumi.Input<String> certificate;
-
   /// Certificate creation timestamp (Unix).
   final pulumi.Input<double> creationTimeStamp;
-
   /// Certificate expiration timestamp (Unix).
   final pulumi.Input<double> expirationTimeStamp;
-
   /// Private Key.
   final pulumi.Input<String> privateKey;
-
   /// Public Key.
   final pulumi.Input<String> publicKey;
 
@@ -46,14 +42,11 @@ class SSHKeyResponse {
   factory SSHKeyResponse.fromMap(Map<String, dynamic> map) {
     return SSHKeyResponse(
       certificate: pulumi.Input.fromValue(map['certificate'] as String),
-      creationTimeStamp: pulumi.Input.fromValue(
-        map['creationTimeStamp'] as double,
-      ),
-      expirationTimeStamp: pulumi.Input.fromValue(
-        map['expirationTimeStamp'] as double,
-      ),
+      creationTimeStamp: pulumi.Input.fromValue(map['creationTimeStamp'] as double),
+      expirationTimeStamp: pulumi.Input.fromValue(map['expirationTimeStamp'] as double),
       privateKey: pulumi.Input.fromValue(map['privateKey'] as String),
       publicKey: pulumi.Input.fromValue(map['publicKey'] as String),
     );
   }
 }
+

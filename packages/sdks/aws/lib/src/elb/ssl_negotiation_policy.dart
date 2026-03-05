@@ -366,22 +366,17 @@ import 'ssl_negotiation_policy_state.dart';
 class SslNegotiationPolicy extends pulumi.CustomResource {
   /// An SSL Negotiation policy attribute. Each has two properties:
   late final pulumi.Output<List<Map<String, dynamic>>?> attributes;
-
   /// The load balancer port to which the policy
   /// should be applied. This must be an active listener on the load
   /// balancer.
   late final pulumi.Output<int> lbPort;
-
   /// The load balancer to which the policy
   /// should be attached.
   late final pulumi.Output<String> loadBalancer;
-
   /// The name of the SSL negotiation policy.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Map of arbitrary keys and values that, when changed, will trigger a redeployment.
   ///
   /// To set your attributes, please see the [AWS Elastic Load Balancing Developer Guide](http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/elb-security-policy-table.html) for a listing of the supported SSL protocols, SSL options, and SSL ciphers.
@@ -398,11 +393,11 @@ class SslNegotiationPolicy extends pulumi.CustomResource {
     SslNegotiationPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:elb/sslNegotiationPolicy:SslNegotiationPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:elb/sslNegotiationPolicy:SslNegotiationPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     attributes = registerOutput<List<Map<String, dynamic>>?>('attributes');
     lbPort = registerOutput<int>('lbPort');
     loadBalancer = registerOutput<String>('loadBalancer');
@@ -429,11 +424,11 @@ class SslNegotiationPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:elb/sslNegotiationPolicy:SslNegotiationPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:elb/sslNegotiationPolicy:SslNegotiationPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     attributes = registerOutput<List<Map<String, dynamic>>?>('attributes');
     lbPort = registerOutput<int>('lbPort');
     loadBalancer = registerOutput<String>('loadBalancer');

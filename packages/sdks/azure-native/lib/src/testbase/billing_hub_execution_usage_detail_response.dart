@@ -69,80 +69,23 @@ class BillingHubExecutionUsageDetailResponse {
     };
   }
 
-  factory BillingHubExecutionUsageDetailResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BillingHubExecutionUsageDetailResponse.fromMap(Map<String, dynamic> map) {
     return BillingHubExecutionUsageDetailResponse(
-      applicationName: (() {
-        final guardedValue = map['applicationName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      applicationVersion: (() {
-        final guardedValue = map['applicationVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      billedCharges: (() {
-        final guardedValue = map['billedCharges'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      endTimeStamp: (() {
-        final guardedValue = map['endTimeStamp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      executionRequestId: (() {
-        final guardedValue = map['executionRequestId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      meterId: (() {
-        final guardedValue = map['meterId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      osBuild: (() {
-        final guardedValue = map['osBuild'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      release: (() {
-        final guardedValue = map['release'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sku: (() {
-        final guardedValue = map['sku'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      startTimeStamp: (() {
-        final guardedValue = map['startTimeStamp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      testType: (() {
-        final guardedValue = map['testType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      updateType: (() {
-        final guardedValue = map['updateType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      usedBillableHours: (() {
-        final guardedValue = map['usedBillableHours'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      usedFreeHours: (() {
-        final guardedValue = map['usedFreeHours'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      applicationName: (() { final guardedValue = map['applicationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      applicationVersion: (() { final guardedValue = map['applicationVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      billedCharges: (() { final guardedValue = map['billedCharges']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      endTimeStamp: (() { final guardedValue = map['endTimeStamp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      executionRequestId: (() { final guardedValue = map['executionRequestId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      meterId: (() { final guardedValue = map['meterId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      osBuild: (() { final guardedValue = map['osBuild']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      release: (() { final guardedValue = map['release']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      startTimeStamp: (() { final guardedValue = map['startTimeStamp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      testType: (() { final guardedValue = map['testType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      updateType: (() { final guardedValue = map['updateType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      usedBillableHours: (() { final guardedValue = map['usedBillableHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      usedFreeHours: (() { final guardedValue = map['usedFreeHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

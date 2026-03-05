@@ -13,20 +13,23 @@ class GetLicenseArgs {
   /// Creates a new [GetLicenseArgs].
   /// [license] Required.
   /// [project] Optional.
-  GetLicenseArgs({required this.license, this.project});
+  GetLicenseArgs({
+    required this.license,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'license': license, 'project': ?project};
+    return <String, dynamic>{
+      'license': license,
+      'project': ?project,
+    };
   }
 
   factory GetLicenseArgs.fromMap(Map<String, dynamic> map) {
     return GetLicenseArgs(
       license: pulumi.Input.fromValue(map['license'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

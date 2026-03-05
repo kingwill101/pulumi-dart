@@ -9,10 +9,16 @@ class GetShareExportLocation {
   /// Creates a new [GetShareExportLocation].
   /// [path] Required.
   /// [preferred] Required.
-  GetShareExportLocation({required this.path, required this.preferred});
+  GetShareExportLocation({
+    required this.path,
+    required this.preferred,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'path': path, 'preferred': preferred};
+    return <String, dynamic>{
+      'path': path,
+      'preferred': preferred,
+    };
   }
 
   factory GetShareExportLocation.fromMap(Map<String, dynamic> map) {
@@ -22,3 +28,4 @@ class GetShareExportLocation {
     );
   }
 }
+

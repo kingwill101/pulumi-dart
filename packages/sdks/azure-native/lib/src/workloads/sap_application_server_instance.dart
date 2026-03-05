@@ -274,67 +274,46 @@ import 'system_data_response.dart';
 class SapApplicationServerInstance extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Application server instance dispatcher status.
   late final pulumi.Output<String> dispatcherStatus;
-
   /// Defines the Application Instance errors.
   late final pulumi.Output<SAPVirtualInstanceErrorResponse> errors;
-
   /// Application server instance gateway Port.
   late final pulumi.Output<double> gatewayPort;
-
   /// Defines the health of SAP Instances.
   late final pulumi.Output<String> health;
-
   /// Application server instance SAP hostname.
   late final pulumi.Output<String> hostname;
-
   /// Application server instance ICM HTTP Port.
   late final pulumi.Output<double> icmHttpPort;
-
   /// Application server instance ICM HTTPS Port.
   late final pulumi.Output<double> icmHttpsPort;
-
   /// Application server Instance Number.
   late final pulumi.Output<String> instanceNo;
-
   /// Application server instance SAP IP Address.
   late final pulumi.Output<String> ipAddress;
-
   /// Application server instance SAP Kernel Patch level.
   late final pulumi.Output<String> kernelPatch;
-
   /// Application server instance SAP Kernel Version.
   late final pulumi.Output<String> kernelVersion;
-
   /// The Load Balancer details such as LoadBalancer ID attached to Application Server Virtual Machines
   late final pulumi.Output<LoadBalancerDetailsResponse> loadBalancerDetails;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Defines the provisioning states.
   late final pulumi.Output<String> provisioningState;
-
   /// Defines the SAP Instance status.
   late final pulumi.Output<String> status;
-
   /// Application server Subnet.
   late final pulumi.Output<String> subnet;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// The list of virtual machines.
   late final pulumi.Output<List<Map<String, dynamic>>> vmDetails;
 
@@ -347,23 +326,14 @@ class SapApplicationServerInstance extends pulumi.CustomResource {
     SapApplicationServerInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:workloads:SapApplicationServerInstance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:workloads:SapApplicationServerInstance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     dispatcherStatus = registerOutput<String>('dispatcherStatus');
-    errors = registerOutput<SAPVirtualInstanceErrorResponse>(
-      'errors',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SAPVirtualInstanceErrorResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    errors = registerOutput<SAPVirtualInstanceErrorResponse>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SAPVirtualInstanceErrorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     gatewayPort = registerOutput<double>('gatewayPort');
     health = registerOutput<String>('health');
     hostname = registerOutput<String>('hostname');
@@ -373,31 +343,13 @@ class SapApplicationServerInstance extends pulumi.CustomResource {
     ipAddress = registerOutput<String>('ipAddress');
     kernelPatch = registerOutput<String>('kernelPatch');
     kernelVersion = registerOutput<String>('kernelVersion');
-    loadBalancerDetails = registerOutput<LoadBalancerDetailsResponse>(
-      'loadBalancerDetails',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LoadBalancerDetailsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    loadBalancerDetails = registerOutput<LoadBalancerDetailsResponse>('loadBalancerDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     status = registerOutput<String>('status');
     subnet = registerOutput<String>('subnet');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     vmDetails = registerOutput<List<Map<String, dynamic>>>('vmDetails');

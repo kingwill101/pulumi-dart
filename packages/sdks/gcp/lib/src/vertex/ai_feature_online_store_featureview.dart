@@ -2840,57 +2840,39 @@ import 'ai_feature_online_store_featureview_vector_search_config.dart';
 class AiFeatureOnlineStoreFeatureview extends pulumi.CustomResource {
   /// Configures how data is supposed to be extracted from a BigQuery source to be loaded onto the FeatureOnlineStore.
   /// Structure is documented below.
-  late final pulumi.Output<AiFeatureOnlineStoreFeatureviewBigQuerySource?>
-  bigQuerySource;
-
+  late final pulumi.Output<AiFeatureOnlineStoreFeatureviewBigQuerySource?> bigQuerySource;
   /// The timestamp of when the featureOnlinestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   late final pulumi.Output<String> createTime;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// The name of the FeatureOnlineStore to use for the featureview.
   late final pulumi.Output<String> featureOnlineStore;
-
   /// Configures the features from a Feature Registry source that need to be loaded onto the FeatureOnlineStore.
   /// Structure is documented below.
-  late final pulumi.Output<
-    AiFeatureOnlineStoreFeatureviewFeatureRegistrySource?
-  >
-  featureRegistrySource;
-
+  late final pulumi.Output<AiFeatureOnlineStoreFeatureviewFeatureRegistrySource?> featureRegistrySource;
   /// A set of key/value label pairs to assign to this FeatureView.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// Name of the FeatureView. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// The region for the resource. It should be the same as the featureonlinestore region.
   late final pulumi.Output<String> region;
-
   /// Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
   /// Structure is documented below.
-  late final pulumi.Output<AiFeatureOnlineStoreFeatureviewSyncConfig?>
-  syncConfig;
-
+  late final pulumi.Output<AiFeatureOnlineStoreFeatureviewSyncConfig?> syncConfig;
   /// The timestamp of when the featureOnlinestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   late final pulumi.Output<String> updateTime;
-
   /// Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
   /// Structure is documented below.
-  late final pulumi.Output<AiFeatureOnlineStoreFeatureviewVectorSearchConfig?>
-  vectorSearchConfig;
+  late final pulumi.Output<AiFeatureOnlineStoreFeatureviewVectorSearchConfig?> vectorSearchConfig;
 
   /// Creates a new [AiFeatureOnlineStoreFeatureview].
   /// [name] The Pulumi resource name.
@@ -2901,63 +2883,24 @@ class AiFeatureOnlineStoreFeatureview extends pulumi.CustomResource {
     AiFeatureOnlineStoreFeatureviewArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    bigQuerySource =
-        registerOutput<AiFeatureOnlineStoreFeatureviewBigQuerySource?>(
-          'bigQuerySource',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AiFeatureOnlineStoreFeatureviewBigQuerySource.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    bigQuerySource = registerOutput<AiFeatureOnlineStoreFeatureviewBigQuerySource?>('bigQuerySource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiFeatureOnlineStoreFeatureviewBigQuerySource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     featureOnlineStore = registerOutput<String>('featureOnlineStore');
-    featureRegistrySource =
-        registerOutput<AiFeatureOnlineStoreFeatureviewFeatureRegistrySource?>(
-          'featureRegistrySource',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AiFeatureOnlineStoreFeatureviewFeatureRegistrySource.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    featureRegistrySource = registerOutput<AiFeatureOnlineStoreFeatureviewFeatureRegistrySource?>('featureRegistrySource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiFeatureOnlineStoreFeatureviewFeatureRegistrySource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     region = registerOutput<String>('region');
-    syncConfig = registerOutput<AiFeatureOnlineStoreFeatureviewSyncConfig?>(
-      'syncConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AiFeatureOnlineStoreFeatureviewSyncConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    syncConfig = registerOutput<AiFeatureOnlineStoreFeatureviewSyncConfig?>('syncConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiFeatureOnlineStoreFeatureviewSyncConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updateTime = registerOutput<String>('updateTime');
-    vectorSearchConfig =
-        registerOutput<AiFeatureOnlineStoreFeatureviewVectorSearchConfig?>(
-          'vectorSearchConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AiFeatureOnlineStoreFeatureviewVectorSearchConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    vectorSearchConfig = registerOutput<AiFeatureOnlineStoreFeatureviewVectorSearchConfig?>('vectorSearchConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiFeatureOnlineStoreFeatureviewVectorSearchConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [AiFeatureOnlineStoreFeatureview] resource's state with the given [name] and [id].
@@ -2978,62 +2921,23 @@ class AiFeatureOnlineStoreFeatureview extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    bigQuerySource =
-        registerOutput<AiFeatureOnlineStoreFeatureviewBigQuerySource?>(
-          'bigQuerySource',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AiFeatureOnlineStoreFeatureviewBigQuerySource.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    bigQuerySource = registerOutput<AiFeatureOnlineStoreFeatureviewBigQuerySource?>('bigQuerySource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiFeatureOnlineStoreFeatureviewBigQuerySource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     featureOnlineStore = registerOutput<String>('featureOnlineStore');
-    featureRegistrySource =
-        registerOutput<AiFeatureOnlineStoreFeatureviewFeatureRegistrySource?>(
-          'featureRegistrySource',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AiFeatureOnlineStoreFeatureviewFeatureRegistrySource.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    featureRegistrySource = registerOutput<AiFeatureOnlineStoreFeatureviewFeatureRegistrySource?>('featureRegistrySource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiFeatureOnlineStoreFeatureviewFeatureRegistrySource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     region = registerOutput<String>('region');
-    syncConfig = registerOutput<AiFeatureOnlineStoreFeatureviewSyncConfig?>(
-      'syncConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AiFeatureOnlineStoreFeatureviewSyncConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    syncConfig = registerOutput<AiFeatureOnlineStoreFeatureviewSyncConfig?>('syncConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiFeatureOnlineStoreFeatureviewSyncConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updateTime = registerOutput<String>('updateTime');
-    vectorSearchConfig =
-        registerOutput<AiFeatureOnlineStoreFeatureviewVectorSearchConfig?>(
-          'vectorSearchConfig',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AiFeatureOnlineStoreFeatureviewVectorSearchConfig.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    vectorSearchConfig = registerOutput<AiFeatureOnlineStoreFeatureviewVectorSearchConfig?>('vectorSearchConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiFeatureOnlineStoreFeatureviewVectorSearchConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

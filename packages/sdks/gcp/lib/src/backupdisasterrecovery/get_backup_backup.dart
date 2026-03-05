@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBackupBackup {
   /// Id of the requesting object, Backup.
   final pulumi.Input<String> backupId;
-
   /// The ID of the Backup Vault of the Data Source in which the Backup belongs.
   final pulumi.Input<String> backupVaultId;
-
   /// The time when the backup was created.
   final pulumi.Input<String> createTime;
-
   /// The ID of the Data Source in which the Backup belongs.
   final pulumi.Input<String> dataSourceId;
-
   /// The location in which the Backup belongs.
   final pulumi.Input<String> location;
-
   /// Name of the resource.
   final pulumi.Input<String> name;
 
@@ -59,3 +54,4 @@ class GetBackupBackup {
     );
   }
 }
+

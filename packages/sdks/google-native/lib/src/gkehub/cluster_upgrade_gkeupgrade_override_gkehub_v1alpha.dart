@@ -8,7 +8,6 @@ import 'cluster_upgrade_post_conditions_gkehub_v1alpha.dart';
 class ClusterUpgradeGKEUpgradeOverrideGkehubV1alpha {
   /// Post conditions to override for the specified upgrade (name + version). Required.
   final pulumi.Input<ClusterUpgradePostConditionsGkehubV1alpha> postConditions;
-
   /// Which upgrade to override. Required.
   final pulumi.Input<ClusterUpgradeGKEUpgradeGkehubV1alpha> upgrade;
 
@@ -22,33 +21,16 @@ class ClusterUpgradeGKEUpgradeOverrideGkehubV1alpha {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'postConditions':
-          pulumi.Input.mapInputValue<
-            ClusterUpgradePostConditionsGkehubV1alpha,
-            Map<String, dynamic>
-          >(postConditions, (value) => value.toMap()),
-      'upgrade':
-          pulumi.Input.mapInputValue<
-            ClusterUpgradeGKEUpgradeGkehubV1alpha,
-            Map<String, dynamic>
-          >(upgrade, (value) => value.toMap()),
+      'postConditions': pulumi.Input.mapInputValue<ClusterUpgradePostConditionsGkehubV1alpha, Map<String, dynamic>>(postConditions, (value) => value.toMap()),
+      'upgrade': pulumi.Input.mapInputValue<ClusterUpgradeGKEUpgradeGkehubV1alpha, Map<String, dynamic>>(upgrade, (value) => value.toMap()),
     };
   }
 
-  factory ClusterUpgradeGKEUpgradeOverrideGkehubV1alpha.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterUpgradeGKEUpgradeOverrideGkehubV1alpha.fromMap(Map<String, dynamic> map) {
     return ClusterUpgradeGKEUpgradeOverrideGkehubV1alpha(
-      postConditions: pulumi.Input.fromValue(
-        ClusterUpgradePostConditionsGkehubV1alpha.fromMap(
-          (map['postConditions']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      upgrade: pulumi.Input.fromValue(
-        ClusterUpgradeGKEUpgradeGkehubV1alpha.fromMap(
-          (map['upgrade']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      postConditions: pulumi.Input.fromValue(ClusterUpgradePostConditionsGkehubV1alpha.fromMap((map['postConditions']! as Map).cast<String, dynamic>())),
+      upgrade: pulumi.Input.fromValue(ClusterUpgradeGKEUpgradeGkehubV1alpha.fromMap((map['upgrade']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

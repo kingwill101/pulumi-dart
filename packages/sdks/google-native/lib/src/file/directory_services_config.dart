@@ -10,29 +10,20 @@ class DirectoryServicesConfig {
 
   /// Creates a new [DirectoryServicesConfig].
   /// [managedActiveDirectory] Configuration for Managed Service for Microsoft Active Directory.
-  DirectoryServicesConfig({this.managedActiveDirectory});
+  DirectoryServicesConfig({
+    this.managedActiveDirectory,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'managedActiveDirectory':
-          ?pulumi.Input.mapOptionalInputValue<
-            ManagedActiveDirectoryConfig,
-            Map<String, dynamic>
-          >(managedActiveDirectory, (value) => value.toMap()),
+      'managedActiveDirectory': ?pulumi.Input.mapOptionalInputValue<ManagedActiveDirectoryConfig, Map<String, dynamic>>(managedActiveDirectory, (value) => value.toMap()),
     };
   }
 
   factory DirectoryServicesConfig.fromMap(Map<String, dynamic> map) {
     return DirectoryServicesConfig(
-      managedActiveDirectory: (() {
-        final guardedValue = map['managedActiveDirectory'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ManagedActiveDirectoryConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      managedActiveDirectory: (() { final guardedValue = map['managedActiveDirectory']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedActiveDirectoryConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

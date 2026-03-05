@@ -9,19 +9,20 @@ class DeviceTypeEnumValue {
 
   /// Creates a new [DeviceTypeEnumValue].
   /// [value] Property value
-  DeviceTypeEnumValue({this.value});
+  DeviceTypeEnumValue({
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': ?value};
+    return <String, dynamic>{
+      'value': ?value,
+    };
   }
 
   factory DeviceTypeEnumValue.fromMap(Map<String, dynamic> map) {
     return DeviceTypeEnumValue(
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

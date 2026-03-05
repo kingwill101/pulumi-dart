@@ -9,7 +9,9 @@ class ChangeTrackingConfigurationResponse {
 
   /// Creates a new [ChangeTrackingConfigurationResponse].
   /// [logAnalyticsWorkspaceId] Log analytics workspace resource ID used by the service.
-  ChangeTrackingConfigurationResponse({required this.logAnalyticsWorkspaceId});
+  ChangeTrackingConfigurationResponse({
+    required this.logAnalyticsWorkspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -17,13 +19,10 @@ class ChangeTrackingConfigurationResponse {
     };
   }
 
-  factory ChangeTrackingConfigurationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ChangeTrackingConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ChangeTrackingConfigurationResponse(
-      logAnalyticsWorkspaceId: pulumi.Input.fromValue(
-        map['logAnalyticsWorkspaceId'] as String,
-      ),
+      logAnalyticsWorkspaceId: pulumi.Input.fromValue(map['logAnalyticsWorkspaceId'] as String),
     );
   }
 }
+

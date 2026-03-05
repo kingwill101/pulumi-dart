@@ -171,34 +171,24 @@ import 'workload_network_dns_zone_args.dart';
 class WorkloadNetworkDnsZone extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Display name of the DNS Zone.
   late final pulumi.Output<String?> displayName;
-
   /// DNS Server IP array of the DNS Zone.
   late final pulumi.Output<List<String>?> dnsServerIps;
-
   /// Number of DNS Services using the DNS zone.
   late final pulumi.Output<double?> dnsServices;
-
   /// Domain names of the DNS Zone.
   late final pulumi.Output<List<String>?> domain;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The provisioning state
   late final pulumi.Output<String> provisioningState;
-
   /// NSX revision number.
   late final pulumi.Output<double?> revision;
-
   /// Source IP of the DNS Zone.
   late final pulumi.Output<String?> sourceIp;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -211,11 +201,11 @@ class WorkloadNetworkDnsZone extends pulumi.CustomResource {
     WorkloadNetworkDnsZoneArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:avs:WorkloadNetworkDnsZone',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:avs:WorkloadNetworkDnsZone',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     displayName = registerOutput<String?>('displayName');
     dnsServerIps = registerOutput<List<String>?>('dnsServerIps');
@@ -225,16 +215,7 @@ class WorkloadNetworkDnsZone extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     revision = registerOutput<double?>('revision');
     sourceIp = registerOutput<String?>('sourceIp');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

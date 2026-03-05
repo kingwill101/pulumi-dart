@@ -9,21 +9,20 @@ class CFNScanEc2InstanceWithFindingsConfiguration {
 
   /// Creates a new [CFNScanEc2InstanceWithFindingsConfiguration].
   /// [ebsVolumes] Property ebsVolumes
-  CFNScanEc2InstanceWithFindingsConfiguration({this.ebsVolumes});
+  CFNScanEc2InstanceWithFindingsConfiguration({
+    this.ebsVolumes,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'ebsVolumes': ?ebsVolumes};
+    return <String, dynamic>{
+      'ebsVolumes': ?ebsVolumes,
+    };
   }
 
-  factory CFNScanEc2InstanceWithFindingsConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CFNScanEc2InstanceWithFindingsConfiguration.fromMap(Map<String, dynamic> map) {
     return CFNScanEc2InstanceWithFindingsConfiguration(
-      ebsVolumes: (() {
-        final guardedValue = map['ebsVolumes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      ebsVolumes: (() { final guardedValue = map['ebsVolumes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

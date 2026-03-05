@@ -8,17 +8,13 @@ enum ReservationAffinityConsumeReservationTypeComputeV1 {
   const ReservationAffinityConsumeReservationTypeComputeV1(this.wireValue);
   final String wireValue;
 
-  static ReservationAffinityConsumeReservationTypeComputeV1 fromValue(
-    String value,
-  ) {
-    for (final item
-        in ReservationAffinityConsumeReservationTypeComputeV1.values) {
+  static ReservationAffinityConsumeReservationTypeComputeV1 fromValue(String value) {
+    for (final item in ReservationAffinityConsumeReservationTypeComputeV1.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ReservationAffinityConsumeReservationTypeComputeV1 value: $value',
-    );
+    throw ArgumentError('Unknown ReservationAffinityConsumeReservationTypeComputeV1 value: $value');
   }
 }
+

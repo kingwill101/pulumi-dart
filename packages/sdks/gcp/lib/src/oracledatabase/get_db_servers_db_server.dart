@@ -11,37 +11,23 @@ class GetDbServersDbServer {
   /// Creates a new [GetDbServersDbServer].
   /// [displayName] The Display name
   /// [properties] Required.
-  GetDbServersDbServer({required this.displayName, required this.properties});
+  GetDbServersDbServer({
+    required this.displayName,
+    required this.properties,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'displayName': displayName,
-      'properties':
-          pulumi.Input.mapInputValue<
-            List<GetDbServersDbServerProperty>,
-            List<Map<String, dynamic>>
-          >(
-            properties,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetDbServersDbServerProperty,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'properties': pulumi.Input.mapInputValue<List<GetDbServersDbServerProperty>, List<Map<String, dynamic>>>(properties, (value) => pulumi.Input.encodeList<GetDbServersDbServerProperty, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetDbServersDbServer.fromMap(Map<String, dynamic> map) {
     return GetDbServersDbServer(
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
-      properties: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetDbServersDbServerProperty>(
-          map['properties']!,
-          (value) => GetDbServersDbServerProperty.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      properties: pulumi.Input.fromValue(pulumi.Input.decodeList<GetDbServersDbServerProperty>(map['properties']!, (value) => GetDbServersDbServerProperty.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

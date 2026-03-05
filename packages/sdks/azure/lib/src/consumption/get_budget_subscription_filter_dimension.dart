@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBudgetSubscriptionFilterDimension {
   /// The name of this Consumption Budget.
   final pulumi.Input<String> name;
-
   /// The operator to used for comparison.
   final pulumi.Input<String> operator;
-
   /// A list of values for the tag.
   final pulumi.Input<List<String>> values;
 
@@ -30,9 +28,7 @@ class GetBudgetSubscriptionFilterDimension {
     };
   }
 
-  factory GetBudgetSubscriptionFilterDimension.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetBudgetSubscriptionFilterDimension.fromMap(Map<String, dynamic> map) {
     return GetBudgetSubscriptionFilterDimension(
       name: pulumi.Input.fromValue(map['name'] as String),
       operator: pulumi.Input.fromValue(map['operator'] as String),
@@ -40,3 +36,4 @@ class GetBudgetSubscriptionFilterDimension {
     );
   }
 }
+

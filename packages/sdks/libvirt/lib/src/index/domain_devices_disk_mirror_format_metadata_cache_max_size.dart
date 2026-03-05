@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainDevicesDiskMirrorFormatMetadataCacheMaxSize {
   /// Specifies the unit for the maximum size of the metadata cache in the data store format.
   final pulumi.Input<String>? unit;
-
   /// Sets the value for the maximum size of the metadata cache in the data store format configuration.
   final pulumi.Input<double> value;
 
@@ -18,19 +17,17 @@ class DomainDevicesDiskMirrorFormatMetadataCacheMaxSize {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'unit': ?unit, 'value': value};
+    return <String, dynamic>{
+      'unit': ?unit,
+      'value': value,
+    };
   }
 
-  factory DomainDevicesDiskMirrorFormatMetadataCacheMaxSize.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDevicesDiskMirrorFormatMetadataCacheMaxSize.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskMirrorFormatMetadataCacheMaxSize(
-      unit: (() {
-        final guardedValue = map['unit'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      unit: (() { final guardedValue = map['unit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       value: pulumi.Input.fromValue(map['value'] as double),
     );
   }
 }
+

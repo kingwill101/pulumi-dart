@@ -16,7 +16,6 @@ class ToolOpenApiToolTlsConfigCaCert {
   /// -extfile &lt;(printf "\nsubjectAltName='DNS:www.example.com'")
   /// A base64-encoded string.
   final pulumi.Input<String>? cert;
-
   /// (Output)
   /// The name of the allowed custom CA certificates. This
   /// can be used to disambiguate the custom CA certificates.
@@ -25,24 +24,23 @@ class ToolOpenApiToolTlsConfigCaCert {
   /// Creates a new [ToolOpenApiToolTlsConfigCaCert].
   /// [cert] (Output)
   /// [displayName] (Output)
-  ToolOpenApiToolTlsConfigCaCert({this.cert, this.displayName});
+  ToolOpenApiToolTlsConfigCaCert({
+    this.cert,
+    this.displayName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'cert': ?cert, 'displayName': ?displayName};
+    return <String, dynamic>{
+      'cert': ?cert,
+      'displayName': ?displayName,
+    };
   }
 
   factory ToolOpenApiToolTlsConfigCaCert.fromMap(Map<String, dynamic> map) {
     return ToolOpenApiToolTlsConfigCaCert(
-      cert: (() {
-        final guardedValue = map['cert'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      cert: (() { final guardedValue = map['cert']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

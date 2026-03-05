@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDataCentersArgs {
   /// The cluster id of dataCenters belongs to.
   final pulumi.Input<String> clusterId;
-
   /// The list of Cassandra data center ids.
   final pulumi.Input<List<String>>? ids;
-
   /// A regex string to apply to the cluster name.
   final pulumi.Input<String>? nameRegex;
-
   /// The name of file that can save the collection of data centers after running `pulumi preview`.
   final pulumi.Input<String>? outputFile;
 
@@ -43,21 +40,10 @@ class GetDataCentersArgs {
   factory GetDataCentersArgs.fromMap(Map<String, dynamic> map) {
     return GetDataCentersArgs(
       clusterId: pulumi.Input.fromValue(map['clusterId'] as String),
-      ids: (() {
-        final guardedValue = map['ids'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ids: (() { final guardedValue = map['ids']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

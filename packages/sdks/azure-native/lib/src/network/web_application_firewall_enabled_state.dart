@@ -12,8 +12,7 @@ enum WebApplicationFirewallEnabledState {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown WebApplicationFirewallEnabledState value: $value',
-    );
+    throw ArgumentError('Unknown WebApplicationFirewallEnabledState value: $value');
   }
 }
+

@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProfessionalServicePropertiesResponseTerm {
   /// The end date of the current term
   final pulumi.Input<String>? endDate;
-
   /// The start date of the current term
   final pulumi.Input<String>? startDate;
-
   /// The unit term eg P1M,P1Y,P2Y,P3Y meaning month,1year,2year,3year respectively
   final pulumi.Input<String>? termUnit;
 
@@ -31,25 +29,12 @@ class ProfessionalServicePropertiesResponseTerm {
     };
   }
 
-  factory ProfessionalServicePropertiesResponseTerm.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ProfessionalServicePropertiesResponseTerm.fromMap(Map<String, dynamic> map) {
     return ProfessionalServicePropertiesResponseTerm(
-      endDate: (() {
-        final guardedValue = map['endDate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      startDate: (() {
-        final guardedValue = map['startDate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      termUnit: (() {
-        final guardedValue = map['termUnit'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      endDate: (() { final guardedValue = map['endDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      startDate: (() { final guardedValue = map['startDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      termUnit: (() { final guardedValue = map['termUnit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

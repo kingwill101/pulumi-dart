@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RouteTableAttachmentArgs {
   /// The ID of the route table to be bound to the switch.
   final pulumi.Input<String> routeTableId;
-
   /// The ID of the switch to bind the route table.
   final pulumi.Input<String> vswitchId;
 
@@ -35,3 +34,4 @@ class RouteTableAttachmentArgs {
     );
   }
 }
+

@@ -18,8 +18,7 @@ enum HttpTargetHttpMethodCloudtasksV2beta2 {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown HttpTargetHttpMethodCloudtasksV2beta2 value: $value',
-    );
+    throw ArgumentError('Unknown HttpTargetHttpMethodCloudtasksV2beta2 value: $value');
   }
 }
+

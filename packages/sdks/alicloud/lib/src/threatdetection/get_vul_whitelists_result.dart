@@ -11,7 +11,6 @@ class GetVulWhitelistsResult {
   final String? outputFile;
   final int? pageNumber;
   final int? pageSize;
-
   /// A list of Vul Whitelist Entries. Each element contains the following attributes:
   final List<GetVulWhitelistsWhitelist> whitelists;
 
@@ -38,11 +37,7 @@ class GetVulWhitelistsResult {
       'outputFile': ?outputFile,
       'pageNumber': ?pageNumber,
       'pageSize': ?pageSize,
-      'whitelists':
-          pulumi.Input.encodeList<
-            GetVulWhitelistsWhitelist,
-            Map<String, dynamic>
-          >(whitelists, (value) => value.toMap()),
+      'whitelists': pulumi.Input.encodeList<GetVulWhitelistsWhitelist, Map<String, dynamic>>(whitelists, (value) => value.toMap()),
     };
   }
 
@@ -50,27 +45,11 @@ class GetVulWhitelistsResult {
     return GetVulWhitelistsResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      pageNumber: (() {
-        final guardedValue = map['pageNumber'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      pageSize: (() {
-        final guardedValue = map['pageSize'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      whitelists: pulumi.Input.decodeList<GetVulWhitelistsWhitelist>(
-        map['whitelists']!,
-        (value) => GetVulWhitelistsWhitelist.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      pageNumber: (() { final guardedValue = map['pageNumber']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      pageSize: (() { final guardedValue = map['pageSize']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      whitelists: pulumi.Input.decodeList<GetVulWhitelistsWhitelist>(map['whitelists']!, (value) => GetVulWhitelistsWhitelist.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

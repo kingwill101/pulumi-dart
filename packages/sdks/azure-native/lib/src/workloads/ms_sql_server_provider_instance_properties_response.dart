@@ -6,29 +6,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MsSqlServerProviderInstancePropertiesResponse {
   /// Gets or sets the database password.
   final pulumi.Input<String>? dbPassword;
-
   /// Gets or sets the key vault URI to secret with the database password.
   final pulumi.Input<String>? dbPasswordUri;
-
   /// Gets or sets the database sql port.
   final pulumi.Input<String>? dbPort;
-
   /// Gets or sets the database user name.
   final pulumi.Input<String>? dbUsername;
-
   /// Gets or sets the SQL server host name.
   final pulumi.Input<String>? hostname;
-
   /// The provider type. For example, the value can be SapHana.
   /// Expected value is 'MsSqlServer'.
   final pulumi.Input<String> providerType;
-
   /// Gets or sets the SAP System Identifier
   final pulumi.Input<String>? sapSid;
-
   /// Gets or sets the blob URI to SSL certificate for the SQL Database.
   final pulumi.Input<String>? sslCertificateUri;
-
   /// Gets or sets certificate preference if secure communication is enabled.
   final pulumi.Input<String>? sslPreference;
 
@@ -68,51 +60,18 @@ class MsSqlServerProviderInstancePropertiesResponse {
     };
   }
 
-  factory MsSqlServerProviderInstancePropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MsSqlServerProviderInstancePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return MsSqlServerProviderInstancePropertiesResponse(
-      dbPassword: (() {
-        final guardedValue = map['dbPassword'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dbPasswordUri: (() {
-        final guardedValue = map['dbPasswordUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dbPort: (() {
-        final guardedValue = map['dbPort'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dbUsername: (() {
-        final guardedValue = map['dbUsername'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      hostname: (() {
-        final guardedValue = map['hostname'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dbPassword: (() { final guardedValue = map['dbPassword']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dbPasswordUri: (() { final guardedValue = map['dbPasswordUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dbPort: (() { final guardedValue = map['dbPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dbUsername: (() { final guardedValue = map['dbUsername']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      hostname: (() { final guardedValue = map['hostname']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       providerType: pulumi.Input.fromValue(map['providerType'] as String),
-      sapSid: (() {
-        final guardedValue = map['sapSid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sslCertificateUri: (() {
-        final guardedValue = map['sslCertificateUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sslPreference: (() {
-        final guardedValue = map['sslPreference'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      sapSid: (() { final guardedValue = map['sapSid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sslCertificateUri: (() { final guardedValue = map['sslCertificateUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sslPreference: (() { final guardedValue = map['sslPreference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

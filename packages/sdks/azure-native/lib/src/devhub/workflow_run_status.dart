@@ -16,3 +16,4 @@ enum WorkflowRunStatus {
     throw ArgumentError('Unknown WorkflowRunStatus value: $value');
   }
 }
+

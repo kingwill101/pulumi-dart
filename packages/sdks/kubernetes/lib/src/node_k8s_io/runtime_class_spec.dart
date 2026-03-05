@@ -8,10 +8,8 @@ import 'scheduling_node_k8s_io_v1alpha1.dart';
 class RuntimeClassSpec {
   /// Overhead represents the resource overhead associated with running a pod for a given RuntimeClass. For more details, see https://git.k8s.io/enhancements/keps/sig-node/20190226-pod-overhead.md This field is alpha-level as of Kubernetes v1.15, and is only honored by servers that enable the PodOverhead feature.
   final pulumi.Input<OverheadNodeK8sIoV1alpha1>? overhead;
-
   /// RuntimeHandler specifies the underlying runtime and configuration that the CRI implementation will use to handle pods of this class. The possible values are specific to the node & CRI configuration.  It is assumed that all handlers are available on every node, and handlers of the same name are equivalent on every node. For example, a handler called "runc" might specify that the runc OCI runtime (using native Linux containers) will be used to run the containers in a pod. The RuntimeHandler must conform to the DNS Label (RFC 1123) requirements and is immutable.
   final pulumi.Input<String> runtimeHandler;
-
   /// Scheduling holds the scheduling constraints to ensure that pods running with this RuntimeClass are scheduled to nodes that support it. If scheduling is nil, this RuntimeClass is assumed to be supported by all nodes.
   final pulumi.Input<SchedulingNodeK8sIoV1alpha1>? scheduling;
 
@@ -27,41 +25,18 @@ class RuntimeClassSpec {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'overhead':
-          ?pulumi.Input.mapOptionalInputValue<
-            OverheadNodeK8sIoV1alpha1,
-            Map<String, dynamic>
-          >(overhead, (value) => value.toMap()),
+      'overhead': ?pulumi.Input.mapOptionalInputValue<OverheadNodeK8sIoV1alpha1, Map<String, dynamic>>(overhead, (value) => value.toMap()),
       'runtimeHandler': runtimeHandler,
-      'scheduling':
-          ?pulumi.Input.mapOptionalInputValue<
-            SchedulingNodeK8sIoV1alpha1,
-            Map<String, dynamic>
-          >(scheduling, (value) => value.toMap()),
+      'scheduling': ?pulumi.Input.mapOptionalInputValue<SchedulingNodeK8sIoV1alpha1, Map<String, dynamic>>(scheduling, (value) => value.toMap()),
     };
   }
 
   factory RuntimeClassSpec.fromMap(Map<String, dynamic> map) {
     return RuntimeClassSpec(
-      overhead: (() {
-        final guardedValue = map['overhead'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          OverheadNodeK8sIoV1alpha1.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      overhead: (() { final guardedValue = map['overhead']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OverheadNodeK8sIoV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       runtimeHandler: pulumi.Input.fromValue(map['runtimeHandler'] as String),
-      scheduling: (() {
-        final guardedValue = map['scheduling'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SchedulingNodeK8sIoV1alpha1.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      scheduling: (() { final guardedValue = map['scheduling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SchedulingNodeK8sIoV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

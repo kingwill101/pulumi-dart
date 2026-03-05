@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkServiceResponse {
   /// True if the service is enabled; false otherwise.
   final pulumi.Input<bool> enabled;
-
   /// State of the service. New values may be added to this enum when appropriate.
   final pulumi.Input<String> state;
 
   /// Creates a new [NetworkServiceResponse].
   /// [enabled] True if the service is enabled; false otherwise.
   /// [state] State of the service. New values may be added to this enum when appropriate.
-  NetworkServiceResponse({required this.enabled, required this.state});
+  NetworkServiceResponse({
+    required this.enabled,
+    required this.state,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled, 'state': state};
+    return <String, dynamic>{
+      'enabled': enabled,
+      'state': state,
+    };
   }
 
   factory NetworkServiceResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class NetworkServiceResponse {
     );
   }
 }
+

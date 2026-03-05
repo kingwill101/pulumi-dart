@@ -9,7 +9,9 @@ class CustomProfile {
 
   /// Creates a new [CustomProfile].
   /// [metadataConfigurationPath] Path for metadata configuration.
-  CustomProfile({this.metadataConfigurationPath});
+  CustomProfile({
+    this.metadataConfigurationPath,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,11 +21,8 @@ class CustomProfile {
 
   factory CustomProfile.fromMap(Map<String, dynamic> map) {
     return CustomProfile(
-      metadataConfigurationPath: (() {
-        final guardedValue = map['metadataConfigurationPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      metadataConfigurationPath: (() { final guardedValue = map['metadataConfigurationPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -9,14 +9,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EndpointAttachmentArgs {
   /// ID of the endpoint attachment.
   final pulumi.Input<String> endpointAttachmentId;
-
   /// Location of the endpoint attachment.
   final pulumi.Input<String> location;
-
   /// The Apigee Organization associated with the Apigee instance,
   /// in the format `organizations/{{org_name}}`.
   final pulumi.Input<String> orgId;
-
   /// Format: projects/*/regions/*/serviceAttachments/*
   final pulumi.Input<String> serviceAttachment;
 
@@ -43,14 +40,11 @@ class EndpointAttachmentArgs {
 
   factory EndpointAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return EndpointAttachmentArgs(
-      endpointAttachmentId: pulumi.Input.fromValue(
-        map['endpointAttachmentId'] as String,
-      ),
+      endpointAttachmentId: pulumi.Input.fromValue(map['endpointAttachmentId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
       orgId: pulumi.Input.fromValue(map['orgId'] as String),
-      serviceAttachment: pulumi.Input.fromValue(
-        map['serviceAttachment'] as String,
-      ),
+      serviceAttachment: pulumi.Input.fromValue(map['serviceAttachment'] as String),
     );
   }
 }
+

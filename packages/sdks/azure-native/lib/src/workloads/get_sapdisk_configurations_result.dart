@@ -10,33 +10,20 @@ class GetSAPDiskConfigurationsResult {
 
   /// Creates a new [GetSAPDiskConfigurationsResult].
   /// [volumeConfigurations] The disk configuration for the db volume. For HANA, Required volumes are: ['hana/data', 'hana/log', hana/shared', 'usr/sap', 'os'], Optional volume : ['backup'].
-  GetSAPDiskConfigurationsResult({this.volumeConfigurations});
+  GetSAPDiskConfigurationsResult({
+    this.volumeConfigurations,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'volumeConfigurations': ?(() {
-        final guardedValue = volumeConfigurations;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeMapValues<
-          SAPDiskConfigurationResponse,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'volumeConfigurations': ?(() { final guardedValue = volumeConfigurations; if (guardedValue == null) return null; return pulumi.Input.encodeMapValues<SAPDiskConfigurationResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetSAPDiskConfigurationsResult.fromMap(Map<String, dynamic> map) {
     return GetSAPDiskConfigurationsResult(
-      volumeConfigurations: (() {
-        final guardedValue = map['volumeConfigurations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeMapValues<SAPDiskConfigurationResponse>(
-          guardedValue,
-          (value) => SAPDiskConfigurationResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      volumeConfigurations: (() { final guardedValue = map['volumeConfigurations']; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<SAPDiskConfigurationResponse>(guardedValue, (value) => SAPDiskConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

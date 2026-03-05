@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpcEncryptionControlResourceExclusionsEgressOnlyInternetGateway {
   /// The current state of the VPC Encryption Control.
   final pulumi.Input<String> state;
-
   /// A message providing additional information about the state of the VPC Encryption Control.
   final pulumi.Input<String> stateMessage;
 
@@ -18,15 +17,17 @@ class VpcEncryptionControlResourceExclusionsEgressOnlyInternetGateway {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'state': state, 'stateMessage': stateMessage};
+    return <String, dynamic>{
+      'state': state,
+      'stateMessage': stateMessage,
+    };
   }
 
-  factory VpcEncryptionControlResourceExclusionsEgressOnlyInternetGateway.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VpcEncryptionControlResourceExclusionsEgressOnlyInternetGateway.fromMap(Map<String, dynamic> map) {
     return VpcEncryptionControlResourceExclusionsEgressOnlyInternetGateway(
       state: pulumi.Input.fromValue(map['state'] as String),
       stateMessage: pulumi.Input.fromValue(map['stateMessage'] as String),
     );
   }
 }
+

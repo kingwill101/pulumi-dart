@@ -15,3 +15,4 @@ enum VpnGatewayStackTypeComputeV1 {
     throw ArgumentError('Unknown VpnGatewayStackTypeComputeV1 value: $value');
   }
 }
+

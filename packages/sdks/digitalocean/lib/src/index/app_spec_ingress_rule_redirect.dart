@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppSpecIngressRuleRedirect {
   /// The authority/host to redirect to. This can be a hostname or IP address.
   final pulumi.Input<String>? authority;
-
   /// The port to redirect to.
   final pulumi.Input<int>? port;
-
   /// The redirect code to use. Supported values are `300`, `301`, `302`, `303`, `304`, `307`, `308`.
   final pulumi.Input<int>? redirectCode;
-
   /// The scheme to redirect to. Supported values are `http` or `https`
   final pulumi.Input<String>? scheme;
-
   /// An optional URI path to redirect to.
   final pulumi.Input<String>? uri;
 
@@ -44,31 +40,12 @@ class AppSpecIngressRuleRedirect {
 
   factory AppSpecIngressRuleRedirect.fromMap(Map<String, dynamic> map) {
     return AppSpecIngressRuleRedirect(
-      authority: (() {
-        final guardedValue = map['authority'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      port: (() {
-        final guardedValue = map['port'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      redirectCode: (() {
-        final guardedValue = map['redirectCode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      scheme: (() {
-        final guardedValue = map['scheme'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      uri: (() {
-        final guardedValue = map['uri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      authority: (() { final guardedValue = map['authority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      redirectCode: (() { final guardedValue = map['redirectCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      scheme: (() { final guardedValue = map['scheme']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      uri: (() { final guardedValue = map['uri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

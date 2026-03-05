@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDataSourceDataSourceGcpResourceComputeInstanceDataSourceProperty {
   /// The description of the Compute Engine instance.
   final pulumi.Input<String> description;
-
   /// The machine type of the instance.
   final pulumi.Input<String> machineType;
-
   /// Name of the compute instance backed up by the datasource.
   final pulumi.Input<String> name;
-
   /// The total number of disks attached to the Instance.
   final pulumi.Input<String> totalDiskCount;
-
   /// The sum of all the disk sizes.
   final pulumi.Input<String> totalDiskSizeGb;
 
@@ -42,9 +38,7 @@ class GetDataSourceDataSourceGcpResourceComputeInstanceDataSourceProperty {
     };
   }
 
-  factory GetDataSourceDataSourceGcpResourceComputeInstanceDataSourceProperty.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDataSourceDataSourceGcpResourceComputeInstanceDataSourceProperty.fromMap(Map<String, dynamic> map) {
     return GetDataSourceDataSourceGcpResourceComputeInstanceDataSourceProperty(
       description: pulumi.Input.fromValue(map['description'] as String),
       machineType: pulumi.Input.fromValue(map['machineType'] as String),
@@ -54,3 +48,4 @@ class GetDataSourceDataSourceGcpResourceComputeInstanceDataSourceProperty {
     );
   }
 }
+

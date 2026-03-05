@@ -7,16 +7,12 @@ import 'expected_value_range.dart';
 class Performance {
   /// Observed value for the metric
   final pulumi.Input<double>? actual;
-
   /// Threshold value for the metric
   final pulumi.Input<double>? expected;
-
   /// Max and Min Threshold values for the metric
   final pulumi.Input<ExpectedValueRange>? expectedValueRange;
-
   /// Name of the Metric examples:  Disk, IOPs, CPU, GPU, Memory, details can be found from /impactCategories API
   final pulumi.Input<String>? metricName;
-
   /// Unit of the metric ex: Bytes, Percentage, Count, Seconds, Milliseconds, Bytes/Second, Count/Second, etc.., Other
   final pulumi.Input<String>? unit;
 
@@ -38,11 +34,7 @@ class Performance {
     return <String, dynamic>{
       'actual': ?actual,
       'expected': ?expected,
-      'expectedValueRange':
-          ?pulumi.Input.mapOptionalInputValue<
-            ExpectedValueRange,
-            Map<String, dynamic>
-          >(expectedValueRange, (value) => value.toMap()),
+      'expectedValueRange': ?pulumi.Input.mapOptionalInputValue<ExpectedValueRange, Map<String, dynamic>>(expectedValueRange, (value) => value.toMap()),
       'metricName': ?metricName,
       'unit': ?unit,
     };
@@ -50,35 +42,12 @@ class Performance {
 
   factory Performance.fromMap(Map<String, dynamic> map) {
     return Performance(
-      actual: (() {
-        final guardedValue = map['actual'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      expected: (() {
-        final guardedValue = map['expected'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      expectedValueRange: (() {
-        final guardedValue = map['expectedValueRange'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ExpectedValueRange.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      metricName: (() {
-        final guardedValue = map['metricName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      unit: (() {
-        final guardedValue = map['unit'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      actual: (() { final guardedValue = map['actual']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      expected: (() { final guardedValue = map['expected']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      expectedValueRange: (() { final guardedValue = map['expectedValueRange']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExpectedValueRange.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      metricName: (() { final guardedValue = map['metricName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      unit: (() { final guardedValue = map['unit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

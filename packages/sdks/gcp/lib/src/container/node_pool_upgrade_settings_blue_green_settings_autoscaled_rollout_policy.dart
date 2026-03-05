@@ -13,18 +13,15 @@ class NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'waitForDrainDuration': ?waitForDrainDuration};
+    return <String, dynamic>{
+      'waitForDrainDuration': ?waitForDrainDuration,
+    };
   }
 
-  factory NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy.fromMap(Map<String, dynamic> map) {
     return NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy(
-      waitForDrainDuration: (() {
-        final guardedValue = map['waitForDrainDuration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      waitForDrainDuration: (() { final guardedValue = map['waitForDrainDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

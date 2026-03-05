@@ -7,17 +7,20 @@ class ClusterAddonsConfigParallelstoreCsiDriverConfig {
 
   /// Creates a new [ClusterAddonsConfigParallelstoreCsiDriverConfig].
   /// [enabled] Required.
-  ClusterAddonsConfigParallelstoreCsiDriverConfig({required this.enabled});
+  ClusterAddonsConfigParallelstoreCsiDriverConfig({
+    required this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled};
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
-  factory ClusterAddonsConfigParallelstoreCsiDriverConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterAddonsConfigParallelstoreCsiDriverConfig.fromMap(Map<String, dynamic> map) {
     return ClusterAddonsConfigParallelstoreCsiDriverConfig(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
+

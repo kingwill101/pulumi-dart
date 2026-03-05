@@ -536,22 +536,16 @@ import 'ecs_disk_attachment_state.dart';
 class EcsDiskAttachment extends pulumi.CustomResource {
   /// Whether to mount as a system disk. Default to: `false`.
   late final pulumi.Output<bool?> bootable;
-
   /// Indicates whether the disk is released together with the instance. Default to: `false`.
   late final pulumi.Output<bool?> deleteWithInstance;
-
   /// The name of the cloud disk device.
   late final pulumi.Output<String> device;
-
   /// ID of the Disk to be attached.
   late final pulumi.Output<String> diskId;
-
   /// ID of the Instance to attach to.
   late final pulumi.Output<String> instanceId;
-
   /// The name of key pair
   late final pulumi.Output<String?> keyPairName;
-
   /// When mounting the system disk, setting the user name and password of the instance is only effective for the administrator and root user names, and other user names are not effective.
   late final pulumi.Output<String?> password;
 
@@ -564,11 +558,11 @@ class EcsDiskAttachment extends pulumi.CustomResource {
     EcsDiskAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ecs/ecsDiskAttachment:EcsDiskAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ecs/ecsDiskAttachment:EcsDiskAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bootable = registerOutput<bool?>('bootable');
     deleteWithInstance = registerOutput<bool?>('deleteWithInstance');
     device = registerOutput<String>('device');
@@ -596,11 +590,11 @@ class EcsDiskAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ecs/ecsDiskAttachment:EcsDiskAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ecs/ecsDiskAttachment:EcsDiskAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bootable = registerOutput<bool?>('bootable');
     deleteWithInstance = registerOutput<bool?>('deleteWithInstance');
     device = registerOutput<String>('device');

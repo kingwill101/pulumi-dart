@@ -15,63 +15,23 @@ class GetGenaiKnowledgeBasesArgs {
   /// Creates a new [GetGenaiKnowledgeBasesArgs].
   /// [filters] Optional.
   /// [sorts] Optional.
-  GetGenaiKnowledgeBasesArgs({this.filters, this.sorts});
+  GetGenaiKnowledgeBasesArgs({
+    this.filters,
+    this.sorts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GetGenaiKnowledgeBasesFilter>,
-            List<Map<String, dynamic>>
-          >(
-            filters,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetGenaiKnowledgeBasesFilter,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'sorts':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GetGenaiKnowledgeBasesSort>,
-            List<Map<String, dynamic>>
-          >(
-            sorts,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetGenaiKnowledgeBasesSort,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetGenaiKnowledgeBasesFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetGenaiKnowledgeBasesFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'sorts': ?pulumi.Input.mapOptionalInputValue<List<GetGenaiKnowledgeBasesSort>, List<Map<String, dynamic>>>(sorts, (value) => pulumi.Input.encodeList<GetGenaiKnowledgeBasesSort, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetGenaiKnowledgeBasesArgs.fromMap(Map<String, dynamic> map) {
     return GetGenaiKnowledgeBasesArgs(
-      filters: (() {
-        final guardedValue = map['filters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GetGenaiKnowledgeBasesFilter>(
-            guardedValue,
-            (value) => GetGenaiKnowledgeBasesFilter.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      sorts: (() {
-        final guardedValue = map['sorts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GetGenaiKnowledgeBasesSort>(
-            guardedValue,
-            (value) => GetGenaiKnowledgeBasesSort.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetGenaiKnowledgeBasesFilter>(guardedValue, (value) => GetGenaiKnowledgeBasesFilter.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      sorts: (() { final guardedValue = map['sorts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetGenaiKnowledgeBasesSort>(guardedValue, (value) => GetGenaiKnowledgeBasesSort.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

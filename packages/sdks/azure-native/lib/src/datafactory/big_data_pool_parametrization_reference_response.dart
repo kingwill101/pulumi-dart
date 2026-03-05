@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BigDataPoolParametrizationReferenceResponse {
   /// Reference big data pool name. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> referenceName;
-
   /// Big data pool reference type.
   final pulumi.Input<String> type;
 
@@ -19,15 +18,17 @@ class BigDataPoolParametrizationReferenceResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'referenceName': referenceName, 'type': type};
+    return <String, dynamic>{
+      'referenceName': referenceName,
+      'type': type,
+    };
   }
 
-  factory BigDataPoolParametrizationReferenceResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BigDataPoolParametrizationReferenceResponse.fromMap(Map<String, dynamic> map) {
     return BigDataPoolParametrizationReferenceResponse(
       referenceName: pulumi.Input.fromValue(map['referenceName']),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

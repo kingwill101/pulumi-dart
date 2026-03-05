@@ -110,13 +110,10 @@ import 'rds_service_linked_role_state.dart';
 class RdsServiceLinkedRole extends pulumi.CustomResource {
   /// The Alibaba Cloud Resource Name (ARN) of the role.
   late final pulumi.Output<String> arn;
-
   /// The ID of the role.
   late final pulumi.Output<String> roleId;
-
   /// The name of the role.
   late final pulumi.Output<String> roleName;
-
   /// The product name for SLR. RDS can automatically create the following service-linked roles: `AliyunServiceRoleForRdsPgsqlOnEcs`, `AliyunServiceRoleForRDSProxyOnEcs`.
   late final pulumi.Output<String> serviceName;
 
@@ -129,11 +126,11 @@ class RdsServiceLinkedRole extends pulumi.CustomResource {
     RdsServiceLinkedRoleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:rds/rdsServiceLinkedRole:RdsServiceLinkedRole',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:rds/rdsServiceLinkedRole:RdsServiceLinkedRole',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     roleId = registerOutput<String>('roleId');
     roleName = registerOutput<String>('roleName');
@@ -158,11 +155,11 @@ class RdsServiceLinkedRole extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:rds/rdsServiceLinkedRole:RdsServiceLinkedRole',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:rds/rdsServiceLinkedRole:RdsServiceLinkedRole',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     roleId = registerOutput<String>('roleId');
     roleName = registerOutput<String>('roleName');

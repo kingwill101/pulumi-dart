@@ -15,3 +15,4 @@ enum IncidentTaskStatus {
     throw ArgumentError('Unknown IncidentTaskStatus value: $value');
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVNetPeeringArgs {
   /// The name of the workspace vNet peering.
   final pulumi.Input<String> peeringName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -37,10 +35,9 @@ class GetVNetPeeringArgs {
   factory GetVNetPeeringArgs.fromMap(Map<String, dynamic> map) {
     return GetVNetPeeringArgs(
       peeringName: pulumi.Input.fromValue(map['peeringName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
+

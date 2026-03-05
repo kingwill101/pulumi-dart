@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WebAppSwiftVirtualNetworkConnectionSlotArgs {
   /// Kind of resource.
   final pulumi.Input<String>? kind;
-
   /// Name of the app.
   final pulumi.Input<String> name;
-
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
-
   /// Name of the deployment slot. If a slot is not specified, the API will add or update connections for the production slot.
   final pulumi.Input<String> slot;
-
   /// The Virtual Network subnet's resource ID. This is the subnet that this Web App will join. This subnet must have a delegation to Microsoft.Web/serverFarms defined first.
   final pulumi.Input<String>? subnetResourceId;
-
   /// A flag that specifies if the scale unit this Web App is on supports Swift integration.
   final pulumi.Input<bool>? swiftSupported;
 
@@ -52,30 +47,15 @@ class WebAppSwiftVirtualNetworkConnectionSlotArgs {
     };
   }
 
-  factory WebAppSwiftVirtualNetworkConnectionSlotArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WebAppSwiftVirtualNetworkConnectionSlotArgs.fromMap(Map<String, dynamic> map) {
     return WebAppSwiftVirtualNetworkConnectionSlotArgs(
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       slot: pulumi.Input.fromValue(map['slot'] as String),
-      subnetResourceId: (() {
-        final guardedValue = map['subnetResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      swiftSupported: (() {
-        final guardedValue = map['swiftSupported'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      subnetResourceId: (() { final guardedValue = map['subnetResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      swiftSupported: (() { final guardedValue = map['swiftSupported']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

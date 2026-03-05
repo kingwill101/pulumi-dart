@@ -359,64 +359,44 @@ import 'execution_state.dart';
 class Execution extends pulumi.CustomResource {
   /// The counters of OOS Execution.
   late final pulumi.Output<String> counters;
-
   /// The time when the execution was created.
   late final pulumi.Output<String> createDate;
-
   /// The description of OOS Execution.
   late final pulumi.Output<String?> description;
-
   /// The time when the execution was ended.
   late final pulumi.Output<String> endDate;
-
   /// The user who execute the template.
   late final pulumi.Output<String> executedBy;
-
   /// Whether to include subtasks.
   late final pulumi.Output<bool> isParent;
-
   /// The loop mode of OOS Execution.
   late final pulumi.Output<String?> loopMode;
-
   /// The mode of OOS Execution. Valid: `Automatic`, `Debug`. Default to `Automatic`.
   late final pulumi.Output<String?> mode;
-
   /// The outputs of OOS Execution.
   late final pulumi.Output<String> outputs;
-
   /// The parameters required by the template. Default to `{}`.
   late final pulumi.Output<String?> parameters;
-
   /// The id of parent execution.
   late final pulumi.Output<String?> parentExecutionId;
-
   /// The role that executes the current template.
   late final pulumi.Output<String> ramRole;
-
   /// The mode of safety check.
   late final pulumi.Output<String?> safetyCheck;
-
   /// The time when the execution was started.
   late final pulumi.Output<String> startDate;
-
   /// The status of OOS Execution.
   late final pulumi.Output<String> status;
-
   /// The message of status.
   late final pulumi.Output<String> statusMessage;
-
   /// The content of template. When the user selects an existing template to create and execute a task, it is not necessary to pass in this field.
   late final pulumi.Output<String?> templateContent;
-
   /// The id of template.
   late final pulumi.Output<String> templateId;
-
   /// The name of execution template.
   late final pulumi.Output<String> templateName;
-
   /// The version of execution template.
   late final pulumi.Output<String> templateVersion;
-
   /// The time when the execution was updated.
   late final pulumi.Output<String> updateDate;
 
@@ -429,11 +409,11 @@ class Execution extends pulumi.CustomResource {
     ExecutionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:oos/execution:Execution',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:oos/execution:Execution',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     counters = registerOutput<String>('counters');
     createDate = registerOutput<String>('createDate');
     description = registerOutput<String?>('description');
@@ -475,11 +455,11 @@ class Execution extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:oos/execution:Execution',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:oos/execution:Execution',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     counters = registerOutput<String>('counters');
     createDate = registerOutput<String>('createDate');
     description = registerOutput<String?>('description');

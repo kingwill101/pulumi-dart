@@ -9,7 +9,10 @@ class ConnectionAccessKey {
   /// Creates a new [ConnectionAccessKey].
   /// [accessKeyId] Optional.
   /// [secretAccessKey] Optional.
-  ConnectionAccessKey({this.accessKeyId, this.secretAccessKey});
+  ConnectionAccessKey({
+    this.accessKeyId,
+    this.secretAccessKey,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -20,16 +23,9 @@ class ConnectionAccessKey {
 
   factory ConnectionAccessKey.fromMap(Map<String, dynamic> map) {
     return ConnectionAccessKey(
-      accessKeyId: (() {
-        final guardedValue = map['accessKeyId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      secretAccessKey: (() {
-        final guardedValue = map['secretAccessKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accessKeyId: (() { final guardedValue = map['accessKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      secretAccessKey: (() { final guardedValue = map['secretAccessKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

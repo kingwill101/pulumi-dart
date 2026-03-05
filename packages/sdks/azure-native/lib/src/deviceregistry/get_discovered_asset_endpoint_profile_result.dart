@@ -7,46 +7,32 @@ import 'system_data_response.dart';
 class GetDiscoveredAssetEndpointProfileResult {
   /// Stringified JSON that contains connectivity type specific further configuration (e.g. OPC UA, Modbus, ONVIF).
   final String? additionalConfiguration;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Identifier used to detect changes in the asset endpoint profile.
   final String discoveryId;
-
   /// Defines the configuration for the connector type that is being used with the endpoint profile.
   final String endpointProfileType;
-
   /// The extended location.
   final ExtendedLocationResponse extendedLocation;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// The geo-location where the resource lives
   final String location;
-
   /// The name of the resource
   final String name;
-
   /// Provisioning state of the resource.
   final String provisioningState;
-
   /// List of supported authentication methods supported by the target server.
   final List<String>? supportedAuthenticationMethods;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// The local valid URI specifying the network address/DNS name of a southbound device. The scheme part of the targetAddress URI specifies the type of the device. The additionalConfiguration field holds further connector type specific configuration.
   final String targetAddress;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
-
   /// An integer that is incremented each time the resource is modified.
   final double version;
 
@@ -104,41 +90,24 @@ class GetDiscoveredAssetEndpointProfileResult {
     };
   }
 
-  factory GetDiscoveredAssetEndpointProfileResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDiscoveredAssetEndpointProfileResult.fromMap(Map<String, dynamic> map) {
     return GetDiscoveredAssetEndpointProfileResult(
-      additionalConfiguration: (() {
-        final guardedValue = map['additionalConfiguration'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      additionalConfiguration: (() { final guardedValue = map['additionalConfiguration']; if (guardedValue == null) return null; return guardedValue as String; })(),
       azureApiVersion: map['azureApiVersion'] as String,
       discoveryId: map['discoveryId'] as String,
       endpointProfileType: map['endpointProfileType'] as String,
-      extendedLocation: ExtendedLocationResponse.fromMap(
-        (map['extendedLocation']! as Map).cast<String, dynamic>(),
-      ),
+      extendedLocation: ExtendedLocationResponse.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      supportedAuthenticationMethods: (() {
-        final guardedValue = map['supportedAuthenticationMethods'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      supportedAuthenticationMethods: (() { final guardedValue = map['supportedAuthenticationMethods']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       targetAddress: map['targetAddress'] as String,
       type: map['type'] as String,
       version: map['version'] as double,
     );
   }
 }
+

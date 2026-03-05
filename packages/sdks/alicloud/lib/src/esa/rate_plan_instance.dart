@@ -170,36 +170,27 @@ import 'rate_plan_instance_state.dart';
 /// ```
 class RatePlanInstance extends pulumi.CustomResource {
   late final pulumi.Output<bool?> autoPay;
-
   /// Auto-renewal:
   late final pulumi.Output<bool?> autoRenew;
-
   /// The service locations for the websites that can be associated with the plan. Multiple values are separated by commas (,). Valid values:
   late final pulumi.Output<String?> coverage;
-
   /// The time when the plan was purchased.
   late final pulumi.Output<String> createTime;
-
   /// The instance status.
   late final pulumi.Output<String> instanceStatus;
-
   /// The billing method. Valid values:
   /// - `Subscription`: subscription.
   late final pulumi.Output<String> paymentType;
-
   /// Subscription period (in months).
   ///
   /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<int?> period;
-
   /// Package name.
   ///
   /// Chinese website account:
   late final pulumi.Output<String?> planName;
-
   /// The plan status. , the plan is unavailable.
   late final pulumi.Output<String> status;
-
   /// The DNS setup option for the website. Valid values:
   /// - `NS`
   /// - `CNAME`
@@ -216,11 +207,11 @@ class RatePlanInstance extends pulumi.CustomResource {
     RatePlanInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/ratePlanInstance:RatePlanInstance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:esa/ratePlanInstance:RatePlanInstance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoPay = registerOutput<bool?>('autoPay');
     autoRenew = registerOutput<bool?>('autoRenew');
     coverage = registerOutput<String?>('coverage');
@@ -251,11 +242,11 @@ class RatePlanInstance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/ratePlanInstance:RatePlanInstance',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:esa/ratePlanInstance:RatePlanInstance',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoPay = registerOutput<bool?>('autoPay');
     autoRenew = registerOutput<bool?>('autoRenew');
     coverage = registerOutput<String?>('coverage');

@@ -15,3 +15,4 @@ enum NamespaceType {
     throw ArgumentError('Unknown NamespaceType value: $value');
   }
 }
+

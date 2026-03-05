@@ -162,7 +162,6 @@ class ServiceEndpointAcl extends pulumi.CustomResource {
   /// - allow: indicates that the current endpoint allows access from the corresponding CIDR block. (Only allow is supported)
   late final pulumi.Output<String> aclStrategy;
   late final pulumi.Output<String> cidr;
-
   /// Access point type. Value:
   /// - public: indicates a public access point. (Currently only public is supported)
   late final pulumi.Output<String> endpointType;
@@ -176,11 +175,11 @@ class ServiceEndpointAcl extends pulumi.CustomResource {
     ServiceEndpointAclArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:message/serviceEndpointAcl:ServiceEndpointAcl',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:message/serviceEndpointAcl:ServiceEndpointAcl',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aclStrategy = registerOutput<String>('aclStrategy');
     cidr = registerOutput<String>('cidr');
     endpointType = registerOutput<String>('endpointType');
@@ -204,11 +203,11 @@ class ServiceEndpointAcl extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:message/serviceEndpointAcl:ServiceEndpointAcl',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:message/serviceEndpointAcl:ServiceEndpointAcl',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aclStrategy = registerOutput<String>('aclStrategy');
     cidr = registerOutput<String>('cidr');
     endpointType = registerOutput<String>('endpointType');

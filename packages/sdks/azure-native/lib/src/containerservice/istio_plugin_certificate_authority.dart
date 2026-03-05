@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IstioPluginCertificateAuthority {
   /// Certificate chain object name in Azure Key Vault.
   final pulumi.Input<String>? certChainObjectName;
-
   /// Intermediate certificate object name in Azure Key Vault.
   final pulumi.Input<String>? certObjectName;
-
   /// Intermediate certificate private key object name in Azure Key Vault.
   final pulumi.Input<String>? keyObjectName;
-
   /// The resource ID of the Key Vault.
   final pulumi.Input<String>? keyVaultId;
-
   /// Root certificate object name in Azure Key Vault.
   final pulumi.Input<String>? rootCertObjectName;
 
@@ -45,31 +41,12 @@ class IstioPluginCertificateAuthority {
 
   factory IstioPluginCertificateAuthority.fromMap(Map<String, dynamic> map) {
     return IstioPluginCertificateAuthority(
-      certChainObjectName: (() {
-        final guardedValue = map['certChainObjectName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      certObjectName: (() {
-        final guardedValue = map['certObjectName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keyObjectName: (() {
-        final guardedValue = map['keyObjectName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keyVaultId: (() {
-        final guardedValue = map['keyVaultId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      rootCertObjectName: (() {
-        final guardedValue = map['rootCertObjectName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      certChainObjectName: (() { final guardedValue = map['certChainObjectName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      certObjectName: (() { final guardedValue = map['certObjectName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyObjectName: (() { final guardedValue = map['keyObjectName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyVaultId: (() { final guardedValue = map['keyVaultId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      rootCertObjectName: (() { final guardedValue = map['rootCertObjectName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

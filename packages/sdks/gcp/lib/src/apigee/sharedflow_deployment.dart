@@ -31,19 +31,15 @@ import 'sharedflow_deployment_state.dart';
 class SharedflowDeployment extends pulumi.CustomResource {
   /// The resource ID of the environment.
   late final pulumi.Output<String> environment;
-
   /// The Apigee Organization associated with the Sharedflow
   late final pulumi.Output<String> orgId;
-
   /// Revision of the Sharedflow to be deployed.
   ///
   ///
   /// - - -
   late final pulumi.Output<String> revision;
-
   /// The service account represents the identity of the deployed proxy, and determines what permissions it has. The format must be {ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com.
   late final pulumi.Output<String?> serviceAccount;
-
   /// Id of the Sharedflow to be deployed.
   late final pulumi.Output<String> sharedflowId;
 
@@ -56,11 +52,11 @@ class SharedflowDeployment extends pulumi.CustomResource {
     SharedflowDeploymentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:apigee/sharedflowDeployment:SharedflowDeployment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:apigee/sharedflowDeployment:SharedflowDeployment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     environment = registerOutput<String>('environment');
     orgId = registerOutput<String>('orgId');
     revision = registerOutput<String>('revision');
@@ -86,11 +82,11 @@ class SharedflowDeployment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:apigee/sharedflowDeployment:SharedflowDeployment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:apigee/sharedflowDeployment:SharedflowDeployment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     environment = registerOutput<String>('environment');
     orgId = registerOutput<String>('orgId');
     revision = registerOutput<String>('revision');

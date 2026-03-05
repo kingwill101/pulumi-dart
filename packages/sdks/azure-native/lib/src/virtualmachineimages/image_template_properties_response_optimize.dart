@@ -10,31 +10,20 @@ class ImageTemplatePropertiesResponseOptimize {
 
   /// Creates a new [ImageTemplatePropertiesResponseOptimize].
   /// [vmBoot] Optimization is applied on the image for a faster VM boot.
-  ImageTemplatePropertiesResponseOptimize({this.vmBoot});
+  ImageTemplatePropertiesResponseOptimize({
+    this.vmBoot,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'vmBoot':
-          ?pulumi.Input.mapOptionalInputValue<
-            ImageTemplatePropertiesResponseVmBoot,
-            Map<String, dynamic>
-          >(vmBoot, (value) => value.toMap()),
+      'vmBoot': ?pulumi.Input.mapOptionalInputValue<ImageTemplatePropertiesResponseVmBoot, Map<String, dynamic>>(vmBoot, (value) => value.toMap()),
     };
   }
 
-  factory ImageTemplatePropertiesResponseOptimize.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ImageTemplatePropertiesResponseOptimize.fromMap(Map<String, dynamic> map) {
     return ImageTemplatePropertiesResponseOptimize(
-      vmBoot: (() {
-        final guardedValue = map['vmBoot'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ImageTemplatePropertiesResponseVmBoot.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      vmBoot: (() { final guardedValue = map['vmBoot']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ImageTemplatePropertiesResponseVmBoot.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

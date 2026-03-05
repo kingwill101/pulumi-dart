@@ -13,19 +13,20 @@ class KeyVaultPropertiesResponse {
 
   /// Creates a new [KeyVaultPropertiesResponse].
   /// [keyIdentifier] Full path to the secret with or without version. Example https://mykeyvault.vault.azure.net/keys/testkey/6e34a81fef704045975661e297a4c053. or https://mykeyvault.vault.azure.net/keys/testkey. To be usable the following prerequisites must be met:
-  KeyVaultPropertiesResponse({this.keyIdentifier});
+  KeyVaultPropertiesResponse({
+    this.keyIdentifier,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'keyIdentifier': ?keyIdentifier};
+    return <String, dynamic>{
+      'keyIdentifier': ?keyIdentifier,
+    };
   }
 
   factory KeyVaultPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return KeyVaultPropertiesResponse(
-      keyIdentifier: (() {
-        final guardedValue = map['keyIdentifier'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      keyIdentifier: (() { final guardedValue = map['keyIdentifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

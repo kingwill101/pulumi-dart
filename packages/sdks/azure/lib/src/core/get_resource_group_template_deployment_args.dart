@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetResourceGroupTemplateDeploymentArgs {
   /// The name of this Resource Group Template Deployment.
   final pulumi.Input<String> name;
-
   /// The name of the Resource Group to which the Resource Group Template Deployment was applied.
   final pulumi.Input<String> resourceGroupName;
 
@@ -28,14 +27,11 @@ class GetResourceGroupTemplateDeploymentArgs {
     };
   }
 
-  factory GetResourceGroupTemplateDeploymentArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetResourceGroupTemplateDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return GetResourceGroupTemplateDeploymentArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

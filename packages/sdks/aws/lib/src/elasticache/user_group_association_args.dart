@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserGroupAssociationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// ID of the user group.
   final pulumi.Input<String> userGroupId;
-
   /// ID of the user to associated with the user group.
   final pulumi.Input<String> userId;
 
@@ -36,13 +34,10 @@ class UserGroupAssociationArgs {
 
   factory UserGroupAssociationArgs.fromMap(Map<String, dynamic> map) {
     return UserGroupAssociationArgs(
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       userGroupId: pulumi.Input.fromValue(map['userGroupId'] as String),
       userId: pulumi.Input.fromValue(map['userId'] as String),
     );
   }
 }
+

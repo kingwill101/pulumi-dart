@@ -10,22 +10,16 @@ enum SecurityPolicyRuleRateLimitOptionsEnforceOnKeyComputeBeta {
   sni("SNI"),
   xffIp("XFF_IP");
 
-  const SecurityPolicyRuleRateLimitOptionsEnforceOnKeyComputeBeta(
-    this.wireValue,
-  );
+  const SecurityPolicyRuleRateLimitOptionsEnforceOnKeyComputeBeta(this.wireValue);
   final String wireValue;
 
-  static SecurityPolicyRuleRateLimitOptionsEnforceOnKeyComputeBeta fromValue(
-    String value,
-  ) {
-    for (final item
-        in SecurityPolicyRuleRateLimitOptionsEnforceOnKeyComputeBeta.values) {
+  static SecurityPolicyRuleRateLimitOptionsEnforceOnKeyComputeBeta fromValue(String value) {
+    for (final item in SecurityPolicyRuleRateLimitOptionsEnforceOnKeyComputeBeta.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown SecurityPolicyRuleRateLimitOptionsEnforceOnKeyComputeBeta value: $value',
-    );
+    throw ArgumentError('Unknown SecurityPolicyRuleRateLimitOptionsEnforceOnKeyComputeBeta value: $value');
   }
 }
+

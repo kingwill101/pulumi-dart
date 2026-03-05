@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDatabasesDatabaseAccount {
   /// Account name.
   final pulumi.Input<String> accountName;
-
   /// Account status.
   final pulumi.Input<String> accountStatus;
-
   /// The privilege status of account.
   final pulumi.Input<String> privilegeStatus;
 
@@ -38,3 +36,4 @@ class GetDatabasesDatabaseAccount {
     );
   }
 }
+

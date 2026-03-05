@@ -9,19 +9,20 @@ class DeviceConfig {
 
   /// Creates a new [DeviceConfig].
   /// [binaryData] The device configuration data.
-  DeviceConfig({this.binaryData});
+  DeviceConfig({
+    this.binaryData,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'binaryData': ?binaryData};
+    return <String, dynamic>{
+      'binaryData': ?binaryData,
+    };
   }
 
   factory DeviceConfig.fromMap(Map<String, dynamic> map) {
     return DeviceConfig(
-      binaryData: (() {
-        final guardedValue = map['binaryData'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      binaryData: (() { final guardedValue = map['binaryData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

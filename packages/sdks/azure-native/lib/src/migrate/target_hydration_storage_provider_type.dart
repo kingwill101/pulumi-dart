@@ -12,8 +12,7 @@ enum TargetHydrationStorageProviderType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown TargetHydrationStorageProviderType value: $value',
-    );
+    throw ArgumentError('Unknown TargetHydrationStorageProviderType value: $value');
   }
 }
+

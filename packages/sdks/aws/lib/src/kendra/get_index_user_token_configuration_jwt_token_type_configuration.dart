@@ -5,22 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIndexUserTokenConfigurationJwtTokenTypeConfiguration {
   /// Regular expression that identifies the claim.
   final pulumi.Input<String> claimRegex;
-
   /// The group attribute field.
   final pulumi.Input<String> groupAttributeField;
-
   /// Issuer of the token.
   final pulumi.Input<String> issuer;
-
   /// Location of the key. Valid values are `URL` or `SECRET_MANAGER`
   final pulumi.Input<String> keyLocation;
-
   /// ARN of the secret.
   final pulumi.Input<String> secretsManagerArn;
-
   /// Signing key URL.
   final pulumi.Input<String> url;
-
   /// The user name attribute field.
   final pulumi.Input<String> userNameAttributeField;
 
@@ -54,23 +48,16 @@ class GetIndexUserTokenConfigurationJwtTokenTypeConfiguration {
     };
   }
 
-  factory GetIndexUserTokenConfigurationJwtTokenTypeConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetIndexUserTokenConfigurationJwtTokenTypeConfiguration.fromMap(Map<String, dynamic> map) {
     return GetIndexUserTokenConfigurationJwtTokenTypeConfiguration(
       claimRegex: pulumi.Input.fromValue(map['claimRegex'] as String),
-      groupAttributeField: pulumi.Input.fromValue(
-        map['groupAttributeField'] as String,
-      ),
+      groupAttributeField: pulumi.Input.fromValue(map['groupAttributeField'] as String),
       issuer: pulumi.Input.fromValue(map['issuer'] as String),
       keyLocation: pulumi.Input.fromValue(map['keyLocation'] as String),
-      secretsManagerArn: pulumi.Input.fromValue(
-        map['secretsManagerArn'] as String,
-      ),
+      secretsManagerArn: pulumi.Input.fromValue(map['secretsManagerArn'] as String),
       url: pulumi.Input.fromValue(map['url'] as String),
-      userNameAttributeField: pulumi.Input.fromValue(
-        map['userNameAttributeField'] as String,
-      ),
+      userNameAttributeField: pulumi.Input.fromValue(map['userNameAttributeField'] as String),
     );
   }
 }
+

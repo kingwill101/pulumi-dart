@@ -6,35 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ParentProductConfigContainerV1beta1 {
   /// Labels contain the configuration of the parent product.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// Name of the parent product associated with the cluster.
   final pulumi.Input<String>? productName;
 
   /// Creates a new [ParentProductConfigContainerV1beta1].
   /// [labels] Labels contain the configuration of the parent product.
   /// [productName] Name of the parent product associated with the cluster.
-  ParentProductConfigContainerV1beta1({this.labels, this.productName});
+  ParentProductConfigContainerV1beta1({
+    this.labels,
+    this.productName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'labels': ?labels, 'productName': ?productName};
+    return <String, dynamic>{
+      'labels': ?labels,
+      'productName': ?productName,
+    };
   }
 
-  factory ParentProductConfigContainerV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ParentProductConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return ParentProductConfigContainerV1beta1(
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      productName: (() {
-        final guardedValue = map['productName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      productName: (() { final guardedValue = map['productName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

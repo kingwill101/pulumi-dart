@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListEndpointKeysArgs {
   /// Name of the endpoint resource.
   final pulumi.Input<String> endpointName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Azure Machine Learning Workspace Name
   final pulumi.Input<String> workspaceName;
 
@@ -37,10 +35,9 @@ class ListEndpointKeysArgs {
   factory ListEndpointKeysArgs.fromMap(Map<String, dynamic> map) {
     return ListEndpointKeysArgs(
       endpointName: pulumi.Input.fromValue(map['endpointName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
+

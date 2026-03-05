@@ -9,17 +9,20 @@ class EmailPreferencesResponse {
 
   /// Creates a new [EmailPreferencesResponse].
   /// [enableFailureEmail] If true, email notifications will be sent on transfer run failures.
-  EmailPreferencesResponse({required this.enableFailureEmail});
+  EmailPreferencesResponse({
+    required this.enableFailureEmail,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enableFailureEmail': enableFailureEmail};
+    return <String, dynamic>{
+      'enableFailureEmail': enableFailureEmail,
+    };
   }
 
   factory EmailPreferencesResponse.fromMap(Map<String, dynamic> map) {
     return EmailPreferencesResponse(
-      enableFailureEmail: pulumi.Input.fromValue(
-        map['enableFailureEmail'] as bool,
-      ),
+      enableFailureEmail: pulumi.Input.fromValue(map['enableFailureEmail'] as bool),
     );
   }
 }
+

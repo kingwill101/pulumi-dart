@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetResourceSharesShare {
   /// The ID of the Resource Share.
   final pulumi.Input<String> id;
-
   /// The ID of the resource share.
   final pulumi.Input<String> resourceShareId;
-
   /// The name of resource share.
   final pulumi.Input<String> resourceShareName;
-
   /// The owner of resource share.
   final pulumi.Input<String> resourceShareOwner;
-
   /// The status of resource share.
   final pulumi.Input<String> status;
 
@@ -46,13 +42,10 @@ class GetResourceSharesShare {
     return GetResourceSharesShare(
       id: pulumi.Input.fromValue(map['id'] as String),
       resourceShareId: pulumi.Input.fromValue(map['resourceShareId'] as String),
-      resourceShareName: pulumi.Input.fromValue(
-        map['resourceShareName'] as String,
-      ),
-      resourceShareOwner: pulumi.Input.fromValue(
-        map['resourceShareOwner'] as String,
-      ),
+      resourceShareName: pulumi.Input.fromValue(map['resourceShareName'] as String),
+      resourceShareOwner: pulumi.Input.fromValue(map['resourceShareOwner'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
+

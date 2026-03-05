@@ -12,13 +12,20 @@ class SubResource {
 
   /// Creates a new [SubResource].
   /// [id] Sub-resource ID. Both absolute resource ID and a relative resource ID are accepted.
-  SubResource({required this.id});
+  SubResource({
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id};
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
   factory SubResource.fromMap(Map<String, dynamic> map) {
-    return SubResource(id: pulumi.Input.fromValue(map['id'] as String));
+    return SubResource(
+      id: pulumi.Input.fromValue(map['id'] as String),
+    );
   }
 }
+

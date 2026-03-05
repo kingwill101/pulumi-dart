@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SwitchExtensionResponse {
   /// This represents whether extension is enabled on virtualSwitch.
   final pulumi.Input<bool> extensionEnabled;
-
   /// This will show extension name for virtualSwitch.
   final pulumi.Input<String> extensionName;
-
   /// Unique identifier for virtualSwitch.
   final pulumi.Input<String> switchId;
 
@@ -39,3 +37,4 @@ class SwitchExtensionResponse {
     );
   }
 }
+

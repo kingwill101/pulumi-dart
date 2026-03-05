@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EventhubNamespaceDisasterRecoveryConfigArgs {
   /// Specifies the name of the Disaster Recovery Config. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// Specifies the name of the primary EventHub Namespace to replicate. Changing this forces a new resource to be created.
   final pulumi.Input<String> namespaceName;
-
   /// The ID of the EventHub Namespace to replicate to.
   final pulumi.Input<String> partnerNamespaceId;
-
   /// The name of the resource group in which the Disaster Recovery Config exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
 
@@ -40,22 +37,13 @@ class EventhubNamespaceDisasterRecoveryConfigArgs {
     };
   }
 
-  factory EventhubNamespaceDisasterRecoveryConfigArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EventhubNamespaceDisasterRecoveryConfigArgs.fromMap(Map<String, dynamic> map) {
     return EventhubNamespaceDisasterRecoveryConfigArgs(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
-      partnerNamespaceId: pulumi.Input.fromValue(
-        map['partnerNamespaceId'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      partnerNamespaceId: pulumi.Input.fromValue(map['partnerNamespaceId'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

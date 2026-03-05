@@ -9,25 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OutputSynapseArgs {
   /// The name of the Azure SQL database. Changing this forces a new resource to be created.
   final pulumi.Input<String> database;
-
   /// The name of the Stream Output. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// The password that will be used to connect to the Azure SQL database.
   final pulumi.Input<String> password;
-
   /// The name of the Resource Group where the Stream Analytics Job exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the SQL server containing the Azure SQL database. Changing this forces a new resource to be created.
   final pulumi.Input<String> server;
-
   /// The name of the Stream Analytics Job. Changing this forces a new resource to be created.
   final pulumi.Input<String> streamAnalyticsJobName;
-
   /// The name of the table in the Azure SQL database. Changing this forces a new resource to be created.
   final pulumi.Input<String> table;
-
   /// The user name that will be used to connect to the Azure SQL database. Changing this forces a new resource to be created.
   final pulumi.Input<String> user;
 
@@ -67,21 +60,14 @@ class OutputSynapseArgs {
   factory OutputSynapseArgs.fromMap(Map<String, dynamic> map) {
     return OutputSynapseArgs(
       database: pulumi.Input.fromValue(map['database'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       password: pulumi.Input.fromValue(map['password'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       server: pulumi.Input.fromValue(map['server'] as String),
-      streamAnalyticsJobName: pulumi.Input.fromValue(
-        map['streamAnalyticsJobName'] as String,
-      ),
+      streamAnalyticsJobName: pulumi.Input.fromValue(map['streamAnalyticsJobName'] as String),
       table: pulumi.Input.fromValue(map['table'] as String),
       user: pulumi.Input.fromValue(map['user'] as String),
     );
   }
 }
+

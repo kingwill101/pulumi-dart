@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SystemAssignedServiceIdentityResponse {
   /// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
   final pulumi.Input<String> principalId;
-
   /// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
   final pulumi.Input<String> tenantId;
-
   /// Type of managed service identity (either system assigned, or none).
   final pulumi.Input<String> type;
 
@@ -31,9 +29,7 @@ class SystemAssignedServiceIdentityResponse {
     };
   }
 
-  factory SystemAssignedServiceIdentityResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SystemAssignedServiceIdentityResponse.fromMap(Map<String, dynamic> map) {
     return SystemAssignedServiceIdentityResponse(
       principalId: pulumi.Input.fromValue(map['principalId'] as String),
       tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
@@ -41,3 +37,4 @@ class SystemAssignedServiceIdentityResponse {
     );
   }
 }
+

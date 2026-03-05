@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JwtClaimsResponse {
   /// Value for the "aud" claim.
   final pulumi.Input<String> audience;
-
   /// Value for the "iss" claim.
   final pulumi.Input<String> issuer;
-
   /// Value for the "sub" claim.
   final pulumi.Input<String> subject;
 
@@ -39,3 +37,4 @@ class JwtClaimsResponse {
     );
   }
 }
+

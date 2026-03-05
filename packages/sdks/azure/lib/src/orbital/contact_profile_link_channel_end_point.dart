@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContactProfileLinkChannelEndPoint {
   /// Name of an end point.
   final pulumi.Input<String> endPointName;
-
   /// IP address of an end point.
   final pulumi.Input<String>? ipAddress;
-
   /// TCP port to listen on to receive data.
   final pulumi.Input<String> port;
-
   /// Protocol of an end point. Possible values are `TCP` and `UDP`.
   final pulumi.Input<String> protocol;
 
@@ -39,13 +36,10 @@ class ContactProfileLinkChannelEndPoint {
   factory ContactProfileLinkChannelEndPoint.fromMap(Map<String, dynamic> map) {
     return ContactProfileLinkChannelEndPoint(
       endPointName: pulumi.Input.fromValue(map['endPointName'] as String),
-      ipAddress: (() {
-        final guardedValue = map['ipAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       port: pulumi.Input.fromValue(map['port'] as String),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
     );
   }
 }
+

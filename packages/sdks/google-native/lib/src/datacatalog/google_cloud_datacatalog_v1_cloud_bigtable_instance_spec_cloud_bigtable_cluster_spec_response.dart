@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponse {
   /// Name of the cluster.
   final pulumi.Input<String> displayName;
-
   /// A link back to the parent resource, in this case Instance.
   final pulumi.Input<String> linkedResource;
-
   /// Location of the cluster, typically a Cloud zone.
   final pulumi.Input<String> location;
-
   /// Type of the resource. For a cluster this would be "CLUSTER".
   final pulumi.Input<String> type;
 
@@ -37,9 +34,7 @@ class GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecR
     };
   }
 
-  factory GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponse(
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       linkedResource: pulumi.Input.fromValue(map['linkedResource'] as String),
@@ -48,3 +43,4 @@ class GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecR
     );
   }
 }
+

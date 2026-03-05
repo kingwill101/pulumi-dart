@@ -16,3 +16,4 @@ enum TextConfigProfileType {
     throw ArgumentError('Unknown TextConfigProfileType value: $value');
   }
 }
+

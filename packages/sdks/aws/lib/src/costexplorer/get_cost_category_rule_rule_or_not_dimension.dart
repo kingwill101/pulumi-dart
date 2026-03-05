@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCostCategoryRuleRuleOrNotDimension {
   /// Key for the tag.
   final pulumi.Input<String> key;
-
   /// Match options that you can use to filter your results. MatchOptions is only applicable for actions related to cost category. The default values for MatchOptions is `EQUALS` and `CASE_SENSITIVE`. Valid values are: `EQUALS`,  `ABSENT`, `STARTS_WITH`, `ENDS_WITH`, `CONTAINS`, `CASE_SENSITIVE`, `CASE_INSENSITIVE`.
   final pulumi.Input<List<String>> matchOptions;
-
   /// Parameter values.
   final pulumi.Input<List<String>> values;
 
@@ -30,15 +28,12 @@ class GetCostCategoryRuleRuleOrNotDimension {
     };
   }
 
-  factory GetCostCategoryRuleRuleOrNotDimension.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetCostCategoryRuleRuleOrNotDimension.fromMap(Map<String, dynamic> map) {
     return GetCostCategoryRuleRuleOrNotDimension(
       key: pulumi.Input.fromValue(map['key'] as String),
-      matchOptions: pulumi.Input.fromValue(
-        (map['matchOptions'] as List).cast<String>(),
-      ),
+      matchOptions: pulumi.Input.fromValue((map['matchOptions'] as List).cast<String>()),
       values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
+

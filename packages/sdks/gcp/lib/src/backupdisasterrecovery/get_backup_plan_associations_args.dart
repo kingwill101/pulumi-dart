@@ -9,11 +9,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBackupPlanAssociationsArgs {
   /// The location where the Backup Plan Association resources reside.
   final pulumi.Input<String> location;
-
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance. `resource_type` is deprecated and will be removed in a future major release.
   /// - - -
   final pulumi.Input<String>? resourceType;
@@ -39,16 +37,9 @@ class GetBackupPlanAssociationsArgs {
   factory GetBackupPlanAssociationsArgs.fromMap(Map<String, dynamic> map) {
     return GetBackupPlanAssociationsArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceType: (() {
-        final guardedValue = map['resourceType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceType: (() { final guardedValue = map['resourceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

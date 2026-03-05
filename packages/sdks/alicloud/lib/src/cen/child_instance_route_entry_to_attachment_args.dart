@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ChildInstanceRouteEntryToAttachmentArgs {
   /// The ID of the CEN instance.
   final pulumi.Input<String> cenId;
-
   /// The first ID of the resource
   final pulumi.Input<String> childInstanceRouteTableId;
-
   /// DestinationCidrBlock
   final pulumi.Input<String> destinationCidrBlock;
-
   /// Whether to perform pre-check on this request, including permission and instance status verification.
   final pulumi.Input<bool>? dryRun;
-
   /// TransitRouterAttachmentId
   final pulumi.Input<String> transitRouterAttachmentId;
 
@@ -46,25 +42,14 @@ class ChildInstanceRouteEntryToAttachmentArgs {
     };
   }
 
-  factory ChildInstanceRouteEntryToAttachmentArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ChildInstanceRouteEntryToAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return ChildInstanceRouteEntryToAttachmentArgs(
       cenId: pulumi.Input.fromValue(map['cenId'] as String),
-      childInstanceRouteTableId: pulumi.Input.fromValue(
-        map['childInstanceRouteTableId'] as String,
-      ),
-      destinationCidrBlock: pulumi.Input.fromValue(
-        map['destinationCidrBlock'] as String,
-      ),
-      dryRun: (() {
-        final guardedValue = map['dryRun'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      transitRouterAttachmentId: pulumi.Input.fromValue(
-        map['transitRouterAttachmentId'] as String,
-      ),
+      childInstanceRouteTableId: pulumi.Input.fromValue(map['childInstanceRouteTableId'] as String),
+      destinationCidrBlock: pulumi.Input.fromValue(map['destinationCidrBlock'] as String),
+      dryRun: (() { final guardedValue = map['dryRun']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      transitRouterAttachmentId: pulumi.Input.fromValue(map['transitRouterAttachmentId'] as String),
     );
   }
 }
+

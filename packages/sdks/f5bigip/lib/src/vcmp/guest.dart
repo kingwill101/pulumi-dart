@@ -146,46 +146,32 @@ import 'guest_state.dart';
 class Guest extends pulumi.CustomResource {
   /// Contains those slots to which the guest is allowed to be assigned.
   late final pulumi.Output<List<int>> allowedSlots;
-
   /// Specifies the number of cores the system allocates to the guest.
   late final pulumi.Output<int> coresPerSlot;
-
   /// Indicates if virtual disk associated with vCMP guest should be removed during remove operation.  The default is `true`
   late final pulumi.Output<bool?> deleteVirtualDisk;
-
   /// Resource name including prepended partition path.
   late final pulumi.Output<String> fullPath;
-
   /// Specifies the hotfix ISO image file which is applied on top of the base image.
   late final pulumi.Output<String> initialHotfix;
-
   /// Specifies the base software release ISO image file for installing the TMOS hypervisor instance.
   late final pulumi.Output<String> initialImage;
-
   /// Specifies the IP address and subnet or subnet mask you use to access the guest when you want to manage a module running within the guest.
   late final pulumi.Output<String> mgmtAddress;
-
   /// Specifies the method by which the management address is used in the vCMP guest. options : [`bridged`,`isolated`,`host-only`].
   late final pulumi.Output<String> mgmtNetwork;
-
   /// Specifies the gateway address for the `mgmt_address`. Can be set to `none` to remove the value from the configuration.
   late final pulumi.Output<String> mgmtRoute;
-
   /// Specifies the minimum number of slots the guest must be assigned to in order to deploy.
   late final pulumi.Output<int> minNumberOfSlots;
-
   /// Name of the vCMP guest
   late final pulumi.Output<String> name;
-
   /// Specifies the number of slots for the system to use when creating the guest.
   late final pulumi.Output<int> numberOfSlots;
-
   /// Specifies the state of the vCMP guest on the system. options : [`configured`,`provisioned`,`deployed`].
   late final pulumi.Output<String> state;
-
   /// Virtual disk associated with vCMP guest.
   late final pulumi.Output<String> virtualDisk;
-
   /// Specifies the list of VLANs the vCMP guest uses to communicate with other guests, the host, and with the external network. The naming format must be the combination of the partition + name. For example /Common/my-vlan
   late final pulumi.Output<List<String>> vlans;
 
@@ -193,13 +179,16 @@ class Guest extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Guest]. {@macro pulumi_vcmp_guest_guest_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Guest(String name, {GuestArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'f5bigip:vcmp/guest:Guest',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Guest(
+    String name, {
+    GuestArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'f5bigip:vcmp/guest:Guest',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allowedSlots = registerOutput<List<int>>('allowedSlots');
     coresPerSlot = registerOutput<int>('coresPerSlot');
     deleteVirtualDisk = registerOutput<bool?>('deleteVirtualDisk');
@@ -218,7 +207,11 @@ class Guest extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Guest] resource's state with the given [name] and [id].
-  static Guest get(String name, pulumi.Input<String> id, {GuestState? state}) {
+  static Guest get(
+    String name,
+    pulumi.Input<String> id, {
+    GuestState? state,
+  }) {
     return Guest._get(
       name,
       state: state?.toMap(),
@@ -231,11 +224,11 @@ class Guest extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:vcmp/guest:Guest',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:vcmp/guest:Guest',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allowedSlots = registerOutput<List<int>>('allowedSlots');
     coresPerSlot = registerOutput<int>('coresPerSlot');
     deleteVirtualDisk = registerOutput<bool?>('deleteVirtualDisk');

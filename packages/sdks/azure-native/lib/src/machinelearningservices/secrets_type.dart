@@ -17,3 +17,4 @@ enum SecretsType {
     throw ArgumentError('Unknown SecretsType value: $value');
   }
 }
+

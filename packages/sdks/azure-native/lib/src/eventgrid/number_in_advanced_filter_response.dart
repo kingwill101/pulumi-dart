@@ -6,11 +6,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NumberInAdvancedFilterResponse {
   /// The field/property in the event based on which you want to filter.
   final pulumi.Input<String>? key;
-
   /// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
   /// Expected value is 'NumberIn'.
   final pulumi.Input<String> operatorType;
-
   /// The set of filter values.
   final pulumi.Input<List<double>>? values;
 
@@ -34,17 +32,10 @@ class NumberInAdvancedFilterResponse {
 
   factory NumberInAdvancedFilterResponse.fromMap(Map<String, dynamic> map) {
     return NumberInAdvancedFilterResponse(
-      key: (() {
-        final guardedValue = map['key'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       operatorType: pulumi.Input.fromValue(map['operatorType'] as String),
-      values: (() {
-        final guardedValue = map['values'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<double>());
-      })(),
+      values: (() { final guardedValue = map['values']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<double>()); })(),
     );
   }
 }
+

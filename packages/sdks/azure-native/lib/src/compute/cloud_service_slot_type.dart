@@ -17,3 +17,4 @@ enum CloudServiceSlotType {
     throw ArgumentError('Unknown CloudServiceSlotType value: $value');
   }
 }
+

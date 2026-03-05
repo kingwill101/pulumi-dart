@@ -9,18 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomHostnameBindingArgs {
   /// The name of the App Service in which to add the Custom Hostname Binding. Changing this forces a new resource to be created.
   final pulumi.Input<String> appServiceName;
-
   /// Specifies the Custom Hostname to use for the App Service, example `www.example.com`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** A CNAME needs to be configured from this Hostname to the Azure Website - otherwise Azure will reject the Hostname Binding.
   final pulumi.Input<String> hostname;
-
   /// The name of the resource group in which the App Service exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
-
   /// The SSL type. Possible values are `IpBasedEnabled` and `SniEnabled`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? sslState;
-
   /// The SSL certificate thumbprint. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** `thumbprint` must be specified when `ssl_state` is set.
@@ -54,19 +50,10 @@ class CustomHostnameBindingArgs {
     return CustomHostnameBindingArgs(
       appServiceName: pulumi.Input.fromValue(map['appServiceName'] as String),
       hostname: pulumi.Input.fromValue(map['hostname'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      sslState: (() {
-        final guardedValue = map['sslState'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      thumbprint: (() {
-        final guardedValue = map['thumbprint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      sslState: (() { final guardedValue = map['sslState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      thumbprint: (() { final guardedValue = map['thumbprint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

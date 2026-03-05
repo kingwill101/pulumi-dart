@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CapabilityPropertiesResponse {
   /// Localized string of the description.
   final pulumi.Input<String> description;
-
   /// URL to retrieve JSON schema of the Capability parameters.
   final pulumi.Input<String> parametersSchema;
-
   /// String of the Publisher that this Capability extends.
   final pulumi.Input<String> publisher;
-
   /// String of the Target Type that this Capability extends.
   final pulumi.Input<String> targetType;
-
   /// String of the URN for this Capability Type.
   final pulumi.Input<String> urn;
 
@@ -46,12 +42,11 @@ class CapabilityPropertiesResponse {
   factory CapabilityPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return CapabilityPropertiesResponse(
       description: pulumi.Input.fromValue(map['description'] as String),
-      parametersSchema: pulumi.Input.fromValue(
-        map['parametersSchema'] as String,
-      ),
+      parametersSchema: pulumi.Input.fromValue(map['parametersSchema'] as String),
       publisher: pulumi.Input.fromValue(map['publisher'] as String),
       targetType: pulumi.Input.fromValue(map['targetType'] as String),
       urn: pulumi.Input.fromValue(map['urn'] as String),
     );
   }
 }
+

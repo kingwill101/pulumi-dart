@@ -17,24 +17,19 @@ class Invocation extends pulumi.CustomResource {
   /// - Custom parameter names can a-zA-Z0-9 a combination of-_. Other characters are not supported. Parameter names are not case-sensitive.
   /// - A single custom parameter name cannot exceed 64 bytes.
   late final pulumi.Output<String?> commandContent;
-
   /// Command ID
   late final pulumi.Output<String?> commandId;
-
   /// The encoding of the script content. Value range:
   /// - PlainText: no encoding, using PlainText transmission.
   /// - Base64:Base64 encoding.
   ///
   /// Default value: PlainText. If you fill it randomly or wrongly, the value will be treated as a PlainText.
   late final pulumi.Output<String?> contentEncoding;
-
   /// The command description.
   late final pulumi.Output<String?> description;
-
   /// Whether custom parameters are included in the command.
   /// Default value: false.
   late final pulumi.Output<bool?> enableParameter;
-
   /// The execution time of the scheduled execution command. Currently, three scheduled execution methods are supported: fixed interval execution (based on Rate expression), only once at a specified time, and timed execution based on clock (based on Cron expression).
   /// - Fixed time interval execution: Based on the Rate expression, the command is executed at the set time interval. Time intervals can be selected by seconds (s), minutes (m), hours (h), and days (d), which is suitable for scenarios where tasks are executed at fixed time intervals. The format is rate( ). If the execution is performed every 5 minutes, the format is rate(5m). Executing with a fixed time interval has the following limitations:
   /// - The set time interval is no more than 7 days and no less than 60 seconds, and must be greater than the timeout period of the scheduled task.
@@ -49,16 +44,12 @@ class Invocation extends pulumi.CustomResource {
   ///
   /// For example, in China/Shanghai time, the command will be executed once every day at 10:15 am in 2022 in the format 0 15 10? * * 2022 Asia/Shanghai; In the eastern 8th District time, it will be executed every half hour from 10:00 a.m. to 11:30 a.m. every day in 2022, in the format of 0 0/30 10-11 * *? 2022 GMT +8:00; In UTC time, starting from 2022, it will be executed every 5 minutes from 14:00 P.M. to 14:55 p. M. Every two years in October, in the format of 0 0/5 14*10? 2022/2 UTC.
   late final pulumi.Output<String?> frequency;
-
   /// The bootstrapper for script execution. The length cannot exceed 1KB.
   late final pulumi.Output<String?> launcher;
-
   /// The command name.
   late final pulumi.Output<String> name;
-
   /// A list of nodes.
   late final pulumi.Output<List<String>?> nodeIdLists;
-
   /// When the command contains custom parameters, the key-value pair of the custom parameters passed in when the command is executed. For example, if the command content is 'echo {{name}}', the key-value pair'{"name":"Jack"}'can be passed through the 'Parameter' parameter'. The custom parameter will automatically replace the variable value 'name' to get a new command that actually executes 'echo Jack '.
   ///
   /// The number of custom parameters ranges from 0 to 10, and you need to pay attention:
@@ -69,7 +60,6 @@ class Invocation extends pulumi.CustomResource {
   ///
   /// The default value is empty, which means that the parameter is unset and the custom parameter is disabled.
   late final pulumi.Output<Map<String, String>?> parameters;
-
   /// Sets the way the command is executed. Value range:
   /// - Once: Execute the command immediately.
   /// - Period: executes the command regularly. When the value of this parameter is 'Period', the 'Frequency' parameter must also be specified.
@@ -80,19 +70,15 @@ class Invocation extends pulumi.CustomResource {
   /// - When the'frequency' parameter is not specified, the default value is'once '.
   /// - When the'frequency' parameter is specified, regardless of whether the parameter value has been set or not, it will be processed according to'period.
   late final pulumi.Output<String?> repeatMode;
-
   /// The mode when the task is stopped (manually stopped or execution time-out interrupted). Possible values:
   /// Process: Stops the current script Process.
   /// ProcessTree: Stops the current process tree (the script process and the collection of all child processes it created)
   late final pulumi.Output<String?> terminationMode;
-
   /// The timeout period for command execution. Unit: seconds. A timeout occurs when a command cannot be run due to a process, a missing module, or a missing cloud assistant Agent. After the timeout, the command process is forcibly terminated. Default value: 60.
   late final pulumi.Output<int?> timeout;
-
   /// The name of the user who executed the command in the instance. The length must not exceed 255 characters.
   /// The instance of the Linux system. By default, the root user runs commands.
   late final pulumi.Output<String?> username;
-
   /// You can customize the command execution path. The default path is as follows:
   /// Linux instance: the execution path is in the/home directory of the root user by default.
   late final pulumi.Output<String?> workingDir;
@@ -106,11 +92,11 @@ class Invocation extends pulumi.CustomResource {
     InvocationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:eflo/invocation:Invocation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:eflo/invocation:Invocation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     commandContent = registerOutput<String?>('commandContent');
     commandId = registerOutput<String?>('commandId');
     contentEncoding = registerOutput<String?>('contentEncoding');
@@ -146,11 +132,11 @@ class Invocation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:eflo/invocation:Invocation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:eflo/invocation:Invocation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     commandContent = registerOutput<String?>('commandContent');
     commandId = registerOutput<String?>('commandId');
     contentEncoding = registerOutput<String?>('contentEncoding');

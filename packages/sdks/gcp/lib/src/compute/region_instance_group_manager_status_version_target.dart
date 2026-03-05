@@ -8,21 +8,20 @@ class RegionInstanceGroupManagerStatusVersionTarget {
 
   /// Creates a new [RegionInstanceGroupManagerStatusVersionTarget].
   /// [isReached] A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
-  RegionInstanceGroupManagerStatusVersionTarget({this.isReached});
+  RegionInstanceGroupManagerStatusVersionTarget({
+    this.isReached,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'isReached': ?isReached};
+    return <String, dynamic>{
+      'isReached': ?isReached,
+    };
   }
 
-  factory RegionInstanceGroupManagerStatusVersionTarget.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RegionInstanceGroupManagerStatusVersionTarget.fromMap(Map<String, dynamic> map) {
     return RegionInstanceGroupManagerStatusVersionTarget(
-      isReached: (() {
-        final guardedValue = map['isReached'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      isReached: (() { final guardedValue = map['isReached']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

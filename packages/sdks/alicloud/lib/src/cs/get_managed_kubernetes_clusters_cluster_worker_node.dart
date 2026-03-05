@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetManagedKubernetesClustersClusterWorkerNode {
   /// ID of the node.
   final pulumi.Input<String> id;
-
   /// Node name.
   final pulumi.Input<String> name;
-
   /// The private IP address of node.
   final pulumi.Input<String> privateIp;
 
@@ -23,12 +21,14 @@ class GetManagedKubernetesClustersClusterWorkerNode {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id, 'name': name, 'privateIp': privateIp};
+    return <String, dynamic>{
+      'id': id,
+      'name': name,
+      'privateIp': privateIp,
+    };
   }
 
-  factory GetManagedKubernetesClustersClusterWorkerNode.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetManagedKubernetesClustersClusterWorkerNode.fromMap(Map<String, dynamic> map) {
     return GetManagedKubernetesClustersClusterWorkerNode(
       id: pulumi.Input.fromValue(map['id'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
@@ -36,3 +36,4 @@ class GetManagedKubernetesClustersClusterWorkerNode {
     );
   }
 }
+

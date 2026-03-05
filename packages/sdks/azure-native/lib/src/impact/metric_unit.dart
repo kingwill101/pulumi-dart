@@ -25,3 +25,4 @@ enum MetricUnit {
     throw ArgumentError('Unknown MetricUnit value: $value');
   }
 }
+

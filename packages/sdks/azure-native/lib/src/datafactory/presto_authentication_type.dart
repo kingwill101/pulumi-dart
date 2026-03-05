@@ -15,3 +15,4 @@ enum PrestoAuthenticationType {
     throw ArgumentError('Unknown PrestoAuthenticationType value: $value');
   }
 }
+

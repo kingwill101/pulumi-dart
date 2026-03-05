@@ -258,16 +258,12 @@ import 'firewall_device_state.dart';
 class FirewallDeviceResource extends pulumi.CustomResource {
   /// When the Firewall Device was last created.
   late final pulumi.Output<String> created;
-
   /// The unique ID of the entity to attach.
   late final pulumi.Output<int> entityId;
-
   /// The type of the entity to attach. (default: `linode`)
   late final pulumi.Output<String> entityType;
-
   /// The unique ID of the target Firewall.
   late final pulumi.Output<int> firewallId;
-
   /// When the Firewall Device was last updated.
   late final pulumi.Output<String> updated;
 
@@ -280,11 +276,11 @@ class FirewallDeviceResource extends pulumi.CustomResource {
     FirewallDeviceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'linode:index/firewallDevice:FirewallDevice',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'linode:index/firewallDevice:FirewallDevice',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     created = registerOutput<String>('created');
     entityId = registerOutput<int>('entityId');
     entityType = registerOutput<String>('entityType');
@@ -310,11 +306,11 @@ class FirewallDeviceResource extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'linode:index/firewallDevice:FirewallDevice',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'linode:index/firewallDevice:FirewallDevice',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     created = registerOutput<String>('created');
     entityId = registerOutput<int>('entityId');
     entityType = registerOutput<String>('entityType');

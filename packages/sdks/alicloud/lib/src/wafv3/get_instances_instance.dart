@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstancesInstance {
   /// The creation time of the resource.
   final pulumi.Input<String> createTime;
-
   /// The ID of the resource.
   final pulumi.Input<String> id;
-
   /// The first ID of the resource.
   final pulumi.Input<String> instanceId;
-
   /// The status of the resource.
   final pulumi.Input<String> status;
 
@@ -45,3 +42,4 @@ class GetInstancesInstance {
     );
   }
 }
+

@@ -7,54 +7,29 @@ import 'substitute_from_definition_response.dart';
 class PostBuildDefinitionResponse {
   /// Key/value pairs holding the variables to be substituted in this Kustomization.
   final pulumi.Input<Map<String, String>>? substitute;
-
   /// Array of ConfigMaps/Secrets from which the variables are substituted for this Kustomization.
   final pulumi.Input<List<SubstituteFromDefinitionResponse>>? substituteFrom;
 
   /// Creates a new [PostBuildDefinitionResponse].
   /// [substitute] Key/value pairs holding the variables to be substituted in this Kustomization.
   /// [substituteFrom] Array of ConfigMaps/Secrets from which the variables are substituted for this Kustomization.
-  PostBuildDefinitionResponse({this.substitute, this.substituteFrom});
+  PostBuildDefinitionResponse({
+    this.substitute,
+    this.substituteFrom,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'substitute': ?substitute,
-      'substituteFrom':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<SubstituteFromDefinitionResponse>,
-            List<Map<String, dynamic>>
-          >(
-            substituteFrom,
-            (value) =>
-                pulumi.Input.encodeList<
-                  SubstituteFromDefinitionResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'substituteFrom': ?pulumi.Input.mapOptionalInputValue<List<SubstituteFromDefinitionResponse>, List<Map<String, dynamic>>>(substituteFrom, (value) => pulumi.Input.encodeList<SubstituteFromDefinitionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory PostBuildDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return PostBuildDefinitionResponse(
-      substitute: (() {
-        final guardedValue = map['substitute'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      substituteFrom: (() {
-        final guardedValue = map['substituteFrom'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<SubstituteFromDefinitionResponse>(
-            guardedValue,
-            (value) => SubstituteFromDefinitionResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      substitute: (() { final guardedValue = map['substitute']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      substituteFrom: (() { final guardedValue = map['substituteFrom']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SubstituteFromDefinitionResponse>(guardedValue, (value) => SubstituteFromDefinitionResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

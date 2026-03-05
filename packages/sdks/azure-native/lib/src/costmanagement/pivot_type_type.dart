@@ -15,3 +15,4 @@ enum PivotTypeType {
     throw ArgumentError('Unknown PivotTypeType value: $value');
   }
 }
+

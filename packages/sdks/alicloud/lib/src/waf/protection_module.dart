@@ -297,13 +297,10 @@ import 'protection_module_state.dart';
 class ProtectionModule extends pulumi.CustomResource {
   /// The Protection Module. Valid values: `ac_cc`, `antifraud`, `dld`, `normalized`, `waf`.
   late final pulumi.Output<String> defenseType;
-
   /// The domain name that is added to WAF.
   late final pulumi.Output<String> domain;
-
   /// The ID of the WAF instance.
   late final pulumi.Output<String> instanceId;
-
   /// The protection mode of the specified protection module. **NOTE:** The value of the Mode parameter varies based on the value of the `defense_type` parameter.
   /// * The `defense_type` is `waf`. `0`: block mode. `1`: warn mode.
   /// * The `defense_type` is `dld`. `0`: warn mode. `1`: block mode.
@@ -311,7 +308,6 @@ class ProtectionModule extends pulumi.CustomResource {
   /// * The `defense_type` is `antifraud`. `0`: warn mode. `1`: block mode. `2`: strict interception mode.
   /// * The `defense_type` is `normalized`. `0`: warn mode. `1`: block mode.
   late final pulumi.Output<int> mode;
-
   /// The status of the resource. Valid values: `0`, `1`.
   late final pulumi.Output<int?> status;
 
@@ -324,11 +320,11 @@ class ProtectionModule extends pulumi.CustomResource {
     ProtectionModuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:waf/protectionModule:ProtectionModule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:waf/protectionModule:ProtectionModule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     defenseType = registerOutput<String>('defenseType');
     domain = registerOutput<String>('domain');
     instanceId = registerOutput<String>('instanceId');
@@ -354,11 +350,11 @@ class ProtectionModule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:waf/protectionModule:ProtectionModule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:waf/protectionModule:ProtectionModule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     defenseType = registerOutput<String>('defenseType');
     domain = registerOutput<String>('domain');
     instanceId = registerOutput<String>('instanceId');

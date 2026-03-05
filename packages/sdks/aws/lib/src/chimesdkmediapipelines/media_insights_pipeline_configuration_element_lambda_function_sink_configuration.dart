@@ -13,14 +13,15 @@ class MediaInsightsPipelineConfigurationElementLambdaFunctionSinkConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'insightsTarget': insightsTarget};
+    return <String, dynamic>{
+      'insightsTarget': insightsTarget,
+    };
   }
 
-  factory MediaInsightsPipelineConfigurationElementLambdaFunctionSinkConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MediaInsightsPipelineConfigurationElementLambdaFunctionSinkConfiguration.fromMap(Map<String, dynamic> map) {
     return MediaInsightsPipelineConfigurationElementLambdaFunctionSinkConfiguration(
       insightsTarget: pulumi.Input.fromValue(map['insightsTarget'] as String),
     );
   }
 }
+

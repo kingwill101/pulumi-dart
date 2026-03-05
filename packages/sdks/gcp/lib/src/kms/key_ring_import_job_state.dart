@@ -11,34 +11,26 @@ class KeyRingImportJobState {
   /// Only present if the chosen ImportMethod is one with a protection level of HSM.
   /// Structure is documented below.
   final pulumi.Input<List<KeyRingImportJobAttestation>>? attestations;
-
   /// The time at which this resource is scheduled for expiration and can no longer be used.
   /// This is in RFC3339 text format.
   final pulumi.Input<String>? expireTime;
-
   /// It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
   final pulumi.Input<String>? importJobId;
-
   /// The wrapping method to be used for incoming key material.
   /// Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`, `RSA_OAEP_3072_SHA256_AES_256`, `RSA_OAEP_4096_SHA256_AES_256`, `RSA_OAEP_3072_SHA256`, `RSA_OAEP_4096_SHA256`.
   final pulumi.Input<String>? importMethod;
-
   /// The KeyRing that this import job belongs to.
   /// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
   final pulumi.Input<String>? keyRing;
-
   /// The resource name for this ImportJob in the format projects/*/locations/*/keyRings/*/importJobs/*.
   final pulumi.Input<String>? name;
-
   /// The protection level of the ImportJob. This must match the protectionLevel of the
   /// versionTemplate on the CryptoKey you attempt to import into.
   /// Possible values are: `SOFTWARE`, `HSM`, `EXTERNAL`.
   final pulumi.Input<String>? protectionLevel;
-
   /// The public key with which to wrap key material prior to import. Only returned if state is `ACTIVE`.
   /// Structure is documented below.
   final pulumi.Input<List<KeyRingImportJobPublicKey>>? publicKeys;
-
   /// The current state of the ImportJob, indicating if it can be used.
   final pulumi.Input<String>? state;
 
@@ -66,101 +58,30 @@ class KeyRingImportJobState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attestations':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<KeyRingImportJobAttestation>,
-            List<Map<String, dynamic>>
-          >(
-            attestations,
-            (value) =>
-                pulumi.Input.encodeList<
-                  KeyRingImportJobAttestation,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'attestations': ?pulumi.Input.mapOptionalInputValue<List<KeyRingImportJobAttestation>, List<Map<String, dynamic>>>(attestations, (value) => pulumi.Input.encodeList<KeyRingImportJobAttestation, Map<String, dynamic>>(value, (value) => value.toMap())),
       'expireTime': ?expireTime,
       'importJobId': ?importJobId,
       'importMethod': ?importMethod,
       'keyRing': ?keyRing,
       'name': ?name,
       'protectionLevel': ?protectionLevel,
-      'publicKeys':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<KeyRingImportJobPublicKey>,
-            List<Map<String, dynamic>>
-          >(
-            publicKeys,
-            (value) =>
-                pulumi.Input.encodeList<
-                  KeyRingImportJobPublicKey,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'publicKeys': ?pulumi.Input.mapOptionalInputValue<List<KeyRingImportJobPublicKey>, List<Map<String, dynamic>>>(publicKeys, (value) => pulumi.Input.encodeList<KeyRingImportJobPublicKey, Map<String, dynamic>>(value, (value) => value.toMap())),
       'state': ?state,
     };
   }
 
   factory KeyRingImportJobState.fromMap(Map<String, dynamic> map) {
     return KeyRingImportJobState(
-      attestations: (() {
-        final guardedValue = map['attestations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<KeyRingImportJobAttestation>(
-            guardedValue,
-            (value) => KeyRingImportJobAttestation.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      expireTime: (() {
-        final guardedValue = map['expireTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      importJobId: (() {
-        final guardedValue = map['importJobId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      importMethod: (() {
-        final guardedValue = map['importMethod'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keyRing: (() {
-        final guardedValue = map['keyRing'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      protectionLevel: (() {
-        final guardedValue = map['protectionLevel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      publicKeys: (() {
-        final guardedValue = map['publicKeys'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<KeyRingImportJobPublicKey>(
-            guardedValue,
-            (value) => KeyRingImportJobPublicKey.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      attestations: (() { final guardedValue = map['attestations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<KeyRingImportJobAttestation>(guardedValue, (value) => KeyRingImportJobAttestation.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      expireTime: (() { final guardedValue = map['expireTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      importJobId: (() { final guardedValue = map['importJobId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      importMethod: (() { final guardedValue = map['importMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyRing: (() { final guardedValue = map['keyRing']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      protectionLevel: (() { final guardedValue = map['protectionLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicKeys: (() { final guardedValue = map['publicKeys']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<KeyRingImportJobPublicKey>(guardedValue, (value) => KeyRingImportJobPublicKey.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

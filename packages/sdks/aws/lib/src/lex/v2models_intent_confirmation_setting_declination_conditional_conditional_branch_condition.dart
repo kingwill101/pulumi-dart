@@ -13,16 +13,15 @@ class V2modelsIntentConfirmationSettingDeclinationConditionalConditionalBranchCo
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'expressionString': expressionString};
+    return <String, dynamic>{
+      'expressionString': expressionString,
+    };
   }
 
-  factory V2modelsIntentConfirmationSettingDeclinationConditionalConditionalBranchCondition.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory V2modelsIntentConfirmationSettingDeclinationConditionalConditionalBranchCondition.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingDeclinationConditionalConditionalBranchCondition(
-      expressionString: pulumi.Input.fromValue(
-        map['expressionString'] as String,
-      ),
+      expressionString: pulumi.Input.fromValue(map['expressionString'] as String),
     );
   }
 }
+

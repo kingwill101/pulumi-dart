@@ -20,3 +20,4 @@ enum MessageNewJobState {
     throw ArgumentError('Unknown MessageNewJobState value: $value');
   }
 }
+

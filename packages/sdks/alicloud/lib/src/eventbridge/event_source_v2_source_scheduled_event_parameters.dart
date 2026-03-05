@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EventSourceV2SourceScheduledEventParameters {
   /// Cron expression
   final pulumi.Input<String>? schedule;
-
   /// The Cron execution time zone.
   final pulumi.Input<String>? timeZone;
-
   /// JSON string
   final pulumi.Input<String>? userData;
 
@@ -30,25 +28,12 @@ class EventSourceV2SourceScheduledEventParameters {
     };
   }
 
-  factory EventSourceV2SourceScheduledEventParameters.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EventSourceV2SourceScheduledEventParameters.fromMap(Map<String, dynamic> map) {
     return EventSourceV2SourceScheduledEventParameters(
-      schedule: (() {
-        final guardedValue = map['schedule'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      timeZone: (() {
-        final guardedValue = map['timeZone'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      userData: (() {
-        final guardedValue = map['userData'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      schedule: (() { final guardedValue = map['schedule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      timeZone: (() { final guardedValue = map['timeZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      userData: (() { final guardedValue = map['userData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

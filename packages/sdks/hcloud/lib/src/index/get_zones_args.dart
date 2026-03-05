@@ -12,19 +12,20 @@ class GetZonesArgs {
 
   /// Creates a new [GetZonesArgs].
   /// [withSelector] Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
-  GetZonesArgs({this.withSelector});
+  GetZonesArgs({
+    this.withSelector,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'withSelector': ?withSelector};
+    return <String, dynamic>{
+      'withSelector': ?withSelector,
+    };
   }
 
   factory GetZonesArgs.fromMap(Map<String, dynamic> map) {
     return GetZonesArgs(
-      withSelector: (() {
-        final guardedValue = map['withSelector'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      withSelector: (() { final guardedValue = map['withSelector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

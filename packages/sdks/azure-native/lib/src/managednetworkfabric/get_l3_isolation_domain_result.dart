@@ -8,49 +8,34 @@ import 'system_data_response.dart';
 class GetL3IsolationDomainResult {
   /// Administrative state of the resource.
   final String administrativeState;
-
   /// Aggregate route configurations.
   final AggregateRouteConfigurationResponse? aggregateRouteConfiguration;
-
   /// Switch configuration description.
   final String? annotation;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Configuration state of the resource.
   final String configurationState;
-
   /// Connected Subnet RoutePolicy
   final ConnectedSubnetRoutePolicyResponse? connectedSubnetRoutePolicy;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// The geo-location where the resource lives
   final String location;
-
   /// The name of the resource
   final String name;
-
   /// ARM Resource ID of the Network Fabric.
   final String networkFabricId;
-
   /// Provisioning state of the resource.
   final String provisioningState;
-
   /// Advertise Connected Subnets. Ex: "True" | "False".
   final String? redistributeConnectedSubnets;
-
   /// Advertise Static Routes. Ex: "True" | "False".
   final String? redistributeStaticRoutes;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -114,51 +99,22 @@ class GetL3IsolationDomainResult {
   factory GetL3IsolationDomainResult.fromMap(Map<String, dynamic> map) {
     return GetL3IsolationDomainResult(
       administrativeState: map['administrativeState'] as String,
-      aggregateRouteConfiguration: (() {
-        final guardedValue = map['aggregateRouteConfiguration'];
-        if (guardedValue == null) return null;
-        return AggregateRouteConfigurationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      annotation: (() {
-        final guardedValue = map['annotation'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      aggregateRouteConfiguration: (() { final guardedValue = map['aggregateRouteConfiguration']; if (guardedValue == null) return null; return AggregateRouteConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      annotation: (() { final guardedValue = map['annotation']; if (guardedValue == null) return null; return guardedValue as String; })(),
       azureApiVersion: map['azureApiVersion'] as String,
       configurationState: map['configurationState'] as String,
-      connectedSubnetRoutePolicy: (() {
-        final guardedValue = map['connectedSubnetRoutePolicy'];
-        if (guardedValue == null) return null;
-        return ConnectedSubnetRoutePolicyResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      connectedSubnetRoutePolicy: (() { final guardedValue = map['connectedSubnetRoutePolicy']; if (guardedValue == null) return null; return ConnectedSubnetRoutePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
       networkFabricId: map['networkFabricId'] as String,
       provisioningState: map['provisioningState'] as String,
-      redistributeConnectedSubnets: (() {
-        final guardedValue = map['redistributeConnectedSubnets'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      redistributeStaticRoutes: (() {
-        final guardedValue = map['redistributeStaticRoutes'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      redistributeConnectedSubnets: (() { final guardedValue = map['redistributeConnectedSubnets']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      redistributeStaticRoutes: (() { final guardedValue = map['redistributeStaticRoutes']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

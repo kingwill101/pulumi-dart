@@ -14,50 +14,27 @@ import 'http_route_urlrewrite_response_networkservices_v1beta1.dart';
 /// The specifications for routing traffic and applying associated policies.
 class HttpRouteRouteActionResponseNetworkservicesV1beta1 {
   /// The specification for allowing client side cross-origin requests.
-  final pulumi.Input<HttpRouteCorsPolicyResponseNetworkservicesV1beta1>
-  corsPolicy;
-
+  final pulumi.Input<HttpRouteCorsPolicyResponseNetworkservicesV1beta1> corsPolicy;
   /// The destination to which traffic should be forwarded.
-  final pulumi.Input<List<HttpRouteDestinationResponseNetworkservicesV1beta1>>
-  destinations;
-
+  final pulumi.Input<List<HttpRouteDestinationResponseNetworkservicesV1beta1>> destinations;
   /// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted for a percentage of requests. timeout and retry_policy will be ignored by clients that are configured with a fault_injection_policy
-  final pulumi.Input<
-    HttpRouteFaultInjectionPolicyResponseNetworkservicesV1beta1
-  >
-  faultInjectionPolicy;
-
+  final pulumi.Input<HttpRouteFaultInjectionPolicyResponseNetworkservicesV1beta1> faultInjectionPolicy;
   /// If set, the request is directed as configured by this field.
   final pulumi.Input<HttpRouteRedirectResponseNetworkservicesV1beta1> redirect;
-
   /// The specification for modifying the headers of a matching request prior to delivery of the request to the destination. If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged. Conflicts between the two will not be resolved on the configuration.
-  final pulumi.Input<HttpRouteHeaderModifierResponseNetworkservicesV1beta1>
-  requestHeaderModifier;
-
+  final pulumi.Input<HttpRouteHeaderModifierResponseNetworkservicesV1beta1> requestHeaderModifier;
   /// Specifies the policy on how requests intended for the routes destination are shadowed to a separate mirrored destination. Proxy will not wait for the shadow destination to respond before returning the response. Prior to sending traffic to the shadow service, the host/authority header is suffixed with -shadow.
-  final pulumi.Input<HttpRouteRequestMirrorPolicyResponseNetworkservicesV1beta1>
-  requestMirrorPolicy;
-
+  final pulumi.Input<HttpRouteRequestMirrorPolicyResponseNetworkservicesV1beta1> requestMirrorPolicy;
   /// The specification for modifying the headers of a response prior to sending the response back to the client. If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged. Conflicts between the two will not be resolved on the configuration.
-  final pulumi.Input<HttpRouteHeaderModifierResponseNetworkservicesV1beta1>
-  responseHeaderModifier;
-
+  final pulumi.Input<HttpRouteHeaderModifierResponseNetworkservicesV1beta1> responseHeaderModifier;
   /// Specifies the retry policy associated with this route.
-  final pulumi.Input<HttpRouteRetryPolicyResponseNetworkservicesV1beta1>
-  retryPolicy;
-
+  final pulumi.Input<HttpRouteRetryPolicyResponseNetworkservicesV1beta1> retryPolicy;
   /// Optional. Specifies cookie-based stateful session affinity.
-  final pulumi.Input<
-    HttpRouteStatefulSessionAffinityPolicyResponseNetworkservicesV1beta1
-  >
-  statefulSessionAffinity;
-
+  final pulumi.Input<HttpRouteStatefulSessionAffinityPolicyResponseNetworkservicesV1beta1> statefulSessionAffinity;
   /// Specifies the timeout for selected route. Timeout is computed from the time the request has been fully processed (i.e. end of stream) up until the response has been completely processed. Timeout includes all retries.
   final pulumi.Input<String> timeout;
-
   /// The specification for rewrite URL before forwarding requests to the destination.
-  final pulumi.Input<HttpRouteURLRewriteResponseNetworkservicesV1beta1>
-  urlRewrite;
+  final pulumi.Input<HttpRouteURLRewriteResponseNetworkservicesV1beta1> urlRewrite;
 
   /// Creates a new [HttpRouteRouteActionResponseNetworkservicesV1beta1].
   /// [corsPolicy] The specification for allowing client side cross-origin requests.
@@ -87,127 +64,34 @@ class HttpRouteRouteActionResponseNetworkservicesV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'corsPolicy':
-          pulumi.Input.mapInputValue<
-            HttpRouteCorsPolicyResponseNetworkservicesV1beta1,
-            Map<String, dynamic>
-          >(corsPolicy, (value) => value.toMap()),
-      'destinations':
-          pulumi.Input.mapInputValue<
-            List<HttpRouteDestinationResponseNetworkservicesV1beta1>,
-            List<Map<String, dynamic>>
-          >(
-            destinations,
-            (value) =>
-                pulumi.Input.encodeList<
-                  HttpRouteDestinationResponseNetworkservicesV1beta1,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'faultInjectionPolicy':
-          pulumi.Input.mapInputValue<
-            HttpRouteFaultInjectionPolicyResponseNetworkservicesV1beta1,
-            Map<String, dynamic>
-          >(faultInjectionPolicy, (value) => value.toMap()),
-      'redirect':
-          pulumi.Input.mapInputValue<
-            HttpRouteRedirectResponseNetworkservicesV1beta1,
-            Map<String, dynamic>
-          >(redirect, (value) => value.toMap()),
-      'requestHeaderModifier':
-          pulumi.Input.mapInputValue<
-            HttpRouteHeaderModifierResponseNetworkservicesV1beta1,
-            Map<String, dynamic>
-          >(requestHeaderModifier, (value) => value.toMap()),
-      'requestMirrorPolicy':
-          pulumi.Input.mapInputValue<
-            HttpRouteRequestMirrorPolicyResponseNetworkservicesV1beta1,
-            Map<String, dynamic>
-          >(requestMirrorPolicy, (value) => value.toMap()),
-      'responseHeaderModifier':
-          pulumi.Input.mapInputValue<
-            HttpRouteHeaderModifierResponseNetworkservicesV1beta1,
-            Map<String, dynamic>
-          >(responseHeaderModifier, (value) => value.toMap()),
-      'retryPolicy':
-          pulumi.Input.mapInputValue<
-            HttpRouteRetryPolicyResponseNetworkservicesV1beta1,
-            Map<String, dynamic>
-          >(retryPolicy, (value) => value.toMap()),
-      'statefulSessionAffinity':
-          pulumi.Input.mapInputValue<
-            HttpRouteStatefulSessionAffinityPolicyResponseNetworkservicesV1beta1,
-            Map<String, dynamic>
-          >(statefulSessionAffinity, (value) => value.toMap()),
+      'corsPolicy': pulumi.Input.mapInputValue<HttpRouteCorsPolicyResponseNetworkservicesV1beta1, Map<String, dynamic>>(corsPolicy, (value) => value.toMap()),
+      'destinations': pulumi.Input.mapInputValue<List<HttpRouteDestinationResponseNetworkservicesV1beta1>, List<Map<String, dynamic>>>(destinations, (value) => pulumi.Input.encodeList<HttpRouteDestinationResponseNetworkservicesV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'faultInjectionPolicy': pulumi.Input.mapInputValue<HttpRouteFaultInjectionPolicyResponseNetworkservicesV1beta1, Map<String, dynamic>>(faultInjectionPolicy, (value) => value.toMap()),
+      'redirect': pulumi.Input.mapInputValue<HttpRouteRedirectResponseNetworkservicesV1beta1, Map<String, dynamic>>(redirect, (value) => value.toMap()),
+      'requestHeaderModifier': pulumi.Input.mapInputValue<HttpRouteHeaderModifierResponseNetworkservicesV1beta1, Map<String, dynamic>>(requestHeaderModifier, (value) => value.toMap()),
+      'requestMirrorPolicy': pulumi.Input.mapInputValue<HttpRouteRequestMirrorPolicyResponseNetworkservicesV1beta1, Map<String, dynamic>>(requestMirrorPolicy, (value) => value.toMap()),
+      'responseHeaderModifier': pulumi.Input.mapInputValue<HttpRouteHeaderModifierResponseNetworkservicesV1beta1, Map<String, dynamic>>(responseHeaderModifier, (value) => value.toMap()),
+      'retryPolicy': pulumi.Input.mapInputValue<HttpRouteRetryPolicyResponseNetworkservicesV1beta1, Map<String, dynamic>>(retryPolicy, (value) => value.toMap()),
+      'statefulSessionAffinity': pulumi.Input.mapInputValue<HttpRouteStatefulSessionAffinityPolicyResponseNetworkservicesV1beta1, Map<String, dynamic>>(statefulSessionAffinity, (value) => value.toMap()),
       'timeout': timeout,
-      'urlRewrite':
-          pulumi.Input.mapInputValue<
-            HttpRouteURLRewriteResponseNetworkservicesV1beta1,
-            Map<String, dynamic>
-          >(urlRewrite, (value) => value.toMap()),
+      'urlRewrite': pulumi.Input.mapInputValue<HttpRouteURLRewriteResponseNetworkservicesV1beta1, Map<String, dynamic>>(urlRewrite, (value) => value.toMap()),
     };
   }
 
-  factory HttpRouteRouteActionResponseNetworkservicesV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory HttpRouteRouteActionResponseNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
     return HttpRouteRouteActionResponseNetworkservicesV1beta1(
-      corsPolicy: pulumi.Input.fromValue(
-        HttpRouteCorsPolicyResponseNetworkservicesV1beta1.fromMap(
-          (map['corsPolicy']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      destinations: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          HttpRouteDestinationResponseNetworkservicesV1beta1
-        >(
-          map['destinations']!,
-          (value) => HttpRouteDestinationResponseNetworkservicesV1beta1.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      faultInjectionPolicy: pulumi.Input.fromValue(
-        HttpRouteFaultInjectionPolicyResponseNetworkservicesV1beta1.fromMap(
-          (map['faultInjectionPolicy']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      redirect: pulumi.Input.fromValue(
-        HttpRouteRedirectResponseNetworkservicesV1beta1.fromMap(
-          (map['redirect']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      requestHeaderModifier: pulumi.Input.fromValue(
-        HttpRouteHeaderModifierResponseNetworkservicesV1beta1.fromMap(
-          (map['requestHeaderModifier']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      requestMirrorPolicy: pulumi.Input.fromValue(
-        HttpRouteRequestMirrorPolicyResponseNetworkservicesV1beta1.fromMap(
-          (map['requestMirrorPolicy']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      responseHeaderModifier: pulumi.Input.fromValue(
-        HttpRouteHeaderModifierResponseNetworkservicesV1beta1.fromMap(
-          (map['responseHeaderModifier']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      retryPolicy: pulumi.Input.fromValue(
-        HttpRouteRetryPolicyResponseNetworkservicesV1beta1.fromMap(
-          (map['retryPolicy']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      statefulSessionAffinity: pulumi.Input.fromValue(
-        HttpRouteStatefulSessionAffinityPolicyResponseNetworkservicesV1beta1.fromMap(
-          (map['statefulSessionAffinity']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      corsPolicy: pulumi.Input.fromValue(HttpRouteCorsPolicyResponseNetworkservicesV1beta1.fromMap((map['corsPolicy']! as Map).cast<String, dynamic>())),
+      destinations: pulumi.Input.fromValue(pulumi.Input.decodeList<HttpRouteDestinationResponseNetworkservicesV1beta1>(map['destinations']!, (value) => HttpRouteDestinationResponseNetworkservicesV1beta1.fromMap((value as Map).cast<String, dynamic>()))),
+      faultInjectionPolicy: pulumi.Input.fromValue(HttpRouteFaultInjectionPolicyResponseNetworkservicesV1beta1.fromMap((map['faultInjectionPolicy']! as Map).cast<String, dynamic>())),
+      redirect: pulumi.Input.fromValue(HttpRouteRedirectResponseNetworkservicesV1beta1.fromMap((map['redirect']! as Map).cast<String, dynamic>())),
+      requestHeaderModifier: pulumi.Input.fromValue(HttpRouteHeaderModifierResponseNetworkservicesV1beta1.fromMap((map['requestHeaderModifier']! as Map).cast<String, dynamic>())),
+      requestMirrorPolicy: pulumi.Input.fromValue(HttpRouteRequestMirrorPolicyResponseNetworkservicesV1beta1.fromMap((map['requestMirrorPolicy']! as Map).cast<String, dynamic>())),
+      responseHeaderModifier: pulumi.Input.fromValue(HttpRouteHeaderModifierResponseNetworkservicesV1beta1.fromMap((map['responseHeaderModifier']! as Map).cast<String, dynamic>())),
+      retryPolicy: pulumi.Input.fromValue(HttpRouteRetryPolicyResponseNetworkservicesV1beta1.fromMap((map['retryPolicy']! as Map).cast<String, dynamic>())),
+      statefulSessionAffinity: pulumi.Input.fromValue(HttpRouteStatefulSessionAffinityPolicyResponseNetworkservicesV1beta1.fromMap((map['statefulSessionAffinity']! as Map).cast<String, dynamic>())),
       timeout: pulumi.Input.fromValue(map['timeout'] as String),
-      urlRewrite: pulumi.Input.fromValue(
-        HttpRouteURLRewriteResponseNetworkservicesV1beta1.fromMap(
-          (map['urlRewrite']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      urlRewrite: pulumi.Input.fromValue(HttpRouteURLRewriteResponseNetworkservicesV1beta1.fromMap((map['urlRewrite']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

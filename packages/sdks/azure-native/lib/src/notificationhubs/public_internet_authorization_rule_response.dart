@@ -9,17 +9,20 @@ class PublicInternetAuthorizationRuleResponse {
 
   /// Creates a new [PublicInternetAuthorizationRuleResponse].
   /// [rights] List of access rights.
-  PublicInternetAuthorizationRuleResponse({required this.rights});
+  PublicInternetAuthorizationRuleResponse({
+    required this.rights,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'rights': rights};
+    return <String, dynamic>{
+      'rights': rights,
+    };
   }
 
-  factory PublicInternetAuthorizationRuleResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PublicInternetAuthorizationRuleResponse.fromMap(Map<String, dynamic> map) {
     return PublicInternetAuthorizationRuleResponse(
       rights: pulumi.Input.fromValue((map['rights'] as List).cast<String>()),
     );
   }
 }
+

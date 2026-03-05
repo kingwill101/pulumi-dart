@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RetryPolicy {
   /// Retry count for user request
   final pulumi.Input<int>? retryCount;
-
   /// Retry window in minutes for user request
   final pulumi.Input<int>? retryWindowInMinutes;
 
   /// Creates a new [RetryPolicy].
   /// [retryCount] Retry count for user request
   /// [retryWindowInMinutes] Retry window in minutes for user request
-  RetryPolicy({this.retryCount, this.retryWindowInMinutes});
+  RetryPolicy({
+    this.retryCount,
+    this.retryWindowInMinutes,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class RetryPolicy {
 
   factory RetryPolicy.fromMap(Map<String, dynamic> map) {
     return RetryPolicy(
-      retryCount: (() {
-        final guardedValue = map['retryCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      retryWindowInMinutes: (() {
-        final guardedValue = map['retryWindowInMinutes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      retryCount: (() { final guardedValue = map['retryCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      retryWindowInMinutes: (() { final guardedValue = map['retryWindowInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

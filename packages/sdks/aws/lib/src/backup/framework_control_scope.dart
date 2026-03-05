@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FrameworkControlScope {
   /// The ID of the only AWS resource that you want your control scope to contain. Minimum number of 1 item. Maximum number of 100 items.
   final pulumi.Input<List<String>>? complianceResourceIds;
-
   /// Describes whether the control scope includes one or more types of resources, such as EFS or RDS.
   final pulumi.Input<List<String>>? complianceResourceTypes;
-
   /// The tag key-value pair applied to those AWS resources that you want to trigger an evaluation for a rule. A maximum of one key-value pair can be provided.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -32,23 +30,10 @@ class FrameworkControlScope {
 
   factory FrameworkControlScope.fromMap(Map<String, dynamic> map) {
     return FrameworkControlScope(
-      complianceResourceIds: (() {
-        final guardedValue = map['complianceResourceIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      complianceResourceTypes: (() {
-        final guardedValue = map['complianceResourceTypes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      complianceResourceIds: (() { final guardedValue = map['complianceResourceIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      complianceResourceTypes: (() { final guardedValue = map['complianceResourceTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

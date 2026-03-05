@@ -9,11 +9,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProjectMetadataItemArgs {
   /// The metadata key to set.
   final pulumi.Input<String> key;
-
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The value to set for the given metadata key.
   ///
   /// - - -
@@ -30,18 +28,19 @@ class ProjectMetadataItemArgs {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': key, 'project': ?project, 'value': value};
+    return <String, dynamic>{
+      'key': key,
+      'project': ?project,
+      'value': value,
+    };
   }
 
   factory ProjectMetadataItemArgs.fromMap(Map<String, dynamic> map) {
     return ProjectMetadataItemArgs(
       key: pulumi.Input.fromValue(map['key'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
+

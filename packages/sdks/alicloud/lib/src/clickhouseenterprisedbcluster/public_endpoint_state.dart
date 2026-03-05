@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PublicEndpointState {
   /// The public network connection string prefix of the instance.
   final pulumi.Input<String>? connectionStringPrefix;
-
   /// The cluster ID.
   final pulumi.Input<String>? dbInstanceId;
-
   /// Network type of the connection address. Valid values:
   /// - Public: Public network.
   final pulumi.Input<String>? netType;
@@ -34,21 +32,10 @@ class PublicEndpointState {
 
   factory PublicEndpointState.fromMap(Map<String, dynamic> map) {
     return PublicEndpointState(
-      connectionStringPrefix: (() {
-        final guardedValue = map['connectionStringPrefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dbInstanceId: (() {
-        final guardedValue = map['dbInstanceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      netType: (() {
-        final guardedValue = map['netType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      connectionStringPrefix: (() { final guardedValue = map['connectionStringPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dbInstanceId: (() { final guardedValue = map['dbInstanceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      netType: (() { final guardedValue = map['netType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

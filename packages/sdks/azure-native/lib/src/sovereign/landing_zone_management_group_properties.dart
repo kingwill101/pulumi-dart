@@ -7,10 +7,8 @@ import 'policy_initiative_assignment_properties.dart';
 class LandingZoneManagementGroupProperties {
   /// Management group name.
   final pulumi.Input<String> name;
-
   /// Array of policy initiatives applied to the management group.
-  final pulumi.Input<List<PolicyInitiativeAssignmentProperties>>
-  policyInitiativesAssignmentProperties;
+  final pulumi.Input<List<PolicyInitiativeAssignmentProperties>> policyInitiativesAssignmentProperties;
 
   /// Creates a new [LandingZoneManagementGroupProperties].
   /// [name] Management group name.
@@ -23,34 +21,15 @@ class LandingZoneManagementGroupProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'policyInitiativesAssignmentProperties':
-          pulumi.Input.mapInputValue<
-            List<PolicyInitiativeAssignmentProperties>,
-            List<Map<String, dynamic>>
-          >(
-            policyInitiativesAssignmentProperties,
-            (value) =>
-                pulumi.Input.encodeList<
-                  PolicyInitiativeAssignmentProperties,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'policyInitiativesAssignmentProperties': pulumi.Input.mapInputValue<List<PolicyInitiativeAssignmentProperties>, List<Map<String, dynamic>>>(policyInitiativesAssignmentProperties, (value) => pulumi.Input.encodeList<PolicyInitiativeAssignmentProperties, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory LandingZoneManagementGroupProperties.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LandingZoneManagementGroupProperties.fromMap(Map<String, dynamic> map) {
     return LandingZoneManagementGroupProperties(
       name: pulumi.Input.fromValue(map['name'] as String),
-      policyInitiativesAssignmentProperties: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<PolicyInitiativeAssignmentProperties>(
-          map['policyInitiativesAssignmentProperties']!,
-          (value) => PolicyInitiativeAssignmentProperties.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      policyInitiativesAssignmentProperties: pulumi.Input.fromValue(pulumi.Input.decodeList<PolicyInitiativeAssignmentProperties>(map['policyInitiativesAssignmentProperties']!, (value) => PolicyInitiativeAssignmentProperties.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

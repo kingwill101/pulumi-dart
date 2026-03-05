@@ -10,19 +10,14 @@ import 'cassandra_table_resource.dart';
 class DatabaseAccountCassandraTableArgs {
   /// Cosmos DB database account name.
   final pulumi.Input<String> accountName;
-
   /// Cosmos DB keyspace name.
   final pulumi.Input<String> keyspaceName;
-
   /// A key-value pair of options to be applied for the request. This corresponds to the headers sent with the request.
   final pulumi.Input<Map<String, String>> options;
-
   /// The standard JSON format of a Cassandra table
   final pulumi.Input<CassandraTableResource> resource;
-
   /// Name of an Azure resource group.
   final pulumi.Input<String> resourceGroupName;
-
   /// Cosmos DB table name.
   final pulumi.Input<String>? tableName;
 
@@ -47,11 +42,7 @@ class DatabaseAccountCassandraTableArgs {
       'accountName': accountName,
       'keyspaceName': keyspaceName,
       'options': options,
-      'resource':
-          pulumi.Input.mapInputValue<
-            CassandraTableResource,
-            Map<String, dynamic>
-          >(resource, (value) => value.toMap()),
+      'resource': pulumi.Input.mapInputValue<CassandraTableResource, Map<String, dynamic>>(resource, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'tableName': ?tableName,
     };
@@ -61,22 +52,11 @@ class DatabaseAccountCassandraTableArgs {
     return DatabaseAccountCassandraTableArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
       keyspaceName: pulumi.Input.fromValue(map['keyspaceName'] as String),
-      options: pulumi.Input.fromValue(
-        (map['options'] as Map).cast<String, String>(),
-      ),
-      resource: pulumi.Input.fromValue(
-        CassandraTableResource.fromMap(
-          (map['resource']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      tableName: (() {
-        final guardedValue = map['tableName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      options: pulumi.Input.fromValue((map['options'] as Map).cast<String, String>()),
+      resource: pulumi.Input.fromValue(CassandraTableResource.fromMap((map['resource']! as Map).cast<String, dynamic>())),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      tableName: (() { final guardedValue = map['tableName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

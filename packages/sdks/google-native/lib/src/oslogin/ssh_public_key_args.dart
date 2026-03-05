@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SshPublicKeyArgs {
   /// An expiration time in microseconds since epoch.
   final pulumi.Input<String>? expirationTimeUsec;
-
   /// Public key text in SSH format, defined by RFC4253 section 6.6.
   final pulumi.Input<String>? key;
   final pulumi.Input<String> userId;
@@ -18,7 +17,11 @@ class SshPublicKeyArgs {
   /// [expirationTimeUsec] An expiration time in microseconds since epoch.
   /// [key] Public key text in SSH format, defined by RFC4253 section 6.6.
   /// [userId] Required.
-  SshPublicKeyArgs({this.expirationTimeUsec, this.key, required this.userId});
+  SshPublicKeyArgs({
+    this.expirationTimeUsec,
+    this.key,
+    required this.userId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -30,17 +33,10 @@ class SshPublicKeyArgs {
 
   factory SshPublicKeyArgs.fromMap(Map<String, dynamic> map) {
     return SshPublicKeyArgs(
-      expirationTimeUsec: (() {
-        final guardedValue = map['expirationTimeUsec'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      key: (() {
-        final guardedValue = map['key'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      expirationTimeUsec: (() { final guardedValue = map['expirationTimeUsec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       userId: pulumi.Input.fromValue(map['userId'] as String),
     );
   }
 }
+

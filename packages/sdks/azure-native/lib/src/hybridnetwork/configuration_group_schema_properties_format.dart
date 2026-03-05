@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConfigurationGroupSchemaPropertiesFormat {
   /// Description of what schema can contain.
   final pulumi.Input<String>? description;
-
   /// Name and value pairs that define the configuration value. It can be a well formed escaped JSON string.
   final pulumi.Input<String>? schemaDefinition;
 
@@ -25,20 +24,11 @@ class ConfigurationGroupSchemaPropertiesFormat {
     };
   }
 
-  factory ConfigurationGroupSchemaPropertiesFormat.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConfigurationGroupSchemaPropertiesFormat.fromMap(Map<String, dynamic> map) {
     return ConfigurationGroupSchemaPropertiesFormat(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      schemaDefinition: (() {
-        final guardedValue = map['schemaDefinition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      schemaDefinition: (() { final guardedValue = map['schemaDefinition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

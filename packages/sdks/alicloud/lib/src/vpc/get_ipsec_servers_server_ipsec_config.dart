@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIpsecServersServerIpsecConfig {
   /// IPsec authentication algorithm.
   final pulumi.Input<String> ipsecAuthAlg;
-
   /// IPsec encryption algorithm.
   final pulumi.Input<String> ipsecEncAlg;
-
   /// IPsec survival time. Unit: seconds.
   final pulumi.Input<int> ipsecLifetime;
-
   /// Diffie-Hellman key exchange algorithm.
   final pulumi.Input<String> ipsecPfs;
 
@@ -45,3 +42,4 @@ class GetIpsecServersServerIpsecConfig {
     );
   }
 }
+

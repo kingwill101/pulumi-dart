@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WebAppFtpAllowedSlotArgs {
   /// &lt;code&gt;true&lt;/code&gt; to allow access to a publishing method; otherwise, &lt;code&gt;false&lt;/code&gt;.
   final pulumi.Input<bool> allow;
-
   /// Kind of resource.
   final pulumi.Input<String>? kind;
-
   /// Name of the app.
   final pulumi.Input<String> name;
-
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
   final pulumi.Input<String> slot;
@@ -47,16 +44,11 @@ class WebAppFtpAllowedSlotArgs {
   factory WebAppFtpAllowedSlotArgs.fromMap(Map<String, dynamic> map) {
     return WebAppFtpAllowedSlotArgs(
       allow: pulumi.Input.fromValue(map['allow'] as bool),
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       slot: pulumi.Input.fromValue(map['slot'] as String),
     );
   }
 }
+

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSecretsSecretRotation {
   /// Timestamp in UTC at which the Secret is scheduled to rotate.
   final pulumi.Input<String> nextRotationTime;
-
   /// The Duration between rotation notifications.
   final pulumi.Input<String> rotationPeriod;
 
@@ -26,10 +25,9 @@ class GetSecretsSecretRotation {
 
   factory GetSecretsSecretRotation.fromMap(Map<String, dynamic> map) {
     return GetSecretsSecretRotation(
-      nextRotationTime: pulumi.Input.fromValue(
-        map['nextRotationTime'] as String,
-      ),
+      nextRotationTime: pulumi.Input.fromValue(map['nextRotationTime'] as String),
       rotationPeriod: pulumi.Input.fromValue(map['rotationPeriod'] as String),
     );
   }
 }
+

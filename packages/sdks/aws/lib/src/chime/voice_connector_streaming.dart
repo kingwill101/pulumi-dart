@@ -611,20 +611,14 @@ import 'voice_connector_streaming_state.dart';
 class VoiceConnectorStreaming extends pulumi.CustomResource {
   /// The retention period, in hours, for the Amazon Kinesis data.
   late final pulumi.Output<int> dataRetention;
-
   /// When true, media streaming to Amazon Kinesis is turned off. Default: `false`
   late final pulumi.Output<bool?> disabled;
-
   /// The media insights configuration. See `media_insights_configuration`.
-  late final pulumi.Output<VoiceConnectorStreamingMediaInsightsConfiguration?>
-  mediaInsightsConfiguration;
-
+  late final pulumi.Output<VoiceConnectorStreamingMediaInsightsConfiguration?> mediaInsightsConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The streaming notification targets. Valid Values: `EventBridge | SNS | SQS`
   late final pulumi.Output<List<String>?> streamingNotificationTargets;
-
   /// The Amazon Chime Voice Connector ID.
   late final pulumi.Output<String> voiceConnectorId;
 
@@ -637,28 +631,16 @@ class VoiceConnectorStreaming extends pulumi.CustomResource {
     VoiceConnectorStreamingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:chime/voiceConnectorStreaming:VoiceConnectorStreaming',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:chime/voiceConnectorStreaming:VoiceConnectorStreaming',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dataRetention = registerOutput<int>('dataRetention');
     disabled = registerOutput<bool?>('disabled');
-    mediaInsightsConfiguration =
-        registerOutput<VoiceConnectorStreamingMediaInsightsConfiguration?>(
-          'mediaInsightsConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return VoiceConnectorStreamingMediaInsightsConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    mediaInsightsConfiguration = registerOutput<VoiceConnectorStreamingMediaInsightsConfiguration?>('mediaInsightsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VoiceConnectorStreamingMediaInsightsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    streamingNotificationTargets = registerOutput<List<String>?>(
-      'streamingNotificationTargets',
-    );
+    streamingNotificationTargets = registerOutput<List<String>?>('streamingNotificationTargets');
     voiceConnectorId = registerOutput<String>('voiceConnectorId');
   }
 
@@ -680,28 +662,16 @@ class VoiceConnectorStreaming extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:chime/voiceConnectorStreaming:VoiceConnectorStreaming',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:chime/voiceConnectorStreaming:VoiceConnectorStreaming',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dataRetention = registerOutput<int>('dataRetention');
     disabled = registerOutput<bool?>('disabled');
-    mediaInsightsConfiguration =
-        registerOutput<VoiceConnectorStreamingMediaInsightsConfiguration?>(
-          'mediaInsightsConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return VoiceConnectorStreamingMediaInsightsConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    mediaInsightsConfiguration = registerOutput<VoiceConnectorStreamingMediaInsightsConfiguration?>('mediaInsightsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VoiceConnectorStreamingMediaInsightsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    streamingNotificationTargets = registerOutput<List<String>?>(
-      'streamingNotificationTargets',
-    );
+    streamingNotificationTargets = registerOutput<List<String>?>('streamingNotificationTargets');
     voiceConnectorId = registerOutput<String>('voiceConnectorId');
   }
 }

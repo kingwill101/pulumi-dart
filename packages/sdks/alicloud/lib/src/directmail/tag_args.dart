@@ -12,13 +12,20 @@ class TagArgs {
 
   /// Creates a new [TagArgs].
   /// [tagName] The name of the tag. The name must be `1` to `50` characters in length, and can contain letters and digits.
-  TagArgs({required this.tagName});
+  TagArgs({
+    required this.tagName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'tagName': tagName};
+    return <String, dynamic>{
+      'tagName': tagName,
+    };
   }
 
   factory TagArgs.fromMap(Map<String, dynamic> map) {
-    return TagArgs(tagName: pulumi.Input.fromValue(map['tagName'] as String));
+    return TagArgs(
+      tagName: pulumi.Input.fromValue(map['tagName'] as String),
+    );
   }
 }
+

@@ -14,3 +14,4 @@ enum OneLakeArtifactType {
     throw ArgumentError('Unknown OneLakeArtifactType value: $value');
   }
 }
+

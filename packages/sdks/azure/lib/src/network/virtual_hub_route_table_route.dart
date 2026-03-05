@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualHubRouteTableRoute {
   /// A list of destination addresses for this route.
   final pulumi.Input<List<String>> destinations;
-
   /// The type of destinations. Possible values are `CIDR`, `ResourceId` and `Service`.
   final pulumi.Input<String> destinationsType;
-
   /// The name which should be used for this route.
   final pulumi.Input<String> name;
-
   /// The next hop's resource ID.
   final pulumi.Input<String> nextHop;
-
   /// The type of next hop. Currently the only possible value is `ResourceId`. Defaults to `ResourceId`.
   ///
   /// &gt; **Note:** The Routes can alternatively be created using the virtual_hub_route_table_route resource. Using both inline and external routes is not supported and may result in unexpected configuration.
@@ -46,19 +42,12 @@ class VirtualHubRouteTableRoute {
 
   factory VirtualHubRouteTableRoute.fromMap(Map<String, dynamic> map) {
     return VirtualHubRouteTableRoute(
-      destinations: pulumi.Input.fromValue(
-        (map['destinations'] as List).cast<String>(),
-      ),
-      destinationsType: pulumi.Input.fromValue(
-        map['destinationsType'] as String,
-      ),
+      destinations: pulumi.Input.fromValue((map['destinations'] as List).cast<String>()),
+      destinationsType: pulumi.Input.fromValue(map['destinationsType'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       nextHop: pulumi.Input.fromValue(map['nextHop'] as String),
-      nextHopType: (() {
-        final guardedValue = map['nextHopType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      nextHopType: (() { final guardedValue = map['nextHopType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

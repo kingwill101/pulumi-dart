@@ -57,8 +57,7 @@ Future<GetPrivateStoreCollectionOfferResult> getPrivateStoreCollectionOffer(
 /// Other available API versions: 2025-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native marketplace [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_marketplace_list_private_store_new_plans_notifications_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListPrivateStoreNewPlansNotificationsResult>
-listPrivateStoreNewPlansNotifications(
+Future<ListPrivateStoreNewPlansNotificationsResult> listPrivateStoreNewPlansNotifications(
   ListPrivateStoreNewPlansNotificationsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -78,8 +77,7 @@ listPrivateStoreNewPlansNotifications(
 /// Other available API versions: 2025-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native marketplace [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_marketplace_list_private_store_stop_sell_offers_plans_notifications_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListPrivateStoreStopSellOffersPlansNotificationsResult>
-listPrivateStoreStopSellOffersPlansNotifications(
+Future<ListPrivateStoreStopSellOffersPlansNotificationsResult> listPrivateStoreStopSellOffersPlansNotifications(
   ListPrivateStoreStopSellOffersPlansNotificationsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -99,8 +97,7 @@ listPrivateStoreStopSellOffersPlansNotifications(
 /// Other available API versions: 2025-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native marketplace [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_marketplace_list_private_store_subscriptions_context_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListPrivateStoreSubscriptionsContextResult>
-listPrivateStoreSubscriptionsContext(
+Future<ListPrivateStoreSubscriptionsContextResult> listPrivateStoreSubscriptionsContext(
   ListPrivateStoreSubscriptionsContextArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

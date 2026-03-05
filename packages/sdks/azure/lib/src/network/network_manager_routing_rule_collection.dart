@@ -331,16 +331,12 @@ import 'network_manager_routing_rule_collection_state.dart';
 class NetworkManagerRoutingRuleCollection extends pulumi.CustomResource {
   /// Whether to enable the BGP route propagation. Defaults to `false`.
   late final pulumi.Output<bool?> bgpRoutePropagationEnabled;
-
   /// The description of the Network Manager Routing Rule Collection.
   late final pulumi.Output<String?> description;
-
   /// The name which should be used for this Network Manager Routing Rule Collection. Changing this forces a new Network Manager Routing Rule Collection to be created.
   late final pulumi.Output<String> name;
-
   /// A list of Network Group IDs which this Network Manager Routing Rule Collection applies to.
   late final pulumi.Output<List<String>> networkGroupIds;
-
   /// The ID of the Network Manager Routing Configuration. Changing this forces a new Network Manager Routing Rule Collection to be created.
   late final pulumi.Output<String> routingConfigurationId;
 
@@ -353,14 +349,12 @@ class NetworkManagerRoutingRuleCollection extends pulumi.CustomResource {
     NetworkManagerRoutingRuleCollectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/networkManagerRoutingRuleCollection:NetworkManagerRoutingRuleCollection',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    bgpRoutePropagationEnabled = registerOutput<bool?>(
-      'bgpRoutePropagationEnabled',
-    );
+          'azure:network/networkManagerRoutingRuleCollection:NetworkManagerRoutingRuleCollection',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    bgpRoutePropagationEnabled = registerOutput<bool?>('bgpRoutePropagationEnabled');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     networkGroupIds = registerOutput<List<String>>('networkGroupIds');
@@ -385,14 +379,12 @@ class NetworkManagerRoutingRuleCollection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/networkManagerRoutingRuleCollection:NetworkManagerRoutingRuleCollection',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    bgpRoutePropagationEnabled = registerOutput<bool?>(
-      'bgpRoutePropagationEnabled',
-    );
+          'azure:network/networkManagerRoutingRuleCollection:NetworkManagerRoutingRuleCollection',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    bgpRoutePropagationEnabled = registerOutput<bool?>('bgpRoutePropagationEnabled');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     networkGroupIds = registerOutput<List<String>>('networkGroupIds');

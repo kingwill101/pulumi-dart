@@ -16,3 +16,4 @@ enum EventStreamingType {
     throw ArgumentError('Unknown EventStreamingType value: $value');
   }
 }
+

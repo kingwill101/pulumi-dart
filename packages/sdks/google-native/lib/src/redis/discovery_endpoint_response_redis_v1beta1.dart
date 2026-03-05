@@ -7,10 +7,8 @@ import 'psc_config_response_redis_v1beta1.dart';
 class DiscoveryEndpointResponseRedisV1beta1 {
   /// Address of the exposed Redis endpoint used by clients to connect to the service. The address could be either IP or hostname.
   final pulumi.Input<String> address;
-
   /// The port number of the exposed Redis endpoint.
   final pulumi.Input<int> port;
-
   /// Customer configuration for where the endpoint is created and accessed from.
   final pulumi.Input<PscConfigResponseRedisV1beta1> pscConfig;
 
@@ -28,25 +26,16 @@ class DiscoveryEndpointResponseRedisV1beta1 {
     return <String, dynamic>{
       'address': address,
       'port': port,
-      'pscConfig':
-          pulumi.Input.mapInputValue<
-            PscConfigResponseRedisV1beta1,
-            Map<String, dynamic>
-          >(pscConfig, (value) => value.toMap()),
+      'pscConfig': pulumi.Input.mapInputValue<PscConfigResponseRedisV1beta1, Map<String, dynamic>>(pscConfig, (value) => value.toMap()),
     };
   }
 
-  factory DiscoveryEndpointResponseRedisV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DiscoveryEndpointResponseRedisV1beta1.fromMap(Map<String, dynamic> map) {
     return DiscoveryEndpointResponseRedisV1beta1(
       address: pulumi.Input.fromValue(map['address'] as String),
       port: pulumi.Input.fromValue(map['port'] as int),
-      pscConfig: pulumi.Input.fromValue(
-        PscConfigResponseRedisV1beta1.fromMap(
-          (map['pscConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      pscConfig: pulumi.Input.fromValue(PscConfigResponseRedisV1beta1.fromMap((map['pscConfig']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

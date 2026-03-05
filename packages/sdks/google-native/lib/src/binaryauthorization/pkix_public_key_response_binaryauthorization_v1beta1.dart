@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PkixPublicKeyResponseBinaryauthorizationV1beta1 {
   /// A PEM-encoded public key, as described in https://tools.ietf.org/html/rfc7468#section-13
   final pulumi.Input<String> publicKeyPem;
-
   /// The signature algorithm used to verify a message against a signature using this key. These signature algorithm must match the structure and any object identifiers encoded in `public_key_pem` (i.e. this algorithm must match that of the public key).
   final pulumi.Input<String> signatureAlgorithm;
 
@@ -25,14 +24,11 @@ class PkixPublicKeyResponseBinaryauthorizationV1beta1 {
     };
   }
 
-  factory PkixPublicKeyResponseBinaryauthorizationV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PkixPublicKeyResponseBinaryauthorizationV1beta1.fromMap(Map<String, dynamic> map) {
     return PkixPublicKeyResponseBinaryauthorizationV1beta1(
       publicKeyPem: pulumi.Input.fromValue(map['publicKeyPem'] as String),
-      signatureAlgorithm: pulumi.Input.fromValue(
-        map['signatureAlgorithm'] as String,
-      ),
+      signatureAlgorithm: pulumi.Input.fromValue(map['signatureAlgorithm'] as String),
     );
   }
 }
+

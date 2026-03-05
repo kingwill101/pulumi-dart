@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppliedLicenseResponseVmmigrationV1alpha1 {
   /// The OS license returned from the adaptation module's report.
   final pulumi.Input<String> osLicense;
-
   /// The license type that was used in OS adaptation.
   final pulumi.Input<String> type;
 
@@ -19,15 +18,17 @@ class AppliedLicenseResponseVmmigrationV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'osLicense': osLicense, 'type': type};
+    return <String, dynamic>{
+      'osLicense': osLicense,
+      'type': type,
+    };
   }
 
-  factory AppliedLicenseResponseVmmigrationV1alpha1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppliedLicenseResponseVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
     return AppliedLicenseResponseVmmigrationV1alpha1(
       osLicense: pulumi.Input.fromValue(map['osLicense'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

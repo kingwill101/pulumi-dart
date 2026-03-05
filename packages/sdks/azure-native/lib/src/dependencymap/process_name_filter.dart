@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProcessNameFilter {
   /// Operator for process name filter
   final pulumi.Input<String> operator;
-
   /// List of process names on which the operator should be applied
   final pulumi.Input<List<String>> processNames;
 
   /// Creates a new [ProcessNameFilter].
   /// [operator] Operator for process name filter
   /// [processNames] List of process names on which the operator should be applied
-  ProcessNameFilter({required this.operator, required this.processNames});
+  ProcessNameFilter({
+    required this.operator,
+    required this.processNames,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,9 +27,8 @@ class ProcessNameFilter {
   factory ProcessNameFilter.fromMap(Map<String, dynamic> map) {
     return ProcessNameFilter(
       operator: pulumi.Input.fromValue(map['operator'] as String),
-      processNames: pulumi.Input.fromValue(
-        (map['processNames'] as List).cast<String>(),
-      ),
+      processNames: pulumi.Input.fromValue((map['processNames'] as List).cast<String>()),
     );
   }
 }
+

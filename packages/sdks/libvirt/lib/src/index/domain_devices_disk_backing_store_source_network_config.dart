@@ -8,17 +8,20 @@ class DomainDevicesDiskBackingStoreSourceNetworkConfig {
 
   /// Creates a new [DomainDevicesDiskBackingStoreSourceNetworkConfig].
   /// [file] Specifies a file for loading additional network configuration in the backing store source.
-  DomainDevicesDiskBackingStoreSourceNetworkConfig({required this.file});
+  DomainDevicesDiskBackingStoreSourceNetworkConfig({
+    required this.file,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'file': file};
+    return <String, dynamic>{
+      'file': file,
+    };
   }
 
-  factory DomainDevicesDiskBackingStoreSourceNetworkConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDevicesDiskBackingStoreSourceNetworkConfig.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskBackingStoreSourceNetworkConfig(
       file: pulumi.Input.fromValue(map['file'] as String),
     );
   }
 }
+

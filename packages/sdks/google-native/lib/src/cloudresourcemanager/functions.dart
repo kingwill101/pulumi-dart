@@ -109,8 +109,7 @@ Future<GetProjectIamPolicyResult> getProjectIamPolicy(
 /// Gets the access control policy for an Organization resource. May be empty if no such policy or resource exists. The `resource` field should be the organization's resource name, e.g. "organizations/123".
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudresourcemanager_v1beta1_get_organization_iam_policy_cloudresourcemanager_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetOrganizationIamPolicyCloudresourcemanagerV1beta1Result>
-getOrganizationIamPolicyCloudresourcemanagerV1beta1(
+Future<GetOrganizationIamPolicyCloudresourcemanagerV1beta1Result> getOrganizationIamPolicyCloudresourcemanagerV1beta1(
   GetOrganizationIamPolicyCloudresourcemanagerV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -120,16 +119,13 @@ getOrganizationIamPolicyCloudresourcemanagerV1beta1(
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetOrganizationIamPolicyCloudresourcemanagerV1beta1Result.fromMap(
-    result,
-  );
+  return GetOrganizationIamPolicyCloudresourcemanagerV1beta1Result.fromMap(result);
 }
 
 /// Retrieves the Project identified by the specified `project_id` (for example, `my-project-123`). The caller must have read permissions for this Project.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudresourcemanager_v1beta1_get_project_cloudresourcemanager_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetProjectCloudresourcemanagerV1beta1Result>
-getProjectCloudresourcemanagerV1beta1(
+Future<GetProjectCloudresourcemanagerV1beta1Result> getProjectCloudresourcemanagerV1beta1(
   GetProjectCloudresourcemanagerV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -145,8 +141,7 @@ getProjectCloudresourcemanagerV1beta1(
 /// Returns the IAM access control policy for the specified Project. Permission is denied if the policy or the resource does not exist. For additional information about resource structure and identification, see [Resource Names](/apis/design/resource_names).
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudresourcemanager_v1beta1_get_project_iam_policy_cloudresourcemanager_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetProjectIamPolicyCloudresourcemanagerV1beta1Result>
-getProjectIamPolicyCloudresourcemanagerV1beta1(
+Future<GetProjectIamPolicyCloudresourcemanagerV1beta1Result> getProjectIamPolicyCloudresourcemanagerV1beta1(
   GetProjectIamPolicyCloudresourcemanagerV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -194,8 +189,7 @@ Future<GetFolderIamPolicyResult> getFolderIamPolicy(
 /// Retrieves a Folder identified by the supplied resource name. Valid Folder resource names have the format `folders/{folder_id}` (for example, `folders/1234`). The caller must have `resourcemanager.folders.get` permission on the identified folder.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudresourcemanager_v2beta1_get_folder_cloudresourcemanager_v2beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetFolderCloudresourcemanagerV2beta1Result>
-getFolderCloudresourcemanagerV2beta1(
+Future<GetFolderCloudresourcemanagerV2beta1Result> getFolderCloudresourcemanagerV2beta1(
   GetFolderCloudresourcemanagerV2beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -211,8 +205,7 @@ getFolderCloudresourcemanagerV2beta1(
 /// Gets the access control policy for a Folder. The returned policy may be empty if no such policy or resource exists. The `resource` field should be the Folder's resource name, e.g. "folders/1234". The caller must have `resourcemanager.folders.getIamPolicy` permission on the identified folder.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudresourcemanager_v2beta1_get_folder_iam_policy_cloudresourcemanager_v2beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetFolderIamPolicyCloudresourcemanagerV2beta1Result>
-getFolderIamPolicyCloudresourcemanagerV2beta1(
+Future<GetFolderIamPolicyCloudresourcemanagerV2beta1Result> getFolderIamPolicyCloudresourcemanagerV2beta1(
   GetFolderIamPolicyCloudresourcemanagerV2beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -244,8 +237,7 @@ Future<GetFolderCloudresourcemanagerV3Result> getFolderCloudresourcemanagerV3(
 /// Gets the access control policy for a folder. The returned policy may be empty if no such policy or resource exists. The `resource` field should be the folder's resource name, for example: "folders/1234". The caller must have `resourcemanager.folders.getIamPolicy` permission on the identified folder.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudresourcemanager_v3_get_folder_iam_policy_cloudresourcemanager_v3_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetFolderIamPolicyCloudresourcemanagerV3Result>
-getFolderIamPolicyCloudresourcemanagerV3(
+Future<GetFolderIamPolicyCloudresourcemanagerV3Result> getFolderIamPolicyCloudresourcemanagerV3(
   GetFolderIamPolicyCloudresourcemanagerV3Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -277,8 +269,7 @@ Future<GetLienCloudresourcemanagerV3Result> getLienCloudresourcemanagerV3(
 /// Gets the access control policy for an organization resource. The policy may be empty if no such policy or resource exists. The `resource` field should be the organization's resource name, for example: "organizations/123". Authorization requires the IAM permission `resourcemanager.organizations.getIamPolicy` on the specified organization.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudresourcemanager_v3_get_organization_iam_policy_cloudresourcemanager_v3_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetOrganizationIamPolicyCloudresourcemanagerV3Result>
-getOrganizationIamPolicyCloudresourcemanagerV3(
+Future<GetOrganizationIamPolicyCloudresourcemanagerV3Result> getOrganizationIamPolicyCloudresourcemanagerV3(
   GetOrganizationIamPolicyCloudresourcemanagerV3Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -310,8 +301,7 @@ Future<GetProjectCloudresourcemanagerV3Result> getProjectCloudresourcemanagerV3(
 /// Returns the IAM access control policy for the specified project, in the format `projects/{ProjectIdOrNumber}` e.g. projects/123. Permission is denied if the policy or the resource do not exist.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudresourcemanager_v3_get_project_iam_policy_cloudresourcemanager_v3_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetProjectIamPolicyCloudresourcemanagerV3Result>
-getProjectIamPolicyCloudresourcemanagerV3(
+Future<GetProjectIamPolicyCloudresourcemanagerV3Result> getProjectIamPolicyCloudresourcemanagerV3(
   GetProjectIamPolicyCloudresourcemanagerV3Args args, {
   pulumi.InvokeOptions? options,
 }) async {

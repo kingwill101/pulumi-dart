@@ -8,10 +8,14 @@ class GatewayZoneConfig {
 
   /// Creates a new [GatewayZoneConfig].
   /// [selectOption] Availability Zone Options
-  GatewayZoneConfig({required this.selectOption});
+  GatewayZoneConfig({
+    required this.selectOption,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'selectOption': selectOption};
+    return <String, dynamic>{
+      'selectOption': selectOption,
+    };
   }
 
   factory GatewayZoneConfig.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class GatewayZoneConfig {
     );
   }
 }
+

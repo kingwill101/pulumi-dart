@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LegacyCustomOriginResponse {
   /// Property dnsName
   final pulumi.Input<String>? dnsName;
-
   /// Property httpPort
   final pulumi.Input<int>? httpPort;
-
   /// Property httpsPort
   final pulumi.Input<int>? httpsPort;
-
   /// Property originProtocolPolicy
   final pulumi.Input<String>? originProtocolPolicy;
-
   /// Property originSSLProtocols
   final pulumi.Input<List<String>>? originSSLProtocols;
 
@@ -45,31 +41,12 @@ class LegacyCustomOriginResponse {
 
   factory LegacyCustomOriginResponse.fromMap(Map<String, dynamic> map) {
     return LegacyCustomOriginResponse(
-      dnsName: (() {
-        final guardedValue = map['dnsName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      httpPort: (() {
-        final guardedValue = map['httpPort'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      httpsPort: (() {
-        final guardedValue = map['httpsPort'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      originProtocolPolicy: (() {
-        final guardedValue = map['originProtocolPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      originSSLProtocols: (() {
-        final guardedValue = map['originSSLProtocols'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      dnsName: (() { final guardedValue = map['dnsName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      httpPort: (() { final guardedValue = map['httpPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      httpsPort: (() { final guardedValue = map['httpsPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      originProtocolPolicy: (() { final guardedValue = map['originProtocolPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      originSSLProtocols: (() { final guardedValue = map['originSSLProtocols']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

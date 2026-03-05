@@ -15,15 +15,17 @@ class GetLaunchTemplateInstanceRequirementAcceleratorTotalMemoryMib {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'max': max, 'min': min};
+    return <String, dynamic>{
+      'max': max,
+      'min': min,
+    };
   }
 
-  factory GetLaunchTemplateInstanceRequirementAcceleratorTotalMemoryMib.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetLaunchTemplateInstanceRequirementAcceleratorTotalMemoryMib.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplateInstanceRequirementAcceleratorTotalMemoryMib(
       max: pulumi.Input.fromValue(map['max'] as int),
       min: pulumi.Input.fromValue(map['min'] as int),
     );
   }
 }
+

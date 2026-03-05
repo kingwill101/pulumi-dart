@@ -31,17 +31,10 @@ class GetManagedZoneArgs {
 
   factory GetManagedZoneArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedZoneArgs(
-      clientOperationId: (() {
-        final guardedValue = map['clientOperationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      clientOperationId: (() { final guardedValue = map['clientOperationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       managedZone: pulumi.Input.fromValue(map['managedZone'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Solution {
   /// Application name of the solution.
   final pulumi.Input<String>? applicationName;
-
   /// Marketplace publisher Id.
   final pulumi.Input<String>? marketPlacePublisherId;
-
   /// Partner Id.
   final pulumi.Input<String>? partnerId;
-
   /// Plan Id.
   final pulumi.Input<String>? planId;
-
   /// Saas subscription Id.
   final pulumi.Input<String>? saasSubscriptionId;
-
   /// Saas subscription name.
   final pulumi.Input<String>? saasSubscriptionName;
 
@@ -51,36 +46,13 @@ class Solution {
 
   factory Solution.fromMap(Map<String, dynamic> map) {
     return Solution(
-      applicationName: (() {
-        final guardedValue = map['applicationName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      marketPlacePublisherId: (() {
-        final guardedValue = map['marketPlacePublisherId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      partnerId: (() {
-        final guardedValue = map['partnerId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      planId: (() {
-        final guardedValue = map['planId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      saasSubscriptionId: (() {
-        final guardedValue = map['saasSubscriptionId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      saasSubscriptionName: (() {
-        final guardedValue = map['saasSubscriptionName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      applicationName: (() { final guardedValue = map['applicationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      marketPlacePublisherId: (() { final guardedValue = map['marketPlacePublisherId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      partnerId: (() { final guardedValue = map['partnerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      planId: (() { final guardedValue = map['planId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      saasSubscriptionId: (() { final guardedValue = map['saasSubscriptionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      saasSubscriptionName: (() { final guardedValue = map['saasSubscriptionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

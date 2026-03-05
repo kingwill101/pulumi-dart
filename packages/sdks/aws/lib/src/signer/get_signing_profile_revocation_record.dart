@@ -27,11 +27,10 @@ class GetSigningProfileRevocationRecord {
 
   factory GetSigningProfileRevocationRecord.fromMap(Map<String, dynamic> map) {
     return GetSigningProfileRevocationRecord(
-      revocationEffectiveFrom: pulumi.Input.fromValue(
-        map['revocationEffectiveFrom'] as String,
-      ),
+      revocationEffectiveFrom: pulumi.Input.fromValue(map['revocationEffectiveFrom'] as String),
       revokedAt: pulumi.Input.fromValue(map['revokedAt'] as String),
       revokedBy: pulumi.Input.fromValue(map['revokedBy'] as String),
     );
   }
 }
+

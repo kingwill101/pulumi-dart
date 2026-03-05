@@ -33,18 +33,13 @@ class GetFeatureGroupFeatureAiplatformV1beta1Args {
     };
   }
 
-  factory GetFeatureGroupFeatureAiplatformV1beta1Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetFeatureGroupFeatureAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetFeatureGroupFeatureAiplatformV1beta1Args(
       featureGroupId: pulumi.Input.fromValue(map['featureGroupId'] as String),
       featureId: pulumi.Input.fromValue(map['featureId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

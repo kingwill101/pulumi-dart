@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AbsoluteDeleteOption {
   /// Duration of deletion after given timespan
   final pulumi.Input<String> duration;
-
   /// Type of the specific object - used for deserializing
   /// Expected value is 'AbsoluteDeleteOption'.
   final pulumi.Input<String> objectType;
@@ -14,10 +13,16 @@ class AbsoluteDeleteOption {
   /// Creates a new [AbsoluteDeleteOption].
   /// [duration] Duration of deletion after given timespan
   /// [objectType] Type of the specific object - used for deserializing
-  AbsoluteDeleteOption({required this.duration, required this.objectType});
+  AbsoluteDeleteOption({
+    required this.duration,
+    required this.objectType,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'duration': duration, 'objectType': objectType};
+    return <String, dynamic>{
+      'duration': duration,
+      'objectType': objectType,
+    };
   }
 
   factory AbsoluteDeleteOption.fromMap(Map<String, dynamic> map) {
@@ -27,3 +32,4 @@ class AbsoluteDeleteOption {
     );
   }
 }
+

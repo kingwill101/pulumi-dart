@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FlowletDataFlowSinkRejectedLinkedService {
   /// The name for the Data Factory Linked Service with schema.
   final pulumi.Input<String> name;
-
   /// A map of parameters to associate with the Data Factory Linked Service.
   final pulumi.Input<Map<String, String>>? parameters;
 
@@ -18,21 +17,17 @@ class FlowletDataFlowSinkRejectedLinkedService {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'parameters': ?parameters};
+    return <String, dynamic>{
+      'name': name,
+      'parameters': ?parameters,
+    };
   }
 
-  factory FlowletDataFlowSinkRejectedLinkedService.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FlowletDataFlowSinkRejectedLinkedService.fromMap(Map<String, dynamic> map) {
     return FlowletDataFlowSinkRejectedLinkedService(
       name: pulumi.Input.fromValue(map['name'] as String),
-      parameters: (() {
-        final guardedValue = map['parameters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

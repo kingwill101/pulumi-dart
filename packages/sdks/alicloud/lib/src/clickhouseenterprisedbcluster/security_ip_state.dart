@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecurityIpState {
   /// The cluster ID.
   final pulumi.Input<String>? dbInstanceId;
-
   /// The whitelist name.
   final pulumi.Input<String>? groupName;
-
   /// The IP address list under the whitelist group.
   final pulumi.Input<String>? securityIpList;
 
@@ -17,7 +15,11 @@ class SecurityIpState {
   /// [dbInstanceId] The cluster ID.
   /// [groupName] The whitelist name.
   /// [securityIpList] The IP address list under the whitelist group.
-  SecurityIpState({this.dbInstanceId, this.groupName, this.securityIpList});
+  SecurityIpState({
+    this.dbInstanceId,
+    this.groupName,
+    this.securityIpList,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class SecurityIpState {
 
   factory SecurityIpState.fromMap(Map<String, dynamic> map) {
     return SecurityIpState(
-      dbInstanceId: (() {
-        final guardedValue = map['dbInstanceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      groupName: (() {
-        final guardedValue = map['groupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      securityIpList: (() {
-        final guardedValue = map['securityIpList'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dbInstanceId: (() { final guardedValue = map['dbInstanceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      groupName: (() { final guardedValue = map['groupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      securityIpList: (() { final guardedValue = map['securityIpList']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

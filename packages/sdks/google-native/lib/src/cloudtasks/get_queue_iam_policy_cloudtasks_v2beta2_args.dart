@@ -29,17 +29,12 @@ class GetQueueIamPolicyCloudtasksV2beta2Args {
     };
   }
 
-  factory GetQueueIamPolicyCloudtasksV2beta2Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetQueueIamPolicyCloudtasksV2beta2Args.fromMap(Map<String, dynamic> map) {
     return GetQueueIamPolicyCloudtasksV2beta2Args(
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       queueId: pulumi.Input.fromValue(map['queueId'] as String),
     );
   }
 }
+

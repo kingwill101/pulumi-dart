@@ -33,24 +33,13 @@ class GetRegionWorkflowTemplateIamPolicyDataprocV1beta2Args {
     };
   }
 
-  factory GetRegionWorkflowTemplateIamPolicyDataprocV1beta2Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetRegionWorkflowTemplateIamPolicyDataprocV1beta2Args.fromMap(Map<String, dynamic> map) {
     return GetRegionWorkflowTemplateIamPolicyDataprocV1beta2Args(
-      optionsRequestedPolicyVersion: (() {
-        final guardedValue = map['optionsRequestedPolicyVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       regionId: pulumi.Input.fromValue(map['regionId'] as String),
-      workflowTemplateId: pulumi.Input.fromValue(
-        map['workflowTemplateId'] as String,
-      ),
+      workflowTemplateId: pulumi.Input.fromValue(map['workflowTemplateId'] as String),
     );
   }
 }
+

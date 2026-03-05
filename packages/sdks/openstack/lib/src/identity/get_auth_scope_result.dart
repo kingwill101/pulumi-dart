@@ -8,50 +8,35 @@ import 'get_auth_scope_service_catalog.dart';
 class GetAuthScopeResult {
   /// The domain ID of the scope.
   final String domainId;
-
   /// The domain name of the scope.
   final String domainName;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The name of the service.
   final String name;
-
   /// The domain ID of the project.
   final String projectDomainId;
-
   /// The domain name of the project.
   final String projectDomainName;
-
   /// The project ID of the scope.
   final String projectId;
-
   /// The project name of the scope.
   final String projectName;
-
   /// The region of the endpoint.
   final String region;
-
   /// A list of roles in the current scope. See reference below.
   final List<GetAuthScopeRole> roles;
-
   /// A list of service catalog entries returned with the token.
   final List<GetAuthScopeServiceCatalog> serviceCatalogs;
   final bool? setTokenId;
-
   /// The token ID of the scope.
   final String tokenId;
-
   /// The domain ID of the user.
   final String userDomainId;
-
   /// The domain name of the user.
   final String userDomainName;
-
   /// The user ID the of the scope.
   final String userId;
-
   /// The username of the scope.
   final String userName;
 
@@ -104,15 +89,8 @@ class GetAuthScopeResult {
       'projectId': projectId,
       'projectName': projectName,
       'region': region,
-      'roles': pulumi.Input.encodeList<GetAuthScopeRole, Map<String, dynamic>>(
-        roles,
-        (value) => value.toMap(),
-      ),
-      'serviceCatalogs':
-          pulumi.Input.encodeList<
-            GetAuthScopeServiceCatalog,
-            Map<String, dynamic>
-          >(serviceCatalogs, (value) => value.toMap()),
+      'roles': pulumi.Input.encodeList<GetAuthScopeRole, Map<String, dynamic>>(roles, (value) => value.toMap()),
+      'serviceCatalogs': pulumi.Input.encodeList<GetAuthScopeServiceCatalog, Map<String, dynamic>>(serviceCatalogs, (value) => value.toMap()),
       'setTokenId': ?setTokenId,
       'tokenId': tokenId,
       'userDomainId': userDomainId,
@@ -133,22 +111,9 @@ class GetAuthScopeResult {
       projectId: map['projectId'] as String,
       projectName: map['projectName'] as String,
       region: map['region'] as String,
-      roles: pulumi.Input.decodeList<GetAuthScopeRole>(
-        map['roles']!,
-        (value) =>
-            GetAuthScopeRole.fromMap((value as Map).cast<String, dynamic>()),
-      ),
-      serviceCatalogs: pulumi.Input.decodeList<GetAuthScopeServiceCatalog>(
-        map['serviceCatalogs']!,
-        (value) => GetAuthScopeServiceCatalog.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      setTokenId: (() {
-        final guardedValue = map['setTokenId'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      roles: pulumi.Input.decodeList<GetAuthScopeRole>(map['roles']!, (value) => GetAuthScopeRole.fromMap((value as Map).cast<String, dynamic>())),
+      serviceCatalogs: pulumi.Input.decodeList<GetAuthScopeServiceCatalog>(map['serviceCatalogs']!, (value) => GetAuthScopeServiceCatalog.fromMap((value as Map).cast<String, dynamic>())),
+      setTokenId: (() { final guardedValue = map['setTokenId']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       tokenId: map['tokenId'] as String,
       userDomainId: map['userDomainId'] as String,
       userDomainName: map['userDomainName'] as String,
@@ -157,3 +122,4 @@ class GetAuthScopeResult {
     );
   }
 }
+

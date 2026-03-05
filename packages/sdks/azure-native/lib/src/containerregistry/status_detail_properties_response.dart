@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StatusDetailPropertiesResponse {
   /// The code of the status.
   final pulumi.Input<String> code;
-
   /// The correlation ID of the status.
   final pulumi.Input<String> correlationId;
-
   /// The description of the status.
   final pulumi.Input<String> description;
-
   /// The timestamp of the status.
   final pulumi.Input<String> timestamp;
-
   /// The component of the connected registry corresponding to the status.
   final pulumi.Input<String> type;
 
@@ -53,3 +49,4 @@ class StatusDetailPropertiesResponse {
     );
   }
 }
+

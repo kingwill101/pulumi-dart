@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetStandbyContainerGroupPoolArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Name of the standby container group pool
   final pulumi.Input<String> standbyContainerGroupPoolName;
 
@@ -30,12 +29,9 @@ class GetStandbyContainerGroupPoolArgs {
 
   factory GetStandbyContainerGroupPoolArgs.fromMap(Map<String, dynamic> map) {
     return GetStandbyContainerGroupPoolArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      standbyContainerGroupPoolName: pulumi.Input.fromValue(
-        map['standbyContainerGroupPoolName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      standbyContainerGroupPoolName: pulumi.Input.fromValue(map['standbyContainerGroupPoolName'] as String),
     );
   }
 }
+

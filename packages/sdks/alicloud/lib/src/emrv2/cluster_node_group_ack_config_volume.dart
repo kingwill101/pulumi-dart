@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterNodeGroupAckConfigVolume {
   /// The name of ack cluster job pod volume mounts.
   final pulumi.Input<String> name;
-
   /// The path of ack cluster job pod volume mounts.
   final pulumi.Input<String> path;
-
   /// The ack cluster job pod volumes type.
   final pulumi.Input<String> type;
 
@@ -23,7 +21,11 @@ class ClusterNodeGroupAckConfigVolume {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'path': path, 'type': type};
+    return <String, dynamic>{
+      'name': name,
+      'path': path,
+      'type': type,
+    };
   }
 
   factory ClusterNodeGroupAckConfigVolume.fromMap(Map<String, dynamic> map) {
@@ -34,3 +36,4 @@ class ClusterNodeGroupAckConfigVolume {
     );
   }
 }
+

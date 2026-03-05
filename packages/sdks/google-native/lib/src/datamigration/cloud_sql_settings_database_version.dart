@@ -30,8 +30,7 @@ enum CloudSqlSettingsDatabaseVersion {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown CloudSqlSettingsDatabaseVersion value: $value',
-    );
+    throw ArgumentError('Unknown CloudSqlSettingsDatabaseVersion value: $value');
   }
 }
+

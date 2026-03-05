@@ -14,16 +14,15 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfigR
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'recentSentencesCount': recentSentencesCount};
+    return <String, dynamic>{
+      'recentSentencesCount': recentSentencesCount,
+    };
   }
 
-  factory GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfigResponse(
-      recentSentencesCount: pulumi.Input.fromValue(
-        map['recentSentencesCount'] as int,
-      ),
+      recentSentencesCount: pulumi.Input.fromValue(map['recentSentencesCount'] as int),
     );
   }
 }
+

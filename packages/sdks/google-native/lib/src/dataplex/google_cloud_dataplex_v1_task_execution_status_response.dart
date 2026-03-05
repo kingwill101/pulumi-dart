@@ -7,7 +7,6 @@ import 'google_cloud_dataplex_v1_job_response.dart';
 class GoogleCloudDataplexV1TaskExecutionStatusResponse {
   /// latest job execution
   final pulumi.Input<GoogleCloudDataplexV1JobResponse> latestJob;
-
   /// Last update time of the status.
   final pulumi.Input<String> updateTime;
 
@@ -21,25 +20,16 @@ class GoogleCloudDataplexV1TaskExecutionStatusResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'latestJob':
-          pulumi.Input.mapInputValue<
-            GoogleCloudDataplexV1JobResponse,
-            Map<String, dynamic>
-          >(latestJob, (value) => value.toMap()),
+      'latestJob': pulumi.Input.mapInputValue<GoogleCloudDataplexV1JobResponse, Map<String, dynamic>>(latestJob, (value) => value.toMap()),
       'updateTime': updateTime,
     };
   }
 
-  factory GoogleCloudDataplexV1TaskExecutionStatusResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDataplexV1TaskExecutionStatusResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1TaskExecutionStatusResponse(
-      latestJob: pulumi.Input.fromValue(
-        GoogleCloudDataplexV1JobResponse.fromMap(
-          (map['latestJob']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      latestJob: pulumi.Input.fromValue(GoogleCloudDataplexV1JobResponse.fromMap((map['latestJob']! as Map).cast<String, dynamic>())),
       updateTime: pulumi.Input.fromValue(map['updateTime'] as String),
     );
   }
 }
+

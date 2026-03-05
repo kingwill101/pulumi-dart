@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AdministrativeUnitRoleMemberArgs {
   /// The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
   final pulumi.Input<String> administrativeUnitObjectId;
-
   /// The object ID of the user, group or service principal you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
   final pulumi.Input<String> memberObjectId;
-
   /// The object ID of the directory role you want to assign. Changing this forces a new resource to be created.
   final pulumi.Input<String> roleObjectId;
 
@@ -36,11 +34,10 @@ class AdministrativeUnitRoleMemberArgs {
 
   factory AdministrativeUnitRoleMemberArgs.fromMap(Map<String, dynamic> map) {
     return AdministrativeUnitRoleMemberArgs(
-      administrativeUnitObjectId: pulumi.Input.fromValue(
-        map['administrativeUnitObjectId'] as String,
-      ),
+      administrativeUnitObjectId: pulumi.Input.fromValue(map['administrativeUnitObjectId'] as String),
       memberObjectId: pulumi.Input.fromValue(map['memberObjectId'] as String),
       roleObjectId: pulumi.Input.fromValue(map['roleObjectId'] as String),
     );
   }
 }
+

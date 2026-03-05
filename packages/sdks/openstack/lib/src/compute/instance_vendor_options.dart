@@ -7,7 +7,6 @@ class InstanceVendorOptions {
   /// ports to the vm before destroying it to make sure the port state is correct
   /// after the vm destruction. This is helpful when the port is not deleted.
   final pulumi.Input<bool>? detachPortsBeforeDestroy;
-
   /// Boolean to control whether
   /// to ignore manual confirmation of the instance resizing. This can be helpful
   /// to work with some OpenStack clouds which automatically confirm resizing of
@@ -31,16 +30,9 @@ class InstanceVendorOptions {
 
   factory InstanceVendorOptions.fromMap(Map<String, dynamic> map) {
     return InstanceVendorOptions(
-      detachPortsBeforeDestroy: (() {
-        final guardedValue = map['detachPortsBeforeDestroy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      ignoreResizeConfirmation: (() {
-        final guardedValue = map['ignoreResizeConfirmation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      detachPortsBeforeDestroy: (() { final guardedValue = map['detachPortsBeforeDestroy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      ignoreResizeConfirmation: (() { final guardedValue = map['ignoreResizeConfirmation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClusterNodePoolManagement {
   /// Whether the nodes will be automatically repaired. Enabled by default.
   final pulumi.Input<bool> autoRepair;
-
   /// Whether the nodes will be automatically upgraded. Enabled by default.
   final pulumi.Input<bool> autoUpgrade;
 
@@ -31,3 +30,4 @@ class GetClusterNodePoolManagement {
     );
   }
 }
+

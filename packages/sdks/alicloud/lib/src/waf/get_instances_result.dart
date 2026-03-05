@@ -7,16 +7,13 @@ import 'get_instances_instance.dart';
 class GetInstancesResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// (Optional) A list of WAF instance IDs.
   final List<String> ids;
   final String? instanceSource;
-
   /// A list of WAF instances. Each element contains the following attributes:
   final List<GetInstancesInstance> instances;
   final String? outputFile;
   final String? resourceGroupId;
-
   /// Indicates whether the WAF instance has expired.
   final int? status;
 
@@ -43,11 +40,7 @@ class GetInstancesResult {
       'id': id,
       'ids': ids,
       'instanceSource': ?instanceSource,
-      'instances':
-          pulumi.Input.encodeList<GetInstancesInstance, Map<String, dynamic>>(
-            instances,
-            (value) => value.toMap(),
-          ),
+      'instances': pulumi.Input.encodeList<GetInstancesInstance, Map<String, dynamic>>(instances, (value) => value.toMap()),
       'outputFile': ?outputFile,
       'resourceGroupId': ?resourceGroupId,
       'status': ?status,
@@ -58,32 +51,12 @@ class GetInstancesResult {
     return GetInstancesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      instanceSource: (() {
-        final guardedValue = map['instanceSource'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      instances: pulumi.Input.decodeList<GetInstancesInstance>(
-        map['instances']!,
-        (value) => GetInstancesInstance.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      resourceGroupId: (() {
-        final guardedValue = map['resourceGroupId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
+      instanceSource: (() { final guardedValue = map['instanceSource']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      instances: pulumi.Input.decodeList<GetInstancesInstance>(map['instances']!, (value) => GetInstancesInstance.fromMap((value as Map).cast<String, dynamic>())),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceGroupId: (() { final guardedValue = map['resourceGroupId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as int; })(),
     );
   }
 }
+

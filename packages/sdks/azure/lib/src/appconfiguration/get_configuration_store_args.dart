@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConfigurationStoreArgs {
   /// The Name of this App Configuration.
   final pulumi.Input<String> name;
-
   /// The name of the Resource Group where the App Configuration exists.
   final pulumi.Input<String> resourceGroupName;
 
@@ -31,9 +30,8 @@ class GetConfigurationStoreArgs {
   factory GetConfigurationStoreArgs.fromMap(Map<String, dynamic> map) {
     return GetConfigurationStoreArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

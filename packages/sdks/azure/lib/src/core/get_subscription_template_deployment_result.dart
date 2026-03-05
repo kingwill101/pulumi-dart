@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getSubscriptionTemplateDeployment.
 class GetSubscriptionTemplateDeploymentResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
-
   /// The JSON Content of the Outputs of the ARM Template Deployment.
   final String outputContent;
 
@@ -27,9 +27,7 @@ class GetSubscriptionTemplateDeploymentResult {
     };
   }
 
-  factory GetSubscriptionTemplateDeploymentResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetSubscriptionTemplateDeploymentResult.fromMap(Map<String, dynamic> map) {
     return GetSubscriptionTemplateDeploymentResult(
       id: map['id'] as String,
       name: map['name'] as String,
@@ -37,3 +35,4 @@ class GetSubscriptionTemplateDeploymentResult {
     );
   }
 }
+

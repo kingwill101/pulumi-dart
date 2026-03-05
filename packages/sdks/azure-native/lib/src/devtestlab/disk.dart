@@ -156,49 +156,34 @@ import 'disk_args.dart';
 class Disk extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The creation date of the disk.
   late final pulumi.Output<String> createdDate;
-
   /// When backed by a blob, the name of the VHD blob without extension.
   late final pulumi.Output<String?> diskBlobName;
-
   /// The size of the disk in Gibibytes.
   late final pulumi.Output<int?> diskSizeGiB;
-
   /// The storage type for the disk (i.e. Standard, Premium).
   late final pulumi.Output<String?> diskType;
-
   /// When backed by a blob, the URI of underlying blob.
   late final pulumi.Output<String?> diskUri;
-
   /// The host caching policy of the disk (i.e. None, ReadOnly, ReadWrite).
   late final pulumi.Output<String?> hostCaching;
-
   /// The resource ID of the VM to which this disk is leased.
   late final pulumi.Output<String?> leasedByLabVmId;
-
   /// The location of the resource.
   late final pulumi.Output<String?> location;
-
   /// When backed by managed disk, this is the ID of the compute disk resource.
   late final pulumi.Output<String?> managedDiskId;
-
   /// The name of the resource.
   late final pulumi.Output<String> name;
-
   /// The provisioning status of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// When backed by a blob, the storage account where the blob is.
   late final pulumi.Output<String?> storageAccountId;
-
   /// The tags of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource.
   late final pulumi.Output<String> type;
-
   /// The unique immutable identifier of a resource (Guid).
   late final pulumi.Output<String> uniqueIdentifier;
 
@@ -206,13 +191,16 @@ class Disk extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Disk]. {@macro pulumi_devtestlab_disk_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Disk(String name, {DiskArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:devtestlab:Disk',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Disk(
+    String name, {
+    DiskArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:devtestlab:Disk',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createdDate = registerOutput<String>('createdDate');
     diskBlobName = registerOutput<String?>('diskBlobName');

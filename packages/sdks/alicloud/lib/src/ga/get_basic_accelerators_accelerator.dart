@@ -10,47 +10,30 @@ class GetBasicAcceleratorsAccelerator {
   /// - `CDT`: billed through Cloud Data Transfer (CDT) and based on data transfer.
   /// - `CDT95`: billed through CDT and based on the 95th percentile bandwidth. This bandwidth billing method is available only for users that are included in the whitelist.
   final pulumi.Input<String> bandwidthBillingType;
-
   /// The id of the Global Accelerator Basic Accelerator instance.
   final pulumi.Input<String> basicAcceleratorId;
-
   /// The name of the Global Accelerator Basic Accelerator instance.
   final pulumi.Input<String> basicAcceleratorName;
-
   /// The details about the basic bandwidth plan that is associated with the Global Accelerator Basic Accelerator instance.
-  final pulumi.Input<List<GetBasicAcceleratorsAcceleratorBasicBandwidthPackage>>
-  basicBandwidthPackages;
-
+  final pulumi.Input<List<GetBasicAcceleratorsAcceleratorBasicBandwidthPackage>> basicBandwidthPackages;
   /// The ID of the endpoint group that is associated with the Global Accelerator Basic Accelerator instance.
   final pulumi.Input<String> basicEndpointGroupId;
-
   /// The ID of the acceleration region.
   final pulumi.Input<String> basicIpSetId;
-
   /// The timestamp that indicates when the Global Accelerator Basic Accelerator instance was created.
   final pulumi.Input<int> createTime;
-
   /// The details about the cross-region acceleration bandwidth plan that is associated with the Global Accelerator Basic Accelerator instance. **NOTE:** This array is returned only for Global Accelerator Basic Accelerator instances that are created on the International site.
-  final pulumi.Input<
-    List<GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackage>
-  >
-  crossDomainBandwidthPackages;
-
+  final pulumi.Input<List<GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackage>> crossDomainBandwidthPackages;
   /// The description of the Global Accelerator Basic Accelerator instance.
   final pulumi.Input<String> description;
-
   /// The timestamp that indicates when the Global Accelerator Basic Accelerator instance was expired.
   final pulumi.Input<int> expiredTime;
-
   /// The id of the Global Accelerator Basic Accelerator.
   final pulumi.Input<String> id;
-
   /// The billing method of the Global Accelerator Basic Accelerator instance.
   final pulumi.Input<String> instanceChargeType;
-
   /// The ID of the region where the Global Accelerator Basic Accelerator instance is deployed.
   final pulumi.Input<String> regionId;
-
   /// The status of the Global Accelerator Basic Accelerator instance. Valid Value: `init`, `active`, `configuring`, `binding`, `unbinding`, `deleting`, `finacialLocked`.
   final pulumi.Input<String> status;
 
@@ -91,33 +74,11 @@ class GetBasicAcceleratorsAccelerator {
       'bandwidthBillingType': bandwidthBillingType,
       'basicAcceleratorId': basicAcceleratorId,
       'basicAcceleratorName': basicAcceleratorName,
-      'basicBandwidthPackages':
-          pulumi.Input.mapInputValue<
-            List<GetBasicAcceleratorsAcceleratorBasicBandwidthPackage>,
-            List<Map<String, dynamic>>
-          >(
-            basicBandwidthPackages,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetBasicAcceleratorsAcceleratorBasicBandwidthPackage,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'basicBandwidthPackages': pulumi.Input.mapInputValue<List<GetBasicAcceleratorsAcceleratorBasicBandwidthPackage>, List<Map<String, dynamic>>>(basicBandwidthPackages, (value) => pulumi.Input.encodeList<GetBasicAcceleratorsAcceleratorBasicBandwidthPackage, Map<String, dynamic>>(value, (value) => value.toMap())),
       'basicEndpointGroupId': basicEndpointGroupId,
       'basicIpSetId': basicIpSetId,
       'createTime': createTime,
-      'crossDomainBandwidthPackages':
-          pulumi.Input.mapInputValue<
-            List<GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackage>,
-            List<Map<String, dynamic>>
-          >(
-            crossDomainBandwidthPackages,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackage,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'crossDomainBandwidthPackages': pulumi.Input.mapInputValue<List<GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackage>, List<Map<String, dynamic>>>(crossDomainBandwidthPackages, (value) => pulumi.Input.encodeList<GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackage, Map<String, dynamic>>(value, (value) => value.toMap())),
       'description': description,
       'expiredTime': expiredTime,
       'id': id,
@@ -129,50 +90,21 @@ class GetBasicAcceleratorsAccelerator {
 
   factory GetBasicAcceleratorsAccelerator.fromMap(Map<String, dynamic> map) {
     return GetBasicAcceleratorsAccelerator(
-      bandwidthBillingType: pulumi.Input.fromValue(
-        map['bandwidthBillingType'] as String,
-      ),
-      basicAcceleratorId: pulumi.Input.fromValue(
-        map['basicAcceleratorId'] as String,
-      ),
-      basicAcceleratorName: pulumi.Input.fromValue(
-        map['basicAcceleratorName'] as String,
-      ),
-      basicBandwidthPackages: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GetBasicAcceleratorsAcceleratorBasicBandwidthPackage
-        >(
-          map['basicBandwidthPackages']!,
-          (value) =>
-              GetBasicAcceleratorsAcceleratorBasicBandwidthPackage.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
-      basicEndpointGroupId: pulumi.Input.fromValue(
-        map['basicEndpointGroupId'] as String,
-      ),
+      bandwidthBillingType: pulumi.Input.fromValue(map['bandwidthBillingType'] as String),
+      basicAcceleratorId: pulumi.Input.fromValue(map['basicAcceleratorId'] as String),
+      basicAcceleratorName: pulumi.Input.fromValue(map['basicAcceleratorName'] as String),
+      basicBandwidthPackages: pulumi.Input.fromValue(pulumi.Input.decodeList<GetBasicAcceleratorsAcceleratorBasicBandwidthPackage>(map['basicBandwidthPackages']!, (value) => GetBasicAcceleratorsAcceleratorBasicBandwidthPackage.fromMap((value as Map).cast<String, dynamic>()))),
+      basicEndpointGroupId: pulumi.Input.fromValue(map['basicEndpointGroupId'] as String),
       basicIpSetId: pulumi.Input.fromValue(map['basicIpSetId'] as String),
       createTime: pulumi.Input.fromValue(map['createTime'] as int),
-      crossDomainBandwidthPackages: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackage
-        >(
-          map['crossDomainBandwidthPackages']!,
-          (value) =>
-              GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackage.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
+      crossDomainBandwidthPackages: pulumi.Input.fromValue(pulumi.Input.decodeList<GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackage>(map['crossDomainBandwidthPackages']!, (value) => GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackage.fromMap((value as Map).cast<String, dynamic>()))),
       description: pulumi.Input.fromValue(map['description'] as String),
       expiredTime: pulumi.Input.fromValue(map['expiredTime'] as int),
       id: pulumi.Input.fromValue(map['id'] as String),
-      instanceChargeType: pulumi.Input.fromValue(
-        map['instanceChargeType'] as String,
-      ),
+      instanceChargeType: pulumi.Input.fromValue(map['instanceChargeType'] as String),
       regionId: pulumi.Input.fromValue(map['regionId'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
+

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TransferJobReplicationSpecGcsDataSource {
   /// Google Cloud Storage bucket name.
   final pulumi.Input<String> bucketName;
-
   /// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
   final pulumi.Input<String>? path;
 
@@ -18,19 +17,17 @@ class TransferJobReplicationSpecGcsDataSource {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'bucketName': bucketName, 'path': ?path};
+    return <String, dynamic>{
+      'bucketName': bucketName,
+      'path': ?path,
+    };
   }
 
-  factory TransferJobReplicationSpecGcsDataSource.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory TransferJobReplicationSpecGcsDataSource.fromMap(Map<String, dynamic> map) {
     return TransferJobReplicationSpecGcsDataSource(
       bucketName: pulumi.Input.fromValue(map['bucketName'] as String),
-      path: (() {
-        final guardedValue = map['path'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

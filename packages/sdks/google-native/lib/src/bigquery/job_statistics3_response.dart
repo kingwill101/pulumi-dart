@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JobStatistics3Response {
   /// The number of bad records encountered. Note that if the job has failed because of more bad records encountered than the maximum allowed in the load job configuration, then this number can be less than the total number of bad records present in the input data.
   final pulumi.Input<String> badRecords;
-
   /// Number of bytes of source data in a load job.
   final pulumi.Input<String> inputFileBytes;
-
   /// Number of source files in a load job.
   final pulumi.Input<String> inputFiles;
-
   /// Size of the loaded data in bytes. Note that while a load job is in the running state, this value may change.
   final pulumi.Input<String> outputBytes;
-
   /// Number of rows imported in a load job. Note that while an import job is in the running state, this value may change.
   final pulumi.Input<String> outputRows;
 
@@ -52,3 +48,4 @@ class JobStatistics3Response {
     );
   }
 }
+

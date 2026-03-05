@@ -410,10 +410,8 @@ class Command extends pulumi.CustomResource {
   /// injected into the environment of the next run as PULUMI_COMMAND_STDOUT and PULUMI_COMMAND_STDERR.
   /// Defaults to true.
   late final pulumi.Output<bool?> addPreviousOutputInEnv;
-
   /// The parameters with which to connect to the remote host.
   late final pulumi.Output<Connection> connection;
-
   /// The command to run once on resource creation.
   ///
   /// If an `update` command isn't provided, then `create` will also be run when the resource's inputs are modified.
@@ -422,32 +420,25 @@ class Command extends pulumi.CustomResource {
   ///
   /// Use `local.runOutput` if you need to run a command on every execution of your program.
   late final pulumi.Output<String?> create;
-
   /// The command to run on resource delettion.
   ///
   /// The environment variables `PULUMI_COMMAND_STDOUT` and `PULUMI_COMMAND_STDERR` are set to the stdout and stderr properties of the Command resource from previous create or update steps.
   late final pulumi.Output<String?> delete;
-
   /// Additional environment variables available to the command's process.
   /// Note that this only works if the SSH server is configured to accept these variables via AcceptEnv.
   /// Alternatively, if a Bash-like shell runs the command on the remote host, you could prefix the command itself
   /// with the variables in the form 'VAR=value command'.
   late final pulumi.Output<Map<String, String>?> environment;
-
   /// If the command's stdout and stderr should be logged. This doesn't affect the capturing of
   /// stdout and stderr as outputs. If there might be secrets in the output, you can disable logging here and mark the
   /// outputs as secret via 'additionalSecretOutputs'. Defaults to logging both stdout and stderr.
   late final pulumi.Output<Logging?> logging;
-
   /// The standard error of the command's process
   late final pulumi.Output<String> stderr;
-
   /// Pass a string to the command's process as standard in
   late final pulumi.Output<String?> stdin;
-
   /// The standard output of the command's process
   late final pulumi.Output<String> stdout;
-
   /// The resource will be updated (or replaced) if any of these values change.
   ///
   /// The trigger values can be of any type.
@@ -456,7 +447,6 @@ class Command extends pulumi.CustomResource {
   ///
   /// Please see the resource documentation for examples.
   late final pulumi.Output<List<Map<String, dynamic>>?> triggers;
-
   /// The command to run when the resource is updated.
   ///
   /// If empty, the create command will be executed instead.
@@ -477,33 +467,17 @@ class Command extends pulumi.CustomResource {
     CommandArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'command:remote:Command',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'command:remote:Command',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     addPreviousOutputInEnv = registerOutput<bool?>('addPreviousOutputInEnv');
-    connection = registerOutput<Connection>(
-      'connection',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return Connection.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    connection = registerOutput<Connection>('connection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Connection.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     create = registerOutput<String?>('create');
     delete = registerOutput<String?>('delete');
     environment = registerOutput<Map<String, String>?>('environment');
-    logging = registerOutput<Logging?>(
-      'logging',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return Logging.fromValue(guardedValue as String);
-      },
-    );
+    logging = registerOutput<Logging?>('logging', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Logging.fromValue(guardedValue as String); });
     stderr = registerOutput<String>('stderr');
     stdin = registerOutput<String?>('stdin');
     stdout = registerOutput<String>('stdout');

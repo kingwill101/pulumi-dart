@@ -313,28 +313,20 @@ import 'workload_group_args.dart';
 class WorkloadGroup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The workload group importance level.
   late final pulumi.Output<String?> importance;
-
   /// The workload group cap percentage resource.
   late final pulumi.Output<int> maxResourcePercent;
-
   /// The workload group request maximum grant percentage.
   late final pulumi.Output<double?> maxResourcePercentPerRequest;
-
   /// The workload group minimum percentage resource.
   late final pulumi.Output<int> minResourcePercent;
-
   /// The workload group request minimum grant percentage.
   late final pulumi.Output<double> minResourcePercentPerRequest;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// The workload group query execution timeout.
   late final pulumi.Output<int?> queryExecutionTimeout;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -347,21 +339,17 @@ class WorkloadGroup extends pulumi.CustomResource {
     WorkloadGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:sql:WorkloadGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:sql:WorkloadGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     importance = registerOutput<String?>('importance');
     maxResourcePercent = registerOutput<int>('maxResourcePercent');
-    maxResourcePercentPerRequest = registerOutput<double?>(
-      'maxResourcePercentPerRequest',
-    );
+    maxResourcePercentPerRequest = registerOutput<double?>('maxResourcePercentPerRequest');
     minResourcePercent = registerOutput<int>('minResourcePercent');
-    minResourcePercentPerRequest = registerOutput<double>(
-      'minResourcePercentPerRequest',
-    );
+    minResourcePercentPerRequest = registerOutput<double>('minResourcePercentPerRequest');
     this.name = registerOutput<String>('name');
     queryExecutionTimeout = registerOutput<int?>('queryExecutionTimeout');
     type = registerOutput<String>('type');

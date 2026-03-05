@@ -37,23 +37,14 @@ class GetDatasetFhirStoreIamPolicyHealthcareV1beta1Args {
     };
   }
 
-  factory GetDatasetFhirStoreIamPolicyHealthcareV1beta1Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDatasetFhirStoreIamPolicyHealthcareV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetDatasetFhirStoreIamPolicyHealthcareV1beta1Args(
       datasetId: pulumi.Input.fromValue(map['datasetId'] as String),
       fhirStoreId: pulumi.Input.fromValue(map['fhirStoreId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      optionsRequestedPolicyVersion: (() {
-        final guardedValue = map['optionsRequestedPolicyVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

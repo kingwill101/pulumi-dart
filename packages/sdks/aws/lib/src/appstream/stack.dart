@@ -392,53 +392,38 @@ class Stack extends pulumi.CustomResource {
   /// Set of configuration blocks defining the interface VPC endpoints. Users of the stack can connect to AppStream 2.0 only through the specified endpoints.
   /// See `access_endpoints` below.
   late final pulumi.Output<List<Map<String, dynamic>>> accessEndpoints;
-
   /// Settings for application settings persistence.
   /// See `application_settings` below.
   late final pulumi.Output<StackApplicationSettings> applicationSettings;
-
   /// ARN of the appstream stack.
   late final pulumi.Output<String> arn;
-
   /// Date and time, in UTC and extended RFC 3339 format, when the stack was created.
   late final pulumi.Output<String> createdTime;
-
   /// Description for the AppStream stack.
   late final pulumi.Output<String?> description;
-
   /// Stack name to display.
   late final pulumi.Output<String?> displayName;
-
   /// Domains where AppStream 2.0 streaming sessions can be embedded in an iframe. You must approve the domains that you want to host embedded AppStream 2.0 streaming sessions.
   late final pulumi.Output<List<String>> embedHostDomains;
-
   /// URL that users are redirected to after they click the Send Feedback link. If no URL is specified, no Send Feedback link is displayed. .
   late final pulumi.Output<String> feedbackUrl;
-
   /// Unique name for the AppStream stack.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
-
   /// URL that users are redirected to after their streaming session ends.
   late final pulumi.Output<String> redirectUrl;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Configuration block for the storage connectors to enable.
   /// See `storage_connectors` below.
   late final pulumi.Output<List<Map<String, dynamic>>> storageConnectors;
-
   /// The streaming protocol you want your stack to prefer. This can be UDP or TCP. Currently, UDP is only supported in the Windows native client.
   /// See `streaming_experience_settings` below.
-  late final pulumi.Output<StackStreamingExperienceSettings>
-  streamingExperienceSettings;
-
+  late final pulumi.Output<StackStreamingExperienceSettings> streamingExperienceSettings;
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// Configuration block for the actions that are enabled or disabled for users during their streaming sessions. If not provided, these settings are configured automatically by AWS. If provided, the configuration should include a block for each configurable action.
   /// See `user_settings` below.
   late final pulumi.Output<List<Map<String, dynamic>>> userSettings;
@@ -447,26 +432,18 @@ class Stack extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Stack]. {@macro pulumi_appstream_stack_stack_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Stack(String name, {StackArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:appstream/stack:Stack',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
-    accessEndpoints = registerOutput<List<Map<String, dynamic>>>(
-      'accessEndpoints',
-    );
-    applicationSettings = registerOutput<StackApplicationSettings>(
-      'applicationSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return StackApplicationSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+  Stack(
+    String name, {
+    StackArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:appstream/stack:Stack',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    accessEndpoints = registerOutput<List<Map<String, dynamic>>>('accessEndpoints');
+    applicationSettings = registerOutput<StackApplicationSettings>('applicationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StackApplicationSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');
     createdTime = registerOutput<String>('createdTime');
     description = registerOutput<String?>('description');
@@ -476,27 +453,19 @@ class Stack extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     redirectUrl = registerOutput<String>('redirectUrl');
     region = registerOutput<String>('region');
-    storageConnectors = registerOutput<List<Map<String, dynamic>>>(
-      'storageConnectors',
-    );
-    streamingExperienceSettings =
-        registerOutput<StackStreamingExperienceSettings>(
-          'streamingExperienceSettings',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return StackStreamingExperienceSettings.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    storageConnectors = registerOutput<List<Map<String, dynamic>>>('storageConnectors');
+    streamingExperienceSettings = registerOutput<StackStreamingExperienceSettings>('streamingExperienceSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StackStreamingExperienceSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     userSettings = registerOutput<List<Map<String, dynamic>>>('userSettings');
   }
 
   /// Gets an existing [Stack] resource's state with the given [name] and [id].
-  static Stack get(String name, pulumi.Input<String> id, {StackState? state}) {
+  static Stack get(
+    String name,
+    pulumi.Input<String> id, {
+    StackState? state,
+  }) {
     return Stack._get(
       name,
       state: state?.toMap(),
@@ -509,24 +478,13 @@ class Stack extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:appstream/stack:Stack',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    accessEndpoints = registerOutput<List<Map<String, dynamic>>>(
-      'accessEndpoints',
-    );
-    applicationSettings = registerOutput<StackApplicationSettings>(
-      'applicationSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return StackApplicationSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'aws:appstream/stack:Stack',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    accessEndpoints = registerOutput<List<Map<String, dynamic>>>('accessEndpoints');
+    applicationSettings = registerOutput<StackApplicationSettings>('applicationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StackApplicationSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');
     createdTime = registerOutput<String>('createdTime');
     description = registerOutput<String?>('description');
@@ -536,20 +494,8 @@ class Stack extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     redirectUrl = registerOutput<String>('redirectUrl');
     region = registerOutput<String>('region');
-    storageConnectors = registerOutput<List<Map<String, dynamic>>>(
-      'storageConnectors',
-    );
-    streamingExperienceSettings =
-        registerOutput<StackStreamingExperienceSettings>(
-          'streamingExperienceSettings',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return StackStreamingExperienceSettings.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    storageConnectors = registerOutput<List<Map<String, dynamic>>>('storageConnectors');
+    streamingExperienceSettings = registerOutput<StackStreamingExperienceSettings>('streamingExperienceSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StackStreamingExperienceSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     userSettings = registerOutput<List<Map<String, dynamic>>>('userSettings');

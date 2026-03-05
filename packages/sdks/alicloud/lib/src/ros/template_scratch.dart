@@ -201,29 +201,20 @@ import 'template_scratch_state.dart';
 class TemplateScratch extends pulumi.CustomResource {
   /// The Description of the Template Scratch.
   late final pulumi.Output<String?> description;
-
   /// The execution mode. Valid Values: `Async` or `Sync`.
   late final pulumi.Output<String?> executionMode;
-
   /// Logical ID generation strategy. Valid Values: `LongTypePrefixAndIndexSuffix`, `LongTypePrefixAndHashSuffix` and `ShortTypePrefixAndHashSuffix`.
   late final pulumi.Output<String> logicalIdStrategy;
-
   /// Priority parameter. See the following `Block preference_parameters`.
   late final pulumi.Output<List<Map<String, dynamic>>> preferenceParameters;
-
   /// Source resource grouping. See the following `Block source_resource_group`.
-  late final pulumi.Output<TemplateScratchSourceResourceGroup?>
-  sourceResourceGroup;
-
+  late final pulumi.Output<TemplateScratchSourceResourceGroup?> sourceResourceGroup;
   /// Source resource. See the following `Block source_resources`.
   late final pulumi.Output<List<Map<String, dynamic>>?> sourceResources;
-
   /// Source tag. See the following `Block source_tag`.
   late final pulumi.Output<TemplateScratchSourceTag?> sourceTag;
-
   /// The status of the resource.
   late final pulumi.Output<String> status;
-
   /// The type of the Template scan. Valid Values: `ResourceImport` or `ArchitectureReplication`.
   late final pulumi.Output<String> templateScratchType;
 
@@ -236,40 +227,18 @@ class TemplateScratch extends pulumi.CustomResource {
     TemplateScratchArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ros/templateScratch:TemplateScratch',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ros/templateScratch:TemplateScratch',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     executionMode = registerOutput<String?>('executionMode');
     logicalIdStrategy = registerOutput<String>('logicalIdStrategy');
-    preferenceParameters = registerOutput<List<Map<String, dynamic>>>(
-      'preferenceParameters',
-    );
-    sourceResourceGroup = registerOutput<TemplateScratchSourceResourceGroup?>(
-      'sourceResourceGroup',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TemplateScratchSourceResourceGroup.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    sourceResources = registerOutput<List<Map<String, dynamic>>?>(
-      'sourceResources',
-    );
-    sourceTag = registerOutput<TemplateScratchSourceTag?>(
-      'sourceTag',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TemplateScratchSourceTag.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    preferenceParameters = registerOutput<List<Map<String, dynamic>>>('preferenceParameters');
+    sourceResourceGroup = registerOutput<TemplateScratchSourceResourceGroup?>('sourceResourceGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TemplateScratchSourceResourceGroup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sourceResources = registerOutput<List<Map<String, dynamic>>?>('sourceResources');
+    sourceTag = registerOutput<TemplateScratchSourceTag?>('sourceTag', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TemplateScratchSourceTag.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
     templateScratchType = registerOutput<String>('templateScratchType');
   }
@@ -292,40 +261,18 @@ class TemplateScratch extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ros/templateScratch:TemplateScratch',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ros/templateScratch:TemplateScratch',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     executionMode = registerOutput<String?>('executionMode');
     logicalIdStrategy = registerOutput<String>('logicalIdStrategy');
-    preferenceParameters = registerOutput<List<Map<String, dynamic>>>(
-      'preferenceParameters',
-    );
-    sourceResourceGroup = registerOutput<TemplateScratchSourceResourceGroup?>(
-      'sourceResourceGroup',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TemplateScratchSourceResourceGroup.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    sourceResources = registerOutput<List<Map<String, dynamic>>?>(
-      'sourceResources',
-    );
-    sourceTag = registerOutput<TemplateScratchSourceTag?>(
-      'sourceTag',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TemplateScratchSourceTag.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    preferenceParameters = registerOutput<List<Map<String, dynamic>>>('preferenceParameters');
+    sourceResourceGroup = registerOutput<TemplateScratchSourceResourceGroup?>('sourceResourceGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TemplateScratchSourceResourceGroup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sourceResources = registerOutput<List<Map<String, dynamic>>?>('sourceResources');
+    sourceTag = registerOutput<TemplateScratchSourceTag?>('sourceTag', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TemplateScratchSourceTag.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
     templateScratchType = registerOutput<String>('templateScratchType');
   }

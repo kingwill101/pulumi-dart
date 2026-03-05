@@ -16,3 +16,4 @@ enum SchemaSettingsEncoding {
     throw ArgumentError('Unknown SchemaSettingsEncoding value: $value');
   }
 }
+

@@ -10,27 +10,20 @@ class GoogleCloudChannelV1PercentageAdjustmentResponse {
 
   /// Creates a new [GoogleCloudChannelV1PercentageAdjustmentResponse].
   /// [percentage] The percentage of the bill to adjust. For example: Mark down by 1% =&gt; "-1.00" Mark up by 1% =&gt; "1.00" Pass-Through =&gt; "0.00"
-  GoogleCloudChannelV1PercentageAdjustmentResponse({required this.percentage});
+  GoogleCloudChannelV1PercentageAdjustmentResponse({
+    required this.percentage,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'percentage':
-          pulumi.Input.mapInputValue<
-            GoogleTypeDecimalResponse,
-            Map<String, dynamic>
-          >(percentage, (value) => value.toMap()),
+      'percentage': pulumi.Input.mapInputValue<GoogleTypeDecimalResponse, Map<String, dynamic>>(percentage, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudChannelV1PercentageAdjustmentResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudChannelV1PercentageAdjustmentResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudChannelV1PercentageAdjustmentResponse(
-      percentage: pulumi.Input.fromValue(
-        GoogleTypeDecimalResponse.fromMap(
-          (map['percentage']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      percentage: pulumi.Input.fromValue(GoogleTypeDecimalResponse.fromMap((map['percentage']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

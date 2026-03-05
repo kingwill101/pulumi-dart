@@ -145,55 +145,38 @@ import 'connector_collection_info_response.dart';
 class CloudConnector extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Connector billing model
   late final pulumi.Output<String?> billingModel;
-
   /// Collection information
   late final pulumi.Output<ConnectorCollectionInfoResponse> collectionInfo;
-
   /// Connector definition creation datetime
   late final pulumi.Output<String> createdOn;
-
   /// Credentials authentication key (eg AWS ARN)
   late final pulumi.Output<String?> credentialsKey;
-
   /// Number of days remaining of trial
   late final pulumi.Output<int> daysTrialRemaining;
-
   /// Default ManagementGroupId
   late final pulumi.Output<String?> defaultManagementGroupId;
-
   /// Connector DisplayName
   late final pulumi.Output<String?> displayName;
-
   /// Associated ExternalBillingAccountId
   late final pulumi.Output<String> externalBillingAccountId;
-
   /// Connector kind (eg aws)
   late final pulumi.Output<String?> kind;
-
   /// Connector last modified datetime
   late final pulumi.Output<String> modifiedOn;
-
   /// Connector name
   late final pulumi.Output<String> name;
-
   /// The display name of the providerBillingAccountId as defined on the external provider
   late final pulumi.Output<String> providerBillingAccountDisplayName;
-
   /// Connector providerBillingAccountId, determined from credentials (eg AWS Consolidated account number)
   late final pulumi.Output<String> providerBillingAccountId;
-
   /// Identifying source report. (For AWS this is a CUR report name, defined with Daily and with Resources)
   late final pulumi.Output<String?> reportId;
-
   /// Connector status
   late final pulumi.Output<String> status;
-
   /// Billing SubscriptionId
   late final pulumi.Output<String?> subscriptionId;
-
   /// Connector type
   late final pulumi.Output<String> type;
 
@@ -206,42 +189,25 @@ class CloudConnector extends pulumi.CustomResource {
     CloudConnectorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:costmanagement:CloudConnector',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:costmanagement:CloudConnector',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     billingModel = registerOutput<String?>('billingModel');
-    collectionInfo = registerOutput<ConnectorCollectionInfoResponse>(
-      'collectionInfo',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectorCollectionInfoResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    collectionInfo = registerOutput<ConnectorCollectionInfoResponse>('collectionInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectorCollectionInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdOn = registerOutput<String>('createdOn');
     credentialsKey = registerOutput<String?>('credentialsKey');
     daysTrialRemaining = registerOutput<int>('daysTrialRemaining');
-    defaultManagementGroupId = registerOutput<String?>(
-      'defaultManagementGroupId',
-    );
+    defaultManagementGroupId = registerOutput<String?>('defaultManagementGroupId');
     displayName = registerOutput<String?>('displayName');
-    externalBillingAccountId = registerOutput<String>(
-      'externalBillingAccountId',
-    );
+    externalBillingAccountId = registerOutput<String>('externalBillingAccountId');
     kind = registerOutput<String?>('kind');
     modifiedOn = registerOutput<String>('modifiedOn');
     this.name = registerOutput<String>('name');
-    providerBillingAccountDisplayName = registerOutput<String>(
-      'providerBillingAccountDisplayName',
-    );
-    providerBillingAccountId = registerOutput<String>(
-      'providerBillingAccountId',
-    );
+    providerBillingAccountDisplayName = registerOutput<String>('providerBillingAccountDisplayName');
+    providerBillingAccountId = registerOutput<String>('providerBillingAccountId');
     reportId = registerOutput<String?>('reportId');
     status = registerOutput<String>('status');
     subscriptionId = registerOutput<String?>('subscriptionId');

@@ -9,21 +9,20 @@ class GoogleCloudIdentitytoolkitAdminV2RequestLogging {
 
   /// Creates a new [GoogleCloudIdentitytoolkitAdminV2RequestLogging].
   /// [enabled] Whether logging is enabled for this project or not.
-  GoogleCloudIdentitytoolkitAdminV2RequestLogging({this.enabled});
+  GoogleCloudIdentitytoolkitAdminV2RequestLogging({
+    this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': ?enabled};
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
-  factory GoogleCloudIdentitytoolkitAdminV2RequestLogging.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudIdentitytoolkitAdminV2RequestLogging.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIdentitytoolkitAdminV2RequestLogging(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

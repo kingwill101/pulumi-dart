@@ -477,47 +477,33 @@ import 'system_data_response.dart';
 class RestApiPollerDataConnector extends pulumi.CustomResource {
   /// The add on attributes. The key name will become attribute name (a column) and the value will become the attribute value in the payload.
   late final pulumi.Output<Map<String, String>?> addOnAttributes;
-
   /// The a authentication model.
   late final pulumi.Output<AWSAuthModelResponse> auth;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The connector definition name (the dataConnectorDefinition resource id).
   late final pulumi.Output<String> connectorDefinitionName;
-
   /// The Log Analytics table destination.
   late final pulumi.Output<String?> dataType;
-
   /// The DCR related properties.
   late final pulumi.Output<DCRConfigurationResponse?> dcrConfig;
-
   /// Etag of the azure resource
   late final pulumi.Output<String?> etag;
-
   /// Indicates whether the connector is active or not.
   late final pulumi.Output<bool?> isActive;
-
   /// The kind of the data connector
   /// Expected value is 'RestApiPoller'.
   late final pulumi.Output<String> kind;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The paging configuration.
   late final pulumi.Output<RestApiPollerRequestPagingConfigResponse?> paging;
-
   /// The request configuration.
   late final pulumi.Output<RestApiPollerRequestConfigResponse> request;
-
   /// The response configuration.
   late final pulumi.Output<CcpResponseConfigResponse?> response;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -530,79 +516,25 @@ class RestApiPollerDataConnector extends pulumi.CustomResource {
     RestApiPollerDataConnectorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:securityinsights:RestApiPollerDataConnector',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:securityinsights:RestApiPollerDataConnector',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     addOnAttributes = registerOutput<Map<String, String>?>('addOnAttributes');
-    auth = registerOutput<AWSAuthModelResponse>(
-      'auth',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AWSAuthModelResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    auth = registerOutput<AWSAuthModelResponse>('auth', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AWSAuthModelResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     connectorDefinitionName = registerOutput<String>('connectorDefinitionName');
     dataType = registerOutput<String?>('dataType');
-    dcrConfig = registerOutput<DCRConfigurationResponse?>(
-      'dcrConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DCRConfigurationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    dcrConfig = registerOutput<DCRConfigurationResponse?>('dcrConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DCRConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String?>('etag');
     isActive = registerOutput<bool?>('isActive');
     kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
-    paging = registerOutput<RestApiPollerRequestPagingConfigResponse?>(
-      'paging',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RestApiPollerRequestPagingConfigResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    request = registerOutput<RestApiPollerRequestConfigResponse>(
-      'request',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RestApiPollerRequestConfigResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    response = registerOutput<CcpResponseConfigResponse?>(
-      'response',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CcpResponseConfigResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    paging = registerOutput<RestApiPollerRequestPagingConfigResponse?>('paging', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RestApiPollerRequestPagingConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    request = registerOutput<RestApiPollerRequestConfigResponse>('request', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RestApiPollerRequestConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    response = registerOutput<CcpResponseConfigResponse?>('response', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CcpResponseConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

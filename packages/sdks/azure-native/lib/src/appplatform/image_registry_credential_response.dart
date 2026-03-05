@@ -6,31 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ImageRegistryCredentialResponse {
   /// The password of the image registry credential
   final pulumi.Input<String>? password;
-
   /// The username of the image registry credential
   final pulumi.Input<String>? username;
 
   /// Creates a new [ImageRegistryCredentialResponse].
   /// [password] The password of the image registry credential
   /// [username] The username of the image registry credential
-  ImageRegistryCredentialResponse({this.password, this.username});
+  ImageRegistryCredentialResponse({
+    this.password,
+    this.username,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'password': ?password, 'username': ?username};
+    return <String, dynamic>{
+      'password': ?password,
+      'username': ?username,
+    };
   }
 
   factory ImageRegistryCredentialResponse.fromMap(Map<String, dynamic> map) {
     return ImageRegistryCredentialResponse(
-      password: (() {
-        final guardedValue = map['password'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      username: (() {
-        final guardedValue = map['username'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      username: (() { final guardedValue = map['username']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

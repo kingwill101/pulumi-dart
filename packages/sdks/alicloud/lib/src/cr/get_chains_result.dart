@@ -8,17 +8,13 @@ class GetChainsResult {
   /// A list of Cr Chains. Each element contains the following attributes:
   final List<GetChainsChain> chains;
   final bool? enableDetails;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of Chain IDs.
   final List<String> ids;
-
   /// The ID of CR Enterprise Edition instance.
   final String instanceId;
   final String? nameRegex;
-
   /// A list of Chain names.
   final List<String> names;
   final String? outputFile;
@@ -51,10 +47,7 @@ class GetChainsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'chains': pulumi.Input.encodeList<GetChainsChain, Map<String, dynamic>>(
-        chains,
-        (value) => value.toMap(),
-      ),
+      'chains': pulumi.Input.encodeList<GetChainsChain, Map<String, dynamic>>(chains, (value) => value.toMap()),
       'enableDetails': ?enableDetails,
       'id': id,
       'ids': ids,
@@ -69,40 +62,17 @@ class GetChainsResult {
 
   factory GetChainsResult.fromMap(Map<String, dynamic> map) {
     return GetChainsResult(
-      chains: pulumi.Input.decodeList<GetChainsChain>(
-        map['chains']!,
-        (value) =>
-            GetChainsChain.fromMap((value as Map).cast<String, dynamic>()),
-      ),
-      enableDetails: (() {
-        final guardedValue = map['enableDetails'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      chains: pulumi.Input.decodeList<GetChainsChain>(map['chains']!, (value) => GetChainsChain.fromMap((value as Map).cast<String, dynamic>())),
+      enableDetails: (() { final guardedValue = map['enableDetails']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       instanceId: map['instanceId'] as String,
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      repoName: (() {
-        final guardedValue = map['repoName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      repoNamespaceName: (() {
-        final guardedValue = map['repoNamespaceName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      repoName: (() { final guardedValue = map['repoName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      repoNamespaceName: (() { final guardedValue = map['repoNamespaceName']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

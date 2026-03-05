@@ -177,22 +177,16 @@ import 'app_state.dart';
 class App extends pulumi.CustomResource {
   /// AppName.
   late final pulumi.Output<String> appName;
-
   /// The app id of iOS. **NOTE:** Either `bundle_id` or `package_name` must be set.
   late final pulumi.Output<String?> bundleId;
-
   /// Base64 string of picture.
   late final pulumi.Output<String?> encodedIcon;
-
   /// The Industry ID of the app. For information about Industry and how to use it, MHUB[Industry](https://help.aliyun.com/document_detail/201638.html).
   late final pulumi.Output<String> industryId;
-
   /// Android App package name. **NOTE:** Either `bundle_id` or `package_name` must be set.
   late final pulumi.Output<String?> packageName;
-
   /// The ID of the Product.
   late final pulumi.Output<String> productId;
-
   /// The type of the Product. Valid values: `Android` and `iOS`.
   late final pulumi.Output<String> type;
 
@@ -200,13 +194,16 @@ class App extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [App]. {@macro pulumi_mhub_app_app_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  App(String name, {AppArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:mhub/app:App',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  App(
+    String name, {
+    AppArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:mhub/app:App',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appName = registerOutput<String>('appName');
     bundleId = registerOutput<String?>('bundleId');
     encodedIcon = registerOutput<String?>('encodedIcon');
@@ -217,7 +214,11 @@ class App extends pulumi.CustomResource {
   }
 
   /// Gets an existing [App] resource's state with the given [name] and [id].
-  static App get(String name, pulumi.Input<String> id, {AppState? state}) {
+  static App get(
+    String name,
+    pulumi.Input<String> id, {
+    AppState? state,
+  }) {
     return App._get(
       name,
       state: state?.toMap(),
@@ -230,11 +231,11 @@ class App extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:mhub/app:App',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:mhub/app:App',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appName = registerOutput<String>('appName');
     bundleId = registerOutput<String?>('bundleId');
     encodedIcon = registerOutput<String?>('encodedIcon');

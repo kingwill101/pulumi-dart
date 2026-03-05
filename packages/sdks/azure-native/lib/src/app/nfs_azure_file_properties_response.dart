@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NfsAzureFilePropertiesResponse {
   /// Access mode for storage
   final pulumi.Input<String>? accessMode;
-
   /// Server for NFS azure file.
   final pulumi.Input<String>? server;
-
   /// NFS Azure file share name.
   final pulumi.Input<String>? shareName;
 
@@ -33,21 +31,10 @@ class NfsAzureFilePropertiesResponse {
 
   factory NfsAzureFilePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return NfsAzureFilePropertiesResponse(
-      accessMode: (() {
-        final guardedValue = map['accessMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      server: (() {
-        final guardedValue = map['server'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      shareName: (() {
-        final guardedValue = map['shareName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accessMode: (() { final guardedValue = map['accessMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      server: (() { final guardedValue = map['server']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      shareName: (() { final guardedValue = map['shareName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

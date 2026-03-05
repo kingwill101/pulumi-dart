@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd {
   /// The name of the header to add.
   final pulumi.Input<String> headerName;
-
   /// The value of the header to add.
   final pulumi.Input<String> headerValue;
-
   /// Whether to replace all existing headers with the same name.
   /// By default, added header values are appended
   /// to the response or request headers with the
@@ -35,17 +33,12 @@ class EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd {
     };
   }
 
-  factory EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd.fromMap(Map<String, dynamic> map) {
     return EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd(
       headerName: pulumi.Input.fromValue(map['headerName'] as String),
       headerValue: pulumi.Input.fromValue(map['headerValue'] as String),
-      replace: (() {
-        final guardedValue = map['replace'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      replace: (() { final guardedValue = map['replace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

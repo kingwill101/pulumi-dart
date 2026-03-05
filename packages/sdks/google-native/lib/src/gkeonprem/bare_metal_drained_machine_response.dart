@@ -9,10 +9,14 @@ class BareMetalDrainedMachineResponse {
 
   /// Creates a new [BareMetalDrainedMachineResponse].
   /// [nodeIp] Drained machine IP address.
-  BareMetalDrainedMachineResponse({required this.nodeIp});
+  BareMetalDrainedMachineResponse({
+    required this.nodeIp,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'nodeIp': nodeIp};
+    return <String, dynamic>{
+      'nodeIp': nodeIp,
+    };
   }
 
   factory BareMetalDrainedMachineResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class BareMetalDrainedMachineResponse {
     );
   }
 }
+

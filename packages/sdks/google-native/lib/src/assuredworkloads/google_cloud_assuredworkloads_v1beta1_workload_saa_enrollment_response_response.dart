@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseResponse {
   /// Indicates SAA enrollment setup error if any.
   final pulumi.Input<List<String>> setupErrors;
-
   /// Indicates SAA enrollment status of a given workload.
   final pulumi.Input<String> setupStatus;
 
@@ -25,14 +24,11 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseResponse {
     };
   }
 
-  factory GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseResponse(
-      setupErrors: pulumi.Input.fromValue(
-        (map['setupErrors'] as List).cast<String>(),
-      ),
+      setupErrors: pulumi.Input.fromValue((map['setupErrors'] as List).cast<String>()),
       setupStatus: pulumi.Input.fromValue(map['setupStatus'] as String),
     );
   }
 }
+

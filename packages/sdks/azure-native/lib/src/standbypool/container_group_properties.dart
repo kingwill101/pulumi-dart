@@ -8,7 +8,6 @@ import 'subnet.dart';
 class ContainerGroupProperties {
   /// Specifies container group profile of standby container groups.
   final pulumi.Input<ContainerGroupProfile> containerGroupProfile;
-
   /// Specifies subnet Ids for container group.
   final pulumi.Input<List<Subnet>>? subnetIds;
 
@@ -22,42 +21,16 @@ class ContainerGroupProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'containerGroupProfile':
-          pulumi.Input.mapInputValue<
-            ContainerGroupProfile,
-            Map<String, dynamic>
-          >(containerGroupProfile, (value) => value.toMap()),
-      'subnetIds':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<Subnet>,
-            List<Map<String, dynamic>>
-          >(
-            subnetIds,
-            (value) => pulumi.Input.encodeList<Subnet, Map<String, dynamic>>(
-              value,
-              (value) => value.toMap(),
-            ),
-          ),
+      'containerGroupProfile': pulumi.Input.mapInputValue<ContainerGroupProfile, Map<String, dynamic>>(containerGroupProfile, (value) => value.toMap()),
+      'subnetIds': ?pulumi.Input.mapOptionalInputValue<List<Subnet>, List<Map<String, dynamic>>>(subnetIds, (value) => pulumi.Input.encodeList<Subnet, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ContainerGroupProperties.fromMap(Map<String, dynamic> map) {
     return ContainerGroupProperties(
-      containerGroupProfile: pulumi.Input.fromValue(
-        ContainerGroupProfile.fromMap(
-          (map['containerGroupProfile']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      subnetIds: (() {
-        final guardedValue = map['subnetIds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<Subnet>(
-            guardedValue,
-            (value) => Subnet.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
+      containerGroupProfile: pulumi.Input.fromValue(ContainerGroupProfile.fromMap((map['containerGroupProfile']! as Map).cast<String, dynamic>())),
+      subnetIds: (() { final guardedValue = map['subnetIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Subnet>(guardedValue, (value) => Subnet.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

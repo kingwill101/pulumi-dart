@@ -7,17 +7,10 @@ import 'prevention_inspect_template_inspect_config_custom_info_type_dictionary_w
 class PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary {
   /// Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
   /// Structure is documented below.
-  final pulumi.Input<
-    PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePath
-  >?
-  cloudStoragePath;
-
+  final pulumi.Input<PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePath>? cloudStoragePath;
   /// List of words or phrases to search for.
   /// Structure is documented below.
-  final pulumi.Input<
-    PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList
-  >?
-  wordList;
+  final pulumi.Input<PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList>? wordList;
 
   /// Creates a new [PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary].
   /// [cloudStoragePath] Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
@@ -29,41 +22,16 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cloudStoragePath':
-          ?pulumi.Input.mapOptionalInputValue<
-            PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePath,
-            Map<String, dynamic>
-          >(cloudStoragePath, (value) => value.toMap()),
-      'wordList':
-          ?pulumi.Input.mapOptionalInputValue<
-            PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList,
-            Map<String, dynamic>
-          >(wordList, (value) => value.toMap()),
+      'cloudStoragePath': ?pulumi.Input.mapOptionalInputValue<PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePath, Map<String, dynamic>>(cloudStoragePath, (value) => value.toMap()),
+      'wordList': ?pulumi.Input.mapOptionalInputValue<PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList, Map<String, dynamic>>(wordList, (value) => value.toMap()),
     };
   }
 
-  factory PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary.fromMap(Map<String, dynamic> map) {
     return PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary(
-      cloudStoragePath: (() {
-        final guardedValue = map['cloudStoragePath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePath.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      wordList: (() {
-        final guardedValue = map['wordList'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      cloudStoragePath: (() { final guardedValue = map['cloudStoragePath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePath.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      wordList: (() { final guardedValue = map['wordList']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

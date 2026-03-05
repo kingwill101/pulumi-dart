@@ -229,61 +229,42 @@ import 'domain_state.dart';
 class Domain extends pulumi.CustomResource {
   /// The certificate ID. This parameter is required and valid only when `CertType` is set to `cas`. If you specify this parameter, an existing certificate is used.
   late final pulumi.Output<String> certId;
-
   /// The name of the new certificate. You can specify only one certificate name. This parameter is optional and valid only when `CertType` is set to `upload`.
   late final pulumi.Output<String> certName;
-
   /// The region of the SSL certificate. This parameter takes effect only when `CertType` is set to `cas`. Default value: **cn-hangzhou**. Valid values: **cn-hangzhou** and **ap-southeast-1**.
   late final pulumi.Output<String> certRegion;
-
   /// The certificate type.
   late final pulumi.Output<String> certType;
-
   /// The URL that is used for health checks.
   late final pulumi.Output<String?> checkUrl;
-
   /// The CNAME domain name corresponding to the accelerated domain name.
   late final pulumi.Output<String> cname;
-
   /// The time when the accelerated domain name was created.
   late final pulumi.Output<String> createTime;
-
   /// The accelerated domain name. You can specify multiple domain names and separate them with commas (,). You can specify up to 500 domain names in each request. The query results of multiple domain names are aggregated. If you do not specify this parameter, data of all accelerated domain names under your account is queried.
   late final pulumi.Output<String> domainName;
-
   /// Specifies whether the certificate is issued in canary releases. If you set this parameter to `staging`, the certificate is issued in canary releases. If you do not specify this parameter or set this parameter to other values, the certificate is officially issued.
   late final pulumi.Output<String?> env;
-
   /// Computing service type. Valid values:
   late final pulumi.Output<String?> functionType;
-
   /// The ID of the resource group. If you do not specify a value for this parameter, the system automatically assigns the ID of the default resource group.
   late final pulumi.Output<String> resourceGroupId;
-
   /// The Acceleration scen. Supported:
   late final pulumi.Output<String?> scene;
-
   /// The region where the acceleration service is deployed. Valid values:
   late final pulumi.Output<String?> scope;
-
   /// Source  See `sources` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> sources;
-
   /// The private key. Specify the private key only if you want to enable the SSL certificate.
   late final pulumi.Output<String?> sslPri;
-
   /// Specifies whether to enable the SSL certificate. Valid values:
   late final pulumi.Output<String?> sslProtocol;
-
   /// The content of the SSL certificate. Specify the content of the SSL certificate only if you want to enable the SSL certificate.
   late final pulumi.Output<String> sslPub;
-
   /// The status of the domain name. Valid values:
   late final pulumi.Output<String> status;
-
   /// The tag of the resource
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The top-level domain.
   late final pulumi.Output<String?> topLevelDomain;
 
@@ -291,13 +272,16 @@ class Domain extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Domain]. {@macro pulumi_dcdn_domain_domain_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Domain(String name, {DomainArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:dcdn/domain:Domain',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Domain(
+    String name, {
+    DomainArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:dcdn/domain:Domain',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     certId = registerOutput<String>('certId');
     certName = registerOutput<String>('certName');
     certRegion = registerOutput<String>('certRegion');
@@ -338,11 +322,11 @@ class Domain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dcdn/domain:Domain',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dcdn/domain:Domain',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     certId = registerOutput<String>('certId');
     certName = registerOutput<String>('certName');
     certRegion = registerOutput<String>('certRegion');

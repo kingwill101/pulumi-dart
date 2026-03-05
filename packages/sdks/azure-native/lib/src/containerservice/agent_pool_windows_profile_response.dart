@@ -9,19 +9,20 @@ class AgentPoolWindowsProfileResponse {
 
   /// Creates a new [AgentPoolWindowsProfileResponse].
   /// [disableOutboundNat] Whether to disable OutboundNAT in windows nodes. The default value is false. Outbound NAT can only be disabled if the cluster outboundType is NAT Gateway and the Windows agent pool does not have node public IP enabled.
-  AgentPoolWindowsProfileResponse({this.disableOutboundNat});
+  AgentPoolWindowsProfileResponse({
+    this.disableOutboundNat,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'disableOutboundNat': ?disableOutboundNat};
+    return <String, dynamic>{
+      'disableOutboundNat': ?disableOutboundNat,
+    };
   }
 
   factory AgentPoolWindowsProfileResponse.fromMap(Map<String, dynamic> map) {
     return AgentPoolWindowsProfileResponse(
-      disableOutboundNat: (() {
-        final guardedValue = map['disableOutboundNat'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      disableOutboundNat: (() { final guardedValue = map['disableOutboundNat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

@@ -19,23 +19,20 @@ class CapacityRequirementsResourceK8sIoV1beta2 {
 
   /// Creates a new [CapacityRequirementsResourceK8sIoV1beta2].
   /// [requests] Requests represent individual device resource requests for distinct resources, all of which must be provided by the device.
-  CapacityRequirementsResourceK8sIoV1beta2({this.requests});
+  CapacityRequirementsResourceK8sIoV1beta2({
+    this.requests,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'requests': ?requests};
+    return <String, dynamic>{
+      'requests': ?requests,
+    };
   }
 
-  factory CapacityRequirementsResourceK8sIoV1beta2.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CapacityRequirementsResourceK8sIoV1beta2.fromMap(Map<String, dynamic> map) {
     return CapacityRequirementsResourceK8sIoV1beta2(
-      requests: (() {
-        final guardedValue = map['requests'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      requests: (() { final guardedValue = map['requests']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

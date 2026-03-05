@@ -18,64 +18,44 @@ class CxWebhookServiceDirectoryGenericWebService {
   /// -out example.com.crt \
   /// -extfile &lt;(printf "\nsubjectAltName='DNS:www.example.com'")
   final pulumi.Input<List<String>>? allowedCaCerts;
-
   /// HTTP method for the flexible webhook calls. Standard webhook always uses
   /// POST.
   /// Possible values are: `POST`, `GET`, `HEAD`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`.
   final pulumi.Input<String>? httpMethod;
-
   /// Represents configuration of OAuth client credential flow for 3rd party
   /// API authentication.
   /// Structure is documented below.
-  final pulumi.Input<CxWebhookServiceDirectoryGenericWebServiceOauthConfig>?
-  oauthConfig;
-
+  final pulumi.Input<CxWebhookServiceDirectoryGenericWebServiceOauthConfig>? oauthConfig;
   /// Maps the values extracted from specific fields of the flexible webhook
   /// response into session parameters.
   /// - Key: session parameter name
   /// - Value: field path in the webhook response
   final pulumi.Input<Map<String, String>>? parameterMapping;
-
   /// Defines a custom JSON object as request body to send to flexible webhook.
   final pulumi.Input<String>? requestBody;
-
   /// The HTTP request headers to send together with webhook requests.
   final pulumi.Input<Map<String, String>>? requestHeaders;
-
   /// The SecretManager secret version resource storing the username:password
   /// pair for HTTP Basic authentication.
   /// Format: `projects/{project}/secrets/{secret}/versions/{version}`
   final pulumi.Input<String>? secretVersionForUsernamePassword;
-
   /// The HTTP request headers to send together with webhook requests. Header
   /// values are stored in SecretManager secret versions.
   /// When the same header name is specified in both `request_headers` and
   /// `secret_versions_for_request_headers`, the value in
   /// `secret_versions_for_request_headers` will be used.
   /// Structure is documented below.
-  final pulumi.Input<
-    List<
-      CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeader
-    >
-  >?
-  secretVersionsForRequestHeaders;
-
+  final pulumi.Input<List<CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeader>>? secretVersionsForRequestHeaders;
   /// Configuration for authentication using a service account.
   /// Structure is documented below.
-  final pulumi.Input<
-    CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfig
-  >?
-  serviceAccountAuthConfig;
-
+  final pulumi.Input<CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfig>? serviceAccountAuthConfig;
   /// Indicate the auth token type generated from the [Diglogflow service
   /// agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent).
   /// The generated token is sent in the Authorization header.
   /// Possible values are: `NONE`, `ID_TOKEN`, `ACCESS_TOKEN`.
   final pulumi.Input<String>? serviceAgentAuth;
-
   /// The webhook URI for receiving POST requests. It must use https protocol.
   final pulumi.Input<String> uri;
-
   /// Type of the webhook.
   /// Possible values are: `STANDARD`, `FLEXIBLE`.
   final pulumi.Input<String>? webhookType;
@@ -112,122 +92,34 @@ class CxWebhookServiceDirectoryGenericWebService {
     return <String, dynamic>{
       'allowedCaCerts': ?allowedCaCerts,
       'httpMethod': ?httpMethod,
-      'oauthConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            CxWebhookServiceDirectoryGenericWebServiceOauthConfig,
-            Map<String, dynamic>
-          >(oauthConfig, (value) => value.toMap()),
+      'oauthConfig': ?pulumi.Input.mapOptionalInputValue<CxWebhookServiceDirectoryGenericWebServiceOauthConfig, Map<String, dynamic>>(oauthConfig, (value) => value.toMap()),
       'parameterMapping': ?parameterMapping,
       'requestBody': ?requestBody,
       'requestHeaders': ?requestHeaders,
       'secretVersionForUsernamePassword': ?secretVersionForUsernamePassword,
-      'secretVersionsForRequestHeaders':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<
-              CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeader
-            >,
-            List<Map<String, dynamic>>
-          >(
-            secretVersionsForRequestHeaders,
-            (value) =>
-                pulumi.Input.encodeList<
-                  CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeader,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'serviceAccountAuthConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfig,
-            Map<String, dynamic>
-          >(serviceAccountAuthConfig, (value) => value.toMap()),
+      'secretVersionsForRequestHeaders': ?pulumi.Input.mapOptionalInputValue<List<CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeader>, List<Map<String, dynamic>>>(secretVersionsForRequestHeaders, (value) => pulumi.Input.encodeList<CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeader, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'serviceAccountAuthConfig': ?pulumi.Input.mapOptionalInputValue<CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfig, Map<String, dynamic>>(serviceAccountAuthConfig, (value) => value.toMap()),
       'serviceAgentAuth': ?serviceAgentAuth,
       'uri': uri,
       'webhookType': ?webhookType,
     };
   }
 
-  factory CxWebhookServiceDirectoryGenericWebService.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CxWebhookServiceDirectoryGenericWebService.fromMap(Map<String, dynamic> map) {
     return CxWebhookServiceDirectoryGenericWebService(
-      allowedCaCerts: (() {
-        final guardedValue = map['allowedCaCerts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      httpMethod: (() {
-        final guardedValue = map['httpMethod'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      oauthConfig: (() {
-        final guardedValue = map['oauthConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CxWebhookServiceDirectoryGenericWebServiceOauthConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      parameterMapping: (() {
-        final guardedValue = map['parameterMapping'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      requestBody: (() {
-        final guardedValue = map['requestBody'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      requestHeaders: (() {
-        final guardedValue = map['requestHeaders'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      secretVersionForUsernamePassword: (() {
-        final guardedValue = map['secretVersionForUsernamePassword'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      secretVersionsForRequestHeaders: (() {
-        final guardedValue = map['secretVersionsForRequestHeaders'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeader
-          >(
-            guardedValue,
-            (value) =>
-                CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeader.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
-      serviceAccountAuthConfig: (() {
-        final guardedValue = map['serviceAccountAuthConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      serviceAgentAuth: (() {
-        final guardedValue = map['serviceAgentAuth'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      allowedCaCerts: (() { final guardedValue = map['allowedCaCerts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      httpMethod: (() { final guardedValue = map['httpMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      oauthConfig: (() { final guardedValue = map['oauthConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CxWebhookServiceDirectoryGenericWebServiceOauthConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      parameterMapping: (() { final guardedValue = map['parameterMapping']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      requestBody: (() { final guardedValue = map['requestBody']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      requestHeaders: (() { final guardedValue = map['requestHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      secretVersionForUsernamePassword: (() { final guardedValue = map['secretVersionForUsernamePassword']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      secretVersionsForRequestHeaders: (() { final guardedValue = map['secretVersionsForRequestHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeader>(guardedValue, (value) => CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeader.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      serviceAccountAuthConfig: (() { final guardedValue = map['serviceAccountAuthConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      serviceAgentAuth: (() { final guardedValue = map['serviceAgentAuth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       uri: pulumi.Input.fromValue(map['uri'] as String),
-      webhookType: (() {
-        final guardedValue = map['webhookType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      webhookType: (() { final guardedValue = map['webhookType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

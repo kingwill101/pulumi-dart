@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TelegramChannelProperties {
   /// The Telegram access token. Value only returned through POST to the action Channel List API, otherwise empty.
   final pulumi.Input<String>? accessToken;
-
   /// Whether this channel is enabled for the bot
   final pulumi.Input<bool> isEnabled;
-
   /// Whether this channel is validated for the bot
   final pulumi.Input<bool>? isValidated;
 
@@ -33,17 +31,10 @@ class TelegramChannelProperties {
 
   factory TelegramChannelProperties.fromMap(Map<String, dynamic> map) {
     return TelegramChannelProperties(
-      accessToken: (() {
-        final guardedValue = map['accessToken'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accessToken: (() { final guardedValue = map['accessToken']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       isEnabled: pulumi.Input.fromValue(map['isEnabled'] as bool),
-      isValidated: (() {
-        final guardedValue = map['isValidated'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      isValidated: (() { final guardedValue = map['isValidated']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

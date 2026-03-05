@@ -10,20 +10,15 @@ import 'archive_package_source_properties.dart';
 class ArchifeArgs {
   /// The name of the archive resource.
   final pulumi.Input<String>? archiveName;
-
   /// The package source of the archive.
   final pulumi.Input<ArchivePackageSourceProperties>? packageSource;
-
   /// The type of the package resource.
   final pulumi.Input<String> packageType;
-
   /// The published version of the archive.
   final pulumi.Input<String>? publishedVersion;
-
   /// The name of the container registry.
   final pulumi.Input<String> registryName;
   final pulumi.Input<String>? repositoryEndpointPrefix;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -48,11 +43,7 @@ class ArchifeArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'archiveName': ?archiveName,
-      'packageSource':
-          ?pulumi.Input.mapOptionalInputValue<
-            ArchivePackageSourceProperties,
-            Map<String, dynamic>
-          >(packageSource, (value) => value.toMap()),
+      'packageSource': ?pulumi.Input.mapOptionalInputValue<ArchivePackageSourceProperties, Map<String, dynamic>>(packageSource, (value) => value.toMap()),
       'packageType': packageType,
       'publishedVersion': ?publishedVersion,
       'registryName': registryName,
@@ -63,35 +54,14 @@ class ArchifeArgs {
 
   factory ArchifeArgs.fromMap(Map<String, dynamic> map) {
     return ArchifeArgs(
-      archiveName: (() {
-        final guardedValue = map['archiveName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      packageSource: (() {
-        final guardedValue = map['packageSource'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ArchivePackageSourceProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      archiveName: (() { final guardedValue = map['archiveName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      packageSource: (() { final guardedValue = map['packageSource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ArchivePackageSourceProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       packageType: pulumi.Input.fromValue(map['packageType'] as String),
-      publishedVersion: (() {
-        final guardedValue = map['publishedVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      publishedVersion: (() { final guardedValue = map['publishedVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       registryName: pulumi.Input.fromValue(map['registryName'] as String),
-      repositoryEndpointPrefix: (() {
-        final guardedValue = map['repositoryEndpointPrefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      repositoryEndpointPrefix: (() { final guardedValue = map['repositoryEndpointPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

@@ -193,62 +193,46 @@ import 'cluster_state.dart';
 class Cluster extends pulumi.CustomResource {
   /// Auto renew of dataCenter-1,`true` or `false`. System default to `false`, valid when pay_type = PrePaid.
   late final pulumi.Output<bool?> autoRenew;
-
   /// Period of dataCenter-1 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when pay_type = Subscription. Unit: month.
   late final pulumi.Output<int?> autoRenewPeriod;
-
   /// Cassandra cluster name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted.
   late final pulumi.Output<String?> clusterName;
-
   /// Cassandra dataCenter-1 name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted.
   late final pulumi.Output<String?> dataCenterName;
-
   /// User-defined Cassandra dataCenter-1 one node's storage space.Unit: GB. Value range:
   /// - Custom storage space; value range: [160, 2000].
   /// - 80-GB increments.
   late final pulumi.Output<int?> diskSize;
-
   /// The disk type of Cassandra dataCenter-1. Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`, local_disk size is fixed.
   late final pulumi.Output<String?> diskType;
   late final pulumi.Output<bool?> enablePublic;
-
   /// Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/157445.html). Or you can call describeInstanceType api.
   late final pulumi.Output<String> instanceType;
-
   /// Set the instance's IP whitelist in VPC network.
   late final pulumi.Output<String> ipWhite;
-
   /// The end time of the operation and maintenance time period of the cluster, in the format of HH:mmZ (UTC time).
   late final pulumi.Output<String?> maintainEndTime;
-
   /// The start time of the operation and maintenance time period of the cluster, in the format of HH:mmZ (UTC time).
   late final pulumi.Output<String?> maintainStartTime;
-
   /// Cassandra major version. Now only support version `3.11`.
   late final pulumi.Output<String> majorVersion;
-
   /// The node count of Cassandra dataCenter-1 default to 2.
   late final pulumi.Output<int> nodeCount;
   late final pulumi.Output<String?> password;
-
   /// The pay type of Cassandra dataCenter-1. Valid values are `Subscription`, `PayAsYouGo`,System default to `PayAsYouGo`.
   late final pulumi.Output<String> payType;
   late final pulumi.Output<int?> period;
   late final pulumi.Output<String?> periodUnit;
   late final pulumi.Output<List<String>> publicPoints;
-
   /// A list of security group ids to associate with.
   ///
   /// &gt; **NOTE:** Now cluster_name,data_center_name,instance_type,node_count,disk_type,disk_size,maintain_start_time,maintain_end_time,tags,ip_white,security_groups can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
   late final pulumi.Output<List<String>> securityGroups;
   late final pulumi.Output<String> status;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The vswitch_id of dataCenter-1, can not empty.
   late final pulumi.Output<String> vswitchId;
-
   /// The Zone to launch the Cassandra cluster. If vswitch_id is not empty, this zone_id can be "" or consistent.
   late final pulumi.Output<String> zoneId;
 
@@ -261,11 +245,11 @@ class Cluster extends pulumi.CustomResource {
     ClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cassandra/cluster:Cluster',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cassandra/cluster:Cluster',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoRenew = registerOutput<bool?>('autoRenew');
     autoRenewPeriod = registerOutput<int?>('autoRenewPeriod');
     clusterName = registerOutput<String?>('clusterName');
@@ -309,11 +293,11 @@ class Cluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cassandra/cluster:Cluster',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cassandra/cluster:Cluster',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoRenew = registerOutput<bool?>('autoRenew');
     autoRenewPeriod = registerOutput<int?>('autoRenewPeriod');
     clusterName = registerOutput<String?>('clusterName');

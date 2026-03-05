@@ -301,24 +301,16 @@ import 'system_data_response.dart';
 class Connector extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Connector Info Base
   late final pulumi.Output<ConnectorInfoBaseResponse?> connectorBasicInfo;
-
   /// Connector Service type info base properties.
-  late final pulumi.Output<AzureBlobStorageSinkConnectorServiceInfoResponse?>
-  connectorServiceTypeInfo;
-
+  late final pulumi.Output<AzureBlobStorageSinkConnectorServiceInfoResponse?> connectorServiceTypeInfo;
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The connection information consumed by applications.
-  late final pulumi.Output<KafkaAzureBlobStorageSinkConnectorInfoResponse?>
-  partnerConnectorInfo;
-
+  late final pulumi.Output<KafkaAzureBlobStorageSinkConnectorInfoResponse?> partnerConnectorInfo;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -331,55 +323,17 @@ class Connector extends pulumi.CustomResource {
     ConnectorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:confluent:Connector',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:confluent:Connector',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    connectorBasicInfo = registerOutput<ConnectorInfoBaseResponse?>(
-      'connectorBasicInfo',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectorInfoBaseResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    connectorServiceTypeInfo =
-        registerOutput<AzureBlobStorageSinkConnectorServiceInfoResponse?>(
-          'connectorServiceTypeInfo',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AzureBlobStorageSinkConnectorServiceInfoResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    connectorBasicInfo = registerOutput<ConnectorInfoBaseResponse?>('connectorBasicInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectorInfoBaseResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    connectorServiceTypeInfo = registerOutput<AzureBlobStorageSinkConnectorServiceInfoResponse?>('connectorServiceTypeInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureBlobStorageSinkConnectorServiceInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    partnerConnectorInfo =
-        registerOutput<KafkaAzureBlobStorageSinkConnectorInfoResponse?>(
-          'partnerConnectorInfo',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return KafkaAzureBlobStorageSinkConnectorInfoResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    partnerConnectorInfo = registerOutput<KafkaAzureBlobStorageSinkConnectorInfoResponse?>('partnerConnectorInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KafkaAzureBlobStorageSinkConnectorInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

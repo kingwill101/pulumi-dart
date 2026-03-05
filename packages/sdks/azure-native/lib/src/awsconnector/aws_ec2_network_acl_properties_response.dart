@@ -7,10 +7,8 @@ import 'tag_response.dart';
 class AwsEc2NetworkAclPropertiesResponse {
   /// Property id
   final pulumi.Input<String>? id;
-
   /// The tags for the network ACL.
   final pulumi.Input<List<TagResponse>>? tags;
-
   /// The ID of the VPC for the network ACL.
   final pulumi.Input<String>? vpcId;
 
@@ -18,50 +16,26 @@ class AwsEc2NetworkAclPropertiesResponse {
   /// [id] Property id
   /// [tags] The tags for the network ACL.
   /// [vpcId] The ID of the VPC for the network ACL.
-  AwsEc2NetworkAclPropertiesResponse({this.id, this.tags, this.vpcId});
+  AwsEc2NetworkAclPropertiesResponse({
+    this.id,
+    this.tags,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': ?id,
-      'tags':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<TagResponse>,
-            List<Map<String, dynamic>>
-          >(
-            tags,
-            (value) =>
-                pulumi.Input.encodeList<TagResponse, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'tags': ?pulumi.Input.mapOptionalInputValue<List<TagResponse>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<TagResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'vpcId': ?vpcId,
     };
   }
 
   factory AwsEc2NetworkAclPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsEc2NetworkAclPropertiesResponse(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<TagResponse>(
-            guardedValue,
-            (value) =>
-                TagResponse.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      vpcId: (() {
-        final guardedValue = map['vpcId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TagResponse>(guardedValue, (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      vpcId: (() { final guardedValue = map['vpcId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

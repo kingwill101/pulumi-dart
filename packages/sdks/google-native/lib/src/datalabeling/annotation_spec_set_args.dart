@@ -9,12 +9,9 @@ import 'google_cloud_datalabeling_v1beta1_annotation_spec.dart';
 /// {@macro pulumi_datalabeling_v1beta1_annotation_spec_set_args_doc}
 class AnnotationSpecSetArgs {
   /// The array of AnnotationSpecs that you define when you create the AnnotationSpecSet. These are the possible labels for the labeling task.
-  final pulumi.Input<List<GoogleCloudDatalabelingV1beta1AnnotationSpec>>
-  annotationSpecs;
-
+  final pulumi.Input<List<GoogleCloudDatalabelingV1beta1AnnotationSpec>> annotationSpecs;
   /// Optional. User-provided description of the annotation specification set. The description can be up to 10,000 characters long.
   final pulumi.Input<String>? description;
-
   /// The display name for AnnotationSpecSet that you define when you create it. Maximum of 64 characters.
   final pulumi.Input<String> displayName;
   final pulumi.Input<String>? project;
@@ -33,18 +30,7 @@ class AnnotationSpecSetArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'annotationSpecs':
-          pulumi.Input.mapInputValue<
-            List<GoogleCloudDatalabelingV1beta1AnnotationSpec>,
-            List<Map<String, dynamic>>
-          >(
-            annotationSpecs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GoogleCloudDatalabelingV1beta1AnnotationSpec,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'annotationSpecs': pulumi.Input.mapInputValue<List<GoogleCloudDatalabelingV1beta1AnnotationSpec>, List<Map<String, dynamic>>>(annotationSpecs, (value) => pulumi.Input.encodeList<GoogleCloudDatalabelingV1beta1AnnotationSpec, Map<String, dynamic>>(value, (value) => value.toMap())),
       'description': ?description,
       'displayName': displayName,
       'project': ?project,
@@ -53,25 +39,11 @@ class AnnotationSpecSetArgs {
 
   factory AnnotationSpecSetArgs.fromMap(Map<String, dynamic> map) {
     return AnnotationSpecSetArgs(
-      annotationSpecs: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GoogleCloudDatalabelingV1beta1AnnotationSpec>(
-          map['annotationSpecs']!,
-          (value) => GoogleCloudDatalabelingV1beta1AnnotationSpec.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      annotationSpecs: pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudDatalabelingV1beta1AnnotationSpec>(map['annotationSpecs']!, (value) => GoogleCloudDatalabelingV1beta1AnnotationSpec.fromMap((value as Map).cast<String, dynamic>()))),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

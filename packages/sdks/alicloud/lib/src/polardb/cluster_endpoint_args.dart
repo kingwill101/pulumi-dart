@@ -9,36 +9,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterEndpointArgs {
   /// Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. When creating a new custom endpoint, default to `Disable`.
   final pulumi.Input<String>? autoAddNewNodes;
-
   /// Prefix of the specified endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter.
   final pulumi.Input<String>? connectionPrefix;
-
   /// The Id of cluster that can run database.
   final pulumi.Input<String> dbClusterId;
-
   /// The name of the endpoint.
   final pulumi.Input<String>? dbEndpointDescription;
-
   /// The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
   final pulumi.Input<Map<String, String>>? endpointConfig;
-
   /// The network type of the endpoint address.
   final pulumi.Input<String>? netType;
-
   /// Node id list for endpoint configuration. At least 2 nodes if specified, or if the cluster has more than 3 nodes, read-only endpoint is allowed to mount only one node. Default is all nodes.
   final pulumi.Input<List<String>>? nodes;
-
   /// Port of the specified endpoint. Valid values: 3000 to 5999.
   final pulumi.Input<String>? port;
-
   /// Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. When creating a new custom endpoint, default to `ReadOnly`.
   final pulumi.Input<String>? readWriteMode;
-
   /// Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
   /// **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
   /// For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
   final pulumi.Input<String>? sslAutoRotate;
-
   /// Specifies how to modify the SSL encryption status. Valid values: `Disable`, `Enable`, `Update`.
   final pulumi.Input<String>? sslEnabled;
 
@@ -86,59 +76,18 @@ class ClusterEndpointArgs {
 
   factory ClusterEndpointArgs.fromMap(Map<String, dynamic> map) {
     return ClusterEndpointArgs(
-      autoAddNewNodes: (() {
-        final guardedValue = map['autoAddNewNodes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      connectionPrefix: (() {
-        final guardedValue = map['connectionPrefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      autoAddNewNodes: (() { final guardedValue = map['autoAddNewNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      connectionPrefix: (() { final guardedValue = map['connectionPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dbClusterId: pulumi.Input.fromValue(map['dbClusterId'] as String),
-      dbEndpointDescription: (() {
-        final guardedValue = map['dbEndpointDescription'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      endpointConfig: (() {
-        final guardedValue = map['endpointConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      netType: (() {
-        final guardedValue = map['netType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      nodes: (() {
-        final guardedValue = map['nodes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      port: (() {
-        final guardedValue = map['port'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      readWriteMode: (() {
-        final guardedValue = map['readWriteMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sslAutoRotate: (() {
-        final guardedValue = map['sslAutoRotate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sslEnabled: (() {
-        final guardedValue = map['sslEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dbEndpointDescription: (() { final guardedValue = map['dbEndpointDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      endpointConfig: (() { final guardedValue = map['endpointConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      netType: (() { final guardedValue = map['netType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nodes: (() { final guardedValue = map['nodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      readWriteMode: (() { final guardedValue = map['readWriteMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sslAutoRotate: (() { final guardedValue = map['sslAutoRotate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sslEnabled: (() { final guardedValue = map['sslEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

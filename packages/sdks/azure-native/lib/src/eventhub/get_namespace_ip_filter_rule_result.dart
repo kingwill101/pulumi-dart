@@ -1,25 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getNamespaceIpFilterRule.
 class GetNamespaceIpFilterRuleResult {
   /// The IP Filter Action
   final String? action;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// IP Filter name
   final String? filterName;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// IP Mask
   final String? ipMask;
-
   /// The name of the resource
   final String name;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -55,25 +50,14 @@ class GetNamespaceIpFilterRuleResult {
 
   factory GetNamespaceIpFilterRuleResult.fromMap(Map<String, dynamic> map) {
     return GetNamespaceIpFilterRuleResult(
-      action: (() {
-        final guardedValue = map['action'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return guardedValue as String; })(),
       azureApiVersion: map['azureApiVersion'] as String,
-      filterName: (() {
-        final guardedValue = map['filterName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      filterName: (() { final guardedValue = map['filterName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
-      ipMask: (() {
-        final guardedValue = map['ipMask'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      ipMask: (() { final guardedValue = map['ipMask']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
       type: map['type'] as String,
     );
   }
 }
+

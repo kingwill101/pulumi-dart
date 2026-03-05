@@ -7,17 +7,20 @@ class ResponseHeadersPolicyRemoveHeadersConfigItem {
 
   /// Creates a new [ResponseHeadersPolicyRemoveHeadersConfigItem].
   /// [header] Required.
-  ResponseHeadersPolicyRemoveHeadersConfigItem({required this.header});
+  ResponseHeadersPolicyRemoveHeadersConfigItem({
+    required this.header,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'header': header};
+    return <String, dynamic>{
+      'header': header,
+    };
   }
 
-  factory ResponseHeadersPolicyRemoveHeadersConfigItem.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResponseHeadersPolicyRemoveHeadersConfigItem.fromMap(Map<String, dynamic> map) {
     return ResponseHeadersPolicyRemoveHeadersConfigItem(
       header: pulumi.Input.fromValue(map['header'] as String),
     );
   }
 }
+

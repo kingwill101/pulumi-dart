@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RulesSourceList {
   /// Property generatedRulesType
   final pulumi.Input<String>? generatedRulesType;
-
   /// Property targetTypes
   final pulumi.Input<List<String>>? targetTypes;
-
   /// Property targets
   final pulumi.Input<List<String>>? targets;
 
@@ -17,7 +15,11 @@ class RulesSourceList {
   /// [generatedRulesType] Property generatedRulesType
   /// [targetTypes] Property targetTypes
   /// [targets] Property targets
-  RulesSourceList({this.generatedRulesType, this.targetTypes, this.targets});
+  RulesSourceList({
+    this.generatedRulesType,
+    this.targetTypes,
+    this.targets,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class RulesSourceList {
 
   factory RulesSourceList.fromMap(Map<String, dynamic> map) {
     return RulesSourceList(
-      generatedRulesType: (() {
-        final guardedValue = map['generatedRulesType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      targetTypes: (() {
-        final guardedValue = map['targetTypes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      targets: (() {
-        final guardedValue = map['targets'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      generatedRulesType: (() { final guardedValue = map['generatedRulesType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      targetTypes: (() { final guardedValue = map['targetTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      targets: (() { final guardedValue = map['targets']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

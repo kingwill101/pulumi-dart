@@ -455,64 +455,44 @@ import 'waiting_room_event_state.dart';
 class WaitingRoomEvent extends pulumi.CustomResource {
   /// User-defined waiting room page content, when the waiting room type is custom type, you need to enter. The incoming content needs to be base64 encoded.
   late final pulumi.Output<String?> customPageHtml;
-
   /// Waiting room description.
   late final pulumi.Output<String?> description;
-
   /// Disable session renewal. Value:
   late final pulumi.Output<String?> disableSessionRenewalEnable;
-
   /// The timestamp of the end time of the event.
   late final pulumi.Output<String> endTime;
-
   /// JSON response switch. Value:
   late final pulumi.Output<String?> jsonResponseEnable;
-
   /// Default language setting. Values include:
   late final pulumi.Output<String?> language;
-
   /// Number of new users per minute.
   late final pulumi.Output<String> newUsersPerMinute;
-
   /// Pre-queue switch.
   late final pulumi.Output<String?> preQueueEnable;
-
   /// Pre-queue start time.
   late final pulumi.Output<String?> preQueueStartTime;
-
   /// Way of queuing. Value:
   late final pulumi.Output<String> queuingMethod;
-
   /// Waiting room status code. Value:
   late final pulumi.Output<String> queuingStatusCode;
-
   /// Random queue switch.
   late final pulumi.Output<String?> randomPreQueueEnable;
-
   /// User session duration in minutes.
   late final pulumi.Output<String> sessionDuration;
-
   /// The site ID, which can be obtained by calling the ListSites API.
   late final pulumi.Output<String> siteId;
-
   /// The timestamp of the event start time.
   late final pulumi.Output<String> startTime;
-
   /// Enabled status. Value:
   late final pulumi.Output<String> status;
-
   /// Total number of active users.
   late final pulumi.Output<String> totalActiveUsers;
-
   /// The waiting room event ID, which can be obtained by calling the [ListWaitingRoomEvents](https://help.aliyun.com/document_detail/2850279.html) operation.
   late final pulumi.Output<int> waitingRoomEventId;
-
   /// Event name, custom event description.
   late final pulumi.Output<String> waitingRoomEventName;
-
   /// Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
   late final pulumi.Output<String> waitingRoomId;
-
   /// Waiting room type. The following types are supported:
   late final pulumi.Output<String> waitingRoomType;
 
@@ -525,16 +505,14 @@ class WaitingRoomEvent extends pulumi.CustomResource {
     WaitingRoomEventArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/waitingRoomEvent:WaitingRoomEvent',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:esa/waitingRoomEvent:WaitingRoomEvent',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     customPageHtml = registerOutput<String?>('customPageHtml');
     description = registerOutput<String?>('description');
-    disableSessionRenewalEnable = registerOutput<String?>(
-      'disableSessionRenewalEnable',
-    );
+    disableSessionRenewalEnable = registerOutput<String?>('disableSessionRenewalEnable');
     endTime = registerOutput<String>('endTime');
     jsonResponseEnable = registerOutput<String?>('jsonResponseEnable');
     language = registerOutput<String?>('language');
@@ -573,16 +551,14 @@ class WaitingRoomEvent extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/waitingRoomEvent:WaitingRoomEvent',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:esa/waitingRoomEvent:WaitingRoomEvent',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     customPageHtml = registerOutput<String?>('customPageHtml');
     description = registerOutput<String?>('description');
-    disableSessionRenewalEnable = registerOutput<String?>(
-      'disableSessionRenewalEnable',
-    );
+    disableSessionRenewalEnable = registerOutput<String?>('disableSessionRenewalEnable');
     endTime = registerOutput<String>('endTime');
     jsonResponseEnable = registerOutput<String?>('jsonResponseEnable');
     language = registerOutput<String?>('language');

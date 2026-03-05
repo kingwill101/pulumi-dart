@@ -183,25 +183,18 @@ import 'nat_gateway_state.dart';
 class NatGateway extends pulumi.CustomResource {
   /// The idle timeout which should be used in minutes. Defaults to `4`.
   late final pulumi.Output<int?> idleTimeoutInMinutes;
-
   /// Specifies the supported Azure location where the NAT Gateway should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// Specifies the name of the NAT Gateway. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies the name of the Resource Group in which the NAT Gateway should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The resource GUID property of the NAT Gateway.
   late final pulumi.Output<String> resourceGuid;
-
   /// The SKU which should be used. At this time the only supported value is `Standard`. Defaults to `Standard`.
   late final pulumi.Output<String?> skuName;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A list of Availability Zones in which this NAT Gateway should be located. Changing this forces a new NAT Gateway to be created.
   ///
   /// &gt; **Note:** Only one Availability Zone can be defined. For more information, please check out the [Azure documentation](https://learn.microsoft.com/en-us/azure/nat-gateway/nat-overview#availability-zones)
@@ -216,11 +209,11 @@ class NatGateway extends pulumi.CustomResource {
     NatGatewayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/natGateway:NatGateway',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/natGateway:NatGateway',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     idleTimeoutInMinutes = registerOutput<int?>('idleTimeoutInMinutes');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -249,11 +242,11 @@ class NatGateway extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/natGateway:NatGateway',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/natGateway:NatGateway',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     idleTimeoutInMinutes = registerOutput<int?>('idleTimeoutInMinutes');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

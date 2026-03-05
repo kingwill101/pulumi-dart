@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValueResponse {
   /// Input only. The plain text of the client secret value. For security reasons, this field is only used for input and will never be populated in any response.
   final pulumi.Input<String> plainText;
-
   /// A thumbprint to represent the current client secret value.
   final pulumi.Input<String> thumbprint;
 
@@ -19,15 +18,17 @@ class GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValueResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'plainText': plainText, 'thumbprint': thumbprint};
+    return <String, dynamic>{
+      'plainText': plainText,
+      'thumbprint': thumbprint,
+    };
   }
 
-  factory GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValueResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValueResponse.fromMap(Map<String, dynamic> map) {
     return GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValueResponse(
       plainText: pulumi.Input.fromValue(map['plainText'] as String),
       thumbprint: pulumi.Input.fromValue(map['thumbprint'] as String),
     );
   }
 }
+

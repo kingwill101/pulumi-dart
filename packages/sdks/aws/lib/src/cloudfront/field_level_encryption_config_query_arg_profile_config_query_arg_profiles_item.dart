@@ -4,7 +4,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfilesItem {
   final pulumi.Input<String> profileId;
-
   /// Query argument for field-level encryption query argument-profile mapping.
   final pulumi.Input<String> queryArg;
 
@@ -17,15 +16,17 @@ class FieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfilesItem {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'profileId': profileId, 'queryArg': queryArg};
+    return <String, dynamic>{
+      'profileId': profileId,
+      'queryArg': queryArg,
+    };
   }
 
-  factory FieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfilesItem.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfilesItem.fromMap(Map<String, dynamic> map) {
     return FieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfilesItem(
       profileId: pulumi.Input.fromValue(map['profileId'] as String),
       queryArg: pulumi.Input.fromValue(map['queryArg'] as String),
     );
   }
 }
+

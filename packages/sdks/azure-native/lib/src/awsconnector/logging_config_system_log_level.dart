@@ -16,3 +16,4 @@ enum LoggingConfigSystemLogLevel {
     throw ArgumentError('Unknown LoggingConfigSystemLogLevel value: $value');
   }
 }
+

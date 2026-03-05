@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSubscriptionArgs {
   /// The ID of the API Management Service in which this Subscription exists.
   final pulumi.Input<String> apiManagementId;
-
   /// The Identifier for the API Management Subscription.
   final pulumi.Input<String> subscriptionId;
 
@@ -35,3 +34,4 @@ class GetSubscriptionArgs {
     );
   }
 }
+

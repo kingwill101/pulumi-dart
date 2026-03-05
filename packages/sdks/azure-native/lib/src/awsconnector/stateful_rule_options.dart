@@ -9,19 +9,20 @@ class StatefulRuleOptions {
 
   /// Creates a new [StatefulRuleOptions].
   /// [ruleOrder] Property ruleOrder
-  StatefulRuleOptions({this.ruleOrder});
+  StatefulRuleOptions({
+    this.ruleOrder,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'ruleOrder': ?ruleOrder};
+    return <String, dynamic>{
+      'ruleOrder': ?ruleOrder,
+    };
   }
 
   factory StatefulRuleOptions.fromMap(Map<String, dynamic> map) {
     return StatefulRuleOptions(
-      ruleOrder: (() {
-        final guardedValue = map['ruleOrder'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ruleOrder: (() { final guardedValue = map['ruleOrder']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

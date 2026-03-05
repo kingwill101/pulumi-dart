@@ -27,10 +27,9 @@ class GetFolderBigQueryExportArgs {
 
   factory GetFolderBigQueryExportArgs.fromMap(Map<String, dynamic> map) {
     return GetFolderBigQueryExportArgs(
-      bigQueryExportId: pulumi.Input.fromValue(
-        map['bigQueryExportId'] as String,
-      ),
+      bigQueryExportId: pulumi.Input.fromValue(map['bigQueryExportId'] as String),
       folderId: pulumi.Input.fromValue(map['folderId'] as String),
     );
   }
 }
+

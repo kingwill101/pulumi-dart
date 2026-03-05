@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAndroidMAMPolicyByNameArgs {
   /// Location hostName for the tenant
   final pulumi.Input<String> hostName;
-
   /// Unique name for the policy
   final pulumi.Input<String> policyName;
-
   /// select specific fields in entity.
   final pulumi.Input<String>? select;
 
@@ -38,11 +36,8 @@ class GetAndroidMAMPolicyByNameArgs {
     return GetAndroidMAMPolicyByNameArgs(
       hostName: pulumi.Input.fromValue(map['hostName'] as String),
       policyName: pulumi.Input.fromValue(map['policyName'] as String),
-      select: (() {
-        final guardedValue = map['select'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      select: (() { final guardedValue = map['select']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

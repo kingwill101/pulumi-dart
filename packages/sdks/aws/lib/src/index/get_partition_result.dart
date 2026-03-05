@@ -1,16 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getPartition.
 class GetPartitionResult {
   /// Base DNS domain name for the current partition (e.g., `amazonaws.com` in AWS Commercial, `amazonaws.com.cn` in AWS China).
   final String dnsSuffix;
-
   /// Identifier of the current partition (e.g., `aws` in AWS Commercial, `aws-cn` in AWS China).
   final String id;
-
   /// Identifier of the current partition (e.g., `aws` in AWS Commercial, `aws-cn` in AWS China).
   final String partition;
-
   /// Prefix of service names (e.g., `com.amazonaws` in AWS Commercial, `cn.com.amazonaws` in AWS China).
   final String reverseDnsPrefix;
 
@@ -44,3 +42,4 @@ class GetPartitionResult {
     );
   }
 }
+

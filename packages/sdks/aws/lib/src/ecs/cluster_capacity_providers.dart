@@ -178,14 +178,10 @@ import 'cluster_capacity_providers_state.dart';
 class ClusterCapacityProviders extends pulumi.CustomResource {
   /// Set of names of one or more capacity providers to associate with the cluster. Valid values also include `FARGATE` and `FARGATE_SPOT`.
   late final pulumi.Output<List<String>?> capacityProviders;
-
   /// Name of the ECS cluster to manage capacity providers for.
   late final pulumi.Output<String> clusterName;
-
   /// Set of capacity provider strategies to use by default for the cluster. Detailed below.
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  defaultCapacityProviderStrategies;
-
+  late final pulumi.Output<List<Map<String, dynamic>>?> defaultCapacityProviderStrategies;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -198,17 +194,14 @@ class ClusterCapacityProviders extends pulumi.CustomResource {
     ClusterCapacityProvidersArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ecs/clusterCapacityProviders:ClusterCapacityProviders',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ecs/clusterCapacityProviders:ClusterCapacityProviders',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     capacityProviders = registerOutput<List<String>?>('capacityProviders');
     clusterName = registerOutput<String>('clusterName');
-    defaultCapacityProviderStrategies =
-        registerOutput<List<Map<String, dynamic>>?>(
-          'defaultCapacityProviderStrategies',
-        );
+    defaultCapacityProviderStrategies = registerOutput<List<Map<String, dynamic>>?>('defaultCapacityProviderStrategies');
     region = registerOutput<String>('region');
   }
 
@@ -230,17 +223,14 @@ class ClusterCapacityProviders extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ecs/clusterCapacityProviders:ClusterCapacityProviders',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ecs/clusterCapacityProviders:ClusterCapacityProviders',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     capacityProviders = registerOutput<List<String>?>('capacityProviders');
     clusterName = registerOutput<String>('clusterName');
-    defaultCapacityProviderStrategies =
-        registerOutput<List<Map<String, dynamic>>?>(
-          'defaultCapacityProviderStrategies',
-        );
+    defaultCapacityProviderStrategies = registerOutput<List<Map<String, dynamic>>?>('defaultCapacityProviderStrategies');
     region = registerOutput<String>('region');
   }
 }

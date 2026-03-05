@@ -6,12 +6,10 @@ class ResourcePolicyWorkloadPolicy {
   /// The accelerator topology. This field can be set only when the workload policy type is HIGH_THROUGHPUT
   /// and cannot be set if max topology distance is set.
   final pulumi.Input<String>? acceleratorTopology;
-
   /// The maximum topology distance. This field can be set only when the workload policy type is HIGH_THROUGHPUT
   /// and cannot be set if accelerator topology is set.
   /// Possible values are: `BLOCK`, `CLUSTER`, `SUBBLOCK`.
   final pulumi.Input<String>? maxTopologyDistance;
-
   /// The type of workload policy.
   /// Possible values are: `HIGH_AVAILABILITY`, `HIGH_THROUGHPUT`.
   final pulumi.Input<String> type;
@@ -36,17 +34,10 @@ class ResourcePolicyWorkloadPolicy {
 
   factory ResourcePolicyWorkloadPolicy.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyWorkloadPolicy(
-      acceleratorTopology: (() {
-        final guardedValue = map['acceleratorTopology'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      maxTopologyDistance: (() {
-        final guardedValue = map['maxTopologyDistance'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      acceleratorTopology: (() { final guardedValue = map['acceleratorTopology']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      maxTopologyDistance: (() { final guardedValue = map['maxTopologyDistance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

@@ -6,10 +6,8 @@ class SpokeLinkedVpnTunnels {
   /// IP ranges allowed to be included during import from hub (does not control transit connectivity).
   /// The only allowed value for now is "ALL_IPV4_RANGES".
   final pulumi.Input<List<String>>? includeImportRanges;
-
   /// A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
   final pulumi.Input<bool> siteToSiteDataTransfer;
-
   /// The URIs of linked VPN tunnel resources.
   final pulumi.Input<List<String>> uris;
 
@@ -33,15 +31,10 @@ class SpokeLinkedVpnTunnels {
 
   factory SpokeLinkedVpnTunnels.fromMap(Map<String, dynamic> map) {
     return SpokeLinkedVpnTunnels(
-      includeImportRanges: (() {
-        final guardedValue = map['includeImportRanges'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      siteToSiteDataTransfer: pulumi.Input.fromValue(
-        map['siteToSiteDataTransfer'] as bool,
-      ),
+      includeImportRanges: (() { final guardedValue = map['includeImportRanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      siteToSiteDataTransfer: pulumi.Input.fromValue(map['siteToSiteDataTransfer'] as bool),
       uris: pulumi.Input.fromValue((map['uris'] as List).cast<String>()),
     );
   }
 }
+

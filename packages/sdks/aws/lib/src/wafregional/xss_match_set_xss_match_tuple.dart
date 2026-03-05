@@ -6,7 +6,6 @@ import 'xss_match_set_xss_match_tuple_field_to_match.dart';
 class XssMatchSetXssMatchTuple {
   /// Specifies where in a web request to look for cross-site scripting attacks.
   final pulumi.Input<XssMatchSetXssMatchTupleFieldToMatch> fieldToMatch;
-
   /// Which text transformation, if any, to perform on the web request before inspecting the request for cross-site scripting attacks.
   final pulumi.Input<String> textTransformation;
 
@@ -20,25 +19,16 @@ class XssMatchSetXssMatchTuple {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fieldToMatch':
-          pulumi.Input.mapInputValue<
-            XssMatchSetXssMatchTupleFieldToMatch,
-            Map<String, dynamic>
-          >(fieldToMatch, (value) => value.toMap()),
+      'fieldToMatch': pulumi.Input.mapInputValue<XssMatchSetXssMatchTupleFieldToMatch, Map<String, dynamic>>(fieldToMatch, (value) => value.toMap()),
       'textTransformation': textTransformation,
     };
   }
 
   factory XssMatchSetXssMatchTuple.fromMap(Map<String, dynamic> map) {
     return XssMatchSetXssMatchTuple(
-      fieldToMatch: pulumi.Input.fromValue(
-        XssMatchSetXssMatchTupleFieldToMatch.fromMap(
-          (map['fieldToMatch']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      textTransformation: pulumi.Input.fromValue(
-        map['textTransformation'] as String,
-      ),
+      fieldToMatch: pulumi.Input.fromValue(XssMatchSetXssMatchTupleFieldToMatch.fromMap((map['fieldToMatch']! as Map).cast<String, dynamic>())),
+      textTransformation: pulumi.Input.fromValue(map['textTransformation'] as String),
     );
   }
 }
+

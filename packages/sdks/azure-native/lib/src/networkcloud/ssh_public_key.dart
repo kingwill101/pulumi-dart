@@ -8,10 +8,14 @@ class SshPublicKey {
 
   /// Creates a new [SshPublicKey].
   /// [keyData] The SSH public key data.
-  SshPublicKey({required this.keyData});
+  SshPublicKey({
+    required this.keyData,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'keyData': keyData};
+    return <String, dynamic>{
+      'keyData': keyData,
+    };
   }
 
   factory SshPublicKey.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class SshPublicKey {
     );
   }
 }
+

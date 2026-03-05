@@ -16,3 +16,4 @@ enum SAPProductType {
     throw ArgumentError('Unknown SAPProductType value: $value');
   }
 }
+

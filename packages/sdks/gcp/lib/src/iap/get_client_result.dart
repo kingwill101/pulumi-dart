@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getClient.
 class GetClientResult {
   final String brand;
   final String clientId;
   final String displayName;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String secret;
@@ -44,3 +44,4 @@ class GetClientResult {
     );
   }
 }
+

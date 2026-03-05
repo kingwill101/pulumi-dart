@@ -10,17 +10,20 @@ class GetDiskParam {
 
   /// Creates a new [GetDiskParam].
   /// [resourceManagerTags] Resource manager tags to be bound to the disk. Tag keys and values have the
-  GetDiskParam({required this.resourceManagerTags});
+  GetDiskParam({
+    required this.resourceManagerTags,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'resourceManagerTags': resourceManagerTags};
+    return <String, dynamic>{
+      'resourceManagerTags': resourceManagerTags,
+    };
   }
 
   factory GetDiskParam.fromMap(Map<String, dynamic> map) {
     return GetDiskParam(
-      resourceManagerTags: pulumi.Input.fromValue(
-        (map['resourceManagerTags'] as Map).cast<String, String>(),
-      ),
+      resourceManagerTags: pulumi.Input.fromValue((map['resourceManagerTags'] as Map).cast<String, String>()),
     );
   }
 }
+

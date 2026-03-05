@@ -268,7 +268,6 @@ import 'service_email_domain_association_state.dart';
 class ServiceEmailDomainAssociation extends pulumi.CustomResource {
   /// The ID of the Communication Service. Changing this forces a new communication service email domain association to be created.
   late final pulumi.Output<String> communicationServiceId;
-
   /// The ID of the EMail Service Domain. Changing this forces a new communication service email domain association to be created.
   late final pulumi.Output<String> emailServiceDomainId;
 
@@ -281,11 +280,11 @@ class ServiceEmailDomainAssociation extends pulumi.CustomResource {
     ServiceEmailDomainAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:communication/serviceEmailDomainAssociation:ServiceEmailDomainAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:communication/serviceEmailDomainAssociation:ServiceEmailDomainAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     communicationServiceId = registerOutput<String>('communicationServiceId');
     emailServiceDomainId = registerOutput<String>('emailServiceDomainId');
   }
@@ -308,11 +307,11 @@ class ServiceEmailDomainAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:communication/serviceEmailDomainAssociation:ServiceEmailDomainAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:communication/serviceEmailDomainAssociation:ServiceEmailDomainAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     communicationServiceId = registerOutput<String>('communicationServiceId');
     emailServiceDomainId = registerOutput<String>('emailServiceDomainId');
   }

@@ -6,22 +6,16 @@ import 'access_policy_assignment_properties_response_user.dart';
 class GetAccessPolicyAssignmentResult {
   /// Name of access policy under specific access policy assignment. Only "default" policy is supported for now.
   final String accessPolicyName;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// The name of the resource
   final String name;
-
   /// Current provisioning status of the access policy assignment.
   final String provisioningState;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
-
   /// The user associated with the access policy.
   final AccessPolicyAssignmentPropertiesResponseUser user;
 
@@ -63,9 +57,8 @@ class GetAccessPolicyAssignmentResult {
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       type: map['type'] as String,
-      user: AccessPolicyAssignmentPropertiesResponseUser.fromMap(
-        (map['user']! as Map).cast<String, dynamic>(),
-      ),
+      user: AccessPolicyAssignmentPropertiesResponseUser.fromMap((map['user']! as Map).cast<String, dynamic>()),
     );
   }
 }
+

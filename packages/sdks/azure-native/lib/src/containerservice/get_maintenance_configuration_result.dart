@@ -10,25 +10,18 @@ import 'time_span_response.dart';
 class GetMaintenanceConfigurationResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Resource ID.
   final String id;
-
   /// Maintenance window for the maintenance configuration.
   final MaintenanceWindowResponse? maintenanceWindow;
-
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   final String name;
-
   /// Time slots on which upgrade is not allowed.
   final List<TimeSpanResponse>? notAllowedTime;
-
   /// The system metadata relating to this resource.
   final SystemDataResponse systemData;
-
   /// Time slots during the week when planned maintenance is allowed to proceed. If two array entries specify the same day of the week, the applied configuration is the union of times in both entries.
   final List<TimeInWeekResponse>? timeInWeek;
-
   /// Resource type
   final String type;
 
@@ -58,23 +51,9 @@ class GetMaintenanceConfigurationResult {
       'id': id,
       'maintenanceWindow': ?maintenanceWindow?.toMap(),
       'name': name,
-      'notAllowedTime': ?(() {
-        final guardedValue = notAllowedTime;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<TimeSpanResponse, Map<String, dynamic>>(
-          guardedValue,
-          (value) => value.toMap(),
-        );
-      })(),
+      'notAllowedTime': ?(() { final guardedValue = notAllowedTime; if (guardedValue == null) return null; return pulumi.Input.encodeList<TimeSpanResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'systemData': systemData.toMap(),
-      'timeInWeek': ?(() {
-        final guardedValue = timeInWeek;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          TimeInWeekResponse,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'timeInWeek': ?(() { final guardedValue = timeInWeek; if (guardedValue == null) return null; return pulumi.Input.encodeList<TimeInWeekResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'type': type,
     };
   }
@@ -83,37 +62,13 @@ class GetMaintenanceConfigurationResult {
     return GetMaintenanceConfigurationResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      maintenanceWindow: (() {
-        final guardedValue = map['maintenanceWindow'];
-        if (guardedValue == null) return null;
-        return MaintenanceWindowResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      maintenanceWindow: (() { final guardedValue = map['maintenanceWindow']; if (guardedValue == null) return null; return MaintenanceWindowResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       name: map['name'] as String,
-      notAllowedTime: (() {
-        final guardedValue = map['notAllowedTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<TimeSpanResponse>(
-          guardedValue,
-          (value) =>
-              TimeSpanResponse.fromMap((value as Map).cast<String, dynamic>()),
-        );
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      timeInWeek: (() {
-        final guardedValue = map['timeInWeek'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<TimeInWeekResponse>(
-          guardedValue,
-          (value) => TimeInWeekResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      notAllowedTime: (() { final guardedValue = map['notAllowedTime']; if (guardedValue == null) return null; return pulumi.Input.decodeList<TimeSpanResponse>(guardedValue, (value) => TimeSpanResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      timeInWeek: (() { final guardedValue = map['timeInWeek']; if (guardedValue == null) return null; return pulumi.Input.decodeList<TimeInWeekResponse>(guardedValue, (value) => TimeInWeekResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       type: map['type'] as String,
     );
   }
 }
+

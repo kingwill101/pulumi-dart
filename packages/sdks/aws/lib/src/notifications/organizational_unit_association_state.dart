@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OrganizationalUnitAssociationState {
   /// ARN of the notification configuration to associate the organizational unit with.
   final pulumi.Input<String>? notificationConfigurationArn;
-
   /// ID of the organizational unit or ID of the root to associate with the notification configuration. Can be a root ID (e.g., `r-1234`), or an organization ID (e.g., `o-1234567890`).
   final pulumi.Input<String>? organizationalUnitId;
 
@@ -27,16 +26,9 @@ class OrganizationalUnitAssociationState {
 
   factory OrganizationalUnitAssociationState.fromMap(Map<String, dynamic> map) {
     return OrganizationalUnitAssociationState(
-      notificationConfigurationArn: (() {
-        final guardedValue = map['notificationConfigurationArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      organizationalUnitId: (() {
-        final guardedValue = map['organizationalUnitId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      notificationConfigurationArn: (() { final guardedValue = map['notificationConfigurationArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      organizationalUnitId: (() { final guardedValue = map['organizationalUnitId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

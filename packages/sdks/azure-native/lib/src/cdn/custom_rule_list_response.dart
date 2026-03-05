@@ -10,39 +10,20 @@ class CustomRuleListResponse {
 
   /// Creates a new [CustomRuleListResponse].
   /// [rules] List of rules
-  CustomRuleListResponse({this.rules});
+  CustomRuleListResponse({
+    this.rules,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'rules':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<CustomRuleResponse>,
-            List<Map<String, dynamic>>
-          >(
-            rules,
-            (value) =>
-                pulumi.Input.encodeList<
-                  CustomRuleResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'rules': ?pulumi.Input.mapOptionalInputValue<List<CustomRuleResponse>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<CustomRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory CustomRuleListResponse.fromMap(Map<String, dynamic> map) {
     return CustomRuleListResponse(
-      rules: (() {
-        final guardedValue = map['rules'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<CustomRuleResponse>(
-            guardedValue,
-            (value) => CustomRuleResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CustomRuleResponse>(guardedValue, (value) => CustomRuleResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

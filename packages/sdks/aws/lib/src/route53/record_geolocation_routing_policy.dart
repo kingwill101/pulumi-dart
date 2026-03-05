@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RecordGeolocationRoutingPolicy {
   /// A two-letter continent code. See http://docs.aws.amazon.com/Route53/latest/APIReference/API_GetGeoLocation.html for code details. Either `continent` or `country` must be specified.
   final pulumi.Input<String>? continent;
-
   /// A two-character country code or `*` to indicate a default resource record set.
   final pulumi.Input<String>? country;
-
   /// A subdivision code for a country.
   final pulumi.Input<String>? subdivision;
 
@@ -32,21 +30,10 @@ class RecordGeolocationRoutingPolicy {
 
   factory RecordGeolocationRoutingPolicy.fromMap(Map<String, dynamic> map) {
     return RecordGeolocationRoutingPolicy(
-      continent: (() {
-        final guardedValue = map['continent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      country: (() {
-        final guardedValue = map['country'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subdivision: (() {
-        final guardedValue = map['subdivision'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      continent: (() { final guardedValue = map['continent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      country: (() { final guardedValue = map['country']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subdivision: (() { final guardedValue = map['subdivision']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

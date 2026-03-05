@@ -18,35 +18,27 @@ class InstanceArgs {
   /// * PREVENT
   /// * ABANDON
   final pulumi.Input<String>? deletionPolicy;
-
   /// The name for the Instance.
   final pulumi.Input<String> instanceId;
-
   /// Customer-managed encryption key name, in the format projects/*/locations/*/keyRings/*/cryptoKeys/*.
   final pulumi.Input<String>? kmsKey;
-
   /// Labels as key value pairs.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// The location for the Instance.
   final pulumi.Input<String> location;
-
   /// Private settings for private instance.
   /// Structure is documented below.
   final pulumi.Input<InstancePrivateConfig>? privateConfig;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// Configuration for Workforce Identity Federation to support third party identity provider.
   /// If unset, defaults to the Google OIDC IdP.
   /// Structure is documented below.
-  final pulumi.Input<InstanceWorkforceIdentityFederationConfig>?
-  workforceIdentityFederationConfig;
+  final pulumi.Input<InstanceWorkforceIdentityFederationConfig>? workforceIdentityFederationConfig;
 
   /// Creates a new [InstanceArgs].
   /// [deletionPolicy] The deletion policy for the instance. Setting `ABANDON` allows the resource
@@ -75,64 +67,23 @@ class InstanceArgs {
       'kmsKey': ?kmsKey,
       'labels': ?labels,
       'location': location,
-      'privateConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            InstancePrivateConfig,
-            Map<String, dynamic>
-          >(privateConfig, (value) => value.toMap()),
+      'privateConfig': ?pulumi.Input.mapOptionalInputValue<InstancePrivateConfig, Map<String, dynamic>>(privateConfig, (value) => value.toMap()),
       'project': ?project,
-      'workforceIdentityFederationConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            InstanceWorkforceIdentityFederationConfig,
-            Map<String, dynamic>
-          >(workforceIdentityFederationConfig, (value) => value.toMap()),
+      'workforceIdentityFederationConfig': ?pulumi.Input.mapOptionalInputValue<InstanceWorkforceIdentityFederationConfig, Map<String, dynamic>>(workforceIdentityFederationConfig, (value) => value.toMap()),
     };
   }
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      deletionPolicy: (() {
-        final guardedValue = map['deletionPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
-      kmsKey: (() {
-        final guardedValue = map['kmsKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      kmsKey: (() { final guardedValue = map['kmsKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
-      privateConfig: (() {
-        final guardedValue = map['privateConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          InstancePrivateConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      workforceIdentityFederationConfig: (() {
-        final guardedValue = map['workforceIdentityFederationConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          InstanceWorkforceIdentityFederationConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      privateConfig: (() { final guardedValue = map['privateConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstancePrivateConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      workforceIdentityFederationConfig: (() { final guardedValue = map['workforceIdentityFederationConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceWorkforceIdentityFederationConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

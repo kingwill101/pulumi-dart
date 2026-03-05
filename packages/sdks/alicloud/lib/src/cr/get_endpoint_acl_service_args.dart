@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEndpointAclServiceArgs {
   /// Whether to enable Acl Service, Setting the value to `true` to enable the acl service. Valid values: `true` and `false`.
   final pulumi.Input<bool> enable;
-
   /// The type of endpoint. Valid values: `internet`.
   final pulumi.Input<String> endpointType;
-
   /// The ID of the CR Instance.
   final pulumi.Input<String> instanceId;
-
   /// The ModuleName. Valid values: `Registry`.
   ///
   /// &gt; **NOTE:** After You enable access over the Internet, the Classless Inter-Domain Routing (CIDR) block `127.0.0.1/32` is automatically added to the whitelist.
@@ -49,11 +46,8 @@ class GetEndpointAclServiceArgs {
       enable: pulumi.Input.fromValue(map['enable'] as bool),
       endpointType: pulumi.Input.fromValue(map['endpointType'] as String),
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
-      moduleName: (() {
-        final guardedValue = map['moduleName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      moduleName: (() { final guardedValue = map['moduleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

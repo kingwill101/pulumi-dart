@@ -9,7 +9,6 @@ class GetLoadBalancersResult {
   final String? addressType;
   final List<GetLoadBalancersBalancer> balancers;
   final String? dnsName;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -67,11 +66,7 @@ class GetLoadBalancersResult {
     return <String, dynamic>{
       'addressIpVersion': ?addressIpVersion,
       'addressType': ?addressType,
-      'balancers':
-          pulumi.Input.encodeList<
-            GetLoadBalancersBalancer,
-            Map<String, dynamic>
-          >(balancers, (value) => value.toMap()),
+      'balancers': pulumi.Input.encodeList<GetLoadBalancersBalancer, Map<String, dynamic>>(balancers, (value) => value.toMap()),
       'dnsName': ?dnsName,
       'id': id,
       'ids': ids,
@@ -91,80 +86,24 @@ class GetLoadBalancersResult {
 
   factory GetLoadBalancersResult.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancersResult(
-      addressIpVersion: (() {
-        final guardedValue = map['addressIpVersion'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      addressType: (() {
-        final guardedValue = map['addressType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      balancers: pulumi.Input.decodeList<GetLoadBalancersBalancer>(
-        map['balancers']!,
-        (value) => GetLoadBalancersBalancer.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      dnsName: (() {
-        final guardedValue = map['dnsName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      addressIpVersion: (() { final guardedValue = map['addressIpVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      addressType: (() { final guardedValue = map['addressType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      balancers: pulumi.Input.decodeList<GetLoadBalancersBalancer>(map['balancers']!, (value) => GetLoadBalancersBalancer.fromMap((value as Map).cast<String, dynamic>())),
+      dnsName: (() { final guardedValue = map['dnsName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      ipv6AddressType: (() {
-        final guardedValue = map['ipv6AddressType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      loadBalancerBusinessStatus: (() {
-        final guardedValue = map['loadBalancerBusinessStatus'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      loadBalancerNames: (() {
-        final guardedValue = map['loadBalancerNames'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      ipv6AddressType: (() { final guardedValue = map['ipv6AddressType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      loadBalancerBusinessStatus: (() { final guardedValue = map['loadBalancerBusinessStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      loadBalancerNames: (() { final guardedValue = map['loadBalancerNames']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      resourceGroupId: (() {
-        final guardedValue = map['resourceGroupId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
-      vpcIds: (() {
-        final guardedValue = map['vpcIds'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
-      zoneId: (() {
-        final guardedValue = map['zoneId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceGroupId: (() { final guardedValue = map['resourceGroupId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      vpcIds: (() { final guardedValue = map['vpcIds']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      zoneId: (() { final guardedValue = map['zoneId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

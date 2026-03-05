@@ -16,3 +16,4 @@ enum RecommendationSupportedClouds {
     throw ArgumentError('Unknown RecommendationSupportedClouds value: $value');
   }
 }
+

@@ -14,3 +14,4 @@ enum Encoding {
     throw ArgumentError('Unknown Encoding value: $value');
   }
 }
+

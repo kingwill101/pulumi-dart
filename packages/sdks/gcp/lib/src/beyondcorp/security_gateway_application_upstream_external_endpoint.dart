@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecurityGatewayApplicationUpstreamExternalEndpoint {
   /// Hostname of the endpoint.
   final pulumi.Input<String> hostname;
-
   /// Port of the endpoint.
   final pulumi.Input<int> port;
 
@@ -18,15 +17,17 @@ class SecurityGatewayApplicationUpstreamExternalEndpoint {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'hostname': hostname, 'port': port};
+    return <String, dynamic>{
+      'hostname': hostname,
+      'port': port,
+    };
   }
 
-  factory SecurityGatewayApplicationUpstreamExternalEndpoint.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SecurityGatewayApplicationUpstreamExternalEndpoint.fromMap(Map<String, dynamic> map) {
     return SecurityGatewayApplicationUpstreamExternalEndpoint(
       hostname: pulumi.Input.fromValue(map['hostname'] as String),
       port: pulumi.Input.fromValue(map['port'] as int),
     );
   }
 }
+

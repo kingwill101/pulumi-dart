@@ -303,34 +303,24 @@ import 'source_control_slot_state.dart';
 class SourceControlSlot extends pulumi.CustomResource {
   /// The URL for the repository. Changing this forces a new resource to be created.
   late final pulumi.Output<String> branch;
-
   /// A `github_action_configuration` block as detailed below. Changing this forces a new resource to be created.
-  late final pulumi.Output<SourceControlSlotGithubActionConfiguration?>
-  githubActionConfiguration;
-
+  late final pulumi.Output<SourceControlSlotGithubActionConfiguration?> githubActionConfiguration;
   /// The branch name to use for deployments. Changing this forces a new resource to be created.
   late final pulumi.Output<String> repoUrl;
-
   /// Should the Deployment Rollback be enabled? Defaults to `false` Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> rollbackEnabled;
-
   /// The SCM Type in use. This value is decoded by the service from the repository information supplied.
   late final pulumi.Output<String> scmType;
-
   /// The ID of the Linux or Windows Web App Slot. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Function App Slots are not supported at this time.
   late final pulumi.Output<String> slotId;
-
   /// Should the Slot use local Git configuration. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> useLocalGit;
-
   /// Should code be deployed manually. Set to `true` to disable continuous integration, such as webhooks into online repos such as GitHub. Defaults to `false`. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> useManualIntegration;
-
   /// The repository specified is Mercurial. Defaults to `false`. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> useMercurial;
-
   /// Indicates if the Slot uses a GitHub action for deployment. This value is decoded by the service from the repository information supplied.
   late final pulumi.Output<bool> usesGithubAction;
 
@@ -343,23 +333,13 @@ class SourceControlSlot extends pulumi.CustomResource {
     SourceControlSlotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appservice/sourceControlSlot:SourceControlSlot',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appservice/sourceControlSlot:SourceControlSlot',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     branch = registerOutput<String>('branch');
-    githubActionConfiguration =
-        registerOutput<SourceControlSlotGithubActionConfiguration?>(
-          'githubActionConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SourceControlSlotGithubActionConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    githubActionConfiguration = registerOutput<SourceControlSlotGithubActionConfiguration?>('githubActionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SourceControlSlotGithubActionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     repoUrl = registerOutput<String>('repoUrl');
     rollbackEnabled = registerOutput<bool?>('rollbackEnabled');
     scmType = registerOutput<String>('scmType');
@@ -388,23 +368,13 @@ class SourceControlSlot extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appservice/sourceControlSlot:SourceControlSlot',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appservice/sourceControlSlot:SourceControlSlot',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     branch = registerOutput<String>('branch');
-    githubActionConfiguration =
-        registerOutput<SourceControlSlotGithubActionConfiguration?>(
-          'githubActionConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return SourceControlSlotGithubActionConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    githubActionConfiguration = registerOutput<SourceControlSlotGithubActionConfiguration?>('githubActionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SourceControlSlotGithubActionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     repoUrl = registerOutput<String>('repoUrl');
     rollbackEnabled = registerOutput<bool?>('rollbackEnabled');
     scmType = registerOutput<String>('scmType');

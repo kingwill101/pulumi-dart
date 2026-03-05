@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListContainerAppCustomHostNameAnalysisArgs {
   /// Name of the Container App.
   final pulumi.Input<String> containerAppName;
-
   /// Custom hostname.
   final pulumi.Input<String>? customHostname;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,21 +32,12 @@ class ListContainerAppCustomHostNameAnalysisArgs {
     };
   }
 
-  factory ListContainerAppCustomHostNameAnalysisArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListContainerAppCustomHostNameAnalysisArgs.fromMap(Map<String, dynamic> map) {
     return ListContainerAppCustomHostNameAnalysisArgs(
-      containerAppName: pulumi.Input.fromValue(
-        map['containerAppName'] as String,
-      ),
-      customHostname: (() {
-        final guardedValue = map['customHostname'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      containerAppName: pulumi.Input.fromValue(map['containerAppName'] as String),
+      customHostname: (() { final guardedValue = map['customHostname']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

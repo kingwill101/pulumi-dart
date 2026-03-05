@@ -10,19 +10,14 @@ import 'enable_migration_input_properties.dart';
 class ReplicationMigrationItemArgs {
   /// Fabric name.
   final pulumi.Input<String> fabricName;
-
   /// Migration item name.
   final pulumi.Input<String>? migrationItemName;
-
   /// Enable migration input properties.
   final pulumi.Input<EnableMigrationInputProperties> properties;
-
   /// Protection container name.
   final pulumi.Input<String> protectionContainerName;
-
   /// The name of the resource group where the recovery services vault is present.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the recovery services vault.
   final pulumi.Input<String> resourceName;
 
@@ -46,11 +41,7 @@ class ReplicationMigrationItemArgs {
     return <String, dynamic>{
       'fabricName': fabricName,
       'migrationItemName': ?migrationItemName,
-      'properties':
-          pulumi.Input.mapInputValue<
-            EnableMigrationInputProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': pulumi.Input.mapInputValue<EnableMigrationInputProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'protectionContainerName': protectionContainerName,
       'resourceGroupName': resourceGroupName,
       'resourceName': resourceName,
@@ -60,23 +51,12 @@ class ReplicationMigrationItemArgs {
   factory ReplicationMigrationItemArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationMigrationItemArgs(
       fabricName: pulumi.Input.fromValue(map['fabricName'] as String),
-      migrationItemName: (() {
-        final guardedValue = map['migrationItemName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      properties: pulumi.Input.fromValue(
-        EnableMigrationInputProperties.fromMap(
-          (map['properties']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      protectionContainerName: pulumi.Input.fromValue(
-        map['protectionContainerName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      migrationItemName: (() { final guardedValue = map['migrationItemName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      properties: pulumi.Input.fromValue(EnableMigrationInputProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())),
+      protectionContainerName: pulumi.Input.fromValue(map['protectionContainerName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
+

@@ -12,35 +12,24 @@ import 'schedule_target_sqs_parameters.dart';
 class ScheduleTarget {
   /// ARN of the target of this schedule, such as a SQS queue or ECS cluster. For universal targets, this is a [Service ARN specific to the target service](https://docs.aws.amazon.com/scheduler/latest/UserGuide/managing-targets-universal.html#supported-universal-targets).
   final pulumi.Input<String> arn;
-
   /// Information about an Amazon SQS queue that EventBridge Scheduler uses as a dead-letter queue for your schedule. If specified, EventBridge Scheduler delivers failed events that could not be successfully delivered to a target to the queue. Detailed below.
   final pulumi.Input<ScheduleTargetDeadLetterConfig>? deadLetterConfig;
-
   /// Templated target type for the Amazon ECS [`RunTask`](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_RunTask.html) API operation. Detailed below.
   final pulumi.Input<ScheduleTargetEcsParameters>? ecsParameters;
-
   /// Templated target type for the EventBridge [`PutEvents`](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_PutEvents.html) API operation. Detailed below.
-  final pulumi.Input<ScheduleTargetEventbridgeParameters>?
-  eventbridgeParameters;
-
+  final pulumi.Input<ScheduleTargetEventbridgeParameters>? eventbridgeParameters;
   /// Text, or well-formed JSON, passed to the target. Read more in [Universal target](https://docs.aws.amazon.com/scheduler/latest/UserGuide/managing-targets-universal.html).
   final pulumi.Input<String>? input;
-
   /// Templated target type for the Amazon Kinesis [`PutRecord`](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_PutRecord.html) API operation. Detailed below.
   final pulumi.Input<ScheduleTargetKinesisParameters>? kinesisParameters;
-
   /// Information about the retry policy settings. Detailed below.
   final pulumi.Input<ScheduleTargetRetryPolicy>? retryPolicy;
-
   /// ARN of the IAM role that EventBridge Scheduler will use for this target when the schedule is invoked. Read more in [Set up the execution role](https://docs.aws.amazon.com/scheduler/latest/UserGuide/setting-up.html#setting-up-execution-role).
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> roleArn;
-
   /// Templated target type for the Amazon SageMaker AI [`StartPipelineExecution`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_StartPipelineExecution.html) API operation. Detailed below.
-  final pulumi.Input<ScheduleTargetSagemakerPipelineParameters>?
-  sagemakerPipelineParameters;
-
+  final pulumi.Input<ScheduleTargetSagemakerPipelineParameters>? sagemakerPipelineParameters;
   /// The templated target type for the Amazon SQS [`SendMessage`](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_SendMessage.html) API operation. Detailed below.
   final pulumi.Input<ScheduleTargetSqsParameters>? sqsParameters;
 
@@ -71,118 +60,31 @@ class ScheduleTarget {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'arn': arn,
-      'deadLetterConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ScheduleTargetDeadLetterConfig,
-            Map<String, dynamic>
-          >(deadLetterConfig, (value) => value.toMap()),
-      'ecsParameters':
-          ?pulumi.Input.mapOptionalInputValue<
-            ScheduleTargetEcsParameters,
-            Map<String, dynamic>
-          >(ecsParameters, (value) => value.toMap()),
-      'eventbridgeParameters':
-          ?pulumi.Input.mapOptionalInputValue<
-            ScheduleTargetEventbridgeParameters,
-            Map<String, dynamic>
-          >(eventbridgeParameters, (value) => value.toMap()),
+      'deadLetterConfig': ?pulumi.Input.mapOptionalInputValue<ScheduleTargetDeadLetterConfig, Map<String, dynamic>>(deadLetterConfig, (value) => value.toMap()),
+      'ecsParameters': ?pulumi.Input.mapOptionalInputValue<ScheduleTargetEcsParameters, Map<String, dynamic>>(ecsParameters, (value) => value.toMap()),
+      'eventbridgeParameters': ?pulumi.Input.mapOptionalInputValue<ScheduleTargetEventbridgeParameters, Map<String, dynamic>>(eventbridgeParameters, (value) => value.toMap()),
       'input': ?input,
-      'kinesisParameters':
-          ?pulumi.Input.mapOptionalInputValue<
-            ScheduleTargetKinesisParameters,
-            Map<String, dynamic>
-          >(kinesisParameters, (value) => value.toMap()),
-      'retryPolicy':
-          ?pulumi.Input.mapOptionalInputValue<
-            ScheduleTargetRetryPolicy,
-            Map<String, dynamic>
-          >(retryPolicy, (value) => value.toMap()),
+      'kinesisParameters': ?pulumi.Input.mapOptionalInputValue<ScheduleTargetKinesisParameters, Map<String, dynamic>>(kinesisParameters, (value) => value.toMap()),
+      'retryPolicy': ?pulumi.Input.mapOptionalInputValue<ScheduleTargetRetryPolicy, Map<String, dynamic>>(retryPolicy, (value) => value.toMap()),
       'roleArn': roleArn,
-      'sagemakerPipelineParameters':
-          ?pulumi.Input.mapOptionalInputValue<
-            ScheduleTargetSagemakerPipelineParameters,
-            Map<String, dynamic>
-          >(sagemakerPipelineParameters, (value) => value.toMap()),
-      'sqsParameters':
-          ?pulumi.Input.mapOptionalInputValue<
-            ScheduleTargetSqsParameters,
-            Map<String, dynamic>
-          >(sqsParameters, (value) => value.toMap()),
+      'sagemakerPipelineParameters': ?pulumi.Input.mapOptionalInputValue<ScheduleTargetSagemakerPipelineParameters, Map<String, dynamic>>(sagemakerPipelineParameters, (value) => value.toMap()),
+      'sqsParameters': ?pulumi.Input.mapOptionalInputValue<ScheduleTargetSqsParameters, Map<String, dynamic>>(sqsParameters, (value) => value.toMap()),
     };
   }
 
   factory ScheduleTarget.fromMap(Map<String, dynamic> map) {
     return ScheduleTarget(
       arn: pulumi.Input.fromValue(map['arn'] as String),
-      deadLetterConfig: (() {
-        final guardedValue = map['deadLetterConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ScheduleTargetDeadLetterConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      ecsParameters: (() {
-        final guardedValue = map['ecsParameters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ScheduleTargetEcsParameters.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      eventbridgeParameters: (() {
-        final guardedValue = map['eventbridgeParameters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ScheduleTargetEventbridgeParameters.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      input: (() {
-        final guardedValue = map['input'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kinesisParameters: (() {
-        final guardedValue = map['kinesisParameters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ScheduleTargetKinesisParameters.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      retryPolicy: (() {
-        final guardedValue = map['retryPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ScheduleTargetRetryPolicy.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      deadLetterConfig: (() { final guardedValue = map['deadLetterConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ScheduleTargetDeadLetterConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      ecsParameters: (() { final guardedValue = map['ecsParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ScheduleTargetEcsParameters.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      eventbridgeParameters: (() { final guardedValue = map['eventbridgeParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ScheduleTargetEventbridgeParameters.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      input: (() { final guardedValue = map['input']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kinesisParameters: (() { final guardedValue = map['kinesisParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ScheduleTargetKinesisParameters.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      retryPolicy: (() { final guardedValue = map['retryPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ScheduleTargetRetryPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       roleArn: pulumi.Input.fromValue(map['roleArn'] as String),
-      sagemakerPipelineParameters: (() {
-        final guardedValue = map['sagemakerPipelineParameters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ScheduleTargetSagemakerPipelineParameters.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      sqsParameters: (() {
-        final guardedValue = map['sqsParameters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ScheduleTargetSqsParameters.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      sagemakerPipelineParameters: (() { final guardedValue = map['sagemakerPipelineParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ScheduleTargetSagemakerPipelineParameters.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      sqsParameters: (() { final guardedValue = map['sqsParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ScheduleTargetSqsParameters.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

@@ -10,13 +10,10 @@ import 'schedule_entry.dart';
 class PatchScheduleArgs {
   /// The name of the RedisPatchSchedule
   final pulumi.Input<String>? default_;
-
   /// The name of the redis cache.
   final pulumi.Input<String> name;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// List of patch schedules for a Redis cache.
   final pulumi.Input<List<ScheduleEntry>> scheduleEntries;
 
@@ -37,39 +34,17 @@ class PatchScheduleArgs {
       'default': ?default_,
       'name': name,
       'resourceGroupName': resourceGroupName,
-      'scheduleEntries':
-          pulumi.Input.mapInputValue<
-            List<ScheduleEntry>,
-            List<Map<String, dynamic>>
-          >(
-            scheduleEntries,
-            (value) =>
-                pulumi.Input.encodeList<ScheduleEntry, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'scheduleEntries': pulumi.Input.mapInputValue<List<ScheduleEntry>, List<Map<String, dynamic>>>(scheduleEntries, (value) => pulumi.Input.encodeList<ScheduleEntry, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory PatchScheduleArgs.fromMap(Map<String, dynamic> map) {
     return PatchScheduleArgs(
-      default_: (() {
-        final guardedValue = map['default'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      default_: (() { final guardedValue = map['default']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      scheduleEntries: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<ScheduleEntry>(
-          map['scheduleEntries']!,
-          (value) =>
-              ScheduleEntry.fromMap((value as Map).cast<String, dynamic>()),
-        ),
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      scheduleEntries: pulumi.Input.fromValue(pulumi.Input.decodeList<ScheduleEntry>(map['scheduleEntries']!, (value) => ScheduleEntry.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

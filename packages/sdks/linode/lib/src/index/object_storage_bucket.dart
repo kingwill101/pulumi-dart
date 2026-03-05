@@ -299,46 +299,33 @@ class ObjectStorageBucket extends pulumi.CustomResource {
   /// * configured by `obj_access_key` in the provider configuration;
   /// * or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.
   late final pulumi.Output<String?> accessKey;
-
   /// The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://techdocs.akamai.com/linode-api/reference/post-object-storage-bucket).
   late final pulumi.Output<String?> acl;
-
   /// The cert used by this Object Storage Bucket.
   late final pulumi.Output<ObjectStorageBucketCert?> cert;
-
   /// The cluster of the Linode Object Storage Bucket. This is deprecated in favor of `region` attribute.
   /// For example, `us-mia-1` cluster can be translated into `us-mia` region. Exactly one of `region` and `cluster` is required for creating a bucket.
   late final pulumi.Output<String> cluster;
-
   /// If true, the bucket will have CORS enabled for all origins. Not supported by E2/E3 endpoints.
   late final pulumi.Output<bool> corsEnabled;
-
   /// The endpoint for the bucket used for s3 connections.
   late final pulumi.Output<String> endpoint;
-
   /// The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
   late final pulumi.Output<String> endpointType;
-
   /// The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made public.
   late final pulumi.Output<String> hostname;
-
   /// The label of the Linode Object Storage Bucket.
   late final pulumi.Output<String> label;
-
   /// Lifecycle rules to be applied to the bucket.
   late final pulumi.Output<List<Map<String, dynamic>>?> lifecycleRules;
-
   /// The region of the Linode Object Storage Bucket. Exactly one of `region` and `cluster` is required for creating a bucket.
   late final pulumi.Output<String> region;
-
   /// The user's s3 endpoint URL, based on the `endpoint_type` and `region`.
   late final pulumi.Output<String> s3Endpoint;
-
   /// The secret key to authenticate with. If not specified with the resource, its value can be
   /// * configured by `obj_secret_key` in the provider configuration;
   /// * or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.
   late final pulumi.Output<String?> secretKey;
-
   /// Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
   ///
   /// * `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
@@ -355,32 +342,21 @@ class ObjectStorageBucket extends pulumi.CustomResource {
     ObjectStorageBucketArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'linode:index/objectStorageBucket:ObjectStorageBucket',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'linode:index/objectStorageBucket:ObjectStorageBucket',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessKey = registerOutput<String?>('accessKey');
     acl = registerOutput<String?>('acl');
-    cert = registerOutput<ObjectStorageBucketCert?>(
-      'cert',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ObjectStorageBucketCert.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    cert = registerOutput<ObjectStorageBucketCert?>('cert', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectStorageBucketCert.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cluster = registerOutput<String>('cluster');
     corsEnabled = registerOutput<bool>('corsEnabled');
     endpoint = registerOutput<String>('endpoint');
     endpointType = registerOutput<String>('endpointType');
     hostname = registerOutput<String>('hostname');
     label = registerOutput<String>('label');
-    lifecycleRules = registerOutput<List<Map<String, dynamic>>?>(
-      'lifecycleRules',
-    );
+    lifecycleRules = registerOutput<List<Map<String, dynamic>>?>('lifecycleRules');
     region = registerOutput<String>('region');
     s3Endpoint = registerOutput<String>('s3Endpoint');
     secretKey = registerOutput<String?>('secretKey');
@@ -405,32 +381,21 @@ class ObjectStorageBucket extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'linode:index/objectStorageBucket:ObjectStorageBucket',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'linode:index/objectStorageBucket:ObjectStorageBucket',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessKey = registerOutput<String?>('accessKey');
     acl = registerOutput<String?>('acl');
-    cert = registerOutput<ObjectStorageBucketCert?>(
-      'cert',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ObjectStorageBucketCert.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    cert = registerOutput<ObjectStorageBucketCert?>('cert', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectStorageBucketCert.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cluster = registerOutput<String>('cluster');
     corsEnabled = registerOutput<bool>('corsEnabled');
     endpoint = registerOutput<String>('endpoint');
     endpointType = registerOutput<String>('endpointType');
     hostname = registerOutput<String>('hostname');
     label = registerOutput<String>('label');
-    lifecycleRules = registerOutput<List<Map<String, dynamic>>?>(
-      'lifecycleRules',
-    );
+    lifecycleRules = registerOutput<List<Map<String, dynamic>>?>('lifecycleRules');
     region = registerOutput<String>('region');
     s3Endpoint = registerOutput<String>('s3Endpoint');
     secretKey = registerOutput<String?>('secretKey');

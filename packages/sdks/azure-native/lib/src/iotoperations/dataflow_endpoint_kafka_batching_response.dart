@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataflowEndpointKafkaBatchingResponse {
   /// Batching latency in milliseconds.
   final pulumi.Input<int>? latencyMs;
-
   /// Maximum number of bytes in a batch.
   final pulumi.Input<int>? maxBytes;
-
   /// Maximum number of messages in a batch.
   final pulumi.Input<int>? maxMessages;
-
   /// Mode for batching.
   final pulumi.Input<String>? mode;
 
@@ -37,30 +34,13 @@ class DataflowEndpointKafkaBatchingResponse {
     };
   }
 
-  factory DataflowEndpointKafkaBatchingResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DataflowEndpointKafkaBatchingResponse.fromMap(Map<String, dynamic> map) {
     return DataflowEndpointKafkaBatchingResponse(
-      latencyMs: (() {
-        final guardedValue = map['latencyMs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      maxBytes: (() {
-        final guardedValue = map['maxBytes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      maxMessages: (() {
-        final guardedValue = map['maxMessages'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      mode: (() {
-        final guardedValue = map['mode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      latencyMs: (() { final guardedValue = map['latencyMs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxBytes: (() { final guardedValue = map['maxBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxMessages: (() { final guardedValue = map['maxMessages']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

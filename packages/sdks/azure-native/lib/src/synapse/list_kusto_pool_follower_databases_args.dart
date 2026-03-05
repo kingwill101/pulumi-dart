@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListKustoPoolFollowerDatabasesArgs {
   /// The name of the Kusto pool.
   final pulumi.Input<String> kustoPoolName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -37,10 +35,9 @@ class ListKustoPoolFollowerDatabasesArgs {
   factory ListKustoPoolFollowerDatabasesArgs.fromMap(Map<String, dynamic> map) {
     return ListKustoPoolFollowerDatabasesArgs(
       kustoPoolName: pulumi.Input.fromValue(map['kustoPoolName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
+

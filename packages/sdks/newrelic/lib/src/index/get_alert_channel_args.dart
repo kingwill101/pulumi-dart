@@ -9,27 +9,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAlertChannelArgs {
   /// The New Relic account ID to operate on.  This allows you to override the `account_id` attribute set on the provider. Defaults to the environment variable `NEW_RELIC_ACCOUNT_ID`.
   final pulumi.Input<String>? accountId;
-
   /// The name of the alert channel in New Relic.
   final pulumi.Input<String> name;
 
   /// Creates a new [GetAlertChannelArgs].
   /// [accountId] The New Relic account ID to operate on.  This allows you to override the `account_id` attribute set on the provider. Defaults to the environment variable `NEW_RELIC_ACCOUNT_ID`.
   /// [name] The name of the alert channel in New Relic.
-  GetAlertChannelArgs({this.accountId, required this.name});
+  GetAlertChannelArgs({
+    this.accountId,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'accountId': ?accountId, 'name': name};
+    return <String, dynamic>{
+      'accountId': ?accountId,
+      'name': name,
+    };
   }
 
   factory GetAlertChannelArgs.fromMap(Map<String, dynamic> map) {
     return GetAlertChannelArgs(
-      accountId: (() {
-        final guardedValue = map['accountId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

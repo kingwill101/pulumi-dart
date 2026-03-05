@@ -7,10 +7,8 @@ import 'estimated_vmprice_response.dart';
 class EstimatedVMPricesResponse {
   /// Three lettered code specifying the currency of the VM price. Example: USD
   final pulumi.Input<String> billingCurrency;
-
   /// The unit of time measurement for the specified VM price. Example: OneHour
   final pulumi.Input<String> unitOfMeasure;
-
   /// The list of estimated prices for using a VM of a particular OS type, tier, etc.
   final pulumi.Input<List<EstimatedVMPriceResponse>> values;
 
@@ -28,18 +26,7 @@ class EstimatedVMPricesResponse {
     return <String, dynamic>{
       'billingCurrency': billingCurrency,
       'unitOfMeasure': unitOfMeasure,
-      'values':
-          pulumi.Input.mapInputValue<
-            List<EstimatedVMPriceResponse>,
-            List<Map<String, dynamic>>
-          >(
-            values,
-            (value) =>
-                pulumi.Input.encodeList<
-                  EstimatedVMPriceResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'values': pulumi.Input.mapInputValue<List<EstimatedVMPriceResponse>, List<Map<String, dynamic>>>(values, (value) => pulumi.Input.encodeList<EstimatedVMPriceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
@@ -47,14 +34,8 @@ class EstimatedVMPricesResponse {
     return EstimatedVMPricesResponse(
       billingCurrency: pulumi.Input.fromValue(map['billingCurrency'] as String),
       unitOfMeasure: pulumi.Input.fromValue(map['unitOfMeasure'] as String),
-      values: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<EstimatedVMPriceResponse>(
-          map['values']!,
-          (value) => EstimatedVMPriceResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      values: pulumi.Input.fromValue(pulumi.Input.decodeList<EstimatedVMPriceResponse>(map['values']!, (value) => EstimatedVMPriceResponse.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

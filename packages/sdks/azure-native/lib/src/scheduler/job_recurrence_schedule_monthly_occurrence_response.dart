@@ -5,33 +5,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JobRecurrenceScheduleMonthlyOccurrenceResponse {
   /// Gets or sets the day. Must be one of monday, tuesday, wednesday, thursday, friday, saturday, sunday.
   final pulumi.Input<String>? day;
-
   /// Gets or sets the occurrence. Must be between -5 and 5.
   final pulumi.Input<int>? occurrence;
 
   /// Creates a new [JobRecurrenceScheduleMonthlyOccurrenceResponse].
   /// [day] Gets or sets the day. Must be one of monday, tuesday, wednesday, thursday, friday, saturday, sunday.
   /// [occurrence] Gets or sets the occurrence. Must be between -5 and 5.
-  JobRecurrenceScheduleMonthlyOccurrenceResponse({this.day, this.occurrence});
+  JobRecurrenceScheduleMonthlyOccurrenceResponse({
+    this.day,
+    this.occurrence,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'day': ?day, 'occurrence': ?occurrence};
+    return <String, dynamic>{
+      'day': ?day,
+      'occurrence': ?occurrence,
+    };
   }
 
-  factory JobRecurrenceScheduleMonthlyOccurrenceResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory JobRecurrenceScheduleMonthlyOccurrenceResponse.fromMap(Map<String, dynamic> map) {
     return JobRecurrenceScheduleMonthlyOccurrenceResponse(
-      day: (() {
-        final guardedValue = map['day'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      occurrence: (() {
-        final guardedValue = map['occurrence'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      day: (() { final guardedValue = map['day']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      occurrence: (() { final guardedValue = map['occurrence']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

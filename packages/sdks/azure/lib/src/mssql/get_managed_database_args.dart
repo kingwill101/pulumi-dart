@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetManagedDatabaseArgs {
   /// The SQL Managed Instance ID.
   final pulumi.Input<String> managedInstanceId;
-
   /// The name of this Azure SQL Azure Managed Database.
   final pulumi.Input<String> name;
 
   /// Creates a new [GetManagedDatabaseArgs].
   /// [managedInstanceId] The SQL Managed Instance ID.
   /// [name] The name of this Azure SQL Azure Managed Database.
-  GetManagedDatabaseArgs({required this.managedInstanceId, required this.name});
+  GetManagedDatabaseArgs({
+    required this.managedInstanceId,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,10 +29,9 @@ class GetManagedDatabaseArgs {
 
   factory GetManagedDatabaseArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedDatabaseArgs(
-      managedInstanceId: pulumi.Input.fromValue(
-        map['managedInstanceId'] as String,
-      ),
+      managedInstanceId: pulumi.Input.fromValue(map['managedInstanceId'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

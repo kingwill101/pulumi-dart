@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGroupsGroup {
   /// GroupFlag, '0' mean default group(created by system), '1' means customer defined group.
   final pulumi.Input<int> groupFlag;
-
   /// The ID of Group.
   final pulumi.Input<String> groupId;
-
   /// The name of Group.
   final pulumi.Input<String> groupName;
-
   /// The ID of the Group(same as the group_id).
   final pulumi.Input<String> id;
 
@@ -45,3 +42,4 @@ class GetGroupsGroup {
     );
   }
 }
+

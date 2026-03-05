@@ -210,45 +210,31 @@ import 'system_data_response.dart';
 /// ```
 class CustomLocation extends pulumi.CustomResource {
   /// This is optional input that contains the authentication that should be used to generate the namespace.
-  late final pulumi.Output<CustomLocationPropertiesResponseAuthentication?>
-  authentication;
-
+  late final pulumi.Output<CustomLocationPropertiesResponseAuthentication?> authentication;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Contains the reference to the add-on that contains charts to deploy CRDs and operators.
   late final pulumi.Output<List<String>?> clusterExtensionIds;
-
   /// Display name for the Custom Locations location.
   late final pulumi.Output<String?> displayName;
-
   /// Connected Cluster or AKS Cluster. The Custom Locations RP will perform a checkAccess API for listAdminCredentials permissions.
   late final pulumi.Output<String?> hostResourceId;
-
   /// Type of host the Custom Locations is referencing (Kubernetes, etc...).
   late final pulumi.Output<String?> hostType;
-
   /// Identity for the resource.
   late final pulumi.Output<IdentityResponse?> identity;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Kubernetes namespace that will be created on the specified cluster.
   late final pulumi.Output<String?> namespace;
-
   /// Provisioning State for the Custom Location.
   late final pulumi.Output<String?> provisioningState;
-
   /// Metadata pertaining to creation and last modification of the resource
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -261,51 +247,23 @@ class CustomLocation extends pulumi.CustomResource {
     CustomLocationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:extendedlocation:CustomLocation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    authentication =
-        registerOutput<CustomLocationPropertiesResponseAuthentication?>(
-          'authentication',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return CustomLocationPropertiesResponseAuthentication.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'azure-native:extendedlocation:CustomLocation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    authentication = registerOutput<CustomLocationPropertiesResponseAuthentication?>('authentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomLocationPropertiesResponseAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     clusterExtensionIds = registerOutput<List<String>?>('clusterExtensionIds');
     displayName = registerOutput<String?>('displayName');
     hostResourceId = registerOutput<String?>('hostResourceId');
     hostType = registerOutput<String?>('hostType');
-    identity = registerOutput<IdentityResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return IdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    identity = registerOutput<IdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     namespace = registerOutput<String?>('namespace');
     provisioningState = registerOutput<String?>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

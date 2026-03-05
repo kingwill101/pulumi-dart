@@ -9,17 +9,20 @@ class LiteSubscriptionDeliveryConfig {
 
   /// Creates a new [LiteSubscriptionDeliveryConfig].
   /// [deliveryRequirement] When this subscription should send messages to subscribers relative to messages persistence in storage.
-  LiteSubscriptionDeliveryConfig({required this.deliveryRequirement});
+  LiteSubscriptionDeliveryConfig({
+    required this.deliveryRequirement,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'deliveryRequirement': deliveryRequirement};
+    return <String, dynamic>{
+      'deliveryRequirement': deliveryRequirement,
+    };
   }
 
   factory LiteSubscriptionDeliveryConfig.fromMap(Map<String, dynamic> map) {
     return LiteSubscriptionDeliveryConfig(
-      deliveryRequirement: pulumi.Input.fromValue(
-        map['deliveryRequirement'] as String,
-      ),
+      deliveryRequirement: pulumi.Input.fromValue(map['deliveryRequirement'] as String),
     );
   }
 }
+

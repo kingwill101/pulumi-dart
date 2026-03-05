@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetActivityLogAlertArgs {
   /// The name of the Activity Log Alert rule.
   final pulumi.Input<String> activityLogAlertName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetActivityLogAlertArgs {
 
   factory GetActivityLogAlertArgs.fromMap(Map<String, dynamic> map) {
     return GetActivityLogAlertArgs(
-      activityLogAlertName: pulumi.Input.fromValue(
-        map['activityLogAlertName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      activityLogAlertName: pulumi.Input.fromValue(map['activityLogAlertName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

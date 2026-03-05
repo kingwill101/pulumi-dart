@@ -6,19 +6,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExchangeState {
   /// The alternate exchange. An alternate exchange is used to receive messages that fail to be routed to queues from the current exchange.
   final pulumi.Input<String>? alternateExchange;
-
   /// Specifies whether to automatically delete the exchange. Valid values:
   final pulumi.Input<bool>? autoDeleteState;
-
   /// CreateTime
   final pulumi.Input<int>? createTime;
-
   /// The name of the exchange that you want to create. The exchange name must meet the following conventions:
   ///
   /// - The name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (\_), periods (.), number signs (#), forward slashes (/), and at signs (@).
   /// - After the exchange is created, you cannot change its name. If you want to change its name, delete the exchange and create another exchange.
   final pulumi.Input<String>? exchangeName;
-
   /// The Exchange type. Value:
   /// - `DIRECT`: This type of Routing rule routes messages to a Queue whose Binding Key matches the Routing Key.
   /// - `TOPIC`: This type is similar to the DIRECT type. It uses Routing Key pattern matching and string comparison to route messages to the bound Queue.
@@ -27,16 +23,12 @@ class ExchangeState {
   /// - `X_delayed_message`: By declaring this type of Exchange, you can customize the Header attribute x-delay of the message to specify the delivery delay time period, in milliseconds. Messages will be delivered to the corresponding Queue after the time period defined in the x-delay according to the routing rules. The routing rule depends on the Exchange route type specified in the x-delayed-type.
   /// - `X_CONSISTENT_HASH`: The x-consistent-hash Exchange allows you to Hash the Routing Key or Header value and use the consistent hashing algorithm to route messages to different queues.
   final pulumi.Input<String>? exchangeType;
-
   /// The ID of the ApsaraMQ for RabbitMQ instance whose exchange you want to delete.
   final pulumi.Input<String>? instanceId;
-
   /// Specifies whether the exchange is an internal exchange. Valid values:
   final pulumi.Input<bool>? internal;
-
   /// The name of the vhost to which the exchange that you want to create belongs.
   final pulumi.Input<String>? virtualHostName;
-
   /// RabbitMQ supports the x-delayed-message Exchange. By declaring this type of Exchange, you can customize the x-delay header attribute to specify the delay period for message delivery, measured in milliseconds. The message will be delivered to the corresponding Queue after the period defined in x-delay. The routing rules are determined by the type of Exchange specified in x-delayed-type.
   final pulumi.Input<String>? xDelayedType;
 
@@ -78,51 +70,16 @@ class ExchangeState {
 
   factory ExchangeState.fromMap(Map<String, dynamic> map) {
     return ExchangeState(
-      alternateExchange: (() {
-        final guardedValue = map['alternateExchange'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      autoDeleteState: (() {
-        final guardedValue = map['autoDeleteState'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      exchangeName: (() {
-        final guardedValue = map['exchangeName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      exchangeType: (() {
-        final guardedValue = map['exchangeType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      instanceId: (() {
-        final guardedValue = map['instanceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      internal: (() {
-        final guardedValue = map['internal'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      virtualHostName: (() {
-        final guardedValue = map['virtualHostName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      xDelayedType: (() {
-        final guardedValue = map['xDelayedType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      alternateExchange: (() { final guardedValue = map['alternateExchange']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      autoDeleteState: (() { final guardedValue = map['autoDeleteState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      exchangeName: (() { final guardedValue = map['exchangeName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      exchangeType: (() { final guardedValue = map['exchangeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      instanceId: (() { final guardedValue = map['instanceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      internal: (() { final guardedValue = map['internal']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      virtualHostName: (() { final guardedValue = map['virtualHostName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      xDelayedType: (() { final guardedValue = map['xDelayedType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

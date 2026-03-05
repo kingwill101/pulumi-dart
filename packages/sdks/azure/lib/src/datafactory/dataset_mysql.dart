@@ -230,31 +230,22 @@ class DatasetMysql extends pulumi.CustomResource {
   ///
   /// The following supported arguments are specific to MySQL Dataset:
   late final pulumi.Output<Map<String, String>?> additionalProperties;
-
   /// List of tags that can be used for describing the Data Factory Dataset MySQL.
   late final pulumi.Output<List<String>?> annotations;
-
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   late final pulumi.Output<String> dataFactoryId;
-
   /// The description for the Data Factory Dataset MySQL.
   late final pulumi.Output<String?> description;
-
   /// The folder that this Dataset is in. If not specified, the Dataset will appear at the root level.
   late final pulumi.Output<String?> folder;
-
   /// The Data Factory Linked Service name in which to associate the Dataset with.
   late final pulumi.Output<String> linkedServiceName;
-
   /// Specifies the name of the Data Factory Dataset MySQL. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   late final pulumi.Output<String> name;
-
   /// A map of parameters to associate with the Data Factory Dataset MySQL.
   late final pulumi.Output<Map<String, String>?> parameters;
-
   /// A `schema_column` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> schemaColumns;
-
   /// The table name of the Data Factory Dataset MySQL.
   late final pulumi.Output<String?> tableName;
 
@@ -267,14 +258,12 @@ class DatasetMysql extends pulumi.CustomResource {
     DatasetMysqlArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:datafactory/datasetMysql:DatasetMysql',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    additionalProperties = registerOutput<Map<String, String>?>(
-      'additionalProperties',
-    );
+          'azure:datafactory/datasetMysql:DatasetMysql',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
     annotations = registerOutput<List<String>?>('annotations');
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
@@ -282,9 +271,7 @@ class DatasetMysql extends pulumi.CustomResource {
     linkedServiceName = registerOutput<String>('linkedServiceName');
     this.name = registerOutput<String>('name');
     parameters = registerOutput<Map<String, String>?>('parameters');
-    schemaColumns = registerOutput<List<Map<String, dynamic>>?>(
-      'schemaColumns',
-    );
+    schemaColumns = registerOutput<List<Map<String, dynamic>>?>('schemaColumns');
     tableName = registerOutput<String?>('tableName');
   }
 
@@ -306,14 +293,12 @@ class DatasetMysql extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:datafactory/datasetMysql:DatasetMysql',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    additionalProperties = registerOutput<Map<String, String>?>(
-      'additionalProperties',
-    );
+          'azure:datafactory/datasetMysql:DatasetMysql',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
     annotations = registerOutput<List<String>?>('annotations');
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
@@ -321,9 +306,7 @@ class DatasetMysql extends pulumi.CustomResource {
     linkedServiceName = registerOutput<String>('linkedServiceName');
     this.name = registerOutput<String>('name');
     parameters = registerOutput<Map<String, String>?>('parameters');
-    schemaColumns = registerOutput<List<Map<String, dynamic>>?>(
-      'schemaColumns',
-    );
+    schemaColumns = registerOutput<List<Map<String, dynamic>>?>('schemaColumns');
     tableName = registerOutput<String?>('tableName');
   }
 }

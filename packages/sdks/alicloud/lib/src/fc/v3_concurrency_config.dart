@@ -235,10 +235,8 @@ import 'v3_concurrency_config_state.dart';
 class V3ConcurrencyConfig extends pulumi.CustomResource {
   /// (Available since v1.234.0) Resource identity of the function
   late final pulumi.Output<String> functionArn;
-
   /// Function Name
   late final pulumi.Output<String> functionName;
-
   /// Reserved Concurrency. Functions reserve a part of account concurrency. Other functions cannot use this part of concurrency. Reserved concurrency includes the total concurrency of Reserved Instances and As-You-go instances.
   late final pulumi.Output<int?> reservedConcurrency;
 
@@ -251,11 +249,11 @@ class V3ConcurrencyConfig extends pulumi.CustomResource {
     V3ConcurrencyConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:fc/v3ConcurrencyConfig:V3ConcurrencyConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:fc/v3ConcurrencyConfig:V3ConcurrencyConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     functionArn = registerOutput<String>('functionArn');
     functionName = registerOutput<String>('functionName');
     reservedConcurrency = registerOutput<int?>('reservedConcurrency');
@@ -279,11 +277,11 @@ class V3ConcurrencyConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:fc/v3ConcurrencyConfig:V3ConcurrencyConfig',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:fc/v3ConcurrencyConfig:V3ConcurrencyConfig',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     functionArn = registerOutput<String>('functionArn');
     functionName = registerOutput<String>('functionName');
     reservedConcurrency = registerOutput<int?>('reservedConcurrency');

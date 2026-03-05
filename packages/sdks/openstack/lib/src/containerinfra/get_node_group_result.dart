@@ -1,49 +1,36 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getNodeGroup.
 class GetNodeGroupResult {
   final String clusterId;
-
   /// The time at which the node group was created.
   final String createdAt;
-
   /// The size (in GB) of the Docker volume.
   final int dockerVolumeSize;
-
   /// The flavor for the nodes of the node group.
   final String flavor;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The reference to an image that is used for nodes of the node group.
   final String image;
-
   /// The list of key value pairs representing additional properties of
   /// the node group.
   final Map<String, String> labels;
-
   /// The maximum number of nodes for the node group.
   final int maxNodeCount;
-
   /// The minimum number of nodes for the node group.
   final int minNodeCount;
-
   /// See Argument Reference above.
   final String name;
-
   /// The number of nodes for the node group.
   final int nodeCount;
-
   /// The project of the node group.
   final String projectId;
-
   /// See Argument Reference above.
   final String region;
-
   /// The role of the node group.
   final String role;
-
   /// The time at which the node group was updated.
   final String updatedAt;
 
@@ -121,3 +108,4 @@ class GetNodeGroupResult {
     );
   }
 }
+

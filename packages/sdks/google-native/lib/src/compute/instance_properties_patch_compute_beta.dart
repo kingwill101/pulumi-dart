@@ -6,35 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstancePropertiesPatchComputeBeta {
   /// The label key-value pairs that you want to patch onto the instance.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// The metadata key-value pairs that you want to patch onto the instance. For more information, see Project and instance metadata.
   final pulumi.Input<Map<String, String>>? metadata;
 
   /// Creates a new [InstancePropertiesPatchComputeBeta].
   /// [labels] The label key-value pairs that you want to patch onto the instance.
   /// [metadata] The metadata key-value pairs that you want to patch onto the instance. For more information, see Project and instance metadata.
-  InstancePropertiesPatchComputeBeta({this.labels, this.metadata});
+  InstancePropertiesPatchComputeBeta({
+    this.labels,
+    this.metadata,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'labels': ?labels, 'metadata': ?metadata};
+    return <String, dynamic>{
+      'labels': ?labels,
+      'metadata': ?metadata,
+    };
   }
 
   factory InstancePropertiesPatchComputeBeta.fromMap(Map<String, dynamic> map) {
     return InstancePropertiesPatchComputeBeta(
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      metadata: (() {
-        final guardedValue = map['metadata'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

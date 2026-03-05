@@ -8,19 +8,20 @@ class DomainFeaturesCapabilitiesSysRawIo {
 
   /// Creates a new [DomainFeaturesCapabilitiesSysRawIo].
   /// [state] Sets the state of the capability to wake from an alarm.
-  DomainFeaturesCapabilitiesSysRawIo({this.state});
+  DomainFeaturesCapabilitiesSysRawIo({
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'state': ?state};
+    return <String, dynamic>{
+      'state': ?state,
+    };
   }
 
   factory DomainFeaturesCapabilitiesSysRawIo.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesCapabilitiesSysRawIo(
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

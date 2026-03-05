@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKey {
   /// (Optional)
   final pulumi.Input<String>? kmsKeyName;
-
   /// (Optional)
   final pulumi.Input<String>? kmsKeyServiceAccount;
-
   /// (Optional)
   final pulumi.Input<String>? rawKey;
-
   /// (Optional)
   final pulumi.Input<String>? rsaEncryptedKey;
 
@@ -36,30 +33,13 @@ class RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKey {
     };
   }
 
-  factory RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKey.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKey.fromMap(Map<String, dynamic> map) {
     return RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKey(
-      kmsKeyName: (() {
-        final guardedValue = map['kmsKeyName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kmsKeyServiceAccount: (() {
-        final guardedValue = map['kmsKeyServiceAccount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      rawKey: (() {
-        final guardedValue = map['rawKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      rsaEncryptedKey: (() {
-        final guardedValue = map['rsaEncryptedKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      kmsKeyName: (() { final guardedValue = map['kmsKeyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kmsKeyServiceAccount: (() { final guardedValue = map['kmsKeyServiceAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      rawKey: (() { final guardedValue = map['rawKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      rsaEncryptedKey: (() { final guardedValue = map['rsaEncryptedKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

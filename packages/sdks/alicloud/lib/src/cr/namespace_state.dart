@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NamespaceState {
   /// Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
   final pulumi.Input<bool>? autoCreate;
-
   /// `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
   final pulumi.Input<String>? defaultVisibility;
-
   /// Name of Container Registry namespace.
   final pulumi.Input<String>? name;
 
@@ -17,7 +15,11 @@ class NamespaceState {
   /// [autoCreate] Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
   /// [defaultVisibility] `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
   /// [name] Name of Container Registry namespace.
-  NamespaceState({this.autoCreate, this.defaultVisibility, this.name});
+  NamespaceState({
+    this.autoCreate,
+    this.defaultVisibility,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class NamespaceState {
 
   factory NamespaceState.fromMap(Map<String, dynamic> map) {
     return NamespaceState(
-      autoCreate: (() {
-        final guardedValue = map['autoCreate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      defaultVisibility: (() {
-        final guardedValue = map['defaultVisibility'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      autoCreate: (() { final guardedValue = map['autoCreate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      defaultVisibility: (() { final guardedValue = map['defaultVisibility']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

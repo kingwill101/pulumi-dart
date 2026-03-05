@@ -8,17 +8,20 @@ class RepositoryAssociationRepositoryCodecommit {
 
   /// Creates a new [RepositoryAssociationRepositoryCodecommit].
   /// [name] The name of the AWS CodeCommit repository.
-  RepositoryAssociationRepositoryCodecommit({required this.name});
+  RepositoryAssociationRepositoryCodecommit({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
-  factory RepositoryAssociationRepositoryCodecommit.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RepositoryAssociationRepositoryCodecommit.fromMap(Map<String, dynamic> map) {
     return RepositoryAssociationRepositoryCodecommit(
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

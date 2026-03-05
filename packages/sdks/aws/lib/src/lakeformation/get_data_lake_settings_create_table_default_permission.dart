@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDataLakeSettingsCreateTableDefaultPermission {
   /// List of permissions granted to the principal.
   final pulumi.Input<List<String>> permissions;
-
   /// Principal who is granted permissions.
   final pulumi.Input<String> principal;
 
@@ -24,14 +23,11 @@ class GetDataLakeSettingsCreateTableDefaultPermission {
     };
   }
 
-  factory GetDataLakeSettingsCreateTableDefaultPermission.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDataLakeSettingsCreateTableDefaultPermission.fromMap(Map<String, dynamic> map) {
     return GetDataLakeSettingsCreateTableDefaultPermission(
-      permissions: pulumi.Input.fromValue(
-        (map['permissions'] as List).cast<String>(),
-      ),
+      permissions: pulumi.Input.fromValue((map['permissions'] as List).cast<String>()),
       principal: pulumi.Input.fromValue(map['principal'] as String),
     );
   }
 }
+

@@ -43,14 +43,7 @@ class GetVpnGatewayResult {
       'arn': arn,
       'attachedVpcId': attachedVpcId,
       'availabilityZone': availabilityZone,
-      'filters': ?(() {
-        final guardedValue = filters;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          GetVpnGatewayFilter,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'filters': ?(() { final guardedValue = filters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetVpnGatewayFilter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'id': id,
       'region': region,
       'state': state,
@@ -64,16 +57,7 @@ class GetVpnGatewayResult {
       arn: map['arn'] as String,
       attachedVpcId: map['attachedVpcId'] as String,
       availabilityZone: map['availabilityZone'] as String,
-      filters: (() {
-        final guardedValue = map['filters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<GetVpnGatewayFilter>(
-          guardedValue,
-          (value) => GetVpnGatewayFilter.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetVpnGatewayFilter>(guardedValue, (value) => GetVpnGatewayFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
       id: map['id'] as String,
       region: map['region'] as String,
       state: map['state'] as String,
@@ -81,3 +65,4 @@ class GetVpnGatewayResult {
     );
   }
 }
+

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FingerprintContaineranalysisV1beta1 {
   /// The layer ID of the final layer in the Docker image's v1 representation.
   final pulumi.Input<String> v1Name;
-
   /// The ordered list of v2 blobs that represent a given image.
   final pulumi.Input<List<String>> v2Blob;
 
@@ -19,15 +18,17 @@ class FingerprintContaineranalysisV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'v1Name': v1Name, 'v2Blob': v2Blob};
+    return <String, dynamic>{
+      'v1Name': v1Name,
+      'v2Blob': v2Blob,
+    };
   }
 
-  factory FingerprintContaineranalysisV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FingerprintContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return FingerprintContaineranalysisV1beta1(
       v1Name: pulumi.Input.fromValue(map['v1Name'] as String),
       v2Blob: pulumi.Input.fromValue((map['v2Blob'] as List).cast<String>()),
     );
   }
 }
+

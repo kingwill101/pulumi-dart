@@ -349,8 +349,7 @@ Future<GetSapVirtualInstanceResult> getSapVirtualInstance(
 /// Uses Azure REST API version 2024-09-01.
 /// [args] Arguments passed to this invoke. {@macro pulumi_workloads_get_sap_virtual_instance_invoke_availability_zone_details_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetSapVirtualInstanceInvokeAvailabilityZoneDetailsResult>
-getSapVirtualInstanceInvokeAvailabilityZoneDetails(
+Future<GetSapVirtualInstanceInvokeAvailabilityZoneDetailsResult> getSapVirtualInstanceInvokeAvailabilityZoneDetails(
   GetSapVirtualInstanceInvokeAvailabilityZoneDetailsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -360,9 +359,7 @@ getSapVirtualInstanceInvokeAvailabilityZoneDetails(
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetSapVirtualInstanceInvokeAvailabilityZoneDetailsResult.fromMap(
-    result,
-  );
+  return GetSapVirtualInstanceInvokeAvailabilityZoneDetailsResult.fromMap(result);
 }
 
 /// Get the SAP Disk Configuration Layout prod/non-prod SAP System.
@@ -370,8 +367,7 @@ getSapVirtualInstanceInvokeAvailabilityZoneDetails(
 /// Uses Azure REST API version 2024-09-01.
 /// [args] Arguments passed to this invoke. {@macro pulumi_workloads_get_sap_virtual_instance_invoke_disk_configurations_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetSapVirtualInstanceInvokeDiskConfigurationsResult>
-getSapVirtualInstanceInvokeDiskConfigurations(
+Future<GetSapVirtualInstanceInvokeDiskConfigurationsResult> getSapVirtualInstanceInvokeDiskConfigurations(
   GetSapVirtualInstanceInvokeDiskConfigurationsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -389,8 +385,7 @@ getSapVirtualInstanceInvokeDiskConfigurations(
 /// Uses Azure REST API version 2024-09-01.
 /// [args] Arguments passed to this invoke. {@macro pulumi_workloads_get_sap_virtual_instance_invoke_sap_supported_sku_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetSapVirtualInstanceInvokeSapSupportedSkuResult>
-getSapVirtualInstanceInvokeSapSupportedSku(
+Future<GetSapVirtualInstanceInvokeSapSupportedSkuResult> getSapVirtualInstanceInvokeSapSupportedSku(
   GetSapVirtualInstanceInvokeSapSupportedSkuArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -408,8 +403,7 @@ getSapVirtualInstanceInvokeSapSupportedSku(
 /// Uses Azure REST API version 2024-09-01.
 /// [args] Arguments passed to this invoke. {@macro pulumi_workloads_get_sap_virtual_instance_invoke_sizing_recommendations_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetSapVirtualInstanceInvokeSizingRecommendationsResult>
-getSapVirtualInstanceInvokeSizingRecommendations(
+Future<GetSapVirtualInstanceInvokeSizingRecommendationsResult> getSapVirtualInstanceInvokeSizingRecommendations(
   GetSapVirtualInstanceInvokeSizingRecommendationsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

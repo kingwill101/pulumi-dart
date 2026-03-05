@@ -342,37 +342,26 @@ import 'volume_state.dart';
 class Volume extends pulumi.CustomResource {
   /// A free-form text field up to a limit of 1024 bytes to describe a block storage volume.
   late final pulumi.Output<String?> description;
-
   /// A list of associated droplet ids.
   late final pulumi.Output<List<int>> dropletIds;
-
   /// Filesystem label for the block storage volume.
   late final pulumi.Output<String> filesystemLabel;
-
   /// Filesystem type (`xfs` or `ext4`) for the block storage volume.
   late final pulumi.Output<String> filesystemType;
-
   /// Initial filesystem label for the block storage volume.
   late final pulumi.Output<String?> initialFilesystemLabel;
-
   /// Initial filesystem type (`xfs` or `ext4`) for the block storage volume.
   late final pulumi.Output<String?> initialFilesystemType;
-
   /// A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters. The name must begin with a letter.
   late final pulumi.Output<String> name;
-
   /// The region that the block storage volume will be created in.
   late final pulumi.Output<String> region;
-
   /// The size of the block storage volume in GiB. If updated, can only be expanded.
   late final pulumi.Output<int> size;
-
   /// The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limited on creation to that of the referenced snapshot
   late final pulumi.Output<String?> snapshotId;
-
   /// A list of the tags to be applied to this Volume.
   late final pulumi.Output<List<String>?> tags;
-
   /// The uniform resource name for the volume.
   late final pulumi.Output<String> volumeUrn;
 
@@ -380,13 +369,16 @@ class Volume extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Volume]. {@macro pulumi_index_volume_volume_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Volume(String name, {VolumeArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'digitalocean:index/volume:Volume',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Volume(
+    String name, {
+    VolumeArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'digitalocean:index/volume:Volume',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     dropletIds = registerOutput<List<int>>('dropletIds');
     filesystemLabel = registerOutput<String>('filesystemLabel');
@@ -419,11 +411,11 @@ class Volume extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/volume:Volume',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/volume:Volume',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     dropletIds = registerOutput<List<int>>('dropletIds');
     filesystemLabel = registerOutput<String>('filesystemLabel');

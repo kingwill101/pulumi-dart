@@ -169,45 +169,33 @@ class Network extends pulumi.CustomResource {
   /// - You can specify one of the following CIDR blocks or their subsets as the primary IPv4 CIDR block of the VPC: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8. These CIDR blocks are standard private CIDR blocks as defined by Request for Comments (RFC) documents. The subnet mask must be 8 to 28 bits in length.
   /// - You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, and their subnets as the primary IPv4 CIDR block of the VPC.
   late final pulumi.Output<String> cidrBlock;
-
   /// The status of ClassicLink function.
   late final pulumi.Output<bool?> classicLinkEnabled;
-
   /// The creation time of the VPC.
   late final pulumi.Output<String> createTime;
-
   /// The new description of the VPC.
   /// The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
   late final pulumi.Output<String?> description;
-
   /// The status of VPC DNS Hostname
   late final pulumi.Output<String> dnsHostnameStatus;
-
   /// Whether to PreCheck only this request. Value:
   late final pulumi.Output<bool?> dryRun;
-
   /// Whether to enable the IPv6 network segment. Value:
   late final pulumi.Output<bool?> enableIpv6;
-
   /// Force delete vpc or not.
   late final pulumi.Output<bool?> forceDelete;
-
   /// Allocate VPC from The IPAM address pool by entering a mask.
   ///
   /// &gt; **NOTE:**  when you specify the IPAM address pool to create a VPC, enter at least one of the CidrBlock or Ipv4CidrMask parameters.
   late final pulumi.Output<int?> ipv4CidrMask;
-
   /// The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
   late final pulumi.Output<String?> ipv4IpamPoolId;
-
   /// The IPv6 CIDR block of the default VPC.
   ///
   /// &gt; **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
   late final pulumi.Output<String> ipv6CidrBlock;
-
   /// The IPv6 CIDR block information of the VPC.
   late final pulumi.Output<List<Map<String, dynamic>>> ipv6CidrBlocks;
-
   /// The IPv6 address segment type of the VPC. Value:
   /// - `BGP` (default): Alibaba Cloud BGP IPv6.
   /// - `ChinaMobile`: China Mobile (single line).
@@ -216,56 +204,40 @@ class Network extends pulumi.CustomResource {
   ///
   /// &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to `ChinaTelecom` (China Telecom), `ChinaUnicom` (China Unicom), or `ChinaMobile` (China Mobile).
   late final pulumi.Output<String?> ipv6Isp;
-
   /// Specifies whether to create the default VPC in the specified region. Valid values:
   late final pulumi.Output<bool?> isDefault;
-
   /// . Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
   late final pulumi.Output<String> name;
-
   /// The ID of the region where the VPC is located.
   late final pulumi.Output<String> regionId;
-
   /// The ID of the resource group to which you want to move the resource.
   ///
   /// &gt; **NOTE:**   You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
   late final pulumi.Output<String> resourceGroupId;
-
   /// The ID of the system route table.
   late final pulumi.Output<String> routeTableId;
-
   /// The region ID of the VPC to which the route table belongs.
   late final pulumi.Output<String> routerId;
-
   /// . Field 'router_table_id' has been deprecated from provider version 1.227.1. New field 'route_table_id' instead.
   late final pulumi.Output<String> routerTableId;
-
   /// Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
   late final pulumi.Output<List<String>> secondaryCidrBlocks;
-
   /// Field 'secondary_cidr_mask' has been deprecated from provider version 1.248.0. New resource 'alicloud_vpc_ipv4_cidr_block' instead.
   late final pulumi.Output<int?> secondaryCidrMask;
-
   /// The status of the VPC.   `Pending`: The VPC is being configured. `Available`: The VPC is available.
   late final pulumi.Output<String> status;
-
   /// The description of the route table.
   /// The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
   late final pulumi.Output<String?> systemRouteTableDescription;
-
   /// The name of the route table.
   /// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
   late final pulumi.Output<String?> systemRouteTableName;
-
   /// Whether the system route table receives propagation routes.
   late final pulumi.Output<bool> systemRouteTableRoutePropagationEnable;
-
   /// The tags of Vpc.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A list of user CIDRs.
   late final pulumi.Output<List<String>> userCidrs;
-
   /// The new name of the VPC.
   /// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
   ///
@@ -281,11 +253,11 @@ class Network extends pulumi.CustomResource {
     NetworkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/network:Network',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpc/network:Network',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cidrBlock = registerOutput<String>('cidrBlock');
     classicLinkEnabled = registerOutput<bool?>('classicLinkEnabled');
     createTime = registerOutput<String>('createTime');
@@ -297,9 +269,7 @@ class Network extends pulumi.CustomResource {
     ipv4CidrMask = registerOutput<int?>('ipv4CidrMask');
     ipv4IpamPoolId = registerOutput<String?>('ipv4IpamPoolId');
     ipv6CidrBlock = registerOutput<String>('ipv6CidrBlock');
-    ipv6CidrBlocks = registerOutput<List<Map<String, dynamic>>>(
-      'ipv6CidrBlocks',
-    );
+    ipv6CidrBlocks = registerOutput<List<Map<String, dynamic>>>('ipv6CidrBlocks');
     ipv6Isp = registerOutput<String?>('ipv6Isp');
     isDefault = registerOutput<bool?>('isDefault');
     this.name = registerOutput<String>('name');
@@ -311,13 +281,9 @@ class Network extends pulumi.CustomResource {
     secondaryCidrBlocks = registerOutput<List<String>>('secondaryCidrBlocks');
     secondaryCidrMask = registerOutput<int?>('secondaryCidrMask');
     status = registerOutput<String>('status');
-    systemRouteTableDescription = registerOutput<String?>(
-      'systemRouteTableDescription',
-    );
+    systemRouteTableDescription = registerOutput<String?>('systemRouteTableDescription');
     systemRouteTableName = registerOutput<String?>('systemRouteTableName');
-    systemRouteTableRoutePropagationEnable = registerOutput<bool>(
-      'systemRouteTableRoutePropagationEnable',
-    );
+    systemRouteTableRoutePropagationEnable = registerOutput<bool>('systemRouteTableRoutePropagationEnable');
     tags = registerOutput<Map<String, String>?>('tags');
     userCidrs = registerOutput<List<String>>('userCidrs');
     vpcName = registerOutput<String>('vpcName');
@@ -341,11 +307,11 @@ class Network extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/network:Network',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpc/network:Network',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cidrBlock = registerOutput<String>('cidrBlock');
     classicLinkEnabled = registerOutput<bool?>('classicLinkEnabled');
     createTime = registerOutput<String>('createTime');
@@ -357,9 +323,7 @@ class Network extends pulumi.CustomResource {
     ipv4CidrMask = registerOutput<int?>('ipv4CidrMask');
     ipv4IpamPoolId = registerOutput<String?>('ipv4IpamPoolId');
     ipv6CidrBlock = registerOutput<String>('ipv6CidrBlock');
-    ipv6CidrBlocks = registerOutput<List<Map<String, dynamic>>>(
-      'ipv6CidrBlocks',
-    );
+    ipv6CidrBlocks = registerOutput<List<Map<String, dynamic>>>('ipv6CidrBlocks');
     ipv6Isp = registerOutput<String?>('ipv6Isp');
     isDefault = registerOutput<bool?>('isDefault');
     this.name = registerOutput<String>('name');
@@ -371,13 +335,9 @@ class Network extends pulumi.CustomResource {
     secondaryCidrBlocks = registerOutput<List<String>>('secondaryCidrBlocks');
     secondaryCidrMask = registerOutput<int?>('secondaryCidrMask');
     status = registerOutput<String>('status');
-    systemRouteTableDescription = registerOutput<String?>(
-      'systemRouteTableDescription',
-    );
+    systemRouteTableDescription = registerOutput<String?>('systemRouteTableDescription');
     systemRouteTableName = registerOutput<String?>('systemRouteTableName');
-    systemRouteTableRoutePropagationEnable = registerOutput<bool>(
-      'systemRouteTableRoutePropagationEnable',
-    );
+    systemRouteTableRoutePropagationEnable = registerOutput<bool>('systemRouteTableRoutePropagationEnable');
     tags = registerOutput<Map<String, String>?>('tags');
     userCidrs = registerOutput<List<String>>('userCidrs');
     vpcName = registerOutput<String>('vpcName');

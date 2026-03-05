@@ -6,19 +6,14 @@ import 'recovery_plan_properties_response.dart';
 class GetReplicationRecoveryPlanResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Resource Id
   final String id;
-
   /// Resource Location
   final String? location;
-
   /// Resource Name
   final String name;
-
   /// The custom details.
   final RecoveryPlanPropertiesResponse properties;
-
   /// Resource Type
   final String type;
 
@@ -53,16 +48,11 @@ class GetReplicationRecoveryPlanResult {
     return GetReplicationRecoveryPlanResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
-      properties: RecoveryPlanPropertiesResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
+      properties: RecoveryPlanPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

@@ -15,3 +15,4 @@ enum SqlManagedInstanceSkuTier {
     throw ArgumentError('Unknown SqlManagedInstanceSkuTier value: $value');
   }
 }
+

@@ -5,25 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDelegatedAdministratorsDelegatedAdministrator {
   /// The ARN of the delegated administrator's account.
   final pulumi.Input<String> arn;
-
   /// The date when the account was made a delegated administrator.
   final pulumi.Input<String> delegationEnabledDate;
-
   /// The email address that is associated with the delegated administrator's AWS account.
   final pulumi.Input<String> email;
-
   /// The unique identifier (ID) of the delegated administrator's account.
   final pulumi.Input<String> id;
-
   /// The method by which the delegated administrator's account joined the organization.
   final pulumi.Input<String> joinedMethod;
-
   /// The date when the delegated administrator's account became a part of the organization.
   final pulumi.Input<String> joinedTimestamp;
-
   /// The friendly name of the delegated administrator's account.
   final pulumi.Input<String> name;
-
   /// The status of the delegated administrator's account in the organization.
   final pulumi.Input<String> status;
 
@@ -60,14 +53,10 @@ class GetDelegatedAdministratorsDelegatedAdministrator {
     };
   }
 
-  factory GetDelegatedAdministratorsDelegatedAdministrator.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDelegatedAdministratorsDelegatedAdministrator.fromMap(Map<String, dynamic> map) {
     return GetDelegatedAdministratorsDelegatedAdministrator(
       arn: pulumi.Input.fromValue(map['arn'] as String),
-      delegationEnabledDate: pulumi.Input.fromValue(
-        map['delegationEnabledDate'] as String,
-      ),
+      delegationEnabledDate: pulumi.Input.fromValue(map['delegationEnabledDate'] as String),
       email: pulumi.Input.fromValue(map['email'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
       joinedMethod: pulumi.Input.fromValue(map['joinedMethod'] as String),
@@ -77,3 +66,4 @@ class GetDelegatedAdministratorsDelegatedAdministrator {
     );
   }
 }
+

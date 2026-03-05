@@ -17,3 +17,4 @@ enum Option {
     throw ArgumentError('Unknown Option value: $value');
   }
 }
+

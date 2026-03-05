@@ -8,19 +8,20 @@ class GetResourceCollectionCloudformation {
 
   /// Creates a new [GetResourceCollectionCloudformation].
   /// [stackNames] Array of the names of the AWS CloudFormation stacks.
-  GetResourceCollectionCloudformation({required this.stackNames});
+  GetResourceCollectionCloudformation({
+    required this.stackNames,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'stackNames': stackNames};
+    return <String, dynamic>{
+      'stackNames': stackNames,
+    };
   }
 
-  factory GetResourceCollectionCloudformation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetResourceCollectionCloudformation.fromMap(Map<String, dynamic> map) {
     return GetResourceCollectionCloudformation(
-      stackNames: pulumi.Input.fromValue(
-        (map['stackNames'] as List).cast<String>(),
-      ),
+      stackNames: pulumi.Input.fromValue((map['stackNames'] as List).cast<String>()),
     );
   }
 }
+

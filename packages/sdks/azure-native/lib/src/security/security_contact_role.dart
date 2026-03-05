@@ -17,3 +17,4 @@ enum SecurityContactRole {
     throw ArgumentError('Unknown SecurityContactRole value: $value');
   }
 }
+

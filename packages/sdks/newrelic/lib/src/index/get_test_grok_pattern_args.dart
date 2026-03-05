@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTestGrokPatternArgs {
   /// The New Relic account ID to operate on.  This allows you to override the `account_id` attribute set on the provider. Defaults to the environment variable `NEW_RELIC_ACCOUNT_ID`.
   final pulumi.Input<String>? accountId;
-
   /// The Grok pattern to test.
   final pulumi.Input<String> grok;
-
   /// The log lines to test the Grok pattern against.
   final pulumi.Input<List<String>> logLines;
 
@@ -36,15 +34,10 @@ class GetTestGrokPatternArgs {
 
   factory GetTestGrokPatternArgs.fromMap(Map<String, dynamic> map) {
     return GetTestGrokPatternArgs(
-      accountId: (() {
-        final guardedValue = map['accountId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       grok: pulumi.Input.fromValue(map['grok'] as String),
-      logLines: pulumi.Input.fromValue(
-        (map['logLines'] as List).cast<String>(),
-      ),
+      logLines: pulumi.Input.fromValue((map['logLines'] as List).cast<String>()),
     );
   }
 }
+

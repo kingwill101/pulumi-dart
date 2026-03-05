@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConnectionDeploymentArgs {
   /// Friendly name of the workspace connection
   final pulumi.Input<String> connectionName;
-
   /// Name of the deployment resource
   final pulumi.Input<String> deploymentName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Azure Machine Learning Workspace Name
   final pulumi.Input<String> workspaceName;
 
@@ -44,10 +41,9 @@ class GetConnectionDeploymentArgs {
     return GetConnectionDeploymentArgs(
       connectionName: pulumi.Input.fromValue(map['connectionName'] as String),
       deploymentName: pulumi.Input.fromValue(map['deploymentName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
+

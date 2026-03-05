@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LabelDescriptorResponse {
   /// A human-readable description for the label.
   final pulumi.Input<String> description;
-
   /// The label key.
   final pulumi.Input<String> key;
-
   /// The type of data that can be assigned to the label.
   final pulumi.Input<String> valueType;
 
@@ -39,3 +37,4 @@ class LabelDescriptorResponse {
     );
   }
 }
+

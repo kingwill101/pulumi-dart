@@ -8,61 +8,42 @@ import 'windows_virtual_machine_inbound_nat_rule.dart';
 class WindowsVirtualMachineState {
   /// Can this Virtual Machine be claimed by users? Defaults to `true`.
   final pulumi.Input<bool>? allowClaim;
-
   /// Should the Virtual Machine be created without a Public IP Address? Changing this forces a new resource to be created.
   final pulumi.Input<bool>? disallowPublicIpAddress;
-
   /// The FQDN of the Virtual Machine.
   final pulumi.Input<String>? fqdn;
-
   /// A `gallery_image_reference` block as defined below.
-  final pulumi.Input<WindowsVirtualMachineGalleryImageReference>?
-  galleryImageReference;
-
+  final pulumi.Input<WindowsVirtualMachineGalleryImageReference>? galleryImageReference;
   /// One or more `inbound_nat_rule` blocks as defined below. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** If any `inbound_nat_rule` blocks are specified then `disallow_public_ip_address` must be set to `true`.
-  final pulumi.Input<List<WindowsVirtualMachineInboundNatRule>>?
-  inboundNatRules;
-
+  final pulumi.Input<List<WindowsVirtualMachineInboundNatRule>>? inboundNatRules;
   /// Specifies the name of the Dev Test Lab in which the Virtual Machine should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? labName;
-
   /// The name of a Subnet within the Dev Test Virtual Network where this machine should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? labSubnetName;
-
   /// The ID of the Dev Test Virtual Network where this Virtual Machine should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? labVirtualNetworkId;
-
   /// Specifies the supported Azure location where the Dev Test Lab exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
-
   /// Specifies the name of the Dev Test Machine. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** The validation requirements for the Name change based on the `os_type` used in this Virtual Machine. For a Linux VM the name must be between 1-62 characters, and for a Windows VM the name must be between 1-15 characters. It must begin and end with a letter or number, and cannot be all numbers.
   final pulumi.Input<String>? name;
-
   /// Any notes about the Virtual Machine.
   final pulumi.Input<String>? notes;
-
   /// The Password associated with the `username` used to login to this Virtual Machine. Changing this forces a new resource to be created.
   final pulumi.Input<String>? password;
-
   /// The name of the resource group in which the Dev Test Lab resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
-
   /// The Machine Size to use for this Virtual Machine, such as `Standard_F2`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? size;
-
   /// The type of Storage to use on this Virtual Machine. Possible values are `Standard` and `Premium`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? storageType;
-
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// The unique immutable identifier of the Virtual Machine.
   final pulumi.Input<String>? uniqueIdentifier;
-
   /// The Username associated with the local administrator on this Virtual Machine. Changing this forces a new resource to be created.
   final pulumi.Input<String>? username;
 
@@ -111,23 +92,8 @@ class WindowsVirtualMachineState {
       'allowClaim': ?allowClaim,
       'disallowPublicIpAddress': ?disallowPublicIpAddress,
       'fqdn': ?fqdn,
-      'galleryImageReference':
-          ?pulumi.Input.mapOptionalInputValue<
-            WindowsVirtualMachineGalleryImageReference,
-            Map<String, dynamic>
-          >(galleryImageReference, (value) => value.toMap()),
-      'inboundNatRules':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<WindowsVirtualMachineInboundNatRule>,
-            List<Map<String, dynamic>>
-          >(
-            inboundNatRules,
-            (value) =>
-                pulumi.Input.encodeList<
-                  WindowsVirtualMachineInboundNatRule,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'galleryImageReference': ?pulumi.Input.mapOptionalInputValue<WindowsVirtualMachineGalleryImageReference, Map<String, dynamic>>(galleryImageReference, (value) => value.toMap()),
+      'inboundNatRules': ?pulumi.Input.mapOptionalInputValue<List<WindowsVirtualMachineInboundNatRule>, List<Map<String, dynamic>>>(inboundNatRules, (value) => pulumi.Input.encodeList<WindowsVirtualMachineInboundNatRule, Map<String, dynamic>>(value, (value) => value.toMap())),
       'labName': ?labName,
       'labSubnetName': ?labSubnetName,
       'labVirtualNetworkId': ?labVirtualNetworkId,
@@ -146,109 +112,25 @@ class WindowsVirtualMachineState {
 
   factory WindowsVirtualMachineState.fromMap(Map<String, dynamic> map) {
     return WindowsVirtualMachineState(
-      allowClaim: (() {
-        final guardedValue = map['allowClaim'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      disallowPublicIpAddress: (() {
-        final guardedValue = map['disallowPublicIpAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      fqdn: (() {
-        final guardedValue = map['fqdn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      galleryImageReference: (() {
-        final guardedValue = map['galleryImageReference'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          WindowsVirtualMachineGalleryImageReference.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      inboundNatRules: (() {
-        final guardedValue = map['inboundNatRules'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<WindowsVirtualMachineInboundNatRule>(
-            guardedValue,
-            (value) => WindowsVirtualMachineInboundNatRule.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      labName: (() {
-        final guardedValue = map['labName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      labSubnetName: (() {
-        final guardedValue = map['labSubnetName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      labVirtualNetworkId: (() {
-        final guardedValue = map['labVirtualNetworkId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      notes: (() {
-        final guardedValue = map['notes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      password: (() {
-        final guardedValue = map['password'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: (() {
-        final guardedValue = map['resourceGroupName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      size: (() {
-        final guardedValue = map['size'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      storageType: (() {
-        final guardedValue = map['storageType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      uniqueIdentifier: (() {
-        final guardedValue = map['uniqueIdentifier'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      username: (() {
-        final guardedValue = map['username'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      allowClaim: (() { final guardedValue = map['allowClaim']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      disallowPublicIpAddress: (() { final guardedValue = map['disallowPublicIpAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      fqdn: (() { final guardedValue = map['fqdn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      galleryImageReference: (() { final guardedValue = map['galleryImageReference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WindowsVirtualMachineGalleryImageReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      inboundNatRules: (() { final guardedValue = map['inboundNatRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WindowsVirtualMachineInboundNatRule>(guardedValue, (value) => WindowsVirtualMachineInboundNatRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      labName: (() { final guardedValue = map['labName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      labSubnetName: (() { final guardedValue = map['labSubnetName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      labVirtualNetworkId: (() { final guardedValue = map['labVirtualNetworkId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      notes: (() { final guardedValue = map['notes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageType: (() { final guardedValue = map['storageType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      uniqueIdentifier: (() { final guardedValue = map['uniqueIdentifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      username: (() { final guardedValue = map['username']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

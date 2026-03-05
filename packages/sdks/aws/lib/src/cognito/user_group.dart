@@ -358,19 +358,14 @@ import 'user_group_state.dart';
 class UserGroup extends pulumi.CustomResource {
   /// The description of the user group.
   late final pulumi.Output<String?> description;
-
   /// The name of the user group.
   late final pulumi.Output<String> name;
-
   /// The precedence of the user group.
   late final pulumi.Output<int?> precedence;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The ARN of the IAM role to be associated with the user group.
   late final pulumi.Output<String?> roleArn;
-
   /// The user pool ID.
   late final pulumi.Output<String> userPoolId;
 
@@ -383,11 +378,11 @@ class UserGroup extends pulumi.CustomResource {
     UserGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cognito/userGroup:UserGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cognito/userGroup:UserGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     precedence = registerOutput<int?>('precedence');
@@ -414,11 +409,11 @@ class UserGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:cognito/userGroup:UserGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:cognito/userGroup:UserGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     precedence = registerOutput<int?>('precedence');

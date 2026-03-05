@@ -9,10 +9,14 @@ class SecurityUserGroupItem {
 
   /// Creates a new [SecurityUserGroupItem].
   /// [networkGroupId] Network manager group Id.
-  SecurityUserGroupItem({required this.networkGroupId});
+  SecurityUserGroupItem({
+    required this.networkGroupId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'networkGroupId': networkGroupId};
+    return <String, dynamic>{
+      'networkGroupId': networkGroupId,
+    };
   }
 
   factory SecurityUserGroupItem.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class SecurityUserGroupItem {
     );
   }
 }
+

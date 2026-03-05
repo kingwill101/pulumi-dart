@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationArgs {
   /// The security Application key - unique key for the standard application
   final pulumi.Input<String>? applicationId;
-
   /// description of the application
   final pulumi.Input<String>? description;
-
   /// display name of the application
   final pulumi.Input<String>? displayName;
-
   /// The application source, what it affects, e.g. Assessments
   final pulumi.Input<String> sourceResourceType;
 
@@ -42,24 +39,11 @@ class ApplicationArgs {
 
   factory ApplicationArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationArgs(
-      applicationId: (() {
-        final guardedValue = map['applicationId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sourceResourceType: pulumi.Input.fromValue(
-        map['sourceResourceType'] as String,
-      ),
+      applicationId: (() { final guardedValue = map['applicationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourceResourceType: pulumi.Input.fromValue(map['sourceResourceType'] as String),
     );
   }
 }
+

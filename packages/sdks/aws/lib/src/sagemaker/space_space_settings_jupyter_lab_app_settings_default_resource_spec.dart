@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SpaceSpaceSettingsJupyterLabAppSettingsDefaultResourceSpec {
   /// The instance type.
   final pulumi.Input<String>? instanceType;
-
   /// The Amazon Resource Name (ARN) of the Lifecycle Configuration attached to the Resource.
   final pulumi.Input<String>? lifecycleConfigArn;
-
   /// The Amazon Resource Name (ARN) of the SageMaker AI image created on the instance.
   final pulumi.Input<String>? sagemakerImageArn;
-
   /// The SageMaker AI Image Version Alias.
   final pulumi.Input<String>? sagemakerImageVersionAlias;
-
   /// The ARN of the image version created on the instance.
   final pulumi.Input<String>? sagemakerImageVersionArn;
 
@@ -42,35 +38,14 @@ class SpaceSpaceSettingsJupyterLabAppSettingsDefaultResourceSpec {
     };
   }
 
-  factory SpaceSpaceSettingsJupyterLabAppSettingsDefaultResourceSpec.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SpaceSpaceSettingsJupyterLabAppSettingsDefaultResourceSpec.fromMap(Map<String, dynamic> map) {
     return SpaceSpaceSettingsJupyterLabAppSettingsDefaultResourceSpec(
-      instanceType: (() {
-        final guardedValue = map['instanceType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      lifecycleConfigArn: (() {
-        final guardedValue = map['lifecycleConfigArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sagemakerImageArn: (() {
-        final guardedValue = map['sagemakerImageArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sagemakerImageVersionAlias: (() {
-        final guardedValue = map['sagemakerImageVersionAlias'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sagemakerImageVersionArn: (() {
-        final guardedValue = map['sagemakerImageVersionArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      instanceType: (() { final guardedValue = map['instanceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      lifecycleConfigArn: (() { final guardedValue = map['lifecycleConfigArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sagemakerImageArn: (() { final guardedValue = map['sagemakerImageArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sagemakerImageVersionAlias: (() { final guardedValue = map['sagemakerImageVersionAlias']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sagemakerImageVersionArn: (() { final guardedValue = map['sagemakerImageVersionArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

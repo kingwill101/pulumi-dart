@@ -13,18 +13,15 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSt
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'inputStartingPosition': ?inputStartingPosition};
+    return <String, dynamic>{
+      'inputStartingPosition': ?inputStartingPosition,
+    };
   }
 
-  factory ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputStartingPositionConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputStartingPositionConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputStartingPositionConfiguration(
-      inputStartingPosition: (() {
-        final guardedValue = map['inputStartingPosition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      inputStartingPosition: (() { final guardedValue = map['inputStartingPosition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

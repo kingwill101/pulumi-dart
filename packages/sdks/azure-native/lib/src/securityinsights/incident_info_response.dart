@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IncidentInfoResponse {
   /// Incident Id
   final pulumi.Input<String>? incidentId;
-
   /// Relation Name
   final pulumi.Input<String>? relationName;
-
   /// The severity of the incident
   final pulumi.Input<String>? severity;
-
   /// The title of the incident
   final pulumi.Input<String>? title;
 
@@ -39,26 +36,11 @@ class IncidentInfoResponse {
 
   factory IncidentInfoResponse.fromMap(Map<String, dynamic> map) {
     return IncidentInfoResponse(
-      incidentId: (() {
-        final guardedValue = map['incidentId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      relationName: (() {
-        final guardedValue = map['relationName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      severity: (() {
-        final guardedValue = map['severity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      title: (() {
-        final guardedValue = map['title'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      incidentId: (() { final guardedValue = map['incidentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      relationName: (() { final guardedValue = map['relationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      severity: (() { final guardedValue = map['severity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      title: (() { final guardedValue = map['title']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

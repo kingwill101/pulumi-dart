@@ -10,37 +10,26 @@ import 'cluster_network_entity_response.dart';
 class ClusterSpecEntityResponse {
   /// The Kafka API cluster endpoint
   final pulumi.Input<String>? apiEndpoint;
-
   /// The availability zone configuration of the cluster
   final pulumi.Input<String>? availability;
-
   /// Specification of the cluster
   final pulumi.Input<ClusterByokEntityResponse>? byok;
-
   /// The cloud service provider
   final pulumi.Input<String>? cloud;
-
   /// Specification of the cluster
   final pulumi.Input<ClusterConfigEntityResponse>? config;
-
   /// The name of the cluster
   final pulumi.Input<String>? displayName;
-
   /// Specification of the cluster
   final pulumi.Input<ClusterEnvironmentEntityResponse>? environment;
-
   /// The cluster HTTP request URL.
   final pulumi.Input<String>? httpEndpoint;
-
   /// The bootstrap endpoint used by Kafka clients to connect to the cluster
   final pulumi.Input<String>? kafkaBootstrapEndpoint;
-
   /// Specification of the cluster
   final pulumi.Input<ClusterNetworkEntityResponse>? network;
-
   /// The cloud service provider region
   final pulumi.Input<String>? region;
-
   /// type of zone availability
   final pulumi.Input<String>? zone;
 
@@ -76,30 +65,14 @@ class ClusterSpecEntityResponse {
     return <String, dynamic>{
       'apiEndpoint': ?apiEndpoint,
       'availability': ?availability,
-      'byok':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterByokEntityResponse,
-            Map<String, dynamic>
-          >(byok, (value) => value.toMap()),
+      'byok': ?pulumi.Input.mapOptionalInputValue<ClusterByokEntityResponse, Map<String, dynamic>>(byok, (value) => value.toMap()),
       'cloud': ?cloud,
-      'config':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterConfigEntityResponse,
-            Map<String, dynamic>
-          >(config, (value) => value.toMap()),
+      'config': ?pulumi.Input.mapOptionalInputValue<ClusterConfigEntityResponse, Map<String, dynamic>>(config, (value) => value.toMap()),
       'displayName': ?displayName,
-      'environment':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterEnvironmentEntityResponse,
-            Map<String, dynamic>
-          >(environment, (value) => value.toMap()),
+      'environment': ?pulumi.Input.mapOptionalInputValue<ClusterEnvironmentEntityResponse, Map<String, dynamic>>(environment, (value) => value.toMap()),
       'httpEndpoint': ?httpEndpoint,
       'kafkaBootstrapEndpoint': ?kafkaBootstrapEndpoint,
-      'network':
-          ?pulumi.Input.mapOptionalInputValue<
-            ClusterNetworkEntityResponse,
-            Map<String, dynamic>
-          >(network, (value) => value.toMap()),
+      'network': ?pulumi.Input.mapOptionalInputValue<ClusterNetworkEntityResponse, Map<String, dynamic>>(network, (value) => value.toMap()),
       'region': ?region,
       'zone': ?zone,
     };
@@ -107,82 +80,19 @@ class ClusterSpecEntityResponse {
 
   factory ClusterSpecEntityResponse.fromMap(Map<String, dynamic> map) {
     return ClusterSpecEntityResponse(
-      apiEndpoint: (() {
-        final guardedValue = map['apiEndpoint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      availability: (() {
-        final guardedValue = map['availability'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      byok: (() {
-        final guardedValue = map['byok'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterByokEntityResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      cloud: (() {
-        final guardedValue = map['cloud'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      config: (() {
-        final guardedValue = map['config'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterConfigEntityResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      environment: (() {
-        final guardedValue = map['environment'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterEnvironmentEntityResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      httpEndpoint: (() {
-        final guardedValue = map['httpEndpoint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kafkaBootstrapEndpoint: (() {
-        final guardedValue = map['kafkaBootstrapEndpoint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      network: (() {
-        final guardedValue = map['network'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ClusterNetworkEntityResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      zone: (() {
-        final guardedValue = map['zone'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      apiEndpoint: (() { final guardedValue = map['apiEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      availability: (() { final guardedValue = map['availability']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      byok: (() { final guardedValue = map['byok']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterByokEntityResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      cloud: (() { final guardedValue = map['cloud']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      config: (() { final guardedValue = map['config']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterConfigEntityResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      environment: (() { final guardedValue = map['environment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterEnvironmentEntityResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      httpEndpoint: (() { final guardedValue = map['httpEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kafkaBootstrapEndpoint: (() { final guardedValue = map['kafkaBootstrapEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterNetworkEntityResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      zone: (() { final guardedValue = map['zone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

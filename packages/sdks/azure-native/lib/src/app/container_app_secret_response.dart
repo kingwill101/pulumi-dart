@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContainerAppSecretResponse {
   /// Resource ID of a managed identity to authenticate with Azure Key Vault, or System to use a system-assigned identity.
   final pulumi.Input<String> identity;
-
   /// Azure Key Vault URL pointing to the secret referenced by the container app.
   final pulumi.Input<String> keyVaultUrl;
-
   /// Secret Name.
   final pulumi.Input<String> name;
-
   /// Secret Value.
   final pulumi.Input<String> value;
 
@@ -46,3 +43,4 @@ class ContainerAppSecretResponse {
     );
   }
 }
+

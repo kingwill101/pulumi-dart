@@ -10,14 +10,10 @@ import 'private_link_service_connection_state.dart';
 class FluidRelayPrivateEndpointConnectionArgs {
   /// The Fluid Relay server resource name.
   final pulumi.Input<String> fluidRelayServerName;
-
   /// The name of the private endpoint connection associated with the Azure resource.
   final pulumi.Input<String>? privateEndpointConnectionName;
-
   /// A collection of information about the state of the connection between service consumer and provider.
-  final pulumi.Input<PrivateLinkServiceConnectionState>
-  privateLinkServiceConnectionState;
-
+  final pulumi.Input<PrivateLinkServiceConnectionState> privateLinkServiceConnectionState;
   /// The resource group containing the resource.
   final pulumi.Input<String> resourceGroup;
 
@@ -37,34 +33,18 @@ class FluidRelayPrivateEndpointConnectionArgs {
     return <String, dynamic>{
       'fluidRelayServerName': fluidRelayServerName,
       'privateEndpointConnectionName': ?privateEndpointConnectionName,
-      'privateLinkServiceConnectionState':
-          pulumi.Input.mapInputValue<
-            PrivateLinkServiceConnectionState,
-            Map<String, dynamic>
-          >(privateLinkServiceConnectionState, (value) => value.toMap()),
+      'privateLinkServiceConnectionState': pulumi.Input.mapInputValue<PrivateLinkServiceConnectionState, Map<String, dynamic>>(privateLinkServiceConnectionState, (value) => value.toMap()),
       'resourceGroup': resourceGroup,
     };
   }
 
-  factory FluidRelayPrivateEndpointConnectionArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FluidRelayPrivateEndpointConnectionArgs.fromMap(Map<String, dynamic> map) {
     return FluidRelayPrivateEndpointConnectionArgs(
-      fluidRelayServerName: pulumi.Input.fromValue(
-        map['fluidRelayServerName'] as String,
-      ),
-      privateEndpointConnectionName: (() {
-        final guardedValue = map['privateEndpointConnectionName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      privateLinkServiceConnectionState: pulumi.Input.fromValue(
-        PrivateLinkServiceConnectionState.fromMap(
-          (map['privateLinkServiceConnectionState']! as Map)
-              .cast<String, dynamic>(),
-        ),
-      ),
+      fluidRelayServerName: pulumi.Input.fromValue(map['fluidRelayServerName'] as String),
+      privateEndpointConnectionName: (() { final guardedValue = map['privateEndpointConnectionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateLinkServiceConnectionState: pulumi.Input.fromValue(PrivateLinkServiceConnectionState.fromMap((map['privateLinkServiceConnectionState']! as Map).cast<String, dynamic>())),
       resourceGroup: pulumi.Input.fromValue(map['resourceGroup'] as String),
     );
   }
 }
+

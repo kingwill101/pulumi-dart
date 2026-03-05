@@ -7,7 +7,6 @@ import 'counter_resource_k8s_io_v1beta2.dart';
 class DeviceCounterConsumptionResourceK8sIoV1beta2 {
   /// CounterSet is the name of the set from which the counters defined will be consumed.
   final pulumi.Input<String> counterSet;
-
   /// Counters defines the counters that will be consumed by the device.
   ///
   /// The maximum number of counters is 32.
@@ -24,34 +23,15 @@ class DeviceCounterConsumptionResourceK8sIoV1beta2 {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'counterSet': counterSet,
-      'counters':
-          pulumi.Input.mapInputValue<
-            Map<String, CounterResourceK8sIoV1beta2>,
-            Map<String, Map<String, dynamic>>
-          >(
-            counters,
-            (value) =>
-                pulumi.Input.encodeMapValues<
-                  CounterResourceK8sIoV1beta2,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'counters': pulumi.Input.mapInputValue<Map<String, CounterResourceK8sIoV1beta2>, Map<String, Map<String, dynamic>>>(counters, (value) => pulumi.Input.encodeMapValues<CounterResourceK8sIoV1beta2, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory DeviceCounterConsumptionResourceK8sIoV1beta2.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DeviceCounterConsumptionResourceK8sIoV1beta2.fromMap(Map<String, dynamic> map) {
     return DeviceCounterConsumptionResourceK8sIoV1beta2(
       counterSet: pulumi.Input.fromValue(map['counterSet'] as String),
-      counters: pulumi.Input.fromValue(
-        pulumi.Input.decodeMapValues<CounterResourceK8sIoV1beta2>(
-          map['counters']!,
-          (value) => CounterResourceK8sIoV1beta2.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      counters: pulumi.Input.fromValue(pulumi.Input.decodeMapValues<CounterResourceK8sIoV1beta2>(map['counters']!, (value) => CounterResourceK8sIoV1beta2.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

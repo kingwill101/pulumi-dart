@@ -16,3 +16,4 @@ enum EnvironmentType {
     throw ArgumentError('Unknown EnvironmentType value: $value');
   }
 }
+

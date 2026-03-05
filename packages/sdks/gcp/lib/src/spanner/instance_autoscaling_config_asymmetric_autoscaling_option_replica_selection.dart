@@ -13,14 +13,15 @@ class InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'location': location};
+    return <String, dynamic>{
+      'location': location,
+    };
   }
 
-  factory InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection.fromMap(Map<String, dynamic> map) {
     return InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection(
       location: pulumi.Input.fromValue(map['location'] as String),
     );
   }
 }
+

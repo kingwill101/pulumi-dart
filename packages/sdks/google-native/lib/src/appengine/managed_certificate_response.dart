@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedCertificateResponse {
   /// Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.
   final pulumi.Input<String> lastRenewalTime;
-
   /// Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.
   final pulumi.Input<String> status;
 
@@ -32,3 +31,4 @@ class ManagedCertificateResponse {
     );
   }
 }
+

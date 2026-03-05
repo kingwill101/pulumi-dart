@@ -155,13 +155,10 @@ import 'security_label_state.dart';
 class SecurityLabel extends pulumi.CustomResource {
   /// The value of the security label.
   late final pulumi.Output<String> label;
-
   /// The name of the provider with which this label is to be associated.
   late final pulumi.Output<String> labelProvider;
-
   /// The name of the object to be labeled. Names of objects that reside in schemas (tables, functions, etc.) can be schema-qualified.
   late final pulumi.Output<String> objectName;
-
   /// The PostgreSQL object type to apply this security label to.
   late final pulumi.Output<String> objectType;
 
@@ -174,11 +171,11 @@ class SecurityLabel extends pulumi.CustomResource {
     SecurityLabelArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'postgresql:index/securityLabel:SecurityLabel',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'postgresql:index/securityLabel:SecurityLabel',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     label = registerOutput<String>('label');
     labelProvider = registerOutput<String>('labelProvider');
     objectName = registerOutput<String>('objectName');
@@ -203,11 +200,11 @@ class SecurityLabel extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'postgresql:index/securityLabel:SecurityLabel',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'postgresql:index/securityLabel:SecurityLabel',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     label = registerOutput<String>('label');
     labelProvider = registerOutput<String>('labelProvider');
     objectName = registerOutput<String>('objectName');

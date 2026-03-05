@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnvironmentConfigWorkloadsConfigWorker {
   /// CPU request and limit for a single Airflow worker replica.
   final pulumi.Input<double>? cpu;
-
   /// Maximum number of workers for autoscaling.
   final pulumi.Input<int>? maxCount;
-
   /// Memory (GB) request and limit for a single Airflow worker replica.
   final pulumi.Input<double>? memoryGb;
-
   /// Minimum number of workers for autoscaling.
   final pulumi.Input<int>? minCount;
-
   /// Storage (GB) request and limit for a single Airflow worker replica.
   final pulumi.Input<double>? storageGb;
 
@@ -42,35 +38,14 @@ class EnvironmentConfigWorkloadsConfigWorker {
     };
   }
 
-  factory EnvironmentConfigWorkloadsConfigWorker.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EnvironmentConfigWorkloadsConfigWorker.fromMap(Map<String, dynamic> map) {
     return EnvironmentConfigWorkloadsConfigWorker(
-      cpu: (() {
-        final guardedValue = map['cpu'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      maxCount: (() {
-        final guardedValue = map['maxCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      memoryGb: (() {
-        final guardedValue = map['memoryGb'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      minCount: (() {
-        final guardedValue = map['minCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      storageGb: (() {
-        final guardedValue = map['storageGb'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      cpu: (() { final guardedValue = map['cpu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      maxCount: (() { final guardedValue = map['maxCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      memoryGb: (() { final guardedValue = map['memoryGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      minCount: (() { final guardedValue = map['minCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      storageGb: (() { final guardedValue = map['storageGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

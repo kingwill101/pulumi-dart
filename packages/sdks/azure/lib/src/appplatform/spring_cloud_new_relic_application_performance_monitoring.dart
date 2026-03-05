@@ -245,41 +245,29 @@ import 'spring_cloud_new_relic_application_performance_monitoring_state.dart';
 /// ```sh
 /// $ pulumi import azure:appplatform/springCloudNewRelicApplicationPerformanceMonitoring:SpringCloudNewRelicApplicationPerformanceMonitoring example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.AppPlatform/spring/service1/apms/apm1
 /// ```
-class SpringCloudNewRelicApplicationPerformanceMonitoring
-    extends pulumi.CustomResource {
+class SpringCloudNewRelicApplicationPerformanceMonitoring extends pulumi.CustomResource {
   /// Specifies whether enable the agent. Defaults to `true`.
   late final pulumi.Output<bool?> agentEnabled;
-
   /// Specifies the application name used to report data to New Relic.
   late final pulumi.Output<String> appName;
-
   /// Specifies the port number to differentiate JVMs for the same app on the same machine.
   late final pulumi.Output<int?> appServerPort;
-
   /// Specifies whether enable plain text logging of all data sent to New Relic to the agent logfile. Defaults to `false`.
   late final pulumi.Output<bool?> auditModeEnabled;
-
   /// Specifies whether enable the reporting of data separately for each web app. Defaults to `false`.
   late final pulumi.Output<bool?> autoAppNamingEnabled;
-
   /// Specifies whether enable the component-based transaction naming. Defaults to `true`.
   late final pulumi.Output<bool?> autoTransactionNamingEnabled;
-
   /// Specifies whether enable all instrumentation using an `@Trace` annotation. Disabling this causes `@Trace` annotations to be ignored. Defaults to `true`.
   late final pulumi.Output<bool?> customTracingEnabled;
-
   /// Specifies whether the Spring Cloud Application Performance Monitoring resource for Application Insights is enabled globally. Defaults to `false`.
   late final pulumi.Output<bool?> globallyEnabled;
-
   /// Specifies a mapping of labels to be added to the New Relic application.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// Specifies the license key associated with the New Relic account. This key binds your agent's data to your account in New Relic service.
   late final pulumi.Output<String> licenseKey;
-
   /// The name which should be used for this Spring Cloud Application Performance Monitoring resource for New Relic. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The ID of the Spring Cloud Service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> springCloudServiceId;
 
@@ -292,19 +280,17 @@ class SpringCloudNewRelicApplicationPerformanceMonitoring
     SpringCloudNewRelicApplicationPerformanceMonitoringArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appplatform/springCloudNewRelicApplicationPerformanceMonitoring:SpringCloudNewRelicApplicationPerformanceMonitoring',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appplatform/springCloudNewRelicApplicationPerformanceMonitoring:SpringCloudNewRelicApplicationPerformanceMonitoring',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     agentEnabled = registerOutput<bool?>('agentEnabled');
     appName = registerOutput<String>('appName');
     appServerPort = registerOutput<int?>('appServerPort');
     auditModeEnabled = registerOutput<bool?>('auditModeEnabled');
     autoAppNamingEnabled = registerOutput<bool?>('autoAppNamingEnabled');
-    autoTransactionNamingEnabled = registerOutput<bool?>(
-      'autoTransactionNamingEnabled',
-    );
+    autoTransactionNamingEnabled = registerOutput<bool?>('autoTransactionNamingEnabled');
     customTracingEnabled = registerOutput<bool?>('customTracingEnabled');
     globallyEnabled = registerOutput<bool?>('globallyEnabled');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -331,19 +317,17 @@ class SpringCloudNewRelicApplicationPerformanceMonitoring
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appplatform/springCloudNewRelicApplicationPerformanceMonitoring:SpringCloudNewRelicApplicationPerformanceMonitoring',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appplatform/springCloudNewRelicApplicationPerformanceMonitoring:SpringCloudNewRelicApplicationPerformanceMonitoring',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     agentEnabled = registerOutput<bool?>('agentEnabled');
     appName = registerOutput<String>('appName');
     appServerPort = registerOutput<int?>('appServerPort');
     auditModeEnabled = registerOutput<bool?>('auditModeEnabled');
     autoAppNamingEnabled = registerOutput<bool?>('autoAppNamingEnabled');
-    autoTransactionNamingEnabled = registerOutput<bool?>(
-      'autoTransactionNamingEnabled',
-    );
+    autoTransactionNamingEnabled = registerOutput<bool?>('autoTransactionNamingEnabled');
     customTracingEnabled = registerOutput<bool?>('customTracingEnabled');
     globallyEnabled = registerOutput<bool?>('globallyEnabled');
     labels = registerOutput<Map<String, String>?>('labels');

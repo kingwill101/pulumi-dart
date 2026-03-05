@@ -426,37 +426,26 @@ import 'table_state.dart';
 class Table extends pulumi.CustomResource {
   /// Whether allow data update operations. Default value is true. Skipping the resource state refresh step may result in unnecessary execution plan when upgrading from an earlier version.
   late final pulumi.Output<bool?> allowUpdate;
-
   /// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32. See `defined_column` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> definedColumns;
-
   /// The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
   late final pulumi.Output<String?> deviationCellVersionInSec;
-
   /// Whether enable OTS server side encryption. Default value is false.
   late final pulumi.Output<bool?> enableSse;
-
   /// The name of the OTS instance in which table will located.
   late final pulumi.Output<String> instanceName;
-
   /// The maximum number of versions stored in this table. The valid value is 1-2147483647.
   late final pulumi.Output<int> maxVersion;
-
   /// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four. See `primary_key` below.
   late final pulumi.Output<List<Map<String, dynamic>>> primaryKeys;
-
   /// . The key ID of secret. `sse_key_id` is valid only when `sse_key_type` is set to `SSE_BYOK`.
   late final pulumi.Output<String?> sseKeyId;
-
   /// The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
   late final pulumi.Output<String?> sseKeyType;
-
   /// The arn of role that can access kms service. `sse_role_arn` is valid only when `sse_key_type` is set to `SSE_BYOK`.
   late final pulumi.Output<String?> sseRoleArn;
-
   /// The table name of the OTS instance. If changed, a new table would be created.
   late final pulumi.Output<String> tableName;
-
   /// The retention time of data stored in this table (unit: second). The value maximum is 2147483647 and -1 means never expired.
   late final pulumi.Output<int> timeToLive;
 
@@ -464,20 +453,19 @@ class Table extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Table]. {@macro pulumi_ots_table_table_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Table(String name, {TableArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:ots/table:Table',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Table(
+    String name, {
+    TableArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:ots/table:Table',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allowUpdate = registerOutput<bool?>('allowUpdate');
-    definedColumns = registerOutput<List<Map<String, dynamic>>?>(
-      'definedColumns',
-    );
-    deviationCellVersionInSec = registerOutput<String?>(
-      'deviationCellVersionInSec',
-    );
+    definedColumns = registerOutput<List<Map<String, dynamic>>?>('definedColumns');
+    deviationCellVersionInSec = registerOutput<String?>('deviationCellVersionInSec');
     enableSse = registerOutput<bool?>('enableSse');
     instanceName = registerOutput<String>('instanceName');
     maxVersion = registerOutput<int>('maxVersion');
@@ -490,7 +478,11 @@ class Table extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Table] resource's state with the given [name] and [id].
-  static Table get(String name, pulumi.Input<String> id, {TableState? state}) {
+  static Table get(
+    String name,
+    pulumi.Input<String> id, {
+    TableState? state,
+  }) {
     return Table._get(
       name,
       state: state?.toMap(),
@@ -503,18 +495,14 @@ class Table extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ots/table:Table',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ots/table:Table',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allowUpdate = registerOutput<bool?>('allowUpdate');
-    definedColumns = registerOutput<List<Map<String, dynamic>>?>(
-      'definedColumns',
-    );
-    deviationCellVersionInSec = registerOutput<String?>(
-      'deviationCellVersionInSec',
-    );
+    definedColumns = registerOutput<List<Map<String, dynamic>>?>('definedColumns');
+    deviationCellVersionInSec = registerOutput<String?>('deviationCellVersionInSec');
     enableSse = registerOutput<bool?>('enableSse');
     instanceName = registerOutput<String>('instanceName');
     maxVersion = registerOutput<int>('maxVersion');

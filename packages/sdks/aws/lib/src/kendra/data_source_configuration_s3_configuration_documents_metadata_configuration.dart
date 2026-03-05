@@ -13,18 +13,15 @@ class DataSourceConfigurationS3ConfigurationDocumentsMetadataConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'s3Prefix': ?s3Prefix};
+    return <String, dynamic>{
+      's3Prefix': ?s3Prefix,
+    };
   }
 
-  factory DataSourceConfigurationS3ConfigurationDocumentsMetadataConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DataSourceConfigurationS3ConfigurationDocumentsMetadataConfiguration.fromMap(Map<String, dynamic> map) {
     return DataSourceConfigurationS3ConfigurationDocumentsMetadataConfiguration(
-      s3Prefix: (() {
-        final guardedValue = map['s3Prefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      s3Prefix: (() { final guardedValue = map['s3Prefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

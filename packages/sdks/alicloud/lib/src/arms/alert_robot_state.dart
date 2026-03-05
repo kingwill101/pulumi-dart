@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AlertRobotState {
   /// The name of the resource.
   final pulumi.Input<String>? alertRobotName;
-
   /// Specifies whether the alert robot receives daily notifications. Valid values: `true`: receives daily notifications. `false`: does not receive daily notifications, default to `false`.
   final pulumi.Input<bool>? dailyNoc;
-
   /// The time of the daily notification.
   final pulumi.Input<String>? dailyNocTime;
-
   /// The webhook url of the robot.
   final pulumi.Input<String>? robotAddr;
-
   /// The type of the robot, Valid values: `wechat`, `dingding`, `feishu`.
   final pulumi.Input<String>? robotType;
 
@@ -45,31 +41,12 @@ class AlertRobotState {
 
   factory AlertRobotState.fromMap(Map<String, dynamic> map) {
     return AlertRobotState(
-      alertRobotName: (() {
-        final guardedValue = map['alertRobotName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dailyNoc: (() {
-        final guardedValue = map['dailyNoc'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      dailyNocTime: (() {
-        final guardedValue = map['dailyNocTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      robotAddr: (() {
-        final guardedValue = map['robotAddr'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      robotType: (() {
-        final guardedValue = map['robotType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      alertRobotName: (() { final guardedValue = map['alertRobotName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dailyNoc: (() { final guardedValue = map['dailyNoc']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      dailyNocTime: (() { final guardedValue = map['dailyNocTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      robotAddr: (() { final guardedValue = map['robotAddr']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      robotType: (() { final guardedValue = map['robotType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

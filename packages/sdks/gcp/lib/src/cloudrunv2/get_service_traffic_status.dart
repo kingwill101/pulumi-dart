@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceTrafficStatus {
   /// Specifies percent of the traffic to this Revision.
   final pulumi.Input<int> percent;
-
   /// Revision to which this traffic is sent.
   final pulumi.Input<String> revision;
-
   /// Indicates the string used in the URI to exclusively reference this target.
   final pulumi.Input<String> tag;
-
   /// The allocation type for this traffic target.
   final pulumi.Input<String> type;
-
   /// Displays the target URI.
   final pulumi.Input<String> uri;
 
@@ -52,3 +48,4 @@ class GetServiceTrafficStatus {
     );
   }
 }
+

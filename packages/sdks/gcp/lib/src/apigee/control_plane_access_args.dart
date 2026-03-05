@@ -11,10 +11,8 @@ class ControlPlaneAccessArgs {
   /// The `service-account-name` is formatted like an email address. For example: serviceAccount@my_project_id.iam.gserviceaccount.com
   /// You might specify multiple service accounts, for example, if you have multiple environments and wish to assign a unique service account to each one.
   final pulumi.Input<List<String>>? analyticsPublisherIdentities;
-
   /// Name of the Apigee organization.
   final pulumi.Input<String>? name;
-
   /// Array of service accounts to grant access to control plane resources (for the Synchronizer component), each specified using the following format: `serviceAccount:service-account-name`.
   /// The `service-account-name` is formatted like an email address. For example: serviceAccount@my_project_id.iam.gserviceaccount.com
   /// You might specify multiple service accounts, for example, if you have multiple environments and wish to assign a unique service account to each one.
@@ -41,21 +39,10 @@ class ControlPlaneAccessArgs {
 
   factory ControlPlaneAccessArgs.fromMap(Map<String, dynamic> map) {
     return ControlPlaneAccessArgs(
-      analyticsPublisherIdentities: (() {
-        final guardedValue = map['analyticsPublisherIdentities'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      synchronizerIdentities: (() {
-        final guardedValue = map['synchronizerIdentities'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      analyticsPublisherIdentities: (() { final guardedValue = map['analyticsPublisherIdentities']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      synchronizerIdentities: (() { final guardedValue = map['synchronizerIdentities']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

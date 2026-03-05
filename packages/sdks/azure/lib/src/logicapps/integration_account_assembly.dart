@@ -238,25 +238,18 @@ import 'integration_account_assembly_state.dart';
 class IntegrationAccountAssembly extends pulumi.CustomResource {
   /// The name of the Logic App Integration Account Assembly.
   late final pulumi.Output<String> assemblyName;
-
   /// The version of the Logic App Integration Account Assembly. Defaults to `0.0.0.0`.
   late final pulumi.Output<String?> assemblyVersion;
-
   /// The content of the Logic App Integration Account Assembly.
   late final pulumi.Output<String?> content;
-
   /// The content link URI of the Logic App Integration Account Assembly.
   late final pulumi.Output<String?> contentLinkUri;
-
   /// The name of the Logic App Integration Account. Changing this forces a new resource to be created.
   late final pulumi.Output<String> integrationAccountName;
-
   /// The metadata of the Logic App Integration Account Assembly.
   late final pulumi.Output<Map<String, String>?> metadata;
-
   /// The name which should be used for this Logic App Integration Account Assembly Artifact. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the Resource Group where the Logic App Integration Account Assembly Artifact should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
 
@@ -269,11 +262,11 @@ class IntegrationAccountAssembly extends pulumi.CustomResource {
     IntegrationAccountAssemblyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:logicapps/integrationAccountAssembly:IntegrationAccountAssembly',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:logicapps/integrationAccountAssembly:IntegrationAccountAssembly',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     assemblyName = registerOutput<String>('assemblyName');
     assemblyVersion = registerOutput<String?>('assemblyVersion');
     content = registerOutput<String?>('content');
@@ -302,11 +295,11 @@ class IntegrationAccountAssembly extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:logicapps/integrationAccountAssembly:IntegrationAccountAssembly',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:logicapps/integrationAccountAssembly:IntegrationAccountAssembly',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     assemblyName = registerOutput<String>('assemblyName');
     assemblyVersion = registerOutput<String?>('assemblyVersion');
     content = registerOutput<String?>('content');

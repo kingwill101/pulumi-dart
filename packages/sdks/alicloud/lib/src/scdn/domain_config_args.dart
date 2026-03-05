@@ -10,10 +10,8 @@ import 'domain_config_function_arg.dart';
 class DomainConfigArgs {
   /// Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
   final pulumi.Input<String> domainName;
-
   /// The args of the domain config.
   final pulumi.Input<List<DomainConfigFunctionArg>> functionArgs;
-
   /// The name of the domain config.
   final pulumi.Input<String> functionName;
 
@@ -30,18 +28,7 @@ class DomainConfigArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'domainName': domainName,
-      'functionArgs':
-          pulumi.Input.mapInputValue<
-            List<DomainConfigFunctionArg>,
-            List<Map<String, dynamic>>
-          >(
-            functionArgs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  DomainConfigFunctionArg,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'functionArgs': pulumi.Input.mapInputValue<List<DomainConfigFunctionArg>, List<Map<String, dynamic>>>(functionArgs, (value) => pulumi.Input.encodeList<DomainConfigFunctionArg, Map<String, dynamic>>(value, (value) => value.toMap())),
       'functionName': functionName,
     };
   }
@@ -49,15 +36,9 @@ class DomainConfigArgs {
   factory DomainConfigArgs.fromMap(Map<String, dynamic> map) {
     return DomainConfigArgs(
       domainName: pulumi.Input.fromValue(map['domainName'] as String),
-      functionArgs: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<DomainConfigFunctionArg>(
-          map['functionArgs']!,
-          (value) => DomainConfigFunctionArg.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      functionArgs: pulumi.Input.fromValue(pulumi.Input.decodeList<DomainConfigFunctionArg>(map['functionArgs']!, (value) => DomainConfigFunctionArg.fromMap((value as Map).cast<String, dynamic>()))),
       functionName: pulumi.Input.fromValue(map['functionName'] as String),
     );
   }
 }
+

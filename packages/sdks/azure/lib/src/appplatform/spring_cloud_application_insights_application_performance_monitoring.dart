@@ -279,29 +279,21 @@ import 'spring_cloud_application_insights_application_performance_monitoring_sta
 /// ```sh
 /// $ pulumi import azure:appplatform/springCloudApplicationInsightsApplicationPerformanceMonitoring:SpringCloudApplicationInsightsApplicationPerformanceMonitoring example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.AppPlatform/spring/service1/apms/apm1
 /// ```
-class SpringCloudApplicationInsightsApplicationPerformanceMonitoring
-    extends pulumi.CustomResource {
+class SpringCloudApplicationInsightsApplicationPerformanceMonitoring extends pulumi.CustomResource {
   /// The instrumentation key used to push data to Application Insights.
   late final pulumi.Output<String?> connectionString;
-
   /// Specifies whether the Spring Cloud Application Performance Monitoring resource for Application Insights is enabled globally. Defaults to `false`.
   late final pulumi.Output<bool?> globallyEnabled;
-
   /// The name which should be used for this Spring Cloud Application Performance Monitoring resource for Application Insights. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies the cloud role instance.
   late final pulumi.Output<String?> roleInstance;
-
   /// Specifies the cloud role name used to label the component on the application map.
   late final pulumi.Output<String?> roleName;
-
   /// Specifies the percentage for fixed-percentage sampling.
   late final pulumi.Output<int?> samplingPercentage;
-
   /// Specifies the number of requests per second for the rate-limited sampling.
   late final pulumi.Output<int?> samplingRequestsPerSecond;
-
   /// The ID of the Spring Cloud Service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> springCloudServiceId;
 
@@ -314,20 +306,18 @@ class SpringCloudApplicationInsightsApplicationPerformanceMonitoring
     SpringCloudApplicationInsightsApplicationPerformanceMonitoringArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appplatform/springCloudApplicationInsightsApplicationPerformanceMonitoring:SpringCloudApplicationInsightsApplicationPerformanceMonitoring',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appplatform/springCloudApplicationInsightsApplicationPerformanceMonitoring:SpringCloudApplicationInsightsApplicationPerformanceMonitoring',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     connectionString = registerOutput<String?>('connectionString');
     globallyEnabled = registerOutput<bool?>('globallyEnabled');
     this.name = registerOutput<String>('name');
     roleInstance = registerOutput<String?>('roleInstance');
     roleName = registerOutput<String?>('roleName');
     samplingPercentage = registerOutput<int?>('samplingPercentage');
-    samplingRequestsPerSecond = registerOutput<int?>(
-      'samplingRequestsPerSecond',
-    );
+    samplingRequestsPerSecond = registerOutput<int?>('samplingRequestsPerSecond');
     springCloudServiceId = registerOutput<String>('springCloudServiceId');
   }
 
@@ -349,20 +339,18 @@ class SpringCloudApplicationInsightsApplicationPerformanceMonitoring
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appplatform/springCloudApplicationInsightsApplicationPerformanceMonitoring:SpringCloudApplicationInsightsApplicationPerformanceMonitoring',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appplatform/springCloudApplicationInsightsApplicationPerformanceMonitoring:SpringCloudApplicationInsightsApplicationPerformanceMonitoring',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     connectionString = registerOutput<String?>('connectionString');
     globallyEnabled = registerOutput<bool?>('globallyEnabled');
     this.name = registerOutput<String>('name');
     roleInstance = registerOutput<String?>('roleInstance');
     roleName = registerOutput<String?>('roleName');
     samplingPercentage = registerOutput<int?>('samplingPercentage');
-    samplingRequestsPerSecond = registerOutput<int?>(
-      'samplingRequestsPerSecond',
-    );
+    samplingRequestsPerSecond = registerOutput<int?>('samplingRequestsPerSecond');
     springCloudServiceId = registerOutput<String>('springCloudServiceId');
   }
 }

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AdministrativeCredentialsResponse {
   /// The password of the administrator of the device used during initialization.
   final pulumi.Input<String> password;
-
   /// The username of the administrator of the device used during initialization.
   final pulumi.Input<String> username;
 
@@ -18,7 +17,10 @@ class AdministrativeCredentialsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'password': password, 'username': username};
+    return <String, dynamic>{
+      'password': password,
+      'username': username,
+    };
   }
 
   factory AdministrativeCredentialsResponse.fromMap(Map<String, dynamic> map) {
@@ -28,3 +30,4 @@ class AdministrativeCredentialsResponse {
     );
   }
 }
+

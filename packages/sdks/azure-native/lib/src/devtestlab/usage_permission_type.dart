@@ -16,3 +16,4 @@ enum UsagePermissionType {
     throw ArgumentError('Unknown UsagePermissionType value: $value');
   }
 }
+

@@ -11,21 +11,20 @@ class TemplateFilterConfigMaliciousUriFilterSettings {
 
   /// Creates a new [TemplateFilterConfigMaliciousUriFilterSettings].
   /// [filterEnforcement] Tells whether the Malicious URI filter is enabled or disabled.
-  TemplateFilterConfigMaliciousUriFilterSettings({this.filterEnforcement});
+  TemplateFilterConfigMaliciousUriFilterSettings({
+    this.filterEnforcement,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'filterEnforcement': ?filterEnforcement};
+    return <String, dynamic>{
+      'filterEnforcement': ?filterEnforcement,
+    };
   }
 
-  factory TemplateFilterConfigMaliciousUriFilterSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory TemplateFilterConfigMaliciousUriFilterSettings.fromMap(Map<String, dynamic> map) {
     return TemplateFilterConfigMaliciousUriFilterSettings(
-      filterEnforcement: (() {
-        final guardedValue = map['filterEnforcement'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      filterEnforcement: (() { final guardedValue = map['filterEnforcement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

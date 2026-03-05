@@ -8,21 +8,20 @@ class ThemeConfigurationTypographyFontFamily {
 
   /// Creates a new [ThemeConfigurationTypographyFontFamily].
   /// [fontFamily] Font family name.
-  ThemeConfigurationTypographyFontFamily({this.fontFamily});
+  ThemeConfigurationTypographyFontFamily({
+    this.fontFamily,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'fontFamily': ?fontFamily};
+    return <String, dynamic>{
+      'fontFamily': ?fontFamily,
+    };
   }
 
-  factory ThemeConfigurationTypographyFontFamily.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ThemeConfigurationTypographyFontFamily.fromMap(Map<String, dynamic> map) {
     return ThemeConfigurationTypographyFontFamily(
-      fontFamily: (() {
-        final guardedValue = map['fontFamily'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      fontFamily: (() { final guardedValue = map['fontFamily']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

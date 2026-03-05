@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UrlSigningParamIdentifier {
   /// Indicates the purpose of the parameter
   final pulumi.Input<String> paramIndicator;
-
   /// Parameter name
   final pulumi.Input<String> paramName;
 
@@ -32,3 +31,4 @@ class UrlSigningParamIdentifier {
     );
   }
 }
+

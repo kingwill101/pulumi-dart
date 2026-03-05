@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpcEndpointZoneArgs {
   /// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
   final pulumi.Input<bool>? dryRun;
-
   /// The endpoint ID.
   final pulumi.Input<String> endpointId;
-
   /// The IP address of the endpoint ENI.
   final pulumi.Input<String>? eniIp;
-
   /// The ID of the vSwitch in the zone.
   final pulumi.Input<String> vswitchId;
-
   /// The zone ID.
   final pulumi.Input<String>? zoneId;
 
@@ -48,23 +44,12 @@ class VpcEndpointZoneArgs {
 
   factory VpcEndpointZoneArgs.fromMap(Map<String, dynamic> map) {
     return VpcEndpointZoneArgs(
-      dryRun: (() {
-        final guardedValue = map['dryRun'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      dryRun: (() { final guardedValue = map['dryRun']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       endpointId: pulumi.Input.fromValue(map['endpointId'] as String),
-      eniIp: (() {
-        final guardedValue = map['eniIp'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      eniIp: (() { final guardedValue = map['eniIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vswitchId: pulumi.Input.fromValue(map['vswitchId'] as String),
-      zoneId: (() {
-        final guardedValue = map['zoneId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      zoneId: (() { final guardedValue = map['zoneId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MonitoredResourceResponse {
   /// The ARM id of the resource.
   final pulumi.Input<String>? id;
-
   /// Reason for why the resource is sending logs (or why it is not sending).
   final pulumi.Input<String>? reasonForLogsStatus;
-
   /// Reason for why the resource is sending metrics (or why it is not sending).
   final pulumi.Input<String>? reasonForMetricsStatus;
-
   /// Flag indicating if resource is sending logs to Datadog.
   final pulumi.Input<bool>? sendingLogs;
-
   /// Flag indicating if resource is sending metrics to Datadog.
   final pulumi.Input<bool>? sendingMetrics;
 
@@ -45,31 +41,12 @@ class MonitoredResourceResponse {
 
   factory MonitoredResourceResponse.fromMap(Map<String, dynamic> map) {
     return MonitoredResourceResponse(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      reasonForLogsStatus: (() {
-        final guardedValue = map['reasonForLogsStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      reasonForMetricsStatus: (() {
-        final guardedValue = map['reasonForMetricsStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sendingLogs: (() {
-        final guardedValue = map['sendingLogs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      sendingMetrics: (() {
-        final guardedValue = map['sendingMetrics'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      reasonForLogsStatus: (() { final guardedValue = map['reasonForLogsStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      reasonForMetricsStatus: (() { final guardedValue = map['reasonForMetricsStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sendingLogs: (() { final guardedValue = map['sendingLogs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      sendingMetrics: (() { final guardedValue = map['sendingMetrics']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

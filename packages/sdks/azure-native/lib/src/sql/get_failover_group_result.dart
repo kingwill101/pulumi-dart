@@ -9,37 +9,26 @@ import 'partner_info_response.dart';
 class GetFailoverGroupResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// List of databases in the failover group.
   final List<String>? databases;
-
   /// Resource ID.
   final String id;
-
   /// Resource location.
   final String location;
-
   /// Resource name.
   final String name;
-
   /// List of partner server information for the failover group.
   final List<PartnerInfoResponse> partnerServers;
-
   /// Read-only endpoint of the failover group instance.
   final FailoverGroupReadOnlyEndpointResponse? readOnlyEndpoint;
-
   /// Read-write endpoint of the failover group instance.
   final FailoverGroupReadWriteEndpointResponse readWriteEndpoint;
-
   /// Local replication role of the failover group instance.
   final String replicationRole;
-
   /// Replication state of the failover group instance.
   final String replicationState;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// Resource type.
   final String type;
 
@@ -78,11 +67,7 @@ class GetFailoverGroupResult {
       'id': id,
       'location': location,
       'name': name,
-      'partnerServers':
-          pulumi.Input.encodeList<PartnerInfoResponse, Map<String, dynamic>>(
-            partnerServers,
-            (value) => value.toMap(),
-          ),
+      'partnerServers': pulumi.Input.encodeList<PartnerInfoResponse, Map<String, dynamic>>(partnerServers, (value) => value.toMap()),
       'readOnlyEndpoint': ?readOnlyEndpoint?.toMap(),
       'readWriteEndpoint': readWriteEndpoint.toMap(),
       'replicationRole': replicationRole,
@@ -95,37 +80,18 @@ class GetFailoverGroupResult {
   factory GetFailoverGroupResult.fromMap(Map<String, dynamic> map) {
     return GetFailoverGroupResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      databases: (() {
-        final guardedValue = map['databases'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
+      databases: (() { final guardedValue = map['databases']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      partnerServers: pulumi.Input.decodeList<PartnerInfoResponse>(
-        map['partnerServers']!,
-        (value) =>
-            PartnerInfoResponse.fromMap((value as Map).cast<String, dynamic>()),
-      ),
-      readOnlyEndpoint: (() {
-        final guardedValue = map['readOnlyEndpoint'];
-        if (guardedValue == null) return null;
-        return FailoverGroupReadOnlyEndpointResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      readWriteEndpoint: FailoverGroupReadWriteEndpointResponse.fromMap(
-        (map['readWriteEndpoint']! as Map).cast<String, dynamic>(),
-      ),
+      partnerServers: pulumi.Input.decodeList<PartnerInfoResponse>(map['partnerServers']!, (value) => PartnerInfoResponse.fromMap((value as Map).cast<String, dynamic>())),
+      readOnlyEndpoint: (() { final guardedValue = map['readOnlyEndpoint']; if (guardedValue == null) return null; return FailoverGroupReadOnlyEndpointResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      readWriteEndpoint: FailoverGroupReadWriteEndpointResponse.fromMap((map['readWriteEndpoint']! as Map).cast<String, dynamic>()),
       replicationRole: map['replicationRole'] as String,
       replicationState: map['replicationState'] as String,
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfigurationFieldMapping {
   /// Name of the field in which Amazon Bedrock stores metadata about the vector store.
   final pulumi.Input<String> metadataField;
-
   /// Name of the field in which Amazon Bedrock stores the raw text from your data. The text is split according to the chunking strategy you choose.
   final pulumi.Input<String> textField;
-
   /// Name of the field in which Amazon Bedrock stores the vector embeddings for your data sources.
   final pulumi.Input<String> vectorField;
 
@@ -30,9 +28,7 @@ class AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfigurationFie
     };
   }
 
-  factory AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfigurationFieldMapping.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfigurationFieldMapping.fromMap(Map<String, dynamic> map) {
     return AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfigurationFieldMapping(
       metadataField: pulumi.Input.fromValue(map['metadataField'] as String),
       textField: pulumi.Input.fromValue(map['textField'] as String),
@@ -40,3 +36,4 @@ class AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfigurationFie
     );
   }
 }
+

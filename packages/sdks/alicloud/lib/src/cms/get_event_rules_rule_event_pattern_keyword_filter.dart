@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEventRulesRuleEventPatternKeywordFilter {
   /// The keywords that are used to match events.
   final pulumi.Input<List<String>> keyWords;
-
   /// The relationship between multiple keywords in a condition.
   final pulumi.Input<String> relation;
 
@@ -18,17 +17,17 @@ class GetEventRulesRuleEventPatternKeywordFilter {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'keyWords': keyWords, 'relation': relation};
+    return <String, dynamic>{
+      'keyWords': keyWords,
+      'relation': relation,
+    };
   }
 
-  factory GetEventRulesRuleEventPatternKeywordFilter.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetEventRulesRuleEventPatternKeywordFilter.fromMap(Map<String, dynamic> map) {
     return GetEventRulesRuleEventPatternKeywordFilter(
-      keyWords: pulumi.Input.fromValue(
-        (map['keyWords'] as List).cast<String>(),
-      ),
+      keyWords: pulumi.Input.fromValue((map['keyWords'] as List).cast<String>()),
       relation: pulumi.Input.fromValue(map['relation'] as String),
     );
   }
 }
+

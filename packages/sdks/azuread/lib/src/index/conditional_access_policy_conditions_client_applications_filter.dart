@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConditionalAccessPolicyConditionsClientApplicationsFilter {
   /// Whether to include in, or exclude from, matching items from the policy. Supported values are `include` or `exclude`.
   final pulumi.Input<String> mode;
-
   /// Condition filter to match items.
   final pulumi.Input<String> rule;
 
@@ -18,15 +17,17 @@ class ConditionalAccessPolicyConditionsClientApplicationsFilter {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'mode': mode, 'rule': rule};
+    return <String, dynamic>{
+      'mode': mode,
+      'rule': rule,
+    };
   }
 
-  factory ConditionalAccessPolicyConditionsClientApplicationsFilter.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConditionalAccessPolicyConditionsClientApplicationsFilter.fromMap(Map<String, dynamic> map) {
     return ConditionalAccessPolicyConditionsClientApplicationsFilter(
       mode: pulumi.Input.fromValue(map['mode'] as String),
       rule: pulumi.Input.fromValue(map['rule'] as String),
     );
   }
 }
+

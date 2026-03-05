@@ -7,17 +7,20 @@ class GetOriginRequestPolicyHeadersConfigHeader {
 
   /// Creates a new [GetOriginRequestPolicyHeadersConfigHeader].
   /// [items] Required.
-  GetOriginRequestPolicyHeadersConfigHeader({required this.items});
+  GetOriginRequestPolicyHeadersConfigHeader({
+    required this.items,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'items': items};
+    return <String, dynamic>{
+      'items': items,
+    };
   }
 
-  factory GetOriginRequestPolicyHeadersConfigHeader.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetOriginRequestPolicyHeadersConfigHeader.fromMap(Map<String, dynamic> map) {
     return GetOriginRequestPolicyHeadersConfigHeader(
       items: pulumi.Input.fromValue((map['items'] as List).cast<String>()),
     );
   }
 }
+

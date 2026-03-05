@@ -409,56 +409,38 @@ import 'virtual_machine_profile_response.dart';
 class Lab extends pulumi.CustomResource {
   /// The resource auto shutdown configuration for the lab. This controls whether actions are taken on resources that are sitting idle.
   late final pulumi.Output<AutoShutdownProfileResponse> autoShutdownProfile;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The connection profile for the lab. This controls settings such as web access to lab resources or whether RDP or SSH ports are open.
   late final pulumi.Output<ConnectionProfileResponse> connectionProfile;
-
   /// The description of the lab.
   late final pulumi.Output<String?> description;
-
   /// The ID of the lab plan. Used during resource creation to provide defaults and acts as a permission container when creating a lab via labs.azure.com. Setting a labPlanId on an existing lab provides organization..
   late final pulumi.Output<String?> labPlanId;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The network profile for the lab, typically applied via a lab plan. This profile cannot be modified once a lab has been created.
   late final pulumi.Output<LabNetworkProfileResponse?> networkProfile;
-
   /// Current provisioning state of the lab.
   late final pulumi.Output<String> provisioningState;
-
   /// Error details of last operation done on lab.
-  late final pulumi.Output<ResourceOperationErrorResponse>
-  resourceOperationError;
-
+  late final pulumi.Output<ResourceOperationErrorResponse> resourceOperationError;
   /// The lab user list management profile.
   late final pulumi.Output<RosterProfileResponse?> rosterProfile;
-
   /// The lab security profile.
   late final pulumi.Output<SecurityProfileResponse> securityProfile;
-
   /// The lab state.
   late final pulumi.Output<String> state;
-
   /// Metadata pertaining to creation and last modification of the lab.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The title of the lab.
   late final pulumi.Output<String?> title;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// The profile used for creating lab virtual machines.
   late final pulumi.Output<VirtualMachineProfileResponse> virtualMachineProfile;
 
@@ -466,102 +448,33 @@ class Lab extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Lab]. {@macro pulumi_labservices_lab_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Lab(String name, {LabArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:labservices:Lab',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
-    autoShutdownProfile = registerOutput<AutoShutdownProfileResponse>(
-      'autoShutdownProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AutoShutdownProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+  Lab(
+    String name, {
+    LabArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:labservices:Lab',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    autoShutdownProfile = registerOutput<AutoShutdownProfileResponse>('autoShutdownProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutoShutdownProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    connectionProfile = registerOutput<ConnectionProfileResponse>(
-      'connectionProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConnectionProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    connectionProfile = registerOutput<ConnectionProfileResponse>('connectionProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     labPlanId = registerOutput<String?>('labPlanId');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    networkProfile = registerOutput<LabNetworkProfileResponse?>(
-      'networkProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LabNetworkProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    networkProfile = registerOutput<LabNetworkProfileResponse?>('networkProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LabNetworkProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningState = registerOutput<String>('provisioningState');
-    resourceOperationError = registerOutput<ResourceOperationErrorResponse>(
-      'resourceOperationError',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResourceOperationErrorResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    rosterProfile = registerOutput<RosterProfileResponse?>(
-      'rosterProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RosterProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    securityProfile = registerOutput<SecurityProfileResponse>(
-      'securityProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SecurityProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    resourceOperationError = registerOutput<ResourceOperationErrorResponse>('resourceOperationError', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceOperationErrorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    rosterProfile = registerOutput<RosterProfileResponse?>('rosterProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RosterProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    securityProfile = registerOutput<SecurityProfileResponse>('securityProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     state = registerOutput<String>('state');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     title = registerOutput<String?>('title');
     type = registerOutput<String>('type');
-    virtualMachineProfile = registerOutput<VirtualMachineProfileResponse>(
-      'virtualMachineProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return VirtualMachineProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    virtualMachineProfile = registerOutput<VirtualMachineProfileResponse>('virtualMachineProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

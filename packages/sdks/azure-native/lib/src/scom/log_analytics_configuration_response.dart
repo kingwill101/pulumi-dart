@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LogAnalyticsConfigurationResponse {
   /// The types of data to be ingested to Log Analytics workspace.
   final pulumi.Input<List<String>>? dataTypes;
-
   /// A one-time optional parameter to import data of last 7 days.
   final pulumi.Input<bool>? importData;
-
   /// The resource ID of the Log Analytics workspace to be used.
   final pulumi.Input<String>? workspaceId;
 
@@ -33,21 +31,10 @@ class LogAnalyticsConfigurationResponse {
 
   factory LogAnalyticsConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return LogAnalyticsConfigurationResponse(
-      dataTypes: (() {
-        final guardedValue = map['dataTypes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      importData: (() {
-        final guardedValue = map['importData'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      workspaceId: (() {
-        final guardedValue = map['workspaceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      dataTypes: (() { final guardedValue = map['dataTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      importData: (() { final guardedValue = map['importData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      workspaceId: (() { final guardedValue = map['workspaceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

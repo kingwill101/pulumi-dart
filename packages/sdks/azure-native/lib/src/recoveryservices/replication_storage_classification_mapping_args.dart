@@ -10,19 +10,14 @@ import 'storage_mapping_input_properties.dart';
 class ReplicationStorageClassificationMappingArgs {
   /// Fabric name.
   final pulumi.Input<String> fabricName;
-
   /// Storage mapping input properties.
   final pulumi.Input<StorageMappingInputProperties>? properties;
-
   /// The name of the resource group where the recovery services vault is present.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the recovery services vault.
   final pulumi.Input<String> resourceName;
-
   /// Storage classification mapping name.
   final pulumi.Input<String>? storageClassificationMappingName;
-
   /// Storage classification name.
   final pulumi.Input<String> storageClassificationName;
 
@@ -45,11 +40,7 @@ class ReplicationStorageClassificationMappingArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'fabricName': fabricName,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            StorageMappingInputProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<StorageMappingInputProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'resourceName': resourceName,
       'storageClassificationMappingName': ?storageClassificationMappingName,
@@ -57,32 +48,15 @@ class ReplicationStorageClassificationMappingArgs {
     };
   }
 
-  factory ReplicationStorageClassificationMappingArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ReplicationStorageClassificationMappingArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationStorageClassificationMappingArgs(
       fabricName: pulumi.Input.fromValue(map['fabricName'] as String),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          StorageMappingInputProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StorageMappingInputProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
-      storageClassificationMappingName: (() {
-        final guardedValue = map['storageClassificationMappingName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      storageClassificationName: pulumi.Input.fromValue(
-        map['storageClassificationName'] as String,
-      ),
+      storageClassificationMappingName: (() { final guardedValue = map['storageClassificationMappingName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageClassificationName: pulumi.Input.fromValue(map['storageClassificationName'] as String),
     );
   }
 }
+

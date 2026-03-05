@@ -9,17 +9,20 @@ class ShieldedInstanceConfigResponseTpuV2alpha1 {
 
   /// Creates a new [ShieldedInstanceConfigResponseTpuV2alpha1].
   /// [enableSecureBoot] Defines whether the instance has Secure Boot enabled.
-  ShieldedInstanceConfigResponseTpuV2alpha1({required this.enableSecureBoot});
+  ShieldedInstanceConfigResponseTpuV2alpha1({
+    required this.enableSecureBoot,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enableSecureBoot': enableSecureBoot};
+    return <String, dynamic>{
+      'enableSecureBoot': enableSecureBoot,
+    };
   }
 
-  factory ShieldedInstanceConfigResponseTpuV2alpha1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ShieldedInstanceConfigResponseTpuV2alpha1.fromMap(Map<String, dynamic> map) {
     return ShieldedInstanceConfigResponseTpuV2alpha1(
       enableSecureBoot: pulumi.Input.fromValue(map['enableSecureBoot'] as bool),
     );
   }
 }
+

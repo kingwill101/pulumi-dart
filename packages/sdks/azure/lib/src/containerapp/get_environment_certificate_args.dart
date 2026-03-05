@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEnvironmentCertificateArgs {
   /// The ID of the Container App Environment to configure this Certificate on. Changing this forces a new resource to be created.
   final pulumi.Input<String> containerAppEnvironmentId;
-
   /// The name of the Container Apps Certificate. Changing this forces a new resource to be created.
   final pulumi.Input<String> name;
 
@@ -30,10 +29,9 @@ class GetEnvironmentCertificateArgs {
 
   factory GetEnvironmentCertificateArgs.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentCertificateArgs(
-      containerAppEnvironmentId: pulumi.Input.fromValue(
-        map['containerAppEnvironmentId'] as String,
-      ),
+      containerAppEnvironmentId: pulumi.Input.fromValue(map['containerAppEnvironmentId'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

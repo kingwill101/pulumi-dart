@@ -5,37 +5,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIpv6AddressesAddress {
   /// The ID of the instance that is assigned the IPv6 address.
   final pulumi.Input<String> associatedInstanceId;
-
   /// The type of the instance that is assigned the IPv6 address.
   final pulumi.Input<String> associatedInstanceType;
-
   /// The time when the IPv6 address was created.
   final pulumi.Input<String> createTime;
-
   /// The ID of the Ipv6 Address.
   final pulumi.Input<String> id;
-
   /// The address of the Ipv6 Address.
   final pulumi.Input<String> ipv6Address;
-
   /// The ID of the IPv6 address.
   final pulumi.Input<String> ipv6AddressId;
-
   /// The name of the IPv6 address.
   final pulumi.Input<String> ipv6AddressName;
-
   /// The ID of the IPv6 gateway to which the IPv6 address belongs.
   final pulumi.Input<String> ipv6GatewayId;
-
   /// The type of communication supported by the IPv6 address. Valid values:`Private` or `Public`. `Private`: communication within the private network. `Public`: communication over the public network
   final pulumi.Input<String> networkType;
-
   /// The status of the IPv6 address. Valid values:`Pending` or `Available`.
   final pulumi.Input<String> status;
-
   /// The ID of the VPC to which the IPv6 address belongs.
   final pulumi.Input<String> vpcId;
-
   /// The ID of the vSwitch to which the IPv6 address belongs.
   final pulumi.Input<String> vswitchId;
 
@@ -86,12 +75,8 @@ class GetIpv6AddressesAddress {
 
   factory GetIpv6AddressesAddress.fromMap(Map<String, dynamic> map) {
     return GetIpv6AddressesAddress(
-      associatedInstanceId: pulumi.Input.fromValue(
-        map['associatedInstanceId'] as String,
-      ),
-      associatedInstanceType: pulumi.Input.fromValue(
-        map['associatedInstanceType'] as String,
-      ),
+      associatedInstanceId: pulumi.Input.fromValue(map['associatedInstanceId'] as String),
+      associatedInstanceType: pulumi.Input.fromValue(map['associatedInstanceType'] as String),
       createTime: pulumi.Input.fromValue(map['createTime'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
       ipv6Address: pulumi.Input.fromValue(map['ipv6Address'] as String),
@@ -105,3 +90,4 @@ class GetIpv6AddressesAddress {
     );
   }
 }
+

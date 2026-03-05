@@ -394,40 +394,25 @@ import 'next_generation_firewall_virtual_hub_local_rulestack_state.dart';
 /// ```sh
 /// $ pulumi import azure:paloalto/nextGenerationFirewallVirtualHubLocalRulestack:NextGenerationFirewallVirtualHubLocalRulestack example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/PaloAltoNetworks.Cloudngfw/firewalls/myVhubRulestackFW
 /// ```
-class NextGenerationFirewallVirtualHubLocalRulestack
-    extends pulumi.CustomResource {
+class NextGenerationFirewallVirtualHubLocalRulestack extends pulumi.CustomResource {
   /// One or more `destination_nat` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> destinationNats;
-
   /// A `dns_settings` block as defined below.
-  late final pulumi.Output<
-    NextGenerationFirewallVirtualHubLocalRulestackDnsSettings?
-  >
-  dnsSettings;
-
+  late final pulumi.Output<NextGenerationFirewallVirtualHubLocalRulestackDnsSettings?> dnsSettings;
   /// The marketplace offer ID. Defaults to `pan_swfw_cloud_ngfw`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> marketplaceOfferId;
-
   /// The name which should be used for this Palo Alto Next Generation Firewall VHub Local Rulestack. Changing this forces a new Palo Alto Next Generation Firewall VHub Local Rulestack to be created.
   late final pulumi.Output<String> name;
-
   /// A `network_profile` block as defined below.
-  late final pulumi.Output<
-    NextGenerationFirewallVirtualHubLocalRulestackNetworkProfile
-  >
-  networkProfile;
-
+  late final pulumi.Output<NextGenerationFirewallVirtualHubLocalRulestackNetworkProfile> networkProfile;
   /// The billing plan ID as published by Liftr.PAN. Defaults to `panw-cloud-ngfw-payg`.
   ///
   /// &gt; **Note:** The former `plan_id` `panw-cloud-ngfw-payg` is defined as stop sell, but has been set as the default to not break any existing resources that were originally provisioned with it. Users need to explicitly set `plan_id` to `panw-cngfw-payg` when creating new resources.
   late final pulumi.Output<String?> planId;
-
   /// The name of the Resource Group where the Palo Alto Next Generation Firewall VHub Local Rulestack should exist. Changing this forces a new Palo Alto Next Generation Firewall VHub Local Rulestack to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The ID of the Local Rulestack to be used for this Next Generation Firewall.
   late final pulumi.Output<String> rulestackId;
-
   /// A mapping of tags which should be assigned to the Palo Alto Next Generation Firewall VHub Local Rulestack.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -440,42 +425,16 @@ class NextGenerationFirewallVirtualHubLocalRulestack
     NextGenerationFirewallVirtualHubLocalRulestackArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:paloalto/nextGenerationFirewallVirtualHubLocalRulestack:NextGenerationFirewallVirtualHubLocalRulestack',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    destinationNats = registerOutput<List<Map<String, dynamic>>?>(
-      'destinationNats',
-    );
-    dnsSettings =
-        registerOutput<
-          NextGenerationFirewallVirtualHubLocalRulestackDnsSettings?
-        >(
-          'dnsSettings',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return NextGenerationFirewallVirtualHubLocalRulestackDnsSettings.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'azure:paloalto/nextGenerationFirewallVirtualHubLocalRulestack:NextGenerationFirewallVirtualHubLocalRulestack',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    destinationNats = registerOutput<List<Map<String, dynamic>>?>('destinationNats');
+    dnsSettings = registerOutput<NextGenerationFirewallVirtualHubLocalRulestackDnsSettings?>('dnsSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NextGenerationFirewallVirtualHubLocalRulestackDnsSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     marketplaceOfferId = registerOutput<String?>('marketplaceOfferId');
     this.name = registerOutput<String>('name');
-    networkProfile =
-        registerOutput<
-          NextGenerationFirewallVirtualHubLocalRulestackNetworkProfile
-        >(
-          'networkProfile',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return NextGenerationFirewallVirtualHubLocalRulestackNetworkProfile.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    networkProfile = registerOutput<NextGenerationFirewallVirtualHubLocalRulestackNetworkProfile>('networkProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NextGenerationFirewallVirtualHubLocalRulestackNetworkProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     planId = registerOutput<String?>('planId');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     rulestackId = registerOutput<String>('rulestackId');
@@ -500,42 +459,16 @@ class NextGenerationFirewallVirtualHubLocalRulestack
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:paloalto/nextGenerationFirewallVirtualHubLocalRulestack:NextGenerationFirewallVirtualHubLocalRulestack',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    destinationNats = registerOutput<List<Map<String, dynamic>>?>(
-      'destinationNats',
-    );
-    dnsSettings =
-        registerOutput<
-          NextGenerationFirewallVirtualHubLocalRulestackDnsSettings?
-        >(
-          'dnsSettings',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return NextGenerationFirewallVirtualHubLocalRulestackDnsSettings.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'azure:paloalto/nextGenerationFirewallVirtualHubLocalRulestack:NextGenerationFirewallVirtualHubLocalRulestack',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    destinationNats = registerOutput<List<Map<String, dynamic>>?>('destinationNats');
+    dnsSettings = registerOutput<NextGenerationFirewallVirtualHubLocalRulestackDnsSettings?>('dnsSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NextGenerationFirewallVirtualHubLocalRulestackDnsSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     marketplaceOfferId = registerOutput<String?>('marketplaceOfferId');
     this.name = registerOutput<String>('name');
-    networkProfile =
-        registerOutput<
-          NextGenerationFirewallVirtualHubLocalRulestackNetworkProfile
-        >(
-          'networkProfile',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return NextGenerationFirewallVirtualHubLocalRulestackNetworkProfile.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    networkProfile = registerOutput<NextGenerationFirewallVirtualHubLocalRulestackNetworkProfile>('networkProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NextGenerationFirewallVirtualHubLocalRulestackNetworkProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     planId = registerOutput<String?>('planId');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     rulestackId = registerOutput<String>('rulestackId');

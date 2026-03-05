@@ -9,19 +9,20 @@ class NetworkService {
 
   /// Creates a new [NetworkService].
   /// [enabled] True if the service is enabled; false otherwise.
-  NetworkService({this.enabled});
+  NetworkService({
+    this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': ?enabled};
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
   factory NetworkService.fromMap(Map<String, dynamic> map) {
     return NetworkService(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

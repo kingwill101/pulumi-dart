@@ -4,22 +4,16 @@ enum GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType {
   code("CODE"),
   idToken("ID_TOKEN");
 
-  const GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType(
-    this.wireValue,
-  );
+  const GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType(this.wireValue);
   final String wireValue;
 
-  static GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType
-  fromValue(String value) {
-    for (final item
-        in GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType
-            .values) {
+  static GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType fromValue(String value) {
+    for (final item in GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType value: $value',
-    );
+    throw ArgumentError('Unknown GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType value: $value');
   }
 }
+

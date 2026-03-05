@@ -1,21 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getServerlessLifecyclePolicy.
 class GetServerlessLifecyclePolicyResult {
   /// The date the lifecycle policy was created.
   final String createdDate;
-
   /// Description of the policy. Typically used to store information about the permissions defined in the policy.
   final String description;
   final String id;
-
   /// The date the lifecycle policy was last modified.
   final String lastModifiedDate;
   final String name;
-
   /// JSON policy document to use as the content for the new policy.
   final String policy;
-
   /// Version of the policy.
   final String policyVersion;
   final String region;
@@ -71,3 +68,4 @@ class GetServerlessLifecyclePolicyResult {
     );
   }
 }
+

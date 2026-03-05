@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEncryptionProtectorArgs {
   /// The name of the encryption protector to be retrieved.
   final pulumi.Input<String> encryptionProtectorName;
-
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the server.
   final pulumi.Input<String> serverName;
 
@@ -36,13 +34,10 @@ class GetEncryptionProtectorArgs {
 
   factory GetEncryptionProtectorArgs.fromMap(Map<String, dynamic> map) {
     return GetEncryptionProtectorArgs(
-      encryptionProtectorName: pulumi.Input.fromValue(
-        map['encryptionProtectorName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      encryptionProtectorName: pulumi.Input.fromValue(map['encryptionProtectorName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serverName: pulumi.Input.fromValue(map['serverName'] as String),
     );
   }
 }
+

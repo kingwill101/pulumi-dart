@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MonitorGroupInstancesInstance {
   /// The category of instance.
   final pulumi.Input<String> category;
-
   /// The id of instance.
   final pulumi.Input<String> instanceId;
-
   /// The name of instance.
   final pulumi.Input<String> instanceName;
-
   /// The region id of instance.
   final pulumi.Input<String> regionId;
 
@@ -45,3 +42,4 @@ class MonitorGroupInstancesInstance {
     );
   }
 }
+

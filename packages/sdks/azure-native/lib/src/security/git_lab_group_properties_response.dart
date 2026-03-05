@@ -8,12 +8,10 @@ class GitLabGroupPropertiesResponse {
   ///
   /// This contains the entire namespace hierarchy as seen on GitLab UI where namespaces are separated by the '/' character.
   final pulumi.Input<String> fullyQualifiedFriendlyName;
-
   /// Gets or sets the fully-qualified name of the Group object.
   ///
   /// This contains the entire namespace hierarchy where namespaces are separated by the '$' character.
   final pulumi.Input<String> fullyQualifiedName;
-
   /// Details about resource onboarding status across all connectors.
   ///
   /// OnboardedByOtherConnector - this resource has already been onboarded to another connector. This is only applicable to top-level resources.
@@ -21,7 +19,6 @@ class GitLabGroupPropertiesResponse {
   /// NotOnboarded - this resource has not been onboarded to any connector.
   /// NotApplicable - the onboarding state is not applicable to the current endpoint.
   final pulumi.Input<String>? onboardingState;
-
   /// The provisioning state of the resource.
   ///
   /// Pending - Provisioning pending.
@@ -32,13 +29,10 @@ class GitLabGroupPropertiesResponse {
   /// DeletionSuccess - Deletion successful.
   /// DeletionFailure - Deletion failure.
   final pulumi.Input<String>? provisioningState;
-
   /// Gets or sets resource status message.
   final pulumi.Input<String> provisioningStatusMessage;
-
   /// Gets or sets time when resource was last checked.
   final pulumi.Input<String> provisioningStatusUpdateTimeUtc;
-
   /// Gets or sets the url of the GitLab Group.
   final pulumi.Input<String> url;
 
@@ -74,29 +68,14 @@ class GitLabGroupPropertiesResponse {
 
   factory GitLabGroupPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return GitLabGroupPropertiesResponse(
-      fullyQualifiedFriendlyName: pulumi.Input.fromValue(
-        map['fullyQualifiedFriendlyName'] as String,
-      ),
-      fullyQualifiedName: pulumi.Input.fromValue(
-        map['fullyQualifiedName'] as String,
-      ),
-      onboardingState: (() {
-        final guardedValue = map['onboardingState'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      provisioningState: (() {
-        final guardedValue = map['provisioningState'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      provisioningStatusMessage: pulumi.Input.fromValue(
-        map['provisioningStatusMessage'] as String,
-      ),
-      provisioningStatusUpdateTimeUtc: pulumi.Input.fromValue(
-        map['provisioningStatusUpdateTimeUtc'] as String,
-      ),
+      fullyQualifiedFriendlyName: pulumi.Input.fromValue(map['fullyQualifiedFriendlyName'] as String),
+      fullyQualifiedName: pulumi.Input.fromValue(map['fullyQualifiedName'] as String),
+      onboardingState: (() { final guardedValue = map['onboardingState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      provisioningStatusMessage: pulumi.Input.fromValue(map['provisioningStatusMessage'] as String),
+      provisioningStatusUpdateTimeUtc: pulumi.Input.fromValue(map['provisioningStatusUpdateTimeUtc'] as String),
       url: pulumi.Input.fromValue(map['url'] as String),
     );
   }
 }
+

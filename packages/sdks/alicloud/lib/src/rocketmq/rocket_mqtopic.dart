@@ -514,25 +514,18 @@ import 'rocket_mqtopic_state.dart';
 class RocketMQTopic extends pulumi.CustomResource {
   /// The creation time of the resource.
   late final pulumi.Output<String> createTime;
-
   /// Instance ID.
   late final pulumi.Output<String> instanceId;
-
   /// The maximum TPS for message sending.
   late final pulumi.Output<int?> maxSendTps;
-
   /// Message type.
   late final pulumi.Output<String?> messageType;
-
   /// (Available since v1.247.0) The region ID to which the instance belongs.
   late final pulumi.Output<String> regionId;
-
   /// Custom remarks.
   late final pulumi.Output<String?> remark;
-
   /// The status of the resource.
   late final pulumi.Output<String> status;
-
   /// Topic name and identification.
   late final pulumi.Output<String> topicName;
 
@@ -545,11 +538,11 @@ class RocketMQTopic extends pulumi.CustomResource {
     RocketMQTopicArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:rocketmq/rocketMQTopic:RocketMQTopic',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:rocketmq/rocketMQTopic:RocketMQTopic',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     instanceId = registerOutput<String>('instanceId');
     maxSendTps = registerOutput<int?>('maxSendTps');
@@ -578,11 +571,11 @@ class RocketMQTopic extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:rocketmq/rocketMQTopic:RocketMQTopic',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:rocketmq/rocketMQTopic:RocketMQTopic',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     instanceId = registerOutput<String>('instanceId');
     maxSendTps = registerOutput<int?>('maxSendTps');

@@ -16,17 +16,17 @@ class MultitenantDistributionDefaultCacheBehaviorAllowedMethods {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'cachedMethods': cachedMethods, 'items': items};
+    return <String, dynamic>{
+      'cachedMethods': cachedMethods,
+      'items': items,
+    };
   }
 
-  factory MultitenantDistributionDefaultCacheBehaviorAllowedMethods.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MultitenantDistributionDefaultCacheBehaviorAllowedMethods.fromMap(Map<String, dynamic> map) {
     return MultitenantDistributionDefaultCacheBehaviorAllowedMethods(
-      cachedMethods: pulumi.Input.fromValue(
-        (map['cachedMethods'] as List).cast<String>(),
-      ),
+      cachedMethods: pulumi.Input.fromValue((map['cachedMethods'] as List).cast<String>()),
       items: pulumi.Input.fromValue((map['items'] as List).cast<String>()),
     );
   }
 }
+

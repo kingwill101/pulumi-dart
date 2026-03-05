@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EligibleRoleAssignmentScheduleExpiration {
   /// The duration of the role assignment in days. Changing this forces a new resource to be created.
   final pulumi.Input<int>? durationDays;
-
   /// The duration of the role assignment in hours. Changing this forces a new resource to be created.
   final pulumi.Input<int>? durationHours;
-
   /// The end date/time of the role assignment. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Only one of `duration_days`, `duration_hours` or `end_date_time` should be specified.
@@ -32,25 +30,12 @@ class EligibleRoleAssignmentScheduleExpiration {
     };
   }
 
-  factory EligibleRoleAssignmentScheduleExpiration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EligibleRoleAssignmentScheduleExpiration.fromMap(Map<String, dynamic> map) {
     return EligibleRoleAssignmentScheduleExpiration(
-      durationDays: (() {
-        final guardedValue = map['durationDays'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      durationHours: (() {
-        final guardedValue = map['durationHours'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      endDateTime: (() {
-        final guardedValue = map['endDateTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      durationDays: (() { final guardedValue = map['durationDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      durationHours: (() { final guardedValue = map['durationHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      endDateTime: (() { final guardedValue = map['endDateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

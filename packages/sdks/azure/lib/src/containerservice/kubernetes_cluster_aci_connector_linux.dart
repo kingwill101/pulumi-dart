@@ -5,9 +5,7 @@ import 'kubernetes_cluster_aci_connector_linux_connector_identity.dart';
 
 class KubernetesClusterAciConnectorLinux {
   /// A `connector_identity` block is exported. The exported attributes are defined below.
-  final pulumi.Input<List<KubernetesClusterAciConnectorLinuxConnectorIdentity>>?
-  connectorIdentities;
-
+  final pulumi.Input<List<KubernetesClusterAciConnectorLinuxConnectorIdentity>>? connectorIdentities;
   /// The subnet name for the virtual nodes to run.
   ///
   /// &gt; **Note:** At this time ACI Connectors are not supported in Azure China.
@@ -158,40 +156,16 @@ class KubernetesClusterAciConnectorLinux {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connectorIdentities':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<KubernetesClusterAciConnectorLinuxConnectorIdentity>,
-            List<Map<String, dynamic>>
-          >(
-            connectorIdentities,
-            (value) =>
-                pulumi.Input.encodeList<
-                  KubernetesClusterAciConnectorLinuxConnectorIdentity,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'connectorIdentities': ?pulumi.Input.mapOptionalInputValue<List<KubernetesClusterAciConnectorLinuxConnectorIdentity>, List<Map<String, dynamic>>>(connectorIdentities, (value) => pulumi.Input.encodeList<KubernetesClusterAciConnectorLinuxConnectorIdentity, Map<String, dynamic>>(value, (value) => value.toMap())),
       'subnetName': subnetName,
     };
   }
 
   factory KubernetesClusterAciConnectorLinux.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterAciConnectorLinux(
-      connectorIdentities: (() {
-        final guardedValue = map['connectorIdentities'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            KubernetesClusterAciConnectorLinuxConnectorIdentity
-          >(
-            guardedValue,
-            (value) =>
-                KubernetesClusterAciConnectorLinuxConnectorIdentity.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
+      connectorIdentities: (() { final guardedValue = map['connectorIdentities']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<KubernetesClusterAciConnectorLinuxConnectorIdentity>(guardedValue, (value) => KubernetesClusterAciConnectorLinuxConnectorIdentity.fromMap((value as Map).cast<String, dynamic>()))); })(),
       subnetName: pulumi.Input.fromValue(map['subnetName'] as String),
     );
   }
 }
+

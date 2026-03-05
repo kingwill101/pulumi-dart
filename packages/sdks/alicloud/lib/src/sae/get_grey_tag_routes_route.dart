@@ -7,16 +7,12 @@ import 'get_grey_tag_routes_route_sc_rule.dart';
 class GetGreyTagRoutesRoute {
   /// The description of GreyTagRoute.
   final pulumi.Input<String> description;
-
   /// The grayscale rule created for Dubbo Application.
   final pulumi.Input<List<GetGreyTagRoutesRouteDubboRule>> dubboRules;
-
   /// The name of GreyTagRoute.
   final pulumi.Input<String> greyTagRouteName;
-
   /// The ID of the GreyTagRoute.
   final pulumi.Input<String> id;
-
   /// The grayscale rule created for SpringCloud Application.
   final pulumi.Input<List<GetGreyTagRoutesRouteScRule>> scRules;
 
@@ -37,58 +33,21 @@ class GetGreyTagRoutesRoute {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': description,
-      'dubboRules':
-          pulumi.Input.mapInputValue<
-            List<GetGreyTagRoutesRouteDubboRule>,
-            List<Map<String, dynamic>>
-          >(
-            dubboRules,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetGreyTagRoutesRouteDubboRule,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'dubboRules': pulumi.Input.mapInputValue<List<GetGreyTagRoutesRouteDubboRule>, List<Map<String, dynamic>>>(dubboRules, (value) => pulumi.Input.encodeList<GetGreyTagRoutesRouteDubboRule, Map<String, dynamic>>(value, (value) => value.toMap())),
       'greyTagRouteName': greyTagRouteName,
       'id': id,
-      'scRules':
-          pulumi.Input.mapInputValue<
-            List<GetGreyTagRoutesRouteScRule>,
-            List<Map<String, dynamic>>
-          >(
-            scRules,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetGreyTagRoutesRouteScRule,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'scRules': pulumi.Input.mapInputValue<List<GetGreyTagRoutesRouteScRule>, List<Map<String, dynamic>>>(scRules, (value) => pulumi.Input.encodeList<GetGreyTagRoutesRouteScRule, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetGreyTagRoutesRoute.fromMap(Map<String, dynamic> map) {
     return GetGreyTagRoutesRoute(
       description: pulumi.Input.fromValue(map['description'] as String),
-      dubboRules: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetGreyTagRoutesRouteDubboRule>(
-          map['dubboRules']!,
-          (value) => GetGreyTagRoutesRouteDubboRule.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      greyTagRouteName: pulumi.Input.fromValue(
-        map['greyTagRouteName'] as String,
-      ),
+      dubboRules: pulumi.Input.fromValue(pulumi.Input.decodeList<GetGreyTagRoutesRouteDubboRule>(map['dubboRules']!, (value) => GetGreyTagRoutesRouteDubboRule.fromMap((value as Map).cast<String, dynamic>()))),
+      greyTagRouteName: pulumi.Input.fromValue(map['greyTagRouteName'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
-      scRules: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetGreyTagRoutesRouteScRule>(
-          map['scRules']!,
-          (value) => GetGreyTagRoutesRouteScRule.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      scRules: pulumi.Input.fromValue(pulumi.Input.decodeList<GetGreyTagRoutesRouteScRule>(map['scRules']!, (value) => GetGreyTagRoutesRouteScRule.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

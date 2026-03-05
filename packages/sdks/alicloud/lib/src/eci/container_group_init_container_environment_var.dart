@@ -4,8 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'container_group_init_container_environment_var_field_ref.dart';
 
 class ContainerGroupInitContainerEnvironmentVar {
-  final pulumi.Input<List<ContainerGroupInitContainerEnvironmentVarFieldRef>>?
-  fieldReves;
+  final pulumi.Input<List<ContainerGroupInitContainerEnvironmentVarFieldRef>>? fieldReves;
   final pulumi.Input<String>? key;
   final pulumi.Input<String>? value;
 
@@ -21,52 +20,18 @@ class ContainerGroupInitContainerEnvironmentVar {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fieldReves':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ContainerGroupInitContainerEnvironmentVarFieldRef>,
-            List<Map<String, dynamic>>
-          >(
-            fieldReves,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ContainerGroupInitContainerEnvironmentVarFieldRef,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'fieldReves': ?pulumi.Input.mapOptionalInputValue<List<ContainerGroupInitContainerEnvironmentVarFieldRef>, List<Map<String, dynamic>>>(fieldReves, (value) => pulumi.Input.encodeList<ContainerGroupInitContainerEnvironmentVarFieldRef, Map<String, dynamic>>(value, (value) => value.toMap())),
       'key': ?key,
       'value': ?value,
     };
   }
 
-  factory ContainerGroupInitContainerEnvironmentVar.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ContainerGroupInitContainerEnvironmentVar.fromMap(Map<String, dynamic> map) {
     return ContainerGroupInitContainerEnvironmentVar(
-      fieldReves: (() {
-        final guardedValue = map['fieldReves'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            ContainerGroupInitContainerEnvironmentVarFieldRef
-          >(
-            guardedValue,
-            (value) =>
-                ContainerGroupInitContainerEnvironmentVarFieldRef.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
-      key: (() {
-        final guardedValue = map['key'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      fieldReves: (() { final guardedValue = map['fieldReves']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ContainerGroupInitContainerEnvironmentVarFieldRef>(guardedValue, (value) => ContainerGroupInitContainerEnvironmentVarFieldRef.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

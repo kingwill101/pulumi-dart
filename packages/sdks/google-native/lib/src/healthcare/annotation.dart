@@ -10,22 +10,17 @@ class Annotation extends pulumi.CustomResource {
   /// Details of the source.
   late final pulumi.Output<AnnotationSourceResponse> annotationSource;
   late final pulumi.Output<String> annotationStoreId;
-
   /// Additional information for this annotation record, such as annotator and verifier information or study campaign.
   late final pulumi.Output<Map<String, String>> customData;
   late final pulumi.Output<String> datasetId;
-
   /// Annotations for images. For example, bounding polygons.
   late final pulumi.Output<ImageAnnotationResponse> imageAnnotation;
   late final pulumi.Output<String> location;
-
   /// Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
-
   /// Annotations for resource. For example, classification tags.
   late final pulumi.Output<ResourceAnnotationResponse> resourceAnnotation;
-
   /// Annotations for sensitive texts. For example, a range that describes the location of sensitive text.
   late final pulumi.Output<SensitiveTextAnnotationResponse> textAnnotation;
 
@@ -38,56 +33,20 @@ class Annotation extends pulumi.CustomResource {
     AnnotationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'google-native:healthcare/v1beta1:Annotation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    annotationSource = registerOutput<AnnotationSourceResponse>(
-      'annotationSource',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AnnotationSourceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'google-native:healthcare/v1beta1:Annotation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    annotationSource = registerOutput<AnnotationSourceResponse>('annotationSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnnotationSourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     annotationStoreId = registerOutput<String>('annotationStoreId');
     customData = registerOutput<Map<String, String>>('customData');
     datasetId = registerOutput<String>('datasetId');
-    imageAnnotation = registerOutput<ImageAnnotationResponse>(
-      'imageAnnotation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ImageAnnotationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    imageAnnotation = registerOutput<ImageAnnotationResponse>('imageAnnotation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageAnnotationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    resourceAnnotation = registerOutput<ResourceAnnotationResponse>(
-      'resourceAnnotation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ResourceAnnotationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    textAnnotation = registerOutput<SensitiveTextAnnotationResponse>(
-      'textAnnotation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SensitiveTextAnnotationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    resourceAnnotation = registerOutput<ResourceAnnotationResponse>('resourceAnnotation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceAnnotationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    textAnnotation = registerOutput<SensitiveTextAnnotationResponse>('textAnnotation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SensitiveTextAnnotationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

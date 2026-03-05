@@ -9,17 +9,20 @@ class GoogleCloudDialogflowV2beta1IntentMessageTableCardCell {
 
   /// Creates a new [GoogleCloudDialogflowV2beta1IntentMessageTableCardCell].
   /// [text] Text in this cell.
-  GoogleCloudDialogflowV2beta1IntentMessageTableCardCell({required this.text});
+  GoogleCloudDialogflowV2beta1IntentMessageTableCardCell({
+    required this.text,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'text': text};
+    return <String, dynamic>{
+      'text': text,
+    };
   }
 
-  factory GoogleCloudDialogflowV2beta1IntentMessageTableCardCell.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDialogflowV2beta1IntentMessageTableCardCell.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1IntentMessageTableCardCell(
       text: pulumi.Input.fromValue(map['text'] as String),
     );
   }
 }
+

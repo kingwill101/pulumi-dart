@@ -11,17 +11,13 @@ enum DiskInstantiationConfigInstantiateFromComputeBeta {
   const DiskInstantiationConfigInstantiateFromComputeBeta(this.wireValue);
   final String wireValue;
 
-  static DiskInstantiationConfigInstantiateFromComputeBeta fromValue(
-    String value,
-  ) {
-    for (final item
-        in DiskInstantiationConfigInstantiateFromComputeBeta.values) {
+  static DiskInstantiationConfigInstantiateFromComputeBeta fromValue(String value) {
+    for (final item in DiskInstantiationConfigInstantiateFromComputeBeta.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown DiskInstantiationConfigInstantiateFromComputeBeta value: $value',
-    );
+    throw ArgumentError('Unknown DiskInstantiationConfigInstantiateFromComputeBeta value: $value');
   }
 }
+

@@ -6,7 +6,6 @@ class GetRepositoryMavenConfig {
   /// The repository with this flag will allow publishing the same
   /// snapshot versions.
   final pulumi.Input<bool> allowSnapshotOverwrites;
-
   /// Version policy defines the versions that the registry will accept. Default value: "VERSION_POLICY_UNSPECIFIED" Possible values: ["VERSION_POLICY_UNSPECIFIED", "RELEASE", "SNAPSHOT"]
   final pulumi.Input<String> versionPolicy;
 
@@ -27,10 +26,9 @@ class GetRepositoryMavenConfig {
 
   factory GetRepositoryMavenConfig.fromMap(Map<String, dynamic> map) {
     return GetRepositoryMavenConfig(
-      allowSnapshotOverwrites: pulumi.Input.fromValue(
-        map['allowSnapshotOverwrites'] as bool,
-      ),
+      allowSnapshotOverwrites: pulumi.Input.fromValue(map['allowSnapshotOverwrites'] as bool),
       versionPolicy: pulumi.Input.fromValue(map['versionPolicy'] as String),
     );
   }
 }
+

@@ -6,7 +6,6 @@ import 'get_templates_template.dart';
 /// Result data returned by getTemplates.
 class GetTemplatesResult {
   final bool? enableDetails;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -53,55 +52,23 @@ class GetTemplatesResult {
       'shareType': ?shareType,
       'tags': ?tags,
       'templateName': ?templateName,
-      'templates':
-          pulumi.Input.encodeList<GetTemplatesTemplate, Map<String, dynamic>>(
-            templates,
-            (value) => value.toMap(),
-          ),
+      'templates': pulumi.Input.encodeList<GetTemplatesTemplate, Map<String, dynamic>>(templates, (value) => value.toMap()),
     };
   }
 
   factory GetTemplatesResult.fromMap(Map<String, dynamic> map) {
     return GetTemplatesResult(
-      enableDetails: (() {
-        final guardedValue = map['enableDetails'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      enableDetails: (() { final guardedValue = map['enableDetails']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      shareType: (() {
-        final guardedValue = map['shareType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
-      templateName: (() {
-        final guardedValue = map['templateName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      templates: pulumi.Input.decodeList<GetTemplatesTemplate>(
-        map['templates']!,
-        (value) => GetTemplatesTemplate.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      shareType: (() { final guardedValue = map['shareType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      templateName: (() { final guardedValue = map['templateName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      templates: pulumi.Input.decodeList<GetTemplatesTemplate>(map['templates']!, (value) => GetTemplatesTemplate.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -142,8 +142,7 @@ class LinodeConfig {
     return (raw).toBool();
   }
 
-  bool get skipInstanceDeletePollIsSecret =>
-      _isSecret('skipInstanceDeletePoll');
+  bool get skipInstanceDeletePollIsSecret => _isSecret('skipInstanceDeletePoll');
 
   /// Skip waiting for a linode.Instance resource to be running.
   bool? get skipInstanceReadyPoll {
@@ -176,6 +175,8 @@ class LinodeConfig {
   }
 
   bool get urlIsSecret => _isSecret('url');
+
 }
 
 final config = LinodeConfig();
+

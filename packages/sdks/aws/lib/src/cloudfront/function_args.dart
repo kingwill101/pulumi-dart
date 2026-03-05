@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FunctionArgs {
   /// Source code of the function
   final pulumi.Input<String> code;
-
   /// Comment.
   final pulumi.Input<String>? comment;
-
   /// List of `aws.cloudfront.KeyValueStore` ARNs to be associated to the function. AWS limits associations to one key value store per function.
   final pulumi.Input<List<String>>? keyValueStoreAssociations;
-
   /// Unique name for your CloudFront Function.
   final pulumi.Input<String>? name;
-
   /// Whether to publish creation/change as Live CloudFront Function Version. Defaults to `true`.
   final pulumi.Input<bool>? publish;
-
   /// Identifier of the function's runtime. Valid values are `cloudfront-js-1.0` and `cloudfront-js-2.0`.
   ///
   /// The following arguments are optional:
@@ -57,27 +52,12 @@ class FunctionArgs {
   factory FunctionArgs.fromMap(Map<String, dynamic> map) {
     return FunctionArgs(
       code: pulumi.Input.fromValue(map['code'] as String),
-      comment: (() {
-        final guardedValue = map['comment'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keyValueStoreAssociations: (() {
-        final guardedValue = map['keyValueStoreAssociations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      publish: (() {
-        final guardedValue = map['publish'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      comment: (() { final guardedValue = map['comment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyValueStoreAssociations: (() { final guardedValue = map['keyValueStoreAssociations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publish: (() { final guardedValue = map['publish']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       runtime: pulumi.Input.fromValue(map['runtime'] as String),
     );
   }
 }
+

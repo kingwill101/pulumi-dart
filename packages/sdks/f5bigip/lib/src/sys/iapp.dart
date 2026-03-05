@@ -260,47 +260,33 @@ import 'iapp_state.dart';
 class IApp extends pulumi.CustomResource {
   /// User defined description.
   late final pulumi.Output<String?> description;
-
   /// BIG-IP password
   late final pulumi.Output<String> devicegroup;
-
   /// Run the specified template action associated with the application, this option can be specified in `json` with `executeAction`, value specified with `execute_action` attribute take precedence over `json` value
   late final pulumi.Output<String> executeAction;
-
   /// Read-only. Shows whether the application folder will automatically remain with the same device-group as its parent folder. Use 'device-group default' or 'device-group non-default' to set this.
   late final pulumi.Output<String?> inheritedDevicegroup;
-
   /// Read-only. Shows whether the application folder will automatically remain with the same traffic-group as its parent folder. Use 'traffic-group default' or 'traffic-group non-default' to set this.
   late final pulumi.Output<String?> inheritedTrafficGroup;
-
   /// Refer to the Json file which will be deployed on F5 BIG-IP.
   late final pulumi.Output<String> jsonfile;
-
   /// string values
   late final pulumi.Output<List<Map<String, dynamic>>?> lists;
-
   /// User defined generic data for the application service. It is a name and value pair.
   late final pulumi.Output<List<Map<String, dynamic>>?> metadatas;
-
   /// Name of the iApp.
   late final pulumi.Output<String> name;
-
   /// Displays the administrative partition within which the application resides.
   late final pulumi.Output<String?> partition;
-
   /// Specifies whether configuration objects contained in the application may be directly modified, outside the context of the system's application management interfaces.
   late final pulumi.Output<String?> strictUpdates;
   late final pulumi.Output<List<Map<String, dynamic>>?> tables;
-
   /// The template defines the configuration for the application. This may be changed after the application has been created to move the application to a new template.
   late final pulumi.Output<String?> template;
-
   /// Indicates that the application template used to deploy the application has been modified. The application should be updated to make use of the latest changes.
   late final pulumi.Output<String?> templateModified;
-
   /// Indicates any missing prerequisites associated with the template that defines this application.
   late final pulumi.Output<String?> templatePrerequisiteErrors;
-
   /// The name of the traffic group that the application service is assigned to.
   late final pulumi.Output<String?> trafficGroup;
   late final pulumi.Output<List<Map<String, dynamic>>?> variables;
@@ -309,13 +295,16 @@ class IApp extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [IApp]. {@macro pulumi_sys_i_app_iapp_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  IApp(String name, {IAppArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'f5bigip:sys/iApp:IApp',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  IApp(
+    String name, {
+    IAppArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'f5bigip:sys/iApp:IApp',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     devicegroup = registerOutput<String>('devicegroup');
     executeAction = registerOutput<String>('executeAction');
@@ -330,15 +319,17 @@ class IApp extends pulumi.CustomResource {
     tables = registerOutput<List<Map<String, dynamic>>?>('tables');
     template = registerOutput<String?>('template');
     templateModified = registerOutput<String?>('templateModified');
-    templatePrerequisiteErrors = registerOutput<String?>(
-      'templatePrerequisiteErrors',
-    );
+    templatePrerequisiteErrors = registerOutput<String?>('templatePrerequisiteErrors');
     trafficGroup = registerOutput<String?>('trafficGroup');
     variables = registerOutput<List<Map<String, dynamic>>?>('variables');
   }
 
   /// Gets an existing [IApp] resource's state with the given [name] and [id].
-  static IApp get(String name, pulumi.Input<String> id, {IAppState? state}) {
+  static IApp get(
+    String name,
+    pulumi.Input<String> id, {
+    IAppState? state,
+  }) {
     return IApp._get(
       name,
       state: state?.toMap(),
@@ -351,11 +342,11 @@ class IApp extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:sys/iApp:IApp',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:sys/iApp:IApp',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     devicegroup = registerOutput<String>('devicegroup');
     executeAction = registerOutput<String>('executeAction');
@@ -370,9 +361,7 @@ class IApp extends pulumi.CustomResource {
     tables = registerOutput<List<Map<String, dynamic>>?>('tables');
     template = registerOutput<String?>('template');
     templateModified = registerOutput<String?>('templateModified');
-    templatePrerequisiteErrors = registerOutput<String?>(
-      'templatePrerequisiteErrors',
-    );
+    templatePrerequisiteErrors = registerOutput<String?>('templatePrerequisiteErrors');
     trafficGroup = registerOutput<String?>('trafficGroup');
     variables = registerOutput<List<Map<String, dynamic>>?>('variables');
   }

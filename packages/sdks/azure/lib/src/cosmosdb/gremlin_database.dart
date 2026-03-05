@@ -164,18 +164,14 @@ import 'gremlin_database_state.dart';
 class GremlinDatabase extends pulumi.CustomResource {
   /// The name of the CosmosDB Account to create the Gremlin Database within. Changing this forces a new resource to be created.
   late final pulumi.Output<String> accountName;
-
   /// An `autoscale_settings` block as defined below. This must be set upon database creation otherwise it cannot be updated without a manual destroy-apply.
   ///
   /// &gt; **Note:** Switching between autoscale and manual throughput is not supported via this provider and must be completed via the Azure Portal and refreshed.
   late final pulumi.Output<GremlinDatabaseAutoscaleSettings?> autoscaleSettings;
-
   /// Specifies the name of the Cosmos DB Gremlin Database. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the resource group in which the Cosmos DB Gremlin Database is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The throughput of the Gremlin database (RU/s). Must be set in increments of `100`. The minimum value is `400`. This must be set upon database creation otherwise it cannot be updated without a manual resource destroy-apply.
   ///
   /// &gt; **Note:** throughput has a maximum value of `1000000` unless a higher limit is requested via Azure Support
@@ -190,22 +186,13 @@ class GremlinDatabase extends pulumi.CustomResource {
     GremlinDatabaseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:cosmosdb/gremlinDatabase:GremlinDatabase',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:cosmosdb/gremlinDatabase:GremlinDatabase',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountName = registerOutput<String>('accountName');
-    autoscaleSettings = registerOutput<GremlinDatabaseAutoscaleSettings?>(
-      'autoscaleSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GremlinDatabaseAutoscaleSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    autoscaleSettings = registerOutput<GremlinDatabaseAutoscaleSettings?>('autoscaleSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GremlinDatabaseAutoscaleSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     throughput = registerOutput<int>('throughput');
@@ -229,22 +216,13 @@ class GremlinDatabase extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:cosmosdb/gremlinDatabase:GremlinDatabase',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:cosmosdb/gremlinDatabase:GremlinDatabase',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountName = registerOutput<String>('accountName');
-    autoscaleSettings = registerOutput<GremlinDatabaseAutoscaleSettings?>(
-      'autoscaleSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GremlinDatabaseAutoscaleSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    autoscaleSettings = registerOutput<GremlinDatabaseAutoscaleSettings?>('autoscaleSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GremlinDatabaseAutoscaleSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     throughput = registerOutput<int>('throughput');

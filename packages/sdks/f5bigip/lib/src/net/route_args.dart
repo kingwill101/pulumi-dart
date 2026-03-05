@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RouteArgs {
   /// Specifies a gateway address for the route.
   final pulumi.Input<String>? gw;
-
   /// Name of the route.Name of Route should be full path,full path is the combination of the `partition + route name`,For ex: `/Common/test-net-route`.
   final pulumi.Input<String> name;
-
   /// The destination subnet and netmask for the route.
   final pulumi.Input<String> network;
-
   /// reject route
   final pulumi.Input<bool>? reject;
-
   /// tunnel_ref to route traffic
   final pulumi.Input<String>? tunnelRef;
 
@@ -48,23 +44,12 @@ class RouteArgs {
 
   factory RouteArgs.fromMap(Map<String, dynamic> map) {
     return RouteArgs(
-      gw: (() {
-        final guardedValue = map['gw'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      gw: (() { final guardedValue = map['gw']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       network: pulumi.Input.fromValue(map['network'] as String),
-      reject: (() {
-        final guardedValue = map['reject'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      tunnelRef: (() {
-        final guardedValue = map['tunnelRef'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      reject: (() { final guardedValue = map['reject']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      tunnelRef: (() { final guardedValue = map['tunnelRef']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

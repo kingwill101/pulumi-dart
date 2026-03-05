@@ -7,10 +7,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsZendesk {
   final pulumi.Input<String>? accessToken;
   final pulumi.Input<String> clientId;
   final pulumi.Input<String> clientSecret;
-  final pulumi.Input<
-    ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsZendeskOauthRequest
-  >?
-  oauthRequest;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsZendeskOauthRequest>? oauthRequest;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsZendesk].
   /// [accessToken] Optional.
@@ -29,34 +26,17 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsZendesk {
       'accessToken': ?accessToken,
       'clientId': clientId,
       'clientSecret': clientSecret,
-      'oauthRequest':
-          ?pulumi.Input.mapOptionalInputValue<
-            ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsZendeskOauthRequest,
-            Map<String, dynamic>
-          >(oauthRequest, (value) => value.toMap()),
+      'oauthRequest': ?pulumi.Input.mapOptionalInputValue<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsZendeskOauthRequest, Map<String, dynamic>>(oauthRequest, (value) => value.toMap()),
     };
   }
 
-  factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsZendesk.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsZendesk.fromMap(Map<String, dynamic> map) {
     return ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsZendesk(
-      accessToken: (() {
-        final guardedValue = map['accessToken'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accessToken: (() { final guardedValue = map['accessToken']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       clientId: pulumi.Input.fromValue(map['clientId'] as String),
       clientSecret: pulumi.Input.fromValue(map['clientSecret'] as String),
-      oauthRequest: (() {
-        final guardedValue = map['oauthRequest'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsZendeskOauthRequest.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      oauthRequest: (() { final guardedValue = map['oauthRequest']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsZendeskOauthRequest.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

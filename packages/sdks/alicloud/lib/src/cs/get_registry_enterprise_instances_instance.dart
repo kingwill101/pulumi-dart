@@ -5,37 +5,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRegistryEnterpriseInstancesInstance {
   /// The password that was used to log on to the registry.
   final pulumi.Input<String> authorizationToken;
-
   /// ID of Container Registry Enterprise Edition instance.
   final pulumi.Input<String> id;
-
   /// Name of Container Registry Enterprise Edition instance.
   final pulumi.Input<String> name;
-
   /// The max number of namespaces that an instance can create.
   final pulumi.Input<String> namespaceQuota;
-
   /// The number of namespaces already created.
   final pulumi.Input<String> namespaceUsage;
-
   /// A list of domains for access on internet network.
   final pulumi.Input<List<String>> publicEndpoints;
-
   /// Region of Container Registry Enterprise Edition instance.
   final pulumi.Input<String> region;
-
   /// The max number of repos that an instance can create.
   final pulumi.Input<String> repoQuota;
-
   /// The number of repos already created.
   final pulumi.Input<String> repoUsage;
-
   /// Specification of Container Registry Enterprise Edition instance.
   final pulumi.Input<String> specification;
-
   /// The username that was used to log on to the registry.
   final pulumi.Input<String> tempUsername;
-
   /// A list of domains for access on vpc network.
   final pulumi.Input<List<String>> vpcEndpoints;
 
@@ -84,28 +73,21 @@ class GetRegistryEnterpriseInstancesInstance {
     };
   }
 
-  factory GetRegistryEnterpriseInstancesInstance.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetRegistryEnterpriseInstancesInstance.fromMap(Map<String, dynamic> map) {
     return GetRegistryEnterpriseInstancesInstance(
-      authorizationToken: pulumi.Input.fromValue(
-        map['authorizationToken'] as String,
-      ),
+      authorizationToken: pulumi.Input.fromValue(map['authorizationToken'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       namespaceQuota: pulumi.Input.fromValue(map['namespaceQuota'] as String),
       namespaceUsage: pulumi.Input.fromValue(map['namespaceUsage'] as String),
-      publicEndpoints: pulumi.Input.fromValue(
-        (map['publicEndpoints'] as List).cast<String>(),
-      ),
+      publicEndpoints: pulumi.Input.fromValue((map['publicEndpoints'] as List).cast<String>()),
       region: pulumi.Input.fromValue(map['region'] as String),
       repoQuota: pulumi.Input.fromValue(map['repoQuota'] as String),
       repoUsage: pulumi.Input.fromValue(map['repoUsage'] as String),
       specification: pulumi.Input.fromValue(map['specification'] as String),
       tempUsername: pulumi.Input.fromValue(map['tempUsername'] as String),
-      vpcEndpoints: pulumi.Input.fromValue(
-        (map['vpcEndpoints'] as List).cast<String>(),
-      ),
+      vpcEndpoints: pulumi.Input.fromValue((map['vpcEndpoints'] as List).cast<String>()),
     );
   }
 }
+

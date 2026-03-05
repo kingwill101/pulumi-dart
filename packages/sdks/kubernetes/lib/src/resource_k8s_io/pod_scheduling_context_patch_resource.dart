@@ -16,22 +16,14 @@ import 'pod_scheduling_context_status_patch_resource_k8s_io_v1alpha3.dart';
 class PodSchedulingContextPatchResource extends pulumi.CustomResource {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   late final pulumi.Output<String?> apiVersion;
-
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   late final pulumi.Output<String?> kind;
-
   /// Standard object metadata
   late final pulumi.Output<ObjectMetaPatch?> metadata;
-
   /// Spec describes where resources for the Pod are needed.
-  late final pulumi.Output<PodSchedulingContextSpecPatchResourceK8sIoV1alpha3?>
-  spec;
-
+  late final pulumi.Output<PodSchedulingContextSpecPatchResourceK8sIoV1alpha3?> spec;
   /// Status describes where resources for the Pod can be allocated.
-  late final pulumi.Output<
-    PodSchedulingContextStatusPatchResourceK8sIoV1alpha3?
-  >
-  status;
+  late final pulumi.Output<PodSchedulingContextStatusPatchResourceK8sIoV1alpha3?> status;
 
   /// Creates a new [PodSchedulingContextPatchResource].
   /// [name] The Pulumi resource name.
@@ -42,43 +34,15 @@ class PodSchedulingContextPatchResource extends pulumi.CustomResource {
     PodSchedulingContextPatchResourceK8sIoV1alpha3Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'kubernetes:resource.k8s.io/v1alpha3:PodSchedulingContextPatch',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'kubernetes:resource.k8s.io/v1alpha3:PodSchedulingContextPatch',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiVersion = registerOutput<String?>('apiVersion');
     kind = registerOutput<String?>('kind');
-    metadata = registerOutput<ObjectMetaPatch?>(
-      'metadata',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ObjectMetaPatch.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    spec = registerOutput<PodSchedulingContextSpecPatchResourceK8sIoV1alpha3?>(
-      'spec',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PodSchedulingContextSpecPatchResourceK8sIoV1alpha3.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    status =
-        registerOutput<PodSchedulingContextStatusPatchResourceK8sIoV1alpha3?>(
-          'status',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return PodSchedulingContextStatusPatchResourceK8sIoV1alpha3.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    metadata = registerOutput<ObjectMetaPatch?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaPatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spec = registerOutput<PodSchedulingContextSpecPatchResourceK8sIoV1alpha3?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PodSchedulingContextSpecPatchResourceK8sIoV1alpha3.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<PodSchedulingContextStatusPatchResourceK8sIoV1alpha3?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PodSchedulingContextStatusPatchResourceK8sIoV1alpha3.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

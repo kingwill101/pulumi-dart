@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LogConfigCounterOptionsCustomFieldResponseComputeV1 {
   /// This is deprecated and has no effect. Do not use.
   final pulumi.Input<String> name;
-
   /// This is deprecated and has no effect. Do not use.
   final pulumi.Input<String> value;
 
@@ -19,15 +18,17 @@ class LogConfigCounterOptionsCustomFieldResponseComputeV1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'value': value};
+    return <String, dynamic>{
+      'name': name,
+      'value': value,
+    };
   }
 
-  factory LogConfigCounterOptionsCustomFieldResponseComputeV1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LogConfigCounterOptionsCustomFieldResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return LogConfigCounterOptionsCustomFieldResponseComputeV1(
       name: pulumi.Input.fromValue(map['name'] as String),
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
+

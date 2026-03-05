@@ -5,25 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetExchangesExchange {
   /// The attributes.
   final pulumi.Input<Map<String, String>> attributes;
-
   /// Indicates whether the Auto Delete attribute is configured.
   final pulumi.Input<bool> autoDeleteState;
-
   /// The creation time.
   final pulumi.Input<String> createTime;
-
   /// The name of the exchange.
   final pulumi.Input<String> exchangeName;
-
   /// The type of the exchange.
   final pulumi.Input<String> exchangeType;
-
   /// The ID of the Exchange. Its value is same as Queue Name.
   final pulumi.Input<String> id;
-
   /// The ID of the instance.
   final pulumi.Input<String> instanceId;
-
   /// The name of virtual host where an exchange resides.
   final pulumi.Input<String> virtualHostName;
 
@@ -62,9 +55,7 @@ class GetExchangesExchange {
 
   factory GetExchangesExchange.fromMap(Map<String, dynamic> map) {
     return GetExchangesExchange(
-      attributes: pulumi.Input.fromValue(
-        (map['attributes'] as Map).cast<String, String>(),
-      ),
+      attributes: pulumi.Input.fromValue((map['attributes'] as Map).cast<String, String>()),
       autoDeleteState: pulumi.Input.fromValue(map['autoDeleteState'] as bool),
       createTime: pulumi.Input.fromValue(map['createTime'] as String),
       exchangeName: pulumi.Input.fromValue(map['exchangeName'] as String),
@@ -75,3 +66,4 @@ class GetExchangesExchange {
     );
   }
 }
+

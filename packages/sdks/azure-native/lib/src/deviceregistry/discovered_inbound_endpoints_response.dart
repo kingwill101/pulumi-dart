@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DiscoveredInboundEndpointsResponse {
   /// Stringified JSON that contains configuration to be used by the connector (e.g., OPC UA, ONVIF).
   final pulumi.Input<String>? additionalConfiguration;
-
   /// The endpoint address & port. This can be either an IP address (e.g., 192.168.1.1) or a fully qualified domain name (FQDN, e.g., server.example.com).
   final pulumi.Input<String> address;
-
   /// Type of connection endpoint.
   final pulumi.Input<String> endpointType;
-
   /// The timestamp (in UTC) when the endpoint was discovered.
   final pulumi.Input<String>? lastUpdatedOn;
-
   /// List of supported authentication methods supported by device for Inbound connections.
   final pulumi.Input<List<String>>? supportedAuthenticationMethods;
-
   /// Protocol version associated with the endpoint e.g. 1 or 2 for endpointType Microsoft.HTTP, and 3.5 or 5.0 for endpointType Microsoft.Mqtt etc.
   final pulumi.Input<String>? version;
 
@@ -51,28 +46,13 @@ class DiscoveredInboundEndpointsResponse {
 
   factory DiscoveredInboundEndpointsResponse.fromMap(Map<String, dynamic> map) {
     return DiscoveredInboundEndpointsResponse(
-      additionalConfiguration: (() {
-        final guardedValue = map['additionalConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      additionalConfiguration: (() { final guardedValue = map['additionalConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       address: pulumi.Input.fromValue(map['address'] as String),
       endpointType: pulumi.Input.fromValue(map['endpointType'] as String),
-      lastUpdatedOn: (() {
-        final guardedValue = map['lastUpdatedOn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      supportedAuthenticationMethods: (() {
-        final guardedValue = map['supportedAuthenticationMethods'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      lastUpdatedOn: (() { final guardedValue = map['lastUpdatedOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      supportedAuthenticationMethods: (() { final guardedValue = map['supportedAuthenticationMethods']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

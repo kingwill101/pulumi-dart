@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetUserPoolDeviceConfiguration {
   /// - Whether a challenge is required on new devices.
   final pulumi.Input<bool> challengeRequiredOnNewDevice;
-
   /// - Whether devices are only remembered if the user prompts it.
   final pulumi.Input<bool> deviceOnlyRememberedOnUserPrompt;
 
@@ -26,12 +25,9 @@ class GetUserPoolDeviceConfiguration {
 
   factory GetUserPoolDeviceConfiguration.fromMap(Map<String, dynamic> map) {
     return GetUserPoolDeviceConfiguration(
-      challengeRequiredOnNewDevice: pulumi.Input.fromValue(
-        map['challengeRequiredOnNewDevice'] as bool,
-      ),
-      deviceOnlyRememberedOnUserPrompt: pulumi.Input.fromValue(
-        map['deviceOnlyRememberedOnUserPrompt'] as bool,
-      ),
+      challengeRequiredOnNewDevice: pulumi.Input.fromValue(map['challengeRequiredOnNewDevice'] as bool),
+      deviceOnlyRememberedOnUserPrompt: pulumi.Input.fromValue(map['deviceOnlyRememberedOnUserPrompt'] as bool),
     );
   }
 }
+

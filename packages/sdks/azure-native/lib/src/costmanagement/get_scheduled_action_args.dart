@@ -12,10 +12,14 @@ class GetScheduledActionArgs {
 
   /// Creates a new [GetScheduledActionArgs].
   /// [name] Scheduled action name.
-  GetScheduledActionArgs({required this.name});
+  GetScheduledActionArgs({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory GetScheduledActionArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetScheduledActionArgs {
     );
   }
 }
+

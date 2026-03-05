@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GrpcRouteMethodMatchResponseNetworkservicesV1beta1 {
   /// Optional. Specifies that matches are case sensitive. The default value is true. case_sensitive must not be used with a type of REGULAR_EXPRESSION.
   final pulumi.Input<bool> caseSensitive;
-
   /// Name of the method to match against. If unspecified, will match all methods.
   final pulumi.Input<String> grpcMethod;
-
   /// Name of the service to match against. If unspecified, will match all services.
   final pulumi.Input<String> grpcService;
-
   /// Optional. Specifies how to match against the name. If not specified, a default value of "EXACT" is used.
   final pulumi.Input<String> type;
 
@@ -37,9 +34,7 @@ class GrpcRouteMethodMatchResponseNetworkservicesV1beta1 {
     };
   }
 
-  factory GrpcRouteMethodMatchResponseNetworkservicesV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GrpcRouteMethodMatchResponseNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
     return GrpcRouteMethodMatchResponseNetworkservicesV1beta1(
       caseSensitive: pulumi.Input.fromValue(map['caseSensitive'] as bool),
       grpcMethod: pulumi.Input.fromValue(map['grpcMethod'] as String),
@@ -48,3 +43,4 @@ class GrpcRouteMethodMatchResponseNetworkservicesV1beta1 {
     );
   }
 }
+

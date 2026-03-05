@@ -8,23 +8,14 @@ import 'get_firewall_policy_firewall_policy_stateless_custom_action.dart';
 import 'get_firewall_policy_firewall_policy_stateless_rule_group_reference.dart';
 
 class GetFirewallPolicyFirewallPolicy {
-  final pulumi.Input<List<GetFirewallPolicyFirewallPolicyPolicyVariable>>
-  policyVariables;
+  final pulumi.Input<List<GetFirewallPolicyFirewallPolicyPolicyVariable>> policyVariables;
   final pulumi.Input<List<String>> statefulDefaultActions;
-  final pulumi.Input<List<GetFirewallPolicyFirewallPolicyStatefulEngineOption>>
-  statefulEngineOptions;
-  final pulumi.Input<
-    List<GetFirewallPolicyFirewallPolicyStatefulRuleGroupReference>
-  >
-  statefulRuleGroupReferences;
-  final pulumi.Input<List<GetFirewallPolicyFirewallPolicyStatelessCustomAction>>
-  statelessCustomActions;
+  final pulumi.Input<List<GetFirewallPolicyFirewallPolicyStatefulEngineOption>> statefulEngineOptions;
+  final pulumi.Input<List<GetFirewallPolicyFirewallPolicyStatefulRuleGroupReference>> statefulRuleGroupReferences;
+  final pulumi.Input<List<GetFirewallPolicyFirewallPolicyStatelessCustomAction>> statelessCustomActions;
   final pulumi.Input<List<String>> statelessDefaultActions;
   final pulumi.Input<List<String>> statelessFragmentDefaultActions;
-  final pulumi.Input<
-    List<GetFirewallPolicyFirewallPolicyStatelessRuleGroupReference>
-  >
-  statelessRuleGroupReferences;
+  final pulumi.Input<List<GetFirewallPolicyFirewallPolicyStatelessRuleGroupReference>> statelessRuleGroupReferences;
   final pulumi.Input<String> tlsInspectionConfigurationArn;
 
   /// Creates a new [GetFirewallPolicyFirewallPolicy].
@@ -51,139 +42,30 @@ class GetFirewallPolicyFirewallPolicy {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'policyVariables':
-          pulumi.Input.mapInputValue<
-            List<GetFirewallPolicyFirewallPolicyPolicyVariable>,
-            List<Map<String, dynamic>>
-          >(
-            policyVariables,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetFirewallPolicyFirewallPolicyPolicyVariable,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'policyVariables': pulumi.Input.mapInputValue<List<GetFirewallPolicyFirewallPolicyPolicyVariable>, List<Map<String, dynamic>>>(policyVariables, (value) => pulumi.Input.encodeList<GetFirewallPolicyFirewallPolicyPolicyVariable, Map<String, dynamic>>(value, (value) => value.toMap())),
       'statefulDefaultActions': statefulDefaultActions,
-      'statefulEngineOptions':
-          pulumi.Input.mapInputValue<
-            List<GetFirewallPolicyFirewallPolicyStatefulEngineOption>,
-            List<Map<String, dynamic>>
-          >(
-            statefulEngineOptions,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetFirewallPolicyFirewallPolicyStatefulEngineOption,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'statefulRuleGroupReferences':
-          pulumi.Input.mapInputValue<
-            List<GetFirewallPolicyFirewallPolicyStatefulRuleGroupReference>,
-            List<Map<String, dynamic>>
-          >(
-            statefulRuleGroupReferences,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetFirewallPolicyFirewallPolicyStatefulRuleGroupReference,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'statelessCustomActions':
-          pulumi.Input.mapInputValue<
-            List<GetFirewallPolicyFirewallPolicyStatelessCustomAction>,
-            List<Map<String, dynamic>>
-          >(
-            statelessCustomActions,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetFirewallPolicyFirewallPolicyStatelessCustomAction,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'statefulEngineOptions': pulumi.Input.mapInputValue<List<GetFirewallPolicyFirewallPolicyStatefulEngineOption>, List<Map<String, dynamic>>>(statefulEngineOptions, (value) => pulumi.Input.encodeList<GetFirewallPolicyFirewallPolicyStatefulEngineOption, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'statefulRuleGroupReferences': pulumi.Input.mapInputValue<List<GetFirewallPolicyFirewallPolicyStatefulRuleGroupReference>, List<Map<String, dynamic>>>(statefulRuleGroupReferences, (value) => pulumi.Input.encodeList<GetFirewallPolicyFirewallPolicyStatefulRuleGroupReference, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'statelessCustomActions': pulumi.Input.mapInputValue<List<GetFirewallPolicyFirewallPolicyStatelessCustomAction>, List<Map<String, dynamic>>>(statelessCustomActions, (value) => pulumi.Input.encodeList<GetFirewallPolicyFirewallPolicyStatelessCustomAction, Map<String, dynamic>>(value, (value) => value.toMap())),
       'statelessDefaultActions': statelessDefaultActions,
       'statelessFragmentDefaultActions': statelessFragmentDefaultActions,
-      'statelessRuleGroupReferences':
-          pulumi.Input.mapInputValue<
-            List<GetFirewallPolicyFirewallPolicyStatelessRuleGroupReference>,
-            List<Map<String, dynamic>>
-          >(
-            statelessRuleGroupReferences,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetFirewallPolicyFirewallPolicyStatelessRuleGroupReference,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'statelessRuleGroupReferences': pulumi.Input.mapInputValue<List<GetFirewallPolicyFirewallPolicyStatelessRuleGroupReference>, List<Map<String, dynamic>>>(statelessRuleGroupReferences, (value) => pulumi.Input.encodeList<GetFirewallPolicyFirewallPolicyStatelessRuleGroupReference, Map<String, dynamic>>(value, (value) => value.toMap())),
       'tlsInspectionConfigurationArn': tlsInspectionConfigurationArn,
     };
   }
 
   factory GetFirewallPolicyFirewallPolicy.fromMap(Map<String, dynamic> map) {
     return GetFirewallPolicyFirewallPolicy(
-      policyVariables: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetFirewallPolicyFirewallPolicyPolicyVariable>(
-          map['policyVariables']!,
-          (value) => GetFirewallPolicyFirewallPolicyPolicyVariable.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      statefulDefaultActions: pulumi.Input.fromValue(
-        (map['statefulDefaultActions'] as List).cast<String>(),
-      ),
-      statefulEngineOptions: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GetFirewallPolicyFirewallPolicyStatefulEngineOption
-        >(
-          map['statefulEngineOptions']!,
-          (value) =>
-              GetFirewallPolicyFirewallPolicyStatefulEngineOption.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
-      statefulRuleGroupReferences: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GetFirewallPolicyFirewallPolicyStatefulRuleGroupReference
-        >(
-          map['statefulRuleGroupReferences']!,
-          (value) =>
-              GetFirewallPolicyFirewallPolicyStatefulRuleGroupReference.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
-      statelessCustomActions: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GetFirewallPolicyFirewallPolicyStatelessCustomAction
-        >(
-          map['statelessCustomActions']!,
-          (value) =>
-              GetFirewallPolicyFirewallPolicyStatelessCustomAction.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
-      statelessDefaultActions: pulumi.Input.fromValue(
-        (map['statelessDefaultActions'] as List).cast<String>(),
-      ),
-      statelessFragmentDefaultActions: pulumi.Input.fromValue(
-        (map['statelessFragmentDefaultActions'] as List).cast<String>(),
-      ),
-      statelessRuleGroupReferences: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GetFirewallPolicyFirewallPolicyStatelessRuleGroupReference
-        >(
-          map['statelessRuleGroupReferences']!,
-          (value) =>
-              GetFirewallPolicyFirewallPolicyStatelessRuleGroupReference.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
-      tlsInspectionConfigurationArn: pulumi.Input.fromValue(
-        map['tlsInspectionConfigurationArn'] as String,
-      ),
+      policyVariables: pulumi.Input.fromValue(pulumi.Input.decodeList<GetFirewallPolicyFirewallPolicyPolicyVariable>(map['policyVariables']!, (value) => GetFirewallPolicyFirewallPolicyPolicyVariable.fromMap((value as Map).cast<String, dynamic>()))),
+      statefulDefaultActions: pulumi.Input.fromValue((map['statefulDefaultActions'] as List).cast<String>()),
+      statefulEngineOptions: pulumi.Input.fromValue(pulumi.Input.decodeList<GetFirewallPolicyFirewallPolicyStatefulEngineOption>(map['statefulEngineOptions']!, (value) => GetFirewallPolicyFirewallPolicyStatefulEngineOption.fromMap((value as Map).cast<String, dynamic>()))),
+      statefulRuleGroupReferences: pulumi.Input.fromValue(pulumi.Input.decodeList<GetFirewallPolicyFirewallPolicyStatefulRuleGroupReference>(map['statefulRuleGroupReferences']!, (value) => GetFirewallPolicyFirewallPolicyStatefulRuleGroupReference.fromMap((value as Map).cast<String, dynamic>()))),
+      statelessCustomActions: pulumi.Input.fromValue(pulumi.Input.decodeList<GetFirewallPolicyFirewallPolicyStatelessCustomAction>(map['statelessCustomActions']!, (value) => GetFirewallPolicyFirewallPolicyStatelessCustomAction.fromMap((value as Map).cast<String, dynamic>()))),
+      statelessDefaultActions: pulumi.Input.fromValue((map['statelessDefaultActions'] as List).cast<String>()),
+      statelessFragmentDefaultActions: pulumi.Input.fromValue((map['statelessFragmentDefaultActions'] as List).cast<String>()),
+      statelessRuleGroupReferences: pulumi.Input.fromValue(pulumi.Input.decodeList<GetFirewallPolicyFirewallPolicyStatelessRuleGroupReference>(map['statelessRuleGroupReferences']!, (value) => GetFirewallPolicyFirewallPolicyStatelessRuleGroupReference.fromMap((value as Map).cast<String, dynamic>()))),
+      tlsInspectionConfigurationArn: pulumi.Input.fromValue(map['tlsInspectionConfigurationArn'] as String),
     );
   }
 }
+

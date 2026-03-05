@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KeyDescriptionResponse {
   /// The name of the key
   final pulumi.Input<String> name;
-
   /// The rank of the key
   final pulumi.Input<String> rank;
-
   /// The value of the key
   final pulumi.Input<String> value;
 
@@ -24,7 +22,11 @@ class KeyDescriptionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'rank': rank, 'value': value};
+    return <String, dynamic>{
+      'name': name,
+      'rank': rank,
+      'value': value,
+    };
   }
 
   factory KeyDescriptionResponse.fromMap(Map<String, dynamic> map) {
@@ -35,3 +37,4 @@ class KeyDescriptionResponse {
     );
   }
 }
+

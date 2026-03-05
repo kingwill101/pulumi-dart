@@ -672,12 +672,12 @@ class ChartHelmShV4 extends pulumi.ComponentResource {
     ChartHelmShV4Args? args,
     pulumi.ComponentResourceOptions? options,
   }) : super(
-         'kubernetes:helm.sh/v4:Chart',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.ComponentResourceOptions(),
-         remote: true,
-       ) {
+          'kubernetes:helm.sh/v4:Chart',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.ComponentResourceOptions(),
+          remote: true,
+        ) {
     resources = registerOutput<List<Map<String, dynamic>>?>('resources');
   }
 }

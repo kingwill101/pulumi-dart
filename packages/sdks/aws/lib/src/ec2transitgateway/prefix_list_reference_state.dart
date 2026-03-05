@@ -6,17 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PrefixListReferenceState {
   /// Indicates whether to drop traffic that matches the Prefix List. Defaults to `false`.
   final pulumi.Input<bool>? blackhole;
-
   /// Identifier of EC2 Prefix List.
   final pulumi.Input<String>? prefixListId;
   final pulumi.Input<String>? prefixListOwnerId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Identifier of EC2 Transit Gateway Attachment.
   final pulumi.Input<String>? transitGatewayAttachmentId;
-
   /// Identifier of EC2 Transit Gateway Route Table.
   ///
   /// The following arguments are optional:
@@ -51,36 +47,13 @@ class PrefixListReferenceState {
 
   factory PrefixListReferenceState.fromMap(Map<String, dynamic> map) {
     return PrefixListReferenceState(
-      blackhole: (() {
-        final guardedValue = map['blackhole'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      prefixListId: (() {
-        final guardedValue = map['prefixListId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      prefixListOwnerId: (() {
-        final guardedValue = map['prefixListOwnerId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      transitGatewayAttachmentId: (() {
-        final guardedValue = map['transitGatewayAttachmentId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      transitGatewayRouteTableId: (() {
-        final guardedValue = map['transitGatewayRouteTableId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      blackhole: (() { final guardedValue = map['blackhole']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      prefixListId: (() { final guardedValue = map['prefixListId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      prefixListOwnerId: (() { final guardedValue = map['prefixListOwnerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      transitGatewayAttachmentId: (() { final guardedValue = map['transitGatewayAttachmentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      transitGatewayRouteTableId: (() { final guardedValue = map['transitGatewayRouteTableId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

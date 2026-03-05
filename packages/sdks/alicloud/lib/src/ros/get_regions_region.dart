@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRegionsRegion {
   /// The name of the region.
   final pulumi.Input<String> localName;
-
   /// The endpoint of the region.
   final pulumi.Input<String> regionEndpoint;
-
   /// The ID of the region.
   final pulumi.Input<String> regionId;
 
@@ -38,3 +36,4 @@ class GetRegionsRegion {
     );
   }
 }
+

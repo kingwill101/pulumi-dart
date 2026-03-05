@@ -13,8 +13,7 @@ enum TaskResponseViewCloudtasksV2beta3 {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown TaskResponseViewCloudtasksV2beta3 value: $value',
-    );
+    throw ArgumentError('Unknown TaskResponseViewCloudtasksV2beta3 value: $value');
   }
 }
+

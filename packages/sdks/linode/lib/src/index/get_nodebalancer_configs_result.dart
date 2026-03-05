@@ -7,11 +7,9 @@ import 'get_nodebalancer_configs_nodebalancer_config.dart';
 /// Result data returned by getNodebalancerConfigs.
 class GetNodebalancerConfigsResult {
   final List<GetNodebalancerConfigsFilter>? filters;
-
   /// The config's ID.
   final String id;
   final List<GetNodebalancerConfigsNodebalancerConfig> nodebalancerConfigs;
-
   /// The ID of the NodeBalancer that contains the config.
   final int nodebalancerId;
   final String? order;
@@ -35,20 +33,9 @@ class GetNodebalancerConfigsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?(() {
-        final guardedValue = filters;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          GetNodebalancerConfigsFilter,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'filters': ?(() { final guardedValue = filters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetNodebalancerConfigsFilter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'id': id,
-      'nodebalancerConfigs':
-          pulumi.Input.encodeList<
-            GetNodebalancerConfigsNodebalancerConfig,
-            Map<String, dynamic>
-          >(nodebalancerConfigs, (value) => value.toMap()),
+      'nodebalancerConfigs': pulumi.Input.encodeList<GetNodebalancerConfigsNodebalancerConfig, Map<String, dynamic>>(nodebalancerConfigs, (value) => value.toMap()),
       'nodebalancerId': nodebalancerId,
       'order': ?order,
       'orderBy': ?orderBy,
@@ -57,35 +44,13 @@ class GetNodebalancerConfigsResult {
 
   factory GetNodebalancerConfigsResult.fromMap(Map<String, dynamic> map) {
     return GetNodebalancerConfigsResult(
-      filters: (() {
-        final guardedValue = map['filters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<GetNodebalancerConfigsFilter>(
-          guardedValue,
-          (value) => GetNodebalancerConfigsFilter.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetNodebalancerConfigsFilter>(guardedValue, (value) => GetNodebalancerConfigsFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
       id: map['id'] as String,
-      nodebalancerConfigs:
-          pulumi.Input.decodeList<GetNodebalancerConfigsNodebalancerConfig>(
-            map['nodebalancerConfigs']!,
-            (value) => GetNodebalancerConfigsNodebalancerConfig.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      nodebalancerConfigs: pulumi.Input.decodeList<GetNodebalancerConfigsNodebalancerConfig>(map['nodebalancerConfigs']!, (value) => GetNodebalancerConfigsNodebalancerConfig.fromMap((value as Map).cast<String, dynamic>())),
       nodebalancerId: map['nodebalancerId'] as int,
-      order: (() {
-        final guardedValue = map['order'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      orderBy: (() {
-        final guardedValue = map['orderBy'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      order: (() { final guardedValue = map['order']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      orderBy: (() { final guardedValue = map['orderBy']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

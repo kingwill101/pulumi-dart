@@ -13,27 +13,20 @@ class ProviderArgs {
 
   /// Creates a new [ProviderArgs].
   /// [proxy] Proxy used by resources and data sources that connect to external endpoints.
-  ProviderArgs({this.proxy});
+  ProviderArgs({
+    this.proxy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'proxy':
-          ?pulumi.Input.mapOptionalInputValue<
-            ProviderProxy,
-            Map<String, dynamic>
-          >(proxy, (value) => value.toMap()),
+      'proxy': ?pulumi.Input.mapOptionalInputValue<ProviderProxy, Map<String, dynamic>>(proxy, (value) => value.toMap()),
     };
   }
 
   factory ProviderArgs.fromMap(Map<String, dynamic> map) {
     return ProviderArgs(
-      proxy: (() {
-        final guardedValue = map['proxy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ProviderProxy.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
+      proxy: (() { final guardedValue = map['proxy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ProviderProxy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

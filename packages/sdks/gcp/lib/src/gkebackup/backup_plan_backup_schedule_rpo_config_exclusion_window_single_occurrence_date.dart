@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDate {
   /// Day of a month.
   final pulumi.Input<int>? day;
-
   /// Month of a year.
   final pulumi.Input<int>? month;
-
   /// Year of the date.
   final pulumi.Input<int>? year;
 
@@ -23,28 +21,19 @@ class BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDate {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'day': ?day, 'month': ?month, 'year': ?year};
+    return <String, dynamic>{
+      'day': ?day,
+      'month': ?month,
+      'year': ?year,
+    };
   }
 
-  factory BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDate.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDate.fromMap(Map<String, dynamic> map) {
     return BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDate(
-      day: (() {
-        final guardedValue = map['day'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      month: (() {
-        final guardedValue = map['month'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      year: (() {
-        final guardedValue = map['year'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      day: (() { final guardedValue = map['day']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      month: (() { final guardedValue = map['month']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      year: (() { final guardedValue = map['year']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

@@ -9,17 +9,20 @@ class ClusterUpgradePostConditionsGkehubV1alpha {
 
   /// Creates a new [ClusterUpgradePostConditionsGkehubV1alpha].
   /// [soaking] Amount of time to "soak" after a rollout has been finished before marking it COMPLETE. Cannot exceed 30 days. Required.
-  ClusterUpgradePostConditionsGkehubV1alpha({required this.soaking});
+  ClusterUpgradePostConditionsGkehubV1alpha({
+    required this.soaking,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'soaking': soaking};
+    return <String, dynamic>{
+      'soaking': soaking,
+    };
   }
 
-  factory ClusterUpgradePostConditionsGkehubV1alpha.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ClusterUpgradePostConditionsGkehubV1alpha.fromMap(Map<String, dynamic> map) {
     return ClusterUpgradePostConditionsGkehubV1alpha(
       soaking: pulumi.Input.fromValue(map['soaking'] as String),
     );
   }
 }
+

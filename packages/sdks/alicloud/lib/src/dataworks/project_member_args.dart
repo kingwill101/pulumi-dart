@@ -10,10 +10,8 @@ import 'project_member_role.dart';
 class ProjectMemberArgs {
   /// Project ID
   final pulumi.Input<int> projectId;
-
   /// List of roles owned by members. See `roles` below.
   final pulumi.Input<List<ProjectMemberRole>>? roles;
-
   /// The user ID of the member.
   final pulumi.Input<String> userId;
 
@@ -30,18 +28,7 @@ class ProjectMemberArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'projectId': projectId,
-      'roles':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ProjectMemberRole>,
-            List<Map<String, dynamic>>
-          >(
-            roles,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ProjectMemberRole,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'roles': ?pulumi.Input.mapOptionalInputValue<List<ProjectMemberRole>, List<Map<String, dynamic>>>(roles, (value) => pulumi.Input.encodeList<ProjectMemberRole, Map<String, dynamic>>(value, (value) => value.toMap())),
       'userId': userId,
     };
   }
@@ -49,19 +36,9 @@ class ProjectMemberArgs {
   factory ProjectMemberArgs.fromMap(Map<String, dynamic> map) {
     return ProjectMemberArgs(
       projectId: pulumi.Input.fromValue(map['projectId'] as int),
-      roles: (() {
-        final guardedValue = map['roles'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ProjectMemberRole>(
-            guardedValue,
-            (value) => ProjectMemberRole.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      roles: (() { final guardedValue = map['roles']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ProjectMemberRole>(guardedValue, (value) => ProjectMemberRole.fromMap((value as Map).cast<String, dynamic>()))); })(),
       userId: pulumi.Input.fromValue(map['userId'] as String),
     );
   }
 }
+

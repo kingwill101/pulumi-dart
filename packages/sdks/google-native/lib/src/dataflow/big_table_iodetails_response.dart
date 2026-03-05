@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BigTableIODetailsResponse {
   /// InstanceId accessed in the connection.
   final pulumi.Input<String> instanceId;
-
   /// ProjectId accessed in the connection.
   final pulumi.Input<String> project;
-
   /// TableId accessed in the connection.
   final pulumi.Input<String> tableId;
 
@@ -39,3 +37,4 @@ class BigTableIODetailsResponse {
     );
   }
 }
+

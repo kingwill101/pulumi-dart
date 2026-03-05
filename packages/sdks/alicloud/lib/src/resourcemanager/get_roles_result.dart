@@ -6,18 +6,14 @@ import 'get_roles_role.dart';
 /// Result data returned by getRoles.
 class GetRolesResult {
   final bool? enableDetails;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of role IDs.
   final List<String> ids;
   final String? nameRegex;
-
   /// A list of role names.
   final List<String> names;
   final String? outputFile;
-
   /// A list of roles. Each element contains the following attributes:
   final List<GetRolesRole> roles;
 
@@ -47,37 +43,20 @@ class GetRolesResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'roles': pulumi.Input.encodeList<GetRolesRole, Map<String, dynamic>>(
-        roles,
-        (value) => value.toMap(),
-      ),
+      'roles': pulumi.Input.encodeList<GetRolesRole, Map<String, dynamic>>(roles, (value) => value.toMap()),
     };
   }
 
   factory GetRolesResult.fromMap(Map<String, dynamic> map) {
     return GetRolesResult(
-      enableDetails: (() {
-        final guardedValue = map['enableDetails'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      enableDetails: (() { final guardedValue = map['enableDetails']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      roles: pulumi.Input.decodeList<GetRolesRole>(
-        map['roles']!,
-        (value) => GetRolesRole.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      roles: pulumi.Input.decodeList<GetRolesRole>(map['roles']!, (value) => GetRolesRole.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGtmInstancesInstanceAlertConfig {
   /// Whether to configure DingTalk notifications.
   final pulumi.Input<bool> dingtalkNotice;
-
   /// Whether to configure mail notification.
   final pulumi.Input<bool> emailNotice;
-
   /// The Alarm Event Type.
   final pulumi.Input<String> noticeType;
-
   /// Whether to configure SMS notification.
   final pulumi.Input<bool> smsNotice;
 
@@ -45,3 +42,4 @@ class GetGtmInstancesInstanceAlertConfig {
     );
   }
 }
+

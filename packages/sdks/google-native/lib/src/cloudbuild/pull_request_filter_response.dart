@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PullRequestFilterResponse {
   /// Regex of branches to match. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
   final pulumi.Input<String> branch;
-
   /// Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
   final pulumi.Input<String> commentControl;
-
   /// If true, branches that do NOT match the git_ref will trigger a build.
   final pulumi.Input<bool> invertRegex;
 
@@ -39,3 +37,4 @@ class PullRequestFilterResponse {
     );
   }
 }
+

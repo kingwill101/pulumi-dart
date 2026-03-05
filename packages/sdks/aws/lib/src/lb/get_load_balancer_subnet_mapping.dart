@@ -38,10 +38,9 @@ class GetLoadBalancerSubnetMapping {
       allocationId: pulumi.Input.fromValue(map['allocationId'] as String),
       ipv6Address: pulumi.Input.fromValue(map['ipv6Address'] as String),
       outpostId: pulumi.Input.fromValue(map['outpostId'] as String),
-      privateIpv4Address: pulumi.Input.fromValue(
-        map['privateIpv4Address'] as String,
-      ),
+      privateIpv4Address: pulumi.Input.fromValue(map['privateIpv4Address'] as String),
       subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
     );
   }
 }
+

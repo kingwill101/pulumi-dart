@@ -7,10 +7,8 @@ import 'status_response.dart';
 class ScheduledReleaseRecordResponse {
   /// The name of the created compilation result, if one was successfully created. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
   final pulumi.Input<String> compilationResult;
-
   /// The error status encountered upon this attempt to create the compilation result, if the attempt was unsuccessful.
   final pulumi.Input<StatusResponse> errorStatus;
-
   /// The timestamp of this release attempt.
   final pulumi.Input<String> releaseTime;
 
@@ -27,26 +25,17 @@ class ScheduledReleaseRecordResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'compilationResult': compilationResult,
-      'errorStatus':
-          pulumi.Input.mapInputValue<StatusResponse, Map<String, dynamic>>(
-            errorStatus,
-            (value) => value.toMap(),
-          ),
+      'errorStatus': pulumi.Input.mapInputValue<StatusResponse, Map<String, dynamic>>(errorStatus, (value) => value.toMap()),
       'releaseTime': releaseTime,
     };
   }
 
   factory ScheduledReleaseRecordResponse.fromMap(Map<String, dynamic> map) {
     return ScheduledReleaseRecordResponse(
-      compilationResult: pulumi.Input.fromValue(
-        map['compilationResult'] as String,
-      ),
-      errorStatus: pulumi.Input.fromValue(
-        StatusResponse.fromMap(
-          (map['errorStatus']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      compilationResult: pulumi.Input.fromValue(map['compilationResult'] as String),
+      errorStatus: pulumi.Input.fromValue(StatusResponse.fromMap((map['errorStatus']! as Map).cast<String, dynamic>())),
       releaseTime: pulumi.Input.fromValue(map['releaseTime'] as String),
     );
   }
 }
+

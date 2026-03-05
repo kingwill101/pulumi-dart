@@ -11,7 +11,6 @@ class GetAppConnectionResult {
   final String displayName;
   final Map<String, String> effectiveLabels;
   final List<GetAppConnectionGateway> gateways;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final Map<String, String> labels;
@@ -51,19 +50,11 @@ class GetAppConnectionResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'applicationEndpoints':
-          pulumi.Input.encodeList<
-            GetAppConnectionApplicationEndpoint,
-            Map<String, dynamic>
-          >(applicationEndpoints, (value) => value.toMap()),
+      'applicationEndpoints': pulumi.Input.encodeList<GetAppConnectionApplicationEndpoint, Map<String, dynamic>>(applicationEndpoints, (value) => value.toMap()),
       'connectors': connectors,
       'displayName': displayName,
       'effectiveLabels': effectiveLabels,
-      'gateways':
-          pulumi.Input.encodeList<
-            GetAppConnectionGateway,
-            Map<String, dynamic>
-          >(gateways, (value) => value.toMap()),
+      'gateways': pulumi.Input.encodeList<GetAppConnectionGateway, Map<String, dynamic>>(gateways, (value) => value.toMap()),
       'id': id,
       'labels': labels,
       'name': name,
@@ -76,37 +67,19 @@ class GetAppConnectionResult {
 
   factory GetAppConnectionResult.fromMap(Map<String, dynamic> map) {
     return GetAppConnectionResult(
-      applicationEndpoints:
-          pulumi.Input.decodeList<GetAppConnectionApplicationEndpoint>(
-            map['applicationEndpoints']!,
-            (value) => GetAppConnectionApplicationEndpoint.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      applicationEndpoints: pulumi.Input.decodeList<GetAppConnectionApplicationEndpoint>(map['applicationEndpoints']!, (value) => GetAppConnectionApplicationEndpoint.fromMap((value as Map).cast<String, dynamic>())),
       connectors: (map['connectors'] as List).cast<String>(),
       displayName: map['displayName'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
-      gateways: pulumi.Input.decodeList<GetAppConnectionGateway>(
-        map['gateways']!,
-        (value) => GetAppConnectionGateway.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      gateways: pulumi.Input.decodeList<GetAppConnectionGateway>(map['gateways']!, (value) => GetAppConnectionGateway.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
       type: map['type'] as String,
     );
   }
 }
+

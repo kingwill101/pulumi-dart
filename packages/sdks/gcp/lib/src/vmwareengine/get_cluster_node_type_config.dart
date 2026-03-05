@@ -8,7 +8,6 @@ class GetClusterNodeTypeConfig {
   /// If zero is provided max value from 'nodeType.availableCustomCoreCounts' will be used.
   /// Once the customer is created then corecount cannot be changed.
   final pulumi.Input<int> customCoreCount;
-
   /// The number of nodes of this type in the cluster.
   final pulumi.Input<int> nodeCount;
   final pulumi.Input<String> nodeTypeId;
@@ -39,3 +38,4 @@ class GetClusterNodeTypeConfig {
     );
   }
 }
+

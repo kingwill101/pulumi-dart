@@ -192,16 +192,12 @@ class ReplicationPolicy extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** The value of `application_consistent_snapshot_frequency_in_minutes` must be less than or equal to the value of `recovery_point_retention_in_minutes`.
   late final pulumi.Output<int> applicationConsistentSnapshotFrequencyInMinutes;
-
   /// The name of the replication policy. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The duration in minutes for which the recovery points need to be stored.
   late final pulumi.Output<int> recoveryPointRetentionInMinutes;
-
   /// The name of the vault that should be updated. Changing this forces a new resource to be created.
   late final pulumi.Output<String> recoveryVaultName;
-
   /// Name of the resource group where the vault that should be updated is located. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
 
@@ -214,18 +210,14 @@ class ReplicationPolicy extends pulumi.CustomResource {
     ReplicationPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:siterecovery/replicationPolicy:ReplicationPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    applicationConsistentSnapshotFrequencyInMinutes = registerOutput<int>(
-      'applicationConsistentSnapshotFrequencyInMinutes',
-    );
+          'azure:siterecovery/replicationPolicy:ReplicationPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    applicationConsistentSnapshotFrequencyInMinutes = registerOutput<int>('applicationConsistentSnapshotFrequencyInMinutes');
     this.name = registerOutput<String>('name');
-    recoveryPointRetentionInMinutes = registerOutput<int>(
-      'recoveryPointRetentionInMinutes',
-    );
+    recoveryPointRetentionInMinutes = registerOutput<int>('recoveryPointRetentionInMinutes');
     recoveryVaultName = registerOutput<String>('recoveryVaultName');
     resourceGroupName = registerOutput<String>('resourceGroupName');
   }
@@ -248,18 +240,14 @@ class ReplicationPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:siterecovery/replicationPolicy:ReplicationPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    applicationConsistentSnapshotFrequencyInMinutes = registerOutput<int>(
-      'applicationConsistentSnapshotFrequencyInMinutes',
-    );
+          'azure:siterecovery/replicationPolicy:ReplicationPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    applicationConsistentSnapshotFrequencyInMinutes = registerOutput<int>('applicationConsistentSnapshotFrequencyInMinutes');
     this.name = registerOutput<String>('name');
-    recoveryPointRetentionInMinutes = registerOutput<int>(
-      'recoveryPointRetentionInMinutes',
-    );
+    recoveryPointRetentionInMinutes = registerOutput<int>('recoveryPointRetentionInMinutes');
     recoveryVaultName = registerOutput<String>('recoveryVaultName');
     resourceGroupName = registerOutput<String>('resourceGroupName');
   }

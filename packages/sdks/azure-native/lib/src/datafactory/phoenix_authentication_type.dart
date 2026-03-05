@@ -16,3 +16,4 @@ enum PhoenixAuthenticationType {
     throw ArgumentError('Unknown PhoenixAuthenticationType value: $value');
   }
 }
+

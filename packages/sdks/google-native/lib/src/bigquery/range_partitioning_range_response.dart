@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RangePartitioningRangeResponse {
   /// [TrustedTester] [Required] The end of range partitioning, exclusive.
   final pulumi.Input<String> end;
-
   /// [TrustedTester] [Required] The width of each interval.
   final pulumi.Input<String> interval;
-
   /// [TrustedTester] [Required] The start of range partitioning, inclusive.
   final pulumi.Input<String> start;
 
@@ -24,7 +22,11 @@ class RangePartitioningRangeResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'end': end, 'interval': interval, 'start': start};
+    return <String, dynamic>{
+      'end': end,
+      'interval': interval,
+      'start': start,
+    };
   }
 
   factory RangePartitioningRangeResponse.fromMap(Map<String, dynamic> map) {
@@ -35,3 +37,4 @@ class RangePartitioningRangeResponse {
     );
   }
 }
+

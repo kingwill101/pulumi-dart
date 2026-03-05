@@ -15,3 +15,4 @@ enum Workload {
     throw ArgumentError('Unknown Workload value: $value');
   }
 }
+

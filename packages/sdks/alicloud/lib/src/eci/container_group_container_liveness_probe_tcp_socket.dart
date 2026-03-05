@@ -7,21 +7,20 @@ class ContainerGroupContainerLivenessProbeTcpSocket {
 
   /// Creates a new [ContainerGroupContainerLivenessProbeTcpSocket].
   /// [port] Optional.
-  ContainerGroupContainerLivenessProbeTcpSocket({this.port});
+  ContainerGroupContainerLivenessProbeTcpSocket({
+    this.port,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'port': ?port};
+    return <String, dynamic>{
+      'port': ?port,
+    };
   }
 
-  factory ContainerGroupContainerLivenessProbeTcpSocket.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ContainerGroupContainerLivenessProbeTcpSocket.fromMap(Map<String, dynamic> map) {
     return ContainerGroupContainerLivenessProbeTcpSocket(
-      port: (() {
-        final guardedValue = map['port'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

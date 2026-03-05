@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFlexibleServerArgs {
   /// Specifies the name of the MySQL Flexible Server.
   final pulumi.Input<String> name;
-
   /// The name of the resource group for the MySQL Flexible Server.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetFlexibleServerArgs].
   /// [name] Specifies the name of the MySQL Flexible Server.
   /// [resourceGroupName] The name of the resource group for the MySQL Flexible Server.
-  GetFlexibleServerArgs({required this.name, required this.resourceGroupName});
+  GetFlexibleServerArgs({
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,9 +30,8 @@ class GetFlexibleServerArgs {
   factory GetFlexibleServerArgs.fromMap(Map<String, dynamic> map) {
     return GetFlexibleServerArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

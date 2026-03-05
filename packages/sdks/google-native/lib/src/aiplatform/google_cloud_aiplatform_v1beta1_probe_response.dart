@@ -7,10 +7,8 @@ import 'google_cloud_aiplatform_v1beta1_probe_exec_action_response.dart';
 class GoogleCloudAiplatformV1beta1ProbeResponse {
   /// Exec specifies the action to take.
   final pulumi.Input<GoogleCloudAiplatformV1beta1ProbeExecActionResponse> exec;
-
   /// How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Must be less than timeout_seconds. Maps to Kubernetes probe argument 'periodSeconds'.
   final pulumi.Input<int> periodSeconds;
-
   /// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Must be greater or equal to period_seconds. Maps to Kubernetes probe argument 'timeoutSeconds'.
   final pulumi.Input<int> timeoutSeconds;
 
@@ -26,27 +24,18 @@ class GoogleCloudAiplatformV1beta1ProbeResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'exec':
-          pulumi.Input.mapInputValue<
-            GoogleCloudAiplatformV1beta1ProbeExecActionResponse,
-            Map<String, dynamic>
-          >(exec, (value) => value.toMap()),
+      'exec': pulumi.Input.mapInputValue<GoogleCloudAiplatformV1beta1ProbeExecActionResponse, Map<String, dynamic>>(exec, (value) => value.toMap()),
       'periodSeconds': periodSeconds,
       'timeoutSeconds': timeoutSeconds,
     };
   }
 
-  factory GoogleCloudAiplatformV1beta1ProbeResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudAiplatformV1beta1ProbeResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1ProbeResponse(
-      exec: pulumi.Input.fromValue(
-        GoogleCloudAiplatformV1beta1ProbeExecActionResponse.fromMap(
-          (map['exec']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      exec: pulumi.Input.fromValue(GoogleCloudAiplatformV1beta1ProbeExecActionResponse.fromMap((map['exec']! as Map).cast<String, dynamic>())),
       periodSeconds: pulumi.Input.fromValue(map['periodSeconds'] as int),
       timeoutSeconds: pulumi.Input.fromValue(map['timeoutSeconds'] as int),
     );
   }
 }
+

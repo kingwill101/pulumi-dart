@@ -15,3 +15,4 @@ enum ComputeTriggerType {
     throw ArgumentError('Unknown ComputeTriggerType value: $value');
   }
 }
+

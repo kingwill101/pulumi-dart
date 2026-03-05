@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccountConnectionArgs {
   /// The name of Cognitive Services account.
   final pulumi.Input<String> accountName;
-
   /// Friendly name of the connection
   final pulumi.Input<String> connectionName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -38,9 +36,8 @@ class GetAccountConnectionArgs {
     return GetAccountConnectionArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
       connectionName: pulumi.Input.fromValue(map['connectionName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

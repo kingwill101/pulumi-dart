@@ -11,8 +11,7 @@ enum ImageRawDiskContainerTypeComputeV1 {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ImageRawDiskContainerTypeComputeV1 value: $value',
-    );
+    throw ArgumentError('Unknown ImageRawDiskContainerTypeComputeV1 value: $value');
   }
 }
+

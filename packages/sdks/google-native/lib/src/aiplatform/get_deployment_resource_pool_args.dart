@@ -31,15 +31,10 @@ class GetDeploymentResourcePoolArgs {
 
   factory GetDeploymentResourcePoolArgs.fromMap(Map<String, dynamic> map) {
     return GetDeploymentResourcePoolArgs(
-      deploymentResourcePoolId: pulumi.Input.fromValue(
-        map['deploymentResourcePoolId'] as String,
-      ),
+      deploymentResourcePoolId: pulumi.Input.fromValue(map['deploymentResourcePoolId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

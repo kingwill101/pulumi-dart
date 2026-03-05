@@ -16,8 +16,7 @@ class _IndexModuleNamespace {
   final CertRequestSubjectArgs = module_index.CertRequestSubject.new;
   final GetCertificateArgs = module_index.GetCertificateArgs.new;
   final GetCertificateCertificate = module_index.GetCertificateCertificate.new;
-  final GetCertificateCertificateArgs =
-      module_index.GetCertificateCertificate.new;
+  final GetCertificateCertificateArgs = module_index.GetCertificateCertificate.new;
   final GetCertificateResult = module_index.GetCertificateResult.new;
   final GetCertificateResultArgs = module_index.GetCertificateResult.new;
   final GetPublicKeyArgs = module_index.GetPublicKeyArgs.new;
@@ -46,10 +45,8 @@ class _IndexModuleNamespace {
 class _ProvidersModuleNamespace {
   _ProvidersModuleNamespace();
   final ProviderArgs = module_providers.ProviderArgs.new;
-  final ProviderTerraformConfigResult =
-      module_providers.ProviderTerraformConfigResult.new;
-  final ProviderTerraformConfigResultArgs =
-      module_providers.ProviderTerraformConfigResult.new;
+  final ProviderTerraformConfigResult = module_providers.ProviderTerraformConfigResult.new;
+  final ProviderTerraformConfigResultArgs = module_providers.ProviderTerraformConfigResult.new;
   final TerraformConfigArgs = module_providers.TerraformConfigArgs.new;
   final TerraformConfigResult = module_providers.TerraformConfigResult.new;
   final TerraformConfigResultArgs = module_providers.TerraformConfigResult.new;

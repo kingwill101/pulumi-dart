@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NodeTaintResponse {
   /// Effect for taint.
   final pulumi.Input<String> effect;
-
   /// Key for taint.
   final pulumi.Input<String> key;
-
   /// Value for taint.
   final pulumi.Input<String> value;
 
@@ -24,7 +22,11 @@ class NodeTaintResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'effect': effect, 'key': key, 'value': value};
+    return <String, dynamic>{
+      'effect': effect,
+      'key': key,
+      'value': value,
+    };
   }
 
   factory NodeTaintResponse.fromMap(Map<String, dynamic> map) {
@@ -35,3 +37,4 @@ class NodeTaintResponse {
     );
   }
 }
+

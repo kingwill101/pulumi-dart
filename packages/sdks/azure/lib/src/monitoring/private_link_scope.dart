@@ -163,16 +163,12 @@ import 'private_link_scope_state.dart';
 class PrivateLinkScope extends pulumi.CustomResource {
   /// The default ingestion access mode for the associated private endpoints in scope. Possible values are `Open` and `PrivateOnly`. Defaults to `Open`.
   late final pulumi.Output<String?> ingestionAccessMode;
-
   /// The name of the Azure Monitor Private Link Scope. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The default query access mode for hte associated private endpoints in scope. Possible values are `Open` and `PrivateOnly`. Defaults to `Open`.
   late final pulumi.Output<String?> queryAccessMode;
-
   /// The name of the Resource Group where the Azure Monitor Private Link Scope should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags which should be assigned to the Azure Monitor Private Link Scope.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -185,11 +181,11 @@ class PrivateLinkScope extends pulumi.CustomResource {
     PrivateLinkScopeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:monitoring/privateLinkScope:PrivateLinkScope',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:monitoring/privateLinkScope:PrivateLinkScope',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     ingestionAccessMode = registerOutput<String?>('ingestionAccessMode');
     this.name = registerOutput<String>('name');
     queryAccessMode = registerOutput<String?>('queryAccessMode');
@@ -215,11 +211,11 @@ class PrivateLinkScope extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:monitoring/privateLinkScope:PrivateLinkScope',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:monitoring/privateLinkScope:PrivateLinkScope',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     ingestionAccessMode = registerOutput<String?>('ingestionAccessMode');
     this.name = registerOutput<String>('name');
     queryAccessMode = registerOutput<String?>('queryAccessMode');

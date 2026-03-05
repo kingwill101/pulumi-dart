@@ -14,16 +14,15 @@ class CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'signatureAlgorithm': signatureAlgorithm};
+    return <String, dynamic>{
+      'signatureAlgorithm': signatureAlgorithm,
+    };
   }
 
-  factory CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve.fromMap(Map<String, dynamic> map) {
     return CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve(
-      signatureAlgorithm: pulumi.Input.fromValue(
-        map['signatureAlgorithm'] as String,
-      ),
+      signatureAlgorithm: pulumi.Input.fromValue(map['signatureAlgorithm'] as String),
     );
   }
 }
+

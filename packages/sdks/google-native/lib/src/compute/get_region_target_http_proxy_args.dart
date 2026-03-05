@@ -31,13 +31,10 @@ class GetRegionTargetHttpProxyArgs {
 
   factory GetRegionTargetHttpProxyArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionTargetHttpProxyArgs(
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: pulumi.Input.fromValue(map['region'] as String),
       targetHttpProxy: pulumi.Input.fromValue(map['targetHttpProxy'] as String),
     );
   }
 }
+

@@ -1,28 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getCache.
 class GetCacheResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Runtime connection string to cache
   final String connectionString;
-
   /// Cache description
   final String? description;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// The name of the resource
   final String name;
-
   /// Original uri of entity in external system cache points to
   final String? resourceId;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
-
   /// Location identifier to use cache from (should be either 'default' or valid Azure region identifier)
   final String useFromLocation;
 
@@ -63,20 +57,13 @@ class GetCacheResult {
     return GetCacheResult(
       azureApiVersion: map['azureApiVersion'] as String,
       connectionString: map['connectionString'] as String,
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       name: map['name'] as String,
-      resourceId: (() {
-        final guardedValue = map['resourceId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       type: map['type'] as String,
       useFromLocation: map['useFromLocation'] as String,
     );
   }
 }
+

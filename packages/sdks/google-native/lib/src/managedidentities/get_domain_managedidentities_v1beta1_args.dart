@@ -13,22 +13,23 @@ class GetDomainManagedidentitiesV1beta1Args {
   /// Creates a new [GetDomainManagedidentitiesV1beta1Args].
   /// [domainId] Required.
   /// [project] Optional.
-  GetDomainManagedidentitiesV1beta1Args({required this.domainId, this.project});
+  GetDomainManagedidentitiesV1beta1Args({
+    required this.domainId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'domainId': domainId, 'project': ?project};
+    return <String, dynamic>{
+      'domainId': domainId,
+      'project': ?project,
+    };
   }
 
-  factory GetDomainManagedidentitiesV1beta1Args.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDomainManagedidentitiesV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetDomainManagedidentitiesV1beta1Args(
       domainId: pulumi.Input.fromValue(map['domainId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

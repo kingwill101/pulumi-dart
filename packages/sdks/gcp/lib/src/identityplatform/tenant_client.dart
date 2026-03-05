@@ -10,29 +10,20 @@ class TenantClient {
 
   /// Creates a new [TenantClient].
   /// [permissions] Configuration related to restricting a user's ability to affect their account.
-  TenantClient({this.permissions});
+  TenantClient({
+    this.permissions,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'permissions':
-          ?pulumi.Input.mapOptionalInputValue<
-            TenantClientPermissions,
-            Map<String, dynamic>
-          >(permissions, (value) => value.toMap()),
+      'permissions': ?pulumi.Input.mapOptionalInputValue<TenantClientPermissions, Map<String, dynamic>>(permissions, (value) => value.toMap()),
     };
   }
 
   factory TenantClient.fromMap(Map<String, dynamic> map) {
     return TenantClient(
-      permissions: (() {
-        final guardedValue = map['permissions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          TenantClientPermissions.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      permissions: (() { final guardedValue = map['permissions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TenantClientPermissions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

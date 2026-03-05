@@ -7,7 +7,6 @@ import 'target_assessment_arm_ids.dart';
 class CompoundAssessmentProperties {
   /// Fallback machine assessment ARM ID.
   final pulumi.Input<String>? fallbackMachineAssessmentArmId;
-
   /// ARM IDs of the target assessments.
   final pulumi.Input<TargetAssessmentArmIds> targetAssessmentArmIds;
 
@@ -22,26 +21,15 @@ class CompoundAssessmentProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'fallbackMachineAssessmentArmId': ?fallbackMachineAssessmentArmId,
-      'targetAssessmentArmIds':
-          pulumi.Input.mapInputValue<
-            TargetAssessmentArmIds,
-            Map<String, dynamic>
-          >(targetAssessmentArmIds, (value) => value.toMap()),
+      'targetAssessmentArmIds': pulumi.Input.mapInputValue<TargetAssessmentArmIds, Map<String, dynamic>>(targetAssessmentArmIds, (value) => value.toMap()),
     };
   }
 
   factory CompoundAssessmentProperties.fromMap(Map<String, dynamic> map) {
     return CompoundAssessmentProperties(
-      fallbackMachineAssessmentArmId: (() {
-        final guardedValue = map['fallbackMachineAssessmentArmId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      targetAssessmentArmIds: pulumi.Input.fromValue(
-        TargetAssessmentArmIds.fromMap(
-          (map['targetAssessmentArmIds']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      fallbackMachineAssessmentArmId: (() { final guardedValue = map['fallbackMachineAssessmentArmId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      targetAssessmentArmIds: pulumi.Input.fromValue(TargetAssessmentArmIds.fromMap((map['targetAssessmentArmIds']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

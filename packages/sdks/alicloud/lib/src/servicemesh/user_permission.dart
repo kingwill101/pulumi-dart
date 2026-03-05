@@ -452,7 +452,6 @@ import 'user_permission_state.dart';
 class UserPermission extends pulumi.CustomResource {
   /// List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See `permissions` below.
   late final pulumi.Output<List<Map<String, dynamic>>> permissions;
-
   /// The configuration of the Load Balancer. See the following `Block load_balancer`.
   late final pulumi.Output<String> subAccountUserId;
 
@@ -465,11 +464,11 @@ class UserPermission extends pulumi.CustomResource {
     UserPermissionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:servicemesh/userPermission:UserPermission',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:servicemesh/userPermission:UserPermission',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     permissions = registerOutput<List<Map<String, dynamic>>>('permissions');
     subAccountUserId = registerOutput<String>('subAccountUserId');
   }
@@ -492,11 +491,11 @@ class UserPermission extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:servicemesh/userPermission:UserPermission',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:servicemesh/userPermission:UserPermission',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     permissions = registerOutput<List<Map<String, dynamic>>>('permissions');
     subAccountUserId = registerOutput<String>('subAccountUserId');
   }

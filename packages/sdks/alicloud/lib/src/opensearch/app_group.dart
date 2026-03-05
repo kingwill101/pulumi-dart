@@ -177,34 +177,24 @@ import 'app_group_state.dart';
 class AppGroup extends pulumi.CustomResource {
   /// Application Group Name.
   late final pulumi.Output<String> appGroupName;
-
   /// Billing model. Valid values:`compute_resource` and `qps`.
   late final pulumi.Output<String> chargeWay;
-
   /// The version of Application Group Name.
   late final pulumi.Output<String?> currentVersion;
-
   /// The description of the resource.
   late final pulumi.Output<String?> description;
-
   /// The instance id.
   late final pulumi.Output<String> instanceId;
-
   /// Order change type. Valid values: `UPGRADE` and `DOWNGRADE`.
   late final pulumi.Output<String> orderType;
-
   /// Order cycle information. The details see Block order.
   late final pulumi.Output<List<Map<String, dynamic>>?> orders;
-
   /// The billing method of the resource. Valid values: `Subscription` and `PayAsYouGo`.
   late final pulumi.Output<String> paymentType;
-
   /// Quota information.  The details see Block quota.
   late final pulumi.Output<AppGroupQuota> quota;
-
   /// The status of the resource. Valid values: `producing`,`review_pending`,`config_pending`,`normal`,`frozen`.
   late final pulumi.Output<String> status;
-
   /// Application type. Valid Values: `standard`, `enhanced`.
   late final pulumi.Output<String> type;
 
@@ -217,11 +207,11 @@ class AppGroup extends pulumi.CustomResource {
     AppGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:opensearch/appGroup:AppGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:opensearch/appGroup:AppGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appGroupName = registerOutput<String>('appGroupName');
     chargeWay = registerOutput<String>('chargeWay');
     currentVersion = registerOutput<String?>('currentVersion');
@@ -230,16 +220,7 @@ class AppGroup extends pulumi.CustomResource {
     orderType = registerOutput<String>('orderType');
     orders = registerOutput<List<Map<String, dynamic>>?>('orders');
     paymentType = registerOutput<String>('paymentType');
-    quota = registerOutput<AppGroupQuota>(
-      'quota',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AppGroupQuota.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    quota = registerOutput<AppGroupQuota>('quota', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppGroupQuota.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
     type = registerOutput<String>('type');
   }
@@ -262,11 +243,11 @@ class AppGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:opensearch/appGroup:AppGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:opensearch/appGroup:AppGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appGroupName = registerOutput<String>('appGroupName');
     chargeWay = registerOutput<String>('chargeWay');
     currentVersion = registerOutput<String?>('currentVersion');
@@ -275,16 +256,7 @@ class AppGroup extends pulumi.CustomResource {
     orderType = registerOutput<String>('orderType');
     orders = registerOutput<List<Map<String, dynamic>>?>('orders');
     paymentType = registerOutput<String>('paymentType');
-    quota = registerOutput<AppGroupQuota>(
-      'quota',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AppGroupQuota.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    quota = registerOutput<AppGroupQuota>('quota', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppGroupQuota.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
     type = registerOutput<String>('type');
   }

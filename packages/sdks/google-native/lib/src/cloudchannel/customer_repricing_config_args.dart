@@ -10,7 +10,6 @@ import 'google_cloud_channel_v1_repricing_config.dart';
 class CustomerRepricingConfigArgs {
   final pulumi.Input<String> accountId;
   final pulumi.Input<String> customerId;
-
   /// The configuration for bill modifications made by a reseller before sending it to customers.
   final pulumi.Input<GoogleCloudChannelV1RepricingConfig> repricingConfig;
 
@@ -28,11 +27,7 @@ class CustomerRepricingConfigArgs {
     return <String, dynamic>{
       'accountId': accountId,
       'customerId': customerId,
-      'repricingConfig':
-          pulumi.Input.mapInputValue<
-            GoogleCloudChannelV1RepricingConfig,
-            Map<String, dynamic>
-          >(repricingConfig, (value) => value.toMap()),
+      'repricingConfig': pulumi.Input.mapInputValue<GoogleCloudChannelV1RepricingConfig, Map<String, dynamic>>(repricingConfig, (value) => value.toMap()),
     };
   }
 
@@ -40,11 +35,8 @@ class CustomerRepricingConfigArgs {
     return CustomerRepricingConfigArgs(
       accountId: pulumi.Input.fromValue(map['accountId'] as String),
       customerId: pulumi.Input.fromValue(map['customerId'] as String),
-      repricingConfig: pulumi.Input.fromValue(
-        GoogleCloudChannelV1RepricingConfig.fromMap(
-          (map['repricingConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      repricingConfig: pulumi.Input.fromValue(GoogleCloudChannelV1RepricingConfig.fromMap((map['repricingConfig']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

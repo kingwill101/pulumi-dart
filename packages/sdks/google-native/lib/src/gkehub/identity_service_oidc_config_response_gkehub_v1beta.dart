@@ -6,43 +6,30 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IdentityServiceOidcConfigResponseGkehubV1beta {
   /// PEM-encoded CA for OIDC provider.
   final pulumi.Input<String> certificateAuthorityData;
-
   /// ID for OIDC client application.
   final pulumi.Input<String> clientId;
-
   /// Input only. Unencrypted OIDC client secret will be passed to the GKE Hub CLH.
   final pulumi.Input<String> clientSecret;
-
   /// Flag to denote if reverse proxy is used to connect to auth provider. This flag should be set to true when provider is not reachable by Google Cloud Console.
   final pulumi.Input<bool> deployCloudConsoleProxy;
-
   /// Enable access token.
   final pulumi.Input<bool> enableAccessToken;
-
   /// Encrypted OIDC Client secret
   final pulumi.Input<String> encryptedClientSecret;
-
   /// Comma-separated list of key-value pairs.
   final pulumi.Input<String> extraParams;
-
   /// Prefix to prepend to group name.
   final pulumi.Input<String> groupPrefix;
-
   /// Claim in OIDC ID token that holds group information.
   final pulumi.Input<String> groupsClaim;
-
   /// URI for the OIDC provider. This should point to the level below .well-known/openid-configuration.
   final pulumi.Input<String> issuerUri;
-
   /// Registered redirect uri to redirect users going through OAuth flow using kubectl plugin.
   final pulumi.Input<String> kubectlRedirectUri;
-
   /// Comma-separated list of identifiers.
   final pulumi.Input<String> scopes;
-
   /// Claim in OIDC ID token that holds username.
   final pulumi.Input<String> userClaim;
-
   /// Prefix to prepend to user name.
   final pulumi.Input<String> userPrefix;
 
@@ -97,34 +84,23 @@ class IdentityServiceOidcConfigResponseGkehubV1beta {
     };
   }
 
-  factory IdentityServiceOidcConfigResponseGkehubV1beta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory IdentityServiceOidcConfigResponseGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return IdentityServiceOidcConfigResponseGkehubV1beta(
-      certificateAuthorityData: pulumi.Input.fromValue(
-        map['certificateAuthorityData'] as String,
-      ),
+      certificateAuthorityData: pulumi.Input.fromValue(map['certificateAuthorityData'] as String),
       clientId: pulumi.Input.fromValue(map['clientId'] as String),
       clientSecret: pulumi.Input.fromValue(map['clientSecret'] as String),
-      deployCloudConsoleProxy: pulumi.Input.fromValue(
-        map['deployCloudConsoleProxy'] as bool,
-      ),
-      enableAccessToken: pulumi.Input.fromValue(
-        map['enableAccessToken'] as bool,
-      ),
-      encryptedClientSecret: pulumi.Input.fromValue(
-        map['encryptedClientSecret'] as String,
-      ),
+      deployCloudConsoleProxy: pulumi.Input.fromValue(map['deployCloudConsoleProxy'] as bool),
+      enableAccessToken: pulumi.Input.fromValue(map['enableAccessToken'] as bool),
+      encryptedClientSecret: pulumi.Input.fromValue(map['encryptedClientSecret'] as String),
       extraParams: pulumi.Input.fromValue(map['extraParams'] as String),
       groupPrefix: pulumi.Input.fromValue(map['groupPrefix'] as String),
       groupsClaim: pulumi.Input.fromValue(map['groupsClaim'] as String),
       issuerUri: pulumi.Input.fromValue(map['issuerUri'] as String),
-      kubectlRedirectUri: pulumi.Input.fromValue(
-        map['kubectlRedirectUri'] as String,
-      ),
+      kubectlRedirectUri: pulumi.Input.fromValue(map['kubectlRedirectUri'] as String),
       scopes: pulumi.Input.fromValue(map['scopes'] as String),
       userClaim: pulumi.Input.fromValue(map['userClaim'] as String),
       userPrefix: pulumi.Input.fromValue(map['userPrefix'] as String),
     );
   }
 }
+

@@ -12,8 +12,7 @@ enum ApplicationGatewayClientRevocationOptions {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ApplicationGatewayClientRevocationOptions value: $value',
-    );
+    throw ArgumentError('Unknown ApplicationGatewayClientRevocationOptions value: $value');
   }
 }
+

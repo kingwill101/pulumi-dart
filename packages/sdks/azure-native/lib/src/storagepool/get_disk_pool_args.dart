@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDiskPoolArgs {
   /// The name of the Disk Pool.
   final pulumi.Input<String> diskPoolName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -31,9 +30,8 @@ class GetDiskPoolArgs {
   factory GetDiskPoolArgs.fromMap(Map<String, dynamic> map) {
     return GetDiskPoolArgs(
       diskPoolName: pulumi.Input.fromValue(map['diskPoolName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

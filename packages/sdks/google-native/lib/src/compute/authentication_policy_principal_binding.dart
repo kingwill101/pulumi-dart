@@ -13,8 +13,7 @@ enum AuthenticationPolicyPrincipalBinding {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown AuthenticationPolicyPrincipalBinding value: $value',
-    );
+    throw ArgumentError('Unknown AuthenticationPolicyPrincipalBinding value: $value');
   }
 }
+

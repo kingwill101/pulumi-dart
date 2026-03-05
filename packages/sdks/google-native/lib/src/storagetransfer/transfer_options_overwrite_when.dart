@@ -17,3 +17,4 @@ enum TransferOptionsOverwriteWhen {
     throw ArgumentError('Unknown TransferOptionsOverwriteWhen value: $value');
   }
 }
+

@@ -7,10 +7,8 @@ import 'header_value_matcher.dart';
 class ApplicationGatewayHeaderConfiguration {
   /// Header name of the header configuration.
   final pulumi.Input<String>? headerName;
-
   /// Header value of the header configuration.
   final pulumi.Input<String>? headerValue;
-
   /// An optional field under "Rewrite Action". It lets you capture and modify the value(s) of a specific header when multiple headers with the same name exist. Currently supported for Set-Cookie Response header only. For more details, visit https://aka.ms/appgwheadercrud
   final pulumi.Input<HeaderValueMatcher>? headerValueMatcher;
 
@@ -28,37 +26,16 @@ class ApplicationGatewayHeaderConfiguration {
     return <String, dynamic>{
       'headerName': ?headerName,
       'headerValue': ?headerValue,
-      'headerValueMatcher':
-          ?pulumi.Input.mapOptionalInputValue<
-            HeaderValueMatcher,
-            Map<String, dynamic>
-          >(headerValueMatcher, (value) => value.toMap()),
+      'headerValueMatcher': ?pulumi.Input.mapOptionalInputValue<HeaderValueMatcher, Map<String, dynamic>>(headerValueMatcher, (value) => value.toMap()),
     };
   }
 
-  factory ApplicationGatewayHeaderConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApplicationGatewayHeaderConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayHeaderConfiguration(
-      headerName: (() {
-        final guardedValue = map['headerName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      headerValue: (() {
-        final guardedValue = map['headerValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      headerValueMatcher: (() {
-        final guardedValue = map['headerValueMatcher'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          HeaderValueMatcher.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      headerName: (() { final guardedValue = map['headerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      headerValue: (() { final guardedValue = map['headerValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      headerValueMatcher: (() { final guardedValue = map['headerValueMatcher']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HeaderValueMatcher.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

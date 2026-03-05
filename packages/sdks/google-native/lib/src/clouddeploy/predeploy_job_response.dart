@@ -9,10 +9,14 @@ class PredeployJobResponse {
 
   /// Creates a new [PredeployJobResponse].
   /// [actions] The custom actions that the predeploy Job executes.
-  PredeployJobResponse({required this.actions});
+  PredeployJobResponse({
+    required this.actions,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'actions': actions};
+    return <String, dynamic>{
+      'actions': actions,
+    };
   }
 
   factory PredeployJobResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class PredeployJobResponse {
     );
   }
 }
+

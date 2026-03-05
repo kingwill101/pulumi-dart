@@ -8,29 +8,20 @@ class FlowTriggerConfigTriggerProperties {
 
   /// Creates a new [FlowTriggerConfigTriggerProperties].
   /// [scheduled] Optional.
-  FlowTriggerConfigTriggerProperties({this.scheduled});
+  FlowTriggerConfigTriggerProperties({
+    this.scheduled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'scheduled':
-          ?pulumi.Input.mapOptionalInputValue<
-            FlowTriggerConfigTriggerPropertiesScheduled,
-            Map<String, dynamic>
-          >(scheduled, (value) => value.toMap()),
+      'scheduled': ?pulumi.Input.mapOptionalInputValue<FlowTriggerConfigTriggerPropertiesScheduled, Map<String, dynamic>>(scheduled, (value) => value.toMap()),
     };
   }
 
   factory FlowTriggerConfigTriggerProperties.fromMap(Map<String, dynamic> map) {
     return FlowTriggerConfigTriggerProperties(
-      scheduled: (() {
-        final guardedValue = map['scheduled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FlowTriggerConfigTriggerPropertiesScheduled.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      scheduled: (() { final guardedValue = map['scheduled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FlowTriggerConfigTriggerPropertiesScheduled.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

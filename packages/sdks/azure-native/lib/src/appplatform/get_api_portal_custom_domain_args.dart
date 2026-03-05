@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApiPortalCustomDomainArgs {
   /// The name of API portal.
   final pulumi.Input<String> apiPortalName;
-
   /// The name of the API portal custom domain.
   final pulumi.Input<String> domainName;
-
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the Service resource.
   final pulumi.Input<String> serviceName;
 
@@ -44,10 +41,9 @@ class GetApiPortalCustomDomainArgs {
     return GetApiPortalCustomDomainArgs(
       apiPortalName: pulumi.Input.fromValue(map['apiPortalName'] as String),
       domainName: pulumi.Input.fromValue(map['domainName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
+

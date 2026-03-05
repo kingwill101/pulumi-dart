@@ -1,19 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getGroup.
 class GetGroupResult {
   /// The display name of the group.
   final String displayName;
-
   /// The number of invite links for this group.
   final int inviteLinkCount;
-
   /// The name of the group resource. Format: `projects/{project_number}/groups/{group_alias}`
   final String name;
-
   /// The number of releases this group is permitted to access.
   final int releaseCount;
-
   /// The number of testers who are members of this group.
   final int testerCount;
 
@@ -51,3 +48,4 @@ class GetGroupResult {
     );
   }
 }
+

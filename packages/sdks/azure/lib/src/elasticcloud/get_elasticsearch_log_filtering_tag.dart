@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetElasticsearchLogFilteringTag {
   /// The type of action which is taken when the Tag matches the `name` and `value`.
   final pulumi.Input<String> action;
-
   /// The name of the Elasticsearch resource.
   final pulumi.Input<String> name;
-
   /// The value of the Tag which should be filtered.
   final pulumi.Input<String> value;
 
@@ -23,7 +21,11 @@ class GetElasticsearchLogFilteringTag {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'action': action, 'name': name, 'value': value};
+    return <String, dynamic>{
+      'action': action,
+      'name': name,
+      'value': value,
+    };
   }
 
   factory GetElasticsearchLogFilteringTag.fromMap(Map<String, dynamic> map) {
@@ -34,3 +36,4 @@ class GetElasticsearchLogFilteringTag {
     );
   }
 }
+

@@ -7,10 +7,8 @@ class PartnerConfigurationPartnerAuthorization {
   ///
   /// &gt; **Note:** If the time from `authorization_expiration_time_in_utc` expires, any request from this partner to create, update or delete resources in the subscriber's context will fail. If not specified, the authorization will expire after `default_maximum_expiration_time_in_days`.
   final pulumi.Input<String>? authorizationExpirationTimeInUtc;
-
   /// The partner name.
   final pulumi.Input<String> partnerName;
-
   /// The immutable id of the corresponding partner registration.
   final pulumi.Input<String> partnerRegistrationId;
 
@@ -32,19 +30,12 @@ class PartnerConfigurationPartnerAuthorization {
     };
   }
 
-  factory PartnerConfigurationPartnerAuthorization.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PartnerConfigurationPartnerAuthorization.fromMap(Map<String, dynamic> map) {
     return PartnerConfigurationPartnerAuthorization(
-      authorizationExpirationTimeInUtc: (() {
-        final guardedValue = map['authorizationExpirationTimeInUtc'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      authorizationExpirationTimeInUtc: (() { final guardedValue = map['authorizationExpirationTimeInUtc']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       partnerName: pulumi.Input.fromValue(map['partnerName'] as String),
-      partnerRegistrationId: pulumi.Input.fromValue(
-        map['partnerRegistrationId'] as String,
-      ),
+      partnerRegistrationId: pulumi.Input.fromValue(map['partnerRegistrationId'] as String),
     );
   }
 }
+

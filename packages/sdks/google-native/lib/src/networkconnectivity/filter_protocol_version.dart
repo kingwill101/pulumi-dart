@@ -15,3 +15,4 @@ enum FilterProtocolVersion {
     throw ArgumentError('Unknown FilterProtocolVersion value: $value');
   }
 }
+

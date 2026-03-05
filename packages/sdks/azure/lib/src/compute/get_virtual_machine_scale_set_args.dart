@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVirtualMachineScaleSetArgs {
   /// The name of this Virtual Machine Scale Set.
   final pulumi.Input<String> name;
-
   /// The name of the Resource Group where the Virtual Machine Scale Set exists.
   final pulumi.Input<String> resourceGroupName;
 
@@ -31,9 +30,8 @@ class GetVirtualMachineScaleSetArgs {
   factory GetVirtualMachineScaleSetArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualMachineScaleSetArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

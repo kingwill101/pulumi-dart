@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureDevOpsResourceInfoResponse {
   /// Id of the pipeline created for the source-control.
   final pulumi.Input<String>? pipelineId;
-
   /// Id of the service-connection created for the source-control.
   final pulumi.Input<String>? serviceConnectionId;
 
   /// Creates a new [AzureDevOpsResourceInfoResponse].
   /// [pipelineId] Id of the pipeline created for the source-control.
   /// [serviceConnectionId] Id of the service-connection created for the source-control.
-  AzureDevOpsResourceInfoResponse({this.pipelineId, this.serviceConnectionId});
+  AzureDevOpsResourceInfoResponse({
+    this.pipelineId,
+    this.serviceConnectionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class AzureDevOpsResourceInfoResponse {
 
   factory AzureDevOpsResourceInfoResponse.fromMap(Map<String, dynamic> map) {
     return AzureDevOpsResourceInfoResponse(
-      pipelineId: (() {
-        final guardedValue = map['pipelineId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serviceConnectionId: (() {
-        final guardedValue = map['serviceConnectionId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      pipelineId: (() { final guardedValue = map['pipelineId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serviceConnectionId: (() { final guardedValue = map['serviceConnectionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

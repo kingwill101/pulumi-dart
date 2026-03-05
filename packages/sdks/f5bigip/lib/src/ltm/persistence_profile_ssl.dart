@@ -163,28 +163,20 @@ import 'persistence_profile_ssl_state.dart';
 /// ```
 class PersistenceProfileSsl extends pulumi.CustomResource {
   late final pulumi.Output<String?> appService;
-
   /// Inherit defaults from parent profile
   late final pulumi.Output<String> defaultsFrom;
-
   /// To enable _ disable match across pools with given persistence record
   late final pulumi.Output<String> matchAcrossPools;
-
   /// To enable _ disable match across services with given persistence record
   late final pulumi.Output<String> matchAcrossServices;
-
   /// To enable _ disable match across services with given persistence record
   late final pulumi.Output<String> matchAcrossVirtuals;
-
   /// To enable _ disable
   late final pulumi.Output<String> mirror;
-
   /// Name of the persistence profile
   late final pulumi.Output<String> name;
-
   /// To enable _ disable that pool member connection limits are overridden for persisted clients. Per-virtual connection limits remain hard limits and are not overridden.
   late final pulumi.Output<String> overrideConnLimit;
-
   /// Timeout for persistence of the session
   late final pulumi.Output<int?> timeout;
 
@@ -197,11 +189,11 @@ class PersistenceProfileSsl extends pulumi.CustomResource {
     PersistenceProfileSslArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:ltm/persistenceProfileSsl:PersistenceProfileSsl',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:ltm/persistenceProfileSsl:PersistenceProfileSsl',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appService = registerOutput<String?>('appService');
     defaultsFrom = registerOutput<String>('defaultsFrom');
     matchAcrossPools = registerOutput<String>('matchAcrossPools');
@@ -231,11 +223,11 @@ class PersistenceProfileSsl extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'f5bigip:ltm/persistenceProfileSsl:PersistenceProfileSsl',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'f5bigip:ltm/persistenceProfileSsl:PersistenceProfileSsl',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appService = registerOutput<String?>('appService');
     defaultsFrom = registerOutput<String>('defaultsFrom');
     matchAcrossPools = registerOutput<String>('matchAcrossPools');

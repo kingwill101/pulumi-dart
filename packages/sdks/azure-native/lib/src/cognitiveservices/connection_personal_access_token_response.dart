@@ -7,21 +7,20 @@ class ConnectionPersonalAccessTokenResponse {
 
   /// Creates a new [ConnectionPersonalAccessTokenResponse].
   /// [pat] Optional.
-  ConnectionPersonalAccessTokenResponse({this.pat});
+  ConnectionPersonalAccessTokenResponse({
+    this.pat,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'pat': ?pat};
+    return <String, dynamic>{
+      'pat': ?pat,
+    };
   }
 
-  factory ConnectionPersonalAccessTokenResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConnectionPersonalAccessTokenResponse.fromMap(Map<String, dynamic> map) {
     return ConnectionPersonalAccessTokenResponse(
-      pat: (() {
-        final guardedValue = map['pat'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      pat: (() { final guardedValue = map['pat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

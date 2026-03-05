@@ -1,8 +1,6 @@
 enum ExtensionOptionType {
   notSpecified("NotSpecified"),
-  doNotMergeExistingReadOnlyAndSecretProperties(
-    "DoNotMergeExistingReadOnlyAndSecretProperties",
-  ),
+  doNotMergeExistingReadOnlyAndSecretProperties("DoNotMergeExistingReadOnlyAndSecretProperties"),
   includeInternalMetadata("IncludeInternalMetadata");
 
   const ExtensionOptionType(this.wireValue);
@@ -17,3 +15,4 @@ enum ExtensionOptionType {
     throw ArgumentError('Unknown ExtensionOptionType value: $value');
   }
 }
+

@@ -10,25 +10,20 @@ class VmwareControlPlaneV2ConfigResponse {
 
   /// Creates a new [VmwareControlPlaneV2ConfigResponse].
   /// [controlPlaneIpBlock] Static IP addresses for the control plane nodes.
-  VmwareControlPlaneV2ConfigResponse({required this.controlPlaneIpBlock});
+  VmwareControlPlaneV2ConfigResponse({
+    required this.controlPlaneIpBlock,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'controlPlaneIpBlock':
-          pulumi.Input.mapInputValue<
-            VmwareIpBlockResponse,
-            Map<String, dynamic>
-          >(controlPlaneIpBlock, (value) => value.toMap()),
+      'controlPlaneIpBlock': pulumi.Input.mapInputValue<VmwareIpBlockResponse, Map<String, dynamic>>(controlPlaneIpBlock, (value) => value.toMap()),
     };
   }
 
   factory VmwareControlPlaneV2ConfigResponse.fromMap(Map<String, dynamic> map) {
     return VmwareControlPlaneV2ConfigResponse(
-      controlPlaneIpBlock: pulumi.Input.fromValue(
-        VmwareIpBlockResponse.fromMap(
-          (map['controlPlaneIpBlock']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      controlPlaneIpBlock: pulumi.Input.fromValue(VmwareIpBlockResponse.fromMap((map['controlPlaneIpBlock']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

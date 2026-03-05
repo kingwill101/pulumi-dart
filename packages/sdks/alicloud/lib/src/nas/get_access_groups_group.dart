@@ -5,22 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccessGroupsGroup {
   /// The name of access group.
   final pulumi.Input<String> accessGroupName;
-
   /// Filter results by a specific AccessGroupType.
   final pulumi.Input<String> accessGroupType;
-
   /// Filter results by a specific Description.
   final pulumi.Input<String> description;
-
   /// This ID of this AccessGroup. It is formatted to ``&lt;access_group_id&gt;:&lt;file_system_type&gt;``. Before version 1.95.0, the value is `access_group_name`.
   final pulumi.Input<String> id;
-
   /// MountTargetCount block of the AccessGroup
   final pulumi.Input<int> mountTargetCount;
-
   /// RuleCount of the AccessGroup.
   final pulumi.Input<int> ruleCount;
-
   /// Field `type` has been deprecated from version 1.95.0. Use `access_group_type` instead.
   final pulumi.Input<String> type;
 
@@ -66,3 +60,4 @@ class GetAccessGroupsGroup {
     );
   }
 }
+

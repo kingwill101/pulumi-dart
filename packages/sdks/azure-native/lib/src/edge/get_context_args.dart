@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetContextArgs {
   /// The name of the Context.
   final pulumi.Input<String> contextName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetContextArgs].
   /// [contextName] The name of the Context.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetContextArgs({required this.contextName, required this.resourceGroupName});
+  GetContextArgs({
+    required this.contextName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,9 +30,8 @@ class GetContextArgs {
   factory GetContextArgs.fromMap(Map<String, dynamic> map) {
     return GetContextArgs(
       contextName: pulumi.Input.fromValue(map['contextName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

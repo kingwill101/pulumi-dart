@@ -10,13 +10,10 @@ import 'nacos_component.dart';
 class JavaComponentArgs {
   /// Name of the Managed Environment.
   final pulumi.Input<String> environmentName;
-
   /// Name of the Java Component.
   final pulumi.Input<String>? name;
-
   /// Java Component resource specific properties
   final pulumi.Input<NacosComponent>? properties;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,11 +33,7 @@ class JavaComponentArgs {
     return <String, dynamic>{
       'environmentName': environmentName,
       'name': ?name,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            NacosComponent,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<NacosComponent, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
     };
   }
@@ -48,21 +41,10 @@ class JavaComponentArgs {
   factory JavaComponentArgs.fromMap(Map<String, dynamic> map) {
     return JavaComponentArgs(
       environmentName: pulumi.Input.fromValue(map['environmentName'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          NacosComponent.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NacosComponent.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

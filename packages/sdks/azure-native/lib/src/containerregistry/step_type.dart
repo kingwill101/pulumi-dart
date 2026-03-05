@@ -16,3 +16,4 @@ enum StepType {
     throw ArgumentError('Unknown StepType value: $value');
   }
 }
+

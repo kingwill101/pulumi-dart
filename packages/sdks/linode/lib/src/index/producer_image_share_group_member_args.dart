@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProducerImageShareGroupMemberArgs {
   /// A label for the member.
   final pulumi.Input<String> label;
-
   /// The ID of the Image Share Group to which the member will be added.
   final pulumi.Input<int> sharegroupId;
-
   /// The token of the prospective member.
   final pulumi.Input<String> token;
 
@@ -42,3 +40,4 @@ class ProducerImageShareGroupMemberArgs {
     );
   }
 }
+

@@ -7,10 +7,8 @@ class ListenerAccessLogTracingConfig {
   ///
   /// &gt; **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the value `true`.
   final pulumi.Input<bool> tracingEnabled;
-
   /// Xtrace Sampling Rate. Value: 1~10000. `tracingenabled` valued True When Effective.
   final pulumi.Input<int>? tracingSample;
-
   /// Xtrace Type Value Is `Zipkin`.
   ///
   /// &gt; **NOTE:**  `tracingenabled` valued True When Effective.
@@ -37,16 +35,9 @@ class ListenerAccessLogTracingConfig {
   factory ListenerAccessLogTracingConfig.fromMap(Map<String, dynamic> map) {
     return ListenerAccessLogTracingConfig(
       tracingEnabled: pulumi.Input.fromValue(map['tracingEnabled'] as bool),
-      tracingSample: (() {
-        final guardedValue = map['tracingSample'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      tracingType: (() {
-        final guardedValue = map['tracingType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      tracingSample: (() { final guardedValue = map['tracingSample']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      tracingType: (() { final guardedValue = map['tracingType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

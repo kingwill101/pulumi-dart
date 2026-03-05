@@ -172,22 +172,16 @@ import 'tag_state.dart';
 class Tag extends pulumi.CustomResource {
   /// A count of the database clusters that the tag is applied to.
   late final pulumi.Output<int> databasesCount;
-
   /// A count of the Droplets the tag is applied to.
   late final pulumi.Output<int> dropletsCount;
-
   /// A count of the images that the tag is applied to.
   late final pulumi.Output<int> imagesCount;
-
   /// The name of the tag
   late final pulumi.Output<String> name;
-
   /// A count of the total number of resources that the tag is applied to.
   late final pulumi.Output<int> totalResourceCount;
-
   /// A count of the volume snapshots that the tag is applied to.
   late final pulumi.Output<int> volumeSnapshotsCount;
-
   /// A count of the volumes that the tag is applied to.
   late final pulumi.Output<int> volumesCount;
 
@@ -195,13 +189,16 @@ class Tag extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Tag]. {@macro pulumi_index_tag_tag_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Tag(String name, {TagArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'digitalocean:index/tag:Tag',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Tag(
+    String name, {
+    TagArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'digitalocean:index/tag:Tag',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     databasesCount = registerOutput<int>('databasesCount');
     dropletsCount = registerOutput<int>('dropletsCount');
     imagesCount = registerOutput<int>('imagesCount');
@@ -212,7 +209,11 @@ class Tag extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Tag] resource's state with the given [name] and [id].
-  static Tag get(String name, pulumi.Input<String> id, {TagState? state}) {
+  static Tag get(
+    String name,
+    pulumi.Input<String> id, {
+    TagState? state,
+  }) {
     return Tag._get(
       name,
       state: state?.toMap(),
@@ -225,11 +226,11 @@ class Tag extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/tag:Tag',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/tag:Tag',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     databasesCount = registerOutput<int>('databasesCount');
     dropletsCount = registerOutput<int>('dropletsCount');
     imagesCount = registerOutput<int>('imagesCount');

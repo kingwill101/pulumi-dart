@@ -175,46 +175,32 @@ import 'db_instance_state.dart';
 class DbInstance extends pulumi.CustomResource {
   /// (Available in 1.196.0+)  The connection string of the instance.
   late final pulumi.Output<String> connectionString;
-
   /// The category of the db instance. Valid values: `HA`, `SINGLE`(Available in 1.173.0+).
   late final pulumi.Output<String> dbInstanceCategory;
-
   /// According to the practical example or notes.
   late final pulumi.Output<String?> dbInstanceDescription;
-
   /// IP ADDRESS whitelist for the instance group list. See `db_instance_ip_array` below.
   late final pulumi.Output<List<Map<String, dynamic>>> dbInstanceIpArrays;
-
   /// The network type of the db instance. Valid values: `vpc`.
   late final pulumi.Output<String> dbInstanceNetworkType;
-
   /// Disk storage type. Valid values: `cloud_essd`, `cloud_ssd`. Modification is not supported.
   late final pulumi.Output<String> dbInstanceStorageType;
-
   /// The class of the db node. Valid values: `gdb.r.xlarge`, `gdb.r.2xlarge`, `gdb.r.4xlarge`, `gdb.r.8xlarge`, `gdb.r.16xlarge`, `gdb.r.xlarge_basic`, `gdb.r.2xlarge_basic`, `gdb.r.4xlarge_basic`, `gdb.r.8xlarge_basic`, `gdb.r.16xlarge_basic`.
   late final pulumi.Output<String> dbNodeClass;
-
   /// Instance storage space, which is measured in GB.
   late final pulumi.Output<int> dbNodeStorage;
-
   /// Kernel Version. Valid values: `1.0` or `1.0-OpenCypher`. `1.0`: represented as gremlin, `1.0-OpenCypher`: said opencypher.
   late final pulumi.Output<String> dbVersion;
-
   /// The paymen type of the resource. Valid values: `PayAsYouGo`.
   late final pulumi.Output<String> paymentType;
-
   /// (Available in 1.196.0+) The connection port of the instance.
   late final pulumi.Output<String> port;
-
   /// Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
   late final pulumi.Output<String> status;
-
   /// ID of the VPC.
   late final pulumi.Output<String> vpcId;
-
   /// The ID of attaching vswitch to instance.
   late final pulumi.Output<String> vswitchId;
-
   /// The zone ID of the resource.
   late final pulumi.Output<String> zoneId;
 
@@ -227,17 +213,15 @@ class DbInstance extends pulumi.CustomResource {
     DbInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:graphdatabase/dbInstance:DbInstance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:graphdatabase/dbInstance:DbInstance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     connectionString = registerOutput<String>('connectionString');
     dbInstanceCategory = registerOutput<String>('dbInstanceCategory');
     dbInstanceDescription = registerOutput<String?>('dbInstanceDescription');
-    dbInstanceIpArrays = registerOutput<List<Map<String, dynamic>>>(
-      'dbInstanceIpArrays',
-    );
+    dbInstanceIpArrays = registerOutput<List<Map<String, dynamic>>>('dbInstanceIpArrays');
     dbInstanceNetworkType = registerOutput<String>('dbInstanceNetworkType');
     dbInstanceStorageType = registerOutput<String>('dbInstanceStorageType');
     dbNodeClass = registerOutput<String>('dbNodeClass');
@@ -269,17 +253,15 @@ class DbInstance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:graphdatabase/dbInstance:DbInstance',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:graphdatabase/dbInstance:DbInstance',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     connectionString = registerOutput<String>('connectionString');
     dbInstanceCategory = registerOutput<String>('dbInstanceCategory');
     dbInstanceDescription = registerOutput<String?>('dbInstanceDescription');
-    dbInstanceIpArrays = registerOutput<List<Map<String, dynamic>>>(
-      'dbInstanceIpArrays',
-    );
+    dbInstanceIpArrays = registerOutput<List<Map<String, dynamic>>>('dbInstanceIpArrays');
     dbInstanceNetworkType = registerOutput<String>('dbInstanceNetworkType');
     dbInstanceStorageType = registerOutput<String>('dbInstanceStorageType');
     dbNodeClass = registerOutput<String>('dbNodeClass');

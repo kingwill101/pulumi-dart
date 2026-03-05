@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDomainsDomainCertInfo {
   /// If You Enable HTTPS Here Certificate Name.
   final pulumi.Input<String> certName;
-
   /// Certificate Type. Value Range: Upload: Certificate. CAS: Certificate Authority Certificate. Free: Free Certificate.
   final pulumi.Input<String> certType;
-
   /// Whether to Enable SSL Certificate. Valid Values: on, off.
   final pulumi.Input<String> sslProtocol;
-
   /// If You Enable HTTPS Here Key.
   final pulumi.Input<String> sslPub;
 
@@ -45,3 +42,4 @@ class GetDomainsDomainCertInfo {
     );
   }
 }
+

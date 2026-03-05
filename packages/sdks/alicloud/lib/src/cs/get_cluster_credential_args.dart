@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClusterCredentialArgs {
   /// The id of target cluster.
   final pulumi.Input<String> clusterId;
-
   /// File name where to save the returned KubeConfig (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
-
   /// Automatic expiration time of the returned credential. The valid value between `15` and `4320`, in minutes. When this field is omitted, the expiration time will be determined by the system automatically and the result will be in the attributed field `expiration`.
   final pulumi.Input<int>? temporaryDurationMinutes;
 
@@ -37,16 +35,9 @@ class GetClusterCredentialArgs {
   factory GetClusterCredentialArgs.fromMap(Map<String, dynamic> map) {
     return GetClusterCredentialArgs(
       clusterId: pulumi.Input.fromValue(map['clusterId'] as String),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      temporaryDurationMinutes: (() {
-        final guardedValue = map['temporaryDurationMinutes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      temporaryDurationMinutes: (() { final guardedValue = map['temporaryDurationMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPermissionsLfTag {
   /// Identifier for the Data Catalog. By default, it is the account ID of the caller.
   final pulumi.Input<String> catalogId;
-
   /// Key-name for the tag.
   final pulumi.Input<String> key;
-
   /// List of possible values an attribute can take.
   ///
   /// The following argument is optional:
@@ -40,3 +38,4 @@ class GetPermissionsLfTag {
     );
   }
 }
+

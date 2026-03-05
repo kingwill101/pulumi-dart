@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindowDuration {
   /// Span of time that's a fraction of a second at nanosecond resolution.
   final pulumi.Input<int>? nanos;
-
   /// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
   final pulumi.Input<String>? seconds;
 
@@ -18,23 +17,17 @@ class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindowD
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'nanos': ?nanos, 'seconds': ?seconds};
+    return <String, dynamic>{
+      'nanos': ?nanos,
+      'seconds': ?seconds,
+    };
   }
 
-  factory FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindowDuration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindowDuration.fromMap(Map<String, dynamic> map) {
     return FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindowDuration(
-      nanos: (() {
-        final guardedValue = map['nanos'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      seconds: (() {
-        final guardedValue = map['seconds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      nanos: (() { final guardedValue = map['nanos']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      seconds: (() { final guardedValue = map['seconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

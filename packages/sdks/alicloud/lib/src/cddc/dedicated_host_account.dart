@@ -445,13 +445,10 @@ import 'dedicated_host_account_state.dart';
 class DedicatedHostAccount extends pulumi.CustomResource {
   /// The name of the Dedicated host account. The account name must be 2 to 16 characters in length, contain lower case letters, digits, and underscore(_). At the same time, the name must start with a letter and end with a letter or number.
   late final pulumi.Output<String> accountName;
-
   /// The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%^&*()_+-=`.
   late final pulumi.Output<String> accountPassword;
-
   /// The type of the Dedicated host account. Valid values: `Admin`, `Normal`.
   late final pulumi.Output<String?> accountType;
-
   /// The ID of Dedicated the host.
   late final pulumi.Output<String> dedicatedHostId;
 
@@ -464,11 +461,11 @@ class DedicatedHostAccount extends pulumi.CustomResource {
     DedicatedHostAccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cddc/dedicatedHostAccount:DedicatedHostAccount',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cddc/dedicatedHostAccount:DedicatedHostAccount',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountName = registerOutput<String>('accountName');
     accountPassword = registerOutput<String>('accountPassword');
     accountType = registerOutput<String?>('accountType');
@@ -493,11 +490,11 @@ class DedicatedHostAccount extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cddc/dedicatedHostAccount:DedicatedHostAccount',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cddc/dedicatedHostAccount:DedicatedHostAccount',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountName = registerOutput<String>('accountName');
     accountPassword = registerOutput<String>('accountPassword');
     accountType = registerOutput<String?>('accountType');

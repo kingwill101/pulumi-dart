@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCustomApiArgs {
   /// API name
   final pulumi.Input<String> apiName;
-
   /// The resource group
   final pulumi.Input<String> resourceGroupName;
-
   /// Subscription Id
   final pulumi.Input<String>? subscriptionId;
 
@@ -37,14 +35,9 @@ class GetCustomApiArgs {
   factory GetCustomApiArgs.fromMap(Map<String, dynamic> map) {
     return GetCustomApiArgs(
       apiName: pulumi.Input.fromValue(map['apiName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      subscriptionId: (() {
-        final guardedValue = map['subscriptionId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      subscriptionId: (() { final guardedValue = map['subscriptionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -14,3 +14,4 @@ enum TrustPolicyType {
     throw ArgumentError('Unknown TrustPolicyType value: $value');
   }
 }
+

@@ -17,25 +17,18 @@ import 'report_schedule_response.dart';
 class ReportByBillingAccount extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Has definition for the report.
   late final pulumi.Output<ReportDefinitionResponse> definition;
-
   /// Has delivery information for the report.
   late final pulumi.Output<ReportDeliveryInfoResponse> deliveryInfo;
-
   /// The format of the report being delivered.
   late final pulumi.Output<String?> format;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// Has schedule information for the report.
   late final pulumi.Output<ReportScheduleResponse?> schedule;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>> tags;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -48,44 +41,17 @@ class ReportByBillingAccount extends pulumi.CustomResource {
     ReportByBillingAccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:costmanagement:ReportByBillingAccount',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:costmanagement:ReportByBillingAccount',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    definition = registerOutput<ReportDefinitionResponse>(
-      'definition',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ReportDefinitionResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    deliveryInfo = registerOutput<ReportDeliveryInfoResponse>(
-      'deliveryInfo',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ReportDeliveryInfoResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    definition = registerOutput<ReportDefinitionResponse>('definition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReportDefinitionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deliveryInfo = registerOutput<ReportDeliveryInfoResponse>('deliveryInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReportDeliveryInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     format = registerOutput<String?>('format');
     this.name = registerOutput<String>('name');
-    schedule = registerOutput<ReportScheduleResponse?>(
-      'schedule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ReportScheduleResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    schedule = registerOutput<ReportScheduleResponse?>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReportScheduleResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>>('tags');
     type = registerOutput<String>('type');
   }

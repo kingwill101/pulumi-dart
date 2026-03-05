@@ -218,32 +218,24 @@ import 'system_data_response.dart';
 class CapacityPoolBucket extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// File System user having access to volume data. For Unix, this is the user's uid and gid. For Windows, this is the user's username. Note that the Unix and Windows user details are mutually exclusive, meaning one or other must be supplied, but not both.
   late final pulumi.Output<FileSystemUserResponse?> fileSystemUser;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The volume path mounted inside the bucket. The default is the root path '/' if no value is provided when the bucket is created.
   late final pulumi.Output<String?> path;
-
   /// Provisioning state of the resource
   late final pulumi.Output<String> provisioningState;
-
   /// Properties of the server managing the lifecycle of volume buckets
   late final pulumi.Output<BucketServerPropertiesResponse?> server;
-
   /// The bucket credentials status. There states:
   ///
   /// "NoCredentialsSet": Access and Secret key pair have not been generated.
   /// "CredentialsExpired": Access and Secret key pair have expired.
   /// "Active": The certificate has been installed and credentials are unexpired.
   late final pulumi.Output<String> status;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -256,46 +248,19 @@ class CapacityPoolBucket extends pulumi.CustomResource {
     CapacityPoolBucketArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:netapp:CapacityPoolBucket',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:netapp:CapacityPoolBucket',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    fileSystemUser = registerOutput<FileSystemUserResponse?>(
-      'fileSystemUser',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FileSystemUserResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    fileSystemUser = registerOutput<FileSystemUserResponse?>('fileSystemUser', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FileSystemUserResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     path = registerOutput<String?>('path');
     provisioningState = registerOutput<String>('provisioningState');
-    server = registerOutput<BucketServerPropertiesResponse?>(
-      'server',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BucketServerPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    server = registerOutput<BucketServerPropertiesResponse?>('server', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketServerPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

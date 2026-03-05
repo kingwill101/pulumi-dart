@@ -20,3 +20,4 @@ enum KeyAlgorithm {
     throw ArgumentError('Unknown KeyAlgorithm value: $value');
   }
 }
+

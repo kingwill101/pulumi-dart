@@ -31,11 +31,11 @@ class ApplicationInfo extends pulumi.CustomResource {
     ApplicationInfoArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:quotas/applicationInfo:ApplicationInfo',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:quotas/applicationInfo:ApplicationInfo',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     approveValue = registerOutput<String>('approveValue');
     auditMode = registerOutput<String>('auditMode');
     auditReason = registerOutput<String>('auditReason');
@@ -74,11 +74,11 @@ class ApplicationInfo extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:quotas/applicationInfo:ApplicationInfo',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:quotas/applicationInfo:ApplicationInfo',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     approveValue = registerOutput<String>('approveValue');
     auditMode = registerOutput<String>('auditMode');
     auditReason = registerOutput<String>('auditReason');

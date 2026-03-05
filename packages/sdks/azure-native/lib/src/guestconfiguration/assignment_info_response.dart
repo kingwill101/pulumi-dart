@@ -7,38 +7,29 @@ import 'configuration_info_response.dart';
 class AssignmentInfoResponse {
   /// Information about the configuration.
   final pulumi.Input<ConfigurationInfoResponse>? configuration;
-
   /// Name of the guest configuration assignment.
   final pulumi.Input<String> name;
 
   /// Creates a new [AssignmentInfoResponse].
   /// [configuration] Information about the configuration.
   /// [name] Name of the guest configuration assignment.
-  AssignmentInfoResponse({this.configuration, required this.name});
+  AssignmentInfoResponse({
+    this.configuration,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configuration':
-          ?pulumi.Input.mapOptionalInputValue<
-            ConfigurationInfoResponse,
-            Map<String, dynamic>
-          >(configuration, (value) => value.toMap()),
+      'configuration': ?pulumi.Input.mapOptionalInputValue<ConfigurationInfoResponse, Map<String, dynamic>>(configuration, (value) => value.toMap()),
       'name': name,
     };
   }
 
   factory AssignmentInfoResponse.fromMap(Map<String, dynamic> map) {
     return AssignmentInfoResponse(
-      configuration: (() {
-        final guardedValue = map['configuration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ConfigurationInfoResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      configuration: (() { final guardedValue = map['configuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConfigurationInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

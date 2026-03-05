@@ -10,19 +10,20 @@ class PipelineLoggingConfig {
 
   /// Creates a new [PipelineLoggingConfig].
   /// [logSeverity] The minimum severity of logs that will be sent to Stackdriver/Platform
-  PipelineLoggingConfig({this.logSeverity});
+  PipelineLoggingConfig({
+    this.logSeverity,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'logSeverity': ?logSeverity};
+    return <String, dynamic>{
+      'logSeverity': ?logSeverity,
+    };
   }
 
   factory PipelineLoggingConfig.fromMap(Map<String, dynamic> map) {
     return PipelineLoggingConfig(
-      logSeverity: (() {
-        final guardedValue = map['logSeverity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      logSeverity: (() { final guardedValue = map['logSeverity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

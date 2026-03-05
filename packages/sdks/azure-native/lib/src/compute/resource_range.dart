@@ -6,31 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceRange {
   /// The maximum number of the resource.
   final pulumi.Input<int>? max;
-
   /// The minimum number of the resource.
   final pulumi.Input<int>? min;
 
   /// Creates a new [ResourceRange].
   /// [max] The maximum number of the resource.
   /// [min] The minimum number of the resource.
-  ResourceRange({this.max, this.min});
+  ResourceRange({
+    this.max,
+    this.min,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'max': ?max, 'min': ?min};
+    return <String, dynamic>{
+      'max': ?max,
+      'min': ?min,
+    };
   }
 
   factory ResourceRange.fromMap(Map<String, dynamic> map) {
     return ResourceRange(
-      max: (() {
-        final guardedValue = map['max'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      min: (() {
-        final guardedValue = map['min'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      max: (() { final guardedValue = map['max']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      min: (() { final guardedValue = map['min']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

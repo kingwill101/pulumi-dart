@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDomainsDomainSource {
   /// The origin address.
   final pulumi.Input<String> content;
-
   /// The status of the origin.
   final pulumi.Input<String> enabled;
-
   /// The port number.
   final pulumi.Input<int> port;
-
   /// The priority of the origin if multiple origins are specified.
   final pulumi.Input<String> priority;
-
   /// The type of the origin. Valid values:
   final pulumi.Input<String> type;
-
   /// The weight of the origin if multiple origins are specified.
   final pulumi.Input<String> weight;
 
@@ -59,3 +54,4 @@ class GetDomainsDomainSource {
     );
   }
 }
+

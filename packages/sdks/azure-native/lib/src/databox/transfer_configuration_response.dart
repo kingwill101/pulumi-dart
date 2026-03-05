@@ -7,15 +7,11 @@ import 'transfer_configuration_response_transfer_filter_details.dart';
 /// Configuration for defining the transfer of data.
 class TransferConfigurationResponse {
   /// Map of filter type and the details to transfer all data. This field is required only if the TransferConfigurationType is given as TransferAll
-  final pulumi.Input<TransferConfigurationResponseTransferAllDetails>?
-  transferAllDetails;
-
+  final pulumi.Input<TransferConfigurationResponseTransferAllDetails>? transferAllDetails;
   /// Type of the configuration for transfer.
   final pulumi.Input<String> transferConfigurationType;
-
   /// Map of filter type and the details to filter. This field is required only if the TransferConfigurationType is given as TransferUsingFilter.
-  final pulumi.Input<TransferConfigurationResponseTransferFilterDetails>?
-  transferFilterDetails;
+  final pulumi.Input<TransferConfigurationResponseTransferFilterDetails>? transferFilterDetails;
 
   /// Creates a new [TransferConfigurationResponse].
   /// [transferAllDetails] Map of filter type and the details to transfer all data. This field is required only if the TransferConfigurationType is given as TransferAll
@@ -29,43 +25,18 @@ class TransferConfigurationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'transferAllDetails':
-          ?pulumi.Input.mapOptionalInputValue<
-            TransferConfigurationResponseTransferAllDetails,
-            Map<String, dynamic>
-          >(transferAllDetails, (value) => value.toMap()),
+      'transferAllDetails': ?pulumi.Input.mapOptionalInputValue<TransferConfigurationResponseTransferAllDetails, Map<String, dynamic>>(transferAllDetails, (value) => value.toMap()),
       'transferConfigurationType': transferConfigurationType,
-      'transferFilterDetails':
-          ?pulumi.Input.mapOptionalInputValue<
-            TransferConfigurationResponseTransferFilterDetails,
-            Map<String, dynamic>
-          >(transferFilterDetails, (value) => value.toMap()),
+      'transferFilterDetails': ?pulumi.Input.mapOptionalInputValue<TransferConfigurationResponseTransferFilterDetails, Map<String, dynamic>>(transferFilterDetails, (value) => value.toMap()),
     };
   }
 
   factory TransferConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return TransferConfigurationResponse(
-      transferAllDetails: (() {
-        final guardedValue = map['transferAllDetails'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          TransferConfigurationResponseTransferAllDetails.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      transferConfigurationType: pulumi.Input.fromValue(
-        map['transferConfigurationType'] as String,
-      ),
-      transferFilterDetails: (() {
-        final guardedValue = map['transferFilterDetails'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          TransferConfigurationResponseTransferFilterDetails.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      transferAllDetails: (() { final guardedValue = map['transferAllDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TransferConfigurationResponseTransferAllDetails.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      transferConfigurationType: pulumi.Input.fromValue(map['transferConfigurationType'] as String),
+      transferFilterDetails: (() { final guardedValue = map['transferFilterDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TransferConfigurationResponseTransferFilterDetails.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

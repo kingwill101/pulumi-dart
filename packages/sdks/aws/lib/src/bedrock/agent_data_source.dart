@@ -413,36 +413,25 @@ import 'agent_data_source_vector_ingestion_configuration.dart';
 class AgentDataSource extends pulumi.CustomResource {
   /// Data deletion policy for a data source. Valid values: `RETAIN`, `DELETE`.
   late final pulumi.Output<String> dataDeletionPolicy;
-
   /// Details about how the data source is stored. See `data_source_configuration` block for details.
-  late final pulumi.Output<AgentDataSourceDataSourceConfiguration>
-  dataSourceConfiguration;
-
+  late final pulumi.Output<AgentDataSourceDataSourceConfiguration> dataSourceConfiguration;
   /// Unique identifier of the data source.
   late final pulumi.Output<String> dataSourceId;
-
   /// Description of the data source.
   late final pulumi.Output<String?> description;
-
   /// Unique identifier of the knowledge base to which the data source belongs.
   late final pulumi.Output<String> knowledgeBaseId;
-
   /// Name of the data source.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Details about the configuration of the server-side encryption. See `server_side_encryption_configuration` block for details.
-  late final pulumi.Output<AgentDataSourceServerSideEncryptionConfiguration?>
-  serverSideEncryptionConfiguration;
+  late final pulumi.Output<AgentDataSourceServerSideEncryptionConfiguration?> serverSideEncryptionConfiguration;
   late final pulumi.Output<AgentDataSourceTimeouts?> timeouts;
-
   /// Details about the configuration of the server-side encryption. See `vector_ingestion_configuration` block for details.
-  late final pulumi.Output<AgentDataSourceVectorIngestionConfiguration?>
-  vectorIngestionConfiguration;
+  late final pulumi.Output<AgentDataSourceVectorIngestionConfiguration?> vectorIngestionConfiguration;
 
   /// Creates a new [AgentDataSource].
   /// [name] The Pulumi resource name.
@@ -453,60 +442,21 @@ class AgentDataSource extends pulumi.CustomResource {
     AgentDataSourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:bedrock/agentDataSource:AgentDataSource',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:bedrock/agentDataSource:AgentDataSource',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dataDeletionPolicy = registerOutput<String>('dataDeletionPolicy');
-    dataSourceConfiguration =
-        registerOutput<AgentDataSourceDataSourceConfiguration>(
-          'dataSourceConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AgentDataSourceDataSourceConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    dataSourceConfiguration = registerOutput<AgentDataSourceDataSourceConfiguration>('dataSourceConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentDataSourceDataSourceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataSourceId = registerOutput<String>('dataSourceId');
     description = registerOutput<String?>('description');
     knowledgeBaseId = registerOutput<String>('knowledgeBaseId');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    serverSideEncryptionConfiguration =
-        registerOutput<AgentDataSourceServerSideEncryptionConfiguration?>(
-          'serverSideEncryptionConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AgentDataSourceServerSideEncryptionConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    timeouts = registerOutput<AgentDataSourceTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AgentDataSourceTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    vectorIngestionConfiguration =
-        registerOutput<AgentDataSourceVectorIngestionConfiguration?>(
-          'vectorIngestionConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AgentDataSourceVectorIngestionConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    serverSideEncryptionConfiguration = registerOutput<AgentDataSourceServerSideEncryptionConfiguration?>('serverSideEncryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentDataSourceServerSideEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    timeouts = registerOutput<AgentDataSourceTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentDataSourceTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vectorIngestionConfiguration = registerOutput<AgentDataSourceVectorIngestionConfiguration?>('vectorIngestionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentDataSourceVectorIngestionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [AgentDataSource] resource's state with the given [name] and [id].
@@ -527,59 +477,20 @@ class AgentDataSource extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:bedrock/agentDataSource:AgentDataSource',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:bedrock/agentDataSource:AgentDataSource',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dataDeletionPolicy = registerOutput<String>('dataDeletionPolicy');
-    dataSourceConfiguration =
-        registerOutput<AgentDataSourceDataSourceConfiguration>(
-          'dataSourceConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AgentDataSourceDataSourceConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    dataSourceConfiguration = registerOutput<AgentDataSourceDataSourceConfiguration>('dataSourceConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentDataSourceDataSourceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataSourceId = registerOutput<String>('dataSourceId');
     description = registerOutput<String?>('description');
     knowledgeBaseId = registerOutput<String>('knowledgeBaseId');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    serverSideEncryptionConfiguration =
-        registerOutput<AgentDataSourceServerSideEncryptionConfiguration?>(
-          'serverSideEncryptionConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AgentDataSourceServerSideEncryptionConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    timeouts = registerOutput<AgentDataSourceTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AgentDataSourceTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    vectorIngestionConfiguration =
-        registerOutput<AgentDataSourceVectorIngestionConfiguration?>(
-          'vectorIngestionConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AgentDataSourceVectorIngestionConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    serverSideEncryptionConfiguration = registerOutput<AgentDataSourceServerSideEncryptionConfiguration?>('serverSideEncryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentDataSourceServerSideEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    timeouts = registerOutput<AgentDataSourceTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentDataSourceTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vectorIngestionConfiguration = registerOutput<AgentDataSourceVectorIngestionConfiguration?>('vectorIngestionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentDataSourceVectorIngestionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

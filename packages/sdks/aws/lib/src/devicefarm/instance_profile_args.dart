@@ -9,22 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceProfileArgs {
   /// The description of the instance profile.
   final pulumi.Input<String>? description;
-
   /// An array of strings that specifies the list of app packages that should not be cleaned up from the device after a test run.
   final pulumi.Input<List<String>>? excludeAppPackagesFromCleanups;
-
   /// The name for the instance profile.
   final pulumi.Input<String>? name;
-
   /// When set to `true`, Device Farm removes app packages after a test run. The default value is `false` for private devices.
   final pulumi.Input<bool>? packageCleanup;
-
   /// When set to `true`, Device Farm reboots the instance after a test run. The default value is `true`.
   final pulumi.Input<bool>? rebootAfterUse;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -60,43 +54,14 @@ class InstanceProfileArgs {
 
   factory InstanceProfileArgs.fromMap(Map<String, dynamic> map) {
     return InstanceProfileArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      excludeAppPackagesFromCleanups: (() {
-        final guardedValue = map['excludeAppPackagesFromCleanups'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      packageCleanup: (() {
-        final guardedValue = map['packageCleanup'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      rebootAfterUse: (() {
-        final guardedValue = map['rebootAfterUse'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      excludeAppPackagesFromCleanups: (() { final guardedValue = map['excludeAppPackagesFromCleanups']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      packageCleanup: (() { final guardedValue = map['packageCleanup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      rebootAfterUse: (() { final guardedValue = map['rebootAfterUse']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

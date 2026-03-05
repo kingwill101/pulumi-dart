@@ -70,15 +70,11 @@ class GetInstancesInstance {
       createdAt: pulumi.Input.fromValue(map['createdAt'] as String),
       dataNodeAmount: pulumi.Input.fromValue(map['dataNodeAmount'] as int),
       dataNodeDiskSize: pulumi.Input.fromValue(map['dataNodeDiskSize'] as int),
-      dataNodeDiskType: pulumi.Input.fromValue(
-        map['dataNodeDiskType'] as String,
-      ),
+      dataNodeDiskType: pulumi.Input.fromValue(map['dataNodeDiskType'] as String),
       dataNodeSpec: pulumi.Input.fromValue(map['dataNodeSpec'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
-      instanceChargeType: pulumi.Input.fromValue(
-        map['instanceChargeType'] as String,
-      ),
+      instanceChargeType: pulumi.Input.fromValue(map['instanceChargeType'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
       tags: pulumi.Input.fromValue((map['tags'] as Map).cast<String, String>()),
       updatedAt: pulumi.Input.fromValue(map['updatedAt'] as String),
@@ -87,3 +83,4 @@ class GetInstancesInstance {
     );
   }
 }
+

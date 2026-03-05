@@ -33,11 +33,7 @@ class GetServerCustomImagesResult {
     return <String, dynamic>{
       'id': id,
       'ids': ids,
-      'images':
-          pulumi.Input.encodeList<
-            GetServerCustomImagesImage,
-            Map<String, dynamic>
-          >(images, (value) => value.toMap()),
+      'images': pulumi.Input.encodeList<GetServerCustomImagesImage, Map<String, dynamic>>(images, (value) => value.toMap()),
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
@@ -48,23 +44,11 @@ class GetServerCustomImagesResult {
     return GetServerCustomImagesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      images: pulumi.Input.decodeList<GetServerCustomImagesImage>(
-        map['images']!,
-        (value) => GetServerCustomImagesImage.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      images: pulumi.Input.decodeList<GetServerCustomImagesImage>(map['images']!, (value) => GetServerCustomImagesImage.fromMap((value as Map).cast<String, dynamic>())),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

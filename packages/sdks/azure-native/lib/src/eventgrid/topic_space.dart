@@ -158,26 +158,20 @@ import 'topic_space_args.dart';
 class TopicSpace extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Description for the Topic Space resource.
   late final pulumi.Output<String?> description;
-
   /// Name of the resource.
   late final pulumi.Output<String> name;
-
   /// Provisioning state of the TopicSpace resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The system metadata relating to the Event Grid resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The topic filters in the topic space.
   /// Example: "topicTemplates": [
   /// "devices/foo/bar",
   /// "devices/topic1/+",
   /// "devices/${principal.name}/${principal.attributes.keyName}" ].
   late final pulumi.Output<List<String>?> topicTemplates;
-
   /// Type of the resource.
   late final pulumi.Output<String> type;
 
@@ -190,25 +184,16 @@ class TopicSpace extends pulumi.CustomResource {
     TopicSpaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:eventgrid:TopicSpace',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:eventgrid:TopicSpace',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     topicTemplates = registerOutput<List<String>?>('topicTemplates');
     type = registerOutput<String>('type');
   }

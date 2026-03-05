@@ -224,7 +224,6 @@ import 'role_policy_attachments_exclusive_state.dart';
 class RolePolicyAttachmentsExclusive extends pulumi.CustomResource {
   /// A list of managed IAM policy ARNs to be attached to the role. Policies attached to this role but not configured in this argument will be removed.
   late final pulumi.Output<List<String>> policyArns;
-
   /// IAM role name.
   late final pulumi.Output<String> roleName;
 
@@ -237,11 +236,11 @@ class RolePolicyAttachmentsExclusive extends pulumi.CustomResource {
     RolePolicyAttachmentsExclusiveArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:iam/rolePolicyAttachmentsExclusive:RolePolicyAttachmentsExclusive',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:iam/rolePolicyAttachmentsExclusive:RolePolicyAttachmentsExclusive',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     policyArns = registerOutput<List<String>>('policyArns');
     roleName = registerOutput<String>('roleName');
   }
@@ -264,11 +263,11 @@ class RolePolicyAttachmentsExclusive extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:iam/rolePolicyAttachmentsExclusive:RolePolicyAttachmentsExclusive',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:iam/rolePolicyAttachmentsExclusive:RolePolicyAttachmentsExclusive',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     policyArns = registerOutput<List<String>>('policyArns');
     roleName = registerOutput<String>('roleName');
   }

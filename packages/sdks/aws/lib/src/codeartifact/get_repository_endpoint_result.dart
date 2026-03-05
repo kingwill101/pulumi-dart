@@ -1,16 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getRepositoryEndpoint.
 class GetRepositoryEndpointResult {
   final String domain;
   final String domainOwner;
   final String format;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
   final String repository;
-
   /// URL of the returned endpoint.
   final String repositoryEndpoint;
 
@@ -56,3 +55,4 @@ class GetRepositoryEndpointResult {
     );
   }
 }
+

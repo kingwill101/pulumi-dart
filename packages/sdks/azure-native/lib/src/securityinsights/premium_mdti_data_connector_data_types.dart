@@ -10,25 +10,20 @@ class PremiumMdtiDataConnectorDataTypes {
 
   /// Creates a new [PremiumMdtiDataConnectorDataTypes].
   /// [connector] Data type for Microsoft Defender for Threat Intelligence Premium data connector.
-  PremiumMdtiDataConnectorDataTypes({required this.connector});
+  PremiumMdtiDataConnectorDataTypes({
+    required this.connector,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connector':
-          pulumi.Input.mapInputValue<
-            PremiumMdtiDataConnectorDataTypesConnector,
-            Map<String, dynamic>
-          >(connector, (value) => value.toMap()),
+      'connector': pulumi.Input.mapInputValue<PremiumMdtiDataConnectorDataTypesConnector, Map<String, dynamic>>(connector, (value) => value.toMap()),
     };
   }
 
   factory PremiumMdtiDataConnectorDataTypes.fromMap(Map<String, dynamic> map) {
     return PremiumMdtiDataConnectorDataTypes(
-      connector: pulumi.Input.fromValue(
-        PremiumMdtiDataConnectorDataTypesConnector.fromMap(
-          (map['connector']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      connector: pulumi.Input.fromValue(PremiumMdtiDataConnectorDataTypesConnector.fromMap((map['connector']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

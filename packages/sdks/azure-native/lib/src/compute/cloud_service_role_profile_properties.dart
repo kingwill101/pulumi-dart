@@ -7,42 +7,29 @@ import 'cloud_service_role_sku.dart';
 class CloudServiceRoleProfileProperties {
   /// Resource name.
   final pulumi.Input<String>? name;
-
   /// Describes the cloud service role sku.
   final pulumi.Input<CloudServiceRoleSku>? sku;
 
   /// Creates a new [CloudServiceRoleProfileProperties].
   /// [name] Resource name.
   /// [sku] Describes the cloud service role sku.
-  CloudServiceRoleProfileProperties({this.name, this.sku});
+  CloudServiceRoleProfileProperties({
+    this.name,
+    this.sku,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': ?name,
-      'sku':
-          ?pulumi.Input.mapOptionalInputValue<
-            CloudServiceRoleSku,
-            Map<String, dynamic>
-          >(sku, (value) => value.toMap()),
+      'sku': ?pulumi.Input.mapOptionalInputValue<CloudServiceRoleSku, Map<String, dynamic>>(sku, (value) => value.toMap()),
     };
   }
 
   factory CloudServiceRoleProfileProperties.fromMap(Map<String, dynamic> map) {
     return CloudServiceRoleProfileProperties(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sku: (() {
-        final guardedValue = map['sku'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CloudServiceRoleSku.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CloudServiceRoleSku.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

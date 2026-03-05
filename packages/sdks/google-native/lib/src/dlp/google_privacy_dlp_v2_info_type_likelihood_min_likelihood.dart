@@ -10,17 +10,13 @@ enum GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood {
   const GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood(this.wireValue);
   final String wireValue;
 
-  static GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood fromValue(
-    String value,
-  ) {
-    for (final item
-        in GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood.values) {
+  static GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood fromValue(String value) {
+    for (final item in GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood value: $value',
-    );
+    throw ArgumentError('Unknown GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihood value: $value');
   }
 }
+

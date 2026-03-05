@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudMlV1AcceleratorConfigResponse {
   /// The number of accelerators to attach to each machine running the job.
   final pulumi.Input<String> count;
-
   /// The type of accelerator to use.
   final pulumi.Input<String> type;
 
@@ -19,15 +18,17 @@ class GoogleCloudMlV1AcceleratorConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'count': count, 'type': type};
+    return <String, dynamic>{
+      'count': count,
+      'type': type,
+    };
   }
 
-  factory GoogleCloudMlV1AcceleratorConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudMlV1AcceleratorConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1AcceleratorConfigResponse(
       count: pulumi.Input.fromValue(map['count'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

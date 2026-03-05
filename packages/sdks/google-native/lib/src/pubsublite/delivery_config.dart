@@ -10,27 +10,20 @@ class DeliveryConfig {
 
   /// Creates a new [DeliveryConfig].
   /// [deliveryRequirement] The DeliveryRequirement for this subscription.
-  DeliveryConfig({this.deliveryRequirement});
+  DeliveryConfig({
+    this.deliveryRequirement,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'deliveryRequirement':
-          ?pulumi.Input.mapOptionalInputValue<
-            DeliveryConfigDeliveryRequirement,
-            String
-          >(deliveryRequirement, (value) => value.wireValue),
+      'deliveryRequirement': ?pulumi.Input.mapOptionalInputValue<DeliveryConfigDeliveryRequirement, String>(deliveryRequirement, (value) => value.wireValue),
     };
   }
 
   factory DeliveryConfig.fromMap(Map<String, dynamic> map) {
     return DeliveryConfig(
-      deliveryRequirement: (() {
-        final guardedValue = map['deliveryRequirement'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DeliveryConfigDeliveryRequirement.fromValue(guardedValue as String),
-        );
-      })(),
+      deliveryRequirement: (() { final guardedValue = map['deliveryRequirement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DeliveryConfigDeliveryRequirement.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

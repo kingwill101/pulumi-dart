@@ -417,13 +417,10 @@ import 'tag_rules_state.dart';
 class TagRules extends pulumi.CustomResource {
   /// Set of rules for sending logs for the Monitor resource. A `log_rule` block as defined below.
   late final pulumi.Output<TagRulesLogRule?> logRule;
-
   /// Set of rules for sending metrics for the Monitor resource. A `metric_rule` block as defined below.
   late final pulumi.Output<TagRulesMetricRule?> metricRule;
-
   /// Name of the Dynatrace monitor. Changing this forces a new resource to be created.
   late final pulumi.Output<String> monitorId;
-
   /// Name of the Dynatrace tag rules. Currently, the only supported value is `default`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
 
@@ -436,31 +433,13 @@ class TagRules extends pulumi.CustomResource {
     TagRulesArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:dynatrace/tagRules:TagRules',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    logRule = registerOutput<TagRulesLogRule?>(
-      'logRule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TagRulesLogRule.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    metricRule = registerOutput<TagRulesMetricRule?>(
-      'metricRule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TagRulesMetricRule.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:dynatrace/tagRules:TagRules',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    logRule = registerOutput<TagRulesLogRule?>('logRule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TagRulesLogRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    metricRule = registerOutput<TagRulesMetricRule?>('metricRule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TagRulesMetricRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     monitorId = registerOutput<String>('monitorId');
     this.name = registerOutput<String>('name');
   }
@@ -483,31 +462,13 @@ class TagRules extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:dynatrace/tagRules:TagRules',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    logRule = registerOutput<TagRulesLogRule?>(
-      'logRule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TagRulesLogRule.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    metricRule = registerOutput<TagRulesMetricRule?>(
-      'metricRule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TagRulesMetricRule.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure:dynatrace/tagRules:TagRules',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    logRule = registerOutput<TagRulesLogRule?>('logRule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TagRulesLogRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    metricRule = registerOutput<TagRulesMetricRule?>('metricRule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TagRulesMetricRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     monitorId = registerOutput<String>('monitorId');
     this.name = registerOutput<String>('name');
   }

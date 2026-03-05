@@ -2264,89 +2264,66 @@ import 'migration_job_vpc_peering_connectivity.dart';
 class MigrationJob extends pulumi.CustomResource {
   /// Output only. The timestamp when the resource was created. A timestamp in RFC3339 UTC 'Zulu' format, accurate to nanoseconds. Example: '2014-10-02T15:01:23.045123456Z'.
   late final pulumi.Output<String> createTime;
-
   /// The name of the destination connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{destinationConnectionProfile}.
   late final pulumi.Output<String> destination;
-
   /// The migration job display name.
   late final pulumi.Output<String?> displayName;
-
   /// The initial dump flags.
   /// Structure is documented below.
   late final pulumi.Output<MigrationJobDumpFlags?> dumpFlags;
-
   /// The path to the dump file in Google Cloud Storage,
   /// in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]).
   /// This field and the "dump_flags" field are mutually exclusive.
   late final pulumi.Output<String?> dumpPath;
-
   /// The type of the data dump. Supported for MySQL to CloudSQL for MySQL
   /// migrations only.
   /// Possible values are: `LOGICAL`, `PHYSICAL`.
   late final pulumi.Output<String?> dumpType;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Output only. The error details in case of state FAILED.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> errors;
-
   /// The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// The location where the migration job should reside.
   late final pulumi.Output<String?> location;
-
   /// The ID of the migration job.
   late final pulumi.Output<String> migrationJobId;
-
   /// The name of this migration job resource in the form of projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
   late final pulumi.Output<String> name;
-
   /// Data dump parallelism settings used by the migration.
   /// Structure is documented below.
   late final pulumi.Output<MigrationJobPerformanceConfig?> performanceConfig;
-
   /// The current migration job phase.
   late final pulumi.Output<String> phase;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// The details of the VPC network that the source database is located in.
   /// Structure is documented below.
-  late final pulumi.Output<MigrationJobReverseSshConnectivity?>
-  reverseSshConnectivity;
-
+  late final pulumi.Output<MigrationJobReverseSshConnectivity?> reverseSshConnectivity;
   /// The name of the source connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{sourceConnectionProfile}.
   late final pulumi.Output<String> source;
-
   /// The current migration job state.
   late final pulumi.Output<String> state;
-
   /// If set to an empty object (`{}`), the source database will allow incoming
   /// connections from the public IP of the destination database.
   /// You can retrieve the public IP of the Cloud SQL instance from the
   /// Cloud SQL console or using Cloud SQL APIs.
   late final pulumi.Output<Map<String, dynamic>?> staticIpConnectivity;
-
   /// The type of the migration job.
   /// Possible values are: `ONE_TIME`, `CONTINUOUS`.
   late final pulumi.Output<String> type;
-
   /// The details of the VPC network that the source database is located in.
   /// Structure is documented below.
-  late final pulumi.Output<MigrationJobVpcPeeringConnectivity?>
-  vpcPeeringConnectivity;
+  late final pulumi.Output<MigrationJobVpcPeeringConnectivity?> vpcPeeringConnectivity;
 
   /// Creates a new [MigrationJob].
   /// [name] The Pulumi resource name.
@@ -2357,24 +2334,15 @@ class MigrationJob extends pulumi.CustomResource {
     MigrationJobArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:databasemigrationservice/migrationJob:MigrationJob',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:databasemigrationservice/migrationJob:MigrationJob',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     destination = registerOutput<String>('destination');
     displayName = registerOutput<String?>('displayName');
-    dumpFlags = registerOutput<MigrationJobDumpFlags?>(
-      'dumpFlags',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MigrationJobDumpFlags.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    dumpFlags = registerOutput<MigrationJobDumpFlags?>('dumpFlags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MigrationJobDumpFlags.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dumpPath = registerOutput<String?>('dumpPath');
     dumpType = registerOutput<String?>('dumpType');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -2383,47 +2351,16 @@ class MigrationJob extends pulumi.CustomResource {
     location = registerOutput<String?>('location');
     migrationJobId = registerOutput<String>('migrationJobId');
     this.name = registerOutput<String>('name');
-    performanceConfig = registerOutput<MigrationJobPerformanceConfig?>(
-      'performanceConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MigrationJobPerformanceConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    performanceConfig = registerOutput<MigrationJobPerformanceConfig?>('performanceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MigrationJobPerformanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     phase = registerOutput<String>('phase');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    reverseSshConnectivity =
-        registerOutput<MigrationJobReverseSshConnectivity?>(
-          'reverseSshConnectivity',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return MigrationJobReverseSshConnectivity.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    reverseSshConnectivity = registerOutput<MigrationJobReverseSshConnectivity?>('reverseSshConnectivity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MigrationJobReverseSshConnectivity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     source = registerOutput<String>('source');
     state = registerOutput<String>('state');
-    staticIpConnectivity = registerOutput<Map<String, dynamic>?>(
-      'staticIpConnectivity',
-    );
+    staticIpConnectivity = registerOutput<Map<String, dynamic>?>('staticIpConnectivity');
     type = registerOutput<String>('type');
-    vpcPeeringConnectivity =
-        registerOutput<MigrationJobVpcPeeringConnectivity?>(
-          'vpcPeeringConnectivity',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return MigrationJobVpcPeeringConnectivity.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    vpcPeeringConnectivity = registerOutput<MigrationJobVpcPeeringConnectivity?>('vpcPeeringConnectivity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MigrationJobVpcPeeringConnectivity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [MigrationJob] resource's state with the given [name] and [id].
@@ -2444,24 +2381,15 @@ class MigrationJob extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:databasemigrationservice/migrationJob:MigrationJob',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:databasemigrationservice/migrationJob:MigrationJob',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     destination = registerOutput<String>('destination');
     displayName = registerOutput<String?>('displayName');
-    dumpFlags = registerOutput<MigrationJobDumpFlags?>(
-      'dumpFlags',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MigrationJobDumpFlags.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    dumpFlags = registerOutput<MigrationJobDumpFlags?>('dumpFlags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MigrationJobDumpFlags.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dumpPath = registerOutput<String?>('dumpPath');
     dumpType = registerOutput<String?>('dumpType');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -2470,46 +2398,15 @@ class MigrationJob extends pulumi.CustomResource {
     location = registerOutput<String?>('location');
     migrationJobId = registerOutput<String>('migrationJobId');
     this.name = registerOutput<String>('name');
-    performanceConfig = registerOutput<MigrationJobPerformanceConfig?>(
-      'performanceConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MigrationJobPerformanceConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    performanceConfig = registerOutput<MigrationJobPerformanceConfig?>('performanceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MigrationJobPerformanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     phase = registerOutput<String>('phase');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    reverseSshConnectivity =
-        registerOutput<MigrationJobReverseSshConnectivity?>(
-          'reverseSshConnectivity',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return MigrationJobReverseSshConnectivity.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    reverseSshConnectivity = registerOutput<MigrationJobReverseSshConnectivity?>('reverseSshConnectivity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MigrationJobReverseSshConnectivity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     source = registerOutput<String>('source');
     this.state = registerOutput<String>('state');
-    staticIpConnectivity = registerOutput<Map<String, dynamic>?>(
-      'staticIpConnectivity',
-    );
+    staticIpConnectivity = registerOutput<Map<String, dynamic>?>('staticIpConnectivity');
     type = registerOutput<String>('type');
-    vpcPeeringConnectivity =
-        registerOutput<MigrationJobVpcPeeringConnectivity?>(
-          'vpcPeeringConnectivity',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return MigrationJobVpcPeeringConnectivity.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    vpcPeeringConnectivity = registerOutput<MigrationJobVpcPeeringConnectivity?>('vpcPeeringConnectivity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MigrationJobVpcPeeringConnectivity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

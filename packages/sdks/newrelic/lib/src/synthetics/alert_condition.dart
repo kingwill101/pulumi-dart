@@ -524,19 +524,14 @@ class AlertCondition extends pulumi.CustomResource {
   /// Warning: This resource will use the account ID linked to your API key. At the moment it is not possible to dynamically set the account ID.
   /// ```
   late final pulumi.Output<bool?> enabled;
-
   /// The unique entity identifier of the condition in New Relic.
   late final pulumi.Output<String> entityGuid;
-
   /// The GUID of the Synthetics monitor to be referenced in the alert condition.
   late final pulumi.Output<String> monitorId;
-
   /// The title of this condition.
   late final pulumi.Output<String> name;
-
   /// The ID of the policy where this condition should be used.
   late final pulumi.Output<String> policyId;
-
   /// Runbook URL to display in notifications.
   late final pulumi.Output<String?> runbookUrl;
 
@@ -549,11 +544,11 @@ class AlertCondition extends pulumi.CustomResource {
     AlertConditionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:synthetics/alertCondition:AlertCondition',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:synthetics/alertCondition:AlertCondition',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     enabled = registerOutput<bool?>('enabled');
     entityGuid = registerOutput<String>('entityGuid');
     monitorId = registerOutput<String>('monitorId');
@@ -580,11 +575,11 @@ class AlertCondition extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:synthetics/alertCondition:AlertCondition',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:synthetics/alertCondition:AlertCondition',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     enabled = registerOutput<bool?>('enabled');
     entityGuid = registerOutput<String>('entityGuid');
     monitorId = registerOutput<String>('monitorId');

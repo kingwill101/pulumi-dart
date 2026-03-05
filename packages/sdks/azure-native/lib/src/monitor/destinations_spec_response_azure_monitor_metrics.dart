@@ -10,21 +10,20 @@ class DestinationsSpecResponseAzureMonitorMetrics {
 
   /// Creates a new [DestinationsSpecResponseAzureMonitorMetrics].
   /// [name] A friendly name for the destination.
-  DestinationsSpecResponseAzureMonitorMetrics({this.name});
+  DestinationsSpecResponseAzureMonitorMetrics({
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name};
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
-  factory DestinationsSpecResponseAzureMonitorMetrics.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DestinationsSpecResponseAzureMonitorMetrics.fromMap(Map<String, dynamic> map) {
     return DestinationsSpecResponseAzureMonitorMetrics(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

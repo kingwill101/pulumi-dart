@@ -6,31 +6,22 @@ import 'network_service_response.dart';
 class GetNetworkPolicyResult {
   /// Creation time of this resource.
   final String createTime;
-
   /// Optional. User-provided description for this network policy.
   final String description;
-
   /// IP address range in CIDR notation used to create internet access and external IP access. An RFC 1918 CIDR block, with a "/26" prefix, is required. The range cannot overlap with any prefixes either in the consumer VPC network or in use by the private clouds attached to that VPC network.
   final String edgeServicesCidr;
-
   /// Network service that allows External IP addresses to be assigned to VMware workloads. This service can only be enabled when `internet_access` is also enabled.
   final NetworkServiceResponse externalIp;
-
   /// Network service that allows VMware workloads to access the internet.
   final NetworkServiceResponse internetAccess;
-
   /// The resource name of this network policy. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1/networkPolicies/my-network-policy`
   final String name;
-
   /// System-generated unique identifier for the resource.
   final String uid;
-
   /// Last update time of this resource.
   final String updateTime;
-
   /// Optional. The relative resource name of the VMware Engine network. Specify the name in the following form: `projects/{project}/locations/{location}/vmwareEngineNetworks/{vmware_engine_network_id}` where `{project}` can either be a project number or a project ID.
   final String vmwareEngineNetwork;
-
   /// The canonical name of the VMware Engine network in the form: `projects/{project_number}/locations/{location}/vmwareEngineNetworks/{vmware_engine_network_id}`
   final String vmwareEngineNetworkCanonical;
 
@@ -78,18 +69,14 @@ class GetNetworkPolicyResult {
       createTime: map['createTime'] as String,
       description: map['description'] as String,
       edgeServicesCidr: map['edgeServicesCidr'] as String,
-      externalIp: NetworkServiceResponse.fromMap(
-        (map['externalIp']! as Map).cast<String, dynamic>(),
-      ),
-      internetAccess: NetworkServiceResponse.fromMap(
-        (map['internetAccess']! as Map).cast<String, dynamic>(),
-      ),
+      externalIp: NetworkServiceResponse.fromMap((map['externalIp']! as Map).cast<String, dynamic>()),
+      internetAccess: NetworkServiceResponse.fromMap((map['internetAccess']! as Map).cast<String, dynamic>()),
       name: map['name'] as String,
       uid: map['uid'] as String,
       updateTime: map['updateTime'] as String,
       vmwareEngineNetwork: map['vmwareEngineNetwork'] as String,
-      vmwareEngineNetworkCanonical:
-          map['vmwareEngineNetworkCanonical'] as String,
+      vmwareEngineNetworkCanonical: map['vmwareEngineNetworkCanonical'] as String,
     );
   }
 }
+

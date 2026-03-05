@@ -17,3 +17,4 @@ enum HiveAuthenticationType {
     throw ArgumentError('Unknown HiveAuthenticationType value: $value');
   }
 }
+

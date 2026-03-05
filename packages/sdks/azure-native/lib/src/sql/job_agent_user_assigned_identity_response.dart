@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JobAgentUserAssignedIdentityResponse {
   /// The Azure Active Directory client id.
   final pulumi.Input<String> clientId;
-
   /// The Azure Active Directory principal id.
   final pulumi.Input<String> principalId;
 
@@ -19,15 +18,17 @@ class JobAgentUserAssignedIdentityResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'clientId': clientId, 'principalId': principalId};
+    return <String, dynamic>{
+      'clientId': clientId,
+      'principalId': principalId,
+    };
   }
 
-  factory JobAgentUserAssignedIdentityResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory JobAgentUserAssignedIdentityResponse.fromMap(Map<String, dynamic> map) {
     return JobAgentUserAssignedIdentityResponse(
       clientId: pulumi.Input.fromValue(map['clientId'] as String),
       principalId: pulumi.Input.fromValue(map['principalId'] as String),
     );
   }
 }
+

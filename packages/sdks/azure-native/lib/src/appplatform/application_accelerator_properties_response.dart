@@ -7,7 +7,6 @@ import 'application_accelerator_component_response.dart';
 class ApplicationAcceleratorPropertiesResponse {
   /// Collection of components belong to application accelerator.
   final pulumi.Input<List<ApplicationAcceleratorComponentResponse>> components;
-
   /// State of the application accelerator.
   final pulumi.Input<String> provisioningState;
 
@@ -21,37 +20,16 @@ class ApplicationAcceleratorPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'components':
-          pulumi.Input.mapInputValue<
-            List<ApplicationAcceleratorComponentResponse>,
-            List<Map<String, dynamic>>
-          >(
-            components,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ApplicationAcceleratorComponentResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'components': pulumi.Input.mapInputValue<List<ApplicationAcceleratorComponentResponse>, List<Map<String, dynamic>>>(components, (value) => pulumi.Input.encodeList<ApplicationAcceleratorComponentResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'provisioningState': provisioningState,
     };
   }
 
-  factory ApplicationAcceleratorPropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApplicationAcceleratorPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationAcceleratorPropertiesResponse(
-      components: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<ApplicationAcceleratorComponentResponse>(
-          map['components']!,
-          (value) => ApplicationAcceleratorComponentResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
+      components: pulumi.Input.fromValue(pulumi.Input.decodeList<ApplicationAcceleratorComponentResponse>(map['components']!, (value) => ApplicationAcceleratorComponentResponse.fromMap((value as Map).cast<String, dynamic>()))),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
     );
   }
 }
+

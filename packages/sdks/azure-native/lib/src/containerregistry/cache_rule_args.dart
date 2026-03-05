@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CacheRuleArgs {
   /// The name of the cache rule.
   final pulumi.Input<String>? cacheRuleName;
-
   /// The ARM resource ID of the credential store which is associated with the cache rule.
   final pulumi.Input<String>? credentialSetResourceId;
-
   /// The name of the container registry.
   final pulumi.Input<String> registryName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Source repository pulled from upstream.
   final pulumi.Input<String>? sourceRepository;
-
   /// Target repository specified in docker pull command.
   /// Eg: docker pull myregistry.azurecr.io/{targetRepository}:{tag}
   final pulumi.Input<String>? targetRepository;
@@ -55,30 +50,13 @@ class CacheRuleArgs {
 
   factory CacheRuleArgs.fromMap(Map<String, dynamic> map) {
     return CacheRuleArgs(
-      cacheRuleName: (() {
-        final guardedValue = map['cacheRuleName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      credentialSetResourceId: (() {
-        final guardedValue = map['credentialSetResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      cacheRuleName: (() { final guardedValue = map['cacheRuleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      credentialSetResourceId: (() { final guardedValue = map['credentialSetResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       registryName: pulumi.Input.fromValue(map['registryName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      sourceRepository: (() {
-        final guardedValue = map['sourceRepository'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      targetRepository: (() {
-        final guardedValue = map['targetRepository'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      sourceRepository: (() { final guardedValue = map['sourceRepository']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      targetRepository: (() { final guardedValue = map['targetRepository']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -7,17 +7,13 @@ enum AllocationAggregateReservationWorkloadTypeComputeBeta {
   const AllocationAggregateReservationWorkloadTypeComputeBeta(this.wireValue);
   final String wireValue;
 
-  static AllocationAggregateReservationWorkloadTypeComputeBeta fromValue(
-    String value,
-  ) {
-    for (final item
-        in AllocationAggregateReservationWorkloadTypeComputeBeta.values) {
+  static AllocationAggregateReservationWorkloadTypeComputeBeta fromValue(String value) {
+    for (final item in AllocationAggregateReservationWorkloadTypeComputeBeta.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown AllocationAggregateReservationWorkloadTypeComputeBeta value: $value',
-    );
+    throw ArgumentError('Unknown AllocationAggregateReservationWorkloadTypeComputeBeta value: $value');
   }
 }
+

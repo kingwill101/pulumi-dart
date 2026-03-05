@@ -6,35 +6,25 @@ import 'system_data_response.dart';
 class GetADLSGen1FolderDataSetResult {
   /// The ADLS account name.
   final String accountName;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Unique id for identifying a data set resource
   final String dataSetId;
-
   /// The folder path within the ADLS account.
   final String folderPath;
-
   /// The resource id of the azure resource
   final String id;
-
   /// Kind of data set.
   /// Expected value is 'AdlsGen1Folder'.
   final String kind;
-
   /// Name of the azure resource
   final String name;
-
   /// Resource group of ADLS account.
   final String resourceGroup;
-
   /// Subscription id of ADLS account.
   final String subscriptionId;
-
   /// System Data of the Azure resource.
   final SystemDataResponse systemData;
-
   /// Type of the azure resource
   final String type;
 
@@ -91,10 +81,9 @@ class GetADLSGen1FolderDataSetResult {
       name: map['name'] as String,
       resourceGroup: map['resourceGroup'] as String,
       subscriptionId: map['subscriptionId'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

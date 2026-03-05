@@ -15,3 +15,4 @@ enum ForecastHorizonMode {
     throw ArgumentError('Unknown ForecastHorizonMode value: $value');
   }
 }
+

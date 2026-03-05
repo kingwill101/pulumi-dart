@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReplicaSetArgs {
   /// The ID of the Domain Service for which to create this Replica Set. Changing this forces a new resource to be created.
   final pulumi.Input<String> domainServiceId;
-
   /// The Azure location where this Replica Set should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
-
   /// The ID of the subnet in which to place this Replica Set. Changing this forces a new resource to be created.
   final pulumi.Input<String> subnetId;
 
@@ -37,12 +35,9 @@ class ReplicaSetArgs {
   factory ReplicaSetArgs.fromMap(Map<String, dynamic> map) {
     return ReplicaSetArgs(
       domainServiceId: pulumi.Input.fromValue(map['domainServiceId'] as String),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
     );
   }
 }
+

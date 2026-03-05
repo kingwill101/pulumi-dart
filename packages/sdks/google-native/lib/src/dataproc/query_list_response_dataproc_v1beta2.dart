@@ -9,10 +9,14 @@ class QueryListResponseDataprocV1beta2 {
 
   /// Creates a new [QueryListResponseDataprocV1beta2].
   /// [queries] The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [ "query1", "query2", "query3;query4", ] } }
-  QueryListResponseDataprocV1beta2({required this.queries});
+  QueryListResponseDataprocV1beta2({
+    required this.queries,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'queries': queries};
+    return <String, dynamic>{
+      'queries': queries,
+    };
   }
 
   factory QueryListResponseDataprocV1beta2.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class QueryListResponseDataprocV1beta2 {
     );
   }
 }
+

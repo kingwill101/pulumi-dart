@@ -19,13 +19,10 @@ class CutoverForecastResponseVmmigrationV1alpha1 {
     };
   }
 
-  factory CutoverForecastResponseVmmigrationV1alpha1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CutoverForecastResponseVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
     return CutoverForecastResponseVmmigrationV1alpha1(
-      estimatedCutoverJobDuration: pulumi.Input.fromValue(
-        map['estimatedCutoverJobDuration'] as String,
-      ),
+      estimatedCutoverJobDuration: pulumi.Input.fromValue(map['estimatedCutoverJobDuration'] as String),
     );
   }
 }
+

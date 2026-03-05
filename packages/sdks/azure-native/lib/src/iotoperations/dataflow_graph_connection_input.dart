@@ -7,38 +7,29 @@ import 'dataflow_graph_connection_schema_settings.dart';
 class DataflowGraphConnectionInput {
   /// Name of the input node.
   final pulumi.Input<String> name;
-
   /// Schema settings for the input node.
   final pulumi.Input<DataflowGraphConnectionSchemaSettings>? schema;
 
   /// Creates a new [DataflowGraphConnectionInput].
   /// [name] Name of the input node.
   /// [schema] Schema settings for the input node.
-  DataflowGraphConnectionInput({required this.name, this.schema});
+  DataflowGraphConnectionInput({
+    required this.name,
+    this.schema,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'schema':
-          ?pulumi.Input.mapOptionalInputValue<
-            DataflowGraphConnectionSchemaSettings,
-            Map<String, dynamic>
-          >(schema, (value) => value.toMap()),
+      'schema': ?pulumi.Input.mapOptionalInputValue<DataflowGraphConnectionSchemaSettings, Map<String, dynamic>>(schema, (value) => value.toMap()),
     };
   }
 
   factory DataflowGraphConnectionInput.fromMap(Map<String, dynamic> map) {
     return DataflowGraphConnectionInput(
       name: pulumi.Input.fromValue(map['name'] as String),
-      schema: (() {
-        final guardedValue = map['schema'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DataflowGraphConnectionSchemaSettings.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      schema: (() { final guardedValue = map['schema']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DataflowGraphConnectionSchemaSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

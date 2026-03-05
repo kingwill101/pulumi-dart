@@ -6,7 +6,6 @@ import 'get_log_configs_config.dart';
 /// Result data returned by getLogConfigs.
 class GetLogConfigsResult {
   final List<GetLogConfigsConfig> configs;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -29,11 +28,7 @@ class GetLogConfigsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configs':
-          pulumi.Input.encodeList<GetLogConfigsConfig, Map<String, dynamic>>(
-            configs,
-            (value) => value.toMap(),
-          ),
+      'configs': pulumi.Input.encodeList<GetLogConfigsConfig, Map<String, dynamic>>(configs, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'logType': ?logType,
@@ -43,23 +38,12 @@ class GetLogConfigsResult {
 
   factory GetLogConfigsResult.fromMap(Map<String, dynamic> map) {
     return GetLogConfigsResult(
-      configs: pulumi.Input.decodeList<GetLogConfigsConfig>(
-        map['configs']!,
-        (value) =>
-            GetLogConfigsConfig.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      configs: pulumi.Input.decodeList<GetLogConfigsConfig>(map['configs']!, (value) => GetLogConfigsConfig.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      logType: (() {
-        final guardedValue = map['logType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      logType: (() { final guardedValue = map['logType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

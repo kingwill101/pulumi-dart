@@ -595,38 +595,27 @@ import 'ots_backup_plan_state.dart';
 class OtsBackupPlan extends pulumi.CustomResource {
   /// Backup type. Valid values: `COMPLETE`.
   late final pulumi.Output<String> backupType;
-
   /// The role name created in the original account RAM backup by the cross account managed by the current account.
   late final pulumi.Output<String?> crossAccountRoleName;
-
   /// The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
   late final pulumi.Output<String> crossAccountType;
-
   /// The original account ID of the cross account backup managed by the current account.
   late final pulumi.Output<int?> crossAccountUserId;
-
   /// Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
   late final pulumi.Output<bool> disabled;
-
   /// The name of the Table store instance. **Note:** Required while source_type equals `OTS_TABLE`.
   late final pulumi.Output<String?> instanceName;
-
   /// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
   late final pulumi.Output<String> otsBackupPlanName;
-
   /// The details about the Table store instance. See the following `Block ots_detail`. **Note:** Required while source_type equals `OTS_TABLE`.
   late final pulumi.Output<List<Map<String, dynamic>>?> otsDetails;
-
   /// Backup retention days, the minimum is 1.
   late final pulumi.Output<String> retention;
-
   /// The backup plan rule. See the following `Block rules`. **Note:** Required while source_type equals `OTS_TABLE`.
   late final pulumi.Output<List<Map<String, dynamic>>?> rules;
-
   /// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
   /// - `startTime` Backup start time, UNIX time seconds.
   late final pulumi.Output<String?> schedule;
-
   /// The ID of backup vault.
   late final pulumi.Output<String?> vaultId;
 
@@ -639,11 +628,11 @@ class OtsBackupPlan extends pulumi.CustomResource {
     OtsBackupPlanArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:hbr/otsBackupPlan:OtsBackupPlan',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:hbr/otsBackupPlan:OtsBackupPlan',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     backupType = registerOutput<String>('backupType');
     crossAccountRoleName = registerOutput<String?>('crossAccountRoleName');
     crossAccountType = registerOutput<String>('crossAccountType');
@@ -676,11 +665,11 @@ class OtsBackupPlan extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:hbr/otsBackupPlan:OtsBackupPlan',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:hbr/otsBackupPlan:OtsBackupPlan',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     backupType = registerOutput<String>('backupType');
     crossAccountRoleName = registerOutput<String?>('crossAccountRoleName');
     crossAccountType = registerOutput<String>('crossAccountType');

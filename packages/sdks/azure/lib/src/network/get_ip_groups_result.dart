@@ -1,15 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getIpGroups.
 class GetIpGroupsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of IP Group IDs.
   final List<String> ids;
   final String location;
   final String name;
-
   /// A list of IP Group Names.
   final List<String> names;
   final String resourceGroupName;
@@ -57,3 +56,4 @@ class GetIpGroupsResult {
     );
   }
 }
+

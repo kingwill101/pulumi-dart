@@ -15,3 +15,4 @@ enum ContainerGroupIpAddressType {
     throw ArgumentError('Unknown ContainerGroupIpAddressType value: $value');
   }
 }
+

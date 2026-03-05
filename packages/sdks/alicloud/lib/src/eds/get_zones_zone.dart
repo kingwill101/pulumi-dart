@@ -8,10 +8,14 @@ class GetZonesZone {
 
   /// Creates a new [GetZonesZone].
   /// [zoneId] String to filter results by zone id.
-  GetZonesZone({required this.zoneId});
+  GetZonesZone({
+    required this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'zoneId': zoneId};
+    return <String, dynamic>{
+      'zoneId': zoneId,
+    };
   }
 
   factory GetZonesZone.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class GetZonesZone {
     );
   }
 }
+

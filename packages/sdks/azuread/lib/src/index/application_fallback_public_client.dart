@@ -146,7 +146,6 @@ import 'application_fallback_public_client_state.dart';
 class ApplicationFallbackPublicClient extends pulumi.CustomResource {
   /// The resource ID of the application registration. Changing this forces a new resource to be created.
   late final pulumi.Output<String> applicationId;
-
   /// Whether to enable the application as a fallback public client.
   ///
   /// &gt; Some configurations may require the Fallback Public Client setting to be `null`, for this case simply destroy this resource (or don't use it)
@@ -161,11 +160,11 @@ class ApplicationFallbackPublicClient extends pulumi.CustomResource {
     ApplicationFallbackPublicClientArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/applicationFallbackPublicClient:ApplicationFallbackPublicClient',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azuread:index/applicationFallbackPublicClient:ApplicationFallbackPublicClient',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationId = registerOutput<String>('applicationId');
     enabled = registerOutput<bool?>('enabled');
   }
@@ -188,11 +187,11 @@ class ApplicationFallbackPublicClient extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/applicationFallbackPublicClient:ApplicationFallbackPublicClient',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azuread:index/applicationFallbackPublicClient:ApplicationFallbackPublicClient',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationId = registerOutput<String>('applicationId');
     enabled = registerOutput<bool?>('enabled');
   }

@@ -8,19 +8,20 @@ class InstanceEcsList {
 
   /// Creates a new [InstanceEcsList].
   /// [ecsId] The ID of the ECS instance.
-  InstanceEcsList({this.ecsId});
+  InstanceEcsList({
+    this.ecsId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'ecsId': ?ecsId};
+    return <String, dynamic>{
+      'ecsId': ?ecsId,
+    };
   }
 
   factory InstanceEcsList.fromMap(Map<String, dynamic> map) {
     return InstanceEcsList(
-      ecsId: (() {
-        final guardedValue = map['ecsId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ecsId: (() { final guardedValue = map['ecsId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

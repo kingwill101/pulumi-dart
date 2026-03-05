@@ -10,29 +10,20 @@ class ResourceClaimSpecPatch {
 
   /// Creates a new [ResourceClaimSpecPatch].
   /// [devices] Devices defines how to request devices.
-  ResourceClaimSpecPatch({this.devices});
+  ResourceClaimSpecPatch({
+    this.devices,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'devices':
-          ?pulumi.Input.mapOptionalInputValue<
-            DeviceClaimPatch,
-            Map<String, dynamic>
-          >(devices, (value) => value.toMap()),
+      'devices': ?pulumi.Input.mapOptionalInputValue<DeviceClaimPatch, Map<String, dynamic>>(devices, (value) => value.toMap()),
     };
   }
 
   factory ResourceClaimSpecPatch.fromMap(Map<String, dynamic> map) {
     return ResourceClaimSpecPatch(
-      devices: (() {
-        final guardedValue = map['devices'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DeviceClaimPatch.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      devices: (() { final guardedValue = map['devices']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DeviceClaimPatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

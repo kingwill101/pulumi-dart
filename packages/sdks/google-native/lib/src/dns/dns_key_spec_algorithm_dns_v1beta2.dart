@@ -18,3 +18,4 @@ enum DnsKeySpecAlgorithmDnsV1beta2 {
     throw ArgumentError('Unknown DnsKeySpecAlgorithmDnsV1beta2 value: $value');
   }
 }
+

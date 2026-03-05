@@ -9,18 +9,14 @@ class GetInstancePscInstanceConfigPscAutoConnection {
   /// consumer project. The API expects the consumer project specified to be
   /// the project ID (and not the project number)
   final pulumi.Input<String> consumerNetwork;
-
   /// The status of the service connection policy.
   final pulumi.Input<String> consumerNetworkStatus;
-
   /// The consumer project to which the PSC service automation endpoint will
   /// be created. The API expects the consumer project to be the project ID(
   /// and not the project number).
   final pulumi.Input<String> consumerProject;
-
   /// The IP address of the PSC service automation endpoint.
   final pulumi.Input<String> ipAddress;
-
   /// The status of the PSC service automation connection.
   final pulumi.Input<String> status;
 
@@ -48,17 +44,14 @@ class GetInstancePscInstanceConfigPscAutoConnection {
     };
   }
 
-  factory GetInstancePscInstanceConfigPscAutoConnection.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetInstancePscInstanceConfigPscAutoConnection.fromMap(Map<String, dynamic> map) {
     return GetInstancePscInstanceConfigPscAutoConnection(
       consumerNetwork: pulumi.Input.fromValue(map['consumerNetwork'] as String),
-      consumerNetworkStatus: pulumi.Input.fromValue(
-        map['consumerNetworkStatus'] as String,
-      ),
+      consumerNetworkStatus: pulumi.Input.fromValue(map['consumerNetworkStatus'] as String),
       consumerProject: pulumi.Input.fromValue(map['consumerProject'] as String),
       ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
+

@@ -7,11 +7,8 @@ import 'virtual_machine_ssh_credentials_response.dart';
 class HDInsightPropertiesResponse {
   /// Public IP address of the master node of the cluster.
   final pulumi.Input<String>? address;
-
   /// Admin credentials for master node of the cluster
-  final pulumi.Input<VirtualMachineSshCredentialsResponse>?
-  administratorAccount;
-
+  final pulumi.Input<VirtualMachineSshCredentialsResponse>? administratorAccount;
   /// Port open for ssh connections on the master node of the cluster.
   final pulumi.Input<int>? sshPort;
 
@@ -28,36 +25,17 @@ class HDInsightPropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'address': ?address,
-      'administratorAccount':
-          ?pulumi.Input.mapOptionalInputValue<
-            VirtualMachineSshCredentialsResponse,
-            Map<String, dynamic>
-          >(administratorAccount, (value) => value.toMap()),
+      'administratorAccount': ?pulumi.Input.mapOptionalInputValue<VirtualMachineSshCredentialsResponse, Map<String, dynamic>>(administratorAccount, (value) => value.toMap()),
       'sshPort': ?sshPort,
     };
   }
 
   factory HDInsightPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return HDInsightPropertiesResponse(
-      address: (() {
-        final guardedValue = map['address'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      administratorAccount: (() {
-        final guardedValue = map['administratorAccount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          VirtualMachineSshCredentialsResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      sshPort: (() {
-        final guardedValue = map['sshPort'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      address: (() { final guardedValue = map['address']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      administratorAccount: (() { final guardedValue = map['administratorAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualMachineSshCredentialsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      sshPort: (() { final guardedValue = map['sshPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

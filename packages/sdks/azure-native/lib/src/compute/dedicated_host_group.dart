@@ -348,41 +348,27 @@ import 'system_data_response.dart';
 /// ```
 class DedicatedHostGroup extends pulumi.CustomResource {
   /// Enables or disables a capability on the dedicated host group. Minimum api-version: 2022-03-01.
-  late final pulumi.Output<
-    DedicatedHostGroupPropertiesAdditionalCapabilitiesResponse?
-  >
-  additionalCapabilities;
-
+  late final pulumi.Output<DedicatedHostGroupPropertiesAdditionalCapabilitiesResponse?> additionalCapabilities;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// A list of references to all dedicated hosts in the dedicated host group.
   late final pulumi.Output<List<Map<String, dynamic>>> hosts;
-
   /// The dedicated host group instance view, which has the list of instance view of the dedicated hosts under the dedicated host group.
   late final pulumi.Output<DedicatedHostGroupInstanceViewResponse> instanceView;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Number of fault domains that the host group can span.
   late final pulumi.Output<int> platformFaultDomainCount;
-
   /// Specifies whether virtual machines or virtual machine scale sets can be placed automatically on the dedicated host group. Automatic placement means resources are allocated on dedicated hosts, that are chosen by Azure, under the dedicated host group. The value is defaulted to 'false' when not provided. Minimum api-version: 2020-06-01.
   late final pulumi.Output<bool?> supportAutomaticPlacement;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// The availability zones.
   late final pulumi.Output<List<String>?> zones;
 
@@ -395,52 +381,20 @@ class DedicatedHostGroup extends pulumi.CustomResource {
     DedicatedHostGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:compute:DedicatedHostGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    additionalCapabilities =
-        registerOutput<
-          DedicatedHostGroupPropertiesAdditionalCapabilitiesResponse?
-        >(
-          'additionalCapabilities',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return DedicatedHostGroupPropertiesAdditionalCapabilitiesResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+          'azure-native:compute:DedicatedHostGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    additionalCapabilities = registerOutput<DedicatedHostGroupPropertiesAdditionalCapabilitiesResponse?>('additionalCapabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DedicatedHostGroupPropertiesAdditionalCapabilitiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     hosts = registerOutput<List<Map<String, dynamic>>>('hosts');
-    instanceView = registerOutput<DedicatedHostGroupInstanceViewResponse>(
-      'instanceView',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DedicatedHostGroupInstanceViewResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    instanceView = registerOutput<DedicatedHostGroupInstanceViewResponse>('instanceView', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DedicatedHostGroupInstanceViewResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     platformFaultDomainCount = registerOutput<int>('platformFaultDomainCount');
-    supportAutomaticPlacement = registerOutput<bool?>(
-      'supportAutomaticPlacement',
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    supportAutomaticPlacement = registerOutput<bool?>('supportAutomaticPlacement');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     zones = registerOutput<List<String>?>('zones');

@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PrivateLinkResourceResponse {
   /// The group ID of the resource.
   final pulumi.Input<String>? groupId;
-
   /// The ID of the private link resource.
   final pulumi.Input<String>? id;
-
   /// The name of the private link resource.
   final pulumi.Input<String>? name;
-
   /// The private link service ID of the resource, this field is exposed only to NRP internally.
   final pulumi.Input<String> privateLinkServiceID;
-
   /// The RequiredMembers of the resource
   final pulumi.Input<List<String>>? requiredMembers;
-
   /// The resource type.
   final pulumi.Input<String>? type;
 
@@ -51,34 +46,13 @@ class PrivateLinkResourceResponse {
 
   factory PrivateLinkResourceResponse.fromMap(Map<String, dynamic> map) {
     return PrivateLinkResourceResponse(
-      groupId: (() {
-        final guardedValue = map['groupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      privateLinkServiceID: pulumi.Input.fromValue(
-        map['privateLinkServiceID'] as String,
-      ),
-      requiredMembers: (() {
-        final guardedValue = map['requiredMembers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      groupId: (() { final guardedValue = map['groupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateLinkServiceID: pulumi.Input.fromValue(map['privateLinkServiceID'] as String),
+      requiredMembers: (() { final guardedValue = map['requiredMembers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

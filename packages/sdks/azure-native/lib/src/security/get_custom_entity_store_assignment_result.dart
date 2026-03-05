@@ -6,22 +6,16 @@ import 'system_data_response.dart';
 class GetCustomEntityStoreAssignmentResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The link to entity store database.
   final String? entityStoreDatabaseLink;
-
   /// Resource Id
   final String id;
-
   /// Resource name
   final String name;
-
   /// The principal assigned with entity store. Format of principal is: [AAD type]=[PrincipalObjectId];[TenantId]
   final String? principal;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// Resource type
   final String type;
 
@@ -55,27 +49,16 @@ class GetCustomEntityStoreAssignmentResult {
     };
   }
 
-  factory GetCustomEntityStoreAssignmentResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetCustomEntityStoreAssignmentResult.fromMap(Map<String, dynamic> map) {
     return GetCustomEntityStoreAssignmentResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      entityStoreDatabaseLink: (() {
-        final guardedValue = map['entityStoreDatabaseLink'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      entityStoreDatabaseLink: (() { final guardedValue = map['entityStoreDatabaseLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       name: map['name'] as String,
-      principal: (() {
-        final guardedValue = map['principal'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      principal: (() { final guardedValue = map['principal']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

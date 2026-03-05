@@ -592,21 +592,16 @@ import 'cluster_customer_managed_key_state.dart';
 class ClusterCustomerManagedKey extends pulumi.CustomResource {
   /// The ID of the Kusto Cluster. Changing this forces a new resource to be created.
   late final pulumi.Output<String> clusterId;
-
   /// The name of Key Vault Key.
   late final pulumi.Output<String?> keyName;
-
   /// The ID of the Key Vault for CMK encryption.
   late final pulumi.Output<String?> keyVaultId;
-
   /// The version of Key Vault Key.
   late final pulumi.Output<String?> keyVersion;
-
   /// The Managed HSM Key ID for CMK encryption.
   ///
   /// &gt; **Note:** Exactly one of `managed_hsm_key_id` or `key_vault_id` must be specified.
   late final pulumi.Output<String?> managedHsmKeyId;
-
   /// The user assigned identity that has access to the Key Vault Key. If not specified, system assigned identity will be used.
   late final pulumi.Output<String?> userIdentity;
 
@@ -619,11 +614,11 @@ class ClusterCustomerManagedKey extends pulumi.CustomResource {
     ClusterCustomerManagedKeyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:kusto/clusterCustomerManagedKey:ClusterCustomerManagedKey',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:kusto/clusterCustomerManagedKey:ClusterCustomerManagedKey',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterId = registerOutput<String>('clusterId');
     keyName = registerOutput<String?>('keyName');
     keyVaultId = registerOutput<String?>('keyVaultId');
@@ -650,11 +645,11 @@ class ClusterCustomerManagedKey extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:kusto/clusterCustomerManagedKey:ClusterCustomerManagedKey',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:kusto/clusterCustomerManagedKey:ClusterCustomerManagedKey',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterId = registerOutput<String>('clusterId');
     keyName = registerOutput<String?>('keyName');
     keyVaultId = registerOutput<String?>('keyVaultId');

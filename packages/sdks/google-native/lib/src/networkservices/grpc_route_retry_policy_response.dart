@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GrpcRouteRetryPolicyResponse {
   /// Specifies the allowed number of retries. This number must be &gt; 0. If not specified, default to 1.
   final pulumi.Input<int> numRetries;
-
   /// - connect-failure: Router will retry on failures connecting to Backend Services, for example due to connection timeouts. - refused-stream: Router will retry if the backend service resets the stream with a REFUSED_STREAM error code. This reset type indicates that it is safe to retry. - cancelled: Router will retry if the gRPC status code in the response header is set to cancelled - deadline-exceeded: Router will retry if the gRPC status code in the response header is set to deadline-exceeded - resource-exhausted: Router will retry if the gRPC status code in the response header is set to resource-exhausted - unavailable: Router will retry if the gRPC status code in the response header is set to unavailable
   final pulumi.Input<List<String>> retryConditions;
 
@@ -28,9 +27,8 @@ class GrpcRouteRetryPolicyResponse {
   factory GrpcRouteRetryPolicyResponse.fromMap(Map<String, dynamic> map) {
     return GrpcRouteRetryPolicyResponse(
       numRetries: pulumi.Input.fromValue(map['numRetries'] as int),
-      retryConditions: pulumi.Input.fromValue(
-        (map['retryConditions'] as List).cast<String>(),
-      ),
+      retryConditions: pulumi.Input.fromValue((map['retryConditions'] as List).cast<String>()),
     );
   }
 }
+

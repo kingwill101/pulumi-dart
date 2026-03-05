@@ -357,10 +357,8 @@ import 'history_delivery_job_state.dart';
 class HistoryDeliveryJob extends pulumi.CustomResource {
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
-
   /// The status of the resource
   late final pulumi.Output<int> status;
-
   /// The Track Name.
   late final pulumi.Output<String> trailName;
 
@@ -373,11 +371,11 @@ class HistoryDeliveryJob extends pulumi.CustomResource {
     HistoryDeliveryJobArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:actiontrail/historyDeliveryJob:HistoryDeliveryJob',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:actiontrail/historyDeliveryJob:HistoryDeliveryJob',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     status = registerOutput<int>('status');
     trailName = registerOutput<String>('trailName');
@@ -401,11 +399,11 @@ class HistoryDeliveryJob extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:actiontrail/historyDeliveryJob:HistoryDeliveryJob',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:actiontrail/historyDeliveryJob:HistoryDeliveryJob',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     status = registerOutput<int>('status');
     trailName = registerOutput<String>('trailName');

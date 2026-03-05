@@ -4,7 +4,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkManagedServiceZeroEtlAccess {
   final pulumi.Input<String> cidr;
-
   /// The status of the network resource.
   final pulumi.Input<String> status;
 
@@ -17,7 +16,10 @@ class NetworkManagedServiceZeroEtlAccess {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'cidr': cidr, 'status': status};
+    return <String, dynamic>{
+      'cidr': cidr,
+      'status': status,
+    };
   }
 
   factory NetworkManagedServiceZeroEtlAccess.fromMap(Map<String, dynamic> map) {
@@ -27,3 +29,4 @@ class NetworkManagedServiceZeroEtlAccess {
     );
   }
 }
+

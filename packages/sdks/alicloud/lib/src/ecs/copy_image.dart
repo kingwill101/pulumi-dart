@@ -23,11 +23,11 @@ class CopyImage extends pulumi.CustomResource {
     CopyImageArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ecs/copyImage:CopyImage',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ecs/copyImage:CopyImage',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     deleteAutoSnapshot = registerOutput<bool?>('deleteAutoSnapshot');
     description = registerOutput<String?>('description');
     encrypted = registerOutput<bool?>('encrypted');
@@ -58,11 +58,11 @@ class CopyImage extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ecs/copyImage:CopyImage',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ecs/copyImage:CopyImage',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     deleteAutoSnapshot = registerOutput<bool?>('deleteAutoSnapshot');
     description = registerOutput<String?>('description');
     encrypted = registerOutput<bool?>('encrypted');

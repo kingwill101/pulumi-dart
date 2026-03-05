@@ -5,37 +5,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEnterpriseProxiesProxy {
   /// The ID of the user who enabled the secure access proxy feature.
   final pulumi.Input<String> creatorId;
-
   /// The nickname of the user who enabled the secure access proxy feature.
   final pulumi.Input<String> creatorName;
-
   /// The port that was used by HTTPS clients to connect to the database instance.
   final pulumi.Input<int> httpsPort;
-
   /// The ID of the Proxy.
   final pulumi.Input<String> id;
-
   /// The ID of the database instance.
   final pulumi.Input<String> instanceId;
-
   /// Indicates whether the internal endpoint is enabled. Default value: true.
   final pulumi.Input<bool> privateEnable;
-
   /// The internal endpoint.
   final pulumi.Input<String> privateHost;
-
   /// Database protocol connection port number.
   final pulumi.Input<int> protocolPort;
-
   /// Database protocol type, for example, MYSQL.
   final pulumi.Input<String> protocolType;
-
   /// The ID of the secure access proxy.
   final pulumi.Input<String> proxyId;
-
   /// Indicates whether the public endpoint is enabled.
   final pulumi.Input<bool> publicEnable;
-
   /// The public endpoint. A public endpoint is returned no matter whether the public endpoint is enabled or disabled. **Note:** When the public network address is in the **true** state, the returned public network address is a valid address with DNS resolution capability. When the public address is in the **false** state, the returned Public address is an invalid address without DNS resolution.
   final pulumi.Input<String> publicHost;
 
@@ -101,3 +90,4 @@ class GetEnterpriseProxiesProxy {
     );
   }
 }
+

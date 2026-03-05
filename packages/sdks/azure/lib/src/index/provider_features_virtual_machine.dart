@@ -31,26 +31,11 @@ class ProviderFeaturesVirtualMachine {
 
   factory ProviderFeaturesVirtualMachine.fromMap(Map<String, dynamic> map) {
     return ProviderFeaturesVirtualMachine(
-      deleteOsDiskOnDeletion: (() {
-        final guardedValue = map['deleteOsDiskOnDeletion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      detachImplicitDataDiskOnDeletion: (() {
-        final guardedValue = map['detachImplicitDataDiskOnDeletion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      gracefulShutdown: (() {
-        final guardedValue = map['gracefulShutdown'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      skipShutdownAndForceDelete: (() {
-        final guardedValue = map['skipShutdownAndForceDelete'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      deleteOsDiskOnDeletion: (() { final guardedValue = map['deleteOsDiskOnDeletion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      detachImplicitDataDiskOnDeletion: (() { final guardedValue = map['detachImplicitDataDiskOnDeletion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      gracefulShutdown: (() { final guardedValue = map['gracefulShutdown']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      skipShutdownAndForceDelete: (() { final guardedValue = map['skipShutdownAndForceDelete']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

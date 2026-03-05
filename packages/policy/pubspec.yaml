@@ -3,7 +3,7 @@ description: Pulumi Policy SDK for Dart policy packs.
 version: 1.0.0
 resolution: workspace
 license: Apache-2.0
-homepage: https://pulumi.io
+homepage: https://www.pulumi.com
 repository: https://github.com/pulumi/pulumi-policy
 topics:
   - pulumi

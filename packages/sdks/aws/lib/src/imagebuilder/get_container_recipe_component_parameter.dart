@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetContainerRecipeComponentParameter {
   /// Name of the container recipe.
   final pulumi.Input<String> name;
-
   /// Value of the component parameter.
   final pulumi.Input<String> value;
 
@@ -18,15 +17,17 @@ class GetContainerRecipeComponentParameter {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'value': value};
+    return <String, dynamic>{
+      'name': name,
+      'value': value,
+    };
   }
 
-  factory GetContainerRecipeComponentParameter.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetContainerRecipeComponentParameter.fromMap(Map<String, dynamic> map) {
     return GetContainerRecipeComponentParameter(
       name: pulumi.Input.fromValue(map['name'] as String),
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
+

@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RouteFilterRule {
   /// The access type of the rule.
   final pulumi.Input<String> access;
-
   /// The collection for bgp community values to filter on. e.g. ['12076:5010','12076:5020'].
   final pulumi.Input<List<String>> communities;
-
   /// Resource ID.
   final pulumi.Input<String>? id;
-
   /// Resource location.
   final pulumi.Input<String>? location;
-
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   final pulumi.Input<String>? name;
-
   /// The rule type of the rule.
   final pulumi.Input<String> routeFilterRuleType;
 
@@ -52,27 +47,12 @@ class RouteFilterRule {
   factory RouteFilterRule.fromMap(Map<String, dynamic> map) {
     return RouteFilterRule(
       access: pulumi.Input.fromValue(map['access'] as String),
-      communities: pulumi.Input.fromValue(
-        (map['communities'] as List).cast<String>(),
-      ),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      routeFilterRuleType: pulumi.Input.fromValue(
-        map['routeFilterRuleType'] as String,
-      ),
+      communities: pulumi.Input.fromValue((map['communities'] as List).cast<String>()),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      routeFilterRuleType: pulumi.Input.fromValue(map['routeFilterRuleType'] as String),
     );
   }
 }
+

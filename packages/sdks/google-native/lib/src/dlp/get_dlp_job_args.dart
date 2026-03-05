@@ -15,7 +15,11 @@ class GetDlpJobArgs {
   /// [dlpJobId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetDlpJobArgs({required this.dlpJobId, required this.location, this.project});
+  GetDlpJobArgs({
+    required this.dlpJobId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,11 +33,8 @@ class GetDlpJobArgs {
     return GetDlpJobArgs(
       dlpJobId: pulumi.Input.fromValue(map['dlpJobId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

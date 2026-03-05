@@ -9,19 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGroupArgs {
   /// The display name for the group.
   final pulumi.Input<String>? displayName;
-
   /// Whether to include transitive members (a flat list of all nested members). Defaults to `false`.
   final pulumi.Input<bool>? includeTransitiveMembers;
-
   /// Whether the group is mail-enabled.
   final pulumi.Input<bool>? mailEnabled;
-
   /// The mail alias for the group, unique in the organisation.
   final pulumi.Input<String>? mailNickname;
-
   /// Specifies the object ID of the group.
   final pulumi.Input<String>? objectId;
-
   /// Whether the group is a security group.
   ///
   /// &gt; One of `display_name`, `object_id` or `mail_nickname` must be specified.
@@ -56,36 +51,13 @@ class GetGroupArgs {
 
   factory GetGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetGroupArgs(
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      includeTransitiveMembers: (() {
-        final guardedValue = map['includeTransitiveMembers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      mailEnabled: (() {
-        final guardedValue = map['mailEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      mailNickname: (() {
-        final guardedValue = map['mailNickname'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      objectId: (() {
-        final guardedValue = map['objectId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      securityEnabled: (() {
-        final guardedValue = map['securityEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      includeTransitiveMembers: (() { final guardedValue = map['includeTransitiveMembers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      mailEnabled: (() { final guardedValue = map['mailEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      mailNickname: (() { final guardedValue = map['mailNickname']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      objectId: (() { final guardedValue = map['objectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      securityEnabled: (() { final guardedValue = map['securityEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

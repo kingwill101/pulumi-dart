@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ObfuscationExpressionState {
   /// The account id associated with the obfuscation expression.
   final pulumi.Input<String>? accountId;
-
   /// Description of expression.
   final pulumi.Input<String>? description;
-
   /// Name of expression.
   final pulumi.Input<String>? name;
-
   /// Regex of expression. Must be wrapped in parentheses, e.g. (regex.*).
   final pulumi.Input<String>? regex;
 
@@ -39,26 +36,11 @@ class ObfuscationExpressionState {
 
   factory ObfuscationExpressionState.fromMap(Map<String, dynamic> map) {
     return ObfuscationExpressionState(
-      accountId: (() {
-        final guardedValue = map['accountId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      regex: (() {
-        final guardedValue = map['regex'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      regex: (() { final guardedValue = map['regex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

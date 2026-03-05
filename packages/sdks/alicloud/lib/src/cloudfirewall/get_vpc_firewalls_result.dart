@@ -7,34 +7,25 @@ import 'get_vpc_firewalls_firewall.dart';
 class GetVpcFirewallsResult {
   /// A list of Vpc Firewall Entries. Each element contains the following attributes:
   final List<GetVpcFirewallsFirewall> firewalls;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// A list of Vpc Firewall IDs.
   final List<String> ids;
   final String? lang;
-
   /// The UID of the Alibaba Cloud member account.
   final String? memberUid;
   final String? nameRegex;
-
   /// A list of name of Vpc Firewalls.
   final List<String> names;
   final String? outputFile;
-
   /// The region ID of the peer VPC.
   final String? regionNo;
-
   /// The status of the resource
   final String? status;
-
   /// The ID of the VPC firewall instance.
   final String? vpcFirewallId;
-
   /// The name of the VPC firewall instance.
   final String? vpcFirewallName;
-
   /// The ID of the peer VPC instance.
   final String? vpcId;
 
@@ -70,11 +61,7 @@ class GetVpcFirewallsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'firewalls':
-          pulumi.Input.encodeList<
-            GetVpcFirewallsFirewall,
-            Map<String, dynamic>
-          >(firewalls, (value) => value.toMap()),
+      'firewalls': pulumi.Input.encodeList<GetVpcFirewallsFirewall, Map<String, dynamic>>(firewalls, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'lang': ?lang,
@@ -92,60 +79,20 @@ class GetVpcFirewallsResult {
 
   factory GetVpcFirewallsResult.fromMap(Map<String, dynamic> map) {
     return GetVpcFirewallsResult(
-      firewalls: pulumi.Input.decodeList<GetVpcFirewallsFirewall>(
-        map['firewalls']!,
-        (value) => GetVpcFirewallsFirewall.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      firewalls: pulumi.Input.decodeList<GetVpcFirewallsFirewall>(map['firewalls']!, (value) => GetVpcFirewallsFirewall.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      lang: (() {
-        final guardedValue = map['lang'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      memberUid: (() {
-        final guardedValue = map['memberUid'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      lang: (() { final guardedValue = map['lang']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      memberUid: (() { final guardedValue = map['memberUid']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      regionNo: (() {
-        final guardedValue = map['regionNo'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      vpcFirewallId: (() {
-        final guardedValue = map['vpcFirewallId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      vpcFirewallName: (() {
-        final guardedValue = map['vpcFirewallName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      vpcId: (() {
-        final guardedValue = map['vpcId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      regionNo: (() { final guardedValue = map['regionNo']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      vpcFirewallId: (() { final guardedValue = map['vpcFirewallId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      vpcFirewallName: (() { final guardedValue = map['vpcFirewallName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      vpcId: (() { final guardedValue = map['vpcId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

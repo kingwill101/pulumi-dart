@@ -465,102 +465,68 @@ import 'virtual_machine_args.dart';
 class VirtualMachine extends pulumi.CustomResource {
   /// The name of the administrator to which the ssh public keys will be added into the authorized keys.
   late final pulumi.Output<String> adminUsername;
-
   /// The cluster availability zone containing this virtual machine.
   late final pulumi.Output<String> availabilityZone;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The resource ID of the bare metal machine that hosts the virtual machine.
   late final pulumi.Output<String> bareMetalMachineId;
-
   /// Selects the boot method for the virtual machine.
   late final pulumi.Output<String?> bootMethod;
-
   /// The cloud service network that provides platform-level services for the virtual machine.
-  late final pulumi.Output<NetworkAttachmentResponse>
-  cloudServicesNetworkAttachment;
-
+  late final pulumi.Output<NetworkAttachmentResponse> cloudServicesNetworkAttachment;
   /// The resource ID of the cluster the virtual machine is created for.
   late final pulumi.Output<String> clusterId;
-
   /// The extended location to use for creation of a VM console resource.
   late final pulumi.Output<ExtendedLocationResponse?> consoleExtendedLocation;
-
   /// The number of CPU cores in the virtual machine.
   late final pulumi.Output<double> cpuCores;
-
   /// The more detailed status of the virtual machine.
   late final pulumi.Output<String> detailedStatus;
-
   /// The descriptive message about the current detailed status.
   late final pulumi.Output<String> detailedStatusMessage;
-
   /// Resource ETag.
   late final pulumi.Output<String> etag;
-
   /// The extended location of the cluster associated with the resource.
   late final pulumi.Output<ExtendedLocationResponse> extendedLocation;
-
   /// Field Deprecated, the value will be ignored if provided. The indicator of whether one of the specified CPU cores is isolated to run the emulator thread for this virtual machine.
   late final pulumi.Output<String?> isolateEmulatorThread;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The memory size of the virtual machine. Allocations are measured in gibibytes.
   late final pulumi.Output<double> memorySizeGB;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// The list of network attachments to the virtual machine.
   late final pulumi.Output<List<Map<String, dynamic>>?> networkAttachments;
-
   /// The Base64 encoded cloud-init network data.
   late final pulumi.Output<String?> networkData;
-
   /// The scheduling hints for the virtual machine.
   late final pulumi.Output<List<Map<String, dynamic>>?> placementHints;
-
   /// The power state of the virtual machine.
   late final pulumi.Output<String> powerState;
-
   /// The provisioning state of the virtual machine.
   late final pulumi.Output<String> provisioningState;
-
   /// The list of ssh public keys. Each key will be added to the virtual machine using the cloud-init ssh_authorized_keys mechanism for the adminUsername.
   late final pulumi.Output<List<Map<String, dynamic>>?> sshPublicKeys;
-
   /// The storage profile that specifies size and other parameters about the disks related to the virtual machine.
   late final pulumi.Output<StorageProfileResponse> storageProfile;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// The Base64 encoded cloud-init user data.
   late final pulumi.Output<String?> userData;
-
   /// Field Deprecated, use virtualizationModel instead. The type of the virtio interface.
   late final pulumi.Output<String?> virtioInterface;
-
   /// The type of the device model to use.
   late final pulumi.Output<String?> vmDeviceModel;
-
   /// The virtual machine image that is currently provisioned to the OS disk, using the full url and tag notation used to pull the image.
   late final pulumi.Output<String> vmImage;
-
   /// The credentials used to login to the image repository that has access to the specified image.
-  late final pulumi.Output<ImageRepositoryCredentialsResponse?>
-  vmImageRepositoryCredentials;
-
+  late final pulumi.Output<ImageRepositoryCredentialsResponse?> vmImageRepositoryCredentials;
   /// The resource IDs of volumes that are attached to the virtual machine.
   late final pulumi.Output<List<String>> volumes;
 
@@ -573,104 +539,43 @@ class VirtualMachine extends pulumi.CustomResource {
     VirtualMachineArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:networkcloud:VirtualMachine',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:networkcloud:VirtualMachine',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     adminUsername = registerOutput<String>('adminUsername');
     availabilityZone = registerOutput<String>('availabilityZone');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     bareMetalMachineId = registerOutput<String>('bareMetalMachineId');
     bootMethod = registerOutput<String?>('bootMethod');
-    cloudServicesNetworkAttachment = registerOutput<NetworkAttachmentResponse>(
-      'cloudServicesNetworkAttachment',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NetworkAttachmentResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    cloudServicesNetworkAttachment = registerOutput<NetworkAttachmentResponse>('cloudServicesNetworkAttachment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkAttachmentResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clusterId = registerOutput<String>('clusterId');
-    consoleExtendedLocation = registerOutput<ExtendedLocationResponse?>(
-      'consoleExtendedLocation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExtendedLocationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    consoleExtendedLocation = registerOutput<ExtendedLocationResponse?>('consoleExtendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cpuCores = registerOutput<double>('cpuCores');
     detailedStatus = registerOutput<String>('detailedStatus');
     detailedStatusMessage = registerOutput<String>('detailedStatusMessage');
     etag = registerOutput<String>('etag');
-    extendedLocation = registerOutput<ExtendedLocationResponse>(
-      'extendedLocation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExtendedLocationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    extendedLocation = registerOutput<ExtendedLocationResponse>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     isolateEmulatorThread = registerOutput<String?>('isolateEmulatorThread');
     location = registerOutput<String>('location');
     memorySizeGB = registerOutput<double>('memorySizeGB');
     this.name = registerOutput<String>('name');
-    networkAttachments = registerOutput<List<Map<String, dynamic>>?>(
-      'networkAttachments',
-    );
+    networkAttachments = registerOutput<List<Map<String, dynamic>>?>('networkAttachments');
     networkData = registerOutput<String?>('networkData');
-    placementHints = registerOutput<List<Map<String, dynamic>>?>(
-      'placementHints',
-    );
+    placementHints = registerOutput<List<Map<String, dynamic>>?>('placementHints');
     powerState = registerOutput<String>('powerState');
     provisioningState = registerOutput<String>('provisioningState');
-    sshPublicKeys = registerOutput<List<Map<String, dynamic>>?>(
-      'sshPublicKeys',
-    );
-    storageProfile = registerOutput<StorageProfileResponse>(
-      'storageProfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return StorageProfileResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sshPublicKeys = registerOutput<List<Map<String, dynamic>>?>('sshPublicKeys');
+    storageProfile = registerOutput<StorageProfileResponse>('storageProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StorageProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     userData = registerOutput<String?>('userData');
     virtioInterface = registerOutput<String?>('virtioInterface');
     vmDeviceModel = registerOutput<String?>('vmDeviceModel');
     vmImage = registerOutput<String>('vmImage');
-    vmImageRepositoryCredentials =
-        registerOutput<ImageRepositoryCredentialsResponse?>(
-          'vmImageRepositoryCredentials',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ImageRepositoryCredentialsResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    vmImageRepositoryCredentials = registerOutput<ImageRepositoryCredentialsResponse?>('vmImageRepositoryCredentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageRepositoryCredentialsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     volumes = registerOutput<List<String>>('volumes');
   }
 }

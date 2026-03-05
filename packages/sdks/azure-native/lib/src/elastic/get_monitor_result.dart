@@ -9,31 +9,22 @@ import 'system_data_response.dart';
 class GetMonitorResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// ARM id of the monitor resource.
   final String id;
-
   /// Identity properties of the monitor resource.
   final IdentityPropertiesResponse? identity;
-
   /// The location of the monitor resource
   final String location;
-
   /// Name of the monitor resource.
   final String name;
-
   /// Properties of the monitor resource.
   final MonitorPropertiesResponse properties;
-
   /// SKU of the monitor resource.
   final ResourceSkuResponse? sku;
-
   /// The system metadata relating to this resource
   final SystemDataResponse systemData;
-
   /// The tags of the monitor resource.
   final Map<String, String>? tags;
-
   /// The type of the monitor resource.
   final String type;
 
@@ -80,34 +71,15 @@ class GetMonitorResult {
     return GetMonitorResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return IdentityPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return IdentityPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       location: map['location'] as String,
       name: map['name'] as String,
-      properties: MonitorPropertiesResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
-      sku: (() {
-        final guardedValue = map['sku'];
-        if (guardedValue == null) return null;
-        return ResourceSkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      properties: MonitorPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
+      sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return ResourceSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

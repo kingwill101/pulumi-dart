@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudAssuredworkloadsV1WorkloadKMSSettings {
   /// Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
   final pulumi.Input<String> nextRotationTime;
-
   /// Input only. Immutable. [next_rotation_time] will be advanced by this period when the Key Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours.
   final pulumi.Input<String> rotationPeriod;
 
@@ -25,14 +24,11 @@ class GoogleCloudAssuredworkloadsV1WorkloadKMSSettings {
     };
   }
 
-  factory GoogleCloudAssuredworkloadsV1WorkloadKMSSettings.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudAssuredworkloadsV1WorkloadKMSSettings.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAssuredworkloadsV1WorkloadKMSSettings(
-      nextRotationTime: pulumi.Input.fromValue(
-        map['nextRotationTime'] as String,
-      ),
+      nextRotationTime: pulumi.Input.fromValue(map['nextRotationTime'] as String),
       rotationPeriod: pulumi.Input.fromValue(map['rotationPeriod'] as String),
     );
   }
 }
+

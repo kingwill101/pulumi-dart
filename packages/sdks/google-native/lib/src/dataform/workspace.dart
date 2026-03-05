@@ -5,12 +5,10 @@ import 'workspace_args.dart';
 /// Auto-naming is currently not supported for this resource.
 class Workspace extends pulumi.CustomResource {
   late final pulumi.Output<String> location;
-
   /// The workspace's name.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
   late final pulumi.Output<String> repositoryId;
-
   /// Required. The ID to use for the workspace, which will become the final component of the workspace's resource name.
   late final pulumi.Output<String> workspaceId;
 
@@ -23,11 +21,11 @@ class Workspace extends pulumi.CustomResource {
     WorkspaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'google-native:dataform/v1beta1:Workspace',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'google-native:dataform/v1beta1:Workspace',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

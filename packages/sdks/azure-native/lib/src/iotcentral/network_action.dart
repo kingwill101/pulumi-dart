@@ -15,3 +15,4 @@ enum NetworkAction {
     throw ArgumentError('Unknown NetworkAction value: $value');
   }
 }
+

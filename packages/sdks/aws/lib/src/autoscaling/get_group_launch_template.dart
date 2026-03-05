@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGroupLaunchTemplate {
   /// ID of the launch template.
   final pulumi.Input<String> id;
-
   /// Specify the exact name of the desired autoscaling group.
   final pulumi.Input<String> name;
-
   /// Template version.
   final pulumi.Input<String> version;
 
@@ -23,7 +21,11 @@ class GetGroupLaunchTemplate {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id, 'name': name, 'version': version};
+    return <String, dynamic>{
+      'id': id,
+      'name': name,
+      'version': version,
+    };
   }
 
   factory GetGroupLaunchTemplate.fromMap(Map<String, dynamic> map) {
@@ -34,3 +36,4 @@ class GetGroupLaunchTemplate {
     );
   }
 }
+

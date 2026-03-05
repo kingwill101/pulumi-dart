@@ -13,22 +13,16 @@ import 'update_configuration.dart';
 class SoftwareUpdateConfigurationByNameArgs {
   /// The name of the automation account.
   final pulumi.Input<String> automationAccountName;
-
   /// Details of provisioning error
   final pulumi.Input<ErrorResponse>? error;
-
   /// Name of an Azure Resource group.
   final pulumi.Input<String> resourceGroupName;
-
   /// Schedule information for the Software update configuration
   final pulumi.Input<SUCScheduleProperties> scheduleInfo;
-
   /// The name of the software update configuration to be created.
   final pulumi.Input<String>? softwareUpdateConfigurationName;
-
   /// Tasks information for the Software update configuration.
   final pulumi.Input<SoftwareUpdateConfigurationTasks>? tasks;
-
   /// update specific properties for the Software update configuration
   final pulumi.Input<UpdateConfiguration> updateConfiguration;
 
@@ -53,72 +47,25 @@ class SoftwareUpdateConfigurationByNameArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'automationAccountName': automationAccountName,
-      'error':
-          ?pulumi.Input.mapOptionalInputValue<
-            ErrorResponse,
-            Map<String, dynamic>
-          >(error, (value) => value.toMap()),
+      'error': ?pulumi.Input.mapOptionalInputValue<ErrorResponse, Map<String, dynamic>>(error, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
-      'scheduleInfo':
-          pulumi.Input.mapInputValue<
-            SUCScheduleProperties,
-            Map<String, dynamic>
-          >(scheduleInfo, (value) => value.toMap()),
+      'scheduleInfo': pulumi.Input.mapInputValue<SUCScheduleProperties, Map<String, dynamic>>(scheduleInfo, (value) => value.toMap()),
       'softwareUpdateConfigurationName': ?softwareUpdateConfigurationName,
-      'tasks':
-          ?pulumi.Input.mapOptionalInputValue<
-            SoftwareUpdateConfigurationTasks,
-            Map<String, dynamic>
-          >(tasks, (value) => value.toMap()),
-      'updateConfiguration':
-          pulumi.Input.mapInputValue<UpdateConfiguration, Map<String, dynamic>>(
-            updateConfiguration,
-            (value) => value.toMap(),
-          ),
+      'tasks': ?pulumi.Input.mapOptionalInputValue<SoftwareUpdateConfigurationTasks, Map<String, dynamic>>(tasks, (value) => value.toMap()),
+      'updateConfiguration': pulumi.Input.mapInputValue<UpdateConfiguration, Map<String, dynamic>>(updateConfiguration, (value) => value.toMap()),
     };
   }
 
-  factory SoftwareUpdateConfigurationByNameArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SoftwareUpdateConfigurationByNameArgs.fromMap(Map<String, dynamic> map) {
     return SoftwareUpdateConfigurationByNameArgs(
-      automationAccountName: pulumi.Input.fromValue(
-        map['automationAccountName'] as String,
-      ),
-      error: (() {
-        final guardedValue = map['error'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ErrorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      scheduleInfo: pulumi.Input.fromValue(
-        SUCScheduleProperties.fromMap(
-          (map['scheduleInfo']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      softwareUpdateConfigurationName: (() {
-        final guardedValue = map['softwareUpdateConfigurationName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tasks: (() {
-        final guardedValue = map['tasks'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SoftwareUpdateConfigurationTasks.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      updateConfiguration: pulumi.Input.fromValue(
-        UpdateConfiguration.fromMap(
-          (map['updateConfiguration']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      automationAccountName: pulumi.Input.fromValue(map['automationAccountName'] as String),
+      error: (() { final guardedValue = map['error']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ErrorResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      scheduleInfo: pulumi.Input.fromValue(SUCScheduleProperties.fromMap((map['scheduleInfo']! as Map).cast<String, dynamic>())),
+      softwareUpdateConfigurationName: (() { final guardedValue = map['softwareUpdateConfigurationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tasks: (() { final guardedValue = map['tasks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SoftwareUpdateConfigurationTasks.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      updateConfiguration: pulumi.Input.fromValue(UpdateConfiguration.fromMap((map['updateConfiguration']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

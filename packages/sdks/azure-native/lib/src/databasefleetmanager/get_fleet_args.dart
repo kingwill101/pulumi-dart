@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFleetArgs {
   /// Name of the database fleet.
   final pulumi.Input<String> fleetName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetFleetArgs].
   /// [fleetName] Name of the database fleet.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetFleetArgs({required this.fleetName, required this.resourceGroupName});
+  GetFleetArgs({
+    required this.fleetName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,9 +30,8 @@ class GetFleetArgs {
   factory GetFleetArgs.fromMap(Map<String, dynamic> map) {
     return GetFleetArgs(
       fleetName: pulumi.Input.fromValue(map['fleetName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

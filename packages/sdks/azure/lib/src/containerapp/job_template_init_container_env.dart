@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JobTemplateInitContainerEnv {
   /// The name of the environment variable.
   final pulumi.Input<String> name;
-
   /// Name of the Container App secret from which to pull the environment variable value.
   final pulumi.Input<String>? secretName;
-
   /// The value of the environment variable.
   final pulumi.Input<String>? value;
 
@@ -33,16 +31,9 @@ class JobTemplateInitContainerEnv {
   factory JobTemplateInitContainerEnv.fromMap(Map<String, dynamic> map) {
     return JobTemplateInitContainerEnv(
       name: pulumi.Input.fromValue(map['name'] as String),
-      secretName: (() {
-        final guardedValue = map['secretName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      secretName: (() { final guardedValue = map['secretName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

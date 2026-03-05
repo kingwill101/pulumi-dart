@@ -8,10 +8,8 @@ class KeyAliasState {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? aliasName;
-
   /// ARN of the key.
   final pulumi.Input<String>? keyArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -19,7 +17,11 @@ class KeyAliasState {
   /// [aliasName] Name of the Key Alias.
   /// [keyArn] ARN of the key.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  KeyAliasState({this.aliasName, this.keyArn, this.region});
+  KeyAliasState({
+    this.aliasName,
+    this.keyArn,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,21 +33,10 @@ class KeyAliasState {
 
   factory KeyAliasState.fromMap(Map<String, dynamic> map) {
     return KeyAliasState(
-      aliasName: (() {
-        final guardedValue = map['aliasName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keyArn: (() {
-        final guardedValue = map['keyArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      aliasName: (() { final guardedValue = map['aliasName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyArn: (() { final guardedValue = map['keyArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

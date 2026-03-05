@@ -114,10 +114,8 @@ import 'network_acl_association_state.dart';
 class NetworkAclAssociation extends pulumi.CustomResource {
   /// The ID of the network ACL.
   late final pulumi.Output<String> networkAclId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The ID of the associated Subnet.
   late final pulumi.Output<String> subnetId;
 
@@ -130,11 +128,11 @@ class NetworkAclAssociation extends pulumi.CustomResource {
     NetworkAclAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/networkAclAssociation:NetworkAclAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/networkAclAssociation:NetworkAclAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     networkAclId = registerOutput<String>('networkAclId');
     region = registerOutput<String>('region');
     subnetId = registerOutput<String>('subnetId');
@@ -158,11 +156,11 @@ class NetworkAclAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2/networkAclAssociation:NetworkAclAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2/networkAclAssociation:NetworkAclAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     networkAclId = registerOutput<String>('networkAclId');
     region = registerOutput<String>('region');
     subnetId = registerOutput<String>('subnetId');

@@ -44,18 +44,13 @@ class GetRoutersRouterInterface {
   factory GetRoutersRouterInterface.fromMap(Map<String, dynamic> map) {
     return GetRoutersRouterInterface(
       ipRange: pulumi.Input.fromValue(map['ipRange'] as String),
-      linkedInterconnectAttachment: pulumi.Input.fromValue(
-        map['linkedInterconnectAttachment'] as String,
-      ),
+      linkedInterconnectAttachment: pulumi.Input.fromValue(map['linkedInterconnectAttachment'] as String),
       linkedVpnTunnel: pulumi.Input.fromValue(map['linkedVpnTunnel'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      privateIpAddress: pulumi.Input.fromValue(
-        map['privateIpAddress'] as String,
-      ),
-      redundantInterface: pulumi.Input.fromValue(
-        map['redundantInterface'] as String,
-      ),
+      privateIpAddress: pulumi.Input.fromValue(map['privateIpAddress'] as String),
+      redundantInterface: pulumi.Input.fromValue(map['redundantInterface'] as String),
       subnetwork: pulumi.Input.fromValue(map['subnetwork'] as String),
     );
   }
 }
+

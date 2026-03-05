@@ -9,19 +9,20 @@ class IpAddressRangeResponse {
 
   /// Creates a new [IpAddressRangeResponse].
   /// [addressRange] The IP address range.
-  IpAddressRangeResponse({this.addressRange});
+  IpAddressRangeResponse({
+    this.addressRange,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'addressRange': ?addressRange};
+    return <String, dynamic>{
+      'addressRange': ?addressRange,
+    };
   }
 
   factory IpAddressRangeResponse.fromMap(Map<String, dynamic> map) {
     return IpAddressRangeResponse(
-      addressRange: (() {
-        final guardedValue = map['addressRange'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      addressRange: (() { final guardedValue = map['addressRange']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

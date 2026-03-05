@@ -15,3 +15,4 @@ enum SAPHighAvailabilityType {
     throw ArgumentError('Unknown SAPHighAvailabilityType value: $value');
   }
 }
+

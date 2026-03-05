@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PackageShippingDetailsResponse {
   /// Name of the carrier.
   final pulumi.Input<String> carrierName;
-
   /// Tracking Id of shipment.
   final pulumi.Input<String> trackingId;
-
   /// Url where shipment can be tracked.
   final pulumi.Input<String> trackingUrl;
 
@@ -39,3 +37,4 @@ class PackageShippingDetailsResponse {
     );
   }
 }
+

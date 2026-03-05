@@ -217,13 +217,10 @@ import 'dhcp_options_set_attachment_state.dart';
 class DhcpOptionsSetAttachment extends pulumi.CustomResource {
   /// The ID of the DHCP options set.
   late final pulumi.Output<String> dhcpOptionsSetId;
-
   /// Specifies whether to precheck this request only. Default values: `false`. Valid values:
   late final pulumi.Output<bool?> dryRun;
-
   /// The status of the VPC network that is associated with the DHCP options set.  Valid values: `InUse` or `Pending`.
   late final pulumi.Output<String> status;
-
   /// The ID of the VPC network that is to be associated with the DHCP options set..
   late final pulumi.Output<String> vpcId;
 
@@ -236,11 +233,11 @@ class DhcpOptionsSetAttachment extends pulumi.CustomResource {
     DhcpOptionsSetAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/dhcpOptionsSetAttachment:DhcpOptionsSetAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpc/dhcpOptionsSetAttachment:DhcpOptionsSetAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dhcpOptionsSetId = registerOutput<String>('dhcpOptionsSetId');
     dryRun = registerOutput<bool?>('dryRun');
     status = registerOutput<String>('status');
@@ -265,11 +262,11 @@ class DhcpOptionsSetAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/dhcpOptionsSetAttachment:DhcpOptionsSetAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpc/dhcpOptionsSetAttachment:DhcpOptionsSetAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dhcpOptionsSetId = registerOutput<String>('dhcpOptionsSetId');
     dryRun = registerOutput<bool?>('dryRun');
     status = registerOutput<String>('status');

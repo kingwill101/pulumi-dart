@@ -7,7 +7,6 @@ import 'load_balancer_backend_address_properties_response.dart';
 class LoadBalancerBackendAddressResponse {
   /// name of the backend address
   final pulumi.Input<String> name;
-
   /// backend address properties
   final pulumi.Input<LoadBalancerBackendAddressPropertiesResponse> properties;
 
@@ -22,22 +21,15 @@ class LoadBalancerBackendAddressResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'properties':
-          pulumi.Input.mapInputValue<
-            LoadBalancerBackendAddressPropertiesResponse,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': pulumi.Input.mapInputValue<LoadBalancerBackendAddressPropertiesResponse, Map<String, dynamic>>(properties, (value) => value.toMap()),
     };
   }
 
   factory LoadBalancerBackendAddressResponse.fromMap(Map<String, dynamic> map) {
     return LoadBalancerBackendAddressResponse(
       name: pulumi.Input.fromValue(map['name'] as String),
-      properties: pulumi.Input.fromValue(
-        LoadBalancerBackendAddressPropertiesResponse.fromMap(
-          (map['properties']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      properties: pulumi.Input.fromValue(LoadBalancerBackendAddressPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

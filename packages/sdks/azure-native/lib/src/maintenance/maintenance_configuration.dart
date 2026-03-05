@@ -184,49 +184,34 @@ import 'system_data_response.dart';
 class MaintenanceConfiguration extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Duration of the maintenance window in HH:mm format. If not provided, default value will be used based on maintenance scope provided. Example: 05:00.
   late final pulumi.Output<String?> duration;
-
   /// Effective expiration date of the maintenance window in YYYY-MM-DD hh:mm format. The window will be created in the time zone provided and adjusted to daylight savings according to that time zone. Expiration date must be set to a future date. If not provided, it will be set to the maximum datetime 9999-12-31 23:59:59.
   late final pulumi.Output<String?> expirationDateTime;
-
   /// Gets or sets extensionProperties of the maintenanceConfiguration
   late final pulumi.Output<Map<String, String>?> extensionProperties;
-
   /// The input parameters to be passed to the patch run operation.
   late final pulumi.Output<InputPatchConfigurationResponse?> installPatches;
-
   /// Gets or sets location of the resource
   late final pulumi.Output<String?> location;
-
   /// Gets or sets maintenanceScope of the configuration
   late final pulumi.Output<String?> maintenanceScope;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Gets or sets namespace of the resource
   late final pulumi.Output<String?> namespace;
-
   /// Rate at which a Maintenance window is expected to recur. The rate can be expressed as daily, weekly, or monthly schedules. Daily schedule are formatted as recurEvery: [Frequency as integer]['Day(s)']. If no frequency is provided, the default frequency is 1. Daily schedule examples are recurEvery: Day, recurEvery: 3Days.  Weekly schedule are formatted as recurEvery: [Frequency as integer]['Week(s)'] [Optional comma separated list of weekdays Monday-Sunday]. Weekly schedule examples are recurEvery: 3Weeks, recurEvery: Week Saturday,Sunday. Monthly schedules are formatted as [Frequency as integer]['Month(s)'] [Comma separated list of month days] or [Frequency as integer]['Month(s)'] [Week of Month (First, Second, Third, Fourth, Last)] [Weekday Monday-Sunday] [Optional Offset(No. of days)]. Offset value must be between -6 to 6 inclusive. Monthly schedule examples are recurEvery: Month, recurEvery: 2Months, recurEvery: Month day23,day24, recurEvery: Month Last Sunday, recurEvery: Month Fourth Monday, recurEvery: Month Last Sunday Offset-3, recurEvery: Month Third Sunday Offset6.
   late final pulumi.Output<String?> recurEvery;
-
   /// Effective start date of the maintenance window in YYYY-MM-DD hh:mm format. The start date can be set to either the current date or future date. The window will be created in the time zone provided and adjusted to daylight savings according to that time zone.
   late final pulumi.Output<String?> startDateTime;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Gets or sets tags of the resource
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Name of the timezone. List of timezones can be obtained by executing [System.TimeZoneInfo]::GetSystemTimeZones() in PowerShell. Example: Pacific Standard Time, UTC, W. Europe Standard Time, Korea Standard Time, Cen. Australia Standard Time.
   late final pulumi.Output<String?> timeZone;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// Gets or sets the visibility of the configuration. The default value is 'Custom'
   late final pulumi.Output<String?> visibility;
 
@@ -239,43 +224,23 @@ class MaintenanceConfiguration extends pulumi.CustomResource {
     MaintenanceConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:maintenance:MaintenanceConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:maintenance:MaintenanceConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     duration = registerOutput<String?>('duration');
     expirationDateTime = registerOutput<String?>('expirationDateTime');
-    extensionProperties = registerOutput<Map<String, String>?>(
-      'extensionProperties',
-    );
-    installPatches = registerOutput<InputPatchConfigurationResponse?>(
-      'installPatches',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InputPatchConfigurationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    extensionProperties = registerOutput<Map<String, String>?>('extensionProperties');
+    installPatches = registerOutput<InputPatchConfigurationResponse?>('installPatches', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InputPatchConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String?>('location');
     maintenanceScope = registerOutput<String?>('maintenanceScope');
     this.name = registerOutput<String>('name');
     namespace = registerOutput<String?>('namespace');
     recurEvery = registerOutput<String?>('recurEvery');
     startDateTime = registerOutput<String?>('startDateTime');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     timeZone = registerOutput<String?>('timeZone');
     type = registerOutput<String>('type');

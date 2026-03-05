@@ -8,19 +8,20 @@ class ScheduledActionTargetActionPauseCluster {
 
   /// Creates a new [ScheduledActionTargetActionPauseCluster].
   /// [clusterIdentifier] The identifier of the cluster to be paused.
-  ScheduledActionTargetActionPauseCluster({required this.clusterIdentifier});
+  ScheduledActionTargetActionPauseCluster({
+    required this.clusterIdentifier,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'clusterIdentifier': clusterIdentifier};
+    return <String, dynamic>{
+      'clusterIdentifier': clusterIdentifier,
+    };
   }
 
-  factory ScheduledActionTargetActionPauseCluster.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ScheduledActionTargetActionPauseCluster.fromMap(Map<String, dynamic> map) {
     return ScheduledActionTargetActionPauseCluster(
-      clusterIdentifier: pulumi.Input.fromValue(
-        map['clusterIdentifier'] as String,
-      ),
+      clusterIdentifier: pulumi.Input.fromValue(map['clusterIdentifier'] as String),
     );
   }
 }
+

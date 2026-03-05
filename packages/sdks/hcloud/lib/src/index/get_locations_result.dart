@@ -6,7 +6,6 @@ import 'get_locations_location.dart';
 /// Result data returned by getLocations.
 class GetLocationsResult {
   final List<String> descriptions;
-
   /// The ID of this resource.
   final String id;
   final List<String> locationIds;
@@ -32,11 +31,7 @@ class GetLocationsResult {
       'descriptions': descriptions,
       'id': id,
       'locationIds': locationIds,
-      'locations':
-          pulumi.Input.encodeList<GetLocationsLocation, Map<String, dynamic>>(
-            locations,
-            (value) => value.toMap(),
-          ),
+      'locations': pulumi.Input.encodeList<GetLocationsLocation, Map<String, dynamic>>(locations, (value) => value.toMap()),
       'names': names,
     };
   }
@@ -46,13 +41,9 @@ class GetLocationsResult {
       descriptions: (map['descriptions'] as List).cast<String>(),
       id: map['id'] as String,
       locationIds: (map['locationIds'] as List).cast<String>(),
-      locations: pulumi.Input.decodeList<GetLocationsLocation>(
-        map['locations']!,
-        (value) => GetLocationsLocation.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      locations: pulumi.Input.decodeList<GetLocationsLocation>(map['locations']!, (value) => GetLocationsLocation.fromMap((value as Map).cast<String, dynamic>())),
       names: (map['names'] as List).cast<String>(),
     );
   }
 }
+

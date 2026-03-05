@@ -14,14 +14,15 @@ class GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'kmsKey': kmsKey};
+    return <String, dynamic>{
+      'kmsKey': kmsKey,
+    };
   }
 
-  factory GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigResponse(
       kmsKey: pulumi.Input.fromValue(map['kmsKey'] as String),
     );
   }
 }
+

@@ -6,31 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceLinkedRoleState {
   /// The product name for SLR. Dbfs can automatically create the following service-linked roles: `AliyunServiceRoleForDbfs`.
   final pulumi.Input<String>? productName;
-
   /// The status of the service Associated role. Valid Values: `true`: Created. `false`: not created.
   final pulumi.Input<bool>? status;
 
   /// Creates a new [ServiceLinkedRoleState].
   /// [productName] The product name for SLR. Dbfs can automatically create the following service-linked roles: `AliyunServiceRoleForDbfs`.
   /// [status] The status of the service Associated role. Valid Values: `true`: Created. `false`: not created.
-  ServiceLinkedRoleState({this.productName, this.status});
+  ServiceLinkedRoleState({
+    this.productName,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'productName': ?productName, 'status': ?status};
+    return <String, dynamic>{
+      'productName': ?productName,
+      'status': ?status,
+    };
   }
 
   factory ServiceLinkedRoleState.fromMap(Map<String, dynamic> map) {
     return ServiceLinkedRoleState(
-      productName: (() {
-        final guardedValue = map['productName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      productName: (() { final guardedValue = map['productName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

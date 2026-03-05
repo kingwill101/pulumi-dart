@@ -8,50 +8,29 @@ import 'http_fault_delay_compute_beta.dart';
 class HttpFaultInjectionComputeBeta {
   /// The specification for how client requests are aborted as part of fault injection.
   final pulumi.Input<HttpFaultAbortComputeBeta>? abort;
-
   /// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
   final pulumi.Input<HttpFaultDelayComputeBeta>? delay;
 
   /// Creates a new [HttpFaultInjectionComputeBeta].
   /// [abort] The specification for how client requests are aborted as part of fault injection.
   /// [delay] The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
-  HttpFaultInjectionComputeBeta({this.abort, this.delay});
+  HttpFaultInjectionComputeBeta({
+    this.abort,
+    this.delay,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'abort':
-          ?pulumi.Input.mapOptionalInputValue<
-            HttpFaultAbortComputeBeta,
-            Map<String, dynamic>
-          >(abort, (value) => value.toMap()),
-      'delay':
-          ?pulumi.Input.mapOptionalInputValue<
-            HttpFaultDelayComputeBeta,
-            Map<String, dynamic>
-          >(delay, (value) => value.toMap()),
+      'abort': ?pulumi.Input.mapOptionalInputValue<HttpFaultAbortComputeBeta, Map<String, dynamic>>(abort, (value) => value.toMap()),
+      'delay': ?pulumi.Input.mapOptionalInputValue<HttpFaultDelayComputeBeta, Map<String, dynamic>>(delay, (value) => value.toMap()),
     };
   }
 
   factory HttpFaultInjectionComputeBeta.fromMap(Map<String, dynamic> map) {
     return HttpFaultInjectionComputeBeta(
-      abort: (() {
-        final guardedValue = map['abort'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          HttpFaultAbortComputeBeta.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      delay: (() {
-        final guardedValue = map['delay'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          HttpFaultDelayComputeBeta.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      abort: (() { final guardedValue = map['abort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HttpFaultAbortComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      delay: (() { final guardedValue = map['delay']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HttpFaultDelayComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

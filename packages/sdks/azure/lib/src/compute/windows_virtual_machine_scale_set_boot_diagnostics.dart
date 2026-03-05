@@ -10,21 +10,20 @@ class WindowsVirtualMachineScaleSetBootDiagnostics {
 
   /// Creates a new [WindowsVirtualMachineScaleSetBootDiagnostics].
   /// [storageAccountUri] The Primary/Secondary Endpoint for the Azure Storage Account which should be used to store Boot Diagnostics, including Console Output and Screenshots from the Hypervisor.
-  WindowsVirtualMachineScaleSetBootDiagnostics({this.storageAccountUri});
+  WindowsVirtualMachineScaleSetBootDiagnostics({
+    this.storageAccountUri,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'storageAccountUri': ?storageAccountUri};
+    return <String, dynamic>{
+      'storageAccountUri': ?storageAccountUri,
+    };
   }
 
-  factory WindowsVirtualMachineScaleSetBootDiagnostics.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WindowsVirtualMachineScaleSetBootDiagnostics.fromMap(Map<String, dynamic> map) {
     return WindowsVirtualMachineScaleSetBootDiagnostics(
-      storageAccountUri: (() {
-        final guardedValue = map['storageAccountUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      storageAccountUri: (() { final guardedValue = map['storageAccountUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

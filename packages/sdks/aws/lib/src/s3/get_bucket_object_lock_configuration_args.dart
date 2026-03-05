@@ -11,10 +11,8 @@ class GetBucketObjectLockConfigurationArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> bucket;
-
   /// Account ID of the expected bucket owner.
   final pulumi.Input<String>? expectedBucketOwner;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -36,21 +34,12 @@ class GetBucketObjectLockConfigurationArgs {
     };
   }
 
-  factory GetBucketObjectLockConfigurationArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetBucketObjectLockConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return GetBucketObjectLockConfigurationArgs(
       bucket: pulumi.Input.fromValue(map['bucket'] as String),
-      expectedBucketOwner: (() {
-        final guardedValue = map['expectedBucketOwner'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      expectedBucketOwner: (() { final guardedValue = map['expectedBucketOwner']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

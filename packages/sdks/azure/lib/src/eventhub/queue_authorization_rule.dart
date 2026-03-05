@@ -269,36 +269,26 @@ import 'queue_authorization_rule_state.dart';
 class QueueAuthorizationRule extends pulumi.CustomResource {
   /// Does this Authorization Rule have Listen permissions to the ServiceBus Queue? Defaults to `false`.
   late final pulumi.Output<bool?> listen;
-
   /// Does this Authorization Rule have Manage permissions to the ServiceBus Queue? When this property is `true` - both `listen` and `send` must be too. Defaults to `false`.
   late final pulumi.Output<bool?> manage;
-
   /// Specifies the name of the Authorization Rule. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The Primary Connection String for the Authorization Rule.
   late final pulumi.Output<String> primaryConnectionString;
-
   /// The alias Primary Connection String for the ServiceBus Namespace, if the namespace is Geo DR paired.
   late final pulumi.Output<String> primaryConnectionStringAlias;
-
   /// The Primary Key for the Authorization Rule.
   late final pulumi.Output<String> primaryKey;
-
   /// Specifies the ID of the ServiceBus Queue. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** At least one of the 3 permissions below needs to be set.
   late final pulumi.Output<String> queueId;
-
   /// The Secondary Connection String for the Authorization Rule.
   late final pulumi.Output<String> secondaryConnectionString;
-
   /// The alias Secondary Connection String for the ServiceBus Namespace
   late final pulumi.Output<String> secondaryConnectionStringAlias;
-
   /// The Secondary Key for the Authorization Rule.
   late final pulumi.Output<String> secondaryKey;
-
   /// Does this Authorization Rule have Send permissions to the ServiceBus Queue? Defaults to `false`.
   late final pulumi.Output<bool?> send;
 
@@ -311,26 +301,20 @@ class QueueAuthorizationRule extends pulumi.CustomResource {
     QueueAuthorizationRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:eventhub/queueAuthorizationRule:QueueAuthorizationRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:eventhub/queueAuthorizationRule:QueueAuthorizationRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     listen = registerOutput<bool?>('listen');
     manage = registerOutput<bool?>('manage');
     this.name = registerOutput<String>('name');
     primaryConnectionString = registerOutput<String>('primaryConnectionString');
-    primaryConnectionStringAlias = registerOutput<String>(
-      'primaryConnectionStringAlias',
-    );
+    primaryConnectionStringAlias = registerOutput<String>('primaryConnectionStringAlias');
     primaryKey = registerOutput<String>('primaryKey');
     queueId = registerOutput<String>('queueId');
-    secondaryConnectionString = registerOutput<String>(
-      'secondaryConnectionString',
-    );
-    secondaryConnectionStringAlias = registerOutput<String>(
-      'secondaryConnectionStringAlias',
-    );
+    secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
+    secondaryConnectionStringAlias = registerOutput<String>('secondaryConnectionStringAlias');
     secondaryKey = registerOutput<String>('secondaryKey');
     send = registerOutput<bool?>('send');
   }
@@ -353,26 +337,20 @@ class QueueAuthorizationRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:eventhub/queueAuthorizationRule:QueueAuthorizationRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:eventhub/queueAuthorizationRule:QueueAuthorizationRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     listen = registerOutput<bool?>('listen');
     manage = registerOutput<bool?>('manage');
     this.name = registerOutput<String>('name');
     primaryConnectionString = registerOutput<String>('primaryConnectionString');
-    primaryConnectionStringAlias = registerOutput<String>(
-      'primaryConnectionStringAlias',
-    );
+    primaryConnectionStringAlias = registerOutput<String>('primaryConnectionStringAlias');
     primaryKey = registerOutput<String>('primaryKey');
     queueId = registerOutput<String>('queueId');
-    secondaryConnectionString = registerOutput<String>(
-      'secondaryConnectionString',
-    );
-    secondaryConnectionStringAlias = registerOutput<String>(
-      'secondaryConnectionStringAlias',
-    );
+    secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
+    secondaryConnectionStringAlias = registerOutput<String>('secondaryConnectionStringAlias');
     secondaryKey = registerOutput<String>('secondaryKey');
     send = registerOutput<bool?>('send');
   }

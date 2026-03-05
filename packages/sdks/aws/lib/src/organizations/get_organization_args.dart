@@ -12,19 +12,20 @@ class GetOrganizationArgs {
 
   /// Creates a new [GetOrganizationArgs].
   /// [returnOrganizationOnly] Return (as attributes) only the results of the [`DescribeOrganization`](https://docs.aws.amazon.com/organizations/latest/APIReference/API_DescribeOrganization.html) API to avoid [API limits](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html#throttling-limits). When configured to `true` only the `arn`, `feature_set`, `master_account_arn`, `master_account_email` and `master_account_id` attributes will be returned. All others will be empty. Default: `false`.
-  GetOrganizationArgs({this.returnOrganizationOnly});
+  GetOrganizationArgs({
+    this.returnOrganizationOnly,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'returnOrganizationOnly': ?returnOrganizationOnly};
+    return <String, dynamic>{
+      'returnOrganizationOnly': ?returnOrganizationOnly,
+    };
   }
 
   factory GetOrganizationArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationArgs(
-      returnOrganizationOnly: (() {
-        final guardedValue = map['returnOrganizationOnly'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      returnOrganizationOnly: (() { final guardedValue = map['returnOrganizationOnly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

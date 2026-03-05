@@ -9,22 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedPrivateEndpointArgs {
   /// The name of the Kusto cluster.
   final pulumi.Input<String> clusterName;
-
   /// The groupId in which the managed private endpoint is created.
   final pulumi.Input<String> groupId;
-
   /// The name of the managed private endpoint.
   final pulumi.Input<String>? managedPrivateEndpointName;
-
   /// The ARM resource ID of the resource for which the managed private endpoint is created.
   final pulumi.Input<String> privateLinkResourceId;
-
   /// The region of the resource to which the managed private endpoint is created.
   final pulumi.Input<String>? privateLinkResourceRegion;
-
   /// The user request message.
   final pulumi.Input<String>? requestMessage;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -62,27 +56,12 @@ class ManagedPrivateEndpointArgs {
     return ManagedPrivateEndpointArgs(
       clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
       groupId: pulumi.Input.fromValue(map['groupId'] as String),
-      managedPrivateEndpointName: (() {
-        final guardedValue = map['managedPrivateEndpointName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      privateLinkResourceId: pulumi.Input.fromValue(
-        map['privateLinkResourceId'] as String,
-      ),
-      privateLinkResourceRegion: (() {
-        final guardedValue = map['privateLinkResourceRegion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      requestMessage: (() {
-        final guardedValue = map['requestMessage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      managedPrivateEndpointName: (() { final guardedValue = map['managedPrivateEndpointName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateLinkResourceId: pulumi.Input.fromValue(map['privateLinkResourceId'] as String),
+      privateLinkResourceRegion: (() { final guardedValue = map['privateLinkResourceRegion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      requestMessage: (() { final guardedValue = map['requestMessage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

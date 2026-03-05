@@ -16,7 +16,6 @@ class IAMPolicyArgs {
   /// Deleting this removes all policies from the project, locking out users without
   /// organization-level access.
   final pulumi.Input<String> policyData;
-
   /// The project id of the target project. This is not
   /// inferred from the provider.
   final pulumi.Input<String> project;
@@ -24,10 +23,16 @@ class IAMPolicyArgs {
   /// Creates a new [IAMPolicyArgs].
   /// [policyData] The `gcp.organizations.getIAMPolicy` data source that represents
   /// [project] The project id of the target project. This is not
-  IAMPolicyArgs({required this.policyData, required this.project});
+  IAMPolicyArgs({
+    required this.policyData,
+    required this.project,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'policyData': policyData, 'project': project};
+    return <String, dynamic>{
+      'policyData': policyData,
+      'project': project,
+    };
   }
 
   factory IAMPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -37,3 +42,4 @@ class IAMPolicyArgs {
     );
   }
 }
+

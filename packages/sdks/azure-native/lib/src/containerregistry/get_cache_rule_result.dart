@@ -6,32 +6,23 @@ import 'system_data_response.dart';
 class GetCacheRuleResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The creation date of the cache rule.
   final String creationDate;
-
   /// The ARM resource ID of the credential store which is associated with the cache rule.
   final String? credentialSetResourceId;
-
   /// The resource ID.
   final String id;
-
   /// The name of the resource.
   final String name;
-
   /// Provisioning state of the resource.
   final String provisioningState;
-
   /// Source repository pulled from upstream.
   final String? sourceRepository;
-
   /// Metadata pertaining to creation and last modification of the resource.
   final SystemDataResponse systemData;
-
   /// Target repository specified in docker pull command.
   /// Eg: docker pull myregistry.azurecr.io/{targetRepository}:{tag}
   final String? targetRepository;
-
   /// The type of the resource.
   final String type;
 
@@ -78,28 +69,15 @@ class GetCacheRuleResult {
     return GetCacheRuleResult(
       azureApiVersion: map['azureApiVersion'] as String,
       creationDate: map['creationDate'] as String,
-      credentialSetResourceId: (() {
-        final guardedValue = map['credentialSetResourceId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      credentialSetResourceId: (() { final guardedValue = map['credentialSetResourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      sourceRepository: (() {
-        final guardedValue = map['sourceRepository'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      targetRepository: (() {
-        final guardedValue = map['targetRepository'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      sourceRepository: (() { final guardedValue = map['sourceRepository']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      targetRepository: (() { final guardedValue = map['targetRepository']; if (guardedValue == null) return null; return guardedValue as String; })(),
       type: map['type'] as String,
     );
   }
 }
+

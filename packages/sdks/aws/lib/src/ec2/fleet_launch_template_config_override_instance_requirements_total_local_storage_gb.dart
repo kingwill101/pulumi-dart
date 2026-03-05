@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FleetLaunchTemplateConfigOverrideInstanceRequirementsTotalLocalStorageGb {
   /// The maximum amount of total local storage, in GB. To specify no maximum limit, omit this parameter.
   final pulumi.Input<double>? max;
-
   /// The minimum amount of total local storage, in GB. To specify no minimum limit, omit this parameter.
   final pulumi.Input<double>? min;
 
@@ -18,23 +17,17 @@ class FleetLaunchTemplateConfigOverrideInstanceRequirementsTotalLocalStorageGb {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'max': ?max, 'min': ?min};
+    return <String, dynamic>{
+      'max': ?max,
+      'min': ?min,
+    };
   }
 
-  factory FleetLaunchTemplateConfigOverrideInstanceRequirementsTotalLocalStorageGb.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FleetLaunchTemplateConfigOverrideInstanceRequirementsTotalLocalStorageGb.fromMap(Map<String, dynamic> map) {
     return FleetLaunchTemplateConfigOverrideInstanceRequirementsTotalLocalStorageGb(
-      max: (() {
-        final guardedValue = map['max'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      min: (() {
-        final guardedValue = map['min'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      max: (() { final guardedValue = map['max']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      min: (() { final guardedValue = map['min']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

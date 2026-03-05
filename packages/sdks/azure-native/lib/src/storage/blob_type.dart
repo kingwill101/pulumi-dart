@@ -15,3 +15,4 @@ enum BlobType {
     throw ArgumentError('Unknown BlobType value: $value');
   }
 }
+

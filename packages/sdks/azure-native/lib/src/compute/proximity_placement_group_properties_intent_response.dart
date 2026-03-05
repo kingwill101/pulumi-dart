@@ -9,21 +9,20 @@ class ProximityPlacementGroupPropertiesIntentResponse {
 
   /// Creates a new [ProximityPlacementGroupPropertiesIntentResponse].
   /// [vmSizes] Specifies possible sizes of virtual machines that can be created in the proximity placement group.
-  ProximityPlacementGroupPropertiesIntentResponse({this.vmSizes});
+  ProximityPlacementGroupPropertiesIntentResponse({
+    this.vmSizes,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'vmSizes': ?vmSizes};
+    return <String, dynamic>{
+      'vmSizes': ?vmSizes,
+    };
   }
 
-  factory ProximityPlacementGroupPropertiesIntentResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ProximityPlacementGroupPropertiesIntentResponse.fromMap(Map<String, dynamic> map) {
     return ProximityPlacementGroupPropertiesIntentResponse(
-      vmSizes: (() {
-        final guardedValue = map['vmSizes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      vmSizes: (() { final guardedValue = map['vmSizes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

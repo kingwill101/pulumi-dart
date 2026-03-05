@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetOrchestratorInstanceServiceDetailsArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the resource. It must be a minimum of 3 characters, and a maximum of 63.
   final pulumi.Input<String> resourceName;
 
@@ -28,14 +27,11 @@ class GetOrchestratorInstanceServiceDetailsArgs {
     };
   }
 
-  factory GetOrchestratorInstanceServiceDetailsArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetOrchestratorInstanceServiceDetailsArgs.fromMap(Map<String, dynamic> map) {
     return GetOrchestratorInstanceServiceDetailsArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
+

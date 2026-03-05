@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNamespaceIpFilterRuleArgs {
   /// The IP Filter Rule name.
   final pulumi.Input<String> ipFilterRuleName;
-
   /// The Namespace name
   final pulumi.Input<String> namespaceName;
-
   /// Name of the resource group within the azure subscription.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,13 +34,10 @@ class GetNamespaceIpFilterRuleArgs {
 
   factory GetNamespaceIpFilterRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetNamespaceIpFilterRuleArgs(
-      ipFilterRuleName: pulumi.Input.fromValue(
-        map['ipFilterRuleName'] as String,
-      ),
+      ipFilterRuleName: pulumi.Input.fromValue(map['ipFilterRuleName'] as String),
       namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

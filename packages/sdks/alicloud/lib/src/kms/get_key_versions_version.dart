@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetKeyVersionsVersion {
   /// Date and time when the key version was created (UTC time).
   final pulumi.Input<String> createTime;
-
   /// (Removed from v1.124.4) It has been removed and using `create_time` instead.
   final pulumi.Input<String> creationDate;
-
   /// ID of the KMS KeyVersion resource.
   final pulumi.Input<String> id;
-
   /// The id of kms key.
   final pulumi.Input<String> keyId;
-
   /// ID of the key version.
   final pulumi.Input<String> keyVersionId;
 
@@ -52,3 +48,4 @@ class GetKeyVersionsVersion {
     );
   }
 }
+

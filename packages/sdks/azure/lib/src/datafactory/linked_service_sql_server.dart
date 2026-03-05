@@ -499,36 +499,24 @@ import 'linked_service_sql_server_state.dart';
 class LinkedServiceSqlServer extends pulumi.CustomResource {
   /// A map of additional properties to associate with the Data Factory Linked Service SQL Server.
   late final pulumi.Output<Map<String, String>?> additionalProperties;
-
   /// List of tags that can be used for describing the Data Factory Linked Service SQL Server.
   late final pulumi.Output<List<String>?> annotations;
-
   /// The connection string in which to authenticate with the SQL Server. Exactly one of either `connection_string` or `key_vault_connection_string` is required.
   late final pulumi.Output<String?> connectionString;
-
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   late final pulumi.Output<String> dataFactoryId;
-
   /// The description for the Data Factory Linked Service SQL Server.
   late final pulumi.Output<String?> description;
-
   /// The integration runtime reference to associate with the Data Factory Linked Service SQL Server.
   late final pulumi.Output<String?> integrationRuntimeName;
-
   /// A `key_vault_connection_string` block as defined below. Use this argument to store SQL Server connection string in an existing Key Vault. It needs an existing Key Vault Data Factory Linked Service. Exactly one of either `connection_string` or `key_vault_connection_string` is required.
-  late final pulumi.Output<LinkedServiceSqlServerKeyVaultConnectionString?>
-  keyVaultConnectionString;
-
+  late final pulumi.Output<LinkedServiceSqlServerKeyVaultConnectionString?> keyVaultConnectionString;
   /// A `key_vault_password` block as defined below. Use this argument to store SQL Server password in an existing Key Vault. It needs an existing Key Vault Data Factory Linked Service.
-  late final pulumi.Output<LinkedServiceSqlServerKeyVaultPassword?>
-  keyVaultPassword;
-
+  late final pulumi.Output<LinkedServiceSqlServerKeyVaultPassword?> keyVaultPassword;
   /// Specifies the name of the Data Factory Linked Service SQL Server. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   late final pulumi.Output<String> name;
-
   /// A map of parameters to associate with the Data Factory Linked Service SQL Server.
   late final pulumi.Output<Map<String, String>?> parameters;
-
   /// The on-premises Windows authentication user name.
   late final pulumi.Output<String?> userName;
 
@@ -541,40 +529,19 @@ class LinkedServiceSqlServer extends pulumi.CustomResource {
     LinkedServiceSqlServerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:datafactory/linkedServiceSqlServer:LinkedServiceSqlServer',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    additionalProperties = registerOutput<Map<String, String>?>(
-      'additionalProperties',
-    );
+          'azure:datafactory/linkedServiceSqlServer:LinkedServiceSqlServer',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
     annotations = registerOutput<List<String>?>('annotations');
     connectionString = registerOutput<String?>('connectionString');
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
-    keyVaultConnectionString =
-        registerOutput<LinkedServiceSqlServerKeyVaultConnectionString?>(
-          'keyVaultConnectionString',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return LinkedServiceSqlServerKeyVaultConnectionString.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    keyVaultPassword = registerOutput<LinkedServiceSqlServerKeyVaultPassword?>(
-      'keyVaultPassword',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LinkedServiceSqlServerKeyVaultPassword.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    keyVaultConnectionString = registerOutput<LinkedServiceSqlServerKeyVaultConnectionString?>('keyVaultConnectionString', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceSqlServerKeyVaultConnectionString.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    keyVaultPassword = registerOutput<LinkedServiceSqlServerKeyVaultPassword?>('keyVaultPassword', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceSqlServerKeyVaultPassword.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     parameters = registerOutput<Map<String, String>?>('parameters');
     userName = registerOutput<String?>('userName');
@@ -598,40 +565,19 @@ class LinkedServiceSqlServer extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:datafactory/linkedServiceSqlServer:LinkedServiceSqlServer',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    additionalProperties = registerOutput<Map<String, String>?>(
-      'additionalProperties',
-    );
+          'azure:datafactory/linkedServiceSqlServer:LinkedServiceSqlServer',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
     annotations = registerOutput<List<String>?>('annotations');
     connectionString = registerOutput<String?>('connectionString');
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
-    keyVaultConnectionString =
-        registerOutput<LinkedServiceSqlServerKeyVaultConnectionString?>(
-          'keyVaultConnectionString',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return LinkedServiceSqlServerKeyVaultConnectionString.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    keyVaultPassword = registerOutput<LinkedServiceSqlServerKeyVaultPassword?>(
-      'keyVaultPassword',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LinkedServiceSqlServerKeyVaultPassword.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    keyVaultConnectionString = registerOutput<LinkedServiceSqlServerKeyVaultConnectionString?>('keyVaultConnectionString', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceSqlServerKeyVaultConnectionString.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    keyVaultPassword = registerOutput<LinkedServiceSqlServerKeyVaultPassword?>('keyVaultPassword', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceSqlServerKeyVaultPassword.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     parameters = registerOutput<Map<String, String>?>('parameters');
     userName = registerOutput<String?>('userName');

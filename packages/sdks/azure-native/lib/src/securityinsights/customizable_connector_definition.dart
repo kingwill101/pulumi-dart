@@ -526,34 +526,23 @@ import 'system_data_response.dart';
 class CustomizableConnectorDefinition extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The UiConfig for 'Customizable' connector definition kind.
-  late final pulumi.Output<CustomizableConnectionsConfigResponse?>
-  connectionsConfig;
-
+  late final pulumi.Output<CustomizableConnectionsConfigResponse?> connectionsConfig;
   /// The UiConfig for 'Customizable' connector definition kind.
-  late final pulumi.Output<CustomizableConnectorUiConfigResponse>
-  connectorUiConfig;
-
+  late final pulumi.Output<CustomizableConnectorUiConfigResponse> connectorUiConfig;
   /// Gets or sets the connector definition created date in UTC format.
   late final pulumi.Output<String?> createdTimeUtc;
-
   /// Etag of the azure resource
   late final pulumi.Output<String?> etag;
-
   /// The kind of the data connector definitions
   /// Expected value is 'Customizable'.
   late final pulumi.Output<String> kind;
-
   /// Gets or sets the connector definition last modified date in UTC format.
   late final pulumi.Output<String?> lastModifiedUtc;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -566,47 +555,20 @@ class CustomizableConnectorDefinition extends pulumi.CustomResource {
     CustomizableConnectorDefinitionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:securityinsights:CustomizableConnectorDefinition',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:securityinsights:CustomizableConnectorDefinition',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    connectionsConfig = registerOutput<CustomizableConnectionsConfigResponse?>(
-      'connectionsConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CustomizableConnectionsConfigResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    connectorUiConfig = registerOutput<CustomizableConnectorUiConfigResponse>(
-      'connectorUiConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CustomizableConnectorUiConfigResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    connectionsConfig = registerOutput<CustomizableConnectionsConfigResponse?>('connectionsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomizableConnectionsConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    connectorUiConfig = registerOutput<CustomizableConnectorUiConfigResponse>('connectorUiConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomizableConnectorUiConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdTimeUtc = registerOutput<String?>('createdTimeUtc');
     etag = registerOutput<String?>('etag');
     kind = registerOutput<String>('kind');
     lastModifiedUtc = registerOutput<String?>('lastModifiedUtc');
     this.name = registerOutput<String>('name');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

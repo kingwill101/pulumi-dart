@@ -146,13 +146,10 @@ import 'transparent_data_encryption_args.dart';
 class TransparentDataEncryption extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// Specifies the state of the transparent data encryption.
   late final pulumi.Output<String> state;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -165,11 +162,11 @@ class TransparentDataEncryption extends pulumi.CustomResource {
     TransparentDataEncryptionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:sql:TransparentDataEncryption',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:sql:TransparentDataEncryption',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
     state = registerOutput<String>('state');

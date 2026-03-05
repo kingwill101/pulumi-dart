@@ -365,21 +365,16 @@ import 'waiting_room_rule_state.dart';
 class WaitingRoomRule extends pulumi.CustomResource {
   /// The content of the rule, the implemented policy or conditional expression.
   late final pulumi.Output<String> rule;
-
   /// Rule name, optional, used to query by waiting room bypass rule name.
   late final pulumi.Output<String> ruleName;
-
   /// The site ID, which can be obtained by calling the ListSites API.
   late final pulumi.Output<String> siteId;
-
   /// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
   /// - on: open.
   /// - off: close.
   late final pulumi.Output<String> status;
-
   /// Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
   late final pulumi.Output<String> waitingRoomId;
-
   /// The rule ID, which can be used to query a specific rule.
   late final pulumi.Output<int> waitingRoomRuleId;
 
@@ -392,11 +387,11 @@ class WaitingRoomRule extends pulumi.CustomResource {
     WaitingRoomRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/waitingRoomRule:WaitingRoomRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:esa/waitingRoomRule:WaitingRoomRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     rule = registerOutput<String>('rule');
     ruleName = registerOutput<String>('ruleName');
     siteId = registerOutput<String>('siteId');
@@ -423,11 +418,11 @@ class WaitingRoomRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/waitingRoomRule:WaitingRoomRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:esa/waitingRoomRule:WaitingRoomRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     rule = registerOutput<String>('rule');
     ruleName = registerOutput<String>('ruleName');
     siteId = registerOutput<String>('siteId');

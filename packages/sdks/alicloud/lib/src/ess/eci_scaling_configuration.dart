@@ -474,20 +474,15 @@ import 'eci_scaling_configuration_state.dart';
 class EciScalingConfiguration extends pulumi.CustomResource {
   /// Information about the Container Registry Enterprise Edition instance. See `acr_registry_infos` below for details.
   late final pulumi.Output<List<Map<String, dynamic>>?> acrRegistryInfos;
-
   /// Whether active current eci scaling configuration in the specified scaling group. Note that only
   /// one configuration can be active. Default to `false`.
   late final pulumi.Output<bool?> active;
-
   /// The duration in seconds relative to the startTime that the job may be active before the system tries to terminate it.
   late final pulumi.Output<int?> activeDeadlineSeconds;
-
   /// Whether create eip automatically.
   late final pulumi.Output<bool?> autoCreateEip;
-
   /// Whether to automatically match the image cache.
   late final pulumi.Output<bool?> autoMatchImageCache;
-
   /// The name series of the elastic container instances created from the scaling configuration. If you want to use an ordered instance name, specify the value for this parameter in the following format: name_prefix(AUTO_INCREMENT)[begin_number,bits]name_suffix.
   /// name_prefix: the prefix of the hostname.
   /// (AUTO_INCREMENT): the sort method. This is a static field.
@@ -495,130 +490,92 @@ class EciScalingConfiguration extends pulumi.CustomResource {
   /// bits: the number of digits in sequential values. Valid values: 1 to 6. If the number of digits in the specified begin_number value is greater than the value of the bits field, the bits field is automatically set to 6.
   /// name_suffix: the suffix of the hostname. This field is optional.
   late final pulumi.Output<String?> containerGroupName;
-
   /// The list of containers. See `containers` below for details.
   late final pulumi.Output<List<Map<String, dynamic>>?> containers;
-
   /// Indicates whether the Cost Optimization feature is enabled. Valid values: true,false.
   late final pulumi.Output<bool?> costOptimization;
-
   /// The amount of CPU resources allocated to the container group.
   late final pulumi.Output<double?> cpu;
-
   /// The number of physical CPU cores. You can specify this parameter for only specific instance types.
   late final pulumi.Output<int?> cpuOptionsCore;
-
   /// The number of threads per core. You can specify this parameter for only specific instance types. If you set this parameter to 1, Hyper-Threading is disabled.
   late final pulumi.Output<int?> cpuOptionsThreadsPerCore;
-
   /// The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to
   /// 256 characters in length and cannot start with http:// or https://.
   late final pulumi.Output<String?> description;
-
   /// The options. Each option is a name-value pair. The value in the name-value pair is optional.   See `dns_config_options` below for
   /// details.
   late final pulumi.Output<List<Map<String, dynamic>>?> dnsConfigOptions;
-
   /// dns policy of contain group.
   late final pulumi.Output<String?> dnsPolicy;
-
   /// egress bandwidth.
   late final pulumi.Output<int?> egressBandwidth;
-
   /// Eip bandwidth.
   late final pulumi.Output<int?> eipBandwidth;
-
   /// Enable sls log service.
   late final pulumi.Output<bool?> enableSls;
-
   /// The size of ephemeral storage.
   late final pulumi.Output<int?> ephemeralStorage;
-
   /// The eci scaling configuration will be deleted forcibly with deleting its scaling group.
   /// Default to false.
   late final pulumi.Output<bool?> forceDelete;
-
   /// HostAliases. See `host_aliases` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> hostAliases;
-
   /// Hostname of an ECI instance.
   late final pulumi.Output<String?> hostName;
-
   /// The image registry credential.   See `image_registry_credentials` below for
   /// details.
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  imageRegistryCredentials;
-
+  late final pulumi.Output<List<Map<String, dynamic>>?> imageRegistryCredentials;
   /// The ID of image cache.
   late final pulumi.Output<String?> imageSnapshotId;
-
   /// Ingress bandwidth.
   late final pulumi.Output<int?> ingressBandwidth;
-
   /// The list of initContainers. See `init_containers` below for details.
   late final pulumi.Output<List<Map<String, dynamic>>?> initContainers;
-
   /// The level of the instance family, which is used to filter instance types that meet the specified criteria. This parameter takes effect only if you set CostOptimization to true. Valid values: EntryLevel, EnterpriseLevel, CreditEntryLevel.
   late final pulumi.Output<String?> instanceFamilyLevel;
-
   /// The specified ECS instance types. You can specify up to five ECS instance types.
   late final pulumi.Output<List<String>?> instanceTypes;
-
   /// Number of IPv6 addresses.
   late final pulumi.Output<int?> ipv6AddressCount;
-
   /// The weight of an ECI instance attached to the Server Group.
   late final pulumi.Output<int?> loadBalancerWeight;
-
   /// The amount of memory resources allocated to the container group.
   late final pulumi.Output<double?> memory;
-
   /// Specifies whether to overwrite the data. Valid values: true, false.
   late final pulumi.Output<bool?> override;
-
   /// The RAM role that the container group assumes. ECI and ECS share the same RAM role.
   late final pulumi.Output<String?> ramRoleName;
-
   /// ID of resource group.
   late final pulumi.Output<String?> resourceGroupId;
-
   /// The restart policy of the container group. Default to `Always`.
   late final pulumi.Output<String?> restartPolicy;
-
   /// Name shown for the scheduled task. which must contain 2-64 characters (
   /// English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number,
   /// underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is
   /// EciScalingConfigurationId.
   late final pulumi.Output<String> scalingConfigurationName;
-
   /// ID of the scaling group of a eci scaling configuration.
   late final pulumi.Output<String> scalingGroupId;
-
   /// The system information about the security context in which the elastic container instance is run.   See `security_context_sysctls` below for
   /// details.
   late final pulumi.Output<List<Map<String, dynamic>>?> securityContextSysctls;
-
   /// ID of the security group used to create new instance. It is conflict
   /// with `security_group_ids`.
   late final pulumi.Output<String?> securityGroupId;
-
   /// The maximum price hourly for spot instance.
   late final pulumi.Output<double?> spotPriceLimit;
-
   /// The spot strategy for a Pay-As-You-Go instance. Valid values: `NoSpot`, `SpotAsPriceGo`
   /// , `SpotWithPriceLimit`.
   late final pulumi.Output<String?> spotStrategy;
-
   /// A mapping of tags to assign to the resource. It will be applied for ECI instances finally.
   /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot
   /// be a null string.
   /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be
   /// a null string.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The program's buffering time before closing.
   late final pulumi.Output<int?> terminationGracePeriodSeconds;
-
   /// The list of volumes. See `volumes` below for details.
   late final pulumi.Output<List<Map<String, dynamic>>?> volumes;
 
@@ -631,14 +588,12 @@ class EciScalingConfiguration extends pulumi.CustomResource {
     EciScalingConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ess/eciScalingConfiguration:EciScalingConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    acrRegistryInfos = registerOutput<List<Map<String, dynamic>>?>(
-      'acrRegistryInfos',
-    );
+          'alicloud:ess/eciScalingConfiguration:EciScalingConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    acrRegistryInfos = registerOutput<List<Map<String, dynamic>>?>('acrRegistryInfos');
     active = registerOutput<bool?>('active');
     activeDeadlineSeconds = registerOutput<int?>('activeDeadlineSeconds');
     autoCreateEip = registerOutput<bool?>('autoCreateEip');
@@ -650,9 +605,7 @@ class EciScalingConfiguration extends pulumi.CustomResource {
     cpuOptionsCore = registerOutput<int?>('cpuOptionsCore');
     cpuOptionsThreadsPerCore = registerOutput<int?>('cpuOptionsThreadsPerCore');
     description = registerOutput<String?>('description');
-    dnsConfigOptions = registerOutput<List<Map<String, dynamic>>?>(
-      'dnsConfigOptions',
-    );
+    dnsConfigOptions = registerOutput<List<Map<String, dynamic>>?>('dnsConfigOptions');
     dnsPolicy = registerOutput<String?>('dnsPolicy');
     egressBandwidth = registerOutput<int?>('egressBandwidth');
     eipBandwidth = registerOutput<int?>('eipBandwidth');
@@ -661,14 +614,10 @@ class EciScalingConfiguration extends pulumi.CustomResource {
     forceDelete = registerOutput<bool?>('forceDelete');
     hostAliases = registerOutput<List<Map<String, dynamic>>?>('hostAliases');
     hostName = registerOutput<String?>('hostName');
-    imageRegistryCredentials = registerOutput<List<Map<String, dynamic>>?>(
-      'imageRegistryCredentials',
-    );
+    imageRegistryCredentials = registerOutput<List<Map<String, dynamic>>?>('imageRegistryCredentials');
     imageSnapshotId = registerOutput<String?>('imageSnapshotId');
     ingressBandwidth = registerOutput<int?>('ingressBandwidth');
-    initContainers = registerOutput<List<Map<String, dynamic>>?>(
-      'initContainers',
-    );
+    initContainers = registerOutput<List<Map<String, dynamic>>?>('initContainers');
     instanceFamilyLevel = registerOutput<String?>('instanceFamilyLevel');
     instanceTypes = registerOutput<List<String>?>('instanceTypes');
     ipv6AddressCount = registerOutput<int?>('ipv6AddressCount');
@@ -678,20 +627,14 @@ class EciScalingConfiguration extends pulumi.CustomResource {
     ramRoleName = registerOutput<String?>('ramRoleName');
     resourceGroupId = registerOutput<String?>('resourceGroupId');
     restartPolicy = registerOutput<String?>('restartPolicy');
-    scalingConfigurationName = registerOutput<String>(
-      'scalingConfigurationName',
-    );
+    scalingConfigurationName = registerOutput<String>('scalingConfigurationName');
     scalingGroupId = registerOutput<String>('scalingGroupId');
-    securityContextSysctls = registerOutput<List<Map<String, dynamic>>?>(
-      'securityContextSysctls',
-    );
+    securityContextSysctls = registerOutput<List<Map<String, dynamic>>?>('securityContextSysctls');
     securityGroupId = registerOutput<String?>('securityGroupId');
     spotPriceLimit = registerOutput<double?>('spotPriceLimit');
     spotStrategy = registerOutput<String?>('spotStrategy');
     tags = registerOutput<Map<String, String>?>('tags');
-    terminationGracePeriodSeconds = registerOutput<int?>(
-      'terminationGracePeriodSeconds',
-    );
+    terminationGracePeriodSeconds = registerOutput<int?>('terminationGracePeriodSeconds');
     volumes = registerOutput<List<Map<String, dynamic>>?>('volumes');
   }
 
@@ -713,14 +656,12 @@ class EciScalingConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ess/eciScalingConfiguration:EciScalingConfiguration',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    acrRegistryInfos = registerOutput<List<Map<String, dynamic>>?>(
-      'acrRegistryInfos',
-    );
+          'alicloud:ess/eciScalingConfiguration:EciScalingConfiguration',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    acrRegistryInfos = registerOutput<List<Map<String, dynamic>>?>('acrRegistryInfos');
     active = registerOutput<bool?>('active');
     activeDeadlineSeconds = registerOutput<int?>('activeDeadlineSeconds');
     autoCreateEip = registerOutput<bool?>('autoCreateEip');
@@ -732,9 +673,7 @@ class EciScalingConfiguration extends pulumi.CustomResource {
     cpuOptionsCore = registerOutput<int?>('cpuOptionsCore');
     cpuOptionsThreadsPerCore = registerOutput<int?>('cpuOptionsThreadsPerCore');
     description = registerOutput<String?>('description');
-    dnsConfigOptions = registerOutput<List<Map<String, dynamic>>?>(
-      'dnsConfigOptions',
-    );
+    dnsConfigOptions = registerOutput<List<Map<String, dynamic>>?>('dnsConfigOptions');
     dnsPolicy = registerOutput<String?>('dnsPolicy');
     egressBandwidth = registerOutput<int?>('egressBandwidth');
     eipBandwidth = registerOutput<int?>('eipBandwidth');
@@ -743,14 +682,10 @@ class EciScalingConfiguration extends pulumi.CustomResource {
     forceDelete = registerOutput<bool?>('forceDelete');
     hostAliases = registerOutput<List<Map<String, dynamic>>?>('hostAliases');
     hostName = registerOutput<String?>('hostName');
-    imageRegistryCredentials = registerOutput<List<Map<String, dynamic>>?>(
-      'imageRegistryCredentials',
-    );
+    imageRegistryCredentials = registerOutput<List<Map<String, dynamic>>?>('imageRegistryCredentials');
     imageSnapshotId = registerOutput<String?>('imageSnapshotId');
     ingressBandwidth = registerOutput<int?>('ingressBandwidth');
-    initContainers = registerOutput<List<Map<String, dynamic>>?>(
-      'initContainers',
-    );
+    initContainers = registerOutput<List<Map<String, dynamic>>?>('initContainers');
     instanceFamilyLevel = registerOutput<String?>('instanceFamilyLevel');
     instanceTypes = registerOutput<List<String>?>('instanceTypes');
     ipv6AddressCount = registerOutput<int?>('ipv6AddressCount');
@@ -760,20 +695,14 @@ class EciScalingConfiguration extends pulumi.CustomResource {
     ramRoleName = registerOutput<String?>('ramRoleName');
     resourceGroupId = registerOutput<String?>('resourceGroupId');
     restartPolicy = registerOutput<String?>('restartPolicy');
-    scalingConfigurationName = registerOutput<String>(
-      'scalingConfigurationName',
-    );
+    scalingConfigurationName = registerOutput<String>('scalingConfigurationName');
     scalingGroupId = registerOutput<String>('scalingGroupId');
-    securityContextSysctls = registerOutput<List<Map<String, dynamic>>?>(
-      'securityContextSysctls',
-    );
+    securityContextSysctls = registerOutput<List<Map<String, dynamic>>?>('securityContextSysctls');
     securityGroupId = registerOutput<String?>('securityGroupId');
     spotPriceLimit = registerOutput<double?>('spotPriceLimit');
     spotStrategy = registerOutput<String?>('spotStrategy');
     tags = registerOutput<Map<String, String>?>('tags');
-    terminationGracePeriodSeconds = registerOutput<int?>(
-      'terminationGracePeriodSeconds',
-    );
+    terminationGracePeriodSeconds = registerOutput<int?>('terminationGracePeriodSeconds');
     volumes = registerOutput<List<Map<String, dynamic>>?>('volumes');
   }
 }

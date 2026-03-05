@@ -15,3 +15,4 @@ enum StationConnectionMode {
     throw ArgumentError('Unknown StationConnectionMode value: $value');
   }
 }
+

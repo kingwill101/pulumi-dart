@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudApigeeV1CustomReportMetricResponse {
   /// aggregate function
   final pulumi.Input<String> function;
-
   /// name of the metric
   final pulumi.Input<String> name;
 
@@ -19,15 +18,17 @@ class GoogleCloudApigeeV1CustomReportMetricResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'function': function, 'name': name};
+    return <String, dynamic>{
+      'function': function,
+      'name': name,
+    };
   }
 
-  factory GoogleCloudApigeeV1CustomReportMetricResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudApigeeV1CustomReportMetricResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1CustomReportMetricResponse(
       function: pulumi.Input.fromValue(map['function'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

@@ -7,12 +7,9 @@ import 'google_account_response_websecurityscanner_v1alpha.dart';
 /// Scan authentication configuration.
 class AuthenticationResponseWebsecurityscannerV1alpha {
   /// Authentication using a custom account.
-  final pulumi.Input<CustomAccountResponseWebsecurityscannerV1alpha>
-  customAccount;
-
+  final pulumi.Input<CustomAccountResponseWebsecurityscannerV1alpha> customAccount;
   /// Authentication using a Google account.
-  final pulumi.Input<GoogleAccountResponseWebsecurityscannerV1alpha>
-  googleAccount;
+  final pulumi.Input<GoogleAccountResponseWebsecurityscannerV1alpha> googleAccount;
 
   /// Creates a new [AuthenticationResponseWebsecurityscannerV1alpha].
   /// [customAccount] Authentication using a custom account.
@@ -24,33 +21,16 @@ class AuthenticationResponseWebsecurityscannerV1alpha {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customAccount':
-          pulumi.Input.mapInputValue<
-            CustomAccountResponseWebsecurityscannerV1alpha,
-            Map<String, dynamic>
-          >(customAccount, (value) => value.toMap()),
-      'googleAccount':
-          pulumi.Input.mapInputValue<
-            GoogleAccountResponseWebsecurityscannerV1alpha,
-            Map<String, dynamic>
-          >(googleAccount, (value) => value.toMap()),
+      'customAccount': pulumi.Input.mapInputValue<CustomAccountResponseWebsecurityscannerV1alpha, Map<String, dynamic>>(customAccount, (value) => value.toMap()),
+      'googleAccount': pulumi.Input.mapInputValue<GoogleAccountResponseWebsecurityscannerV1alpha, Map<String, dynamic>>(googleAccount, (value) => value.toMap()),
     };
   }
 
-  factory AuthenticationResponseWebsecurityscannerV1alpha.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AuthenticationResponseWebsecurityscannerV1alpha.fromMap(Map<String, dynamic> map) {
     return AuthenticationResponseWebsecurityscannerV1alpha(
-      customAccount: pulumi.Input.fromValue(
-        CustomAccountResponseWebsecurityscannerV1alpha.fromMap(
-          (map['customAccount']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      googleAccount: pulumi.Input.fromValue(
-        GoogleAccountResponseWebsecurityscannerV1alpha.fromMap(
-          (map['googleAccount']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      customAccount: pulumi.Input.fromValue(CustomAccountResponseWebsecurityscannerV1alpha.fromMap((map['customAccount']! as Map).cast<String, dynamic>())),
+      googleAccount: pulumi.Input.fromValue(GoogleAccountResponseWebsecurityscannerV1alpha.fromMap((map['googleAccount']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

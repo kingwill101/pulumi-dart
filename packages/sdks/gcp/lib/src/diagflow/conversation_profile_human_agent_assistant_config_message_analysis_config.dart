@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfig {
   /// Enable entity extraction in conversation messages on agent assist stage.
   final pulumi.Input<bool>? enableEntityExtraction;
-
   /// Enable sentiment analysis in conversation messages on agent assist stage. Sentiment analysis inspects user input and identifies the prevailing subjective opinion, especially to determine a user's attitude as positive, negative, or neutral.
   final pulumi.Input<bool>? enableSentimentAnalysis;
 
@@ -24,20 +23,11 @@ class ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfig {
     };
   }
 
-  factory ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfig.fromMap(Map<String, dynamic> map) {
     return ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfig(
-      enableEntityExtraction: (() {
-        final guardedValue = map['enableEntityExtraction'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      enableSentimentAnalysis: (() {
-        final guardedValue = map['enableSentimentAnalysis'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enableEntityExtraction: (() { final guardedValue = map['enableEntityExtraction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enableSentimentAnalysis: (() { final guardedValue = map['enableSentimentAnalysis']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

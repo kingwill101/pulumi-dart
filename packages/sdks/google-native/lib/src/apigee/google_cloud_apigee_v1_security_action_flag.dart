@@ -6,46 +6,24 @@ import 'google_cloud_apigee_v1_security_action_http_header.dart';
 /// The message that should be set in the case of a Flag action.
 class GoogleCloudApigeeV1SecurityActionFlag {
   /// Optional. A list of HTTP headers to be sent to the target in case of a FLAG SecurityAction. Limit 5 headers per SecurityAction. At least one is mandatory.
-  final pulumi.Input<List<GoogleCloudApigeeV1SecurityActionHttpHeader>>?
-  headers;
+  final pulumi.Input<List<GoogleCloudApigeeV1SecurityActionHttpHeader>>? headers;
 
   /// Creates a new [GoogleCloudApigeeV1SecurityActionFlag].
   /// [headers] Optional. A list of HTTP headers to be sent to the target in case of a FLAG SecurityAction. Limit 5 headers per SecurityAction. At least one is mandatory.
-  GoogleCloudApigeeV1SecurityActionFlag({this.headers});
+  GoogleCloudApigeeV1SecurityActionFlag({
+    this.headers,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'headers':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GoogleCloudApigeeV1SecurityActionHttpHeader>,
-            List<Map<String, dynamic>>
-          >(
-            headers,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GoogleCloudApigeeV1SecurityActionHttpHeader,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'headers': ?pulumi.Input.mapOptionalInputValue<List<GoogleCloudApigeeV1SecurityActionHttpHeader>, List<Map<String, dynamic>>>(headers, (value) => pulumi.Input.encodeList<GoogleCloudApigeeV1SecurityActionHttpHeader, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory GoogleCloudApigeeV1SecurityActionFlag.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudApigeeV1SecurityActionFlag.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1SecurityActionFlag(
-      headers: (() {
-        final guardedValue = map['headers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GoogleCloudApigeeV1SecurityActionHttpHeader>(
-            guardedValue,
-            (value) => GoogleCloudApigeeV1SecurityActionHttpHeader.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      headers: (() { final guardedValue = map['headers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudApigeeV1SecurityActionHttpHeader>(guardedValue, (value) => GoogleCloudApigeeV1SecurityActionHttpHeader.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

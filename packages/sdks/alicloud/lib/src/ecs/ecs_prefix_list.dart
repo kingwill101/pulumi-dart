@@ -161,16 +161,12 @@ import 'ecs_prefix_list_state.dart';
 class EcsPrefixList extends pulumi.CustomResource {
   /// The IP address family. Valid values: `IPv4`,`IPv6`.
   late final pulumi.Output<String> addressFamily;
-
   /// The description of the prefix list. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
   late final pulumi.Output<String?> description;
-
   /// The Entry. The details see Block `entry`.
   late final pulumi.Output<List<Map<String, dynamic>>> entries;
-
   /// The maximum number of entries that the prefix list can contain.  Valid values: 1 to 200.
   late final pulumi.Output<int> maxEntries;
-
   /// The name of the prefix. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://`, `https://`, `com.aliyun`, or `com.alibabacloud`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
   late final pulumi.Output<String> prefixListName;
 
@@ -183,11 +179,11 @@ class EcsPrefixList extends pulumi.CustomResource {
     EcsPrefixListArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ecs/ecsPrefixList:EcsPrefixList',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ecs/ecsPrefixList:EcsPrefixList',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     addressFamily = registerOutput<String>('addressFamily');
     description = registerOutput<String?>('description');
     entries = registerOutput<List<Map<String, dynamic>>>('entries');
@@ -213,11 +209,11 @@ class EcsPrefixList extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ecs/ecsPrefixList:EcsPrefixList',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ecs/ecsPrefixList:EcsPrefixList',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     addressFamily = registerOutput<String>('addressFamily');
     description = registerOutput<String?>('description');
     entries = registerOutput<List<Map<String, dynamic>>>('entries');

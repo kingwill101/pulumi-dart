@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CdnCertificateSourceParametersResponse {
   /// Type of certificate used
   final pulumi.Input<String> certificateType;
-
   /// Expected value is 'CdnCertificateSourceParameters'.
   final pulumi.Input<String> typeName;
 
@@ -25,12 +24,11 @@ class CdnCertificateSourceParametersResponse {
     };
   }
 
-  factory CdnCertificateSourceParametersResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CdnCertificateSourceParametersResponse.fromMap(Map<String, dynamic> map) {
     return CdnCertificateSourceParametersResponse(
       certificateType: pulumi.Input.fromValue(map['certificateType'] as String),
       typeName: pulumi.Input.fromValue(map['typeName'] as String),
     );
   }
 }
+

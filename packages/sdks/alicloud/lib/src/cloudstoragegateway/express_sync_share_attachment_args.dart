@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExpressSyncShareAttachmentArgs {
   /// The ID of the ExpressSync.
   final pulumi.Input<String> expressSyncId;
-
   /// The ID of the Gateway.
   final pulumi.Input<String> gatewayId;
-
   /// The name of the GatewayFileShare. **NOTE:** When GatewayFileShare is associated with a speed sync group, its reverse synchronization function will be turned off by default.
   final pulumi.Input<String> shareName;
 
@@ -42,3 +40,4 @@ class ExpressSyncShareAttachmentArgs {
     );
   }
 }
+

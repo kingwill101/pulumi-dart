@@ -33,11 +33,8 @@ class GetAppGatewayBeyondcorpV1alphaArgs {
     return GetAppGatewayBeyondcorpV1alphaArgs(
       appGatewayId: pulumi.Input.fromValue(map['appGatewayId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

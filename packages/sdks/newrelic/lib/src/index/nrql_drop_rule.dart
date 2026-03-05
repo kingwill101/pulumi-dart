@@ -230,19 +230,14 @@ import 'nrql_drop_rule_state.dart';
 class NrqlDropRule extends pulumi.CustomResource {
   /// Account where the drop rule will be put. Defaults to the account associated with the API key used.
   late final pulumi.Output<String> accountId;
-
   /// An action type specifying how to apply the NRQL string (either `drop_data`, `drop_attributes`, or ` drop_attributes_from_metric_aggregates`).
   late final pulumi.Output<String> action;
-
   /// The description of the drop rule.
   late final pulumi.Output<String?> description;
-
   /// A NRQL string that specifies what data types to drop.
   late final pulumi.Output<String> nrql;
-
   /// The ID (GUID) of the corresponding Pipeline Cloud Rule, (migrated upstream by New Relic, in light of the upcoming EOL, as stated in the Deprecation Warning above). This can be used to import the corresponding Pipeline Cloud Rule as a [`newrelic.PipelineCloudRule`](https://www.terraform.io/providers/newrelic/newrelic/latest/docs/resources/pipeline_cloud_rule) resource, as explained in our Drop Rules EOL Migration Guide.
   late final pulumi.Output<String> pipelineCloudRuleEntityId;
-
   /// The id, uniquely identifying the rule.
   late final pulumi.Output<String> ruleId;
 
@@ -255,18 +250,16 @@ class NrqlDropRule extends pulumi.CustomResource {
     NrqlDropRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:index/nrqlDropRule:NrqlDropRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:index/nrqlDropRule:NrqlDropRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     action = registerOutput<String>('action');
     description = registerOutput<String?>('description');
     nrql = registerOutput<String>('nrql');
-    pipelineCloudRuleEntityId = registerOutput<String>(
-      'pipelineCloudRuleEntityId',
-    );
+    pipelineCloudRuleEntityId = registerOutput<String>('pipelineCloudRuleEntityId');
     ruleId = registerOutput<String>('ruleId');
   }
 
@@ -288,18 +281,16 @@ class NrqlDropRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:index/nrqlDropRule:NrqlDropRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:index/nrqlDropRule:NrqlDropRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     action = registerOutput<String>('action');
     description = registerOutput<String?>('description');
     nrql = registerOutput<String>('nrql');
-    pipelineCloudRuleEntityId = registerOutput<String>(
-      'pipelineCloudRuleEntityId',
-    );
+    pipelineCloudRuleEntityId = registerOutput<String>('pipelineCloudRuleEntityId');
     ruleId = registerOutput<String>('ruleId');
   }
 }

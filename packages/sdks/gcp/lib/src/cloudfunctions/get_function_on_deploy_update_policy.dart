@@ -8,10 +8,14 @@ class GetFunctionOnDeployUpdatePolicy {
 
   /// Creates a new [GetFunctionOnDeployUpdatePolicy].
   /// [runtimeVersion] The runtime version which was used during latest function deployment.
-  GetFunctionOnDeployUpdatePolicy({required this.runtimeVersion});
+  GetFunctionOnDeployUpdatePolicy({
+    required this.runtimeVersion,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'runtimeVersion': runtimeVersion};
+    return <String, dynamic>{
+      'runtimeVersion': runtimeVersion,
+    };
   }
 
   factory GetFunctionOnDeployUpdatePolicy.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class GetFunctionOnDeployUpdatePolicy {
     );
   }
 }
+

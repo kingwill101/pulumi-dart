@@ -8,45 +8,32 @@ import 'provisioning_config_args.dart';
 class ProvisioningConfig extends pulumi.CustomResource {
   /// URI to Cloud Console UI view of this provisioning config.
   late final pulumi.Output<String> cloudConsoleUri;
-
   /// Optional. The user-defined identifier of the provisioning config.
   late final pulumi.Output<String> customId;
-
   /// Optional. Email provided to send a confirmation with provisioning config to.
   late final pulumi.Output<String> email;
-
   /// A service account to enable customers to access instance credentials upon handover.
   late final pulumi.Output<String> handoverServiceAccount;
-
   /// Instances to be created.
   late final pulumi.Output<List<Map<String, dynamic>>> instances;
   late final pulumi.Output<String> location;
-
   /// The system-generated name of the provisioning config. This follows the UUID format.
   late final pulumi.Output<String> name;
-
   /// Networks to be created.
   late final pulumi.Output<List<Map<String, dynamic>>> networks;
-
   /// Optional. Pod name. Pod is an independent part of infrastructure. Instance can be connected to the assets (networks, volumes, nfsshares) allocated in the same pod only.
   late final pulumi.Output<String> pod;
   late final pulumi.Output<String> project;
-
   /// State of ProvisioningConfig.
   late final pulumi.Output<String> state;
-
   /// Optional status messages associated with the FAILED state.
   late final pulumi.Output<String> statusMessage;
-
   /// A generated ticket id to track provisioning request.
   late final pulumi.Output<String> ticketId;
-
   /// Last update timestamp.
   late final pulumi.Output<String> updateTime;
-
   /// Volumes to be created.
   late final pulumi.Output<List<Map<String, dynamic>>> volumes;
-
   /// If true, VPC SC is enabled for the cluster.
   late final pulumi.Output<bool> vpcScEnabled;
 
@@ -59,11 +46,11 @@ class ProvisioningConfig extends pulumi.CustomResource {
     ProvisioningConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'google-native:baremetalsolution/v2:ProvisioningConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'google-native:baremetalsolution/v2:ProvisioningConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cloudConsoleUri = registerOutput<String>('cloudConsoleUri');
     customId = registerOutput<String>('customId');
     email = registerOutput<String>('email');

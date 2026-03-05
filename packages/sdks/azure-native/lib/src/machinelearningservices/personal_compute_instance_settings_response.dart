@@ -10,31 +10,20 @@ class PersonalComputeInstanceSettingsResponse {
 
   /// Creates a new [PersonalComputeInstanceSettingsResponse].
   /// [assignedUser] A user explicitly assigned to a personal compute instance.
-  PersonalComputeInstanceSettingsResponse({this.assignedUser});
+  PersonalComputeInstanceSettingsResponse({
+    this.assignedUser,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'assignedUser':
-          ?pulumi.Input.mapOptionalInputValue<
-            AssignedUserResponse,
-            Map<String, dynamic>
-          >(assignedUser, (value) => value.toMap()),
+      'assignedUser': ?pulumi.Input.mapOptionalInputValue<AssignedUserResponse, Map<String, dynamic>>(assignedUser, (value) => value.toMap()),
     };
   }
 
-  factory PersonalComputeInstanceSettingsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PersonalComputeInstanceSettingsResponse.fromMap(Map<String, dynamic> map) {
     return PersonalComputeInstanceSettingsResponse(
-      assignedUser: (() {
-        final guardedValue = map['assignedUser'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AssignedUserResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      assignedUser: (() { final guardedValue = map['assignedUser']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AssignedUserResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

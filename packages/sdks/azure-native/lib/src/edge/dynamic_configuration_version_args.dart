@@ -10,16 +10,12 @@ import 'dynamic_configuration_version_properties.dart';
 class DynamicConfigurationVersionArgs {
   /// Name of the Configuration
   final pulumi.Input<String> configurationName;
-
   /// Name of the dynamic configuration
   final pulumi.Input<String> dynamicConfigurationName;
-
   /// The name of the DynamicConfigurationVersion
   final pulumi.Input<String>? dynamicConfigurationVersionName;
-
   /// The resource-specific properties for this resource.
   final pulumi.Input<DynamicConfigurationVersionProperties>? properties;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -42,40 +38,19 @@ class DynamicConfigurationVersionArgs {
       'configurationName': configurationName,
       'dynamicConfigurationName': dynamicConfigurationName,
       'dynamicConfigurationVersionName': ?dynamicConfigurationVersionName,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            DynamicConfigurationVersionProperties,
-            Map<String, dynamic>
-          >(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<DynamicConfigurationVersionProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
     };
   }
 
   factory DynamicConfigurationVersionArgs.fromMap(Map<String, dynamic> map) {
     return DynamicConfigurationVersionArgs(
-      configurationName: pulumi.Input.fromValue(
-        map['configurationName'] as String,
-      ),
-      dynamicConfigurationName: pulumi.Input.fromValue(
-        map['dynamicConfigurationName'] as String,
-      ),
-      dynamicConfigurationVersionName: (() {
-        final guardedValue = map['dynamicConfigurationVersionName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DynamicConfigurationVersionProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      configurationName: pulumi.Input.fromValue(map['configurationName'] as String),
+      dynamicConfigurationName: pulumi.Input.fromValue(map['dynamicConfigurationName'] as String),
+      dynamicConfigurationVersionName: (() { final guardedValue = map['dynamicConfigurationVersionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DynamicConfigurationVersionProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

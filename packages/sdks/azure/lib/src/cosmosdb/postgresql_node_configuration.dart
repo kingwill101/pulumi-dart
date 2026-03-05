@@ -232,10 +232,8 @@ import 'postgresql_node_configuration_state.dart';
 class PostgresqlNodeConfiguration extends pulumi.CustomResource {
   /// The resource ID of the Azure Cosmos DB for PostgreSQL Cluster where we want to change configuration. Changing this forces a new resource to be created.
   late final pulumi.Output<String> clusterId;
-
   /// The name of the Node Configuration on Azure Cosmos DB for PostgreSQL Cluster. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The value of the Node Configuration on Azure Cosmos DB for PostgreSQL Cluster.
   late final pulumi.Output<String> value;
 
@@ -248,11 +246,11 @@ class PostgresqlNodeConfiguration extends pulumi.CustomResource {
     PostgresqlNodeConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:cosmosdb/postgresqlNodeConfiguration:PostgresqlNodeConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:cosmosdb/postgresqlNodeConfiguration:PostgresqlNodeConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterId = registerOutput<String>('clusterId');
     this.name = registerOutput<String>('name');
     value = registerOutput<String>('value');
@@ -276,11 +274,11 @@ class PostgresqlNodeConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:cosmosdb/postgresqlNodeConfiguration:PostgresqlNodeConfiguration',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:cosmosdb/postgresqlNodeConfiguration:PostgresqlNodeConfiguration',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clusterId = registerOutput<String>('clusterId');
     this.name = registerOutput<String>('name');
     value = registerOutput<String>('value');

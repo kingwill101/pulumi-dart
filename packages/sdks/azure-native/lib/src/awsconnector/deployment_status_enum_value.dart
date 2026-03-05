@@ -9,19 +9,20 @@ class DeploymentStatusEnumValue {
 
   /// Creates a new [DeploymentStatusEnumValue].
   /// [value] Property value
-  DeploymentStatusEnumValue({this.value});
+  DeploymentStatusEnumValue({
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': ?value};
+    return <String, dynamic>{
+      'value': ?value,
+    };
   }
 
   factory DeploymentStatusEnumValue.fromMap(Map<String, dynamic> map) {
     return DeploymentStatusEnumValue(
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

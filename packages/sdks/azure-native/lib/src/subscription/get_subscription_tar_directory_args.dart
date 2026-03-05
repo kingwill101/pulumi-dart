@@ -12,19 +12,20 @@ class GetSubscriptionTarDirectoryArgs {
 
   /// Creates a new [GetSubscriptionTarDirectoryArgs].
   /// [subscriptionId] Subscription Id.
-  GetSubscriptionTarDirectoryArgs({this.subscriptionId});
+  GetSubscriptionTarDirectoryArgs({
+    this.subscriptionId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'subscriptionId': ?subscriptionId};
+    return <String, dynamic>{
+      'subscriptionId': ?subscriptionId,
+    };
   }
 
   factory GetSubscriptionTarDirectoryArgs.fromMap(Map<String, dynamic> map) {
     return GetSubscriptionTarDirectoryArgs(
-      subscriptionId: (() {
-        final guardedValue = map['subscriptionId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      subscriptionId: (() { final guardedValue = map['subscriptionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -16,3 +16,4 @@ enum LoggingVariantConfigVariant {
     throw ArgumentError('Unknown LoggingVariantConfigVariant value: $value');
   }
 }
+

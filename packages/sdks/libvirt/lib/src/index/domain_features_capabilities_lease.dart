@@ -8,19 +8,20 @@ class DomainFeaturesCapabilitiesLease {
 
   /// Creates a new [DomainFeaturesCapabilitiesLease].
   /// [state] Sets the state of the capability to wake from an alarm.
-  DomainFeaturesCapabilitiesLease({this.state});
+  DomainFeaturesCapabilitiesLease({
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'state': ?state};
+    return <String, dynamic>{
+      'state': ?state,
+    };
   }
 
   factory DomainFeaturesCapabilitiesLease.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesCapabilitiesLease(
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

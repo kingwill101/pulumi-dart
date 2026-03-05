@@ -8,10 +8,14 @@ class GetBundleComputeType {
 
   /// Creates a new [GetBundleComputeType].
   /// [name] Name of the bundle. You cannot combine this parameter with `bundle_id`.
-  GetBundleComputeType({required this.name});
+  GetBundleComputeType({
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
   factory GetBundleComputeType.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class GetBundleComputeType {
     );
   }
 }
+

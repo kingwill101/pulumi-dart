@@ -7,7 +7,6 @@ import 'site_health_summary_response.dart';
 class ListSitesControllerHealthSummaryResult {
   /// Gets the value of next link.
   final String nextLink;
-
   /// Gets the list of SiteHealthSummary.
   final List<SiteHealthSummaryResponse> value;
 
@@ -22,25 +21,15 @@ class ListSitesControllerHealthSummaryResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nextLink': nextLink,
-      'value':
-          pulumi.Input.encodeList<
-            SiteHealthSummaryResponse,
-            Map<String, dynamic>
-          >(value, (value) => value.toMap()),
+      'value': pulumi.Input.encodeList<SiteHealthSummaryResponse, Map<String, dynamic>>(value, (value) => value.toMap()),
     };
   }
 
-  factory ListSitesControllerHealthSummaryResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListSitesControllerHealthSummaryResult.fromMap(Map<String, dynamic> map) {
     return ListSitesControllerHealthSummaryResult(
       nextLink: map['nextLink'] as String,
-      value: pulumi.Input.decodeList<SiteHealthSummaryResponse>(
-        map['value']!,
-        (value) => SiteHealthSummaryResponse.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      value: pulumi.Input.decodeList<SiteHealthSummaryResponse>(map['value']!, (value) => SiteHealthSummaryResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

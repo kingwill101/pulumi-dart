@@ -594,13 +594,10 @@ import 'gateway_logging_state.dart';
 class GatewayLogging extends pulumi.CustomResource {
   /// The ID of the Gateway.
   late final pulumi.Output<String> gatewayId;
-
   /// The name of the Log Store.
   late final pulumi.Output<String> slsLogstore;
-
   /// The name of the Project.
   late final pulumi.Output<String> slsProject;
-
   /// The status of the resource. Valid values: `Enabled`, `Disable`.
   late final pulumi.Output<String> status;
 
@@ -613,11 +610,11 @@ class GatewayLogging extends pulumi.CustomResource {
     GatewayLoggingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudstoragegateway/gatewayLogging:GatewayLogging',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudstoragegateway/gatewayLogging:GatewayLogging',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     gatewayId = registerOutput<String>('gatewayId');
     slsLogstore = registerOutput<String>('slsLogstore');
     slsProject = registerOutput<String>('slsProject');
@@ -642,11 +639,11 @@ class GatewayLogging extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cloudstoragegateway/gatewayLogging:GatewayLogging',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cloudstoragegateway/gatewayLogging:GatewayLogging',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     gatewayId = registerOutput<String>('gatewayId');
     slsLogstore = registerOutput<String>('slsLogstore');
     slsProject = registerOutput<String>('slsProject');

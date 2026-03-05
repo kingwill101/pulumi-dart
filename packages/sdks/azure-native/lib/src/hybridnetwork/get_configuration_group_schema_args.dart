@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConfigurationGroupSchemaArgs {
   /// The name of the configuration group schema.
   final pulumi.Input<String> configurationGroupSchemaName;
-
   /// The name of the publisher.
   final pulumi.Input<String> publisherName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,13 +34,10 @@ class GetConfigurationGroupSchemaArgs {
 
   factory GetConfigurationGroupSchemaArgs.fromMap(Map<String, dynamic> map) {
     return GetConfigurationGroupSchemaArgs(
-      configurationGroupSchemaName: pulumi.Input.fromValue(
-        map['configurationGroupSchemaName'] as String,
-      ),
+      configurationGroupSchemaName: pulumi.Input.fromValue(map['configurationGroupSchemaName'] as String),
       publisherName: pulumi.Input.fromValue(map['publisherName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

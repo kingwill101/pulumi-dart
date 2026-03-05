@@ -9,7 +9,9 @@ class EncryptionInTransitProperties {
 
   /// Creates a new [EncryptionInTransitProperties].
   /// [isEncryptionInTransitEnabled] Indicates whether or not inter cluster node communication is encrypted in transit.
-  EncryptionInTransitProperties({this.isEncryptionInTransitEnabled});
+  EncryptionInTransitProperties({
+    this.isEncryptionInTransitEnabled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,11 +21,8 @@ class EncryptionInTransitProperties {
 
   factory EncryptionInTransitProperties.fromMap(Map<String, dynamic> map) {
     return EncryptionInTransitProperties(
-      isEncryptionInTransitEnabled: (() {
-        final guardedValue = map['isEncryptionInTransitEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      isEncryptionInTransitEnabled: (() { final guardedValue = map['isEncryptionInTransitEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecretPolicyArgs {
   /// Makes an optional API call to Zelkova to validate the Resource Policy to prevent broad access to your secret.
   final pulumi.Input<bool>? blockPublicPolicy;
-
   /// Valid JSON document representing a [resource policy](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_resource-based-policies.html). Unlike `aws.secretsmanager.Secret`, where `policy` can be set to `"{}"` to delete the policy, `"{}"` is not a valid policy since `policy` is required.
   final pulumi.Input<String> policy;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Secret ARN.
   ///
   /// The following arguments are optional:
@@ -44,18 +41,11 @@ class SecretPolicyArgs {
 
   factory SecretPolicyArgs.fromMap(Map<String, dynamic> map) {
     return SecretPolicyArgs(
-      blockPublicPolicy: (() {
-        final guardedValue = map['blockPublicPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      blockPublicPolicy: (() { final guardedValue = map['blockPublicPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       policy: pulumi.Input.fromValue(map['policy'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       secretArn: pulumi.Input.fromValue(map['secretArn'] as String),
     );
   }
 }
+

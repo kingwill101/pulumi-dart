@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DbNodeArgs {
   /// The specification information of the node.
   final pulumi.Input<String> classCode;
-
   /// The Id of instance that can run database.
   final pulumi.Input<String> dbInstanceId;
-
   /// The zone ID of the node.
   final pulumi.Input<String> zoneId;
 
@@ -42,3 +40,4 @@ class DbNodeArgs {
     );
   }
 }
+

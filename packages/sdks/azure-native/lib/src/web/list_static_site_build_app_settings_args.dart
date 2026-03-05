@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListStaticSiteBuildAppSettingsArgs {
   /// The stage site identifier.
   final pulumi.Input<String> environmentName;
-
   /// Name of the static site.
   final pulumi.Input<String> name;
-
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
 
@@ -38,9 +36,8 @@ class ListStaticSiteBuildAppSettingsArgs {
     return ListStaticSiteBuildAppSettingsArgs(
       environmentName: pulumi.Input.fromValue(map['environmentName'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

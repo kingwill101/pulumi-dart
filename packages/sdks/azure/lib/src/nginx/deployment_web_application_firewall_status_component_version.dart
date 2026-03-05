@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeploymentWebApplicationFirewallStatusComponentVersion {
   /// The version of the WAF Engine.
   final pulumi.Input<String>? wafEngineVersion;
-
   /// The version of the WAF Nginx module.
   final pulumi.Input<String>? wafNginxVersion;
 
@@ -24,20 +23,11 @@ class DeploymentWebApplicationFirewallStatusComponentVersion {
     };
   }
 
-  factory DeploymentWebApplicationFirewallStatusComponentVersion.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DeploymentWebApplicationFirewallStatusComponentVersion.fromMap(Map<String, dynamic> map) {
     return DeploymentWebApplicationFirewallStatusComponentVersion(
-      wafEngineVersion: (() {
-        final guardedValue = map['wafEngineVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      wafNginxVersion: (() {
-        final guardedValue = map['wafNginxVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      wafEngineVersion: (() { final guardedValue = map['wafEngineVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      wafNginxVersion: (() { final guardedValue = map['wafNginxVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

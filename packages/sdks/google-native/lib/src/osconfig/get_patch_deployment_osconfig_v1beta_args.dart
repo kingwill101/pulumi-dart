@@ -25,18 +25,11 @@ class GetPatchDeploymentOsconfigV1betaArgs {
     };
   }
 
-  factory GetPatchDeploymentOsconfigV1betaArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetPatchDeploymentOsconfigV1betaArgs.fromMap(Map<String, dynamic> map) {
     return GetPatchDeploymentOsconfigV1betaArgs(
-      patchDeploymentId: pulumi.Input.fromValue(
-        map['patchDeploymentId'] as String,
-      ),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      patchDeploymentId: pulumi.Input.fromValue(map['patchDeploymentId'] as String),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

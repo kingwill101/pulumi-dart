@@ -394,37 +394,26 @@ import 'kubernetes_node_pool_state.dart';
 class KubernetesNodePool extends pulumi.CustomResource {
   /// A computed field representing the actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
   late final pulumi.Output<int> actualNodeCount;
-
   /// Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
   late final pulumi.Output<bool?> autoScale;
-
   /// The ID of the Kubernetes cluster to which the node pool is associated.
   late final pulumi.Output<String> clusterId;
-
   /// A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
   late final pulumi.Output<int?> maxNodes;
-
   /// If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
   late final pulumi.Output<int?> minNodes;
-
   /// A name for the node pool.
   late final pulumi.Output<String> name;
-
   /// The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
   late final pulumi.Output<int?> nodeCount;
-
   /// A list of nodes in the pool. Each node exports the following attributes:
   late final pulumi.Output<List<Map<String, dynamic>>> nodes;
-
   /// The slug identifier for the type of Droplet to be used as workers in the node pool.
   late final pulumi.Output<String> size;
-
   /// A list of tag names to be applied to the Kubernetes cluster.
   late final pulumi.Output<List<String>?> tags;
-
   /// A list of taints applied to all nodes in the pool.
   ///
   /// This resource supports customized create timeouts. The default timeout is 30 minutes.
@@ -439,11 +428,11 @@ class KubernetesNodePool extends pulumi.CustomResource {
     KubernetesNodePoolArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/kubernetesNodePool:KubernetesNodePool',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/kubernetesNodePool:KubernetesNodePool',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     actualNodeCount = registerOutput<int>('actualNodeCount');
     autoScale = registerOutput<bool?>('autoScale');
     clusterId = registerOutput<String>('clusterId');
@@ -476,11 +465,11 @@ class KubernetesNodePool extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/kubernetesNodePool:KubernetesNodePool',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/kubernetesNodePool:KubernetesNodePool',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     actualNodeCount = registerOutput<int>('actualNodeCount');
     autoScale = registerOutput<bool?>('autoScale');
     clusterId = registerOutput<String>('clusterId');

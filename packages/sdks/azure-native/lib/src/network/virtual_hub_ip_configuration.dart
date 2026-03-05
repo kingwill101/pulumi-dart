@@ -155,28 +155,20 @@ import 'virtual_hub_ip_configuration_args.dart';
 class VirtualHubIpConfiguration extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
-
   /// Name of the Ip Configuration.
   late final pulumi.Output<String?> name;
-
   /// The private IP address of the IP configuration.
   late final pulumi.Output<String?> privateIPAddress;
-
   /// The private IP address allocation method.
   late final pulumi.Output<String?> privateIPAllocationMethod;
-
   /// The provisioning state of the IP configuration resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The reference to the public IP resource.
   late final pulumi.Output<PublicIPAddressResponse?> publicIPAddress;
-
   /// The reference to the subnet resource.
   late final pulumi.Output<SubnetResponse?> subnet;
-
   /// Ipconfiguration type.
   late final pulumi.Output<String> type;
 
@@ -189,39 +181,19 @@ class VirtualHubIpConfiguration extends pulumi.CustomResource {
     VirtualHubIpConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:network:VirtualHubIpConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:network:VirtualHubIpConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String?>('name');
     privateIPAddress = registerOutput<String?>('privateIPAddress');
-    privateIPAllocationMethod = registerOutput<String?>(
-      'privateIPAllocationMethod',
-    );
+    privateIPAllocationMethod = registerOutput<String?>('privateIPAllocationMethod');
     provisioningState = registerOutput<String>('provisioningState');
-    publicIPAddress = registerOutput<PublicIPAddressResponse?>(
-      'publicIPAddress',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PublicIPAddressResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    subnet = registerOutput<SubnetResponse?>(
-      'subnet',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SubnetResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    publicIPAddress = registerOutput<PublicIPAddressResponse?>('publicIPAddress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PublicIPAddressResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    subnet = registerOutput<SubnetResponse?>('subnet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubnetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

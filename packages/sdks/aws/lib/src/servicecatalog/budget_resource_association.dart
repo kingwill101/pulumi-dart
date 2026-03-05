@@ -114,10 +114,8 @@ import 'budget_resource_association_state.dart';
 class BudgetResourceAssociation extends pulumi.CustomResource {
   /// Budget name.
   late final pulumi.Output<String> budgetName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Resource identifier.
   late final pulumi.Output<String> resourceId;
 
@@ -130,11 +128,11 @@ class BudgetResourceAssociation extends pulumi.CustomResource {
     BudgetResourceAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:servicecatalog/budgetResourceAssociation:BudgetResourceAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:servicecatalog/budgetResourceAssociation:BudgetResourceAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     budgetName = registerOutput<String>('budgetName');
     region = registerOutput<String>('region');
     resourceId = registerOutput<String>('resourceId');
@@ -158,11 +156,11 @@ class BudgetResourceAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:servicecatalog/budgetResourceAssociation:BudgetResourceAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:servicecatalog/budgetResourceAssociation:BudgetResourceAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     budgetName = registerOutput<String>('budgetName');
     region = registerOutput<String>('region');
     resourceId = registerOutput<String>('resourceId');

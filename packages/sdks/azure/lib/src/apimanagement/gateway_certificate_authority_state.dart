@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GatewayCertificateAuthorityState {
   /// The ID of the API Management Service. Changing this forces a new resource to be created.
   final pulumi.Input<String>? apiManagementId;
-
   /// The name of the API Management Certificate. Changing this forces a new resource to be created.
   final pulumi.Input<String>? certificateName;
-
   /// The name of the API Management Gateway. Changing this forces a new resource to be created.
   final pulumi.Input<String>? gatewayName;
-
   /// Whether the API Management Gateway Certificate Authority is trusted.
   final pulumi.Input<bool>? isTrusted;
 
@@ -39,26 +36,11 @@ class GatewayCertificateAuthorityState {
 
   factory GatewayCertificateAuthorityState.fromMap(Map<String, dynamic> map) {
     return GatewayCertificateAuthorityState(
-      apiManagementId: (() {
-        final guardedValue = map['apiManagementId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      certificateName: (() {
-        final guardedValue = map['certificateName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      gatewayName: (() {
-        final guardedValue = map['gatewayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      isTrusted: (() {
-        final guardedValue = map['isTrusted'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      apiManagementId: (() { final guardedValue = map['apiManagementId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      certificateName: (() { final guardedValue = map['certificateName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      gatewayName: (() { final guardedValue = map['gatewayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      isTrusted: (() { final guardedValue = map['isTrusted']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

@@ -4,29 +4,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_database_instance_setting_backup_configuration_backup_retention_setting.dart';
 
 class GetDatabaseInstanceSettingBackupConfiguration {
-  final pulumi.Input<
-    List<GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting>
-  >
-  backupRetentionSettings;
-
+  final pulumi.Input<List<GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting>> backupRetentionSettings;
   /// Backup tier that manages the backups for the instance.
   final pulumi.Input<String> backupTier;
-
   /// True if binary logging is enabled. If settings.backup_configuration.enabled is false, this must be as well. Can only be used with MySQL.
   final pulumi.Input<bool> binaryLogEnabled;
-
   /// True if backup configuration is enabled.
   final pulumi.Input<bool> enabled;
-
   /// Location of the backup configuration.
   final pulumi.Input<String> location;
-
   /// True if Point-in-time recovery is enabled.
   final pulumi.Input<bool> pointInTimeRecoveryEnabled;
-
   /// HH:MM format time indicating when backup configuration starts.
   final pulumi.Input<String> startTime;
-
   /// The number of days of transaction logs we retain for point in time restore, from 1-7. (For PostgreSQL Enterprise Plus instances, from 1 to 35.)
   final pulumi.Input<int> transactionLogRetentionDays;
 
@@ -52,20 +42,7 @@ class GetDatabaseInstanceSettingBackupConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backupRetentionSettings':
-          pulumi.Input.mapInputValue<
-            List<
-              GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting
-            >,
-            List<Map<String, dynamic>>
-          >(
-            backupRetentionSettings,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'backupRetentionSettings': pulumi.Input.mapInputValue<List<GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting>, List<Map<String, dynamic>>>(backupRetentionSettings, (value) => pulumi.Input.encodeList<GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting, Map<String, dynamic>>(value, (value) => value.toMap())),
       'backupTier': backupTier,
       'binaryLogEnabled': binaryLogEnabled,
       'enabled': enabled,
@@ -76,32 +53,17 @@ class GetDatabaseInstanceSettingBackupConfiguration {
     };
   }
 
-  factory GetDatabaseInstanceSettingBackupConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDatabaseInstanceSettingBackupConfiguration.fromMap(Map<String, dynamic> map) {
     return GetDatabaseInstanceSettingBackupConfiguration(
-      backupRetentionSettings: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting
-        >(
-          map['backupRetentionSettings']!,
-          (value) =>
-              GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
+      backupRetentionSettings: pulumi.Input.fromValue(pulumi.Input.decodeList<GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting>(map['backupRetentionSettings']!, (value) => GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting.fromMap((value as Map).cast<String, dynamic>()))),
       backupTier: pulumi.Input.fromValue(map['backupTier'] as String),
       binaryLogEnabled: pulumi.Input.fromValue(map['binaryLogEnabled'] as bool),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
       location: pulumi.Input.fromValue(map['location'] as String),
-      pointInTimeRecoveryEnabled: pulumi.Input.fromValue(
-        map['pointInTimeRecoveryEnabled'] as bool,
-      ),
+      pointInTimeRecoveryEnabled: pulumi.Input.fromValue(map['pointInTimeRecoveryEnabled'] as bool),
       startTime: pulumi.Input.fromValue(map['startTime'] as String),
-      transactionLogRetentionDays: pulumi.Input.fromValue(
-        map['transactionLogRetentionDays'] as int,
-      ),
+      transactionLogRetentionDays: pulumi.Input.fromValue(map['transactionLogRetentionDays'] as int),
     );
   }
 }
+

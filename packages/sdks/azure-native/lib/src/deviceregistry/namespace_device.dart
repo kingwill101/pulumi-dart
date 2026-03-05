@@ -1145,67 +1145,46 @@ import 'system_data_response.dart';
 class NamespaceDevice extends pulumi.CustomResource {
   /// A set of key-value pairs that contain custom attributes set by the customer.
   late final pulumi.Output<dynamic> attributes;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Reference to a device. Populated only if the device had been created from discovery flow. Discovered device name must be provided.
   late final pulumi.Output<String?> discoveredDeviceRef;
-
   /// Indicates if the resource is enabled or not.
   late final pulumi.Output<bool?> enabled;
-
   /// Property bag containing the device's unassigned and assigned endpoints.
   late final pulumi.Output<MessagingEndpointsResponse?> endpoints;
-
   /// Resource Tag.
   late final pulumi.Output<String> etag;
-
   /// The extended location.
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
-
   /// The Device ID provided by the customer.
   late final pulumi.Output<String?> externalDeviceId;
-
   /// A timestamp (in UTC) that is updated each time the resource is modified.
   late final pulumi.Output<String> lastTransitionTime;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// Device manufacturer.
   late final pulumi.Output<String?> manufacturer;
-
   /// Device model.
   late final pulumi.Output<String?> model;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Device operating system.
   late final pulumi.Output<String?> operatingSystem;
-
   /// Device operating system version.
   late final pulumi.Output<String?> operatingSystemVersion;
-
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// Device status updates.
   late final pulumi.Output<DeviceStatusResponse> status;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-
   /// A unique identifier for the device.
   late final pulumi.Output<String> uuid;
-
   /// An integer that is incremented each time the resource is modified.
   late final pulumi.Output<double> version;
 
@@ -1218,36 +1197,18 @@ class NamespaceDevice extends pulumi.CustomResource {
     NamespaceDeviceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:deviceregistry:NamespaceDevice',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:deviceregistry:NamespaceDevice',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     attributes = registerOutput<dynamic>('attributes');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     discoveredDeviceRef = registerOutput<String?>('discoveredDeviceRef');
     enabled = registerOutput<bool?>('enabled');
-    endpoints = registerOutput<MessagingEndpointsResponse?>(
-      'endpoints',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MessagingEndpointsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    endpoints = registerOutput<MessagingEndpointsResponse?>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MessagingEndpointsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
-    extendedLocation = registerOutput<ExtendedLocationResponse?>(
-      'extendedLocation',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExtendedLocationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     externalDeviceId = registerOutput<String?>('externalDeviceId');
     lastTransitionTime = registerOutput<String>('lastTransitionTime');
     location = registerOutput<String>('location');
@@ -1257,26 +1218,8 @@ class NamespaceDevice extends pulumi.CustomResource {
     operatingSystem = registerOutput<String?>('operatingSystem');
     operatingSystemVersion = registerOutput<String?>('operatingSystemVersion');
     provisioningState = registerOutput<String>('provisioningState');
-    status = registerOutput<DeviceStatusResponse>(
-      'status',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DeviceStatusResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    status = registerOutput<DeviceStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeviceStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     uuid = registerOutput<String>('uuid');

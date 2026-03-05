@@ -9,21 +9,20 @@ class UserSubjectPatchFlowcontrolApiserverK8sIoV1alpha1 {
 
   /// Creates a new [UserSubjectPatchFlowcontrolApiserverK8sIoV1alpha1].
   /// [name] `name` is the username that matches, or "*" to match all usernames. Required.
-  UserSubjectPatchFlowcontrolApiserverK8sIoV1alpha1({this.name});
+  UserSubjectPatchFlowcontrolApiserverK8sIoV1alpha1({
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name};
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
-  factory UserSubjectPatchFlowcontrolApiserverK8sIoV1alpha1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory UserSubjectPatchFlowcontrolApiserverK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
     return UserSubjectPatchFlowcontrolApiserverK8sIoV1alpha1(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

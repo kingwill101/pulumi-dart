@@ -48,12 +48,9 @@ class GetEndpointRedisSetting {
       authUserName: pulumi.Input.fromValue(map['authUserName'] as String),
       port: pulumi.Input.fromValue(map['port'] as int),
       serverName: pulumi.Input.fromValue(map['serverName'] as String),
-      sslCaCertificateArn: pulumi.Input.fromValue(
-        map['sslCaCertificateArn'] as String,
-      ),
-      sslSecurityProtocol: pulumi.Input.fromValue(
-        map['sslSecurityProtocol'] as String,
-      ),
+      sslCaCertificateArn: pulumi.Input.fromValue(map['sslCaCertificateArn'] as String),
+      sslSecurityProtocol: pulumi.Input.fromValue(map['sslSecurityProtocol'] as String),
     );
   }
 }
+

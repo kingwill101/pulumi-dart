@@ -11,15 +11,9 @@ class GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdC
   final pulumi.Input<double> detectionAbsoluteQps;
   final pulumi.Input<double> detectionLoadThreshold;
   final pulumi.Input<double> detectionRelativeToBaselineQps;
-
   /// The name of the security policy. Provide either this or a `self_link`.
   final pulumi.Input<String> name;
-  final pulumi.Input<
-    List<
-      GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig
-    >
-  >
-  trafficGranularityConfigs;
+  final pulumi.Input<List<GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig>> trafficGranularityConfigs;
 
   /// Creates a new [GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig].
   /// [autoDeployConfidenceThreshold] Required.
@@ -47,67 +41,28 @@ class GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdC
     return <String, dynamic>{
       'autoDeployConfidenceThreshold': autoDeployConfidenceThreshold,
       'autoDeployExpirationSec': autoDeployExpirationSec,
-      'autoDeployImpactedBaselineThreshold':
-          autoDeployImpactedBaselineThreshold,
+      'autoDeployImpactedBaselineThreshold': autoDeployImpactedBaselineThreshold,
       'autoDeployLoadThreshold': autoDeployLoadThreshold,
       'detectionAbsoluteQps': detectionAbsoluteQps,
       'detectionLoadThreshold': detectionLoadThreshold,
       'detectionRelativeToBaselineQps': detectionRelativeToBaselineQps,
       'name': name,
-      'trafficGranularityConfigs':
-          pulumi.Input.mapInputValue<
-            List<
-              GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig
-            >,
-            List<Map<String, dynamic>>
-          >(
-            trafficGranularityConfigs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'trafficGranularityConfigs': pulumi.Input.mapInputValue<List<GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig>, List<Map<String, dynamic>>>(trafficGranularityConfigs, (value) => pulumi.Input.encodeList<GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig.fromMap(Map<String, dynamic> map) {
     return GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig(
-      autoDeployConfidenceThreshold: pulumi.Input.fromValue(
-        map['autoDeployConfidenceThreshold'] as double,
-      ),
-      autoDeployExpirationSec: pulumi.Input.fromValue(
-        map['autoDeployExpirationSec'] as int,
-      ),
-      autoDeployImpactedBaselineThreshold: pulumi.Input.fromValue(
-        map['autoDeployImpactedBaselineThreshold'] as double,
-      ),
-      autoDeployLoadThreshold: pulumi.Input.fromValue(
-        map['autoDeployLoadThreshold'] as double,
-      ),
-      detectionAbsoluteQps: pulumi.Input.fromValue(
-        map['detectionAbsoluteQps'] as double,
-      ),
-      detectionLoadThreshold: pulumi.Input.fromValue(
-        map['detectionLoadThreshold'] as double,
-      ),
-      detectionRelativeToBaselineQps: pulumi.Input.fromValue(
-        map['detectionRelativeToBaselineQps'] as double,
-      ),
+      autoDeployConfidenceThreshold: pulumi.Input.fromValue(map['autoDeployConfidenceThreshold'] as double),
+      autoDeployExpirationSec: pulumi.Input.fromValue(map['autoDeployExpirationSec'] as int),
+      autoDeployImpactedBaselineThreshold: pulumi.Input.fromValue(map['autoDeployImpactedBaselineThreshold'] as double),
+      autoDeployLoadThreshold: pulumi.Input.fromValue(map['autoDeployLoadThreshold'] as double),
+      detectionAbsoluteQps: pulumi.Input.fromValue(map['detectionAbsoluteQps'] as double),
+      detectionLoadThreshold: pulumi.Input.fromValue(map['detectionLoadThreshold'] as double),
+      detectionRelativeToBaselineQps: pulumi.Input.fromValue(map['detectionRelativeToBaselineQps'] as double),
       name: pulumi.Input.fromValue(map['name'] as String),
-      trafficGranularityConfigs: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig
-        >(
-          map['trafficGranularityConfigs']!,
-          (value) =>
-              GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
+      trafficGranularityConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig>(map['trafficGranularityConfigs']!, (value) => GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetElasticPoolArgs {
   /// The name of the elastic pool.
   final pulumi.Input<String> name;
-
   /// The name of the resource group which contains the elastic pool.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the SQL Server which contains the elastic pool.
   final pulumi.Input<String> serverName;
 
@@ -37,10 +35,9 @@ class GetElasticPoolArgs {
   factory GetElasticPoolArgs.fromMap(Map<String, dynamic> map) {
     return GetElasticPoolArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serverName: pulumi.Input.fromValue(map['serverName'] as String),
     );
   }
 }
+

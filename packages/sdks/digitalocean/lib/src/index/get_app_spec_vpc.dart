@@ -8,13 +8,20 @@ class GetAppSpecVpc {
 
   /// Creates a new [GetAppSpecVpc].
   /// [id] The ID of the dedicated egress IP.
-  GetAppSpecVpc({required this.id});
+  GetAppSpecVpc({
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id};
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
   factory GetAppSpecVpc.fromMap(Map<String, dynamic> map) {
-    return GetAppSpecVpc(id: pulumi.Input.fromValue(map['id'] as String));
+    return GetAppSpecVpc(
+      id: pulumi.Input.fromValue(map['id'] as String),
+    );
   }
 }
+

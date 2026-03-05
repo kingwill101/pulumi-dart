@@ -1680,84 +1680,62 @@ class Instance extends pulumi.CustomResource {
   /// Looker instance Admin settings.
   /// Structure is documented below.
   late final pulumi.Output<InstanceAdminSettings?> adminSettings;
-
   /// Network name in the consumer project in the format of: projects/{project}/global/networks/{network}
   /// Note that the consumer network may be in a different GCP project than the consumer
   /// project that is hosting the Looker Instance.
   late final pulumi.Output<String?> consumerNetwork;
-
   /// Controlled egress configuration.
   /// Structure is documented below.
-  late final pulumi.Output<InstanceControlledEgressConfig?>
-  controlledEgressConfig;
-
+  late final pulumi.Output<InstanceControlledEgressConfig?> controlledEgressConfig;
   /// Whether controlled egress is enabled on the Looker instance.
   late final pulumi.Output<bool?> controlledEgressEnabled;
-
   /// The time the instance was created in RFC3339 UTC "Zulu" format,
   /// accurate to nanoseconds.
   late final pulumi.Output<String> createTime;
-
   /// Custom domain settings for a Looker instance.
   /// Structure is documented below.
   late final pulumi.Output<InstanceCustomDomain?> customDomain;
-
   /// Policy to determine if the cluster should be deleted forcefully.
   /// If setting deletion_policy = "FORCE", the Looker instance will be deleted regardless
   /// of its nested resources. If set to "DEFAULT", Looker instances that still have
   /// nested resources will return an error. Possible values: DEFAULT, FORCE
   late final pulumi.Output<String?> deletionPolicy;
-
   /// Maintenance denial period for this instance.
   /// You must allow at least 14 days of maintenance availability
   /// between any two deny maintenance periods.
   /// Structure is documented below.
-  late final pulumi.Output<InstanceDenyMaintenancePeriod?>
-  denyMaintenancePeriod;
-
+  late final pulumi.Output<InstanceDenyMaintenancePeriod?> denyMaintenancePeriod;
   /// Public Egress IP (IPv4).
   late final pulumi.Output<String> egressPublicIp;
-
   /// Looker instance encryption settings.
   /// Structure is documented below.
   late final pulumi.Output<InstanceEncryptionConfig> encryptionConfig;
-
   /// FIPS 140-2 Encryption enablement for Looker (Google Cloud Core).
   late final pulumi.Output<bool?> fipsEnabled;
-
   /// Gemini enablement for Looker (Google Cloud Core).
   late final pulumi.Output<bool?> geminiEnabled;
-
   /// Private Ingress IP (IPv4).
   late final pulumi.Output<String> ingressPrivateIp;
-
   /// Public Ingress IP (IPv4).
   late final pulumi.Output<String> ingressPublicIp;
-
   /// Looker instance URI which can be used to access the Looker Instance UI.
   late final pulumi.Output<String> lookerUri;
-
   /// The Looker version that the instance is using.
   late final pulumi.Output<String> lookerVersion;
-
   /// Maintenance window for an instance.
   /// Maintenance of your instance takes place once a month, and will require
   /// your instance to be restarted during updates, which will temporarily
   /// disrupt service.
   /// Structure is documented below.
   late final pulumi.Output<InstanceMaintenanceWindow?> maintenanceWindow;
-
   /// The ID of the instance or a fully qualified identifier for the instance.
   late final pulumi.Output<String> name;
-
   /// Looker Instance OAuth login settings.
   /// Structure is documented below.
   late final pulumi.Output<InstanceOauthConfig> oauthConfig;
-
   /// Configuration for periodic export.
   /// Structure is documented below.
   late final pulumi.Output<InstancePeriodicExportConfig?> periodicExportConfig;
-
   /// Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
   /// - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
   /// - LOOKER_CORE_STANDARD: pay as you go standard instance (Currently Unavailable)
@@ -1773,35 +1751,26 @@ class Instance extends pulumi.CustomResource {
   /// Default value is `LOOKER_CORE_TRIAL`.
   /// Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`, `LOOKER_CORE_NONPROD_STANDARD_ANNUAL`, `LOOKER_CORE_NONPROD_ENTERPRISE_ANNUAL`, `LOOKER_CORE_NONPROD_EMBED_ANNUAL`, `LOOKER_CORE_TRIAL_STANDARD`, `LOOKER_CORE_TRIAL_ENTERPRISE`, `LOOKER_CORE_TRIAL_EMBED`.
   late final pulumi.Output<String?> platformEdition;
-
   /// Whether private IP is enabled on the Looker instance.
   late final pulumi.Output<bool?> privateIpEnabled;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Information for Private Service Connect (PSC) setup for a Looker instance.
   /// Structure is documented below.
   late final pulumi.Output<InstancePscConfig> pscConfig;
-
   /// Whether Public Service Connect (PSC) is enabled on the Looker instance
   late final pulumi.Output<bool?> pscEnabled;
-
   /// Whether public IP is enabled on the Looker instance.
   late final pulumi.Output<bool?> publicIpEnabled;
-
   /// The name of the Looker region of the instance.
   late final pulumi.Output<String> region;
-
   /// Name of a reserved IP address range within the consumer network, to be used for
   /// private service access connection. User may or may not specify this in a request.
   late final pulumi.Output<String?> reservedRange;
-
   /// The time the instance was updated in RFC3339 UTC "Zulu" format,
   /// accurate to nanoseconds.
   late final pulumi.Output<String> updateTime;
-
   /// Metadata about users for a Looker instance.
   /// These settings are only available when platform edition LOOKER_CORE_STANDARD is set.
   /// There are ten Standard and two Developer users included in the cost of the product.
@@ -1821,131 +1790,41 @@ class Instance extends pulumi.CustomResource {
     InstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:looker/instance:Instance',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    adminSettings = registerOutput<InstanceAdminSettings?>(
-      'adminSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceAdminSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:looker/instance:Instance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    adminSettings = registerOutput<InstanceAdminSettings?>('adminSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceAdminSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     consumerNetwork = registerOutput<String?>('consumerNetwork');
-    controlledEgressConfig = registerOutput<InstanceControlledEgressConfig?>(
-      'controlledEgressConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceControlledEgressConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    controlledEgressConfig = registerOutput<InstanceControlledEgressConfig?>('controlledEgressConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceControlledEgressConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     controlledEgressEnabled = registerOutput<bool?>('controlledEgressEnabled');
     createTime = registerOutput<String>('createTime');
-    customDomain = registerOutput<InstanceCustomDomain?>(
-      'customDomain',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceCustomDomain.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    customDomain = registerOutput<InstanceCustomDomain?>('customDomain', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceCustomDomain.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String?>('deletionPolicy');
-    denyMaintenancePeriod = registerOutput<InstanceDenyMaintenancePeriod?>(
-      'denyMaintenancePeriod',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceDenyMaintenancePeriod.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    denyMaintenancePeriod = registerOutput<InstanceDenyMaintenancePeriod?>('denyMaintenancePeriod', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceDenyMaintenancePeriod.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     egressPublicIp = registerOutput<String>('egressPublicIp');
-    encryptionConfig = registerOutput<InstanceEncryptionConfig>(
-      'encryptionConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceEncryptionConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    encryptionConfig = registerOutput<InstanceEncryptionConfig>('encryptionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceEncryptionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     fipsEnabled = registerOutput<bool?>('fipsEnabled');
     geminiEnabled = registerOutput<bool?>('geminiEnabled');
     ingressPrivateIp = registerOutput<String>('ingressPrivateIp');
     ingressPublicIp = registerOutput<String>('ingressPublicIp');
     lookerUri = registerOutput<String>('lookerUri');
     lookerVersion = registerOutput<String>('lookerVersion');
-    maintenanceWindow = registerOutput<InstanceMaintenanceWindow?>(
-      'maintenanceWindow',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceMaintenanceWindow.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    maintenanceWindow = registerOutput<InstanceMaintenanceWindow?>('maintenanceWindow', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceMaintenanceWindow.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    oauthConfig = registerOutput<InstanceOauthConfig>(
-      'oauthConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceOauthConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    periodicExportConfig = registerOutput<InstancePeriodicExportConfig?>(
-      'periodicExportConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstancePeriodicExportConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    oauthConfig = registerOutput<InstanceOauthConfig>('oauthConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceOauthConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    periodicExportConfig = registerOutput<InstancePeriodicExportConfig?>('periodicExportConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstancePeriodicExportConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     platformEdition = registerOutput<String?>('platformEdition');
     privateIpEnabled = registerOutput<bool?>('privateIpEnabled');
     project = registerOutput<String>('project');
-    pscConfig = registerOutput<InstancePscConfig>(
-      'pscConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstancePscConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    pscConfig = registerOutput<InstancePscConfig>('pscConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstancePscConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     pscEnabled = registerOutput<bool?>('pscEnabled');
     publicIpEnabled = registerOutput<bool?>('publicIpEnabled');
     region = registerOutput<String>('region');
     reservedRange = registerOutput<String?>('reservedRange');
     updateTime = registerOutput<String>('updateTime');
-    userMetadata = registerOutput<InstanceUserMetadata?>(
-      'userMetadata',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceUserMetadata.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    userMetadata = registerOutput<InstanceUserMetadata?>('userMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceUserMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [Instance] resource's state with the given [name] and [id].
@@ -1966,130 +1845,40 @@ class Instance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:looker/instance:Instance',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    adminSettings = registerOutput<InstanceAdminSettings?>(
-      'adminSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceAdminSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:looker/instance:Instance',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    adminSettings = registerOutput<InstanceAdminSettings?>('adminSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceAdminSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     consumerNetwork = registerOutput<String?>('consumerNetwork');
-    controlledEgressConfig = registerOutput<InstanceControlledEgressConfig?>(
-      'controlledEgressConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceControlledEgressConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    controlledEgressConfig = registerOutput<InstanceControlledEgressConfig?>('controlledEgressConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceControlledEgressConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     controlledEgressEnabled = registerOutput<bool?>('controlledEgressEnabled');
     createTime = registerOutput<String>('createTime');
-    customDomain = registerOutput<InstanceCustomDomain?>(
-      'customDomain',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceCustomDomain.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    customDomain = registerOutput<InstanceCustomDomain?>('customDomain', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceCustomDomain.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String?>('deletionPolicy');
-    denyMaintenancePeriod = registerOutput<InstanceDenyMaintenancePeriod?>(
-      'denyMaintenancePeriod',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceDenyMaintenancePeriod.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    denyMaintenancePeriod = registerOutput<InstanceDenyMaintenancePeriod?>('denyMaintenancePeriod', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceDenyMaintenancePeriod.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     egressPublicIp = registerOutput<String>('egressPublicIp');
-    encryptionConfig = registerOutput<InstanceEncryptionConfig>(
-      'encryptionConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceEncryptionConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    encryptionConfig = registerOutput<InstanceEncryptionConfig>('encryptionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceEncryptionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     fipsEnabled = registerOutput<bool?>('fipsEnabled');
     geminiEnabled = registerOutput<bool?>('geminiEnabled');
     ingressPrivateIp = registerOutput<String>('ingressPrivateIp');
     ingressPublicIp = registerOutput<String>('ingressPublicIp');
     lookerUri = registerOutput<String>('lookerUri');
     lookerVersion = registerOutput<String>('lookerVersion');
-    maintenanceWindow = registerOutput<InstanceMaintenanceWindow?>(
-      'maintenanceWindow',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceMaintenanceWindow.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    maintenanceWindow = registerOutput<InstanceMaintenanceWindow?>('maintenanceWindow', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceMaintenanceWindow.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    oauthConfig = registerOutput<InstanceOauthConfig>(
-      'oauthConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceOauthConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    periodicExportConfig = registerOutput<InstancePeriodicExportConfig?>(
-      'periodicExportConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstancePeriodicExportConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    oauthConfig = registerOutput<InstanceOauthConfig>('oauthConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceOauthConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    periodicExportConfig = registerOutput<InstancePeriodicExportConfig?>('periodicExportConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstancePeriodicExportConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     platformEdition = registerOutput<String?>('platformEdition');
     privateIpEnabled = registerOutput<bool?>('privateIpEnabled');
     project = registerOutput<String>('project');
-    pscConfig = registerOutput<InstancePscConfig>(
-      'pscConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstancePscConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    pscConfig = registerOutput<InstancePscConfig>('pscConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstancePscConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     pscEnabled = registerOutput<bool?>('pscEnabled');
     publicIpEnabled = registerOutput<bool?>('publicIpEnabled');
     region = registerOutput<String>('region');
     reservedRange = registerOutput<String?>('reservedRange');
     updateTime = registerOutput<String>('updateTime');
-    userMetadata = registerOutput<InstanceUserMetadata?>(
-      'userMetadata',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return InstanceUserMetadata.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    userMetadata = registerOutput<InstanceUserMetadata?>('userMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceUserMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

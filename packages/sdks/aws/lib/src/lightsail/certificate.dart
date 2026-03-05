@@ -122,30 +122,22 @@ import 'certificate_state.dart';
 class Certificate extends pulumi.CustomResource {
   /// ARN of the certificate.
   late final pulumi.Output<String> arn;
-
   /// Date and time when the certificate was created.
   late final pulumi.Output<String> createdAt;
-
   /// Domain name for which the certificate should be issued.
   late final pulumi.Output<String> domainName;
-
   /// Set of domain validation objects which can be used to complete certificate validation. Can have more than one element, e.g., if SANs are defined. Each element contains the following attributes:
   late final pulumi.Output<List<Map<String, dynamic>>> domainValidationOptions;
-
   /// Name of the certificate.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Set of domains that should be SANs in the issued certificate. `domain_name` attribute is automatically added as a Subject Alternative Name.
   late final pulumi.Output<List<String>> subjectAlternativeNames;
-
   /// Map of tags to assign to the resource. To create a key-only tag, use an empty string as the value. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -158,22 +150,18 @@ class Certificate extends pulumi.CustomResource {
     CertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:lightsail/certificate:Certificate',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:lightsail/certificate:Certificate',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     createdAt = registerOutput<String>('createdAt');
     domainName = registerOutput<String>('domainName');
-    domainValidationOptions = registerOutput<List<Map<String, dynamic>>>(
-      'domainValidationOptions',
-    );
+    domainValidationOptions = registerOutput<List<Map<String, dynamic>>>('domainValidationOptions');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    subjectAlternativeNames = registerOutput<List<String>>(
-      'subjectAlternativeNames',
-    );
+    subjectAlternativeNames = registerOutput<List<String>>('subjectAlternativeNames');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
@@ -196,22 +184,18 @@ class Certificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:lightsail/certificate:Certificate',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:lightsail/certificate:Certificate',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     createdAt = registerOutput<String>('createdAt');
     domainName = registerOutput<String>('domainName');
-    domainValidationOptions = registerOutput<List<Map<String, dynamic>>>(
-      'domainValidationOptions',
-    );
+    domainValidationOptions = registerOutput<List<Map<String, dynamic>>>('domainValidationOptions');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    subjectAlternativeNames = registerOutput<List<String>>(
-      'subjectAlternativeNames',
-    );
+    subjectAlternativeNames = registerOutput<List<String>>('subjectAlternativeNames');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }

@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ThreatIntelligenceIndicatorExternalReference {
   /// The description of the external reference of the Threat Intelligence Indicator.
   final pulumi.Input<String>? description;
-
   /// The list of hashes of the external reference of the Threat Intelligence Indicator.
   final pulumi.Input<Map<String, String>>? hashes;
-
   /// The ID of the Sentinel Threat Intelligence Indicator.
   final pulumi.Input<String>? id;
-
   /// The source name of the external reference of the Threat Intelligence Indicator.
   final pulumi.Input<String>? sourceName;
-
   /// The url of the external reference of the Threat Intelligence Indicator.
   final pulumi.Input<String>? url;
 
@@ -42,37 +38,14 @@ class ThreatIntelligenceIndicatorExternalReference {
     };
   }
 
-  factory ThreatIntelligenceIndicatorExternalReference.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ThreatIntelligenceIndicatorExternalReference.fromMap(Map<String, dynamic> map) {
     return ThreatIntelligenceIndicatorExternalReference(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      hashes: (() {
-        final guardedValue = map['hashes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sourceName: (() {
-        final guardedValue = map['sourceName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      url: (() {
-        final guardedValue = map['url'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      hashes: (() { final guardedValue = map['hashes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourceName: (() { final guardedValue = map['sourceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      url: (() { final guardedValue = map['url']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -9,10 +9,16 @@ class Uint128Response {
   /// Creates a new [Uint128Response].
   /// [high] Required.
   /// [low] Required.
-  Uint128Response({required this.high, required this.low});
+  Uint128Response({
+    required this.high,
+    required this.low,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'high': high, 'low': low};
+    return <String, dynamic>{
+      'high': high,
+      'low': low,
+    };
   }
 
   factory Uint128Response.fromMap(Map<String, dynamic> map) {
@@ -22,3 +28,4 @@ class Uint128Response {
     );
   }
 }
+

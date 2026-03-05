@@ -9,7 +9,9 @@ class SoftwareAssuranceProperties {
 
   /// Creates a new [SoftwareAssuranceProperties].
   /// [softwareAssuranceIntent] Customer Intent for Software Assurance Benefit.
-  SoftwareAssuranceProperties({this.softwareAssuranceIntent});
+  SoftwareAssuranceProperties({
+    this.softwareAssuranceIntent,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,11 +21,8 @@ class SoftwareAssuranceProperties {
 
   factory SoftwareAssuranceProperties.fromMap(Map<String, dynamic> map) {
     return SoftwareAssuranceProperties(
-      softwareAssuranceIntent: (() {
-        final guardedValue = map['softwareAssuranceIntent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      softwareAssuranceIntent: (() { final guardedValue = map['softwareAssuranceIntent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

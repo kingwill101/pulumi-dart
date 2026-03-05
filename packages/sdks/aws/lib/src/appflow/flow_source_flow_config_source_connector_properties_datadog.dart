@@ -7,17 +7,20 @@ class FlowSourceFlowConfigSourceConnectorPropertiesDatadog {
 
   /// Creates a new [FlowSourceFlowConfigSourceConnectorPropertiesDatadog].
   /// [object_] Required.
-  FlowSourceFlowConfigSourceConnectorPropertiesDatadog({required this.object_});
+  FlowSourceFlowConfigSourceConnectorPropertiesDatadog({
+    required this.object_,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'object': object_};
+    return <String, dynamic>{
+      'object': object_,
+    };
   }
 
-  factory FlowSourceFlowConfigSourceConnectorPropertiesDatadog.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FlowSourceFlowConfigSourceConnectorPropertiesDatadog.fromMap(Map<String, dynamic> map) {
     return FlowSourceFlowConfigSourceConnectorPropertiesDatadog(
       object_: pulumi.Input.fromValue(map['object'] as String),
     );
   }
 }
+

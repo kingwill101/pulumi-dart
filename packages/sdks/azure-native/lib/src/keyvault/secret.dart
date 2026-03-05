@@ -154,19 +154,14 @@ import 'secret_properties_response.dart';
 class Secret extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Azure location of the key vault resource.
   late final pulumi.Output<String> location;
-
   /// Name of the key vault resource.
   late final pulumi.Output<String> name;
-
   /// Properties of the secret
   late final pulumi.Output<SecretPropertiesResponse> properties;
-
   /// Tags assigned to the key vault resource.
   late final pulumi.Output<Map<String, String>> tags;
-
   /// Resource type of the key vault resource.
   late final pulumi.Output<String> type;
 
@@ -174,26 +169,20 @@ class Secret extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Secret]. {@macro pulumi_keyvault_secret_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Secret(String name, {SecretArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:keyvault:Secret',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Secret(
+    String name, {
+    SecretArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:keyvault:Secret',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<SecretPropertiesResponse>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SecretPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<SecretPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecretPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>>('tags');
     type = registerOutput<String>('type');
   }

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ImageArgs {
   /// The description of the image.
   final pulumi.Input<String>? description;
-
   /// The desktop id of the desktop.
   final pulumi.Input<String> desktopId;
-
   /// The name of the image.
   final pulumi.Input<String>? imageName;
 
@@ -20,7 +18,11 @@ class ImageArgs {
   /// [description] The description of the image.
   /// [desktopId] The desktop id of the desktop.
   /// [imageName] The name of the image.
-  ImageArgs({this.description, required this.desktopId, this.imageName});
+  ImageArgs({
+    this.description,
+    required this.desktopId,
+    this.imageName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,17 +34,10 @@ class ImageArgs {
 
   factory ImageArgs.fromMap(Map<String, dynamic> map) {
     return ImageArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       desktopId: pulumi.Input.fromValue(map['desktopId'] as String),
-      imageName: (() {
-        final guardedValue = map['imageName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      imageName: (() { final guardedValue = map['imageName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

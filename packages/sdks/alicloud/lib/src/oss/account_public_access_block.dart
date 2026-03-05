@@ -140,11 +140,11 @@ class AccountPublicAccessBlock extends pulumi.CustomResource {
     AccountPublicAccessBlockArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:oss/accountPublicAccessBlock:AccountPublicAccessBlock',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:oss/accountPublicAccessBlock:AccountPublicAccessBlock',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     blockPublicAccess = registerOutput<bool>('blockPublicAccess');
   }
 
@@ -166,11 +166,11 @@ class AccountPublicAccessBlock extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:oss/accountPublicAccessBlock:AccountPublicAccessBlock',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:oss/accountPublicAccessBlock:AccountPublicAccessBlock',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     blockPublicAccess = registerOutput<bool>('blockPublicAccess');
   }
 }

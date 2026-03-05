@@ -9,17 +9,20 @@ class GoogleCloudDialogflowCxV3IntentInput {
 
   /// Creates a new [GoogleCloudDialogflowCxV3IntentInput].
   /// [intent] The unique identifier of the intent. Format: `projects//locations//agents//intents/`.
-  GoogleCloudDialogflowCxV3IntentInput({required this.intent});
+  GoogleCloudDialogflowCxV3IntentInput({
+    required this.intent,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'intent': intent};
+    return <String, dynamic>{
+      'intent': intent,
+    };
   }
 
-  factory GoogleCloudDialogflowCxV3IntentInput.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDialogflowCxV3IntentInput.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3IntentInput(
       intent: pulumi.Input.fromValue(map['intent'] as String),
     );
   }
 }
+

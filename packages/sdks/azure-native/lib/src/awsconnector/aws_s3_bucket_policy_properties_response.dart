@@ -9,21 +9,20 @@ class AwsS3BucketPolicyPropertiesResponse {
 
   /// Creates a new [AwsS3BucketPolicyPropertiesResponse].
   /// [policy] &lt;p&gt;The bucket policy as a JSON document.&lt;/p&gt;
-  AwsS3BucketPolicyPropertiesResponse({this.policy});
+  AwsS3BucketPolicyPropertiesResponse({
+    this.policy,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'policy': ?policy};
+    return <String, dynamic>{
+      'policy': ?policy,
+    };
   }
 
-  factory AwsS3BucketPolicyPropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AwsS3BucketPolicyPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsS3BucketPolicyPropertiesResponse(
-      policy: (() {
-        final guardedValue = map['policy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      policy: (() { final guardedValue = map['policy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

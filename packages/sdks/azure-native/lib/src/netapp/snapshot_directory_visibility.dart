@@ -15,3 +15,4 @@ enum SnapshotDirectoryVisibility {
     throw ArgumentError('Unknown SnapshotDirectoryVisibility value: $value');
   }
 }
+

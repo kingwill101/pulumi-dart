@@ -6,13 +6,8 @@ import 'get_application_providers_application_provider_display_data.dart';
 class GetApplicationProvidersApplicationProvider {
   /// ARN of the application provider.
   final pulumi.Input<String> applicationProviderArn;
-
   /// An object describing how IAM Identity Center represents the application provider in the portal. See `display_data` below.
-  final pulumi.Input<
-    List<GetApplicationProvidersApplicationProviderDisplayData>
-  >
-  displayDatas;
-
+  final pulumi.Input<List<GetApplicationProvidersApplicationProviderDisplayData>> displayDatas;
   /// Protocol that the application provider uses to perform federation. Valid values are `SAML` and `OAUTH`.
   final pulumi.Input<String> federationProtocol;
 
@@ -29,43 +24,17 @@ class GetApplicationProvidersApplicationProvider {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'applicationProviderArn': applicationProviderArn,
-      'displayDatas':
-          pulumi.Input.mapInputValue<
-            List<GetApplicationProvidersApplicationProviderDisplayData>,
-            List<Map<String, dynamic>>
-          >(
-            displayDatas,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetApplicationProvidersApplicationProviderDisplayData,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'displayDatas': pulumi.Input.mapInputValue<List<GetApplicationProvidersApplicationProviderDisplayData>, List<Map<String, dynamic>>>(displayDatas, (value) => pulumi.Input.encodeList<GetApplicationProvidersApplicationProviderDisplayData, Map<String, dynamic>>(value, (value) => value.toMap())),
       'federationProtocol': federationProtocol,
     };
   }
 
-  factory GetApplicationProvidersApplicationProvider.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetApplicationProvidersApplicationProvider.fromMap(Map<String, dynamic> map) {
     return GetApplicationProvidersApplicationProvider(
-      applicationProviderArn: pulumi.Input.fromValue(
-        map['applicationProviderArn'] as String,
-      ),
-      displayDatas: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<
-          GetApplicationProvidersApplicationProviderDisplayData
-        >(
-          map['displayDatas']!,
-          (value) =>
-              GetApplicationProvidersApplicationProviderDisplayData.fromMap(
-                (value as Map).cast<String, dynamic>(),
-              ),
-        ),
-      ),
-      federationProtocol: pulumi.Input.fromValue(
-        map['federationProtocol'] as String,
-      ),
+      applicationProviderArn: pulumi.Input.fromValue(map['applicationProviderArn'] as String),
+      displayDatas: pulumi.Input.fromValue(pulumi.Input.decodeList<GetApplicationProvidersApplicationProviderDisplayData>(map['displayDatas']!, (value) => GetApplicationProvidersApplicationProviderDisplayData.fromMap((value as Map).cast<String, dynamic>()))),
+      federationProtocol: pulumi.Input.fromValue(map['federationProtocol'] as String),
     );
   }
 }
+

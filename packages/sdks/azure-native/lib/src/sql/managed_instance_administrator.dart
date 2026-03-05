@@ -295,22 +295,16 @@ import 'managed_instance_administrator_args.dart';
 class ManagedInstanceAdministrator extends pulumi.CustomResource {
   /// Type of the managed instance administrator.
   late final pulumi.Output<String> administratorType;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Login name of the managed instance administrator.
   late final pulumi.Output<String> login;
-
   /// Resource name.
   late final pulumi.Output<String> name;
-
   /// SID (object ID) of the managed instance administrator.
   late final pulumi.Output<String> sid;
-
   /// Tenant ID of the managed instance administrator.
   late final pulumi.Output<String?> tenantId;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -323,11 +317,11 @@ class ManagedInstanceAdministrator extends pulumi.CustomResource {
     ManagedInstanceAdministratorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:sql:ManagedInstanceAdministrator',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:sql:ManagedInstanceAdministrator',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     administratorType = registerOutput<String>('administratorType');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     login = registerOutput<String>('login');

@@ -11,10 +11,14 @@ class GetGradientaiOpenaiApiKeyArgs {
 
   /// Creates a new [GetGradientaiOpenaiApiKeyArgs].
   /// [uuid] Required.
-  GetGradientaiOpenaiApiKeyArgs({required this.uuid});
+  GetGradientaiOpenaiApiKeyArgs({
+    required this.uuid,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'uuid': uuid};
+    return <String, dynamic>{
+      'uuid': uuid,
+    };
   }
 
   factory GetGradientaiOpenaiApiKeyArgs.fromMap(Map<String, dynamic> map) {
@@ -23,3 +27,4 @@ class GetGradientaiOpenaiApiKeyArgs {
     );
   }
 }
+

@@ -7,12 +7,10 @@ class WorkerPoolTemplateVpcAccessNetworkInterface {
   /// network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be
   /// looked up from the subnetwork.
   final pulumi.Input<String>? network;
-
   /// The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must be specified. If both
   /// network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the
   /// subnetwork with the same name with the network will be used.
   final pulumi.Input<String>? subnetwork;
-
   /// Network tags applied to this Cloud Run WorkerPool.
   final pulumi.Input<List<String>>? tags;
 
@@ -34,25 +32,12 @@ class WorkerPoolTemplateVpcAccessNetworkInterface {
     };
   }
 
-  factory WorkerPoolTemplateVpcAccessNetworkInterface.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WorkerPoolTemplateVpcAccessNetworkInterface.fromMap(Map<String, dynamic> map) {
     return WorkerPoolTemplateVpcAccessNetworkInterface(
-      network: (() {
-        final guardedValue = map['network'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subnetwork: (() {
-        final guardedValue = map['subnetwork'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subnetwork: (() { final guardedValue = map['subnetwork']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

@@ -7,7 +7,6 @@ class RouterApplianceInstanceNetworkconnectivityV1alpha1 {
   /// The IP address of the network interface to use for peering.
   final pulumi.Input<String>? ipAddress;
   final pulumi.Input<String>? networkInterface;
-
   /// The URI of the virtual machine resource
   final pulumi.Input<String>? virtualMachine;
 
@@ -29,25 +28,12 @@ class RouterApplianceInstanceNetworkconnectivityV1alpha1 {
     };
   }
 
-  factory RouterApplianceInstanceNetworkconnectivityV1alpha1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RouterApplianceInstanceNetworkconnectivityV1alpha1.fromMap(Map<String, dynamic> map) {
     return RouterApplianceInstanceNetworkconnectivityV1alpha1(
-      ipAddress: (() {
-        final guardedValue = map['ipAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      networkInterface: (() {
-        final guardedValue = map['networkInterface'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      virtualMachine: (() {
-        final guardedValue = map['virtualMachine'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      networkInterface: (() { final guardedValue = map['networkInterface']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      virtualMachine: (() { final guardedValue = map['virtualMachine']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

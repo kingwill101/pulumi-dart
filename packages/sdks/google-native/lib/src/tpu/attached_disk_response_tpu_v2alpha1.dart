@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AttachedDiskResponseTpuV2alpha1 {
   /// The mode in which to attach this disk. If not specified, the default is READ_WRITE mode. Only applicable to data_disks.
   final pulumi.Input<String> mode;
-
   /// Specifies the full path to an existing disk. For example: "projects/my-project/zones/us-central1-c/disks/my-disk".
   final pulumi.Input<String> sourceDisk;
 
@@ -19,7 +18,10 @@ class AttachedDiskResponseTpuV2alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'mode': mode, 'sourceDisk': sourceDisk};
+    return <String, dynamic>{
+      'mode': mode,
+      'sourceDisk': sourceDisk,
+    };
   }
 
   factory AttachedDiskResponseTpuV2alpha1.fromMap(Map<String, dynamic> map) {
@@ -29,3 +31,4 @@ class AttachedDiskResponseTpuV2alpha1 {
     );
   }
 }
+

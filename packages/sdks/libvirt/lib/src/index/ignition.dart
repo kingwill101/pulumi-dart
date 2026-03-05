@@ -35,13 +35,10 @@ import '../internal/package_registration.dart' as package_registration;
 class Ignition extends pulumi.CustomResource {
   /// Ignition configuration content (JSON)
   late final pulumi.Output<String> content;
-
   /// Name for this ignition resource
   late final pulumi.Output<String> name;
-
   /// Full path to the generated ignition file
   late final pulumi.Output<String> path;
-
   /// Size of the file in bytes
   late final pulumi.Output<double> size;
 
@@ -54,12 +51,12 @@ class Ignition extends pulumi.CustomResource {
     IgnitionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'libvirt:index/ignition:Ignition',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-         registerPackageRequest: package_registration.registerPackageRequest,
-       ) {
+          'libvirt:index/ignition:Ignition',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+          registerPackageRequest: package_registration.registerPackageRequest,
+        ) {
     content = registerOutput<String>('content');
     this.name = registerOutput<String>('name');
     path = registerOutput<String>('path');
@@ -84,11 +81,11 @@ class Ignition extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'libvirt:index/ignition:Ignition',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'libvirt:index/ignition:Ignition',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     content = registerOutput<String>('content');
     this.name = registerOutput<String>('name');
     path = registerOutput<String>('path');

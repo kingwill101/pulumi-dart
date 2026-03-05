@@ -19,3 +19,4 @@ enum MarketplaceSubscriptionStatus {
     throw ArgumentError('Unknown MarketplaceSubscriptionStatus value: $value');
   }
 }
+

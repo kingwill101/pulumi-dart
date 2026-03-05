@@ -5,43 +5,30 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTrafficMirrorSessionsSession {
   /// Indicates whether traffic mirror sessions are enabled. default to `false`.
   final pulumi.Input<bool> enabled;
-
   /// The ID of the Traffic Mirror Session.
   final pulumi.Input<String> id;
-
   /// The maximum transmission unit (MTU).
   final pulumi.Input<int> packetLength;
-
   /// The priority of the traffic mirror session. A smaller value indicates a higher priority.
   final pulumi.Input<int> priority;
-
   /// The state of the traffic mirror session. Valid values: `Creating`, `Created`, `Modifying` and `Deleting`.
   final pulumi.Input<String> status;
-
   /// The ID of the filter.
   final pulumi.Input<String> trafficMirrorFilterId;
-
   /// The state of the traffic mirror session. Valid values: `Normal` or `FinancialLocked`. `Normal`: working as expected. `FinancialLocked`: locked due to overdue payments.
   final pulumi.Input<String> trafficMirrorSessionBusinessStatus;
-
   /// The description of the traffic mirror session.
   final pulumi.Input<String> trafficMirrorSessionDescription;
-
   /// The first ID of the resource.
   final pulumi.Input<String> trafficMirrorSessionId;
-
   /// The name of the traffic mirror session.
   final pulumi.Input<String> trafficMirrorSessionName;
-
   /// The ID of the mirror source.
   final pulumi.Input<List<String>> trafficMirrorSourceIds;
-
   /// The ID of the mirror destination. You can specify only an ENI or a Server Load Balancer (SLB) instance as a mirror destination.
   final pulumi.Input<String> trafficMirrorTargetId;
-
   /// The type of the mirror destination. Valid values: `NetworkInterface` or `SLB`. `NetworkInterface`: an ENI. `SLB`: an internal-facing SLB instance
   final pulumi.Input<String> trafficMirrorTargetType;
-
   /// You can specify VNIs to distinguish different mirrored traffic.
   final pulumi.Input<int> virtualNetworkId;
 
@@ -103,31 +90,16 @@ class GetTrafficMirrorSessionsSession {
       packetLength: pulumi.Input.fromValue(map['packetLength'] as int),
       priority: pulumi.Input.fromValue(map['priority'] as int),
       status: pulumi.Input.fromValue(map['status'] as String),
-      trafficMirrorFilterId: pulumi.Input.fromValue(
-        map['trafficMirrorFilterId'] as String,
-      ),
-      trafficMirrorSessionBusinessStatus: pulumi.Input.fromValue(
-        map['trafficMirrorSessionBusinessStatus'] as String,
-      ),
-      trafficMirrorSessionDescription: pulumi.Input.fromValue(
-        map['trafficMirrorSessionDescription'] as String,
-      ),
-      trafficMirrorSessionId: pulumi.Input.fromValue(
-        map['trafficMirrorSessionId'] as String,
-      ),
-      trafficMirrorSessionName: pulumi.Input.fromValue(
-        map['trafficMirrorSessionName'] as String,
-      ),
-      trafficMirrorSourceIds: pulumi.Input.fromValue(
-        (map['trafficMirrorSourceIds'] as List).cast<String>(),
-      ),
-      trafficMirrorTargetId: pulumi.Input.fromValue(
-        map['trafficMirrorTargetId'] as String,
-      ),
-      trafficMirrorTargetType: pulumi.Input.fromValue(
-        map['trafficMirrorTargetType'] as String,
-      ),
+      trafficMirrorFilterId: pulumi.Input.fromValue(map['trafficMirrorFilterId'] as String),
+      trafficMirrorSessionBusinessStatus: pulumi.Input.fromValue(map['trafficMirrorSessionBusinessStatus'] as String),
+      trafficMirrorSessionDescription: pulumi.Input.fromValue(map['trafficMirrorSessionDescription'] as String),
+      trafficMirrorSessionId: pulumi.Input.fromValue(map['trafficMirrorSessionId'] as String),
+      trafficMirrorSessionName: pulumi.Input.fromValue(map['trafficMirrorSessionName'] as String),
+      trafficMirrorSourceIds: pulumi.Input.fromValue((map['trafficMirrorSourceIds'] as List).cast<String>()),
+      trafficMirrorTargetId: pulumi.Input.fromValue(map['trafficMirrorTargetId'] as String),
+      trafficMirrorTargetType: pulumi.Input.fromValue(map['trafficMirrorTargetType'] as String),
       virtualNetworkId: pulumi.Input.fromValue(map['virtualNetworkId'] as int),
     );
   }
 }
+

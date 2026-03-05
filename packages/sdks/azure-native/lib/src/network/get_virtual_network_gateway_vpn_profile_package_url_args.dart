@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVirtualNetworkGatewayVpnProfilePackageUrlArgs {
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the virtual network gateway.
   final pulumi.Input<String> virtualNetworkGatewayName;
 
@@ -28,16 +27,11 @@ class GetVirtualNetworkGatewayVpnProfilePackageUrlArgs {
     };
   }
 
-  factory GetVirtualNetworkGatewayVpnProfilePackageUrlArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetVirtualNetworkGatewayVpnProfilePackageUrlArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualNetworkGatewayVpnProfilePackageUrlArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      virtualNetworkGatewayName: pulumi.Input.fromValue(
-        map['virtualNetworkGatewayName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      virtualNetworkGatewayName: pulumi.Input.fromValue(map['virtualNetworkGatewayName'] as String),
     );
   }
 }
+

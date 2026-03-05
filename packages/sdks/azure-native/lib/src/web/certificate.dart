@@ -153,80 +153,54 @@ import 'hosting_environment_profile_response.dart';
 class Certificate extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// CNAME of the certificate to be issued via free certificate
   late final pulumi.Output<String?> canonicalName;
-
   /// Raw bytes of .cer file
   late final pulumi.Output<String> cerBlob;
-
   /// Method of domain validation for free cert
   late final pulumi.Output<String?> domainValidationMethod;
-
   /// Certificate expiration date.
   late final pulumi.Output<String> expirationDate;
-
   /// Friendly name of the certificate.
   late final pulumi.Output<String> friendlyName;
-
   /// Host names the certificate applies to.
   late final pulumi.Output<List<String>?> hostNames;
-
   /// Specification for the App Service Environment to use for the certificate.
-  late final pulumi.Output<HostingEnvironmentProfileResponse>
-  hostingEnvironmentProfile;
-
+  late final pulumi.Output<HostingEnvironmentProfileResponse> hostingEnvironmentProfile;
   /// Certificate issue Date.
   late final pulumi.Output<String> issueDate;
-
   /// Certificate issuer.
   late final pulumi.Output<String> issuer;
-
   /// Key Vault Csm resource Id.
   late final pulumi.Output<String?> keyVaultId;
-
   /// Key Vault secret name.
   late final pulumi.Output<String?> keyVaultSecretName;
-
   /// Status of the Key Vault secret.
   late final pulumi.Output<String> keyVaultSecretStatus;
-
   /// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
   late final pulumi.Output<String?> kind;
-
   /// Resource Location.
   late final pulumi.Output<String> location;
-
   /// Resource Name.
   late final pulumi.Output<String> name;
-
   /// Pfx blob.
   late final pulumi.Output<String?> pfxBlob;
-
   /// Public key hash.
   late final pulumi.Output<String> publicKeyHash;
-
   /// Self link.
   late final pulumi.Output<String> selfLink;
-
   /// Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
   late final pulumi.Output<String?> serverFarmId;
-
   /// App name.
   late final pulumi.Output<String> siteName;
-
   /// Subject name of the certificate.
   late final pulumi.Output<String> subjectName;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Certificate thumbprint.
   late final pulumi.Output<String> thumbprint;
-
   /// Resource type.
   late final pulumi.Output<String> type;
-
   /// Is the certificate valid?.
   late final pulumi.Output<bool> valid;
 
@@ -239,11 +213,11 @@ class Certificate extends pulumi.CustomResource {
     CertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:web:Certificate',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:web:Certificate',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     canonicalName = registerOutput<String?>('canonicalName');
     cerBlob = registerOutput<String>('cerBlob');
@@ -251,17 +225,7 @@ class Certificate extends pulumi.CustomResource {
     expirationDate = registerOutput<String>('expirationDate');
     friendlyName = registerOutput<String>('friendlyName');
     hostNames = registerOutput<List<String>?>('hostNames');
-    hostingEnvironmentProfile =
-        registerOutput<HostingEnvironmentProfileResponse>(
-          'hostingEnvironmentProfile',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return HostingEnvironmentProfileResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    hostingEnvironmentProfile = registerOutput<HostingEnvironmentProfileResponse>('hostingEnvironmentProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HostingEnvironmentProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     issueDate = registerOutput<String>('issueDate');
     issuer = registerOutput<String>('issuer');
     keyVaultId = registerOutput<String?>('keyVaultId');

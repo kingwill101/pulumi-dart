@@ -11,37 +11,25 @@ import 'analytics_application_inputs_starting_position_configuration.dart';
 class AnalyticsApplicationInputs {
   /// The ARN of the Kinesis Analytics Application.
   final pulumi.Input<String>? id;
-
   /// The Kinesis Firehose configuration for the streaming source. Conflicts with `kinesis_stream`.
   /// See Kinesis Firehose below for more details.
-  final pulumi.Input<AnalyticsApplicationInputsKinesisFirehose>?
-  kinesisFirehose;
-
+  final pulumi.Input<AnalyticsApplicationInputsKinesisFirehose>? kinesisFirehose;
   /// The Kinesis Stream configuration for the streaming source. Conflicts with `kinesis_firehose`.
   /// See Kinesis Stream below for more details.
   final pulumi.Input<AnalyticsApplicationInputsKinesisStream>? kinesisStream;
-
   /// The Name Prefix to use when creating an in-application stream.
   final pulumi.Input<String> namePrefix;
-
   /// The number of Parallel in-application streams to create.
   /// See Parallelism below for more details.
   final pulumi.Input<AnalyticsApplicationInputsParallelism>? parallelism;
-
   /// The Processing Configuration to transform records as they are received from the stream.
   /// See Processing Configuration below for more details.
-  final pulumi.Input<AnalyticsApplicationInputsProcessingConfiguration>?
-  processingConfiguration;
-
+  final pulumi.Input<AnalyticsApplicationInputsProcessingConfiguration>? processingConfiguration;
   /// The Schema format of the data in the streaming source. See Source Schema below for more details.
   final pulumi.Input<AnalyticsApplicationInputsSchema> schema;
-
   /// The point at which the application starts processing records from the streaming source.
   /// See Starting Position Configuration below for more details.
-  final pulumi.Input<
-    List<AnalyticsApplicationInputsStartingPositionConfiguration>
-  >?
-  startingPositionConfigurations;
+  final pulumi.Input<List<AnalyticsApplicationInputsStartingPositionConfiguration>>? startingPositionConfigurations;
   final pulumi.Input<List<String>>? streamNames;
 
   /// Creates a new [AnalyticsApplicationInputs].
@@ -69,117 +57,29 @@ class AnalyticsApplicationInputs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': ?id,
-      'kinesisFirehose':
-          ?pulumi.Input.mapOptionalInputValue<
-            AnalyticsApplicationInputsKinesisFirehose,
-            Map<String, dynamic>
-          >(kinesisFirehose, (value) => value.toMap()),
-      'kinesisStream':
-          ?pulumi.Input.mapOptionalInputValue<
-            AnalyticsApplicationInputsKinesisStream,
-            Map<String, dynamic>
-          >(kinesisStream, (value) => value.toMap()),
+      'kinesisFirehose': ?pulumi.Input.mapOptionalInputValue<AnalyticsApplicationInputsKinesisFirehose, Map<String, dynamic>>(kinesisFirehose, (value) => value.toMap()),
+      'kinesisStream': ?pulumi.Input.mapOptionalInputValue<AnalyticsApplicationInputsKinesisStream, Map<String, dynamic>>(kinesisStream, (value) => value.toMap()),
       'namePrefix': namePrefix,
-      'parallelism':
-          ?pulumi.Input.mapOptionalInputValue<
-            AnalyticsApplicationInputsParallelism,
-            Map<String, dynamic>
-          >(parallelism, (value) => value.toMap()),
-      'processingConfiguration':
-          ?pulumi.Input.mapOptionalInputValue<
-            AnalyticsApplicationInputsProcessingConfiguration,
-            Map<String, dynamic>
-          >(processingConfiguration, (value) => value.toMap()),
-      'schema':
-          pulumi.Input.mapInputValue<
-            AnalyticsApplicationInputsSchema,
-            Map<String, dynamic>
-          >(schema, (value) => value.toMap()),
-      'startingPositionConfigurations':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<AnalyticsApplicationInputsStartingPositionConfiguration>,
-            List<Map<String, dynamic>>
-          >(
-            startingPositionConfigurations,
-            (value) =>
-                pulumi.Input.encodeList<
-                  AnalyticsApplicationInputsStartingPositionConfiguration,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'parallelism': ?pulumi.Input.mapOptionalInputValue<AnalyticsApplicationInputsParallelism, Map<String, dynamic>>(parallelism, (value) => value.toMap()),
+      'processingConfiguration': ?pulumi.Input.mapOptionalInputValue<AnalyticsApplicationInputsProcessingConfiguration, Map<String, dynamic>>(processingConfiguration, (value) => value.toMap()),
+      'schema': pulumi.Input.mapInputValue<AnalyticsApplicationInputsSchema, Map<String, dynamic>>(schema, (value) => value.toMap()),
+      'startingPositionConfigurations': ?pulumi.Input.mapOptionalInputValue<List<AnalyticsApplicationInputsStartingPositionConfiguration>, List<Map<String, dynamic>>>(startingPositionConfigurations, (value) => pulumi.Input.encodeList<AnalyticsApplicationInputsStartingPositionConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
       'streamNames': ?streamNames,
     };
   }
 
   factory AnalyticsApplicationInputs.fromMap(Map<String, dynamic> map) {
     return AnalyticsApplicationInputs(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kinesisFirehose: (() {
-        final guardedValue = map['kinesisFirehose'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AnalyticsApplicationInputsKinesisFirehose.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      kinesisStream: (() {
-        final guardedValue = map['kinesisStream'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AnalyticsApplicationInputsKinesisStream.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kinesisFirehose: (() { final guardedValue = map['kinesisFirehose']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AnalyticsApplicationInputsKinesisFirehose.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      kinesisStream: (() { final guardedValue = map['kinesisStream']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AnalyticsApplicationInputsKinesisStream.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       namePrefix: pulumi.Input.fromValue(map['namePrefix'] as String),
-      parallelism: (() {
-        final guardedValue = map['parallelism'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AnalyticsApplicationInputsParallelism.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      processingConfiguration: (() {
-        final guardedValue = map['processingConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AnalyticsApplicationInputsProcessingConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      schema: pulumi.Input.fromValue(
-        AnalyticsApplicationInputsSchema.fromMap(
-          (map['schema']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      startingPositionConfigurations: (() {
-        final guardedValue = map['startingPositionConfigurations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            AnalyticsApplicationInputsStartingPositionConfiguration
-          >(
-            guardedValue,
-            (value) =>
-                AnalyticsApplicationInputsStartingPositionConfiguration.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
-      streamNames: (() {
-        final guardedValue = map['streamNames'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      parallelism: (() { final guardedValue = map['parallelism']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AnalyticsApplicationInputsParallelism.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      processingConfiguration: (() { final guardedValue = map['processingConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AnalyticsApplicationInputsProcessingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      schema: pulumi.Input.fromValue(AnalyticsApplicationInputsSchema.fromMap((map['schema']! as Map).cast<String, dynamic>())),
+      startingPositionConfigurations: (() { final guardedValue = map['startingPositionConfigurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AnalyticsApplicationInputsStartingPositionConfiguration>(guardedValue, (value) => AnalyticsApplicationInputsStartingPositionConfiguration.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      streamNames: (() { final guardedValue = map['streamNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

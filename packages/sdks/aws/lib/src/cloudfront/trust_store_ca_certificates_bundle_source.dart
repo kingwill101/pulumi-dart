@@ -5,10 +5,7 @@ import 'trust_store_ca_certificates_bundle_source_ca_certificates_bundle_s3_loca
 
 class TrustStoreCaCertificatesBundleSource {
   /// Configuration block for the S3 location of the CA certificates bundle. See `ca_certificates_bundle_s3_location` below.
-  final pulumi.Input<
-    TrustStoreCaCertificatesBundleSourceCaCertificatesBundleS3Location
-  >
-  caCertificatesBundleS3Location;
+  final pulumi.Input<TrustStoreCaCertificatesBundleSourceCaCertificatesBundleS3Location> caCertificatesBundleS3Location;
 
   /// Creates a new [TrustStoreCaCertificatesBundleSource].
   /// [caCertificatesBundleS3Location] Configuration block for the S3 location of the CA certificates bundle. See `ca_certificates_bundle_s3_location` below.
@@ -18,24 +15,14 @@ class TrustStoreCaCertificatesBundleSource {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'caCertificatesBundleS3Location':
-          pulumi.Input.mapInputValue<
-            TrustStoreCaCertificatesBundleSourceCaCertificatesBundleS3Location,
-            Map<String, dynamic>
-          >(caCertificatesBundleS3Location, (value) => value.toMap()),
+      'caCertificatesBundleS3Location': pulumi.Input.mapInputValue<TrustStoreCaCertificatesBundleSourceCaCertificatesBundleS3Location, Map<String, dynamic>>(caCertificatesBundleS3Location, (value) => value.toMap()),
     };
   }
 
-  factory TrustStoreCaCertificatesBundleSource.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory TrustStoreCaCertificatesBundleSource.fromMap(Map<String, dynamic> map) {
     return TrustStoreCaCertificatesBundleSource(
-      caCertificatesBundleS3Location: pulumi.Input.fromValue(
-        TrustStoreCaCertificatesBundleSourceCaCertificatesBundleS3Location.fromMap(
-          (map['caCertificatesBundleS3Location']! as Map)
-              .cast<String, dynamic>(),
-        ),
-      ),
+      caCertificatesBundleS3Location: pulumi.Input.fromValue(TrustStoreCaCertificatesBundleSourceCaCertificatesBundleS3Location.fromMap((map['caCertificatesBundleS3Location']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

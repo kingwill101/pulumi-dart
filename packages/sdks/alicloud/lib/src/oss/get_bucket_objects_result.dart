@@ -6,12 +6,10 @@ import 'get_bucket_objects_object.dart';
 /// Result data returned by getBucketObjects.
 class GetBucketObjectsResult {
   final String bucketName;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? keyPrefix;
   final String? keyRegex;
-
   /// A list of bucket objects. Each element contains the following attributes:
   final List<GetBucketObjectsObject> objects;
   final String? outputFile;
@@ -38,11 +36,7 @@ class GetBucketObjectsResult {
       'id': id,
       'keyPrefix': ?keyPrefix,
       'keyRegex': ?keyRegex,
-      'objects':
-          pulumi.Input.encodeList<GetBucketObjectsObject, Map<String, dynamic>>(
-            objects,
-            (value) => value.toMap(),
-          ),
+      'objects': pulumi.Input.encodeList<GetBucketObjectsObject, Map<String, dynamic>>(objects, (value) => value.toMap()),
       'outputFile': ?outputFile,
     };
   }
@@ -51,27 +45,11 @@ class GetBucketObjectsResult {
     return GetBucketObjectsResult(
       bucketName: map['bucketName'] as String,
       id: map['id'] as String,
-      keyPrefix: (() {
-        final guardedValue = map['keyPrefix'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      keyRegex: (() {
-        final guardedValue = map['keyRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      objects: pulumi.Input.decodeList<GetBucketObjectsObject>(
-        map['objects']!,
-        (value) => GetBucketObjectsObject.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      keyPrefix: (() { final guardedValue = map['keyPrefix']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      keyRegex: (() { final guardedValue = map['keyRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      objects: pulumi.Input.decodeList<GetBucketObjectsObject>(map['objects']!, (value) => GetBucketObjectsObject.fromMap((value as Map).cast<String, dynamic>())),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

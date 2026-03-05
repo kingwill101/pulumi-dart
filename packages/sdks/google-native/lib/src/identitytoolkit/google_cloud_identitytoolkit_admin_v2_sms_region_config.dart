@@ -7,12 +7,9 @@ import 'google_cloud_identitytoolkit_admin_v2_allowlist_only.dart';
 /// Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
 class GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig {
   /// A policy of allowing SMS to every region by default and adding disallowed regions to a disallow list.
-  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2AllowByDefault>?
-  allowByDefault;
-
+  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2AllowByDefault>? allowByDefault;
   /// A policy of only allowing regions by explicitly adding them to an allowlist.
-  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2AllowlistOnly>?
-  allowlistOnly;
+  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2AllowlistOnly>? allowlistOnly;
 
   /// Creates a new [GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig].
   /// [allowByDefault] A policy of allowing SMS to every region by default and adding disallowed regions to a disallow list.
@@ -24,41 +21,16 @@ class GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allowByDefault':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudIdentitytoolkitAdminV2AllowByDefault,
-            Map<String, dynamic>
-          >(allowByDefault, (value) => value.toMap()),
-      'allowlistOnly':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudIdentitytoolkitAdminV2AllowlistOnly,
-            Map<String, dynamic>
-          >(allowlistOnly, (value) => value.toMap()),
+      'allowByDefault': ?pulumi.Input.mapOptionalInputValue<GoogleCloudIdentitytoolkitAdminV2AllowByDefault, Map<String, dynamic>>(allowByDefault, (value) => value.toMap()),
+      'allowlistOnly': ?pulumi.Input.mapOptionalInputValue<GoogleCloudIdentitytoolkitAdminV2AllowlistOnly, Map<String, dynamic>>(allowlistOnly, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig(
-      allowByDefault: (() {
-        final guardedValue = map['allowByDefault'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudIdentitytoolkitAdminV2AllowByDefault.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      allowlistOnly: (() {
-        final guardedValue = map['allowlistOnly'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudIdentitytoolkitAdminV2AllowlistOnly.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      allowByDefault: (() { final guardedValue = map['allowByDefault']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudIdentitytoolkitAdminV2AllowByDefault.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      allowlistOnly: (() { final guardedValue = map['allowlistOnly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudIdentitytoolkitAdminV2AllowlistOnly.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

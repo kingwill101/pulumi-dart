@@ -9,10 +9,14 @@ class AssociationSubnetResponse {
 
   /// Creates a new [AssociationSubnetResponse].
   /// [id] Association ID.
-  AssociationSubnetResponse({required this.id});
+  AssociationSubnetResponse({
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id};
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
   factory AssociationSubnetResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class AssociationSubnetResponse {
     );
   }
 }
+

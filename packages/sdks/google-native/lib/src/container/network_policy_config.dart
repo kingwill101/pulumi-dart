@@ -9,19 +9,20 @@ class NetworkPolicyConfig {
 
   /// Creates a new [NetworkPolicyConfig].
   /// [disabled] Whether NetworkPolicy is enabled for this cluster.
-  NetworkPolicyConfig({this.disabled});
+  NetworkPolicyConfig({
+    this.disabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'disabled': ?disabled};
+    return <String, dynamic>{
+      'disabled': ?disabled,
+    };
   }
 
   factory NetworkPolicyConfig.fromMap(Map<String, dynamic> map) {
     return NetworkPolicyConfig(
-      disabled: (() {
-        final guardedValue = map['disabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkArgs {
   /// The ID of the resource group.
   final pulumi.Input<String> dwResourceGroupId;
-
   /// Virtual Private Cloud ID of network resources
   final pulumi.Input<String> vpcId;
-
   /// The vSwitch ID of the network resource.
   final pulumi.Input<String> vswitchId;
 
@@ -36,11 +34,10 @@ class NetworkArgs {
 
   factory NetworkArgs.fromMap(Map<String, dynamic> map) {
     return NetworkArgs(
-      dwResourceGroupId: pulumi.Input.fromValue(
-        map['dwResourceGroupId'] as String,
-      ),
+      dwResourceGroupId: pulumi.Input.fromValue(map['dwResourceGroupId'] as String),
       vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
       vswitchId: pulumi.Input.fromValue(map['vswitchId'] as String),
     );
   }
 }
+

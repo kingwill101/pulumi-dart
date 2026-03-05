@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JobTemplateConfigManifest {
   /// The name of the generated file. The default is `manifest`.
   final pulumi.Input<String>? fileName;
-
   /// List of user supplied MuxStream.key values that should appear in this manifest.
   final pulumi.Input<List<String>>? muxStreams;
-
   /// Type of the manifest.
   /// Possible values are: `MANIFEST_TYPE_UNSPECIFIED`, `HLS`, `DASH`.
   final pulumi.Input<String>? type;
@@ -17,7 +15,11 @@ class JobTemplateConfigManifest {
   /// [fileName] The name of the generated file. The default is `manifest`.
   /// [muxStreams] List of user supplied MuxStream.key values that should appear in this manifest.
   /// [type] Type of the manifest.
-  JobTemplateConfigManifest({this.fileName, this.muxStreams, this.type});
+  JobTemplateConfigManifest({
+    this.fileName,
+    this.muxStreams,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class JobTemplateConfigManifest {
 
   factory JobTemplateConfigManifest.fromMap(Map<String, dynamic> map) {
     return JobTemplateConfigManifest(
-      fileName: (() {
-        final guardedValue = map['fileName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      muxStreams: (() {
-        final guardedValue = map['muxStreams'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      fileName: (() { final guardedValue = map['fileName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      muxStreams: (() { final guardedValue = map['muxStreams']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

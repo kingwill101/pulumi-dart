@@ -7,10 +7,8 @@ import 'google_privacy_dlp_v2_value.dart';
 class GooglePrivacyDlpV2Bucket {
   /// Upper bound of the range, exclusive; type must match min.
   final pulumi.Input<GooglePrivacyDlpV2Value>? max;
-
   /// Lower bound of the range, inclusive. Type should be the same as max if used.
   final pulumi.Input<GooglePrivacyDlpV2Value>? min;
-
   /// Replacement value for this bucket.
   final pulumi.Input<GooglePrivacyDlpV2Value> replacementValue;
 
@@ -26,49 +24,18 @@ class GooglePrivacyDlpV2Bucket {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'max':
-          ?pulumi.Input.mapOptionalInputValue<
-            GooglePrivacyDlpV2Value,
-            Map<String, dynamic>
-          >(max, (value) => value.toMap()),
-      'min':
-          ?pulumi.Input.mapOptionalInputValue<
-            GooglePrivacyDlpV2Value,
-            Map<String, dynamic>
-          >(min, (value) => value.toMap()),
-      'replacementValue':
-          pulumi.Input.mapInputValue<
-            GooglePrivacyDlpV2Value,
-            Map<String, dynamic>
-          >(replacementValue, (value) => value.toMap()),
+      'max': ?pulumi.Input.mapOptionalInputValue<GooglePrivacyDlpV2Value, Map<String, dynamic>>(max, (value) => value.toMap()),
+      'min': ?pulumi.Input.mapOptionalInputValue<GooglePrivacyDlpV2Value, Map<String, dynamic>>(min, (value) => value.toMap()),
+      'replacementValue': pulumi.Input.mapInputValue<GooglePrivacyDlpV2Value, Map<String, dynamic>>(replacementValue, (value) => value.toMap()),
     };
   }
 
   factory GooglePrivacyDlpV2Bucket.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2Bucket(
-      max: (() {
-        final guardedValue = map['max'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GooglePrivacyDlpV2Value.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      min: (() {
-        final guardedValue = map['min'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GooglePrivacyDlpV2Value.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      replacementValue: pulumi.Input.fromValue(
-        GooglePrivacyDlpV2Value.fromMap(
-          (map['replacementValue']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      max: (() { final guardedValue = map['max']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GooglePrivacyDlpV2Value.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      min: (() { final guardedValue = map['min']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GooglePrivacyDlpV2Value.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      replacementValue: pulumi.Input.fromValue(GooglePrivacyDlpV2Value.fromMap((map['replacementValue']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FunctionAppSlotAuthSettingsGoogle {
   /// The OpenID Connect Client ID for the Google web application.
   final pulumi.Input<String> clientId;
-
   /// The client secret associated with the Google web application.
   final pulumi.Input<String> clientSecret;
-
   /// The OAuth 2.0 scopes that will be requested as part of Google Sign-In authentication. &lt;https://developers.google.com/identity/sign-in/web/&gt;
   final pulumi.Input<List<String>>? oauthScopes;
 
@@ -34,11 +32,8 @@ class FunctionAppSlotAuthSettingsGoogle {
     return FunctionAppSlotAuthSettingsGoogle(
       clientId: pulumi.Input.fromValue(map['clientId'] as String),
       clientSecret: pulumi.Input.fromValue(map['clientSecret'] as String),
-      oauthScopes: (() {
-        final guardedValue = map['oauthScopes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      oauthScopes: (() { final guardedValue = map['oauthScopes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

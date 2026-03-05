@@ -9,19 +9,20 @@ class IntegerFacetingOptions {
 
   /// Creates a new [IntegerFacetingOptions].
   /// [integerBuckets] Buckets for given integer values should be in strictly ascending order. For example, if values supplied are (1,5,10,100), the following facet buckets will be formed {&lt;1, [1,5), [5-10), [10-100), &gt;=100}.
-  IntegerFacetingOptions({this.integerBuckets});
+  IntegerFacetingOptions({
+    this.integerBuckets,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'integerBuckets': ?integerBuckets};
+    return <String, dynamic>{
+      'integerBuckets': ?integerBuckets,
+    };
   }
 
   factory IntegerFacetingOptions.fromMap(Map<String, dynamic> map) {
     return IntegerFacetingOptions(
-      integerBuckets: (() {
-        final guardedValue = map['integerBuckets'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      integerBuckets: (() { final guardedValue = map['integerBuckets']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

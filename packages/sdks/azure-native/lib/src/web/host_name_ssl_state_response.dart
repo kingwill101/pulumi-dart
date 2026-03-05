@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HostNameSslStateResponse {
   /// Indicates whether the hostname is a standard or repository hostname.
   final pulumi.Input<String>? hostType;
-
   /// Hostname.
   final pulumi.Input<String>? name;
-
   /// SSL type.
   final pulumi.Input<String>? sslState;
-
   /// SSL certificate thumbprint.
   final pulumi.Input<String>? thumbprint;
-
   /// Set to &lt;code&gt;true&lt;/code&gt; to update existing hostname.
   final pulumi.Input<bool>? toUpdate;
-
   /// Virtual IP address assigned to the hostname if IP based SSL is enabled.
   final pulumi.Input<String>? virtualIP;
 
@@ -51,36 +46,13 @@ class HostNameSslStateResponse {
 
   factory HostNameSslStateResponse.fromMap(Map<String, dynamic> map) {
     return HostNameSslStateResponse(
-      hostType: (() {
-        final guardedValue = map['hostType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sslState: (() {
-        final guardedValue = map['sslState'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      thumbprint: (() {
-        final guardedValue = map['thumbprint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      toUpdate: (() {
-        final guardedValue = map['toUpdate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      virtualIP: (() {
-        final guardedValue = map['virtualIP'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      hostType: (() { final guardedValue = map['hostType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sslState: (() { final guardedValue = map['sslState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      thumbprint: (() { final guardedValue = map['thumbprint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      toUpdate: (() { final guardedValue = map['toUpdate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      virtualIP: (() { final guardedValue = map['virtualIP']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

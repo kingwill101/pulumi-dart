@@ -6,26 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OracleConnectionInfoResponse {
   /// Authentication type to use for connection
   final pulumi.Input<String>? authentication;
-
   /// EZConnect or TNSName connection string.
   final pulumi.Input<String> dataSource;
-
   /// Password credential.
   final pulumi.Input<String>? password;
-
   /// port for server
   final pulumi.Input<int>? port;
-
   /// name of the server
   final pulumi.Input<String>? serverName;
-
   /// server version
   final pulumi.Input<String>? serverVersion;
-
   /// Type of connection info
   /// Expected value is 'OracleConnectionInfo'.
   final pulumi.Input<String> type;
-
   /// User name
   final pulumi.Input<String>? userName;
 
@@ -64,38 +57,15 @@ class OracleConnectionInfoResponse {
 
   factory OracleConnectionInfoResponse.fromMap(Map<String, dynamic> map) {
     return OracleConnectionInfoResponse(
-      authentication: (() {
-        final guardedValue = map['authentication'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      authentication: (() { final guardedValue = map['authentication']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dataSource: pulumi.Input.fromValue(map['dataSource'] as String),
-      password: (() {
-        final guardedValue = map['password'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      port: (() {
-        final guardedValue = map['port'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      serverName: (() {
-        final guardedValue = map['serverName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serverVersion: (() {
-        final guardedValue = map['serverVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      serverName: (() { final guardedValue = map['serverName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serverVersion: (() { final guardedValue = map['serverVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
-      userName: (() {
-        final guardedValue = map['userName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      userName: (() { final guardedValue = map['userName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatabaseInstanceServerCaCert {
   /// The CA Certificate used to connect to the SQL Instance via SSL.
   final pulumi.Input<String>? cert;
-
   /// The CN valid for the CA Cert.
   final pulumi.Input<String>? commonName;
-
   /// Creation time of the CA Cert.
   final pulumi.Input<String>? createTime;
-
   /// Expiration time of the CA Cert.
   final pulumi.Input<String>? expirationTime;
-
   /// SHA Fingerprint of the CA Cert.
   final pulumi.Input<String>? sha1Fingerprint;
 
@@ -44,31 +40,12 @@ class DatabaseInstanceServerCaCert {
 
   factory DatabaseInstanceServerCaCert.fromMap(Map<String, dynamic> map) {
     return DatabaseInstanceServerCaCert(
-      cert: (() {
-        final guardedValue = map['cert'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      commonName: (() {
-        final guardedValue = map['commonName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      expirationTime: (() {
-        final guardedValue = map['expirationTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sha1Fingerprint: (() {
-        final guardedValue = map['sha1Fingerprint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      cert: (() { final guardedValue = map['cert']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      commonName: (() { final guardedValue = map['commonName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      expirationTime: (() { final guardedValue = map['expirationTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sha1Fingerprint: (() { final guardedValue = map['sha1Fingerprint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

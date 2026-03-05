@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OrchestratedVirtualMachineScaleSetPlan {
   /// Specifies the name of the image from the marketplace. Changing this forces a new resource to be created.
   final pulumi.Input<String> name;
-
   /// Specifies the product of the image from the marketplace. Changing this forces a new resource to be created.
   final pulumi.Input<String> product;
-
   /// Specifies the publisher of the image. Changing this forces a new resource to be created.
   final pulumi.Input<String> publisher;
 
@@ -30,9 +28,7 @@ class OrchestratedVirtualMachineScaleSetPlan {
     };
   }
 
-  factory OrchestratedVirtualMachineScaleSetPlan.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OrchestratedVirtualMachineScaleSetPlan.fromMap(Map<String, dynamic> map) {
     return OrchestratedVirtualMachineScaleSetPlan(
       name: pulumi.Input.fromValue(map['name'] as String),
       product: pulumi.Input.fromValue(map['product'] as String),
@@ -40,3 +36,4 @@ class OrchestratedVirtualMachineScaleSetPlan {
     );
   }
 }
+

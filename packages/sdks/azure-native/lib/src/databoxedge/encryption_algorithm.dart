@@ -16,3 +16,4 @@ enum EncryptionAlgorithm {
     throw ArgumentError('Unknown EncryptionAlgorithm value: $value');
   }
 }
+

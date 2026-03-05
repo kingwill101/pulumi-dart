@@ -13,8 +13,7 @@ enum ArcSqlManagedInstanceLicenseType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ArcSqlManagedInstanceLicenseType value: $value',
-    );
+    throw ArgumentError('Unknown ArcSqlManagedInstanceLicenseType value: $value');
   }
 }
+

@@ -6,22 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KvState {
   /// The content of the key, which can be up to 2 MB (2 × 1000 × 1000). If the content is larger than 2 MB, call [PutKvWithHighCapacity](https://www.alibabacloud.com/help/en/doc-detail/2850486.html).
   final pulumi.Input<int>? expiration;
-
   /// The time when the key-value pair expires, which cannot be earlier than the current time. The value is a timestamp in seconds. If you specify both Expiration and ExpirationTtl, only ExpirationTtl takes effect.
   final pulumi.Input<int>? expirationTtl;
-
   /// The relative expiration time. Unit: seconds. If you specify both Expiration and ExpirationTtl, only ExpirationTtl takes effect.
   final pulumi.Input<bool>? isbase;
-
   /// kv
   final pulumi.Input<String>? key;
-
   /// The name specified when calling [CreatevNamespace](https://help.aliyun.com/document_detail/2850317.html).
   final pulumi.Input<String>? namespace;
-
   /// The key name. The name can be up to 512 characters in length and cannot contain spaces or backslashes (\\).
   final pulumi.Input<String>? url;
-
   /// The content of the key. If the content has more than 256 characters in length, the system displays the first 100 and the last 100 characters, and omits the middle part.
   final pulumi.Input<String>? value;
 
@@ -57,41 +51,14 @@ class KvState {
 
   factory KvState.fromMap(Map<String, dynamic> map) {
     return KvState(
-      expiration: (() {
-        final guardedValue = map['expiration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      expirationTtl: (() {
-        final guardedValue = map['expirationTtl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      isbase: (() {
-        final guardedValue = map['isbase'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      key: (() {
-        final guardedValue = map['key'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      namespace: (() {
-        final guardedValue = map['namespace'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      url: (() {
-        final guardedValue = map['url'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      expiration: (() { final guardedValue = map['expiration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      expirationTtl: (() { final guardedValue = map['expirationTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      isbase: (() { final guardedValue = map['isbase']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      namespace: (() { final guardedValue = map['namespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      url: (() { final guardedValue = map['url']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

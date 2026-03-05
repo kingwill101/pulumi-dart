@@ -20,23 +20,17 @@ class BareMetalNodePoolArgs {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
-
   /// The cluster this node pool belongs to.
   final pulumi.Input<String> bareMetalCluster;
-
   /// The display name for the Bare Metal Node Pool.
   final pulumi.Input<String>? displayName;
-
   /// The location of the resource.
   final pulumi.Input<String> location;
-
   /// The bare metal node pool name.
   final pulumi.Input<String>? name;
-
   /// Node pool configuration.
   /// Structure is documented below.
   final pulumi.Input<BareMetalNodePoolNodePoolConfig> nodePoolConfig;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -66,48 +60,21 @@ class BareMetalNodePoolArgs {
       'displayName': ?displayName,
       'location': location,
       'name': ?name,
-      'nodePoolConfig':
-          pulumi.Input.mapInputValue<
-            BareMetalNodePoolNodePoolConfig,
-            Map<String, dynamic>
-          >(nodePoolConfig, (value) => value.toMap()),
+      'nodePoolConfig': pulumi.Input.mapInputValue<BareMetalNodePoolNodePoolConfig, Map<String, dynamic>>(nodePoolConfig, (value) => value.toMap()),
       'project': ?project,
     };
   }
 
   factory BareMetalNodePoolArgs.fromMap(Map<String, dynamic> map) {
     return BareMetalNodePoolArgs(
-      annotations: (() {
-        final guardedValue = map['annotations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      bareMetalCluster: pulumi.Input.fromValue(
-        map['bareMetalCluster'] as String,
-      ),
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      bareMetalCluster: pulumi.Input.fromValue(map['bareMetalCluster'] as String),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      nodePoolConfig: pulumi.Input.fromValue(
-        BareMetalNodePoolNodePoolConfig.fromMap(
-          (map['nodePoolConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nodePoolConfig: pulumi.Input.fromValue(BareMetalNodePoolNodePoolConfig.fromMap((map['nodePoolConfig']! as Map).cast<String, dynamic>())),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

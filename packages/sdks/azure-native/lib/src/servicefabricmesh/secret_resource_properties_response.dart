@@ -6,20 +6,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecretResourcePropertiesResponse {
   /// The type of the content stored in the secret value. The value of this property is opaque to Service Fabric. Once set, the value of this property cannot be changed.
   final pulumi.Input<String>? contentType;
-
   /// User readable description of the secret.
   final pulumi.Input<String>? description;
-
   /// Describes the kind of secret.
   /// Expected value is 'SecretResourceProperties'.
   final pulumi.Input<String> kind;
-
   /// State of the resource.
   final pulumi.Input<String> provisioningState;
-
   /// Status of the resource.
   final pulumi.Input<String> status;
-
   /// Gives additional information about the current status of the secret.
   final pulumi.Input<String> statusDetails;
 
@@ -52,22 +47,13 @@ class SecretResourcePropertiesResponse {
 
   factory SecretResourcePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SecretResourcePropertiesResponse(
-      contentType: (() {
-        final guardedValue = map['contentType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      contentType: (() { final guardedValue = map['contentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kind: pulumi.Input.fromValue(map['kind'] as String),
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
       statusDetails: pulumi.Input.fromValue(map['statusDetails'] as String),
     );
   }
 }
+

@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBudgetArgs {
   /// Budget Name.
   final pulumi.Input<String> budgetName;
-
   /// The scope associated with budget operations.
   ///
   /// Supported scopes for **CategoryType: Cost**
@@ -44,10 +43,16 @@ class GetBudgetArgs {
   /// Creates a new [GetBudgetArgs].
   /// [budgetName] Budget Name.
   /// [scope] The scope associated with budget operations.
-  GetBudgetArgs({required this.budgetName, required this.scope});
+  GetBudgetArgs({
+    required this.budgetName,
+    required this.scope,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'budgetName': budgetName, 'scope': scope};
+    return <String, dynamic>{
+      'budgetName': budgetName,
+      'scope': scope,
+    };
   }
 
   factory GetBudgetArgs.fromMap(Map<String, dynamic> map) {
@@ -57,3 +62,4 @@ class GetBudgetArgs {
     );
   }
 }
+

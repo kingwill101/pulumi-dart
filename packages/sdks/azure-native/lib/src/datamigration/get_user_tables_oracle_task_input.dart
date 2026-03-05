@@ -7,7 +7,6 @@ import 'oracle_connection_info.dart';
 class GetUserTablesOracleTaskInput {
   /// Information for connecting to Oracle source
   final pulumi.Input<OracleConnectionInfo> connectionInfo;
-
   /// List of Oracle schemas for which to collect tables
   final pulumi.Input<List<String>> selectedSchemas;
 
@@ -21,25 +20,16 @@ class GetUserTablesOracleTaskInput {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connectionInfo':
-          pulumi.Input.mapInputValue<
-            OracleConnectionInfo,
-            Map<String, dynamic>
-          >(connectionInfo, (value) => value.toMap()),
+      'connectionInfo': pulumi.Input.mapInputValue<OracleConnectionInfo, Map<String, dynamic>>(connectionInfo, (value) => value.toMap()),
       'selectedSchemas': selectedSchemas,
     };
   }
 
   factory GetUserTablesOracleTaskInput.fromMap(Map<String, dynamic> map) {
     return GetUserTablesOracleTaskInput(
-      connectionInfo: pulumi.Input.fromValue(
-        OracleConnectionInfo.fromMap(
-          (map['connectionInfo']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      selectedSchemas: pulumi.Input.fromValue(
-        (map['selectedSchemas'] as List).cast<String>(),
-      ),
+      connectionInfo: pulumi.Input.fromValue(OracleConnectionInfo.fromMap((map['connectionInfo']! as Map).cast<String, dynamic>())),
+      selectedSchemas: pulumi.Input.fromValue((map['selectedSchemas'] as List).cast<String>()),
     );
   }
 }
+

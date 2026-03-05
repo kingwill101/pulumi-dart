@@ -29,3 +29,4 @@ enum RecommendationType {
     throw ArgumentError('Unknown RecommendationType value: $value');
   }
 }
+

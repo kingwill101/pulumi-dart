@@ -8,22 +8,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_sql_managed_instance_administrator_args_doc}
 class ManagedInstanceAdministratorArgs {
   final pulumi.Input<String>? administratorName;
-
   /// Type of the managed instance administrator.
   final pulumi.Input<String> administratorType;
-
   /// Login name of the managed instance administrator.
   final pulumi.Input<String> login;
-
   /// The name of the managed instance.
   final pulumi.Input<String> managedInstanceName;
-
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
-
   /// SID (object ID) of the managed instance administrator.
   final pulumi.Input<String> sid;
-
   /// Tenant ID of the managed instance administrator.
   final pulumi.Input<String>? tenantId;
 
@@ -59,27 +53,14 @@ class ManagedInstanceAdministratorArgs {
 
   factory ManagedInstanceAdministratorArgs.fromMap(Map<String, dynamic> map) {
     return ManagedInstanceAdministratorArgs(
-      administratorName: (() {
-        final guardedValue = map['administratorName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      administratorType: pulumi.Input.fromValue(
-        map['administratorType'] as String,
-      ),
+      administratorName: (() { final guardedValue = map['administratorName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      administratorType: pulumi.Input.fromValue(map['administratorType'] as String),
       login: pulumi.Input.fromValue(map['login'] as String),
-      managedInstanceName: pulumi.Input.fromValue(
-        map['managedInstanceName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      managedInstanceName: pulumi.Input.fromValue(map['managedInstanceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       sid: pulumi.Input.fromValue(map['sid'] as String),
-      tenantId: (() {
-        final guardedValue = map['tenantId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

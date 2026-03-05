@@ -5,22 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkloadInstanceModelPropertiesResponseCurrentJob {
   /// Gets or sets the workflow friendly display name.
   final pulumi.Input<String> displayName;
-
   /// Gets or sets end time of the workflow.
   final pulumi.Input<String> endTime;
-
   /// Gets or sets workflow Id.
   final pulumi.Input<String> id;
-
   /// Gets or sets workflow name.
   final pulumi.Input<String> name;
-
   /// Gets or sets workload scenario name.
   final pulumi.Input<String> scenarioName;
-
   /// Gets or sets start time of the workflow.
   final pulumi.Input<String> startTime;
-
   /// Gets or sets workflow state.
   final pulumi.Input<String> state;
 
@@ -54,9 +48,7 @@ class WorkloadInstanceModelPropertiesResponseCurrentJob {
     };
   }
 
-  factory WorkloadInstanceModelPropertiesResponseCurrentJob.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WorkloadInstanceModelPropertiesResponseCurrentJob.fromMap(Map<String, dynamic> map) {
     return WorkloadInstanceModelPropertiesResponseCurrentJob(
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       endTime: pulumi.Input.fromValue(map['endTime'] as String),
@@ -68,3 +60,4 @@ class WorkloadInstanceModelPropertiesResponseCurrentJob {
     );
   }
 }
+

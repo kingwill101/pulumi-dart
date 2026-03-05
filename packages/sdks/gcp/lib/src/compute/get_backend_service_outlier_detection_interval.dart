@@ -7,7 +7,6 @@ class GetBackendServiceOutlierDetectionInterval {
   /// less than one second are represented with a 0 'seconds' field and a positive
   /// 'nanos' field. Must be from 0 to 999,999,999 inclusive.
   final pulumi.Input<int> nanos;
-
   /// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
   /// inclusive.
   final pulumi.Input<int> seconds;
@@ -21,15 +20,17 @@ class GetBackendServiceOutlierDetectionInterval {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'nanos': nanos, 'seconds': seconds};
+    return <String, dynamic>{
+      'nanos': nanos,
+      'seconds': seconds,
+    };
   }
 
-  factory GetBackendServiceOutlierDetectionInterval.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetBackendServiceOutlierDetectionInterval.fromMap(Map<String, dynamic> map) {
     return GetBackendServiceOutlierDetectionInterval(
       nanos: pulumi.Input.fromValue(map['nanos'] as int),
       seconds: pulumi.Input.fromValue(map['seconds'] as int),
     );
   }
 }
+

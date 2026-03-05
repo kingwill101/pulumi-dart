@@ -7,26 +7,19 @@ import 'system_data_response.dart';
 class GetHyperVSiteResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// eTag for concurrency control.
   final String? eTag;
-
   /// Resource Id.
   final String id;
-
   /// Azure location in which Sites is created.
   final String? location;
-
   /// Name of the Hyper-V site.
   final String? name;
-
   /// Nested properties of Hyper-V site.
   final SitePropertiesResponse properties;
-
   /// Metadata pertaining to creation and last modification of the resource.
   final SystemDataResponse systemData;
   final Map<String, String>? tags;
-
   /// Type of resource. Type = Microsoft.OffAzure/HyperVSites.
   final String type;
 
@@ -69,34 +62,15 @@ class GetHyperVSiteResult {
   factory GetHyperVSiteResult.fromMap(Map<String, dynamic> map) {
     return GetHyperVSiteResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      eTag: (() {
-        final guardedValue = map['eTag'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      eTag: (() { final guardedValue = map['eTag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      properties: SitePropertiesResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      properties: SitePropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

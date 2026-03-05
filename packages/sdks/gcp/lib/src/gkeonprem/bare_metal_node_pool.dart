@@ -1329,55 +1329,41 @@ class BareMetalNodePool extends pulumi.CustomResource {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
-
   /// The cluster this node pool belongs to.
   late final pulumi.Output<String> bareMetalCluster;
-
   /// The time the cluster was created, in RFC3339 text format.
   late final pulumi.Output<String> createTime;
-
   /// The time the cluster was deleted, in RFC3339 text format.
   late final pulumi.Output<String> deleteTime;
-
   /// The display name for the Bare Metal Node Pool.
   late final pulumi.Output<String?> displayName;
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
-
   /// This checksum is computed by the server based on the value of other
   /// fields, and may be sent on update and delete requests to ensure the
   /// client has an up-to-date value before proceeding.
   /// Allows clients to perform consistent read-modify-writes
   /// through optimistic concurrency control.
   late final pulumi.Output<String> etag;
-
   /// The location of the resource.
   late final pulumi.Output<String> location;
-
   /// The bare metal node pool name.
   late final pulumi.Output<String> name;
-
   /// Node pool configuration.
   /// Structure is documented below.
   late final pulumi.Output<BareMetalNodePoolNodePoolConfig> nodePoolConfig;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// If set, there are currently changes in flight to the Bare Metal User Cluster.
   late final pulumi.Output<bool> reconciling;
-
   /// (Output)
   /// The lifecycle state of the condition.
   late final pulumi.Output<String> state;
-
   /// Specifies detailed node pool status.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> statuses;
-
   /// The unique identifier of the Bare Metal Node Pool.
   late final pulumi.Output<String> uid;
-
   /// The time the cluster was last updated, in RFC3339 text format.
   late final pulumi.Output<String> updateTime;
 
@@ -1390,32 +1376,21 @@ class BareMetalNodePool extends pulumi.CustomResource {
     BareMetalNodePoolArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:gkeonprem/bareMetalNodePool:BareMetalNodePool',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:gkeonprem/bareMetalNodePool:BareMetalNodePool',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     annotations = registerOutput<Map<String, String>?>('annotations');
     bareMetalCluster = registerOutput<String>('bareMetalCluster');
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
     displayName = registerOutput<String?>('displayName');
-    effectiveAnnotations = registerOutput<Map<String, String>>(
-      'effectiveAnnotations',
-    );
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    nodePoolConfig = registerOutput<BareMetalNodePoolNodePoolConfig>(
-      'nodePoolConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BareMetalNodePoolNodePoolConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    nodePoolConfig = registerOutput<BareMetalNodePoolNodePoolConfig>('nodePoolConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BareMetalNodePoolNodePoolConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     reconciling = registerOutput<bool>('reconciling');
     state = registerOutput<String>('state');
@@ -1442,32 +1417,21 @@ class BareMetalNodePool extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:gkeonprem/bareMetalNodePool:BareMetalNodePool',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:gkeonprem/bareMetalNodePool:BareMetalNodePool',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     annotations = registerOutput<Map<String, String>?>('annotations');
     bareMetalCluster = registerOutput<String>('bareMetalCluster');
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
     displayName = registerOutput<String?>('displayName');
-    effectiveAnnotations = registerOutput<Map<String, String>>(
-      'effectiveAnnotations',
-    );
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    nodePoolConfig = registerOutput<BareMetalNodePoolNodePoolConfig>(
-      'nodePoolConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BareMetalNodePoolNodePoolConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    nodePoolConfig = registerOutput<BareMetalNodePoolNodePoolConfig>('nodePoolConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BareMetalNodePoolNodePoolConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     reconciling = registerOutput<bool>('reconciling');
     this.state = registerOutput<String>('state');

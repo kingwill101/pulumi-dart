@@ -9,17 +9,20 @@ class SignalAssignmentResponse {
 
   /// Creates a new [SignalAssignmentResponse].
   /// [signalDefinitions] Signal definitions referenced by their names. All definitions are combined with an AND operator.
-  SignalAssignmentResponse({required this.signalDefinitions});
+  SignalAssignmentResponse({
+    required this.signalDefinitions,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'signalDefinitions': signalDefinitions};
+    return <String, dynamic>{
+      'signalDefinitions': signalDefinitions,
+    };
   }
 
   factory SignalAssignmentResponse.fromMap(Map<String, dynamic> map) {
     return SignalAssignmentResponse(
-      signalDefinitions: pulumi.Input.fromValue(
-        (map['signalDefinitions'] as List).cast<String>(),
-      ),
+      signalDefinitions: pulumi.Input.fromValue((map['signalDefinitions'] as List).cast<String>()),
     );
   }
 }
+

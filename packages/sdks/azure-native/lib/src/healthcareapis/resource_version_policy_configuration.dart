@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceVersionPolicyConfiguration {
   /// The default value for tracking history across all resources.
   final pulumi.Input<String>? default_;
-
   /// A list of FHIR Resources and their version policy overrides.
   final pulumi.Input<Map<String, String>>? resourceTypeOverrides;
 
@@ -27,18 +26,9 @@ class ResourceVersionPolicyConfiguration {
 
   factory ResourceVersionPolicyConfiguration.fromMap(Map<String, dynamic> map) {
     return ResourceVersionPolicyConfiguration(
-      default_: (() {
-        final guardedValue = map['default'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceTypeOverrides: (() {
-        final guardedValue = map['resourceTypeOverrides'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      default_: (() { final guardedValue = map['default']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceTypeOverrides: (() { final guardedValue = map['resourceTypeOverrides']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

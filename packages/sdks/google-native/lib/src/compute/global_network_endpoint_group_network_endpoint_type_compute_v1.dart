@@ -11,17 +11,13 @@ enum GlobalNetworkEndpointGroupNetworkEndpointTypeComputeV1 {
   const GlobalNetworkEndpointGroupNetworkEndpointTypeComputeV1(this.wireValue);
   final String wireValue;
 
-  static GlobalNetworkEndpointGroupNetworkEndpointTypeComputeV1 fromValue(
-    String value,
-  ) {
-    for (final item
-        in GlobalNetworkEndpointGroupNetworkEndpointTypeComputeV1.values) {
+  static GlobalNetworkEndpointGroupNetworkEndpointTypeComputeV1 fromValue(String value) {
+    for (final item in GlobalNetworkEndpointGroupNetworkEndpointTypeComputeV1.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GlobalNetworkEndpointGroupNetworkEndpointTypeComputeV1 value: $value',
-    );
+    throw ArgumentError('Unknown GlobalNetworkEndpointGroupNetworkEndpointTypeComputeV1 value: $value');
   }
 }
+

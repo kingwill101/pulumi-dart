@@ -8,46 +8,32 @@ import 'system_data_response.dart';
 class GetKubernetesClusterFeatureResult {
   /// The lifecycle indicator of the feature.
   final String availabilityLifecycle;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The detailed status of the feature.
   final String detailedStatus;
-
   /// The descriptive message for the detailed status of the feature.
   final String detailedStatusMessage;
-
   /// Resource ETag.
   final String etag;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// The geo-location where the resource lives
   final String location;
-
   /// The name of the resource
   final String name;
-
   /// The configured options for the feature.
   final List<StringKeyValuePairResponse>? options;
-
   /// The provisioning state of the Kubernetes cluster feature.
   final String provisioningState;
-
   /// The indicator of if the feature is required or optional. Optional features may be deleted by the user, while required features are managed with the kubernetes cluster lifecycle.
   final String required;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
-
   /// The version of the feature.
   final String version;
 
@@ -95,14 +81,7 @@ class GetKubernetesClusterFeatureResult {
       'id': id,
       'location': location,
       'name': name,
-      'options': ?(() {
-        final guardedValue = options;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          StringKeyValuePairResponse,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'options': ?(() { final guardedValue = options; if (guardedValue == null) return null; return pulumi.Input.encodeList<StringKeyValuePairResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'provisioningState': provisioningState,
       'required': required,
       'systemData': systemData.toMap(),
@@ -122,28 +101,14 @@ class GetKubernetesClusterFeatureResult {
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      options: (() {
-        final guardedValue = map['options'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<StringKeyValuePairResponse>(
-          guardedValue,
-          (value) => StringKeyValuePairResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      options: (() { final guardedValue = map['options']; if (guardedValue == null) return null; return pulumi.Input.decodeList<StringKeyValuePairResponse>(guardedValue, (value) => StringKeyValuePairResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       provisioningState: map['provisioningState'] as String,
       required: map['required'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
       version: map['version'] as String,
     );
   }
 }
+

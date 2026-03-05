@@ -32,3 +32,4 @@ enum ClusterIssueCode {
     throw ArgumentError('Unknown ClusterIssueCode value: $value');
   }
 }
+

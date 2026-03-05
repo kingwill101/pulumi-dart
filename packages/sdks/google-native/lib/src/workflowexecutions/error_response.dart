@@ -7,10 +7,8 @@ import 'stack_trace_response.dart';
 class ErrorResponse {
   /// Human-readable stack trace string.
   final pulumi.Input<String> context;
-
   /// Error message and data returned represented as a JSON string.
   final pulumi.Input<String> payload;
-
   /// Stack trace with detailed information of where error was generated.
   final pulumi.Input<StackTraceResponse> stackTrace;
 
@@ -28,11 +26,7 @@ class ErrorResponse {
     return <String, dynamic>{
       'context': context,
       'payload': payload,
-      'stackTrace':
-          pulumi.Input.mapInputValue<StackTraceResponse, Map<String, dynamic>>(
-            stackTrace,
-            (value) => value.toMap(),
-          ),
+      'stackTrace': pulumi.Input.mapInputValue<StackTraceResponse, Map<String, dynamic>>(stackTrace, (value) => value.toMap()),
     };
   }
 
@@ -40,11 +34,8 @@ class ErrorResponse {
     return ErrorResponse(
       context: pulumi.Input.fromValue(map['context'] as String),
       payload: pulumi.Input.fromValue(map['payload'] as String),
-      stackTrace: pulumi.Input.fromValue(
-        StackTraceResponse.fromMap(
-          (map['stackTrace']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      stackTrace: pulumi.Input.fromValue(StackTraceResponse.fromMap((map['stackTrace']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

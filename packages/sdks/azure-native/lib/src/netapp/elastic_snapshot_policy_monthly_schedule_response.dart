@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ElasticSnapshotPolicyMonthlyScheduleResponse {
   /// Indicates which days of the month snapshot (1-31) should be taken, accepts a list of integers
   final pulumi.Input<List<int>>? daysOfMonth;
-
   /// Indicates which hour in UTC timezone a snapshot should be taken
   final pulumi.Input<int>? hour;
-
   /// Indicates which minute snapshot should be taken
   final pulumi.Input<int>? minute;
-
   /// Monthly snapshot count to keep
   final pulumi.Input<int>? snapshotsToKeep;
 
@@ -37,30 +34,13 @@ class ElasticSnapshotPolicyMonthlyScheduleResponse {
     };
   }
 
-  factory ElasticSnapshotPolicyMonthlyScheduleResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ElasticSnapshotPolicyMonthlyScheduleResponse.fromMap(Map<String, dynamic> map) {
     return ElasticSnapshotPolicyMonthlyScheduleResponse(
-      daysOfMonth: (() {
-        final guardedValue = map['daysOfMonth'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<int>());
-      })(),
-      hour: (() {
-        final guardedValue = map['hour'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      minute: (() {
-        final guardedValue = map['minute'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      snapshotsToKeep: (() {
-        final guardedValue = map['snapshotsToKeep'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      daysOfMonth: (() { final guardedValue = map['daysOfMonth']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<int>()); })(),
+      hour: (() { final guardedValue = map['hour']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      minute: (() { final guardedValue = map['minute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      snapshotsToKeep: (() { final guardedValue = map['snapshotsToKeep']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

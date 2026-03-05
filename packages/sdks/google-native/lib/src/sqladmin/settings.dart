@@ -25,97 +25,66 @@ import 'sql_server_audit_config.dart';
 class Settings {
   /// The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: * `ALWAYS`: The instance is on, and remains so even in the absence of connection requests. * `NEVER`: The instance is off; it is not activated, even if a connection request arrives.
   final pulumi.Input<SettingsActivationPolicy>? activationPolicy;
-
   /// Active Directory configuration, relevant only for Cloud SQL for SQL Server.
   final pulumi.Input<SqlActiveDirectoryConfig>? activeDirectoryConfig;
-
   /// Specifies advance machine configuration for the instance relevant only for SQL Server.
   final pulumi.Input<AdvancedMachineFeatures>? advancedMachineFeatures;
-
   /// The App Engine app IDs that can access this instance. (Deprecated) Applied to First Generation instances only.
   final pulumi.Input<List<String>>? authorizedGaeApplications;
-
   /// Availability type. Potential values: * `ZONAL`: The instance serves data from only one zone. Outages in that zone affect data accessibility. * `REGIONAL`: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
   final pulumi.Input<SettingsAvailabilityType>? availabilityType;
-
   /// The daily backup configuration for the instance.
   final pulumi.Input<BackupConfiguration>? backupConfiguration;
-
   /// The name of server Instance collation.
   final pulumi.Input<String>? collation;
-
   /// Specifies if connections must use Cloud SQL connectors. Option values include the following: `NOT_REQUIRED` (Cloud SQL instances can be connected without Cloud SQL Connectors) and `REQUIRED` (Only allow connections that use Cloud SQL Connectors). Note that using REQUIRED disables all existing authorized networks. If this field is not specified when creating a new instance, NOT_REQUIRED is used. If this field is not specified when patching or updating an existing instance, it is left unchanged in the instance.
   final pulumi.Input<SettingsConnectorEnforcement>? connectorEnforcement;
-
   /// Configuration specific to read replica instances. Indicates whether database flags for crash-safe replication are enabled. This property was only applicable to First Generation instances.
   final pulumi.Input<bool>? crashSafeReplicationEnabled;
-
   /// Configuration for data cache.
   final pulumi.Input<DataCacheConfig>? dataCacheConfig;
-
   /// The size of data disk, in GB. The data disk size minimum is 10GB.
   final pulumi.Input<String>? dataDiskSizeGb;
-
   /// The type of data disk: `PD_SSD` (default) or `PD_HDD`. Not used for First Generation instances.
   final pulumi.Input<SettingsDataDiskType>? dataDiskType;
-
   /// The database flags passed to the instance at startup.
   final pulumi.Input<List<DatabaseFlags>>? databaseFlags;
-
   /// Configuration specific to read replica instances. Indicates whether replication is enabled or not. WARNING: Changing this restarts the instance.
   final pulumi.Input<bool>? databaseReplicationEnabled;
-
   /// Configuration to protect against accidental instance deletion.
   final pulumi.Input<bool>? deletionProtectionEnabled;
-
   /// Deny maintenance periods
   final pulumi.Input<List<DenyMaintenancePeriod>>? denyMaintenancePeriods;
-
   /// Optional. The edition of the instance.
   final pulumi.Input<SettingsEdition>? edition;
-
   /// Insights configuration, for now relevant only for Postgres.
   final pulumi.Input<InsightsConfig>? insightsConfig;
-
   /// The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled for Second Generation instances.
   final pulumi.Input<IpConfiguration>? ipConfiguration;
-
   /// This is always `sql#settings`.
   final pulumi.Input<String>? kind;
-
   /// The location preference settings. This allows the instance to be located as near as possible to either an App Engine app or Compute Engine zone for better performance. App Engine co-location was only applicable to First Generation instances.
   final pulumi.Input<LocationPreference>? locationPreference;
-
   /// The maintenance window for this instance. This specifies when the instance can be restarted for maintenance purposes.
   final pulumi.Input<MaintenanceWindow>? maintenanceWindow;
-
   /// The local user password validation policy of the instance.
   final pulumi.Input<PasswordValidationPolicy>? passwordValidationPolicy;
-
   /// The pricing plan for this instance. This can be either `PER_USE` or `PACKAGE`. Only `PER_USE` is supported for Second Generation instances.
   final pulumi.Input<SettingsPricingPlan>? pricingPlan;
-
   /// The type of replication this instance uses. This can be either `ASYNCHRONOUS` or `SYNCHRONOUS`. (Deprecated) This property was only applicable to First Generation instances.
   final pulumi.Input<SettingsReplicationType>? replicationType;
-
   /// The version of instance settings. This is a required field for update method to make sure concurrent updates are handled properly. During update, use the most recent settingsVersion value for this instance and do not try to update this value.
   final pulumi.Input<String>? settingsVersion;
-
   /// SQL Server specific audit configuration.
   final pulumi.Input<SqlServerAuditConfig>? sqlServerAuditConfig;
-
   /// Configuration to increase storage size automatically. The default value is true.
   final pulumi.Input<bool>? storageAutoResize;
-
   /// The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
   final pulumi.Input<String>? storageAutoResizeLimit;
-
   /// The tier (or machine type) for this instance, for example `db-custom-1-3840`. WARNING: Changing this restarts the instance.
   final pulumi.Input<String>? tier;
-
   /// Server timezone, relevant only for Cloud SQL for SQL Server.
   final pulumi.Input<String>? timeZone;
-
   /// User-provided labels, represented as a dictionary where each label is a single key value pair.
   final pulumi.Input<Map<String, String>>? userLabels;
 
@@ -189,122 +158,33 @@ class Settings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'activationPolicy':
-          ?pulumi.Input.mapOptionalInputValue<SettingsActivationPolicy, String>(
-            activationPolicy,
-            (value) => value.wireValue,
-          ),
-      'activeDirectoryConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            SqlActiveDirectoryConfig,
-            Map<String, dynamic>
-          >(activeDirectoryConfig, (value) => value.toMap()),
-      'advancedMachineFeatures':
-          ?pulumi.Input.mapOptionalInputValue<
-            AdvancedMachineFeatures,
-            Map<String, dynamic>
-          >(advancedMachineFeatures, (value) => value.toMap()),
+      'activationPolicy': ?pulumi.Input.mapOptionalInputValue<SettingsActivationPolicy, String>(activationPolicy, (value) => value.wireValue),
+      'activeDirectoryConfig': ?pulumi.Input.mapOptionalInputValue<SqlActiveDirectoryConfig, Map<String, dynamic>>(activeDirectoryConfig, (value) => value.toMap()),
+      'advancedMachineFeatures': ?pulumi.Input.mapOptionalInputValue<AdvancedMachineFeatures, Map<String, dynamic>>(advancedMachineFeatures, (value) => value.toMap()),
       'authorizedGaeApplications': ?authorizedGaeApplications,
-      'availabilityType':
-          ?pulumi.Input.mapOptionalInputValue<SettingsAvailabilityType, String>(
-            availabilityType,
-            (value) => value.wireValue,
-          ),
-      'backupConfiguration':
-          ?pulumi.Input.mapOptionalInputValue<
-            BackupConfiguration,
-            Map<String, dynamic>
-          >(backupConfiguration, (value) => value.toMap()),
+      'availabilityType': ?pulumi.Input.mapOptionalInputValue<SettingsAvailabilityType, String>(availabilityType, (value) => value.wireValue),
+      'backupConfiguration': ?pulumi.Input.mapOptionalInputValue<BackupConfiguration, Map<String, dynamic>>(backupConfiguration, (value) => value.toMap()),
       'collation': ?collation,
-      'connectorEnforcement':
-          ?pulumi.Input.mapOptionalInputValue<
-            SettingsConnectorEnforcement,
-            String
-          >(connectorEnforcement, (value) => value.wireValue),
+      'connectorEnforcement': ?pulumi.Input.mapOptionalInputValue<SettingsConnectorEnforcement, String>(connectorEnforcement, (value) => value.wireValue),
       'crashSafeReplicationEnabled': ?crashSafeReplicationEnabled,
-      'dataCacheConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            DataCacheConfig,
-            Map<String, dynamic>
-          >(dataCacheConfig, (value) => value.toMap()),
+      'dataCacheConfig': ?pulumi.Input.mapOptionalInputValue<DataCacheConfig, Map<String, dynamic>>(dataCacheConfig, (value) => value.toMap()),
       'dataDiskSizeGb': ?dataDiskSizeGb,
-      'dataDiskType':
-          ?pulumi.Input.mapOptionalInputValue<SettingsDataDiskType, String>(
-            dataDiskType,
-            (value) => value.wireValue,
-          ),
-      'databaseFlags':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<DatabaseFlags>,
-            List<Map<String, dynamic>>
-          >(
-            databaseFlags,
-            (value) =>
-                pulumi.Input.encodeList<DatabaseFlags, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'dataDiskType': ?pulumi.Input.mapOptionalInputValue<SettingsDataDiskType, String>(dataDiskType, (value) => value.wireValue),
+      'databaseFlags': ?pulumi.Input.mapOptionalInputValue<List<DatabaseFlags>, List<Map<String, dynamic>>>(databaseFlags, (value) => pulumi.Input.encodeList<DatabaseFlags, Map<String, dynamic>>(value, (value) => value.toMap())),
       'databaseReplicationEnabled': ?databaseReplicationEnabled,
       'deletionProtectionEnabled': ?deletionProtectionEnabled,
-      'denyMaintenancePeriods':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<DenyMaintenancePeriod>,
-            List<Map<String, dynamic>>
-          >(
-            denyMaintenancePeriods,
-            (value) =>
-                pulumi.Input.encodeList<
-                  DenyMaintenancePeriod,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'edition': ?pulumi.Input.mapOptionalInputValue<SettingsEdition, String>(
-        edition,
-        (value) => value.wireValue,
-      ),
-      'insightsConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            InsightsConfig,
-            Map<String, dynamic>
-          >(insightsConfig, (value) => value.toMap()),
-      'ipConfiguration':
-          ?pulumi.Input.mapOptionalInputValue<
-            IpConfiguration,
-            Map<String, dynamic>
-          >(ipConfiguration, (value) => value.toMap()),
+      'denyMaintenancePeriods': ?pulumi.Input.mapOptionalInputValue<List<DenyMaintenancePeriod>, List<Map<String, dynamic>>>(denyMaintenancePeriods, (value) => pulumi.Input.encodeList<DenyMaintenancePeriod, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'edition': ?pulumi.Input.mapOptionalInputValue<SettingsEdition, String>(edition, (value) => value.wireValue),
+      'insightsConfig': ?pulumi.Input.mapOptionalInputValue<InsightsConfig, Map<String, dynamic>>(insightsConfig, (value) => value.toMap()),
+      'ipConfiguration': ?pulumi.Input.mapOptionalInputValue<IpConfiguration, Map<String, dynamic>>(ipConfiguration, (value) => value.toMap()),
       'kind': ?kind,
-      'locationPreference':
-          ?pulumi.Input.mapOptionalInputValue<
-            LocationPreference,
-            Map<String, dynamic>
-          >(locationPreference, (value) => value.toMap()),
-      'maintenanceWindow':
-          ?pulumi.Input.mapOptionalInputValue<
-            MaintenanceWindow,
-            Map<String, dynamic>
-          >(maintenanceWindow, (value) => value.toMap()),
-      'passwordValidationPolicy':
-          ?pulumi.Input.mapOptionalInputValue<
-            PasswordValidationPolicy,
-            Map<String, dynamic>
-          >(passwordValidationPolicy, (value) => value.toMap()),
-      'pricingPlan':
-          ?pulumi.Input.mapOptionalInputValue<SettingsPricingPlan, String>(
-            pricingPlan,
-            (value) => value.wireValue,
-          ),
-      'replicationType':
-          ?pulumi.Input.mapOptionalInputValue<SettingsReplicationType, String>(
-            replicationType,
-            (value) => value.wireValue,
-          ),
+      'locationPreference': ?pulumi.Input.mapOptionalInputValue<LocationPreference, Map<String, dynamic>>(locationPreference, (value) => value.toMap()),
+      'maintenanceWindow': ?pulumi.Input.mapOptionalInputValue<MaintenanceWindow, Map<String, dynamic>>(maintenanceWindow, (value) => value.toMap()),
+      'passwordValidationPolicy': ?pulumi.Input.mapOptionalInputValue<PasswordValidationPolicy, Map<String, dynamic>>(passwordValidationPolicy, (value) => value.toMap()),
+      'pricingPlan': ?pulumi.Input.mapOptionalInputValue<SettingsPricingPlan, String>(pricingPlan, (value) => value.wireValue),
+      'replicationType': ?pulumi.Input.mapOptionalInputValue<SettingsReplicationType, String>(replicationType, (value) => value.wireValue),
       'settingsVersion': ?settingsVersion,
-      'sqlServerAuditConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            SqlServerAuditConfig,
-            Map<String, dynamic>
-          >(sqlServerAuditConfig, (value) => value.toMap()),
+      'sqlServerAuditConfig': ?pulumi.Input.mapOptionalInputValue<SqlServerAuditConfig, Map<String, dynamic>>(sqlServerAuditConfig, (value) => value.toMap()),
       'storageAutoResize': ?storageAutoResize,
       'storageAutoResizeLimit': ?storageAutoResizeLimit,
       'tier': ?tier,
@@ -315,233 +195,39 @@ class Settings {
 
   factory Settings.fromMap(Map<String, dynamic> map) {
     return Settings(
-      activationPolicy: (() {
-        final guardedValue = map['activationPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SettingsActivationPolicy.fromValue(guardedValue as String),
-        );
-      })(),
-      activeDirectoryConfig: (() {
-        final guardedValue = map['activeDirectoryConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SqlActiveDirectoryConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      advancedMachineFeatures: (() {
-        final guardedValue = map['advancedMachineFeatures'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AdvancedMachineFeatures.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      authorizedGaeApplications: (() {
-        final guardedValue = map['authorizedGaeApplications'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      availabilityType: (() {
-        final guardedValue = map['availabilityType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SettingsAvailabilityType.fromValue(guardedValue as String),
-        );
-      })(),
-      backupConfiguration: (() {
-        final guardedValue = map['backupConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BackupConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      collation: (() {
-        final guardedValue = map['collation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      connectorEnforcement: (() {
-        final guardedValue = map['connectorEnforcement'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SettingsConnectorEnforcement.fromValue(guardedValue as String),
-        );
-      })(),
-      crashSafeReplicationEnabled: (() {
-        final guardedValue = map['crashSafeReplicationEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      dataCacheConfig: (() {
-        final guardedValue = map['dataCacheConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DataCacheConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      dataDiskSizeGb: (() {
-        final guardedValue = map['dataDiskSizeGb'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dataDiskType: (() {
-        final guardedValue = map['dataDiskType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SettingsDataDiskType.fromValue(guardedValue as String),
-        );
-      })(),
-      databaseFlags: (() {
-        final guardedValue = map['databaseFlags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<DatabaseFlags>(
-            guardedValue,
-            (value) =>
-                DatabaseFlags.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      databaseReplicationEnabled: (() {
-        final guardedValue = map['databaseReplicationEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      deletionProtectionEnabled: (() {
-        final guardedValue = map['deletionProtectionEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      denyMaintenancePeriods: (() {
-        final guardedValue = map['denyMaintenancePeriods'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<DenyMaintenancePeriod>(
-            guardedValue,
-            (value) => DenyMaintenancePeriod.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      edition: (() {
-        final guardedValue = map['edition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SettingsEdition.fromValue(guardedValue as String),
-        );
-      })(),
-      insightsConfig: (() {
-        final guardedValue = map['insightsConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          InsightsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      ipConfiguration: (() {
-        final guardedValue = map['ipConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          IpConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      locationPreference: (() {
-        final guardedValue = map['locationPreference'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          LocationPreference.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      maintenanceWindow: (() {
-        final guardedValue = map['maintenanceWindow'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          MaintenanceWindow.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      passwordValidationPolicy: (() {
-        final guardedValue = map['passwordValidationPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PasswordValidationPolicy.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      pricingPlan: (() {
-        final guardedValue = map['pricingPlan'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SettingsPricingPlan.fromValue(guardedValue as String),
-        );
-      })(),
-      replicationType: (() {
-        final guardedValue = map['replicationType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SettingsReplicationType.fromValue(guardedValue as String),
-        );
-      })(),
-      settingsVersion: (() {
-        final guardedValue = map['settingsVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sqlServerAuditConfig: (() {
-        final guardedValue = map['sqlServerAuditConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SqlServerAuditConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      storageAutoResize: (() {
-        final guardedValue = map['storageAutoResize'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      storageAutoResizeLimit: (() {
-        final guardedValue = map['storageAutoResizeLimit'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tier: (() {
-        final guardedValue = map['tier'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      timeZone: (() {
-        final guardedValue = map['timeZone'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      userLabels: (() {
-        final guardedValue = map['userLabels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      activationPolicy: (() { final guardedValue = map['activationPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SettingsActivationPolicy.fromValue(guardedValue as String)); })(),
+      activeDirectoryConfig: (() { final guardedValue = map['activeDirectoryConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SqlActiveDirectoryConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      advancedMachineFeatures: (() { final guardedValue = map['advancedMachineFeatures']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AdvancedMachineFeatures.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      authorizedGaeApplications: (() { final guardedValue = map['authorizedGaeApplications']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      availabilityType: (() { final guardedValue = map['availabilityType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SettingsAvailabilityType.fromValue(guardedValue as String)); })(),
+      backupConfiguration: (() { final guardedValue = map['backupConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BackupConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      collation: (() { final guardedValue = map['collation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      connectorEnforcement: (() { final guardedValue = map['connectorEnforcement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SettingsConnectorEnforcement.fromValue(guardedValue as String)); })(),
+      crashSafeReplicationEnabled: (() { final guardedValue = map['crashSafeReplicationEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      dataCacheConfig: (() { final guardedValue = map['dataCacheConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DataCacheConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      dataDiskSizeGb: (() { final guardedValue = map['dataDiskSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dataDiskType: (() { final guardedValue = map['dataDiskType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SettingsDataDiskType.fromValue(guardedValue as String)); })(),
+      databaseFlags: (() { final guardedValue = map['databaseFlags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DatabaseFlags>(guardedValue, (value) => DatabaseFlags.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      databaseReplicationEnabled: (() { final guardedValue = map['databaseReplicationEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      deletionProtectionEnabled: (() { final guardedValue = map['deletionProtectionEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      denyMaintenancePeriods: (() { final guardedValue = map['denyMaintenancePeriods']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DenyMaintenancePeriod>(guardedValue, (value) => DenyMaintenancePeriod.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      edition: (() { final guardedValue = map['edition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SettingsEdition.fromValue(guardedValue as String)); })(),
+      insightsConfig: (() { final guardedValue = map['insightsConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InsightsConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      ipConfiguration: (() { final guardedValue = map['ipConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IpConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      locationPreference: (() { final guardedValue = map['locationPreference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LocationPreference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      maintenanceWindow: (() { final guardedValue = map['maintenanceWindow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MaintenanceWindow.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      passwordValidationPolicy: (() { final guardedValue = map['passwordValidationPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PasswordValidationPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      pricingPlan: (() { final guardedValue = map['pricingPlan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SettingsPricingPlan.fromValue(guardedValue as String)); })(),
+      replicationType: (() { final guardedValue = map['replicationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SettingsReplicationType.fromValue(guardedValue as String)); })(),
+      settingsVersion: (() { final guardedValue = map['settingsVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sqlServerAuditConfig: (() { final guardedValue = map['sqlServerAuditConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SqlServerAuditConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      storageAutoResize: (() { final guardedValue = map['storageAutoResize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      storageAutoResizeLimit: (() { final guardedValue = map['storageAutoResizeLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tier: (() { final guardedValue = map['tier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      timeZone: (() { final guardedValue = map['timeZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      userLabels: (() { final guardedValue = map['userLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

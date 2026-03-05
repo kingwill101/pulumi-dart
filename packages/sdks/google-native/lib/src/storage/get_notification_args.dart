@@ -33,11 +33,8 @@ class GetNotificationArgs {
     return GetNotificationArgs(
       bucket: pulumi.Input.fromValue(map['bucket'] as String),
       notification: pulumi.Input.fromValue(map['notification'] as String),
-      userProject: (() {
-        final guardedValue = map['userProject'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      userProject: (() { final guardedValue = map['userProject']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

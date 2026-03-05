@@ -10,29 +10,20 @@ class HciEdgeDeviceProperties {
 
   /// Creates a new [HciEdgeDeviceProperties].
   /// [deviceConfiguration] Device Configuration
-  HciEdgeDeviceProperties({this.deviceConfiguration});
+  HciEdgeDeviceProperties({
+    this.deviceConfiguration,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'deviceConfiguration':
-          ?pulumi.Input.mapOptionalInputValue<
-            DeviceConfiguration,
-            Map<String, dynamic>
-          >(deviceConfiguration, (value) => value.toMap()),
+      'deviceConfiguration': ?pulumi.Input.mapOptionalInputValue<DeviceConfiguration, Map<String, dynamic>>(deviceConfiguration, (value) => value.toMap()),
     };
   }
 
   factory HciEdgeDeviceProperties.fromMap(Map<String, dynamic> map) {
     return HciEdgeDeviceProperties(
-      deviceConfiguration: (() {
-        final guardedValue = map['deviceConfiguration'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DeviceConfiguration.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      deviceConfiguration: (() { final guardedValue = map['deviceConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DeviceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

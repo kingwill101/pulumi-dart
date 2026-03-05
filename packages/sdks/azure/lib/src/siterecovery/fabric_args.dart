@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FabricArgs {
   /// In what region should the fabric be located. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
-
   /// The name of the network mapping. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// The name of the vault that should be updated. Changing this forces a new resource to be created.
   final pulumi.Input<String> recoveryVaultName;
-
   /// Name of the resource group where the vault that should be updated is located. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
 
@@ -42,22 +39,11 @@ class FabricArgs {
 
   factory FabricArgs.fromMap(Map<String, dynamic> map) {
     return FabricArgs(
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      recoveryVaultName: pulumi.Input.fromValue(
-        map['recoveryVaultName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      recoveryVaultName: pulumi.Input.fromValue(map['recoveryVaultName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

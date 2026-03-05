@@ -229,10 +229,8 @@ import 'email_service_domain_sender_username_state.dart';
 class EmailServiceDomainSenderUsername extends pulumi.CustomResource {
   /// The display name for the Email Communication Service Domain Sender Username resource.
   late final pulumi.Output<String?> displayName;
-
   /// The ID of the Email Communication Service Domain resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> emailServiceDomainId;
-
   /// The name of the Email Communication Service Domain Sender Username resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
 
@@ -245,11 +243,11 @@ class EmailServiceDomainSenderUsername extends pulumi.CustomResource {
     EmailServiceDomainSenderUsernameArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:communication/emailServiceDomainSenderUsername:EmailServiceDomainSenderUsername',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:communication/emailServiceDomainSenderUsername:EmailServiceDomainSenderUsername',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     displayName = registerOutput<String?>('displayName');
     emailServiceDomainId = registerOutput<String>('emailServiceDomainId');
     this.name = registerOutput<String>('name');
@@ -273,11 +271,11 @@ class EmailServiceDomainSenderUsername extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:communication/emailServiceDomainSenderUsername:EmailServiceDomainSenderUsername',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:communication/emailServiceDomainSenderUsername:EmailServiceDomainSenderUsername',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     displayName = registerOutput<String?>('displayName');
     emailServiceDomainId = registerOutput<String>('emailServiceDomainId');
     this.name = registerOutput<String>('name');

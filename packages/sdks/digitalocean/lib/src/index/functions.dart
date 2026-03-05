@@ -242,7 +242,10 @@ import 'get_vpc_result.dart';
 ///       arguments: {}
 /// ```
 /// [options] Invoke options controlling this call.
-Future<GetAccountResult> getAccount({pulumi.InvokeOptions? options}) async {
+Future<GetAccountResult> getAccount(
+  {
+  pulumi.InvokeOptions? options,
+}) async {
   final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'digitalocean:index/getAccount:getAccount',
@@ -1418,7 +1421,8 @@ Future<GetDatabaseConnectionPoolResult> getDatabaseConnectionPool(
 ///   metricsPassword: ${example.password}
 /// ```
 /// [options] Invoke options controlling this call.
-Future<GetDatabaseMetricsCredentialsResult> getDatabaseMetricsCredentials({
+Future<GetDatabaseMetricsCredentialsResult> getDatabaseMetricsCredentials(
+  {
   pulumi.InvokeOptions? options,
 }) async {
   final deployment = pulumi.Deployment.instance;
@@ -3494,8 +3498,7 @@ Future<GetGenaiKnowledgeBaseDataSourcesResult> getGenaiKnowledgeBaseDataSources(
 
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_genai_knowledge_base_indexing_jobs_get_genai_knowledge_base_indexing_jobs_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetGenaiKnowledgeBaseIndexingJobsResult>
-getGenaiKnowledgeBaseIndexingJobs(
+Future<GetGenaiKnowledgeBaseIndexingJobsResult> getGenaiKnowledgeBaseIndexingJobs(
   GetGenaiKnowledgeBaseIndexingJobsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3630,8 +3633,7 @@ Future<GetGradientaiAgentsResult> getGradientaiAgents(
 
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_gradientai_agents_by_openai_api_key_get_gradientai_agents_by_openai_api_key_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetGradientaiAgentsByOpenaiApiKeyResult>
-getGradientaiAgentsByOpenaiApiKey(
+Future<GetGradientaiAgentsByOpenaiApiKeyResult> getGradientaiAgentsByOpenaiApiKey(
   GetGradientaiAgentsByOpenaiApiKeyArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3661,8 +3663,7 @@ Future<GetGradientaiIndexingJobResult> getGradientaiIndexingJob(
 
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_gradientai_indexing_job_data_sources_get_gradientai_indexing_job_data_sources_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetGradientaiIndexingJobDataSourcesResult>
-getGradientaiIndexingJobDataSources(
+Future<GetGradientaiIndexingJobDataSourcesResult> getGradientaiIndexingJobDataSources(
   GetGradientaiIndexingJobDataSourcesArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3692,8 +3693,7 @@ Future<GetGradientaiKnowledgeBaseResult> getGradientaiKnowledgeBase(
 
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_gradientai_knowledge_base_data_sources_get_gradientai_knowledge_base_data_sources_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetGradientaiKnowledgeBaseDataSourcesResult>
-getGradientaiKnowledgeBaseDataSources(
+Future<GetGradientaiKnowledgeBaseDataSourcesResult> getGradientaiKnowledgeBaseDataSources(
   GetGradientaiKnowledgeBaseDataSourcesArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3708,8 +3708,7 @@ getGradientaiKnowledgeBaseDataSources(
 
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_gradientai_knowledge_base_indexing_jobs_get_gradientai_knowledge_base_indexing_jobs_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetGradientaiKnowledgeBaseIndexingJobsResult>
-getGradientaiKnowledgeBaseIndexingJobs(
+Future<GetGradientaiKnowledgeBaseIndexingJobsResult> getGradientaiKnowledgeBaseIndexingJobs(
   GetGradientaiKnowledgeBaseIndexingJobsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

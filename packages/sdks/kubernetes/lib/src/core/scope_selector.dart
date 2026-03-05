@@ -10,39 +10,20 @@ class ScopeSelector {
 
   /// Creates a new [ScopeSelector].
   /// [matchExpressions] A list of scope selector requirements by scope of the resources.
-  ScopeSelector({this.matchExpressions});
+  ScopeSelector({
+    this.matchExpressions,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'matchExpressions':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ScopedResourceSelectorRequirement>,
-            List<Map<String, dynamic>>
-          >(
-            matchExpressions,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ScopedResourceSelectorRequirement,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'matchExpressions': ?pulumi.Input.mapOptionalInputValue<List<ScopedResourceSelectorRequirement>, List<Map<String, dynamic>>>(matchExpressions, (value) => pulumi.Input.encodeList<ScopedResourceSelectorRequirement, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ScopeSelector.fromMap(Map<String, dynamic> map) {
     return ScopeSelector(
-      matchExpressions: (() {
-        final guardedValue = map['matchExpressions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ScopedResourceSelectorRequirement>(
-            guardedValue,
-            (value) => ScopedResourceSelectorRequirement.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      matchExpressions: (() { final guardedValue = map['matchExpressions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ScopedResourceSelectorRequirement>(guardedValue, (value) => ScopedResourceSelectorRequirement.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

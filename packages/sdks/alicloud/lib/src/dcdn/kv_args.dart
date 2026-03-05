@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KvArgs {
   /// The name of the key to Put, the longest 512, cannot contain spaces.
   final pulumi.Input<String> key;
-
   /// The name specified when the customer calls PutDcdnKvNamespace.
   final pulumi.Input<String> namespace;
-
   /// The content of key, up to 2M(2*1000*1000).
   final pulumi.Input<String> value;
 
@@ -20,7 +18,11 @@ class KvArgs {
   /// [key] The name of the key to Put, the longest 512, cannot contain spaces.
   /// [namespace] The name specified when the customer calls PutDcdnKvNamespace.
   /// [value] The content of key, up to 2M(2*1000*1000).
-  KvArgs({required this.key, required this.namespace, required this.value});
+  KvArgs({
+    required this.key,
+    required this.namespace,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,3 +40,4 @@ class KvArgs {
     );
   }
 }
+

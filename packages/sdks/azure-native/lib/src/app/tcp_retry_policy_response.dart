@@ -9,19 +9,20 @@ class TcpRetryPolicyResponse {
 
   /// Creates a new [TcpRetryPolicyResponse].
   /// [maxConnectAttempts] Maximum number of attempts to connect to the tcp service
-  TcpRetryPolicyResponse({this.maxConnectAttempts});
+  TcpRetryPolicyResponse({
+    this.maxConnectAttempts,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'maxConnectAttempts': ?maxConnectAttempts};
+    return <String, dynamic>{
+      'maxConnectAttempts': ?maxConnectAttempts,
+    };
   }
 
   factory TcpRetryPolicyResponse.fromMap(Map<String, dynamic> map) {
     return TcpRetryPolicyResponse(
-      maxConnectAttempts: (() {
-        final guardedValue = map['maxConnectAttempts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      maxConnectAttempts: (() { final guardedValue = map['maxConnectAttempts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

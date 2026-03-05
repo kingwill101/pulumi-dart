@@ -6,10 +6,8 @@ import 'fleet_update_strategy_stage_group.dart';
 class FleetUpdateStrategyStage {
   /// Specifies the time in seconds to wait at the end of this stage before starting the next one.
   final pulumi.Input<int>? afterStageWaitInSeconds;
-
   /// One or more `group` blocks as defined below.
   final pulumi.Input<List<FleetUpdateStrategyStageGroup>> groups;
-
   /// The name which should be used for this stage.
   final pulumi.Input<String> name;
 
@@ -26,38 +24,17 @@ class FleetUpdateStrategyStage {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'afterStageWaitInSeconds': ?afterStageWaitInSeconds,
-      'groups':
-          pulumi.Input.mapInputValue<
-            List<FleetUpdateStrategyStageGroup>,
-            List<Map<String, dynamic>>
-          >(
-            groups,
-            (value) =>
-                pulumi.Input.encodeList<
-                  FleetUpdateStrategyStageGroup,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'groups': pulumi.Input.mapInputValue<List<FleetUpdateStrategyStageGroup>, List<Map<String, dynamic>>>(groups, (value) => pulumi.Input.encodeList<FleetUpdateStrategyStageGroup, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
     };
   }
 
   factory FleetUpdateStrategyStage.fromMap(Map<String, dynamic> map) {
     return FleetUpdateStrategyStage(
-      afterStageWaitInSeconds: (() {
-        final guardedValue = map['afterStageWaitInSeconds'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      groups: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<FleetUpdateStrategyStageGroup>(
-          map['groups']!,
-          (value) => FleetUpdateStrategyStageGroup.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      afterStageWaitInSeconds: (() { final guardedValue = map['afterStageWaitInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      groups: pulumi.Input.fromValue(pulumi.Input.decodeList<FleetUpdateStrategyStageGroup>(map['groups']!, (value) => FleetUpdateStrategyStageGroup.fromMap((value as Map).cast<String, dynamic>()))),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

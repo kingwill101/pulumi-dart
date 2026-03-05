@@ -7,7 +7,6 @@ import 'get_hybrid_monitor_datas_data.dart';
 class GetHybridMonitorDatasResult {
   final List<GetHybridMonitorDatasData> datas;
   final String end;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String namespace;
@@ -38,11 +37,7 @@ class GetHybridMonitorDatasResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'datas':
-          pulumi.Input.encodeList<
-            GetHybridMonitorDatasData,
-            Map<String, dynamic>
-          >(datas, (value) => value.toMap()),
+      'datas': pulumi.Input.encodeList<GetHybridMonitorDatasData, Map<String, dynamic>>(datas, (value) => value.toMap()),
       'end': end,
       'id': id,
       'namespace': namespace,
@@ -55,27 +50,15 @@ class GetHybridMonitorDatasResult {
 
   factory GetHybridMonitorDatasResult.fromMap(Map<String, dynamic> map) {
     return GetHybridMonitorDatasResult(
-      datas: pulumi.Input.decodeList<GetHybridMonitorDatasData>(
-        map['datas']!,
-        (value) => GetHybridMonitorDatasData.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      datas: pulumi.Input.decodeList<GetHybridMonitorDatasData>(map['datas']!, (value) => GetHybridMonitorDatasData.fromMap((value as Map).cast<String, dynamic>())),
       end: map['end'] as String,
       id: map['id'] as String,
       namespace: map['namespace'] as String,
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      period: (() {
-        final guardedValue = map['period'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      period: (() { final guardedValue = map['period']; if (guardedValue == null) return null; return guardedValue as String; })(),
       promSql: map['promSql'] as String,
       start: map['start'] as String,
     );
   }
 }
+

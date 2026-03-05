@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders {
   /// Required. The header field name
   final pulumi.Input<int> port;
-
   /// Optional. The header field value
   final pulumi.Input<String>? value;
 
@@ -18,19 +17,17 @@ class WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'port': port, 'value': ?value};
+    return <String, dynamic>{
+      'port': port,
+      'value': ?value,
+    };
   }
 
-  factory WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders.fromMap(Map<String, dynamic> map) {
     return WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders(
       port: pulumi.Input.fromValue(map['port'] as int),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

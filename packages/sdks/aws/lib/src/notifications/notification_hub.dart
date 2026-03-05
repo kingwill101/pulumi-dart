@@ -115,22 +115,13 @@ class NotificationHub extends pulumi.CustomResource {
     NotificationHubArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:notifications/notificationHub:NotificationHub',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:notifications/notificationHub:NotificationHub',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     notificationHubRegion = registerOutput<String>('notificationHubRegion');
-    timeouts = registerOutput<NotificationHubTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NotificationHubTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<NotificationHubTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotificationHubTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [NotificationHub] resource's state with the given [name] and [id].
@@ -151,21 +142,12 @@ class NotificationHub extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:notifications/notificationHub:NotificationHub',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:notifications/notificationHub:NotificationHub',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     notificationHubRegion = registerOutput<String>('notificationHubRegion');
-    timeouts = registerOutput<NotificationHubTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NotificationHubTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<NotificationHubTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotificationHubTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

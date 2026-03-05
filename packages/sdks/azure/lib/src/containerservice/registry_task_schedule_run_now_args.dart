@@ -12,7 +12,9 @@ class RegistryTaskScheduleRunNowArgs {
 
   /// Creates a new [RegistryTaskScheduleRunNowArgs].
   /// [containerRegistryTaskId] The ID of the Container Registry Task that to be scheduled. Changing this forces a new Container Registry Task Schedule to be created.
-  RegistryTaskScheduleRunNowArgs({required this.containerRegistryTaskId});
+  RegistryTaskScheduleRunNowArgs({
+    required this.containerRegistryTaskId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -22,9 +24,8 @@ class RegistryTaskScheduleRunNowArgs {
 
   factory RegistryTaskScheduleRunNowArgs.fromMap(Map<String, dynamic> map) {
     return RegistryTaskScheduleRunNowArgs(
-      containerRegistryTaskId: pulumi.Input.fromValue(
-        map['containerRegistryTaskId'] as String,
-      ),
+      containerRegistryTaskId: pulumi.Input.fromValue(map['containerRegistryTaskId'] as String),
     );
   }
 }
+

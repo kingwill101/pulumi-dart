@@ -7,42 +7,29 @@ import 'autoscale_settings.dart';
 class CreateUpdateOptions {
   /// Specifies the Autoscale settings. Note: Either throughput or autoscaleSettings is required, but not both.
   final pulumi.Input<AutoscaleSettings>? autoscaleSettings;
-
   /// Request Units per second. For example, "throughput": 10000.
   final pulumi.Input<int>? throughput;
 
   /// Creates a new [CreateUpdateOptions].
   /// [autoscaleSettings] Specifies the Autoscale settings. Note: Either throughput or autoscaleSettings is required, but not both.
   /// [throughput] Request Units per second. For example, "throughput": 10000.
-  CreateUpdateOptions({this.autoscaleSettings, this.throughput});
+  CreateUpdateOptions({
+    this.autoscaleSettings,
+    this.throughput,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoscaleSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            AutoscaleSettings,
-            Map<String, dynamic>
-          >(autoscaleSettings, (value) => value.toMap()),
+      'autoscaleSettings': ?pulumi.Input.mapOptionalInputValue<AutoscaleSettings, Map<String, dynamic>>(autoscaleSettings, (value) => value.toMap()),
       'throughput': ?throughput,
     };
   }
 
   factory CreateUpdateOptions.fromMap(Map<String, dynamic> map) {
     return CreateUpdateOptions(
-      autoscaleSettings: (() {
-        final guardedValue = map['autoscaleSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AutoscaleSettings.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      throughput: (() {
-        final guardedValue = map['throughput'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      autoscaleSettings: (() { final guardedValue = map['autoscaleSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AutoscaleSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      throughput: (() { final guardedValue = map['throughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

@@ -9,27 +9,20 @@ class DataAccessOptions {
 
   /// Creates a new [DataAccessOptions].
   /// [logMode] Optional.
-  DataAccessOptions({this.logMode});
+  DataAccessOptions({
+    this.logMode,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'logMode':
-          ?pulumi.Input.mapOptionalInputValue<DataAccessOptionsLogMode, String>(
-            logMode,
-            (value) => value.wireValue,
-          ),
+      'logMode': ?pulumi.Input.mapOptionalInputValue<DataAccessOptionsLogMode, String>(logMode, (value) => value.wireValue),
     };
   }
 
   factory DataAccessOptions.fromMap(Map<String, dynamic> map) {
     return DataAccessOptions(
-      logMode: (() {
-        final guardedValue = map['logMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DataAccessOptionsLogMode.fromValue(guardedValue as String),
-        );
-      })(),
+      logMode: (() { final guardedValue = map['logMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DataAccessOptionsLogMode.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

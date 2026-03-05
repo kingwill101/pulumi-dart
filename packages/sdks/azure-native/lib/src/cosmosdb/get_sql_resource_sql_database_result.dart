@@ -7,21 +7,16 @@ import 'sql_database_get_properties_response_resource.dart';
 class GetSqlResourceSqlDatabaseResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The unique resource identifier of the ARM resource.
   final String id;
-
   /// The location of the resource group to which the resource belongs.
   final String? location;
-
   /// The name of the ARM resource.
   final String name;
   final SqlDatabaseGetPropertiesResponseOptions? options;
   final SqlDatabaseGetPropertiesResponseResource? resource;
-
   /// Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB".
   final Map<String, String>? tags;
-
   /// The type of Azure resource.
   final String type;
 
@@ -62,32 +57,13 @@ class GetSqlResourceSqlDatabaseResult {
     return GetSqlResourceSqlDatabaseResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
-      options: (() {
-        final guardedValue = map['options'];
-        if (guardedValue == null) return null;
-        return SqlDatabaseGetPropertiesResponseOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      resource: (() {
-        final guardedValue = map['resource'];
-        if (guardedValue == null) return null;
-        return SqlDatabaseGetPropertiesResponseResource.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      options: (() { final guardedValue = map['options']; if (guardedValue == null) return null; return SqlDatabaseGetPropertiesResponseOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      resource: (() { final guardedValue = map['resource']; if (guardedValue == null) return null; return SqlDatabaseGetPropertiesResponseResource.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
+

@@ -9,27 +9,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCustomModelArgs {
   /// Name or ARN of the custom model.
   final pulumi.Input<String> modelId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
   /// Creates a new [GetCustomModelArgs].
   /// [modelId] Name or ARN of the custom model.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetCustomModelArgs({required this.modelId, this.region});
+  GetCustomModelArgs({
+    required this.modelId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'modelId': modelId, 'region': ?region};
+    return <String, dynamic>{
+      'modelId': modelId,
+      'region': ?region,
+    };
   }
 
   factory GetCustomModelArgs.fromMap(Map<String, dynamic> map) {
     return GetCustomModelArgs(
       modelId: pulumi.Input.fromValue(map['modelId'] as String),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

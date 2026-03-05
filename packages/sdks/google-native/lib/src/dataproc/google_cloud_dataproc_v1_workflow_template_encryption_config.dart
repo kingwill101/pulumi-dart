@@ -9,21 +9,20 @@ class GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig {
 
   /// Creates a new [GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig].
   /// [kmsKey] Optional. The Cloud KMS key name to use for encrypting customer core content.
-  GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig({this.kmsKey});
+  GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig({
+    this.kmsKey,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'kmsKey': ?kmsKey};
+    return <String, dynamic>{
+      'kmsKey': ?kmsKey,
+    };
   }
 
-  factory GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig(
-      kmsKey: (() {
-        final guardedValue = map['kmsKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      kmsKey: (() { final guardedValue = map['kmsKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

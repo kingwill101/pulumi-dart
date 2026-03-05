@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SubscriptionCostManagementExportExportDataOptions {
   /// The time frame for pulling data for the query. If custom, then a specific time period must be provided. Possible values include: `WeekToDate`, `MonthToDate`, `BillingMonthToDate`, `TheLast7Days`, `TheLastMonth`, `TheLastBillingMonth`, `Custom`.
   final pulumi.Input<String> timeFrame;
-
   /// The type of the query. Possible values are `ActualCost`, `AmortizedCost` and `Usage`.
   final pulumi.Input<String> type;
 
@@ -18,15 +17,17 @@ class SubscriptionCostManagementExportExportDataOptions {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'timeFrame': timeFrame, 'type': type};
+    return <String, dynamic>{
+      'timeFrame': timeFrame,
+      'type': type,
+    };
   }
 
-  factory SubscriptionCostManagementExportExportDataOptions.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SubscriptionCostManagementExportExportDataOptions.fromMap(Map<String, dynamic> map) {
     return SubscriptionCostManagementExportExportDataOptions(
       timeFrame: pulumi.Input.fromValue(map['timeFrame'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

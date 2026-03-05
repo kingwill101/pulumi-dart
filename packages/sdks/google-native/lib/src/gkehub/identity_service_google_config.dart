@@ -9,19 +9,20 @@ class IdentityServiceGoogleConfig {
 
   /// Creates a new [IdentityServiceGoogleConfig].
   /// [disable] Disable automatic configuration of Google Plugin on supported platforms.
-  IdentityServiceGoogleConfig({this.disable});
+  IdentityServiceGoogleConfig({
+    this.disable,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'disable': ?disable};
+    return <String, dynamic>{
+      'disable': ?disable,
+    };
   }
 
   factory IdentityServiceGoogleConfig.fromMap(Map<String, dynamic> map) {
     return IdentityServiceGoogleConfig(
-      disable: (() {
-        final guardedValue = map['disable'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      disable: (() { final guardedValue = map['disable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

@@ -6,17 +6,13 @@ class BareMetalNodePoolStatusCondition {
   /// (Output)
   /// Last time the condition transit from one status to another.
   final pulumi.Input<String>? lastTransitionTime;
-
   /// Human-readable message indicating details about last transition.
   final pulumi.Input<String>? message;
-
   /// Machine-readable message indicating details about last transition.
   final pulumi.Input<String>? reason;
-
   /// (Output)
   /// The lifecycle state of the condition.
   final pulumi.Input<String>? state;
-
   /// Type of the condition.
   /// (e.g., ClusterRunning, NodePoolRunning or ServerSidePreflightReady)
   final pulumi.Input<String>? type;
@@ -47,31 +43,12 @@ class BareMetalNodePoolStatusCondition {
 
   factory BareMetalNodePoolStatusCondition.fromMap(Map<String, dynamic> map) {
     return BareMetalNodePoolStatusCondition(
-      lastTransitionTime: (() {
-        final guardedValue = map['lastTransitionTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      message: (() {
-        final guardedValue = map['message'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      reason: (() {
-        final guardedValue = map['reason'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      lastTransitionTime: (() { final guardedValue = map['lastTransitionTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      message: (() { final guardedValue = map['message']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      reason: (() { final guardedValue = map['reason']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

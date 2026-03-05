@@ -329,50 +329,36 @@ import 'app_group_state.dart';
 class AppGroup extends pulumi.CustomResource {
   /// Application Name
   late final pulumi.Output<String> appName;
-
   /// Application type.
   /// - 1, general application.
   /// - 2, k8s application.
   late final pulumi.Output<int?> appType;
-
   /// Application Version, 1: Basic Edition, 2: Professional Edition
   late final pulumi.Output<String> appVersion;
-
   /// Whether to delete the task in the application Group. The values are as follows:
   late final pulumi.Output<bool?> deleteJobs;
-
   /// Application Description
   late final pulumi.Output<String?> description;
-
   /// Whether to enable the log.
   /// - true: On
   /// - false: Close
   late final pulumi.Output<bool?> enableLog;
-
   /// Application ID
   late final pulumi.Output<String> groupId;
-
   /// The maximum number of instances running at the same time. The default value is 1, that is, the last trigger is not completed, and the next trigger will not be performed even at the running time.
   late final pulumi.Output<int?> maxConcurrency;
-
   /// Application Grouping Configurable Maximum Number of Tasks
   late final pulumi.Output<int> maxJobs;
-
   /// Alarm configuration JSON field. For more information about this field, see **Request Parameters * *.
   late final pulumi.Output<String?> monitorConfigJson;
-
   /// Alarm contact JSON format.
   late final pulumi.Output<String?> monitorContactsJson;
-
   /// The namespace ID, which is obtained on the namespace page of the console.
   late final pulumi.Output<String> namespace;
-
   /// The namespace name.
   late final pulumi.Output<String> namespaceName;
-
   /// Not supported for the time being, no need to fill in.
   late final pulumi.Output<String?> namespaceSource;
-
   /// Whether to schedule a busy machine.
   late final pulumi.Output<bool?> scheduleBusyWorkers;
 
@@ -385,11 +371,11 @@ class AppGroup extends pulumi.CustomResource {
     AppGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:schedulerx/appGroup:AppGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:schedulerx/appGroup:AppGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appName = registerOutput<String>('appName');
     appType = registerOutput<int?>('appType');
     appVersion = registerOutput<String>('appVersion');
@@ -425,11 +411,11 @@ class AppGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:schedulerx/appGroup:AppGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:schedulerx/appGroup:AppGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     appName = registerOutput<String>('appName');
     appType = registerOutput<int?>('appType');
     appVersion = registerOutput<String>('appVersion');

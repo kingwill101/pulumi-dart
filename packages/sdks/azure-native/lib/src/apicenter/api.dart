@@ -245,43 +245,30 @@ import 'terms_of_service_response.dart';
 class Api extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The set of contacts
   late final pulumi.Output<List<Map<String, dynamic>>?> contacts;
-
   /// The custom metadata defined for API catalog entities.
   late final pulumi.Output<dynamic> customProperties;
-
   /// Description of the API.
   late final pulumi.Output<String?> description;
-
   /// The set of external documentation
   late final pulumi.Output<List<Map<String, dynamic>>?> externalDocumentation;
-
   /// Kind of API. For example, REST or GraphQL.
   late final pulumi.Output<String> kind;
-
   /// The license information for the API.
   late final pulumi.Output<LicenseResponse?> license;
-
   /// Current lifecycle stage of the API.
   late final pulumi.Output<String> lifecycleStage;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Short description of the API.
   late final pulumi.Output<String?> summary;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Terms of service for the API.
   late final pulumi.Output<TermsOfServiceResponse?> termsOfService;
-
   /// API title.
   late final pulumi.Output<String> title;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -289,54 +276,28 @@ class Api extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Api]. {@macro pulumi_apicenter_api_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Api(String name, {ApiArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:apicenter:Api',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Api(
+    String name, {
+    ApiArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:apicenter:Api',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     contacts = registerOutput<List<Map<String, dynamic>>?>('contacts');
     customProperties = registerOutput<dynamic>('customProperties');
     description = registerOutput<String?>('description');
-    externalDocumentation = registerOutput<List<Map<String, dynamic>>?>(
-      'externalDocumentation',
-    );
+    externalDocumentation = registerOutput<List<Map<String, dynamic>>?>('externalDocumentation');
     kind = registerOutput<String>('kind');
-    license = registerOutput<LicenseResponse?>(
-      'license',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LicenseResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    license = registerOutput<LicenseResponse?>('license', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LicenseResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lifecycleStage = registerOutput<String>('lifecycleStage');
     this.name = registerOutput<String>('name');
     summary = registerOutput<String?>('summary');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    termsOfService = registerOutput<TermsOfServiceResponse?>(
-      'termsOfService',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TermsOfServiceResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    termsOfService = registerOutput<TermsOfServiceResponse?>('termsOfService', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TermsOfServiceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     title = registerOutput<String>('title');
     type = registerOutput<String>('type');
   }

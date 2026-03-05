@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccessKeyCredentialsResponseVmmigrationV1alpha1 {
   /// AWS access key ID.
   final pulumi.Input<String> accessKeyId;
-
   /// Input only. AWS secret access key.
   final pulumi.Input<String> secretAccessKey;
-
   /// Input only. AWS session token. Used only when AWS security token service (STS) is responsible for creating the temporary credentials.
   final pulumi.Input<String> sessionToken;
 
@@ -31,9 +29,7 @@ class AccessKeyCredentialsResponseVmmigrationV1alpha1 {
     };
   }
 
-  factory AccessKeyCredentialsResponseVmmigrationV1alpha1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AccessKeyCredentialsResponseVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
     return AccessKeyCredentialsResponseVmmigrationV1alpha1(
       accessKeyId: pulumi.Input.fromValue(map['accessKeyId'] as String),
       secretAccessKey: pulumi.Input.fromValue(map['secretAccessKey'] as String),
@@ -41,3 +37,4 @@ class AccessKeyCredentialsResponseVmmigrationV1alpha1 {
     );
   }
 }
+

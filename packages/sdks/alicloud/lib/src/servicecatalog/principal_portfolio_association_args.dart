@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PrincipalPortfolioAssociationArgs {
   /// Product Portfolio ID
   final pulumi.Input<String> portfolioId;
-
   /// RAM entity ID
   final pulumi.Input<String> principalId;
-
   /// RAM entity type
   final pulumi.Input<String> principalType;
 
@@ -42,3 +40,4 @@ class PrincipalPortfolioAssociationArgs {
     );
   }
 }
+

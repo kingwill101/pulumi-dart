@@ -219,20 +219,15 @@ import 'channel_teams_state.dart';
 class ChannelTeams extends pulumi.CustomResource {
   /// The name of the Bot Resource this channel will be associated with. Changing this forces a new resource to be created.
   late final pulumi.Output<String> botName;
-
   /// Specifies whether to enable Microsoft Teams channel calls. This defaults to `false`.
   late final pulumi.Output<bool> callingEnabled;
-
   /// Specifies the webhook for Microsoft Teams channel calls.
   late final pulumi.Output<String> callingWebHook;
-
   /// The deployment environment for Microsoft Teams channel calls. Possible values are `CommercialDeployment` and `GCCModerateDeployment`. Defaults to `CommercialDeployment`.
   late final pulumi.Output<String?> deploymentEnvironment;
   late final pulumi.Output<bool> enableCalling;
-
   /// The supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The name of the resource group in which to create the Bot Channel. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
 
@@ -245,11 +240,11 @@ class ChannelTeams extends pulumi.CustomResource {
     ChannelTeamsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:bot/channelTeams:ChannelTeams',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:bot/channelTeams:ChannelTeams',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     botName = registerOutput<String>('botName');
     callingEnabled = registerOutput<bool>('callingEnabled');
     callingWebHook = registerOutput<String>('callingWebHook');
@@ -277,11 +272,11 @@ class ChannelTeams extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:bot/channelTeams:ChannelTeams',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:bot/channelTeams:ChannelTeams',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     botName = registerOutput<String>('botName');
     callingEnabled = registerOutput<bool>('callingEnabled');
     callingWebHook = registerOutput<String>('callingWebHook');

@@ -184,54 +184,38 @@ class AIServices extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** If you do not specify a `custom_subdomain_name` then you will not be able to attach a Private Endpoint to the resource.
   late final pulumi.Output<String?> customSubdomainName;
-
   /// A `customer_managed_key` block as documented below.
   late final pulumi.Output<AIServicesCustomerManagedKey?> customerManagedKey;
-
   /// The endpoint used to connect to the AI Services Account.
   late final pulumi.Output<String> endpoint;
-
   /// List of FQDNs allowed for the AI Services Account.
   late final pulumi.Output<List<String>?> fqdns;
-
   /// An `identity` block as defined below.
   late final pulumi.Output<AIServicesIdentity?> identity;
-
   /// Whether local authentication is enabled for the AI Services Account. Defaults to `true`.
   late final pulumi.Output<bool?> localAuthenticationEnabled;
-
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// Specifies the name of the AI Services Account. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// A `network_acls` block as defined below. When this property is specified, `custom_subdomain_name` is also required to be set.
   late final pulumi.Output<AIServicesNetworkAcls?> networkAcls;
-
   /// Whether outbound network access is restricted for the AI Services Account. Defaults to `false`.
   late final pulumi.Output<bool?> outboundNetworkAccessRestricted;
-
   /// A primary access key which can be used to connect to the AI Services Account.
   late final pulumi.Output<String> primaryAccessKey;
-
   /// Whether public network access is allowed for the AI Services Account. Possible values are `Enabled` and `Disabled`. Defaults to `Enabled`.
   late final pulumi.Output<String?> publicNetworkAccess;
-
   /// The name of the resource group in which the AI Services Account is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The secondary access key which can be used to connect to the AI Services Account.
   late final pulumi.Output<String> secondaryAccessKey;
-
   /// Specifies the SKU Name for this AI Services Account. Possible values are `F0`, `F1`, `S0`, `S`, `S1`, `S2`, `S3`, `S4`, `S5`, `S6`, `P0`, `P1`, `P2`, `E0` and `DC0`.
   ///
   /// &gt; **Note:** SKU `DC0` is the commitment tier for AI Services Account containers running in disconnected environments. You must obtain approval from Microsoft by submitting the [request form](https://aka.ms/csdisconnectedcontainers) first, before you can use this SKU. More information on [Purchase a commitment plan to use containers in disconnected environments](https://learn.microsoft.com/en-us/azure/cognitive-services/containers/disconnected-containers?tabs=stt#purchase-a-commitment-plan-to-use-containers-in-disconnected-environments).
   late final pulumi.Output<String> skuName;
-
   /// A `storage` block as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> storages;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -244,52 +228,21 @@ class AIServices extends pulumi.CustomResource {
     AIServicesArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:cognitive/aIServices:AIServices',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:cognitive/aIServices:AIServices',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     customSubdomainName = registerOutput<String?>('customSubdomainName');
-    customerManagedKey = registerOutput<AIServicesCustomerManagedKey?>(
-      'customerManagedKey',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AIServicesCustomerManagedKey.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    customerManagedKey = registerOutput<AIServicesCustomerManagedKey?>('customerManagedKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AIServicesCustomerManagedKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     endpoint = registerOutput<String>('endpoint');
     fqdns = registerOutput<List<String>?>('fqdns');
-    identity = registerOutput<AIServicesIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AIServicesIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    localAuthenticationEnabled = registerOutput<bool?>(
-      'localAuthenticationEnabled',
-    );
+    identity = registerOutput<AIServicesIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AIServicesIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    localAuthenticationEnabled = registerOutput<bool?>('localAuthenticationEnabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    networkAcls = registerOutput<AIServicesNetworkAcls?>(
-      'networkAcls',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AIServicesNetworkAcls.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    outboundNetworkAccessRestricted = registerOutput<bool?>(
-      'outboundNetworkAccessRestricted',
-    );
+    networkAcls = registerOutput<AIServicesNetworkAcls?>('networkAcls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AIServicesNetworkAcls.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    outboundNetworkAccessRestricted = registerOutput<bool?>('outboundNetworkAccessRestricted');
     primaryAccessKey = registerOutput<String>('primaryAccessKey');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -317,52 +270,21 @@ class AIServices extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:cognitive/aIServices:AIServices',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:cognitive/aIServices:AIServices',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     customSubdomainName = registerOutput<String?>('customSubdomainName');
-    customerManagedKey = registerOutput<AIServicesCustomerManagedKey?>(
-      'customerManagedKey',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AIServicesCustomerManagedKey.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    customerManagedKey = registerOutput<AIServicesCustomerManagedKey?>('customerManagedKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AIServicesCustomerManagedKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     endpoint = registerOutput<String>('endpoint');
     fqdns = registerOutput<List<String>?>('fqdns');
-    identity = registerOutput<AIServicesIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AIServicesIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    localAuthenticationEnabled = registerOutput<bool?>(
-      'localAuthenticationEnabled',
-    );
+    identity = registerOutput<AIServicesIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AIServicesIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    localAuthenticationEnabled = registerOutput<bool?>('localAuthenticationEnabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    networkAcls = registerOutput<AIServicesNetworkAcls?>(
-      'networkAcls',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AIServicesNetworkAcls.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    outboundNetworkAccessRestricted = registerOutput<bool?>(
-      'outboundNetworkAccessRestricted',
-    );
+    networkAcls = registerOutput<AIServicesNetworkAcls?>('networkAcls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AIServicesNetworkAcls.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    outboundNetworkAccessRestricted = registerOutput<bool?>('outboundNetworkAccessRestricted');
     primaryAccessKey = registerOutput<String>('primaryAccessKey');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     resourceGroupName = registerOutput<String>('resourceGroupName');

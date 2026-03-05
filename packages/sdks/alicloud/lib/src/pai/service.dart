@@ -245,22 +245,16 @@ import 'service_state.dart';
 class Service extends pulumi.CustomResource {
   /// Creation time of the service
   late final pulumi.Output<String> createTime;
-
   /// Whether to enter the development mode.
   late final pulumi.Output<String?> develop;
-
   /// The region ID of the resource
   late final pulumi.Output<String> regionId;
-
   /// Service configuration information. Please refer to https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services
   late final pulumi.Output<String> serviceConfig;
-
   /// Service Current Status.
   late final pulumi.Output<String> status;
-
   /// The tag of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Workspace id
   late final pulumi.Output<String?> workspaceId;
 
@@ -273,11 +267,11 @@ class Service extends pulumi.CustomResource {
     ServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:pai/service:Service',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:pai/service:Service',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     develop = registerOutput<String?>('develop');
     regionId = registerOutput<String>('regionId');
@@ -305,11 +299,11 @@ class Service extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:pai/service:Service',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:pai/service:Service',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     develop = registerOutput<String?>('develop');
     regionId = registerOutput<String>('regionId');

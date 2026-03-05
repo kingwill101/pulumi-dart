@@ -450,55 +450,41 @@ import 'scope_rbac_role_binding_role.dart';
 class ScopeRbacRoleBinding extends pulumi.CustomResource {
   /// Time the RBAC Role Binding was created in UTC.
   late final pulumi.Output<String> createTime;
-
   /// Time the RBAC Role Binding was deleted in UTC.
   late final pulumi.Output<String> deleteTime;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Principal that is be authorized in the cluster (at least of one the oneof
   /// is required). Updating one will unset the other automatically.
   /// group is the group, as seen by the kubernetes cluster.
   late final pulumi.Output<String?> group;
-
   /// Labels for this ScopeRBACRoleBinding.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// The resource name for the RBAC Role Binding
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// Role to bind to the principal.
   /// Structure is documented below.
   late final pulumi.Output<ScopeRbacRoleBindingRole> role;
-
   /// Id of the scope
   late final pulumi.Output<String> scopeId;
-
   /// The client-provided identifier of the RBAC Role Binding.
   late final pulumi.Output<String> scopeRbacRoleBindingId;
-
   /// State of the RBAC Role Binding resource.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> states;
-
   /// Google-generated UUID for this resource.
   late final pulumi.Output<String> uid;
-
   /// Time the RBAC Role Binding was updated in UTC.
   late final pulumi.Output<String> updateTime;
-
   /// Principal that is be authorized in the cluster (at least of one the oneof
   /// is required). Updating one will unset the other automatically.
   /// user is the name of the user as seen by the kubernetes cluster, example
@@ -514,11 +500,11 @@ class ScopeRbacRoleBinding extends pulumi.CustomResource {
     ScopeRbacRoleBindingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:gkehub/scopeRbacRoleBinding:ScopeRbacRoleBinding',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:gkehub/scopeRbacRoleBinding:ScopeRbacRoleBinding',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -527,16 +513,7 @@ class ScopeRbacRoleBinding extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    role = registerOutput<ScopeRbacRoleBindingRole>(
-      'role',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ScopeRbacRoleBindingRole.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    role = registerOutput<ScopeRbacRoleBindingRole>('role', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScopeRbacRoleBindingRole.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     scopeId = registerOutput<String>('scopeId');
     scopeRbacRoleBindingId = registerOutput<String>('scopeRbacRoleBindingId');
     states = registerOutput<List<Map<String, dynamic>>>('states');
@@ -563,11 +540,11 @@ class ScopeRbacRoleBinding extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:gkehub/scopeRbacRoleBinding:ScopeRbacRoleBinding',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:gkehub/scopeRbacRoleBinding:ScopeRbacRoleBinding',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -576,16 +553,7 @@ class ScopeRbacRoleBinding extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    role = registerOutput<ScopeRbacRoleBindingRole>(
-      'role',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ScopeRbacRoleBindingRole.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    role = registerOutput<ScopeRbacRoleBindingRole>('role', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScopeRbacRoleBindingRole.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     scopeId = registerOutput<String>('scopeId');
     scopeRbacRoleBindingId = registerOutput<String>('scopeRbacRoleBindingId');
     states = registerOutput<List<Map<String, dynamic>>>('states');

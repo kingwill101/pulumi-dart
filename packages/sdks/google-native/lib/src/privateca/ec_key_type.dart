@@ -10,27 +10,20 @@ class EcKeyType {
 
   /// Creates a new [EcKeyType].
   /// [signatureAlgorithm] Optional. A signature algorithm that must be used. If this is omitted, any EC-based signature algorithm will be allowed.
-  EcKeyType({this.signatureAlgorithm});
+  EcKeyType({
+    this.signatureAlgorithm,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'signatureAlgorithm':
-          ?pulumi.Input.mapOptionalInputValue<
-            EcKeyTypeSignatureAlgorithm,
-            String
-          >(signatureAlgorithm, (value) => value.wireValue),
+      'signatureAlgorithm': ?pulumi.Input.mapOptionalInputValue<EcKeyTypeSignatureAlgorithm, String>(signatureAlgorithm, (value) => value.wireValue),
     };
   }
 
   factory EcKeyType.fromMap(Map<String, dynamic> map) {
     return EcKeyType(
-      signatureAlgorithm: (() {
-        final guardedValue = map['signatureAlgorithm'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          EcKeyTypeSignatureAlgorithm.fromValue(guardedValue as String),
-        );
-      })(),
+      signatureAlgorithm: (() { final guardedValue = map['signatureAlgorithm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EcKeyTypeSignatureAlgorithm.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

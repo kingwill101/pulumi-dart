@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkPolicyResponse {
   /// Whether network policy is enabled on the cluster.
   final pulumi.Input<bool> enabled;
-
   /// The selected network policy provider.
   final pulumi.Input<String> provider;
 
   /// Creates a new [NetworkPolicyResponse].
   /// [enabled] Whether network policy is enabled on the cluster.
   /// [provider] The selected network policy provider.
-  NetworkPolicyResponse({required this.enabled, required this.provider});
+  NetworkPolicyResponse({
+    required this.enabled,
+    required this.provider,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled, 'provider': provider};
+    return <String, dynamic>{
+      'enabled': enabled,
+      'provider': provider,
+    };
   }
 
   factory NetworkPolicyResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class NetworkPolicyResponse {
     );
   }
 }
+

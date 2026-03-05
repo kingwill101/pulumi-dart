@@ -7,21 +7,20 @@ class DatabasePostgresqlConfigTimescaledb {
 
   /// Creates a new [DatabasePostgresqlConfigTimescaledb].
   /// [maxBackgroundWorkers] Optional.
-  DatabasePostgresqlConfigTimescaledb({this.maxBackgroundWorkers});
+  DatabasePostgresqlConfigTimescaledb({
+    this.maxBackgroundWorkers,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'maxBackgroundWorkers': ?maxBackgroundWorkers};
+    return <String, dynamic>{
+      'maxBackgroundWorkers': ?maxBackgroundWorkers,
+    };
   }
 
-  factory DatabasePostgresqlConfigTimescaledb.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DatabasePostgresqlConfigTimescaledb.fromMap(Map<String, dynamic> map) {
     return DatabasePostgresqlConfigTimescaledb(
-      maxBackgroundWorkers: (() {
-        final guardedValue = map['maxBackgroundWorkers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      maxBackgroundWorkers: (() { final guardedValue = map['maxBackgroundWorkers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

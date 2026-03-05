@@ -9,10 +9,14 @@ class AssignSpecificValueResponse {
 
   /// Creates a new [AssignSpecificValueResponse].
   /// [value] Specific value to be assigned
-  AssignSpecificValueResponse({required this.value});
+  AssignSpecificValueResponse({
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': value};
+    return <String, dynamic>{
+      'value': value,
+    };
   }
 
   factory AssignSpecificValueResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class AssignSpecificValueResponse {
     );
   }
 }
+

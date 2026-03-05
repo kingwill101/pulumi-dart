@@ -184,14 +184,12 @@ class AttackPathSensitiveAssetConfig extends pulumi.CustomResource {
     AttackPathSensitiveAssetConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:threatdetection/attackPathSensitiveAssetConfig:AttackPathSensitiveAssetConfig',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    attackPathAssetLists = registerOutput<List<Map<String, dynamic>>>(
-      'attackPathAssetLists',
-    );
+          'alicloud:threatdetection/attackPathSensitiveAssetConfig:AttackPathSensitiveAssetConfig',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    attackPathAssetLists = registerOutput<List<Map<String, dynamic>>>('attackPathAssetLists');
   }
 
   /// Gets an existing [AttackPathSensitiveAssetConfig] resource's state with the given [name] and [id].
@@ -212,13 +210,11 @@ class AttackPathSensitiveAssetConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:threatdetection/attackPathSensitiveAssetConfig:AttackPathSensitiveAssetConfig',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    attackPathAssetLists = registerOutput<List<Map<String, dynamic>>>(
-      'attackPathAssetLists',
-    );
+          'alicloud:threatdetection/attackPathSensitiveAssetConfig:AttackPathSensitiveAssetConfig',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    attackPathAssetLists = registerOutput<List<Map<String, dynamic>>>('attackPathAssetLists');
   }
 }

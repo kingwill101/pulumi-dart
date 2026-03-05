@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterNodeTypeEphemeralPorts {
   /// The end of the Ephemeral Port Range on this Node Type.
   final pulumi.Input<int> endPort;
-
   /// The start of the Ephemeral Port Range on this Node Type.
   final pulumi.Input<int> startPort;
 
@@ -18,7 +17,10 @@ class ClusterNodeTypeEphemeralPorts {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'endPort': endPort, 'startPort': startPort};
+    return <String, dynamic>{
+      'endPort': endPort,
+      'startPort': startPort,
+    };
   }
 
   factory ClusterNodeTypeEphemeralPorts.fromMap(Map<String, dynamic> map) {
@@ -28,3 +30,4 @@ class ClusterNodeTypeEphemeralPorts {
     );
   }
 }
+

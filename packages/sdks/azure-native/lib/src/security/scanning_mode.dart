@@ -14,3 +14,4 @@ enum ScanningMode {
     throw ArgumentError('Unknown ScanningMode value: $value');
   }
 }
+

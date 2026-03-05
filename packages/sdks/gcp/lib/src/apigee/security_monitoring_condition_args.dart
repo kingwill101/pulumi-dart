@@ -9,17 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecurityMonitoringConditionArgs {
   /// Resource ID of the security monitoring condition.
   final pulumi.Input<String> conditionId;
-
   /// A nested object resource.
   final pulumi.Input<Map<String, dynamic>>? includeAllResources;
-
   /// The Apigee Organization associated with the Apigee Security Monitoring Condition,
   /// in the format `organizations/{{org_name}}`.
   final pulumi.Input<String> orgId;
-
   /// ID of security profile of the security monitoring condition.
   final pulumi.Input<String> profile;
-
   /// ID of security profile of the security monitoring condition.
   final pulumi.Input<String> scope;
 
@@ -50,16 +46,11 @@ class SecurityMonitoringConditionArgs {
   factory SecurityMonitoringConditionArgs.fromMap(Map<String, dynamic> map) {
     return SecurityMonitoringConditionArgs(
       conditionId: pulumi.Input.fromValue(map['conditionId'] as String),
-      includeAllResources: (() {
-        final guardedValue = map['includeAllResources'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      includeAllResources: (() { final guardedValue = map['includeAllResources']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
       orgId: pulumi.Input.fromValue(map['orgId'] as String),
       profile: pulumi.Input.fromValue(map['profile'] as String),
       scope: pulumi.Input.fromValue(map['scope'] as String),
     );
   }
 }
+

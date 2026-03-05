@@ -8,10 +8,14 @@ class PoolFeaturesCow {
 
   /// Creates a new [PoolFeaturesCow].
   /// [state] Configures the state of the copy-on-write feature within the storage pool.
-  PoolFeaturesCow({required this.state});
+  PoolFeaturesCow({
+    required this.state,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'state': state};
+    return <String, dynamic>{
+      'state': state,
+    };
   }
 
   factory PoolFeaturesCow.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class PoolFeaturesCow {
     );
   }
 }
+

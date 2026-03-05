@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListTopLevelDomainAgreementsArgs {
   /// If &lt;code&gt;true&lt;/code&gt;, then the list of agreements will include agreements for domain transfer as well; otherwise, &lt;code&gt;false&lt;/code&gt;.
   final pulumi.Input<bool>? forTransfer;
-
   /// If &lt;code&gt;true&lt;/code&gt;, then the list of agreements will include agreements for domain privacy as well; otherwise, &lt;code&gt;false&lt;/code&gt;.
   final pulumi.Input<bool>? includePrivacy;
-
   /// Name of the top-level domain.
   final pulumi.Input<String> name;
 
@@ -36,17 +34,10 @@ class ListTopLevelDomainAgreementsArgs {
 
   factory ListTopLevelDomainAgreementsArgs.fromMap(Map<String, dynamic> map) {
     return ListTopLevelDomainAgreementsArgs(
-      forTransfer: (() {
-        final guardedValue = map['forTransfer'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      includePrivacy: (() {
-        final guardedValue = map['includePrivacy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      forTransfer: (() { final guardedValue = map['forTransfer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      includePrivacy: (() { final guardedValue = map['includePrivacy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

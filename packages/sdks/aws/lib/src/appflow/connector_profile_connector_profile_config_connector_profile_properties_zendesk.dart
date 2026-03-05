@@ -12,14 +12,15 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesZendesk {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'instanceUrl': instanceUrl};
+    return <String, dynamic>{
+      'instanceUrl': instanceUrl,
+    };
   }
 
-  factory ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesZendesk.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesZendesk.fromMap(Map<String, dynamic> map) {
     return ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesZendesk(
       instanceUrl: pulumi.Input.fromValue(map['instanceUrl'] as String),
     );
   }
 }
+

@@ -7,13 +7,10 @@ import 'google_cloud_contentwarehouse_v1_rule_response.dart';
 class GetRuleSetResult {
   /// Short description of the rule-set.
   final String description;
-
   /// The resource name of the rule set. Managed internally. Format: projects/{project_number}/locations/{location}/ruleSet/{rule_set_id}. The name is ignored when creating a rule set.
   final String name;
-
   /// List of rules given by the customer.
   final List<GoogleCloudContentwarehouseV1RuleResponse> rules;
-
   /// Source of the rules i.e., customer name.
   final String source;
 
@@ -33,11 +30,7 @@ class GetRuleSetResult {
     return <String, dynamic>{
       'description': description,
       'name': name,
-      'rules':
-          pulumi.Input.encodeList<
-            GoogleCloudContentwarehouseV1RuleResponse,
-            Map<String, dynamic>
-          >(rules, (value) => value.toMap()),
+      'rules': pulumi.Input.encodeList<GoogleCloudContentwarehouseV1RuleResponse, Map<String, dynamic>>(rules, (value) => value.toMap()),
       'source': source,
     };
   }
@@ -46,13 +39,9 @@ class GetRuleSetResult {
     return GetRuleSetResult(
       description: map['description'] as String,
       name: map['name'] as String,
-      rules: pulumi.Input.decodeList<GoogleCloudContentwarehouseV1RuleResponse>(
-        map['rules']!,
-        (value) => GoogleCloudContentwarehouseV1RuleResponse.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      rules: pulumi.Input.decodeList<GoogleCloudContentwarehouseV1RuleResponse>(map['rules']!, (value) => GoogleCloudContentwarehouseV1RuleResponse.fromMap((value as Map).cast<String, dynamic>())),
       source: map['source'] as String,
     );
   }
 }
+

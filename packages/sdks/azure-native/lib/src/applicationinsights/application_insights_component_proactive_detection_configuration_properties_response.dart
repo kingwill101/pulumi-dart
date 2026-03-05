@@ -7,22 +7,14 @@ import 'application_insights_component_proactive_detection_configuration_propert
 class ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponse {
   /// Custom email addresses for this rule notifications
   final pulumi.Input<List<String>>? customEmails;
-
   /// A flag that indicates whether this rule is enabled by the user
   final pulumi.Input<bool>? enabled;
-
   /// The last time this rule was updated
   final pulumi.Input<String> lastUpdatedTime;
-
   /// The rule name
   final pulumi.Input<String> name;
-
   /// Static definitions of the ProactiveDetection configuration rule (same values for all components).
-  final pulumi.Input<
-    ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponseRuleDefinitions
-  >?
-  ruleDefinitions;
-
+  final pulumi.Input<ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponseRuleDefinitions>? ruleDefinitions;
   /// A flag that indicated whether notifications on this rule should be sent to subscription owners
   final pulumi.Input<bool>? sendEmailsToSubscriptionOwners;
 
@@ -48,45 +40,20 @@ class ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRespo
       'enabled': ?enabled,
       'lastUpdatedTime': lastUpdatedTime,
       'name': name,
-      'ruleDefinitions':
-          ?pulumi.Input.mapOptionalInputValue<
-            ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponseRuleDefinitions,
-            Map<String, dynamic>
-          >(ruleDefinitions, (value) => value.toMap()),
+      'ruleDefinitions': ?pulumi.Input.mapOptionalInputValue<ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponseRuleDefinitions, Map<String, dynamic>>(ruleDefinitions, (value) => value.toMap()),
       'sendEmailsToSubscriptionOwners': ?sendEmailsToSubscriptionOwners,
     };
   }
 
-  factory ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponse(
-      customEmails: (() {
-        final guardedValue = map['customEmails'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      customEmails: (() { final guardedValue = map['customEmails']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       lastUpdatedTime: pulumi.Input.fromValue(map['lastUpdatedTime'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      ruleDefinitions: (() {
-        final guardedValue = map['ruleDefinitions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponseRuleDefinitions.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      sendEmailsToSubscriptionOwners: (() {
-        final guardedValue = map['sendEmailsToSubscriptionOwners'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      ruleDefinitions: (() { final guardedValue = map['ruleDefinitions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponseRuleDefinitions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      sendEmailsToSubscriptionOwners: (() { final guardedValue = map['sendEmailsToSubscriptionOwners']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

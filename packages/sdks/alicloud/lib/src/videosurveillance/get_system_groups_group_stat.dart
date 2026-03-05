@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSystemGroupsGroupStat {
   /// The total number of devices in the group.
   final pulumi.Input<String> deviceNum;
-
   /// The total number of smart devices in the group.
   final pulumi.Input<String> iedNum;
-
   /// The total number of cameras in the group.
   final pulumi.Input<String> ipcNum;
-
   /// The total number of platforms in the group.
   final pulumi.Input<String> platformNum;
 
@@ -45,3 +42,4 @@ class GetSystemGroupsGroupStat {
     );
   }
 }
+

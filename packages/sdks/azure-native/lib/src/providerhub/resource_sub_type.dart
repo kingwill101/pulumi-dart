@@ -15,3 +15,4 @@ enum ResourceSubType {
     throw ArgumentError('Unknown ResourceSubType value: $value');
   }
 }
+

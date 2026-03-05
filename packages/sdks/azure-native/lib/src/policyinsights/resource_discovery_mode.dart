@@ -15,3 +15,4 @@ enum ResourceDiscoveryMode {
     throw ArgumentError('Unknown ResourceDiscoveryMode value: $value');
   }
 }
+

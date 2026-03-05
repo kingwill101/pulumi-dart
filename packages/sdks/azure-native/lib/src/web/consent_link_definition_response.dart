@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConsentLinkDefinitionResponse {
   /// Display name of the parameter in the connection provider's OAuth settings
   final pulumi.Input<String>? displayName;
-
   /// URI for first party login
   final pulumi.Input<String>? firstPartyLoginUri;
-
   /// URI for the consent link
   final pulumi.Input<String>? link;
-
   /// Status of the link
   final pulumi.Input<String>? status;
 
@@ -39,26 +36,11 @@ class ConsentLinkDefinitionResponse {
 
   factory ConsentLinkDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return ConsentLinkDefinitionResponse(
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      firstPartyLoginUri: (() {
-        final guardedValue = map['firstPartyLoginUri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      link: (() {
-        final guardedValue = map['link'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      firstPartyLoginUri: (() { final guardedValue = map['firstPartyLoginUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      link: (() { final guardedValue = map['link']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

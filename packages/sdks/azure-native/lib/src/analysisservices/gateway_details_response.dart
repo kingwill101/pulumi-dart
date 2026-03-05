@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GatewayDetailsResponse {
   /// Uri of the DMTS cluster.
   final pulumi.Input<String> dmtsClusterUri;
-
   /// Gateway object id from in the DMTS cluster for the gateway resource.
   final pulumi.Input<String> gatewayObjectId;
-
   /// Gateway resource to be associated with the server.
   final pulumi.Input<String>? gatewayResourceId;
 
@@ -35,11 +33,8 @@ class GatewayDetailsResponse {
     return GatewayDetailsResponse(
       dmtsClusterUri: pulumi.Input.fromValue(map['dmtsClusterUri'] as String),
       gatewayObjectId: pulumi.Input.fromValue(map['gatewayObjectId'] as String),
-      gatewayResourceId: (() {
-        final guardedValue = map['gatewayResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      gatewayResourceId: (() { final guardedValue = map['gatewayResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

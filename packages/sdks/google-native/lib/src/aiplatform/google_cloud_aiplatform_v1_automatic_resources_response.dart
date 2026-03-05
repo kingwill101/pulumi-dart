@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudAiplatformV1AutomaticResourcesResponse {
   /// Immutable. The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale the model to that many replicas is guaranteed (barring service outages). If traffic against the DeployedModel increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, a no upper bound for scaling under heavy traffic will be assume, though Vertex AI may be unable to scale beyond certain replica number.
   final pulumi.Input<int> maxReplicaCount;
-
   /// Immutable. The minimum number of replicas this DeployedModel will be always deployed on. If traffic against it increases, it may dynamically be deployed onto more replicas up to max_replica_count, and as traffic decreases, some of these extra replicas may be freed. If the requested value is too large, the deployment will error.
   final pulumi.Input<int> minReplicaCount;
 
@@ -25,12 +24,11 @@ class GoogleCloudAiplatformV1AutomaticResourcesResponse {
     };
   }
 
-  factory GoogleCloudAiplatformV1AutomaticResourcesResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudAiplatformV1AutomaticResourcesResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1AutomaticResourcesResponse(
       maxReplicaCount: pulumi.Input.fromValue(map['maxReplicaCount'] as int),
       minReplicaCount: pulumi.Input.fromValue(map['minReplicaCount'] as int),
     );
   }
 }
+

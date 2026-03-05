@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LogCollectionJobSessionResponse {
   /// A unique identifier for correlating this log collection session with other operations or sessions.
   final pulumi.Input<String> correlationId;
-
   /// The timestamp when log collection ended, in ISO 8601 format.
   final pulumi.Input<String> endTime;
-
   /// The size of the collected logs in bytes.
   final pulumi.Input<int> logSize;
-
   /// The timestamp when log collection started, in ISO 8601 format.
   final pulumi.Input<String> startTime;
-
   /// The status of the log collection session.
   final pulumi.Input<String> status;
-
   /// The total time logs were collected for, in ISO 8601 duration format.
   final pulumi.Input<String> timeCollected;
 
@@ -60,3 +55,4 @@ class LogCollectionJobSessionResponse {
     );
   }
 }
+

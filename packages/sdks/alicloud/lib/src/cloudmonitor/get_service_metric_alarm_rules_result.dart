@@ -7,24 +7,18 @@ import 'get_service_metric_alarm_rules_rule.dart';
 class GetServiceMetricAlarmRulesResult {
   /// The dimensions of the alert rule.
   final String? dimensions;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
-
   /// The metric that is used to monitor the cloud service.
   final String? metricName;
-
   /// The namespace of the cloud service.
   final String? namespace;
   final String? outputFile;
-
   /// The name of the alert rule.
   final String? ruleName;
-
   /// A list of Hybrid Double Writes. Each element contains the following attributes:
   final List<GetServiceMetricAlarmRulesRule> rules;
-
   /// Indicates whether the alert rule is enabled.
   final bool? status;
 
@@ -59,55 +53,23 @@ class GetServiceMetricAlarmRulesResult {
       'namespace': ?namespace,
       'outputFile': ?outputFile,
       'ruleName': ?ruleName,
-      'rules':
-          pulumi.Input.encodeList<
-            GetServiceMetricAlarmRulesRule,
-            Map<String, dynamic>
-          >(rules, (value) => value.toMap()),
+      'rules': pulumi.Input.encodeList<GetServiceMetricAlarmRulesRule, Map<String, dynamic>>(rules, (value) => value.toMap()),
       'status': ?status,
     };
   }
 
   factory GetServiceMetricAlarmRulesResult.fromMap(Map<String, dynamic> map) {
     return GetServiceMetricAlarmRulesResult(
-      dimensions: (() {
-        final guardedValue = map['dimensions'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      dimensions: (() { final guardedValue = map['dimensions']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      metricName: (() {
-        final guardedValue = map['metricName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      namespace: (() {
-        final guardedValue = map['namespace'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      ruleName: (() {
-        final guardedValue = map['ruleName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      rules: pulumi.Input.decodeList<GetServiceMetricAlarmRulesRule>(
-        map['rules']!,
-        (value) => GetServiceMetricAlarmRulesRule.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      metricName: (() { final guardedValue = map['metricName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      namespace: (() { final guardedValue = map['namespace']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ruleName: (() { final guardedValue = map['ruleName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      rules: pulumi.Input.decodeList<GetServiceMetricAlarmRulesRule>(map['rules']!, (value) => GetServiceMetricAlarmRulesRule.fromMap((value as Map).cast<String, dynamic>())),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as bool; })(),
     );
   }
 }
+

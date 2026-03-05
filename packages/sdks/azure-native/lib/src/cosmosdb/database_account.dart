@@ -608,157 +608,105 @@ import 'system_data_response.dart';
 /// ```
 class DatabaseAccount extends pulumi.CustomResource {
   /// Analytical storage specific properties.
-  late final pulumi.Output<AnalyticalStorageConfigurationResponse?>
-  analyticalStorageConfiguration;
-
+  late final pulumi.Output<AnalyticalStorageConfigurationResponse?> analyticalStorageConfiguration;
   /// API specific properties.
   late final pulumi.Output<ApiPropertiesResponse?> apiProperties;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The object representing the policy for taking backups on an account.
   late final pulumi.Output<ContinuousModeBackupPolicyResponse?> backupPolicy;
-
   /// List of Cosmos DB capabilities for the account
   late final pulumi.Output<List<Map<String, dynamic>>?> capabilities;
-
   /// The object that represents all properties related to capacity enforcement on an account.
   late final pulumi.Output<CapacityResponse?> capacity;
-
   /// The cassandra connector offer type for the Cosmos DB database C* account.
   late final pulumi.Output<String?> connectorOffer;
-
   /// The consistency policy for the Cosmos DB database account.
   late final pulumi.Output<ConsistencyPolicyResponse?> consistencyPolicy;
-
   /// The CORS policy for the Cosmos DB database account.
   late final pulumi.Output<List<Map<String, dynamic>>?> cors;
-
   /// Enum to indicate the mode of account creation.
   late final pulumi.Output<String?> createMode;
-
   /// Indicates the status of the Customer Managed Key feature on the account. In case there are errors, the property provides troubleshooting guidance.
   late final pulumi.Output<String?> customerManagedKeyStatus;
-
   /// The offer type for the Cosmos DB database account. Default value: Standard.
   late final pulumi.Output<String> databaseAccountOfferType;
-
   /// The default identity for accessing key vault used in features like customer managed keys. The default identity needs to be explicitly set by the users. It can be "FirstPartyIdentity", "SystemAssignedIdentity" and more.
   late final pulumi.Output<String?> defaultIdentity;
-
   /// Enum to indicate default Priority Level of request for Priority Based Execution.
   late final pulumi.Output<String?> defaultPriorityLevel;
-
   /// Disable write operations on metadata resources (databases, containers, throughput) via account keys
   late final pulumi.Output<bool?> disableKeyBasedMetadataWriteAccess;
-
   /// Opt-out of local authentication and ensure only MSI and AAD can be used exclusively for authentication.
   late final pulumi.Output<bool?> disableLocalAuth;
-
   /// The connection endpoint for the Cosmos DB database account.
   late final pulumi.Output<String> documentEndpoint;
-
   /// Flag to indicate whether to enable storage analytics.
   late final pulumi.Output<bool?> enableAnalyticalStorage;
-
   /// Enables automatic failover of the write region in the rare event that the region is unavailable due to an outage. Automatic failover will result in a new write region for the account and is chosen based on the failover priorities configured for the account.
   late final pulumi.Output<bool?> enableAutomaticFailover;
-
   /// Flag to indicate enabling/disabling of Burst Capacity feature on the account
   late final pulumi.Output<bool?> enableBurstCapacity;
-
   /// Enables the cassandra connector on the Cosmos DB C* account
   late final pulumi.Output<bool?> enableCassandraConnector;
-
   /// Flag to indicate whether Free Tier is enabled.
   late final pulumi.Output<bool?> enableFreeTier;
-
   /// Enables the account to write in multiple locations
   late final pulumi.Output<bool?> enableMultipleWriteLocations;
-
   /// Flag to indicate enabling/disabling of Partition Merge feature on the account
   late final pulumi.Output<bool?> enablePartitionMerge;
-
   /// Flag to indicate enabling/disabling of PerRegionPerPartitionAutoscale feature on the account
   late final pulumi.Output<bool?> enablePerRegionPerPartitionAutoscale;
-
   /// Flag to indicate enabling/disabling of Priority Based Execution Preview feature on the account
   late final pulumi.Output<bool?> enablePriorityBasedExecution;
-
   /// An array that contains the regions ordered by their failover priorities.
   late final pulumi.Output<List<Map<String, dynamic>>> failoverPolicies;
-
   /// Identity for the resource.
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
-
   /// A unique identifier assigned to the database account
   late final pulumi.Output<String> instanceId;
-
   /// List of IpRules.
   late final pulumi.Output<List<Map<String, dynamic>>?> ipRules;
-
   /// Flag to indicate whether to enable/disable Virtual Network ACL rules.
   late final pulumi.Output<bool?> isVirtualNetworkFilterEnabled;
-
   /// The URI of the key vault
   late final pulumi.Output<String?> keyVaultKeyUri;
-
   /// The version of the Customer Managed Key currently being used by the account
   late final pulumi.Output<String> keyVaultKeyUriVersion;
-
   /// The object that represents the metadata for the Account Keys of the Cosmos DB account.
   late final pulumi.Output<DatabaseAccountKeysMetadataResponse> keysMetadata;
-
   /// Indicates the type of database account. This can only be set at database account creation.
   late final pulumi.Output<String?> kind;
-
   /// The location of the resource group to which the resource belongs.
   late final pulumi.Output<String?> location;
-
   /// An array that contains all of the locations enabled for the Cosmos DB account.
   late final pulumi.Output<List<Map<String, dynamic>>> locations;
-
   /// Indicates the minimum allowed Tls version. The default value is Tls 1.2. Cassandra and Mongo APIs only work with Tls 1.2.
   late final pulumi.Output<String?> minimalTlsVersion;
-
   /// The name of the ARM resource.
   late final pulumi.Output<String> name;
-
   /// Indicates what services are allowed to bypass firewall checks.
   late final pulumi.Output<String?> networkAclBypass;
-
   /// An array that contains the Resource Ids for Network Acl Bypass for the Cosmos DB account.
   late final pulumi.Output<List<String>?> networkAclBypassResourceIds;
-
   /// List of Private Endpoint Connections configured for the Cosmos DB account.
-  late final pulumi.Output<List<Map<String, dynamic>>>
-  privateEndpointConnections;
-
+  late final pulumi.Output<List<Map<String, dynamic>>> privateEndpointConnections;
   /// The status of the Cosmos DB account at the time the operation was called. The status can be one of following. 'Creating' – the Cosmos DB account is being created. When an account is in Creating state, only properties that are specified as input for the Create Cosmos DB account operation are returned. 'Succeeded' – the Cosmos DB account is active for use. 'Updating' – the Cosmos DB account is being updated. 'Deleting' – the Cosmos DB account is being deleted. 'Failed' – the Cosmos DB account failed creation. 'DeletionFailed' – the Cosmos DB account deletion failed.
   late final pulumi.Output<String> provisioningState;
-
   /// Whether requests from Public Network are allowed
   late final pulumi.Output<String?> publicNetworkAccess;
-
   /// An array that contains of the read locations enabled for the Cosmos DB account.
   late final pulumi.Output<List<Map<String, dynamic>>> readLocations;
-
   /// Parameters to indicate the information about the restore.
   late final pulumi.Output<RestoreParametersResponse?> restoreParameters;
-
   /// The system meta data relating to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB".
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of Azure resource.
   late final pulumi.Output<String> type;
-
   /// List of Virtual Network ACL rules configured for the Cosmos DB account.
   late final pulumi.Output<List<Map<String, dynamic>>?> virtualNetworkRules;
-
   /// An array that contains the write location for the Cosmos DB account.
   late final pulumi.Output<List<Map<String, dynamic>>> writeLocations;
 
@@ -771,169 +719,61 @@ class DatabaseAccount extends pulumi.CustomResource {
     DatabaseAccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:cosmosdb:DatabaseAccount',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    analyticalStorageConfiguration =
-        registerOutput<AnalyticalStorageConfigurationResponse?>(
-          'analyticalStorageConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AnalyticalStorageConfigurationResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    apiProperties = registerOutput<ApiPropertiesResponse?>(
-      'apiProperties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApiPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'azure-native:cosmosdb:DatabaseAccount',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    analyticalStorageConfiguration = registerOutput<AnalyticalStorageConfigurationResponse?>('analyticalStorageConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnalyticalStorageConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    apiProperties = registerOutput<ApiPropertiesResponse?>('apiProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    backupPolicy = registerOutput<ContinuousModeBackupPolicyResponse?>(
-      'backupPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ContinuousModeBackupPolicyResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    backupPolicy = registerOutput<ContinuousModeBackupPolicyResponse?>('backupPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContinuousModeBackupPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     capabilities = registerOutput<List<Map<String, dynamic>>?>('capabilities');
-    capacity = registerOutput<CapacityResponse?>(
-      'capacity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CapacityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    capacity = registerOutput<CapacityResponse?>('capacity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CapacityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     connectorOffer = registerOutput<String?>('connectorOffer');
-    consistencyPolicy = registerOutput<ConsistencyPolicyResponse?>(
-      'consistencyPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ConsistencyPolicyResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    consistencyPolicy = registerOutput<ConsistencyPolicyResponse?>('consistencyPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConsistencyPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cors = registerOutput<List<Map<String, dynamic>>?>('cors');
     createMode = registerOutput<String?>('createMode');
-    customerManagedKeyStatus = registerOutput<String?>(
-      'customerManagedKeyStatus',
-    );
-    databaseAccountOfferType = registerOutput<String>(
-      'databaseAccountOfferType',
-    );
+    customerManagedKeyStatus = registerOutput<String?>('customerManagedKeyStatus');
+    databaseAccountOfferType = registerOutput<String>('databaseAccountOfferType');
     defaultIdentity = registerOutput<String?>('defaultIdentity');
     defaultPriorityLevel = registerOutput<String?>('defaultPriorityLevel');
-    disableKeyBasedMetadataWriteAccess = registerOutput<bool?>(
-      'disableKeyBasedMetadataWriteAccess',
-    );
+    disableKeyBasedMetadataWriteAccess = registerOutput<bool?>('disableKeyBasedMetadataWriteAccess');
     disableLocalAuth = registerOutput<bool?>('disableLocalAuth');
     documentEndpoint = registerOutput<String>('documentEndpoint');
     enableAnalyticalStorage = registerOutput<bool?>('enableAnalyticalStorage');
     enableAutomaticFailover = registerOutput<bool?>('enableAutomaticFailover');
     enableBurstCapacity = registerOutput<bool?>('enableBurstCapacity');
-    enableCassandraConnector = registerOutput<bool?>(
-      'enableCassandraConnector',
-    );
+    enableCassandraConnector = registerOutput<bool?>('enableCassandraConnector');
     enableFreeTier = registerOutput<bool?>('enableFreeTier');
-    enableMultipleWriteLocations = registerOutput<bool?>(
-      'enableMultipleWriteLocations',
-    );
+    enableMultipleWriteLocations = registerOutput<bool?>('enableMultipleWriteLocations');
     enablePartitionMerge = registerOutput<bool?>('enablePartitionMerge');
-    enablePerRegionPerPartitionAutoscale = registerOutput<bool?>(
-      'enablePerRegionPerPartitionAutoscale',
-    );
-    enablePriorityBasedExecution = registerOutput<bool?>(
-      'enablePriorityBasedExecution',
-    );
-    failoverPolicies = registerOutput<List<Map<String, dynamic>>>(
-      'failoverPolicies',
-    );
-    identity = registerOutput<ManagedServiceIdentityResponse?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ManagedServiceIdentityResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    enablePerRegionPerPartitionAutoscale = registerOutput<bool?>('enablePerRegionPerPartitionAutoscale');
+    enablePriorityBasedExecution = registerOutput<bool?>('enablePriorityBasedExecution');
+    failoverPolicies = registerOutput<List<Map<String, dynamic>>>('failoverPolicies');
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     instanceId = registerOutput<String>('instanceId');
     ipRules = registerOutput<List<Map<String, dynamic>>?>('ipRules');
-    isVirtualNetworkFilterEnabled = registerOutput<bool?>(
-      'isVirtualNetworkFilterEnabled',
-    );
+    isVirtualNetworkFilterEnabled = registerOutput<bool?>('isVirtualNetworkFilterEnabled');
     keyVaultKeyUri = registerOutput<String?>('keyVaultKeyUri');
     keyVaultKeyUriVersion = registerOutput<String>('keyVaultKeyUriVersion');
-    keysMetadata = registerOutput<DatabaseAccountKeysMetadataResponse>(
-      'keysMetadata',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return DatabaseAccountKeysMetadataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    keysMetadata = registerOutput<DatabaseAccountKeysMetadataResponse>('keysMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseAccountKeysMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kind = registerOutput<String?>('kind');
     location = registerOutput<String?>('location');
     locations = registerOutput<List<Map<String, dynamic>>>('locations');
     minimalTlsVersion = registerOutput<String?>('minimalTlsVersion');
     this.name = registerOutput<String>('name');
     networkAclBypass = registerOutput<String?>('networkAclBypass');
-    networkAclBypassResourceIds = registerOutput<List<String>?>(
-      'networkAclBypassResourceIds',
-    );
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
-      'privateEndpointConnections',
-    );
+    networkAclBypassResourceIds = registerOutput<List<String>?>('networkAclBypassResourceIds');
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>('privateEndpointConnections');
     provisioningState = registerOutput<String>('provisioningState');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     readLocations = registerOutput<List<Map<String, dynamic>>>('readLocations');
-    restoreParameters = registerOutput<RestoreParametersResponse?>(
-      'restoreParameters',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RestoreParametersResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    restoreParameters = registerOutput<RestoreParametersResponse?>('restoreParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RestoreParametersResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
-    virtualNetworkRules = registerOutput<List<Map<String, dynamic>>?>(
-      'virtualNetworkRules',
-    );
-    writeLocations = registerOutput<List<Map<String, dynamic>>>(
-      'writeLocations',
-    );
+    virtualNetworkRules = registerOutput<List<Map<String, dynamic>>?>('virtualNetworkRules');
+    writeLocations = registerOutput<List<Map<String, dynamic>>>('writeLocations');
   }
 }

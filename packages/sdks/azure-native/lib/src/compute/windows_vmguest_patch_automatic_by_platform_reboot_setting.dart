@@ -8,17 +8,13 @@ enum WindowsVMGuestPatchAutomaticByPlatformRebootSetting {
   const WindowsVMGuestPatchAutomaticByPlatformRebootSetting(this.wireValue);
   final String wireValue;
 
-  static WindowsVMGuestPatchAutomaticByPlatformRebootSetting fromValue(
-    String value,
-  ) {
-    for (final item
-        in WindowsVMGuestPatchAutomaticByPlatformRebootSetting.values) {
+  static WindowsVMGuestPatchAutomaticByPlatformRebootSetting fromValue(String value) {
+    for (final item in WindowsVMGuestPatchAutomaticByPlatformRebootSetting.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown WindowsVMGuestPatchAutomaticByPlatformRebootSetting value: $value',
-    );
+    throw ArgumentError('Unknown WindowsVMGuestPatchAutomaticByPlatformRebootSetting value: $value');
   }
 }
+

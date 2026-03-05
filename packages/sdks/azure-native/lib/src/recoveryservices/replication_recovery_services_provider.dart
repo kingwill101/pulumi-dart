@@ -245,17 +245,12 @@ import 'replication_recovery_services_provider_args.dart';
 class ReplicationRecoveryServicesProvider extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Resource Location
   late final pulumi.Output<String?> location;
-
   /// Resource Name
   late final pulumi.Output<String> name;
-
   /// Provider properties.
-  late final pulumi.Output<RecoveryServicesProviderPropertiesResponse>
-  properties;
-
+  late final pulumi.Output<RecoveryServicesProviderPropertiesResponse> properties;
   /// Resource Type
   late final pulumi.Output<String> type;
 
@@ -268,24 +263,15 @@ class ReplicationRecoveryServicesProvider extends pulumi.CustomResource {
     ReplicationRecoveryServicesProviderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:recoveryservices:ReplicationRecoveryServicesProvider',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:recoveryservices:ReplicationRecoveryServicesProvider',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<RecoveryServicesProviderPropertiesResponse>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RecoveryServicesProviderPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<RecoveryServicesProviderPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RecoveryServicesProviderPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

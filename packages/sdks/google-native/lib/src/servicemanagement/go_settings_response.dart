@@ -10,25 +10,20 @@ class GoSettingsResponse {
 
   /// Creates a new [GoSettingsResponse].
   /// [common] Some settings.
-  GoSettingsResponse({required this.common});
+  GoSettingsResponse({
+    required this.common,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'common':
-          pulumi.Input.mapInputValue<
-            CommonLanguageSettingsResponse,
-            Map<String, dynamic>
-          >(common, (value) => value.toMap()),
+      'common': pulumi.Input.mapInputValue<CommonLanguageSettingsResponse, Map<String, dynamic>>(common, (value) => value.toMap()),
     };
   }
 
   factory GoSettingsResponse.fromMap(Map<String, dynamic> map) {
     return GoSettingsResponse(
-      common: pulumi.Input.fromValue(
-        CommonLanguageSettingsResponse.fromMap(
-          (map['common']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      common: pulumi.Input.fromValue(CommonLanguageSettingsResponse.fromMap((map['common']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

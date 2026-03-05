@@ -12,19 +12,14 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 class TargetGroupAttachmentArgs {
   /// EC2 Instance to attach to the Target Group. Exactly 1 of [instance], [instanceId], [lambda] or [lambdaArn] must be provided.
   final pulumi.Input<pulumi_aws_ec2.Instance>? instance;
-
   /// ID of an EC2 Instance to attach to the Target Group. Exactly 1 of [instance], [instanceId], [lambda] or [lambdaArn] must be provided.
   final pulumi.Input<String>? instanceId;
-
   /// Lambda Function to attach to the Target Group. Exactly 1 of [instance], [instanceId], [lambda] or [lambdaArn] must be provided.
   final pulumi.Input<pulumi_aws_lambda.FunctionType>? lambda;
-
   /// ARN of a Lambda Function to attach to the Target Group. Exactly 1 of [instance], [instanceId], [lambda] or [lambdaArn] must be provided.
   final pulumi.Input<String>? lambdaArn;
-
   /// Target Group to attach to. Exactly one of [targetGroup] or [targetGroupArn] must be specified.
   final pulumi.Input<pulumi_aws_lb.TargetGroup>? targetGroup;
-
   /// ARN of the Target Group to attach to. Exactly one of [targetGroup] or [targetGroupArn] must be specified.
   final pulumi.Input<String>? targetGroupArn;
 
@@ -57,40 +52,13 @@ class TargetGroupAttachmentArgs {
 
   factory TargetGroupAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return TargetGroupAttachmentArgs(
-      instance: (() {
-        final guardedValue = map['instance'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as pulumi_aws_ec2.Instance);
-      })(),
-      instanceId: (() {
-        final guardedValue = map['instanceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      lambda: (() {
-        final guardedValue = map['lambda'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          guardedValue as pulumi_aws_lambda.FunctionType,
-        );
-      })(),
-      lambdaArn: (() {
-        final guardedValue = map['lambdaArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      targetGroup: (() {
-        final guardedValue = map['targetGroup'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          guardedValue as pulumi_aws_lb.TargetGroup,
-        );
-      })(),
-      targetGroupArn: (() {
-        final guardedValue = map['targetGroupArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      instance: (() { final guardedValue = map['instance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as pulumi_aws_ec2.Instance); })(),
+      instanceId: (() { final guardedValue = map['instanceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      lambda: (() { final guardedValue = map['lambda']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as pulumi_aws_lambda.FunctionType); })(),
+      lambdaArn: (() { final guardedValue = map['lambdaArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      targetGroup: (() { final guardedValue = map['targetGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as pulumi_aws_lb.TargetGroup); })(),
+      targetGroupArn: (() { final guardedValue = map['targetGroupArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -8,21 +8,20 @@ class ReplicatorReplicationInfoListTopicReplicationStartingPosition {
 
   /// Creates a new [ReplicatorReplicationInfoListTopicReplicationStartingPosition].
   /// [type] The type of replication starting position. Supports `LATEST` and `EARLIEST`.
-  ReplicatorReplicationInfoListTopicReplicationStartingPosition({this.type});
+  ReplicatorReplicationInfoListTopicReplicationStartingPosition({
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': ?type};
+    return <String, dynamic>{
+      'type': ?type,
+    };
   }
 
-  factory ReplicatorReplicationInfoListTopicReplicationStartingPosition.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ReplicatorReplicationInfoListTopicReplicationStartingPosition.fromMap(Map<String, dynamic> map) {
     return ReplicatorReplicationInfoListTopicReplicationStartingPosition(
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

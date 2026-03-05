@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HttpResponseHeaderModificationRuleResponseHeaderModification {
   /// The response header name.
   final pulumi.Input<String> name;
-
   /// Operation method. Possible values:
   final pulumi.Input<String> operation;
-
   /// The value type. Value range:
   final pulumi.Input<String>? type;
-
   /// The response header value.
   final pulumi.Input<String>? value;
 
@@ -36,22 +33,13 @@ class HttpResponseHeaderModificationRuleResponseHeaderModification {
     };
   }
 
-  factory HttpResponseHeaderModificationRuleResponseHeaderModification.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory HttpResponseHeaderModificationRuleResponseHeaderModification.fromMap(Map<String, dynamic> map) {
     return HttpResponseHeaderModificationRuleResponseHeaderModification(
       name: pulumi.Input.fromValue(map['name'] as String),
       operation: pulumi.Input.fromValue(map['operation'] as String),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      value: (() {
-        final guardedValue = map['value'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEndpointArgs {
   /// The endpoint name.
   final pulumi.Input<String> endpointName;
-
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceUri;
 
   /// Creates a new [GetEndpointArgs].
   /// [endpointName] The endpoint name.
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
-  GetEndpointArgs({required this.endpointName, required this.resourceUri});
+  GetEndpointArgs({
+    required this.endpointName,
+    required this.resourceUri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,3 +34,4 @@ class GetEndpointArgs {
     );
   }
 }
+

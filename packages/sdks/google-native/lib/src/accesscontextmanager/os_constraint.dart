@@ -7,10 +7,8 @@ import 'os_constraint_os_type.dart';
 class OsConstraint {
   /// The minimum allowed OS version. If not set, any version of this OS satisfies the constraint. Format: `"major.minor.patch"`. Examples: `"10.5.301"`, `"9.2.1"`.
   final pulumi.Input<String>? minimumVersion;
-
   /// The allowed OS type.
   final pulumi.Input<OsConstraintOsType> osType;
-
   /// Only allows requests from devices with a verified Chrome OS. Verifications includes requirements that the device is enterprise-managed, conformant to domain policies, and the caller has permission to call the API targeted by the request.
   final pulumi.Input<bool>? requireVerifiedChromeOs;
 
@@ -27,29 +25,17 @@ class OsConstraint {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'minimumVersion': ?minimumVersion,
-      'osType': pulumi.Input.mapInputValue<OsConstraintOsType, String>(
-        osType,
-        (value) => value.wireValue,
-      ),
+      'osType': pulumi.Input.mapInputValue<OsConstraintOsType, String>(osType, (value) => value.wireValue),
       'requireVerifiedChromeOs': ?requireVerifiedChromeOs,
     };
   }
 
   factory OsConstraint.fromMap(Map<String, dynamic> map) {
     return OsConstraint(
-      minimumVersion: (() {
-        final guardedValue = map['minimumVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      osType: pulumi.Input.fromValue(
-        OsConstraintOsType.fromValue(map['osType']! as String),
-      ),
-      requireVerifiedChromeOs: (() {
-        final guardedValue = map['requireVerifiedChromeOs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      minimumVersion: (() { final guardedValue = map['minimumVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      osType: pulumi.Input.fromValue(OsConstraintOsType.fromValue(map['osType']! as String)),
+      requireVerifiedChromeOs: (() { final guardedValue = map['requireVerifiedChromeOs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

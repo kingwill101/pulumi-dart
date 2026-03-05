@@ -16,22 +16,16 @@ import 'uptime_alert_state.dart';
 class UptimeAlert extends pulumi.CustomResource {
   /// A unique identifier for a check
   late final pulumi.Output<String> checkId;
-
   /// The comparison operator used against the alert's threshold. Must be one of `greater_than` or `less_than`.
   late final pulumi.Output<String?> comparison;
-
   /// A human-friendly display name.
   late final pulumi.Output<String> name;
-
   /// The notification settings for a trigger alert.
   late final pulumi.Output<List<Map<String, dynamic>>> notifications;
-
   /// Period of time the threshold must be exceeded to trigger the alert. Must be one of `2m`, `3m`, `5m`, `10m`, `15m`, `30m` or `1h`.
   late final pulumi.Output<String?> period;
-
   /// The threshold at which the alert will enter a trigger state. The specific threshold is dependent on the alert type.
   late final pulumi.Output<int?> threshold;
-
   /// The type of health check to perform. Must be one of `latency`, `down`, `down_global` or `ssl_expiry`.
   late final pulumi.Output<String> type;
 
@@ -44,11 +38,11 @@ class UptimeAlert extends pulumi.CustomResource {
     UptimeAlertArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/uptimeAlert:UptimeAlert',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/uptimeAlert:UptimeAlert',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     checkId = registerOutput<String>('checkId');
     comparison = registerOutput<String?>('comparison');
     this.name = registerOutput<String>('name');
@@ -76,11 +70,11 @@ class UptimeAlert extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/uptimeAlert:UptimeAlert',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'digitalocean:index/uptimeAlert:UptimeAlert',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     checkId = registerOutput<String>('checkId');
     comparison = registerOutput<String?>('comparison');
     this.name = registerOutput<String>('name');

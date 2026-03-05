@@ -8,24 +8,17 @@ import 'cx_page_entry_fulfillment_set_parameter_action.dart';
 class CxPageEntryFulfillment {
   /// Conditional cases for this fulfillment.
   /// Structure is documented below.
-  final pulumi.Input<List<CxPageEntryFulfillmentConditionalCase>>?
-  conditionalCases;
-
+  final pulumi.Input<List<CxPageEntryFulfillmentConditionalCase>>? conditionalCases;
   /// The list of rich message responses to present to the user.
   /// Structure is documented below.
   final pulumi.Input<List<CxPageEntryFulfillmentMessage>>? messages;
-
   /// Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
   final pulumi.Input<bool>? returnPartialResponses;
-
   /// Set parameter values before executing the webhook.
   /// Structure is documented below.
-  final pulumi.Input<List<CxPageEntryFulfillmentSetParameterAction>>?
-  setParameterActions;
-
+  final pulumi.Input<List<CxPageEntryFulfillmentSetParameterAction>>? setParameterActions;
   /// The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
   final pulumi.Input<String>? tag;
-
   /// The webhook to call. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/webhooks/&lt;Webhook ID&gt;.
   final pulumi.Input<String>? webhook;
 
@@ -47,43 +40,10 @@ class CxPageEntryFulfillment {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'conditionalCases':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<CxPageEntryFulfillmentConditionalCase>,
-            List<Map<String, dynamic>>
-          >(
-            conditionalCases,
-            (value) =>
-                pulumi.Input.encodeList<
-                  CxPageEntryFulfillmentConditionalCase,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'messages':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<CxPageEntryFulfillmentMessage>,
-            List<Map<String, dynamic>>
-          >(
-            messages,
-            (value) =>
-                pulumi.Input.encodeList<
-                  CxPageEntryFulfillmentMessage,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'conditionalCases': ?pulumi.Input.mapOptionalInputValue<List<CxPageEntryFulfillmentConditionalCase>, List<Map<String, dynamic>>>(conditionalCases, (value) => pulumi.Input.encodeList<CxPageEntryFulfillmentConditionalCase, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'messages': ?pulumi.Input.mapOptionalInputValue<List<CxPageEntryFulfillmentMessage>, List<Map<String, dynamic>>>(messages, (value) => pulumi.Input.encodeList<CxPageEntryFulfillmentMessage, Map<String, dynamic>>(value, (value) => value.toMap())),
       'returnPartialResponses': ?returnPartialResponses,
-      'setParameterActions':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<CxPageEntryFulfillmentSetParameterAction>,
-            List<Map<String, dynamic>>
-          >(
-            setParameterActions,
-            (value) =>
-                pulumi.Input.encodeList<
-                  CxPageEntryFulfillmentSetParameterAction,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'setParameterActions': ?pulumi.Input.mapOptionalInputValue<List<CxPageEntryFulfillmentSetParameterAction>, List<Map<String, dynamic>>>(setParameterActions, (value) => pulumi.Input.encodeList<CxPageEntryFulfillmentSetParameterAction, Map<String, dynamic>>(value, (value) => value.toMap())),
       'tag': ?tag,
       'webhook': ?webhook,
     };
@@ -91,57 +51,13 @@ class CxPageEntryFulfillment {
 
   factory CxPageEntryFulfillment.fromMap(Map<String, dynamic> map) {
     return CxPageEntryFulfillment(
-      conditionalCases: (() {
-        final guardedValue = map['conditionalCases'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<CxPageEntryFulfillmentConditionalCase>(
-            guardedValue,
-            (value) => CxPageEntryFulfillmentConditionalCase.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      messages: (() {
-        final guardedValue = map['messages'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<CxPageEntryFulfillmentMessage>(
-            guardedValue,
-            (value) => CxPageEntryFulfillmentMessage.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      returnPartialResponses: (() {
-        final guardedValue = map['returnPartialResponses'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      setParameterActions: (() {
-        final guardedValue = map['setParameterActions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<CxPageEntryFulfillmentSetParameterAction>(
-            guardedValue,
-            (value) => CxPageEntryFulfillmentSetParameterAction.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      tag: (() {
-        final guardedValue = map['tag'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      webhook: (() {
-        final guardedValue = map['webhook'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      conditionalCases: (() { final guardedValue = map['conditionalCases']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CxPageEntryFulfillmentConditionalCase>(guardedValue, (value) => CxPageEntryFulfillmentConditionalCase.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      messages: (() { final guardedValue = map['messages']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CxPageEntryFulfillmentMessage>(guardedValue, (value) => CxPageEntryFulfillmentMessage.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      returnPartialResponses: (() { final guardedValue = map['returnPartialResponses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      setParameterActions: (() { final guardedValue = map['setParameterActions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CxPageEntryFulfillmentSetParameterAction>(guardedValue, (value) => CxPageEntryFulfillmentSetParameterAction.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      tag: (() { final guardedValue = map['tag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      webhook: (() { final guardedValue = map['webhook']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

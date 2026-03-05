@@ -16,3 +16,4 @@ enum SqlServerAuthenticationType {
     throw ArgumentError('Unknown SqlServerAuthenticationType value: $value');
   }
 }
+

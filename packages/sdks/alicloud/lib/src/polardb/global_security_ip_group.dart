@@ -146,12 +146,10 @@ class GlobalSecurityIpGroup extends pulumi.CustomResource {
   /// - The name must start with a letter and end with a letter or digit.
   /// - The name must be 2 to 120 characters in length.
   late final pulumi.Output<String> globalIpGroupName;
-
   /// The IP address in the whitelist template.
   ///
   /// &gt; **NOTE:**   Multiple IP addresses are separated by commas (,). You can create up to 1,000 IP addresses or CIDR blocks for all IP whitelists.
   late final pulumi.Output<String> globalIpList;
-
   /// The region ID of the IP whitelist template.
   late final pulumi.Output<String> regionId;
 
@@ -164,11 +162,11 @@ class GlobalSecurityIpGroup extends pulumi.CustomResource {
     GlobalSecurityIpGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:polardb/globalSecurityIpGroup:GlobalSecurityIpGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:polardb/globalSecurityIpGroup:GlobalSecurityIpGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     globalIpGroupName = registerOutput<String>('globalIpGroupName');
     globalIpList = registerOutput<String>('globalIpList');
     regionId = registerOutput<String>('regionId');
@@ -192,11 +190,11 @@ class GlobalSecurityIpGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:polardb/globalSecurityIpGroup:GlobalSecurityIpGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:polardb/globalSecurityIpGroup:GlobalSecurityIpGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     globalIpGroupName = registerOutput<String>('globalIpGroupName');
     globalIpList = registerOutput<String>('globalIpList');
     regionId = registerOutput<String>('regionId');

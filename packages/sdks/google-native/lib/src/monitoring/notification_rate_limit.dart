@@ -9,19 +9,20 @@ class NotificationRateLimit {
 
   /// Creates a new [NotificationRateLimit].
   /// [period] Not more than one notification per period.
-  NotificationRateLimit({this.period});
+  NotificationRateLimit({
+    this.period,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'period': ?period};
+    return <String, dynamic>{
+      'period': ?period,
+    };
   }
 
   factory NotificationRateLimit.fromMap(Map<String, dynamic> map) {
     return NotificationRateLimit(
-      period: (() {
-        final guardedValue = map['period'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      period: (() { final guardedValue = map['period']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

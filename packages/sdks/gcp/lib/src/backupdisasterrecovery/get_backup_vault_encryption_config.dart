@@ -8,10 +8,14 @@ class GetBackupVaultEncryptionConfig {
 
   /// Creates a new [GetBackupVaultEncryptionConfig].
   /// [kmsKeyName] The Resource name of the Cloud KMS key to be used to encrypt new backups. The key must be in the same location as the backup vault. The key must be a Cloud KMS CryptoKey.
-  GetBackupVaultEncryptionConfig({required this.kmsKeyName});
+  GetBackupVaultEncryptionConfig({
+    required this.kmsKeyName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'kmsKeyName': kmsKeyName};
+    return <String, dynamic>{
+      'kmsKeyName': kmsKeyName,
+    };
   }
 
   factory GetBackupVaultEncryptionConfig.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class GetBackupVaultEncryptionConfig {
     );
   }
 }
+

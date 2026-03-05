@@ -16,3 +16,4 @@ enum AgentProtocol {
     throw ArgumentError('Unknown AgentProtocol value: $value');
   }
 }
+

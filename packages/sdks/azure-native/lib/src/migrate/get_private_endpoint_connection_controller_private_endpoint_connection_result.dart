@@ -7,22 +7,16 @@ import 'system_data_response.dart';
 class GetPrivateEndpointConnectionControllerPrivateEndpointConnectionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Gets the tag for optimistic concurrency control.
   final String eTag;
-
   /// Relative URL to get this Sites.
   final String id;
-
   /// Gets the name of the resource.
   final String name;
-
   /// Gets the properties of the object.
   final PrivateEndpointConnectionPropertiesResponse properties;
-
   /// Metadata pertaining to creation and last modification of the resource.
   final SystemDataResponse systemData;
-
   /// Gets the resource type.
   final String type;
 
@@ -56,21 +50,16 @@ class GetPrivateEndpointConnectionControllerPrivateEndpointConnectionResult {
     };
   }
 
-  factory GetPrivateEndpointConnectionControllerPrivateEndpointConnectionResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetPrivateEndpointConnectionControllerPrivateEndpointConnectionResult.fromMap(Map<String, dynamic> map) {
     return GetPrivateEndpointConnectionControllerPrivateEndpointConnectionResult(
       azureApiVersion: map['azureApiVersion'] as String,
       eTag: map['eTag'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      properties: PrivateEndpointConnectionPropertiesResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      properties: PrivateEndpointConnectionPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

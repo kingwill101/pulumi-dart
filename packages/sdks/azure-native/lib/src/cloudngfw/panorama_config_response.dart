@@ -6,25 +6,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PanoramaConfigResponse {
   /// Panorama Collector Group to join - (Once configured we can not edit the value)
   final pulumi.Input<String> cgName;
-
   /// Base64 encoded string representing Panorama parameters to be used by Firewall to connect to Panorama. This string is generated via azure plugin in Panorama
   final pulumi.Input<String> configString;
-
   /// Panorama Device Group to join
   final pulumi.Input<String> dgName;
-
   /// Resource name(may be unique) for PN admin
   final pulumi.Input<String> hostName;
-
   /// Primary Panorama Server IP address value in dotted format for IPv4
   final pulumi.Input<String> panoramaServer;
-
   /// Secondary Panorama Server IP address value in dotted format for IPv4
   final pulumi.Input<String> panoramaServer2;
-
   /// Panorama Template Stack to join - (Once configured we can not edit the value)
   final pulumi.Input<String> tplName;
-
   /// VM auth key for panorama connectivity
   final pulumi.Input<String> vmAuthKey;
 
@@ -74,3 +67,4 @@ class PanoramaConfigResponse {
     );
   }
 }
+

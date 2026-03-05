@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContentS3ContentLocation {
   /// The ARN for the S3 bucket containing the application code.
   final pulumi.Input<String> bucketArn;
-
   /// The file key for the object containing the application code.
   final pulumi.Input<String> fileKey;
-
   /// The version of the object containing the application code.
   final pulumi.Input<String>? objectVersion;
 
@@ -30,17 +28,12 @@ class ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContent
     };
   }
 
-  factory ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContentS3ContentLocation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContentS3ContentLocation.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContentS3ContentLocation(
       bucketArn: pulumi.Input.fromValue(map['bucketArn'] as String),
       fileKey: pulumi.Input.fromValue(map['fileKey'] as String),
-      objectVersion: (() {
-        final guardedValue = map['objectVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      objectVersion: (() { final guardedValue = map['objectVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

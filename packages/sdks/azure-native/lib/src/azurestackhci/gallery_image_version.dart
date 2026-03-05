@@ -9,19 +9,20 @@ class GalleryImageVersion {
 
   /// Creates a new [GalleryImageVersion].
   /// [name] This is the version of the gallery image.
-  GalleryImageVersion({this.name});
+  GalleryImageVersion({
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name};
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
   factory GalleryImageVersion.fromMap(Map<String, dynamic> map) {
     return GalleryImageVersion(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

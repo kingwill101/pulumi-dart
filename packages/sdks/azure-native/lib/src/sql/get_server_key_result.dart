@@ -1,34 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getServerKey.
 class GetServerKeyResult {
   /// Key auto rotation opt-in flag. Either true or false.
   final bool autoRotationEnabled;
-
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The server key creation date.
   final String creationDate;
-
   /// Resource ID.
   final String id;
-
   /// Kind of encryption protector. This is metadata used for the Azure portal experience.
   final String kind;
-
   /// Resource location.
   final String location;
-
   /// Resource name.
   final String name;
-
   /// Subregion of the server key.
   final String subregion;
-
   /// Thumbprint of the server key.
   final String thumbprint;
-
   /// Resource type.
   final String type;
 
@@ -86,3 +78,4 @@ class GetServerKeyResult {
     );
   }
 }
+

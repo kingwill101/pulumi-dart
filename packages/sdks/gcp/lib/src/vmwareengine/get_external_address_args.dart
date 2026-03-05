@@ -9,17 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetExternalAddressArgs {
   /// Name of the resource.
   final pulumi.Input<String> name;
-
   /// The resource name of the private cloud that this cluster belongs.
   final pulumi.Input<String> parent;
 
   /// Creates a new [GetExternalAddressArgs].
   /// [name] Name of the resource.
   /// [parent] The resource name of the private cloud that this cluster belongs.
-  GetExternalAddressArgs({required this.name, required this.parent});
+  GetExternalAddressArgs({
+    required this.name,
+    required this.parent,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'parent': parent};
+    return <String, dynamic>{
+      'name': name,
+      'parent': parent,
+    };
   }
 
   factory GetExternalAddressArgs.fromMap(Map<String, dynamic> map) {
@@ -29,3 +34,4 @@ class GetExternalAddressArgs {
     );
   }
 }
+

@@ -15,3 +15,4 @@ enum StatusType {
     throw ArgumentError('Unknown StatusType value: $value');
   }
 }
+

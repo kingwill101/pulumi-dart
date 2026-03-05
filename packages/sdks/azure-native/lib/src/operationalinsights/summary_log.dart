@@ -183,34 +183,24 @@ import 'system_data_response.dart';
 class SummaryLog extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The description of the Summary rule.
   late final pulumi.Output<String?> description;
-
   /// The display name of the Summary rule.
   late final pulumi.Output<String?> displayName;
-
   /// Indicates if Summary rule is active. If not, Summary rule execution stops.
   late final pulumi.Output<bool> isActive;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Summary rule is in provisioning state. If set to 'updating' or 'deleting', indicates a resource lock due to an ongoing operation, preventing any update to the Summary rule until the operation is complete.
   late final pulumi.Output<String> provisioningState;
-
   /// Rule definition parameters.
   late final pulumi.Output<RuleDefinitionResponse?> ruleDefinition;
-
   /// SummaryRules rule type: User.
   late final pulumi.Output<String?> ruleType;
-
   /// Indicates the reason for rule deactivation.
   late final pulumi.Output<String> statusCode;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -223,39 +213,21 @@ class SummaryLog extends pulumi.CustomResource {
     SummaryLogArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:operationalinsights:SummaryLog',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:operationalinsights:SummaryLog',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     isActive = registerOutput<bool>('isActive');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    ruleDefinition = registerOutput<RuleDefinitionResponse?>(
-      'ruleDefinition',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RuleDefinitionResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    ruleDefinition = registerOutput<RuleDefinitionResponse?>('ruleDefinition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuleDefinitionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ruleType = registerOutput<String?>('ruleType');
     statusCode = registerOutput<String>('statusCode');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

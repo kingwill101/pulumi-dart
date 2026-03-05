@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getGroup.
 class GetGroupResult {
   final String authenticationDomainId;
-
   /// The ID of the fetched matching group.
   final String id;
   final String name;
-
   /// IDs of users who belong to the group. In the absence of any users in the group, the value of this attribute would be an empty list.
   final List<String> userIds;
 
@@ -41,3 +40,4 @@ class GetGroupResult {
     );
   }
 }
+

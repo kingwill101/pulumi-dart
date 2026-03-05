@@ -15,10 +15,8 @@ class WorkloadIdentityPoolProviderOidc {
   /// https://iam.googleapis.com/projects/<project-number>/locations/<location>/workloadIdentityPools/<pool-id>/providers/<provider-id>
   /// ```
   final pulumi.Input<List<String>>? allowedAudiences;
-
   /// The OIDC issuer URL.
   final pulumi.Input<String> issuerUri;
-
   /// OIDC JWKs in JSON String format. For details on definition of a
   /// JWK, see https:tools.ietf.org/html/rfc7517. If not set, then we
   /// use the `jwks_uri` from the discovery document fetched from the
@@ -64,17 +62,10 @@ class WorkloadIdentityPoolProviderOidc {
 
   factory WorkloadIdentityPoolProviderOidc.fromMap(Map<String, dynamic> map) {
     return WorkloadIdentityPoolProviderOidc(
-      allowedAudiences: (() {
-        final guardedValue = map['allowedAudiences'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      allowedAudiences: (() { final guardedValue = map['allowedAudiences']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       issuerUri: pulumi.Input.fromValue(map['issuerUri'] as String),
-      jwksJson: (() {
-        final guardedValue = map['jwksJson'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      jwksJson: (() { final guardedValue = map['jwksJson']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

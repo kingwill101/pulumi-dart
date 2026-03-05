@@ -8,41 +8,28 @@ import 'firewall_policy_rule_secure_tag_response_compute_v1.dart';
 class FirewallPolicyRuleResponseComputeV1 {
   /// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "goto_next".
   final pulumi.Input<String> action;
-
   /// An optional description for this resource.
   final pulumi.Input<String> description;
-
   /// The direction in which this rule applies.
   final pulumi.Input<String> direction;
-
   /// Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
   final pulumi.Input<bool> disabled;
-
   /// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "goto_next" rules.
   final pulumi.Input<bool> enableLogging;
-
   /// [Output only] Type of the resource. Always compute#firewallPolicyRule for firewall policy rules
   final pulumi.Input<String> kind;
-
   /// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
   final pulumi.Input<FirewallPolicyRuleMatcherResponseComputeV1> match;
-
   /// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
   final pulumi.Input<int> priority;
-
   /// An optional name for the rule. This field is not a unique identifier and can be updated.
   final pulumi.Input<String> ruleName;
-
   /// Calculation of the complexity of a single firewall policy rule.
   final pulumi.Input<int> ruleTupleCount;
-
   /// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
   final pulumi.Input<List<String>> targetResources;
-
   /// A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
-  final pulumi.Input<List<FirewallPolicyRuleSecureTagResponseComputeV1>>
-  targetSecureTags;
-
+  final pulumi.Input<List<FirewallPolicyRuleSecureTagResponseComputeV1>> targetSecureTags;
   /// A list of service accounts indicating the sets of instances that are applied with this rule.
   final pulumi.Input<List<String>> targetServiceAccounts;
 
@@ -84,34 +71,17 @@ class FirewallPolicyRuleResponseComputeV1 {
       'disabled': disabled,
       'enableLogging': enableLogging,
       'kind': kind,
-      'match':
-          pulumi.Input.mapInputValue<
-            FirewallPolicyRuleMatcherResponseComputeV1,
-            Map<String, dynamic>
-          >(match, (value) => value.toMap()),
+      'match': pulumi.Input.mapInputValue<FirewallPolicyRuleMatcherResponseComputeV1, Map<String, dynamic>>(match, (value) => value.toMap()),
       'priority': priority,
       'ruleName': ruleName,
       'ruleTupleCount': ruleTupleCount,
       'targetResources': targetResources,
-      'targetSecureTags':
-          pulumi.Input.mapInputValue<
-            List<FirewallPolicyRuleSecureTagResponseComputeV1>,
-            List<Map<String, dynamic>>
-          >(
-            targetSecureTags,
-            (value) =>
-                pulumi.Input.encodeList<
-                  FirewallPolicyRuleSecureTagResponseComputeV1,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'targetSecureTags': pulumi.Input.mapInputValue<List<FirewallPolicyRuleSecureTagResponseComputeV1>, List<Map<String, dynamic>>>(targetSecureTags, (value) => pulumi.Input.encodeList<FirewallPolicyRuleSecureTagResponseComputeV1, Map<String, dynamic>>(value, (value) => value.toMap())),
       'targetServiceAccounts': targetServiceAccounts,
     };
   }
 
-  factory FirewallPolicyRuleResponseComputeV1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FirewallPolicyRuleResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyRuleResponseComputeV1(
       action: pulumi.Input.fromValue(map['action'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
@@ -119,28 +89,14 @@ class FirewallPolicyRuleResponseComputeV1 {
       disabled: pulumi.Input.fromValue(map['disabled'] as bool),
       enableLogging: pulumi.Input.fromValue(map['enableLogging'] as bool),
       kind: pulumi.Input.fromValue(map['kind'] as String),
-      match: pulumi.Input.fromValue(
-        FirewallPolicyRuleMatcherResponseComputeV1.fromMap(
-          (map['match']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      match: pulumi.Input.fromValue(FirewallPolicyRuleMatcherResponseComputeV1.fromMap((map['match']! as Map).cast<String, dynamic>())),
       priority: pulumi.Input.fromValue(map['priority'] as int),
       ruleName: pulumi.Input.fromValue(map['ruleName'] as String),
       ruleTupleCount: pulumi.Input.fromValue(map['ruleTupleCount'] as int),
-      targetResources: pulumi.Input.fromValue(
-        (map['targetResources'] as List).cast<String>(),
-      ),
-      targetSecureTags: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<FirewallPolicyRuleSecureTagResponseComputeV1>(
-          map['targetSecureTags']!,
-          (value) => FirewallPolicyRuleSecureTagResponseComputeV1.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      targetServiceAccounts: pulumi.Input.fromValue(
-        (map['targetServiceAccounts'] as List).cast<String>(),
-      ),
+      targetResources: pulumi.Input.fromValue((map['targetResources'] as List).cast<String>()),
+      targetSecureTags: pulumi.Input.fromValue(pulumi.Input.decodeList<FirewallPolicyRuleSecureTagResponseComputeV1>(map['targetSecureTags']!, (value) => FirewallPolicyRuleSecureTagResponseComputeV1.fromMap((value as Map).cast<String, dynamic>()))),
+      targetServiceAccounts: pulumi.Input.fromValue((map['targetServiceAccounts'] as List).cast<String>()),
     );
   }
 }
+

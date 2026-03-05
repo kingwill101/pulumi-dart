@@ -728,60 +728,40 @@ import 'web_test_properties_response_validation_rules.dart';
 class WebTest extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// An XML configuration specification for a WebTest.
-  late final pulumi.Output<WebTestPropertiesResponseConfiguration?>
-  configuration;
-
+  late final pulumi.Output<WebTestPropertiesResponseConfiguration?> configuration;
   /// User defined description for this WebTest.
   late final pulumi.Output<String?> description;
-
   /// Is the test actively being monitored.
   late final pulumi.Output<bool?> enabled;
-
   /// Interval in seconds between test runs for this WebTest. Default value is 300.
   late final pulumi.Output<int?> frequency;
-
   /// The kind of WebTest that this web test watches. Choices are ping, multistep and standard.
   late final pulumi.Output<String?> kind;
-
   /// Resource location
   late final pulumi.Output<String> location;
-
   /// A list of where to physically run the tests from to give global coverage for accessibility of your application.
   late final pulumi.Output<List<Map<String, dynamic>>> locations;
-
   /// Azure resource name
   late final pulumi.Output<String> name;
-
   /// Current state of this component, whether or not is has been provisioned within the resource group it is defined. Users cannot change this value but are able to read from it. Values will include Succeeded, Deploying, Canceled, and Failed.
   late final pulumi.Output<String> provisioningState;
-
   /// The collection of request properties
   late final pulumi.Output<WebTestPropertiesResponseRequest?> request;
-
   /// Allow for retries should this WebTest fail.
   late final pulumi.Output<bool?> retryEnabled;
-
   /// Unique ID of this WebTest. This is typically the same value as the Name field.
   late final pulumi.Output<String> syntheticMonitorId;
-
   /// Resource tags
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Seconds until this WebTest will timeout and fail. Default value is 30.
   late final pulumi.Output<int?> timeout;
-
   /// Azure resource type
   late final pulumi.Output<String> type;
-
   /// The collection of validation rule properties
-  late final pulumi.Output<WebTestPropertiesResponseValidationRules?>
-  validationRules;
-
+  late final pulumi.Output<WebTestPropertiesResponseValidationRules?> validationRules;
   /// The kind of web test this is, valid choices are ping, multistep and standard.
   late final pulumi.Output<String> webTestKind;
-
   /// User defined name if this WebTest.
   late final pulumi.Output<String> webTestName;
 
@@ -794,22 +774,13 @@ class WebTest extends pulumi.CustomResource {
     WebTestArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:applicationinsights:WebTest',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:applicationinsights:WebTest',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    configuration = registerOutput<WebTestPropertiesResponseConfiguration?>(
-      'configuration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WebTestPropertiesResponseConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    configuration = registerOutput<WebTestPropertiesResponseConfiguration?>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebTestPropertiesResponseConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool?>('enabled');
     frequency = registerOutput<int?>('frequency');
@@ -818,31 +789,13 @@ class WebTest extends pulumi.CustomResource {
     locations = registerOutput<List<Map<String, dynamic>>>('locations');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    request = registerOutput<WebTestPropertiesResponseRequest?>(
-      'request',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WebTestPropertiesResponseRequest.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    request = registerOutput<WebTestPropertiesResponseRequest?>('request', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebTestPropertiesResponseRequest.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     retryEnabled = registerOutput<bool?>('retryEnabled');
     syntheticMonitorId = registerOutput<String>('syntheticMonitorId');
     tags = registerOutput<Map<String, String>?>('tags');
     timeout = registerOutput<int?>('timeout');
     type = registerOutput<String>('type');
-    validationRules = registerOutput<WebTestPropertiesResponseValidationRules?>(
-      'validationRules',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return WebTestPropertiesResponseValidationRules.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    validationRules = registerOutput<WebTestPropertiesResponseValidationRules?>('validationRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebTestPropertiesResponseValidationRules.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     webTestKind = registerOutput<String>('webTestKind');
     webTestName = registerOutput<String>('webTestName');
   }

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstantRPAdditionalDetailsResponse {
   /// Azure backup resource group name prefix.
   final pulumi.Input<String>? azureBackupRGNamePrefix;
-
   /// Azure backup resource group name suffix.
   final pulumi.Input<String>? azureBackupRGNameSuffix;
 
@@ -27,16 +26,9 @@ class InstantRPAdditionalDetailsResponse {
 
   factory InstantRPAdditionalDetailsResponse.fromMap(Map<String, dynamic> map) {
     return InstantRPAdditionalDetailsResponse(
-      azureBackupRGNamePrefix: (() {
-        final guardedValue = map['azureBackupRGNamePrefix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      azureBackupRGNameSuffix: (() {
-        final guardedValue = map['azureBackupRGNameSuffix'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      azureBackupRGNamePrefix: (() { final guardedValue = map['azureBackupRGNamePrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      azureBackupRGNameSuffix: (() { final guardedValue = map['azureBackupRGNameSuffix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

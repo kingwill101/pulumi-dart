@@ -11,10 +11,8 @@ class GetFunctionArgs {
   ///
   /// - - -
   final pulumi.Input<String> location;
-
   /// The name of a Cloud Function (2nd gen).
   final pulumi.Input<String> name;
-
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -23,7 +21,11 @@ class GetFunctionArgs {
   /// [location] The location in which the resource belongs.
   /// [name] The name of a Cloud Function (2nd gen).
   /// [project] The project in which the resource belongs. If it
-  GetFunctionArgs({required this.location, required this.name, this.project});
+  GetFunctionArgs({
+    required this.location,
+    required this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,11 +39,8 @@ class GetFunctionArgs {
     return GetFunctionArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

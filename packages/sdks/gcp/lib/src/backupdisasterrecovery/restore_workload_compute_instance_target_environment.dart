@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RestoreWorkloadComputeInstanceTargetEnvironment {
   /// Required. Target project for the Compute Engine instance.
   final pulumi.Input<String> project;
-
   /// Required. The zone of the Compute Engine instance.
   final pulumi.Input<String> zone;
 
@@ -18,15 +17,17 @@ class RestoreWorkloadComputeInstanceTargetEnvironment {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'project': project, 'zone': zone};
+    return <String, dynamic>{
+      'project': project,
+      'zone': zone,
+    };
   }
 
-  factory RestoreWorkloadComputeInstanceTargetEnvironment.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RestoreWorkloadComputeInstanceTargetEnvironment.fromMap(Map<String, dynamic> map) {
     return RestoreWorkloadComputeInstanceTargetEnvironment(
       project: pulumi.Input.fromValue(map['project'] as String),
       zone: pulumi.Input.fromValue(map['zone'] as String),
     );
   }
 }
+

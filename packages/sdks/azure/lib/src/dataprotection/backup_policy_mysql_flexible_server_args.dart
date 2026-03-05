@@ -11,21 +11,14 @@ import 'backup_policy_mysql_flexible_server_retention_rule.dart';
 class BackupPolicyMysqlFlexibleServerArgs {
   /// Specifies a list of repeating time interval. It supports weekly back. It should follow `ISO 8601` repeating time interval format. Changing this forces a new resource to be created.
   final pulumi.Input<List<String>> backupRepeatingTimeIntervals;
-
   /// A `default_retention_rule` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<BackupPolicyMysqlFlexibleServerDefaultRetentionRule>
-  defaultRetentionRule;
-
+  final pulumi.Input<BackupPolicyMysqlFlexibleServerDefaultRetentionRule> defaultRetentionRule;
   /// Specifies the name of the Backup Policy for the MySQL Flexible Server. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// One or more `retention_rule` blocks as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<List<BackupPolicyMysqlFlexibleServerRetentionRule>>?
-  retentionRules;
-
+  final pulumi.Input<List<BackupPolicyMysqlFlexibleServerRetentionRule>>? retentionRules;
   /// Specifies the Time Zone which should be used by the backup schedule. Changing this forces a new resource to be created.
   final pulumi.Input<String>? timeZone;
-
   /// The ID of the Backup Vault where the Backup Policy MySQL Flexible Server should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> vaultId;
 
@@ -48,64 +41,23 @@ class BackupPolicyMysqlFlexibleServerArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'backupRepeatingTimeIntervals': backupRepeatingTimeIntervals,
-      'defaultRetentionRule':
-          pulumi.Input.mapInputValue<
-            BackupPolicyMysqlFlexibleServerDefaultRetentionRule,
-            Map<String, dynamic>
-          >(defaultRetentionRule, (value) => value.toMap()),
+      'defaultRetentionRule': pulumi.Input.mapInputValue<BackupPolicyMysqlFlexibleServerDefaultRetentionRule, Map<String, dynamic>>(defaultRetentionRule, (value) => value.toMap()),
       'name': ?name,
-      'retentionRules':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<BackupPolicyMysqlFlexibleServerRetentionRule>,
-            List<Map<String, dynamic>>
-          >(
-            retentionRules,
-            (value) =>
-                pulumi.Input.encodeList<
-                  BackupPolicyMysqlFlexibleServerRetentionRule,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'retentionRules': ?pulumi.Input.mapOptionalInputValue<List<BackupPolicyMysqlFlexibleServerRetentionRule>, List<Map<String, dynamic>>>(retentionRules, (value) => pulumi.Input.encodeList<BackupPolicyMysqlFlexibleServerRetentionRule, Map<String, dynamic>>(value, (value) => value.toMap())),
       'timeZone': ?timeZone,
       'vaultId': vaultId,
     };
   }
 
-  factory BackupPolicyMysqlFlexibleServerArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BackupPolicyMysqlFlexibleServerArgs.fromMap(Map<String, dynamic> map) {
     return BackupPolicyMysqlFlexibleServerArgs(
-      backupRepeatingTimeIntervals: pulumi.Input.fromValue(
-        (map['backupRepeatingTimeIntervals'] as List).cast<String>(),
-      ),
-      defaultRetentionRule: pulumi.Input.fromValue(
-        BackupPolicyMysqlFlexibleServerDefaultRetentionRule.fromMap(
-          (map['defaultRetentionRule']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      retentionRules: (() {
-        final guardedValue = map['retentionRules'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<BackupPolicyMysqlFlexibleServerRetentionRule>(
-            guardedValue,
-            (value) => BackupPolicyMysqlFlexibleServerRetentionRule.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      timeZone: (() {
-        final guardedValue = map['timeZone'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      backupRepeatingTimeIntervals: pulumi.Input.fromValue((map['backupRepeatingTimeIntervals'] as List).cast<String>()),
+      defaultRetentionRule: pulumi.Input.fromValue(BackupPolicyMysqlFlexibleServerDefaultRetentionRule.fromMap((map['defaultRetentionRule']! as Map).cast<String, dynamic>())),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      retentionRules: (() { final guardedValue = map['retentionRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<BackupPolicyMysqlFlexibleServerRetentionRule>(guardedValue, (value) => BackupPolicyMysqlFlexibleServerRetentionRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      timeZone: (() { final guardedValue = map['timeZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vaultId: pulumi.Input.fromValue(map['vaultId'] as String),
     );
   }
 }
+

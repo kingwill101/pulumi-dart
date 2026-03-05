@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GraphAPIComputeRegionalServiceResourceResponse {
   /// The regional endpoint for GraphAPICompute.
   final pulumi.Input<String> graphApiComputeEndpoint;
-
   /// The location name.
   final pulumi.Input<String> location;
-
   /// The regional service name.
   final pulumi.Input<String> name;
-
   /// Describes the status of a service.
   final pulumi.Input<String> status;
 
@@ -37,16 +34,13 @@ class GraphAPIComputeRegionalServiceResourceResponse {
     };
   }
 
-  factory GraphAPIComputeRegionalServiceResourceResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GraphAPIComputeRegionalServiceResourceResponse.fromMap(Map<String, dynamic> map) {
     return GraphAPIComputeRegionalServiceResourceResponse(
-      graphApiComputeEndpoint: pulumi.Input.fromValue(
-        map['graphApiComputeEndpoint'] as String,
-      ),
+      graphApiComputeEndpoint: pulumi.Input.fromValue(map['graphApiComputeEndpoint'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
+

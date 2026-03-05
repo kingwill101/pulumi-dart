@@ -148,10 +148,8 @@ import 'backup_policy_state.dart';
 class BackupPolicy extends pulumi.CustomResource {
   /// A backup_policy object (documented below).
   late final pulumi.Output<BackupPolicyBackupPolicy> backupPolicy;
-
   /// The ID of the EFS file system.
   late final pulumi.Output<String> fileSystemId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -164,21 +162,12 @@ class BackupPolicy extends pulumi.CustomResource {
     BackupPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:efs/backupPolicy:BackupPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    backupPolicy = registerOutput<BackupPolicyBackupPolicy>(
-      'backupPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BackupPolicyBackupPolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'aws:efs/backupPolicy:BackupPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    backupPolicy = registerOutput<BackupPolicyBackupPolicy>('backupPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupPolicyBackupPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     fileSystemId = registerOutput<String>('fileSystemId');
     region = registerOutput<String>('region');
   }
@@ -201,21 +190,12 @@ class BackupPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:efs/backupPolicy:BackupPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    backupPolicy = registerOutput<BackupPolicyBackupPolicy>(
-      'backupPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BackupPolicyBackupPolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'aws:efs/backupPolicy:BackupPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    backupPolicy = registerOutput<BackupPolicyBackupPolicy>('backupPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupPolicyBackupPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     fileSystemId = registerOutput<String>('fileSystemId');
     region = registerOutput<String>('region');
   }

@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectorInfoBaseResponse {
   /// Connector Class
   final pulumi.Input<String>? connectorClass;
-
   /// Connector Id
   final pulumi.Input<String>? connectorId;
-
   /// Connector Name
   final pulumi.Input<String>? connectorName;
-
   /// Connector Status
   final pulumi.Input<String>? connectorState;
-
   /// Connector Type
   final pulumi.Input<String>? connectorType;
 
@@ -45,31 +41,12 @@ class ConnectorInfoBaseResponse {
 
   factory ConnectorInfoBaseResponse.fromMap(Map<String, dynamic> map) {
     return ConnectorInfoBaseResponse(
-      connectorClass: (() {
-        final guardedValue = map['connectorClass'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      connectorId: (() {
-        final guardedValue = map['connectorId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      connectorName: (() {
-        final guardedValue = map['connectorName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      connectorState: (() {
-        final guardedValue = map['connectorState'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      connectorType: (() {
-        final guardedValue = map['connectorType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      connectorClass: (() { final guardedValue = map['connectorClass']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      connectorId: (() { final guardedValue = map['connectorId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      connectorName: (() { final guardedValue = map['connectorName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      connectorState: (() { final guardedValue = map['connectorState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      connectorType: (() { final guardedValue = map['connectorType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

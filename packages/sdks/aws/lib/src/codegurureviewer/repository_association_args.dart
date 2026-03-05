@@ -11,10 +11,8 @@ import 'repository_association_repository.dart';
 class RepositoryAssociationArgs {
   /// An object describing the KMS key to asssociate. Block is documented below.
   final pulumi.Input<RepositoryAssociationKmsKeyDetails>? kmsKeyDetails;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// An object describing the repository to associate. Valid values: `bitbucket`, `codecommit`, `github_enterprise_server`, or `s3_bucket`. Block is documented below. Note: for repositories that leverage CodeStar connections (ex. `bitbucket`, `github_enterprise_server`) the connection must be in `Available` status prior to creating this resource.
   ///
   /// The following arguments are optional:
@@ -35,49 +33,20 @@ class RepositoryAssociationArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'kmsKeyDetails':
-          ?pulumi.Input.mapOptionalInputValue<
-            RepositoryAssociationKmsKeyDetails,
-            Map<String, dynamic>
-          >(kmsKeyDetails, (value) => value.toMap()),
+      'kmsKeyDetails': ?pulumi.Input.mapOptionalInputValue<RepositoryAssociationKmsKeyDetails, Map<String, dynamic>>(kmsKeyDetails, (value) => value.toMap()),
       'region': ?region,
-      'repository':
-          pulumi.Input.mapInputValue<
-            RepositoryAssociationRepository,
-            Map<String, dynamic>
-          >(repository, (value) => value.toMap()),
+      'repository': pulumi.Input.mapInputValue<RepositoryAssociationRepository, Map<String, dynamic>>(repository, (value) => value.toMap()),
       'tags': ?tags,
     };
   }
 
   factory RepositoryAssociationArgs.fromMap(Map<String, dynamic> map) {
     return RepositoryAssociationArgs(
-      kmsKeyDetails: (() {
-        final guardedValue = map['kmsKeyDetails'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RepositoryAssociationKmsKeyDetails.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      repository: pulumi.Input.fromValue(
-        RepositoryAssociationRepository.fromMap(
-          (map['repository']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      kmsKeyDetails: (() { final guardedValue = map['kmsKeyDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RepositoryAssociationKmsKeyDetails.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      repository: pulumi.Input.fromValue(RepositoryAssociationRepository.fromMap((map['repository']! as Map).cast<String, dynamic>())),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

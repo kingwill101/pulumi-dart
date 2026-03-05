@@ -62,17 +62,13 @@ enum AutomationRulePropertyConditionSupportedProperty {
   const AutomationRulePropertyConditionSupportedProperty(this.wireValue);
   final String wireValue;
 
-  static AutomationRulePropertyConditionSupportedProperty fromValue(
-    String value,
-  ) {
-    for (final item
-        in AutomationRulePropertyConditionSupportedProperty.values) {
+  static AutomationRulePropertyConditionSupportedProperty fromValue(String value) {
+    for (final item in AutomationRulePropertyConditionSupportedProperty.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown AutomationRulePropertyConditionSupportedProperty value: $value',
-    );
+    throw ArgumentError('Unknown AutomationRulePropertyConditionSupportedProperty value: $value');
   }
 }
+

@@ -9,17 +9,20 @@ class BrokerStateStoreDestinationConfiguration {
 
   /// Creates a new [BrokerStateStoreDestinationConfiguration].
   /// [key] The MQTT broker state store destination key.
-  BrokerStateStoreDestinationConfiguration({required this.key});
+  BrokerStateStoreDestinationConfiguration({
+    required this.key,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': key};
+    return <String, dynamic>{
+      'key': key,
+    };
   }
 
-  factory BrokerStateStoreDestinationConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory BrokerStateStoreDestinationConfiguration.fromMap(Map<String, dynamic> map) {
     return BrokerStateStoreDestinationConfiguration(
       key: pulumi.Input.fromValue(map['key'] as String),
     );
   }
 }
+

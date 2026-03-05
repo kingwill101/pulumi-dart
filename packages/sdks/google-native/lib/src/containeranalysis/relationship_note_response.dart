@@ -9,10 +9,14 @@ class RelationshipNoteResponse {
 
   /// Creates a new [RelationshipNoteResponse].
   /// [type] The type of relationship between the source and target SPDX elements
-  RelationshipNoteResponse({required this.type});
+  RelationshipNoteResponse({
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': type};
+    return <String, dynamic>{
+      'type': type,
+    };
   }
 
   factory RelationshipNoteResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class RelationshipNoteResponse {
     );
   }
 }
+

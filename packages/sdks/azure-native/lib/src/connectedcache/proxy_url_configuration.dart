@@ -9,19 +9,20 @@ class ProxyUrlConfiguration {
 
   /// Creates a new [ProxyUrlConfiguration].
   /// [proxyUrl] Host Proxy Address configuration along with port number. This can be a proxy or ip address. ex: xx.xx.xx.xxxx:80 or host name http://exampleproxy.com:80
-  ProxyUrlConfiguration({this.proxyUrl});
+  ProxyUrlConfiguration({
+    this.proxyUrl,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'proxyUrl': ?proxyUrl};
+    return <String, dynamic>{
+      'proxyUrl': ?proxyUrl,
+    };
   }
 
   factory ProxyUrlConfiguration.fromMap(Map<String, dynamic> map) {
     return ProxyUrlConfiguration(
-      proxyUrl: (() {
-        final guardedValue = map['proxyUrl'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      proxyUrl: (() { final guardedValue = map['proxyUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

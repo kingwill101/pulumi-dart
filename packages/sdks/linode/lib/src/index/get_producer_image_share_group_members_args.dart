@@ -13,7 +13,6 @@ class GetProducerImageShareGroupMembersArgs {
   final pulumi.Input<List<GetProducerImageShareGroupMembersMember>>? members;
   final pulumi.Input<String>? order;
   final pulumi.Input<String>? orderBy;
-
   /// The ID of the Image Share Group for which to list members.
   final pulumi.Input<int> sharegroupId;
 
@@ -33,75 +32,22 @@ class GetProducerImageShareGroupMembersArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GetProducerImageShareGroupMembersFilter>,
-            List<Map<String, dynamic>>
-          >(
-            filters,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetProducerImageShareGroupMembersFilter,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'members':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<GetProducerImageShareGroupMembersMember>,
-            List<Map<String, dynamic>>
-          >(
-            members,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetProducerImageShareGroupMembersMember,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetProducerImageShareGroupMembersFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetProducerImageShareGroupMembersFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'members': ?pulumi.Input.mapOptionalInputValue<List<GetProducerImageShareGroupMembersMember>, List<Map<String, dynamic>>>(members, (value) => pulumi.Input.encodeList<GetProducerImageShareGroupMembersMember, Map<String, dynamic>>(value, (value) => value.toMap())),
       'order': ?order,
       'orderBy': ?orderBy,
       'sharegroupId': sharegroupId,
     };
   }
 
-  factory GetProducerImageShareGroupMembersArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetProducerImageShareGroupMembersArgs.fromMap(Map<String, dynamic> map) {
     return GetProducerImageShareGroupMembersArgs(
-      filters: (() {
-        final guardedValue = map['filters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GetProducerImageShareGroupMembersFilter>(
-            guardedValue,
-            (value) => GetProducerImageShareGroupMembersFilter.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      members: (() {
-        final guardedValue = map['members'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<GetProducerImageShareGroupMembersMember>(
-            guardedValue,
-            (value) => GetProducerImageShareGroupMembersMember.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      order: (() {
-        final guardedValue = map['order'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      orderBy: (() {
-        final guardedValue = map['orderBy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetProducerImageShareGroupMembersFilter>(guardedValue, (value) => GetProducerImageShareGroupMembersFilter.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      members: (() { final guardedValue = map['members']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetProducerImageShareGroupMembersMember>(guardedValue, (value) => GetProducerImageShareGroupMembersMember.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      order: (() { final guardedValue = map['order']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      orderBy: (() { final guardedValue = map['orderBy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sharegroupId: pulumi.Input.fromValue(map['sharegroupId'] as int),
     );
   }
 }
+

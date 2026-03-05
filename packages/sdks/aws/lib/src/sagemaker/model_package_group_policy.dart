@@ -309,7 +309,6 @@ import 'model_package_group_policy_state.dart';
 class ModelPackageGroupPolicy extends pulumi.CustomResource {
   /// The name of the model package group.
   late final pulumi.Output<String> modelPackageGroupName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   late final pulumi.Output<String> resourcePolicy;
@@ -323,11 +322,11 @@ class ModelPackageGroupPolicy extends pulumi.CustomResource {
     ModelPackageGroupPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:sagemaker/modelPackageGroupPolicy:ModelPackageGroupPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:sagemaker/modelPackageGroupPolicy:ModelPackageGroupPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     modelPackageGroupName = registerOutput<String>('modelPackageGroupName');
     region = registerOutput<String>('region');
     resourcePolicy = registerOutput<String>('resourcePolicy');
@@ -351,11 +350,11 @@ class ModelPackageGroupPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:sagemaker/modelPackageGroupPolicy:ModelPackageGroupPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:sagemaker/modelPackageGroupPolicy:ModelPackageGroupPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     modelPackageGroupName = registerOutput<String>('modelPackageGroupName');
     region = registerOutput<String>('region');
     resourcePolicy = registerOutput<String>('resourcePolicy');

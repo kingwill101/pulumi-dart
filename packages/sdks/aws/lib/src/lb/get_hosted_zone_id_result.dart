@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getHostedZoneId.
 class GetHostedZoneIdResult {
   /// The provider-assigned unique ID for this managed resource.
@@ -28,12 +29,9 @@ class GetHostedZoneIdResult {
   factory GetHostedZoneIdResult.fromMap(Map<String, dynamic> map) {
     return GetHostedZoneIdResult(
       id: map['id'] as String,
-      loadBalancerType: (() {
-        final guardedValue = map['loadBalancerType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      loadBalancerType: (() { final guardedValue = map['loadBalancerType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       region: map['region'] as String,
     );
   }
 }
+

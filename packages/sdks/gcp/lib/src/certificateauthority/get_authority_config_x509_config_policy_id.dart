@@ -8,19 +8,20 @@ class GetAuthorityConfigX509ConfigPolicyId {
 
   /// Creates a new [GetAuthorityConfigX509ConfigPolicyId].
   /// [objectIdPaths] An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
-  GetAuthorityConfigX509ConfigPolicyId({required this.objectIdPaths});
+  GetAuthorityConfigX509ConfigPolicyId({
+    required this.objectIdPaths,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'objectIdPaths': objectIdPaths};
+    return <String, dynamic>{
+      'objectIdPaths': objectIdPaths,
+    };
   }
 
-  factory GetAuthorityConfigX509ConfigPolicyId.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetAuthorityConfigX509ConfigPolicyId.fromMap(Map<String, dynamic> map) {
     return GetAuthorityConfigX509ConfigPolicyId(
-      objectIdPaths: pulumi.Input.fromValue(
-        (map['objectIdPaths'] as List).cast<int>(),
-      ),
+      objectIdPaths: pulumi.Input.fromValue((map['objectIdPaths'] as List).cast<int>()),
     );
   }
 }
+

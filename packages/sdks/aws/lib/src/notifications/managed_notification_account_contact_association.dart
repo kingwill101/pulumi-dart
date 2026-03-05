@@ -109,11 +109,9 @@ import 'managed_notification_account_contact_association_state.dart';
 /// ```sh
 /// $ pulumi import aws:notifications/managedNotificationAccountContactAssociation:ManagedNotificationAccountContactAssociation example arn:aws:notifications::123456789012:managed-notification-configuration/category/AWS-Health/sub-category/Security,ACCOUNT_PRIMARY
 /// ```
-class ManagedNotificationAccountContactAssociation
-    extends pulumi.CustomResource {
+class ManagedNotificationAccountContactAssociation extends pulumi.CustomResource {
   /// A unique value of an Account Contact Type to associate with the ManagedNotificationConfiguration. Valid values: `ACCOUNT_PRIMARY`, `ACCOUNT_ALTERNATE_BILLING`, `ACCOUNT_ALTERNATE_OPERATIONS`, `ACCOUNT_ALTERNATE_SECURITY`.
   late final pulumi.Output<String> contactIdentifier;
-
   /// ARN of the managed notification configuration to associate the account contact with.
   late final pulumi.Output<String> managedNotificationConfigurationArn;
 
@@ -126,15 +124,13 @@ class ManagedNotificationAccountContactAssociation
     ManagedNotificationAccountContactAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:notifications/managedNotificationAccountContactAssociation:ManagedNotificationAccountContactAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:notifications/managedNotificationAccountContactAssociation:ManagedNotificationAccountContactAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     contactIdentifier = registerOutput<String>('contactIdentifier');
-    managedNotificationConfigurationArn = registerOutput<String>(
-      'managedNotificationConfigurationArn',
-    );
+    managedNotificationConfigurationArn = registerOutput<String>('managedNotificationConfigurationArn');
   }
 
   /// Gets an existing [ManagedNotificationAccountContactAssociation] resource's state with the given [name] and [id].
@@ -155,14 +151,12 @@ class ManagedNotificationAccountContactAssociation
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:notifications/managedNotificationAccountContactAssociation:ManagedNotificationAccountContactAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:notifications/managedNotificationAccountContactAssociation:ManagedNotificationAccountContactAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     contactIdentifier = registerOutput<String>('contactIdentifier');
-    managedNotificationConfigurationArn = registerOutput<String>(
-      'managedNotificationConfigurationArn',
-    );
+    managedNotificationConfigurationArn = registerOutput<String>('managedNotificationConfigurationArn');
   }
 }

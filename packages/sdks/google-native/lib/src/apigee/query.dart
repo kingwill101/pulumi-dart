@@ -9,43 +9,30 @@ import 'query_args.dart';
 class Query extends pulumi.CustomResource {
   /// Creation time of the query.
   late final pulumi.Output<String> created;
-
   /// Hostname is available only when query is executed at host level.
   late final pulumi.Output<String> envgroupHostname;
   late final pulumi.Output<String> environmentId;
-
   /// Error is set when query fails.
   late final pulumi.Output<String> error;
-
   /// ExecutionTime is available only after the query is completed.
   late final pulumi.Output<String> executionTime;
-
   /// Asynchronous Query Name.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> organizationId;
-
   /// Contains information like metrics, dimenstions etc of the AsyncQuery.
-  late final pulumi.Output<GoogleCloudApigeeV1QueryMetadataResponse>
-  queryParams;
-
+  late final pulumi.Output<GoogleCloudApigeeV1QueryMetadataResponse> queryParams;
   /// Asynchronous Report ID.
   late final pulumi.Output<String> reportDefinitionId;
-
   /// Result is available only after the query is completed.
   late final pulumi.Output<GoogleCloudApigeeV1AsyncQueryResultResponse> result;
-
   /// ResultFileSize is available only after the query is completed.
   late final pulumi.Output<String> resultFileSize;
-
   /// ResultRows is available only after the query is completed.
   late final pulumi.Output<String> resultRows;
-
   /// Self link of the query. Example: `/organizations/myorg/environments/myenv/queries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd` or following format if query is running at host level: `/organizations/myorg/hostQueries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd`
   late final pulumi.Output<String> self;
-
   /// Query state could be "enqueued", "running", "completed", "failed".
   late final pulumi.Output<String> state;
-
   /// Last updated timestamp for the query.
   late final pulumi.Output<String> updated;
 
@@ -53,13 +40,16 @@ class Query extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Query]. {@macro pulumi_apigee_v1_query_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Query(String name, {QueryArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'google-native:apigee/v1:Query',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Query(
+    String name, {
+    QueryArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'google-native:apigee/v1:Query',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     created = registerOutput<String>('created');
     envgroupHostname = registerOutput<String>('envgroupHostname');
     environmentId = registerOutput<String>('environmentId');
@@ -67,27 +57,9 @@ class Query extends pulumi.CustomResource {
     executionTime = registerOutput<String>('executionTime');
     this.name = registerOutput<String>('name');
     organizationId = registerOutput<String>('organizationId');
-    queryParams = registerOutput<GoogleCloudApigeeV1QueryMetadataResponse>(
-      'queryParams',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GoogleCloudApigeeV1QueryMetadataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    queryParams = registerOutput<GoogleCloudApigeeV1QueryMetadataResponse>('queryParams', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudApigeeV1QueryMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     reportDefinitionId = registerOutput<String>('reportDefinitionId');
-    result = registerOutput<GoogleCloudApigeeV1AsyncQueryResultResponse>(
-      'result',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GoogleCloudApigeeV1AsyncQueryResultResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    result = registerOutput<GoogleCloudApigeeV1AsyncQueryResultResponse>('result', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudApigeeV1AsyncQueryResultResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resultFileSize = registerOutput<String>('resultFileSize');
     resultRows = registerOutput<String>('resultRows');
     self = registerOutput<String>('self');

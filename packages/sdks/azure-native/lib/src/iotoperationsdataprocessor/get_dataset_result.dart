@@ -9,43 +9,30 @@ import 'system_data_response.dart';
 class GetDatasetResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Detailed description of the Dataset.
   final String? description;
-
   /// Edge location of the resource.
   final ExtendedLocationResponse extendedLocation;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// List of keys that can be used for joining on enrich.
   final Map<String, DatasetPropertyKeyResponse>? keys;
-
   /// The geo-location where the resource lives
   final String location;
-
   /// The name of the resource
   final String name;
-
   /// Path to the payload in the message. Enrich will add only the payload to the enriched message, other fields will not be kept except for in the indexes.
   final String? payload;
-
   /// The status of the last operation.
   final String provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// Path to an RFC3339 timestamp in the message. If no path is provided, the ingestion time of the record is used for time-based joins.
   final String? timestamp;
-
   /// Time to live for individual records.
   final String? ttl;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -87,14 +74,7 @@ class GetDatasetResult {
       'description': ?description,
       'extendedLocation': extendedLocation.toMap(),
       'id': id,
-      'keys': ?(() {
-        final guardedValue = keys;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeMapValues<
-          DatasetPropertyKeyResponse,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'keys': ?(() { final guardedValue = keys; if (guardedValue == null) return null; return pulumi.Input.encodeMapValues<DatasetPropertyKeyResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'location': location,
       'name': name,
       'payload': ?payload,
@@ -110,52 +90,20 @@ class GetDatasetResult {
   factory GetDatasetResult.fromMap(Map<String, dynamic> map) {
     return GetDatasetResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      extendedLocation: ExtendedLocationResponse.fromMap(
-        (map['extendedLocation']! as Map).cast<String, dynamic>(),
-      ),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      extendedLocation: ExtendedLocationResponse.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
-      keys: (() {
-        final guardedValue = map['keys'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeMapValues<DatasetPropertyKeyResponse>(
-          guardedValue,
-          (value) => DatasetPropertyKeyResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      keys: (() { final guardedValue = map['keys']; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<DatasetPropertyKeyResponse>(guardedValue, (value) => DatasetPropertyKeyResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       location: map['location'] as String,
       name: map['name'] as String,
-      payload: (() {
-        final guardedValue = map['payload'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      payload: (() { final guardedValue = map['payload']; if (guardedValue == null) return null; return guardedValue as String; })(),
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
-      timestamp: (() {
-        final guardedValue = map['timestamp'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      ttl: (() {
-        final guardedValue = map['ttl'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      timestamp: (() { final guardedValue = map['timestamp']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return guardedValue as String; })(),
       type: map['type'] as String,
     );
   }
 }
+

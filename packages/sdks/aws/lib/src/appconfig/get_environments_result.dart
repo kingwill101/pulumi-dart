@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getEnvironments.
 class GetEnvironmentsResult {
   final String applicationId;
-
   /// Set of Environment IDs associated with this AppConfig Application.
   final List<String> environmentIds;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
@@ -41,3 +40,4 @@ class GetEnvironmentsResult {
     );
   }
 }
+

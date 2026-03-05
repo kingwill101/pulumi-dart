@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LogConfigArgs {
   /// The type the of log. Valid values: `PROVIDER`.
   final pulumi.Input<String> logType;
-
   /// The name of the Log Store.
   final pulumi.Input<String> slsLogStore;
-
   /// The name of the Project.
   final pulumi.Input<String> slsProject;
 
@@ -42,3 +40,4 @@ class LogConfigArgs {
     );
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDataQualityRulesArgs {
   /// The ID of the data profile scan which the generation of quality rules will be basing on.
   final pulumi.Input<String> dataScanId;
-
   /// The location where the referenced data profile scan resides.
   final pulumi.Input<String>? location;
-
   /// The ID of the project in which the datascan belongs.
   final pulumi.Input<String>? project;
 
@@ -37,16 +35,9 @@ class GetDataQualityRulesArgs {
   factory GetDataQualityRulesArgs.fromMap(Map<String, dynamic> map) {
     return GetDataQualityRulesArgs(
       dataScanId: pulumi.Input.fromValue(map['dataScanId'] as String),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

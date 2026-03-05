@@ -8,13 +8,20 @@ class GetInputInputDevice {
 
   /// Creates a new [GetInputInputDevice].
   /// [id] The ID of the Input.
-  GetInputInputDevice({required this.id});
+  GetInputInputDevice({
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id};
+    return <String, dynamic>{
+      'id': id,
+    };
   }
 
   factory GetInputInputDevice.fromMap(Map<String, dynamic> map) {
-    return GetInputInputDevice(id: pulumi.Input.fromValue(map['id'] as String));
+    return GetInputInputDevice(
+      id: pulumi.Input.fromValue(map['id'] as String),
+    );
   }
 }
+

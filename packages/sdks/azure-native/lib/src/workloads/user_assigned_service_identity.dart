@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserAssignedServiceIdentity {
   /// Type of manage identity
   final pulumi.Input<String> type;
-
   /// User assigned identities dictionary
   final pulumi.Input<List<String>>? userAssignedIdentities;
 
@@ -28,11 +27,8 @@ class UserAssignedServiceIdentity {
   factory UserAssignedServiceIdentity.fromMap(Map<String, dynamic> map) {
     return UserAssignedServiceIdentity(
       type: pulumi.Input.fromValue(map['type'] as String),
-      userAssignedIdentities: (() {
-        final guardedValue = map['userAssignedIdentities'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      userAssignedIdentities: (() { final guardedValue = map['userAssignedIdentities']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

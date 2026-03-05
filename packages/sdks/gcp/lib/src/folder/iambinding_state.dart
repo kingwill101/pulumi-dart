@@ -6,13 +6,10 @@ import 'iambinding_condition.dart';
 /// Input properties used for looking up and filtering IAMBinding resources.
 class IAMBindingState {
   final pulumi.Input<IAMBindingCondition>? condition;
-
   /// (Computed) The etag of the folder's IAM policy.
   final pulumi.Input<String>? etag;
-
   /// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
   final pulumi.Input<String>? folder;
-
   /// An array of identities that will be granted the privilege in the `role`.
   /// Each entry can have one of the following values:
   /// * **user:{emailid}**: An email address that is associated with a specific Google account. For example, alice@gmail.com.
@@ -21,7 +18,6 @@ class IAMBindingState {
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
   /// * For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
   final pulumi.Input<List<String>>? members;
-
   /// The role that should be applied. Only one
   /// `gcp.folder.IAMBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -43,11 +39,7 @@ class IAMBindingState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'condition':
-          ?pulumi.Input.mapOptionalInputValue<
-            IAMBindingCondition,
-            Map<String, dynamic>
-          >(condition, (value) => value.toMap()),
+      'condition': ?pulumi.Input.mapOptionalInputValue<IAMBindingCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
       'etag': ?etag,
       'folder': ?folder,
       'members': ?members,
@@ -57,35 +49,12 @@ class IAMBindingState {
 
   factory IAMBindingState.fromMap(Map<String, dynamic> map) {
     return IAMBindingState(
-      condition: (() {
-        final guardedValue = map['condition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          IAMBindingCondition.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      etag: (() {
-        final guardedValue = map['etag'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      folder: (() {
-        final guardedValue = map['folder'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      members: (() {
-        final guardedValue = map['members'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      role: (() {
-        final guardedValue = map['role'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      condition: (() { final guardedValue = map['condition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IAMBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      folder: (() { final guardedValue = map['folder']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      members: (() { final guardedValue = map['members']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      role: (() { final guardedValue = map['role']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

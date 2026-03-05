@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SpringCloudServiceConfigServerGitSettingHttpBasicAuth {
   /// The password used to access the Git repository server, required when the Git repository server supports HTTP Basic Authentication.
   final pulumi.Input<String> password;
-
   /// The username that's used to access the Git repository server, required when the Git repository server supports HTTP Basic Authentication.
   final pulumi.Input<String> username;
 
@@ -18,15 +17,17 @@ class SpringCloudServiceConfigServerGitSettingHttpBasicAuth {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'password': password, 'username': username};
+    return <String, dynamic>{
+      'password': password,
+      'username': username,
+    };
   }
 
-  factory SpringCloudServiceConfigServerGitSettingHttpBasicAuth.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SpringCloudServiceConfigServerGitSettingHttpBasicAuth.fromMap(Map<String, dynamic> map) {
     return SpringCloudServiceConfigServerGitSettingHttpBasicAuth(
       password: pulumi.Input.fromValue(map['password'] as String),
       username: pulumi.Input.fromValue(map['username'] as String),
     );
   }
 }
+

@@ -228,43 +228,30 @@ import 'system_data_response.dart';
 class Share extends pulumi.CustomResource {
   /// Access protocol to be used by the share.
   late final pulumi.Output<String> accessProtocol;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Azure container mapping for the share.
   late final pulumi.Output<AzureContainerInfoResponse?> azureContainerInfo;
-
   /// List of IP addresses and corresponding access rights on the share(required for NFS protocol).
   late final pulumi.Output<List<Map<String, dynamic>>?> clientAccessRights;
-
   /// Data policy of the share.
   late final pulumi.Output<String?> dataPolicy;
-
   /// Description for the share.
   late final pulumi.Output<String?> description;
-
   /// Current monitoring status of the share.
   late final pulumi.Output<String> monitoringStatus;
-
   /// The object name.
   late final pulumi.Output<String> name;
-
   /// Details of the refresh job on this share.
   late final pulumi.Output<RefreshDetailsResponse?> refreshDetails;
-
   /// Share mount point to the role.
   late final pulumi.Output<List<Map<String, dynamic>>> shareMappings;
-
   /// Current status of the share.
   late final pulumi.Output<String> shareStatus;
-
   /// Metadata pertaining to creation and last modification of Share
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The hierarchical type of the object.
   late final pulumi.Output<String> type;
-
   /// Mapping of users and corresponding access rights on the share (required for SMB protocol).
   late final pulumi.Output<List<Map<String, dynamic>>?> userAccessRights;
 
@@ -272,57 +259,29 @@ class Share extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Share]. {@macro pulumi_databoxedge_share_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Share(String name, {ShareArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure-native:databoxedge:Share',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Share(
+    String name, {
+    ShareArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:databoxedge:Share',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accessProtocol = registerOutput<String>('accessProtocol');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    azureContainerInfo = registerOutput<AzureContainerInfoResponse?>(
-      'azureContainerInfo',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureContainerInfoResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    clientAccessRights = registerOutput<List<Map<String, dynamic>>?>(
-      'clientAccessRights',
-    );
+    azureContainerInfo = registerOutput<AzureContainerInfoResponse?>('azureContainerInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureContainerInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    clientAccessRights = registerOutput<List<Map<String, dynamic>>?>('clientAccessRights');
     dataPolicy = registerOutput<String?>('dataPolicy');
     description = registerOutput<String?>('description');
     monitoringStatus = registerOutput<String>('monitoringStatus');
     this.name = registerOutput<String>('name');
-    refreshDetails = registerOutput<RefreshDetailsResponse?>(
-      'refreshDetails',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return RefreshDetailsResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    refreshDetails = registerOutput<RefreshDetailsResponse?>('refreshDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RefreshDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     shareMappings = registerOutput<List<Map<String, dynamic>>>('shareMappings');
     shareStatus = registerOutput<String>('shareStatus');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
-    userAccessRights = registerOutput<List<Map<String, dynamic>>?>(
-      'userAccessRights',
-    );
+    userAccessRights = registerOutput<List<Map<String, dynamic>>?>('userAccessRights');
   }
 }

@@ -24,3 +24,4 @@ enum MaccStatus {
     throw ArgumentError('Unknown MaccStatus value: $value');
   }
 }
+

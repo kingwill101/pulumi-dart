@@ -837,7 +837,6 @@ import 'server_transparent_data_encryption_state.dart';
 class ServerTransparentDataEncryption extends pulumi.CustomResource {
   /// When enabled, the server will continuously check the key vault for any new versions of the key being used as the TDE protector. If a new version of the key is detected, the TDE protector on the server will be automatically rotated to the latest key version within 60 minutes.
   late final pulumi.Output<bool?> autoRotationEnabled;
-
   /// To use customer managed keys from Azure Key Vault, provide the AKV Key ID. To use service managed keys, omit this field.
   ///
   /// &gt; **Note:** In order to use customer managed keys, the identity of the MSSQL server must have the following permissions on the key vault: 'get', 'wrapKey' and 'unwrapKey'
@@ -845,7 +844,6 @@ class ServerTransparentDataEncryption extends pulumi.CustomResource {
   /// &gt; **Note:** If `server_id` denotes a secondary server deployed for disaster recovery purposes, then the `key_vault_key_id` should be the same key used for the primary server's transparent data encryption. Both primary and secondary servers should be encrypted with same key material.
   late final pulumi.Output<String?> keyVaultKeyId;
   late final pulumi.Output<String?> managedHsmKeyId;
-
   /// Specifies the name of the MS SQL Server. Changing this forces a new resource to be created.
   late final pulumi.Output<String> serverId;
 
@@ -858,11 +856,11 @@ class ServerTransparentDataEncryption extends pulumi.CustomResource {
     ServerTransparentDataEncryptionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:mssql/serverTransparentDataEncryption:ServerTransparentDataEncryption',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:mssql/serverTransparentDataEncryption:ServerTransparentDataEncryption',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoRotationEnabled = registerOutput<bool?>('autoRotationEnabled');
     keyVaultKeyId = registerOutput<String?>('keyVaultKeyId');
     managedHsmKeyId = registerOutput<String?>('managedHsmKeyId');
@@ -887,11 +885,11 @@ class ServerTransparentDataEncryption extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:mssql/serverTransparentDataEncryption:ServerTransparentDataEncryption',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:mssql/serverTransparentDataEncryption:ServerTransparentDataEncryption',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     autoRotationEnabled = registerOutput<bool?>('autoRotationEnabled');
     keyVaultKeyId = registerOutput<String?>('keyVaultKeyId');
     managedHsmKeyId = registerOutput<String?>('managedHsmKeyId');

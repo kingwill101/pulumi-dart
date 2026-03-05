@@ -16,3 +16,4 @@ enum FailoverDeploymentModel {
     throw ArgumentError('Unknown FailoverDeploymentModel value: $value');
   }
 }
+

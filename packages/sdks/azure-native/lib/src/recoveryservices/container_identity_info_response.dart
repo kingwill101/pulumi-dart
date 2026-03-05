@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContainerIdentityInfoResponse {
   /// Protection container identity - AAD Tenant
   final pulumi.Input<String>? aadTenantId;
-
   /// Protection container identity - Audience
   final pulumi.Input<String>? audience;
-
   /// Protection container identity - AAD Service Principal
   final pulumi.Input<String>? servicePrincipalClientId;
-
   /// Unique name of the container
   final pulumi.Input<String>? uniqueName;
 
@@ -39,26 +36,11 @@ class ContainerIdentityInfoResponse {
 
   factory ContainerIdentityInfoResponse.fromMap(Map<String, dynamic> map) {
     return ContainerIdentityInfoResponse(
-      aadTenantId: (() {
-        final guardedValue = map['aadTenantId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      audience: (() {
-        final guardedValue = map['audience'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      servicePrincipalClientId: (() {
-        final guardedValue = map['servicePrincipalClientId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      uniqueName: (() {
-        final guardedValue = map['uniqueName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      aadTenantId: (() { final guardedValue = map['aadTenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      audience: (() { final guardedValue = map['audience']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      servicePrincipalClientId: (() { final guardedValue = map['servicePrincipalClientId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      uniqueName: (() { final guardedValue = map['uniqueName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

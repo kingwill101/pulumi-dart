@@ -5,25 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIamCustomRolesRole {
   /// The current deleted state of the role.
   final pulumi.Input<bool> deleted;
-
   /// A human-readable description for the role.
   final pulumi.Input<String> description;
-
   /// an identifier for the resource with the format `organizations/{{org_id}}/roles/{{role_id}}`.
   final pulumi.Input<String> id;
-
   /// The name of the role in the format `organizations/{{org_id}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
   final pulumi.Input<String> name;
-
   /// The names of the permissions this role grants when bound in an IAM policy.
   final pulumi.Input<List<String>> permissions;
-
   /// The camel case role id used for this role.
   final pulumi.Input<String> roleId;
-
   /// The current launch stage of the role. List of possible stages is [here](https://cloud.google.com/iam/reference/rest/v1/organizations.roles#Role.RoleLaunchStage).
   final pulumi.Input<String> stage;
-
   /// A human-readable title for the role.
   final pulumi.Input<String> title;
 
@@ -66,12 +59,11 @@ class GetIamCustomRolesRole {
       description: pulumi.Input.fromValue(map['description'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      permissions: pulumi.Input.fromValue(
-        (map['permissions'] as List).cast<String>(),
-      ),
+      permissions: pulumi.Input.fromValue((map['permissions'] as List).cast<String>()),
       roleId: pulumi.Input.fromValue(map['roleId'] as String),
       stage: pulumi.Input.fromValue(map['stage'] as String),
       title: pulumi.Input.fromValue(map['title'] as String),
     );
   }
 }
+

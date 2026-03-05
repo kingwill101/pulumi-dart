@@ -7,35 +7,29 @@ import 'webhook_config_state.dart';
 class WebhookConfig {
   /// Resource name for the secret required as a URL parameter.
   final pulumi.Input<String> secret;
-
   /// Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
   final pulumi.Input<WebhookConfigState>? state;
 
   /// Creates a new [WebhookConfig].
   /// [secret] Resource name for the secret required as a URL parameter.
   /// [state] Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
-  WebhookConfig({required this.secret, this.state});
+  WebhookConfig({
+    required this.secret,
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'secret': secret,
-      'state': ?pulumi.Input.mapOptionalInputValue<WebhookConfigState, String>(
-        state,
-        (value) => value.wireValue,
-      ),
+      'state': ?pulumi.Input.mapOptionalInputValue<WebhookConfigState, String>(state, (value) => value.wireValue),
     };
   }
 
   factory WebhookConfig.fromMap(Map<String, dynamic> map) {
     return WebhookConfig(
       secret: pulumi.Input.fromValue(map['secret'] as String),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          WebhookConfigState.fromValue(guardedValue as String),
-        );
-      })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WebhookConfigState.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

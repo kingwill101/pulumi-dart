@@ -7,26 +7,19 @@ import 'private_link_connection_state_response.dart';
 class GetAppServiceEnvironmentPrivateEndpointConnectionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Resource Id.
   final String id;
-
   /// Private IPAddresses mapped to the remote private endpoint
   final List<String>? ipAddresses;
-
   /// Kind of resource.
   final String? kind;
-
   /// Resource Name.
   final String name;
-
   /// PrivateEndpoint of a remote private endpoint connection
   final ArmIdWrapperResponse? privateEndpoint;
-
   /// The state of a private link connection
   final PrivateLinkConnectionStateResponse? privateLinkServiceConnectionState;
   final String provisioningState;
-
   /// Resource type.
   final String type;
 
@@ -60,46 +53,24 @@ class GetAppServiceEnvironmentPrivateEndpointConnectionResult {
       'kind': ?kind,
       'name': name,
       'privateEndpoint': ?privateEndpoint?.toMap(),
-      'privateLinkServiceConnectionState': ?privateLinkServiceConnectionState
-          ?.toMap(),
+      'privateLinkServiceConnectionState': ?privateLinkServiceConnectionState?.toMap(),
       'provisioningState': provisioningState,
       'type': type,
     };
   }
 
-  factory GetAppServiceEnvironmentPrivateEndpointConnectionResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetAppServiceEnvironmentPrivateEndpointConnectionResult.fromMap(Map<String, dynamic> map) {
     return GetAppServiceEnvironmentPrivateEndpointConnectionResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      ipAddresses: (() {
-        final guardedValue = map['ipAddresses'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      ipAddresses: (() { final guardedValue = map['ipAddresses']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
-      privateEndpoint: (() {
-        final guardedValue = map['privateEndpoint'];
-        if (guardedValue == null) return null;
-        return ArmIdWrapperResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      privateLinkServiceConnectionState: (() {
-        final guardedValue = map['privateLinkServiceConnectionState'];
-        if (guardedValue == null) return null;
-        return PrivateLinkConnectionStateResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      privateEndpoint: (() { final guardedValue = map['privateEndpoint']; if (guardedValue == null) return null; return ArmIdWrapperResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      privateLinkServiceConnectionState: (() { final guardedValue = map['privateLinkServiceConnectionState']; if (guardedValue == null) return null; return PrivateLinkConnectionStateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       provisioningState: map['provisioningState'] as String,
       type: map['type'] as String,
     );
   }
 }
+

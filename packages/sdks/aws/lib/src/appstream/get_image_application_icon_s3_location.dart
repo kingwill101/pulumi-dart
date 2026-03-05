@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetImageApplicationIconS3Location {
   /// S3 bucket of the S3 object.
   final pulumi.Input<String> s3Bucket;
-
   /// S3 key of the S3 object.
   final pulumi.Input<String> s3Key;
 
@@ -18,7 +17,10 @@ class GetImageApplicationIconS3Location {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'s3Bucket': s3Bucket, 's3Key': s3Key};
+    return <String, dynamic>{
+      's3Bucket': s3Bucket,
+      's3Key': s3Key,
+    };
   }
 
   factory GetImageApplicationIconS3Location.fromMap(Map<String, dynamic> map) {
@@ -28,3 +30,4 @@ class GetImageApplicationIconS3Location {
     );
   }
 }
+

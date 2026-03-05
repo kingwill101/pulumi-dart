@@ -9,19 +9,20 @@ class BigQueryDestination {
 
   /// Creates a new [BigQueryDestination].
   /// [datasetId] The ID of a BigQuery Dataset.
-  BigQueryDestination({this.datasetId});
+  BigQueryDestination({
+    this.datasetId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'datasetId': ?datasetId};
+    return <String, dynamic>{
+      'datasetId': ?datasetId,
+    };
   }
 
   factory BigQueryDestination.fromMap(Map<String, dynamic> map) {
     return BigQueryDestination(
-      datasetId: (() {
-        final guardedValue = map['datasetId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      datasetId: (() { final guardedValue = map['datasetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

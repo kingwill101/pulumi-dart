@@ -706,16 +706,12 @@ import 'env_feature_state.dart';
 class EnvFeature extends pulumi.CustomResource {
   /// The name of the resource.
   late final pulumi.Output<String> envFeatureName;
-
   /// The first ID of the resource.
   late final pulumi.Output<String> environmentId;
-
   /// Version information of the Feature. You can query Feature information by using ListEnvironmentFeatures.
   late final pulumi.Output<String> featureVersion;
-
   /// Namespace.
   late final pulumi.Output<String> namespace;
-
   /// Status.
   late final pulumi.Output<String> status;
 
@@ -728,11 +724,11 @@ class EnvFeature extends pulumi.CustomResource {
     EnvFeatureArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:arms/envFeature:EnvFeature',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:arms/envFeature:EnvFeature',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     envFeatureName = registerOutput<String>('envFeatureName');
     environmentId = registerOutput<String>('environmentId');
     featureVersion = registerOutput<String>('featureVersion');
@@ -758,11 +754,11 @@ class EnvFeature extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:arms/envFeature:EnvFeature',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:arms/envFeature:EnvFeature',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     envFeatureName = registerOutput<String>('envFeatureName');
     environmentId = registerOutput<String>('environmentId');
     featureVersion = registerOutput<String>('featureVersion');

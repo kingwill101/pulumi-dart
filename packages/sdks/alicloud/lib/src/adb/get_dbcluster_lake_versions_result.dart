@@ -6,20 +6,16 @@ import 'get_dbcluster_lake_versions_version.dart';
 /// Result data returned by getDBClusterLakeVersions.
 class GetDBClusterLakeVersionsResult {
   final bool? enableDetails;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
   final String? outputFile;
   final int? pageNumber;
   final int? pageSize;
-
   /// The ID of the resource group.
   final String? resourceGroupId;
-
   /// The status of the resource.
   final String? status;
-
   /// A list of Adb Db Clusters. Each element contains the following attributes:
   final List<GetDBClusterLakeVersionsVersion> versions;
 
@@ -55,54 +51,22 @@ class GetDBClusterLakeVersionsResult {
       'pageSize': ?pageSize,
       'resourceGroupId': ?resourceGroupId,
       'status': ?status,
-      'versions':
-          pulumi.Input.encodeList<
-            GetDBClusterLakeVersionsVersion,
-            Map<String, dynamic>
-          >(versions, (value) => value.toMap()),
+      'versions': pulumi.Input.encodeList<GetDBClusterLakeVersionsVersion, Map<String, dynamic>>(versions, (value) => value.toMap()),
     };
   }
 
   factory GetDBClusterLakeVersionsResult.fromMap(Map<String, dynamic> map) {
     return GetDBClusterLakeVersionsResult(
-      enableDetails: (() {
-        final guardedValue = map['enableDetails'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      enableDetails: (() { final guardedValue = map['enableDetails']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      pageNumber: (() {
-        final guardedValue = map['pageNumber'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      pageSize: (() {
-        final guardedValue = map['pageSize'];
-        if (guardedValue == null) return null;
-        return guardedValue as int;
-      })(),
-      resourceGroupId: (() {
-        final guardedValue = map['resourceGroupId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      versions: pulumi.Input.decodeList<GetDBClusterLakeVersionsVersion>(
-        map['versions']!,
-        (value) => GetDBClusterLakeVersionsVersion.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      pageNumber: (() { final guardedValue = map['pageNumber']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      pageSize: (() { final guardedValue = map['pageSize']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      resourceGroupId: (() { final guardedValue = map['resourceGroupId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      versions: pulumi.Input.decodeList<GetDBClusterLakeVersionsVersion>(map['versions']!, (value) => GetDBClusterLakeVersionsVersion.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
+

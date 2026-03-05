@@ -9,19 +9,20 @@ class DelegateAccountState {
 
   /// Creates a new [DelegateAccountState].
   /// [accountId] Delegate administrator account Id
-  DelegateAccountState({this.accountId});
+  DelegateAccountState({
+    this.accountId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'accountId': ?accountId};
+    return <String, dynamic>{
+      'accountId': ?accountId,
+    };
   }
 
   factory DelegateAccountState.fromMap(Map<String, dynamic> map) {
     return DelegateAccountState(
-      accountId: (() {
-        final guardedValue = map['accountId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -9,21 +9,20 @@ class DefenderCspmJFrogOfferingResponseMdcContainersImageAssessment {
 
   /// Creates a new [DefenderCspmJFrogOfferingResponseMdcContainersImageAssessment].
   /// [enabled] Is Microsoft Defender container image assessment enabled
-  DefenderCspmJFrogOfferingResponseMdcContainersImageAssessment({this.enabled});
+  DefenderCspmJFrogOfferingResponseMdcContainersImageAssessment({
+    this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': ?enabled};
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
-  factory DefenderCspmJFrogOfferingResponseMdcContainersImageAssessment.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DefenderCspmJFrogOfferingResponseMdcContainersImageAssessment.fromMap(Map<String, dynamic> map) {
     return DefenderCspmJFrogOfferingResponseMdcContainersImageAssessment(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

@@ -249,16 +249,12 @@ import 'connection_type_state.dart';
 class ConnectionType extends pulumi.CustomResource {
   /// The name of the automation account in which the Connection is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> automationAccountName;
-
   /// One or more `field` blocks as defined below. Changing this forces a new Automation to be created.
   late final pulumi.Output<List<Map<String, dynamic>>> fields;
-
   /// Whether the connection type is global. Changing this forces a new Automation to be created.
   late final pulumi.Output<bool?> isGlobal;
-
   /// The name which should be used for this Automation Connection Type. Changing this forces a new Automation to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the Resource Group where the Automation should exist. Changing this forces a new Automation to be created.
   late final pulumi.Output<String> resourceGroupName;
 
@@ -271,11 +267,11 @@ class ConnectionType extends pulumi.CustomResource {
     ConnectionTypeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:automation/connectionType:ConnectionType',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:automation/connectionType:ConnectionType',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     automationAccountName = registerOutput<String>('automationAccountName');
     fields = registerOutput<List<Map<String, dynamic>>>('fields');
     isGlobal = registerOutput<bool?>('isGlobal');
@@ -301,11 +297,11 @@ class ConnectionType extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:automation/connectionType:ConnectionType',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:automation/connectionType:ConnectionType',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     automationAccountName = registerOutput<String>('automationAccountName');
     fields = registerOutput<List<Map<String, dynamic>>>('fields');
     isGlobal = registerOutput<bool?>('isGlobal');

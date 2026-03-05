@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Fingerprint {
   /// The layer ID of the final layer in the Docker image's v1 representation.
   final pulumi.Input<String> v1Name;
-
   /// The ordered list of v2 blobs that represent a given image.
   final pulumi.Input<List<String>> v2Blob;
 
   /// Creates a new [Fingerprint].
   /// [v1Name] The layer ID of the final layer in the Docker image's v1 representation.
   /// [v2Blob] The ordered list of v2 blobs that represent a given image.
-  Fingerprint({required this.v1Name, required this.v2Blob});
+  Fingerprint({
+    required this.v1Name,
+    required this.v2Blob,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'v1Name': v1Name, 'v2Blob': v2Blob};
+    return <String, dynamic>{
+      'v1Name': v1Name,
+      'v2Blob': v2Blob,
+    };
   }
 
   factory Fingerprint.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class Fingerprint {
     );
   }
 }
+

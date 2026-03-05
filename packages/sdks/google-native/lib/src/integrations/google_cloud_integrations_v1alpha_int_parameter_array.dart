@@ -9,21 +9,20 @@ class GoogleCloudIntegrationsV1alphaIntParameterArray {
 
   /// Creates a new [GoogleCloudIntegrationsV1alphaIntParameterArray].
   /// [intValues] Integer array.
-  GoogleCloudIntegrationsV1alphaIntParameterArray({this.intValues});
+  GoogleCloudIntegrationsV1alphaIntParameterArray({
+    this.intValues,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'intValues': ?intValues};
+    return <String, dynamic>{
+      'intValues': ?intValues,
+    };
   }
 
-  factory GoogleCloudIntegrationsV1alphaIntParameterArray.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudIntegrationsV1alphaIntParameterArray.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaIntParameterArray(
-      intValues: (() {
-        final guardedValue = map['intValues'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      intValues: (() { final guardedValue = map['intValues']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

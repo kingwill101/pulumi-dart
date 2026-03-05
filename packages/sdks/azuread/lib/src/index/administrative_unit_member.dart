@@ -172,7 +172,6 @@ import 'administrative_unit_member_state.dart';
 class AdministrativeUnitMember extends pulumi.CustomResource {
   /// The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> administrativeUnitObjectId;
-
   /// The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
   ///
   /// &gt; **Caution** When using the azuread.AdministrativeUnitMember resource to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.
@@ -187,14 +186,12 @@ class AdministrativeUnitMember extends pulumi.CustomResource {
     AdministrativeUnitMemberArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/administrativeUnitMember:AdministrativeUnitMember',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    administrativeUnitObjectId = registerOutput<String?>(
-      'administrativeUnitObjectId',
-    );
+          'azuread:index/administrativeUnitMember:AdministrativeUnitMember',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    administrativeUnitObjectId = registerOutput<String?>('administrativeUnitObjectId');
     memberObjectId = registerOutput<String?>('memberObjectId');
   }
 
@@ -216,14 +213,12 @@ class AdministrativeUnitMember extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/administrativeUnitMember:AdministrativeUnitMember',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    administrativeUnitObjectId = registerOutput<String?>(
-      'administrativeUnitObjectId',
-    );
+          'azuread:index/administrativeUnitMember:AdministrativeUnitMember',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    administrativeUnitObjectId = registerOutput<String?>('administrativeUnitObjectId');
     memberObjectId = registerOutput<String?>('memberObjectId');
   }
 }

@@ -210,10 +210,8 @@ class IpamIpamPoolCidr extends pulumi.CustomResource {
   ///
   /// &gt; **NOTE:**  currently, only IPv4 address segments are supported.
   late final pulumi.Output<String> cidr;
-
   /// The ID of the IPAM pool instance.
   late final pulumi.Output<String> ipamPoolId;
-
   /// The status of the resource
   late final pulumi.Output<String> status;
 
@@ -226,11 +224,11 @@ class IpamIpamPoolCidr extends pulumi.CustomResource {
     IpamIpamPoolCidrArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/ipamIpamPoolCidr:IpamIpamPoolCidr',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpc/ipamIpamPoolCidr:IpamIpamPoolCidr',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cidr = registerOutput<String>('cidr');
     ipamPoolId = registerOutput<String>('ipamPoolId');
     status = registerOutput<String>('status');
@@ -254,11 +252,11 @@ class IpamIpamPoolCidr extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/ipamIpamPoolCidr:IpamIpamPoolCidr',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpc/ipamIpamPoolCidr:IpamIpamPoolCidr',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cidr = registerOutput<String>('cidr');
     ipamPoolId = registerOutput<String>('ipamPoolId');
     status = registerOutput<String>('status');

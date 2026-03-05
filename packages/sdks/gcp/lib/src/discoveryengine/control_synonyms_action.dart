@@ -8,19 +8,20 @@ class ControlSynonymsAction {
 
   /// Creates a new [ControlSynonymsAction].
   /// [synonyms] The synonyms to apply to the search results.
-  ControlSynonymsAction({this.synonyms});
+  ControlSynonymsAction({
+    this.synonyms,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'synonyms': ?synonyms};
+    return <String, dynamic>{
+      'synonyms': ?synonyms,
+    };
   }
 
   factory ControlSynonymsAction.fromMap(Map<String, dynamic> map) {
     return ControlSynonymsAction(
-      synonyms: (() {
-        final guardedValue = map['synonyms'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      synonyms: (() { final guardedValue = map['synonyms']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVirtualNetworkGatewayRoutesInformationArgs {
   /// Attempt to recalculate the Route Sets Information for the gateway
   final pulumi.Input<bool>? attemptRefresh;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the virtual network gateway.
   final pulumi.Input<String> virtualNetworkGatewayName;
 
@@ -34,21 +32,12 @@ class GetVirtualNetworkGatewayRoutesInformationArgs {
     };
   }
 
-  factory GetVirtualNetworkGatewayRoutesInformationArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetVirtualNetworkGatewayRoutesInformationArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualNetworkGatewayRoutesInformationArgs(
-      attemptRefresh: (() {
-        final guardedValue = map['attemptRefresh'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      virtualNetworkGatewayName: pulumi.Input.fromValue(
-        map['virtualNetworkGatewayName'] as String,
-      ),
+      attemptRefresh: (() { final guardedValue = map['attemptRefresh']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      virtualNetworkGatewayName: pulumi.Input.fromValue(map['virtualNetworkGatewayName'] as String),
     );
   }
 }
+

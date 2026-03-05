@@ -8,17 +8,12 @@ import 'gpusharing_config_response.dart';
 class AcceleratorConfigResponse {
   /// The number of the accelerator cards exposed to an instance.
   final pulumi.Input<String> acceleratorCount;
-
   /// The accelerator type resource name. List of supported accelerators [here](https://cloud.google.com/compute/docs/gpus)
   final pulumi.Input<String> acceleratorType;
-
   /// The configuration for auto installation of GPU driver.
-  final pulumi.Input<GPUDriverInstallationConfigResponse>
-  gpuDriverInstallationConfig;
-
+  final pulumi.Input<GPUDriverInstallationConfigResponse> gpuDriverInstallationConfig;
   /// Size of partitions to create on the GPU. Valid values are described in the NVIDIA [mig user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
   final pulumi.Input<String> gpuPartitionSize;
-
   /// The configuration for GPU sharing options.
   final pulumi.Input<GPUSharingConfigResponse> gpuSharingConfig;
 
@@ -40,39 +35,20 @@ class AcceleratorConfigResponse {
     return <String, dynamic>{
       'acceleratorCount': acceleratorCount,
       'acceleratorType': acceleratorType,
-      'gpuDriverInstallationConfig':
-          pulumi.Input.mapInputValue<
-            GPUDriverInstallationConfigResponse,
-            Map<String, dynamic>
-          >(gpuDriverInstallationConfig, (value) => value.toMap()),
+      'gpuDriverInstallationConfig': pulumi.Input.mapInputValue<GPUDriverInstallationConfigResponse, Map<String, dynamic>>(gpuDriverInstallationConfig, (value) => value.toMap()),
       'gpuPartitionSize': gpuPartitionSize,
-      'gpuSharingConfig':
-          pulumi.Input.mapInputValue<
-            GPUSharingConfigResponse,
-            Map<String, dynamic>
-          >(gpuSharingConfig, (value) => value.toMap()),
+      'gpuSharingConfig': pulumi.Input.mapInputValue<GPUSharingConfigResponse, Map<String, dynamic>>(gpuSharingConfig, (value) => value.toMap()),
     };
   }
 
   factory AcceleratorConfigResponse.fromMap(Map<String, dynamic> map) {
     return AcceleratorConfigResponse(
-      acceleratorCount: pulumi.Input.fromValue(
-        map['acceleratorCount'] as String,
-      ),
+      acceleratorCount: pulumi.Input.fromValue(map['acceleratorCount'] as String),
       acceleratorType: pulumi.Input.fromValue(map['acceleratorType'] as String),
-      gpuDriverInstallationConfig: pulumi.Input.fromValue(
-        GPUDriverInstallationConfigResponse.fromMap(
-          (map['gpuDriverInstallationConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      gpuPartitionSize: pulumi.Input.fromValue(
-        map['gpuPartitionSize'] as String,
-      ),
-      gpuSharingConfig: pulumi.Input.fromValue(
-        GPUSharingConfigResponse.fromMap(
-          (map['gpuSharingConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      gpuDriverInstallationConfig: pulumi.Input.fromValue(GPUDriverInstallationConfigResponse.fromMap((map['gpuDriverInstallationConfig']! as Map).cast<String, dynamic>())),
+      gpuPartitionSize: pulumi.Input.fromValue(map['gpuPartitionSize'] as String),
+      gpuSharingConfig: pulumi.Input.fromValue(GPUSharingConfigResponse.fromMap((map['gpuSharingConfig']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

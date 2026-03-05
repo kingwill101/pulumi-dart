@@ -171,22 +171,16 @@ import 'dnat_entry_state.dart';
 class DnatEntry extends pulumi.CustomResource {
   /// The external public IP address.when "type" is "Internet",automatically identify the external ip.
   late final pulumi.Output<String?> externalIp;
-
   /// The public port.Value range: 1 to 65535 or "any".
   late final pulumi.Output<String> externalPort;
-
   /// The destination private IP address.
   late final pulumi.Output<String> internalIp;
-
   /// The destination private port.Value range: 1 to 65535 or "any".
   late final pulumi.Output<String> internalPort;
-
   /// The protocol type. Valid values: TCP: Forwards packets of the TCP protocol. UDP: Forwards packets of the UDP protocol. Any: Forwards packets of all protocols.
   late final pulumi.Output<String> ipProtocol;
-
   /// The ID of the SAG instance.
   late final pulumi.Output<String> sagId;
-
   /// The DNAT type. Valid values: Intranet: DNAT of private IP addresses. Internet: DNAT of public IP addresses
   late final pulumi.Output<String> type;
 
@@ -199,11 +193,11 @@ class DnatEntry extends pulumi.CustomResource {
     DnatEntryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:rocketmq/dnatEntry:DnatEntry',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:rocketmq/dnatEntry:DnatEntry',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     externalIp = registerOutput<String?>('externalIp');
     externalPort = registerOutput<String>('externalPort');
     internalIp = registerOutput<String>('internalIp');
@@ -231,11 +225,11 @@ class DnatEntry extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:rocketmq/dnatEntry:DnatEntry',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:rocketmq/dnatEntry:DnatEntry',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     externalIp = registerOutput<String?>('externalIp');
     externalPort = registerOutput<String>('externalPort');
     internalIp = registerOutput<String>('internalIp');

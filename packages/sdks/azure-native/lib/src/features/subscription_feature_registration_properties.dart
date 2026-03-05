@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SubscriptionFeatureRegistrationProperties {
   /// The feature description.
   final pulumi.Input<String>? description;
-
   /// Key-value pairs for meta data.
   final pulumi.Input<Map<String, String>>? metadata;
-
   /// Indicates whether feature should be displayed in Portal.
   final pulumi.Input<bool>? shouldFeatureDisplayInPortal;
-
   /// The state.
   final pulumi.Input<String>? state;
 
@@ -36,32 +33,13 @@ class SubscriptionFeatureRegistrationProperties {
     };
   }
 
-  factory SubscriptionFeatureRegistrationProperties.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SubscriptionFeatureRegistrationProperties.fromMap(Map<String, dynamic> map) {
     return SubscriptionFeatureRegistrationProperties(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      metadata: (() {
-        final guardedValue = map['metadata'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      shouldFeatureDisplayInPortal: (() {
-        final guardedValue = map['shouldFeatureDisplayInPortal'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      state: (() {
-        final guardedValue = map['state'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      shouldFeatureDisplayInPortal: (() { final guardedValue = map['shouldFeatureDisplayInPortal']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

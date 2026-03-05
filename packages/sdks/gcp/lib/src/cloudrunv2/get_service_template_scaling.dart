@@ -6,7 +6,6 @@ class GetServiceTemplateScaling {
   /// Maximum number of serving instances that this resource should have. Must not be less than minimum instance count. If absent, Cloud Run will calculate
   /// a default value based on the project's available container instances quota in the region and specified instance size.
   final pulumi.Input<int> maxInstanceCount;
-
   /// Minimum number of serving instances that this resource should have. Defaults to 0. Must not be greater than maximum instance count.
   final pulumi.Input<int> minInstanceCount;
 
@@ -32,3 +31,4 @@ class GetServiceTemplateScaling {
     );
   }
 }
+

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AssetEndpointProfileStatusErrorResponse {
   /// Error code for classification of errors (ex: 400, 404, 500, etc.).
   final pulumi.Input<int> code;
-
   /// Human readable helpful error message to provide additional context for error (ex: “targetAddress 'foo' is not a valid url”).
   final pulumi.Input<String> message;
 
@@ -19,15 +18,17 @@ class AssetEndpointProfileStatusErrorResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'code': code, 'message': message};
+    return <String, dynamic>{
+      'code': code,
+      'message': message,
+    };
   }
 
-  factory AssetEndpointProfileStatusErrorResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AssetEndpointProfileStatusErrorResponse.fromMap(Map<String, dynamic> map) {
     return AssetEndpointProfileStatusErrorResponse(
       code: pulumi.Input.fromValue(map['code'] as int),
       message: pulumi.Input.fromValue(map['message'] as String),
     );
   }
 }
+

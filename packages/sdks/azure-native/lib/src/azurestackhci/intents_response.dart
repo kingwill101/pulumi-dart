@@ -9,64 +9,44 @@ import 'virtual_switch_configuration_overrides_response.dart';
 class IntentsResponse {
   /// Array of network interfaces used for the network intent.
   final pulumi.Input<List<String>>? adapter;
-
   /// Set Adapter PropertyOverrides for cluster.
   final pulumi.Input<AdapterPropertyOverridesResponse> adapterPropertyOverrides;
-
   /// Array of adapters used for the network intent.
   final pulumi.Input<List<String>> intentAdapters;
-
   /// Name of the network intent you wish to create.
   final pulumi.Input<String> intentName;
-
   /// IntentType for host network intent.
   final pulumi.Input<double> intentType;
-
   /// IsComputeIntentSet for host network intent.
   final pulumi.Input<bool> isComputeIntentSet;
-
   /// IsManagementIntentSet for host network intent.
   final pulumi.Input<bool> isManagementIntentSet;
-
   /// IsNetworkIntentType for host network intent.
   final pulumi.Input<bool> isNetworkIntentType;
-
   /// IntentType for host network intent.
   final pulumi.Input<bool> isOnlyStorage;
-
   /// IsOnlyStretch for host network intent.
   final pulumi.Input<bool> isOnlyStretch;
-
   /// IsStorageIntentSet for host network intent.
   final pulumi.Input<bool> isStorageIntentSet;
-
   /// IsStretchIntentSet for host network intent.
   final pulumi.Input<bool> isStretchIntentSet;
-
   /// Name of the network intent you wish to create.
   final pulumi.Input<String>? name;
-
   /// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
   final pulumi.Input<bool> overrideAdapterProperty;
-
   /// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
   final pulumi.Input<bool> overrideQosPolicy;
-
   /// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
   final pulumi.Input<bool> overrideVirtualSwitchConfiguration;
-
   /// Set QoS PolicyOverrides for cluster.
   final pulumi.Input<QosPolicyOverridesResponse> qosPolicyOverrides;
-
   /// Scope for host network intent.
   final pulumi.Input<double> scope;
-
   /// List of network traffic types. Only allowed values are 'Compute', 'Storage', 'Management'.
   final pulumi.Input<List<String>>? trafficType;
-
   /// Set virtualSwitch ConfigurationOverrides for cluster.
-  final pulumi.Input<VirtualSwitchConfigurationOverridesResponse>
-  virtualSwitchConfigurationOverrides;
+  final pulumi.Input<VirtualSwitchConfigurationOverridesResponse> virtualSwitchConfigurationOverrides;
 
   /// Creates a new [IntentsResponse].
   /// [adapter] Array of network interfaces used for the network intent.
@@ -115,11 +95,7 @@ class IntentsResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'adapter': ?adapter,
-      'adapterPropertyOverrides':
-          pulumi.Input.mapInputValue<
-            AdapterPropertyOverridesResponse,
-            Map<String, dynamic>
-          >(adapterPropertyOverrides, (value) => value.toMap()),
+      'adapterPropertyOverrides': pulumi.Input.mapInputValue<AdapterPropertyOverridesResponse, Map<String, dynamic>>(adapterPropertyOverrides, (value) => value.toMap()),
       'intentAdapters': intentAdapters,
       'intentName': intentName,
       'intentType': intentType,
@@ -134,86 +110,36 @@ class IntentsResponse {
       'overrideAdapterProperty': overrideAdapterProperty,
       'overrideQosPolicy': overrideQosPolicy,
       'overrideVirtualSwitchConfiguration': overrideVirtualSwitchConfiguration,
-      'qosPolicyOverrides':
-          pulumi.Input.mapInputValue<
-            QosPolicyOverridesResponse,
-            Map<String, dynamic>
-          >(qosPolicyOverrides, (value) => value.toMap()),
+      'qosPolicyOverrides': pulumi.Input.mapInputValue<QosPolicyOverridesResponse, Map<String, dynamic>>(qosPolicyOverrides, (value) => value.toMap()),
       'scope': scope,
       'trafficType': ?trafficType,
-      'virtualSwitchConfigurationOverrides':
-          pulumi.Input.mapInputValue<
-            VirtualSwitchConfigurationOverridesResponse,
-            Map<String, dynamic>
-          >(virtualSwitchConfigurationOverrides, (value) => value.toMap()),
+      'virtualSwitchConfigurationOverrides': pulumi.Input.mapInputValue<VirtualSwitchConfigurationOverridesResponse, Map<String, dynamic>>(virtualSwitchConfigurationOverrides, (value) => value.toMap()),
     };
   }
 
   factory IntentsResponse.fromMap(Map<String, dynamic> map) {
     return IntentsResponse(
-      adapter: (() {
-        final guardedValue = map['adapter'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      adapterPropertyOverrides: pulumi.Input.fromValue(
-        AdapterPropertyOverridesResponse.fromMap(
-          (map['adapterPropertyOverrides']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      intentAdapters: pulumi.Input.fromValue(
-        (map['intentAdapters'] as List).cast<String>(),
-      ),
+      adapter: (() { final guardedValue = map['adapter']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      adapterPropertyOverrides: pulumi.Input.fromValue(AdapterPropertyOverridesResponse.fromMap((map['adapterPropertyOverrides']! as Map).cast<String, dynamic>())),
+      intentAdapters: pulumi.Input.fromValue((map['intentAdapters'] as List).cast<String>()),
       intentName: pulumi.Input.fromValue(map['intentName'] as String),
       intentType: pulumi.Input.fromValue(map['intentType'] as double),
-      isComputeIntentSet: pulumi.Input.fromValue(
-        map['isComputeIntentSet'] as bool,
-      ),
-      isManagementIntentSet: pulumi.Input.fromValue(
-        map['isManagementIntentSet'] as bool,
-      ),
-      isNetworkIntentType: pulumi.Input.fromValue(
-        map['isNetworkIntentType'] as bool,
-      ),
+      isComputeIntentSet: pulumi.Input.fromValue(map['isComputeIntentSet'] as bool),
+      isManagementIntentSet: pulumi.Input.fromValue(map['isManagementIntentSet'] as bool),
+      isNetworkIntentType: pulumi.Input.fromValue(map['isNetworkIntentType'] as bool),
       isOnlyStorage: pulumi.Input.fromValue(map['isOnlyStorage'] as bool),
       isOnlyStretch: pulumi.Input.fromValue(map['isOnlyStretch'] as bool),
-      isStorageIntentSet: pulumi.Input.fromValue(
-        map['isStorageIntentSet'] as bool,
-      ),
-      isStretchIntentSet: pulumi.Input.fromValue(
-        map['isStretchIntentSet'] as bool,
-      ),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      overrideAdapterProperty: pulumi.Input.fromValue(
-        map['overrideAdapterProperty'] as bool,
-      ),
-      overrideQosPolicy: pulumi.Input.fromValue(
-        map['overrideQosPolicy'] as bool,
-      ),
-      overrideVirtualSwitchConfiguration: pulumi.Input.fromValue(
-        map['overrideVirtualSwitchConfiguration'] as bool,
-      ),
-      qosPolicyOverrides: pulumi.Input.fromValue(
-        QosPolicyOverridesResponse.fromMap(
-          (map['qosPolicyOverrides']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      isStorageIntentSet: pulumi.Input.fromValue(map['isStorageIntentSet'] as bool),
+      isStretchIntentSet: pulumi.Input.fromValue(map['isStretchIntentSet'] as bool),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      overrideAdapterProperty: pulumi.Input.fromValue(map['overrideAdapterProperty'] as bool),
+      overrideQosPolicy: pulumi.Input.fromValue(map['overrideQosPolicy'] as bool),
+      overrideVirtualSwitchConfiguration: pulumi.Input.fromValue(map['overrideVirtualSwitchConfiguration'] as bool),
+      qosPolicyOverrides: pulumi.Input.fromValue(QosPolicyOverridesResponse.fromMap((map['qosPolicyOverrides']! as Map).cast<String, dynamic>())),
       scope: pulumi.Input.fromValue(map['scope'] as double),
-      trafficType: (() {
-        final guardedValue = map['trafficType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      virtualSwitchConfigurationOverrides: pulumi.Input.fromValue(
-        VirtualSwitchConfigurationOverridesResponse.fromMap(
-          (map['virtualSwitchConfigurationOverrides']! as Map)
-              .cast<String, dynamic>(),
-        ),
-      ),
+      trafficType: (() { final guardedValue = map['trafficType']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      virtualSwitchConfigurationOverrides: pulumi.Input.fromValue(VirtualSwitchConfigurationOverridesResponse.fromMap((map['virtualSwitchConfigurationOverrides']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

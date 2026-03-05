@@ -7,30 +7,21 @@ import 'azure_databricks_delta_lake_import_command_response.dart';
 class AzureDatabricksDeltaLakeSinkResponse {
   /// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? disableMetricsCollection;
-
   /// Azure Databricks Delta Lake import settings.
-  final pulumi.Input<AzureDatabricksDeltaLakeImportCommandResponse>?
-  importSettings;
-
+  final pulumi.Input<AzureDatabricksDeltaLakeImportCommandResponse>? importSettings;
   /// The maximum concurrent connection count for the sink data store. Type: integer (or Expression with resultType integer).
   final pulumi.Input<dynamic>? maxConcurrentConnections;
-
   /// SQL pre-copy script. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? preCopyScript;
-
   /// Sink retry count. Type: integer (or Expression with resultType integer).
   final pulumi.Input<dynamic>? sinkRetryCount;
-
   /// Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
   final pulumi.Input<dynamic>? sinkRetryWait;
-
   /// Copy sink type.
   /// Expected value is 'AzureDatabricksDeltaLakeSink'.
   final pulumi.Input<String> type;
-
   /// Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
   final pulumi.Input<dynamic>? writeBatchSize;
-
   /// Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
   final pulumi.Input<dynamic>? writeBatchTimeout;
 
@@ -59,11 +50,7 @@ class AzureDatabricksDeltaLakeSinkResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'disableMetricsCollection': ?disableMetricsCollection,
-      'importSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            AzureDatabricksDeltaLakeImportCommandResponse,
-            Map<String, dynamic>
-          >(importSettings, (value) => value.toMap()),
+      'importSettings': ?pulumi.Input.mapOptionalInputValue<AzureDatabricksDeltaLakeImportCommandResponse, Map<String, dynamic>>(importSettings, (value) => value.toMap()),
       'maxConcurrentConnections': ?maxConcurrentConnections,
       'preCopyScript': ?preCopyScript,
       'sinkRetryCount': ?sinkRetryCount,
@@ -74,55 +61,18 @@ class AzureDatabricksDeltaLakeSinkResponse {
     };
   }
 
-  factory AzureDatabricksDeltaLakeSinkResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AzureDatabricksDeltaLakeSinkResponse.fromMap(Map<String, dynamic> map) {
     return AzureDatabricksDeltaLakeSinkResponse(
-      disableMetricsCollection: (() {
-        final guardedValue = map['disableMetricsCollection'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      importSettings: (() {
-        final guardedValue = map['importSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AzureDatabricksDeltaLakeImportCommandResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      maxConcurrentConnections: (() {
-        final guardedValue = map['maxConcurrentConnections'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      preCopyScript: (() {
-        final guardedValue = map['preCopyScript'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      sinkRetryCount: (() {
-        final guardedValue = map['sinkRetryCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      sinkRetryWait: (() {
-        final guardedValue = map['sinkRetryWait'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
+      disableMetricsCollection: (() { final guardedValue = map['disableMetricsCollection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      importSettings: (() { final guardedValue = map['importSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureDatabricksDeltaLakeImportCommandResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      maxConcurrentConnections: (() { final guardedValue = map['maxConcurrentConnections']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      preCopyScript: (() { final guardedValue = map['preCopyScript']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      sinkRetryCount: (() { final guardedValue = map['sinkRetryCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      sinkRetryWait: (() { final guardedValue = map['sinkRetryWait']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
-      writeBatchSize: (() {
-        final guardedValue = map['writeBatchSize'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      writeBatchTimeout: (() {
-        final guardedValue = map['writeBatchTimeout'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
+      writeBatchSize: (() { final guardedValue = map['writeBatchSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      writeBatchTimeout: (() { final guardedValue = map['writeBatchTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }
+

@@ -57,8 +57,7 @@ Future<GetBillingProfileResult> getBillingProfile(
 /// Other available API versions: 2019-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native billing [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_billing_get_billing_role_assignment_by_billing_account_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetBillingRoleAssignmentByBillingAccountResult>
-getBillingRoleAssignmentByBillingAccount(
+Future<GetBillingRoleAssignmentByBillingAccountResult> getBillingRoleAssignmentByBillingAccount(
   GetBillingRoleAssignmentByBillingAccountArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -78,8 +77,7 @@ getBillingRoleAssignmentByBillingAccount(
 /// Other available API versions: 2019-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native billing [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_billing_get_billing_role_assignment_by_department_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetBillingRoleAssignmentByDepartmentResult>
-getBillingRoleAssignmentByDepartment(
+Future<GetBillingRoleAssignmentByDepartmentResult> getBillingRoleAssignmentByDepartment(
   GetBillingRoleAssignmentByDepartmentArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -99,8 +97,7 @@ getBillingRoleAssignmentByDepartment(
 /// Other available API versions: 2019-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native billing [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_billing_get_billing_role_assignment_by_enrollment_account_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetBillingRoleAssignmentByEnrollmentAccountResult>
-getBillingRoleAssignmentByEnrollmentAccount(
+Future<GetBillingRoleAssignmentByEnrollmentAccountResult> getBillingRoleAssignmentByEnrollmentAccount(
   GetBillingRoleAssignmentByEnrollmentAccountArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -138,8 +135,7 @@ Future<GetInvoiceSectionResult> getInvoiceSection(
 /// Other available API versions: 2019-10-01-preview, 2020-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native billing [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_billing_list_billing_account_invoice_sections_by_create_subscription_permission_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResult>
-listBillingAccountInvoiceSectionsByCreateSubscriptionPermission(
+Future<ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResult> listBillingAccountInvoiceSectionsByCreateSubscriptionPermission(
   ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -149,7 +145,5 @@ listBillingAccountInvoiceSectionsByCreateSubscriptionPermission(
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResult.fromMap(
-    result,
-  );
+  return ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResult.fromMap(result);
 }

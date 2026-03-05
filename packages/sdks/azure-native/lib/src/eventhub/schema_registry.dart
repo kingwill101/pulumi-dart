@@ -154,30 +154,22 @@ import 'system_data_response.dart';
 class SchemaRegistry extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Exact time the Schema Group was created.
   late final pulumi.Output<String> createdAtUtc;
-
   /// The ETag value.
   late final pulumi.Output<String> eTag;
-
   /// dictionary object for SchemaGroup group properties
   late final pulumi.Output<Map<String, String>?> groupProperties;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
   late final pulumi.Output<String?> schemaCompatibility;
   late final pulumi.Output<String?> schemaType;
-
   /// The system meta data relating to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
   late final pulumi.Output<String> type;
-
   /// Exact time the Schema Group was updated
   late final pulumi.Output<String> updatedAtUtc;
 
@@ -190,11 +182,11 @@ class SchemaRegistry extends pulumi.CustomResource {
     SchemaRegistryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:eventhub:SchemaRegistry',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:eventhub:SchemaRegistry',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createdAtUtc = registerOutput<String>('createdAtUtc');
     eTag = registerOutput<String>('eTag');
@@ -203,16 +195,7 @@ class SchemaRegistry extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     schemaCompatibility = registerOutput<String?>('schemaCompatibility');
     schemaType = registerOutput<String?>('schemaType');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     updatedAtUtc = registerOutput<String>('updatedAtUtc');
   }

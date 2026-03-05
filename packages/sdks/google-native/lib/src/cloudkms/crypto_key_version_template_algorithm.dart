@@ -1,8 +1,6 @@
 /// Required. Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
 enum CryptoKeyVersionTemplateAlgorithm {
-  cryptoKeyVersionAlgorithmUnspecified(
-    "CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED",
-  ),
+  cryptoKeyVersionAlgorithmUnspecified("CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED"),
   googleSymmetricEncryption("GOOGLE_SYMMETRIC_ENCRYPTION"),
   aes128Gcm("AES_128_GCM"),
   aes256Gcm("AES_256_GCM"),
@@ -47,8 +45,7 @@ enum CryptoKeyVersionTemplateAlgorithm {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown CryptoKeyVersionTemplateAlgorithm value: $value',
-    );
+    throw ArgumentError('Unknown CryptoKeyVersionTemplateAlgorithm value: $value');
   }
 }
+

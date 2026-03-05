@@ -9,10 +9,14 @@ class GCSResponse {
 
   /// Creates a new [GCSResponse].
   /// [remotePath] Remote path, either a bucket name or a subdirectory of a bucket, e.g.: bucket_name, bucket_name/subdirectory/
-  GCSResponse({required this.remotePath});
+  GCSResponse({
+    required this.remotePath,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'remotePath': remotePath};
+    return <String, dynamic>{
+      'remotePath': remotePath,
+    };
   }
 
   factory GCSResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class GCSResponse {
     );
   }
 }
+

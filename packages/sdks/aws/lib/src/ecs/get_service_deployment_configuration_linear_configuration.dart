@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceDeploymentConfigurationLinearConfiguration {
   /// Time to wait between deployment steps
   final pulumi.Input<String> stepBakeTimeInMinutes;
-
   /// Percentage of traffic to shift in each step
   final pulumi.Input<double> stepPercent;
 
@@ -24,14 +23,11 @@ class GetServiceDeploymentConfigurationLinearConfiguration {
     };
   }
 
-  factory GetServiceDeploymentConfigurationLinearConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetServiceDeploymentConfigurationLinearConfiguration.fromMap(Map<String, dynamic> map) {
     return GetServiceDeploymentConfigurationLinearConfiguration(
-      stepBakeTimeInMinutes: pulumi.Input.fromValue(
-        map['stepBakeTimeInMinutes'] as String,
-      ),
+      stepBakeTimeInMinutes: pulumi.Input.fromValue(map['stepBakeTimeInMinutes'] as String),
       stepPercent: pulumi.Input.fromValue(map['stepPercent'] as double),
     );
   }
 }
+

@@ -16,3 +16,4 @@ enum BrokerAuthenticationMethod {
     throw ArgumentError('Unknown BrokerAuthenticationMethod value: $value');
   }
 }
+

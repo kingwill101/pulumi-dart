@@ -14,14 +14,15 @@ class GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': value};
+    return <String, dynamic>{
+      'value': value,
+    };
   }
 
-  factory GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseResponse(
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
+

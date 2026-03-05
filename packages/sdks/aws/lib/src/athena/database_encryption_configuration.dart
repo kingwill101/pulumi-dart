@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatabaseEncryptionConfiguration {
   /// Type of key; one of `SSE_S3`, `SSE_KMS`, `CSE_KMS`
   final pulumi.Input<String> encryptionOption;
-
   /// KMS key ARN or ID; required for key types `SSE_KMS` and `CSE_KMS`.
   final pulumi.Input<String>? kmsKey;
 
@@ -26,14 +25,9 @@ class DatabaseEncryptionConfiguration {
 
   factory DatabaseEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return DatabaseEncryptionConfiguration(
-      encryptionOption: pulumi.Input.fromValue(
-        map['encryptionOption'] as String,
-      ),
-      kmsKey: (() {
-        final guardedValue = map['kmsKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      encryptionOption: pulumi.Input.fromValue(map['encryptionOption'] as String),
+      kmsKey: (() { final guardedValue = map['kmsKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReference {
   /// Dataset ID of the table.
   final pulumi.Input<String> datasetId;
-
   /// Name of the table.
   final pulumi.Input<String> tableId;
 
@@ -18,15 +17,17 @@ class PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReference {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'datasetId': datasetId, 'tableId': tableId};
+    return <String, dynamic>{
+      'datasetId': datasetId,
+      'tableId': tableId,
+    };
   }
 
-  factory PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReference.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReference.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReference(
       datasetId: pulumi.Input.fromValue(map['datasetId'] as String),
       tableId: pulumi.Input.fromValue(map['tableId'] as String),
     );
   }
 }
+

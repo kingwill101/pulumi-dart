@@ -340,28 +340,20 @@ class Replicator extends pulumi.CustomResource {
   /// ARN of the Replicator.
   late final pulumi.Output<String> arn;
   late final pulumi.Output<String> currentVersion;
-
   /// A summary description of the replicator.
   late final pulumi.Output<String?> description;
-
   /// A list of Kafka clusters which are targets of the replicator.
   late final pulumi.Output<List<Map<String, dynamic>>> kafkaClusters;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// A list of replication configurations, where each configuration targets a given source cluster to target cluster replication flow.
   late final pulumi.Output<ReplicatorReplicationInfoList> replicationInfoList;
-
   /// The name of the replicator.
   late final pulumi.Output<String> replicatorName;
-
   /// The ARN of the IAM role used by the replicator to access resources in the customer's account (e.g source and target clusters).
   late final pulumi.Output<String> serviceExecutionRoleArn;
-
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -374,26 +366,17 @@ class Replicator extends pulumi.CustomResource {
     ReplicatorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:msk/replicator:Replicator',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:msk/replicator:Replicator',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     currentVersion = registerOutput<String>('currentVersion');
     description = registerOutput<String?>('description');
     kafkaClusters = registerOutput<List<Map<String, dynamic>>>('kafkaClusters');
     region = registerOutput<String>('region');
-    replicationInfoList = registerOutput<ReplicatorReplicationInfoList>(
-      'replicationInfoList',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ReplicatorReplicationInfoList.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    replicationInfoList = registerOutput<ReplicatorReplicationInfoList>('replicationInfoList', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicatorReplicationInfoList.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     replicatorName = registerOutput<String>('replicatorName');
     serviceExecutionRoleArn = registerOutput<String>('serviceExecutionRoleArn');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -418,26 +401,17 @@ class Replicator extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:msk/replicator:Replicator',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:msk/replicator:Replicator',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     currentVersion = registerOutput<String>('currentVersion');
     description = registerOutput<String?>('description');
     kafkaClusters = registerOutput<List<Map<String, dynamic>>>('kafkaClusters');
     region = registerOutput<String>('region');
-    replicationInfoList = registerOutput<ReplicatorReplicationInfoList>(
-      'replicationInfoList',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ReplicatorReplicationInfoList.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    replicationInfoList = registerOutput<ReplicatorReplicationInfoList>('replicationInfoList', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicatorReplicationInfoList.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     replicatorName = registerOutput<String>('replicatorName');
     serviceExecutionRoleArn = registerOutput<String>('serviceExecutionRoleArn');
     tags = registerOutput<Map<String, String>?>('tags');

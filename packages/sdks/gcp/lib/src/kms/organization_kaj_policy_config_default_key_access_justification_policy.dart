@@ -16,18 +16,15 @@ class OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'allowedAccessReasons': ?allowedAccessReasons};
+    return <String, dynamic>{
+      'allowedAccessReasons': ?allowedAccessReasons,
+    };
   }
 
-  factory OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy.fromMap(Map<String, dynamic> map) {
     return OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy(
-      allowedAccessReasons: (() {
-        final guardedValue = map['allowedAccessReasons'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      allowedAccessReasons: (() { final guardedValue = map['allowedAccessReasons']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

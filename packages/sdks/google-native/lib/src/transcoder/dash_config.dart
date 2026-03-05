@@ -10,27 +10,20 @@ class DashConfig {
 
   /// Creates a new [DashConfig].
   /// [segmentReferenceScheme] The segment reference scheme for a `DASH` manifest. The default is `SEGMENT_LIST`.
-  DashConfig({this.segmentReferenceScheme});
+  DashConfig({
+    this.segmentReferenceScheme,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'segmentReferenceScheme':
-          ?pulumi.Input.mapOptionalInputValue<
-            DashConfigSegmentReferenceScheme,
-            String
-          >(segmentReferenceScheme, (value) => value.wireValue),
+      'segmentReferenceScheme': ?pulumi.Input.mapOptionalInputValue<DashConfigSegmentReferenceScheme, String>(segmentReferenceScheme, (value) => value.wireValue),
     };
   }
 
   factory DashConfig.fromMap(Map<String, dynamic> map) {
     return DashConfig(
-      segmentReferenceScheme: (() {
-        final guardedValue = map['segmentReferenceScheme'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DashConfigSegmentReferenceScheme.fromValue(guardedValue as String),
-        );
-      })(),
+      segmentReferenceScheme: (() { final guardedValue = map['segmentReferenceScheme']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DashConfigSegmentReferenceScheme.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

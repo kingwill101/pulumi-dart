@@ -397,37 +397,26 @@ import 'data_source_state.dart';
 class DataSource extends pulumi.CustomResource {
   /// Data source connection configuration information, including the connection address, access identity, and environment information. The data source environment EnvType information is a member property of this object, including DEV (Development Environment) and PROD (production environment). The value of EnvType is not case-sensitive.
   late final pulumi.Output<String> connectionProperties;
-
   /// The configuration mode of the data source. Different types of data sources have different configuration modes. For example, MySQL data sources support UrlMode and InstanceMode.
   late final pulumi.Output<String> connectionPropertiesMode;
-
   /// The creation time of the resource
   late final pulumi.Output<int> createTime;
-
   /// Creator of the data source
   late final pulumi.Output<String> createUser;
-
   /// The first ID of the resource
   late final pulumi.Output<int> dataSourceId;
-
   /// The data source name. The name of a data source in a specific environment (development environment or production environment) is unique in a project.
   late final pulumi.Output<String> dataSourceName;
-
   /// Description of the data source
   late final pulumi.Output<String?> description;
-
   /// Modification time
   late final pulumi.Output<int> modifyTime;
-
   /// Modifier of the data source
   late final pulumi.Output<String> modifyUser;
-
   /// The ID of the project to which the data source belongs.
   late final pulumi.Output<int> projectId;
-
   /// Business Unique Key of Data Source
   late final pulumi.Output<String> qualifiedName;
-
   /// The type of data source. For a list of data source types, see the values listed in the API documentation.
   late final pulumi.Output<String> type;
 
@@ -440,15 +429,13 @@ class DataSource extends pulumi.CustomResource {
     DataSourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dataworks/dataSource:DataSource',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dataworks/dataSource:DataSource',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     connectionProperties = registerOutput<String>('connectionProperties');
-    connectionPropertiesMode = registerOutput<String>(
-      'connectionPropertiesMode',
-    );
+    connectionPropertiesMode = registerOutput<String>('connectionPropertiesMode');
     createTime = registerOutput<int>('createTime');
     createUser = registerOutput<String>('createUser');
     dataSourceId = registerOutput<int>('dataSourceId');
@@ -479,15 +466,13 @@ class DataSource extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dataworks/dataSource:DataSource',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dataworks/dataSource:DataSource',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     connectionProperties = registerOutput<String>('connectionProperties');
-    connectionPropertiesMode = registerOutput<String>(
-      'connectionPropertiesMode',
-    );
+    connectionPropertiesMode = registerOutput<String>('connectionPropertiesMode');
     createTime = registerOutput<int>('createTime');
     createUser = registerOutput<String>('createUser');
     dataSourceId = registerOutput<int>('dataSourceId');

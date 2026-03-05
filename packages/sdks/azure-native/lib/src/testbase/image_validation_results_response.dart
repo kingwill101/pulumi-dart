@@ -10,39 +10,20 @@ class ImageValidationResultsResponse {
 
   /// Creates a new [ImageValidationResultsResponse].
   /// [results] The validation results of the image.
-  ImageValidationResultsResponse({this.results});
+  ImageValidationResultsResponse({
+    this.results,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'results':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<VerificationResultResponse>,
-            List<Map<String, dynamic>>
-          >(
-            results,
-            (value) =>
-                pulumi.Input.encodeList<
-                  VerificationResultResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'results': ?pulumi.Input.mapOptionalInputValue<List<VerificationResultResponse>, List<Map<String, dynamic>>>(results, (value) => pulumi.Input.encodeList<VerificationResultResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ImageValidationResultsResponse.fromMap(Map<String, dynamic> map) {
     return ImageValidationResultsResponse(
-      results: (() {
-        final guardedValue = map['results'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<VerificationResultResponse>(
-            guardedValue,
-            (value) => VerificationResultResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      results: (() { final guardedValue = map['results']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VerificationResultResponse>(guardedValue, (value) => VerificationResultResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

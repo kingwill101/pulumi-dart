@@ -181,13 +181,10 @@ import 'receivers_state.dart';
 class Receivers extends pulumi.CustomResource {
   /// The description of receivers and 1-50 characters in length.
   late final pulumi.Output<String?> description;
-
   /// The alias of receivers. Must email address and less than 30 characters in length.
   late final pulumi.Output<String> receiversAlias;
-
   /// The name of the resource. The length that cannot be repeated is 1-30 characters.
   late final pulumi.Output<String> receiversName;
-
   /// The status of the resource. `0` means uploading, `1` means upload completed.
   late final pulumi.Output<int> status;
 
@@ -200,11 +197,11 @@ class Receivers extends pulumi.CustomResource {
     ReceiversArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:directmail/receivers:Receivers',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:directmail/receivers:Receivers',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     receiversAlias = registerOutput<String>('receiversAlias');
     receiversName = registerOutput<String>('receiversName');
@@ -229,11 +226,11 @@ class Receivers extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:directmail/receivers:Receivers',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:directmail/receivers:Receivers',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     description = registerOutput<String?>('description');
     receiversAlias = registerOutput<String>('receiversAlias');
     receiversName = registerOutput<String>('receiversName');

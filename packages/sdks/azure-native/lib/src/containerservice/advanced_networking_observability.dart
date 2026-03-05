@@ -9,19 +9,20 @@ class AdvancedNetworkingObservability {
 
   /// Creates a new [AdvancedNetworkingObservability].
   /// [enabled] Indicates the enablement of Advanced Networking observability functionalities on clusters.
-  AdvancedNetworkingObservability({this.enabled});
+  AdvancedNetworkingObservability({
+    this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': ?enabled};
+    return <String, dynamic>{
+      'enabled': ?enabled,
+    };
   }
 
   factory AdvancedNetworkingObservability.fromMap(Map<String, dynamic> map) {
     return AdvancedNetworkingObservability(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

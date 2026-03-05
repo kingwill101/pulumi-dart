@@ -8,13 +8,10 @@ class ServiceCustomDomainState {
   ///
   /// &gt; **Note:** Please ensure the custom domain name is included in the Subject Alternative Names of the selected SignalR Custom Certificate.
   final pulumi.Input<String>? domainName;
-
   /// Specifies the name of the SignalR Custom Domain. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
-
   /// Specifies the SignalR Custom Certificate ID of the SignalR Custom Domain. Changing this forces a new resource to be created.
   final pulumi.Input<String>? signalrCustomCertificateId;
-
   /// Specifies the SignalR ID of the SignalR Custom Domain. Changing this forces a new resource to be created.
   final pulumi.Input<String>? signalrServiceId;
 
@@ -41,26 +38,11 @@ class ServiceCustomDomainState {
 
   factory ServiceCustomDomainState.fromMap(Map<String, dynamic> map) {
     return ServiceCustomDomainState(
-      domainName: (() {
-        final guardedValue = map['domainName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      signalrCustomCertificateId: (() {
-        final guardedValue = map['signalrCustomCertificateId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      signalrServiceId: (() {
-        final guardedValue = map['signalrServiceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      domainName: (() { final guardedValue = map['domainName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      signalrCustomCertificateId: (() { final guardedValue = map['signalrCustomCertificateId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      signalrServiceId: (() { final guardedValue = map['signalrServiceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

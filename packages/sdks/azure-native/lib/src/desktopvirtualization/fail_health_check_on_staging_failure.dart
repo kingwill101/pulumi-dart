@@ -13,8 +13,7 @@ enum FailHealthCheckOnStagingFailure {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown FailHealthCheckOnStagingFailure value: $value',
-    );
+    throw ArgumentError('Unknown FailHealthCheckOnStagingFailure value: $value');
   }
 }
+

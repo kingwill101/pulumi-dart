@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GatewayHostnameBindingKeyVault {
   /// The default hostname of the data-plane gateway.
   final pulumi.Input<String>? identityClientId;
-
   /// The current provisioning state of the API Management gateway hostname binding.
   final pulumi.Input<String> secretId;
 
@@ -26,12 +25,9 @@ class GatewayHostnameBindingKeyVault {
 
   factory GatewayHostnameBindingKeyVault.fromMap(Map<String, dynamic> map) {
     return GatewayHostnameBindingKeyVault(
-      identityClientId: (() {
-        final guardedValue = map['identityClientId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      identityClientId: (() { final guardedValue = map['identityClientId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       secretId: pulumi.Input.fromValue(map['secretId'] as String),
     );
   }
 }
+

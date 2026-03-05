@@ -397,8 +397,8 @@ Future<GetApiManagementServiceResult> getApiManagementService(
 ///
 /// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [options] Invoke options controlling this call.
-Future<GetApiManagementServiceDomainOwnershipIdentifierResult>
-getApiManagementServiceDomainOwnershipIdentifier({
+Future<GetApiManagementServiceDomainOwnershipIdentifierResult> getApiManagementServiceDomainOwnershipIdentifier(
+  {
   pulumi.InvokeOptions? options,
 }) async {
   final deployment = pulumi.Deployment.instance;
@@ -1195,8 +1195,7 @@ Future<GetPolicyRestrictionResult> getPolicyRestriction(
 /// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_private_endpoint_connection_by_name_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetPrivateEndpointConnectionByNameResult>
-getPrivateEndpointConnectionByName(
+Future<GetPrivateEndpointConnectionByNameResult> getPrivateEndpointConnectionByName(
   GetPrivateEndpointConnectionByNameArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -2314,8 +2313,7 @@ Future<ListWorkspaceNamedValueResult> listWorkspaceNamedValue(
 /// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_list_workspace_policy_fragment_references_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListWorkspacePolicyFragmentReferencesResult>
-listWorkspacePolicyFragmentReferences(
+Future<ListWorkspacePolicyFragmentReferencesResult> listWorkspacePolicyFragmentReferences(
   ListWorkspacePolicyFragmentReferencesArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

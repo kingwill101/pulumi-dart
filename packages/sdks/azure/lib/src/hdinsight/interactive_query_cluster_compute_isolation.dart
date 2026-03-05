@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InteractiveQueryClusterComputeIsolation {
   /// This field indicates whether enable compute isolation or not. Possible values are `true` or `false`.
   final pulumi.Input<bool>? computeIsolationEnabled;
-
   /// The name of the host SKU.
   final pulumi.Input<String>? hostSku;
 
@@ -24,20 +23,11 @@ class InteractiveQueryClusterComputeIsolation {
     };
   }
 
-  factory InteractiveQueryClusterComputeIsolation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory InteractiveQueryClusterComputeIsolation.fromMap(Map<String, dynamic> map) {
     return InteractiveQueryClusterComputeIsolation(
-      computeIsolationEnabled: (() {
-        final guardedValue = map['computeIsolationEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      hostSku: (() {
-        final guardedValue = map['hostSku'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      computeIsolationEnabled: (() { final guardedValue = map['computeIsolationEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      hostSku: (() { final guardedValue = map['hostSku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

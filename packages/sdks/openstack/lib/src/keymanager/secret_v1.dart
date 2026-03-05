@@ -697,63 +697,45 @@ class SecretV1 extends pulumi.CustomResource {
   /// `read` operation is supported. If not specified, the secret is accessible
   /// project wide.
   late final pulumi.Output<SecretV1Acl> acl;
-
   /// Metadata provided by a user or system for informational purposes.
   late final pulumi.Output<String> algorithm;
-
   /// The map of metadata, assigned on the secret, which has been
   /// explicitly and implicitly added.
   late final pulumi.Output<Map<String, String>> allMetadata;
-
   /// Metadata provided by a user or system for informational purposes.
   late final pulumi.Output<int> bitLength;
-
   /// The map of the content types, assigned on the secret.
   late final pulumi.Output<Map<String, String>> contentTypes;
-
   /// The date the secret was created.
   late final pulumi.Output<String> createdAt;
-
   /// The creator of the secret.
   late final pulumi.Output<String> creatorId;
-
   /// The expiration time of the secret in the RFC3339 timestamp format (e.g. `2019-03-09T12:58:49Z`). If omitted, a secret will never expire. Changing this creates a new secret.
   late final pulumi.Output<String?> expiration;
-
   /// Additional Metadata for the secret.
   late final pulumi.Output<Map<String, String>?> metadata;
-
   /// Metadata provided by a user or system for informational purposes.
   late final pulumi.Output<String> mode;
-
   /// Human-readable name for the Secret. Does not have
   /// to be unique.
   late final pulumi.Output<String> name;
-
   /// The secret's data to be stored. **payload\_content\_type** must also be supplied if **payload** is included.
   late final pulumi.Output<String?> payload;
-
   /// (required if **payload** is encoded) The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.
   late final pulumi.Output<String?> payloadContentEncoding;
-
   /// (required if **payload** is included) The media type for the content of the payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
   late final pulumi.Output<String?> payloadContentType;
-
   /// The region in which to obtain the V1 KeyManager client.
   /// A KeyManager client is needed to create a secret. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
   /// V1 secret.
   late final pulumi.Output<String> region;
-
   /// The secret reference / where to find the secret.
   late final pulumi.Output<String> secretRef;
-
   /// Used to indicate the type of secret being stored. For more information see [Secret types](https://docs.openstack.org/barbican/latest/api/reference/secret_types.html).
   late final pulumi.Output<String> secretType;
-
   /// The status of the secret.
   late final pulumi.Output<String> status;
-
   /// The date the secret was last updated.
   late final pulumi.Output<String> updatedAt;
 
@@ -766,21 +748,12 @@ class SecretV1 extends pulumi.CustomResource {
     SecretV1Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:keymanager/secretV1:SecretV1',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    acl = registerOutput<SecretV1Acl>(
-      'acl',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SecretV1Acl.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'openstack:keymanager/secretV1:SecretV1',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    acl = registerOutput<SecretV1Acl>('acl', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecretV1Acl.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     algorithm = registerOutput<String>('algorithm');
     allMetadata = registerOutput<Map<String, String>>('allMetadata');
     bitLength = registerOutput<int>('bitLength');
@@ -819,21 +792,12 @@ class SecretV1 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:keymanager/secretV1:SecretV1',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    acl = registerOutput<SecretV1Acl>(
-      'acl',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SecretV1Acl.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'openstack:keymanager/secretV1:SecretV1',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    acl = registerOutput<SecretV1Acl>('acl', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecretV1Acl.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     algorithm = registerOutput<String>('algorithm');
     allMetadata = registerOutput<Map<String, String>>('allMetadata');
     bitLength = registerOutput<int>('bitLength');

@@ -8,17 +8,20 @@ class GetLinuxWebAppAuthSettingsV2AzureStaticWebAppV2 {
 
   /// Creates a new [GetLinuxWebAppAuthSettingsV2AzureStaticWebAppV2].
   /// [clientId] The OAuth 2.0 client ID used by the app for authentication.
-  GetLinuxWebAppAuthSettingsV2AzureStaticWebAppV2({required this.clientId});
+  GetLinuxWebAppAuthSettingsV2AzureStaticWebAppV2({
+    required this.clientId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'clientId': clientId};
+    return <String, dynamic>{
+      'clientId': clientId,
+    };
   }
 
-  factory GetLinuxWebAppAuthSettingsV2AzureStaticWebAppV2.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetLinuxWebAppAuthSettingsV2AzureStaticWebAppV2.fromMap(Map<String, dynamic> map) {
     return GetLinuxWebAppAuthSettingsV2AzureStaticWebAppV2(
       clientId: pulumi.Input.fromValue(map['clientId'] as String),
     );
   }
 }
+

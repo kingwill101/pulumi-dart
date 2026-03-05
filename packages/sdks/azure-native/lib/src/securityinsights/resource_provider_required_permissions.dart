@@ -7,13 +7,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceProviderRequiredPermissions {
   /// Gets or sets a value indicating whether the permission is custom actions (POST).
   final pulumi.Input<bool>? action;
-
   /// Gets or sets a value indicating whether the permission is delete action (DELETE).
   final pulumi.Input<bool>? delete;
-
   /// Gets or sets a value indicating whether the permission is read action (GET).
   final pulumi.Input<bool>? read;
-
   /// Gets or sets a value indicating whether the permission is write action (PUT or PATCH).
   final pulumi.Input<bool>? write;
 
@@ -38,30 +35,13 @@ class ResourceProviderRequiredPermissions {
     };
   }
 
-  factory ResourceProviderRequiredPermissions.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResourceProviderRequiredPermissions.fromMap(Map<String, dynamic> map) {
     return ResourceProviderRequiredPermissions(
-      action: (() {
-        final guardedValue = map['action'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      delete: (() {
-        final guardedValue = map['delete'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      read: (() {
-        final guardedValue = map['read'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      write: (() {
-        final guardedValue = map['write'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      delete: (() { final guardedValue = map['delete']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      read: (() { final guardedValue = map['read']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      write: (() { final guardedValue = map['write']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NamespaceTopicSpacesConfigurationDynamicRoutingEnrichment {
   /// The enrichment key.
   final pulumi.Input<String> key;
-
   /// The enrichment value.
   final pulumi.Input<String> value;
 
@@ -18,15 +17,17 @@ class NamespaceTopicSpacesConfigurationDynamicRoutingEnrichment {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'key': key, 'value': value};
+    return <String, dynamic>{
+      'key': key,
+      'value': value,
+    };
   }
 
-  factory NamespaceTopicSpacesConfigurationDynamicRoutingEnrichment.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory NamespaceTopicSpacesConfigurationDynamicRoutingEnrichment.fromMap(Map<String, dynamic> map) {
     return NamespaceTopicSpacesConfigurationDynamicRoutingEnrichment(
       key: pulumi.Input.fromValue(map['key'] as String),
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
+

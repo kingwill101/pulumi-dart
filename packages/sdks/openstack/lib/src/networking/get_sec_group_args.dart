@@ -9,24 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSecGroupArgs {
   /// Human-readable description the the subnet.
   final pulumi.Input<String>? description;
-
   /// The name of the security group.
   final pulumi.Input<String>? name;
-
   /// The region in which to obtain the V2 Neutron client.
   /// A Neutron client is needed to retrieve security groups ids. If omitted, the
   /// `region` argument of the provider is used.
   final pulumi.Input<String>? region;
-
   /// The ID of the security group.
   final pulumi.Input<String>? secgroupId;
-
   /// Whether the security group is stateful or not.
   final pulumi.Input<bool>? stateful;
-
   /// The list of security group tags to filter.
   final pulumi.Input<List<String>>? tags;
-
   /// The owner of the security group.
   final pulumi.Input<String>? tenantId;
 
@@ -62,41 +56,14 @@ class GetSecGroupArgs {
 
   factory GetSecGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetSecGroupArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      secgroupId: (() {
-        final guardedValue = map['secgroupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      stateful: (() {
-        final guardedValue = map['stateful'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      tenantId: (() {
-        final guardedValue = map['tenantId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      secgroupId: (() { final guardedValue = map['secgroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      stateful: (() { final guardedValue = map['stateful']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

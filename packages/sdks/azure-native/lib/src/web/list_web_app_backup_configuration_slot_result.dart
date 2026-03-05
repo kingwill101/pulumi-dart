@@ -8,28 +8,20 @@ import 'database_backup_setting_response.dart';
 class ListWebAppBackupConfigurationSlotResult {
   /// Name of the backup.
   final String? backupName;
-
   /// Schedule for the backup if it is executed periodically.
   final BackupScheduleResponse? backupSchedule;
-
   /// Databases included in the backup.
   final List<DatabaseBackupSettingResponse>? databases;
-
   /// True if the backup schedule is enabled (must be included in that case), false if the backup schedule should be disabled.
   final bool? enabled;
-
   /// Resource Id.
   final String id;
-
   /// Kind of resource.
   final String? kind;
-
   /// Resource Name.
   final String name;
-
   /// SAS URL to the container.
   final String storageAccountUrl;
-
   /// Resource type.
   final String type;
 
@@ -59,14 +51,7 @@ class ListWebAppBackupConfigurationSlotResult {
     return <String, dynamic>{
       'backupName': ?backupName,
       'backupSchedule': ?backupSchedule?.toMap(),
-      'databases': ?(() {
-        final guardedValue = databases;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          DatabaseBackupSettingResponse,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'databases': ?(() { final guardedValue = databases; if (guardedValue == null) return null; return pulumi.Input.encodeList<DatabaseBackupSettingResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'enabled': ?enabled,
       'id': id,
       'kind': ?kind,
@@ -76,46 +61,18 @@ class ListWebAppBackupConfigurationSlotResult {
     };
   }
 
-  factory ListWebAppBackupConfigurationSlotResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListWebAppBackupConfigurationSlotResult.fromMap(Map<String, dynamic> map) {
     return ListWebAppBackupConfigurationSlotResult(
-      backupName: (() {
-        final guardedValue = map['backupName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      backupSchedule: (() {
-        final guardedValue = map['backupSchedule'];
-        if (guardedValue == null) return null;
-        return BackupScheduleResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      databases: (() {
-        final guardedValue = map['databases'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<DatabaseBackupSettingResponse>(
-          guardedValue,
-          (value) => DatabaseBackupSettingResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
+      backupName: (() { final guardedValue = map['backupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      backupSchedule: (() { final guardedValue = map['backupSchedule']; if (guardedValue == null) return null; return BackupScheduleResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      databases: (() { final guardedValue = map['databases']; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatabaseBackupSettingResponse>(guardedValue, (value) => DatabaseBackupSettingResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       id: map['id'] as String,
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
       storageAccountUrl: map['storageAccountUrl'] as String,
       type: map['type'] as String,
     );
   }
 }
+

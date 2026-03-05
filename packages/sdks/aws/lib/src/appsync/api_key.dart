@@ -144,16 +144,12 @@ class ApiKey extends pulumi.CustomResource {
   /// ID of the associated AppSync API
   late final pulumi.Output<String> apiId;
   late final pulumi.Output<String> apiKeyId;
-
   /// API key description. Defaults to "Managed by Pulumi".
   late final pulumi.Output<String> description;
-
   /// RFC3339 string representation of the expiry date. Rounded down to nearest hour. By default, it is 7 days from the date of creation.
   late final pulumi.Output<String?> expires;
-
   /// API key
   late final pulumi.Output<String> key;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -161,13 +157,16 @@ class ApiKey extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [ApiKey]. {@macro pulumi_appsync_api_key_api_key_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  ApiKey(String name, {ApiKeyArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:appsync/apiKey:ApiKey',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  ApiKey(
+    String name, {
+    ApiKeyArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:appsync/apiKey:ApiKey',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiId = registerOutput<String>('apiId');
     apiKeyId = registerOutput<String>('apiKeyId');
     description = registerOutput<String>('description');
@@ -194,11 +193,11 @@ class ApiKey extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:appsync/apiKey:ApiKey',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:appsync/apiKey:ApiKey',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiId = registerOutput<String>('apiId');
     apiKeyId = registerOutput<String>('apiKeyId');
     description = registerOutput<String>('description');

@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClientAccessRightResponse {
   /// Type of access to be allowed for the client.
   final pulumi.Input<String> accessPermission;
-
   /// IP of the client.
   final pulumi.Input<String> client;
 
@@ -27,10 +26,9 @@ class ClientAccessRightResponse {
 
   factory ClientAccessRightResponse.fromMap(Map<String, dynamic> map) {
     return ClientAccessRightResponse(
-      accessPermission: pulumi.Input.fromValue(
-        map['accessPermission'] as String,
-      ),
+      accessPermission: pulumi.Input.fromValue(map['accessPermission'] as String),
       client: pulumi.Input.fromValue(map['client'] as String),
     );
   }
 }
+

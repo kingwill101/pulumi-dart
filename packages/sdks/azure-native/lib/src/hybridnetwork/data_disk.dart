@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataDisk {
   /// Specifies how the virtual machine should be created.
   final pulumi.Input<String>? createOption;
-
   /// Specifies the size of an empty disk in gigabytes. This element can be used to overwrite the size of the disk in a virtual machine image.
   final pulumi.Input<int>? diskSizeGB;
-
   /// The name of data disk.
   final pulumi.Input<String>? name;
 
@@ -17,7 +15,11 @@ class DataDisk {
   /// [createOption] Specifies how the virtual machine should be created.
   /// [diskSizeGB] Specifies the size of an empty disk in gigabytes. This element can be used to overwrite the size of the disk in a virtual machine image.
   /// [name] The name of data disk.
-  DataDisk({this.createOption, this.diskSizeGB, this.name});
+  DataDisk({
+    this.createOption,
+    this.diskSizeGB,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class DataDisk {
 
   factory DataDisk.fromMap(Map<String, dynamic> map) {
     return DataDisk(
-      createOption: (() {
-        final guardedValue = map['createOption'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      diskSizeGB: (() {
-        final guardedValue = map['diskSizeGB'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      createOption: (() { final guardedValue = map['createOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      diskSizeGB: (() { final guardedValue = map['diskSizeGB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

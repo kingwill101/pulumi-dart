@@ -11,37 +11,23 @@ class VirtualMachinePropertiesSecurityProfile {
   /// Creates a new [VirtualMachinePropertiesSecurityProfile].
   /// [enableTPM] Optional.
   /// [uefiSettings] Optional.
-  VirtualMachinePropertiesSecurityProfile({this.enableTPM, this.uefiSettings});
+  VirtualMachinePropertiesSecurityProfile({
+    this.enableTPM,
+    this.uefiSettings,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enableTPM': ?enableTPM,
-      'uefiSettings':
-          ?pulumi.Input.mapOptionalInputValue<
-            VirtualMachinePropertiesUefiSettings,
-            Map<String, dynamic>
-          >(uefiSettings, (value) => value.toMap()),
+      'uefiSettings': ?pulumi.Input.mapOptionalInputValue<VirtualMachinePropertiesUefiSettings, Map<String, dynamic>>(uefiSettings, (value) => value.toMap()),
     };
   }
 
-  factory VirtualMachinePropertiesSecurityProfile.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VirtualMachinePropertiesSecurityProfile.fromMap(Map<String, dynamic> map) {
     return VirtualMachinePropertiesSecurityProfile(
-      enableTPM: (() {
-        final guardedValue = map['enableTPM'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      uefiSettings: (() {
-        final guardedValue = map['uefiSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          VirtualMachinePropertiesUefiSettings.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      enableTPM: (() { final guardedValue = map['enableTPM']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      uefiSettings: (() { final guardedValue = map['uefiSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualMachinePropertiesUefiSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

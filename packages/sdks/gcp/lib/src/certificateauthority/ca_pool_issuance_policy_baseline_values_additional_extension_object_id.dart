@@ -13,16 +13,15 @@ class CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectId {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'objectIdPaths': objectIdPaths};
+    return <String, dynamic>{
+      'objectIdPaths': objectIdPaths,
+    };
   }
 
-  factory CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectId.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectId.fromMap(Map<String, dynamic> map) {
     return CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectId(
-      objectIdPaths: pulumi.Input.fromValue(
-        (map['objectIdPaths'] as List).cast<int>(),
-      ),
+      objectIdPaths: pulumi.Input.fromValue((map['objectIdPaths'] as List).cast<int>()),
     );
   }
 }
+

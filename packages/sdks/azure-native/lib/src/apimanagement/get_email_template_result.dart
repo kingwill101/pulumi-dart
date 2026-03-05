@@ -7,31 +7,22 @@ import 'email_template_parameters_contract_properties_response.dart';
 class GetEmailTemplateResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Email Template Body. This should be a valid XDocument
   final String body;
-
   /// Description of the Email Template.
   final String? description;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// Whether the template is the default template provided by API Management or has been edited.
   final bool isDefault;
-
   /// The name of the resource
   final String name;
-
   /// Email Template Parameter values.
   final List<EmailTemplateParametersContractPropertiesResponse>? parameters;
-
   /// Subject of the Template.
   final String subject;
-
   /// Title of the Template.
   final String? title;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -67,14 +58,7 @@ class GetEmailTemplateResult {
       'id': id,
       'isDefault': isDefault,
       'name': name,
-      'parameters': ?(() {
-        final guardedValue = parameters;
-        if (guardedValue == null) return null;
-        return pulumi.Input.encodeList<
-          EmailTemplateParametersContractPropertiesResponse,
-          Map<String, dynamic>
-        >(guardedValue, (value) => value.toMap());
-      })(),
+      'parameters': ?(() { final guardedValue = parameters; if (guardedValue == null) return null; return pulumi.Input.encodeList<EmailTemplateParametersContractPropertiesResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'subject': subject,
       'title': ?title,
       'type': type,
@@ -85,33 +69,15 @@ class GetEmailTemplateResult {
     return GetEmailTemplateResult(
       azureApiVersion: map['azureApiVersion'] as String,
       body: map['body'] as String,
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       isDefault: map['isDefault'] as bool,
       name: map['name'] as String,
-      parameters: (() {
-        final guardedValue = map['parameters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<
-          EmailTemplateParametersContractPropertiesResponse
-        >(
-          guardedValue,
-          (value) => EmailTemplateParametersContractPropertiesResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<EmailTemplateParametersContractPropertiesResponse>(guardedValue, (value) => EmailTemplateParametersContractPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       subject: map['subject'] as String,
-      title: (() {
-        final guardedValue = map['title'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      title: (() { final guardedValue = map['title']; if (guardedValue == null) return null; return guardedValue as String; })(),
       type: map['type'] as String,
     );
   }
 }
+

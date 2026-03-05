@@ -12,10 +12,14 @@ class GetFolderSettingsArgs {
 
   /// Creates a new [GetFolderSettingsArgs].
   /// [folder] The ID of the folder for which to retrieve settings.
-  GetFolderSettingsArgs({required this.folder});
+  GetFolderSettingsArgs({
+    required this.folder,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'folder': folder};
+    return <String, dynamic>{
+      'folder': folder,
+    };
   }
 
   factory GetFolderSettingsArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetFolderSettingsArgs {
     );
   }
 }
+

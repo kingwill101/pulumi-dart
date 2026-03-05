@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataPlaneProxyPropertiesResponse {
   /// The data plane proxy authentication mode. This property manages the authentication mode of request to the data plane resources.
   final pulumi.Input<String>? authenticationMode;
-
   /// The data plane proxy private link delegation. This property manages if a request from delegated Azure Resource Manager (ARM) private link is allowed when the data plane resource requires private link.
   final pulumi.Input<String>? privateLinkDelegation;
 
@@ -27,16 +26,9 @@ class DataPlaneProxyPropertiesResponse {
 
   factory DataPlaneProxyPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DataPlaneProxyPropertiesResponse(
-      authenticationMode: (() {
-        final guardedValue = map['authenticationMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      privateLinkDelegation: (() {
-        final guardedValue = map['privateLinkDelegation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      authenticationMode: (() { final guardedValue = map['authenticationMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateLinkDelegation: (() { final guardedValue = map['privateLinkDelegation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

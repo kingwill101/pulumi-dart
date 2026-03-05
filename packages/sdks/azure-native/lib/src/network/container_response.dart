@@ -9,19 +9,20 @@ class ContainerResponse {
 
   /// Creates a new [ContainerResponse].
   /// [id] Resource ID.
-  ContainerResponse({this.id});
+  ContainerResponse({
+    this.id,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': ?id};
+    return <String, dynamic>{
+      'id': ?id,
+    };
   }
 
   factory ContainerResponse.fromMap(Map<String, dynamic> map) {
     return ContainerResponse(
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

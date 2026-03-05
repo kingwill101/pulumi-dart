@@ -176,37 +176,26 @@ import 'feature_group_throughput_config.dart';
 class FeatureGroup extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) assigned by AWS to this feature_group.
   late final pulumi.Output<String> arn;
-
   /// A free-form description of a Feature Group.
   late final pulumi.Output<String?> description;
-
   /// The name of the feature that stores the EventTime of a Record in a Feature Group.
   late final pulumi.Output<String> eventTimeFeatureName;
-
   /// A list of Feature names and types. See Feature Definition Below.
   late final pulumi.Output<List<Map<String, dynamic>>> featureDefinitions;
-
   /// The name of the Feature Group. The name must be unique within an AWS Region in an AWS account.
   late final pulumi.Output<String> featureGroupName;
-
   /// The Offline Feature Store Configuration. See Offline Store Config Below.
   late final pulumi.Output<FeatureGroupOfflineStoreConfig?> offlineStoreConfig;
-
   /// The Online Feature Store Configuration. See Online Store Config Below.
   late final pulumi.Output<FeatureGroupOnlineStoreConfig?> onlineStoreConfig;
-
   /// The name of the Feature whose value uniquely identifies a Record defined in the Feature Store. Only the latest record per identifier value will be stored in the Online Store.
   late final pulumi.Output<String> recordIdentifierFeatureName;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// The Amazon Resource Name (ARN) of the IAM execution role used to persist data into the Offline Store if an `offline_store_config` is provided.
   late final pulumi.Output<String> roleArn;
-
   /// Map of resource tags for the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<FeatureGroupThroughputConfig> throughputConfig;
@@ -220,55 +209,24 @@ class FeatureGroup extends pulumi.CustomResource {
     FeatureGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:sagemaker/featureGroup:FeatureGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:sagemaker/featureGroup:FeatureGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     eventTimeFeatureName = registerOutput<String>('eventTimeFeatureName');
-    featureDefinitions = registerOutput<List<Map<String, dynamic>>>(
-      'featureDefinitions',
-    );
+    featureDefinitions = registerOutput<List<Map<String, dynamic>>>('featureDefinitions');
     featureGroupName = registerOutput<String>('featureGroupName');
-    offlineStoreConfig = registerOutput<FeatureGroupOfflineStoreConfig?>(
-      'offlineStoreConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FeatureGroupOfflineStoreConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    onlineStoreConfig = registerOutput<FeatureGroupOnlineStoreConfig?>(
-      'onlineStoreConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FeatureGroupOnlineStoreConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    recordIdentifierFeatureName = registerOutput<String>(
-      'recordIdentifierFeatureName',
-    );
+    offlineStoreConfig = registerOutput<FeatureGroupOfflineStoreConfig?>('offlineStoreConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FeatureGroupOfflineStoreConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    onlineStoreConfig = registerOutput<FeatureGroupOnlineStoreConfig?>('onlineStoreConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FeatureGroupOnlineStoreConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    recordIdentifierFeatureName = registerOutput<String>('recordIdentifierFeatureName');
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    throughputConfig = registerOutput<FeatureGroupThroughputConfig>(
-      'throughputConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FeatureGroupThroughputConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    throughputConfig = registerOutput<FeatureGroupThroughputConfig>('throughputConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FeatureGroupThroughputConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [FeatureGroup] resource's state with the given [name] and [id].
@@ -289,54 +247,23 @@ class FeatureGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:sagemaker/featureGroup:FeatureGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:sagemaker/featureGroup:FeatureGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     eventTimeFeatureName = registerOutput<String>('eventTimeFeatureName');
-    featureDefinitions = registerOutput<List<Map<String, dynamic>>>(
-      'featureDefinitions',
-    );
+    featureDefinitions = registerOutput<List<Map<String, dynamic>>>('featureDefinitions');
     featureGroupName = registerOutput<String>('featureGroupName');
-    offlineStoreConfig = registerOutput<FeatureGroupOfflineStoreConfig?>(
-      'offlineStoreConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FeatureGroupOfflineStoreConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    onlineStoreConfig = registerOutput<FeatureGroupOnlineStoreConfig?>(
-      'onlineStoreConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FeatureGroupOnlineStoreConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    recordIdentifierFeatureName = registerOutput<String>(
-      'recordIdentifierFeatureName',
-    );
+    offlineStoreConfig = registerOutput<FeatureGroupOfflineStoreConfig?>('offlineStoreConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FeatureGroupOfflineStoreConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    onlineStoreConfig = registerOutput<FeatureGroupOnlineStoreConfig?>('onlineStoreConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FeatureGroupOnlineStoreConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    recordIdentifierFeatureName = registerOutput<String>('recordIdentifierFeatureName');
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    throughputConfig = registerOutput<FeatureGroupThroughputConfig>(
-      'throughputConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FeatureGroupThroughputConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    throughputConfig = registerOutput<FeatureGroupThroughputConfig>('throughputConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FeatureGroupThroughputConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

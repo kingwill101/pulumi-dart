@@ -511,13 +511,10 @@ import 'static_site_custom_domain_state.dart';
 class StaticSiteCustomDomain extends pulumi.CustomResource {
   /// The Domain Name which should be associated with this Static Site. Changing this forces a new Static Site Custom Domain to be created.
   late final pulumi.Output<String> domainName;
-
   /// The ID of the Static Site. Changing this forces a new Static Site Custom Domain to be created.
   late final pulumi.Output<String> staticSiteId;
-
   /// Token to be used with `dns-txt-token` validation.
   late final pulumi.Output<String> validationToken;
-
   /// One of `cname-delegation` or `dns-txt-token`. Changing this forces a new Static Site Custom Domain to be created.
   late final pulumi.Output<String?> validationType;
 
@@ -530,11 +527,11 @@ class StaticSiteCustomDomain extends pulumi.CustomResource {
     StaticSiteCustomDomainArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appservice/staticSiteCustomDomain:StaticSiteCustomDomain',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appservice/staticSiteCustomDomain:StaticSiteCustomDomain',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     domainName = registerOutput<String>('domainName');
     staticSiteId = registerOutput<String>('staticSiteId');
     validationToken = registerOutput<String>('validationToken');
@@ -559,11 +556,11 @@ class StaticSiteCustomDomain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appservice/staticSiteCustomDomain:StaticSiteCustomDomain',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appservice/staticSiteCustomDomain:StaticSiteCustomDomain',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     domainName = registerOutput<String>('domainName');
     staticSiteId = registerOutput<String>('staticSiteId');
     validationToken = registerOutput<String>('validationToken');

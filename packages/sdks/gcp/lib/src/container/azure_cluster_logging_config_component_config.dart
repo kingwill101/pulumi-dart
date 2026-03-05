@@ -8,21 +8,20 @@ class AzureClusterLoggingConfigComponentConfig {
 
   /// Creates a new [AzureClusterLoggingConfigComponentConfig].
   /// [enableComponents] Components of the logging configuration to be enabled.
-  AzureClusterLoggingConfigComponentConfig({this.enableComponents});
+  AzureClusterLoggingConfigComponentConfig({
+    this.enableComponents,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enableComponents': ?enableComponents};
+    return <String, dynamic>{
+      'enableComponents': ?enableComponents,
+    };
   }
 
-  factory AzureClusterLoggingConfigComponentConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AzureClusterLoggingConfigComponentConfig.fromMap(Map<String, dynamic> map) {
     return AzureClusterLoggingConfigComponentConfig(
-      enableComponents: (() {
-        final guardedValue = map['enableComponents'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      enableComponents: (() { final guardedValue = map['enableComponents']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

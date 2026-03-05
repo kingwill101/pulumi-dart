@@ -7,17 +7,20 @@ class GetGenaiAgentParentAgentChatbotIdentifier {
 
   /// Creates a new [GetGenaiAgentParentAgentChatbotIdentifier].
   /// [chatbotId] Required.
-  GetGenaiAgentParentAgentChatbotIdentifier({required this.chatbotId});
+  GetGenaiAgentParentAgentChatbotIdentifier({
+    required this.chatbotId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'chatbotId': chatbotId};
+    return <String, dynamic>{
+      'chatbotId': chatbotId,
+    };
   }
 
-  factory GetGenaiAgentParentAgentChatbotIdentifier.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetGenaiAgentParentAgentChatbotIdentifier.fromMap(Map<String, dynamic> map) {
     return GetGenaiAgentParentAgentChatbotIdentifier(
       chatbotId: pulumi.Input.fromValue(map['chatbotId'] as String),
     );
   }
 }
+

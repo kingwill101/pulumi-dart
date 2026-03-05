@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRegionsRegionPlacementGroupLimit {
   /// The maximum number of Linodes allowed to be assigned to a placement group in this region.
   final pulumi.Input<int> maximumLinodesPerPg;
-
   /// The maximum number of placement groups allowed for the current user in this region.
   final pulumi.Input<int> maximumPgsPerCustomer;
 
@@ -24,16 +23,11 @@ class GetRegionsRegionPlacementGroupLimit {
     };
   }
 
-  factory GetRegionsRegionPlacementGroupLimit.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetRegionsRegionPlacementGroupLimit.fromMap(Map<String, dynamic> map) {
     return GetRegionsRegionPlacementGroupLimit(
-      maximumLinodesPerPg: pulumi.Input.fromValue(
-        map['maximumLinodesPerPg'] as int,
-      ),
-      maximumPgsPerCustomer: pulumi.Input.fromValue(
-        map['maximumPgsPerCustomer'] as int,
-      ),
+      maximumLinodesPerPg: pulumi.Input.fromValue(map['maximumLinodesPerPg'] as int),
+      maximumPgsPerCustomer: pulumi.Input.fromValue(map['maximumPgsPerCustomer'] as int),
     );
   }
 }
+

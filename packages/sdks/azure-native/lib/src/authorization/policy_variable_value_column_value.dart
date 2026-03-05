@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PolicyVariableValueColumnValue {
   /// Column name for the variable value
   final pulumi.Input<String> columnName;
-
   /// Column value for the variable value; this can be an integer, double, boolean, null or a string.
   final pulumi.Input<dynamic> columnValue;
 
@@ -32,3 +31,4 @@ class PolicyVariableValueColumnValue {
     );
   }
 }
+

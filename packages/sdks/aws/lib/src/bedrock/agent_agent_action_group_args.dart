@@ -14,41 +14,29 @@ class AgentAgentActionGroupArgs {
   /// ARN of the Lambda function containing the business logic that is carried out upon invoking the action or custom control method for handling the information elicited from the user. See `action_group_executor` Block for details.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<AgentAgentActionGroupActionGroupExecutor>?
-  actionGroupExecutor;
-
+  final pulumi.Input<AgentAgentActionGroupActionGroupExecutor>? actionGroupExecutor;
   /// Name of the action group.
   final pulumi.Input<String> actionGroupName;
-
   /// Whether the action group is available for the agent to invoke or not when sending an [InvokeAgent](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_InvokeAgent.html) request. Valid values: `ENABLED`, `DISABLED`.
   final pulumi.Input<String>? actionGroupState;
-
   /// The unique identifier of the agent for which to create the action group.
   final pulumi.Input<String> agentId;
-
   /// Version of the agent for which to create the action group. Valid values: `DRAFT`.
   final pulumi.Input<String> agentVersion;
-
   /// Either details about the S3 object containing the OpenAPI schema for the action group or the JSON or YAML-formatted payload defining the schema. For more information, see [Action group OpenAPI schemas](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-api-schema.html). See `api_schema` Block for details.
   final pulumi.Input<AgentAgentActionGroupApiSchema>? apiSchema;
-
   /// Description of the action group.
   final pulumi.Input<String>? description;
-
   /// Describes the function schema for the action group.
   /// Each function represents an action in an action group.
   /// See `function_schema` Block for details.
   final pulumi.Input<AgentAgentActionGroupFunctionSchema>? functionSchema;
-
   /// To allow your agent to request the user for additional information when trying to complete a task, set this argument to `AMAZON.UserInput`. You must leave the `description`, `api_schema`, and `action_group_executor` arguments blank for this action group. Valid values: `AMAZON.UserInput`.
   final pulumi.Input<String>? parentActionGroupSignature;
-
   /// Whether or not to prepare the agent after creation or modification. Defaults to `true`.
   final pulumi.Input<bool>? prepareAgent;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// Whether the in-use check is skipped when deleting the action group.
   final pulumi.Input<bool>? skipResourceInUseCheck;
   final pulumi.Input<AgentAgentActionGroupTimeouts>? timeouts;
@@ -85,109 +73,38 @@ class AgentAgentActionGroupArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actionGroupExecutor':
-          ?pulumi.Input.mapOptionalInputValue<
-            AgentAgentActionGroupActionGroupExecutor,
-            Map<String, dynamic>
-          >(actionGroupExecutor, (value) => value.toMap()),
+      'actionGroupExecutor': ?pulumi.Input.mapOptionalInputValue<AgentAgentActionGroupActionGroupExecutor, Map<String, dynamic>>(actionGroupExecutor, (value) => value.toMap()),
       'actionGroupName': actionGroupName,
       'actionGroupState': ?actionGroupState,
       'agentId': agentId,
       'agentVersion': agentVersion,
-      'apiSchema':
-          ?pulumi.Input.mapOptionalInputValue<
-            AgentAgentActionGroupApiSchema,
-            Map<String, dynamic>
-          >(apiSchema, (value) => value.toMap()),
+      'apiSchema': ?pulumi.Input.mapOptionalInputValue<AgentAgentActionGroupApiSchema, Map<String, dynamic>>(apiSchema, (value) => value.toMap()),
       'description': ?description,
-      'functionSchema':
-          ?pulumi.Input.mapOptionalInputValue<
-            AgentAgentActionGroupFunctionSchema,
-            Map<String, dynamic>
-          >(functionSchema, (value) => value.toMap()),
+      'functionSchema': ?pulumi.Input.mapOptionalInputValue<AgentAgentActionGroupFunctionSchema, Map<String, dynamic>>(functionSchema, (value) => value.toMap()),
       'parentActionGroupSignature': ?parentActionGroupSignature,
       'prepareAgent': ?prepareAgent,
       'region': ?region,
       'skipResourceInUseCheck': ?skipResourceInUseCheck,
-      'timeouts':
-          ?pulumi.Input.mapOptionalInputValue<
-            AgentAgentActionGroupTimeouts,
-            Map<String, dynamic>
-          >(timeouts, (value) => value.toMap()),
+      'timeouts': ?pulumi.Input.mapOptionalInputValue<AgentAgentActionGroupTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
     };
   }
 
   factory AgentAgentActionGroupArgs.fromMap(Map<String, dynamic> map) {
     return AgentAgentActionGroupArgs(
-      actionGroupExecutor: (() {
-        final guardedValue = map['actionGroupExecutor'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AgentAgentActionGroupActionGroupExecutor.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      actionGroupExecutor: (() { final guardedValue = map['actionGroupExecutor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentAgentActionGroupActionGroupExecutor.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       actionGroupName: pulumi.Input.fromValue(map['actionGroupName'] as String),
-      actionGroupState: (() {
-        final guardedValue = map['actionGroupState'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      actionGroupState: (() { final guardedValue = map['actionGroupState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       agentId: pulumi.Input.fromValue(map['agentId'] as String),
       agentVersion: pulumi.Input.fromValue(map['agentVersion'] as String),
-      apiSchema: (() {
-        final guardedValue = map['apiSchema'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AgentAgentActionGroupApiSchema.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      functionSchema: (() {
-        final guardedValue = map['functionSchema'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AgentAgentActionGroupFunctionSchema.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      parentActionGroupSignature: (() {
-        final guardedValue = map['parentActionGroupSignature'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      prepareAgent: (() {
-        final guardedValue = map['prepareAgent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      skipResourceInUseCheck: (() {
-        final guardedValue = map['skipResourceInUseCheck'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      timeouts: (() {
-        final guardedValue = map['timeouts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AgentAgentActionGroupTimeouts.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      apiSchema: (() { final guardedValue = map['apiSchema']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentAgentActionGroupApiSchema.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      functionSchema: (() { final guardedValue = map['functionSchema']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentAgentActionGroupFunctionSchema.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      parentActionGroupSignature: (() { final guardedValue = map['parentActionGroupSignature']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      prepareAgent: (() { final guardedValue = map['prepareAgent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      skipResourceInUseCheck: (() { final guardedValue = map['skipResourceInUseCheck']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      timeouts: (() { final guardedValue = map['timeouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentAgentActionGroupTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

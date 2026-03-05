@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RoleManagementPolicyRuleTargetResponse {
   /// The caller of the setting.
   final pulumi.Input<String>? caller;
-
   /// The list of enforced settings.
   final pulumi.Input<List<String>>? enforcedSettings;
-
   /// The list of inheritable settings.
   final pulumi.Input<List<String>>? inheritableSettings;
-
   /// The assignment level to which rule is applied.
   final pulumi.Input<String>? level;
-
   /// The type of operation.
   final pulumi.Input<List<String>>? operations;
-
   /// The list of target objects.
   final pulumi.Input<List<String>>? targetObjects;
 
@@ -49,40 +44,15 @@ class RoleManagementPolicyRuleTargetResponse {
     };
   }
 
-  factory RoleManagementPolicyRuleTargetResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RoleManagementPolicyRuleTargetResponse.fromMap(Map<String, dynamic> map) {
     return RoleManagementPolicyRuleTargetResponse(
-      caller: (() {
-        final guardedValue = map['caller'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      enforcedSettings: (() {
-        final guardedValue = map['enforcedSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      inheritableSettings: (() {
-        final guardedValue = map['inheritableSettings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      level: (() {
-        final guardedValue = map['level'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      operations: (() {
-        final guardedValue = map['operations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      targetObjects: (() {
-        final guardedValue = map['targetObjects'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      caller: (() { final guardedValue = map['caller']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      enforcedSettings: (() { final guardedValue = map['enforcedSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      inheritableSettings: (() { final guardedValue = map['inheritableSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      level: (() { final guardedValue = map['level']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      operations: (() { final guardedValue = map['operations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      targetObjects: (() { final guardedValue = map['targetObjects']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

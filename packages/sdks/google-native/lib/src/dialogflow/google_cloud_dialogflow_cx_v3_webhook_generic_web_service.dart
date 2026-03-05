@@ -8,36 +8,22 @@ import 'google_cloud_dialogflow_cx_v3_webhook_generic_web_service_webhook_type.d
 class GoogleCloudDialogflowCxV3WebhookGenericWebService {
   /// Optional. Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store. If this is empty or unspecified, Dialogflow will use Google's default trust store to verify certificates. N.B. Make sure the HTTPS server certificates are signed with "subject alt name". For instance a certificate can be self-signed using the following command, ``` openssl x509 -req -days 200 -in example.com.csr \ -signkey example.com.key \ -out example.com.crt \ -extfile &lt;(printf "\nsubjectAltName='DNS:www.example.com'") ```
   final pulumi.Input<List<String>>? allowedCaCerts;
-
   /// Optional. HTTP method for the flexible webhook calls. Standard webhook always uses POST.
-  final pulumi.Input<
-    GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethod
-  >?
-  httpMethod;
-
+  final pulumi.Input<GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethod>? httpMethod;
   /// Optional. Maps the values extracted from specific fields of the flexible webhook response into session parameters. - Key: session parameter name - Value: field path in the webhook response
   final pulumi.Input<Map<String, String>>? parameterMapping;
-
   /// The password for HTTP Basic authentication.
   final pulumi.Input<String>? password;
-
   /// Optional. Defines a custom JSON object as request body to send to flexible webhook.
   final pulumi.Input<String>? requestBody;
-
   /// The HTTP request headers to send together with webhook requests.
   final pulumi.Input<Map<String, String>>? requestHeaders;
-
   /// The webhook URI for receiving POST requests. It must use https protocol.
   final pulumi.Input<String> uri;
-
   /// The user name for HTTP Basic authentication.
   final pulumi.Input<String>? username;
-
   /// Optional. Type of the webhook.
-  final pulumi.Input<
-    GoogleCloudDialogflowCxV3WebhookGenericWebServiceWebhookType
-  >?
-  webhookType;
+  final pulumi.Input<GoogleCloudDialogflowCxV3WebhookGenericWebServiceWebhookType>? webhookType;
 
   /// Creates a new [GoogleCloudDialogflowCxV3WebhookGenericWebService].
   /// [allowedCaCerts] Optional. Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store. If this is empty or unspecified, Dialogflow will use Google's default trust store to verify certificates. N.B. Make sure the HTTPS server certificates are signed with "subject alt name". For instance a certificate can be self-signed using the following command, ``` openssl x509 -req -days 200 -in example.com.csr \ -signkey example.com.key \ -out example.com.crt \ -extfile &lt;(printf "\nsubjectAltName='DNS:www.example.com'") ```
@@ -64,82 +50,29 @@ class GoogleCloudDialogflowCxV3WebhookGenericWebService {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allowedCaCerts': ?allowedCaCerts,
-      'httpMethod':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethod,
-            String
-          >(httpMethod, (value) => value.wireValue),
+      'httpMethod': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethod, String>(httpMethod, (value) => value.wireValue),
       'parameterMapping': ?parameterMapping,
       'password': ?password,
       'requestBody': ?requestBody,
       'requestHeaders': ?requestHeaders,
       'uri': uri,
       'username': ?username,
-      'webhookType':
-          ?pulumi.Input.mapOptionalInputValue<
-            GoogleCloudDialogflowCxV3WebhookGenericWebServiceWebhookType,
-            String
-          >(webhookType, (value) => value.wireValue),
+      'webhookType': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowCxV3WebhookGenericWebServiceWebhookType, String>(webhookType, (value) => value.wireValue),
     };
   }
 
-  factory GoogleCloudDialogflowCxV3WebhookGenericWebService.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDialogflowCxV3WebhookGenericWebService.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3WebhookGenericWebService(
-      allowedCaCerts: (() {
-        final guardedValue = map['allowedCaCerts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      httpMethod: (() {
-        final guardedValue = map['httpMethod'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethod.fromValue(
-            guardedValue as String,
-          ),
-        );
-      })(),
-      parameterMapping: (() {
-        final guardedValue = map['parameterMapping'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      password: (() {
-        final guardedValue = map['password'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      requestBody: (() {
-        final guardedValue = map['requestBody'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      requestHeaders: (() {
-        final guardedValue = map['requestHeaders'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      allowedCaCerts: (() { final guardedValue = map['allowedCaCerts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      httpMethod: (() { final guardedValue = map['httpMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethod.fromValue(guardedValue as String)); })(),
+      parameterMapping: (() { final guardedValue = map['parameterMapping']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      requestBody: (() { final guardedValue = map['requestBody']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      requestHeaders: (() { final guardedValue = map['requestHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       uri: pulumi.Input.fromValue(map['uri'] as String),
-      username: (() {
-        final guardedValue = map['username'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      webhookType: (() {
-        final guardedValue = map['webhookType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GoogleCloudDialogflowCxV3WebhookGenericWebServiceWebhookType.fromValue(
-            guardedValue as String,
-          ),
-        );
-      })(),
+      username: (() { final guardedValue = map['username']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      webhookType: (() { final guardedValue = map['webhookType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudDialogflowCxV3WebhookGenericWebServiceWebhookType.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAzureLargeInstanceArgs {
   /// Name of the AzureLargeInstance.
   final pulumi.Input<String> azureLargeInstanceName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetAzureLargeInstanceArgs {
 
   factory GetAzureLargeInstanceArgs.fromMap(Map<String, dynamic> map) {
     return GetAzureLargeInstanceArgs(
-      azureLargeInstanceName: pulumi.Input.fromValue(
-        map['azureLargeInstanceName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      azureLargeInstanceName: pulumi.Input.fromValue(map['azureLargeInstanceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

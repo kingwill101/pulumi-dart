@@ -481,45 +481,32 @@ import 'pipeline_vpc_options.dart';
 class Pipeline extends pulumi.CustomResource {
   /// Key-value pairs to configure persistent buffering for the pipeline. See `buffer_options` below.
   late final pulumi.Output<PipelineBufferOptions?> bufferOptions;
-
   /// Key-value pairs to configure encryption for data that is written to a persistent buffer. See `encryption_at_rest_options` below.
-  late final pulumi.Output<PipelineEncryptionAtRestOptions?>
-  encryptionAtRestOptions;
-
+  late final pulumi.Output<PipelineEncryptionAtRestOptions?> encryptionAtRestOptions;
   /// The list of ingestion endpoints for the pipeline, which you can send data to.
   late final pulumi.Output<List<String>> ingestEndpointUrls;
-
   /// Key-value pairs to configure log publishing. See `log_publishing_options` below.
   late final pulumi.Output<PipelineLogPublishingOptions?> logPublishingOptions;
-
   /// The maximum pipeline capacity, in Ingestion Compute Units (ICUs).
   late final pulumi.Output<int> maxUnits;
-
   /// The minimum pipeline capacity, in Ingestion Compute Units (ICUs).
   late final pulumi.Output<int> minUnits;
-
   /// Amazon Resource Name (ARN) of the pipeline.
   late final pulumi.Output<String> pipelineArn;
-
   /// The pipeline configuration in YAML format. This argument accepts the pipeline configuration as a string or within a .yaml file. If you provide the configuration as a string, each new line must be escaped with \n.
   late final pulumi.Output<String> pipelineConfigurationBody;
-
   /// The name of the OpenSearch Ingestion pipeline to create. Pipeline names are unique across the pipelines owned by an account within an AWS Region.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> pipelineName;
-
   /// ARN of the IAM role that grants the pipeline permission to access AWS resources.
   late final pulumi.Output<String> pipelineRoleArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// A map of tags to assign to the pipeline. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<PipelineTimeouts?> timeouts;
-
   /// Container for the values required to configure VPC access for the pipeline. If you don't specify these values, OpenSearch Ingestion creates the pipeline with a public endpoint. See `vpc_options` below.
   late final pulumi.Output<PipelineVpcOptions?> vpcOptions;
 
@@ -532,73 +519,26 @@ class Pipeline extends pulumi.CustomResource {
     PipelineArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:opensearchingest/pipeline:Pipeline',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    bufferOptions = registerOutput<PipelineBufferOptions?>(
-      'bufferOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PipelineBufferOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    encryptionAtRestOptions = registerOutput<PipelineEncryptionAtRestOptions?>(
-      'encryptionAtRestOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PipelineEncryptionAtRestOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'aws:opensearchingest/pipeline:Pipeline',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    bufferOptions = registerOutput<PipelineBufferOptions?>('bufferOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineBufferOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    encryptionAtRestOptions = registerOutput<PipelineEncryptionAtRestOptions?>('encryptionAtRestOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineEncryptionAtRestOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ingestEndpointUrls = registerOutput<List<String>>('ingestEndpointUrls');
-    logPublishingOptions = registerOutput<PipelineLogPublishingOptions?>(
-      'logPublishingOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PipelineLogPublishingOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    logPublishingOptions = registerOutput<PipelineLogPublishingOptions?>('logPublishingOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineLogPublishingOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     maxUnits = registerOutput<int>('maxUnits');
     minUnits = registerOutput<int>('minUnits');
     pipelineArn = registerOutput<String>('pipelineArn');
-    pipelineConfigurationBody = registerOutput<String>(
-      'pipelineConfigurationBody',
-    );
+    pipelineConfigurationBody = registerOutput<String>('pipelineConfigurationBody');
     pipelineName = registerOutput<String>('pipelineName');
     pipelineRoleArn = registerOutput<String>('pipelineRoleArn');
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<PipelineTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PipelineTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    vpcOptions = registerOutput<PipelineVpcOptions?>(
-      'vpcOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PipelineVpcOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<PipelineTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vpcOptions = registerOutput<PipelineVpcOptions?>('vpcOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineVpcOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [Pipeline] resource's state with the given [name] and [id].
@@ -619,72 +559,25 @@ class Pipeline extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:opensearchingest/pipeline:Pipeline',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    bufferOptions = registerOutput<PipelineBufferOptions?>(
-      'bufferOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PipelineBufferOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    encryptionAtRestOptions = registerOutput<PipelineEncryptionAtRestOptions?>(
-      'encryptionAtRestOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PipelineEncryptionAtRestOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'aws:opensearchingest/pipeline:Pipeline',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    bufferOptions = registerOutput<PipelineBufferOptions?>('bufferOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineBufferOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    encryptionAtRestOptions = registerOutput<PipelineEncryptionAtRestOptions?>('encryptionAtRestOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineEncryptionAtRestOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ingestEndpointUrls = registerOutput<List<String>>('ingestEndpointUrls');
-    logPublishingOptions = registerOutput<PipelineLogPublishingOptions?>(
-      'logPublishingOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PipelineLogPublishingOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    logPublishingOptions = registerOutput<PipelineLogPublishingOptions?>('logPublishingOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineLogPublishingOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     maxUnits = registerOutput<int>('maxUnits');
     minUnits = registerOutput<int>('minUnits');
     pipelineArn = registerOutput<String>('pipelineArn');
-    pipelineConfigurationBody = registerOutput<String>(
-      'pipelineConfigurationBody',
-    );
+    pipelineConfigurationBody = registerOutput<String>('pipelineConfigurationBody');
     pipelineName = registerOutput<String>('pipelineName');
     pipelineRoleArn = registerOutput<String>('pipelineRoleArn');
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<PipelineTimeouts?>(
-      'timeouts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PipelineTimeouts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    vpcOptions = registerOutput<PipelineVpcOptions?>(
-      'vpcOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PipelineVpcOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    timeouts = registerOutput<PipelineTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vpcOptions = registerOutput<PipelineVpcOptions?>('vpcOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineVpcOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

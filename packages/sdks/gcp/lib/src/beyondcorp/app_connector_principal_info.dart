@@ -10,25 +10,20 @@ class AppConnectorPrincipalInfo {
 
   /// Creates a new [AppConnectorPrincipalInfo].
   /// [serviceAccount] ServiceAccount represents a GCP service account.
-  AppConnectorPrincipalInfo({required this.serviceAccount});
+  AppConnectorPrincipalInfo({
+    required this.serviceAccount,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'serviceAccount':
-          pulumi.Input.mapInputValue<
-            AppConnectorPrincipalInfoServiceAccount,
-            Map<String, dynamic>
-          >(serviceAccount, (value) => value.toMap()),
+      'serviceAccount': pulumi.Input.mapInputValue<AppConnectorPrincipalInfoServiceAccount, Map<String, dynamic>>(serviceAccount, (value) => value.toMap()),
     };
   }
 
   factory AppConnectorPrincipalInfo.fromMap(Map<String, dynamic> map) {
     return AppConnectorPrincipalInfo(
-      serviceAccount: pulumi.Input.fromValue(
-        AppConnectorPrincipalInfoServiceAccount.fromMap(
-          (map['serviceAccount']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      serviceAccount: pulumi.Input.fromValue(AppConnectorPrincipalInfoServiceAccount.fromMap((map['serviceAccount']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

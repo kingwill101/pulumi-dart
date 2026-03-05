@@ -17,3 +17,4 @@ enum FrontDoorRedirectType {
     throw ArgumentError('Unknown FrontDoorRedirectType value: $value');
   }
 }
+

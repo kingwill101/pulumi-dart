@@ -6,31 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class QosIpRange {
   /// End IP Address.
   final pulumi.Input<String>? endIP;
-
   /// Start IP Address.
   final pulumi.Input<String>? startIP;
 
   /// Creates a new [QosIpRange].
   /// [endIP] End IP Address.
   /// [startIP] Start IP Address.
-  QosIpRange({this.endIP, this.startIP});
+  QosIpRange({
+    this.endIP,
+    this.startIP,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'endIP': ?endIP, 'startIP': ?startIP};
+    return <String, dynamic>{
+      'endIP': ?endIP,
+      'startIP': ?startIP,
+    };
   }
 
   factory QosIpRange.fromMap(Map<String, dynamic> map) {
     return QosIpRange(
-      endIP: (() {
-        final guardedValue = map['endIP'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      startIP: (() {
-        final guardedValue = map['startIP'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      endIP: (() { final guardedValue = map['endIP']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      startIP: (() { final guardedValue = map['startIP']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

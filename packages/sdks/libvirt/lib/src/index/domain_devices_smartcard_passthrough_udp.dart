@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainDevicesSmartcardPassthroughUdp {
   /// Sets the bind host address for the UDP connection in the random number generator backend.
   final pulumi.Input<String> bindHost;
-
   /// Specifies the service attribute for binding in the UDP settings.
   final pulumi.Input<String> bindService;
-
   /// Configures the host address used for the connection in the UDP settings.
   final pulumi.Input<String> connectHost;
-
   /// Defines the service attribute for the connection in the UDP settings.
   final pulumi.Input<String> connectService;
 
@@ -36,9 +33,7 @@ class DomainDevicesSmartcardPassthroughUdp {
     };
   }
 
-  factory DomainDevicesSmartcardPassthroughUdp.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDevicesSmartcardPassthroughUdp.fromMap(Map<String, dynamic> map) {
     return DomainDevicesSmartcardPassthroughUdp(
       bindHost: pulumi.Input.fromValue(map['bindHost'] as String),
       bindService: pulumi.Input.fromValue(map['bindService'] as String),
@@ -47,3 +42,4 @@ class DomainDevicesSmartcardPassthroughUdp {
     );
   }
 }
+

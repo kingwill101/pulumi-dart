@@ -6,7 +6,6 @@ import 'alert_rule_nrt_incident_grouping.dart';
 class AlertRuleNrtIncident {
   /// Whether to create an incident from alerts triggered by this Sentinel NRT Alert Rule?
   final pulumi.Input<bool> createIncidentEnabled;
-
   /// A `grouping` block as defined below.
   final pulumi.Input<AlertRuleNrtIncidentGrouping> grouping;
 
@@ -21,24 +20,15 @@ class AlertRuleNrtIncident {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createIncidentEnabled': createIncidentEnabled,
-      'grouping':
-          pulumi.Input.mapInputValue<
-            AlertRuleNrtIncidentGrouping,
-            Map<String, dynamic>
-          >(grouping, (value) => value.toMap()),
+      'grouping': pulumi.Input.mapInputValue<AlertRuleNrtIncidentGrouping, Map<String, dynamic>>(grouping, (value) => value.toMap()),
     };
   }
 
   factory AlertRuleNrtIncident.fromMap(Map<String, dynamic> map) {
     return AlertRuleNrtIncident(
-      createIncidentEnabled: pulumi.Input.fromValue(
-        map['createIncidentEnabled'] as bool,
-      ),
-      grouping: pulumi.Input.fromValue(
-        AlertRuleNrtIncidentGrouping.fromMap(
-          (map['grouping']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      createIncidentEnabled: pulumi.Input.fromValue(map['createIncidentEnabled'] as bool),
+      grouping: pulumi.Input.fromValue(AlertRuleNrtIncidentGrouping.fromMap((map['grouping']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

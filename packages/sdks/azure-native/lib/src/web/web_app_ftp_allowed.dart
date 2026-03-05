@@ -134,16 +134,12 @@ import 'web_app_ftp_allowed_args.dart';
 class WebAppFtpAllowed extends pulumi.CustomResource {
   /// &lt;code&gt;true&lt;/code&gt; to allow access to a publishing method; otherwise, &lt;code&gt;false&lt;/code&gt;.
   late final pulumi.Output<bool> allow;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Kind of resource.
   late final pulumi.Output<String?> kind;
-
   /// Resource Name.
   late final pulumi.Output<String> name;
-
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -156,11 +152,11 @@ class WebAppFtpAllowed extends pulumi.CustomResource {
     WebAppFtpAllowedArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:web:WebAppFtpAllowed',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:web:WebAppFtpAllowed',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allow = registerOutput<bool>('allow');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     kind = registerOutput<String?>('kind');

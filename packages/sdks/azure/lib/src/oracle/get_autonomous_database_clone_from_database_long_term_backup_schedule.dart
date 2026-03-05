@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAutonomousDatabaseCloneFromDatabaseLongTermBackupSchedule {
   /// A boolean value that indicates if long-term backup is enabled/disabled.
   final pulumi.Input<bool> enabled;
-
   /// The frequency for automated long-term backups.
   final pulumi.Input<String> repeatCadence;
-
   /// The retention period in days for Autonomous database backup.
   final pulumi.Input<int> retentionPeriodInDays;
-
   /// The timestamp in which the backup would be made.
   final pulumi.Input<String> timeOfBackupInUtc;
 
@@ -36,18 +33,13 @@ class GetAutonomousDatabaseCloneFromDatabaseLongTermBackupSchedule {
     };
   }
 
-  factory GetAutonomousDatabaseCloneFromDatabaseLongTermBackupSchedule.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetAutonomousDatabaseCloneFromDatabaseLongTermBackupSchedule.fromMap(Map<String, dynamic> map) {
     return GetAutonomousDatabaseCloneFromDatabaseLongTermBackupSchedule(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
       repeatCadence: pulumi.Input.fromValue(map['repeatCadence'] as String),
-      retentionPeriodInDays: pulumi.Input.fromValue(
-        map['retentionPeriodInDays'] as int,
-      ),
-      timeOfBackupInUtc: pulumi.Input.fromValue(
-        map['timeOfBackupInUtc'] as String,
-      ),
+      retentionPeriodInDays: pulumi.Input.fromValue(map['retentionPeriodInDays'] as int),
+      timeOfBackupInUtc: pulumi.Input.fromValue(map['timeOfBackupInUtc'] as String),
     );
   }
 }
+

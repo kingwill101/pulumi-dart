@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FunctionCustomContainerConfig {
   /// The args field specifies the arguments passed to the command.
   final pulumi.Input<String>? args;
-
   /// The entry point of the container, which specifies the actual command run by the container.
   final pulumi.Input<String>? command;
-
   /// The container image address.
   final pulumi.Input<String> image;
 
@@ -16,7 +14,11 @@ class FunctionCustomContainerConfig {
   /// [args] The args field specifies the arguments passed to the command.
   /// [command] The entry point of the container, which specifies the actual command run by the container.
   /// [image] The container image address.
-  FunctionCustomContainerConfig({this.args, this.command, required this.image});
+  FunctionCustomContainerConfig({
+    this.args,
+    this.command,
+    required this.image,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,17 +30,10 @@ class FunctionCustomContainerConfig {
 
   factory FunctionCustomContainerConfig.fromMap(Map<String, dynamic> map) {
     return FunctionCustomContainerConfig(
-      args: (() {
-        final guardedValue = map['args'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      command: (() {
-        final guardedValue = map['command'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      args: (() { final guardedValue = map['args']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      command: (() { final guardedValue = map['command']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       image: pulumi.Input.fromValue(map['image'] as String),
     );
   }
 }
+

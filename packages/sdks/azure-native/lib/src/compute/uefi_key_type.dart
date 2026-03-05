@@ -15,3 +15,4 @@ enum UefiKeyType {
     throw ArgumentError('Unknown UefiKeyType value: $value');
   }
 }
+

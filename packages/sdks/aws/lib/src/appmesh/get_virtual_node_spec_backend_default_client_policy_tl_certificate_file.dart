@@ -21,14 +21,11 @@ class GetVirtualNodeSpecBackendDefaultClientPolicyTlCertificateFile {
     };
   }
 
-  factory GetVirtualNodeSpecBackendDefaultClientPolicyTlCertificateFile.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetVirtualNodeSpecBackendDefaultClientPolicyTlCertificateFile.fromMap(Map<String, dynamic> map) {
     return GetVirtualNodeSpecBackendDefaultClientPolicyTlCertificateFile(
-      certificateChain: pulumi.Input.fromValue(
-        map['certificateChain'] as String,
-      ),
+      certificateChain: pulumi.Input.fromValue(map['certificateChain'] as String),
       privateKey: pulumi.Input.fromValue(map['privateKey'] as String),
     );
   }
 }
+

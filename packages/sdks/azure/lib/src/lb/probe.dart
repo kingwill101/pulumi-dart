@@ -275,25 +275,18 @@ class Probe extends pulumi.CustomResource {
   /// The interval, in seconds between probes to the backend endpoint for health status. The default value is 15, the minimum value is 5.
   late final pulumi.Output<int?> intervalInSeconds;
   late final pulumi.Output<List<String>> loadBalancerRules;
-
   /// The ID of the LoadBalancer in which to create the Probe. Changing this forces a new resource to be created.
   late final pulumi.Output<String> loadbalancerId;
-
   /// Specifies the name of the Probe. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The number of failed probe attempts after which the backend endpoint is removed from rotation. Default to `2`. NumberOfProbes multiplied by intervalInSeconds value must be greater or equal to 10.Endpoints are returned to rotation when at least one probe is successful.
   late final pulumi.Output<int?> numberOfProbes;
-
   /// Port on which the Probe queries the backend endpoint. Possible values range from 1 to 65535, inclusive.
   late final pulumi.Output<int> port;
-
   /// The number of consecutive successful or failed probes that allow or deny traffic to this endpoint. Possible values range from `1` to `100`. The default value is `1`.
   late final pulumi.Output<int?> probeThreshold;
-
   /// Specifies the protocol of the end point. Possible values are `Http`, `Https` or `Tcp`. If TCP is specified, a received ACK is required for the probe to be successful. If HTTP is specified, a 200 OK response from the specified URI is required for the probe to be successful. Defaults to `Tcp`.
   late final pulumi.Output<String?> protocol;
-
   /// The URI used for requesting health status from the backend endpoint. Required if protocol is set to `Http` or `Https`. Otherwise, it is not allowed.
   late final pulumi.Output<String?> requestPath;
 
@@ -301,13 +294,16 @@ class Probe extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Probe]. {@macro pulumi_lb_probe_probe_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Probe(String name, {ProbeArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure:lb/probe:Probe',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Probe(
+    String name, {
+    ProbeArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure:lb/probe:Probe',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     intervalInSeconds = registerOutput<int?>('intervalInSeconds');
     loadBalancerRules = registerOutput<List<String>>('loadBalancerRules');
     loadbalancerId = registerOutput<String>('loadbalancerId');
@@ -320,7 +316,11 @@ class Probe extends pulumi.CustomResource {
   }
 
   /// Gets an existing [Probe] resource's state with the given [name] and [id].
-  static Probe get(String name, pulumi.Input<String> id, {ProbeState? state}) {
+  static Probe get(
+    String name,
+    pulumi.Input<String> id, {
+    ProbeState? state,
+  }) {
     return Probe._get(
       name,
       state: state?.toMap(),
@@ -333,11 +333,11 @@ class Probe extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:lb/probe:Probe',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:lb/probe:Probe',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     intervalInSeconds = registerOutput<int?>('intervalInSeconds');
     loadBalancerRules = registerOutput<List<String>>('loadBalancerRules');
     loadbalancerId = registerOutput<String>('loadbalancerId');

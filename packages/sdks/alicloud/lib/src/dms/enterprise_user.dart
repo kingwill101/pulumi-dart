@@ -205,28 +205,20 @@ import 'enterprise_user_state.dart';
 class EnterpriseUser extends pulumi.CustomResource {
   /// Maximum number of inquiries on the day.
   late final pulumi.Output<int?> maxExecuteCount;
-
   /// Query the maximum number of rows on the day.
   late final pulumi.Output<int?> maxResultCount;
-
   /// The DingTalk number or mobile number of the user.
   late final pulumi.Output<String?> mobile;
-
   /// It has been deprecated from 1.100.0 and use `user_name` instead.
   late final pulumi.Output<String> nickName;
-
   /// The roles that the user plays.
   late final pulumi.Output<List<String>?> roleNames;
-
   /// The state of DMS Enterprise User. Valid values: `NORMAL`, `DISABLE`.
   late final pulumi.Output<String?> status;
-
   /// The tenant ID.
   late final pulumi.Output<int?> tid;
-
   /// The Alibaba Cloud unique ID (UID) of the user to add.
   late final pulumi.Output<String> uid;
-
   /// The nickname of the user.
   late final pulumi.Output<String> userName;
 
@@ -239,11 +231,11 @@ class EnterpriseUser extends pulumi.CustomResource {
     EnterpriseUserArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dms/enterpriseUser:EnterpriseUser',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dms/enterpriseUser:EnterpriseUser',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     maxExecuteCount = registerOutput<int?>('maxExecuteCount');
     maxResultCount = registerOutput<int?>('maxResultCount');
     mobile = registerOutput<String?>('mobile');
@@ -273,11 +265,11 @@ class EnterpriseUser extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:dms/enterpriseUser:EnterpriseUser',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:dms/enterpriseUser:EnterpriseUser',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     maxExecuteCount = registerOutput<int?>('maxExecuteCount');
     maxResultCount = registerOutput<int?>('maxResultCount');
     mobile = registerOutput<String?>('mobile');

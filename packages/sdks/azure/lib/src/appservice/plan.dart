@@ -698,42 +698,30 @@ class Plan extends pulumi.CustomResource {
   ///
   /// &gt; **NOTE:** Attaching to an App Service Environment requires the App Service Plan use a `Premium` SKU (when using an ASEv1) and the `Isolated` SKU (for an ASEv2).
   late final pulumi.Output<String?> appServiceEnvironmentId;
-
   /// Whether to create a xenon App Service Plan.
   late final pulumi.Output<bool?> isXenon;
-
   /// The kind of the App Service Plan to create. Possible values are `Windows` (also available as `App`), `Linux`, `elastic` (for Premium Consumption), `xenon` and `FunctionApp` (for a Consumption Plan). Defaults to `Windows`. Changing this forces a new resource to be created.
   ///
   /// &gt; **NOTE:** When creating a `Linux` App Service Plan, the `reserved` field must be set to `true`, and when creating a `Windows`/`app` App Service Plan the `reserved` field must be set to `false`.
   late final pulumi.Output<String?> kind;
-
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The maximum number of total workers allowed for this ElasticScaleEnabled App Service Plan.
   late final pulumi.Output<int> maximumElasticWorkerCount;
-
   /// The maximum number of workers supported with the App Service Plan's sku.
   late final pulumi.Output<int> maximumNumberOfWorkers;
-
   /// Specifies the name of the App Service Plan component. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// Can Apps assigned to this App Service Plan be scaled independently? If set to `false` apps assigned to this plan will scale to all instances of the plan.
   late final pulumi.Output<bool?> perSiteScaling;
-
   /// Is this App Service Plan `Reserved`.
   late final pulumi.Output<bool?> reserved;
-
   /// The name of the resource group in which to create the App Service Plan component. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A `sku` block as documented below.
   late final pulumi.Output<PlanSku> sku;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Specifies if the App Service Plan should be Zone Redundant. Changing this forces a new resource to be created.
   ///
   /// &gt; **NOTE:** Requires either `PremiumV2` or `PremiumV3` SKU and that at least 3 instances. For more information, please see the [App Service Team Blog](https://azure.github.io/AppService/2021/08/25/App-service-support-for-availability-zones.html).
@@ -743,41 +731,37 @@ class Plan extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Plan]. {@macro pulumi_appservice_plan_plan_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Plan(String name, {PlanArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'azure:appservice/plan:Plan',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
-    appServiceEnvironmentId = registerOutput<String?>(
-      'appServiceEnvironmentId',
-    );
+  Plan(
+    String name, {
+    PlanArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure:appservice/plan:Plan',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    appServiceEnvironmentId = registerOutput<String?>('appServiceEnvironmentId');
     isXenon = registerOutput<bool?>('isXenon');
     kind = registerOutput<String?>('kind');
     location = registerOutput<String>('location');
-    maximumElasticWorkerCount = registerOutput<int>(
-      'maximumElasticWorkerCount',
-    );
+    maximumElasticWorkerCount = registerOutput<int>('maximumElasticWorkerCount');
     maximumNumberOfWorkers = registerOutput<int>('maximumNumberOfWorkers');
     this.name = registerOutput<String>('name');
     perSiteScaling = registerOutput<bool?>('perSiteScaling');
     reserved = registerOutput<bool?>('reserved');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    sku = registerOutput<PlanSku>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PlanSku.fromMap((guardedValue as Map).cast<String, dynamic>());
-      },
-    );
+    sku = registerOutput<PlanSku>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PlanSku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     zoneRedundant = registerOutput<bool?>('zoneRedundant');
   }
 
   /// Gets an existing [Plan] resource's state with the given [name] and [id].
-  static Plan get(String name, pulumi.Input<String> id, {PlanState? state}) {
+  static Plan get(
+    String name,
+    pulumi.Input<String> id, {
+    PlanState? state,
+  }) {
     return Plan._get(
       name,
       state: state?.toMap(),
@@ -790,33 +774,22 @@ class Plan extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appservice/plan:Plan',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    appServiceEnvironmentId = registerOutput<String?>(
-      'appServiceEnvironmentId',
-    );
+          'azure:appservice/plan:Plan',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    appServiceEnvironmentId = registerOutput<String?>('appServiceEnvironmentId');
     isXenon = registerOutput<bool?>('isXenon');
     kind = registerOutput<String?>('kind');
     location = registerOutput<String>('location');
-    maximumElasticWorkerCount = registerOutput<int>(
-      'maximumElasticWorkerCount',
-    );
+    maximumElasticWorkerCount = registerOutput<int>('maximumElasticWorkerCount');
     maximumNumberOfWorkers = registerOutput<int>('maximumNumberOfWorkers');
     this.name = registerOutput<String>('name');
     perSiteScaling = registerOutput<bool?>('perSiteScaling');
     reserved = registerOutput<bool?>('reserved');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    sku = registerOutput<PlanSku>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return PlanSku.fromMap((guardedValue as Map).cast<String, dynamic>());
-      },
-    );
+    sku = registerOutput<PlanSku>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PlanSku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     zoneRedundant = registerOutput<bool?>('zoneRedundant');
   }

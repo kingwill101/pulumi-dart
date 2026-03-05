@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LightHouseAuthorization {
   /// The principal id.
   final pulumi.Input<String> principalId;
-
   /// The role definition id.
   final pulumi.Input<String> roleDefinitionId;
 
@@ -27,9 +26,8 @@ class LightHouseAuthorization {
   factory LightHouseAuthorization.fromMap(Map<String, dynamic> map) {
     return LightHouseAuthorization(
       principalId: pulumi.Input.fromValue(map['principalId'] as String),
-      roleDefinitionId: pulumi.Input.fromValue(
-        map['roleDefinitionId'] as String,
-      ),
+      roleDefinitionId: pulumi.Input.fromValue(map['roleDefinitionId'] as String),
     );
   }
 }
+

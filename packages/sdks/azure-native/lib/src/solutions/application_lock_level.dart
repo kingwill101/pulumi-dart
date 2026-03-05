@@ -16,3 +16,4 @@ enum ApplicationLockLevel {
     throw ArgumentError('Unknown ApplicationLockLevel value: $value');
   }
 }
+

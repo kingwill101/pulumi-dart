@@ -9,19 +9,20 @@ class InstanceNodeConfig {
 
   /// Creates a new [InstanceNodeConfig].
   /// [sizeGb] (Output)
-  InstanceNodeConfig({this.sizeGb});
+  InstanceNodeConfig({
+    this.sizeGb,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'sizeGb': ?sizeGb};
+    return <String, dynamic>{
+      'sizeGb': ?sizeGb,
+    };
   }
 
   factory InstanceNodeConfig.fromMap(Map<String, dynamic> map) {
     return InstanceNodeConfig(
-      sizeGb: (() {
-        final guardedValue = map['sizeGb'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      sizeGb: (() { final guardedValue = map['sizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

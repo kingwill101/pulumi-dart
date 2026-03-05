@@ -9,19 +9,20 @@ class CollapsibleGroup {
 
   /// Creates a new [CollapsibleGroup].
   /// [collapsed] The collapsed state of the widget on first page load.
-  CollapsibleGroup({this.collapsed});
+  CollapsibleGroup({
+    this.collapsed,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'collapsed': ?collapsed};
+    return <String, dynamic>{
+      'collapsed': ?collapsed,
+    };
   }
 
   factory CollapsibleGroup.fromMap(Map<String, dynamic> map) {
     return CollapsibleGroup(
-      collapsed: (() {
-        final guardedValue = map['collapsed'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      collapsed: (() { final guardedValue = map['collapsed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

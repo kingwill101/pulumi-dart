@@ -9,28 +9,20 @@ import 'provider_terraform_config_result.dart';
 class ProviderProvider extends pulumi.ProviderResource {
   /// The path to a Linode API CA file to trust.
   late final pulumi.Output<String?> apiCaPath;
-
   /// The version of Linode API.
   late final pulumi.Output<String?> apiVersion;
-
   /// The path to the Linode config file to use. (default `~/.config/linode`)
   late final pulumi.Output<String?> configPath;
-
   /// The Linode config profile to use. (default `default`)
   late final pulumi.Output<String?> configProfile;
-
   /// The access key to be used in linode.ObjectStorageBucket and linode_object_storage_object.
   late final pulumi.Output<String?> objAccessKey;
-
   /// The secret key to be used in linode.ObjectStorageBucket and linode_object_storage_object.
   late final pulumi.Output<String?> objSecretKey;
-
   /// The token that allows you access to your Linode account
   late final pulumi.Output<String?> token;
-
   /// An HTTP User-Agent Prefix to prepend in API requests.
   late final pulumi.Output<String?> uaPrefix;
-
   /// The HTTP(S) API address of the Linode API to use.
   late final pulumi.Output<String?> url;
 
@@ -43,11 +35,11 @@ class ProviderProvider extends pulumi.ProviderResource {
     ProviderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'linode',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'linode',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     apiCaPath = registerOutput<String?>('apiCaPath');
     apiVersion = registerOutput<String?>('apiVersion');
     configPath = registerOutput<String?>('configPath');

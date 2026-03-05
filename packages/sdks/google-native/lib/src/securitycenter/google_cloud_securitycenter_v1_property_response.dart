@@ -7,7 +7,6 @@ import 'expr_response.dart';
 class GoogleCloudSecuritycenterV1PropertyResponse {
   /// Name of the property for the custom output.
   final pulumi.Input<String> name;
-
   /// The CEL expression for the custom output. A resource property can be specified to return the value of the property or a text string enclosed in quotation marks.
   final pulumi.Input<ExprResponse> valueExpression;
 
@@ -22,24 +21,15 @@ class GoogleCloudSecuritycenterV1PropertyResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'valueExpression':
-          pulumi.Input.mapInputValue<ExprResponse, Map<String, dynamic>>(
-            valueExpression,
-            (value) => value.toMap(),
-          ),
+      'valueExpression': pulumi.Input.mapInputValue<ExprResponse, Map<String, dynamic>>(valueExpression, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudSecuritycenterV1PropertyResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudSecuritycenterV1PropertyResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudSecuritycenterV1PropertyResponse(
       name: pulumi.Input.fromValue(map['name'] as String),
-      valueExpression: pulumi.Input.fromValue(
-        ExprResponse.fromMap(
-          (map['valueExpression']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      valueExpression: pulumi.Input.fromValue(ExprResponse.fromMap((map['valueExpression']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

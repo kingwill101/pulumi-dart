@@ -267,22 +267,18 @@ class AddressScope extends pulumi.CustomResource {
   /// IP version, either 4 (default) or 6. Changing this
   /// creates a new address-scope.
   late final pulumi.Output<int?> ipVersion;
-
   /// The name of the address-scope. Changing this updates the
   /// name of the existing address-scope.
   late final pulumi.Output<String> name;
-
   /// The owner of the address-scope. Required if admin
   /// wants to create a address-scope for another project. Changing this creates a
   /// new address-scope.
   late final pulumi.Output<String> projectId;
-
   /// The region in which to obtain the V2 Networking client.
   /// A Networking client is needed to create a Neutron address-scope. If omitted,
   /// the `region` argument of the provider is used. Changing this creates a new
   /// address-scope.
   late final pulumi.Output<String> region;
-
   /// Indicates whether this address-scope is shared across
   /// all projects. Changing this updates the shared status of the existing
   /// address-scope.
@@ -297,11 +293,11 @@ class AddressScope extends pulumi.CustomResource {
     AddressScopeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:networking/addressScope:AddressScope',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:networking/addressScope:AddressScope',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     ipVersion = registerOutput<int?>('ipVersion');
     this.name = registerOutput<String>('name');
     projectId = registerOutput<String>('projectId');
@@ -327,11 +323,11 @@ class AddressScope extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:networking/addressScope:AddressScope',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:networking/addressScope:AddressScope',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     ipVersion = registerOutput<int?>('ipVersion');
     this.name = registerOutput<String>('name');
     projectId = registerOutput<String>('projectId');

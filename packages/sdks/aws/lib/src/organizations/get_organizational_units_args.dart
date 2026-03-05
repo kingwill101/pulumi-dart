@@ -12,10 +12,14 @@ class GetOrganizationalUnitsArgs {
 
   /// Creates a new [GetOrganizationalUnitsArgs].
   /// [parentId] Parent ID of the organizational unit.
-  GetOrganizationalUnitsArgs({required this.parentId});
+  GetOrganizationalUnitsArgs({
+    required this.parentId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'parentId': parentId};
+    return <String, dynamic>{
+      'parentId': parentId,
+    };
   }
 
   factory GetOrganizationalUnitsArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetOrganizationalUnitsArgs {
     );
   }
 }
+

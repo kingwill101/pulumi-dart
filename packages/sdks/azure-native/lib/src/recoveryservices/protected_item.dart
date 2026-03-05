@@ -332,22 +332,16 @@ import 'protected_item_args.dart';
 class ProtectedItem extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Optional ETag.
   late final pulumi.Output<String?> eTag;
-
   /// Resource location.
   late final pulumi.Output<String?> location;
-
   /// Resource name associated with the resource.
   late final pulumi.Output<String> name;
-
   /// ProtectedItemResource properties
   late final pulumi.Output<AzureFileshareProtectedItemResponse> properties;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
   late final pulumi.Output<String> type;
 
@@ -360,25 +354,16 @@ class ProtectedItem extends pulumi.CustomResource {
     ProtectedItemArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:recoveryservices:ProtectedItem',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:recoveryservices:ProtectedItem',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     eTag = registerOutput<String?>('eTag');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<AzureFileshareProtectedItemResponse>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AzureFileshareProtectedItemResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<AzureFileshareProtectedItemResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureFileshareProtectedItemResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

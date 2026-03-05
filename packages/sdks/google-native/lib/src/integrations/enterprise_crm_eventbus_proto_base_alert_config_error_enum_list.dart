@@ -6,10 +6,7 @@ import 'enterprise_crm_eventbus_proto_base_alert_config_error_enum_list_filter_t
 /// List of error enums for alerts.
 class EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList {
   final pulumi.Input<List<String>>? enumStrings;
-  final pulumi.Input<
-    EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListFilterType
-  >?
-  filterType;
+  final pulumi.Input<EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListFilterType>? filterType;
 
   /// Creates a new [EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList].
   /// [enumStrings] Optional.
@@ -22,32 +19,15 @@ class EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enumStrings': ?enumStrings,
-      'filterType':
-          ?pulumi.Input.mapOptionalInputValue<
-            EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListFilterType,
-            String
-          >(filterType, (value) => value.wireValue),
+      'filterType': ?pulumi.Input.mapOptionalInputValue<EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListFilterType, String>(filterType, (value) => value.wireValue),
     };
   }
 
-  factory EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList(
-      enumStrings: (() {
-        final guardedValue = map['enumStrings'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      filterType: (() {
-        final guardedValue = map['filterType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListFilterType.fromValue(
-            guardedValue as String,
-          ),
-        );
-      })(),
+      enumStrings: (() { final guardedValue = map['enumStrings']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      filterType: (() { final guardedValue = map['filterType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListFilterType.fromValue(guardedValue as String)); })(),
     );
   }
 }
+

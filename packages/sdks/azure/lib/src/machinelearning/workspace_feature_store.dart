@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkspaceFeatureStore {
   /// The version of Spark runtime.
   final pulumi.Input<String>? computerSparkRuntimeVersion;
-
   /// The name of offline store connection.
   final pulumi.Input<String>? offlineConnectionName;
-
   /// The name of online store connection.
   ///
   /// &gt; **Note:** `feature_store` must be set when`kind` is `FeatureStore`
@@ -34,21 +32,10 @@ class WorkspaceFeatureStore {
 
   factory WorkspaceFeatureStore.fromMap(Map<String, dynamic> map) {
     return WorkspaceFeatureStore(
-      computerSparkRuntimeVersion: (() {
-        final guardedValue = map['computerSparkRuntimeVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      offlineConnectionName: (() {
-        final guardedValue = map['offlineConnectionName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      onlineConnectionName: (() {
-        final guardedValue = map['onlineConnectionName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      computerSparkRuntimeVersion: (() { final guardedValue = map['computerSparkRuntimeVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      offlineConnectionName: (() { final guardedValue = map['offlineConnectionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      onlineConnectionName: (() { final guardedValue = map['onlineConnectionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

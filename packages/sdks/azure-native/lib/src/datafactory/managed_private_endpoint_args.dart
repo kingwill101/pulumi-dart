@@ -10,16 +10,12 @@ import 'managed_private_endpoint_datafactory.dart';
 class ManagedPrivateEndpointArgs {
   /// The factory name.
   final pulumi.Input<String> factoryName;
-
   /// Managed private endpoint name
   final pulumi.Input<String>? managedPrivateEndpointName;
-
   /// Managed virtual network name
   final pulumi.Input<String> managedVirtualNetworkName;
-
   /// Managed private endpoint properties.
   final pulumi.Input<ManagedPrivateEndpointDatafactory> properties;
-
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
 
@@ -50,20 +46,11 @@ class ManagedPrivateEndpointArgs {
   factory ManagedPrivateEndpointArgs.fromMap(Map<String, dynamic> map) {
     return ManagedPrivateEndpointArgs(
       factoryName: pulumi.Input.fromValue(map['factoryName'] as String),
-      managedPrivateEndpointName: (() {
-        final guardedValue = map['managedPrivateEndpointName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      managedVirtualNetworkName: pulumi.Input.fromValue(
-        map['managedVirtualNetworkName'] as String,
-      ),
-      properties: pulumi.Input.fromValue(
-        map['properties'] as ManagedPrivateEndpointDatafactory,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      managedPrivateEndpointName: (() { final guardedValue = map['managedPrivateEndpointName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      managedVirtualNetworkName: pulumi.Input.fromValue(map['managedVirtualNetworkName'] as String),
+      properties: pulumi.Input.fromValue(map['properties'] as ManagedPrivateEndpointDatafactory),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

@@ -15,3 +15,4 @@ enum SelectorType {
     throw ArgumentError('Unknown SelectorType value: $value');
   }
 }
+

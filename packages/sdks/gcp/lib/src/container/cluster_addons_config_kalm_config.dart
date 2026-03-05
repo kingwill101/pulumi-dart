@@ -7,10 +7,14 @@ class ClusterAddonsConfigKalmConfig {
 
   /// Creates a new [ClusterAddonsConfigKalmConfig].
   /// [enabled] Required.
-  ClusterAddonsConfigKalmConfig({required this.enabled});
+  ClusterAddonsConfigKalmConfig({
+    required this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled};
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
   factory ClusterAddonsConfigKalmConfig.fromMap(Map<String, dynamic> map) {
@@ -19,3 +23,4 @@ class ClusterAddonsConfigKalmConfig {
     );
   }
 }
+

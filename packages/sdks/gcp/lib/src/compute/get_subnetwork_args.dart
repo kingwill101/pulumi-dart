@@ -10,15 +10,12 @@ class GetSubnetworkArgs {
   /// The name of the subnetwork. One of `name` or `self_link`
   /// must be specified.
   final pulumi.Input<String>? name;
-
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The region this subnetwork has been created in. If
   /// unspecified, this defaults to the region configured in the provider.
   final pulumi.Input<String>? region;
-
   /// The self link of the subnetwork. If `self_link` is
   /// specified, `name`, `project`, and `region` are ignored.
   final pulumi.Input<String>? selfLink;
@@ -28,7 +25,12 @@ class GetSubnetworkArgs {
   /// [project] The ID of the project in which the resource belongs. If it
   /// [region] The region this subnetwork has been created in. If
   /// [selfLink] The self link of the subnetwork. If `self_link` is
-  GetSubnetworkArgs({this.name, this.project, this.region, this.selfLink});
+  GetSubnetworkArgs({
+    this.name,
+    this.project,
+    this.region,
+    this.selfLink,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,26 +43,11 @@ class GetSubnetworkArgs {
 
   factory GetSubnetworkArgs.fromMap(Map<String, dynamic> map) {
     return GetSubnetworkArgs(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      selfLink: (() {
-        final guardedValue = map['selfLink'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

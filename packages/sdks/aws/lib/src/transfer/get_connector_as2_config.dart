@@ -5,25 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConnectorAs2Config {
   /// Basic authentication for AS2 connector API. Returns a null value if not set.
   final pulumi.Input<String> basicAuthSecretId;
-
   /// Specifies whether AS2 file is compressed. Will be ZLIB or DISABLED
   final pulumi.Input<String> compression;
-
   /// Algorithm used to encrypt file. Will be AES128_CBC or AES192_CBC or AES256_CBC or DES_EDE3_CBC or NONE.
   final pulumi.Input<String> encryptionAlgorithm;
-
   /// Unique identifier for AS2 local profile.
   final pulumi.Input<String> localProfileId;
-
   /// Used for outbound requests to tell if response is asynchronous or not. Will be either SYNC or NONE.
   final pulumi.Input<String> mdnResponse;
-
   /// Signing algorithm for MDN response. Will be SHA256 or SHA384 or SHA512 or SHA1 or NONE or DEFAULT.
   final pulumi.Input<String> mdnSigningAlgorithm;
-
   /// Subject HTTP header attribute in outbound AS2 messages to the connector.
   final pulumi.Input<String> messageSubject;
-
   /// Unique identifier used by connector for partner profile.
   final pulumi.Input<String> partnerProfileId;
   final pulumi.Input<String> singingAlgorithm;
@@ -66,25 +59,16 @@ class GetConnectorAs2Config {
 
   factory GetConnectorAs2Config.fromMap(Map<String, dynamic> map) {
     return GetConnectorAs2Config(
-      basicAuthSecretId: pulumi.Input.fromValue(
-        map['basicAuthSecretId'] as String,
-      ),
+      basicAuthSecretId: pulumi.Input.fromValue(map['basicAuthSecretId'] as String),
       compression: pulumi.Input.fromValue(map['compression'] as String),
-      encryptionAlgorithm: pulumi.Input.fromValue(
-        map['encryptionAlgorithm'] as String,
-      ),
+      encryptionAlgorithm: pulumi.Input.fromValue(map['encryptionAlgorithm'] as String),
       localProfileId: pulumi.Input.fromValue(map['localProfileId'] as String),
       mdnResponse: pulumi.Input.fromValue(map['mdnResponse'] as String),
-      mdnSigningAlgorithm: pulumi.Input.fromValue(
-        map['mdnSigningAlgorithm'] as String,
-      ),
+      mdnSigningAlgorithm: pulumi.Input.fromValue(map['mdnSigningAlgorithm'] as String),
       messageSubject: pulumi.Input.fromValue(map['messageSubject'] as String),
-      partnerProfileId: pulumi.Input.fromValue(
-        map['partnerProfileId'] as String,
-      ),
-      singingAlgorithm: pulumi.Input.fromValue(
-        map['singingAlgorithm'] as String,
-      ),
+      partnerProfileId: pulumi.Input.fromValue(map['partnerProfileId'] as String),
+      singingAlgorithm: pulumi.Input.fromValue(map['singingAlgorithm'] as String),
     );
   }
 }
+

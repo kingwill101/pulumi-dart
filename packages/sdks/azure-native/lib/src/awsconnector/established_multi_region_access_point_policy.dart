@@ -9,21 +9,20 @@ class EstablishedMultiRegionAccessPointPolicy {
 
   /// Creates a new [EstablishedMultiRegionAccessPointPolicy].
   /// [policy] &lt;p&gt;The details of the last established policy.&lt;/p&gt;
-  EstablishedMultiRegionAccessPointPolicy({this.policy});
+  EstablishedMultiRegionAccessPointPolicy({
+    this.policy,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'policy': ?policy};
+    return <String, dynamic>{
+      'policy': ?policy,
+    };
   }
 
-  factory EstablishedMultiRegionAccessPointPolicy.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EstablishedMultiRegionAccessPointPolicy.fromMap(Map<String, dynamic> map) {
     return EstablishedMultiRegionAccessPointPolicy(
-      policy: (() {
-        final guardedValue = map['policy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      policy: (() { final guardedValue = map['policy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

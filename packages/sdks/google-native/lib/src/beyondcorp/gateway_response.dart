@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GatewayResponse {
   /// The type of hosting used by the gateway.
   final pulumi.Input<String> type;
-
   /// Server-defined URI for this resource.
   final pulumi.Input<String> uri;
-
   /// User port reserved on the gateways for this connection, if not specified or zero, the default port is 19443.
   final pulumi.Input<int> userPort;
 
@@ -24,7 +22,11 @@ class GatewayResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'type': type, 'uri': uri, 'userPort': userPort};
+    return <String, dynamic>{
+      'type': type,
+      'uri': uri,
+      'userPort': userPort,
+    };
   }
 
   factory GatewayResponse.fromMap(Map<String, dynamic> map) {
@@ -35,3 +37,4 @@ class GatewayResponse {
     );
   }
 }
+

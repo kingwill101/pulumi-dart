@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TriggerRepositoryEventConfigPush {
   /// Regex of branches to match.
   final pulumi.Input<String>? branch;
-
   /// If true, only trigger a build if the revision regex does NOT match the git_ref regex.
   final pulumi.Input<bool>? invertRegex;
-
   /// Regex of tags to match.
   final pulumi.Input<String>? tag;
 
@@ -16,7 +14,11 @@ class TriggerRepositoryEventConfigPush {
   /// [branch] Regex of branches to match.
   /// [invertRegex] If true, only trigger a build if the revision regex does NOT match the git_ref regex.
   /// [tag] Regex of tags to match.
-  TriggerRepositoryEventConfigPush({this.branch, this.invertRegex, this.tag});
+  TriggerRepositoryEventConfigPush({
+    this.branch,
+    this.invertRegex,
+    this.tag,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,21 +30,10 @@ class TriggerRepositoryEventConfigPush {
 
   factory TriggerRepositoryEventConfigPush.fromMap(Map<String, dynamic> map) {
     return TriggerRepositoryEventConfigPush(
-      branch: (() {
-        final guardedValue = map['branch'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      invertRegex: (() {
-        final guardedValue = map['invertRegex'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      tag: (() {
-        final guardedValue = map['tag'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      branch: (() { final guardedValue = map['branch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      invertRegex: (() { final guardedValue = map['invertRegex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      tag: (() { final guardedValue = map['tag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

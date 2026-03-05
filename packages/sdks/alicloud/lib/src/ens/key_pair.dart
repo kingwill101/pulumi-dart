@@ -139,7 +139,6 @@ import 'key_pair_state.dart';
 class KeyPair extends pulumi.CustomResource {
   /// The name of the key pair.
   late final pulumi.Output<String> keyPairName;
-
   /// The version number.
   late final pulumi.Output<String> version;
 
@@ -152,11 +151,11 @@ class KeyPair extends pulumi.CustomResource {
     KeyPairArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ens/keyPair:KeyPair',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ens/keyPair:KeyPair',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     keyPairName = registerOutput<String>('keyPairName');
     version = registerOutput<String>('version');
   }
@@ -179,11 +178,11 @@ class KeyPair extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ens/keyPair:KeyPair',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ens/keyPair:KeyPair',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     keyPairName = registerOutput<String>('keyPairName');
     version = registerOutput<String>('version');
   }

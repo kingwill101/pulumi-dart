@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DistributionConfigurationDistributionLaunchTemplateConfiguration {
   /// The account ID that this configuration applies to.
   final pulumi.Input<String>? accountId;
-
   /// Indicates whether to set the specified Amazon EC2 launch template as the default launch template. Defaults to `true`.
   final pulumi.Input<bool>? default_;
-
   /// The ID of the Amazon EC2 launch template to use.
   final pulumi.Input<String> launchTemplateId;
 
@@ -30,23 +28,12 @@ class DistributionConfigurationDistributionLaunchTemplateConfiguration {
     };
   }
 
-  factory DistributionConfigurationDistributionLaunchTemplateConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DistributionConfigurationDistributionLaunchTemplateConfiguration.fromMap(Map<String, dynamic> map) {
     return DistributionConfigurationDistributionLaunchTemplateConfiguration(
-      accountId: (() {
-        final guardedValue = map['accountId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      default_: (() {
-        final guardedValue = map['default'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      launchTemplateId: pulumi.Input.fromValue(
-        map['launchTemplateId'] as String,
-      ),
+      accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      default_: (() { final guardedValue = map['default']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      launchTemplateId: pulumi.Input.fromValue(map['launchTemplateId'] as String),
     );
   }
 }
+

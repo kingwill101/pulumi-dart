@@ -8,17 +8,20 @@ class SqlContainerIndexingPolicyExcludedPath {
 
   /// Creates a new [SqlContainerIndexingPolicyExcludedPath].
   /// [path] Path that is excluded from indexing.
-  SqlContainerIndexingPolicyExcludedPath({required this.path});
+  SqlContainerIndexingPolicyExcludedPath({
+    required this.path,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'path': path};
+    return <String, dynamic>{
+      'path': path,
+    };
   }
 
-  factory SqlContainerIndexingPolicyExcludedPath.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SqlContainerIndexingPolicyExcludedPath.fromMap(Map<String, dynamic> map) {
     return SqlContainerIndexingPolicyExcludedPath(
       path: pulumi.Input.fromValue(map['path'] as String),
     );
   }
 }
+

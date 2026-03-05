@@ -7,54 +7,37 @@ import 'reportable_exception_response.dart';
 class MigrateMySqlAzureDbForMySqlOfflineTaskOutputDatabaseLevelResponse {
   /// Name of the database
   final pulumi.Input<String> databaseName;
-
   /// Migration end time
   final pulumi.Input<String> endedOn;
-
   /// Number of database/object errors.
   final pulumi.Input<double> errorCount;
-
   /// Wildcard string prefix to use for querying all errors of the item
   final pulumi.Input<String> errorPrefix;
-
   /// Migration exceptions and warnings.
   final pulumi.Input<List<ReportableExceptionResponse>> exceptionsAndWarnings;
-
   /// Result identifier
   final pulumi.Input<String> id;
-
   /// Last time the storage was updated
   final pulumi.Input<String> lastStorageUpdate;
-
   /// Migration progress message
   final pulumi.Input<String> message;
-
   /// Number of objects
   final pulumi.Input<double> numberOfObjects;
-
   /// Number of successfully completed objects
   final pulumi.Input<double> numberOfObjectsCompleted;
-
   /// Summary of object results in the migration
-  final pulumi.Input<Map<String, DataItemMigrationSummaryResultResponse>>
-  objectSummary;
-
+  final pulumi.Input<Map<String, DataItemMigrationSummaryResultResponse>> objectSummary;
   /// Wildcard string prefix to use for querying all sub-tem results of the item
   final pulumi.Input<String> resultPrefix;
-
   /// Result type
   /// Expected value is 'DatabaseLevelOutput'.
   final pulumi.Input<String> resultType;
-
   /// Migration stage that this database is in
   final pulumi.Input<String> stage;
-
   /// Migration start time
   final pulumi.Input<String> startedOn;
-
   /// Current state of migration
   final pulumi.Input<String> state;
-
   /// Status message
   final pulumi.Input<String> statusMessage;
 
@@ -102,35 +85,13 @@ class MigrateMySqlAzureDbForMySqlOfflineTaskOutputDatabaseLevelResponse {
       'endedOn': endedOn,
       'errorCount': errorCount,
       'errorPrefix': errorPrefix,
-      'exceptionsAndWarnings':
-          pulumi.Input.mapInputValue<
-            List<ReportableExceptionResponse>,
-            List<Map<String, dynamic>>
-          >(
-            exceptionsAndWarnings,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ReportableExceptionResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'exceptionsAndWarnings': pulumi.Input.mapInputValue<List<ReportableExceptionResponse>, List<Map<String, dynamic>>>(exceptionsAndWarnings, (value) => pulumi.Input.encodeList<ReportableExceptionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': id,
       'lastStorageUpdate': lastStorageUpdate,
       'message': message,
       'numberOfObjects': numberOfObjects,
       'numberOfObjectsCompleted': numberOfObjectsCompleted,
-      'objectSummary':
-          pulumi.Input.mapInputValue<
-            Map<String, DataItemMigrationSummaryResultResponse>,
-            Map<String, Map<String, dynamic>>
-          >(
-            objectSummary,
-            (value) =>
-                pulumi.Input.encodeMapValues<
-                  DataItemMigrationSummaryResultResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'objectSummary': pulumi.Input.mapInputValue<Map<String, DataItemMigrationSummaryResultResponse>, Map<String, Map<String, dynamic>>>(objectSummary, (value) => pulumi.Input.encodeMapValues<DataItemMigrationSummaryResultResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'resultPrefix': resultPrefix,
       'resultType': resultType,
       'stage': stage,
@@ -140,39 +101,19 @@ class MigrateMySqlAzureDbForMySqlOfflineTaskOutputDatabaseLevelResponse {
     };
   }
 
-  factory MigrateMySqlAzureDbForMySqlOfflineTaskOutputDatabaseLevelResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MigrateMySqlAzureDbForMySqlOfflineTaskOutputDatabaseLevelResponse.fromMap(Map<String, dynamic> map) {
     return MigrateMySqlAzureDbForMySqlOfflineTaskOutputDatabaseLevelResponse(
       databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
       endedOn: pulumi.Input.fromValue(map['endedOn'] as String),
       errorCount: pulumi.Input.fromValue(map['errorCount'] as double),
       errorPrefix: pulumi.Input.fromValue(map['errorPrefix'] as String),
-      exceptionsAndWarnings: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<ReportableExceptionResponse>(
-          map['exceptionsAndWarnings']!,
-          (value) => ReportableExceptionResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      exceptionsAndWarnings: pulumi.Input.fromValue(pulumi.Input.decodeList<ReportableExceptionResponse>(map['exceptionsAndWarnings']!, (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>()))),
       id: pulumi.Input.fromValue(map['id'] as String),
-      lastStorageUpdate: pulumi.Input.fromValue(
-        map['lastStorageUpdate'] as String,
-      ),
+      lastStorageUpdate: pulumi.Input.fromValue(map['lastStorageUpdate'] as String),
       message: pulumi.Input.fromValue(map['message'] as String),
       numberOfObjects: pulumi.Input.fromValue(map['numberOfObjects'] as double),
-      numberOfObjectsCompleted: pulumi.Input.fromValue(
-        map['numberOfObjectsCompleted'] as double,
-      ),
-      objectSummary: pulumi.Input.fromValue(
-        pulumi.Input.decodeMapValues<DataItemMigrationSummaryResultResponse>(
-          map['objectSummary']!,
-          (value) => DataItemMigrationSummaryResultResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      numberOfObjectsCompleted: pulumi.Input.fromValue(map['numberOfObjectsCompleted'] as double),
+      objectSummary: pulumi.Input.fromValue(pulumi.Input.decodeMapValues<DataItemMigrationSummaryResultResponse>(map['objectSummary']!, (value) => DataItemMigrationSummaryResultResponse.fromMap((value as Map).cast<String, dynamic>()))),
       resultPrefix: pulumi.Input.fromValue(map['resultPrefix'] as String),
       resultType: pulumi.Input.fromValue(map['resultType'] as String),
       stage: pulumi.Input.fromValue(map['stage'] as String),
@@ -182,3 +123,4 @@ class MigrateMySqlAzureDbForMySqlOfflineTaskOutputDatabaseLevelResponse {
     );
   }
 }
+

@@ -507,16 +507,12 @@ import 'origin_pool_state.dart';
 class OriginPool extends pulumi.CustomResource {
   /// Whether the source address pool is enabled:
   late final pulumi.Output<bool?> enabled;
-
   /// OriginPool Id
   late final pulumi.Output<int> originPoolId;
-
   /// The source address pool name.
   late final pulumi.Output<String> originPoolName;
-
   /// The Source station information added to the source address pool. Multiple Source stations use arrays to transfer values. See `origins` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> origins;
-
   /// The site ID.
   late final pulumi.Output<String> siteId;
 
@@ -529,11 +525,11 @@ class OriginPool extends pulumi.CustomResource {
     OriginPoolArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/originPool:OriginPool',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:esa/originPool:OriginPool',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     enabled = registerOutput<bool?>('enabled');
     originPoolId = registerOutput<int>('originPoolId');
     originPoolName = registerOutput<String>('originPoolName');
@@ -559,11 +555,11 @@ class OriginPool extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:esa/originPool:OriginPool',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:esa/originPool:OriginPool',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     enabled = registerOutput<bool?>('enabled');
     originPoolId = registerOutput<int>('originPoolId');
     originPoolName = registerOutput<String>('originPoolName');

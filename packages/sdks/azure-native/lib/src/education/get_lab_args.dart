@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLabArgs {
   /// The ID that uniquely identifies a billing account.
   final pulumi.Input<String> billingAccountName;
-
   /// The ID that uniquely identifies a billing profile.
   final pulumi.Input<String> billingProfileName;
-
   /// May be used to include budget information.
   final pulumi.Input<bool>? includeBudget;
-
   /// The ID that uniquely identifies an invoice section.
   final pulumi.Input<String> invoiceSectionName;
 
@@ -42,20 +39,11 @@ class GetLabArgs {
 
   factory GetLabArgs.fromMap(Map<String, dynamic> map) {
     return GetLabArgs(
-      billingAccountName: pulumi.Input.fromValue(
-        map['billingAccountName'] as String,
-      ),
-      billingProfileName: pulumi.Input.fromValue(
-        map['billingProfileName'] as String,
-      ),
-      includeBudget: (() {
-        final guardedValue = map['includeBudget'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      invoiceSectionName: pulumi.Input.fromValue(
-        map['invoiceSectionName'] as String,
-      ),
+      billingAccountName: pulumi.Input.fromValue(map['billingAccountName'] as String),
+      billingProfileName: pulumi.Input.fromValue(map['billingProfileName'] as String),
+      includeBudget: (() { final guardedValue = map['includeBudget']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      invoiceSectionName: pulumi.Input.fromValue(map['invoiceSectionName'] as String),
     );
   }
 }
+

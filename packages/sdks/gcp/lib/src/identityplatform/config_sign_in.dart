@@ -9,20 +9,16 @@ import 'config_sign_in_phone_number.dart';
 class ConfigSignIn {
   /// Whether to allow more than one account to have the same email.
   final pulumi.Input<bool>? allowDuplicateEmails;
-
   /// Configuration options related to authenticating an anonymous user.
   /// Structure is documented below.
   final pulumi.Input<ConfigSignInAnonymous>? anonymous;
-
   /// Configuration options related to authenticating a user by their email address.
   /// Structure is documented below.
   final pulumi.Input<ConfigSignInEmail>? email;
-
   /// (Output)
   /// Output only. Hash config information.
   /// Structure is documented below.
   final pulumi.Input<List<ConfigSignInHashConfig>>? hashConfigs;
-
   /// Configuration options related to authenticated a user by their phone number.
   /// Structure is documented below.
   final pulumi.Input<ConfigSignInPhoneNumber>? phoneNumber;
@@ -44,82 +40,21 @@ class ConfigSignIn {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allowDuplicateEmails': ?allowDuplicateEmails,
-      'anonymous':
-          ?pulumi.Input.mapOptionalInputValue<
-            ConfigSignInAnonymous,
-            Map<String, dynamic>
-          >(anonymous, (value) => value.toMap()),
-      'email':
-          ?pulumi.Input.mapOptionalInputValue<
-            ConfigSignInEmail,
-            Map<String, dynamic>
-          >(email, (value) => value.toMap()),
-      'hashConfigs':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ConfigSignInHashConfig>,
-            List<Map<String, dynamic>>
-          >(
-            hashConfigs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ConfigSignInHashConfig,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'phoneNumber':
-          ?pulumi.Input.mapOptionalInputValue<
-            ConfigSignInPhoneNumber,
-            Map<String, dynamic>
-          >(phoneNumber, (value) => value.toMap()),
+      'anonymous': ?pulumi.Input.mapOptionalInputValue<ConfigSignInAnonymous, Map<String, dynamic>>(anonymous, (value) => value.toMap()),
+      'email': ?pulumi.Input.mapOptionalInputValue<ConfigSignInEmail, Map<String, dynamic>>(email, (value) => value.toMap()),
+      'hashConfigs': ?pulumi.Input.mapOptionalInputValue<List<ConfigSignInHashConfig>, List<Map<String, dynamic>>>(hashConfigs, (value) => pulumi.Input.encodeList<ConfigSignInHashConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'phoneNumber': ?pulumi.Input.mapOptionalInputValue<ConfigSignInPhoneNumber, Map<String, dynamic>>(phoneNumber, (value) => value.toMap()),
     };
   }
 
   factory ConfigSignIn.fromMap(Map<String, dynamic> map) {
     return ConfigSignIn(
-      allowDuplicateEmails: (() {
-        final guardedValue = map['allowDuplicateEmails'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      anonymous: (() {
-        final guardedValue = map['anonymous'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ConfigSignInAnonymous.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      email: (() {
-        final guardedValue = map['email'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ConfigSignInEmail.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      hashConfigs: (() {
-        final guardedValue = map['hashConfigs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ConfigSignInHashConfig>(
-            guardedValue,
-            (value) => ConfigSignInHashConfig.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      phoneNumber: (() {
-        final guardedValue = map['phoneNumber'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ConfigSignInPhoneNumber.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      allowDuplicateEmails: (() { final guardedValue = map['allowDuplicateEmails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      anonymous: (() { final guardedValue = map['anonymous']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConfigSignInAnonymous.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      email: (() { final guardedValue = map['email']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConfigSignInEmail.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      hashConfigs: (() { final guardedValue = map['hashConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ConfigSignInHashConfig>(guardedValue, (value) => ConfigSignInHashConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      phoneNumber: (() { final guardedValue = map['phoneNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConfigSignInPhoneNumber.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

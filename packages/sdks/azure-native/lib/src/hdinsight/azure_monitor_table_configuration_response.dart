@@ -9,21 +9,20 @@ class AzureMonitorTableConfigurationResponse {
 
   /// Creates a new [AzureMonitorTableConfigurationResponse].
   /// [name] The name.
-  AzureMonitorTableConfigurationResponse({this.name});
+  AzureMonitorTableConfigurationResponse({
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name};
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
-  factory AzureMonitorTableConfigurationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AzureMonitorTableConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return AzureMonitorTableConfigurationResponse(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

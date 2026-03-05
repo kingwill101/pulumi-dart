@@ -8,58 +8,40 @@ import 'system_data_response.dart';
 class GetDeviceExtendedInformationResult {
   /// The name of Channel Integrity Key stored in the Client Key Vault
   final String? channelIntegrityKeyName;
-
   /// The version of Channel Integrity Key stored in the Client Key Vault
   final String? channelIntegrityKeyVersion;
-
   /// The Key Vault ARM Id for client secrets
   final String? clientSecretStoreId;
-
   /// The url to access the Client Key Vault
   final String? clientSecretStoreUrl;
-
   /// The Container for cloud witness in the storage account.
   final String cloudWitnessContainerName;
-
   /// The Cloud Witness Storage account name.
   final String cloudWitnessStorageAccountName;
-
   /// The Azure service endpoint of the cloud witness storage account.
   final String cloudWitnessStorageEndpoint;
-
   /// Cluster Witness Type
   final String clusterWitnessType;
-
   /// Device secrets, will be returned only with ODataFilter $expand=deviceSecrets
   final Map<String, SecretResponse> deviceSecrets;
-
   /// The public part of the encryption certificate. Client uses this to encrypt any secret.
   final String? encryptionKey;
-
   /// The digital signature of encrypted certificate.
   final String? encryptionKeyThumbprint;
-
   /// The witness location of file share.
   final String fileShareWitnessLocation;
-
   /// The username of file share.
   final String fileShareWitnessUsername;
-
   /// The path ID that uniquely identifies the object.
   final String id;
-
   /// Key vault sync status
   final String? keyVaultSyncStatus;
-
   /// The object name.
   final String name;
-
   /// The Resource ID of the Resource.
   final String resourceKey;
-
   /// Metadata pertaining to creation and last modification of DataBoxEdgeDevice
   final SystemDataResponse systemData;
-
   /// The hierarchical type of the object.
   final String type;
 
@@ -115,11 +97,7 @@ class GetDeviceExtendedInformationResult {
       'cloudWitnessStorageAccountName': cloudWitnessStorageAccountName,
       'cloudWitnessStorageEndpoint': cloudWitnessStorageEndpoint,
       'clusterWitnessType': clusterWitnessType,
-      'deviceSecrets':
-          pulumi.Input.encodeMapValues<SecretResponse, Map<String, dynamic>>(
-            deviceSecrets,
-            (value) => value.toMap(),
-          ),
+      'deviceSecrets': pulumi.Input.encodeMapValues<SecretResponse, Map<String, dynamic>>(deviceSecrets, (value) => value.toMap()),
       'encryptionKey': ?encryptionKey,
       'encryptionKeyThumbprint': ?encryptionKeyThumbprint,
       'fileShareWitnessLocation': fileShareWitnessLocation,
@@ -135,60 +113,26 @@ class GetDeviceExtendedInformationResult {
 
   factory GetDeviceExtendedInformationResult.fromMap(Map<String, dynamic> map) {
     return GetDeviceExtendedInformationResult(
-      channelIntegrityKeyName: (() {
-        final guardedValue = map['channelIntegrityKeyName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      channelIntegrityKeyVersion: (() {
-        final guardedValue = map['channelIntegrityKeyVersion'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      clientSecretStoreId: (() {
-        final guardedValue = map['clientSecretStoreId'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      clientSecretStoreUrl: (() {
-        final guardedValue = map['clientSecretStoreUrl'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      channelIntegrityKeyName: (() { final guardedValue = map['channelIntegrityKeyName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      channelIntegrityKeyVersion: (() { final guardedValue = map['channelIntegrityKeyVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      clientSecretStoreId: (() { final guardedValue = map['clientSecretStoreId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      clientSecretStoreUrl: (() { final guardedValue = map['clientSecretStoreUrl']; if (guardedValue == null) return null; return guardedValue as String; })(),
       cloudWitnessContainerName: map['cloudWitnessContainerName'] as String,
-      cloudWitnessStorageAccountName:
-          map['cloudWitnessStorageAccountName'] as String,
+      cloudWitnessStorageAccountName: map['cloudWitnessStorageAccountName'] as String,
       cloudWitnessStorageEndpoint: map['cloudWitnessStorageEndpoint'] as String,
       clusterWitnessType: map['clusterWitnessType'] as String,
-      deviceSecrets: pulumi.Input.decodeMapValues<SecretResponse>(
-        map['deviceSecrets']!,
-        (value) =>
-            SecretResponse.fromMap((value as Map).cast<String, dynamic>()),
-      ),
-      encryptionKey: (() {
-        final guardedValue = map['encryptionKey'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      encryptionKeyThumbprint: (() {
-        final guardedValue = map['encryptionKeyThumbprint'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      deviceSecrets: pulumi.Input.decodeMapValues<SecretResponse>(map['deviceSecrets']!, (value) => SecretResponse.fromMap((value as Map).cast<String, dynamic>())),
+      encryptionKey: (() { final guardedValue = map['encryptionKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      encryptionKeyThumbprint: (() { final guardedValue = map['encryptionKeyThumbprint']; if (guardedValue == null) return null; return guardedValue as String; })(),
       fileShareWitnessLocation: map['fileShareWitnessLocation'] as String,
       fileShareWitnessUsername: map['fileShareWitnessUsername'] as String,
       id: map['id'] as String,
-      keyVaultSyncStatus: (() {
-        final guardedValue = map['keyVaultSyncStatus'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      keyVaultSyncStatus: (() { final guardedValue = map['keyVaultSyncStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
       resourceKey: map['resourceKey'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

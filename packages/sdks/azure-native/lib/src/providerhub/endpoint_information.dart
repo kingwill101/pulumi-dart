@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EndpointInformation {
   /// The endpoint.
   final pulumi.Input<String>? endpoint;
-
   /// The endpoint type.
   final pulumi.Input<String>? endpointType;
-
   /// The schema version.
   final pulumi.Input<String>? schemaVersion;
 
@@ -16,7 +14,11 @@ class EndpointInformation {
   /// [endpoint] The endpoint.
   /// [endpointType] The endpoint type.
   /// [schemaVersion] The schema version.
-  EndpointInformation({this.endpoint, this.endpointType, this.schemaVersion});
+  EndpointInformation({
+    this.endpoint,
+    this.endpointType,
+    this.schemaVersion,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,21 +30,10 @@ class EndpointInformation {
 
   factory EndpointInformation.fromMap(Map<String, dynamic> map) {
     return EndpointInformation(
-      endpoint: (() {
-        final guardedValue = map['endpoint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      endpointType: (() {
-        final guardedValue = map['endpointType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      schemaVersion: (() {
-        final guardedValue = map['schemaVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      endpoint: (() { final guardedValue = map['endpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      endpointType: (() { final guardedValue = map['endpointType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      schemaVersion: (() { final guardedValue = map['schemaVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

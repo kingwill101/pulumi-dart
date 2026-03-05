@@ -11,19 +11,15 @@ class AgentcoreApiKeyCredentialProviderArgs {
   ///
   /// **Write-Only API Key (choose one approach):**
   final pulumi.Input<String>? apiKey;
-
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// Write-only API key value. Cannot be used with `api_key`. Must be used together with `api_key_wo_version`.
   final pulumi.Input<String>? apiKeyWo;
-
   /// Used together with `api_key_wo` to trigger an update. Increment this value when an update to `api_key_wo` is required.
   final pulumi.Input<int>? apiKeyWoVersion;
-
   /// Name of the API Key credential provider. Forces replacement when changed.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   ///
   /// **Standard API Key (choose one approach):**
@@ -53,35 +49,14 @@ class AgentcoreApiKeyCredentialProviderArgs {
     };
   }
 
-  factory AgentcoreApiKeyCredentialProviderArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentcoreApiKeyCredentialProviderArgs.fromMap(Map<String, dynamic> map) {
     return AgentcoreApiKeyCredentialProviderArgs(
-      apiKey: (() {
-        final guardedValue = map['apiKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      apiKeyWo: (() {
-        final guardedValue = map['apiKeyWo'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      apiKeyWoVersion: (() {
-        final guardedValue = map['apiKeyWoVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      apiKey: (() { final guardedValue = map['apiKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      apiKeyWo: (() { final guardedValue = map['apiKeyWo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      apiKeyWoVersion: (() { final guardedValue = map['apiKeyWoVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

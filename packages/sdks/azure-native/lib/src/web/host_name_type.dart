@@ -15,3 +15,4 @@ enum HostNameType {
     throw ArgumentError('Unknown HostNameType value: $value');
   }
 }
+

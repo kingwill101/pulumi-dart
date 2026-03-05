@@ -35,16 +35,11 @@ class GetMappingRuleArgs {
 
   factory GetMappingRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetMappingRuleArgs(
-      conversionWorkspaceId: pulumi.Input.fromValue(
-        map['conversionWorkspaceId'] as String,
-      ),
+      conversionWorkspaceId: pulumi.Input.fromValue(map['conversionWorkspaceId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
       mappingRuleId: pulumi.Input.fromValue(map['mappingRuleId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

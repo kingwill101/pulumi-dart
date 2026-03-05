@@ -15,3 +15,4 @@ enum DataLakeDatabaseFormat {
     throw ArgumentError('Unknown DataLakeDatabaseFormat value: $value');
   }
 }
+

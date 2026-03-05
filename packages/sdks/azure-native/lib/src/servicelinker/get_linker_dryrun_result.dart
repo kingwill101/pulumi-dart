@@ -10,28 +10,20 @@ import 'system_data_response.dart';
 class GetLinkerDryrunResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// The name of the resource
   final String name;
-
   /// the preview of the operations for creation
   final List<DryrunOperationPreviewResponse> operationPreviews;
-
   /// The parameters of the dryrun
   final CreateOrUpdateDryrunParametersResponse? parameters;
-
   /// the result of the dryrun
   final List<BasicErrorDryrunPrerequisiteResultResponse> prerequisiteResults;
-
   /// The provisioning state.
   final String provisioningState;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -62,17 +54,9 @@ class GetLinkerDryrunResult {
       'azureApiVersion': azureApiVersion,
       'id': id,
       'name': name,
-      'operationPreviews':
-          pulumi.Input.encodeList<
-            DryrunOperationPreviewResponse,
-            Map<String, dynamic>
-          >(operationPreviews, (value) => value.toMap()),
+      'operationPreviews': pulumi.Input.encodeList<DryrunOperationPreviewResponse, Map<String, dynamic>>(operationPreviews, (value) => value.toMap()),
       'parameters': ?parameters?.toMap(),
-      'prerequisiteResults':
-          pulumi.Input.encodeList<
-            BasicErrorDryrunPrerequisiteResultResponse,
-            Map<String, dynamic>
-          >(prerequisiteResults, (value) => value.toMap()),
+      'prerequisiteResults': pulumi.Input.encodeList<BasicErrorDryrunPrerequisiteResultResponse, Map<String, dynamic>>(prerequisiteResults, (value) => value.toMap()),
       'provisioningState': provisioningState,
       'systemData': systemData.toMap(),
       'type': type,
@@ -84,32 +68,13 @@ class GetLinkerDryrunResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      operationPreviews:
-          pulumi.Input.decodeList<DryrunOperationPreviewResponse>(
-            map['operationPreviews']!,
-            (value) => DryrunOperationPreviewResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-      parameters: (() {
-        final guardedValue = map['parameters'];
-        if (guardedValue == null) return null;
-        return CreateOrUpdateDryrunParametersResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      prerequisiteResults:
-          pulumi.Input.decodeList<BasicErrorDryrunPrerequisiteResultResponse>(
-            map['prerequisiteResults']!,
-            (value) => BasicErrorDryrunPrerequisiteResultResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
+      operationPreviews: pulumi.Input.decodeList<DryrunOperationPreviewResponse>(map['operationPreviews']!, (value) => DryrunOperationPreviewResponse.fromMap((value as Map).cast<String, dynamic>())),
+      parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return CreateOrUpdateDryrunParametersResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      prerequisiteResults: pulumi.Input.decodeList<BasicErrorDryrunPrerequisiteResultResponse>(map['prerequisiteResults']!, (value) => BasicErrorDryrunPrerequisiteResultResponse.fromMap((value as Map).cast<String, dynamic>())),
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

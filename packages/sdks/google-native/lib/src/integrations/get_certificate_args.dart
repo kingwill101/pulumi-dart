@@ -38,11 +38,8 @@ class GetCertificateArgs {
       certificateId: pulumi.Input.fromValue(map['certificateId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
       productId: pulumi.Input.fromValue(map['productId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

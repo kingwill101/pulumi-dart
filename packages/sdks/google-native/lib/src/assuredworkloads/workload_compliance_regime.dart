@@ -32,3 +32,4 @@ enum WorkloadComplianceRegime {
     throw ArgumentError('Unknown WorkloadComplianceRegime value: $value');
   }
 }
+

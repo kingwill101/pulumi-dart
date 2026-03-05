@@ -7,52 +7,29 @@ import '../meta/field_selector_requirement.dart';
 class FieldSelectorAttributes {
   /// rawSelector is the serialization of a field selector that would be included in a query parameter. Webhook implementations are encouraged to ignore rawSelector. The kube-apiserver's *SubjectAccessReview will parse the rawSelector as long as the requirements are not present.
   final pulumi.Input<String>? rawSelector;
-
   /// requirements is the parsed interpretation of a field selector. All requirements must be met for a resource instance to match the selector. Webhook implementations should handle requirements, but how to handle them is up to the webhook. Since requirements can only limit the request, it is safe to authorize as unlimited request if the requirements are not understood.
   final pulumi.Input<List<FieldSelectorRequirement>>? requirements;
 
   /// Creates a new [FieldSelectorAttributes].
   /// [rawSelector] rawSelector is the serialization of a field selector that would be included in a query parameter. Webhook implementations are encouraged to ignore rawSelector. The kube-apiserver's *SubjectAccessReview will parse the rawSelector as long as the requirements are not present.
   /// [requirements] requirements is the parsed interpretation of a field selector. All requirements must be met for a resource instance to match the selector. Webhook implementations should handle requirements, but how to handle them is up to the webhook. Since requirements can only limit the request, it is safe to authorize as unlimited request if the requirements are not understood.
-  FieldSelectorAttributes({this.rawSelector, this.requirements});
+  FieldSelectorAttributes({
+    this.rawSelector,
+    this.requirements,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'rawSelector': ?rawSelector,
-      'requirements':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<FieldSelectorRequirement>,
-            List<Map<String, dynamic>>
-          >(
-            requirements,
-            (value) =>
-                pulumi.Input.encodeList<
-                  FieldSelectorRequirement,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'requirements': ?pulumi.Input.mapOptionalInputValue<List<FieldSelectorRequirement>, List<Map<String, dynamic>>>(requirements, (value) => pulumi.Input.encodeList<FieldSelectorRequirement, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory FieldSelectorAttributes.fromMap(Map<String, dynamic> map) {
     return FieldSelectorAttributes(
-      rawSelector: (() {
-        final guardedValue = map['rawSelector'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      requirements: (() {
-        final guardedValue = map['requirements'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<FieldSelectorRequirement>(
-            guardedValue,
-            (value) => FieldSelectorRequirement.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      rawSelector: (() { final guardedValue = map['rawSelector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      requirements: (() { final guardedValue = map['requirements']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<FieldSelectorRequirement>(guardedValue, (value) => FieldSelectorRequirement.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

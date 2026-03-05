@@ -13,10 +13,10 @@ class VpcCniAddon extends pulumi.ComponentResource {
     VpcCniAddonArgs? args,
     pulumi.ComponentResourceOptions? options,
   }) : super(
-         'eks:index:VpcCniAddon',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.ComponentResourceOptions(),
-         remote: true,
-       );
+          'eks:index:VpcCniAddon',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.ComponentResourceOptions(),
+          remote: true,
+        );
 }

@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OutboundConnectionLocalDomainInfo {
   /// The name of the local domain.
   final pulumi.Input<String> domainName;
-
   /// The Account ID of the owner of the local domain.
   final pulumi.Input<String> ownerId;
-
   /// The region of the local domain.
   final pulumi.Input<String> region;
 
@@ -38,3 +36,4 @@ class OutboundConnectionLocalDomainInfo {
     );
   }
 }
+

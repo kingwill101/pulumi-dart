@@ -37,12 +37,9 @@ class GetNamespaceServiceIamPolicyArgs {
     return GetNamespaceServiceIamPolicyArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
       namespaceId: pulumi.Input.fromValue(map['namespaceId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serviceId: pulumi.Input.fromValue(map['serviceId'] as String),
     );
   }
 }
+

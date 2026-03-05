@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ForwardingRuleServiceDirectoryRegistrationComputeBeta {
   /// Service Directory namespace to register the forwarding rule under.
   final pulumi.Input<String>? namespace;
-
   /// Service Directory service to register the forwarding rule under.
   final pulumi.Input<String>? service;
-
   /// [Optional] Service Directory region to register this global forwarding rule under. Default to "us-central1". Only used for PSC for Google APIs. All PSC for Google APIs Forwarding Rules on the same network should use the same Service Directory region.
   final pulumi.Input<String>? serviceDirectoryRegion;
 
@@ -31,25 +29,12 @@ class ForwardingRuleServiceDirectoryRegistrationComputeBeta {
     };
   }
 
-  factory ForwardingRuleServiceDirectoryRegistrationComputeBeta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ForwardingRuleServiceDirectoryRegistrationComputeBeta.fromMap(Map<String, dynamic> map) {
     return ForwardingRuleServiceDirectoryRegistrationComputeBeta(
-      namespace: (() {
-        final guardedValue = map['namespace'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      service: (() {
-        final guardedValue = map['service'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      serviceDirectoryRegion: (() {
-        final guardedValue = map['serviceDirectoryRegion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      namespace: (() { final guardedValue = map['namespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      service: (() { final guardedValue = map['service']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serviceDirectoryRegion: (() { final guardedValue = map['serviceDirectoryRegion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

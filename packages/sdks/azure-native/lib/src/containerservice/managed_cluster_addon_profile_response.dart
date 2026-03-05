@@ -7,10 +7,8 @@ import 'managed_cluster_addon_profile_response_identity.dart';
 class ManagedClusterAddonProfileResponse {
   /// Key-value pairs for configuring an add-on.
   final pulumi.Input<Map<String, String>>? config;
-
   /// Whether the add-on is enabled or not.
   final pulumi.Input<bool> enabled;
-
   /// Information of user assigned identity used by this add-on.
   final pulumi.Input<ManagedClusterAddonProfileResponseIdentity> identity;
 
@@ -28,29 +26,16 @@ class ManagedClusterAddonProfileResponse {
     return <String, dynamic>{
       'config': ?config,
       'enabled': enabled,
-      'identity':
-          pulumi.Input.mapInputValue<
-            ManagedClusterAddonProfileResponseIdentity,
-            Map<String, dynamic>
-          >(identity, (value) => value.toMap()),
+      'identity': pulumi.Input.mapInputValue<ManagedClusterAddonProfileResponseIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
     };
   }
 
   factory ManagedClusterAddonProfileResponse.fromMap(Map<String, dynamic> map) {
     return ManagedClusterAddonProfileResponse(
-      config: (() {
-        final guardedValue = map['config'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      config: (() { final guardedValue = map['config']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
-      identity: pulumi.Input.fromValue(
-        ManagedClusterAddonProfileResponseIdentity.fromMap(
-          (map['identity']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      identity: pulumi.Input.fromValue(ManagedClusterAddonProfileResponseIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

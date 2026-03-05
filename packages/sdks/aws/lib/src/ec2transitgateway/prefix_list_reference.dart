@@ -220,17 +220,13 @@ import 'prefix_list_reference_state.dart';
 class PrefixListReference extends pulumi.CustomResource {
   /// Indicates whether to drop traffic that matches the Prefix List. Defaults to `false`.
   late final pulumi.Output<bool?> blackhole;
-
   /// Identifier of EC2 Prefix List.
   late final pulumi.Output<String> prefixListId;
   late final pulumi.Output<String> prefixListOwnerId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Identifier of EC2 Transit Gateway Attachment.
   late final pulumi.Output<String?> transitGatewayAttachmentId;
-
   /// Identifier of EC2 Transit Gateway Route Table.
   ///
   /// The following arguments are optional:
@@ -245,21 +241,17 @@ class PrefixListReference extends pulumi.CustomResource {
     PrefixListReferenceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2transitgateway/prefixListReference:PrefixListReference',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2transitgateway/prefixListReference:PrefixListReference',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     blackhole = registerOutput<bool?>('blackhole');
     prefixListId = registerOutput<String>('prefixListId');
     prefixListOwnerId = registerOutput<String>('prefixListOwnerId');
     region = registerOutput<String>('region');
-    transitGatewayAttachmentId = registerOutput<String?>(
-      'transitGatewayAttachmentId',
-    );
-    transitGatewayRouteTableId = registerOutput<String>(
-      'transitGatewayRouteTableId',
-    );
+    transitGatewayAttachmentId = registerOutput<String?>('transitGatewayAttachmentId');
+    transitGatewayRouteTableId = registerOutput<String>('transitGatewayRouteTableId');
   }
 
   /// Gets an existing [PrefixListReference] resource's state with the given [name] and [id].
@@ -280,20 +272,16 @@ class PrefixListReference extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ec2transitgateway/prefixListReference:PrefixListReference',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:ec2transitgateway/prefixListReference:PrefixListReference',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     blackhole = registerOutput<bool?>('blackhole');
     prefixListId = registerOutput<String>('prefixListId');
     prefixListOwnerId = registerOutput<String>('prefixListOwnerId');
     region = registerOutput<String>('region');
-    transitGatewayAttachmentId = registerOutput<String?>(
-      'transitGatewayAttachmentId',
-    );
-    transitGatewayRouteTableId = registerOutput<String>(
-      'transitGatewayRouteTableId',
-    );
+    transitGatewayAttachmentId = registerOutput<String?>('transitGatewayAttachmentId');
+    transitGatewayRouteTableId = registerOutput<String>('transitGatewayRouteTableId');
   }
 }

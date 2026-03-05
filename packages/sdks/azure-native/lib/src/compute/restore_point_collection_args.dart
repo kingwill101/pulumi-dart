@@ -10,16 +10,12 @@ import 'restore_point_collection_source_properties.dart';
 class RestorePointCollectionArgs {
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the restore point collection.
   final pulumi.Input<String>? restorePointCollectionName;
-
   /// The properties of the source resource that this restore point collection is created from.
   final pulumi.Input<RestorePointCollectionSourceProperties>? source;
-
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -42,46 +38,19 @@ class RestorePointCollectionArgs {
       'location': ?location,
       'resourceGroupName': resourceGroupName,
       'restorePointCollectionName': ?restorePointCollectionName,
-      'source':
-          ?pulumi.Input.mapOptionalInputValue<
-            RestorePointCollectionSourceProperties,
-            Map<String, dynamic>
-          >(source, (value) => value.toMap()),
+      'source': ?pulumi.Input.mapOptionalInputValue<RestorePointCollectionSourceProperties, Map<String, dynamic>>(source, (value) => value.toMap()),
       'tags': ?tags,
     };
   }
 
   factory RestorePointCollectionArgs.fromMap(Map<String, dynamic> map) {
     return RestorePointCollectionArgs(
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      restorePointCollectionName: (() {
-        final guardedValue = map['restorePointCollectionName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      source: (() {
-        final guardedValue = map['source'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RestorePointCollectionSourceProperties.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      restorePointCollectionName: (() { final guardedValue = map['restorePointCollectionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RestorePointCollectionSourceProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

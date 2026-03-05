@@ -8,10 +8,14 @@ class ModelCardSecurityConfig {
 
   /// Creates a new [ModelCardSecurityConfig].
   /// [kmsKeyId] KMS key ARN.
-  ModelCardSecurityConfig({required this.kmsKeyId});
+  ModelCardSecurityConfig({
+    required this.kmsKeyId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'kmsKeyId': kmsKeyId};
+    return <String, dynamic>{
+      'kmsKeyId': kmsKeyId,
+    };
   }
 
   factory ModelCardSecurityConfig.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class ModelCardSecurityConfig {
     );
   }
 }
+

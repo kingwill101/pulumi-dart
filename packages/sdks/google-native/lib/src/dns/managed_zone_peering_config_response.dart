@@ -5,10 +5,8 @@ import 'managed_zone_peering_config_target_network_response.dart';
 
 class ManagedZonePeeringConfigResponse {
   final pulumi.Input<String> kind;
-
   /// The network with which to peer.
-  final pulumi.Input<ManagedZonePeeringConfigTargetNetworkResponse>
-  targetNetwork;
+  final pulumi.Input<ManagedZonePeeringConfigTargetNetworkResponse> targetNetwork;
 
   /// Creates a new [ManagedZonePeeringConfigResponse].
   /// [kind] Required.
@@ -21,22 +19,15 @@ class ManagedZonePeeringConfigResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'kind': kind,
-      'targetNetwork':
-          pulumi.Input.mapInputValue<
-            ManagedZonePeeringConfigTargetNetworkResponse,
-            Map<String, dynamic>
-          >(targetNetwork, (value) => value.toMap()),
+      'targetNetwork': pulumi.Input.mapInputValue<ManagedZonePeeringConfigTargetNetworkResponse, Map<String, dynamic>>(targetNetwork, (value) => value.toMap()),
     };
   }
 
   factory ManagedZonePeeringConfigResponse.fromMap(Map<String, dynamic> map) {
     return ManagedZonePeeringConfigResponse(
       kind: pulumi.Input.fromValue(map['kind'] as String),
-      targetNetwork: pulumi.Input.fromValue(
-        ManagedZonePeeringConfigTargetNetworkResponse.fromMap(
-          (map['targetNetwork']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      targetNetwork: pulumi.Input.fromValue(ManagedZonePeeringConfigTargetNetworkResponse.fromMap((map['targetNetwork']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

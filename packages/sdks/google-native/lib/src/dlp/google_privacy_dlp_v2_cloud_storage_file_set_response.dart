@@ -9,17 +9,20 @@ class GooglePrivacyDlpV2CloudStorageFileSetResponse {
 
   /// Creates a new [GooglePrivacyDlpV2CloudStorageFileSetResponse].
   /// [url] The url, in the format `gs:///`. Trailing wildcard in the path is allowed.
-  GooglePrivacyDlpV2CloudStorageFileSetResponse({required this.url});
+  GooglePrivacyDlpV2CloudStorageFileSetResponse({
+    required this.url,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'url': url};
+    return <String, dynamic>{
+      'url': url,
+    };
   }
 
-  factory GooglePrivacyDlpV2CloudStorageFileSetResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GooglePrivacyDlpV2CloudStorageFileSetResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2CloudStorageFileSetResponse(
       url: pulumi.Input.fromValue(map['url'] as String),
     );
   }
 }
+

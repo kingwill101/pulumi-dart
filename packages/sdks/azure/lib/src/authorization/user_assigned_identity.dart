@@ -163,25 +163,18 @@ import 'user_assigned_identity_state.dart';
 class UserAssignedIdentity extends pulumi.CustomResource {
   /// The ID of the app associated with the Identity.
   late final pulumi.Output<String> clientId;
-
   /// The isolation scope for the User Assigned Identity. The only possible value is `Regional`.
   late final pulumi.Output<String?> isolationScope;
-
   /// The Azure Region where the User Assigned Identity should exist. Changing this forces a new User Assigned Identity to be created.
   late final pulumi.Output<String> location;
-
   /// Specifies the name of this User Assigned Identity. Changing this forces a new User Assigned Identity to be created.
   late final pulumi.Output<String> name;
-
   /// The ID of the Service Principal object associated with the created Identity.
   late final pulumi.Output<String> principalId;
-
   /// Specifies the name of the Resource Group within which this User Assigned Identity should exist. Changing this forces a new User Assigned Identity to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags which should be assigned to the User Assigned Identity.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The ID of the Tenant which the Identity belongs to.
   late final pulumi.Output<String> tenantId;
 
@@ -194,11 +187,11 @@ class UserAssignedIdentity extends pulumi.CustomResource {
     UserAssignedIdentityArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:authorization/userAssignedIdentity:UserAssignedIdentity',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:authorization/userAssignedIdentity:UserAssignedIdentity',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clientId = registerOutput<String>('clientId');
     isolationScope = registerOutput<String?>('isolationScope');
     location = registerOutput<String>('location');
@@ -227,11 +220,11 @@ class UserAssignedIdentity extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:authorization/userAssignedIdentity:UserAssignedIdentity',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:authorization/userAssignedIdentity:UserAssignedIdentity',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     clientId = registerOutput<String>('clientId');
     isolationScope = registerOutput<String?>('isolationScope');
     location = registerOutput<String>('location');

@@ -6,13 +6,10 @@ import 'kubernetes_cluster_windows_profile_gmsa.dart';
 class KubernetesClusterWindowsProfile {
   /// The Admin Password for Windows VMs. Length must be between 14 and 123 characters.
   final pulumi.Input<String> adminPassword;
-
   /// The Admin Username for Windows VMs. Changing this forces a new resource to be created.
   final pulumi.Input<String> adminUsername;
-
   /// A `gmsa` block as defined below.
   final pulumi.Input<KubernetesClusterWindowsProfileGmsa>? gmsa;
-
   /// Specifies the type of on-premise license which should be used for Node Pool Windows Virtual Machine. At this time the only possible value is `Windows_Server`.
   final pulumi.Input<String>? license;
 
@@ -32,11 +29,7 @@ class KubernetesClusterWindowsProfile {
     return <String, dynamic>{
       'adminPassword': adminPassword,
       'adminUsername': adminUsername,
-      'gmsa':
-          ?pulumi.Input.mapOptionalInputValue<
-            KubernetesClusterWindowsProfileGmsa,
-            Map<String, dynamic>
-          >(gmsa, (value) => value.toMap()),
+      'gmsa': ?pulumi.Input.mapOptionalInputValue<KubernetesClusterWindowsProfileGmsa, Map<String, dynamic>>(gmsa, (value) => value.toMap()),
       'license': ?license,
     };
   }
@@ -45,20 +38,9 @@ class KubernetesClusterWindowsProfile {
     return KubernetesClusterWindowsProfile(
       adminPassword: pulumi.Input.fromValue(map['adminPassword'] as String),
       adminUsername: pulumi.Input.fromValue(map['adminUsername'] as String),
-      gmsa: (() {
-        final guardedValue = map['gmsa'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          KubernetesClusterWindowsProfileGmsa.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      license: (() {
-        final guardedValue = map['license'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      gmsa: (() { final guardedValue = map['gmsa']; if (guardedValue == null) return null; return pulumi.Input.fromValue(KubernetesClusterWindowsProfileGmsa.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      license: (() { final guardedValue = map['license']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -16,3 +16,4 @@ enum ModelingSize {
     throw ArgumentError('Unknown ModelingSize value: $value');
   }
 }
+

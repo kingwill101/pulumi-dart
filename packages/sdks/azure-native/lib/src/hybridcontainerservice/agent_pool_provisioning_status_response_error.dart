@@ -9,26 +9,23 @@ class AgentPoolProvisioningStatusResponseError {
   /// Creates a new [AgentPoolProvisioningStatusResponseError].
   /// [code] Optional.
   /// [message] Optional.
-  AgentPoolProvisioningStatusResponseError({this.code, this.message});
+  AgentPoolProvisioningStatusResponseError({
+    this.code,
+    this.message,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'code': ?code, 'message': ?message};
+    return <String, dynamic>{
+      'code': ?code,
+      'message': ?message,
+    };
   }
 
-  factory AgentPoolProvisioningStatusResponseError.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentPoolProvisioningStatusResponseError.fromMap(Map<String, dynamic> map) {
     return AgentPoolProvisioningStatusResponseError(
-      code: (() {
-        final guardedValue = map['code'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      message: (() {
-        final guardedValue = map['message'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      code: (() { final guardedValue = map['code']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      message: (() { final guardedValue = map['message']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

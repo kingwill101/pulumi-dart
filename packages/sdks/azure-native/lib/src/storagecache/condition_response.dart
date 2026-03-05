@@ -6,17 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConditionResponse {
   /// The issue requiring attention.
   final pulumi.Input<String> message;
-
   /// The time when the condition was raised.
   final pulumi.Input<String> timestamp;
 
   /// Creates a new [ConditionResponse].
   /// [message] The issue requiring attention.
   /// [timestamp] The time when the condition was raised.
-  ConditionResponse({required this.message, required this.timestamp});
+  ConditionResponse({
+    required this.message,
+    required this.timestamp,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'message': message, 'timestamp': timestamp};
+    return <String, dynamic>{
+      'message': message,
+      'timestamp': timestamp,
+    };
   }
 
   factory ConditionResponse.fromMap(Map<String, dynamic> map) {
@@ -26,3 +31,4 @@ class ConditionResponse {
     );
   }
 }
+

@@ -249,52 +249,40 @@ class MulticastDomain extends pulumi.CustomResource {
   /// Use the following format:
   /// `projects/{project}/locations/global/networks/{network}`.
   late final pulumi.Output<String> adminNetwork;
-
   /// VPC connectivity information.
   /// Structure is documented below.
   late final pulumi.Output<MulticastDomainConnectionConfig> connectionConfig;
-
   /// The timestamp when the multicast domain was created.
   late final pulumi.Output<String> createTime;
-
   /// An optional text description of the multicast domain.
   late final pulumi.Output<String?> description;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// Labels as key-value pairs.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> location;
-
   /// The multicast domain group this domain should be associated with.
   /// Use the following format:
   /// `projects/{project}/locations/global/multicastDomainGroups/{multicast_domain_group}`.
   late final pulumi.Output<String?> multicastDomainGroup;
-
   /// A unique name for the multicast domain.
   /// The name is restricted to letters, numbers, and hyphen, with the first
   /// character a letter, and the last a letter or a number. The name must not
   /// exceed 48 characters.
   late final pulumi.Output<String> multicastDomainId;
-
   /// Identifier. The resource name of the multicast domain.
   /// Use the following format:
   /// `projects/*/locations/global/multicastDomains/*`
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// (Output)
   /// The state of the multicast resource.
   /// Possible values:
@@ -306,13 +294,11 @@ class MulticastDomain extends pulumi.CustomResource {
   /// UPDATE_FAILED
   /// INACTIVE
   late final pulumi.Output<List<Map<String, dynamic>>> states;
-
   /// The Google-generated UUID for the resource. This value is
   /// unique across all multicast domain resources. If a domain is deleted and
   /// another with the same name is created, the new domain is assigned a
   /// different unique_id.
   late final pulumi.Output<String> uniqueId;
-
   /// The timestamp when the multicast domain was most recently
   /// updated.
   late final pulumi.Output<String> updateTime;
@@ -326,22 +312,13 @@ class MulticastDomain extends pulumi.CustomResource {
     MulticastDomainArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:networkservices/multicastDomain:MulticastDomain',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:networkservices/multicastDomain:MulticastDomain',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     adminNetwork = registerOutput<String>('adminNetwork');
-    connectionConfig = registerOutput<MulticastDomainConnectionConfig>(
-      'connectionConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MulticastDomainConnectionConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    connectionConfig = registerOutput<MulticastDomainConnectionConfig>('connectionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MulticastDomainConnectionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -375,22 +352,13 @@ class MulticastDomain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:networkservices/multicastDomain:MulticastDomain',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:networkservices/multicastDomain:MulticastDomain',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     adminNetwork = registerOutput<String>('adminNetwork');
-    connectionConfig = registerOutput<MulticastDomainConnectionConfig>(
-      'connectionConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MulticastDomainConnectionConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    connectionConfig = registerOutput<MulticastDomainConnectionConfig>('connectionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MulticastDomainConnectionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');

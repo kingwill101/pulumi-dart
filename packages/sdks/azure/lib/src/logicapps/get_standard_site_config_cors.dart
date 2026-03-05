@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetStandardSiteConfigCors {
   /// A list of origins which should be able to make cross-origin calls.
   final pulumi.Input<List<String>> allowedOrigins;
-
   /// Are credentials supported?
   final pulumi.Input<bool> supportCredentials;
 
@@ -26,12 +25,9 @@ class GetStandardSiteConfigCors {
 
   factory GetStandardSiteConfigCors.fromMap(Map<String, dynamic> map) {
     return GetStandardSiteConfigCors(
-      allowedOrigins: pulumi.Input.fromValue(
-        (map['allowedOrigins'] as List).cast<String>(),
-      ),
-      supportCredentials: pulumi.Input.fromValue(
-        map['supportCredentials'] as bool,
-      ),
+      allowedOrigins: pulumi.Input.fromValue((map['allowedOrigins'] as List).cast<String>()),
+      supportCredentials: pulumi.Input.fromValue(map['supportCredentials'] as bool),
     );
   }
 }
+

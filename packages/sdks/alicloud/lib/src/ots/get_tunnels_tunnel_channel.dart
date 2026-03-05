@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTunnelsTunnelChannel {
   /// The id of the channel.
   final pulumi.Input<String> channelId;
-
   /// The latest consumption time of the channel, unix time in nanosecond
   final pulumi.Input<int> channelRpo;
-
   /// The status of the channel, valid values: `WAIT`, `OPEN`, `CLOSING`, `CLOSE`, `TERMINATED`.
   final pulumi.Input<String> channelStatus;
-
   /// The type of the channel, valid values: `BaseData`, `Stream`.
   final pulumi.Input<String> channelType;
-
   /// The client id of the channel.
   final pulumi.Input<String> clientId;
 
@@ -52,3 +48,4 @@ class GetTunnelsTunnelChannel {
     );
   }
 }
+

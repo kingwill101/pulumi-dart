@@ -6,21 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RuntimeManagementConfigState {
   /// ARN of the function.
   final pulumi.Input<String>? functionArn;
-
   /// Name or ARN of the Lambda function.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? functionName;
-
   /// Version of the function. This can be `$LATEST` or a published version number. If omitted, this resource will manage the runtime configuration for `$LATEST`.
   final pulumi.Input<String>? qualifier;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// ARN of the runtime version. Only required when `update_runtime_on` is `Manual`.
   final pulumi.Input<String>? runtimeVersionArn;
-
   /// Runtime update mode. Valid values are `Auto`, `FunctionUpdate`, and `Manual`. When a function is created, the default mode is `Auto`.
   final pulumi.Input<String>? updateRuntimeOn;
 
@@ -53,36 +48,13 @@ class RuntimeManagementConfigState {
 
   factory RuntimeManagementConfigState.fromMap(Map<String, dynamic> map) {
     return RuntimeManagementConfigState(
-      functionArn: (() {
-        final guardedValue = map['functionArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      functionName: (() {
-        final guardedValue = map['functionName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      qualifier: (() {
-        final guardedValue = map['qualifier'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      runtimeVersionArn: (() {
-        final guardedValue = map['runtimeVersionArn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      updateRuntimeOn: (() {
-        final guardedValue = map['updateRuntimeOn'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      functionArn: (() { final guardedValue = map['functionArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      functionName: (() { final guardedValue = map['functionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      qualifier: (() { final guardedValue = map['qualifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      runtimeVersionArn: (() { final guardedValue = map['runtimeVersionArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      updateRuntimeOn: (() { final guardedValue = map['updateRuntimeOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatasetBlobStorageStorageAccount {
   /// The name of the storage account to be shared with the receiver. Changing this forces a new Data Share Blob Storage Dataset to be created.
   final pulumi.Input<String> name;
-
   /// The resource group name of the storage account to be shared with the receiver. Changing this forces a new Data Share Blob Storage Dataset to be created.
   final pulumi.Input<String> resourceGroupName;
-
   /// The subscription id of the storage account to be shared with the receiver. Changing this forces a new Data Share Blob Storage Dataset to be created.
   final pulumi.Input<String> subscriptionId;
 
@@ -33,10 +31,9 @@ class DatasetBlobStorageStorageAccount {
   factory DatasetBlobStorageStorageAccount.fromMap(Map<String, dynamic> map) {
     return DatasetBlobStorageStorageAccount(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       subscriptionId: pulumi.Input.fromValue(map['subscriptionId'] as String),
     );
   }
 }
+

@@ -9,34 +9,24 @@ import 'system_data_response.dart';
 class GetVolumeResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// State of the operation on the resource.
   final SourceCreationDataResponse? creationData;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// Parent resource information.
   final ManagedByInfoResponse? managedBy;
-
   /// The name of the resource
   final String name;
-
   /// State of the operation on the resource.
   final String provisioningState;
-
   /// Volume size.
   final double sizeGiB;
-
   /// Storage target information
   final IscsiTargetInfoResponse storageTarget;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
-
   /// Unique Id of the volume in GUID format
   final String volumeId;
 
@@ -85,32 +75,17 @@ class GetVolumeResult {
   factory GetVolumeResult.fromMap(Map<String, dynamic> map) {
     return GetVolumeResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      creationData: (() {
-        final guardedValue = map['creationData'];
-        if (guardedValue == null) return null;
-        return SourceCreationDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      creationData: (() { final guardedValue = map['creationData']; if (guardedValue == null) return null; return SourceCreationDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: map['id'] as String,
-      managedBy: (() {
-        final guardedValue = map['managedBy'];
-        if (guardedValue == null) return null;
-        return ManagedByInfoResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      managedBy: (() { final guardedValue = map['managedBy']; if (guardedValue == null) return null; return ManagedByInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       sizeGiB: map['sizeGiB'] as double,
-      storageTarget: IscsiTargetInfoResponse.fromMap(
-        (map['storageTarget']! as Map).cast<String, dynamic>(),
-      ),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      storageTarget: IscsiTargetInfoResponse.fromMap((map['storageTarget']! as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
       volumeId: map['volumeId'] as String,
     );
   }
 }
+

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PolicyDefinitionTemplateLinkedResource {
   /// The entity ID of the resource.
   final pulumi.Input<String> entityId;
-
   /// The entity type of the resource.
   final pulumi.Input<String> entityType;
 
@@ -18,15 +17,17 @@ class PolicyDefinitionTemplateLinkedResource {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'entityId': entityId, 'entityType': entityType};
+    return <String, dynamic>{
+      'entityId': entityId,
+      'entityType': entityType,
+    };
   }
 
-  factory PolicyDefinitionTemplateLinkedResource.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory PolicyDefinitionTemplateLinkedResource.fromMap(Map<String, dynamic> map) {
     return PolicyDefinitionTemplateLinkedResource(
       entityId: pulumi.Input.fromValue(map['entityId'] as String),
       entityType: pulumi.Input.fromValue(map['entityType'] as String),
     );
   }
 }
+

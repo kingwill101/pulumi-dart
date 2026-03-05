@@ -9,19 +9,20 @@ class OIDC {
 
   /// Creates a new [OIDC].
   /// [issuer] &lt;p&gt;The issuer URL for the OIDC identity provider.&lt;/p&gt;
-  OIDC({this.issuer});
+  OIDC({
+    this.issuer,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'issuer': ?issuer};
+    return <String, dynamic>{
+      'issuer': ?issuer,
+    };
   }
 
   factory OIDC.fromMap(Map<String, dynamic> map) {
     return OIDC(
-      issuer: (() {
-        final guardedValue = map['issuer'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      issuer: (() { final guardedValue = map['issuer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MediaInsightsPipelineConfigurationElementVoiceAnalyticsProcessorConfiguration {
   /// Enable speaker search.
   final pulumi.Input<String> speakerSearchStatus;
-
   /// Enable voice tone analysis.
   final pulumi.Input<String> voiceToneAnalysisStatus;
 
@@ -24,16 +23,11 @@ class MediaInsightsPipelineConfigurationElementVoiceAnalyticsProcessorConfigurat
     };
   }
 
-  factory MediaInsightsPipelineConfigurationElementVoiceAnalyticsProcessorConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MediaInsightsPipelineConfigurationElementVoiceAnalyticsProcessorConfiguration.fromMap(Map<String, dynamic> map) {
     return MediaInsightsPipelineConfigurationElementVoiceAnalyticsProcessorConfiguration(
-      speakerSearchStatus: pulumi.Input.fromValue(
-        map['speakerSearchStatus'] as String,
-      ),
-      voiceToneAnalysisStatus: pulumi.Input.fromValue(
-        map['voiceToneAnalysisStatus'] as String,
-      ),
+      speakerSearchStatus: pulumi.Input.fromValue(map['speakerSearchStatus'] as String),
+      voiceToneAnalysisStatus: pulumi.Input.fromValue(map['voiceToneAnalysisStatus'] as String),
     );
   }
 }
+

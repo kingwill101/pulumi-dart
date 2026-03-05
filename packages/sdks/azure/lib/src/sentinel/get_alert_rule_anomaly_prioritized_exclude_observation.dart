@@ -5,13 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAlertRuleAnomalyPrioritizedExcludeObservation {
   /// The description of the threshold observation.
   final pulumi.Input<String> description;
-
   /// The excluded value per `description`.
   final pulumi.Input<String> exclude;
-
   /// The guid of this Sentinel Alert Rule Template. Either `display_name` or `name` have to be specified.
   final pulumi.Input<String> name;
-
   /// The prioritized value per `description`.
   final pulumi.Input<String> prioritize;
 
@@ -36,9 +33,7 @@ class GetAlertRuleAnomalyPrioritizedExcludeObservation {
     };
   }
 
-  factory GetAlertRuleAnomalyPrioritizedExcludeObservation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetAlertRuleAnomalyPrioritizedExcludeObservation.fromMap(Map<String, dynamic> map) {
     return GetAlertRuleAnomalyPrioritizedExcludeObservation(
       description: pulumi.Input.fromValue(map['description'] as String),
       exclude: pulumi.Input.fromValue(map['exclude'] as String),
@@ -47,3 +42,4 @@ class GetAlertRuleAnomalyPrioritizedExcludeObservation {
     );
   }
 }
+

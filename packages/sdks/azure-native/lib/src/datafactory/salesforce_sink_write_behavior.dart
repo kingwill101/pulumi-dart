@@ -15,3 +15,4 @@ enum SalesforceSinkWriteBehavior {
     throw ArgumentError('Unknown SalesforceSinkWriteBehavior value: $value');
   }
 }
+

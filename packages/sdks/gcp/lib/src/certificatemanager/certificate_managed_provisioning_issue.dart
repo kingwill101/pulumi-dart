@@ -7,33 +7,29 @@ class CertificateManagedProvisioningIssue {
   /// the configuration issues.
   /// Not guaranteed to be stable. For programmatic access use 'reason' field.
   final pulumi.Input<String>? details;
-
   /// Reason for provisioning failures.
   final pulumi.Input<String>? reason;
 
   /// Creates a new [CertificateManagedProvisioningIssue].
   /// [details] Human readable explanation about the issue. Provided to help address
   /// [reason] Reason for provisioning failures.
-  CertificateManagedProvisioningIssue({this.details, this.reason});
+  CertificateManagedProvisioningIssue({
+    this.details,
+    this.reason,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'details': ?details, 'reason': ?reason};
+    return <String, dynamic>{
+      'details': ?details,
+      'reason': ?reason,
+    };
   }
 
-  factory CertificateManagedProvisioningIssue.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory CertificateManagedProvisioningIssue.fromMap(Map<String, dynamic> map) {
     return CertificateManagedProvisioningIssue(
-      details: (() {
-        final guardedValue = map['details'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      reason: (() {
-        final guardedValue = map['reason'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      details: (() { final guardedValue = map['details']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      reason: (() { final guardedValue = map['reason']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

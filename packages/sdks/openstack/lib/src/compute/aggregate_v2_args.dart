@@ -11,18 +11,14 @@ class AggregateV2Args {
   /// to Openstack and visible in the web interface, or the provider will fail to add them to the host
   /// aggregate.
   final pulumi.Input<List<String>>? hosts;
-
   /// The metadata of the Host Aggregate. Can be useful to indicate scheduler hints.
   final pulumi.Input<Map<String, String>>? metadata;
-
   /// The name of the Host Aggregate
   final pulumi.Input<String>? name;
-
   /// The region in which to create the Host Aggregate. If
   /// omitted, the `region` argument of the provider is used. Changing this
   /// creates a new Host Aggregate.
   final pulumi.Input<String>? region;
-
   /// The name of the Availability Zone to use. If ommited, it will take the default
   /// availability zone.
   final pulumi.Input<String>? zone;
@@ -53,33 +49,12 @@ class AggregateV2Args {
 
   factory AggregateV2Args.fromMap(Map<String, dynamic> map) {
     return AggregateV2Args(
-      hosts: (() {
-        final guardedValue = map['hosts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      metadata: (() {
-        final guardedValue = map['metadata'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      zone: (() {
-        final guardedValue = map['zone'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      hosts: (() { final guardedValue = map['hosts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      zone: (() { final guardedValue = map['zone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -14,8 +14,7 @@ enum KnownExtensionDataSourceStreams {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown KnownExtensionDataSourceStreams value: $value',
-    );
+    throw ArgumentError('Unknown KnownExtensionDataSourceStreams value: $value');
   }
 }
+

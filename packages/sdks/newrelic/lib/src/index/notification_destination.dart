@@ -1675,37 +1675,26 @@ import 'notification_destination_state.dart';
 class NotificationDestination extends pulumi.CustomResource {
   /// Determines the New Relic account where the notification destination will be created. Defaults to the account associated with the API key used.
   late final pulumi.Output<String> accountId;
-
   /// Indicates whether the destination is active.
   late final pulumi.Output<bool?> active;
-
   /// A nested block that describes a basic username and password authentication credentials. Only one auth_basic block is permitted per notification destination definition.  See Nested auth_basic blocks below for details.
   late final pulumi.Output<NotificationDestinationAuthBasic?> authBasic;
-
   /// A nested block that describes a custom header authentication credentials. This field is required when the destination type is WORKFLOW_AUTOMATION and optional for other destination types. Multiple blocks are permitted per notification destination definition. Nested auth_custom_header blocks below for details.
   late final pulumi.Output<List<Map<String, dynamic>>?> authCustomHeaders;
-
   /// A nested block that describes a token authentication credentials. Only one auth_token block is permitted per notification destination definition.  See Nested auth_token blocks below for details.
   late final pulumi.Output<NotificationDestinationAuthToken?> authToken;
-
   /// The unique entity identifier of the destination in New Relic.
   late final pulumi.Output<String> guid;
-
   /// The last time a notification was sent.
   late final pulumi.Output<String> lastSent;
-
   /// The name of the destination.
   late final pulumi.Output<String> name;
-
   /// A nested block that describes a notification destination property. See Nested property blocks below for details.
   late final pulumi.Output<List<Map<String, dynamic>>> properties;
-
   /// A nested block that describes a URL that contains sensitive data at the path or parameters. Only one secure_url block is permitted per notification destination definition. See Nested secure_url blocks below for details.
   late final pulumi.Output<NotificationDestinationSecureUrl?> secureUrl;
-
   /// The status of the destination.
   late final pulumi.Output<String> status;
-
   /// The type of destination.  One of: `EMAIL`, `SERVICE_NOW`, `SERVICE_NOW_APP`, `WEBHOOK`, `JIRA`, `MOBILE_PUSH`, `EVENT_BRIDGE`, `PAGERDUTY_ACCOUNT_INTEGRATION` or `PAGERDUTY_SERVICE_INTEGRATION`, `MICROSOFT_TEAMS`, `WORKFLOW_AUTOMATION`. The types `SLACK` and `SLACK_COLLABORATION` can only be imported, updated and destroyed (cannot be created via terraform).
   late final pulumi.Output<String> type;
 
@@ -1718,50 +1707,21 @@ class NotificationDestination extends pulumi.CustomResource {
     NotificationDestinationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:index/notificationDestination:NotificationDestination',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:index/notificationDestination:NotificationDestination',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     active = registerOutput<bool?>('active');
-    authBasic = registerOutput<NotificationDestinationAuthBasic?>(
-      'authBasic',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NotificationDestinationAuthBasic.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    authCustomHeaders = registerOutput<List<Map<String, dynamic>>?>(
-      'authCustomHeaders',
-    );
-    authToken = registerOutput<NotificationDestinationAuthToken?>(
-      'authToken',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NotificationDestinationAuthToken.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    authBasic = registerOutput<NotificationDestinationAuthBasic?>('authBasic', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotificationDestinationAuthBasic.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    authCustomHeaders = registerOutput<List<Map<String, dynamic>>?>('authCustomHeaders');
+    authToken = registerOutput<NotificationDestinationAuthToken?>('authToken', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotificationDestinationAuthToken.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     guid = registerOutput<String>('guid');
     lastSent = registerOutput<String>('lastSent');
     this.name = registerOutput<String>('name');
     properties = registerOutput<List<Map<String, dynamic>>>('properties');
-    secureUrl = registerOutput<NotificationDestinationSecureUrl?>(
-      'secureUrl',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NotificationDestinationSecureUrl.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    secureUrl = registerOutput<NotificationDestinationSecureUrl?>('secureUrl', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotificationDestinationSecureUrl.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
     type = registerOutput<String>('type');
   }
@@ -1784,50 +1744,21 @@ class NotificationDestination extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'newrelic:index/notificationDestination:NotificationDestination',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'newrelic:index/notificationDestination:NotificationDestination',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountId = registerOutput<String>('accountId');
     active = registerOutput<bool?>('active');
-    authBasic = registerOutput<NotificationDestinationAuthBasic?>(
-      'authBasic',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NotificationDestinationAuthBasic.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    authCustomHeaders = registerOutput<List<Map<String, dynamic>>?>(
-      'authCustomHeaders',
-    );
-    authToken = registerOutput<NotificationDestinationAuthToken?>(
-      'authToken',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NotificationDestinationAuthToken.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    authBasic = registerOutput<NotificationDestinationAuthBasic?>('authBasic', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotificationDestinationAuthBasic.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    authCustomHeaders = registerOutput<List<Map<String, dynamic>>?>('authCustomHeaders');
+    authToken = registerOutput<NotificationDestinationAuthToken?>('authToken', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotificationDestinationAuthToken.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     guid = registerOutput<String>('guid');
     lastSent = registerOutput<String>('lastSent');
     this.name = registerOutput<String>('name');
     properties = registerOutput<List<Map<String, dynamic>>>('properties');
-    secureUrl = registerOutput<NotificationDestinationSecureUrl?>(
-      'secureUrl',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NotificationDestinationSecureUrl.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    secureUrl = registerOutput<NotificationDestinationSecureUrl?>('secureUrl', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotificationDestinationSecureUrl.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
     type = registerOutput<String>('type');
   }

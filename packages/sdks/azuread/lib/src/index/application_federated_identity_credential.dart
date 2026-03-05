@@ -176,22 +176,16 @@ import 'application_federated_identity_credential_state.dart';
 class ApplicationFederatedIdentityCredential extends pulumi.CustomResource {
   /// The resource ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
   late final pulumi.Output<String> applicationId;
-
   /// List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
   late final pulumi.Output<List<String>> audiences;
-
   /// A UUID used to uniquely identify this federated identity credential.
   late final pulumi.Output<String> credentialId;
-
   /// A description for the federated identity credential.
   late final pulumi.Output<String?> description;
-
   /// A unique display name for the federated identity credential. Changing this forces a new resource to be created.
   late final pulumi.Output<String> displayName;
-
   /// The URL of the external identity provider, which must match the issuer claim of the external token being exchanged. The combination of the values of issuer and subject must be unique on the app.
   late final pulumi.Output<String> issuer;
-
   /// The identifier of the external software workload within the external identity provider. The combination of issuer and subject must be unique on the app.
   late final pulumi.Output<String> subject;
 
@@ -204,11 +198,11 @@ class ApplicationFederatedIdentityCredential extends pulumi.CustomResource {
     ApplicationFederatedIdentityCredentialArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/applicationFederatedIdentityCredential:ApplicationFederatedIdentityCredential',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azuread:index/applicationFederatedIdentityCredential:ApplicationFederatedIdentityCredential',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationId = registerOutput<String>('applicationId');
     audiences = registerOutput<List<String>>('audiences');
     credentialId = registerOutput<String>('credentialId');
@@ -236,11 +230,11 @@ class ApplicationFederatedIdentityCredential extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azuread:index/applicationFederatedIdentityCredential:ApplicationFederatedIdentityCredential',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azuread:index/applicationFederatedIdentityCredential:ApplicationFederatedIdentityCredential',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     applicationId = registerOutput<String>('applicationId');
     audiences = registerOutput<List<String>>('audiences');
     credentialId = registerOutput<String>('credentialId');

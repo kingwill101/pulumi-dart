@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GalleryArgs {
   /// The name of the devcenter.
   final pulumi.Input<String> devCenterName;
-
   /// The name of the gallery.
   final pulumi.Input<String>? galleryName;
-
   /// The resource ID of the backing Azure Compute Gallery.
   final pulumi.Input<String> galleryResourceId;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -43,17 +40,10 @@ class GalleryArgs {
   factory GalleryArgs.fromMap(Map<String, dynamic> map) {
     return GalleryArgs(
       devCenterName: pulumi.Input.fromValue(map['devCenterName'] as String),
-      galleryName: (() {
-        final guardedValue = map['galleryName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      galleryResourceId: pulumi.Input.fromValue(
-        map['galleryResourceId'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      galleryName: (() { final guardedValue = map['galleryName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      galleryResourceId: pulumi.Input.fromValue(map['galleryResourceId'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

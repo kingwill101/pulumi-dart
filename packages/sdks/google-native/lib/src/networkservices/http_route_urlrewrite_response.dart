@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HttpRouteURLRewriteResponse {
   /// Prior to forwarding the request to the selected destination, the requests host header is replaced by this value.
   final pulumi.Input<String> hostRewrite;
-
   /// Prior to forwarding the request to the selected destination, the matching portion of the requests path is replaced by this value.
   final pulumi.Input<String> pathPrefixRewrite;
 
@@ -28,9 +27,8 @@ class HttpRouteURLRewriteResponse {
   factory HttpRouteURLRewriteResponse.fromMap(Map<String, dynamic> map) {
     return HttpRouteURLRewriteResponse(
       hostRewrite: pulumi.Input.fromValue(map['hostRewrite'] as String),
-      pathPrefixRewrite: pulumi.Input.fromValue(
-        map['pathPrefixRewrite'] as String,
-      ),
+      pathPrefixRewrite: pulumi.Input.fromValue(map['pathPrefixRewrite'] as String),
     );
   }
 }
+

@@ -204,22 +204,16 @@ import 'vswitch_state.dart';
 class Vswitch extends pulumi.CustomResource {
   /// The CIDR block of the vSwitch.
   late final pulumi.Output<String> cidrBlock;
-
   /// The time when the VPC was created.
   late final pulumi.Output<String> createTime;
-
   /// The description of the vSwitch.
   late final pulumi.Output<String?> description;
-
   /// ENS Region ID.
   late final pulumi.Output<String> ensRegionId;
-
   /// The ID of the network to which the vSwitch that you want to create belongs.
   late final pulumi.Output<String> networkId;
-
   /// The status of the vSwitch.
   late final pulumi.Output<String> status;
-
   /// The name of the vSwitch.
   late final pulumi.Output<String?> vswitchName;
 
@@ -232,11 +226,11 @@ class Vswitch extends pulumi.CustomResource {
     VswitchArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ens/vswitch:Vswitch',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ens/vswitch:Vswitch',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cidrBlock = registerOutput<String>('cidrBlock');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
@@ -264,11 +258,11 @@ class Vswitch extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ens/vswitch:Vswitch',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ens/vswitch:Vswitch',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     cidrBlock = registerOutput<String>('cidrBlock');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');

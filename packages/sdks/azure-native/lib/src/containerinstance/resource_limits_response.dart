@@ -7,10 +7,8 @@ import 'gpu_resource_response.dart';
 class ResourceLimitsResponse {
   /// The CPU limit of this container instance.
   final pulumi.Input<double>? cpu;
-
   /// The GPU limit of this container instance.
   final pulumi.Input<GpuResourceResponse>? gpu;
-
   /// The memory limit in GB of this container instance.
   final pulumi.Input<double>? memoryInGB;
 
@@ -18,41 +16,26 @@ class ResourceLimitsResponse {
   /// [cpu] The CPU limit of this container instance.
   /// [gpu] The GPU limit of this container instance.
   /// [memoryInGB] The memory limit in GB of this container instance.
-  ResourceLimitsResponse({this.cpu, this.gpu, this.memoryInGB});
+  ResourceLimitsResponse({
+    this.cpu,
+    this.gpu,
+    this.memoryInGB,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'cpu': ?cpu,
-      'gpu':
-          ?pulumi.Input.mapOptionalInputValue<
-            GpuResourceResponse,
-            Map<String, dynamic>
-          >(gpu, (value) => value.toMap()),
+      'gpu': ?pulumi.Input.mapOptionalInputValue<GpuResourceResponse, Map<String, dynamic>>(gpu, (value) => value.toMap()),
       'memoryInGB': ?memoryInGB,
     };
   }
 
   factory ResourceLimitsResponse.fromMap(Map<String, dynamic> map) {
     return ResourceLimitsResponse(
-      cpu: (() {
-        final guardedValue = map['cpu'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      gpu: (() {
-        final guardedValue = map['gpu'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          GpuResourceResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      memoryInGB: (() {
-        final guardedValue = map['memoryInGB'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      cpu: (() { final guardedValue = map['cpu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      gpu: (() { final guardedValue = map['gpu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GpuResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      memoryInGB: (() { final guardedValue = map['memoryInGB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

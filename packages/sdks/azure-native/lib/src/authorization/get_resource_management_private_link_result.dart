@@ -6,17 +6,13 @@ import 'resource_management_private_link_endpoint_connections_response.dart';
 class GetResourceManagementPrivateLinkResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The rmplResourceID.
   final String id;
-
   /// the region of the rmpl
   final String? location;
-
   /// The rmpl Name.
   final String name;
   final ResourceManagementPrivateLinkEndpointConnectionsResponse properties;
-
   /// The operation type.
   final String type;
 
@@ -47,23 +43,15 @@ class GetResourceManagementPrivateLinkResult {
     };
   }
 
-  factory GetResourceManagementPrivateLinkResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetResourceManagementPrivateLinkResult.fromMap(Map<String, dynamic> map) {
     return GetResourceManagementPrivateLinkResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
-      properties:
-          ResourceManagementPrivateLinkEndpointConnectionsResponse.fromMap(
-            (map['properties']! as Map).cast<String, dynamic>(),
-          ),
+      properties: ResourceManagementPrivateLinkEndpointConnectionsResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

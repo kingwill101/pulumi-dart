@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KeyVaultKeyResponseAttributes {
   /// When the key was created.
   final pulumi.Input<double>? created;
-
   /// Whether the key is enabled or not.
   final pulumi.Input<bool>? enabled;
-
   /// When the key was updated.
   final pulumi.Input<double>? updated;
 
@@ -17,7 +15,11 @@ class KeyVaultKeyResponseAttributes {
   /// [created] When the key was created.
   /// [enabled] Whether the key is enabled or not.
   /// [updated] When the key was updated.
-  KeyVaultKeyResponseAttributes({this.created, this.enabled, this.updated});
+  KeyVaultKeyResponseAttributes({
+    this.created,
+    this.enabled,
+    this.updated,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class KeyVaultKeyResponseAttributes {
 
   factory KeyVaultKeyResponseAttributes.fromMap(Map<String, dynamic> map) {
     return KeyVaultKeyResponseAttributes(
-      created: (() {
-        final guardedValue = map['created'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      updated: (() {
-        final guardedValue = map['updated'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      created: (() { final guardedValue = map['created']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      updated: (() { final guardedValue = map['updated']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

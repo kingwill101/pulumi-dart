@@ -9,14 +9,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRouterArgs {
   /// The name of the router.
   final pulumi.Input<String> name;
-
   /// The VPC network on which this router lives.
   final pulumi.Input<String> network;
-
   /// The ID of the project in which the resource
   /// belongs. If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The region this router has been created in. If
   /// unspecified, this defaults to the region configured in the provider.
   final pulumi.Input<String>? region;
@@ -46,16 +43,9 @@ class GetRouterArgs {
     return GetRouterArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
       network: pulumi.Input.fromValue(map['network'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

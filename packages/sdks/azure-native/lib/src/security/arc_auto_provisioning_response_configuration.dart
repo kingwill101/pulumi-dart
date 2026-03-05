@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ArcAutoProvisioningResponseConfiguration {
   /// Optional Arc private link scope resource id to link the Arc agent
   final pulumi.Input<String>? privateLinkScope;
-
   /// Optional HTTP proxy endpoint to use for the Arc agent
   final pulumi.Input<String>? proxy;
 
   /// Creates a new [ArcAutoProvisioningResponseConfiguration].
   /// [privateLinkScope] Optional Arc private link scope resource id to link the Arc agent
   /// [proxy] Optional HTTP proxy endpoint to use for the Arc agent
-  ArcAutoProvisioningResponseConfiguration({this.privateLinkScope, this.proxy});
+  ArcAutoProvisioningResponseConfiguration({
+    this.privateLinkScope,
+    this.proxy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -22,20 +24,11 @@ class ArcAutoProvisioningResponseConfiguration {
     };
   }
 
-  factory ArcAutoProvisioningResponseConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ArcAutoProvisioningResponseConfiguration.fromMap(Map<String, dynamic> map) {
     return ArcAutoProvisioningResponseConfiguration(
-      privateLinkScope: (() {
-        final guardedValue = map['privateLinkScope'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      proxy: (() {
-        final guardedValue = map['proxy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      privateLinkScope: (() { final guardedValue = map['privateLinkScope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      proxy: (() { final guardedValue = map['proxy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

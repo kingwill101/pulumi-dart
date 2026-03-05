@@ -9,17 +9,13 @@ enum PolicyControllerHubConfigInstallSpecGkehubV1alpha {
   const PolicyControllerHubConfigInstallSpecGkehubV1alpha(this.wireValue);
   final String wireValue;
 
-  static PolicyControllerHubConfigInstallSpecGkehubV1alpha fromValue(
-    String value,
-  ) {
-    for (final item
-        in PolicyControllerHubConfigInstallSpecGkehubV1alpha.values) {
+  static PolicyControllerHubConfigInstallSpecGkehubV1alpha fromValue(String value) {
+    for (final item in PolicyControllerHubConfigInstallSpecGkehubV1alpha.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown PolicyControllerHubConfigInstallSpecGkehubV1alpha value: $value',
-    );
+    throw ArgumentError('Unknown PolicyControllerHubConfigInstallSpecGkehubV1alpha value: $value');
   }
 }
+

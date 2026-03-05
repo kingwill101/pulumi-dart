@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRegionSecurityPolicyArgs {
   /// The name of the Region Security Policy.
   final pulumi.Input<String> name;
-
   /// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The region in which the Region Security Policy resides. If not specified, the provider region is used.
   final pulumi.Input<String>? region;
 
@@ -20,7 +18,11 @@ class GetRegionSecurityPolicyArgs {
   /// [name] The name of the Region Security Policy.
   /// [project] The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
   /// [region] The region in which the Region Security Policy resides. If not specified, the provider region is used.
-  GetRegionSecurityPolicyArgs({required this.name, this.project, this.region});
+  GetRegionSecurityPolicyArgs({
+    required this.name,
+    this.project,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,16 +35,9 @@ class GetRegionSecurityPolicyArgs {
   factory GetRegionSecurityPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionSecurityPolicyArgs(
       name: pulumi.Input.fromValue(map['name'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -257,39 +257,26 @@ import 'enterprise_snapshot_policy_storage_rule.dart';
 class EnterpriseSnapshotPolicy extends pulumi.CustomResource {
   /// The creation time of the resource.
   late final pulumi.Output<String> createTime;
-
   /// Snapshot replication information. See `cross_region_copy_info` below.
-  late final pulumi.Output<EnterpriseSnapshotPolicyCrossRegionCopyInfo>
-  crossRegionCopyInfo;
-
+  late final pulumi.Output<EnterpriseSnapshotPolicyCrossRegionCopyInfo> crossRegionCopyInfo;
   /// Description information representing the resource.
   late final pulumi.Output<String?> desc;
-
   /// The name of the resource.
   late final pulumi.Output<String> enterpriseSnapshotPolicyName;
-
   /// The ID of the resource group.
   late final pulumi.Output<String> resourceGroupId;
-
   /// Snapshot retention policy representing resources. See `retain_rule` below.
   late final pulumi.Output<EnterpriseSnapshotPolicyRetainRule> retainRule;
-
   /// The scheduling plan that represents the resource. See `schedule` below.
   late final pulumi.Output<EnterpriseSnapshotPolicySchedule> schedule;
-
   /// Snapshot special retention rules. See `special_retain_rules` below.
-  late final pulumi.Output<EnterpriseSnapshotPolicySpecialRetainRules>
-  specialRetainRules;
-
+  late final pulumi.Output<EnterpriseSnapshotPolicySpecialRetainRules> specialRetainRules;
   /// The status of the resource.
   late final pulumi.Output<String> status;
-
   /// Snapshot storage policy. See `storage_rule` below.
   late final pulumi.Output<EnterpriseSnapshotPolicyStorageRule?> storageRule;
-
   /// The tag of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Represents the target type of resource binding.
   late final pulumi.Output<String> targetType;
 
@@ -302,70 +289,21 @@ class EnterpriseSnapshotPolicy extends pulumi.CustomResource {
     EnterpriseSnapshotPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ebs/enterpriseSnapshotPolicy:EnterpriseSnapshotPolicy',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ebs/enterpriseSnapshotPolicy:EnterpriseSnapshotPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
-    crossRegionCopyInfo =
-        registerOutput<EnterpriseSnapshotPolicyCrossRegionCopyInfo>(
-          'crossRegionCopyInfo',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return EnterpriseSnapshotPolicyCrossRegionCopyInfo.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    crossRegionCopyInfo = registerOutput<EnterpriseSnapshotPolicyCrossRegionCopyInfo>('crossRegionCopyInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnterpriseSnapshotPolicyCrossRegionCopyInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     desc = registerOutput<String?>('desc');
-    enterpriseSnapshotPolicyName = registerOutput<String>(
-      'enterpriseSnapshotPolicyName',
-    );
+    enterpriseSnapshotPolicyName = registerOutput<String>('enterpriseSnapshotPolicyName');
     resourceGroupId = registerOutput<String>('resourceGroupId');
-    retainRule = registerOutput<EnterpriseSnapshotPolicyRetainRule>(
-      'retainRule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EnterpriseSnapshotPolicyRetainRule.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    schedule = registerOutput<EnterpriseSnapshotPolicySchedule>(
-      'schedule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EnterpriseSnapshotPolicySchedule.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    specialRetainRules =
-        registerOutput<EnterpriseSnapshotPolicySpecialRetainRules>(
-          'specialRetainRules',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return EnterpriseSnapshotPolicySpecialRetainRules.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    retainRule = registerOutput<EnterpriseSnapshotPolicyRetainRule>('retainRule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnterpriseSnapshotPolicyRetainRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    schedule = registerOutput<EnterpriseSnapshotPolicySchedule>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnterpriseSnapshotPolicySchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    specialRetainRules = registerOutput<EnterpriseSnapshotPolicySpecialRetainRules>('specialRetainRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnterpriseSnapshotPolicySpecialRetainRules.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
-    storageRule = registerOutput<EnterpriseSnapshotPolicyStorageRule?>(
-      'storageRule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EnterpriseSnapshotPolicyStorageRule.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    storageRule = registerOutput<EnterpriseSnapshotPolicyStorageRule?>('storageRule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnterpriseSnapshotPolicyStorageRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     targetType = registerOutput<String>('targetType');
   }
@@ -388,70 +326,21 @@ class EnterpriseSnapshotPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ebs/enterpriseSnapshotPolicy:EnterpriseSnapshotPolicy',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ebs/enterpriseSnapshotPolicy:EnterpriseSnapshotPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
-    crossRegionCopyInfo =
-        registerOutput<EnterpriseSnapshotPolicyCrossRegionCopyInfo>(
-          'crossRegionCopyInfo',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return EnterpriseSnapshotPolicyCrossRegionCopyInfo.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    crossRegionCopyInfo = registerOutput<EnterpriseSnapshotPolicyCrossRegionCopyInfo>('crossRegionCopyInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnterpriseSnapshotPolicyCrossRegionCopyInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     desc = registerOutput<String?>('desc');
-    enterpriseSnapshotPolicyName = registerOutput<String>(
-      'enterpriseSnapshotPolicyName',
-    );
+    enterpriseSnapshotPolicyName = registerOutput<String>('enterpriseSnapshotPolicyName');
     resourceGroupId = registerOutput<String>('resourceGroupId');
-    retainRule = registerOutput<EnterpriseSnapshotPolicyRetainRule>(
-      'retainRule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EnterpriseSnapshotPolicyRetainRule.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    schedule = registerOutput<EnterpriseSnapshotPolicySchedule>(
-      'schedule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EnterpriseSnapshotPolicySchedule.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    specialRetainRules =
-        registerOutput<EnterpriseSnapshotPolicySpecialRetainRules>(
-          'specialRetainRules',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return EnterpriseSnapshotPolicySpecialRetainRules.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    retainRule = registerOutput<EnterpriseSnapshotPolicyRetainRule>('retainRule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnterpriseSnapshotPolicyRetainRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    schedule = registerOutput<EnterpriseSnapshotPolicySchedule>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnterpriseSnapshotPolicySchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    specialRetainRules = registerOutput<EnterpriseSnapshotPolicySpecialRetainRules>('specialRetainRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnterpriseSnapshotPolicySpecialRetainRules.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
-    storageRule = registerOutput<EnterpriseSnapshotPolicyStorageRule?>(
-      'storageRule',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EnterpriseSnapshotPolicyStorageRule.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    storageRule = registerOutput<EnterpriseSnapshotPolicyStorageRule?>('storageRule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnterpriseSnapshotPolicyStorageRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     targetType = registerOutput<String>('targetType');
   }

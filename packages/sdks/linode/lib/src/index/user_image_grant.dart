@@ -5,17 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserImageGrant {
   /// The ID of the entity this grant applies to.
   final pulumi.Input<int> id;
-
   /// The level of access this User has to this entity. If null, this User has no access.
   final pulumi.Input<String> permissions;
 
   /// Creates a new [UserImageGrant].
   /// [id] The ID of the entity this grant applies to.
   /// [permissions] The level of access this User has to this entity. If null, this User has no access.
-  UserImageGrant({required this.id, required this.permissions});
+  UserImageGrant({
+    required this.id,
+    required this.permissions,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id, 'permissions': permissions};
+    return <String, dynamic>{
+      'id': id,
+      'permissions': permissions,
+    };
   }
 
   factory UserImageGrant.fromMap(Map<String, dynamic> map) {
@@ -25,3 +30,4 @@ class UserImageGrant {
     );
   }
 }
+

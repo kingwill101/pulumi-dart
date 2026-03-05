@@ -18,3 +18,4 @@ enum AzureStorageAuthenticationType {
     throw ArgumentError('Unknown AzureStorageAuthenticationType value: $value');
   }
 }
+

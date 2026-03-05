@@ -9,10 +9,14 @@ class DomainConfigResponse {
 
   /// Creates a new [DomainConfigResponse].
   /// [domain] Immutable. Domain used by Workstations for HTTP ingress.
-  DomainConfigResponse({required this.domain});
+  DomainConfigResponse({
+    required this.domain,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'domain': domain};
+    return <String, dynamic>{
+      'domain': domain,
+    };
   }
 
   factory DomainConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class DomainConfigResponse {
     );
   }
 }
+

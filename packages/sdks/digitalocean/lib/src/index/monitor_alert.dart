@@ -20,23 +20,17 @@ class MonitorAlert extends pulumi.CustomResource {
   /// Note that for Slack, the DigitalOcean app needs to have permissions for your workspace. You can
   /// read more in [Slack's documentation](https://slack.com/intl/en-dk/help/articles/222386767-Manage-app-installation-settings-for-your-workspace)
   late final pulumi.Output<MonitorAlertAlerts> alerts;
-
   /// The comparison for `value`.
   /// This may be either `GreaterThan` or `LessThan`.
   late final pulumi.Output<String> compare;
-
   /// The description of the alert.
   late final pulumi.Output<String> description;
-
   /// The status of the alert.
   late final pulumi.Output<bool?> enabled;
-
   /// A list of IDs for the resources to which the alert policy applies.
   late final pulumi.Output<List<String>?> entities;
-
   /// A list of tags. When an included tag is added to a resource, the alert policy will apply to it.
   late final pulumi.Output<List<String>?> tags;
-
   /// The type of the alert.
   /// This may be one of `v1/insights/droplet/load_1`, `v1/insights/droplet/load_5`, `v1/insights/droplet/load_15`,
   /// `v1/insights/droplet/memory_utilization_percent`, `v1/insights/droplet/disk_utilization_percent`,
@@ -52,14 +46,11 @@ class MonitorAlert extends pulumi.CustomResource {
   /// `v1/dbaas/alerts/load_15_alerts`, `v1/dbaas/alerts/cpu_alerts`, `v1/dbaas/alerts/memory_utilization_alerts`, or
   /// `v1/dbaas/alerts/disk_utilization_alerts`.
   late final pulumi.Output<String> type;
-
   /// The uuid of the alert.
   late final pulumi.Output<String> uuid;
-
   /// The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
   /// DigitalOcean will show the correct unit in the web panel.
   late final pulumi.Output<double> value;
-
   /// The time frame of the alert. Either `5m`, `10m`, `30m`, or `1h`.
   late final pulumi.Output<String> window;
 
@@ -72,21 +63,12 @@ class MonitorAlert extends pulumi.CustomResource {
     MonitorAlertArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/monitorAlert:MonitorAlert',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    alerts = registerOutput<MonitorAlertAlerts>(
-      'alerts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MonitorAlertAlerts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'digitalocean:index/monitorAlert:MonitorAlert',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    alerts = registerOutput<MonitorAlertAlerts>('alerts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MonitorAlertAlerts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     compare = registerOutput<String>('compare');
     description = registerOutput<String>('description');
     enabled = registerOutput<bool?>('enabled');
@@ -116,21 +98,12 @@ class MonitorAlert extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'digitalocean:index/monitorAlert:MonitorAlert',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    alerts = registerOutput<MonitorAlertAlerts>(
-      'alerts',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return MonitorAlertAlerts.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'digitalocean:index/monitorAlert:MonitorAlert',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    alerts = registerOutput<MonitorAlertAlerts>('alerts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MonitorAlertAlerts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     compare = registerOutput<String>('compare');
     description = registerOutput<String>('description');
     enabled = registerOutput<bool?>('enabled');

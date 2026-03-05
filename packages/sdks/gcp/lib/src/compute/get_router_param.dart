@@ -10,17 +10,20 @@ class GetRouterParam {
 
   /// Creates a new [GetRouterParam].
   /// [resourceManagerTags] Resource manager tags to be bound to the router. Tag keys and values have the
-  GetRouterParam({required this.resourceManagerTags});
+  GetRouterParam({
+    required this.resourceManagerTags,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'resourceManagerTags': resourceManagerTags};
+    return <String, dynamic>{
+      'resourceManagerTags': resourceManagerTags,
+    };
   }
 
   factory GetRouterParam.fromMap(Map<String, dynamic> map) {
     return GetRouterParam(
-      resourceManagerTags: pulumi.Input.fromValue(
-        (map['resourceManagerTags'] as Map).cast<String, String>(),
-      ),
+      resourceManagerTags: pulumi.Input.fromValue((map['resourceManagerTags'] as Map).cast<String, String>()),
     );
   }
 }
+

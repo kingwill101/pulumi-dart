@@ -5,17 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTagsTag {
   /// The name of the tag, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1`. If the package part contains slashes, the slashes are escaped.
   final pulumi.Input<String> name;
-
   /// The version of the tag.
   final pulumi.Input<String> version;
 
   /// Creates a new [GetTagsTag].
   /// [name] The name of the tag, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1`. If the package part contains slashes, the slashes are escaped.
   /// [version] The version of the tag.
-  GetTagsTag({required this.name, required this.version});
+  GetTagsTag({
+    required this.name,
+    required this.version,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'version': version};
+    return <String, dynamic>{
+      'name': name,
+      'version': version,
+    };
   }
 
   factory GetTagsTag.fromMap(Map<String, dynamic> map) {
@@ -25,3 +30,4 @@ class GetTagsTag {
     );
   }
 }
+

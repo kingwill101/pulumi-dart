@@ -9,19 +9,20 @@ class TracingConfig {
 
   /// Creates a new [TracingConfig].
   /// [mode] The tracing mode.
-  TracingConfig({this.mode});
+  TracingConfig({
+    this.mode,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'mode': ?mode};
+    return <String, dynamic>{
+      'mode': ?mode,
+    };
   }
 
   factory TracingConfig.fromMap(Map<String, dynamic> map) {
     return TracingConfig(
-      mode: (() {
-        final guardedValue = map['mode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

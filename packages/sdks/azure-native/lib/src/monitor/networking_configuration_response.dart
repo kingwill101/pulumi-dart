@@ -7,10 +7,8 @@ import 'networking_route_response.dart';
 class NetworkingConfigurationResponse {
   /// External networking mode.
   final pulumi.Input<String> externalNetworkingMode;
-
   /// The address exposed on the cluster. Example: azuremonitorpipeline.contoso.com.
   final pulumi.Input<String>? host;
-
   /// Networking routes configuration.
   final pulumi.Input<List<NetworkingRouteResponse>> routes;
 
@@ -28,39 +26,16 @@ class NetworkingConfigurationResponse {
     return <String, dynamic>{
       'externalNetworkingMode': externalNetworkingMode,
       'host': ?host,
-      'routes':
-          pulumi.Input.mapInputValue<
-            List<NetworkingRouteResponse>,
-            List<Map<String, dynamic>>
-          >(
-            routes,
-            (value) =>
-                pulumi.Input.encodeList<
-                  NetworkingRouteResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'routes': pulumi.Input.mapInputValue<List<NetworkingRouteResponse>, List<Map<String, dynamic>>>(routes, (value) => pulumi.Input.encodeList<NetworkingRouteResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory NetworkingConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return NetworkingConfigurationResponse(
-      externalNetworkingMode: pulumi.Input.fromValue(
-        map['externalNetworkingMode'] as String,
-      ),
-      host: (() {
-        final guardedValue = map['host'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      routes: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<NetworkingRouteResponse>(
-          map['routes']!,
-          (value) => NetworkingRouteResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      externalNetworkingMode: pulumi.Input.fromValue(map['externalNetworkingMode'] as String),
+      host: (() { final guardedValue = map['host']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      routes: pulumi.Input.fromValue(pulumi.Input.decodeList<NetworkingRouteResponse>(map['routes']!, (value) => NetworkingRouteResponse.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

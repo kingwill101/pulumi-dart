@@ -7,19 +7,14 @@ import 'ai_deployment_resource_pool_dedicated_resources.dart';
 class AiDeploymentResourcePoolState {
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   final pulumi.Input<String>? createTime;
-
   /// The underlying dedicated resources that the deployment resource pool uses.
   /// Structure is documented below.
-  final pulumi.Input<AiDeploymentResourcePoolDedicatedResources>?
-  dedicatedResources;
-
+  final pulumi.Input<AiDeploymentResourcePoolDedicatedResources>? dedicatedResources;
   /// The resource name of deployment resource pool. The maximum length is 63 characters, and valid characters are `/^a-z?$/`.
   final pulumi.Input<String>? name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// The region of deployment resource pool. eg us-central1
   final pulumi.Input<String>? region;
 
@@ -40,11 +35,7 @@ class AiDeploymentResourcePoolState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createTime': ?createTime,
-      'dedicatedResources':
-          ?pulumi.Input.mapOptionalInputValue<
-            AiDeploymentResourcePoolDedicatedResources,
-            Map<String, dynamic>
-          >(dedicatedResources, (value) => value.toMap()),
+      'dedicatedResources': ?pulumi.Input.mapOptionalInputValue<AiDeploymentResourcePoolDedicatedResources, Map<String, dynamic>>(dedicatedResources, (value) => value.toMap()),
       'name': ?name,
       'project': ?project,
       'region': ?region,
@@ -53,35 +44,12 @@ class AiDeploymentResourcePoolState {
 
   factory AiDeploymentResourcePoolState.fromMap(Map<String, dynamic> map) {
     return AiDeploymentResourcePoolState(
-      createTime: (() {
-        final guardedValue = map['createTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      dedicatedResources: (() {
-        final guardedValue = map['dedicatedResources'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AiDeploymentResourcePoolDedicatedResources.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dedicatedResources: (() { final guardedValue = map['dedicatedResources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AiDeploymentResourcePoolDedicatedResources.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

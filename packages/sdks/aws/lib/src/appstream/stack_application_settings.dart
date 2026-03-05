@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StackApplicationSettings {
   /// Whether application settings should be persisted.
   final pulumi.Input<bool> enabled;
-
   /// Name of the settings group.
   /// Required when `enabled` is `true`.
   /// Can be up to 100 characters.
@@ -14,7 +13,10 @@ class StackApplicationSettings {
   /// Creates a new [StackApplicationSettings].
   /// [enabled] Whether application settings should be persisted.
   /// [settingsGroup] Name of the settings group.
-  StackApplicationSettings({required this.enabled, this.settingsGroup});
+  StackApplicationSettings({
+    required this.enabled,
+    this.settingsGroup,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,11 +28,8 @@ class StackApplicationSettings {
   factory StackApplicationSettings.fromMap(Map<String, dynamic> map) {
     return StackApplicationSettings(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
-      settingsGroup: (() {
-        final guardedValue = map['settingsGroup'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      settingsGroup: (() { final guardedValue = map['settingsGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

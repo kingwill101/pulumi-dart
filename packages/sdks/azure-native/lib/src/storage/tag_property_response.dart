@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TagPropertyResponse {
   /// Returns the Object ID of the user who added the tag.
   final pulumi.Input<String> objectIdentifier;
-
   /// The tag value.
   final pulumi.Input<String> tag;
-
   /// Returns the Tenant ID that issued the token for the user who added the tag.
   final pulumi.Input<String> tenantId;
-
   /// Returns the date and time the tag was added.
   final pulumi.Input<String> timestamp;
-
   /// Returns the User Principal Name of the user who added the tag.
   final pulumi.Input<String> upn;
 
@@ -45,9 +41,7 @@ class TagPropertyResponse {
 
   factory TagPropertyResponse.fromMap(Map<String, dynamic> map) {
     return TagPropertyResponse(
-      objectIdentifier: pulumi.Input.fromValue(
-        map['objectIdentifier'] as String,
-      ),
+      objectIdentifier: pulumi.Input.fromValue(map['objectIdentifier'] as String),
       tag: pulumi.Input.fromValue(map['tag'] as String),
       tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
       timestamp: pulumi.Input.fromValue(map['timestamp'] as String),
@@ -55,3 +49,4 @@ class TagPropertyResponse {
     );
   }
 }
+

@@ -16,23 +16,17 @@ class MultitenantDistributionCacheBehaviorTrustedKeyGroups {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': ?enabled, 'items': ?items};
+    return <String, dynamic>{
+      'enabled': ?enabled,
+      'items': ?items,
+    };
   }
 
-  factory MultitenantDistributionCacheBehaviorTrustedKeyGroups.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory MultitenantDistributionCacheBehaviorTrustedKeyGroups.fromMap(Map<String, dynamic> map) {
     return MultitenantDistributionCacheBehaviorTrustedKeyGroups(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      items: (() {
-        final guardedValue = map['items'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      items: (() { final guardedValue = map['items']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

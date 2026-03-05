@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudApigeeV1SecurityProfileScoringConfigResponse {
   /// Description of the config.
   final pulumi.Input<String> description;
-
   /// Path of the component config used for scoring.
   final pulumi.Input<String> scorePath;
-
   /// Title of the config.
   final pulumi.Input<String> title;
 
@@ -31,9 +29,7 @@ class GoogleCloudApigeeV1SecurityProfileScoringConfigResponse {
     };
   }
 
-  factory GoogleCloudApigeeV1SecurityProfileScoringConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudApigeeV1SecurityProfileScoringConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1SecurityProfileScoringConfigResponse(
       description: pulumi.Input.fromValue(map['description'] as String),
       scorePath: pulumi.Input.fromValue(map['scorePath'] as String),
@@ -41,3 +37,4 @@ class GoogleCloudApigeeV1SecurityProfileScoringConfigResponse {
     );
   }
 }
+

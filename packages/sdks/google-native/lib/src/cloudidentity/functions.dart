@@ -135,8 +135,7 @@ Future<GetGroupCloudidentityV1beta1Result> getGroupCloudidentityV1beta1(
 /// Gets an InboundSamlSsoProfile.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudidentity_v1beta1_get_inbound_saml_sso_profile_cloudidentity_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetInboundSamlSsoProfileCloudidentityV1beta1Result>
-getInboundSamlSsoProfileCloudidentityV1beta1(
+Future<GetInboundSamlSsoProfileCloudidentityV1beta1Result> getInboundSamlSsoProfileCloudidentityV1beta1(
   GetInboundSamlSsoProfileCloudidentityV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -152,8 +151,7 @@ getInboundSamlSsoProfileCloudidentityV1beta1(
 /// Gets an InboundSsoAssignment.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudidentity_v1beta1_get_inbound_sso_assignment_cloudidentity_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetInboundSsoAssignmentCloudidentityV1beta1Result>
-getInboundSsoAssignmentCloudidentityV1beta1(
+Future<GetInboundSsoAssignmentCloudidentityV1beta1Result> getInboundSsoAssignmentCloudidentityV1beta1(
   GetInboundSsoAssignmentCloudidentityV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -169,8 +167,7 @@ getInboundSsoAssignmentCloudidentityV1beta1(
 /// Retrieves a `Membership`.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudidentity_v1beta1_get_membership_cloudidentity_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetMembershipCloudidentityV1beta1Result>
-getMembershipCloudidentityV1beta1(
+Future<GetMembershipCloudidentityV1beta1Result> getMembershipCloudidentityV1beta1(
   GetMembershipCloudidentityV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {

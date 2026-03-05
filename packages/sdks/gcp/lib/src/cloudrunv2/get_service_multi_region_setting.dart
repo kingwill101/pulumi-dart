@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceMultiRegionSetting {
   /// System-generated unique id for the multi-region Service.
   final pulumi.Input<String> multiRegionId;
-
   /// The list of regions to deploy the multi-region Service.
   final pulumi.Input<List<String>> regions;
 
@@ -31,3 +30,4 @@ class GetServiceMultiRegionSetting {
     );
   }
 }
+

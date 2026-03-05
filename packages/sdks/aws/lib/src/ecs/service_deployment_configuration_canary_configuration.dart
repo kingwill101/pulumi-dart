@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceDeploymentConfigurationCanaryConfiguration {
   /// Number of minutes to wait before shifting all traffic to the new deployment. Valid range: 0-1440 minutes.
   final pulumi.Input<String>? canaryBakeTimeInMinutes;
-
   /// Percentage of traffic to route to the canary deployment. Valid range: 0.1-100.0.
   final pulumi.Input<double>? canaryPercent;
 
@@ -24,20 +23,11 @@ class ServiceDeploymentConfigurationCanaryConfiguration {
     };
   }
 
-  factory ServiceDeploymentConfigurationCanaryConfiguration.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ServiceDeploymentConfigurationCanaryConfiguration.fromMap(Map<String, dynamic> map) {
     return ServiceDeploymentConfigurationCanaryConfiguration(
-      canaryBakeTimeInMinutes: (() {
-        final guardedValue = map['canaryBakeTimeInMinutes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      canaryPercent: (() {
-        final guardedValue = map['canaryPercent'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      canaryBakeTimeInMinutes: (() { final guardedValue = map['canaryBakeTimeInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      canaryPercent: (() { final guardedValue = map['canaryPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

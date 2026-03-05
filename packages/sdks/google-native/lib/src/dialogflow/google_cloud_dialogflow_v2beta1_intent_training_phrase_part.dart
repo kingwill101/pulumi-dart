@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart {
   /// Optional. The parameter name for the value extracted from the annotated part of the example. This field is required for annotated parts of the training phrase.
   final pulumi.Input<String>? alias;
-
   /// Optional. The entity type name prefixed with `@`. This field is required for annotated parts of the training phrase.
   final pulumi.Input<String>? entityType;
-
   /// The text for this part.
   final pulumi.Input<String> text;
-
   /// Optional. Indicates whether the text was manually annotated. This field is set to true when the Dialogflow Console is used to manually annotate the part. When creating an annotated part with the API, you must set this to true.
   final pulumi.Input<bool>? userDefined;
 
@@ -37,26 +34,13 @@ class GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart {
     };
   }
 
-  factory GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart(
-      alias: (() {
-        final guardedValue = map['alias'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      entityType: (() {
-        final guardedValue = map['entityType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      alias: (() { final guardedValue = map['alias']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      entityType: (() { final guardedValue = map['entityType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       text: pulumi.Input.fromValue(map['text'] as String),
-      userDefined: (() {
-        final guardedValue = map['userDefined'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      userDefined: (() { final guardedValue = map['userDefined']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

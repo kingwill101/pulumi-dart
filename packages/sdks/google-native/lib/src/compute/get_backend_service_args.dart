@@ -13,7 +13,10 @@ class GetBackendServiceArgs {
   /// Creates a new [GetBackendServiceArgs].
   /// [backendService] Required.
   /// [project] Optional.
-  GetBackendServiceArgs({required this.backendService, this.project});
+  GetBackendServiceArgs({
+    required this.backendService,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,11 +28,8 @@ class GetBackendServiceArgs {
   factory GetBackendServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetBackendServiceArgs(
       backendService: pulumi.Input.fromValue(map['backendService'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

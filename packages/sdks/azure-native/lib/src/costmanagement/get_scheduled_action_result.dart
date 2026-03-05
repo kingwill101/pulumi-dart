@@ -9,46 +9,32 @@ import 'system_data_response.dart';
 class GetScheduledActionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Scheduled action name.
   final String displayName;
-
   /// Resource Etag. For update calls, eTag is optional and can be specified to achieve optimistic concurrency. Fetch the resource's eTag by doing a 'GET' call first and then including the latest eTag as part of the request body or 'If-Match' header while performing the update. For create calls, eTag is not required.
   final String eTag;
-
   /// Destination format of the view data. This is optional.
   final FileDestinationResponse? fileDestination;
-
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-
   /// Kind of the scheduled action.
   final String? kind;
-
   /// The name of the resource
   final String name;
-
   /// Notification properties based on scheduled action kind.
   final NotificationPropertiesResponse notification;
-
   /// Email address of the point of contact that should get the unsubscribe requests and notification emails.
   final String? notificationEmail;
-
   /// Schedule of the scheduled action.
   final SchedulePropertiesResponse schedule;
-
   /// For private scheduled action(Create or Update), scope will be empty.&lt;br /&gt; For shared scheduled action(Create or Update By Scope), Cost Management scope can be 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for BillingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for InvoiceSection scope, '/providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}' for ExternalBillingAccount scope, and '/providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}' for ExternalSubscription scope.
   final String? scope;
-
   /// Status of the scheduled action.
   final String status;
-
   /// Kind of the scheduled action.
   final SystemDataResponse systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
-
   /// Cost analysis viewId used for scheduled action. For example, '/providers/Microsoft.CostManagement/views/swaggerExample'
   final String viewId;
 
@@ -111,42 +97,19 @@ class GetScheduledActionResult {
       azureApiVersion: map['azureApiVersion'] as String,
       displayName: map['displayName'] as String,
       eTag: map['eTag'] as String,
-      fileDestination: (() {
-        final guardedValue = map['fileDestination'];
-        if (guardedValue == null) return null;
-        return FileDestinationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      fileDestination: (() { final guardedValue = map['fileDestination']; if (guardedValue == null) return null; return FileDestinationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: map['id'] as String,
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
-      notification: NotificationPropertiesResponse.fromMap(
-        (map['notification']! as Map).cast<String, dynamic>(),
-      ),
-      notificationEmail: (() {
-        final guardedValue = map['notificationEmail'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      schedule: SchedulePropertiesResponse.fromMap(
-        (map['schedule']! as Map).cast<String, dynamic>(),
-      ),
-      scope: (() {
-        final guardedValue = map['scope'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      notification: NotificationPropertiesResponse.fromMap((map['notification']! as Map).cast<String, dynamic>()),
+      notificationEmail: (() { final guardedValue = map['notificationEmail']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      schedule: SchedulePropertiesResponse.fromMap((map['schedule']! as Map).cast<String, dynamic>()),
+      scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return guardedValue as String; })(),
       status: map['status'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
       viewId: map['viewId'] as String,
     );
   }
 }
+

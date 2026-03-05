@@ -7,13 +7,10 @@ import 'image.dart';
 class Signature {
   /// Optional. An image of the user's signature.
   final pulumi.Input<Image>? image;
-
   /// Optional. Metadata associated with the user's signature. For example, the user's name or the user's title.
   final pulumi.Input<Map<String, String>>? metadata;
-
   /// Optional. Timestamp of the signature.
   final pulumi.Input<String>? signatureTime;
-
   /// User's UUID provided by the client.
   final pulumi.Input<String> userId;
 
@@ -31,10 +28,7 @@ class Signature {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'image': ?pulumi.Input.mapOptionalInputValue<Image, Map<String, dynamic>>(
-        image,
-        (value) => value.toMap(),
-      ),
+      'image': ?pulumi.Input.mapOptionalInputValue<Image, Map<String, dynamic>>(image, (value) => value.toMap()),
       'metadata': ?metadata,
       'signatureTime': ?signatureTime,
       'userId': userId,
@@ -43,26 +37,11 @@ class Signature {
 
   factory Signature.fromMap(Map<String, dynamic> map) {
     return Signature(
-      image: (() {
-        final guardedValue = map['image'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          Image.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      metadata: (() {
-        final guardedValue = map['metadata'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      signatureTime: (() {
-        final guardedValue = map['signatureTime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      image: (() { final guardedValue = map['image']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Image.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      signatureTime: (() { final guardedValue = map['signatureTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       userId: pulumi.Input.fromValue(map['userId'] as String),
     );
   }
 }
+

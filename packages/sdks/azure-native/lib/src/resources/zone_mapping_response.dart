@@ -10,24 +10,23 @@ class ZoneMappingResponse {
   /// Creates a new [ZoneMappingResponse].
   /// [location] The location of the zone mapping.
   /// [zones] Optional.
-  ZoneMappingResponse({this.location, this.zones});
+  ZoneMappingResponse({
+    this.location,
+    this.zones,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'location': ?location, 'zones': ?zones};
+    return <String, dynamic>{
+      'location': ?location,
+      'zones': ?zones,
+    };
   }
 
   factory ZoneMappingResponse.fromMap(Map<String, dynamic> map) {
     return ZoneMappingResponse(
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      zones: (() {
-        final guardedValue = map['zones'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      zones: (() { final guardedValue = map['zones']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

@@ -10,25 +10,20 @@ class DestinationResponseEventarcV1beta1 {
 
   /// Creates a new [DestinationResponseEventarcV1beta1].
   /// [cloudRunService] Cloud Run fully-managed service that receives the events. The service should be running in the same project as the trigger.
-  DestinationResponseEventarcV1beta1({required this.cloudRunService});
+  DestinationResponseEventarcV1beta1({
+    required this.cloudRunService,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cloudRunService':
-          pulumi.Input.mapInputValue<
-            CloudRunServiceResponse,
-            Map<String, dynamic>
-          >(cloudRunService, (value) => value.toMap()),
+      'cloudRunService': pulumi.Input.mapInputValue<CloudRunServiceResponse, Map<String, dynamic>>(cloudRunService, (value) => value.toMap()),
     };
   }
 
   factory DestinationResponseEventarcV1beta1.fromMap(Map<String, dynamic> map) {
     return DestinationResponseEventarcV1beta1(
-      cloudRunService: pulumi.Input.fromValue(
-        CloudRunServiceResponse.fromMap(
-          (map['cloudRunService']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      cloudRunService: pulumi.Input.fromValue(CloudRunServiceResponse.fromMap((map['cloudRunService']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

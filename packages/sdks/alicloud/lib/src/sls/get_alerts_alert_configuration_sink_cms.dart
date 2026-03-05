@@ -8,10 +8,14 @@ class GetAlertsAlertConfigurationSinkCms {
 
   /// Creates a new [GetAlertsAlertConfigurationSinkCms].
   /// [enabled] Open.
-  GetAlertsAlertConfigurationSinkCms({required this.enabled});
+  GetAlertsAlertConfigurationSinkCms({
+    required this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'enabled': enabled};
+    return <String, dynamic>{
+      'enabled': enabled,
+    };
   }
 
   factory GetAlertsAlertConfigurationSinkCms.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class GetAlertsAlertConfigurationSinkCms {
     );
   }
 }
+

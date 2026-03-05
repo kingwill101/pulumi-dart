@@ -7,10 +7,14 @@ class BillingGroupMetadata {
 
   /// Creates a new [BillingGroupMetadata].
   /// [creationDate] Required.
-  BillingGroupMetadata({required this.creationDate});
+  BillingGroupMetadata({
+    required this.creationDate,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'creationDate': creationDate};
+    return <String, dynamic>{
+      'creationDate': creationDate,
+    };
   }
 
   factory BillingGroupMetadata.fromMap(Map<String, dynamic> map) {
@@ -19,3 +23,4 @@ class BillingGroupMetadata {
     );
   }
 }
+

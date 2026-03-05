@@ -203,25 +203,18 @@ import 'load_test_state.dart';
 class LoadTest extends pulumi.CustomResource {
   /// Resource data plane URI.
   late final pulumi.Output<String> dataPlaneUri;
-
   /// Description of the resource.
   late final pulumi.Output<String?> description;
-
   /// An `encryption` block as defined below. Changing this forces a new Load Test to be created.
   late final pulumi.Output<LoadTestEncryption?> encryption;
-
   /// An `identity` block as defined below. Specifies the Managed Identity which should be assigned to this Load Test.
   late final pulumi.Output<LoadTestIdentity?> identity;
-
   /// The Azure Region where the Load Test should exist. Changing this forces a new Load Test to be created.
   late final pulumi.Output<String> location;
-
   /// Specifies the name of this Load Test. Changing this forces a new Load Test to be created.
   late final pulumi.Output<String> name;
-
   /// Specifies the name of the Resource Group within which this Load Test should exist. Changing this forces a new Load Test to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags which should be assigned to the Load Test.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -234,33 +227,15 @@ class LoadTest extends pulumi.CustomResource {
     LoadTestArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:loadtest/loadTest:LoadTest',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:loadtest/loadTest:LoadTest',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dataPlaneUri = registerOutput<String>('dataPlaneUri');
     description = registerOutput<String?>('description');
-    encryption = registerOutput<LoadTestEncryption?>(
-      'encryption',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LoadTestEncryption.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    identity = registerOutput<LoadTestIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LoadTestIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    encryption = registerOutput<LoadTestEncryption?>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadTestEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<LoadTestIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadTestIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -285,33 +260,15 @@ class LoadTest extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:loadtest/loadTest:LoadTest',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:loadtest/loadTest:LoadTest',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dataPlaneUri = registerOutput<String>('dataPlaneUri');
     description = registerOutput<String?>('description');
-    encryption = registerOutput<LoadTestEncryption?>(
-      'encryption',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LoadTestEncryption.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    identity = registerOutput<LoadTestIdentity?>(
-      'identity',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return LoadTestIdentity.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    encryption = registerOutput<LoadTestEncryption?>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadTestEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<LoadTestIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadTestIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');

@@ -1,26 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getPolicy.
 class GetPolicyResult {
   /// The Amazon Resource Name of the policy.
   final String arn;
-
   /// Indicates if a policy is an AWS managed policy.
   final bool awsManaged;
-
   /// The text content of the policy.
   final String content;
-
   /// The description of the policy.
   final String description;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The friendly name of the policy.
   final String name;
   final String policyId;
-
   /// The type of policy values can be `AISERVICES_OPT_OUT_POLICY | BACKUP_POLICY | CHATBOT_POLICY | DECLARATIVE_POLICY_EC2 | RESOURCE_CONTROL_POLICY | SERVICE_CONTROL_POLICY | TAG_POLICY`
   final String type;
 
@@ -70,3 +65,4 @@ class GetPolicyResult {
     );
   }
 }
+

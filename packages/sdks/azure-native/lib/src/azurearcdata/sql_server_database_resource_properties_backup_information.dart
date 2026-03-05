@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SqlServerDatabaseResourcePropertiesBackupInformation {
   /// Date time of last full backup.
   final pulumi.Input<String>? lastFullBackup;
-
   /// Date time of last log backup.
   final pulumi.Input<String>? lastLogBackup;
 
@@ -24,20 +23,11 @@ class SqlServerDatabaseResourcePropertiesBackupInformation {
     };
   }
 
-  factory SqlServerDatabaseResourcePropertiesBackupInformation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SqlServerDatabaseResourcePropertiesBackupInformation.fromMap(Map<String, dynamic> map) {
     return SqlServerDatabaseResourcePropertiesBackupInformation(
-      lastFullBackup: (() {
-        final guardedValue = map['lastFullBackup'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      lastLogBackup: (() {
-        final guardedValue = map['lastLogBackup'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      lastFullBackup: (() { final guardedValue = map['lastFullBackup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      lastLogBackup: (() { final guardedValue = map['lastLogBackup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

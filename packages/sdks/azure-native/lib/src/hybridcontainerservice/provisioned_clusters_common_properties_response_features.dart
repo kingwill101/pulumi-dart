@@ -10,31 +10,20 @@ class ProvisionedClustersCommonPropertiesResponseFeatures {
 
   /// Creates a new [ProvisionedClustersCommonPropertiesResponseFeatures].
   /// [arcAgentProfile] Arc agentry configuration for the provisioned cluster.
-  ProvisionedClustersCommonPropertiesResponseFeatures({this.arcAgentProfile});
+  ProvisionedClustersCommonPropertiesResponseFeatures({
+    this.arcAgentProfile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arcAgentProfile':
-          ?pulumi.Input.mapOptionalInputValue<
-            ArcAgentProfileResponse,
-            Map<String, dynamic>
-          >(arcAgentProfile, (value) => value.toMap()),
+      'arcAgentProfile': ?pulumi.Input.mapOptionalInputValue<ArcAgentProfileResponse, Map<String, dynamic>>(arcAgentProfile, (value) => value.toMap()),
     };
   }
 
-  factory ProvisionedClustersCommonPropertiesResponseFeatures.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ProvisionedClustersCommonPropertiesResponseFeatures.fromMap(Map<String, dynamic> map) {
     return ProvisionedClustersCommonPropertiesResponseFeatures(
-      arcAgentProfile: (() {
-        final guardedValue = map['arcAgentProfile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ArcAgentProfileResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      arcAgentProfile: (() { final guardedValue = map['arcAgentProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ArcAgentProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

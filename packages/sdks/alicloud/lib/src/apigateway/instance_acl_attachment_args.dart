@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceAclAttachmentArgs {
   /// The ID of the ACL to attach.
   final pulumi.Input<String> aclId;
-
   /// The type of the ACL. Valid values: `white`, `black`.
   final pulumi.Input<String> aclType;
-
   /// The ID of the API Gateway instance that the ACL will be attached to.
   final pulumi.Input<String> instanceId;
 
@@ -42,3 +40,4 @@ class InstanceAclAttachmentArgs {
     );
   }
 }
+

@@ -1,13 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getDatabaseMetricsCredentials.
 class GetDatabaseMetricsCredentialsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The password for accessing database metrics. This is marked as sensitive.
   final String password;
-
   /// The username for accessing database metrics.
   final String username;
 
@@ -29,9 +28,7 @@ class GetDatabaseMetricsCredentialsResult {
     };
   }
 
-  factory GetDatabaseMetricsCredentialsResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDatabaseMetricsCredentialsResult.fromMap(Map<String, dynamic> map) {
     return GetDatabaseMetricsCredentialsResult(
       id: map['id'] as String,
       password: map['password'] as String,
@@ -39,3 +36,4 @@ class GetDatabaseMetricsCredentialsResult {
     );
   }
 }
+

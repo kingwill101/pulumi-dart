@@ -118,18 +118,14 @@ import 'folder_membership_state.dart';
 class FolderMembership extends pulumi.CustomResource {
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
   late final pulumi.Output<String> awsAccountId;
-
   /// Identifier for the folder.
   late final pulumi.Output<String> folderId;
-
   /// ID of the asset (the dashboard, analysis, or dataset).
   late final pulumi.Output<String> memberId;
-
   /// Type of the member. Valid values are `ANALYSIS`, `DASHBOARD`, and `DATASET`.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> memberType;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -142,11 +138,11 @@ class FolderMembership extends pulumi.CustomResource {
     FolderMembershipArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:quicksight/folderMembership:FolderMembership',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:quicksight/folderMembership:FolderMembership',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     awsAccountId = registerOutput<String>('awsAccountId');
     folderId = registerOutput<String>('folderId');
     memberId = registerOutput<String>('memberId');
@@ -172,11 +168,11 @@ class FolderMembership extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:quicksight/folderMembership:FolderMembership',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:quicksight/folderMembership:FolderMembership',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     awsAccountId = registerOutput<String>('awsAccountId');
     folderId = registerOutput<String>('folderId');
     memberId = registerOutput<String>('memberId');

@@ -10,13 +10,10 @@ import 'conn_string_value_type_pair.dart';
 class WebAppConnectionStringsArgs {
   /// Kind of resource.
   final pulumi.Input<String>? kind;
-
   /// Name of the app.
   final pulumi.Input<String> name;
-
   /// Connection strings.
   final pulumi.Input<Map<String, ConnStringValueTypePair>>? properties;
-
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,45 +33,18 @@ class WebAppConnectionStringsArgs {
     return <String, dynamic>{
       'kind': ?kind,
       'name': name,
-      'properties':
-          ?pulumi.Input.mapOptionalInputValue<
-            Map<String, ConnStringValueTypePair>,
-            Map<String, Map<String, dynamic>>
-          >(
-            properties,
-            (value) =>
-                pulumi.Input.encodeMapValues<
-                  ConnStringValueTypePair,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'properties': ?pulumi.Input.mapOptionalInputValue<Map<String, ConnStringValueTypePair>, Map<String, Map<String, dynamic>>>(properties, (value) => pulumi.Input.encodeMapValues<ConnStringValueTypePair, Map<String, dynamic>>(value, (value) => value.toMap())),
       'resourceGroupName': resourceGroupName,
     };
   }
 
   factory WebAppConnectionStringsArgs.fromMap(Map<String, dynamic> map) {
     return WebAppConnectionStringsArgs(
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      properties: (() {
-        final guardedValue = map['properties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeMapValues<ConnStringValueTypePair>(
-            guardedValue,
-            (value) => ConnStringValueTypePair.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<ConnStringValueTypePair>(guardedValue, (value) => ConnStringValueTypePair.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

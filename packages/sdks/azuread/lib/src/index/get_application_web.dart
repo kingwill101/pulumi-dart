@@ -6,13 +6,10 @@ import 'get_application_web_implicit_grant.dart';
 class GetApplicationWeb {
   /// Home page or landing page of the application.
   final pulumi.Input<String> homepageUrl;
-
   /// An `implicit_grant` block as documented above.
   final pulumi.Input<List<GetApplicationWebImplicitGrant>> implicitGrants;
-
   /// The URL that will be used by Microsoft's authorization service to sign out a user using front-channel, back-channel or SAML logout protocols.
   final pulumi.Input<String> logoutUrl;
-
   /// A list of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
   final pulumi.Input<List<String>> redirectUris;
 
@@ -31,18 +28,7 @@ class GetApplicationWeb {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'homepageUrl': homepageUrl,
-      'implicitGrants':
-          pulumi.Input.mapInputValue<
-            List<GetApplicationWebImplicitGrant>,
-            List<Map<String, dynamic>>
-          >(
-            implicitGrants,
-            (value) =>
-                pulumi.Input.encodeList<
-                  GetApplicationWebImplicitGrant,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'implicitGrants': pulumi.Input.mapInputValue<List<GetApplicationWebImplicitGrant>, List<Map<String, dynamic>>>(implicitGrants, (value) => pulumi.Input.encodeList<GetApplicationWebImplicitGrant, Map<String, dynamic>>(value, (value) => value.toMap())),
       'logoutUrl': logoutUrl,
       'redirectUris': redirectUris,
     };
@@ -51,18 +37,10 @@ class GetApplicationWeb {
   factory GetApplicationWeb.fromMap(Map<String, dynamic> map) {
     return GetApplicationWeb(
       homepageUrl: pulumi.Input.fromValue(map['homepageUrl'] as String),
-      implicitGrants: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<GetApplicationWebImplicitGrant>(
-          map['implicitGrants']!,
-          (value) => GetApplicationWebImplicitGrant.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      implicitGrants: pulumi.Input.fromValue(pulumi.Input.decodeList<GetApplicationWebImplicitGrant>(map['implicitGrants']!, (value) => GetApplicationWebImplicitGrant.fromMap((value as Map).cast<String, dynamic>()))),
       logoutUrl: pulumi.Input.fromValue(map['logoutUrl'] as String),
-      redirectUris: pulumi.Input.fromValue(
-        (map['redirectUris'] as List).cast<String>(),
-      ),
+      redirectUris: pulumi.Input.fromValue((map['redirectUris'] as List).cast<String>()),
     );
   }
 }
+

@@ -8,17 +8,12 @@ import 'template_contents_interpreter_deploymentmanager_v2beta.dart';
 class TemplateContentsDeploymentmanagerV2beta {
   /// Import files referenced by the main template.
   final pulumi.Input<List<ImportFileDeploymentmanagerV2beta>>? imports;
-
   /// Which interpreter (python or jinja) should be used during expansion.
-  final pulumi.Input<TemplateContentsInterpreterDeploymentmanagerV2beta>?
-  interpreter;
-
+  final pulumi.Input<TemplateContentsInterpreterDeploymentmanagerV2beta>? interpreter;
   /// The filename of the mainTemplate
   final pulumi.Input<String>? mainTemplate;
-
   /// The contents of the template schema.
   final pulumi.Input<String>? schema;
-
   /// The contents of the main template file.
   final pulumi.Input<String>? template;
 
@@ -38,69 +33,22 @@ class TemplateContentsDeploymentmanagerV2beta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'imports':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ImportFileDeploymentmanagerV2beta>,
-            List<Map<String, dynamic>>
-          >(
-            imports,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ImportFileDeploymentmanagerV2beta,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'interpreter':
-          ?pulumi.Input.mapOptionalInputValue<
-            TemplateContentsInterpreterDeploymentmanagerV2beta,
-            String
-          >(interpreter, (value) => value.wireValue),
+      'imports': ?pulumi.Input.mapOptionalInputValue<List<ImportFileDeploymentmanagerV2beta>, List<Map<String, dynamic>>>(imports, (value) => pulumi.Input.encodeList<ImportFileDeploymentmanagerV2beta, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'interpreter': ?pulumi.Input.mapOptionalInputValue<TemplateContentsInterpreterDeploymentmanagerV2beta, String>(interpreter, (value) => value.wireValue),
       'mainTemplate': ?mainTemplate,
       'schema': ?schema,
       'template': ?template,
     };
   }
 
-  factory TemplateContentsDeploymentmanagerV2beta.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory TemplateContentsDeploymentmanagerV2beta.fromMap(Map<String, dynamic> map) {
     return TemplateContentsDeploymentmanagerV2beta(
-      imports: (() {
-        final guardedValue = map['imports'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ImportFileDeploymentmanagerV2beta>(
-            guardedValue,
-            (value) => ImportFileDeploymentmanagerV2beta.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      interpreter: (() {
-        final guardedValue = map['interpreter'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          TemplateContentsInterpreterDeploymentmanagerV2beta.fromValue(
-            guardedValue as String,
-          ),
-        );
-      })(),
-      mainTemplate: (() {
-        final guardedValue = map['mainTemplate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      schema: (() {
-        final guardedValue = map['schema'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      template: (() {
-        final guardedValue = map['template'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      imports: (() { final guardedValue = map['imports']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ImportFileDeploymentmanagerV2beta>(guardedValue, (value) => ImportFileDeploymentmanagerV2beta.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      interpreter: (() { final guardedValue = map['interpreter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TemplateContentsInterpreterDeploymentmanagerV2beta.fromValue(guardedValue as String)); })(),
+      mainTemplate: (() { final guardedValue = map['mainTemplate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      schema: (() { final guardedValue = map['schema']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      template: (() { final guardedValue = map['template']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

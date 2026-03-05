@@ -9,19 +9,20 @@ class AppProfileDataBoostIsolationReadOnly {
 
   /// Creates a new [AppProfileDataBoostIsolationReadOnly].
   /// [computeBillingOwner] The Compute Billing Owner for this Data Boost App Profile.
-  AppProfileDataBoostIsolationReadOnly({required this.computeBillingOwner});
+  AppProfileDataBoostIsolationReadOnly({
+    required this.computeBillingOwner,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'computeBillingOwner': computeBillingOwner};
+    return <String, dynamic>{
+      'computeBillingOwner': computeBillingOwner,
+    };
   }
 
-  factory AppProfileDataBoostIsolationReadOnly.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AppProfileDataBoostIsolationReadOnly.fromMap(Map<String, dynamic> map) {
     return AppProfileDataBoostIsolationReadOnly(
-      computeBillingOwner: pulumi.Input.fromValue(
-        map['computeBillingOwner'] as String,
-      ),
+      computeBillingOwner: pulumi.Input.fromValue(map['computeBillingOwner'] as String),
     );
   }
 }
+

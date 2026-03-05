@@ -12,31 +12,23 @@ class RecommendationEngineArgs {
   /// Common config spec that specifies the metadata of the engine.
   /// Structure is documented below.
   final pulumi.Input<RecommendationEngineCommonConfig>? commonConfig;
-
   /// The data stores associated with this engine. For SOLUTION_TYPE_RECOMMENDATION type of engines, they can only associate with at most one data store.
   final pulumi.Input<List<String>> dataStoreIds;
-
   /// Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
   final pulumi.Input<String> displayName;
-
   /// Unique ID to use for Recommendation Engine.
   final pulumi.Input<String> engineId;
-
   /// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
   /// Default value is `GENERIC`.
   /// Possible values are: `GENERIC`, `MEDIA`.
   final pulumi.Input<String>? industryVertical;
-
   /// The geographic location where the data store should reside. The value can
   /// only be one of "global", "us" and "eu".
   final pulumi.Input<String> location;
-
   /// Configurations for a Media Recommendation Engine. Only applicable on the data stores
   /// with SOLUTION_TYPE_RECOMMENDATION solution type and MEDIA industry vertical.
   /// Structure is documented below.
-  final pulumi.Input<RecommendationEngineMediaRecommendationEngineConfig>?
-  mediaRecommendationEngineConfig;
-
+  final pulumi.Input<RecommendationEngineMediaRecommendationEngineConfig>? mediaRecommendationEngineConfig;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -63,61 +55,28 @@ class RecommendationEngineArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'commonConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            RecommendationEngineCommonConfig,
-            Map<String, dynamic>
-          >(commonConfig, (value) => value.toMap()),
+      'commonConfig': ?pulumi.Input.mapOptionalInputValue<RecommendationEngineCommonConfig, Map<String, dynamic>>(commonConfig, (value) => value.toMap()),
       'dataStoreIds': dataStoreIds,
       'displayName': displayName,
       'engineId': engineId,
       'industryVertical': ?industryVertical,
       'location': location,
-      'mediaRecommendationEngineConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            RecommendationEngineMediaRecommendationEngineConfig,
-            Map<String, dynamic>
-          >(mediaRecommendationEngineConfig, (value) => value.toMap()),
+      'mediaRecommendationEngineConfig': ?pulumi.Input.mapOptionalInputValue<RecommendationEngineMediaRecommendationEngineConfig, Map<String, dynamic>>(mediaRecommendationEngineConfig, (value) => value.toMap()),
       'project': ?project,
     };
   }
 
   factory RecommendationEngineArgs.fromMap(Map<String, dynamic> map) {
     return RecommendationEngineArgs(
-      commonConfig: (() {
-        final guardedValue = map['commonConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RecommendationEngineCommonConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      dataStoreIds: pulumi.Input.fromValue(
-        (map['dataStoreIds'] as List).cast<String>(),
-      ),
+      commonConfig: (() { final guardedValue = map['commonConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RecommendationEngineCommonConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      dataStoreIds: pulumi.Input.fromValue((map['dataStoreIds'] as List).cast<String>()),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       engineId: pulumi.Input.fromValue(map['engineId'] as String),
-      industryVertical: (() {
-        final guardedValue = map['industryVertical'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      industryVertical: (() { final guardedValue = map['industryVertical']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
-      mediaRecommendationEngineConfig: (() {
-        final guardedValue = map['mediaRecommendationEngineConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RecommendationEngineMediaRecommendationEngineConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      mediaRecommendationEngineConfig: (() { final guardedValue = map['mediaRecommendationEngineConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RecommendationEngineMediaRecommendationEngineConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

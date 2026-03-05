@@ -317,105 +317,79 @@ class Cluster extends pulumi.CustomResource {
   /// RBAC policy that will be applied and managed by GEC.
   /// Structure is documented below.
   late final pulumi.Output<ClusterAuthorization> authorization;
-
   /// The PEM-encoded public certificate of the cluster's CA.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   late final pulumi.Output<String> clusterCaCertificate;
-
   /// The configuration of the cluster control plane.
   /// Structure is documented below.
   late final pulumi.Output<ClusterControlPlane?> controlPlane;
-
   /// Remote control plane disk encryption options. This field is only used when
   /// enabling CMEK support.
   /// Structure is documented below.
-  late final pulumi.Output<ClusterControlPlaneEncryption>
-  controlPlaneEncryption;
-
+  late final pulumi.Output<ClusterControlPlaneEncryption> controlPlaneEncryption;
   /// The control plane release version.
   late final pulumi.Output<String> controlPlaneVersion;
-
   /// (Output)
   /// The time when the maintenance event request was created.
   late final pulumi.Output<String> createTime;
-
   /// The default maximum number of pods per node used if a maximum value is not
   /// specified explicitly for a node pool in this cluster. If unspecified, the
   /// Kubernetes default value will be used.
   late final pulumi.Output<int> defaultMaxPodsPerNode;
-
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-
   /// The IP address of the Kubernetes API server.
   late final pulumi.Output<String> endpoint;
-
   /// Address pools for cluster data plane external load balancing.
   late final pulumi.Output<List<String>> externalLoadBalancerIpv4AddressPools;
-
   /// Fleet related configuration.
   /// Fleets are a Google Cloud concept for logically organizing clusters,
   /// letting you use and manage multi-cluster capabilities and apply
   /// consistent policies across your systems.
   /// Structure is documented below.
   late final pulumi.Output<ClusterFleet> fleet;
-
   /// User-defined labels for the edgecloud cluster.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// The location of the resource.
   late final pulumi.Output<String> location;
-
   /// All the maintenance events scheduled for the cluster, including the ones
   /// ongoing, planned for the future and done in the past (up to 90 days).
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> maintenanceEvents;
-
   /// Cluster-wide maintenance policy configuration.
   /// Structure is documented below.
   late final pulumi.Output<ClusterMaintenancePolicy> maintenancePolicy;
-
   /// The GDCE cluster name.
   late final pulumi.Output<String> name;
-
   /// Fleet related configuration.
   /// Fleets are a Google Cloud concept for logically organizing clusters,
   /// letting you use and manage multi-cluster capabilities and apply
   /// consistent policies across your systems.
   /// Structure is documented below.
   late final pulumi.Output<ClusterNetworking> networking;
-
   /// The lowest release version among all worker nodes. This field can be empty
   /// if the cluster does not have any worker nodes.
   late final pulumi.Output<String> nodeVersion;
-
   /// The port number of the Kubernetes API server.
   late final pulumi.Output<int> port;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-
   /// The release channel a cluster is subscribed to.
   /// Possible values are: `RELEASE_CHANNEL_UNSPECIFIED`, `NONE`, `REGULAR`.
   late final pulumi.Output<String> releaseChannel;
-
   /// Indicates the status of the cluster.
   late final pulumi.Output<String> status;
-
   /// Config that customers are allowed to define for GDCE system add-ons.
   /// Structure is documented below.
   late final pulumi.Output<ClusterSystemAddonsConfig> systemAddonsConfig;
-
   /// The target cluster version. For example: "1.5.0".
   late final pulumi.Output<String> targetVersion;
-
   /// (Output)
   /// The time when the maintenance event message was updated.
   late final pulumi.Output<String> updateTime;
@@ -429,102 +403,35 @@ class Cluster extends pulumi.CustomResource {
     ClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:edgecontainer/cluster:Cluster',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    authorization = registerOutput<ClusterAuthorization>(
-      'authorization',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterAuthorization.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:edgecontainer/cluster:Cluster',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    authorization = registerOutput<ClusterAuthorization>('authorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clusterCaCertificate = registerOutput<String>('clusterCaCertificate');
-    controlPlane = registerOutput<ClusterControlPlane?>(
-      'controlPlane',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterControlPlane.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    controlPlaneEncryption = registerOutput<ClusterControlPlaneEncryption>(
-      'controlPlaneEncryption',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterControlPlaneEncryption.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    controlPlane = registerOutput<ClusterControlPlane?>('controlPlane', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterControlPlane.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    controlPlaneEncryption = registerOutput<ClusterControlPlaneEncryption>('controlPlaneEncryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterControlPlaneEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     controlPlaneVersion = registerOutput<String>('controlPlaneVersion');
     createTime = registerOutput<String>('createTime');
     defaultMaxPodsPerNode = registerOutput<int>('defaultMaxPodsPerNode');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     endpoint = registerOutput<String>('endpoint');
-    externalLoadBalancerIpv4AddressPools = registerOutput<List<String>>(
-      'externalLoadBalancerIpv4AddressPools',
-    );
-    fleet = registerOutput<ClusterFleet>(
-      'fleet',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterFleet.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    externalLoadBalancerIpv4AddressPools = registerOutput<List<String>>('externalLoadBalancerIpv4AddressPools');
+    fleet = registerOutput<ClusterFleet>('fleet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterFleet.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
-    maintenanceEvents = registerOutput<List<Map<String, dynamic>>>(
-      'maintenanceEvents',
-    );
-    maintenancePolicy = registerOutput<ClusterMaintenancePolicy>(
-      'maintenancePolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterMaintenancePolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    maintenanceEvents = registerOutput<List<Map<String, dynamic>>>('maintenanceEvents');
+    maintenancePolicy = registerOutput<ClusterMaintenancePolicy>('maintenancePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterMaintenancePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    networking = registerOutput<ClusterNetworking>(
-      'networking',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterNetworking.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    networking = registerOutput<ClusterNetworking>('networking', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterNetworking.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     nodeVersion = registerOutput<String>('nodeVersion');
     port = registerOutput<int>('port');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     releaseChannel = registerOutput<String>('releaseChannel');
     status = registerOutput<String>('status');
-    systemAddonsConfig = registerOutput<ClusterSystemAddonsConfig>(
-      'systemAddonsConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterSystemAddonsConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemAddonsConfig = registerOutput<ClusterSystemAddonsConfig>('systemAddonsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterSystemAddonsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     targetVersion = registerOutput<String>('targetVersion');
     updateTime = registerOutput<String>('updateTime');
   }
@@ -547,102 +454,35 @@ class Cluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:edgecontainer/cluster:Cluster',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    authorization = registerOutput<ClusterAuthorization>(
-      'authorization',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterAuthorization.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:edgecontainer/cluster:Cluster',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    authorization = registerOutput<ClusterAuthorization>('authorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clusterCaCertificate = registerOutput<String>('clusterCaCertificate');
-    controlPlane = registerOutput<ClusterControlPlane?>(
-      'controlPlane',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterControlPlane.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    controlPlaneEncryption = registerOutput<ClusterControlPlaneEncryption>(
-      'controlPlaneEncryption',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterControlPlaneEncryption.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    controlPlane = registerOutput<ClusterControlPlane?>('controlPlane', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterControlPlane.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    controlPlaneEncryption = registerOutput<ClusterControlPlaneEncryption>('controlPlaneEncryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterControlPlaneEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     controlPlaneVersion = registerOutput<String>('controlPlaneVersion');
     createTime = registerOutput<String>('createTime');
     defaultMaxPodsPerNode = registerOutput<int>('defaultMaxPodsPerNode');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     endpoint = registerOutput<String>('endpoint');
-    externalLoadBalancerIpv4AddressPools = registerOutput<List<String>>(
-      'externalLoadBalancerIpv4AddressPools',
-    );
-    fleet = registerOutput<ClusterFleet>(
-      'fleet',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterFleet.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    externalLoadBalancerIpv4AddressPools = registerOutput<List<String>>('externalLoadBalancerIpv4AddressPools');
+    fleet = registerOutput<ClusterFleet>('fleet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterFleet.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
-    maintenanceEvents = registerOutput<List<Map<String, dynamic>>>(
-      'maintenanceEvents',
-    );
-    maintenancePolicy = registerOutput<ClusterMaintenancePolicy>(
-      'maintenancePolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterMaintenancePolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    maintenanceEvents = registerOutput<List<Map<String, dynamic>>>('maintenanceEvents');
+    maintenancePolicy = registerOutput<ClusterMaintenancePolicy>('maintenancePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterMaintenancePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    networking = registerOutput<ClusterNetworking>(
-      'networking',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterNetworking.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    networking = registerOutput<ClusterNetworking>('networking', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterNetworking.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     nodeVersion = registerOutput<String>('nodeVersion');
     port = registerOutput<int>('port');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     releaseChannel = registerOutput<String>('releaseChannel');
     status = registerOutput<String>('status');
-    systemAddonsConfig = registerOutput<ClusterSystemAddonsConfig>(
-      'systemAddonsConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ClusterSystemAddonsConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemAddonsConfig = registerOutput<ClusterSystemAddonsConfig>('systemAddonsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterSystemAddonsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     targetVersion = registerOutput<String>('targetVersion');
     updateTime = registerOutput<String>('updateTime');
   }

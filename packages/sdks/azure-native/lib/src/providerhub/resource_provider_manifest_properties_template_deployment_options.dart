@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceProviderManifestPropertiesTemplateDeploymentOptions {
   /// The preflight options.
   final pulumi.Input<List<String>>? preflightOptions;
-
   /// Whether preflight is supported.
   final pulumi.Input<bool>? preflightSupported;
 
@@ -25,20 +24,11 @@ class ResourceProviderManifestPropertiesTemplateDeploymentOptions {
     };
   }
 
-  factory ResourceProviderManifestPropertiesTemplateDeploymentOptions.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResourceProviderManifestPropertiesTemplateDeploymentOptions.fromMap(Map<String, dynamic> map) {
     return ResourceProviderManifestPropertiesTemplateDeploymentOptions(
-      preflightOptions: (() {
-        final guardedValue = map['preflightOptions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      preflightSupported: (() {
-        final guardedValue = map['preflightSupported'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      preflightOptions: (() { final guardedValue = map['preflightOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      preflightSupported: (() { final guardedValue = map['preflightSupported']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

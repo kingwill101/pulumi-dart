@@ -7,13 +7,10 @@ import 'key_value_pair.dart';
 class DiscreteAction {
   /// String that represents a Capability URN.
   final pulumi.Input<String> name;
-
   /// List of key value pairs.
   final pulumi.Input<List<KeyValuePair>> parameters;
-
   /// String that represents a selector.
   final pulumi.Input<String> selectorId;
-
   /// Enum that discriminates between action models.
   /// Expected value is 'discrete'.
   final pulumi.Input<String> type;
@@ -33,18 +30,7 @@ class DiscreteAction {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'parameters':
-          pulumi.Input.mapInputValue<
-            List<KeyValuePair>,
-            List<Map<String, dynamic>>
-          >(
-            parameters,
-            (value) =>
-                pulumi.Input.encodeList<KeyValuePair, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'parameters': pulumi.Input.mapInputValue<List<KeyValuePair>, List<Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeList<KeyValuePair, Map<String, dynamic>>(value, (value) => value.toMap())),
       'selectorId': selectorId,
       'type': type,
     };
@@ -53,15 +39,10 @@ class DiscreteAction {
   factory DiscreteAction.fromMap(Map<String, dynamic> map) {
     return DiscreteAction(
       name: pulumi.Input.fromValue(map['name'] as String),
-      parameters: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<KeyValuePair>(
-          map['parameters']!,
-          (value) =>
-              KeyValuePair.fromMap((value as Map).cast<String, dynamic>()),
-        ),
-      ),
+      parameters: pulumi.Input.fromValue(pulumi.Input.decodeList<KeyValuePair>(map['parameters']!, (value) => KeyValuePair.fromMap((value as Map).cast<String, dynamic>()))),
       selectorId: pulumi.Input.fromValue(map['selectorId'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

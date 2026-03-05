@@ -353,13 +353,10 @@ import 'spring_cloud_build_pack_binding_state.dart';
 class SpringCloudBuildPackBinding extends pulumi.CustomResource {
   /// Specifies the Build Pack Binding Type. Allowed values are `ApacheSkyWalking`, `AppDynamics`, `ApplicationInsights`, `Dynatrace`, `ElasticAPM` and `NewRelic`.
   late final pulumi.Output<String?> bindingType;
-
   /// A `launch` block as defined below.
   late final pulumi.Output<SpringCloudBuildPackBindingLaunch?> launch;
-
   /// The name which should be used for this Spring Cloud Build Pack Binding. Changing this forces a new Spring Cloud Build Pack Binding to be created.
   late final pulumi.Output<String> name;
-
   /// The ID of the Spring Cloud Builder. Changing this forces a new Spring Cloud Build Pack Binding to be created.
   late final pulumi.Output<String> springCloudBuilderId;
 
@@ -372,22 +369,13 @@ class SpringCloudBuildPackBinding extends pulumi.CustomResource {
     SpringCloudBuildPackBindingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appplatform/springCloudBuildPackBinding:SpringCloudBuildPackBinding',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appplatform/springCloudBuildPackBinding:SpringCloudBuildPackBinding',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bindingType = registerOutput<String?>('bindingType');
-    launch = registerOutput<SpringCloudBuildPackBindingLaunch?>(
-      'launch',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SpringCloudBuildPackBindingLaunch.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    launch = registerOutput<SpringCloudBuildPackBindingLaunch?>('launch', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudBuildPackBindingLaunch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     springCloudBuilderId = registerOutput<String>('springCloudBuilderId');
   }
@@ -410,22 +398,13 @@ class SpringCloudBuildPackBinding extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:appplatform/springCloudBuildPackBinding:SpringCloudBuildPackBinding',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:appplatform/springCloudBuildPackBinding:SpringCloudBuildPackBinding',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bindingType = registerOutput<String?>('bindingType');
-    launch = registerOutput<SpringCloudBuildPackBindingLaunch?>(
-      'launch',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SpringCloudBuildPackBindingLaunch.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    launch = registerOutput<SpringCloudBuildPackBindingLaunch?>('launch', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudBuildPackBindingLaunch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     springCloudBuilderId = registerOutput<String>('springCloudBuilderId');
   }

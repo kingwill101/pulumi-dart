@@ -11,24 +11,18 @@ import 'cost_category_split_charge_rule.dart';
 class CostCategoryArgs {
   /// Default value for the cost category.
   final pulumi.Input<String>? defaultValue;
-
   /// The Cost Category's effective start date. It can only be a billing start date (first day of the month). If the date isn't provided, it's the first day of the current month. Dates can't be before the previous twelve months, or in the future. For example `2022-11-01T00:00:00Z`.
   final pulumi.Input<String>? effectiveStart;
-
   /// Unique name for the Cost Category.
   final pulumi.Input<String>? name;
-
   /// Rule schema version in this particular Cost Category.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> ruleVersion;
-
   /// Configuration block for the Cost Category rules used to categorize costs. See below.
   final pulumi.Input<List<CostCategoryRule>> rules;
-
   /// Configuration block for the split charge rules used to allocate your charges between your Cost Category values. See below.
   final pulumi.Input<List<CostCategorySplitChargeRule>>? splitChargeRules;
-
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -56,78 +50,22 @@ class CostCategoryArgs {
       'effectiveStart': ?effectiveStart,
       'name': ?name,
       'ruleVersion': ruleVersion,
-      'rules':
-          pulumi.Input.mapInputValue<
-            List<CostCategoryRule>,
-            List<Map<String, dynamic>>
-          >(
-            rules,
-            (value) =>
-                pulumi.Input.encodeList<CostCategoryRule, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
-      'splitChargeRules':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<CostCategorySplitChargeRule>,
-            List<Map<String, dynamic>>
-          >(
-            splitChargeRules,
-            (value) =>
-                pulumi.Input.encodeList<
-                  CostCategorySplitChargeRule,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'rules': pulumi.Input.mapInputValue<List<CostCategoryRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<CostCategoryRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'splitChargeRules': ?pulumi.Input.mapOptionalInputValue<List<CostCategorySplitChargeRule>, List<Map<String, dynamic>>>(splitChargeRules, (value) => pulumi.Input.encodeList<CostCategorySplitChargeRule, Map<String, dynamic>>(value, (value) => value.toMap())),
       'tags': ?tags,
     };
   }
 
   factory CostCategoryArgs.fromMap(Map<String, dynamic> map) {
     return CostCategoryArgs(
-      defaultValue: (() {
-        final guardedValue = map['defaultValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      effectiveStart: (() {
-        final guardedValue = map['effectiveStart'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      defaultValue: (() { final guardedValue = map['defaultValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      effectiveStart: (() { final guardedValue = map['effectiveStart']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ruleVersion: pulumi.Input.fromValue(map['ruleVersion'] as String),
-      rules: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<CostCategoryRule>(
-          map['rules']!,
-          (value) =>
-              CostCategoryRule.fromMap((value as Map).cast<String, dynamic>()),
-        ),
-      ),
-      splitChargeRules: (() {
-        final guardedValue = map['splitChargeRules'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<CostCategorySplitChargeRule>(
-            guardedValue,
-            (value) => CostCategorySplitChargeRule.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      rules: pulumi.Input.fromValue(pulumi.Input.decodeList<CostCategoryRule>(map['rules']!, (value) => CostCategoryRule.fromMap((value as Map).cast<String, dynamic>()))),
+      splitChargeRules: (() { final guardedValue = map['splitChargeRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CostCategorySplitChargeRule>(guardedValue, (value) => CostCategorySplitChargeRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

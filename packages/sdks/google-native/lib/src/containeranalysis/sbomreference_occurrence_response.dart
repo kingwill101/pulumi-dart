@@ -8,10 +8,8 @@ import 'sbom_reference_intoto_payload_response.dart';
 class SBOMReferenceOccurrenceResponse {
   /// The actual payload that contains the SBOM reference data.
   final pulumi.Input<SbomReferenceIntotoPayloadResponse> payload;
-
   /// The kind of payload that SbomReferenceIntotoPayload takes. Since it's in the intoto format, this value is expected to be 'application/vnd.in-toto+json'.
   final pulumi.Input<String> payloadType;
-
   /// The signatures over the payload.
   final pulumi.Input<List<EnvelopeSignatureResponse>> signatures;
 
@@ -27,43 +25,18 @@ class SBOMReferenceOccurrenceResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'payload':
-          pulumi.Input.mapInputValue<
-            SbomReferenceIntotoPayloadResponse,
-            Map<String, dynamic>
-          >(payload, (value) => value.toMap()),
+      'payload': pulumi.Input.mapInputValue<SbomReferenceIntotoPayloadResponse, Map<String, dynamic>>(payload, (value) => value.toMap()),
       'payloadType': payloadType,
-      'signatures':
-          pulumi.Input.mapInputValue<
-            List<EnvelopeSignatureResponse>,
-            List<Map<String, dynamic>>
-          >(
-            signatures,
-            (value) =>
-                pulumi.Input.encodeList<
-                  EnvelopeSignatureResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'signatures': pulumi.Input.mapInputValue<List<EnvelopeSignatureResponse>, List<Map<String, dynamic>>>(signatures, (value) => pulumi.Input.encodeList<EnvelopeSignatureResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory SBOMReferenceOccurrenceResponse.fromMap(Map<String, dynamic> map) {
     return SBOMReferenceOccurrenceResponse(
-      payload: pulumi.Input.fromValue(
-        SbomReferenceIntotoPayloadResponse.fromMap(
-          (map['payload']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      payload: pulumi.Input.fromValue(SbomReferenceIntotoPayloadResponse.fromMap((map['payload']! as Map).cast<String, dynamic>())),
       payloadType: pulumi.Input.fromValue(map['payloadType'] as String),
-      signatures: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<EnvelopeSignatureResponse>(
-          map['signatures']!,
-          (value) => EnvelopeSignatureResponse.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      signatures: pulumi.Input.fromValue(pulumi.Input.decodeList<EnvelopeSignatureResponse>(map['signatures']!, (value) => EnvelopeSignatureResponse.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

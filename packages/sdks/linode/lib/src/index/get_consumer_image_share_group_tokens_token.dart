@@ -5,28 +5,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConsumerImageShareGroupTokensToken {
   /// When the token was created.
   final pulumi.Input<String> created;
-
   /// When the token will expire.
   final pulumi.Input<String> expiry;
-
   /// A label for the token.
   final pulumi.Input<String> label;
-
   /// The label of the Image Share Group that the token is for.
   final pulumi.Input<String> sharegroupLabel;
-
   /// The UUID of the Image Share Group that the token is for.
   final pulumi.Input<String> sharegroupUuid;
-
   /// The status of the token.
   final pulumi.Input<String> status;
-
   /// The UUID of the token.
   final pulumi.Input<String> tokenUuid;
-
   /// When the token was last updated.
   final pulumi.Input<String> updated;
-
   /// The UUID of the Image Share Group for which to create a token.
   final pulumi.Input<String> validForSharegroupUuid;
 
@@ -66,9 +58,7 @@ class GetConsumerImageShareGroupTokensToken {
     };
   }
 
-  factory GetConsumerImageShareGroupTokensToken.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetConsumerImageShareGroupTokensToken.fromMap(Map<String, dynamic> map) {
     return GetConsumerImageShareGroupTokensToken(
       created: pulumi.Input.fromValue(map['created'] as String),
       expiry: pulumi.Input.fromValue(map['expiry'] as String),
@@ -78,9 +68,8 @@ class GetConsumerImageShareGroupTokensToken {
       status: pulumi.Input.fromValue(map['status'] as String),
       tokenUuid: pulumi.Input.fromValue(map['tokenUuid'] as String),
       updated: pulumi.Input.fromValue(map['updated'] as String),
-      validForSharegroupUuid: pulumi.Input.fromValue(
-        map['validForSharegroupUuid'] as String,
-      ),
+      validForSharegroupUuid: pulumi.Input.fromValue(map['validForSharegroupUuid'] as String),
     );
   }
 }
+

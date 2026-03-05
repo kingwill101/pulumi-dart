@@ -7,10 +7,8 @@ import 'managed_cluster_azure_monitor_profile_kube_state_metrics_response.dart';
 class ManagedClusterAzureMonitorProfileMetricsResponse {
   /// Whether to enable or disable the Azure Managed Prometheus addon for Prometheus monitoring. See aka.ms/AzureManagedPrometheus-aks-enable for details on enabling and disabling.
   final pulumi.Input<bool> enabled;
-
   /// Kube State Metrics profile for the Azure Managed Prometheus addon. These optional settings are for the kube-state-metrics pod that is deployed with the addon. See aka.ms/AzureManagedPrometheus-optional-parameters for details.
-  final pulumi.Input<ManagedClusterAzureMonitorProfileKubeStateMetricsResponse>?
-  kubeStateMetrics;
+  final pulumi.Input<ManagedClusterAzureMonitorProfileKubeStateMetricsResponse>? kubeStateMetrics;
 
   /// Creates a new [ManagedClusterAzureMonitorProfileMetricsResponse].
   /// [enabled] Whether to enable or disable the Azure Managed Prometheus addon for Prometheus monitoring. See aka.ms/AzureManagedPrometheus-aks-enable for details on enabling and disabling.
@@ -23,28 +21,15 @@ class ManagedClusterAzureMonitorProfileMetricsResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enabled': enabled,
-      'kubeStateMetrics':
-          ?pulumi.Input.mapOptionalInputValue<
-            ManagedClusterAzureMonitorProfileKubeStateMetricsResponse,
-            Map<String, dynamic>
-          >(kubeStateMetrics, (value) => value.toMap()),
+      'kubeStateMetrics': ?pulumi.Input.mapOptionalInputValue<ManagedClusterAzureMonitorProfileKubeStateMetricsResponse, Map<String, dynamic>>(kubeStateMetrics, (value) => value.toMap()),
     };
   }
 
-  factory ManagedClusterAzureMonitorProfileMetricsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ManagedClusterAzureMonitorProfileMetricsResponse.fromMap(Map<String, dynamic> map) {
     return ManagedClusterAzureMonitorProfileMetricsResponse(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
-      kubeStateMetrics: (() {
-        final guardedValue = map['kubeStateMetrics'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ManagedClusterAzureMonitorProfileKubeStateMetricsResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      kubeStateMetrics: (() { final guardedValue = map['kubeStateMetrics']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedClusterAzureMonitorProfileKubeStateMetricsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

@@ -8,14 +8,10 @@ import 'resource_rule_authorization_k8s_io_v1beta1.dart';
 class SubjectRulesReviewStatusAuthorizationK8sIoV1beta1 {
   /// EvaluationError can appear in combination with Rules. It indicates an error occurred during rule evaluation, such as an authorizer that doesn't support rule evaluation, and that ResourceRules and/or NonResourceRules may be incomplete.
   final pulumi.Input<String>? evaluationError;
-
   /// Incomplete is true when the rules returned by this call are incomplete. This is most commonly encountered when an authorizer, such as an external authorizer, doesn't support rules evaluation.
   final pulumi.Input<bool> incomplete;
-
   /// NonResourceRules is the list of actions the subject is allowed to perform on non-resources. The list ordering isn't significant, may contain duplicates, and possibly be incomplete.
-  final pulumi.Input<List<NonResourceRuleAuthorizationK8sIoV1beta1>>
-  nonResourceRules;
-
+  final pulumi.Input<List<NonResourceRuleAuthorizationK8sIoV1beta1>> nonResourceRules;
   /// ResourceRules is the list of actions the subject is allowed to perform on resources. The list ordering isn't significant, may contain duplicates, and possibly be incomplete.
   final pulumi.Input<List<ResourceRuleAuthorizationK8sIoV1beta1>> resourceRules;
 
@@ -35,59 +31,18 @@ class SubjectRulesReviewStatusAuthorizationK8sIoV1beta1 {
     return <String, dynamic>{
       'evaluationError': ?evaluationError,
       'incomplete': incomplete,
-      'nonResourceRules':
-          pulumi.Input.mapInputValue<
-            List<NonResourceRuleAuthorizationK8sIoV1beta1>,
-            List<Map<String, dynamic>>
-          >(
-            nonResourceRules,
-            (value) =>
-                pulumi.Input.encodeList<
-                  NonResourceRuleAuthorizationK8sIoV1beta1,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'resourceRules':
-          pulumi.Input.mapInputValue<
-            List<ResourceRuleAuthorizationK8sIoV1beta1>,
-            List<Map<String, dynamic>>
-          >(
-            resourceRules,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ResourceRuleAuthorizationK8sIoV1beta1,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'nonResourceRules': pulumi.Input.mapInputValue<List<NonResourceRuleAuthorizationK8sIoV1beta1>, List<Map<String, dynamic>>>(nonResourceRules, (value) => pulumi.Input.encodeList<NonResourceRuleAuthorizationK8sIoV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'resourceRules': pulumi.Input.mapInputValue<List<ResourceRuleAuthorizationK8sIoV1beta1>, List<Map<String, dynamic>>>(resourceRules, (value) => pulumi.Input.encodeList<ResourceRuleAuthorizationK8sIoV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory SubjectRulesReviewStatusAuthorizationK8sIoV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory SubjectRulesReviewStatusAuthorizationK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return SubjectRulesReviewStatusAuthorizationK8sIoV1beta1(
-      evaluationError: (() {
-        final guardedValue = map['evaluationError'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      evaluationError: (() { final guardedValue = map['evaluationError']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       incomplete: pulumi.Input.fromValue(map['incomplete'] as bool),
-      nonResourceRules: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<NonResourceRuleAuthorizationK8sIoV1beta1>(
-          map['nonResourceRules']!,
-          (value) => NonResourceRuleAuthorizationK8sIoV1beta1.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
-      resourceRules: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<ResourceRuleAuthorizationK8sIoV1beta1>(
-          map['resourceRules']!,
-          (value) => ResourceRuleAuthorizationK8sIoV1beta1.fromMap(
-            (value as Map).cast<String, dynamic>(),
-          ),
-        ),
-      ),
+      nonResourceRules: pulumi.Input.fromValue(pulumi.Input.decodeList<NonResourceRuleAuthorizationK8sIoV1beta1>(map['nonResourceRules']!, (value) => NonResourceRuleAuthorizationK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))),
+      resourceRules: pulumi.Input.fromValue(pulumi.Input.decodeList<ResourceRuleAuthorizationK8sIoV1beta1>(map['resourceRules']!, (value) => ResourceRuleAuthorizationK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

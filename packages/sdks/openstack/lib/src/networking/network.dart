@@ -399,81 +399,65 @@ class Network extends pulumi.CustomResource {
   /// Acceptable values are "true" and "false". Changing this value updates the
   /// state of the existing network.
   late final pulumi.Output<bool> adminStateUp;
-
   /// The collection of tags assigned on the network, which have been
   /// explicitly and implicitly added.
   late final pulumi.Output<List<String>> allTags;
-
   /// An availability zone is used to make
   /// network resources highly available. Used for resources with high availability
   /// so that they are scheduled on different availability zones. Changing this
   /// creates a new network.
   late final pulumi.Output<List<String>> availabilityZoneHints;
-
   /// Human-readable description of the network. Changing this
   /// updates the name of the existing network.
   late final pulumi.Output<String?> description;
-
   /// The network DNS domain. Available, when Neutron DNS
   /// extension is enabled. The `dns_domain` of a network in conjunction with the
   /// `dns_name` attribute of its ports will be published in an external DNS
   /// service when Neutron is configured to integrate with such a service.
   late final pulumi.Output<String> dnsDomain;
-
   /// Specifies whether the network resource has the
   /// external routing facility. Valid values are true and false. Defaults to
   /// false. Changing this updates the external attribute of the existing network.
   late final pulumi.Output<bool> external;
-
   /// The network MTU. Available for read-only, when Neutron
   /// `net-mtu` extension is enabled. Available for the modification, when
   /// Neutron `net-mtu-writable` extension is enabled.
   late final pulumi.Output<int> mtu;
-
   /// The name of the network. Changing this updates the name of
   /// the existing network.
   late final pulumi.Output<String> name;
-
   /// Whether to explicitly enable or disable
   /// port security on the network. Port Security is usually enabled by default, so
   /// omitting this argument will usually result in a value of "true". Setting this
   /// explicitly to `false` will disable port security. Valid values are `true` and
   /// `false`.
   late final pulumi.Output<bool> portSecurityEnabled;
-
   /// Reference to the associated QoS policy.
   late final pulumi.Output<String> qosPolicyId;
-
   /// The region in which to obtain the V2 Networking client.
   /// A Networking client is needed to create a Neutron network. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
   /// network.
   late final pulumi.Output<String> region;
-
   /// An array of one or more provider segment objects.
   /// Note: most Networking plug-ins (e.g. ML2 Plugin) and drivers do not support
   /// updating any provider related segments attributes. Check your plug-in whether
   /// it supports updating.
   late final pulumi.Output<List<Map<String, dynamic>>> segments;
-
   /// Specifies whether the network resource can be accessed
   /// by any tenant or not. Changing this updates the sharing capabilities of the
   /// existing network.
   late final pulumi.Output<bool> shared;
-
   /// A set of string tags for the network.
   late final pulumi.Output<List<String>?> tags;
-
   /// The owner of the network. Required if admin wants to
   /// create a network for another tenant. Changing this creates a new network.
   late final pulumi.Output<String> tenantId;
-
   /// Specifies whether the network resource has the
   /// VLAN transparent attribute set. Valid values are true and false. Defaults to
   /// false. Changing this updates the `transparent_vlan` attribute of the existing
   /// network.
   late final pulumi.Output<bool> transparentVlan;
-
   /// Map of additional options.
   late final pulumi.Output<Map<String, String>?> valueSpecs;
 
@@ -486,16 +470,14 @@ class Network extends pulumi.CustomResource {
     NetworkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:networking/network:Network',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:networking/network:Network',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     adminStateUp = registerOutput<bool>('adminStateUp');
     allTags = registerOutput<List<String>>('allTags');
-    availabilityZoneHints = registerOutput<List<String>>(
-      'availabilityZoneHints',
-    );
+    availabilityZoneHints = registerOutput<List<String>>('availabilityZoneHints');
     description = registerOutput<String?>('description');
     dnsDomain = registerOutput<String>('dnsDomain');
     external = registerOutput<bool>('external');
@@ -530,16 +512,14 @@ class Network extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:networking/network:Network',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:networking/network:Network',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     adminStateUp = registerOutput<bool>('adminStateUp');
     allTags = registerOutput<List<String>>('allTags');
-    availabilityZoneHints = registerOutput<List<String>>(
-      'availabilityZoneHints',
-    );
+    availabilityZoneHints = registerOutput<List<String>>('availabilityZoneHints');
     description = registerOutput<String?>('description');
     dnsDomain = registerOutput<String>('dnsDomain');
     external = registerOutput<bool>('external');

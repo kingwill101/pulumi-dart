@@ -171,43 +171,30 @@ import 'scheduled_action_state.dart';
 class ScheduledAction extends pulumi.CustomResource {
   /// UTC day on which cost analysis data will be emailed. Must be between `1` and `31`. This property is applicable when `frequency` is `Monthly`.
   late final pulumi.Output<int?> dayOfMonth;
-
   /// Specifies a list of day names on which cost analysis data will be emailed. This property is applicable when frequency is `Weekly` or `Monthly`. Possible values are `Friday`, `Monday`, `Saturday`, `Sunday`, `Thursday`, `Tuesday` and `Wednesday`.
   late final pulumi.Output<List<String>?> daysOfWeeks;
-
   /// User visible input name of the Cost Management Scheduled Action.
   late final pulumi.Output<String> displayName;
-
   /// Email address of the point of contact that should get the unsubscribe requests of Scheduled Action notification emails.
   late final pulumi.Output<String> emailAddressSender;
-
   /// Specifies a list of email addresses that will receive the Scheduled Action.
   late final pulumi.Output<List<String>> emailAddresses;
-
   /// Subject of the email. Length is limited to 70 characters.
   late final pulumi.Output<String> emailSubject;
-
   /// The end date and time of the Scheduled Action (UTC).
   late final pulumi.Output<String> endDate;
-
   /// Frequency of the schedule. Possible values are `Daily`, `Monthly` and `Weekly`. Value `Monthly` requires either `weeks_of_month` and `days_of_week` or `day_of_month` to be specified. Value `Weekly` requires `days_of_week` to be specified.
   late final pulumi.Output<String> frequency;
-
   /// UTC time at which cost analysis data will be emailed. Must be between `0` and `23`.
   late final pulumi.Output<int?> hourOfDay;
-
   /// Message to be added in the email. Length is limited to 250 characters.
   late final pulumi.Output<String?> message;
-
   /// The name which should be used for this Azure Cost Management Scheduled Action. Changing this forces a new Azure Cost Management Scheduled Action to be created.
   late final pulumi.Output<String> name;
-
   /// The start date and time of the Scheduled Action (UTC).
   late final pulumi.Output<String> startDate;
-
   /// The ID of the Cost Management View that is used by the Scheduled Action. Changing this forces a new resource to be created.
   late final pulumi.Output<String> viewId;
-
   /// Specifies a list of weeks in which cost analysis data will be emailed. This property is applicable when `frequency` is `Monthly` and used in combination with `days_of_week`. Possible values are `First`, `Fourth`, `Last`, `Second` and `Third`.
   late final pulumi.Output<List<String>?> weeksOfMonths;
 
@@ -220,11 +207,11 @@ class ScheduledAction extends pulumi.CustomResource {
     ScheduledActionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:costmanagement/scheduledAction:ScheduledAction',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:costmanagement/scheduledAction:ScheduledAction',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dayOfMonth = registerOutput<int?>('dayOfMonth');
     daysOfWeeks = registerOutput<List<String>?>('daysOfWeeks');
     displayName = registerOutput<String>('displayName');
@@ -259,11 +246,11 @@ class ScheduledAction extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:costmanagement/scheduledAction:ScheduledAction',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:costmanagement/scheduledAction:ScheduledAction',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dayOfMonth = registerOutput<int?>('dayOfMonth');
     daysOfWeeks = registerOutput<List<String>?>('daysOfWeeks');
     displayName = registerOutput<String>('displayName');

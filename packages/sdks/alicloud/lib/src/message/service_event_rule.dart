@@ -460,16 +460,12 @@ class ServiceEventRule extends pulumi.CustomResource {
   /// DIRECT: directly delivers to a single queue (1:1) without creating a Topic;
   /// - BROADCAST: BROADCAST to all subscription queues (1:N). You need to create a Topic;
   late final pulumi.Output<String> deliveryMode;
-
   /// Message Receiving Terminal Endpoint Object. See `endpoint` below.
   late final pulumi.Output<ServiceEventRuleEndpoint?> endpoint;
-
   /// Event Type List
   late final pulumi.Output<List<String>> eventTypes;
-
   /// Matching rules, or relationships between multiple rules. See `match_rules` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> matchRules;
-
   /// The event notification rule name.
   late final pulumi.Output<String> ruleName;
 
@@ -482,22 +478,13 @@ class ServiceEventRule extends pulumi.CustomResource {
     ServiceEventRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:message/serviceEventRule:ServiceEventRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:message/serviceEventRule:ServiceEventRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     deliveryMode = registerOutput<String>('deliveryMode');
-    endpoint = registerOutput<ServiceEventRuleEndpoint?>(
-      'endpoint',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceEventRuleEndpoint.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    endpoint = registerOutput<ServiceEventRuleEndpoint?>('endpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceEventRuleEndpoint.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     eventTypes = registerOutput<List<String>>('eventTypes');
     matchRules = registerOutput<List<Map<String, dynamic>>?>('matchRules');
     ruleName = registerOutput<String>('ruleName');
@@ -521,22 +508,13 @@ class ServiceEventRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:message/serviceEventRule:ServiceEventRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:message/serviceEventRule:ServiceEventRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     deliveryMode = registerOutput<String>('deliveryMode');
-    endpoint = registerOutput<ServiceEventRuleEndpoint?>(
-      'endpoint',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ServiceEventRuleEndpoint.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    endpoint = registerOutput<ServiceEventRuleEndpoint?>('endpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceEventRuleEndpoint.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     eventTypes = registerOutput<List<String>>('eventTypes');
     matchRules = registerOutput<List<Map<String, dynamic>>?>('matchRules');
     ruleName = registerOutput<String>('ruleName');

@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPolicyDocumentStatementCondition {
   /// The operator of the condition.
   final pulumi.Input<String> operator;
-
   /// The values of the condition.
   final pulumi.Input<List<String>> values;
-
   /// The variable of the condition.
   final pulumi.Input<String> variable;
 
@@ -30,9 +28,7 @@ class GetPolicyDocumentStatementCondition {
     };
   }
 
-  factory GetPolicyDocumentStatementCondition.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetPolicyDocumentStatementCondition.fromMap(Map<String, dynamic> map) {
     return GetPolicyDocumentStatementCondition(
       operator: pulumi.Input.fromValue(map['operator'] as String),
       values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
@@ -40,3 +36,4 @@ class GetPolicyDocumentStatementCondition {
     );
   }
 }
+

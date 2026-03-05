@@ -9,17 +9,20 @@ class EncryptionResponseVmmigrationV1alpha1 {
 
   /// Creates a new [EncryptionResponseVmmigrationV1alpha1].
   /// [kmsKey] The name of the encryption key that is stored in Google Cloud KMS.
-  EncryptionResponseVmmigrationV1alpha1({required this.kmsKey});
+  EncryptionResponseVmmigrationV1alpha1({
+    required this.kmsKey,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'kmsKey': kmsKey};
+    return <String, dynamic>{
+      'kmsKey': kmsKey,
+    };
   }
 
-  factory EncryptionResponseVmmigrationV1alpha1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EncryptionResponseVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
     return EncryptionResponseVmmigrationV1alpha1(
       kmsKey: pulumi.Input.fromValue(map['kmsKey'] as String),
     );
   }
 }
+

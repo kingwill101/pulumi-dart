@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProviderExtendedLocationResponse {
   /// The extended locations for the azure location.
   final pulumi.Input<List<String>>? extendedLocations;
-
   /// The azure location.
   final pulumi.Input<String>? location;
-
   /// The extended location type.
   final pulumi.Input<String>? type;
 
@@ -33,21 +31,10 @@ class ProviderExtendedLocationResponse {
 
   factory ProviderExtendedLocationResponse.fromMap(Map<String, dynamic> map) {
     return ProviderExtendedLocationResponse(
-      extendedLocations: (() {
-        final guardedValue = map['extendedLocations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      extendedLocations: (() { final guardedValue = map['extendedLocations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

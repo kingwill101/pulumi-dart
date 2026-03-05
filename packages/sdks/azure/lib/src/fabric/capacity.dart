@@ -229,19 +229,14 @@ class Capacity extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** If the member is an Entra user, use user principal name (UPN) format. If the user is a service principal, use object ID.
   late final pulumi.Output<List<String>?> administrationMembers;
-
   /// The supported Azure location where the Fabric Capacity exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// The name which should be used for the Fabric Capacity. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the Resource Group in which to create the Fabric Capacity. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A `sku` block as defined below.
   late final pulumi.Output<CapacitySku> sku;
-
   /// A mapping of tags to assign to the Fabric Capacity.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -254,27 +249,16 @@ class Capacity extends pulumi.CustomResource {
     CapacityArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:fabric/capacity:Capacity',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    administrationMembers = registerOutput<List<String>?>(
-      'administrationMembers',
-    );
+          'azure:fabric/capacity:Capacity',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    administrationMembers = registerOutput<List<String>?>('administrationMembers');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    sku = registerOutput<CapacitySku>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CapacitySku.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sku = registerOutput<CapacitySku>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CapacitySku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
   }
 
@@ -296,27 +280,16 @@ class Capacity extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:fabric/capacity:Capacity',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    administrationMembers = registerOutput<List<String>?>(
-      'administrationMembers',
-    );
+          'azure:fabric/capacity:Capacity',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    administrationMembers = registerOutput<List<String>?>('administrationMembers');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    sku = registerOutput<CapacitySku>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CapacitySku.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    sku = registerOutput<CapacitySku>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CapacitySku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
   }
 }

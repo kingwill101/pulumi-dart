@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkSecurityPerimeterResponse {
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final pulumi.Input<String> id;
-
   /// Location of the Network Security Perimeter
   final pulumi.Input<String>? location;
-
   /// Guid of the Network Security Perimeter
   final pulumi.Input<String>? perimeterGuid;
 
@@ -34,16 +32,9 @@ class NetworkSecurityPerimeterResponse {
   factory NetworkSecurityPerimeterResponse.fromMap(Map<String, dynamic> map) {
     return NetworkSecurityPerimeterResponse(
       id: pulumi.Input.fromValue(map['id'] as String),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      perimeterGuid: (() {
-        final guardedValue = map['perimeterGuid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      perimeterGuid: (() { final guardedValue = map['perimeterGuid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

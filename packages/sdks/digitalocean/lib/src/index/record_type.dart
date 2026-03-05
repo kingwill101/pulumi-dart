@@ -20,3 +20,4 @@ enum RecordType {
     throw ArgumentError('Unknown RecordType value: $value');
   }
 }
+

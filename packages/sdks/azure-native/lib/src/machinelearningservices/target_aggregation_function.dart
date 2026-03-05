@@ -19,3 +19,4 @@ enum TargetAggregationFunction {
     throw ArgumentError('Unknown TargetAggregationFunction value: $value');
   }
 }
+

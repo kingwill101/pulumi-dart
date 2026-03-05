@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudRetailV2Image {
   /// Height of the image in number of pixels. This field must be nonnegative. Otherwise, an INVALID_ARGUMENT error is returned.
   final pulumi.Input<int>? height;
-
   /// URI of the image. This field must be a valid UTF-8 encoded URI with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
   final pulumi.Input<String> uri;
-
   /// Width of the image in number of pixels. This field must be nonnegative. Otherwise, an INVALID_ARGUMENT error is returned.
   final pulumi.Input<int>? width;
 
@@ -17,25 +15,26 @@ class GoogleCloudRetailV2Image {
   /// [height] Height of the image in number of pixels. This field must be nonnegative. Otherwise, an INVALID_ARGUMENT error is returned.
   /// [uri] URI of the image. This field must be a valid UTF-8 encoded URI with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
   /// [width] Width of the image in number of pixels. This field must be nonnegative. Otherwise, an INVALID_ARGUMENT error is returned.
-  GoogleCloudRetailV2Image({this.height, required this.uri, this.width});
+  GoogleCloudRetailV2Image({
+    this.height,
+    required this.uri,
+    this.width,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'height': ?height, 'uri': uri, 'width': ?width};
+    return <String, dynamic>{
+      'height': ?height,
+      'uri': uri,
+      'width': ?width,
+    };
   }
 
   factory GoogleCloudRetailV2Image.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2Image(
-      height: (() {
-        final guardedValue = map['height'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      height: (() { final guardedValue = map['height']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       uri: pulumi.Input.fromValue(map['uri'] as String),
-      width: (() {
-        final guardedValue = map['width'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      width: (() { final guardedValue = map['width']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

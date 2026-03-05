@@ -9,17 +9,20 @@ class GoogleCloudDataplexV1EnvironmentSessionStatusResponse {
 
   /// Creates a new [GoogleCloudDataplexV1EnvironmentSessionStatusResponse].
   /// [active] Queries over sessions to mark whether the environment is currently active or not
-  GoogleCloudDataplexV1EnvironmentSessionStatusResponse({required this.active});
+  GoogleCloudDataplexV1EnvironmentSessionStatusResponse({
+    required this.active,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'active': active};
+    return <String, dynamic>{
+      'active': active,
+    };
   }
 
-  factory GoogleCloudDataplexV1EnvironmentSessionStatusResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudDataplexV1EnvironmentSessionStatusResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1EnvironmentSessionStatusResponse(
       active: pulumi.Input.fromValue(map['active'] as bool),
     );
   }
 }
+

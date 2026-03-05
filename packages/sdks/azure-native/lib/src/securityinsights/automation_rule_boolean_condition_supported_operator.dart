@@ -6,16 +6,13 @@ enum AutomationRuleBooleanConditionSupportedOperator {
   const AutomationRuleBooleanConditionSupportedOperator(this.wireValue);
   final String wireValue;
 
-  static AutomationRuleBooleanConditionSupportedOperator fromValue(
-    String value,
-  ) {
+  static AutomationRuleBooleanConditionSupportedOperator fromValue(String value) {
     for (final item in AutomationRuleBooleanConditionSupportedOperator.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown AutomationRuleBooleanConditionSupportedOperator value: $value',
-    );
+    throw ArgumentError('Unknown AutomationRuleBooleanConditionSupportedOperator value: $value');
   }
 }
+

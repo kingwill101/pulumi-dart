@@ -346,41 +346,28 @@ import 'lab_virtual_machine_creation_parameter_response.dart';
 class Formula extends pulumi.CustomResource {
   /// The author of the formula.
   late final pulumi.Output<String> author;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The creation date of the formula.
   late final pulumi.Output<String> creationDate;
-
   /// The description of the formula.
   late final pulumi.Output<String?> description;
-
   /// The content of the formula.
-  late final pulumi.Output<LabVirtualMachineCreationParameterResponse?>
-  formulaContent;
-
+  late final pulumi.Output<LabVirtualMachineCreationParameterResponse?> formulaContent;
   /// The location of the resource.
   late final pulumi.Output<String?> location;
-
   /// The name of the resource.
   late final pulumi.Output<String> name;
-
   /// The OS type of the formula.
   late final pulumi.Output<String?> osType;
-
   /// The provisioning status of the resource.
   late final pulumi.Output<String> provisioningState;
-
   /// The tags of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource.
   late final pulumi.Output<String> type;
-
   /// The unique immutable identifier of a resource (Guid).
   late final pulumi.Output<String> uniqueIdentifier;
-
   /// Information about a VM from which a formula is to be created.
   late final pulumi.Output<FormulaPropertiesFromVmResponse?> vm;
 
@@ -393,26 +380,16 @@ class Formula extends pulumi.CustomResource {
     FormulaArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:devtestlab:Formula',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:devtestlab:Formula',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     author = registerOutput<String>('author');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     creationDate = registerOutput<String>('creationDate');
     description = registerOutput<String?>('description');
-    formulaContent =
-        registerOutput<LabVirtualMachineCreationParameterResponse?>(
-          'formulaContent',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return LabVirtualMachineCreationParameterResponse.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    formulaContent = registerOutput<LabVirtualMachineCreationParameterResponse?>('formulaContent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LabVirtualMachineCreationParameterResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     osType = registerOutput<String?>('osType');
@@ -420,15 +397,6 @@ class Formula extends pulumi.CustomResource {
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
-    vm = registerOutput<FormulaPropertiesFromVmResponse?>(
-      'vm',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return FormulaPropertiesFromVmResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    vm = registerOutput<FormulaPropertiesFromVmResponse?>('vm', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FormulaPropertiesFromVmResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSystemTopicEventSubscriptionArgs {
   /// Name of the event subscription to be found.
   final pulumi.Input<String> eventSubscriptionName;
-
   /// The name of the resource group within the user's subscription.
   final pulumi.Input<String> resourceGroupName;
-
   /// Name of the system topic.
   final pulumi.Input<String> systemTopicName;
 
@@ -34,17 +32,12 @@ class GetSystemTopicEventSubscriptionArgs {
     };
   }
 
-  factory GetSystemTopicEventSubscriptionArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetSystemTopicEventSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return GetSystemTopicEventSubscriptionArgs(
-      eventSubscriptionName: pulumi.Input.fromValue(
-        map['eventSubscriptionName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      eventSubscriptionName: pulumi.Input.fromValue(map['eventSubscriptionName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       systemTopicName: pulumi.Input.fromValue(map['systemTopicName'] as String),
     );
   }
 }
+

@@ -5,33 +5,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRdsBackupsBackup {
   /// The backup download url.
   final pulumi.Input<String> backupDownloadUrl;
-
   /// BackupEndTime.
   final pulumi.Input<String> backupEndTime;
-
   /// BackupId.
   final pulumi.Input<String> backupId;
-
   /// The initiator of the backup task. Value:
   /// * **System**: automatically initiated by the System
   /// * **User**: manually initiated by the User.
   final pulumi.Input<String> backupInitiator;
-
   /// The backup intranet download url.
   final pulumi.Input<String> backupIntranetDownloadUrl;
-
   /// BackupMethod.
   final pulumi.Input<String> backupMethod;
-
   /// BackupMode.
   final pulumi.Input<String> backupMode;
-
   /// BackupSize.
   final pulumi.Input<String> backupSize;
-
   /// BackupStartTime.
   final pulumi.Input<String> backupStartTime;
-
   /// Backup task status. **NOTE:** This parameter will only be returned when a task is executed. Value:
   /// * **NoStart**: Not started
   /// * **Checking**: check the backup
@@ -41,46 +32,35 @@ class GetRdsBackupsBackup {
   /// * **Finished**: Complete backup
   /// * **Failed**: backup Failed
   final pulumi.Input<String> backupStatus;
-
   /// BackupType.
   final pulumi.Input<String> backupType;
-
   /// The consistency point of the backup set. The return value is a timestamp. **NOTE:** only MySQL 5.6 returns this parameter, and other versions return 0.
   final pulumi.Input<String> consistentTime;
-
   /// The backup mode is divided into the normal backup mode (full and incremental recovery is supported) and the replication-only mode (full recovery is supported only). **NOTE:** Only SQL Server returns this parameter. Valid values:
   /// * **0**: General Backup Mode
   /// * **1**: Copy only mode
   final pulumi.Input<String> copyOnlyBackup;
-
   /// The db instance id.
   final pulumi.Input<String> dbInstanceId;
-
   /// The encrypted information of the backup set.
   final pulumi.Input<String> encryption;
-
   /// HostInstanceID.
   final pulumi.Input<String> hostInstanceId;
-
   /// The ID of the Backup.
   final pulumi.Input<String> id;
-
   /// Whether the backup set is available, the value is:
   /// * **0**: Not available
   /// * **1**: Available.
   final pulumi.Input<int> isAvail;
-
   /// The backup set status of the database table. **NOTE:** an empty string indicates that the backup set for database table recovery is not enabled. Valid values:
   /// * **OK**: normal.
   /// * **LARGE**: There are too many tables that cannot be used for database and table recovery.
   /// * **EMPTY**: The backup set that failed to be backed up.
   final pulumi.Input<String> metaStatus;
-
   /// The storage medium for the backup set. Valid values:
   /// * **0**: Regular storage
   /// * **1**: Archive storage.
   final pulumi.Input<String> storageClass;
-
   /// StoreStatus.
   final pulumi.Input<String> storeStatus;
 
@@ -158,15 +138,11 @@ class GetRdsBackupsBackup {
 
   factory GetRdsBackupsBackup.fromMap(Map<String, dynamic> map) {
     return GetRdsBackupsBackup(
-      backupDownloadUrl: pulumi.Input.fromValue(
-        map['backupDownloadUrl'] as String,
-      ),
+      backupDownloadUrl: pulumi.Input.fromValue(map['backupDownloadUrl'] as String),
       backupEndTime: pulumi.Input.fromValue(map['backupEndTime'] as String),
       backupId: pulumi.Input.fromValue(map['backupId'] as String),
       backupInitiator: pulumi.Input.fromValue(map['backupInitiator'] as String),
-      backupIntranetDownloadUrl: pulumi.Input.fromValue(
-        map['backupIntranetDownloadUrl'] as String,
-      ),
+      backupIntranetDownloadUrl: pulumi.Input.fromValue(map['backupIntranetDownloadUrl'] as String),
       backupMethod: pulumi.Input.fromValue(map['backupMethod'] as String),
       backupMode: pulumi.Input.fromValue(map['backupMode'] as String),
       backupSize: pulumi.Input.fromValue(map['backupSize'] as String),
@@ -186,3 +162,4 @@ class GetRdsBackupsBackup {
     );
   }
 }
+

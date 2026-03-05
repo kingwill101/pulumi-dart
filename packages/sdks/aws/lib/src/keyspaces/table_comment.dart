@@ -8,19 +8,20 @@ class TableComment {
 
   /// Creates a new [TableComment].
   /// [message] A description of the table.
-  TableComment({this.message});
+  TableComment({
+    this.message,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'message': ?message};
+    return <String, dynamic>{
+      'message': ?message,
+    };
   }
 
   factory TableComment.fromMap(Map<String, dynamic> map) {
     return TableComment(
-      message: (() {
-        final guardedValue = map['message'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      message: (() { final guardedValue = map['message']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

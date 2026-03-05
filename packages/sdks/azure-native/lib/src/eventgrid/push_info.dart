@@ -9,18 +9,13 @@ import 'delivery_with_resource_identity.dart';
 class PushInfo {
   /// The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.
   /// Uses the managed identity setup on the parent resource (namely, namespace) to acquire the authentication tokens being used during dead-lettering.
-  final pulumi.Input<DeadLetterWithResourceIdentity>?
-  deadLetterDestinationWithResourceIdentity;
-
+  final pulumi.Input<DeadLetterWithResourceIdentity>? deadLetterDestinationWithResourceIdentity;
   /// Information about the destination where events have to be delivered for the event subscription.
   /// Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery.
-  final pulumi.Input<DeliveryWithResourceIdentity>?
-  deliveryWithResourceIdentity;
-
+  final pulumi.Input<DeliveryWithResourceIdentity>? deliveryWithResourceIdentity;
   /// Information about the destination where events have to be delivered for the event subscription.
   /// Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery.
   final pulumi.Input<AzureFunctionEventSubscriptionDestination>? destination;
-
   /// Time span duration in ISO 8601 format that determines how long messages are available to the subscription from the time the message was published.
   /// This duration value is expressed using the following format: \'P(n)Y(n)M(n)DT(n)H(n)M(n)S\', where:
   /// - (n) is replaced by the value of each time element that follows the (n).
@@ -38,7 +33,6 @@ class PushInfo {
   /// - \'P0DT23H12M\' or \'PT23H12M\': for duration of 23 hours and 12 minutes.
   /// - \'P1D\' or \'P1DT0H0M0S\': for duration of 1 day.
   final pulumi.Input<String>? eventTimeToLive;
-
   /// The maximum delivery count of the events.
   final pulumi.Input<int>? maxDeliveryCount;
 
@@ -58,24 +52,9 @@ class PushInfo {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'deadLetterDestinationWithResourceIdentity':
-          ?pulumi.Input.mapOptionalInputValue<
-            DeadLetterWithResourceIdentity,
-            Map<String, dynamic>
-          >(
-            deadLetterDestinationWithResourceIdentity,
-            (value) => value.toMap(),
-          ),
-      'deliveryWithResourceIdentity':
-          ?pulumi.Input.mapOptionalInputValue<
-            DeliveryWithResourceIdentity,
-            Map<String, dynamic>
-          >(deliveryWithResourceIdentity, (value) => value.toMap()),
-      'destination':
-          ?pulumi.Input.mapOptionalInputValue<
-            AzureFunctionEventSubscriptionDestination,
-            Map<String, dynamic>
-          >(destination, (value) => value.toMap()),
+      'deadLetterDestinationWithResourceIdentity': ?pulumi.Input.mapOptionalInputValue<DeadLetterWithResourceIdentity, Map<String, dynamic>>(deadLetterDestinationWithResourceIdentity, (value) => value.toMap()),
+      'deliveryWithResourceIdentity': ?pulumi.Input.mapOptionalInputValue<DeliveryWithResourceIdentity, Map<String, dynamic>>(deliveryWithResourceIdentity, (value) => value.toMap()),
+      'destination': ?pulumi.Input.mapOptionalInputValue<AzureFunctionEventSubscriptionDestination, Map<String, dynamic>>(destination, (value) => value.toMap()),
       'eventTimeToLive': ?eventTimeToLive,
       'maxDeliveryCount': ?maxDeliveryCount,
     };
@@ -83,43 +62,12 @@ class PushInfo {
 
   factory PushInfo.fromMap(Map<String, dynamic> map) {
     return PushInfo(
-      deadLetterDestinationWithResourceIdentity: (() {
-        final guardedValue = map['deadLetterDestinationWithResourceIdentity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DeadLetterWithResourceIdentity.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      deliveryWithResourceIdentity: (() {
-        final guardedValue = map['deliveryWithResourceIdentity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DeliveryWithResourceIdentity.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      destination: (() {
-        final guardedValue = map['destination'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AzureFunctionEventSubscriptionDestination.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      eventTimeToLive: (() {
-        final guardedValue = map['eventTimeToLive'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      maxDeliveryCount: (() {
-        final guardedValue = map['maxDeliveryCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      deadLetterDestinationWithResourceIdentity: (() { final guardedValue = map['deadLetterDestinationWithResourceIdentity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DeadLetterWithResourceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deliveryWithResourceIdentity: (() { final guardedValue = map['deliveryWithResourceIdentity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DeliveryWithResourceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      destination: (() { final guardedValue = map['destination']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureFunctionEventSubscriptionDestination.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      eventTimeToLive: (() { final guardedValue = map['eventTimeToLive']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      maxDeliveryCount: (() { final guardedValue = map['maxDeliveryCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

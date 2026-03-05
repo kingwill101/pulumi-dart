@@ -233,16 +233,12 @@ import 'alert_robot_state.dart';
 class AlertRobot extends pulumi.CustomResource {
   /// The name of the resource.
   late final pulumi.Output<String> alertRobotName;
-
   /// Specifies whether the alert robot receives daily notifications. Valid values: `true`: receives daily notifications. `false`: does not receive daily notifications, default to `false`.
   late final pulumi.Output<bool?> dailyNoc;
-
   /// The time of the daily notification.
   late final pulumi.Output<String?> dailyNocTime;
-
   /// The webhook url of the robot.
   late final pulumi.Output<String> robotAddr;
-
   /// The type of the robot, Valid values: `wechat`, `dingding`, `feishu`.
   late final pulumi.Output<String> robotType;
 
@@ -255,11 +251,11 @@ class AlertRobot extends pulumi.CustomResource {
     AlertRobotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:arms/alertRobot:AlertRobot',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:arms/alertRobot:AlertRobot',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alertRobotName = registerOutput<String>('alertRobotName');
     dailyNoc = registerOutput<bool?>('dailyNoc');
     dailyNocTime = registerOutput<String?>('dailyNocTime');
@@ -285,11 +281,11 @@ class AlertRobot extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:arms/alertRobot:AlertRobot',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:arms/alertRobot:AlertRobot',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     alertRobotName = registerOutput<String>('alertRobotName');
     dailyNoc = registerOutput<bool?>('dailyNoc');
     dailyNocTime = registerOutput<String?>('dailyNocTime');

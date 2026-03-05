@@ -104,10 +104,8 @@ import 'replication_slot_state.dart';
 class ReplicationSlot extends pulumi.CustomResource {
   /// Which database to create the replication slot on. Defaults to provider database.
   late final pulumi.Output<String> database;
-
   /// The name of the replication slot.
   late final pulumi.Output<String> name;
-
   /// Sets the output plugin.
   late final pulumi.Output<String> plugin;
 
@@ -120,11 +118,11 @@ class ReplicationSlot extends pulumi.CustomResource {
     ReplicationSlotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'postgresql:index/replicationSlot:ReplicationSlot',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'postgresql:index/replicationSlot:ReplicationSlot',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     database = registerOutput<String>('database');
     this.name = registerOutput<String>('name');
     plugin = registerOutput<String>('plugin');
@@ -148,11 +146,11 @@ class ReplicationSlot extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'postgresql:index/replicationSlot:ReplicationSlot',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'postgresql:index/replicationSlot:ReplicationSlot',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     database = registerOutput<String>('database');
     this.name = registerOutput<String>('name');
     plugin = registerOutput<String>('plugin');

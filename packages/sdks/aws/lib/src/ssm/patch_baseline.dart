@@ -1149,54 +1149,38 @@ import 'patch_baseline_state.dart';
 class PatchBaseline extends pulumi.CustomResource {
   /// Set of rules used to include patches in the baseline. Up to 10 approval rules can be specified. See `approval_rule` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> approvalRules;
-
   /// List of explicitly approved patches for the baseline. Cannot be specified with `approval_rule`.
   late final pulumi.Output<List<String>?> approvedPatches;
-
   /// Compliance level for approved patches. This means that if an approved patch is reported as missing, this is the severity of the compliance violation. Valid values are `CRITICAL`, `HIGH`, `MEDIUM`, `LOW`, `INFORMATIONAL`, `UNSPECIFIED`. The default value is `UNSPECIFIED`.
   late final pulumi.Output<String?> approvedPatchesComplianceLevel;
-
   /// Whether the list of approved patches includes non-security updates that should be applied to the instances. Applies to Linux instances only.
   late final pulumi.Output<bool?> approvedPatchesEnableNonSecurity;
-
   /// ARN of the baseline.
   late final pulumi.Output<String> arn;
-
   /// Indicates the compliance status of managed nodes for which security-related patches are available but were not approved. Supported for Windows Server managed nodes only. Valid values are `COMPLIANT`, `NON_COMPLIANT`.
   late final pulumi.Output<String> availableSecurityUpdatesComplianceStatus;
-
   /// Description of the patch baseline.
   late final pulumi.Output<String?> description;
-
   /// Set of global filters used to exclude patches from the baseline. Up to 4 global filters can be specified using Key/Value pairs. Valid Keys are `PRODUCT`, `CLASSIFICATION`, `MSRC_SEVERITY`, and `PATCH_ID`.
   late final pulumi.Output<List<Map<String, dynamic>>?> globalFilters;
-
   /// JSON definition of the baseline.
   late final pulumi.Output<String> json;
-
   /// Name of the patch baseline.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
-
   /// Operating system the patch baseline applies to. Valid values are `ALMA_LINUX`, `AMAZON_LINUX`, `AMAZON_LINUX_2`, `AMAZON_LINUX_2022`, `AMAZON_LINUX_2023`, `CENTOS`, `DEBIAN`, `MACOS`, `ORACLE_LINUX`, `RASPBIAN`, `REDHAT_ENTERPRISE_LINUX`, `ROCKY_LINUX`, `SUSE`, `UBUNTU`, and `WINDOWS`. The default value is `WINDOWS`.
   late final pulumi.Output<String?> operatingSystem;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// List of rejected patches.
   late final pulumi.Output<List<String>?> rejectedPatches;
-
   /// Action for Patch Manager to take on patches included in the `rejected_patches` list. Valid values are `ALLOW_AS_DEPENDENCY` and `BLOCK`.
   late final pulumi.Output<String> rejectedPatchesAction;
-
   /// Configuration block with alternate sources for patches. Applies to Linux instances only. See `source` below.
   late final pulumi.Output<List<Map<String, dynamic>>?> sources;
-
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -1209,29 +1193,19 @@ class PatchBaseline extends pulumi.CustomResource {
     PatchBaselineArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ssm/patchBaseline:PatchBaseline',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    approvalRules = registerOutput<List<Map<String, dynamic>>?>(
-      'approvalRules',
-    );
+          'aws:ssm/patchBaseline:PatchBaseline',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    approvalRules = registerOutput<List<Map<String, dynamic>>?>('approvalRules');
     approvedPatches = registerOutput<List<String>?>('approvedPatches');
-    approvedPatchesComplianceLevel = registerOutput<String?>(
-      'approvedPatchesComplianceLevel',
-    );
-    approvedPatchesEnableNonSecurity = registerOutput<bool?>(
-      'approvedPatchesEnableNonSecurity',
-    );
+    approvedPatchesComplianceLevel = registerOutput<String?>('approvedPatchesComplianceLevel');
+    approvedPatchesEnableNonSecurity = registerOutput<bool?>('approvedPatchesEnableNonSecurity');
     arn = registerOutput<String>('arn');
-    availableSecurityUpdatesComplianceStatus = registerOutput<String>(
-      'availableSecurityUpdatesComplianceStatus',
-    );
+    availableSecurityUpdatesComplianceStatus = registerOutput<String>('availableSecurityUpdatesComplianceStatus');
     description = registerOutput<String?>('description');
-    globalFilters = registerOutput<List<Map<String, dynamic>>?>(
-      'globalFilters',
-    );
+    globalFilters = registerOutput<List<Map<String, dynamic>>?>('globalFilters');
     json = registerOutput<String>('json');
     this.name = registerOutput<String>('name');
     operatingSystem = registerOutput<String?>('operatingSystem');
@@ -1261,29 +1235,19 @@ class PatchBaseline extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:ssm/patchBaseline:PatchBaseline',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    approvalRules = registerOutput<List<Map<String, dynamic>>?>(
-      'approvalRules',
-    );
+          'aws:ssm/patchBaseline:PatchBaseline',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    approvalRules = registerOutput<List<Map<String, dynamic>>?>('approvalRules');
     approvedPatches = registerOutput<List<String>?>('approvedPatches');
-    approvedPatchesComplianceLevel = registerOutput<String?>(
-      'approvedPatchesComplianceLevel',
-    );
-    approvedPatchesEnableNonSecurity = registerOutput<bool?>(
-      'approvedPatchesEnableNonSecurity',
-    );
+    approvedPatchesComplianceLevel = registerOutput<String?>('approvedPatchesComplianceLevel');
+    approvedPatchesEnableNonSecurity = registerOutput<bool?>('approvedPatchesEnableNonSecurity');
     arn = registerOutput<String>('arn');
-    availableSecurityUpdatesComplianceStatus = registerOutput<String>(
-      'availableSecurityUpdatesComplianceStatus',
-    );
+    availableSecurityUpdatesComplianceStatus = registerOutput<String>('availableSecurityUpdatesComplianceStatus');
     description = registerOutput<String?>('description');
-    globalFilters = registerOutput<List<Map<String, dynamic>>?>(
-      'globalFilters',
-    );
+    globalFilters = registerOutput<List<Map<String, dynamic>>?>('globalFilters');
     json = registerOutput<String>('json');
     this.name = registerOutput<String>('name');
     operatingSystem = registerOutput<String?>('operatingSystem');

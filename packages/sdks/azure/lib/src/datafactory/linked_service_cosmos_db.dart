@@ -237,36 +237,26 @@ import 'linked_service_cosmos_db_state.dart';
 class LinkedServiceCosmosDb extends pulumi.CustomResource {
   /// The endpoint of the Azure CosmosDB account. Required if `connection_string` is unspecified.
   late final pulumi.Output<String?> accountEndpoint;
-
   /// The account key of the Azure Cosmos DB account. Required if `connection_string` is unspecified.
   late final pulumi.Output<String?> accountKey;
-
   /// A map of additional properties to associate with the Data Factory Linked Service.
   ///
   /// The following supported arguments are specific to CosmosDB Linked Service:
   late final pulumi.Output<Map<String, String>?> additionalProperties;
-
   /// List of tags that can be used for describing the Data Factory Linked Service.
   late final pulumi.Output<List<String>?> annotations;
-
   /// The connection string. Required if `account_endpoint`, `account_key`, and `database` are unspecified.
   late final pulumi.Output<String?> connectionString;
-
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   late final pulumi.Output<String> dataFactoryId;
-
   /// The name of the database. Required if `connection_string` is unspecified.
   late final pulumi.Output<String?> database;
-
   /// The description for the Data Factory Linked Service.
   late final pulumi.Output<String?> description;
-
   /// The integration runtime reference to associate with the Data Factory Linked Service.
   late final pulumi.Output<String?> integrationRuntimeName;
-
   /// Specifies the name of the Data Factory Linked Service. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   late final pulumi.Output<String> name;
-
   /// A map of parameters to associate with the Data Factory Linked Service.
   late final pulumi.Output<Map<String, String>?> parameters;
 
@@ -279,16 +269,14 @@ class LinkedServiceCosmosDb extends pulumi.CustomResource {
     LinkedServiceCosmosDbArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:datafactory/linkedServiceCosmosDb:LinkedServiceCosmosDb',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:datafactory/linkedServiceCosmosDb:LinkedServiceCosmosDb',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountEndpoint = registerOutput<String?>('accountEndpoint');
     accountKey = registerOutput<String?>('accountKey');
-    additionalProperties = registerOutput<Map<String, String>?>(
-      'additionalProperties',
-    );
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
     annotations = registerOutput<List<String>?>('annotations');
     connectionString = registerOutput<String?>('connectionString');
     dataFactoryId = registerOutput<String>('dataFactoryId');
@@ -317,16 +305,14 @@ class LinkedServiceCosmosDb extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:datafactory/linkedServiceCosmosDb:LinkedServiceCosmosDb',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:datafactory/linkedServiceCosmosDb:LinkedServiceCosmosDb',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     accountEndpoint = registerOutput<String?>('accountEndpoint');
     accountKey = registerOutput<String?>('accountKey');
-    additionalProperties = registerOutput<Map<String, String>?>(
-      'additionalProperties',
-    );
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
     annotations = registerOutput<List<String>?>('annotations');
     connectionString = registerOutput<String?>('connectionString');
     dataFactoryId = registerOutput<String>('dataFactoryId');

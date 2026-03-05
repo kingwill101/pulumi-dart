@@ -2109,7 +2109,6 @@ class Image extends pulumi.CustomResource {
   ///
   /// Equivalent to Docker's `--add-host` flag.
   late final pulumi.Output<List<String>?> addHosts;
-
   /// `ARG` names and values to set during the build.
   ///
   /// These variables are accessed like environment variables inside `RUN`
@@ -2120,7 +2119,6 @@ class Image extends pulumi.CustomResource {
   ///
   /// Equivalent to Docker's `--build-arg` flag.
   late final pulumi.Output<Map<String, String>?> buildArgs;
-
   /// Setting this to `false` will always skip image builds during previews,
   /// and setting it to `true` will always build images during previews.
   ///
@@ -2133,30 +2131,24 @@ class Image extends pulumi.CustomResource {
   /// Defaults to `true` as a safeguard against broken images merging as part
   /// of CI pipelines.
   late final pulumi.Output<bool?> buildOnPreview;
-
   /// Builder configuration.
   late final pulumi.Output<BuilderConfig?> builder;
-
   /// Cache export configuration.
   ///
   /// Equivalent to Docker's `--cache-from` flag.
   late final pulumi.Output<List<Map<String, dynamic>>?> cacheFrom;
-
   /// Cache import configuration.
   ///
   /// Equivalent to Docker's `--cache-to` flag.
   late final pulumi.Output<List<Map<String, dynamic>>?> cacheTo;
-
   /// Build context settings. Defaults to the current directory.
   ///
   /// Equivalent to Docker's `PATH | URL | -` positional argument.
   late final pulumi.Output<BuildContext?> context;
-
   /// A preliminary hash of the image's build context.
   ///
   /// Pulumi uses this to determine if an image _may_ need to be re-built.
   late final pulumi.Output<String> contextHash;
-
   /// A SHA256 digest of the image if it was exported to a registry or
   /// elsewhere.
   ///
@@ -2165,12 +2157,10 @@ class Image extends pulumi.CustomResource {
   /// Registry images can be referenced precisely as `&lt;tag&gt;@&lt;digest&gt;`. The
   /// `ref` output provides one such reference as a convenience.
   late final pulumi.Output<String> digest;
-
   /// Dockerfile settings.
   ///
   /// Equivalent to Docker's `--file` flag.
   late final pulumi.Output<Dockerfile?> dockerfile;
-
   /// Use `exec` mode to build this image.
   ///
   /// By default the provider embeds a v25 Docker client with v0.12 buildx
@@ -2192,7 +2182,6 @@ class Image extends pulumi.CustomResource {
   /// are temporarily written to disk in order to provide them to the
   /// `docker-buildx` binary.
   late final pulumi.Output<bool?> exec;
-
   /// Controls where images are persisted after building.
   ///
   /// Images are only stored in the local cache unless `exports` are
@@ -2203,48 +2192,40 @@ class Image extends pulumi.CustomResource {
   ///
   /// Equivalent to Docker's `--output` flag.
   late final pulumi.Output<List<Map<String, dynamic>>?> exports;
-
   /// Attach arbitrary key/value metadata to the image.
   ///
   /// Equivalent to Docker's `--label` flag.
   late final pulumi.Output<Map<String, String>?> labels;
-
   /// When `true` the build will automatically include a `docker` export.
   ///
   /// Defaults to `false`.
   ///
   /// Equivalent to Docker's `--load` flag.
   late final pulumi.Output<bool?> load;
-
   /// Set the network mode for `RUN` instructions. Defaults to `default`.
   ///
   /// For custom networks, configure your builder with `--driver-opt network=...`.
   ///
   /// Equivalent to Docker's `--network` flag.
   late final pulumi.Output<NetworkMode?> network;
-
   /// Do not import cache manifests when building the image.
   ///
   /// Equivalent to Docker's `--no-cache` flag.
   late final pulumi.Output<bool?> noCache;
-
   /// Set target platform(s) for the build. Defaults to the host's platform.
   ///
   /// Equivalent to Docker's `--platform` flag.
   late final pulumi.Output<List<Platform>?> platforms;
-
   /// Always pull referenced images.
   ///
   /// Equivalent to Docker's `--pull` flag.
   late final pulumi.Output<bool?> pull;
-
   /// When `true` the build will automatically include a `registry` export.
   ///
   /// Defaults to `false`.
   ///
   /// Equivalent to Docker's `--push` flag.
   late final pulumi.Output<bool> push;
-
   /// If the image was pushed to any registries then this will contain a
   /// single fully-qualified tag including the build's digest.
   ///
@@ -2260,7 +2241,6 @@ class Image extends pulumi.CustomResource {
   /// For more control over tags consumed by downstream resources you should
   /// use the `digest` output.
   late final pulumi.Output<String> ref;
-
   /// Registry credentials. Required if reading or exporting to private
   /// repositories.
   ///
@@ -2269,7 +2249,6 @@ class Image extends pulumi.CustomResource {
   ///
   /// Similar to `docker login`.
   late final pulumi.Output<List<Map<String, dynamic>>?> registries;
-
   /// A mapping of secret names to their corresponding values.
   ///
   /// Unlike the Docker CLI, these can be passed by value and do not need to
@@ -2280,12 +2259,10 @@ class Image extends pulumi.CustomResource {
   ///
   /// Similar to Docker's `--secret` flag.
   late final pulumi.Output<Map<String, String>?> secrets;
-
   /// SSH agent socket or keys to expose to the build.
   ///
   /// Equivalent to Docker's `--ssh` flag.
   late final pulumi.Output<List<Map<String, dynamic>>?> ssh;
-
   /// Name and optionally a tag (format: `name:tag`).
   ///
   /// If exporting to a registry, the name should include the fully qualified
@@ -2293,7 +2270,6 @@ class Image extends pulumi.CustomResource {
   ///
   /// Equivalent to Docker's `--tag` flag.
   late final pulumi.Output<List<String>?> tags;
-
   /// Set the target build stage(s) to build.
   ///
   /// If not specified all targets will be built by default.
@@ -2305,74 +2281,33 @@ class Image extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Image]. {@macro pulumi_index_image_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Image(String name, {ImageArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'docker-build:index:Image',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Image(
+    String name, {
+    ImageArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'docker-build:index:Image',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     addHosts = registerOutput<List<String>?>('addHosts');
     buildArgs = registerOutput<Map<String, String>?>('buildArgs');
     buildOnPreview = registerOutput<bool?>('buildOnPreview');
-    builder = registerOutput<BuilderConfig?>(
-      'builder',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BuilderConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    builder = registerOutput<BuilderConfig?>('builder', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BuilderConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cacheFrom = registerOutput<List<Map<String, dynamic>>?>('cacheFrom');
     cacheTo = registerOutput<List<Map<String, dynamic>>?>('cacheTo');
-    context = registerOutput<BuildContext?>(
-      'context',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return BuildContext.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    context = registerOutput<BuildContext?>('context', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BuildContext.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     contextHash = registerOutput<String>('contextHash');
     digest = registerOutput<String>('digest');
-    dockerfile = registerOutput<Dockerfile?>(
-      'dockerfile',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return Dockerfile.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    dockerfile = registerOutput<Dockerfile?>('dockerfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Dockerfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     exec = registerOutput<bool?>('exec');
     exports = registerOutput<List<Map<String, dynamic>>?>('exports');
     labels = registerOutput<Map<String, String>?>('labels');
     load = registerOutput<bool?>('load');
-    network = registerOutput<NetworkMode?>(
-      'network',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return NetworkMode.fromValue(guardedValue as String);
-      },
-    );
+    network = registerOutput<NetworkMode?>('network', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkMode.fromValue(guardedValue as String); });
     noCache = registerOutput<bool?>('noCache');
-    platforms = registerOutput<List<Platform>?>(
-      'platforms',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<Platform>(
-          guardedValue,
-          (value) => Platform.fromValue(value as String),
-        );
-      },
-    );
+    platforms = registerOutput<List<Platform>?>('platforms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<Platform>(guardedValue, (value) => Platform.fromValue(value as String)); });
     pull = registerOutput<bool?>('pull');
     push = registerOutput<bool>('push');
     ref = registerOutput<String>('ref');

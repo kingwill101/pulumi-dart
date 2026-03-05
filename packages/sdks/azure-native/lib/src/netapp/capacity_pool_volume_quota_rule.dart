@@ -171,31 +171,22 @@ import 'system_data_response.dart';
 class CapacityPoolVolumeQuotaRule extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Gets the status of the VolumeQuotaRule at the time the operation was called.
   late final pulumi.Output<String> provisioningState;
-
   /// Size of quota
   late final pulumi.Output<double?> quotaSizeInKiBs;
-
   /// UserID/GroupID/SID based on the quota target type. UserID and groupID can be found by running ‘id’ or ‘getent’ command for the user or group and SID can be found by running &lt;wmic useraccount where name='user-name' get sid&gt;
   late final pulumi.Output<String?> quotaTarget;
-
   /// Type of quota
   late final pulumi.Output<String?> quotaType;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -208,11 +199,11 @@ class CapacityPoolVolumeQuotaRule extends pulumi.CustomResource {
     CapacityPoolVolumeQuotaRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:netapp:CapacityPoolVolumeQuotaRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:netapp:CapacityPoolVolumeQuotaRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -220,16 +211,7 @@ class CapacityPoolVolumeQuotaRule extends pulumi.CustomResource {
     quotaSizeInKiBs = registerOutput<double?>('quotaSizeInKiBs');
     quotaTarget = registerOutput<String?>('quotaTarget');
     quotaType = registerOutput<String?>('quotaType');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

@@ -9,34 +9,15 @@ import 'storage_lens_configuration_storage_lens_configuration_account_level_buck
 
 class StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevel {
   /// S3 Storage Lens activity metrics. See Activity Metrics above for more details.
-  final pulumi.Input<
-    StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelActivityMetrics
-  >?
-  activityMetrics;
-
+  final pulumi.Input<StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelActivityMetrics>? activityMetrics;
   /// Advanced cost-optimization metrics for S3 Storage Lens. See Advanced Cost-Optimization Metrics above for more details.
-  final pulumi.Input<
-    StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelAdvancedCostOptimizationMetrics
-  >?
-  advancedCostOptimizationMetrics;
-
+  final pulumi.Input<StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelAdvancedCostOptimizationMetrics>? advancedCostOptimizationMetrics;
   /// Advanced data-protection metrics for S3 Storage Lens. See Advanced Data-Protection Metrics above for more details.
-  final pulumi.Input<
-    StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelAdvancedDataProtectionMetrics
-  >?
-  advancedDataProtectionMetrics;
-
+  final pulumi.Input<StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelAdvancedDataProtectionMetrics>? advancedDataProtectionMetrics;
   /// Detailed status code metrics for S3 Storage Lens. See Detailed Status Code Metrics above for more details.
-  final pulumi.Input<
-    StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelDetailedStatusCodeMetrics
-  >?
-  detailedStatusCodeMetrics;
-
+  final pulumi.Input<StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelDetailedStatusCodeMetrics>? detailedStatusCodeMetrics;
   /// Prefix-level metrics for S3 Storage Lens. See Prefix Level below for more details.
-  final pulumi.Input<
-    StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevel
-  >?
-  prefixLevel;
+  final pulumi.Input<StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevel>? prefixLevel;
 
   /// Creates a new [StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevel].
   /// [activityMetrics] S3 Storage Lens activity metrics. See Activity Metrics above for more details.
@@ -54,83 +35,22 @@ class StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevel {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'activityMetrics':
-          ?pulumi.Input.mapOptionalInputValue<
-            StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelActivityMetrics,
-            Map<String, dynamic>
-          >(activityMetrics, (value) => value.toMap()),
-      'advancedCostOptimizationMetrics':
-          ?pulumi.Input.mapOptionalInputValue<
-            StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelAdvancedCostOptimizationMetrics,
-            Map<String, dynamic>
-          >(advancedCostOptimizationMetrics, (value) => value.toMap()),
-      'advancedDataProtectionMetrics':
-          ?pulumi.Input.mapOptionalInputValue<
-            StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelAdvancedDataProtectionMetrics,
-            Map<String, dynamic>
-          >(advancedDataProtectionMetrics, (value) => value.toMap()),
-      'detailedStatusCodeMetrics':
-          ?pulumi.Input.mapOptionalInputValue<
-            StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelDetailedStatusCodeMetrics,
-            Map<String, dynamic>
-          >(detailedStatusCodeMetrics, (value) => value.toMap()),
-      'prefixLevel':
-          ?pulumi.Input.mapOptionalInputValue<
-            StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevel,
-            Map<String, dynamic>
-          >(prefixLevel, (value) => value.toMap()),
+      'activityMetrics': ?pulumi.Input.mapOptionalInputValue<StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelActivityMetrics, Map<String, dynamic>>(activityMetrics, (value) => value.toMap()),
+      'advancedCostOptimizationMetrics': ?pulumi.Input.mapOptionalInputValue<StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelAdvancedCostOptimizationMetrics, Map<String, dynamic>>(advancedCostOptimizationMetrics, (value) => value.toMap()),
+      'advancedDataProtectionMetrics': ?pulumi.Input.mapOptionalInputValue<StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelAdvancedDataProtectionMetrics, Map<String, dynamic>>(advancedDataProtectionMetrics, (value) => value.toMap()),
+      'detailedStatusCodeMetrics': ?pulumi.Input.mapOptionalInputValue<StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelDetailedStatusCodeMetrics, Map<String, dynamic>>(detailedStatusCodeMetrics, (value) => value.toMap()),
+      'prefixLevel': ?pulumi.Input.mapOptionalInputValue<StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevel, Map<String, dynamic>>(prefixLevel, (value) => value.toMap()),
     };
   }
 
-  factory StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevel.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevel.fromMap(Map<String, dynamic> map) {
     return StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevel(
-      activityMetrics: (() {
-        final guardedValue = map['activityMetrics'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelActivityMetrics.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      advancedCostOptimizationMetrics: (() {
-        final guardedValue = map['advancedCostOptimizationMetrics'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelAdvancedCostOptimizationMetrics.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      advancedDataProtectionMetrics: (() {
-        final guardedValue = map['advancedDataProtectionMetrics'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelAdvancedDataProtectionMetrics.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      detailedStatusCodeMetrics: (() {
-        final guardedValue = map['detailedStatusCodeMetrics'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelDetailedStatusCodeMetrics.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      prefixLevel: (() {
-        final guardedValue = map['prefixLevel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevel.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      activityMetrics: (() { final guardedValue = map['activityMetrics']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelActivityMetrics.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      advancedCostOptimizationMetrics: (() { final guardedValue = map['advancedCostOptimizationMetrics']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelAdvancedCostOptimizationMetrics.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      advancedDataProtectionMetrics: (() { final guardedValue = map['advancedDataProtectionMetrics']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelAdvancedDataProtectionMetrics.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      detailedStatusCodeMetrics: (() { final guardedValue = map['detailedStatusCodeMetrics']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelDetailedStatusCodeMetrics.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      prefixLevel: (() { final guardedValue = map['prefixLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevel.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

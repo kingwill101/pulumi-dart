@@ -12,10 +12,14 @@ class GetManagedOpArgs {
 
   /// Creates a new [GetManagedOpArgs].
   /// [managedOpsName] Name of the resource.
-  GetManagedOpArgs({required this.managedOpsName});
+  GetManagedOpArgs({
+    required this.managedOpsName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'managedOpsName': managedOpsName};
+    return <String, dynamic>{
+      'managedOpsName': managedOpsName,
+    };
   }
 
   factory GetManagedOpArgs.fromMap(Map<String, dynamic> map) {
@@ -24,3 +28,4 @@ class GetManagedOpArgs {
     );
   }
 }
+

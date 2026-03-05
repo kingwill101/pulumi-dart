@@ -13,10 +13,16 @@ class GetFolderSinkArgs {
   /// Creates a new [GetFolderSinkArgs].
   /// [folderId] Required.
   /// [sinkId] Required.
-  GetFolderSinkArgs({required this.folderId, required this.sinkId});
+  GetFolderSinkArgs({
+    required this.folderId,
+    required this.sinkId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'folderId': folderId, 'sinkId': sinkId};
+    return <String, dynamic>{
+      'folderId': folderId,
+      'sinkId': sinkId,
+    };
   }
 
   factory GetFolderSinkArgs.fromMap(Map<String, dynamic> map) {
@@ -26,3 +32,4 @@ class GetFolderSinkArgs {
     );
   }
 }
+

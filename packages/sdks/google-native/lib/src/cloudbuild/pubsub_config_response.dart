@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PubsubConfigResponse {
   /// Service account that will make the push request.
   final pulumi.Input<String> serviceAccountEmail;
-
   /// Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
   final pulumi.Input<String> state;
-
   /// Name of the subscription. Format is `projects/{project}/subscriptions/{subscription}`.
   final pulumi.Input<String> subscription;
-
   /// The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`.
   final pulumi.Input<String> topic;
 
@@ -39,12 +36,11 @@ class PubsubConfigResponse {
 
   factory PubsubConfigResponse.fromMap(Map<String, dynamic> map) {
     return PubsubConfigResponse(
-      serviceAccountEmail: pulumi.Input.fromValue(
-        map['serviceAccountEmail'] as String,
-      ),
+      serviceAccountEmail: pulumi.Input.fromValue(map['serviceAccountEmail'] as String),
       state: pulumi.Input.fromValue(map['state'] as String),
       subscription: pulumi.Input.fromValue(map['subscription'] as String),
       topic: pulumi.Input.fromValue(map['topic'] as String),
     );
   }
 }
+

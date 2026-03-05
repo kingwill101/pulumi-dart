@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppRoleAssignmentState {
   /// The ID of the app role to be assigned, or the default role ID `00000000-0000-0000-0000-000000000000`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? appRoleId;
-
   /// The display name of the principal to which the app role is assigned.
   final pulumi.Input<String>? principalDisplayName;
-
   /// The object ID of the user, group or service principal to be assigned this app role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
   final pulumi.Input<String>? principalObjectId;
-
   /// The object type of the principal to which the app role is assigned.
   final pulumi.Input<String>? principalType;
-
   /// The display name of the application representing the resource.
   final pulumi.Input<String>? resourceDisplayName;
-
   /// The object ID of the service principal representing the resource. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceObjectId;
 
@@ -51,36 +46,13 @@ class AppRoleAssignmentState {
 
   factory AppRoleAssignmentState.fromMap(Map<String, dynamic> map) {
     return AppRoleAssignmentState(
-      appRoleId: (() {
-        final guardedValue = map['appRoleId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      principalDisplayName: (() {
-        final guardedValue = map['principalDisplayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      principalObjectId: (() {
-        final guardedValue = map['principalObjectId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      principalType: (() {
-        final guardedValue = map['principalType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceDisplayName: (() {
-        final guardedValue = map['resourceDisplayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceObjectId: (() {
-        final guardedValue = map['resourceObjectId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      appRoleId: (() { final guardedValue = map['appRoleId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      principalDisplayName: (() { final guardedValue = map['principalDisplayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      principalObjectId: (() { final guardedValue = map['principalObjectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      principalType: (() { final guardedValue = map['principalType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceDisplayName: (() { final guardedValue = map['resourceDisplayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceObjectId: (() { final guardedValue = map['resourceObjectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

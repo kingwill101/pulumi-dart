@@ -7,28 +7,20 @@ import 'linked_custom_service_integration_runtime.dart';
 class LinkedCustomServiceState {
   /// A map of additional properties to associate with the Data Factory Linked Service.
   final pulumi.Input<Map<String, String>>? additionalProperties;
-
   /// List of tags that can be used for describing the Data Factory Linked Service.
   final pulumi.Input<List<String>>? annotations;
-
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   final pulumi.Input<String>? dataFactoryId;
-
   /// The description for the Data Factory Linked Service.
   final pulumi.Input<String>? description;
-
   /// An `integration_runtime` block as defined below.
   final pulumi.Input<LinkedCustomServiceIntegrationRuntime>? integrationRuntime;
-
   /// Specifies the name of the Data Factory Linked Service. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   final pulumi.Input<String>? name;
-
   /// A map of parameters to associate with the Data Factory Linked Service.
   final pulumi.Input<Map<String, String>>? parameters;
-
   /// The type of data stores that will be connected to Data Factory. For full list of supported data stores, please refer to [Azure Data Factory connector](https://docs.microsoft.com/azure/data-factory/connector-overview). Please refer to Microsoft.DataFactory factories/linkedservices for the type values syntax. Changing this forces a new resource to be created.
   final pulumi.Input<String>? type;
-
   /// A JSON object that contains the properties of the Data Factory Linked Service. Refer to
   /// datafactory/models.go for the shape of the expected JSON. For example, the JSON object for `AzureBlobStorage`-typed Linked Service will be unmarshaled into `AzureBlobStorageLinkedServiceTypeProperties struct`.
   final pulumi.Input<String>? typePropertiesJson;
@@ -61,11 +53,7 @@ class LinkedCustomServiceState {
       'annotations': ?annotations,
       'dataFactoryId': ?dataFactoryId,
       'description': ?description,
-      'integrationRuntime':
-          ?pulumi.Input.mapOptionalInputValue<
-            LinkedCustomServiceIntegrationRuntime,
-            Map<String, dynamic>
-          >(integrationRuntime, (value) => value.toMap()),
+      'integrationRuntime': ?pulumi.Input.mapOptionalInputValue<LinkedCustomServiceIntegrationRuntime, Map<String, dynamic>>(integrationRuntime, (value) => value.toMap()),
       'name': ?name,
       'parameters': ?parameters,
       'type': ?type,
@@ -75,59 +63,16 @@ class LinkedCustomServiceState {
 
   factory LinkedCustomServiceState.fromMap(Map<String, dynamic> map) {
     return LinkedCustomServiceState(
-      additionalProperties: (() {
-        final guardedValue = map['additionalProperties'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      annotations: (() {
-        final guardedValue = map['annotations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      dataFactoryId: (() {
-        final guardedValue = map['dataFactoryId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      integrationRuntime: (() {
-        final guardedValue = map['integrationRuntime'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          LinkedCustomServiceIntegrationRuntime.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      parameters: (() {
-        final guardedValue = map['parameters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      typePropertiesJson: (() {
-        final guardedValue = map['typePropertiesJson'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      additionalProperties: (() { final guardedValue = map['additionalProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      dataFactoryId: (() { final guardedValue = map['dataFactoryId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      integrationRuntime: (() { final guardedValue = map['integrationRuntime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LinkedCustomServiceIntegrationRuntime.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      typePropertiesJson: (() { final guardedValue = map['typePropertiesJson']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -7,10 +7,8 @@ class AutomationActionLogicApp {
   /// The type of the action that will be triggered by the Automation
   /// Expected value is 'LogicApp'.
   final pulumi.Input<String> actionType;
-
   /// The triggered Logic App Azure Resource ID. This can also reside on other subscriptions, given that you have permissions to trigger the Logic App
   final pulumi.Input<String>? logicAppResourceId;
-
   /// The Logic App trigger URI endpoint (it will not be included in any response).
   final pulumi.Input<String>? uri;
 
@@ -35,16 +33,9 @@ class AutomationActionLogicApp {
   factory AutomationActionLogicApp.fromMap(Map<String, dynamic> map) {
     return AutomationActionLogicApp(
       actionType: pulumi.Input.fromValue(map['actionType'] as String),
-      logicAppResourceId: (() {
-        final guardedValue = map['logicAppResourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      uri: (() {
-        final guardedValue = map['uri'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      logicAppResourceId: (() { final guardedValue = map['logicAppResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      uri: (() { final guardedValue = map['uri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

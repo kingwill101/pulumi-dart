@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayResponse {
   /// AppGateway name in following format: `projects/{project_id}/locations/{location_id}/appgateways/{gateway_id}`
   final pulumi.Input<String> appGateway;
-
   /// Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
   final pulumi.Input<int> ingressPort;
-
   /// L7 private service connection for this resource.
   final pulumi.Input<String> l7psc;
-
   /// The type of hosting used by the gateway.
   final pulumi.Input<String> type;
-
   /// Server-defined URI for this resource.
   final pulumi.Input<String> uri;
 
@@ -43,9 +39,7 @@ class GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayResponse {
     };
   }
 
-  factory GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayResponse(
       appGateway: pulumi.Input.fromValue(map['appGateway'] as String),
       ingressPort: pulumi.Input.fromValue(map['ingressPort'] as int),
@@ -55,3 +49,4 @@ class GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayResponse {
     );
   }
 }
+

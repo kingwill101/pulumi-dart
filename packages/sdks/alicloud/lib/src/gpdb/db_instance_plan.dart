@@ -18,31 +18,22 @@ import 'db_instance_plan_state.dart';
 class DbInstancePlan extends pulumi.CustomResource {
   /// The ID of the GPDB instance.
   late final pulumi.Output<String> dbInstanceId;
-
   /// The name of the Plan.
   late final pulumi.Output<String> dbInstancePlanName;
-
   /// The execution information of the plan. See `plan_config` below.
   late final pulumi.Output<List<Map<String, dynamic>>> planConfigs;
-
   /// The description of the Plan.
   late final pulumi.Output<String?> planDesc;
-
   /// The end time of the Plan.
   late final pulumi.Output<String?> planEndDate;
-
   /// The ID of the plan.
   late final pulumi.Output<String> planId;
-
   /// The execution mode of the plan. Valid values: `Postpone`, `Regular`.
   late final pulumi.Output<String> planScheduleType;
-
   /// The start time of the Plan.
   late final pulumi.Output<String> planStartDate;
-
   /// The type of the Plan. Valid values: `PauseResume`, `Resize`.
   late final pulumi.Output<String> planType;
-
   /// The Status of the Plan. Valid values: `active`, `cancel`.
   late final pulumi.Output<String> status;
 
@@ -55,11 +46,11 @@ class DbInstancePlan extends pulumi.CustomResource {
     DbInstancePlanArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:gpdb/dbInstancePlan:DbInstancePlan',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:gpdb/dbInstancePlan:DbInstancePlan',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dbInstanceId = registerOutput<String>('dbInstanceId');
     dbInstancePlanName = registerOutput<String>('dbInstancePlanName');
     planConfigs = registerOutput<List<Map<String, dynamic>>>('planConfigs');
@@ -90,11 +81,11 @@ class DbInstancePlan extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:gpdb/dbInstancePlan:DbInstancePlan',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:gpdb/dbInstancePlan:DbInstancePlan',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dbInstanceId = registerOutput<String>('dbInstanceId');
     dbInstancePlanName = registerOutput<String>('dbInstancePlanName');
     planConfigs = registerOutput<List<Map<String, dynamic>>>('planConfigs');

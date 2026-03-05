@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPolicyAssignmentArtifactArgs {
   /// Name of the blueprint artifact.
   final pulumi.Input<String> artifactName;
-
   /// Name of the blueprint definition.
   final pulumi.Input<String> blueprintName;
-
   /// The scope of the resource. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}').
   final pulumi.Input<String> resourceScope;
 
@@ -42,3 +40,4 @@ class GetPolicyAssignmentArtifactArgs {
     );
   }
 }
+

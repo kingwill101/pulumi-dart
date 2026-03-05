@@ -16,8 +16,7 @@ enum ClassificationMultilabelPrimaryMetrics {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ClassificationMultilabelPrimaryMetrics value: $value',
-    );
+    throw ArgumentError('Unknown ClassificationMultilabelPrimaryMetrics value: $value');
   }
 }
+

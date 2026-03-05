@@ -14,3 +14,4 @@ enum PossibleOperationsDirections {
     throw ArgumentError('Unknown PossibleOperationsDirections value: $value');
   }
 }
+

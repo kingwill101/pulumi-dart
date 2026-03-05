@@ -218,48 +218,34 @@ import 'domain_state.dart';
 class Domain extends pulumi.CustomResource {
   /// The name of the certificate. The value of this parameter is returned if HTTPS is enabled.
   late final pulumi.Output<String> certName;
-
   /// The URL that is used for health checks.
   late final pulumi.Output<String?> checkUrl;
-
   /// The CNAME that is assigned to the domain name for CDN. You must add a CNAME record in the system of your Domain Name System (DNS) service provider to map the domain name for CDN to the CNAME.
   late final pulumi.Output<String> cname;
-
   /// The description of the domain name for CDN.
   late final pulumi.Output<String> description;
-
   /// The domain name for CDN that you want to add to ApsaraVideo VOD. Wildcard domain names are supported. Start the domain name with a period (.). Example: `.example.com.`.
   late final pulumi.Output<String> domainName;
-
   /// The time when the domain name for CDN was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
   late final pulumi.Output<String> gmtCreated;
-
   /// The last time when the domain name for CDN was modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
   late final pulumi.Output<String> gmtModified;
-
   /// This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Valid values:
   late final pulumi.Output<String?> scope;
-
   /// The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
   late final pulumi.Output<List<Map<String, dynamic>>> sources;
-
   /// Indicates whether the Secure Sockets Layer (SSL) certificate is enabled. Valid values: `on`,`off`.
   late final pulumi.Output<String> sslProtocol;
-
   /// The public key of the certificate. The value of this parameter is returned if HTTPS is enabled.
   late final pulumi.Output<String> sslPub;
-
   /// The status of the domain name for CDN. Valid values:
   late final pulumi.Output<String> status;
-
   /// A mapping of tags to assign to the resource.
   /// * `Key`: It can be up to 64 characters in length. It cannot be a null string.
   /// * `Value`: It can be up to 128 characters in length. It can be a null string.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The top-level domain name.
   late final pulumi.Output<String?> topLevelDomain;
-
   /// The weight of the origin server.
   late final pulumi.Output<String> weight;
 
@@ -267,13 +253,16 @@ class Domain extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Domain]. {@macro pulumi_vod_domain_domain_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Domain(String name, {DomainArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:vod/domain:Domain',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Domain(
+    String name, {
+    DomainArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:vod/domain:Domain',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     certName = registerOutput<String>('certName');
     checkUrl = registerOutput<String?>('checkUrl');
     cname = registerOutput<String>('cname');
@@ -309,11 +298,11 @@ class Domain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vod/domain:Domain',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vod/domain:Domain',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     certName = registerOutput<String>('certName');
     checkUrl = registerOutput<String?>('checkUrl');
     cname = registerOutput<String>('cname');

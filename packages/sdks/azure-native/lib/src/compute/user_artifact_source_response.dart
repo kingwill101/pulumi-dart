@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserArtifactSourceResponse {
   /// Optional. The defaultConfigurationLink of the artifact, must be a readable storage page blob.
   final pulumi.Input<String>? defaultConfigurationLink;
-
   /// Required. The mediaLink of the artifact, must be a readable storage page blob.
   final pulumi.Input<String> mediaLink;
 
@@ -27,12 +26,9 @@ class UserArtifactSourceResponse {
 
   factory UserArtifactSourceResponse.fromMap(Map<String, dynamic> map) {
     return UserArtifactSourceResponse(
-      defaultConfigurationLink: (() {
-        final guardedValue = map['defaultConfigurationLink'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      defaultConfigurationLink: (() { final guardedValue = map['defaultConfigurationLink']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       mediaLink: pulumi.Input.fromValue(map['mediaLink'] as String),
     );
   }
 }
+

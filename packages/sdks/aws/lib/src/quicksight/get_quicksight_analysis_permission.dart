@@ -15,7 +15,10 @@ class GetQuicksightAnalysisPermission {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'actions': actions, 'principal': principal};
+    return <String, dynamic>{
+      'actions': actions,
+      'principal': principal,
+    };
   }
 
   factory GetQuicksightAnalysisPermission.fromMap(Map<String, dynamic> map) {
@@ -25,3 +28,4 @@ class GetQuicksightAnalysisPermission {
     );
   }
 }
+

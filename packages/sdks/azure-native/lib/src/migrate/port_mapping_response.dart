@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PortMappingResponse {
   /// Gets or sets the External Port.
   final pulumi.Input<int>? externalPort;
-
   /// Gets or sets the Internal Port.
   final pulumi.Input<int>? internalPort;
 
   /// Creates a new [PortMappingResponse].
   /// [externalPort] Gets or sets the External Port.
   /// [internalPort] Gets or sets the Internal Port.
-  PortMappingResponse({this.externalPort, this.internalPort});
+  PortMappingResponse({
+    this.externalPort,
+    this.internalPort,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class PortMappingResponse {
 
   factory PortMappingResponse.fromMap(Map<String, dynamic> map) {
     return PortMappingResponse(
-      externalPort: (() {
-        final guardedValue = map['externalPort'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      internalPort: (() {
-        final guardedValue = map['internalPort'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      externalPort: (() { final guardedValue = map['externalPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      internalPort: (() { final guardedValue = map['internalPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

@@ -13,8 +13,7 @@ enum NetworkFunctionConfigurationType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown NetworkFunctionConfigurationType value: $value',
-    );
+    throw ArgumentError('Unknown NetworkFunctionConfigurationType value: $value');
   }
 }
+

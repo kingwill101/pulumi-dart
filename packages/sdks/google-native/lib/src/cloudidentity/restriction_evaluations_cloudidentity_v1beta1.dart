@@ -19,17 +19,10 @@ class RestrictionEvaluationsCloudidentityV1beta1 {
     };
   }
 
-  factory RestrictionEvaluationsCloudidentityV1beta1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RestrictionEvaluationsCloudidentityV1beta1.fromMap(Map<String, dynamic> map) {
     return RestrictionEvaluationsCloudidentityV1beta1(
-      memberRestrictionEvaluation: (() {
-        final guardedValue = map['memberRestrictionEvaluation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      memberRestrictionEvaluation: (() { final guardedValue = map['memberRestrictionEvaluation']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }
 }
+

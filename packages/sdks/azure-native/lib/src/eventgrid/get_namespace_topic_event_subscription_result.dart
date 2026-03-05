@@ -8,31 +8,22 @@ import 'system_data_response.dart';
 class GetNamespaceTopicEventSubscriptionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Information about the delivery configuration of the event subscription.
   final DeliveryConfigurationResponse? deliveryConfiguration;
-
   /// The event delivery schema for the event subscription.
   final String? eventDeliverySchema;
-
   /// Expiration time of the event subscription.
   final String? expirationTimeUtc;
-
   /// Information about the filter for the event subscription.
   final FiltersConfigurationResponse? filtersConfiguration;
-
   /// Fully qualified identifier of the resource.
   final String id;
-
   /// Name of the resource.
   final String name;
-
   /// Provisioning state of the event subscription.
   final String provisioningState;
-
   /// The system metadata relating to the Event Grid resource.
   final SystemDataResponse systemData;
-
   /// Type of the resource.
   final String type;
 
@@ -75,42 +66,19 @@ class GetNamespaceTopicEventSubscriptionResult {
     };
   }
 
-  factory GetNamespaceTopicEventSubscriptionResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetNamespaceTopicEventSubscriptionResult.fromMap(Map<String, dynamic> map) {
     return GetNamespaceTopicEventSubscriptionResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      deliveryConfiguration: (() {
-        final guardedValue = map['deliveryConfiguration'];
-        if (guardedValue == null) return null;
-        return DeliveryConfigurationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
-      eventDeliverySchema: (() {
-        final guardedValue = map['eventDeliverySchema'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      expirationTimeUtc: (() {
-        final guardedValue = map['expirationTimeUtc'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      filtersConfiguration: (() {
-        final guardedValue = map['filtersConfiguration'];
-        if (guardedValue == null) return null;
-        return FiltersConfigurationResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      })(),
+      deliveryConfiguration: (() { final guardedValue = map['deliveryConfiguration']; if (guardedValue == null) return null; return DeliveryConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      eventDeliverySchema: (() { final guardedValue = map['eventDeliverySchema']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      expirationTimeUtc: (() { final guardedValue = map['expirationTimeUtc']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      filtersConfiguration: (() { final guardedValue = map['filtersConfiguration']; if (guardedValue == null) return null; return FiltersConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

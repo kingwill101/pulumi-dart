@@ -7,7 +7,6 @@ import 'storage_destination_configuration_response.dart';
 class DatasetStorageDestinationResponse {
   /// The storage destination configuration.
   final pulumi.Input<StorageDestinationConfigurationResponse> configuration;
-
   /// The set of supported dataset destinations for an asset.
   /// Expected value is 'Storage'.
   final pulumi.Input<String> target;
@@ -22,23 +21,16 @@ class DatasetStorageDestinationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configuration':
-          pulumi.Input.mapInputValue<
-            StorageDestinationConfigurationResponse,
-            Map<String, dynamic>
-          >(configuration, (value) => value.toMap()),
+      'configuration': pulumi.Input.mapInputValue<StorageDestinationConfigurationResponse, Map<String, dynamic>>(configuration, (value) => value.toMap()),
       'target': target,
     };
   }
 
   factory DatasetStorageDestinationResponse.fromMap(Map<String, dynamic> map) {
     return DatasetStorageDestinationResponse(
-      configuration: pulumi.Input.fromValue(
-        StorageDestinationConfigurationResponse.fromMap(
-          (map['configuration']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      configuration: pulumi.Input.fromValue(StorageDestinationConfigurationResponse.fromMap((map['configuration']! as Map).cast<String, dynamic>())),
       target: pulumi.Input.fromValue(map['target'] as String),
     );
   }
 }
+

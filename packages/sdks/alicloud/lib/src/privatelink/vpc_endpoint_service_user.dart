@@ -232,13 +232,10 @@ import 'vpc_endpoint_service_user_state.dart';
 class VpcEndpointServiceUser extends pulumi.CustomResource {
   /// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
   late final pulumi.Output<bool?> dryRun;
-
   /// The endpoint service ID.
   late final pulumi.Output<String> serviceId;
-
   /// The whitelist in the format of ARN.
   late final pulumi.Output<String?> userArn;
-
   /// The ID of the Alibaba Cloud account in the whitelist of the endpoint service.
   late final pulumi.Output<String> userId;
 
@@ -251,11 +248,11 @@ class VpcEndpointServiceUser extends pulumi.CustomResource {
     VpcEndpointServiceUserArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:privatelink/vpcEndpointServiceUser:VpcEndpointServiceUser',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:privatelink/vpcEndpointServiceUser:VpcEndpointServiceUser',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dryRun = registerOutput<bool?>('dryRun');
     serviceId = registerOutput<String>('serviceId');
     userArn = registerOutput<String?>('userArn');
@@ -280,11 +277,11 @@ class VpcEndpointServiceUser extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:privatelink/vpcEndpointServiceUser:VpcEndpointServiceUser',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:privatelink/vpcEndpointServiceUser:VpcEndpointServiceUser',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dryRun = registerOutput<bool?>('dryRun');
     serviceId = registerOutput<String>('serviceId');
     userArn = registerOutput<String?>('userArn');

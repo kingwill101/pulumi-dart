@@ -15,3 +15,4 @@ enum NetworkOrigin {
     throw ArgumentError('Unknown NetworkOrigin value: $value');
   }
 }
+

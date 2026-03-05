@@ -20,3 +20,4 @@ enum IotHubSku {
     throw ArgumentError('Unknown IotHubSku value: $value');
   }
 }
+

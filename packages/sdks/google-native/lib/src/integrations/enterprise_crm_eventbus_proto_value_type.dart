@@ -39,86 +39,27 @@ class EnterpriseCrmEventbusProtoValueType {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'booleanValue': ?booleanValue,
-      'doubleArray':
-          ?pulumi.Input.mapOptionalInputValue<
-            EnterpriseCrmEventbusProtoDoubleArray,
-            Map<String, dynamic>
-          >(doubleArray, (value) => value.toMap()),
+      'doubleArray': ?pulumi.Input.mapOptionalInputValue<EnterpriseCrmEventbusProtoDoubleArray, Map<String, dynamic>>(doubleArray, (value) => value.toMap()),
       'doubleValue': ?doubleValue,
-      'intArray':
-          ?pulumi.Input.mapOptionalInputValue<
-            EnterpriseCrmEventbusProtoIntArray,
-            Map<String, dynamic>
-          >(intArray, (value) => value.toMap()),
+      'intArray': ?pulumi.Input.mapOptionalInputValue<EnterpriseCrmEventbusProtoIntArray, Map<String, dynamic>>(intArray, (value) => value.toMap()),
       'intValue': ?intValue,
       'protoValue': ?protoValue,
-      'stringArray':
-          ?pulumi.Input.mapOptionalInputValue<
-            EnterpriseCrmEventbusProtoStringArray,
-            Map<String, dynamic>
-          >(stringArray, (value) => value.toMap()),
+      'stringArray': ?pulumi.Input.mapOptionalInputValue<EnterpriseCrmEventbusProtoStringArray, Map<String, dynamic>>(stringArray, (value) => value.toMap()),
       'stringValue': ?stringValue,
     };
   }
 
-  factory EnterpriseCrmEventbusProtoValueType.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EnterpriseCrmEventbusProtoValueType.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoValueType(
-      booleanValue: (() {
-        final guardedValue = map['booleanValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      doubleArray: (() {
-        final guardedValue = map['doubleArray'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          EnterpriseCrmEventbusProtoDoubleArray.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      doubleValue: (() {
-        final guardedValue = map['doubleValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      intArray: (() {
-        final guardedValue = map['intArray'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          EnterpriseCrmEventbusProtoIntArray.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      intValue: (() {
-        final guardedValue = map['intValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      protoValue: (() {
-        final guardedValue = map['protoValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      stringArray: (() {
-        final guardedValue = map['stringArray'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          EnterpriseCrmEventbusProtoStringArray.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      stringValue: (() {
-        final guardedValue = map['stringValue'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      booleanValue: (() { final guardedValue = map['booleanValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      doubleArray: (() { final guardedValue = map['doubleArray']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EnterpriseCrmEventbusProtoDoubleArray.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      doubleValue: (() { final guardedValue = map['doubleValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      intArray: (() { final guardedValue = map['intArray']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EnterpriseCrmEventbusProtoIntArray.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      intValue: (() { final guardedValue = map['intValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      protoValue: (() { final guardedValue = map['protoValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      stringArray: (() { final guardedValue = map['stringArray']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EnterpriseCrmEventbusProtoStringArray.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      stringValue: (() { final guardedValue = map['stringValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MulticastGroupSourceArgs {
   /// The IP address assigned to the transit gateway multicast group.
   final pulumi.Input<String> groupIpAddress;
-
   /// The group members' network interface ID to register with the transit gateway multicast group.
   final pulumi.Input<String> networkInterfaceId;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-
   /// The ID of the transit gateway multicast domain.
   final pulumi.Input<String> transitGatewayMulticastDomainId;
 
@@ -43,17 +40,10 @@ class MulticastGroupSourceArgs {
   factory MulticastGroupSourceArgs.fromMap(Map<String, dynamic> map) {
     return MulticastGroupSourceArgs(
       groupIpAddress: pulumi.Input.fromValue(map['groupIpAddress'] as String),
-      networkInterfaceId: pulumi.Input.fromValue(
-        map['networkInterfaceId'] as String,
-      ),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      transitGatewayMulticastDomainId: pulumi.Input.fromValue(
-        map['transitGatewayMulticastDomainId'] as String,
-      ),
+      networkInterfaceId: pulumi.Input.fromValue(map['networkInterfaceId'] as String),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      transitGatewayMulticastDomainId: pulumi.Input.fromValue(map['transitGatewayMulticastDomainId'] as String),
     );
   }
 }
+

@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CreatorPropertiesResponse {
   /// The consumed storage unit size in bytes for the creator resource.
   final pulumi.Input<int>? consumedStorageUnitSizeInBytes;
-
   /// The state of the resource provisioning, terminal states: Succeeded, Failed, Canceled
   final pulumi.Input<String> provisioningState;
-
   /// The storage units to be allocated. Integer values from 1 to 100, inclusive.
   final pulumi.Input<int> storageUnits;
-
   /// The total allocated storage unit size in bytes for the creator resource.
   final pulumi.Input<int>? totalStorageUnitSizeInBytes;
 
@@ -39,20 +36,11 @@ class CreatorPropertiesResponse {
 
   factory CreatorPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return CreatorPropertiesResponse(
-      consumedStorageUnitSizeInBytes: (() {
-        final guardedValue = map['consumedStorageUnitSizeInBytes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      provisioningState: pulumi.Input.fromValue(
-        map['provisioningState'] as String,
-      ),
+      consumedStorageUnitSizeInBytes: (() { final guardedValue = map['consumedStorageUnitSizeInBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
       storageUnits: pulumi.Input.fromValue(map['storageUnits'] as int),
-      totalStorageUnitSizeInBytes: (() {
-        final guardedValue = map['totalStorageUnitSizeInBytes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      totalStorageUnitSizeInBytes: (() { final guardedValue = map['totalStorageUnitSizeInBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

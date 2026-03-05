@@ -135,12 +135,12 @@ class ConfigFile extends pulumi.ComponentResource {
     ConfigFileArgs? args,
     pulumi.ComponentResourceOptions? options,
   }) : super(
-         'kubernetes:yaml/v2:ConfigFile',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.ComponentResourceOptions(),
-         remote: true,
-       ) {
+          'kubernetes:yaml/v2:ConfigFile',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.ComponentResourceOptions(),
+          remote: true,
+        ) {
     resources = registerOutput<List<Map<String, dynamic>>?>('resources');
   }
 }

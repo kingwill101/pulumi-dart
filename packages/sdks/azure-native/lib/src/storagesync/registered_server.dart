@@ -177,94 +177,64 @@ import 'system_data_response.dart';
 class RegisteredServer extends pulumi.CustomResource {
   /// Server auth type.
   late final pulumi.Output<String> activeAuthType;
-
   /// Registered Server Agent Version
   late final pulumi.Output<String?> agentVersion;
-
   /// Registered Server Agent Version Expiration Date
   late final pulumi.Output<String> agentVersionExpirationDate;
-
   /// Registered Server Agent Version Status
   late final pulumi.Output<String> agentVersionStatus;
-
   /// Server Application Id
   late final pulumi.Output<String?> applicationId;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Registered Server clusterId
   late final pulumi.Output<String?> clusterId;
-
   /// Registered Server clusterName
   late final pulumi.Output<String?> clusterName;
-
   /// Resource discoveryEndpointUri
   late final pulumi.Output<String?> discoveryEndpointUri;
-
   /// Friendly Name
   late final pulumi.Output<String?> friendlyName;
-
   /// Apply server with newly discovered ApplicationId if available.
   late final pulumi.Output<bool> identity;
-
   /// Registered Server last heart beat
   late final pulumi.Output<String?> lastHeartBeat;
-
   /// Resource Last Operation Name
   late final pulumi.Output<String?> lastOperationName;
-
   /// Registered Server lastWorkflowId
   late final pulumi.Output<String?> lastWorkflowId;
-
   /// Latest Server Application Id discovered from the server. It is not yet applied.
   late final pulumi.Output<String?> latestApplicationId;
-
   /// Management Endpoint Uri
   late final pulumi.Output<String?> managementEndpointUri;
-
   /// Monitoring Configuration
   late final pulumi.Output<String?> monitoringConfiguration;
-
   /// Telemetry Endpoint Uri
   late final pulumi.Output<String?> monitoringEndpointUri;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// Registered Server Provisioning State
   late final pulumi.Output<String?> provisioningState;
-
   /// Resource Location
   late final pulumi.Output<String?> resourceLocation;
-
   /// Registered Server Certificate
   late final pulumi.Output<String?> serverCertificate;
-
   /// Registered Server serverId
   late final pulumi.Output<String?> serverId;
-
   /// Registered Server Management Error Code
   late final pulumi.Output<int?> serverManagementErrorCode;
-
   /// Server name
   late final pulumi.Output<String> serverName;
-
   /// Registered Server OS Version
   late final pulumi.Output<String?> serverOSVersion;
-
   /// Registered Server serverRole
   late final pulumi.Output<String?> serverRole;
-
   /// Service Location
   late final pulumi.Output<String?> serviceLocation;
-
   /// Registered Server storageSyncServiceUid
   late final pulumi.Output<String?> storageSyncServiceUid;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -277,16 +247,14 @@ class RegisteredServer extends pulumi.CustomResource {
     RegisteredServerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:storagesync:RegisteredServer',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:storagesync:RegisteredServer',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     activeAuthType = registerOutput<String>('activeAuthType');
     agentVersion = registerOutput<String?>('agentVersion');
-    agentVersionExpirationDate = registerOutput<String>(
-      'agentVersionExpirationDate',
-    );
+    agentVersionExpirationDate = registerOutput<String>('agentVersionExpirationDate');
     agentVersionStatus = registerOutput<String>('agentVersionStatus');
     applicationId = registerOutput<String?>('applicationId');
     azureApiVersion = registerOutput<String>('azureApiVersion');
@@ -300,33 +268,20 @@ class RegisteredServer extends pulumi.CustomResource {
     lastWorkflowId = registerOutput<String?>('lastWorkflowId');
     latestApplicationId = registerOutput<String?>('latestApplicationId');
     managementEndpointUri = registerOutput<String?>('managementEndpointUri');
-    monitoringConfiguration = registerOutput<String?>(
-      'monitoringConfiguration',
-    );
+    monitoringConfiguration = registerOutput<String?>('monitoringConfiguration');
     monitoringEndpointUri = registerOutput<String?>('monitoringEndpointUri');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String?>('provisioningState');
     resourceLocation = registerOutput<String?>('resourceLocation');
     serverCertificate = registerOutput<String?>('serverCertificate');
     serverId = registerOutput<String?>('serverId');
-    serverManagementErrorCode = registerOutput<int?>(
-      'serverManagementErrorCode',
-    );
+    serverManagementErrorCode = registerOutput<int?>('serverManagementErrorCode');
     serverName = registerOutput<String>('serverName');
     serverOSVersion = registerOutput<String?>('serverOSVersion');
     serverRole = registerOutput<String?>('serverRole');
     serviceLocation = registerOutput<String?>('serviceLocation');
     storageSyncServiceUid = registerOutput<String?>('storageSyncServiceUid');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

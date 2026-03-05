@@ -67,11 +67,7 @@ class GetStoragePoolTypesResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'creationTimestamp': creationTimestamp,
-      'deprecateds':
-          pulumi.Input.encodeList<
-            GetStoragePoolTypesDeprecated,
-            Map<String, dynamic>
-          >(deprecateds, (value) => value.toMap()),
+      'deprecateds': pulumi.Input.encodeList<GetStoragePoolTypesDeprecated, Map<String, dynamic>>(deprecateds, (value) => value.toMap()),
       'description': description,
       'id': id,
       'kind': kind,
@@ -94,12 +90,7 @@ class GetStoragePoolTypesResult {
   factory GetStoragePoolTypesResult.fromMap(Map<String, dynamic> map) {
     return GetStoragePoolTypesResult(
       creationTimestamp: map['creationTimestamp'] as String,
-      deprecateds: pulumi.Input.decodeList<GetStoragePoolTypesDeprecated>(
-        map['deprecateds']!,
-        (value) => GetStoragePoolTypesDeprecated.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      deprecateds: pulumi.Input.decodeList<GetStoragePoolTypesDeprecated>(map['deprecateds']!, (value) => GetStoragePoolTypesDeprecated.fromMap((value as Map).cast<String, dynamic>())),
       description: map['description'] as String,
       id: map['id'] as int,
       kind: map['kind'] as String,
@@ -119,3 +110,4 @@ class GetStoragePoolTypesResult {
     );
   }
 }
+

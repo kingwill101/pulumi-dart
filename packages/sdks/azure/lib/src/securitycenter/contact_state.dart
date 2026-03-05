@@ -6,16 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContactState {
   /// Whether to send security alerts notifications to the security contact.
   final pulumi.Input<bool>? alertNotifications;
-
   /// Whether to send security alerts notifications to subscription admins.
   final pulumi.Input<bool>? alertsToAdmins;
-
   /// The email of the Security Center Contact.
   final pulumi.Input<String>? email;
-
   /// The name of the Security Center Contact. Changing this forces a new Security Center Contact to be created.
   final pulumi.Input<String>? name;
-
   /// The phone number of the Security Center Contact.
   final pulumi.Input<String>? phone;
 
@@ -45,31 +41,12 @@ class ContactState {
 
   factory ContactState.fromMap(Map<String, dynamic> map) {
     return ContactState(
-      alertNotifications: (() {
-        final guardedValue = map['alertNotifications'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      alertsToAdmins: (() {
-        final guardedValue = map['alertsToAdmins'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      email: (() {
-        final guardedValue = map['email'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      phone: (() {
-        final guardedValue = map['phone'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      alertNotifications: (() { final guardedValue = map['alertNotifications']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      alertsToAdmins: (() { final guardedValue = map['alertsToAdmins']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      email: (() { final guardedValue = map['email']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      phone: (() { final guardedValue = map['phone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

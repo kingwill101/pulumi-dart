@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OutputPathAssetReference {
   /// ARM resource ID of the job.
   final pulumi.Input<String>? jobId;
-
   /// The path of the file/directory in the job output.
   final pulumi.Input<String>? path;
-
   /// Enum to determine which reference method to use for an asset.
   /// Expected value is 'OutputPath'.
   final pulumi.Input<String> referenceType;
@@ -34,17 +32,10 @@ class OutputPathAssetReference {
 
   factory OutputPathAssetReference.fromMap(Map<String, dynamic> map) {
     return OutputPathAssetReference(
-      jobId: (() {
-        final guardedValue = map['jobId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      path: (() {
-        final guardedValue = map['path'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      jobId: (() { final guardedValue = map['jobId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       referenceType: pulumi.Input.fromValue(map['referenceType'] as String),
     );
   }
 }
+

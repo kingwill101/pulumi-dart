@@ -1,22 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getArchiveDeployment.
 class GetArchiveDeploymentResult {
   /// The time at which the Archive Deployment was created in milliseconds since the epoch.
   final String createdAt;
-
   /// Input only. The Google Cloud Storage signed URL returned from GenerateUploadUrl and used to upload the Archive zip file.
   final String gcsUri;
-
   /// User-supplied key-value pairs used to organize ArchiveDeployments. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
   final Map<String, String> labels;
-
   /// Name of the Archive Deployment in the following format: `organizations/{org}/environments/{env}/archiveDeployments/{id}`.
   final String name;
-
   /// A reference to the LRO that created this Archive Deployment in the following format: `organizations/{org}/operations/{id}`
   final String operation;
-
   /// The time at which the Archive Deployment was updated in milliseconds since the epoch.
   final String updatedAt;
 
@@ -58,3 +54,4 @@ class GetArchiveDeploymentResult {
     );
   }
 }
+

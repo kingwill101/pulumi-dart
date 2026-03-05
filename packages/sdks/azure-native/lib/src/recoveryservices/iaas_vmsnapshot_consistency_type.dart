@@ -13,3 +13,4 @@ enum IaasVMSnapshotConsistencyType {
     throw ArgumentError('Unknown IaasVMSnapshotConsistencyType value: $value');
   }
 }
+

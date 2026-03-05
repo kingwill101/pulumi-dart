@@ -24,88 +24,60 @@ import 'virtual_machine_scale_set_vmprofile.dart';
 class VirtualMachineScaleSetArgs {
   /// Specifies additional capabilities enabled or disabled on the Virtual Machines in the Virtual Machine Scale Set. For instance: whether the Virtual Machines have the capability to support attaching managed data disks with UltraSSD_LRS storage account type.
   final pulumi.Input<AdditionalCapabilities>? additionalCapabilities;
-
   /// Policy for automatic repairs.
   final pulumi.Input<AutomaticRepairsPolicy>? automaticRepairsPolicy;
-
   /// Optional property which must either be set to True or omitted.
   final pulumi.Input<bool>? constrainedMaximumCapacity;
-
   /// When Overprovision is enabled, extensions are launched only on the requested number of VMs which are finally kept. This property will hence ensure that the extensions do not run on the extra overprovisioned VMs.
   final pulumi.Input<bool>? doNotRunExtensionsOnOverprovisionedVMs;
-
   /// The extended location of the Virtual Machine Scale Set.
   final pulumi.Input<ExtendedLocation>? extendedLocation;
-
   /// Specifies information about the dedicated host group that the virtual machine scale set resides in. Minimum api-version: 2020-06-01.
   final pulumi.Input<SubResource>? hostGroup;
-
   /// The identity of the virtual machine scale set, if configured.
   final pulumi.Input<VirtualMachineScaleSetIdentity>? identity;
-
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
-
   /// Specifies the orchestration mode for the virtual machine scale set.
   final pulumi.Input<String>? orchestrationMode;
-
   /// Specifies whether the Virtual Machine Scale Set should be overprovisioned.
   final pulumi.Input<bool>? overprovision;
-
   /// Specifies information about the marketplace image used to create the virtual machine. This element is only used for marketplace images. Before you can use a marketplace image from an API, you must enable the image for programmatic use.  In the Azure portal, find the marketplace image that you want to use and then click **Want to deploy programmatically, Get Started -&gt;**. Enter any required information and then click **Save**.
   final pulumi.Input<Plan>? plan;
-
   /// Fault Domain count for each placement group.
   final pulumi.Input<int>? platformFaultDomainCount;
-
   /// Specifies the desired targets for mixing Spot and Regular priority VMs within the same VMSS Flex instance.
   final pulumi.Input<PriorityMixPolicy>? priorityMixPolicy;
-
   /// Specifies information about the proximity placement group that the virtual machine scale set should be assigned to. Minimum api-version: 2018-04-01.
   final pulumi.Input<SubResource>? proximityPlacementGroup;
-
   /// Policy for Resiliency
   final pulumi.Input<ResiliencyPolicy>? resiliencyPolicy;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Specifies the policies applied when scaling in Virtual Machines in the Virtual Machine Scale Set.
   final pulumi.Input<ScaleInPolicy>? scaleInPolicy;
-
   /// The ScheduledEventsPolicy.
   final pulumi.Input<ScheduledEventsPolicy>? scheduledEventsPolicy;
-
   /// When true this limits the scale set to a single placement group, of max size 100 virtual machines. NOTE: If singlePlacementGroup is true, it may be modified to false. However, if singlePlacementGroup is false, it may not be modified to true.
   final pulumi.Input<bool>? singlePlacementGroup;
-
   /// The virtual machine scale set sku.
   final pulumi.Input<Sku>? sku;
-
   /// Specifies the sku profile for the virtual machine scale set.
   final pulumi.Input<SkuProfile>? skuProfile;
-
   /// Specifies the Spot Restore properties for the virtual machine scale set.
   final pulumi.Input<SpotRestorePolicy>? spotRestorePolicy;
-
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
-
   /// The upgrade policy.
   final pulumi.Input<UpgradePolicy>? upgradePolicy;
-
   /// The virtual machine profile.
   final pulumi.Input<VirtualMachineScaleSetVMProfile>? virtualMachineProfile;
-
   /// The name of the VM scale set.
   final pulumi.Input<String>? vmScaleSetName;
-
   /// Specifies the align mode between Virtual Machine Scale Set compute and storage Fault Domain count.
   final pulumi.Input<String>? zonalPlatformFaultDomainAlignMode;
-
   /// Whether to force strictly even Virtual Machine distribution cross x-zones in case there is zone outage. zoneBalance property can only be set if the zones property of the scale set contains more than one zone. If there are no zones or only one zone specified, then zoneBalance property should not be set.
   final pulumi.Input<bool>? zoneBalance;
-
   /// The availability zones.
   final pulumi.Input<List<String>>? zones;
 
@@ -173,94 +145,31 @@ class VirtualMachineScaleSetArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'additionalCapabilities':
-          ?pulumi.Input.mapOptionalInputValue<
-            AdditionalCapabilities,
-            Map<String, dynamic>
-          >(additionalCapabilities, (value) => value.toMap()),
-      'automaticRepairsPolicy':
-          ?pulumi.Input.mapOptionalInputValue<
-            AutomaticRepairsPolicy,
-            Map<String, dynamic>
-          >(automaticRepairsPolicy, (value) => value.toMap()),
+      'additionalCapabilities': ?pulumi.Input.mapOptionalInputValue<AdditionalCapabilities, Map<String, dynamic>>(additionalCapabilities, (value) => value.toMap()),
+      'automaticRepairsPolicy': ?pulumi.Input.mapOptionalInputValue<AutomaticRepairsPolicy, Map<String, dynamic>>(automaticRepairsPolicy, (value) => value.toMap()),
       'constrainedMaximumCapacity': ?constrainedMaximumCapacity,
-      'doNotRunExtensionsOnOverprovisionedVMs':
-          ?doNotRunExtensionsOnOverprovisionedVMs,
-      'extendedLocation':
-          ?pulumi.Input.mapOptionalInputValue<
-            ExtendedLocation,
-            Map<String, dynamic>
-          >(extendedLocation, (value) => value.toMap()),
-      'hostGroup':
-          ?pulumi.Input.mapOptionalInputValue<
-            SubResource,
-            Map<String, dynamic>
-          >(hostGroup, (value) => value.toMap()),
-      'identity':
-          ?pulumi.Input.mapOptionalInputValue<
-            VirtualMachineScaleSetIdentity,
-            Map<String, dynamic>
-          >(identity, (value) => value.toMap()),
+      'doNotRunExtensionsOnOverprovisionedVMs': ?doNotRunExtensionsOnOverprovisionedVMs,
+      'extendedLocation': ?pulumi.Input.mapOptionalInputValue<ExtendedLocation, Map<String, dynamic>>(extendedLocation, (value) => value.toMap()),
+      'hostGroup': ?pulumi.Input.mapOptionalInputValue<SubResource, Map<String, dynamic>>(hostGroup, (value) => value.toMap()),
+      'identity': ?pulumi.Input.mapOptionalInputValue<VirtualMachineScaleSetIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
       'location': ?location,
       'orchestrationMode': ?orchestrationMode,
       'overprovision': ?overprovision,
-      'plan': ?pulumi.Input.mapOptionalInputValue<Plan, Map<String, dynamic>>(
-        plan,
-        (value) => value.toMap(),
-      ),
+      'plan': ?pulumi.Input.mapOptionalInputValue<Plan, Map<String, dynamic>>(plan, (value) => value.toMap()),
       'platformFaultDomainCount': ?platformFaultDomainCount,
-      'priorityMixPolicy':
-          ?pulumi.Input.mapOptionalInputValue<
-            PriorityMixPolicy,
-            Map<String, dynamic>
-          >(priorityMixPolicy, (value) => value.toMap()),
-      'proximityPlacementGroup':
-          ?pulumi.Input.mapOptionalInputValue<
-            SubResource,
-            Map<String, dynamic>
-          >(proximityPlacementGroup, (value) => value.toMap()),
-      'resiliencyPolicy':
-          ?pulumi.Input.mapOptionalInputValue<
-            ResiliencyPolicy,
-            Map<String, dynamic>
-          >(resiliencyPolicy, (value) => value.toMap()),
+      'priorityMixPolicy': ?pulumi.Input.mapOptionalInputValue<PriorityMixPolicy, Map<String, dynamic>>(priorityMixPolicy, (value) => value.toMap()),
+      'proximityPlacementGroup': ?pulumi.Input.mapOptionalInputValue<SubResource, Map<String, dynamic>>(proximityPlacementGroup, (value) => value.toMap()),
+      'resiliencyPolicy': ?pulumi.Input.mapOptionalInputValue<ResiliencyPolicy, Map<String, dynamic>>(resiliencyPolicy, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
-      'scaleInPolicy':
-          ?pulumi.Input.mapOptionalInputValue<
-            ScaleInPolicy,
-            Map<String, dynamic>
-          >(scaleInPolicy, (value) => value.toMap()),
-      'scheduledEventsPolicy':
-          ?pulumi.Input.mapOptionalInputValue<
-            ScheduledEventsPolicy,
-            Map<String, dynamic>
-          >(scheduledEventsPolicy, (value) => value.toMap()),
+      'scaleInPolicy': ?pulumi.Input.mapOptionalInputValue<ScaleInPolicy, Map<String, dynamic>>(scaleInPolicy, (value) => value.toMap()),
+      'scheduledEventsPolicy': ?pulumi.Input.mapOptionalInputValue<ScheduledEventsPolicy, Map<String, dynamic>>(scheduledEventsPolicy, (value) => value.toMap()),
       'singlePlacementGroup': ?singlePlacementGroup,
-      'sku': ?pulumi.Input.mapOptionalInputValue<Sku, Map<String, dynamic>>(
-        sku,
-        (value) => value.toMap(),
-      ),
-      'skuProfile':
-          ?pulumi.Input.mapOptionalInputValue<SkuProfile, Map<String, dynamic>>(
-            skuProfile,
-            (value) => value.toMap(),
-          ),
-      'spotRestorePolicy':
-          ?pulumi.Input.mapOptionalInputValue<
-            SpotRestorePolicy,
-            Map<String, dynamic>
-          >(spotRestorePolicy, (value) => value.toMap()),
+      'sku': ?pulumi.Input.mapOptionalInputValue<Sku, Map<String, dynamic>>(sku, (value) => value.toMap()),
+      'skuProfile': ?pulumi.Input.mapOptionalInputValue<SkuProfile, Map<String, dynamic>>(skuProfile, (value) => value.toMap()),
+      'spotRestorePolicy': ?pulumi.Input.mapOptionalInputValue<SpotRestorePolicy, Map<String, dynamic>>(spotRestorePolicy, (value) => value.toMap()),
       'tags': ?tags,
-      'upgradePolicy':
-          ?pulumi.Input.mapOptionalInputValue<
-            UpgradePolicy,
-            Map<String, dynamic>
-          >(upgradePolicy, (value) => value.toMap()),
-      'virtualMachineProfile':
-          ?pulumi.Input.mapOptionalInputValue<
-            VirtualMachineScaleSetVMProfile,
-            Map<String, dynamic>
-          >(virtualMachineProfile, (value) => value.toMap()),
+      'upgradePolicy': ?pulumi.Input.mapOptionalInputValue<UpgradePolicy, Map<String, dynamic>>(upgradePolicy, (value) => value.toMap()),
+      'virtualMachineProfile': ?pulumi.Input.mapOptionalInputValue<VirtualMachineScaleSetVMProfile, Map<String, dynamic>>(virtualMachineProfile, (value) => value.toMap()),
       'vmScaleSetName': ?vmScaleSetName,
       'zonalPlatformFaultDomainAlignMode': ?zonalPlatformFaultDomainAlignMode,
       'zoneBalance': ?zoneBalance,
@@ -270,201 +179,36 @@ class VirtualMachineScaleSetArgs {
 
   factory VirtualMachineScaleSetArgs.fromMap(Map<String, dynamic> map) {
     return VirtualMachineScaleSetArgs(
-      additionalCapabilities: (() {
-        final guardedValue = map['additionalCapabilities'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AdditionalCapabilities.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      automaticRepairsPolicy: (() {
-        final guardedValue = map['automaticRepairsPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AutomaticRepairsPolicy.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      constrainedMaximumCapacity: (() {
-        final guardedValue = map['constrainedMaximumCapacity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      doNotRunExtensionsOnOverprovisionedVMs: (() {
-        final guardedValue = map['doNotRunExtensionsOnOverprovisionedVMs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      extendedLocation: (() {
-        final guardedValue = map['extendedLocation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ExtendedLocation.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      hostGroup: (() {
-        final guardedValue = map['hostGroup'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SubResource.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          VirtualMachineScaleSetIdentity.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      orchestrationMode: (() {
-        final guardedValue = map['orchestrationMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      overprovision: (() {
-        final guardedValue = map['overprovision'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      plan: (() {
-        final guardedValue = map['plan'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          Plan.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      platformFaultDomainCount: (() {
-        final guardedValue = map['platformFaultDomainCount'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      priorityMixPolicy: (() {
-        final guardedValue = map['priorityMixPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PriorityMixPolicy.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      proximityPlacementGroup: (() {
-        final guardedValue = map['proximityPlacementGroup'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SubResource.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      resiliencyPolicy: (() {
-        final guardedValue = map['resiliencyPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ResiliencyPolicy.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      scaleInPolicy: (() {
-        final guardedValue = map['scaleInPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ScaleInPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      scheduledEventsPolicy: (() {
-        final guardedValue = map['scheduledEventsPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ScheduledEventsPolicy.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      singlePlacementGroup: (() {
-        final guardedValue = map['singlePlacementGroup'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      sku: (() {
-        final guardedValue = map['sku'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          Sku.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      skuProfile: (() {
-        final guardedValue = map['skuProfile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SkuProfile.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      spotRestorePolicy: (() {
-        final guardedValue = map['spotRestorePolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          SpotRestorePolicy.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      upgradePolicy: (() {
-        final guardedValue = map['upgradePolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          UpgradePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      virtualMachineProfile: (() {
-        final guardedValue = map['virtualMachineProfile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          VirtualMachineScaleSetVMProfile.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      vmScaleSetName: (() {
-        final guardedValue = map['vmScaleSetName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      zonalPlatformFaultDomainAlignMode: (() {
-        final guardedValue = map['zonalPlatformFaultDomainAlignMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      zoneBalance: (() {
-        final guardedValue = map['zoneBalance'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      zones: (() {
-        final guardedValue = map['zones'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      additionalCapabilities: (() { final guardedValue = map['additionalCapabilities']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AdditionalCapabilities.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      automaticRepairsPolicy: (() { final guardedValue = map['automaticRepairsPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AutomaticRepairsPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      constrainedMaximumCapacity: (() { final guardedValue = map['constrainedMaximumCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      doNotRunExtensionsOnOverprovisionedVMs: (() { final guardedValue = map['doNotRunExtensionsOnOverprovisionedVMs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExtendedLocation.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      hostGroup: (() { final guardedValue = map['hostGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualMachineScaleSetIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      orchestrationMode: (() { final guardedValue = map['orchestrationMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      overprovision: (() { final guardedValue = map['overprovision']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      plan: (() { final guardedValue = map['plan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Plan.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      platformFaultDomainCount: (() { final guardedValue = map['platformFaultDomainCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      priorityMixPolicy: (() { final guardedValue = map['priorityMixPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PriorityMixPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      proximityPlacementGroup: (() { final guardedValue = map['proximityPlacementGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resiliencyPolicy: (() { final guardedValue = map['resiliencyPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResiliencyPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      scaleInPolicy: (() { final guardedValue = map['scaleInPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ScaleInPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      scheduledEventsPolicy: (() { final guardedValue = map['scheduledEventsPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ScheduledEventsPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      singlePlacementGroup: (() { final guardedValue = map['singlePlacementGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Sku.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      skuProfile: (() { final guardedValue = map['skuProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SkuProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      spotRestorePolicy: (() { final guardedValue = map['spotRestorePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SpotRestorePolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      upgradePolicy: (() { final guardedValue = map['upgradePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(UpgradePolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      virtualMachineProfile: (() { final guardedValue = map['virtualMachineProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualMachineScaleSetVMProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      vmScaleSetName: (() { final guardedValue = map['vmScaleSetName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      zonalPlatformFaultDomainAlignMode: (() { final guardedValue = map['zonalPlatformFaultDomainAlignMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      zoneBalance: (() { final guardedValue = map['zoneBalance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      zones: (() { final guardedValue = map['zones']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

@@ -173,25 +173,18 @@ import 'ipam_ipam_resource_discovery_state.dart';
 class IpamIpamResourceDiscovery extends pulumi.CustomResource {
   /// The time when the resource discovery was created.
   late final pulumi.Output<String> createTime;
-
   /// The description of resource discovery.
   late final pulumi.Output<String?> ipamResourceDiscoveryDescription;
-
   /// The name of the resource
   late final pulumi.Output<String?> ipamResourceDiscoveryName;
-
   /// The list of operating regions for resource discovery.
   late final pulumi.Output<List<String>> operatingRegionLists;
-
   /// The region ID of the resource
   late final pulumi.Output<String> regionId;
-
   /// The ID of the resource group
   late final pulumi.Output<String> resourceGroupId;
-
   /// The status of the resource discovery instance. Value:
   late final pulumi.Output<String> status;
-
   /// Label list information.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -204,18 +197,14 @@ class IpamIpamResourceDiscovery extends pulumi.CustomResource {
     IpamIpamResourceDiscoveryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/ipamIpamResourceDiscovery:IpamIpamResourceDiscovery',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpc/ipamIpamResourceDiscovery:IpamIpamResourceDiscovery',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
-    ipamResourceDiscoveryDescription = registerOutput<String?>(
-      'ipamResourceDiscoveryDescription',
-    );
-    ipamResourceDiscoveryName = registerOutput<String?>(
-      'ipamResourceDiscoveryName',
-    );
+    ipamResourceDiscoveryDescription = registerOutput<String?>('ipamResourceDiscoveryDescription');
+    ipamResourceDiscoveryName = registerOutput<String?>('ipamResourceDiscoveryName');
     operatingRegionLists = registerOutput<List<String>>('operatingRegionLists');
     regionId = registerOutput<String>('regionId');
     resourceGroupId = registerOutput<String>('resourceGroupId');
@@ -241,18 +230,14 @@ class IpamIpamResourceDiscovery extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:vpc/ipamIpamResourceDiscovery:IpamIpamResourceDiscovery',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:vpc/ipamIpamResourceDiscovery:IpamIpamResourceDiscovery',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<String>('createTime');
-    ipamResourceDiscoveryDescription = registerOutput<String?>(
-      'ipamResourceDiscoveryDescription',
-    );
-    ipamResourceDiscoveryName = registerOutput<String?>(
-      'ipamResourceDiscoveryName',
-    );
+    ipamResourceDiscoveryDescription = registerOutput<String?>('ipamResourceDiscoveryDescription');
+    ipamResourceDiscoveryName = registerOutput<String?>('ipamResourceDiscoveryName');
     operatingRegionLists = registerOutput<List<String>>('operatingRegionLists');
     regionId = registerOutput<String>('regionId');
     resourceGroupId = registerOutput<String>('resourceGroupId');

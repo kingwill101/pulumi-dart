@@ -268,39 +268,30 @@ import 'scan_rule_state.dart';
 class ScanRule extends pulumi.CustomResource {
   /// Creation time
   late final pulumi.Output<int> createTime;
-
   /// Instance ID
   late final pulumi.Output<String> instanceId;
-
   /// Set of namespaces:
   /// - This parameter must not be empty when the scan scope is NAMESPACE.
   /// - This parameter must contain exactly one namespace when the scan scope is REPO.
   late final pulumi.Output<List<String>?> namespaces;
-
   /// Repository list:
   /// - This parameter must be empty when the scan scope is NAMESPACE.
   /// - This parameter must not be empty when the scan scope is REPO.
   late final pulumi.Output<List<String>?> repoNames;
-
   /// Regular expression for matching tags that trigger a scan
   late final pulumi.Output<String> repoTagFilterPattern;
-
   /// Event rule name
   late final pulumi.Output<String> ruleName;
-
   /// Rule ID
   late final pulumi.Output<String> scanRuleId;
-
   /// Scan scope
   late final pulumi.Output<String> scanScope;
-
   /// Scan type:
   /// - `VUL`: Artifact vulnerability scan
   /// - `SBOM`: Artifact content analysis
   ///
   /// The default value of this parameter is `VUL`.
   late final pulumi.Output<String> scanType;
-
   /// Trigger type
   late final pulumi.Output<String> triggerType;
 
@@ -313,11 +304,11 @@ class ScanRule extends pulumi.CustomResource {
     ScanRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cr/scanRule:ScanRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cr/scanRule:ScanRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<int>('createTime');
     instanceId = registerOutput<String>('instanceId');
     namespaces = registerOutput<List<String>?>('namespaces');
@@ -348,11 +339,11 @@ class ScanRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cr/scanRule:ScanRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cr/scanRule:ScanRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     createTime = registerOutput<int>('createTime');
     instanceId = registerOutput<String>('instanceId');
     namespaces = registerOutput<List<String>?>('namespaces');

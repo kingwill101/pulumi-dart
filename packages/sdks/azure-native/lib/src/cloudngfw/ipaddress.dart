@@ -6,31 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IPAddress {
   /// Address value
   final pulumi.Input<String>? address;
-
   /// Resource Id
   final pulumi.Input<String>? resourceId;
 
   /// Creates a new [IPAddress].
   /// [address] Address value
   /// [resourceId] Resource Id
-  IPAddress({this.address, this.resourceId});
+  IPAddress({
+    this.address,
+    this.resourceId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'address': ?address, 'resourceId': ?resourceId};
+    return <String, dynamic>{
+      'address': ?address,
+      'resourceId': ?resourceId,
+    };
   }
 
   factory IPAddress.fromMap(Map<String, dynamic> map) {
     return IPAddress(
-      address: (() {
-        final guardedValue = map['address'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceId: (() {
-        final guardedValue = map['resourceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      address: (() { final guardedValue = map['address']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

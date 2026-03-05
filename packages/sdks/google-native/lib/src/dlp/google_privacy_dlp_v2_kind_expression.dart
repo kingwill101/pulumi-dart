@@ -9,19 +9,20 @@ class GooglePrivacyDlpV2KindExpression {
 
   /// Creates a new [GooglePrivacyDlpV2KindExpression].
   /// [name] The name of the kind.
-  GooglePrivacyDlpV2KindExpression({this.name});
+  GooglePrivacyDlpV2KindExpression({
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': ?name};
+    return <String, dynamic>{
+      'name': ?name,
+    };
   }
 
   factory GooglePrivacyDlpV2KindExpression.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2KindExpression(
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

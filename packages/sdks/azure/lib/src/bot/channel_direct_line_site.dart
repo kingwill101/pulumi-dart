@@ -5,37 +5,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ChannelDirectLineSite {
   /// Enables/Disables this site. Defaults to `true`.
   final pulumi.Input<bool>? enabled;
-
   /// Is the endpoint parameters enabled for this site?
   final pulumi.Input<bool>? endpointParametersEnabled;
-
   /// Enables additional security measures for this site, see [Enhanced Directline Authentication Features](https://blog.botframework.com/2018/09/25/enhanced-direct-line-authentication-features). Disabled by default.
   final pulumi.Input<bool>? enhancedAuthenticationEnabled;
-
   /// Id for the site
   final pulumi.Input<String>? id;
-
   /// Primary key for accessing this site
   final pulumi.Input<String>? key;
-
   /// Secondary key for accessing this site
   final pulumi.Input<String>? key2;
-
   /// The name of the site
   final pulumi.Input<String> name;
-
   /// Is the storage site enabled for detailed logging? Defaults to `true`.
   final pulumi.Input<bool>? storageEnabled;
-
   /// This field is required when `is_secure_site_enabled` is enabled. Determines which origins can establish a Directline conversation for this site.
   final pulumi.Input<List<String>>? trustedOrigins;
-
   /// Is the user upload enabled for this site? Defaults to `true`.
   final pulumi.Input<bool>? userUploadEnabled;
-
   /// Enables v1 of the Directline protocol for this site. Defaults to `true`.
   final pulumi.Input<bool>? v1Allowed;
-
   /// Enables v3 of the Directline protocol for this site. Defaults to `true`.
   final pulumi.Input<bool>? v3Allowed;
 
@@ -86,62 +75,19 @@ class ChannelDirectLineSite {
 
   factory ChannelDirectLineSite.fromMap(Map<String, dynamic> map) {
     return ChannelDirectLineSite(
-      enabled: (() {
-        final guardedValue = map['enabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      endpointParametersEnabled: (() {
-        final guardedValue = map['endpointParametersEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      enhancedAuthenticationEnabled: (() {
-        final guardedValue = map['enhancedAuthenticationEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      key: (() {
-        final guardedValue = map['key'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      key2: (() {
-        final guardedValue = map['key2'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      endpointParametersEnabled: (() { final guardedValue = map['endpointParametersEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enhancedAuthenticationEnabled: (() { final guardedValue = map['enhancedAuthenticationEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      key2: (() { final guardedValue = map['key2']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      storageEnabled: (() {
-        final guardedValue = map['storageEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      trustedOrigins: (() {
-        final guardedValue = map['trustedOrigins'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      userUploadEnabled: (() {
-        final guardedValue = map['userUploadEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      v1Allowed: (() {
-        final guardedValue = map['v1Allowed'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      v3Allowed: (() {
-        final guardedValue = map['v3Allowed'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      storageEnabled: (() { final guardedValue = map['storageEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      trustedOrigins: (() { final guardedValue = map['trustedOrigins']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      userUploadEnabled: (() { final guardedValue = map['userUploadEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      v1Allowed: (() { final guardedValue = map['v1Allowed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      v3Allowed: (() { final guardedValue = map['v3Allowed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

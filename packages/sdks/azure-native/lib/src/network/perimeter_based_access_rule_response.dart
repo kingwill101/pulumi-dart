@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PerimeterBasedAccessRuleResponse {
   /// NSP id in the ARM id format.
   final pulumi.Input<String> id;
-
   /// Location of the NSP supplied.
   final pulumi.Input<String> location;
-
   /// Resource guid of the NSP supplied.
   final pulumi.Input<String> perimeterGuid;
 
@@ -38,3 +36,4 @@ class PerimeterBasedAccessRuleResponse {
     );
   }
 }
+

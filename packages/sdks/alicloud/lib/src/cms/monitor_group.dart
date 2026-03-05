@@ -176,16 +176,12 @@ import 'monitor_group_state.dart';
 class MonitorGroup extends pulumi.CustomResource {
   /// The alert group to which alert notifications will be sent.
   late final pulumi.Output<List<String>?> contactGroups;
-
   /// The name of the application group.
   late final pulumi.Output<String> monitorGroupName;
-
   /// The ID of the resource group.
   late final pulumi.Output<String?> resourceGroupId;
-
   /// The name of the resource group.
   late final pulumi.Output<String?> resourceGroupName;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -198,11 +194,11 @@ class MonitorGroup extends pulumi.CustomResource {
     MonitorGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cms/monitorGroup:MonitorGroup',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cms/monitorGroup:MonitorGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     contactGroups = registerOutput<List<String>?>('contactGroups');
     monitorGroupName = registerOutput<String>('monitorGroupName');
     resourceGroupId = registerOutput<String?>('resourceGroupId');
@@ -228,11 +224,11 @@ class MonitorGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cms/monitorGroup:MonitorGroup',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cms/monitorGroup:MonitorGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     contactGroups = registerOutput<List<String>?>('contactGroups');
     monitorGroupName = registerOutput<String>('monitorGroupName');
     resourceGroupId = registerOutput<String?>('resourceGroupId');

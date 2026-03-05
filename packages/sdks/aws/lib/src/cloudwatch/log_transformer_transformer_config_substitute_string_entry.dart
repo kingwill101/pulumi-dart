@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LogTransformerTransformerConfigSubstituteStringEntry {
   /// Specifies the regular expression string to be replaced.
   final pulumi.Input<String> from;
-
   /// Specifies the key to modify.
   final pulumi.Input<String> source;
-
   /// Specifies the string to be substituted for each match of `from`.
   final pulumi.Input<String> to;
 
@@ -23,12 +21,14 @@ class LogTransformerTransformerConfigSubstituteStringEntry {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'from': from, 'source': source, 'to': to};
+    return <String, dynamic>{
+      'from': from,
+      'source': source,
+      'to': to,
+    };
   }
 
-  factory LogTransformerTransformerConfigSubstituteStringEntry.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory LogTransformerTransformerConfigSubstituteStringEntry.fromMap(Map<String, dynamic> map) {
     return LogTransformerTransformerConfigSubstituteStringEntry(
       from: pulumi.Input.fromValue(map['from'] as String),
       source: pulumi.Input.fromValue(map['source'] as String),
@@ -36,3 +36,4 @@ class LogTransformerTransformerConfigSubstituteStringEntry {
     );
   }
 }
+

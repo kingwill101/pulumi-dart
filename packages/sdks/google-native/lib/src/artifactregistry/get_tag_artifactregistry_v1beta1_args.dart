@@ -41,13 +41,10 @@ class GetTagArtifactregistryV1beta1Args {
     return GetTagArtifactregistryV1beta1Args(
       location: pulumi.Input.fromValue(map['location'] as String),
       packageId: pulumi.Input.fromValue(map['packageId'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       repositoryId: pulumi.Input.fromValue(map['repositoryId'] as String),
       tagId: pulumi.Input.fromValue(map['tagId'] as String),
     );
   }
 }
+

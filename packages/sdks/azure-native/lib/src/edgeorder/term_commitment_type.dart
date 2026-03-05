@@ -16,3 +16,4 @@ enum TermCommitmentType {
     throw ArgumentError('Unknown TermCommitmentType value: $value');
   }
 }
+

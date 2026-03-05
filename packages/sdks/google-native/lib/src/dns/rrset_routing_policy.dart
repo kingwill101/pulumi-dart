@@ -17,63 +17,29 @@ class RRSetRoutingPolicy {
   /// [kind] Optional.
   /// [primaryBackup] Optional.
   /// [wrr] Optional.
-  RRSetRoutingPolicy({this.geo, this.kind, this.primaryBackup, this.wrr});
+  RRSetRoutingPolicy({
+    this.geo,
+    this.kind,
+    this.primaryBackup,
+    this.wrr,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'geo':
-          ?pulumi.Input.mapOptionalInputValue<
-            RRSetRoutingPolicyGeoPolicy,
-            Map<String, dynamic>
-          >(geo, (value) => value.toMap()),
+      'geo': ?pulumi.Input.mapOptionalInputValue<RRSetRoutingPolicyGeoPolicy, Map<String, dynamic>>(geo, (value) => value.toMap()),
       'kind': ?kind,
-      'primaryBackup':
-          ?pulumi.Input.mapOptionalInputValue<
-            RRSetRoutingPolicyPrimaryBackupPolicy,
-            Map<String, dynamic>
-          >(primaryBackup, (value) => value.toMap()),
-      'wrr':
-          ?pulumi.Input.mapOptionalInputValue<
-            RRSetRoutingPolicyWrrPolicy,
-            Map<String, dynamic>
-          >(wrr, (value) => value.toMap()),
+      'primaryBackup': ?pulumi.Input.mapOptionalInputValue<RRSetRoutingPolicyPrimaryBackupPolicy, Map<String, dynamic>>(primaryBackup, (value) => value.toMap()),
+      'wrr': ?pulumi.Input.mapOptionalInputValue<RRSetRoutingPolicyWrrPolicy, Map<String, dynamic>>(wrr, (value) => value.toMap()),
     };
   }
 
   factory RRSetRoutingPolicy.fromMap(Map<String, dynamic> map) {
     return RRSetRoutingPolicy(
-      geo: (() {
-        final guardedValue = map['geo'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RRSetRoutingPolicyGeoPolicy.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      primaryBackup: (() {
-        final guardedValue = map['primaryBackup'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RRSetRoutingPolicyPrimaryBackupPolicy.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      wrr: (() {
-        final guardedValue = map['wrr'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RRSetRoutingPolicyWrrPolicy.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      geo: (() { final guardedValue = map['geo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RRSetRoutingPolicyGeoPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      primaryBackup: (() { final guardedValue = map['primaryBackup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RRSetRoutingPolicyPrimaryBackupPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      wrr: (() { final guardedValue = map['wrr']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RRSetRoutingPolicyWrrPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

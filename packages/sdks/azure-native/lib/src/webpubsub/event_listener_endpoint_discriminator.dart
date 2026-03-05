@@ -10,8 +10,7 @@ enum EventListenerEndpointDiscriminator {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown EventListenerEndpointDiscriminator value: $value',
-    );
+    throw ArgumentError('Unknown EventListenerEndpointDiscriminator value: $value');
   }
 }
+

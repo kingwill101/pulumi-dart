@@ -12,8 +12,7 @@ enum EBSTagSpecificationPropagateTags {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown EBSTagSpecificationPropagateTags value: $value',
-    );
+    throw ArgumentError('Unknown EBSTagSpecificationPropagateTags value: $value');
   }
 }
+

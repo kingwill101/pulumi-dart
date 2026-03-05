@@ -9,19 +9,20 @@ class ElasticSmbProperties {
 
   /// Creates a new [ElasticSmbProperties].
   /// [smbEncryption] Used to enable or disable encryption for in-flight SMB data volume. This flag can be modified during Elastic volume update operation as well. Only applicable for SMB protocol Elastic volumes.
-  ElasticSmbProperties({this.smbEncryption});
+  ElasticSmbProperties({
+    this.smbEncryption,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'smbEncryption': ?smbEncryption};
+    return <String, dynamic>{
+      'smbEncryption': ?smbEncryption,
+    };
   }
 
   factory ElasticSmbProperties.fromMap(Map<String, dynamic> map) {
     return ElasticSmbProperties(
-      smbEncryption: (() {
-        final guardedValue = map['smbEncryption'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      smbEncryption: (() { final guardedValue = map['smbEncryption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

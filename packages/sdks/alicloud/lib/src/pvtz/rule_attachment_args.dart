@@ -10,43 +10,29 @@ import 'rule_attachment_vpc.dart';
 class RuleAttachmentArgs {
   /// The ID of the rule.
   final pulumi.Input<String> ruleId;
-
   /// The List of the VPC. See `vpcs` below.
   final pulumi.Input<List<RuleAttachmentVpc>> vpcs;
 
   /// Creates a new [RuleAttachmentArgs].
   /// [ruleId] The ID of the rule.
   /// [vpcs] The List of the VPC. See `vpcs` below.
-  RuleAttachmentArgs({required this.ruleId, required this.vpcs});
+  RuleAttachmentArgs({
+    required this.ruleId,
+    required this.vpcs,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'ruleId': ruleId,
-      'vpcs':
-          pulumi.Input.mapInputValue<
-            List<RuleAttachmentVpc>,
-            List<Map<String, dynamic>>
-          >(
-            vpcs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  RuleAttachmentVpc,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'vpcs': pulumi.Input.mapInputValue<List<RuleAttachmentVpc>, List<Map<String, dynamic>>>(vpcs, (value) => pulumi.Input.encodeList<RuleAttachmentVpc, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory RuleAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return RuleAttachmentArgs(
       ruleId: pulumi.Input.fromValue(map['ruleId'] as String),
-      vpcs: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<RuleAttachmentVpc>(
-          map['vpcs']!,
-          (value) =>
-              RuleAttachmentVpc.fromMap((value as Map).cast<String, dynamic>()),
-        ),
-      ),
+      vpcs: pulumi.Input.fromValue(pulumi.Input.decodeList<RuleAttachmentVpc>(map['vpcs']!, (value) => RuleAttachmentVpc.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
+

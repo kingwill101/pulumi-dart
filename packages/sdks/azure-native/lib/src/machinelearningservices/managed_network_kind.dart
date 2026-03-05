@@ -15,3 +15,4 @@ enum ManagedNetworkKind {
     throw ArgumentError('Unknown ManagedNetworkKind value: $value');
   }
 }
+

@@ -9,55 +9,38 @@ import 'validation_error_response.dart';
 class GetFileImportResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The content type of this file.
   final String contentType;
-
   /// The time the file was imported.
   final String createdTimeUTC;
-
   /// Represents the error file (if the import was ingested with errors or failed the validation).
   final FileMetadataResponse errorFile;
-
   /// An ordered list of some of the errors that were encountered during validation.
   final List<ValidationErrorResponse> errorsPreview;
-
   /// The time the files associated with this import are deleted from the storage account.
   final String filesValidUntilTimeUTC;
-
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-
   /// Represents the imported file.
   final FileMetadataResponse importFile;
-
   /// The time the file import record is soft deleted from the database and history.
   final String importValidUntilTimeUTC;
-
   /// The number of records that have been successfully ingested.
   final int ingestedRecordCount;
-
   /// Describes how to ingest the records in the file.
   final String ingestionMode;
-
   /// The name of the resource
   final String name;
-
   /// The source for the data in the file.
   final String source;
-
   /// The state of the file import.
   final String state;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-
   /// The number of records in the file.
   final int totalRecordCount;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
-
   /// The number of records that have passed validation.
   final int validRecordCount;
 
@@ -107,11 +90,7 @@ class GetFileImportResult {
       'contentType': contentType,
       'createdTimeUTC': createdTimeUTC,
       'errorFile': errorFile.toMap(),
-      'errorsPreview':
-          pulumi.Input.encodeList<
-            ValidationErrorResponse,
-            Map<String, dynamic>
-          >(errorsPreview, (value) => value.toMap()),
+      'errorsPreview': pulumi.Input.encodeList<ValidationErrorResponse, Map<String, dynamic>>(errorsPreview, (value) => value.toMap()),
       'filesValidUntilTimeUTC': filesValidUntilTimeUTC,
       'id': id,
       'importFile': importFile.toMap(),
@@ -133,32 +112,22 @@ class GetFileImportResult {
       azureApiVersion: map['azureApiVersion'] as String,
       contentType: map['contentType'] as String,
       createdTimeUTC: map['createdTimeUTC'] as String,
-      errorFile: FileMetadataResponse.fromMap(
-        (map['errorFile']! as Map).cast<String, dynamic>(),
-      ),
-      errorsPreview: pulumi.Input.decodeList<ValidationErrorResponse>(
-        map['errorsPreview']!,
-        (value) => ValidationErrorResponse.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
+      errorFile: FileMetadataResponse.fromMap((map['errorFile']! as Map).cast<String, dynamic>()),
+      errorsPreview: pulumi.Input.decodeList<ValidationErrorResponse>(map['errorsPreview']!, (value) => ValidationErrorResponse.fromMap((value as Map).cast<String, dynamic>())),
       filesValidUntilTimeUTC: map['filesValidUntilTimeUTC'] as String,
       id: map['id'] as String,
-      importFile: FileMetadataResponse.fromMap(
-        (map['importFile']! as Map).cast<String, dynamic>(),
-      ),
+      importFile: FileMetadataResponse.fromMap((map['importFile']! as Map).cast<String, dynamic>()),
       importValidUntilTimeUTC: map['importValidUntilTimeUTC'] as String,
       ingestedRecordCount: map['ingestedRecordCount'] as int,
       ingestionMode: map['ingestionMode'] as String,
       name: map['name'] as String,
       source: map['source'] as String,
       state: map['state'] as String,
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       totalRecordCount: map['totalRecordCount'] as int,
       type: map['type'] as String,
       validRecordCount: map['validRecordCount'] as int,
     );
   }
 }
+

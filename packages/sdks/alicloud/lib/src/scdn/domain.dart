@@ -164,25 +164,18 @@ import 'domain_state.dart';
 class Domain extends pulumi.CustomResource {
   /// Attribute perm has been deprecated and suggest removing it from your template.
   late final pulumi.Output<String?> bizName;
-
   /// Certificate Information. See the following `Block cert_infos`.
   late final pulumi.Output<List<Map<String, dynamic>>?> certInfos;
-
   /// The health check url.
   late final pulumi.Output<String?> checkUrl;
-
   /// The name of domain.
   late final pulumi.Output<String> domainName;
-
   /// Whether to set certificate forcibly.
   late final pulumi.Output<String?> forceSet;
-
   /// The resource group id.
   late final pulumi.Output<String> resourceGroupId;
-
   /// the Origin Server Information. See the following `Block sources`.
   late final pulumi.Output<List<Map<String, dynamic>>> sources;
-
   /// The status of the resource. Valid values: `offline`, `online`.
   late final pulumi.Output<String> status;
 
@@ -190,13 +183,16 @@ class Domain extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Domain]. {@macro pulumi_scdn_domain_domain_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Domain(String name, {DomainArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:scdn/domain:Domain',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Domain(
+    String name, {
+    DomainArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:scdn/domain:Domain',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bizName = registerOutput<String?>('bizName');
     certInfos = registerOutput<List<Map<String, dynamic>>?>('certInfos');
     checkUrl = registerOutput<String?>('checkUrl');
@@ -225,11 +221,11 @@ class Domain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:scdn/domain:Domain',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:scdn/domain:Domain',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bizName = registerOutput<String?>('bizName');
     certInfos = registerOutput<List<Map<String, dynamic>>?>('certInfos');
     checkUrl = registerOutput<String?>('checkUrl');

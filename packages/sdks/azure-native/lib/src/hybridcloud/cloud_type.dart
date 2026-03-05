@@ -14,3 +14,4 @@ enum CloudType {
     throw ArgumentError('Unknown CloudType value: $value');
   }
 }
+

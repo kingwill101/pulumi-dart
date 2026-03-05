@@ -11,72 +11,50 @@ class SiteArgs {
   /// - `NS`
   /// - `CNAME`
   final pulumi.Input<String>? accessType;
-
   /// Add visitor geolocation header. Value range:
   final pulumi.Input<String>? addClientGeolocationHeader;
-
   /// Add the "ali-real-client-ip" header containing the real client IP. Value range:
   final pulumi.Input<String>? addRealClientIpHeader;
-
   /// Multi-level cache architecture mode. Possible values:
   final pulumi.Input<String>? cacheArchitectureMode;
-
   /// Site cache hold switch. Value:
   final pulumi.Input<String>? cacheReserveEnable;
-
   /// The ID of the cache instance.
   final pulumi.Input<String>? cacheReserveInstanceId;
-
   /// Whether the custom CacheTag name ignores case. Value range:
   final pulumi.Input<String>? caseInsensitive;
-
   /// The service location. Valid values:
   final pulumi.Input<String>? coverage;
-
   /// Whether to enable mainland China network access optimization, the default is off. Value range:
   final pulumi.Input<String>? crossBorderOptimization;
-
   /// Development mode configuration function switch. Value range:
   final pulumi.Input<String>? developmentMode;
-
   /// CNAME flattening mode. Possible values:
   final pulumi.Input<String>? flattenMode;
-
   /// The ID of the associated package instance.
   final pulumi.Input<String> instanceId;
-
   /// Specifies whether to enable IPv6. Valid values:
   final pulumi.Input<String>? ipv6Enable;
-
   /// The region in which Ipv6 is enabled. The default value is x.x:
   /// - 'x.x': Global.
   /// - 'Cn.cn ': Mainland China.
   final pulumi.Input<String>? ipv6Region;
-
   /// Specifies whether to temporarily pause ESA on the website. If you set this parameter to true, all requests to the domains in your DNS records go directly to your origin server. Valid values:
   final pulumi.Input<bool>? paused;
-
   /// The ID of the resource group
   final pulumi.Input<String>? resourceGroupId;
-
   /// Release the search engine crawler configuration. Value:
   final pulumi.Input<String>? seoBypass;
-
   /// The website name.
   final pulumi.Input<String> siteName;
-
   /// Specifies whether to enable site hold.After you enable site hold, other accounts cannot add your website domain or its subdomains to ESA. Valid values:
   final pulumi.Input<String>? siteNameExclusive;
-
   /// The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
   final pulumi.Input<int>? siteVersion;
-
   /// Custom CacheTag name.
   final pulumi.Input<String>? tagName;
-
   /// Resource tags
   final pulumi.Input<Map<String, String>>? tags;
-
   /// Version management enabled. When true, version management is turned on for the table site.
   final pulumi.Input<bool>? versionManagement;
 
@@ -160,115 +138,30 @@ class SiteArgs {
 
   factory SiteArgs.fromMap(Map<String, dynamic> map) {
     return SiteArgs(
-      accessType: (() {
-        final guardedValue = map['accessType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      addClientGeolocationHeader: (() {
-        final guardedValue = map['addClientGeolocationHeader'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      addRealClientIpHeader: (() {
-        final guardedValue = map['addRealClientIpHeader'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      cacheArchitectureMode: (() {
-        final guardedValue = map['cacheArchitectureMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      cacheReserveEnable: (() {
-        final guardedValue = map['cacheReserveEnable'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      cacheReserveInstanceId: (() {
-        final guardedValue = map['cacheReserveInstanceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      caseInsensitive: (() {
-        final guardedValue = map['caseInsensitive'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      coverage: (() {
-        final guardedValue = map['coverage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      crossBorderOptimization: (() {
-        final guardedValue = map['crossBorderOptimization'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      developmentMode: (() {
-        final guardedValue = map['developmentMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      flattenMode: (() {
-        final guardedValue = map['flattenMode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      accessType: (() { final guardedValue = map['accessType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      addClientGeolocationHeader: (() { final guardedValue = map['addClientGeolocationHeader']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      addRealClientIpHeader: (() { final guardedValue = map['addRealClientIpHeader']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      cacheArchitectureMode: (() { final guardedValue = map['cacheArchitectureMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      cacheReserveEnable: (() { final guardedValue = map['cacheReserveEnable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      cacheReserveInstanceId: (() { final guardedValue = map['cacheReserveInstanceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      caseInsensitive: (() { final guardedValue = map['caseInsensitive']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      coverage: (() { final guardedValue = map['coverage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      crossBorderOptimization: (() { final guardedValue = map['crossBorderOptimization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      developmentMode: (() { final guardedValue = map['developmentMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      flattenMode: (() { final guardedValue = map['flattenMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
-      ipv6Enable: (() {
-        final guardedValue = map['ipv6Enable'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ipv6Region: (() {
-        final guardedValue = map['ipv6Region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      paused: (() {
-        final guardedValue = map['paused'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      resourceGroupId: (() {
-        final guardedValue = map['resourceGroupId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      seoBypass: (() {
-        final guardedValue = map['seoBypass'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ipv6Enable: (() { final guardedValue = map['ipv6Enable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ipv6Region: (() { final guardedValue = map['ipv6Region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      paused: (() { final guardedValue = map['paused']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      resourceGroupId: (() { final guardedValue = map['resourceGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      seoBypass: (() { final guardedValue = map['seoBypass']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       siteName: pulumi.Input.fromValue(map['siteName'] as String),
-      siteNameExclusive: (() {
-        final guardedValue = map['siteNameExclusive'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      siteVersion: (() {
-        final guardedValue = map['siteVersion'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      tagName: (() {
-        final guardedValue = map['tagName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      versionManagement: (() {
-        final guardedValue = map['versionManagement'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      siteNameExclusive: (() { final guardedValue = map['siteNameExclusive']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      siteVersion: (() { final guardedValue = map['siteVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      tagName: (() { final guardedValue = map['tagName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      versionManagement: (() { final guardedValue = map['versionManagement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

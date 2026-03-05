@@ -16,3 +16,4 @@ enum SecondaryType {
     throw ArgumentError('Unknown SecondaryType value: $value');
   }
 }
+

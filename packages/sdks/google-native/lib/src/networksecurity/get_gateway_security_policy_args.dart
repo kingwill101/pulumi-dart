@@ -31,15 +31,10 @@ class GetGatewaySecurityPolicyArgs {
 
   factory GetGatewaySecurityPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetGatewaySecurityPolicyArgs(
-      gatewaySecurityPolicyId: pulumi.Input.fromValue(
-        map['gatewaySecurityPolicyId'] as String,
-      ),
+      gatewaySecurityPolicyId: pulumi.Input.fromValue(map['gatewaySecurityPolicyId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

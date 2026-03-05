@@ -8,21 +8,20 @@ class GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec {
 
   /// Creates a new [GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec].
   /// [values] Must be specified if type is `CATEGORICAL`. The list of possible categories.
-  GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec({this.values});
+  GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec({
+    this.values,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'values': ?values};
+    return <String, dynamic>{
+      'values': ?values,
+    };
   }
 
-  factory GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec(
-      values: (() {
-        final guardedValue = map['values'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      values: (() { final guardedValue = map['values']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

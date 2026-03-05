@@ -176,34 +176,24 @@ import 'system_data_response.dart';
 class AgentPool extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The count of agent machine
   late final pulumi.Output<int?> count;
-
   /// The location of the resource. This cannot be changed after the resource is created.
   late final pulumi.Output<String> location;
-
   /// The name of the resource.
   late final pulumi.Output<String> name;
-
   /// The OS of agent machine
   late final pulumi.Output<String?> os;
-
   /// The provisioning state of this agent pool
   late final pulumi.Output<String> provisioningState;
-
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// The tags of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The Tier of agent machine
   late final pulumi.Output<String?> tier;
-
   /// The type of the resource.
   late final pulumi.Output<String> type;
-
   /// The Virtual Network Subnet Resource Id of the agent machine
   late final pulumi.Output<String?> virtualNetworkSubnetResourceId;
 
@@ -216,32 +206,21 @@ class AgentPool extends pulumi.CustomResource {
     AgentPoolArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:containerregistry:AgentPool',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:containerregistry:AgentPool',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     count = registerOutput<int?>('count');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     os = registerOutput<String?>('os');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     tier = registerOutput<String?>('tier');
     type = registerOutput<String>('type');
-    virtualNetworkSubnetResourceId = registerOutput<String?>(
-      'virtualNetworkSubnetResourceId',
-    );
+    virtualNetworkSubnetResourceId = registerOutput<String?>('virtualNetworkSubnetResourceId');
   }
 }

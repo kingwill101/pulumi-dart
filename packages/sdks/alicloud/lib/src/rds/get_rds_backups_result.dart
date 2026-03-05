@@ -10,7 +10,6 @@ class GetRdsBackupsResult {
   final List<GetRdsBackupsBackup> backups;
   final String dbInstanceId;
   final String? endTime;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -43,11 +42,7 @@ class GetRdsBackupsResult {
     return <String, dynamic>{
       'backupMode': ?backupMode,
       'backupStatus': ?backupStatus,
-      'backups':
-          pulumi.Input.encodeList<GetRdsBackupsBackup, Map<String, dynamic>>(
-            backups,
-            (value) => value.toMap(),
-          ),
+      'backups': pulumi.Input.encodeList<GetRdsBackupsBackup, Map<String, dynamic>>(backups, (value) => value.toMap()),
       'dbInstanceId': dbInstanceId,
       'endTime': ?endTime,
       'id': id,
@@ -59,39 +54,16 @@ class GetRdsBackupsResult {
 
   factory GetRdsBackupsResult.fromMap(Map<String, dynamic> map) {
     return GetRdsBackupsResult(
-      backupMode: (() {
-        final guardedValue = map['backupMode'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      backupStatus: (() {
-        final guardedValue = map['backupStatus'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      backups: pulumi.Input.decodeList<GetRdsBackupsBackup>(
-        map['backups']!,
-        (value) =>
-            GetRdsBackupsBackup.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      backupMode: (() { final guardedValue = map['backupMode']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      backupStatus: (() { final guardedValue = map['backupStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      backups: pulumi.Input.decodeList<GetRdsBackupsBackup>(map['backups']!, (value) => GetRdsBackupsBackup.fromMap((value as Map).cast<String, dynamic>())),
       dbInstanceId: map['dbInstanceId'] as String,
-      endTime: (() {
-        final guardedValue = map['endTime'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      endTime: (() { final guardedValue = map['endTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      startTime: (() {
-        final guardedValue = map['startTime'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      startTime: (() { final guardedValue = map['startTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

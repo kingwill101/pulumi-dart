@@ -15,8 +15,7 @@ enum ResourceCommitmentTypeComputeBeta {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown ResourceCommitmentTypeComputeBeta value: $value',
-    );
+    throw ArgumentError('Unknown ResourceCommitmentTypeComputeBeta value: $value');
   }
 }
+

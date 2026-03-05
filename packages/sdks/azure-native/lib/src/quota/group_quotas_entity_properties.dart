@@ -8,19 +8,20 @@ class GroupQuotasEntityProperties {
 
   /// Creates a new [GroupQuotasEntityProperties].
   /// [displayName] Display name of the GroupQuota entity.
-  GroupQuotasEntityProperties({this.displayName});
+  GroupQuotasEntityProperties({
+    this.displayName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'displayName': ?displayName};
+    return <String, dynamic>{
+      'displayName': ?displayName,
+    };
   }
 
   factory GroupQuotasEntityProperties.fromMap(Map<String, dynamic> map) {
     return GroupQuotasEntityProperties(
-      displayName: (() {
-        final guardedValue = map['displayName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

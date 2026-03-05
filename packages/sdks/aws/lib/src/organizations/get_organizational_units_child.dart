@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetOrganizationalUnitsChild {
   /// ARN of the organizational unit
   final pulumi.Input<String> arn;
-
   /// Parent identifier of the organizational units.
   final pulumi.Input<String> id;
-
   /// Name of the organizational unit
   final pulumi.Input<String> name;
 
@@ -23,7 +21,11 @@ class GetOrganizationalUnitsChild {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'arn': arn, 'id': id, 'name': name};
+    return <String, dynamic>{
+      'arn': arn,
+      'id': id,
+      'name': name,
+    };
   }
 
   factory GetOrganizationalUnitsChild.fromMap(Map<String, dynamic> map) {
@@ -34,3 +36,4 @@ class GetOrganizationalUnitsChild {
     );
   }
 }
+

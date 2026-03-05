@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource {
   /// The name of the Spaces bucket
   final pulumi.Input<String>? bucketName;
-
   /// The path to the item in the bucket
   final pulumi.Input<String>? itemPath;
-
   /// The region of the Spaces bucket
   final pulumi.Input<String>? region;
 
@@ -30,25 +28,12 @@ class GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource {
     };
   }
 
-  factory GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource.fromMap(Map<String, dynamic> map) {
     return GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource(
-      bucketName: (() {
-        final guardedValue = map['bucketName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      itemPath: (() {
-        final guardedValue = map['itemPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      region: (() {
-        final guardedValue = map['region'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      bucketName: (() { final guardedValue = map['bucketName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      itemPath: (() { final guardedValue = map['itemPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

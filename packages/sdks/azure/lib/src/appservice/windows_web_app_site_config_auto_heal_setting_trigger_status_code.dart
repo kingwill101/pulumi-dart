@@ -5,19 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WindowsWebAppSiteConfigAutoHealSettingTriggerStatusCode {
   /// The number of occurrences of the defined `status_code` in the specified `interval` on which to trigger this rule.
   final pulumi.Input<int> count;
-
   /// The time interval in the form `hh:mm:ss`.
   final pulumi.Input<String> interval;
-
   /// The path to which this rule status code applies.
   final pulumi.Input<String>? path;
-
   /// The status code for this rule, accepts single status codes and status code ranges. e.g. `500` or `400-499`. Possible values are integers between `101` and `599`
   final pulumi.Input<String> statusCodeRange;
-
   /// The Request Sub Status of the Status Code.
   final pulumi.Input<int>? subStatus;
-
   /// The Win32 Status Code of the Request.
   final pulumi.Input<int>? win32StatusCode;
 
@@ -48,28 +43,15 @@ class WindowsWebAppSiteConfigAutoHealSettingTriggerStatusCode {
     };
   }
 
-  factory WindowsWebAppSiteConfigAutoHealSettingTriggerStatusCode.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory WindowsWebAppSiteConfigAutoHealSettingTriggerStatusCode.fromMap(Map<String, dynamic> map) {
     return WindowsWebAppSiteConfigAutoHealSettingTriggerStatusCode(
       count: pulumi.Input.fromValue(map['count'] as int),
       interval: pulumi.Input.fromValue(map['interval'] as String),
-      path: (() {
-        final guardedValue = map['path'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       statusCodeRange: pulumi.Input.fromValue(map['statusCodeRange'] as String),
-      subStatus: (() {
-        final guardedValue = map['subStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      win32StatusCode: (() {
-        final guardedValue = map['win32StatusCode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      subStatus: (() { final guardedValue = map['subStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      win32StatusCode: (() { final guardedValue = map['win32StatusCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

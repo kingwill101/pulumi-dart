@@ -9,10 +9,14 @@ class FileReferenceResponse {
 
   /// Creates a new [FileReferenceResponse].
   /// [gcsPath] A path to a file in Google Cloud Storage. Example: gs://build-app-1414623860166/app%40debug-unaligned.apk These paths are expected to be url encoded (percent encoding)
-  FileReferenceResponse({required this.gcsPath});
+  FileReferenceResponse({
+    required this.gcsPath,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'gcsPath': gcsPath};
+    return <String, dynamic>{
+      'gcsPath': gcsPath,
+    };
   }
 
   factory FileReferenceResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class FileReferenceResponse {
     );
   }
 }
+

@@ -383,7 +383,6 @@ class ApplicationUrlDispatchRules extends pulumi.CustomResource {
   /// Rules to match an HTTP request and dispatch that request to a service.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> dispatchRules;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -397,11 +396,11 @@ class ApplicationUrlDispatchRules extends pulumi.CustomResource {
     ApplicationUrlDispatchRulesArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:appengine/applicationUrlDispatchRules:ApplicationUrlDispatchRules',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:appengine/applicationUrlDispatchRules:ApplicationUrlDispatchRules',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dispatchRules = registerOutput<List<Map<String, dynamic>>>('dispatchRules');
     project = registerOutput<String>('project');
   }
@@ -424,11 +423,11 @@ class ApplicationUrlDispatchRules extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:appengine/applicationUrlDispatchRules:ApplicationUrlDispatchRules',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:appengine/applicationUrlDispatchRules:ApplicationUrlDispatchRules',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dispatchRules = registerOutput<List<Map<String, dynamic>>>('dispatchRules');
     project = registerOutput<String>('project');
   }

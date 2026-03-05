@@ -15,7 +15,11 @@ class GetStreamArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [streamId] Required.
-  GetStreamArgs({required this.location, this.project, required this.streamId});
+  GetStreamArgs({
+    required this.location,
+    this.project,
+    required this.streamId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,12 +32,9 @@ class GetStreamArgs {
   factory GetStreamArgs.fromMap(Map<String, dynamic> map) {
     return GetStreamArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       streamId: pulumi.Input.fromValue(map['streamId'] as String),
     );
   }
 }
+

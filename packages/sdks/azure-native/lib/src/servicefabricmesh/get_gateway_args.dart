@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGatewayArgs {
   /// The identity of the gateway.
   final pulumi.Input<String> gatewayResourceName;
-
   /// Azure resource group name
   final pulumi.Input<String> resourceGroupName;
 
@@ -30,12 +29,9 @@ class GetGatewayArgs {
 
   factory GetGatewayArgs.fromMap(Map<String, dynamic> map) {
     return GetGatewayArgs(
-      gatewayResourceName: pulumi.Input.fromValue(
-        map['gatewayResourceName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      gatewayResourceName: pulumi.Input.fromValue(map['gatewayResourceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

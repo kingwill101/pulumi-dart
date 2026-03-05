@@ -5,22 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetReceiversReceiverse {
   /// The creation time of the resource.
   final pulumi.Input<String> createTime;
-
   /// The description.
   final pulumi.Input<String> description;
-
   /// The ID of the Receivers.
   final pulumi.Input<String> id;
-
   /// The Receivers Alias.
   final pulumi.Input<String> receiversAlias;
-
   /// The first ID of the resource.
   final pulumi.Input<String> receiversId;
-
   /// The name of the resource.
   final pulumi.Input<String> receiversName;
-
   /// The status of the resource.
   final pulumi.Input<int> status;
 
@@ -66,3 +60,4 @@ class GetReceiversReceiverse {
     );
   }
 }
+

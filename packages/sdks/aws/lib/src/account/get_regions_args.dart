@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRegionsArgs {
   /// AWS account ID. Must be a member account in the same organization.
   final pulumi.Input<String>? accountId;
-
   /// A list of region opt-in statuses to filter the results. Valid values are `ENABLED`, `ENABLING`, `DISABLING`, `DISABLED`, and `ENABLED_BY_DEFAULT`.
   final pulumi.Input<List<String>>? regionOptStatusContains;
 
   /// Creates a new [GetRegionsArgs].
   /// [accountId] AWS account ID. Must be a member account in the same organization.
   /// [regionOptStatusContains] A list of region opt-in statuses to filter the results. Valid values are `ENABLED`, `ENABLING`, `DISABLING`, `DISABLED`, and `ENABLED_BY_DEFAULT`.
-  GetRegionsArgs({this.accountId, this.regionOptStatusContains});
+  GetRegionsArgs({
+    this.accountId,
+    this.regionOptStatusContains,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,16 +29,9 @@ class GetRegionsArgs {
 
   factory GetRegionsArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionsArgs(
-      accountId: (() {
-        final guardedValue = map['accountId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      regionOptStatusContains: (() {
-        final guardedValue = map['regionOptStatusContains'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      regionOptStatusContains: (() { final guardedValue = map['regionOptStatusContains']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

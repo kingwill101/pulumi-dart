@@ -9,10 +9,14 @@ class LatencyCriteriaResponse {
 
   /// Creates a new [LatencyCriteriaResponse].
   /// [threshold] Good service is defined to be the count of requests made to this service that return in no more than threshold.
-  LatencyCriteriaResponse({required this.threshold});
+  LatencyCriteriaResponse({
+    required this.threshold,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'threshold': threshold};
+    return <String, dynamic>{
+      'threshold': threshold,
+    };
   }
 
   factory LatencyCriteriaResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class LatencyCriteriaResponse {
     );
   }
 }
+

@@ -15,3 +15,4 @@ enum RouterBgpPeerBfdPacketMode {
     throw ArgumentError('Unknown RouterBgpPeerBfdPacketMode value: $value');
   }
 }
+

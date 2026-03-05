@@ -12,16 +12,12 @@ import 'target_action_type.dart';
 class ApprovalRuleArgs {
   /// The approval rule configuration.
   final pulumi.Input<ApprovalRuleConfig> approvalRuleConfig;
-
   /// Whether the approval rule is enabled.
   final pulumi.Input<bool> enabled;
-
   /// The environment this rule applies to.
   final pulumi.Input<EnvironmentIdentifier> environmentIdentifier;
-
   /// The name of the approval rule.
   final pulumi.Input<String> name;
-
   /// The type of action this rule applies to.
   final pulumi.Input<List<TargetActionType>> targetActionTypes;
 
@@ -41,49 +37,22 @@ class ApprovalRuleArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'approvalRuleConfig':
-          pulumi.Input.mapInputValue<ApprovalRuleConfig, Map<String, dynamic>>(
-            approvalRuleConfig,
-            (value) => value.toMap(),
-          ),
+      'approvalRuleConfig': pulumi.Input.mapInputValue<ApprovalRuleConfig, Map<String, dynamic>>(approvalRuleConfig, (value) => value.toMap()),
       'enabled': enabled,
-      'environmentIdentifier':
-          pulumi.Input.mapInputValue<
-            EnvironmentIdentifier,
-            Map<String, dynamic>
-          >(environmentIdentifier, (value) => value.toMap()),
+      'environmentIdentifier': pulumi.Input.mapInputValue<EnvironmentIdentifier, Map<String, dynamic>>(environmentIdentifier, (value) => value.toMap()),
       'name': name,
-      'targetActionTypes':
-          pulumi.Input.mapInputValue<List<TargetActionType>, List<String>>(
-            targetActionTypes,
-            (value) => pulumi.Input.encodeList<TargetActionType, String>(
-              value,
-              (value) => value.wireValue,
-            ),
-          ),
+      'targetActionTypes': pulumi.Input.mapInputValue<List<TargetActionType>, List<String>>(targetActionTypes, (value) => pulumi.Input.encodeList<TargetActionType, String>(value, (value) => value.wireValue)),
     };
   }
 
   factory ApprovalRuleArgs.fromMap(Map<String, dynamic> map) {
     return ApprovalRuleArgs(
-      approvalRuleConfig: pulumi.Input.fromValue(
-        ApprovalRuleConfig.fromMap(
-          (map['approvalRuleConfig']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      approvalRuleConfig: pulumi.Input.fromValue(ApprovalRuleConfig.fromMap((map['approvalRuleConfig']! as Map).cast<String, dynamic>())),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
-      environmentIdentifier: pulumi.Input.fromValue(
-        EnvironmentIdentifier.fromMap(
-          (map['environmentIdentifier']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      environmentIdentifier: pulumi.Input.fromValue(EnvironmentIdentifier.fromMap((map['environmentIdentifier']! as Map).cast<String, dynamic>())),
       name: pulumi.Input.fromValue(map['name'] as String),
-      targetActionTypes: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<TargetActionType>(
-          map['targetActionTypes']!,
-          (value) => TargetActionType.fromValue(value as String),
-        ),
-      ),
+      targetActionTypes: pulumi.Input.fromValue(pulumi.Input.decodeList<TargetActionType>(map['targetActionTypes']!, (value) => TargetActionType.fromValue(value as String))),
     );
   }
 }
+

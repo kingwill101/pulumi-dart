@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponse {
   /// The last time the schedule successfully ran. The timestamp is an RFC3339 string.
   final pulumi.Input<String> lastRunStartTime;
-
   /// The next time the schedule is planned to run. The actual time might be slightly different. The timestamp is an RFC3339 string.
   final pulumi.Input<String> nextRunStartTime;
 
@@ -24,16 +23,11 @@ class ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponse {
     };
   }
 
-  factory ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponse.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponse(
-      lastRunStartTime: pulumi.Input.fromValue(
-        map['lastRunStartTime'] as String,
-      ),
-      nextRunStartTime: pulumi.Input.fromValue(
-        map['nextRunStartTime'] as String,
-      ),
+      lastRunStartTime: pulumi.Input.fromValue(map['lastRunStartTime'] as String),
+      nextRunStartTime: pulumi.Input.fromValue(map['nextRunStartTime'] as String),
     );
   }
 }
+

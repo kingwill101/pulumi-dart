@@ -253,16 +253,12 @@ import 'bgp_ip_state.dart';
 class BgpIp extends pulumi.CustomResource {
   /// The ID of the Anti-DDoS Origin instance.
   late final pulumi.Output<String> instanceId;
-
   /// The IP address that you want to add.
   late final pulumi.Output<String> ip;
-
   /// The member to which the asset belongs.
   late final pulumi.Output<String> memberUid;
-
   /// Field `resource_group_id` has been deprecated from provider version 1.259.0.
   late final pulumi.Output<String?> resourceGroupId;
-
   /// The status of the IP address.
   late final pulumi.Output<String> status;
 
@@ -270,13 +266,16 @@ class BgpIp extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [BgpIp]. {@macro pulumi_ddos_bgp_ip_bgp_ip_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  BgpIp(String name, {BgpIpArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'alicloud:ddos/bgpIp:BgpIp',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  BgpIp(
+    String name, {
+    BgpIpArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'alicloud:ddos/bgpIp:BgpIp',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     instanceId = registerOutput<String>('instanceId');
     ip = registerOutput<String>('ip');
     memberUid = registerOutput<String>('memberUid');
@@ -285,7 +284,11 @@ class BgpIp extends pulumi.CustomResource {
   }
 
   /// Gets an existing [BgpIp] resource's state with the given [name] and [id].
-  static BgpIp get(String name, pulumi.Input<String> id, {BgpIpState? state}) {
+  static BgpIp get(
+    String name,
+    pulumi.Input<String> id, {
+    BgpIpState? state,
+  }) {
     return BgpIp._get(
       name,
       state: state?.toMap(),
@@ -298,11 +301,11 @@ class BgpIp extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ddos/bgpIp:BgpIp',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ddos/bgpIp:BgpIp',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     instanceId = registerOutput<String>('instanceId');
     ip = registerOutput<String>('ip');
     memberUid = registerOutput<String>('memberUid');

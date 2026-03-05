@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProviderFeaturesNetapp {
   /// When enabled, backups will be deleted when the `azure.netapp.BackupVault` resource is destroyed
   final pulumi.Input<bool>? deleteBackupsOnBackupVaultDestroy;
-
   /// When enabled, the volume will not be destroyed, safeguarding from severe data loss
   final pulumi.Input<bool>? preventVolumeDestruction;
 
@@ -26,16 +25,9 @@ class ProviderFeaturesNetapp {
 
   factory ProviderFeaturesNetapp.fromMap(Map<String, dynamic> map) {
     return ProviderFeaturesNetapp(
-      deleteBackupsOnBackupVaultDestroy: (() {
-        final guardedValue = map['deleteBackupsOnBackupVaultDestroy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      preventVolumeDestruction: (() {
-        final guardedValue = map['preventVolumeDestruction'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      deleteBackupsOnBackupVaultDestroy: (() { final guardedValue = map['deleteBackupsOnBackupVaultDestroy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      preventVolumeDestruction: (() { final guardedValue = map['preventVolumeDestruction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

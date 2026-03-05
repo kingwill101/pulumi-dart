@@ -7,7 +7,6 @@ import 'get_dhcp_options_sets_set.dart';
 class GetDhcpOptionsSetsResult {
   final String? dhcpOptionsSetName;
   final String? domainName;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -48,51 +47,23 @@ class GetDhcpOptionsSetsResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'sets':
-          pulumi.Input.encodeList<GetDhcpOptionsSetsSet, Map<String, dynamic>>(
-            sets,
-            (value) => value.toMap(),
-          ),
+      'sets': pulumi.Input.encodeList<GetDhcpOptionsSetsSet, Map<String, dynamic>>(sets, (value) => value.toMap()),
       'status': ?status,
     };
   }
 
   factory GetDhcpOptionsSetsResult.fromMap(Map<String, dynamic> map) {
     return GetDhcpOptionsSetsResult(
-      dhcpOptionsSetName: (() {
-        final guardedValue = map['dhcpOptionsSetName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      domainName: (() {
-        final guardedValue = map['domainName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      dhcpOptionsSetName: (() { final guardedValue = map['dhcpOptionsSetName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      domainName: (() { final guardedValue = map['domainName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: (() {
-        final guardedValue = map['nameRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      sets: pulumi.Input.decodeList<GetDhcpOptionsSetsSet>(
-        map['sets']!,
-        (value) => GetDhcpOptionsSetsSet.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sets: pulumi.Input.decodeList<GetDhcpOptionsSetsSet>(map['sets']!, (value) => GetDhcpOptionsSetsSet.fromMap((value as Map).cast<String, dynamic>())),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

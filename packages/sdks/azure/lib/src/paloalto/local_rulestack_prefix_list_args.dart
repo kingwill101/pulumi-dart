@@ -9,16 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LocalRulestackPrefixListArgs {
   /// The comment for Audit purposes.
   final pulumi.Input<String>? auditComment;
-
   /// The description for the Prefix List.
   final pulumi.Input<String>? description;
-
   /// The name which should be used for this Palo Alto Local Rulestack Prefix List.
   final pulumi.Input<String>? name;
-
   /// Specifies a list of Prefixes.
   final pulumi.Input<List<String>> prefixLists;
-
   /// The ID of the Local Rulestack on which to create this Prefix List. Changing this forces a new Palo Alto Local Rulestack Prefix List to be created.
   final pulumi.Input<String> rulestackId;
 
@@ -48,25 +44,12 @@ class LocalRulestackPrefixListArgs {
 
   factory LocalRulestackPrefixListArgs.fromMap(Map<String, dynamic> map) {
     return LocalRulestackPrefixListArgs(
-      auditComment: (() {
-        final guardedValue = map['auditComment'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      prefixLists: pulumi.Input.fromValue(
-        (map['prefixLists'] as List).cast<String>(),
-      ),
+      auditComment: (() { final guardedValue = map['auditComment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      prefixLists: pulumi.Input.fromValue((map['prefixLists'] as List).cast<String>()),
       rulestackId: pulumi.Input.fromValue(map['rulestackId'] as String),
     );
   }
 }
+

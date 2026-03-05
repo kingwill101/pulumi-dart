@@ -16,3 +16,4 @@ enum HostCachingOptions {
     throw ArgumentError('Unknown HostCachingOptions value: $value');
   }
 }
+

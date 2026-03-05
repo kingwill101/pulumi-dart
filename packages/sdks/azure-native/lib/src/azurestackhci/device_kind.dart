@@ -14,3 +14,4 @@ enum DeviceKind {
     throw ArgumentError('Unknown DeviceKind value: $value');
   }
 }
+

@@ -5,34 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccountSASPermissions {
   /// Should Add permissions be enabled for this SAS?
   final pulumi.Input<bool> add;
-
   /// Should Create permissions be enabled for this SAS?
   final pulumi.Input<bool> create;
-
   /// Should Delete permissions be enabled for this SAS?
   final pulumi.Input<bool> delete;
-
   /// Should Filter by Index Tags permissions be enabled for this SAS?
   ///
   /// Refer to the [SAS creation reference from Azure](https://docs.microsoft.com/rest/api/storageservices/constructing-an-account-sas)
   /// for additional details on the fields above.
   final pulumi.Input<bool> filter;
-
   /// Should List permissions be enabled for this SAS?
   final pulumi.Input<bool> list;
-
   /// Should Process permissions be enabled for this SAS?
   final pulumi.Input<bool> process;
-
   /// Should Read permissions be enabled for this SAS?
   final pulumi.Input<bool> read;
-
   /// Should Get / Set Index Tags permissions be enabled for this SAS?
   final pulumi.Input<bool> tag;
-
   /// Should Update permissions be enabled for this SAS?
   final pulumi.Input<bool> update;
-
   /// Should Write permissions be enabled for this SAS?
   final pulumi.Input<bool> write;
 
@@ -90,3 +81,4 @@ class GetAccountSASPermissions {
     );
   }
 }
+

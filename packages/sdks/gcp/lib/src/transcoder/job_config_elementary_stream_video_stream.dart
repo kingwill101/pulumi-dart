@@ -13,31 +13,20 @@ class JobConfigElementaryStreamVideoStream {
 
   /// Creates a new [JobConfigElementaryStreamVideoStream].
   /// [h264] H264 codec settings
-  JobConfigElementaryStreamVideoStream({this.h264});
+  JobConfigElementaryStreamVideoStream({
+    this.h264,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'h264':
-          ?pulumi.Input.mapOptionalInputValue<
-            JobConfigElementaryStreamVideoStreamH264,
-            Map<String, dynamic>
-          >(h264, (value) => value.toMap()),
+      'h264': ?pulumi.Input.mapOptionalInputValue<JobConfigElementaryStreamVideoStreamH264, Map<String, dynamic>>(h264, (value) => value.toMap()),
     };
   }
 
-  factory JobConfigElementaryStreamVideoStream.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory JobConfigElementaryStreamVideoStream.fromMap(Map<String, dynamic> map) {
     return JobConfigElementaryStreamVideoStream(
-      h264: (() {
-        final guardedValue = map['h264'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          JobConfigElementaryStreamVideoStreamH264.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      h264: (() { final guardedValue = map['h264']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JobConfigElementaryStreamVideoStreamH264.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

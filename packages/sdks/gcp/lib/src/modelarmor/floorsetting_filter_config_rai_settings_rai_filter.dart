@@ -8,7 +8,6 @@ class FloorsettingFilterConfigRaiSettingsRaiFilter {
   /// MEDIUM_AND_ABOVE
   /// HIGH
   final pulumi.Input<String>? confidenceLevel;
-
   /// Possible values:
   /// SEXUALLY_EXPLICIT
   /// HATE_SPEECH
@@ -31,16 +30,11 @@ class FloorsettingFilterConfigRaiSettingsRaiFilter {
     };
   }
 
-  factory FloorsettingFilterConfigRaiSettingsRaiFilter.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FloorsettingFilterConfigRaiSettingsRaiFilter.fromMap(Map<String, dynamic> map) {
     return FloorsettingFilterConfigRaiSettingsRaiFilter(
-      confidenceLevel: (() {
-        final guardedValue = map['confidenceLevel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      confidenceLevel: (() { final guardedValue = map['confidenceLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       filterType: pulumi.Input.fromValue(map['filterType'] as String),
     );
   }
 }
+

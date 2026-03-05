@@ -20,3 +20,4 @@ enum LanguageExtensionImageName {
     throw ArgumentError('Unknown LanguageExtensionImageName value: $value');
   }
 }
+

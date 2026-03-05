@@ -10,39 +10,20 @@ class OwnershipControlsResponse {
 
   /// Creates a new [OwnershipControlsResponse].
   /// [rules] Specifies the container element for Object Ownership rules.
-  OwnershipControlsResponse({this.rules});
+  OwnershipControlsResponse({
+    this.rules,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'rules':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<OwnershipControlsRuleResponse>,
-            List<Map<String, dynamic>>
-          >(
-            rules,
-            (value) =>
-                pulumi.Input.encodeList<
-                  OwnershipControlsRuleResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'rules': ?pulumi.Input.mapOptionalInputValue<List<OwnershipControlsRuleResponse>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<OwnershipControlsRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory OwnershipControlsResponse.fromMap(Map<String, dynamic> map) {
     return OwnershipControlsResponse(
-      rules: (() {
-        final guardedValue = map['rules'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<OwnershipControlsRuleResponse>(
-            guardedValue,
-            (value) => OwnershipControlsRuleResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
+      rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<OwnershipControlsRuleResponse>(guardedValue, (value) => OwnershipControlsRuleResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

@@ -8,7 +8,6 @@ class VMwareNodePoolStatus {
   /// ResourceConditions provide a standard mechanism for higher-level status reporting from user cluster controller.
   /// Structure is documented below.
   final pulumi.Input<List<VMwareNodePoolStatusCondition>>? conditions;
-
   /// (Output)
   /// Human-friendly representation of the error message from the user cluster
   /// controller. The error message can be temporary as the user cluster
@@ -20,45 +19,23 @@ class VMwareNodePoolStatus {
   /// Creates a new [VMwareNodePoolStatus].
   /// [conditions] (Output)
   /// [errorMessage] (Output)
-  VMwareNodePoolStatus({this.conditions, this.errorMessage});
+  VMwareNodePoolStatus({
+    this.conditions,
+    this.errorMessage,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'conditions':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<VMwareNodePoolStatusCondition>,
-            List<Map<String, dynamic>>
-          >(
-            conditions,
-            (value) =>
-                pulumi.Input.encodeList<
-                  VMwareNodePoolStatusCondition,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'conditions': ?pulumi.Input.mapOptionalInputValue<List<VMwareNodePoolStatusCondition>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<VMwareNodePoolStatusCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
       'errorMessage': ?errorMessage,
     };
   }
 
   factory VMwareNodePoolStatus.fromMap(Map<String, dynamic> map) {
     return VMwareNodePoolStatus(
-      conditions: (() {
-        final guardedValue = map['conditions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<VMwareNodePoolStatusCondition>(
-            guardedValue,
-            (value) => VMwareNodePoolStatusCondition.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      errorMessage: (() {
-        final guardedValue = map['errorMessage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VMwareNodePoolStatusCondition>(guardedValue, (value) => VMwareNodePoolStatusCondition.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      errorMessage: (() { final guardedValue = map['errorMessage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

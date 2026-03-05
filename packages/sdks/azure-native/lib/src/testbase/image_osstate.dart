@@ -15,3 +15,4 @@ enum ImageOSState {
     throw ArgumentError('Unknown ImageOSState value: $value');
   }
 }
+

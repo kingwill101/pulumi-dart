@@ -7,17 +7,13 @@ enum CloudSqlSettingsActivationPolicyDatamigrationV1beta1 {
   const CloudSqlSettingsActivationPolicyDatamigrationV1beta1(this.wireValue);
   final String wireValue;
 
-  static CloudSqlSettingsActivationPolicyDatamigrationV1beta1 fromValue(
-    String value,
-  ) {
-    for (final item
-        in CloudSqlSettingsActivationPolicyDatamigrationV1beta1.values) {
+  static CloudSqlSettingsActivationPolicyDatamigrationV1beta1 fromValue(String value) {
+    for (final item in CloudSqlSettingsActivationPolicyDatamigrationV1beta1.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown CloudSqlSettingsActivationPolicyDatamigrationV1beta1 value: $value',
-    );
+    throw ArgumentError('Unknown CloudSqlSettingsActivationPolicyDatamigrationV1beta1 value: $value');
   }
 }
+

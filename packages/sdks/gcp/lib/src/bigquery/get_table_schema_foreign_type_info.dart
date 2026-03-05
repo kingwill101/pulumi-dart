@@ -8,10 +8,14 @@ class GetTableSchemaForeignTypeInfo {
 
   /// Creates a new [GetTableSchemaForeignTypeInfo].
   /// [typeSystem] Specifies the system which defines the foreign data type.
-  GetTableSchemaForeignTypeInfo({required this.typeSystem});
+  GetTableSchemaForeignTypeInfo({
+    required this.typeSystem,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'typeSystem': typeSystem};
+    return <String, dynamic>{
+      'typeSystem': typeSystem,
+    };
   }
 
   factory GetTableSchemaForeignTypeInfo.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class GetTableSchemaForeignTypeInfo {
     );
   }
 }
+

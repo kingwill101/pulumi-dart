@@ -15,3 +15,4 @@ enum EventHubType {
     throw ArgumentError('Unknown EventHubType value: $value');
   }
 }
+

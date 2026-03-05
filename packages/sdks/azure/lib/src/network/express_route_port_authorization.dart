@@ -214,16 +214,12 @@ import 'express_route_port_authorization_state.dart';
 class ExpressRoutePortAuthorization extends pulumi.CustomResource {
   /// The Authorization Key.
   late final pulumi.Output<String> authorizationKey;
-
   /// The authorization use status.
   late final pulumi.Output<String> authorizationUseStatus;
-
   /// The name of the Express Route Port in which to create the Authorization. Changing this forces a new resource to be created.
   late final pulumi.Output<String> expressRoutePortName;
-
   /// The name of the ExpressRoute Port. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The name of the resource group in which to create the ExpressRoute Port. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
 
@@ -236,11 +232,11 @@ class ExpressRoutePortAuthorization extends pulumi.CustomResource {
     ExpressRoutePortAuthorizationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/expressRoutePortAuthorization:ExpressRoutePortAuthorization',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/expressRoutePortAuthorization:ExpressRoutePortAuthorization',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     authorizationKey = registerOutput<String>('authorizationKey');
     authorizationUseStatus = registerOutput<String>('authorizationUseStatus');
     expressRoutePortName = registerOutput<String>('expressRoutePortName');
@@ -266,11 +262,11 @@ class ExpressRoutePortAuthorization extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:network/expressRoutePortAuthorization:ExpressRoutePortAuthorization',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:network/expressRoutePortAuthorization:ExpressRoutePortAuthorization',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     authorizationKey = registerOutput<String>('authorizationKey');
     authorizationUseStatus = registerOutput<String>('authorizationUseStatus');
     expressRoutePortName = registerOutput<String>('expressRoutePortName');

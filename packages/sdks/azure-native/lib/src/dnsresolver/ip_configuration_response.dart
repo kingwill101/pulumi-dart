@@ -7,10 +7,8 @@ import 'sub_resource_response.dart';
 class IpConfigurationResponse {
   /// Private IP address of the IP configuration.
   final pulumi.Input<String>? privateIpAddress;
-
   /// Private IP address allocation method.
   final pulumi.Input<String>? privateIpAllocationMethod;
-
   /// The reference to the subnet bound to the IP configuration.
   final pulumi.Input<SubResourceResponse> subnet;
 
@@ -28,31 +26,16 @@ class IpConfigurationResponse {
     return <String, dynamic>{
       'privateIpAddress': ?privateIpAddress,
       'privateIpAllocationMethod': ?privateIpAllocationMethod,
-      'subnet':
-          pulumi.Input.mapInputValue<SubResourceResponse, Map<String, dynamic>>(
-            subnet,
-            (value) => value.toMap(),
-          ),
+      'subnet': pulumi.Input.mapInputValue<SubResourceResponse, Map<String, dynamic>>(subnet, (value) => value.toMap()),
     };
   }
 
   factory IpConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return IpConfigurationResponse(
-      privateIpAddress: (() {
-        final guardedValue = map['privateIpAddress'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      privateIpAllocationMethod: (() {
-        final guardedValue = map['privateIpAllocationMethod'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subnet: pulumi.Input.fromValue(
-        SubResourceResponse.fromMap(
-          (map['subnet']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      privateIpAddress: (() { final guardedValue = map['privateIpAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateIpAllocationMethod: (() { final guardedValue = map['privateIpAllocationMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subnet: pulumi.Input.fromValue(SubResourceResponse.fromMap((map['subnet']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

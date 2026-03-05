@@ -8,10 +8,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_sql_get_managed_instance_administrator_args_doc}
 class GetManagedInstanceAdministratorArgs {
   final pulumi.Input<String> administratorName;
-
   /// The name of the managed instance.
   final pulumi.Input<String> managedInstanceName;
-
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
 
@@ -33,19 +31,12 @@ class GetManagedInstanceAdministratorArgs {
     };
   }
 
-  factory GetManagedInstanceAdministratorArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetManagedInstanceAdministratorArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedInstanceAdministratorArgs(
-      administratorName: pulumi.Input.fromValue(
-        map['administratorName'] as String,
-      ),
-      managedInstanceName: pulumi.Input.fromValue(
-        map['managedInstanceName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      administratorName: pulumi.Input.fromValue(map['administratorName'] as String),
+      managedInstanceName: pulumi.Input.fromValue(map['managedInstanceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

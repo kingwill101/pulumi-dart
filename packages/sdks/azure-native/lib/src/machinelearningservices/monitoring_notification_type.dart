@@ -13,3 +13,4 @@ enum MonitoringNotificationType {
     throw ArgumentError('Unknown MonitoringNotificationType value: $value');
   }
 }
+

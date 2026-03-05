@@ -6,31 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class QosPortRange {
   /// Qos Port Range end.
   final pulumi.Input<int>? end;
-
   /// Qos Port Range start.
   final pulumi.Input<int>? start;
 
   /// Creates a new [QosPortRange].
   /// [end] Qos Port Range end.
   /// [start] Qos Port Range start.
-  QosPortRange({this.end, this.start});
+  QosPortRange({
+    this.end,
+    this.start,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'end': ?end, 'start': ?start};
+    return <String, dynamic>{
+      'end': ?end,
+      'start': ?start,
+    };
   }
 
   factory QosPortRange.fromMap(Map<String, dynamic> map) {
     return QosPortRange(
-      end: (() {
-        final guardedValue = map['end'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      start: (() {
-        final guardedValue = map['start'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      end: (() { final guardedValue = map['end']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      start: (() { final guardedValue = map['start']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

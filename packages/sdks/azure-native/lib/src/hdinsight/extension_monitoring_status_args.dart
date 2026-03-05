@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExtensionMonitoringStatusArgs {
   /// The name of the cluster.
   final pulumi.Input<String> clusterName;
-
   /// The cluster monitor workspace key.
   final pulumi.Input<String>? primaryKey;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
-
   /// The cluster monitor workspace ID.
   final pulumi.Input<String>? workspaceId;
 
@@ -43,19 +40,10 @@ class ExtensionMonitoringStatusArgs {
   factory ExtensionMonitoringStatusArgs.fromMap(Map<String, dynamic> map) {
     return ExtensionMonitoringStatusArgs(
       clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
-      primaryKey: (() {
-        final guardedValue = map['primaryKey'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      workspaceId: (() {
-        final guardedValue = map['workspaceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      primaryKey: (() { final guardedValue = map['primaryKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      workspaceId: (() { final guardedValue = map['workspaceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

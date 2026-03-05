@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListPartnerNamespaceSharedAccessKeysArgs {
   /// Name of the partner namespace.
   final pulumi.Input<String> partnerNamespaceName;
-
   /// The name of the resource group within the user's subscription.
   final pulumi.Input<String> resourceGroupName;
 
@@ -28,16 +27,11 @@ class ListPartnerNamespaceSharedAccessKeysArgs {
     };
   }
 
-  factory ListPartnerNamespaceSharedAccessKeysArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ListPartnerNamespaceSharedAccessKeysArgs.fromMap(Map<String, dynamic> map) {
     return ListPartnerNamespaceSharedAccessKeysArgs(
-      partnerNamespaceName: pulumi.Input.fromValue(
-        map['partnerNamespaceName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      partnerNamespaceName: pulumi.Input.fromValue(map['partnerNamespaceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

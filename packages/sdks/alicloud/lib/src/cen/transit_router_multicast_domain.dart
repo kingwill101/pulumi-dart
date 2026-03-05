@@ -229,22 +229,16 @@ import 'transit_router_multicast_domain_state.dart';
 class TransitRouterMulticastDomain extends pulumi.CustomResource {
   /// The function options of the multicast domain. See `options` below.
   late final pulumi.Output<TransitRouterMulticastDomainOptions> options;
-
   /// (Available since v1.242.0) The region ID of the transit router.
   late final pulumi.Output<String> regionId;
-
   /// The status of the Transit Router Multicast Domain.
   late final pulumi.Output<String> status;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The ID of the forwarding router instance.
   late final pulumi.Output<String> transitRouterId;
-
   /// The description of the multicast domain.
   late final pulumi.Output<String?> transitRouterMulticastDomainDescription;
-
   /// The name of the multicast domain.
   late final pulumi.Output<String?> transitRouterMulticastDomainName;
 
@@ -257,31 +251,18 @@ class TransitRouterMulticastDomain extends pulumi.CustomResource {
     TransitRouterMulticastDomainArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cen/transitRouterMulticastDomain:TransitRouterMulticastDomain',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    this.options = registerOutput<TransitRouterMulticastDomainOptions>(
-      'options',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TransitRouterMulticastDomainOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'alicloud:cen/transitRouterMulticastDomain:TransitRouterMulticastDomain',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.options = registerOutput<TransitRouterMulticastDomainOptions>('options', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TransitRouterMulticastDomainOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     regionId = registerOutput<String>('regionId');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     transitRouterId = registerOutput<String>('transitRouterId');
-    transitRouterMulticastDomainDescription = registerOutput<String?>(
-      'transitRouterMulticastDomainDescription',
-    );
-    transitRouterMulticastDomainName = registerOutput<String?>(
-      'transitRouterMulticastDomainName',
-    );
+    transitRouterMulticastDomainDescription = registerOutput<String?>('transitRouterMulticastDomainDescription');
+    transitRouterMulticastDomainName = registerOutput<String?>('transitRouterMulticastDomainName');
   }
 
   /// Gets an existing [TransitRouterMulticastDomain] resource's state with the given [name] and [id].
@@ -302,30 +283,17 @@ class TransitRouterMulticastDomain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cen/transitRouterMulticastDomain:TransitRouterMulticastDomain',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    this.options = registerOutput<TransitRouterMulticastDomainOptions>(
-      'options',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return TransitRouterMulticastDomainOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'alicloud:cen/transitRouterMulticastDomain:TransitRouterMulticastDomain',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.options = registerOutput<TransitRouterMulticastDomainOptions>('options', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TransitRouterMulticastDomainOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     regionId = registerOutput<String>('regionId');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     transitRouterId = registerOutput<String>('transitRouterId');
-    transitRouterMulticastDomainDescription = registerOutput<String?>(
-      'transitRouterMulticastDomainDescription',
-    );
-    transitRouterMulticastDomainName = registerOutput<String?>(
-      'transitRouterMulticastDomainName',
-    );
+    transitRouterMulticastDomainDescription = registerOutput<String?>('transitRouterMulticastDomainDescription');
+    transitRouterMulticastDomainName = registerOutput<String?>('transitRouterMulticastDomainName');
   }
 }

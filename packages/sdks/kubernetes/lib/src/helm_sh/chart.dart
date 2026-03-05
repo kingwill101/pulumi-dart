@@ -697,12 +697,12 @@ class Chart extends pulumi.ComponentResource {
     ChartArgs? args,
     pulumi.ComponentResourceOptions? options,
   }) : super(
-         'kubernetes:helm.sh/v3:Chart',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.ComponentResourceOptions(),
-         remote: true,
-       ) {
+          'kubernetes:helm.sh/v3:Chart',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.ComponentResourceOptions(),
+          remote: true,
+        ) {
     resources = registerOutput<String?>('resources');
   }
 }

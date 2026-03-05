@@ -5,42 +5,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceHostnameConfigurationProxy {
   /// The Base64 Encoded Certificate.
   final pulumi.Input<String>? certificate;
-
   /// The password associated with the certificate provided above.
   ///
   /// &gt; **Note:** Either `key_vault_certificate_id` or `certificate` and `certificate_password` must be specified.
   final pulumi.Input<String>? certificatePassword;
-
   /// The source of the certificate.
   final pulumi.Input<String>? certificateSource;
-
   /// The status of the certificate.
   final pulumi.Input<String>? certificateStatus;
-
   /// Is the certificate associated with this Hostname the Default SSL Certificate? This is used when an SNI header isn't specified by a client. Defaults to `false`.
   final pulumi.Input<bool>? defaultSslBinding;
-
   /// The expiration date of the certificate in RFC3339 format: `2000-01-02T03:04:05Z`.
   final pulumi.Input<String>? expiry;
-
   /// The Hostname to use for the Management API.
   final pulumi.Input<String> hostName;
-
   /// The ID of the Key Vault Secret containing the SSL Certificate, which must be of the type `application/x-pkcs12`.
   ///
   /// &gt; **Note:** Setting this field requires the `identity` block to be specified, since this identity is used for to retrieve the Key Vault Certificate. Auto-updating the Certificate from the Key Vault requires the Secret version isn't specified.
   final pulumi.Input<String>? keyVaultCertificateId;
   final pulumi.Input<String>? keyVaultId;
-
   /// Should Client Certificate Negotiation be enabled for this Hostname? Defaults to `false`.
   final pulumi.Input<bool>? negotiateClientCertificate;
-
   /// The Managed Identity Client ID to use to access the Key Vault. This Identity must be specified in the `identity` block to be used.
   final pulumi.Input<String>? sslKeyvaultIdentityClientId;
-
   /// The subject of the certificate.
   final pulumi.Input<String>? subject;
-
   /// The thumbprint of the certificate.
   final pulumi.Input<String>? thumbprint;
 
@@ -94,67 +83,20 @@ class ServiceHostnameConfigurationProxy {
 
   factory ServiceHostnameConfigurationProxy.fromMap(Map<String, dynamic> map) {
     return ServiceHostnameConfigurationProxy(
-      certificate: (() {
-        final guardedValue = map['certificate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      certificatePassword: (() {
-        final guardedValue = map['certificatePassword'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      certificateSource: (() {
-        final guardedValue = map['certificateSource'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      certificateStatus: (() {
-        final guardedValue = map['certificateStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      defaultSslBinding: (() {
-        final guardedValue = map['defaultSslBinding'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      expiry: (() {
-        final guardedValue = map['expiry'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      certificate: (() { final guardedValue = map['certificate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      certificatePassword: (() { final guardedValue = map['certificatePassword']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      certificateSource: (() { final guardedValue = map['certificateSource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      certificateStatus: (() { final guardedValue = map['certificateStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      defaultSslBinding: (() { final guardedValue = map['defaultSslBinding']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      expiry: (() { final guardedValue = map['expiry']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       hostName: pulumi.Input.fromValue(map['hostName'] as String),
-      keyVaultCertificateId: (() {
-        final guardedValue = map['keyVaultCertificateId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      keyVaultId: (() {
-        final guardedValue = map['keyVaultId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      negotiateClientCertificate: (() {
-        final guardedValue = map['negotiateClientCertificate'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      sslKeyvaultIdentityClientId: (() {
-        final guardedValue = map['sslKeyvaultIdentityClientId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      subject: (() {
-        final guardedValue = map['subject'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      thumbprint: (() {
-        final guardedValue = map['thumbprint'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      keyVaultCertificateId: (() { final guardedValue = map['keyVaultCertificateId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyVaultId: (() { final guardedValue = map['keyVaultId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      negotiateClientCertificate: (() { final guardedValue = map['negotiateClientCertificate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      sslKeyvaultIdentityClientId: (() { final guardedValue = map['sslKeyvaultIdentityClientId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subject: (() { final guardedValue = map['subject']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      thumbprint: (() { final guardedValue = map['thumbprint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

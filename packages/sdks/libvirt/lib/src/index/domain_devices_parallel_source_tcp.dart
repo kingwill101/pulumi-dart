@@ -6,16 +6,12 @@ import 'domain_devices_parallel_source_tcp_reconnect.dart';
 class DomainDevicesParallelSourceTcp {
   /// Sets the host address for the TCP connection in the random number generator backend.
   final pulumi.Input<String>? host;
-
   /// Specifies the operation mode for TCP in the random number generator backend.
   final pulumi.Input<String>? mode;
-
   /// Configures reconnect settings for the UNIX domain socket in the backend.
   final pulumi.Input<DomainDevicesParallelSourceTcpReconnect>? reconnect;
-
   /// Defines the service attribute for the TCP connection in the random number generator backend.
   final pulumi.Input<String>? service;
-
   /// Enables or disables TLS encryption for the TCP connection in the backend.
   final pulumi.Input<String>? tls;
 
@@ -37,11 +33,7 @@ class DomainDevicesParallelSourceTcp {
     return <String, dynamic>{
       'host': ?host,
       'mode': ?mode,
-      'reconnect':
-          ?pulumi.Input.mapOptionalInputValue<
-            DomainDevicesParallelSourceTcpReconnect,
-            Map<String, dynamic>
-          >(reconnect, (value) => value.toMap()),
+      'reconnect': ?pulumi.Input.mapOptionalInputValue<DomainDevicesParallelSourceTcpReconnect, Map<String, dynamic>>(reconnect, (value) => value.toMap()),
       'service': ?service,
       'tls': ?tls,
     };
@@ -49,35 +41,12 @@ class DomainDevicesParallelSourceTcp {
 
   factory DomainDevicesParallelSourceTcp.fromMap(Map<String, dynamic> map) {
     return DomainDevicesParallelSourceTcp(
-      host: (() {
-        final guardedValue = map['host'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      mode: (() {
-        final guardedValue = map['mode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      reconnect: (() {
-        final guardedValue = map['reconnect'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          DomainDevicesParallelSourceTcpReconnect.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      service: (() {
-        final guardedValue = map['service'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      tls: (() {
-        final guardedValue = map['tls'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      host: (() { final guardedValue = map['host']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      reconnect: (() { final guardedValue = map['reconnect']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesParallelSourceTcpReconnect.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      service: (() { final guardedValue = map['service']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tls: (() { final guardedValue = map['tls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

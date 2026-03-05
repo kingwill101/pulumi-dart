@@ -518,19 +518,14 @@ import 'backup_instance_postgresql_flexible_server_state.dart';
 class BackupInstancePostgresqlFlexibleServer extends pulumi.CustomResource {
   /// The ID of the Backup Policy.
   late final pulumi.Output<String> backupPolicyId;
-
   /// The location of the source database. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
-
   /// Specifies the name of the Backup Instance for the PostgreSQL Flexible Server. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// The protection state of the Backup Instance PostgreSQL Flexible Server.
   late final pulumi.Output<String> protectionState;
-
   /// The ID of the source server. Changing this forces a new resource to be created.
   late final pulumi.Output<String> serverId;
-
   /// The ID of the Backup Vault within which the PostgreSQL Flexible Server Backup Instance should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> vaultId;
 
@@ -543,11 +538,11 @@ class BackupInstancePostgresqlFlexibleServer extends pulumi.CustomResource {
     BackupInstancePostgresqlFlexibleServerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:dataprotection/backupInstancePostgresqlFlexibleServer:BackupInstancePostgresqlFlexibleServer',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:dataprotection/backupInstancePostgresqlFlexibleServer:BackupInstancePostgresqlFlexibleServer',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     backupPolicyId = registerOutput<String>('backupPolicyId');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -574,11 +569,11 @@ class BackupInstancePostgresqlFlexibleServer extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:dataprotection/backupInstancePostgresqlFlexibleServer:BackupInstancePostgresqlFlexibleServer',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:dataprotection/backupInstancePostgresqlFlexibleServer:BackupInstancePostgresqlFlexibleServer',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     backupPolicyId = registerOutput<String>('backupPolicyId');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

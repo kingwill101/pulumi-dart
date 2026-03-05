@@ -13,20 +13,23 @@ class GetDeviceArgs {
   /// Creates a new [GetDeviceArgs].
   /// [customer] Optional.
   /// [deviceId] Required.
-  GetDeviceArgs({this.customer, required this.deviceId});
+  GetDeviceArgs({
+    this.customer,
+    required this.deviceId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'customer': ?customer, 'deviceId': deviceId};
+    return <String, dynamic>{
+      'customer': ?customer,
+      'deviceId': deviceId,
+    };
   }
 
   factory GetDeviceArgs.fromMap(Map<String, dynamic> map) {
     return GetDeviceArgs(
-      customer: (() {
-        final guardedValue = map['customer'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      customer: (() { final guardedValue = map['customer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deviceId: pulumi.Input.fromValue(map['deviceId'] as String),
     );
   }
 }
+

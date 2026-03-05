@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PrincipalPortfolioAssociationState {
   /// Product Portfolio ID
   final pulumi.Input<String>? portfolioId;
-
   /// RAM entity ID
   final pulumi.Input<String>? principalId;
-
   /// RAM entity type
   final pulumi.Input<String>? principalType;
 
@@ -33,21 +31,10 @@ class PrincipalPortfolioAssociationState {
 
   factory PrincipalPortfolioAssociationState.fromMap(Map<String, dynamic> map) {
     return PrincipalPortfolioAssociationState(
-      portfolioId: (() {
-        final guardedValue = map['portfolioId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      principalId: (() {
-        final guardedValue = map['principalId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      principalType: (() {
-        final guardedValue = map['principalType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      portfolioId: (() { final guardedValue = map['portfolioId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      principalId: (() { final guardedValue = map['principalId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      principalType: (() { final guardedValue = map['principalType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

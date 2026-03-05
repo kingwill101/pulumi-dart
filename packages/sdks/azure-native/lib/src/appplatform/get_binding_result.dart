@@ -7,19 +7,14 @@ import 'system_data_response.dart';
 class GetBindingResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// Fully qualified resource Id for the resource.
   final String id;
-
   /// The name of the resource.
   final String name;
-
   /// Properties of the Binding resource
   final BindingResourcePropertiesResponse properties;
-
   /// Metadata pertaining to creation and last modification of the resource.
   final SystemDataResponse systemData;
-
   /// The type of the resource.
   final String type;
 
@@ -55,13 +50,10 @@ class GetBindingResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      properties: BindingResourcePropertiesResponse.fromMap(
-        (map['properties']! as Map).cast<String, dynamic>(),
-      ),
-      systemData: SystemDataResponse.fromMap(
-        (map['systemData']! as Map).cast<String, dynamic>(),
-      ),
+      properties: BindingResourcePropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
+

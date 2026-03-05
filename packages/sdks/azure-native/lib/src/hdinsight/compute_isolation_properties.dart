@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ComputeIsolationProperties {
   /// The flag indicates whether enable compute isolation or not.
   final pulumi.Input<bool>? enableComputeIsolation;
-
   /// The host sku.
   final pulumi.Input<String>? hostSku;
 
   /// Creates a new [ComputeIsolationProperties].
   /// [enableComputeIsolation] The flag indicates whether enable compute isolation or not.
   /// [hostSku] The host sku.
-  ComputeIsolationProperties({this.enableComputeIsolation, this.hostSku});
+  ComputeIsolationProperties({
+    this.enableComputeIsolation,
+    this.hostSku,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class ComputeIsolationProperties {
 
   factory ComputeIsolationProperties.fromMap(Map<String, dynamic> map) {
     return ComputeIsolationProperties(
-      enableComputeIsolation: (() {
-        final guardedValue = map['enableComputeIsolation'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      hostSku: (() {
-        final guardedValue = map['hostSku'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      enableComputeIsolation: (() { final guardedValue = map['enableComputeIsolation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      hostSku: (() { final guardedValue = map['hostSku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -1,45 +1,34 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getResolverFirewallRuleGroupAssociation.
 class GetResolverFirewallRuleGroupAssociationResult {
   /// The Amazon Resource Name (ARN) of the firewall rule group association.
   final String arn;
-
   /// The date and time that the association was created, in Unix time format and Coordinated Universal Time (UTC).
   final String creationTime;
-
   /// A unique string defined by you to identify the request.
   final String creatorRequestId;
   final String firewallRuleGroupAssociationId;
-
   /// The unique identifier of the firewall rule group.
   final String firewallRuleGroupId;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The owner of the association, used only for associations that are not managed by you.
   final String managedOwnerName;
-
   /// The date and time that the association was last modified, in Unix time format and Coordinated Universal Time (UTC).
   final String modificationTime;
-
   /// If enabled, this setting disallows modification or removal of the association, to help prevent against accidentally altering DNS firewall protections.
   final String mutationProtection;
-
   /// The name of the association.
   final String name;
-
   /// The setting that determines the processing order of the rule group among the rule groups that are associated with a single VPC.
   final int priority;
   final String region;
-
   /// The current status of the association.
   final String status;
-
   /// Additional information about the status of the response, if available.
   final String statusMessage;
-
   /// The unique identifier of the VPC that is associated with the rule group.
   final String vpcId;
 
@@ -97,15 +86,12 @@ class GetResolverFirewallRuleGroupAssociationResult {
     };
   }
 
-  factory GetResolverFirewallRuleGroupAssociationResult.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetResolverFirewallRuleGroupAssociationResult.fromMap(Map<String, dynamic> map) {
     return GetResolverFirewallRuleGroupAssociationResult(
       arn: map['arn'] as String,
       creationTime: map['creationTime'] as String,
       creatorRequestId: map['creatorRequestId'] as String,
-      firewallRuleGroupAssociationId:
-          map['firewallRuleGroupAssociationId'] as String,
+      firewallRuleGroupAssociationId: map['firewallRuleGroupAssociationId'] as String,
       firewallRuleGroupId: map['firewallRuleGroupId'] as String,
       id: map['id'] as String,
       managedOwnerName: map['managedOwnerName'] as String,
@@ -120,3 +106,4 @@ class GetResolverFirewallRuleGroupAssociationResult {
     );
   }
 }
+

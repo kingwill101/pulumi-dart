@@ -127,21 +127,12 @@ class SdkvoiceGlobalSettings extends pulumi.CustomResource {
     SdkvoiceGlobalSettingsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:chime/sdkvoiceGlobalSettings:SdkvoiceGlobalSettings',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    voiceConnector = registerOutput<SdkvoiceGlobalSettingsVoiceConnector>(
-      'voiceConnector',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SdkvoiceGlobalSettingsVoiceConnector.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'aws:chime/sdkvoiceGlobalSettings:SdkvoiceGlobalSettings',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    voiceConnector = registerOutput<SdkvoiceGlobalSettingsVoiceConnector>('voiceConnector', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SdkvoiceGlobalSettingsVoiceConnector.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [SdkvoiceGlobalSettings] resource's state with the given [name] and [id].
@@ -162,20 +153,11 @@ class SdkvoiceGlobalSettings extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:chime/sdkvoiceGlobalSettings:SdkvoiceGlobalSettings',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    voiceConnector = registerOutput<SdkvoiceGlobalSettingsVoiceConnector>(
-      'voiceConnector',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SdkvoiceGlobalSettingsVoiceConnector.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'aws:chime/sdkvoiceGlobalSettings:SdkvoiceGlobalSettings',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    voiceConnector = registerOutput<SdkvoiceGlobalSettingsVoiceConnector>('voiceConnector', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SdkvoiceGlobalSettingsVoiceConnector.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

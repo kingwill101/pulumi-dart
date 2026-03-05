@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudChannelV1ContactInfoResponse {
   /// The customer account contact's display name, formatted as a combination of the customer's first and last name.
   final pulumi.Input<String> displayName;
-
   /// The customer account's contact email. Required for entitlements that create admin.google.com accounts, and serves as the customer's username for those accounts. Use this email to invite Team customers.
   final pulumi.Input<String> email;
-
   /// The customer account contact's first name. Optional for Team customers.
   final pulumi.Input<String> firstName;
-
   /// The customer account contact's last name. Optional for Team customers.
   final pulumi.Input<String> lastName;
-
   /// The customer account's contact phone number.
   final pulumi.Input<String> phone;
-
   /// Optional. The customer account contact's job title.
   final pulumi.Input<String> title;
 
@@ -49,9 +44,7 @@ class GoogleCloudChannelV1ContactInfoResponse {
     };
   }
 
-  factory GoogleCloudChannelV1ContactInfoResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudChannelV1ContactInfoResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudChannelV1ContactInfoResponse(
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       email: pulumi.Input.fromValue(map['email'] as String),
@@ -62,3 +55,4 @@ class GoogleCloudChannelV1ContactInfoResponse {
     );
   }
 }
+

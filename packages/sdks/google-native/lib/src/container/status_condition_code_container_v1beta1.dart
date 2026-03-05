@@ -17,8 +17,7 @@ enum StatusConditionCodeContainerV1beta1 {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown StatusConditionCodeContainerV1beta1 value: $value',
-    );
+    throw ArgumentError('Unknown StatusConditionCodeContainerV1beta1 value: $value');
   }
 }
+

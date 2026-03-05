@@ -6,33 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnvelopeSignatureContaineranalysisV1alpha1 {
   /// A reference id to the key being used for signing
   final pulumi.Input<String>? keyid;
-
   /// The signature itself
   final pulumi.Input<String>? sig;
 
   /// Creates a new [EnvelopeSignatureContaineranalysisV1alpha1].
   /// [keyid] A reference id to the key being used for signing
   /// [sig] The signature itself
-  EnvelopeSignatureContaineranalysisV1alpha1({this.keyid, this.sig});
+  EnvelopeSignatureContaineranalysisV1alpha1({
+    this.keyid,
+    this.sig,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'keyid': ?keyid, 'sig': ?sig};
+    return <String, dynamic>{
+      'keyid': ?keyid,
+      'sig': ?sig,
+    };
   }
 
-  factory EnvelopeSignatureContaineranalysisV1alpha1.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EnvelopeSignatureContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return EnvelopeSignatureContaineranalysisV1alpha1(
-      keyid: (() {
-        final guardedValue = map['keyid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      sig: (() {
-        final guardedValue = map['sig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      keyid: (() { final guardedValue = map['keyid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sig: (() { final guardedValue = map['sig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

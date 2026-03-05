@@ -25,3 +25,4 @@ enum ScriptActivityParameterType {
     throw ArgumentError('Unknown ScriptActivityParameterType value: $value');
   }
 }
+

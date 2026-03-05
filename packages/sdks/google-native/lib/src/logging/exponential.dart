@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Exponential {
   /// Must be greater than 1.
   final pulumi.Input<double>? growthFactor;
-
   /// Must be greater than 0.
   final pulumi.Input<int>? numFiniteBuckets;
-
   /// Must be greater than 0.
   final pulumi.Input<double>? scale;
 
@@ -17,7 +15,11 @@ class Exponential {
   /// [growthFactor] Must be greater than 1.
   /// [numFiniteBuckets] Must be greater than 0.
   /// [scale] Must be greater than 0.
-  Exponential({this.growthFactor, this.numFiniteBuckets, this.scale});
+  Exponential({
+    this.growthFactor,
+    this.numFiniteBuckets,
+    this.scale,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,21 +31,10 @@ class Exponential {
 
   factory Exponential.fromMap(Map<String, dynamic> map) {
     return Exponential(
-      growthFactor: (() {
-        final guardedValue = map['growthFactor'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
-      numFiniteBuckets: (() {
-        final guardedValue = map['numFiniteBuckets'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      scale: (() {
-        final guardedValue = map['scale'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as double);
-      })(),
+      growthFactor: (() { final guardedValue = map['growthFactor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      numFiniteBuckets: (() { final guardedValue = map['numFiniteBuckets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      scale: (() { final guardedValue = map['scale']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
     );
   }
 }
+

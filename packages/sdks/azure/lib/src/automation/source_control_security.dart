@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SourceControlSecurity {
   /// The refresh token of specified rpeo.
   final pulumi.Input<String>? refreshToken;
-
   /// The access token of specified repo.
   final pulumi.Input<String> token;
-
   /// Specify the token type, possible values are `PersonalAccessToken` and `Oauth`.
   final pulumi.Input<String> tokenType;
 
@@ -32,13 +30,10 @@ class SourceControlSecurity {
 
   factory SourceControlSecurity.fromMap(Map<String, dynamic> map) {
     return SourceControlSecurity(
-      refreshToken: (() {
-        final guardedValue = map['refreshToken'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      refreshToken: (() { final guardedValue = map['refreshToken']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       token: pulumi.Input.fromValue(map['token'] as String),
       tokenType: pulumi.Input.fromValue(map['tokenType'] as String),
     );
   }
 }
+

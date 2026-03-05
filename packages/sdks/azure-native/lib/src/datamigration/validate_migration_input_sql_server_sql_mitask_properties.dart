@@ -7,10 +7,8 @@ import 'validate_migration_input_sql_server_sql_mitask_input.dart';
 class ValidateMigrationInputSqlServerSqlMITaskProperties {
   /// Key value pairs of client data to attach meta data information to task
   final pulumi.Input<Map<String, String>>? clientData;
-
   /// Task input
   final pulumi.Input<ValidateMigrationInputSqlServerSqlMITaskInput>? input;
-
   /// Task type.
   /// Expected value is 'ValidateMigrationInput.SqlServer.AzureSqlDbMI'.
   final pulumi.Input<String> taskType;
@@ -28,36 +26,17 @@ class ValidateMigrationInputSqlServerSqlMITaskProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'clientData': ?clientData,
-      'input':
-          ?pulumi.Input.mapOptionalInputValue<
-            ValidateMigrationInputSqlServerSqlMITaskInput,
-            Map<String, dynamic>
-          >(input, (value) => value.toMap()),
+      'input': ?pulumi.Input.mapOptionalInputValue<ValidateMigrationInputSqlServerSqlMITaskInput, Map<String, dynamic>>(input, (value) => value.toMap()),
       'taskType': taskType,
     };
   }
 
-  factory ValidateMigrationInputSqlServerSqlMITaskProperties.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory ValidateMigrationInputSqlServerSqlMITaskProperties.fromMap(Map<String, dynamic> map) {
     return ValidateMigrationInputSqlServerSqlMITaskProperties(
-      clientData: (() {
-        final guardedValue = map['clientData'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      input: (() {
-        final guardedValue = map['input'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ValidateMigrationInputSqlServerSqlMITaskInput.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      clientData: (() { final guardedValue = map['clientData']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      input: (() { final guardedValue = map['input']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ValidateMigrationInputSqlServerSqlMITaskInput.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       taskType: pulumi.Input.fromValue(map['taskType'] as String),
     );
   }
 }
+

@@ -14,3 +14,4 @@ enum Frequency {
     throw ArgumentError('Unknown Frequency value: $value');
   }
 }
+

@@ -28,12 +28,9 @@ class GetAcceleratorAttribute {
   factory GetAcceleratorAttribute.fromMap(Map<String, dynamic> map) {
     return GetAcceleratorAttribute(
       flowLogsEnabled: pulumi.Input.fromValue(map['flowLogsEnabled'] as bool),
-      flowLogsS3Bucket: pulumi.Input.fromValue(
-        map['flowLogsS3Bucket'] as String,
-      ),
-      flowLogsS3Prefix: pulumi.Input.fromValue(
-        map['flowLogsS3Prefix'] as String,
-      ),
+      flowLogsS3Bucket: pulumi.Input.fromValue(map['flowLogsS3Bucket'] as String),
+      flowLogsS3Prefix: pulumi.Input.fromValue(map['flowLogsS3Prefix'] as String),
     );
   }
 }
+

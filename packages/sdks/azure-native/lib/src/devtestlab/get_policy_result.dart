@@ -1,49 +1,36 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getPolicy.
 class GetPolicyResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// The creation date of the policy.
   final String createdDate;
-
   /// The description of the policy.
   final String? description;
-
   /// The evaluator type of the policy (i.e. AllowedValuesPolicy, MaxValuePolicy).
   final String? evaluatorType;
-
   /// The fact data of the policy.
   final String? factData;
-
   /// The fact name of the policy (e.g. LabVmCount, LabVmSize, MaxVmsAllowedPerLab, etc.
   final String? factName;
-
   /// The identifier of the resource.
   final String id;
-
   /// The location of the resource.
   final String? location;
-
   /// The name of the resource.
   final String name;
-
   /// The provisioning status of the resource.
   final String provisioningState;
-
   /// The status of the policy.
   final String? status;
-
   /// The tags of the resource.
   final Map<String, String>? tags;
-
   /// The threshold of the policy (i.e. a number for MaxValuePolicy, and a JSON array of values for AllowedValuesPolicy).
   final String? threshold;
-
   /// The type of the resource.
   final String type;
-
   /// The unique immutable identifier of a resource (Guid).
   final String uniqueIdentifier;
 
@@ -105,51 +92,20 @@ class GetPolicyResult {
     return GetPolicyResult(
       azureApiVersion: map['azureApiVersion'] as String,
       createdDate: map['createdDate'] as String,
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      evaluatorType: (() {
-        final guardedValue = map['evaluatorType'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      factData: (() {
-        final guardedValue = map['factData'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      factName: (() {
-        final guardedValue = map['factName'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      evaluatorType: (() { final guardedValue = map['evaluatorType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      factData: (() { final guardedValue = map['factData']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      factName: (() { final guardedValue = map['factName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
-      threshold: (() {
-        final guardedValue = map['threshold'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      threshold: (() { final guardedValue = map['threshold']; if (guardedValue == null) return null; return guardedValue as String; })(),
       type: map['type'] as String,
       uniqueIdentifier: map['uniqueIdentifier'] as String,
     );
   }
 }
+

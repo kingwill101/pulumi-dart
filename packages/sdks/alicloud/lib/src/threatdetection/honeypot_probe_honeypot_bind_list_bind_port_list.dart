@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HoneypotProbeHoneypotBindListBindPortList {
   /// Whether to bind the port.
   final pulumi.Input<bool>? bindPort;
-
   /// End port.
   final pulumi.Input<int>? endPort;
-
   /// Whether the port is fixed.
   final pulumi.Input<bool>? fixed;
-
   /// Start port.
   final pulumi.Input<int>? startPort;
-
   /// Destination port.
   final pulumi.Input<int>? targetPort;
 
@@ -42,35 +38,14 @@ class HoneypotProbeHoneypotBindListBindPortList {
     };
   }
 
-  factory HoneypotProbeHoneypotBindListBindPortList.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory HoneypotProbeHoneypotBindListBindPortList.fromMap(Map<String, dynamic> map) {
     return HoneypotProbeHoneypotBindListBindPortList(
-      bindPort: (() {
-        final guardedValue = map['bindPort'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      endPort: (() {
-        final guardedValue = map['endPort'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      fixed: (() {
-        final guardedValue = map['fixed'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      startPort: (() {
-        final guardedValue = map['startPort'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      targetPort: (() {
-        final guardedValue = map['targetPort'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      bindPort: (() { final guardedValue = map['bindPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      endPort: (() { final guardedValue = map['endPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      fixed: (() { final guardedValue = map['fixed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      startPort: (() { final guardedValue = map['startPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      targetPort: (() { final guardedValue = map['targetPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

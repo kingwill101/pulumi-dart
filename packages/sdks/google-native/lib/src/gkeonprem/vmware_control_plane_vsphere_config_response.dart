@@ -6,7 +6,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VmwareControlPlaneVsphereConfigResponse {
   /// The Vsphere datastore used by the control plane Node.
   final pulumi.Input<String> datastore;
-
   /// The Vsphere storage policy used by the control plane Node.
   final pulumi.Input<String> storagePolicyName;
 
@@ -25,14 +24,11 @@ class VmwareControlPlaneVsphereConfigResponse {
     };
   }
 
-  factory VmwareControlPlaneVsphereConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory VmwareControlPlaneVsphereConfigResponse.fromMap(Map<String, dynamic> map) {
     return VmwareControlPlaneVsphereConfigResponse(
       datastore: pulumi.Input.fromValue(map['datastore'] as String),
-      storagePolicyName: pulumi.Input.fromValue(
-        map['storagePolicyName'] as String,
-      ),
+      storagePolicyName: pulumi.Input.fromValue(map['storagePolicyName'] as String),
     );
   }
 }
+

@@ -13,14 +13,15 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name};
+    return <String, dynamic>{
+      'name': name,
+    };
   }
 
-  factory OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget.fromMap(Map<String, dynamic> map) {
     return OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget(
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
+

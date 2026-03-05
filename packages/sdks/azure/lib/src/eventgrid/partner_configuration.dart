@@ -203,13 +203,10 @@ import 'partner_configuration_state.dart';
 class PartnerConfiguration extends pulumi.CustomResource {
   /// Time used to validate the authorization expiration time for each authorized partner. Defaults to `7`.
   late final pulumi.Output<int?> defaultMaximumExpirationTimeInDays;
-
   /// One or more `partner_authorization` blocks as defined below.
   late final pulumi.Output<List<Map<String, dynamic>>?> partnerAuthorizations;
-
   /// The name of the Resource Group where the Event Grid Partner Configuration should exist. Changing this forces a new Event Grid Partner Configuration to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags which should be assigned to the Event Grid Partner Configuration.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -222,17 +219,13 @@ class PartnerConfiguration extends pulumi.CustomResource {
     PartnerConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:eventgrid/partnerConfiguration:PartnerConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    defaultMaximumExpirationTimeInDays = registerOutput<int?>(
-      'defaultMaximumExpirationTimeInDays',
-    );
-    partnerAuthorizations = registerOutput<List<Map<String, dynamic>>?>(
-      'partnerAuthorizations',
-    );
+          'azure:eventgrid/partnerConfiguration:PartnerConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    defaultMaximumExpirationTimeInDays = registerOutput<int?>('defaultMaximumExpirationTimeInDays');
+    partnerAuthorizations = registerOutput<List<Map<String, dynamic>>?>('partnerAuthorizations');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     tags = registerOutput<Map<String, String>?>('tags');
   }
@@ -255,17 +248,13 @@ class PartnerConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:eventgrid/partnerConfiguration:PartnerConfiguration',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    defaultMaximumExpirationTimeInDays = registerOutput<int?>(
-      'defaultMaximumExpirationTimeInDays',
-    );
-    partnerAuthorizations = registerOutput<List<Map<String, dynamic>>?>(
-      'partnerAuthorizations',
-    );
+          'azure:eventgrid/partnerConfiguration:PartnerConfiguration',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    defaultMaximumExpirationTimeInDays = registerOutput<int?>('defaultMaximumExpirationTimeInDays');
+    partnerAuthorizations = registerOutput<List<Map<String, dynamic>>?>('partnerAuthorizations');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     tags = registerOutput<Map<String, String>?>('tags');
   }

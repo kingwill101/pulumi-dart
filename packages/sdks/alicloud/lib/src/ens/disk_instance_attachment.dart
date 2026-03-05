@@ -302,10 +302,8 @@ import 'disk_instance_attachment_state.dart';
 class DiskInstanceAttachment extends pulumi.CustomResource {
   /// Whether the cloud disk to be mounted is released with the instance  Value: true: When the instance is released, the cloud disk is released together with the instance. false: When the instance is released, the cloud disk is retained and is not released together with the instance. Empty means false by default.
   late final pulumi.Output<String?> deleteWithInstance;
-
   /// The ID of the cloud disk to be mounted. The Cloud Disk (DiskId) and the instance (InstanceId) must be on the same node.
   late final pulumi.Output<String> diskId;
-
   /// Instance ID.
   late final pulumi.Output<String> instanceId;
 
@@ -318,11 +316,11 @@ class DiskInstanceAttachment extends pulumi.CustomResource {
     DiskInstanceAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ens/diskInstanceAttachment:DiskInstanceAttachment',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ens/diskInstanceAttachment:DiskInstanceAttachment',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     deleteWithInstance = registerOutput<String?>('deleteWithInstance');
     diskId = registerOutput<String>('diskId');
     instanceId = registerOutput<String>('instanceId');
@@ -346,11 +344,11 @@ class DiskInstanceAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:ens/diskInstanceAttachment:DiskInstanceAttachment',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:ens/diskInstanceAttachment:DiskInstanceAttachment',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     deleteWithInstance = registerOutput<String?>('deleteWithInstance');
     diskId = registerOutput<String>('diskId');
     instanceId = registerOutput<String>('instanceId');

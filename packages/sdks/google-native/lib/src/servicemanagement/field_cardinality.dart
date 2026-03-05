@@ -17,3 +17,4 @@ enum FieldCardinality {
     throw ArgumentError('Unknown FieldCardinality value: $value');
   }
 }
+

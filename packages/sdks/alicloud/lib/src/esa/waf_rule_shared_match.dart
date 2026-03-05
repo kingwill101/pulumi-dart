@@ -12,22 +12,15 @@ class WafRuleSharedMatch {
   /// [criterias] Optional.
   /// [logic] Optional.
   /// [matchType] Optional.
-  WafRuleSharedMatch({this.criterias, this.logic, this.matchType});
+  WafRuleSharedMatch({
+    this.criterias,
+    this.logic,
+    this.matchType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'criterias':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<WafRuleSharedMatchCriteria>,
-            List<Map<String, dynamic>>
-          >(
-            criterias,
-            (value) =>
-                pulumi.Input.encodeList<
-                  WafRuleSharedMatchCriteria,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'criterias': ?pulumi.Input.mapOptionalInputValue<List<WafRuleSharedMatchCriteria>, List<Map<String, dynamic>>>(criterias, (value) => pulumi.Input.encodeList<WafRuleSharedMatchCriteria, Map<String, dynamic>>(value, (value) => value.toMap())),
       'logic': ?logic,
       'matchType': ?matchType,
     };
@@ -35,28 +28,10 @@ class WafRuleSharedMatch {
 
   factory WafRuleSharedMatch.fromMap(Map<String, dynamic> map) {
     return WafRuleSharedMatch(
-      criterias: (() {
-        final guardedValue = map['criterias'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<WafRuleSharedMatchCriteria>(
-            guardedValue,
-            (value) => WafRuleSharedMatchCriteria.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      logic: (() {
-        final guardedValue = map['logic'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      matchType: (() {
-        final guardedValue = map['matchType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      criterias: (() { final guardedValue = map['criterias']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WafRuleSharedMatchCriteria>(guardedValue, (value) => WafRuleSharedMatchCriteria.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      logic: (() { final guardedValue = map['logic']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      matchType: (() { final guardedValue = map['matchType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

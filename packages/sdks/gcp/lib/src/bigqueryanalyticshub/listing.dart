@@ -2527,79 +2527,56 @@ import 'listing_state.dart';
 class Listing extends pulumi.CustomResource {
   /// If true, the listing is only available to get the resource metadata. Listing is non subscribable.
   late final pulumi.Output<bool?> allowOnlyMetadataSharing;
-
   /// Shared dataset i.e. BigQuery dataset source.
   /// Structure is documented below.
   late final pulumi.Output<ListingBigqueryDataset?> bigqueryDataset;
-
   /// Categories of the listing. Up to two categories are allowed.
   late final pulumi.Output<List<String>?> categories;
-
   /// Commercial info contains the information about the commercial data products associated with the listing.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> commercialInfos;
-
   /// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
   late final pulumi.Output<String> dataExchangeId;
-
   /// Details of the data provider who owns the source data.
   /// Structure is documented below.
   late final pulumi.Output<ListingDataProvider?> dataProvider;
-
   /// If the listing is commercial then this field must be set to true, otherwise a failure is thrown. This acts as a safety guard to avoid deleting commercial listings accidentally.
   late final pulumi.Output<bool?> deleteCommercial;
-
   /// Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
   late final pulumi.Output<String?> description;
-
   /// Specifies the type of discovery on the discovery page. Cannot be set for a restricted listing. Note that this does not control the visibility of the exchange/listing which is defined by IAM permission.
   /// Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
   late final pulumi.Output<String> discoveryType;
-
   /// Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
   late final pulumi.Output<String> displayName;
-
   /// Documentation describing the listing.
   late final pulumi.Output<String?> documentation;
-
   /// Base64 encoded image representing the listing.
   late final pulumi.Output<String?> icon;
-
   /// The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
   late final pulumi.Output<String> listingId;
-
   /// The name of the location this data exchange listing.
   late final pulumi.Output<String> location;
-
   /// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user. Once enabled, this setting cannot be turned off.
   late final pulumi.Output<bool?> logLinkedDatasetQueryUserEmail;
-
   /// The resource name of the listing. e.g. "projects/myproject/locations/US/dataExchanges/123/listings/456"
   late final pulumi.Output<String> name;
-
   /// Email or URL of the primary point of contact of the listing.
   late final pulumi.Output<String?> primaryContact;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Details of the publisher who owns the listing and who can share the source data.
   /// Structure is documented below.
   late final pulumi.Output<ListingPublisher?> publisher;
-
   /// Pub/Sub topic source.
   /// Structure is documented below.
   late final pulumi.Output<ListingPubsubTopic?> pubsubTopic;
-
   /// Email or URL of the request access of the listing. Subscribers can use this reference to request access.
   late final pulumi.Output<String?> requestAccess;
-
   /// If set, restricted export configuration will be propagated and enforced on the linked dataset.
   /// Structure is documented below.
-  late final pulumi.Output<ListingRestrictedExportConfig?>
-  restrictedExportConfig;
-
+  late final pulumi.Output<ListingRestrictedExportConfig?> restrictedExportConfig;
   /// Current state of the listing.
   late final pulumi.Output<String> state;
 
@@ -2612,39 +2589,17 @@ class Listing extends pulumi.CustomResource {
     ListingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:bigqueryanalyticshub/listing:Listing',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    allowOnlyMetadataSharing = registerOutput<bool?>(
-      'allowOnlyMetadataSharing',
-    );
-    bigqueryDataset = registerOutput<ListingBigqueryDataset?>(
-      'bigqueryDataset',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ListingBigqueryDataset.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:bigqueryanalyticshub/listing:Listing',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    allowOnlyMetadataSharing = registerOutput<bool?>('allowOnlyMetadataSharing');
+    bigqueryDataset = registerOutput<ListingBigqueryDataset?>('bigqueryDataset', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ListingBigqueryDataset.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     categories = registerOutput<List<String>?>('categories');
-    commercialInfos = registerOutput<List<Map<String, dynamic>>>(
-      'commercialInfos',
-    );
+    commercialInfos = registerOutput<List<Map<String, dynamic>>>('commercialInfos');
     dataExchangeId = registerOutput<String>('dataExchangeId');
-    dataProvider = registerOutput<ListingDataProvider?>(
-      'dataProvider',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ListingDataProvider.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    dataProvider = registerOutput<ListingDataProvider?>('dataProvider', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ListingDataProvider.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deleteCommercial = registerOutput<bool?>('deleteCommercial');
     description = registerOutput<String?>('description');
     discoveryType = registerOutput<String>('discoveryType');
@@ -2653,43 +2608,14 @@ class Listing extends pulumi.CustomResource {
     icon = registerOutput<String?>('icon');
     listingId = registerOutput<String>('listingId');
     location = registerOutput<String>('location');
-    logLinkedDatasetQueryUserEmail = registerOutput<bool?>(
-      'logLinkedDatasetQueryUserEmail',
-    );
+    logLinkedDatasetQueryUserEmail = registerOutput<bool?>('logLinkedDatasetQueryUserEmail');
     this.name = registerOutput<String>('name');
     primaryContact = registerOutput<String?>('primaryContact');
     project = registerOutput<String>('project');
-    publisher = registerOutput<ListingPublisher?>(
-      'publisher',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ListingPublisher.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    pubsubTopic = registerOutput<ListingPubsubTopic?>(
-      'pubsubTopic',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ListingPubsubTopic.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    publisher = registerOutput<ListingPublisher?>('publisher', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ListingPublisher.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    pubsubTopic = registerOutput<ListingPubsubTopic?>('pubsubTopic', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ListingPubsubTopic.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     requestAccess = registerOutput<String?>('requestAccess');
-    restrictedExportConfig = registerOutput<ListingRestrictedExportConfig?>(
-      'restrictedExportConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ListingRestrictedExportConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    restrictedExportConfig = registerOutput<ListingRestrictedExportConfig?>('restrictedExportConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ListingRestrictedExportConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     state = registerOutput<String>('state');
   }
 
@@ -2711,39 +2637,17 @@ class Listing extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:bigqueryanalyticshub/listing:Listing',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    allowOnlyMetadataSharing = registerOutput<bool?>(
-      'allowOnlyMetadataSharing',
-    );
-    bigqueryDataset = registerOutput<ListingBigqueryDataset?>(
-      'bigqueryDataset',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ListingBigqueryDataset.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:bigqueryanalyticshub/listing:Listing',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    allowOnlyMetadataSharing = registerOutput<bool?>('allowOnlyMetadataSharing');
+    bigqueryDataset = registerOutput<ListingBigqueryDataset?>('bigqueryDataset', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ListingBigqueryDataset.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     categories = registerOutput<List<String>?>('categories');
-    commercialInfos = registerOutput<List<Map<String, dynamic>>>(
-      'commercialInfos',
-    );
+    commercialInfos = registerOutput<List<Map<String, dynamic>>>('commercialInfos');
     dataExchangeId = registerOutput<String>('dataExchangeId');
-    dataProvider = registerOutput<ListingDataProvider?>(
-      'dataProvider',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ListingDataProvider.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    dataProvider = registerOutput<ListingDataProvider?>('dataProvider', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ListingDataProvider.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deleteCommercial = registerOutput<bool?>('deleteCommercial');
     description = registerOutput<String?>('description');
     discoveryType = registerOutput<String>('discoveryType');
@@ -2752,43 +2656,14 @@ class Listing extends pulumi.CustomResource {
     icon = registerOutput<String?>('icon');
     listingId = registerOutput<String>('listingId');
     location = registerOutput<String>('location');
-    logLinkedDatasetQueryUserEmail = registerOutput<bool?>(
-      'logLinkedDatasetQueryUserEmail',
-    );
+    logLinkedDatasetQueryUserEmail = registerOutput<bool?>('logLinkedDatasetQueryUserEmail');
     this.name = registerOutput<String>('name');
     primaryContact = registerOutput<String?>('primaryContact');
     project = registerOutput<String>('project');
-    publisher = registerOutput<ListingPublisher?>(
-      'publisher',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ListingPublisher.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    pubsubTopic = registerOutput<ListingPubsubTopic?>(
-      'pubsubTopic',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ListingPubsubTopic.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    publisher = registerOutput<ListingPublisher?>('publisher', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ListingPublisher.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    pubsubTopic = registerOutput<ListingPubsubTopic?>('pubsubTopic', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ListingPubsubTopic.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     requestAccess = registerOutput<String?>('requestAccess');
-    restrictedExportConfig = registerOutput<ListingRestrictedExportConfig?>(
-      'restrictedExportConfig',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ListingRestrictedExportConfig.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    restrictedExportConfig = registerOutput<ListingRestrictedExportConfig?>('restrictedExportConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ListingRestrictedExportConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.state = registerOutput<String>('state');
   }
 }

@@ -14,8 +14,7 @@ enum AdvancedDatapathObservabilityConfigRelayMode {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown AdvancedDatapathObservabilityConfigRelayMode value: $value',
-    );
+    throw ArgumentError('Unknown AdvancedDatapathObservabilityConfigRelayMode value: $value');
   }
 }
+

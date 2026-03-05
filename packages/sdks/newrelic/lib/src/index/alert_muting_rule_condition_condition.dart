@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AlertMutingRuleConditionCondition {
   /// The attribute on an incident.
   final pulumi.Input<String> attribute;
-
   /// The operator used to compare the attribute's value with the supplied value(s).
   final pulumi.Input<String> operator;
-
   /// The value(s) to compare against the attribute's value.
   final pulumi.Input<List<String>> values;
 
@@ -38,3 +36,4 @@ class AlertMutingRuleConditionCondition {
     );
   }
 }
+

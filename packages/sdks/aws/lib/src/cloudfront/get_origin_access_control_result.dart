@@ -1,26 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getOriginAccessControl.
 class GetOriginAccessControlResult {
   /// The origin access control ARN.
   final String arn;
-
   /// A description of the origin access control.
   final String description;
-
   /// Current version of the origin access control's information. For example: `E2QWRUHAPOMQZL`.
   final String etag;
   final String id;
-
   /// A name to identify the origin access control.
   final String name;
-
   /// The type of origin that this origin access control is for.
   final String originAccessControlOriginType;
-
   /// Specifies which requests CloudFront signs.
   final String signingBehavior;
-
   /// The signing protocol of the origin access control, which determines how CloudFront signs (authenticates) requests.
   final String signingProtocol;
 
@@ -64,10 +59,10 @@ class GetOriginAccessControlResult {
       etag: map['etag'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      originAccessControlOriginType:
-          map['originAccessControlOriginType'] as String,
+      originAccessControlOriginType: map['originAccessControlOriginType'] as String,
       signingBehavior: map['signingBehavior'] as String,
       signingProtocol: map['signingProtocol'] as String,
     );
   }
 }
+

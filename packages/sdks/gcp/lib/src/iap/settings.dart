@@ -561,11 +561,9 @@ class Settings extends pulumi.CustomResource {
   /// Top level wrapper for all access related setting in IAP.
   /// Structure is documented below.
   late final pulumi.Output<SettingsAccessSettings?> accessSettings;
-
   /// Top level wrapper for all application related settings in IAP.
   /// Structure is documented below.
   late final pulumi.Output<SettingsApplicationSettings?> applicationSettings;
-
   /// The resource name of the IAP protected resource. Name can have below resources:
   /// * organizations/{organization_id}
   /// * folders/{folder_id}
@@ -589,31 +587,13 @@ class Settings extends pulumi.CustomResource {
     SettingsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:iap/settings:Settings',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    accessSettings = registerOutput<SettingsAccessSettings?>(
-      'accessSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SettingsAccessSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    applicationSettings = registerOutput<SettingsApplicationSettings?>(
-      'applicationSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SettingsApplicationSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:iap/settings:Settings',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    accessSettings = registerOutput<SettingsAccessSettings?>('accessSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SettingsAccessSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    applicationSettings = registerOutput<SettingsApplicationSettings?>('applicationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SettingsApplicationSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
   }
 
@@ -635,31 +615,13 @@ class Settings extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:iap/settings:Settings',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
-    accessSettings = registerOutput<SettingsAccessSettings?>(
-      'accessSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SettingsAccessSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    applicationSettings = registerOutput<SettingsApplicationSettings?>(
-      'applicationSettings',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SettingsApplicationSettings.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+          'gcp:iap/settings:Settings',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    accessSettings = registerOutput<SettingsAccessSettings?>('accessSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SettingsAccessSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    applicationSettings = registerOutput<SettingsApplicationSettings?>('applicationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SettingsApplicationSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
   }
 }

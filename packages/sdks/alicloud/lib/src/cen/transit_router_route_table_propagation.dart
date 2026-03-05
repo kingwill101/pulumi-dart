@@ -494,13 +494,10 @@ class TransitRouterRouteTablePropagation extends pulumi.CustomResource {
   ///
   /// &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
   late final pulumi.Output<bool?> dryRun;
-
   /// The associating status of the network.
   late final pulumi.Output<String> status;
-
   /// The ID the transit router attachment.
   late final pulumi.Output<String> transitRouterAttachmentId;
-
   /// The ID of the transit router route table.
   late final pulumi.Output<String> transitRouterRouteTableId;
 
@@ -513,19 +510,15 @@ class TransitRouterRouteTablePropagation extends pulumi.CustomResource {
     TransitRouterRouteTablePropagationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cen/transitRouterRouteTablePropagation:TransitRouterRouteTablePropagation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cen/transitRouterRouteTablePropagation:TransitRouterRouteTablePropagation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dryRun = registerOutput<bool?>('dryRun');
     status = registerOutput<String>('status');
-    transitRouterAttachmentId = registerOutput<String>(
-      'transitRouterAttachmentId',
-    );
-    transitRouterRouteTableId = registerOutput<String>(
-      'transitRouterRouteTableId',
-    );
+    transitRouterAttachmentId = registerOutput<String>('transitRouterAttachmentId');
+    transitRouterRouteTableId = registerOutput<String>('transitRouterRouteTableId');
   }
 
   /// Gets an existing [TransitRouterRouteTablePropagation] resource's state with the given [name] and [id].
@@ -546,18 +539,14 @@ class TransitRouterRouteTablePropagation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cen/transitRouterRouteTablePropagation:TransitRouterRouteTablePropagation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cen/transitRouterRouteTablePropagation:TransitRouterRouteTablePropagation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dryRun = registerOutput<bool?>('dryRun');
     status = registerOutput<String>('status');
-    transitRouterAttachmentId = registerOutput<String>(
-      'transitRouterAttachmentId',
-    );
-    transitRouterRouteTableId = registerOutput<String>(
-      'transitRouterRouteTableId',
-    );
+    transitRouterAttachmentId = registerOutput<String>('transitRouterAttachmentId');
+    transitRouterRouteTableId = registerOutput<String>('transitRouterRouteTableId');
   }
 }

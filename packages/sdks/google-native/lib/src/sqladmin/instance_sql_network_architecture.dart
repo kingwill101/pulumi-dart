@@ -15,3 +15,4 @@ enum InstanceSqlNetworkArchitecture {
     throw ArgumentError('Unknown InstanceSqlNetworkArchitecture value: $value');
   }
 }
+

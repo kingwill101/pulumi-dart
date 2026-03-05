@@ -1,19 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getNetworkInterfaceStatus.
 class GetNetworkInterfaceStatusResult {
   /// The interface administrative state.
   final String administrativeState;
-
   /// Connected to ARM resource or external interface
   final String? connectedTo;
-
   /// The interface operational status.
   final String? operationalStatus;
-
   /// The physical status.
   final String? phyStatus;
-
   /// The interface transceiver type. Example: up or down
   final String? transceiverStatus;
 
@@ -44,26 +41,11 @@ class GetNetworkInterfaceStatusResult {
   factory GetNetworkInterfaceStatusResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkInterfaceStatusResult(
       administrativeState: map['administrativeState'] as String,
-      connectedTo: (() {
-        final guardedValue = map['connectedTo'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      operationalStatus: (() {
-        final guardedValue = map['operationalStatus'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      phyStatus: (() {
-        final guardedValue = map['phyStatus'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      transceiverStatus: (() {
-        final guardedValue = map['transceiverStatus'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      connectedTo: (() { final guardedValue = map['connectedTo']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      operationalStatus: (() { final guardedValue = map['operationalStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      phyStatus: (() { final guardedValue = map['phyStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      transceiverStatus: (() { final guardedValue = map['transceiverStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

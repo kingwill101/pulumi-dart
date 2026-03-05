@@ -10,10 +10,8 @@ import 'job_target_group_job_target.dart';
 class JobTargetGroupArgs {
   /// The ID of the Elastic Job Agent. Changing this forces a new Job Target Group to be created.
   final pulumi.Input<String> jobAgentId;
-
   /// One or more `job_target` blocks as defined below.
   final pulumi.Input<List<JobTargetGroupJobTarget>>? jobTargets;
-
   /// The name which should be used for this Job Target Group. Changing this forces a new Job Target Group to be created.
   final pulumi.Input<String>? name;
 
@@ -21,23 +19,16 @@ class JobTargetGroupArgs {
   /// [jobAgentId] The ID of the Elastic Job Agent. Changing this forces a new Job Target Group to be created.
   /// [jobTargets] One or more `job_target` blocks as defined below.
   /// [name] The name which should be used for this Job Target Group. Changing this forces a new Job Target Group to be created.
-  JobTargetGroupArgs({required this.jobAgentId, this.jobTargets, this.name});
+  JobTargetGroupArgs({
+    required this.jobAgentId,
+    this.jobTargets,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'jobAgentId': jobAgentId,
-      'jobTargets':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<JobTargetGroupJobTarget>,
-            List<Map<String, dynamic>>
-          >(
-            jobTargets,
-            (value) =>
-                pulumi.Input.encodeList<
-                  JobTargetGroupJobTarget,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'jobTargets': ?pulumi.Input.mapOptionalInputValue<List<JobTargetGroupJobTarget>, List<Map<String, dynamic>>>(jobTargets, (value) => pulumi.Input.encodeList<JobTargetGroupJobTarget, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': ?name,
     };
   }
@@ -45,23 +36,9 @@ class JobTargetGroupArgs {
   factory JobTargetGroupArgs.fromMap(Map<String, dynamic> map) {
     return JobTargetGroupArgs(
       jobAgentId: pulumi.Input.fromValue(map['jobAgentId'] as String),
-      jobTargets: (() {
-        final guardedValue = map['jobTargets'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<JobTargetGroupJobTarget>(
-            guardedValue,
-            (value) => JobTargetGroupJobTarget.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      jobTargets: (() { final guardedValue = map['jobTargets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<JobTargetGroupJobTarget>(guardedValue, (value) => JobTargetGroupJobTarget.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

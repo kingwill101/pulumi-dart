@@ -10,25 +10,18 @@ import 'extended_location.dart';
 class MetricsConfigurationArgs {
   /// The name of the cluster.
   final pulumi.Input<String> clusterName;
-
   /// The interval in minutes by which metrics will be collected.
   final pulumi.Input<double> collectionInterval;
-
   /// The list of metric names that have been chosen to be enabled in addition to the core set of enabled metrics.
   final pulumi.Input<List<String>>? enabledMetrics;
-
   /// The extended location of the cluster associated with the resource.
   final pulumi.Input<ExtendedLocation> extendedLocation;
-
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
-
   /// The name of the metrics configuration for the cluster.
   final pulumi.Input<String>? metricsConfigurationName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -57,11 +50,7 @@ class MetricsConfigurationArgs {
       'clusterName': clusterName,
       'collectionInterval': collectionInterval,
       'enabledMetrics': ?enabledMetrics,
-      'extendedLocation':
-          pulumi.Input.mapInputValue<ExtendedLocation, Map<String, dynamic>>(
-            extendedLocation,
-            (value) => value.toMap(),
-          ),
+      'extendedLocation': pulumi.Input.mapInputValue<ExtendedLocation, Map<String, dynamic>>(extendedLocation, (value) => value.toMap()),
       'location': ?location,
       'metricsConfigurationName': ?metricsConfigurationName,
       'resourceGroupName': resourceGroupName,
@@ -72,39 +61,14 @@ class MetricsConfigurationArgs {
   factory MetricsConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return MetricsConfigurationArgs(
       clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
-      collectionInterval: pulumi.Input.fromValue(
-        map['collectionInterval'] as double,
-      ),
-      enabledMetrics: (() {
-        final guardedValue = map['enabledMetrics'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      extendedLocation: pulumi.Input.fromValue(
-        ExtendedLocation.fromMap(
-          (map['extendedLocation']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      metricsConfigurationName: (() {
-        final guardedValue = map['metricsConfigurationName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      collectionInterval: pulumi.Input.fromValue(map['collectionInterval'] as double),
+      enabledMetrics: (() { final guardedValue = map['enabledMetrics']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      extendedLocation: pulumi.Input.fromValue(ExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      metricsConfigurationName: (() { final guardedValue = map['metricsConfigurationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

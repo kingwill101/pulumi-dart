@@ -5,10 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCAARecordRecord {
   /// Extensible CAA flags, currently only 1 is implemented to set the issuer critical flag.
   final pulumi.Input<int> flags;
-
   /// A property tag, options are `issue`, `issuewild`, `iodef`, and `contactemail`.
   final pulumi.Input<String> tag;
-
   /// A property value such as a registrar domain.
   final pulumi.Input<String> value;
 
@@ -23,7 +21,11 @@ class GetCAARecordRecord {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'flags': flags, 'tag': tag, 'value': value};
+    return <String, dynamic>{
+      'flags': flags,
+      'tag': tag,
+      'value': value,
+    };
   }
 
   factory GetCAARecordRecord.fromMap(Map<String, dynamic> map) {
@@ -34,3 +36,4 @@ class GetCAARecordRecord {
     );
   }
 }
+

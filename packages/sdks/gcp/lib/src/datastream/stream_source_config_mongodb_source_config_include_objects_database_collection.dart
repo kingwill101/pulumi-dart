@@ -6,15 +6,9 @@ import 'stream_source_config_mongodb_source_config_include_objects_database_coll
 class StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollection {
   /// Collection name.
   final pulumi.Input<String>? collection;
-
   /// Fields in the collection.
   /// Structure is documented below.
-  final pulumi.Input<
-    List<
-      StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionField
-    >
-  >?
-  fields;
+  final pulumi.Input<List<StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionField>>? fields;
 
   /// Creates a new [StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollection].
   /// [collection] Collection name.
@@ -27,47 +21,15 @@ class StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollection {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'collection': ?collection,
-      'fields':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<
-              StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionField
-            >,
-            List<Map<String, dynamic>>
-          >(
-            fields,
-            (value) =>
-                pulumi.Input.encodeList<
-                  StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionField,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'fields': ?pulumi.Input.mapOptionalInputValue<List<StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionField>, List<Map<String, dynamic>>>(fields, (value) => pulumi.Input.encodeList<StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionField, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollection.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollection.fromMap(Map<String, dynamic> map) {
     return StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollection(
-      collection: (() {
-        final guardedValue = map['collection'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      fields: (() {
-        final guardedValue = map['fields'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionField
-          >(
-            guardedValue,
-            (value) =>
-                StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionField.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
+      collection: (() { final guardedValue = map['collection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      fields: (() { final guardedValue = map['fields']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionField>(guardedValue, (value) => StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionField.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

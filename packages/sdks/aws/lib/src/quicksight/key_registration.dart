@@ -149,10 +149,8 @@ import 'key_registration_state.dart';
 class KeyRegistration extends pulumi.CustomResource {
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
   late final pulumi.Output<String> awsAccountId;
-
   /// Registered keys. See key_registration.
   late final pulumi.Output<List<Map<String, dynamic>>> keyRegistrations;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -165,15 +163,13 @@ class KeyRegistration extends pulumi.CustomResource {
     KeyRegistrationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:quicksight/keyRegistration:KeyRegistration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:quicksight/keyRegistration:KeyRegistration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     awsAccountId = registerOutput<String>('awsAccountId');
-    keyRegistrations = registerOutput<List<Map<String, dynamic>>>(
-      'keyRegistrations',
-    );
+    keyRegistrations = registerOutput<List<Map<String, dynamic>>>('keyRegistrations');
     region = registerOutput<String>('region');
   }
 
@@ -195,15 +191,13 @@ class KeyRegistration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:quicksight/keyRegistration:KeyRegistration',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:quicksight/keyRegistration:KeyRegistration',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     awsAccountId = registerOutput<String>('awsAccountId');
-    keyRegistrations = registerOutput<List<Map<String, dynamic>>>(
-      'keyRegistrations',
-    );
+    keyRegistrations = registerOutput<List<Map<String, dynamic>>>('keyRegistrations');
     region = registerOutput<String>('region');
   }
 }

@@ -9,21 +9,20 @@ class GoogleCloudIdentitytoolkitAdminV2AllowlistOnly {
 
   /// Creates a new [GoogleCloudIdentitytoolkitAdminV2AllowlistOnly].
   /// [allowedRegions] Two letter unicode region codes to allow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
-  GoogleCloudIdentitytoolkitAdminV2AllowlistOnly({this.allowedRegions});
+  GoogleCloudIdentitytoolkitAdminV2AllowlistOnly({
+    this.allowedRegions,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'allowedRegions': ?allowedRegions};
+    return <String, dynamic>{
+      'allowedRegions': ?allowedRegions,
+    };
   }
 
-  factory GoogleCloudIdentitytoolkitAdminV2AllowlistOnly.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudIdentitytoolkitAdminV2AllowlistOnly.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIdentitytoolkitAdminV2AllowlistOnly(
-      allowedRegions: (() {
-        final guardedValue = map['allowedRegions'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      allowedRegions: (() { final guardedValue = map['allowedRegions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

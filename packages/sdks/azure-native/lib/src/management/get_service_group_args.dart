@@ -12,17 +12,20 @@ class GetServiceGroupArgs {
 
   /// Creates a new [GetServiceGroupArgs].
   /// [serviceGroupName] ServiceGroup Name.
-  GetServiceGroupArgs({required this.serviceGroupName});
+  GetServiceGroupArgs({
+    required this.serviceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'serviceGroupName': serviceGroupName};
+    return <String, dynamic>{
+      'serviceGroupName': serviceGroupName,
+    };
   }
 
   factory GetServiceGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceGroupArgs(
-      serviceGroupName: pulumi.Input.fromValue(
-        map['serviceGroupName'] as String,
-      ),
+      serviceGroupName: pulumi.Input.fromValue(map['serviceGroupName'] as String),
     );
   }
 }
+

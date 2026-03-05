@@ -5,58 +5,40 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBgpPeersPeer {
   /// The authentication key of the BGP group.
   final pulumi.Input<String> authKey;
-
   /// The BFD hop count.
   final pulumi.Input<int> bfdMultiHop;
-
   /// The ID of the BGP group.
   final pulumi.Input<String> bgpGroupId;
-
   /// The ID of the BGP neighbor.
   final pulumi.Input<String> bgpPeerId;
-
   /// The name of the BGP neighbor.
   final pulumi.Input<String> bgpPeerName;
-
   /// The status of the BGP connection.
   final pulumi.Input<String> bgpStatus;
-
   /// The description of the BGP group.
   final pulumi.Input<String> description;
-
   /// Indicates whether the Bidirectional Forwarding Detection (BFD) protocol is enabled.
   final pulumi.Input<bool> enableBfd;
-
   /// The hold time.
   final pulumi.Input<String> hold;
-
   /// The ID of the Bgp Peer.
   final pulumi.Input<String> id;
-
   /// The IP version.
   final pulumi.Input<String> ipVersion;
-
   /// Indicates whether a fake AS number is used.
   final pulumi.Input<bool> isFake;
-
   /// The keepalive time.
   final pulumi.Input<String> keepalive;
-
   /// The AS number of the device on the Alibaba Cloud side.
   final pulumi.Input<String> localAsn;
-
   /// The autonomous system (AS) number of the BGP peer.
   final pulumi.Input<String> peerAsn;
-
   /// The IP address of the BGP neighbor.
   final pulumi.Input<String> peerIpAddress;
-
   /// The limit on routes.
   final pulumi.Input<String> routeLimit;
-
   /// The ID of the router.
   final pulumi.Input<String> routerId;
-
   /// The status of the BGP peer.
   final pulumi.Input<String> status;
 
@@ -150,3 +132,4 @@ class GetBgpPeersPeer {
     );
   }
 }
+

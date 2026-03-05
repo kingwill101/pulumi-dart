@@ -208,22 +208,16 @@ import 'ptrrecord_state.dart';
 class PTRRecord extends pulumi.CustomResource {
   /// The FQDN of the DNS PTR Record.
   late final pulumi.Output<String> fqdn;
-
   /// The name of the DNS PTR Record. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-
   /// List of Fully Qualified Domain Names.
   late final pulumi.Output<List<String>> records;
-
   /// Specifies the resource group where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The Time To Live (TTL) of the DNS record in seconds.
   late final pulumi.Output<int> ttl;
-
   /// Specifies the Private DNS Zone where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> zoneName;
 
@@ -236,11 +230,11 @@ class PTRRecord extends pulumi.CustomResource {
     PTRRecordArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:privatedns/pTRRecord:PTRRecord',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:privatedns/pTRRecord:PTRRecord',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     fqdn = registerOutput<String>('fqdn');
     this.name = registerOutput<String>('name');
     records = registerOutput<List<String>>('records');
@@ -268,11 +262,11 @@ class PTRRecord extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:privatedns/pTRRecord:PTRRecord',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:privatedns/pTRRecord:PTRRecord',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     fqdn = registerOutput<String>('fqdn');
     this.name = registerOutput<String>('name');
     records = registerOutput<List<String>>('records');

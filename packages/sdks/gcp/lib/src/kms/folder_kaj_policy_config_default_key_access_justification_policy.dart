@@ -16,18 +16,15 @@ class FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'allowedAccessReasons': ?allowedAccessReasons};
+    return <String, dynamic>{
+      'allowedAccessReasons': ?allowedAccessReasons,
+    };
   }
 
-  factory FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy.fromMap(Map<String, dynamic> map) {
     return FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy(
-      allowedAccessReasons: (() {
-        final guardedValue = map['allowedAccessReasons'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      allowedAccessReasons: (() { final guardedValue = map['allowedAccessReasons']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

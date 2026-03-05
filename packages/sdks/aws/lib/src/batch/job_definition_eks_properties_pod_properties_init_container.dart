@@ -9,42 +9,22 @@ import 'job_definition_eks_properties_pod_properties_init_container_volume_mount
 class JobDefinitionEksPropertiesPodPropertiesInitContainer {
   /// Array of arguments to the entrypoint. If this isn't specified, the CMD of the container image is used. This corresponds to the args member in the Entrypoint portion of the Pod in Kubernetes. Environment variable references are expanded using the container's environment.
   final pulumi.Input<List<String>>? args;
-
   /// Entrypoint for the container. This isn't run within a shell. If this isn't specified, the ENTRYPOINT of the container image is used. Environment variable references are expanded using the container's environment.
   final pulumi.Input<List<String>>? commands;
-
   /// Environment variables to pass to a container. See EKS Environment below.
-  final pulumi.Input<
-    List<JobDefinitionEksPropertiesPodPropertiesInitContainerEnv>
-  >?
-  envs;
-
+  final pulumi.Input<List<JobDefinitionEksPropertiesPodPropertiesInitContainerEnv>>? envs;
   /// Docker image used to start the container.
   final pulumi.Input<String> image;
-
   /// Image pull policy for the container. Supported values are `Always`, `IfNotPresent`, and `Never`.
   final pulumi.Input<String>? imagePullPolicy;
-
   /// Name of the job definition.
   final pulumi.Input<String>? name;
-
   /// Type and amount of resources to assign to a container. The supported resources include `memory`, `cpu`, and `nvidia.com/gpu`.
-  final pulumi.Input<
-    JobDefinitionEksPropertiesPodPropertiesInitContainerResources
-  >?
-  resources;
-
+  final pulumi.Input<JobDefinitionEksPropertiesPodPropertiesInitContainerResources>? resources;
   /// Security context for a job. See `security_context` below.
-  final pulumi.Input<
-    JobDefinitionEksPropertiesPodPropertiesInitContainerSecurityContext
-  >?
-  securityContext;
-
+  final pulumi.Input<JobDefinitionEksPropertiesPodPropertiesInitContainerSecurityContext>? securityContext;
   /// Volume mounts for the container.
-  final pulumi.Input<
-    List<JobDefinitionEksPropertiesPodPropertiesInitContainerVolumeMount>
-  >?
-  volumeMounts;
+  final pulumi.Input<List<JobDefinitionEksPropertiesPodPropertiesInitContainerVolumeMount>>? volumeMounts;
 
   /// Creates a new [JobDefinitionEksPropertiesPodPropertiesInitContainer].
   /// [args] Array of arguments to the entrypoint. If this isn't specified, the CMD of the container image is used. This corresponds to the args member in the Entrypoint portion of the Pod in Kubernetes. Environment variable references are expanded using the container's environment.
@@ -72,121 +52,28 @@ class JobDefinitionEksPropertiesPodPropertiesInitContainer {
     return <String, dynamic>{
       'args': ?args,
       'commands': ?commands,
-      'envs':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<JobDefinitionEksPropertiesPodPropertiesInitContainerEnv>,
-            List<Map<String, dynamic>>
-          >(
-            envs,
-            (value) =>
-                pulumi.Input.encodeList<
-                  JobDefinitionEksPropertiesPodPropertiesInitContainerEnv,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'envs': ?pulumi.Input.mapOptionalInputValue<List<JobDefinitionEksPropertiesPodPropertiesInitContainerEnv>, List<Map<String, dynamic>>>(envs, (value) => pulumi.Input.encodeList<JobDefinitionEksPropertiesPodPropertiesInitContainerEnv, Map<String, dynamic>>(value, (value) => value.toMap())),
       'image': image,
       'imagePullPolicy': ?imagePullPolicy,
       'name': ?name,
-      'resources':
-          ?pulumi.Input.mapOptionalInputValue<
-            JobDefinitionEksPropertiesPodPropertiesInitContainerResources,
-            Map<String, dynamic>
-          >(resources, (value) => value.toMap()),
-      'securityContext':
-          ?pulumi.Input.mapOptionalInputValue<
-            JobDefinitionEksPropertiesPodPropertiesInitContainerSecurityContext,
-            Map<String, dynamic>
-          >(securityContext, (value) => value.toMap()),
-      'volumeMounts':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<
-              JobDefinitionEksPropertiesPodPropertiesInitContainerVolumeMount
-            >,
-            List<Map<String, dynamic>>
-          >(
-            volumeMounts,
-            (value) =>
-                pulumi.Input.encodeList<
-                  JobDefinitionEksPropertiesPodPropertiesInitContainerVolumeMount,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'resources': ?pulumi.Input.mapOptionalInputValue<JobDefinitionEksPropertiesPodPropertiesInitContainerResources, Map<String, dynamic>>(resources, (value) => value.toMap()),
+      'securityContext': ?pulumi.Input.mapOptionalInputValue<JobDefinitionEksPropertiesPodPropertiesInitContainerSecurityContext, Map<String, dynamic>>(securityContext, (value) => value.toMap()),
+      'volumeMounts': ?pulumi.Input.mapOptionalInputValue<List<JobDefinitionEksPropertiesPodPropertiesInitContainerVolumeMount>, List<Map<String, dynamic>>>(volumeMounts, (value) => pulumi.Input.encodeList<JobDefinitionEksPropertiesPodPropertiesInitContainerVolumeMount, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
-  factory JobDefinitionEksPropertiesPodPropertiesInitContainer.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory JobDefinitionEksPropertiesPodPropertiesInitContainer.fromMap(Map<String, dynamic> map) {
     return JobDefinitionEksPropertiesPodPropertiesInitContainer(
-      args: (() {
-        final guardedValue = map['args'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      commands: (() {
-        final guardedValue = map['commands'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      envs: (() {
-        final guardedValue = map['envs'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            JobDefinitionEksPropertiesPodPropertiesInitContainerEnv
-          >(
-            guardedValue,
-            (value) =>
-                JobDefinitionEksPropertiesPodPropertiesInitContainerEnv.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
+      args: (() { final guardedValue = map['args']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      commands: (() { final guardedValue = map['commands']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      envs: (() { final guardedValue = map['envs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<JobDefinitionEksPropertiesPodPropertiesInitContainerEnv>(guardedValue, (value) => JobDefinitionEksPropertiesPodPropertiesInitContainerEnv.fromMap((value as Map).cast<String, dynamic>()))); })(),
       image: pulumi.Input.fromValue(map['image'] as String),
-      imagePullPolicy: (() {
-        final guardedValue = map['imagePullPolicy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resources: (() {
-        final guardedValue = map['resources'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          JobDefinitionEksPropertiesPodPropertiesInitContainerResources.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      securityContext: (() {
-        final guardedValue = map['securityContext'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          JobDefinitionEksPropertiesPodPropertiesInitContainerSecurityContext.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      volumeMounts: (() {
-        final guardedValue = map['volumeMounts'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<
-            JobDefinitionEksPropertiesPodPropertiesInitContainerVolumeMount
-          >(
-            guardedValue,
-            (value) =>
-                JobDefinitionEksPropertiesPodPropertiesInitContainerVolumeMount.fromMap(
-                  (value as Map).cast<String, dynamic>(),
-                ),
-          ),
-        );
-      })(),
+      imagePullPolicy: (() { final guardedValue = map['imagePullPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resources: (() { final guardedValue = map['resources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JobDefinitionEksPropertiesPodPropertiesInitContainerResources.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      securityContext: (() { final guardedValue = map['securityContext']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JobDefinitionEksPropertiesPodPropertiesInitContainerSecurityContext.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      volumeMounts: (() { final guardedValue = map['volumeMounts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<JobDefinitionEksPropertiesPodPropertiesInitContainerVolumeMount>(guardedValue, (value) => JobDefinitionEksPropertiesPodPropertiesInitContainerVolumeMount.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

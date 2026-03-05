@@ -9,17 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FlowPipelineArgs {
   /// The pipeline definition. For more information, see the sample pipeline definition).
   final pulumi.Input<String> manifest;
-
   /// The ID of the workspace.
   final pulumi.Input<String> workspaceId;
 
   /// Creates a new [FlowPipelineArgs].
   /// [manifest] The pipeline definition. For more information, see the sample pipeline definition).
   /// [workspaceId] The ID of the workspace.
-  FlowPipelineArgs({required this.manifest, required this.workspaceId});
+  FlowPipelineArgs({
+    required this.manifest,
+    required this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'manifest': manifest, 'workspaceId': workspaceId};
+    return <String, dynamic>{
+      'manifest': manifest,
+      'workspaceId': workspaceId,
+    };
   }
 
   factory FlowPipelineArgs.fromMap(Map<String, dynamic> map) {
@@ -29,3 +34,4 @@ class FlowPipelineArgs {
     );
   }
 }
+

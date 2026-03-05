@@ -52,52 +52,29 @@ class EventServiceDiscoveryState {
   ///
   /// Once the declaration has been sent to the BIG-IP, we can use taskid/id ( ~Sample_event_sd~My_app~My_pool" ) and node list for the resource to dynamically update the node list.
   final pulumi.Input<List<EventServiceDiscoveryNode>>? nodes;
-
   /// servicediscovery endpoint ( Below example shows how to create endpoing using AS3 )
   final pulumi.Input<String>? taskid;
 
   /// Creates a new [EventServiceDiscoveryState].
   /// [nodes] Map of node which will be added to pool which will be having node name(id),node address(ip) and node port(port)
   /// [taskid] servicediscovery endpoint ( Below example shows how to create endpoing using AS3 )
-  EventServiceDiscoveryState({this.nodes, this.taskid});
+  EventServiceDiscoveryState({
+    this.nodes,
+    this.taskid,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'nodes':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<EventServiceDiscoveryNode>,
-            List<Map<String, dynamic>>
-          >(
-            nodes,
-            (value) =>
-                pulumi.Input.encodeList<
-                  EventServiceDiscoveryNode,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
+      'nodes': ?pulumi.Input.mapOptionalInputValue<List<EventServiceDiscoveryNode>, List<Map<String, dynamic>>>(nodes, (value) => pulumi.Input.encodeList<EventServiceDiscoveryNode, Map<String, dynamic>>(value, (value) => value.toMap())),
       'taskid': ?taskid,
     };
   }
 
   factory EventServiceDiscoveryState.fromMap(Map<String, dynamic> map) {
     return EventServiceDiscoveryState(
-      nodes: (() {
-        final guardedValue = map['nodes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<EventServiceDiscoveryNode>(
-            guardedValue,
-            (value) => EventServiceDiscoveryNode.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      taskid: (() {
-        final guardedValue = map['taskid'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      nodes: (() { final guardedValue = map['nodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EventServiceDiscoveryNode>(guardedValue, (value) => EventServiceDiscoveryNode.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      taskid: (() { final guardedValue = map['taskid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

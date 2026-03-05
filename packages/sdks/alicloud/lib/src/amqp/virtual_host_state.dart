@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualHostState {
   /// InstanceId.
   final pulumi.Input<String>? instanceId;
-
   /// VirtualHostName.
   final pulumi.Input<String>? virtualHostName;
 
   /// Creates a new [VirtualHostState].
   /// [instanceId] InstanceId.
   /// [virtualHostName] VirtualHostName.
-  VirtualHostState({this.instanceId, this.virtualHostName});
+  VirtualHostState({
+    this.instanceId,
+    this.virtualHostName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class VirtualHostState {
 
   factory VirtualHostState.fromMap(Map<String, dynamic> map) {
     return VirtualHostState(
-      instanceId: (() {
-        final guardedValue = map['instanceId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      virtualHostName: (() {
-        final guardedValue = map['virtualHostName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      instanceId: (() { final guardedValue = map['instanceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      virtualHostName: (() { final guardedValue = map['virtualHostName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

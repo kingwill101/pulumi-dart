@@ -8,19 +8,20 @@ class ClusterIdentityOidc {
 
   /// Creates a new [ClusterIdentityOidc].
   /// [issuer] Issuer URL for the OpenID Connect identity provider.
-  ClusterIdentityOidc({this.issuer});
+  ClusterIdentityOidc({
+    this.issuer,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'issuer': ?issuer};
+    return <String, dynamic>{
+      'issuer': ?issuer,
+    };
   }
 
   factory ClusterIdentityOidc.fromMap(Map<String, dynamic> map) {
     return ClusterIdentityOidc(
-      issuer: (() {
-        final guardedValue = map['issuer'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      issuer: (() { final guardedValue = map['issuer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

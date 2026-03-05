@@ -9,28 +9,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListConnectionKeysArgs {
   /// The connection name.
   final pulumi.Input<String> connectionName;
-
   /// Resource Id
   final pulumi.Input<String>? id;
-
   /// Kind of resource
   final pulumi.Input<String>? kind;
-
   /// Resource Location
   final pulumi.Input<String>? location;
-
   /// Resource Name
   final pulumi.Input<String>? name;
-
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
-
   /// Resource tags
   final pulumi.Input<Map<String, String>>? tags;
-
   /// Resource type
   final pulumi.Input<String>? type;
-
   /// time span for how long the keys will be valid
   final pulumi.Input<String>? validityTimeSpan;
 
@@ -73,46 +65,15 @@ class ListConnectionKeysArgs {
   factory ListConnectionKeysArgs.fromMap(Map<String, dynamic> map) {
     return ListConnectionKeysArgs(
       connectionName: pulumi.Input.fromValue(map['connectionName'] as String),
-      id: (() {
-        final guardedValue = map['id'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      kind: (() {
-        final guardedValue = map['kind'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      location: (() {
-        final guardedValue = map['location'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      validityTimeSpan: (() {
-        final guardedValue = map['validityTimeSpan'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      validityTimeSpan: (() { final guardedValue = map['validityTimeSpan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -265,99 +265,66 @@ import 'cloud_vm_cluster_state.dart';
 class CloudVmCluster extends pulumi.CustomResource {
   /// The backup subnet CIDR of the Virtual Network associated with the Cloud VM Cluster. Changing this forces a new Cloud VM Cluster to be created.
   late final pulumi.Output<String?> backupSubnetCidr;
-
   /// The [OCID](https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the Cloud Exadata infrastructure. Changing this forces a new Cloud VM Cluster to be created.
   late final pulumi.Output<String> cloudExadataInfrastructureId;
-
   /// The cluster name for Cloud VM Cluster. Changing this forces a new Cloud VM Cluster to be created.
   late final pulumi.Output<String> clusterName;
-
   /// The number of CPU cores enabled on the Cloud VM Cluster. Changing this forces a new Cloud VM Cluster to be created.
   late final pulumi.Output<int> cpuCoreCount;
-
   /// A `data_collection_options` block as defined below. Changing this forces a new Cloud VM Cluster to be created.
-  late final pulumi.Output<CloudVmClusterDataCollectionOptions>
-  dataCollectionOptions;
-
+  late final pulumi.Output<CloudVmClusterDataCollectionOptions> dataCollectionOptions;
   /// The percentage assigned to DATA storage (user data and database files). Changing this forces a new Cloud VM Cluster to be created. The remaining percentage is assigned to RECO storage (database redo logs, archive logs, and recovery manager backups). Accepted values are `35`, `40`, `60` and `80`.
   late final pulumi.Output<int> dataStoragePercentage;
-
   /// The data disk group size to be allocated in TBs. Changing this forces a new Cloud VM Cluster to be created.
   late final pulumi.Output<double> dataStorageSizeInTbs;
-
   /// The local node storage to be allocated in GBs. Changing this forces a new Cloud VM Cluster to be created.
   late final pulumi.Output<int> dbNodeStorageSizeInGbs;
-
   /// The list of DB servers. Changing this forces a new Cloud VM Cluster to be created.
   late final pulumi.Output<List<String>> dbServers;
-
   /// The user-friendly name for the Cloud VM Cluster. Changing this forces a new Cloud VM Cluster to be created. The name does not need to be unique.
   late final pulumi.Output<String> displayName;
-
   /// The name of the OCI Private DNS Zone to be associated with the Cloud VM Cluster. This is required for specifying your own private domain name. Changing this forces a new Cloud VM Cluster to be created.
   late final pulumi.Output<String> domain;
-
   /// A `file_system_configuration` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?>
-  fileSystemConfigurations;
-
+  late final pulumi.Output<List<Map<String, dynamic>>?> fileSystemConfigurations;
   /// A valid Oracle Grid Infrastructure (GI) software version. Changing this forces a new Cloud VM Cluster to be created.
   late final pulumi.Output<String> giVersion;
-
   /// The hostname for the Cloud VM Cluster without suffix. Changing this forces a new Cloud VM Cluster to be created.
   late final pulumi.Output<String> hostname;
-
   /// The hostname for the Cloud VM Cluster with suffix.
   late final pulumi.Output<String> hostnameActual;
-
   /// The Oracle license model that applies to the Cloud VM Cluster, either `BringYourOwnLicense` or `LicenseIncluded`. Changing this forces a new Cloud VM Cluster to be created.
   late final pulumi.Output<String> licenseModel;
-
   /// If true, database backup on local Exadata storage is configured for the Cloud VM Cluster. If `false`, database backup on local Exadata storage is not available in the Cloud VM Cluster. Changing this forces a new Cloud VM Cluster to be created.
   late final pulumi.Output<bool> localBackupEnabled;
-
   /// The Azure Region where the Cloud VM Cluster should exist. Changing this forces a new Cloud VM Cluster to be created.
   late final pulumi.Output<String> location;
-
   /// The memory to be allocated in GBs. Changing this forces a new Cloud VM Cluster to be created.
   late final pulumi.Output<int> memorySizeInGbs;
-
   /// The name which should be used for this Cloud VM Cluster. Changing this forces a new Cloud VM Cluster to be created.
   late final pulumi.Output<String> name;
-
   /// The [OCID](https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the Cloud VM Cluster.
   late final pulumi.Output<String> ocid;
-
   /// The name of the Resource Group where the Cloud VM Cluster should exist. Changing this forces a new Cloud VM Cluster to be created.
   late final pulumi.Output<String> resourceGroupName;
-
   /// The TCP Single Client Access Name (SCAN) port. The default port to 1521. Changing this forces a new Cloud VM Cluster to be created.
   late final pulumi.Output<int?> scanListenerPortTcp;
-
   /// The TCPS Single Client Access Name (SCAN) port. The default port to 2484. Changing this forces a new Cloud VM Cluster to be created.
   late final pulumi.Output<int?> scanListenerPortTcpSsl;
-
   /// If true, the sparse disk group is configured for the Cloud VM Cluster. If `false`, the sparse disk group is not created. Changing this forces a new Cloud VM Cluster to be created.
   late final pulumi.Output<bool> sparseDiskgroupEnabled;
-
   /// The public key portion of one or more key pairs used for SSH access to the Cloud VM Cluster. Changing this forces a new Cloud VM Cluster to be created.
   late final pulumi.Output<List<String>> sshPublicKeys;
-
   /// The ID of the subnet associated with the Cloud VM Cluster. Changing this forces a new Cloud VM Cluster to be created.
   late final pulumi.Output<String> subnetId;
-
   /// Operating system version of the Exadata image. System version must be &lt;= Db server major version (the first two parts of the DB server version eg 23.1.X.X.XXXX). Accepted Values for Grid Infrastructure (GI) version 19.0.0.0 are 22.1.30.0.0.241204, 22.1.32.0.0.250205, 22.1.31.0.0.250110, 23.1.20.0.0.241112, 23.1.21.0.0.241204, 23.1.22.0.0.250119, 23.1.23.0.0.250207. For Grid Infrastructure (GI) version 23.0.0.0 allowed system versions are 23.1.19.0.0.241015, 23.1.20.0.0.241112, 23.1.22.0.0.250119, 23.1.21.0.0.241204, 23.1.23.0.0.250207. Changing this forces a new resource to be created.
   late final pulumi.Output<String> systemVersion;
-
   /// A mapping of tags which should be assigned to the Cloud VM Cluster.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The time zone of the Cloud VM Cluster. For details, see [Exadata Infrastructure Time Zones](https://docs.cloud.oracle.com/iaas/Content/Database/References/timezones.htm). Changing this forces a new Cloud VM Cluster to be created.
   late final pulumi.Output<String> timeZone;
-
   /// The ID of the Virtual Network associated with the Cloud VM Cluster. Changing this forces a new Cloud VM Cluster to be created.
   late final pulumi.Output<String> virtualNetworkId;
-
   /// The OCID of the OCI Private DNS Zone to be associated with the Cloud VM Cluster. This is required for specifying your own private domain name. Changing this forces a new Cloud VM Cluster to be created.
   late final pulumi.Output<String> zoneId;
 
@@ -370,36 +337,23 @@ class CloudVmCluster extends pulumi.CustomResource {
     CloudVmClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:oracle/cloudVmCluster:CloudVmCluster',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:oracle/cloudVmCluster:CloudVmCluster',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     backupSubnetCidr = registerOutput<String?>('backupSubnetCidr');
-    cloudExadataInfrastructureId = registerOutput<String>(
-      'cloudExadataInfrastructureId',
-    );
+    cloudExadataInfrastructureId = registerOutput<String>('cloudExadataInfrastructureId');
     clusterName = registerOutput<String>('clusterName');
     cpuCoreCount = registerOutput<int>('cpuCoreCount');
-    dataCollectionOptions = registerOutput<CloudVmClusterDataCollectionOptions>(
-      'dataCollectionOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CloudVmClusterDataCollectionOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    dataCollectionOptions = registerOutput<CloudVmClusterDataCollectionOptions>('dataCollectionOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CloudVmClusterDataCollectionOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataStoragePercentage = registerOutput<int>('dataStoragePercentage');
     dataStorageSizeInTbs = registerOutput<double>('dataStorageSizeInTbs');
     dbNodeStorageSizeInGbs = registerOutput<int>('dbNodeStorageSizeInGbs');
     dbServers = registerOutput<List<String>>('dbServers');
     displayName = registerOutput<String>('displayName');
     domain = registerOutput<String>('domain');
-    fileSystemConfigurations = registerOutput<List<Map<String, dynamic>>?>(
-      'fileSystemConfigurations',
-    );
+    fileSystemConfigurations = registerOutput<List<Map<String, dynamic>>?>('fileSystemConfigurations');
     giVersion = registerOutput<String>('giVersion');
     hostname = registerOutput<String>('hostname');
     hostnameActual = registerOutput<String>('hostnameActual');
@@ -440,36 +394,23 @@ class CloudVmCluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure:oracle/cloudVmCluster:CloudVmCluster',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure:oracle/cloudVmCluster:CloudVmCluster',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     backupSubnetCidr = registerOutput<String?>('backupSubnetCidr');
-    cloudExadataInfrastructureId = registerOutput<String>(
-      'cloudExadataInfrastructureId',
-    );
+    cloudExadataInfrastructureId = registerOutput<String>('cloudExadataInfrastructureId');
     clusterName = registerOutput<String>('clusterName');
     cpuCoreCount = registerOutput<int>('cpuCoreCount');
-    dataCollectionOptions = registerOutput<CloudVmClusterDataCollectionOptions>(
-      'dataCollectionOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return CloudVmClusterDataCollectionOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    dataCollectionOptions = registerOutput<CloudVmClusterDataCollectionOptions>('dataCollectionOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CloudVmClusterDataCollectionOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataStoragePercentage = registerOutput<int>('dataStoragePercentage');
     dataStorageSizeInTbs = registerOutput<double>('dataStorageSizeInTbs');
     dbNodeStorageSizeInGbs = registerOutput<int>('dbNodeStorageSizeInGbs');
     dbServers = registerOutput<List<String>>('dbServers');
     displayName = registerOutput<String>('displayName');
     domain = registerOutput<String>('domain');
-    fileSystemConfigurations = registerOutput<List<Map<String, dynamic>>?>(
-      'fileSystemConfigurations',
-    );
+    fileSystemConfigurations = registerOutput<List<Map<String, dynamic>>?>('fileSystemConfigurations');
     giVersion = registerOutput<String>('giVersion');
     hostname = registerOutput<String>('hostname');
     hostnameActual = registerOutput<String>('hostnameActual');

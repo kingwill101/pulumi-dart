@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MonitorDowntimeFrequencyDaysOfWeek {
   /// An occurrence of the day selected within the month.
   final pulumi.Input<String> ordinalDayOfMonth;
-
   /// The day of the week on which the Monitor Downtime would run.
   final pulumi.Input<String> weekDay;
 
@@ -26,10 +25,9 @@ class MonitorDowntimeFrequencyDaysOfWeek {
 
   factory MonitorDowntimeFrequencyDaysOfWeek.fromMap(Map<String, dynamic> map) {
     return MonitorDowntimeFrequencyDaysOfWeek(
-      ordinalDayOfMonth: pulumi.Input.fromValue(
-        map['ordinalDayOfMonth'] as String,
-      ),
+      ordinalDayOfMonth: pulumi.Input.fromValue(map['ordinalDayOfMonth'] as String),
       weekDay: pulumi.Input.fromValue(map['weekDay'] as String),
     );
   }
 }
+

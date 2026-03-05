@@ -8,10 +8,14 @@ class AddressableResponse {
 
   /// Creates a new [AddressableResponse].
   /// [url] Required.
-  AddressableResponse({required this.url});
+  AddressableResponse({
+    required this.url,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'url': url};
+    return <String, dynamic>{
+      'url': url,
+    };
   }
 
   factory AddressableResponse.fromMap(Map<String, dynamic> map) {
@@ -20,3 +24,4 @@ class AddressableResponse {
     );
   }
 }
+

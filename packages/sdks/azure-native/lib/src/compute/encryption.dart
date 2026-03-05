@@ -6,14 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Encryption {
   /// ResourceId of the disk encryption set to use for enabling encryption at rest.
   final pulumi.Input<String>? diskEncryptionSetId;
-
   /// The type of key used to encrypt the data of the disk.
   final pulumi.Input<String>? type;
 
   /// Creates a new [Encryption].
   /// [diskEncryptionSetId] ResourceId of the disk encryption set to use for enabling encryption at rest.
   /// [type] The type of key used to encrypt the data of the disk.
-  Encryption({this.diskEncryptionSetId, this.type});
+  Encryption({
+    this.diskEncryptionSetId,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,16 +26,9 @@ class Encryption {
 
   factory Encryption.fromMap(Map<String, dynamic> map) {
     return Encryption(
-      diskEncryptionSetId: (() {
-        final guardedValue = map['diskEncryptionSetId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      diskEncryptionSetId: (() { final guardedValue = map['diskEncryptionSetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

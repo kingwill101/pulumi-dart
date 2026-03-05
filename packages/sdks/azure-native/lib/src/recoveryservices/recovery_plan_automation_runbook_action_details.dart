@@ -6,14 +6,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RecoveryPlanAutomationRunbookActionDetails {
   /// The fabric location.
   final pulumi.Input<String> fabricLocation;
-
   /// Gets the type of action details (see RecoveryPlanActionDetailsTypes enum for possible values).
   /// Expected value is 'AutomationRunbookActionDetails'.
   final pulumi.Input<String> instanceType;
-
   /// The runbook ARM Id.
   final pulumi.Input<String>? runbookId;
-
   /// The runbook timeout.
   final pulumi.Input<String>? timeout;
 
@@ -38,22 +35,13 @@ class RecoveryPlanAutomationRunbookActionDetails {
     };
   }
 
-  factory RecoveryPlanAutomationRunbookActionDetails.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory RecoveryPlanAutomationRunbookActionDetails.fromMap(Map<String, dynamic> map) {
     return RecoveryPlanAutomationRunbookActionDetails(
       fabricLocation: pulumi.Input.fromValue(map['fabricLocation'] as String),
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
-      runbookId: (() {
-        final guardedValue = map['runbookId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      timeout: (() {
-        final guardedValue = map['timeout'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      runbookId: (() { final guardedValue = map['runbookId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

@@ -15,48 +15,36 @@ class Route {
   /// If true, an API key will be required for this route. The source for the API Key can be set at
   /// the API level and by default, the source will be the HEADER.
   final pulumi.Input<bool>? apiKeyRequired;
-
   /// Authorizers allows you to define Lambda authorizers be applied for authorization when the
   /// the route is called.
   final pulumi.Input<List<Authorizer>>? authorizers;
-
   /// The `content-type` to serve the file as.  Only valid when `localPath` points to a file.  If
   /// `localPath` points to a directory, the content types for all files will be inferred.
   final pulumi.Input<String>? contentType;
-
   /// A raw Swagger object to include verbatim in the integration for this path.
   final pulumi.Input<dynamic>? data;
-
   /// A Lambda function which will handle the route for the given path and method.
   final pulumi.Input<pulumi_aws_lambda.FunctionType>? eventHandler;
-
   /// By default, the route method auth type is set to `NONE`. If true, the auth type will be
   /// set to `AWS_IAM`.
   final pulumi.Input<bool>? iamAuthEnabled;
-
   /// By default a `localPath` hosting static content will also serve 'index.html' in response to a request on a directory.
   /// To disable this pass `false` or supply a new index document name.
   final pulumi.Input<String>? index;
-
   /// The local path on disk to create static S3 resources for.  Files will be uploaded into S3
   /// objects, and directories will be recursively walked into.
   final pulumi.Input<String>? localPath;
-
   /// The REST method of the route to match.  Only valid with `eventHandler` or `data` routes.
   final pulumi.Input<Method>? method;
-
   /// The path on the API that will serve this route.  If not prefixed with `/`,
   /// then a `/` will be added automatically to the beginning.
   final pulumi.Input<String> path;
-
   /// Request Validator specifies the validator to use at the method level. This will override anything
   /// defined at the API level.
   final pulumi.Input<RequestValidator>? requestValidator;
-
   /// Required Parameters to validate. If the request validator is set to ALL or PARAMS_ONLY, api
   /// gateway will validate these before sending traffic to the event handler.
   final pulumi.Input<List<RequiredParameter>>? requiredParameters;
-
   /// The target for an integration route (see https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-integration-types.html).
   final pulumi.Input<Target>? target;
 
@@ -93,136 +81,37 @@ class Route {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'apiKeyRequired': ?apiKeyRequired,
-      'authorizers':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<Authorizer>,
-            List<Map<String, dynamic>>
-          >(
-            authorizers,
-            (value) =>
-                pulumi.Input.encodeList<Authorizer, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'authorizers': ?pulumi.Input.mapOptionalInputValue<List<Authorizer>, List<Map<String, dynamic>>>(authorizers, (value) => pulumi.Input.encodeList<Authorizer, Map<String, dynamic>>(value, (value) => value.toMap())),
       'contentType': ?contentType,
       'data': ?data,
       'eventHandler': ?eventHandler,
       'iamAuthEnabled': ?iamAuthEnabled,
       'index': ?index,
       'localPath': ?localPath,
-      'method': ?pulumi.Input.mapOptionalInputValue<Method, String>(
-        method,
-        (value) => value.wireValue,
-      ),
+      'method': ?pulumi.Input.mapOptionalInputValue<Method, String>(method, (value) => value.wireValue),
       'path': path,
-      'requestValidator':
-          ?pulumi.Input.mapOptionalInputValue<RequestValidator, String>(
-            requestValidator,
-            (value) => value.wireValue,
-          ),
-      'requiredParameters':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<RequiredParameter>,
-            List<Map<String, dynamic>>
-          >(
-            requiredParameters,
-            (value) =>
-                pulumi.Input.encodeList<
-                  RequiredParameter,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'target':
-          ?pulumi.Input.mapOptionalInputValue<Target, Map<String, dynamic>>(
-            target,
-            (value) => value.toMap(),
-          ),
+      'requestValidator': ?pulumi.Input.mapOptionalInputValue<RequestValidator, String>(requestValidator, (value) => value.wireValue),
+      'requiredParameters': ?pulumi.Input.mapOptionalInputValue<List<RequiredParameter>, List<Map<String, dynamic>>>(requiredParameters, (value) => pulumi.Input.encodeList<RequiredParameter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'target': ?pulumi.Input.mapOptionalInputValue<Target, Map<String, dynamic>>(target, (value) => value.toMap()),
     };
   }
 
   factory Route.fromMap(Map<String, dynamic> map) {
     return Route(
-      apiKeyRequired: (() {
-        final guardedValue = map['apiKeyRequired'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      authorizers: (() {
-        final guardedValue = map['authorizers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<Authorizer>(
-            guardedValue,
-            (value) =>
-                Authorizer.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
-      contentType: (() {
-        final guardedValue = map['contentType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      data: (() {
-        final guardedValue = map['data'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      eventHandler: (() {
-        final guardedValue = map['eventHandler'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          guardedValue as pulumi_aws_lambda.FunctionType,
-        );
-      })(),
-      iamAuthEnabled: (() {
-        final guardedValue = map['iamAuthEnabled'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
-      index: (() {
-        final guardedValue = map['index'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      localPath: (() {
-        final guardedValue = map['localPath'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      method: (() {
-        final guardedValue = map['method'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(Method.fromValue(guardedValue as String));
-      })(),
+      apiKeyRequired: (() { final guardedValue = map['apiKeyRequired']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      authorizers: (() { final guardedValue = map['authorizers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Authorizer>(guardedValue, (value) => Authorizer.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      contentType: (() { final guardedValue = map['contentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      data: (() { final guardedValue = map['data']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      eventHandler: (() { final guardedValue = map['eventHandler']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as pulumi_aws_lambda.FunctionType); })(),
+      iamAuthEnabled: (() { final guardedValue = map['iamAuthEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      index: (() { final guardedValue = map['index']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      localPath: (() { final guardedValue = map['localPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      method: (() { final guardedValue = map['method']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Method.fromValue(guardedValue as String)); })(),
       path: pulumi.Input.fromValue(map['path'] as String),
-      requestValidator: (() {
-        final guardedValue = map['requestValidator'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          RequestValidator.fromValue(guardedValue as String),
-        );
-      })(),
-      requiredParameters: (() {
-        final guardedValue = map['requiredParameters'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<RequiredParameter>(
-            guardedValue,
-            (value) => RequiredParameter.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      target: (() {
-        final guardedValue = map['target'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          Target.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
+      requestValidator: (() { final guardedValue = map['requestValidator']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RequestValidator.fromValue(guardedValue as String)); })(),
+      requiredParameters: (() { final guardedValue = map['requiredParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RequiredParameter>(guardedValue, (value) => RequiredParameter.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      target: (() { final guardedValue = map['target']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Target.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

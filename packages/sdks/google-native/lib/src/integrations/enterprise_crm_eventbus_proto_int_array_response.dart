@@ -7,17 +7,20 @@ class EnterpriseCrmEventbusProtoIntArrayResponse {
 
   /// Creates a new [EnterpriseCrmEventbusProtoIntArrayResponse].
   /// [values] Required.
-  EnterpriseCrmEventbusProtoIntArrayResponse({required this.values});
+  EnterpriseCrmEventbusProtoIntArrayResponse({
+    required this.values,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'values': values};
+    return <String, dynamic>{
+      'values': values,
+    };
   }
 
-  factory EnterpriseCrmEventbusProtoIntArrayResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory EnterpriseCrmEventbusProtoIntArrayResponse.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoIntArrayResponse(
       values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
+

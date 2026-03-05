@@ -36,17 +36,10 @@ class GetManagedFolderArgs {
   factory GetManagedFolderArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedFolderArgs(
       bucket: pulumi.Input.fromValue(map['bucket'] as String),
-      ifMetagenerationMatch: (() {
-        final guardedValue = map['ifMetagenerationMatch'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      ifMetagenerationNotMatch: (() {
-        final guardedValue = map['ifMetagenerationNotMatch'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      ifMetagenerationMatch: (() { final guardedValue = map['ifMetagenerationMatch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ifMetagenerationNotMatch: (() { final guardedValue = map['ifMetagenerationNotMatch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       managedFolder: pulumi.Input.fromValue(map['managedFolder'] as String),
     );
   }
 }
+

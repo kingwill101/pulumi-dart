@@ -16,3 +16,4 @@ enum VpnGatewayGeneration {
     throw ArgumentError('Unknown VpnGatewayGeneration value: $value');
   }
 }
+

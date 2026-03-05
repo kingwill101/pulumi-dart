@@ -13,7 +13,10 @@ class GetDomainMappingArgs {
   /// Creates a new [GetDomainMappingArgs].
   /// [appId] Required.
   /// [domainMappingId] Required.
-  GetDomainMappingArgs({required this.appId, required this.domainMappingId});
+  GetDomainMappingArgs({
+    required this.appId,
+    required this.domainMappingId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,3 +32,4 @@ class GetDomainMappingArgs {
     );
   }
 }
+

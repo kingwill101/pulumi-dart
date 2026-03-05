@@ -9,29 +9,20 @@ class CapabilityConfiguration {
 
   /// Creates a new [CapabilityConfiguration].
   /// [argoCd] ArgoCD configuration. See `argo_cd` below.
-  CapabilityConfiguration({this.argoCd});
+  CapabilityConfiguration({
+    this.argoCd,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'argoCd':
-          ?pulumi.Input.mapOptionalInputValue<
-            CapabilityConfigurationArgoCd,
-            Map<String, dynamic>
-          >(argoCd, (value) => value.toMap()),
+      'argoCd': ?pulumi.Input.mapOptionalInputValue<CapabilityConfigurationArgoCd, Map<String, dynamic>>(argoCd, (value) => value.toMap()),
     };
   }
 
   factory CapabilityConfiguration.fromMap(Map<String, dynamic> map) {
     return CapabilityConfiguration(
-      argoCd: (() {
-        final guardedValue = map['argoCd'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          CapabilityConfigurationArgoCd.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      argoCd: (() { final guardedValue = map['argoCd']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CapabilityConfigurationArgoCd.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

@@ -15,3 +15,4 @@ enum ImagePullCredentialsType {
     throw ArgumentError('Unknown ImagePullCredentialsType value: $value');
   }
 }
+

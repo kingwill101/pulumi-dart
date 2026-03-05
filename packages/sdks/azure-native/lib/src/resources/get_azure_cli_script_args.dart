@@ -9,7 +9,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAzureCliScriptArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// Name of the deployment script.
   final pulumi.Input<String> scriptName;
 
@@ -30,10 +29,9 @@ class GetAzureCliScriptArgs {
 
   factory GetAzureCliScriptArgs.fromMap(Map<String, dynamic> map) {
     return GetAzureCliScriptArgs(
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       scriptName: pulumi.Input.fromValue(map['scriptName'] as String),
     );
   }
 }
+

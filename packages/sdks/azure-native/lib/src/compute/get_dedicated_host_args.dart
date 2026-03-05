@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDedicatedHostArgs {
   /// The expand expression to apply on the operation. 'InstanceView' will retrieve the list of instance views of the dedicated host. 'UserData' is not supported for dedicated host.
   final pulumi.Input<String>? expand;
-
   /// The name of the dedicated host group.
   final pulumi.Input<String> hostGroupName;
-
   /// The name of the dedicated host.
   final pulumi.Input<String> hostName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -42,16 +39,11 @@ class GetDedicatedHostArgs {
 
   factory GetDedicatedHostArgs.fromMap(Map<String, dynamic> map) {
     return GetDedicatedHostArgs(
-      expand: (() {
-        final guardedValue = map['expand'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      expand: (() { final guardedValue = map['expand']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       hostGroupName: pulumi.Input.fromValue(map['hostGroupName'] as String),
       hostName: pulumi.Input.fromValue(map['hostName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

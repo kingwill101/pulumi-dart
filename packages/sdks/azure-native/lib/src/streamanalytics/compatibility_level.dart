@@ -15,3 +15,4 @@ enum CompatibilityLevel {
     throw ArgumentError('Unknown CompatibilityLevel value: $value');
   }
 }
+

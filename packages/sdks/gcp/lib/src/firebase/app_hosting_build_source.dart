@@ -9,7 +9,6 @@ class AppHostingBuildSource {
   /// that the build will be created at.
   /// Structure is documented below.
   final pulumi.Input<AppHostingBuildSourceCodebase>? codebase;
-
   /// The URI of an Artifact Registry
   /// [container
   /// image](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.dockerImages)
@@ -20,43 +19,23 @@ class AppHostingBuildSource {
   /// Creates a new [AppHostingBuildSource].
   /// [codebase] A codebase source, representing the state of the codebase
   /// [container] The URI of an Artifact Registry
-  AppHostingBuildSource({this.codebase, this.container});
+  AppHostingBuildSource({
+    this.codebase,
+    this.container,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'codebase':
-          ?pulumi.Input.mapOptionalInputValue<
-            AppHostingBuildSourceCodebase,
-            Map<String, dynamic>
-          >(codebase, (value) => value.toMap()),
-      'container':
-          ?pulumi.Input.mapOptionalInputValue<
-            AppHostingBuildSourceContainer,
-            Map<String, dynamic>
-          >(container, (value) => value.toMap()),
+      'codebase': ?pulumi.Input.mapOptionalInputValue<AppHostingBuildSourceCodebase, Map<String, dynamic>>(codebase, (value) => value.toMap()),
+      'container': ?pulumi.Input.mapOptionalInputValue<AppHostingBuildSourceContainer, Map<String, dynamic>>(container, (value) => value.toMap()),
     };
   }
 
   factory AppHostingBuildSource.fromMap(Map<String, dynamic> map) {
     return AppHostingBuildSource(
-      codebase: (() {
-        final guardedValue = map['codebase'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AppHostingBuildSourceCodebase.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      container: (() {
-        final guardedValue = map['container'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AppHostingBuildSourceContainer.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      codebase: (() { final guardedValue = map['codebase']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppHostingBuildSourceCodebase.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      container: (() { final guardedValue = map['container']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppHostingBuildSourceContainer.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

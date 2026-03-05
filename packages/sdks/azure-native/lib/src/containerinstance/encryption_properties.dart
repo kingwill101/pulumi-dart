@@ -6,13 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EncryptionProperties {
   /// The keyvault managed identity.
   final pulumi.Input<String>? identity;
-
   /// The encryption key name.
   final pulumi.Input<String> keyName;
-
   /// The encryption key version.
   final pulumi.Input<String> keyVersion;
-
   /// The keyvault base url.
   final pulumi.Input<String> vaultBaseUrl;
 
@@ -39,14 +36,11 @@ class EncryptionProperties {
 
   factory EncryptionProperties.fromMap(Map<String, dynamic> map) {
     return EncryptionProperties(
-      identity: (() {
-        final guardedValue = map['identity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       keyName: pulumi.Input.fromValue(map['keyName'] as String),
       keyVersion: pulumi.Input.fromValue(map['keyVersion'] as String),
       vaultBaseUrl: pulumi.Input.fromValue(map['vaultBaseUrl'] as String),
     );
   }
 }
+

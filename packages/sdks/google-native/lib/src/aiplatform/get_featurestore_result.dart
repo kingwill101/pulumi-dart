@@ -7,29 +7,20 @@ import 'google_cloud_aiplatform_v1_featurestore_online_serving_config_response.d
 class GetFeaturestoreResult {
   /// Timestamp when this Featurestore was created.
   final String createTime;
-
   /// Optional. Customer-managed encryption key spec for data storage. If set, both of the online and offline data storage will be secured by this key.
   final GoogleCloudAiplatformV1EncryptionSpecResponse encryptionSpec;
-
   /// Optional. Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
   final String etag;
-
   /// Optional. The labels with user-defined metadata to organize your Featurestore. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information on and examples of labels. No more than 64 user labels can be associated with one Featurestore(System labels are excluded)." System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
   final Map<String, String> labels;
-
   /// Name of the Featurestore. Format: `projects/{project}/locations/{location}/featurestores/{featurestore}`
   final String name;
-
   /// Optional. Config for online storage resources. The field should not co-exist with the field of `OnlineStoreReplicationConfig`. If both of it and OnlineStoreReplicationConfig are unset, the feature store will not have an online store and cannot be used for online serving.
-  final GoogleCloudAiplatformV1FeaturestoreOnlineServingConfigResponse
-  onlineServingConfig;
-
+  final GoogleCloudAiplatformV1FeaturestoreOnlineServingConfigResponse onlineServingConfig;
   /// Optional. TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage periodically removes obsolete feature values older than `online_storage_ttl_days` since the feature generation time. Note that `online_storage_ttl_days` should be less than or equal to `offline_storage_ttl_days` for each EntityType under a featurestore. If not set, default to 4000 days
   final int onlineStorageTtlDays;
-
   /// State of the featurestore.
   final String state;
-
   /// Timestamp when this Featurestore was last updated.
   final String updateTime;
 
@@ -72,19 +63,15 @@ class GetFeaturestoreResult {
   factory GetFeaturestoreResult.fromMap(Map<String, dynamic> map) {
     return GetFeaturestoreResult(
       createTime: map['createTime'] as String,
-      encryptionSpec: GoogleCloudAiplatformV1EncryptionSpecResponse.fromMap(
-        (map['encryptionSpec']! as Map).cast<String, dynamic>(),
-      ),
+      encryptionSpec: GoogleCloudAiplatformV1EncryptionSpecResponse.fromMap((map['encryptionSpec']! as Map).cast<String, dynamic>()),
       etag: map['etag'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
-      onlineServingConfig:
-          GoogleCloudAiplatformV1FeaturestoreOnlineServingConfigResponse.fromMap(
-            (map['onlineServingConfig']! as Map).cast<String, dynamic>(),
-          ),
+      onlineServingConfig: GoogleCloudAiplatformV1FeaturestoreOnlineServingConfigResponse.fromMap((map['onlineServingConfig']! as Map).cast<String, dynamic>()),
       onlineStorageTtlDays: map['onlineStorageTtlDays'] as int,
       state: map['state'] as String,
       updateTime: map['updateTime'] as String,
     );
   }
 }
+

@@ -11,11 +11,8 @@ import 'continuous_deployment_policy_traffic_config.dart';
 class ContinuousDeploymentPolicyArgs {
   /// Whether this continuous deployment policy is enabled.
   final pulumi.Input<bool> enabled;
-
   /// CloudFront domain name of the staging distribution. See `staging_distribution_dns_names`.
-  final pulumi.Input<ContinuousDeploymentPolicyStagingDistributionDnsNames>
-  stagingDistributionDnsNames;
-
+  final pulumi.Input<ContinuousDeploymentPolicyStagingDistributionDnsNames> stagingDistributionDnsNames;
   /// Parameters for routing production traffic from primary to staging distributions. See `traffic_config`.
   final pulumi.Input<ContinuousDeploymentPolicyTrafficConfig>? trafficConfig;
 
@@ -32,36 +29,17 @@ class ContinuousDeploymentPolicyArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enabled': enabled,
-      'stagingDistributionDnsNames':
-          pulumi.Input.mapInputValue<
-            ContinuousDeploymentPolicyStagingDistributionDnsNames,
-            Map<String, dynamic>
-          >(stagingDistributionDnsNames, (value) => value.toMap()),
-      'trafficConfig':
-          ?pulumi.Input.mapOptionalInputValue<
-            ContinuousDeploymentPolicyTrafficConfig,
-            Map<String, dynamic>
-          >(trafficConfig, (value) => value.toMap()),
+      'stagingDistributionDnsNames': pulumi.Input.mapInputValue<ContinuousDeploymentPolicyStagingDistributionDnsNames, Map<String, dynamic>>(stagingDistributionDnsNames, (value) => value.toMap()),
+      'trafficConfig': ?pulumi.Input.mapOptionalInputValue<ContinuousDeploymentPolicyTrafficConfig, Map<String, dynamic>>(trafficConfig, (value) => value.toMap()),
     };
   }
 
   factory ContinuousDeploymentPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ContinuousDeploymentPolicyArgs(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
-      stagingDistributionDnsNames: pulumi.Input.fromValue(
-        ContinuousDeploymentPolicyStagingDistributionDnsNames.fromMap(
-          (map['stagingDistributionDnsNames']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      trafficConfig: (() {
-        final guardedValue = map['trafficConfig'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ContinuousDeploymentPolicyTrafficConfig.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      stagingDistributionDnsNames: pulumi.Input.fromValue(ContinuousDeploymentPolicyStagingDistributionDnsNames.fromMap((map['stagingDistributionDnsNames']! as Map).cast<String, dynamic>())),
+      trafficConfig: (() { final guardedValue = map['trafficConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ContinuousDeploymentPolicyTrafficConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

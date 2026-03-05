@@ -6,25 +6,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JsonFormatResponse {
   /// Deserializer. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? deserializer;
-
   /// The code page name of the preferred encoding. If not provided, the default value is 'utf-8', unless the byte order mark (BOM) denotes another Unicode encoding. The full list of supported values can be found in the 'Name' column of the table of encodings in the following reference: https://go.microsoft.com/fwlink/?linkid=861078. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? encodingName;
-
   /// File pattern of JSON. To be more specific, the way of separating a collection of JSON objects. The default value is 'setOfObjects'. It is case-sensitive.
   final pulumi.Input<dynamic>? filePattern;
-
   /// The JSONPath of the JSON array element to be flattened. Example: "$.ArrayPath". Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? jsonNodeReference;
-
   /// The JSONPath definition for each column mapping with a customized column name to extract data from JSON file. For fields under root object, start with "$"; for fields inside the array chosen by jsonNodeReference property, start from the array element. Example: {"Column1": "$.Column1Path", "Column2": "Column2PathInArray"}. Type: object (or Expression with resultType object).
   final pulumi.Input<dynamic>? jsonPathDefinition;
-
   /// The character used to separate nesting levels. Default value is '.' (dot). Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? nestingSeparator;
-
   /// Serializer. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? serializer;
-
   /// Type of dataset storage format.
   /// Expected value is 'JsonFormat'.
   final pulumi.Input<String> type;
@@ -64,42 +57,15 @@ class JsonFormatResponse {
 
   factory JsonFormatResponse.fromMap(Map<String, dynamic> map) {
     return JsonFormatResponse(
-      deserializer: (() {
-        final guardedValue = map['deserializer'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      encodingName: (() {
-        final guardedValue = map['encodingName'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      filePattern: (() {
-        final guardedValue = map['filePattern'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      jsonNodeReference: (() {
-        final guardedValue = map['jsonNodeReference'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      jsonPathDefinition: (() {
-        final guardedValue = map['jsonPathDefinition'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      nestingSeparator: (() {
-        final guardedValue = map['nestingSeparator'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
-      serializer: (() {
-        final guardedValue = map['serializer'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue);
-      })(),
+      deserializer: (() { final guardedValue = map['deserializer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      encodingName: (() { final guardedValue = map['encodingName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      filePattern: (() { final guardedValue = map['filePattern']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      jsonNodeReference: (() { final guardedValue = map['jsonNodeReference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      jsonPathDefinition: (() { final guardedValue = map['jsonPathDefinition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      nestingSeparator: (() { final guardedValue = map['nestingSeparator']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      serializer: (() { final guardedValue = map['serializer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

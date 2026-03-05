@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HighAvailabilityResponse {
   /// High availability mode for a server.
   final pulumi.Input<String>? mode;
-
   /// Availability zone of the standby server.
   final pulumi.Input<String>? standbyAvailabilityZone;
-
   /// The state of server high availability.
   final pulumi.Input<String> state;
 
@@ -33,17 +31,10 @@ class HighAvailabilityResponse {
 
   factory HighAvailabilityResponse.fromMap(Map<String, dynamic> map) {
     return HighAvailabilityResponse(
-      mode: (() {
-        final guardedValue = map['mode'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      standbyAvailabilityZone: (() {
-        final guardedValue = map['standbyAvailabilityZone'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      standbyAvailabilityZone: (() { final guardedValue = map['standbyAvailabilityZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       state: pulumi.Input.fromValue(map['state'] as String),
     );
   }
 }
+

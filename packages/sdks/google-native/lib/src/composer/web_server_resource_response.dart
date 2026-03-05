@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WebServerResourceResponse {
   /// Optional. CPU request and limit for Airflow web server.
   final pulumi.Input<double> cpu;
-
   /// Optional. Memory (GB) request and limit for Airflow web server.
   final pulumi.Input<double> memoryGb;
-
   /// Optional. Storage (GB) request and limit for Airflow web server.
   final pulumi.Input<double> storageGb;
 
@@ -39,3 +37,4 @@ class WebServerResourceResponse {
     );
   }
 }
+

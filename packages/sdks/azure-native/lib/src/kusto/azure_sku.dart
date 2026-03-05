@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureSku {
   /// The number of instances of the cluster.
   final pulumi.Input<int>? capacity;
-
   /// SKU name.
   final pulumi.Input<String> name;
-
   /// SKU tier.
   final pulumi.Input<String> tier;
 
@@ -17,21 +15,26 @@ class AzureSku {
   /// [capacity] The number of instances of the cluster.
   /// [name] SKU name.
   /// [tier] SKU tier.
-  AzureSku({this.capacity, required this.name, required this.tier});
+  AzureSku({
+    this.capacity,
+    required this.name,
+    required this.tier,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'capacity': ?capacity, 'name': name, 'tier': tier};
+    return <String, dynamic>{
+      'capacity': ?capacity,
+      'name': name,
+      'tier': tier,
+    };
   }
 
   factory AzureSku.fromMap(Map<String, dynamic> map) {
     return AzureSku(
-      capacity: (() {
-        final guardedValue = map['capacity'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       tier: pulumi.Input.fromValue(map['tier'] as String),
     );
   }
 }
+

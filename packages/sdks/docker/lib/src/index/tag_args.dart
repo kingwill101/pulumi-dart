@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TagArgs {
   /// Name of the source image.
   final pulumi.Input<String> sourceImage;
-
   /// List of values which cause the tag to be (re)created. This is useful for triggering a new tag when the source image changes.
   final pulumi.Input<List<String>>? tagTriggers;
-
   /// Name of the target image.
   final pulumi.Input<String> targetImage;
 
@@ -37,12 +35,9 @@ class TagArgs {
   factory TagArgs.fromMap(Map<String, dynamic> map) {
     return TagArgs(
       sourceImage: pulumi.Input.fromValue(map['sourceImage'] as String),
-      tagTriggers: (() {
-        final guardedValue = map['tagTriggers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      tagTriggers: (() { final guardedValue = map['tagTriggers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       targetImage: pulumi.Input.fromValue(map['targetImage'] as String),
     );
   }
 }
+

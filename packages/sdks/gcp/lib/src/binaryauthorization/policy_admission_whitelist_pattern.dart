@@ -11,10 +11,14 @@ class PolicyAdmissionWhitelistPattern {
 
   /// Creates a new [PolicyAdmissionWhitelistPattern].
   /// [namePattern] An image name pattern to whitelist, in the form
-  PolicyAdmissionWhitelistPattern({required this.namePattern});
+  PolicyAdmissionWhitelistPattern({
+    required this.namePattern,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'namePattern': namePattern};
+    return <String, dynamic>{
+      'namePattern': namePattern,
+    };
   }
 
   factory PolicyAdmissionWhitelistPattern.fromMap(Map<String, dynamic> map) {
@@ -23,3 +27,4 @@ class PolicyAdmissionWhitelistPattern {
     );
   }
 }
+

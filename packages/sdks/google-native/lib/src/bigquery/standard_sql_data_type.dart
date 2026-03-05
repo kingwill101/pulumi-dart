@@ -8,13 +8,10 @@ import 'standard_sql_struct_type.dart';
 class StandardSqlDataType {
   /// The type of the array's elements, if type_kind = "ARRAY".
   final pulumi.Input<StandardSqlDataType>? arrayElementType;
-
   /// The type of the range's elements, if type_kind = "RANGE".
   final pulumi.Input<StandardSqlDataType>? rangeElementType;
-
   /// The fields of this struct, in order, if type_kind = "STRUCT".
   final pulumi.Input<StandardSqlStructType>? structType;
-
   /// The top level type of this field. Can be any GoogleSQL data type (e.g., "INT64", "DATE", "ARRAY").
   final pulumi.Input<StandardSqlDataTypeTypeKind> typeKind;
 
@@ -32,61 +29,20 @@ class StandardSqlDataType {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arrayElementType':
-          ?pulumi.Input.mapOptionalInputValue<
-            StandardSqlDataType,
-            Map<String, dynamic>
-          >(arrayElementType, (value) => value.toMap()),
-      'rangeElementType':
-          ?pulumi.Input.mapOptionalInputValue<
-            StandardSqlDataType,
-            Map<String, dynamic>
-          >(rangeElementType, (value) => value.toMap()),
-      'structType':
-          ?pulumi.Input.mapOptionalInputValue<
-            StandardSqlStructType,
-            Map<String, dynamic>
-          >(structType, (value) => value.toMap()),
-      'typeKind':
-          pulumi.Input.mapInputValue<StandardSqlDataTypeTypeKind, String>(
-            typeKind,
-            (value) => value.wireValue,
-          ),
+      'arrayElementType': ?pulumi.Input.mapOptionalInputValue<StandardSqlDataType, Map<String, dynamic>>(arrayElementType, (value) => value.toMap()),
+      'rangeElementType': ?pulumi.Input.mapOptionalInputValue<StandardSqlDataType, Map<String, dynamic>>(rangeElementType, (value) => value.toMap()),
+      'structType': ?pulumi.Input.mapOptionalInputValue<StandardSqlStructType, Map<String, dynamic>>(structType, (value) => value.toMap()),
+      'typeKind': pulumi.Input.mapInputValue<StandardSqlDataTypeTypeKind, String>(typeKind, (value) => value.wireValue),
     };
   }
 
   factory StandardSqlDataType.fromMap(Map<String, dynamic> map) {
     return StandardSqlDataType(
-      arrayElementType: (() {
-        final guardedValue = map['arrayElementType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          StandardSqlDataType.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      rangeElementType: (() {
-        final guardedValue = map['rangeElementType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          StandardSqlDataType.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      structType: (() {
-        final guardedValue = map['structType'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          StandardSqlStructType.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      typeKind: pulumi.Input.fromValue(
-        StandardSqlDataTypeTypeKind.fromValue(map['typeKind']! as String),
-      ),
+      arrayElementType: (() { final guardedValue = map['arrayElementType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StandardSqlDataType.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      rangeElementType: (() { final guardedValue = map['rangeElementType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StandardSqlDataType.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      structType: (() { final guardedValue = map['structType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StandardSqlStructType.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      typeKind: pulumi.Input.fromValue(StandardSqlDataTypeTypeKind.fromValue(map['typeKind']! as String)),
     );
   }
 }
+

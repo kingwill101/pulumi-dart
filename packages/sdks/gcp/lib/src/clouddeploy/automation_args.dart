@@ -13,39 +13,29 @@ class AutomationArgs {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
-
   /// The delivery_pipeline for the resource
   final pulumi.Input<String> deliveryPipeline;
-
   /// Optional. Description of the `Automation`. Max length is 255 characters.
   final pulumi.Input<String>? description;
-
   /// Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be &lt;= 63 characters.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
-
   /// The location for the resource
   final pulumi.Input<String> location;
-
   /// Name of the `Automation`.
   final pulumi.Input<String>? name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-
   /// Required. List of Automation rules associated with the Automation resource. Must have at least one rule and limited to 250 rules per Delivery Pipeline. Note: the order of the rules here is not the same as the order of execution.
   /// Structure is documented below.
   final pulumi.Input<List<AutomationRule>> rules;
-
   /// Required. Selected resources to which the automation will be applied.
   /// Structure is documented below.
   final pulumi.Input<AutomationSelector> selector;
-
   /// Required. Email address of the user-managed IAM service account that creates Cloud Deploy release and rollout resources.
   final pulumi.Input<String> serviceAccount;
-
   /// Optional. When Suspended, automation is deactivated from execution.
   final pulumi.Input<bool>? suspended;
 
@@ -84,23 +74,8 @@ class AutomationArgs {
       'location': location,
       'name': ?name,
       'project': ?project,
-      'rules':
-          pulumi.Input.mapInputValue<
-            List<AutomationRule>,
-            List<Map<String, dynamic>>
-          >(
-            rules,
-            (value) =>
-                pulumi.Input.encodeList<AutomationRule, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
-      'selector':
-          pulumi.Input.mapInputValue<AutomationSelector, Map<String, dynamic>>(
-            selector,
-            (value) => value.toMap(),
-          ),
+      'rules': pulumi.Input.mapInputValue<List<AutomationRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<AutomationRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'selector': pulumi.Input.mapInputValue<AutomationSelector, Map<String, dynamic>>(selector, (value) => value.toMap()),
       'serviceAccount': serviceAccount,
       'suspended': ?suspended,
     };
@@ -108,57 +83,18 @@ class AutomationArgs {
 
   factory AutomationArgs.fromMap(Map<String, dynamic> map) {
     return AutomationArgs(
-      annotations: (() {
-        final guardedValue = map['annotations'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
-      deliveryPipeline: pulumi.Input.fromValue(
-        map['deliveryPipeline'] as String,
-      ),
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      labels: (() {
-        final guardedValue = map['labels'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      deliveryPipeline: pulumi.Input.fromValue(map['deliveryPipeline'] as String),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      rules: pulumi.Input.fromValue(
-        pulumi.Input.decodeList<AutomationRule>(
-          map['rules']!,
-          (value) =>
-              AutomationRule.fromMap((value as Map).cast<String, dynamic>()),
-        ),
-      ),
-      selector: pulumi.Input.fromValue(
-        AutomationSelector.fromMap(
-          (map['selector']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      rules: pulumi.Input.fromValue(pulumi.Input.decodeList<AutomationRule>(map['rules']!, (value) => AutomationRule.fromMap((value as Map).cast<String, dynamic>()))),
+      selector: pulumi.Input.fromValue(AutomationSelector.fromMap((map['selector']! as Map).cast<String, dynamic>())),
       serviceAccount: pulumi.Input.fromValue(map['serviceAccount'] as String),
-      suspended: (() {
-        final guardedValue = map['suspended'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      suspended: (() { final guardedValue = map['suspended']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
+

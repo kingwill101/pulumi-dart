@@ -1,26 +1,12 @@
 enum DeliveryRuleActionParametersType {
-  deliveryRuleUrlRedirectActionParameters(
-    "DeliveryRuleUrlRedirectActionParameters",
-  ),
-  deliveryRuleUrlSigningActionParameters(
-    "DeliveryRuleUrlSigningActionParameters",
-  ),
-  deliveryRuleOriginGroupOverrideActionParameters(
-    "DeliveryRuleOriginGroupOverrideActionParameters",
-  ),
-  deliveryRuleUrlRewriteActionParameters(
-    "DeliveryRuleUrlRewriteActionParameters",
-  ),
+  deliveryRuleUrlRedirectActionParameters("DeliveryRuleUrlRedirectActionParameters"),
+  deliveryRuleUrlSigningActionParameters("DeliveryRuleUrlSigningActionParameters"),
+  deliveryRuleOriginGroupOverrideActionParameters("DeliveryRuleOriginGroupOverrideActionParameters"),
+  deliveryRuleUrlRewriteActionParameters("DeliveryRuleUrlRewriteActionParameters"),
   deliveryRuleHeaderActionParameters("DeliveryRuleHeaderActionParameters"),
-  deliveryRuleCacheExpirationActionParameters(
-    "DeliveryRuleCacheExpirationActionParameters",
-  ),
-  deliveryRuleCacheKeyQueryStringBehaviorActionParameters(
-    "DeliveryRuleCacheKeyQueryStringBehaviorActionParameters",
-  ),
-  deliveryRuleRouteConfigurationOverrideActionParameters(
-    "DeliveryRuleRouteConfigurationOverrideActionParameters",
-  );
+  deliveryRuleCacheExpirationActionParameters("DeliveryRuleCacheExpirationActionParameters"),
+  deliveryRuleCacheKeyQueryStringBehaviorActionParameters("DeliveryRuleCacheKeyQueryStringBehaviorActionParameters"),
+  deliveryRuleRouteConfigurationOverrideActionParameters("DeliveryRuleRouteConfigurationOverrideActionParameters");
 
   const DeliveryRuleActionParametersType(this.wireValue);
   final String wireValue;
@@ -31,8 +17,7 @@ enum DeliveryRuleActionParametersType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown DeliveryRuleActionParametersType value: $value',
-    );
+    throw ArgumentError('Unknown DeliveryRuleActionParametersType value: $value');
   }
 }
+

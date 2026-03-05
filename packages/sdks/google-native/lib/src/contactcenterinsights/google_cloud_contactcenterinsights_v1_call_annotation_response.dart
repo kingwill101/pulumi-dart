@@ -11,48 +11,25 @@ import 'google_cloud_contactcenterinsights_v1_sentiment_data_response.dart';
 /// A piece of metadata that applies to a window of a call.
 class GoogleCloudContactcenterinsightsV1CallAnnotationResponse {
   /// The boundary in the conversation where the annotation ends, inclusive.
-  final pulumi.Input<
-    GoogleCloudContactcenterinsightsV1AnnotationBoundaryResponse
-  >
-  annotationEndBoundary;
-
+  final pulumi.Input<GoogleCloudContactcenterinsightsV1AnnotationBoundaryResponse> annotationEndBoundary;
   /// The boundary in the conversation where the annotation starts, inclusive.
-  final pulumi.Input<
-    GoogleCloudContactcenterinsightsV1AnnotationBoundaryResponse
-  >
-  annotationStartBoundary;
-
+  final pulumi.Input<GoogleCloudContactcenterinsightsV1AnnotationBoundaryResponse> annotationStartBoundary;
   /// The channel of the audio where the annotation occurs. For single-channel audio, this field is not populated.
   final pulumi.Input<int> channelTag;
-
   /// Data specifying an entity mention.
-  final pulumi.Input<
-    GoogleCloudContactcenterinsightsV1EntityMentionDataResponse
-  >
-  entityMentionData;
-
+  final pulumi.Input<GoogleCloudContactcenterinsightsV1EntityMentionDataResponse> entityMentionData;
   /// Data specifying a hold.
   final pulumi.Input<Map<String, dynamic>> holdData;
-
   /// Data specifying an intent match.
-  final pulumi.Input<GoogleCloudContactcenterinsightsV1IntentMatchDataResponse>
-  intentMatchData;
-
+  final pulumi.Input<GoogleCloudContactcenterinsightsV1IntentMatchDataResponse> intentMatchData;
   /// Data specifying an interruption.
   final pulumi.Input<Map<String, dynamic>> interruptionData;
-
   /// Data specifying an issue match.
-  final pulumi.Input<GoogleCloudContactcenterinsightsV1IssueMatchDataResponse>
-  issueMatchData;
-
+  final pulumi.Input<GoogleCloudContactcenterinsightsV1IssueMatchDataResponse> issueMatchData;
   /// Data specifying a phrase match.
-  final pulumi.Input<GoogleCloudContactcenterinsightsV1PhraseMatchDataResponse>
-  phraseMatchData;
-
+  final pulumi.Input<GoogleCloudContactcenterinsightsV1PhraseMatchDataResponse> phraseMatchData;
   /// Data specifying sentiment.
-  final pulumi.Input<GoogleCloudContactcenterinsightsV1SentimentDataResponse>
-  sentimentData;
-
+  final pulumi.Input<GoogleCloudContactcenterinsightsV1SentimentDataResponse> sentimentData;
   /// Data specifying silence.
   final pulumi.Input<Map<String, dynamic>> silenceData;
 
@@ -84,97 +61,34 @@ class GoogleCloudContactcenterinsightsV1CallAnnotationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'annotationEndBoundary':
-          pulumi.Input.mapInputValue<
-            GoogleCloudContactcenterinsightsV1AnnotationBoundaryResponse,
-            Map<String, dynamic>
-          >(annotationEndBoundary, (value) => value.toMap()),
-      'annotationStartBoundary':
-          pulumi.Input.mapInputValue<
-            GoogleCloudContactcenterinsightsV1AnnotationBoundaryResponse,
-            Map<String, dynamic>
-          >(annotationStartBoundary, (value) => value.toMap()),
+      'annotationEndBoundary': pulumi.Input.mapInputValue<GoogleCloudContactcenterinsightsV1AnnotationBoundaryResponse, Map<String, dynamic>>(annotationEndBoundary, (value) => value.toMap()),
+      'annotationStartBoundary': pulumi.Input.mapInputValue<GoogleCloudContactcenterinsightsV1AnnotationBoundaryResponse, Map<String, dynamic>>(annotationStartBoundary, (value) => value.toMap()),
       'channelTag': channelTag,
-      'entityMentionData':
-          pulumi.Input.mapInputValue<
-            GoogleCloudContactcenterinsightsV1EntityMentionDataResponse,
-            Map<String, dynamic>
-          >(entityMentionData, (value) => value.toMap()),
+      'entityMentionData': pulumi.Input.mapInputValue<GoogleCloudContactcenterinsightsV1EntityMentionDataResponse, Map<String, dynamic>>(entityMentionData, (value) => value.toMap()),
       'holdData': holdData,
-      'intentMatchData':
-          pulumi.Input.mapInputValue<
-            GoogleCloudContactcenterinsightsV1IntentMatchDataResponse,
-            Map<String, dynamic>
-          >(intentMatchData, (value) => value.toMap()),
+      'intentMatchData': pulumi.Input.mapInputValue<GoogleCloudContactcenterinsightsV1IntentMatchDataResponse, Map<String, dynamic>>(intentMatchData, (value) => value.toMap()),
       'interruptionData': interruptionData,
-      'issueMatchData':
-          pulumi.Input.mapInputValue<
-            GoogleCloudContactcenterinsightsV1IssueMatchDataResponse,
-            Map<String, dynamic>
-          >(issueMatchData, (value) => value.toMap()),
-      'phraseMatchData':
-          pulumi.Input.mapInputValue<
-            GoogleCloudContactcenterinsightsV1PhraseMatchDataResponse,
-            Map<String, dynamic>
-          >(phraseMatchData, (value) => value.toMap()),
-      'sentimentData':
-          pulumi.Input.mapInputValue<
-            GoogleCloudContactcenterinsightsV1SentimentDataResponse,
-            Map<String, dynamic>
-          >(sentimentData, (value) => value.toMap()),
+      'issueMatchData': pulumi.Input.mapInputValue<GoogleCloudContactcenterinsightsV1IssueMatchDataResponse, Map<String, dynamic>>(issueMatchData, (value) => value.toMap()),
+      'phraseMatchData': pulumi.Input.mapInputValue<GoogleCloudContactcenterinsightsV1PhraseMatchDataResponse, Map<String, dynamic>>(phraseMatchData, (value) => value.toMap()),
+      'sentimentData': pulumi.Input.mapInputValue<GoogleCloudContactcenterinsightsV1SentimentDataResponse, Map<String, dynamic>>(sentimentData, (value) => value.toMap()),
       'silenceData': silenceData,
     };
   }
 
-  factory GoogleCloudContactcenterinsightsV1CallAnnotationResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GoogleCloudContactcenterinsightsV1CallAnnotationResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContactcenterinsightsV1CallAnnotationResponse(
-      annotationEndBoundary: pulumi.Input.fromValue(
-        GoogleCloudContactcenterinsightsV1AnnotationBoundaryResponse.fromMap(
-          (map['annotationEndBoundary']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      annotationStartBoundary: pulumi.Input.fromValue(
-        GoogleCloudContactcenterinsightsV1AnnotationBoundaryResponse.fromMap(
-          (map['annotationStartBoundary']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      annotationEndBoundary: pulumi.Input.fromValue(GoogleCloudContactcenterinsightsV1AnnotationBoundaryResponse.fromMap((map['annotationEndBoundary']! as Map).cast<String, dynamic>())),
+      annotationStartBoundary: pulumi.Input.fromValue(GoogleCloudContactcenterinsightsV1AnnotationBoundaryResponse.fromMap((map['annotationStartBoundary']! as Map).cast<String, dynamic>())),
       channelTag: pulumi.Input.fromValue(map['channelTag'] as int),
-      entityMentionData: pulumi.Input.fromValue(
-        GoogleCloudContactcenterinsightsV1EntityMentionDataResponse.fromMap(
-          (map['entityMentionData']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      holdData: pulumi.Input.fromValue(
-        (map['holdData']! as Map).cast<String, dynamic>(),
-      ),
-      intentMatchData: pulumi.Input.fromValue(
-        GoogleCloudContactcenterinsightsV1IntentMatchDataResponse.fromMap(
-          (map['intentMatchData']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      interruptionData: pulumi.Input.fromValue(
-        (map['interruptionData']! as Map).cast<String, dynamic>(),
-      ),
-      issueMatchData: pulumi.Input.fromValue(
-        GoogleCloudContactcenterinsightsV1IssueMatchDataResponse.fromMap(
-          (map['issueMatchData']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      phraseMatchData: pulumi.Input.fromValue(
-        GoogleCloudContactcenterinsightsV1PhraseMatchDataResponse.fromMap(
-          (map['phraseMatchData']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      sentimentData: pulumi.Input.fromValue(
-        GoogleCloudContactcenterinsightsV1SentimentDataResponse.fromMap(
-          (map['sentimentData']! as Map).cast<String, dynamic>(),
-        ),
-      ),
-      silenceData: pulumi.Input.fromValue(
-        (map['silenceData']! as Map).cast<String, dynamic>(),
-      ),
+      entityMentionData: pulumi.Input.fromValue(GoogleCloudContactcenterinsightsV1EntityMentionDataResponse.fromMap((map['entityMentionData']! as Map).cast<String, dynamic>())),
+      holdData: pulumi.Input.fromValue((map['holdData']! as Map).cast<String, dynamic>()),
+      intentMatchData: pulumi.Input.fromValue(GoogleCloudContactcenterinsightsV1IntentMatchDataResponse.fromMap((map['intentMatchData']! as Map).cast<String, dynamic>())),
+      interruptionData: pulumi.Input.fromValue((map['interruptionData']! as Map).cast<String, dynamic>()),
+      issueMatchData: pulumi.Input.fromValue(GoogleCloudContactcenterinsightsV1IssueMatchDataResponse.fromMap((map['issueMatchData']! as Map).cast<String, dynamic>())),
+      phraseMatchData: pulumi.Input.fromValue(GoogleCloudContactcenterinsightsV1PhraseMatchDataResponse.fromMap((map['phraseMatchData']! as Map).cast<String, dynamic>())),
+      sentimentData: pulumi.Input.fromValue(GoogleCloudContactcenterinsightsV1SentimentDataResponse.fromMap((map['sentimentData']! as Map).cast<String, dynamic>())),
+      silenceData: pulumi.Input.fromValue((map['silenceData']! as Map).cast<String, dynamic>()),
     );
   }
 }
+

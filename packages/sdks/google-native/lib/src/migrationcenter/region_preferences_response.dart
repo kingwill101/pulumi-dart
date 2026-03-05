@@ -9,17 +9,20 @@ class RegionPreferencesResponse {
 
   /// Creates a new [RegionPreferencesResponse].
   /// [preferredRegions] A list of preferred regions, ordered by the most preferred region first. Set only valid Google Cloud region names. See https://cloud.google.com/compute/docs/regions-zones for available regions.
-  RegionPreferencesResponse({required this.preferredRegions});
+  RegionPreferencesResponse({
+    required this.preferredRegions,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'preferredRegions': preferredRegions};
+    return <String, dynamic>{
+      'preferredRegions': preferredRegions,
+    };
   }
 
   factory RegionPreferencesResponse.fromMap(Map<String, dynamic> map) {
     return RegionPreferencesResponse(
-      preferredRegions: pulumi.Input.fromValue(
-        (map['preferredRegions'] as List).cast<String>(),
-      ),
+      preferredRegions: pulumi.Input.fromValue((map['preferredRegions'] as List).cast<String>()),
     );
   }
 }
+

@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDscConfigurationArgs {
   /// The name of the automation account.
   final pulumi.Input<String> automationAccountName;
-
   /// The configuration name.
   final pulumi.Input<String> configurationName;
-
   /// Name of an Azure Resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -36,15 +34,10 @@ class GetDscConfigurationArgs {
 
   factory GetDscConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return GetDscConfigurationArgs(
-      automationAccountName: pulumi.Input.fromValue(
-        map['automationAccountName'] as String,
-      ),
-      configurationName: pulumi.Input.fromValue(
-        map['configurationName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      automationAccountName: pulumi.Input.fromValue(map['automationAccountName'] as String),
+      configurationName: pulumi.Input.fromValue(map['configurationName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

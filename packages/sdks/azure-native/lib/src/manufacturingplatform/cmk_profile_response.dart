@@ -9,10 +9,14 @@ class CmkProfileResponse {
 
   /// Creates a new [CmkProfileResponse].
   /// [keyUri] URI of Key in AKV
-  CmkProfileResponse({required this.keyUri});
+  CmkProfileResponse({
+    required this.keyUri,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'keyUri': keyUri};
+    return <String, dynamic>{
+      'keyUri': keyUri,
+    };
   }
 
   factory CmkProfileResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class CmkProfileResponse {
     );
   }
 }
+

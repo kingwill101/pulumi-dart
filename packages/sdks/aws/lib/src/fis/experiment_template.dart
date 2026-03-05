@@ -1050,37 +1050,25 @@ import 'experiment_template_state.dart';
 class ExperimentTemplate extends pulumi.CustomResource {
   /// Action to be performed during an experiment. See below.
   late final pulumi.Output<List<Map<String, dynamic>>> actions;
-
   /// Description for the experiment template.
   late final pulumi.Output<String> description;
-
   /// The experiment options for the experiment template. See experiment_options below for more details!
-  late final pulumi.Output<ExperimentTemplateExperimentOptions>
-  experimentOptions;
-
+  late final pulumi.Output<ExperimentTemplateExperimentOptions> experimentOptions;
   /// The configuration for [experiment reporting](https://docs.aws.amazon.com/fis/latest/userguide/experiment-report-configuration.html). See below.
-  late final pulumi.Output<ExperimentTemplateExperimentReportConfiguration?>
-  experimentReportConfiguration;
-
+  late final pulumi.Output<ExperimentTemplateExperimentReportConfiguration?> experimentReportConfiguration;
   /// The configuration for experiment logging. See below.
-  late final pulumi.Output<ExperimentTemplateLogConfiguration?>
-  logConfiguration;
-
+  late final pulumi.Output<ExperimentTemplateLogConfiguration?> logConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// ARN of an IAM role that grants the AWS FIS service permission to perform service actions on your behalf.
   late final pulumi.Output<String> roleArn;
-
   /// When an ongoing experiment should be stopped. See below.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<List<Map<String, dynamic>>> stopConditions;
-
   /// Key-value mapping of tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// Target of an action. See below.
   late final pulumi.Output<List<Map<String, dynamic>>?> targets;
 
@@ -1093,49 +1081,19 @@ class ExperimentTemplate extends pulumi.CustomResource {
     ExperimentTemplateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:fis/experimentTemplate:ExperimentTemplate',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:fis/experimentTemplate:ExperimentTemplate',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     actions = registerOutput<List<Map<String, dynamic>>>('actions');
     description = registerOutput<String>('description');
-    experimentOptions = registerOutput<ExperimentTemplateExperimentOptions>(
-      'experimentOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExperimentTemplateExperimentOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    experimentReportConfiguration =
-        registerOutput<ExperimentTemplateExperimentReportConfiguration?>(
-          'experimentReportConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ExperimentTemplateExperimentReportConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    logConfiguration = registerOutput<ExperimentTemplateLogConfiguration?>(
-      'logConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExperimentTemplateLogConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    experimentOptions = registerOutput<ExperimentTemplateExperimentOptions>('experimentOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExperimentTemplateExperimentOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    experimentReportConfiguration = registerOutput<ExperimentTemplateExperimentReportConfiguration?>('experimentReportConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExperimentTemplateExperimentReportConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    logConfiguration = registerOutput<ExperimentTemplateLogConfiguration?>('logConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExperimentTemplateLogConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
-    stopConditions = registerOutput<List<Map<String, dynamic>>>(
-      'stopConditions',
-    );
+    stopConditions = registerOutput<List<Map<String, dynamic>>>('stopConditions');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     targets = registerOutput<List<Map<String, dynamic>>?>('targets');
@@ -1159,49 +1117,19 @@ class ExperimentTemplate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:fis/experimentTemplate:ExperimentTemplate',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:fis/experimentTemplate:ExperimentTemplate',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     actions = registerOutput<List<Map<String, dynamic>>>('actions');
     description = registerOutput<String>('description');
-    experimentOptions = registerOutput<ExperimentTemplateExperimentOptions>(
-      'experimentOptions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExperimentTemplateExperimentOptions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    experimentReportConfiguration =
-        registerOutput<ExperimentTemplateExperimentReportConfiguration?>(
-          'experimentReportConfiguration',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return ExperimentTemplateExperimentReportConfiguration.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
-    logConfiguration = registerOutput<ExperimentTemplateLogConfiguration?>(
-      'logConfiguration',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ExperimentTemplateLogConfiguration.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    experimentOptions = registerOutput<ExperimentTemplateExperimentOptions>('experimentOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExperimentTemplateExperimentOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    experimentReportConfiguration = registerOutput<ExperimentTemplateExperimentReportConfiguration?>('experimentReportConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExperimentTemplateExperimentReportConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    logConfiguration = registerOutput<ExperimentTemplateLogConfiguration?>('logConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExperimentTemplateLogConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
-    stopConditions = registerOutput<List<Map<String, dynamic>>>(
-      'stopConditions',
-    );
+    stopConditions = registerOutput<List<Map<String, dynamic>>>('stopConditions');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     targets = registerOutput<List<Map<String, dynamic>>?>('targets');

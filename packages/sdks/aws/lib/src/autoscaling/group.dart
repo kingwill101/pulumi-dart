@@ -2656,60 +2656,42 @@ import 'metric.dart';
 class Group extends pulumi.CustomResource {
   /// ARN for this Auto Scaling Group
   late final pulumi.Output<String> arn;
-
   /// The instance capacity distribution across Availability Zones. See Availability Zone Distribution below for more details.
-  late final pulumi.Output<GroupAvailabilityZoneDistribution>
-  availabilityZoneDistribution;
-
+  late final pulumi.Output<GroupAvailabilityZoneDistribution> availabilityZoneDistribution;
   /// A list of Availability Zones where instances in the Auto Scaling group can be created. Used for launching into the default VPC subnet in each Availability Zone when not using the `vpc_zone_identifier` attribute, or for attaching a network interface when an existing network interface ID is specified in a launch template. Conflicts with `vpc_zone_identifier`.
   late final pulumi.Output<List<String>> availabilityZones;
-
   /// Whether capacity rebalance is enabled. Otherwise, capacity rebalance is disabled.
   late final pulumi.Output<bool?> capacityRebalance;
-
   /// The capacity reservation specification for the Auto Scaling group allows you to prioritize launching into On-Demand Capacity Reservations. See Capacity Reservation Specification below for more details.
-  late final pulumi.Output<GroupCapacityReservationSpecification>
-  capacityReservationSpecification;
-
+  late final pulumi.Output<GroupCapacityReservationSpecification> capacityReservationSpecification;
   /// Reserved.
   late final pulumi.Output<String?> context;
-
   /// Amount of time, in seconds, after a scaling activity completes before another scaling activity can start.
   late final pulumi.Output<int> defaultCooldown;
-
   /// Amount of time, in seconds, until a newly launched instance can contribute to the Amazon CloudWatch metrics. This delay lets an instance finish initializing before Amazon EC2 Auto Scaling aggregates instance metrics, resulting in more reliable usage data. Set this value equal to the amount of time that it takes for resource consumption to become stable after an instance reaches the InService state. (See [Set the default instance warmup for an Auto Scaling group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-default-instance-warmup.html))
   late final pulumi.Output<int?> defaultInstanceWarmup;
-
   /// Number of Amazon EC2 instances that
   /// should be running in the group. (See also Waiting for
   /// Capacity below.)
   late final pulumi.Output<int> desiredCapacity;
-
   /// The unit of measurement for the value specified for `desired_capacity`. Supported for attribute-based instance type selection only. Valid values: `"units"`, `"vcpu"`, `"memory-mib"`.
   late final pulumi.Output<String?> desiredCapacityType;
-
   /// List of metrics to collect. The allowed values are defined by the [underlying AWS API](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_EnableMetricsCollection.html).
   late final pulumi.Output<List<Metric>?> enabledMetrics;
-
   /// Allows deleting the Auto Scaling Group without waiting
   /// for all instances in the pool to terminate. You can force an Auto Scaling Group to delete
   /// even if it's in the process of scaling a resource. Normally, this provider
   /// drains all the instances before deleting the group. This bypasses that
   /// behavior and potentially leaves resources dangling.
   late final pulumi.Output<bool?> forceDelete;
-
   /// Allows deleting the Auto Scaling Group without waiting for all instances in the warm pool to terminate.
   late final pulumi.Output<bool?> forceDeleteWarmPool;
-
   /// Time (in seconds) after instance comes into service before checking health.
   late final pulumi.Output<int?> healthCheckGracePeriod;
-
   /// "EC2" or "ELB". Controls how health checking is done.
   late final pulumi.Output<String> healthCheckType;
-
   /// Whether to ignore failed [Auto Scaling scaling activities](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-verify-scaling-activity.html) while waiting for capacity. The default is `false` -- failed scaling activities cause errors to be returned.
   late final pulumi.Output<bool?> ignoreFailedScalingActivities;
-
   /// One or more
   /// [Lifecycle Hooks](http://docs.aws.amazon.com/autoscaling/latest/userguide/lifecycle-hooks.html)
   /// to attach to the Auto Scaling Group **before** instances are launched. The
@@ -2718,111 +2700,82 @@ class Group extends pulumi.CustomResource {
   /// resource, without the `autoscaling_group_name` attribute. Please note that this will only work when creating
   /// a new Auto Scaling Group. For all other use-cases, please use `aws.autoscaling.LifecycleHook` resource.
   late final pulumi.Output<List<Map<String, dynamic>>?> initialLifecycleHooks;
-
   /// If this block is configured, add a instance maintenance policy to the specified Auto Scaling group. Defined below.
-  late final pulumi.Output<GroupInstanceMaintenancePolicy?>
-  instanceMaintenancePolicy;
-
+  late final pulumi.Output<GroupInstanceMaintenancePolicy?> instanceMaintenancePolicy;
   /// If this block is configured, start an
   /// [Instance Refresh](https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-instance-refresh.html)
   /// when this Auto Scaling Group is updated. Defined below.
   late final pulumi.Output<GroupInstanceRefresh?> instanceRefresh;
-
   /// Name of the launch configuration to use.
   late final pulumi.Output<String?> launchConfiguration;
-
   /// Nested argument with Launch template specification to use to launch instances. See Launch Template below for more details.
   late final pulumi.Output<GroupLaunchTemplate> launchTemplate;
-
   /// List of elastic load balancer names to add to the autoscaling
   /// group names. Only valid for classic load balancers. For ALBs, use `target_group_arns` instead. To remove all load balancer attachments an empty list should be specified.
   late final pulumi.Output<List<String>> loadBalancers;
-
   /// Maximum amount of time, in seconds, that an instance can be in service, values must be either equal to 0 or between 86400 and 31536000 seconds.
   late final pulumi.Output<int?> maxInstanceLifetime;
-
   /// Maximum size of the Auto Scaling Group.
   late final pulumi.Output<int> maxSize;
-
   /// Granularity to associate with the metrics to collect. The only valid value is `1Minute`. Default is `1Minute`.
   late final pulumi.Output<String?> metricsGranularity;
-
   /// Setting this causes Pulumi to wait for
   /// this number of instances from this Auto Scaling Group to show up healthy in the
   /// ELB only on creation. Updates will not wait on ELB instance number changes.
   /// (See also Waiting for Capacity below.)
   late final pulumi.Output<int?> minElbCapacity;
-
   /// Minimum size of the Auto Scaling Group.
   /// (See also Waiting for Capacity below.)
   late final pulumi.Output<int> minSize;
-
   /// Configuration block containing settings to define launch targets for Auto Scaling groups. See Mixed Instances Policy below for more details.
   late final pulumi.Output<GroupMixedInstancesPolicy> mixedInstancesPolicy;
-
   /// Name of the Auto Scaling Group. By default generated by Pulumi. Conflicts with `name_prefix`.
   late final pulumi.Output<String> name;
-
   /// Creates a unique name beginning with the specified
   /// prefix. Conflicts with `name`.
   late final pulumi.Output<String> namePrefix;
-
   /// Name of the placement group into which you'll launch your instances, if any.
   late final pulumi.Output<String?> placementGroup;
-
   /// Predicted capacity of the group.
   late final pulumi.Output<int> predictedCapacity;
-
   /// Whether newly launched instances
   /// are automatically protected from termination by Amazon EC2 Auto Scaling when
   /// scaling in. For more information about preventing instances from terminating
   /// on scale in, see [Using instance scale-in protection](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-instance-protection.html)
   /// in the Amazon EC2 Auto Scaling User Guide.
   late final pulumi.Output<bool?> protectFromScaleIn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// ARN of the service-linked role that the ASG will use to call other AWS services
   late final pulumi.Output<String> serviceLinkedRoleArn;
-
   /// List of processes to suspend for the Auto Scaling Group. The allowed values are `Launch`, `Terminate`, `HealthCheck`, `ReplaceUnhealthy`, `AZRebalance`, `AlarmNotification`, `ScheduledActions`, `AddToLoadBalancer`, `InstanceRefresh`.
   /// Note that if you suspend either the `Launch` or `Terminate` process types, it can prevent your Auto Scaling Group from functioning properly.
   late final pulumi.Output<List<String>?> suspendedProcesses;
-
   /// Configuration block(s) containing resource tags. See Tag below for more details.
   late final pulumi.Output<List<Map<String, dynamic>>?> tags;
-
   /// Set of `aws.lb.TargetGroup` ARNs, for use with Application or Network Load Balancing. To remove all target group attachments an empty list should be specified.
   late final pulumi.Output<List<String>> targetGroupArns;
-
   /// List of policies to decide how the instances in the Auto Scaling Group should be terminated. The allowed values are `OldestInstance`, `NewestInstance`, `OldestLaunchConfiguration`, `ClosestToNextInstanceHour`, `OldestLaunchTemplate`, `AllocationStrategy`, `Default`. Additionally, the ARN of a Lambda function can be specified for custom termination policies.
   late final pulumi.Output<List<String>?> terminationPolicies;
-
   /// Attaches one or more traffic sources to the specified Auto Scaling group.
   late final pulumi.Output<List<Map<String, dynamic>>> trafficSources;
-
   /// List of subnet IDs to launch resources in. Subnets automatically determine which availability zones the group will reside. Conflicts with `availability_zones`.
   late final pulumi.Output<List<String>> vpcZoneIdentifiers;
-
   /// Maximum
   /// [duration](https://golang.org/pkg/time/#ParseDuration) that the provider should
   /// wait for ASG instances to be healthy before timing out. (See also Waiting
   /// for Capacity below.) Setting this to "0" causes
   /// the provider to skip all Capacity Waiting behavior.
   late final pulumi.Output<String?> waitForCapacityTimeout;
-
   /// Setting this will cause Pulumi to wait
   /// for exactly this number of healthy instances from this Auto Scaling Group in
   /// all attached load balancers on both create and update operations. (Takes
   /// precedence over `min_elb_capacity` behavior.)
   /// (See also Waiting for Capacity below.)
   late final pulumi.Output<int?> waitForElbCapacity;
-
   /// If this block is configured, add a [Warm Pool](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-warm-pools.html)
   /// to the specified Auto Scaling group. Defined below
   late final pulumi.Output<GroupWarmPool?> warmPool;
-
   /// Current size of the warm pool.
   late final pulumi.Output<int> warmPoolSize;
 
@@ -2830,111 +2783,44 @@ class Group extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Group]. {@macro pulumi_autoscaling_group_group_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Group(String name, {GroupArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'aws:autoscaling/group:Group',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  Group(
+    String name, {
+    GroupArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:autoscaling/group:Group',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    availabilityZoneDistribution =
-        registerOutput<GroupAvailabilityZoneDistribution>(
-          'availabilityZoneDistribution',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return GroupAvailabilityZoneDistribution.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    availabilityZoneDistribution = registerOutput<GroupAvailabilityZoneDistribution>('availabilityZoneDistribution', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupAvailabilityZoneDistribution.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     availabilityZones = registerOutput<List<String>>('availabilityZones');
     capacityRebalance = registerOutput<bool?>('capacityRebalance');
-    capacityReservationSpecification =
-        registerOutput<GroupCapacityReservationSpecification>(
-          'capacityReservationSpecification',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return GroupCapacityReservationSpecification.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    capacityReservationSpecification = registerOutput<GroupCapacityReservationSpecification>('capacityReservationSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupCapacityReservationSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     context = registerOutput<String?>('context');
     defaultCooldown = registerOutput<int>('defaultCooldown');
     defaultInstanceWarmup = registerOutput<int?>('defaultInstanceWarmup');
     desiredCapacity = registerOutput<int>('desiredCapacity');
     desiredCapacityType = registerOutput<String?>('desiredCapacityType');
-    enabledMetrics = registerOutput<List<Metric>?>(
-      'enabledMetrics',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<Metric>(
-          guardedValue,
-          (value) => Metric.fromValue(value as String),
-        );
-      },
-    );
+    enabledMetrics = registerOutput<List<Metric>?>('enabledMetrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<Metric>(guardedValue, (value) => Metric.fromValue(value as String)); });
     forceDelete = registerOutput<bool?>('forceDelete');
     forceDeleteWarmPool = registerOutput<bool?>('forceDeleteWarmPool');
     healthCheckGracePeriod = registerOutput<int?>('healthCheckGracePeriod');
     healthCheckType = registerOutput<String>('healthCheckType');
-    ignoreFailedScalingActivities = registerOutput<bool?>(
-      'ignoreFailedScalingActivities',
-    );
-    initialLifecycleHooks = registerOutput<List<Map<String, dynamic>>?>(
-      'initialLifecycleHooks',
-    );
-    instanceMaintenancePolicy = registerOutput<GroupInstanceMaintenancePolicy?>(
-      'instanceMaintenancePolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GroupInstanceMaintenancePolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    instanceRefresh = registerOutput<GroupInstanceRefresh?>(
-      'instanceRefresh',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GroupInstanceRefresh.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    ignoreFailedScalingActivities = registerOutput<bool?>('ignoreFailedScalingActivities');
+    initialLifecycleHooks = registerOutput<List<Map<String, dynamic>>?>('initialLifecycleHooks');
+    instanceMaintenancePolicy = registerOutput<GroupInstanceMaintenancePolicy?>('instanceMaintenancePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupInstanceMaintenancePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    instanceRefresh = registerOutput<GroupInstanceRefresh?>('instanceRefresh', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupInstanceRefresh.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     launchConfiguration = registerOutput<String?>('launchConfiguration');
-    launchTemplate = registerOutput<GroupLaunchTemplate>(
-      'launchTemplate',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GroupLaunchTemplate.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    launchTemplate = registerOutput<GroupLaunchTemplate>('launchTemplate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupLaunchTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     loadBalancers = registerOutput<List<String>>('loadBalancers');
     maxInstanceLifetime = registerOutput<int?>('maxInstanceLifetime');
     maxSize = registerOutput<int>('maxSize');
     metricsGranularity = registerOutput<String?>('metricsGranularity');
     minElbCapacity = registerOutput<int?>('minElbCapacity');
     minSize = registerOutput<int>('minSize');
-    mixedInstancesPolicy = registerOutput<GroupMixedInstancesPolicy>(
-      'mixedInstancesPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GroupMixedInstancesPolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    mixedInstancesPolicy = registerOutput<GroupMixedInstancesPolicy>('mixedInstancesPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupMixedInstancesPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
     placementGroup = registerOutput<String?>('placementGroup');
@@ -2946,27 +2832,20 @@ class Group extends pulumi.CustomResource {
     tags = registerOutput<List<Map<String, dynamic>>?>('tags');
     targetGroupArns = registerOutput<List<String>>('targetGroupArns');
     terminationPolicies = registerOutput<List<String>?>('terminationPolicies');
-    trafficSources = registerOutput<List<Map<String, dynamic>>>(
-      'trafficSources',
-    );
+    trafficSources = registerOutput<List<Map<String, dynamic>>>('trafficSources');
     vpcZoneIdentifiers = registerOutput<List<String>>('vpcZoneIdentifiers');
     waitForCapacityTimeout = registerOutput<String?>('waitForCapacityTimeout');
     waitForElbCapacity = registerOutput<int?>('waitForElbCapacity');
-    warmPool = registerOutput<GroupWarmPool?>(
-      'warmPool',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GroupWarmPool.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    warmPool = registerOutput<GroupWarmPool?>('warmPool', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupWarmPool.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     warmPoolSize = registerOutput<int>('warmPoolSize');
   }
 
   /// Gets an existing [Group] resource's state with the given [name] and [id].
-  static Group get(String name, pulumi.Input<String> id, {GroupState? state}) {
+  static Group get(
+    String name,
+    pulumi.Input<String> id, {
+    GroupState? state,
+  }) {
     return Group._get(
       name,
       state: state?.toMap(),
@@ -2979,109 +2858,39 @@ class Group extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:autoscaling/group:Group',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:autoscaling/group:Group',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
-    availabilityZoneDistribution =
-        registerOutput<GroupAvailabilityZoneDistribution>(
-          'availabilityZoneDistribution',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return GroupAvailabilityZoneDistribution.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    availabilityZoneDistribution = registerOutput<GroupAvailabilityZoneDistribution>('availabilityZoneDistribution', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupAvailabilityZoneDistribution.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     availabilityZones = registerOutput<List<String>>('availabilityZones');
     capacityRebalance = registerOutput<bool?>('capacityRebalance');
-    capacityReservationSpecification =
-        registerOutput<GroupCapacityReservationSpecification>(
-          'capacityReservationSpecification',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return GroupCapacityReservationSpecification.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    capacityReservationSpecification = registerOutput<GroupCapacityReservationSpecification>('capacityReservationSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupCapacityReservationSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     context = registerOutput<String?>('context');
     defaultCooldown = registerOutput<int>('defaultCooldown');
     defaultInstanceWarmup = registerOutput<int?>('defaultInstanceWarmup');
     desiredCapacity = registerOutput<int>('desiredCapacity');
     desiredCapacityType = registerOutput<String?>('desiredCapacityType');
-    enabledMetrics = registerOutput<List<Metric>?>(
-      'enabledMetrics',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return pulumi.Input.decodeList<Metric>(
-          guardedValue,
-          (value) => Metric.fromValue(value as String),
-        );
-      },
-    );
+    enabledMetrics = registerOutput<List<Metric>?>('enabledMetrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<Metric>(guardedValue, (value) => Metric.fromValue(value as String)); });
     forceDelete = registerOutput<bool?>('forceDelete');
     forceDeleteWarmPool = registerOutput<bool?>('forceDeleteWarmPool');
     healthCheckGracePeriod = registerOutput<int?>('healthCheckGracePeriod');
     healthCheckType = registerOutput<String>('healthCheckType');
-    ignoreFailedScalingActivities = registerOutput<bool?>(
-      'ignoreFailedScalingActivities',
-    );
-    initialLifecycleHooks = registerOutput<List<Map<String, dynamic>>?>(
-      'initialLifecycleHooks',
-    );
-    instanceMaintenancePolicy = registerOutput<GroupInstanceMaintenancePolicy?>(
-      'instanceMaintenancePolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GroupInstanceMaintenancePolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    instanceRefresh = registerOutput<GroupInstanceRefresh?>(
-      'instanceRefresh',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GroupInstanceRefresh.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    ignoreFailedScalingActivities = registerOutput<bool?>('ignoreFailedScalingActivities');
+    initialLifecycleHooks = registerOutput<List<Map<String, dynamic>>?>('initialLifecycleHooks');
+    instanceMaintenancePolicy = registerOutput<GroupInstanceMaintenancePolicy?>('instanceMaintenancePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupInstanceMaintenancePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    instanceRefresh = registerOutput<GroupInstanceRefresh?>('instanceRefresh', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupInstanceRefresh.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     launchConfiguration = registerOutput<String?>('launchConfiguration');
-    launchTemplate = registerOutput<GroupLaunchTemplate>(
-      'launchTemplate',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GroupLaunchTemplate.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    launchTemplate = registerOutput<GroupLaunchTemplate>('launchTemplate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupLaunchTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     loadBalancers = registerOutput<List<String>>('loadBalancers');
     maxInstanceLifetime = registerOutput<int?>('maxInstanceLifetime');
     maxSize = registerOutput<int>('maxSize');
     metricsGranularity = registerOutput<String?>('metricsGranularity');
     minElbCapacity = registerOutput<int?>('minElbCapacity');
     minSize = registerOutput<int>('minSize');
-    mixedInstancesPolicy = registerOutput<GroupMixedInstancesPolicy>(
-      'mixedInstancesPolicy',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GroupMixedInstancesPolicy.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    mixedInstancesPolicy = registerOutput<GroupMixedInstancesPolicy>('mixedInstancesPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupMixedInstancesPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
     placementGroup = registerOutput<String?>('placementGroup');
@@ -3093,22 +2902,11 @@ class Group extends pulumi.CustomResource {
     tags = registerOutput<List<Map<String, dynamic>>?>('tags');
     targetGroupArns = registerOutput<List<String>>('targetGroupArns');
     terminationPolicies = registerOutput<List<String>?>('terminationPolicies');
-    trafficSources = registerOutput<List<Map<String, dynamic>>>(
-      'trafficSources',
-    );
+    trafficSources = registerOutput<List<Map<String, dynamic>>>('trafficSources');
     vpcZoneIdentifiers = registerOutput<List<String>>('vpcZoneIdentifiers');
     waitForCapacityTimeout = registerOutput<String?>('waitForCapacityTimeout');
     waitForElbCapacity = registerOutput<int?>('waitForElbCapacity');
-    warmPool = registerOutput<GroupWarmPool?>(
-      'warmPool',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return GroupWarmPool.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    warmPool = registerOutput<GroupWarmPool?>('warmPool', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupWarmPool.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     warmPoolSize = registerOutput<int>('warmPoolSize');
   }
 }

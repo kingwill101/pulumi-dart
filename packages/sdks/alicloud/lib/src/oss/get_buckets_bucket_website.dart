@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBucketsBucketWebsite {
   /// Key of the HTML document containing the error page.
   final pulumi.Input<String> errorDocument;
-
   /// Key of the HTML document containing the home page.
   final pulumi.Input<String> indexDocument;
 
@@ -31,3 +30,4 @@ class GetBucketsBucketWebsite {
     );
   }
 }
+

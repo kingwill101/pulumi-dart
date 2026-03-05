@@ -2,29 +2,19 @@
 enum SoleTenancyPreferencesHostMaintenancePolicyMigrationcenterV1alpha1 {
   hostMaintenancePolicyUnspecified("HOST_MAINTENANCE_POLICY_UNSPECIFIED"),
   hostMaintenancePolicyDefault("HOST_MAINTENANCE_POLICY_DEFAULT"),
-  hostMaintenancePolicyRestartInPlace(
-    "HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE",
-  ),
-  hostMaintenancePolicyMigrateWithinNodeGroup(
-    "HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP",
-  );
+  hostMaintenancePolicyRestartInPlace("HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE"),
+  hostMaintenancePolicyMigrateWithinNodeGroup("HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP");
 
-  const SoleTenancyPreferencesHostMaintenancePolicyMigrationcenterV1alpha1(
-    this.wireValue,
-  );
+  const SoleTenancyPreferencesHostMaintenancePolicyMigrationcenterV1alpha1(this.wireValue);
   final String wireValue;
 
-  static SoleTenancyPreferencesHostMaintenancePolicyMigrationcenterV1alpha1
-  fromValue(String value) {
-    for (final item
-        in SoleTenancyPreferencesHostMaintenancePolicyMigrationcenterV1alpha1
-            .values) {
+  static SoleTenancyPreferencesHostMaintenancePolicyMigrationcenterV1alpha1 fromValue(String value) {
+    for (final item in SoleTenancyPreferencesHostMaintenancePolicyMigrationcenterV1alpha1.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown SoleTenancyPreferencesHostMaintenancePolicyMigrationcenterV1alpha1 value: $value',
-    );
+    throw ArgumentError('Unknown SoleTenancyPreferencesHostMaintenancePolicyMigrationcenterV1alpha1 value: $value');
   }
 }
+

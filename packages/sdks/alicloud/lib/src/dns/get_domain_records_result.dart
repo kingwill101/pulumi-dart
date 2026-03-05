@@ -7,7 +7,6 @@ import 'get_domain_records_record.dart';
 class GetDomainRecordsResult {
   final String domainName;
   final String? hostRecordRegex;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -57,11 +56,7 @@ class GetDomainRecordsResult {
       'isLocked': ?isLocked,
       'line': ?line,
       'outputFile': ?outputFile,
-      'records':
-          pulumi.Input.encodeList<GetDomainRecordsRecord, Map<String, dynamic>>(
-            records,
-            (value) => value.toMap(),
-          ),
+      'records': pulumi.Input.encodeList<GetDomainRecordsRecord, Map<String, dynamic>>(records, (value) => value.toMap()),
       'status': ?status,
       'type': ?type,
       'urls': urls,
@@ -72,50 +67,18 @@ class GetDomainRecordsResult {
   factory GetDomainRecordsResult.fromMap(Map<String, dynamic> map) {
     return GetDomainRecordsResult(
       domainName: map['domainName'] as String,
-      hostRecordRegex: (() {
-        final guardedValue = map['hostRecordRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      hostRecordRegex: (() { final guardedValue = map['hostRecordRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      isLocked: (() {
-        final guardedValue = map['isLocked'];
-        if (guardedValue == null) return null;
-        return guardedValue as bool;
-      })(),
-      line: (() {
-        final guardedValue = map['line'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      outputFile: (() {
-        final guardedValue = map['outputFile'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      records: pulumi.Input.decodeList<GetDomainRecordsRecord>(
-        map['records']!,
-        (value) => GetDomainRecordsRecord.fromMap(
-          (value as Map).cast<String, dynamic>(),
-        ),
-      ),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      type: (() {
-        final guardedValue = map['type'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      isLocked: (() { final guardedValue = map['isLocked']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      line: (() { final guardedValue = map['line']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      outputFile: (() { final guardedValue = map['outputFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      records: pulumi.Input.decodeList<GetDomainRecordsRecord>(map['records']!, (value) => GetDomainRecordsRecord.fromMap((value as Map).cast<String, dynamic>())),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       urls: (map['urls'] as List).cast<String>(),
-      valueRegex: (() {
-        final guardedValue = map['valueRegex'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      valueRegex: (() { final guardedValue = map['valueRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

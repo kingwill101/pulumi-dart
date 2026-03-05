@@ -9,14 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetProfileArgs {
   /// The name of the Traffic Manager profile.
   final pulumi.Input<String> profileName;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetProfileArgs].
   /// [profileName] The name of the Traffic Manager profile.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetProfileArgs({required this.profileName, required this.resourceGroupName});
+  GetProfileArgs({
+    required this.profileName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,9 +30,8 @@ class GetProfileArgs {
   factory GetProfileArgs.fromMap(Map<String, dynamic> map) {
     return GetProfileArgs(
       profileName: pulumi.Input.fromValue(map['profileName'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

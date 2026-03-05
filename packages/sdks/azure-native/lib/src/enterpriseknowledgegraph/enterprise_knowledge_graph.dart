@@ -166,23 +166,16 @@ import 'sku_response.dart';
 class EnterpriseKnowledgeGraph extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// Specifies the location of the resource.
   late final pulumi.Output<String?> location;
-
   /// Specifies the name of the resource.
   late final pulumi.Output<String> name;
-
   /// The set of properties specific to EnterpriseKnowledgeGraph resource
-  late final pulumi.Output<EnterpriseKnowledgeGraphPropertiesResponse>
-  properties;
-
+  late final pulumi.Output<EnterpriseKnowledgeGraphPropertiesResponse> properties;
   /// Gets or sets the SKU of the resource.
   late final pulumi.Output<SkuResponse?> sku;
-
   /// Contains resource tags defined as key/value pairs.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Specifies the type of the resource.
   late final pulumi.Output<String> type;
 
@@ -195,34 +188,16 @@ class EnterpriseKnowledgeGraph extends pulumi.CustomResource {
     EnterpriseKnowledgeGraphArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:enterpriseknowledgegraph:EnterpriseKnowledgeGraph',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:enterpriseknowledgegraph:EnterpriseKnowledgeGraph',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<EnterpriseKnowledgeGraphPropertiesResponse>(
-      'properties',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return EnterpriseKnowledgeGraphPropertiesResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
-    sku = registerOutput<SkuResponse?>(
-      'sku',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SkuResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    properties = registerOutput<EnterpriseKnowledgeGraphPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnterpriseKnowledgeGraphPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

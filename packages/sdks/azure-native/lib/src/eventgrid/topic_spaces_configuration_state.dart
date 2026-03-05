@@ -15,3 +15,4 @@ enum TopicSpacesConfigurationState {
     throw ArgumentError('Unknown TopicSpacesConfigurationState value: $value');
   }
 }
+

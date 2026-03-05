@@ -9,10 +9,8 @@ import 'volume_response.dart';
 class JobTemplateResponse {
   /// List of container definitions for the Container App.
   final pulumi.Input<List<ContainerResponse>>? containers;
-
   /// List of specialized containers that run before app containers.
   final pulumi.Input<List<InitContainerResponse>>? initContainers;
-
   /// List of volume definitions for the Container App.
   final pulumi.Input<List<VolumeResponse>>? volumes;
 
@@ -20,86 +18,26 @@ class JobTemplateResponse {
   /// [containers] List of container definitions for the Container App.
   /// [initContainers] List of specialized containers that run before app containers.
   /// [volumes] List of volume definitions for the Container App.
-  JobTemplateResponse({this.containers, this.initContainers, this.volumes});
+  JobTemplateResponse({
+    this.containers,
+    this.initContainers,
+    this.volumes,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'containers':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<ContainerResponse>,
-            List<Map<String, dynamic>>
-          >(
-            containers,
-            (value) =>
-                pulumi.Input.encodeList<
-                  ContainerResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'initContainers':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<InitContainerResponse>,
-            List<Map<String, dynamic>>
-          >(
-            initContainers,
-            (value) =>
-                pulumi.Input.encodeList<
-                  InitContainerResponse,
-                  Map<String, dynamic>
-                >(value, (value) => value.toMap()),
-          ),
-      'volumes':
-          ?pulumi.Input.mapOptionalInputValue<
-            List<VolumeResponse>,
-            List<Map<String, dynamic>>
-          >(
-            volumes,
-            (value) =>
-                pulumi.Input.encodeList<VolumeResponse, Map<String, dynamic>>(
-                  value,
-                  (value) => value.toMap(),
-                ),
-          ),
+      'containers': ?pulumi.Input.mapOptionalInputValue<List<ContainerResponse>, List<Map<String, dynamic>>>(containers, (value) => pulumi.Input.encodeList<ContainerResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'initContainers': ?pulumi.Input.mapOptionalInputValue<List<InitContainerResponse>, List<Map<String, dynamic>>>(initContainers, (value) => pulumi.Input.encodeList<InitContainerResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'volumes': ?pulumi.Input.mapOptionalInputValue<List<VolumeResponse>, List<Map<String, dynamic>>>(volumes, (value) => pulumi.Input.encodeList<VolumeResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory JobTemplateResponse.fromMap(Map<String, dynamic> map) {
     return JobTemplateResponse(
-      containers: (() {
-        final guardedValue = map['containers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<ContainerResponse>(
-            guardedValue,
-            (value) => ContainerResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      initContainers: (() {
-        final guardedValue = map['initContainers'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<InitContainerResponse>(
-            guardedValue,
-            (value) => InitContainerResponse.fromMap(
-              (value as Map).cast<String, dynamic>(),
-            ),
-          ),
-        );
-      })(),
-      volumes: (() {
-        final guardedValue = map['volumes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          pulumi.Input.decodeList<VolumeResponse>(
-            guardedValue,
-            (value) =>
-                VolumeResponse.fromMap((value as Map).cast<String, dynamic>()),
-          ),
-        );
-      })(),
+      containers: (() { final guardedValue = map['containers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ContainerResponse>(guardedValue, (value) => ContainerResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      initContainers: (() { final guardedValue = map['initContainers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InitContainerResponse>(guardedValue, (value) => InitContainerResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      volumes: (() { final guardedValue = map['volumes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VolumeResponse>(guardedValue, (value) => VolumeResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
+

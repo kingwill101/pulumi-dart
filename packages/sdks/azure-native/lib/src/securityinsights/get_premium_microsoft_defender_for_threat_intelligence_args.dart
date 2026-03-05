@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPremiumMicrosoftDefenderForThreatIntelligenceArgs {
   /// Connector ID
   final pulumi.Input<String> dataConnectorId;
-
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -34,15 +32,12 @@ class GetPremiumMicrosoftDefenderForThreatIntelligenceArgs {
     };
   }
 
-  factory GetPremiumMicrosoftDefenderForThreatIntelligenceArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetPremiumMicrosoftDefenderForThreatIntelligenceArgs.fromMap(Map<String, dynamic> map) {
     return GetPremiumMicrosoftDefenderForThreatIntelligenceArgs(
       dataConnectorId: pulumi.Input.fromValue(map['dataConnectorId'] as String),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
+

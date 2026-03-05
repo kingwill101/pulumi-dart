@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StorageAdapterIPInfoResponse {
   /// The IPv4 address assigned to each storage adapter physical node on your Azure Stack HCI cluster.
   final pulumi.Input<String> ipv4Address;
-
   /// storage adapter physical node name.
   final pulumi.Input<String> physicalNode;
-
   /// The SubnetMask address assigned to each storage adapter physical node on your Azure Stack HCI cluster.
   final pulumi.Input<String> subnetMask;
 
@@ -39,3 +37,4 @@ class StorageAdapterIPInfoResponse {
     );
   }
 }
+

@@ -9,10 +9,14 @@ class MHSMIPRuleResponse {
 
   /// Creates a new [MHSMIPRuleResponse].
   /// [value] An IPv4 address range in CIDR notation, such as '124.56.78.91' (simple IP address) or '124.56.78.0/24' (all addresses that start with 124.56.78).
-  MHSMIPRuleResponse({required this.value});
+  MHSMIPRuleResponse({
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'value': value};
+    return <String, dynamic>{
+      'value': value,
+    };
   }
 
   factory MHSMIPRuleResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class MHSMIPRuleResponse {
     );
   }
 }
+

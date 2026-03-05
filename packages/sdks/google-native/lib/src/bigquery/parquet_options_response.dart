@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ParquetOptionsResponse {
   /// [Optional] Indicates whether to use schema inference specifically for Parquet LIST logical type.
   final pulumi.Input<bool> enableListInference;
-
   /// [Optional] Indicates whether to infer Parquet ENUM logical type as STRING instead of BYTES by default.
   final pulumi.Input<bool> enumAsString;
 
@@ -26,10 +25,9 @@ class ParquetOptionsResponse {
 
   factory ParquetOptionsResponse.fromMap(Map<String, dynamic> map) {
     return ParquetOptionsResponse(
-      enableListInference: pulumi.Input.fromValue(
-        map['enableListInference'] as bool,
-      ),
+      enableListInference: pulumi.Input.fromValue(map['enableListInference'] as bool),
       enumAsString: pulumi.Input.fromValue(map['enumAsString'] as bool),
     );
   }
 }
+

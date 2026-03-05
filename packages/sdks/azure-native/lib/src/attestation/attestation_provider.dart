@@ -188,38 +188,26 @@ import 'system_data_response.dart';
 class AttestationProvider extends pulumi.CustomResource {
   /// Gets the uri of attestation service
   late final pulumi.Output<String?> attestUri;
-
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-
   /// The name of the resource
   late final pulumi.Output<String> name;
-
   /// List of private endpoint connections associated with the attestation provider.
-  late final pulumi.Output<List<Map<String, dynamic>>>
-  privateEndpointConnections;
-
+  late final pulumi.Output<List<Map<String, dynamic>>> privateEndpointConnections;
   /// Controls whether traffic from the public network is allowed to access the Attestation Provider APIs.
   late final pulumi.Output<String?> publicNetworkAccess;
-
   /// Status of attestation service.
   late final pulumi.Output<String?> status;
-
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// The setting that controls whether authentication is enabled or disabled for TPM Attestation REST APIs.
   late final pulumi.Output<String?> tpmAttestationAuthentication;
-
   /// Trust model for the attestation provider.
   late final pulumi.Output<String?> trustModel;
-
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -232,34 +220,21 @@ class AttestationProvider extends pulumi.CustomResource {
     AttestationProviderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'azure-native:attestation:AttestationProvider',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'azure-native:attestation:AttestationProvider',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     attestUri = registerOutput<String?>('attestUri');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
-      'privateEndpointConnections',
-    );
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>('privateEndpointConnections');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     status = registerOutput<String?>('status');
-    systemData = registerOutput<SystemDataResponse>(
-      'systemData',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return SystemDataResponse.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
-    tpmAttestationAuthentication = registerOutput<String?>(
-      'tpmAttestationAuthentication',
-    );
+    tpmAttestationAuthentication = registerOutput<String?>('tpmAttestationAuthentication');
     trustModel = registerOutput<String?>('trustModel');
     type = registerOutput<String>('type');
   }

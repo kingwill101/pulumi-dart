@@ -7,34 +7,24 @@ import 'resource_status_response.dart';
 class GetEvaluationResult {
   /// [Output only] Create time stamp
   final String createTime;
-
   /// The Cloud Storage bucket name for custom rules.
   final String customRulesBucket;
-
   /// Description of the Evaluation
   final String description;
-
   /// Labels as key value pairs
   final Map<String, String> labels;
-
   /// name of resource names have the form 'projects/{project_id}/locations/{location_id}/evaluations/{evaluation_id}'
   final String name;
-
   /// annotations as key value pairs
   final ResourceFilterResponse resourceFilter;
-
   /// [Output only] The updated rule ids if exist.
   final ResourceStatusResponse resourceStatus;
-
   /// the name of the rule
   final List<String> ruleNames;
-
   /// [Output only] The updated rule ids if exist.
   final List<String> ruleVersions;
-
   /// crontab format schedule for scheduled evaluation, currently only support the following schedule: "0 */1 * * *", "0 */6 * * *", "0 */12 * * *", "0 0 */1 * *", "0 0 */7 * *",
   final String schedule;
-
   /// [Output only] Update time stamp
   final String updateTime;
 
@@ -87,12 +77,8 @@ class GetEvaluationResult {
       description: map['description'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
-      resourceFilter: ResourceFilterResponse.fromMap(
-        (map['resourceFilter']! as Map).cast<String, dynamic>(),
-      ),
-      resourceStatus: ResourceStatusResponse.fromMap(
-        (map['resourceStatus']! as Map).cast<String, dynamic>(),
-      ),
+      resourceFilter: ResourceFilterResponse.fromMap((map['resourceFilter']! as Map).cast<String, dynamic>()),
+      resourceStatus: ResourceStatusResponse.fromMap((map['resourceStatus']! as Map).cast<String, dynamic>()),
       ruleNames: (map['ruleNames'] as List).cast<String>(),
       ruleVersions: (map['ruleVersions'] as List).cast<String>(),
       schedule: map['schedule'] as String,
@@ -100,3 +86,4 @@ class GetEvaluationResult {
     );
   }
 }
+

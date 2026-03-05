@@ -11,10 +11,14 @@ class GetGenaiIndexingJobDataSourcesArgs {
 
   /// Creates a new [GetGenaiIndexingJobDataSourcesArgs].
   /// [indexingJobUuid] Required.
-  GetGenaiIndexingJobDataSourcesArgs({required this.indexingJobUuid});
+  GetGenaiIndexingJobDataSourcesArgs({
+    required this.indexingJobUuid,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'indexingJobUuid': indexingJobUuid};
+    return <String, dynamic>{
+      'indexingJobUuid': indexingJobUuid,
+    };
   }
 
   factory GetGenaiIndexingJobDataSourcesArgs.fromMap(Map<String, dynamic> map) {
@@ -23,3 +27,4 @@ class GetGenaiIndexingJobDataSourcesArgs {
     );
   }
 }
+

@@ -468,50 +468,35 @@ import 'branch_rule_state.dart';
 class BranchRule extends pulumi.CustomResource {
   /// Determines if allow stale reviews or approvals before merging to the branch.
   late final pulumi.Output<bool?> allowStaleReviews;
-
   /// The ID for the BranchRule.
   late final pulumi.Output<String> branchRuleId;
-
   /// Time the BranchRule was created in UTC.
   late final pulumi.Output<String> createTime;
-
   /// Determines if the branch rule is disabled or not.
   late final pulumi.Output<bool?> disabled;
-
   /// The BranchRule matches branches based on the specified regular expression. Use .* to match all branches.
   late final pulumi.Output<String> includePattern;
-
   /// The location for the Repository.
   late final pulumi.Output<String> location;
-
   /// The minimum number of approvals required for the branch rule to be matched.
   late final pulumi.Output<int?> minimumApprovalsCount;
-
   /// The minimum number of reviews required for the branch rule to be matched.
   late final pulumi.Output<int?> minimumReviewsCount;
-
   /// The resource name for the BranchRule.
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// The ID for the Repository.
   late final pulumi.Output<String> repositoryId;
-
   /// Determines if require comments resolved before merging to the branch.
   late final pulumi.Output<bool?> requireCommentsResolved;
-
   /// Determines if require linear history before merging to the branch.
   late final pulumi.Output<bool?> requireLinearHistory;
-
   /// Determines if the branch rule requires a pull request or not.
   late final pulumi.Output<bool?> requirePullRequest;
-
   /// Unique identifier of the BranchRule.
   late final pulumi.Output<String> uid;
-
   /// Time the BranchRule was updated in UTC.
   late final pulumi.Output<String> updateTime;
 
@@ -524,11 +509,11 @@ class BranchRule extends pulumi.CustomResource {
     BranchRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:securesourcemanager/branchRule:BranchRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:securesourcemanager/branchRule:BranchRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allowStaleReviews = registerOutput<bool?>('allowStaleReviews');
     branchRuleId = registerOutput<String>('branchRuleId');
     createTime = registerOutput<String>('createTime');
@@ -565,11 +550,11 @@ class BranchRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:securesourcemanager/branchRule:BranchRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:securesourcemanager/branchRule:BranchRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     allowStaleReviews = registerOutput<bool?>('allowStaleReviews');
     branchRuleId = registerOutput<String>('branchRuleId');
     createTime = registerOutput<String>('createTime');

@@ -206,10 +206,8 @@ class TrustStoreAssociation extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> portalArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// ARN of the trust store to associate with the portal. Forces replacement if changed.
   late final pulumi.Output<String> trustStoreArn;
 
@@ -222,11 +220,11 @@ class TrustStoreAssociation extends pulumi.CustomResource {
     TrustStoreAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:workspacesweb/trustStoreAssociation:TrustStoreAssociation',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:workspacesweb/trustStoreAssociation:TrustStoreAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     portalArn = registerOutput<String>('portalArn');
     region = registerOutput<String>('region');
     trustStoreArn = registerOutput<String>('trustStoreArn');
@@ -250,11 +248,11 @@ class TrustStoreAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:workspacesweb/trustStoreAssociation:TrustStoreAssociation',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:workspacesweb/trustStoreAssociation:TrustStoreAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     portalArn = registerOutput<String>('portalArn');
     region = registerOutput<String>('region');
     trustStoreArn = registerOutput<String>('trustStoreArn');

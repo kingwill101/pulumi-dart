@@ -13,7 +13,10 @@ class GetExternalVpnGatewayArgs {
   /// Creates a new [GetExternalVpnGatewayArgs].
   /// [externalVpnGateway] Required.
   /// [project] Optional.
-  GetExternalVpnGatewayArgs({required this.externalVpnGateway, this.project});
+  GetExternalVpnGatewayArgs({
+    required this.externalVpnGateway,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,14 +27,9 @@ class GetExternalVpnGatewayArgs {
 
   factory GetExternalVpnGatewayArgs.fromMap(Map<String, dynamic> map) {
     return GetExternalVpnGatewayArgs(
-      externalVpnGateway: pulumi.Input.fromValue(
-        map['externalVpnGateway'] as String,
-      ),
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      externalVpnGateway: pulumi.Input.fromValue(map['externalVpnGateway'] as String),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

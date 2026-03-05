@@ -27,14 +27,9 @@ class GetTargetHttpsProxyComputeBetaArgs {
 
   factory GetTargetHttpsProxyComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetTargetHttpsProxyComputeBetaArgs(
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      targetHttpsProxy: pulumi.Input.fromValue(
-        map['targetHttpsProxy'] as String,
-      ),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      targetHttpsProxy: pulumi.Input.fromValue(map['targetHttpsProxy'] as String),
     );
   }
 }
+

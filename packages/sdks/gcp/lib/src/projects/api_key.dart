@@ -1009,26 +1009,20 @@ import 'api_key_state.dart';
 class ApiKey extends pulumi.CustomResource {
   /// Human-readable display name of this API key. Modifiable by user.
   late final pulumi.Output<String?> displayName;
-
   /// Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString` method.
   late final pulumi.Output<String> keyString;
-
   /// The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: `a-z?`.
   ///
   ///
   ///
   /// - - -
   late final pulumi.Output<String> name;
-
   /// The project for the resource
   late final pulumi.Output<String> project;
-
   /// Key restrictions.
   late final pulumi.Output<ApiKeyRestrictions?> restrictions;
-
   /// The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.devsite.corp.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
   late final pulumi.Output<String?> serviceAccountEmail;
-
   /// Output only. Unique id in UUID4 format.
   late final pulumi.Output<String> uid;
 
@@ -1036,27 +1030,21 @@ class ApiKey extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [ApiKey]. {@macro pulumi_projects_api_key_api_key_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  ApiKey(String name, {ApiKeyArgs? args, pulumi.CustomResourceOptions? options})
-    : super(
-        'gcp:projects/apiKey:ApiKey',
-        name,
-        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-        options ?? pulumi.CustomResourceOptions(),
-      ) {
+  ApiKey(
+    String name, {
+    ApiKeyArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'gcp:projects/apiKey:ApiKey',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     displayName = registerOutput<String?>('displayName');
     keyString = registerOutput<String>('keyString');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    restrictions = registerOutput<ApiKeyRestrictions?>(
-      'restrictions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApiKeyRestrictions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    restrictions = registerOutput<ApiKeyRestrictions?>('restrictions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiKeyRestrictions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     serviceAccountEmail = registerOutput<String?>('serviceAccountEmail');
     uid = registerOutput<String>('uid');
   }
@@ -1079,25 +1067,16 @@ class ApiKey extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:projects/apiKey:ApiKey',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:projects/apiKey:ApiKey',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     displayName = registerOutput<String?>('displayName');
     keyString = registerOutput<String>('keyString');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    restrictions = registerOutput<ApiKeyRestrictions?>(
-      'restrictions',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return ApiKeyRestrictions.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    restrictions = registerOutput<ApiKeyRestrictions?>('restrictions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiKeyRestrictions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     serviceAccountEmail = registerOutput<String?>('serviceAccountEmail');
     uid = registerOutput<String>('uid');
   }

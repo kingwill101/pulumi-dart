@@ -9,10 +9,14 @@ class FirewallLogConfig {
 
   /// Creates a new [FirewallLogConfig].
   /// [metadata] This field denotes whether to include or exclude metadata for firewall logs.
-  FirewallLogConfig({required this.metadata});
+  FirewallLogConfig({
+    required this.metadata,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'metadata': metadata};
+    return <String, dynamic>{
+      'metadata': metadata,
+    };
   }
 
   factory FirewallLogConfig.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class FirewallLogConfig {
     );
   }
 }
+

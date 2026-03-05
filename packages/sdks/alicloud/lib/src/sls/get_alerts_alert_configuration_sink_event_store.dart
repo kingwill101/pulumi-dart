@@ -5,16 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAlertsAlertConfigurationSinkEventStore {
   /// Open.
   final pulumi.Input<bool> enabled;
-
   /// SLS service endpoint.
   final pulumi.Input<String> endpoint;
-
   /// Event Library Name.
   final pulumi.Input<String> eventStore;
-
   /// Project Name.
   final pulumi.Input<String> project;
-
   /// Roles used to write alarm data to the event Library.
   final pulumi.Input<String> roleArn;
 
@@ -42,9 +38,7 @@ class GetAlertsAlertConfigurationSinkEventStore {
     };
   }
 
-  factory GetAlertsAlertConfigurationSinkEventStore.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetAlertsAlertConfigurationSinkEventStore.fromMap(Map<String, dynamic> map) {
     return GetAlertsAlertConfigurationSinkEventStore(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
       endpoint: pulumi.Input.fromValue(map['endpoint'] as String),
@@ -54,3 +48,4 @@ class GetAlertsAlertConfigurationSinkEventStore {
     );
   }
 }
+

@@ -8,7 +8,6 @@ import 'resource_manager_tags_container_v1beta1.dart';
 class NodePoolAutoConfigContainerV1beta1 {
   /// The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster creation. Each tag within the list must comply with RFC1035.
   final pulumi.Input<NetworkTagsContainerV1beta1>? networkTags;
-
   /// Resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies.
   final pulumi.Input<ResourceManagerTagsContainerV1beta1>? resourceManagerTags;
 
@@ -22,39 +21,16 @@ class NodePoolAutoConfigContainerV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'networkTags':
-          ?pulumi.Input.mapOptionalInputValue<
-            NetworkTagsContainerV1beta1,
-            Map<String, dynamic>
-          >(networkTags, (value) => value.toMap()),
-      'resourceManagerTags':
-          ?pulumi.Input.mapOptionalInputValue<
-            ResourceManagerTagsContainerV1beta1,
-            Map<String, dynamic>
-          >(resourceManagerTags, (value) => value.toMap()),
+      'networkTags': ?pulumi.Input.mapOptionalInputValue<NetworkTagsContainerV1beta1, Map<String, dynamic>>(networkTags, (value) => value.toMap()),
+      'resourceManagerTags': ?pulumi.Input.mapOptionalInputValue<ResourceManagerTagsContainerV1beta1, Map<String, dynamic>>(resourceManagerTags, (value) => value.toMap()),
     };
   }
 
   factory NodePoolAutoConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return NodePoolAutoConfigContainerV1beta1(
-      networkTags: (() {
-        final guardedValue = map['networkTags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          NetworkTagsContainerV1beta1.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      resourceManagerTags: (() {
-        final guardedValue = map['resourceManagerTags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ResourceManagerTagsContainerV1beta1.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      networkTags: (() { final guardedValue = map['networkTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkTagsContainerV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceManagerTags: (() { final guardedValue = map['resourceManagerTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceManagerTagsContainerV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

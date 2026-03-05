@@ -288,25 +288,18 @@ import 'network_settings_state.dart';
 class NetworkSettings extends pulumi.CustomResource {
   /// List of web portal ARNs associated with the network settings.
   late final pulumi.Output<List<String>> associatedPortalArns;
-
   /// ARN of the network settings resource.
   late final pulumi.Output<String> networkSettingsArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// One or more security groups used to control access from streaming instances to your VPC.
   late final pulumi.Output<List<String>> securityGroupIds;
-
   /// The subnets in which network interfaces are created to connect streaming instances to your VPC. At least two subnet ids must be specified.
   late final pulumi.Output<List<String>> subnetIds;
-
   /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-
   /// The VPC that streaming instances will connect to.
   ///
   /// The following arguments are optional:
@@ -321,11 +314,11 @@ class NetworkSettings extends pulumi.CustomResource {
     NetworkSettingsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:workspacesweb/networkSettings:NetworkSettings',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:workspacesweb/networkSettings:NetworkSettings',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     associatedPortalArns = registerOutput<List<String>>('associatedPortalArns');
     networkSettingsArn = registerOutput<String>('networkSettingsArn');
     region = registerOutput<String>('region');
@@ -354,11 +347,11 @@ class NetworkSettings extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:workspacesweb/networkSettings:NetworkSettings',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:workspacesweb/networkSettings:NetworkSettings',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     associatedPortalArns = registerOutput<List<String>>('associatedPortalArns');
     networkSettingsArn = registerOutput<String>('networkSettingsArn');
     region = registerOutput<String>('region');

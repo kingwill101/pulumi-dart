@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureDiskDetailsResponse {
   /// Azure disk ID.
   final pulumi.Input<String> diskId;
-
   /// The ordinal number of the disk.
   final pulumi.Input<int> diskNumber;
-
   /// Size in GB.
   final pulumi.Input<String> sizeGb;
 
@@ -39,3 +37,4 @@ class AzureDiskDetailsResponse {
     );
   }
 }
+

@@ -147,10 +147,8 @@ class QosDscpMarkingRule extends pulumi.CustomResource {
   /// The value of DSCP mark. Changing this updates the DSCP mark value existing
   /// QoS DSCP marking rule.
   late final pulumi.Output<int> dscpMark;
-
   /// The QoS policy reference. Changing this creates a new QoS DSCP marking rule.
   late final pulumi.Output<String> qosPolicyId;
-
   /// The region in which to obtain the V2 Networking client.
   /// A Networking client is needed to create a Neutron QoS DSCP marking rule. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new QoS DSCP marking rule.
@@ -165,11 +163,11 @@ class QosDscpMarkingRule extends pulumi.CustomResource {
     QosDscpMarkingRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:networking/qosDscpMarkingRule:QosDscpMarkingRule',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:networking/qosDscpMarkingRule:QosDscpMarkingRule',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dscpMark = registerOutput<int>('dscpMark');
     qosPolicyId = registerOutput<String>('qosPolicyId');
     region = registerOutput<String>('region');
@@ -193,11 +191,11 @@ class QosDscpMarkingRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'openstack:networking/qosDscpMarkingRule:QosDscpMarkingRule',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'openstack:networking/qosDscpMarkingRule:QosDscpMarkingRule',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     dscpMark = registerOutput<int>('dscpMark');
     qosPolicyId = registerOutput<String>('qosPolicyId');
     region = registerOutput<String>('region');

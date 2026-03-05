@@ -5,28 +5,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServerSnapshotsSnapshot {
   /// The time when the snapshot was created. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
   final pulumi.Input<String> createTime;
-
   /// The ID of the source disk. This parameter has a value even after the source disk is released.
   final pulumi.Input<String> diskId;
-
   /// The ID of the Snapshot.
   final pulumi.Input<String> id;
-
   /// The progress of snapshot creation.
   final pulumi.Input<String> progress;
-
   /// The remarks of the snapshot.
   final pulumi.Input<String> remark;
-
   /// The ID of the snapshot.
   final pulumi.Input<String> snapshotId;
-
   /// The name of the snapshot.
   final pulumi.Input<String> snapshotName;
-
   /// A snapshot of the source of a disk type. Possible values: `System`, `Data`.
   final pulumi.Input<String> sourceDiskType;
-
   /// The status of the snapshots. Valid values: `Progressing`, `Accomplished` and `Failed`.
   final pulumi.Input<String> status;
 
@@ -80,3 +72,4 @@ class GetServerSnapshotsSnapshot {
     );
   }
 }
+

@@ -14,29 +14,20 @@ class DiagnosticsProfileResponse {
 
   /// Creates a new [DiagnosticsProfileResponse].
   /// [bootDiagnostics] Boot Diagnostics is a debugging feature which allows you to view Console Output
-  DiagnosticsProfileResponse({this.bootDiagnostics});
+  DiagnosticsProfileResponse({
+    this.bootDiagnostics,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bootDiagnostics':
-          ?pulumi.Input.mapOptionalInputValue<
-            BootDiagnosticsResponse,
-            Map<String, dynamic>
-          >(bootDiagnostics, (value) => value.toMap()),
+      'bootDiagnostics': ?pulumi.Input.mapOptionalInputValue<BootDiagnosticsResponse, Map<String, dynamic>>(bootDiagnostics, (value) => value.toMap()),
     };
   }
 
   factory DiagnosticsProfileResponse.fromMap(Map<String, dynamic> map) {
     return DiagnosticsProfileResponse(
-      bootDiagnostics: (() {
-        final guardedValue = map['bootDiagnostics'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          BootDiagnosticsResponse.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
+      bootDiagnostics: (() { final guardedValue = map['bootDiagnostics']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BootDiagnosticsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
+

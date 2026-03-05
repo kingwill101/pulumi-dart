@@ -20,3 +20,4 @@ enum AddOnStatus {
     throw ArgumentError('Unknown AddOnStatus value: $value');
   }
 }
+

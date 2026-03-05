@@ -123,8 +123,7 @@ Future<GetIntegrationAccountAssemblyResult> getIntegrationAccountAssembly(
 /// Other available API versions: 2016-06-01, 2018-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native logic [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_logic_get_integration_account_batch_configuration_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetIntegrationAccountBatchConfigurationResult>
-getIntegrationAccountBatchConfiguration(
+Future<GetIntegrationAccountBatchConfigurationResult> getIntegrationAccountBatchConfiguration(
   GetIntegrationAccountBatchConfigurationArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -260,8 +259,7 @@ Future<GetIntegrationServiceEnvironmentResult> getIntegrationServiceEnvironment(
 /// Uses Azure REST API version 2019-05-01.
 /// [args] Arguments passed to this invoke. {@macro pulumi_logic_get_integration_service_environment_managed_api_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetIntegrationServiceEnvironmentManagedApiResult>
-getIntegrationServiceEnvironmentManagedApi(
+Future<GetIntegrationServiceEnvironmentManagedApiResult> getIntegrationServiceEnvironmentManagedApi(
   GetIntegrationServiceEnvironmentManagedApiArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -279,8 +277,7 @@ getIntegrationServiceEnvironmentManagedApi(
 /// Uses Azure REST API version 2016-06-01.
 /// [args] Arguments passed to this invoke. {@macro pulumi_logic_get_rosetta_net_process_configuration_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetRosettaNetProcessConfigurationResult>
-getRosettaNetProcessConfiguration(
+Future<GetRosettaNetProcessConfigurationResult> getRosettaNetProcessConfiguration(
   GetRosettaNetProcessConfigurationArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -338,8 +335,7 @@ Future<GetWorkflowAccessKeyResult> getWorkflowAccessKey(
 /// Other available API versions: 2018-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native logic [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_logic_list_integration_account_agreement_content_callback_url_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListIntegrationAccountAgreementContentCallbackUrlResult>
-listIntegrationAccountAgreementContentCallbackUrl(
+Future<ListIntegrationAccountAgreementContentCallbackUrlResult> listIntegrationAccountAgreementContentCallbackUrl(
   ListIntegrationAccountAgreementContentCallbackUrlArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -349,9 +345,7 @@ listIntegrationAccountAgreementContentCallbackUrl(
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return ListIntegrationAccountAgreementContentCallbackUrlResult.fromMap(
-    result,
-  );
+  return ListIntegrationAccountAgreementContentCallbackUrlResult.fromMap(result);
 }
 
 /// Get the content callback url for an integration account assembly.
@@ -361,8 +355,7 @@ listIntegrationAccountAgreementContentCallbackUrl(
 /// Other available API versions: 2016-06-01, 2018-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native logic [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_logic_list_integration_account_assembly_content_callback_url_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListIntegrationAccountAssemblyContentCallbackUrlResult>
-listIntegrationAccountAssemblyContentCallbackUrl(
+Future<ListIntegrationAccountAssemblyContentCallbackUrlResult> listIntegrationAccountAssemblyContentCallbackUrl(
   ListIntegrationAccountAssemblyContentCallbackUrlArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -382,8 +375,7 @@ listIntegrationAccountAssemblyContentCallbackUrl(
 /// Other available API versions: 2015-08-01-preview, 2016-06-01, 2018-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native logic [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_logic_list_integration_account_callback_url_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListIntegrationAccountCallbackUrlResult>
-listIntegrationAccountCallbackUrl(
+Future<ListIntegrationAccountCallbackUrlResult> listIntegrationAccountCallbackUrl(
   ListIntegrationAccountCallbackUrlArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -403,8 +395,7 @@ listIntegrationAccountCallbackUrl(
 /// Other available API versions: 2016-06-01, 2018-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native logic [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_logic_list_integration_account_key_vault_keys_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListIntegrationAccountKeyVaultKeysResult>
-listIntegrationAccountKeyVaultKeys(
+Future<ListIntegrationAccountKeyVaultKeysResult> listIntegrationAccountKeyVaultKeys(
   ListIntegrationAccountKeyVaultKeysArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -424,8 +415,7 @@ listIntegrationAccountKeyVaultKeys(
 /// Other available API versions: 2018-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native logic [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_logic_list_integration_account_map_content_callback_url_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListIntegrationAccountMapContentCallbackUrlResult>
-listIntegrationAccountMapContentCallbackUrl(
+Future<ListIntegrationAccountMapContentCallbackUrlResult> listIntegrationAccountMapContentCallbackUrl(
   ListIntegrationAccountMapContentCallbackUrlArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -445,8 +435,7 @@ listIntegrationAccountMapContentCallbackUrl(
 /// Other available API versions: 2018-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native logic [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_logic_list_integration_account_partner_content_callback_url_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListIntegrationAccountPartnerContentCallbackUrlResult>
-listIntegrationAccountPartnerContentCallbackUrl(
+Future<ListIntegrationAccountPartnerContentCallbackUrlResult> listIntegrationAccountPartnerContentCallbackUrl(
   ListIntegrationAccountPartnerContentCallbackUrlArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -466,8 +455,7 @@ listIntegrationAccountPartnerContentCallbackUrl(
 /// Other available API versions: 2018-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native logic [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_logic_list_integration_account_schema_content_callback_url_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListIntegrationAccountSchemaContentCallbackUrlResult>
-listIntegrationAccountSchemaContentCallbackUrl(
+Future<ListIntegrationAccountSchemaContentCallbackUrlResult> listIntegrationAccountSchemaContentCallbackUrl(
   ListIntegrationAccountSchemaContentCallbackUrlArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -525,8 +513,7 @@ Future<ListWorkflowCallbackUrlResult> listWorkflowCallbackUrl(
 /// Other available API versions: 2016-06-01, 2018-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native logic [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_logic_list_workflow_run_action_expression_traces_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListWorkflowRunActionExpressionTracesResult>
-listWorkflowRunActionExpressionTraces(
+Future<ListWorkflowRunActionExpressionTracesResult> listWorkflowRunActionExpressionTraces(
   ListWorkflowRunActionExpressionTracesArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -546,8 +533,7 @@ listWorkflowRunActionExpressionTraces(
 /// Other available API versions: 2016-06-01, 2018-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native logic [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_logic_list_workflow_run_action_repetition_expression_traces_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListWorkflowRunActionRepetitionExpressionTracesResult>
-listWorkflowRunActionRepetitionExpressionTraces(
+Future<ListWorkflowRunActionRepetitionExpressionTracesResult> listWorkflowRunActionRepetitionExpressionTraces(
   ListWorkflowRunActionRepetitionExpressionTracesArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -605,8 +591,7 @@ Future<ListWorkflowVersionCallbackUrlResult> listWorkflowVersionCallbackUrl(
 /// Other available API versions: 2018-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native logic [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_logic_list_workflow_version_trigger_callback_url_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListWorkflowVersionTriggerCallbackUrlResult>
-listWorkflowVersionTriggerCallbackUrl(
+Future<ListWorkflowVersionTriggerCallbackUrlResult> listWorkflowVersionTriggerCallbackUrl(
   ListWorkflowVersionTriggerCallbackUrlArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

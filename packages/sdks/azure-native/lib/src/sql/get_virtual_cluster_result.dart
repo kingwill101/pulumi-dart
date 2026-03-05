@@ -1,31 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getVirtualCluster.
 class GetVirtualClusterResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-
   /// List of resources in this virtual cluster.
   final List<String> childResources_;
-
   /// Resource ID.
   final String id;
-
   /// Resource location.
   final String location;
-
   /// Resource name.
   final String name;
-
   /// Subnet resource ID for the virtual cluster.
   final String subnetId;
-
   /// Resource tags.
   final Map<String, String>? tags;
-
   /// Resource type.
   final String type;
-
   /// Virtual cluster version.
   final String? version;
 
@@ -73,17 +66,10 @@ class GetVirtualClusterResult {
       location: map['location'] as String,
       name: map['name'] as String,
       subnetId: map['subnetId'] as String,
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as Map).cast<String, String>();
-      })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
-      version: (() {
-        final guardedValue = map['version'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
+

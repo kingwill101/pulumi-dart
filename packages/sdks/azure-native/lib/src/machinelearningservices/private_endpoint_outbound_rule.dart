@@ -7,14 +7,11 @@ import 'private_endpoint_destination.dart';
 class PrivateEndpointOutboundRule {
   /// Category of a managed network Outbound Rule of a machine learning workspace.
   final pulumi.Input<String>? category;
-
   /// Private Endpoint destination for a Private Endpoint Outbound Rule for the managed network of a machine learning workspace.
   final pulumi.Input<PrivateEndpointDestination>? destination;
   final pulumi.Input<List<String>>? fqdns;
-
   /// Type of a managed network Outbound Rule of a machine learning workspace.
   final pulumi.Input<String>? status;
-
   /// Type of a managed network Outbound Rule of a machine learning workspace.
   /// Expected value is 'PrivateEndpoint'.
   final pulumi.Input<String> type;
@@ -36,11 +33,7 @@ class PrivateEndpointOutboundRule {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'category': ?category,
-      'destination':
-          ?pulumi.Input.mapOptionalInputValue<
-            PrivateEndpointDestination,
-            Map<String, dynamic>
-          >(destination, (value) => value.toMap()),
+      'destination': ?pulumi.Input.mapOptionalInputValue<PrivateEndpointDestination, Map<String, dynamic>>(destination, (value) => value.toMap()),
       'fqdns': ?fqdns,
       'status': ?status,
       'type': type,
@@ -49,31 +42,12 @@ class PrivateEndpointOutboundRule {
 
   factory PrivateEndpointOutboundRule.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointOutboundRule(
-      category: (() {
-        final guardedValue = map['category'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      destination: (() {
-        final guardedValue = map['destination'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          PrivateEndpointDestination.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      fqdns: (() {
-        final guardedValue = map['fqdns'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
-      status: (() {
-        final guardedValue = map['status'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      category: (() { final guardedValue = map['category']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      destination: (() { final guardedValue = map['destination']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PrivateEndpointDestination.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      fqdns: (() { final guardedValue = map['fqdns']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
+

@@ -9,17 +9,20 @@ class GooglePrivacyDlpV2TimePartConfigResponse {
 
   /// Creates a new [GooglePrivacyDlpV2TimePartConfigResponse].
   /// [partToExtract] The part of the time to keep.
-  GooglePrivacyDlpV2TimePartConfigResponse({required this.partToExtract});
+  GooglePrivacyDlpV2TimePartConfigResponse({
+    required this.partToExtract,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'partToExtract': partToExtract};
+    return <String, dynamic>{
+      'partToExtract': partToExtract,
+    };
   }
 
-  factory GooglePrivacyDlpV2TimePartConfigResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GooglePrivacyDlpV2TimePartConfigResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2TimePartConfigResponse(
       partToExtract: pulumi.Input.fromValue(map['partToExtract'] as String),
     );
   }
 }
+

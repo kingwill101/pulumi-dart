@@ -6,22 +6,16 @@ import 'vpc_origin_vpc_origin_endpoint_config_origin_ssl_protocols.dart';
 class VpcOriginVpcOriginEndpointConfig {
   /// The VPC origin ARN.
   final pulumi.Input<String> arn;
-
   /// The HTTP port for the CloudFront VPC origin endpoint configuration.
   final pulumi.Input<int> httpPort;
-
   /// The HTTPS port for the CloudFront VPC origin endpoint configuration.
   final pulumi.Input<int> httpsPort;
-
   /// The name of the CloudFront VPC origin endpoint configuration.
   final pulumi.Input<String> name;
-
   /// The origin protocol policy for the CloudFront VPC origin endpoint configuration.
   final pulumi.Input<String> originProtocolPolicy;
-
   /// A complex type that contains information about the SSL/TLS protocols that CloudFront can use when establishing an HTTPS connection with your origin.
-  final pulumi.Input<VpcOriginVpcOriginEndpointConfigOriginSslProtocols>
-  originSslProtocols;
+  final pulumi.Input<VpcOriginVpcOriginEndpointConfigOriginSslProtocols> originSslProtocols;
 
   /// Creates a new [VpcOriginVpcOriginEndpointConfig].
   /// [arn] The VPC origin ARN.
@@ -46,11 +40,7 @@ class VpcOriginVpcOriginEndpointConfig {
       'httpsPort': httpsPort,
       'name': name,
       'originProtocolPolicy': originProtocolPolicy,
-      'originSslProtocols':
-          pulumi.Input.mapInputValue<
-            VpcOriginVpcOriginEndpointConfigOriginSslProtocols,
-            Map<String, dynamic>
-          >(originSslProtocols, (value) => value.toMap()),
+      'originSslProtocols': pulumi.Input.mapInputValue<VpcOriginVpcOriginEndpointConfigOriginSslProtocols, Map<String, dynamic>>(originSslProtocols, (value) => value.toMap()),
     };
   }
 
@@ -60,14 +50,9 @@ class VpcOriginVpcOriginEndpointConfig {
       httpPort: pulumi.Input.fromValue(map['httpPort'] as int),
       httpsPort: pulumi.Input.fromValue(map['httpsPort'] as int),
       name: pulumi.Input.fromValue(map['name'] as String),
-      originProtocolPolicy: pulumi.Input.fromValue(
-        map['originProtocolPolicy'] as String,
-      ),
-      originSslProtocols: pulumi.Input.fromValue(
-        VpcOriginVpcOriginEndpointConfigOriginSslProtocols.fromMap(
-          (map['originSslProtocols']! as Map).cast<String, dynamic>(),
-        ),
-      ),
+      originProtocolPolicy: pulumi.Input.fromValue(map['originProtocolPolicy'] as String),
+      originSslProtocols: pulumi.Input.fromValue(VpcOriginVpcOriginEndpointConfigOriginSslProtocols.fromMap((map['originSslProtocols']! as Map).cast<String, dynamic>())),
     );
   }
 }
+

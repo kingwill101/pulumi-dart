@@ -14,8 +14,7 @@ enum AuditLogConfigLogTypeGkehubV1beta {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown AuditLogConfigLogTypeGkehubV1beta value: $value',
-    );
+    throw ArgumentError('Unknown AuditLogConfigLogTypeGkehubV1beta value: $value');
   }
 }
+

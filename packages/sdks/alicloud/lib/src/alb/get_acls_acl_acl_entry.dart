@@ -6,7 +6,6 @@ class GetAclsAclAclEntry {
   /// Access Control Entries Note Description Length Is Limited to 1 to 256 Characters, Letters, digital, the Dash (-), a Forward Slash (/), Half a Period (.) and Underscores (_), Support Chinese Characters.
   final pulumi.Input<String> description;
   final pulumi.Input<String> entry;
-
   /// The status of the ACL entry. Valid values: `Adding` , `Available` and `Removing`. `Adding`: The entry is being added. `Available`: The entry is added and available. `Removing`: The entry is being removed.
   final pulumi.Input<String> status;
 
@@ -36,3 +35,4 @@ class GetAclsAclAclEntry {
     );
   }
 }
+

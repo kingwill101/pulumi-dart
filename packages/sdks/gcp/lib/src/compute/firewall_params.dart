@@ -13,21 +13,20 @@ class FirewallParams {
 
   /// Creates a new [FirewallParams].
   /// [resourceManagerTags] Resource manager tags to be bound to the firewall. Tag keys and values have the
-  FirewallParams({this.resourceManagerTags});
+  FirewallParams({
+    this.resourceManagerTags,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'resourceManagerTags': ?resourceManagerTags};
+    return <String, dynamic>{
+      'resourceManagerTags': ?resourceManagerTags,
+    };
   }
 
   factory FirewallParams.fromMap(Map<String, dynamic> map) {
     return FirewallParams(
-      resourceManagerTags: (() {
-        final guardedValue = map['resourceManagerTags'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      resourceManagerTags: (() { final guardedValue = map['resourceManagerTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

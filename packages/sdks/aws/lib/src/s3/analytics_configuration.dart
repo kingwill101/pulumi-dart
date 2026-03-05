@@ -380,19 +380,14 @@ import 'analytics_configuration_storage_class_analysis.dart';
 class AnalyticsConfiguration extends pulumi.CustomResource {
   /// Name of the bucket this analytics configuration is associated with.
   late final pulumi.Output<String> bucket;
-
   /// Object filtering that accepts a prefix, tags, or a logical AND of prefix and tags (documented below).
   late final pulumi.Output<AnalyticsConfigurationFilter?> filter;
-
   /// Unique identifier of the analytics configuration for the bucket.
   late final pulumi.Output<String> name;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Configuration for the analytics data export (documented below).
-  late final pulumi.Output<AnalyticsConfigurationStorageClassAnalysis?>
-  storageClassAnalysis;
+  late final pulumi.Output<AnalyticsConfigurationStorageClassAnalysis?> storageClassAnalysis;
 
   /// Creates a new [AnalyticsConfiguration].
   /// [name] The Pulumi resource name.
@@ -403,35 +398,16 @@ class AnalyticsConfiguration extends pulumi.CustomResource {
     AnalyticsConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:s3/analyticsConfiguration:AnalyticsConfiguration',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:s3/analyticsConfiguration:AnalyticsConfiguration',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
-    filter = registerOutput<AnalyticsConfigurationFilter?>(
-      'filter',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AnalyticsConfigurationFilter.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    filter = registerOutput<AnalyticsConfigurationFilter?>('filter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnalyticsConfigurationFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    storageClassAnalysis =
-        registerOutput<AnalyticsConfigurationStorageClassAnalysis?>(
-          'storageClassAnalysis',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AnalyticsConfigurationStorageClassAnalysis.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    storageClassAnalysis = registerOutput<AnalyticsConfigurationStorageClassAnalysis?>('storageClassAnalysis', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnalyticsConfigurationStorageClassAnalysis.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [AnalyticsConfiguration] resource's state with the given [name] and [id].
@@ -452,34 +428,15 @@ class AnalyticsConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:s3/analyticsConfiguration:AnalyticsConfiguration',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:s3/analyticsConfiguration:AnalyticsConfiguration',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
-    filter = registerOutput<AnalyticsConfigurationFilter?>(
-      'filter',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AnalyticsConfigurationFilter.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    filter = registerOutput<AnalyticsConfigurationFilter?>('filter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnalyticsConfigurationFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    storageClassAnalysis =
-        registerOutput<AnalyticsConfigurationStorageClassAnalysis?>(
-          'storageClassAnalysis',
-          decoder: (raw) {
-            final guardedValue = raw;
-            if (guardedValue == null) return null;
-            return AnalyticsConfigurationStorageClassAnalysis.fromMap(
-              (guardedValue as Map).cast<String, dynamic>(),
-            );
-          },
-        );
+    storageClassAnalysis = registerOutput<AnalyticsConfigurationStorageClassAnalysis?>('storageClassAnalysis', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnalyticsConfigurationStorageClassAnalysis.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

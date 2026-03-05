@@ -9,13 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AgentPoolArgs {
   /// Description of the agent pool.
   final pulumi.Input<String>? description;
-
   /// Optional. Flag indicating whether to delete the agent pool even if stacks are configured to use it.
   final pulumi.Input<bool>? forceDestroy;
-
   /// Name of the agent pool.
   final pulumi.Input<String> name;
-
   /// The organization's name.
   final pulumi.Input<String> organizationName;
 
@@ -42,20 +39,11 @@ class AgentPoolArgs {
 
   factory AgentPoolArgs.fromMap(Map<String, dynamic> map) {
     return AgentPoolArgs(
-      description: (() {
-        final guardedValue = map['description'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      forceDestroy: (() {
-        final guardedValue = map['forceDestroy'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as bool);
-      })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      forceDestroy: (() { final guardedValue = map['forceDestroy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      organizationName: pulumi.Input.fromValue(
-        map['organizationName'] as String,
-      ),
+      organizationName: pulumi.Input.fromValue(map['organizationName'] as String),
     );
   }
 }
+

@@ -13,8 +13,7 @@ enum FirewallPolicyRuleConditionType {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown FirewallPolicyRuleConditionType value: $value',
-    );
+    throw ArgumentError('Unknown FirewallPolicyRuleConditionType value: $value');
   }
 }
+

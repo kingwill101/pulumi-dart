@@ -7,17 +7,13 @@ enum GoogleCloudChannelV1ConditionalOverrideRebillingBasis {
   const GoogleCloudChannelV1ConditionalOverrideRebillingBasis(this.wireValue);
   final String wireValue;
 
-  static GoogleCloudChannelV1ConditionalOverrideRebillingBasis fromValue(
-    String value,
-  ) {
-    for (final item
-        in GoogleCloudChannelV1ConditionalOverrideRebillingBasis.values) {
+  static GoogleCloudChannelV1ConditionalOverrideRebillingBasis fromValue(String value) {
+    for (final item in GoogleCloudChannelV1ConditionalOverrideRebillingBasis.values) {
       if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown GoogleCloudChannelV1ConditionalOverrideRebillingBasis value: $value',
-    );
+    throw ArgumentError('Unknown GoogleCloudChannelV1ConditionalOverrideRebillingBasis value: $value');
   }
 }
+

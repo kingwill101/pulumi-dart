@@ -19,19 +19,17 @@ class GetTypeProviderDeploymentmanagerV2betaArgs {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'project': ?project, 'typeProvider': typeProvider};
+    return <String, dynamic>{
+      'project': ?project,
+      'typeProvider': typeProvider,
+    };
   }
 
-  factory GetTypeProviderDeploymentmanagerV2betaArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetTypeProviderDeploymentmanagerV2betaArgs.fromMap(Map<String, dynamic> map) {
     return GetTypeProviderDeploymentmanagerV2betaArgs(
-      project: (() {
-        final guardedValue = map['project'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       typeProvider: pulumi.Input.fromValue(map['typeProvider'] as String),
     );
   }
 }
+

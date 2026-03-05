@@ -8,17 +8,20 @@ class GetDataQualityRulesRuleRowConditionExpectation {
 
   /// Creates a new [GetDataQualityRulesRuleRowConditionExpectation].
   /// [sqlExpression] The SQL expression.
-  GetDataQualityRulesRuleRowConditionExpectation({required this.sqlExpression});
+  GetDataQualityRulesRuleRowConditionExpectation({
+    required this.sqlExpression,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'sqlExpression': sqlExpression};
+    return <String, dynamic>{
+      'sqlExpression': sqlExpression,
+    };
   }
 
-  factory GetDataQualityRulesRuleRowConditionExpectation.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetDataQualityRulesRuleRowConditionExpectation.fromMap(Map<String, dynamic> map) {
     return GetDataQualityRulesRuleRowConditionExpectation(
       sqlExpression: pulumi.Input.fromValue(map['sqlExpression'] as String),
     );
   }
 }
+

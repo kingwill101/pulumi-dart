@@ -9,21 +9,20 @@ class Environment {
 
   /// Creates a new [Environment].
   /// [variables] Environment variable key-value pairs. For more information, see [Using Lambda environment variables](https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html).
-  Environment({this.variables});
+  Environment({
+    this.variables,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'variables': ?variables};
+    return <String, dynamic>{
+      'variables': ?variables,
+    };
   }
 
   factory Environment.fromMap(Map<String, dynamic> map) {
     return Environment(
-      variables: (() {
-        final guardedValue = map['variables'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      variables: (() { final guardedValue = map['variables']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
+

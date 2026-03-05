@@ -6,19 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OracleProfileDatastreamV1alpha1 {
   /// Connection string attributes
   final pulumi.Input<Map<String, String>>? connectionAttributes;
-
   /// Database for the Oracle connection.
   final pulumi.Input<String> databaseService;
-
   /// Hostname for the Oracle connection.
   final pulumi.Input<String> hostname;
-
   /// Password for the Oracle connection.
   final pulumi.Input<String> password;
-
   /// Port for the Oracle connection, default value is 1521.
   final pulumi.Input<int>? port;
-
   /// Username for the Oracle connection.
   final pulumi.Input<String> username;
 
@@ -51,22 +46,13 @@ class OracleProfileDatastreamV1alpha1 {
 
   factory OracleProfileDatastreamV1alpha1.fromMap(Map<String, dynamic> map) {
     return OracleProfileDatastreamV1alpha1(
-      connectionAttributes: (() {
-        final guardedValue = map['connectionAttributes'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          (guardedValue as Map).cast<String, String>(),
-        );
-      })(),
+      connectionAttributes: (() { final guardedValue = map['connectionAttributes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       databaseService: pulumi.Input.fromValue(map['databaseService'] as String),
       hostname: pulumi.Input.fromValue(map['hostname'] as String),
       password: pulumi.Input.fromValue(map['password'] as String),
-      port: (() {
-        final guardedValue = map['port'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       username: pulumi.Input.fromValue(map['username'] as String),
     );
   }
 }
+

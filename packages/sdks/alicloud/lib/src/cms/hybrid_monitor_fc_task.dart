@@ -311,13 +311,10 @@ import 'hybrid_monitor_fc_task_state.dart';
 class HybridMonitorFcTask extends pulumi.CustomResource {
   /// The ID of the monitoring task.
   late final pulumi.Output<String> hybridMonitorFcTaskId;
-
   /// The index warehouse where the host belongs.
   late final pulumi.Output<String> namespace;
-
   /// The ID of the member account. If you call API operations by using a management account, you can connect the Alibaba Cloud services that are activated for a member account in Resource Directory to Hybrid Cloud Monitoring. You can use Resource Directory to monitor Alibaba Cloud services across enterprise accounts.
   late final pulumi.Output<String> targetUserId;
-
   /// The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
   late final pulumi.Output<String> yarmConfig;
 
@@ -330,11 +327,11 @@ class HybridMonitorFcTask extends pulumi.CustomResource {
     HybridMonitorFcTaskArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cms/hybridMonitorFcTask:HybridMonitorFcTask',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cms/hybridMonitorFcTask:HybridMonitorFcTask',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     hybridMonitorFcTaskId = registerOutput<String>('hybridMonitorFcTaskId');
     namespace = registerOutput<String>('namespace');
     targetUserId = registerOutput<String>('targetUserId');
@@ -359,11 +356,11 @@ class HybridMonitorFcTask extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:cms/hybridMonitorFcTask:HybridMonitorFcTask',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:cms/hybridMonitorFcTask:HybridMonitorFcTask',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     hybridMonitorFcTaskId = registerOutput<String>('hybridMonitorFcTaskId');
     namespace = registerOutput<String>('namespace');
     targetUserId = registerOutput<String>('targetUserId');

@@ -8,17 +8,20 @@ class DomainDevicesDiskThrottleFiltersThrottleFilter {
 
   /// Creates a new [DomainDevicesDiskThrottleFiltersThrottleFilter].
   /// [group] Sets the group name for the throttle filter applied to the disk device.
-  DomainDevicesDiskThrottleFiltersThrottleFilter({required this.group});
+  DomainDevicesDiskThrottleFiltersThrottleFilter({
+    required this.group,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'group': group};
+    return <String, dynamic>{
+      'group': group,
+    };
   }
 
-  factory DomainDevicesDiskThrottleFiltersThrottleFilter.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory DomainDevicesDiskThrottleFiltersThrottleFilter.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskThrottleFiltersThrottleFilter(
       group: pulumi.Input.fromValue(map['group'] as String),
     );
   }
 }
+

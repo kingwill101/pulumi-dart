@@ -18,14 +18,15 @@ class AlertPolicyConditionConditionThresholdForecastOptions {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'forecastHorizon': forecastHorizon};
+    return <String, dynamic>{
+      'forecastHorizon': forecastHorizon,
+    };
   }
 
-  factory AlertPolicyConditionConditionThresholdForecastOptions.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AlertPolicyConditionConditionThresholdForecastOptions.fromMap(Map<String, dynamic> map) {
     return AlertPolicyConditionConditionThresholdForecastOptions(
       forecastHorizon: pulumi.Input.fromValue(map['forecastHorizon'] as String),
     );
   }
 }
+

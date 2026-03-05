@@ -18,3 +18,4 @@ enum LogLevel {
     throw ArgumentError('Unknown LogLevel value: $value');
   }
 }
+

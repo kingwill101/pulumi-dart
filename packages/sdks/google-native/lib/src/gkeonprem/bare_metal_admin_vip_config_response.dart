@@ -9,10 +9,14 @@ class BareMetalAdminVipConfigResponse {
 
   /// Creates a new [BareMetalAdminVipConfigResponse].
   /// [controlPlaneVip] The VIP which you previously set aside for the Kubernetes API of this bare metal admin cluster.
-  BareMetalAdminVipConfigResponse({required this.controlPlaneVip});
+  BareMetalAdminVipConfigResponse({
+    required this.controlPlaneVip,
+  });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'controlPlaneVip': controlPlaneVip};
+    return <String, dynamic>{
+      'controlPlaneVip': controlPlaneVip,
+    };
   }
 
   factory BareMetalAdminVipConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -21,3 +25,4 @@ class BareMetalAdminVipConfigResponse {
     );
   }
 }
+

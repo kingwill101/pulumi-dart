@@ -13,8 +13,7 @@ enum EndpointsApiServiceRolloutStrategy {
         return item;
       }
     }
-    throw ArgumentError(
-      'Unknown EndpointsApiServiceRolloutStrategy value: $value',
-    );
+    throw ArgumentError('Unknown EndpointsApiServiceRolloutStrategy value: $value');
   }
 }
+

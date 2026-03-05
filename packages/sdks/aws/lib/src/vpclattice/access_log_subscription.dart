@@ -112,21 +112,16 @@ import 'access_log_subscription_state.dart';
 class AccessLogSubscription extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the access log subscription.
   late final pulumi.Output<String> arn;
-
   /// Amazon Resource Name (ARN) of the log destination.
   late final pulumi.Output<String> destinationArn;
-
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-
   /// Amazon Resource Name (ARN) of the service network or service.
   late final pulumi.Output<String> resourceArn;
-
   /// The ID or Amazon Resource Identifier (ARN) of the service network or service. You must use the ARN if the resources specified in the operation are in different accounts.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> resourceIdentifier;
-
   /// Type of log that monitors your Amazon VPC Lattice service networks. Valid values are: `SERVICE`, `RESOURCE`. Defaults to `SERVICE`.
   late final pulumi.Output<String> serviceNetworkLogType;
   late final pulumi.Output<Map<String, String>?> tags;
@@ -141,11 +136,11 @@ class AccessLogSubscription extends pulumi.CustomResource {
     AccessLogSubscriptionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:vpclattice/accessLogSubscription:AccessLogSubscription',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:vpclattice/accessLogSubscription:AccessLogSubscription',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     destinationArn = registerOutput<String>('destinationArn');
     region = registerOutput<String>('region');
@@ -174,11 +169,11 @@ class AccessLogSubscription extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'aws:vpclattice/accessLogSubscription:AccessLogSubscription',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'aws:vpclattice/accessLogSubscription:AccessLogSubscription',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     arn = registerOutput<String>('arn');
     destinationArn = registerOutput<String>('destinationArn');
     region = registerOutput<String>('region');

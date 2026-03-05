@@ -7,14 +7,10 @@ import 'agent_pool_provisioning_status_response_provisioning_status.dart';
 class AgentPoolProvisioningStatusResponseStatus {
   /// ErrorMessage - Error messages during creation of cluster
   final pulumi.Input<String>? errorMessage;
-
   /// Contains Provisioning errors
-  final pulumi.Input<AgentPoolProvisioningStatusResponseProvisioningStatus>?
-  provisioningStatus;
-
+  final pulumi.Input<AgentPoolProvisioningStatusResponseProvisioningStatus>? provisioningStatus;
   /// Total number of ready machines targeted by this deployment.
   final pulumi.Input<int>? readyReplicas;
-
   /// Total number of non-terminated machines targeted by this deployment
   final pulumi.Input<int>? replicas;
 
@@ -33,44 +29,19 @@ class AgentPoolProvisioningStatusResponseStatus {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'errorMessage': ?errorMessage,
-      'provisioningStatus':
-          ?pulumi.Input.mapOptionalInputValue<
-            AgentPoolProvisioningStatusResponseProvisioningStatus,
-            Map<String, dynamic>
-          >(provisioningStatus, (value) => value.toMap()),
+      'provisioningStatus': ?pulumi.Input.mapOptionalInputValue<AgentPoolProvisioningStatusResponseProvisioningStatus, Map<String, dynamic>>(provisioningStatus, (value) => value.toMap()),
       'readyReplicas': ?readyReplicas,
       'replicas': ?replicas,
     };
   }
 
-  factory AgentPoolProvisioningStatusResponseStatus.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AgentPoolProvisioningStatusResponseStatus.fromMap(Map<String, dynamic> map) {
     return AgentPoolProvisioningStatusResponseStatus(
-      errorMessage: (() {
-        final guardedValue = map['errorMessage'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      provisioningStatus: (() {
-        final guardedValue = map['provisioningStatus'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AgentPoolProvisioningStatusResponseProvisioningStatus.fromMap(
-            (guardedValue as Map).cast<String, dynamic>(),
-          ),
-        );
-      })(),
-      readyReplicas: (() {
-        final guardedValue = map['readyReplicas'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
-      replicas: (() {
-        final guardedValue = map['replicas'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as int);
-      })(),
+      errorMessage: (() { final guardedValue = map['errorMessage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      provisioningStatus: (() { final guardedValue = map['provisioningStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentPoolProvisioningStatusResponseProvisioningStatus.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      readyReplicas: (() { final guardedValue = map['readyReplicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      replicas: (() { final guardedValue = map['replicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
+

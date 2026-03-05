@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CapabilityArgs {
   /// Capability name that should be updated on the folder.
   final pulumi.Input<String> capabilityName;
-
   /// Folder on which Capability needs to be updated in the format folders/folder_id.
   final pulumi.Input<String> parent;
-
   /// Capability Value.
   final pulumi.Input<bool> value;
 
@@ -42,3 +40,4 @@ class CapabilityArgs {
     );
   }
 }
+

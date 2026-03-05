@@ -6,10 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GooglePrivacyDlpV2DeidentifyDataSourceStatsResponse {
   /// Number of successfully applied transformations.
   final pulumi.Input<String> transformationCount;
-
   /// Number of errors encountered while trying to apply transformations.
   final pulumi.Input<String> transformationErrorCount;
-
   /// Total size in bytes that were transformed in some way.
   final pulumi.Input<String> transformedBytes;
 
@@ -31,19 +29,12 @@ class GooglePrivacyDlpV2DeidentifyDataSourceStatsResponse {
     };
   }
 
-  factory GooglePrivacyDlpV2DeidentifyDataSourceStatsResponse.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GooglePrivacyDlpV2DeidentifyDataSourceStatsResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2DeidentifyDataSourceStatsResponse(
-      transformationCount: pulumi.Input.fromValue(
-        map['transformationCount'] as String,
-      ),
-      transformationErrorCount: pulumi.Input.fromValue(
-        map['transformationErrorCount'] as String,
-      ),
-      transformedBytes: pulumi.Input.fromValue(
-        map['transformedBytes'] as String,
-      ),
+      transformationCount: pulumi.Input.fromValue(map['transformationCount'] as String),
+      transformationErrorCount: pulumi.Input.fromValue(map['transformationErrorCount'] as String),
+      transformedBytes: pulumi.Input.fromValue(map['transformedBytes'] as String),
     );
   }
 }
+

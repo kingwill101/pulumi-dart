@@ -225,16 +225,12 @@ import 'bucket_style_state.dart';
 class BucketStyle extends pulumi.CustomResource {
   /// Storage space to which the picture style belongs
   late final pulumi.Output<String> bucket;
-
   /// Style category, valid values: image, document, video.
   late final pulumi.Output<String> category;
-
   /// The Image style content can contain single or multiple image processing parameters.
   late final pulumi.Output<String> content;
-
   /// Image Style Creation Time
   late final pulumi.Output<String> createTime;
-
   /// Image Style Name
   late final pulumi.Output<String> styleName;
 
@@ -247,11 +243,11 @@ class BucketStyle extends pulumi.CustomResource {
     BucketStyleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:oss/bucketStyle:BucketStyle',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:oss/bucketStyle:BucketStyle',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
     category = registerOutput<String>('category');
     content = registerOutput<String>('content');
@@ -277,11 +273,11 @@ class BucketStyle extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:oss/bucketStyle:BucketStyle',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:oss/bucketStyle:BucketStyle',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     bucket = registerOutput<String>('bucket');
     category = registerOutput<String>('category');
     content = registerOutput<String>('content');

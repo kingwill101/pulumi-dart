@@ -496,48 +496,36 @@ import 'app_hosting_domain_state.dart';
 class AppHostingDomain extends pulumi.CustomResource {
   /// The ID of the Backend that this Domain is associated with
   late final pulumi.Output<String> backend;
-
   /// Time at which the domain was created.
   late final pulumi.Output<String> createTime;
-
   /// The status of a custom domain's linkage to the Backend.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> customDomainStatuses;
-
   /// Time at which the domain was deleted.
   late final pulumi.Output<String> deleteTime;
-
   /// Id of the domain to create.
   /// Must be a valid domain name, such as "foo.com"
   late final pulumi.Output<String> domainId;
-
   /// Server-computed checksum based on other values; may be sent
   /// on update or delete to ensure operation is done on expected resource.
   late final pulumi.Output<String> etag;
-
   /// The location of the Backend that this Domain is associated with
   late final pulumi.Output<String> location;
-
   /// Identifier. The resource name of the domain, e.g.
   /// `projects/{project}/locations/{locationId}/backends/{backendId}/domains/{domainId}`
   late final pulumi.Output<String> name;
-
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-
   /// Time at which a soft-deleted domain will be purged, rendering in
   /// permanently deleted.
   late final pulumi.Output<String> purgeTime;
-
   /// The serving behavior of the domain. If specified, the domain will
   /// serve content other than its Backend's live content.
   /// Structure is documented below.
   late final pulumi.Output<AppHostingDomainServe?> serve;
-
   /// System-assigned, unique identifier.
   late final pulumi.Output<String> uid;
-
   /// Time at which the domain was last updated.
   late final pulumi.Output<String> updateTime;
 
@@ -550,16 +538,14 @@ class AppHostingDomain extends pulumi.CustomResource {
     AppHostingDomainArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:firebase/appHostingDomain:AppHostingDomain',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:firebase/appHostingDomain:AppHostingDomain',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     backend = registerOutput<String>('backend');
     createTime = registerOutput<String>('createTime');
-    customDomainStatuses = registerOutput<List<Map<String, dynamic>>>(
-      'customDomainStatuses',
-    );
+    customDomainStatuses = registerOutput<List<Map<String, dynamic>>>('customDomainStatuses');
     deleteTime = registerOutput<String>('deleteTime');
     domainId = registerOutput<String>('domainId');
     etag = registerOutput<String>('etag');
@@ -567,16 +553,7 @@ class AppHostingDomain extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     purgeTime = registerOutput<String>('purgeTime');
-    serve = registerOutput<AppHostingDomainServe?>(
-      'serve',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AppHostingDomainServe.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    serve = registerOutput<AppHostingDomainServe?>('serve', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppHostingDomainServe.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }
@@ -599,16 +576,14 @@ class AppHostingDomain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'gcp:firebase/appHostingDomain:AppHostingDomain',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'gcp:firebase/appHostingDomain:AppHostingDomain',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     backend = registerOutput<String>('backend');
     createTime = registerOutput<String>('createTime');
-    customDomainStatuses = registerOutput<List<Map<String, dynamic>>>(
-      'customDomainStatuses',
-    );
+    customDomainStatuses = registerOutput<List<Map<String, dynamic>>>('customDomainStatuses');
     deleteTime = registerOutput<String>('deleteTime');
     domainId = registerOutput<String>('domainId');
     etag = registerOutput<String>('etag');
@@ -616,16 +591,7 @@ class AppHostingDomain extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     purgeTime = registerOutput<String>('purgeTime');
-    serve = registerOutput<AppHostingDomainServe?>(
-      'serve',
-      decoder: (raw) {
-        final guardedValue = raw;
-        if (guardedValue == null) return null;
-        return AppHostingDomainServe.fromMap(
-          (guardedValue as Map).cast<String, dynamic>(),
-        );
-      },
-    );
+    serve = registerOutput<AppHostingDomainServe?>('serve', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppHostingDomainServe.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }

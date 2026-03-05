@@ -9,10 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLoadBalancerBackendAddressPoolArgs {
   /// The name of the backend address pool.
   final pulumi.Input<String> backendAddressPoolName;
-
   /// The name of the load balancer.
   final pulumi.Input<String> loadBalancerName;
-
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,19 +32,12 @@ class GetLoadBalancerBackendAddressPoolArgs {
     };
   }
 
-  factory GetLoadBalancerBackendAddressPoolArgs.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory GetLoadBalancerBackendAddressPoolArgs.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancerBackendAddressPoolArgs(
-      backendAddressPoolName: pulumi.Input.fromValue(
-        map['backendAddressPoolName'] as String,
-      ),
-      loadBalancerName: pulumi.Input.fromValue(
-        map['loadBalancerName'] as String,
-      ),
-      resourceGroupName: pulumi.Input.fromValue(
-        map['resourceGroupName'] as String,
-      ),
+      backendAddressPoolName: pulumi.Input.fromValue(map['backendAddressPoolName'] as String),
+      loadBalancerName: pulumi.Input.fromValue(map['loadBalancerName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }
 }
+

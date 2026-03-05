@@ -845,19 +845,14 @@ import 'env_service_monitor_state.dart';
 class EnvServiceMonitor extends pulumi.CustomResource {
   /// Language environment, default is Chinese zh | en.
   late final pulumi.Output<String?> aliyunLang;
-
   /// Yaml configuration string.
   late final pulumi.Output<String> configYaml;
-
   /// The name of the resource.
   late final pulumi.Output<String> envServiceMonitorName;
-
   /// Environment id.
   late final pulumi.Output<String> environmentId;
-
   /// The namespace where the resource is located.
   late final pulumi.Output<String> namespace;
-
   /// Status: run, stop.
   late final pulumi.Output<String> status;
 
@@ -870,11 +865,11 @@ class EnvServiceMonitor extends pulumi.CustomResource {
     EnvServiceMonitorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:arms/envServiceMonitor:EnvServiceMonitor',
-         name,
-         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:arms/envServiceMonitor:EnvServiceMonitor',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aliyunLang = registerOutput<String?>('aliyunLang');
     configYaml = registerOutput<String>('configYaml');
     envServiceMonitorName = registerOutput<String>('envServiceMonitorName');
@@ -901,11 +896,11 @@ class EnvServiceMonitor extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-         'alicloud:arms/envServiceMonitor:EnvServiceMonitor',
-         name,
-         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-         options ?? pulumi.CustomResourceOptions(),
-       ) {
+          'alicloud:arms/envServiceMonitor:EnvServiceMonitor',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
     aliyunLang = registerOutput<String?>('aliyunLang');
     configYaml = registerOutput<String>('configYaml');
     envServiceMonitorName = registerOutput<String>('envServiceMonitorName');

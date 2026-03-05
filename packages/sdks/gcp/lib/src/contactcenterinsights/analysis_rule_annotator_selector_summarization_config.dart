@@ -7,7 +7,6 @@ class AnalysisRuleAnnotatorSelectorSummarizationConfig {
   /// Format:
   /// projects/{project}/locations/{location}/conversationProfiles/{conversation_profile}
   final pulumi.Input<String>? conversationProfile;
-
   /// Default summarization model to be used.
   /// Possible values:
   /// SUMMARIZATION_MODEL_UNSPECIFIED
@@ -31,20 +30,11 @@ class AnalysisRuleAnnotatorSelectorSummarizationConfig {
     };
   }
 
-  factory AnalysisRuleAnnotatorSelectorSummarizationConfig.fromMap(
-    Map<String, dynamic> map,
-  ) {
+  factory AnalysisRuleAnnotatorSelectorSummarizationConfig.fromMap(Map<String, dynamic> map) {
     return AnalysisRuleAnnotatorSelectorSummarizationConfig(
-      conversationProfile: (() {
-        final guardedValue = map['conversationProfile'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      summarizationModel: (() {
-        final guardedValue = map['summarizationModel'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
+      conversationProfile: (() { final guardedValue = map['conversationProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      summarizationModel: (() { final guardedValue = map['summarizationModel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
+

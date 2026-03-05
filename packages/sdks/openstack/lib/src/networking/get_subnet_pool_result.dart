@@ -1,59 +1,43 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+
 /// Result data returned by getSubnetPool.
 class GetSubnetPoolResult {
   /// See Argument Reference above.
   final String addressScopeId;
-
   /// The set of string tags applied on the subnetpool.
   final List<String> allTags;
-
   /// The time at which subnetpool was created.
   final String createdAt;
-
   /// See Argument Reference above.
   final int defaultPrefixlen;
-
   /// See Argument Reference above.
   final int defaultQuota;
-
   /// See Argument Reference above.
   final String description;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-
   /// The IP protocol version.
   final int ipVersion;
-
   /// See Argument Reference above.
   final bool isDefault;
-
   /// See Argument Reference above.
   final int maxPrefixlen;
-
   /// See Argument Reference above.
   final int minPrefixlen;
-
   /// See Argument Reference above.
   final String name;
-
   /// See Argument Reference above.
   final List<String> prefixes;
-
   /// See Argument Reference above.
   final String projectId;
-
   /// See Argument Reference above.
   final String region;
-
   /// The revision number of the subnetpool.
   final int revisionNumber;
-
   /// See Argument Reference above.
   final bool shared;
   final List<String>? tags;
-
   /// The time at which subnetpool was created.
   final String updatedAt;
 
@@ -142,12 +126,9 @@ class GetSubnetPoolResult {
       region: map['region'] as String,
       revisionNumber: map['revisionNumber'] as int,
       shared: map['shared'] as bool,
-      tags: (() {
-        final guardedValue = map['tags'];
-        if (guardedValue == null) return null;
-        return (guardedValue as List).cast<String>();
-      })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       updatedAt: map['updatedAt'] as String,
     );
   }
 }
+

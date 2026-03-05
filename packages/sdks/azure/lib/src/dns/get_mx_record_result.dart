@@ -7,18 +7,14 @@ import 'get_mx_record_record.dart';
 class GetMxRecordResult {
   /// The FQDN of the DNS MX Record.
   final String fqdn;
-
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? name;
-
   /// A list of values that make up the MX record. Each `record` block supports fields documented below.
   final List<GetMxRecordRecord> records;
   final String resourceGroupName;
-
   /// A mapping of tags assigned to the resource.
   final Map<String, String> tags;
-
   /// The Time To Live (TTL) of the DNS record in seconds.
   final int ttl;
   final String zoneName;
@@ -48,11 +44,7 @@ class GetMxRecordResult {
       'fqdn': fqdn,
       'id': id,
       'name': ?name,
-      'records':
-          pulumi.Input.encodeList<GetMxRecordRecord, Map<String, dynamic>>(
-            records,
-            (value) => value.toMap(),
-          ),
+      'records': pulumi.Input.encodeList<GetMxRecordRecord, Map<String, dynamic>>(records, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'tags': tags,
       'ttl': ttl,
@@ -64,16 +56,8 @@ class GetMxRecordResult {
     return GetMxRecordResult(
       fqdn: map['fqdn'] as String,
       id: map['id'] as String,
-      name: (() {
-        final guardedValue = map['name'];
-        if (guardedValue == null) return null;
-        return guardedValue as String;
-      })(),
-      records: pulumi.Input.decodeList<GetMxRecordRecord>(
-        map['records']!,
-        (value) =>
-            GetMxRecordRecord.fromMap((value as Map).cast<String, dynamic>()),
-      ),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      records: pulumi.Input.decodeList<GetMxRecordRecord>(map['records']!, (value) => GetMxRecordRecord.fromMap((value as Map).cast<String, dynamic>())),
       resourceGroupName: map['resourceGroupName'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
       ttl: map['ttl'] as int,
@@ -81,3 +65,4 @@ class GetMxRecordResult {
     );
   }
 }
+

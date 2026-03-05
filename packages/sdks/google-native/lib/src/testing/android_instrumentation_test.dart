@@ -10,29 +10,20 @@ import 'sharding_option.dart';
 class AndroidInstrumentationTest {
   /// The APK for the application under test.
   final pulumi.Input<FileReference>? appApk;
-
   /// A multi-apk app bundle for the application under test.
   final pulumi.Input<AppBundle>? appBundle;
-
   /// The java package for the application under test. The default value is determined by examining the application's manifest.
   final pulumi.Input<String>? appPackageId;
-
   /// The option of whether running each test within its own invocation of instrumentation with Android Test Orchestrator or not. ** Orchestrator is only compatible with AndroidJUnitRunner version 1.1 or higher! ** Orchestrator offers the following benefits: - No shared state - Crashes are isolated - Logs are scoped per test See for more information about Android Test Orchestrator. If not set, the test will be run without the orchestrator.
-  final pulumi.Input<AndroidInstrumentationTestOrchestratorOption>?
-  orchestratorOption;
-
+  final pulumi.Input<AndroidInstrumentationTestOrchestratorOption>? orchestratorOption;
   /// The option to run tests in multiple shards in parallel.
   final pulumi.Input<ShardingOption>? shardingOption;
-
   /// The APK containing the test code to be executed.
   final pulumi.Input<FileReference> testApk;
-
   /// The java package for the test to be executed. The default value is determined by examining the application's manifest.
   final pulumi.Input<String>? testPackageId;
-
   /// The InstrumentationTestRunner class. The default value is determined by examining the application's manifest.
   final pulumi.Input<String>? testRunnerClass;
-
   /// Each target must be fully qualified with the package name or class name, in one of these formats: - "package package_name" - "class package_name.class_name" - "class package_name.class_name#method_name" If empty, all targets in the module will be run.
   final pulumi.Input<List<String>>? testTargets;
 
@@ -60,32 +51,12 @@ class AndroidInstrumentationTest {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'appApk':
-          ?pulumi.Input.mapOptionalInputValue<
-            FileReference,
-            Map<String, dynamic>
-          >(appApk, (value) => value.toMap()),
-      'appBundle':
-          ?pulumi.Input.mapOptionalInputValue<AppBundle, Map<String, dynamic>>(
-            appBundle,
-            (value) => value.toMap(),
-          ),
+      'appApk': ?pulumi.Input.mapOptionalInputValue<FileReference, Map<String, dynamic>>(appApk, (value) => value.toMap()),
+      'appBundle': ?pulumi.Input.mapOptionalInputValue<AppBundle, Map<String, dynamic>>(appBundle, (value) => value.toMap()),
       'appPackageId': ?appPackageId,
-      'orchestratorOption':
-          ?pulumi.Input.mapOptionalInputValue<
-            AndroidInstrumentationTestOrchestratorOption,
-            String
-          >(orchestratorOption, (value) => value.wireValue),
-      'shardingOption':
-          ?pulumi.Input.mapOptionalInputValue<
-            ShardingOption,
-            Map<String, dynamic>
-          >(shardingOption, (value) => value.toMap()),
-      'testApk':
-          pulumi.Input.mapInputValue<FileReference, Map<String, dynamic>>(
-            testApk,
-            (value) => value.toMap(),
-          ),
+      'orchestratorOption': ?pulumi.Input.mapOptionalInputValue<AndroidInstrumentationTestOrchestratorOption, String>(orchestratorOption, (value) => value.wireValue),
+      'shardingOption': ?pulumi.Input.mapOptionalInputValue<ShardingOption, Map<String, dynamic>>(shardingOption, (value) => value.toMap()),
+      'testApk': pulumi.Input.mapInputValue<FileReference, Map<String, dynamic>>(testApk, (value) => value.toMap()),
       'testPackageId': ?testPackageId,
       'testRunnerClass': ?testRunnerClass,
       'testTargets': ?testTargets,
@@ -94,59 +65,16 @@ class AndroidInstrumentationTest {
 
   factory AndroidInstrumentationTest.fromMap(Map<String, dynamic> map) {
     return AndroidInstrumentationTest(
-      appApk: (() {
-        final guardedValue = map['appApk'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          FileReference.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      appBundle: (() {
-        final guardedValue = map['appBundle'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AppBundle.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      appPackageId: (() {
-        final guardedValue = map['appPackageId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      orchestratorOption: (() {
-        final guardedValue = map['orchestratorOption'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          AndroidInstrumentationTestOrchestratorOption.fromValue(
-            guardedValue as String,
-          ),
-        );
-      })(),
-      shardingOption: (() {
-        final guardedValue = map['shardingOption'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(
-          ShardingOption.fromMap((guardedValue as Map).cast<String, dynamic>()),
-        );
-      })(),
-      testApk: pulumi.Input.fromValue(
-        FileReference.fromMap((map['testApk']! as Map).cast<String, dynamic>()),
-      ),
-      testPackageId: (() {
-        final guardedValue = map['testPackageId'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      testRunnerClass: (() {
-        final guardedValue = map['testRunnerClass'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue(guardedValue as String);
-      })(),
-      testTargets: (() {
-        final guardedValue = map['testTargets'];
-        if (guardedValue == null) return null;
-        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
-      })(),
+      appApk: (() { final guardedValue = map['appApk']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FileReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      appBundle: (() { final guardedValue = map['appBundle']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppBundle.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      appPackageId: (() { final guardedValue = map['appPackageId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      orchestratorOption: (() { final guardedValue = map['orchestratorOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AndroidInstrumentationTestOrchestratorOption.fromValue(guardedValue as String)); })(),
+      shardingOption: (() { final guardedValue = map['shardingOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ShardingOption.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      testApk: pulumi.Input.fromValue(FileReference.fromMap((map['testApk']! as Map).cast<String, dynamic>())),
+      testPackageId: (() { final guardedValue = map['testPackageId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      testRunnerClass: (() { final guardedValue = map['testRunnerClass']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      testTargets: (() { final guardedValue = map['testTargets']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }
+

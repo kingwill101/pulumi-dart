@@ -5,7 +5,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBucketRetentionPolicy {
   /// If set to true, the bucket will be locked and permanently restrict edits to the bucket's retention policy.  Caution: Locking a bucket is an irreversible action.
   final pulumi.Input<bool> isLocked;
-
   /// The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 3,155,760,000 seconds.
   final pulumi.Input<String> retentionPeriod;
 
@@ -31,3 +30,4 @@ class GetBucketRetentionPolicy {
     );
   }
 }
+
